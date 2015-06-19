@@ -1,0 +1,11 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	multilib	62927b3db3a589b0806255f3a002d5d3	eutils	9fb270e417e0e83d64ca52586c4a79de
+_md5_=f0decb6313d1ef6ee8f3d8d786d03673
+SLOT=0
+DEFINED_PHASES=compile install unpack
+EAPI=0
+DESCRIPTION=Watches a multilog file for irregularities
+LICENSE=Artistic GPL-2
+SRC_URI=http://archives.eyrie.org/software/system/multilog-watch http://www.eyrie.org/%7Eeagle/software/multilog-watch/sample.filter
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.eyrie.org/~eagle/software/multilog-watch/
+RDEPEND=dev-lang/perl virtual/qmail

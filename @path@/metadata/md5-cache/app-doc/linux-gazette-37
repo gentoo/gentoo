@@ -1,0 +1,11 @@
+_eclasses_=
+_md5_=58474ef8a2704f3cf1a7cc72dbfa3e70
+SLOT=37
+DEFINED_PHASES=install
+EAPI=5
+DESCRIPTION=Sharing ideas and discoveries and Making Linux just a little more fun
+LICENSE=OPL
+SRC_URI=http://linuxgazette.net/ftpfiles/lg-issue37.tar.gz
+KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
+HOMEPAGE=http://linuxgazette.net/
+RDEPEND=>=app-doc/linux-gazette-base-37

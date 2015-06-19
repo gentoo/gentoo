@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	multilib	62927b3db3a589b0806255f3a002d5d3	qmake-utils	55ebcc6f3269308d226969c26704e343	base	87f7447ccfc06fd0729ff4684e11e0d6	qt4-r2	7199e3db5b5908325487d379c6f67cf0	eutils	9fb270e417e0e83d64ca52586c4a79de
+_md5_=87f56a0f581ae8c89f4c010eaecf61
+SLOT=0
+DEFINED_PHASES=compile configure install prepare unpack
+EAPI=4
+DEPEND=dev-qt/qtgui:4 dev-qt/qtcore:4 app-arch/unzip
+DESCRIPTION=A gui for the *hashcat* suite of tools
+LICENSE=GPL-3
+IUSE=cuda opencl
+SRC_URI=mirror://github/scandium/hashcat-gui/zipball/b6b01be723742ad89ba31fdb2c30b35306318f8b -> hashcat-gui-0.5.1.zip
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=https://github.com/scandium/hashcat-gui
+RDEPEND=app-crypt/hashcat-bin cuda? ( app-crypt/oclhashcat-plus-bin app-crypt/oclhashcat-lite-bin ) opencl? ( app-crypt/oclhashcat-plus-bin app-crypt/oclhashcat-lite-bin ) dev-qt/qtgui:4 dev-qt/qtcore:4

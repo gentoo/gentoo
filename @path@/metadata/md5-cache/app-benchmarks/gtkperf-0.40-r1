@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	multilib	62927b3db3a589b0806255f3a002d5d3	eutils	9fb270e417e0e83d64ca52586c4a79de
+_md5_=aa42e8044ccd404059073358adce5a74
+SLOT=0
+DEFINED_PHASES=configure install prepare
+EAPI=5
+DEPEND=x11-libs/gtk+:2 nls? ( sys-devel/gettext ) virtual/pkgconfig
+DESCRIPTION=Application designed to test GTK+ performance
+LICENSE=GPL-2
+IUSE=nls
+SRC_URI=mirror://sourceforge/gtkperf/gtkperf_0.40.tar.gz
+KEYWORDS=~amd64 ~ppc ~x86
+HOMEPAGE=http://gtkperf.sourceforge.net/
+RDEPEND=x11-libs/gtk+:2

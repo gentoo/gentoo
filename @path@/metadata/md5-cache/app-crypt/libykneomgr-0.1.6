@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	multilib	62927b3db3a589b0806255f3a002d5d3	udev	da001465a2e939c93f7ae16947ce3438	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	libtool	52d0e17251d04645ffaa61bfdd858944	autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de
+_md5_=dbacadd4de813e9497429b0b35d02639
+SLOT=0
+DEFINED_PHASES=compile configure install prepare test
+EAPI=5
+DEPEND=sys-apps/pcsc-lite dev-libs/libzip virtual/pkgconfig virtual/pkgconfig
+DESCRIPTION=YubiKey NEO CCID Manager C Library
+LICENSE=LGPL-3
+IUSE=kernel_linux
+SRC_URI=https://developers.yubico.com/libykneomgr/Releases/libykneomgr-0.1.6.tar.gz
+KEYWORDS=~amd64
+HOMEPAGE=https://developers.yubico.com/libykneomgr/
+RDEPEND=sys-apps/pcsc-lite dev-libs/libzip >=app-crypt/ccid-1.4.18[usb]

@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>proxy-maintainers</herd>
+	<herd>wine</herd>
 	<maintainer>
-                <email>idella4@gentoo.org</email>
-                <name>Ian Delaney</name>
-        </maintainer>
-        <maintainer>
-                <email>np.hardass@gmail.com</email>
-                <name>NP-Hardass</name>
-                <description>proxy maintainer and recipient of bugs</description>
+		<email>np-hardass@gentoo.org</email>
+		<name>NP-Hardass</name>
 	</maintainer>
-<use>
-	<flag name="winbind">Enables support for the winbind auth daemon</flag>
-</use>
+	<use>
+		<flag name="winbind">Enables support for the winbind auth daemon</flag>
+	</use>
 </pkgmetadata>
 

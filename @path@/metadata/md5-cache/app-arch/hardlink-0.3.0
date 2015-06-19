@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	multilib	62927b3db3a589b0806255f3a002d5d3
+_md5_=1b4528c888f48c43a8b7bd4699d0c64e
+SLOT=0
+DEFINED_PHASES=compile prepare
+EAPI=4
+DEPEND=dev-libs/libpcre virtual/pkgconfig
+DESCRIPTION=A tool which replaces copies of a file with hardlinks
+LICENSE=MIT
+SRC_URI=http://jak-linux.org/projects/hardlink/hardlink_0.3.0.tar.xz
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86
+HOMEPAGE=http://jak-linux.org/projects/hardlink/
+RDEPEND=dev-libs/libpcre

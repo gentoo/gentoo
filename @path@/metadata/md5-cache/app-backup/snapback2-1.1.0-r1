@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	multilib	62927b3db3a589b0806255f3a002d5d3	unpacker	f300a7ca9131b1024a79762e8edd3c52	multiprocessing	d7f2985a2c76c365ee20269db5261414	eutils	9fb270e417e0e83d64ca52586c4a79de	perl-module	9ff260c452d420630500e700913be8d8
+_md5_=4c22e95319ec5bc5240c1952b45e2fe0
+SLOT=0
+DEFINED_PHASES=compile configure install prepare test unpack
+EAPI=5
+DEPEND=dev-lang/perl:=[-build(-)]
+DESCRIPTION=Routines for support of rsync-based snapshot backup
+LICENSE=|| ( Artistic GPL-1+ )
+SRC_URI=mirror://cpan/authors/id/M/MI/MIKEH/Snapback2-1.001.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://search.cpan.org/dist/Snapback2/
+RDEPEND=dev-perl/Config-ApacheFormat dev-lang/perl:=[-build(-)]

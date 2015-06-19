@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=4e344ca2c7d2b149412e3955b9028ce9
+SLOT=0
+DEFINED_PHASES=install
+EAPI=0
+DEPEND=>=app-text/dictd-1.5.5
+DESCRIPTION=The Devil's Dictionary for dict
+LICENSE=GPL-2
+SRC_URI=ftp://ftp.dict.org/pub/dict/pre/devils-dict-pre.tar.gz
+KEYWORDS=x86 ppc sparc amd64 ppc64
+HOMEPAGE=http://www.dict.org/
+RDEPEND=>=app-text/dictd-1.5.5

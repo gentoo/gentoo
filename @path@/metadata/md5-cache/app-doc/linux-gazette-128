@@ -1,0 +1,11 @@
+_eclasses_=
+_md5_=39a0a9b5f8231109267a033fa34be6cf
+SLOT=128
+DEFINED_PHASES=install
+EAPI=5
+DESCRIPTION=Sharing ideas and discoveries and Making Linux just a little more fun
+LICENSE=OPL
+SRC_URI=http://linuxgazette.net/ftpfiles/lg-128.tar.gz
+KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
+HOMEPAGE=http://linuxgazette.net/
+RDEPEND=>=app-doc/linux-gazette-base-128

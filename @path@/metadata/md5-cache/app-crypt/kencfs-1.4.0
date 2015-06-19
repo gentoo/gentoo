@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	multilib	62927b3db3a589b0806255f3a002d5d3	qmake-utils	55ebcc6f3269308d226969c26704e343	base	87f7447ccfc06fd0729ff4684e11e0d6	qt4-r2	7199e3db5b5908325487d379c6f67cf0	eutils	9fb270e417e0e83d64ca52586c4a79de
+_md5_=89b900c2cb25ac9cb3569a7ef65721b9
+SLOT=0
+DEFINED_PHASES=compile configure install prepare unpack
+EAPI=5
+DEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 kde-base/kdelibs:4
+DESCRIPTION=GUI frontend for encfs
+LICENSE=LGPL-2.1
+SRC_URI=http://kde-apps.org/CONTENT/content-files/134003-kencfs-1.4.0.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://kde-apps.org/content/show.php?content=134003
+RDEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 kde-base/kdelibs:4 kde-apps/kwalletd:4 sys-fs/encfs

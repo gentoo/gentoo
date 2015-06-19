@@ -1,0 +1,11 @@
+_eclasses_=
+_md5_=a695e78b953738a04bfff4d059587fb7
+SLOT=0
+DEFINED_PHASES=install unpack
+EAPI=0
+DESCRIPTION=dcZip is an archiving program for managing various compression file formats
+LICENSE=freedist
+SRC_URI=http://www.davidcampaign.net/files/dczip.jar
+KEYWORDS=~amd64 ppc x86
+HOMEPAGE=http://www.davidcampaign.net/dczip.html
+RDEPEND=>=virtual/jre-1.3

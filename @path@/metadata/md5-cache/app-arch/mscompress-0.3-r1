@@ -1,0 +1,10 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	multilib	62927b3db3a589b0806255f3a002d5d3	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98
+_md5_=e4fe739a711ac9018135b3a333f3704
+SLOT=0
+DEFINED_PHASES=configure install prepare
+EAPI=5
+DESCRIPTION=Microsoft compress.exe/expand.exe compatible (de)compressor
+LICENSE=GPL-2
+SRC_URI=ftp://ftp.penguin.cz/pub/users/mhi/mscompress/mscompress-0.3.tar.bz2
+KEYWORDS=amd64 hppa ~ppc ~ppc64 x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos
+HOMEPAGE=http://gnuwin32.sourceforge.net/packages/mscompress.htm

@@ -1,0 +1,13 @@
+_eclasses_=
+_md5_=78497bfbf8662f77c543d4216fd8bcb6
+SLOT=0
+DEFINED_PHASES=install postinst unpack
+EAPI=2
+DEPEND=app-arch/unzip
+DESCRIPTION=The Command Line Toolkit for the Amazon Relational Database Service
+LICENSE=Amazon
+RESTRICT=mirror
+SRC_URI=mirror://sabayon/app-admin/RDSCli-1.6.001.zip
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://aws.amazon.com/developertools/2928
+RDEPEND=virtual/jre

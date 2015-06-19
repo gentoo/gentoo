@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	multilib	62927b3db3a589b0806255f3a002d5d3	eutils	9fb270e417e0e83d64ca52586c4a79de
+_md5_=cf0b36b68be51ba3de072ed478cb5608
+SLOT=0
+DEFINED_PHASES=prepare
+EAPI=5
+DEPEND=app-arch/bzip2 app-arch/xz-utils dev-libs/libexplain sys-libs/zlib dev-libs/boost
+DESCRIPTION=A tar post-processor
+LICENSE=GPL-3
+SRC_URI=mirror://sourceforge/tardy/tardy-1.28.D001.tar.gz
+KEYWORDS=amd64 ppc x86
+HOMEPAGE=http://tardy.sourceforge.net/
+RDEPEND=app-arch/bzip2 app-arch/xz-utils dev-libs/libexplain sys-libs/zlib

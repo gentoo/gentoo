@@ -1,6 +1,12 @@
 # ChangeLog for app-emulation/playonlinux
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/playonlinux/ChangeLog,v 1.22 2015/03/10 03:12:02 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/playonlinux/ChangeLog,v 1.23 2015/06/19 18:30:59 np-hardass Exp $
+
+*playonlinux-4.2.8 (19 Jun 2015)
+
+  19 Jun 2015; NP-Hardass <NP-Hardass@gentoo.org> +playonlinux-4.2.8.ebuild,
+  -playonlinux-4.1.9.ebuild, metadata.xml:
+  Version bump to 4.2.8, drop 4.1.9
 
 *playonlinux-4.2.6 (10 Mar 2015)
 

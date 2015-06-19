@@ -1,0 +1,10 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	multilib	62927b3db3a589b0806255f3a002d5d3	eutils	9fb270e417e0e83d64ca52586c4a79de
+_md5_=3f3f088b9328c81689391a3d2bbb80a4
+SLOT=0
+DEFINED_PHASES=compile install prepare
+EAPI=5
+DESCRIPTION=Tool for recovering passwords and content from PDF-files
+LICENSE=GPL-2
+SRC_URI=mirror://sourceforge/pdfcrack/pdfcrack-0.13.tar.gz
+KEYWORDS=~amd64 ~ppc ~x86
+HOMEPAGE=http://pdfcrack.sourceforge.net/

@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	multilib	62927b3db3a589b0806255f3a002d5d3	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98
+_md5_=e807c47e819f954f5278cfca97d9c361
+SLOT=0
+DEFINED_PHASES=compile install
+EAPI=0
+DESCRIPTION=Encrypts data from stdin to stdout
+LICENSE=GPL-2
+IUSE=static
+SRC_URI=http://loop-aes.sourceforge.net/aespipe/aespipe-v2.4c.tar.bz2
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris
+HOMEPAGE=http://loop-aes.sourceforge.net
+RDEPEND=app-arch/sharutils

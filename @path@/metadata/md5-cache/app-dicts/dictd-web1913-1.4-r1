@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=760ced2e4bdd7bfea60e2810e268e085
+SLOT=0
+DEFINED_PHASES=install
+EAPI=0
+DEPEND=>=app-text/dictd-1.5.5
+DESCRIPTION=Webster's Revised Unabridged Dictionary (1913) for dict
+LICENSE=GPL-2
+SRC_URI=ftp://ftp.dict.org/pub/dict/pre/dict-web1913-1.4-pre.tar.gz
+KEYWORDS=x86 ppc sparc amd64 ppc64
+HOMEPAGE=http://www.dict.org/
+RDEPEND=>=app-text/dictd-1.5.5

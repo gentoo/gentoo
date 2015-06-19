@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	multilib	62927b3db3a589b0806255f3a002d5d3	autotools	a9597abac7226d89ad9d010abeef6cfb	libtool	52d0e17251d04645ffaa61bfdd858944
+_md5_=77271be8962ad759cb658ef5d6ea1146
+SLOT=0
+DEFINED_PHASES=compile configure install prepare
+EAPI=2
+DEPEND=mysql? ( virtual/mysql ) aio? ( dev-libs/libaio ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=System performance benchmark
+LICENSE=GPL-2
+IUSE=aio mysql
+SRC_URI=mirror://sourceforge/sysbench/sysbench-0.4.12.tar.gz
+KEYWORDS=amd64 x86
+HOMEPAGE=http://sysbench.sourceforge.net/
+RDEPEND=mysql? ( virtual/mysql ) aio? ( dev-libs/libaio )

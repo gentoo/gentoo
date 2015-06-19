@@ -1,0 +1,11 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	multilib	62927b3db3a589b0806255f3a002d5d3
+_md5_=3ae75e85f1454e3af9f55bd3553eaebc
+SLOT=0
+DEFINED_PHASES=compile install postinst
+EAPI=0
+DESCRIPTION=LZMA Stream Compressor from the SDK
+LICENSE=public-domain
+IUSE=doc
+SRC_URI=mirror://sourceforge/sevenzip/lzma920.tar.bz2
+KEYWORDS=~amd64 ~arm ~ia64 ~mips ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos
+HOMEPAGE=http://www.7-zip.org/sdk.html

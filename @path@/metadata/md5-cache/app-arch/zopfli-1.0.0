@@ -1,0 +1,11 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	multilib	62927b3db3a589b0806255f3a002d5d3
+_md5_=fe2a7832db2c39aa462933a8564aa897
+SLOT=0
+DEFINED_PHASES=compile install
+EAPI=5
+DEPEND=app-arch/unzip
+DESCRIPTION=Compression library programmed in C to perform very good, but slow, deflate or zlib compression
+LICENSE=Apache-2.0
+SRC_URI=https://zopfli.googlecode.com/files/zopfli-1.0.0.zip
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=https://code.google.com/p/zopfli/

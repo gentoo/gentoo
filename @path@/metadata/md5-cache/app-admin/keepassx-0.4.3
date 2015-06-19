@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	multilib	62927b3db3a589b0806255f3a002d5d3	qmake-utils	55ebcc6f3269308d226969c26704e343	base	87f7447ccfc06fd0729ff4684e11e0d6	qt4-r2	7199e3db5b5908325487d379c6f67cf0	eutils	9fb270e417e0e83d64ca52586c4a79de
+_md5_=ed05ec1a5b15c60748aa80f455d6d86
+SLOT=0
+DEFINED_PHASES=compile configure install prepare unpack
+EAPI=4
+DEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtxmlpatterns:4 || ( >=x11-libs/libXtst-1.1.0 <x11-proto/xextproto-7.1.0 )
+DESCRIPTION=Qt password manager compatible with its Win32 and Pocket PC versions
+LICENSE=GPL-2
+IUSE=debug pch
+SRC_URI=mirror://sourceforge/keepassx/keepassx-0.4.3.tar.gz
+KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux
+HOMEPAGE=http://www.keepassx.org/
+RDEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtxmlpatterns:4 || ( >=x11-libs/libXtst-1.1.0 <x11-proto/xextproto-7.1.0 )

@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	multilib	62927b3db3a589b0806255f3a002d5d3	eutils	9fb270e417e0e83d64ca52586c4a79de
+_md5_=b1f01cfe2ac9c4cadc5be1494d66f0de
+SLOT=0
+DEFINED_PHASES=compile install unpack
+EAPI=0
+DEPEND=dev-lang/perl
+DESCRIPTION=The Linux Security Auditing Tool
+LICENSE=GPL-2
+IUSE=minimal
+SRC_URI=http://usat.sourceforge.net/code/lsat-0.9.7.1.tgz
+KEYWORDS=amd64 ppc x86
+HOMEPAGE=http://usat.sourceforge.net/
+RDEPEND=!minimal? ( app-portage/portage-utils net-analyzer/nmap sys-apps/iproute2 sys-apps/which sys-process/lsof )

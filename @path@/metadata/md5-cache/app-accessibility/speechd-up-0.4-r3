@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	multilib	62927b3db3a589b0806255f3a002d5d3	eutils	9fb270e417e0e83d64ca52586c4a79de
+_md5_=6ed03d81acb5f37f47977b81ac664070
+SLOT=0
+DEFINED_PHASES=compile install
+EAPI=0
+DEPEND=>=app-accessibility/speech-dispatcher-0.6
+DESCRIPTION=Interface between speakup and speech-dispatcher
+LICENSE=GPL-2
+SRC_URI=http://www.freebsoft.org/pub/projects/speechd-up/speechd-up-0.4.tar.gz
+KEYWORDS=~amd64 x86
+HOMEPAGE=http://www.freebsoft.org/speechd-up
+RDEPEND=>=app-accessibility/speech-dispatcher-0.6 >=app-accessibility/speakup-3.0.2

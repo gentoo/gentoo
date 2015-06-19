@@ -1,0 +1,10 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	multilib	62927b3db3a589b0806255f3a002d5d3
+_md5_=57420c1cb581d00021bc90aea7697b1d
+SLOT=0
+DEFINED_PHASES=compile install prepare
+EAPI=3
+DESCRIPTION=Measures the speed of stdin/stdout communication
+LICENSE=GPL-2
+SRC_URI=ftp://ftp.habets.pp.se/pub/synscan/pipebench-0.40.tar.gz
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~x86 ~arm-linux ~x86-linux
+HOMEPAGE=http://www.habets.pp.se/synscan/programs.php?prog=pipebench

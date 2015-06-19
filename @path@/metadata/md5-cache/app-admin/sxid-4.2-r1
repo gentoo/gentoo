@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	multilib	62927b3db3a589b0806255f3a002d5d3	autotools	a9597abac7226d89ad9d010abeef6cfb	libtool	52d0e17251d04645ffaa61bfdd858944
+_md5_=59f2b80f7f63b500ab524f062ab39700
+SLOT=0
+DEFINED_PHASES=postinst prepare
+EAPI=4
+DEPEND=!<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=suid, sgid file and directory checking
+LICENSE=GPL-2
+SRC_URI=http://linukz.org/download/sxid-4.2.tar.gz
+KEYWORDS=amd64 ppc x86
+HOMEPAGE=http://freshmeat.net/projects/sxid
+RDEPEND=virtual/mailx

@@ -1,0 +1,13 @@
+_eclasses_=ruby-ng	a23e4bd47d827c96336af5ad0fe254cf	toolchain-funcs	42408102d713fbad60ca21349865edb4	java-utils-2	6627198e505d021534cb20f89279c509	versionator	cd0bcdb170807e4a1984115e9d53a26f	multilib	62927b3db3a589b0806255f3a002d5d3	ruby-utils	a74e21a353442acf697b6c82e7df6df8	eutils	9fb270e417e0e83d64ca52586c4a79de
+_md5_=b941d6648809c92ed9a8e459c0004598
+SLOT=0
+DEFINED_PHASES=compile configure install prepare setup test unpack
+EAPI=2
+DEPEND=ruby_targets_ruby19? ( dev-lang/ruby:1.9 )
+DESCRIPTION=Dictionary files for PRIME input method
+LICENSE=GPL-2
+IUSE=elibc_FreeBSD ruby_targets_ruby19
+SRC_URI=http://prime.sourceforge.jp/src/prime-dict-1.0.0.tar.gz
+KEYWORDS=alpha amd64 hppa ppc ppc64 sparc x86
+HOMEPAGE=http://taiyaki.org/prime/
+RDEPEND=ruby_targets_ruby19? ( dev-lang/ruby:1.9 )

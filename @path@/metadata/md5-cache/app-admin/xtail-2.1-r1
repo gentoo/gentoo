@@ -1,0 +1,11 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	multilib	62927b3db3a589b0806255f3a002d5d3	eutils	9fb270e417e0e83d64ca52586c4a79de
+_md5_=34f42d30824702e764bc63bc4671588e
+SLOT=0
+DEFINED_PHASES=compile install prepare
+EAPI=4
+DEPEND=app-arch/unzip
+DESCRIPTION=Tail multiple logfiles at once, even if rotated
+LICENSE=BSD
+SRC_URI=http://www.unicom.com/sw/xtail/xtail-2.1.tar.gz http://www.unicom.com/files/20120219-patch-aalto.zip
+KEYWORDS=amd64 ppc ~sparc x86
+HOMEPAGE=http://www.unicom.com/sw/xtail/

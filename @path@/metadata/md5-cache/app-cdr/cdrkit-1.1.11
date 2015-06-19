@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	multilib	62927b3db3a589b0806255f3a002d5d3	eutils	9fb270e417e0e83d64ca52586c4a79de	cmake-utils	430c386d85cec959d72640afd63ea91	flag-o-matic	c9602887773166fe300444712fc7ff98
+_md5_=2f478cc77ceb68d840059f0a34d9f92f
+SLOT=0
+DEFINED_PHASES=compile configure install prepare test
+EAPI=3
+DEPEND=app-arch/bzip2 !app-cdr/cdrtools sys-apps/file sys-libs/zlib unicode? ( virtual/libiconv ) kernel_linux? ( sys-libs/libcap ) hfs? ( sys-apps/file ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=A set of tools for CD/DVD reading and recording, including cdrecord
+LICENSE=GPL-2 LGPL-2.1
+IUSE=debug hfs unicode
+SRC_URI=mirror://debian/pool/main/c/cdrkit/cdrkit_1.1.11.orig.tar.gz
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 s390 sparc x86 ~x86-fbsd
+HOMEPAGE=http://cdrkit.org
+RDEPEND=app-arch/bzip2 !app-cdr/cdrtools sys-apps/file sys-libs/zlib unicode? ( virtual/libiconv ) kernel_linux? ( sys-libs/libcap )

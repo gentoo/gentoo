@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	multilib	62927b3db3a589b0806255f3a002d5d3
+_md5_=1c0c89a8e96cb21c8f5602c9064fa23
+SLOT=0
+DEFINED_PHASES=compile install setup
+EAPI=5
+DEPEND=dev-libs/libgpg-error sys-fs/lvm2 sys-apps/util-linux dev-libs/libgcrypt:0 openssl? ( dev-libs/openssl:0 )
+DESCRIPTION=a free, pretty much fully featured and stable TrueCrypt implementation
+LICENSE=BSD
+IUSE=openssl
+SRC_URI=https://github.com/bwalex/tc-play/archive/v2.0.tar.gz -> tc-play-2.0.tar.gz
+KEYWORDS=~amd64
+HOMEPAGE=https://github.com/bwalex/tc-play
+RDEPEND=dev-libs/libgpg-error sys-fs/lvm2 sys-apps/util-linux dev-libs/libgcrypt:0 openssl? ( dev-libs/openssl:0 )

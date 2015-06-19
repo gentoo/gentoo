@@ -1,6 +1,13 @@
 # ChangeLog for dev-python/PyQt5
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/PyQt5/ChangeLog,v 1.10 2015/06/09 15:02:29 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/PyQt5/ChangeLog,v 1.11 2015/06/19 17:54:39 pesa Exp $
+
+*PyQt5-5.4.2 (19 Jun 2015)
+
+  19 Jun 2015; Davide Pesavento <pesa@gentoo.org> +PyQt5-5.4.2.ebuild,
+  -PyQt5-5.4.1.ebuild, metadata.xml:
+  Version bump. Enable the various _QOpenGLFunctions wrapper modules (bug
+  550606). Add QtWebChannel support.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

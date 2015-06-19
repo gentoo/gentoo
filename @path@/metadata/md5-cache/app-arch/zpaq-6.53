@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	libtool	52d0e17251d04645ffaa61bfdd858944	autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de
+_md5_=10436757d6d60fd4b173116072d2c890
+SLOT=0
+DEFINED_PHASES=compile configure install postinst prepare test
+EAPI=5
+DEPEND=~app-arch/libzpaq-6.53 dev-libs/libdivsufsort app-arch/unzip !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Journaling incremental deduplicating archiving compressor
+LICENSE=GPL-3
+IUSE=debug
+SRC_URI=http://mattmahoney.net/dc/zpaq653.zip
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://mattmahoney.net/dc/zpaq.html
+RDEPEND=~app-arch/libzpaq-6.53 dev-libs/libdivsufsort

@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	multilib	62927b3db3a589b0806255f3a002d5d3	user	f54e098dd38ba1c0847a13e685b87747	eutils	9fb270e417e0e83d64ca52586c4a79de
+_md5_=c34e6095c074268abf6cd6e4363b447a
+SLOT=0
+DEFINED_PHASES=install postinst setup
+EAPI=5
+DEPEND=!<dev-db/mongodb-3.0.0[mms-agent]
+DESCRIPTION=MongoDB MMS agents
+LICENSE=Apache-2.0
+IUSE=+monitoring
+REQUIRED_USE=|| ( monitoring )
+SRC_URI=monitoring? ( amd64? ( https://mms.mongodb.com/download/agent/monitoring/mongodb-mms-monitoring-agent-3.3.0.183-1.linux_x86_64.tar.gz ) x86? ( https://mms.mongodb.com/download/agent/monitoring/mongodb-mms-monitoring-agent-3.3.0.183-1.linux_i386.tar.gz ) )
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://mms.mongodb.com
+RDEPEND=!<dev-db/mongodb-3.0.0[mms-agent]

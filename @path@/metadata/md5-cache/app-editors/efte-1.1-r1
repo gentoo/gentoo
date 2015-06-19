@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	cmake-utils	430c386d85cec959d72640afd63ea91	fdo-mime	acfe1a88fd8751a1d5dc671168219fa	eutils	9fb270e417e0e83d64ca52586c4a79de
+_md5_=3802862f54152e6da1ef3ab73a9f3cbf
+SLOT=0
+DEFINED_PHASES=compile configure install postinst postrm prepare test
+EAPI=5
+DEPEND=sys-libs/ncurses gpm? ( sys-libs/gpm ) X? ( x11-libs/libX11 x11-libs/libXpm x11-libs/libXdmcp x11-libs/libXau media-fonts/font-misc-misc ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=A fast text editor supporting folding, syntax highlighting, etc.
+LICENSE=|| ( GPL-2 Artistic )
+IUSE=gpm X
+SRC_URI=mirror://sourceforge/efte/efte-1.1.tar.bz2
+KEYWORDS=amd64 x86
+HOMEPAGE=http://efte.sourceforge.net
+RDEPEND=sys-libs/ncurses gpm? ( sys-libs/gpm ) X? ( x11-libs/libX11 x11-libs/libXpm x11-libs/libXdmcp x11-libs/libXau media-fonts/font-misc-misc )

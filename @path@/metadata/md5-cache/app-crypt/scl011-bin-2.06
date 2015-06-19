@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	multilib	62927b3db3a589b0806255f3a002d5d3	udev	da001465a2e939c93f7ae16947ce3438
+_md5_=4fa29d5f9cfa95a72ce2356817352a9a
+SLOT=0
+DEFINED_PHASES=install
+EAPI=4
+DEPEND=sys-apps/pcsc-lite virtual/pkgconfig virtual/pkgconfig
+DESCRIPTION=pcsc-lite driver for the German identification card (nPA)
+LICENSE=SCM-MICRO
+RESTRICT=mirror bindist
+SRC_URI=x86? ( http://www.scmmicro.com/npa/files/scl011_2.06_linux_32bit.tar.gz ) amd64? ( http://www.scmmicro.com/npa/files/scl011_2.06_linux_64bit.tar.gz )
+KEYWORDS=-* ~amd64 ~x86
+HOMEPAGE=http://www.scmmicro.com/de/products-services/chipkartenleser-terminals/kontaktlos-dual-interface/it-sicherheitskit-basisleser/treiber.html
+RDEPEND=sys-apps/pcsc-lite

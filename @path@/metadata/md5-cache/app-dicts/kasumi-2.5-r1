@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	multilib	62927b3db3a589b0806255f3a002d5d3	eutils	9fb270e417e0e83d64ca52586c4a79de
+_md5_=7e311dbe1cd80d00782d6910e457c649
+SLOT=0
+DEFINED_PHASES=configure prepare
+EAPI=5
+DEPEND=>=x11-libs/gtk+-2.6:2 nls? ( virtual/libintl ) virtual/libiconv >=app-i18n/anthy-6131 virtual/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=Anthy dictionary maintenance tool
+LICENSE=GPL-2
+IUSE=nls
+SRC_URI=mirror://sourceforge.jp/kasumi/41436/kasumi-2.5.tar.gz
+KEYWORDS=amd64 ppc x86 ~x86-fbsd
+HOMEPAGE=http://kasumi.sourceforge.jp/
+RDEPEND=>=x11-libs/gtk+-2.6:2 nls? ( virtual/libintl ) virtual/libiconv >=app-i18n/anthy-6131

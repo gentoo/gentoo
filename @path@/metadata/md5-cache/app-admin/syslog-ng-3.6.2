@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	systemd	90342761f573a8280dd5aa6b0345f3b	versionator	cd0bcdb170807e4a1984115e9d53a26f	multilib	62927b3db3a589b0806255f3a002d5d3	eutils	9fb270e417e0e83d64ca52586c4a79de
+_md5_=2c178054d2bcbd3a4d2557fafc42d75
+SLOT=0
+DEFINED_PHASES=configure install postinst prepare
+EAPI=5
+DEPEND=caps? ( sys-libs/libcap ) dbi? ( >=dev-db/libdbi-0.8.3 ) geoip? ( >=dev-libs/geoip-1.5.0 ) json? ( >=dev-libs/json-c-0.9 ) redis? ( dev-libs/hiredis ) smtp? ( net-libs/libesmtp ) spoof-source? ( net-libs/libnet:1.1 ) ssl? ( dev-libs/openssl:= ) systemd? ( sys-apps/systemd ) tcpd? ( >=sys-apps/tcp-wrappers-7.6 ) dev-libs/libpcre >=dev-libs/eventlog-0.2.12 >=dev-libs/glib-2.10.1:2 virtual/pkgconfig sys-devel/flex virtual/pkgconfig
+DESCRIPTION=syslog replacement with advanced filtering features
+LICENSE=GPL-2+ LGPL-2.1+
+IUSE=amqp caps dbi geoip ipv6 json mongodb pacct redis smtp spoof-source ssl systemd tcpd
+RESTRICT=test
+SRC_URI=http://www.balabit.com/downloads/files/syslog-ng/sources/3.6.2/source/syslog-ng_3.6.2.tar.gz
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd
+HOMEPAGE=http://www.balabit.com/network-security/syslog-ng
+RDEPEND=caps? ( sys-libs/libcap ) dbi? ( >=dev-db/libdbi-0.8.3 ) geoip? ( >=dev-libs/geoip-1.5.0 ) json? ( >=dev-libs/json-c-0.9 ) redis? ( dev-libs/hiredis ) smtp? ( net-libs/libesmtp ) spoof-source? ( net-libs/libnet:1.1 ) ssl? ( dev-libs/openssl:= ) systemd? ( sys-apps/systemd ) tcpd? ( >=sys-apps/tcp-wrappers-7.6 ) dev-libs/libpcre >=dev-libs/eventlog-0.2.12 >=dev-libs/glib-2.10.1:2

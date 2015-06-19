@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>proxy-maintainers</herd>
 	<maintainer>
-		<email>idella4@gentoo.org</email>
-	</maintainer>
-	<maintainer>
-		<email>np.hardass@gmail.com</email>
+		<email>NP-Hardass@gentoo.org</email>
 		<name>NP-Hardass</name>
-		<description>proxy maintainer and recipient of bugs</description>
 	</maintainer>
 	<use>
 		<flag name="crypt">Enables user authentication with GPG</flag>

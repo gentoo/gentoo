@@ -1,0 +1,11 @@
+_eclasses_=
+_md5_=304939217e63b1fd9c7aec2efaf65216
+SLOT=4.5.0
+DEFINED_PHASES=install postinst postrm
+EAPI=5
+DESCRIPTION=The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
+LICENSE=GPL-2
+RESTRICT=mirror
+SRC_URI=mirror://sourceforge/systemrescuecd/sysresccd-x86/4.5.0/systemrescuecd-x86-4.5.0.iso
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.sysresccd.org/

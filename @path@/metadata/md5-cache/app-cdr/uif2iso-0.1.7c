@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	multilib	62927b3db3a589b0806255f3a002d5d3	eutils	9fb270e417e0e83d64ca52586c4a79de
+_md5_=4c14423907476cda77aa5d9833adcba0
+SLOT=0
+DEFINED_PHASES=compile install
+EAPI=0
+DEPEND=sys-libs/zlib app-arch/unzip
+DESCRIPTION=Converts MagicISO CD-images to iso
+LICENSE=GPL-2
+SRC_URI=mirror://gentoo/uif2iso-0.1.7c.zip
+KEYWORDS=amd64 x86
+HOMEPAGE=http://aluigi.org/mytoolz.htm#uif2iso
+RDEPEND=sys-libs/zlib

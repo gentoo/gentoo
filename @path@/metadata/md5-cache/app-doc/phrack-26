@@ -1,0 +1,10 @@
+_eclasses_=
+_md5_=96042da75fe2e4d3b333bf187a42edf2
+SLOT=26
+DEFINED_PHASES=install
+EAPI=5
+DESCRIPTION=A Hacker magazine by the community, for the community
+LICENSE=phrack
+SRC_URI=http://www.phrack.org/archives/tgz/phrack26.tar.gz
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
+HOMEPAGE=http://www.phrack.org/
