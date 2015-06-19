@@ -1,10 +1,14 @@
 # ChangeLog for profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10137 2015/06/19 16:52:58 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10138 2015/06/19 18:51:16 grknight Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  19 Jun 2015; <grknight@gentoo.org> package.mask:
+  The Cyphertite backup service is closing as of August 18th, 2015.
+  app-backup/cyphertite masked for removal in 30 days. Bug 552578
 
   19 Jun 2015; Mike Gilbert <floppym@gentoo.org> package.mask:
   Mask virtual/libgudev-230 and related providers for bug 552036.
