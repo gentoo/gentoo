@@ -1,6 +1,11 @@
 # ChangeLog for dev-util/shellcheck
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/shellcheck/ChangeLog,v 1.4 2015/06/17 09:28:53 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/shellcheck/ChangeLog,v 1.5 2015/06/19 15:31:25 jlec Exp $
+
+*shellcheck-0.3.7 (19 Jun 2015)
+
+  19 Jun 2015; Justin Lecher <jlec@gentoo.org> +shellcheck-0.3.7.ebuild:
+  Version Bump bug #552392; thanks Coacher for the ebuild
 
   17 Jun 2015; Justin Lecher <jlec@gentoo.org> shellcheck-0.3.6.ebuild:
   Correct version of compiler in dependencies, bug #552274

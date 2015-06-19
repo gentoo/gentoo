@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/stunnel/stunnel-5.19.ebuild,v 1.2 2015/06/19 15:23:18 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/stunnel/stunnel-5.19.ebuild,v 1.3 2015/06/19 15:33:56 blueness Exp $
 
 EAPI="5"
 
@@ -19,11 +19,12 @@ SRC_URI="ftp://ftp.stunnel.org/stunnel/archive/${PV%%.*}.x/${P}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE="ipv6 selinux tcpd"
+IUSE="ipv6 selinux stunnel3 tcpd"
 
 DEPEND="tcpd? ( sys-apps/tcp-wrappers )
 	dev-libs/openssl:="
 RDEPEND="${DEPEND}
+	stunnel3? ( dev-lang/perl )
 	selinux? ( sec-policy/selinux-stunnel )"
 
 pkg_setup() {
@@ -53,6 +54,7 @@ src_install() {
 	rm -rf "${ED}"/usr/share/doc/${PN}
 	rm -f "${ED}"/etc/stunnel/stunnel.conf-sample \
 		"${ED}"/usr/share/man/man8/stunnel.{fr,pl}.8
+	use stunnel3 || rm -f "${ED}"/usr/bin/stunnel3
 
 	# The binary was moved to /usr/bin with 4.21,
 	# symlink for backwards compatibility

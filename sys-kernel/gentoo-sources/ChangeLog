@@ -1,6 +1,11 @@
 # ChangeLog for sys-kernel/gentoo-sources
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/gentoo-sources/ChangeLog,v 1.1571 2015/06/17 18:58:50 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/gentoo-sources/ChangeLog,v 1.1572 2015/06/19 15:50:11 mpagano Exp $
+
+*gentoo-sources-3.18.16 (19 Jun 2015)
+
+  19 Jun 2015; Mike Pagano <mpagano@gentoo.org> +gentoo-sources-3.18.16.ebuild:
+  Linux patch 3.18.15 and 3.18.16.
 
   17 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> gentoo-sources-4.0.5.ebuild:
   x86 stable wrt bug #552336

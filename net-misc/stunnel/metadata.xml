@@ -5,6 +5,9 @@
 		<email>blueness@gentoo.org</email>
 		<name>Anthony G. Basile</name>
 	</maintainer>
+	<use>
+		<flag name="stunnel3">Install the stunnel3 wrapper.</flag>
+	</use>
 	<longdescription lang="en">
 		Stunnel is a program that allows you to encrypt arbitrary TCP
 		connections inside SSL (Secure Sockets Layer) available on both Unix and
