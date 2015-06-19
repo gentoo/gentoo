@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/xemacs/xemacs-21.4.22-r4.ebuild,v 1.13 2015/03/31 17:41:09 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/xemacs/xemacs-21.4.22-r4.ebuild,v 1.14 2015/06/19 22:28:26 matsl Exp $
 
 # Note: xemacs currently does not work with a hardened profile. If you
 # want to use xemacs on a hardened profile then compile with the
@@ -24,13 +24,13 @@ IUSE="eolconv gif gpm pop postgres ldap xface nas dnd X jpeg tiff png mule motif
 X_DEPEND="x11-libs/libXt x11-libs/libXmu x11-libs/libXext x11-misc/xbitmaps"
 
 RDEPEND="
-	berkdb? ( sys-libs/db )
+	berkdb? ( sys-libs/db:= )
 	gdbm? ( >=sys-libs/gdbm-1.8.3 )
 	>=sys-libs/zlib-1.1.4
-	>=dev-libs/openssl-0.9.6
+	>=dev-libs/openssl-0.9.6:0
 	>=media-libs/audiofile-0.2.3
 	gpm? ( >=sys-libs/gpm-1.19.6 )
-	postgres? ( dev-db/postgresql )
+	postgres? ( dev-db/postgresql:= )
 	ldap? ( net-nds/openldap )
 	nas? ( media-libs/nas )
 	X? ( $X_DEPEND !Xaw3d? ( !neXt? ( x11-libs/libXaw ) ) )
@@ -179,6 +179,9 @@ src_configure() {
 
 	# Enabling modules will cause segfaults outside the XEmacs build directory
 	use ia64  && myconf="${myconf} --without-modules"
+
+	# fixes #552044, deprecation warnings fools header detection in configure 
+	myconf="${myconf} --cppflags=-Wno-cpp"
 
 	einfo "${myconf}"
 
