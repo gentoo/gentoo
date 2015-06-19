@@ -1,0 +1,13 @@
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/actkbd/files/actkbd.confd,v 1.1 2013/03/14 19:50:09 scarabeus Exp $
+
+# Configuration file
+CONFIG="/etc/actkbd.conf"
+
+# Event provider providing the keypress events
+EVENT_DEVICE="/dev/input/<DEVICE>"
+
+# PID
+PIDFILE="/var/run/actkbd.pid"
+

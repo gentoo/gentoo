@@ -1,0 +1,170 @@
+# ChangeLog for dev-python/pyalsa
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyalsa/ChangeLog,v 1.46 2015/04/08 08:05:28 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> pyalsa-1.0.26-r1.ebuild:
+  Drop old Python implementations
+
+*pyalsa-1.0.29 (22 Mar 2015)
+
+  22 Mar 2015; Ian Delaney <idella4@gentoo.org>
+  +files/pyalsa-1.0.29-no-build-symlinks.patch, +pyalsa-1.0.29.ebuild:
+  bump; re-base patch for this version
+
+  03 Sep 2014; Samuli Suominen <ssuominen@gentoo.org> -pyalsa-1.0.26.ebuild:
+  old
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> pyalsa-1.0.26-r1.ebuild:
+  Add support for the new PyPy slotting.
+
+  12 Mar 2014; Agostino Sarubbo <ago@gentoo.org> pyalsa-1.0.26-r1.ebuild:
+  Stable for sparc, wrt bug #495604
+
+  06 Mar 2014; Agostino Sarubbo <ago@gentoo.org> pyalsa-1.0.26-r1.ebuild:
+  Stable for ppc64, wrt bug #495604
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> pyalsa-1.0.26-r1.ebuild:
+  Stable for ppc, wrt bug #495604
+
+  23 Feb 2014; Pacho Ramos <pacho@gentoo.org> pyalsa-1.0.26-r1.ebuild:
+  x86 stable, bug #495604
+
+  23 Feb 2014; Pacho Ramos <pacho@gentoo.org> pyalsa-1.0.26-r1.ebuild:
+  amd64 stable, bug #495604
+
+*pyalsa-1.0.26-r1 (31 Aug 2013)
+
+  31 Aug 2013; Michał Górny <mgorny@gentoo.org> +pyalsa-1.0.26-r1.ebuild:
+  Convert to distutils-r1.
+
+  01 May 2013; Samuli Suominen <ssuominen@gentoo.org> -pyalsa-1.0.22.ebuild,
+  -pyalsa-1.0.24.ebuild, -pyalsa-1.0.25.ebuild:
+  old
+
+  13 Mar 2013; Agostino Sarubbo <ago@gentoo.org> pyalsa-1.0.25.ebuild:
+  Stable for ppc, wrt bug #406101
+
+  01 Dec 2012; Raúl Porcel <armin76@gentoo.org> pyalsa-1.0.26.ebuild:
+  sparc stable wrt #441288
+
+  20 Nov 2012; Agostino Sarubbo <ago@gentoo.org> pyalsa-1.0.26.ebuild:
+  Stable for x86, wrt bug #441288
+
+  06 Nov 2012; Agostino Sarubbo <ago@gentoo.org> pyalsa-1.0.26.ebuild:
+  Stable for amd64, wrt bug #441288
+
+  05 Nov 2012; Anthony G. Basile <blueness@gentoo.org> pyalsa-1.0.26.ebuild:
+  stable ppc ppc64, bug #441288
+
+*pyalsa-1.0.26 (07 Sep 2012)
+
+  07 Sep 2012; Tony Vroon <chainsaw@gentoo.org> +pyalsa-1.0.26.ebuild:
+  Version bump, as announced by Jaroslav Kysela on alsa-devel.
+
+  01 Apr 2012; Raúl Porcel <armin76@gentoo.org> pyalsa-1.0.25.ebuild:
+  sparc stable wrt #406101
+
+  15 Mar 2012; Jeff Horelick <jdhore@gentoo.org> pyalsa-1.0.25.ebuild:
+  marked x86 per bug 406101
+
+  06 Mar 2012; Brent Baude <ranger@gentoo.org> pyalsa-1.0.25.ebuild:
+  Marking pyalsa-1.0.25 ppc64 stable for bug 406101
+
+  29 Feb 2012; Agostino Sarubbo <ago@gentoo.org> pyalsa-1.0.25.ebuild:
+  Stable for amd64, wrt bug #406101
+
+  25 Feb 2012; Marien Zwart <marienz@gentoo.org>
+  +files/pyalsa-1.0.25-no-build-symlinks.patch, pyalsa-1.0.25.ebuild:
+  Apply a fix from Arfrever on freenode to make installation with pypy work.
+
+  20 Feb 2012; Patrick Lauer <patrick@gentoo.org> pyalsa-1.0.22.ebuild,
+  pyalsa-1.0.24.ebuild, pyalsa-1.0.25.ebuild:
+  Restricting pypy #404923
+
+  13 Feb 2012; Kacper Kowalik <xarthisius@gentoo.org> pyalsa-1.0.24.ebuild:
+  ppc/ppc64 stable wrt #397005
+
+*pyalsa-1.0.25 (08 Feb 2012)
+
+  08 Feb 2012; Tony Vroon <chainsaw@gentoo.org> +pyalsa-1.0.25.ebuild:
+  Version bump. Fixes bad PyArg-ParseTuple format strings.
+
+  05 Feb 2012; Raúl Porcel <armin76@gentoo.org> pyalsa-1.0.24.ebuild:
+  sparc stable wrt #397005
+
+  15 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> pyalsa-1.0.24.ebuild:
+  x86 stable wrt bug #397005
+
+  09 Jan 2012; Agostino Sarubbo <ago@gentoo.org> pyalsa-1.0.24.ebuild:
+  Stable for AMD64, wrt bug #397005
+
+  09 Feb 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pyalsa-1.0.24.ebuild:
+  Restrict Jython ABIs. Avoid breaking strict-aliasing rules.
+
+*pyalsa-1.0.24 (06 Feb 2011)
+
+  06 Feb 2011; Tony Vroon <chainsaw@gentoo.org> +pyalsa-1.0.24.ebuild:
+  Version bump.
+
+  22 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> pyalsa-1.0.22.ebuild:
+  ppc64 stable wrt #344571
+
+  12 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -pyalsa-1.0.20.ebuild, -pyalsa-1.0.21.ebuild:
+  Delete.
+
+  24 Dec 2010; Raúl Porcel <armin76@gentoo.org> pyalsa-1.0.22.ebuild:
+  sparc stable wrt #344571
+
+  08 Nov 2010; Jeroen Roovers <jer@gentoo.org> pyalsa-1.0.22.ebuild:
+  Stable for PPC (bug #344571).
+
+  08 Nov 2010; Markos Chandras <hwoarang@gentoo.org> pyalsa-1.0.22.ebuild:
+  Stable on amd64 wrt bug #344571
+
+  08 Nov 2010; Christian Faulhammer <fauli@gentoo.org> pyalsa-1.0.22.ebuild:
+  stable x86, bug 344571
+
+  01 Jun 2010; Joseph Jezak <josejx@gentoo.org> pyalsa-1.0.20.ebuild,
+  pyalsa-1.0.21.ebuild, pyalsa-1.0.22.ebuild:
+  Marked ~ppc/~ppc64 for bug #315671.
+
+  23 May 2010; Raúl Porcel <armin76@gentoo.org> pyalsa-1.0.20.ebuild,
+  pyalsa-1.0.21.ebuild, pyalsa-1.0.22.ebuild:
+  Add ~sparc wrt #315671
+
+  04 Feb 2010; Markus Meier <maekke@gentoo.org> pyalsa-1.0.21.ebuild:
+  amd64 stable, bug #300064
+
+  03 Feb 2010; Christian Faulhammer <fauli@gentoo.org> pyalsa-1.0.21.ebuild:
+  keyworded ~arch for x86, bug 300064
+
+  17 Jan 2010; Christian Faulhammer <fauli@gentoo.org> pyalsa-1.0.22.ebuild:
+  add ~x86, bug 300066
+
+  09 Jan 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pyalsa-1.0.22.ebuild:
+  Set SUPPORT_PYTHON_ABIS. Fix dependencies.
+
+*pyalsa-1.0.22 (07 Jan 2010)
+
+  07 Jan 2010; Steve Dibb <beandog@gentoo.org> +pyalsa-1.0.22.ebuild:
+  Version bump, bug 297304
+
+*pyalsa-1.0.21 (31 Aug 2009)
+
+  31 Aug 2009; <chainsaw@gentoo.org> +pyalsa-1.0.21.ebuild:
+  Version bump, removes several deprecated functions. Besides that, mostly
+  bug fixes and new drivers.
+
+*pyalsa-1.0.20 (06 May 2009)
+
+  06 May 2009; Steve Dibb <beandog@gentoo.org> +pyalsa-1.0.20.ebuild:
+  Version bump
+
+*pyalsa-1.0.17 (12 Dec 2008)
+
+  12 Dec 2008; Steve Dibb <beandog@gentoo.org> +metadata.xml,
+  +pyalsa-1.0.17.ebuild:
+  Initial commit, bug 210254

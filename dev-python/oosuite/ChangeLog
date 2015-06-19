@@ -1,0 +1,55 @@
+# ChangeLog for dev-python/oosuite
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/oosuite/ChangeLog,v 1.10 2015/04/08 08:05:16 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> oosuite-0.45.ebuild,
+  oosuite-0.50.ebuild:
+  Drop old Python implementations
+
+*oosuite-0.50 (21 Jun 2013)
+
+  21 Jun 2013; Sébastien Fabbro <bicatali@gentoo.org> +oosuite-0.50.ebuild,
+  -oosuite-0.42.ebuild, -oosuite-0.43.ebuild:
+  Version bump
+
+*oosuite-0.45 (18 Mar 2013)
+
+  18 Mar 2013; Sébastien Fabbro <bicatali@gentoo.org> +oosuite-0.45.ebuild:
+  Version bump
+
+*oosuite-0.43 (27 Feb 2013)
+
+  27 Feb 2013; Sébastien Fabbro <bicatali@gentoo.org> +oosuite-0.43.ebuild,
+  -oosuite-0.38.ebuild, -oosuite-0.39.ebuild, metadata.xml:
+  Version bump. Switch to python-r1 framework. Re-organize SpaceFuncs to make it
+  work
+
+*oosuite-0.42 (01 Nov 2012)
+
+  01 Nov 2012; Sébastien Fabbro <bicatali@gentoo.org> +oosuite-0.42.ebuild:
+  Version bump
+
+  19 Oct 2012; Patrick Lauer <patrick@gentoo.org> oosuite-0.38.ebuild,
+  oosuite-0.39.ebuild:
+  Restricting pythons
+
+  09 Jul 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  -files/oosuite-0.37-no-init-msg.patch, oosuite-0.39.ebuild:
+  more cleaning of obsolete
+
+*oosuite-0.39 (09 Jul 2012)
+
+  09 Jul 2012; Sébastien Fabbro <bicatali@gentoo.org> +oosuite-0.39.ebuild,
+  -oosuite-0.37.ebuild:
+  Version bump. Keyword amd64-linux and x86-linux
+
+*oosuite-0.38 (20 Apr 2012)
+
+  20 Apr 2012; Sébastien Fabbro <bicatali@gentoo.org> +oosuite-0.38.ebuild:
+  Version bump
+
+*oosuite-0.37 (07 Jan 2012)
+
+  07 Jan 2012; Sébastien Fabbro <bicatali@gentoo.org> +oosuite-0.37.ebuild,
+  +files/oosuite-0.37-no-init-msg.patch, +metadata.xml:
+  Initial import to the main tree

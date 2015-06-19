@@ -1,0 +1,19 @@
+--- kernel/sched/bfs.c.000	2012-09-06 09:05:05.000000000 +0200
++++ kernel/sched/bfs.c	2012-09-06 09:06:07.000000000 +0200
+@@ -2591,6 +2591,16 @@
+ {
+ }
+ 
++#ifdef CONFIG_NO_HZ
++void calc_load_enter_idle(void)
++{
++}
++
++void calc_load_exit_idle(void)
++{
++}
++#endif /* CONFIG_NO_HZ */
++
+ /*
+  * Account guest cpu time to a process.
+  * @p: the process that the cpu time gets accounted to

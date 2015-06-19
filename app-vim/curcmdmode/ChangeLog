@@ -1,0 +1,35 @@
+# ChangeLog for app-vim/curcmdmode
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/curcmdmode/ChangeLog,v 1.10 2010/10/07 03:06:03 leio Exp $
+
+  07 Oct 2010; Mart Raudsepp <leio@gentoo.org> curcmdmode-1.0.ebuild:
+  Drop to ~mips
+
+  20 Nov 2006; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  curcmdmode-1.0.ebuild:
+  stable on ppc
+
+  07 Apr 2006; Bryan Østergaard <kloeri@gentoo.org metadata.xml:
+  Remove ciaranm from metadata.xml.
+
+  29 Aug 2005; Danny van Dyk <kugelfang@gentoo.org> curcmdmode-1.0.ebuild:
+  Marked ~amd64.
+
+  03 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> curcmdmode-1.0.ebuild:
+  Help text, bug #62559
+
+  20 Aug 2004; Ciaran McCreesh <ciaranm@gentoo.org> curcmdmode-1.0.ebuild:
+  Stable on x86
+
+  24 Jul 2004; Ciaran McCreesh <ciaranm@gentoo.org> curcmdmode-1.0.ebuild:
+  Stable on sparc, mips
+
+  17 Jul 2004; David Holm <dholm@gentoo.org> curcmdmode-1.0.ebuild:
+  Added to ~ppc.
+
+*curcmdmode-1.0 (16 Jul 2004)
+
+  16 Jul 2004; Ciaran McCreesh <ciaranm@gentoo.org> +metadata.xml,
+  +curcmdmode-1.0.ebuild:
+  New ebuild. We'll be needing this for a few other app-vim plugins shortly.
+

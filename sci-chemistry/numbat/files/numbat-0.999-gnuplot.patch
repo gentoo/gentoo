@@ -1,0 +1,42 @@
+ src/error_analysis.c | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/src/error_analysis.c b/src/error_analysis.c
+index eb86a6f..c0edf5f 100644
+--- a/src/error_analysis.c
++++ b/src/error_analysis.c
+@@ -848,11 +848,11 @@ void write_sanson_mac(FILE * F, char * name_plot, char * name_world, int number_
+     }
+ 
+     fprintf(F, "reset\n");
+-    fprintf(F, "set noxtics\n");
+-    fprintf(F, "set noytics\n");
++    fprintf(F, "unset xtics\n");
++    fprintf(F, "unset ytics\n");
+     fprintf(F, "set angles degrees\n");
+-    fprintf(F, "set nogrid\n");
+-    fprintf(F, "set noborder\n");
++    fprintf(F, "unset grid\n");
++    fprintf(F, "unset border\n");
+     //fprintf(F, "width=40\n");
+     //fprintf(F, "height=width*(3./4.)\n");
+     //fprintf(F, "set xrange [-width : width]\n");
+@@ -867,12 +867,12 @@ void write_sanson_mac(FILE * F, char * name_plot, char * name_world, int number_
+     fprintf(F, "YC(lat,lon)=(lon-long0)*cos(lat)\n");
+     fprintf(F, "plot '%s'  using (YC($2,$1)):(XC($2,$1)) t '' with lines lw 0.1 lt -1", name_world);
+     for(i = 0; i < number_of_tensor; i++){
+-        fprintf(F, ", '%s' using (YC($%d,$%d)):(XC($%d,$%d)) t '' with points %d", name_plot,
+-                6*i+2, 6*i+1, 6*i+2, 6*i+1, 3*i+1);
+-        fprintf(F, ", '%s' using (YC($%d,$%d)):(XC($%d,$%d)) t '' with points %d", name_plot,
+-                6*i+4, 6*i+3, 6*i+4, 6*i+3, 3*i+2);
+-        fprintf(F, ", '%s' using (YC($%d,$%d)):(XC($%d,$%d)) t '' with points %d", name_plot,
+-                6*i+6, 6*i+5, 6*i+6, 6*i+5, 3*i+3);
++        fprintf(F, ", '%s' using (YC($%d,$%d)):(XC($%d,$%d)) t '' with points", name_plot,
++                6*i+2, 6*i+1, 6*i+2, 6*i+1);
++        fprintf(F, ", '%s' using (YC($%d,$%d)):(XC($%d,$%d)) t '' with points", name_plot,
++                6*i+4, 6*i+3, 6*i+4, 6*i+3);
++        fprintf(F, ", '%s' using (YC($%d,$%d)):(XC($%d,$%d)) t '' with points", name_plot,
++                6*i+6, 6*i+5, 6*i+6, 6*i+5);
+     }
+     fprintf(F, "\n");
+     //fprintf(F, "pause 2\n");

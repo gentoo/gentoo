@@ -1,0 +1,165 @@
+# ChangeLog for media-gfx/geeqie
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/geeqie/ChangeLog,v 1.32 2015/05/29 15:41:50 voyageur Exp $
+
+  29 May 2015; Bernard Cafarelli <voyageur@gentoo.org> -geeqie-1.0-r4.ebuild,
+  -geeqie-1.1.ebuild, geeqie-1.2-r1.ebuild,
+  -files/geeqie-1.0-automake-1.11.patch, -files/geeqie-1.0-copy_chown.patch,
+  -files/geeqie-1.0-filedata_compare.patch,
+  -files/geeqie-1.0-fix_fullscreen.patch, -files/geeqie-1.0-lfs_support.patch,
+  -files/geeqie-1.0-ui_pathsel.patch, -files/geeqie-1.0-up_path_restore.patch,
+  -files/geeqie-1.0-vflist-refresh.patch,
+  -files/geeqie-1.1-fix_comment_update.patch:
+  Remove old versions, new homepage, host tarball on my devspace for now (bug
+  #544850)
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> geeqie-1.2-r1.ebuild:
+  Stable for x86, wrt bug #536862
+
+  22 Jan 2015; Agostino Sarubbo <ago@gentoo.org> geeqie-1.2-r1.ebuild:
+  Stable for amd64, wrt bug #536862
+
+  20 Jan 2015; Bernard Cafarelli <voyageur@gentoo.org> geeqie-1.2-r1.ebuild:
+  Take advantage of EAPI5, setting rdepend on media-gfx/exiv2:= as suggested by
+  pacho in bug #536946
+
+*geeqie-1.2-r1 (28 Oct 2014)
+
+  28 Oct 2014; Bernard Cafarelli <voyageur@gentoo.org> -geeqie-1.2.ebuild,
+  +geeqie-1.2-r1.ebuild, +files/geeqie-1.2-fix-lcms2-integration.patch:
+  Fix segfault at startup, patch from upstream, reported by Tomasz Golinski
+  <tomaszg@alpha.uwb.edu.pl> in bug #527082
+
+*geeqie-1.2 (26 Oct 2014)
+
+  26 Oct 2014; Bernard Cafarelli <voyageur@gentoo.org> -geeqie-1.0-r2.ebuild,
+  geeqie-1.0-r4.ebuild, geeqie-1.1.ebuild, +geeqie-1.2.ebuild,
+  +files/geeqie-1.2-fix_version.patch:
+  Version bump with lcms:2 support and other bugfixes. Drop lcms:0 support from
+  older versions, bug #526820
+
+  23 Sep 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> geeqie-1.0-r4.ebuild:
+  x86 stable wrt bug #429116
+
+*geeqie-1.1 (28 Aug 2012)
+
+  28 Aug 2012; Bernard Cafarelli <voyageur@gentoo.org> -geeqie-1.0-r1.ebuild,
+  -geeqie-1.0-r3.ebuild, +geeqie-1.1.ebuild,
+  +files/geeqie-1.1-fix_comment_update.patch:
+  Version bump, support for stereoscopic images, custom tiff loader, rewritten
+  file grouping, and merged bugfixes. Reported by Andrew Savchenko in bug
+  #432892. Remove some 1.0 revisions
+
+  14 Aug 2012; Agostino Sarubbo <ago@gentoo.org> geeqie-1.0-r4.ebuild:
+  Stable for amd64, wrt bug #429116
+
+*geeqie-1.0-r4 (15 Jun 2012)
+
+  15 Jun 2012; Bernard Cafarelli <voyageur@gentoo.org> +geeqie-1.0-r4.ebuild,
+  +files/geeqie-1.0-up_path_restore.patch:
+  Fix scrolling when walking up directory list with upstream bugtracker patch,
+  bug #420891. Switch to base eclass and PATCHES list
+
+*geeqie-1.0-r3 (07 Jun 2012)
+
+  07 Jun 2012; Bernard Cafarelli <voyageur@gentoo.org> geeqie-1.0-r2.ebuild,
+  +geeqie-1.0-r3.ebuild, +files/geeqie-1.0-copy_chown.patch,
+  +files/geeqie-1.0-filedata_compare.patch,
+  +files/geeqie-1.0-fix_fullscreen.patch, +files/geeqie-1.0-ui_pathsel.patch,
+  +files/geeqie-1.0-vflist-refresh.patch:
+  Add some patches from Debian and Fedora (better full screen support, file
+  listing, ...). Also remove double fix for install directory
+
+  07 Jun 2012; Bernard Cafarelli <voyageur@gentoo.org> geeqie-1.0-r2.ebuild,
+  +files/geeqie-1.0-automake-1.11.patch:
+  Be compatible with >=automake-1.11.4, thanks marienz for the patch in bug
+  #414863
+
+  21 May 2012; Kacper Kowalik <xarthisius@gentoo.org> geeqie-1.0-r2.ebuild:
+  Add missing inheritance of eutils.eclass
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> geeqie-1.0-r1.ebuild,
+  geeqie-1.0-r2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> geeqie-1.0-r2.ebuild:
+  x86 stable wrt bug #400371
+
+  27 Jan 2012; Agostino Sarubbo <ago@gentoo.org> geeqie-1.0-r2.ebuild:
+  Stable for amd64, wrt bug #400371
+
+*geeqie-1.0-r2 (07 Oct 2011)
+
+  07 Oct 2011; Bernard Cafarelli <voyageur@gentoo.org> +geeqie-1.0-r2.ebuild,
+  +files/geeqie-1.0-lfs_support.patch:
+  Add large file support check, thanks MageSlayer <denisgolovan@yandex.ru> in
+  bug #384467
+
+  26 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> geeqie-1.0-r1.ebuild:
+  Marked ~ppc wrt #354855
+
+  23 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> geeqie-1.0-r1.ebuild:
+  Use SLOT dependencies for x11-libs/gtk+.
+
+  05 Oct 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  -geeqie-1.0_beta2-r1.ebuild, geeqie-1.0-r1.ebuild:
+  Fix +xmp -exif handling, thanks Corbin Simpson in bug #338651. Also remove
+  old beta version
+
+  11 Jul 2010; Christian Faulhammer <fauli@gentoo.org> geeqie-1.0-r1.ebuild:
+  stable x86, bug 324923
+
+  24 Jun 2010; Markos Chandras <hwoarang@gentoo.org> geeqie-1.0-r1.ebuild:
+  Stable on amd64 wrt bug #324923
+
+  21 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> geeqie-1.0-r1.ebuild:
+  Restrict media-libs/lcms depend to old version.
+
+  17 May 2010; Bernard Cafarelli <voyageur@gentoo.org> geeqie-1.0-r1.ebuild:
+  Move plugins deps in pkg_postinst
+
+*geeqie-1.0-r1 (17 May 2010)
+
+  17 May 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  +geeqie-1.0-r1.ebuild:
+  Fix doc generation, bug #318957, depend on fbida for image rotation, bug
+  #319007
+
+*geeqie-1.0 (23 Feb 2010)
+
+  23 Feb 2010; Bernard Cafarelli <voyageur@gentoo.org> +geeqie-1.0.ebuild:
+  Version bump to final 1.0, fixes bug #306253
+
+  10 Feb 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  geeqie-1.0_beta2-r1.ebuild, geeqie-1.0_beta2-r2.ebuild:
+  Missing intltool dep, bug #304107
+
+*geeqie-1.0_beta2-r2 (05 Jan 2010)
+
+  05 Jan 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  +geeqie-1.0_beta2-r2.ebuild:
+  Fix documentation install path, bug #298877
+
+  29 Sep 2009; Markus Meier <maekke@gentoo.org> geeqie-1.0_beta2-r1.ebuild:
+  amd64/x86 stable, bug #286393
+
+*geeqie-1.0_beta2-r1 (06 Jul 2009)
+
+  06 Jul 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  -geeqie-1.0_beta1.ebuild, -geeqie-1.0_beta2.ebuild,
+  +geeqie-1.0_beta2-r1.ebuild:
+  Revision bump to fix broken intltool and missing translations
+
+*geeqie-1.0_beta2 (02 Jul 2009)
+
+  02 Jul 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  +geeqie-1.0_beta2.ebuild:
+  Version bump, code is feature complete, adds sample external scripts for
+  lossless rotation, photo management with ufraw-batch and for import of
+  GQview metadata, and bugfixes
+
+*geeqie-1.0_beta1 (25 May 2009)
+
+  25 May 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  +geeqie-1.0_beta1.ebuild, +metadata.xml:
+  Initial commit, thanks everyone in bug #219161

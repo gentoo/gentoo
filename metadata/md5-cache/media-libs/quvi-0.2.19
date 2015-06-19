@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=>=net-misc/curl-7.18.0 dev-lang/lua[deprecated] virtual/pkgconfig
+DESCRIPTION=library for parsing video download links
+EAPI=4
+HOMEPAGE=http://quvi.sourceforge.net/
+IUSE=examples test offensive static-libs
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=GPL-3
+RDEPEND=>=net-misc/curl-7.18.0 dev-lang/lua[deprecated]
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/quvi/0.2/quvi-0.2.19.tar.xz
+_md5_=6dcfd1cd3efd89b46e71d0ecb53a75cf

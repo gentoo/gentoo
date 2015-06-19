@@ -1,0 +1,42 @@
+# ChangeLog for games-emulation/sdlmess
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/sdlmess/ChangeLog,v 1.8 2015/06/02 04:36:18 mr_bones_ Exp $
+
+  02 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org> sdlmess-0.148_p1.ebuild,
+  sdlmess-0.149.ebuild:
+  add slot dep for repoman
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> sdlmess-0.148_p1.ebuild,
+  sdlmess-0.149.ebuild:
+  Drop old Python implementations
+
+  30 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org> sdlmess-0.148_p1.ebuild,
+  sdlmess-0.149.ebuild:
+  remove alsa use flag (bug #514600); use system portmidi lib; drop ppc until
+  portmidi is keyworded
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> sdlmess-0.148_p1.ebuild,
+  sdlmess-0.149.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+*sdlmess-0.149 (26 Jun 2013)
+
+  26 Jun 2013; Julian Ospald <hasufell@gentoo.org> +sdlmess-0.149.ebuild,
+  +files/sdlmess-0.149-QA.patch, +files/sdlmess-0.149-debugger-linking.patch,
+  +files/sdlmess-0.149-no-opengl.patch, +files/sdlmess-0.149-system-lua.patch:
+  version bump
+
+  01 May 2013; Agostino Sarubbo <ago@gentoo.org> sdlmess-0.148_p1.ebuild:
+  Stable for x86, wrt bug #468054
+
+  01 May 2013; Agostino Sarubbo <ago@gentoo.org> sdlmess-0.148_p1.ebuild:
+  Stable for amd64, wrt bug #468054
+
+*sdlmess-0.148_p1 (15 Mar 2013)
+
+  15 Mar 2013; Julian Ospald <hasufell@gentoo.org> +sdlmess-0.148_p1.ebuild,
+  +files/sdlmess-0.148_p1-makefile.patch,
+  +files/sdlmess-0.148_p1-no-opengl.patch, +files/mess-0.148.ini.in,
+  +files/vector.ini, +metadata.xml:
+  initial import, synced with games-emulation/sdlmame

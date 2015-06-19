@@ -1,0 +1,52 @@
+# ChangeLog for www-apps/browser-config
+# Copyright 2000-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/browser-config/ChangeLog,v 1.7 2008/04/21 18:18:48 phreak Exp $
+
+  21 Apr 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Fix up metadata.xml. If there's no maintainer for the package, the metadata
+  also needs to contain m-needed@g.o.
+
+  17 Feb 2008; Benedikt Böhm <hollow@gentoo.org>
+  -browser-config-1.0.ebuild, browser-config-1.1.ebuild:
+  merge from webapp overlay; fix unreachable HOMEPAGE/SRC_URI
+
+  05 Feb 2008; Jakub Moc <jakub@gentoo.org>
+  browser-config-1.1.ebuild:
+  Use elog instead of einfo.
+
+  11 May 2007; Thilo Bangert <bangert@gentoo.org> +metadata.xml:
+  add metadata.xml
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  browser-config-1.0.ebuild, browser-config-1.1.ebuild:
+  Masked browser-config-1.1.ebuild stable for ppc
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  browser-config-1.0.ebuild:
+  Masked browser-config-1.0.ebuild stable for ppc
+
+*browser-config-1.1 (15 Aug 2004)
+
+  15 Aug 2004; Stuart Herbert <stuart@gentoo.org> +browser-config-1.0.ebuild,
+  +browser-config-1.1.ebuild:
+  Moved from net-www/browser-config to www-apps/browser-config.
+
+*browser-config-1.1 (13 Apr 2003)
+
+  13 Apr 2003; Graham Forest <vladimir@gentoo.org> browser-config-1.1.ebuild:
+  Added einfo
+
+  13 Apr 2003; Graham Forest <vladimir@gentoo.org> browser-config-1.1.ebuild:
+  Version bump
+
+*browser-config-1.0 (13 Apr 2003)
+
+  13 Apr 2003; Graham Forest <vladimir@gentoo.org> browser-config-1.0.ebuild:
+  Initial import
+

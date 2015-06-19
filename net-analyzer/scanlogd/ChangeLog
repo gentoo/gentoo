@@ -1,0 +1,124 @@
+# ChangeLog for net-analyzer/scanlogd
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/scanlogd/ChangeLog,v 1.37 2015/03/13 19:27:24 jer Exp $
+
+  13 Mar 2015; Jeroen Roovers <jer@gentoo.org> -scanlogd-2.2.6-r2.ebuild,
+  -files/scanlogd-2.2.6-Makefile.patch:
+  Old.
+
+  02 Mar 2015; Agostino Sarubbo <ago@gentoo.org> scanlogd-2.2.7.ebuild:
+  Stable for ppc, wrt bug #502864
+
+  16 Jul 2014; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Remove short <longdescription>.
+
+  14 Jun 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> scanlogd-2.2.7.ebuild:
+  x86 stable wrt bug #502864
+
+*scanlogd-2.2.7 (27 Oct 2013)
+
+  27 Oct 2013; Jeroen Roovers <jer@gentoo.org> +scanlogd-2.2.7.ebuild,
+  files/scanlogd-2.2.6-Makefile.patch, +files/scanlogd-2.2.7-gentoo.patch:
+  Version bump.
+
+  02 Jan 2013; Ulrich Müller <ulm@gentoo.org> scanlogd-2.2.6-r2.ebuild:
+  Fix LICENSE, see scanlogd.c, bug 449834.
+
+  21 Nov 2012; Jeroen Roovers <jer@gentoo.org> scanlogd-2.2.6-r2.ebuild:
+  Add GPL-2 to LICENSE (bug #425994).
+
+  12 Jun 2012; Zac Medico <zmedico@gentoo.org> scanlogd-2.2.6-r2.ebuild:
+  inherit user for enewgroup and enewuser
+
+  05 Feb 2012; Raúl Porcel <armin76@gentoo.org> scanlogd-2.2.6-r2.ebuild:
+  Drop sparc keywords
+
+  04 Aug 2008; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Describe local USE flags for GLEP 56.
+
+  06 Sep 2007; Markus Ullmann <jokey@gentoo.org> -scanlogd-2.2.ebuild,
+  -scanlogd-2.2.6-r1.ebuild:
+  Cleanup
+
+  13 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  scanlogd-2.2.6-r2.ebuild:
+  ppc. stable
+
+  01 May 2007; Marius Mauch <genone@gentoo.org> scanlogd-2.2.ebuild,
+  scanlogd-2.2.6-r1.ebuild, scanlogd-2.2.6-r2.ebuild:
+  Replacing einfo with elog
+
+  22 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  scanlogd-2.2.6-r2.ebuild:
+  Stable on sparc
+
+  20 Mar 2007; Raúl Porcel <armin76@gentoo.org> scanlogd-2.2.6-r2.ebuild:
+  x86 stable
+
+  12 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  scanlogd-2.2.6-r1.ebuild:
+  Stable on sparc
+
+*scanlogd-2.2.6-r2 (08 Oct 2006)
+
+  08 Oct 2006; Markus Ullmann <jokey@gentoo.org> -scanlogd-2.2.5.ebuild,
+  -scanlogd-2.2.6.ebuild, +scanlogd-2.2.6-r2.ebuild:
+  Adding support for linking against libnids and libpcap wrt bug #150212
+  thanks to Cedric Krier and small cleanup
+
+  08 Oct 2006; Markus Ullmann <jokey@gentoo.org> scanlogd-2.2.6-r1.ebuild:
+  Fixing prestripped binary issue in bug #147917
+
+  17 Sep 2006; <nixnut@gentoo.org> scanlogd-2.2.6-r1.ebuild:
+  Stable on ppc wrt bug 147026
+
+  10 Sep 2006; <ticho@gentoo.org> scanlogd-2.2.6-r1.ebuild:
+  Stable on x86, bug #147026.
+
+  05 Jun 2006; Peter Volkov <pva@gentoo.org> scanlogd-2.2.6-r1.ebuild:
+  Fixed missed IUSE variable.
+
+*scanlogd-2.2.6-r1 (26 Mar 2006)
+
+  26 Mar 2006; Markus Ullmann <jokey@gentoo.org>
+  +files/scanlogd-2.2.6-Makefile.patch, +scanlogd-2.2.6-r1.ebuild:
+  Respecting user CFLAGS/LDFLAGS wrt bug #124991
+
+*scanlogd-2.2.6 (11 Mar 2006)
+
+  11 Mar 2006; Marcelo Goes <vanquirius@gentoo.org> +scanlogd-2.2.6.ebuild:
+  2.2.6 version bump for bug 124991. It should fix glibc 2.4 support. Thanks
+  to Beech Horn <beech at metalshark dot co dot uk>.
+
+  23 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> scanlogd-2.2.5.ebuild:
+  Use -1 instead of /bin/false, bug #103421.
+
+  16 Jul 2005; Christian Parpart <trapni@gentoo.org> scanlogd-2.2.5.ebuild:
+  added to ~amd64
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> scanlogd-2.2.ebuild:
+  Stable on ppc.
+
+*scanlogd-2.2.5 (22 Mar 2005)
+
+  22 Mar 2005; Marcelo Goes <vanquirius@gentoo.org> +scanlogd-2.2.5.ebuild:
+  Version bump, use enewuser from eutils.
+
+  04 Jan 2005; Michael Hanselmann <hansmi@gentoo.org> scanlogd-2.2.ebuild:
+  Added to ~ppc.
+
+  13 Jul 2004; Eldad Zack <eldad@gentoo.org> +metadata.xml:
+  Added metadata
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> scanlogd-2.2.ebuild:
+  change virtual/glibc to virtual/libc, add IUSE
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*scanlogd-2.2 (27 Feb 2002)
+
+  27  Feb 2002; F.Meyndert <m0rpheus@gentoo.org> scanlogd-2.2.ebuild
+  
+  
+  Added ebuild for scanlogd program. Scanlogd detects and logs TCP
+  portscans on your system. Thnx Mike Polniak for ebuild.

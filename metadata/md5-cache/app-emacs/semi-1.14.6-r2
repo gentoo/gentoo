@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEPEND=>=app-emacs/apel-10.6 virtual/emacs-flim >=virtual/emacs-23
+DESCRIPTION=A library to provide MIME feature for GNU Emacs
+EAPI=5
+HOMEPAGE=http://git.chise.org/elisp/semi/
+IUSE=linguas_ja
+KEYWORDS=alpha amd64 ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=GPL-2+
+RDEPEND=>=app-emacs/apel-10.6 virtual/emacs-flim >=virtual/emacs-23
+SLOT=0
+SRC_URI=http://git.chise.org/elisp/dist/semi/semi-1.14-for-flim-1.14/semi-1.14.6.tar.gz
+_eclasses_=elisp	d13b0507622afb8ac9e3f54e91d58614	elisp-common	9a16929c1a6aec7e1c903289983e114c	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=a851a5ce68c92f06b102dbaa24548fae

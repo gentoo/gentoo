@@ -1,0 +1,146 @@
+# ChangeLog for dev-ml/ounit
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/ounit/ChangeLog,v 1.41 2015/03/28 06:55:39 maekke Exp $
+
+  28 Mar 2015; Markus Meier <maekke@gentoo.org> ounit-2.0.0.ebuild:
+  add ~arm, bug #543604
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> ounit-2.0.0.ebuild:
+  Stable for ppc, wrt bug #495418
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> ounit-2.0.0.ebuild:
+  Stable for x86, wrt bug #495418
+
+  12 Jan 2014; Pacho Ramos <pacho@gentoo.org> ounit-2.0.0.ebuild:
+  amd64 stable, bug #495418
+
+*ounit-2.0.0 (12 Oct 2013)
+
+  12 Oct 2013; Alexis Ballier <aballier@gentoo.org> +ounit-2.0.0.ebuild:
+  version bump
+
+  02 Mar 2013; Alexis Ballier <aballier@gentoo.org> ounit-1.1.2.ebuild:
+  eapi5 and define subslot
+
+  02 Mar 2013; Alexis Ballier <aballier@gentoo.org> -ounit-1.1.1.ebuild:
+  remove old
+
+  21 Aug 2012; Johannes Huber <johu@gentoo.org> ounit-1.1.2.ebuild:
+  Stable for x86, wrt bug #428974
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> ounit-1.1.2.ebuild:
+  Stable for amd64, wrt bug #428974
+
+  02 Aug 2012; Anthony G. Basile <blueness@gentoo.org> ounit-1.1.2.ebuild:
+  Stable ppc, bug #428974
+
+  12 Jun 2012; Alexis Ballier <aballier@gentoo.org> -ounit-1.1.0.ebuild:
+  remove old
+
+*ounit-1.1.2 (12 Jun 2012)
+
+  12 Jun 2012; Alexis Ballier <aballier@gentoo.org> +ounit-1.1.2.ebuild:
+  version bump
+
+  29 May 2012; Brent Baude <ranger@gentoo.org> ounit-1.1.1.ebuild:
+  Marking ounit-1.1.1 ppc for bug 416531
+
+  22 May 2012; Jeff Horelick <jdhore@gentoo.org> ounit-1.1.1.ebuild:
+  marked x86 per bug 416531
+
+  19 May 2012; Agostino Sarubbo <ago@gentoo.org> ounit-1.1.1.ebuild:
+  Stable for amd64, wrt bug #416531
+
+  27 Mar 2012; Alexis Ballier <aballier@gentoo.org> ounit-1.1.1.ebuild:
+  convert to oasis.eclass
+
+*ounit-1.1.1 (28 Jan 2012)
+
+  28 Jan 2012; Alexis Ballier <aballier@gentoo.org> +ounit-1.1.1.ebuild:
+  version bump
+
+  20 Jan 2011; Alexis Ballier <aballier@gentoo.org> -ounit-1.0.3.ebuild:
+  remove old
+
+  13 Jan 2011; Brent Baude <ranger@gentoo.org> ounit-1.1.0.ebuild:
+  stable ppc, bug 349760
+
+  02 Jan 2011; Markos Chandras <hwoarang@gentoo.org> ounit-1.1.0.ebuild:
+  Stable on amd64 wrt bug #349760
+
+  29 Dec 2010; Thomas Kahle <tomka@gentoo.org> ounit-1.1.0.ebuild:
+  x86 stable per bug 349760
+
+*ounit-1.1.0 (09 Oct 2010)
+
+  09 Oct 2010; Alexis Ballier <aballier@gentoo.org> +ounit-1.1.0.ebuild:
+  version bump
+
+  28 Sep 2009; Petteri Räty <betelgeuse@gentoo.org> ounit-1.0.3.ebuild:
+  Migrate to EAPI 2 in order to nuke built_with_use.
+
+  20 Sep 2009; Alexis Ballier <aballier@gentoo.org> -ounit-1.0.2.ebuild:
+  remove old
+
+  14 Aug 2009; Markus Meier <maekke@gentoo.org> ounit-1.0.3.ebuild:
+  amd64/x86 stable, bug #280416
+
+  09 Aug 2009; nixnut <nixnut@gentoo.org> ounit-1.0.3.ebuild:
+  ppc stable #280416
+
+*ounit-1.0.3 (20 Jun 2009)
+
+  20 Jun 2009; Alexis Ballier <aballier@gentoo.org> +ounit-1.0.3.ebuild:
+  version bump
+
+  20 Jun 2009; Alexis Ballier <aballier@gentoo.org> ounit-1.0.2.ebuild:
+  explicitly assign rdepend
+
+  20 Jun 2009; Alexis Ballier <aballier@gentoo.org> ounit-1.0.2.ebuild:
+  define eapi before inherit
+
+  13 Apr 2008; Alexis Ballier <aballier@gentoo.org> -ounit-1.0.0.ebuild,
+  -ounit-1.0.1.ebuild:
+  remove old
+
+  11 Apr 2008; Markus Meier <maekke@gentoo.org> ounit-1.0.2.ebuild:
+  x86 stable, bug #216987
+
+  10 Apr 2008; Santiago M. Mola <coldwind@gentoo.org> ounit-1.0.2.ebuild:
+  amd64 stable wrt bug #216987
+
+  09 Apr 2008; nixnut <nixnut@gentoo.org> ounit-1.0.2.ebuild:
+  Stable on ppc wrt bug #216987
+
+  04 Jan 2008; Alexis Ballier <aballier@gentoo.org> ounit-1.0.2.ebuild:
+  allow building without ocamlopt
+
+*ounit-1.0.2 (12 May 2007)
+
+  12 May 2007; Alexis Ballier <aballier@gentoo.org> +ounit-1.0.2.ebuild:
+  version bump
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*ounit-1.0.1 (06 Feb 2005)
+
+  06 Feb 2005; Matthieu Sozeau <mattam@gentoo.org> ounit-1.0.0.ebuild,
+  +ounit-1.0.1.ebuild:
+  Fix bug #78319, adds newer version.
+
+  30 Sep 2004; Matthieu Sozeau <mattam@gentoo.org> ounit-1.0.0.ebuild:
+  Mark stable on amd64, closes bug #65082
+
+  26 Aug 2004; Matthieu Sozeau <mattam@gentoo.org> ounit-1.0.0.ebuild:
+  Stable move.
+
+  21 Aug 2004; Matthieu Sozeau <mattam@gentoo.org> ounit-1.0.0.ebuild:
+  Adapt to findlib eclass.
+
+*ounit-1.0.0 (18 Aug 2004)
+
+  18 Aug 2004; Matthieu Sozeau <mattam@gentoo.org> metadata.xml,
+  ounit-1.0.0.ebuild:
+  OUnit is a unit test framework for ocaml, thanks to Bardur Arantsson
+  <gentoo@scientician.net> for the submission (bug #51255).

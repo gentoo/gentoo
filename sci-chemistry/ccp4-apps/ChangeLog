@@ -1,0 +1,227 @@
+# ChangeLog for sci-chemistry/ccp4-apps
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/ccp4-apps/ChangeLog,v 1.47 2015/05/05 08:53:26 jlec Exp $
+
+  05 May 2015; Justin Lecher <jlec@gentoo.org> -ccp4-apps-6.1.3-r11.ebuild,
+  -ccp4-apps-6.1.3-r12.ebuild, ccp4-apps-6.1.3-r13.ebuild:
+  Drop old
+
+  25 Mar 2015; Agostino Sarubbo <ago@gentoo.org> ccp4-apps-6.1.3-r13.ebuild:
+  Stable for x86, wrt bug #542694
+
+  24 Mar 2015; Agostino Sarubbo <ago@gentoo.org> ccp4-apps-6.1.3-r13.ebuild:
+  Stable for amd64, wrt bug #542694
+
+  09 Mar 2015; Justin Lecher <jlec@gentoo.org> ccp4-apps-6.1.3-r11.ebuild,
+  ccp4-apps-6.1.3-r12.ebuild, ccp4-apps-6.1.3-r13.ebuild:
+  Fix missing download location, #542468
+
+*ccp4-apps-6.1.3-r13 (18 Jan 2015)
+
+  18 Jan 2015; Michał Górny <mgorny@gentoo.org> +ccp4-apps-6.1.3-r13.ebuild:
+  Convert to python-single-r1.
+
+  27 Oct 2014; Justin Lecher <jlec@gentoo.org> ccp4-apps-6.1.3-r11.ebuild,
+  ccp4-apps-6.1.3-r12.ebuild:
+  Add missing SLOT restriction on sci-libs/mmdb, #527042
+
+  27 Feb 2013; Justin Lecher <jlec@gentoo.org> files/6.1.3-lapack.patch,
+  ccp4-apps-6.1.3-r11.ebuild, ccp4-apps-6.1.3-r12.ebuild:
+  Use PKG_CONFIG instead of generic pkg-config
+
+*ccp4-apps-6.1.3-r12 (10 Jan 2013)
+
+  10 Jan 2013; Justin Lecher <jlec@gentoo.org> +ccp4-apps-6.1.3-r12.ebuild,
+  +files/ccp4-apps-6.1.3-tcl8.6.patch, metadata.xml:
+  Add fix for tcl-8.6
+
+  19 Oct 2012; Justin Lecher <jlec@gentoo.org> ccp4-apps-6.1.3-r11.ebuild:
+  Remove virtual/fortran and always call fortran-2_pkg_setup as intend by the
+  updated fortran-2.eclass
+
+*ccp4-apps-6.1.3-r11 (31 Aug 2012)
+
+  31 Aug 2012; Justin Lecher <jlec@gentoo.org> -ccp4-apps-6.1.3-r10.ebuild,
+  +ccp4-apps-6.1.3-r11.ebuild:
+  Rename all manpages in order to avoid conflicts with other packages, #429410
+
+  01 Jun 2012; Justin Lecher <jlec@gentoo.org> files/6.1.3-lapack.patch,
+  ccp4-apps-6.1.3-r10.ebuild:
+  add missing die, don't rely on lapack -> blas dep chain
+
+  26 Apr 2012; Justin Lecher <jlec@gentoo.org> -ccp4-apps-6.1.3-r9.ebuild,
+  ccp4-apps-6.1.3-r10.ebuild:
+  Drop old
+
+  14 Apr 2012; Andreas Schuerch <nativemad@gentoo.org>
+  ccp4-apps-6.1.3-r10.ebuild:
+  x86 stable, see bug 375917, thanks all.
+
+  03 Apr 2012; Justin Lecher <jlec@gentoo.org> ccp4-apps-6.1.3-r10.ebuild:
+  fix for some unknown issue resulting in #406337, thanks Andreas Schürch for
+  the initial idea of the fix
+
+  16 Oct 2011; Samuli Suominen <ssuominen@gentoo.org>
+  ccp4-apps-6.1.3-r10.ebuild:
+  amd64 restable
+
+  08 Oct 2011; Justin Lecher <jlec@gentoo.org> ccp4-apps-6.1.3-r9.ebuild,
+  ccp4-apps-6.1.3-r10.ebuild:
+  Drop dep on dev-tcltk/tkimg
+
+  08 Oct 2011; Samuli Suominen <ssuominen@gentoo.org>
+  ccp4-apps-6.1.3-r10.ebuild:
+  Revert back to ~arch for security and libpng porting.
+
+  06 Oct 2011; Tony Vroon <chainsaw@gentoo.org> ccp4-apps-6.1.3-r10.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo in bug
+  #351753.
+
+  15 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  ccp4-apps-6.1.3-r10.ebuild:
+  Marked ~ppc for sci-chemistry/pointless
+
+*ccp4-apps-6.1.3-r10 (16 Jul 2011)
+
+  16 Jul 2011; Justin Lecher <jlec@gentoo.org> +files/6.1.3-unbundle.patch,
+  -ccp4-apps-6.1.3-r7.ebuild, -ccp4-apps-6.1.3-r8.ebuild,
+  ccp4-apps-6.1.3-r9.ebuild, +ccp4-apps-6.1.3-r10.ebuild, metadata.xml:
+  Unbundle sci-libs/ssm
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> ccp4-apps-6.1.3-r7.ebuild,
+  ccp4-apps-6.1.3-r8.ebuild, ccp4-apps-6.1.3-r9.ebuild:
+  Add dependency on virtual/fortran
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> ccp4-apps-6.1.3-r7.ebuild,
+  ccp4-apps-6.1.3-r8.ebuild, ccp4-apps-6.1.3-r9.ebuild:
+  Added fortran-2.eclass support
+
+  14 Mar 2011; Justin Lecher <jlec@gentoo.org> +files/6.1.3-lapack.patch,
+  ccp4-apps-6.1.3-r9.ebuild:
+  Use pkg-config to detect BLAS/LAPAACK libs
+
+  14 Mar 2011; Justin Lecher <jlec@gentoo.org> +files/6.1.3-lapack.patch,
+  ccp4-apps-6.1.3-r9.ebuild:
+  Use pkg-config to detect BLAS/LAPAACK libs
+
+*ccp4-apps-6.1.3-r9 (04 Mar 2011)
+
+  04 Mar 2011; Justin Lecher <jlec@gentoo.org>
+  -files/6.1.3-clipper-mmdbold-ggc-4.3.patch,
+  +files/6.1.3-rename-rapper-ng.patch,
+  -files/6.1.3-fix-setup-bash-incompatibility.patch,
+  -files/6.1.3-rename-rapper.patch, -files/6.1.3-rename-truncate.patch,
+  -files/6.1.3-setup.patch, ccp4-apps-6.1.3-r8.ebuild,
+  +ccp4-apps-6.1.3-r9.ebuild:
+  Streamline configure
+
+  02 Mar 2011; Justin Lecher <jlec@gentoo.org> ccp4-apps-6.1.3-r7.ebuild,
+  ccp4-apps-6.1.3-r8.ebuild:
+  Correct Slots for gtk 3 introduction to tree
+
+  16 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  ccp4-apps-6.1.3-r8.ebuild:
+  marked ~ppc wrt #303931
+
+*ccp4-apps-6.1.3-r8 (11 Jan 2011)
+
+  11 Jan 2011; Justin Lecher <jlec@gentoo.org> files/6.1.3-impl-dec.patch,
+  +ccp4-apps-6.1.3-r8.ebuild:
+  Removed unnessesary rpath, Speedup configure by reducing sleep periods,
+  Respect LDFLAGS and as-needed, fix more implicit declarations
+
+*ccp4-apps-6.1.3-r7 (10 Jan 2011)
+
+  10 Jan 2011; Justin Lecher <jlec@gentoo.org> -ccp4-apps-6.1.3-r5.ebuild,
+  -ccp4-apps-6.1.3-r6.ebuild, +ccp4-apps-6.1.3-r7.ebuild:
+  Moved the installation of profile files from sci-chemistry/ccp4-apps to
+  sci-libs/ccp4-libs
+
+*ccp4-apps-6.1.3-r6 (01 Jan 2011)
+
+  01 Jan 2011; Justin Lecher <jlec@gentoo.org> +ccp4-apps-6.1.3-r6.ebuild:
+  Fit sci-libs/ccp4-libs-6.1.3-r5
+
+  31 Dec 2010; Justin Lecher <jlec@gentoo.org> ccp4-apps-6.1.3-r5.ebuild:
+  Block new ccp4-libs version
+
+  16 Dec 2010; Justin Lecher <jlec@gentoo.org> -ccp4-apps-6.1.3-r1.ebuild,
+  -ccp4-apps-6.1.3-r2.ebuild, -ccp4-apps-6.1.3-r4.ebuild,
+  ccp4-apps-6.1.3-r5.ebuild:
+  Removal of fortran.eclass, #348851
+
+  02 Dec 2010; Justin Lecher <jlec@gentoo.org> ccp4-apps-6.1.3-r1.ebuild,
+  ccp4-apps-6.1.3-r2.ebuild, ccp4-apps-6.1.3-r4.ebuild,
+  ccp4-apps-6.1.3-r5.ebuild:
+  Removed automake restirction to 1.6
+
+*ccp4-apps-6.1.3-r5 (26 Oct 2010)
+
+  26 Oct 2010; Justin Lecher <jlec@gentoo.org> +files/6.1.3-impl-dec.patch,
+  +ccp4-apps-6.1.3-r5.ebuild:
+  Collision fix with raptor, #342005; Implicit declaration fixes
+
+  24 Jun 2010; Justin Lecher <jlec@gentoo.org> ccp4-apps-6.1.3-r4.ebuild:
+  Added missing EPREFIX, thanks to Johan Hattne
+
+*ccp4-apps-6.1.3-r4 (16 Jun 2010)
+
+  16 Jun 2010; Justin Lecher <jlec@gentoo.org> -ccp4-apps-6.1.3-r3.ebuild,
+  +ccp4-apps-6.1.3-r4.ebuild:
+  Fix regressions from last version
+
+  15 Jun 2010; Justin Lecher <jlec@gentoo.org> ccp4-apps-6.1.3-r3.ebuild:
+  keyworded for linux prefix
+
+  15 Jun 2010; Justin Lecher <jlec@gentoo.org> ccp4-apps-6.1.3-r1.ebuild,
+  ccp4-apps-6.1.3-r2.ebuild, ccp4-apps-6.1.3-r3.ebuild:
+  Moved x11-libs/libjwc_* to dev-libs/libjwc_*
+
+*ccp4-apps-6.1.3-r3 (22 May 2010)
+
+  22 May 2010; Justin Lecher <jlec@gentoo.org> +ccp4-apps-6.1.3-r3.ebuild:
+  Fixes for bug 314053
+
+  12 May 2010; Justin Lecher <jlec@gentoo.org> ccp4-apps-6.1.3-r2.ebuild:
+  Added missing fortan_pkg_setup
+
+  22 Apr 2010; Justin Lecher <jlec@gentoo.org> ccp4-apps-6.1.3-r2.ebuild:
+  Fixes for Python ABIs, #316171
+
+  29 Mar 2010; Justin Lecher <jlec@gentoo.org> ccp4-apps-6.1.3-r2.ebuild:
+  Removed balbes use again
+
+  29 Mar 2010; <jlec@gentoo.org> ccp4-apps-6.1.3-r2.ebuild, metadata.xml:
+  Missing balbes USE added, thanks Mr_Bones
+
+*ccp4-apps-6.1.3-r2 (28 Mar 2010)
+
+  28 Mar 2010; Justin Lecher <jlec@gentoo.org>
+  +ccp4-apps-6.1.3-r2.ebuild:
+  balbes moved to sci-chemistry/balbes, fixed for PY3
+
+  26 Feb 2010; Justin Lecher <jlec@gentoo.org>
+  ccp4-apps-6.1.3-r1.ebuild:
+  Missing sci-libs/mmdb DEP added
+
+*ccp4-apps-6.1.3-r1 (14 Feb 2010)
+
+  14 Feb 2010; Justin Lecher <jlec@gentoo.org>
+  -ccp4-apps-6.1.3.ebuild, +ccp4-apps-6.1.3-r1.ebuild:
+  Fixed CLIB to multilib compatible
+
+*ccp4-apps-6.1.3 (06 Feb 2010)
+
+  06 Feb 2010; Justin Lecher <jlec@gentoo.org>
+  +files/6.1.3-clipper-mmdbold-ggc-4.3.patch,
+  +files/6.1.3-clipper-template.patch,
+  +files/6.1.3-dont-build-double-and-make-bindir.patch,
+  +files/6.1.3-dont-build-imosflm.patch, +files/6.1.3-dont-build-libs.patch,
+  +files/6.1.3-dont-build-molref.patch, +files/6.1.3-dont-build-scala.patch,
+  +files/6.1.3-dont-build-xia.patch, +files/6.1.3-dont-configure.patch,
+  +files/6.1.3-dont-make-dirs-in-configure.patch,
+  +files/6.1.3-fix-setup-bash-incompatibility.patch,
+  +files/6.1.3-pisa.patch, +files/6.1.3-pythonpath.patch,
+  +files/6.1.3-rename-rapper.patch, +files/6.1.3-rename-truncate.patch,
+  +files/6.1.3-setup.patch, +ccp4-apps-6.1.3.ebuild, +metadata.xml:
+  Splitted apps from ccp4

@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-libs/glib sys-libs/gdbm crypt? ( dev-libs/openssl ) snmp? ( net-analyzer/net-snmp ) perl? ( dev-lang/perl ) virtual/pkgconfig >=dev-lang/swig-1.3.21
+DESCRIPTION=Library interface to IPMI
+HOMEPAGE=http://sourceforge.net/projects/openipmi/
+IUSE=crypt snmp perl
+KEYWORDS=~x86 ~amd64
+LICENSE=LGPL-2.1 GPL-2
+RDEPEND=dev-libs/glib sys-libs/gdbm crypt? ( dev-libs/openssl ) snmp? ( net-analyzer/net-snmp ) perl? ( dev-lang/perl )
+SLOT=0
+SRC_URI=mirror://sourceforge/openipmi/OpenIPMI-1.4.28.tar.gz
+_md5_=8618868719d5313c4bacbe05d2060dfc

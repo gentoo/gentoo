@@ -1,0 +1,62 @@
+# ChangeLog for app-editors/wily
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-editors/wily/ChangeLog,v 1.19 2014/08/10 17:42:11 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> wily-1.0-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  10 May 2012; Agostino Sarubbo <ago@gentoo.org> -wily-1.0.ebuild:
+  Remove old
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org> wily-1.0.ebuild,
+  wily-1.0-r1.ebuild:
+  Drop sparc keywords
+
+  20 Sep 2008; Tobias Scherbaum <dertobi123@gentoo.org> wily-1.0.ebuild,
+  wily-1.0-r1.ebuild:
+  Remove ppc keywords (#214897)
+
+  26 Mar 2008; Raúl Porcel <armin76@gentoo.org> wily-1.0-r1.ebuild:
+  sparc/x86 stable
+
+  22 Jul 2007; David Shakaryan <omp@gentoo.org> wily-1.0.ebuild,
+  wily-1.0-r1.ebuild:
+  Remove virtual/x11 from dependencies.
+
+  13 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add herd
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  24 Aug 2006; Michael Sterrett <mr_bones_@gentoo.org> wily-1.0.ebuild:
+  backport modX deps from wily-1.0-r1
+
+*wily-1.0-r1 (21 Jan 2006)
+
+  21 Jan 2006; Marcelo Goes <vanquirius@gentoo.org> +wily-1.0-r1.ebuild:
+  Make modular X friendly.
+
+  25 Sep 2005; Torsten Veller <tove@gentoo.org> wily-1.0.ebuild:
+  Adapts changes in dev-libs/9libs.
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> wily-1.0.ebuild:
+  Masked wily-1.0.ebuild stable for ppc
+
+  19 Jun 2004; Jason Wever <weeve@gentoo.org> wily-1.0.ebuild:
+  Stable on sparc.
+
+  01 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> wily-1.0.ebuild:
+  fix depends; sync IUSE; use generic src_compile; tidy
+
+*wily-1.0 (03 Apr 2003)
+
+  03 Apr 2003; Dylan Carlson <absinthe@gentoo.org> wily-1.0.ebuild:
+  x86 moved to stable.  added ~sparc ~ppc.
+
+  11 Mar 2003; Dylan Carlson <absinthe@gentoo.org> ChangeLog  :
+
+  Initial import.  Ebuild submitted by Burton Samograd
+  <kruhft@kruhft.dyndns.org>, closing bug #16440.  Many thanks!
+  Wily is an emulation of ACME, Plan9's hybrid window system, 
+  shell and editor for programmers.

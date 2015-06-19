@@ -1,0 +1,116 @@
+# ChangeLog for dev-perl/PDF-API2
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/PDF-API2/ChangeLog,v 1.27 2014/01/24 16:48:32 zlogene Exp $
+
+  24 Jan 2014; Mikle Kolyada <zlogene@gentoo.org> -PDF-API2-2.19.0.ebuild,
+  PDF-API2-2.20.0.ebuild:
+  amd64/x86 stable wrt bug #495440;Drop old.
+
+*PDF-API2-2.20.0 (21 Jan 2013)
+
+  21 Jan 2013; Torsten Veller <tove@gentoo.org> +PDF-API2-2.20.0.ebuild,
+  metadata.xml:
+  Version bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  03 Jun 2012; Torsten Veller <tove@gentoo.org> -PDF-API2-0.57.ebuild:
+  Cleanup
+
+  26 Apr 2012; Agostino Sarubbo <ago@gentoo.org> PDF-API2-2.19.0.ebuild:
+  Stable for amd64, wrt bug #413053
+
+  02 Apr 2011; Torsten Veller <tove@gentoo.org> -PDF-API2-0.73.ebuild,
+  -PDF-API2-2.16.ebuild, -PDF-API2-2.17.ebuild, -PDF-API2-2.18.ebuild:
+  Cleanup
+
+*PDF-API2-2.19.0 (11 Mar 2011)
+
+  11 Mar 2011; Torsten Veller <tove@gentoo.org> +PDF-API2-2.19.0.ebuild:
+  Version bump
+
+*PDF-API2-2.18 (24 Feb 2011)
+
+  24 Feb 2011; Torsten Veller <tove@gentoo.org> +PDF-API2-2.18.ebuild:
+  Version bump
+
+*PDF-API2-2.17 (23 Feb 2011)
+
+  23 Feb 2011; Torsten Veller <tove@gentoo.org> +PDF-API2-2.17.ebuild:
+  Version bump
+
+*PDF-API2-2.16 (25 Jan 2011)
+
+  25 Jan 2011; Torsten Veller <tove@gentoo.org> +PDF-API2-2.16.ebuild:
+  Version bump. Use system dejavu fonts
+
+  07 Sep 2009; Torsten Veller <tove@gentoo.org> -PDF-API2-0.65.ebuild:
+  Cleanup
+
+*PDF-API2-0.73 (25 Aug 2009)
+
+  25 Aug 2009; Robin H. Johnson <robbat2@gentoo.org> +PDF-API2-0.73.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  19 Jul 2009; Torsten Veller <tove@gentoo.org> PDF-API2-0.57.ebuild,
+  PDF-API2-0.65.ebuild:
+  IO-Compress replaces Compress-Zlib
+
+  18 Nov 2008; Torsten Veller <tove@gentoo.org> PDF-API2-0.57.ebuild,
+  PDF-API2-0.65.ebuild:
+  New virtuals: Compress-Zlib
+
+  15 Sep 2008; Torsten Veller <tove@gentoo.org> -PDF-API2-0.55.ebuild,
+  -PDF-API2-0.56.ebuild, -PDF-API2-0.59.002.ebuild, -PDF-API2-0.61.ebuild:
+  Cleanup
+
+*PDF-API2-0.65 (19 Oct 2007)
+
+  19 Oct 2007; Christian Hartmann <ian@gentoo.org> +PDF-API2-0.65.ebuild:
+  Version bump
+
+*PDF-API2-0.61 (12 May 2007)
+
+  12 May 2007; Michael Cummings <mcummings@gentoo.org>
+  +PDF-API2-0.61.ebuild:
+  Version bump
+
+  01 May 2007; Markus Rothe <corsair@gentoo.org> PDF-API2-0.59.002.ebuild:
+  Added ~ppc64
+
+  09 Apr 2007; Michael Cummings <mcummings@gentoo.org> PDF-API2-0.57.ebuild:
+  Marking stable amd64
+
+*PDF-API2-0.59.002 (07 Apr 2007)
+
+  07 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  +PDF-API2-0.59.002.ebuild:
+  Version bump
+
+*PDF-API2-0.57 (14 Jan 2007)
+
+  14 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  +PDF-API2-0.57.ebuild:
+  Version bump
+
+*PDF-API2-0.56 (05 Jan 2007)
+
+  05 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  +PDF-API2-0.56.ebuild:
+  Version bump
+
+  24 Nov 2006; Michael Cummings <mcummings@gentoo.org> PDF-API2-0.55.ebuild:
+  amd64 stable
+
+  24 Oct 2006; Joshua Jackson <tsunam@gentoo.org> PDF-API2-0.55.ebuild:
+  ADDED ~x86; bug #152023
+
+  21 Oct 2006; <nixnut@gentoo.org> PDF-API2-0.55.ebuild:
+  Added ~ppc wrt bug 152023
+
+*PDF-API2-0.55 (20 Oct 2006)
+
+  20 Oct 2006; Michael Cummings <mcummings@gentoo.org> +metadata.xml,
+  +PDF-API2-0.55.ebuild:
+  Bug 152023, new dep for www/otrs

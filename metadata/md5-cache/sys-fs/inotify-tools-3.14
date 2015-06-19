@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=doc? ( app-doc/doxygen )
+DESCRIPTION=a set of command-line programs providing a simple interface to inotify
+EAPI=5
+HOMEPAGE=https://github.com/rvoicilas/inotify-tools/wiki
+IUSE=doc
+KEYWORDS=amd64 arm hppa ~mips ~sparc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://github.com/downloads/rvoicilas/inotify-tools/inotify-tools-3.14.tar.gz
+_md5_=b65c81ac1fec5c11d755a8d96a7def67

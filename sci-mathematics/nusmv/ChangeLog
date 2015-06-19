@@ -1,0 +1,71 @@
+# ChangeLog for sci-mathematics/nusmv
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/nusmv/ChangeLog,v 1.16 2013/12/28 18:37:44 robbat2 Exp $
+
+  28 Dec 2013; Robin H. Johnson <robbat2@gentoo.org> nusmv-2.5.4.ebuild:
+  Put in a note that compileWriteUdg.o will take a long time to compile.
+
+*nusmv-2.5.4 (28 Dec 2013)
+
+  28 Dec 2013; Robin H. Johnson <robbat2@gentoo.org> +nusmv-2.5.4.ebuild:
+  Bug #492696: version bump.
+
+*nusmv-2.5.3 (02 Feb 2013)
+
+  02 Feb 2013; Patrick Lauer <patrick@gentoo.org> +nusmv-2.5.3.ebuild:
+  Bump
+
+  25 Apr 2012; Justin Lecher <jlec@gentoo.org> nusmv-2.3.1.ebuild,
+  nusmv-2.5.0.ebuild, nusmv-2.5.2.ebuild, metadata.xml:
+  Drop unnessecary die
+
+  05 Oct 2011; Alexis Ballier <aballier@gentoo.org> nusmv-2.3.1.ebuild,
+  nusmv-2.5.0.ebuild, nusmv-2.5.2.ebuild:
+  remove ptex dep as it is going away
+
+*nusmv-2.5.2 (01 Jan 2011)
+
+  01 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> +nusmv-2.5.2.ebuild:
+  Version bump.
+
+  13 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/cudd-no-pentium4.patch, nusmv-2.5.0.ebuild:
+  Remove forced -mcpu=pentium4 from cudd's Makefile. This fixes bug #327425
+  reported by Christopher Head <chris2k01@hotmail.com>. Also, added code to
+  use correct Makefile for 64-bit systems.
+
+*nusmv-2.5.0 (22 Jun 2010)
+
+  22 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/MiniSat_v1.14_gcc41.patch, +nusmv-2.5.0.ebuild:
+  Version bump, bug #311903.
+
+  13 Jan 2010; Sébastien Fabbro <bicatali@gentoo.org> nusmv-2.3.1.ebuild:
+  Added VARTEXFONTS, bug #223077
+
+  26 Dec 2009; Peter Volkov <pva@gentoo.org> nusmv-2.3.1.ebuild:
+  virtual/ghostscript->app-text/ghostscript-gpl: ghostscript-gpl is the only
+  implementation left in the tree.
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> nusmv-2.3.1.ebuild:
+  Remove virtual/libc
+
+  30 May 2009; Ulrich Mueller <ulm@gentoo.org> nusmv-2.3.1.ebuild:
+  Remove app-text/tetex from dependencies, bug 227443.
+
+  06 Aug 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56.
+
+  18 May 2008; Markus Dittrich <markusle@gentoo.org> nusmv-2.3.1.ebuild:
+  Switched virtual/tetex -> virtual/latex-base (see bug #222501).
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+*nusmv-2.3.1 (02 Apr 2006)
+
+  02 Apr 2006; Robin H. Johnson <robbat2@gentoo.org>
+  +files/MiniSat_v1.14-optimizedlib.patch, +metadata.xml,
+  +nusmv-2.3.1.ebuild:
+  Initial commit. Ebuild by Robin H. Johnson <robbat2@gentoo.org>. This ebuild
+  may need revisiting when GCC4.2 is closer to final.

@@ -1,0 +1,21 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-power/powernowd/files/powernowd.initd,v 1.2 2012/10/17 23:54:20 jer Exp $
+
+depend() {
+	need localmount
+	use logger
+}
+
+start() {
+	ebegin "Starting powernowd"
+	start-stop-daemon --start --exec /usr/sbin/powernowd -- ${POWERNOWD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping powernowd"
+	start-stop-daemon --stop --exec /usr/sbin/powernowd
+	eend $?
+}

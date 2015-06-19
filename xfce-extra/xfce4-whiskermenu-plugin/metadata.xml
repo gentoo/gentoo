@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>xfce</herd>
+	<maintainer>
+		<email>hasufell@gentoo.org</email>
+		<name>Julian Ospald</name>
+	</maintainer>
+	<longdescription lang='en'>
+		Whisker Menu is an alternate application launcher for Xfce.
+		When you open it you are shown a list of applications you have
+		marked as favorites. You can browse through all of your installed
+		applications by clicking on the category buttons on the side.
+		Top level categories make browsing fast, and simple to switch
+		between. Additionally, Whisker Menu keeps a list of the last
+		ten applications that you’ve launched from it.
+
+		Favorites are easy to add and reorder. When browsing through
+		your applications, right-click on any of them and select “Add
+		to Favorites”. Simply drag and drop your favorites list to
+		arrange them to suit your needs. You can remove them at any
+		time from another right-click option.
+
+		If you’re not sure exactly where a program is listed, instead
+		of browsing through each category you can simply enter a search
+		term. The search field is focused when opening the menu, so you
+		can just start typing. Application descriptions as well as names
+		are searched, which allows you to find a program by using a
+		general word (such as “browser” to find all web browsers
+		installed on your computer).
+	</longdescription>
+	<upstream>
+		<maintainer status='active'>
+			<email>graeme@gottcode.org</email>
+			<name>Graeme Gott</name>
+		</maintainer>
+		<bugs-to>
+			https://github.com/gottcode/xfce4-whiskermenu-plugin/issues?labels=bug&amp;state=open
+		</bugs-to>
+		<changelog>
+			http://gottcode.org/xfce4-whiskermenu-plugin/#releasenotes
+		</changelog>
+		<remote-id type='github'>
+			gottcode/xfce4-whiskermenu-plugin
+		</remote-id>
+	</upstream>
+</pkgmetadata>

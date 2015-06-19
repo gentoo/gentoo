@@ -1,0 +1,13 @@
+Index: noad-0.7.3/configure.ac
+===================================================================
+--- noad-0.7.3.orig/configure.ac
++++ noad-0.7.3/configure.ac
+@@ -158,7 +158,7 @@ dnl check that libavcodec is usable
+ dnl ---------------------------------------------------------------------------
+ if test "$withffmpeg" == "1"; then
+   AC_SUBST(LIBAVCODEC,"-lavcodec")
+-  AC_CHECK_LIB([avcodec],[avcodec_init],[AC_SUBST(HAVE_LIBAVCODEC,1) AC_SUBST(LIBS,"$LIBS $LIBAVCODEC ") ])
++  AC_CHECK_LIB([avcodec],[avcodec_register_all],[AC_SUBST(HAVE_LIBAVCODEC,1) AC_SUBST(LIBS,"$LIBS $LIBAVCODEC ") ])
+ fi
+ 
+ 

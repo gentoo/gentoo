@@ -1,0 +1,45 @@
+# ChangeLog for x11-themes/gtk-engines-rezlooks
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/gtk-engines-rezlooks/ChangeLog,v 1.10 2012/07/24 17:20:56 pacho Exp $
+
+  24 Jul 2012; Pacho Ramos <pacho@gentoo.org>
+  +files/gtk-engines-rezlooks-0.6-glib-single-include.patch,
+  gtk-engines-rezlooks-0.6.ebuild:
+  Let it compile against glib-2.32, drop .la files.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  gtk-engines-rezlooks-0.6.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  16 Aug 2010; Jonathan Callen <abcd@gentoo.org>
+  gtk-engines-rezlooks-0.6.ebuild:
+  Transfer prefix keywords, bump to EAPI=3, use slot dep for x11-libs/gtk+
+
+  20 Mar 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Removing compnerd as a maintainer since he was retired.
+
+  20 Dec 2008; Markus Meier <maekke@gentoo.org>
+  gtk-engines-rezlooks-0.6.ebuild:
+  amd64 stable, bug #251386
+
+  18 Dec 2008; <ssuominen@gentoo.org> gtk-engines-rezlooks-0.6.ebuild:
+  x86 stable
+
+  03 Mar 2008; Saleem Abdulrasool <compnerd@gentoo.org>
+  gtk-engines-rezlooks-0.6.ebuild:
+  nightmorph claims gnome-look has fixed their distfile naming, so using ${PV} now
+
+  14 Feb 2008; Santiago M. Mola <coldwind@gentoo.org>
+  gtk-engines-rezlooks-0.6.ebuild:
+  Keyword ~amd64 wrt bug #209315
+
+  19 May 2007; Peter Weller <welp@gentoo.org>
+  gtk-engines-rezlooks-0.6.ebuild:
+  Keyworded ~x86-fbsd
+
+*gtk-engines-rezlooks-0.6 (11 Feb 2007)
+
+  11 Feb 2007; Saleem Abdulrasool <compnerd@gentoo.org> +metadata.xml,
+  +gtk-engines-rezlooks-0.6.ebuild:
+  Intial import of the rezlooks engine

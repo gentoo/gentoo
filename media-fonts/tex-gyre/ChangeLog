@@ -1,0 +1,10 @@
+# ChangeLog for media-fonts/tex-gyre
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/tex-gyre/ChangeLog,v 1.1 2015/05/09 04:08:37 yngwin Exp $
+
+*tex-gyre-2.005 (09 May 2015)
+
+  09 May 2015; Ben de Groot <yngwin@gentoo.org> +metadata.xml,
+  +tex-gyre-2.005.ebuild:
+  Initial commit. Ebuild based on one submitted by Witold Piłat. Fixes bug
+  #211824.

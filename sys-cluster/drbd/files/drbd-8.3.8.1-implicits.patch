@@ -1,0 +1,12 @@
+drbdadm_main.c:2525:2: warning: implicit declaration of function ‘stat’
+
+--- a/user/drbdadm_main.c
++++ b/user/drbdadm_main.c
+@@ -33,6 +33,7 @@
+ #include <search.h>
+ 
+ #include <sys/types.h>
++#include <sys/stat.h>
+ #include <sys/wait.h>
+ #include <sys/poll.h>
+ #include <sys/socket.h>

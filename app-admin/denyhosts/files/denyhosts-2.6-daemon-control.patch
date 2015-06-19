@@ -1,0 +1,12 @@
+diff -up ./daemon-control-dist.orig ./daemon-control-dist
+--- ./daemon-control-dist.orig	2006-04-21 18:04:43.000000000 -0500
++++ ./daemon-control-dist	2008-08-28 11:05:01.000000000 -0500
+@@ -13,7 +13,7 @@
+ 
+ DENYHOSTS_BIN   = "/usr/bin/denyhosts.py"
+ DENYHOSTS_LOCK  = "/var/lock/subsys/denyhosts"
+-DENYHOSTS_CFG   = "/usr/share/denyhosts/denyhosts.cfg"
++DENYHOSTS_CFG   = "/etc/denyhosts.conf"
+ 
+ PYTHON_BIN      = "/usr/bin/env python"
+ 

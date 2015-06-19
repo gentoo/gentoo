@@ -1,0 +1,86 @@
+# ChangeLog for app-admin/psmon
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/psmon/ChangeLog,v 1.24 2015/04/02 07:26:03 zlogene Exp $
+
+  02 Apr 2015; Mikle Kolyada <zlogene@gentoo.org> psmon-1.39-r1.ebuild:
+  Fix broken dependency
+
+  02 Aug 2013; Mikle Kolyada <zlogene@gentoo.org> -psmon-1.39.ebuild:
+  drop old
+
+  31 Jul 2013; Vicente Olivert Riera <vincent@gentoo.org> psmon-1.39-r1.ebuild,
+  psmon-1.39.ebuild:
+  amd64, ppc, x86 stable, bug #479066
+
+*psmon-1.39-r1 (31 Jul 2013)
+
+  31 Jul 2013; Alexander Vershilov <qnikst@gentoo.org> +psmon-1.39-r1.ebuild:
+  port psmon-1.39 to EAPI=5 due to #478714
+
+  27 Jun 2012; Michael Palimaka <kensington@gentoo.org> -psmon-1.0.4.ebuild,
+  -psmon-1.29.ebuild:
+  Remove old.
+
+  29 May 2012; Brent Baude <ranger@gentoo.org> psmon-1.39.ebuild:
+  Marking psmon-1.39 ppc for bug 393853
+
+  18 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> psmon-1.39.ebuild:
+  x86 stable wrt bug #393853
+
+  18 Dec 2011; Agostino Sarubbo <ago@gentoo.org> psmon-1.39.ebuild:
+  Stable for AMD64, wrt bug #393853
+
+*psmon-1.39 (04 Jun 2008)
+
+  04 Jun 2008; Jeremy Olexa <darkside@gentoo.org> +psmon-1.39.ebuild:
+  Version bump. bug #224805. Thanks to Pinky for reporting!
+
+  30 May 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Andrej Kacian (Ticho) from metadata.xml (as per #59986). Assigning
+  to maintainer-needed.
+
+  30 Aug 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing mcummings from metadata due to his retirement (see #105718 for
+  reference).
+
+  24 Jan 2007; Marius Mauch <genone@gentoo.org> psmon-1.0.4.ebuild,
+  psmon-1.29.ebuild:
+  Replacing einfo with elog
+
+  11 Feb 2006; Michael Cummings <mcummings@gentoo.org> psmon-1.0.4.ebuild,
+  psmon-1.29.ebuild:
+  virtual for getopt-long
+
+  28 Nov 2005; <mcumming@gentoo.org> psmon-1.29.ebuild:
+  Switched from perl-module to perl-app eclass
+
+  07 Sep 2005; Luis Medinas <metalgod@gentoo.org> psmon-1.29.ebuild:
+  Added ~amd64 keyword.
+
+  10 Aug 2005; Torsten Veller <tove@gentoo.org> psmon-1.0.4.ebuild,
+  psmon-1.29.ebuild:
+  Fixed HOMEPAGE. Thanks to Chris Rebert for bug #100782.
+
+*psmon-1.29 (30 Jul 2005)
+
+  30 Jul 2005; Daniel Black <dragonheart@gentoo.org> psmon-1.0.4.ebuild,
+  +psmon-1.29.ebuild:
+  version bump thanks to meatoo and bug #74390 thanks to Nicola Worthington
+  <nicolaw@lilacup.2x4b.com>
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> psmon-1.0.4.ebuild:
+  dev-perl/Getopt-Long => perl-core/Getopt-Long migration
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> psmon-1.0.4.ebuild:
+  Masked psmon-1.0.4.ebuild stable for ppc
+
+  19 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> psmon-1.0.4.ebuild:
+  fix depend (bug #45110); tidy
+
+  01 Mar 2004; Markus Nigbur <pyrania@gentoo.org> psmon-1.0.4.ebuild:
+  Stable on x86.
+
+*psmon-1.0.4 (30 Oct 2003)
+
+  30 Oct 2003; Martin Holzer <mholzer@gentoo.org> psmon-1.0.4.ebuild:
+  Inital ebuild. Submitted by Janne Pikkarainen <jaba@mikrobitti.fi> in #27237.

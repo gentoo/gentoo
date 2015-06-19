@@ -1,0 +1,28 @@
+--- main.c.old	2010-08-24 19:32:55.000000000 +0200
++++ main.c	2010-09-19 18:49:54.000000000 +0200
+@@ -2386,7 +2386,7 @@
+ 
+     /* Add the base dir to the search path. The base dir is where all the
+      * defaults are (or should be). */
+-    if (!PHYSFS_addToSearchPath(PHYSFS_getBaseDir(), 1))
++    if (!PHYSFS_addToSearchPath(SYSPATH, 1))
+     {
+         LOG(LOG_MSG, "%s\n", PHYSFS_getLastError());
+     }
+@@ -2545,13 +2545,13 @@
+ 
+     /* Prepend the user dir to the search path. This means files are read from
+      * this location in preference to the defaults. */
+-    if (strcmp(PHYSFS_getBaseDir(), home))
+-    {
++    /*if (strcmp(PHYSFS_getBaseDir(), home))
++    {*/
+         if (!PHYSFS_addToSearchPath(home, 0))
+         {
+             LOG(LOG_ERROR, "%s\n", PHYSFS_getLastError());
+         }
+-    }
++    //}
+ 
+     /* Prepend any add-on packs to the search path. This means files are read
+      * from these locations in preference to the defaults and the user dir. */

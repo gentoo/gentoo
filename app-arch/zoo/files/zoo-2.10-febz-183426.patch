@@ -1,0 +1,16 @@
+Taken from Fedora
+
+https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=183426
+http://bugs.gentoo.org/125622
+
+--- zoo/parse.c
++++ zoo/parse.c
+@@ -39,7 +39,7 @@
+    char *namep;                   /* points to relevant part of tempname */
+ 
+    char *p;
+-   strcpy (tempname, fname);
++   strncpy(tempname, fname, LFNAMESIZE);
+ 
+ #ifdef DEBUG
+ printf ("parse:  supplied name is [%s].\n", tempname);

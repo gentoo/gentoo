@@ -1,0 +1,249 @@
+# ChangeLog for app-text/xmlstarlet
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/xmlstarlet/ChangeLog,v 1.60 2015/06/09 12:46:29 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> xmlstarlet-1.6.1.ebuild:
+  Stable for x86, wrt bug #534916
+
+  17 Jan 2015; Agostino Sarubbo <ago@gentoo.org> xmlstarlet-1.6.1.ebuild:
+  Stable for ppc, wrt bug #534916
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> xmlstarlet-1.6.1.ebuild:
+  Stable for amd64, wrt bug #534916
+
+  18 Sep 2014; Sebastian Pipping <sping@gentoo.org>
+  -xmlstarlet-1.0.1-r1.ebuild, -xmlstarlet-1.0.2.ebuild,
+  -xmlstarlet-1.0.2-r1.ebuild, -xmlstarlet-1.0.4.ebuild,
+  -xmlstarlet-1.0.5.ebuild, -xmlstarlet-1.0.6.ebuild, -xmlstarlet-1.2.0.ebuild,
+  -xmlstarlet-1.2.1.ebuild, -xmlstarlet-1.3.0.ebuild, -xmlstarlet-1.3.1.ebuild,
+  -xmlstarlet-1.4.0.ebuild:
+  Remove most old versions
+
+*xmlstarlet-1.6.1 (18 Sep 2014)
+
+  18 Sep 2014; Sebastian Pipping <sping@gentoo.org> +xmlstarlet-1.6.1.ebuild:
+  Bump to 1.6.1
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> xmlstarlet-1.5.0.ebuild:
+  Stable for ppc, wrt bug #491956
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> xmlstarlet-1.5.0.ebuild:
+  amd64 stable, bug #491956
+
+  01 Mar 2014; Michał Górny <mgorny@gentoo.org> xmlstarlet-1.0.4.ebuild,
+  xmlstarlet-1.0.5.ebuild, xmlstarlet-1.0.6.ebuild, xmlstarlet-1.2.0.ebuild,
+  xmlstarlet-1.2.1.ebuild, xmlstarlet-1.3.0.ebuild, xmlstarlet-1.3.1.ebuild,
+  xmlstarlet-1.4.0.ebuild, xmlstarlet-1.4.2.ebuild, xmlstarlet-1.5.0.ebuild:
+  Update libgcrypt dep to use slot :0.
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> xmlstarlet-1.5.0.ebuild:
+  x86 stable wrt bug #491956
+
+*xmlstarlet-1.5.0 (22 Jul 2013)
+
+  22 Jul 2013; Sebastian Pipping <sping@gentoo.org> +xmlstarlet-1.5.0.ebuild:
+  Bump to 1.5.0, looks trivial
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/sgml-herd-has-no-maintainers-
+  again-td259655.html
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> xmlstarlet-1.4.2.ebuild:
+  Stable for ppc, wrt bug #455380
+
+  15 Feb 2013; Agostino Sarubbo <ago@gentoo.org> xmlstarlet-1.4.2.ebuild:
+  Stable for x86, wrt bug #455380
+
+  15 Feb 2013; Agostino Sarubbo <ago@gentoo.org> xmlstarlet-1.4.2.ebuild:
+  Stable for amd64, wrt bug #455380
+
+  17 Jan 2013; Justin Lecher <jlec@gentoo.org> xmlstarlet-1.4.2.ebuild:
+  Fix out-of-prefix installation
+
+*xmlstarlet-1.4.2 (14 Jan 2013)
+
+  14 Jan 2013; Sebastian Pipping <sping@gentoo.org> +xmlstarlet-1.4.2.ebuild:
+  Bump to 1.4.2, looks trivial
+
+  20 Nov 2012; Agostino Sarubbo <ago@gentoo.org> xmlstarlet-1.4.0.ebuild:
+  Stable for x86, wrt bug #441120
+
+  15 Nov 2012; Anthony G. Basile <blueness@gentoo.org> xmlstarlet-1.4.0.ebuild:
+  stable ppc, bug #441120
+
+  04 Nov 2012; Agostino Sarubbo <ago@gentoo.org> xmlstarlet-1.4.0.ebuild:
+  Stable for amd64, wrt bug #441120
+
+*xmlstarlet-1.4.0 (26 Aug 2012)
+
+  26 Aug 2012; Sebastian Pipping <sping@gentoo.org> +xmlstarlet-1.4.0.ebuild:
+  Bump to 1.4.0
+
+  10 Jul 2012; Brent Baude <ranger@gentoo.org> xmlstarlet-1.3.1.ebuild:
+  Marking xmlstarlet-1.3.1 ppc for bug 422001
+
+  04 Jul 2012; Jeff Horelick <jdhore@gentoo.org> xmlstarlet-1.3.1.ebuild:
+  marked x86 per bug 422001
+
+  03 Jul 2012; Agostino Sarubbo <ago@gentoo.org> xmlstarlet-1.3.1.ebuild:
+  Stable for amd64, wrt bug #422001
+
+  28 May 2012; Raúl Porcel <armin76@gentoo.org> xmlstarlet-1.3.1.ebuild:
+  Add ~alpha/~arm/~ia64/~s390/~sh/~sparc wrt #415707
+
+  13 May 2012; Jeroen Roovers <jer@gentoo.org> xmlstarlet-1.3.1.ebuild:
+  Marked ~hppa (bug #415707).
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> xmlstarlet-1.0.1-r1.ebuild,
+  xmlstarlet-1.0.2.ebuild, xmlstarlet-1.0.2-r1.ebuild, xmlstarlet-1.0.4.ebuild,
+  xmlstarlet-1.0.5.ebuild, xmlstarlet-1.0.6.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  25 Apr 2012; Justin Lecher <jlec@gentoo.org> xmlstarlet-1.0.2.ebuild:
+  Drop unnessecary die
+
+*xmlstarlet-1.3.1 (14 Jan 2012)
+
+  14 Jan 2012; Sebastian Pipping <sping@gentoo.org> +xmlstarlet-1.3.1.ebuild:
+  Bump to 1.3.1, looks trivial
+
+  02 Dec 2011; Markos Chandras <hwoarang@gentoo.org> xmlstarlet-1.0.6.ebuild:
+  Stable on amd64 wrt bug #391637
+
+  01 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> xmlstarlet-1.0.6.ebuild:
+  x86 stable wrt bug #391637
+
+*xmlstarlet-1.3.0 (10 Oct 2011)
+
+  10 Oct 2011; Sebastian Pipping <sping@gentoo.org> +xmlstarlet-1.3.0.ebuild:
+  Bump to 1.3.0, looks trivial
+
+  16 Aug 2011; Sebastian Pipping <sping@gentoo.org> -xmlstarlet-1.0.3.ebuild:
+  Remove masked 1.0.3
+
+*xmlstarlet-1.2.1 (20 Jul 2011)
+
+  20 Jul 2011; Tim Harder <radhermit@gentoo.org> +xmlstarlet-1.2.1.ebuild:
+  Version bump.
+
+*xmlstarlet-1.2.0 (03 Jun 2011)
+
+  03 Jun 2011; Tim Harder <radhermit@gentoo.org> +xmlstarlet-1.2.0.ebuild:
+  Version bump (bug #362001). Update to EAPI 4 and remove unused pkgconfig
+  dependency.
+
+  26 Mar 2011; Fabian Groffen <grobian@gentoo.org> xmlstarlet-1.0.6.ebuild,
+  +files/xmlstarlet-1.0.6-setmode.patch:
+  Add patch from upstream to fix compilation on Darwin, BSD and possibly
+  Solaris systems
+
+*xmlstarlet-1.0.6 (15 Mar 2011)
+
+  15 Mar 2011; Sebastian Pipping <sping@gentoo.org> +xmlstarlet-1.0.6.ebuild:
+  Bump to 1.0.6, looks trivial
+
+*xmlstarlet-1.0.5 (14 Feb 2011)
+
+  14 Feb 2011; Sebastian Pipping <sping@gentoo.org> +xmlstarlet-1.0.5.ebuild:
+  Bump to 1.0.5, add sys-apps/sed to dependencies
+
+*xmlstarlet-1.0.4 (17 Jan 2011)
+
+  17 Jan 2011; Sebastian Pipping <sping@gentoo.org> +xmlstarlet-1.0.4.ebuild:
+  Bump to 1.0.4: new configure option --disable-static-libs, new test suite
+  integration through "make check"
+
+*xmlstarlet-1.0.3 (27 Nov 2010)
+
+  27 Nov 2010; Sebastian Pipping <sping@gentoo.org> +xmlstarlet-1.0.3.ebuild:
+  Bump to 1.0.3
+
+*xmlstarlet-1.0.2-r1 (16 Apr 2010)
+
+  16 Apr 2010; Sebastian Pipping <sping@gentoo.org>
+  +xmlstarlet-1.0.2-r1.ebuild:
+  New revision to propagate tarball exchange upstream
+
+*xmlstarlet-1.0.2 (08 Apr 2010)
+
+  08 Apr 2010; Sebastian Pipping <sping@gentoo.org>
+  +xmlstarlet-1.0.2.ebuild, metadata.xml:
+  Bump to 1.0.2
+
+  02 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  xmlstarlet-1.0.1-r1.ebuild:
+  Transfer Prefix keywords
+
+  02 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  -xmlstarlet-1.0.1.ebuild:
+  Remove old version.
+
+  26 Dec 2007; Samuli Suominen <drac@gentoo.org> xmlstarlet-1.0.1-r1.ebuild:
+  amd64 stable wrt #202642
+
+  21 Dec 2007; nixnut <nixnut@gentoo.org> xmlstarlet-1.0.1-r1.ebuild:
+  Stable on ppc wrt bug 202642
+
+  18 Dec 2007; Christian Faulhammer <opfer@gentoo.org>
+  xmlstarlet-1.0.1-r1.ebuild:
+  stable x86, bug 202642
+
+*xmlstarlet-1.0.1-r1 (14 Mar 2007)
+
+  14 Mar 2007; Leonardo Boshell <leonardop@gentoo.org>
+  +xmlstarlet-1.0.1-r1.ebuild:
+  Provide xmlstarlet as a symlink to be consistent with man page (bug
+  #103306). Don't install NEWS since it's an empty document. Define
+  LIBXML_LIBS and LIBXSLT_LIBS through pkg-config instead of doing it
+  manually, and fixed dependencies accordingly.
+
+  13 Mar 2007; Leonardo Boshell <leonardop@gentoo.org> metadata.xml,
+  -xmlstarlet-1.0.0.ebuild:
+  Replacing text-markup herd with the new sgml herd.
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  24 Mar 2006; Mamoru KOMACHI <usata@gentoo.org> xmlstarlet-1.0.0.ebuild,
+  xmlstarlet-1.0.1.ebuild:
+  Fixed compile error with recent libxml and libxslt. Thanks to Sam Jacobson
+  <sam@eversoft.co.nz>. This closes bug #106259.
+
+  02 Jun 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  xmlstarlet-1.0.1.ebuild:
+  mark ~ppc
+
+  16 Apr 2005; Mamoru KOMACHI <usata@gentoo.org> -xmlstarlet-0.9.3.ebuild,
+  -xmlstarlet-0.9.5.ebuild, xmlstarlet-1.0.1.ebuild:
+  Stable on x86. Removed old versions.
+
+*xmlstarlet-1.0.1 (22 Mar 2005)
+
+  22 Mar 2005; Mamoru KOMACHI <usata@gentoo.org> xmlstarlet-1.0.0.ebuild,
+  +xmlstarlet-1.0.1.ebuild:
+  Version bumped.
+
+*xmlstarlet-1.0.0 (10 Feb 2005)
+
+  10 Feb 2005; Mamoru KOMACHI <usata@gentoo.org> xmlstarlet-0.9.5.ebuild,
+  +xmlstarlet-1.0.0.ebuild:
+  Version bumped. Marked previous version stable on x86.
+
+  06 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> xmlstarlet-0.9.5.ebuild:
+  added ~amd64 to KEYWORDS. fixes #64762
+
+*xmlstarlet-0.9.5 (30 Nov 2004)
+
+  30 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> xmlstarlet-0.9.3.ebuild,
+  +xmlstarlet-0.9.5.ebuild:
+  Version bumped. Marked 0.9.3 stable on x86.
+
+*xmlstarlet-0.9.3 (03 Sep 2004)
+
+  03 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> +metadata.xml,
+  +xmlstarlet-0.9.3.ebuild:
+  Initial import. Ebuild submitted by Anders Bruun Olsen
+  <anders@bruun-olsen.net>, bug #34366.

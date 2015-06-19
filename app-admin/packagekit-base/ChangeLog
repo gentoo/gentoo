@@ -1,0 +1,173 @@
+# ChangeLog for app-admin/packagekit-base
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/packagekit-base/ChangeLog,v 1.35 2014/07/24 17:42:36 ssuominen Exp $
+
+  24 Jul 2014; Samuli Suominen <ssuominen@gentoo.org>
+  packagekit-base-0.7.4.ebuild, packagekit-base-0.8.15-r1.ebuild:
+  Remove USE="udev" from 0.8.15 because PackageKit-0.8.15.tar.xz has no
+  reference to udev at all except in NEWS with "Remove the Udev firmware loading
+  functionality (Richard Hughes)". Convert 0.7.4 from virtual/udev to
+  virtual/libgudev but without := because the ebuild is still using EAPI=3.
+
+*packagekit-base-0.8.15-r1 (19 Dec 2013)
+
+  19 Dec 2013; Fabio Erculiani <lxnay@gentoo.org>
+  -packagekit-base-0.8.15.ebuild, +packagekit-base-0.8.15-r1.ebuild,
+  +files/packagekit-base-0.8.15-qtdbus-annotate.patch:
+  revbump, add another upstreamed patch that fixes the compilation of
+  packagekit-qt4
+
+  18 Dec 2013; Fabio Erculiani <lxnay@gentoo.org>
+  packagekit-base-0.8.15.ebuild:
+  add conditional bash completion support, fix #494644, thanks to Sander Sweers
+
+*packagekit-base-0.8.15 (18 Dec 2013)
+
+  18 Dec 2013; Fabio Erculiani <lxnay@gentoo.org>
+  -packagekit-base-0.6.22.ebuild, +packagekit-base-0.8.15.ebuild,
+  +files/0001-entropy-PackageKitEntropyClient.output-API-update.patch,
+  -files/packagekit-base-0.6.22-npapi-sdk.patch,
+  +files/packagekit-base-0.8.x-npapi-sdk.patch, metadata.xml:
+  version bump to 0.8.15, drop old
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  connman is a global USE flag now
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org> packagekit-base-0.6.22.ebuild:
+  Add ~ia64, wrt bug #387959
+
+  02 Dec 2012; Samuli Suominen <ssuominen@gentoo.org>
+  packagekit-base-0.6.22.ebuild, packagekit-base-0.7.4.ebuild:
+  Use virtual/udev instead of sys-fs/udev wrt #444398
+
+  16 Oct 2012; Jeroen Roovers <jer@gentoo.org> packagekit-base-0.6.22.ebuild,
+  packagekit-base-0.7.4.ebuild:
+  Drop HPPA keywording (bug #438368).
+
+  20 Jul 2012; Fabio Erculiani <lxnay@gentoo.org>
+  packagekit-base-0.6.22.ebuild:
+  fix compilation with npapi-sdk currently in tree, close bug #423911
+
+  20 Jul 2012; Fabio Erculiani <lxnay@gentoo.org> packagekit-base-0.7.4.ebuild,
+  +files/packagekit-base-0.7.x-npapi-api-change.patch:
+  fix compilation with unmasked npapi-sdk (see notes inside ebuild)
+
+  20 Jul 2012; Fabio Erculiani <lxnay@gentoo.org> packagekit-base-0.7.4.ebuild:
+  properly handle 'connman' USE flag
+
+  27 Jun 2012; Samuli Suominen <ssuominen@gentoo.org>
+  packagekit-base-0.7.4.ebuild:
+  Remove call to bash-completion_pkg_postinst from pkg_postinst() since such
+  function is not present in bash-completion-r1.eclass. Since bash-completion
+  shouldn't be behind USE flag always pass --enable-command-not-found.
+
+  27 Jun 2012; Samuli Suominen <ssuominen@gentoo.org>
+  packagekit-base-0.7.4.ebuild:
+  Remove check for polkit-backend-1 which is now marked as "noinst" in polkit
+  >= 0.106 wrt #423431 by Pim Vullers
+
+  27 May 2012; Matt Turner <mattst88@gentoo.org> packagekit-base-0.7.4.ebuild:
+  Added ~alpha, bug 387959.
+
+*packagekit-base-0.7.4 (19 May 2012)
+
+  19 May 2012; Fabio Erculiani <lxnay@gentoo.org>
+  +packagekit-base-0.7.4.ebuild, +files/packagekit-base-0.7.x-npapi-sdk.patch:
+  version bump, see bug 416593
+
+*packagekit-base-0.6.22 (19 May 2012)
+
+  19 May 2012; Fabio Erculiani <lxnay@gentoo.org>
+  -packagekit-base-0.6.20.ebuild, +packagekit-base-0.6.22.ebuild,
+  +files/packagekit-base-0.6.22-npapi-sdk.patch,
+  -files/packagekit-base-0.6.x-npapi-sdk.patch:
+  version bump
+
+  09 May 2012; Matt Turner <mattst88@gentoo.org> packagekit-base-0.6.20.ebuild:
+  Added ~mips, bug 387959.
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> packagekit-base-0.6.20.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  22 Apr 2012; Samuli Suominen <ssuominen@gentoo.org>
+  packagekit-base-0.6.20.ebuild, +files/packagekit-base-0.6.x-npapi-sdk.patch:
+  Build nsplugin against npapi-sdk instead of xulrunner wrt #383141 by Jory A.
+  Pratt
+
+  22 Apr 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -packagekit-base-0.6.16.ebuild, -packagekit-base-0.6.17-r1.ebuild,
+  -files/packagekit-base-0.6.17-entropy-extra-downloads-support.patch,
+  -packagekit-base-0.6.18-r1.ebuild, -packagekit-base-0.6.19.ebuild,
+  -files/packagekit-base-entropy-add-forward-compatibility.patch:
+  old
+
+  14 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> metadata.xml:
+  Punt useless USE description(s) for USE="static-libs" and USE="udev"
+
+  12 Mar 2012; Samuli Suominen <ssuominen@gentoo.org>
+  packagekit-base-0.6.20.ebuild:
+  Revert back to ~ppc64 because this is not ready to be stabilized.
+
+  12 Mar 2012; Brent Baude <ranger@gentoo.org> packagekit-base-0.6.20.ebuild:
+  Marking packagekit-base-0.6.20 ppc64 stable for bug 407643
+
+  08 Mar 2012; Brent Baude <ranger@gentoo.org> packagekit-base-0.6.20.ebuild:
+  Marking packagekit-base-0.6.20 ~ppc64 for bug 387959
+
+  06 Mar 2012; Brent Baude <ranger@gentoo.org> packagekit-base-0.6.20.ebuild:
+  Marking packagekit-base-0.6.20 ~ppc for bug 387959
+
+*packagekit-base-0.6.20 (07 Nov 2011)
+
+  07 Nov 2011; Fabio Erculiani <lxnay@gentoo.org>
+  +packagekit-base-0.6.20.ebuild:
+  version bump
+
+  25 Oct 2011; Jeroen Roovers <jer@gentoo.org> packagekit-base-0.6.19.ebuild:
+  Marked ~hppa (bug #387959).
+
+*packagekit-base-0.6.19 (06 Oct 2011)
+
+  06 Oct 2011; Fabio Erculiani <lxnay@gentoo.org>
+  +packagekit-base-0.6.19.ebuild:
+  version bump, fix python dependency, force to 2
+
+*packagekit-base-0.6.18-r1 (05 Oct 2011)
+
+  05 Oct 2011; Fabio Erculiani <lxnay@gentoo.org>
+  -packagekit-base-0.6.18.ebuild, +packagekit-base-0.6.18-r1.ebuild,
+  +files/packagekit-base-entropy-add-forward-compatibility.patch:
+  revision bump, add upstream patch
+
+  05 Sep 2011; Fabio Erculiani <lxnay@gentoo.org>
+  packagekit-base-0.6.18.ebuild:
+  fix nsplugin installation
+
+  05 Sep 2011; Markus Meier <maekke@gentoo.org>
+  packagekit-base-0.6.17-r1.ebuild, packagekit-base-0.6.18.ebuild:
+  add ~arm, bug #379657
+
+*packagekit-base-0.6.18 (05 Sep 2011)
+
+  05 Sep 2011; Fabio Erculiani <lxnay@gentoo.org>
+  +packagekit-base-0.6.18.ebuild:
+  version bump
+
+*packagekit-base-0.6.17-r1 (09 Aug 2011)
+
+  09 Aug 2011; Fabio Erculiani <lxnay@gentoo.org>
+  -packagekit-base-0.6.17.ebuild, +packagekit-base-0.6.17-r1.ebuild,
+  +files/packagekit-base-0.6.17-entropy-extra-downloads-support.patch:
+  revision bump, add upstream patch for entropy
+
+*packagekit-base-0.6.17 (02 Aug 2011)
+
+  02 Aug 2011; Fabio Erculiani <lxnay@gentoo.org>
+  +packagekit-base-0.6.17.ebuild:
+  version bump
+
+*packagekit-base-0.6.16 (19 Jul 2011)
+
+  19 Jul 2011; Fabio Erculiani <lxnay@gentoo.org>
+  +packagekit-base-0.6.16.ebuild, +metadata.xml:
+  new ebuild

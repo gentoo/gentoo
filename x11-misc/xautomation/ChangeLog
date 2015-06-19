@@ -1,0 +1,132 @@
+# ChangeLog for x11-misc/xautomation
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xautomation/ChangeLog,v 1.35 2014/10/10 14:00:03 jer Exp $
+
+*xautomation-1.09 (10 Oct 2014)
+
+  10 Oct 2014; Jeroen Roovers <jer@gentoo.org> +xautomation-1.09.ebuild:
+  Version bump (bug #524946 by avx).
+
+  12 May 2012; Samuli Suominen <ssuominen@gentoo.org> -xautomation-1.01.ebuild,
+  -xautomation-1.03.ebuild:
+  old
+
+*xautomation-1.06 (12 May 2012)
+
+  12 May 2012; Samuli Suominen <ssuominen@gentoo.org> +xautomation-1.06.ebuild:
+  Version bump wrt #415615 by "df"
+
+  05 May 2012; Raúl Porcel <armin76@gentoo.org> xautomation-1.01.ebuild,
+  xautomation-1.03.ebuild, xautomation-1.05.ebuild:
+  Drop alpha/ia64/sparc keywords
+
+  09 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> xautomation-1.05.ebuild:
+  x86 stable wrt bug #404893
+
+  23 Feb 2012; Brent Baude <ranger@gentoo.org> xautomation-1.05.ebuild:
+  Marking xautomation-1.05 ppc for bug 404893
+
+  23 Feb 2012; Agostino Sarubbo <ago@gentoo.org> xautomation-1.05.ebuild:
+  Stable for amd64, wrt bug #404893
+
+*xautomation-1.05 (04 Dec 2011)
+
+  04 Dec 2011; Jeroen Roovers <jer@gentoo.org> xautomation-1.01.ebuild,
+  xautomation-1.03.ebuild, +xautomation-1.05.ebuild:
+  Version bump. Fix underlinking (bug #369703). Fix DEPEND/RDEPEND.
+
+  06 Nov 2011; Markus Meier <maekke@gentoo.org> xautomation-1.03.ebuild:
+  add ~arm, bug #388901
+
+*xautomation-1.03 (14 Aug 2010)
+
+  14 Aug 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  +xautomation-1.03.ebuild:
+  Version bump. Fixes bug 331485. Thanks to Jakub Klawiter
+  <jklawiter@gmail.com> for report.
+
+  21 Mar 2009; Krzysiek Pawlik <nelchael@gentoo.org>
+  -xautomation-0.96.ebuild:
+  Remove old versions.
+
+  12 Apr 2008; Raúl Porcel <armin76@gentoo.org> xautomation-1.01.ebuild:
+  ia64 stable wrt #215589, add ~sparc
+
+  12 Apr 2008; nixnut <nixnut@gentoo.org> xautomation-1.01.ebuild:
+  Stable on ppc wrt bug 215589
+
+  09 Apr 2008; Markus Meier <maekke@gentoo.org> xautomation-1.01.ebuild:
+  amd64/x86 stable, bug #215589
+
+  08 Apr 2008; Tobias Klausmann <klausman@gentoo.org>
+  xautomation-1.01.ebuild:
+  Stable on alpha, bug #215589
+
+*xautomation-1.01 (05 Mar 2008)
+
+  05 Mar 2008; Santiago M. Mola <coldwind@gentoo.org>
+  +xautomation-1.01.ebuild:
+  Version bump, bug #209569
+
+  09 Jan 2008; Krzysiek Pawlik <nelchael@gentoo.org>
+  xautomation-0.96.ebuild:
+  Add missing x11-proto/inputproto to DEPEND.
+
+  29 Aug 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing agriffis from metadata due to his retirement (see #182294 for
+  reference).
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  xautomation-0.96.ebuild:
+  Drop virtual/x11 references.
+
+  07 Jul 2006; Jon Hood <squinky86@gentoo.org> xautomation-0.96.ebuild:
+  Add ~amd64, bug #139429.
+
+  21 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  -xautomation-0.93.ebuild, xautomation-0.96.ebuild:
+  Fixed DEPEND for modular X.
+
+  08 Oct 2005; Sven Wegener <swegener@gentoo.org> xautomation-0.93.ebuild,
+  xautomation-0.96.ebuild:
+  Added missing X dependency.
+
+  23 Aug 2005; Aron Griffis <agriffis@gentoo.org> xautomation-0.96.ebuild:
+  stable on ia64
+
+  02 Jul 2005; Bryan Østergaard <kloeri@gentoo.org>
+  xautomation-0.96.ebuild:
+  Stable on alpha.
+
+  30 Jun 2005; Markus Nigbur <pyrania@gentoo.org> xautomation-0.93.ebuild:
+  Marked stable on x86
+
+  19 Jun 2005; Jonathan Smith <smithj@gentoo.org> xautomation-0.96.ebuild:
+  0.96 stable x86
+
+*xautomation-0.96 (15 Jun 2005)
+
+  15 Jun 2005; Markus Nigbur <pyrania@gentoo.org> +xautomation-0.96.ebuild:
+  Version bump.
+
+  28 Apr 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  xautomation-0.93.ebuild:
+  mark ~ppc
+
+  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> xautomation-0.93.ebuild:
+  stable on ia64
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  12 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> xautomation-0.93.ebuild:
+  Stable on alpha.
+
+  11 Apr 2004; Markus Nigbur <pyrania@gentoo.org> xautomation-0.93.ebuild:
+  Marked stable on x86.
+
+*xautomation-0.93 (08 Jan 2004)
+
+  08 Jan 2004; Aron Griffis <agriffis@gentoo.org> xautomation-0.93.ebuild:
+  New ebuild for xautomation, thanks to Joel Martin in bug 35085
+

@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/show_bug.cgi?id=424291
+Index: nted-1.10.18/dynarray.h
+===================================================================
+--- nted-1.10.18.orig/dynarray.h
++++ nted-1.10.18/dynarray.h
+@@ -76,6 +76,7 @@ class NedDynArray {
+ 
+ #include <stdlib.h>
+ #include <stdio.h>
++#include <string.h>
+ 
+ static void erroraus(const char *s) {
+ 	fprintf(stderr, "%s\n", s);

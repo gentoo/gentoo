@@ -1,0 +1,38 @@
+--- a/bindings/python/rrdtoolmodule.c
++++ b/bindings/python/rrdtoolmodule.c
+@@ -675,8 +676,6 @@
+     return r;
+ }
+ 
+-#endif
+-
+ static char PyRRD_dump__doc__[] =
+     "dump - dump an RRD to XML\n"
+     "[--header|-h {none,xsd,dtd}] [--no-header]file.rrd [file.xml]";
+@@ -704,6 +703,7 @@
+     destroy_args(&argv);
+     return r;
+ }
++#endif /* HAVE_RRD_GRAPH */
+ 
+ /* List of methods defined in the module */
+ #define meth(name, func, doc) {name, (PyCFunction)func, METH_VARARGS, doc}
+@@ -717,14 +717,16 @@
+     meth("last", PyRRD_last, PyRRD_last__doc__),
+     meth("resize", PyRRD_resize, PyRRD_resize__doc__),
+     meth("info", PyRRD_info, PyRRD_info__doc__),
+-#ifdef HAVE_RRD_GRAPH    
++#ifdef HAVE_RRD_GRAPH
+     meth("graph", PyRRD_graph, PyRRD_graph__doc__),
+     meth("graphv", PyRRD_graphv, PyRRD_graphv__doc__),
+     meth("xport", PyRRD_xport, PyRRD_xport__doc__),
+-#endif
++#endif /* HAVE_RRD_GRAPH */
+     meth("updatev", PyRRD_updatev, PyRRD_updatev__doc__),
+     meth("flushcached", PyRRD_flushcached, PyRRD_flushcached__doc__),
++#ifdef HAVE_RRD_GRAPH
+     meth("dump", PyRRD_dump, PyRRD_dump__doc__),
++#endif /* HAVE_RRD_GRAPH */
+     {NULL, NULL, 0, NULL}
+ };
+ 

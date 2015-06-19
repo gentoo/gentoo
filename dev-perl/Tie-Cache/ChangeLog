@@ -1,0 +1,61 @@
+# ChangeLog for dev-perl/Tie-Cache
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Tie-Cache/ChangeLog,v 1.15 2015/03/04 21:08:18 monsieurp Exp $
+
+*Tie-Cache-0.210.0 (04 Mar 2015)
+
+  04 Mar 2015; Patrice Clement <monsieurp@gentoo.org> +Tie-Cache-0.210.0.ebuild:
+  Version bump.
+
+*Tie-Cache-0.190.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Tie-Cache-0.190.0-r1.ebuild, -Tie-Cache-0.190.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  02 Sep 2012; Torsten Veller <tove@gentoo.org> -Tie-Cache-0.170.0.ebuild:
+  Cleanup
+
+  05 Aug 2012; Johannes Huber <johu@gentoo.org> Tie-Cache-0.190.0.ebuild:
+  Stable for x86, wrt bug #418859
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+*Tie-Cache-0.190.0 (25 Feb 2012)
+
+  25 Feb 2012; Torsten Veller <tove@gentoo.org> +Tie-Cache-0.190.0.ebuild:
+  Version bump
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Tie-Cache-0.17.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> Tie-Cache-0.170.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*Tie-Cache-0.170.0 (28 Aug 2011)
+
+  28 Aug 2011; Torsten Veller <tove@gentoo.org> +Tie-Cache-0.170.0.ebuild:
+  Change version scheme
+
+  17 Jan 2009; Robin H. Johnson <robbat2@gentoo.org> Tie-Cache-0.17.ebuild:
+  Emerge on an empty system (without perl) failed due to lack of perl dep.
+
+  04 Aug 2007; Andrej Kacian <ticho@gentoo.org> Tie-Cache-0.17.ebuild:
+  Stable on x86.
+
+  03 Jul 2007; Raúl Porcel <armin76@gentoo.org> Tie-Cache-0.17.ebuild:
+  Add ~alpha wrt #182519
+
+  27 Jun 2007; Lars Weiler <pylon@gentoo.org> Tie-Cache-0.17.ebuild:
+  Added ~ppc; bug #182519.
+
+  20 Jun 2007; Markus Rothe <corsair@gentoo.org> Tie-Cache-0.17.ebuild:
+  Added ~ppc64; bug #182519
+
+*Tie-Cache-0.17 (18 Jun 2007)
+
+  18 Jun 2007; Michael Cummings <mcummings@gentoo.org> +metadata.xml,
+  +Tie-Cache-0.17.ebuild:
+  Spamassassin dep

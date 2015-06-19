@@ -1,0 +1,215 @@
+# ChangeLog for media-libs/sdl-sound
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/sdl-sound/ChangeLog,v 1.54 2015/04/28 03:58:09 mr_bones_ Exp $
+
+  28 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org> -sdl-sound-1.0.3.ebuild:
+  old
+
+  28 Apr 2015; Jack Morgan <jmorgan@gentoo.org> sdl-sound-1.0.3-r1.ebuild:
+  ppc64 stable wrt bug #525764
+
+  26 Apr 2015; Mikle Kolyada <zlogene@gentoo.org> sdl-sound-1.0.3-r1.ebuild:
+  sparc stable wrt bug #525764
+
+  18 Apr 2015; Pacho Ramos <pacho@gentoo.org> sdl-sound-1.0.3-r1.ebuild:
+  x86 stable wrt bug #525764
+
+  18 Apr 2015; Pacho Ramos <pacho@gentoo.org> sdl-sound-1.0.3-r1.ebuild:
+  ppc stable wrt bug #525764
+
+  03 Mar 2015; Yixun Lan <dlan@gentoo.org> sdl-sound-1.0.3-r1.ebuild:
+  add arm64 support, tested on A53 board
+
+  12 Feb 2015; Pacho Ramos <pacho@gentoo.org> sdl-sound-1.0.3-r1.ebuild:
+  amd64 stable, bug #525764
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> sdl-sound-1.0.3-r1.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+*sdl-sound-1.0.3-r1 (18 Apr 2014)
+
+  18 Apr 2014; Julian Ospald <hasufell@gentoo.org> +sdl-sound-1.0.3-r1.ebuild:
+  add multilib support
+
+  30 Apr 2013; Julian Ospald <hasufell@gentoo.org> sdl-sound-1.0.3.ebuild,
+  +files/sdl-sound-1.0.3-automake-1.13.patch:
+  fix build with automake-1.13 wrt #468060
+
+  25 Nov 2012; Fabian Groffen <grobian@gentoo.org> sdl-sound-1.0.3.ebuild:
+  Marked ~x64-macos
+
+  03 Sep 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  sdl-sound-1.0.3.ebuild:
+  Keyword ~arm.
+
+  21 Aug 2012; Julian Ospald <hasufell@gentoo.org> sdl-sound-1.0.3.ebuild,
+  +files/sdl-sound-1.0.3-underlinking.patch:
+  fix underlinking issues wrt #432192
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> sdl-sound-1.0.3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  17 Jan 2012; Michael Sterrett <mr_bones_@gentoo.org> sdl-sound-1.0.3.ebuild:
+  EAPI=2; split mod support between mikmod and modplug
+
+  27 Jul 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  sdl-sound-1.0.3.ebuild:
+  add IUSE=static-libs support
+
+  25 May 2008; Markus Rothe <corsair@gentoo.org> sdl-sound-1.0.3.ebuild:
+  Stable on ppc64; bug #223243
+
+  24 May 2008; nixnut <nixnut@gentoo.org> sdl-sound-1.0.3.ebuild:
+  Stable on ppc wrt bug 223243
+
+  22 May 2008; Markus Meier <maekke@gentoo.org> sdl-sound-1.0.3.ebuild:
+  amd64/x86 stable, bug #223243
+
+  22 May 2008; Ferris McCormick <fmccor@gentoo.org> sdl-sound-1.0.3.ebuild:
+  Sparc stable --- Bug #223243 --- works just fine.
+
+*sdl-sound-1.0.3 (20 Apr 2008)
+
+  20 Apr 2008; Mike Frysinger <vapier@gentoo.org> +sdl-sound-1.0.3.ebuild:
+  Version bump.
+
+*sdl-sound-1.0.2 (17 Apr 2008)
+
+  17 Apr 2008; Mike Frysinger <vapier@gentoo.org>
+  +files/sdl-sound-1.0.2-headers.patch, +sdl-sound-1.0.2.ebuild:
+  Version bump.
+
+  01 Nov 2007; Raúl Porcel <armin76@gentoo.org> sdl-sound-1.0.1-r2.ebuild:
+  sparc stable, thanks to Alex Maclean for testing
+
+  05 Jul 2007; Markus Rothe <corsair@gentoo.org> sdl-sound-1.0.1-r2.ebuild:
+  Stable on ppc64; bug #183438
+
+  29 Jun 2007; Lars Weiler <pylon@gentoo.org> sdl-sound-1.0.1-r2.ebuild:
+  Stable on ppc; bug #183438.
+
+  29 Jun 2007; Christoph Mende <angelos@gentoo.org>
+  sdl-sound-1.0.1-r2.ebuild:
+  Stable on amd64 wrt bug #183438
+
+  29 Jun 2007; Christian Faulhammer <opfer@gentoo.org>
+  sdl-sound-1.0.1-r2.ebuild:
+  stable x86, bug 183438
+
+  24 Apr 2007; Timothy Redaelli <drizzt@gentoo.org>
+  sdl-sound-1.0.1-r2.ebuild:
+  Add ~x86-fbsd keyword.
+  Thanks to Nathan Smith for reporting wrt bug #175779
+
+  25 Mar 2007; Mike Frysinger <vapier@gentoo.org> sdl-sound-1.0.1-r2.ebuild:
+  Delete local libtool.m4 cache so we can properly regenerate autotools #167736.
+
+  12 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  sdl-sound-1.0.1-r2.ebuild:
+  Remove dependency on the specific flac version.
+
+  12 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/flac-1.1.3.patch, sdl-sound-1.0.1-r2.ebuild:
+  Added patch from Josh Coalson (from FLAC) and closing bug #157849.
+
+  07 Nov 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  sdl-sound-1.0.1-r1.ebuild, sdl-sound-1.0.1-r2.ebuild:
+  require automake-1.5 (bug #154375)
+
+  19 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> sdl-sound-1.0.1.ebuild,
+  sdl-sound-1.0.1-r1.ebuild, sdl-sound-1.0.1-r2.ebuild:
+  Depend on 1.1.2 version of flac, as the 1.1.3 version changes API.
+
+  18 Mar 2006; Markus Rothe <corsair@gentoo.org> sdl-sound-1.0.1-r1.ebuild,
+  sdl-sound-1.0.1-r2.ebuild:
+  Added ~ppc64 to 1.0.1-r2 and bump 1.0.1-r1 to stable to make repoman happy
+  (x11-libs/wxGTK dependency)
+
+  11 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  sdl-sound-1.0.1-r2.ebuild:
+  Added optional smpeg support and closing bug #115299.
+
+  26 Dec 2005; Luca Barbato <lu_zero@gentoo.org> sdl-sound-1.0.1.ebuild,
+  sdl-sound-1.0.1-r1.ebuild:
+  oggvorbis Cleanup
+
+  30 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  sdl-sound-1.0.1.ebuild, sdl-sound-1.0.1-r1.ebuild,
+  sdl-sound-1.0.1-r2.ebuild:
+  Removed INSTALL.
+
+*sdl-sound-1.0.1-r2 (21 Jun 2005)
+
+  21 Jun 2005; Mike Frysinger <vapier@gentoo.org>
+  +sdl-sound-1.0.1-r2.ebuild:
+  Add libmodplug support by Tyler Montbriand #89241.
+
+*sdl-sound-1.0.1-r1 (30 Sep 2004)
+
+  30 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +sdl-sound-1.0.1-r1.ebuild:
+  Removed hard-coded smpeg support and have sdl-sound use the internal
+  decoder for mp3 instead.  smpeg is far too buggy to be used at this time.
+  As a result the unpack routine was cleaned up since the buggy test that
+  failed with gcc33 wasn't used anymore.  General cleaning of the ebuild
+  as well.
+
+  27 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> sdl-sound-1.0.1.ebuild:
+  inherit eutils for epatch
+
+  30 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org> sdl-sound-0.1.5.ebuild,
+  sdl-sound-1.0.0.ebuild, sdl-sound-1.0.1.ebuild:
+  mark stable for x86
+
+*sdl-sound-1.0.1 (14 Oct 2003)
+
+  04 Nov 2003; Mike Frysinger <vapier@gentoo.org> :
+  Add optional DEPEND/configure for speex and physfs #32489.
+
+  14 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org> sdl-sound-1.0.1.ebuild,
+  files/gcc331.patch:
+  add patch to fix up the problems gcc 3.3.1 has with the configure script.
+  This is to address bug 31163.
+
+  14 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org> sdl-sound-1.0.1.ebuild:
+  version bump
+
+*sdl-sound-1.0.0 (19 Mar 2003)
+
+  19 Mar 2003; Philip Walls <malverian@gentoo.org> :
+
+  Bumped libsdl dependency to 1.2.5
+
+  19 Mar 2003; Philip Walls <malverian@gentoo.org> sdl-sound-1.0.0.ebuild
+  files/digest-sdl-sound-1.0.0 :
+
+  Version bump
+ 
+*sdl-sound-0.1.5 (6 May 2002)
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+
+  12 Sep 2002; Owen Stampflee <owen@gentoo.org> :
+  Added PPC to KEYWORDS.
+
+  6 May 2002; Seemant Kulleen <seemant@gentoo.org> sdl-sound-0.1.5.ebuild
+  files/digest-sdl-sound-0.1.5 :
+
+  Version bump.
+
+*sdl-sound-0.1.4-r1 (12 Apr 2002)
+
+  12 Apr 2002; Seemant Kulleen <seemant@gentoo.org> sdl-sound-0.1.4-r1.ebuild :
+
+  Changed ogg USE toggle to oggvorbis
+
+*sdl-sound-0.1.4 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

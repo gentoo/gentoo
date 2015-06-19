@@ -1,0 +1,63 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-usbin/files/nfsmount.initd,v 1.3 2007/04/06 14:47:17 uberlord Exp $
+
+depend() {
+	need net rpcbind
+	use ypbind
+}
+
+start_statd() {
+	# Don't start rpc.statd if already started by init.d/nfs
+	killall -0 rpc.statd 2>/dev/null && return 0
+	ebegin "Starting NFS statd"
+	rpc.statd
+	eend $? "Error starting NFS statd"
+}
+
+stop_statd() {
+	# Don't stop rpc.statd if it's in use by init.d/nfs
+	killall -0 nfsd 2>/dev/null && return 0
+	# Make sure it's actually running
+	killall -0 rpc.statd 2>/dev/null || return 0
+	# Okay, all tests passed, stop rpc.statd
+	ebegin "Stopping NFS statd"
+	killall rpc.statd
+	eend $? "Error stopping NFS statd"
+}
+
+start_lockd() {
+	# Don't start rpc.lockd if already started by init.d/nfs
+	killall -0 rpc.lockd 2>/dev/null && return 0
+	ebegin "Starting NFS lockd"
+	rpc.lockd
+	eend $? "Error starting NFS lockd"
+}
+
+stop_lockd() {
+	# Don't stop rpc.lockd if it's in use by init.d/nfs
+	killall -0 nfsd 2>/dev/null && return 0
+	# Make sure it's actually running
+	killall -0 rpc.lockd 2>/dev/null || return 0
+	# Okay, all tests passed, stop rpc.lockd
+	ebegin "Stopping NFS lockd"
+	killall rpc.lockd
+	eend $? "Error stopping NFS lockd"
+}
+
+start() {
+	start_statd
+	start_lockd
+	ebegin "Mounting NFS filesystems"
+	mount -a -t nfs
+	eend $? "Error mounting NFS filesystems"
+}
+
+stop() {
+	ebegin "Unmounting NFS filesystems"
+	umount -a -t nfs
+	eend $? "Error unmounting NFS filesystems"
+	stop_statd
+	stop_lockd
+}

@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Utility to output and modify parameters on a SCSI device, like hdparm
+EAPI=4
+HOMEPAGE=http://sg.danny.cz/sg/sdparm.html
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-linux ~arm-linux ~x86-linux
+LICENSE=BSD
+RDEPEND=!<sys-apps/sg3_utils-1.28
+SLOT=0
+SRC_URI=http://sg.danny.cz/sg/p/sdparm-1.07.tgz
+_md5_=5c50509a6a8ba314b91e56d3e21d1f94

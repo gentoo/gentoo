@@ -1,0 +1,30 @@
+# ChangeLog for app-emacs/browse-kill-ring
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/browse-kill-ring/ChangeLog,v 1.6 2015/06/05 12:22:18 jlec Exp $
+
+  05 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*browse-kill-ring-1.3c (04 Dec 2011)
+
+  04 Dec 2011; Ulrich Mueller <ulm@gentoo.org> +browse-kill-ring-1.3c.ebuild:
+  Version bump, bug 392291.
+
+  02 Dec 2011; Ulrich Mueller <ulm@gentoo.org> browse-kill-ring-1.3.ebuild:
+  Update HOMEPAGE, bug 392291. Bump EAPI to 4.
+
+  18 Mar 2010; Christian Faulhammer <fauli@gentoo.org>
+  browse-kill-ring-1.3.ebuild:
+  fix HOMEPAGE
+
+  14 Jun 2008; Ulrich Mueller <ulm@gentoo.org> browse-kill-ring-1.3.ebuild:
+  Do not assign SIMPLE_ELISP since elisp.eclass now detects this case
+  automatically.
+
+*browse-kill-ring-1.3 (21 Mar 2008)
+
+  21 Mar 2008; Ulrich Mueller <ulm@gentoo.org>
+  +files/50browse-kill-ring-gentoo.el, +metadata.xml,
+  +browse-kill-ring-1.3.ebuild:
+  Initial import from bug 207185. Ebuild contributed by MATSUYAMA Tomohiro
+  <matsuyama@ariel-networks.com>.

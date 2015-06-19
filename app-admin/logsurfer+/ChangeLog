@@ -1,0 +1,48 @@
+# ChangeLog for app-admin/logsurfer+
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/logsurfer+/ChangeLog,v 1.12 2013/12/23 00:49:31 tomwij Exp $
+
+  23 Dec 2013; Tom Wijsman <TomWij@gentoo.org> -files/logsurfer.initd:
+  [QA] Remove unused files.
+
+  24 Apr 2013; Ulrich Müller <ulm@gentoo.org> logsurfer+-1.8-r1.ebuild:
+  Fix LICENSE and add bindist restriction, bug 444330.
+
+  03 Feb 2013; Pacho Ramos <pacho@gentoo.org> -logsurfer+-1.7.ebuild,
+  -logsurfer+-1.8.ebuild, metadata.xml:
+  Cleanup due #22900
+
+  05 Apr 2012; Jeff Horelick <jdhore@gentoo.org> logsurfer+-1.8-r1.ebuild:
+  marked x86 per bug 404591
+
+  28 Mar 2012; Agostino Sarubbo <ago@gentoo.org> logsurfer+-1.8-r1.ebuild:
+  Stable for amd64, wrt bug #404591
+
+  19 Nov 2011; Markos Chandras <hwoarang@gentoo.org> logsurfer+-1.8.ebuild:
+  Stable on amd64 wrt bug #387397
+
+  17 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> logsurfer+-1.8.ebuild:
+  x86 stable wrt bug #387397
+
+*logsurfer+-1.8-r1 (11 Nov 2011)
+
+  11 Nov 2011; MATSUU Takuto <matsuu@gentoo.org> +logsurfer+-1.8-r1.ebuild,
+  +files/logsurfer-1.8.initd:
+  Added logsurfer user. Fixed init.d issue, bug #387397.
+
+*logsurfer+-1.8 (22 Oct 2011)
+
+  22 Oct 2011; MATSUU Takuto <matsuu@gentoo.org> +logsurfer+-1.8.ebuild:
+  Version bumped, bug #387397.
+
+  24 Oct 2008; Markus Meier <maekke@gentoo.org> logsurfer+-1.7.ebuild:
+  amd64/x86 stable, bug #243350
+
+  13 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  fix herd
+
+*logsurfer+-1.7 (30 Dec 2006)
+
+  30 Dec 2006; MATSUU Takuto <matsuu@gentoo.org> +files/logsurfer.confd,
+  +files/logsurfer.initd, +metadata.xml, +logsurfer+-1.7.ebuild:
+  Initial import.

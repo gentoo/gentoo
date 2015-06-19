@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>java</herd>
+	<longdescription>
+	JRobin is a 100% pure Java alternative to RRDTool, with about exactly
+	the same specifications. If you provide the same data to RRDTool and
+	JRobin, you will get exactly the same results and graphs. All standard
+	RRDTool operations are supported.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">OpenNMS/jrobin</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,25 @@
+#!/sbin/runscript
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Perlbal/files/perlbal_init.d_1.58,v 1.1 2007/05/13 08:18:36 robbat2 Exp $
+
+NAME="perlbal"
+BINARY="/usr/bin/perlbal"
+
+depend() {
+	use net
+}
+
+start() {
+	ebegin "Starting $NAME"
+	# Add --pidfile when upstream supports PIDFILES
+	start-stop-daemon --start \
+		--exec ${BINARY} -- ${PERLBAL_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping $NAME"
+	start-stop-daemon --stop --exec "${BINARY}"
+	eend $?
+}
+
+# vim: ft=gentoo-init-d:

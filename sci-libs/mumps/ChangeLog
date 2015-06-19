@@ -1,0 +1,56 @@
+# ChangeLog for sci-libs/mumps
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/mumps/ChangeLog,v 1.3 2015/03/06 09:56:13 bircoph Exp $
+
+*mumps-4.10.0-r1 (06 Mar 2015)
+
+  06 Mar 2015; Andrew Savchenko <bircoph@gentoo.org> -mumps-4.10.0.ebuild,
+  +mumps-4.10.0-r1.ebuild:
+  Revbump on second thought, since run-time problem is fixed.
+
+  06 Mar 2015; Andrew Savchenko <bircoph@gentoo.org> mumps-4.10.0.ebuild:
+  mumps is not compatible with >=scotch-6, see bug 541830.
+
+  14 Jan 2014; Sébastien Fabbro <bicatali@gentoo.org> +mumps-4.10.0.ebuild,
+  +metadata.xml:
+  Initial import in main tree
+
+  17 Jun 2013; Justin Bronder <jsbronder@gentoo.org> mumps-4.10.0-r2.ebuild:
+  Don't let openmpi override malloc, works around sandbox issue in #462602
+
+*mumps-4.10.0-r2 (11 Dec 2012)
+
+  11 Dec 2012; Sébastien Fabbro <bicatali@gentoo.org> +mumps-4.10.0-r2.ebuild,
+  -mumps-4.10.0-r1.ebuild, metadata.xml:
+  sci-libs/mumps: Install libpord, force -j1 on makefile because of random
+  parallel build failures, separate dummy sequential mpi library from the common
+  mumps library
+
+  15 Jul 2012; Sébastien Fabbro <bicatali@gentoo.org> mumps-4.10.0-r1.ebuild:
+  sci-libs/mumps: Merge dummy sequential mpi into sequential mumps
+
+  13 Jul 2012; Sébastien Fabbro <bicatali@gentoo.org> mumps-4.10.0.ebuild:
+  sci-libs/mumps: fix underlinking for sequential library
+
+  12 Jul 2012; Sébastien Fabbro <bicatali@gentoo.org> mumps-4.10.0.ebuild:
+  sci-libs/mumps: Shared library fixes and prefix love
+
+  12 Jul 2012; Sébastien Fabbro <bicatali@gentoo.org> mumps-4.10.0.ebuild:
+  sci-libs/mumps: prefix love
+
+  13 Mar 2012; Sébastien Fabbro <bicatali@gentoo.org> mumps-4.10.0.ebuild,
+  metadata.xml:
+  Fixed for sequential (non mpi) libraries
+
+  12 Mar 2012; Sébastien Fabbro <bicatali@gentoo.org> mumps-4.10.0.ebuild:
+  Only allow earlier parmetis versions
+
+  12 Mar 2012; Sébastien Fabbro <bicatali@gentoo.org> +mumps-4.10.0.ebuild,
+  +metadata.xml:
+  metis-mpi is now parmetis
+
+*mumps-4.10.0 (01 Jun 2011)
+
+  01 Jun 2011; Sébastien Fabbro <bicatali@gentoo.org> +mumps-4.10.0.ebuild,
+  +metadata.xml:
+  Initial import

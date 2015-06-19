@@ -1,0 +1,352 @@
+diff --git a/configure.in b/configure.in
+index 0b9ac65..a68d7c1 100644
+--- a/configure.in
++++ b/configure.in
+@@ -204,8 +204,6 @@ tm.__tm_gmtoff__ = tm.__tm_gmtoff__*2;
+ AC_DEFINE(HAVE__GMTOFF__) AC_MSG_RESULT(yes)
+ ],[AC_MSG_RESULT(no)])
+ 
+-LD=ld
+-
+ ##
+ ##
+ ##
+@@ -309,18 +307,18 @@ CXXCOMPFLAGS=-c
+ CXXSOFLAGS=$SOFLAGS
+ 
+ case "$host_os" in
+-irix*)    CFLAGS="-D_SGI_MP_SOURCE"
++irix*)    EXTCFLAGS+="-D_SGI_MP_SOURCE"
+ 	  ;;
+-osf*)     CFLAGS="$CFLAGS -D_REENTRANT -DOSF"
++osf*)     EXTCFLAGS+="$CFLAGS -D_REENTRANT -DOSF"
+ 	  LIBS="-oldstyle_liblookup -lpthread $LIBS"
+ 
+ 	  ;;
+-freebsd*) CFLAGS="$CFLAGS -D_REENTRANT -DFREEBSD -D_THREAD_SAFE -DFD_SETSIZE=2048 -I."
++freebsd*) EXTCFLAGS+="$CFLAGS -D_REENTRANT -DFREEBSD -D_THREAD_SAFE -DFD_SETSIZE=2048 -I."
+ 	  CXXSOFLAGS="-shared"
+ 	  LIBS="$LEXLIB $LIBS"
+ 	  if test "$large_files" = "yes" ; then
+ 		## FreeBSD need no any special flags for 64bit files
+-		CFLAGS="$CFLAGS -DWITH_LARGE_FILES"
++		EXTCFLAGS+=" -DWITH_LARGE_FILES"
+ 	  fi
+ 	  if test "X$LIBGB_NAME" != "X" ; then
+ 		LIBGB_NAME="$LIBGB_NAME -lstdc++"
+@@ -328,39 +326,38 @@ freebsd*) CFLAGS="$CFLAGS -D_REENTRANT -DFREEBSD -D_THREAD_SAFE -DFD_SETSIZE=204
+           rel=`uname -r`
+           case "$rel" in
+             4*)
+-              CFLAGS="$CFLAGS -pthread"
++              EXTCFLAGS+=" -pthread"
+               ;;
+             5*)
+               LIBS="-lc_r $LEXLIB $LIBS"
+               ;;
+             *)
+-              CFLAGS="$CFLAGS -pthread"
++              EXTCFLAGS+=" -pthread"
+               LIBS="-lc_r $LEXLIB $LIBS"
+               ;;
+           esac
+ 	  RPATH_OPTION="-rpath"
+ 	  ;;
+-bsdi*)	  CFLAGS="$CFLAGS -pthread -DBSDOS"
++bsdi*)	  EXTCFLAGS+=" -pthread -DBSDOS"
+           rel=`uname -r`
+           case "$rel" in
+             4*)
+-              CFLAGS="$CFLAGS -pthread"
++              EXTCFLAGS+=" -pthread"
+               ;;
+             5*)
+               LIBS="-lc_r $LEXLIB $LIBS"
+               ;;
+             *)
+-              CFLAGS="$CFLAGS -pthread"
++              EXTCFLAGS+=" -pthread"
+               LIBS="-lc_r $LEXLIB $LIBS"
+               ;;
+           esac
+ 	  LIBS="$LEXLIB $LIBS"
+ 	  CXX=g++
+ 	  ;;
+-gnu*|linux*)   CFLAGS="$CFLAGS -D_REENTRANT -DLINUX"
+-	  CXX=g++
++gnu*|linux*)   EXTCFLAGS+=" -D_REENTRANT -DLINUX"
+ 	  if test "$pthread_in" = "pthreads" ; then
+-		CFLAGS="$CFLAGS -D_MIT_POSIX_THREADS"
++		EXTCFLAGS+=" -D_MIT_POSIX_THREADS"
+ 		LIBS="-lpthreads $LEXLIB -ldb $LIBS"
+ 		echo Probably you have MIT-threads. If yes, swich to LinuxThreads.
+ 	  else
+@@ -369,11 +366,11 @@ gnu*|linux*)   CFLAGS="$CFLAGS -D_REENTRANT -DLINUX"
+ 	  if test "$large_files" = "yes" ; then
+ 		## Linux ext2fs does'nt support large files yet.
+ 		AC_MSG_RESULT(Warning: Linux ext2fs doesn't support large files.)
+-		CFLAGS="$CFLAGS -DWITH_LARGE_FILES -D_FILE_OFFSET_BITS=64 -D__USE_LARGEFILE64 -D__USE_FILE_OFFSET64"
++		EXTCFLAGS+=" -DWITH_LARGE_FILES -D_FILE_OFFSET_BITS=64 -D__USE_LARGEFILE64 -D__USE_FILE_OFFSET64"
+ 	  fi
+ 	  RPATH_OPTION="-rpath"
+ 	  ;;
+-solaris*) CFLAGS="$CFLAGS -D_REENTRANT -DSOLARIS"
++solaris*) EXTCFLAGS="$CFLAGS -D_REENTRANT -DSOLARIS"
+ 	  if test "X$LIBDB_REAL_PATH" != "X" ; then
+ 	  	LIBDB_NAME="-R$LIBDB_REAL_PATH $LIBDB_NAME"
+ 	  fi
+@@ -390,7 +387,7 @@ solaris*) CFLAGS="$CFLAGS -D_REENTRANT -DSOLARIS"
+ 				LIBGB_NAME="$LIBGB_NAME -lstdc++"
+ 	  		fi
+ 			;;
+-		*)	CFLAGS="$CFLAGS -mt"
++		*)	EXTCFLAGS+="-mt"
+ 			SUNPRO_CC_VER=`CC -V 2>&1 | sed 's/.*C++ //' | sed 's/\..*//'`
+ 			if test "$SUNPRO_CC_VER" = "5" ; then
+ 			    CXX="CC -compat=4 -w -fast -xO3 -DNO_MEMBER_TEMPLATES=1"
+@@ -407,14 +404,14 @@ solaris*) CFLAGS="$CFLAGS -D_REENTRANT -DSOLARIS"
+ 			;;
+ 	  esac
+ 	  if test "$large_files" = "yes" ; then
+-		CFLAGS="$CFLAGS -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -DWITH_LARGE_FILES"
++		EXTCFLAGS=" -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -DWITH_LARGE_FILES"
+ 	  fi
+ 	  ;;
+ aix4*)    AC_DEFINE(MODULES)
+ 	  LIBS="$LIBS -ldl $LEXLIB"
+           SOFLAGS=-G
+           case "$CC" in
+-          gcc*)   CFLAGS="-D_THREAD_SAFE $CFLAGS"
++          gcc*)   EXTCFLAGS+=" -D_THREAD_SAFE $CFLAGS"
+ 		  CXX=g++
+                   LIBS="$LIBS -lpthreads -lc_r"
+                   ;;
+@@ -424,7 +421,7 @@ aix4*)    AC_DEFINE(MODULES)
+                   ;;
+ 	  esac
+           if test "$large_files" = "yes" ; then
+-		CFLAGS="$CFLAGS -D_LARGE_FILES -D_LARGE_FILE_API -DWITH_LARGE_FILES"
++		EXTCFLAGS+=" -D_LARGE_FILES -D_LARGE_FILE_API -DWITH_LARGE_FILES"
+ 	  fi
+ 	  ;;
+ esac
+@@ -432,14 +429,14 @@ esac
+ if test "X$MYSQL_PATH" != "X" ; then
+     LIBS="-L$MYSQL_PATH/lib -lmysqlclient $LIBS"
+     AC_DEFINE(HAVE_MYSQL)
+-    CFLAGS="$CFLAGS -I$MYSQL_PATH/include"
++    CFLAGS+=" -I$MYSQL_PATH/include"
+     MYSQL_LIB="-L$MYSQL_PATH/lib -lmysqlclient"
+ fi
+ 
+ if test "X$PGSQL_PATH" != "X" ; then
+     LIBS="$LIBS -L$PGSQL_PATH/lib -lpg"
+     AC_DEFINE(HAVE_PGSQL)
+-    CFLAGS="-I$PGSQL_PATH/include $LIBS"
++    CFLAGS+="-I$PGSQL_PATH/include $LIBS"
+     PGSQL_LIB="-L$PGSQL_PATH/lib -lpg"
+ fi
+ 
+@@ -601,7 +598,7 @@ if test "X$LIBDB_PATH" != "X" ; then
+     esac
+ fi
+ 
+-CFLAGS="$CFLAGS $LIBDB_INCL"
++EXTCFLAGS+=" $LIBDB_INCL"
+ 
+ AC_MSG_CHECKING(for GigaBASE)
+ if test "$LIBGB_PATH" = "no" ; then
+@@ -653,7 +650,7 @@ elif test -r "/usr/local/lib/libz.a"; then
+     AC_DEFINE(HAVE_ZLIB)
+     AC_MSG_RESULT(/usr/local/lib/libz.a)
+     if test "X`echo $CFLAGS | grep '\-I/usr/local/include'`" = "X"; then
+-	CFLAGS="$CFLAGS -I/usr/local/include"
++	EXTCFLAGS+=" -I/usr/local/include"
+     fi
+ elif test -r "/usr/lib/libz.a"; then
+     LIBZ_NAME="/usr/lib/libz.a"
+@@ -689,7 +686,7 @@ EOF
+ 	res=`./confmain`
+     fi
+     if test "$res" = "yes"; then
+-	    CFLAGS="$CFLAGS -export-dynamic"
++	    EXTCFLAGS+=" -export-dynamic"
+ 	    AC_MSG_RESULT(yes)
+     else
+ 	    AC_MSG_RESULT(no)
+@@ -698,7 +695,7 @@ fi
+ rm -f confmain*
+ 
+ echo $CC
+-echo $CFLAGS
++echo $EXTCFLAGS
+ echo $LIBS
+ 
+ if test "${enable_oops_user+set}" != set; then
+@@ -728,8 +725,6 @@ AC_SUBST(MOD_EXT)
+ AC_SUBST(OPT_MODS)
+ AC_SUBST(STATIC_MODULES)
+ AC_SUBST(CHOWN)
+-AC_SUBST(LD)
+-AC_SUBST(LDFLAGS)
+ AC_SUBST(VER)
+ AC_SUBST(LIBGB_PATH)
+ AC_SUBST(LIBGB_NAME)
+@@ -795,6 +790,7 @@ AC_SUBST(LIBDB_INCL)
+ AC_SUBST(LIBZ_NAME)
+ AC_SUBST(EXTRASRC)
+ AC_SUBST(EXTLDFLAGS)
++AC_SUBST(EXTCFLAGS)
+ 
+ AC_DEFINE_UNQUOTED(OOPS_HOME, "$oops_prefix/oops")
+ AC_DEFINE_UNQUOTED(OOPS_SBINDIR, "$oops_sbindir")
+diff --git a/src/Makefile.in b/src/Makefile.in
+index b366c2f..0ac6aff 100644
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -1,6 +1,4 @@
+-CC = @CC@
+-CXX = @CXX@
+-LDFLAGS = @LDFLAGS@
++EXTCFLAGS = @EXTCFLAGS@
+ EXTLDFLAGS = @EXTLDFLAGS@
+ INSTALL = @INSTALL@ @SETOWNER@
+ INSTALL_DATA = @INSTALL@ -m 644 @SETOWNER@
+@@ -29,13 +27,13 @@ EXTRAOBJS = $(EXTRASRC:.c=.o)
+ 
+ #CFLAGS = -Wall -ggdb -D_REENTRANT -D_POSIX_PTHREADS_SEMANTICS
+ 
+-CFLAGS = @CFLAGS@ -fPIE @DEFS@
++CFLAGS += -fPIE @DEFS@
+ 
+ VER=@VER@
+ OOPSPATH=@prefix@/oops
+ 
+ .c.o:
+-	${CC} -c ${CFLAGS} ${CDEFS} $<
++	${CC} -c ${CFLAGS} ${EXTCFLAGS} ${CDEFS} $<
+ 
+ all:	extras modules oops
+ 
+@@ -45,7 +43,7 @@ modules::
+ 	cd modules; $(MAKE)
+ 
+ oops:	${OBJS}
+-	${CXX} ${CFLAGS} ${OBJS} ${EXTLDFLAGS} ${LIBGB_PATH} ${LIBGB_NAME} ${OOPS_LIBS} ${LIBZ_NAME} ${OOPS_RPATH} -o oops
++	${CXX} ${CFLAGS} ${EXTCFLAGS} ${OBJS} ${EXTLDFLAGS} ${LIBGB_PATH} ${LIBGB_NAME} ${OOPS_LIBS} ${LIBZ_NAME} ${OOPS_RPATH} -o oops
+ 
+ mkinstalldirs:
+ 	../mkinstalldirs ${OOPSPATH} \
+@@ -150,7 +148,7 @@ version.h:	version
+ 		echo "#define VERSION \""`cat version`"\""> version.h
+ 
+ lex.yy.o: lex.yy.c y.tab.h oops.h
+-	${CC} ${CFLAGS} ${CDEFS} -c lex.yy.c
++	${CC} ${CFLAGS} ${EXTCFLAGS} ${CDEFS} -c lex.yy.c
+ 
+ lex.yy.c: parser.l
+ 	@LEX@ parser.l
+@@ -159,13 +157,13 @@ y.tab.c: parser.y
+ 	@YACC@ -d parser.y
+ 
+ y.tab.o: y.tab.c oops.h
+-	${CC} ${CFLAGS} ${CDEFS} -c y.tab.c
++	${CC} ${CFLAGS} ${EXTCFLAGS} ${CDEFS} -c y.tab.c
+ 
+ malloc.o: malloc.c
+-	${CC} ${CFLAGS} ${CDEFS} -DEBUG -c malloc.c
++	${CC} ${CFLAGS} ${EXTCFLAGS} ${CDEFS} -DEBUG -c malloc.c
+ 
+ gnu_regex.o: gnu_regex.c
+-	${CC} ${CFLAGS} -DREGEX -c gnu_regex.c
++	${CC} ${CFLAGS} ${EXTCFLAGS} -DREGEX -c gnu_regex.c
+ 
+ clean:
+ 	rm -f *o lex.yy.c  y.tab.[ch] version.h oops DEADJOE
+diff --git a/src/modules/Makefile.in b/src/modules/Makefile.in
+index d8e3c50..60c6b73 100644
+--- a/src/modules/Makefile.in
++++ b/src/modules/Makefile.in
+@@ -1,9 +1,4 @@
+-CC = @CC@
+-CXX = @CXX@
+ LIBS = @LIBS@
+-CFLAGS = @CFLAGS@ -fPIC @DEFS@
+-LDFLAGS = @LDFLAGS@
+-LD = @LD@
+ SOFLAGS = @SOFLAGS@
+ OPT_MODS = @OPT_MODS@
+ CXXCOMPFLAGS = @LIBGB_INCL@ @CXXCOMPFLAGS@
+@@ -15,27 +10,30 @@ LIBDB_NAME = @LIBDB_NAME@
+ MYSQL_LIB = @MYSQL_LIB@
+ PGSQL_LIB = @PGSQL_LIB@
+ EXTRASRC = @EXTRASRC@
++EXTCFLAGS = @EXTCFLAGS@
++
++CFLAGS += -fPIC @DEFS@
+ 
+ .SUFFIXES:	.c .cpp .o .so
+ 
+ EXTRAOBJS = $(EXTRASRC:%c=../%o)
+ 
+ .c.o:
+-	${CC} ${CFLAGS} ${LIBDB_INCL} ${CDEFS} -c $<
++	${CC} ${CFLAGS} ${EXTCFLAGS} ${LIBDB_INCL} ${CDEFS} -c $<
+ #
+ .o.so:
+ 	${LD} $(SOFLAGS) $(LDFLAGS) -o $@ $< $(LIBS)
+ 
+ .c.so:
+-	${CC} ${CFLAGS} ${LIBDB_INCL} ${SOFLAGS} ${CDEFS} -c $<
++	${CC} ${CFLAGS} ${EXTCFLAGS} ${LIBDB_INCL} ${SOFLAGS} ${CDEFS} -c $<
+ 	${LD} $(SOFLAGS) $(LDFLAGS) -o $@ $(<:.c=.o) $(LIBS)
+ 
+ .cpp.o:
+-	${CXX} ${CFLAGS} ${SOFLAGS} ${CDEFS} $(CXXCOMPFLAGS) $< -o $*.a
++	${CXX} ${CFLAGS} ${EXTCFLAGS} ${SOFLAGS} ${CDEFS} $(CXXCOMPFLAGS) $< -o $*.a
+ 	mv $*.a $*.o
+ 
+ .cpp.so:
+-	${CXX} ${CFLAGS} ${CXXSOFLAGS} ${CDEFS} $< @LIBGB_PATH@ @LIBGB_NAME@ $(LIBS) -o $@
++	${CXX} ${CFLAGS} ${EXTCFLAGS} ${CXXSOFLAGS} ${CDEFS} $< @LIBGB_PATH@ @LIBGB_NAME@ $(LIBS) -o $@
+ 
+ all:	log_dummy.@MOD_EXT@ \
+ 	err.@MOD_EXT@ \
+@@ -97,30 +95,30 @@ custom_log.@MOD_EXT@:	custom_log.c ../modules.h ../oops.h
+ #berkeley_db_api.@MOD_EXT@:	berkeley_db_api.c ../modules.h ../oops.h
+ 
+ berkeley_db_api.o:	berkeley_db_api.c ../modules.h ../oops.h
+-	${CC} ${CFLAGS} ${CDEFS} ${LIBDB_INCL} -c berkeley_db_api.c -o berkeley_db_api.o
++	${CC} ${CFLAGS} ${EXTCFLAGS} ${CDEFS} ${LIBDB_INCL} -c berkeley_db_api.c -o berkeley_db_api.o
+ 
+ berkeley_db_api.so: berkeley_db_api.c ../modules.h ../oops.h
+-	${CC} ${CFLAGS} ${CDEFS} ${LIBDB_INCL} -c berkeley_db_api.c -o berkeley_db_api.o
++	${CC} ${CFLAGS} ${EXTCFLAGS} ${CDEFS} ${LIBDB_INCL} -c berkeley_db_api.c -o berkeley_db_api.o
+ 	${LD} $(SOFLAGS) $(LDFLAGS) -L $(LIBDB_PATH)/lib berkeley_db_api.o -o berkeley_db_api.so $(LIBS) $(LIBDB_NAME) 
+ 
+ gigabase_db_api.@MOD_EXT@:	gigabase_db_api.cpp ../modules.h ../oops.h
+ 
+ oopsctl: oopsctl.c ../modules.h ../config.h  ../oops.h
+-	${CC} ${CFLAGS} ${CDEFS} oopsctl.c ${EXTRAOBJS} ${LIBS} -o oopsctl
++	${CC} ${CFLAGS} ${EXTCFLAGS} ${CDEFS} oopsctl.c ${EXTRAOBJS} ${LIBS} -o oopsctl
+ 
+ passwd_pgsql.so: passwd_sql.c ../modules.h ../oops.h
+-	${CC} ${CFLAGS} ${CDEFS} -D__PGSQL -c passwd_sql.c -o passwd_pgsql.o
++	${CC} ${CFLAGS} ${EXTCFLAGS} ${CDEFS} -D__PGSQL -c passwd_sql.c -o passwd_pgsql.o
+ 	${LD} $(SOFLAGS) $(LDFLAGS) -o passwd_pgsql.so passwd_pgsql.o $(LIBS) $(PGSQL_LIB)
+ 
+ passwd_mysql.so: passwd_sql.c ../modules.h ../oops.h
+-	${CC} ${CFLAGS} ${CDEFS} -D__MYSQL -c passwd_sql.c -o passwd_mysql.o
++	${CC} ${CFLAGS} ${EXTCFLAGS} ${CDEFS} -D__MYSQL -c passwd_sql.c -o passwd_mysql.o
+ 	${LD} $(SOFLAGS) $(LDFLAGS) -o passwd_mysql.so passwd_mysql.o $(LIBS) $(MYSQL_LIB)
+ 
+ passwd_pgsql.o: passwd_sql.c ../modules.h ../oops.h
+-	${CC} ${CFLAGS} ${CDEFS} -D__PGSQL -c passwd_sql.c -o passwd_pgsql.o
++	${CC} ${CFLAGS} ${EXTCFLAGS} ${CDEFS} -D__PGSQL -c passwd_sql.c -o passwd_pgsql.o
+ 
+ passwd_mysql.o: passwd_sql.c ../modules.h ../oops.h
+-	${CC} ${CFLAGS} ${CDEFS} -D__MYSQL -c passwd_sql.c -o passwd_mysql.o
++	${CC} ${CFLAGS} ${EXTCFLAGS} ${CDEFS} -D__MYSQL -c passwd_sql.c -o passwd_mysql.o
+ 
+ 
+ clean:

@@ -1,0 +1,270 @@
+# ChangeLog for sci-chemistry/cns
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/cns/ChangeLog,v 1.56 2014/06/09 07:32:35 jlec Exp $
+
+  09 Jun 2014; Justin Lecher <jlec@gentoo.org> cns-1.2.1-r8.ebuild:
+  Readd Stable keyowrds, #512792
+
+  08 Jun 2014; Justin Lecher <jlec@gentoo.org> -cns-1.2.1-r7.ebuild,
+  -cns-1.3_p7.ebuild, metadata.xml:
+  Stabilize; drop pre EAPI=5 ebuilds, #478584; add longdescription, #511734
+
+*cns-1.3_p7-r1 (09 Oct 2013)
+*cns-1.2.1-r8 (09 Oct 2013)
+
+  09 Oct 2013; Justin Lecher <jlec@gentoo.org> +cns-1.2.1-r8.ebuild,
+  +cns-1.3_p7-r1.ebuild, metadata.xml:
+  Bump EAPI
+
+  27 Nov 2012; Justin Lecher <jlec@gentoo.org> cns-1.2.1-r7.ebuild,
+  cns-1.3_p7.ebuild:
+  Drop default value of FCFLAGS as it is in the profile these days
+
+  19 Oct 2012; Justin Lecher <jlec@gentoo.org> cns-1.2.1-r7.ebuild,
+  cns-1.3_p7.ebuild:
+  Remove virtual/fortran and always call fortran-2_pkg_setup as intend by the
+  updated fortran-2.eclass
+
+  10 Jul 2012; Justin Lecher <jlec@gentoo.org> -cns-1.1.ebuild,
+  -cns-1.2.1-r6.ebuild, -files/1.2.1-aria.patch,
+  -files/1.1-time-length-10.patch,
+  -files/1.2-allow-unknown-architectures.patch:
+  Drop old
+
+  10 Jul 2012; Jeff Horelick <jdhore@gentoo.org> cns-1.2.1-r7.ebuild:
+  marked x86 per bug 419859
+
+*cns-1.3_p7 (04 Jul 2012)
+
+  04 Jul 2012; Justin Lecher <jlec@gentoo.org> +files/1.3_p7-delete.patch,
+  +files/1.3_p7-gentoo.patch, -files/1.3_p5-delete.patch,
+  -files/1.3_p5-gentoo.patch, -files/cns_solve_env_sh-1.3_p5,
+  -cns-1.3_p5.ebuild, +files/cns_solve_env_sh-1.3_p7, +cns-1.3_p7.ebuild:
+  Version Bump, #424655
+
+  12 Jun 2012; Agostino Sarubbo <ago@gentoo.org> cns-1.2.1-r7.ebuild:
+  Stable for amd64, wrt bug #419859
+
+  06 Jun 2012; Justin Lecher <jlec@gentoo.org> cns-1.2.1-r7.ebuild:
+  Restrict test suite as it need manual inspection of the results
+
+  21 Mar 2012; Justin Lecher <jlec@gentoo.org> cns-1.2.1-r7.ebuild:
+  Change FFLAGS against FCFLAGS
+
+  06 Feb 2012; Justin Lecher <jlec@gentoo.org> -cns-1.2.1.ebuild,
+  -cns-1.2.1-r5.ebuild:
+  Drop old
+
+  04 Feb 2012; Thomas Kahle <tomka@gentoo.org> cns-1.2.1-r6.ebuild:
+  marked x86 per bug 391555
+
+  26 Nov 2011; Markos Chandras <hwoarang@gentoo.org> cns-1.2.1-r6.ebuild:
+  Stable on amd64 wrt bug #391555
+
+*cns-1.2.1-r7 (30 Aug 2011)
+
+  30 Aug 2011; Justin Lecher <jlec@gentoo.org> +cns-1.2.1-r7.ebuild,
+  metadata.xml:
+  Bump patches to aria-2.3.2
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> cns-1.1.ebuild,
+  cns-1.2.1.ebuild, cns-1.2.1-r5.ebuild, cns-1.2.1-r6.ebuild,
+  cns-1.3_p5.ebuild:
+  Add dependency on virtual/fortran
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> cns-1.1.ebuild,
+  cns-1.2.1.ebuild, cns-1.2.1-r5.ebuild, cns-1.2.1-r6.ebuild,
+  cns-1.3_p5.ebuild:
+  Added fortran-2.eclass support
+
+  28 May 2011; Justin Lecher <jlec@gentoo.org> cns-1.2.1-r5.ebuild,
+  cns-1.2.1-r6.ebuild, cns-1.3_p5.ebuild:
+  Ebuild contains leading spaces on line: fixed
+
+  28 May 2011; Justin Lecher <jlec@gentoo.org> cns-1.2.1-r5.ebuild,
+  cns-1.2.1-r6.ebuild, cns-1.3_p5.ebuild:
+  Steal bitness check from dev-libs/nss
+
+  28 May 2011; Justin Lecher <jlec@gentoo.org> cns-1.2.1-r6.ebuild:
+  Removed bad alias definition
+
+  11 May 2011; Justin Lecher <jlec@gentoo.org> cns-1.2.1.ebuild,
+  cns-1.2.1-r5.ebuild, cns-1.2.1-r6.ebuild:
+  Remove unnessesary definition of g77on()
+
+*cns-1.2.1-r6 (05 Apr 2011)
+
+  05 Apr 2011; Justin Lecher <jlec@gentoo.org> +cns-1.2.1-r6.ebuild:
+  Vaxlib is deprecated
+
+*cns-1.3_p5 (13 Feb 2011)
+
+  13 Feb 2011; Justin Lecher <jlec@gentoo.org> +files/1.3_p5-delete.patch,
+  +files/1.3_p5-gentoo.patch, -files/1.3_p3-delete.patch,
+  -files/1.3_p3-gentoo.patch, -files/cns_solve_env_sh-1.3_p3,
+  -cns-1.3_p3.ebuild, +files/cns_solve_env_sh-1.3_p5, +cns-1.3_p5.ebuild:
+  Version Bump
+
+  17 Dec 2010; Justin Lecher <jlec@gentoo.org> files/1.2.1-gentoo.patch,
+  cns-1.2.1.ebuild, cns-1.2.1-r5.ebuild, cns-1.3_p3.ebuild,
+  files/1.3_p3-gentoo.patch:
+  Correct handling of OpenMp support
+
+  17 Dec 2010; Justin Lecher <jlec@gentoo.org> cns-1.1.ebuild,
+  cns-1.2.1.ebuild, cns-1.2.1-r5.ebuild, cns-1.3_p3.ebuild:
+  Fix for fortran.eclass removal
+
+  16 Dec 2010; Justin Lecher <jlec@gentoo.org> cns-1.1.ebuild,
+  cns-1.2.1.ebuild, cns-1.2.1-r5.ebuild, cns-1.3_p3.ebuild:
+  Removal of fortran.eclass, #348851
+
+*cns-1.3_p3 (25 Nov 2010)
+
+  25 Nov 2010; Justin Lecher <jlec@gentoo.org> +files/1.3_p3-delete.patch,
+  +files/1.3_p3-gentoo.patch, -files/1.3-delete.patch, -files/1.3-gentoo.patch,
+  -files/cns_solve_env_sh-1.3, -cns-1.3.ebuild, +files/cns_solve_env_sh-1.3_p3,
+  +cns-1.3_p3.ebuild:
+  Version Bump, thanks alexxy telling me this; fix for correct linking
+
+  19 Nov 2010; Justin Lecher <jlec@gentoo.org> -cns-1.2.ebuild,
+  -cns-1.2-r1.ebuild, -cns-1.2.1-r1.ebuild, -cns-1.2.1-r3.ebuild,
+  -cns-1.2.1-r4.ebuild:
+  Dropp old
+
+  18 Nov 2010; Justin Lecher <jlec@gentoo.org> -cns-1.2.1-r2.ebuild,
+  cns-1.2.1-r3.ebuild, cns-1.2.1-r4.ebuild, cns-1.2.1-r5.ebuild,
+  cns-1.3.ebuild:
+  Removed PDEPEND on aria
+
+  17 Nov 2010; Justin Lecher <jlec@gentoo.org> cns-1.2.1.ebuild,
+  cns-1.2.1-r1.ebuild, cns-1.2.1-r2.ebuild, cns-1.2.1-r3.ebuild,
+  cns-1.2.1-r4.ebuild, cns-1.2.1-r5.ebuild, cns-1.3.ebuild:
+  Moved to usage of tc-has-openmp
+
+*cns-1.3 (17 Nov 2010)
+
+  17 Nov 2010; Justin Lecher <jlec@gentoo.org> +files/1.3-delete.patch,
+  +files/1.3-gentoo.patch, +files/cns_solve_env_sh-1.3, +cns-1.3.ebuild:
+  Version Bump
+
+*cns-1.2.1-r5 (16 Nov 2010)
+
+  16 Nov 2010; Kacper Kowalik <xarthisius@gentoo.org> +cns-1.2.1-r5.ebuild:
+  Link proper openmp lib when using intel compiler
+
+  28 Jun 2010; Justin Lecher <jlec@gentoo.org> cns-1.2.1.ebuild,
+  cns-1.2.1-r1.ebuild, cns-1.2.1-r2.ebuild, cns-1.2.1-r3.ebuild,
+  cns-1.2.1-r4.ebuild:
+  Removed blocking of dos2unix
+
+*cns-1.2.1-r4 (05 Apr 2010)
+
+  05 Apr 2010; Justin Lecher <jlec@gentoo.org> +files/1.2.1-ifort.patch,
+  +cns-1.2.1-r4.ebuild:
+  Ifort support
+
+  04 Apr 2010; Justin Lecher <jlec@gentoo.org> Manifest:
+  distfile digest fix
+
+  20 Mar 2010; Justin Lecher (jlec) <jlec@gentoo.org>
+  +files/1.2.1-aria2.3.patch, +cns-1.2.1-r3.ebuild,
+  +files/1.2.1-parallel.patch:
+  Included new version of aria
+
+*cns-1.2.1-r3 (20 Mar 2010)
+
+  20 Mar 2010; Justin Lecher (jlec) <jlec@gentoo.org>
+  +files/1.2.1-aria2.3.patch, +cns-1.2.1-r3.ebuild:
+  Bump to new aria-2.3
+
+  07 Mar 2010; Justin Lecher (jlec) <jlec@gentoo.org> cns-1.2.1-r2.ebuild:
+  Moved to EAPI=3 for PREFIX support, keyworded for *-linux, tested by me
+
+*cns-1.2.1-r2 (06 Feb 2010)
+
+  06 Feb 2010; Justin Lecher (jlec) <jlec@gentoo.org>
+  +files/1.2.1-aria.patch, +cns-1.2.1-r2.ebuild:
+  Added aria support per 220905
+  Some QA fixes to make repoman happy
+
+  06 Feb 2010; Justin Lecher (jlec) <jlec@gentoo.org> cns-1.2.1-r1.ebuild:
+  We have to repect selection of USE="-openmp", fixed path in setup file.
+
+  27 Jul 2009; Donnie Berkholz <dberkholz@gentoo.org>;
+  files/cns_solve_env_sh:
+  Update cns_solve_env_sh to version in science overlay, which removes some
+  unneeded lines.
+
+*cns-1.2.1-r1 (27 Jul 2009)
+
+  27 Jul 2009; Donnie Berkholz <dberkholz@gentoo.org>;
+  +files/1.2.1-gentoo.patch, +cns-1.2.1-r1.ebuild:
+  Pull in Justin Lecher's fixes from the science overlay, except for ARIA.
+
+  07 Jul 2009; Diego E. Pettenò <flameeyes@gentoo.org> cns-1.2.1.ebuild:
+  Use elog for fetch error.
+
+  29 May 2009; Donnie Berkholz <dberkholz@gentoo.org>; cns-1.2.1.ebuild:
+  Stable on amd64.
+
+  17 Oct 2008; Markus Meier <maekke@gentoo.org> metadata.xml:
+  openmp USE-flag is global now
+
+  20 Aug 2008; Donnie Berkholz <dberkholz@gentoo.org>; cns-1.2.1.ebuild:
+  Only append -fopenmp to FFLAGS, not all compiler flags.
+
+*cns-1.2.1 (03 Aug 2008)
+
+  03 Aug 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  +files/1.2.1-allow-gcc-openmp.patch, +files/cns_solve_env_sh,
+  metadata.xml, +cns-1.2.1.ebuild:
+  Bump. Keyword ~amd64; add OpenMP support for parallel refinement;
+  (#209805) Fix a number of environment variables and cns_ functions to work
+  properly.
+
+  03 Jun 2008; Michael Sterrett <mr_bones_@gentoo.org> cns-1.1.ebuild,
+  cns-1.2.ebuild, cns-1.2-r1.ebuild:
+  remove reference to app-shells/csh which has been removed
+
+  10 Jan 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  +files/1.2-allow-unknown-architectures.patch, cns-1.2-r1.ebuild:
+  Add a patch to make CNS compile on unknown architecture/OS combinations, of
+  which ppc is one.
+
+*cns-1.2-r1 (07 Dec 2007)
+
+  07 Dec 2007; Donnie Berkholz <dberkholz@gentoo.org>; +cns-1.2-r1.ebuild:
+  Fix non-g77 build; make cns_web work; install the environment script to
+  /etc/profile.d/ so people don't need to manually source it; also install the
+  (hidden) bash/sh-compatible script; don't pass LDFLAGS because gfortran
+  doesn't deal with them properly.
+
+*cns-1.2 (22 Jun 2007)
+
+  22 Jun 2007; Donnie Berkholz <dberkholz@gentoo.org>; cns-1.1.ebuild,
+  +cns-1.2.ebuild:
+  (#162740) Bump.
+
+  15 Mar 2007; Danny van Dyk <kugelfang@gentoo.org> cns-1.1.ebuild:
+  QA: Removed illegal use of ${ROOT}. Bug #168043
+
+  20 Sep 2006; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  (#148281) Change herd to sci-chemistry from sci.
+
+  05 Aug 2006; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  Remove myself as maintainer, anyone feel free to work on this, although I'll
+  continue to do so as well.
+
+  09 Jul 2006; Donnie Berkholz <dberkholz@gentoo.org>; cns-1.1.ebuild:
+  x86/ppc stable.
+
+  07 Jul 2006; Donnie Berkholz <spyderous@gentoo.org>; metadata.xml:
+  Update to my new email address.
+
+*cns-1.1 (10 Jun 2006)
+
+  10 Jun 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  +files/1.1-time-length-10.patch, +metadata.xml, +cns-1.1.ebuild:
+  Add CNS, an important package in X-ray crystallography and nuclear magnetic
+  resonance (NMR).
+

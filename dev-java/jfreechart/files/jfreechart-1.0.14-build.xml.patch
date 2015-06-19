@@ -1,0 +1,35 @@
+--- a/ant/build.xml	2011-11-20 22:40:13.000000000 +0100
++++ b/ant/build.xml	2013-03-09 14:10:53.987970148 +0100
+@@ -40,11 +40,9 @@
+         <available classname="java.lang.Annotation" property="src.version" value="1.5"/>
+         <available classname="java.lang.Annotation" property="target.version" value="1.5"/>
+         <path id="build.classpath">
+-            <fileset dir="${basedir}/lib/">
+-                <include name="${jcommon.name}-${jcommon.version}.jar"/>
+-                <include name="servlet.jar"/>
+-                <include name="gnujaxp.jar" unless="JDK1.4+"/>
+-            </fileset>
++            <pathelement location="${jcommon.jar}"/>
++            <pathelement location="${servlet.jar}"/>
++            <pathelement location="${gnujaxp.jar}"/>
+         </path>
+ 
+     </target>
+@@ -321,7 +319,7 @@
+ 
+     <!-- COMPILE THE JUNIT TESTS. -->
+     <target name="compile-tests"
+-            depends="compile,compile-experimental"
++            depends="initialise"
+             description="Compile the test code">
+ 
+         <mkdir dir="${basedir}/build-tests"/>
+@@ -354,7 +352,7 @@
+         <junit printSummary="yes"
+                haltonerror="true"
+                haltonfailure="true"
+-               fork="true"
++               fork="false"
+                dir=".">
+ 
+             <sysproperty key="basedir" value="."/>

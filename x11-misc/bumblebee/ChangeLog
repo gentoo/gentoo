@@ -1,0 +1,93 @@
+# ChangeLog for x11-misc/bumblebee
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/bumblebee/ChangeLog,v 1.18 2015/06/13 20:08:13 floppym Exp $
+
+  13 Jun 2015; Mike Gilbert <floppym@gentoo.org> metadata.xml:
+  Remove invalid maintainer.
+
+  10 May 2014; Pacho Ramos <pacho@gentoo.org> -bumblebee-3.1.ebuild,
+  bumblebee-3.2.1.ebuild:
+  libbsd is also a RDEPEND (#509870 by cyberbat), drop old.
+
+  26 Jan 2014; Agostino Sarubbo <ago@gentoo.org> bumblebee-3.2.1.ebuild:
+  Stable for x86, wrt bug #480128
+
+  31 Aug 2013; Agostino Sarubbo <ago@gentoo.org> bumblebee-3.2.1.ebuild:
+  Stable for amd64, wrt bug #480128
+
+*bumblebee-3.2.1 (26 May 2013)
+
+  26 May 2013; Pacho Ramos <pacho@gentoo.org> +bumblebee-3.2.1.ebuild,
+  -bumblebee-3.0.1-r2.ebuild, -files/99-remove-nvidia-dev.rules,
+  -files/bumblebee-3.0.1-remove-wait.patch:
+  Version bump, drop old
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+*bumblebee-3.1 (26 Feb 2013)
+
+  26 Feb 2013; Pacho Ramos <pacho@gentoo.org> +bumblebee-3.1.ebuild:
+  Version bump (#458822 by Manuel Rüger (mrueg))
+
+*bumblebee-3.0.1-r2 (21 Jan 2013)
+
+  21 Jan 2013; Pacho Ramos <pacho@gentoo.org> +bumblebee-3.0.1-r2.ebuild,
+  -bumblebee-3.0.1-r1.ebuild, -bumblebee-3.0.1.ebuild:
+  Fix udev rules installation dir (#453316 by Maciej Piechotka), doc files
+  installation and use readme.gentoo.eclass to install configuration
+  information.
+
+*bumblebee-3.0.1-r1 (03 Jan 2013)
+
+  03 Jan 2013; Pacho Ramos <pacho@gentoo.org> +bumblebee-3.0.1-r1.ebuild,
+  +files/99-remove-nvidia-dev.rules, +files/bumblebee-3.0.1-remove-wait.patch,
+  -bumblebee-3.0-r2.ebuild:
+  kmod-11 deprecates --wait rmmod option, causing issues (#447014 by Philipp
+  Leonhardt). See https://github.com/Bumblebee-Project/Bumblebee/issues/283 for
+  reference. Remove old.
+
+*bumblebee-3.0.1 (14 Sep 2012)
+
+  14 Sep 2012; Pacho Ramos <pacho@gentoo.org> +bumblebee-3.0.1.ebuild:
+  Version bump, bug #433381 by mrueg.
+
+  20 Jun 2012; Tomáš Chvátal <scarabeus@gentoo.org> bumblebee-3.0-r2.ebuild:
+  Trivial commit, sort the logic and use ED instead of D.
+
+  05 Jun 2012; Pacho Ramos <pacho@gentoo.org> bumblebee-3.0-r2.ebuild:
+  Fix typo in systemd service installation, bug #419675 by decker49.
+
+*bumblebee-3.0-r2 (04 Jun 2012)
+
+  04 Jun 2012; Pacho Ramos <pacho@gentoo.org> +bumblebee-3.0-r2.ebuild,
+  +files/bumblebee.confd, +files/bumblebee.envd, -bumblebee-3.0-r1.ebuild,
+  -bumblebee-3.0.ebuild, -files/bumblebee.nouveau-confd,
+  -files/bumblebee.nvidia-confd, files/bumblebee.initd, metadata.xml:
+  Fix metadata, sync with bumblebee overlay changes, apply Michał Górny's patch
+  to support systemd (bug #418627). Drop old.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> bumblebee-3.0.ebuild,
+  bumblebee-3.0-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  23 Apr 2012; Michał Górny <mgorny@gentoo.org> bumblebee-3.0.ebuild,
+  bumblebee-3.0-r1.ebuild:
+  Use mirror://github.
+
+  21 Apr 2012; Pacho Ramos <pacho@gentoo.org> bumblebee-3.0-r1.ebuild:
+  Inherit user.eclass is enough for us.
+
+*bumblebee-3.0-r1 (21 Apr 2012)
+
+  21 Apr 2012; Pacho Ramos <pacho@gentoo.org> +bumblebee-3.0-r1.ebuild:
+  Use same conf.d file for nouveau and nvidia, allowing both supports to co-
+  exist.
+
+*bumblebee-3.0 (21 Apr 2012)
+
+  21 Apr 2012; Pacho Ramos <pacho@gentoo.org> +bumblebee-3.0.ebuild,
+  +files/bumblebee.initd, +files/bumblebee.nouveau-confd,
+  +files/bumblebee.nvidia-confd, +metadata.xml:
+  Initial commit from bumblebee overlay, this fixes bug #384083. Thanks a lot to
+  mva and rei4dan for their work.

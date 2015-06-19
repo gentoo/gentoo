@@ -1,0 +1,38 @@
+# ChangeLog for dev-haskell/x11-xft
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/x11-xft/ChangeLog,v 1.9 2014/05/10 14:25:10 slyfox Exp $
+
+*x11-xft-0.3.1-r1 (10 May 2014)
+
+  10 May 2014; Sergei Trofimovich <slyfox@gentoo.org> +x11-xft-0.3.1-r1.ebuild:
+  Switch to EAPI=5
+
+  16 Dec 2012; Agostino Sarubbo <ago@gentoo.org> x11-xft-0.3.1.ebuild:
+  Stable for x86, wrt bug #447462
+
+  16 Dec 2012; Agostino Sarubbo <ago@gentoo.org> x11-xft-0.3.1.ebuild:
+  Stable for amd64, wrt bug #447462
+
+  12 Sep 2012; Alexander Vershilov <qnikst@gentoo.org> x11-xft-0.3.1.ebuild,
+  x11-xft-0.3.ebuild:
+  move dev-haskell/x11-xft/x11-xft-0.3.1.ebuild ebuild to mirror://hackage
+
+*x11-xft-0.3.1 (06 Mar 2012)
+
+  06 Mar 2012; Mark Wright <gienah@gentoo.org> +x11-xft-0.3.1.ebuild:
+  Bump x11-xft to 0.3.1
+
+  04 Mar 2012; Mark Wright <gienah@gentoo.org> x11-xft-0.3.ebuild,
+  +files/x11-xft-0.3-ghc72.patch:
+  Fix x11-xft 0.3 compile with ghc 7.4.1
+
+  04 Mar 2012; Mark Wright <gienah@gentoo.org> x11-xft-0.3.ebuild:
+  Add ~ppc64 keywords to x11-xft 0.3, thanks to EM3RY for testing.
+
+  26 Nov 2009; <kolmodin@gentoo.org> x11-xft-0.3.ebuild:
+  Remove alternative dependency on -darcs package.
+
+*x11-xft-0.3 (26 Nov 2009)
+
+  26 Nov 2009; <kolmodin@gentoo.org> +x11-xft-0.3.ebuild, +metadata.xml:
+  Initial version.

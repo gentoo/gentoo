@@ -1,0 +1,174 @@
+# ChangeLog for net-p2p/dbhub
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/dbhub/ChangeLog,v 1.32 2015/04/29 20:08:46 mrueg Exp $
+
+  29 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -dbhub-0.451.ebuild:
+  Remove old.
+
+*dbhub-0.451-r1 (19 Jan 2011)
+
+  19 Jan 2011; Stanislav Ochotnicky <sochotnicky@gentoo.org>
+  +dbhub-0.451-r1.ebuild, +files/dbhub-fix-buffer-overflows.patch:
+  Fix #339900 (Several buffer overflows)
+
+  24 Oct 2010; Samuli Suominen <ssuominen@gentoo.org> dbhub-0.451.ebuild,
+  +files/dbhub-no-dynaloader.patch:
+  Don't check DynaLoader library for compability with recent perl wrt
+  #276928 by Diego E. Pettenò.
+
+  29 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> dbhub-0.451.ebuild,
+  files/dbhub-gentoo.patch:
+  Fix building with -Wl,--as-needed wrt #276928 by Diego E. Pettenò.
+
+  30 Jun 2008; Markus Rothe <corsair@gentoo.org> dbhub-0.451.ebuild:
+  Added ~ppc
+
+*dbhub-0.451 (25 Feb 2008)
+
+  25 Feb 2008; Raúl Porcel <armin76@gentoo.org> files/dbhub-gentoo.patch,
+  -dbhub-0.450.ebuild, +dbhub-0.451.ebuild:
+  Version bump, add switch_user USE-flag
+
+*dbhub-0.450 (25 Oct 2007)
+
+  25 Oct 2007; Raúl Porcel <armin76@gentoo.org> files/dbhub-gentoo.patch,
+  -dbhub-0.441.ebuild, +dbhub-0.450.ebuild:
+  Version bump, remove old
+
+*dbhub-0.441 (02 Jul 2007)
+
+  02 Jul 2007; Raúl Porcel <armin76@gentoo.org> files/dbhub-gentoo.patch,
+  -dbhub-0.440.ebuild, +dbhub-0.441.ebuild:
+  Version bump
+
+*dbhub-0.440 (17 May 2007)
+
+  17 May 2007; Raúl Porcel <armin76@gentoo.org> -dbhub-0.438.ebuild,
+  +dbhub-0.440.ebuild:
+  Version bump
+
+*dbhub-0.438 (08 May 2007)
+
+  08 May 2007; Raúl Porcel <armin76@gentoo.org> -dbhub-0.437.ebuild,
+  +dbhub-0.438.ebuild:
+  Version bump, remove old
+
+*dbhub-0.437 (01 May 2007)
+
+  01 May 2007; Raúl Porcel <armin76@gentoo.org> -dbhub-0.436.ebuild,
+  +dbhub-0.437.ebuild:
+  Version bump
+
+*dbhub-0.436 (29 Apr 2007)
+
+  29 Apr 2007; Raúl Porcel <armin76@gentoo.org> -dbhub-0.435.ebuild,
+  +dbhub-0.436.ebuild:
+  Version bump
+
+*dbhub-0.435 (24 Apr 2007)
+
+  24 Apr 2007; Raúl Porcel <armin76@gentoo.org> -dbhub-0.434.ebuild,
+  +dbhub-0.435.ebuild:
+  Version bump
+
+*dbhub-0.434 (19 Apr 2007)
+
+  19 Apr 2007; Raúl Porcel <armin76@gentoo.org> -dbhub-0.433.ebuild,
+  +dbhub-0.434.ebuild:
+  Version bump and add nls USE-flag, bug 174991
+
+*dbhub-0.433 (16 Apr 2007)
+
+  16 Apr 2007; Raúl Porcel <armin76@gentoo.org> -dbhub-0.432.ebuild,
+  +dbhub-0.433.ebuild:
+  Version bump
+
+  12 Apr 2007; <welp@gentoo.org> dbhub-0.432.ebuild:
+  Keyworded ~amd64 wrt bug 170347
+
+*dbhub-0.432 (01 Apr 2007)
+
+  01 Apr 2007; Raúl Porcel <armin76@gentoo.org> files/dbhub-gentoo.patch,
+  -dbhub-0.430.ebuild, +dbhub-0.432.ebuild:
+  Fix patch, bug 173017 and version bump
+
+*dbhub-0.430 (28 Mar 2007)
+
+  28 Mar 2007; Raúl Porcel <armin76@gentoo.org> -dbhub-0.428.ebuild,
+  +dbhub-0.430.ebuild:
+  Version bump
+
+*dbhub-0.428 (22 Mar 2007)
+
+  22 Mar 2007; Raúl Porcel <armin76@gentoo.org> -dbhub-0.427.ebuild,
+  +dbhub-0.428.ebuild:
+  Version bump
+
+*dbhub-0.427 (19 Mar 2007)
+
+  19 Mar 2007; Raúl Porcel <armin76@gentoo.org> -dbhub-0.424.ebuild,
+  +dbhub-0.427.ebuild:
+  Version bump
+
+*dbhub-0.424 (13 Mar 2007)
+
+  13 Mar 2007; Raúl Porcel <armin76@gentoo.org> -dbhub-0.423.ebuild,
+  +dbhub-0.424.ebuild:
+  Version bump
+
+*dbhub-0.423 (11 Mar 2007)
+
+  11 Mar 2007; Raúl Porcel <armin76@gentoo.org> -dbhub-0.422.ebuild,
+  +dbhub-0.423.ebuild:
+  Version bump, add perl useflag, thanks to Saurabh Singhvi <saurabhsinghvi at
+  gmail dot com> for reporting
+
+*dbhub-0.422 (10 Mar 2007)
+
+  10 Mar 2007; Raúl Porcel <armin76@gentoo.org> -dbhub-0.421.ebuild,
+  +dbhub-0.422.ebuild:
+  Version bump, bug 170242
+
+*dbhub-0.421 (09 Mar 2007)
+
+  09 Mar 2007; Raúl Porcel <armin76@gentoo.org> -dbhub-0.417.ebuild,
+  +dbhub-0.421.ebuild:
+  Version bump
+
+*dbhub-0.417 (02 Mar 2007)
+
+  02 Mar 2007; Raúl Porcel <armin76@gentoo.org> -dbhub-0.408.ebuild,
+  -dbhub-0.409.ebuild, -dbhub-0.410.ebuild, +dbhub-0.417.ebuild:
+  Version bump
+
+*dbhub-0.410 (25 Feb 2007)
+
+  25 Feb 2007; Raúl Porcel <armin76@gentoo.org> +dbhub-0.410.ebuild:
+  Version bump
+
+*dbhub-0.409 (18 Feb 2007)
+
+  18 Feb 2007; Raúl Porcel <armin76@gentoo.org> +dbhub-0.409.ebuild:
+  Version bump
+
+*dbhub-0.408 (16 Feb 2007)
+
+  16 Feb 2007; Raúl Porcel <armin76@gentoo.org> -files/dbhub_setup.sh,
+  -dbhub-0.399.ebuild, +dbhub-0.408.ebuild:
+  Fix HOMEPAGE, SRC_URI, version bump, and drop old
+
+  06 Feb 2007; Markus Rothe <corsair@gentoo.org> dbhub-0.399.ebuild:
+  Added ~ppc64
+
+  03 Feb 2007; Raúl Porcel <armin76@gentoo.org> dbhub-0.399.ebuild:
+  Fix exe install dir, bug 149677
+
+  30 Jan 2007; Raúl Porcel <armin76@gentoo.org> files/digest-dbhub-0.399,
+  Manifest:
+  Fix manifest
+
+*dbhub-0.399 (26 Jan 2007)
+
+  26 Jan 2007; Raúl Porcel <armin76@gentoo.org> +files/dbhub-gentoo.patch,
+  +files/dbhub_setup.sh, +metadata.xml, +dbhub-0.399.ebuild:
+  initial ebuild, bug 149677

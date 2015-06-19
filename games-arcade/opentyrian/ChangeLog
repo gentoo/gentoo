@@ -1,0 +1,73 @@
+# ChangeLog for games-arcade/opentyrian
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/opentyrian/ChangeLog,v 1.11 2013/12/08 18:29:31 chainsaw Exp $
+
+*opentyrian-2.1.20130907 (08 Dec 2013)
+
+  08 Dec 2013; Tony Vroon <chainsaw@gentoo.org>
+  +opentyrian-2.1.20130907.ebuild, +files/2.1.20130907-cflag-idiocy.diff,
+  +files/2.1.20130907-datapath.diff:
+  Version bump, as requested by "Lumbrius" in bug #492360. Patches rediffed.
+
+*opentyrian-20110517-r1 (07 Jun 2011)
+
+  07 Jun 2011; Tony Vroon <chainsaw@gentoo.org> +opentyrian-20110517-r1.ebuild:
+  Revision bump. Renaming the game binary for backwards compatibility was
+  ill-advised as it broke the desktop launcher file. Diagnosed & fixed up by
+  Alexandre Rostovtsev in bug #367979.
+
+*opentyrian-20110517 (17 May 2011)
+
+  17 May 2011; Tony Vroon <chainsaw@gentoo.org>
+  +files/20110517-cflag-idiocy.diff, +files/20110517-datapath.diff,
+  +opentyrian-20110517.ebuild:
+  Bump to new snapshot, as requested by Torsten Kaiser in bug #333011. Port to
+  EAPI=3.
+
+  22 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  opentyrian-20090702.ebuild:
+  dev-util/subversion renamed to dev-vcs/subversion.
+
+*opentyrian-20091025 (25 Oct 2009)
+
+  25 Oct 2009; <chainsaw@gentoo.org> +files/20091025-cflag-idiocy.diff,
+  +opentyrian-20091025.ebuild, +files/20091025-datapath.diff:
+  Version bump; upstream switched from subversion to mercurial. The build
+  system has changed and now needs to be fought to a degree where a debug
+  USE-flag is no longer feasible.
+
+*opentyrian-20090702 (04 Jul 2009)
+
+  04 Jul 2009; <chainsaw@gentoo.org> -files/20090222-datapath.diff,
+  -opentyrian-20090222.ebuild, +files/20090702-datapath.diff,
+  +opentyrian-20090702.ebuild:
+  New snapshot. Upstream added palette fading and made numerous cleanups.
+  Deleted old ebuild.
+
+*opentyrian-20090423 (23 Apr 2009)
+
+  23 Apr 2009; <chainsaw@gentoo.org> -files/20081211-datapath.diff,
+  +files/20090423-datapath.diff, -opentyrian-20081211.ebuild,
+  +opentyrian-20090423.ebuild:
+  New snapshot, upstream has improved the loudness (music) code. Delete old
+  ebuild.
+
+  15 Apr 2009; Torsten Veller <tove@gentoo.org> opentyrian-20090222.ebuild:
+  Add ~x86 (#266229)
+
+*opentyrian-20090222 (01 Mar 2009)
+
+  01 Mar 2009; <chainsaw@gentoo.org> +files/20090222-datapath.diff,
+  +opentyrian-20090222.ebuild:
+  Version bump to new snapshot.
+
+  09 Jan 2009; Joseph Jezak <josejx@gentoo.org> opentyrian-20081211.ebuild:
+  Marked ~ppc for bug #251579.
+
+*opentyrian-20081211 (11 Dec 2008)
+
+  11 Dec 2008; <chainsaw@gentoo.org> +files/20081211-datapath.diff,
+  +metadata.xml, +opentyrian-20081211.ebuild:
+  Initial commit, ebuild by me. Closes bug #223743. With thanks to Mr_Bones
+  & nyhm for review comments.
+

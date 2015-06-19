@@ -1,0 +1,11 @@
+--- makefile.old	2012-05-28 14:02:44.787705444 +0200
++++ makefile	2012-05-28 14:03:44.520524011 +0200
+@@ -458,7 +458,7 @@
+ 	$(CC) $(PROFILELDFLAGS) $(LDFLAGS) -o $@ $(OBJS) $(LIBS)
+ 
+ $(TOLUA): $(TOLUAOBJS) lua/tolua.c lua/tolualua.c
+-	$(CC) $(CFLAGS) $(PROFILELDFLAGS) $(LDFLAGS) -o $@ $(TOLUAOBJS) lua/tolua.c lua/tolualua.c $(LIBS)
++	$(CC) $(CFLAGS) $(PROFILELDFLAGS) $(LDFLAGS) -o $@ $(TOLUAOBJS) lua/tolua.c lua/tolualua.c
+ 
+ #
+ # An install rule.

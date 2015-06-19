@@ -1,0 +1,12 @@
+# ChangeLog for dev-libs/rapidxml
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/rapidxml/ChangeLog,v 1.2 2015/06/09 14:50:11 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+*rapidxml-1.13 (13 Jan 2014)
+
+  13 Jan 2014; Justin Lecher <jlec@gentoo.org> +rapidxml-1.13.ebuild,
+  +metadata.xml:
+  New package, #406937; initial ebuild written by Patrick McMunn

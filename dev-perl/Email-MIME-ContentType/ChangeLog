@@ -1,0 +1,155 @@
+# ChangeLog for dev-perl/Email-MIME-ContentType
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Email-MIME-ContentType/ChangeLog,v 1.38 2014/08/22 17:25:29 axs Exp $
+
+*Email-MIME-ContentType-1.16.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Email-MIME-ContentType-1.16.0-r1.ebuild,
+  -Email-MIME-ContentType-1.16.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  25 Jan 2014; Mikle Kolyada <zlogene@gentoo.org>
+  -Email-MIME-ContentType-1.15.0.ebuild, Email-MIME-ContentType-1.16.0.ebuild:
+  ppc64 stable wrt bug #492136
+
+  25 Jan 2014; Mikle Kolyada <zlogene@gentoo.org>
+  Email-MIME-ContentType-1.16.0.ebuild:
+  ppc stable wrt bug #492136
+
+  25 Jan 2014; Mikle Kolyada <zlogene@gentoo.org>
+  Email-MIME-ContentType-1.16.0.ebuild:
+  alpha stable wrt bug #492136
+
+  24 Jan 2014; Mikle Kolyada <zlogene@gentoo.org>
+  Email-MIME-ContentType-1.16.0.ebuild:
+  x86 stable wrt bug #492136
+
+  22 Dec 2013; Pacho Ramos <pacho@gentoo.org>
+  Email-MIME-ContentType-1.16.0.ebuild:
+  amd64 stable, bug #492136
+
+  16 Aug 2013; Patrick Lauer <patrick@gentoo.org>
+  Email-MIME-ContentType-1.16.0.ebuild:
+  Adding missing test dep
+
+*Email-MIME-ContentType-1.16.0 (15 Aug 2013)
+
+  15 Aug 2013; Patrick Lauer <patrick@gentoo.org>
+  +Email-MIME-ContentType-1.16.0.ebuild:
+  Bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  31 Mar 2012; Torsten Veller <tove@gentoo.org>
+  -Email-MIME-ContentType-1.014.ebuild:
+  Cleanup
+
+  24 Mar 2012; Raúl Porcel <armin76@gentoo.org>
+  Email-MIME-ContentType-1.014.ebuild, Email-MIME-ContentType-1.15.0.ebuild:
+  Drop ia64/sparc keywords
+
+  08 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  Email-MIME-ContentType-1.15.0.ebuild:
+  x86 stable wrt bug #400103
+
+  02 Mar 2012; Brent Baude <ranger@gentoo.org>
+  Email-MIME-ContentType-1.15.0.ebuild:
+  Marking Email-MIME-ContentType-1.15.0 ppc64 for bug 400103
+
+  01 Mar 2012; Brent Baude <ranger@gentoo.org>
+  Email-MIME-ContentType-1.15.0.ebuild:
+  Marking Email-MIME-ContentType-1.15.0 ppc for bug 400103
+
+  25 Feb 2012; Tobias Klausmann <klausman@gentoo.org>
+  Email-MIME-ContentType-1.15.0.ebuild:
+  Stable on alpha, bug #400103
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org>
+  Email-MIME-ContentType-1.15.0.ebuild:
+  Stable for amd64, wrt bug #400103
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  -Email-MIME-ContentType-1.015.ebuild:
+  Cleanup
+
+*Email-MIME-ContentType-1.15.0 (31 Aug 2011)
+
+  31 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +Email-MIME-ContentType-1.15.0.ebuild:
+  Change version scheme
+
+  18 Mar 2010; Jeremy Olexa <darkside@gentoo.org> Email-MIME-ContentType-1.015.ebuild:
+  add ~x86-solaris ~sparc-solaris kw, as tested on bug 308683
+
+  02 May 2009; Torsten Veller <tove@gentoo.org>
+  -Email-MIME-ContentType-1.012.ebuild:
+  Cleanup
+
+*Email-MIME-ContentType-1.015 (26 Jan 2009)
+
+  26 Jan 2009; Torsten Veller <tove@gentoo.org>
+  +Email-MIME-ContentType-1.015.ebuild:
+  Version bump
+
+  08 Dec 2007; Raúl Porcel <armin76@gentoo.org>
+  Email-MIME-ContentType-1.014.ebuild:
+  alpha/ia64 stable
+
+  04 Dec 2007; Markus Rothe <corsair@gentoo.org>
+  Email-MIME-ContentType-1.014.ebuild:
+  Stable on ppc64; bug #198075
+
+  04 Dec 2007; nixnut <nixnut@gentoo.org>
+  Email-MIME-ContentType-1.014.ebuild:
+  Stable on ppc wrt bug 198075
+
+  03 Dec 2007; Christian Faulhammer <opfer@gentoo.org>
+  Email-MIME-ContentType-1.014.ebuild:
+  stable x86, bug 198075
+
+  10 Nov 2007; Samuli Suominen <drac@gentoo.org>
+  Email-MIME-ContentType-1.014.ebuild:
+  amd64 stable
+
+  30 Jun 2007; Raúl Porcel <armin76@gentoo.org>
+  Email-MIME-ContentType-1.014.ebuild:
+  Add ~alpha wrt #165190
+
+  21 Jun 2007; Michael Cummings <mcummings@gentoo.org>
+  Email-MIME-ContentType-1.014.ebuild:
+  Marking sparc stable
+
+  10 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  Email-MIME-ContentType-1.012.ebuild:
+  sparc stable
+
+  08 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  Email-MIME-ContentType-1.012.ebuild:
+  Marking amd64 stable
+
+*Email-MIME-ContentType-1.014 (06 Apr 2007)
+
+  06 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  +Email-MIME-ContentType-1.014.ebuild:
+  Version bump
+
+  27 Mar 2007; Matti Bickel <mabi@gentoo.org>
+  Email-MIME-ContentType-1.012.ebuild:
+  ~ppc added (bug #165190)
+
+  27 Mar 2007; Raúl Porcel <armin76@gentoo.org>
+  Email-MIME-ContentType-1.012.ebuild:
+  Add ~ia64 wrt bug 165190
+
+  14 Feb 2007; Markus Rothe <corsair@gentoo.org>
+  Email-MIME-ContentType-1.012.ebuild:
+  Added ~ppc64
+
+*Email-MIME-ContentType-1.012 (05 Feb 2007)
+
+  05 Feb 2007; Michael Cummings <mcummings@gentoo.org> +metadata.xml,
+  +Email-MIME-ContentType-1.012.ebuild:
+  Dep for Email-MIME-Modifier

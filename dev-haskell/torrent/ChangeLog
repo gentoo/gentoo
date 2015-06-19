@@ -1,0 +1,9 @@
+# ChangeLog for dev-haskell/torrent
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/torrent/ChangeLog,v 1.1 2015/01/03 01:45:57 gienah Exp $
+
+*torrent-10000.0.0 (03 Jan 2015)
+
+  03 Jan 2015; Mark Wright <gienah@gentoo.org> +metadata.xml,
+  +torrent-10000.0.0.ebuild:
+  Add torrent for dev-vcs/git-annex-5.20141231

@@ -1,0 +1,21 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/zabbix/files/1.6.5/init.d/zabbix-server,v 1.2 2011/12/31 20:47:13 idl0r Exp $
+
+depend() {
+	need net
+	use mysql postgresql
+}
+
+start() {
+	ebegin "Starting Zabbix server"
+	start-stop-daemon --start --user zabbix --group zabbix --exec /usr/sbin/zabbix_server
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping Zabbix server"
+	start-stop-daemon --stop --pidfile /var/run/zabbix/zabbix_server.pid
+	eend $?
+}

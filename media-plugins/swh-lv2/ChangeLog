@@ -1,0 +1,31 @@
+# ChangeLog for media-plugins/swh-lv2
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/swh-lv2/ChangeLog,v 1.8 2012/05/05 08:27:19 jdhore Exp $
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> swh-lv2-1.0.15.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  05 Oct 2009; Markus Meier <maekke@gentoo.org> swh-lv2-1.0.15.ebuild:
+  amd64/x86 stable, bug #286993
+
+  03 Oct 2009; Samuli Suominen <ssuominen@gentoo.org> swh-lv2-1.0.15.ebuild:
+  Remove -O3 -fomit-frame-pointer -fstrength-reduce -funroll-loops from
+  CFLAGS wrt #286993.
+
+  27 Jan 2008; Alexis Ballier <aballier@gentoo.org> -swh-lv2-1.0.14.ebuild:
+  remove old
+
+*swh-lv2-1.0.15 (10 Jan 2008)
+
+  10 Jan 2008; Alexis Ballier <aballier@gentoo.org> +swh-lv2-1.0.15.ebuild:
+  version bump
+
+  12 Dec 2007; Alexis Ballier <aballier@gentoo.org> swh-lv2-1.0.14.ebuild:
+  keyword ~x86 too, working fine
+
+*swh-lv2-1.0.14 (10 Dec 2007)
+
+  10 Dec 2007; Alexis Ballier <aballier@gentoo.org> +metadata.xml,
+  +swh-lv2-1.0.14.ebuild:
+  initial import: swh-plugins ported to lv2
+

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The net-voip category contains packages related to Voice-over-IP
+	</longdescription>
+	<longdescription lang="es">
+		La categoría net-voip contiene paquetes relacionados con Voz sobre
+		IP.
+	</longdescription>
+</catmetadata>
+

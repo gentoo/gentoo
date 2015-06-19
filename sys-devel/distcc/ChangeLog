@@ -1,0 +1,1191 @@
+# ChangeLog for sys-devel/distcc
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/distcc/ChangeLog,v 1.242 2015/03/20 17:04:06 jlec Exp $
+
+  20 Mar 2015; Justin Lecher <jlec@gentoo.org> -distcc-2.18.3-r10.ebuild,
+  -distcc-3.0-r4.ebuild, -distcc-3.2_rc1-r2.ebuild, distcc-3.1-r10.ebuild:
+  Drop old
+
+*distcc-3.2_rc1-r3 (27 Feb 2015)
+
+  27 Feb 2015; Michał Górny <mgorny@gentoo.org> +distcc-3.2_rc1-r3.ebuild,
+  +files/distcc-3.2_rc1-socks5.patch:
+  Add support for SOCKSv5 proxy, bug #537616. Needed for network-sandbox support
+  in Portage.
+
+  24 Jan 2015; Michał Górny <mgorny@gentoo.org> distcc-3.1-r10.ebuild,
+  distcc-3.2_rc1-r2.ebuild:
+  Add missing epatch_user.
+
+*distcc-3.2_rc1-r2 (01 Jan 2015)
+
+  01 Jan 2015; Michał Górny <mgorny@gentoo.org> +distcc-3.2_rc1-r2.ebuild,
+  -distcc-3.2_rc1-r1.ebuild:
+  Fix installed module byte-compilation.
+
+  02 Nov 2014; Sven Vermeulen <swift@gentoo.org> distcc-3.1-r10.ebuild,
+  distcc-3.2_rc1-r1.ebuild:
+  Remove sec-policy/selinux-* dependency from DEPEND but keep in RDEPEND (bug
+  #527698)
+
+*distcc-3.2_rc1-r1 (29 Oct 2014)
+*distcc-3.1-r10 (29 Oct 2014)
+
+  29 Oct 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org> +distcc-3.1-r10.ebuild,
+  +distcc-3.2_rc1-r1.ebuild, -distcc-3.1-r5.ebuild, -distcc-3.1-r6.ebuild,
+  -distcc-3.1-r7.ebuild, -distcc-3.1-r9.ebuild, -distcc-3.2_rc1.ebuild:
+  Added missing python dependencies, cleaned up old v3.1 ebuilds as per
+  discussion with untrabug on irc
+
+  21 May 2014; Justin Lecher <jlec@gentoo.org> distcc-3.1-r9.ebuild,
+  distcc-3.2_rc1.ebuild:
+  Bump to new python eclasses and bump to EAPI=5
+
+  16 May 2014; Jeroen Roovers <jer@gentoo.org> distcc-3.0-r4.ebuild,
+  distcc-3.1-r5.ebuild, distcc-3.1-r6.ebuild, distcc-3.1-r7.ebuild,
+  distcc-3.1-r9.ebuild:
+  Grammar.
+
+  12 May 2014; Samuli Suominen <ssuominen@gentoo.org> distcc-2.18.3-r10.ebuild,
+  distcc-3.0-r4.ebuild:
+  Convert from EAPI 1 to 5 as 1 is declared obsolete and will go away.
+
+  19 Jan 2014; Mike Frysinger <vapier@gentoo.org> distcc-3.1-r9.ebuild,
+  distcc-3.2_rc1.ebuild:
+  Add arm64 love.
+
+  19 Jan 2014; Mike Frysinger <vapier@gentoo.org> distcc-3.1-r9.ebuild:
+  Mark m68k/s390/sh stable.
+
+  23 Dec 2013; Mike Frysinger <vapier@gentoo.org> distcc-3.1-r9.ebuild:
+  Mark alpha/ia64/ppc/ppc64/sparc stable #480112.
+
+  07 Dec 2013; Pacho Ramos <pacho@gentoo.org> distcc-3.1-r9.ebuild:
+  x86 stable, bug #480112
+
+  19 Oct 2013; Pacho Ramos <pacho@gentoo.org> distcc-3.1-r9.ebuild:
+  amd64 stable, bug #480112
+
+  08 Oct 2013; Markus Meier <maekke@gentoo.org> distcc-3.1-r9.ebuild:
+  arm stable, bug #480112
+
+  06 Oct 2013; Jeroen Roovers <jer@gentoo.org> distcc-3.1-r9.ebuild:
+  Stable for HPPA (bug #480112).
+
+*distcc-3.1-r9 (21 Sep 2013)
+
+  21 Sep 2013; Pacho Ramos <pacho@gentoo.org> +distcc-3.1-r9.ebuild,
+  +files/distccd.service.conf, -distcc-3.1-r8.ebuild, distcc-3.2_rc1.ebuild,
+  files/distccd.service:
+  Stop relying in conf.d file, fix zeroconf handling (#480386 by Malte
+  Starostik)
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> distcc-3.1-r7.ebuild,
+  distcc-3.1-r8.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  20 Jul 2013; Pacho Ramos <pacho@gentoo.org> +files/distccd.service:
+  Commit missing file (#477512 by Xavier Miller)
+
+*distcc-3.1-r8 (20 Jul 2013)
+
+  20 Jul 2013; Pacho Ramos <pacho@gentoo.org> +distcc-3.1-r8.ebuild,
+  +files/3.1/conf:
+  Install unit file (#470848)
+
+  12 Feb 2013; Raúl Porcel <armin76@gentoo.org> distcc-3.1-r7.ebuild,
+  distcc-3.2_rc1.ebuild:
+  Add ~m68k
+
+  08 Feb 2013; Justin Lecher <jlec@gentoo.org> distcc-3.1-r7.ebuild:
+  Drop USE gnome in favour of USE gtk, #416595
+
+  04 Feb 2013; Justin Lecher <jlec@gentoo.org> distcc-3.1-r7.ebuild:
+  Use EAPI=5 compliant REQUIRED_USE syntax
+
+  04 Feb 2013; Justin Lecher <jlec@gentoo.org> distcc-3.1-r7.ebuild:
+  Correct REQUIRED_USE logic, #455390
+
+*distcc-3.1-r7 (03 Feb 2013)
+
+  03 Feb 2013; Justin Lecher <jlec@gentoo.org> +distcc-3.1-r7.ebuild,
+  metadata.xml:
+  Add USE blocker between gtk and gnome, #416595; bump EAPI; move to new python
+  eclasses
+
+  03 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #22900
+
+  15 Sep 2012; Mike Frysinger <vapier@gentoo.org> distcc-2.18.3-r10.ebuild,
+  distcc-3.0-r4.ebuild, distcc-3.1-r5.ebuild, distcc-3.1-r6.ebuild,
+  distcc-3.2_rc1.ebuild:
+  Inherit user for enewuser/etc...
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> distcc-2.18.3-r10.ebuild,
+  distcc-3.0-r4.ebuild, distcc-3.1-r5.ebuild, distcc-3.1-r6.ebuild,
+  distcc-3.2_rc1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  10 Feb 2012; Patrick Lauer <patrick@gentoo.org> distcc-3.2_rc1.ebuild:
+  Changing python deps in preparation for 2.4 removal
+
+*distcc-3.1-r6 (09 Jan 2012)
+
+  09 Jan 2012; Alex Alexander <wired@gentoo.org> +distcc-3.1-r6.ebuild,
+  +files/distcc-3.1-argc-fix.patch:
+  added patch that increases argc properly, fixing virtualbox compilation.
+  acked by xarthisius and Ultrabug, bug #351979
+
+  27 Dec 2011; Ultrabug <ultrabug@gentoo.org> files/3.1/init:
+  Fix 3.1 series init script wrt #390063 thanks to André-Sebastian Liebe.
+
+*distcc-3.2_rc1 (28 Oct 2011)
+
+  28 Oct 2011; MATSUU Takuto <matsuu@gentoo.org> -distcc-3.1-r4.ebuild,
+  +files/distcc-config-3.2_rc1, +distcc-3.2_rc1.ebuild,
+  +files/distcc-3.2_rc1-freedesktop.patch, +files/distcc-3.2_rc1-gssapi.patch,
+  +files/distcc-3.2_rc1-python.patch, metadata.xml:
+  Version bumped. Removed old version.
+
+  30 Mar 2011; Christoph Mende <angelos@gentoo.org> distcc-2.18.3-r10.ebuild,
+  distcc-3.0-r4.ebuild, distcc-3.1-r4.ebuild:
+  Fix gtk+ slot deps
+
+  28 Mar 2011; Gilles Dartiguelongue <eva@gentoo.org> distcc-3.1-r5.ebuild:
+  Pin gtk+ to slot 2.
+
+  06 Feb 2011; Mart Raudsepp <leio@gentoo.org> distcc-2.18.3-r10.ebuild:
+  Drop to ~mips
+
+*distcc-3.1-r5 (22 Dec 2010)
+
+  22 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +distcc-3.1-r5.ebuild:
+  Use Python 2, call python_mod_optimize() and python_mod_cleanup() (bug #316943).
+
+  19 Oct 2009; Alexis Ballier <aballier@gentoo.org> distcc-3.1-r4.ebuild:
+  keyword ~sparc-fbsd
+
+  20 May 2009; Raúl Porcel <armin76@gentoo.org> distcc-3.1-r4.ebuild:
+  arm/ia64/s390/sh stable wrt #269322
+
+  15 May 2009; Tobias Klausmann <klausman@gentoo.org> distcc-3.1-r4.ebuild:
+  Stable on alpha, bug #269322
+
+  14 May 2009; Markus Meier <maekke@gentoo.org> distcc-3.1-r4.ebuild:
+  amd64/x86 stable, bug #269322
+
+  14 May 2009; Joseph Jezak <josejx@gentoo.org> distcc-3.1-r4.ebuild:
+  Marked ppc/ppc64 stable for bug #269322.
+
+  13 May 2009; Jeroen Roovers <jer@gentoo.org> distcc-3.1-r4.ebuild:
+  Stable for HPPA (bug #269322).
+
+  11 May 2009; Ferris McCormick <fmccor@gentoo.org> distcc-3.1-r4.ebuild:
+  Sparc stable, bug #269322.
+
+  11 May 2009; MATSUU Takuto <matsuu@gentoo.org> -distcc-3.1-r3.ebuild:
+  Removed old version.
+
+*distcc-3.1-r4 (07 Apr 2009)
+
+  07 Apr 2009; MATSUU Takuto <matsuu@gentoo.org> -distcc-3.1-r1.ebuild,
+  -distcc-3.1-r2.ebuild, +distcc-3.1-r4.ebuild:
+  Fixed dependency related zeroconf, bug #263939. Removed old versions.
+
+*distcc-3.1-r3 (19 Mar 2009)
+
+  19 Mar 2009; MATSUU Takuto <matsuu@gentoo.org> +files/3.1/init,
+  +files/distcc-3.1-python.patch, +distcc-3.1-r3.ebuild:
+  Load PATH and GCC_SPECS from gcc-config, bug #262773. Fixed python issue,
+  bug #258364.
+
+  13 Mar 2009; Raúl Porcel <armin76@gentoo.org> distcc-3.0-r4.ebuild:
+  s390 stable wrt #249695
+
+*distcc-3.1-r2 (10 Feb 2009)
+
+  10 Feb 2009; MATSUU Takuto <matsuu@gentoo.org>
+  +files/distcc-3.0-fix-fortify.patch, -distcc-2.18.3-r13.ebuild,
+  distcc-3.0-r4.ebuild, -distcc-3.1.ebuild, +distcc-3.1-r2.ebuild:
+  Fixed -D_FORTIFY_SOURCE=2 issue, bug 253786.
+
+*distcc-3.1-r1 (01 Feb 2009)
+
+  01 Feb 2009; MATSUU Takuto <matsuu@gentoo.org>
+  +files/distcc-3.1-freedesktop.patch, +distcc-3.1-r1.ebuild:
+  Fixed RFC2553 issue, bug #254176. Fixed icon and menu location, bug
+  #255188.
+
+  19 Dec 2008; MATSUU Takuto <matsuu@gentoo.org> distcc-3.0-r4.ebuild:
+  Added -j1 to emake install, bug #249695.
+
+  14 Dec 2008; Raúl Porcel <armin76@gentoo.org> distcc-3.0-r4.ebuild:
+  arm/ia64/sh/x86 stable wrt #249695
+
+  14 Dec 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  distcc-3.0-r4.ebuild:
+  stable amd64, bug 249695
+
+  12 Dec 2008; Ferris McCormick <fmccor@gentoo.org> distcc-3.0-r4.ebuild:
+  Sparc stable, Bug #249695.
+
+  11 Dec 2008; Tobias Klausmann <klausman@gentoo.org> distcc-3.0-r4.ebuild:
+  Stable on alpha, bug #249695
+
+  09 Dec 2008; Jeroen Roovers <jer@gentoo.org> distcc-3.0-r4.ebuild:
+  Stable for HPPA (bug #249695).
+
+  06 Dec 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  distcc-3.0-r4.ebuild:
+  ppc stable, bug #249695
+
+  03 Dec 2008; Brent Baude <ranger@gentoo.org> distcc-3.0-r4.ebuild:
+  stable ppc64, bug 249695
+
+*distcc-3.1 (03 Dec 2008)
+
+  03 Dec 2008; MATSUU Takuto <matsuu@gentoo.org> +distcc-3.1.ebuild:
+  Version bumped.
+
+  20 Nov 2008; Mike Frysinger <vapier@gentoo.org>
+  -files/2.18/distcc-config.patch:
+  Drop unused patch.
+
+  16 Nov 2008; MATSUU Takuto <matsuu@gentoo.org> files/3.0/init,
+  -distcc-3.0-r3.ebuild:
+  Create /var/run/distccd in init script, bug #247069. Removed old revision.
+
+  10 Nov 2008; MATSUU Takuto <matsuu@gentoo.org> distcc-3.0-r4.ebuild:
+  Removed -Werror, bug #244847.
+
+*distcc-3.0-r4 (05 Nov 2008)
+
+  05 Nov 2008; MATSUU Takuto <matsuu@gentoo.org> files/3.0/init,
+  +files/distcc-3.0-uninitialized.patch, +distcc-3.0-r4.ebuild:
+  Added GCC_SPECS to init.d, bug #164818. Fixed uninitialized issue, bug
+  #244847. Removed DISTCC_POTENTIAL_HOSTS variable. Added IPv6 elog.
+
+  05 Nov 2008; MATSUU Takuto <matsuu@gentoo.org> files/3.0/init,
+  distcc-3.0-r3.ebuild:
+  Added GCC_SPECS to init.d, bug #164818. Removed DISTCC_POTENTIAL_HOSTS
+  variable. Added IPv6 elog.
+
+  02 Nov 2008; Gordon Malm <gengor@gentoo.org> +files/distcc-hardened.patch,
+  distcc-2.18.3-r10.ebuild, distcc-2.18.3-r13.ebuild, distcc-3.0-r3.ebuild:
+  Add "hardened" USE flag, fixing bugs #120001, #167844 and probably more.
+
+  27 Oct 2008; MATSUU Takuto <matsuu@gentoo.org>
+  +files/distcc-3.0-xinetd.patch, files/3.0/distcc-config,
+  -files/3.0/xinetd, -distcc-2.18.3-r11.ebuild, -distcc-2.18.3-r12.ebuild,
+  -distcc-3.0-r2.ebuild, distcc-3.0-r3.ebuild:
+  Fixed xinetd issue and typo. Clean up distcc-config. Removed old
+  revisions.
+
+*distcc-3.0-r3 (26 Oct 2008)
+
+  26 Oct 2008; MATSUU Takuto <matsuu@gentoo.org> +distcc-3.0-r3.ebuild:
+  Fixed pump-mode issue.
+
+*distcc-3.0-r2 (25 Oct 2008)
+
+  25 Oct 2008; MATSUU Takuto <matsuu@gentoo.org> files/3.0/distcc-config,
+  +files/3.0/xinetd, files/3.0/init, -distcc-3.0-r1.ebuild,
+  +distcc-3.0-r2.ebuild:
+  Added xinetd USE flag. Removed '--install' function from gcc-config and
+  Added doenvd to src_install.
+  Added --daemon to /etc/init.d/distcc, bug #216950.
+  Clean up ebuild.
+
+*distcc-3.0-r1 (19 Oct 2008)
+
+  19 Oct 2008; MATSUU Takuto <matsuu@gentoo.org>
+  +files/distcc-3.0-svn617.patch, metadata.xml, -distcc-3.0.ebuild,
+  +distcc-3.0-r1.ebuild:
+  Add myself as a maintainer, bug #234312. Backport patch from svn 617.
+
+*distcc-3.0 (18 Oct 2008)
+
+  18 Oct 2008; MATSUU Takuto <matsuu@gentoo.org> +files/3.0/conf,
+  +files/3.0/init, +files/distcc-3.0-gentoo.patch, +files/3.0/distcc-config,
+  +distcc-3.0.ebuild:
+  Version bumped and clean up, bug #234312.
+
+  17 Aug 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  distcc-2.18.3-r10.ebuild, distcc-2.18.3-r11.ebuild,
+  distcc-2.18.3-r12.ebuild, distcc-2.18.3-r13.ebuild:
+  remove reference to app-admin/eselect-compiler which is long gone
+
+*distcc-2.18.3-r13 (26 May 2008)
+
+  26 May 2008; Ryan Hill <dirtyepic@gentoo.org>
+  +files/distcc-march-native.patch, +distcc-2.18.3-r13.ebuild:
+  Add patch to always run jobs containing -march=native locally. Bug
+  #223159.
+
+  25 Apr 2008; Diego Pettenò <flameeyes@gentoo.org>
+  distcc-2.18.3-r12.ebuild:
+  Always run eautoreconf so that --docdir will be always recognised. Depend
+  on autoconf 2.60 at least so that it supports --docdir for sure.
+
+  22 Apr 2008; Diego Pettenò <flameeyes@gentoo.org>
+  files/distcc-avahi-configure.patch, distcc-2.18.3-r12.ebuild:
+  Fix building with autoconf 2.62 (error in AC_HELP_STRING parameters),
+  closes bug #218237. Also install documentation in the canonical directory,
+  closes bug #179586.
+
+  17 Feb 2008; Alexis Ballier <aballier@gentoo.org>
+  distcc-2.18.3-r12.ebuild:
+  set proper deps for unifdef and rekeyword ~x86-fbsd, part of bug #204237
+
+  17 Jan 2008; Petteri Räty <betelgeuse@gentoo.org> metadata.xml:
+  Add myself as the maintainer after getting ok from dberkholz.
+
+*distcc-2.18.3-r12 (04 Jan 2008)
+
+  04 Jan 2008; Petteri Räty <betelgeuse@gentoo.org>
+  +files/distcc-create-dir.patch, +files/distcc-freedesktop.patch,
+  +distcc-2.18.3-r12.ebuild:
+  Fix .desktop file installation to follow latest freedesktop specs. Fix the
+  ebuild to install the gui monitor with gnome -gtk use flags. Create
+  DISTCC_DIR if it doesn't exist to avoid regular error messages. Fixes bug
+  #171507.
+
+*distcc-2.18.3-r11 (04 Jan 2008)
+
+  04 Jan 2008; Petteri Räty <betelgeuse@gentoo.org> +files/2.18-r1/conf,
+  +files/2.18-r1/init, +files/distcc-avahi-configure.patch,
+  +distcc-2.18.3-r11.ebuild:
+  Add avahi support to distcc and use system copy of popt. Fixes bug #203874
+  and bug #179631.
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing lisa from metadata.xml as per #23541.
+
+  28 Apr 2007; Sven Wegener <swegener@gentoo.org> distcc-2.18.3-r10.ebuild:
+  Fix *initd, *confd and *envd calls (#173884, #174266)
+
+  26 Apr 2007; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  Update for cluster herd split to hp-cluster and ha-cluster.
+
+  26 Mar 2007; Alec Warner <antarus@gentoo.org> distcc-2.18.3-r10.ebuild:
+  Remove dependency on portage: ref bug 162516
+
+  04 Mar 2007; Lisa Seelye <lisa@gentoo.org> -distcc-2.16-r2.ebuild,
+  -distcc-2.16-r3.ebuild, -distcc-2.18.3-r6.ebuild,
+  -distcc-2.18.3-r7.ebuild, -distcc-2.18.3-r8.ebuild:
+  Now trying to remove old files!
+
+  04 Mar 2007; Lisa Seelye <lisa@gentoo.org> -files/2.17/conf,
+  -files/2.17/init:
+  Prune old versions and old PATCHLEVEL dirs in files that shouldnt be there.
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> distcc-2.16-r2.ebuild,
+  distcc-2.16-r3.ebuild, distcc-2.18.3-r6.ebuild, distcc-2.18.3-r7.ebuild,
+  distcc-2.18.3-r8.ebuild, distcc-2.18.3-r10.ebuild:
+  Remove gnuconfig_update usage, leave it to econf.
+
+  17 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  distcc-2.18.3-r10.ebuild:
+  Add ~sparc-fbsd keyword.
+
+  14 Aug 2006; Christian Heim <phreak@gentoo.org> distcc-2.16-r2.ebuild,
+  distcc-2.16-r3.ebuild, distcc-2.18.3-r6.ebuild, distcc-2.18.3-r7.ebuild,
+  distcc-2.18.3-r8.ebuild, distcc-2.18.3-r10.ebuild:
+  Switch default ordering of gcc-config and eselect-compiler to work around
+  portage bug.
+
+  06 Jun 2006; Jeremy Huddleston <eradicator@gentoo.org>
+  distcc-2.16-r2.ebuild, distcc-2.16-r3.ebuild, distcc-2.18.3-r6.ebuild,
+  distcc-2.18.3-r7.ebuild, distcc-2.18.3-r8.ebuild,
+  distcc-2.18.3-r10.ebuild:
+  Updated DEPEND to accept eselect-compiler.
+
+  02 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  distcc-2.18.3-r10.ebuild:
+  Fix up dependencies and checks for non-GNU userlands (where shadow is not
+  used) and mark ~x86-fbsd.
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org> files/digest-distcc-2.16-r2,
+  files/digest-distcc-2.16-r3, files/digest-distcc-2.18.3-r6,
+  files/digest-distcc-2.18.3-r7, files/digest-distcc-2.18.3-r8, Manifest:
+  Fixing SHA256 digest, pass four
+
+*distcc-2.18.3-r10 (17 Apr 2006)
+
+  17 Apr 2006; Lisa Seelye <lisa@gentoo.org> +distcc-2.18.3-r10.ebuild:
+  Base the new thing on -r7 and not pmasked -r8 with IUSE crosscompile. thanks
+  agaffney.
+
+*distcc-2.18.3-r9 (15 Apr 2006)
+
+  15 Apr 2006; Lisa Seelye <lisa@gentoo.org> +files/distcc-as-needed.patch,
+  +distcc-2.18.3-r9.ebuild:
+  --as-needed for bug 128605
+
+  19 Feb 2006; Joshua Kinard <kumba@gentoo.org> distcc-2.18.3-r7.ebuild:
+  Marked stable on mips.
+
+  05 Sep 2005; Lisa Seelye <lisa@gentoo.org> distcc-2.16-r3.ebuild,
+  distcc-2.18.3-r8.ebuild:
+  Change PN to PF for bug #99386.
+
+  30 Jul 2005; MATSUU Takuto <matsuu@gentoo.org> distcc-2.18.3-r7.ebuild:
+  Stable on sh.
+
+  20 Jul 2005; Markus Rothe <corsair@gentoo.org> distcc-2.18.3-r7.ebuild:
+  Stable on ppc64
+
+  17 Jul 2005; Tobias Scherbaum <dertobi123@gentoo.org>
+  distcc-2.18.3-r7.ebuild:
+  ppc stable
+
+  02 Jul 2005; Bryan Østergaard <kloeri@gentoo.org>
+  distcc-2.18.3-r7.ebuild:
+  Stable on alpha.
+
+  28 Jun 2005; Aron Griffis <agriffis@gentoo.org> distcc-2.16-r3.ebuild,
+  distcc-2.18.3-r7.ebuild, distcc-2.18.3-r8.ebuild:
+  Minor ebuild cleanups. Fix use invocation. keepdir does mkdir, so there's no
+  need to use dodir first
+
+  19 Jun 2005; Jason Wever <weeve@gentoo.org> distcc-2.18.3-r7.ebuild:
+  Stable on SPARC.
+
+  18 Jun 2005; Daniel Goller <morfic@gentoo.org>
+  files/2.18/distcc-config.patch:
+  added one more script to array
+
+*distcc-2.18.3-r8 (18 Jun 2005)
+
+  18 Jun 2005; Daniel Goller <morfic@gentoo.org>
+  +files/2.18/distcc-config.patch, +distcc-2.18.3-r8.ebuild:
+  Added crosscompile USE flag to allow proper cross compilation in multi arch
+  environments, thanks to Andrew de Quincey on bug #87859
+
+  18 Jun 2005; Markus Rothe <corsair@gentoo.org> distcc-2.18.3-r7.ebuild:
+  added ~ppc64
+
+*distcc-2.18.3-r7 (15 Jun 2005)
+*distcc-2.16-r3 (15 Jun 2005)
+
+  15 Jun 2005; Lisa Seelye <lisa@gentoo.org> +distcc-2.16-r3.ebuild,
+  +distcc-2.18.3-r7.ebuild:
+  Did a little jiggeypokery with the Gnome/GTK+ monitor: mv distccmon-gnome ->
+  distccmon-gui and a symlink for backwards compatability. It seems a bit
+  silly to have the gtk+ monitor called distccmon-gnome (when it isn't).
+
+*distcc-2.18.3-r6 (18 May 2005)
+
+  18 May 2005; Lisa Seelye <lisa@gentoo.org> distcc-2.16-r2.ebuild,
+  -distcc-2.18.3-r2.ebuild, -distcc-2.18.3-r4.ebuild,
+  -distcc-2.18.3-r5.ebuild, +distcc-2.18.3-r6.ebuild:
+  Edit ebuilds to comply with bug #92745, inherit gcc -> toolchain-funcs. Also
+  do a little cleanup.
+
+  09 May 2005; Aron Griffis <agriffis@gentoo.org> distcc-2.18.3-r2.ebuild:
+  stable on ia64
+
+  19 Mar 2005; Lisa Seelye <lisa@gentoo.org> :
+  Finally put a test around newuser to test for bootstrap condition (where
+  shadow is not present) and cleaned out some legacy stuff.
+
+*distcc-2.18.3-r4 (05 Feb 2005)
+
+  05 Feb 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  files/distcc-gentoo-multilib-r1.patch, -distcc-2.18.3-r3.ebuild,
+  +distcc-2.18.3-r4.ebuild:
+  Fix segfault when freeing argv in the multilib patch.  Closes bug #80518.
+
+*distcc-2.18.3-r3 (30 Jan 2005)
+
+  30 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/distcc-gentoo-multilib-r1.patch, +distcc-2.18.3-r3.ebuild:
+  Let command line arguments override those set by ${ABI}.  See bug #78652.
+
+*distcc-2.18.3-r2 (18 Jan 2005)
+
+  18 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  -distcc-2.18.3-r1.ebuild, +distcc-2.18.3-r2.ebuild:
+  Revbumping to force people to get the updated patch.
+
+  15 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  distcc-2.18.3-r1.ebuild:
+  Stable amd64 for 2005.0.
+
+  14 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  files/distcc-gentoo-multilib.patch:
+  Updating patch to properly initialze newflagsCount. Thanks to Sven Wegener
+  <swegener@gentoo.org>.
+
+  12 Jan 2005; Lisa Seelye <lisa@gentoo.org> -distcc-2.17-r1.ebuild,
+  -distcc-2.18.3.ebuild:
+  Removed 2.18.3-r1 from p.mask and 2.17-r1 from the repository: no point in
+  it, especially since users with ~arch will get 2.18.3 anyways.
+
+  31 Dec 2004; Lisa Seelye <lisa@gentoo.org> :
+  Added distcc-2.18.3-r1.ebuild with the ABI patch in bug #75420. this release
+  is package.masked.
+
+  28 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/distcc-gentoo-multilib.patch, distcc-2.18.3.ebuild:
+  Added patch to honor CFLAGS_${ABI}. It's commented out in the ebuild pending
+  lisa's approval since she's the maintainer. See bug #75420.
+
+  14 Dec 2004; Lisa Seelye <lisa@gentoo.org> distcc-2.18.3.ebuild:
+  fix dependency on pkgconfig for only gtk/gnome. bug #68168
+
+*distcc-2.18.3 (14 Dec 2004)
+
+  14 Dec 2004; Lisa Seelye <lisa@gentoo.org> -distcc-2.18.2.ebuild,
+  +distcc-2.18.3.ebuild, -distcc-2.18.ebuild:
+  version bump, too
+
+  14 Dec 2004; Lisa Seelye <lisa@gentoo.org> -distcc-2.18.2.ebuild,
+  -distcc-2.18.ebuild:
+  2.18 and 2.18.2 are outdated by 2.18.3
+
+  24 Nov 2004; Hardave Riar <hardave@gentoo.org> distcc-2.16-r2.ebuild,
+  distcc-2.18.2.ebuild:
+  Re-enable gnome/gtk support on mips.
+
+*distcc-2.18.2 (15 Nov 2004)
+
+  15 Nov 2004; Lisa Seelye <lisa@gentoo.org> +distcc-2.18.2.ebuild:
+  version bump
+
+*distcc-2.18 (12 Oct 2004)
+
+  12 Oct 2004; Lisa Seelye <lisa@gentoo.org> +files/2.18/conf,
+  +files/2.18/init, +distcc-2.18.ebuild:
+  New version. Hoorraay; --allow flag is now mandatory.
+
+  05 Oct 2004; Lisa Seelye <lisa@gentoo.org> distcc-2.16-r2.ebuild:
+  bump 2.16-r2 on mips
+
+  05 Oct 2004; Lisa Seelye <lisa@gentoo.org> distcc-2.16-r2.ebuild:
+  bump to arch on a few arches for 2.16-r2
+
+  05 Oct 2004; Lisa Seelye <lisa@gentoo.org> -distcc-2.14-r1.ebuild:
+  Removing 2.14 due to security concerns bug #66424
+
+*distcc-2.16-r2 (17 Sep 2004)
+
+  17 Sep 2004; Lisa Seelye <lisa@gentoo.org> +distcc-2.16-r2.ebuild:
+  bump to -r2 for bug #64317... and pending glsa
+
+  16 Sep 2004; Lisa Seelye <lisa@gentoo.org> distcc-2.16-r1.ebuild:
+  forgot to bump patchlevel var
+
+*distcc-2.16-r1 (16 Sep 2004)
+*distcc-2.14-r1 (16 Sep 2004)
+
+  16 Sep 2004; Lisa Seelye <lisa@gentoo.org> -files/2.11.1p/conf,
+  -files/2.11.1p/init, +distcc-2.14-r1.ebuild, +distcc-2.16-r1.ebuild,
+  distcc-2.17-r1.ebuild:
+  And force the users to update with a -r1 on 2.14 and 2.16...
+
+  16 Sep 2004; Lisa Seelye <lisa@gentoo.org> -files/2.11.1p/conf,
+  -files/2.11.1p/init, distcc-2.14.ebuild, distcc-2.16.ebuild:
+  Put old versions on the new "patchlevel" - updating conf and init files.
+
+  16 Sep 2004; Lisa Seelye <lisa@gentoo.org> -distcc-2.12.1-r1.ebuild,
+  -distcc-2.13-r1.ebuild, distcc-2.17-r1.ebuild, -distcc-2.17.ebuild:
+  Doing a bit of tidying and then some fun stuff after
+
+  13 Sep 2004; Jason Wever <weeve@gentoo.org> distcc-2.16.ebuild:
+  Stable on sparc.
+
+  09 Sep 2004; Lisa Seelye <lisa@gentoo.org> distcc-2.16.ebuild:
+  bump 2.16 to x86
+
+  06 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> distcc-2.12.1-r1.ebuild,
+  distcc-2.13-r1.ebuild, distcc-2.14.ebuild, distcc-2.16.ebuild,
+  distcc-2.17-r1.ebuild, distcc-2.17.ebuild:
+  Switch to use epause and ebeep, bug #62950
+
+  27 Aug 2004; <pyrania@gentoo.org> +files/distcc-config,
+  -files/2.11.1p/distcc-config, -files/2.17/distcc-config,
+  distcc-2.12.1-r1.ebuild, distcc-2.13-r1.ebuild, distcc-2.14.ebuild,
+  distcc-2.16.ebuild, distcc-2.17-r1.ebuild, distcc-2.17.ebuild:
+  Fixing bug #57421, thanks to Stefan Sperling. Cleaning up older distcc-config
+  version.
+
+  22 Aug 2004; Tom Gall <tgall@gentoo.org> distcc-2.16.ebuild:
+  added ~ppc64, bug #59224
+
+*distcc-2.17-r1 (22 Aug 2004)
+
+  22 Aug 2004; Lisa Seelye <lisa@gentoo.org>
+  +files/2.17/2.17-ipv6-fix.diff.gz, +files/2.17/conf,
+  +files/2.17/distcc-config, +files/2.17/init, +distcc-2.17-r1.ebuild:
+  Adding a patch for 2.17 to enable ipv6, updating the init and conf scripts.
+  also set the distcc-config script to try and use userid 240.
+
+  20 Aug 2004; Lisa Seelye <lisa@gentoo.org> distcc-2.17.ebuild:
+  <@SpanKY> make the first line 'ipv6 does not work with distcc-2.17' ?
+
+*distcc-2.17 (20 Aug 2004)
+
+  20 Aug 2004; Lisa Seelye <lisa@gentoo.org> distcc-2.14.ebuild,
+  distcc-2.16.ebuild, +distcc-2.17.ebuild:
+  version bump and fix RDEPEND.badindev errors
+
+  26 Jul 2004; Mike Frysinger <vapier@gentoo.org> distcc-2.16.ebuild:
+  gnuconfig loving for us non-mainstream users.
+
+*distcc-2.16 (08 Jul 2004)
+
+  08 Jul 2004; Lisa Seelye <lisa@gentoo.org> distcc-2.14.ebuild,
+  -distcc-2.15.ebuild, +distcc-2.16.ebuild:
+  First: Bumped the testing version to 2.16 (released today) and removed the
+  2.15 since it's silly to let people test that when there's no real need
+  Second: Changed KEYWORDS on 2.14 to -* s390 since s390 had moved to stable and
+  nothing else had moved (everything is stable on 2.13-r1), so let's have people
+  on ~arch test 2.16 Third: s390 maintainers, or whoever bumped 2.14 please heed
+  http://groups.google.com/groups?hl=no&lr=&ie=UTF-8&c2coff=1&safe=off&selm=2fpl
+  q-1cD-43%40gated-at.bofh.it
+
+*distcc-2.15 (06 Jul 2004)
+
+  06 Jul 2004; Lisa Seelye <lisa@gentoo.org> +distcc-2.15.ebuild:
+  version bump
+
+  15 May 2004; Lisa Seelye <lisa@gentoo.org> distcc-2.13-r1.ebuild,
+  distcc-2.14.ebuild:
+  Add >=gnome-base/gconf-2 as a depend for gnome to resolve bug #50594
+
+  15 May 2004; Lisa Seelye <lisa@gentoo.org> :
+  cleanup of old files
+
+  12 May 2004; Michael McCabe <randy@gentoo.org> distcc-2.14.ebuild:
+  Added s390 keywords
+
+*distcc-2.14 (02 May 2004)
+
+  02 May 2004; Lisa Seelye <lisa@gentoo.org> +distcc-2.14.ebuild:
+  bump to 2.14
+
+  11 Apr 2004; Lisa Seelye <lisa@gentoo.org> distcc-2.12.1.ebuild,
+  distcc-2.13-r1.ebuild, distcc-2.13.ebuild:
+  bump to stable. yell at me if your arch breaks
+
+  11 Apr 2004; Lisa Seelye <lisa@gentoo.org> distcc-2.12.1.ebuild,
+  distcc-2.13.ebuild:
+  General cleanup of old ebuilds & digests.
+
+  21 Mar 2004; Lisa Seelye <lisa@gentoo.org> files/2.11.1p/init:
+  Change the init script to do TMPDIR=TMPDIR basically so that the user can
+  inherit a new TMPDIR location. Closes bug #44915
+
+*distcc-2.13-r1 (06 Mar 2004)
+*distcc-2.12.1-r1 (06 Mar 2004)
+
+  06 Mar 2004; Lisa Seelye <lisa@gentoo.org> distcc-2.12.1-r1.ebuild,
+  distcc-2.13-r1.ebuild:
+  chown /var/run/distccd for distcc:daemon after install since in some cases its
+  being reset to root:root
+
+*distcc-2.13 (02 Mar 2004)
+
+  02 Mar 2004; Lisa Seelye <lisa@gentoo.org> distcc-2.13.ebuild,
+  files/2.11.1p/conf, files/2.11.1p/init:
+  Version bump and to remove DISTCC_DIR remnants from the daemon config files
+  (see bug #42947). the config files are non critical, since an unuse envvar
+  never hurt anyone i will not bump 2.12.1.
+
+  22 Feb 2004; Lisa Seelye <lisa@gentoo.org> distcc-2.11.1.ebuild,
+  distcc-2.11.2-r1.ebuild, distcc-2.11.2.ebuild, distcc-2.8-r2.ebuild,
+  distcc-2.9.ebuild:
+  Removing old stuff since everyone is now stable on 2.12.1. (cool huh)
+
+  22 Feb 2004; Lisa Seelye <lisa@gentoo.org> distcc-2.12.1.ebuild:
+  Move 2.12.1 to stable on ppc. Directory cleanup in this dir to follow
+  shortly....
+
+  22 Feb 2004; Aron Griffis <agriffis@gentoo.org> distcc-2.12.1.ebuild:
+  stable on alpha
+
+  21 Feb 2004; Lisa Seelye <lisa@gentoo.org> distcc-2.11.1.ebuild,
+  distcc-2.11.2-r1.ebuild, distcc-2.11.2.ebuild, distcc-2.12.1.ebuild,
+  distcc-2.5-r1.ebuild, distcc-2.8-r2.ebuild, distcc-2.9.ebuild:
+  remove arm keyword from old ebuilds. i will clean (rdepend.bad and prune)
+  these up shortly...
+
+  21 Feb 2004; Lisa Seelye <lisa@gentoo.org> distcc-2.12.1.ebuild:
+  Bump 2.12.1 to stable across several arches - still need to hear from alpha
+  and ppc. Also add amd64 and ia64 to keyword
+
+  11 Jan 2004; Markus Nigbur <pyrania@gentoo.org> distcc-2.11.2-r1.ebuild,
+  distcc-2.11.2.ebuild, distcc-2.12.1.ebuild:
+  Changed the distcc-config related ewarn message.
+
+  11 Jan 2004; Markus Nigbur <pyrania@gentoo.org> files/2.11.1p/distcc-config:
+  Removing verbose msg from writeenv.
+
+  10 Jan 2004; Markus Nigbur <pyrania@gentoo.org> files/2.11.1p/distcc-config:
+  Restarting the daemon is no good.
+
+*distcc-2.12.1 (09 Jan 2004)
+
+  09 Jan 2004; Lisa Seelye <lisa@gentoo.org> distcc-2.12.1.ebuild:
+  This is a version bump with some pretty big fixes (setuid/gid ordering, gentoo
+  bug #37592) and more.
+
+  05 Jan 2004; Robin H. Johnson <robbat2@gentoo.org> files/2.10/distcc-config,
+  files/2.11/distcc-config, files/2.8/distcc-config, files/2.9/distcc-config:
+  fix tail -1 stuff in distcc-config files
+
+*distcc-2.12 (24 Dec 2003)
+
+  24 Dec 2003; Lisa Seelye <lisa@gentoo.org> distcc-2.12.ebuild,
+  files/setuid-2.12-order-fix.gz:
+  Version bump, which includes IPv6 support (shoulda been in last one, but oh
+  well), and a setuid patch that was posted to the distcc ml by Wayne Davison
+  <wayned@samba.org> (this patch fixes the order in which setuid happens in
+  the daemon startup)
+
+  11 Dec 2003; Markus Nigbur <pyrania@gentoo.org> files/2.11.1p/distcc-config:
+  Fixed distcc-config. See bug #27432 for details.
+
+  06 Dec 2003; Lisa Seelye <lisa@gentoo.org> files/2.11/distcc-config,
+  files/2.11.1p/distcc-config:
+  fix distcc-config to default to uid 240, to close bug 35096
+
+  06 Dec 2003; Lisa Seelye <lisa@gentoo.org> files/2.11.1p/distcc-config:
+  fix distcc-config to default to uid 240, to close bug 35096 (will fix the
+  lower versions in a second)
+
+*distcc-2.11.2-r1 (21 Nov 2003)
+
+  21 Nov 2003; Lisa Seelye <lisa@gentoo.org> distcc-2.11.2-r1.ebuild,
+  files/2.11.1p/distcc-config:
+  New distcc-config from bug 27432; fixes comment 18
+
+  03 Nov 2003; Lisa Seelye <lisa@gentoo.org> distcc-2.11.1.ebuild:
+  Bump to arch on mips for 2.11.1
+
+  01 Nov 2003; Lisa Seelye <lisa@gentoo.org> distcc-2.11-r1.ebuild,
+  distcc-2.11-r2.ebuild:
+  Cleaning up a little. These two ebuilds (2.11-r1,r2) are obsolete
+
+  24 Oct 2003; Chris PeBenito <pebenito@gentoo.org> distcc-2.10-r3.ebuild,
+  distcc-2.11-r1.ebuild, distcc-2.11-r2.ebuild, distcc-2.11.1-r1.ebuild,
+  distcc-2.11.1.ebuild, distcc-2.11.2.ebuild, distcc-2.5-r1.ebuild,
+  distcc-2.8-r2.ebuild, distcc-2.9.ebuild:
+  Add in selinux to IUSE, since I forgot to do it when I added the selinux RDEP.
+
+*distcc-2.11.2 (23 Oct 2003)
+
+  23 Oct 2003; Lisa Seelye <lisa@gentoo.org> distcc-2.11.1.ebuild,
+  distcc-2.11.2.ebuild:
+  Version bump, using the new distcc-config
+
+  23 Oct 2003; Jason Wever <weeve@gentoo.org> distcc-2.10-r3.ebuild:
+  Marked stable on sparc.
+
+*distcc-2.11.1-r1 (18 Oct 2003)
+
+  18 Oct 2003; Lisa Seelye <lisa@gentoo.org> distcc-2.11.1-r1.ebuild,
+  files/2.11.1p/conf, files/2.11.1p/distcc-config, files/2.11.1p/init:
+  Distcc-2.11.1-r1 is to test distcc-config rewritten in python as per bug
+  27432. Thanks to Pyrania for the rewrite.
+
+*distcc-2.11.1 (08 Oct 2003)
+
+  08 Oct 2003; Lisa Seelye <lisa@gentoo.org> distcc-2.11.1.ebuild:
+  version bump.  gtk non using gnome users should be happy!
+
+*distcc-2.11-r2 (24 Sep 2003)
+
+  24 Sep 2003; Lisa Seelye <lisa@gentoo.org> distcc-2.11-r2.ebuild:
+  gtk again
+
+*distcc-2.11-r1 (24 Sep 2003)
+
+  24 Sep 2003; Lisa Seelye <lisa@gentoo.org distcc-2.11-r1.ebuild:
+  -m Fix bug 29511.  Seems as if the depends were silently changed.
+
+*distcc-2.11 (23 Sep 2003)
+
+  23 Oct 2003; Lisa Seelye <lisa@gentoo.org> distcc-2.11.1.ebuild:
+  Move 2.11.1 to stable on a few arches, going to move the rest ASAP.
+
+  23 Sep 2003; Lisa Seelye <lisa@gentoo.org> distcc-2.11.ebuild,
+  files/2.11/conf, files/2.11/distcc-config, files/2.11/init:
+  Version bump, and it now requires Portage-2.0.49-r6 or greater.
+
+*distcc-2.10-r3 (15 Sep 2003)
+
+  15 Sep 2003; Lisa Seelye <lisa@gentoo.org> distcc-2.10-r3.ebuild,
+  files/2.10/conf, files/2.10/distcc-config, files/2.10/init:
+  Moved DISTCC_DIR to /etc/make.conf and resolved bug 26697.
+
+*distcc-2.10-r2 (15 Aug 2003)
+
+  15 Aug 2003; Seemant Kulleen <seemant@gentoo.org> distcc-2.10-r2.ebuild:
+  fixed the distcc_log env installation on installation. Lisa gave me the fix to
+  commit while she has technical issues. So please don't think I'm maintaining
+  it, coz I'm not :)
+
+*distcc-2.10-r1 (13 Aug 2003)
+
+  13 Aug 2003; Lisa Seelye <lisa@gentoo.org> distcc-2.10-r1.ebuild:
+  Fix the ebuild. should be doing distcc-config --install, too
+
+  12 Aug 2003; Lisa Seelye <lisa@gentoo.org> distcc-2.9.ebuild:
+  Mark distcc 2.9 stable on x86.
+
+*distcc-2.10 (12 Aug 2003)
+
+  12 Aug 2003; Lisa Seelye <lisa@gentoo.org> distcc-2.10.ebuild, files/2.10/conf,
+  files/2.10/distcc-config, files/2.10/init:
+  add distcc 2.10 and related files
+
+  10 Aug 2003; Chris PeBenito <pebenito@gentoo.org> distcc-2.5-r1.ebuild,
+  distcc-2.8-r2.ebuild, distcc-2.9.ebuild:
+  Add selinux policy to RDEP
+
+  08 Aug 2003; Lisa M. Seelye <lisa@gentoo.org> files/2.8/conf,
+  files/2.8/init, files/2.9/conf, files/2.9/init:
+  Incorporated bug 26204 into the conf and init scripts (DISTCC_TMPDIR), and
+  added a CVS Header
+
+  08 Aug 2003; Lisa Seelye <lisa@gentoo.org> distcc-2.5-r1.ebuild,
+  distcc-2.8-r2.ebuild, distcc-2.9.ebuild:
+  updated guide document URI
+
+*distcc-2.8-r1 (08 Aug 2003)
+
+  08 Aug 2003; Lisa Seelye <lisa@gentoo.org> distcc-2.5.ebuild, distcc-2.7.1.ebuild,
+  distcc-2.7.ebuild, distcc-2.8-r1.ebuild, distcc-2.8.ebuild,
+  files/2.7.1/001_fix_tmpdir.patch.gz, files/2.7.1/conf,
+  files/2.7.1/distcc-config, files/2.7.1/init:
+  Cleaning the repository. non x86 will go from 2.5-r1 to 2.8-r2 or 2.9. There
+  is no need to keep the old ones around.
+
+  04 Aug 2003; Aron Griffis <agriffis@gentoo.org> distcc-2.8-r2.ebuild:
+  Mark stable on alpha.  Fix formatting and some errors in ChangeLog
+
+  02 Aug 2003: Lisa Marie Seelye <lisa@gentoo.org> ChangeLog :
+  Added a metadata.xml file. Initially under the `cluster' herd.  Also
+  normalized this file (distcc-2.8) to have most recent dates at the top of
+  the file
+
+*distcc-2.9 (21 Jul 2003)
+
+  24 Aug 2003; Guy Martin <gmsoft@gentoo.org> distcc-2.9.ebuild :
+  Added hppa to KEYWORDS.
+
+  21 Jul 2003: Lisa Marie Seelye <lisa@gentoo.org> :
+  New version released and committed (Still with the patch to fix tmpdir)
+  Updated distcc-config to reflect bug #24972  I'll make this change in
+  all versions in the repository.
+
+*distcc-2.8 (09 Jul 2003)
+
+  06 Aug 2003; Lisa Marie Seelye <lisa@gentoo.org> distcc-2.8-r2.ebuild:
+  Marked 2.8-r2 stable on sparc thanks todd
+
+  05 Aug 2003; Guy Martin <gmsoft@gentoo.org> distcc-2.8-r2.ebuild :
+  Marked stable on hppa.
+
+  27 Jul 2003; Lisa Marie Seelye <lisa@gentoo.org> :
+  Bumped distcc-2.8-r2 to x86
+
+  13 Jul 2003; Lisa Marie Seelye <lisa@gentoo.org> :
+  (files/2.8/conf) Added a --port to DISTCC_OPTS (/etc/conf.d/distccd) to
+  change the running port.
+  (distcc-2.8-r2.ebuild) Added a note to the backup distcc website
+
+  12 Jul 2003; Lisa Marie Seelye <lisa@gentoo.org> :
+  Oops. :)  `gtk' is preferred over `gtk2'.  Thanks Spider for the
+  heads up!
+
+  10 Jul 2003; Lisa Marie Seelye <lisa@gentoo.org> :
+  New version released and committed (Still with the patch to fix tmpdir)
+
+*distcc-2.7.1 (01 Jul 2003)
+
+  21 Jul 2003; Lisa Marie Seelye <lisa@gentoo.org> :
+  Updated distcc-config to reflect bug #24972
+
+  17 Jul 2003; Lisa Marie Seelye <lisa@gentoo.org> :
+  Changed gnome stuff to gtk. How on earth did this get missed??
+
+  14 Jul 2003; Lisa Marie Seelye <lisa@gentoo.org> :
+  Updated the "How-to" website URI in the .ebuild
+
+  10 Jul 2003; Lisa Marie Seelye <lisa@gentoo.org> :
+  Moved to x86 (from ~x86)
+
+  04 Jul 2003; Joshua Kinard <kumba@gentoo.org> :
+  Fixed b0rked digests
+
+  01 Jul 2003; Karl Trygve Kalleberg <karltk@gentoo.org> :
+  distcc-2.7.ebuild, files/2.7.1/distcc-config, files/2.7.1/conf,
+  files/2.7.1/init, files/2.7.1/001_fix_tmpdir.patch.gz:
+  New upstream version. Ebuild submitted by Lisa Marie <lisa@thedoh.com>.
+  This version is self-contained, so previous versions may be nuked at 
+  whim.
+
+*distcc-2.7 (16 Jun 2003)
+
+  17 Jun 2003; Mike Frysinger <vapier@gentoo.org> distcc-2.7.ebuild:
+  Filter out large file flags on gcc-2.x machines.
+
+  16 Jun 2003; Zach Welch <zwelch@gentoo.org> distcc-2.7.ebuild:
+  bump version; add support provided by Lisa Marie in bug 22914
+
+  04 Jun 2003; Zach Welch <zwelch@gentoo.org> distcc-2.5-r1.ebuild:
+  mark 2.5-r1 stable on all arches; update web page address to use new wiki
+  restore truncated change log, oopsie.
+
+*distcc-2.5-r1 (30 May 2003)
+
+  30 May 2003; Zach Welch <zwelch@gentoo.org> distcc-2.5-r1.ebuild,
+  files/2.3/distcc-config:
+  update to fix problems with DISTCC_HOSTS when upgrading from earlier versions
+
+*distcc-2.5 (27 May 2003)
+
+  27 May 2003; Zach Welch <zwelch@gentoo.org distcc-2.5.ebuild,
+  files/1.2/init:
+  new version; fixes to init script as proposed by agriffis@gentoo.org
+
+*distcc-2.4.2 (23 May 2003)
+
+  23 May 2003; Hanno Boeck <hanno@gentoo.org> distcc-2.4.2.ebuild:
+  New version.
+
+*distcc-2.4 (21 May 2003)
+
+  21 May 2003; Zach Welch <zwelch@gentoo.org distcc-2.3.ebuild,
+  files/2.3/distcc-config, distcc-2.4.ebuild:
+  Update to latest versions; updates to distcc-config to use new
+  DISTCC_HOSTS configuration.  May require some cleaning of previous
+  settings, notably DISTCC_HOSTS in /etc/env.d/02distcc
+
+*distcc-2.0.1 (31 Mar 2003)
+
+  28 Apr 2003; Zach Welch <zwelch@gentoo.org> distcc-0.12.ebuild,
+  distcc-0.12.ebuild, distcc-0.15.ebuild, distcc-0.15.ebuild,
+  distcc-1.0.ebuild, distcc-1.0.ebuild, distcc-1.1-r11.ebuild,
+  distcc-1.1-r11.ebuild, distcc-1.1-r8.ebuild, distcc-1.1-r8.ebuild,
+  distcc-1.1.ebuild, distcc-1.1.ebuild, distcc-1.2.1.ebuild,
+  distcc-1.2.1.ebuild, distcc-1.2.3.ebuild, distcc-1.2.3.ebuild,
+  distcc-1.2.ebuild, distcc-1.2.ebuild, files/distccd, files/distccd.1,
+  files/distccd.2, files/distccd.4, files/wrapper-1.1.patch,
+  files/1.2/distcc-config, files/1.2/wrapper.patch, files/1.2.1/distcc-config,
+  files/1.2.1/wrapper.patch, files/1.2.3/distcc-config:
+  Bump distcc-2.0.1 revision and add new --set-j option for setting MAKEOPTS.
+  Remove old versions that are no longer needed or desired.
+
+  17 Apr 2003; Zach Welch <zwelch@gentoo.org> files/1.2.3/distcc-config:
+  fix distcc-config to add DCCC_QUIET
+
+  31 Mar 2003; Zach Welch <zwelch@gentoo.org> distcc-2.0.1.ebuild,
+  files/1.2.3/distcc-config:
+  bump version to close bug 18566; masquerade patch now mainlined
+  info file removed upstream; add --help to distcc-config
+
+*distcc-1.2.3-r3 (17 Mar 2003)
+
+  17 Apr 2003; Zach Welch <zwelch@gentoo.org> distcc-1.2.3-r3.ebuild:
+  bump to stable for all arches
+
+  19 Mar 2003; Aron Griffis <agriffis@gentoo.org> distcc-1.2.3-r3.ebuild:
+  Mark stable on alpha
+
+  17 Mar 2003; Zach Welch <zwelch@gentoo.org> distcc-1.2.3-r1.ebuild,
+  files/1.2.3/distcc-config:
+  set ROOTPATH, refactor env-update code, rename env file
+
+*distcc-1.2.3-r2 (17 Mar 2003)
+
+  17 Mar 2003; Zach Welch <zwelch@gentoo.org> files/1.2.3/distcc-config:
+  usability additions, see online docs for info
+
+  17 Mar 2003; Zach Welch <zwelch@gentoo.org> distcc-1.2.3-r1.ebuild,
+  distcc-1.2.3-r1.ebuild, distcc-1.2.3-r2.ebuild, files/1.2.3/distcc-config:
+  fix einfo issue in new config function
+
+*distcc-1.2.3-r1 (17 Mar 2003)
+
+  17 Mar 2003; Zach Welch <zwelch@gentoo.org> distcc-1.2.3-r1.ebuild,
+  files/1.2.3/distcc-config, files/1.2.3/info.patch:
+  Add distcc environment file and options to distcc-config to manage it
+  Fix ebuild to address defects reported in but 17716
+
+*distcc-1.2.3 (03 Mar 2003)
+
+  11 Mar 2003; Zach Welch <zwelch@gentoo.org> distcc-1.2.3.ebuild,
+  files/1.2.1/distcc-config:
+  add shadow as DEPEND (for now), fix distcc-config if shadow tools not
+  installed (for later)
+
+  07 Mar 2003; Zach Welch <zwelch@gentoo.org> distcc-1.2.3.ebuild:
+  mark distcc-1.2.3 as stable on x86 and ppc
+
+  03 Mar 2003; Zach Welch <zwelch@gentoo.org> distcc-1.2.3.ebuild,
+  files/1.2.3/wrapper.patch:
+  Bump to latest bug release version
+
+*distcc-1.2.1 (26 Feb 2003)
+
+  26 Feb 2003; Zach Welch <zwelch@gentoo.org> distcc-1.2.1.ebuild,
+  files/1.2.1/distcc-config, files/1.2.1/wrapper.patch:
+  New version, with fixes for installs under strange ROOTs
+  Moved user creation, directory fixups into distcc-config script
+  Fix typo in conf script; fixes bug 16432
+
+*distcc-1.2 (21 Feb 2003)
+
+  21 Feb 2003; Zach Welch <zwelch@gentoo.org> distcc-1.2.ebuild :
+  Add new version, cleanup patch from 1.1-r11
+  Add initial distcc-config script
+
+*distcc-1.1-r11 (17 Feb 2003)
+
+  21 Feb 2003; Zach Welch <zwelch@gentoo.org> distcc-1.1-r11.ebuild :
+  Remove extra cp of $S
+
+  19 Feb 2003; Zach Welch <zwelch@gentoo.org> distcc-1.1-r11.ebuild :
+  Added arm to keywords.
+
+  19 Feb 2003; Guy Martin <gmsoft@gentoo.org> distcc-1.1-r11.ebuild :
+  Added ~hppa to keywords.
+
+  18 Feb 2003; Zach Welch <zwelch@gentoo.org> :
+  Updated to fix minor bugs in -r11
+
+*distcc-1.1-r10 (17 Feb 2003)
+  
+  17 Feb 2003; Zach Welch <zwelch@gentoo.org> :
+  Add /var/run/distccd for pid and distcc user... (bugs 15048 and 15769)
+  Updated to fix minor bugs in original -r10
+
+*distcc-1.1-r9 (17 Feb 2003)
+  
+  17 Feb 2003; Zach Welch <zwelch@gentoo.org> :
+  Fix location of pid file... (bug 15769)
+  Fix einfo Portage version reference
+  (THIS VERSION IS BROKEN - ztw)
+
+*distcc-1.1-r8 (10 Feb 2003)
+  
+  17 Feb 2003; Zach Welch <zwelch@gentoo.org> :
+  Fix einfo Portage version reference
+
+  15 Feb 2003; Zach Welch <zwelch@gentoo.org> :
+  Extended einfo and added link to configuration page
+  
+  10 Feb 2003; Zach Welch <zwelch@gentoo.org> :
+  Includes wrapper-1.1.patch from bug 13897; now installs symlinks
+  in /usr/lib/distcc/bin to gcc, g++, and others.  Users should no 
+  longer set CC or CXX to distcc; instead, for non-portage builds,
+  set PATH="/usr/lib/distcc/bin:$PATH".  See the follow for more info:
+  http://gentoo.superlucidity.net/www/distcc.html
+  
+*distcc-1.1 (26 Jan 2003)
+
+  26 Jan 2003; Brad Cowan <bcowan@gentoo.org> distcc-1.1.ebuild,
+  files/digest-distcc-1.1:
+  
+  Bumped version.
+
+*distcc-1.0 (15 Jan 2003)
+
+  15 Jan 2003; Brad Cowan <bcowan@gentoo.org> distcc-1.0.ebuild,
+  files/digest-distcc-1.0:
+  
+  Bumped version. Added new init script thanks to Eric Andreson (Ndiin).
+
+  16 Dec 2002; Aron Griffis <agriffis@gentoo.org> distcc-0.15.ebuild:
+  Added ~alpha to KEYWORDS
+
+*distcc-0.15 (12 Dec 2002)
+
+  12 Dec 2002; Brad Cowan <bcowan@gentoo.org> distcc-0.15.ebuild,
+  files/digest-distcc-0.15:
+  
+  Bumped version.
+
+*distcc-0.14-r1 (11 Dec 2002)
+
+  11 Dec 2002; Brad Cowan <bcowan@gentoo.org> distcc-0.14-r1.ebuild,
+  files/digest-distcc-0.14-r1:
+  
+  Removed bad info file.
+
+*distcc-0.14 (16 Nov 2002)
+
+  16 Nov 2002; Brad Cowan <bcowan@gentoo.org> distcc-0.14.ebuild,
+  files/digest-distcc-0.14 :
+  
+  Version bump.
+
+*distcc-0.13 (12 Nov 2002)
+
+  12 Nov 2002; Brad Cowan <bcowan@gentoo.org> distcc-0.13.ebuild,
+  files/digest-distcc-0.13 :
+  
+  Version bump, with many major bugfixes.
+
+*distcc-0.12 (07 Oct 2002)
+
+  12 Nov 2002; Mark Guertin <gerk@gentoo.org> distcc-0.12.ebuild :
+  Added ppc to keywords again.
+
+  13 Oct 2002; Brad Cowan <bcowan@gentoo.org> distcc-0.12.ebuild,
+  files/distccd :
+  
+  Added distccd init script.
+
+  22 Sep 2002; Brad Cowan <bcowan@gentoo.org> distcc-0.12.ebuild :
+  
+  Version bump.
+
+*distcc-0.11 (25 Sep 2002)
+
+  22 Sep 2002; Brad Cowan <bcowan@gentoo.org> distcc-0.11.ebuild : 
+  
+  Version bump.
+
+*distcc-0.10.1 (17 Sep 2002)
+
+  17 Sep 2002; Brad Cowan <bcowan@gentoo.org> distcc-0.10.1.ebuild : 
+  
+  Version bump, updated docs.
+
+*distcc-0.8 (20 Aug 2002)
+
+  20 Aug 2002; Maik Schreiber <blizzy@gentoo.org> : New release.
+
+*distcc-0.7 (06 Aug 2002)
+
+  06 Aug 2002; Maik Schreiber <blizzy@gentoo.org> : New release.
+
+*distcc-0.6 (12 Jul 2002)
+
+  25 Jul 2002; Mark Guertin <gerk@gentoo.org> : Added ppc to
+  keywords
+
+  12 Jul 2002; Maik Schreiber <blizzy@gentoo.org> : New release.
+
+*distcc-0.5 (05 Jul 2002)
+
+  05 Jul 2002; Daniel Robbins <drobbins@gentoo.org> : new release
+  that includes missing KEYWORDS, SLOT, LICENSE and new man pages,
+  closes bug #4506.
+
+*distcc-0.4 (21 Jun 2002)
+
+  07 Jun 2002; Ryan Phillips <rphillips@gentoo.org> : Added popt
+  dep. Fixes # 4466. Thanks to Michael Grigoriev
+
+  21 Jun 2002; Ryan Phillips <rphillips@gentoo.org> : New release
+
+*distcc-0.3 (21 Jun 2002)
+
+  21 Jun 2002; Ryan Phillips <rphillips@gentoo.org> ChangeLog 

@@ -1,0 +1,87 @@
+--- k3d-source-0.8.0.2/k3dsdk/gil/boost/gil/extension/dynamic_image/apply_operation_base.hpp	2010-07-02 23:27:47.000000000 -0300
++++ k3d-source-0.8.0.2_patched/k3dsdk/gil/boost/gil/extension/dynamic_image/apply_operation_base.hpp	2012-09-14 15:48:20.000000000 -0300
+@@ -114,7 +114,7 @@
+     template <typename T2, typename Op>
+     struct reduce_bind1 {
+         const T2& _t2;
+-        mutable Op&  _op;
++        Op&  _op;
+ 
+         typedef typename Op::result_type result_type;
+ 
+@@ -127,7 +127,7 @@
+     struct reduce_bind2 {
+         const Bits1& _bits1;
+         std::size_t _index1;
+-        mutable Op&  _op;
++        Op&  _op;
+ 
+         typedef typename Op::result_type result_type;
+ 
+--- k3d-source-0.8.0.2/k3dsdk/data.h	2010-07-02 23:27:46.000000000 -0300
++++ k3d-source-0.8.0.2_patched/k3dsdk/data.h	2012-09-14 16:50:20.000000000 -0300
+@@ -580,7 +580,7 @@
+ 
+ 		try
+ 		{
+-			set_value(boost::lexical_cast<value_t>(*new_value), Hint);
++			this->set_value(boost::lexical_cast<value_t>(*new_value), Hint);
+ 			return true;
+ 		}
+ 		catch(...)
+@@ -865,7 +865,7 @@
+ 
+ 		try
+ 		{
+-			set_value(boost::lexical_cast<value_t>(*new_value), Hint);
++			this->set_value(boost::lexical_cast<value_t>(*new_value), Hint);
+ 			return true;
+ 		}
+ 		catch(...)
+@@ -1011,7 +1011,7 @@
+ 
+ 		try
+ 		{
+-			set_value(boost::lexical_cast<value_t>(*new_value), Hint);
++			this->set_value(boost::lexical_cast<value_t>(*new_value), Hint);
+ 			return true;
+ 		}
+ 		catch(...)
+@@ -1146,7 +1146,7 @@
+ 		if(!new_value)
+ 			return false;
+ 
+-		set_value(*new_value, Hint);
++		this->set_value(*new_value, Hint);
+ 		return true;
+ 	}
+ 
+@@ -1671,7 +1671,7 @@
+ 	/// This little bit of magic makes it possible for base classes (such as node_storage) to update their own values while observing the correct undo policy
+ 	void internal_set_value(const value_t& Value, ihint* const Hint)
+ 	{
+-		set_value(Value, Hint);
++		this->set_value(Value, Hint);
+ 	}
+ };
+ 
+--- k3d-source-0.8.0.2/modules/animation/interpolator.h	2010-07-02 23:27:55.000000000 -0300
++++ k3d-source-0.8.0.2_patched/modules/animation/interpolator.h	2012-09-14 16:45:16.000000000 -0300
+@@ -92,7 +92,7 @@
+ 	{
+ 		time_t t_lower, t_upper;
+ 		value_t v_lower, v_upper;
+-		get_surrounding_keys(Time, Keyframes, t_lower, t_upper, v_lower, v_upper); 
++		this->get_surrounding_keys(Time, Keyframes, t_lower, t_upper, v_lower, v_upper); 
+ 		return lerp(t_lower, t_upper, v_lower, v_upper, Time);
+ 	}
+ protected:
+@@ -116,7 +116,7 @@
+ 	{
+ 		time_t t_lower, t_upper;
+ 		value_t v_lower, v_upper;
+-		get_surrounding_keys(Time, Keyframes, t_lower, t_upper, v_lower, v_upper); 
++		this->get_surrounding_keys(Time, Keyframes, t_lower, t_upper, v_lower, v_upper); 
+ 		return lerp(t_lower, t_upper, v_lower, v_upper, Time);
+ 	} 
+ protected:

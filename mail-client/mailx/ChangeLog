@@ -1,0 +1,418 @@
+# ChangeLog for mail-client/mailx
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-client/mailx/ChangeLog,v 1.85 2013/02/21 00:23:21 zmedico Exp $
+
+  21 Feb 2013; Zac Medico <zmedico@gentoo.org> mailx-8.1.2.20050715-r6.ebuild:
+  Add ~arm-linux keyword.
+
+  01 Oct 2012; Eray Aslan <eras@gentoo.org> -mailx-8.1.2.20050715-r5.ebuild,
+  mailx-8.1.2.20050715-r6.ebuild:
+  Remove old
+
+  29 Sep 2012; Raúl Porcel <armin76@gentoo.org>
+  mailx-8.1.2.20050715-r6.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #433295
+
+  18 Sep 2012; Jeroen Roovers <jer@gentoo.org> mailx-8.1.2.20050715-r6.ebuild:
+  Stable for HPPA (bug #433295).
+
+  12 Sep 2012; Anthony G. Basile <blueness@gentoo.org>
+  mailx-8.1.2.20050715-r6.ebuild:
+  stable ppc ppc64, bug #433295
+
+  08 Sep 2012; Johannes Huber <johu@gentoo.org> mailx-8.1.2.20050715-r6.ebuild:
+  Stable for x86, wrt bug #433295
+
+  08 Sep 2012; Anthony G. Basile <blueness@gentoo.org>
+  mailx-8.1.2.20050715-r6.ebuild:
+  Stable arm, bug #433295
+
+  07 Sep 2012; Agostino Sarubbo <ago@gentoo.org>
+  mailx-8.1.2.20050715-r6.ebuild:
+  Stable for amd64, wrt bug #433295
+
+  31 Jul 2012; Eray Aslan <eras@gentoo.org> -mailx-8.1.2.20050715-r1.ebuild,
+  -mailx-8.1.2.20050715-r3.ebuild:
+  Remove old
+
+  29 Jul 2012; Raúl Porcel <armin76@gentoo.org>
+  mailx-8.1.2.20050715-r5.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #419011
+
+*mailx-8.1.2.20050715-r6 (11 Jul 2012)
+
+  11 Jul 2012; Eray Aslan <eras@gentoo.org> +mailx-8.1.2.20050715-r6.ebuild:
+  Fix help file location - bug #424437
+
+  03 Jul 2012; Jeroen Roovers <jer@gentoo.org> mailx-8.1.2.20050715-r5.ebuild:
+  Stable for HPPA (bug #419011).
+
+  14 Jun 2012; Agostino Sarubbo <ago@gentoo.org>
+  -mailx-8.1.2.20050715-r2.ebuild, -mailx-8.1.2.20050715-r4.ebuild:
+  Remove old
+
+  08 Jun 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  mailx-8.1.2.20050715-r5.ebuild:
+  x86 stable wrt bug #419011
+
+  07 Jun 2012; Brent Baude <ranger@gentoo.org> mailx-8.1.2.20050715-r5.ebuild:
+  Marking mailx-8.1.2.20050715-r5 ppc for bug 419011
+
+  06 Jun 2012; Markus Meier <maekke@gentoo.org> mailx-8.1.2.20050715-r5.ebuild:
+  arm stable, bug #419011
+
+  05 Jun 2012; Brent Baude <ranger@gentoo.org> mailx-8.1.2.20050715-r5.ebuild:
+  Marking mailx-8.1.2.20050715-r5 ppc64 for bug 419011
+
+  02 Jun 2012; Agostino Sarubbo <ago@gentoo.org>
+  mailx-8.1.2.20050715-r5.ebuild:
+  Stable for amd64, wrt bug #419011
+
+*mailx-8.1.2.20050715-r5 (19 Jan 2012)
+
+  19 Jan 2012; Eray Aslan <eras@gentoo.org> +mailx-8.1.2.20050715-r5.ebuild:
+  add compatibility sym link - bug #399253
+
+*mailx-8.1.2.20050715-r4 (10 Jan 2012)
+
+  10 Jan 2012; Eray Aslan <eras@gentoo.org> +mailx-8.1.2.20050715-r4.ebuild:
+  migrate mail command to /usr/bin - bug #398061
+
+  22 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  mailx-8.1.2.20050715-r3.ebuild:
+  ppc64 stable wrt #343633
+
+  13 Nov 2010; Raúl Porcel <armin76@gentoo.org>
+  mailx-8.1.2.20050715-r3.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #343633
+
+  06 Nov 2010; Markus Meier <maekke@gentoo.org>
+  mailx-8.1.2.20050715-r3.ebuild:
+  arm stable, bug #343633
+
+  05 Nov 2010; Jeroen Roovers <jer@gentoo.org>
+  mailx-8.1.2.20050715-r3.ebuild:
+  Stable for HPPA PPC (bug #343633).
+
+  03 Nov 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  mailx-8.1.2.20050715-r3.ebuild:
+  x86 stable wrt bug #343633
+
+*mailx-8.1.2.20050715-r3 (01 Nov 2010)
+
+  01 Nov 2010; Jeroen Roovers <jer@gentoo.org>
+  +mailx-8.1.2.20050715-r3.ebuild:
+  Respect CC by Christian Franke (bug #235768).
+
+  01 Nov 2010; Markos Chandras <hwoarang@gentoo.org>
+  mailx-8.1.2.20050715-r2.ebuild:
+  Stable on amd64 wrt bug #343633
+
+  19 Oct 2010; Mart Raudsepp <leio@gentoo.org>
+  mailx-8.1.2.20050715-r1.ebuild:
+  Drop to ~mips
+
+  30 Sep 2010; Fabian Groffen <grobian@gentoo.org>
+  mailx-8.1.2.20050715-r2.ebuild:
+  Marked ~x86-macos, bug #338920
+
+*mailx-8.1.2.20050715-r2 (11 Jul 2010)
+
+  11 Jul 2010; Sebastian Pipping <sping@gentoo.org>
+  +mailx-8.1.2.20050715-r2.ebuild,
+  +files/mailx-8.1.2.20050715-offsetof.patch:
+  Apply patch 225901 by Vasiliy A. Balkanov renaming internal macro
+  offsetof() to offsetofmailx() to fix a compile error (bug #310493)
+
+  11 Jan 2010; Raúl Porcel <armin76@gentoo.org>
+  mailx-8.1.2.20040524-r1.ebuild, mailx-8.1.2.20050715.ebuild,
+  mailx-8.1.2.20050715-r1.ebuild:
+  Remove functions from ccc.eclass as its going to be removed
+
+  01 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  mailx-8.1.2.20050715-r1.ebuild:
+  Transfer Prefix keywords
+
+  25 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  mailx-8.1.2.20050715-r1.ebuild:
+  Stable on sparc
+
+  16 Apr 2007; Markus Rothe <corsair@gentoo.org>
+  mailx-8.1.2.20050715-r1.ebuild:
+  Stable on ppc64
+
+  07 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
+  mailx-8.1.2.20050715-r1.ebuild:
+  stable amd64, bug 159912
+
+  06 Apr 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  mailx-8.1.2.20050715-r1.ebuild:
+  ppc stable
+
+  12 Mar 2007; Raúl Porcel <armin76@gentoo.org>
+  mailx-8.1.2.20050715-r1.ebuild:
+  x86 stable
+
+  21 Jan 2007; Alexander H. Færøy <eroyf@gentoo.org>
+  mailx-8.1.2.20050715-r1.ebuild:
+  Stable on Alpha.
+
+  21 Jan 2007; Alexander H. Færøy <eroyf@gentoo.org>
+  mailx-8.1.2.20050715-r1.ebuild:
+  Stable on MIPS.
+
+  19 Jan 2007; Alexander H. Færøy <eroyf@gentoo.org>
+  mailx-8.1.2.20050715-r1.ebuild:
+  Stable on IA64.
+
+  19 Jan 2007; Jeroen Roovers <jer@gentoo.org>
+  mailx-8.1.2.20050715-r1.ebuild:
+  Stable for HPPA.
+
+*mailx-8.1.2.20050715-r1 (14 Mar 2006)
+
+  14 Mar 2006; Tuấn Văn <langthang@gentoo.org>
+  +files/mailx-8.1.2.20050715-nostrip.patch,
+  +mailx-8.1.2.20050715-r1.ebuild:
+  Add nostrip patch. Patch by Diego Pettenò <flameeyes@gentoo.org> . Bugs
+  #125557 .
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  10 Aug 2005; Aaron Walker <ka0ttic@gentoo.org>
+  mailx-8.1.2.20040524-r1.ebuild:
+  Stable on mips.
+
+*mailx-8.1.2.20050715 (30 Jul 2005)
+
+  30 Jul 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +mailx-8.1.2.20050715.ebuild:
+  version bump. general ebuild clean-up
+
+  01 Jul 2005; Andrej Kacian <ticho@gentoo.org>
+  mailx-8.1.2.20040524-r1.ebuild:
+  Corrected the LICENSE variable, as suggested by bug #97636, reported by
+  Albert Holm <albert+gentoo-bugzilla at cdr.se>.
+
+  18 May 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  -files/mailx-64bit.diff:
+  forgot to remove unused patch
+
+  18 May 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  -mailx-8.1.2.20021129-r2.ebuild, -mailx-8.1.2.20021129-r3.ebuild,
+  -mailx-8.1.2.20021129-r4.ebuild, -mailx-8.1.2.20040524.ebuild:
+  wipe old ebuilds
+
+  08 May 2005; Aron Griffis <agriffis@gentoo.org>
+  mailx-8.1.2.20040524-r1.ebuild:
+  stable on ia64
+
+  02 Mar 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  mailx-8.1.2.20040524-r1.ebuild:
+  Fix mail.help path. wrt #83787. Reported by: Toralf Förster
+  <toralf.foerster@gmx.de>
+
+  04 Feb 2005; Bryan Østergaard <kloeri@gentoo.org>
+  mailx-8.1.2.20040524-r1.ebuild:
+  Stable on alpha, bug 80067.
+
+  31 Jan 2005; Markus Rothe <corsair@gentoo.org>
+  mailx-8.1.2.20040524-r1.ebuild:
+  Stable on ppc64; bug #80067
+
+  31 Jan 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  mailx-8.1.2.20040524-r1.ebuild:
+  Stable on x86 [#80067]. SRC_URI points finally to mirror://gentoo
+
+  31 Jan 2005; Simon Stelling <blubb@gentoo.org>
+  mailx-8.1.2.20040524-r1.ebuild:
+  stable on amd64
+
+  30 Jan 2005; Jason Wever <weeve@gentoo.org>
+  mailx-8.1.2.20040524-r1.ebuild:
+  Stable on sparc wrt bug #80067.
+
+  30 Jan 2005; Michael Hanselmann <hansmi@gentoo.org>
+  mailx-8.1.2.20040524-r1.ebuild:
+  Stable on ppc, bug 80067.
+
+*mailx-8.1.2.20040524-r1 (27 Jan 2005)
+
+  27 Jan 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  -files/mailx-2004-cflags.diff, mailx-8.1.2.20040524-r1.ebuild:
+  Removed cflags patch. Using sed to do the task still #79655 thanks again to
+  Stefan Briesenick <sbriesen@gmx.de>
+
+  27 Jan 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/mailx-2004-cflags.diff:
+  Patch Makefile to enforce the use of CFLAGS. Closes #79655. First approach
+  submitted by: Stefan Briesenick <sbriesen@gmx.de>
+
+*mailx-8.1.2.20040524 (26 Jan 2005)
+
+  26 Jan 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +mailx-8.1.2.20040524.ebuild:
+  Version bump. Closes #73600. Reported by Aron Griffis <agriffis@gentoo.org>
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org>
+  mailx-8.1.2.20021129-r3.ebuild, mailx-8.1.2.20021129-r4.ebuild:
+  Stable on amd64.
+
+  09 Oct 2004; Tom Gall <tgall@gentoo.org> mailx-8.1.2.20021129-r4.ebuild:
+  stable on ppc64, bug #63123
+
+  19 Sep 2004; Bryan Østergaard,,, <kloeri@gentoo.org>
+  mailx-8.1.2.20021129-r4.ebuild:
+  Stable on alpha.
+
+  14 Sep 2004; Guy Martin <gmsoft@gentoo.org> mailx-8.1.2.20021129-r4.ebuild:
+  Stable on hppa.
+
+  13 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  mailx-8.1.2.20021129-r4.ebuild:
+  Stable on sparc wrt #63123
+
+  13 Sep 2004; Andrej Kacian <ticho@gentoo.org>
+  mailx-8.1.2.20021129-r4.ebuild:
+  Marked stable on x86.
+
+*mailx-8.1.2.20021129-r4 (13 Sep 2004)
+
+  13 Sep 2004; Andrej Kacian <ticho@gentoo.org>
+  +mailx-8.1.2.20021129-r4.ebuild:
+  Provide virtual/mailx. Closes #63123.
+
+  22 Aug 2004; Bryan Østergaard <kloeri@gentoo.org>
+  mailx-8.1.2.20021129-r3.ebuild:
+  Stable on alpha.
+
+  16 Jul 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  mailx-8.1.2.20021129-r3.ebuild:
+  Stable on hppa
+
+  15 Jul 2004; Tom Gall <tgall@gentoo.org> mailx-8.1.2.20021129-r3.ebuild:
+  stable on ppc64, bug #55670
+
+  15 Jul 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  mailx-8.1.2.20021129-r3.ebuild:
+  Stable on sparc
+
+  13 Jul 2004; Tuan Van <langthang@gentoo.org> mailx-8.1.2.20021129-r2.ebuild,
+  mailx-8.1.2.20021129-r3.ebuild:
+  added IUSE="".
+
+  12 Jul 2004; Tuan Van <langthang@gentoo.org> mailx-8.1.2.20021129-r2.ebuild,
+  mailx-8.1.2.20021129-r3.ebuild:
+  add Gentoo mirror for the SRC_URI that I`ve removed.
+
+  12 Jul 2004; Tuan Van <langthang@gentoo.org> mailx-8.1.2.20021129-r2.ebuild:
+  removed dead SRC_URI.
+
+  12 Jul 2004; Tuan Van <langthang@gentoo.org>
+  -mailx-8.1.2.20021129-r1.ebuild, -mailx-8.1.2.20021129.ebuild:
+  removed old ebuilds.
+
+  13 Jul 2004; Lars Weiler <pylon@gentoo.org> mailx-8.1.2.20021129-r3.ebuild:
+  Stable on ppc.
+
+  12 Jul 2004; Tuan Van <langthang@gentoo.org> mailx-8.1.2.20021129-r3.ebuild:
+  mailx-8.1.2.20021129-r3.ebuild:
+  Removed dead SRC_URI. Stable on x86. Added IUSE.
+
+  12 Jul 2004; Tuan Van <langthang@gentoo.org> :
+  removed old ebuild.
+
+  07 Jun 2004; Aron Griffis <agriffis@gentoo.org>
+  mailx-8.1.2.20021129-r2.ebuild:
+  Fix use invocation
+
+*mailx-8.1.2.20021129-r3 (07 Jun 2004)
+
+  07 Jun 2004; Aron Griffis <agriffis@gentoo.org>
+  +mailx-8.1.2.20021129-r3.ebuild:
+  Apply 64-bit compatibility patch on all architectures instead of just ia64
+
+  04 Jun 2004; Bryan Østergaard <kloeri@gentoo.org>
+  mailx-8.1.2.20021129-r2.ebuild:
+  Stable on alpha.
+
+*mailx-8.1.2.20021129 (29 May 2004)
+
+  29 May 2004; Seemant Kulleen <seemant@gentoo.org> +metadata.xml,
+  +files/mailx-64bit.diff, +files/mailx-8.1.1.11-Makefile.diff,
+  +files/mailx-8.1.1.11-version.diff, +files/mailx-8.1.1.11.diff,
+  +mailx-8.1.1.11.ebuild, +mailx-8.1.2.20021129-r1.ebuild,
+  +mailx-8.1.2.20021129-r2.ebuild, +mailx-8.1.2.20021129.ebuild:
+  Moved from net-mail/mailx to mail-client/mailx.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org>
+  mailx-8.1.2.20021129-r1.ebuild, mailx-8.1.2.20021129-r2.ebuild:
+  Add inherit eutils
+
+  30 Sep 2003; Jon Portnoy <avenj@gentoo.org>
+  mailx-8.1.2.20021129-r2.ebuild :
+  Patch fix.
+
+  21 Sep 2003; Jon Portnoy <avenj@gentoo.org>
+  mailx-8.1.2.20021129-r2.ebuild, files/mailx-64bit.diff :
+  Patch from splite to get mailx to work on IA-64.
+
+  15 Jul 2003; Christian Birchinger <joker@gentoo.org>
+  mailx-8.1.2.20021129-r2.ebuild:
+  Added sparc stable keyword
+
+*mailx-8.1.2.20021129-r2 (09 Jun 2003)
+
+  10 Jun 2003; Joshua Kinard <kumba@gentoo.org> :
+  Fixed bad digest and added ~mips to KEYWORDS
+
+  09 Jun 2003; Nick Hadaway <raker@gentoo.org> 
+  mailx-8.1.2.20021129-r2.ebuild, files/digest-mailx-20021129-r2:
+  Added a dependancy on net-mail/mailx-support for /usr/libexec/lockspool
+
+  27 May 2003; Tavis Ormandy <taviso@gentoo.org>
+  mailx-8.1.2.20021129-r1.ebuild:
+  removing gcc hardcode for ccc users.
+
+*mailx-8.1.2.20021129-r1 (27 Mar 2003)
+
+  27 Mar 2003; Jon Portnoy <avenj@gentoo.org> mailx-8.1.2.20021129-r1.ebuild 
+	digest-mailx-8.1.2.20021129-r1 multifix.diff : 
+  Added multifix.diff to fix bug #18259, reported by C. Brewer.
+
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+
+
+*mailx-8.1.2.20021129 (01 Dec 2002)
+
+  07 Dec 2002; Nick Hadaway <raker@gentoo.org>
+  mailx-8.1.2.20021129.ebuild :
+  Updated some file permissions as noted on bug #8031.  Marked stable.
+
+  01 Dec 2002; Nick Hadaway <raker@gentoo.org>
+  mailx-8.1.2.20021129.ebuild, files/digest-mailx-8.1.2.20021129,
+  files/20021129-cvs.diff.bz2 :
+  mailx ported from openbsd cvs repository pulled 11/29/2002.
+  Currently marked unstable.
+
+*mailx-8.1.1.11 (1 Feb 2002)
+
+  28 Sep 2002; Owen Stampflee <owen@gentoo.org> :
+  Added PPC to KEYWORDS.
+
+  12 Sep 2002; Grant Goodyear <g2boojum@gentoo.org> ChangeLog  :
+
+  added virtual/mta depend
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

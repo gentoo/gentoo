@@ -1,0 +1,107 @@
+Index: pwsafe.cpp
+===================================================================
+RCS file: /cvsroot/pwsafe/pwsafe/pwsafe.cpp,v
+retrieving revision 1.57
+diff -u -r1.57 pwsafe.cpp
+--- pwsafe.cpp	12 Aug 2007 12:33:06 -0000	1.57
++++ pwsafe.cpp	30 Mar 2011 07:22:11 -0000
+@@ -3325,61 +3325,48 @@
+ static char* readline(const char* prompt) {
+   printf("%s", prompt);
+   fflush(stdout);
+-  
+-  static secstring saved;
+-  int buflen = saved.length() + 100;
+-  int bufpos = saved.length();
+-  char* buf = reinterpret_cast<char*>(malloc(buflen+1));
+-  if (!buf)
+-    throw FailEx();
+-  memcpy(buf, saved.data(), saved.length());
+-  buf[saved.length()] = '\0';
+-
+-  while (!strchr(buf,'\n')) {
+-    const int rc = ::read(STDIN_FILENO, buf+bufpos, buflen);
+-
+-    if (rc == -1) {
+-      fprintf(stderr, "Error: %s read(STDIN) failed: %s\n", program_name, strerror(errno));
+-      memset(buf,0,buflen);
+-      free(buf);
+-      throw FailEx();
+-    }
+-
+-    bufpos += rc;
+-    buf[bufpos] = '\0';
+-
+-    if (rc == 0) {
+-      // EOF (ctrl-D)
+-      break;
+-    }
+-
+-    if (bufpos == buflen && !strchr(buf,'\n')) {
+-      // we needed a bigger buffer
+-      char* new_buf = reinterpret_cast<char*>(malloc(2*buflen+1));
+-      if (!new_buf) {
+-        fprintf(stderr, "Error: %s out of memory\n", program_name);
+-        memset(buf,0,buflen);
+-        free(buf);
+-        throw FailEx();
+-      }
+ 
+-      memcpy(new_buf, buf, bufpos);
+-      memset(buf, 0, buflen);
+-      free(buf);
+-      buf = new_buf;
+-      buflen *= 2;
+-    }
+-  }
++  size_t buflen = 100;
++  size_t bufpos = 0;
++  char* buf = static_cast<char*>(malloc(buflen+1));
++  if (!buf)
++	throw FailEx();
+ 
+-  char* lf = strchr(buf,'\n');
+-  if (lf) {
+-    // save the rest of the input for later
+-    saved.assign(lf+1);
+-    *lf = '\0';
+-  } else {
+-    saved.assign("",0);
++  for (;;) {
++	const ssize_t rc = ::read(STDIN_FILENO, buf+bufpos, 1);
++	if (rc == -1) {
++	  fprintf(stderr, "Error: %s read(STDIN) failed: %s\n", program_name, strerror(errno));
++	  memset(buf,0,bufpos);
++	  free(buf);
++	  throw FailEx();
++	} else if (rc == 0) {
++	  // EOF (ctrl-D)
++	  break;
++	} else if (buf[bufpos] == '\n') {
++	  // end of line
++	  break;
++	}
++
++	++bufpos;
++
++	if (bufpos == buflen) {
++	  // we need a bigger buffer
++	  char* new_buf = static_cast<char*>(malloc(2*buflen+1));
++	  if (!new_buf) {
++		fprintf(stderr, "Error: %s out of memory\n", program_name);
++		memset(buf,0,bufpos);
++		free(buf);
++		throw FailEx();
++	  }
++	  memcpy(new_buf, buf, bufpos);
++	  memset(buf, 0, bufpos);
++	  free(buf);
++	  buf = new_buf;
++	  buflen *= 2;
++	}
+   }
+ 
++  buf[bufpos] = '\0';
+   return buf;
+ }
+ #endif // WITH_READLINE

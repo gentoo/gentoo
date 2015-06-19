@@ -1,0 +1,9 @@
+DEFINED_PHASES=compile install unpack
+DESCRIPTION=qmail-qsanity checks your queue data structures for internal consistency
+HOMEPAGE=http://www.qmail.org/
+KEYWORDS=x86 ~ppc ~hppa
+LICENSE=qmail-nelson
+RDEPEND=virtual/qmail dev-lang/perl
+SLOT=0
+SRC_URI=mirror://qmail/qmail-qsanity-0.52
+_md5_=1398017ba8ac3e745fcf6331df690a9a

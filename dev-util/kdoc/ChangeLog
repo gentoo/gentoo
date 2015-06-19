@@ -1,0 +1,51 @@
+# ChangeLog for dev-util/kdoc
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/kdoc/ChangeLog,v 1.17 2010/01/08 21:31:37 abcd Exp $
+
+  08 Jan 2010; Jonathan Callen <abcd@gentoo.org> kdoc-2.0_alpha54.ebuild:
+  Add prefix keywords
+
+  08 Jan 2010; Samuli Suominen <ssuominen@gentoo.org> metadata.xml:
+  Move from kde to maintainer-needed.
+
+  31 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  kdoc-2.0_alpha54.ebuild:
+  Remove stray documentation directory wrt #299107, thanks to Diego E.
+  'Flameeyes' Pettenò for reporting.
+
+  28 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  kdoc-2.0_alpha54.ebuild:
+  Stop using deprecated kde.eclass.
+
+  17 Oct 2009; Samuli Suominen <ssuominen@gentoo.org>
+  kdoc-2.0_alpha54.ebuild:
+  RESTRICT="test" wrt #279709.
+
+  25 Nov 2006; Charlie Shepherd <masterdriverz@gentoo.org> metadata.xml:
+  Kde gets this...
+
+  25 Nov 2006; Charlie Shepherd <masterdriverz@gentoo.org>
+  kdoc-2.0_alpha54.ebuild:
+  Clean up ebuild, use kde.eclass
+
+  25 Apr 2004; Aron Griffis <agriffis@gentoo.org> kdoc-2.0_alpha54.ebuild:
+  Add die following econf for bug 48950
+
+  16 Nov 2003; Brad House <brad_mssw@gentoo.org> kdoc-2.0_alpha54.ebuild:
+  mark stable on amd64
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*kdoc-2.0_alpha54 (4 Mar 2002)
+
+  29 Apr 2003; Hannes Mehnert <hannes@gentoo.org> kdoc-2.0_alpha54.ebuild:
+  install man-pages to /usr/share/man, thanks to Gregorio Guidi <g.guidi@sns.it>
+  (bug #20063)
+
+  15 Feb 2003; Mark Guertin <gerk@gentoo.org> kdoc-2.0_alpha54.ebuild :
+  set ppc in keywords
+
+  4 Mar 2002; Dan Armak <danarmak@gentoo.org> ChangeLog :
+  
+  kdoc now lives in dev-util not kde-base, has its own versioning scheeme
+  separate from the kde one and installs into /usr.

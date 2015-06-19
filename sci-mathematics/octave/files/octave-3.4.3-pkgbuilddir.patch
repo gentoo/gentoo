@@ -1,0 +1,44 @@
+Description: Allow installation of already extracted packages with pkg.m
+Forwarded: not-needed
+Author: Thomas Weber <tweber@debian.org>
+--- scripts/pkg/pkg.m.orig	2011-02-08 03:00:51.000000000 -0700
++++ scripts/pkg/pkg.m	2011-03-18 09:31:24.670165643 -0600
+@@ -644,7 +644,14 @@
+     for i = 1:length (files)
+       tgz = files{i};
+ 
+-      if (exist (tgz, "file"))
++      ## The filename pointed to an uncompressed package to begin with.
++      if (exist (tgz, "dir"))
++        if (tgz(1) == '/')
++          packdir = tgz;
++        else
++          packdir = fullfile (pwd(), tgz);
++        endif
++      elseif (exist (tgz, "file"))
+         ## Create a temporary directory.
+         tmpdir = tmpnam ();
+         tmpdirs{end+1} = tmpdir;
+@@ -671,20 +678,12 @@
+         if (length (dirlist) > 3)
+           error ("bundles of packages are not allowed");
+         endif
+-      endif
+ 
+-      ## The filename pointed to an uncompressed package to begin with.
+-      if (exist (tgz, "dir"))
+-        dirlist = {".", "..", tgz};
++        ## The two first entries of dirlist are "." and "..".
++        packdir = fullfile (tmpdir, dirlist{3});
+       endif
+ 
+       if (exist (tgz, "file") || exist (tgz, "dir"))
+-        ## The two first entries of dirlist are "." and "..".
+-        if (exist (tgz, "file"))
+-          packdir = fullfile (tmpdir, dirlist{3});
+-        else
+-          packdir = fullfile (pwd(), dirlist{3});
+-        endif
+         packdirs{end+1} = packdir;
+ 
+         ## Make sure the package contains necessary files.

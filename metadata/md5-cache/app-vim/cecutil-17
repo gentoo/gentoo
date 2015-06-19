@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst postrm
+DEPEND=|| ( >=app-editors/vim-7.0 >=app-editors/gvim-7.0 )
+DESCRIPTION=vim plugin: library used by many of Charles Campbell's plugins
+HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=1066
+KEYWORDS=alpha amd64 ia64 ~mips ppc sparc x86
+LICENSE=vim
+RDEPEND=|| ( >=app-editors/vim-7.0 >=app-editors/gvim-7.0 )
+SLOT=0
+SRC_URI=mirror://gentoo/cecutil-17.tar.bz2 http://dev.gentoo.org/~radhermit/vim/cecutil-17.tar.bz2
+_eclasses_=vim-doc	1c18baeec98cec3287524cbf2fee2bd2	vim-plugin	286547e90fbbc4c841eee80cd73e646c
+_md5_=5c7616ff80dab9864f50bd85eb3c24b1

@@ -1,0 +1,62 @@
+# ChangeLog for net-misc/dropbox-cli
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/dropbox-cli/ChangeLog,v 1.17 2015/05/07 23:52:00 mrueg Exp $
+
+  07 May 2015; Manuel Rüger <mrueg@gentoo.org> -dropbox-cli-1.ebuild:
+  Remove old.
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> dropbox-cli-1-r1.ebuild,
+  dropbox-cli-1.6.0.ebuild:
+  Drop old Python implementations
+
+  27 Nov 2014; Andrey Grozin <grozin@gentoo.org> metadata.xml:
+  Setting myself as the maintainer
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+  12 Oct 2014; Agostino Sarubbo <ago@gentoo.org> dropbox-cli-1.6.0.ebuild:
+  Stable for x86, wrt bug #495872
+
+  10 Oct 2014; Agostino Sarubbo <ago@gentoo.org> dropbox-cli-1.6.0.ebuild:
+  Stable for amd64, wrt bug #495872
+
+*dropbox-cli-1.6.0 (02 Jul 2013)
+
+  02 Jul 2013; Julian Ospald <hasufell@gentoo.org> +dropbox-cli-1.6.0.ebuild:
+  version bump
+
+  29 May 2013; Julian Ospald <hasufell@gentoo.org> dropbox-cli-1-r1.ebuild:
+  update REQUIRED_USE to include PYTHON_REQUIRED_USE
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> dropbox-cli-1-r1.ebuild:
+  Stable for x86, wrt bug #457442
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> dropbox-cli-1-r1.ebuild:
+  Stable for amd64, wrt bug #457442
+
+  06 Jan 2013; Julian Ospald <hasufell@gentoo.org> dropbox-cli-1-r1.ebuild:
+  remove obsolete deps
+
+  06 Jan 2013; Julian Ospald <hasufell@gentoo.org> dropbox-cli-1-r1.ebuild:
+  fix argparse dep
+
+  06 Jan 2013; Julian Ospald <hasufell@gentoo.org> dropbox-cli-1-r1.ebuild:
+  fix deps
+
+*dropbox-cli-1-r1 (06 Jan 2013)
+
+  06 Jan 2013; Julian Ospald <hasufell@gentoo.org> +dropbox-cli-1-r1.ebuild:
+  revbump: migrate to distutils-r1
+
+  06 Dec 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> dropbox-cli-1.ebuild:
+  x86 stable wrt bug #445099
+
+  29 Nov 2012; Agostino Sarubbo <ago@gentoo.org> dropbox-cli-1.ebuild:
+  Stable for amd64, wrt bug #445099
+
+*dropbox-cli-1 (09 Jun 2012)
+
+  09 Jun 2012; Julian Ospald <hasufell@gentoo.org> +dropbox-cli-1.ebuild,
+  +metadata.xml:
+  initial import

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# small wrapper-script to use convmvfs from
+# /etc/fstab and via "mount -t convmvfs".
+
+srcdir="${1}"
+shift
+exec /usr/bin/convmvfs "${@}" -o "srcdir=${srcdir}"

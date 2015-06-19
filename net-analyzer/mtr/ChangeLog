@@ -1,0 +1,617 @@
+# ChangeLog for net-analyzer/mtr
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/mtr/ChangeLog,v 1.175 2015/03/25 20:53:17 zerochaos Exp $
+
+  25 Mar 2015; Rick Farina <zerochaos@gentoo.org> mtr-0.86.ebuild,
+  mtr-9999.ebuild:
+  missing dep on autoconf, thanks to report from chutzpah
+
+  12 Mar 2015; Jeroen Roovers <jer@gentoo.org> -mtr-0.85.ebuild,
+  -mtr-0.85_p20140126.ebuild, -files/0.85-ipv6.patch:
+  Old.
+
+  28 Feb 2015; Agostino Sarubbo <ago@gentoo.org> mtr-0.86.ebuild:
+  Stable for ia64, wrt bug #537936
+
+  27 Feb 2015; Agostino Sarubbo <ago@gentoo.org> mtr-0.86.ebuild:
+  Stable for sparc, wrt bug #537936
+
+  23 Feb 2015; Agostino Sarubbo <ago@gentoo.org> mtr-0.86.ebuild:
+  Stable for ppc64, wrt bug #537936
+
+  21 Feb 2015; Agostino Sarubbo <ago@gentoo.org> mtr-0.86.ebuild:
+  Stable for ppc, wrt bug #537936
+
+  01 Feb 2015; Markus Meier <maekke@gentoo.org> mtr-0.86.ebuild:
+  arm stable, bug #537936
+
+  01 Feb 2015; Agostino Sarubbo <ago@gentoo.org> mtr-0.86.ebuild:
+  Stable for x86, wrt bug #537936
+
+  31 Jan 2015; Agostino Sarubbo <ago@gentoo.org> mtr-0.86.ebuild:
+  Stable for amd64, wrt bug #537936
+
+  28 Jan 2015; Tobias Klausmann <klausman@gentoo.org> mtr-0.86.ebuild:
+  Stable on alpha, bug 537936
+
+  27 Jan 2015; Jeroen Roovers <jer@gentoo.org> mtr-0.86.ebuild, metadata.xml:
+  Stable for HPPA (bug #537936).
+
+  27 Dec 2014; Jeroen Roovers <jer@gentoo.org> mtr-9999.ebuild:
+  Inherit fcaps.eclass, drop USE=suid by Kevin Korb (bug #483080).
+
+  27 Dec 2014; Jeroen Roovers <jer@gentoo.org> mtr-0.86.ebuild:
+  Inherit fcaps.eclass, drop USE=suid by Kevin Korb (bug #483080).
+
+*mtr-0.86 (27 Dec 2014)
+
+  27 Dec 2014; Jeroen Roovers <jer@gentoo.org> +mtr-0.86.ebuild:
+  Version bump.
+
+  18 Jul 2014; Tobias Klausmann <klausman@gentoo.org>
+  mtr-0.85_p20140126.ebuild:
+  Stable on alpha, bug #505440
+
+  22 Jun 2014; Akinori Hattori <hattya@gentoo.org> mtr-0.85_p20140126.ebuild:
+  ia64 stable wrt bug #505440
+
+  14 Jun 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  mtr-0.85_p20140126.ebuild:
+  x86 stable wrt bug #505440
+
+  03 Apr 2014; Jeroen Roovers <jer@gentoo.org> mtr-0.85_p20140126.ebuild:
+  Do not inherit autotools.eclass.
+
+  02 Apr 2014; Chema Alonso <nimiux@gentoo.org> mtr-0.85_p20140126.ebuild:
+  Stable for amd64 wrt bug #505440
+
+  01 Apr 2014; Markus Meier <maekke@gentoo.org> mtr-0.85_p20140126.ebuild:
+  arm stable, bug #505440
+
+  28 Mar 2014; Jeroen Roovers <jer@gentoo.org> mtr-0.85_p20140126.ebuild:
+  Stable for HPPA (bug #505440).
+
+  23 Mar 2014; Jeroen Roovers <jer@gentoo.org> -files/0.82-tinfo.patch,
+  -mtr-0.82.ebuild:
+  Old.
+
+  26 Jan 2014; Ulrich Müller <ulm@gentoo.org> mtr-0.85_p20140126.ebuild:
+  Fix SRC_URI.
+
+*mtr-0.85_p20140126 (26 Jan 2014)
+
+  26 Jan 2014; Jeroen Roovers <jer@gentoo.org> +mtr-0.85_p20140126.ebuild,
+  mtr-9999.ebuild:
+  Version bump awaiting an official release.
+
+  05 Dec 2013; Jeroen Roovers <jer@gentoo.org> mtr-9999.ebuild:
+  Add sed script that changes the version (bug #493308, patch by James).
+
+  04 Dec 2013; Jeroen Roovers <jer@gentoo.org> mtr-9999.ebuild:
+  Remove sed script that changes the version (bug #493308 by James).
+
+  17 Nov 2013; Naohiro Aota <naota@gentoo.org> mtr-0.85.ebuild:
+  Add ~x86-fbsd. #482934
+
+*mtr-9999 (27 Sep 2013)
+
+  27 Sep 2013; Jeroen Roovers <jer@gentoo.org> +mtr-9999.ebuild:
+  Live ebuild.
+
+  07 Sep 2013; Agostino Sarubbo <ago@gentoo.org> mtr-0.85.ebuild:
+  Stable for sparc, wrt bug #482936
+
+  05 Sep 2013; Agostino Sarubbo <ago@gentoo.org> mtr-0.85.ebuild:
+  Stable for ppc64, wrt bug #482936
+
+  04 Sep 2013; Agostino Sarubbo <ago@gentoo.org> mtr-0.85.ebuild:
+  Stable for ppc, wrt bug #482936
+
+  03 Sep 2013; Agostino Sarubbo <ago@gentoo.org> mtr-0.85.ebuild:
+  Stable for ia64, wrt bug #482936
+
+  02 Sep 2013; Agostino Sarubbo <ago@gentoo.org> mtr-0.85.ebuild:
+  Stable for alpha, wrt bug #482936
+
+  30 Aug 2013; Sergey Popov <pinkbyte@gentoo.org> mtr-0.85.ebuild:
+  Stable on arm, wrt bug #482936
+
+  30 Aug 2013; Sergey Popov <pinkbyte@gentoo.org> mtr-0.85.ebuild:
+  Stable on amd64 and x86, wrt bug #482936
+
+  29 Aug 2013; Jeroen Roovers <jer@gentoo.org> mtr-0.85.ebuild:
+  Stable for HPPA (bug #482936).
+
+  20 Jul 2013; Fabian Groffen <grobian@gentoo.org> mtr-0.85.ebuild:
+  Reproduce upstream commit to fix building on OSX, bug #476736
+
+  12 Jul 2013; Jason A. Donenfeld <zx2c4@gentoo.org> mtr-0.85.ebuild:
+  Clean up upstream's .o files that cause build issues.
+
+  11 Jul 2013; Sergey Popov <pinkbyte@gentoo.org> mtr-0.85.ebuild:
+  Remove workaround for glib dependency and make it optional, wrt bug #456788
+
+  11 Jul 2013; Sergey Popov <pinkbyte@gentoo.org> mtr-0.85.ebuild:
+  Utilize apropriate functions from toolchain-funcs eclass instead of direct
+  call to pkg-config
+
+  11 Jul 2013; Jeroen Roovers <jer@gentoo.org> mtr-0.85.ebuild,
+  +files/0.85-gtk.patch:
+  Add GTK+ patch similar to the IPv6 patch.
+
+  11 Jul 2013; Jeroen Roovers <jer@gentoo.org> mtr-0.85.ebuild,
+  +files/0.85-ipv6.patch:
+  Fix --disable-ipv6 (bug #456788).
+
+  11 Jul 2013; Jeroen Roovers <jer@gentoo.org> mtr-0.82.ebuild,
+  +files/0.82-tinfo.patch, -files/mtr-0.82-tinfo.patch:
+  Fix filename, whitespace.
+
+*mtr-0.85 (11 Jul 2013)
+
+  11 Jul 2013; Jeroen Roovers <jer@gentoo.org> +mtr-0.85.ebuild,
+  -files/0.83-no_ipv6.patch, -mtr-0.83.ebuild:
+  Version bump.
+
+  05 May 2013; Justin Lecher <jlec@gentoo.org> mtr-0.82.ebuild,
+  mtr-0.83.ebuild, +files/mtr-0.82-tinfo.patch:
+  Add compatibility patch for ncurses[tinfo], #468670
+
+  20 Feb 2013; Jeroen Roovers <jer@gentoo.org> +files/0.83-no_ipv6.patch,
+  mtr-0.83.ebuild:
+  Fix USE=-ipv6 (bug #456788).
+
+  20 Feb 2013; Jeroen Roovers <jer@gentoo.org> mtr-0.83.ebuild:
+  Fix USE=-gtk (where dev-libs/glib is still used, bug #456788).
+
+*mtr-0.83 (19 Feb 2013)
+
+  19 Feb 2013; Jeroen Roovers <jer@gentoo.org> +mtr-0.83.ebuild:
+  Version bump.
+
+  10 May 2012; Tim Harder <radhermit@gentoo.org> -mtr-0.81.ebuild:
+  Remove old.
+
+  06 May 2012; Raúl Porcel <armin76@gentoo.org> mtr-0.82.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #409605
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> mtr-0.81.ebuild,
+  mtr-0.82.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  05 Apr 2012; Jeff Horelick <jdhore@gentoo.org> mtr-0.82.ebuild:
+  marked x86 per bug 409605
+
+  31 Mar 2012; Markus Meier <maekke@gentoo.org> mtr-0.82.ebuild:
+  arm stable, bug #409605
+
+  29 Mar 2012; Agostino Sarubbo <ago@gentoo.org> mtr-0.82.ebuild:
+  Stable for amd64, wrt bug #409605
+
+  25 Mar 2012; Brent Baude <ranger@gentoo.org> mtr-0.82.ebuild:
+  Marking mtr-0.82 ppc64 for bug 409605
+
+  25 Mar 2012; Jeroen Roovers <jer@gentoo.org> mtr-0.82.ebuild:
+  Stable for HPPA (bug #409605).
+
+  25 Mar 2012; Brent Baude <ranger@gentoo.org> mtr-0.82.ebuild:
+  Marking mtr-0.82 ppc for bug 409605
+
+  05 Mar 2012; Tim Harder <radhermit@gentoo.org> -mtr-0.79.ebuild,
+  -mtr-0.80.ebuild:
+  Remove old.
+
+  02 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> mtr-0.81.ebuild:
+  ppc64 stable wrt #393241
+
+  06 Feb 2012; Brent Baude <ranger@gentoo.org> mtr-0.81.ebuild:
+  Marking mtr-0.81 ppc for bug 393241
+
+  11 Dec 2011; Raúl Porcel <armin76@gentoo.org> mtr-0.81.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #393241
+
+  11 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> mtr-0.81.ebuild:
+  x86 stable wrt bug #393241
+
+  10 Dec 2011; Tim Harder <radhermit@gentoo.org> mtr-0.81.ebuild,
+  mtr-0.82.ebuild:
+  Remove glib and gdk-pixbuf deps as they aren't explicitly required and gtk
+  pulls them in.
+
+  10 Dec 2011; Tim Harder <radhermit@gentoo.org> mtr-0.81.ebuild,
+  mtr-0.82.ebuild:
+  Fix gtk related deps.
+
+  09 Dec 2011; Markos Chandras <hwoarang@gentoo.org> mtr-0.81.ebuild:
+  Add missing gdk-pixbuf and glib dependencies. Stable on amd64. Bug #393241
+
+  05 Dec 2011; Jeroen Roovers <jer@gentoo.org> mtr-0.81.ebuild:
+  Stable for HPPA (bug #393241).
+
+*mtr-0.82 (05 Dec 2011)
+
+  05 Dec 2011; Tim Harder <radhermit@gentoo.org> +mtr-0.82.ebuild:
+  Version bump.
+
+*mtr-0.81 (10 Oct 2011)
+
+  10 Oct 2011; Tim Harder <radhermit@gentoo.org> +mtr-0.81.ebuild:
+  Version bump.
+
+  29 Aug 2011; Fabian Groffen <grobian@gentoo.org> mtr-0.80.ebuild:
+  Generalise Darwin fix, bug #361807
+
+  15 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> mtr-0.80.ebuild:
+  ppc/ppc64 stable wrt #362609
+
+  18 Jun 2011; Markos Chandras <hwoarang@gentoo.org> mtr-0.80.ebuild:
+  Stable on amd64 wrt bug #362609
+
+  21 May 2011; Raúl Porcel <armin76@gentoo.org> mtr-0.80.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #362609
+
+  13 May 2011; Markus Meier <maekke@gentoo.org> mtr-0.80.ebuild:
+  arm stable, bug #362609
+
+  07 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> mtr-0.80.ebuild:
+  x86 stable wrt bug #362609
+
+  08 Apr 2011; Jeremy Olexa <darkside@gentoo.org> mtr-0.80.ebuild:
+  Import changes from Gentoo Prefix overlay, KEYWORDS, append-libs for osx,
+  permission handling. No change for non prefix platforms
+
+  08 Apr 2011; Jeroen Roovers <jer@gentoo.org> mtr-0.80.ebuild:
+  Stable for HPPA (bug #362609).
+
+*mtr-0.80 (25 Feb 2011)
+
+  25 Feb 2011; Justin Lecher <jlec@gentoo.org> +files/0.80-impl-dec.patch,
+  mtr-0.79.ebuild, +mtr-0.80.ebuild:
+  Version Bump
+
+  24 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> mtr-0.79.ebuild:
+  ppc64 stable wrt #327985
+
+  24 Jul 2010; Raúl Porcel <armin76@gentoo.org> mtr-0.79.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #327985
+
+  17 Jul 2010; Markos Chandras <hwoarang@gentoo.org> mtr-0.79.ebuild:
+  Stable on amd64 wrt bug #327985
+
+  17 Jul 2010; Christian Faulhammer <fauli@gentoo.org> mtr-0.79.ebuild:
+  stable x86, bug 327985
+
+  14 Jul 2010; Jeroen Roovers <jer@gentoo.org> mtr-0.79.ebuild:
+  Stable for PPC (bug #327985).
+
+  14 Jul 2010; Jeroen Roovers <jer@gentoo.org> mtr-0.79.ebuild:
+  Stable for HPPA (bug #327985).
+
+  02 Jul 2010; Jeremy Olexa <darkside@gentoo.org> mtr-0.79.ebuild:
+  Fix suid/permission handling. Bug 296413, approved by pva
+
+*mtr-0.79 (15 Jun 2010)
+
+  15 Jun 2010; Jeroen Roovers <jer@gentoo.org> +mtr-0.79.ebuild:
+  Version bump thanks to Rafael G. Martins (bug #324037).
+
+  28 Dec 2009; Markus Meier <maekke@gentoo.org> mtr-0.75.ebuild:
+  x86 stable, bug #290113
+
+  15 Nov 2009; Raúl Porcel <armin76@gentoo.org> mtr-0.75.ebuild:
+  arm/ia64/s390/sh/sparc/x86 stable wrt #290113
+
+  27 Oct 2009; Jeroen Roovers <jer@gentoo.org> mtr-0.75.ebuild:
+  Stable for HPPA (bug #290113).
+
+  24 Oct 2009; Tobias Klausmann <klausman@gentoo.org> mtr-0.75.ebuild:
+  Stable on alpha, bug #290113
+
+  24 Oct 2009; Peter Volkov <pva@gentoo.org> mtr-0.75.ebuild:
+  Fixed build without gtk+ installed, bug 290367, thank Christian Ruppert
+  for report.
+
+  24 Oct 2009; nixnut <nixnut@gentoo.org> mtr-0.75.ebuild:
+  ppc stable #290113
+
+  23 Oct 2009; Richard Freeman <rich0@gentoo.org> mtr-0.75.ebuild:
+  amd64 stable - 290113
+
+  22 Oct 2009; Peter Volkov <pva@gentoo.org> mtr-0.75.ebuild,
+  +files/mtr-0.75--Wno-pointer-sign.patch:
+  Fixed build issue with gcc-3.4.6, bug #248800, thank barthek for report.
+
+*mtr-0.75 (16 Nov 2008)
+
+  16 Nov 2008; Peter Volkov <pva@gentoo.org> -files/mtr-0.69-debian.patch,
+  -mtr-0.72.ebuild, -mtr-0.73.ebuild, -mtr-0.73-r1.ebuild, +mtr-0.75.ebuild:
+  Version bump, bug #226989, thank Krzysztof Olędzki for report. Finally
+  removed all bind-now flags, #226989, thank Diego Pettenò for report.
+  Remove old.
+
+  26 Oct 2008; Joshua Kinard <kumba@gentoo.org> mtr-0.73-r2.ebuild:
+  Mark mtr-0.73-r2 unstable on mips.
+
+  26 May 2008; Tobias Scherbaum <dertobi123@gentoo.org> mtr-0.73-r2.ebuild:
+  ppc stable, bug #223017
+
+  25 May 2008; Jeroen Roovers <jer@gentoo.org> mtr-0.73-r2.ebuild:
+  Stable for HPPA (bug #223017).
+
+  25 May 2008; Raúl Porcel <armin76@gentoo.org> mtr-0.73-r2.ebuild:
+  alpha/ia64/sparc stable wrt security #223017
+
+  25 May 2008; Markus Rothe <corsair@gentoo.org> mtr-0.73-r2.ebuild:
+  Added ~ppc64
+
+  25 May 2008; Markus Meier <maekke@gentoo.org> mtr-0.73-r2.ebuild:
+  amd64/x86 stable, bug #223017
+
+*mtr-0.73-r2 (25 May 2008)
+
+  25 May 2008; Peter Volkov <pva@gentoo.org> +mtr-0.73-r2.ebuild:
+  Fixed permitions problems, bug #223017, noticed by Markus Meier.
+
+*mtr-0.73-r1 (24 May 2008)
+
+  24 May 2008; Peter Volkov <pva@gentoo.org>
+  +files/mtr-0.73-CVE-2008-2357.patch, +mtr-0.73-r1.ebuild:
+  Added patch to fix stack-based buffer overflow (CVE-2008-2357), bug
+  223017, thank Robert Buchholz for report and digging patch. Fixed build
+  problem, bug #222909, thank Andrei Ivanov for report.
+
+*mtr-0.73 (18 May 2008)
+
+  18 May 2008; Cédric Krier <cedk@gentoo.org>
+  +files/mtr-0.73-am_path_gtk.patch, +mtr-0.73.ebuild:
+  Version bump
+
+  06 May 2008; Samuli Suominen <drac@gentoo.org> mtr-0.72.ebuild:
+  Move pkgconfig to DEPEND wrt #217278.
+
+  06 Sep 2007; Markus Ullmann <jokey@gentoo.org> -mtr-0.69.ebuild,
+  -mtr-0.69-r1.ebuild, -mtr-0.71.ebuild:
+  Cleanup
+
+  19 Jul 2007; Fabian Groffen <grobian@gentoo.org> mtr-0.69.ebuild,
+  mtr-0.69-r1.ebuild, mtr-0.71.ebuild, mtr-0.72.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  10 Jul 2007; Jeroen Roovers <jer@gentoo.org> mtr-0.72.ebuild:
+  Stable for HPPA (bug #184750).
+
+  09 Jul 2007; Raúl Porcel <armin76@gentoo.org> mtr-0.72.ebuild:
+  alpha stable wrt #184750
+
+  13 May 2007; Steve Dibb <beandog@gentoo.org> mtr-0.72.ebuild:
+  amd64 stable
+
+  22 Apr 2007; Raúl Porcel <armin76@gentoo.org> mtr-0.72.ebuild:
+  ia64 stable
+
+  06 Apr 2007; Tobias Scherbaum <dertobi123@gentoo.org> mtr-0.72.ebuild:
+  ppc stable
+
+  15 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org> mtr-0.72.ebuild:
+  Stable on sprac
+
+  13 Mar 2007; Raúl Porcel <armin76@gentoo.org> mtr-0.72.ebuild:
+  x86 stable
+
+  04 Nov 2006; Alexander H. Færøy <eroyf@gentoo.org> mtr-0.69-r1.ebuild:
+  Stable on alpha.
+
+*mtr-0.72 (09 Oct 2006)
+
+  09 Oct 2006; Markus Ullmann <jokey@gentoo.org> mtr-0.69.ebuild,
+  mtr-0.69-r1.ebuild, mtr-0.71.ebuild, +mtr-0.72.ebuild:
+  Version bump wrt bug #149993 thanks to Cedric Krier
+
+*mtr-0.71 (09 Jul 2006)
+
+  09 Jul 2006; Marcelo Goes <vanquirius@gentoo.org> +mtr-0.71.ebuild:
+  0.71 version bump. Both patches are now in upstream. Fixes bug 139781.
+  Thanks to Taku Murakami <murakami.taku at gmail at com>.
+
+  13 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org> mtr-0.69-r1.ebuild:
+  Stable on hppa
+
+  10 Mar 2006; Aron Griffis <agriffis@gentoo.org> mtr-0.69-r1.ebuild:
+  Mark 0.69-r1 stable on ia64
+
+  10 Mar 2006; Michael Hanselmann <hansmi@gentoo.org> mtr-0.69-r1.ebuild:
+  Stable on ppc.
+
+  07 Mar 2006; Chris White <chriswhite@gentoo.org> mtr-0.69-r1.ebuild:
+  amd64 stable for 0.69-r1.
+
+  27 Feb 2006; Christian Birchinger <joker@gentoo.org> mtr-0.69-r1.ebuild:
+  Added sparc stable keyword
+
+  26 Feb 2006; Marcelo Goes <vanquirius@gentoo.org> mtr-0.69-r1.ebuild:
+  Mark 0.69-r1 x86 stable.
+
+  25 Dec 2005; Diego Pettenò <flameeyes@gentoo.org> mtr-0.69-r1.ebuild:
+  Use bindnow-flags function instead of -Wl,-z,now. Drop ppc-macos special case.
+
+  09 Oct 2005; <mkay@gentoo.org> mtr-0.69.ebuild, mtr-0.69-r1.ebuild:
+  Fixing dependencies (bug #108100)
+
+  19 Sep 2005; Marcelo Goes <vanquirius@gentoo.org> -mtr-0.67.ebuild,
+  mtr-0.69.ebuild, mtr-0.69-r1.ebuild:
+  Kill gtk2 USE flag for bug 106560.
+
+*mtr-0.69-r1 (03 Sep 2005)
+
+  03 Sep 2005; Marcelo Goes <vanquirius@gentoo.org>
+  +files/mtr-0.69-debian.patch, +mtr-0.69-r1.ebuild:
+  Use patch from Debian to fix failed to bind to interface problem when using
+  --address. Fixes bug 104718. Thanks to Claudiu Gafton <gafty@alvatec.ro>.
+
+  24 Aug 2005; Aron Griffis <agriffis@gentoo.org> mtr-0.69.ebuild:
+  stable on ia64
+
+  08 Aug 2005; Fabian Groffen <grobian@gentoo.org> mtr-0.69.ebuild:
+  Implementing a patch by Marcin Gabrowski <gaber at gentoo (dot) pl> to compile
+  successfully on ppc-macos.  Marking ~ppc-macos
+
+  26 Jul 2005; Simon Stelling <blubb@gentoo.org> mtr-0.69.ebuild:
+  stable on amd64
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> mtr-0.69.ebuild:
+  Stable on ppc.
+
+  17 May 2005; Guy Martin <gmsoft@gentoo.org> mtr-0.69.ebuild:
+  Stable on hppa.
+
+  16 May 2005; Gustavo Zacarias <gustavoz@gentoo.org> mtr-0.69.ebuild:
+  Stable on sparc
+
+  15 May 2005; Fernando J. Pereda <ferdy@gentoo.org> mtr-0.69.ebuild:
+  alpha stable
+
+  14 May 2005; Marcelo Goes <vanquirius@gentoo.org> -mtr-0.54-r2.ebuild,
+  -mtr-0.64.ebuild, mtr-0.69.ebuild:
+  Marked 0.69 x86 stable, removed old versions.
+
+  03 May 2005; Herbie Hopkins <herbs@gentoo.org> mtr-0.67.ebuild:
+  Stable on amd64 wrt bug #91332.
+
+  08 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> mtr-0.67.ebuild:
+  Stable on ppc.
+
+  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> mtr-0.67.ebuild:
+  stable on ia64
+
+  21 Mar 2005; Guy Martin <gmsoft@gentoo.org> mtr-0.67.ebuild:
+  Stable on hppa.
+
+  19 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> mtr-0.67.ebuild:
+  Stable on alpha.
+
+*mtr-0.69 (02 Feb 2005)
+
+  02 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> mtr-0.67.ebuild,
+  +mtr-0.69.ebuild:
+  Version bump for bug 80383. Moved epatch statement to src_unpack where it
+  belongs and fixed deps. Added ipv6 support via USE=ipv6.
+
+  31 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org> mtr-0.67.ebuild:
+  Stable on sparc
+
+  31 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> mtr-0.67.ebuild:
+  Marked stable on x86.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  19 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> mtr-0.64.ebuild:
+  Stable on alpha.
+
+*mtr-0.67 (18 Dec 2004)
+
+  18 Dec 2004; Eldad Zack <eldad@gentoo.org> mtr-0.54-r2.ebuild,
+  mtr-0.64.ebuild, +mtr-0.67.ebuild:
+  Version bump. Fixed lazy-binding suid issue.
+
+  30 Nov 2004; Guy Martin <gmsoft@gentoo.org> mtr-0.64.ebuild:
+  Stable on hppa.
+
+  23 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> mtr-0.64.ebuild:
+  Stable on sparc
+
+  22 Nov 2004; Eldad Zack <eldad@gentoo.org> mtr-0.64.ebuild:
+  x86 stable
+
+  05 Sep 2004; Guy Martin <gmsoft@gentoo.org> mtr-0.54-r2.ebuild:
+  Marked stable on hppa.
+
+  22 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> mtr-0.54-r2.ebuild:
+  Stable on alpha.
+
+*mtr-0.64 (22 Aug 2004)
+
+  22 Aug 2004; Eldad Zack <eldad@gentoo.org> +files/mtr-ac-res_mkquery.patch,
+  +mtr-0.64.ebuild:
+  Version bump. Dropped ipv6 in 0.64. Fixes amd64 issue with resolver lib.
+  marking ~amd64. Closes #54024.
+
+  18 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org> mtr-0.54-r2.ebuild:
+  Stable on sparc
+
+  17 Aug 2004; Eldad Zack <eldad@gentoo.org> mtr-0.54-r2.ebuild:
+  x86 stable
+
+  11 Jul 2004; Eldad Zack <eldad@gentoo.org> -mtr-0.54-r1.ebuild:
+  Purged old unstable
+
+  08 Jul 2004; Eldad Zack <eldad@gentoo.org> mtr-0.49-r1.ebuild,
+  mtr-0.54-r1.ebuild, mtr-0.54-r2.ebuild, mtr-0.54.ebuild:
+  Tidy
+
+*mtr-0.54-r2 (01 Jul 2004)
+
+  01 Jul 2004; Eldad Zack <eldad@gentoo.org> +metadata.xml,
+  +mtr-0.54-r2.ebuild:
+  suid: fixed permissions to 4710, group is set to root:wheel,
+  closes #47210, Thanks to Philipp Kern <phil@lordaeron.in-berlin.de>.
+  added metadata.
+
+  05 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> mtr-0.54-r1.ebuild:
+  Stable on alpha.
+
+*mtr-0.54-r1 (04 Aug 2003)
+
+  30 Sep 2003; Joshua Kinard <kumba@gentoo.org> mtr-0.54-r1.ebuild:
+  Added ~mips to KEYWORDS
+
+  04 Aug 2003; Guy Martin <gmsoft@gentoo.org> mtr-0.54-r1.ebuild :
+  Added support for ipv6.
+
+  30 Jul 2003; Tavis Ormandy <taviso@gentoo.org> mtr-0.54.ebuild:
+  marking ~alpha
+
+  10 Jun 2003; Christian Birchinger <joker@gentoo.org> mtr-0.54.ebuild:
+  Added sparc stable keyword
+
+  05 Jun 2003; Martin Holzer <mholzer@gentoo.org> mtr-0.54.ebuild:
+  Marked stable on x86.
+  Now installs into right location. closes #21495.
+
+*mtr-0.54 (17 May 2003)
+
+  17 Jun 2003; Guy Martin <gmsoft@gentoo.org> mtr-0.54.ebuild :
+  Added hppa to KEYWORDS.
+
+  17 May 2003; Martin Holzer <mholzer@gentoo.org> mtr-0.54.ebuild:
+  Version bumped. Closes #21135.
+
+  13 Feb 2003; Guy Martin <gmsoft@gentoo.org> :
+  Added hppa to keywords.
+
+*mtr-0.52 (02 Jan 2002)
+
+  02 Jan 2002; Martin Holzer <mholzer@gentoo.org> mtr-0.52.ebuild files/digest-mtr-0.52 ChangeLog :
+  Version bump. Closes #12598.
+ 
+*mtr-0.51 (05 Nov 2002)
+
+  05 Nov 2002; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump.
+
+  28 Jun 2002; Thilo Bangert <bangert@gentoo.org> :
+  moved to net-analyzer
+
+*mtr-0.49-r1 (3 May 2002)
+
+  26 Aug 2002; Daniel Ahlberg <aliz@gentoo.org> mtr-0.49-r1 :
+  Moves binary from /usr/sbin to /usr/bin. Closes #6521. 
+  Submitted by Hannes Mehnert <hannes@mehnert.org>.
+   
+  3 May 2002; Donny Davies <woodchip@gentoo.org> :
+  Added LICENSE, SLOT.
+
+*mtr-0.49 (15 Mar 2002)
+
+  15 Mar 2002; Bruce A. Locke <blocke@shivan.org> mtr-0.49.ebuild :
+  New version of mtr.  Removed older versions with security issues.

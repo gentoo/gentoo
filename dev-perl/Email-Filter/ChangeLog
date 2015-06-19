@@ -1,0 +1,52 @@
+# ChangeLog for dev-perl/Email-Filter
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Email-Filter/ChangeLog,v 1.13 2014/08/26 18:05:12 axs Exp $
+
+*Email-Filter-1.32.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Email-Filter-1.32.0-r1.ebuild, -Email-Filter-1.32.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  24 Mar 2012; Raúl Porcel <armin76@gentoo.org> Email-Filter-1.32.0.ebuild:
+  Drop alpha/ia64/sparc keywords
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Email-Filter-1.032.ebuild:
+  Cleanup
+
+*Email-Filter-1.32.0 (31 Aug 2011)
+
+  31 Aug 2011; Torsten Veller <tove@gentoo.org> +Email-Filter-1.32.0.ebuild:
+  Change version scheme
+
+  02 May 2009; Torsten Veller <tove@gentoo.org> -Email-Filter-1.031.ebuild:
+  Cleanup
+
+*Email-Filter-1.032 (16 Sep 2008)
+
+  16 Sep 2008; Torsten Veller <tove@gentoo.org> +Email-Filter-1.032.ebuild:
+  Version bump
+
+  23 Feb 2008; nixnut <nixnut@gentoo.org> Email-Filter-1.031.ebuild:
+  Added ~ppc wrt bug 204036
+
+  05 Jan 2008; Raúl Porcel <armin76@gentoo.org> Email-Filter-1.031.ebuild:
+  Add ~alpha/~ia64/~sparc wrt #204036
+
+  03 Jan 2008; Brent Baude <ranger@gentoo.org> Email-Filter-1.031.ebuild:
+  Marking Email-Filter-1.031 ~ppc64 for bug 204036
+
+  02 Jan 2008; Markus Meier <maekke@gentoo.org> Email-Filter-1.031.ebuild:
+  add ~x86, bug #204036
+
+  02 Jan 2008; Joshua <joslwah@gentoo.org> Email-Filter-1.031.ebuild:
+  Added extra dependency on dev-perl/Email-Simple.
+
+*Email-Filter-1.031 (02 Jan 2008)
+
+  02 Jan 2008; Joshua <joslwah@gentoo.org> +metadata.xml,
+  +Email-Filter-1.031.ebuild:
+  Addition of new module.

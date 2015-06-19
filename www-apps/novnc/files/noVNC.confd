@@ -1,0 +1,4 @@
+FLAG_FILE=/etc/nova/nova.conf
+WEB_ROOT=/opt/noVNC
+LOG_PATH=/var/log/noVNC
+CERT_FILE=/opt/noVNC/self.pem

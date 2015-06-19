@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=games-misc/fortune-mod
+DESCRIPTION=Open sources fortune file
+EAPI=5
+HOMEPAGE=http://www.dibona.com/opensources/index.shtml
+KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+LICENSE=GPL-1
+RDEPEND=games-misc/fortune-mod
+SLOT=0
+SRC_URI=http://www.dibona.com/opensources/osfortune.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=58e9047fc7d95737069d3d3266d9f4bb

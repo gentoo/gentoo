@@ -1,0 +1,10 @@
+# ChangeLog for x11-themes/vdrgraphtft-poetter
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/vdrgraphtft-poetter/ChangeLog,v 1.1 2009/10/22 14:20:39 hd_brummy Exp $
+
+*vdrgraphtft-poetter-0.3.2 (22 Oct 2009)
+
+  22 Oct 2009; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdrgraphtft-poetter-0.3.2.ebuild, +metadata.xml:
+  initial ebuild; theme for vdr-graphtft-0.3.1.x
+

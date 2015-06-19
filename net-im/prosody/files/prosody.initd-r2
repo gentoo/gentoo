@@ -1,0 +1,47 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-im/prosody/files/prosody.initd-r2,v 1.1 2014/10/15 08:07:58 klausman Exp $
+
+description="Prosody is a server for Jabber/XMPP written in Lua."
+description_reload="Reload configuration and reopen log files."
+extra_started_commands="reload"
+pidfile="/var/run/jabber/prosody.pid"
+
+depend() {
+	use dns
+	need net
+	provide jabber-server
+}
+
+checkconfig() {
+	if [ ! -e /etc/jabber/prosody.cfg.lua ] ; then
+		eerror "You need a /etc/jabber/prosody.cfg.lua file to run prosody"
+		return 1
+	fi
+	luac -p /etc/jabber/prosody.cfg.lua
+	return $?
+}
+
+start() {
+	checkconfig || return 1
+	checkpath -q -d -m 0770 -o jabber:jabber "$(dirname ${pidfile})"
+	checkpath -q -f -m 0770 -o jabber:jabber "${pidfile}"
+	checkpath -q -d -m 0750 -o jabber:jabber /var/log/jabber
+	ebegin "Starting Prosody XMPP Server"
+	prosodyctl start
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping Prosody XMPP Server"
+	prosodyctl stop
+	eend $?
+}
+
+reload() {
+	checkconfig || return 1
+	ebegin "Reloading configuration of Prosody XMPP Server"
+	prosodyctl reload
+	eend $?
+}

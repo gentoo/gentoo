@@ -1,0 +1,516 @@
+# ChangeLog for app-forensics/rkhunter
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-forensics/rkhunter/ChangeLog,v 1.106 2015/06/09 11:16:32 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> rkhunter-1.4.0.ebuild,
+  rkhunter-1.4.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  03 Aug 2014; Agostino Sarubbo <ago@gentoo.org> rkhunter-1.4.2.ebuild:
+  Stable for ppc, wrt bug #515868
+
+  26 Jul 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> rkhunter-1.4.2.ebuild:
+  x86 stable wrt bug #515868
+
+  21 Jul 2014; Chema Alonso <nimiux@gentoo.org> rkhunter-1.4.2.ebuild:
+  Stable for amd64 wrt bug #515868
+
+*rkhunter-1.4.0 (30 Jun 2014)
+
+  30 Jun 2014; Rick Farina <zerochaos@gentoo.org> +rkhunter-1.4.0.ebuild:
+  readding inappropriately dropped stable
+
+  29 Jun 2014; Rick Farina <zerochaos@gentoo.org> -rkhunter-1.4.0.ebuild:
+  remove old version
+
+  27 May 2014; Rick Farina <zerochaos@gentoo.org>
+  +files/rkhunter-1.4.0.conf.patch, +files/rkhunter-1.4.2.conf.patch,
+  -files/rkhunter.conf.patch, rkhunter-1.4.0.ebuild, rkhunter-1.4.2.ebuild:
+  tested improperly, bump is proper now
+
+*rkhunter-1.4.2 (27 May 2014)
+
+  27 May 2014; Rick Farina <zerochaos@gentoo.org> +rkhunter-1.4.2.ebuild:
+  simple revbump as requested by bug 504066. tested and functional
+
+  11 Apr 2013; Patrick Lauer <patrick@gentoo.org> rkhunter-1.4.0.ebuild:
+  Dependency fix for #398123
+
+  11 Apr 2013; Patrick Lauer <patrick@gentoo.org> rkhunter-1.4.0.ebuild:
+  Dependency fix for #447078
+
+  25 Nov 2012; Tim Harder <radhermit@gentoo.org> -rkhunter-1.3.8.ebuild,
+  -rkhunter-1.3.8-r1.ebuild, -files/rkhunter-1.3.8-file-compat.patch:
+  Remove old.
+
+  21 Nov 2012; Agostino Sarubbo <ago@gentoo.org> rkhunter-1.4.0.ebuild:
+  Stable for x86, wrt bug #439208
+
+  29 Oct 2012; Anthony G. Basile <blueness@gentoo.org> rkhunter-1.4.0.ebuild:
+  stable ppc, bug #439208
+
+  28 Oct 2012; Markos Chandras <hwoarang@gentoo.org> rkhunter-1.4.0.ebuild:
+  Stable on amd64 wrt bug #439208
+
+*rkhunter-1.4.0 (01 May 2012)
+
+  01 May 2012; Tim Harder <radhermit@gentoo.org> +rkhunter-1.4.0.ebuild:
+  Version bump.
+
+*rkhunter-1.3.8-r1 (09 Apr 2012)
+
+  09 Apr 2012; Jeremy Olexa <darkside@gentoo.org> +rkhunter-1.3.8-r1.ebuild,
+  +files/rkhunter-1.3.8-file-compat.patch:
+  Revision bump to add upstream patch for sys-apps/file compatibility
+
+  12 Jan 2012; Tim Harder <radhermit@gentoo.org> -files/rkhunter-ppc64.patch,
+  -rkhunter-1.3.4-r3.ebuild, -rkhunter-1.3.6.ebuild:
+  Remove old.
+
+  11 Jan 2012; Brent Baude <ranger@gentoo.org> rkhunter-1.3.8.ebuild:
+  Marking rkhunter-1.3.8 ppc for bug 382453
+
+  08 Oct 2011; Raúl Porcel <armin76@gentoo.org> rkhunter-1.3.4-r3.ebuild,
+  rkhunter-1.3.6.ebuild, rkhunter-1.3.8.ebuild:
+  Drop alpha/sparc keywords
+
+  15 Sep 2011; Andreas Schuerch <nativemad@gentoo.org> rkhunter-1.3.8.ebuild:
+  x86 stable, thanks JD for testing, bug 382453
+
+  13 Sep 2011; Markos Chandras <hwoarang@gentoo.org> rkhunter-1.3.8.ebuild:
+  Stable on amd64 wrt bug #382453
+
+  10 Sep 2011; Tim Harder <radhermit@gentoo.org> rkhunter-1.3.8.ebuild:
+  Update to EAPI 4 and migrate to the bash-completion-r1 eclass.
+
+  11 Jul 2011; Tim Harder <radhermit@gentoo.org> rkhunter-1.3.4-r3.ebuild,
+  rkhunter-1.3.6.ebuild, rkhunter-1.3.8.ebuild:
+  Mention mail client alternatives (bug #331947).
+
+  09 May 2011; Jeroen Roovers <jer@gentoo.org> -files/rkhunter.cron:
+  Remove unused file thanks to jalan (bug #341051).
+
+*rkhunter-1.3.8 (09 May 2011)
+
+  09 May 2011; Jeroen Roovers <jer@gentoo.org> +rkhunter-1.3.8.ebuild:
+  Version bump thanks to Max Nokhrin (bug #346617).
+
+  09 Jul 2010; Jeroen Roovers <jer@gentoo.org> rkhunter-1.3.4-r3.ebuild,
+  rkhunter-1.3.6.ebuild:
+  Replace RDEPEND on virtual/mailx to elog advice thanks to Aaron Slunt (bug
+  #327547, replace einfo with elog as well).
+
+  08 Jul 2010; Jeroen Roovers <jer@gentoo.org> rkhunter-1.3.4-r3.ebuild:
+  RDEPEND on virtual/cron and virtual/mailx thanks to p0 (bug #301707).
+
+*rkhunter-1.3.6 (08 Jul 2010)
+
+  08 Jul 2010; Jeroen Roovers <jer@gentoo.org>
+  -files/rkhunter-1.2.1-create-tmpdir.diff,
+  -files/rkhunter-1.2.3-specify-logfile.patch, -rkhunter-1.2.9-r1.ebuild,
+  -files/rkhunter-1.2.9-ppc64.patch, -rkhunter-1.3.4-r2.ebuild,
+  +rkhunter-1.3.6.ebuild:
+  Version bump thanks to Charles Marcus (bug #295433). RDEPEND on
+  virtual/cron and virtual/mailx thanks to p0 (bug #301707).
+
+  19 Jan 2010; Tiago Cunha <tcunha@gentoo.org> rkhunter-1.3.4-r3.ebuild:
+  stable sparc, bug 287269
+
+  01 Jan 2010; Tobias Klausmann <klausman@gentoo.org>
+  rkhunter-1.3.4-r3.ebuild:
+  Stable on alpha, bug #287269
+
+  29 Dec 2009; Joseph Jezak <josejx@gentoo.org> rkhunter-1.3.4-r3.ebuild:
+  Marked ppc stable for bug #287269.
+
+  20 Dec 2009; Dawid Węgliński <cla@gentoo.org> rkhunter-1.3.4-r3.ebuild:
+  Stable on x86 (bug #287269)
+
+  20 Dec 2009; Richard Freeman <rich0@gentoo.org> rkhunter-1.3.4-r3.ebuild:
+  amd64 stable - 287269
+
+*rkhunter-1.3.4-r3 (19 Dec 2009)
+
+  19 Dec 2009; William Hubbs <williamh@gentoo.org>
+  +rkhunter-1.3.4-r3.ebuild, files/rkhunter-1.3.cron:
+  This rev bump closes #268719 and #268762.
+
+  29 Jul 2009; Steve Dibb <beandog@gentoo.org> rkhunter-1.3.4-r2.ebuild:
+  amd64 stable
+
+  30 Apr 2009; Patrick Lauer <patrick@gentoo.org> -rkhunter-1.2.7-r1.ebuild,
+  -rkhunter-1.2.8.ebuild, -rkhunter-1.2.9.ebuild, -rkhunter-1.3.4-r1.ebuild:
+  Remove old
+
+*rkhunter-1.2.9-r1 (15 Feb 2009)
+
+  15 Feb 2009; Patrick Lauer <patrick@gentoo.org> +rkhunter-1.2.9-r1.ebuild:
+  Fixing rkhunter 1.2.9 binary path to match the cron and be consistent with
+  1.3.4. Fixes bug #258732
+
+*rkhunter-1.3.4-r2 (18 Jan 2009)
+
+  18 Jan 2009; Patrick Lauer <patrick@gentoo.org> +files/rkhunter-1.3.cron,
+  files/rkhunter.cron, -files/rkhunter.cron.patch,
+  +rkhunter-1.3.4-r2.ebuild:
+  Fixed cron handling.
+
+  17 Jan 2009; Patrick Lauer <patrick@gentoo.org> -rkhunter-1.3.4.ebuild:
+  Punting broken ebuild
+
+*rkhunter-1.3.4-r1 (17 Jan 2009)
+
+  17 Jan 2009; Patrick Lauer <patrick@gentoo.org>
+  +files/rkhunter.conf.patch, +files/rkhunter.cron.patch,
+  +files/rkhunter-ppc64.patch, +rkhunter-1.3.4-r1.ebuild:
+  Fixed 1.3.4-r1 ebuild. Fixes bug #254100 and thanks to Christian Ruppert
+  <spooky85@gmail.com> for the patches
+
+*rkhunter-1.3.4 (05 Jan 2009)
+
+  05 Jan 2009; Patrick Lauer <patrick@gentoo.org> +rkhunter-1.3.4.ebuild:
+  Bump to 1.3.4. Might need some more love.
+
+  28 Jul 2007; Joshua Kinard <kumba@gentoo.org> ChangeLog:
+  Stable on mips, per #161943.
+
+  29 Jun 2007; Raúl Porcel <armin76@gentoo.org> rkhunter-1.2.9.ebuild:
+  alpha stable wrt #161943
+
+  24 Apr 2007; Alexander Færøy <eroyf@gentoo.org> rkhunter-1.2.9.ebuild:
+  Stable on MIPS.
+
+  07 Apr 2007; Peter Weller <welp@gentoo.org> rkhunter-1.2.9.ebuild:
+  Stable on amd64 wrt bug 161943
+
+  06 Apr 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  rkhunter-1.2.9.ebuild:
+  ppc stable
+
+  26 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org> rkhunter-1.2.9.ebuild:
+  Stable on sparc wrt #161943
+
+  25 Mar 2007; Andrej Kacian <ticho@gentoo.org> rkhunter-1.2.9.ebuild:
+  Stable on x86, bug #161943.
+
+  19 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove ka0ttic from metadata.xml due to retirement.
+
+*rkhunter-1.2.9 (18 Feb 2007)
+
+  18 Feb 2007; Daniel Black <dragonheart@gentoo.org>
+  +files/rkhunter-1.2.9-ppc64.patch, +rkhunter-1.2.9.ebuild:
+  version bump as per bug #149951 thanks Janne for the ebuild and Narayan
+  Newton for ppc64 support
+
+  24 Jan 2007; Marius Mauch <genone@gentoo.org> rkhunter-1.2.7-r1.ebuild,
+  rkhunter-1.2.8.ebuild:
+  Replacing einfo with elog
+
+*rkhunter-1.2.8 (22 Feb 2006)
+
+  22 Feb 2006; Aaron Walker <ka0ttic@gentoo.org> +rkhunter-1.2.8.ebuild:
+  Version bump for bug #123208.
+
+  21 Jan 2006; Benjamin Smee <strerror@gentoo.org> rkhunter-1.2.7-r1.ebuild:
+  Change homepage as per bug #115479
+
+  04 Sep 2005; Aaron Walker <ka0ttic@gentoo.org> rkhunter-1.2.7-r1.ebuild:
+  Add sys-process/lsof to RDEPEND so that rkhunter can check for backdoors in
+  running processes, bug #104774.
+
+  02 Sep 2005; Aaron Walker <ka0ttic@gentoo.org>
+  -files/rkhunter-1.2.3-fix-insecure-tmp-creation.diff:
+  Missed an old patch when tidying.
+
+*rkhunter-1.2.7-r1 (02 Sep 2005)
+
+  02 Sep 2005; Aaron Walker <ka0ttic@gentoo.org> files/rkhunter.cron,
+  -rkhunter-1.2.3-r1.ebuild, -rkhunter-1.2.7.ebuild,
+  +rkhunter-1.2.7-r1.ebuild:
+  Revision bump; fix cron job to use mktemp.  Keeping keywords. Tidy old ebuilds
+
+  03 Aug 2005; Bryan Østergaard <kloeri@gentoo.org> rkhunter-1.2.7.ebuild:
+  Stable on alpha.
+
+  30 Jul 2005; Aaron Walker <ka0ttic@gentoo.org> rkhunter-1.2.7.ebuild:
+  Stable on mips.
+
+  20 Jul 2005; Herbie Hopkins <herbs@gentoo.org> rkhunter-1.2.7.ebuild:
+  Stable on amd64 wrt bug #99259.
+
+  30 Jun 2005; Joseph Jezak <josejx@gentoo.org> rkhunter-1.2.7.ebuild:
+  Marked ppc stable.
+
+  28 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> rkhunter-1.2.7.ebuild:
+  Stable on sparc
+
+  28 Jun 2005; Aaron Walker <ka0ttic@gentoo.org> rkhunter-1.2.7.ebuild:
+  Stable on x86.
+
+*rkhunter-1.2.7 (24 May 2005)
+
+  24 May 2005; Aaron Walker <ka0ttic@gentoo.org> -rkhunter-1.2.5.ebuild,
+  -rkhunter-1.2.6.ebuild, +rkhunter-1.2.7.ebuild:
+  Version bump.
+
+*rkhunter-1.2.6 (10 May 2005)
+
+  10 May 2005; Aaron Walker <ka0ttic@gentoo.org> +rkhunter-1.2.6.ebuild:
+  Version bump.
+
+*rkhunter-1.2.5 (03 May 2005)
+
+  03 May 2005; Aaron Walker <ka0ttic@gentoo.org> -rkhunter-1.2.4.ebuild,
+  +rkhunter-1.2.5.ebuild:
+  Version bump.
+
+  27 Apr 2005; Joshua Kinard <kumba@gentoo.org> rkhunter-1.2.4.ebuild:
+  Added ~mips to KEYWORDS.
+
+*rkhunter-1.2.4 (26 Apr 2005)
+
+  26 Apr 2005; Aaron Walker <ka0ttic@gentoo.org>
+  -files/rkhunter-1.1.9-specify-logfile.patch,
+  -files/rkhunter-1.2.0-specify-logfile.patch, -rkhunter-1.1.9.ebuild,
+  -rkhunter-1.2.1.ebuild, -rkhunter-1.2.3.ebuild, +rkhunter-1.2.4.ebuild:
+  Version bump; still suffers from sec bug 90007, so use taviso's patch. Tidy
+  old ebuilds.
+
+  25 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
+  rkhunter-1.2.3-r1.ebuild:
+  Stable on alpha.
+
+  25 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> rkhunter-1.2.3-r1.ebuild:
+  stable on amd64 wrt #90007
+
+  25 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  rkhunter-1.2.3-r1.ebuild:
+  Stable on sparc wrt #90007
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  rkhunter-1.2.3-r1.ebuild:
+  Stable on ppc.
+
+*rkhunter-1.2.3-r1 (25 Apr 2005)
+
+  25 Apr 2005; Aaron Walker <ka0ttic@gentoo.org>
+  +files/rkhunter-1.2.3-fix-insecure-tmp-creation.diff,
+  +rkhunter-1.2.3-r1.ebuild:
+  Revision bump for sec bug 90007; stable on x86.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> rkhunter-1.2.3.ebuild:
+  stable on amd64
+
+  01 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> rkhunter-1.2.1.ebuild:
+  Stable on ppc.
+
+  26 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> rkhunter-1.2.1.ebuild:
+  Stable on alpha.
+
+  23 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> rkhunter-1.2.1.ebuild:
+  Stable on sparc
+
+*rkhunter-1.2.3 (22 Mar 2005)
+
+  22 Mar 2005; Aaron Walker <ka0ttic@gentoo.org>
+  -files/rkhunter-1.2.2-fix-broken-test.diff,
+  +files/rkhunter-1.2.3-specify-logfile.patch, -rkhunter-1.2.0.ebuild,
+  -rkhunter-1.2.2.ebuild, +rkhunter-1.2.3.ebuild:
+  Version bump; tidy old ebuilds.
+
+*rkhunter-1.2.2 (19 Mar 2005)
+
+  19 Mar 2005; Aaron Walker <ka0ttic@gentoo.org>
+  +files/rkhunter-1.2.2-fix-broken-test.diff, rkhunter-1.2.1.ebuild,
+  +rkhunter-1.2.2.ebuild:
+  Version bump; marked 1.2.1 stable on x86.
+
+*rkhunter-1.2.1 (22 Feb 2005)
+
+  22 Feb 2005; Aaron Walker <ka0ttic@gentoo.org>
+  +files/rkhunter-1.2.1-create-tmpdir.diff, +rkhunter-1.2.1.ebuild:
+  Version bump.
+
+*rkhunter-1.2.0 (11 Feb 2005)
+
+  11 Feb 2005; Aaron Walker <ka0ttic@gentoo.org>
+  +files/rkhunter-1.2.0-specify-logfile.patch, +rkhunter-1.2.0.ebuild:
+  Version bump.
+
+  11 Feb 2005; Daniel Black <dragonheart@gentoo.org>
+  -files/rkhunter-1.1.8-specify-logfile.patch, -rkhunter-1.1.8-r1.ebuild,
+  -rkhunter-1.1.8.ebuild, rkhunter-1.1.9.ebuild:
+  ppc stable and version cleanout
+
+  06 Feb 2005; Bryan Østergaard <kloeri@gentoo.org> rkhunter-1.1.9.ebuild:
+  Stable on alpha.
+
+  31 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org> rkhunter-1.1.9.ebuild:
+  Stable on sparc
+
+  31 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> rkhunter-1.1.9.ebuild:
+  Marked stable on x86.
+
+  31 Dec 2004; Jason Wever <weeve@gentoo.org> rkhunter-1.1.8-r1.ebuild:
+  Stable on sparc.
+
+  30 Dec 2004; Bryan Østergaard <kloeri@gentoo.org>
+  rkhunter-1.1.8-r1.ebuild:
+  Stable on alpha.
+
+*rkhunter-1.1.9 (29 Dec 2004)
+
+  29 Dec 2004; Aaron Walker <ka0ttic@gentoo.org>
+  +files/rkhunter-1.1.9-specify-logfile.patch, rkhunter-1.1.8-r1.ebuild,
+  +rkhunter-1.1.9.ebuild:
+  New upstream release finally; now officially recognizes Gentoo 1.6
+  (>=sys-apps/baselayout-1.11.x) w/o whining about an unsupported OS at
+  run-time. Marked 1.1.8-r1 stable on x86.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  14 Dec 2004; Daniel Black <dragonheart@gentoo.org> rkhunter-1.1.8.ebuild:
+  ppc keyword
+
+*rkhunter-1.1.8-r1 (07 Dec 2004)
+
+  07 Dec 2004; Aaron Walker <ka0ttic@gentoo.org>
+  +files/rkhunter-1.1.8-specify-logfile.patch,
+  files/rkhunter.bash-completion, files/rkhunter.cron,
+  -rkhunter-1.1.7.ebuild, +rkhunter-1.1.8-r1.ebuild, rkhunter-1.1.8.ebuild:
+  Revision bump. Added patch to allow --createlogfile to accept an opt.
+  argument (filename); rewrote cron script (super duper enhanced (x10)) for
+  bug 73432 - see the config section in files/rkhunter.cron for all the new
+  features. Cleaned up ebuild and removed 1.1.7.
+
+  06 Nov 2004; Aaron Walker <ka0ttic@gentoo.org> rkhunter-1.1.7.ebuild,
+  rkhunter-1.1.8.ebuild:
+  Updated to use bash-completion.eclass
+
+  23 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> rkhunter-1.1.8.ebuild:
+  Stable on alpha.
+
+  19 Oct 2004; Jason Wever <weeve@gentoo.org> rkhunter-1.1.8.ebuild:
+  Stable on sparc.
+
+  16 Oct 2004; Aaron Walker <ka0ttic@gentoo.org> rkhunter-1.1.8.ebuild:
+  Stable on x86.
+
+  02 Oct 2004; Aaron Walker <ka0ttic@gentoo.org> rkhunter-1.1.7.ebuild,
+  rkhunter-1.1.8.ebuild:
+  Updated HOMEPAGE.
+
+  19 Sep 2004; Aaron Walker <ka0ttic@gentoo.org> -rkhunter-1.1.5.ebuild,
+  -rkhunter-1.1.6.ebuild:
+  Cleaned up old ebuilds.
+
+  19 Sep 2004; <kloeri@gentoo.org> rkhunter-1.1.7.ebuild:
+  Stable on alpha.
+
+  18 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  18 Sep 2004; Jason Wever <weeve@gentoo.org> rkhunter-1.1.7.ebuild:
+  Stable on sparc.
+
+  17 Sep 2004; Aaron Walker <ka0ttic@gentoo.org> rkhunter-1.1.7.ebuild:
+  Marked 1.1.7 stable on x86.
+
+*rkhunter-1.1.8 (12 Sep 2004)
+
+  12 Sep 2004; Aaron Walker <ka0ttic@gentoo.org> +rkhunter-1.1.8.ebuild:
+  Version bump.
+
+  12 Sep 2004; Aaron Walker <ka0ttic@gentoo.org> metadata.xml:
+  Updated metadata (no-herd => forensics)
+
+*rkhunter-1.1.6 (12 Sep 2004)
+
+  12 Sep 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
+  +files/rkhunter.bash-completion, +files/rkhunter.cron,
+  +rkhunter-1.1.5.ebuild, +rkhunter-1.1.6.ebuild, +rkhunter-1.1.7.ebuild:
+  Moved from app-admin/rkhunter to app-forensics/rkhunter.
+
+  11 Sep 2004; Aaron Walker <ka0ttic@gentoo.org>
+  +files/rkhunter.bash-completion, rkhunter-1.1.7.ebuild:
+  Added bash-completion script (please test).
+
+  11 Sep 2004; Aaron Walker <ka0ttic@gentoo.org> metadata.xml:
+  Updated metadata info.
+
+*rkhunter-1.1.7 (29 Aug 2004)
+
+  29 Aug 2004; <solar@gentoo.org> +rkhunter-1.1.7.ebuild:
+  version bump
+
+*rkhunter-1.1.6 (19 Aug 2004)
+
+  19 Aug 2004; <solar@gentoo.org> -rkhunter-1.1.3.ebuild,
+  -rkhunter-1.1.4.ebuild, +rkhunter-1.1.6.ebuild:
+  version bump
+
+  17 Aug 2004; <solar@gentoo.org> files/rkhunter.cron, rkhunter-1.1.4.ebuild,
+  rkhunter-1.1.5.ebuild:
+  marked 1.1.5 stable on x86
+
+  15 Aug 2004; <solar@gentoo.org> rkhunter-1.1.5.ebuild:
+  added doexe check_update.sh bug 60387
+
+*rkhunter-1.1.5 (11 Aug 2004)
+
+  11 Aug 2004; <solar@gentoo.org> rkhunter-1.1.2.ebuild,
+  rkhunter-1.1.4.ebuild, rkhunter-1.1.5.ebuild:
+  This release has the Ni0 Rootkit detection support, some small fixes, and a
+  few new tests. It also fixes the xinetd.conf false positive, and has an
+  improved application version checker and updated databases.
+
+*rkhunter-1.1.4 (07 Aug 2004)
+
+  07 Aug 2004; <solar@gentoo.org> rkhunter-1.1.4.ebuild:
+  version bump
+
+  24 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> rkhunter-1.1.2.ebuild:
+  Stable on alpha.
+
+  24 Jul 2004; <solar@gentoo.org> rkhunter-1.1.3.ebuild, files/rkhunter.cron:
+  add support for rkhunter automation thanks to Aaron Walker bug 57829
+
+*rkhunter-1.1.3 (23 Jul 2004)
+
+  23 Jul 2004; <solar@gentoo.org> rkhunter-1.0.9.ebuild,
+  rkhunter-1.1.1.ebuild, rkhunter-1.1.2.ebuild, rkhunter-1.1.3.ebuild:
+  version bump, removed older ebuilds and marked 1.1.1 as stable on x86
+
+*rkhunter-1.1.2 (14 Jul 2004)
+
+  14 Jul 2004; <solar@gentoo.org> rkhunter-1.1.2.ebuild:
+  version bump
+
+*rkhunter-1.1.1 (08 Jul 2004)
+
+  08 Jul 2004; <solar@gentoo.org> rkhunter-1.0.9.ebuild,
+  rkhunter-1.1.1.ebuild:
+  version bump
+
+  30 May 2004; Jason Wever <weeve@gentoo.org> rkhunter-1.0.9.ebuild:
+  Added ~sparc keyword.
+
+  30 May 2004; Danny van Dyk <kugelfang@gentoo.org> rkhunter-1.0.9.ebuild:
+  Marked ~amd64.
+
+  30 May 2004; Bryan Østergaard <kloeri@gentoo.org> rkhunter-1.0.9.ebuild:
+  Keyworded ~alpha.
+
+*rkhunter-1.0.9 (30 May 2004)
+
+  30 May 2004; David Holm <dholm@gentoo.org> rkhunter-1.0.9.ebuild:
+  Added to ~ppc.
+
+  30 May 2004; <solar@gentoo.org> :
+  Rootkit Hunter scans for known and unknown rootkits, backdoors, and sniffers.
+  Bugzilla Bug 47781 - Initial commit

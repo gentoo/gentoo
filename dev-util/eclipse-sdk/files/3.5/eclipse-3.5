@@ -1,0 +1,50 @@
+#! /bin/sh
+#
+# Tiny startup wrapper for Eclipse
+#
+# Copyright (c) 2004, Karl Trygve Kalleberg <karltk@gentoo.org>
+# Copyright (c) 2007-2008, Jean-Noël Rivasseau <elvanor@gentoo.org>
+# Copyright (c) 2004-2008, Gentoo Foundation
+#
+# Licensed under the GNU General Public License, version 2
+#
+
+SLOT="3.5"
+
+[ -f "/etc/eclipserc-${SLOT}" ] && . "/etc/eclipserc-${SLOT}"
+[ -f "$HOME/gentoo/.eclipserc" ] && . "$HOME/gentoo/.eclipserc"
+
+ECLIPSE_HOME=${ECLIPSE_HOME:="/usr/lib/eclipse-${SLOT}"}
+ECLIPSE_BIN="${ECLIPSE_HOME}/eclipse"
+
+if [ ! -x "${ECLIPSE_BIN}" ] ; then
+	echo "Failed to find executable '${ECLIPSE_BIN}'" > /dev/stderr
+	exit 1
+fi
+
+if [ $(id -u) -eq 0 ] ; then
+	echo "Do not run eclipse as root user! Exiting ..." > /dev/stderr
+	exit 1
+fi
+
+case "$(java-config -f)" in
+	*gcj*)
+		export JAVA_PKG_CLASSMAP="${ECLIPSE_HOME}/eclipse.gcjdb"
+		;;
+esac
+
+eval $(gjl --package "swt-${SLOT}" --get-args)
+
+[ -n "${ECLIPSE_XMS}" ] && VM_ARGS="${VM_ARGS} -Xms${ECLIPSE_XMS}"
+[ -n "${ECLIPSE_XMX}" ] && VM_ARGS="${VM_ARGS} -Xmx${ECLIPSE_XMX}"
+[ -n "${ECLIPSE_PERMSIZE}" ] && VM_ARGS="${VM_ARGS} -XX:PermSize=${ECLIPSE_PERMSIZE}"
+[ -n "${ECLIPSE_MAX_PERMSIZE}" ] && VM_ARGS="${VM_ARGS} -XX:MaxPermSize=${ECLIPSE_MAX_PERMSIZE}"
+
+# Fix for JRE 1.5.
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/lib
+
+# Fix for >=x11-libs/gtk+-2.18.1 (not needed for Eclipse 3.6+)
+# see https://bugs.eclipse.org/bugs/show_bug.cgi?id=291257
+export GDK_NATIVE_WINDOWS=true
+
+exec "${ECLIPSE_BIN}" -vm $(java-config --java) "$@" "${ECLIPSE_USER_ARGS}" -vmargs ${VM_ARGS} 

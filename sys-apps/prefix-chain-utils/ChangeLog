@@ -1,0 +1,27 @@
+# ChangeLog for sys-apps/prefix-chain-utils
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/prefix-chain-utils/ChangeLog,v 1.4 2015/01/20 10:02:27 pacho Exp $
+
+  20 Jan 2015; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due to #213900
+
+  21 Apr 2011; Jeremy Olexa <darkside@gentoo.org> metadata.xml:
+  update metadata
+
+  16 Jul 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Fixed herd tag on metadata.xml.
+
+*prefix-chain-utils-0.2-r5 (13 Jul 2010)
+
+  13 Jul 2010; Markus Duft <mduft@gentoo.org>
+  +prefix-chain-utils-0.2-r5.ebuild, +files/prefix-chain-wrapper.in,
+  +files/startprefix.in, +metadata.xml:
+  initially imported from prefix tree. applied fixes from private overlay.
+
+*prefix-chain-utils-0.2 (26 Mar 2009)
+
+  26 Mar 2009; <mduft@gentoo.org> +., +files,
+  +files/prefix-chain-wrapper.in, +files/startprefix.in,
+  +prefix-chain-utils-0.2.ebuild:
+  initially added prefix-chain instance helper (startprefix, toolchain wrapper)

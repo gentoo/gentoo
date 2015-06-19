@@ -1,0 +1,10 @@
+service rsync
+{
+	socket_type = stream
+	protocol    = tcp
+	wait        = no
+	user        = root
+	server      = @GENTOO_PORTAGE_EPREFIX@/usr/bin/rsync
+	server_args = --daemon
+	disable     = yes
+}

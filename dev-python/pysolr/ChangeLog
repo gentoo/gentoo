@@ -1,0 +1,23 @@
+# ChangeLog for dev-python/pysolr
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pysolr/ChangeLog,v 1.5 2015/06/15 15:05:42 mrueg Exp $
+
+*pysolr-3.3.2 (15 Jun 2015)
+
+  15 Jun 2015; Manuel Rüger <mrueg@gentoo.org> +pysolr-3.3.2.ebuild:
+  Version bump.
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  08 Apr 2015; Justin Lecher <jlec@gentoo.org> pysolr-3.3.0.ebuild:
+  Add pypy support
+
+*pysolr-3.3.0 (08 Apr 2015)
+
+  08 Apr 2015; Justin Lecher <jlec@gentoo.org> +metadata.xml,
+  +pysolr-3.3.0.ebuild:
+  New package written by me

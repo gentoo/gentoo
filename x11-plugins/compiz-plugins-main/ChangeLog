@@ -1,0 +1,123 @@
+# ChangeLog for x11-plugins/compiz-plugins-main
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/compiz-plugins-main/ChangeLog,v 1.23 2012/10/09 19:28:28 pinkbyte Exp $
+
+  09 Oct 2012; Sergey Popov <pinkbyte@gentoo.org>
+  compiz-plugins-main-0.8.8.ebuild:
+  Add missing virtual/glu dependency wrt bug #437656. Thanks to Anatoly for
+  discovering this issue
+
+  25 Sep 2012; Sergey Popov <pinkbyte@gentoo.org>
+  -files/compiz-plugins-main-0.8.4-put-plugin.patch,
+  -compiz-plugins-main-0.8.6-r1.ebuild:
+  Drop old
+
+  31 Aug 2012; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Remove myself and proxy maintainer from maintainers
+
+  30 Aug 2012; Sergey Popov <pinkbyte@gentoo.org>
+  compiz-plugins-main-0.8.8.ebuild:
+  disable-dependency-tracking is unneeded for EAPI 4
+
+  30 Aug 2012; Sergey Popov <pinkbyte@gentoo.org>
+  compiz-plugins-main-0.8.8.ebuild:
+  Use prune_libtool_files instead of simple 'find ... -delete'
+
+*compiz-plugins-main-0.8.8 (13 Jun 2012)
+
+  13 Jun 2012; Naohiro Aota <naota@gentoo.org>
+  +compiz-plugins-main-0.8.8.ebuild, metadata.xml:
+  Version bump. #416025. Assign Sergey Popov as a proxy maintainer.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  compiz-plugins-main-0.8.6-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  25 Apr 2012; Justin Lecher <jlec@gentoo.org>
+  compiz-plugins-main-0.8.6-r1.ebuild:
+  Drop unnessecary die
+
+  21 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  -compiz-plugins-main-0.8.4.ebuild, -compiz-plugins-main-0.8.4-r1.ebuild,
+  -compiz-plugins-main-0.8.6.ebuild, compiz-plugins-main-0.8.6-r1.ebuild:
+  Fix slot-deps on gtk+ and other libs, remove old
+
+  26 Feb 2011; Kevin McCarthy <signals@gentoo.org>
+  compiz-plugins-main-0.8.4.ebuild, compiz-plugins-main-0.8.4-r1.ebuild,
+  compiz-plugins-main-0.8.6.ebuild, compiz-plugins-main-0.8.6-r1.ebuild:
+  Updated depends from media-libs/jpeg to virtual/jpeg
+
+  04 Sep 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  compiz-plugins-main-0.8.6-r1.ebuild:
+  Update the ebuild to follow the -extra ebuild as well.
+
+*compiz-plugins-main-0.8.6-r1 (04 Sep 2010)
+
+  04 Sep 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +compiz-plugins-main-0.8.6-r1.ebuild, metadata.xml:
+  Rename gnome USE flag to gconf (like x11-wm/compiz); disable static libs
+  and remove .la files (ibid.).
+
+*compiz-plugins-main-0.8.6 (03 Apr 2010)
+
+  03 Apr 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +compiz-plugins-main-0.8.6.ebuild:
+  Replaced compiz ~ deps with >= deps to support the new compiz-0.8.6
+  release and to avoid future dep issues.
+  Did a revbump to avoid issues with installed packages.
+
+*compiz-plugins-main-0.8.4-r1 (31 Jan 2010)
+
+  31 Jan 2010; Romain Perier <mrpouet@gentoo.org>
+  +compiz-plugins-main-0.8.4-r1.ebuild,
+  +files/compiz-plugins-main-0.8.4-put-plugin.patch:
+  Handle windows that have server border set properly (put plugin),
+  per bug #302308. Many thanks to Denilson.
+
+  23 Dec 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  compiz-plugins-main-0.8.4.ebuild:
+  Dropped block for old package name now that I've finally set the pkg move.
+
+  20 Dec 2009; Romain Perier <mrpouet@gentoo.org>
+  -compiz-plugins-main-0.8.2-r1.ebuild,
+  -files/compiz-plugins-main-0.8.2-xdamage-race.patch:
+  Clean up old version
+
+*compiz-plugins-main-0.8.4 (15 Oct 2009)
+
+  15 Oct 2009; Romain Perier <mrpouet@gentoo.org>
+  +compiz-plugins-main-0.8.4.ebuild:
+  Version bump.
+
+*compiz-plugins-main-0.8.2-r1 (28 Aug 2009)
+
+  28 Aug 2009; Romain Perier <mrpouet@gentoo.org>
+  -compiz-plugins-main-0.8.2.ebuild,
+  +compiz-plugins-main-0.8.2-r1.ebuild:
+  Fix bug #265223, replace $(use_enable gnome gconf) by $(use_enable gnome
+  schemas) without it gconf schemas were not installed, Add inheritance from
+  gnome2-utils.eclass to use gnome2_gconf_* functions. Drop old revision.
+
+  25 Apr 2009; Brent Baude <ranger@gentoo.org>
+  compiz-plugins-main-0.8.2.ebuild:
+  Marking compiz-plugins-main-0.8.2 ~ppc for bug 246804
+
+  25 Apr 2009; Brent Baude <ranger@gentoo.org>
+  compiz-plugins-main-0.8.2.ebuild:
+  Marking compiz-plugins-main-0.8.2 ~ppc64 for bug 246804
+
+  03 Apr 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +files/compiz-plugins-main-0.8.2-xdamage-race.patch,
+  +files/compiz-plugins-main-no-gconf.patch:
+  Added another patch.
+
+  03 Apr 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +files/compiz-plugins-main-0.8.2-xdamage-race.patch:
+  Added missing patch.
+
+*compiz-plugins-main-0.8.2 (03 Apr 2009)
+
+  03 Apr 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +metadata.xml, +compiz-plugins-main-0.8.2.ebuild:
+  Bumped compiz to the 0.8.2 release.
+

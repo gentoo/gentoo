@@ -1,0 +1,111 @@
+# ChangeLog for app-misc/ignuit
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/ignuit/ChangeLog,v 1.26 2013/06/27 12:40:34 kensington Exp $
+
+  27 Jun 2013; Michael Palimaka <kensington@gentoo.org> -ignuit-0.0.16.ebuild:
+  Remove old.
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> ignuit-2.20.0.ebuild:
+  Stable for ppc64, wrt bug #470336
+
+  14 Jun 2013; Sergey Popov <pinkbyte@gentoo.org> ignuit-0.0.16.ebuild,
+  ignuit-2.20.0.ebuild:
+  Add missing dependency on app-misc/scrollkeeper, wrt bug #471308. Thanks to
+  Agostino Sarubbo for discovering this issue
+
+  26 May 2013; Agostino Sarubbo <ago@gentoo.org> ignuit-2.20.0.ebuild:
+  Stable for ppc, wrt bug #470336
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> ignuit-2.20.0.ebuild:
+  Stable for x86, wrt bug #470336
+
+  19 May 2013; Agostino Sarubbo <ago@gentoo.org> ignuit-2.20.0.ebuild:
+  Stable for amd64, wrt bug #470336
+
+*ignuit-2.20.0 (14 Mar 2013)
+
+  14 Mar 2013; Tom Wijsman <TomWij@gentoo.org> +ignuit-2.20.0.ebuild:
+  Non-maintainer commit, version bump to 2.20.0.
+
+  04 Mar 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #206112
+
+  27 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> ignuit-0.0.16.ebuild:
+  Fix slot-deps on gnome libs
+
+  06 Nov 2010; Kenneth Prugh <ken69267@gentoo.org> -ignuit-0.0.13.ebuild,
+  -ignuit-0.0.14.ebuild, -ignuit-0.0.15.ebuild:
+  drop old versions
+
+  06 Nov 2010; Mark Loeser <halcy0n@gentoo.org> ignuit-0.0.16.ebuild:
+  Stable for ppc64; bug #319903
+
+  24 May 2010; <nixnut@gentoo.org> ignuit-0.0.16.ebuild:
+  ppc stable #319903
+
+  21 May 2010; Markos Chandras <hwoarang@gentoo.org> ignuit-0.0.16.ebuild:
+  Stable on amd64 wrt bug #319903
+
+  21 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> ignuit-0.0.16.ebuild:
+  x86 stable wrt bug #319903
+
+  14 Dec 2009; Brent Baude <ranger@gentoo.org> ignuit-0.0.15.ebuild:
+  stable ppc64, bug 293198
+
+  09 Dec 2009; nixnut <nixnut@gentoo.org> ignuit-0.0.15.ebuild:
+  ppc stable #293198
+
+*ignuit-0.0.16 (03 Dec 2009)
+
+  03 Dec 2009; Kenneth Prugh <ken69267@gentoo.org> +ignuit-0.0.16.ebuild:
+  version bump
+
+  19 Nov 2009; Markus Meier <maekke@gentoo.org> ignuit-0.0.15.ebuild:
+  amd64/x86 stable, bug #293198
+
+*ignuit-0.0.15 (12 Oct 2009)
+
+  12 Oct 2009; Kenneth Prugh <ken69267@gentoo.org> +ignuit-0.0.15.ebuild:
+  version bump
+
+  29 Apr 2009; Christian Faulhammer <fauli@gentoo.org> ignuit-0.0.14.ebuild:
+  keyworded ~arch for x86, bug 267390
+
+  29 Apr 2009; Christian Faulhammer <fauli@gentoo.org> ignuit-0.0.14.ebuild:
+  add missing dependency on app-text/gnome-doc-utils
+
+  29 Apr 2009; Brent Baude <ranger@gentoo.org> ignuit-0.0.14.ebuild:
+  keyworded ~arch for ppc64, bug 267390
+
+  26 Apr 2009; Brent Baude <ranger@gentoo.org> ignuit-0.0.14.ebuild:
+  Marking ignuit-0.0.14 ~ppc for bug 267390
+
+*ignuit-0.0.14 (18 Apr 2009)
+
+  18 Apr 2009; Kenneth Prugh <ken69267@gentoo.org> +ignuit-0.0.14.ebuild:
+  version bump, fixes bug #266022
+
+  13 Apr 2009; Kenneth Prugh <ken69267@gentoo.org> ignuit-0.0.13.ebuild:
+  Add examples
+
+*ignuit-0.0.13 (12 Apr 2009)
+
+  12 Apr 2009; Kenneth Prugh <ken69267@gentoo.org> +metadata.xml,
+  +ignuit-0.0.13.ebuild:
+  Import from sunrise
+
+  09 Apr 2009; Kenneth Prugh <ken69267@gentoo.org> -ignuit-0.0.12.ebuild,
+  +ignuit-0.0.13.ebuild:
+  version bump
+
+  20 Mar 2009; Kenneth Prugh <ken69267@gentoo.org> -ignuit-0.0.11.ebuild,
+  +ignuit-0.0.12.ebuild:
+  version bump
+
+  01 Jan 2009; Kenneth Prugh <ken69267@gentoo.org> -ignuit-0.0.5.ebuild,
+  -files/ignuit-0.0.5-desktop-entry.patch, +ignuit-0.0.11.ebuild:
+  Version bump
+
+  10 Mar 2008; Kenneth Prugh <ken69267@gentoo.org> +ignuit-0.0.5.ebuild,
+  +files/ignuit-0.0.5-desktop-entry.patch, +metadata.xml:
+  New ebuild for bug #212887

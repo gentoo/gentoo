@@ -1,0 +1,25 @@
+From deaa974528ac1f4099d091a333214b1a50147243 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Wed, 1 May 2013 00:39:42 +0200
+Subject: [PATCH] Prevent double escaping / error "stray ‘\’ in program"
+
+---
+ gegl/Makefile.am | 1 +
+ 1 file changed, 1 insertion(+), 0 deletion(-)
+
+diff --git a/gegl/Makefile.am b/gegl/Makefile.am
+index 43010ce..fd046d2 100644
+--- a/gegl/Makefile.am
++++ b/gegl/Makefile.am
+@@ -119,7 +119,8 @@ INCLUDES = $(AM_CFLAGS) $(AM_CPPFLAGS)
+ 
+ Gegl-@GEGL_API_VERSION@.gir: libgegl-@GEGL_API_VERSION@.la Makefile
+ Gegl_@GEGL_MAJOR_VERSION@_@GEGL_MINOR_VERSION@_gir_INCLUDES = GObject-2.0 GLib-2.0 Babl-0.1
+ Gegl_@GEGL_MAJOR_VERSION@_@GEGL_MINOR_VERSION@_gir_CFLAGS = $(INCLUDES)
++INTROSPECTION_SCANNER_ENV = CFLAGS="${CFLAGS} "-D'G_LOG_DOMAIN="GEGL-"__FILE__'  # No extra backslashes here!
+ Gegl_@GEGL_MAJOR_VERSION@_@GEGL_MINOR_VERSION@_gir_LIBS = libgegl-@GEGL_API_VERSION@.la
+ Gegl_@GEGL_MAJOR_VERSION@_@GEGL_MINOR_VERSION@_gir_FILES = $(introspection_sources)
+ INTROSPECTION_GIRS += Gegl-@GEGL_API_VERSION@.gir
+-- 
+1.8.1.5
+

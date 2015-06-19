@@ -1,0 +1,40 @@
+From 43e4c8788491c378862654933cc6d59d46f571c6 Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Mon, 22 Jul 2013 23:07:04 -0400
+Subject: [PATCH] build: modernize for automake-1.14
+
+https://bugs.gentoo.org/show_bug.cgi?id=467618
+---
+ Makefile.am  | 2 +-
+ configure.ac | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index b4c658c..b40192e 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -20,7 +20,7 @@
+ # Documentation
+ #
+ man_MANS = unaccent.1 unac.3
+-INCLUDES = -DUNAC_VERSION=\"$(VERSION)\"
++AM_CPPFLAGS = -DUNAC_VERSION=\"$(VERSION)\"
+ 
+ #
+ # Support programs
+diff --git a/configure.ac b/configure.ac
+index 4a4eab6..444a9d5 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -26,7 +26,7 @@ AC_SUBST(MICRO_VERSION)
+ AM_INIT_AUTOMAKE([unac], $VERSION, nosubst)
+ AC_PREREQ(2.50)
+ 
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS([config.h])
+ 
+ AC_PROG_MAKE_SET
+ 
+-- 
+1.8.3.2
+

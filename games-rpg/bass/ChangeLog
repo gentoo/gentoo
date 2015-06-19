@@ -1,0 +1,51 @@
+# ChangeLog for games-rpg/bass
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/bass/ChangeLog,v 1.14 2015/03/01 16:13:55 tupone Exp $
+
+  01 Mar 2015; Tupone Alfredo <tupone@gentoo.org> bass-1.2-r1.ebuild:
+  EAPI 5
+
+  26 Jul 2011; Tupone Alfredo <tupone@gentoo.org> bass-1.2-r1.ebuild,
+  +files/scummvmGetLang.sh:
+  Enabling translation. Bug #211203 by Pacho Ramos
+
+  13 Feb 2011; Raúl Porcel <armin76@gentoo.org> bass-1.2-r1.ebuild:
+  Drop sparc keywords, move to ~ppc as scummvm is not stable
+
+  05 Jul 2007; Markus Rothe <corsair@gentoo.org> bass-1.2-r1.ebuild:
+  Added ~ppc64; bug #183570
+
+*bass-1.2-r1 (21 May 2007)
+
+  21 May 2007; Tupone Alfredo <tupone@gentoo.org> +bass-1.2-r1.ebuild:
+  Added menu. Bug #159745 by Pacho Ramos
+
+  28 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org> bass-1.2.ebuild:
+  Changing HOMEPAGE to wikipedia page since we can't find one, otherwise.
+
+  25 Aug 2006; Jason Wever <weeve@gentoo.org> bass-1.2.ebuild:
+  Stable on SPARC.
+
+*bass-1.2 (01 Nov 2005)
+
+  01 Nov 2005; Michael Sterrett <mr_bones_@gentoo.org> +bass-1.2.ebuild:
+  version bump
+
+*bass-0-r1 (01 Nov 2005)
+
+  01 Nov 2005; Michael Sterrett <mr_bones_@gentoo.org> +bass-0-r1.ebuild:
+  add file needed by new scummvm version (bug #111063)
+
+  11 Apr 2004; Jason Wever <weeve@gentoo.org> bass-0.ebuild:
+  Added ~sparc keyword.
+
+  28 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> bass-0.ebuild:
+  use games_make_wrapper; error check
+
+  13 Jan 2003; Spider <spider@gentoo.org> :
+  Fixed dependency so it doesn't break with new portage. 
+
+*bass-0 (13 Oct 2003)
+
+  13 Oct 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Daniel Seyffer <gentoo-bugs@seyffer.de> #30751.

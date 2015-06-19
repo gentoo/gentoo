@@ -1,0 +1,30 @@
+# ChangeLog for virtual/pmake
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/pmake/ChangeLog,v 1.8 2012/04/26 12:48:49 aballier Exp $
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> pmake-0.ebuild:
+  keyword ~amd64-fbsd
+
+  11 Jan 2010; Ulrich Mueller <ulm@gentoo.org> pmake-0.ebuild:
+  Set empty HOMEPAGE and LICENSE.
+
+  15 Dec 2009; Jonathan Callen <abcd@gentoo.org> pmake-0.ebuild:
+  kernel_Solaris -> kernel_SunOS
+
+  15 Dec 2009; Jonathan Callen <abcd@gentoo.org> pmake-0.ebuild:
+  QA: Add prefix keywords; fix deps for prefix
+
+  02 Jan 2008; Fabian Groffen <grobian@gentoo.org> pmake-0.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  29 Dec 2006; Diego Pettenò <flameeyes@gentoo.org> pmake-0.ebuild:
+  Require sys-devel/pmake when not using BSD userland.
+
+  17 Oct 2006; Roy Marples <uberlord@gentoo.org> pmake-0.ebuild:
+  Added ~sparc-fbsd keyword.
+
+*pmake-0 (25 Apr 2006)
+
+  25 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> +pmake-0.ebuild:
+  Add virtual/pmake for BSD-like make commands.
+

@@ -1,0 +1,18 @@
+diff -ru gfceux.orig/src/main.py gfceux/src/main.py
+--- gfceux.orig/src/main.py	2009-04-29 01:09:52.000000000 -0400
++++ gfceux/src/main.py	2009-09-29 00:38:53.152619918 -0400
+@@ -279,12 +279,8 @@
+     def load_ui(self):
+         global widgets
+         """ Search for the glade XML file and load it """
+-        # Check first in the directory of this script.
+-        if os.path.isfile('data/gfceux.glade'):
+-            glade_file = 'data/gfceux.glade'
+-        # Then check to see if its installed on a *nix system
+-        elif os.path.isfile(os.path.join(os.path.dirname(sys.argv[0]), '../share/gfceux/gfceux.glade')):
+-            glade_file = os.path.join(os.path.dirname(sys.argv[0]), '../share/gfceux/gfceux.glade')
++        if os.path.isfile('/usr/share/gfceux/gfceux.glade'):
++            glade_file = '/usr/share/gfceux/gfceux.glade'
+         else:
+             print 'ERROR.'
+             print 'Could not find the glade UI file.'

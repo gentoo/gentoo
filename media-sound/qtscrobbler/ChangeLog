@@ -1,0 +1,53 @@
+# ChangeLog for media-sound/qtscrobbler
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/qtscrobbler/ChangeLog,v 1.11 2013/03/02 22:02:39 hwoarang Exp $
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> qtscrobbler-0.10.ebuild:
+  Move Qt dependencies to the new category
+
+  24 May 2012; Samuli Suominen <ssuominen@gentoo.org> qtscrobbler-0.10.ebuild,
+  +files/qtscrobbler-0.10-free.patch:
+  Fix building with recent toolchain (missing #include <cstdlib> for function
+  "free") wrt #405667 by Piotr Szymaniak and Krzysztof Kundzicz. Install
+  128x128 icon to hicolor directory instead of legacy pixmaps and update icon
+  cache.
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> qtscrobbler-0.10.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  04 Nov 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  qtscrobbler-0.10.ebuild:
+  x86 stable wrt bug #343491
+
+  31 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  qtscrobbler-0.10.ebuild:
+  Stable on amd64 wrt bug #343491
+
+*qtscrobbler-0.10 (31 Oct 2010)
+
+  31 Oct 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +qtscrobbler-0.10.ebuild, +files/qtscrobbler-0.10-Makefile.patch:
+  Version bump.
+
+  15 Mar 2009; Markus Meier <maekke@gentoo.org> qtscrobbler-0.9.ebuild:
+  amd64/x86 stable, bug #262543
+
+*qtscrobbler-0.9 (10 Aug 2008)
+
+  10 Aug 2008; Ben de Groot <yngwin@gentoo.org> +qtscrobbler-0.9.ebuild:
+  Version bump
+
+  08 Aug 2008; Steve Dibb <beandog@gentoo.org> qtscrobbler-0.8-r1.ebuild:
+  Add ~amd64, bug 231820
+
+*qtscrobbler-0.8-r1 (31 May 2008)
+
+  31 May 2008; Ben de Groot <yngwin@gentoo.org> -qtscrobbler-0.8.ebuild,
+  +qtscrobbler-0.8-r1.ebuild:
+  Make commandline client optional with USE=cli
+
+*qtscrobbler-0.8 (31 May 2008)
+
+  31 May 2008; Ben de Groot <yngwin@gentoo.org> +qtscrobbler-0.8.ebuild:
+  Initial import. Ebuild based on the one in ephemeral overlay. Fixes bug
+  182135.

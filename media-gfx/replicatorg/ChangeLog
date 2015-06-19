@@ -1,0 +1,37 @@
+# ChangeLog for media-gfx/replicatorg
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/replicatorg/ChangeLog,v 1.5 2014/01/08 06:44:31 vapier Exp $
+
+  08 Jan 2014; Mike Frysinger <vapier@gentoo.org> replicatorg-37-r2.ebuild,
+  replicatorg-40-r1.ebuild:
+  Inherit the user eclass for enewuser/etc...
+
+*replicatorg-37-r2 (30 Jun 2013)
+*replicatorg-40-r1 (30 Jun 2013)
+
+  30 Jun 2013; Tom Wijsman <TomWij@gentoo.org> +replicatorg-37-r2.ebuild,
+  +replicatorg-40-r1.ebuild, -replicatorg-37-r1.ebuild, -replicatorg-40.ebuild:
+  Remove sun-jdk and sun-jre-bin from reverse dependencies. For security bug
+  #473830 reported by Agostino Sarubbo.
+
+*replicatorg-40 (02 Jan 2013)
+
+  02 Jan 2013; Matthew Marlowe <mattm@gentoo.org> +replicatorg-40.ebuild,
+  -replicatorg-37.ebuild:
+  Bump to replicatorg--0040 Note that this is the MBI version of replicatorg--
+  0040. Will provide sailfish version via useflag later when I have a full patch
+  for the sailfish changes. Removed obsolete ebuilds.
+
+*replicatorg-37-r1 (03 Aug 2012)
+
+  03 Aug 2012; Matthew Marlowe <mattm@gentoo.org> +replicatorg-37-r1.ebuild:
+  Fixes for some minor permissions issues.
+
+*replicatorg-37 (02 Aug 2012)
+
+  02 Aug 2012; Matthew Marlowe <mattm@gentoo.org> +replicatorg-37.ebuild,
+  +files/replicatorg, +metadata.xml:
+  Initial Commit - replicatorg is open source software and a required tool when
+  working with common 3d printers such as the makerbot replicator.
+  Unfortunately it is based on java and focused on cross platform binaries. But
+  the initial install here does work and isnt that bad for what it is. 

@@ -1,0 +1,35 @@
+From 32333d707ca2a4a33bbefd051c70f037d81207eb Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Wed, 3 Jun 2015 23:42:56 +0200
+Subject: [PATCH] Fix AM_CONDITIONAL position HAVE_{GSTREAMER,LIBAV} definition
+
+---
+ configure.ac | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index b2e3ae8..6ed8801 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1884,14 +1884,13 @@ fi
+ 
+ if test "$have_generic_media_handler_app" = "GStreamer"; then
+    AC_DEFINE(HAVE_GSTREAMER, [], [Define if we have GStreamer])
+-   AM_CONDITIONAL(HAVE_GSTREAMER, true)
+-   AM_CONDITIONAL(HAVE_LIBAV, false)
+ elif test "$have_generic_media_handler_app" = "libav"; then
+-    AC_DEFINE(HAVE_GSTREAMER, [], [Define if we have libav])
+-    AM_CONDITIONAL(HAVE_LIBAV, true)
+-    AM_CONDITIONAL(HAVE_GSTREAMER, false)
++   AC_DEFINE(HAVE_LIBAV, [], [Define if we have libav])
+ fi
+ 
++AM_CONDITIONAL(HAVE_GSTREAMER, [test "$have_generic_media_handler_app" = "GStreamer"])
++AM_CONDITIONAL(HAVE_LIBAV,     [test "$have_generic_media_handler_app" = "libav"])
++
+ ###########################################################################
+ # Check for gstreamer backend: tagreadbin/decodebin2/discoverer/gupnp-dlna
+ ###########################################################################
+-- 
+2.4.1
+

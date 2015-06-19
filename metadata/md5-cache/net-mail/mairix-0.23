@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=zlib? ( sys-libs/zlib ) bzip2? ( app-arch/bzip2 ) sys-devel/flex sys-devel/bison
+DESCRIPTION=Indexes and searches Maildir/MH folders
+EAPI=4
+HOMEPAGE=http://www.rpcurnow.force9.co.uk/mairix/
+IUSE=zlib bzip2 gnus
+KEYWORDS=amd64 ppc x86 ~x86-macos
+LICENSE=GPL-2
+RDEPEND=zlib? ( sys-libs/zlib ) bzip2? ( app-arch/bzip2 )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/mairix/mairix-0.23.tar.gz gnus? ( mirror://gentoo/mairix-0.23-gnus-marks-propagation.patch.gz )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=4e6db5d867fb0171250eb35a4796fd15

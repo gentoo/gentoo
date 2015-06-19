@@ -1,0 +1,26 @@
+From 664f1e9e8b224658c3f01a062517ad386129d953 Mon Sep 17 00:00:00 2001
+From: Egmont Koblinger <egmont@gmail.com>
+Date: Thu, 8 Jan 2015 14:33:13 +0100
+Subject: screen: Fix crash with empty child process command line
+
+https://bugzilla.gnome.org/show_bug.cgi?id=742560
+(cherry picked from commit 1c7ed77b003f14bb94527c8fe548c6c414c0da9e)
+
+diff --git a/src/terminal-screen.c b/src/terminal-screen.c
+index ad78388..9f63239 100644
+--- a/src/terminal-screen.c
++++ b/src/terminal-screen.c
+@@ -1904,7 +1904,9 @@ terminal_screen_has_foreground_process (TerminalScreen *screen,
+   if (process_name)
+     gs_transfer_out_value (process_name, &name);
+ 
+-  for (i = 0; i < len - 1; i++)
++  if (len > 0 && data[len - 1] == '\0')
++    len--;
++  for (i = 0; i < len; i++)
+     {
+       if (data[i] == '\0')
+         data[i] = ' ';
+-- 
+cgit v0.10.1
+

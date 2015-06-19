@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst prepare setup
+DEPEND=dev-lang/perl
+DESCRIPTION=A web-based user administration interface
+EAPI=5
+HOMEPAGE=http://www.webmin.com/index6.html
+IUSE=ipv6 ldap pam ssl syslog zlib
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=BSD GPL-2
+RDEPEND=dev-lang/perl || ( virtual/perl-Digest-MD5 dev-perl/MD5 ) dev-perl/Digest-SHA1 dev-perl/Net-HTTP sys-process/lsof virtual/perl-Time-HiRes virtual/perl-Time-Local ipv6? ( dev-perl/Socket6 ) ldap? ( dev-perl/perl-ldap ) pam? ( dev-perl/Authen-PAM ) ssl? ( dev-perl/Net-SSLeay ) syslog? ( virtual/perl-Sys-Syslog ) zlib? ( virtual/perl-Compress-Raw-Zlib )
+SLOT=0
+SRC_URI=mirror://sourceforge/webadmin/usermin-1.600.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	pam	aa1ebb3ab720ea04dbbdd6eaaf9554ed	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=31f8171e724df71e44dce99af13ebc5a

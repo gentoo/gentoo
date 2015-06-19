@@ -1,0 +1,465 @@
+# ChangeLog for app-backup/duplicity
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-backup/duplicity/ChangeLog,v 1.100 2015/04/08 07:30:37 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> duplicity-0.6.22.ebuild,
+  duplicity-0.6.23-r1.ebuild:
+  Remove old Python implementations
+
+*duplicity-0.6.25 (23 Oct 2014)
+
+  23 Oct 2014; Tim Harder <radhermit@gentoo.org> +duplicity-0.6.25.ebuild:
+  Version bump.
+
+  20 Aug 2014; Raúl Porcel <armin76@gentoo.org> duplicity-0.6.23-r1.ebuild,
+  duplicity-0.6.24.ebuild:
+  Add ~sparc wrt #519844
+
+  25 Jun 2014; Tim Harder <radhermit@gentoo.org> duplicity-0.6.24.ebuild,
+  +files/duplicity-0.6.24-skip-test.patch:
+  Add missing setuptools build dep (bug #514542) and run testsuite.
+
+*duplicity-0.6.24 (04 Jun 2014)
+
+  04 Jun 2014; Tim Harder <radhermit@gentoo.org> +duplicity-0.6.24.ebuild:
+  Version bump (bug #511196).
+
+  10 May 2014; Agostino Sarubbo <ago@gentoo.org> duplicity-0.6.23-r1.ebuild:
+  Stable for ppc, wrt bug #508862
+
+  04 May 2014; Pacho Ramos <pacho@gentoo.org> duplicity-0.6.23-r1.ebuild:
+  x86 stable, bug 508862
+
+  04 May 2014; Pacho Ramos <pacho@gentoo.org> duplicity-0.6.23-r1.ebuild:
+  amd64 stable, bug 508862
+
+*duplicity-0.6.23-r1 (25 Jan 2014)
+
+  25 Jan 2014; Tim Harder <radhermit@gentoo.org> -duplicity-0.6.23.ebuild,
+  +duplicity-0.6.23-r1.ebuild:
+  Add missing dep on dev-python/lockfile (bug #499246).
+
+  25 Jan 2014; Tim Harder <radhermit@gentoo.org> -duplicity-0.6.20.ebuild:
+  Remove old.
+
+*duplicity-0.6.23 (25 Jan 2014)
+
+  25 Jan 2014; Tim Harder <radhermit@gentoo.org> +duplicity-0.6.23.ebuild:
+  Version bump.
+
+  24 Nov 2013; Agostino Sarubbo <ago@gentoo.org> duplicity-0.6.22.ebuild:
+  Stable for x86, wrt bug #481890
+
+  24 Nov 2013; Agostino Sarubbo <ago@gentoo.org> duplicity-0.6.22.ebuild:
+  Stable for ppc, wrt bug #481890
+
+  19 Oct 2013; Tim Harder <radhermit@gentoo.org> duplicity-0.6.22.ebuild:
+  Add post install message about optional deps for various backends.
+
+  10 Oct 2013; Tony Vroon <chainsaw@gentoo.org> duplicity-0.6.22.ebuild:
+  Marked stable on AMD64 based on arch tester report by Elijah "Armageddon" El
+  Lazkani in bug #481890.
+
+*duplicity-0.6.22 (29 Aug 2013)
+
+  29 Aug 2013; Tim Harder <radhermit@gentoo.org> -duplicity-0.6.19.ebuild,
+  -duplicity-0.6.21-r1.ebuild, +duplicity-0.6.22.ebuild,
+  -files/duplicity-0.6.21-paramiko-delete.patch:
+  Version bump and remove old (bug #482846).
+
+  25 Jun 2013; Tim Harder <radhermit@gentoo.org> -duplicity-0.6.21.ebuild:
+  Remove old.
+
+*duplicity-0.6.21-r1 (17 Jun 2013)
+
+  17 Jun 2013; Tim Harder <radhermit@gentoo.org> +duplicity-0.6.21-r1.ebuild,
+  +files/duplicity-0.6.21-paramiko-delete.patch:
+  Revbump, apply patch to fix delete with paramiko backend (bug #466734, patch
+  by Andreas Nüßlein).
+
+  12 Jun 2013; Tim Harder <radhermit@gentoo.org> duplicity-0.6.21.ebuild:
+  Drop pexpect dep (paramiko ssh backend used by default).
+
+  03 Mar 2013; Michał Górny <mgorny@gentoo.org> duplicity-0.6.19.ebuild,
+  duplicity-0.6.20.ebuild, duplicity-0.6.21.ebuild:
+  Add missing PYTHON_USEDEPs. Remove dependency on py-gnupg since duplicity uses
+  a bundled, patched version of it.
+
+*duplicity-0.6.21 (24 Jan 2013)
+
+  24 Jan 2013; Tim Harder <radhermit@gentoo.org> +duplicity-0.6.21.ebuild:
+  Version bump, migrate to distutils-r1.
+
+  22 Jan 2013; Agostino Sarubbo <ago@gentoo.org> duplicity-0.6.20.ebuild:
+  Stable for x86, wrt bug #451634
+
+  16 Jan 2013; Agostino Sarubbo <ago@gentoo.org> duplicity-0.6.20.ebuild:
+  Stable for ppc, wrt bug #451634
+
+  14 Jan 2013; Chema Alonso <nimiux@gentoo.org> duplicity-0.6.20.ebuild:
+  Marked stable for amd64 wrt bug #451634
+
+*duplicity-0.6.20 (30 Oct 2012)
+
+  30 Oct 2012; Tim Harder <radhermit@gentoo.org> +duplicity-0.6.20.ebuild:
+  Version bump.
+
+  27 Aug 2012; Tim Harder <radhermit@gentoo.org> -duplicity-0.6.17.ebuild,
+  -duplicity-0.6.18.ebuild, -duplicity-0.6.18-r1.ebuild:
+  Remove old.
+
+  18 Aug 2012; Johannes Huber <johu@gentoo.org> duplicity-0.6.19.ebuild:
+  Stable for x86, wrt bug #428844
+
+  15 Aug 2012; Anthony G. Basile <blueness@gentoo.org> duplicity-0.6.19.ebuild:
+  Stable ppc, bug #428844
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> duplicity-0.6.19.ebuild:
+  Stable for amd64, wrt bug #428844
+
+*duplicity-0.6.19 (09 Jun 2012)
+
+  09 Jun 2012; Justin Lecher <jlec@gentoo.org> duplicity-0.6.17.ebuild,
+  duplicity-0.6.18.ebuild, duplicity-0.6.18-r1.ebuild,
+  +duplicity-0.6.19.ebuild:
+  Version Bump, removed unessecary version from DEPs, shorten DESCRIPTION
+
+  21 May 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  duplicity-0.6.18-r1.ebuild:
+  x86 stable wrt bug #412759
+
+  06 May 2012; Brent Baude <ranger@gentoo.org> duplicity-0.6.18-r1.ebuild:
+  Marking duplicity-0.6.18-r1 ppc for bug 412759
+
+  21 Apr 2012; Agostino Sarubbo <ago@gentoo.org> duplicity-0.6.18-r1.ebuild:
+  Stable for amd64, wrt bug #412759
+
+*duplicity-0.6.18-r1 (08 Mar 2012)
+
+  08 Mar 2012; Tim Harder <radhermit@gentoo.org> +duplicity-0.6.18-r1.ebuild:
+  Revbump to add dependency on paramiko for scp/sftp (bug #407265).
+
+  04 Mar 2012; Justin Lecher <jlec@gentoo.org> duplicity-0.6.17.ebuild,
+  duplicity-0.6.18.ebuild:
+  Restrict pypy
+
+*duplicity-0.6.18 (01 Mar 2012)
+
+  01 Mar 2012; Tim Harder <radhermit@gentoo.org> +duplicity-0.6.18.ebuild:
+  Version bump.
+
+  11 Feb 2012; Tim Harder <radhermit@gentoo.org> -duplicity-0.6.06.ebuild,
+  -duplicity-0.6.16.ebuild:
+  Remove old.
+
+  01 Feb 2012; Brent Baude <ranger@gentoo.org> duplicity-0.6.17.ebuild:
+  Marking duplicity-0.6.17 ppc for bug 396517
+
+  15 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> duplicity-0.6.17.ebuild:
+  x86 stable wrt bug #396517
+
+  31 Dec 2011; Agostino Sarubbo <ago@gentoo.org> duplicity-0.6.17.ebuild:
+  Stable for AMD64, wrt bug #396517
+
+*duplicity-0.6.17 (28 Nov 2011)
+
+  28 Nov 2011; Tim Harder <radhermit@gentoo.org> +duplicity-0.6.17.ebuild:
+  Version bump (bug #392035).
+
+  22 Nov 2011; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Add myself as maintainer.
+
+  22 Nov 2011; Pacho Ramos <pacho@gentoo.org> -duplicity-0.6.15.ebuild,
+  metadata.xml:
+  Drop maintainer due retirement, bug #82110; remove old.
+
+*duplicity-0.6.16 (12 Nov 2011)
+
+  12 Nov 2011; Hanno Boeck <hanno@gentoo.org> +duplicity-0.6.16.ebuild:
+  Version bump.
+
+  06 Sep 2011; Patrick Lauer <patrick@gentoo.org> -duplicity-0.6.09.ebuild,
+  -duplicity-0.6.11.ebuild, -duplicity-0.6.13.ebuild, -duplicity-0.6.14.ebuild:
+  Remove old
+
+*duplicity-0.6.15 (06 Sep 2011)
+
+  06 Sep 2011; Patrick Lauer <patrick@gentoo.org> +duplicity-0.6.15.ebuild:
+  Bump, thanks to Hanno for reminding me
+
+*duplicity-0.6.14 (29 Aug 2011)
+
+  29 Aug 2011; Patrick Lauer <patrick@gentoo.org> +duplicity-0.6.14.ebuild:
+  Bump for #373375
+
+  23 Apr 2011; Fabian Groffen <grobian@gentoo.org> duplicity-0.6.13.ebuild:
+  Marked ~x64-macos, bug #364363
+
+  09 Apr 2011; Jeroen Roovers <jer@gentoo.org> duplicity-0.6.06.ebuild,
+  duplicity-0.6.09.ebuild, duplicity-0.6.11.ebuild, duplicity-0.6.13.ebuild:
+  Remove ncftp dependency - the related script checks for this (or we should be
+  adding lftp to RDEPEND and perhaps other packages that might be used).
+
+*duplicity-0.6.13 (09 Apr 2011)
+
+  09 Apr 2011; Jeroen Roovers <jer@gentoo.org> +duplicity-0.6.13.ebuild:
+  Version bump (bug #346547), hopefully with verified and potentially improved
+  python support (bug #308311).
+
+  09 Apr 2011; Jeroen Roovers <jer@gentoo.org> duplicity-0.6.09.ebuild,
+  duplicity-0.6.11.ebuild:
+  Move ncftp to RDEPEND.
+
+  04 Jan 2011; Michael Weber <xmw@gentoo.org> duplicity-0.6.11.ebuild:
+  added ~sparc keyword (bug 279975)
+
+*duplicity-0.6.11 (30 Nov 2010)
+
+  30 Nov 2010; Arun Raghavan <ford_prefect@gentoo.org>
+  +duplicity-0.6.11.ebuild:
+  Bump to 0.6.11. Lots of bug fixes. Tarball is now hosted on launchpad.
+
+*duplicity-0.6.09 (07 Aug 2010)
+
+  07 Aug 2010; Marcelo Goes <vanquirius@gentoo.org>
+  -duplicity-0.4.11.ebuild, -duplicity-0.5.17.ebuild,
+  -duplicity-0.5.20.ebuild, -duplicity-0.6.05.ebuild,
+  +duplicity-0.6.09.ebuild:
+  0.6.09 version bump. Thanks to Matthias Dahl <ua_bugz_gentoo at
+  mortal-soul dot de> and Tim Harder <radhermit at gmail dot com> at bug
+  310857.
+
+  14 Apr 2010; Markos Chandras <hwoarang@gentoo.org>
+  duplicity-0.6.06.ebuild:
+  Stable on amd64 wrt bug #304161
+
+  11 Apr 2010; <nixnut@gentoo.org> duplicity-0.6.06.ebuild:
+  ppc stable #304161
+
+  08 Apr 2010; Christian Faulhammer <fauli@gentoo.org>
+  duplicity-0.6.06.ebuild:
+  stable x86, bug 304161
+
+  19 Feb 2010; Jonathan Callen <abcd@gentoo.org> duplicity-0.6.06.ebuild:
+  Transfer prefix keywords, bump EAPI
+
+*duplicity-0.6.06 (19 Nov 2009)
+
+  19 Nov 2009; Gordon Malm <gengor@gentoo.org> +duplicity-0.6.06.ebuild:
+  Version bump, bug #291921
+
+*duplicity-0.6.05 (13 Oct 2009)
+
+  13 Oct 2009; Marcelo Goes <vanquirius@gentoo.org>
+  -duplicity-0.5.05.ebuild, -duplicity-0.5.14.ebuild,
+  +duplicity-0.6.05.ebuild:
+  0.6.05 version bump for bug 287017. Thanks to Tim Harder <radhermit at
+  gmaildot com>, Justin Lecher (jlec) <jlec at j-schmitz dot net> and Piotr
+  Karbowski <jabberuser at gmail dot com>.
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> duplicity-0.4.11.ebuild:
+  Remove virtual/libc
+
+*duplicity-0.5.20 (03 Sep 2009)
+
+  03 Sep 2009; Patrick Lauer <patrick@gentoo.org> +duplicity-0.5.20.ebuild:
+  Bump to 0.5.20, fixes #280033
+
+  09 Aug 2009; nixnut <nixnut@gentoo.org> duplicity-0.5.17.ebuild:
+  ppc stable #274658
+
+  05 Jul 2009; Markus Meier <maekke@gentoo.org> duplicity-0.5.17.ebuild:
+  amd64 stable, bug #274658
+
+  19 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  duplicity-0.5.17.ebuild:
+  stable x86, bug 274658
+
+*duplicity-0.5.17 (11 May 2009)
+
+  11 May 2009; Hanno Boeck <hanno@gentoo.org> +duplicity-0.5.17.ebuild:
+  Version bump.
+
+  07 Apr 2009; Benedikt Böhm <hollow@gentoo.org> duplicity-0.5.14.ebuild:
+  add s3 USE flag wrt #254160
+
+*duplicity-0.5.14 (05 Apr 2009)
+
+  05 Apr 2009; Marcelo Goes <vanquirius@gentoo.org>
+  -duplicity-0.5.11.ebuild, +duplicity-0.5.14.ebuild:
+  0.5.14 version bump.
+
+*duplicity-0.5.05 (05 Jan 2009)
+
+  05 Jan 2009; Patrick Lauer <patrick@gentoo.org> +duplicity-0.5.05.ebuild:
+  Bump to 0.5.05
+
+*duplicity-0.5.03 (13 Dec 2008)
+
+  13 Dec 2008; Marcelo Goes <vanquirius@gentoo.org>
+  +duplicity-0.5.03.ebuild:
+  0.5.03 version bump for bug 249483. Thanks to Dror Levin <spatz at psybear
+  dot com>.
+
+*duplicity-0.5.02 (03 Nov 2008)
+
+  03 Nov 2008; Marcelo Goes <vanquirius@gentoo.org>
+  -files/duplicity-0.4.2-python-2.5.patch, -files/0.4.2-ftp-retry.patch,
+  -duplicity-0.4.2-r1.ebuild, -duplicity-0.4.2-r2.ebuild,
+  -duplicity-0.4.3.ebuild, -duplicity-0.4.6.ebuild, -duplicity-0.4.7.ebuild,
+  -duplicity-0.4.9.ebuild, +duplicity-0.5.02.ebuild:
+  0.5.02 version bump, thanks to Thomas Anderson <gentoofan32 at gentoo dot
+  org>. Also removing old ebuilds.
+
+  30 Aug 2008; Brent Baude <ranger@gentoo.org> duplicity-0.4.11.ebuild:
+  stable ppc, bug 234397
+
+  15 Aug 2008; Markus Meier <maekke@gentoo.org> duplicity-0.4.11.ebuild:
+  amd64/x86 stable, bug #234397
+
+*duplicity-0.4.11 (14 Jul 2008)
+
+  14 Jul 2008; Marcelo Goes <vanquirius@gentoo.org> metadata.xml,
+  +duplicity-0.4.11.ebuild:
+  0.4.11 version bump for bug 231069. Thanks to Christian Ruppert <spooky85 at
+  gmail dot com>. Adding myself as a maintainer.
+
+  30 May 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Andrej Kacian (Ticho) from metadata.xml (as per #59986). Assigning
+  to maintainer-needed.
+
+*duplicity-0.4.9 (13 Feb 2008)
+
+  13 Feb 2008; Andrej Kacian <ticho@gentoo.org> +duplicity-0.4.9.ebuild:
+  Version bump. Bug #205407 by Tupone Alfredo <tupone at gentoo org>.
+
+  16 Jan 2008; Hanno Boeck <hanno@gentoo.org> duplicity-0.4.7.ebuild:
+  Stable on amd64.
+
+  14 Jan 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  duplicity-0.4.7.ebuild:
+  ppc. stable
+
+  10 Jan 2008; Markus Meier <maekke@gentoo.org> duplicity-0.4.7.ebuild:
+  x86 stable, bug #205112
+
+*duplicity-0.4.7 (09 Dec 2007)
+
+  09 Dec 2007; Andrej Kacian <ticho@gentoo.org> +duplicity-0.4.7.ebuild:
+  Version bump. Includes upstream fix for #201548, reported by <bdonlan at
+  gmail.com>.
+
+*duplicity-0.4.6 (02 Dec 2007)
+
+  02 Dec 2007; Andrej Kacian <ticho@gentoo.org> -duplicity-0.4.1.ebuild,
+  -duplicity-0.4.2.ebuild, duplicity-0.4.2-r1.ebuild,
+  duplicity-0.4.2-r2.ebuild, duplicity-0.4.3.ebuild,
+  +duplicity-0.4.6.ebuild:
+  Version bump. Ebuild update by Hanno Boeck <hanno at gentoo.org>, bug
+  #200864. Version cleanup.
+
+  25 Sep 2007; Andrej Kacian <ticho@gentoo.org> duplicity-0.4.3.ebuild:
+  Depend on >=pexpect-2.1. Bug #193753, by David Zeigler <dzeigler at gmail.com>.
+
+  12 Sep 2007; Andrej Kacian <ticho@gentoo.org> duplicity-0.4.3.ebuild:
+  Added py-gnupg and pexpect to RDEPEND. Bug #192270, by Neil Bothwick <neil
+  at digimed.co.uk>.
+
+*duplicity-0.4.3 (11 Sep 2007)
+
+  11 Sep 2007; Andrej Kacian <ticho@gentoo.org> +duplicity-0.4.3.ebuild:
+  Version bump. Bug #192171, by David Bosso <boss.gentoo at bosso.org>.
+
+  26 Aug 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  duplicity-0.4.2-r1.ebuild:
+  Marked stable on amd64 as per bug 189747.
+
+  24 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  duplicity-0.4.2-r1.ebuild:
+  ppc stable, bug #189747
+
+  22 Aug 2007; Jurek Bartuszek <jurek@gentoo.org> duplicity-0.4.2-r1.ebuild:
+  x86 stable (bug #189747)
+
+*duplicity-0.4.2-r2 (18 Aug 2007)
+
+  18 Aug 2007; Samuli Suominen <drac@gentoo.org>
+  +files/duplicity-0.4.2-python-2.5.patch, +duplicity-0.4.2-r2.ebuild:
+  Fix from upstream, Python 2.5 support.
+
+  17 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
+  duplicity-0.4.2-r1.ebuild:
+  keyworded ~amd64, bug 170002
+
+  25 Mar 2007; Andrej Kacian <ticho@gentoo.org> duplicity-0.4.2-r1.ebuild:
+  Add missing eutils inherit.
+
+*duplicity-0.4.2-r1 (19 Oct 2006)
+
+  19 Oct 2006; <ticho@gentoo.org> +files/0.4.2-ftp-retry.patch,
+  +duplicity-0.4.2-r1.ebuild:
+  Apply patch to handle FTP timeouts better. Bug #147054, reported by Bernd
+  Wurst <bugzilla-gentoo at bwurst.org>. Fix behavior for scp:// URLs when
+  /bin/sh is in fact bash. Bug #151938, reported by Steve Haeck <gentoo_steve
+  at shic.co.uk>.
+
+  30 Apr 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  duplicity-0.4.2.ebuild:
+  ppc stable
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-duplicity-0.4.1, files/digest-duplicity-0.4.2, Manifest:
+  Fixing SHA256 digest for real, pass three...
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-duplicity-0.4.1, files/digest-duplicity-0.4.2, Manifest:
+  Fixing SHA256 digest, pass two.
+
+  17 Apr 2006; <ticho@gentoo.org> duplicity-0.4.2.ebuild:
+  Stable on x86.
+
+*duplicity-0.4.2 (12 Mar 2006)
+
+  12 Mar 2006; <ticho@gentoo.org> +duplicity-0.4.2.ebuild:
+  Version bump. Closes bug #125928, reported by Jiri Tyr <jiri.tyr at
+  e-learning.vslib.cz>.
+
+  15 Oct 2005; Joseph Jezak <josejx@gentoo.org> duplicity-0.4.1.ebuild:
+  Marked ppc stable for bug #106067.
+
+  04 Jul 2005; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +duplicity-0.4.1.ebuild:
+  Moved from net-misc/duplicity to app-backup/duplicity.
+
+  10 May 2005; David Holm <dholm@gentoo.org> duplicity-0.4.1.ebuild:
+  Added to ~ppc.
+
+  16 Nov 2004; Andrej Kacian <ticho@gentoo.org> -duplicity-0.4.0.ebuild:
+  Removed 0.4.0 from portage.
+
+  10 Nov 2004; Andrej Kacian <ticho@gentoo.org> duplicity-0.4.1.ebuild:
+  Fixed librsync dependancy. Closes bug #70595, reported by Dave S
+  <jk@pusspaws.net>.
+
+  01 Nov 2004; Andrej Kacian <ticho@gentoo.org> duplicity-0.4.1.ebuild:
+  Stable on x86
+
+  24 Oct 2004; Andrej Kacian <ticho@gentoo.org> +metadata.xml,
+  duplicity-0.4.0.ebuild, duplicity-0.4.1.ebuild:
+  Revamped DEPEND and RDEPEND. Made 0.4.0 depend on librsync <=0.9.5.1. This
+  closes #67940, reported by Dave S <jk@pusspaws.net>. Set myself as
+  maintainer (and added missing metadata.xml).
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> duplicity-0.4.0.ebuild,
+  duplicity-0.4.1.ebuild:
+  change virtual/glibc to virtual/libc, add IUSE
+
+*duplicity-0.4.1 (19 Oct 2003)
+
+  19 Oct 2003; Martin Holzer <mholzer@gentoo.org> duplicity-0.4.1.ebuild:
+  Version bumped. Closes #30179.
+
+*duplicity-0.4.0 (14 May 2003)
+
+  14 May 2003; Martin Holzer <mholzer@gentoo.org> duplicity-0.4.0.ebuild :
+  Initial Version submitted by rob holland <robh@gentoo.org> in #20693

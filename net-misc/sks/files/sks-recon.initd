@@ -1,0 +1,26 @@
+#!/sbin/runscript
+source /etc/conf.d/sks
+
+command=/usr/bin/sks
+command_args="recon ${SKS_ARGS}"
+command_background=1
+description="Reconnoiters SKS peers for keys"
+name="SKS recon"
+pidfile="/var/run/sks-recon.pid"
+required_files="${SKS_DIR}/sksconf ${SKS_DIR}/membership"
+start_stop_daemon_args="--chdir ${SKS_DIR} --user sks"
+
+
+depend()
+{
+    after sks-db
+    use net
+}
+
+start_pre()
+{
+    checkpath --owner sks:sks --directory \
+        ${SKS_DIR} ${SKS_DIR}/KDB ${SKS_DIR}/PTree
+    checkpath --owner sks:sks --file \
+        ${SKS_DIR}/*.log ${SKS_DIR}/KDB/* ${SKS_DIR}/PTree/*
+}

@@ -1,0 +1,162 @@
+# ChangeLog for media-sound/dir2ogg
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/dir2ogg/ChangeLog,v 1.38 2014/08/10 21:05:20 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> dir2ogg-0.11.6.ebuild,
+  dir2ogg-0.11.8-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  23 Jan 2013; Samuli Suominen <ssuominen@gentoo.org> dir2ogg-0.11.8-r1.ebuild:
+  Only cdparanoia executable is used. Convert the dependency to || () for
+  libcdio-paranoia support.
+
+*dir2ogg-0.11.8-r1 (10 Oct 2010)
+
+  10 Oct 2010; Tim Harder <radhermit@gentoo.org> -dir2ogg-0.11.8.ebuild,
+  +dir2ogg-0.11.8-r1.ebuild, metadata.xml:
+  Revision bump to add mac USE flag for bug #334375 and remove old.
+
+  11 Mar 2010; Sebastian Pipping <sping@gentoo.org> dir2ogg-0.11.6.ebuild,
+  dir2ogg-0.11.8.ebuild:
+  Fix homepage (bug #294793)
+
+*dir2ogg-0.11.8 (14 Sep 2009)
+
+  14 Sep 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +dir2ogg-0.11.8.ebuild:
+  Version bump.
+
+  14 Jun 2009; Tiago Cunha <tcunha@gentoo.org> dir2ogg-0.11.6.ebuild:
+  stable sparc, bug 272684
+
+  07 Jun 2009; Markus Meier <maekke@gentoo.org> dir2ogg-0.11.6.ebuild:
+  amd64/x86 stable, bug #272684
+
+*dir2ogg-0.11.6 (27 Feb 2009)
+
+  27 Feb 2009; Alexis Ballier <aballier@gentoo.org> +dir2ogg-0.11.6.ebuild:
+  version bump, by Tim Harder <thorium90@gmail.com>, bug #258430
+
+*dir2ogg-0.11.5 (06 Jul 2008)
+
+  06 Jul 2008; Samuli Suominen <drac@gentoo.org> +dir2ogg-0.11.5.ebuild:
+  Version bump.
+
+  17 May 2008; Samuli Suominen <drac@gentoo.org> dir2ogg-0.11.4.ebuild:
+  Use virtual/mpg123.
+
+  08 Apr 2008; Raúl Porcel <armin76@gentoo.org> dir2ogg-0.11.4.ebuild:
+  sparc stable wrt #215875
+
+  03 Apr 2008; Markus Meier <maekke@gentoo.org> dir2ogg-0.11.4.ebuild:
+  amd64/x86 stable, bug #215875
+
+*dir2ogg-0.11.4 (01 Apr 2008)
+
+  01 Apr 2008; Ben de Groot <yngwin@gentoo.org> +dir2ogg-0.11.4.ebuild:
+  Version bump. This version works with newer mpg123. Added more possible
+  deps and useflags for mp3 and cdparanoia.
+
+*dir2ogg-0.11.3 (01 Apr 2008)
+
+  01 Apr 2008; Ben de Groot <yngwin@gentoo.org> +dir2ogg-0.11.3.ebuild:
+  Version bump. Fixes #215123.
+
+*dir2ogg-0.11.2 (28 Feb 2008)
+
+  28 Feb 2008; Samuli Suominen <drac@gentoo.org> +dir2ogg-0.11.2.ebuild:
+  Version bump.
+
+*dir2ogg-0.11.1 (27 Jan 2008)
+
+  27 Jan 2008; Samuli Suominen <drac@gentoo.org>
+  -files/dir2ogg-0.11-u1-01wav.patch, -dir2ogg-0.10.3.ebuild,
+  -dir2ogg-0.11.ebuild, +dir2ogg-0.11.1.ebuild:
+  Version bump.
+
+*dir2ogg-0.11 (12 Dec 2007)
+
+  12 Dec 2007; Samuli Suominen <drac@gentoo.org>
+  +files/dir2ogg-0.11-u1-01wav.patch, +dir2ogg-0.11.ebuild:
+  Version bump.
+
+*dir2ogg-0.10.3 (11 Nov 2007)
+
+  11 Nov 2007; Samuli Suominen <drac@gentoo.org> +dir2ogg-0.10.3.ebuild:
+  Version bump.
+
+  11 Nov 2007; Dawid Węgliński <cla@gentoo.org> dir2ogg-0.10.2.ebuild:
+  Stable on x86 (bug #198825)
+
+  05 Nov 2007; Samuli Suominen <drac@gentoo.org> dir2ogg-0.10.2.ebuild:
+  Raise mutagen dep to 1.11 wrt #196623
+
+  25 Aug 2007; Steve Dibb <beandog@gentoo.org> dir2ogg-0.10.2.ebuild:
+  amd64 stable
+
+  01 Aug 2007; Samuli Suominen <drac@gentoo.org> dir2ogg-0.9.3.ebuild,
+  dir2ogg-0.10.2.ebuild:
+  Add media-libs/mutagen to rdepends, thanks to armin76 at gentoo.org
+
+  01 Aug 2007; Raúl Porcel <armin76@gentoo.org> dir2ogg-0.9.3.ebuild:
+  x86 stable wrt #155916
+
+  31 Jul 2007; Christoph Mende <angelos@gentoo.org> dir2ogg-0.9.3.ebuild:
+  Stable on amd64 wrt bug #155916
+
+  30 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org> dir2ogg-0.10.2.ebuild:
+  Stable on sparc wrt #155916
+
+*dir2ogg-0.10.2 (29 Jul 2007)
+
+  29 Jul 2007; Samuli Suominen <drac@gentoo.org> +dir2ogg-0.10.2.ebuild:
+  Version bump.
+
+  21 Jan 2007; Alexis Ballier <aballier@gentoo.org> dir2ogg-0.8.ebuild,
+  dir2ogg-0.9.1.ebuild, dir2ogg-0.9.2.ebuild, dir2ogg-0.9.3.ebuild:
+  depends on mpg123 or mpg321, bug #163026
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> dir2ogg-0.8.ebuild,
+  dir2ogg-0.9.1.ebuild, dir2ogg-0.9.2.ebuild, dir2ogg-0.9.3.ebuild:
+  Remove src_unpack.
+
+*dir2ogg-0.9.3 (25 Nov 2006)
+
+  25 Nov 2006; Alexis Ballier <aballier@gentoo.org> +dir2ogg-0.9.3.ebuild:
+  Version bump, thanks to Darren Kirby <bulliver@badcomputer.org>, bug #147360
+
+  03 May 2006; Simon Stelling <blubb@gentoo.org> dir2ogg-0.8.ebuild:
+  add dependency on faad; thanks to Sam Cuong Truong
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org> files/digest-dir2ogg-0.8,
+  files/digest-dir2ogg-0.9.1, Manifest:
+  Fixing SHA256 digest, pass four
+
+*dir2ogg-0.9.2 (18 Feb 2006)
+
+  18 Feb 2006; Tony Vroon <chainsaw@gentoo.org> +dir2ogg-0.9.2.ebuild:
+  Version bump, closes bug #122068 by David Shakaryan <david@peemail.org>.
+  Also added missing faad2 dependency for M4A file conversion.
+
+  08 Jan 2006; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Remove retiring dev from metadata.
+
+  25 Jul 2005; David Holm <dholm@gentoo.org> dir2ogg-0.9.1.ebuild:
+  Added to ~ppc.
+
+*dir2ogg-0.9.1 (16 May 2005)
+
+  16 May 2005; Jan Brinkmann <luckyduck@gentoo.org> dir2ogg-0.8.ebuild,
+  +dir2ogg-0.9.1.ebuild:
+  new upstream version, fixes #87626
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org> dir2ogg-0.8.ebuild:
+  Stable amd64, sparc.
+
+  21 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org> dir2ogg-0.8.ebuild:
+  Stable x86.  Added to ~amd64 and ~sparc.
+
+*dir2ogg-0.8 (11 Oct 2004)
+
+  11 Oct 2004; Patrick Dawson <pkdawson@gentoo.org> dir2ogg-0.8.ebuild:
+  Initial import. Closes bug #61435. Thanks to Darren Kirby.

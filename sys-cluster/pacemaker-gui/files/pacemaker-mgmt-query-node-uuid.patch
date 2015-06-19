@@ -1,0 +1,13 @@
+diff --git a/mgmt/daemon/mgmt_crm.c b/mgmt/daemon/mgmt_crm.c
+index 9e5140c..3b5ff36 100644
+--- a/mgmt/daemon/mgmt_crm.c
++++ b/mgmt/daemon/mgmt_crm.c
+@@ -1602,7 +1602,7 @@ on_cleanup_rsc(char* argv[], int argc)
+ 	delete_lrm_rsc(crmd_channel, argv[1], argv[2]);
+ 	refresh_lrm(crmd_channel, NULL); 
+ 	
+-	rc = query_node_uuid(cib_conn, argv[1], &dest_node);
++	rc = query_node_uuid(cib_conn, argv[1], &dest_node, NULL);
+ 	if (rc != 0) {
+ 		mgmt_log(LOG_WARNING, "Could not map uname=%s to a UUID: %s\n",
+ 				argv[1], pcmk_strerror(rc));

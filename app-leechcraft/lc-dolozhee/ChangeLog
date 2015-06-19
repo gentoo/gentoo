@@ -1,0 +1,125 @@
+# ChangeLog for app-leechcraft/lc-dolozhee
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-leechcraft/lc-dolozhee/ChangeLog,v 1.12 2014/08/03 18:49:42 maksbotan Exp $
+
+*lc-dolozhee-0.6.70 (03 Aug 2014)
+
+  03 Aug 2014; Maxim Koltsov <maksbotan@gentoo.org> +lc-dolozhee-0.6.70.ebuild:
+  Bump LeechCraft to 0.6.70, thanks to 0xd34df00d.
+
+*lc-dolozhee-0.6.65 (10 Apr 2014)
+
+  10 Apr 2014; Maxim Koltsov <maksbotan@gentoo.org> +lc-dolozhee-0.6.65.ebuild:
+  Bump LeechCraft to 0.5.65, thanks to 0xd34df00d.
+
+  03 Apr 2014; Mikle Kolyada <zlogene@gentoo.org> lc-dolozhee-0.6.60.ebuild:
+  x86 stable wrt bug #500914
+
+  02 Apr 2014; Mikle Kolyada <zlogene@gentoo.org> lc-dolozhee-0.6.60.ebuild:
+  amd64 stable wrt bug #500914
+
+*lc-dolozhee-0.6.60 (08 Jan 2014)
+
+  08 Jan 2014; Maxim Koltsov <maksbotan@gentoo.org> +lc-dolozhee-0.6.60.ebuild:
+  Bump to LeecChraft-0.6.60 release, thanks to 0xd34df00d.
+
+*lc-dolozhee-0.6.0 (24 Sep 2013)
+
+  24 Sep 2013; Maxim Koltsov <maksbotan@gentoo.org> +lc-dolozhee-0.6.0.ebuild:
+  Bump LeechCraft to 0.6.0
+
+*lc-dolozhee-0.5.99 (18 Jul 2013)
+
+  18 Jul 2013; <maks@gentoo.org> +lc-dolozhee-0.5.99.ebuild:
+  Bump app-leechcraft/lc-dolozhee to 0.5.99, thanks to 0xd34df00d
+
+*lc-dolozhee-0.5.98 (03 Jul 2013)
+
+  03 Jul 2013; Maxim Koltsov <maksbotan@gentoo.org> +lc-dolozhee-0.5.98.ebuild:
+  Bump LeechCraft to 0.5.98, thanks to 0xd34df00d.
+
+*lc-dolozhee-0.5.97 (11 Jun 2013)
+
+  11 Jun 2013; Maxim Koltsov <maksbotan@gentoo.org> +lc-dolozhee-0.5.97.ebuild:
+  Bump LeechCraft suite to 0.5.97, thanks to 0xd34df00d.
+
+*lc-dolozhee-0.5.96 (26 May 2013)
+
+  26 May 2013; Maxim Koltsov <maksbotan@gentoo.org> +lc-dolozhee-0.5.96.ebuild:
+  Bump LeechCraft suite to 0.5.96, thanks to 0xd34df00d
+
+*lc-dolozhee-0.5.95 (02 May 2013)
+
+  02 May 2013; Sergey Popov <pinkbyte@gentoo.org> +lc-dolozhee-0.5.95.ebuild:
+  Bump app-leechcraft/lc-dolozhee to 0.5.95, thanks to 0xd34df00d
+
+*lc-dolozhee-9999 (08 Mar 2013)
+*lc-dolozhee-0.5.90 (08 Mar 2013)
+*lc-dolozhee-0.5.85 (08 Mar 2013)
+
+  08 Mar 2013; Maxim Koltsov <maksbotan@gentoo.org> +lc-dolozhee-0.5.85.ebuild,
+  +lc-dolozhee-0.5.90.ebuild, +lc-dolozhee-9999.ebuild, +metadata.xml:
+  Move to app-leechcraft/category
+
+  16 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  leechcraft-dolozhee-0.5.90.ebuild:
+  Stable for x86, wrt bug #457824
+
+  16 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  leechcraft-dolozhee-0.5.90.ebuild:
+  Stable for amd64, wrt bug #457824
+
+*leechcraft-dolozhee-0.5.90 (25 Dec 2012)
+
+  25 Dec 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  +leechcraft-dolozhee-0.5.90.ebuild:
+  Bump LeechCraft to 0.5.90, thanks to 0xd34df00d
+
+  19 Dec 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  -leechcraft-dolozhee-0.5.70.ebuild, -leechcraft-dolozhee-0.5.75.ebuild,
+  -leechcraft-dolozhee-0.5.80.ebuild:
+  Remove old LeechCraft versions
+
+*leechcraft-dolozhee-0.5.85 (08 Oct 2012)
+
+  08 Oct 2012; Sergey Popov <pinkbyte@gentoo.org>
+  +leechcraft-dolozhee-0.5.85.ebuild:
+  Bump LeechCraft to 0.5.85, thanks to 0xd34df00d
+
+*leechcraft-dolozhee-0.5.80 (13 Aug 2012)
+
+  13 Aug 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  +leechcraft-dolozhee-0.5.80.ebuild:
+  Bump LeechCraft to 0.5.80, thanks to 0xd34df00d
+
+*leechcraft-dolozhee-0.5.75 (19 Jul 2012)
+
+  19 Jul 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  +leechcraft-dolozhee-0.5.75.ebuild, -leechcraft-dolozhee-0.5.65.ebuild:
+  Removed old versions, bumped to 0.5.75
+
+  07 Jul 2012; Johannes Huber <johu@gentoo.org>
+  leechcraft-dolozhee-0.5.70.ebuild:
+  Stable for x86, wrt bug #424613
+
+  04 Jul 2012; Agostino Sarubbo <ago@gentoo.org>
+  leechcraft-dolozhee-0.5.70.ebuild:
+  Stable for amd64, wrt bug #424613
+
+*leechcraft-dolozhee-0.5.70 (31 May 2012)
+
+  31 May 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  +leechcraft-dolozhee-0.5.70.ebuild:
+  Bump LeechCraft to 0.5.70 "Hessian Blade"
+
+*leechcraft-dolozhee-0.5.65 (22 Apr 2012)
+
+  22 Apr 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  +leechcraft-dolozhee-0.5.65.ebuild:
+  Bump www-client/leechcraft-dolozhee to 0.5.65, thanks to 0xd34df00d
+
+*leechcraft-dolozhee-9999 (14 Apr 2012)
+
+  14 Apr 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  +leechcraft-dolozhee-9999.ebuild, +metadata.xml:
+  Add www-client/leechcraft-dolozhee, thanks to 0xd34df00d

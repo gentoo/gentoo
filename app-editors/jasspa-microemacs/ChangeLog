@@ -1,0 +1,263 @@
+# ChangeLog for app-editors/jasspa-microemacs
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-editors/jasspa-microemacs/ChangeLog,v 1.56 2013/02/28 17:10:14 ulm Exp $
+
+  28 Feb 2013; Ulrich Müller <ulm@gentoo.org>
+  jasspa-microemacs-20091011-r2.ebuild:
+  Don't call pkg-config directly, in order not to break cross compilation.
+
+  28 Feb 2013; Ulrich Müller <ulm@gentoo.org>
+  jasspa-microemacs-20091011-r2.ebuild:
+  Fix build failure with separate tinfo library, bug 459644.
+
+  05 Sep 2012; Justin Lecher <jlec@gentoo.org>
+  jasspa-microemacs-20091011-r2.ebuild:
+  Use domenu instead insinto + doins to install .desktop files
+
+  29 May 2012; Ulrich Müller <ulm@gentoo.org>
+  -jasspa-microemacs-20091011-r1.ebuild:
+  Remove old.
+
+  29 May 2012; Brent Baude <ranger@gentoo.org>
+  jasspa-microemacs-20091011-r2.ebuild:
+  Marking jasspa-microemacs-20091011-r2 ppc for bug 415063
+
+  21 May 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  jasspa-microemacs-20091011-r2.ebuild:
+  x86 stable wrt bug #415063
+
+  09 May 2012; Agostino Sarubbo <ago@gentoo.org>
+  jasspa-microemacs-20091011-r2.ebuild:
+  Stable for amd64, wrt bug #415063
+
+*jasspa-microemacs-20091011-r2 (19 Mar 2012)
+
+  19 Mar 2012; Ulrich Müller <ulm@gentoo.org>
+  +jasspa-microemacs-20091011-r2.ebuild:
+  Include latest updates for macros. Change EAPI to 4.
+
+  18 Aug 2011; Ulrich Mueller <ulm@gentoo.org> +files/20091011-linux3.patch,
+  jasspa-microemacs-20091011-r1.ebuild:
+  Work around build failure on Linux 3.0.
+
+  17 Oct 2010; Ulrich Mueller <ulm@gentoo.org>
+  jasspa-microemacs-20091011-r1.ebuild:
+  Respect LDFLAGS, bug 341459.
+
+  23 May 2010; Ulrich Mueller <ulm@gentoo.org>
+  -jasspa-microemacs-20091011.ebuild:
+  Remove old.
+
+  23 May 2010; Pacho Ramos <pacho@gentoo.org>
+  jasspa-microemacs-20091011-r1.ebuild:
+  stable amd64, bug 307507
+
+  15 Mar 2010; nixnut <nixnut@gentoo.org>
+  jasspa-microemacs-20091011-r1.ebuild:
+  ppc stable #307507
+
+  03 Mar 2010; Christian Faulhammer <fauli@gentoo.org>
+  jasspa-microemacs-20091011-r1.ebuild:
+  stable x86, bug 307507
+
+*jasspa-microemacs-20091011-r1 (31 Jan 2010)
+
+  31 Jan 2010; Ulrich Mueller <ulm@gentoo.org>
+  +jasspa-microemacs-20091011-r1.ebuild:
+  Add prefix keywords, change EAPI to 3.
+
+  02 Dec 2009; Ulrich Mueller <ulm@gentoo.org>
+  -files/20050505-ncurses.patch:
+  Remove unused patch file.
+
+  01 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  -jasspa-microemacs-20060909-r1.ebuild:
+  clean up
+
+  01 Dec 2009; Markus Meier <maekke@gentoo.org>
+  jasspa-microemacs-20091011.ebuild:
+  amd64 stable, bug #293025
+
+  21 Nov 2009; nixnut <nixnut@gentoo.org> jasspa-microemacs-20091011.ebuild:
+  ppc stable #293025
+
+  18 Nov 2009; Christian Faulhammer <fauli@gentoo.org>
+  jasspa-microemacs-20091011.ebuild:
+  stable x86, bug 293025
+
+*jasspa-microemacs-20091011 (14 Oct 2009)
+
+  14 Oct 2009; Ulrich Mueller <ulm@gentoo.org>
+  +files/20091011-ncurses.patch, +jasspa-microemacs-20091011.ebuild:
+  Version bump.
+
+  11 Apr 2009; Ulrich Mueller <ulm@gentoo.org>
+  files/jasspa-microemacs.desktop:
+  Add MimeType and StartupWMClass keys to desktop entry.
+
+  13 Aug 2008; Ulrich Mueller <ulm@gentoo.org>
+  files/jasspa-microemacs.desktop:
+  Change category in desktop entry to "development", for consistency with
+  other text editors.
+
+  28 Jul 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56.
+
+  06 Dec 2007; Ulrich Mueller <ulm@gentoo.org>
+  +files/jasspa-microemacs.desktop, jasspa-microemacs-20060909-r1.ebuild:
+  Undo previous two changes; the file name argument was missing from "Exec".
+  Install desktop entry only for USE=X, it doesn't work otherwise.
+
+  06 Dec 2007; Christian Faulhammer <opfer@gentoo.org>
+  jasspa-microemacs-20060909-r1.ebuild:
+  really generate a valid desktop file this time
+
+  06 Dec 2007; Christian Faulhammer <opfer@gentoo.org>
+  -files/jasspa-microemacs.desktop, jasspa-microemacs-20060909-r1.ebuild:
+  use make_desktop_entry function from eutils.eclass instead of providing an
+  own file
+
+  06 Dec 2007; Christian Faulhammer <opfer@gentoo.org>
+  -jasspa-microemacs-20050505-r3.ebuild:
+  clean up
+
+  06 Dec 2007; Christian Faulhammer <opfer@gentoo.org>
+  files/jasspa-microemacs.desktop:
+  fix desktop file as reported by Petteri Räty
+
+  10 Oct 2007; Christian Faulhammer <opfer@gentoo.org>
+  jasspa-microemacs-20050505-r3.ebuild,
+  jasspa-microemacs-20060909-r1.ebuild:
+  remove PROVIDE=virtual/editor as we have now a new-style virtual
+
+  27 Jul 2007; Ulrich Mueller <ulm@gentoo.org> -files/me,
+  -jasspa-microemacs-20060909.ebuild:
+  Remove unused files/me and old ebuild.
+
+  25 Jul 2007; Christoph Mende <angelos@gentoo.org>
+  jasspa-microemacs-20060909-r1.ebuild:
+  Stable on amd64 wrt bug #185686
+
+  23 Jul 2007; Christian Faulhammer <opfer@gentoo.org>
+  jasspa-microemacs-20060909-r1.ebuild:
+  stable x86, bug 185686
+
+  20 Jul 2007; nixnut <nixnut@gentoo.org>
+  jasspa-microemacs-20060909-r1.ebuild:
+  Stable on ppc wrt bug 185686
+
+*jasspa-microemacs-20060909-r1 (17 Jun 2007)
+
+  17 Jun 2007; Ulrich Mueller <ulm@gentoo.org>
+  +jasspa-microemacs-20060909-r1.ebuild:
+  New nanoemacs and xpm USE flags. Add conditional dependency on libXpm. Don't
+  unpack to or install from ${T}. Install binaries only as "me" or "ne"; block
+  against app-editors/ne. Don't install license.txt and build.txt doc files.
+
+  12 Jun 2007; Christian Faulhammer <opfer@gentoo.org>
+  jasspa-microemacs-20050505-r3.ebuild, jasspa-microemacs-20060909.ebuild:
+  remove virtual/x11 from DEPEND; add PROVIDE=virtual/editor; add some quotes
+
+*jasspa-microemacs-20060909 (06 Dec 2006)
+
+  06 Dec 2006; Christian Faulhammer <opfer@gentoo.org>
+  +jasspa-microemacs-20060909.ebuild:
+  version bump, it is internal revision -2
+
+  06 Dec 2006; Christian Faulhammer <opfer@gentoo.org>
+  -files/jasspa-microemacs-xorg.patch,
+  -jasspa-microemacs-20040301-r2.ebuild,
+  -jasspa-microemacs-20050505-r2.ebuild:
+  cleanup old versions
+
+  17 Nov 2006; Christian Faulhammer <opfer@gentoo.org>
+  jasspa-microemacs-20050505-r3.ebuild:
+  added dependency on x11-libs/libXt, found by Patrick Lauer
+  <bugs@dev.gentooexperimental.org>, reported in bug #154992
+
+  03 Nov 2006; nixnut <nixnut@gentoo.org>
+  jasspa-microemacs-20050505-r3.ebuild:
+  Stable on ppc wrt bug 123756
+
+  01 Nov 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  jasspa-microemacs-20050505-r3.ebuild:
+  Stable on amd64/x86 wrt bug #123756.
+
+*jasspa-microemacs-20050505-r3 (11 Jun 2006)
+
+  11 Jun 2006; Matthew Kennedy <mkennedy@gentoo.org>
+  +files/20050505-ncurses.patch, +jasspa-microemacs-20050505-r3.ebuild:
+  Fixes compilation error by not testing for termcap; Resolves Bug #134813.
+
+*jasspa-microemacs-20050505-r2 (15 May 2006)
+
+  15 May 2006; Matthew Kennedy <mkennedy@gentoo.org>
+  -jasspa-microemacs-20050505.ebuild, -jasspa-microemacs-20050505-r1.ebuild,
+  +jasspa-microemacs-20050505-r2.ebuild:
+  New upstream version (but source archive has same filename); Resolves Bug
+  #132078; Remove old 20050505 versions; Add ~amd64 support; Resolves Bug
+  #125982.
+
+*jasspa-microemacs-20050505-r1 (11 Mar 2006)
+
+  11 Mar 2006; Matthew Kennedy <mkennedy@gentoo.org>
+  +files/jasspa-microemacs.desktop, -jasspa-microemacs-20021205.ebuild,
+  -jasspa-microemacs-20040301.ebuild, jasspa-microemacs-20040301-r2.ebuild,
+  jasspa-microemacs-20050505.ebuild, +jasspa-microemacs-20050505-r1.ebuild:
+  Add Freedesktop.org .desktop file; Resolves Bug #107026; Corrected build
+  system to obey CFLAGS; Port to modular X dependencies; Remove old ebuilds.
+
+*jasspa-microemacs-20050505 (21 May 2005)
+
+  21 May 2005; Mamoru KOMACHI <usata@gentoo.org>
+  +jasspa-microemacs-20050505.ebuild:
+  Version bumped. This closes bug #93264.
+
+  18 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  jasspa-microemacs-20040301-r2.ebuild:
+  Stable on ppc.
+
+  21 Mar 2005; Mamoru KOMACHI <usata@gentoo.org>
+  -jasspa-microemacs-20040301-r1.ebuild,
+  jasspa-microemacs-20040301-r2.ebuild:
+  Stable on x86.
+
+*jasspa-microemacs-20040301-r2 (14 Feb 2005)
+
+  14 Feb 2005; Mamoru KOMACHI <usata@gentoo.org>
+  +jasspa-microemacs-20040301-r2.ebuild:
+  Fixed an error with USE="-X"; bug #75375. Thanks to Matti P. T. Juvonen
+  <gentoo@mpj.iki.fi>.
+
+*jasspa-microemacs-20040301-r1 (11 Feb 2005)
+
+  11 Feb 2005; Mamoru KOMACHI <usata@gentoo.org>
+  +files/jasspa-microemacs-xorg.patch, +files/me,
+  +jasspa-microemacs-20040301-r1.ebuild:
+  Fixed AltGr key problem with xorg-x11. Thanks to Matti P. T. Juvonen
+  <gentoo@mpj.iki.fi>; bug #81547.
+
+  26 Aug 2004; Mamoru KOMACHI <usata@gentoo.org>
+  jasspa-microemacs-20040301.ebuild:
+  Marked as stable.
+
+  01 Jun 2004; Aron Griffis <agriffis@gentoo.org>
+  jasspa-microemacs-20021205.ebuild, jasspa-microemacs-20040301.ebuild:
+  Fix use invocation
+
+  26 Apr 2004; David Holm <dholm@gentoo.org>
+  jasspa-microemacs-20040301.ebuild:
+  Added to ~ppc.
+
+*jasspa-microemacs-20040301 (26 Apr 2004)
+
+  26 Apr 2004; Mamoru KOMACHI <usata@gentoo.org>
+  jasspa-microemacs-20021205.ebuild, jasspa-microemacs-20040301.ebuild:
+  Version bumped. Marked 20021205 stable. Fixed IUSE.
+
+*jasspa-microemacs-20021205 (14 Mar 2004)
+
+  14 Mar 2004; Mamoru KOMACHI <usata@gentoo.org>
+  jasspa-microemacs-20021205.ebuild, metadata.xml:
+  Initial import. Ebuild submitted by Randy Roesler <xhl178@shaw.ca>,
+  closing bug #23734

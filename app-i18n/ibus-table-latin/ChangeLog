@@ -1,0 +1,24 @@
+# ChangeLog for app-i18n/ibus-table-latin
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus-table-latin/ChangeLog,v 1.4 2012/05/03 19:24:31 jdhore Exp $
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  ibus-table-latin-1.2.0.20100305.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  04 May 2010; MATSUU Takuto <matsuu@gentoo.org>
+  ibus-table-latin-1.2.0.20100305.ebuild:
+  Removed python from DEPEND.
+
+*ibus-table-latin-1.2.0.20100305 (13 Mar 2010)
+
+  13 Mar 2010; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-table-latin-1.2.0.20100305.ebuild:
+  Version bumped.
+
+*ibus-table-latin-1.2.0.20100108 (13 Jan 2010)
+
+  13 Jan 2010; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-table-latin-1.2.0.20100108.ebuild, +metadata.xml:
+  Initial import.
+

@@ -1,0 +1,11 @@
+--- libhfsp/src/unicode.c.bak	2007-01-08 17:14:44.000000000 -0500
++++ libhfsp/src/unicode.c	2007-01-08 17:14:52.000000000 -0500
+@@ -16,7 +16,7 @@
+ #include <stdlib.h>
+ #include <endian.h>
+ #include <byteswap.h>
+-#include <linux/string.h>
++#include <string.h>
+ 
+ #define __USE_GNU
+     /* need wcsrtomb */

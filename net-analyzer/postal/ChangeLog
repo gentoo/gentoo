@@ -1,0 +1,52 @@
+# ChangeLog for net-analyzer/postal
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/postal/ChangeLog,v 1.11 2015/05/23 00:40:37 mrueg Exp $
+
+  23 May 2015; Manuel Rüger <mrueg@gentoo.org> -postal-0.70.ebuild:
+  Remove old.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> postal-0.70.ebuild,
+  postal-0.72.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*postal-0.72 (05 Mar 2012)
+
+  05 Mar 2012; Eray Aslan <eras@gentoo.org> +postal-0.72.ebuild,
+  +files/02_postal-0.72-nossl.patch:
+  version bump
+
+  08 Jun 2011; Eray Aslan <eras@gentoo.org> postal-0.70.ebuild,
+  +files/06_postal-0.70-ldflags.patch:
+  Respect LDFLAGS - bug #337516
+
+  12 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> postal-0.70.ebuild,
+  +files/05_postal-0.70-openssl-1.patch:
+  Fix building with OpenSSL >= 1.0.0 wrt #327937 by Diego E. Pettenò.
+
+*postal-0.70 (15 Jun 2008)
+
+  15 Jun 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  +files/03_postal-0.70-c++0x-integrated.patch,
+  +files/01_postal-0.70-gcc43.patch, +files/02_postal-0.70-nossl.patch,
+  +files/04_postal-0.70-warnings.patch, +postal-0.70.ebuild:
+  Version bump, fix compilation with gcc-4.3 and ssl-related logic in
+  configure.in (#219092), patches by Peter Alfredsen. Shorten DESCRIPTION,
+  added ~amd64.
+
+  08 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  17 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> postal-0.62.ebuild:
+  Added to ~hppa, stable on ppc.
+
+  08 Jan 2005; Michael Hanselmann <hansmi@gentoo.org> postal-0.62.ebuild:
+  Fixed not working use_enable because of a broken configure script.
+
+  08 Jan 2005; Sven Wegener <swegener@gentoo.org> postal-0.62.ebuild:
+  Fixed invalid atoms in *DEPEND.
+
+*postal-0.62 (08 Jan 2005)
+
+  08 Jan 2005; Michael Hanselmann <hansmi@gentoo.org> +metadata.xml,
+  +postal-0.62.ebuild:
+  New ebuild provided by Daniel Seyffer in bug 17413.

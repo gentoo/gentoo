@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>wired@gentoo.org</email>
+		<name>Alex Alexander</name>
+	</maintainer>
+	<longdescription lang="en">
+	GtkEveMon is a standalone skill monitoring application for EVE Online.
+	It allows monitoring characters' skills and skill training process without
+	starting EVE Online. It is intended as a lightweight, cross-platform
+	alternative to EveMon, a popular skill monitoring application for Windows.
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,9 @@
+# ChangeLog for net-misc/ssh-chain
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ssh-chain/ChangeLog,v 1.1 2013/12/18 18:31:08 ottxor Exp $
+
+*ssh-chain-20131217 (18 Dec 2013)
+
+  18 Dec 2013; Christoph Junghans <ottxor@gentoo.org> +metadata.xml,
+  +ssh-chain-20131217.ebuild:
+  initial commit

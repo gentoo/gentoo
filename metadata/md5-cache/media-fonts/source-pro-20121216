@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst postrm prepare setup
+DEPEND=app-arch/unzip X? ( x11-apps/mkfontdir media-fonts/encodings )
+DESCRIPTION=Adobe Source Pro, an open source multi-lingual font family
+EAPI=4
+HOMEPAGE=http://blogs.adobe.com/typblography/2012/08/source-sans-pro.html http://blogs.adobe.com/typblography/2012/09/source-code-pro.html
+IUSE=X
+KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd
+LICENSE=OFL-1.1
+RDEPEND=media-libs/fontconfig
+RESTRICT=binchecks strip
+SLOT=0
+SRC_URI=mirror://sourceforge/sourcecodepro.adobe/SourceCodePro_FontsOnly-1.013.zip mirror://sourceforge/sourcesans.adobe/SourceSansPro_FontsOnly-1.038.zip
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	font	b3239d2dc442d1717b9725e2be7cb5d6	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=bfb60c15d2105046b06db4fa6aebada8

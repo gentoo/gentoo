@@ -1,0 +1,69 @@
+# ChangeLog for dev-java/byaccj
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/byaccj/ChangeLog,v 1.17 2015/06/09 13:31:13 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  03 Aug 2014; Ralph Sennhauser <sera@gentoo.org> -byaccj-1.15.ebuild:
+  Remove old
+
+  20 Oct 2013; Agostino Sarubbo <ago@gentoo.org> byaccj-1.15-r1.ebuild:
+  Stable for ppc64, wrt bug #476958
+
+  20 Oct 2013; Agostino Sarubbo <ago@gentoo.org> byaccj-1.15-r1.ebuild:
+  Stable for ppc, wrt bug #476958
+
+  01 Sep 2013; Fabian Groffen <grobian@gentoo.org> byaccj-1.15-r1.ebuild:
+  Marked *-macos
+
+  01 Sep 2013; Fabian Groffen <grobian@gentoo.org> byaccj-1.15-r1.ebuild:
+  Marked *-macos
+
+  18 Jun 2013; Alexis Ballier <aballier@gentoo.org> byaccj-1.15-r1.ebuild:
+  keyword ~amd64-fbsd
+
+  07 Dec 2012; <ago@gentoo.org> byaccj-1.15-r1.ebuild:
+  Stable for x86, wrt bug #441164
+
+  07 Dec 2012; <ago@gentoo.org> byaccj-1.15-r1.ebuild:
+  Stable for amd64, wrt bug #441164
+
+  11 Oct 2012; Ralph Sennhauser <sera@gentoo.org> byaccj-1.15.ebuild,
+  byaccj-1.15-r1.ebuild:
+  As-is cleanp, change license to public-domain. #437774
+
+*byaccj-1.15-r1 (02 Aug 2012)
+
+  02 Aug 2012; Ralph Sennhauser <sera@gentoo.org> +byaccj-1.15-r1.ebuild,
+  files/Makefile:
+  Respect flags, thanks to Michael Palimaka (kensington) for the patch. #366459
+
+  04 Dec 2011; Markos Chandras <hwoarang@gentoo.org> byaccj-1.15.ebuild:
+  add missing die. stable on amd64. bug #370403
+
+  01 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> byaccj-1.15.ebuild:
+  x86 stable wrt bug #370403
+
+  10 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org> byaccj-1.15.ebuild:
+  Marked ~ppc/~ppc64 wrt #375891
+
+  04 Aug 2011; Naohiro Aota <naota@gentoo.org> byaccj-1.15.ebuild:
+  Add ~x86-fbsd keyword. Fix #375891
+
+  02 Aug 2011; Markos Chandras <hwoarang@gentoo.org> byaccj-1.15.ebuild:
+  Keyworded for amd64. Bug #375891
+
+*byaccj-1.15 (07 May 2011)
+
+  07 May 2011; <elvanor@gentoo.org> +byaccj-1.15.ebuild, +files/Makefile,
+  +metadata.xml:
+  Version bump to 1.15, commited to main Portage tree.
+
+  18 Jan 2009; Alistair Bush <ali_bush@gentoo.org> +metadata.xml,
+  byaccj-1.14.ebuild:
+  Fix QA issues.
+
+  24 Apr 2007; Petteri Räty <betelgeuse@gentoo.org> -byaccj-1.1.ebuild,
+  +byaccj-1.14.ebuild:
+  Version bump.

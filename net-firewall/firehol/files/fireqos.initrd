@@ -1,0 +1,45 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/firehol/files/fireqos.initrd,v 1.1 2015/03/05 09:18:08 alonbl Exp $
+
+depend() {
+	need localmount
+	after bootmisc
+	before net
+}
+
+checkrules() {
+	if [ ! -f ${FIREQOS_CONF} ]; then
+		eerror "Not starting FireQOS. Create ${FIREQOS_CONF}"
+		eerror "and fill it with some rules."
+		eerror "man fireqos.conf for more info."
+		return 1
+	fi
+}
+
+start() {
+	checkrules || return 1
+	ebegin "Starting FireQOS"
+		/usr/sbin/fireqos start ${FIREQOS_CONF} -- ${FIREQOS_EXTRA_ARGS} > /dev/null
+	eend $? 
+}
+
+stop() {
+	ebegin "Stopping FireQOS"
+		/usr/sbin/fireqos stop > /dev/null
+	eend $?
+}
+
+restart() {
+        ebegin "Restarting FireQOS"
+                svc_stop;
+                svc_start;
+        eend $?
+}
+
+status() {
+	ebegin "Showing FireQOS status"
+	/usr/sbin/fireqos status
+	eend $?
+}

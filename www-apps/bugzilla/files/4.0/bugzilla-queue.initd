@@ -1,0 +1,39 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/bugzilla/files/4.0/bugzilla-queue.initd,v 1.1 2011/06/17 10:38:41 idl0r Exp $
+
+PIDFILE="/var/run/bugzilla/${SVCNAME}.pid"
+JOBQUEUE_USER=${JOBQUEUE_USER:-root}
+JOBQUEUE_GROUP=${JOBQUEUE_GROUP:-root}
+
+checkconfig() {
+	[[ -z "${JOBQUEUE_USER}" || -z "$(getent passwd ${JOBQUEUE_USER})" ]] && { eerror "JOBQUEUE_USER not set or doesn't exist"; return 1; }
+	[[ -z "${JOBQUEUE_GROUP}" || -z "$(getent group ${JOBQUEUE_GROUP})" ]] && { eerror "JOBQUEUE_GROUP not set or doesn't exist"; return 1; }
+	[[ -z "${JOBQUEUE_PATH}" && ! -x "${JOBQUEUE_PATH}" ]] && { eerror "JOBQUEUE_PATH not set or not executable"; return 1; }
+	return 0
+}
+
+start() {
+	ebegin "Starting ${SVCNAME}"
+	checkconfig || return 1
+
+	piddir="${PIDFILE%/*}"
+	if [ ! -d "${piddir}" ]; then
+		checkpath -q -d -o $JOBQUEUE_USER:$JOBQUEUE_GROUP -m 0770 "${piddir}" || {
+			eend 1
+			return 1
+		}
+	fi
+
+	start-stop-daemon --start --pidfile $PIDFILE --user $JOBQUEUE_USER --group $JOBQUEUE_GROUP \
+		--exec $JOBQUEUE_PATH -- -p $PIDFILE -n $SVCNAME start 1>/dev/null
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	checkconfig || return 1
+	start-stop-daemon --pidfile $PIDFILE --stop --exec $JOBQUEUE_PATH -- -p $PIDFILE -n $SVCNAME stop
+	eend $?
+}

@@ -1,0 +1,9 @@
+# ChangeLog for dev-haskell/biofasta
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/biofasta/ChangeLog,v 1.1 2015/03/10 21:58:18 slyfox Exp $
+
+*biofasta-0.0.3 (10 Mar 2015)
+
+  10 Mar 2015; Sergei Trofimovich <slyfox@gentoo.org> +biofasta-0.0.3.ebuild,
+  +metadata.xml:
+  A bioinformatics library for haskell (requested by Martin MOKREJŠ).

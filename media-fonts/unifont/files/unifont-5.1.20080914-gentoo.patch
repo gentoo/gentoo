@@ -1,0 +1,63 @@
+diff -Naur unifont-5.1.20080914.orig/font/Makefile unifont-5.1.20080914/font/Makefile
+--- unifont-5.1.20080914.orig/font/Makefile	2008-09-08 11:22:52.000000000 +0900
++++ unifont-5.1.20080914/font/Makefile	2008-12-31 23:29:52.000000000 +0900
+@@ -29,8 +29,8 @@
+ #
+ PKGDEST = $(DESTDIR)/usr/share/unifont
+ FONTDEST = $(DESTDIR)/usr/share/fonts
+-PCFDEST = $(FONTDEST)/X11/misc
+-TTFDEST = $(FONTDEST)/truetype/unifont
++PCFDEST = $(FONTDEST)/unifont
++TTFDEST = $(FONTDEST)/unifont
+ #
+ # destination directory for compiled fonts
+ #
+diff -Naur unifont-5.1.20080914.orig/hoge.y unifont-5.1.20080914/hoge.y
+--- unifont-5.1.20080914.orig/hoge.y	1970-01-01 09:00:00.000000000 +0900
++++ unifont-5.1.20080914/hoge.y	2008-12-31 23:55:28.000000000 +0900
+@@ -0,0 +1,15 @@
++STARTFONT 2.1
++FONT -gnu-unifont-medium-r-normal--16-160-75-75-c-80-iso10646-1
++SIZE 16 75 75
++FONTBOUNDINGBOX 16 16 0 -2
++STARTPROPERTIES 7
++PIXEL_SIZE 16
++POINT_SIZE 160
++FONT_ASCENT 14
++FONT_DESCENT 2
++CHARSET_REGISTRY "iso10646"
++CHARSET_ENCODING "1"
++DEFAULT_CHAR 32
++ENDPROPERTIES
++CHARS 0
++ENDFONT
+diff -Naur unifont-5.1.20080914.orig/src/Makefile unifont-5.1.20080914/src/Makefile
+--- unifont-5.1.20080914.orig/src/Makefile	2008-09-08 04:01:56.000000000 +0900
++++ unifont-5.1.20080914/src/Makefile	2009-01-01 00:05:08.000000000 +0900
+@@ -1,5 +1,5 @@
+ 
+-CFLAGS = -g -O2 -Wall
++CFLAGS += -g -Wall
+ 
+ INSTALLBINDIR = ../bin
+ 
+@@ -26,8 +26,8 @@
+ 
+ all: $(CPROGS)
+ 	install -m0755 -d $(INSTALLBINDIR)
+-	install -s -m0755 $(CPROGS) $(INSTALLBINDIR)
+-	install    -m0755 $(PPROGS) $(INSTALLBINDIR)
++	install -m0755 $(CPROGS) $(INSTALLBINDIR)
++	install -m0755 $(PPROGS) $(INSTALLBINDIR)
+ 	rm -f $(CPROGS)
+ 
+ install:
+@@ -40,7 +40,7 @@
+ 	install -m0755 -d $(INSTALLDIR)
+ 	set -e ; \
+ 	   cd $(INSTALLBINDIR) ; \
+-	   install -s -m0755 $(CPROGS) $(INSTALLDIR)
++	   install -m0755 $(CPROGS) $(INSTALLDIR)
+ 	set -e ; \
+ 	   cd ../bin ; \
+ 	   install    -m0755 $(PPROGS) $(INSTALLDIR)

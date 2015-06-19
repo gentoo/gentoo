@@ -1,0 +1,20 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/hsqldb/files/hsqldb,v 1.2 2007/12/19 21:58:05 caster Exp $
+
+depend() {
+    use net
+}
+
+start() {
+	ebegin "Starting HSQL Database"
+	hsqldb_enable=yes /var/lib/hsqldb/bin/hsqldb start
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping HSQL Database"
+	hsqldb_enable=yes /var/lib/hsqldb/bin/hsqldb stop
+	eend $?
+}

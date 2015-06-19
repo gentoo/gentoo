@@ -1,0 +1,121 @@
+# ChangeLog for x11-misc/xxkb
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xxkb/ChangeLog,v 1.33 2015/02/20 09:35:18 zlogene Exp $
+
+  20 Feb 2015; Mikle Kolyada <zlogene@gentoo.org> -xxkb-1.11-r2.ebuild,
+  xxkb-1.11-r3.ebuild:
+  ppc/x86 stable wrt bug #523158
+
+*xxkb-1.11.1 (22 Nov 2014)
+
+  22 Nov 2014; Jeroen Roovers <jer@gentoo.org> xxkb-1.11-r3.ebuild,
+  +xxkb-1.11.1.ebuild:
+  Version bump. Readd missing patch (bug #527728 by Alex Efros).
+
+  31 Oct 2014; Chema Alonso <nimiux@gentoo.org> xxkb-1.11-r3.ebuild:
+  Stable for amd64 wrt bug #523158
+
+  21 Sep 2014; Jeroen Roovers <jer@gentoo.org> files/missing_init.patch:
+  Clean up one more patch.
+
+  21 Sep 2014; Jeroen Roovers <jer@gentoo.org> xxkb-1.11-r3.ebuild:
+  Convert patch to tarball (bug #523360 by Alex Efros).
+
+  21 Sep 2014; Jeroen Roovers <jer@gentoo.org> files/svg-appdefaults.patch:
+  Fix patch cleanup (Alex Efros).
+
+*xxkb-1.11-r3 (18 Sep 2014)
+
+  18 Sep 2014; Jeroen Roovers <jer@gentoo.org> -xxkb-1.11-r1.ebuild,
+  +xxkb-1.11-r3.ebuild, files/svg-appdefaults.patch, files/svg-flags.patch:
+  EAPI bump. Remove /usr/$(get_libdir)/X11/app-defaults (bug #496116). Clean up
+  patches.
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #473480
+
+  04 Oct 2012; Brent Baude <ranger@gentoo.org> xxkb-1.11-r2.ebuild:
+  Marking xxkb-1.11-r2 ppc for bug 429242
+
+  19 Sep 2012; Johannes Huber <johu@gentoo.org> xxkb-1.11-r2.ebuild:
+  Stable for x86, wrt bug #429242
+
+  13 Sep 2012; Agostino Sarubbo <ago@gentoo.org> xxkb-1.11-r2.ebuild:
+  Stable for amd64, wrt bug #429242
+
+*xxkb-1.11-r2 (22 May 2012)
+
+  22 May 2012; Patrick Kursawe <phosphan@gentoo.org> -xxkb-1.10.ebuild,
+  -files/xxkb-1.10-gcc34-fix.patch, +xxkb-1.11-r2.ebuild,
+  +files/missing_init.patch:
+  Removing obsolete version, adding user supplied patch from bug #407127.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> xxkb-1.11-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  02 Mar 2011; Justin Lecher <jlec@gentoo.org> xxkb-1.11-r1.ebuild:
+  Correct Slots for gtk 3 introduction to tree
+
+  13 Jan 2011; Brent Baude <ranger@gentoo.org> xxkb-1.11-r1.ebuild:
+  stable ppc, bug 334691
+
+  28 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> xxkb-1.11-r1.ebuild:
+  x86 stable wrt bug #334691
+
+  27 Aug 2010; Markos Chandras <hwoarang@gentoo.org> xxkb-1.11-r1.ebuild:
+  Stable on amd64 wrt bug #334691
+
+  26 Aug 2010; Patrick Kursawe <phosphan@gentoo.org> -xxkb-1.11.ebuild,
+  xxkb-1.11-r1.ebuild:
+  Respects LDFLAGS now, see bug #333985. Dropped obsolete version.
+
+*xxkb-1.11-r1 (08 Apr 2010)
+
+  08 Apr 2010; Patrick Kursawe <phosphan@gentoo.org> +xxkb-1.11-r1.ebuild,
+  +files/svg-appdefaults.patch, +files/svg-flags.patch:
+  Added SVG format flags, see bug #297220.
+
+*xxkb-1.11 (16 Apr 2008)
+
+  16 Apr 2008; Patrick Kursawe <phosphan@gentoo.org> xxkb-1.10.ebuild,
+  +xxkb-1.11.ebuild:
+  Version bump using ebuild from bug #214512. Minor syntax fixes for old ebuild.
+
+  02 Mar 2007; Samuli Suominen <drac@gentoo.org> xxkb-1.10.ebuild:
+  Kill virtual/x11.
+
+  09 Feb 2006; Donnie Berkholz <spyderous@gentoo.org>; xxkb-1.10.ebuild:
+  (#122190) Missing rman dep for modular X.
+
+  21 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> xxkb-1.10.ebuild:
+  Fixed DEPEND for modular X.
+
+  26 Jul 2005; David Holm <dholm@gentoo.org> xxkb-1.10.ebuild:
+  Added to ~ppc.
+
+  20 Dec 2004; Patrick Kursawe <phosphan@gentoo.org> xxkb-1.10.ebuild:
+  Updating SRC_URI again because of bug #74789
+
+  24 Nov 2004; Karol Wojtaszek <sekretarz@gentoo.org> xxkb-1.10.ebuild:
+  Added to ~amd64, bug #72361
+
+  24 Aug 2004; Karol Wojtaszek <sekretarz@gentoo.org> :
+  Fixing compilation errors on gcc-34
+
+  14 Jun 2004; <pyrania@gentoo.org> xxkb-1.10.ebuild:
+  Added IUSE.
+
+  04 Feb 2004; Patrick Kursawe <phosphan@gentoo.org> xxkb-1.10.ebuild:
+  Updated homepage and source URI.
+
+  20 May 2003; Patrick Kursawe <phosphan@gentoo.org> xxkb-1.10.ebuild:
+  Used it for a few days, looks stable for x86.
+
+*xxkb-1.10 (15 May 2003)
+
+  15 May 2003; Patrick Kursawe <phosphan@gentoo.org> xxkb-1.10.ebuild,
+  files/README, files/de15.xpm, files/de48.xpm, files/pl15.xpm,
+  files/pl48.xpm:
+  Initial import. Added german and polish flag xpms and a hint for XKB
+  documentation. Ebuild was provided by Andrew Kirilenko <icedank@gmx.net>
+  in bug 20991.

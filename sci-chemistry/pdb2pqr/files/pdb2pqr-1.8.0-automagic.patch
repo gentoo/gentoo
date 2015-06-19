@@ -1,0 +1,75 @@
+diff -Naur pdb2pqr-1.4.0/configure.ac pdb2pqr-1.4.0.new/configure.ac
+--- pdb2pqr-1.4.0/configure.ac	2009-04-02 10:53:56.000000000 -0400
++++ pdb2pqr-1.4.0.new/configure.ac	2009-09-24 19:36:47.000000000 -0400
+@@ -255,38 +255,6 @@
+ 
+   # Test for Numeric install
+   AC_MSG_CHECKING([whether you defined Numeric or Numpy])
+-  if (test -n "${NUMERIC}") ; then
+-    AC_MSG_RESULT([yes])
+-    NUMERIC_INC=`find ${NUMERIC} -iname "arrayobject.h" | tail -n1`
+-    if test "$NUMERIC_INC" = ""; then
+-      AC_MSG_ERROR([Please check your NUMERIC path.  arrayobject.h cannot be found in ${NUMERIC}])
+-    fi
+-    NUMERIC_INC=`dirname ${NUMERIC_INC}`
+-    NUMERIC_LIB=`find ${NUMERIC} -iname "Numeric.pth" | tail -n1`
+-    if test "${NUMERIC_LIB}" = ""; then
+-      AC_MSG_ERROR([Please check your NUMERIC path.  Numeric.pth cannot be found in ${NUMERIC}])
+-    fi
+-    NUMERIC_NAME=`cat ${NUMERIC_LIB}`
+-    NUMERIC_LIB=`dirname ${NUMERIC_LIB}`
+-    NUMERIC_LIB=${NUMERIC_LIB}/${NUMERIC_NAME}
+-    if test "${PACKAGE_PATH}" = ""; then
+-      PACKAGE_PATH=${NUMERIC_LIB}
+-    else
+-      PACKAGE_PATH="${PACKAGE_PATH}:${NUMERIC_LIB}"
+-    fi
+-    PY_NUMERIC="-I${NUMERIC_INC} "
+-    PY_CFLAGS="$PY_CFLAGS $PY_NUMERIC"
+-  else
+-    AC_MSG_RESULT([no])	
+-    AC_MSG_CHECKING([for Numeric include files])
+-    if test -f $PY_PREFIX/include/python$PY_VERSION/Numeric/arrayobject.h; then
+-      PY_NUMERIC="-I$PY_PREFIX/include/python$PY_VERSION/Numeric"   
+-      AC_MSG_RESULT([$PY_NUMERIC])
+-      PY_CFLAGS="$PY_CFLAGS $PY_NUMERIC"
+-    else
+-      AC_MSG_RESULT([no])
+-    fi
+-  fi
+ 
+   # If failed, test for numpy
+   AC_MSG_CHECKING([whether you defined numpy])
+@@ -457,29 +425,14 @@
+   HAVE_PDB2PQR_OPAL=1
+ fi
+ 
+-if test "$PDB2PQR_OPAL_URL" != ""; then 
++if test "$PDB2PQR_OPAL_URL" != "no"; then 
+   HAVE_PDB2PQR_OPAL=1
+   if test -d $PY_PREFIX/lib/python$PY_VERSION/site-packages/ZSI ; then
+     echo ZSI is installed
+   else
+     #  need to install ZSI
+-    echo Installing ZSI.  This might take a while...
+-    cd contrib/ZSI-2.1-a1 
+-    if test `whoami` = "root"; then
+-      $py_path setup.py install
+-    else
+-      zsi_install="true"
+-      mkdir -p ${prefix}lib/python$PY_VERSION/site-packages
+-      export PYTHONPATH=${prefix}lib/python$PY_VERSION/site-packages
+-      $py_path setup.py install --prefix=${prefix}
+-      if test -d ${prefix}ZSI ; then
+-        echo ZSI is installed
+-      else
+-        cp -r ./build/lib/ZSI ${prefix}ZSI
+-      fi
+-      PYTHONPATH=""
+-    fi 
+-    cd ../..
++    echo Missing ZSI
++    exit 1
+   fi
+ fi  
+ 

@@ -1,0 +1,76 @@
+# ChangeLog for dev-util/txt2regex
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/txt2regex/ChangeLog,v 1.21 2011/01/06 21:19:20 jlec Exp $
+
+  06 Jan 2011; Justin Lecher <jlec@gentoo.org> txt2regex-0.8-r1.ebuild:
+  Some Clean up
+
+  24 Mar 2008; Santiago M. Mola <coldwind@gentoo.org> -txt2regex-0.8.ebuild,
+  txt2regex-0.8-r1.ebuild:
+  amd64 stable, fix quoting, remove old.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  07 Apr 2006; Bryan Østergaard <kloeri@gentoo.org metadata.xml:
+  Remove ciaranm from metadata.xml.
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org> txt2regex-0.8-r1.ebuild:
+  Mark 0.8-r1 stable on alpha
+
+  14 Jul 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  txt2regex-0.8-r1.ebuild:
+  Stable on hppa.
+
+  11 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  txt2regex-0.8-r1.ebuild:
+  Stable on sparc
+
+  10 Jul 2005; Aaron Walker <ka0ttic@gentoo.org> txt2regex-0.8-r1.ebuild:
+  Stable on x86.
+
+  25 May 2005; Fernando J. Pereda <ferdy@gentoo.org> txt2regex-0.8.ebuild:
+  alpha stable
+
+*txt2regex-0.8-r1 (23 May 2005)
+
+  23 May 2005; Ciaran McCreesh <ciaranm@gentoo.org>
+  +files/txt2regex-0.8-disable-nls.patch, -txt2regex-0.7.ebuild,
+  +txt2regex-0.8-r1.ebuild:
+  NLS and CJK updates, thanks to rener in bug #93568
+
+  10 May 2005; Rene Nussbaumer <killerfox@gentoo.org> txt2regex-0.8.ebuild:
+  stable on hppa
+
+  07 May 2005; David Holm <dholm@gentoo.org> txt2regex-0.8.ebuild:
+  Added to ~ppc.
+
+  31 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  14 Nov 2004; Ciaran McCreesh <ciaranm@gentoo.org> txt2regex-0.8.ebuild:
+  sparc, mips, x86 stable
+
+  16 Oct 2004; Tom Martin <slarti@gentoo.org> metadata.xml:
+  Added to the shell-tools herd for ciaranm.
+
+*txt2regex-0.8 (09 Oct 2004)
+
+  09 Oct 2004; Ciaran McCreesh <ciaranm@gentoo.org> +txt2regex-0.8.ebuild:
+  Bump
+
+  18 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> txt2regex-0.7.ebuild:
+  Stable on x86
+
+  16 Jun 2004; Ciaran McCreesh <ciaranm@gentoo.org> txt2regex-0.7.ebuild:
+  Stable on sparc, mips
+
+  26 May 2004; Bryan Østergaard <kloeri@gentoo.org> txt2regex-0.7.ebuild:
+  Marked ~alpha, bug #50552.
+
+*txt2regex-0.7 (24 May 2004)
+
+  24 May 2004; Ciaran McCreesh <ciaranm@gentoo.org> +metadata.xml,
+  +txt2regex-0.7.ebuild:
+  New package, thanks to Emil Erlandsson <emil@buglix.org> in bug #50552
+

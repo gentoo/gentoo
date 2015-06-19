@@ -1,0 +1,73 @@
+# ChangeLog for media-libs/libsvgtiny
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libsvgtiny/ChangeLog,v 1.16 2015/06/09 22:05:05 xmw Exp $
+
+*libsvgtiny-0.1.3-r1 (09 Jun 2015)
+
+  09 Jun 2015; Michael Weber <xmw@gentoo.org> +libsvgtiny-0.1.3-r1.ebuild,
+  -libsvgtiny-0.1.3.ebuild:
+  Revbump for multilib fix.
+
+  28 Mar 2015; Patrick Lauer <patrick@gentoo.org> libsvgtiny-0.1.3.ebuild:
+  Whitespace
+
+  26 Mar 2015; Michael Weber <xmw@gentoo.org>
+  +files/libsvgtiny-0.1.3-parallel-build.patch, libsvgtiny-0.1.3.ebuild:
+  Fix parallel build.
+
+  22 Mar 2015; Michael Weber <xmw@gentoo.org> libsvgtiny-0.1.3.ebuild:
+  Fix dep versions
+
+  22 Mar 2015; Michael Weber <xmw@gentoo.org> -libsvgtiny-0.0.2.ebuild,
+  -libsvgtiny-0.1.0.ebuild:
+  Drop old.
+
+*libsvgtiny-0.1.3 (21 Mar 2015)
+
+  21 Mar 2015; Michael Weber <xmw@gentoo.org>
+  +files/libsvgtiny-0.1.3-glibc2.20.patch, +libsvgtiny-0.1.3.ebuild:
+  Version bump (bug 543846).
+
+*libsvgtiny-0.1.2 (15 Nov 2014)
+
+  15 Nov 2014; Michael Weber <xmw@gentoo.org>
+  +files/libsvgtiny-0.1.2-glibc2.20.patch, +libsvgtiny-0.1.2.ebuild:
+  Version bump, glibc-2.20 issue, new build system version
+
+  05 Jan 2014; Fabian Groffen <grobian@gentoo.org> libsvgtiny-0.1.0.ebuild:
+  Marked ~m68k-mint, bug #494512
+
+  23 Jun 2013; Michael Weber <xmw@gentoo.org> libsvgtiny-0.1.0.ebuild:
+  Migrate to netsurf.eclass
+
+  22 Jun 2013; Julian Ospald <hasufell@gentoo.org> libsvgtiny-0.1.0.ebuild:
+  fix build failure caused by missing useflag xml in net-libs/libdom
+
+*libsvgtiny-0.1.0 (17 Jun 2013)
+
+  17 Jun 2013; Michael Weber <xmw@gentoo.org> +libsvgtiny-0.1.0.ebuild,
+  -libsvgtiny-9999.ebuild:
+  Version bump (bug 470720), multilib build, preparations for netsurf eclass.
+
+  28 Feb 2013; Michael Weber <xmw@gentoo.org> libsvgtiny-0.0.2.ebuild:
+  netsurf eclass preparation.
+
+  18 Jul 2012; Michael Weber <xmw@gentoo.org>
+  -libsvgtiny-0.0.2_pre20120629.ebuild:
+  drop old
+
+*libsvgtiny-0.0.2 (18 Jul 2012)
+
+  18 Jul 2012; Michael Weber <xmw@gentoo.org> +libsvgtiny-0.0.2.ebuild:
+  Version bump to netsurf-2.9 tarball
+
+  18 Jul 2012; Michael Weber <xmw@gentoo.org>
+  libsvgtiny-0.0.2_pre20120629.ebuild, libsvgtiny-9999.ebuild:
+  Fix HOMEPAGE, thanks Nikoli
+
+*libsvgtiny-9999 (18 Jul 2012)
+*libsvgtiny-0.0.2_pre20120629 (18 Jul 2012)
+
+  18 Jul 2012; Michael Weber <xmw@gentoo.org>
+  +libsvgtiny-0.0.2_pre20120629.ebuild, +libsvgtiny-9999.ebuild, +metadata.xml:
+  Initial import

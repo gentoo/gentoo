@@ -1,0 +1,55 @@
+# ChangeLog for dev-python/python-debian
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-debian/ChangeLog,v 1.13 2015/04/19 16:37:26 floppym Exp $
+
+  19 Apr 2015; Mike Gilbert <floppym@gentoo.org> python-debian-0.1.27.ebuild:
+  Add link to upstream bug report on test failures.
+
+*python-debian-0.1.27 (19 Apr 2015)
+
+  19 Apr 2015; Mike Gilbert <floppym@gentoo.org> +python-debian-0.1.27.ebuild:
+  Version bump.
+
+  19 Apr 2015; Mike Gilbert <floppym@gentoo.org> python-debian-0.1.26.ebuild:
+  Simplify python_test function.
+
+*python-debian-0.1.26 (13 Apr 2015)
+
+  13 Apr 2015; Justin Lecher <jlec@gentoo.org>
+  +files/python-debian-0.1.26-CVE-2015-0840.patch,
+  +files/python-debian-0.1.26-fix-tests.patch, +python-debian-0.1.26.ebuild,
+  -python-debian-0.1.21_p2.ebuild, metadata.xml:
+  Version Bump; drop old; import fix for CVE-2015-0840, bug #546416
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> python-debian-0.1.21_p2.ebuild:
+  Drop old Python implementations
+
+  01 Feb 2015; Manuel Rüger <mrueg@gentoo.org> -python-debian-0.1.21.ebuild:
+  Remove old.
+
+  02 Apr 2014; Mike Gilbert <floppym@gentoo.org> python-debian-0.1.21_p2.ebuild:
+  Add python3.4.
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> python-debian-0.1.21_p2.ebuild:
+  Add support for the new PyPy slotting.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> python-debian-0.1.21_p2.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*python-debian-0.1.21_p2 (02 Aug 2013)
+
+  02 Aug 2013; Mike Gilbert <floppym@gentoo.org>
+  +python-debian-0.1.21_p2.ebuild:
+  Version bump. Convert to distutils-r1 and enable python3 support.
+
+  09 Sep 2011; Mike Gilbert <floppym@gentoo.org> python-debian-0.1.21.ebuild:
+  Tests require app-arch/dpkg
+
+  09 Sep 2011; Mike Gilbert <floppym@gentoo.org> python-debian-0.1.21.ebuild:
+  Keyword for x86
+
+*python-debian-0.1.21 (08 Sep 2011)
+
+  08 Sep 2011; Mike Gilbert <floppym@gentoo.org> +python-debian-0.1.21.ebuild,
+  +metadata.xml:
+  New package for bug 356129

@@ -1,0 +1,64 @@
+# ChangeLog for media-gfx/pngnq
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/pngnq/ChangeLog,v 1.17 2015/05/23 08:58:25 pacho Exp $
+
+  23 May 2015; Pacho Ramos <pacho@gentoo.org> pngnq-1.1.ebuild:
+  Needs automake-1.13 (#531812)
+
+  08 Feb 2015;  <hanno@gentoo.org> metadata.xml:
+  re-assign to maintainer-needed
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> pngnq-1.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  21 Feb 2013; Samuli Suominen <ssuominen@gentoo.org> -pngnq-1.0.ebuild,
+  -files/pngnq-1.0-as-needed.patch:
+  old
+
+  21 Feb 2013; Samuli Suominen <ssuominen@gentoo.org> pngnq-1.1.ebuild:
+  amd64/x86 stable. switch to new license combination; both pnqnq and rwpng.
+
+*pngnq-1.1 (12 Jan 2013)
+
+  12 Jan 2013; Hanno Boeck <hanno@gentoo.org> +pngnq-1.1.ebuild,
+  pngnq-1.0.ebuild:
+  Bump and fix license
+
+  08 Aug 2011; Samuli Suominen <ssuominen@gentoo.org> pngnq-1.0.ebuild,
+  +files/pngnq-1.0-libpng15.patch:
+  Fix missing zlib.h include with libpng >= 1.5 present wrt #378183 by Diego
+  Elio Pettenò
+
+  21 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> pngnq-1.0.ebuild:
+  x86 stable wrt bug #319535
+
+  16 May 2010; Markos Chandras <hwoarang@gentoo.org> pngnq-1.0.ebuild:
+  Stable on amd64 wrt bug #319535
+
+  10 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> pngnq-1.0.ebuild,
+  +files/pngnq-1.0-libpng14.patch:
+  Fix building with libpng14.
+
+  17 Jan 2010; Hanno Boeck <hanno@gentoo.org> pngnq-1.0.ebuild,
+  +files/pngnq-1.0-as-needed.patch:
+  Fix for --as-needed thanks to Kacper Kowalik in #301002. Cleanup.
+
+*pngnq-1.0 (08 Jan 2010)
+
+  08 Jan 2010; Patrick Lauer <patrick@gentoo.org> +pngnq-1.0.ebuild:
+  Bump for #293837
+
+  25 Oct 2008; Hanno Boeck <hanno@gentoo.org> pngnq-0.5.ebuild:
+  Respect CC variable, fixes #244164.
+
+  16 Oct 2008; Hanno Boeck <hanno@gentoo.org> +files/pngnq-0.5-cflags.diff,
+  pngnq-0.5.ebuild:
+  Respect CFLAGS and LDFLAGS.
+
+  29 Aug 2008; Markus Meier <maekke@gentoo.org> pngnq-0.5.ebuild:
+  amd64/x86 stable, bug #236047
+
+*pngnq-0.5 (27 Jul 2008)
+
+  27 Jul 2008; Hanno Boeck <hanno@gentoo.org> +pngnq-0.5.ebuild:
+  Initial commit of pngnq, bug #203000.

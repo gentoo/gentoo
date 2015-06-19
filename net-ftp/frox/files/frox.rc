@@ -1,0 +1,46 @@
+#!/sbin/runscript
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/frox/files/frox.rc,v 1.5 2008/05/01 13:42:28 dragonheart Exp $
+
+PROGNAME=frox
+
+opts="depend start stop reload"
+
+depend() {
+        need net
+}
+
+checkconfig() {
+	if [ ! -f /etc/frox.conf ] ; then
+		eerror "missing /etc/frox.conf"
+		return 1
+	fi
+
+}
+
+start() {
+	checkconfig || return 1
+	FROX_OPTS=" -f /etc/frox.conf"
+
+        ebegin "Starting ${PROGNAME}..."
+        start-stop-daemon --start --quiet --exec /usr/sbin/${PROGNAME} -- ${OPTIONS} ${FROX_OPTS} &> /dev/null
+        eend $?
+}
+
+stop() {
+        ebegin "Stop ${PROGNAME}..."
+                start-stop-daemon --stop --quiet --exec /usr/sbin/${PROGNAME} &> /dev/null
+        eend $?
+}
+
+reload() {
+        if [ ! -f /var/run/frox/frox.pid ]; then
+                eerror "frox isn't running"
+                return 1
+        fi
+        ebegin "Reloading configuration"
+        kill -HUP `cat /var/run/frox/frox.pid` &>/dev/null
+        eend $?
+}
+

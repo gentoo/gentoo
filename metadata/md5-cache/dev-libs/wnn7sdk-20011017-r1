@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=x11-misc/imake
+DESCRIPTION=Library and headers for Wnn7 client
+HOMEPAGE=http://www.omronsoft.co.jp/SP/pcunix/sdk/index.html
+KEYWORDS=~amd64 ~x86
+LICENSE=freedist
+SLOT=0
+SRC_URI=ftp://ftp.omronsoft.co.jp/pub/Wnn7/sdk_source/Wnn7SDK.tgz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=4e5c4bc88beff6bb2a443f068c2adf68

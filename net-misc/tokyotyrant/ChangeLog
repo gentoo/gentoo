@@ -1,0 +1,68 @@
+# ChangeLog for net-misc/tokyotyrant
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/tokyotyrant/ChangeLog,v 1.12 2015/04/26 22:51:11 mrueg Exp $
+
+  26 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -files/fix_makefiles.patch,
+  -tokyotyrant-1.1.40.ebuild:
+  Remove old.
+
+  08 Jan 2014; Mike Frysinger <vapier@gentoo.org> tokyotyrant-1.1.40.ebuild,
+  tokyotyrant-1.1.41-r1.ebuild:
+  Inherit the user eclass for enewuser/etc...
+
+*tokyotyrant-1.1.41-r1 (28 Feb 2013)
+
+  28 Feb 2013; Patrick Lauer <patrick@gentoo.org> +tokyotyrant-1.1.41-r1.ebuild,
+  -tokyotyrant-1.1.41.ebuild, files/tokyotyrant.initd:
+  Bump to force update init script #459574
+
+*tokyotyrant-1.1.41 (13 Aug 2010)
+
+  13 Aug 2010; Patrick Lauer <patrick@gentoo.org>
+  +tokyotyrant-1.1.41.ebuild, +files/fix_makefiles-1.4.41.patch:
+  Bump, fixes thanks to Johan Bergstroem. Fixes #331559
+
+  18 Jun 2010; Patrick Lauer <patrick@gentoo.org>
+  -tokyotyrant-1.1.37.ebuild, -tokyotyrant-1.1.39.ebuild:
+  Remove old
+
+*tokyotyrant-1.1.40 (19 Feb 2010)
+
+  19 Feb 2010; Patrick Lauer <patrick@gentoo.org>
+  +tokyotyrant-1.1.40.ebuild:
+  Bump for #302991
+
+  23 Jan 2010; Fabian Groffen <grobian@gentoo.org>
+  tokyotyrant-1.1.39.ebuild:
+  Don't user stuff in Prefix, marked ~ppc-macos and ~x86-macos, bug #298814
+
+  06 Jan 2010; Patrick Lauer <patrick@gentoo.org> files/fix_testsuite.patch:
+  Fixing patch for #299901, thanks to Johan Bergstroem
+
+*tokyotyrant-1.1.39 (28 Dec 2009)
+
+  28 Dec 2009; Patrick Lauer <patrick@gentoo.org>
+  -tokyotyrant-1.1.36.ebuild, +tokyotyrant-1.1.39.ebuild:
+  Bump, remove old
+
+*tokyotyrant-1.1.37 (27 Oct 2009)
+
+  27 Oct 2009; Patrick Lauer <patrick@gentoo.org>
+  +tokyotyrant-1.1.37.ebuild:
+  Bump, closes #290808
+
+*tokyotyrant-1.1.36 (20 Oct 2009)
+
+  20 Oct 2009; Patrick Lauer <patrick@gentoo.org>
+  -tokyotyrant-1.1.35.ebuild, +tokyotyrant-1.1.36.ebuild,
+  files/fix_testsuite.patch:
+  Bump
+
+*tokyotyrant-1.1.35 (09 Oct 2009)
+
+  09 Oct 2009; Patrick Lauer <patrick@gentoo.org>
+  +tokyotyrant-1.1.35.ebuild, +files/fix_makefiles.patch,
+  +files/fix_testsuite.patch, +files/tokyotyrant.confd,
+  +files/tokyotyrant.initd, +metadata.xml:
+  Initial import of tokyotyrant. Thanks to Johan Bergstroem for the ebuild.
+  Closes #288265

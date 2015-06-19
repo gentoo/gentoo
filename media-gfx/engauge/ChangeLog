@@ -1,0 +1,67 @@
+# ChangeLog for media-gfx/engauge
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/engauge/ChangeLog,v 1.16 2014/02/05 21:58:43 calchan Exp $
+
+*engauge-5.2 (05 Feb 2014)
+
+  05 Feb 2014; Denis Dupeyron <calchan@gentoo.org> +engauge-5.2.ebuild:
+  Version bump, thanks to Dominique Michel (bug #491118).
+
+  17 Jul 2013; Patrick Lauer <patrick@gentoo.org> engauge-5.1.ebuild:
+  Fixing qtgui deps for qt-4.8.5
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> engauge-5.1.ebuild:
+  Move Qt dependencies to the new category
+
+  20 Jan 2013; Denis Dupeyron <calchan@gentoo.org> -engauge-4.1-r1.ebuild,
+  -files/engauge-5.1-gcc47.patch, -files/engauge-5.1-qreal-double.patch:
+  Remove old version which doesn't work any longer (bug #436818).
+
+*engauge-5.1 (20 Jan 2013)
+
+  20 Jan 2013; Denis Dupeyron <calchan@gentoo.org> +engauge-5.1.ebuild:
+  Version bump with Qt4 support from upstream, thanks to Dominique Michel (bug
+  #436818).
+
+  07 Oct 2012; Pacho Ramos <pacho@gentoo.org> +files/engauge-5.1-gcc47.patch,
+  +files/engauge-5.1-qreal-double.patch, engauge-4.1-r1.ebuild:
+  Fix compilation problems with debian patches, bug #423009.
+
+  29 Jul 2012; Michael Palimaka <kensington@gentoo.org> engauge-4.1-r1.ebuild:
+  Add missing slot dependencies on Qt.
+
+  15 Mar 2012; Denis Dupeyron <calchan@gentoo.org> engauge-4.1-r1.ebuild:
+  Migrate to qt4-r2.eclass.
+
+  15 Mar 2012; Denis Dupeyron <calchan@gentoo.org> engauge-4.1-r1.ebuild:
+  Add dependancy to x11-libs/libXft. Thanks to Piotr Szymaniak (bug #408317).
+
+  22 Mar 2010; Ben de Groot <yngwin@gentoo.org> -engauge-4.1.ebuild:
+  Remove qt-3 and revdeps, bug #283429 (tracker) and #301746 (engauge)
+
+*engauge-4.1-r1 (19 Mar 2010)
+
+  19 Mar 2010; <calchan@gentoo.org> +engauge-4.1-r1.ebuild,
+  +files/engauge-4.1_qt4.patch:
+  Saved in extremis from complete removal by Oliver Borm who provided a
+  patch to build against Qt4, thanks a lot (bug #310125). Fixed bug #299788
+  also thanks to Oliver Borm.
+
+  09 Mar 2010; Jonathan Callen <abcd@gentoo.org> engauge-4.1.ebuild:
+  QA: When not using an absolute path, you MUST NOT use a file extension
+  (.png, .svg, or .xpm) on the icon name for make_desktop_entry
+
+  04 Jan 2010; Samuli Suominen <ssuominen@gentoo.org> engauge-4.1.ebuild:
+  Keyword ~amd64 wrt #294955.
+
+  15 Dec 2009; Peter Volkov <pva@gentoo.org> metadata.xml:
+  metadata.xml: added required herd tag.
+
+  21 Oct 2009; Markus Meier <maekke@gentoo.org> engauge-4.1.ebuild:
+  x86 stable, bug #286342
+
+*engauge-4.1 (05 Jun 2009)
+
+  05 Jun 2009; Denis Dupeyron <calchan@gentoo.org> +engauge-4.1.ebuild,
+  +metadata.xml:
+  Initial commit, bug #108469.

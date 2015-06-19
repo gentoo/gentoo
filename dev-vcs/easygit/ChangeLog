@@ -1,0 +1,30 @@
+# ChangeLog for dev-vcs/easygit
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/easygit/ChangeLog,v 1.3 2014/08/10 21:23:03 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> easygit-1.6.5.5.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  18 Mar 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #118003.
+
+  10 Feb 2011; Ulrich Mueller <ulm@gentoo.org> +easygit-1.6.5.5.ebuild,
+  +metadata.xml:
+  Move package from dev-util to dev-vcs, bug 56967.
+
+  17 Mar 2010; Sebastian Pipping <sping@gentoo.org> easygit-1.6.5.5.ebuild:
+  Propagate move of dev-util/git to dev-vcs/git
+
+*easygit-1.6.5.5 (08 Jan 2010)
+
+  08 Jan 2010; Dror Levin <spatz@gentoo.org> +easygit-1.6.5.5.ebuild:
+  Version bump, bug 300107. Thanks to pedro.
+
+  07 Sep 2008; Robin H. Johnson <robbat2@gentoo.org> easygit-0.85.ebuild:
+  More arches work.
+
+*easygit-0.85 (30 Aug 2008)
+
+  30 Aug 2008; Markus Ullmann <jokey@gentoo.org> +metadata.xml,
+  +easygit-0.85.ebuild:
+  Initial import for bug #236079 thanks to Stian Viskjer

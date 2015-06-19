@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>lxqt</herd>
+  <maintainer>
+    <email>jauhien@gentoo.org</email>
+    <name>Jauhien Piatlicki</name>
+  </maintainer>
+  <use>
+    <flag name="consolekit">Use ck-launch-session from sys-auth/consolekit by default in Xsession (no native support)</flag>
+  </use>
+  <longdescription lang="en">
+    SDDM is a modern display manager for X11 aiming to be fast, simple
+    and beatiful. It uses modern technologies like QtQuick, which in
+    turn gives the designer the ability to create smooth, animated
+    user interfaces.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">sddm/sddm</remote-id>
+  </upstream>
+</pkgmetadata>

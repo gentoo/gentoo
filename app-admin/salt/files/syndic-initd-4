@@ -1,0 +1,15 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/salt/files/syndic-initd-4,v 1.1 2015/05/06 22:27:59 chutzpah Exp $
+
+command="/usr/bin/salt-syndic"
+command_args="${SALT_OPTS}"
+command_background="1"
+pidfile="/var/run/salt-syndic.pid"
+name="SALT syndic daemon"
+retry="20"
+
+depend() {
+	use net logger
+}

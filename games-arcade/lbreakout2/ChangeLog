@@ -1,0 +1,220 @@
+# ChangeLog for games-arcade/lbreakout2
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/lbreakout2/ChangeLog,v 1.42 2015/03/12 18:44:34 mr_bones_ Exp $
+
+  12 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/lbreakout2-2.6.3-gentoo.patch, -lbreakout2-2.6.3.ebuild:
+  old
+
+  21 Feb 2015; Agostino Sarubbo <ago@gentoo.org> lbreakout2-2.6.4.ebuild:
+  Stable for ppc, wrt bug #539518
+
+  10 Feb 2015; Agostino Sarubbo <ago@gentoo.org> lbreakout2-2.6.4.ebuild:
+  Stable for x86, wrt bug #539518
+
+  10 Feb 2015; Agostino Sarubbo <ago@gentoo.org> lbreakout2-2.6.4.ebuild:
+  Stable for amd64, wrt bug #539518
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> lbreakout2-2.6.3.ebuild,
+  lbreakout2-2.6.4.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  01 Feb 2013; Michael Sterrett <mr_bones_@gentoo.org> lbreakout2-2.6.4.ebuild:
+  whitespace
+
+*lbreakout2-2.6.4 (31 Jan 2013)
+
+  31 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/lbreakout2-2.6.4-gentoo.patch, +lbreakout2-2.6.4.ebuild,
+  -files/lbreakout2-2.6.2-gentoo.patch, -lbreakout2-2.6.2.ebuild,
+  files/lbreakout2-2.6.3-gentoo.patch:
+  version bump (bug #452246); clean old
+
+  16 Sep 2011; Michael Sterrett <mr_bones_@gentoo.org> lbreakout2-2.6.3.ebuild:
+  bump the levelset version (bug #383261)
+
+  15 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org> lbreakout2-2.6.3.ebuild:
+  ppc stable wrt #362657
+
+  10 Apr 2011; Thomas Kahle <tomka@gentoo.org> lbreakout2-2.6.3.ebuild:
+  x86 stable per bug 362657
+
+  09 Apr 2011; Christoph Mende <angelos@gentoo.org> lbreakout2-2.6.3.ebuild:
+  Stable on amd64 wrt bug #362657
+
+*lbreakout2-2.6.3 (09 Mar 2011)
+
+  09 Mar 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  +lbreakout2-2.6.3.ebuild, +files/lbreakout2-2.6.3-gentoo.patch:
+  version bump
+
+  04 Mar 2011; Brent Baude <ranger@gentoo.org> lbreakout2-2.6.2.ebuild:
+  stable ppc, bug 344349
+
+  08 Nov 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  lbreakout2-2.6.2.ebuild:
+  x86 stable wrt bug #344349
+
+  07 Nov 2010; Markos Chandras <hwoarang@gentoo.org>
+  lbreakout2-2.6.2.ebuild:
+  Stable on amd64 wrt bug #344349
+
+*lbreakout2-2.6.2 (06 Oct 2010)
+
+  06 Oct 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +lbreakout2-2.6.2.ebuild, +files/lbreakout2-2.6.2-gentoo.patch:
+  version bump
+
+  10 Feb 2010; Joseph Jezak <josejx@gentoo.org> lbreakout2-2.6.1.ebuild:
+  Marked ppc stable for bug #302842.
+
+  08 Feb 2010; Christian Faulhammer <fauli@gentoo.org>
+  lbreakout2-2.6.1.ebuild:
+  stable x86, bug 302842
+
+  04 Feb 2010; Markos Chandras <hwoarang@gentoo.org>
+  lbreakout2-2.6.1.ebuild:
+  Stable on amd64 wrt bug #302842
+
+  30 Jan 2010; Raúl Porcel <armin76@gentoo.org> lbreakout2-2.5.2.ebuild,
+  lbreakout2-2.6.1.ebuild:
+  Drop alpha/ia64 keywords
+
+*lbreakout2-2.6.1 (30 Dec 2009)
+
+  30 Dec 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +lbreakout2-2.6.1.ebuild, +files/lbreakout2-2.6.1-gentoo.patch:
+  version bump
+
+  22 Feb 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  lbreakout2-2.5.2.ebuild:
+  remove GAMES_USE_SDL; now handled by use-based deps
+
+  22 Jan 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  lbreakout2-2.5.2.ebuild:
+  transition to the non-no* use flags in libsdl
+
+  08 May 2007; Michael Sterrett <mr_bones_@gentoo.org>
+  lbreakout2-2.5.2.ebuild:
+  update levelset file with patch from Denilson via bug #162745
+
+  24 Apr 2007; Timothy Redaelli <drizzt@gentoo.org> lbreakout2-2.5.2.ebuild:
+  Add ~x86-fbsd keyword.
+  Thanks to Nathan Smith for reporting wrt bug #175779
+
+  10 Jul 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  lbreakout2-2.5.2.ebuild:
+  needs joystick support (bug #139864)
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org> lbreakout2-2.5.2.ebuild:
+  Mark 2.5.2 stable on alpha
+
+  20 Jul 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  lbreakout2-2.5.2.ebuild:
+  use a png for the icon instead of a gif.  latest gtk+ doesn't like gifs
+  all that much (bug #99555); tidy
+
+  30 Mar 2005; Bryan Østergaard <kloeri@gentoo.org>
+  lbreakout2-2.5.2.ebuild:
+  Add ~alpha keyword, bug 86601.
+
+*lbreakout2-2.5.2 (24 Jan 2005)
+
+  24 Jan 2005; Mike Frysinger <vapier@gentoo.org> +lbreakout2-2.5.2.ebuild:
+  Version bump #79093 by Alexandru Toma.
+
+  18 Jan 2005; Chris Gianelloni <wolf31o2@gentoo.org> lbreakout2-2.4.ebuild,
+  lbreakout2-2.5.1.ebuild, lbreakout2-2.5.ebuild,
+  lbreakout2-2.5_beta6.ebuild:
+  Updated with a .desktop entry and closing bug #76656.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*lbreakout2-2.5.1 (06 Oct 2004)
+
+  06 Oct 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +lbreakout2-2.5.1.ebuild:
+  version bump (bug #65860)
+
+*lbreakout2-2.5 (11 Aug 2004)
+
+  11 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org> +lbreakout2-2.5.ebuild:
+  version bump (bug #59865)
+
+  16 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  lbreakout2-2.5_beta3.ebuild:
+  beta5 seems nicer all around
+
+*lbreakout2-2.5_beta6 (15 Jun 2004)
+
+  15 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  lbreakout2-2.5_beta6.ebuild:
+  version bump (bug #52181)
+
+  19 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> lbreakout2-2.4.ebuild,
+  lbreakout2-2.5_beta3.ebuild:
+  put the high scores in GAMES_STATEDIR
+
+  19 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> lbreakout2-2.4.ebuild,
+  lbreakout2-2.5_beta3.ebuild:
+  use all-levels snapshot archive instead of individual level files (should fix
+  bug #44447); use emake
+
+  04 Nov 2003; Jason Wever <weeve@gentoo.org> lbreakout2-2.4.ebuild:
+  Added ~sparc keyword.
+
+*lbreakout2-2.5_beta3 (19 Jul 2003)
+
+  19 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump.
+
+*lbreakout2-2.4 (03 Mar 2003)
+
+  26 May 2003; Chuck Brewer <killian@gentoo.org> lbreakout2-2.4.ebuild:
+  Added html manual back in (closes #17289)
+
+  28 Apr 2003; Graham Forest <vladimir@gentoo.org> lbreakout2-2.4.ebuild:
+  set ~ppc in keywords
+
+  03 Mar 2003; Mike Frysinger <vapier@gentoo.org> :
+  version bump + games eclass support #12118.
+
+*lbreakout2-2.3.5 (28 Sep 2002)
+
+  18 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> lbreakout2-2.2.2.ebuild :
+  Updated to mirror://sourceforge in SRC_URI.
+
+  28 Sep 2002; Nick Hadaway <raker@gentoo.org> lbreakout2-2.3.5.ebuild,
+  files/digest-lbreakout2-2.3.5 :
+  Version bump.  Incorporated same fixes applied to 2.2.2.
+
+*lbreakout2-2.2.2 (03 Jul 2002)
+
+  18 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> lbreakout2-2.2.2.ebuild :
+  Updated to mirror://sourceforge in SRC_URI.
+
+  28 Sep 2002; Nick Hadaway <raker@gentoo.org> lbreakout2-2.2.2.ebuild,
+  files/digest-lbreakout2-2.2.2 :
+  Removed optimization flags due to gcc3 compile problems.  Synced up
+  themes with all available on the homepage.  Updated install flags
+  to avoid sandbox violations.
+
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> lbreakout2-2.2.ebuild :
+  Added LICENSE, KEYWORDS.
+
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> lbreakout2-2.2.2.ebuild :
+  Added KEYWORDS.
+
+  03 Jul 2002; J.Alberto S.L. <bass@gentoo.org>
+  Just a version bump and new themes added.
+
+*lbreakout2-2.1.2 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

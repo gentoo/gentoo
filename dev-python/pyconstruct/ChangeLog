@@ -1,0 +1,57 @@
+# ChangeLog for dev-python/pyconstruct
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyconstruct/ChangeLog,v 1.10 2015/02/01 21:27:14 mrueg Exp $
+
+  01 Feb 2015; Manuel Rüger <mrueg@gentoo.org>
+  -files/pyconstruct-2.5.0-fixpy3.patch, -pyconstruct-2.5.1.ebuild:
+  Remove old.
+
+*pyconstruct-2.5.2 (15 May 2014)
+
+  15 May 2014; Ian Delaney <idella4@gentoo.org> +pyconstruct-2.5.2.ebuild,
+  -pyconstruct-2.0.0.ebuild, -pyconstruct-2.04.ebuild, -pyconstruct-2.06.ebuild,
+  -pyconstruct-2.5.0-r1.ebuild, -pyconstruct-2.5.0.ebuild:
+  bump; drop py2.6 add py3 pypy support, rm old
+
+*pyconstruct-2.5.1 (22 May 2013)
+
+  22 May 2013; Patrick Lauer <patrick@gentoo.org> +pyconstruct-2.5.1.ebuild:
+  Bump
+
+*pyconstruct-2.5.0-r1 (24 Jan 2013)
+
+  24 Jan 2013; Ian Delaney <idella4@gentoo.org>
+  +files/pyconstruct-2.5.0-fixpy3.patch, +pyconstruct-2.5.0-r1.ebuild,
+  pyconstruct-2.5.0.ebuild:
+  revbump; drop all refs to doc subsequent to 0.2.5 absent of docs folder, fixes
+  Bug #453552, add support to py3 subsequent to upstream issues/15 @github,
+  yielding a patch 63b966c, resulting in pyconstruct-2.5.0-fixpy3.patch
+
+*pyconstruct-2.5.0 (22 Jan 2013)
+
+  22 Jan 2013; Patrick Lauer <patrick@gentoo.org> +pyconstruct-2.5.0.ebuild:
+  Bump
+
+  06 Jan 2012; Markos Chandras <hwoarang@gentoo.org> pyconstruct-2.06.ebuild:
+  Fix dependencies. Set PYTHON_MODNAME and use distutils_pkg_postinst() and
+  distutils_pkg_postrm(). Patch by Arfrever.
+
+*pyconstruct-2.06 (25 Dec 2011)
+
+  25 Dec 2011; Patrick Lauer <patrick@gentoo.org> +pyconstruct-2.06.ebuild:
+  Bump for #393609
+
+*pyconstruct-2.04 (16 Sep 2011)
+
+  16 Sep 2011; Dirkjan Ochtman <djc@gentoo.org> +pyconstruct-2.04.ebuild:
+  Version bump to 2.04 (fixes bug 383059, thanks jbergstroem).
+
+  08 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pyconstruct-2.0.0.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+*pyconstruct-2.0.0 (03 Feb 2009)
+
+  03 Feb 2009; Patrick Lauer <patrick@gentoo.org> +metadata.xml,
+  +pyconstruct-2.0.0.ebuild:
+  Initial import. Ebuild by Thomas R. (TRauMa). Closes #161853.

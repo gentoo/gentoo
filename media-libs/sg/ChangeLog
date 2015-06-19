@@ -1,0 +1,54 @@
+# ChangeLog for media-libs/sg
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/sg/ChangeLog,v 1.14 2015/04/19 09:35:39 pacho Exp $
+
+  19 Apr 2015; Pacho Ramos <pacho@gentoo.org> sg-1.5.ebuild:
+  x86 stable wrt bug #534670
+
+  31 Jan 2015; Agostino Sarubbo <ago@gentoo.org> sg-1.5.ebuild:
+  Stable for amd64, wrt bug #534670
+
+  04 Jan 2015; Justin Lecher <jlec@gentoo.org> -sg-1.4.ebuild, sg-1.5.ebuild:
+  Drop old
+
+  22 Jun 2014; Justin Lecher <jlec@gentoo.org> sg-1.4.ebuild, sg-1.5.ebuild:
+  Add missing dep, #514052
+
+  04 May 2013; Justin Lecher <jlec@gentoo.org> sg-1.5.ebuild, metadata.xml:
+  Fix obsolete macros to work with automake-1.13
+
+  24 Oct 2012; Ulrich Müller <ulm@gentoo.org> sg-1.4.ebuild, sg-1.5.ebuild:
+  Update dependency after package move from x11-libs/openmotif to
+  x11-libs/motif.
+
+  19 Jun 2012; Justin Lecher <jlec@gentoo.org> sg-1.5.ebuild:
+  Always build complete X support, #421807
+
+  02 May 2012; Justin Lecher <jlec@gentoo.org> sg-1.5.ebuild:
+  Handle static libs
+
+  13 Feb 2012; Justin Lecher <jlec@gentoo.org> sg-1.4.ebuild, sg-1.5.ebuild:
+  Add alternative to mase[motif] -> libGLw
+
+  23 Dec 2011; Justin Lecher <jlec@gentoo.org> sg-1.4.ebuild, sg-1.5.ebuild,
+  metadata.xml:
+  Added missing dep on x11-libs/libXaw
+
+*sg-1.5 (16 Apr 2011)
+
+  16 Apr 2011; Justin Lecher <jlec@gentoo.org> +sg-1.5.ebuild:
+  Version Bump
+
+  24 Nov 2010; Justin Lecher <jlec@gentoo.org> sg-1.4.ebuild:
+  Fixed dep for opengl to force motif support, thanks Jaroslaw Kalinowski
+  #344817
+
+  02 Nov 2010; Justin Lecher <jlec@gentoo.org> +files/1.4-doc.patch,
+  sg-1.4.ebuild:
+  Fixed automagic doxygen usage
+
+*sg-1.4 (01 Nov 2010)
+
+  01 Nov 2010; Justin Lecher <jlec@gentoo.org> +files/1.4-opengl.patch,
+  +sg-1.4.ebuild, +metadata.xml:
+  New addition

@@ -1,0 +1,17 @@
+--- contrib/nsd_munin_.orig	2013-08-08 23:14:27.000000000 +0200
++++ contrib/nsd_munin_	2013-08-08 23:41:24.000000000 +0200
+@@ -87,10 +87,10 @@
+ 
+ =cut
+ 
+-state=${statefile:-/usr/local/var/munin/plugin-state/nsd-state}
+-conf=${nsd_conf:-/usr/local/etc/nsd.conf}
+-ctrl=${nsd_control:-/usr/local/sbin/nsd-control}
+-chkconf=${nsd_checkconf:-/usr/local/sbin/nsd-checkconf}
++state=${statefile:-$MUNIN_PLUGSTATE/nsd-state}
++conf=${nsd_conf:-/etc/nsd/nsd.conf}
++ctrl=${nsd_control:-/usr/sbin/nsd-control}
++chkconf=${nsd_checkconf:-/usr/sbin/nsd-checkconf}
+ lock=$state.lock
+ 
+ # number of seconds between polling attempts.

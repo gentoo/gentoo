@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=app-arch/p7zip
+DESCRIPTION=An multi-threaded multihash cracker
+EAPI=5
+HOMEPAGE=http://hashcat.net/hashcat/
+KEYWORDS=-* ~amd64 ~amd64-linux ~x64-macos ~x86 ~x86-linux
+LICENSE=hashcat
+RESTRICT=strip
+SLOT=0
+SRC_URI=http://hashcat.net/files/hashcat-0.49.7z
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	pax-utils	dfe060cb70d89757fde5c1ff8405e950	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=1e552f2b10f46a966a56807ea7afd69f

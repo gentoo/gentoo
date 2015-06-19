@@ -1,0 +1,38 @@
+From 414ba660bccd3eed60f63cc8a1d117740065126f Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Wed, 25 Dec 2013 10:42:26 -0500
+Subject: [PATCH] Specify encoding when opening files in setup.py
+
+This resolves a UnicodeDecodeError when setup.py is invoked with a
+non-utf8 locale.
+
+https://bugs.gentoo.org/show_bug.cgi?id=495118
+---
+ setup.py | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index c76e869..9191f11 100644
+--- a/setup.py
++++ b/setup.py
+@@ -1,12 +1,14 @@
+ __version__ = '2.0'
+ 
+-import os, sys
++import io, os, sys
+ 
+ from setuptools import setup, find_packages
+ 
+ here = os.path.abspath(os.path.dirname(__file__))
+-README = open(os.path.join(here, 'README.rst')).read()
+-CHANGES = open(os.path.join(here, 'CHANGELOG.rst')).read()
++with io.open(os.path.join(here, 'README.rst'), encoding='utf8') as f:
++    README = f.read()
++with io.open(os.path.join(here, 'CHANGELOG.rst'), encoding='utf8') as f:
++    CHANGES = f.read()
+ PY3 = sys.version_info[0] == 3
+ 
+ extra_options = {
+-- 
+1.8.5.2
+

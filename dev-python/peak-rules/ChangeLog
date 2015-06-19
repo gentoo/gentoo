@@ -1,0 +1,19 @@
+# ChangeLog for dev-python/peak-rules
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/peak-rules/ChangeLog,v 1.4 2015/04/08 08:04:57 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> peak-rules-0.5.ebuild:
+  Drop old Python implementations
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> peak-rules-0.5.ebuild:
+  Add support for the new PyPy slotting.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> peak-rules-0.5.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*peak-rules-0.5 (10 Apr 2013)
+
+  10 Apr 2013; Ian Delaney <idella4@gentoo.org> +metadata.xml,
+  +peak-rules-0.5.ebuild:
+  Package is a snapshot originally named PEAK-Rules-0.5a1.dev, new dep of
+  turbojson-1.3, ebuild written by me

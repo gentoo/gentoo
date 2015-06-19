@@ -1,0 +1,303 @@
+# ChangeLog for app-i18n/canna
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/canna/ChangeLog,v 1.75 2015/06/09 11:18:28 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  20 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -canna-3.7_p2.ebuild,
+  -canna-3.7_p3.ebuild:
+  Remove old.
+
+  18 Dec 2012; Agostino Sarubbo <ago@gentoo.org> canna-3.7_p3-r1.ebuild:
+  Stable for ia64, wrt bug #441080
+
+  12 Jul 2012; Naohiro Aota <naota@gentoo.org> canna-3.7_p2.ebuild,
+  canna-3.7_p3-r1.ebuild, canna-3.7_p3-r2.ebuild, canna-3.7_p3.ebuild:
+  Add GPL-2 LICENSE for init script. #425906
+
+  17 May 2012; Naohiro Aota <naota@gentoo.org> canna-3.7_p3-r2.ebuild:
+  Add missing dependencies. Respect LDFLAGS. Set VARTEXFONTS=${T}/fonts #223077
+
+  05 Oct 2011; Alexis Ballier <aballier@gentoo.org> canna-3.7_p2.ebuild,
+  canna-3.7_p3.ebuild, canna-3.7_p3-r1.ebuild, canna-3.7_p3-r2.ebuild:
+  remove ptex dep as it is going away
+
+  14 Nov 2010; Alexis Ballier <aballier@gentoo.org> canna-3.7_p3.ebuild,
+  canna-3.7_p3-r2.ebuild:
+  dev-texlive/texlive-langcjk-2010 provides ptex/platex too
+
+  04 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> canna-3.7_p2.ebuild,
+  canna-3.7_p3-r1.ebuild:
+  Remove USE="doc" to fix deptree for stable because of bugs 319509 and
+  323559.
+
+  31 Jan 2010; Raúl Porcel <armin76@gentoo.org> canna-3.7_p3-r1.ebuild:
+  sparc stable wrt #297441
+
+  23 Jan 2010; Tobias Klausmann <klausman@gentoo.org>
+  canna-3.7_p3-r1.ebuild:
+  Stable on alpha, bug #297441
+
+*canna-3.7_p3-r2 (11 Jan 2010)
+
+  11 Jan 2010; MATSUU Takuto <matsuu@gentoo.org> +canna-3.7_p3-r2.ebuild:
+  Added locale elog, bug #300055. Added CC, CFLAGS and LDFLAGS.
+
+  10 Jan 2010; nixnut <nixnut@gentoo.org> canna-3.7_p3-r1.ebuild:
+  ppc stable #297441
+
+  09 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  canna-3.7_p3-r1.ebuild:
+  stable x86, bug 297441
+
+  07 Jan 2010; Brent Baude <ranger@gentoo.org> canna-3.7_p3-r1.ebuild:
+  Marking canna-3.7_p3-r1 ppc64 for bug 297441
+
+  06 Jan 2010; Jeroen Roovers <jer@gentoo.org> canna-3.7_p3-r1.ebuild:
+  Stable for HPPA (bug #297441).
+
+  05 Jan 2010; <hwoarang@gentoo.org> canna-3.7_p3-r1.ebuild:
+  Stable on amd64 wrt bug #297441
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> canna-3.7_p2.ebuild,
+  canna-3.7_p3.ebuild:
+  Remove virtual/libc
+
+*canna-3.7_p3-r1 (21 Sep 2009)
+
+  21 Sep 2009; MATSUU Takuto <matsuu@gentoo.org> +canna-3.7_p3-r1.ebuild,
+  +files/canna-3.7_p3-strip.patch, +files/canna-3.7_p3.confd,
+  +files/canna-3.7_p3.initd:
+  Fixed initscript bashisms, bug #191941.
+  Fixed pre-stripped files, bug #248723.
+  Added -j1 to emake, bug #279706.
+
+  30 Jul 2009; Diego E. Pettenò <flameeyes@gentoo.org> canna-3.7_p3.ebuild:
+  Use -j1 for install bug #279706.
+
+  22 Jul 2007; Denis Dupeyron <calchan@gentoo.org> canna-3.7_p2.ebuild,
+  canna-3.7_p3.ebuild:
+  Drop virtual/x11 dependency.
+
+  22 Apr 2007; MATSUU Takuto <matsuu@gentoo.org>
+  -files/canna-3.6_p4-gentoo.diff, -canna-3.6_p4.ebuild,
+  canna-3.7_p2.ebuild, canna-3.7_p3.ebuild:
+  Used newconfd instead of newins /etc/conf.d, bug #174266.
+  Removed old version.
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> canna-3.7_p2.ebuild,
+  canna-3.7_p3.ebuild:
+  Convert to use elog.
+
+  04 Sep 2006; Michael Sterrett <mr_bones_@gentoo.org> canna-3.6_p4.ebuild:
+  modX deps from canna-3.7_p3
+
+*canna-3.7_p3 (20 Aug 2006)
+
+  20 Aug 2006; Alastair Tse <liquidx@gentoo.org> canna-3.6_p4.ebuild,
+  canna-3.7_p2.ebuild, +canna-3.7_p3.ebuild:
+  version bump. Fixed deprecated sort invocation (#142818)
+
+  25 Jan 2006; Donnie Berkholz <spyderous@gentoo.org>; canna-3.7_p2.ebuild:
+  (#118603) Add modular X deps.
+
+  08 Jul 2005; Diego Pettenò <flameeyes@gentoo.org> canna-3.7_p2.ebuild:
+  Make canna multilib-strict aware. Thanks Martin Schlemmer
+  <azarah@gentoo.org> for the sed.
+
+  30 Mar 2005; Mamoru KOMACHI <usata@gentoo.org> -canna-3.7.ebuild,
+  -canna-3.7_p1.ebuild:
+  Removed old ebuilds.
+
+  17 Jan 2005; Simon Stelling <blubb@gentoo.org> canna-3.7_p2.ebuild:
+  stable on amd64
+
+  02 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  16 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> canna-3.7_p2.ebuild:
+  Stable on sparc
+
+  26 Jul 2004; Tom Gall <tgall@gentoo.org> canna-3.7_p2.ebuild:
+  stable on ppc64
+
+  12 Jul 2004; Tom Gall <tgall@gentoo.org> canna-3.7_p2.ebuild:
+  ~ppc64, bug #55965
+
+  03 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> canna-3.7_p2.ebuild:
+  Stable on alpha.
+
+  24 Jun 2004; Mamoru KOMACHI <usata@gentoo.org> canna-3.7_p2.ebuild:
+  Stable on x86 and ppc
+
+  01 Jun 2004; Aron Griffis <agriffis@gentoo.org> canna-3.6_p4.ebuild,
+  canna-3.7.ebuild, canna-3.7_p1.ebuild, canna-3.7_p2.ebuild:
+  Fix use invocation
+
+*canna-3.7_p2 (19 May 2004)
+
+  19 May 2004; Mamoru KOMACHI <usata@gentoo.org> canna-3.7.ebuild,
+  canna-3.7_p1.ebuild, canna-3.7_p2.ebuild:
+  Version bumped. Marked _p1 stable on x86, ppc and alpha.
+
+  06 May 2004; Mamoru KOMACHI,c10344,, <usata@gentoo.org> canna-3.6_p4.ebuild,
+  canna-3.7.ebuild, canna-3.7_p1.ebuild:
+  Remove VENDORNAME from Makefile. Closing bug #48229
+
+*canna-3.7_p1 (05 May 2004)
+
+  05 May 2004; Mamoru KOMACHI <usata@gentoo.org> canna-3.5_beta2-r2.ebuild,
+  canna-3.7_p1.ebuild, files/canna-3.5_beta2-r2/canna.confd,
+  files/canna-3.5_beta2-r2/canna.initd, files/canna-3.5_beta2-r2/gentoo.diff:
+  Adds quotes around VENDORNAME, see bug #48229. Removed old ebuild.
+
+  04 May 2004; Bryan Østergaard <kloeri@gentoo.org> canna-3.7.ebuild:
+  Stable on alpha.
+
+  04 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> canna-3.7.ebuild:
+  Marked stable on x86 and changed -alpha to ~alpha
+
+  30 Mar 2004; Donnie Berkholz <spyderous@gentoo.org>; canna-3.6_p4.ebuild,
+  canna-3.7.ebuild:
+  Change x11-base/xfree dependency to virtual/x11.
+
+  07 Mar 2004; Jon Portnoy <avenj@gentoo.org> canna-3.7.ebuild :
+  Added AMD64 keywords. Not sure where they went precisely...
+
+  30 Dec 2003; MATSUU Takuto <matsuu@gentoo.org> canna-3.6_p4.ebuild:
+  Marked amd64 as stable.
+
+*canna-3.7 (13 Dec 2003)
+
+  13 Dec 2003; Mamoru KOMACHI <usata@gentoo.org> canna-3.7.ebuild,
+  canna-3.7_beta1.ebuild, files/canna-3.7-gentoo.diff.in,
+  files/canna-3.7_beta1-gentoo.diff.in, files/canna-kpdef-gentoo.diff:
+  Version bumped. Removed beta test version
+
+  18 Nov 2003; MATSUU Takuto <matsuu@gentoo.org> canna-3.6_p4.ebuild:
+  Marked ~amd64
+
+*canna-3.7_beta1 (30 Sep 2003)
+
+  30 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> canna-3.6_p4.ebuild,
+  canna-3.7_beta1.ebuild, files/canna-3.7_beta1-gentoo.diff.in:
+  New depelopment release. Install verbose.canna as default.canna.
+  Note: canna-3.7* is masked by /usr/portage/profiles/package.mask,
+  so you need to unmask it in /etc/portage/package.unmask manually
+  in order to try it.
+
+  23 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> canna-3.6-r1.ebuild,
+  canna-3.6.ebuild, canna-3.6_p1.ebuild, canna-3.6_p3-r1.ebuild,
+  canna-3.6_p3.ebuild, files/canna-3.6-gentoo.diff,
+  files/canna-3.6-r1-gentoo.diff, files/canna-3.6_p1-gentoo.diff,
+  files/canna-3.6_p3-gentoo.diff, files/canna-3.6_p3-r1-gentoo.diff:
+  Cleaned up old versions. Renamed canna-3.6-r1.ebuild to
+  canna-3.6_p1.ebuild (it had wrong name)
+
+*canna-3.6_p4 (23 Sep 2003)
+
+  23 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> canna-3.6_p4.ebuild:
+  Considered as stable. Changed tetex IUSE flag to doc IUSE flag.
+
+  23 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> canna-3.6_p4.ebuild:
+  make canna.pdf if acroread or xpdf is installed. Removed eutils.
+
+  23 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> canna-3.6_p4.ebuild,
+  files/canna-3.6_p4-gentoo.diff, files/canna.initd.new:
+  Version bumped. Updated /etc/init.d/canna and fixed permission of
+  /var/lib/canna/dic/{user,group} to support syslog and different
+  user privilege for cannaserver. Fixed Japanese manpages section for
+  cannaserver and cannakill. Added prerm to stop canna before unmerge.
+  (once you uninstall canna you can't stop cannaserver by /etc/init.d
+  since it depends on cannakill) Changed SRC_URI to use
+  mirror://sourceforge.jp/ 
+  Installs DVI, PS and PDF if tetex USE flag is set. Stop cannaserver
+  before unmerge and restart it after remerge.
+
+*canna-3.6_p3-r2 (04 Jun 2003)
+
+  10 Jun 2003; Masatomo Nakano <nakano@gentoo.org> canna-3.6_p3-r2.ebuild:
+  Marked as stable
+
+  06 Jun 2003; <rac@gentoo.org> canna-3.6_p3-r2.ebuild:
+  Add sed-4 dependency in order to use sed -i
+
+  04 Jun 2003; Masatomo Nakano <nakano@gentoo.org> canna-3.6_p3-r2.ebuild,
+  files/canna-3.6_p3-r2-gentoo.diff:
+  Fixed bug #21600
+
+*canna-3.6_p3-r1 (18 May 2003)
+
+  19 May 2003; Masatomo Nakano <nakano@gentoo.org> canna-3.6_p3-r1.ebuild:
+  Marked as stable.
+
+  18 May 2003; Masatomo Nakano <nakano@gentoo.org> canna-3.6_p3-r1.ebuild,
+  files/canna-3.6_p3-r1-gentoo.diff, files/canna.confd, files/canna.hosts,
+  files/canna.initd, files/update-canna-dics_dir:
+  Modified to use multi dictionaries.
+	Thanks to Sadayuki Kobayashi <desperado@s17.xrea.com> #21060
+
+*canna-3.6_p3 (11 May 2003)
+
+  11 May 2003; Masatomo Nakano <nakano@gentoo.org> files/canna-3.6_p3-gentoo.diff:
+  Fixed bug.
+
+  11 May 2003; Masatomo Nakano <nakano@gentoo.org> canna-3.6_p1.ebuild,
+  canna.initd,canna-3.6_p3-gentoo.diff:
+
+  Version bump. Thanks to Mamoru KOMACHI <usata@sodan.ecc.u-tokyo.ac.jp>
+
+*canna-3.6_p1 (02 Dec 2002)
+  
+  06 Jan 2003; Jack Morgan <jmorgan@gentoo.org> canna-3.6-r1.ebuild
+  canna-3.6.ebuild :
+  Changed ~sparc to sparc
+
+  03 Dec 2002; Masatomo Nakano <nakano@gentoo.org> canna-3.6-r1.ebuild :
+  Changed "~x86" to "x86".
+
+  02 Dec 2002; Masatomo Nakano <nakano@gentoo.org> canna-3.6-r1.ebuild 
+  files/canna-3.6-r1-gentoo.diff :
+  fixed security bug.  Thanks to matsuu@7501.net (MATSUU Takuto)
+
+*canna-3.6 (16 Nov 2002)
+
+  18 Nov 2002; Masatomo Nakano <nakano@gentoo.org> canna-3.6.ebuild :
+  Changed "~x86" to "x86".
+
+  16 Nov 2002; Masatomo Nakano <nakano@gentoo.org> canna-3.6.ebuild
+  files/canna-3.6-gentoo.diff files/canna.initd files/canna.confd
+  digest-canna-3.6 :
+  New version.  Thanks to: matsuu@7501.net (MATSUU Takuto)
+
+*canna-3.5_beta2-r2 (22 Jul 2002)
+
+  22 Jul 2002; Stuart Bouyer <stubear@gentoo.org> 
+  files/canna-3.5_beta-r2/canna.initd ChangeLog :
+
+  Fixed minor bug (#8920) in canna.initid that stopped it reading canna.confd.
+  Thanks Seiji Fukagawa <fukafuka@lime.plala.or.jp> for pointing this out 
+  and giving the fix.
+
+  22 Jul 2002; Stuart Bouyer <stubear@gentoo.org> canna-3.5_beta-r2.ebuild:
+
+  Removed A= to bring ebuild in line with QA policy.
+
+  01 Jul 2002; Stuart Bouyer <stubear@gentoo.org> canna-3.5_beta-r2.ebuild:
+  Changed from emake to make as the emake failed to build the libs on my
+  system. make is a little slower, but safer.
+
+*canna-3.5_beta2-r1 (02 Jun 2002)
+
+  03 Jun 2002; Ryan Shaw <ryan.shaw@stanfordalumni.org> :
+  Changed the patches so they apply smoothly.
+  Also some ebuild massaging by wmertens@gentoo.org for lintool happiness.
+
+*canna-3.5_beta2 (02 Jun 2002)
+
+  02 Jun 2002; Ryan Shaw <ryan.shaw@stanfordalumni.org> :
+  Initial ebuild.

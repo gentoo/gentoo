@@ -1,0 +1,191 @@
+commit 938cfdf1f01bcc9ac736249ee6458a774d560738
+Author: hasufell <hasufell@gentoo.org>
+Date:   Tue Jun 25 23:48:02 2013 +0200
+
+    QA: respect several environment variables
+    
+    such as CC,CFLAGS,PKG_CONFIG...
+
+diff --git a/makefile b/makefile
+index ad6ae2d..dd4598d 100644
+--- a/makefile
++++ b/makefile
+@@ -317,13 +317,15 @@ BUILD_EXE = $(EXE)
+ endif
+ 
+ # compiler, linker and utilities
+-AR = @ar
+-CC = @gcc
+-LD = @g++
++AR ?= @ar
++CC ?= @gcc
++CXX ?= @g++
++LD = $(CXX)
+ MD = -mkdir$(EXE)
+ RM = @rm -f
+ OBJDUMP = @objdump
+-PYTHON = @python
++PYTHON ?= @python
++PKG_CONFIG ?= pkg-config
+ 
+ 
+ #-------------------------------------------------
+@@ -458,7 +460,7 @@ CPPONLYFLAGS =
+ 
+ # CFLAGS is defined based on C or C++ targets
+ # (remember, expansion only happens when used, so doing it here is ok)
+-CFLAGS = $(CCOMFLAGS) $(CPPONLYFLAGS)
++CFLAGS += $(CCOMFLAGS) $(CPPONLYFLAGS)
+ 
+ # we compile C-only to C89 standard with GNU extensions
+ # we compile C++ code to C++98 standard with GNU extensions
+@@ -466,9 +468,6 @@ CONLYFLAGS += -std=gnu89
+ CPPONLYFLAGS += -x c++ -std=gnu++98
+ COBJFLAGS += -x objective-c++
+ 
+-# this speeds it up a bit by piping between the preprocessor/compiler/assembler
+-CCOMFLAGS += -pipe
+-
+ # add -g if we need symbols, and ensure we have frame pointers
+ ifdef SYMBOLS
+ CCOMFLAGS += -g$(SYMLEVEL) -fno-omit-frame-pointer
+@@ -484,19 +483,6 @@ ifdef PROFILE
+ CCOMFLAGS += -pg
+ endif
+ 
+-# add the optimization flag
+-CCOMFLAGS += -O$(OPTIMIZE)
+-
+-# add the error warning flag
+-ifndef NOWERROR
+-CCOMFLAGS += -Werror
+-endif
+-
+-# if we are optimizing, include optimization options
+-ifneq ($(OPTIMIZE),0)
+-CCOMFLAGS += -fno-strict-aliasing $(ARCHOPTS)
+-endif
+-
+ # add a basic set of warnings
+ CCOMFLAGS += \
+ 	-Wall \
+@@ -576,14 +562,6 @@ endif
+ 
+ # LDFLAGS are used generally; LDFLAGSEMULATOR are additional
+ # flags only used when linking the core emulator
+-LDFLAGS =
+-ifneq ($(TARGETOS),macosx)
+-ifneq ($(TARGETOS),os2)
+-ifneq ($(TARGETOS),solaris)
+-LDFLAGS = -Wl,--warn-common
+-endif
+-endif
+-endif
+ LDFLAGSEMULATOR =
+ 
+ # add profiling information for the linker
+@@ -591,13 +569,6 @@ ifdef PROFILE
+ LDFLAGS += -pg
+ endif
+ 
+-# strip symbols and other metadata in non-symbols and non profiling builds
+-ifndef SYMBOLS
+-ifneq ($(TARGETOS),macosx)
+-LDFLAGS += -s
+-endif
+-endif
+-
+ # output a map file (emulator only)
+ ifdef MAP
+ LDFLAGSEMULATOR += -Wl,-Map,$(FULLNAME).map
+diff --git a/src/osd/sdl/sdl.mak b/src/osd/sdl/sdl.mak
+index 84332ef..36655d3 100644
+--- a/src/osd/sdl/sdl.mak
++++ b/src/osd/sdl/sdl.mak
+@@ -24,6 +24,8 @@
+ # uncomment and edit next line to specify a distribution
+ # supported debian-stable, ubuntu-intrepid
+ 
++PKG_CONFIG ?= pkg-config
++
+ # DISTRO = debian-stable
+ # DISTRO = ubuntu-intrepid
+ # DISTRO = gcc44-generic
+@@ -88,9 +90,9 @@ SDL_LIBVER = sdl
+ endif
+ 
+ ifdef SDL_INSTALL_ROOT
+-SDL_CONFIG = $(SDL_INSTALL_ROOT)/bin/$(SDL_LIBVER)-config
++SDL_CONFIG ?= $(SDL_INSTALL_ROOT)/bin/$(SDL_LIBVER)-config
+ else
+-SDL_CONFIG = $(SDL_LIBVER)-config
++SDL_CONFIG ?= $(SDL_LIBVER)-config
+ endif
+ 
+ ifeq ($(SDL_LIBVER),sdl2)
+@@ -187,8 +189,8 @@ SYNC_IMPLEMENTATION = tc
+ SDL_NETWORK = taptun
+ 
+ ifndef NO_USE_MIDI
+-INCPATH += `pkg-config --cflags alsa`
+-LIBS += `pkg-config --libs alsa`
++INCPATH += $(shell $(PKG_CONFIG) --cflags alsa)
++LIBS += $(shell $(PKG_CONFIG) --libs alsa)
+ endif
+ 
+ endif
+@@ -478,10 +480,10 @@ else
+ # Remove the "/SDL" component from the include path so that we can compile
+ # files (header files are #include "SDL/something.h", so the extra "/SDL"
+ # causes a significant problem)
+-INCPATH += `sdl-config --cflags | sed 's:/SDL::'`
++INCPATH += $(shell $(SDL_CONFIG) --cflags | sed 's:/SDL::')
+ CCOMFLAGS += -DNO_SDL_GLEXT
+ # Remove libSDLmain, as its symbols conflict with SDLMain_tmpl.m
+-LIBS += `sdl-config --libs | sed 's/-lSDLmain//'` -lpthread
++LIBS += $(shell $(SDL_CONFIG) --libs | sed 's/-lSDLmain//') -lpthread
+ DEFS += -DMACOSX_USE_LIBSDL
+ endif   # MACOSX_USE_LIBSDL
+ 
+@@ -534,8 +536,8 @@ INCPATH += -I$(SDL_INSTALL_ROOT)/include/directfb
+ endif
+ endif
+ 
+-INCPATH += `pkg-config --cflags fontconfig`
+-LIBS += `pkg-config --libs fontconfig`
++INCPATH += $(shell $(PKG_CONFIG) --cflags fontconfig)
++LIBS += $(shell $(PKG_CONFIG) --libs fontconfig)
+ 
+ ifeq ($(SDL_LIBVER),sdl2)
+ LIBS += -lSDL2_ttf
+@@ -620,8 +622,8 @@ endif   # Win32
+ 
+ ifeq ($(BASE_TARGETOS),os2)
+ 
+-INCPATH += `sdl-config --cflags`
+-LIBS += `sdl-config --libs`
++INCPATH += $(shell $(SDL_CONFIG) --cflags)
++LIBS += $(shell $(SDL_CONFIG) --libs)
+ 
+ endif # OS2
+ 
+@@ -696,14 +698,14 @@ LIBS += -lX11 -lXinerama
+ 
+ # The newer debugger uses QT
+ ifndef NO_USE_QTDEBUG
+-INCPATH += `pkg-config QtGui --cflags`
+-LIBS += `pkg-config QtGui --libs`
++INCPATH += $(shell $(PKG_CONFIG) QtGui --cflags)
++LIBS += $(shell $(PKG_CONFIG) QtGui --libs)
+ else
+ # the old-new debugger relies on GTK+ in addition to the base SDLMAME needs
+ # Non-X11 builds can not use the debugger
+-INCPATH += `pkg-config --cflags-only-I gtk+-2.0` `pkg-config --cflags-only-I gconf-2.0`
+-CCOMFLAGS += `pkg-config --cflags-only-other gtk+-2.0` `pkg-config --cflags-only-other gconf-2.0`
+-LIBS += `pkg-config --libs gtk+-2.0` `pkg-config --libs gconf-2.0`
++INCPATH += $(shell $(PKG_CONFIG) --cflags-only-I gtk+-2.0 gconf-2.0)
++CCOMFLAGS += $(shell $(PKG_CONFIG) --cflags-only-other gtk+-2.0 gconf-2.0)
++LIBS += $(shell $(PKG_CONFIG) --libs gtk+-2.0 gconf-2.0)
+ endif
+ 
+ # some systems still put important things in a different prefix

@@ -1,0 +1,13 @@
+# ChangeLog for dev-java/istack-commons-soimp
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/istack-commons-soimp/ChangeLog,v 1.2 2015/06/12 16:08:37 monsieurp Exp $
+
+  12 Jun 2015; Patrice Clement <monsieurp@gentoo.org>
+  istack-commons-soimp-2.22.ebuild:
+  Soften SLOT and change it to 0.
+
+*istack-commons-soimp-2.22 (12 Jun 2015)
+
+  12 Jun 2015; Patrice Clement <monsieurp@gentoo.org>
+  +istack-commons-soimp-2.22.ebuild, +metadata.xml:
+  Initial commit. Fix bug 188015.

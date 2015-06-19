@@ -1,0 +1,29 @@
+# ChangeLog for sys-cluster/libcircle
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/libcircle/ChangeLog,v 1.5 2015/01/23 17:45:30 ottxor Exp $
+
+  23 Jan 2015; Christoph Junghans <ottxor@gentoo.org>
+  libcircle-0.2.0_rc1.ebuild:
+  added ~amd64-linux (tested by me)
+
+*libcircle-0.2.0_rc1 (17 Mar 2014)
+
+  17 Mar 2014; Christoph Junghans <ottxor@gentoo.org>
+  +libcircle-0.2.0_rc1.ebuild, -files/libcircle-0.1.0_rc1-out-of-source.patch,
+  -libcircle-0.1.0_rc1.ebuild:
+  version bump
+
+  19 Jan 2014; Christoph Junghans <ottxor@gentoo.org>
+  libcircle-0.1.0_rc1.ebuild:
+  added ~x86 (tested by me)
+
+  19 Jan 2014; Christoph Junghans <ottxor@gentoo.org>
+  libcircle-0.1.0_rc1.ebuild:
+  fixed build without dev-libs/check
+
+*libcircle-0.1.0_rc1 (18 Jan 2014)
+
+  18 Jan 2014; Christoph Junghans <ottxor@gentoo.org>
+  +files/libcircle-0.1.0_rc1-out-of-source.patch, +libcircle-0.1.0_rc1.ebuild,
+  +metadata.xml:
+  initial commit

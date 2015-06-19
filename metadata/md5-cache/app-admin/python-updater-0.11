@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Script used to reinstall Python packages after changing of active Python versions
+EAPI=5
+HOMEPAGE=http://www.gentoo.org/proj/en/Python/
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=|| ( >=sys-apps/portage-2.1.6 >=sys-apps/paludis-0.56.0 )
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~floppym/dist/python-updater-0.11.tar.bz2
+_md5_=a7b512efed4db623d1979e648a259021

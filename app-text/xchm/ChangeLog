@@ -1,0 +1,453 @@
+# ChangeLog for app-text/xchm
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/xchm/ChangeLog,v 1.35 2015/06/09 12:44:41 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  21 Aug 2014; Jeroen Roovers <jer@gentoo.org> -xchm-1.21.ebuild,
+  -xchm-1.22.ebuild:
+  Old.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> xchm-1.21.ebuild,
+  xchm-1.22.ebuild, xchm-1.23.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  09 Mar 2014; Ryan Hill <rhill@gentoo.org> metadata.xml:
+  Change my email.
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> xchm-1.23.ebuild:
+  Stable for ppc, wrt bug #496624
+
+  04 Mar 2014; Agostino Sarubbo <ago@gentoo.org> xchm-1.23.ebuild:
+  Stable for x86, wrt bug #496624
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> xchm-1.23.ebuild:
+  amd64 stable, bug #496624
+
+*xchm-1.23 (31 Aug 2013)
+
+  31 Aug 2013; Ryan Hill <dirtyepic@gentoo.org> +xchm-1.23.ebuild:
+  Version bump.
+
+*xchm-1.22 (12 Mar 2013)
+
+  12 Mar 2013; Ryan Hill <dirtyepic@gentoo.org> -xchm-1.20.ebuild,
+  +xchm-1.22.ebuild:
+  Version bump, remove old.
+
+  13 Jan 2013; Agostino Sarubbo <ago@gentoo.org> xchm-1.21.ebuild:
+  Stable for x86, wrt bug #449230
+
+  11 Jan 2013; Anthony G. Basile <blueness@gentoo.org> xchm-1.21.ebuild:
+  stable ppc, bug #449230, thanks vincent
+
+  07 Jan 2013; Chema Alonso <nimiux@gentoo.org> xchm-1.21.ebuild:
+  Marked stable for amd64 wrt bug #449230
+
+  30 Dec 2012; Ryan Hill <dirtyepic@gentoo.org> -xchm-1.18.ebuild:
+  Drop old.
+
+  18 Sep 2012; Johannes Huber <johu@gentoo.org> xchm-1.20.ebuild:
+  Stable for x86, wrt bug #434398
+
+  09 Sep 2012; Agostino Sarubbo <ago@gentoo.org> xchm-1.20.ebuild:
+  Stable for amd64, wrt bug #434398
+
+  09 Sep 2012; Anthony G. Basile <blueness@gentoo.org> xchm-1.20.ebuild:
+  Stable ppc, bug #434398
+
+*xchm-1.21 (09 Sep 2012)
+
+  09 Sep 2012; Ryan Hill <dirtyepic@gentoo.org> +xchm-1.21.ebuild,
+  files/xchm.desktop:
+  Version bump.
+
+  05 Sep 2012; Justin Lecher <jlec@gentoo.org> xchm-1.18.ebuild,
+  xchm-1.20.ebuild:
+  Use domenu instead insinto + doins to install .desktop files
+
+*xchm-1.20 (25 Jun 2011)
+
+  25 Jun 2011; Ryan Hill <dirtyepic@gentoo.org> -xchm-1.16.ebuild,
+  -files/xchm-1.16-gcc44.patch, +xchm-1.20.ebuild:
+  Version bump (bug #369751). Remove old.
+
+  04 Mar 2011; Brent Baude <ranger@gentoo.org> xchm-1.18.ebuild:
+  stable ppc, bug 352477
+
+  26 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> xchm-1.18.ebuild:
+  x86 stable wrt bug #352477
+
+  24 Jan 2011; Markos Chandras <hwoarang@gentoo.org> xchm-1.18.ebuild:
+  Stable on amd64 wrt bug #352477
+
+*xchm-1.18 (10 Dec 2010)
+
+  10 Dec 2010; Ryan Hill <dirtyepic@gentoo.org> +xchm-1.18.ebuild:
+  Version bump.
+
+  31 Aug 2010; Ryan Hill <dirtyepic@gentoo.org> -xchm-1.14.ebuild,
+  -xchm-1.15.ebuild:
+  Remove old.
+
+  27 Sep 2009; nixnut <nixnut@gentoo.org> xchm-1.16.ebuild:
+  ppc stable #286591
+
+  27 Sep 2009; Markus Meier <maekke@gentoo.org> xchm-1.16.ebuild:
+  amd64/x86 stable, bug #286591
+
+  27 Sep 2009; Ryan Hill <dirtyepic@gentoo.org> xchm-1.15.ebuild,
+  xchm-1.16.ebuild:
+  Make sure wxGTK was built with USE=X, bug #285943 by Philipp Middendorf.
+
+*xchm-1.16 (16 May 2009)
+
+  16 May 2009; Ryan Hill <dirtyepic@gentoo.org> +xchm-1.16.ebuild,
+  +files/xchm-1.16-gcc44.patch:
+  Version bump.
+
+*xchm-1.15 (14 Apr 2009)
+
+  14 Apr 2009; Ryan Hill <dirtyepic@gentoo.org> +xchm-1.15.ebuild:
+  Version bump.
+
+  19 Jun 2008; Ryan Hill <dirtyepic@gentoo.org>
+  -files/xchm-1.13-gcc-4.3.patch, -xchm-1.13.ebuild, -xchm-1.13-r1.ebuild:
+  Remove old.
+
+  18 Jun 2008; Christian Faulhammer <opfer@gentoo.org> xchm-1.14.ebuild:
+  stable x86, bug 226451
+
+  14 Jun 2008; Kenneth Prugh <ken69267@gentoo.org> xchm-1.14.ebuild:
+  amd64 stable, bug #226451
+
+  14 Jun 2008; nixnut <nixnut@gentoo.org> xchm-1.14.ebuild:
+  Stable on ppc wrt bug 226451
+
+  19 May 2008; Peter Volkov <pva@gentoo.org> +files/xchm-1.13-gcc-4.3.patch,
+  +files/xchm.desktop, +files/xchm.xml, +metadata.xml, +xchm-1.13.ebuild,
+  +xchm-1.13-r1.ebuild, +xchm-1.14.ebuild:
+  Moved from x11-misc/xchm, bug #220741, thank Antek Grzymala for report.
+
+  13 May 2008; Peter Volkov <pva@gentoo.org> xchm-1.13.ebuild,
+  xchm-1.13-r1.ebuild, xchm-1.14.ebuild:
+  Moving app-doc/chmlib -> dev-libs/chmlib, bug #220741.
+
+*xchm-1.14 (05 Jan 2008)
+
+  05 Jan 2008; Ryan Hill <dirtyepic@gentoo.org> files/xchm.desktop,
+  +xchm-1.14.ebuild:
+  Version bump.  Migrate to wxGTK-2.8.
+
+  20 Dec 2007; Ryan Hill <dirtyepic@gentoo.org>
+  +files/xchm-1.13-gcc-4.3.patch, xchm-1.13-r1.ebuild:
+  Add patch from upstream cvs to fix GCC 4.3 build.
+
+*xchm-1.13-r1 (08 Dec 2007)
+
+  08 Dec 2007; Ryan Hill <dirtyepic@gentoo.org> -files/xchm-1.13.desktop,
+  +files/xchm.desktop, +files/xchm.xml, xchm-1.13.ebuild,
+  +xchm-1.13-r1.ebuild:
+  Revision bump to clean up ebuild. Dropped old MIME entries and move to fdo
+  shared-mime-info standard. Install one icon rather than half a dozen. Steal
+  .desktop file from Ubuntu.
+
+  07 Dec 2007; Ryan Hill <dirtyepic@gentoo.org> files/xchm-1.13.desktop,
+  xchm-1.13.ebuild:
+  Fix .desktop file to pass validation.  Clean up ebuild & fix quoting.
+
+  30 Jul 2007; Ryan Hill <dirtyepic@gentoo.org> -xchm-1.9.ebuild,
+  xchm-1.13.ebuild:
+  Use check_wxuse.  Remove old.
+
+  19 Jul 2007; Christoph Mende <angelos@gentoo.org> xchm-1.13.ebuild:
+  Stable on amd64 wrt bug #185334
+
+  16 Jul 2007; Raúl Porcel <armin76@gentoo.org> xchm-1.13.ebuild:
+  x86 stable wrt #185334
+
+  16 Jul 2007; nixnut <nixnut@gentoo.org> xchm-1.13.ebuild:
+  Stable on ppc wrt bug 185334
+
+  14 Jul 2007; Ryan Hill <dirtyepic@gentoo.org> -xchm-1.10.ebuild,
+  -xchm-1.11.ebuild, xchm-1.13.ebuild:
+  Remove old.
+
+  14 Jul 2007; Ryan Hill <dirtyepic@gentoo.org> -xchm-1.10.ebuild,
+  -xchm-1.11.ebuild, xchm-1.13.ebuild:
+  Remove old.
+
+*xchm-1.13 (25 Apr 2007)
+
+  25 Apr 2007; <leio@gentoo.org> +files/xchm-1.13.desktop,
+  +xchm-1.13.ebuild:
+  Version bump. Also fixes many MIME related issues - make launching of chm
+  files (with xCHM) work automatically from file managers; make the chm MIME
+  icon provided by this package work properly; update icon and desktop mime
+  database as necessary
+
+*xchm-1.11 (24 Mar 2007)
+
+  24 Mar 2007; Ryan Hill <dirtyepic@gentoo.org> -files/xchm-gcc41.patch,
+  -xchm-1.2.ebuild, +xchm-1.11.ebuild:
+  Version bump.
+  
+  "xCHM is now the first non-MS CHM viewer able to parse and use the binary table
+  of contents and index files inside CHM books. Upgrading to 1.11 is strongly
+  recommended, as this version loads CHMs way faster, and it also fixes a couple
+  of bugs."
+  
+  Cleaned up the ebuild and added an nls USE flag.  Removed old version.
+
+  10 Mar 2007; Ryan Hill <dirtyepic@gentoo.org> metadata.xml:
+  Add myself as co-maintainer.
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  14 Jan 2007; Joseph Jezak <josejx@gentoo.org> xchm-1.9.ebuild:
+  Marked ppc stable for bug #159049.
+
+  09 Jan 2007; Olivier Crête <tester@gentoo.org> xchm-1.9.ebuild:
+  Stable on amd64 per bug #159049
+
+  09 Jan 2007; Andrej Kacian <ticho@gentoo.org> xchm-1.9.ebuild:
+  Stable on x86, bug #159049.
+
+  31 Dec 2006; Ryan Hill <dirtyepic@gentoo.org> xchm-1.2.ebuild,
+  xchm-1.9.ebuild:
+  Fix DEPENDs - wxGTK-2.6 only.
+
+*xchm-1.10 (23 Dec 2006)
+
+  23 Dec 2006; Ryan Hill <dirtyepic@gentoo.org> +xchm-1.10.ebuild:
+  Version bump.  wxGTK 2.8 friendly, plus image printing should be working again.
+
+  14 Oct 2006; Krzysiek Pawlik <nelchael@gentoo.org> -xchm-1.3.ebuild,
+  -xchm-1.7.1.ebuild:
+  Remove old version.
+
+*xchm-1.9 (01 Jul 2006)
+
+  01 Jul 2006; Krzysiek Pawlik <nelchael@gentoo.org> +xchm-1.9.ebuild:
+  Version bump, see bug #138464.
+
+  15 Apr 2006; Krzysiek Pawlik <nelchael@gentoo.org> xchm-1.7.1.ebuild:
+  Fix bug #130059: xchm-1.7.1 tarball has files with modification date in future.
+
+  14 Apr 2006; Krzysiek Pawlik <nelchael@gentoo.org> xchm-1.7.1.ebuild:
+  Removed external docs.
+
+*xchm-1.7.1 (14 Apr 2006)
+
+  14 Apr 2006; Krzysiek Pawlik <nelchael@gentoo.org> -xchm-0.9.6.ebuild,
+  +xchm-1.7.1.ebuild:
+  Version bump, see bug #129338.
+
+  17 Feb 2006; Michael Hanselmann <hansmi@gentoo.org> xchm-1.2.ebuild:
+  Stable on ppc.
+
+  16 Feb 2006; Krzysiek Pawlik <nelchael@gentoo.org> xchm-1.2.ebuild:
+  Fixed bug #122834, unpack error.
+
+*xchm-1.3 (14 Feb 2006)
+
+  14 Feb 2006; Krzysiek Pawlik <nelchael@gentoo.org> -xchm-1.1.ebuild,
+  xchm-1.2.ebuild, +xchm-1.3.ebuild:
+  Version 1.2 stable on x86 (bug #122700), bumped to 1.3.
+
+  11 Feb 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  +files/xchm-gcc41.patch, xchm-1.2.ebuild:
+  Fix bug #117798 - compilation with gcc 4.1, patch by Ryan Hill
+  <dirtyepic.sk@gmail.com>.
+
+  01 Nov 2005; Krzysiek Pawlik <nelchael@gentoo.org> xchm-0.9.6.ebuild,
+  xchm-1.1.ebuild:
+  Fixed dodoc not to install COPYING and/or INSTALL.
+
+*xchm-1.2 (31 Oct 2005)
+
+  31 Oct 2005; Krzysiek Pawlik <nelchael@gentoo.org> -xchm-0.9.8.ebuild,
+  -xchm-1.0-r1.ebuild, +xchm-1.2.ebuild:
+  Version bump, ebuild cleanup.
+
+*xchm-1.1 (31 Aug 2005)
+
+  31 Aug 2005; Martin Holzer <mholzer@gentoo.org> +xchm-1.1.ebuild:
+  Version bumpd.
+
+  14 Jun 2005; Jonathan Smith <smithj@gentoo.org> xchm-1.0-r1.ebuild:
+  updated dependency on 1.0-r1 for #96032
+
+*xchm-1.0-r1 (14 Jun 2005)
+
+  14 Jun 2005; Jonathan Smith <smithj@gentoo.org> -xchm-1.0.ebuild,
+  +xchm-1.0-r1.ebuild:
+  #81047 and #91771 to fix wxwidgets and icon/desktop entries
+
+*xchm-1.0 (14 Jun 2005)
+
+  14 Jun 2005; Jonathan Smith <smithj@gentoo.org> -xchm-0.9.3.ebuild,
+  -xchm-0.9.7.ebuild, +xchm-1.0.ebuild:
+  version bump to close #95282, cleanup
+
+  28 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> xchm-0.9.6.ebuild:
+  Stable on ppc.
+
+*xchm-0.9.8 (23 Feb 2005)
+
+  23 Feb 2005; Martin Holzer <mholzer@gentoo.org> +xchm-0.9.8.ebuild:
+  Version bumped.
+
+*xchm-0.9.7 (24 Dec 2004)
+
+  24 Dec 2004; Martin Holzer <mholzer@gentoo.org> +xchm-0.9.7.ebuild:
+  Version bumped.
+
+*xchm-0.9.5 (24 Dec 2004)
+
+  24 Dec 2004; Martin Holzer <mholzer@gentoo.org> xchm-0.9.5.ebuild:
+  x86 stable
+
+*xchm-0.9.6 (31 Oct 2004)
+
+  31 Oct 2004; Martin Holzer <mholzer@gentoo.org> +xchm-0.9.6.ebuild:
+  Version bumped.
+
+  29 Sep 2004; <pyrania@gentoo.org> xchm-0.9.2.ebuild, xchm-0.9.3.ebuild:
+  Marked stable on x86.
+
+*xchm-0.9.4 (16 Sep 2004)
+
+  16 Sep 2004; Martin Holzer <mholzer@gentoo.org> xchm-0.9.4.ebuild:
+  Version bumped.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> xchm-0.8.11.ebuild,
+  xchm-0.9.1.ebuild, xchm-0.9.2.ebuild, xchm-0.9.3.ebuild, xchm-0.9.ebuild:
+  Masked xchm-0.9.ebuild stable for ppc
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> xchm-0.8.11.ebuild,
+  xchm-0.9.1.ebuild, xchm-0.9.2.ebuild, xchm-0.9.3.ebuild:
+  Masked xchm-0.9.3.ebuild stable for ppc
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> xchm-0.8.11.ebuild,
+  xchm-0.9.1.ebuild, xchm-0.9.2.ebuild:
+  Masked xchm-0.9.2.ebuild stable for ppc
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> xchm-0.8.11.ebuild,
+  xchm-0.9.1.ebuild:
+  Masked xchm-0.9.1.ebuild stable for ppc
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> xchm-0.8.11.ebuild:
+  Masked xchm-0.8.11.ebuild stable for ppc
+
+*xchm-0.9.3 (29 Aug 2004)
+
+  29 Aug 2004; Martin Holzer <mholzer@gentoo.org> xchm-0.9.3.ebuild:
+  Version bumped.
+
+*xchm-0.9.2 (19 Jul 2004)
+
+  19 Jul 2004; Martin Holzer <mholzer@gentoo.org> xchm-0.9.2.ebuild:
+  Version bumped. Closes 57516
+
+  03 Jul 2004; <pyrania@gentoo.org> xchm-0.9.1.ebuild:
+  Stable on x86.
+
+  23 Jun 2004; Aron Griffis <agriffis@gentoo.org> xchm-0.8.11.ebuild,
+  xchm-0.9.1.ebuild, xchm-0.9.ebuild:
+  QA - fix use invocation
+
+*xchm-0.9.1 (01 Jun 2004)
+
+  01 Jun 2004; Martin Holzer <mholzer@gentoo.org> xchm-0.9.1.ebuild:
+  Version bumped. Closes 52640
+
+  20 Apr 2004; Danny van Dyk <kugelfang@gentoo.org> xchm-0.9.ebuild:
+  marked ~amd64
+
+  11 Apr 2004; Markus Nigbur <pyrania@gentoo.org> xchm-0.9.ebuild:
+  Marked stable on x86.
+
+  24 Feb 2004; Martin Holzer <mholzer@gentoo.org> xchm-0.8.11.ebuild:
+  x86 stable
+
+*xchm-0.9 (24 Feb 2004)
+
+  24 Feb 2004; Martin Holzer <mholzer@gentoo.org> xchm-0.9.ebuild:
+  Version bumped.
+
+*xchm-0.8.11 (24 Jan 2004)
+
+  24 Jan 2004; Martin Holzer <mholzer@gentoo.org> xchm-0.8.11.ebuild:
+  Version bumped.
+
+  24 Jan 2004; Martin Holzer <mholzer@gentoo.org> xchm-0.8.10.ebuild:
+  x86 stable
+
+  06 Jan 2004; Martin Holzer <mholzer@gentoo.org> xchm-0.8.9.ebuild:
+  marking x86 stable
+
+*xchm-0.8.10 (06 Jan 2004)
+
+  06 Jan 2004; Martin Holzer <mholzer@gentoo.org> xchm-0.8.10.ebuild:
+  Version bumped.
+
+*xchm-0.8.9 (06 Dec 2003)
+
+  06 Dec 2003; Martin Holzer <mholzer@gentoo.org> xchm-0.8.9.ebuild:
+  Version bumped
+
+*xchm-0.8.8 (18 Nov 2003)
+
+  18 Nov 2003; Ian Leitch <port001@gentoo.org> xchm-0.8.8.ebuild:
+  Moved from app-misc to x11-misc, metadata.xml created
+
+*xchm-0.8.8 (08 Nov 2003)
+
+  08 Nov 2003; Martin Holzer <mholzer@gentoo.org> xchm-0.8.8.ebuild:
+  Version bumped.
+
+*xchm-0.8.7 (26 Oct 2003)
+
+  26 Oct 2003; Martin Holzer <mholzer@gentoo.org> xchm-0.8.6.ebuild,
+  xchm-0.8.7.ebuild:
+  Version bumped.
+
+*xchm-0.8.6 (15 Oct 2003)
+
+  15 Oct 2003; Martin Holzer <mholzer@gentoo.org> xchm-0.8.6.ebuild:
+  Version bumped.
+
+*xchm-0.8.5 (09 Oct 2003)
+
+  09 Oct 2003; Martin Holzer <mholzer@gentoo.org> xchm-0.8.5.ebuild:
+  Version bumped.
+
+*xchm-0.8.4 (08 Oct 2003)
+
+  08 Oct 2003; Martin Holzer <mholzer@gentoo.org> xchm-0.8.4.ebuild:
+  Version bumped.
+
+  07 Oct 2003; David Holm <dholm@gentoo.org> xchm-0.8.3.ebuild:
+  Added to ~ppc.
+
+*xchm-0.8.3 (29 Sep 2003)
+
+  29 Sep 2003; Martin Holzer <mholzer@gentoo.org> xchm-0.8.3.ebuild:
+  Version bumped.
+
+*xchm-0.8 (10 Sep 2003)
+
+  10 Sep 2003; Martin Holzer <mholzer@gentoo.org> xchm-0.8.ebuild:
+  Version bumped.
+
+  10 Sep 2003; Sergey Kuleshov <svyatogor@gentoo.org> xchm-0.7.1.ebuild:
+  Fixed the dep for chmlib (changed dev-libs to app-doc).
+
+*xchm-0.7.1 (09 Sep 2003)
+
+  09 Sep 2003; Martin Holzer <mholzer@gentoo.org> xchm-0.7.1.ebuild:
+  Adding initial ebuild. Submitted by Kevin Carlson <kcarlson@kevinga.com>
+  in #27940.

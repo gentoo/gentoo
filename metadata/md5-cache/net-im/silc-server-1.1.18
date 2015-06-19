@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install postinst setup
+DESCRIPTION=Server for Secure Internet Live Conferencing
+EAPI=5
+HOMEPAGE=http://silcnet.org/
+IUSE=gmp ipv6 debug
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=!<=net-im/silc-toolkit-0.9.12-r1 !<=net-im/silc-client-1.0.1 gmp? ( dev-libs/gmp )
+SLOT=0
+SRC_URI=http://www.silcnet.org/download/server/sources/silc-server-1.1.18.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=f5e9c1ec638bdec550f53d4df8ab24a8

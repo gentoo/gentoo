@@ -1,0 +1,225 @@
+# ChangeLog for dev-ruby/gruff
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/gruff/ChangeLog,v 1.58 2015/06/07 17:53:59 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*gruff-0.6.0 (31 May 2015)
+
+  31 May 2015; Hans de Graaff <graaff@gentoo.org> +gruff-0.6.0.ebuild:
+  Version bump.
+
+  18 Apr 2015; Hans de Graaff <graaff@gentoo.org> gruff-0.5.1-r1.ebuild:
+  imagemagick also needs to support PNG for tests.
+
+  20 Mar 2015; Hans de Graaff <graaff@gentoo.org> gruff-0.5.1-r1.ebuild:
+  Add ruby22.
+
+  28 Nov 2014; Manuel Rüger <mrueg@gentoo.org> -gruff-0.3.7.ebuild:
+  Cleanup old.
+
+  28 Nov 2014; Agostino Sarubbo <ago@gentoo.org> gruff-0.5.1.ebuild:
+  Stable for x86, wrt bug #512180
+
+  18 Nov 2014; Manuel Rüger <mrueg@gentoo.org>
+  -files/gruff-0.3.6-fix-tests.patch, -files/gruff-0.3.6-sort-filenames.patch,
+  -files/gruff-0.3.6-zero-division.patch:
+  Cleanup unused patches.
+
+*gruff-0.5.1-r1 (11 Oct 2014)
+
+  11 Oct 2014; Manuel Rüger <mrueg@gentoo.org> +gruff-0.5.1-r1.ebuild:
+  Add ruby21 target.
+
+  25 Aug 2014; Manuel Rüger <mrueg@gentoo.org> gruff-0.5.1.ebuild:
+  Mark amd64 stable. Bug #512180.
+
+  15 May 2014; Manuel Rüger <mrueg@gentoo.org> -gruff-0.4.0.ebuild,
+  gruff-0.3.7.ebuild, gruff-0.5.1.ebuild:
+  Cleanup old. Remove ruby18.
+
+*gruff-0.5.1 (24 Oct 2013)
+
+  24 Oct 2013; Hans de Graaff <graaff@gentoo.org> +gruff-0.5.1.ebuild:
+  Version bump.
+
+*gruff-0.4.0 (08 Aug 2013)
+
+  08 Aug 2013; Manuel Rüger <mrueg@gentoo.org> +gruff-0.4.0.ebuild:
+  Version bump
+
+  21 Jul 2013; Hans de Graaff <graaff@gentoo.org> -gruff-0.3.6-r1.ebuild:
+  Cleanup.
+
+  13 Jul 2013; Agostino Sarubbo <ago@gentoo.org> gruff-0.3.7.ebuild:
+  Stable for x86, wrt bug #476216
+
+  12 Jul 2013; Agostino Sarubbo <ago@gentoo.org> gruff-0.3.7.ebuild:
+  Stable for amd64, wrt bug #476216
+
+  08 Jul 2013; Hans de Graaff <graaff@gentoo.org> -gruff-0.3.6-r3.ebuild:
+  Cleanup.
+
+*gruff-0.3.7 (18 Oct 2012)
+
+  18 Oct 2012; Hans de Graaff <graaff@gentoo.org> +gruff-0.3.7.ebuild:
+  Version bump.
+
+  06 Aug 2012; Hans de Graaff <graaff@gentoo.org> -gruff-0.3.6-r2.ebuild:
+  Cleanup.
+
+*gruff-0.3.6-r3 (22 Jul 2012)
+
+  22 Jul 2012; Hans de Graaff <graaff@gentoo.org> +gruff-0.3.6-r3.ebuild,
+  +files/gruff-0.3.6-zero-division.patch:
+  Add division by zero error fix from upstream.
+
+  01 May 2012; Raúl Porcel <armin76@gentoo.org> gruff-0.3.6-r1.ebuild,
+  gruff-0.3.6-r2.ebuild:
+  Drop ia64/sparc keywords
+
+*gruff-0.3.6-r2 (28 Dec 2011)
+
+  28 Dec 2011; Hans de Graaff <graaff@gentoo.org> gruff-0.3.6-r1.ebuild,
+  +gruff-0.3.6-r2.ebuild:
+  Revision bump to drop ruby19 from stable version.
+
+  13 Feb 2011; Hans de Graaff <graaff@gentoo.org> gruff-0.3.6-r1.ebuild:
+  Ensure that imagemagick is built with proper options for tests, fixes bug
+  354577.
+
+  10 Jan 2011; Hans de Graaff <graaff@gentoo.org> gruff-0.3.6-r1.ebuild:
+  Keyword ~x86-macos.
+
+  10 Jan 2011; Hans de Graaff <graaff@gentoo.org> -gruff-0.3.6.ebuild:
+  Remove old version.
+
+  24 Jul 2010; Raúl Porcel <armin76@gentoo.org> gruff-0.3.6-r1.ebuild:
+  ia64 stable wrt #304057
+
+  21 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  gruff-0.3.6-r1.ebuild:
+  stable x86, bug 304057
+
+  29 Jun 2010; Christoph Mende <angelos@gentoo.org> gruff-0.3.6-r1.ebuild:
+  Stable on amd64 wrt bug #304057
+
+  22 May 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  gruff-0.3.6-r1.ebuild:
+  Various cleanups.
+
+  12 Apr 2010; Hans de Graaff <graaff@gentoo.org> gruff-0.3.6-r1.ebuild:
+  Add imagemagick dependency to ensure truetype support in imagemagick, this
+  was already present in the 0.3.6 ebuild but got dropped at some point.
+
+  08 Feb 2010; Hans de Graaff <graaff@gentoo.org> -gruff-0.2.9.ebuild:
+  Remove old version.
+
+*gruff-0.3.6-r1 (07 Jan 2010)
+
+  07 Jan 2010; Hans de Graaff <graaff@gentoo.org> +gruff-0.3.6-r1.ebuild,
+  +files/gruff-0.3.6-fix-tests.patch,
+  +files/gruff-0.3.6-sort-filenames.patch, +files/gruff-0.3.6-spider.patch:
+  Move here from ruby-ng testbed, including two patches. Add additional
+  patch for broken spider graph label.
+
+  15 Dec 2009; Raúl Porcel <armin76@gentoo.org> gruff-0.3.6.ebuild:
+  ia64 stable wrt #295801
+
+  09 Dec 2009; Markus Meier <maekke@gentoo.org> gruff-0.3.6.ebuild:
+  amd64/x86 stable, bug #295801
+
+  05 Dec 2009; Hans de Graaff <graaff@gentoo.org> -gruff-0.3.4.ebuild:
+  Remove old version.
+
+*gruff-0.3.6 (23 Aug 2009)
+
+  23 Aug 2009; Hans de Graaff <graaff@gentoo.org> +gruff-0.3.6.ebuild:
+  Version bump with new dot graph.
+
+  13 Jul 2009; Hans de Graaff <graaff@gentoo.org> -gruff-0.1.2.ebuild:
+  Remove old version.
+
+  08 Mar 2009; Petteri Räty <betelgeuse@gentoo.org> gruff-0.2.9.ebuild,
+  gruff-0.3.4.ebuild:
+  Migrate to EAPI 2.
+
+  08 Mar 2009; Petteri Räty <betelgeuse@gentoo.org> -gruff-0.3.1.ebuild:
+  Remove old version.
+
+*gruff-0.3.4 (06 Oct 2008)
+
+  06 Oct 2008; Hans de Graaff <graaff@gentoo.org> +gruff-0.3.4.ebuild:
+  Version bump with minor bugfixes
+
+*gruff-0.3.1 (17 Mar 2008)
+
+  17 Mar 2008; Hans de Graaff <graaff@gentoo.org> -gruff-0.3.0.ebuild,
+  +gruff-0.3.1.ebuild:
+  Version bump: Fixed missing bullet graph bug. Remove broken version.
+
+  14 Mar 2008; Raúl Porcel <armin76@gentoo.org> gruff-0.2.9.ebuild:
+  ia64 stable wrt #213252
+
+  13 Mar 2008; Dawid Węgliński <cla@gentoo.org> gruff-0.2.9.ebuild:
+  Stable on x86 (bug #213252)
+
+  13 Mar 2008; Hans de Graaff <graaff@gentoo.org> gruff-0.2.9.ebuild:
+  Mark stable om amd64
+
+*gruff-0.3.0 (13 Mar 2008)
+
+  13 Mar 2008; Hans de Graaff <graaff@gentoo.org> -gruff-0.1.1.ebuild,
+  -gruff-0.2.8.ebuild, +gruff-0.3.0.ebuild:
+  Version bump: Fixed bug where pie graphs weren't drawing their label correctly.
+  Remove old versions.
+
+*gruff-0.2.9 (16 Nov 2007)
+
+  16 Nov 2007; Hans de Graaff <graaff@gentoo.org> +gruff-0.2.9.ebuild:
+  Version bump: Patch to make SideBar accurate instead of stacked.
+
+  22 Jul 2007; Hans de Graaff <graaff@gentoo.org> gruff-0.2.8.ebuild:
+  Gruff does not work without truetype support in imagemagick: bug 186213.
+
+  25 Mar 2007; Raúl Porcel <armin76@gentoo.org> gruff-0.1.2.ebuild:
+  ia64 stable wrt bug 155112
+
+  04 Mar 2007; Hans de Graaff <graaff@gentoo.org> gruff-0.2.8.ebuild:
+  Add missing dependency on dev-ruby/hoe, #169306.
+
+  24 Feb 2007; Steve Dibb <beandog@gentoo.org> gruff-0.1.2.ebuild:
+  amd64 stable, bug 155112
+
+*gruff-0.2.8 (06 Jan 2007)
+
+  06 Jan 2007; Hans de Graaff <graaff@gentoo.org> +gruff-0.2.8.ebuild:
+  Version bump.
+
+  03 Jan 2007; Christian Faulhammer <opfer@gentoo.org> gruff-0.1.2.ebuild:
+  stable x86, bug #155112
+
+  20 Oct 2006; Aron Griffis <agriffis@gentoo.org> gruff-0.1.1.ebuild:
+  Mark 0.1.1 stable on ia64
+
+*gruff-0.1.2 (28 Aug 2006)
+
+  28 Aug 2006; Nguyễn Thái Ngọc Duy <pclouds@gentoo.org>
+  +gruff-0.1.2.ebuild:
+  Version bump (Hans de Graaff <hans@degraaff.org> #143174)
+
+  17 Apr 2006; Caleb Tennis <caleb@gentoo.org> gruff-0.1.1.ebuild:
+  x86 stable
+
+  30 Mar 2006; Aron Griffis <agriffis@gentoo.org> gruff-0.1.1.ebuild:
+  Mark 0.1.1 ~ia64
+
+  14 Mar 2006; Caleb Tennis <caleb@gentoo.org> gruff-0.1.1.ebuild:
+  Update description
+
+*gruff-0.1.1 (14 Mar 2006)
+
+  14 Mar 2006; Caleb Tennis <caleb@gentoo.org> +metadata.xml,
+  +gruff-0.1.1.ebuild:
+  Initial import

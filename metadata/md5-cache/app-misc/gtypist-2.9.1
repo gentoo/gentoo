@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm prepare unpack
+DEPEND=>=sys-libs/ncurses-5.2 emacs? ( virtual/emacs ) xemacs? ( !emacs? ( app-editors/xemacs app-xemacs/fsf-compat ) )
+DESCRIPTION=Universal typing tutor
+EAPI=4
+HOMEPAGE=http://www.gnu.org/software/gtypist/
+IUSE=nls emacs xemacs
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux
+LICENSE=GPL-2 public-domain
+RDEPEND=>=sys-libs/ncurses-5.2 emacs? ( virtual/emacs ) xemacs? ( !emacs? ( app-editors/xemacs app-xemacs/fsf-compat ) )
+SLOT=0
+SRC_URI=mirror://gnu/gtypist/gtypist-2.9.1.tar.xz http://colemak.com/pub/learn/colemak.typ
+_eclasses_=elisp-common	9a16929c1a6aec7e1c903289983e114c	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=ce055df8347880fdecf8d773b49a535c

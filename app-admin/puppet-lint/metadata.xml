@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!--
+$Header: /var/cvsroot/gentoo-x86/app-admin/puppet-lint/metadata.xml,v 1.2 2012/11/06 16:25:09 tampakrap Exp $
+-->
+<pkgmetadata>
+<herd>sysadmin</herd>
+<herd>ruby</herd>
+<longdescription>Tim Sharpe's Puppet Linter. Enforces puppetlabs style.</longdescription>
+</pkgmetadata>

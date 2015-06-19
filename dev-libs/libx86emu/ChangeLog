@@ -1,0 +1,37 @@
+# ChangeLog for dev-libs/libx86emu
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libx86emu/ChangeLog,v 1.10 2012/11/29 21:23:04 ulm Exp $
+
+  29 Nov 2012; Ulrich Müller <ulm@gentoo.org> libx86emu-1.1.ebuild:
+  Update LICENSE, HPND according to headers in source files.
+
+  21 Jun 2012; Justin Lecher <jlec@gentoo.org> libx86emu-1.1.ebuild,
+  metadata.xml:
+  Fix for broken test phase, #339656
+
+  14 Apr 2012; Zac Medico <zmedico@gentoo.org> libx86emu-1.1.ebuild:
+  Add ~amd64-linux keyword.
+
+  29 Jul 2011; Zac Medico <zmedico@gentoo.org> libx86emu-1.1.ebuild:
+  Add ~x86-linux keyword.
+
+  26 Jul 2011; Zac Medico <zmedico@gentoo.org> libx86emu-1.1.ebuild:
+  Bump to EAPI 3 and fix for prefix.
+
+  01 Nov 2010; Samuli Suominen <ssuominen@gentoo.org> libx86emu-1.1.ebuild:
+  Remove PowerPC keywording wrt #342753.
+
+  01 Nov 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> libx86emu-1.1.ebuild:
+  x86 stable wrt bug #342753
+
+  26 Oct 2010; Markos Chandras <hwoarang@gentoo.org> libx86emu-1.1.ebuild:
+  Stable on amd64 wrt bug #342753
+
+  04 Oct 2010; Samuli Suominen <ssuominen@gentoo.org> libx86emu-1.1.ebuild:
+  Restrict testsuite (#339656).
+
+*libx86emu-1.1 (30 Sep 2010)
+
+  30 Sep 2010; Samuli Suominen <ssuominen@gentoo.org> +libx86emu-1.1.ebuild:
+  Initial commit. Used by hwinfo >= 18.1.
+

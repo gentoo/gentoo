@@ -1,0 +1,43 @@
+# ChangeLog for dev-perl/Perlbal-XS-HTTPHeaders
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Perlbal-XS-HTTPHeaders/ChangeLog,v 1.8 2014/08/26 19:10:28 axs Exp $
+
+*Perlbal-XS-HTTPHeaders-0.200.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Perlbal-XS-HTTPHeaders-0.200.0-r1.ebuild,
+  -Perlbal-XS-HTTPHeaders-0.200.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  -Perlbal-XS-HTTPHeaders-0.20.ebuild:
+  Cleanup
+
+*Perlbal-XS-HTTPHeaders-0.200.0 (29 Aug 2011)
+
+  29 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +Perlbal-XS-HTTPHeaders-0.200.0.ebuild:
+  Change version scheme
+
+  02 Apr 2011; Torsten Veller <tove@gentoo.org>
+  -Perlbal-XS-HTTPHeaders-0.19.ebuild:
+  Cleanup
+
+*Perlbal-XS-HTTPHeaders-0.20 (27 Mar 2010)
+
+  27 Mar 2010; Robin H. Johnson <robbat2@gentoo.org>
+  +Perlbal-XS-HTTPHeaders-0.20.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  09 May 2007; Robin H. Johnson <robbat2@gentoo.org>
+  Perlbal-XS-HTTPHeaders-0.19.ebuild:
+  Fix header.
+
+*Perlbal-XS-HTTPHeaders-0.19 (09 May 2007)
+
+  09 May 2007; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +Perlbal-XS-HTTPHeaders-0.19.ebuild:
+  Initial commit. Ebuild by Robin H. Johnson <robbat2@gentoo.org>.

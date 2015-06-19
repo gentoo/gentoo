@@ -1,0 +1,207 @@
+
+paranoia (non-root/chroot) patch for ISC dhcp 3.0
+file to patch: dhcp-3.0/server/dhcpd.c
+
+update from paranoia patch for ISC dhcp 2.0
+
+Adds 3 options:
+
+	-user <user>
+	-group <group>
+	-chroot <chroot_dir>
+
+Notes:
+	-DPARANOIA must be passed as an argument to the --copts option
+	of configure.  Otherwise, the paranoia code will not be compiled
+	in.  Example:  ./configure --copts -DPARANOIA
+
+	The chroot() call has been delayed in order to allow /dev/log to
+	be reopened after the configuration file has been read.  This is
+	beneficial for systems on which /dev/log is a unix domain socket.
+	The main side effect is that dhcpd.conf should be placed in /etc,
+	instead of <chroot_dir>/etc.
+
+	If dhcpd is to be run on a sysV-style architecture (or, more
+	generally, if /dev/log is a character device), one may opt to
+	create the <chroot_dir>/dev/log character device and add
+	-DEARLY_CHROOT to the --copts option of configure (in addition to
+	-DPARANOIA).  This will perform the chroot() call at the earliest
+	convenience (before reading the configuration file).
+
+	If the -user option is used, the lease and pid file directories
+	should be writable to the server process after it drops
+	privileges.
+
+
+ari edelkind (12/10/2001)
+last modified 12/10/2001
+
+
+--- dhcp-3.0/server/dhcpd.c	Thu Jun 21 22:12:58 2001
++++ dhcp-3.0+paranoia/server/dhcpd.c	Wed Oct 17 08:23:00 2001
+@@ -56,6 +56,16 @@
+ #include "version.h"
+ #include <omapip/omapip_p.h>
+ 
++#if defined (PARANOIA)
++#  include <sys/types.h>
++#  include <unistd.h>
++#  include <pwd.h>
++/* get around the ISC declaration of group */
++#  define group real_group 
++#    include <grp.h>
++#  undef group
++#endif /* PARANOIA */
++
+ static void usage PROTO ((void));
+ 
+ TIME cur_time;
+@@ -204,6 +214,22 @@
+ 	omapi_object_dereference (&listener, MDL);
+ }
+ 
++#if defined (PARANOIA)
++/* to be used in one of two possible scenarios */
++static void setup_chroot (char *chroot_dir) {
++	if (geteuid())
++		log_fatal ("you must be root to use chroot");
++
++	if (chroot(chroot_dir)) {
++		log_fatal ("chroot(\"%s\"): %m", chroot_dir);
++	}
++	if (chdir ("/")) {
++		/* probably permission denied */
++		log_fatal ("chdir(\"/\"): %m");
++	}
++}
++#endif /* PARANOIA */
++
+ int main (argc, argv, envp)
+ 	int argc;
+ 	char **argv, **envp;
+@@ -236,6 +262,14 @@
+ 	char *traceinfile = (char *)0;
+ 	char *traceoutfile = (char *)0;
+ #endif
++#if defined (PARANOIA)
++	char *set_user   = 0;
++	char *set_group  = 0;
++	char *set_chroot = 0;
++
++	uid_t set_uid = 0;
++	gid_t set_gid = 0;
++#endif /* PARANOIA */
+ 
+ 	/* Make sure we have stdin, stdout and stderr. */
+ 	status = open ("/dev/null", O_RDWR);
+@@ -298,6 +332,20 @@
+ 			if (++i == argc)
+ 				usage ();
+ 			server = argv [i];
++#if defined (PARANOIA)
++		} else if (!strcmp (argv [i], "-user")) {
++			if (++i == argc)
++				usage ();
++			set_user = argv [i];
++		} else if (!strcmp (argv [i], "-group")) {
++			if (++i == argc)
++				usage ();
++			set_group = argv [i];
++		} else if (!strcmp (argv [i], "-chroot")) {
++			if (++i == argc)
++				usage ();
++			set_chroot = argv [i];
++#endif /* PARANOIA */
+ 		} else if (!strcmp (argv [i], "-cf")) {
+ 			if (++i == argc)
+ 				usage ();
+@@ -397,6 +445,44 @@
+ 					     trace_seed_stop, MDL);
+ #endif
+ 
++#if defined (PARANOIA)
++	/* get user and group info if those options were given */
++	if (set_user) {
++		struct passwd *tmp_pwd;
++
++		if (geteuid())
++			log_fatal ("you must be root to set user");
++
++		if (!(tmp_pwd = getpwnam(set_user)))
++			log_fatal ("no such user: %s", set_user);
++
++		set_uid = tmp_pwd->pw_uid;
++
++		/* use the user's group as the default gid */
++		if (!set_group)
++			set_gid = tmp_pwd->pw_gid;
++	}
++
++	if (set_group) {
++/* get around the ISC declaration of group */
++#define group real_group
++		struct group *tmp_grp;
++
++		if (geteuid())
++			log_fatal ("you must be root to set group");
++
++		if (!(tmp_grp = getgrnam(set_group)))
++			log_fatal ("no such group: %s", set_group);
++
++		set_gid = tmp_grp->gr_gid;
++#undef group
++	}
++
++#  if defined (EARLY_CHROOT)
++	if (set_chroot) setup_chroot (set_chroot);
++#  endif /* EARLY_CHROOT */
++#endif /* PARANOIA */
++
+ 	/* Default to the DHCP/BOOTP port. */
+ 	if (!local_port)
+ 	{
+@@ -500,6 +586,10 @@
+ 
+ 	postconf_initialization (quiet);
+ 
++#if defined (PARANOIA) && !defined (EARLY_CHROOT)
++	if (set_chroot) setup_chroot (set_chroot);
++#endif /* PARANOIA && !EARLY_CHROOT */
++
+         /* test option should cause an early exit */
+  	if (cftest && !lftest) 
+  		exit(0);
+@@ -543,6 +633,22 @@
+ 			exit (0);
+ 	}
+ 
++#if defined (PARANOIA)
++	/* change uid to the specified one */
++
++	if (set_gid) {
++		if (setgroups (0, (void *)0))
++			log_fatal ("setgroups: %m");
++		if (setgid (set_gid))
++			log_fatal ("setgid(%d): %m", (int) set_gid);
++	}	
++
++	if (set_uid) {
++		if (setuid (set_uid))
++			log_fatal ("setuid(%d): %m", (int) set_uid);
++	}
++#endif /* PARANOIA */
++
+ 	/* Read previous pid file. */
+ 	if ((i = open (path_dhcpd_pid, O_RDONLY)) >= 0) {
+ 		status = read (i, pbuf, (sizeof pbuf) - 1);
+@@ -888,6 +994,10 @@
+ 
+ 	log_fatal ("Usage: dhcpd [-p <UDP port #>] [-d] [-f]%s%s%s%s",
+ 		   "\n             [-cf config-file] [-lf lease-file]",
++#if defined (PARANOIA)
++		   /* meld into the following string */
++		   "\n             [-user user] [-group group] [-chroot dir]"
++#endif /* PARANOIA */
+ #if defined (TRACING)
+ 		   "\n		   [-tf trace-output-file]",
+ 		   "\n		   [-play trace-input-file]",

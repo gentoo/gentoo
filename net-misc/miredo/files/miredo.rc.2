@@ -1,0 +1,14 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/miredo/files/miredo.rc.2,v 1.1 2013/02/20 19:14:41 flameeyes Exp $
+
+depend() {
+	need localmount
+	after net modules
+	use dns logger
+}
+
+command=/usr/sbin/${SVCNAME}
+command_args="${MIREDO_OPTS}"
+pidfile=/var/run/${SVCNAME}.pid

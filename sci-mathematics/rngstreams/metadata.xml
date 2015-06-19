@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>sci-mathematics</herd>
+	<longdescription lang="en">
+  RngStreams is a C implementation of a high quality uniform random
+  number generator that supports multiple "independent" streams of
+  uniform random numbers. It has been written by Pierre L'Ecuyer and
+  Richard Simard.
+  This is the GNU-style package maintained by Josef Leydold. 
+</longdescription>
+</pkgmetadata>

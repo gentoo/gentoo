@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=sys-apps/pciutils
+DESCRIPTION=Library for build EFI Applications
+HOMEPAGE=http://developer.intel.com/technology/efi
+KEYWORDS=ia64 x86
+LICENSE=GPL-2
+RDEPEND=sys-apps/pciutils
+SLOT=0
+SRC_URI=ftp://ftp.hpl.hp.com/pub/linux-ia64/gnu-efi-3.0a.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=6112c69d39151c41d4c9c0375c9d4ed1

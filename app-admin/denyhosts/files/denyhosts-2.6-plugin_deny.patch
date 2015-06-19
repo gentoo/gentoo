@@ -1,0 +1,23 @@
+From: Marco Bertorello <marco@bertorello.ns0.it>
+Date: Thu, 14 Apr 2011 00:11:35 +0200
+Subject: 09_plugin_deny
+
+Correct the upstream bug http://sourceforge.net/tracker/index.php?func=detail&aid=1734736&group_id=131204&atid=720419
+---
+ DenyHosts/deny_hosts.py |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/DenyHosts/deny_hosts.py b/DenyHosts/deny_hosts.py
+index f308264..0f5f48d 100644
+--- a/DenyHosts/deny_hosts.py
++++ b/DenyHosts/deny_hosts.py
+@@ -443,7 +443,7 @@ allowed based on your %s file"""  % (self.__prefs.get("HOSTS_DENY"),
+             self.__report.add_section(msg, new_denied_hosts)
+             if self.__sync_server: self.sync_add_hosts(new_denied_hosts)
+             plugin_deny = self.__prefs.get('PLUGIN_DENY')
+-            if plugin_deny: plugin.execute(plugin_deny, deny_hosts)
++            if plugin_deny: plugin.execute(plugin_deny, new_denied_hosts)
+         
+         new_suspicious_logins = login_attempt.get_new_suspicious_logins()
+         if new_suspicious_logins:
+-- 

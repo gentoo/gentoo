@@ -1,0 +1,14 @@
+# ChangeLog for dev-vcs/git-mailz
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git-mailz/ChangeLog,v 1.2 2015/05/14 01:01:01 yac Exp $
+
+*git-mailz-0.14 (14 May 2015)
+
+  14 May 2015; Jan Matejka <yac@gentoo.org> +git-mailz-0.14.ebuild:
+  bump to 0.14
+
+*git-mailz-0.12 (22 Apr 2015)
+
+  22 Apr 2015; Jan Matejka <yac@gentoo.org> +git-mailz-0.12.ebuild,
+  +metadata.xml:
+  Add git-mailz, fixes bgo#546586  Thanks Ondřej Súkup for the inital ebuild

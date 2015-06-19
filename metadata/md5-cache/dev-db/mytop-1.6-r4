@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-perl/DBD-mysql virtual/perl-Getopt-Long dev-perl/TermReadKey virtual/perl-Term-ANSIColor virtual/perl-Time-HiRes >=sys-apps/sed-4 dev-lang/perl:=[-build(-)]
+DESCRIPTION=mytop - a top clone for mysql
+EAPI=5
+HOMEPAGE=http://jeremy.zawodny.com/mysql/mytop/
+KEYWORDS=alpha amd64 ppc sparc x86
+LICENSE=|| ( Artistic GPL-2 )
+RDEPEND=dev-perl/DBD-mysql virtual/perl-Getopt-Long dev-perl/TermReadKey virtual/perl-Term-ANSIColor virtual/perl-Time-HiRes dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=http://jeremy.zawodny.com/mysql/mytop/mytop-1.6.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=de2d7baf66752429707d9381dfa210a2

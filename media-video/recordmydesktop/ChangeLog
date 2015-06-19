@@ -1,0 +1,203 @@
+# ChangeLog for media-video/recordmydesktop
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/recordmydesktop/ChangeLog,v 1.41 2015/03/28 23:01:11 mrueg Exp $
+
+  28 Mar 2015; Manuel Rüger <mrueg@gentoo.org>
+  -recordmydesktop-0.3.8.1-r1.ebuild, -recordmydesktop-0.3.8.1-r3.ebuild,
+  -recordmydesktop-0.3.8.1.ebuild:
+  Remove old.
+
+  31 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  recordmydesktop-0.3.8.1-r4.ebuild:
+  ppc/ppc64 stable wrt #358621
+
+  17 Mar 2011; Thomas Kahle <tomka@gentoo.org>
+  recordmydesktop-0.3.8.1-r4.ebuild:
+  x86 stable per bug 358621
+
+  14 Mar 2011; Markos Chandras <hwoarang@gentoo.org>
+  recordmydesktop-0.3.8.1-r4.ebuild:
+  Stable on amd64 wrt bug #358621
+
+*recordmydesktop-0.3.8.1-r4 (31 Oct 2010)
+
+  31 Oct 2010; Tim Harder <radhermit@gentoo.org>
+  +files/0.3.8.1-fix-libjack-check.patch,
+  +recordmydesktop-0.3.8.1-r4.ebuild:
+  Revision bump to fix check for jack support (bug #338234 by darkbasic).
+
+  23 May 2010; <nixnut@gentoo.org> recordmydesktop-0.3.8.1-r3.ebuild:
+  ppc stable #315023
+
+  18 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  recordmydesktop-0.3.8.1-r3.ebuild:
+  x86 stable wrt bug #315023
+
+  11 May 2010; Brent Baude <ranger@gentoo.org>
+  recordmydesktop-0.3.8.1-r3.ebuild:
+  stable ppc64, bug 315023
+
+  16 Apr 2010; Markos Chandras <hwoarang@gentoo.org>
+  recordmydesktop-0.3.8.1-r3.ebuild:
+  Stable on amd64 wrt bug #315023
+
+*recordmydesktop-0.3.8.1-r3 (25 Mar 2010)
+
+  25 Mar 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -recordmydesktop-0.3.8.1-r2.ebuild, +recordmydesktop-0.3.8.1-r3.ebuild:
+  Revbump to ensure everyone gets the fix.
+
+  25 Mar 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  files/0.3.8.1-fix_new_theora.patch, recordmydesktop-0.3.8.1-r2.ebuild:
+  Update patch to be same as in fedora. Inherit eutils.
+
+*recordmydesktop-0.3.8.1-r2 (25 Mar 2010)
+
+  25 Mar 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  +files/0.3.8.1-fix_new_theora.patch, +recordmydesktop-0.3.8.1-r2.ebuild:
+  Add patch fixing usage with new libtheora. Revbump.
+
+*recordmydesktop-0.3.8.1-r1 (04 Jan 2010)
+
+  04 Jan 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +recordmydesktop-0.3.8.1-r1.ebuild:
+  Fix building with >=xextproto-7.1.1 wrt #291111, thanks to Kyle Milz for
+  reporting.
+
+  07 Mar 2009; Christian Faulhammer <fauli@gentoo.org>
+  -recordmydesktop-0.3.7.3.ebuild:
+  clean up
+
+  07 Mar 2009; Christian Faulhammer <fauli@gentoo.org>
+  recordmydesktop-0.3.8.1.ebuild:
+  stable x86, bug 259357
+
+  07 Mar 2009; Thomas Anderson <gentoofan23@gentoo.org>
+  recordmydesktop-0.3.8.1.ebuild:
+  stable amd64, bug 259357
+
+  14 Jan 2009; Alexis Ballier <aballier@gentoo.org>
+  recordmydesktop-0.3.8.1.ebuild:
+  avoid double econf
+
+*recordmydesktop-0.3.8.1 (14 Jan 2009)
+
+  14 Jan 2009; Christian Faulhammer <fauli@gentoo.org>
+  +recordmydesktop-0.3.8.1.ebuild:
+  version bump, fixes bug 254418 * port to EAPI=2 (built_with_use) * remove
+  die messages * fix HOMEPAGE entry
+
+  05 May 2008; Olivier Crête <tester@gentoo.org>
+  recordmydesktop-0.3.7.3.ebuild:
+  Stable on amd64
+
+  20 Mar 2008; Christian Faulhammer <opfer@gentoo.org>
+  -recordmydesktop-0.3.6.ebuild:
+  clean up
+
+  07 Mar 2008; Christian Faulhammer <opfer@gentoo.org>
+  recordmydesktop-0.3.7.3.ebuild:
+  stable x86
+
+*recordmydesktop-0.3.7.3 (20 Feb 2008)
+
+  20 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  -recordmydesktop-0.3.7.1.ebuild, -recordmydesktop-0.3.7.2.ebuild,
+  +recordmydesktop-0.3.7.3.ebuild:
+  version bump and clean up; only a crash issue with xcb
+
+*recordmydesktop-0.3.7.2 (06 Feb 2008)
+
+  06 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  +recordmydesktop-0.3.7.2.ebuild:
+  version bump
+
+*recordmydesktop-0.3.7.1 (26 Jan 2008)
+
+  26 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  +recordmydesktop-0.3.7.1.ebuild:
+  version bump, bug 207142
+
+  12 Nov 2007; Christian Faulhammer <opfer@gentoo.org>
+  recordmydesktop-0.3.6.ebuild:
+  stable x86
+
+  23 Oct 2007; Alexis Ballier <aballier@gentoo.org>
+  -recordmydesktop-0.3.5.1.ebuild:
+  remove old version
+
+  09 Oct 2007; Alexis Ballier <aballier@gentoo.org>
+  recordmydesktop-0.3.5.1.ebuild:
+  fix homepage for remaining ebuild
+
+  09 Oct 2007; Alexis Ballier <aballier@gentoo.org>
+  -recordmydesktop-0.3.3.1.ebuild, -recordmydesktop-0.3.4.ebuild:
+  cleanup old versions
+
+*recordmydesktop-0.3.6 (09 Oct 2007)
+
+  09 Oct 2007; Alexis Ballier <aballier@gentoo.org>
+  +recordmydesktop-0.3.6.ebuild:
+  version bump, fix homepage, bug #195273
+
+*recordmydesktop-0.3.5.1 (26 Jul 2007)
+
+  26 Jul 2007; Alexis Ballier <aballier@gentoo.org>
+  +recordmydesktop-0.3.5.1.ebuild:
+  version bump
+
+*recordmydesktop-0.3.4 (04 Apr 2007)
+
+  04 Apr 2007; Alexis Ballier <aballier@gentoo.org>
+  +recordmydesktop-0.3.4.ebuild:
+  Version bump, bug #173210
+
+  27 Mar 2007; Markus Rothe <corsair@gentoo.org>
+  recordmydesktop-0.3.3.1.ebuild:
+  Added ~ppc
+
+  25 Mar 2007; Alexis Ballier <aballier@gentoo.org>
+  -recordmydesktop-0.3.0.2.ebuild, -recordmydesktop-0.3.1.ebuild:
+  Cleanup old versions
+
+  25 Mar 2007; Alexis Ballier <aballier@gentoo.org>
+  recordmydesktop-0.3.3.1.ebuild:
+  Die if libtheora is not built with encode useflag as it will not work
+  without it
+
+*recordmydesktop-0.3.3.1 (04 Mar 2007)
+
+  04 Mar 2007; Alexis Ballier <aballier@gentoo.org>
+  +recordmydesktop-0.3.3.1.ebuild:
+  Version bump, bug #164398
+
+*recordmydesktop-0.3.1 (20 Jan 2007)
+
+  20 Jan 2007; Hanno Boeck <hanno@gentoo.org> +recordmydesktop-0.3.1.ebuild:
+  Version bump.
+
+  10 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Add missing email address for herd with name != alias.
+
+  23 Dec 2006; Piotr Jaroszyński <peper@gentoo.org>
+  recordmydesktop-0.3.0.2.ebuild:
+  Add ~amd64 wrt bug #157757.
+
+  30 Nov 2006; Markus Rothe <corsair@gentoo.org>
+  recordmydesktop-0.3.0.2.ebuild:
+  Added ~ppc64
+
+*recordmydesktop-0.3.0.2 (29 Nov 2006)
+
+  29 Nov 2006; Matthias Schwarzott <zzam@gentoo.org>
+  -files/recordmydesktop-0.2.5-nosound.patch, -recordmydesktop-0.2.5.ebuild,
+  +recordmydesktop-0.3.0.2.ebuild:
+  Version bumped to up to date version.
+
+*recordmydesktop-0.2.5 (29 Nov 2006)
+
+  29 Nov 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +files/recordmydesktop-0.2.5-nosound.patch, +metadata.xml,
+  +recordmydesktop-0.2.5.ebuild:
+  Initial import of ebuild, based on one from Hydonsingore Cia
+  <hydonsingore@educities.edu.tw>, Bug #148771.

@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst
+DEPEND=virtual/pkgconfig >=net-p2p/gift-0.11.8
+DESCRIPTION=Ares Plugin for giFT
+HOMEPAGE=http://gift-ares.berlios.de/
+KEYWORDS=alpha amd64 ia64 ~ppc sparc x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=>=net-p2p/gift-0.11.8
+SLOT=0
+SRC_URI=mirror://berlios/gift-ares/gift-ares-0.3.0.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=46963e7b6de377cfbd9bfcbe2e60369a

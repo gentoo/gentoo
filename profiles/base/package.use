@@ -1,0 +1,23 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use,v 1.31 2014/06/01 18:16:29 graaff Exp $
+
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (27 Jul 2012)
+# Modular X: Build the Xorg X server by default
+x11-base/xorg-server xorg
+
+# Diego Elio Pettenò <flameeyes@gentoo.org> (11 Apr 2011)
+# Disable ldap support by default in sudo, as it seem to lack
+# developers maintaining that particular support and is, thus, vastly
+# untested.
+app-admin/sudo -ldap
+
+# Doug Goldstein <cardoe@gentoo.org> (30 Aug 2010)
+# bug #332077 - Disable xcb backend by default for cairo-1.10. Its not
+# really prime time ready prior to cairo-1.10
+<x11-libs/cairo-1.10 -xcb
+
+# Zac Medico <zmedico@gentoo.org> (04 Dec 2009)
+# Bug #295615 - Disable cxx by default, in order to avoid a die
+# in pkg_setup with default USE settings (cxx requires sasl).
+net-nds/openldap -cxx

@@ -1,0 +1,73 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/www-servers/lighttpd/files/lighttpd.initd,v 1.22 2013/02/06 19:36:51 hwoarang Exp $
+
+extra_started_commands="reload graceful"
+
+depend() {
+	need net
+	use mysql logger spawn-fcgi ldap slapd netmount dns
+	after famd
+	after sshd
+}
+
+checkconfig() {
+	if [ ! -f "${LIGHTTPD_CONF}" ] ; then
+		ewarn "${LIGHTTPD_CONF} does not exist."
+		return 1
+	fi
+
+	if [ -z "${LIGHTTPD_PID}" ] ; then
+		ewarn "server.pid-file variable in ${LIGHTTPD_CONF}"
+		ewarn "is not set. Falling back to lighttpd.pid"
+		LIGHTTPD_PID="/run/lighttpd.pid"
+	fi
+	/usr/sbin/lighttpd -t -f ${LIGHTTPD_CONF} >/dev/null
+}
+
+start() {
+	checkconfig || return 1
+	checkpath -d -q -m 0750 -o lighttpd:lighttpd /run/lighttpd/
+
+	ebegin "Starting lighttpd"
+	start-stop-daemon --start --quiet --exec /usr/sbin/lighttpd \
+		--pidfile "${LIGHTTPD_PID}" -- -f "${LIGHTTPD_CONF}"
+	eend $?
+}
+
+stop() {
+	local rv=0
+	ebegin "Stopping lighttpd"
+	start-stop-daemon --stop --quiet --pidfile "${LIGHTTPD_PID}"
+	eend $?
+}
+
+reload() {
+	if ! service_started "${SVCNAME}" ; then
+		eerror "${SVCNAME} isn't running"
+		return 1
+	fi
+	checkconfig || return 1
+
+	ebegin "Re-opening lighttpd log files"
+	start-stop-daemon --quiet --pidfile "${LIGHTTPD_PID}" \
+		--signal HUP
+	eend $?
+}
+
+graceful() {
+	if ! service_started "${SVCNAME}" ; then
+		eerror "${SVCNAME} isn't running"
+		return 1
+	fi
+	checkconfig || return 1
+
+	ebegin "Gracefully stopping lighttpd"
+	start-stop-daemon --quiet --pidfile "${LIGHTTPD_PID}" \
+		--signal INT
+	if eend $? ; then
+		rm -f "${LIGHTTPD_PID}"
+		start
+	fi
+}

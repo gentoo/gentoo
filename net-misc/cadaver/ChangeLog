@@ -1,0 +1,171 @@
+# ChangeLog for net-misc/cadaver
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/cadaver/ChangeLog,v 1.43 2014/08/10 20:43:25 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> cadaver-0.23.3.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  18 Sep 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Add Arfrever as proxy maintainer with proxy-maintainers as herd.
+
+  13 Sep 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #246793
+
+  10 Sep 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  metadata.xml:
+  Restore previous maintainer.
+
+  19 Aug 2010; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Remove arfrever.
+
+  04 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  cadaver-0.23.3.ebuild:
+  Fix building with gettext-0.18 (bug #321915).
+
+  22 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  cadaver-0.23.2.ebuild, cadaver-0.23.3.ebuild:
+  net-misc/neon renamed to net-libs/neon.
+
+  03 Feb 2010; Markus Meier <maekke@gentoo.org> cadaver-0.23.3.ebuild:
+  x86 stable, bug #301404
+
+  18 Jan 2010; Brent Baude <ranger@gentoo.org> cadaver-0.23.3.ebuild:
+  stable ppc64, bug 301404
+
+*cadaver-0.23.3 (19 Dec 2009)
+
+  19 Dec 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +cadaver-0.23.3.ebuild:
+  Version bump.
+
+  14 Sep 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  cadaver-0.23.2.ebuild:
+  Fix building with Neon 0.30.
+
+  22 Mar 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  metadata.xml, cadaver-0.23.2.ebuild:
+  Remove unused USE flags. Remove bundled libraries to ensure that they
+  aren't used. Fix building with Neon 0.29.
+
+  27 Sep 2008; Petteri Räty <betelgeuse@gentoo.org> -cadaver-0.22.5.ebuild,
+  -cadaver-0.22.5-r1.ebuild:
+  Remove old ebuilds.
+
+  07 Sep 2008; Markus Meier <maekke@gentoo.org> cadaver-0.23.2.ebuild:
+  x86 stable, bug #236134
+
+  04 Sep 2008; Brent Baude <ranger@gentoo.org> cadaver-0.23.2.ebuild:
+  stable ppc64, bug 236134
+
+  30 Aug 2008; Hans de Graaff <graaff@gentoo.org> metadata.xml,
+  Drop maintainership: I no longer use this, and the neon dependency is a pain
+  to deal with.
+
+  28 Jul 2008; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  cadaver-0.23.2.ebuild:
+  Put back ~ppc keyword now that neon dependency is keyworded (bug #214478)
+
+  29 Mar 2008; Hans de Graaff <graaff@gentoo.org> cadaver-0.23.2.ebuild:
+  Add gnutls USE flag now that net-misc/neon supports it, and handle it
+  similar to ssl
+
+  29 Mar 2008; Hans de Graaff <graaff@gentoo.org>
+  +files/cadaver-0.23.2-disable-nls.patch, cadaver-0.23.2.ebuild:
+  Fix building without NLS. Closes #214695.
+
+*cadaver-0.23.2 (24 Mar 2008)
+
+  24 Mar 2008; Hans de Graaff <graaff@gentoo.org> -cadaver-0.22.2.ebuild,
+  cadaver-0.22.5.ebuild, cadaver-0.22.5-r1.ebuild, +cadaver-0.23.2.ebuild:
+  Version bump as per #210191, thanks to Arfrever Frehtes Taifersar Arahesis.
+  Drop ~ppc keyword since this keyword also got dropped from net-misc/neon.
+
+  24 Mar 2008; Hans de Graaff <graaff@gentoo.org> -cadaver-0.22.2.ebuild,
+  cadaver-0.22.5.ebuild, cadaver-0.22.5-r1.ebuild:
+  Remove old version; adjust dependencies because neon 0.27 breaks API
+  compatibility.
+
+*cadaver-0.22.5-r1 (01 Mar 2008)
+
+  01 Mar 2008; Hans de Graaff <graaff@gentoo.org> +cadaver-0.22.5-r1.ebuild:
+  Use built_with_use to ensure that proper SSL support is available if requested
+  instead of solving this with warning that is easily overlooked. Thanks to
+  Opfer for the suggestion.
+
+  03 Feb 2008; Brent Baude <ranger@gentoo.org> cadaver-0.22.5.ebuild:
+  Marking cadaver-0.22.5 ppc64 for bug 208697
+
+  03 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  cadaver-0.22.5.ebuild:
+  stable x86, bug 208697
+
+  03 Feb 2008; Hans de Graaff <graaff@gentoo.org> -cadaver-0.22.3.ebuild:
+  Remove old version
+
+*cadaver-0.22.5 (21 Jul 2007)
+
+  21 Jul 2007; Hans de Graaff <graaff@gentoo.org> metadata.xml,
+  cadaver-0.22.2.ebuild, cadaver-0.22.3.ebuild, +cadaver-0.22.5.ebuild:
+  Version bump, fixing bug 175958
+  Dropping ppc-macos keyword due to lack of that keyword in neon.
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  07 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
+  cadaver-0.22.2.ebuild:
+  stable amd64, bug 170000
+
+*cadaver-0.22.3 (07 Sep 2006)
+
+  07 Sep 2006; Steve Dibb <beandog@gentoo.org> +metadata.xml,
+  cadaver-0.22.2.ebuild, +cadaver-0.22.3.ebuild:
+  Version bump, see bug #117323
+  Thanks to contributors for ebuild
+  Slight QA cleanup
+
+  26 Feb 2005; Robin H. Johnson <robbat2@gentoo.org> cadaver-0.22.2.ebuild:
+  Bug #81815, force depend on neon so that the bundled version isn't used.
+
+  16 Dec 2004; Markus Rothe <corsair@gentoo.org> cadaver-0.22.2.ebuild:
+  Stable on ppc64
+
+  01 Nov 2004; Markus Rothe <corsair@gentoo.org> cadaver-0.22.2.ebuild:
+  Marked ~ppc64; bug #66755
+
+  01 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> cadaver-0.22.2.ebuild:
+  Added to ~ppc-macos.
+
+  15 Sep 2004; Tom Gall <tgall@gentoo.org> cadaver-0.22.2.ebuild:
+  stable on ppc64
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> cadaver-0.22.2.ebuild:
+  change virtual/glibc to virtual/libc
+
+*cadaver-0.22.2 (19 May 2004)
+
+  19 May 2004; <plasmaroo@gentoo.org> +cadaver-0.22.2.ebuild:
+  Another version bump for the CAN-2004-0398 security issue; please see bug
+  #51461 for more details. Older vulnerable version removed.
+
+  17 Apr 2004; Jason Wever <weeve@gentoo.org> cadaver-0.22.1.ebuild:
+  Added ~sparc keyword.
+
+  15 Apr 2004; David Holm <dholm@gentoo.org> cadaver-0.22.1.ebuild:
+  Added to ~ppc.
+
+*cadaver-0.22.1 (14 Apr 2004)
+
+  14 Apr 2004; <plasmaroo@gentoo.org> -cadaver-0.20.5.ebuild,
+  -cadaver-0.21.0.ebuild, +cadaver-0.22.1.ebuild:
+  Version bump for bug #47799; old vulnerable versions removed.
+
+*cadaver-0.21.0 (16 Mar 2003)
+
+  16 Mar 2003; Seth Chandler <sethbc@gentoo.org>; cadaver-0.21.0.ebuild:
+  Version bump.
+
+*cadaver-0.20.5 (10 Feb 2003)
+
+  10 Feb 2003; Seth Chandler <sethbc@gentoo.org>: cadaver-0.20.5.ebuild
+  Added cadaver to Portage courtesy of Jacob Smullyan <smulloni@smullyan.org>.

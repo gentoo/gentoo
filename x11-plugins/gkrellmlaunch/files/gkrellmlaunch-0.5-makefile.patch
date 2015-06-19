@@ -1,0 +1,35 @@
+--- Makefile	2002-09-26 15:56:06.000000000 +0200
++++ Makefile_new	2013-03-15 17:26:19.398383410 +0100
+@@ -4,21 +4,25 @@
+ GTK_LIB = `pkg-config gtk+-2.0 --libs`
+ 
+ 
+-FLAGS = -O2 -Wall -fPIC $(GTK_INCLUDE) -g
++FLAGS = -fPIC $(GTK_INCLUDE)
+ #LIBS = $(GTK_LIB) $(IMLIB_LIB) -lefence
+ LIBS = $(GTK_LIB) $(IMLIB_LIB)
+ 
+-LFLAGS = -shared -W1 
++LFLAGS = -shared
+ 
+-CC = gcc $(CFLAGS) $(FLAGS)
++CC = $(CC)
+ 
+ OBJS = gkrellmlaunch.o
+ 
++all: gkrellmlaunch.so
++
++%.o: %.c
++	$(CC) $(CFLAGS) $(FLAGS) -c -o $@ $<
++
+ gkrellmlaunch.so: $(OBJS)
+-	$(CC) $(OBJS) -o gkrellmlaunch.so $(LFLAGS) $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(FLAGS) $(OBJS) -o gkrellmlaunch.so $(LFLAGS) $(LIBS)
+ 
+ clean:
+ 	rm -f *.o core *.so* *.bak *~
+ 
+-gkrellmlaunch.o: gkrellmlaunch.c
+-
++gkrellmlaunch.o: gkrellmlaunch.c
+\ No newline at end of file

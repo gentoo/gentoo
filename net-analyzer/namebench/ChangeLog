@@ -1,0 +1,45 @@
+# ChangeLog for net-analyzer/namebench
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/namebench/ChangeLog,v 1.10 2014/07/06 17:41:18 floppym Exp $
+
+  06 Jul 2014; Mike Gilbert <floppym@gentoo.org> namebench-1.3.1-r1.ebuild:
+  Cleanup python2.6.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> namebench-1.3.1-r1.ebuild:
+  Drop stale conditional after py2.5 removal.
+
+*namebench-1.3.1-r1 (03 Aug 2013)
+
+  03 Aug 2013; Sergey Popov <pinkbyte@gentoo.org> -namebench-1.3.1.ebuild,
+  +namebench-1.3.1-r1.ebuild:
+  Revision bump: EAPI 5, port to distutils-r1 eclass, fix bug #473632. Drop old
+  revision
+
+  08 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Assigning package to netmon herd
+
+  07 Oct 2012; Pacho Ramos <pacho@gentoo.org> -namebench-1.2.ebuild,
+  metadata.xml:
+  Drop maintainer due retirement, #274113
+
+  10 Feb 2012; Patrick Lauer <patrick@gentoo.org> namebench-1.3.1.ebuild:
+  Changing python deps in preparation for 2.4 removal
+
+*namebench-1.3.1 (30 Jul 2011)
+
+  30 Jul 2011; Patrick Lauer <patrick@gentoo.org> +namebench-1.3.1.ebuild:
+  Bump for #256933
+
+  12 Mar 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  namebench-1.2.ebuild:
+  Fix deprecation warning.
+
+  26 Mar 2010; Dror Levin <spatz@gentoo.org> namebench-1.2.ebuild:
+  Depend on at least dnspython-1.8.0 to fix endless loop, bug 311395.
+
+*namebench-1.2 (24 Mar 2010)
+
+  24 Mar 2010; Dror Levin <spatz@gentoo.org> +namebench-1.2.ebuild,
+  +metadata.xml:
+  Initial version, bug 296138. Thanks to Jacob Swanson and
+  Andreis_Vinogradovs for ebuilds.

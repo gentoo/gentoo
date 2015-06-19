@@ -1,0 +1,13 @@
+Index: vsftpd-2.3.2/Makefile
+===================================================================
+--- vsftpd-2.3.2.orig/Makefile
++++ vsftpd-2.3.2/Makefile
+@@ -21,7 +21,7 @@ OBJS	=	main.o utility.o prelogin.o ftpcm
+ 	$(CC) -c $*.c $(CFLAGS) $(IFLAGS)
+ 
+ vsftpd: $(OBJS) 
+-	$(CC) -o vsftpd $(OBJS) $(LINK) $(LIBS) $(LDFLAGS)
++	$(CC) -o vsftpd $(LDFLAGS) $(OBJS) $(LINK) $(LIBS)
+ 
+ install:
+ 	if [ -x /usr/local/sbin ]; then \

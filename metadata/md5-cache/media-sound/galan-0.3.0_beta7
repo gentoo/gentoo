@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=x11-libs/gtk+:2 vorbis? ( >=media-sound/vorbis-tools-1.0 ) alsa? ( >=media-libs/alsa-lib-0.9.0_rc1 ) opengl? ( >=x11-libs/gtkglarea-1.99.0:2 virtual/glu ) jack? ( >=media-sound/jack-audio-connection-kit-0.80.0 ) media-libs/liblrdf media-libs/ladspa-sdk media-libs/audiofile media-libs/libsndfile sci-libs/fftw:2.1 virtual/pkgconfig
+DESCRIPTION=gAlan - Graphical Audio Language
+EAPI=4
+HOMEPAGE=http://galan.sourceforge.net/
+IUSE=vorbis alsa opengl jack
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/gtk+:2 vorbis? ( >=media-sound/vorbis-tools-1.0 ) alsa? ( >=media-libs/alsa-lib-0.9.0_rc1 ) opengl? ( >=x11-libs/gtkglarea-1.99.0:2 virtual/glu ) jack? ( >=media-sound/jack-audio-connection-kit-0.80.0 ) media-libs/liblrdf media-libs/ladspa-sdk media-libs/audiofile media-libs/libsndfile sci-libs/fftw:2.1
+SLOT=0
+SRC_URI=mirror://sourceforge/galan/galan-0.3.0_beta7.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=e0ed3b6513ef4e78df7323a7a2324a6f

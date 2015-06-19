@@ -1,0 +1,213 @@
+# ChangeLog for sys-fs/mtools
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/mtools/ChangeLog,v 1.55 2013/07/04 14:57:52 grobian Exp $
+
+  04 Jul 2013; Fabian Groffen <grobian@gentoo.org> mtools-4.0.18.ebuild:
+  Fix building on non-glibc platforms, bug #447688
+
+  26 Feb 2013; Fabian Groffen <grobian@gentoo.org> mtools-4.0.18.ebuild:
+  Fix for Prefix, by Yuriy Taraday, bug #447684
+
+*mtools-4.0.18 (17 Jan 2013)
+
+  17 Jan 2013; Mike Frysinger <vapier@gentoo.org> +mtools-4.0.18.ebuild:
+  Version bump #452390 by Agostino Sarubbo.
+
+  11 Jan 2013; Rick Farina <zerochaos@gentoo.org> mtools-4.0.15.ebuild:
+  it seems this should have been stable for the last 18 months but somehow it
+  never got marked, bug #363985
+
+*mtools-4.0.17 (15 Sep 2011)
+
+  15 Sep 2011; Tim Harder <radhermit@gentoo.org> +mtools-4.0.17.ebuild:
+  Version bump. Update to EAPI 4 and fix parallel install issue.
+
+  19 Jun 2011; Raúl Porcel <armin76@gentoo.org> mtools-4.0.15.ebuild:
+  alpha/sparc stable wrt #363985
+
+  09 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> mtools-4.0.15.ebuild:
+  x86 stable wrt bug #363985
+
+  02 May 2011; Jeroen Roovers <jer@gentoo.org> mtools-4.0.15.ebuild:
+  Stable for HPPA (bug #363985).
+
+  01 May 2011; Kacper Kowalik <xarthisius@gentoo.org> mtools-4.0.15.ebuild:
+  ppc/ppc64 stable wrt #363985
+
+  25 Apr 2011; Markos Chandras <hwoarang@gentoo.org> mtools-4.0.15.ebuild:
+  Stable on amd64 wrt bug #363985
+
+*mtools-4.0.16 (18 Apr 2011)
+
+  18 Apr 2011; Jeroen Roovers <jer@gentoo.org> +mtools-4.0.16.ebuild:
+  Version bump.
+
+  03 Dec 2010; Michael Weber <xmw@gentoo.org> mtools-4.0.13.ebuild,
+  mtools-4.0.15.ebuild:
+  added ~arm (bug 302981)
+
+  29 Nov 2010; Brent Baude <ranger@gentoo.org> mtools-4.0.13.ebuild:
+  stable ppc64, bug 341405
+
+  31 Oct 2010; Raúl Porcel <armin76@gentoo.org> mtools-4.0.13.ebuild:
+  alpha/sparc stable wrt #341405
+
+  22 Oct 2010; Christian Faulhammer <fauli@gentoo.org> mtools-4.0.13.ebuild:
+  stable x86, bug 341405
+
+  21 Oct 2010; Brent Baude <ranger@gentoo.org> mtools-4.0.13.ebuild:
+  stable ppc, bug 341405
+
+  19 Oct 2010; Jeroen Roovers <jer@gentoo.org> mtools-4.0.13.ebuild:
+  Fix sed expression target thanks to reavertm.
+
+  18 Oct 2010; Jeroen Roovers <jer@gentoo.org> mtools-4.0.13.ebuild:
+  Stable for HPPA (bug #341405).
+
+  18 Oct 2010; Markos Chandras <hwoarang@gentoo.org> mtools-4.0.13.ebuild:
+  Stable on amd64 wrt bug #341405
+
+*mtools-4.0.15 (18 Oct 2010)
+
+  18 Oct 2010; Jeroen Roovers <jer@gentoo.org> +mtools-4.0.15.ebuild:
+  Version bump.
+
+  18 Oct 2010; Mike Frysinger <vapier@gentoo.org> mtools-4.0.14.ebuild:
+  Regen configure #341443 by Priit Laes.
+
+*mtools-4.0.14 (17 Oct 2010)
+
+  17 Oct 2010; Mike Frysinger <vapier@gentoo.org> +mtools-4.0.14.ebuild:
+  Version bump.
+
+*mtools-4.0.13 (07 Mar 2010)
+
+  07 Mar 2010; Mike Frysinger <vapier@gentoo.org> +mtools-4.0.13.ebuild:
+  Version bump #307497 by Jeroen Roovers.
+
+  02 Mar 2010; Jeroen Roovers <jer@gentoo.org> mtools-4.0.12.ebuild:
+  Fix LICENSE.
+
+  26 Dec 2009; Raúl Porcel <armin76@gentoo.org> mtools-3.9.11.ebuild:
+  alpha/sparc stable wrt #293308
+
+  07 Dec 2009; Markus Meier <maekke@gentoo.org> mtools-3.9.11.ebuild:
+  amd64 stable, bug #293308
+
+  26 Nov 2009; Joseph Jezak <josejx@gentoo.org> mtools-3.9.11.ebuild:
+  Marked ppc stable for bug #293308.
+
+  19 Nov 2009; Christian Faulhammer <fauli@gentoo.org> mtools-3.9.11.ebuild:
+  stable x86, bug 293308
+
+  18 Nov 2009; Jeroen Roovers <jer@gentoo.org> mtools-3.9.11.ebuild:
+  Stable for HPPA (bug #293308).
+
+  17 Nov 2009; Brent Baude <ranger@gentoo.org> mtools-3.9.11.ebuild:
+  Marking mtools-3.9.11 ppc64 for bug 293308
+
+*mtools-4.0.12 (15 Nov 2009)
+
+  15 Nov 2009; Mike Frysinger <vapier@gentoo.org> +mtools-4.0.12.ebuild:
+  Version bump.
+
+  18 Aug 2008; Mike Frysinger <vapier@gentoo.org> mtools-3.9.11.ebuild:
+  Remove /usr/local paths from docs, install using `emake DESTDIR`, and dont
+  bother marking mtools.conf as a sample file #233741.
+
+*mtools-3.9.11 (17 Aug 2008)
+
+  17 Aug 2008; Mike Frysinger <vapier@gentoo.org>
+  +files/mtools-3.9.11-flags.patch, +mtools-3.9.11.ebuild:
+  Version bump and remove pointless CFLAGS #232766.
+
+  15 Jul 2008; Jeroen Roovers <jer@gentoo.org> mtools-3.9.10.ebuild:
+  Stable for HPPA too.
+
+  31 Jan 2007; Mike Frysinger <vapier@gentoo.org> mtools-3.9.10.ebuild:
+  Add support for USE=X #164565 by Natanael Copa.
+
+  07 Feb 2006; Simon Stelling <blubb@gentoo.org> mtools-3.9.10.ebuild:
+  stable on amd64
+
+  24 Dec 2005; Michael Hanselmann <hansmi@gentoo.org> mtools-3.9.10.ebuild:
+  Stable on ppc.
+
+  18 Dec 2005; Markus Rothe <corsair@gentoo.org> mtools-3.9.10.ebuild:
+  Stable on ppc64
+
+  12 Dec 2005; Christian Birchinger <joker@gentoo.org> mtools-3.9.10.ebuild:
+  Added sparc stable keyword
+
+  09 Dec 2005; Bryan Østergaard <kloeri@gentoo.org mtools-3.9.10.ebuild:
+  Stable on alpha.
+
+  07 Dec 2005; Mark Loeser <halcy0n@gentoo.org> mtools-3.9.10.ebuild:
+  Stable on x86; bug #114055
+
+*mtools-3.9.10 (17 Jul 2005)
+
+  17 Jul 2005; Mike Frysinger <vapier@gentoo.org> +mtools-3.9.10.ebuild:
+  Version bump.
+
+  13 Feb 2005; Heinrich Wendel <lanius@gentoo.org> -mtools-3.9.8-r1.ebuild,
+  mtools-3.9.9.ebuild:
+  mark amd64; remove old version
+
+  06 Feb 2005; Markus Rothe <corsair@gentoo.org> mtools-3.9.9.ebuild:
+  Stable on ppc64
+
+  03 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  26 Dec 2004; Markus Rothe <corsair@gentoo.org> mtools-3.9.9.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  12 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> mtools-3.9.9.ebuild:
+  Stable on sparc
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  mtools-3.9.9.ebuild:
+  Masked mtools-3.9.9.ebuild stable for ppc
+
+  16 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> mtools-3.9.9.ebuild:
+  Stable on alpha.
+
+  15 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org> mtools-3.9.9.ebuild:
+  use emake; tidy; stablize for x86
+
+  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> mtools-3.9.8-r1.ebuild,
+  mtools-3.9.9.ebuild:
+  Add die following econf for bug 48950
+
+*mtools-3.9.9 (03 Jan 2004)
+
+  03 Jan 2004; Martin Holzer <mholzer@gentoo.org> mtools-3.9.8-r1.ebuild,
+  mtools-3.9.9.ebuild:
+  Version bumped. Closes 37049
+
+  12 Dec 2003; Daniel Ahlberg <aliz@gentoo.org> mtools-3.9.8-r1.ebuild:
+  Builds and runs on amd64. Closing #34087.
+
+*mtools-3.9.8-r1 (16 Sep 2003)
+
+  16 Sep 2003; Seemant Kulleen <seemant@gentoo.org> mtools-3.9.8-r1.ebuild:
+  moved from app-admin to sys-fs
+
+  01 May 2003; Aron Griffis <agriffis@gentoo.org> mtools-3.9.8-r1.ebuild:
+  Mark stable on alpha
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*mtools-3.9.8-r1 (1 Feb 2002)
+  29 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> mtools-3.9.8-r1.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

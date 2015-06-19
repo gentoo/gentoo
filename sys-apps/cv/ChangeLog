@@ -1,0 +1,21 @@
+# ChangeLog for sys-apps/cv
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/cv/ChangeLog,v 1.5 2014/11/12 22:47:40 blueness Exp $
+
+  12 Nov 2014; Anthony G. Basile <blueness@gentoo.org> cv-0.4.1.ebuild:
+  Keyword ~ppc ~ppc64, bug #522970
+
+  06 Aug 2014; Jeroen Roovers <jer@gentoo.org> cv-0.4.1.ebuild:
+  Install README.md.
+
+  06 Aug 2014; Jeroen Roovers <jer@gentoo.org> cv-0.4.1.ebuild:
+  Respect CC, LDFLAGS. Fix building against sys-libs/ncurses[tinfo].
+
+  06 Aug 2014; Jeroen Roovers <jer@gentoo.org> cv-0.4.1.ebuild:
+  Add SRC_URI arrow (bug #519214 by Casper Ti. Vector).
+
+*cv-0.4.1 (06 Aug 2014)
+
+  06 Aug 2014; Jason A. Donenfeld <zx2c4@gentoo.org> +cv-0.4.1.ebuild,
+  +metadata.xml:
+  Initial import.

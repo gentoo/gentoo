@@ -1,0 +1,14 @@
+# ChangeLog for dev-ruby/rdoc
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rdoc/ChangeLog,v 1.135 2015/06/07 19:19:16 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  16 Mar 2015; Hans de Graaff <graaff@gentoo.org> -rdoc-3.12.2.ebuild:
+  Cleanup.
+
+*rdoc-4.1.2-r1 (14 Jan 2015)
+
+  14 Jan 2015; Hans de Graaff <graaff@gentoo.org> +rdoc-4.1.2-r1.ebuild:
+  Install the versioned wrappers also for ruby22, fixing bug 536288.

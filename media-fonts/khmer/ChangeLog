@@ -1,0 +1,27 @@
+# ChangeLog for media-fonts/khmer
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/khmer/ChangeLog,v 1.6 2010/10/27 00:54:13 dirtyepic Exp $
+
+  27 Oct 2010; Ryan Hill <dirtyepic@gentoo.org> -khmer-5.0.ebuild:
+  Remove old.
+
+  25 Oct 2010; Christian Faulhammer <fauli@gentoo.org> khmer-5.0-r1.ebuild:
+  stable x86, bug 341843
+
+  20 Oct 2010; Markos Chandras <hwoarang@gentoo.org> khmer-5.0-r1.ebuild:
+  Stable on amd64 wrt bug #341843
+
+*khmer-5.0-r1 (19 Sep 2010)
+
+  19 Sep 2010; Ryan Hill <dirtyepic@gentoo.org> +khmer-5.0-r1.ebuild:
+  Remove trailing space from font file name (bug #338057 by Faustus).
+
+  28 Sep 2008; Markus Meier <maekke@gentoo.org> khmer-5.0.ebuild:
+  amd64/x86 stable, bug #238606
+
+*khmer-5.0 (25 May 2008)
+
+  25 May 2008; Ryan Hill <dirtyepic@gentoo.org> +metadata.xml,
+  +khmer-5.0.ebuild:
+  Initial import for bug #216414. Ebuild by Peter Alfredsen.
+

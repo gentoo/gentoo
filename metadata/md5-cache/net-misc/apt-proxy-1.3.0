@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst postrm prepare setup
+DESCRIPTION=Caching proxy for the Debian package system
+EAPI=4
+HOMEPAGE=http://sourceforge.net/projects/apt-proxy/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=sys-apps/xinetd
+SLOT=0
+SRC_URI=mirror://sourceforge/apt-proxy/apt-proxy_1.3.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=0fdb90cd926e25dd4a1a2998f9968257

@@ -1,0 +1,30 @@
+# ChangeLog for games-puzzle/hexamine
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/hexamine/ChangeLog,v 1.7 2015/05/15 19:25:25 mr_bones_ Exp $
+
+  15 May 2015; Michael Sterrett <mr_bones_@gentoo.org> hexamine-0.2.1.ebuild:
+  use EPYTHON in wrapper (bug #549568)
+
+  24 Mar 2015; Agostino Sarubbo <ago@gentoo.org> hexamine-0.2.1.ebuild:
+  Stable for amd64, wrt bug #543222
+
+  11 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org> hexamine-0.2.1.ebuild:
+  EAPI=5
+
+  24 Jan 2010; Brent Baude <ranger@gentoo.org> hexamine-0.2.1.ebuild:
+  keyworded ~arch for ppc, bug 295274
+
+  28 Mar 2008; Tristan Heaven <nyhm@gentoo.org> hexamine-0.2.1.ebuild:
+  Add ~amd64 keyword
+
+*hexamine-0.2.1 (06 Jul 2006)
+
+  06 Jul 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  +hexamine-0.2.1.ebuild:
+  version bump
+
+*hexamine-0.1.2 (03 Jul 2006)
+
+  03 Jul 2006; Michael Sterrett <mr_bones_@gentoo.org> +metadata.xml,
+  +hexamine-0.1.2.ebuild:
+  initial commit - ebuild submitted by Leszek via bug #137055

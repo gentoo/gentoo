@@ -1,0 +1,12 @@
+--- cppcheck-1.69/gui/gui.pro
++++ cppcheck-1.69/gui/gui.pro
+@@ -146,9 +146,7 @@
+     LIBS += -lshlwapi
+ }
+ 
+-contains(QMAKE_CC, gcc) {
+     QMAKE_CXXFLAGS += -std=c++0x
+-}
+ 
+ macx {
+     contains(QMAKE_CXX, clang++) {

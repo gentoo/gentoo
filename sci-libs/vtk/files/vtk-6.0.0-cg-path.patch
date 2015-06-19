@@ -1,0 +1,16 @@
+ Utilities/MaterialLibrary/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Utilities/MaterialLibrary/CMakeLists.txt b/Utilities/MaterialLibrary/CMakeLists.txt
+index 330a189..ede97be 100644
+--- a/Utilities/MaterialLibrary/CMakeLists.txt
++++ b/Utilities/MaterialLibrary/CMakeLists.txt
+@@ -116,7 +116,7 @@ MACRO(get_modules modules prefix files )
+ ENDMACRO(get_modules)
+ 
+ SET(CMD_DEP ProcessShader)
+-SET(CMD ProcessShader)
++SET(CMD ./ProcessShader.sh)
+ 
+ IF (VTK_USE_CG_SHADERS)
+   # Create the Cg library.

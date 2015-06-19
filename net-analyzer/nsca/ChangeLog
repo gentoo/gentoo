@@ -1,0 +1,214 @@
+# ChangeLog for net-analyzer/nsca
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nsca/ChangeLog,v 1.10 2012/10/22 02:53:56 flameeyes Exp $
+
+  22 Oct 2012; Diego E. Pettenò <flameeyes@gentoo.org> -files/nsca-nagios3,
+  -nsca-2.7.2-r100.ebuild, files/nsca.init:
+  Remove old; remove 'need net' from init script.
+
+  14 Oct 2012; Raúl Porcel <armin76@gentoo.org> nsca-2.7.2-r103.ebuild:
+  alpha/sparc/x86 stable wrt #436740
+
+  11 Oct 2012; Anthony G. Basile <blueness@gentoo.org> nsca-2.7.2-r103.ebuild:
+  stable ppc64, bug #436740
+
+  10 Oct 2012; Brent Baude <ranger@gentoo.org> nsca-2.7.2-r103.ebuild:
+  Marking nsca-2.7.2-r103 ppc for bug 436740
+
+  01 Oct 2012; Agostino Sarubbo <ago@gentoo.org> nsca-2.7.2-r103.ebuild:
+  Stable for amd64, wrt bug #436740
+
+  24 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> nsca-2.7.2-r103.ebuild:
+  Remove usex usage.
+
+  23 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> files/nsca.init:
+  Make reload generic enough to share it with nrpe.
+
+  23 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> nsca-2.7.2-r103.ebuild:
+  Fix typos.
+
+  23 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> -nsca-2.7.2-r102.ebuild,
+  nsca-2.7.2-r103.ebuild:
+  Remove old and cleanup ebuild after pkgmove.
+
+*nagios-nsca-2.7.2-r103 (23 Aug 2012)
+
+  23 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> +files/nsca.conf,
+  +nagios-nsca-2.7.2-r103.ebuild, files/nsca.init, metadata.xml:
+  Revision bump: add a minimal USE flag to only build send_nsca instead of the
+  daemon; add a dependency on either nagios or icinga for the non-minimal
+  install; install a configuration file with icinga defaults (user/group and
+  paths); allow changing the configuration file for the init script (install
+  conf.d file for that) and depend properly on icinga/nagios.
+
+*nagios-nsca-2.7.2-r102 (21 Aug 2012)
+
+  21 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +nagios-nsca-2.7.2-r102.ebuild, -nagios-nsca-2.7.2-r101.ebuild,
+  files/nsca.init, metadata.xml:
+  Revision bump: inherit user eclass for creating the nagios user and group;
+  don't drop to nagios:nagios through s-s-d, leave it to the daemon to do that,
+  otherwise we don't get a pid_file; make sure that nsca is queued after icinga
+  or nagios when starting the init script; add a crypt USE flag to depend on
+  libmcrypt so that you can disable it.
+
+  19 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Re-assign to sysadmin herd.
+
+*nagios-nsca-2.7.2-r101 (18 Aug 2012)
+
+  18 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> +files/nsca.init,
+  +nagios-nsca-2.7.2-r101.ebuild, -files/nsca, -files/nsca.cfg,
+  -files/send_nsca.cfg, -nagios-nsca-2.7.2.ebuild:
+  Remove old; revbump and cleanup ebuild: use EAPI 4, use econf, set up the
+  nagios user correctly, instead of depending on nagios-plugins for that; make
+  tcpd dependency non-automagic; fix install path of send_ncsa; don't chown
+  files that are world-executable; init script is cleaned up, uses the new
+  runscript syntax and is safe to run on LXC hosts as well.
+
+  09 Feb 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #85926
+
+  18 Mar 2009; Brent Baude <ranger@gentoo.org>
+  nagios-nsca-2.7.2-r100.ebuild:
+  Marking nagios-nsca-2.7.2-r100 ppc stable for bug 256177
+
+  07 Mar 2009; Markus Meier <maekke@gentoo.org>
+  nagios-nsca-2.7.2-r100.ebuild:
+  amd64/x86 stable, bug #256177
+
+  07 Mar 2009; Markus Meier <maekke@gentoo.org>
+  nagios-nsca-2.7.2-r100.ebuild:
+  correct fowners of the nsca binary
+
+  04 Mar 2009; Ferris McCormick <fmccor@gentoo.org>
+  nagios-nsca-2.7.2-r100.ebuild:
+  Sparc stable, part of Bug #256177.
+
+  01 Feb 2009; Tobias Klausmann <klausman@gentoo.org>
+  nagios-nsca-2.7.2-r100.ebuild:
+  Stable on alpha, bug #256177
+
+  26 Jan 2009; Brent Baude <ranger@gentoo.org>
+  nagios-nsca-2.7.2-r100.ebuild:
+  Marking nagios-nsca-2.7.2-r100 ppc64 stable for bug 256177
+
+*nagios-nsca-2.7.2-r100 (27 Apr 2008)
+
+  27 Apr 2008; Tobias Scherbaum <dertobi123@gentoo.org> +files/nsca-nagios3,
+  -nagios-nsca-2.6.ebuild, +nagios-nsca-2.7.2-r100.ebuild:
+  bump for nagios-3
+
+  14 Mar 2008; Caleb Tennis <caleb@gentoo.org> nagios-nsca-2.7.2.ebuild:
+  amd64 stable, per bug #205335
+
+  05 Feb 2008; Markus Rothe <corsair@gentoo.org> nagios-nsca-2.7.2.ebuild:
+  Stable on ppc64
+
+  21 Jan 2008; Raúl Porcel <armin76@gentoo.org> nagios-nsca-2.7.2.ebuild:
+  sparc stable wrt #205335
+
+  12 Jan 2008; Dawid Węgliński <cla@gentoo.org> nagios-nsca-2.7.2.ebuild:
+  Stable on x86 (bug #205335)
+
+*nagios-nsca-2.7.2 (17 Aug 2007)
+
+  17 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org> -files/nsca-2.3,
+  -files/nsca-2.6, files/nsca, -nagios-nsca-2.4.ebuild,
+  -nagios-nsca-2.5.ebuild, nagios-nsca-2.6.ebuild,
+  -nagios-nsca-2.7.1.ebuild, +nagios-nsca-2.7.2.ebuild:
+  Version bump, Cleanup
+
+  28 Apr 2007; Sven Wegener <swegener@gentoo.org> nagios-nsca-2.4.ebuild,
+  nagios-nsca-2.5.ebuild:
+  Fix *initd, *confd and *envd calls (#173884, #174266)
+
+  28 Apr 2007; Torsten Veller <tove@gentoo.org> nagios-nsca-2.6.ebuild,
+  nagios-nsca-2.7.1.ebuild:
+  Use newinitd
+
+*nagios-nsca-2.7.1 (12 Mar 2007)
+
+  12 Mar 2007; Martin Jackson <mjolnir@gentoo.org>
+  +nagios-nsca-2.7.1.ebuild:
+  Version bump to 2.7.1 for #169434
+
+  21 Oct 2006; Thomas Cort <tcort@gentoo.org> nagios-nsca-2.6.ebuild:
+  Added ~alpha keyword wrt Bug #110130.
+
+  17 Aug 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  nagios-nsca-2.6.ebuild:
+  Stable on sparc
+
+  06 Jul 2006; Markus Rothe <corsair@gentoo.org> nagios-nsca-2.6.ebuild:
+  Stable on ppc64
+
+  04 Jul 2006; Lance Albertson <ramereth@gentoo.org> nagios-nsca-2.6.ebuild:
+  * Marked 2.6 stable
+
+  07 May 2006; Markus Rothe <corsair@gentoo.org> nagios-nsca-2.5.ebuild:
+  Stable on ppc64
+
+  05 May 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  nagios-nsca-2.5.ebuild:
+  Stable on sparc wrt security #132159
+
+*nagios-nsca-2.6 (27 Apr 2006)
+
+  27 Apr 2006; Lance Albertson <ramereth@gentoo.org> +files/nsca-2.6,
+  nagios-nsca-2.5.ebuild, +nagios-nsca-2.6.ebuild:
+  * Version bump
+  * Added reload to init script (2.6)
+  * Stable on x86 (2.5)
+
+*nagios-nsca-2.5 (04 Feb 2006)
+
+  04 Feb 2006; Lance Albertson <ramereth@gentoo.org> metadata.xml,
+  +nagios-nsca-2.5.ebuild:
+  * Version bump
+
+  17 Dec 2005; Markus Rothe <corsair@gentoo.org> nagios-nsca-2.4.ebuild:
+  Added ~ppc64
+
+  24 Oct 2004; Jason Wever <weeve@gentoo.org> nagios-nsca-2.4.ebuild:
+  Stable on sparc.
+
+  13 Jul 2004; Eldad Zack <eldad@gentoo.org> +metadata.xml,
+  nagios-nsca-2.4.ebuild:
+  Added metadata
+
+  19 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> nagios-nsca-2.4.ebuild:
+  fix depend (bug #45110); tidy
+
+  15 Dec 2003; Martin Holzer <mholzer@gentoo.org> nagios-nsca-2.4.ebuild:
+  x86 stable.
+
+*nagios-nsca-2.4 (26 Nov 2003)
+
+  26 Nov 2003; Martin Holzer <mholzer@gentoo.org> nagios-nsca-2.4.ebuild:
+  Version bumped.
+
+  26 Nov 2003; Martin Holzer <mholzer@gentoo.org> nagios-nsca-2.3-r1.ebuild:
+  Added RESTRICT="nomirror"
+
+*nagios-nsca-2.3-r1
+  17 Jun 2003; Dean Bailey <alron@gentoo.org> nagios-nsca-2.3-r1 :
+  Bug fix for bug #22498
+
+  28 Feb 2003; Dean Bailey <alron@gentoo.org> nagios-nsca-2.3 :
+  Moved to x86 stable.
+
+*nagios-nsca-2.3	(09 Feb 2003)
+  09 Feb 2003; Dean Bailey <alron@gentoo.org> nagios-nsca-2.3 :
+  Version bump
+
+  15 Jan 2003; Dean Bailey <alron@gentoo.org> nagios-nsca-2.2 :
+  Changed ~x86 to x86 and added sparc and ppc keywords
+
+*nagios-nsca-2.2	(13 Jan 2003)
+  13 Jan 2002; Dean Bailey <alron@gentoo.org> nagios-nsca-2.2 :
+  Updated to version 2.2
+
+*nagios-nsca-2.1	(1 Nov 2002)
+  1 Nov 2002; Dean Bailey <alron@gentoo.org> nagios-nsca-2.1 :
+  Initial import. Ebuild submitted by Dean Bailey <alron@gentoo.org>.

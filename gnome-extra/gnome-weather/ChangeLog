@@ -1,0 +1,81 @@
+# ChangeLog for gnome-extra/gnome-weather
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-weather/ChangeLog,v 1.18 2015/06/09 14:47:53 eva Exp $
+
+*gnome-weather-3.16.2.1 (09 Jun 2015)
+
+  09 Jun 2015; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-weather-3.12.0.ebuild, +gnome-weather-3.16.2.1.ebuild:
+  Version bump for Gnome 3.16. Clean up old revision.
+
+  15 Mar 2015; Pacho Ramos <pacho@gentoo.org> gnome-weather-3.14.1.ebuild:
+  x86 stable, bug 534012
+
+  14 Mar 2015; Pacho Ramos <pacho@gentoo.org> gnome-weather-3.14.1.ebuild:
+  amd64 stable, bug 534012
+
+  11 Feb 2015; Pacho Ramos <pacho@gentoo.org> gnome-weather-3.14.1.ebuild:
+  x86 keyword, bug #537036
+
+*gnome-weather-3.14.1 (22 Dec 2014)
+
+  22 Dec 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-weather-3.10.1.ebuild, +gnome-weather-3.14.1.ebuild:
+  Version bump for Gnome 3.14. Clean up old revision.
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org> gnome-weather-3.12.0.ebuild:
+  Stable for amd64, wrt bug #512912
+
+*gnome-weather-3.12.0 (27 Apr 2014)
+
+  27 Apr 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  +gnome-weather-3.12.0.ebuild:
+  Version bump for Gnome 3.12.
+
+  26 Apr 2014; Pacho Ramos <pacho@gentoo.org> -gnome-weather-3.8.2-r1.ebuild:
+  drop old
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> gnome-weather-3.10.1.ebuild:
+  amd64 stable, bug 499954
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> gnome-weather-3.10.1.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> gnome-weather-3.10.1.ebuild:
+  arch stable, bug 888
+
+*gnome-weather-3.10.1 (24 Dec 2013)
+
+  24 Dec 2013; Pacho Ramos <pacho@gentoo.org> +gnome-weather-3.10.1.ebuild:
+  Version bump for Gnome 3.10
+
+  21 Dec 2013; Pacho Ramos <pacho@gentoo.org> -gnome-weather-3.8.2.ebuild,
+  gnome-weather-3.8.2-r1.ebuild:
+  Add missing RDEPEND on libgweather (#494972 by Marco Leise), drop old.
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> gnome-weather-3.8.2-r1.ebuild:
+  amd64 stable, bug #478252
+
+  28 Jul 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  gnome-weather-3.8.2-r1.ebuild:
+  Add more precise glib/gtk+ dependency.
+
+*gnome-weather-3.8.2-r1 (29 Jun 2013)
+
+  29 Jun 2013; Pacho Ramos <pacho@gentoo.org>
+  +files/gnome-weather-3.8.2-temp-unit.patch, +gnome-weather-3.8.2-r1.ebuild,
+  -gnome-weather-3.8.1.ebuild:
+  Add a submenu to the app menu to choose the temperature unit (from 'master'),
+  drop old.
+
+*gnome-weather-3.8.2 (13 May 2013)
+
+  13 May 2013; Pacho Ramos <pacho@gentoo.org> +gnome-weather-3.8.2.ebuild,
+  gnome-weather-3.8.1.ebuild:
+  Version bump
+
+*gnome-weather-3.8.1 (27 Apr 2013)
+
+  27 Apr 2013; Pacho Ramos <pacho@gentoo.org> +gnome-weather-3.8.1.ebuild,
+  +metadata.xml:
+  New Gnome 3.8 app

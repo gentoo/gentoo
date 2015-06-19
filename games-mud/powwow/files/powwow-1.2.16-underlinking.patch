@@ -1,0 +1,17 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Mon Feb 18 02:25:38 UTC 2013
+Subject: fix underlinking
+
+https://bugs.gentoo.org/show_bug.cgi?id=454928
+
+--- powwow-1.2.16/Makefile.am
++++ powwow-1.2.16/Makefile.am
+@@ -5,7 +5,7 @@
+ powwow_SOURCES = beam.c cmd.c log.c edit.c cmd2.c eval.c \
+ 		 utils.c main.c tcp.c list.c map.c tty.c \
+ 		 ptr.c
+-powwow_LDFLAGS = @dl_ldflags@
++powwow_LDADD = @dl_ldflags@
+ powwowdir = $(pkgincludedir)
+ powwow_HEADERS = beam.h cmd.h log.h edit.h cmd2.h eval.h \
+ 		 utils.h main.h tcp.h list.h map.h tty.h \

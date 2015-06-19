@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXpm x11-proto/xextproto
+DESCRIPTION=dockapp for monitoring internet connections to and from your computer
+HOMEPAGE=http://www.swanson.ukfsn.org/#wminet
+KEYWORDS=amd64 ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXpm
+SLOT=0
+SRC_URI=http://www.swanson.ukfsn.org/wmdock/wminet-3.0.0.tar.gz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=b1108d5a38581e1e31ead59c8fc06418

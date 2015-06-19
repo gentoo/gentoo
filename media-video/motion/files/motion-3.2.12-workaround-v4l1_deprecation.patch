@@ -1,0 +1,35 @@
+motion has both v4l1 and v4l2 support but they are not separate except in upstream version control.
+so, temporarily use the libv4l1-videodev.h from libv4l to allow succesful build of the v4l2 (pay attention here!) backend.
+
+--- motion.h
++++ motion.h
+@@ -40,7 +40,7 @@
+ 
+ #define _LINUX_TIME_H 1
+ #if !defined(WITHOUT_V4L) && !defined(BSD)
+-#include <linux/videodev.h>
++#include <libv4l1-videodev.h>
+ #endif
+ 
+ #include <pthread.h>
+--- track.c
++++ track.c
+@@ -11,6 +11,7 @@
+ #include "motion.h"
+ 
+ #ifndef WITHOUT_V4L
++#include <linux/videodev2.h>
+ #include "pwc-ioctl.h"
+ #endif
+ 
+--- video.h
++++ video.h
+@@ -12,7 +12,7 @@
+ 
+ #define _LINUX_TIME_H 1
+ #ifndef WITHOUT_V4L
+-#include <linux/videodev.h>
++#include <libv4l1-videodev.h>
+ #include <sys/mman.h>
+ #include "pwc-ioctl.h"
+ #endif

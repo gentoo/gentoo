@@ -1,0 +1,11 @@
+--- sdk/tools/ecppc/scopevar.cpp.orig	2008-06-13 16:09:16.000000000 +0000
++++ sdk/tools/ecppc/scopevar.cpp	2008-06-13 16:13:04.000000000 +0000
+@@ -22,6 +22,7 @@
+ #include <tnt/stringescaper.h>
+ #include <iterator>
+ #include <iostream>
++#include <algorithm>
+ 
+ namespace tnt
+ {
+

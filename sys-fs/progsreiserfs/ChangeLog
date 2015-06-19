@@ -1,0 +1,104 @@
+# ChangeLog for sys-fs/progsreiserfs
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/progsreiserfs/ChangeLog,v 1.20 2014/12/30 19:51:15 maekke Exp $
+
+  30 Dec 2014; Markus Meier <maekke@gentoo.org> progsreiserfs-0.3.1_rc8.ebuild:
+  add ~arm, bug #531444
+
+  19 Nov 2012; Samuli Suominen <ssuominen@gentoo.org>
+  progsreiserfs-0.3.1_rc8.ebuild,
+  +files/progsreiserfs-0.3.1_rc8-autotools.patch:
+  USE="static-libs" and use prune_libtool_files from eutils.eclass.
+  Pull in sys-apps/util-linux instead of sys-fs/e2fsprogs for
+  libuuid headers. Fix underquoting within progsreiserfs.m4 wrt
+  #442226 by Raphaël Droz
+
+  17 Feb 2011; Mike Frysinger <vapier@gentoo.org>
+  progsreiserfs-0.3.1_rc8.ebuild:
+  Touch up style and use emake when installing.
+
+  05 Feb 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  progsreiserfs-0.3.1_rc8.ebuild:
+  Stable on amd64 wrt bug #208453.
+
+  04 Oct 2006; Joseph Jezak <josejx@gentoo.org>
+  progsreiserfs-0.3.1_rc8.ebuild:
+  Marked ppc stable for bug #134039.
+
+  26 Sep 2006; Joshua Jackson <tsunam@gentoo.org>
+  progsreiserfs-0.3.1_rc8.ebuild:
+  Stable x86 for qtparted compiling issues
+
+  11 Aug 2006; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Move back to base-system.
+
+  09 Mar 2005; Robin H. Johnson <robbat2@gentoo.org>
+  progsreiserfs-0.3.1_rc8.ebuild:
+  Fix bug #84598.
+
+  09 Jan 2005; Robin H. Johnson <robbat2@gentoo.org>
+  progsreiserfs-0.3.1_rc8.ebuild:
+  Force new build to unstable instead of stable free, and add warnings in it.
+
+*progsreiserfs-0.3.1_rc8 (09 Jan 2005)
+
+  09 Jan 2005; Mike Frysinger <vapier@gentoo.org> +metadata.xml,
+  +progsreiserfs-0.3.1_rc8.ebuild:
+  Version bump #77210.  We only install library / headers now.
+
+  09 May 2004; Ilya A. Volynets-Evenbach <iluxa@gentoo.org>
+  progsreiserfs-0.3.0.4.ebuild:
+  Stable on mips
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org>
+  progsreiserfs-0.3.0.3.ebuild:
+  Add inherit eutils
+
+  07 Mar 2004; Tom Gall <tgall@gentoo.org> progsreiserfs-0.3.0.4.ebuild:
+  mark ppc64 stable
+
+  06 Mar 2004; Ilya A. Volynets-Evenbakh <ilya@total-knowledge.com>
+  progsreiserfs-0.3.0.4.ebuild:
+  mark as ~mips
+
+  04 Mar 2004; Lars Weiler <pylon@gentoo.org> progsreiserfs-0.3.0.4.ebuild:
+  stable on ppc
+
+  23 Jan 2004; <gustavoz@gentoo.org> progsreiserfs-0.3.0.4.ebuild:
+  stable on sparc
+
+*progsreiserfs-0.3.0.4 (15 Sep 2003)
+
+  15 Sep 2003; Seemant Kulleen <seemant@gentoo.org>
+  progsreiserfs-0.3.0.3.ebuild, progsreiserfs-0.3.0.4.ebuild,
+  files/progsreiserfs-0.3.0.3-sparc-linux.diff:
+  moved from dev-utils to sys-fs
+
+  11 Aug 2003; Will Woods <wwoods@gentoo.org> progsreiserfs-0.3.0.4.ebuild:
+  Marked stable for alpha
+
+  07 Aug 2003; Aron Griffis <agriffis@gentoo.org>
+  progsreiserfs-0.3.0.4.ebuild:
+  Add ~alpha to KEYWORDS
+
+  20 Jun 2003; Jason Wever <weeve@gentoo.org> progsreiserfs-0.3.0.3.ebuild,
+  files/progsreiserfs-0.3.0.3-sparc-linux.diff:
+  Added a patch for sparc from the progreiserfs people to fix bug #21695.
+
+*progsreiserfs-0.3.0.4 (24 Feb 2003)
+
+  16 Jun 2003; Guy Martin <gmsoft@gentoo.org> .progsreiserfs-0.3.0.4.ebuild :
+  Added hppa to KEYWORDS.
+
+  25 Mar 2003; Guy Martin <gmsoft@gentoo.org> progsreiserfs-0.3.0.4.ebuild :
+  Added ~hppa to KEYWORDS.
+
+  24 Feb 2003; Brandon Low <lostlogic@gentoo.org> progsreiserfs-0.3.0.4.ebuild files/digest-progsreiserfs-0.3.0.4 :
+  Bump, ebuild fixage, keywords to ~
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*progsreiserfs-0.3.0.3 (7 Jun 2002)
+
+  7 Jun 2002; Donny Davies <woodchip@gentoo.org> :
+  New port.

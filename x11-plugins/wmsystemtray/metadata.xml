@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>desktop-dock</herd>
+	<longdescription>a system tray using the freedesktop.org system tray protocol designed as a Window Maker dock app. It has the ability to display more than one dock window to make room for more tray icons, and the ability to scroll through the icons if more are present than will fit.</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">wmsystemtray</remote-id>
+	</upstream>
+</pkgmetadata>

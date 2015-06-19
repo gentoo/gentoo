@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare
+DEPEND=dev-libs/npth >=dev-libs/libassuan-2 >=dev-libs/libgcrypt-1.6.2 >=dev-libs/libgpg-error-1.17 >=dev-libs/libksba-1.0.7 >=net-misc/curl-7.10 gnutls? ( >=net-libs/gnutls-3.0 ) sys-libs/zlib ldap? ( net-nds/openldap ) bzip2? ( app-arch/bzip2 ) readline? ( sys-libs/readline ) smartcard? ( usb? ( virtual/libusb:0 ) ) app-crypt/pinentry !app-crypt/dirmngr static? ( >=dev-libs/libassuan-2[static-libs] >=dev-libs/libgcrypt-1.6.2[static-libs] >=dev-libs/libgpg-error-1.17[static-libs] >=dev-libs/libksba-1.0.7[static-libs] dev-libs/npth[static-libs] >=net-misc/curl-7.10[static-libs] sys-libs/zlib[static-libs] bzip2? ( app-arch/bzip2[static-libs] ) ) nls? ( sys-devel/gettext ) doc? ( sys-apps/texinfo ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=The GNU Privacy Guard, a GPL OpenPGP implementation
+EAPI=5
+HOMEPAGE=http://www.gnupg.org/
+IUSE=bzip2 doc +gnutls ldap nls readline static selinux smartcard tools usb
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~x86
+LICENSE=GPL-3
+RDEPEND=!static? ( dev-libs/npth >=dev-libs/libassuan-2 >=dev-libs/libgcrypt-1.6.2 >=dev-libs/libgpg-error-1.17 >=dev-libs/libksba-1.0.7 >=net-misc/curl-7.10 gnutls? ( >=net-libs/gnutls-3.0 ) sys-libs/zlib ldap? ( net-nds/openldap ) bzip2? ( app-arch/bzip2 ) readline? ( sys-libs/readline ) smartcard? ( usb? ( virtual/libusb:0 ) ) ) app-crypt/pinentry !app-crypt/dirmngr selinux? ( sec-policy/selinux-gpg ) nls? ( virtual/libintl )
+REQUIRED_USE=smartcard? ( !static )
+SLOT=0
+SRC_URI=mirror://gnupg/gnupg/gnupg-2.1.5.tar.bz2
+_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=8037da43ae316ea5f8de63b638784310

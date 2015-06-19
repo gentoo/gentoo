@@ -1,0 +1,110 @@
+--- a/po/cs.po
++++ b/po/cs.po
+@@ -9,6 +9,7 @@
+ "PO-Revision-Date: 2005-10-11 16:59+0200\n"
+ "Last-Translator: Katarina Machalkova <bubli@bubli.org>\n"
+ "Language-Team: Czech <debian-l10n-czech@lists.debian.org>\n"
++"Language: cs\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=ISO-8859-2\n"
+ "Content-Transfer-Encoding: 8bit\n"
+--- a/po/de.po
++++ b/po/de.po
+@@ -10,6 +10,7 @@
+ "PO-Revision-Date: 1999-04-21 01:50+0200\n"
+ "Last-Translator: René van Bevern <rvb@pro-linux.de>\n"
+ "Language-Team: German <de@li.org>\n"
++"Language: de\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=ISO-8859-1\n"
+ "Content-Transfer-Encoding: 8bit\n"
+--- a/po/eu.po
++++ b/po/eu.po
+@@ -12,6 +12,7 @@
+ "PO-Revision-Date: 2005-09-28 23:14+0200\n"
+ "Last-Translator: Piarres Beobide <pi@beobide.net>\n"
+ "Language-Team: librezale.org <librezale@librezale.org>\n"
++"Language: eu\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=UTF-8\n"
+ "Content-Transfer-Encoding: 8bit\n"
+--- a/po/ja.po
++++ b/po/ja.po
+@@ -10,6 +10,7 @@
+ "PO-Revision-Date: 2001-11-21 17:42+0900\n"
+ "Last-Translator: Masayuki Hatta <mhatta@gnu.org>\n"
+ "Language-Team: Japanese <ja@li.org>\n"
++"Language: ja\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=euc-jp\n"
+ "Content-Transfer-Encoding: 8bit\n"
+--- a/po/nl.po
++++ b/po/nl.po
+@@ -11,6 +11,7 @@
+ "PO-Revision-Date: 2005-09-01 21:21+0200\n"
+ "Last-Translator: Bas Zoetekouw <bas@debian.org>\n"
+ "Language-Team: Dutch <nl@li.org>\n"
++"Language: nl\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=ISO-8859-15\n"
+ "Content-Transfer-Encoding: 8bit\n"
+--- a/po/pl.po
++++ b/po/pl.po
+@@ -10,6 +10,7 @@
+ "PO-Revision-Date: 2005-09-29 21:59+0200\n"
+ "Last-Translator: Krzysztof Krzy¿aniak (eloy) <eloy@debian.org>\n"
+ "Language-Team:\n"
++"Language: pl\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=ISO-8859-2\n"
+ "Content-Transfer-Encoding: 8bit\n"
+--- a/po/pt_BR.po
++++ b/po/pt_BR.po
+@@ -13,6 +13,7 @@
+ "Last-Translator: Felipe Augusto van de Wiel (faw) <felipe@cathedrallabs."
+ "org>\n"
+ "Language-Team: l10n portuguese <debian-l10n-portuguese@lists.debian.org>\n"
++"Language: pt_BR\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=utf-8\n"
+ "Content-Transfer-Encoding: 8bit\n"
+--- a/po/ro.po
++++ b/po/ro.po
+@@ -11,6 +11,7 @@
+ "PO-Revision-Date: 2005-09-30 03:42+0300\n"
+ "Last-Translator: Eddy Petrisor <eddy.petrisor@gmail.com>\n"
+ "Language-Team: Romanian <debian-l10n-romanian@lists.debian.org>\n"
++"Language: ro\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=UTF-8\n"
+ "Content-Transfer-Encoding: 8bit\n"
+--- a/po/ru.po
++++ b/po/ru.po
+@@ -11,6 +11,7 @@
+ "PO-Revision-Date: 2005-10-01 10:47+0400\n"
+ "Last-Translator: Yuri Kozlov <kozlov.y@gmail.com>\n"
+ "Language-Team: Russian <debian-l10n-russian@lists.debian.org>\n"
++"Language: ru\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=UTF-8\n"
+ "Content-Transfer-Encoding: 8bit\n"
+--- a/po/sv.po
++++ b/po/sv.po
+@@ -11,6 +11,7 @@
+ "PO-Revision-Date: 2005-10-06 12:00+0200\n"
+ "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
+ "Language-Team: Swedish <sv@li.org>\n"
++"Language: sv\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=iso-8859-1\n"
+ "Content-Transfer-Encoding: 8bit\n"
+--- a/po/vi.po
++++ b/po/vi.po
+@@ -11,6 +11,7 @@
+ "PO-Revision-Date: 2005-12-21 15:11+1030\n"
+ "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
+ "Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net>\n"
++"Language: vi\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=UTF-8\n"
+ "Content-Transfer-Encoding: 8bit\n"

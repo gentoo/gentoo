@@ -1,0 +1,104 @@
+# ChangeLog for app-misc/ompload
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/ompload/ChangeLog,v 1.23 2012/03/06 10:29:38 xmw Exp $
+
+  06 Mar 2012; Michael Weber <xmw@gentoo.org> ompload-20101220.ebuild:
+  Change DESCRIPTION to match HOMEPAGE (bug 405163)
+
+  27 Jul 2011; Michael Weber <xmw@gentoo.org> -files/ompload-226-url.patch,
+  -ompload-20100909.ebuild:
+  Drop old version
+
+  17 Apr 2011; Christian Faulhammer <fauli@gentoo.org>
+  ompload-20101220.ebuild:
+  x86 stable per bug 359269
+
+  21 Mar 2011; Markos Chandras <hwoarang@gentoo.org> ompload-20101220.ebuild:
+  Stable on amd64 wrt bug #359269
+
+  17 Mar 2011; Michael Weber <xmw@gentoo.org> ompload-20101220.ebuild:
+  ppc/sparc stable (bug 359269)
+
+  25 Feb 2011; Michael Weber <xmw@gentoo.org> ompload-20101220.ebuild:
+  Added ~ppc per request on bug 354169
+
+*ompload-20101220 (18 Feb 2011)
+
+  18 Feb 2011; Michael Weber <xmw@gentoo.org> -ompload-226.ebuild,
+  -ompload-226-r1.ebuild, +ompload-20101220.ebuild:
+  Version bump
+
+  13 Feb 2011; Raúl Porcel <armin76@gentoo.org> ompload-226.ebuild,
+  ompload-226-r1.ebuild, ompload-20100909.ebuild:
+  Add ~sparc wrt #354169
+
+  01 Nov 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  ompload-20100909.ebuild:
+  x86 stable wrt bug #342823
+
+  31 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  ompload-20100909.ebuild:
+  Stable on amd64 wrt bug #342823
+
+  09 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  ompload-226-r1.ebuild:
+  stable x86, bug 287413
+
+  21 Sep 2010; Markos Chandras <hwoarang@gentoo.org> ompload-226-r1.ebuild:
+  Stable on amd64 wrt bug #287413
+
+*ompload-20100909 (12 Sep 2010)
+
+  12 Sep 2010; Michael Weber <xmw@gentoo.org> -ompload-20090121.ebuild,
+  -ompload-20090517.ebuild, +ompload-20100909.ebuild:
+  Drop old unstable versions with wrong url, add new fixed git version (bug
+  #336859, thanks to John Tsolox <tsolox@gmail.com>).
+
+*ompload-226-r1 (12 Sep 2010)
+
+  12 Sep 2010; Michael Weber <xmw@gentoo.org> +ompload-226-r1.ebuild,
+  +files/ompload-226-url.patch, metadata.xml:
+  Taking maintainer-ship. Revbump to fix upload url (bug 336859 thanks to
+  John Tsolox <tsolox@gmail.com> for the hint).
+
+  02 Jun 2010; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove omp from metadata.xml (#147119)
+
+*ompload-20090517 (13 Jul 2009)
+
+  13 Jul 2009; <omp@gentoo.org> -ompload-268.ebuild,
+  +ompload-20090517.ebuild:
+  Version bump; remove older version.
+
+*ompload-20090121 (17 Mar 2009)
+
+  17 Mar 2009; David Shakaryan <omp@gentoo.org> +ompload-20090121.ebuild:
+  Version bump.
+
+*ompload-268 (03 Oct 2008)
+
+  03 Oct 2008; David Shakaryan <omp@gentoo.org> -ompload-214.ebuild,
+  +ompload-268.ebuild:
+  Version bump; remove older version.
+
+  16 Jul 2008; Alexis Ballier <aballier@gentoo.org> ompload-226.ebuild:
+  keyword ~x86-fbsd, thanks to Davide Italiano <dav_it@gentoo.org>, bug
+  #231904
+
+  23 Apr 2008; Raúl Porcel <armin76@gentoo.org> ompload-226.ebuild:
+  x86 stable wrt #208908
+
+  22 Apr 2008; <welp@gentoo.org> ompload-226.ebuild:
+  Stable on amd64; bug 208908
+
+*ompload-226 (05 Nov 2007)
+
+  05 Nov 2007; David Shakaryan <omp@gentoo.org> +ompload-226.ebuild:
+  Version bump.
+
+*ompload-214 (25 Sep 2007)
+
+  25 Sep 2007; David Shakaryan <omp@gentoo.org> +metadata.xml,
+  +ompload-214.ebuild:
+  Initial ebuild.
+

@@ -1,0 +1,62 @@
+# ChangeLog for net-irc/iip
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/iip/ChangeLog,v 1.14 2015/04/27 02:06:19 mrueg Exp $
+
+  27 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -iip-1.1.0.ebuild:
+  Remove old.
+
+  19 Oct 2010; Diego E. Pettenò <flameeyes@gentoo.org> iip-1.2.ebuild:
+  QA: remove econf from src_prepare on EAPI=2.
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> iip-1.1.0.ebuild,
+  iip-1.2.ebuild:
+  Remove virtual/libc
+
+  03 Apr 2009; Patrick Lauer <patrick@gentoo.org>
+  +files/iip_open_mode.patch, iip-1.2.ebuild:
+  GCC 4.3 compile fix from Magnus Granberg, fixes #260983. Adding ~amd64
+  keyword.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  27 Jul 2004; Sven Wegener <swegener@gentoo.org> iip-1.1.0.ebuild,
+  iip-1.2.ebuild:
+  Removed the enewuser command in src_install for bug #58526. The created user
+  isn't used later on. Made iip-1.1.0 CFLAGS aware. Added dev-lang/perl to build
+  time dependencies for 1.2.0 as pod2man is needed to create the man page.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> iip-1.1.0.ebuild,
+  iip-1.2.ebuild:
+  virtual/glibc -> virtual/libc
+
+  29 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> iip-1.1.0.ebuild,
+  iip-1.2.ebuild:
+  Masked iip-1.2.ebuild testing for ppc
+
+  29 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> iip-1.1.0.ebuild:
+  Masked iip-1.1.0.ebuild testing for ppc
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> iip-1.1.0.ebuild,
+  iip-1.2.ebuild:
+  Add inherit eutils
+
+  23 Jan 2004; Chuck Short <zul@gentoo.org> iip-1.2.ebuild:
+  Ebuild clean ups fixes sandbox issues. closes 38855.
+
+*iip-1.2 (22 Jan 2004)
+
+  22 Jan 2004; <zul@gentoo.org> iip-1.2.ebuild:
+  Added sed to remove -Werror in src/Makefile. Closes #38855.
+
+  18 Jan 2004; Chuck Short <zul@gentoo.org> iip-1.1.0.ebuild:
+  Version bump, closes #35805.
+
+  04 Jan 2004; Chuck Short <zul@gentoo.org> iip-1.1.0.ebuild:
+  Updated header.
+
+*iip-1.1.0 (27 Sep 2003)
+
+  27 Sep 2003; Chuck Short <zul@gentoo.org> iip-1.1.0.ebuild:
+  Initial version, originally contributed by Andrew Bevitt <andrew@volutin.net>,
+  modified by me because RDEPEND and DEPEND were missing from the initial ebuild.

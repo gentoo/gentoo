@@ -1,0 +1,125 @@
+From 67debcecd3d530c429e817e1d778e79dcd1db905 Mon Sep 17 00:00:00 2001
+From: Kern Sibbald <kern@sibbald.com>
+Date: Sat, 18 Aug 2012 13:46:03 +0000
+Subject: Make dump_resource respect console ACL's
+
+---
+diff --git a/bacula/src/dird/dird_conf.c b/bacula/src/dird/dird_conf.c
+index 7dcf591..2f2eb00 100644
+--- a/bacula/src/dird/dird_conf.c
++++ b/bacula/src/dird/dird_conf.c
+@@ -554,6 +554,7 @@ void dump_resource(int type, RES *reshdr, void sendit(void *sock, const char *fm
+    bool recurse = true;
+    char ed1[100], ed2[100], ed3[100];
+    DEVICE *dev;
++   UAContext *ua = (UAContext *)sock;
+ 
+    if (res == NULL) {
+       sendit(sock, _("No %s resource defined\n"), res_to_str(type));
+@@ -599,6 +600,9 @@ void dump_resource(int type, RES *reshdr, void sendit(void *sock, const char *fm
+       break;
+ 
+    case R_CLIENT:
++      if (!acl_access_ok(ua, Client_ACL, res->res_client.hdr.name)) {
++         break;
++      }
+       sendit(sock, _("Client: name=%s address=%s FDport=%d MaxJobs=%u\n"),
+          res->res_client.hdr.name, res->res_client.address, res->res_client.FDport,
+          res->res_client.MaxConcurrentJobs);
+@@ -626,6 +630,9 @@ void dump_resource(int type, RES *reshdr, void sendit(void *sock, const char *fm
+       break;
+ 
+    case R_STORAGE:
++      if (!acl_access_ok(ua, Storage_ACL, res->res_store.hdr.name)) {
++         break;
++      }
+       sendit(sock, _("Storage: name=%s address=%s SDport=%d MaxJobs=%u\n"
+ "      DeviceName=%s MediaType=%s StorageId=%s\n"),
+          res->res_store.hdr.name, res->res_store.address, res->res_store.SDport,
+@@ -636,6 +643,9 @@ void dump_resource(int type, RES *reshdr, void sendit(void *sock, const char *fm
+       break;
+ 
+    case R_CATALOG:
++      if (!acl_access_ok(ua, Catalog_ACL, res->res_cat.hdr.name)) {
++         break;
++      }
+       sendit(sock, _("Catalog: name=%s address=%s DBport=%d db_name=%s\n"
+ "      db_driver=%s db_user=%s MutliDBConn=%d\n"),
+          res->res_cat.hdr.name, NPRT(res->res_cat.db_address),
+@@ -646,6 +656,9 @@ void dump_resource(int type, RES *reshdr, void sendit(void *sock, const char *fm
+ 
+    case R_JOB:
+    case R_JOBDEFS:
++      if (!acl_access_ok(ua, Job_ACL, res->res_job.hdr.name)) {
++         break;
++      }
+       sendit(sock, _("%s: name=%s JobType=%d level=%s Priority=%d Enabled=%d\n"),
+          type == R_JOB ? _("Job") : _("JobDefs"),
+          res->res_job.hdr.name, res->res_job.JobType,
+@@ -767,6 +780,9 @@ void dump_resource(int type, RES *reshdr, void sendit(void *sock, const char *fm
+    case R_FILESET:
+    {
+       int i, j, k;
++      if (!acl_access_ok(ua, FileSet_ACL, res->res_fs.hdr.name)) {
++         break;
++      }
+       sendit(sock, _("FileSet: name=%s\n"), res->res_fs.hdr.name);
+       for (i=0; i<res->res_fs.num_includes; i++) {
+          INCEXE *incexe = res->res_fs.include_items[i];
+@@ -854,6 +870,9 @@ void dump_resource(int type, RES *reshdr, void sendit(void *sock, const char *fm
+    }
+ 
+    case R_SCHEDULE:
++      if (!acl_access_ok(ua, Schedule_ACL, res->res_sch.hdr.name)) {
++         break;
++      }
+       if (res->res_sch.run) {
+          int i;
+          RUN *run = res->res_sch.run;
+@@ -942,6 +961,9 @@ next_run:
+       break;
+ 
+    case R_POOL:
++      if (!acl_access_ok(ua, Pool_ACL, res->res_pool.hdr.name)) {
++         break;
++      }
+       sendit(sock, _("Pool: name=%s PoolType=%s\n"), res->res_pool.hdr.name,
+               res->res_pool.pool_type);
+       sendit(sock, _("      use_cat=%d use_once=%d cat_files=%d\n"),
+--
+From 2be20d549211f7984156674116f9239acf6d79bd Mon Sep 17 00:00:00 2001
+From: Kern Sibbald <kern@sibbald.com>
+Date: Sun, 19 Aug 2012 06:33:15 +0000
+Subject: Fix Makefile.in so that testfind builds with acl dependency
+
+---
+diff --git a/bacula/src/tools/Makefile.in b/bacula/src/tools/Makefile.in
+index 0c3f305..5731140 100644
+--- a/bacula/src/tools/Makefile.in
++++ b/bacula/src/tools/Makefile.in
+@@ -29,12 +29,12 @@ dummy:
+ 
+ GETTEXT_LIBS = @LIBINTL@
+ 
+-FINDOBJS = testfind.o ../dird/dird_conf.o ../dird/inc_conf.o ../dird/run_conf.o
++FINDOBJS = testfind.o ../dird/dird_conf.o ../dird/inc_conf.o ../dird/ua_acl.o ../dird/run_conf.o
+ 
+ # these are the objects that are changed by the .configure process
+ EXTRAOBJS = @OBJLIST@
+ 
+-DIRCONFOBJS = ../dird/dird_conf.o ../dird/run_conf.o ../dird/inc_conf.o
++DIRCONFOBJS = ../dird/dird_conf.o ../dird/ua_acl.o ../dird/run_conf.o ../dird/inc_conf.o
+ 
+ NODIRTOOLS = bsmtp
+ DIRTOOLS = bsmtp dbcheck drivetype fstype testfind testls bregex bwild bbatch bregtest bvfs_test ing_test
+@@ -79,6 +79,9 @@ drivetype: Makefile drivetype.o ../lib/libbac$(DEFAULT_ARCHIVE_TYPE) ../findlib/
+ dird_conf.o: ../dird/dird_conf.c
+ 	$(CXX) $(DEFS) $(DEBUG) -c $(CPPFLAGS) $(PYTHON_INC) -I$(srcdir) -I$(basedir) $(DINCLUDE) $(CFLAGS) $<
+ 
++ua_acl.o: ../dird/ua_acl.c
++	$(CXX) $(DEFS) $(DEBUG) -c $(CPPFLAGS) $(PYTHON_INC) -I$(srcdir) -I$(basedir) $(DINCLUDE) $(CFLAGS) $<
++
+ run_conf.o: ../dird/run_conf.c
+ 	$(CXX) $(DEFS) $(DEBUG) -c $(CPPFLAGS) $(PYTHON_INC) -I$(srcdir) -I$(basedir) $(DINCLUDE) $(CFLAGS) $<
+ 
+--

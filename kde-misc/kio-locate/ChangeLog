@@ -1,0 +1,35 @@
+# ChangeLog for kde-misc/kio-locate
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/kio-locate/ChangeLog,v 1.40 2014/03/20 22:14:36 johu Exp $
+
+  20 Mar 2014; Johannes Huber <johu@gentoo.org> kio-locate-0.5.3.ebuild:
+  Bump to EAPI 5.
+
+  21 Jun 2012; Michael Palimaka <kensington@gentoo.org>
+  +files/kio-locate-0.5.3-gcc-4.7.patch, -kio-locate-0.5.2.ebuild,
+  kio-locate-0.5.3.ebuild:
+  Fix build with GCC 4.7 wrt bug #421691. Remove old.
+
+*kio-locate-0.5.3 (11 Jan 2012)
+
+  11 Jan 2012; Johannes Huber <johu@gentoo.org> +kio-locate-0.5.3.ebuild:
+  Version bump.
+
+  29 Oct 2011; Jonathan Callen <abcd@gentoo.org> kio-locate-0.5.2.ebuild:
+  Bump to EAPI=4; make DOCS an array; set KDE_HANDBOOK
+
+  31 Jan 2011; Theo Chatzimichos <tampakrap@gentoo.org>
+  -kio-locate-0.5.0.ebuild:
+  remove old
+
+*kio-locate-0.5.2 (06 Jan 2011)
+
+  06 Jan 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +kio-locate-0.5.2.ebuild:
+  Version bump (bug 348289)
+
+*kio-locate-0.5.0 (02 Mar 2010)
+
+  02 Mar 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +kio-locate-0.5.0.ebuild:
+  Initial commit.

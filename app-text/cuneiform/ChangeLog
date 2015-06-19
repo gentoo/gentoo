@@ -1,0 +1,106 @@
+# ChangeLog for app-text/cuneiform
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/cuneiform/ChangeLog,v 1.10 2015/06/09 12:14:15 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  18 Oct 2013; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Fix typo in maintainer name
+
+  24 Mar 2013; Richard Freeman <rich0@gentoo.org> metadata.xml:
+  Take over maintainership.
+
+  16 Feb 2013; Pacho Ramos <pacho@gentoo.org> -cuneiform-1.1.0.ebuild,
+  metadata.xml:
+  Cleanup due bug #96436
+
+*cuneiform-1.1.0-r1 (19 Mar 2012)
+
+  19 Mar 2012; Peter Volkov <pva@gentoo.org> +cuneiform-1.1.0-r1.ebuild,
+  +files/c-assert.diff, +files/cuneiform.1, +files/graphicsmagick.diff,
+  +files/libm.diff, metadata.xml:
+  Depend on graphicsmagick by pulling some debian patches, bug 314231, thank
+  yaleks for this job.
+
+  12 Sep 2011; Peter Volkov <pva@gentoo.org> -cuneiform-0.8.0.ebuild,
+  -cuneiform-1.0.0.ebuild:
+  Drop old.
+
+*cuneiform-1.1.0 (29 Apr 2011)
+
+  29 Apr 2011; Peter Volkov <pva@gentoo.org> +cuneiform-1.1.0.ebuild:
+  Version bump, thank yaleks for this job.
+
+*cuneiform-1.0.0 (15 Jan 2011)
+
+  15 Jan 2011; Peter Volkov <pva@gentoo.org> -cuneiform-0.7.ebuild,
+  +cuneiform-1.0.0.ebuild:
+  Version bump, #316795, thank A.C.Heron for report and Aleksandr Yakimov for
+  this job.
+
+*cuneiform-0.8.0 (04 Sep 2009)
+
+  04 Sep 2009; Peter Volkov <pva@gentoo.org> +cuneiform-0.8.0.ebuild,
+  metadata.xml:
+  Version bump, thank yaleks. Respect LDFLAGS.
+
+*cuneiform-0.7 (16 Aug 2009)
+
+  16 Aug 2009; Peter Volkov <pva@gentoo.org> +cuneiform-0.7.ebuild,
+  +metadata.xml:
+  Moved from Sunrise overlay to portage tree, bug #234824.
+
+  12 Jun 2009; Aleksandr Yakimov (yaleks) <skyaleks@ya.ru>
+  cuneiform-0.7.ebuild:
+  Ebuild cleanup
+
+  12 Jun 2009; Aleksandr Yakimov (yaleks) <skyaleks@ya.ru> Manifest:
+  Fix Manifest
+
+  28 May 2009; Aleksandr Yakimov (yaleks) <skyaleks@ya.ru>
+  -cuneiform-0.6.ebuild, +cuneiform-0.7.ebuild:
+  Version bump to 0.7
+
+  06 Feb 2009; Aleksandr Yakimov (yaleks) <skyaleks@ya.ru>
+  -cuneiform-0.5.ebuild, +cuneiform-0.6.ebuild:
+  Version bump to 0.6
+
+  01 Dec 2008; Aleksandr Yakimov (yaleks) <skyaleks@ya.ru>
+  cuneiform-0.5.ebuild:
+  Fix Cmake depend (reported by Thomas Fischer), patch from Sven Eckelmann
+  (Debian) to build with binutils-2.19 added.
+
+  20 Nov 2008; Aleksandr Yakimov (yaleks) <skyaleks@ya.ru>
+  -cuneiform-0.4.ebuild, +cuneiform-0.5.ebuild:
+  Version bump to 0.5
+
+  08 Sep 2008; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> metadata.xml:
+  Readd more detailed information for global useflag
+
+  06 Sep 2008; Tiago Cunha (tcunha) <me@tiagocunha.org>
+  cuneiform-0.4.ebuild:
+  Whitespace
+
+  02 Sep 2008; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> metadata.xml:
+  Remove global use flag
+
+  02 Sep 2008; Aleksandr Yakimov (yaleks) <skyaleks@ya.ru>
+  -cuneiform-0.3.1.ebuild, +cuneiform-0.4.ebuild:
+  Version bump to 0.4
+
+  21 Aug 2008; Aleksandr Yakimov (yaleks) <skyaleks@ya.ru>
+  -files/cuneiform-0.3-no-imagemagic.patch:
+  Remove unneeded patches
+
+  21 Aug 2008; Aleksandr Yakimov (yaleks) <skyaleks@ya.ru>
+  -cuneiform-0.3.ebuild, +cuneiform-0.3.1.ebuild:
+  Version bump for CuneiForm
+
+  20 Aug 2008; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> metadata.xml:
+  Correct <herd> in metadata.xml
+
+  20 Aug 2008; Aleksandr Yakimov (yaleks) <skyaleks@ya.ru>           
+  +cuneiform-0.3.ebuild, +files/cuneiform-0.3-no-imagemagic.patch,   
+  +metadata.xml:                                                     
+  New Ebuild for bug 234824 thanks to pva                            

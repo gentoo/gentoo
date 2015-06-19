@@ -1,0 +1,43 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Sun Dec  8 13:38:06 UTC 2013
+Subject: fix check for freetype-2.5.1
+
+--- Modules/FindFreetype.cmake
++++ Modules/FindFreetype.cmake
+@@ -64,6 +64,19 @@
+   PATH_SUFFIXES include/freetype2 include
+ )
+ 
++if(NOT FREETYPE_INCLUDE_DIR_freetype2)
++  find_path(FREETYPE_INCLUDE_DIR_freetype2 config/ftheader.h
++    HINTS
++      ENV FREETYPE_DIR
++    PATHS
++      /usr/X11R6
++      /usr/local/X11R6
++      /usr/local/X11
++      /usr/freeware
++    PATH_SUFFIXES include/freetype2 include
++  )
++endif()
++
+ find_library(FREETYPE_LIBRARY
+   NAMES freetype libfreetype freetype219
+   HINTS
+@@ -82,8 +95,14 @@
+ endif()
+ set(FREETYPE_LIBRARIES "${FREETYPE_LIBRARY}")
+ 
+-if(FREETYPE_INCLUDE_DIR_freetype2 AND EXISTS "${FREETYPE_INCLUDE_DIR_freetype2}/freetype/freetype.h")
+-    file(STRINGS "${FREETYPE_INCLUDE_DIR_freetype2}/freetype/freetype.h" freetype_version_str
++if(EXISTS "${FREETYPE_INCLUDE_DIR_freetype2}/freetype/freetype.h")
++  set(FREETYPE_H "${FREETYPE_INCLUDE_DIR_freetype2}/freetype/freetype.h")
++elseif(EXISTS "${FREETYPE_INCLUDE_DIR_freetype2}/freetype.h")
++  set(FREETYPE_H "${FREETYPE_INCLUDE_DIR_freetype2}/freetype.h")
++endif()
++
++if(FREETYPE_INCLUDE_DIR_freetype2 AND FREETYPE_H)
++    file(STRINGS "${FREETYPE_H}" freetype_version_str
+          REGEX "^#[\t ]*define[\t ]+FREETYPE_(MAJOR|MINOR|PATCH)[\t ]+[0-9]+$")
+ 
+     unset(FREETYPE_VERSION_STRING)

@@ -1,0 +1,219 @@
+# ChangeLog for dev-perl/MP3-Tag
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/MP3-Tag/ChangeLog,v 1.55 2014/08/23 00:17:59 axs Exp $
+
+*MP3-Tag-1.130.0-r1 (23 Aug 2014)
+
+  23 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +MP3-Tag-1.130.0-r1.ebuild, -MP3-Tag-1.130.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  07 May 2014; Mikle Kolyada <zlogene@gentoo.org> MP3-Tag-1.130.0.ebuild:
+  Add missing dependency on dev-perl/MP3-Info (bug #509408)
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  31 Mar 2012; Torsten Veller <tove@gentoo.org> -MP3-Tag-1.12.ebuild:
+  Cleanup
+
+  03 Mar 2012; Brent Baude <ranger@gentoo.org> MP3-Tag-1.130.0.ebuild:
+  Marking MP3-Tag-1.130.0 ppc64 for bug 400165
+
+  12 Feb 2012; Raúl Porcel <armin76@gentoo.org> MP3-Tag-1.12.ebuild,
+  MP3-Tag-1.130.0.ebuild:
+  Drop ia64/sparc keywords
+
+  03 Feb 2012; Brent Baude <ranger@gentoo.org> MP3-Tag-1.130.0.ebuild:
+  Marking MP3-Tag-1.130.0 ppc for bug 400165
+
+  28 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> MP3-Tag-1.130.0.ebuild:
+  x86 stable wrt bug #400165
+
+  27 Jan 2012; Agostino Sarubbo <ago@gentoo.org> MP3-Tag-1.130.0.ebuild:
+  Stable for amd64, wrt bug #400165
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -MP3-Tag-1.13.ebuild:
+  Cleanup
+
+*MP3-Tag-1.130.0 (30 Aug 2011)
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org> +MP3-Tag-1.130.0.ebuild:
+  Change version scheme
+
+  14 Jan 2011; Torsten Veller <tove@gentoo.org> -MP3-Tag-0.9709.ebuild:
+  Cleanup
+
+  03 Dec 2010; Michael Weber <xmw@gentoo.org> MP3-Tag-1.12.ebuild,
+  MP3-Tag-1.13.ebuild:
+  add ~arm (bug 302981)
+
+  05 Nov 2010; Samuli Suominen <ssuominen@gentoo.org> MP3-Tag-1.12.ebuild:
+  ppc64 stable wrt #341865
+
+*MP3-Tag-1.13 (10 Aug 2010)
+
+  10 Aug 2010; Robin H. Johnson <robbat2@gentoo.org> +MP3-Tag-1.13.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  27 Jun 2010; <nixnut@gentoo.org> MP3-Tag-1.12.ebuild:
+  ppc stable #323529
+
+  08 May 2010; Raúl Porcel <armin76@gentoo.org> MP3-Tag-1.12.ebuild:
+  ia64/sparc stable wrt #314467
+
+  17 Apr 2010; Torsten Veller <tove@gentoo.org> MP3-Tag-1.12.ebuild:
+  Stable on amd64, x86 (#314467)
+
+  10 Jan 2010; Fabian Groffen <grobian@gentoo.org> MP3-Tag-1.12.ebuild:
+  Transfer Prefix keywords
+
+  24 Dec 2009; Torsten Veller <tove@gentoo.org> -MP3-Tag-1.11.ebuild:
+  Cleanup
+
+*MP3-Tag-1.12 (28 Nov 2009)
+
+  28 Nov 2009; Robin H. Johnson <robbat2@gentoo.org> +MP3-Tag-1.12.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  16 Aug 2009; Torsten Veller <tove@gentoo.org>
+  -files/MP3-Tag-0.94-makefile.patch:
+  Remove unused patch
+
+  03 Jun 2009; Torsten Veller <tove@gentoo.org> -MP3-Tag-0.9714.ebuild:
+  Cleanup
+
+*MP3-Tag-1.11 (11 May 2009)
+
+  11 May 2009; Torsten Veller <tove@gentoo.org> +MP3-Tag-1.11.ebuild:
+  Version bump
+
+  13 Mar 2009; Torsten Veller <tove@gentoo.org> -MP3-Tag-0.9710.ebuild,
+  -MP3-Tag-0.9713.ebuild:
+  Cleanup
+
+*MP3-Tag-0.9714 (07 Jan 2009)
+
+  07 Jan 2009; Torsten Veller <tove@gentoo.org> +MP3-Tag-0.9714.ebuild:
+  Version bump
+
+*MP3-Tag-0.9713 (31 Oct 2008)
+
+  31 Oct 2008; Torsten Veller <tove@gentoo.org> +MP3-Tag-0.9713.ebuild:
+  Version bump
+
+*MP3-Tag-0.9710 (30 Sep 2008)
+
+  30 Sep 2008; Torsten Veller <tove@gentoo.org> -MP3-Tag-0.94.ebuild,
+  -MP3-Tag-0.9708.ebuild, MP3-Tag-0.9709.ebuild, +MP3-Tag-0.9710.ebuild:
+  Version bump. Cleanup
+
+  10 Nov 2007; Samuli Suominen <drac@gentoo.org> MP3-Tag-0.9709.ebuild:
+  amd64 stable
+
+  09 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  MP3-Tag-0.9709.ebuild:
+  Stable on ppc.
+
+  22 Jul 2007; Tom Gall <tgall@gentoo.org> MP3-Tag-0.9709.ebuild:
+  stable on ppc64
+
+  12 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org> MP3-Tag-0.9709.ebuild:
+  Stable on sparc
+
+  11 Jul 2007; Raúl Porcel <armin76@gentoo.org> MP3-Tag-0.9709.ebuild:
+  ia64/x86 stable
+
+  16 Apr 2007; Markus Rothe <corsair@gentoo.org> MP3-Tag-0.9708.ebuild:
+  Stable on ppc64
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org> MP3-Tag-0.9708.ebuild:
+  Stable on x86, bug #169152.
+
+*MP3-Tag-0.9709 (02 Jan 2007)
+
+  02 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  +MP3-Tag-0.9709.ebuild:
+  Version bump
+
+  28 Dec 2006; Javier Villavicencio <the_paya@gentoo.org>
+  MP3-Tag-0.9708.ebuild:
+  Added ~x86-fbsd keyword.
+
+  21 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  MP3-Tag-0.9708.ebuild:
+  ppc stable
+
+  15 Oct 2006; Bryan Østergaard <kloeri@gentoo.org> MP3-Tag-0.9708.ebuild:
+  Stable on ia64.
+
+  10 Oct 2006; Michael Cummings <mcummings@gentoo.org> MP3-Tag-0.94.ebuild,
+  -MP3-Tag-0.9702.ebuild, -MP3-Tag-0.9704.ebuild, -MP3-Tag-0.9706.ebuild,
+  -MP3-Tag-0.9707.ebuild, MP3-Tag-0.9708.ebuild:
+  Marking amd64, sparc stable; cleaned out stale ebuilds
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org> MP3-Tag-0.94.ebuild,
+  MP3-Tag-0.9702.ebuild, MP3-Tag-0.9704.ebuild, MP3-Tag-0.9706.ebuild,
+  MP3-Tag-0.9707.ebuild, MP3-Tag-0.9708.ebuild:
+  Adding perl dep; fixed DEPEND
+
+*MP3-Tag-0.9708 (23 Jun 2006)
+
+  23 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  +MP3-Tag-0.9708.ebuild:
+  Version bump upstream
+
+*MP3-Tag-0.9707 (24 May 2006)
+
+  24 May 2006; Christian Hartmann <ian@gentoo.org> +MP3-Tag-0.9707.ebuild:
+  Version bump
+
+*MP3-Tag-0.9706 (01 May 2006)
+
+  01 May 2006; <mcumming@gentoo.org> +MP3-Tag-0.9706.ebuild:
+  Version bump
+
+  30 Mar 2006; Aron Griffis <agriffis@gentoo.org> MP3-Tag-0.9704.ebuild:
+  Mark 0.9704 ~ia64
+
+*MP3-Tag-0.9704 (16 Jan 2006)
+
+  16 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  -files/MP3-Tag-0.9702-makefile.patch, +files/MP3-Tag-makefile.patch,
+  MP3-Tag-0.9702.ebuild, +MP3-Tag-0.9704.ebuild:
+  Version bump
+
+  14 Dec 2005; Chris White <chriswhite@gentoo.org>
+  +files/MP3-Tag-0.94-makefile.patch, +files/MP3-Tag-0.9702-makefile.patch,
+  MP3-Tag-0.94.ebuild, MP3-Tag-0.9702.ebuild:
+  Fix bug #115579. Ebuilds weren't compiling becaues they were trying to work
+  with manpages which we no longer install.
+
+  27 Nov 2005; Tom Gall <tgall@gentoo.org> MP3-Tag-0.94.ebuild:
+  stable on ppc64
+
+*MP3-Tag-0.9702 (19 Nov 2005)
+
+  19 Nov 2005; <mcumming@gentoo.org> MP3-Tag-0.94.ebuild,
+  +MP3-Tag-0.9702.ebuild:
+  Version bump; fixed bad ebuild syntax.
+
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> MP3-Tag-0.94.ebuild:
+  Stable on ppc.
+
+  23 Dec 2004; Yuta SATOH <nigoro@gentoo.org> MP3-Tag-0.94.ebuild:
+  added ~ppc64
+
+  07 Dec 2004; Joseph Jezak <josejx@gentoo.org> MP3-Tag-0.94.ebuild:
+  Marked ~ppc for bug #56199.
+
+  05 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  MP3-Tag-0.94.ebuild:
+  Stable amd64, sparc, x86.
+
+*MP3-Tag-0.94 (19 Oct 2004)
+
+  19 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org> +metadata.xml,
+  +MP3-Tag-0.94.ebuild:
+  Added to portage for bpmdj RDEPEND.

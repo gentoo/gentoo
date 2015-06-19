@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=>=dev-libs/guiloader-2.21 >=dev-cpp/gtkmm-2.22:2.4 >=dev-cpp/glibmm-2.24:2 dev-libs/boost virtual/pkgconfig nls? ( >=sys-devel/gettext-0.18 )
+DESCRIPTION=C++ binding to GuiLoader library
+EAPI=3
+HOMEPAGE=http://www.crowdesigner.org
+IUSE=nls linguas_ru
+KEYWORDS=amd64 x86
+LICENSE=MIT
+RDEPEND=>=dev-libs/guiloader-2.21 >=dev-cpp/gtkmm-2.22:2.4 >=dev-cpp/glibmm-2.24:2
+SLOT=0
+SRC_URI=http://nothing-personal.googlecode.com/files/guiloader-c++-2.21.0.tar.bz2
+_md5_=d2c1f0f4732853cbab37ff968b023929

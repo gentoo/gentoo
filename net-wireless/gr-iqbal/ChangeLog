@@ -1,0 +1,44 @@
+# ChangeLog for net-wireless/gr-iqbal
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/gr-iqbal/ChangeLog,v 1.8 2014/11/22 19:52:29 zerochaos Exp $
+
+  22 Nov 2014; Rick Farina <zerochaos@gentoo.org> gr-iqbal-0.36.0.ebuild,
+  gr-iqbal-0.37.2.ebuild, gr-iqbal-9999.ebuild:
+  missing dep on boost
+
+*gr-iqbal-0.37.2 (23 Jul 2014)
+
+  23 Jul 2014; Rick Farina <zerochaos@gentoo.org> +gr-iqbal-0.37.2.ebuild,
+  -gr-iqbal-0.37.1.ebuild, gr-iqbal-9999.ebuild:
+  version bump to work with newer gcc >4.7
+
+  15 Jul 2013; Rick Farina <zerochaos@gentoo.org> gr-iqbal-0.37.1.ebuild:
+  I always test before commiting, but clearly I don't always test properly.
+  Fixing S, thanks for reports
+
+*gr-iqbal-0.37.1 (07 Jul 2013)
+
+  07 Jul 2013; Rick Farina <zerochaos@gentoo.org>
+  +files/add-pkgconfig-file.patch, +gr-iqbal-0.37.1.ebuild,
+  -gr-iqbal-0.37.0.ebuild:
+  version bump to a working version
+
+*gr-iqbal-0.37.0 (07 Jul 2013)
+
+  07 Jul 2013; Rick Farina <zerochaos@gentoo.org> +gr-iqbal-0.37.0.ebuild:
+  adding gr-3.7 compat version p.masked since it doesn't work with gr-osmosdr
+
+  25 Jun 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  gr-iqbal-0.36.0.ebuild, gr-iqbal-9999.ebuild:
+  Update gnuradio dependencies.
+
+  17 Jun 2013; Rick Farina <zerochaos@gentoo.org> gr-iqbal-0.36.0.ebuild,
+  gr-iqbal-9999.ebuild:
+  adding ~arm
+
+*gr-iqbal-0.36.0 (17 Jun 2013)
+*gr-iqbal-9999 (17 Jun 2013)
+
+  17 Jun 2013; Rick Farina <zerochaos@gentoo.org> +gr-iqbal-0.36.0.ebuild,
+  +gr-iqbal-9999.ebuild, +metadata.xml:
+  initial commit of gr-iqbal for gnuradio I/Q balancing

@@ -1,0 +1,18 @@
+# Copyright 1999-2009 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/default/linux/amd64/dev/32bit-userland/README,v 1.1 2009/10/03 16:00:24 ssuominen Exp $
+
+IMPORTANT
+=========
+
+Here's how to use this profile. Any other use will probably break your installation, so you better follow it closely.
+
+1. Download the latest amd64 stage2 tarball
+2. Unpack it to your chroot location and do all the bind mounts
+3. Chroot in
+4. run `find /usr/lib64 /lib64 -exec touch {} \;'
+5. remove the "CHOST=" line from /etc/make.conf
+6. change the /etc/make.profile link to this profile
+7. run `emerge -e world'
+
+Dependencies might not always be quite correct. Don't use this profile for anything else then creating emul-libs.

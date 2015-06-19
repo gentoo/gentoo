@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sci-astronomy</herd>
+<longdescription lang="en">
+ This is a suite of vector/matrix routines and various utilities that
+ underpin the astronomy algorithms, which include routines for the
+ following:
+  * Calendars
+  * Time Scales
+  * Earth rotation and sidereal time
+  * Ephemerides (medium precision)
+  * Geocentric/geodetic transformations
+  * Precession, nutation, polar motion
+  * Star space motion
+  * Star catalogue conversion
+ This is the ANSI C version of the library.
+ The International Astronomical Union's SOFA service has the task of
+ establishing and maintaining an accessible and authoritative set of
+ algorithms and procedures that implement standard models used in
+ fundamental astronomy.
+</longdescription>
+</pkgmetadata>

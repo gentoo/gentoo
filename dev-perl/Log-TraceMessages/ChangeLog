@@ -1,0 +1,86 @@
+# ChangeLog for dev-perl/Log-TraceMessages
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Log-TraceMessages/ChangeLog,v 1.19 2014/08/23 21:29:54 axs Exp $
+
+*Log-TraceMessages-1.400.0-r1 (23 Aug 2014)
+
+  23 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Log-TraceMessages-1.400.0-r1.ebuild, -Log-TraceMessages-1.400.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  05 Dec 2012; Fabian Groffen <grobian@gentoo.org>
+  Log-TraceMessages-1.400.0.ebuild:
+  Marked ~x86-linux, bug #444950
+
+  02 Sep 2012; Torsten Veller <tove@gentoo.org> -Log-TraceMessages-1.4.ebuild:
+  Cleanup
+
+*Log-TraceMessages-1.400.0 (23 Jun 2012)
+
+  23 Jun 2012; Torsten Veller <tove@gentoo.org>
+  +Log-TraceMessages-1.400.0.ebuild, metadata.xml:
+  Change version scheme. Maintenance: EAPI, SRC_URI, LICENSE
+
+  17 Jun 2012; Raúl Porcel <armin76@gentoo.org> Log-TraceMessages-1.4.ebuild:
+  Drop alpha/ia64/sparc keywords
+
+  16 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  -Log-TraceMessages-1.3.ebuild, Log-TraceMessages-1.4.ebuild:
+  Ebuild maintenance
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Log-TraceMessages-1.3.ebuild, Log-TraceMessages-1.4.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  04 Jul 2006; Christian Hartmann <ian@gentoo.org>
+  Log-TraceMessages-1.3.ebuild, Log-TraceMessages-1.4.ebuild:
+  Fixed RDEPEND wrt bug #134781; fixed header
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org>
+  Log-TraceMessages-1.4.ebuild:
+  Mark 1.4 stable on ia64
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  Log-TraceMessages-1.4.ebuild:
+  add ~ia64
+
+  01 May 2005; Tom Martin <slarti@gentoo.org> Log-TraceMessages-1.4.ebuild:
+  Stable on amd64.
+
+  30 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  Log-TraceMessages-1.4.ebuild:
+  Stable on ppc.
+
+  30 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
+  Log-TraceMessages-1.4.ebuild:
+  Stable on alpha.
+
+  28 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  Log-TraceMessages-1.3.ebuild, Log-TraceMessages-1.4.ebuild:
+  Cleaning
+
+*Log-TraceMessages-1.4 (06 Jun 2004)
+
+  06 Jun 2004; Michael Cummings <mcummings@gentoo.org>
+  Log-TraceMessages-1.4.ebuild:
+  new version on cpan
+
+  16 Apr 2004; Michael Cummings <mcummings@gentoo.org>
+  Log-TraceMessages-1.3.ebuild:
+  Syntax fix for newdepend, bug 29064
+
+*Log-TraceMessages-1.3 (08 Jun 2003)
+
+  08 Jun 2003; <rac@gentoo.org> Log-TraceMessages-1.2.ebuild,
+  Log-TraceMessages-1.3.ebuild:
+  Fix header, upstream version bump, fix URL, add IUSE, add dependency on
+  HTML-FromText
+
+*Log-TraceMessages-1.2 (11 Feb 2003)
+
+  11 Feb 2003; Seemant Kulleen <seemant@gentoo.org> ChangeLog
+  Log-TraceMessages-1.2.ebuild files/digest-Log-TraceMessages-1.2 :
+
+  New perl module -- dependency of LinguaPreferred. Ebuild by:   Tony
+  Clark <tclark@telia.com> in bug #14013

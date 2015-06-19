@@ -1,0 +1,12 @@
+DEFINED_PHASES=install nofetch postinst postrm preinst prerm unpack
+DESCRIPTION=LSI MPT-SAS3 controller management tool
+EAPI=5
+HOMEPAGE=http://www.lsi.com/support/Pages/download-results.aspx?component=Storage+Component&productfamily=Host+Bus+Adapters&productcode=0&assettype=Miscellaneous&productname=&keyword=SAS3IRCU
+IUSE=efi doc
+KEYWORDS=-* ~amd64 ~x86 ~x86-fbsd ~ppc64 ~amd64-fbsd ~sparc-solaris ~x64-solaris ~x86-solaris
+LICENSE=LSI
+RESTRICT=strip fetch mirror
+SLOT=0
+SRC_URI=http://www.lsi.com/downloads/Public/Host%20Bus%20Adapters/Host%20Bus%20Adapters%20Common%20Files/SAS_SATA_12G_P5/SAS3IRCU_P5.zip doc? ( http://www.lsi.com/downloads/Public/Host%20Bus%20Adapters/SAS3IRCU_UG.pdf )
+_eclasses_=mount-boot	02dd3bb4c5f025fef0fc3ade0f27c217
+_md5_=500034887dca770a8447630e116cce71

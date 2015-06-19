@@ -1,0 +1,50 @@
+# ChangeLog for x11-themes/iceicons
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/iceicons/ChangeLog,v 1.15 2013/10/19 15:18:24 pacho Exp $
+
+  19 Oct 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due desktop-wm removal
+
+  12 Oct 2012; Agostino Sarubbo <ago@gentoo.org> iceicons-0.10.0.ebuild:
+  Stable for amd64, wrt bug #437842
+
+  10 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> iceicons-0.10.0.ebuild:
+  Fix unescaped usage of 'ICEICONSDIR' variable
+
+  10 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> iceicons-0.10.0.ebuild:
+  Fix some QA issues
+
+  10 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> iceicons-0.10.0.ebuild:
+  Fix HOMEPAGE and SRC_URI - old links are broken
+
+  07 Jan 2009; Brent Baude <ranger@gentoo.org> iceicons-0.10.0.ebuild:
+  marking iceicons-0.10.0 ~ppc and ~ppc64 for bug 253304
+
+  06 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  16 Dec 2005; Diego Pettenò <flameeyes@gentoo.org> iceicons-0.10.0.ebuild:
+  Replace root:root in root:0. Bug #103563.
+
+  29 Sep 2005; Mamoru KOMACHI <usata@gentoo.org> iceicons-0.10.0.ebuild:
+  Changed cp options to -pPR for non-GNU userlands; bug #103487.
+
+  19 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  iceicons-0.10.0.ebuild:
+  Stable on sparc
+
+  05 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  iceicons-0.10.0.ebuild:
+  Keyworded ~sparc
+
+  09 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> iceicons-0.10.0.ebuild:
+  added ~amd64 KEYWORD to fix #77628
+
+  10 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> iceicons-0.10.0.ebuild:
+  Stable on x86.
+
+*iceicons-0.10.0 (19 Jun 2004)
+
+  19 Jun 2004; Mamoru KOMACHI <usata@gentoo.org> iceicons-0.10.0.ebuild:
+  Initial import. Ebuild submitted by archan <archanp@hotpop.com>,
+  closing bug #50702

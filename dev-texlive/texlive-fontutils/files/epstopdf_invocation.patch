@@ -1,0 +1,11 @@
+Index: work/texmf-dist/scripts/epstopdf/epstopdf.pl
+===================================================================
+--- work.orig/texmf-dist/scripts/epstopdf/epstopdf.pl
++++ work/texmf-dist/scripts/epstopdf/epstopdf.pl
+@@ -1,5 +1,4 @@
+-eval '(exit $?0)' && eval 'exec perl -S $0 ${1+"$@"}' && eval 'exec perl -S $0 $argv:q'
+-  if 0;
++#!/usr/bin/perl
+ use strict;
+ 
+ # $Id: epstopdf_invocation.patch,v 1.1 2011/02/17 15:12:16 aballier Exp $

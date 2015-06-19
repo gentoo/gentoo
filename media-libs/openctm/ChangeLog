@@ -1,0 +1,36 @@
+# ChangeLog for media-libs/openctm
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/openctm/ChangeLog,v 1.9 2014/12/16 11:10:52 jer Exp $
+
+  16 Dec 2014; Jeroen Roovers <jer@gentoo.org> openctm-1.0.3.ebuild:
+  Change MY_PF to MY_PV to avoid confusion.
+
+  20 Oct 2014; Justin Lecher <jlec@gentoo.org> openctm-1.0.3.ebuild,
+  files/openctm-fix-makefiles.patch, metadata.xml:
+  Fix for multilib-strict
+
+  14 Oct 2014; Amy Winston <amynka@gentoo.org> openctm-1.0.3.ebuild:
+  Gtk+ dependency repaired bug #525328
+
+  20 Aug 2014; Amy Winston <amynka@gentoo.org> +files/openctm-no-strip.patch,
+  openctm-1.0.3.ebuild:
+  Sed madness removed and integrated to no-strip.patch
+
+  18 Aug 2014; Amy Winston <amynka@gentoo.org> openctm-1.0.3.ebuild:
+  bad sed repaired
+
+  13 Aug 2014; Amy Winston <amynka@gentoo.org> metadata.xml:
+  3dprint herd added
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> openctm-1.0.3.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  10 Aug 2014; Amy Winston <amynka@gentoo.org>
+  files/openctm-fix-makefiles.patch, openctm-1.0.3.ebuild:
+  Obey settings of CC and CXX. Update patch from debian to reflect this.
+
+*openctm-1.0.3 (07 Aug 2014)
+
+  07 Aug 2014; Amy Winston <amynka@gentoo.org>
+  +files/openctm-fix-makefiles.patch, +metadata.xml, +openctm-1.0.3.ebuild:
+  Initial commit. Package will be used by meshlab

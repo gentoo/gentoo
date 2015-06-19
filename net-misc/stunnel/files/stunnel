@@ -1,0 +1,43 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/stunnel/files/stunnel,v 1.1 2014/08/08 12:20:25 blueness Exp $
+
+SERVICENAME=${SVCNAME#*.}
+SERVICENAME=${SERVICENAME:-stunnel}
+STUNNEL_CONFIGFILE=${STUNNEL_CONFIGFILE:-/etc/stunnel/${SERVICENAME}.conf}
+
+depend() {
+    need net
+    before logger
+}
+
+get_config() {
+	if [ ! -e ${STUNNEL_CONFIGFILE} ] ; then
+		eerror "You need to create ${STUNNEL_CONFIGFILE} first."
+		return 1
+	fi
+	CHROOT=$(grep "^chroot" ${STUNNEL_CONFIGFILE} | sed "s;.*= *;;")
+	[ -n "${CHROOT}" ] && CHROOT="--chroot ${CHROOT}"
+	PIDFILE=$(grep "^pid" ${STUNNEL_CONFIGFILE} | sed "s;.*= *;;")
+	PIDFILE=${PIDFILE:-/run/stunnel/${SERVICENAME}.pid}
+}
+
+start() {
+	get_config || return 1
+	checkpath -d -m 0775 -o root:stunnel /run/stunnel
+	if [ "$(dirname ${PIDFILE})" != "/run" ]; then
+		checkpath -d -m 0755 -o stunnel:stunnel -q $(dirname ${PIDFILE})
+	fi
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --pidfile "${PIDFILE}" ${CHROOT} \
+	                  --exec /usr/bin/stunnel -- ${STUNNEL_CONFIGFILE} ${STUNNEL_OPTIONS}
+	eend $? "Failed to start ${SVCNAME}"
+}
+
+stop() {
+	get_config || return 1
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --quiet --pidfile ${PIDFILE}
+	eend $? "Failed to stop ${SVCNAME}"
+}

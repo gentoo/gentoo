@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEPEND=outline-magic? ( app-emacs/outline-magic ) >=virtual/emacs-23
+DESCRIPTION=Mode for editing Wikipedia articles off-line
+EAPI=5
+HOMEPAGE=http://www.emacswiki.org/emacs/WikipediaMode
+IUSE=outline-magic
+KEYWORDS=amd64 x86
+LICENSE=GPL-2+
+RDEPEND=outline-magic? ( app-emacs/outline-magic ) >=virtual/emacs-23
+SLOT=0
+SRC_URI=mirror://gentoo/wikipedia-mode-0.5.el.bz2
+_eclasses_=elisp	d13b0507622afb8ac9e3f54e91d58614	elisp-common	9a16929c1a6aec7e1c903289983e114c	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=8826139f7c74fecbf31a763733b8a774

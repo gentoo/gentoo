@@ -1,0 +1,12 @@
+diff -urN kBuild-0.1.9998-pre20110817-orig/src/sed/lib/regex_internal.c kBuild-0.1.9998-pre20110817/src/sed/lib/regex_internal.c
+--- kBuild-0.1.9998-pre20110817-orig/src/sed/lib/regex_internal.c	2011-08-17 14:28:42.000000000 -0700
++++ kBuild-0.1.9998-pre20110817/src/sed/lib/regex_internal.c	2012-06-16 13:55:05.341176965 -0700
+@@ -781,7 +781,7 @@
+ }
+ 
+ static unsigned char
+-internal_function __attribute ((pure))
++internal_function
+ re_string_fetch_byte_case (re_string_t *pstr)
+ {
+   if (BE (!pstr->mbs_allocated, 1))

@@ -1,0 +1,158 @@
+# ChangeLog for net-mail/mhonarc
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/mhonarc/ChangeLog,v 1.38 2014/12/18 21:44:53 dilfridge Exp $
+
+  18 Dec 2014; Andreas K. Huettel <dilfridge@gentoo.org> metadata.xml:
+  Drop perl herd
+
+  01 Dec 2014; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Remove m-n tag as there are two herds already. Remove short
+  <longdescription>.
+
+  09 Mar 2014; Mikle Kolyada <zlogene@gentoo.org> -mhonarc-2.6.18-r1.ebuild:
+  Drop version with old EAPI
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> mhonarc-2.6.18-r2.ebuild:
+  Stable for x86, wrt bug #495864
+
+  12 Jan 2014; Pacho Ramos <pacho@gentoo.org> mhonarc-2.6.18-r2.ebuild:
+  amd64 stable, bug #495864
+
+  12 Jan 2014; Pacho Ramos <pacho@gentoo.org> mhonarc-2.6.18-r2.ebuild:
+  amd64 stable, bug #495864
+
+*mhonarc-2.6.18-r2 (03 Sep 2013)
+
+  03 Sep 2013; Ian Delaney <idella4@gentoo.org> +mhonarc-2.6.18-r2.ebuild:
+  revbump -> EAPI 5, add IUSE examples, fix src_install
+
+  27 Dec 2012; Michael Palimaka <kensington@gentoo.org> -mhonarc-2.6.18.ebuild:
+  Remove old.
+
+  27 Dec 2012; Raúl Porcel <armin76@gentoo.org> mhonarc-2.6.18.ebuild,
+  mhonarc-2.6.18-r1.ebuild:
+  Drop alpha/sparc keywords
+
+  06 Dec 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> mhonarc-2.6.18-r1.ebuild:
+  x86 stable wrt bug #441464
+
+  04 Dec 2012; <ago@gentoo.org> mhonarc-2.6.18-r1.ebuild:
+  Stable for x86, wrt bug #441464
+
+  14 Nov 2012; Agostino Sarubbo <ago@gentoo.org> mhonarc-2.6.18-r1.ebuild:
+  Stable for amd64, wrt bug #441464
+
+  08 Nov 2012; Sergey Popov <pinkbyte@gentoo.org> mhonarc-2.6.18-r1.ebuild:
+  QA: Change variables order according to skel.ebuild, add missing 'die'
+  statements
+
+  28 Oct 2012; Pacho Ramos <pacho@gentoo.org>
+  -files/mhonarc-2.6.16-list-output-order.patch, -mhonarc-2.6.10.ebuild,
+  -mhonarc-2.6.11.ebuild, -mhonarc-2.6.15.ebuild, -mhonarc-2.6.16-r1.ebuild,
+  -mhonarc-2.6.16-r2.ebuild, metadata.xml:
+  Drop maintainer as talked with him, remove old.
+
+  18 Mar 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug 26748.
+
+*mhonarc-2.6.18-r1 (14 Mar 2011)
+
+  14 Mar 2011; Ilya A. Volynets-Evenbakh <iluxa@gentoo.org>
+  +mhonarc-2.6.18-r1.ebuild:
+  Install perl modules into vendor_dir rather then site_dir
+  bug #295780
+
+  05 Mar 2011; Raúl Porcel <armin76@gentoo.org> mhonarc-2.6.18.ebuild:
+  sparc stable wrt #349563
+
+  26 Feb 2011; Tobias Klausmann <klausman@gentoo.org> mhonarc-2.6.18.ebuild:
+  Stable on alpha, bug #349563
+
+  25 Feb 2011; Christian Faulhammer <fauli@gentoo.org>
+  mhonarc-2.6.18.ebuild:
+  stable x86, security bug 349563
+
+  13 Feb 2011; Markos Chandras <hwoarang@gentoo.org> mhonarc-2.6.18.ebuild:
+  Stable on amd64 wrt bug #349563
+
+*mhonarc-2.6.18 (13 Feb 2011)
+
+  13 Feb 2011; Joshua Kinard <kumba@gentoo.org> mhonarc-2.6.10.ebuild,
+  mhonarc-2.6.11.ebuild, mhonarc-2.6.16-r1.ebuild, +mhonarc-2.6.18.ebuild:
+  Update to 2.6.18 to address a security vulnerability. This should correct
+  #349563. Also fix minor QA issues and update copyright dates.
+
+  06 Feb 2011; Mart Raudsepp <leio@gentoo.org> mhonarc-2.6.10.ebuild:
+  Drop to ~mips
+
+*mhonarc-2.6.16-r2 (29 Dec 2008)
+
+  29 Dec 2008; Ilya A. Volynets-Evenbakh <iluxa@gentoo.org>
+  +mhonarc-2.6.16-r2.ebuild:
+  install docs under /usr/share/doc/${PF} (bug #248062)
+
+  09 May 2008; Markus Meier <maekke@gentoo.org> mhonarc-2.6.16-r1.ebuild:
+  amd64 stable, bug #214607
+
+  01 Apr 2008; Christian Faulhammer <opfer@gentoo.org>
+  mhonarc-2.6.16-r1.ebuild:
+  stable x86, bug 214607
+
+*mhonarc-2.6.16-r1 (27 Jan 2008)
+
+  27 Jan 2008; Joshua Kinard <kumba@gentoo.org>
+  +files/mhonarc-2.6.16-list-output-order.patch, -mhonarc-2.6.16.ebuild,
+  +mhonarc-2.6.16-r1.ebuild:
+  Add patch to fix issue reported in #161855.
+
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org> mhonarc-2.6.10.ebuild,
+  mhonarc-2.6.11.ebuild, mhonarc-2.6.15.ebuild, mhonarc-2.6.16.ebuild:
+  (QA) RESTRICT clean up.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*mhonarc-2.6.16 (19 Oct 2006)
+
+  19 Oct 2006; Ilya A. Volynets-Evenbakh <iluxa@gentoo.org>
+  +mhonarc-2.6.16.ebuild:
+  Version bump
+
+  07 Oct 2006; Joshua Kinard <kumba@gentoo.org> mhonarc-2.6.15.ebuild:
+  Making 2.6.15 stable on x86, mips, and sparc. Alpha, amd64, and ppc can
+  follow suit when they want, then 2.6.10/11 will get axed. Also adding a fix
+  for Bug #123134.
+
+*mhonarc-2.6.15 (29 Dec 2005)
+
+  29 Dec 2005; Stuart Herbert <stuart@gentoo.org> +mhonarc-2.6.15.ebuild:
+  Version bump (fixes bug 105356) and fix for sandbox violation (fixes bug 52779)
+
+  28 Nov 2005; <mcumming@gentoo.org> mhonarc-2.6.10.ebuild,
+  mhonarc-2.6.11.ebuild:
+  Switched from perl-module to perl-app eclass
+
+  15 Sep 2005; Aron Griffis <agriffis@gentoo.org> mhonarc-2.6.10.ebuild:
+  Mark 2.6.10 stable on alpha
+
+*mhonarc-2.6.10 (28 May 2005)
+
+  28 May 2005; Joshua Kinard <kumba@gentoo.org> mhonarc-2.6.10.ebuild,
+  +mhonarc-2.6.11.ebuild, -mhonarc-2.6.8-r1.ebuild:
+  Version bump and fix to SRC_URI to download the source properly. Removed older
+  2.6.8 version. Closes bugs #94074 and #93929.
+
+  21 Aug 2004; Joshua Kinard <kumba@gentoo.org> :
+  (long overdue) Revision bump.
+
+*mhonarc-2.6.8-r1 (25 Apr 2004)
+
+  25 Apr 2004; Joshua Kinard <kumba@gentoo.org> +mhonarc-2.6.8-r1.ebuild,
+  -mhonarc-2.6.8.ebuild:
+  Removed the ugly sedfu lines from src_install, as perl-module_src_install()
+  from the perl-module eclass does this now.
+
+*mhonarc-2.6.8 (18 Dec 2003)
+
+  18 Dec 2003; Joshua Kinard <kumba@gentoo.org> mhonarc-2.6.8.ebuild:
+  Initial import of MHonArc, the popular perl html-to-mail converter

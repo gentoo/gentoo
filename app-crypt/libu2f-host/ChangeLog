@@ -1,0 +1,59 @@
+# ChangeLog for app-crypt/libu2f-host
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/libu2f-host/ChangeLog,v 1.10 2015/04/14 06:50:07 jlec Exp $
+
+*libu2f-host-0.0.4 (14 Apr 2015)
+
+  14 Apr 2015; Justin Lecher <jlec@gentoo.org> +libu2f-host-0.0.4.ebuild,
+  -libu2f-host-0.0.1-r2.ebuild:
+  Version Bump; drop old
+
+*libu2f-host-0.0.2 (26 Dec 2014)
+
+  26 Dec 2014; Justin Lecher <jlec@gentoo.org> +libu2f-host-0.0.2.ebuild:
+  Version Bump
+
+*libu2f-host-0.0.1-r2 (10 Nov 2014)
+
+  10 Nov 2014; Diego E. Pettenò <flameeyes@gentoo.org>
+  +libu2f-host-0.0.1-r2.ebuild, -libu2f-host-0.0.1-r1.ebuild:
+  Thanks to BT to point out I broke the base rules, bug #528792.
+
+*libu2f-host-0.0.1-r1 (10 Nov 2014)
+
+  10 Nov 2014; Diego E. Pettenò <flameeyes@gentoo.org>
+  +libu2f-host-0.0.1-r1.ebuild, -libu2f-host-0.0-r1.ebuild,
+  -libu2f-host-0.0.1.ebuild:
+  Remove old versions; fix double-configure runs; fix udev/systemd rules. Thanks
+  to BT in bug #528280.
+
+*libu2f-host-0.0.1 (05 Nov 2014)
+
+  05 Nov 2014; Rick Farina <zerochaos@gentoo.org> +libu2f-host-0.0.1.ebuild:
+  bump per bug #528280, adding USE=static-libs to disable building static-libs
+
+  25 Oct 2014; Diego E. Pettenò <flameeyes@gentoo.org>
+  libu2f-host-0.0-r1.ebuild:
+  Add a check for HIDRAW to be enabled, as it's required to configure the
+  devices.
+
+  25 Oct 2014; Diego E. Pettenò <flameeyes@gentoo.org>
+  libu2f-host-0.0-r1.ebuild, metadata.xml:
+  Add a systemd USE flag to use acls rather than the plugdev group to give
+  access to the hidraw device.
+
+*libu2f-host-0.0-r1 (25 Oct 2014)
+
+  25 Oct 2014; Diego E. Pettenò <flameeyes@gentoo.org>
+  +libu2f-host-0.0-r1.ebuild, -libu2f-host-0.0.ebuild:
+  Apply fix to udev rules so that it matches U2F+CCID correctly.
+
+  25 Oct 2014; Diego E. Pettenò <flameeyes@gentoo.org> libu2f-host-0.0.ebuild,
+  metadata.xml:
+  Update metadata and description.
+
+*libu2f-host-0.0 (25 Oct 2014)
+
+  25 Oct 2014; Diego E. Pettenò <flameeyes@gentoo.org> +libu2f-host-0.0.ebuild,
+  +metadata.xml:
+  Initial import of Yubico's libu2f-host, needed for the yubikey-neo-manager.

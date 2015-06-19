@@ -1,0 +1,17 @@
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-backup/bacula/files/bacula-dir.confd,v 1.1 2011/05/14 09:28:46 tomjbe Exp $
+
+# Config file for /etc/init.d/bacula-dir
+
+# If the database server where you store your bacula catalog
+# is on a different machine, please set this to 0.
+# Setting it to 1 makes bacula-dir depend on the corresponding
+# database service selected at package compile time.
+LOCAL_DB=1
+
+# Options for the director daemon.
+# The director can be run as a non-root user, however
+# please ensure that this user has proper permissions to
+# access your backup devices.
+DIR_OPTIONS="-u root -g bacula -c /etc/bacula/bacula-dir.conf"

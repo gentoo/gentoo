@@ -1,0 +1,64 @@
+# ChangeLog for dev-python/milk
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/milk/ChangeLog,v 1.14 2015/06/01 05:35:46 patrick Exp $
+
+*milk-0.6.1 (01 Jun 2015)
+
+  01 Jun 2015; Patrick Lauer <patrick@gentoo.org> +milk-0.6.1.ebuild:
+  Bump
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> milk-0.5.1.ebuild,
+  milk-0.5.3.ebuild:
+  Drop old Python implementations
+
+  20 Jul 2013; Ian Delaney <idella4@gentoo.org> milk-0.5.3.ebuild:
+  add PYTHON_USEDEP to deps
+
+*milk-0.5.3 (25 Jun 2013)
+
+  25 Jun 2013; Sébastien Fabbro <bicatali@gentoo.org> +milk-0.5.3.ebuild,
+  -milk-0.5.ebuild:
+  Version bump
+
+*milk-0.5.1 (21 Mar 2013)
+
+  21 Mar 2013; Sébastien Fabbro <bicatali@gentoo.org> +milk-0.5.1.ebuild,
+  -milk-0.4.3.ebuild, metadata.xml:
+  Version bump
+
+*milk-0.5 (23 Nov 2012)
+
+  23 Nov 2012; Sébastien Fabbro <bicatali@gentoo.org> +milk-0.5.ebuild,
+  -milk-0.4.2.ebuild:
+  Version bump
+
+*milk-0.4.3 (01 Nov 2012)
+
+  01 Nov 2012; Sébastien Fabbro <bicatali@gentoo.org> +milk-0.4.3.ebuild:
+  Version bump
+
+  09 Aug 2012; Patrick Lauer <patrick@gentoo.org> milk-0.4.2.ebuild:
+  Restricting py-2.5
+
+  09 Aug 2012; Patrick Lauer <patrick@gentoo.org> milk-0.4.2.ebuild:
+  Restricting jython
+
+  02 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml,
+  milk-0.4.2.ebuild:
+  Keyword amd64-linux and x86-linux
+
+  02 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> milk-0.4.2.ebuild:
+  Keyword amd64-linux and x86-linux
+
+  21 Jul 2012; Justin Lecher <jlec@gentoo.org> milk-0.4.2.ebuild, metadata.xml:
+  Repack the tarball and include missing file in tests from upstreams VCS,
+  #427416
+
+  07 Jun 2012; Michael Sterrett <mr_bones_@gentoo.org> milk-0.4.2.ebuild:
+  add missing test to IUSE
+
+*milk-0.4.2 (06 Jun 2012)
+
+  06 Jun 2012; Sébastien Fabbro <bicatali@gentoo.org> +milk-0.4.2.ebuild,
+  +metadata.xml:
+  Initial import

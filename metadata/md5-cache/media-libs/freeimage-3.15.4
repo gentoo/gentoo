@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=sys-libs/zlib jpeg? ( virtual/jpeg ) jpeg2k? ( media-libs/openjpeg:0 ) mng? ( media-libs/libmng ) openexr? ( media-libs/openexr ) png? ( media-libs/libpng ) raw? ( media-libs/libraw ) tiff? ( media-libs/ilmbase media-libs/tiff ) virtual/pkgconfig app-arch/unzip
+DESCRIPTION=Image library supporting many formats
+EAPI=4
+HOMEPAGE=http://freeimage.sourceforge.net/
+IUSE=jpeg jpeg2k mng openexr png raw static-libs tiff
+KEYWORDS=amd64 ~arm x86 ~amd64-linux ~x86-linux
+LICENSE=|| ( GPL-2 FIPL-1.0 )
+RDEPEND=sys-libs/zlib jpeg? ( virtual/jpeg ) jpeg2k? ( media-libs/openjpeg:0 ) mng? ( media-libs/libmng ) openexr? ( media-libs/openexr ) png? ( media-libs/libpng ) raw? ( media-libs/libraw ) tiff? ( media-libs/ilmbase media-libs/tiff )
+SLOT=0
+SRC_URI=mirror://sourceforge/freeimage/FreeImage3154.zip mirror://sourceforge/freeimage/FreeImage3154.pdf http://dev.gentoo.org/~gienah/2big4tree/media-libs/freeimage/freeimage-3.15.4-libjpeg-turbo.patch.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=ad581893a8f795851ea933d82d27e754

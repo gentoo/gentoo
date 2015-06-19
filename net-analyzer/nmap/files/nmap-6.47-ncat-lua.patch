@@ -1,0 +1,11 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -145,7 +145,7 @@
+ 	@echo Compiling libnetutil;
+ 	cd libnetutil && $(MAKE)
+ 
+-ncat_build: $(NCATDIR)/Makefile nbase_build nsock_build $(NCATDIR)/ncat.h @PCAP_BUILD@
++ncat_build: $(NCATDIR)/Makefile nbase_build nsock_build @LUA_BUILD@ $(NCATDIR)/ncat.h @PCAP_BUILD@
+ 	cd $(NCATDIR) && $(MAKE)
+ 
+ lua_build: $(LIBLUADIR)/Makefile

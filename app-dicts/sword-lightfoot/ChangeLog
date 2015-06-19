@@ -1,0 +1,18 @@
+# ChangeLog for app-dicts/sword-lightfoot
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/sword-lightfoot/ChangeLog,v 1.3 2014/01/05 23:29:39 creffett Exp $
+
+  05 Jan 2014; Chris Reffett <creffett@gentoo.org> sword-lightfoot-1.0.ebuild:
+  EAPI bump
+
+*sword-lightfoot-1.0 (10 Jan 2009)
+
+  10 Jan 2009; Steve Dibb <beandog@gentoo.org> +sword-lightfoot-1.0.ebuild,
+  -sword-lightfoot-1.1.ebuild:
+  Fix version mismatch, bug 251642
+
+*sword-lightfoot-1.1 (17 May 2008)
+
+  17 May 2008; Steve Dibb <beandog@gentoo.org> +metadata.xml,
+  +sword-lightfoot-1.1.ebuild:
+  Initial commit

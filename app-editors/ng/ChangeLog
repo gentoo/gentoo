@@ -1,0 +1,46 @@
+# ChangeLog for app-editors/ng
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-editors/ng/ChangeLog,v 1.14 2014/07/08 00:46:30 naota Exp $
+
+  08 Jul 2014; Naohiro Aota <naota@gentoo.org> ng-1.5_beta1-r1.ebuild:
+  Use eautoconf #515410. Updated to EAPI=5
+
+  10 Jul 2011; Naohiro Aota <naota@gentoo.org> ng-1.5_beta1-r1.ebuild,
+  +files/ng-1.5beta1-configure.patch:
+  Add configure fix. Fix bug #371211.
+
+  28 Jun 2010; Christoph Mende <angelos@gentoo.org> ng-1.5_beta1.ebuild,
+  ng-1.5_beta1-r1.ebuild:
+  Blocked dev-java/nailgun due to file collision (bug #295840), quoted ${S},
+  changed ${MY_PV}.tar.gz to ${A} and respect CC
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> ng-1.5_beta1.ebuild:
+  Remove virtual/libc
+
+*ng-1.5_beta1-r1 (30 Oct 2008)
+
+  30 Oct 2008; MATSUU Takuto <matsuu@gentoo.org> +ng-1.5_beta1-r1.ebuild:
+  Fixed CC variable, bug #243570.
+
+  10 Oct 2007; Christian Faulhammer <opfer@gentoo.org> ng-1.5_beta1.ebuild:
+  remove PROVIDE=virtual/editor as we have now a new-style virtual
+
+  24 Jan 2007; Marius Mauch <genone@gentoo.org> ng-1.5_beta1.ebuild:
+  Replacing einfo with elog
+
+  28 Aug 2005; Luis Medinas <metalgod@gentoo.org> ng-1.5_beta1.ebuild:
+  Added ~amd64 keywords. Closes bug #103791.
+
+  08 Jul 2005; David Holm <dholm@gentoo.org> ng-1.5_beta1.ebuild:
+  Added to ~ppc.
+
+  26 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> ng-1.5_beta1.ebuild:
+  Marked as stable.
+
+*ng-1.5_beta1 (16 May 2004)
+
+  16 May 2004; Mamoru KOMACHI <usata@gentoo.org> ng-1.5_beta1.ebuild,
+  files/ng-1.5beta1-ncurses.patch:
+  Initial import. Ebuild submitted by Atsushi Kobayashi <loudear@iswebnet.com>,
+  closing bug #50823.
+  Added inherit eutils

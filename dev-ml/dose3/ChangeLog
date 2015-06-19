@@ -1,0 +1,33 @@
+# ChangeLog for dev-ml/dose3
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/dose3/ChangeLog,v 1.6 2015/01/26 13:51:24 aballier Exp $
+
+*dose3-3.3 (26 Jan 2015)
+
+  26 Jan 2015; Alexis Ballier <aballier@gentoo.org> +dose3-3.3.ebuild:
+  version bump
+
+  28 Nov 2014; Alexis Ballier <aballier@gentoo.org> dose3-3.3_beta2-r2.ebuild:
+  update deps for ocaml 4.02
+
+  30 Oct 2014; Alexis Ballier <aballier@gentoo.org> dose3-3.3_beta2-r2.ebuild:
+  fix xml deps, bug #527468
+
+*dose3-3.3_beta2-r2 (29 Oct 2014)
+
+  29 Oct 2014; Alexis Ballier <aballier@gentoo.org> -dose3-3.3_beta2-r1.ebuild,
+  +dose3-3.3_beta2-r2.ebuild:
+  do not prestrip files
+
+*dose3-3.3_beta2-r1 (29 Oct 2014)
+
+  29 Oct 2014; Alexis Ballier <aballier@gentoo.org> -dose3-3.3_beta2.ebuild,
+  +dose3-3.3_beta2-r1.ebuild:
+  fix build of ocamlopt binaries/libs
+
+*dose3-3.3_beta2 (28 Oct 2014)
+
+  28 Oct 2014; Alexis Ballier <aballier@gentoo.org> +dose3-3.3_beta2.ebuild,
+  +metadata.xml:
+  initial import, ebuild by me
+

@@ -1,0 +1,27 @@
+# ChangeLog for app-text/bibclean
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/bibclean/ChangeLog,v 1.6 2010/06/12 12:22:01 aballier Exp $
+
+  12 Jun 2010; Alexis Ballier <aballier@gentoo.org> bibclean-2.11.4.ebuild:
+  remove src_test overide, this is the default
+
+  26 Oct 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/bibclean-2.11.4-ldflags.patch, bibclean-2.11.4.ebuild:
+  respect ldflags and CC/CXX variables
+
+  12 Mar 2007; Alexandre Buisse <nattfodd@gentoo.org> metadata.xml:
+  Replaced text-markup by tex as maintaining herd (text-markup split).
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  17 Sep 2006; Jason Huebel <jhuebel@gentoo.org> bibclean-2.11.4.ebuild:
+  ~amd64
+
+*bibclean-2.11.4 (29 May 2005)
+
+  29 May 2005; Mamoru KOMACHI <usata@gentoo.org> +metadata.xml,
+  +bibclean-2.11.4.ebuild:
+  Initial import. Ebuild submitted by Paul Ortyl <ortylp@3miasto.net>;
+  bug #89637.
+

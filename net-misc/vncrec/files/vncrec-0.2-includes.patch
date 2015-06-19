@@ -1,0 +1,21 @@
+--- a/vncconnect/vncconnect.c	2001-06-09 05:41:45.000000000 +0200
++++ b/vncconnect/vncconnect.c	2010-09-28 20:19:03.000000000 +0200
+@@ -5,6 +5,8 @@
+ #include <stdio.h>
+ #include <X11/Xlib.h>
+ #include <X11/Xatom.h>
++#include <stdlib.h> /* exit() */
++#include <string.h> /* strlen() */
+ 
+ static char *programName;
+ 
+--- a/libvncauth/vncauth.c	2001-06-09 05:41:45.000000000 +0200
++++ b/libvncauth/vncauth.c	2010-09-28 20:19:44.000000000 +0200
+@@ -28,6 +28,7 @@
+ #include <sys/stat.h>
+ #include <vncauth.h>
+ #include <d3des.h>
++#include <time.h> /* time() */
+ 
+ 
+ /*

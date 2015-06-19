@@ -1,0 +1,66 @@
+# ChangeLog for sci-libs/hypre
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/hypre/ChangeLog,v 1.15 2014/06/09 03:18:38 bicatali Exp $
+
+  09 Jun 2014; Sébastien Fabbro <bicatali@gentoo.org> hypre-2.9.0b.ebuild:
+  Fixed underlinking (bug #493222) and enabling MPI (bug #508030) thanks
+  Matthias Maier
+
+  09 Jun 2014; Sébastien Fabbro <bicatali@gentoo.org> hypre-2.9.0b.ebuild:
+  Fixed underlinking (bug #493222) and enabling MPI (bug #508030) thanks
+  Matthias Maier
+
+  22 Apr 2014; Sébastien Fabbro <bicatali@gentoo.org> -hypre-2.8.0b-r1.ebuild,
+  hypre-2.9.0b.ebuild:
+  Forced fortran and lapack settings when mpi is set, secure mpi toolchain
+  propagation, bug #508030 thanks Matthias Maier
+
+  26 Dec 2013; Justin Lecher <jlec@gentoo.org> hypre-2.8.0b-r1.ebuild,
+  hypre-2.9.0b.ebuild, metadata.xml:
+  Respect CXX, #493224
+
+*hypre-2.9.0b (19 Jun 2013)
+
+  19 Jun 2013; Sébastien Fabbro <bicatali@gentoo.org> +hypre-2.9.0b.ebuild,
+  metadata.xml:
+  Version bump. Switch to EAPI5
+
+  21 Feb 2013; Justin Lecher <jlec@gentoo.org> hypre-2.8.0b-r1.ebuild,
+  metadata.xml:
+  Use tc-getPKG_CONFIG from toolchain-funcs.eclass instead of plain pkg-config
+
+  18 Oct 2012; Justin Lecher <jlec@gentoo.org> hypre-2.8.0b-r1.ebuild:
+  Remove virtual/fortran and always call fortran-2_pkg_setup as intend by the
+  updated fortran-2.eclass
+
+  14 Oct 2012; Justin Lecher <jlec@gentoo.org> hypre-2.8.0b-r1.ebuild:
+  Prepare for fortran2.eclass update
+
+  10 Oct 2012; Justin Lecher <jlec@gentoo.org> hypre-2.8.0b-r1.ebuild:
+  Respect CC, #437848
+
+  10 Oct 2012; Justin Lecher <jlec@gentoo.org> hypre-2.8.0b-r1.ebuild:
+  Move myeconfargs to local scope
+
+  02 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> hypre-2.8.0b-r1.ebuild:
+  Keyword amd64-linux x86-linux
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> hypre-2.8.0b-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  29 Jan 2012; Justin Lecher <jlec@gentoo.org> hypre-2.8.0b-r1.ebuild,
+  metadata.xml:
+  Add missing dep on sci-libs/superlu, #401385
+
+*hypre-2.8.0b-r1 (22 Jan 2012)
+
+  22 Jan 2012; Sébastien Fabbro <bicatali@gentoo.org> -hypre-2.8.0b.ebuild,
+  +hypre-2.8.0b-r1.ebuild:
+  include files in proper directory
+
+*hypre-2.8.0b (22 Jan 2012)
+
+  22 Jan 2012; Sébastien Fabbro <bicatali@gentoo.org> +hypre-2.8.0b.ebuild,
+  +metadata.xml:
+  Initial import from the science overlay. Version bump, rewritten from
+  scratch.

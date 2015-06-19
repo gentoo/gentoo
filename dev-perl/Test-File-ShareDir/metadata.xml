@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>perl</herd>
+  <maintainer>
+	  <email>monsieurp@gentoo.org</email>
+  </maintainer>
+  <maintainer>
+	  <email>kentnl@cpan.org</email>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Test-File-ShareDir</remote-id>
+    <remote-id type="cpan-module">Test::File::ShareDir</remote-id>
+  </upstream>
+</pkgmetadata>

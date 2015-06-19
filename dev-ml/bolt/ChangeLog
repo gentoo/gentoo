@@ -1,0 +1,30 @@
+# ChangeLog for dev-ml/bolt
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/bolt/ChangeLog,v 1.6 2014/11/28 17:39:36 aballier Exp $
+
+  28 Nov 2014; Alexis Ballier <aballier@gentoo.org> bolt-1.4.ebuild:
+  update deps for ocaml 4.02
+
+  16 Aug 2013; Alexis Ballier <aballier@gentoo.org> bolt-1.4.ebuild:
+  eapi5, define subslot and add := dep on ocaml
+
+  16 Aug 2013; Alexis Ballier <aballier@gentoo.org> -bolt-1.2.ebuild,
+  -bolt-1.3.ebuild:
+  remove old
+
+*bolt-1.4 (29 Oct 2012)
+
+  29 Oct 2012; Alexis Ballier <aballier@gentoo.org> +bolt-1.4.ebuild:
+  version bump
+
+*bolt-1.3 (22 Aug 2012)
+
+  22 Aug 2012; Alexis Ballier <aballier@gentoo.org> +bolt-1.3.ebuild:
+  version bump
+
+*bolt-1.2 (20 Aug 2011)
+
+  20 Aug 2011; Alexis Ballier <aballier@gentoo.org> +bolt-1.2.ebuild,
+  +metadata.xml:
+  initial import, ebuild by me
+

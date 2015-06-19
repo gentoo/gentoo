@@ -1,0 +1,57 @@
+taken from Fedora
+
+http://pkgs.fedoraproject.org/cgit/udftools.git/tree/udftools-1.0.0b3-man-missing-options.patch?h=f22
+
+diff -up wrk/doc/cdrwtool.1.wrk wrk/doc/cdrwtool.1
+--- wrk/doc/cdrwtool.1.wrk	2014-01-29 15:23:18.623940293 +0100
++++ wrk/doc/cdrwtool.1	2014-01-29 15:24:27.027471222 +0100
+@@ -97,6 +97,10 @@ Close track.
+ .IP "\fB\-r \fItrack\fP"
+ Reserve track.
+ 
++.IP "\fB\-z \fIlength\fP"
++Fixed packet length.
++
++
+ .IP \fB\-s\fP
+ Set write parameters determined by
+ .BR "\-l" , " \-w" ", and" " \-p"
+diff -up wrk/doc/mkudffs.8.wrk wrk/doc/mkudffs.8
+--- wrk/doc/mkudffs.8.wrk	2014-01-29 15:47:54.095408327 +0100
++++ wrk/doc/mkudffs.8	2014-01-29 15:51:18.115200882 +0100
+@@ -151,6 +151,13 @@ Use 16-bit unicode for file names
+ .TP
+ .B \-\-utf8
+ Use UTF-8 for file names
++.TP
++.B \-\-closed
++.TP
++.B \-\-bridge
++.TP
++.BI \-\-packetlen= " length "
++
+ 
+ .SH "EXIT STATUS"
+ .B mkudffs
+diff -up wrk/doc/pktsetup.8.wrk wrk/doc/pktsetup.8
+--- wrk/doc/pktsetup.8.wrk	2002-11-26 08:18:51.000000000 +0100
++++ wrk/doc/pktsetup.8	2014-01-29 15:36:29.509665177 +0100
+@@ -37,6 +37,9 @@ pktsetup \- set up and tear down packet
+ .B pktsetup
+ .B \-d
+ .I packet_device
++.br
++.B pktsetup
++.B \-s
+ .ad b
+ .SH DESCRIPTION
+ .B Pktsetup
+@@ -58,6 +61,8 @@ returns 0 on success, nonzero on failure
+ .IP "\fB\-d \fIpacket-device\fP"
+ Delete the association between the specified \fIpacket-device\fP
+ and its block device.
++.IP "\fB\-s"
++Show device mappings.
+ 
+ .SH EXAMPLE
+ The following commands provide an example of using the

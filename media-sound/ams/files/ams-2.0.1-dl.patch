@@ -1,0 +1,21 @@
+Missing -ldl for dlsym, dlerror, and dlopen, see http://bugs.gentoo.org/379251
+
+--- src/Makefile.am
++++ src/Makefile.am
+@@ -232,6 +232,8 @@
+ 	textedit.h \
+ 	notelist.h
+ 
++ams_LDADD = -ldl @QT_LIBS@
++
+ translationsdir = $(pkgdatadir)/translations
+ translations = \
+ 	translations/ams_de.ts \
+@@ -247,7 +249,6 @@
+ # all generated files to be removed by "make clean"
+ CLEANFILES = $(nodist_ams_SOURCES) $(translations_DATA)
+ 
+-AM_LDFLAGS = @QT_LIBS@
+ AM_CXXFLAGS = @QT_CXXFLAGS@ @AMS_CXXFLAGS@
+ DEFS = -D_REENTRANT -DLADSPA_PATH=\"$(LADSPA_PATH)\" -DTRANSLATIONSDIR=\"$(translationsdir)\" @DEFS@
+ 

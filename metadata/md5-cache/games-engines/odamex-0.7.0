@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare pretend setup test unpack
+DEPEND=dedicated? ( >=net-libs/miniupnpc-1.8 ) !dedicated? ( media-libs/libpng:0 >=media-libs/libsdl-1.2.9[X,sound,joystick,video] >=media-libs/sdl-mixer-1.2.6 odalaunch? ( x11-libs/wxGTK:3.0[X] ) portmidi? ( media-libs/portmidi ) server? ( >=net-libs/miniupnpc-1.8 ) ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) >=sys-apps/sed-4
+DESCRIPTION=An online multiplayer, free software engine for Doom and Doom II
+EAPI=5
+HOMEPAGE=http://odamex.net/
+IUSE=dedicated +odalaunch master portmidi server
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dedicated? ( >=net-libs/miniupnpc-1.8 ) !dedicated? ( media-libs/libpng:0 >=media-libs/libsdl-1.2.9[X,sound,joystick,video] >=media-libs/sdl-mixer-1.2.6 odalaunch? ( x11-libs/wxGTK:3.0[X] ) portmidi? ( media-libs/portmidi ) server? ( >=net-libs/miniupnpc-1.8 ) ) games-misc/games-envd
+SLOT=0
+SRC_URI=mirror://sourceforge/odamex/Odamex/0.7.0/odamex-src-0.7.0.tar.bz2
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	games	1ad3205dbf62a2c98249f2f59b0a2d39	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	wxwidgets	6d6eec2685256d35511e7b6d5461bec9
+_md5_=00c6f5a6bd053b124a4c80ae8be13642

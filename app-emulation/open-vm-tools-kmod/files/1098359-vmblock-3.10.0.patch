@@ -1,0 +1,24 @@
+--- a/modules/linux/vmblock/linux/control.c
++++ b/modules/linux/vmblock/linux/control.c
+@@ -208,9 +208,10 @@
+    VMBlockSetProcEntryOwner(controlProcMountpoint);
+ 
+    /* Create /proc/fs/vmblock/dev */
+-   controlProcEntry = create_proc_entry(VMBLOCK_CONTROL_DEVNAME,
+-                                        VMBLOCK_CONTROL_MODE,
+-                                        controlProcDirEntry);
++   controlProcEntry = proc_create(VMBLOCK_CONTROL_DEVNAME,
++                                  VMBLOCK_CONTROL_MODE,
++                                  controlProcDirEntry,
++                                  &ControlFileOps);
+    if (!controlProcEntry) {
+       Warning("SetupProcDevice: could not create " VMBLOCK_DEVICE "\n");
+       remove_proc_entry(VMBLOCK_CONTROL_MOUNTPOINT, controlProcDirEntry);
+@@ -218,7 +219,6 @@
+       return -EINVAL;
+    }
+ 
+-   controlProcEntry->proc_fops = &ControlFileOps;
+    return 0;
+ }
+ 

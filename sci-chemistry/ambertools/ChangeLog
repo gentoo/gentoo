@@ -1,0 +1,25 @@
+# ChangeLog for sci-chemistry/ambertools
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/ambertools/ChangeLog,v 1.5 2013/02/27 16:42:10 jlec Exp $
+
+  27 Feb 2013; Justin Lecher <jlec@gentoo.org> ambertools-1.5-r1.ebuild:
+  Add missing dep on virtual/pkgconfig
+
+  19 Feb 2013; Justin Lecher <jlec@gentoo.org> ambertools-1.5-r1.ebuild,
+  metadata.xml:
+  Use tc-getPKG_CONFIG from toolchain-funcs.eclass instead of plain pkg-config
+
+  19 Oct 2012; Justin Lecher <jlec@gentoo.org> ambertools-1.5-r1.ebuild,
+  metadata.xml:
+  Remove virtual/fortran and always call fortran-2_pkg_setup as intend by the
+  updated fortran-2.eclass
+
+  02 Aug 2011; Alexey Shvetsov <alexxy@gentoo.org> ambertools-1.5-r1.ebuild:
+  Add ~amd64-linux keyword
+
+*ambertools-1.5-r1 (28 Jul 2011)
+
+  28 Jul 2011; Alexey Shvetsov <alexxy@gentoo.org> +ambertools-1.5-r1.ebuild,
+  +files/ambertools-1.5-gentoo.patch, +metadata.xml:
+  Initial import to tree
+

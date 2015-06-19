@@ -1,0 +1,69 @@
+# ChangeLog for dev-python/doit
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/doit/ChangeLog,v 1.15 2015/06/13 05:24:52 idella4 Exp $
+
+*doit-0.28.0 (13 Jun 2015)
+
+  13 Jun 2015; Ian Delaney <idella4@gentoo.org> +doit-0.28.0.ebuild,
+  -doit-0.20.0.ebuild, -doit-0.23.0.ebuild:
+  bump add arch x86, update deps tests and test phase
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> doit-0.20.0.ebuild,
+  doit-0.23.0-r1.ebuild, doit-0.23.0.ebuild, doit-0.27.0.ebuild:
+  Drop old Python implementations
+
+*doit-0.27.0 (09 Mar 2015)
+
+  09 Mar 2015; Ben de Groot <yngwin@gentoo.org> +doit-0.27.0.ebuild:
+  version bump (bug #512246)
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> doit-0.23.0-r1.ebuild:
+  amd64 stable, bug 540290
+
+  24 Nov 2014; Pacho Ramos <pacho@gentoo.org> doit-0.23.0-r1.ebuild:
+  Support python 3.4
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> doit-0.20.0.ebuild,
+  doit-0.23.0-r1.ebuild, doit-0.23.0.ebuild:
+  Add support for the new PyPy slotting.
+
+  23 Mar 2014; Ian Delaney <idella4@gentoo.org> doit-0.23.0-r1.ebuild:
+  Correct deps, set test phase pypy capable and adjust for failures under pypy &
+  py2.6, all wrt to the Bug #503616.  Thx to Chicago for test support in irc.
+  New release due in coming days set to fix most failed tests
+
+*doit-0.23.0-r1 (21 Mar 2014)
+
+  21 Mar 2014; Ian Delaney <idella4@gentoo.org> +doit-0.23.0-r1.ebuild,
+  -files/doit-0.16.1-setup.py-encoding.patch:
+  revbump; update deps, rm old patch, fix test phase, fixes Bug 503616 by eroen
+
+*doit-0.23.0 (06 Oct 2013)
+
+  06 Oct 2013; Ben de Groot <yngwin@gentoo.org> +doit-0.23.0.ebuild:
+  version bump
+
+  22 Jul 2013; Michał Górny <mgorny@gentoo.org> -doit-0.16.1.ebuild:
+  Drop the old version using long-deprecated python-distutils-ng.eclass.
+
+  29 May 2013; Ian Delaney <idella4@gentoo.org> doit-0.20.0.ebuild:
+  add pypy support, test phase
+
+*doit-0.20.0 (02 Feb 2013)
+
+  02 Feb 2013; Ben de Groot <yngwin@gentoo.org> +doit-0.20.0.ebuild:
+  version bump
+
+  29 Aug 2012; Marien Zwart <marienz@gentoo.org>
+  +files/doit-0.16.1-setup.py-encoding.patch, doit-0.16.1.ebuild:
+  Make setup.py work in a non-utf8 locale (bug #430034, thanks to Flameeyes for
+  reporting).
+
+*doit-0.16.1 (27 Jun 2012)
+
+  27 Jun 2012; Ben de Groot <yngwin@gentoo.org> +doit-0.16.1.ebuild,
+  +metadata.xml:
+  Initial commit. Needed as dep for www-apps/nikola.

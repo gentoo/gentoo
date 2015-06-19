@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-qt/qtgui:4[qt3support] >=net-p2p/dclib-0.3.23 virtual/pkgconfig
+DESCRIPTION=A open source cross platform client for the Direct Connect network
+EAPI=2
+HOMEPAGE=http://sourceforge.net/projects/wxdcgui/
+IUSE=gnome kde
+KEYWORDS=amd64 hppa ppc ppc64 x86
+LICENSE=GPL-2
+RDEPEND=dev-qt/qtgui:4[qt3support] >=net-p2p/dclib-0.3.23
+SLOT=0
+SRC_URI=mirror://sourceforge/wxdcgui/valknut-0.4.9.tar.bz2 gnome? ( mirror://sourceforge/wxdcgui/valknut-0.4.9-gnome-icons.tar.gz ) kde? ( mirror://sourceforge/wxdcgui/valknut-0.4.9-oxygen-icons.tar.gz )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=d8cbfae38055a4d12f89951912723652

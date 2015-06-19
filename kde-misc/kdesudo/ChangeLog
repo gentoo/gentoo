@@ -1,0 +1,43 @@
+# ChangeLog for kde-misc/kdesudo
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/kdesudo/ChangeLog,v 1.10 2014/08/05 16:31:42 mrueg Exp $
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> kdesudo-3.4.2.4-r1.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  24 Apr 2014; Johannes Huber <johu@gentoo.org> -kdesudo-3.4.2.4.ebuild,
+  kdesudo-3.4.2.4-r1.ebuild:
+  amd64/x86 stable, remove old.
+
+*kdesudo-3.4.2.4-r1 (20 Mar 2014)
+
+  20 Mar 2014; Johannes Huber <johu@gentoo.org> +kdesudo-3.4.2.4-r1.ebuild:
+  Revision bump to EAPI 5.
+
+  11 Jun 2013; Agostino Sarubbo <ago@gentoo.org> kdesudo-3.4.2.4.ebuild:
+  Stable for x86, wrt bug #472986
+
+  11 Jun 2013; Agostino Sarubbo <ago@gentoo.org> kdesudo-3.4.2.4.ebuild:
+  Stable for amd64, wrt bug #472986
+
+  29 Oct 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  kdesudo-3.4.2.4.ebuild:
+  Now really bump to EAPI=4 :)
+
+  29 Oct 2011; Jonathan Callen <abcd@gentoo.org> kdesudo-3.4.2.4.ebuild:
+  Bump to EAPI=4; set KDE_HANDBOOK
+
+*kdesudo-3.4.2.4 (22 Aug 2011)
+
+  22 Aug 2011; Marc Schiffbauer <mschiff@gentoo.org> -kdesudo-3.4.2.3.ebuild,
+  +kdesudo-3.4.2.4.ebuild:
+  Version bump. Drop old version. Fixes #379479
+
+  31 Jan 2011; Theo Chatzimichos <tampakrap@gentoo.org> kdesudo-3.4.2.3.ebuild:
+  EAPI3, use array for DOCS
+
+*kdesudo-3.4.2.3 (27 Jan 2010)
+
+  27 Jan 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +kdesudo-3.4.2.3.ebuild:
+  Initial commit.

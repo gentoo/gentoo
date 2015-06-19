@@ -1,0 +1,97 @@
+# ChangeLog for media-tv/nvtv
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-tv/nvtv/ChangeLog,v 1.15 2015/04/07 20:54:36 dilfridge Exp $
+
+  07 Apr 2015; Andreas K. Huettel <dilfridge@gentoo.org> -nvtv-0.4.5.ebuild:
+  Drop to unstable (nothing depends on it), remove old EAPI=1 version.
+
+  24 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> nvtv-0.4.5.ebuild,
+  nvtv-0.4.7-r1.ebuild:
+  Use SLOT dependencies for x11-libs/gtk+.
+
+  21 Jan 2009; Steve Dibb <beandog@gentoo.org> +nvtv-0.4.5.ebuild:
+  Readd old stable ebuild
+
+*nvtv-0.4.7-r1 (10 Jan 2009)
+
+  10 Jan 2009; Steve Dibb <beandog@gentoo.org> -nvtv-0.4.5.ebuild,
+  -nvtv-0.4.6.ebuild, -nvtv-0.4.7.ebuild, +nvtv-0.4.7-r1.ebuild:
+  Drop old, drop stable keywords, fix zlib dep, bug 187588
+
+  27 Nov 2007; Matthias Schwarzott <zzam@gentoo.org> nvtv-0.4.5.ebuild,
+  nvtv-0.4.6.ebuild, nvtv-0.4.7.ebuild:
+  Fixed quoting.
+
+  28 Apr 2007; Torsten Veller <tove@gentoo.org> nvtv-0.4.5.ebuild,
+  nvtv-0.4.6.ebuild, nvtv-0.4.7.ebuild:
+  Removed virtual/x11 and made it use newinitd
+
+  20 Nov 2006; Steve Dibb <beandog@gentoo.org> metadata.xml:
+  Add to media-tv herd
+
+  19 Mar 2006; Joshua Baergen <joshuabaergen@gentoo.org> nvtv-0.4.5.ebuild,
+  nvtv-0.4.6.ebuild, nvtv-0.4.7.ebuild:
+  Add modular X dependencies.
+
+*nvtv-0.4.7 (06 Jun 2004)
+
+  06 Jun 2004; Bart Lauwers <blauwers@gentoo.org> nvtv-0.4.7.ebuild:
+  Version bump per request in Bug #49698
+
+  06 Jun 2004; Bart Lauwers <blauwers@gentoo.org> nvtv-0.4.5.ebuild, nvtv-0.4.6.ebuild:
+  Changed dep from Xfree to virtual/x11 per Bug #48959
+
+*nvtv-0.4.6 (26 Mar 2004)
+
+  26 Mar 2004; Bart Lauwers <blauwers@gentoo.org> nvtv-0.4.6.ebuild:
+  Version bump per request in Bug #23766
+
+  23 Mar 2004; <augustus@gentoo.org> nvtv-0.4.5.ebuild:
+  Added amd64 keyword.
+
+  04 Dec 2003; Seemant Kulleen <seemant@gentoo.org> nvtv-0.4.4.ebuild,
+  nvtv-0.4.5.ebuild:
+  fix up the gtk/gtk2 USE flag use according to bug #34566 by Spider
+  <spider@gentoo.org>
+
+*nvtv-0.4.5 (18 Jun 2003)
+
+  18 Jun 2003; B Lauwers <blauwers@gentoo.org> nvtv-0.4.5.ebuild:
+  New version from prior ebuild per Bug#23040
+
+*nvtv-0.4.4 (18 Jun 2003)
+
+  18 Jun 2003; Seemant Kulleen <seemant@gentoo.org> nvtv-0.4.4.ebuild,
+  files/nvtv.start:
+  moved to media-tv
+
+*nvtv-0.4.4 (16 Mar 2003)
+
+  16 Mar 2003; phoen][x <phoenix@gentoo.org> nvtv-0.4.4.ebuild :
+  Version bump.
+
+*nvtv-0.4.3-0 (10 Feb 2003)
+
+  10 Feb 2003; B.Lauwers <blauwers@gentoo.org> nvtv-0.4.3.ebuild :
+  New version from prior ebuild
+
+*nvtv-4.2.0-0 (09 Dec 2002)
+
+  17 Dec 2002; B.Lauwers <blauwers@gentoo.org> nvtv-0.4.2r1.ebuild :
+  Depency bug fixed per Bug#12067
+
+  9 Dec 2002; B.Lauwers <blauwers@gentoo.org> nvtv-0.4.2.ebuild :
+  New version from prior ebuild plus various cleanups
+
+*nvtv-0.4.0-0 (04 Jun 2002)
+
+  4 Jun 2002; B.Lauwers <blauwers@gentoo.org> nvtv-0.4.0.ebuild :
+  New version from prior ebuild plus various cleanups
+
+*nvtv-0.3.0-0 (03 May 2002)
+
+  3 May 2002; Arcady Genkin <agenkin@thpoon.com> nvtv-0.3.0.ebuild :
+  Cleaned up a few things.
+
+  3 May 2002; B.Lauwers <blauwers@gentoo.com> ChangeLog, nvtv-0.3.0.ebuild :
+  Intial ebuild for nvtv from http://sourceforge.net/projects/nv-tv-out

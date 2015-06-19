@@ -1,0 +1,28 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/denyhosts/files/denyhosts.init-r2,v 1.1 2014/01/06 01:53:36 ottxor Exp $
+
+extra_stopped_commands="purge"
+
+purge() {
+	ebegin "Purging hosts.deny"
+	start-stop-daemon --start --exec /usr/bin/denyhosts.py --pidfile /var/run/denyhosts.pid -- --purge
+	eend $?
+}
+
+depend() {
+	use logger sshd
+}
+
+start() {
+	ebegin "Starting DenyHosts daemon"
+	start-stop-daemon --start --exec /usr/bin/denyhosts.py --pidfile /var/run/denyhosts.pid -- --daemon -c /etc/denyhosts.conf
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping DenyHosts daemon"
+	start-stop-daemon --quiet --stop --pidfile /var/run/denyhosts.pid
+	eend $?
+}

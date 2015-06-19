@@ -1,0 +1,186 @@
+# ChangeLog for dev-perl/Chart
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Chart/ChangeLog,v 1.51 2014/08/31 16:08:13 zlogene Exp $
+
+  31 Aug 2014; Mikle Kolyada <zlogene@gentoo.org> -Chart-2.4.5.ebuild:
+  Drop old.
+
+*Chart-2.4.6-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org> +Chart-2.4.6-r1.ebuild,
+  -Chart-2.4.6.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  22 Dec 2013; Mikle Kolyada <zlogene@gentoo.org> Chart-2.4.6.ebuild:
+  x86 stable wrt bug #492082
+
+  22 Dec 2013; Pacho Ramos <pacho@gentoo.org> Chart-2.4.6.ebuild:
+  amd64 stable, bug #492082
+
+  22 Dec 2013; Agostino Sarubbo <ago@gentoo.org> Chart-2.4.6.ebuild:
+  Stable for ppc64, wrt bug #492082
+
+  21 Dec 2013; Agostino Sarubbo <ago@gentoo.org> Chart-2.4.6.ebuild:
+  Stable for ppc, wrt bug #492082
+
+*Chart-2.4.6 (25 Aug 2013)
+
+  25 Aug 2013; Patrick Lauer <patrick@gentoo.org> +Chart-2.4.6.ebuild:
+  Bump
+
+  02 Sep 2012; Torsten Veller <tove@gentoo.org> -Chart-2.4.2.ebuild:
+  Cleanup
+
+  09 Aug 2012; Brent Baude <ranger@gentoo.org> Chart-2.4.5.ebuild:
+  Marking Chart-2.4.5 ppc for bug 418793
+
+  07 Aug 2012; Brent Baude <ranger@gentoo.org> Chart-2.4.5.ebuild:
+  Marking Chart-2.4.5 ppc64 for bug 418793
+
+  04 Aug 2012; Johannes Huber <johu@gentoo.org> Chart-2.4.5.ebuild:
+  Stable for x86, wrt bug #418793
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> Chart-2.4.5.ebuild:
+  Stable for amd64, wrt bug #418793
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  21 Apr 2012; Torsten Veller <tove@gentoo.org> -Chart-2.4.1.ebuild,
+  -Chart-2.4.4.ebuild:
+  Cleanup
+
+*Chart-2.4.5 (30 Mar 2012)
+
+  30 Mar 2012; Torsten Veller <tove@gentoo.org> +Chart-2.4.5.ebuild:
+  Version bump
+
+  02 Mar 2012; Brent Baude <ranger@gentoo.org> Chart-2.4.2.ebuild:
+  Marking Chart-2.4.2 ppc64 for bug 396915
+
+  12 Feb 2012; Raúl Porcel <armin76@gentoo.org> Chart-2.4.1.ebuild,
+  Chart-2.4.2.ebuild, Chart-2.4.4.ebuild:
+  Drop alpha/ia64/sparc, x86 stable wrt #396915
+
+  06 Feb 2012; Brent Baude <ranger@gentoo.org> Chart-2.4.2.ebuild:
+  Marking Chart-2.4.2 ppc for bug 396915
+
+  03 Feb 2012; Agostino Sarubbo <ago@gentoo.org> Chart-2.4.2.ebuild:
+  Stable for amd64, wrt bug #396915
+
+*Chart-2.4.4 (10 Jan 2012)
+
+  10 Jan 2012; Torsten Veller <tove@gentoo.org> +Chart-2.4.4.ebuild:
+  Version bump
+
+*Chart-2.4.2 (28 Sep 2010)
+
+  28 Sep 2010; Torsten Veller <tove@gentoo.org> +Chart-2.4.2.ebuild:
+  Version bump
+
+  11 Sep 2009; Torsten Veller <tove@gentoo.org> Chart-2.4.1.ebuild:
+  Tests depend on dev-perl/GD compiled with png support
+
+  02 May 2009; Torsten Veller <tove@gentoo.org> -Chart-2.3.ebuild:
+  Cleanup
+
+  05 Jul 2007; Tom Gall <tgall@gentoo.org> Chart-2.4.1.ebuild:
+  stable on ppc64
+
+  05 Jul 2007; Raúl Porcel <armin76@gentoo.org> Chart-2.4.1.ebuild:
+  alpha/ia64/x86 stable
+
+  05 May 2007; Tobias Scherbaum <dertobi123@gentoo.org> Chart-2.4.1.ebuild:
+  ppc stable
+
+  10 Apr 2007; Michael Cummings <mcummings@gentoo.org> Chart-2.4.1.ebuild:
+  sparc stable
+
+  08 Apr 2007; Michael Cummings <mcummings@gentoo.org> Chart-2.4.1.ebuild:
+  Marking amd64 stable
+
+*Chart-2.4.1 (06 Feb 2007)
+
+  06 Feb 2007; Michael Cummings <mcummings@gentoo.org> +Chart-2.4.1.ebuild:
+  Version bump
+
+  14 Jan 2007; Michael Cummings <mcummings@gentoo.org> Chart-2.3.ebuild:
+  Ebuild maintenance
+
+  04 Aug 2006; Michael Cummings <mcummings@gentoo.org> Chart-2.3.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  03 Jul 2006; Christian Hartmann <ian@gentoo.org> Chart-2.3.ebuild:
+  Fixed RDEPEND wrt bug #134781; fixed DEPEND
+
+  24 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> Chart-2.3.ebuild:
+  Add ~x86-fbsd keyword.
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> Chart-2.3.ebuild:
+  Mark 2.3 stable on ia64
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> Chart-2.3.ebuild:
+  add ~ia64
+
+  18 May 2005; Markus Rothe <corsair@gentoo.org> Chart-2.3.ebuild:
+  Stable on ppc64
+
+  24 Apr 2005; Michael Cummings <mcummings@gentoo.org> -Chart-1.0.1.ebuild,
+  -Chart-1.0.1-r1.ebuild, Chart-2.3.ebuild:
+  Cleaning
+
+  01 Apr 2005; Simon Stelling <blubb@gentoo.org> Chart-2.3.ebuild:
+  stable on amd64
+
+  09 Mar 2005; Markus Rothe <corsair@gentoo.org> Chart-2.3.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  22 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org> Chart-2.3.ebuild:
+  Stable on sparc
+
+  22 Jan 2005; Bryan Østergaard <kloeri@gentoo.org> Chart-2.3.ebuild:
+  Stable on alpha.
+
+  21 Jan 2005; Michael Cummings <mcummings@gentoo.org> Chart-2.3.ebuild:
+  Unmasking for x86
+
+*Chart-2.3 (05 Jun 2004)
+
+  05 Jun 2004; Michael Cummings <mcummings@gentoo.org> Chart-2.3.ebuild:
+  new version on cpan
+
+*Chart-1.0.1-r1 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*Chart-1.0.1 (5 May 2002)
+
+  30 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> Chart-1.0.1.ebuild :
+
+  Added ppc to KEYWORDS. Added RDEPEND.
+
+  5 May 2002; Seemant Kulleen <seemant@gentoo.org> Chart-1.0.1.ebuild
+  files/digest-Chart-1.0.1 :
+
+  Version bump.
+
+*Chart-0.99.3_pre3-r1 (5 May 2002)
+
+  5 May 2002; Seemant Kulleen <seemant@gentoo.org>
+  Chart-0.99.3_pre3-r1.ebuild files/digest-Chart-0.99.3_pre3-r1 :
+
+  Changed to using an eclass.
+
+*Chart-0.99.3_pre3 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

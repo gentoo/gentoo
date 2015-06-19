@@ -1,0 +1,83 @@
+# ChangeLog for net-mail/ripole
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/ripole/ChangeLog,v 1.24 2015/05/29 05:24:47 jmorgan Exp $
+
+  29 May 2015; Jack Morgan <jmorgan@gentoo.org> ripole-0.2.2.ebuild:
+  sparc stable wrt bug #473794
+
+  28 Aug 2014; Raúl Porcel <armin76@gentoo.org> ripole-0.2.1.ebuild,
+  ripole-0.2.2.ebuild:
+  Add ~sparc wrt #442188
+
+  29 Jun 2013; Agostino Sarubbo <ago@gentoo.org> ripole-0.2.2.ebuild:
+  Stable for ppc64, wrt bug #474826
+
+  29 Jun 2013; Agostino Sarubbo <ago@gentoo.org> ripole-0.2.2.ebuild:
+  Stable for ppc, wrt bug #474826
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> ripole-0.2.2.ebuild:
+  Stable for amd64, wrt bug #472732
+
+  17 Dec 2012; Agostino Sarubbo <ago@gentoo.org> ripole-0.2.2.ebuild:
+  Add ~ppc64, wrt bug #442188
+
+  12 Nov 2012; Anthony G. Basile <blueness@gentoo.org> ripole-0.2.2.ebuild:
+  keyword ~ppc, bug #442188
+
+  24 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> ripole-0.2.2.ebuild:
+  x86 stable wrt bug #404831
+
+  21 Feb 2012; Jeroen Roovers <jer@gentoo.org> ripole-0.2.2.ebuild:
+  Stable for HPPA (bug #404831).
+
+*ripole-0.2.2 (16 Dec 2011)
+
+  16 Dec 2011; Tim Harder <radhermit@gentoo.org> +ripole-0.2.2.ebuild:
+  Version bump.
+
+  01 Dec 2011; Eray Aslan <eras@gentoo.org> -ripole-0.2.0.ebuild:
+  remove old
+
+  28 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> ripole-0.2.1.ebuild:
+  x86 stable wrt bug #391327
+
+  22 Nov 2011; Jeroen Roovers <jer@gentoo.org> ripole-0.2.1.ebuild:
+  Stable for HPPA (bug #391327).
+
+*ripole-0.2.1 (24 Aug 2011)
+
+  24 Aug 2011; Tim Harder <radhermit@gentoo.org> +ripole-0.2.1.ebuild:
+  Version bump.
+
+  06 Jun 2011; Eray Aslan <eras@gentoo.org> ripole-0.2.0.ebuild,
+  +files/ripole-0.2.0-ldflags.patch:
+  Respect LDFLAGS - bug #337843
+
+  19 Mar 2010; Jeroen Roovers <jer@gentoo.org> ripole-0.2.0.ebuild:
+  Do not install LICENSE.
+
+  19 Mar 2010; Jeroen Roovers <jer@gentoo.org> ripole-0.2.0.ebuild:
+  Stable for HPPA too.
+
+  13 Nov 2009; Jeroen Roovers <jer@gentoo.org> ripole-0.2.0.ebuild:
+  Marked ~hppa (LuckyLuke).
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> ripole-0.2.0.ebuild:
+  Remove virtual/libc
+
+  01 Apr 2007; Andrej Kacian <ticho@gentoo.org> -ripole-0.1.4.ebuild,
+  ripole-0.2.0.ebuild:
+  Stable on x86. Removed 0.1.4 ebuild.
+
+*ripole-0.2.0 (04 Oct 2006)
+
+  04 Oct 2006; Francesco Riosa <vivo@gentoo.org> +ripole-0.2.0.ebuild:
+  Version bump and ~amd64 keyword
+
+  26 Sep 2005; Andrej Kacian <ticho@gentoo.org> ripole-0.1.4.ebuild:
+  Stable on x86.
+
+*ripole-0.1.4 (26 Aug 2005)
+
+  26 Jan 2005; Fernando J. Pereda <ferdy@gentoo.org> :
+  New package ripole, closes #79166. Submitted by: steveb <tp22a@softhome.net>

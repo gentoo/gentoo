@@ -1,0 +1,9 @@
+# ChangeLog for sci-libs/cgnslib
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/cgnslib/ChangeLog,v 1.1 2014/07/25 11:23:17 slis Exp $
+
+*cgnslib-3.2.1 (25 Jul 2014)
+
+  25 Jul 2014; Sławek Lis <slis@gentoo.org> +cgnslib-3.2.1.ebuild,
+  +files/cgnslib-3.2.1-cmake.patch, +metadata.xml:
+  added cgnslib package

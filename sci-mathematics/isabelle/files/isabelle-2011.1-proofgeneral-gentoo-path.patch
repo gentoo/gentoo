@@ -1,0 +1,39 @@
+--- Isabelle2011-1-orig/etc/settings	2011-10-10 01:47:58.000000000 +1100
++++ Isabelle2011-1/etc/settings	2012-01-01 16:33:27.922565527 +1100
+@@ -24,9 +24,16 @@
+   "/usr/share/polyml/$ML_PLATFORM" \
+   "/opt/polyml/$ML_PLATFORM" \
+   "")"
+-ML_SYSTEM=$("$ISABELLE_HOME/lib/scripts/polyml-version")
+-ML_OPTIONS="-H 200"
+-ML_SOURCES="$ML_HOME/../src"
++# ML_SYSTEM=$("$ISABELLE_HOME/lib/scripts/polyml-version")
++# ML_OPTIONS="-H 200"
++# ML_SOURCES="$ML_HOME/../src"
++
++# Poly/ML 5.4.0 (64 bit)
++ML_PLATFORM=x86_64-linux
++ML_HOME=/usr/bin
++ML_SYSTEM=polyml-5.4.0
++ML_OPTIONS="-H 1000"
++#ML_SOURCES="$ML_HOME/../src"
+ 
+ # Poly/ML 32 bit (manual settings)
+ #ML_SYSTEM=polyml-5.4.0
+@@ -106,7 +113,7 @@
+ ISABELLE_TMP_PREFIX="/tmp/isabelle-$USER"
+ 
+ # Heap input locations. ML system identifier is included in lookup.
+-ISABELLE_PATH="$ISABELLE_HOME_USER/heaps:$ISABELLE_HOME/heaps"
++ISABELLE_PATH="$ISABELLE_HOME_USER/heaps:/usr/lib64/Isabelle2011-1/heaps"
+ 
+ # Heap output location. ML system identifier is appended automatically later on.
+ ISABELLE_OUTPUT="$ISABELLE_HOME_USER/heaps"
+@@ -170,6 +177,7 @@
+   "/usr/local/ProofGeneral" \
+   "/usr/share/ProofGeneral" \
+   "/opt/ProofGeneral" \
++  "/usr/share/emacs/site-lisp/ProofGeneral" \
+   "")"
+ 
+ PROOFGENERAL_OPTIONS=""

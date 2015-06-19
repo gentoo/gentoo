@@ -1,0 +1,68 @@
+# ChangeLog for dev-libs/libee
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libee/ChangeLog,v 1.15 2013/06/08 14:15:42 jer Exp $
+
+  08 Jun 2013; Jeroen Roovers <jer@gentoo.org> libee-0.4.1.ebuild:
+  Stable for HPPA (bug #472564).
+
+  23 Jul 2012; Markus Meier <maekke@gentoo.org> libee-0.4.1.ebuild:
+  add ~arm, bug #425526
+
+  12 Jul 2012; Jeroen Roovers <jer@gentoo.org> libee-0.4.1.ebuild:
+  Marked ~hppa (bug #425526).
+
+  08 Jun 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> libee-0.4.1.ebuild:
+  x86 stable wrt bug #418753
+
+  02 Jun 2012; Agostino Sarubbo <ago@gentoo.org> libee-0.4.1.ebuild:
+  Stable for amd64, wrt bug #418753
+
+*libee-0.4.1 (23 Apr 2012)
+*libee-0.3.2-r2 (23 Apr 2012)
+
+  23 Apr 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  +files/0.3.2-add_math_lib_configure.patch,
+  +files/0.3.2-add_math_lib_pc_in.patch, +libee-0.3.2-r2.ebuild,
+  +libee-0.4.1.ebuild, -libee-0.3.1.ebuild, -libee-0.3.2.ebuild:
+  Add 0.4.1 with fix for #409137 and 0.3.2-r2 with backported patch from 0.4.1
+  for the same bug. Thanks to slepnoga
+
+  22 Apr 2012; Maxim Koltsov <maksbotan@gentoo.org> -libee-0.4.0.ebuild:
+  Remove 0.4.0 by maintainer's request
+
+*libee-0.4.0 (02 Mar 2012)
+
+  02 Mar 2012; Maxim Koltsov <maksbotan@gentoo.org> +libee-0.4.0.ebuild:
+  Bump to 0.4.0. Thanks to slepnoga.
+
+  24 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> libee-0.3.2-r1.ebuild:
+  x86 stable wrt bug #402161
+
+  04 Feb 2012; Agostino Sarubbo <ago@gentoo.org> libee-0.3.2-r1.ebuild:
+  Stable for amd64, wrt bug #402161
+
+  04 Feb 2012; Maxim Koltsov <maksbotan@gentoo.org> metadata.xml:
+  Fix maintainer's email in metadata
+
+*libee-0.3.2-r1 (01 Dec 2011)
+
+  01 Dec 2011; Maxim Koltsov <maksbotan@gentoo.org> +libee-0.3.2-r1.ebuild:
+  Fix usage of autotools-utils.eclass, bug 392093. Thanks to mgorny and
+  slepnoga
+
+*libee-0.3.2 (26 Nov 2011)
+
+  26 Nov 2011; Maxim Koltsov <maksbotan@gentoo.org> +libee-0.3.2.ebuild:
+  Bumped to 0.3.2. Thanks to slepnoga
+
+  18 Sep 2011; Michał Górny <mgorny@gentoo.org> libee-0.3.1.ebuild,
+  metadata.xml:
+  Fix implicit $(use_enable debug). Fix invalid herd.
+
+*libee-0.3.1 (29 Aug 2011)
+
+  29 Aug 2011; Maxim Koltsov <maksbotan@gentoo.org> +libee-0.3.1.ebuild,
+  +metadata.xml:
+  Copy dev-libs/libee from rion-overlay, thanks to Andreis Vinogradovs
+  (slepnoga). Bug #348696
+

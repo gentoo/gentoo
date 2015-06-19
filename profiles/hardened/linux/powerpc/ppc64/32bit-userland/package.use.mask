@@ -1,0 +1,7 @@
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/hardened/linux/powerpc/ppc64/32bit-userland/package.use.mask,v 1.1 2012/04/25 19:26:57 xarthisius Exp $
+
+# Kacper Kowalik <xarthisius@gentoo.org> (25 Apr 2012)
+# Masking due to unsolved dependencies
+app-admin/puppet rrdtool

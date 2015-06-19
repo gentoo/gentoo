@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>media-tv</herd>
+	<maintainer>
+		<email>vdr@gentoo.org</email>
+		<name>Gentoo VDR Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		AutoSort Plugin adds the capability to define rules for
+		automatically sorting your channels.conf with every
+		housekeeping thread.
+	</longdescription>
+	<longdescription lang="de">
+                Das AutoSort-Plugin erweitert den VDR um die Fähigkeit, die
+                Kanalliste automatisch nach benutzerspezifischen Kriterien
+                zu sortieren.
+	</longdescription>
+</pkgmetadata>

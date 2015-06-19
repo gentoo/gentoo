@@ -1,0 +1,134 @@
+# ChangeLog for games-server/ut2004-ded
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-server/ut2004-ded/ChangeLog,v 1.28 2015/03/30 18:15:37 mr_bones_ Exp $
+
+  30 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  ut2004-ded-3369.3-r1.ebuild:
+  EAPI=5
+
+  14 Dec 2011; Mike Frysinger <vapier@gentoo.org> ut2004-ded-3369.3-r1.ebuild:
+  The games.eclass has dropped GAMES_CHECK_LICENSE support (since portage now
+  has ACCEPT_LICENSE), so drop it here too.
+
+  21 Sep 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  ut2004-ded-3369.3-r1.ebuild:
+  fix elog url (bug #383951)
+
+  09 Nov 2010; Tupone Alfredo <tupone@gentoo.org>
+  ut2004-ded-3369.3-r1.ebuild:
+  Fixing patch mirror. Bug #343301
+
+  30 Oct 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  ut2004-ded-3369.3-r1.ebuild:
+  add a working mirror (bug #343301)
+
+*ut2004-ded-3369.3-r1 (12 Oct 2009)
+
+  12 Oct 2009; Tristan Heaven <nyhm@gentoo.org> files/ut2004-ded.confd,
+  -ut2004-ded-3369.ebuild, files/ut2004-ded.initd,
+  -ut2004-ded-3369.3.ebuild, -files/ut2004-ded.rc,
+  +ut2004-ded-3369.3-r1.ebuild:
+  Install ut2004-ded wrapper for "ucc-bin server"; depend on
+  ut2004-bonuspack-{ece,mega} and remove files which are replaced by them to
+  prevent collisons; improve init script
+
+*ut2004-ded-3369.3 (03 Sep 2009)
+
+  03 Sep 2009; Tristan Heaven <nyhm@gentoo.org> +files/ut2004-ded.confd,
+  +ut2004-ded-3369.3.ebuild, +files/ut2004-ded.initd:
+  Apply patch to fix remote DOS, bug #239557; new init script, bug #161019
+
+  28 Apr 2007; Torsten Veller <tove@gentoo.org> ut2004-ded-3369.ebuild:
+  Use newinitd
+
+  12 Mar 2007; Marius Mauch <genone@gentoo.org> ut2004-ded-3369.ebuild:
+  Replacing einfo with elog
+
+  07 Mar 2007; Chris Gianelloni <wolf31o2@gentoo.org> files/ut2004-ded.rc:
+  Change all instances of [ to [[.
+
+  09 Jan 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-ded-3369.ebuild:
+  Fixed redundant braces that were breaking on newer bash versions and closing
+  bug #159256.
+
+  01 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-ded-3369.ebuild:
+  Added =virtual/libstdc++-3.3 to RDEPEND and closing bug #156250.
+
+  05 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-ded-3369.ebuild:
+  Added s to my dosed line.  Closing bug #150155.
+
+  15 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org> files/ut2004-ded.rc,
+  ut2004-ded-3369.ebuild:
+  Change hard-coded /opt to GAMES_PREFIX_OPT.
+
+  14 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org> files/ut2004-ded.rc:
+  Rewrote the init script, since it was in need of it.  Also fixed bug #136727.
+
+  31 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-ded-3369.ebuild:
+  Changed nomirror to mirror and nostrip to strip.
+
+  31 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -ut2004-ded-3355.ebuild:
+  Removing old version.
+
+  27 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-ded-3369.ebuild:
+  Marking stable on amd64 and x86.
+
+  27 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-ded-3355.ebuild, ut2004-ded-3369.ebuild:
+  Moved games_pkg_postinst to beginning of pkg_postinst.
+
+  06 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-ded-3369.ebuild:
+  Added 2 more mirrors.  Thanks to SonicLux on #gentoo-games.
+
+*ut2004-ded-3369 (03 Jan 2006)
+
+  03 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +ut2004-ded-3369.ebuild:
+  Version bumped to 3369.2 for all you dedicated server monkeys out there in
+  Unreal Tournament land.
+
+  21 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-ded-3355.ebuild:
+  Changed check_license to explicitly list license to check.
+
+  30 Aug 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -ut2004-ded-3339.ebuild, ut2004-ded-3355.ebuild:
+  Marking 3355 stable on x86 and amd64 and removing old version.
+
+  30 Aug 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-ded-3355.ebuild:
+  Changed to match new 3dgamers mirrors structure in thirdpartymirrors.
+
+*ut2004-ded-3355 (16 May 2005)
+
+  16 May 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  +ut2004-ded-3355.ebuild:
+  Added 3355 version for testing.
+
+*ut2004-ded-3339 (26 Nov 2004)
+
+  26 Nov 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  -ut2004-ded-3323.ebuild, +ut2004-ded-3339.ebuild:
+  Updated to latest version and closing bug #67105.
+
+*ut2004-ded-3323 (14 Sep 2004)
+
+  14 Sep 2004; Chris Gianelloni <wolf31o2@gentoo.org> -ut2004-ded-3236.ebuild,
+  +ut2004-ded-3323.ebuild:
+  Removing old versions and updating to newest patch.
+
+*ut2004-ded-3236 (03 Jul 2004)
+
+  03 Jul 2004; Chris Gianelloni <wolf31o2@gentoo.org> +metadata.xml,
+  +files/ut2004-ded.rc, +ut2004-ded-3236.ebuild:
+  Initial import. Original ebuild submitted by James Jones
+  <cuban@drunkstudents.net> with an init script submitted by Ken Smith
+  <themyrmidon@mac.com>. Updated to 3236-1 patch by Davin Boling
+  <davin@postmark.net> with some modifications by me. Closing bug #46057.

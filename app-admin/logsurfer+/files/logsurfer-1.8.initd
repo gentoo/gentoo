@@ -1,0 +1,51 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/logsurfer+/files/logsurfer-1.8.initd,v 1.1 2011/11/11 16:45:30 matsuu Exp $
+
+pidfile="/var/run/logsurfer.pid"
+command="/usr/bin/logsurfer"
+command_args="-D -p ${pidfile} ${LOGSURFER_OPTS}"
+extra_started_commands="reload dump"
+
+conffile="/etc/logsurfer.conf"
+
+depend() {
+	use logger
+}
+
+checkconfig() {
+	if [ ! -f /etc/logsurfer.conf ] ; then
+		eerror "Please create /etc/logsurfer.conf"
+		return 1
+	fi
+	return 0
+}
+
+start_pre() {
+	checkconfig || return $?
+
+	checkpath --file --owner logsurfer --mode 0644 "${pidfile}"
+}
+
+start() {
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon \
+		--start \
+		--user logsurfer \
+		--exec ${command} \
+		-- ${command_args}
+	eend $? "Failed to start ${SVCNAME}"
+}
+
+reload() {
+	ebegin "Reloading ${SVCNAME}"
+	start-stop-daemon --signal HUP --pidfile "${pidfile}"
+	eend $? "Failed to reload ${SVCNAME}"
+}
+
+dump() {
+	ebegin "Dumping ${SVCNAME} internal state"
+	start-stop-daemon --signal USR1 --pidfile "${pidfile}"
+	eend $? "Failed to dump ${SVCNAME} internal state"
+}

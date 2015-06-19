@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+	<email>xmw@gentoo.org</email>
+	<name>Michael Weber</name>
+</maintainer>
+<upstream>
+	<doc lang="en">http://winswitch.org/documentation/</doc>
+	<bugs-to>https://winswitch.org/trac/report</bugs-to>
+</upstream>
+</pkgmetadata>
+

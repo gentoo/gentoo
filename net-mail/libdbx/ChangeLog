@@ -1,0 +1,29 @@
+# ChangeLog for net-mail/libdbx
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/libdbx/ChangeLog,v 1.8 2015/03/21 19:36:30 jlec Exp $
+
+  21 Mar 2015; Justin Lecher <jlec@gentoo.org> libdbx-1.0.3.ebuild,
+  metadata.xml:
+  Bump to EAPI=5
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #473480
+
+  21 Jun 2013; Jeroen Roovers <jer@gentoo.org> libdbx-1.0.3.ebuild:
+  Do not call gcc directly (bug #462836).
+
+  23 Mar 2013; Agostino Sarubbo <ago@gentoo.org> libdbx-1.0.3.ebuild:
+  Add ~amd64, wrt bug #462816
+
+  26 Aug 2010; Patrick Kursawe <phosphan@gentoo.org> libdbx-1.0.3.ebuild:
+  Respects LDFLAGS now, see bug #331887.
+
+  20 Sep 2006; Patrick Kursawe <phosphan@gentoo.org> +files/bad_c.patch,
+  libdbx-1.0.3.ebuild:
+  Fixed gcc 4 problems (bug #147085)
+
+*libdbx-1.0.3 (05 Mar 2004)
+
+  05 Mar 2004; Patrick Kursawe <phosphan@gentoo.org> libdbx-1.0.3.ebuild,
+  metadata.xml:
+  Initial import.

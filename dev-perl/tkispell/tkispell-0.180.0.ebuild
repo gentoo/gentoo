@@ -1,0 +1,24 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/tkispell/tkispell-0.180.0.ebuild,v 1.1 2014/10/11 08:48:22 dilfridge Exp $
+
+EAPI=5
+
+MODULE_AUTHOR=RKIES
+MODULE_VERSION=0.18
+inherit perl-module
+
+DESCRIPTION="Perl/Tk user interface for ispell"
+
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
+IUSE=""
+
+RDEPEND="
+	app-text/aspell
+	dev-perl/perl-tk
+	virtual/perl-Carp
+"
+DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}-aspell.patch" )

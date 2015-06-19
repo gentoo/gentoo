@@ -1,0 +1,67 @@
+--- as/driver.c
++++ as/driver.c
+@@ -28,6 +28,9 @@
+ char **envp)
+ {
+     const char *LIB =
++#ifdef ASLIBEXECDIR
++      ASLIBEXECDIR;
++#else
+ #if defined(__OPENSTEP__) || defined(__HERA__) || \
+     defined(__GONZO_BUNSEN_BEAKER__) || defined(__KODIAK__)
+ 		    "../libexec/";
+@@ -41,6 +44,7 @@
+ #else
+ 		    "../local/libexec/gcc/darwin/";
+ #endif
++#endif
+     const char *AS = "/as";
+     const char *LLVM_MC = "llvm-mc";
+ 
+@@ -240,7 +244,11 @@
+ 
+ 	}
+ 
++#ifndef ASLIBEXECDIR
+ 	as = makestr(prefix, LIB, arch_name, AS, NULL);
++#else
++	as = makestr(LIB, arch_name, AS, NULL);
++#endif
+ 
+ 	/*
+ 	 * If this assembler exist try to run it else print an error message.
+@@ -252,6 +260,10 @@
+ 	    else
+ 		exit(1);
+ 	}
++#ifdef ASLIBEXECDIR
++    as_local = "";
++	{
++#else
+ 	as_local = makestr(prefix, LOCALLIB, arch_name, AS, NULL);
+ 	if(access(as_local, F_OK) == 0){
+ 	    argv[0] = as_local;
+@@ -261,6 +273,7 @@
+ 		exit(1);
+ 	}
+ 	else{
++#endif
+ 	    printf("%s: assembler (%s or %s) for architecture %s not "
+ 		   "installed\n", progname, as, as_local, arch_name);
+ 	    arch_flags = get_arch_flags();
+@@ -273,6 +286,7 @@
+ 		    printf("%s for architecture %s\n", as, arch_flags[i].name);
+ 		    count++;
+ 		}
++#ifndef ASLIBEXECDIR
+ 		else{
+ 		    as_local = makestr(prefix, LOCALLIB, arch_flags[i].name,
+ 				       AS, NULL);
+@@ -284,6 +298,7 @@
+ 			count++;
+ 		    }
+ 		}
++#endif
+ 	    }
+ 	    if(count == 0)
+ 		printf("%s: no assemblers installed\n", progname);

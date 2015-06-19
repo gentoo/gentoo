@@ -1,0 +1,24 @@
+diff -Nur work.orig/usr.sbin/ctladm/ctladm.c work/usr.sbin/ctladm/ctladm.c
+--- work.orig/usr.sbin/ctladm/ctladm.c	2012-07-12 13:25:58.000000000 +0900
++++ work/usr.sbin/ctladm/ctladm.c	2012-07-16 05:37:14.000000000 +0900
+@@ -60,7 +60,7 @@
+ #include <errno.h>
+ #include <err.h>
+ #include <ctype.h>
+-#include <bsdxml.h>
++#include <expat.h>
+ #include <cam/scsi/scsi_all.h>
+ #include <cam/scsi/scsi_message.h>
+ #include <cam/ctl/ctl.h>
+diff -Nur work.orig/usr.sbin/ctld/kernel.c work/usr.sbin/ctld/kernel.c
+--- work.orig/usr.sbin/ctld/kernel.c	2013-09-20 21:55:45.000000000 +0900
++++ work/usr.sbin/ctld/kernel.c	2013-09-20 22:01:17.000000000 +0900
+@@ -45,7 +45,7 @@
+ #include <sys/sbuf.h>
+ #include <sys/capability.h>
+ #include <assert.h>
+-#include <bsdxml.h>
++#include <expat.h>
+ #include <ctype.h>
+ #include <errno.h>
+ #include <fcntl.h>

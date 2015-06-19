@@ -1,0 +1,44 @@
+# ChangeLog for app-text/libabw
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/libabw/ChangeLog,v 1.9 2015/02/15 14:58:31 ago Exp $
+
+  15 Feb 2015; Agostino Sarubbo <ago@gentoo.org> libabw-0.1.1.ebuild:
+  Stable for x86, wrt bug #534684
+
+  15 Feb 2015; Agostino Sarubbo <ago@gentoo.org> libabw-0.1.1.ebuild:
+  Stable for amd64, wrt bug #534684
+
+*libabw-0.1.1 (27 Dec 2014)
+
+  27 Dec 2014; Andreas K. Huettel <dilfridge@gentoo.org> +libabw-0.1.1.ebuild,
+  +files/libabw-0.1.1-dereference-before-null-check.patch,
+  +files/libabw-0.1.1-do-not-let-AbiDocument_parse-throw.patch:
+  Version bump by Andreas Sturmlechner, bug 533478
+
+  10 Oct 2014; Markus Meier <maekke@gentoo.org> libabw-0.1.0.ebuild:
+  add ~arm, bug #520692
+
+*libabw-0.1.0 (07 Sep 2014)
+
+  07 Sep 2014; Tomáš Chvátal <scarabeus@gentoo.org> +libabw-0.1.0.ebuild,
+  libabw-0.0.2.ebuild:
+  Version bump to 0.1 used by lo4.3.
+
+  29 Jun 2014; Agostino Sarubbo <ago@gentoo.org> libabw-0.0.2.ebuild:
+  Stable for x86, wrt bug #514886
+
+  25 May 2014; Mikle Kolyada <zlogene@gentoo.org> libabw-0.0.2.ebuild:
+  amd64 stable wrt bug #511144
+
+*libabw-0.0.2 (25 Feb 2014)
+
+  25 Feb 2014; Tomáš Chvátal <scarabeus@gentoo.org> +libabw-0.0.2.ebuild,
+  -libabw-0.0.1.ebuild:
+  Version bump to 0.0.2 and drop redundant wpg dependency. Fixes bug#500734 and
+  bug#500778.
+
+*libabw-0.0.1 (27 Jan 2014)
+
+  27 Jan 2014; Tomáš Chvátal <scarabeus@gentoo.org> +libabw-0.0.1.ebuild,
+  +metadata.xml:
+  Initial commit. Library needed in 4.2 and later.

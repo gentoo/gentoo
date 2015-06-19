@@ -1,0 +1,27 @@
+# ChangeLog for app-emacs/csv-mode
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/csv-mode/ChangeLog,v 1.7 2015/02/24 22:01:39 ulm Exp $
+
+  24 Feb 2015; Ulrich Müller <ulm@gentoo.org> csv-mode-1.50.ebuild:
+  Update ebuild to EAPI 5. Specify LICENSE more precisely.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> csv-mode-1.50.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  01 Dec 2008; Tiago Cunha <tcunha@gentoo.org> csv-mode-1.50.ebuild:
+  stable sparc
+
+  25 Feb 2008; Christian Faulhammer <opfer@gentoo.org> csv-mode-1.50.ebuild:
+  stable x86/amd64
+
+  04 Jul 2007; Ulrich Mueller <ulm@gentoo.org> csv-mode-1.50.ebuild:
+  Remove redundant src_install.
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*csv-mode-1.50 (19 May 2006)
+
+  19 May 2006; Matthew Kennedy <mkennedy@gentoo.org>
+  +files/50csv-mode-gentoo.el, +metadata.xml, +csv-mode-1.50.ebuild:
+  Initial port.  Ebuild contributed by Matthew Kennedy <mkennedy@gentoo.org>.

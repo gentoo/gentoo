@@ -1,0 +1,10 @@
+# ChangeLog for dev-perl/UUID
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/UUID/ChangeLog,v 1.1 2014/12/05 21:01:52 dilfridge Exp $
+
+*UUID-0.50.0 (05 Dec 2014)
+
+  05 Dec 2014; Andreas K. Huettel <dilfridge@gentoo.org> +UUID-0.50.0.ebuild,
+  +metadata.xml:
+  New package, imported from perl overlay
+

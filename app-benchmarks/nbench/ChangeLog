@@ -1,0 +1,140 @@
+# ChangeLog for app-benchmarks/nbench
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/nbench/ChangeLog,v 1.33 2010/09/30 21:23:29 ranger Exp $
+
+  30 Sep 2010; Brent Baude <ranger@gentoo.org> nbench-2.2.3-r1.ebuild:
+  stable ppc64, bug 331147
+
+  18 Sep 2010; Raúl Porcel <armin76@gentoo.org> nbench-2.2.3-r1.ebuild:
+  alpha/arm/sh/sparc stable wrt #331147
+
+  16 Sep 2010; Raúl Porcel <armin76@gentoo.org> nbench-2.2.3.ebuild,
+  nbench-2.2.3-r1.ebuild:
+  Add ~arm
+
+  06 Aug 2010; Christian Faulhammer <fauli@gentoo.org>
+  nbench-2.2.3-r1.ebuild:
+  stable x86, bug 331147
+
+  05 Aug 2010; Jeroen Roovers <jer@gentoo.org> nbench-2.2.3-r1.ebuild:
+  Stable for PPC (bug #331147).
+
+  05 Aug 2010; Jeroen Roovers <jer@gentoo.org> nbench-2.2.3-r1.ebuild:
+  Stable for HPPA (bug #331147).
+
+  04 Aug 2010; Markos Chandras <hwoarang@gentoo.org> nbench-2.2.3-r1.ebuild:
+  Stable on amd64 wrt bug #331147
+
+  14 Dec 2009; Jeroen Roovers <jer@gentoo.org> nbench-2.2.3-r1.ebuild:
+  Space.
+
+  14 Dec 2009; Jeroen Roovers <jer@gentoo.org> nbench-2.2.3-r1.ebuild:
+  Remove testing cruft.
+
+*nbench-2.2.3-r1 (14 Dec 2009)
+
+  14 Dec 2009; Jeroen Roovers <jer@gentoo.org> +nbench-2.2.3-r1.ebuild,
+  files/nbench-2.2.3-Makefile.patch:
+  Bump to hopefully fix missing pointer.h (bug #296860).
+
+  01 Apr 2009; Jeroen Roovers <jer@gentoo.org> -nbench-2.2.2.ebuild,
+  nbench-2.2.3.ebuild:
+  Remove old. Remove silly DEPEND.
+
+  01 Dec 2008; Brent Baude <ranger@gentoo.org> nbench-2.2.3.ebuild:
+  stable ppc64, bug 249105
+
+  30 Nov 2008; Markus Meier <maekke@gentoo.org> nbench-2.2.3.ebuild:
+  amd64 stable, bug #249105
+
+  29 Nov 2008; Raúl Porcel <armin76@gentoo.org> nbench-2.2.3.ebuild:
+  alpha/sparc/x86 stable wrt #249105
+
+  29 Nov 2008; Tobias Scherbaum <dertobi123@gentoo.org> nbench-2.2.3.ebuild:
+  ppc stable, bug #249105
+
+  28 Nov 2008; Jeroen Roovers <jer@gentoo.org> nbench-2.2.3.ebuild:
+  Stable for HPPA (bug #249105).
+
+  29 Oct 2008; Jeroen Roovers <jer@gentoo.org> -nbench-2.2.1.ebuild:
+  Remove old.
+
+*nbench-2.2.3 (29 Oct 2008)
+
+  29 Oct 2008; Jeroen Roovers <jer@gentoo.org>
+  +files/nbench-2.2.3-Makefile.patch, metadata.xml, +nbench-2.2.3.ebuild:
+  Pick up maintainership. Version bump. Patch Makefile to use toolchain CC
+  (bug #243520).
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  06 Dec 2006; Alexander H. Færøy <eroyf@gentoo.org> nbench-2.2.2.ebuild:
+  Stable on MIPS.
+
+  08 Jul 2006; Markus Rothe <corsair@gentoo.org> nbench-2.2.2.ebuild:
+  Stable on ppc64
+
+  15 Jun 2006; Brent Baude <ranger@gentoo.org> nbench-2.2.2.ebuild:
+  keywording nbench-2.2.2 ~ppc64 per solar's request; looks fine to me too
+
+  09 Sep 2005; Aron Griffis <agriffis@gentoo.org> nbench-2.2.2.ebuild:
+  Mark 2.2.2 stable on alpha
+
+  31 Jul 2005; Tobias Scherbaum <dertobi123@gentoo.org> nbench-2.2.2.ebuild:
+  ppc stable
+
+  20 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org> nbench-2.2.2.ebuild:
+  Stable on sparc
+
+  19 Jul 2005; MATSUU Takuto <matsuu@gentoo.org> nbench-2.2.2.ebuild:
+  Stable on x86, amd64 and sh.
+
+  29 Mar 2005; Guy Martin <gmsoft@gentoo.org> nbench-2.2.2.ebuild:
+  Stable on hppa.
+
+  13 Mar 2005; Tavis Ormandy <taviso@gentoo.org> nbench-2.2.2.ebuild:
+  add ~alpha keyword
+
+*nbench-2.2.2 (30 Dec 2004)
+
+  30 Dec 2004; MATSUU Takuto <matsuu@gentoo.org> +nbench-2.2.2.ebuild:
+  Version bumped.
+
+  18 Nov 2004; Daniel Goller <morfic@gentoo.org> nbench-2.2.1.ebuild:
+  Added support for LDFLAGS
+
+*nbench-2.2.1 (07 Nov 2004)
+
+  07 Nov 2004; Daniel Goller <morfic@gentoo.org> +metadata.xml,
+  +nbench-2.2.1.ebuild:
+  Moved from sys-apps/nbench to app-benchmarks/nbench.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  nbench-2.2.1.ebuild:
+  Masked nbench-2.2.1.ebuild stable for ppc
+
+  30 Jun 2004; Aron Griffis <agriffis@gentoo.org> nbench-2.2.1.ebuild:
+  glibc -> libc
+
+*nbench-2.2.1 (15 Mar 2004)
+
+  15 Mar 2004; <matsuu@gentoo.org> nbench-2.2.1.ebuild:
+  Version bumped. Bugs #23209.
+  Removed dosed in src_compile. Bugs #44712.
+
+  24 Feb 2004; Lars Weiler <pylon@gentoo.org> nbench-2.1.ebuild:
+  Works on ppc.  Masking ~ppc
+
+  24 Feb 2004; Sven Blumenstein <bazik@gentoo.org> nbench-2.1.ebuild:
+  Stable on sparc.
+
+  18 Jan 2004; <tuxus@gentoo.org> nbench-2.1.ebuild:
+  Added ~mips to KEYWORDS.
+
+  17 Oct 2003; Sven Blumenstein <bazik@gentoo.org> nbench-2.1.ebuild:
+  Added ~sparc keyword.
+
+*nbench-2.1	(30 Jan 2003)
+  30 Jan 2003l Joshua Brindle <method@gentoo.org> nbench-2.1.ebuild :
+  Initial import. Ebuild submitted by MATSUU Takuto <matsuu@7501.net>.

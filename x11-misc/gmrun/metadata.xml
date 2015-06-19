@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>desktop-misc</herd>
+	<longdescription>
+		A run utility intended to replace grun or gnome-run. Most prominent
+		features include slim design and bash style auto-completion.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">gmrun</remote-id>
+	</upstream>
+</pkgmetadata>

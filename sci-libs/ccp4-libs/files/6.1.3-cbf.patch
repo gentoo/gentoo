@@ -1,0 +1,16 @@
+ lib/DiffractionImage/DiffractionImageCBF.cpp |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/lib/DiffractionImage/DiffractionImageCBF.cpp b/lib/DiffractionImage/DiffractionImageCBF.cpp
+index 69b32b0..3ffee26 100755
+--- a/lib/DiffractionImage/DiffractionImageCBF.cpp
++++ b/lib/DiffractionImage/DiffractionImageCBF.cpp
+@@ -62,7 +62,7 @@ namespace DI
+ 			int* tmpimg;
+ 			tmpimg=new int[height*width];
+ 			test= cbf_decompress_byte_offset ((void *)tmpimg,sizeof(int),sign,
+-                               			nelements,&nread,0,32,sign,ccbbff,0,
++                               			nelements,&nread,0,0,32,sign,ccbbff,0,
+ 										byte_ord.c_str(),2,(size_t) width,
+ 										(size_t) height,1,(size_t) padding);
+ 			for(int i=0;i<height*width;i++)

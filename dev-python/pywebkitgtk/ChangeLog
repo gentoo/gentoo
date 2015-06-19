@@ -1,0 +1,162 @@
+# ChangeLog for dev-python/pywebkitgtk
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pywebkitgtk/ChangeLog,v 1.40 2015/04/08 08:05:14 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> pywebkitgtk-1.1.8-r1.ebuild:
+  Drop old Python implementations
+
+  01 Feb 2015; Manuel Rüger <mrueg@gentoo.org> -pywebkitgtk-1.1.8.ebuild:
+  Remove old.
+
+  01 Feb 2015; Agostino Sarubbo <ago@gentoo.org> pywebkitgtk-1.1.8-r1.ebuild:
+  Stable for x86, wrt bug #525108
+
+  31 Jan 2015; Agostino Sarubbo <ago@gentoo.org> pywebkitgtk-1.1.8-r1.ebuild:
+  Stable for amd64, wrt bug #525108
+
+  31 Oct 2014; Pacho Ramos <pacho@gentoo.org> pywebkitgtk-1.1.8.ebuild:
+  Move to ~ppc due bug #525258
+
+  15 Oct 2014; Pacho Ramos <pacho@gentoo.org> pywebkitgtk-1.1.8-r1.ebuild,
+  pywebkitgtk-1.1.8.ebuild:
+  Move to testing per #525232 (ACKed by armin76)
+
+  26 Jun 2013; Mike Gilbert <floppym@gentoo.org> pywebkitgtk-1.1.8-r1.ebuild:
+  pywebkitgtk does not use the python bindings on libxslt. Thanks to Arfrever.
+
+  23 Jun 2013; Mike Gilbert <floppym@gentoo.org> pywebkitgtk-1.1.8-r1.ebuild:
+  Don't die in testing function; we should let virtualmake clean up after
+  itself.
+
+  23 Jun 2013; Mike Gilbert <floppym@gentoo.org> pywebkitgtk-1.1.8-r1.ebuild:
+  Use virtualx for the test suite.
+
+  23 Jun 2013; Mike Gilbert <floppym@gentoo.org> pywebkitgtk-1.1.8-r1.ebuild:
+  Use autotools-utils for out-of-source building, bug 474360.
+
+  23 Jun 2013; Ian Delaney <idella4@gentoo.org> pywebkitgtk-1.1.8-r1.ebuild:
+  rebuild whole migration, missing test phase added, resticted until 1 final
+  issue resolved, wrt Bug #474360
+
+*pywebkitgtk-1.1.8-r1 (22 Jun 2013)
+
+  22 Jun 2013; Ian Delaney <idella4@gentoo.org> +pywebkitgtk-1.1.8-r1.ebuild:
+  revbump, migrate -> python-r1
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  04 May 2012; Patrick Lauer <patrick@gentoo.org> pywebkitgtk-1.1.8.ebuild:
+  Migrating dev-util/pkgconfig -> virtual/pkgconfig
+
+  24 Feb 2012; Patrick Lauer <patrick@gentoo.org> pywebkitgtk-1.1.8.ebuild:
+  Restricting pypy and jython
+
+  21 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  pywebkitgtk-1.1.8.ebuild:
+  Fix slot-deps on gnome libs
+
+  12 Feb 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -pywebkitgtk-1.1.7.ebuild:
+  Delete.
+
+  12 Feb 2011; Raúl Porcel <armin76@gentoo.org> pywebkitgtk-1.1.8.ebuild:
+  sparc stable wrt #342489
+
+  06 Jan 2011; Brent Baude <ranger@gentoo.org> pywebkitgtk-1.1.8.ebuild:
+  Marking pywebkitgtk-1.1.8 ppc for bug 342489
+
+  01 Nov 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  pywebkitgtk-1.1.8.ebuild:
+  x86 stable wrt bug #342489
+
+  24 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  pywebkitgtk-1.1.8.ebuild:
+  Stable on amd64 wrt bug #342489
+
+*pywebkitgtk-1.1.8 (22 Sep 2010)
+
+  22 Sep 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +pywebkitgtk-1.1.8.ebuild:
+  Version bump. Update dependencies (bug #333401).
+
+  05 Apr 2010; Raúl Porcel <armin76@gentoo.org> pywebkitgtk-1.1.7.ebuild:
+  sparc stable wrt #307261
+
+  16 Mar 2010; Christian Faulhammer <fauli@gentoo.org>
+  pywebkitgtk-1.1.7.ebuild:
+  stable x86, bug 307261
+
+  15 Mar 2010; nixnut <nixnut@gentoo.org> pywebkitgtk-1.1.7.ebuild:
+  ppc stable #307261
+
+  06 Mar 2010; Samuli Suominen <ssuominen@gentoo.org>
+  pywebkitgtk-1.1.7.ebuild:
+  amd64 stable wrt #307261
+
+  28 Feb 2010; nixnut <nixnut@gentoo.org> pywebkitgtk-1.1.6-r1.ebuild:
+  ppc stable #299568
+
+  21 Feb 2010; Raúl Porcel <armin76@gentoo.org>
+  pywebkitgtk-1.1.6-r1.ebuild:
+  sparc stable wrt #299568
+
+  04 Feb 2010; Markos Chandras <hwoarang@gentoo.org>
+  pywebkitgtk-1.1.6-r1.ebuild:
+  Stable on amd64 wrt bug #299568
+
+  27 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  pywebkitgtk-1.1.6-r1.ebuild, pywebkitgtk-1.1.7.ebuild:
+  stable x86, bug 299568
+
+  23 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  pywebkitgtk-1.1.7.ebuild:
+  stable x86, bug 299568
+
+  11 Jan 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pywebkitgtk-1.1.6-r1.ebuild:
+  Don't call python_need_rebuild().
+
+*pywebkitgtk-1.1.7 (30 Dec 2009)
+
+  30 Dec 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +pywebkitgtk-1.1.7.ebuild:
+  Version bump.
+
+  10 Dec 2009; Raúl Porcel <armin76@gentoo.org> pywebkitgtk-1.1.5.ebuild,
+  pywebkitgtk-1.1.6.ebuild, pywebkitgtk-1.1.6-r1.ebuild:
+  Add ~sparc
+
+  07 Oct 2009; Mounir Lamouri <volkmar@gentoo.org>
+  pywebkitgtk-1.1.6-r1.ebuild:
+  Keywording for ppc, bug 272367
+
+  16 Sep 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pywebkitgtk-1.1.6-r1.ebuild:
+  Fix building with =sys-devel/libtool-1* (bug #284174).
+
+*pywebkitgtk-1.1.6-r1 (30 Aug 2009)
+
+  30 Aug 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +pywebkitgtk-1.1.6-r1.ebuild:
+  Install .pth file (bug #283271). Add linking against libgthread-2.0 (bug
+  #283271).
+
+*pywebkitgtk-1.1.6 (29 Aug 2009)
+
+  29 Aug 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -pywebkitgtk-1.0.2.ebuild, +pywebkitgtk-1.1.6.ebuild:
+  Version bump. Set SUPPORT_PYTHON_ABIS.
+
+*pywebkitgtk-1.1.5 (07 Jun 2009)
+
+  07 Jun 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +pywebkitgtk-1.1.5.ebuild:
+  Version bump. Fix building with with Python 2.6 (bug #265649).
+
+*pywebkitgtk-1.0.2 (07 Dec 2008)
+
+  07 Dec 2008; Jesus Rivero <neurogeek@gentoo.org> +metadata.xml,
+  +pywebkitgtk-1.0.2.ebuild:
+  Initial commit. Proxy mantained by me for Sergio Rodriguez
+  <srinclan@gmail.com>

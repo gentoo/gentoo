@@ -1,0 +1,26 @@
+From b2413a77f3f11c6722ea7e83aafbaa3fc5c73376 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <gentoo@mgorny.alt.pl>
+Date: Sun, 11 Dec 2011 18:39:59 +0100
+Subject: [PATCH] Fix installing into libdir.
+
+---
+ e4rat-0.2.1/src/CMakeLists.txt |    2 --
+ 1 files changed, 0 insertions(+), 2 deletions(-)
+
+diff --git a/e4rat-0.2.1/src/CMakeLists.txt b/e4rat-0.2.1/src/CMakeLists.txt
+index d379ec6..9fc7492 100644
+--- a/e4rat-0.2.1/src/CMakeLists.txt
++++ b/e4rat-0.2.1/src/CMakeLists.txt
+@@ -163,8 +163,7 @@ endif(NOT HAVE_64_BIT)
+ 
+ INSTALL(TARGETS ${${PROJECT_NAME}_TARGETS}
+         RUNTIME DESTINATION "sbin"
+-        LIBRARY DESTINATION "lib"
++        LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+-        ARCHIVE DESTINATION "lib"
+ )
+ 
+ INSTALL(DIRECTORY DESTINATION "/var/lib/${PROJECT_NAME}")
+-- 
+1.7.8.110.g4cb5d1.dirty
+

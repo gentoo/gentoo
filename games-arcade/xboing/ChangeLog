@@ -1,0 +1,55 @@
+# ChangeLog for games-arcade/xboing
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/xboing/ChangeLog,v 1.15 2013/02/02 19:19:26 dilfridge Exp $
+
+  02 Feb 2013; Andreas K. Huettel <dilfridge@gentoo.org> -xboing-2.4-r1.ebuild,
+  +xboing-2.4-r2.ebuild, +files/xboing-2.4-buffer.patch,
+  +files/xboing-2.4-sleep.patch, metadata.xml:
+  Adopt package, fix buffer overflow (kinda), bug 442290, and impossible game
+  speed. Drop to ~arch as we're returning from package mask.
+
+  08 Jan 2011; Tupone Alfredo <tupone@gentoo.org> xboing-2.4-r1.ebuild:
+  Again respect LDFLAGS. Bug #351038 by flameeyes@gentoo.org
+
+  16 Oct 2010; Tupone Alfredo <tupone@gentoo.org> xboing-2.4-r1.ebuild:
+  Respect LDFLAGS. Bug #334643 by flameeyes@gentoo.org
+
+  08 Mar 2008; Chris Gianelloni <wolf31o2@gentoo.org> xboing-2.4-r1.ebuild:
+  QA cleanup: Fix quoting.
+
+  01 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org> xboing-2.4-r1.ebuild:
+  Removing old virtual/x11 dependency.
+
+  27 Apr 2006; <Tupone@gentoo.org> -files/01_all_insaneSpeed.patch,
+  -xboing-2.4-r2.ebuild:
+  Reverting. Applied patch was broken. Better use -speed 1 to slow game
+
+*xboing-2.4-r2 (14 Mar 2006)
+
+  14 Mar 2006; <Tupone@gentoo.org> +files/01_all_insaneSpeed.patch,
+  +xboing-2.4-r2.ebuild:
+  Fixing Bug #115351 (insane speed on linux 2.6). Thanks to bakker Bart
+
+  28 Jan 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  xboing-2.4-r1.ebuild:
+  Add modular X dependencies.
+
+  26 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org> xboing-2.4-r1.ebuild:
+  Making games last on inherit line.
+
+*xboing-2.4-r1 (20 Jun 2003)
+
+  20 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Removed script and added a debian patch to fix all known issues.
+
+*xboing-2.4 (03 Mar 2003)
+
+  19 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Added a playxboing script because of e-mail from
+  Ryan Beasley <ryanb@goddamnbastard.org>.  thanks ;)
+
+  12 Jun 2003; Seemant Kulleen <seemant@gentoo.org> xboing-2.4.ebuild:
+  xpm is provided by xfree
+
+  03 Mar 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me for #13515.

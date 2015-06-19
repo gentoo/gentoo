@@ -1,0 +1,8 @@
+DEFINED_PHASES=install
+DESCRIPTION=replacement for IBM's C-ISAM
+HOMEPAGE=http://sourceforge.net/projects/vbisam
+KEYWORDS=ppc x86
+LICENSE=GPL-2 LGPL-2
+SLOT=0
+SRC_URI=mirror://sourceforge/tiny-cobol/isam/vbisam-2.0.tar.bz2
+_md5_=c7d012521cdf9618cd7a87533bab2f8a

@@ -1,0 +1,28 @@
+# ChangeLog for app-vim/voom
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/voom/ChangeLog,v 1.5 2014/10/18 03:45:21 radhermit Exp $
+
+*voom-5.1 (18 Oct 2014)
+
+  18 Oct 2014; Tim Harder <radhermit@gentoo.org> +voom-5.1.ebuild:
+  Version bump.
+
+*voom-5.0 (28 Nov 2013)
+
+  28 Nov 2013; Tim Harder <radhermit@gentoo.org> +voom-5.0.ebuild:
+  Version bump.
+
+  07 Feb 2013; Ulrich Müller <ulm@gentoo.org> voom-4.7.ebuild:
+  Move Creative Commons licenses to shorter names.
+
+*voom-4.7 (29 Jan 2013)
+
+  29 Jan 2013; Tim Harder <radhermit@gentoo.org> +voom-4.7.ebuild:
+  Version bump.
+
+*voom-4.6 (13 Jan 2013)
+
+  13 Jan 2013; Tim Harder <radhermit@gentoo.org> +voom-4.6.ebuild,
+  +metadata.xml:
+  Initial import.
+

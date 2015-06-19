@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=Application that utilizes the objdump command to disassemble and comment foreign executable binaries
+EAPI=4
+HOMEPAGE=http://www.academicunderground.org/examiner/
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl
+SLOT=0
+SRC_URI=http://www.academicunderground.org/examiner/examiner-0.5.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=4f21069e5f05b9e30729b656d60e588b

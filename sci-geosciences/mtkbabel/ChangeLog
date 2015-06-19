@@ -1,0 +1,40 @@
+# ChangeLog for sci-geosciences/mtkbabel
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/mtkbabel/ChangeLog,v 1.8 2014/08/10 20:28:09 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> mtkbabel-0.8.2.ebuild,
+  mtkbabel-0.8.3.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*mtkbabel-0.8.3.1 (02 Feb 2013)
+
+  02 Feb 2013; Patrick Lauer <patrick@gentoo.org> +mtkbabel-0.8.3.1.ebuild:
+  Bump
+
+  20 Jul 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #118937
+
+  01 Jun 2011; Tomáš Chvátal <scarabeus@gentoo.org> mtkbabel-0.8.2.ebuild:
+  Update to eapi4.
+
+*mtkbabel-0.8.2 (27 Apr 2010)
+
+  27 Apr 2010; Tomáš Chvátal <scarabeus@gentoo.org> -mtkbabel-0.8.ebuild,
+  +mtkbabel-0.8.2.ebuild:
+  Version bump. Drop older.
+
+  15 Jan 2010; Thilo Bangert <bangert@gentoo.org> mtkbabel-0.8.ebuild:
+  die on dobin
+
+  18 Sep 2009; Sven Wegener <swegener@gentoo.org> mtkbabel-0.8.ebuild:
+  Add ~amd64 keyword.
+
+  23 Aug 2009; Thilo Bangert <bangert@gentoo.org> +mtkbabel-0.8.ebuild,
+  +metadata.xml:
+  portage import
+
+*mtkbabel-0.8 (17 Aug 2009)
+
+  17 Aug 2009; Thilo Bangert <bangert@gentoo.org> +mtkbabel-0.8.ebuild,
+  +metadata.xml:
+  initial ebuild

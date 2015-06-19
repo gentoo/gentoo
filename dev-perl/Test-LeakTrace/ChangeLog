@@ -1,0 +1,55 @@
+# ChangeLog for dev-perl/Test-LeakTrace
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-LeakTrace/ChangeLog,v 1.12 2015/06/04 13:18:03 zlogene Exp $
+
+  04 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> Test-LeakTrace-0.150.0.ebuild:
+  Mark ia64 and sparc straight stable, because of security bug #551118
+
+  04 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> Test-LeakTrace-0.150.0.ebuild:
+  Add more keywords wrt bug #551116
+
+  04 Jun 2015; Mikle Kolyada <zlogene@gentoo.org>
+  -Test-LeakTrace-0.140.0.ebuild, Test-LeakTrace-0.150.0.ebuild:
+  Stable for all
+
+  04 Jun 2015; Jeroen Roovers <jer@gentoo.org> Test-LeakTrace-0.150.0.ebuild:
+  Stable for HPPA PPC64 (bug #551118).
+
+  03 Jun 2015; Matt Turner <mattst88@gentoo.org> Test-LeakTrace-0.150.0.ebuild:
+  added ~mips, bug 551116.
+
+  03 Jun 2015; Matt Turner <mattst88@gentoo.org> Test-LeakTrace-0.150.0.ebuild:
+  added ~alpha, bug 551116.
+
+*Test-LeakTrace-0.150.0 (04 Mar 2015)
+
+  04 Mar 2015; Patrice Clement <monsieurp@gentoo.org>
+  +Test-LeakTrace-0.150.0.ebuild:
+  Version bump.
+
+  24 Nov 2014; Jeroen Roovers <jer@gentoo.org> Test-LeakTrace-0.140.0.ebuild:
+  Marked ~hppa (bug #527898).
+
+  09 Sep 2013; Sergey Popov <pinkbyte@gentoo.org>
+  Test-LeakTrace-0.140.0.ebuild:
+  Add ~arm keyword, wrt bug #449762
+
+  16 Apr 2013; Vicente Olivert Riera <vincent@gentoo.org>
+  Test-LeakTrace-0.140.0.ebuild:
+  Adding ~ppc keyword for dev-perl/PDL and his dependences, wrt bug #449762
+
+  10 Feb 2013; Torsten Veller <tove@gentoo.org> +Test-LeakTrace-0.140.0.ebuild,
+  +metadata.xml:
+  Import from ::perl-experimental for dev-perl/Unicode-UTF8
+
+*Test-LeakTrace-0.140.0 (29 Feb 2012)
+
+  29 Feb 2012; Kent Fredric <kentfredric@gmail.com>
+  +Test-LeakTrace-0.140.0.ebuild:
+  Version Bump
+
+*Test-LeakTrace-0.130.0 (22 Mar 2011)
+
+  22 Mar 2011; Kent Fredric <kentfredric@gmail.com>
+  +Test-LeakTrace-0.130.0.ebuild, +metadata.xml:
+  Added for Hash::FieldHash

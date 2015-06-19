@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=x11-libs/libX11 x11-libs/libXt x11-libs/libXext x11-libs/libXpm app-text/rman x11-misc/imake x11-misc/gccmakedep x11-proto/xextproto x11-proto/xproto
+DESCRIPTION=snow, reindeer, and santa on the root window
+EAPI=2
+HOMEPAGE=http://dropmix.xs4all.nl/rick/Xsnow/
+KEYWORDS=amd64 ppc ppc64 sparc x86 ~x86-fbsd
+LICENSE=freedist
+RDEPEND=x11-libs/libX11 x11-libs/libXt x11-libs/libXext x11-libs/libXpm
+SLOT=0
+SRC_URI=http://dropmix.xs4all.nl/rick/Xsnow/xsnow-1.42.tar.gz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=9b036124e40a77ea1c94a5b2d10b1124

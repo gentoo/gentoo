@@ -1,0 +1,62 @@
+# ChangeLog for dev-python/xhtml2pdf
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/xhtml2pdf/ChangeLog,v 1.14 2015/04/08 08:05:02 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> xhtml2pdf-0.0.5-r1.ebuild:
+  Drop old Python implementations
+
+*xhtml2pdf-0.0.6-r1 (03 Jan 2015)
+
+  03 Jan 2015; Ian Delaney <idella4@gentoo.org> +xhtml2pdf-0.0.6-r1.ebuild,
+  -xhtml2pdf-0.0.6.ebuild:
+  revbump; add new missed dep (PyPDF2), set borders to versions of reportlab,
+  fixes Bug #530134, rm broken version
+
+*xhtml2pdf-0.0.6 (03 May 2014)
+
+  03 May 2014; Patrick Lauer <patrick@gentoo.org> +xhtml2pdf-0.0.6.ebuild:
+  Bump
+
+  18 Jun 2013; Tim Harder <radhermit@gentoo.org> -xhtml2pdf-0.0.5.ebuild:
+  Remove old.
+
+*xhtml2pdf-0.0.5-r1 (18 Jun 2013)
+
+  18 Jun 2013; Tim Harder <radhermit@gentoo.org> +xhtml2pdf-0.0.5-r1.ebuild:
+  Revbump, migrate to distutils-r1.
+
+  09 Jun 2013; Mike Gilbert <floppym@gentoo.org> -xhtml2pdf-0.0.3.ebuild,
+  -xhtml2pdf-0.0.4.ebuild, xhtml2pdf-0.0.5.ebuild:
+  Depend on virtual/python-imaging. Remove old.
+
+*xhtml2pdf-0.0.5 (02 Apr 2013)
+
+  02 Apr 2013; Patrick Lauer <patrick@gentoo.org> +xhtml2pdf-0.0.5.ebuild:
+  Bump
+
+  16 Dec 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due retirement, #95685
+
+*xhtml2pdf-0.0.4 (28 Jun 2012)
+
+  28 Jun 2012; Patrick Lauer <patrick@gentoo.org> +xhtml2pdf-0.0.4.ebuild:
+  Bump
+
+  21 May 2012; Krzysztof Pawlik <nelchael@gentoo.org> xhtml2pdf-0.0.3.ebuild:
+  Remove calls to python-distutils-ng_redoscript, it is automated in eclass.
+
+  03 Apr 2012; Krzysztof Pawlik <nelchael@gentoo.org> xhtml2pdf-0.0.3.ebuild:
+  Migrate to python-distutils-ng.eclass.
+
+  30 Jan 2012; Krzysztof Pawlik <nelchael@gentoo.org> xhtml2pdf-0.0.3.ebuild:
+  Fix SRC_URI, add blocker for dev-python/pisa.
+
+  28 Jan 2012; Krzysztof Pawlik <nelchael@gentoo.org> xhtml2pdf-0.0.3.ebuild:
+  Fix Python module name.
+
+*xhtml2pdf-0.0.3 (27 Jan 2012)
+
+  27 Jan 2012; Krzysztof Pawlik <nelchael@gentoo.org> +xhtml2pdf-0.0.3.ebuild,
+  +metadata.xml:
+  New package: dev-python/xhtml2pidf - an HTML to PDF converter, successor to
+  dev-python/pisa.

@@ -1,0 +1,355 @@
+# ChangeLog for app-crypt/gpa
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/gpa/ChangeLog,v 1.97 2014/12/22 15:07:02 alonbl Exp $
+
+*gpa-0.9.7 (22 Dec 2014)
+
+  22 Dec 2014; Alon Bar-Lev <alonbl@gentoo.org> +gpa-0.9.7.ebuild:
+  Version bump
+
+*gpa-0.9.6 (27 Nov 2014)
+
+  27 Nov 2014; Alon Bar-Lev <alonbl@gentoo.org> +gpa-0.9.6.ebuild:
+  Version bump
+
+*gpa-0.9.5 (26 Sep 2014)
+
+  26 Sep 2014; Alon Bar-Lev <alonbl@gentoo.org> +gpa-0.9.5.ebuild,
+  -files/gpa-desktop-file-validate.patch, -gpa-0.9.1_pre20100416.ebuild,
+  -gpa-0.9.3.ebuild:
+  Version bump, bug#523832, cleanup
+
+  29 Jun 2013; Agostino Sarubbo <ago@gentoo.org> gpa-0.9.4.ebuild:
+  Stable for sparc, wrt bug #474136
+
+  26 Jun 2013; Agostino Sarubbo <ago@gentoo.org> gpa-0.9.4.ebuild:
+  Stable for alpha, wrt bug #474136
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> gpa-0.9.4.ebuild:
+  Stable for amd64, wrt bug #474136
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> gpa-0.9.4.ebuild:
+  Stable for x86, wrt bug #474136
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> gpa-0.9.4.ebuild:
+  Stable for ppc64, wrt bug #474136
+
+  24 Jun 2013; Agostino Sarubbo <ago@gentoo.org> gpa-0.9.4.ebuild:
+  Stable for ppc, wrt bug #474136
+
+*gpa-0.9.4 (02 May 2013)
+
+  02 May 2013; Tim Harder <radhermit@gentoo.org> +gpa-0.9.4.ebuild:
+  Version bump.
+
+  12 Jan 2013; Alon Bar-Lev <alonbl@gentoo.org> gpa-0.9.3.ebuild:
+  Add linguas support, fix desktop file per bug#443110, fix libexec location per
+  bug#417437
+
+  01 Dec 2012; Raúl Porcel <armin76@gentoo.org> gpa-0.9.3.ebuild:
+  alpha/sparc stable wrt #441890
+
+  20 Nov 2012; Agostino Sarubbo <ago@gentoo.org> gpa-0.9.3.ebuild:
+  Stable for x86, wrt bug #441890
+
+  14 Nov 2012; Agostino Sarubbo <ago@gentoo.org> gpa-0.9.3.ebuild:
+  Stable for amd64, wrt bug #441890
+
+  06 Nov 2012; Anthony G. Basile <blueness@gentoo.org> gpa-0.9.3.ebuild:
+  stable ppc ppc64, bug #441890
+
+  18 Sep 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+  27 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> gpa-0.9.3.ebuild:
+  Remove stray line.
+
+*gpa-0.9.3 (27 Aug 2012)
+
+  27 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> +gpa-0.9.3.ebuild,
+  -files/gpa-desktop-file-validate-new.patch, -gpa-0.9.1_pre20100416-r1.ebuild:
+  Version bump (thanks to Arfrever in bug #432636 for reporting). Simplify
+  thanks to EAPI 4 and fix bug #417437.
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> gpa-0.9.1_pre20100416.ebuild,
+  gpa-0.9.1_pre20100416-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  27 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  gpa-0.9.1_pre20100416.ebuild, gpa-0.9.1_pre20100416-r1.ebuild:
+  Fix slot-dep on gtk+
+
+*gpa-0.9.1_pre20100416-r1 (10 Dec 2010)
+
+  10 Dec 2010; Dane Smith <c1pher@gentoo.org>
+  +gpa-0.9.1_pre20100416-r1.ebuild,
+  +files/gpa-desktop-file-validate-new.patch:
+  Revision bump. New gpa-desktop-file-validate patch wrt bug 340747. Small
+  QA
+  fix.
+
+  29 Sep 2010; Samuli Suominen <ssuominen@gentoo.org>
+  gpa-0.9.1_pre20100416.ebuild, +files/gpa-desktop-file-validate.patch:
+  Replace po/Makefile.in.in with a system copy wrt #323743 by Lars Wendler.
+  Validate .desktop entry with desktop-file-utils 0.17.
+
+  13 Sep 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -gpa-0.9.0.ebuild:
+  Delete.
+
+  30 Aug 2010; Raúl Porcel <armin76@gentoo.org>
+  gpa-0.9.1_pre20100416.ebuild:
+  alpha/sparc stable wrt #320037
+
+  21 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  gpa-0.9.1_pre20100416.ebuild:
+  ppc64 stable wrt #320037
+
+  27 Jun 2010; Christian Faulhammer <fauli@gentoo.org>
+  gpa-0.9.1_pre20100416.ebuild:
+  stable x86, bug 320037
+
+  26 May 2010; Markos Chandras <hwoarang@gentoo.org>
+  gpa-0.9.1_pre20100416.ebuild:
+  Stable on amd64 wrt bug #320037
+
+  24 May 2010; <nixnut@gentoo.org> gpa-0.9.1_pre20100416.ebuild:
+  ppc stable #320037
+
+*gpa-0.9.1_pre20100416 (16 Apr 2010)
+
+  16 Apr 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +gpa-0.9.1_pre20100416.ebuild:
+  Add snapshot supporting libassuan-2.
+
+  30 Jan 2010; Raúl Porcel <armin76@gentoo.org> gpa-0.9.0.ebuild:
+  sparc stable wrt #279367
+
+  14 Jan 2010; Christian Faulhammer <fauli@gentoo.org> gpa-0.9.0.ebuild:
+  stable x86, bug 279367
+
+  24 Dec 2009; Pacho Ramos <pacho@gentoo.org> gpa-0.9.0.ebuild:
+  amd64 stable, bug 279367
+
+  31 Aug 2009; Brent Baude <ranger@gentoo.org> gpa-0.9.0.ebuild:
+  stable ppc64, bug 279367
+
+  29 Aug 2009; nixnut <nixnut@gentoo.org> gpa-0.9.0.ebuild:
+  ppc stable #279367
+
+  28 Aug 2009; Tobias Klausmann <klausman@gentoo.org> gpa-0.9.0.ebuild:
+  Stable on alpha, bug #279367
+
+*gpa-0.9.0 (27 Jun 2009)
+
+  27 Jun 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -gpa-0.7.6.ebuild, -files/gpa-0.7.6-qa.patch, +gpa-0.9.0.ebuild:
+  Version bump.
+
+  26 Apr 2009; Brent Baude <ranger@gentoo.org> gpa-0.8.0.ebuild:
+  stable ppc, bug 266047
+
+  23 Apr 2009; Raúl Porcel <armin76@gentoo.org> gpa-0.8.0.ebuild:
+  sparc stable wrt #266047
+
+  19 Apr 2009; Markus Meier <maekke@gentoo.org> gpa-0.8.0:
+  amd64/x86 stable, bug #266047
+
+  18 Apr 2009; Tobias Klausmann <klausman@gentoo.org> gpa-0.8.0.ebuild:
+  Stable on alpha, bug #266047
+
+  14 Apr 2009; Brent Baude <ranger@gentoo.org> gpa-0.8.0.ebuild:
+  Marking gpa-0.8.0 ppc64 for bug 266047
+
+*gpa-0.8.0 (04 Nov 2008)
+
+  04 Nov 2008; Daniel Black <dragonheart@gentoo.org> +gpa-0.8.0.ebuild:
+  version bump as per bug #237858 thanks to Arfrever and Christian
+
+  01 Sep 2008; Daniel Black <dragonheart@gentoo.org> gpa-0.7.6.ebuild:
+  correct path to gnupg helper programs. thanks to Mario/Kristoffer in bug
+  #212405
+
+  27 Apr 2008; Samuli Suominen <drac@gentoo.org> gpa-0.7.6.ebuild:
+  Split pkgconfig and gettext into DEPEND.
+
+  02 Jan 2008; Alon Bar-Lev <alonbl@gentoo.org> -files/gpa-0.7.3-qa.patch,
+  -gpa-0.7.3.ebuild, -gpa-0.7.4.ebuild:
+  Cleanup
+
+  02 Jan 2008; Christoph Mende <angelos@gentoo.org> gpa-0.7.6.ebuild:
+  Stable on amd64 wrt bug #198653
+
+  31 Dec 2007; Raúl Porcel <armin76@gentoo.org> gpa-0.7.6.ebuild:
+  alpha/sparc stable wrt #198653
+
+  29 Dec 2007; Markus Meier <maekke@gentoo.org> gpa-0.7.6.ebuild:
+  x86 stable, bug #198653
+
+  29 Dec 2007; nixnut <nixnut@gentoo.org> gpa-0.7.6.ebuild:
+  Stable on ppc wrt bug 198653
+
+*gpa-0.7.6 (10 Nov 2007)
+
+  10 Nov 2007; Alon Bar-Lev <alonbl@gentoo.org> +files/gpa-0.7.6-qa.patch,
+  +gpa-0.7.6.ebuild:
+  Version bump
+
+  07 Jun 2007; Alon Bar-Lev <alonbl@gentoo.org> -gpa-0.7.0-r2.ebuild:
+  Cleanup
+
+  07 Jun 2007; Raúl Porcel <armin76@gentoo.org> gpa-0.7.3.ebuild:
+  alpha stable wrt #150386
+
+  02 Jun 2007; Joshua <joslwah@gentoo.org> gpa-0.7.4.ebuild:
+  Adding ~ppc64 to 0.7.4 since it seems to work.
+
+  04 Feb 2007; <welp@gentoo.org> gpa-0.7.3.ebuild:
+  Stable on amd64 wrt bug #150386
+
+  23 Jan 2007; nixnut <nixnut@gentoo.org> gpa-0.7.3.ebuild:
+  Stable on ppc wrt bug 150386
+
+  23 Jan 2007; Christian Faulhammer <opfer@gentoo.org> gpa-0.7.3.ebuild:
+  stable x86, bug #150386
+
+  22 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org> gpa-0.7.3.ebuild:
+  Stable on sparc wrt #150386
+
+*gpa-0.7.4 (21 Jan 2007)
+
+  21 Jan 2007; Alon Bar-Lev <alonbl@gentoo.org> +gpa-0.7.4.ebuild:
+  Version bump
+
+  21 Jan 2007; Alon Bar-Lev <alonbl@gentoo.org> +files/gpa-0.7.3-qa.patch,
+  gpa-0.7.3.ebuild:
+  Added qa patch
+
+  13 Oct 2006; Alon Bar-Lev <alonbl@gentoo.org> gpa-0.7.0-r2.ebuild,
+  gpa-0.7.3.ebuild:
+  Added required pkgconfig dependency, bug#151136, thanks to Evil Compile Person.
+
+  13 Aug 2006; Sven Wegener <swegener@gentoo.org> gpa-0.7.3.ebuild:
+  No longer install pixmap files and additional .desktop file, closes bug
+  #131860.
+
+*gpa-0.7.3 (25 May 2006)
+
+  25 May 2006; Marcelo Goes <vanquirius@gentoo.org> +gpa-0.7.3.ebuild:
+  0.7.3 version bump for bug 131860. Thanks to Sascha Geschwandtner
+  <s.geschwandtner at gmx dot de>.
+
+  08 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org> gpa-0.7.0-r2.ebuild:
+  stable on alpha
+
+  07 Aug 2005; Daniel Black <dragonheart@gentoo.org> gpa-0.7.0-r2.ebuild:
+  change to mirror://gnupg + QA (backtick to $()
+
+  12 Jun 2005; Sven Wegener <swegener@gentoo.org> gpa-0.7.0-r2.ebuild:
+  Removed * postfix from <, <=, >= and > dependencies.
+
+  05 May 2005; Sven Wegener <swegener@gentoo.org> gpa-0.7.0-r2.ebuild:
+  Fixed [<>]=cat/pkg-ver* dependencies.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> gpa-0.7.0-r2.ebuild:
+  stable on amd64
+
+  24 Feb 2005; Daniel Black <dragonheart@gentoo.org> gpa-0.7.0-r2.ebuild:
+  Added desktop entry as per bug #81736. Thanks Sebastian Spaeth
+  <Sebastian@SSpaeth.de>
+
+  02 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  16 Nov 2004; Daniel Black <dragonheart@gentoo.org> -gpa-0.6.1.ebuild,
+  gpa-0.7.0-r2.ebuild:
+  cleanup of old ebuild that depend on old gpgme versions in the deletion queue
+
+  02 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> gpa-0.7.0-r2.ebuild:
+  Keyword ~alpha, requested in bug 64485.
+
+  29 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org> gpa-0.7.0-r2.ebuild:
+  Stable on sparc wrt #64485
+
+  10 Sep 2004; Daniel Black <dragonheart@gentoo.org> metadata.xml,
+  gpa-0.6.1.ebuild, -gpa-0.7.0-r1.ebuild, -gpa-0.7.0.ebuild:
+  cypto herd taking maintaince. Removed old versions and modified gpgme
+  dependancy in preparation for new gpgme stabilisation
+
+*gpa-0.7.0-r2 (08 Aug 2004)
+
+  08 Aug 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
+  +gpa-0.7.0-r2.ebuild:
+  Depandancy changes as per bug #57193.
+
+  11 Jul 2004; Danny van Dyk <kugelfang@gentoo.org> gpa-0.7.0-r1.ebuild:
+  Marked ~amd64.
+
+*gpa-0.7.0-r1 (16 Jun 2004)
+
+  16 Jun 2004; Martin Schlemmer <azarah@gentoo.org> +gpa-0.7.0-r1.ebuild:
+  By default gnupg puts gpgkeys_hkp in /usr/libexec/gnupg, so
+  check if it is in uncommon /usr/lib/gnupg, and change libexecdir
+  if so.  If we do not do this, hkp server types is not usable,
+  as gpa cannot find gpgkeys_hkp ...
+
+  15 Jun 2004; Scott W Taylor <swtaylor@gentoo.org> gpa-0.7.0.ebuild:
+  dependancy fix for gpa #54013
+
+*gpa-0.7.0 (14 Jun 2004)
+
+  14 Jun 2004; Scott W Taylor <swtaylor@gentoo.org> +gpa-0.7.0.ebuild:
+  version bump
+
+  25 Apr 2004; Aron Griffis <agriffis@gentoo.org> gpa-0.6.1.ebuild:
+  Add die following econf for bug 48950
+
+  21 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> gpa-0.4.3.ebuild:
+  old ebuild cleanup
+
+  07 Feb 2004; Lars Weiler <pylon@gentoo.org> gpa-0.6.1.ebuild:
+  stable on ppc
+
+  24 Jan 2004; Jason Wever <weeve@gentoo.org> gpa-0.6.1.ebuild:
+  Marked stable on sparc.
+
+  06 Jan 2004; Jason Wever <weeve@gentoo.org> gpa-0.6.1.ebuild:
+  Added ~sparc keyword.
+
+*gpa-0.6.1 (07 Feb 2003)
+
+  28 Mar 2003; Pieter Van den Abeele <pvdabeel@gentoo.org> gpc-0.6.1.ebuild: 
+  Add ~ppc keyword
+
+  07 Feb 2003; J Robert Ray <jrray@gentoo.org> gpa-0.6.1.ebuild : Version bump,
+  thanks to Erinn Looney-Triggs <erinnlooneytriggs@ekno.com> and Jacob Perkins
+  <jap1@users.sourceforge.net>.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*gpa-0.4.3 (19 May 2002)
+
+  28 Jul 2002; Calum Selkiirk <cselkirk@gentoo.org> gpa-0.4.3.ebuild :
+
+  Added ppc to KEYWORDS.
+  Added RDEPEND.
+
+  19 May 2002; Ryan Phillips <rphillips@gentoo.org> ChangeLog :
+
+  Updated to new version of gpa
+
+*gpa-0.4.1-r2 (17 Apr 2002)
+
+  17 Apr 2002; Ryan Phillips <rphillips@gentoo.org> ChangeLog :
+
+  Added dependency to app-crypt/gnupg
+  
+*gpa-0.4.1-r1 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

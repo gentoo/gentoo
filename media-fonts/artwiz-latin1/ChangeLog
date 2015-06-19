@@ -1,0 +1,59 @@
+# ChangeLog for media-fonts/artwiz-latin1
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/artwiz-latin1/ChangeLog,v 1.15 2009/02/27 22:53:16 jer Exp $
+
+  27 Feb 2009; Jeroen Roovers <jer@gentoo.org> artwiz-latin1-1.1.ebuild:
+  Stable for HPPA (bug #253668).
+
+  26 Feb 2009; Brent Baude <ranger@gentoo.org> artwiz-latin1-1.1.ebuild:
+  stable ppc64, bug 253668
+
+  22 Feb 2009; Raúl Porcel <armin76@gentoo.org> artwiz-latin1-1.1.ebuild:
+  arm/ia64/s390/sh stable wrt #253668
+
+  15 Feb 2009; Tiago Cunha <tcunha@gentoo.org> artwiz-latin1-1.1.ebuild:
+  stable sparc, bug 253668
+
+  15 Feb 2009; Brent Baude <ranger@gentoo.org> artwiz-latin1-1.1.ebuild:
+  stable ppc, bug 253668
+
+  15 Feb 2009; Markus Meier <maekke@gentoo.org> artwiz-latin1-1.1.ebuild:
+  amd64/x86 stable, bug #253668
+
+  12 Feb 2009; Tobias Klausmann <klausman@gentoo.org>
+  artwiz-latin1-1.1.ebuild:
+  Stable on alpha, bug #253668
+
+  11 Feb 2009; Raúl Porcel <armin76@gentoo.org> artwiz-latin1-1.1.ebuild:
+  Add ~arm/~ia64/~s390/~sh wrt #253667
+
+  06 Feb 2009; Jeroen Roovers <jer@gentoo.org> artwiz-latin1-1.1.ebuild:
+  Marked ~hppa (bug #253667).
+
+  19 Jan 2009; Alexis Ballier <aballier@gentoo.org>
+  artwiz-latin1-1.1.ebuild:
+  keyword ~x86-fbsd, bug #253667
+
+  10 Jan 2009; Tobias Klausmann <klausman@gentoo.org>
+  artwiz-latin1-1.1.ebuild:
+  Keyworded on alpha, bug #253667
+
+  09 Jan 2009; Joseph Jezak <josejx@gentoo.org> artwiz-latin1-1.1.ebuild:
+  Marked ~ppc for bug #253667.
+
+  09 Jan 2009; Tiago Cunha <tcunha@gentoo.org> artwiz-latin1-1.1.ebuild:
+  keyworded ~arch for sparc, bug 253667
+
+  09 Jan 2009; Brent Baude <ranger@gentoo.org> artwiz-latin1-1.1.ebuild:
+  Marking artwiz-latin1-1.1 ~ppc64 for bug 253667
+
+  04 Jan 2009; Peter Volkov <pva@gentoo.org> +metadata.xml,
+  +artwiz-latin1-1.1.ebuild:
+  Initial import, bug #142402, thank Sérgio Luís for this work.
+
+*artwiz-latin1-1.1 (04 Jan 2009)
+
+  04 Jan 2009; Peter Volkov <pva@gentoo.org> +metadata.xml,
+  +artwiz-latin1-1.1.ebuild:
+  Initial import, bug #142402, thank Sérgio Luís for this work.
+

@@ -1,0 +1,20 @@
+--- Makefile.in.old	2014-07-24 21:25:09.072431615 +0200
++++ Makefile.in	2014-07-24 21:26:34.898037740 +0200
+@@ -22,7 +22,7 @@
+ # Preprocessor and linking flags
+ 
+ CPPFLAGS:=$(CPPFLAGS) $(GTK_CFLAGS) -DVERSION=\"$(VERSION)\" -DDATADIR=\"$(pkgdatadir)\" -DDOCDIR=\"$(docdir)\"
+-LDFLAGS:=$(LDFLAGS) $(GTK_LIBS)
++LDLIBS:=$(GTK_LIBS) -lX11
+ 
+ # Object files
+ 
+@@ -51,7 +51,7 @@
+ 	$(INSTALL_DATA) doc/* $(docdir)
+ 
+ gtklife: $(OBJS)
+-	$(CC) -o gtklife $(OBJS) $(LDFLAGS)
++	$(CC) -o gtklife $(OBJS) $(LDFLAGS) $(LDLIBS)
+ 
+ create_lookup: $(CL_OBJS)
+ 	$(CC) -o create_lookup $(CL_OBJS)

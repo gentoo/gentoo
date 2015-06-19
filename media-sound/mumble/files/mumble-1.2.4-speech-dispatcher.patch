@@ -1,0 +1,49 @@
+From 22d18212acec9e97231a13a6dc02a0c451df9b89 Mon Sep 17 00:00:00 2001
+From: Mikkel Krautz <mikkel@krautz.dk>
+Date: Thu, 6 Jun 2013 22:17:31 +0200
+Subject: [PATCH] mumble.pro: add speech-dispatcher 0.8 compatibiltiy.
+
+Based on initial patch by Timo Gurr <timo.gurr@gmail.com>
+---
+ src/mumble/TextToSpeech_unix.cpp | 6 +++++-
+ src/mumble/mumble.pro            | 7 ++++++-
+ 2 files changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/src/mumble/TextToSpeech_unix.cpp b/src/mumble/TextToSpeech_unix.cpp
+index d0fbb82..6443c07 100644
+--- a/src/mumble/TextToSpeech_unix.cpp
++++ b/src/mumble/TextToSpeech_unix.cpp
+@@ -33,7 +33,11 @@
+ #include "TextToSpeech.h"
+ 
+ #ifdef USE_SPEECHD
+-#include <libspeechd.h>
++# ifdef USE_SPEECHD_PKGCONFIG
++#  include <speech-dispatcher/libspeechd.h>
++# else
++#  include <libspeechd.h>
++# endif
+ #endif
+ 
+ #include "Global.h"
+diff --git a/src/mumble/mumble.pro b/src/mumble/mumble.pro
+index 04f5a36..ff3c02f 100644
+--- a/src/mumble/mumble.pro
++++ b/src/mumble/mumble.pro
+@@ -279,7 +279,12 @@ dbus {
+ 
+ speechd {
+ 	DEFINES *= USE_SPEECHD
+-	LIBS *= -lspeechd
++	system(pkg-config --atleast-version=0.8 speech-dispatcher) {
++		DEFINES *= USE_SPEECHD_PKGCONFIG
++		PKGCONFIG *= speech-dispatcher
++	} else {
++		LIBS *= -lspeechd
++	}
+ }
+ 
+ directsound {
+-- 
+1.8.1.6
+

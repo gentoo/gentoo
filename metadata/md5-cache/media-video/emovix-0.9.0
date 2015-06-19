@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DEPEND=dev-lang/perl virtual/awk
+DESCRIPTION=Micro Linux distro to boot from a CD and play every video file localized in the CD root
+HOMEPAGE=http://movix.sourceforge.net
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=GPL-2
+RDEPEND=virtual/cdrtools
+SLOT=0
+SRC_URI=mirror://sourceforge/movix/emovix-0.9.0.tar.gz
+_md5_=4cb469d64a49375fad63ae450cbcb9d5

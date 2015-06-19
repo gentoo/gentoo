@@ -1,0 +1,142 @@
+# ChangeLog for media-gfx/dispcalgui
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/dispcalgui/ChangeLog,v 1.26 2015/05/30 14:11:29 mrueg Exp $
+
+  30 May 2015; Manuel Rüger <mrueg@gentoo.org> -dispcalgui-0.9.9.1.ebuild,
+  -dispcalgui-1.1.2.9.ebuild:
+  Remove old.
+
+*dispcalgui-2.6.0.0 (31 Jan 2015)
+
+  31 Jan 2015; Markos Chandras <hwoarang@gentoo.org> +dispcalgui-2.6.0.0.ebuild:
+  Version bump. Bug #532974
+
+*dispcalgui-2.5.0.0 (14 Sep 2014)
+
+  14 Sep 2014; Markos Chandras <hwoarang@gentoo.org> +dispcalgui-2.5.0.0.ebuild:
+  Version bump. Bug #511094
+
+*dispcalgui-2.0.0.0 (08 May 2014)
+
+  08 May 2014; Markos Chandras <hwoarang@gentoo.org>
+  +dispcalgui-2.0.0.0.ebuild, +files/dispcalgui-2.0.0.0-wxversion-select.patch:
+  Version bump. Bug #493410. Thanks to Andreas Sturmlechner
+  <andreas.sturmlechner@gmail.com> and Marios Andreopoulos
+  <opensource@andmarios.com>
+
+  04 Mar 2014; Agostino Sarubbo <ago@gentoo.org> dispcalgui-1.2.7.0.ebuild:
+  Stable for x86, wrt bug #495696
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> dispcalgui-1.2.7.0.ebuild:
+  amd64 stable, bug #495696
+
+  15 Aug 2013; Patrick Lauer <patrick@gentoo.org> dispcalgui-1.2.7.0.ebuild:
+  Whitespace
+
+*dispcalgui-1.2.7.0 (10 May 2013)
+
+  10 May 2013; Markos Chandras <hwoarang@gentoo.org> +dispcalgui-1.2.7.0.ebuild,
+  +files/dispcalgui-1.2.7.0-wxversion-select.patch, -dispcalgui-1.1.0.0.ebuild,
+  -dispcalgui-1.1.2.1.ebuild, dispcalgui-0.9.9.1.ebuild,
+  dispcalgui-1.1.2.9.ebuild:
+  Version bump. Thanks to Marios Andreopoulos <opensource@andmarios.com>. Fixes
+  bug #449302
+
+*dispcalgui-1.1.2.9 (14 Dec 2012)
+
+  14 Dec 2012; Justin Lecher <jlec@gentoo.org> +dispcalgui-1.1.2.9.ebuild,
+  metadata.xml:
+  Version Bump
+
+*dispcalgui-1.1.2.1 (02 Nov 2012)
+
+  02 Nov 2012; Markos Chandras <hwoarang@gentoo.org> +dispcalgui-1.1.2.1.ebuild,
+  -dispcalgui-1.0.7.7.ebuild, dispcalgui-0.9.9.1.ebuild,
+  dispcalgui-1.1.0.0.ebuild:
+  Version bump. Fix old ebuilds to not install udev rules in order to avoid
+  collisions with media-gfx/argyllcms. Thanks to Marios Andreopoulos
+  <opensource@andmarios.com>. Bug #440932. Remove old
+
+*dispcalgui-1.1.0.0 (23 Sep 2012)
+
+  23 Sep 2012; Markos Chandras <hwoarang@gentoo.org> +dispcalgui-1.1.0.0.ebuild:
+  Version bump. Thanks to Marios Andreopoulos <opensource@andmarios.com>. Bug
+  #435352
+
+  02 Aug 2012; Markos Chandras <hwoarang@gentoo.org> dispcalgui-0.9.9.1.ebuild:
+  Stable on amd64 wrt bug #428230
+
+  30 Jul 2012; Jeff Horelick <jdhore@gentoo.org> dispcalgui-0.9.9.1.ebuild:
+  marked x86 per bug 428230
+
+  26 Jul 2012; Markos Chandras <hwoarang@gentoo.org> -dispcalgui-0.7.0.7.ebuild,
+  -dispcalgui-0.7.3.7.ebuild, -dispcalgui-0.7.8.9.ebuild,
+  -dispcalgui-0.8.1.9.ebuild, -dispcalgui-0.8.5.2.ebuild,
+  -dispcalgui-0.8.9.3.ebuild:
+  Remove old
+
+*dispcalgui-1.0.7.7 (26 Jul 2012)
+
+  26 Jul 2012; Markos Chandras <hwoarang@gentoo.org> +dispcalgui-1.0.7.7.ebuild:
+  Version bump. Thanks to Marios Andreopoulos <opensource@andmarios.com>
+
+*dispcalgui-0.9.9.1 (29 Apr 2012)
+
+  29 Apr 2012; Markos Chandras <hwoarang@gentoo.org> +dispcalgui-0.9.9.1.ebuild:
+  Version bump. Thanks to Marios Andreopoulos <opensource@andmarios.com>. Fixes
+  bug #413539
+
+  01 Mar 2012; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  add proxy-maintainers as herd
+
+  28 Feb 2012; Patrick Lauer <patrick@gentoo.org> dispcalgui-0.7.0.7.ebuild,
+  dispcalgui-0.7.3.7.ebuild, dispcalgui-0.7.8.9.ebuild,
+  dispcalgui-0.8.1.9.ebuild, dispcalgui-0.8.5.2.ebuild,
+  dispcalgui-0.8.9.3.ebuild:
+  Restricting pypy and jython
+
+*dispcalgui-0.8.9.3 (14 Feb 2012)
+
+  14 Feb 2012; Markos Chandras <hwoarang@gentoo.org> +dispcalgui-0.8.9.3.ebuild:
+  version bump
+
+  14 Feb 2012; Torsten Veller <tove@gentoo.org> dispcalgui-0.8.5.2.ebuild:
+  Fix ebuild header (#398773)
+
+*dispcalgui-0.8.5.2 (01 Feb 2012)
+
+  01 Feb 2012; Markos Chandras <hwoarang@gentoo.org>
+  +dispcalgui-0.8.5.2.ebuild:
+  Version bump. Thanks to Marios Andreopoulos <opensource@andmarios.com>. Bug
+  #401521
+
+*dispcalgui-0.8.1.9 (30 Dec 2011)
+
+  30 Dec 2011; Markos Chandras <hwoarang@gentoo.org> +dispcalgui-0.8.1.9.ebuild:
+  Version bump. Bug #394967. Thanks to Marios Andreopoulos
+  <opensource@andmarios.com> for the ebuild
+
+  17 Dec 2011; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Fix tag order to match description, remove assignment instructions from
+  description tags.
+
+*dispcalgui-0.7.8.9 (18 Nov 2011)
+
+  18 Nov 2011; Markos Chandras <hwoarang@gentoo.org> +dispcalgui-0.7.8.9.ebuild:
+  Version bump thanks to Marios Andreopoulos <opensource@andmarios.com>. Bug
+  #388947
+
+*dispcalgui-0.7.3.7 (30 Sep 2011)
+
+  30 Sep 2011; Markos Chandras <hwoarang@gentoo.org>
+  +dispcalgui-0.7.3.7.ebuild:
+  Version bump. Bug #384035
+
+*dispcalgui-0.7.0.7 (06 Jun 2011)
+
+  06 Jun 2011; Markos Chandras <hwoarang@gentoo.org>
+  +dispcalgui-0.7.0.7.ebuild, +metadata.xml:
+  Initial commit. Thanks to Bjoern Olausson, Richard and Marios Andreopoulos
+  for
+  the ebuilds. Marios will be the actual maintainer of this package. Fixes bug
+  328603

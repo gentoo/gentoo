@@ -1,0 +1,241 @@
+# ChangeLog for app-text/docbook2X
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/docbook2X/ChangeLog,v 1.59 2015/06/09 12:17:07 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  02 May 2015; Michael Palimaka <kensington@gentoo.org>
+  -docbook2X-0.8.8-r2.ebuild, -docbook2X-0.8.8-r3.ebuild:
+  Remove old.
+
+  01 May 2015; Jeroen Roovers <jer@gentoo.org> docbook2X-0.8.8-r4.ebuild:
+  Stable for PPC64 (bug #520860).
+
+  02 Mar 2015; Agostino Sarubbo <ago@gentoo.org> docbook2X-0.8.8-r4.ebuild:
+  Stable for ppc, wrt bug #520860
+
+  15 Jan 2015; Raúl Porcel <armin76@gentoo.org> docbook2X-0.8.8-r4.ebuild:
+  ia64/s390/sh/sparc/x86 stable wrt #520860
+
+  12 Jan 2015; Andrew Savchenko <bircoph@gentoo.org> docbook2X-0.8.8-r4.ebuild:
+  autotools.eclass is fixed now, removing workaround
+
+  21 Nov 2014; Tobias Klausmann <klausman@gentoo.org>
+  docbook2X-0.8.8-r4.ebuild:
+  Stable on alpha, bug 520860
+
+  18 Nov 2014; Andrew Savchenko <bircoph@gentoo.org> docbook2X-0.8.8-r4.ebuild:
+  Workaround autotools bug with cache going off sync sometimes, until
+  autotool.eclass is fixed. See bugs 479372, 529580, 527506.
+
+  14 Sep 2014; Markus Meier <maekke@gentoo.org> docbook2X-0.8.8-r4.ebuild:
+  arm stable, bug #520860
+
+  30 Aug 2014; Manuel Rüger <mrueg@gentoo.org> docbook2X-0.8.8-r4.ebuild:
+  Stable on amd64.
+
+  26 Aug 2014; Jeroen Roovers <jer@gentoo.org> docbook2X-0.8.8-r4.ebuild:
+  Stable for HPPA (bug #520860).
+
+*docbook2X-0.8.8-r4 (22 Jan 2014)
+
+  22 Jan 2014; Mike Gilbert <floppym@gentoo.org> +docbook2X-0.8.8-r4.ebuild:
+  Add some symlinks for docbook2x-{man,texi} for Debian compatibility, bug
+  205703.
+
+*docbook2X-0.8.8-r3 (29 Jul 2013)
+
+  29 Jul 2013; Sergey Popov <pinkbyte@gentoo.org> +docbook2X-0.8.8-r3.ebuild,
+  +files/docbook2X-0.8.8-drop-htmldir.patch:
+  Revision bump: EAPI 5, port to autotools-utils eclass. Install html
+  documentation in proper location, wrt bug #296112. Thanks to Chris Mayo
+  <aklhfex AT gmail.com> for suggested patch
+
+  29 Jul 2013; Sergey Popov <pinkbyte@gentoo.org> docbook2X-0.8.8-r2.ebuild:
+  Automake 1.12 can be used for building instead of old 1.9
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/sgml-herd-has-no-maintainers-
+  again-td259655.html
+
+  27 Jan 2013; Mike Gilbert <floppym@gentoo.org> docbook2X-0.8.8-r2.ebuild:
+  Set WANT_AUTOMAKE=1.9 to workaround bug 417353 as suggested by dirtyepic.
+
+  31 Oct 2012; Mike Gilbert <floppym@gentoo.org> -docbook2X-0.6.1-r2.ebuild,
+  -docbook2X-0.8.7-r1.ebuild, -docbook2X-0.8.8-r1.ebuild,
+  -docbook2X-0.8.8.ebuild, docbook2X-0.8.8-r2.ebuild:
+  Drop elog messages, bug 440594 by poletti.marco. Remove old.
+
+  25 May 2012; Mike Frysinger <vapier@gentoo.org> docbook2X-0.8.8-r2.ebuild:
+  Update to EAPI=4, and make --program-transform-name work with newer versions
+  of autotools #318297 by Patrick Lauer.
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org> docbook2X-0.8.8-r2.ebuild:
+  keyword ~amd64-fbsd
+
+  04 Aug 2011; Fabian Groffen <grobian@gentoo.org> docbook2X-0.8.8-r2.ebuild:
+  Marked ~x86-linux, bug #376549
+
+  30 Sep 2010; Fabian Groffen <grobian@gentoo.org>
+  docbook2X-0.8.8-r2.ebuild:
+  Marked ~x86-solaris
+
+  18 Jul 2010; Raúl Porcel <armin76@gentoo.org> docbook2X-0.8.8-r2.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #321899
+
+  09 Jun 2010; Patrick Lauer <patrick@gentoo.org> docbook2X-0.8.8-r2.ebuild:
+  Fixing automake dep for #318297
+
+  02 Jan 2010; Brent Baude <ranger@gentoo.org> docbook2X-0.8.8-r2.ebuild:
+  Marking docbook2X-0.8.8-r2 ppc64 for bug 290161
+
+  02 Dec 2009; Raúl Porcel <armin76@gentoo.org> docbook2X-0.8.8-r2.ebuild:
+  Add ~s390/~sh
+
+  18 Nov 2009; Raúl Porcel <armin76@gentoo.org> docbook2X-0.8.8-r2.ebuild:
+  Add ~ia64 wrt #290161
+
+  17 Nov 2009; Robin H. Johnson <robbat2@gentoo.org>
+  docbook2X-0.8.7-r1.ebuild, docbook2X-0.8.8-r2.ebuild:
+  Make repoman happy and keyword for ~arm as it compiles there.
+
+  08 Nov 2009; Tobias Klausmann <klausman@gentoo.org>
+  docbook2X-0.8.8-r2.ebuild:
+  Keyworded on alpha, bug #290161
+
+  06 Nov 2009; Harald van Dĳk <truedfx@gentoo.org>
+  docbook2X-0.8.8-r2.ebuild:
+  Regenerate configure script to get rid of an already fixed autoconf bug
+  (#290284)
+
+  17 Sep 2008; Jeroen Roovers <jer@gentoo.org> docbook2X-0.8.8-r2.ebuild:
+  Stable for HPPA (bug #222041).
+
+  17 Jul 2008; Alexis Ballier <aballier@gentoo.org>
+  docbook2X-0.8.8-r2.ebuild:
+  keyword ~x86-fbsd
+
+  29 Jun 2008; Raúl Porcel <armin76@gentoo.org> docbook2X-0.8.8-r2.ebuild:
+  sparc stable wrt #222041
+
+  26 Jun 2008; nixnut <nixnut@gentoo.org> docbook2X-0.8.8-r2.ebuild:
+  Stable on ppc wrt bug 222041
+
+  25 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  docbook2X-0.8.8-r2.ebuild:
+  stable x86, bug 222041
+
+  25 Jun 2008; Santiago M. Mola <coldwind@gentoo.org>
+  docbook2X-0.8.8-r2.ebuild:
+  amd64 stable wrt bug #222041
+
+*docbook2X-0.8.8-r2 (22 May 2008)
+
+  22 May 2008; Peter Volkov <pva@gentoo.org>
+  +files/docbook2X-0.8.8-error_on_missing_refentry.patch,
+  +files/docbook2X-0.8.8-filename_whitespace_handling.patch,
+  +files/docbook2X-0.8.8-preprocessor_declaration_syntax.patch,
+  +docbook2X-0.8.8-r2.ebuild:
+  Some patches from debian (read patches for description). Updated deps: 1.
+  they required at build time too, 2. fixed bug #223071, thank Mike Weissman
+  for report and hint to fix.
+
+*docbook2X-0.8.8-r1 (09 Apr 2008)
+
+  09 Apr 2008; Peter Volkov <pva@gentoo.org> +docbook2X-0.8.8-r1.ebuild:
+  Fixed breakage due to binaries renaming, bug #205703, thank Thomas S.
+  Howard and Vaclav Slavik.
+
+  22 Aug 2007; Andrej Kacian <ticho@gentoo.org> docbook2X-0.8.7-r1.ebuild,
+  docbook2X-0.8.8.ebuild:
+  Added missing dependency on dev-perl/XML-SAX, bug #189862, fix pushed by
+  Philip Kovacs <kovacsp3@comcast.net>.
+
+*docbook2X-0.8.8 (21 Aug 2007)
+
+  21 Aug 2007; Leonardo Boshell <leonardop@gentoo.org>
+  +docbook2X-0.8.8.ebuild:
+  Version bump (bug #188501). Fixed LICENSE. Install a few standard files
+  with dodoc. Moved elog calls to pkg_postinst().
+
+  21 Aug 2007; Leonardo Boshell <leonardop@gentoo.org> metadata.xml:
+  Set 'sgml' herd as maintainer.
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+*docbook2X-0.8.7-r1 (11 Apr 2007)
+
+  11 Apr 2007; Robin H. Johnson <robbat2@gentoo.org>
+  +docbook2X-0.8.7-r1.ebuild:
+  Bug #166127, fix the collision with docbook-sgml-utils, patch from Alec
+  Warner <antarus@gentoo.org>. Also re-add missing ~amd64 and ~hppa keywords
+  that were dropped.
+
+  28 Jan 2007; Marius Mauch <genone@gentoo.org> docbook2X-0.6.1-r2.ebuild:
+  Replacing einfo with elog
+
+*docbook2X-0.8.7 (17 Jan 2007)
+
+  17 Jan 2007; Alec Warner <antarus@gentoo.org> +docbook2X-0.8.7.ebuild:
+  bumpmaster 9000, bug 103281
+
+  06 Jan 2007; Danny van Dyk <kugelfang@gentoo.org> -docbook2X-0.6.1.ebuild,
+  -docbook2X-0.6.1-r1.ebuild:
+  QA: Removed unused versions.
+
+  30 Jul 2006; Rene Nussbaumer <killerfox@gentoo.org>
+  docbook2X-0.6.1-r2.ebuild:
+  Stable on hppa.
+
+  18 Jun 2006; Rene Nussbaumer <killerfox@gentoo.org>
+  docbook2X-0.6.1-r2.ebuild:
+  Unstable on hppa.
+
+*docbook2X-0.6.1-r2 (03 Jan 2003)
+
+  7 Jul 2003; Yannick Koehler <ykoehler@gentoo.org> :
+  Perl site arch installation directory now obtained dynamically.
+  This resolve bug 16969.  Thanks to Michael Cummings.
+
+*docbook2X-0.6.1-r2 (03 Jan 2003)
+
+  7 Jul 2003; Yannick Koehler <ykoehler@gentoo.org> :
+  Perl site arch installation directory now obtained dynamically.
+  This resolve bug 16969.  Thanks to Michael Cummings.
+
+*docbook2X-0.6.1-r1 (03 Jan 2003)
+
+  31 Jan 2003; Yannick Koehler <ykoehler@gentoo.org> :
+  Corrected syntax error in package description.
+
+  03 Jan 2003; Matthew Turk <satai@gentoo.org> :
+  changed to install everything as ${exe}.pl, to thus avoid the conflicts
+  between this package and docbook-sgml-utils, as this one is much less widely
+  used.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+
+*docbook2X-0.6.1 (1 Feb 2002)
+
+  31 Jan 2003; Yannick Koehler <ykoehler@gentoo.org> :
+  Corrected syntax error in package description.
+
+  19 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> docbook2X-0.6.1.ebuild :
+  Updated to mirror://sourceforge in SRC_URI.
+
+  13 Aug 2002; pvdabeel <pvdabeel@gentoo.org> docbook2X-0.6.1.ebuild :
+
+  Added ppc keyword
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> docbook2X-0.6.1.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

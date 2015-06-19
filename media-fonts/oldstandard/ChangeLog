@@ -1,0 +1,33 @@
+# ChangeLog for media-fonts/oldstandard
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/oldstandard/ChangeLog,v 1.8 2015/04/22 23:55:39 mrueg Exp $
+
+  22 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -oldstandard-2.0.2.ebuild:
+  Remove old.
+
+  15 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> oldstandard-2.2.ebuild:
+  x86 stable wrt bug #397061
+
+  09 Jan 2012; Agostino Sarubbo <ago@gentoo.org> oldstandard-2.2.ebuild:
+  Stable for AMD64, wrt bug #397061
+
+  19 Jun 2011; Markus Meier <maekke@gentoo.org> oldstandard-2.0.2.ebuild:
+  x86 stable, bug #286235
+
+  18 Jun 2011; Markos Chandras <hwoarang@gentoo.org> oldstandard-2.0.2.ebuild:
+  Stable on amd64 wrt bug #286235
+
+*oldstandard-2.2 (09 Jun 2011)
+
+  09 Jun 2011; MATSUU Takuto <matsuu@gentoo.org> +oldstandard-2.2.ebuild:
+  Version bumped, bug #368979.
+
+  25 May 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  oldstandard-2.0.2.ebuild:
+  QA: avoid runtime dependency on app-arch/unzip.
+
+*oldstandard-2.0.2 (02 Dec 2008)
+
+  02 Dec 2008; Peter Volkov <pva@gentoo.org> +metadata.xml,
+  +oldstandard-2.0.2.ebuild:
+  Initial import, bug #211266, thank Roman V. Prikhodchenko for ebuild.

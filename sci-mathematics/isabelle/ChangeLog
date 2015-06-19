@@ -1,0 +1,101 @@
+# ChangeLog for sci-mathematics/isabelle
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/isabelle/ChangeLog,v 1.14 2015/04/17 14:41:21 gienah Exp $
+
+*isabelle-2013-r2 (17 Apr 2015)
+*isabelle-2013.2-r1 (17 Apr 2015)
+
+  17 Apr 2015; Mark Wright <gienah@gentoo.org> +isabelle-2013-r2.ebuild,
+  +isabelle-2013.2-r1.ebuild, -isabelle-2013-r1.ebuild, -isabelle-2013.2.ebuild,
+  files/isabelle-2013-classpath.patch, files/isabelle-2013.2-classpath.patch:
+  Slot scala
+
+  25 Mar 2015; Mark Wright <gienah@gentoo.org> isabelle-2011.1-r2.ebuild,
+  isabelle-2012-r1.ebuild, isabelle-2013-r1.ebuild, isabelle-2013.2.ebuild:
+  Fix Bug 542710 - sci-mathematics/isabelle-2013.2 - Couldn't download
+  'Isabelle2013-2.tar.gz'. Aborting. Thanks to Toralf Forster for reporting,
+  Thomas Kahle for finding the missing download file.
+
+*isabelle-2013.2 (25 Jan 2015)
+
+  25 Jan 2015; Mark Wright <gienah@gentoo.org>
+  +files/isabelle-2013.2-HOL-Predicate_Compile_Examples.patch,
+  +files/isabelle-2013.2-classpath.patch, +isabelle-2013.2.ebuild,
+  isabelle-2013-r1.ebuild:
+  Bump isabelle to 2013.2. Fix Bug 536324 - sci-mathematics/isabelle: Slot
+  dependencies for java packages. Add upper range dependency <dev-
+  lang/scala-2.11.1 to 2013-r1.
+
+*isabelle-2012-r1 (07 Jan 2014)
+*isabelle-2013-r1 (07 Jan 2014)
+*isabelle-2011.1-r2 (07 Jan 2014)
+
+  07 Jan 2014; Tom Wijsman <TomWij@gentoo.org> +isabelle-2011.1-r2.ebuild,
+  +isabelle-2012-r1.ebuild, +isabelle-2013-r1.ebuild,
+  -isabelle-2011.1-r1.ebuild, -isabelle-2012.ebuild, -isabelle-2013.ebuild:
+  [QA] Change !use by ! use such that it negates the USE flag instead of
+  expanding history. Revision bump to ensure users get the fix accordingly.
+
+  01 Sep 2013; Zac Medico <zmedico@gentoo.org> isabelle-2013.ebuild:
+  Fix SRC_URI and HOMEPAGE (case-sensitive).
+
+*isabelle-2013 (31 Aug 2013)
+
+  31 Aug 2013; Mark Wright <gienah@gentoo.org>
+  +files/isabelle-2013-HOL-Predicate_Compile_Examples.patch,
+  +files/isabelle-2013-classpath.patch,
+  +files/isabelle-2013-gentoo-settings.patch, +isabelle-2013.ebuild:
+  Bump isabelle to 2013, fixes bug 468344
+
+  03 May 2013; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Fix XML.
+
+  05 Dec 2012; Mark Wright <gienah@gentoo.org> isabelle-2011.1-r1.ebuild,
+  isabelle-2012.ebuild:
+  EAPI=5 with subslot depends to automatically rebuild isabelle when polyml is
+  updated. It is necessary to remove any non-existing directories from
+  /etc/isabelle/components, as otherwise isabelle getenv ISABELLE_HOME fails,
+  which causes reverse dependent packages of sci-mathematics/isabelle to fail.
+
+  20 Sep 2012; Mark Wright <gienah@gentoo.org> isabelle-2011.1-r1.ebuild,
+  isabelle-2012.ebuild:
+  isabelle doc requires a symlink
+
+  15 Jun 2012; Mark Wright <gienah@gentoo.org>
+  +files/isabelle-2012-redundant-equations-in-function-definitions-error.patch,
+  +files/isabelle-2012-signal-handling.patch, isabelle-2012.ebuild:
+  Patch signal handling:
+  http://article.gmane.org/gmane.science.mathematics.logic.isabelle.devel/2732
+  Change "Ignoring redundant equation" warning to an error to avoid proofs being
+  undertaken on the basis of a mistaken definition:
+  http://article.gmane.org/gmane.science.mathematics.logic.isabelle.devel/2780
+
+*isabelle-2012 (30 May 2012)
+*isabelle-2011.1-r1 (30 May 2012)
+
+  30 May 2012; Mark Wright <gienah@gentoo.org> +isabelle-2011.1-r1.ebuild,
+  +files/isabelle-2011.1-gentoo-settings.patch,
+  +files/isabelle-2011.1-reverse-line-editor-order.patch,
+  +isabelle-2012.ebuild, +files/isabelle-2012-gentoo-settings.patch,
+  +files/isabelle-2012-graphbrowser.patch,
+  +files/isabelle-2012-reverse-line-editor-order.patch, metadata.xml:
+  Bump to 2011.1-r1 and 2012. Add jedit use flag to build Isabelle/jEdit Prover
+  IDE (PIDE) (2012 only, requires dev-lang/scala), ledit and readline use flags
+  for the preferred tty line editor. Add dev-perl/libwww-perl dep. Add doc-src
+  directory with use=doc (2012) as doc-src stuff is required when building doc
+  some isabelle add on packages (sci-mathematics/haskabelle).
+
+  30 Jan 2012; Mark Wright <gienah@gentoo.org> isabelle-2011.1.ebuild,
+  metadata.xml:
+  Fix bug #400961, thanks to Mr. Anderson for report and fix.
+
+  09 Jan 2012; Mark Wright <gienah@gentoo.org> isabelle-2011.1.ebuild:
+  Thanks to few_ and xarthisius for reviewing, remove pdf use flag, add || die
+  to cd/pushd and tests. Require polyml with -portable.
+
+*isabelle-2011.1 (08 Jan 2012)
+
+  08 Jan 2012; Mark Wright <gienah@gentoo.org> +isabelle-2011.1.ebuild,
+  +files/isabelle-2011.1-graphbrowser.patch,
+  +files/isabelle-2011.1-proofgeneral-gentoo-path.patch, +metadata.xml:
+  New ebuild, thanks Mr. Anderson for earlier version, fixes #397995

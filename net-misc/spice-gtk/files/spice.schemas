@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<gconfschemafile>
+<schemalist>
+<schema>
+     <key>/schemas/desktop/gnome/url-handlers/spice/enabled</key>
+     <applyto>/desktop/gnome/url-handlers/spice/enabled</applyto>
+     <owner>spice</owner>
+     <type>bool</type>
+     <default>true</default>
+     <locale name="C">
+       <short>How to handle spice URLs</short>
+       <long>Set to true to have a program specified in command handle spice URLs</long>
+     </locale>
+</schema>
+
+   <schema>
+     <key>/schemas/desktop/gnome/url-handlers/spice/command</key>
+     <applyto>/desktop/gnome/url-handlers/spice/command</applyto>
+     <owner>spice</owner>
+     <type>string</type>
+     <default>/usr/bin/spicy --uri="%s"</default>
+     <locale name="C">
+       <short>URL handler for spice URIs</short>
+       <long>URL handler for spice URIs</long>
+     </locale>
+    </schema>
+
+   <schema>
+     <key>/schemas/desktop/gnome/url-handlers/spice/need-terminal</key>
+     <applyto>/desktop/gnome/url-handlers/spice/need-terminal</applyto>
+     <owner>spice</owner>
+     <type>bool</type>
+     <default>false</default>
+     <locale name="C">
+       <short>Run program in terminal</short>
+       <long>True if the program to handle this URL should be run in a terminal</long>
+     </locale>
+    </schema>
+</schemalist>
+</gconfschemafile>
+

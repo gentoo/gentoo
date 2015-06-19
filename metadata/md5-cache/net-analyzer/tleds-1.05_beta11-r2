@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=X? ( x11-libs/libX11 )
+DESCRIPTION=Blinks keyboard LEDs indicating outgoing and incoming network packets on selected network interface
+EAPI=5
+HOMEPAGE=http://www.hut.fi/~jlohikos/tleds_orig.html
+IUSE=X
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=X? ( x11-libs/libX11 )
+SLOT=0
+SRC_URI=http://www.hut.fi/~jlohikos/tleds/public/tleds-1.05beta10.tgz http://www.hut.fi/~jlohikos/tleds/public/tleds-1.05beta11.patch.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=966860ac96c4340b4e06b5ba35c2f2b5

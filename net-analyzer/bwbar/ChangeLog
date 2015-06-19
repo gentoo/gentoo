@@ -1,0 +1,43 @@
+# ChangeLog for net-analyzer/bwbar
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/bwbar/ChangeLog,v 1.10 2014/07/10 19:47:09 jer Exp $
+
+  10 Jul 2014; Jeroen Roovers <jer@gentoo.org> bwbar-1.2.3.ebuild:
+  Stable for AMD64 too.
+
+  10 Jul 2014; Jeroen Roovers <jer@gentoo.org> bwbar-1.2.3.ebuild,
+  files/bwbar-1.2.3-libpng15.patch:
+  EAPI bump. Clean up patch.
+
+  07 Aug 2011; Samuli Suominen <ssuominen@gentoo.org> bwbar-1.2.3.ebuild,
+  +files/bwbar-1.2.3-libpng15.patch:
+  Fix building with libpng15 wrt #378145 by Diego Elio Pettenò
+
+  15 May 2008; Richard Freeman <rich0@gentoo.org> bwbar-1.2.3.ebuild:
+  keyword ~amd64 - 205978
+
+  17 Jan 2008; Raúl Porcel <armin76@gentoo.org> -bwbar-1.2.2.ebuild,
+  bwbar-1.2.3.ebuild:
+  x86 stable and remove old
+
+*bwbar-1.2.3 (12 Jul 2007)
+
+  12 Jul 2007; Markus Ullmann <jokey@gentoo.org> +bwbar-1.2.3.ebuild:
+  Version bump, thanks armin76 for notify
+
+  19 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  26 Feb 2006; Marcelo Goes <vanquirius@gentoo.org> bwbar-1.2.2.ebuild:
+  Mark 1.2.2 x86 stable.
+
+  13 Jan 2006; Marcelo Goes <vanquirius@gentoo.org> bwbar-1.2.2.ebuild:
+  Use mirror://kernel in SRC_URI.
+
+*bwbar-1.2.2 (10 Jan 2006)
+
+  10 Jan 2006; Marcelo Goes <vanquirius@gentoo.org> +metadata.xml,
+  +bwbar-1.2.2.ebuild:
+  Initial commit. Fixes bug 58193. Thanks to Frank Benkstein <benkstein at gmx
+  dot de>.
+

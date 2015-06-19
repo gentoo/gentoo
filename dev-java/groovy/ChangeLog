@@ -1,0 +1,242 @@
+# ChangeLog for dev-java/groovy
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/groovy/ChangeLog,v 1.55 2014/01/16 17:26:58 jer Exp $
+
+  16 Jan 2014; Jeroen Roovers <jer@gentoo.org> groovy-1.6.8.ebuild,
+  groovy-1.7.10.ebuild, groovy-1.7.5.ebuild, groovy-1.8.5-r1.ebuild,
+  groovy-1.8.5.ebuild:
+  Spelling.
+
+  08 Jan 2014; Tom Wijsman <TomWij@gentoo.org> groovy-1.8.5.ebuild:
+  Fixed up Copyright year.
+
+*groovy-1.8.5-r1 (23 Oct 2013)
+
+  23 Oct 2013; Tom Wijsman <TomWij@gentoo.org> +groovy-1.8.5-r1.ebuild:
+  Revision bump, fixed up all the dependencies by slotting them.
+
+  19 Dec 2012; Ralph Sennhauser <sera@gentoo.org> metadata.xml:
+  Adding prox-maint herd as discussed with hwoarang, add Ivan Baidakou
+  <the.dmol@gmail.com> as maintainer.
+
+  10 Dec 2012; Agostino Sarubbo <ago@gentoo.org> groovy-1.8.5.ebuild:
+  Add ~ppc, wrt bug #401145
+
+*groovy-1.8.5 (28 Jan 2012)
+
+  28 Jan 2012; Alistair Bush <ali_bush@gentoo.org> +groovy-1.8.5.ebuild,
+  +files/groovy-1.8-build-pref-locking-fix.patch:
+  Version Bump to latest stable.
+
+  13 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org> groovy-1.7.5.ebuild:
+  ppc stable wrt #348255
+
+*groovy-1.7.10 (21 Jul 2011)
+
+  21 Jul 2011; <elvanor@gentoo.org> +groovy-1.7.10.ebuild:
+  Bump to version 1.7.10.
+
+  29 Dec 2010; Markos Chandras <hwoarang@gentoo.org> groovy-1.7.5.ebuild:
+  Stable on amd64 wrt bug #348255
+
+  15 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> groovy-1.7.5.ebuild:
+  x86 stable wrt bug #348255
+
+*groovy-1.7.5 (26 Oct 2010)
+
+  26 Oct 2010; <elvanor@gentoo.org> +groovy-1.7.5.ebuild:
+  Version bump (#320835).
+
+  17 Oct 2010; Vlastimil Babka <caster@gentoo.org> -groovy-1.6.5.ebuild,
+  -groovy-1.6.7.ebuild:
+  Remove old.
+
+  15 Oct 2010; Brent Baude <ranger@gentoo.org> groovy-1.6.8.ebuild:
+  Marking groovy-1.6.8 ppc for bug 321355
+
+  01 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> groovy-1.6.8.ebuild:
+  x86 stable wrt bug #321355
+
+  26 May 2010; Pacho Ramos <pacho@gentoo.org> groovy-1.6.8.ebuild:
+  stable amd64, bug 321355
+
+  18 Mar 2010; Jean-Noël Rivasseau <elvanor@gentoo.org>
+  groovy-1.6.8.ebuild:
+  Added the patch from #303231 to create the grape launcher.
+
+*groovy-1.6.8 (18 Mar 2010)
+
+  18 Mar 2010; Jean-Noël Rivasseau <elvanor@gentoo.org>
+  +groovy-1.6.8.ebuild:
+  Bump to version 1.6.8.
+
+  15 Jan 2010; Jonathan Callen <abcd@gentoo.org> groovy-1.6.7.ebuild:
+  Add prefix keywords
+
+  07 Jan 2010; Brent Baude <ranger@gentoo.org> groovy-1.6.5.ebuild:
+  Marking groovy-1.6.5 ppc for bug 279873
+
+*groovy-1.6.7 (08 Dec 2009)
+
+  08 Dec 2009; Jean-Noël Rivasseau <elvanor@gentoo.org>
+  -groovy-1.6.3.ebuild, +groovy-1.6.7.ebuild, -files/groovy-build.patch:
+  Groovy 1.6.7 version bump.
+
+  04 Nov 2009; Markus Meier <maekke@gentoo.org> groovy-1.6.5.ebuild:
+  amd64/x86 stable, bug #279873
+
+*groovy-1.6.5 (15 Oct 2009)
+
+  15 Oct 2009; Jean-Noël Rivasseau <elvanor@gentoo.org>
+  +groovy-1.6.5.ebuild:
+  Version bump to 1.6.5.
+
+  07 Aug 2009; Zac Medico <zmedico@gentoo.org> groovy-1.6.3.ebuild:
+  Block older versions of groovy since they defined SLOT=1 and have file
+  collisions with the latest ebuild which defines SLOT=0.
+
+*groovy-1.6.3 (28 Jul 2009)
+
+  28 Jul 2009; Jean-Noël Rivasseau <elvanor@gmail.com>
+  -files/build.xml-1.0_rc01, -files/build.xml-1.0,
+  -files/groovy-1.0-compiler-exit-code.patch,
+  -files/groovy-1.0_rc01-compiler-exit-code.patch, -groovy-1.5.4-r1.ebuild,
+  +groovy-1.6.3.ebuild, +files/groovy-build.patch,
+  -files/groovy-build.xml.patch:
+  Version bump to 1.6.3 (#235272), implemented partly doc USE flag,
+  restricted tests, removed old ebuilds.
+
+  29 Mar 2009; Petteri Räty <betelgeuse@gentoo.org> -groovy-1.5.4.ebuild,
+  groovy-1.5.4-r1.ebuild:
+  Migrate the ebuild to EAPI 2.
+
+  24 Mar 2009; Petteri Räty <betelgeuse@gentoo.org> -groovy-1.0-r1.ebuild:
+  Remove old version.
+
+  17 Oct 2008; Markus Meier <maekke@gentoo.org> metadata.xml:
+  bsf USE-flag is global now
+
+*groovy-1.5.4-r1 (04 Jul 2008)
+
+  04 Jul 2008; Petteri Räty <betelgeuse@gentoo.org>
+  +groovy-1.5.4-r1.ebuild:
+  Fix building with virtual/jdk:1.4 with the help of java-virtuals/jmx.
+
+  04 Mar 2008; Michael Sterrett <mr_bones_@gentoo.org> groovy-1.5.4.ebuild:
+  add missing test to IUSE
+
+*groovy-1.5.4 (02 Mar 2008)
+
+  02 Mar 2008; Jean-Noël Rivasseau <elvanor@gentoo.org>
+  +files/groovy-build.xml.patch, groovy-1.0-r1.ebuild, +groovy-1.5.4.ebuild:
+  Version bump to 1.5.4. Tests now compile and run with JDK 1.6, some fail
+  though.
+
+  04 Jul 2007; Petteri Räty <betelgeuse@gentoo.org> -groovy-1.0.ebuild:
+  Remove old revision.
+
+  27 May 2007; Vlastimil Babka <caster@gentoo.org> groovy-1.0-r1.ebuild:
+  Make BSF support optional via new local USE flag and minor style tweaks;
+  restrict test until it's at least compiling.
+
+  26 May 2007; Krzysiek Pawlik <nelchael@gentoo.org> groovy-1.0-r1.ebuild:
+  Add ~ppc.
+
+*groovy-1.0-r1 (22 May 2007)
+
+  22 May 2007; Vlastimil Babka <caster@gentoo.org> +groovy-1.0-r1.ebuild:
+  Replace fetch restricted sun-jmx dep with mx4j-core, upstream uses it too
+  according to maven xmls.
+
+  10 Feb 2007; Joshua Nichols <nichoj@gentoo.org> -groovy-1.0_rc01.ebuild:
+  Pruned old version with same keywords.
+
+  05 Jan 2007; Vlastimil Babka <caster@gentoo.org> files/build.xml-1.0:
+  Fixed regression of bug #159457 reported on IRC by "drehrumbum".
+
+*groovy-1.0 (05 Jan 2007)
+
+  05 Jan 2007; Joshua Nichols <nichoj@gentoo.org> +files/build.xml-1.0,
+  +files/groovy-1.0-compiler-exit-code.patch, +groovy-1.0.ebuild:
+  Version bump for final release.
+
+  30 Dec 2006; Vlastimil Babka <caster@gentoo.org> files/build.xml-1.0_rc01,
+  groovy-1.0_rc01.ebuild:
+  Fix libdir property in build.xml wrt bug #159457 by Sean
+  <sean.gollschewsky@gmail.com>. Remove -Dnoget=true from eant call, because
+  it's now default in the eclass. Fix and apply the exit-code patch again.
+
+*groovy-1.0_rc01 (29 Dec 2006)
+
+  29 Dec 2006; Joshua Nichols <nichoj@gentoo.org> +files/build.xml-1.0_rc01,
+  -files/build.xml-1.0.06, +groovy-1.0_rc01.ebuild, -groovy-1.0.06.ebuild:
+  Version bump. 1.0 JSR 06 was versioned as 1.0.06, which was wrong, so
+  1.0_rc01 is actually newer. Pruned 1.0.06.
+
+  30 Nov 2006; Vlastimil Babka <caster@gentoo.org>
+  -files/basescript-1.0_beta4, -files/build.xml-1.0_beta4,
+  -groovy-1.0_beta4-r1.ebuild, -groovy-1.0_beta4-r2.ebuild,
+  groovy-1.0.06.ebuild:
+  Update xerces dep for upcoming 2.6 slotmove.
+
+*groovy-1.0.06 (23 Sep 2006)
+
+  23 Sep 2006; Joshua Nichols <nichoj@gentoo.org> +files/build.xml-1.0.06,
+  +files/groovy-1.0.06-compiler-exit-code.patch, +groovy-1.0.06.ebuild:
+  Version bump. Initial work contributed by Jakob Truelsen
+  <antialize@gmail.com>, bug #145186.
+
+*groovy-1.0_beta4-r2 (26 Aug 2006)
+
+  26 Aug 2006; Petteri Räty <betelgeuse@gentoo.org>
+  +groovy-1.0_beta4-r2.ebuild:
+  Migrated to generation 2. Does not install a versioned jar any more. Fixes
+  bug #144827. Thanks to Jakob Truelsen <antialize@gmail.com>.
+
+  11 Dec 2005; Joshua Nichols <nichoj@gentoo.org>
+  groovy-1.0_beta4-r1.ebuild:
+  Loosened xerces dependency (bug #115158).
+
+  18 Oct 2005; Thomas Matthijs <axxo@gentoo.org> files/basescript-1.0_beta4,
+  groovy-1.0_beta4-r1.ebuild:
+  Actualy build without previous groovy install, and fixes #55870. Thanks too
+  Eivind Tagseth <eivindt-gentoo@multinet.no>
+
+  06 May 2005; Sven Wegener <swegener@gentoo.org>
+  groovy-1.0_beta4-r1.ebuild:
+  Removed * postfix from <, <=, >= and > dependencies.
+
+  20 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  groovy-1.0_beta4-r1.ebuild:
+  added missing jikes dependency. see #78819.
+
+  05 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  groovy-1.0_beta4-r1.ebuild, groovy-1.0_beta4.ebuild:
+  Updated jar-from asm calls to satisfy the new asm-1.4 slot.
+
+  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> groovy-1.0_beta4-r1.ebuild,
+  groovy-1.0_beta4.ebuild:
+  use java-pkg_dohtml instead of dohtml to also install the package-list in
+  case of api docs: #50740
+
+  08 Aug 2004; Stuart Herbert <stuart@gentoo.org> groovy-1.0_beta4-r1.ebuild,
+  groovy-1.0_beta4.ebuild:
+  Changed dep to www-servers/tomcat because of the net-www split
+
+  05 May 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  groovy-1.0_beta4-r1.ebuild: Silly oversight, now the groovyConsole
+  loads, but there are still some issued about activation, probably
+  a dep I forgot.
+
+*groovy-1.0_beta4-r1 (05 May 2004)
+
+  05 May 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  groovy-1.0_beta4-r1.ebuild files/basescript-1.0_beta4-r1
+  files/build.xml-1.0_beta4-r1 files/digest-groovy-1.0_beta4-r1:
+  A slew of fixes. Added CLI scripts. groovyConsole does not work 
+  yet, dunno exactly why.
+
+*groovy-1.0_beta4 (03 May 2004)
+
+  03 May 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  groovy-1.0_beta4.ebuild: Initial import. Ebuild submitted by myself.

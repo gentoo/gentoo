@@ -1,0 +1,195 @@
+# ChangeLog for x11-wm/emerald
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/emerald/ChangeLog,v 1.44 2013/04/20 10:29:43 pinkbyte Exp $
+
+  20 Apr 2013; Sergey Popov <pinkbyte@gentoo.org> emerald-0.8.8.ebuild:
+  Convert DOCS variable into bash array, add epatch_user
+
+  20 Apr 2013; Sergey Popov <pinkbyte@gentoo.org> emerald-0.8.8.ebuild:
+  Fix underlinking issue, detected with gold linker
+
+  25 Sep 2012; Sergey Popov <pinkbyte@gentoo.org> -emerald-0.8.4-r2.ebuild,
+  -files/emerald-0.8.4-gtk+-2.20-build.patch,
+  -files/emerald-0.8.4-pkgconfig-pollution.patch:
+  Drop old
+
+  30 Aug 2012; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Remove myself and proxy mainainer from maintainers, leaving only herd
+
+  30 Aug 2012; Sergey Popov <pinkbyte@gentoo.org> emerald-0.8.8.ebuild:
+  Bump EAPI to 4, add DOCS variable, fix src_install phase
+
+  30 Aug 2012; Sergey Popov <pinkbyte@gentoo.org> emerald-0.8.8.ebuild:
+  Remove --disable-dependency-tracking, cause it is unneeded in EAPI 4. Remove
+  unnecessary '|| die' constructions
+
+*emerald-0.8.8 (07 May 2012)
+
+  07 May 2012; Naohiro Aota <naota@gentoo.org> +emerald-0.8.8.ebuild,
+  +files/emerald-0.8.8-pkgconfig-pollution.patch, metadata.xml:
+  Version bump. Assign Pinkbyte as maintainer.
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> emerald-0.8.4-r2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  14 Sep 2011; Samuli Suominen <ssuominen@gentoo.org> emerald-0.8.4-r2.ebuild,
+  +files/emerald-0.8.4-pkgconfig-pollution.patch:
+  Use Requires.private and Libs.private instead of Requires and Libs wrt
+  #380197 by Diego Elio Pettenò
+
+  21 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  emerald-0.8.4-r2.ebuild:
+  Fix slot-deps on gnome libs
+
+  15 Oct 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -emerald-0.8.4.ebuild, -emerald-0.8.4-r1.ebuild, emerald-0.8.4-r2.ebuild:
+  Fix build with gtk+ 2.22 (bug #341143) and cleanup old versions.
+
+*emerald-0.8.4-r2 (26 Sep 2010)
+
+  26 Sep 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +emerald-0.8.4-r2.ebuild:
+  Revision bump to disable static library builds (it's mostly engines, which
+  are dynamically-loaded plugins).
+
+  03 Apr 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  emerald-0.8.4-r1.ebuild:
+  Really, *really* apply the patch now - thanks Torsten.
+
+  03 Apr 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  emerald-0.8.4-r1.ebuild:
+  Really adding the patch this time.
+
+*emerald-0.8.4-r1 (03 Apr 2010)
+
+  03 Apr 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +emerald-0.8.4-r1.ebuild, +files/emerald-0.8.4-gtk+-2.20-build.patch:
+  Replaced compiz ~ deps with >= deps to support the new compiz-0.8.6
+  release and to avoid future dep issues.
+  Did a revbump to avoid issues with installed packages.
+  Added a patch to enable emerald to build with gtk+-2.20. Fixes bug 308791
+  - thanks to Leif Walsh <adlaiff6@gmail.com>.
+
+  20 Dec 2009; Romain Perier <mrpouet@gentoo.org> -emerald-0.5.2.ebuild,
+  -emerald-0.8.2.ebuild, -files/emerald-ru.po.patch:
+  Clean up old versions
+
+*emerald-0.8.4 (15 Oct 2009)
+
+  15 Oct 2009; Romain Perier <mrpouet@gentoo.org>
+  +emerald-0.8.4.ebuild:
+  Version bump.
+
+  25 Apr 2009; Brent Baude <ranger@gentoo.org> ChangeLog:
+  Marking emerald-0.8.2 ~ppc for bug 246804
+
+  25 Apr 2009; Brent Baude <ranger@gentoo.org> ChangeLog:
+  Marking emerald-0.8.2 ~ppc64 for bug 246804
+
+  11 Apr 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  -emerald-0.7.8.ebuild:
+  Removing old compiz 0.7.8 ebuilds - affected by bug 263678.
+
+  07 Apr 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  -files/emerald-0.7.8-ru.po.patch, +files/emerald-ru.po.patch,
+  emerald-0.7.8.ebuild, emerald-0.8.2.ebuild:
+  Renamed the ru patch from to and added it to emerald-0.8.2 since it's
+  still required.
+
+  04 Apr 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  emerald-0.8.2.ebuild:
+  The russian patch is no longer needed with emerald-0.8.2.
+
+*emerald-0.8.2 (03 Apr 2009)
+
+  03 Apr 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +emerald-0.8.2.ebuild:
+  Bumped compiz to the 0.8.2 release.
+
+  22 Jan 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +files/emerald-0.7.8-ru.po.patch, emerald-0.7.8.ebuild:
+  Added Peter Volkov's "pva" patch to ru.po. Fixes bug 255679.
+
+  15 Nov 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  emerald-0.7.8.ebuild:
+  Removed the mirror restriction that was used for the overlay.
+
+  01 Nov 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Fixed metadata.xml by removing hanno now that he is on the desktop-effects
+  herd and fixing the description.
+
+  27 Oct 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  emerald-0.7.8.ebuild:
+  Removed the bug reporting warning that was copied from the desktop-effects
+  overlay by mistake.
+
+*emerald-0.7.8 (27 Oct 2008)
+
+  27 Oct 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml, +emerald-0.7.8.ebuild:
+  Added compiz-0.7.8 to the tree
+
+  03 Jun 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  -emerald-0.1.3.ebuild, -emerald-0.1.4.ebuild, -emerald-0.2.1.ebuild:
+  remove old versions
+
+  08 Feb 2008; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Maintainer email was non-existent in bugzilla.
+
+  26 Nov 2007; Markus Rothe <corsair@gentoo.org> emerald-0.5.2.ebuild:
+  Added ~ppc64
+
+  24 Oct 2007; Hanno Boeck <hanno@gentoo.org> emerald-0.5.2.ebuild:
+  Doesn't build without compiz.
+
+  24 Oct 2007; Hanno Boeck <hanno@gentoo.org> emerald-0.5.2.ebuild:
+  QA fixes.
+
+*emerald-0.5.2 (23 Oct 2007)
+
+  23 Oct 2007; Hanno Boeck <hanno@gentoo.org> +emerald-0.5.2.ebuild:
+  Version bump for compiz fusion.
+
+  15 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+*emerald-0.2.1 (21 Mar 2007)
+
+  21 Mar 2007; Joshua Jackson <tsunam@gentoo.org> +emerald-0.2.1.ebuild:
+  adding beryl-0.2.1 to the tree
+
+  24 Feb 2007; Joshua Jackson <tsunam@gentoo.org> emerald-0.1.4.ebuild:
+  fixed type thanks to Matthew Schultz
+
+  29 Dec 2006; Joshua Jackson <tsunam@gentoo.org> emerald-0.1.4.ebuild:
+  fix for languages causing failures, bug #159412
+
+*emerald-0.1.4 (28 Dec 2006)
+
+  28 Dec 2006; Joshua Jackson <tsunam@gentoo.org> +emerald-0.1.4.ebuild:
+  Version bump for #159203
+
+  21 Dec 2006; Markus Rothe <corsair@gentoo.org> emerald-0.1.3.ebuild:
+  Added ~ppc64; bug #158709. also removed orphane digest files
+
+*emerald-0.1.3 (19 Dec 2006)
+
+  19 Dec 2006; Joshua Jackson <tsunam@gentoo.org> -emerald-0.1.1.ebuild,
+  -emerald-0.1.2.ebuild, +emerald-0.1.3.ebuild:
+  Version bump a week late for bug #157727; also general cleanup of old versions
+
+*emerald-0.1.2 (15 Nov 2006)
+
+  15 Nov 2006; Joshua Jackson <tsunam@gentoo.org> +emerald-0.1.2.ebuild:
+  adding 0.1.2 to the tree
+
+  24 Oct 2006; Joshua Jackson <tsunam@gentoo.org> emerald-0.1.1.ebuild:
+  updating license to gpl-2
+
+*emerald-0.1.1 (22 Oct 2006)
+
+  22 Oct 2006; Joshua Jackson <tsunam@gentoo.org> +metadata.xml,
+  +emerald-0.1.1.ebuild:
+  Initial import of Beryl, thanks to Alex Heck
+

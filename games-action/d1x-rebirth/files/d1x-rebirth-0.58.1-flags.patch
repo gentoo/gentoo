@@ -1,0 +1,11 @@
+diff -ru d1x-rebirth_v0.58.1-src.orig/SConstruct d1x-rebirth_v0.58.1-src/SConstruct
+--- d1x-rebirth_v0.58.1-src.orig/SConstruct	2013-08-03 08:13:39.000000000 -0400
++++ d1x-rebirth_v0.58.1-src/SConstruct	2015-01-27 02:38:03.847800615 -0500
+@@ -218,7 +218,6 @@
+ 			env.Append(CPPFLAGS = ['-g'])
+ 		else:
+ 			env.Append(CPPDEFINES = ['NDEBUG', 'RELEASE'])
+-			env.Append(CPPFLAGS = ['-O2'])
+ 
+ 		# profiler?
+ 		if (self.user_settings.profiler == 1):

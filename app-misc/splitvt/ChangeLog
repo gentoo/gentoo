@@ -1,0 +1,120 @@
+# ChangeLog for app-misc/splitvt
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/splitvt/ChangeLog,v 1.32 2011/01/05 16:30:11 jlec Exp $
+
+  05 Jan 2011; Justin Lecher <jlec@gentoo.org> -splitvt-1.6.6-r1.ebuild,
+  splitvt-1.6.6-r2.ebuild:
+  Some Clean up
+
+  24 Oct 2010; Brent Baude <ranger@gentoo.org> splitvt-1.6.6-r2.ebuild:
+  stable ppc, bug 342143
+
+  24 Oct 2010; Raúl Porcel <armin76@gentoo.org> splitvt-1.6.6-r2.ebuild:
+  ia64/sparc stable wrt #342143
+
+  24 Oct 2010; Justin Lecher <jlec@gentoo.org> splitvt-1.6.6-r1.ebuild,
+  splitvt-1.6.6-r2.ebuild:
+  Some QA noted by c1pher
+
+  23 Oct 2010; Dane Smith <c1pher@gentoo.org> splitvt-1.6.6-r2.ebuild:
+  Stable x86 wrt bug 342143.
+
+  22 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  splitvt-1.6.6-r2.ebuild:
+  Stable on amd64 wrt bug #342143
+
+*splitvt-1.6.6-r2 (18 Sep 2010)
+
+  18 Sep 2010; Justin Lecher <jlec@gentoo.org> +files/1.6.6-ldflags.patch,
+  +splitvt-1.6.6-r2.ebuild:
+  Respecting LDFLAGS, 337689
+
+  20 Aug 2009; Jeremy Olexa <darkside@gentoo.org>
+  -files/splitvt-1.6.5-gcc4.diff:
+  remove unused patches
+
+  29 Mar 2008; Santiago M. Mola <coldwind@gentoo.org>
+  splitvt-1.6.6-r1.ebuild:
+  amd64 stable
+
+  26 Mar 2008; Raúl Porcel <armin76@gentoo.org> splitvt-1.6.6-r1.ebuild:
+  ia64 stable
+
+  26 Feb 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  splitvt-1.6.6-r1.ebuild:
+  ppc stable, bug #211240
+
+  26 Feb 2008; Raúl Porcel <armin76@gentoo.org> splitvt-1.6.6-r1.ebuild:
+  ia64 stable wrt #211240
+
+  25 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  splitvt-1.6.6-r1.ebuild:
+  stable x86, security bug 211240
+
+*splitvt-1.6.6-r1 (25 Feb 2008)
+
+  25 Feb 2008; <pva@gentoo.org> +splitvt-1.6.6-r1.ebuild:
+  Updated upstream patchset, fixes security bug #211240, thank Lars Hartmann
+  for report.
+
+*splitvt-1.6.6 (17 Dec 2007)
+
+  17 Dec 2007; Raúl Porcel <armin76@gentoo.org> +splitvt-1.6.6.ebuild:
+  Version bump wrt #190727 and add ~ia64 wrt #202177
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  08 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  02 Jan 2006; Tom Martin <slarti@gentoo.org> splitvt-1.6.5-r1.ebuild:
+  Marked ~amd64. Included a permissions fix to resolve bug #117308.
+
+  17 May 2005; Aaron Walker <ka0ttic@gentoo.org>
+  +files/splitvt-1.6.5-gcc4.diff, splitvt-1.6.5-r1.ebuild:
+  Added patch so splitvt will build with gcc-4.
+
+  26 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> splitvt-1.6.5-r1.ebuild:
+  Stable on ppc.
+
+  28 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org> splitvt-1.6.5-r1.ebuild:
+  Stable on sparc
+
+  25 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> splitvt-1.6.5-r1.ebuild:
+  Marked stable on x86.
+
+*splitvt-1.6.5-r1 (29 Jan 2005)
+
+  29 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> +splitvt-1.6.5-r1.ebuild:
+  Revision bump; apply debian patch to fix many critters - bug 79372.
+
+  29 Jan 2005; Tom Martin <slarti@gentoo.org> metadata.xml,
+  splitvt-1.6.5.ebuild:
+  Removing amd64 keyword -- will not run on amd64. Removing myself as maintainer.
+
+  13 Oct 2004; Tom Martin <slarti@gentoo.org> metadata.xml:
+  Taking over as maintainer, previously unmaintained. Added shell-tools as herd.
+
+  23 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> splitvt-1.6.5.ebuild:
+  Unmask on amd64.
+
+  17 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> splitvt-1.6.5.ebuild:
+  Adding amd64 keyword. Closing #44305.
+
+  14 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> splitvt-1.6.5.ebuild:
+  Don't assign default to S; header fix
+
+*splitvt-1.6.5 (1 Feb 2002)
+  
+  07 Aug 2002; Calum Selkirk <cselkirk@gentoo.org> splitvt-1.6.5.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

@@ -1,0 +1,56 @@
+# ChangeLog for app-emacs/apache-mode
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/apache-mode/ChangeLog,v 1.17 2012/09/08 09:15:21 ulm Exp $
+
+  08 Sep 2012; Ulrich Müller <ulm@gentoo.org> apache-mode-1.1.ebuild:
+  Change EAPI to 4.
+
+  14 Jun 2008; Ulrich Mueller <ulm@gentoo.org> apache-mode-1.1.ebuild:
+  Do not assign SIMPLE_ELISP since elisp.eclass now detects this case
+  automatically.
+
+  03 Jul 2007; Ulrich Mueller <ulm@gentoo.org> apache-mode-1.1.ebuild:
+  Remove redundant functions.
+
+  07 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  files/50apache-mode-gentoo.el:
+  add load path correctly, fixes bug 169588, reported by Ulrich Mueller
+  <ulm@kph.uni-mainz.de>
+
+  28 Jan 2007; Marius Mauch <genone@gentoo.org> apache-mode-1.1.ebuild:
+  Replacing einfo with elog
+
+  09 Jan 2007; Christian Faulhammer <opfer@gentoo.org>
+  apache-mode-1.1.ebuild:
+  added some quotes
+
+  04 Dec 2006; Christian Faulhammer <opfer@gentoo.org>
+  -apache-mode-1.0.ebuild, apache-mode-1.1.ebuild:
+  clean up old versions and corrected Homepage
+
+  24 Oct 2005; Joseph Jezak <josejx@gentoo.org> apache-mode-1.1.ebuild:
+  Marked ~ppc.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> apache-mode-1.1.ebuild:
+  stable on amd64
+
+  03 Sep 2004; Tom Martin <slarti@gentoo.org> apache-mode-1.1.ebuild:
+  Marked ~amd64, resolves #58425. Thanks to Gabriel Ebner <ge@gabrielebner.at>
+  for reporting.
+
+  26 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> apache-mode-1.1.ebuild:
+  Marked as stable.
+
+*apache-mode-1.1 (18 Jul 2004)
+
+  18 Jul 2004; Mamoru KOMACHI <usata@gentoo.org>
+  files/50apache-mode-gentoo.el, +apache-mode-1.1.ebuild:
+  Version bumped. Sources are taken from Debian. This closes bug #57098
+
+*apache-mode-1.0 (04 Nov 2002)
+
+  04 Nov 2002; Matthew Kennedy <mkennedy@gentoo.org> ChangeLog,
+  apache-mode-1.0.ebuild, files/50apache-mode-gentoo.el,
+  files/digest-apache-mode-1.0 :
+
+  Initial import.

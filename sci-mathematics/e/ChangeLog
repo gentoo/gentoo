@@ -1,0 +1,29 @@
+# ChangeLog for sci-mathematics/e
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/e/ChangeLog,v 1.7 2013/08/23 12:38:30 gienah Exp $
+
+  23 Aug 2013; Mark Wright <gienah@gentoo.org> e-1.8.ebuild:
+  Thanks to jlec for suggestions on simplifying the e-1.8.ebuild (dodir
+  unecessary, dobin and doman take multiple arguments, dohtml estyle.sty).
+
+*e-1.8 (23 Aug 2013)
+
+  23 Aug 2013; Mark Wright <gienah@gentoo.org> +e-1.8.ebuild:
+  Bump E to 1.8 Jun Gopaldhara.
+
+  24 May 2013; Mark Wright <gienah@gentoo.org> metadata.xml:
+  fix bug 466776 - typo in email address
+
+  05 Dec 2012; Mark Wright <gienah@gentoo.org> e-1.5.ebuild, e-1.6.ebuild:
+  EAPI=5 with subslot depends to automatically rebuild e when isabelle is
+  updated if the isabelle use flag is enabled.
+
+*e-1.6 (20 Sep 2012)
+
+  20 Sep 2012; Mark Wright <gienah@gentoo.org> +e-1.6.ebuild:
+  Bump E to 1.6 Tiger Hill
+
+*e-1.5 (30 May 2012)
+
+  30 May 2012; Mark Wright <gienah@gentoo.org> +e-1.5.ebuild, +metadata.xml:
+  Add E theorem prover, with optional Isabelle/HOL sledgehammer integration.

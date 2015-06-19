@@ -1,0 +1,25 @@
+# ChangeLog for dev-python/pygene
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pygene/ChangeLog,v 1.5 2015/01/02 11:40:04 idella4 Exp $
+
+*pygene-0.2.1-r1 (02 Jan 2015)
+
+  02 Jan 2015; Ian Delaney <idella4@gentoo.org> +pygene-0.2.1-r1.ebuild,
+  -pygene-0.2.1.ebuild:
+  revbump; conversion -> distutils-r1, rm old
+
+  08 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pygene-0.2.1.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+  15 Feb 2009; Patrick Lauer <patrick@gentoo.org> pygene-0.2.1.ebuild:
+  Adding ~amd64 keyword
+
+  02 Sep 2008; Rob Cakebread <pythonhead@gentoo.org> pygene-0.2.1.ebuild:
+  Fixed NEED_PYTHON.
+
+*pygene-0.2.1 (30 Jul 2008)
+
+  30 Jul 2008; Jesus Rivero <neurogeek@gentoo.org> +metadata.xml,
+  +pygene-0.2.1.ebuild:
+  Initial commit, closes bug #115218

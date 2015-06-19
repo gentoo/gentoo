@@ -1,0 +1,8 @@
+DEFINED_PHASES=install
+DESCRIPTION=Multithreading application for matching large sets of patterns against biosequence dbs.
+HOMEPAGE=http://web.mit.edu/bamel/biogrep.shtml
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://web.mit.edu/bamel/biogrep-1.0.tar.gz
+_md5_=067c8d5ea5d7641e09f4f5d3ba8dff78

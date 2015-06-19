@@ -1,0 +1,117 @@
+# ChangeLog for sci-libs/votca-tools
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/votca-tools/ChangeLog,v 1.26 2015/03/16 08:23:50 ago Exp $
+
+  16 Mar 2015; Agostino Sarubbo <ago@gentoo.org> votca-tools-1.2.4.ebuild:
+  Stable for x86, wrt bug #526968
+
+  02 Jan 2015; Chema Alonso <nimiux@gentoo.org> votca-tools-1.2.4.ebuild:
+  Stable for amd64 wrt bug #526968
+
+*votca-tools-1.2.4 (31 Aug 2014)
+
+  31 Aug 2014; Christoph Junghans <ottxor@gentoo.org> +votca-tools-1.2.4.ebuild,
+  -files/votca-tools-1.2.3-boost-1.53.patch, -votca-tools-1.2.3-r3.ebuild:
+  version bump
+
+  02 Jul 2013; Christoph Junghans <ottxor@gentoo.org>
+  votca-tools-1.2.3-r3.ebuild:
+  remove usage of base.eclass (bug #475522)
+
+*votca-tools-1.2.3-r3 (14 Apr 2013)
+
+  14 Apr 2013; Christoph Junghans <ottxor@gentoo.org>
+  +votca-tools-1.2.3-r3.ebuild, -votca-tools-1.2.3-r2.ebuild:
+  added subslot deps
+
+*votca-tools-1.2.3-r2 (06 Feb 2013)
+
+  06 Feb 2013; Christoph Junghans <ottxor@gentoo.org>
+  +votca-tools-1.2.3-r2.ebuild, -votca-tools-1.2.3-r1.ebuild:
+  added missing base_src_prepare (bug #455844)
+
+*votca-tools-1.2.3-r1 (27 Jan 2013)
+
+  27 Jan 2013; Christoph Junghans <ottxor@gentoo.org>
+  +files/votca-tools-1.2.3-boost-1.53.patch, +votca-tools-1.2.3-r1.ebuild,
+  -votca-tools-1.2.3.ebuild:
+  fix build with boost-1.53 (bug #454104)
+
+  26 Dec 2012; Christoph Junghans <ottxor@gentoo.org> votca-tools-1.2.2.ebuild,
+  votca-tools-1.2.3.ebuild:
+  use new mercurial.eclass defaults
+
+  17 Nov 2012; Christoph Junghans <ottxor@gentoo.org> metadata.xml:
+  updated metadata.xml
+
+*votca-tools-1.2.3 (17 Aug 2012)
+
+  17 Aug 2012; Christoph Junghans <ottxor@gentoo.org> +votca-tools-1.2.3.ebuild:
+  version bump
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> votca-tools-1.2.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  23 Feb 2012; Kacper Kowalik <xarthisius@gentoo.org> votca-tools-1.2.2.ebuild:
+  Fix dependency on app-doc/doxygen wrt converting useflags 'nodot' to 'dot'.
+  Fixes bug 405453 by Marien Zwart <marienz@gentoo.org>
+
+  05 Feb 2012; Christoph Junghans <ottxor@gentoo.org>
+  -votca-tools-1.2.1.ebuild:
+  remove old
+
+  25 Jan 2012; Thomas Kahle <tomka@gentoo.org> votca-tools-1.2.2.ebuild:
+  x86 stable per bug 389681
+
+  17 Jan 2012; Agostino Sarubbo <ago@gentoo.org> votca-tools-1.2.2.ebuild:
+  Stable for amd64, wrt bug #389681
+
+*votca-tools-1.2.2 (11 Jan 2012)
+
+  11 Jan 2012; Christoph Junghans <ottxor@gentoo.org>
+  +votca-tools-1.2.2.ebuild:
+  version bump
+
+  14 Dec 2011; Agostino Sarubbo <ago@gentoo.org> votca-tools-1.2.1.ebuild:
+  Stable for AMD64, wrt bug #389681
+
+  05 Nov 2011; Christoph Junghans <ottxor@gentoo.org> votca-tools-1.2.1.ebuild:
+  multilib support
+
+  25 Aug 2011; Christoph Junghans <ottxor@gentoo.org> -votca-tools-1.2.ebuild,
+  +votca-tools-1.2.1.ebuild:
+  version bump
+
+  14 Aug 2011; Christoph Junghans <ottxor@gentoo.org>
+  -votca-tools-1.1.1.ebuild, -votca-tools-1.1.2.ebuild, votca-tools-1.2.ebuild,
+  metadata.xml:
+  renamed boost useflag to system-boost and removed old
+
+  06 Jul 2011; Christoph Junghans <ottxor@gentoo.org> votca-tools-1.2.ebuild:
+  pristine tarball has wrong ${S} (bug #374165)
+
+*votca-tools-1.2 (17 Jun 2011)
+
+  17 Jun 2011; Christoph Junghans <ottxor@gentoo.org> +votca-tools-1.2.ebuild:
+  Version bump
+
+*votca-tools-1.1.2 (04 Apr 2011)
+
+  04 Apr 2011; Christoph Junghans <ottxor@gentoo.org>
+  +votca-tools-1.1.2.ebuild:
+  Version bump
+
+  09 Mar 2011; Christoph Junghans <ottxor@gentoo.org> votca-tools-1.1.1.ebuild:
+  added ~amd64 (bug #357983)
+
+*votca-tools-1.1.1 (07 Mar 2011)
+
+  07 Mar 2011; Christoph Junghans <ottxor@gentoo.org>
+  -votca-tools-1.0.1.ebuild, +votca-tools-1.1.1.ebuild:
+  version bump
+
+*votca-tools-1.0.1 (12 Feb 2011)
+
+  12 Feb 2011; Christoph Junghans <ottxor@gentoo.org>
+  +votca-tools-1.0.1.ebuild, +metadata.xml:
+  Initial commit (bug #296707)

@@ -1,0 +1,63 @@
+# ChangeLog for dev-haskell/ghc-paths
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/ghc-paths/ChangeLog,v 1.15 2015/01/02 23:11:30 slyfox Exp $
+
+  02 Jan 2015; Sergei Trofimovich <slyfox@gentoo.org> ghc-paths-0.1.0.9.ebuild:
+  ppc64 stable
+
+  25 Apr 2013; Agostino Sarubbo <ago@gentoo.org> ghc-paths-0.1.0.9.ebuild:
+  Stable for sparc, wrt bug #457780
+
+  18 Apr 2013; Agostino Sarubbo <ago@gentoo.org> ghc-paths-0.1.0.9.ebuild:
+  Stable for ia64, wrt bug #457780
+
+  18 Apr 2013; Agostino Sarubbo <ago@gentoo.org> ghc-paths-0.1.0.9.ebuild:
+  Stable for alpha, wrt bug #457780
+
+  14 Apr 2013; Agostino Sarubbo <ago@gentoo.org> ghc-paths-0.1.0.9.ebuild:
+  Stable for ppc, wrt bug #457780
+
+  28 Mar 2013; Agostino Sarubbo <ago@gentoo.org> ghc-paths-0.1.0.9.ebuild:
+  Stable for x86, wrt bug #457780
+
+  28 Mar 2013; Agostino Sarubbo <ago@gentoo.org> ghc-paths-0.1.0.9.ebuild:
+  Stable for amd64, wrt bug #457780
+
+*ghc-paths-0.1.0.9 (22 Dec 2012)
+
+  22 Dec 2012; Sergei Trofimovich <slyfox@gentoo.org> +ghc-paths-0.1.0.9.ebuild,
+  -ghc-paths-0.1.0.8.ebuild:
+  Version bump.
+
+  12 Sep 2012; Alexander Vershilov <qnikst@gentoo.org> ghc-paths-0.1.0.8.ebuild:
+  move dev-haskell/ghc-paths/ghc-paths-0.1.0.8.ebuild ebuild to mirror://hackage
+
+  03 Aug 2011; Sergei Trofimovich <slyfox@gentoo.org> ghc-paths-0.1.0.8.ebuild:
+  keyworded alpha/ia64/ppc/ppc64/sparc/x86-fbsd (set of constants for haddock)
+
+  02 Aug 2011; Sergei Trofimovich <slyfox@gentoo.org>
+  -ghc-paths-0.1.0.6.ebuild:
+  Removed old.
+
+*ghc-paths-0.1.0.8 (02 Aug 2011)
+
+  02 Aug 2011; Sergei Trofimovich <slyfox@gentoo.org>
+  +ghc-paths-0.1.0.8.ebuild:
+  Version bump.
+
+  17 Jul 2010; Sergei Trofimovich <slyfox@gentoo.org>
+  ghc-paths-0.1.0.6.ebuild:
+  Fixed building against newer Cabal library versions (bug #316613). Thanks
+  to Diego E. 'Flameeyes' Pettenò <flameeyes@gentoo.org> for the report.
+
+*ghc-paths-0.1.0.6 (14 Jun 2010)
+
+  14 Jun 2010; Lennart Kolmodin <kolmodin@gentoo.org>
+  +ghc-paths-0.1.0.6.ebuild:
+  Version bump.
+
+*ghc-paths-0.1.0.5 (19 Apr 2009)
+
+  19 Apr 2009; Lennart Kolmodin <kolmodin@gentoo.org> +metadata.xml,
+  +ghc-paths-0.1.0.5.ebuild:
+  Initial version.

@@ -1,0 +1,96 @@
+# ChangeLog for net-im/coccinella
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-im/coccinella/ChangeLog,v 1.16 2014/08/05 18:34:20 mrueg Exp $
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> coccinella-0.96.20.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+*coccinella-0.96.20 (20 Mar 2012)
+
+  20 Mar 2012; Pacho Ramos <pacho@gentoo.org> +coccinella-0.96.20.ebuild,
+  -coccinella-0.96.18.ebuild, -files/97coccinella:
+  Version bump (#408273 by Vladimir), remove old.
+
+  18 Mar 2012; Pacho Ramos <pacho@gentoo.org> -coccinella-0.96.10.ebuild,
+  -coccinella-0.96.14.ebuild, metadata.xml:
+  Drop maintainer due retirement, bug #391429. Drop old.
+
+*coccinella-0.96.18 (18 May 2010)
+
+  18 May 2010; J. Alberto Suárez López <bass@gentoo.org>
+  +coccinella-0.96.18.ebuild:
+  version bump. close #306019. thanks Vladimir
+
+  09 Mar 2010; Jonathan Callen <abcd@gentoo.org> coccinella-0.96.14.ebuild:
+  QA: Do not use absolute path to icon when in standard dirs (in
+  make_desktop_entry()); remove categories (eclass provides a better
+  default)
+
+*coccinella-0.96.14 (24 Nov 2009)
+
+  24 Nov 2009; J. Alberto Suárez López <bass@gentoo.org>
+  +coccinella-0.96.14.ebuild:
+  Version Bump. Close #290698 Thanks Vladimir.
+
+  14 Nov 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -coccinella-0.95.7.ebuild, -coccinella-0.95.10.ebuild:
+  QA: Drop old version. Newest seems fine here so dropping the mask.
+
+*coccinella-0.96.10 (28 Sep 2008)
+
+  28 Sep 2008; J. Alberto Suárez López <bass@gentoo.org>
+  +coccinella-0.96.10.ebuild:
+  version bump
+
+  06 May 2007; Marius Mauch <genone@gentoo.org> coccinella-0.95.7.ebuild,
+  coccinella-0.95.10.ebuild:
+  Replacing einfo with elog
+
+  28 Apr 2007; Sven Wegener <swegener@gentoo.org> coccinella-0.95.7.ebuild,
+  coccinella-0.95.10.ebuild:
+  Fix *initd, *confd and *envd calls (#173884, #174266)
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*coccinella-0.95.10 (28 Dec 2005)
+
+  28 Dec 2005; josé Alberto Suárez López <bass@gentoo.org> +metadata.xml,
+  -coccinella-0.94.7.ebuild:
+  Added metadata.xml and remove old ebuilds.
+
+  28 Dec 2005; josé Alberto Suárez López <bass@gentoo.org>
+  +coccinella-0.95.10.ebuild:
+  Bump version. Enjoy
+
+*coccinella-0.95.7 (13 Jun 2005)
+
+  28 Aug 2005; Stuart Longland <redhatter@gentoo.org> coccinella-0.95.7.ebuild:
+  Tested and working on MIPS, adding ~mips keyword
+
+  13 Jun 2005; J. Alberto Suarez L. <bass@gentoo.org> coccinella-0.95.7.ebuild:
+  Version bumped, category changed. Bug #46810
+
+*coccinella-0.94.7 (29 Feb 2004)
+  29 Feb 2004; J. Alberto Suarez L. <bass@gentoo.org> coccinella-0.94.7.ebuild:
+  Version bumped
+
+*coccinella-0.94.3 (03 Mar 2003)
+ 03 Mar 2003; J. Alberto Suarez L. <bass@gentoo.org> coccinella-0.94.3.ebuild:
+ New dev version.
+
+ 06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+
+*coccinella-0.94.2 (11 Dec 2002)
+
+  11 Dec 2002; J. Alberto Suarez L. <bass@gentoo.org> coccinella-0.94.2.ebuild:
+  New version.
+
+*coccinella-0.94 (11 Jun 2002)
+
+  06 Jul 2002; phoen][x <phoenix@gentoo.org> ChangeLog coccinella-0.94.ebuild:  
+  Added KEYWORDS.
+
+  09 Jun 2002; J. Alberto S. L. <bass@gentoo.org> coccinella-0.94.ebuild:
+  The initial package.
+  

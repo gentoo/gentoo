@@ -1,0 +1,142 @@
+# ChangeLog for app-admin/pass
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/pass/ChangeLog,v 1.32 2015/02/15 14:17:49 mgorny Exp $
+
+  15 Feb 2015; Michał Górny <mgorny@gentoo.org> pass-1.6.5.ebuild,
+  pass-9999.ebuild:
+  Fix HOMEPAGE, bump EAPI. Bug #520718 with PR by Michael Mair-Keimberger.
+
+*pass-1.6.5 (28 Jan 2015)
+
+  28 Jan 2015; Jason A. Donenfeld <zx2c4@gentoo.org> +pass-1.6.5.ebuild,
+  -pass-1.6.4.ebuild:
+  Version bump
+
+*pass-1.6.4 (28 Jan 2015)
+
+  28 Jan 2015; Jason A. Donenfeld <zx2c4@gentoo.org> +pass-1.6.4.ebuild,
+  -pass-1.6.3.ebuild:
+  Version bump
+
+  21 Nov 2014; Tim Harder <radhermit@gentoo.org> pass-1.6.3.ebuild,
+  pass-9999.ebuild:
+  Rename zsh-completion to gentoo-zsh-completions.
+
+  26 Jul 2014; Jason A. Donenfeld <zx2c4@gentoo.org> pass-1.6.3.ebuild,
+  pass-9999.ebuild:
+  Install to correct DESTDIR.
+
+  19 Jul 2014; Fabian Groffen <grobian@gentoo.org> pass-1.6.3.ebuild,
+  pass-9999.ebuild:
+  Fix out of Prefix errors, by Hugh Nowlan in bug #513614
+
+*pass-1.6.3 (01 Jul 2014)
+
+  01 Jul 2014; Jason A. Donenfeld <zx2c4@gentoo.org> +pass-1.6.3.ebuild,
+  -pass-1.6.2.ebuild:
+  Version bump.
+
+  29 Jun 2014; Jason A. Donenfeld <zx2c4@gentoo.org> pass-9999.ebuild:
+  The latest passmenu now uses xdotool.
+
+*pass-1.6.2 (14 May 2014)
+
+  14 May 2014; Jason A. Donenfeld <zx2c4@gentoo.org> +pass-1.6.2.ebuild,
+  -pass-1.6.1-r1.ebuild:
+  Version bump.
+
+  09 May 2014; Jason A. Donenfeld <zx2c4@gentoo.org> pass-1.6.1-r1.ebuild,
+  pass-9999.ebuild:
+  Elisp dies anyway
+
+  09 May 2014; Jason A. Donenfeld <zx2c4@gentoo.org> metadata.xml,
+  pass-1.6.1-r1.ebuild, pass-9999.ebuild:
+  Install importers behind USE flag.
+
+  09 May 2014; Jason A. Donenfeld <zx2c4@gentoo.org> +files/50pass-gentoo.el,
+  pass-1.6.1-r1.ebuild, pass-9999.ebuild:
+  Add initial emacs support.
+
+  08 May 2014; Jason A. Donenfeld <zx2c4@gentoo.org> pass-1.6.1-r1.ebuild,
+  pass-9999.ebuild:
+  We need zsh completion.
+
+*pass-1.6.1-r1 (08 May 2014)
+
+  08 May 2014; Jason A. Donenfeld <zx2c4@gentoo.org> +pass-1.6.1-r1.ebuild,
+  -pass-1.6.1.ebuild:
+  Revbump the bash comp fix.
+
+  08 May 2014; Jason A. Donenfeld <zx2c4@gentoo.org> pass-1.6.1.ebuild,
+  pass-9999.ebuild:
+  Use proper bash completion eclass.
+
+  24 Apr 2014; Jason A. Donenfeld <zx2c4@gentoo.org> -pass-1.4.2.ebuild,
+  -pass-1.5.ebuild:
+  Remove old versions.
+
+*pass-1.6.1 (24 Apr 2014)
+
+  24 Apr 2014; Jason A. Donenfeld <zx2c4@gentoo.org> +pass-1.6.1.ebuild,
+  -pass-1.6.ebuild:
+  Version bump.
+
+*pass-1.6 (24 Apr 2014)
+
+  24 Apr 2014; Jason A. Donenfeld <zx2c4@gentoo.org> +pass-1.6.ebuild,
+  pass-9999.ebuild:
+  Version bump
+
+  24 Apr 2014; Jason A. Donenfeld <zx2c4@gentoo.org> metadata.xml,
+  pass-9999.ebuild:
+  Add dmenu support.
+
+  23 Apr 2014; Jason A. Donenfeld <zx2c4@gentoo.org> pass-9999.ebuild:
+  Depend on new version of tree.
+
+  23 Apr 2014; Jason A. Donenfeld <zx2c4@gentoo.org> pass-9999.ebuild:
+  Turns out the default test phase worked fine.
+
+  23 Apr 2014; Jason A. Donenfeld <zx2c4@gentoo.org> pass-9999.ebuild:
+  Add test phase
+
+  20 Apr 2014; Jason A. Donenfeld <zx2c4@gentoo.org> pass-9999.ebuild:
+  Use upstream makefile.
+
+*pass-1.5 (13 Apr 2014)
+
+  13 Apr 2014; Jason A. Donenfeld <zx2c4@gentoo.org> +pass-1.5.ebuild:
+  Bump version.
+
+  22 Mar 2014; Jason A. Donenfeld <zx2c4@gentoo.org> pass-9999.ebuild:
+  Support darwin on livebuild.
+
+  22 Mar 2014; Jason A. Donenfeld <zx2c4@gentoo.org> pass-9999.ebuild:
+  Completion location changed in upstream.
+
+  28 Oct 2013; Fabian Groffen <grobian@gentoo.org> pass-1.4.2.ebuild:
+  Fix elibc-use-expanded variable name, bug #488822
+
+  20 Oct 2013; Fabian Groffen <grobian@gentoo.org> pass-1.4.2.ebuild:
+  Fix for Darwin, based on work by Changyuan Yu in bug #481194
+
+  16 Apr 2013; Justin Lecher <jlec@gentoo.org> pass-1.4.2.ebuild,
+  pass-9999.ebuild, metadata.xml:
+  Drop dot from DESCRIPTION
+
+*pass-1.4.2 (18 Oct 2012)
+
+  18 Oct 2012; Jason A. Donenfeld <zx2c4@gentoo.org> +pass-1.4.2.ebuild,
+  -pass-1.4.1.ebuild:
+  Version bump.
+
+  14 Oct 2012; Jason A. Donenfeld <zx2c4@gentoo.org> pass-1.4.1.ebuild,
+  pass-9999.ebuild:
+  Per ago's suggestion, make src_compile a no-op.
+
+*pass-9999 (13 Oct 2012)
+*pass-1.4.1 (13 Oct 2012)
+
+  13 Oct 2012; Jason A. Donenfeld <zx2c4@gentoo.org> +pass-1.4.1.ebuild,
+  +pass-9999.ebuild, +metadata.xml:
+  Initial version of pass.

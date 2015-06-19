@@ -1,0 +1,34 @@
+# ChangeLog for dev-php/phpDocumentor
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/phpDocumentor/ChangeLog,v 1.6 2015/06/07 09:37:45 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*phpDocumentor-2.8.2 (05 May 2015)
+
+  05 May 2015; Brian Evans <grknight@gentoo.org> +phpDocumentor-2.8.2.ebuild:
+  Version bump, use phar instead of tar archive
+
+*phpDocumentor-2.7.0 (10 Oct 2014)
+
+  10 Oct 2014; Brian Evans <grknight@gentoo.org> +phpDocumentor-2.7.0.ebuild,
+  -phpDocumentor-2.2.0.ebuild:
+  Version bump wrt bug 492512 and bug 503416
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  phpDocumentor-2.2.0.ebuild, phpDocumentor-2.3.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*phpDocumentor-2.3.0 (17 Feb 2014)
+
+  17 Feb 2014; Matti Bickel <mabi@gentoo.org> +phpDocumentor-2.3.0.ebuild,
+  phpDocumentor-2.2.0.ebuild:
+  version bump. update RDEPEND to include php extensions as stated by the README
+
+*phpDocumentor-2.2.0 (08 Jan 2014)
+
+  08 Jan 2014; Matti Bickel <mabi@gentoo.org> +files/channel.xml, +metadata.xml,
+  +phpDocumentor-2.2.0.ebuild:
+  initial version, intended as an update to dev-php/PEAR-PhpDocumentor; note the
+  use of bundled libraries we do not provide in-tree

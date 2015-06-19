@@ -1,0 +1,29 @@
+#!/sbin/runscript
+
+PIDFILE=/var/run/mfscgiserv.pid
+
+extra_started_commands="reload"
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting mfs CGI server"
+	start-stop-daemon --start --quiet --exec /usr/sbin/mfscgiserv \
+	--pidfile "${PIDFILE}" --make-pidfile --background \
+	-- -H ${BIND_HOST} -P ${BIND_PORT} -f
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping mfs CGI server"
+	start-stop-daemon --stop -q --pidfile "${PIDFILE}"
+	eend $?
+}
+
+reload() {
+	ebegin "Reloading mfs CGI server"
+	start-stop-daemon --signal HUP --pidfile "${PIDFILE}"
+	eend $?
+}

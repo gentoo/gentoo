@@ -1,0 +1,15 @@
+ CMakeLists.txt |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 57394af..5a46a75 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -56,6 +56,7 @@ set (cminpack_hdrs
+     cminpack.h minpack.h)
+ 
+ add_library (cminpack ${LIB_TYPE} ${cminpack_srcs})
++target_link_libraries (cminpack m)
+ 
+ install (TARGETS cminpack 
+    LIBRARY DESTINATION ${CMINPACK_LIB_INSTALL_DIR} COMPONENT library

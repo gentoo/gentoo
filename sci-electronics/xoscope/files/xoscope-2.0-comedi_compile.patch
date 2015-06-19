@@ -1,0 +1,32 @@
+--- xoscope-2.0/comedi.c
++++ xoscope-2.0/comedi.c
+@@ -27,7 +27,7 @@
+ #include <sys/ioctl.h>
+ #include <sys/time.h>
+ #include <sys/poll.h>
+-#include <asm/page.h>
++//#include <asm/page.h>
+ #include <comedilib.h>
+ #include "oscope.h"		/* program defaults */
+ #include "func.h"
+@@ -184,7 +184,9 @@
+      * avoid the bug.  This is the only reason we need <asm/page.h> in
+      * our include list.
+      */
+-    comedi_bufsize = (comedi_bufsize + PAGE_SIZE - 1) & PAGE_MASK;
++    //comedi_bufsize = (comedi_bufsize + PAGE_SIZE - 1) & PAGE_MASK;
++    comedi_bufsize = (comedi_bufsize + sysconf(_SC_PAGE_SIZE) - 1) &
++    (sysconf(_SC_PAGE_SIZE) - 1);
+     ret = comedi_set_buffer_size(comedi_dev, comedi_subdevice, comedi_bufsize);
+     if (ret < 0) {
+       comedi_error = comedi_errno();
+@@ -505,7 +507,7 @@
+     unsigned int chan;
+     int ret;
+ 
+-    ret = comedi_get_cmd_generic_timed(comedi_dev, comedi_subdevice, &cmd, 0);
++    ret = comedi_get_cmd_generic_timed(comedi_dev, comedi_subdevice, &cmd, 0, 1);
+ 
+     if (ret >= 0) {
+       chan = CR_PACK(4,0,AREF_DIFF);
+

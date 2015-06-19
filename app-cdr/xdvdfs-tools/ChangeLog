@@ -1,0 +1,49 @@
+# ChangeLog for app-cdr/xdvdfs-tools
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/xdvdfs-tools/ChangeLog,v 1.11 2008/11/27 18:02:11 vapier Exp $
+
+  27 Nov 2008; Mike Frysinger <vapier@gentoo.org>
+  xdvdfs-tools-2.1-r1.ebuild:
+  Respect build settings #248714 by Diego E. Pettenò and touchup rar DEPEND
+  #244989 by drantin.
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*xdvdfs-tools-2.1-r1 (26 May 2005)
+
+  26 May 2005; Chris Bainbridge <chrb@gentoo.org> -xdvdfs-tools-1.0.ebuild,
+  +xdvdfs-tools-2.1-r1.ebuild:
+  Revision bump for security fix.
+
+  22 May 2005; Chris Bainbridge <chrb@gentoo.org> -xdvdfs-tools-1.0.ebuild:
+  Removing insecure 1.0 ebuild.
+
+*xdvdfs-tools-2.1 (21 May 2005)
+
+  21 May 2005; Chris Bainbridge <chrb@gentoo.org>
+  +files/xdvdfs-tools-2.1-fnamefix.patch, +xdvdfs-tools-2.1.ebuild:
+  Version bump and security fix for bug #93054.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  xdvdfs-tools-1.0.ebuild:
+  Stable on ppc.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> xdvdfs-tools-1.0.ebuild:
+  stable on amd64
+
+  16 Oct 2004; Chris Bainbridge <chrb@gentoo.org> xdvdfs-tools-1.0.ebuild:
+  marked stable on x86
+
+  08 Aug 2004; Danny van Dyk <kugelfang@gentoo.org> xdvdfs-tools-1.0.ebuild:
+  Marked ~amd64.
+
+  30 Jun 2004; David Holm <dholm@gentoo.org> xdvdfs-tools-1.0.ebuild:
+  Added to ~ppc.
+
+*xdvdfs-tools-1.0 (30 Jun 2004)
+
+  30 Jun 2004; Chris Bainbridge <chrb@gentoo.org> +metadata.xml,
+  +xdvdfs-tools-1.0.ebuild:
+  This package was submitted by Chris Bainbridge in bug #44693
+

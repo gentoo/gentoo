@@ -1,0 +1,74 @@
+# ChangeLog for net-irc/ninja
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/ninja/ChangeLog,v 1.21 2012/12/30 23:51:12 ottxor Exp $
+
+*ninja-1.5.9_pre14-r1 (30 Dec 2012)
+
+  30 Dec 2012; Christoph Junghans <ottxor@gentoo.org>
+  +ninja-1.5.9_pre14-r1.ebuild, ninja-1.5.9_pre14.ebuild:
+  fix collision with dev-util/ninja (bug #436804)
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> ninja-1.5.9_pre14.ebuild:
+  Remove virtual/libc
+
+  31 May 2009; Brent Baude <ranger@gentoo.org> ninja-1.5.9_pre14.ebuild:
+  Marking ninja-1.5.9_pre14 ~ppc64 for bug 269147
+
+  19 Feb 2007; nixnut <nixnut@gentoo.org> ninja-1.5.9_pre14.ebuild:
+  Stable on ppc wrt bug 152483
+
+*ninja-1.5.9_pre14 (18 Feb 2007)
+
+  18 Feb 2007; Raúl Porcel <armin76@gentoo.org> +ninja-1.5.9_pre14.ebuild:
+  Version bump to fix bug 152483 and directly stable x86
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  ninja-1.5.9_pre12.ebuild:
+  Stable on ppc.
+
+  13 Nov 2004; Sven Wegener <swegener@gentoo.org> -ninja-1.5.9_pre9.ebuild:
+  Removed old ebuild.
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> ninja-1.5.9_pre12.ebuild:
+  Stable on amd64.
+
+  14 Aug 2004; Sven Wegener <swegener@gentoo.org> ninja-1.5.9_pre12.ebuild:
+  Marked stable on x86.
+
+*ninja-1.5.9_pre12 (09 Jul 2004)
+
+  09 Jul 2004; Sven Wegener <swegener@gentoo.org> +ninja-1.5.9_pre12.ebuild,
+  ninja-1.5.9_pre9.ebuild:
+  Updated SRC_URI and version bump.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  ninja-1.5.9_pre9.ebuild:
+  virtual/glibc -> virtual/libc
+
+  29 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  ninja-1.5.9_pre9.ebuild:
+  Masked ninja-1.5.9_pre9.ebuild testing for ppc
+
+  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> ninja-1.5.9_pre9.ebuild:
+  Add die following econf for bug 48950
+
+  14 Mar 2004; Jon Portnoy <avenj@gentoo.org> ninja-1.5.9_pre9.ebuild :
+  Fixed PV issue.
+
+  14 Feb 2004; Jason Wever <weeve@gentoo.org> ninja-1.5.9_pre9.ebuild:
+  Added ~sparc keyword.
+
+  05 Dec 2003; Chuck Short <zul@gentoo.org> ninja-1.5.9_pre9.ebuild:
+  Ebuild clean up.
+
+  18 Oct 2003; Chuck Short <zul@gentoo.org> ninja-1.5.9_pre9.ebuild:
+  Marked stable on x86, added amd64 to keywords.
+
+*ninja-1.5.9_pre9 (12 May  2003)
+
+  12 May 2003; Jon Portnoy <avenj@gentoo.org> ebuild-1.5.9_pre9.ebuild :
+  Initial import. Ebuild submitted by Burton Samograd
+  <kruhft@kruhft.dyndns.org>. Thanks Burton!

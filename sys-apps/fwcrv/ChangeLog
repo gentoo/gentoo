@@ -1,0 +1,27 @@
+# ChangeLog for sys-apps/fwcrv
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/fwcrv/ChangeLog,v 1.6 2008/01/14 02:34:51 robbat2 Exp $
+
+  14 Jan 2008; Robin H. Johnson <robbat2@gentoo.org> metadata.xml,
+  fwcrv-0.1.0.ebuild:
+  Update metadata, clean ebuild.
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  22 Mar 2006; Luca Barbato <lu_zero@gentoo.org>
+  +files/fwcrv-0.1.0-endian.patch, fwcrv-0.1.0.ebuild:
+  Fixed for big endian and char sign/unsign arches.
+
+  26 Sep 2005; Robin H. Johnson <robbat2@gentoo.org> fwcrv-0.1.0.ebuild:
+  Stable on x86, 260 days in ~x86.
+
+  17 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+*fwcrv-0.1.0 (09 Jan 2005)
+
+  09 Jan 2005; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +fwcrv-0.1.0.ebuild:
+  Inital submission. Ebuild submitted by Holger Hoffstätte <holger@wizards.de>.
+

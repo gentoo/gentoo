@@ -1,0 +1,38 @@
+# ChangeLog for dev-python/pynzb
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pynzb/ChangeLog,v 1.10 2015/04/08 08:05:00 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> pynzb-0.1.0-r1.ebuild:
+  Drop old Python implementations
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> pynzb-0.1.0-r1.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> pynzb-0.1.0-r1.ebuild:
+  amd64 stable, bug 540290
+
+  26 Jan 2015; Manuel Rüger <mrueg@gentoo.org> -pynzb-0.1.0.ebuild:
+  Remove old.
+
+  25 Nov 2014; Pacho Ramos <pacho@gentoo.org> pynzb-0.1.0-r1.ebuild:
+  Support python 3.4
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> pynzb-0.1.0-r1.ebuild:
+  Add support for the new PyPy slotting.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> pynzb-0.1.0-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*pynzb-0.1.0-r1 (10 Feb 2013)
+
+  10 Feb 2013; Mike Gilbert <floppym@gentoo.org> +pynzb-0.1.0-r1.ebuild:
+  Convert to distutils-r1.
+
+  15 Jan 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Remove myself from metadata
+
+*pynzb-0.1.0 (28 Aug 2011)
+
+  28 Aug 2011; Markos Chandras <hwoarang@gentoo.org> +pynzb-0.1.0.ebuild,
+  +metadata.xml:
+  Moved from sunrise. Bug #350025. Thanks to Mike Gilbert <floppym@gentoo.org>

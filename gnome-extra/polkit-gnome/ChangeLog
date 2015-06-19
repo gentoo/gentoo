@@ -1,0 +1,294 @@
+# ChangeLog for gnome-extra/polkit-gnome
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/polkit-gnome/ChangeLog,v 1.71 2015/05/27 13:53:02 tetromino Exp $
+
+  27 May 2015; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -polkit-gnome-0.102.ebuild, -polkit-gnome-0.105.ebuild:
+  Clean up old.
+
+  27 May 2015; Mikle Kolyada <zlogene@gentoo.org> polkit-gnome-0.105-r1.ebuild:
+  arm stable wrt bug #545850
+
+  16 May 2015; Jeroen Roovers <jer@gentoo.org> polkit-gnome-0.105-r1.ebuild:
+  Stable for PPC64 (bug #545850).
+
+  26 Apr 2015; Mikle Kolyada <zlogene@gentoo.org> polkit-gnome-0.105-r1.ebuild:
+  sparc stable wrt bug #545850
+
+  21 Apr 2015; Pacho Ramos <pacho@gentoo.org> polkit-gnome-0.105-r1.ebuild:
+  ppc stable wrt bug #545850
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org> polkit-gnome-0.105-r1.ebuild:
+  Stable for x86, wrt bug #545850
+
+  14 Apr 2015; Agostino Sarubbo <ago@gentoo.org> polkit-gnome-0.105-r1.ebuild:
+  Stable for ia64, wrt bug #545850
+
+  13 Apr 2015; Agostino Sarubbo <ago@gentoo.org> polkit-gnome-0.105-r1.ebuild:
+  Stable for alpha, wrt bug #545850
+
+  08 Apr 2015; Jeroen Roovers <jer@gentoo.org> polkit-gnome-0.105-r1.ebuild:
+  Stable for HPPA (bug #545850).
+
+  08 Apr 2015; Agostino Sarubbo <ago@gentoo.org> polkit-gnome-0.105-r1.ebuild:
+  Stable for amd64, wrt bug #545850
+
+  17 Aug 2014; Jeroen Roovers <jer@gentoo.org> polkit-gnome-0.105.ebuild,
+  polkit-gnome-0.105-r1.ebuild:
+  Stable for HPPA (bug #517804).
+
+  11 Mar 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #239126
+
+*polkit-gnome-0.105-r1 (28 Feb 2014)
+
+  28 Feb 2014; Samuli Suominen <ssuominen@gentoo.org>
+  +polkit-gnome-0.105-r1.ebuild:
+  Insert MATE to NotShowIn= in the xdg autostart .desktop file since they have
+  their own mate-polkit with a pkg-config file, library and headers -- and a
+  .desktop file with OnlyShowIn= set to MATE
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> polkit-gnome-0.102.ebuild,
+  polkit-gnome-0.105.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  25 Apr 2012; Markus Meier <maekke@gentoo.org> polkit-gnome-0.102.ebuild:
+  arm stable, bug #410611
+
+  18 Apr 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -files/polkit-gnome-0.95-fix-make-check.patch,
+  -files/polkit-gnome-0.95-parallel-build-failure.patch,
+  -polkit-gnome-0.101-r1.ebuild,
+  -files/polkit-gnome-authentication-agent-1.desktop:
+  old
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org> polkit-gnome-0.105.ebuild:
+  ia64/sh/sparc stable wrt #401513
+
+  09 Mar 2012; Samuli Suominen <ssuominen@gentoo.org>
+  polkit-gnome-0.102.ebuild, polkit-gnome-0.105.ebuild:
+  ppc/ppc64 stable wrt #401513
+
+  18 Feb 2012; Raúl Porcel <armin76@gentoo.org> polkit-gnome-0.102.ebuild:
+  ia64/sh/sparc stable wrt #401513
+
+  18 Feb 2012; Raúl Porcel <armin76@gentoo.org> polkit-gnome-0.102.ebuild,
+  polkit-gnome-0.105.ebuild:
+  ia64/sh/sparc stable wrt #401513
+
+  17 Feb 2012; Tobias Klausmann <klausman@gentoo.org>
+  polkit-gnome-0.102.ebuild:
+  Stable on alpha, bug #401513
+
+  17 Feb 2012; Tobias Klausmann <klausman@gentoo.org>
+  polkit-gnome-0.105.ebuild:
+  Stable on alpha, bug #401513
+
+  17 Feb 2012; Thomas Kahle <tomka@gentoo.org> polkit-gnome-0.102.ebuild,
+  polkit-gnome-0.105.ebuild:
+  marked x86 per bug 401513
+
+  29 Jan 2012; Markus Meier <maekke@gentoo.org> polkit-gnome-0.105.ebuild:
+  arm stable, bug #397755
+
+  07 Jan 2012; Agostino Sarubbo <ago@gentoo.org> polkit-gnome-0.102.ebuild:
+  Stable for AMD64, wrt bug #397755
+
+  07 Jan 2012; Agostino Sarubbo <ago@gentoo.org> polkit-gnome-0.105.ebuild:
+  Stable for AMD64, wrt bug #397755
+
+  12 Nov 2011; Samuli Suominen <ssuominen@gentoo.org>
+  polkit-gnome-0.102.ebuild:
+  Fix file collision with localization wrt #390267 by Graham Murray
+
+*polkit-gnome-0.102 (05 Nov 2011)
+
+  05 Nov 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +polkit-gnome-0.102.ebuild:
+  This ebuild is only for installing obsolete libpolkit-gtk-1 wrt #387663
+
+  27 Oct 2011; Samuli Suominen <ssuominen@gentoo.org>
+  -polkit-gnome-0.104.ebuild:
+  old
+
+*polkit-gnome-0.105 (27 Oct 2011)
+
+  27 Oct 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +polkit-gnome-0.105.ebuild:
+  Version bump.
+
+*polkit-gnome-0.104 (18 Oct 2011)
+
+  18 Oct 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +polkit-gnome-0.104.ebuild:
+  Version bump.
+
+  18 Sep 2011; Samuli Suominen <ssuominen@gentoo.org>
+  polkit-gnome-0.101-r1.ebuild:
+  Missing sys-auth/polkit[introspection?] depend for Polkit-1.0.gir as reported
+  by Ke at Freenode.
+
+  10 Jul 2011; Matt Turner <mattst88@gentoo.org> polkit-gnome-0.101-r1.ebuild:
+  Added ~mips, bug 296548
+
+  30 Apr 2011; Raúl Porcel <armin76@gentoo.org> polkit-gnome-0.101-r1.ebuild:
+  alpha/arm/ia64/sh/sparc stable wrt #364973
+
+  28 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  polkit-gnome-0.101-r1.ebuild:
+  x86 stable wrt security bug #364973
+
+  27 Apr 2011; Christoph Mende <angelos@gentoo.org>
+  polkit-gnome-0.101-r1.ebuild:
+  Stable on amd64 wrt bug #364973
+
+  27 Apr 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  polkit-gnome-0.101-r1.ebuild:
+  ppc/ppc64 stable wrt #364973
+
+  07 Apr 2011; Jonathan Callen <abcd@gentoo.org> polkit-gnome-0.99.ebuild,
+  polkit-gnome-0.100.ebuild, polkit-gnome-0.101-r1.ebuild:
+  Depend on gtk+[introspection?] for proper introspection support, fixes bug
+  362401
+
+  22 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> polkit-gnome-0.99.ebuild:
+  ppc/ppc64 stable wrt #354509
+
+*polkit-gnome-0.101-r1 (21 Mar 2011)
+
+  21 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  -polkit-gnome-0.101.ebuild, +polkit-gnome-0.101-r1.ebuild,
+  files/polkit-gnome-authentication-agent-1.desktop:
+  Add AutostartCondition to not autostart with authentication agent GNOME
+  Shell
+
+  19 Mar 2011; Raúl Porcel <armin76@gentoo.org> polkit-gnome-0.96-r1.ebuild,
+  polkit-gnome-0.99.ebuild, polkit-gnome-0.100.ebuild,
+  polkit-gnome-0.101.ebuild:
+  Add ~sh
+
+  19 Mar 2011; Raúl Porcel <armin76@gentoo.org> polkit-gnome-0.99.ebuild:
+  alpha/ia64/sparc stable wrt #354509
+
+  13 Mar 2011; Markus Meier <maekke@gentoo.org> polkit-gnome-0.99.ebuild:
+  arm stable, bug #354509
+
+*polkit-gnome-0.101 (11 Mar 2011)
+
+  11 Mar 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +polkit-gnome-0.101.ebuild:
+  Version bump.
+
+  04 Mar 2011; Thomas Kahle <tomka@gentoo.org> polkit-gnome-0.99.ebuild:
+  x86 stable per bug 354509
+
+  23 Feb 2011; Markos Chandras <hwoarang@gentoo.org> polkit-gnome-0.99.ebuild:
+  Stable on amd64 wrt bug #354509
+
+*polkit-gnome-0.100 (23 Feb 2011)
+
+  23 Feb 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  +polkit-gnome-0.100.ebuild,
+  +files/polkit-gnome-authentication-agent-1.desktop:
+  Bump to 0.100, manually add autostart desktop file
+
+  31 Jan 2011; Gilles Dartiguelongue <eva@gentoo.org>
+  polkit-gnome-0.96-r1.ebuild, polkit-gnome-0.99.ebuild:
+  Pin gtk+ to slot 2.
+
+  28 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> polkit-gnome-0.99.ebuild:
+  Remove unused app-text/scrollkeeper and gnome-base/gconf dependencies wrt
+  #349954 by Andrew Brouwers.
+
+  12 Dec 2010; Samuli Suominen <ssuominen@gentoo.org>
+  polkit-gnome-0.96-r1.ebuild:
+  ppc stable wrt #343155
+
+  13 Nov 2010; Raúl Porcel <armin76@gentoo.org>
+  polkit-gnome-0.96-r1.ebuild:
+  alpha/arm/ia64/sparc stable wrt #343155
+
+  03 Nov 2010; Markus Meier <maekke@gentoo.org> polkit-gnome-0.96-r1.ebuild:
+  x86 stable, bug #343155
+
+  28 Oct 2010; Samuli Suominen <ssuominen@gentoo.org>
+  polkit-gnome-0.96-r1.ebuild:
+  amd64/ppc64 stable wrt #343155
+
+  09 Oct 2010; Samuli Suominen <ssuominen@gentoo.org>
+  polkit-gnome-0.96.ebuild:
+  ppc64 stable wrt #324077
+
+  08 Oct 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  -polkit-gnome-0.94.ebuild, -polkit-gnome-0.95.ebuild:
+  Clean up old revisions.
+
+*polkit-gnome-0.99 (25 Sep 2010)
+
+  25 Sep 2010; <nirbheek@gentoo.org> +polkit-gnome-0.99.ebuild,
+  metadata.xml:
+  Bump to 0.99, masked due to >=glib-2.25 requirement
+
+  11 Sep 2010; Joseph Jezak <josejx@gentoo.org> polkit-gnome-0.96.ebuild:
+  Marked ppc for bug #324077.
+
+  14 Aug 2010; Raúl Porcel <armin76@gentoo.org> polkit-gnome-0.96.ebuild:
+  alpha/ia64/sparc stable
+
+*polkit-gnome-0.96-r1 (11 Aug 2010)
+
+  11 Aug 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +polkit-gnome-0.96-r1.ebuild:
+  Replace OnlyShowIn=GNOME; with NotShowIn=KDE; because polkit-gnome is
+  useful also for LXDE, XFCE, and others.
+
+  20 Jul 2010; Jeroen Roovers <jer@gentoo.org> polkit-gnome-0.95.ebuild,
+  polkit-gnome-0.96.ebuild:
+  Drop HPPA keywording (bug #324511).
+
+  04 Jun 2010; Markus Meier <maekke@gentoo.org> polkit-gnome-0.96.ebuild:
+  x86 stable, bug #314899
+
+  03 May 2010; Olivier Crête <tester@gentoo.org> polkit-gnome-0.96.ebuild:
+  amd64 stable, bug #314899
+
+  13 Apr 2010; Alexis Ballier <aballier@gentoo.org>
+  polkit-gnome-0.96.ebuild:
+  keyword ~x86-fbsd
+
+  10 Mar 2010; Joseph Jezak <josejx@gentoo.org> polkit-gnome-0.96.ebuild:
+  Marked ~ppc/~ppc64 for bug #296548.
+
+  28 Feb 2010; Raúl Porcel <armin76@gentoo.org> polkit-gnome-0.96.ebuild:
+  Add ~alpha/~arm/~ia64/~sparc
+
+*polkit-gnome-0.96 (23 Jan 2010)
+
+  23 Jan 2010; Nirbheek Chauhan <nirbheek@gentoo.org>
+  +polkit-gnome-0.96.ebuild:
+  Version bump to 0.96, couple of bugfixes; see NEWS
+
+  06 Jan 2010; Jeroen Roovers <jer@gentoo.org> polkit-gnome-0.95.ebuild:
+  Marked ~hppa (bug #296548).
+
+  02 Jan 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  polkit-gnome-0.95.ebuild:
+  Fix dependencies for changes introduced by bug #293247 fix.
+
+  27 Dec 2009; Nirbheek Chauhan <nirbheek@gentoo.org>
+  polkit-gnome-0.95.ebuild,
+  +files/polkit-gnome-0.95-parallel-build-failure.patch:
+  Add patch for fixing parallel build failure with USE=doc, bug 293247 ;
+  patch by Ed Catmur
+
+*polkit-gnome-0.95 (14 Nov 2009)
+
+  14 Nov 2009; Nirbheek Chauhan <nirbheek@gentoo.org>
+  +polkit-gnome-0.95.ebuild:
+  Bump to 0.95, goes with polkit bump
+
+*polkit-gnome-0.94 (29 Oct 2009)
+
+  29 Oct 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  +polkit-gnome-0.94.ebuild, +metadata.xml:
+  Initial ebuild for GNOME 2.28.

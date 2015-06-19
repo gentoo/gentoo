@@ -1,0 +1,12 @@
+--- ./duhdraw-2.8.13/duhdraw.c.orig	2005-03-02 09:22:46.000000000 +0100
++++ ./duhdraw-2.8.13/duhdraw.c	2006-11-16 09:56:21.000000000 +0100
+@@ -12,7 +12,9 @@
+ #include <stdio.h>
+ #include <dirent.h>
+ #include <sys/stat.h>
++#ifndef __APPLE__
+ #include <malloc.h>
++#endif
+ #include <time.h>
+ #include <curses.h>
+ #include <ctype.h>

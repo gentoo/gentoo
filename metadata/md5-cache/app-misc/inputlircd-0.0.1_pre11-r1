@@ -1,0 +1,9 @@
+DEFINED_PHASES=compile install unpack
+DESCRIPTION=Inputlirc daemon to utilize /dev/input/event*
+HOMEPAGE=http://svn.sliepen.eu.org/inputlirc/trunk
+KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://gentooexperimental.org/~genstef/dist/inputlircd-0.0.1_pre11.tar.bz2
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=8891fe9144bf95905c8bf3220c8df8d1

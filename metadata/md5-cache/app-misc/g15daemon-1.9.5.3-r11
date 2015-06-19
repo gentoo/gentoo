@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test unpack
+DEPEND=virtual/libusb:0 >=dev-libs/libg15-1.2.4 >=dev-libs/libg15render-1.2 perl? ( dev-lang/perl dev-perl/GDGraph >=dev-perl/Inline-0.4 ) python? ( dev-lang/python )
+DESCRIPTION=G15daemon takes control of the G15 keyboard, through the linux kernel uinput device driver
+EAPI=5
+HOMEPAGE=http://g15daemon.sourceforge.net/
+IUSE=perl python static-libs
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=GPL-2
+RDEPEND=virtual/libusb:0 >=dev-libs/libg15-1.2.4 >=dev-libs/libg15render-1.2 perl? ( dev-lang/perl dev-perl/GDGraph >=dev-perl/Inline-0.4 ) python? ( dev-lang/python )
+SLOT=0
+SRC_URI=mirror://sourceforge/g15daemon/g15daemon-1.9.5.3.tar.gz
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=5c5c533d714df99709aea3f000e64e35

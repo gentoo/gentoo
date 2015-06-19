@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=dev-lang/perl-5.10 app-text/po4a dev-perl/HTML-Parser dev-perl/HTML-Scrubber dev-perl/HTML-Template dev-perl/URI dev-perl/Text-Markdown dev-perl/TimeDate dev-perl/YAML-LibYAML test? ( dev-perl/File-chdir dev-perl/File-ReadBackwards dev-perl/File-MimeInfo dev-perl/HTML-LinkExtractor dev-perl/HTML-Tree dev-perl/Net-OpenID-Consumer dev-perl/RPC-XML dev-perl/XML-Feed dev-perl/XML-Twig dev-vcs/cvs[server] dev-vcs/cvsps ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=A wiki compiler
+EAPI=5
+HOMEPAGE=http://ikiwiki.info/
+IUSE=extras minimal test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-lang/perl-5.10 app-text/po4a dev-perl/HTML-Parser dev-perl/HTML-Scrubber dev-perl/HTML-Template dev-perl/URI dev-perl/Text-Markdown dev-perl/TimeDate dev-perl/YAML-LibYAML !minimal? ( dev-perl/CGI >=dev-perl/CGI-FormBuilder-3.0202 >=dev-perl/CGI-Session-4.14 dev-perl/Mail-Sendmail dev-perl/Term-ReadLine-Gnu dev-perl/XML-Simple media-gfx/imagemagick[perl] extras? ( dev-python/docutils dev-perl/Digest-SHA1 dev-perl/File-MimeInfo dev-perl/RPC-XML dev-perl/XML-Feed dev-perl/LWPx-ParanoidAgent dev-perl/Net-OpenID-Consumer ) ) dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://debian/pool/main/i/ikiwiki/ikiwiki_3.20140227.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=7a0f1d16692fec2b6be35d069d4202f4

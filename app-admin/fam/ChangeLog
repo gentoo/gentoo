@@ -1,0 +1,411 @@
+# ChangeLog for app-admin/fam
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/fam/ChangeLog,v 1.87 2014/01/18 19:56:34 ago Exp $
+
+  18 Jan 2014; Agostino Sarubbo <ago@gentoo.org> fam-2.7.0-r7.ebuild:
+  Stable for alpha, wrt bug #491888
+
+  15 Jan 2014; Agostino Sarubbo <ago@gentoo.org> fam-2.7.0-r7.ebuild:
+  Stable for ia64, wrt bug #491888
+
+  23 Dec 2013; Agostino Sarubbo <ago@gentoo.org> fam-2.7.0-r7.ebuild:
+  Stable for sparc, wrt bug #491888
+
+  22 Dec 2013; Agostino Sarubbo <ago@gentoo.org> fam-2.7.0-r7.ebuild:
+  Stable for ppc64, wrt bug #491888
+
+  21 Dec 2013; Agostino Sarubbo <ago@gentoo.org> fam-2.7.0-r7.ebuild:
+  Stable for ppc, wrt bug #491888
+
+  05 Dec 2013; Chema Alonso <nimiux@gentoo.org> fam-2.7.0-r7.ebuild:
+  Stable for amd64 wrt bug #491888
+
+  01 Dec 2013; Johannes Huber <johu@gentoo.org> fam-2.7.0-r7.ebuild:
+  x86 stable wrt bug #491888
+
+  30 Nov 2013; Markus Meier <maekke@gentoo.org> fam-2.7.0-r7.ebuild:
+  arm stable, bug #491888
+
+  24 Nov 2013; Jeroen Roovers <jer@gentoo.org> fam-2.7.0-r7.ebuild:
+  Stable for HPPA (bug #491888).
+
+  13 Oct 2013; Michał Górny <mgorny@gentoo.org> fam-2.7.0-r7.ebuild:
+  Explicitly call einstalldocs in multilib_src_install_all() to accomodate bug
+  #483304.
+
+*fam-2.7.0-r7 (01 Aug 2013)
+
+  01 Aug 2013; Jeroen Roovers <jer@gentoo.org> +fam-2.7.0-r7.ebuild:
+  Add multilib support by Alexis Ballier (bug #479318).
+
+  24 Apr 2013; Jeroen Roovers <jer@gentoo.org> fam-2.7.0-r6.ebuild:
+  Fix building with automake-1.13.
+
+  25 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> -fam-2.7.0-r5.ebuild,
+  -files/fam-2.7.0-gcc41.patch, -files/fam-2.7.0-gcc43.patch,
+  -files/fam-2.7.0-gcc44.patch, -files/fam-2.7.0-largefiles.patch,
+  -files/fam-2.7.0-limits.patch:
+  old
+
+  25 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> fam-2.7.0-r6.ebuild:
+  ppc64 stable wrt #396749
+
+  22 Jan 2012; Raúl Porcel <armin76@gentoo.org> fam-2.7.0-r6.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #396749
+
+  15 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> fam-2.7.0-r6.ebuild:
+  x86 stable wrt bug #396749
+
+  12 Jan 2012; Markus Meier <maekke@gentoo.org> fam-2.7.0-r6.ebuild:
+  arm stable, bug #396749
+
+  09 Jan 2012; Brent Baude <ranger@gentoo.org> fam-2.7.0-r6.ebuild:
+  Marking fam-2.7.0-r6 ppc for bug 396749
+
+  05 Jan 2012; Jeroen Roovers <jer@gentoo.org> fam-2.7.0-r6.ebuild:
+  Do not install libfam.la when USE=-static-libs.
+
+  05 Jan 2012; Jeroen Roovers <jer@gentoo.org> fam-2.7.0-r6.ebuild:
+  Stable for HPPA (bug #396749).
+
+  02 Jan 2012; Agostino Sarubbo <ago@gentoo.org> fam-2.7.0-r6.ebuild:
+  Stable for AMD64, wrt bug #396749
+
+  24 Jan 2011; Jeroen Roovers <jer@gentoo.org> files/fam-2.7.0-gcc41.patch,
+  files/fam-2.7.0-gcc43.patch, files/fam-2.7.0-gcc44.patch,
+  files/fam-2.7.0-limits.patch:
+  Clean up patches.
+
+  06 Jan 2011; Samuli Suominen <ssuominen@gentoo.org> fam-2.7.0-r5.ebuild,
+  fam-2.7.0-r6.ebuild:
+  Remove PROVIDE because virtual/fam is now new-style.
+
+*fam-2.7.0-r6 (21 Oct 2010)
+
+  21 Oct 2010; Jeroen Roovers <jer@gentoo.org> -fam-2.7.0-r4.ebuild,
+  +fam-2.7.0-r6.ebuild:
+  Use Debian patch set. Use sed instead of dosed, emake instead of make.
+  Make static-libs optional. Remove extra spaces. Remove upgrade warning
+  after ~7 years. Remove rc-update advice.
+
+  13 Feb 2010; Raúl Porcel <armin76@gentoo.org> fam-2.7.0-r5.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #302499
+
+  10 Feb 2010; Joseph Jezak <josejx@gentoo.org> fam-2.7.0-r5.ebuild:
+  Marked ppc/ppc64 stable for bug #302499.
+
+  09 Feb 2010; Jeroen Roovers <jer@gentoo.org> fam-2.7.0-r5.ebuild:
+  Stable for HPPA (bug #302499).
+
+  08 Feb 2010; Christian Faulhammer <fauli@gentoo.org> fam-2.7.0-r5.ebuild:
+  stable x86, bug 302499
+
+  03 Feb 2010; Markos Chandras <hwoarang@gentoo.org> fam-2.7.0-r5.ebuild:
+  Stable on amd64 wrt bug #302499
+
+*fam-2.7.0-r5 (08 Jun 2009)
+
+  08 Jun 2009; Jeroen Roovers <jer@gentoo.org> +fam-2.7.0-r5.ebuild,
+  +files/fam-2.7.0-gcc44.patch:
+  Apply patch by ipse (bug #272316). Touch up comments in ebuild for
+  legibility.
+
+  07 Jun 2009; Jeroen Roovers <jer@gentoo.org> fam-2.7.0-r4.ebuild:
+  Fix typo.
+
+  05 Jun 2009; Jeroen Roovers <jer@gentoo.org> fam-2.7.0-r4.ebuild:
+  Depend on either net-nds/{rpcbind,portmap} (bug #272386).
+
+  06 May 2009; Jeroen Roovers <jer@gentoo.org> fam-2.7.0-r4.ebuild:
+  Do not redundantly set WANT_AUTO{CONF.MAKE}.
+
+  06 May 2009; Jeroen Roovers <jer@gentoo.org> fam-2.7.0-r4.ebuild:
+  Compress the DISTFILES patch file (bug #268650).
+
+  18 Mar 2009; <ricmm@gentoo.org> fam-2.7.0-r4.ebuild:
+  Drop down to ~mips due to unstable deps
+
+  15 Dec 2008; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Pick up maintainership.
+
+  04 Dec 2008; Ryan Hill <dirtyepic@gentoo.org> files/fam-2.7.0-gcc43.patch:
+  Expand gcc 4.3 patch to cover NULL not being declared in Interest.h and
+  BTree.h (bug #237953 by robs)
+
+  09 May 2008; Mark Loeser <halcy0n@gentoo.org>
+  +files/fam-2.7.0-gcc43.patch, fam-2.7.0-r4.ebuild:
+  Patch to fix building with gcc-4.3 by Martin Väth <vaeth AT
+  mathematik.uni-wuerzburg DOT de>; bug #215475
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing foser from metadata.xml as per #120234. Assigning to
+  maintainer-needed.
+
+  28 Apr 2007; Torsten Veller <tove@gentoo.org> fam-2.7.0-r4.ebuild:
+  Fix *initd, *confd and *envd calls (#17388, #174266)
+
+  24 Jan 2007; Marius Mauch <genone@gentoo.org> fam-2.7.0-r4.ebuild:
+  Replacing einfo with elog
+
+  04 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> fam-2.7.0-r4.ebuild:
+  Don't run libtoolize, if you need to, what you want is eautoreconf, so fix
+  handling. Also fix quoting.
+
+  27 Feb 2006; Jeroen Roovers <jer@gentoo.org> fam-2.7.0-r4.ebuild:
+  Stable on hppa (bug #123829).
+
+  25 Feb 2006; Joshua Kinard <kumba@gentoo.org> fam-2.7.0-r4.ebuild:
+  Marked stable on mips.
+
+  25 Feb 2006; Mark Loeser <halcy0n@gentoo.org> fam-2.7.0-r4.ebuild:
+  Stable on x86; bug #123829
+
+  24 Feb 2006; <nixnut@gentoo.org> fam-2.7.0-r4.ebuild:
+  Stable on ppc. bug 123829
+
+  23 Feb 2006; Gustavo Zacarias <gustavoz@gentoo.org> fam-2.7.0-r4.ebuild:
+  Stable on sparc wrt #123829
+
+  23 Feb 2006; Marinus Schraal <foser@gentoo.org> fam-2.7.0-r4.ebuild :
+  Move dnotify patch to mirrors (#123634)
+
+  04 Feb 2006; Aron Griffis <agriffis@gentoo.org> fam-2.7.0-r4.ebuild:
+  Mark 2.7.0-r4 stable on ia64
+
+  23 Jan 2006; Markus Rothe <corsair@gentoo.org> fam-2.7.0-r4.ebuild:
+  Stable on ppc64
+
+  23 Dec 2005; Simon Stelling <blubb@gentoo.org> ChangeLog:
+  mark stable on amd64 to fix bug 89478 for stable users
+
+  16 Dec 2005; Diego Pettenò <flameeyes@gentoo.org> fam-2.7.0-r2.ebuild,
+  fam-2.7.0-r3.ebuild, fam-2.7.0-r4.ebuild:
+  Move elibtoolize at the end of src_unpack so that it's called with the final
+  autotools support. See bug #106176.
+
+  28 Nov 2005; Hanno Boeck <hanno@gentoo.org> +files/fam-2.7.0-gcc41.patch,
+  fam-2.7.0-r4.ebuild:
+  Fix for gcc 4.1.
+
+  02 Oct 2005; MATSUU Takuto <matsuu@gentoo.org> fam-2.7.0-r2.ebuild:
+  Stable on sh.
+
+  22 Jul 2005; Damien Krotkine <dams@gentoo.org> ChangeLog:
+  corrected malformed ChangeLog
+
+*fam-2.7.0-r4 (28 May 2005)
+
+  29 May 2005; Roy Marples <uberlord@gentoo.org>
+  +files/fam-2.7.0-limits.patch, +fam-2.7.0-r4.ebuild:
+  include <limits.h> instead of "limits.h" - fixes #89478
+
+*fam-2.7.0-r3 (29 Apr 2005)
+
+  29 Apr 2005; John N. Laliberte <allanonjl@gentoo.org>
+  +files/fam-2.7.0-largefiles.patch, +fam-2.7.0-r3.ebuild:
+  Patch fam to not send a delete event for files over 2GB. Resolves bug #76679
+
+  23 Mar 2005; Hardave Riar <hardave@gentoo.org> fam-2.7.0-r2.ebuild:
+  Stable on mips.
+
+  07 Feb 2005; Markus Rothe <corsair@gentoo.org> fam-2.7.0-r2.ebuild:
+  Stable on ppc64
+
+  29 Dec 2004; Daniel Goller <morfic@gentoo.org> fam-2.7.0-r2.ebuild:
+  adding the long missing libtoolize --copy --force where it belongs
+
+  11 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> fam-2.7.0-r2.ebuild:
+  Stable on alpha.
+
+  21 Nov 2004; Mike Frysinger <vapier@gentoo.org> fam-2.7.0-r1.ebuild,
+  fam-2.7.0-r2.ebuild, fam-2.7.0.ebuild:
+  Install with DESTDIR instead of einstall #71538.
+
+  12 Nov 2004; Luca Barbato <lu_zero@gentoo.org> fam-2.7.0-r2.ebuild:
+  Marked ppc
+
+  30 Oct 2004; Jason Wever <weeve@gentoo.org> fam-2.7.0-r2.ebuild:
+  Stable on sparc.
+
+*fam-2.7.0-r2 (28 Oct 2004)
+
+  28 Oct 2004; foser <foser@gentoo.org> fam-2.7.0-r2.ebuild :
+  Fix sedding & spiff-up postinst message (#59896)
+  Remove --background from init script (#64029)
+  Add gamin block
+
+  12 Oct 2004; foser <foser@gentoo.org> fam-2.7.0{-r1}.ebuild :
+  Add provide for virtual/fam (#67170)
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  fam-2.7.0-r1.ebuild:
+  Masked fam-2.7.0-r1.ebuild stable for ppc
+
+  29 Jun 2004; Aron Griffis <agriffis@gentoo.org> fam-2.6.10-r1.ebuild:
+  add sed-4 dep
+
+  19 Jun 2004; Tom Gall <tgall@gentoo.org> fam-2.7.0-r1.ebuild:
+  stable on ppc64 bug #54145
+
+  13 May 2004; Stephen P. Becker <geoman@gentoo.org> fam-2.7.0.ebuild:
+  Stable on mips.
+
+  28 Apr 2004; Jon Portnoy <avenj@gentoo.org> fam-2.7.0-r1.ebuild :
+  Stable on AMD64. Also always run gnuconfig_update.
+
+*fam-2.7.0-r1 (14 Mar 2004)
+
+  14 Mar 2004; foser <foser@gentoo.org> fam-2.7.0-r1.ebuild :
+  re-add dnotify support, requested in #43027
+  most bottlenecks should've been taken care of, we'll see how it goes
+  
+  13 Mar 2004; Stephen P. Becker <geoman@gentoo.org> fam-2.7.0.ebuild:
+  Added section src_compile with gnuconfig_update to allow building on mips.
+  Added ~mips keyword.
+
+  09 Mar 2004; <agriffis@gentoo.org> fam-2.7.0.ebuild:
+  stable on alpha and ia64
+
+  15 Feb 2004; Martin Schlemmer <azarah@gentoo.org> fam-2.7.0.ebuild:
+  Add elibtoolize back.
+
+  11 Feb 2004; Chris Gianelloni <wolf31o2@gentoo.org> fam-2.7.0.ebuild:
+  Fixing per bug #41201.  Please see bug for more information.
+
+  09 Feb 2004; Mike Frysinger <vapier@gentoo.org> :
+  Libtool fixes #41013 (missing .so with 1.5).
+
+  09 Feb 2004; <gustavoz@gentoo.org> fam-2.7.0.ebuild:
+  stable on hppa and sparc
+
+  16 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org> fam-2.7.0.ebuild:
+  set ppc in keywords
+
+*fam-2.7.0 (07 Dec 2003)
+
+  08 Dec 2003; foser <foser@gentoo.org> fam-2.7.0.ebuild :
+  Fix problem with user{priv,sandbox} features and configure (#35307)
+
+  07 Dec 2003; foser <foser@gentoo.org> fam-2.7.0.ebuild, metadata.xml :
+  Pack moved from fam-oss to fam
+  New release, obsoletes most of the patches
+  remove perl dep
+  init script renamed to famd, following the binary name
+  Added metadata.xml and myself as maintainer for now
+
+  14 Nov 2003; Aron Griffis <agriffis@gentoo.org> fam-oss-2.6.10-r1.ebuild:
+  Stable on ia64
+
+  22 Oct 2003; Bartosch Pixa <darkspecter@gentoo.org>
+  fam-oss-2.6.10-r1.ebuild:
+  set ppc in keywords
+
+  16 Oct 2003; Aron Griffis <agriffis@gentoo.org> fam-oss-2.6.10-r1.ebuild:
+  Stable on alpha
+
+*fam-2.6.10-r1 (30 Jul 2003)
+
+  15 Nov 2003; Guy Martin <gmsoft@gentoo.org> fam-oss-2.6.10-r1.ebuild :
+  Added hppa to KEYWORDS.
+
+  30 Jul 2003; Nick Hadaway <raker@gentoo.org> fam-oss-2.6.10-r1.ebuild,
+  files/fam-oss-2.6.10-nostatvfs.patch:
+  Added a patch to removed the hooks for statvfs which appears to be
+  b0rked on Linux.  Even in the source are comments re: it's brokenness.
+  Thanks to Danny Milosavljevic on bug #24280 for doing research on 
+  this.
+
+  25 Jun 2003; Bartosch Pixa <darkspecter@gentoo.org> fam-oss-2.6.10.ebuild:
+  set ppc in keywords
+
+*fam-oss-2.6.10 (09 Jun 2003)
+
+  01 Jul 2003; Guy Martin <gmsoft@gentoo.org> fam-oss-2.6.10.ebuild :
+  Added hppa to KEYWORDS.
+
+  09 Jun 2003; Nick Hadaway <raker@gentoo.org> fam-oss-2.6.10.ebuild,
+  files/digest-fam-oss-2.6.10, files/fam-oss-2.6.10-largefile.patch:
+  Version bump.  No longer needs the gcc3 patch.
+
+*fam-oss-2.6.9-r3 (17 May 2003)
+
+  17 May 2003; Alastair Tse <liquidx@gentoo.org> fam-oss-2.6.9-r3.ebuild,
+  files/fam-oss-2.6.9-largefile.patch:
+  enabled largefile support (>2G) thanks to Erik Swanson (#20745)
+
+*fam-oss-2.6.9-r2 (22 Feb 2003)
+
+  22 Feb 2003; Martin Schlemmer <azarah@gentoo.org> fam-oss-2.6.9-r2.ebuild :
+  Update dnotify patch.  Add cleanup patch from MDK.
+
+*fam-oss-2.6.9-r1 (27 Jan 2003)
+
+  09 Apr 2003; Todd Sunderlin <todd@gentoo.org> fam-oss-2.6.9-r1.ebuild:
+  Marked stable for sparc.
+
+  21 Feb 2003; Aron Griffis <agriffis@gentoo.org> fam-oss-2.6.9-r1.ebuild :
+  Mark stable on alpha
+
+  10 Feb 2003; foser <foser@gentoo.org> fam-oss-2.6.9-r1.ebuild :
+  Added patch in filesdir instead of direct download
+  Made it use epatch and changes ${PF} in gcc3 patch to ${P}, thnx Kerin
+
+  27 Jan 2003; foser <foser@gentoo.org> fam-oss-2.6.9-r1.ebuild :
+  Added compile time fix which hopefully fixes sigqueue overflow problems
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+
+*fam-oss-2.8.9-r1 (02 Sep 2002)
+
+  03 Sep 2002; Spider <spider@gentoo.org> fam-oss-2.8.9-r1.ebuild :
+  removed this version
+  
+  02 Sep 2002; Spider <spider@gentoo.org> fam-oss-2.8.9-r1.ebuild :
+  made the default configuration to make it only local. 
+  
+*fam-oss-2.6.9 (16 Aug 2002)
+
+  20 Oct 2002; Martin Schlemmer <azarah@gento.org> fam-oss-2.6.9.ebuild :
+  Fix the automake/autoconf stuff.
+
+  03 Sep 2002; Spider <spider@gentoo.org> :
+  backported security hardening from the -r1 to this
+
+  16 Aug 2002; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump. Ebuild submitted by Felix Kurth <felix@fkurth.de>.
+
+*fam-oss-2.6.7-r1 (25 Jul 2002)
+
+  25 Jul 2002; seemant Kulleen <seemant@gentoo.org> :
+  Added LICENSE tag and elibtoolize'd.
+
+*fam-oss-2.6.7-r1 (28 Mar 2002)
+
+  15 Jul 2002; Owen Stampflee <owen@gentoo.org> :
+  Added KEYWORDS="x86 ppc".
+
+  2 Jun 2002; Preston A. Elder <prez@gentoo.org> 
+  fam-oss-2.6.7-r1.ebuild, files/fam-oss-2.6.7-r1-aclocal.m4:
+  Added aclocal.m4, as the one that comes with the package
+  does not support AM_CONDITIONAL.
+
+  28 Mar 2002; Matthew Kennedy <mkennedy@gentoo.org>
+  fam-oss-2.6.7-r1.ebuild, files/digest-fam-oss-2.6.7-r1,
+  files/fam-oss-2.6.7-r1-gentoo.patch, ChangeLog :
+  Support for gcc3.1 -- thanks to lostlogic@lostlogicx.com and
+  rufiao@gmx.net of bug #3149. Tested on gcc3.1 and gcc2.95.3.
+
+*fam-oss-2.6.7 (16 Mar 2002)
+
+  24 Mar 2002; M.Schlemmer <azarah@gentoo.org> :
+  Update rc-script to properly put fam to the background.
+
+*fam-oss-2.6.4-r1 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.
+  Author Joshua Pierre <joshua@swool.com>

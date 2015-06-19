@@ -1,0 +1,4 @@
+ARCH="amd64"
+ACCEPT_KEYWORDS="amd64"
+
+CHOST="x86_64-gentoo-linux-uclibc"

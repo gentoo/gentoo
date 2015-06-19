@@ -1,0 +1,32 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/distcc/files/3.1/init,v 1.2 2011/12/27 16:09:23 ultrabug Exp $
+
+depend() {
+	need net
+	use avahi-daemon ypbind
+}
+
+start() {
+	ebegin "Starting distccd"
+
+	if [ ! -e /var/run/distccd ] ; then
+		mkdir -p /var/run/distccd
+		chown distcc:daemon /var/run/distccd
+	fi
+
+	# Load PATH and GCC_SPECS from gcc-config, bug #262773
+	eval "$(gcc-config -E)"
+
+	start-stop-daemon --start --quiet --exec "${DISTCCD_EXEC}" --user distcc -- \
+		--daemon --pid-file "${DISTCCD_PIDFILE}" \
+		${DISTCCD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping distccd"
+	start-stop-daemon --stop --quiet --pidfile "${DISTCCD_PIDFILE}"
+	eend $?
+}

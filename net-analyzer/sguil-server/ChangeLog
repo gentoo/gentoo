@@ -1,0 +1,81 @@
+# ChangeLog for net-analyzer/sguil-server
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/sguil-server/ChangeLog,v 1.18 2015/03/25 16:12:18 jlec Exp $
+
+  25 Mar 2015; Justin Lecher <jlec@gentoo.org> sguil-server-0.8.0.ebuild,
+  sguil-server-0.9.0.ebuild:
+  Fix tcl/tk slotting
+
+*sguil-server-0.9.0 (16 Jul 2014)
+
+  16 Jul 2014; Jeroen Roovers <jer@gentoo.org> +sguil-server-0.9.0.ebuild:
+  Version bump.
+
+  16 Jul 2014; Jeroen Roovers <jer@gentoo.org> files/sguild.initd:
+  Do not use a /run/ subdir.
+
+  16 Jul 2014; Jeroen Roovers <jer@gentoo.org> sguil-server-0.8.0.ebuild,
+  files/sguild.initd:
+  EAPI bump. Migrate from /var/run to /run. Remove outdated sed script.
+
+  21 Nov 2012; Jeroen Roovers <jer@gentoo.org> sguil-server-0.8.0.ebuild,
+  files/sguild.confd:
+  Add copyright info to conf.d script. Add GPL-2 to LICENSE (bug #425998).
+
+  18 Sep 2012; Tim Harder <radhermit@gentoo.org> -sguil-server-0.6.1-r1.ebuild:
+  Remove old.
+
+  12 Jun 2012; Zac Medico <zmedico@gentoo.org> sguil-server-0.6.1-r1.ebuild,
+  sguil-server-0.8.0.ebuild:
+  inherit user for enewgroup and enewuser, and multilib for get_libdir
+
+  15 May 2012; Jeroen Roovers <jer@gentoo.org> sguil-server-0.8.0.ebuild:
+  Fix path to sguild file by Willard Dawson (bug #415759).
+
+*sguil-server-0.8.0 (30 Apr 2012)
+
+  30 Apr 2012; Jeroen Roovers <jer@gentoo.org> +sguil-server-0.8.0.ebuild:
+  Version bump.
+
+  08 Mar 2009; Dawid Węgliński <cla@gentoo.org>
+  sguil-server-0.6.1-r1.ebuild:
+  Add get_libdir fix
+
+  07 Mar 2009; Dawid Węgliński <cla@gentoo.org>
+  sguil-server-0.6.1-r1.ebuild:
+  Migrate to EAPI 2, keyword ~amd64
+
+  16 Aug 2008; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove strerror from metadata.xml (#89719)
+
+*sguil-server-0.6.1-r1 (30 Dec 2007)
+
+  30 Dec 2007; Ulrich Mueller <ulm@gentoo.org> -sguil-server-0.5.3.ebuild,
+  -sguil-server-0.6.0_p1.ebuild, -sguil-server-0.6.1.ebuild,
+  +sguil-server-0.6.1-r1.ebuild:
+  Replace call to docert by install_cert, bug #201672. Remove old.
+
+  01 May 2007; Marius Mauch <genone@gentoo.org> sguil-server-0.5.3.ebuild,
+  sguil-server-0.6.0_p1.ebuild, sguil-server-0.6.1.ebuild:
+  Replacing einfo with elog
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*sguil-server-0.6.1 (01 Mar 2006)
+
+  01 Mar 2006; Benjamin Smee <strerror@gentoo.org> files/sguild.confd,
+  +sguil-server-0.6.1.ebuild:
+  Version bump and fix for bug #123400
+
+*sguil-server-0.6.0_p1 (24 Dec 2005)
+
+  24 Dec 2005; Benjamin Smee <strerror@gentoo.org>
+  +sguil-server-0.6.0_p1.ebuild:
+  Version bump
+
+*sguil-server-0.5.3 (08 Oct 2005)
+
+  08 Oct 2005; Benjamin Smee <strerror@gentoo.org> +files/sguild.confd,
+  +files/sguild.initd, +metadata.xml, +sguil-server-0.5.3.ebuild:
+  Initial import

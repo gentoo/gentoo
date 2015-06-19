@@ -1,0 +1,36 @@
+# ChangeLog for mail-filter/sieve-connect
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/sieve-connect/ChangeLog,v 1.9 2014/11/29 08:02:04 graaff Exp $
+
+  29 Nov 2014; Hans de Graaff <graaff@gentoo.org> -sieve-connect-0.86.ebuild:
+  Cleanup.
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+  19 Sep 2014; Agostino Sarubbo <ago@gentoo.org> sieve-connect-0.86.ebuild,
+  sieve-connect-0.87.ebuild:
+  The homepage gives 404 without the final '/'
+
+  20 Feb 2014; Agostino Sarubbo <ago@gentoo.org> sieve-connect-0.87.ebuild:
+  Stable for x86, wrt bug #499840
+
+  14 Feb 2014; Chema Alonso <nimiux@gentoo.org> sieve-connect-0.87.ebuild:
+  Stable for amd64 wrt bug #499840
+
+*sieve-connect-0.87 (06 Dec 2013)
+
+  06 Dec 2013; Julian Ospald <hasufell@gentoo.org> +sieve-connect-0.87.ebuild:
+  version bump
+
+  30 Sep 2013; Agostino Sarubbo <ago@gentoo.org> sieve-connect-0.86.ebuild:
+  Stable for x86, wrt bug #486236
+
+  28 Sep 2013; Agostino Sarubbo <ago@gentoo.org> sieve-connect-0.86.ebuild:
+  Stable for amd64, wrt bug #486236
+
+*sieve-connect-0.86 (23 Aug 2013)
+
+  23 Aug 2013; Julian Ospald <hasufell@gentoo.org> +sieve-connect-0.86.ebuild,
+  +metadata.xml:
+  initial import

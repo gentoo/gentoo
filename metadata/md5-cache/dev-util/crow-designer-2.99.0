@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=>=dev-libs/guiloader-2.99 >=dev-libs/guiloader-c++-2.99 dev-cpp/gtkmm:3.0 >=dev-libs/dbus-glib-0.92 dev-libs/boost virtual/pkgconfig nls? ( >=sys-devel/gettext-0.18 )
+DESCRIPTION=GTK+ GUI building tool
+EAPI=4
+HOMEPAGE=http://www.crowdesigner.org
+IUSE=nls linguas_ru
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=>=dev-libs/guiloader-2.99 >=dev-libs/guiloader-c++-2.99 dev-cpp/gtkmm:3.0 >=dev-libs/dbus-glib-0.92
+SLOT=0
+SRC_URI=http://nothing-personal.googlecode.com/files/crow-2.99.0.tar.xz
+_md5_=6a3995916b5e68cb35b55353a12d45f6

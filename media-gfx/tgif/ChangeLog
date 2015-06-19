@@ -1,0 +1,74 @@
+# ChangeLog for media-gfx/tgif
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/tgif/ChangeLog,v 1.17 2013/01/14 12:07:10 pinkbyte Exp $
+
+*tgif-4.2.5 (14 Jan 2013)
+
+  14 Jan 2013; Sergey Popov <pinkbyte@gentoo.org> -tgif-4.1.45-r1.ebuild,
+  -files/tgif-4.1.45-gentoo.patch, -files/tgif-4.1.45-sym.patch,
+  +tgif-4.2.5.ebuild:
+  Version bump, remove old
+
+  21 Feb 2010; Jonathan Callen <abcd@gentoo.org> tgif-4.1.45-r1.ebuild:
+  Bump EAPI, add prefix support & keywords
+
+  10 Nov 2009; Jonathan Callen <abcd@gentoo.org>
+  -files/tgif-4.1.45-kprinter.patch:
+  Drop unused file
+
+  07 Nov 2009; Samuli Suominen <ssuominen@gentoo.org> tgif-4.1.45-r1.ebuild:
+  Remove kde-base/kdeprint:3.5 support.
+
+*tgif-4.1.45-r1 (05 Oct 2009)
+
+  05 Oct 2009; Víctor Ostorga <vostorga@gentoo.org> +tgif-4.1.45-r1.ebuild,
+  +files/tgif-4.1.45-sym.patch:
+  Fixing instantiation files not copied into target directory, patch thanks
+  to Jiri Tyr <jiri.tyr@e-learning.tul.cz> bug 270387, respecting LDFLAGS
+
+  13 Mar 2009; Thilo Bangert <bangert@gentoo.org> tgif-4.1.45.ebuild:
+  add dep on netpbm - bug #259729
+
+  04 Jan 2009; Thomas Anderson <gentoofan23@gentoo.org> tgif-4.1.45.ebuild:
+  QA: Respect CC in src_install: bug 244168
+
+  19 Feb 2008; Ingmar Vanhassel <ingmar@gentoo.org> tgif-4.1.45.ebuild:
+  Update kde-base/* dependencies so that KDE 4 doesn't satisfy it. bug 206528.
+
+  15 Jan 2008; Fabian Groffen <grobian@gentoo.org> tgif-4.1.45.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  15 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+*tgif-4.1.45 (04 Dec 2006)
+
+  04 Dec 2006; Tiziano Müller <dev-zero@gentoo.org>
+  +files/tgif-4.1.45-gentoo.patch, +files/tgif-4.1.45-kprinter.patch,
+  -tgif-4.1.43.ebuild, -tgif-4.1.44.ebuild, +tgif-4.1.45.ebuild:
+  Version bump. Dropped old version. Using make instead of imake (solves bug
+  #151947). Included patches from bug #91227, thanks to Thomas Fischer.
+
+  11 Mar 2006; Joshua Baergen <joshuabaergen@gentoo.org> tgif-4.1.43.ebuild,
+  tgif-4.1.44.ebuild:
+  Add modular X dependencies (Mauricio L. Pilla, bug #124083).
+
+  17 Nov 2005; Homer Parker <hparker@gentoo.org> tgif-4.1.44.ebuild:
+  Marked ~amd64.
+
+  03 Nov 2005; Fabian Groffen <grobian@gentoo.org> tgif-4.1.44.ebuild:
+  Marked ~ppc-macos (bug #110939)
+
+  07 Jun 2005; Luca Barbato <lu_zero@gentoo.org> tgif-4.1.44.ebuild:
+  Fix url, thanks to alawi <alawi@csail.mit.edu> for the report
+
+*tgif-4.1.44 (20 May 2005)
+
+  20 May 2005; Luca Barbato <lu_zero@gentoo.org> +tgif-4.1.44.ebuild:
+  Updated version
+
+*tgif-4.1.43 (19 May 2005)
+
+  19 May 2005; Luca Barbato <lu_zero@gentoo.org> +tgif-4.1.43.ebuild:
+  First commit, thanks to Felix Eckert <dadula@gmx.de> for the ebuild
+

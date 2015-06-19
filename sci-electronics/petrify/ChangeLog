@@ -1,0 +1,40 @@
+# ChangeLog for sci-electronics/petrify
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/petrify/ChangeLog,v 1.9 2013/01/17 16:20:57 jlec Exp $
+
+*petrify-4.2-r1 (17 Jan 2013)
+
+  17 Jan 2013; Justin Lecher <jlec@gentoo.org> -petrify-4.2.ebuild,
+  +petrify-4.2-r1.ebuild:
+  Several QA enhacements, #449870
+
+  13 Jan 2013; Ulrich Müller <ulm@gentoo.org> petrify-4.2.ebuild:
+  Update LICENSE, the petrify license is a duplicate of Old-MIT.
+
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org> petrify-4.2.ebuild:
+  (QA) RESTRICT clean up.
+
+  27 Dec 2006; Piotr Jaroszyński <peper@gentoo.org> petrify-4.2.ebuild:
+  Add ~amd64 wrt bug #144460.
+
+  02 Jul 2006; Denis Dupeyron <calchan@gentoo.org> metadata.xml:
+  Adjusted metadata, see bug #138062.
+
+  16 Sep 2005; Olivier Fisette <ribosome@gentoo.org> petrify-4.2.ebuild:
+  Corrected HOMEPAGE and SRC_URI. Fixes bug #106108.
+
+  23 Aug 2005; Chris Bainbridge <chrb@gentoo.org> petrify-4.2.ebuild:
+  cp -a bad. #103487
+
+*petrify-4.2 (27 Dec 2004)
+
+  27 Dec 2004; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +petrify-4.2.ebuild:
+  Moved from app-sci/petrify to sci-electronics/petrify.
+
+*petrify-4.2 (23 Jul 2004)
+
+  23 Jul 2004; Chris Bainbridge <chrb@gentoo.org> +metadata.xml,
+  +petrify-4.2.ebuild:
+  Submitted by Chris Bainbridge, bug #35465
+

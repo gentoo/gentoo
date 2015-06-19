@@ -1,0 +1,74 @@
+# ChangeLog for games-action/spacetripper-demo
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/spacetripper-demo/ChangeLog,v 1.17 2015/06/01 22:05:45 mr_bones_ Exp $
+
+  01 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  spacetripper-demo-1.ebuild:
+  clean up app-emulation/emul-linux which has been removed
+
+  04 Sep 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  spacetripper-demo-1.ebuild:
+  guess at better libsdl dep as suggested by hasufell
+
+  04 Sep 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  spacetripper-demo-1.ebuild:
+  update deps (bug #522150); EAPI=5
+
+  29 Aug 2012; Alfredo Tupone <tupone@gentoo.org> spacetripper-demo-1.ebuild:
+  Use QA_PREBUILT. Bug #432442 by Diego Elio Pettenò
+
+  08 Feb 2012; Mike Frysinger <vapier@gentoo.org> spacetripper-demo-1.ebuild:
+  Move to new unpacker eclass for unpack_makeself.
+
+  14 Dec 2011; Mike Frysinger <vapier@gentoo.org> spacetripper-demo-1.ebuild:
+  The games.eclass has dropped GAMES_CHECK_LICENSE support (since portage now
+  has ACCEPT_LICENSE), so drop it here too.
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org> spacetripper-demo-1.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+  07 Nov 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  spacetripper-demo-1.ebuild:
+  Stable on amd64.
+
+  19 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  spacetripper-demo-1.ebuild:
+  Adding strip to RESTRICT for bug #137819.
+
+  11 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  spacetripper-demo-1.ebuild:
+  Added modular X dependencies.
+
+  21 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  spacetripper-demo-1.ebuild:
+  Changed check_license to explicitly list license to check.
+
+  12 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  spacetripper-demo-1.ebuild:
+  fixed symlink creation; tidy
+
+  11 Aug 2005; Olivier Crête <tester@gentoo.org>
+  spacetripper-demo-1.ebuild:
+  Marked ~amd64, closes bug #102141  , thanks to meetra for testing
+
+  29 Sep 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  spacetripper-demo-1.ebuild:
+  Changed sed script to edit proper file and closing bug #62877.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+*spacetripper-demo-1 (12 May 2004)
+
+  12 May 2004; Chris Gianelloni <wolf31o2@gentoo.org> +metadata.xml,
+  +spacetripper-demo-1.ebuild:
+  Moved from spacetripperdemo to spacetripper-demo.
+
+  19 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  spacetripperdemo-1.ebuild:
+  Added IUSE and check_license.
+
+*spacetripperdemo-1 (07 Jul 2003)
+
+  07 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me.

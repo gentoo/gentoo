@@ -1,0 +1,63 @@
+# ChangeLog for mail-filter/dovecot_deleted_to_trash
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/dovecot_deleted_to_trash/ChangeLog,v 1.12 2014/06/05 08:34:49 pinkbyte Exp $
+
+*dovecot_deleted_to_trash-0.6 (05 Jun 2014)
+
+  05 Jun 2014; Sergey Popov <pinkbyte@gentoo.org>
+  -dovecot_deleted_to_trash-0.3.ebuild, -dovecot_deleted_to_trash-0.5.ebuild,
+  +dovecot_deleted_to_trash-0.6.ebuild, -files/fix_names_and_destdir.patch:
+  Version bump, wrt bug #507716. Drop old versions
+
+  21 Feb 2014; Vladimir Smirnov -dovecot_deleted_to_trash-0.5-r1.ebuild:
+  Remove dovecot_deleted_to_trash-0.5-r1, was early added by proxy maintainer's
+  mistake.
+
+*dovecot_deleted_to_trash-0.5-r1 (21 Feb 2014)
+
+  21 Feb 2014; Vladimir Smirnov <civil@gentoo.org>
+  +dovecot_deleted_to_trash-0.5-r1.ebuild:
+  dovecot_deleted_to_trash-0.5-r1 is now compatible with dovecot-2.2 Thanks to
+  slepnoga.
+
+  27 Oct 2013; Maxim Koltsov <maksbotan@gentoo.org>
+  +files/fix_names_and_destdir.patch:
+  Add missing patch for dovecot_deleted_to_trash-0.5, bug 461374 comment 6.
+
+*dovecot_deleted_to_trash-0.5 (14 Jul 2013)
+
+  14 Jul 2013; Alexander Vershilov <qnikst@gentoo.org>
+  +dovecot_deleted_to_trash-0.5.ebuild:
+  dovecot_deleted_to_trash 0.5 (thanks to slepnoga)
+
+  25 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  dovecot_deleted_to_trash-0.3.ebuild:
+  Stable for x86, wrt bug #444824
+
+  22 Dec 2012; Ulrich Müller <ulm@gentoo.org>
+  dovecot_deleted_to_trash-0.3.ebuild:
+  Fix LICENSE, bug 445314.
+
+  27 Nov 2012; Sergey Popov <pinkbyte@gentoo.org>
+  dovecot_deleted_to_trash-0.3.ebuild:
+  Stable on amd64, wrt bug #444824
+
+  27 Nov 2012; Sergey Popov <pinkbyte@gentoo.org>
+  dovecot_deleted_to_trash-0.3.ebuild, -files/fix_names_and_destdir.patch:
+  Set proper path for libs, reorganize patch into sed expressions, wrt bug
+  #444840. Thanks to Agostino Sarubbo and Andreis Vinogradovs
+
+  10 Nov 2012; Anthony G. Basile <blueness@gentoo.org>
+  dovecot_deleted_to_trash-0.3.ebuild:
+  keyword ~arm, bug #442040
+
+  10 Nov 2012; Anthony G. Basile <blueness@gentoo.org>
+  dovecot_deleted_to_trash-0.3.ebuild:
+  keyword ~ppc ~ppc64, bug #442040
+
+*dovecot_deleted_to_trash-0.3 (06 Sep 2012)
+
+  06 Sep 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  +dovecot_deleted_to_trash-0.3.ebuild, +files/29-delete-to-trash.conf,
+  +files/fix_names_and_destdir.patch, +metadata.xml:
+  Add mail-filter/dovecot_deleted_to_trash, thanks to slepnoga. Bug 273435

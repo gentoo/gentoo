@@ -1,0 +1,23 @@
+Darwin8 has no backtrace functionalities yet
+
+--- src/searchd.cpp
++++ src/searchd.cpp
+@@ -1291,6 +1291,10 @@
+ 	__asm __volatile__ ( "movq %%rbp,%0":"=r"(pFramePointer):"r"(pFramePointer) );
+ #endif
+ 
++#ifndef SIGRETURN_FRAME_OFFSET
++	sphLogFatal ( "Cannot get stack frame pointer on this architecture" );
++#else
++
+ 	if ( !pFramePointer )
+ 	{
+ 		sphLogFatal ( "Frame pointer is null. Unable to backtrace the stack. Did you build the searchd with -fomit-frame-pointer?" );
+@@ -1329,6 +1333,7 @@
+ 	if ( !bOk )
+ 		sphWarning ( "Something wrong in frame pointers. BackTrace failed (failed FP was %p)", pNewFP );
+ 	else
++#endif
+ #endif // !HAVE_BACKTRACE
+ 		sphInfo ( "Stack trace seems to be succesfull. Now you have to resolve the numbers above and attach resolved values to the bugreport. See the section about resolving in the documentation" );
+ 

@@ -1,0 +1,18 @@
+--- a/mozilla-release/js/src/dtoa.c	2015-03-01 12:51:12.950912536 -0500
++++ b/mozilla-release/js/src/dtoa.c	2015-03-01 12:57:49.670919777 -0500
+@@ -245,6 +245,7 @@
+ #endif
+ 
+ #ifndef CONST
++#define DTOA_UNSETCONSTDEF
+ #ifdef KR_headers
+ #define CONST /* blank */
+ #else
+@@ -3246,3 +3247,7 @@
+ 		*rve = s;
+ 	return s0;
+ 	}
++
++#ifdef DTOA_UNSETCONSTDEF
++#undef CONST
++#endif

@@ -1,0 +1,59 @@
+# ChangeLog for dev-java/slf4j-nop
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/slf4j-nop/ChangeLog,v 1.14 2013/11/30 09:45:51 ercpe Exp $
+
+*slf4j-nop-1.7.5 (30 Nov 2013)
+
+  30 Nov 2013; Johann Schmitz <ercpe@gentoo.org> +files/1.7.5-build.xml,
+  +slf4j-nop-1.7.5.ebuild:
+  Version bump of slf4j-nop to 1.7.5
+
+*slf4j-nop-1.6.6 (03 Aug 2012)
+
+  03 Aug 2012; Vlastimil Babka <caster@gentoo.org> +files/1.6.6-build.xml,
+  +slf4j-nop-1.6.6.ebuild:
+  Version bump, bug #407067. Thanks to Ivan Baidakou <the.dmol@gmail.com> for
+  the ebuild and build.xml.
+
+  17 Oct 2010; Vlastimil Babka <caster@gentoo.org> -slf4j-nop-1.5.2.ebuild:
+  Remove old.
+
+  14 Oct 2010; Brent Baude <ranger@gentoo.org> slf4j-nop-1.5.11.ebuild:
+  stable ppc, bug 316319
+
+  26 May 2010; Pacho Ramos <pacho@gentoo.org> slf4j-nop-1.5.11.ebuild:
+  stable amd64, bug 316319
+
+  11 May 2010; Brent Baude <ranger@gentoo.org> slf4j-nop-1.5.11.ebuild:
+  stable ppc64, bug 316319
+
+  11 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  slf4j-nop-1.5.11.ebuild:
+  x86 stable wrt bug #316319
+
+*slf4j-nop-1.5.11 (20 Mar 2010)
+
+  20 Mar 2010; Petteri Räty <betelgeuse@gentoo.org>
+  +slf4j-nop-1.5.11.ebuild:
+  Version bump. Fixes bug #310329.
+
+  19 Jul 2009; nixnut <nixnut@gentoo.org> slf4j-nop-1.5.2.ebuild:
+  ppc stable #258723
+
+  23 Jan 2009; Brent Baude <ranger@gentoo.org> slf4j-nop-1.5.2.ebuild:
+  Marking slf4j-nop-1.5.2 ppc64 for bug 253054
+
+  10 Jan 2009; Markus Meier <maekke@gentoo.org> slf4j-nop-1.5.2.ebuild:
+  amd64/x86 stable, bug #253054
+
+  26 Jul 2008; Markus Rothe <corsair@gentoo.org> slf4j-nop-1.5.2.ebuild:
+  Added ~ppc; bug #232411
+
+  22 Jul 2008; Markus Rothe <corsair@gentoo.org> slf4j-nop-1.5.2.ebuild:
+  Added ~ppc64; bug #232411
+
+*slf4j-nop-1.5.2 (18 Jul 2008)
+
+  18 Jul 2008; Serkan Kaba <serkan@gentoo.org> +files/build.xml,
+  +metadata.xml, +slf4j-nop-1.5.2.ebuild:
+  Initial ebuild. Fixes bug #230573.

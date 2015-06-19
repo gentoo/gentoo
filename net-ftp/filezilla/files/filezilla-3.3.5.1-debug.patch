@@ -1,0 +1,13 @@
+--- configure.in	2011-02-28 20:47:05.746530082 +0100
++++ configure.in	2011-02-28 20:48:14.889939315 +0100
+@@ -44,8 +44,8 @@
+ if ! test "$localesonly" = "yes"; then
+ 
+   if test "X$GCC" = Xyes; then
+-    CFLAGS="$CFLAGS -Wall -g -fexceptions"
+-    CXXFLAGS="$CXXFLAGS -Wall -g -fexceptions"
++    CFLAGS="$CFLAGS -Wall -fexceptions"
++    CXXFLAGS="$CXXFLAGS -Wall -fexceptions"
+   fi
+ 
+   # Add build information to config.h

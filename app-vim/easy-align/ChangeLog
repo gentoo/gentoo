@@ -1,0 +1,57 @@
+# ChangeLog for app-vim/easy-align
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/easy-align/ChangeLog,v 1.11 2015/06/06 09:22:08 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  18 Oct 2014; Tim Harder <radhermit@gentoo.org> -easy-align-2.5.1.ebuild,
+  -easy-align-2.6.0.ebuild, -easy-align-2.6.1.ebuild, -easy-align-2.7.0.ebuild,
+  -easy-align-2.8.0.ebuild, -easy-align-2.9.0.ebuild, -easy-align-2.9.2.ebuild:
+  Remove old.
+
+*easy-align-2.9.6 (18 Oct 2014)
+
+  18 Oct 2014; Tim Harder <radhermit@gentoo.org> +easy-align-2.9.6.ebuild:
+  Version bump.
+
+*easy-align-2.9.4 (26 Jun 2014)
+
+  26 Jun 2014; Tim Harder <radhermit@gentoo.org> +easy-align-2.9.4.ebuild:
+  Version bump.
+
+*easy-align-2.9.2 (20 Mar 2014)
+
+  20 Mar 2014; Tim Harder <radhermit@gentoo.org> +easy-align-2.9.2.ebuild:
+  Version bump.
+
+*easy-align-2.9.0 (07 Dec 2013)
+
+  07 Dec 2013; Tim Harder <radhermit@gentoo.org> +easy-align-2.9.0.ebuild:
+  Version bump.
+
+*easy-align-2.8.0 (02 Nov 2013)
+
+  02 Nov 2013; Tim Harder <radhermit@gentoo.org> +easy-align-2.8.0.ebuild:
+  Version bump.
+
+*easy-align-2.7.0 (21 Oct 2013)
+
+  21 Oct 2013; Tim Harder <radhermit@gentoo.org> +easy-align-2.7.0.ebuild:
+  Version bump.
+
+*easy-align-2.6.1 (10 Oct 2013)
+
+  10 Oct 2013; Tim Harder <radhermit@gentoo.org> +easy-align-2.6.1.ebuild:
+  Version bump.
+
+*easy-align-2.6.0 (06 Oct 2013)
+
+  06 Oct 2013; Tim Harder <radhermit@gentoo.org> +easy-align-2.6.0.ebuild:
+  Version bump.
+
+*easy-align-2.5.1 (28 Sep 2013)
+
+  28 Sep 2013; Tim Harder <radhermit@gentoo.org> +easy-align-2.5.1.ebuild,
+  +metadata.xml:
+  Initial import.

@@ -1,0 +1,10 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=Library and applications to access GSM mobile phones
+HOMEPAGE=http://www.pxh.de/fs/gsmlib/
+KEYWORDS=amd64 ~ia64 ppc ppc64 sparc x86
+LICENSE=LGPL-2
+RESTRICT=test
+SLOT=0
+SRC_URI=http://www.pxh.de/fs/gsmlib/snapshots/gsmlib-pre1.11-041028.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=c0398729ec92dcd0d6a2e9a3c631c785

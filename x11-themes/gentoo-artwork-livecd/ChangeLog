@@ -1,0 +1,30 @@
+# ChangeLog for x11-themes/gentoo-artwork-livecd
+# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/gentoo-artwork-livecd/ChangeLog,v 1.5 2007/05/07 18:56:39 wolf31o2 Exp $
+
+*gentoo-artwork-livecd-2007.0 (07 May 2007)
+
+  07 May 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  +gentoo-artwork-livecd-2007.0.ebuild:
+  Adding new 2007.0 version for the release.
+
+  10 Mar 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  gentoo-artwork-livecd-2006.1.ebuild:
+  Stable on ia64. It's just a theme, anyway, so there's nothing arch-specific
+  with it.
+
+  28 Feb 2007; Peter Weller <welp@gentoo.org>
+  gentoo-artwork-livecd-2006.1.ebuild:
+  Added ~x86-fbsd keyword
+
+  15 Feb 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  gentoo-artwork-livecd-2006.1.ebuild:
+  Added RESTRICT='binchecks strip' for bug #166987.
+
+*gentoo-artwork-livecd-2006.1 (30 Aug 2006)
+
+  30 Aug 2006; Chris Gianelloni <wolf31o2@gentoo.org> +metadata.xml,
+  +gentoo-artwork-livecd-2006.1.ebuild:
+  Initial import. Ebuild by me. Artwork by blackace. This is stable on the
+  arches we used it on for 2006.1 and was tested by Release Engineering.
+

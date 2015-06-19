@@ -1,0 +1,41 @@
+# ChangeLog for app-cdr/b5i2iso
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/b5i2iso/ChangeLog,v 1.10 2011/08/07 12:47:57 xarthisius Exp $
+
+  07 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org> b5i2iso-0.2.ebuild:
+  Drop empty DEPEND, respect LDFLAGS wrt #336105
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> b5i2iso-0.2.ebuild:
+  Remove virtual/libc
+
+  06 Jun 2008; Samuli Suominen <drac@gentoo.org> b5i2iso-0.1.ebuild,
+  b5i2iso-0.2.ebuild:
+  Use mirrors:// for berlios.
+
+  29 May 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Lars Weiler (Pylon) from metadata.xml (as per #215644).
+
+  01 Mar 2007; Christian Faulhammer <opfer@gentoo.org> b5i2iso-0.2.ebuild:
+  stable x86; bug 168895
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  19 Sep 2005; Luis Medinas <metalgod@gentoo.org> b5i2iso-0.2.ebuild:
+  Marked Stable on amd64.
+
+*b5i2iso-0.2 (15 Aug 2005)
+
+  15 Aug 2005; Luis Medinas <metalgod@gentoo.org> +b5i2iso-0.2.ebuild:
+  Version Bump. Added ~amd64 keywords.
+
+  30 May 2005; Sven Wegener <swegener@gentoo.org> b5i2iso-0.1.ebuild:
+  Moved from gcc.eclass to toolchain-funcs.eclass.
+
+*b5i2iso-0.1 (08 Jan 2005)
+
+  08 Jan 2005; Lars Weiler <pylon@gentoo.org> +metadata.xml,
+  +b5i2iso-0.1.ebuild:
+  New package.  
+  Thanks to eGore for this ebuild in bug #70491.
+

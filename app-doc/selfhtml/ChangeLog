@@ -1,0 +1,66 @@
+# ChangeLog for app-doc/selfhtml
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-doc/selfhtml/ChangeLog,v 1.21 2015/01/15 14:16:36 mrueg Exp $
+
+  15 Jan 2015; Manuel Rüger <mrueg@gentoo.org> selfhtml-8.1.2.ebuild:
+  EAPI5
+
+  10 May 2013; Patrick Lauer <patrick@gentoo.org> selfhtml-8.1.2.ebuild:
+  Quoting
+
+  19 Oct 2010; Mart Raudsepp <leio@gentoo.org> selfhtml-8.1.2.ebuild:
+  Drop to ~mips
+
+  29 May 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Lars Weiler (Pylon) from metadata.xml (as per #215644). Assigning
+  to maintainer-needed.
+
+  21 Apr 2007; Lars Weiler <pylon@gentoo.org> -selfhtml-8.1.1.ebuild,
+  selfhtml-8.1.2.ebuild:
+  Stable on all arches as this is a copy-only ebuild and does not need any
+  architecture-specific tests.
+
+*selfhtml-8.1.2 (02 Mar 2007)
+
+  02 Mar 2007; Lars Weiler <pylon@gentoo.org> +selfhtml-8.1.2.ebuild:
+  Version bump.
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  28 May 2006; Lars Weiler <pylon@gentoo.org> selfhtml-8.1.1.ebuild:
+  Stable on all given arches, as there is a simple copy only during installation.
+
+  04 Feb 2006; Diego Pettenò <flameeyes@gentoo.org> selfhtml-8.1.1.ebuild:
+  Drop GNUish cp -d call.
+
+*selfhtml-8.1.1 (18 Dec 2005)
+
+  18 Dec 2005; Lars Weiler <pylon@gentoo.org> +selfhtml-8.1.1.ebuild:
+  Minor Version bump.  Thanks to Christian Seiler in Bug #113404.
+
+  16 Dec 2005; Diego Pettenò <flameeyes@gentoo.org> selfhtml-8.1.ebuild:
+  Remove GNUish cp -a call. Bug #103487.
+
+  23 Aug 2005; Lars Weiler <pylon@gentoo.org> -selfhtml-8.0-r1.ebuild:
+  Removing old versions.  Changing the cp as suggested in bug #103487.
+
+*selfhtml-8.1 (27 Mar 2005)
+
+  27 Mar 2005; Lars Weiler <pylon@gentoo.org> +selfhtml-8.1.ebuild:
+  Version bump.  Thanks to Henryk Plötz for the reminder.  See bug #86588
+
+  05 Nov 2004; Lars Weiler <pylon@gentoo.org> selfhtml-8.0-r1.ebuild:
+  Added app-arch/unzip to DEPEND, bug #69831.
+
+  27 Sep 2004; <blubb@gentoo.org> selfhtml-8.0-r1.ebuild:
+  added amd64
+
+  20 Jul 2004; Lars Weiler <pylon@gentoo.org> selfhtml-8.0-r1.ebuild:
+  The HOMEPAGE has changed.
+
+*selfhtml-8.0-r1 (08 Mar 2004)
+
+  08 Mar 2004; Lars Weiler <pylon@gentoo.org> metadata.xml,
+  selfhtml-8.0-r1.ebuild:
+  SELFHTML 8.0 with errata-pack 1 (therefore the initial ebuild is named -r1)

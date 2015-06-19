@@ -1,0 +1,15 @@
+ main.cpp |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/main.cpp b/main.cpp
+index e979c1b..da2831a 100644
+--- a/main.cpp
++++ b/main.cpp
+@@ -14,6 +14,7 @@
+ 
+ #include "texmakerapp.h"
+ #include <QStringList>
++#include <GL/glu.h>
+ 
+ 
+ int main( int argc, char ** argv )

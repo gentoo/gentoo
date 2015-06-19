@@ -1,0 +1,98 @@
+diff -NurdB QtPixmap-0.28/configure.in QtPixmap-0.28-patched/configure.in
+--- QtPixmap-0.28/configure.in	2004-02-03 06:26:07.000000000 -0500
++++ QtPixmap-0.28-patched/configure.in	2005-08-02 21:59:35.000000000 -0500
+@@ -19,23 +19,28 @@
+ FOUND_IMLIB=0
+ FOUND_GTK2=0
+ 
+-AC_PATH_PROG(gtkconf, gtk-config, no)
+-if test -n "$gtkconf"; then
+-  vers=`$gtkconf --version 2>/dev/null | awk 'BEGIN { FS = "."; } { printf "%d", ($1 * 1000 + $2) * 1000 + $3;}'`
+-  if test -n "$vers" && test "$vers" -ge 1002009; then
+-    GTK_LIBS="`$gtkconf --libs`"
+-    GTK_CFLAGS="`$gtkconf --cflags`"
+-    AC_SUBST(GTK_LIBS)
+-    AC_SUBST(GTK_CFLAGS)
+-    FOUND_GTK1=1
++AC_ARG_ENABLE([gtk1],
++	AS_HELP_STRING([--enable-gtk1],[Enable Gtk+1 engine (default=yes)]),
++	[enable_gtk1=$enableval],
++	[enable_gtk1=yes])
++
++if test x$enable_gtk1 = xyes; then
++  AC_PATH_PROG(gtkconf, gtk-config, no)
++  if test -n "$gtkconf"; then
++    vers=`$gtkconf --version 2>/dev/null | awk 'BEGIN { FS = "."; } { printf "%d", ($1 * 1000 + $2) * 1000 + $3;}'`
++    if test -n "$vers" && test "$vers" -ge 1002009; then
++      GTK_LIBS="`$gtkconf --libs`"
++      GTK_CFLAGS="`$gtkconf --cflags`"
++      AC_SUBST(GTK_LIBS)
++      AC_SUBST(GTK_CFLAGS)
++      FOUND_GTK1=1
++    else
++      AC_MSG_ERROR([Not compiling for GTK1.x - you need at least Gtk v1.2.9])
++    fi
+   else
+-    AC_MSG_WARN([Not compiling for GTK1.x - you need at least Gtk v1.2.9])
++    AC_MSG_ERROR([Not compiling for GTK1.x - Gtk1.x not installed, need at least v1.2.9])
+   fi
+-else
+-  AC_MSG_WARN([Not compiling for GTK1.x - Gtk1.x not installed, need at least v1.2.9])
+-fi
+ 
+-if test $FOUND_GTK1 -eq 1; then
+   AC_PATH_PROG(imlibconf, imlib-config, no)
+   if test -n "$imlibconf"; then
+     vers=`$imlibconf --version 2>/dev/null | awk 'BEGIN { FS = "."; } { printf "%d", ($1 * 1000 + $2) * 1000 + $3;}'`
+@@ -46,29 +51,36 @@
+       AC_SUBST(GDK_IMLIB_CFLAGS)
+       FOUND_IMLIB=1
+     else
+-      AC_MSG_WARN([Not compiling for GTK1.x - you need at least IMLIB v1.8.0])
++      AC_MSG_ERROR([Not compiling for GTK1.x - you need at least IMLIB v1.8.0])
+     fi
+   else
+-    AC_MSG_WARN([Not compiling for GTK1.x - IMLIB not installed, need at least v1.8.0])
++    AC_MSG_ERROR([Not compiling for GTK1.x - IMLIB not installed, need at least v1.8.0])
+   fi
+ fi
+ 
+ 
+-AC_PATH_PROG(pkgconfig, pkg-config, no)
+-if test -n "$pkg-config"; then
+-  GTK2_VERSION=`$pkgconfig --variable=gtk_binary_version gtk+-2.0`
+-  if test -n "$GTK2_VERSION"; then
+-    GTK2_CFLAGS=`$pkgconfig gtk+-2.0 --cflags`
+-    GTK2_LIBS=`$pkgconfig gtk+-2.0 --libs`
+-    AC_SUBST(GTK2_CFLAGS)
+-    AC_SUBST(GTK2_LIBS)
+-    AC_SUBST(GTK2_VERSION)
+-    FOUND_GTK2=1
++AC_ARG_ENABLE([gtk2],
++	AS_HELP_STRING([--enable-gtk2],[Enable Gtk+2 engine (default=yes)]),
++	[enable_gtk2=$enableval],
++	[enable_gtk2=yes])
++
++if test x$enable_gtk2 = xyes; then
++  AC_PATH_PROG(pkgconfig, pkg-config, no)
++  if test -n "$pkg-config"; then
++    GTK2_VERSION=`$pkgconfig --variable=gtk_binary_version gtk+-2.0`
++    if test -n "$GTK2_VERSION"; then
++      GTK2_CFLAGS=`$pkgconfig gtk+-2.0 --cflags`
++      GTK2_LIBS=`$pkgconfig gtk+-2.0 --libs`
++      AC_SUBST(GTK2_CFLAGS)
++      AC_SUBST(GTK2_LIBS)
++      AC_SUBST(GTK2_VERSION)
++      FOUND_GTK2=1
++    else
++      AC_MSG_ERROR([Not compiling for GTK2.x - Gtk2.x not installed])
++    fi
+   else
+-    AC_MSG_WARN([Not compiling for GTK2.x - Gtk2.x not installed])
++    AC_MSG_ERROR([Not compiling for GTK2.x - pkg-config not installed])
+   fi
+-else
+-  AC_MSG_WARN([Not compiling for GTK2.x - pkg-config not installed])
+ fi
+ 
+ if (test $FOUND_IMLIB -eq 0) && (test $FOUND_GTK2 -eq 0); then

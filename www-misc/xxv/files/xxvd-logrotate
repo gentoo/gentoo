@@ -1,0 +1,27 @@
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/www-misc/xxv/files/xxvd-logrotate,v 1.1 2009/04/11 23:02:00 hd_brummy Exp $
+
+/var/log/xxv/xxvd.log {
+	compress
+	daily
+	dateext
+	maxage 365
+	rotate 99
+	size=+4096k
+	notifempty
+	missingok
+	copytruncate
+}
+
+/var/log/xxv/xxvd_mplayer.log {
+	compress
+	daily
+	dateext
+	maxage 365
+	rotate 99
+	size=+4096k
+	notifempty
+	missingok
+	copytruncate
+}

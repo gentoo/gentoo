@@ -1,0 +1,32 @@
+# ChangeLog for sci-libs/coinor-netlib
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/coinor-netlib/ChangeLog,v 1.2 2014/02/04 10:38:54 jlec Exp $
+
+  04 Feb 2014; Justin Lecher <jlec@gentoo.org> coinor-netlib-1.2.6.ebuild:
+  drop empty *DEPEND
+
+  14 Jan 2014; Sébastien Fabbro <bicatali@gentoo.org>
+  +coinor-netlib-1.2.6.ebuild, +metadata.xml:
+  Initial import in main tree
+
+*coinor-netlib-1.2.6 (07 Dec 2013)
+
+  07 Dec 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  +coinor-netlib-1.2.6.ebuild, -coinor-netlib-1.2.4.ebuild:
+  sci-libs/coinor-netlib: Version bump
+
+  29 Jan 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  coinor-netlib-1.2.4.ebuild:
+  sci-libs/coinor-netlib: no more empty doc
+
+*coinor-netlib-1.2.4 (29 Jan 2013)
+
+  29 Jan 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  +coinor-netlib-1.2.4.ebuild, -coinor-netlib-1.2.2.ebuild:
+  sci-libs/coinor-netlib: Version bump
+
+*coinor-netlib-1.2.2 (16 Jul 2012)
+
+  16 Jul 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  +coinor-netlib-1.2.2.ebuild, +metadata.xml:
+  sci-libs/coinor-netlib: Initial import

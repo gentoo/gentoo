@@ -1,0 +1,84 @@
+# ChangeLog for dev-libs/jansson
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/jansson/ChangeLog,v 1.21 2015/05/24 13:49:51 vapier Exp $
+
+  24 May 2015; Mike Frysinger <vapier@gentoo.org> jansson-2.7.ebuild:
+  Keyword for everyone for nghttp2.
+
+  10 Oct 2014; Yixun Lan <dlan@gentoo.org> -jansson-2.3.1.ebuild,
+  -jansson-2.5.ebuild:
+  clean up old ebuilds after talking to maintainer
+
+*jansson-2.7 (10 Oct 2014)
+
+  10 Oct 2014; Yixun Lan <dlan@gentoo.org> +jansson-2.7.ebuild:
+  bump per maintainer request, bug 524904
+
+  06 Jun 2014; Anthony G. Basile <blueness@gentoo.org> jansson-2.4.ebuild:
+  Stable on arm, needed for net-libs/libblkmaker
+
+  06 Jun 2014; Anthony G. Basile <blueness@gentoo.org> jansson-2.4.ebuild:
+  Stable on ppc and ppc64, needed for net-libs/libblkmaker
+
+  23 Mar 2014; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Drop myself from metadata
+
+*jansson-2.6 (23 Mar 2014)
+
+  23 Mar 2014; Markos Chandras <hwoarang@gentoo.org> +jansson-2.6.ebuild:
+  Version bump. Thanks to Johan Bergström. Bug #502488
+
+*jansson-2.5 (21 Oct 2013)
+
+  21 Oct 2013; Tom Wijsman <TomWij@gentoo.org> +jansson-2.5.ebuild:
+  Version bump to 2.5; fixes bug #485916, proxied commit for Johan Bergström.
+
+  21 Oct 2013; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  Reordered metadata to make automatic assignment easier.
+
+  26 Jun 2013; Anthony G. Basile <blueness@gentoo.org> jansson-2.4.ebuild:
+  Keyword ~arm for bfgminer
+
+  26 Jun 2013; Anthony G. Basile <blueness@gentoo.org> jansson-2.4.ebuild:
+  Keyword ~ppc ~ppc64 for bfgminer
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> jansson-2.4.ebuild:
+  Stable for amd64, wrt bug #473330
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> jansson-2.4.ebuild:
+  Stable for x86, wrt bug #473330
+
+  23 Apr 2013; Tim Harder <radhermit@gentoo.org> jansson-2.3.1.ebuild,
+  jansson-2.4.ebuild:
+  Set AUTOTOOLS_AUTORECONF=1 so autotools deps are properly pulled in.
+
+*jansson-2.4 (28 Sep 2012)
+
+  28 Sep 2012; Markos Chandras <hwoarang@gentoo.org> +jansson-2.4.ebuild:
+  Version bump
+
+  17 Aug 2012; Markos Chandras <hwoarang@gentoo.org> -jansson-2.2.1.ebuild,
+  -jansson-2.3.ebuild:
+  Remove old ebuilds
+
+  14 Aug 2012; Johannes Huber <johu@gentoo.org> jansson-2.3.1.ebuild:
+  Stable for x86, wrt bug #430622
+
+  11 Aug 2012; Agostino Sarubbo <ago@gentoo.org> jansson-2.3.1.ebuild:
+  Stable for amd64, wrt bug #430622
+
+*jansson-2.3.1 (05 May 2012)
+
+  05 May 2012; Markos Chandras <hwoarang@gentoo.org> +jansson-2.3.1.ebuild:
+  Version bump. Bug #412835
+
+*jansson-2.3 (03 Feb 2012)
+
+  03 Feb 2012; Markos Chandras <hwoarang@gentoo.org> +jansson-2.3.ebuild:
+  version bump. Bug #401581
+
+*jansson-2.2.1 (04 Nov 2011)
+
+  04 Nov 2011; Markos Chandras <hwoarang@gentoo.org> +jansson-2.2.1.ebuild,
+  +metadata.xml:
+  Initial commit. Bug #358237. Thanks to Johan Bergstrom <bugs@bergstroem.nu>

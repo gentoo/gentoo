@@ -1,0 +1,235 @@
+# ChangeLog for sci-chemistry/rasmol
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/rasmol/ChangeLog,v 1.46 2015/06/17 14:39:33 jlec Exp $
+
+  17 Jun 2015; Justin Lecher <jlec@gentoo.org> -rasmol-2.7.5.2-r1.ebuild,
+  rasmol-2.7.5.2-r2.ebuild:
+  Fix compilation problems on ppc, bug #547318; drop old
+
+*rasmol-2.7.5.2-r2 (18 May 2015)
+
+  18 May 2015; Justin Lecher <jlec@gentoo.org> +rasmol-2.7.5.2-r2.ebuild:
+  Drop -traditional from CPPFLAGS, bug #547318; enhance preprocessor definitions
+
+  29 Mar 2015; Justin Lecher <jlec@gentoo.org> -files/ldflags.patch,
+  -files/rasmol.sh.debian, -rasmol-2.7.5.2.ebuild:
+  Drop old
+
+  28 Mar 2015; Agostino Sarubbo <ago@gentoo.org> rasmol-2.7.5.2-r1.ebuild:
+  Stable for ppc, wrt bug #543036
+
+  25 Mar 2015; Agostino Sarubbo <ago@gentoo.org> rasmol-2.7.5.2-r1.ebuild:
+  Stable for x86, wrt bug #543036
+
+  24 Mar 2015; Agostino Sarubbo <ago@gentoo.org> rasmol-2.7.5.2-r1.ebuild:
+  Stable for amd64, wrt bug #543036
+
+*rasmol-2.7.5.2-r1 (12 Mar 2015)
+
+  12 Mar 2015; Justin Lecher <jlec@gentoo.org>
+  +files/rasmol-2.7.5.2-format-security.patch,
+  +files/rasmol-2.7.5.2-longlong.patch, +rasmol-2.7.5.2-r1.ebuild:
+  Fix for format-security, #543032
+
+  20 Dec 2012; Justin Lecher <jlec@gentoo.org> -rasmol-2.7.5.1.ebuild,
+  metadata.xml:
+  Drop old version; fixes 438428
+
+  20 Dec 2012; Andreas Schuerch <nativemad@gentoo.org> rasmol-2.7.5.2.ebuild:
+  x86 stable, see bug 438498
+
+  19 Nov 2012; Justin Lecher <jlec@gentoo.org> rasmol-2.7.5.2.ebuild:
+  Add missing dep
+
+  11 Nov 2012; Anthony G. Basile <blueness@gentoo.org> rasmol-2.7.5.2.ebuild:
+  stable ppc, bug #438498
+
+  31 Oct 2012; Agostino Sarubbo <ago@gentoo.org> rasmol-2.7.5.2.ebuild:
+  Stable for amd64, wrt bug #438498
+
+  19 Oct 2012; Justin Lecher <jlec@gentoo.org> rasmol-2.7.5.1.ebuild,
+  rasmol-2.7.5.2.ebuild:
+  Remove virtual/fortran and always call fortran-2_pkg_setup as intend by the
+  updated fortran-2.eclass
+
+  25 Apr 2012; Justin Lecher <jlec@gentoo.org> rasmol-2.7.5.2.ebuild,
+  +files/rasmol-2.7.5.2-glib.h.patch:
+  Add fix for >glib-2.32
+
+  08 Mar 2012; Justin Lecher <jlec@gentoo.org> -rasmol-2.7.2.1.1-r1.ebuild,
+  -rasmol-2.7.5-r1.ebuild:
+  Dropped old
+
+  07 Mar 2012; Brent Baude <ranger@gentoo.org> rasmol-2.7.5.1.ebuild:
+  Marking rasmol-2.7.5.1 ppc for bug 394085
+
+  26 Dec 2011; Markus Meier <maekke@gentoo.org> rasmol-2.7.5.1.ebuild:
+  x86 stable, bug #394085
+
+  15 Dec 2011; Justin Lecher <jlec@gentoo.org> rasmol-2.7.5.1.ebuild,
+  rasmol-2.7.5.2.ebuild:
+  Add die after external commands
+
+  14 Dec 2011; Agostino Sarubbo <ago@gentoo.org> rasmol-2.7.5.1.ebuild:
+  Stable for AMD64, wrt bug #394085
+
+*rasmol-2.7.5.2 (14 Dec 2011)
+
+  14 Dec 2011; Justin Lecher <jlec@gentoo.org> +rasmol-2.7.5.2.ebuild:
+  Version Bump
+
+  01 Jul 2011; Justin Lecher <jlec@gentoo.org> rasmol-2.7.2.1.1-r1.ebuild,
+  rasmol-2.7.5-r1.ebuild, rasmol-2.7.5.1.ebuild, metadata.xml:
+  Cleaned ebuild, EAPI=4 bump
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> rasmol-2.7.2.1.1-r1.ebuild,
+  rasmol-2.7.5-r1.ebuild, rasmol-2.7.5.1.ebuild:
+  Add dependency on virtual/fortran
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> rasmol-2.7.2.1.1-r1.ebuild,
+  rasmol-2.7.5-r1.ebuild, rasmol-2.7.5.1.ebuild:
+  Added fortran-2.eclass support
+
+*rasmol-2.7.5.1 (15 Apr 2011)
+
+  15 Apr 2011; Justin Lecher <jlec@gentoo.org> +rasmol-2.7.5.1.ebuild:
+  Version Bump
+
+  07 Mar 2011; Justin Lecher <jlec@gentoo.org> rasmol-2.7.5-r1.ebuild:
+  Correct Slots for gtk 3 introduction to tree
+
+  25 Jan 2011; Christian Faulhammer <fauli@gentoo.org>
+  rasmol-2.7.5-r1.ebuild:
+  stable x86, bug 351984
+
+  23 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  rasmol-2.7.5-r1.ebuild:
+  Mark ~ppc wrt #303393
+
+  19 Jan 2011; Justin Lecher <jlec@gentoo.org> +rasmol-2.7.2.1.1-r1.ebuild:
+  Reverted removal of rasmol-2.7.2.1.1-r1.ebuild
+
+  18 Jan 2011; Markos Chandras <hwoarang@gentoo.org> rasmol-2.7.5-r1.ebuild:
+  Stable on amd64 wrt bug #351984
+
+  18 Jan 2011; Justin Lecher <jlec@gentoo.org> -rasmol-2.7.2.1.1-r1.ebuild:
+  Removed old
+
+*rasmol-2.7.5-r1 (31 Mar 2010)
+
+  31 Mar 2010; Justin Lecher <jlec@gentoo.org>
+  files/2.7.5-bundled-lib.patch, -rasmol-2.7.5.ebuild,
+  +rasmol-2.7.5-r1.ebuild:
+  Removed unneeded patch for ldflags, removed unneeded linking against
+  libforms, #312369
+
+
+  07 Mar 2010; Justin Lecher (jlec) <jlec@gentoo.org>
+  files/2.7.5-bundled-lib.patch, rasmol-2.7.5.ebuild:
+  Prefix cleaning, keyworded for *-linux, tested by me
+
+*rasmol-2.7.5 (03 Feb 2010)
+
+  03 Feb 2010; Justin Lecher (jlec) <jlec@gentoo.org>
+  +files/2.7.5-bundled-lib.patch, rasmol-2.7.2.1.1-r1.ebuild,
+  +rasmol-2.7.5.ebuild, +files/ldflags.patch:
+  Version Bump
+  Only providing 32bit colordepth gtk interface now
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  rasmol-2.7.2.1.1-r1.ebuild:
+  Drop virtual/x11 references.
+
+  07 Jan 2007; Danny van Dyk <kugelfang@gentoo.org>
+  -rasmol-2.7.2.1.1.ebuild:
+  QA: Removed unused versions.
+
+  20 Sep 2006; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  (#148281) Change herd to sci-chemistry from sci.
+
+  09 Jul 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  rasmol-2.7.2.1.1-r1.ebuild:
+  x86/ppc stable.
+
+  24 Apr 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  rasmol-2.7.2.1.1-r1.ebuild:
+  Keyword ~ppc.
+
+  14 Mar 2006; George Shapovalov <george@gentoo.org>
+  rasmol-2.7.2.1.1-r1.ebuild:
+  added x11-misc/imake to DEPEND as building the package requires xmkmf
+
+*rasmol-2.7.2.1.1-r1 (15 Dec 2005)
+
+  15 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  files/rasmol.sh.debian, +rasmol-2.7.2.1.1-r1.ebuild:
+  Update rasmol script to fall back to xdpyinfo if xwininfo isn't available.
+  Depend on one of the two.
+
+  15 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  rasmol-2.7.2.1.1.ebuild:
+  (#115649) Add rman to modular X deps.
+
+  15 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  rasmol-2.7.2.1.1.ebuild:
+  Add modular X dependencies.
+
+  02 Jan 2005; Olivier Fisette <ribosome@gentoo.org> -rasmol-2.7.1.1.ebuild,
+  rasmol-2.7.2.1.1.ebuild:
+  Removed obsolete version. Use toolchain-funcs rather than gcc eclass.
+
+  24 Dec 2004; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +files/rasmol.sh.debian, +rasmol-2.7.1.1.ebuild, +rasmol-2.7.2.1.1.ebuild:
+  Moved from app-sci/rasmol to sci-chemistry/rasmol.
+
+  27 Jul 2004; Donnie Berkholz <spyderous@gentoo.org>;
+  rasmol-2.7.2.1.1.ebuild:
+  x86. Considered "production release" upstream now.
+
+  26 Jul 2004; Danny van Dyk <kugelfang@gentoo.org> rasmol-2.7.2.1.1.ebuild:
+  Marked ~amd64.
+
+  19 Apr 2004; Patrick Kursawe <phosphan@gentoo.org> rasmol-2.7.1.1.ebuild,
+  rasmol-2.7.2.1.1.ebuild:
+  Adding IUSE
+
+  01 Apr 2004; Donnie Berkholz <spyderous@gentoo.org>;
+  rasmol-2.6_beta2.ebuild, rasmol-2.7.1.1.ebuild:
+  Keyword 2.7.1.1 x86, drop old version.
+
+  01 Apr 2004; Donnie Berkholz <spyderous@gentoo.org>; rasmol-2.7.2.1.ebuild:
+  Drop old version, also closes #45706.
+
+*rasmol-2.7.2.1.1 (01 Apr 2004)
+
+  01 Apr 2004; Patrick Kursawe <phosphan@gentoo.org> rasmol-2.7.2.1.1.ebuild,
+  rasmol-2.7.2.1.ebuild:
+  Version bump
+
+*rasmol-2.7.2.1 (01 Mar 2004)
+
+  01 Mar 2004; Donnie Berkholz <spyderous@gentoo.org>; rasmol-2.7.2.1.ebuild:
+  Adding beta version. This should stay ~arch until considered stable upstream.
+
+*rasmol-2.7.1.1 (01 Mar 2004)
+
+  01 Mar 2004; Donnie Berkholz <spyderous@gentoo.org>; rasmol-2.7.1.1.ebuild,
+  files/rasmol.sh.debian:
+  Version bump to 2.7 series, technically OpenRasMol but it's the continuation
+  of RasMol development.
+
+  09 Oct 2003; Brandy Westcott brandy@gentoo.org rasmol-2.6_beta2.ebuild:
+  Fixed applying of patch. Closes Bug #30730
+
+  03 Oct 2003; Donnie Berkholz <spyderous@gentoo.org>;
+  rasmol-2.6_beta2.ebuild:
+  Basic cleanup. Removed hard-coded gcc, cleaner SRC_URI and src_unpack.
+
+*rasmol-2.6_beta2 (01 Jul 2002)
+
+  25 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> rasmol-2.6_beta2.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+  01 Jul 2002; Grant Goodyear <g2boojum@gentoo.org> ChangeLog  :
+
+  new package

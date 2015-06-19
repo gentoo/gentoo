@@ -1,0 +1,81 @@
+# ChangeLog for sys-firmware/iwl7260-ucode
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-firmware/iwl7260-ucode/ChangeLog,v 1.9 2015/03/25 04:01:17 gienah Exp $
+
+*iwl7260-ucode-0.12.16.25 (25 Mar 2015)
+*iwl7260-ucode-0.10.15.23 (25 Mar 2015)
+
+  25 Mar 2015; Mark Wright <gienah@gentoo.org> +iwl7260-ucode-0.10.15.23.ebuild,
+  +iwl7260-ucode-0.12.16.25.ebuild:
+  Bump iwl7260-ucode to 0.10.15.23 (upstream write the version number components
+  reversed) for kernel 3.17+ and 0.12.16.25 for kernel 3.19+. Fixes Bug 540316 -
+  sys-firmware/iwl7260-ucode-0.10.13.23 version bump - thanks to David Flogeras
+  for reporting.
+
+*iwl7260-ucode-0.10.11.23 (14 Jan 2015)
+*iwl7260-ucode-0.7.1.22 (14 Jan 2015)
+*iwl7260-ucode-0.8.15.22 (14 Jan 2015)
+*iwl7260-ucode-0.8.24.22 (14 Jan 2015)
+*iwl7260-ucode-0.9.214.23 (14 Jan 2015)
+*iwl7260-ucode-0.9.228.25 (14 Jan 2015)
+
+  14 Jan 2015; Mark Wright <gienah@gentoo.org> +iwl7260-ucode-0.10.11.23.ebuild,
+  +iwl7260-ucode-0.7.1.22.ebuild, +iwl7260-ucode-0.8.15.22.ebuild,
+  +iwl7260-ucode-0.8.24.22.ebuild, +iwl7260-ucode-0.9.214.23.ebuild,
+  +iwl7260-ucode-0.9.228.25.ebuild, -iwl7260-ucode-22.1.7.0-r1.ebuild,
+  -iwl7260-ucode-22.1.7.0.ebuild, -iwl7260-ucode-22.15.8.0-r1.ebuild,
+  -iwl7260-ucode-22.15.8.0.ebuild, -iwl7260-ucode-22.24.8.0.ebuild,
+  -iwl7260-ucode-23.214.9.0.ebuild, -iwl7260-ucode-25.228.9.0.ebuild:
+  Reverse the version numbers so that users will see an upgrade instead of a
+  downgrade, fixes Bug 533334 - sys-firmware/iwl7260-ucode-23.11.10.0 version
+  bump.
+
+*iwl7260-ucode-25.228.9.0 (17 Nov 2014)
+
+  17 Nov 2014; Mark Wright <gienah@gentoo.org> +iwl7260-ucode-25.228.9.0.ebuild:
+  Thanks to Julian Simioni and David Flogeras for providing the update to
+  25.228.9.0, testing and reporting. Fixes bug 528650.
+
+*iwl7260-ucode-23.214.9.0 (16 Jun 2014)
+
+  16 Jun 2014; Mark Wright <gienah@gentoo.org> +iwl7260-ucode-23.214.9.0.ebuild,
+  iwl7260-ucode-22.15.8.0-r1.ebuild, iwl7260-ucode-22.15.8.0.ebuild,
+  iwl7260-ucode-22.24.8.0.ebuild:
+  Bump iwl7260-ucode to 23.214.9.0, thanks to David Flogeras for the ebuild and
+  the bump request bug 513212. Fix bug 513216 typos in ebuilds, thanks to David
+  Flogeras for reporting and fixing.
+
+*iwl7260-ucode-22.24.8.0 (30 Mar 2014)
+
+  30 Mar 2014; Mark Wright <gienah@gentoo.org> +iwl7260-ucode-22.24.8.0.ebuild:
+  Bump iwl7260-ucode to 22.24.8.0 - untested as I do not have access to this
+  hardware.
+
+*iwl7260-ucode-22.15.8.0-r1 (25 Jan 2014)
+*iwl7260-ucode-22.1.7.0-r1 (25 Jan 2014)
+
+  25 Jan 2014; Mark Wright <gienah@gentoo.org>
+  +iwl7260-ucode-22.1.7.0-r1.ebuild, +iwl7260-ucode-22.15.8.0-r1.ebuild,
+  metadata.xml:
+  Add bluetooth use flag to pull in sys-firmware/iwl3160-7260-bt-ucode for the
+  Intel Wireless Bluetooth 3160 and Intel Wireless Bluetooth 7260 devices. Part
+  of bug #489714, thanks to Thomas Kear for reporting, testing and initial
+  ebuilds.
+
+  23 Jan 2014; Mark Wright <gienah@gentoo.org> iwl7260-ucode-22.15.8.0.ebuild:
+  Thanks to Thomas Kear for testing and this fix (for my copy-paste bug): sys-
+  firmware/iwl7260-ucode-22.15.8.0: Fails on doins, filename is
+  iwlwifi-7260-8.ucode not iwlwifi-7260-7.ucode in this version.
+
+  23 Jan 2014; Mark Wright <gienah@gentoo.org> iwl7260-ucode-22.1.7.0.ebuild,
+  iwl7260-ucode-22.15.8.0.ebuild:
+  Thanks to Thomas Kear for the fix: SRC_URI needs a -> to avoid ugly download
+  filenames. Part of bug #489714.
+
+*iwl7260-ucode-22.1.7.0 (23 Jan 2014)
+*iwl7260-ucode-22.15.8.0 (23 Jan 2014)
+
+  23 Jan 2014; Mark Wright <gienah@gentoo.org> +iwl7260-ucode-22.1.7.0.ebuild,
+  +iwl7260-ucode-22.15.8.0.ebuild, +metadata.xml:
+  Add sys-firmware/iwl7260-ucode. Thanks to Thomas Kear for the initial ebuild,
+  Small_Penguin for testing. Fixes bug #489714.

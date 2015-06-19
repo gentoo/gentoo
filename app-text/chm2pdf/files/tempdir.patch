@@ -1,0 +1,71 @@
+--- chm2pdf-0.9.1.orig/chm2pdf	2008-07-09 12:42:26.000000000 +0200
++++ chm2pdf-0.9.1/chm2pdf	2009-02-25 20:58:53.000000000 +0100
+@@ -27,6 +27,8 @@
+ import os, os.path
+ import re, glob
+ import getopt
++import tempfile
++import shutil
+ # from BeautifulSoup import BeautifulSoup
+ 
+ global version
+@@ -39,8 +41,8 @@
+ global filename #the input filename
+ 
+ version = '0.9.1'
+-CHM2PDF_TEMP_WORK_DIR='/tmp/chm2pdf/work' 
+-CHM2PDF_TEMP_ORIG_DIR='/tmp/chm2pdf/orig'
++CHM2PDF_TEMP_WORK_DIR=tempfile.mkdtemp()
++CHM2PDF_TEMP_ORIG_DIR=tempfile.mkdtemp()
+ 
+ 
+ 
+@@ -299,16 +301,6 @@
+     # ########################### File extraction and correction: START ############################
+     #
+     if options['dontextract'] == '':
+-    
+-        try:
+-            os.mkdir(CHM2PDF_TEMP_WORK_DIR)
+-        except OSError: # The directory already exists.
+-            pass
+-        
+-        try:
+-            os.mkdir(CHM2PDF_TEMP_ORIG_DIR)
+-        except OSError: # The directory already exists.
+-            pass
+         
+         try:
+             os.mkdir(CHM2PDF_ORIG_DIR)
+@@ -620,7 +612,7 @@
+     print '\t--continuous\n\t\tSpecifies  that  the  HTML  sources are unstructured (plain web pages).\n\t\tNo page breaks are inserted between each file or URL in the output.'
+     print '\t--cookies \'name="value with space"; name=value\'\n\t\t'
+     print '\t--datadir directory\n\t\tSpecifies the  location  of  the  HTMLDOC  data  files,  usually  /usr/share/htmldoc  or  C:\Program Files\HTMLDOC '
+-    print "\t--dontextract \n\t\tIf given, %s will not extract the HTML files from the given CHM file, but will use previously extracted copies from the temporary directory " %name + '(i.e. ' + CHM2PDF_TEMP_ORIG_DIR + ' and ' + CHM2PDF_TEMP_WORK_DIR + '). Usually you will use this option after you have used the \'--extract-only\' option to extract the files in order to correct them manually (in ' + CHM2PDF_TEMP_WORK_DIR + '). After the correction, a call with \'--dontextract\' will not overwrite your changes, but will use the corrected files instead.'
++#    print "\t--dontextract \n\t\tIf given, %s will not extract the HTML files from the given CHM file, but will use previously extracted copies from the temporary directory " %name + '(i.e. ' + CHM2PDF_TEMP_ORIG_DIR + ' and ' + CHM2PDF_TEMP_WORK_DIR + '). Usually you will use this option after you have used the \'--extract-only\' option to extract the files in order to correct them manually (in ' + CHM2PDF_TEMP_WORK_DIR + '). After the correction, a call with \'--dontextract\' will not overwrite your changes, but will use the corrected files instead.'
+     print '\t--duplex\n\t\tSpecifies that the output should be formatted for double-sided printing.'
+     print '\t--effectduration {0.1..10.0}\n\t\tSpecifies the duration in seconds of PDF page transition effects.'
+     print '\t--embedfonts\n\t\tSpecifies that fonts should be embedded in PDF output.'
+@@ -1084,13 +1076,6 @@
+         print 'CHM file "' + filename + '" not found!'
+         return
+     
+-    #remove temporary files
+-    if options['dontextract'] == '':
+-        if options['verbose']=='--verbose' and options['verbositylevel']=='high':
+-            print 'Removing any previous temporary files...'
+-        os.system('rm -r '+CHM2PDF_ORIG_DIR+'/*')
+-        os.system('rm -r '+CHM2PDF_WORK_DIR+'/*')
+-    
+     cfile = chm.CHMFile()
+     cfile.LoadCHM(filename)
+ 
+@@ -1105,6 +1090,8 @@
+             os.system('extract_chmLib ' + filename + ' ' + CHM2PDF_ORIG_DIR + '&> /dev/null')
+     
+     convert_to_pdf(cfile, filename, outputfilename, options)
++    shutil.rmtree(CHM2PDF_TEMP_WORK_DIR)
++    shutil.rmtree(CHM2PDF_TEMP_ORIG_DIR)    
+ 
+ 
+ if __name__ == '__main__':

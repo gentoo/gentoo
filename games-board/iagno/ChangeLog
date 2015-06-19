@@ -1,0 +1,90 @@
+# ChangeLog for games-board/iagno
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-board/iagno/ChangeLog,v 1.22 2015/06/09 15:13:59 eva Exp $
+
+*iagno-3.16.1 (09 Jun 2015)
+
+  09 Jun 2015; Gilles Dartiguelongue <eva@gentoo.org> -iagno-3.12.2.ebuild,
+  +iagno-3.16.1.ebuild:
+  Version bump for Gnome 3.16. Clean up old revision.
+
+  15 Mar 2015; Pacho Ramos <pacho@gentoo.org> iagno-3.14.2.ebuild:
+  x86 stable, bug 534012
+
+  14 Mar 2015; Pacho Ramos <pacho@gentoo.org> iagno-3.14.2.ebuild:
+  amd64 stable, bug 534012
+
+*iagno-3.14.2 (22 Dec 2014)
+
+  22 Dec 2014; Gilles Dartiguelongue <eva@gentoo.org> +iagno-3.14.2.ebuild:
+  Version bump for Gnome 3.14.
+
+  11 Sep 2014; Michael Sterrett <mr_bones_@gentoo.org> -iagno-3.10.1.ebuild,
+  -iagno-3.12.1.ebuild:
+  old
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org> iagno-3.12.2.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org> iagno-3.12.2.ebuild:
+  Stable for amd64, wrt bug #512912
+
+*iagno-3.12.2 (31 May 2014)
+
+  31 May 2014; Pacho Ramos <pacho@gentoo.org> +iagno-3.12.2.ebuild:
+  Version bump
+
+*iagno-3.12.1 (27 Apr 2014)
+
+  27 Apr 2014; Gilles Dartiguelongue <eva@gentoo.org> +iagno-3.12.1.ebuild:
+  Version bump for Gnome 3.12.
+
+  26 Apr 2014; Pacho Ramos <pacho@gentoo.org> -iagno-3.8.3.ebuild:
+  drop old
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> iagno-3.10.1.ebuild:
+  x86 stable, bug 499954
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> iagno-3.10.1.ebuild:
+  amd64 stable, bug 499954
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> iagno-3.10.1.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> iagno-3.10.1.ebuild:
+  arch stable, bug 888
+
+*iagno-3.10.1 (24 Dec 2013)
+
+  24 Dec 2013; Pacho Ramos <pacho@gentoo.org> +iagno-3.10.1.ebuild:
+  Version bump for Gnome 3.10
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> iagno-3.8.3.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> iagno-3.8.3.ebuild:
+  amd64 stable, bug #478252
+
+  06 Nov 2013; Pacho Ramos <pacho@gentoo.org> -iagno-3.8.2.ebuild,
+  iagno-3.8.3.ebuild:
+  x86 keyword, bug #476710; drop old
+
+*iagno-3.8.3 (04 Oct 2013)
+
+  04 Oct 2013; Pacho Ramos <pacho@gentoo.org> +iagno-3.8.3.ebuild,
+  -iagno-3.8.1.ebuild:
+  Version bump, drop old
+
+*iagno-3.8.2 (01 Sep 2013)
+
+  01 Sep 2013; Gilles Dartiguelongue <eva@gentoo.org> +iagno-3.8.2.ebuild:
+  Version bump.
+
+  31 Aug 2013; Sergey Popov <pinkbyte@gentoo.org> iagno-3.8.1.ebuild:
+  Add ~arm keyword, wrt bug #476710
+
+*iagno-3.8.1 (30 Jun 2013)
+
+  30 Jun 2013; Pacho Ramos <pacho@gentoo.org> +iagno-3.8.1.ebuild,
+  +metadata.xml:
+  Add game splitted from gnome-games by upstream

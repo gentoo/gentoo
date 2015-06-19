@@ -1,0 +1,109 @@
+# ChangeLog for dev-util/uncrustify
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/uncrustify/ChangeLog,v 1.24 2015/06/19 08:10:43 mrueg Exp $
+
+*uncrustify-0.61-r1 (19 Jun 2015)
+
+  19 Jun 2015; Manuel Rüger <mrueg@gentoo.org> +uncrustify-0.61-r1.ebuild,
+  -uncrustify-0.60.ebuild, uncrustify-9999.ebuild:
+  Migrate to python-any-r1.
+
+*uncrustify-0.61 (19 Apr 2015)
+
+  19 Apr 2015; Fabian Groffen <grobian@gentoo.org> +uncrustify-0.61.ebuild:
+  Version bump, bug #546806
+
+*uncrustify-9999 (14 Apr 2014)
+
+  14 Apr 2014; Alexey Shvetsov <alexxy@gentoo.org> +uncrustify-9999.ebuild,
+  -uncrustify-0.58.ebuild, metadata.xml:
+  [dev-util/uncrustify] Add live ebuild
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> uncrustify-0.59.ebuild:
+  Stable for x86, wrt bug #470276
+
+  19 May 2013; Agostino Sarubbo <ago@gentoo.org> uncrustify-0.59.ebuild:
+  Stable for amd64, wrt bug #470276
+
+*uncrustify-0.60 (18 May 2013)
+
+  18 May 2013; Fabian Groffen <grobian@gentoo.org> +uncrustify-0.60.ebuild,
+  -uncrustify-0.57.ebuild:
+  Version bump, bug #469580
+
+  08 May 2012; Fabian Groffen <grobian@gentoo.org> uncrustify-0.59.ebuild:
+  Marked ~x64-solaris
+
+  06 May 2012; Fabian Groffen <grobian@gentoo.org>
+  +files/uncrustify-0.59-unistdh.patch, uncrustify-0.59.ebuild:
+  Add patch to fix compilation with GCC 4.7, bug #413859
+
+*uncrustify-0.59 (14 Mar 2012)
+
+  14 Mar 2012; Fabian Groffen <grobian@gentoo.org> +uncrustify-0.59.ebuild,
+  -uncrustify-0.55.ebuild, -uncrustify-0.56.ebuild:
+  Version bump
+
+  28 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> uncrustify-0.58.ebuild:
+  x86 stable wrt bug #400353
+
+  27 Jan 2012; Agostino Sarubbo <ago@gentoo.org> uncrustify-0.58.ebuild:
+  Stable for amd64, wrt bug #400353
+
+  07 Aug 2011; Markos Chandras <hwoarang@gentoo.org> uncrustify-0.57.ebuild:
+  Stable on amd64 wrt bug #377547
+
+  07 Aug 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> uncrustify-0.57.ebuild:
+  x86 stable wrt bug #377547
+
+*uncrustify-0.58 (03 Aug 2011)
+
+  03 Aug 2011; Fabian Groffen <grobian@gentoo.org> +uncrustify-0.58.ebuild:
+  Version bump to 0.58
+
+*uncrustify-0.57 (20 Dec 2010)
+
+  20 Dec 2010; Fabian Groffen <grobian@gentoo.org> -uncrustify-0.52.ebuild,
+  -uncrustify-0.53.ebuild, +uncrustify-0.57.ebuild:
+  Clean old, version bump, bug #349141
+
+  03 Jul 2010; Fabian Groffen <grobian@gentoo.org> uncrustify-0.52.ebuild,
+  uncrustify-0.53.ebuild, uncrustify-0.55.ebuild, uncrustify-0.56.ebuild:
+  Tests seem not to work with python3, depend on python2.
+
+  25 Jun 2010; Christian Faulhammer <fauli@gentoo.org>
+  uncrustify-0.55.ebuild:
+  stable x86, bug 323221
+
+  24 Jun 2010; Pacho Ramos <pacho@gentoo.org> uncrustify-0.55.ebuild:
+  stable amd64, bug 323221
+
+*uncrustify-0.56 (08 Jun 2010)
+
+  08 Jun 2010; Fabian Groffen <grobian@gentoo.org> +uncrustify-0.56.ebuild:
+  Version bump, bug #323217
+
+*uncrustify-0.55 (09 Feb 2010)
+
+  09 Feb 2010; Fabian Groffen <grobian@gentoo.org> +uncrustify-0.55.ebuild,
+  -uncrustify-9999.ebuild:
+  Version bump to 0.55, drop live ebuild: upstream switched from SVN to Git.
+
+  09 Feb 2010; Fabian Groffen <grobian@gentoo.org> uncrustify-0.53.ebuild:
+  Marked ~amd64-linux
+
+*uncrustify-9999 (04 Oct 2009)
+
+  04 Oct 2009; Sebastian Pipping <sping@gentoo.org> +uncrustify-9999.ebuild:
+  Add live ebuild from sunrise
+
+*uncrustify-0.53 (04 Oct 2009)
+
+  04 Oct 2009; Sebastian Pipping <sping@gentoo.org> +uncrustify-0.53.ebuild:
+  Bump to 0.53
+
+*uncrustify-0.52 (01 Oct 2009)
+
+  01 Oct 2009; Fabian Groffen <grobian@gentoo.org> +uncrustify-0.52.ebuild,
+  +metadata.xml:
+  Initial version, ebuild by Nick Fortino and Mario Fetka, bug #208199

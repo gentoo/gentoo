@@ -1,0 +1,61 @@
+# ChangeLog for dev-python/pycdf
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pycdf/ChangeLog,v 1.16 2015/06/09 15:56:29 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+*pycdf-0.6.3-r1 (02 Jan 2015)
+
+  02 Jan 2015; Ian Delaney <idella4@gentoo.org> +pycdf-0.6.3-r1.ebuild,
+  -pycdf-0.6.3.ebuild:
+  revbump; conversion -> distutils-r1, rm old
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> pycdf-0.6.3.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  30 Sep 2012; Raúl Porcel <armin76@gentoo.org> pycdf-0.6.3.ebuild:
+  Drop ia64 keywords
+
+  23 Feb 2012; Patrick Lauer <patrick@gentoo.org> pycdf-0.6.3.ebuild:
+  Restricting pypy and jython
+
+  03 Dec 2011; Markos Chandras <hwoarang@gentoo.org> pycdf-0.6.3.ebuild:
+  Update LICENSE. Patch by Arfrever.
+
+  23 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pycdf-0.6.3.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+*pycdf-0.6.3 (14 Jun 2007)
+
+  14 Jun 2007; Lukasz Strzygowski <lucass@gentoo.org> -pycdf-0.5.2.ebuild,
+  -pycdf-0.6.2_rc1.ebuild, +pycdf-0.6.3.ebuild:
+  Version bump, dropped old versions (bug #181778). Renamed doc use-flag to
+  examples.
+
+  24 Feb 2007; Steve Dibb <beandog@gentoo.org> pycdf-0.5.2.ebuild,
+  pycdf-0.6.2_rc1.ebuild:
+  add ~amd64, bug 167917
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*pycdf-0.6.2_rc1 (23 Jul 2006)
+
+  23 Jul 2006; Alastair Tse <liquidx@gentoo.org> +pycdf-0.6.2_rc1.ebuild:
+  version bump (#141165). Changed LICENSE, DESCRIPTION and HOMEPAGE.
+
+  01 Apr 2006; Aron Griffis <agriffis@gentoo.org> pycdf-0.5.2.ebuild:
+  Mark 0.5.2 ~ia64
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*pycdf-0.5.2 (05 Dec 2004)
+
+  05 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> pycdf-0.5.2.ebuild:
+  Fix missing dependency, bug 67874.
+
+  25 May 2004; Bryan Østergaard <kloeri@gentoo.org> +metadata.xml:
+  Initial import, bug #46691.

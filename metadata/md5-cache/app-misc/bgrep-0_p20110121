@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare test
+DEPEND=test? ( dev-lang/perl )
+DESCRIPTION=grep-like tool to search for binary strings
+EAPI=4
+HOMEPAGE=https://github.com/tmbinc/bgrep/
+IUSE=test
+KEYWORDS=~amd64
+LICENSE=MIT
+SLOT=0
+SRC_URI=https://github.com/tmbinc/bgrep/tarball/49b098be9548d174023ad05c10f6af9d02b8e18e -> tmbinc-bgrep-49b098b.tar.gz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=ebe681e710ac665324becf7dbce15906

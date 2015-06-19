@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>billie@gentoo.org</email>
+		<name>Daniel Pielmeier</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>brenden@rty.ca</email>
+			<name>Brenden Matthews</name>
+			<description>Upstream author</description>
+		</maintainer>
+		<remote-id type="sourceforge">conky</remote-id>
+	</upstream>
+	<longdescription>Conky is a system monitor that sits in the corner of your desktop. It is a fork of Torsmo that is actually maintained.</longdescription>
+	<use>
+		<flag name="apcupsd">enable support for <pkg>sys-power/apcupsd</pkg></flag>
+		<flag name="audacious">enable monitoring of music played by <pkg>media-sound/audacious</pkg></flag>
+		<flag name="eve">enable support for the eve-online skill monitor</flag>
+		<flag name="iostats">enable support for per-task I/O statistics</flag>
+		<flag name="lua">enable if you want Lua scripting support</flag>
+		<flag name="lua-cairo">enable if you want Lua Cairo bindings for Conky (also enables lua support)</flag>
+		<flag name="lua-imlib">enable if you want Lua Imlib2 bindings for Conky (also enables lua and imlib support)</flag>
+		<flag name="math">enable support for glibc's libm math library</flag>
+		<flag name="moc">enable monitoring of music played by <pkg>media-sound/moc</pkg></flag>
+		<flag name="mpd">enable monitoring of music controlled by <pkg>media-sound/mpd</pkg></flag>
+		<flag name="nano-syntax">enable syntax highlighting for <pkg>app-editors/nano</pkg></flag>
+		<flag name="nvidia">enable reading of nvidia card temperature sensors via <pkg>media-video/nvidia-settings</pkg></flag>
+		<flag name="portmon">enable support for tcp (ip4) port monitoring</flag>
+		<flag name="thinkpad">enable support for IBM/Lenovo notebooks</flag>
+		<flag name="weather-metar">enable support for metar weather service</flag>
+		<flag name="weather-xoap">enable support for metar and xoap weather service</flag>
+		<flag name="xmms2">enable monitoring of music played by <pkg>media-sound/xmms2</pkg></flag>
+	</use>
+</pkgmetadata>

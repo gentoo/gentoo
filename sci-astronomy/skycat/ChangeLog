@@ -1,0 +1,82 @@
+# ChangeLog for sci-astronomy/skycat
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-astronomy/skycat/ChangeLog,v 1.14 2014/11/27 19:05:20 xarthisius Exp $
+
+  27 Nov 2014; Kacper Kowalik <xarthisius@gentoo.org> skycat-3.1.2-r1.ebuild:
+  Append -DUSE_INTERP_RESULT to CPPFLAGS for Tk/Tcl >= 8.6 wrt #514604 by
+  Patrick Lauer <patrick@gentoo.org>
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> skycat-3.1.2-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  24 Jul 2012; Sébastien Fabbro <bicatali@gentoo.org> skycat-3.1.2-r1.ebuild:
+  Keyword amd64-linux, x86-linux
+
+  23 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  -files/skycat-3.0.1-gcc43.patch, -files/skycat-3.0.1-m4.patch,
+  -skycat-3.0.2-r2.ebuild, -files/skycat-3.0.2-glibc-2.10.patch,
+  -files/skycat-3.0.2-makefile-qa.patch, -skycat-3.1.1.ebuild,
+  -files/skycat-3.1.1-gcc45.patch, -skycat-3.1.2.ebuild:
+  drop old
+
+*skycat-3.1.2-r1 (23 Aug 2011)
+
+  23 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org> +skycat-3.1.2-r1.ebuild,
+  +files/skycat-3.1.2-m4.patch, +files/skycat-3.1.2-makefile-qa.patch:
+  Fix as-needed issues wrt #379943 by Sijus <sijus@freemail.lt>. Add missing
+  SONAMEs
+
+  04 Aug 2011; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml:
+  Switched herd to sci-astronomy
+
+*skycat-3.1.2 (25 Jul 2011)
+
+  25 Jul 2011; Sébastien Fabbro <bicatali@gentoo.org> +skycat-3.1.2.ebuild:
+  Version bump
+
+*skycat-3.1.1 (24 Sep 2010)
+
+  24 Sep 2010; Sébastien Fabbro <bicatali@gentoo.org> -skycat-3.0.2.ebuild,
+  -skycat-3.0.2-r1.ebuild, +skycat-3.1.1.ebuild,
+  +files/skycat-3.1.1-gcc45.patch:
+  Bump. Added a patch to avoid overflows
+
+*skycat-3.0.2-r2 (25 Sep 2009)
+
+  25 Sep 2009; Markus Dittrich <markusle@gentoo.org>
+  +skycat-3.0.2-r2.ebuild, +files/skycat-3.0.2-systemlibs.patch
+  +files/skycat-3.0.2-makefile-qa.patch:
+  Link against libwcs and cfitsio systemlibs instead of included ones
+  (fixes bug #253273). Also added a patch to fix parallel make and
+  multiple QA issues.
+
+  16 Sep 2009; Markus Dittrich <markusle@gentoo.org> skycat-3.0.2-r1.ebuild,
+  +files/skycat-3.0.2-glibc-2.10.patch, +files/skycat-3.0.2-tk8.5.patch:
+  Fixed building with tk-8.5 and glibc-2.10 (fixes bug #283265).
+  Thanks much to Kacper Kowalik for his patches.
+
+*skycat-3.0.2-r1 (05 Nov 2008)
+
+  05 Nov 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  files/skycat-3.0.1-gcc43.patch, -skycat-3.0.1.ebuild,
+  +skycat-3.0.2-r1.ebuild:
+  Added some missing headers, more gcc-4.3 fixes not caught during
+  compilation
+
+*skycat-3.0.2 (26 Jun 2008)
+
+  26 Jun 2008; Sébastien Fabbro <bicatali@gentoo.org> +skycat-3.0.2.ebuild:
+  Version bump
+
+  17 Jun 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  -files/skycat-3.0.1-gcc41.patch, +files/skycat-3.0.1-gcc43.patch,
+  skycat-3.0.1.ebuild:
+  Added gcc-4.3 fix, thanks to Marek Miller, bug #227531, and added 
+  missing libXext dependency
+
+*skycat-3.0.1 (11 Apr 2008)
+
+  11 Apr 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/skycat-3.0.1-gcc41.patch, +files/skycat-3.0.1-m4.patch,
+  +metadata.xml, +skycat-3.0.1.ebuild:
+  Initial import. Closes bug #65665.

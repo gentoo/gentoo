@@ -1,0 +1,13 @@
+diff --git a/unix/Makefile b/unix/Makefile
+index 8dd0846..d2fe1ac 100644
+--- a/unix/Makefile
++++ b/unix/Makefile
+@@ -121,7 +121,7 @@ ${MGFLIB} : ../libmgf/Makefile
+ 	};
+ 
+ ${ARCHDIR}/tachyon : ${RAYLIB} ${PARSELIB} ${OBJDIR}/main.o ${OBJDIR}/getargs.o ${OBJDIR}/parse.o ${OBJDIR}/nffparse.o ${OBJDIR}/glwin.o ${OBJDIR}/spaceball.o ${OBJDIR}/trackball.o ${PARSEOBJS} 
+-	${CC} ${CFLAGS} ${DEMOINC} -o ${ARCHDIR}/tachyon ${OBJDIR}/main.o ${OBJDIR}/getargs.o ${OBJDIR}/parse.o ${OBJDIR}/nffparse.o ${OBJDIR}/glwin.o ${OBJDIR}/spaceball.o ${OBJDIR}/trackball.o ${PARSEOBJS} -L${RAYLIBDIR} ${PARSELIBS} ${LIBS}
++	${CC} ${CFLAGS} ${LDFLAGS} ${DEMOINC} -o ${ARCHDIR}/tachyon ${OBJDIR}/main.o ${OBJDIR}/getargs.o ${OBJDIR}/parse.o ${OBJDIR}/nffparse.o ${OBJDIR}/glwin.o ${OBJDIR}/spaceball.o ${OBJDIR}/trackball.o ${PARSEOBJS} -L${RAYLIBDIR} ${PARSELIBS} ${LIBS}
+ 	${STRIP} ${ARCHDIR}/tachyon
+ 
+ ${ARCHDIR}/animray : ${RAYLIB} ${OBJDIR}/mainanim.o

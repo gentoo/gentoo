@@ -1,0 +1,25 @@
+# ChangeLog for dev-util/antlrworks
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/antlrworks/ChangeLog,v 1.6 2009/12/29 17:36:20 josejx Exp $
+
+  29 Dec 2009; Joseph Jezak <josejx@gentoo.org> antlrworks-1.2.3.ebuild:
+  Marked ppc/ppc64 stable.
+
+  09 Nov 2009; Markus Meier <maekke@gentoo.org> antlrworks-1.2.3.ebuild:
+  amd64/x86 stable, bug #287425
+
+  26 Apr 2009; Brent Baude <ranger@gentoo.org> antlrworks-1.2.3.ebuild:
+  Marking antlrworks-1.2.3 ~ppc for bug 264259
+
+  24 Apr 2009; Brent Baude <ranger@gentoo.org> antlrworks-1.2.3.ebuild:
+  Marking antlrworks-1.2.3 ~ppc64 for bug 264259
+
+  11 Apr 2009; Alistair Bush <ali_bush@gentoo.org> antlrworks-1.2.3.ebuild:
+  Keyworded ~amd64.
+
+*antlrworks-1.2.3 (30 Mar 2009)
+
+  30 Mar 2009; Petteri Räty <betelgeuse@gentoo.org>
+  +files/antlr-3.1.3.patch, +metadata.xml, +antlrworks-1.2.3.ebuild:
+  Initial commit. Ebuild written by me. Fixes bug #153321.
+

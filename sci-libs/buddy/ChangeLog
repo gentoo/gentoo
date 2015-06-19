@@ -1,0 +1,72 @@
+# ChangeLog for sci-libs/buddy
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/buddy/ChangeLog,v 1.15 2015/04/03 13:14:34 jlec Exp $
+
+  03 Apr 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Recalculate checksums
+
+  05 Feb 2013; Ulrich Müller <ulm@gentoo.org> buddy-2.2.ebuild,
+  buddy-2.4.ebuild:
+  Specify LICENSE more precisely, see README file, bug 455570.
+
+  18 Oct 2012; Justin Lecher <jlec@gentoo.org> buddy-2.2.ebuild,
+  buddy-2.4.ebuild, metadata.xml:
+  Remove virtual/fortran and always call fortran-2_pkg_setup as intend by the
+  updated fortran-2.eclass
+
+  03 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> buddy-2.4.ebuild,
+  metadata.xml:
+  Added static-libs and doc flags, keyword amd64-linux, x86-linux
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> buddy-2.2.ebuild,
+  buddy-2.4.ebuild:
+  Add dependency on virtual/fortran
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> buddy-2.4.ebuild:
+  Added fortran-2.eclass support
+
+  02 Jun 2011; Justin Lecher <jlec@gentoo.org> buddy-2.2.ebuild,
+  buddy-2.4.ebuild, +files/buddy-2.4-gold.patch:
+  Make it gold ready, #369675
+
+  02 Jan 2010; Christian Faulhammer <fauli@gentoo.org> buddy-2.4.ebuild:
+  Transfer Prefix keywords
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> buddy-2.2.ebuild,
+  buddy-2.4.ebuild:
+  Remove virtual/libc
+
+  10 Feb 2009; Ryan Hill <dirtyepic@gentoo.org>
+  +files/buddy-2.4-gcc43.patch, buddy-2.4.ebuild:
+  Fix building with GCC 4.3
+
+  03 Jun 2008; Markus Dittrich <markusle@gentoo.org> buddy-2.2.ebuild,
+  buddy-2.4.ebuild:
+  Fixed QA and added amd64 keyword.
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+*buddy-2.4 (29 Jan 2006)
+
+  29 Jan 2006; Markus Dittrich <markusle@gentoo.org> +buddy-2.4.ebuild:
+  Bump to most recent version. This fixes bug #119582.
+
+*buddy-2.2 (28 Dec 2004)
+
+  28 Dec 2004; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +buddy-2.2.ebuild:
+  Moved from dev-libs/buddy to sci-libs/buddy.
+
+  28 Aug 2004; David Holm <dholm@gentoo.org> buddy-2.2.ebuild:
+  Added to ~ppc.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> buddy-2.2.ebuild:
+  virtual/glibc -> virtual/libc
+
+*buddy-2.2 (17 May 2004)
+
+  17 May 2004; Patrick Kursawe <phosphan@gentoo.org> buddy-2.2.ebuild,
+  metadata.xml:
+  Ebuild by Peter Simons <simons+gentoo@cryp.to> and olivier.fisette@sympatico.ca
+  See bug #39396

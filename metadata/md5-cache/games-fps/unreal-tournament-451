@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=>=media-libs/libsdl-1.2.15-r5[abi_x86_32(-)] x11-libs/libX11[abi_x86_32(-)] x11-libs/libXau[abi_x86_32(-)] x11-libs/libXdmcp[abi_x86_32(-)] x11-libs/libXext[abi_x86_32(-)] opengl? ( virtual/opengl[abi_x86_32(-)] ) !games-fps/unreal-tournament-goty
+DESCRIPTION=Futuristic FPS
+EAPI=5
+HOMEPAGE=http://www.unrealtournament.com/ http://utpg.org/
+IUSE=3dfx opengl
+KEYWORDS=-* amd64 x86
+LICENSE=all-rights-reserved
+PROPERTIES=interactive
+RDEPEND=>=media-libs/libsdl-1.2.15-r5[abi_x86_32(-)] x11-libs/libX11[abi_x86_32(-)] x11-libs/libXau[abi_x86_32(-)] x11-libs/libXdmcp[abi_x86_32(-)] x11-libs/libXext[abi_x86_32(-)] opengl? ( virtual/opengl[abi_x86_32(-)] ) games-misc/games-envd
+RESTRICT=mirror bindist
+SLOT=0
+SRC_URI=http://www.ibiblio.org/osg/Downloads/Linux/Installers/ut-install-436.run http://utpg.org/patches/UTPGPatch451.tar.bz2
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	cdrom	49b4b952fb5c83fac6c616b532723e60	eutils	9fb270e417e0e83d64ca52586c4a79de	games	1ad3205dbf62a2c98249f2f59b0a2d39	multilib	62927b3db3a589b0806255f3a002d5d3	portability	a45c088f246ef5091e029f6285d7ce42	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=f9aa6a5a9793e183fc5f57264f3605db

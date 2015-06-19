@@ -1,0 +1,20 @@
+--- Csound5.17.11/frontends/CsoundAC/CMakeLists.txt
++++ Csound5.17.11/frontends/CsoundAC/CMakeLists.txt
+@@ -7,6 +7,7 @@
+ 
+ find_package(Boost)
+ find_library(MUSICXML_LIBRARY musicxml2)
++set(FLTK_SKIP_OPENGL true)
+ find_package(FLTK)
+ find_package(SWIG)
+ find_package(PythonLibs)
+--- Csound5.17.11/InOut/CMakeLists.txt
++++ Csound5.17.11/InOut/CMakeLists.txt
+@@ -56,6 +56,7 @@
+     find_library(COREAUDIO_LIBRARY CoreAudio)
+ endif()
+ if(USE_FLTK OR BUILD_VIRTUAL_KEYBOARD)
++    set(FLTK_SKIP_OPENGL true)
+     find_package(FLTK)
+ endif()
+ 

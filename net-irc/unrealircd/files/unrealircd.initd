@@ -1,0 +1,44 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/unrealircd/files/unrealircd.initd,v 1.3 2013/01/27 07:31:25 binki Exp $
+
+extra_started_commands="reload"
+
+# Defaults
+: ${UNREALIRCD_USER:=unrealircd}
+: ${UNREALIRCD_CONF:=/etc/unrealircd/${SVCNAME}.conf}
+: ${UNREALIRCD_PIDFILE:=/var/run/unrealircd/${SVCNAME#unreal}.pid}
+
+depend() {
+	use dns net
+	provide ircd
+}
+
+start() {
+	UNREALIRCD_PIDFILEDIR=${UNREALIRCD_PIDFILE%/*}
+	if ! [ -d "${UNREALIRCD_PIDFILEDIR}" ]; then
+		ebegin "Creating ${UNREALIRCD_PIDFILEDIR} for ${SVCNAME}"
+		mkdir "${UNREALIRCD_PIDFILEDIR}" \
+			&& chown :unrealircd "${UNREALIRCD_PIDFILEDIR}" \
+			&& chmod 770 "${UNREALIRCD_PIDFILEDIR}"
+		eend $?
+	fi
+
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --quiet --exec /usr/bin/unrealircd \
+		--user ${UNREALIRCD_USER} --pidfile "${UNREALIRCD_PIDFILE}" -- -f "${UNREALIRCD_CONF}" ${UNREALIRCD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --quiet --pidfile "${UNREALIRCD_PIDFILE}"
+	eend $?
+}
+
+reload() {
+	ebegin "Reloading ${SVCNAME}"
+	start-stop-daemon --signal HUP --quiet --pidfile "${UNREALIRCD_PIDFILE}"
+	eend $?
+}

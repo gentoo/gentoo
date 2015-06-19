@@ -1,0 +1,24 @@
+# ChangeLog for dev-perl/Emacs-PDE
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Emacs-PDE/ChangeLog,v 1.4 2015/06/13 22:37:44 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  Emacs-PDE-0.2.16-r1.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+*Emacs-PDE-0.2.16-r1 (04 Sep 2013)
+
+  04 Sep 2013; Ian Delaney <idella4@gentoo.org> +Emacs-PDE-0.2.16-r1.ebuild,
+  -Emacs-PDE-0.2.16.ebuild:
+  rebump -> EAPI 5, remove old
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+*Emacs-PDE-0.2.16 (24 Mar 2010)
+
+  24 Mar 2010; Robin H. Johnson <robbat2@gentoo.org>
+  +Emacs-PDE-0.2.16.ebuild, +metadata.xml:
+  Bug #309943: Add this package because upstream module build system does
+  not pick up the SITELISP location correctly, nor respect DESTDIR for
+  sitelisp.

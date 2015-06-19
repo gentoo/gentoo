@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile config configure install postinst postrm preinst prepare setup unpack
+DEPEND=app-arch/p7zip
+DESCRIPTION=Editor's Choice Edition plus Mega Pack for the critically-acclaimed first-person shooter
+EAPI=5
+HOMEPAGE=http://www.unrealtournament2004.com/
+IUSE=dedicated opengl
+KEYWORDS=amd64 x86
+LICENSE=ut2003
+RDEPEND=sys-libs/glibc games-fps/ut2004-data games-fps/ut2004-bonuspack-ece games-fps/ut2004-bonuspack-mega dedicated? ( !games-server/ut2004-ded ) opengl? ( =virtual/libstdc++-3.3 virtual/opengl x11-libs/libXext x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp media-libs/libsdl media-libs/openal ) !dedicated? ( !opengl? ( =virtual/libstdc++-3.3 virtual/opengl x11-libs/libXext x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp media-libs/libsdl media-libs/openal ) ) games-misc/games-envd
+RESTRICT=mirror strip
+SLOT=0
+SRC_URI=http://treefort.icculus.org/ut2004/ut2004-lnxpatch3369-2.tar.bz2 http://storage.guntoo.de/downs/downloads/Patch/ut2004-v3369-3-linux-dedicated.7z mirror://gentoo/ut2004-v3369-3-linux-dedicated.7z
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	games	1ad3205dbf62a2c98249f2f59b0a2d39	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=e0b3694cb73065af1c6a85eb7d5f444c

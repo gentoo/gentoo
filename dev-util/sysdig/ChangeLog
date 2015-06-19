@@ -1,0 +1,22 @@
+# ChangeLog for dev-util/sysdig
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/sysdig/ChangeLog,v 1.4 2015/03/09 19:07:51 mgorny Exp $
+
+  09 Mar 2015; Michał Górny <mgorny@gentoo.org> sysdig-0.1.98.ebuild:
+  Increase jsoncpp dep, bug #542248.
+
+*sysdig-0.1.98 (04 Mar 2015)
+
+  04 Mar 2015; Michał Górny <mgorny@gentoo.org> +sysdig-0.1.98.ebuild:
+  Version bump.
+
+  22 Nov 2014; Michał Górny <mgorny@gentoo.org> metadata.xml,
+  sysdig-0.1.92.ebuild:
+  Add USE=modules to support disabling kernel modules (e.g. to work with
+  dumpfiles only). Add a pkg_pretend().
+
+*sysdig-0.1.92 (11 Nov 2014)
+
+  11 Nov 2014; Michał Górny <mgorny@gentoo.org> +metadata.xml,
+  +sysdig-0.1.92.ebuild:
+  Introduce initial version of sysdig, bug #510718.

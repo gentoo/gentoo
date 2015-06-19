@@ -1,0 +1,83 @@
+# ChangeLog for dev-java/ant-ivy
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-ivy/ChangeLog,v 1.18 2013/07/10 11:51:04 tomwij Exp $
+
+*ant-ivy-1.4.1-r1 (10 Jul 2013)
+
+  10 Jul 2013; Tom Wijsman <TomWij@gentoo.org> +ant-ivy-1.4.1-r1.ebuild,
+  -ant-ivy-1.4.1.ebuild, ant-ivy-2.0.0.ebuild, ant-ivy-2.3.0.ebuild:
+  Fixed the SLOTs of the dependencies, with the intent to ensure we depend on
+  SLOT 0 of dev-java/commons-vfs. Revision bump and EAPI 5 for 1.4.1.
+
+*ant-ivy-2.3.0 (05 Jul 2013)
+
+  05 Jul 2013; Tom Wijsman <TomWij@gentoo.org> +ant-ivy-2.3.0.ebuild:
+  Version bump to 2.3.0.
+
+  23 Jan 2010; Alexis Ballier <aballier@gentoo.org> ant-ivy-1.4.1.ebuild,
+  ant-ivy-2.0.0.ebuild:
+  keyword ~x86-fbsd
+
+  03 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  ant-ivy-1.3.1-r1.ebuild:
+  Transfer Prefix keywords for all SLOTs
+
+  03 Jan 2010; Christian Faulhammer <fauli@gentoo.org> ant-ivy-2.0.0.ebuild:
+  Transfer Prefix keywords
+
+  15 Oct 2009; Mounir Lamouri <volkmar@gentoo.org> ant-ivy-2.0.0.ebuild:
+  Stabilizing for ppc, bug 279726
+
+  06 Sep 2009; Brent Baude <ranger@gentoo.org> ant-ivy-2.0.0.ebuild:
+  Marking ant-ivy-2.0.0 ppc64 for bug 279726
+
+  02 Aug 2009; Markus Meier <maekke@gentoo.org> ant-ivy-2.0.0.ebuild:
+  amd64/x86 stable, bug #279726
+
+*ant-ivy-1.4.1 (13 Jun 2009)
+
+  13 Jun 2009; Jean-Noël Rivasseau <elvanor@gentoo.org>
+  +files/1.4.1-javadoc.patch, +ant-ivy-1.4.1.ebuild:
+  Added ant-ivy-1.4.1 from java-experimental overlay.
+
+*ant-ivy-2.0.0 (10 May 2009)
+
+  10 May 2009; Jean-Noël Rivasseau <elvanor@gentoo.org>
+  +ant-ivy-2.0.0.ebuild:
+  Version bump to 2.0.0, slotted since ant-contrib does not build with this
+  new version.
+
+  17 Jul 2008; Markus Rothe <corsair@gentoo.org> ant-ivy-1.3.1-r1.ebuild:
+  Added ~ppc64; bug #231107
+
+  15 Jul 2008; Kenneth Prugh <ken69267@gentoo.org> ant-ivy-1.3.1-r1.ebuild:
+  keyworded ~amd64, bug #231107
+
+  15 Jul 2008; Petteri Räty <betelgeuse@gentoo.org>
+  ant-ivy-1.3.1-r1.ebuild:
+  Use JAVA_PKG_IUSE.
+
+  12 Jul 2008; Petteri Räty <betelgeuse@gentoo.org>
+  ant-ivy-1.3.1-r1.ebuild:
+  RESTRICT test because the upstream zip does not include a file needed to
+  run them.
+
+  01 Mar 2007; Petteri Räty <betelgeuse@gentoo.org> -ant-ivy-1.3.1.ebuild:
+  Cleanup.
+
+*ant-ivy-1.3.1-r1 (01 Mar 2007)
+
+  01 Mar 2007; Petteri Räty <betelgeuse@gentoo.org> metadata.xml,
+  +ant-ivy-1.3.1-r1.ebuild:
+  Fix package.env DEPEND atom, javadoc installation, too long DESCRIPTION and
+  cleanup the ebuild.
+
+  11 Sep 2006; Krzysiek Pawlik <nelchael@gentoo.org> ant-ivy-1.3.1.ebuild:
+  Added ~ppc.
+
+*ant-ivy-1.3.1 (21 Aug 2006)
+
+  21 Aug 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  +files/ivy-1.3.1-noresolve.patch, +files/ivy-1.3.1-tasks.patch,
+  +metadata.xml, +ant-ivy-1.3.1.ebuild:
+  Initial version.

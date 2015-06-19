@@ -1,0 +1,33 @@
+# ChangeLog for net-mail/Freemail
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/Freemail/ChangeLog,v 1.8 2013/05/24 02:38:08 patrick Exp $
+
+  24 May 2013; Patrick Lauer <patrick@gentoo.org> Freemail-9999.ebuild:
+  Removing nonexistant use-dependency
+
+  20 Sep 2011; Michał Górny <mgorny@gentoo.org> Freemail-9999.ebuild:
+  Migrate to git-2.
+
+  28 Mar 2010; Vlastimil Babka <caster@gentoo.org> Freemail-9999.ebuild:
+  Use slot dep for bcprov.
+
+  05 Feb 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  Freemail-9999.ebuild:
+  Adjust elog to freenet plugins dir handling
+
+  26 Jun 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  Freemail-9999.ebuild, files/build.patch:
+  Move source from old svn tree to new location and git
+
+  28 Apr 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> Freemail-9999:
+  Change the ownership of the pluginsdir to freenet user
+
+  03 Feb 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  Freemail-9999.ebuild:
+  Explicitly call pkg_preinst of java-pkg-2 and subversion eclass
+
+*Freemail-9999 (02 Feb 2009)
+
+  02 Feb 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +files/build.patch, +Freemail-9999.ebuild:
+  Initial commit. Fixes bug 240447

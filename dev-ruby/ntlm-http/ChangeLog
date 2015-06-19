@@ -1,0 +1,55 @@
+# ChangeLog for dev-ruby/ntlm-http
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ntlm-http/ChangeLog,v 1.14 2015/04/09 06:11:52 graaff Exp $
+
+  09 Apr 2015; Hans de Graaff <graaff@gentoo.org> -ntlm-http-0.1.1.ebuild:
+  Cleanup.
+
+  08 Apr 2015; Agostino Sarubbo <ago@gentoo.org> ntlm-http-0.1.1-r1.ebuild:
+  Stable for x86, wrt bug #545458
+
+  08 Apr 2015; Agostino Sarubbo <ago@gentoo.org> ntlm-http-0.1.1-r1.ebuild:
+  Stable for amd64, wrt bug #545458
+
+*ntlm-http-0.1.1-r2 (04 Apr 2015)
+
+  04 Apr 2015; Hans de Graaff <graaff@gentoo.org> ntlm-http-0.1.1-r1.ebuild,
+  +ntlm-http-0.1.1-r2.ebuild:
+  Create stable candidate.
+
+  24 Mar 2015; Hans de Graaff <graaff@gentoo.org> ntlm-http-0.1.1-r1.ebuild:
+  Add ruby22.
+
+  13 Aug 2014; Manuel Rüger <mrueg@gentoo.org> ntlm-http-0.1.1-r1.ebuild:
+  Add ruby21 support.
+
+  05 Apr 2014; Manuel Rüger <mrueg@gentoo.org> ntlm-http-0.1.1-r1.ebuild,
+  ntlm-http-0.1.1.ebuild:
+  Remove ree18 and ruby18 target.
+
+*ntlm-http-0.1.1-r1 (19 Oct 2013)
+
+  19 Oct 2013; Manuel Rüger <mrueg@gentoo.org> +ntlm-http-0.1.1-r1.ebuild:
+  Add ruby20 target.
+
+  15 Sep 2013; Agostino Sarubbo <ago@gentoo.org> ntlm-http-0.1.1.ebuild:
+  Stable for x86, wrt bug #483694
+
+  15 Sep 2013; Agostino Sarubbo <ago@gentoo.org> ntlm-http-0.1.1.ebuild:
+  Stable for amd64, wrt bug #483694
+
+  25 Nov 2012; Thomas Kahle <tomka@gentoo.org> ntlm-http-0.1.1.ebuild:
+  marked ~x86 per bug 432830
+
+  29 Sep 2012; Fabian Groffen <grobian@gentoo.org> ntlm-http-0.1.1.ebuild:
+  Added Prefix keywords, bug #432830
+
+  27 Sep 2012; Samuli Suominen <ssuominen@gentoo.org> ntlm-http-0.1.1.ebuild:
+  Keyword ~ppc/~ppc64 wrt #432830
+
+*ntlm-http-0.1.1 (14 Aug 2012)
+
+  14 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +files/ntlm-http-0.1.1+ruby-1.9.patch, +metadata.xml, +ntlm-http-0.1.1.ebuild:
+  Initial import of ntlm-http required for mechanize. Doesn't work on JRuby but
+  does work on Ruby 1.9 after patching.

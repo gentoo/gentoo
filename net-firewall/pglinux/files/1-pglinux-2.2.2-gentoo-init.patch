@@ -1,0 +1,20 @@
+commit a63052957b350adcf92e7c23aaad7b71450d8023
+Author: hasufell <julian.ospald@googlemail.com>
+Date:   Sun Nov 25 13:44:34 2012 +0100
+
+    fix make dist
+    
+    forgot to add pgl.gentoo.in :/
+
+diff --git a/pgl/pglcmd/Makefile.am b/pgl/pglcmd/Makefile.am
+index 147a66e..896b6bc 100644
+--- a/pgl/pglcmd/Makefile.am
++++ b/pgl/pglcmd/Makefile.am
+@@ -118,6 +118,7 @@ EXTRA_DIST = \
+ 	pglcmd.wd.in \
+ 	cron.daily/pglcmd.in \
+ 	init/pgl.in \
++	init/pgl.gentoo.in \
+ 	networkmanager/20pglcmd.in \
+ 	pglcmd.lib
+ 

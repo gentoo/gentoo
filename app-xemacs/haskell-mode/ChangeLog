@@ -1,0 +1,78 @@
+# ChangeLog for app-xemacs/haskell-mode
+# Copyright 2002-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/haskell-mode/ChangeLog,v 1.22 2014/08/10 19:06:00 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> haskell-mode-1.11.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  20 Feb 2009; Christian Faulhammer <fauli@gentoo.org>
+  -haskell-mode-1.10.ebuild:
+  clean up
+
+  12 May 2008; Markus Rothe <corsair@gentoo.org> haskell-mode-1.11.ebuild:
+  Stable on ppc64
+
+  05 May 2008; Raúl Porcel <armin76@gentoo.org> haskell-mode-1.11.ebuild:
+  alpha/sparc stable wrt #219332
+
+  02 May 2008; Christian Faulhammer <opfer@gentoo.org>
+  haskell-mode-1.11.ebuild:
+  stable x86, bug 219332
+
+  30 Apr 2008; nixnut <nixnut@gentoo.org> haskell-mode-1.11.ebuild:
+  Stable on ppc wrt bug 219332
+
+  26 Apr 2008; Hans de Graaff <graaff@gentoo.org> haskell-mode-1.11.ebuild:
+  Mark stable on amd64 , bug #219332
+
+  19 Mar 2008; Hans de Graaff <graaff@gentoo.org> metadata.xml:
+  A herd should not be listed as maintainer
+
+  28 Feb 2008; Raúl Porcel <armin76@gentoo.org> haskell-mode-1.11.ebuild:
+  Re-add ~ppc64, removed by mistake
+
+  25 Oct 2007; Hans de Graaff <graaff@gentoo.org> -haskell-mode-1.05.ebuild:
+  Remove old version
+
+  03 Jun 2007; Hans de Graaff <graaff@gentoo.org> haskell-mode-1.10.ebuild:
+  Stable on amd64, ppc, ppc64, sparc, x86 as per #175560
+
+  29 May 2007; Raúl Porcel <armin76@gentoo.org> haskell-mode-1.10.ebuild:
+  alpha stable wrt #175560
+
+*haskell-mode-1.11 (05 May 2007)
+
+  05 May 2007; Hans de Graaff <graaff@gentoo.org> -haskell-mode-1.08.ebuild,
+  +haskell-mode-1.11.ebuild:
+  Version bump: minor bug fix
+  Remove older version
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*haskell-mode-1.10 (22 Dec 2006)
+
+  22 Dec 2006; Hans de Graaff <graaff@gentoo.org> +haskell-mode-1.10.ebuild:
+  Version bump.
+
+*haskell-mode-1.08 (12 Nov 2006)
+
+  12 Nov 2006; Hans de Graaff <graaff@gentoo.org> +metadata.xml,
+  -haskell-mode-1.03.ebuild, +haskell-mode-1.08.ebuild:
+  Version bump; remove old version; add metadata.
+
+  02 Oct 2003; Aron Griffis <agriffis@gentoo.org> haskell-mode-1.05.ebuild:
+  Stable on alpha
+
+*haskell-mode-1.05 (22 Feb 2003)
+
+  22 Feb 2003;  <rendhalver@gentoo.org> haskell-mode-1.03.ebuild haskell-mode-1.05.ebuild files/digest-haskell-mode-1.05 :
+  Add ~alpha to KEYWORDS
+
+  22 Feb 2003; Rendhalver <rendhalver@gentoo.org> :
+  new stable ebuild
+
+*haskell-mode-1.03 (16 Dec 2002)
+
+  16 Dec 2002; Rendhalver [Peter Brown] <rendhalver@gentoo.org> :
+  Initial import.

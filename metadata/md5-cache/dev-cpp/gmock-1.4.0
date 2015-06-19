@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare unpack
+DEPEND=>=dev-cpp/gtest-1.4.0
+DESCRIPTION=Google's C++ mocking framework
+EAPI=4
+HOMEPAGE=http://code.google.com/p/googlemock/
+IUSE=static-libs
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=BSD
+RDEPEND=>=dev-cpp/gtest-1.4.0
+SLOT=0
+SRC_URI=http://googlemock.googlecode.com/files/gmock-1.4.0.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=874e1ebc3f518cb6de8dde0d773fabce

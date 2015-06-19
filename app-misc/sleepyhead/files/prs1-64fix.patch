@@ -1,0 +1,13 @@
+diff --git a/SleepLib/loader_plugins/prs1_loader.cpp b/SleepLib/loader_plugins/prs1_loader.cpp
+index d7f102c..61f2d34 100644
+--- a/SleepLib/loader_plugins/prs1_loader.cpp
++++ b/SleepLib/loader_plugins/prs1_loader.cpp
+@@ -597,7 +597,7 @@ bool PRS1Loader::Parse002v5(qint32 sequence, quint32 timestamp, unsigned char *b
+         CPAP_LeakTotal, PRS1_12
+     };
+ 
+-    int ncodes=sizeof(Codes)/sizeof(QString);
++    int ncodes=sizeof(Codes)/sizeof(ChannelID);
+     EventList * Code[0x20]={NULL};
+ 
+ 

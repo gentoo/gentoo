@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=client? ( dev-libs/nspr dev-libs/nss dev-libs/openssl ) server? ( dev-libs/nspr dev-libs/nss dev-libs/openssl ) ncd? ( dev-libs/openssl ) virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) virtual/pkgconfig
+DESCRIPTION=Peer-to-peer VPN, NCD scripting language, tun2socks proxifier
+EAPI=5
+HOMEPAGE=http://code.google.com/p/badvpn/
+IUSE=+client +ncd +server +tun2socks +udpgw debug
+KEYWORDS=amd64 arm x86
+LICENSE=BSD
+RDEPEND=client? ( dev-libs/nspr dev-libs/nss dev-libs/openssl ) server? ( dev-libs/nspr dev-libs/nss dev-libs/openssl ) ncd? ( dev-libs/openssl ) ncd? ( sys-apps/iproute2 >=virtual/udev-171 )
+REQUIRED_USE=|| ( client ncd server tun2socks udpgw )
+RESTRICT=!ncd? ( test )
+SLOT=0
+SRC_URI=http://badvpn.googlecode.com/files/badvpn-1.999.127.tar.bz2
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=5e325230b8d159179177d8f0f3e85103

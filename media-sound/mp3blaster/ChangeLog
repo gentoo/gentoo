@@ -1,0 +1,243 @@
+# ChangeLog for media-sound/mp3blaster
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/mp3blaster/ChangeLog,v 1.61 2012/09/09 17:12:06 armin76 Exp $
+
+  09 Sep 2012; Raúl Porcel <armin76@gentoo.org> mp3blaster-3.2.5-r1.ebuild:
+  alpha/sparc stable wrt #419125
+
+  23 Aug 2012; Michael Weber <xmw@gentoo.org> mp3blaster-3.2.5-r1.ebuild:
+  ppc stable (bug 419125).
+
+  11 Aug 2012; Markus Meier <maekke@gentoo.org> mp3blaster-3.2.5-r1.ebuild:
+  x86 stable, bug #419125
+
+  07 Aug 2012; Brent Baude <ranger@gentoo.org> mp3blaster-3.2.5-r1.ebuild:
+  Marking mp3blaster-3.2.5-r1 ppc64 for bug 419125
+
+  05 Aug 2012; Markus Meier <maekke@gentoo.org> mp3blaster-3.2.5-r1.ebuild:
+  arm stable, bug #419125
+
+  03 Aug 2012; Markos Chandras <hwoarang@gentoo.org> mp3blaster-3.2.5-r1.ebuild:
+  Stable on amd64 wrt bug #419125
+
+  09 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  mp3blaster-3.2.5-r1.ebuild:
+  Install missing mp3tag(1) manpage.
+
+  09 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  mp3blaster-3.2.5-r1.ebuild:
+  Move all documentation except commands.txt to the default documentation
+  directory; commands.txt is used at runtime (by src/main.cc)
+
+*mp3blaster-3.2.5-r1 (09 Jan 2012)
+
+  09 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +mp3blaster-3.2.5-r1.ebuild:
+  Import Debian patchset; to fix number of issues ranging from endianess to
+  memory leaks. Upstream seems quiet.
+
+  09 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> mp3blaster-3.2.5.ebuild,
+  +files/mp3blaster-3.2.5-gcc44.patch:
+  Fix building with USE="sid" and sys-devel/gcc >= 4.4.x wrt #362347 by
+  "Boris". Remove deprecated media-sound/esound support. One of USE oss or sdl
+  must be enabled; use REQUIRED_USE
+
+  01 Nov 2010; Michael Weber <xmw@gentoo.org> mp3blaster-3.2.5.ebuild:
+  arm stable
+
+  19 Sep 2010; Michael Weber <xmw@gentoo.org> mp3blaster-3.2.5.ebuild:
+  Added ~arm keyword
+
+  07 Oct 2009; Tiago Cunha <tcunha@gentoo.org> mp3blaster-3.2.5.ebuild:
+  stable sparc, bug 272816
+
+  27 Sep 2009; Brent Baude <ranger@gentoo.org> mp3blaster-3.2.5.ebuild:
+  stable ppc64, bug 272816
+
+  16 Jun 2009; Tobias Klausmann <klausman@gentoo.org>
+  mp3blaster-3.2.5.ebuild:
+  Stable on alpha, bug #272816
+
+  10 Jun 2009; Markus Meier <maekke@gentoo.org> mp3blaster-3.2.5.ebuild:
+  amd64/x86 stable, bug #272816
+
+  07 Jun 2009; nixnut <nixnut@gentoo.org> mp3blaster-3.2.5.ebuild:
+  ppc stable #272816
+
+*mp3blaster-3.2.5 (08 Feb 2009)
+
+  08 Feb 2009; Alexis Ballier <aballier@gentoo.org>
+  +mp3blaster-3.2.5.ebuild:
+  Version bump, by Per Pomsel <phantom4@gmx.net>, bug #257749
+
+  16 Aug 2008; Alexis Ballier <aballier@gentoo.org>
+  mp3blaster-3.2.3-r1.ebuild:
+  keyword ~x86-fbsd, bug #198464
+
+  22 Apr 2008; <chainsaw@gentoo.org> +files/mp3blaster-3.2.3-gcc43.patch,
+  mp3blaster-3.2.3-r1.ebuild:
+  Add missing include to enable compilation on GCC 4.3; patch from Peter
+  Alfredsen <peter.alfredsen@gmail.com> closes bug #218827.
+
+  29 Nov 2007; Raúl Porcel <armin76@gentoo.org> mp3blaster-3.2.3-r1.ebuild:
+  alpha/ia64/sparc stable wrt #200136 thanks to Tobias Klausmann and Alex
+  Maclean for testing
+
+  24 Nov 2007; nixnut <nixnut@gentoo.org> mp3blaster-3.2.3-r1.ebuild:
+  Stable on ppc wrt bug 200136
+
+  24 Nov 2007; Dawid Węgliński <cla@gentoo.org>
+  mp3blaster-3.2.3-r1.ebuild:
+  Stable on x86 (bug #200136)
+
+  24 Nov 2007; Markus Rothe <corsair@gentoo.org> mp3blaster-3.2.3-r1.ebuild:
+  Stable on ppc64; bug #200136
+
+  23 Nov 2007; Samuli Suominen <drac@gentoo.org> mp3blaster-3.2.3-r1.ebuild:
+  amd64 stable wrt #200136
+
+  09 Sep 2007; Joseph Jezak <josejx@gentoo.org> mp3blaster-3.2.3-r1.ebuild:
+  Marked ~ppc, it does actually work on ppc.
+
+  08 Sep 2007; Mike Frysinger <vapier@gentoo.org>
+  mp3blaster-3.2.3-r1.ebuild:
+  Properly control oss/sdl according to USE flags.
+
+  28 Aug 2007; Mike Frysinger <vapier@gentoo.org>
+  mp3blaster-3.2.3-r1.ebuild:
+  Playback is screwed on ppc, so explicitly mark as -ppc.
+
+  17 Aug 2007; Samuli Suominen <drac@gentoo.org> mp3blaster-3.2.3-r1.ebuild:
+  Disable broken feature, nas.
+
+  11 Aug 2007; Samuli Suominen <drac@gentoo.org> mp3blaster-3.2.3-r1.ebuild:
+  newthreads and libpth support is broken, disable them.
+
+*mp3blaster-3.2.3-r1 (11 Aug 2007)
+
+  11 Aug 2007; Samuli Suominen <drac@gentoo.org>
+  +mp3blaster-3.2.3-r1.ebuild:
+  Fixed depends, USE flags, dodoc, installation, and more.
+
+  30 Jul 2007; Markus Rothe <corsair@gentoo.org> mp3blaster-3.2.3.ebuild:
+  Added ~ppc64; bug #187111
+
+  01 Mar 2007; Alexis Ballier <aballier@gentoo.org> mp3blaster-3.2.0.ebuild,
+  mp3blaster-3.2.3.ebuild:
+  Install splay bin and man as splay_mp3blaster to prevent collisions with
+  media-sound/splay
+
+*mp3blaster-3.2.3 (11 Dec 2006)
+
+  11 Dec 2006; Steve Dibb <beandog@gentoo.org> +mp3blaster-3.2.3.ebuild:
+  Version bump
+
+  23 Nov 2006; Francesco Riosa <vivo@gentoo.org> mp3blaster-3.1.3.ebuild,
+  mp3blaster-3.2.0.ebuild, mp3blaster-3.2.2.ebuild:
+  dev-db/mysql => virtual/mysql
+
+  23 May 2006; Markus Rothe <corsair@gentoo.org> mp3blaster-3.2.0.ebuild:
+  Stable on ppc64
+
+  01 May 2006; Jason Wever <weeve@gentoo.org> mp3blaster-3.2.2.ebuild:
+  Added ~sparc keyword as it went missing.
+
+  11 Mar 2006; Fernando J. Pereda <ferdy@gentoo.org>
+  mp3blaster-3.2.2.ebuild:
+  Add ~alpha keyword as per bug #125761. Tested by Thomas Cort
+  <tcort@cs.ubishops.ca>
+
+*mp3blaster-3.2.2 (24 Feb 2006)
+
+  24 Feb 2006; Patrick McLean <chutzpah@gentoo.org>
+  +mp3blaster-3.2.2.ebuild:
+  Version bump, thanks to Thomas Cort for updating the ebuild for the new
+  version (bug #121888). Added ~amd64.
+
+  26 Dec 2005; Luca Barbato <lu_zero@gentoo.org> mp3blaster-3.1.3.ebuild,
+  mp3blaster-3.2.0.ebuild:
+  oggvorbis Cleanup
+
+  08 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  mp3blaster-3.2.0.ebuild:
+  Stable on ppc.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  22 Nov 2004; Markus Rothe <corsair@gentoo.org> mp3blaster-3.2.0.ebuild:
+  Added ~ppc64 to KEYWORDS; bug #72100
+
+  30 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  -mp3blaster-3.1.1.ebuild:
+  toolchain love for bug #69012.
+
+  13 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> mp3blaster-3.2.0.ebuild:
+  Stable on alpha.
+
+  23 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  mp3blaster-3.2.0.ebuild:
+  Stable amd64 and sparc.  Added USE=lirc support.
+
+  07 Jun 2004; Aron Griffis <agriffis@gentoo.org> mp3blaster-3.1.3.ebuild,
+  mp3blaster-3.2.0.ebuild:
+  Fix use invocation
+
+  31 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  mp3blaster-3.2.0.ebuild:
+  Stable on x86.
+
+*mp3blaster-3.2.0 (28 Nov 2003)
+
+  28 Nov 2003; Greg Fitzgerald <gregf@gentoo.org> mp3blaster-3.2.0.ebuild:
+  Version bump.
+
+  16 Nov 2003; Brad House <brad_mssw@gentoo.org> mp3blaster-3.1.3.ebuild:
+  mark stable on amd64
+
+  12 May 2003; Jason Wever <weeve@gentoo.org> mp3blaster-3.1.1.ebuild,
+  mp3blaster-3.1.3.ebuild:
+  Added ~sparc to keywords.
+
+*mp3blaster-3.1.3 (05 Nov 2002)
+
+  15 Dec 2002; Bjoern Brauel <bjb@gentoo.org> mp3blaster-3.1.3.ebuild :
+  Add ~alpha to KEYWORDS
+
+  08 Nov 2002; Daniel Ahlberg <aliz@gentoo.org> mp3blaster-3.1.3.ebuild :
+  Updated SRC_URI.
+
+  05 Nov 2002; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump.
+
+*mp3blaster-3.1.1 (13 Aug 2002)
+
+  15 Dec 2002; Bjoern Brauel <bjb@gentoo.org> mp3blaster-3.1.1.ebuild :
+  Add alpha to KEYWORDS
+
+  13 Aug 2002; Arcady Genkin <agenkin@thpoon.com> mp3blaster-3.1.1.ebuild :
+
+  Updated the ebuild for 3.1.1 to exclude support for NAS, as it appears
+  to be broken (see bug 5183).
+	
+*mp3blaster-3.1 (10 Jun 2002)
+
+  10 Jun 2002; Ryan Phillips <rphillips@gentoo.org> mp3blaster-3.1.ebuild :
+
+  New versionn
+
+*mp3blaster-3.0_p8 (28 Mar 2002)
+
+  28 Mar 2002; Seemant Kulleen <seemant@gentoo.org> mp3blaster-3.0_p8.ebuild :
+
+  the vorbis USE flag is now called oggvorbis
+
+*mp3blaster-3.0_p8 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

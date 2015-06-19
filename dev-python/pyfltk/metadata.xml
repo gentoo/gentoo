@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>python</herd>
+	<longdescription lang="en">
+  Python wrapper for the Fast Light Tool Kit cross-platform graphical
+  user-interface library, using SWIG.
+</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">pyfltk</remote-id>
+	</upstream>
+</pkgmetadata>

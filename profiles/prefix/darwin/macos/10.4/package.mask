@@ -1,0 +1,25 @@
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/darwin/macos/10.4/package.mask,v 1.6 2013/12/25 13:41:39 grobian Exp $
+
+# Fabian Groffen <grobian@gentoo.org> (25 Dec 2013)
+# Needs 64-bits Intel
+dev-java/oracle-jdk-bin
+
+# Fabian Groffen <grobian@gentoo.org> (03 May 2012)
+# Needs 10.6 or up
+>=dev-lang/ghc-7
+
+# Fabian Groffen <grobian@gentoo.org> (11 Jul 2011)
+# Needs headers only available starting from 10.5 (Leopard)
+sys-process/lsof
+
+# Fabian Groffen <grobian@gentoo.org> (30 Apr 2011)
+# These releases got a rewrite that is no longer compatible with
+# CoreAudio as available on Tiger and Leopard
+>=media-libs/mediastreamer-2.7.3
+
+# Elias Pipping <pipping@gentoo.org> (19 Dec 2007)
+# apple java6 on macosx is only released on leopard :(
+dev-java/apple-jdk-bin:1.6
+

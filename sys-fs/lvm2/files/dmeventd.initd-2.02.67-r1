@@ -1,0 +1,26 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/lvm2/files/dmeventd.initd-2.02.67-r1,v 1.3 2014/02/08 21:17:46 robbat2 Exp $
+
+PIDFILE=/run/dmeventd.pid
+BIN=/sbin/dmeventd
+
+depend() {
+	# As of .67-r1, we call ALL lvm start/stop scripts with --sysinit, that
+	# means dmeventd is NOT notified, as it cannot be safely running
+	after lvm device-mapper
+}
+
+start() {
+	ebegin "Starting dmeventd"
+	start-stop-daemon --start --exec $BIN --pidfile $PIDFILE
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping dmeventd"
+	start-stop-daemon --stop --exec $BIN --pidfile $PIDFILE
+	eend $?
+}
+

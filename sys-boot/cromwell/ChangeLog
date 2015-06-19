@@ -1,0 +1,71 @@
+# ChangeLog for sys-boot/cromwell
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/cromwell/ChangeLog,v 1.15 2012/05/13 20:46:13 vapier Exp $
+
+  13 May 2012; Mike Frysinger <vapier@gentoo.org>
+  +files/cromwell-2.40-gcc-4.6.patch, cromwell-2.40-r3.ebuild:
+  Update to EAPI=4 and fix linking with newer gcc versions #363535 by Diego Elio
+  Pettenò.
+
+  15 Apr 2011; Mike Frysinger <vapier@gentoo.org> cromwell-2.40-r3.ebuild:
+  Respect toolchain build settings.
+
+  10 Apr 2011; Ulrich Mueller <ulm@gentoo.org> cromwell-2.40-r3.ebuild:
+  Don't PROVIDE virtual/bootloader, bug 359971.
+
+  08 Mar 2009; Mike Frysinger <vapier@gentoo.org> cromwell-2.40-r3.ebuild:
+  Do not build with -Werror #260934 by Diego E. Pettenò.
+
+  04 Jan 2009; Mike Frysinger <vapier@gentoo.org>
+  -files/cromwell-2.40-r3-cvs-fixes.patch, cromwell-2.40-r3.ebuild:
+  Move large patch to mirrors #249014.
+
+*cromwell-2.40-r3 (07 Jun 2008)
+
+  07 Jun 2008; Mike Frysinger <vapier@gentoo.org>
+  +files/cromwell-2.40-r3-cvs-fixes.patch, +cromwell-2.40-r3.ebuild:
+  Add fixes from upstream #204026 by Alan Kingsley.
+
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org>
+  cromwell-2.40-r2.ebuild:
+  (QA) RESTRICT clean up.
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  02 Jan 2006; <gimli@gentoo.org> -files/cromwell-2.40-gcc-3.4.patch,
+  -cromwell-2.40.ebuild, -cromwell-2.40-r1.ebuild:
+  Remove old ebuilds
+
+*cromwell-2.40-r2 (26 Oct 2005)
+
+  26 Oct 2005; <gimli@gentoo.org> +files/cromwell-2.40-cvs-fixes.patch,
+  +cromwell-2.40-r2.ebuild:
+  Revision Bump. Include fixes from xbox-linux cvs for cdrom boot.
+
+*cromwell-2.40-r1 (15 Sep 2005)
+
+  15 Sep 2005; <gimli@gentoo.org> +files/cromwell-2.40-gcc-3.4.patch,
+  -cromwell-2.31.ebuild, +cromwell-2.40-r1.ebuild:
+  Remove old version.
+  Fix gcc 3.4 compile.
+
+*cromwell-2.40 (10 Aug 2005)
+
+  10 Aug 2005; Chris Bainbridge <chrb@gentoo.org> +cromwell-2.40.ebuild:
+  Version bump
+
+  28 Apr 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  cromwell-2.31.ebuild:
+  add -* to keywords because this package is only applicable to xbox 
+  which is only available in x86 architecture
+
+  16 Oct 2004; Chris Bainbridge <chrb@gentoo.org> cromwell-2.31.ebuild:
+  mark stable
+
+*cromwell-2.31 (30 Jun 2004)
+
+  30 Jun 2004; Chris Bainbridge <chrb@gentoo.org> +metadata.xml,
+  +cromwell-2.31.ebuild:
+  This package was submitted by Chris Bainbridge in bug #44705
+

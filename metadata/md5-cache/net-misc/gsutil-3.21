@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm prepare
+DESCRIPTION=command line tool for interacting with cloud storage services
+EAPI=3
+HOMEPAGE=http://code.google.com/p/gsutil/
+IUSE=examples
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=>=dev-python/boto-2.7.0
+SLOT=0
+SRC_URI=http://commondatastorage.googleapis.com/pub/gsutil_3.21.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=8b9ffaaab1d5a681567b28082e995c86

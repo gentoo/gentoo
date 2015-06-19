@@ -1,0 +1,22 @@
+# ChangeLog for net-news/canto-curses
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-news/canto-curses/ChangeLog,v 1.4 2015/05/01 06:52:27 pinkbyte Exp $
+
+*canto-curses-0.9.3 (01 May 2015)
+
+  01 May 2015; Sergey Popov <pinkbyte@gentoo.org> -canto-curses-0.8.4.ebuild,
+  +canto-curses-0.9.3.ebuild:
+  Version bump, wrt bug #548184. Drop old vulnerable version, wrt bug #533654.
+  Thanks to Jack Miller <jack AT codezen.org> for discovering this issue
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> canto-curses-0.8.4.ebuild:
+  Drop old Python implementations
+
+  26 Nov 2014; Pacho Ramos <pacho@gentoo.org> canto-curses-0.8.4.ebuild:
+  Support python 3.4
+
+*canto-curses-0.8.4 (20 Feb 2014)
+
+  20 Feb 2014; Sergey Popov <pinkbyte@gentoo.org> +canto-curses-0.8.4.ebuild,
+  +metadata.xml:
+  Initial commit, wrt bug #462028

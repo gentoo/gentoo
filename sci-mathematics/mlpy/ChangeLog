@@ -1,0 +1,20 @@
+# ChangeLog for sci-mathematics/mlpy
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/mlpy/ChangeLog,v 1.4 2015/04/08 18:23:00 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> mlpy-3.5.0.ebuild:
+  Drop old Python implementations
+
+  11 Dec 2013; Justin Lecher <jlec@gentoo.org> mlpy-3.5.0.ebuild, metadata.xml:
+  Bump to EAPI=5 and distutils-r1.eclass
+
+  06 Dec 2012; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml,
+  mlpy-3.5.0.ebuild:
+  Keyword x86, amd64-linux and x86-linux. Added sci as herd maintainership
+
+*mlpy-3.5.0 (11 May 2012)
+
+  11 May 2012; Donnie Berkholz <dberkholz@gentoo.org>; +mlpy-3.5.0.ebuild,
+  +metadata.xml:
+  New package: Machine Learning PYthon (mlpy) is a high-performance Python
+  library for predictive modeling.

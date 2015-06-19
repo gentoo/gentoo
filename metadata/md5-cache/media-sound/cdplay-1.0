@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DEPEND=!media-sound/cdtool
+DESCRIPTION=a commandline CD Player
+HOMEPAGE=http://www.ta-sa.org/?entry=cdplay
+KEYWORDS=alpha amd64 ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=!media-sound/cdtool
+SLOT=0
+SRC_URI=http://www.ta-sa.org/files/cdplay-1.0.tar.gz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=dc943e6f14b58c6136affb0f82e86091

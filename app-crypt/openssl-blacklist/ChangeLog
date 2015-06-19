@@ -1,0 +1,76 @@
+# ChangeLog for app-crypt/openssl-blacklist
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/openssl-blacklist/ChangeLog,v 1.17 2015/06/09 09:32:16 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> openssl-blacklist-0.5.3.ebuild:
+  Remove old Python implementations
+
+  03 Jan 2015; <hanno@gentoo.org> -openssl-blacklist-0.4.1.ebuild,
+  -openssl-blacklist-0.4.2.ebuild:
+  Cleanup.
+
+  18 Jun 2014; Chema Alonso <nimiux@gentoo.org> openssl-blacklist-0.5.3.ebuild:
+  Stable for amd64 wrt bug #502614
+
+  14 Jun 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  openssl-blacklist-0.5.3.ebuild:
+  x86 stable wrt bug #502614
+
+  02 Apr 2014; Jeroen Roovers <jer@gentoo.org> openssl-blacklist-0.5.3.ebuild:
+  Stable for HPPA (bug #502614).
+
+  12 Feb 2014; Hanno Boeck <hanno@gentoo.org> openssl-blacklist-0.5.3.ebuild:
+  Convert to python-single-r1 eclass, fix shebangs.
+
+*openssl-blacklist-0.5.3 (30 Nov 2011)
+
+  30 Nov 2011; Mike Frysinger <vapier@gentoo.org>
+  +openssl-blacklist-0.5.3.ebuild:
+  Version bump. #275621 by Arfrever Frehtes Taifersar Arahesis.
+
+*openssl-blacklist-0.4.2 (15 Apr 2009)
+
+  15 Apr 2009; Hanno Boeck <hanno@gentoo.org>
+  +openssl-blacklist-0.4.2.ebuild:
+  Version bump.
+
+  02 Oct 2008; Jeroen Roovers <jer@gentoo.org>
+  openssl-blacklist-0.4.1.ebuild:
+  Stable for HPPA (bug #232992).
+
+  28 Jul 2008; Dawid Węgliński <cla@gentoo.org>
+  openssl-blacklist-0.4.1.ebuild:
+  Stable on x86/amd64 (bug #232992)
+
+*openssl-blacklist-0.4.1 (19 Jun 2008)
+
+  19 Jun 2008; Hanno Boeck <hanno@gentoo.org>
+  +openssl-blacklist-0.4.1.ebuild:
+  Version bump, install blacklists correctly.
+
+*openssl-blacklist-0.3.2 (03 Jun 2008)
+
+  03 Jun 2008; Hanno Boeck <hanno@gentoo.org>
+  +openssl-blacklist-0.3.2.ebuild:
+  Version bump.
+
+  31 May 2008; Alexis Ballier <aballier@gentoo.org>
+  openssl-blacklist-0.3.ebuild:
+  keyword ~x86-fbsd
+
+*openssl-blacklist-0.3 (26 May 2008)
+
+  26 May 2008; Hanno Boeck <hanno@gentoo.org> +openssl-blacklist-0.3.ebuild:
+  Version bump.
+
+  21 May 2008; Jeroen Roovers <jer@gentoo.org> openssl-blacklist-0.1.ebuild:
+  Marked ~hppa too.
+
+*openssl-blacklist-0.1 (17 May 2008)
+
+  17 May 2008; Hanno Boeck <hanno@gentoo.org> +openssl-blacklist-0.1.ebuild:
+  Initial commit of ubuntus tool to detect weak ssl-keys according to
+  CVE-2008-0166.

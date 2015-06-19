@@ -1,0 +1,33 @@
+# ChangeLog for media-plugins/vdr-calc
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-calc/ChangeLog,v 1.7 2015/02/20 13:24:05 hd_brummy Exp $
+
+  20 Feb 2015; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-calc-0.0.1_rc5.ebuild:
+  better Description
+
+  30 Jun 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-calc-0.0.1_rc5.ebuild:
+  eapi=4; vdr-plugin-2.eclass
+
+  28 Jan 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-calc-0.0.1_rc5.ebuild:
+  eapi=3
+
+  15 Aug 2006; Matthias Schwarzott <zzam@gentoo.org> metadata.xml:
+  Assigned to Gentoo VDR Project.
+
+  08 Jul 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +files/vdr-calc-0.0.1_rc5-gcc4.diff, vdr-calc-0.0.1_rc5.ebuild:
+  Added gcc4-compatibility patch.
+
+  17 Apr 2006; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-calc-0.0.1_rc5.ebuild:
+  Marked stable on x86
+
+*vdr-calc-0.0.1_rc5 (05 Mar 2006)
+
+  05 Mar 2006; Matthias Schwarzott <zzam@gentoo.org> +metadata.xml,
+  +vdr-calc-0.0.1_rc5.ebuild:
+  imported ebuild from gentoo.de
+

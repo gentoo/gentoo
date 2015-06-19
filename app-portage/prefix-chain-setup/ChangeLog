@@ -1,0 +1,43 @@
+# ChangeLog for app-portage/prefix-chain-setup
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-portage/prefix-chain-setup/ChangeLog,v 1.5 2015/01/20 10:00:23 pacho Exp $
+
+  20 Jan 2015; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due to #213900
+
+  21 Apr 2011; Jeremy Olexa <darkside@gentoo.org> metadata.xml:
+  update metadata
+
+*prefix-chain-setup-0.4-r5 (29 Oct 2010)
+
+  29 Oct 2010; Markus Duft <mduft@gentoo.org>
+  -prefix-chain-setup-0.4-r4.ebuild, +prefix-chain-setup-0.4-r5.ebuild,
+  files/prefix-chain-setup.in:
+  updated script from private overlay; revbump
+
+  16 Jul 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Fixed herd tag on metadata.xml.
+
+*prefix-chain-setup-0.4-r4 (13 Jul 2010)
+
+  13 Jul 2010; Markus Duft <mduft@gentoo.org>
+  +prefix-chain-setup-0.4-r4.ebuild, +metadata.xml:
+  moved to main-tree. applied modifications from private overlay.
+
+*prefix-chain-setup-0.4 (27 Nov 2009)
+
+  27 Nov 2009; Markus Duft <mduft@gentoo.org>
+  -prefix-chain-setup-0.3.ebuild, +prefix-chain-setup-0.4.ebuild,
+  files/prefix-chain-setup.in:
+  updated prefix-chain-setup. removed --minimal, added tmpdir setting
+
+  02 Apr 2009; Markus Duft <mduft@gentoo.org> files/prefix-chain-setup.in,
+  prefix-chain-setup-0.2.ebuild:
+  added SYNC to setup, keyworded ~x86-interix
+
+*prefix-chain-setup-0.2 (26 Mar 2009)
+
+  26 Mar 2009; <mduft@gentoo.org> +., +files, +files/prefix-chain-setup.in,
+  +prefix-chain-setup-0.2.ebuild:
+  initially added prefix-chain setup helper

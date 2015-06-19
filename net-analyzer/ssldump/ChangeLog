@@ -1,0 +1,121 @@
+# ChangeLog for net-analyzer/ssldump
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ssldump/ChangeLog,v 1.33 2014/07/17 15:54:58 jer Exp $
+
+  17 Jul 2014; Jeroen Roovers <jer@gentoo.org> ssldump-0.9-r2.ebuild,
+  +files/ssldump-0.9-declaration.patch, +files/ssldump-0.9-includes.patch,
+  metadata.xml:
+  Remove short <longdescription>, match DESCRIPTION to upstream blurb. Add some
+  missing includes, declare a prototype for ssl3_check_mac().
+
+  26 Jun 2014; Jeroen Roovers <jer@gentoo.org> ssldump-0.9-r2.ebuild,
+  files/ssldump-0.9-configure-dylib.patch:
+  Patch configure.in not configure. Use LIBS not LDFLAGS (bug #514056).
+
+  26 Jun 2014; Jeroen Roovers <jer@gentoo.org> ssldump-0.9-r2.ebuild:
+  Set CC early.
+
+  23 Jun 2014; Jeroen Roovers <jer@gentoo.org>
+  files/ssldump-0.9-DLT_LINUX_SLL.patch,
+  files/ssldump-0.9-configure-dylib.patch,
+  files/ssldump-0.9-libpcap-header.patch,
+  files/ssldump-0.9-openssl-0.9.8.compile-fix.patch,
+  files/ssldump-0.9-prefix-fix.patch:
+  Clean up patches.
+
+  06 Apr 2013; Sergey Popov <pinkbyte@gentoo.org> -ssldump-0.9-r1.ebuild:
+  Drop old revision
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org> ssldump-0.9-r2.ebuild:
+  Stable for x86, wrt bug #461204
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org> ssldump-0.9-r2.ebuild:
+  Stable for ppc, wrt bug #461204
+
+  02 Apr 2013; Agostino Sarubbo <ago@gentoo.org> ssldump-0.9-r2.ebuild:
+  Stable for sparc, wrt bug #461204
+
+  01 Apr 2013; Agostino Sarubbo <ago@gentoo.org> ssldump-0.9-r2.ebuild:
+  Stable for amd64, wrt bug #461204
+
+*ssldump-0.9-r2 (23 Jan 2013)
+
+  23 Jan 2013; Sergey Popov <pinkbyte@gentoo.org> +ssldump-0.9-r2.ebuild,
+  +files/ssldump-0.9-prefix-fix.patch:
+  Revision bump: EAPI 5, utilize autotools-utils eclass, add support for
+  installation in Prefix, wrt bug #414359, patch by Benda Xu
+
+  09 Dec 2011; Jeroen Roovers <jer@gentoo.org> ssldump-0.9-r1.ebuild:
+  sed must die().
+
+  08 Dec 2011; Jeroen Roovers <jer@gentoo.org> ssldump-0.9-r1.ebuild:
+  Fix broken configure hack looking for libpcap.a by Benjamin Peterson (bug
+  #393645).
+
+  18 Jan 2011; Samuli Suominen <ssuominen@gentoo.org> ssldump-0.9-r1.ebuild:
+  Fix LICENSE from GPL-2 to openssl. Fix econf argument --without-crypto to
+  --without-openssl.
+
+  07 Nov 2008; Raúl Porcel <armin76@gentoo.org> ssldump-0.9-r1.ebuild:
+  sparc stable wrt #244232
+
+  25 Oct 2008; nixnut <nixnut@gentoo.org> ssldump-0.9-r1.ebuild:
+  Stable on ppc wrt bug 244232
+
+  25 Oct 2008; Markus Meier <maekke@gentoo.org> ssldump-0.9-r1.ebuild:
+  amd64/x86 stable, bug #244232
+
+*ssldump-0.9-r1 (16 Sep 2008)
+
+  16 Sep 2008; Peter Volkov <pva@gentoo.org>
+  +files/ssldump-0.9-DLT_LINUX_SLL.patch, +ssldump-0.9-r1.ebuild:
+  Added possibility to read data from DLT_LINUX_SLL link type, bug #198271,
+  thank Paul for this work.
+
+  06 Feb 2008; Fabian Groffen <grobian@gentoo.org> ssldump-0.9.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> ssldump-0.9.ebuild:
+  Remove gnuconfig_update usage, leave it to econf.
+
+  24 Sep 2006; Peter Volkov <pva@gentoo.org>
+  +files/ssldump-0.9-openssl-0.9.8.compile-fix.patch, ssldump-0.9.ebuild:
+  Compilation failure with openssl-0.9.8 reported by Nils Ohlmeier (bug
+  #147455) fixed.
+
+  15 Feb 2006; Markus Ullmann <jokey@gentoo.org> ssldump-0.9.ebuild:
+  Removing virtual/libpcap wrt bug #117898
+
+  31 Jan 2006; Fabian Groffen <grobian@gentoo.org>
+  +files/ssldump-0.9-configure-dylib.patch, ssldump-0.9.ebuild:
+  Added patch and marked ~ppc-macos (bug #118343)
+
+  19 Jul 2005; David Holm <dholm@gentoo.org> ssldump-0.9.ebuild:
+  Added to ~ppc.
+
+  21 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> ssldump-0.9.ebuild:
+  stable on amd64. fixes #82740
+
+  29 Jan 2005; Daniel Black <dragonheart@gentoo.org> ssldump-0.9.ebuild:
+  changed net-libs/libpcap depend to virtual/libcap
+
+  10 Oct 2004; Jason Wever <weeve@gentoo.org> ssldump-0.9.ebuild:
+  Stable on sparc.
+
+  19 Aug 2004; Jason Wever <weeve@gentoo.org> ssldump-0.9.ebuild:
+  Added ~sparc keyword.
+
+  13 Jul 2004; Eldad Zack <eldad@gentoo.org> +metadata.xml:
+  Added metadata
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> ssldump-0.9.ebuild:
+  Add inherit eutils
+
+  06 Feb 2004; Daniel Ahlberg <aliz@gentoo.org> ssldump-0.9.ebuild,
+  files/ssldump-0.9-libpcap-header.patch:
+  Added patch for new libpcap headers.
+
+*ssldump-0.9 (19 May 2003)
+
+  19 May 2003; Martin Holzer <mholzer@gentoo.org> ssldump-0.9.ebuild:
+  Initial ebuild submitted by Kris Verbeeck <airborne@advalvas.be> in #18387.

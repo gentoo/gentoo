@@ -1,0 +1,32 @@
+--- mp32ogg.orig	2004-02-03 01:09:20.000000000 -0800
++++ mp32ogg	2004-02-03 01:25:01.000000000 -0800
+@@ -6,6 +6,9 @@
+ # <http://www.opensource.org/licenses/artistic-license.html>
+ 
+ # ChangeLog
++# 0.11-gentoo
++#     * Jeremy Huddleston <eradicator@gentoo.org>:
++#       Added support for mpg321
+ #
+ # 0.11
+ #     * Have output reflect change in license (doh)
+@@ -79,7 +82,7 @@
+ # 0.1
+ #     First Release
+ 
+-$version = "v0.11";
++$version = "v0.11-gentoo";
+ 
+ use MP3::Info;
+ use File::Find ();
+@@ -93,6 +96,10 @@
+ $ogginfo = "/usr/bin/ogginfo";
+ $mpg123  = "/usr/bin/mpg123";
+ 
++if(! -x $mpg123) {
++	$mpg123 = "/usr/bin/mpg321";
++}
++
+ print "mp32ogg $version\n";
+ print "(c) 2000-2002 Nathan Walp\n";
+ print "Released without warranty under the terms of the Artistic License\n\n";

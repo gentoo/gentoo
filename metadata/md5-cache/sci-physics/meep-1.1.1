@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install test
+DEPEND=sci-libs/fftw sci-libs/gsl sci-physics/harminv guile? ( >=sci-libs/libctl-3.0.3 ) hdf5? ( sci-libs/hdf5 ) mpi? ( virtual/mpi )
+DESCRIPTION=Simulation software to model electromagnetic systems
+EAPI=2
+HOMEPAGE=http://ab-initio.mit.edu/meep/
+IUSE=examples hdf5 guile mpi
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=sci-libs/fftw sci-libs/gsl sci-physics/harminv guile? ( >=sci-libs/libctl-3.0.3 ) hdf5? ( sci-libs/hdf5 ) mpi? ( virtual/mpi )
+SLOT=0
+SRC_URI=http://ab-initio.mit.edu/meep/meep-1.1.1.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=fc42c67bfd1d5109e0fc6b4bef0f4695

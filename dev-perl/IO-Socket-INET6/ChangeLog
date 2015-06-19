@@ -1,0 +1,264 @@
+# ChangeLog for dev-perl/IO-Socket-INET6
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/IO-Socket-INET6/ChangeLog,v 1.64 2015/06/13 22:52:24 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  IO-Socket-INET6-2.710.0-r1.ebuild, IO-Socket-INET6-2.720.0.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+  24 Jan 2015; Mikle Kolyada <zlogene@gentoo.org>
+  IO-Socket-INET6-2.720.0.ebuild:
+  Stable for all
+
+  22 Jan 2015; Markus Meier <maekke@gentoo.org> IO-Socket-INET6-2.720.0.ebuild:
+  arm stable, bug #535198
+
+  22 Jan 2015; Agostino Sarubbo <ago@gentoo.org> IO-Socket-INET6-2.720.0.ebuild:
+  Stable for amd64, wrt bug #535198
+
+  13 Jan 2015; Jeroen Roovers <jer@gentoo.org> IO-Socket-INET6-2.720.0.ebuild:
+  Stable for HPPA (bug #535198).
+
+*IO-Socket-INET6-2.710.0-r1 (23 Aug 2014)
+
+  23 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +IO-Socket-INET6-2.710.0-r1.ebuild, -IO-Socket-INET6-2.710.0.ebuild:
+  bumped current stable ebuild(s) EAPI to 5; committed directly to stable as no
+  other changes present and revbump helps stable systems to keep from dieing on
+  perl-5.18 upgrade
+
+  22 Feb 2014; Mikle Kolyada <zlogene@gentoo.org>
+  -IO-Socket-INET6-2.690.0.ebuild, IO-Socket-INET6-2.710.0.ebuild:
+  x86 stable wrt bug #492176; Drop old.
+
+  22 Feb 2014; Mikle Kolyada <zlogene@gentoo.org>
+  IO-Socket-INET6-2.710.0.ebuild:
+  sparc stable wrt bug #492176
+
+  22 Feb 2014; Mikle Kolyada <zlogene@gentoo.org>
+  IO-Socket-INET6-2.710.0.ebuild:
+  ppc stable wrt bug #492176
+
+  22 Feb 2014; Mikle Kolyada <zlogene@gentoo.org>
+  IO-Socket-INET6-2.710.0.ebuild:
+  ppc64 stable wrt bug #492176
+
+  22 Feb 2014; Mikle Kolyada <zlogene@gentoo.org>
+  IO-Socket-INET6-2.710.0.ebuild:
+  amd64 stable wrt bug #492176
+
+  22 Feb 2014; Mikle Kolyada <zlogene@gentoo.org>
+  IO-Socket-INET6-2.710.0.ebuild:
+  alpha stable wrt bug #492176
+
+  14 Feb 2014; Markus Meier <maekke@gentoo.org> IO-Socket-INET6-2.710.0.ebuild:
+  arm stable, bug #492176
+
+  11 Feb 2014; Akinori Hattori <hattya@gentoo.org>
+  IO-Socket-INET6-2.710.0.ebuild:
+  ia64 stable wrt bug #492176
+
+  10 Feb 2014; Jeroen Roovers <jer@gentoo.org> IO-Socket-INET6-2.710.0.ebuild:
+  Stable for HPPA (bug #492176).
+
+*IO-Socket-INET6-2.720.0 (08 Feb 2014)
+
+  08 Feb 2014; Mikle Kolyada <zlogene@gentoo.org>
+  +IO-Socket-INET6-2.720.0.ebuild:
+  Version bump
+
+  08 Feb 2014; Mikle Kolyada <zlogene@gentoo.org>
+  IO-Socket-INET6-2.710.0.ebuild:
+  fix wrong value of MODULE_VERSION variable.
+
+*IO-Socket-INET6-2.710.0 (15 Aug 2013)
+
+  15 Aug 2013; Patrick Lauer <patrick@gentoo.org>
+  +IO-Socket-INET6-2.710.0.ebuild:
+  Bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  03 Jun 2012; Torsten Veller <tove@gentoo.org> -IO-Socket-INET6-2.63.ebuild,
+  -IO-Socket-INET6-2.670.0.ebuild:
+  Cleanup
+
+  28 May 2012; Raúl Porcel <armin76@gentoo.org>
+  IO-Socket-INET6-2.690.0.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #404673
+
+  17 Apr 2012; Brent Baude <ranger@gentoo.org> IO-Socket-INET6-2.690.0.ebuild:
+  Marking IO-Socket-INET6-2.690.0 ppc64 for bug 404673
+
+  16 Apr 2012; Brent Baude <ranger@gentoo.org> IO-Socket-INET6-2.690.0.ebuild:
+  Marking IO-Socket-INET6-2.690.0 ppc for bug 404673
+
+  05 Apr 2012; Jeff Horelick <jdhore@gentoo.org>
+  IO-Socket-INET6-2.690.0.ebuild:
+  marked x86 per bug 404673
+
+  30 Mar 2012; Markus Meier <maekke@gentoo.org> IO-Socket-INET6-2.690.0.ebuild:
+  arm stable, bug #404673
+
+  29 Mar 2012; Jeroen Roovers <jer@gentoo.org> IO-Socket-INET6-2.690.0.ebuild:
+  Stable for HPPA (bug #404673).
+
+  28 Mar 2012; Agostino Sarubbo <ago@gentoo.org>
+  IO-Socket-INET6-2.690.0.ebuild:
+  Stable for amd64, wrt bug #404673
+
+  16 Dec 2011; Naohiro Aota <naota@gentoo.org> IO-Socket-INET6-2.690.0.ebuild:
+  Add ~x86-fbsd
+
+*IO-Socket-INET6-2.690.0 (30 Nov 2011)
+
+  30 Nov 2011; Torsten Veller <tove@gentoo.org>
+  +IO-Socket-INET6-2.690.0.ebuild:
+  Version bump
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -IO-Socket-INET6-2.670.ebuild:
+  Cleanup
+
+*IO-Socket-INET6-2.670.0 (30 Aug 2011)
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +IO-Socket-INET6-2.670.0.ebuild:
+  Change version scheme
+
+  03 Apr 2011; Torsten Veller <tove@gentoo.org> -IO-Socket-INET6-2.660.ebuild:
+  Cleanup
+
+*IO-Socket-INET6-2.670 (22 Jan 2011)
+
+  22 Jan 2011; Torsten Veller <tove@gentoo.org> +IO-Socket-INET6-2.670.ebuild:
+  Version bump
+
+*IO-Socket-INET6-2.660 (15 Jan 2011)
+
+  15 Jan 2011; Torsten Veller <tove@gentoo.org> +IO-Socket-INET6-2.660.ebuild:
+  Version bump
+
+  14 Jan 2011; Torsten Veller <tove@gentoo.org> -IO-Socket-INET6-2.51.ebuild,
+  -IO-Socket-INET6-2.57.ebuild, -IO-Socket-INET6-2.61.ebuild:
+  Cleanup
+
+  22 Oct 2010; Samuli Suominen <ssuominen@gentoo.org>
+  IO-Socket-INET6-2.63.ebuild:
+  ppc64 stable wrt #340011
+
+  21 Oct 2010; Jeroen Roovers <jer@gentoo.org> IO-Socket-INET6-2.63.ebuild:
+  Stable for HPPA (bug #340011).
+
+  14 Oct 2010; Brent Baude <ranger@gentoo.org> IO-Socket-INET6-2.63.ebuild:
+  stable ppc, bug 340011
+
+  12 Oct 2010; Raúl Porcel <armin76@gentoo.org>
+  IO-Socket-INET6-2.63.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc stable wrt #340011
+
+  10 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  IO-Socket-INET6-2.63.ebuild:
+  stable x86, bug 340011
+
+  08 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  IO-Socket-INET6-2.63.ebuild:
+  Stable on amd64 wrt bug #340011
+
+*IO-Socket-INET6-2.63 (31 May 2010)
+
+  31 May 2010; Torsten Veller <tove@gentoo.org>
+  +IO-Socket-INET6-2.63.ebuild:
+  Version bump
+
+*IO-Socket-INET6-2.61 (27 Mar 2010)
+
+  27 Mar 2010; Robin H. Johnson <robbat2@gentoo.org>
+  +IO-Socket-INET6-2.61.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  21 Jan 2010; Torsten Veller <tove@gentoo.org> IO-Socket-INET6-2.51.ebuild:
+  mips -> ~mips
+
+  10 Jan 2010; Fabian Groffen <grobian@gentoo.org>
+  IO-Socket-INET6-2.57.ebuild:
+  Transfer Prefix keywords
+
+  24 Dec 2009; Torsten Veller <tove@gentoo.org>
+  -IO-Socket-INET6-2.56.ebuild:
+  Cleanup
+
+*IO-Socket-INET6-2.57 (24 Nov 2009)
+
+  24 Nov 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +IO-Socket-INET6-2.57.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  10 Dec 2008; Torsten Veller <tove@gentoo.org> IO-Socket-INET6-2.56.ebuild:
+  Add missing dependency on Module-Build (#250443)
+
+*IO-Socket-INET6-2.56 (08 Dec 2008)
+
+  08 Dec 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +IO-Socket-INET6-2.56.ebuild:
+  Version bump.
+
+  15 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  IO-Socket-INET6-2.51.ebuild:
+  Bug 115004, disabling tests
+
+  15 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  IO-Socket-INET6-2.51.ebuild:
+  Ebuild maintenance
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  IO-Socket-INET6-2.51.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  06 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  IO-Socket-INET6-2.51.ebuild:
+  Stable on amd64 for bug #135746.
+
+  06 Jun 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  IO-Socket-INET6-2.51.ebuild:
+  ppc stable
+
+  24 Apr 2006; Joshua Kinard <kumba@gentoo.org> IO-Socket-INET6-2.51.ebuild:
+  Marked stable on mips.
+
+  19 Mar 2006; Markus Rothe <corsair@gentoo.org>
+  IO-Socket-INET6-2.51.ebuild:
+  Stable on ppc64
+
+  26 Feb 2006; Joshua Kinard <kumba@gentoo.org> IO-Socket-INET6-2.51.ebuild:
+  Added ~mips to KEYWORDS.
+
+  31 Jan 2006; Aron Griffis <agriffis@gentoo.org>
+  IO-Socket-INET6-2.51.ebuild:
+  Mark 2.51 stable on alpha
+
+  28 Jan 2006; Markus Rothe <corsair@gentoo.org>
+  IO-Socket-INET6-2.51.ebuild:
+  Added ~ppc64
+
+  27 Jan 2006; Michael Hanselmann <hansmi@gentoo.org>
+  IO-Socket-INET6-2.51.ebuild:
+  Added to ~hppa, ~ppc.
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  IO-Socket-INET6-2.51.ebuild:
+  Marking sparc x86 stable
+
+  02 Dec 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  IO-Socket-INET6-2.51.ebuild:
+  marked ~alpha wrt bug #112508
+
+  01 Dec 2005; Luis Medinas <metalgod@gentoo.org>
+  IO-Socket-INET6-2.51.ebuild:
+  Added ~amd64 keyword. bug #112508.
+
+*IO-Socket-INET6-2.51 (21 Nov 2005)
+
+  21 Nov 2005; <mcumming@gentoo.org> +metadata.xml,
+  +IO-Socket-INET6-2.51.ebuild:
+  Optional dep for spamassassin

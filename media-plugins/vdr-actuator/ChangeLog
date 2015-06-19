@@ -1,0 +1,65 @@
+# ChangeLog for media-plugins/vdr-actuator
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-actuator/ChangeLog,v 1.13 2014/08/31 11:08:48 hd_brummy Exp $
+
+  31 Aug 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-actuator-1.1.1.ebuild:
+  cleanup old
+
+  02 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-actuator-1.2.1.ebuild:
+  stable amd64 x86, wrt bug 495756
+
+*vdr-actuator-1.2.1 (31 Mar 2013)
+
+  31 Mar 2013; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-actuator-1.2.1.ebuild:
+  bump
+
+  29 Apr 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-actuator-1.1.1.ebuild:
+  wrong use of scr_unpack scr_prepare fixed
+
+  29 Apr 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-actuator-1.1.1.ebuild:
+  migrated to vdr-plugin-2.eclass
+
+
+  28 Jan 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-actuator-1.1.1.ebuild:
+  eapi=3
+
+  02 Jan 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-actuator-1.0.4.ebuild:
+  cleanup
+
+  02 Jan 2011; Thomas Kahle <tomka@gentoo.org> vdr-actuator-1.1.1.ebuild:
+  x86 stable per bug 286999
+
+  30 Dec 2010; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-actuator-1.1.1.ebuild:
+  stable amd64; bug 28699
+
+*vdr-actuator-1.1.1 (24 Mar 2008)
+
+  24 Mar 2008; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-actuator-1.0.3.ebuild, vdr-actuator-1.0.4.ebuild,
+  +vdr-actuator-1.1.1.ebuild:
+  cleanup; actuator-1.0.4 , x86, ~amd64 added; version bump
+
+*vdr-actuator-1.0.4 (25 Jun 2007)
+
+  25 Jun 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-actuator-1.0.4.ebuild:
+  Version bumped. This should get consistent handling of DVB-device numbers.
+  Should work with vdr-1.5.
+
+  15 Aug 2006; Matthias Schwarzott <zzam@gentoo.org> metadata.xml:
+  Assigned to Gentoo VDR Project.
+
+*vdr-actuator-1.0.3 (02 May 2006)
+
+  02 May 2006; Matthias Schwarzott <zzam@gentoo.org> +metadata.xml,
+  +vdr-actuator-1.0.3.ebuild:
+  Initial import of ebuild written by me.
+

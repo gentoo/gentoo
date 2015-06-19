@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>games</herd>
+  <use>
+    <flag name="xrandr">Enable support for the X xrandr extension</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">speed-dreams</remote-id>
+  </upstream>
+</pkgmetadata>

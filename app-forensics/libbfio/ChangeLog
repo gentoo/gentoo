@@ -1,0 +1,34 @@
+# ChangeLog for app-forensics/libbfio
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-forensics/libbfio/ChangeLog,v 1.6 2014/08/10 17:46:15 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  libbfio-0.0.20120425_alpha.ebuild, libbfio-0.0.20130609_alpha.ebuild,
+  libbfio-0.0.20130721.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  08 Aug 2014; Anthony G. Basile <blueness@gentoo.org>
+  libbfio-0.0.20120425_alpha.ebuild, libbfio-0.0.20130609_alpha.ebuild,
+  libbfio-0.0.20130721.ebuild:
+  Keyword ~ppc, bug #478394
+
+  29 Jul 2013; Jeroen Roovers <jer@gentoo.org>
+  libbfio-0.0.20120425_alpha.ebuild:
+  Marked ~hppa (bug #478394).
+
+  27 Jul 2013; Rick Farina <zerochaos@gentoo.org>
+  libbfio-0.0.20120425_alpha.ebuild, libbfio-0.0.20130609_alpha.ebuild,
+  libbfio-0.0.20130721.ebuild, metadata.xml:
+  adjusting based on suggested feedback in bug #478308
+
+  27 Jul 2013; Jeroen Roovers <jer@gentoo.org> libbfio-0.0.20130721.ebuild:
+  Marked ~hppa (bug #478308).
+
+*libbfio-0.0.20130721 (27 Jul 2013)
+*libbfio-0.0.20120425_alpha (27 Jul 2013)
+*libbfio-0.0.20130609_alpha (27 Jul 2013)
+
+  27 Jul 2013; Rick Farina <zerochaos@gentoo.org>
+  +libbfio-0.0.20120425_alpha.ebuild, +libbfio-0.0.20130609_alpha.ebuild,
+  +libbfio-0.0.20130721.ebuild, +metadata.xml:
+  initial commit of libbfio, imported from pentoo for use with libewf

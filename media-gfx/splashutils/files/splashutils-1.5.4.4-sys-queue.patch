@@ -1,0 +1,8 @@
+--- splash.c	2011-06-13 04:45:59.000000000 +0700
++++ splash.c	2014-11-14 20:04:43.000000000 +0700
+@@ -21,4 +21,5 @@
+ #include <sys/wait.h>
+ #include <sys/ioctl.h>
++#include <sys/queue.h>
+ #include <linux/kd.h>
+ #include <linux/fb.h>

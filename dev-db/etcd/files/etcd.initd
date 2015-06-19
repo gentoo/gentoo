@@ -1,0 +1,54 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/etcd/files/etcd.initd,v 1.1 2014/10/15 11:36:53 zmedico Exp $
+
+SVCNAME=etcd
+PIDPATH=/var/run/${SVCNAME}
+PIDFILE=${PIDPATH}/${SVCNAME}.pid
+LOGPATH=/var/log/${SVCNAME}
+DATADIR=/var/lib/${SVCNAME}
+USER=$SVCNAME
+
+depend() {
+	need net
+	need localmount
+	after bootmisc
+}
+
+start() {
+	if [ ! -d "$PIDPATH" ] ; then
+		mkdir -p "$PIDPATH"
+		chown $USER:$USER "$PIDPATH"
+	fi
+	if [ ! -d "$LOGPATH" ] ; then
+		mkdir -p "$LOGPATH"
+		chown $USER:$USER "$LOGPATH"
+	fi
+	if [ ! -d "$ETCD_DATA_DIR" ] ; then
+		mkdir -p "$ETCD_DATA_DIR"
+		chown $USER:$USER "$ETCD_DATA_DIR"
+	fi
+
+	ebegin "Starting $SVCNAME"
+	start-stop-daemon --start \
+		--pidfile "$PIDFILE" \
+		--user $USER \
+		--chdir "$ETCD_DATA_DIR" \
+		-1 "$LOGPATH/$SVCNAME.log" \
+		-2 "$LOGPATH/$SVCNAME.err" \
+		--background \
+		--make-pidfile \
+		--exec /usr/bin/etcd -- \
+			-name=$ETCD_NAME \
+			-data-dir="$ETCD_DATA_DIR" \
+			$ETCD_OPTS
+	eend $? "Failed to start $SVCNAME"
+}
+
+stop() {
+	ebegin "Stopping $SVCNAME"
+	start-stop-daemon --stop --pidfile $PIDFILE
+	eend $? "Failed to stop $SVCNAME"
+	rm -f "$PIDFILE"
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+      <email>andrew@ahamilto.net</email>
+      <name>Andrew Hamilton</name>
+      <description>Maintainer. Assign bugs to him.</description>
+  </maintainer>
+  <maintainer>
+      <email>sdamashek@gentoo.org</email>
+      <name>Samuel Damashek</name>
+      <description>Proxy maintainer. CC him on bugs.</description>
+  </maintainer>
+  <herd>proxy-maintainers</herd>
+</pkgmetadata>

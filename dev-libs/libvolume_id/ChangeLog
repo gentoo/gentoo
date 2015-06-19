@@ -1,0 +1,40 @@
+# ChangeLog for dev-libs/libvolume_id
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libvolume_id/ChangeLog,v 1.8 2009/07/01 14:47:54 aballier Exp $
+
+*libvolume_id-0.81.1 (01 Jul 2009)
+
+  01 Jul 2009; Alexis Ballier <aballier@gentoo.org>
+  +libvolume_id-0.81.1.ebuild:
+  version bump
+
+  01 Jul 2009; Alexis Ballier <aballier@gentoo.org>
+  -libvolume_id-0.71.0.ebuild:
+  remove old
+
+  10 Sep 2008; Doug Goldstein <cardoe@gentoo.org>
+  libvolume_id-0.71.0.ebuild, libvolume_id-0.81.0.ebuild:
+  fix license
+
+  01 Jun 2008; Alexis Ballier <aballier@gentoo.org> metadata.xml:
+  assign to bsd herd
+
+*libvolume_id-0.81.0 (01 Jun 2008)
+
+  01 Jun 2008; Alexis Ballier <aballier@gentoo.org>
+  +libvolume_id-0.81.0.ebuild:
+  version bump
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing uberlord from metadata.xml as per #199318. Assigning to
+  maintainer-needed.
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+*libvolume_id-0.71.0 (09 Apr 2007)
+
+  09 Apr 2007; Roy Marples <uberlord@gentoo.org> +metadata.xml,
+  +libvolume_id-0.71.0.ebuild:
+  Added to portage.
+

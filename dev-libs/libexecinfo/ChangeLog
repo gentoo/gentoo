@@ -1,0 +1,13 @@
+# ChangeLog for dev-libs/libexecinfo
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libexecinfo/ChangeLog,v 1.2 2012/05/30 12:38:29 aballier Exp $
+
+  30 May 2012; Alexis Ballier <aballier@gentoo.org> libexecinfo-1.1.ebuild:
+  fix multilib-strict and keyword ~amd64-fbsd
+
+*libexecinfo-1.1 (15 May 2009)
+
+  15 May 2009; Alexis Ballier <aballier@gentoo.org> +libexecinfo-1.1.ebuild,
+  +files/libexecinfo-1.1-build.patch, +metadata.xml:
+  initial import, ebuild by me
+

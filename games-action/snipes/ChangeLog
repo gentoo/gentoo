@@ -1,0 +1,44 @@
+# ChangeLog for games-action/snipes
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/snipes/ChangeLog,v 1.10 2014/12/30 20:05:08 mr_bones_ Exp $
+
+  30 Dec 2014; Michael Sterrett <mr_bones_@gentoo.org> snipes-1.0.4.ebuild:
+  EAPI=5
+
+  18 Dec 2011; Tupone Alfredo <tupone@gentoo.org> snipes-1.0.4.ebuild,
+  +files/snipes-1.0.4-nongnulinker.patch:
+  Build with non-GNU/bfd linker. Bug #369287 by Diego Elio Pettenò
+
+  23 May 2009; Markus Meier <maekke@gentoo.org> snipes-1.0.4.ebuild:
+  amd64/x86 stable, bug #265234
+
+  17 May 2009; nixnut <nixnut@gentoo.org> snipes-1.0.4.ebuild:
+  ppc stable #265234
+
+*snipes-1.0.4 (15 May 2009)
+
+  15 May 2009; Michael Sterrett <mr_bones_@gentoo.org> +snipes-1.0.4.ebuild:
+  version bump
+
+  07 Apr 2009; Michael Sterrett <mr_bones_@gentoo.org> snipes-1.0.3.ebuild:
+  desktop entry
+
+*snipes-1.0.3 (30 Jan 2009)
+
+  30 Jan 2009; Michael Sterrett <mr_bones_@gentoo.org> +snipes-1.0.3.ebuild:
+  version bump - ebuild submitted by Cyp via bug #256817
+
+*snipes-1.0.2 (04 Sep 2008)
+
+  04 Sep 2008; Tristan Heaven <nyhm@gentoo.org> +snipes-1.0.2.ebuild:
+  Version bump, bug #226893
+
+*snipes-1.0.1 (06 Feb 2005)
+
+  06 Feb 2005; Mike Frysinger <vapier@gentoo.org> +snipes-1.0.1.ebuild:
+  Version bump #80651.
+
+*snipes-1.0.0 (29 Jan 2004)
+
+  29 Jan 2004; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Cyp #79869.

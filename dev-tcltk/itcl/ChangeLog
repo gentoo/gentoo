@@ -1,0 +1,264 @@
+# ChangeLog for dev-tcltk/itcl
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/itcl/ChangeLog,v 1.73 2015/06/09 17:48:13 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  14 Apr 2015; Justin Lecher <jlec@gentoo.org> -itcl-3.4_beta1.ebuild,
+  -itcl-4.0.2.ebuild:
+  Drop old
+
+  14 Apr 2015; Agostino Sarubbo <ago@gentoo.org> itcl-3.4.1.ebuild:
+  Stable for ia64, wrt bug #543024
+
+  13 Apr 2015; Agostino Sarubbo <ago@gentoo.org> itcl-3.4.1.ebuild:
+  Stable for alpha, wrt bug #543024
+
+  01 Apr 2015; Agostino Sarubbo <ago@gentoo.org> itcl-3.4.1.ebuild:
+  Stable for sparc, wrt bug #543024
+
+  28 Mar 2015; Agostino Sarubbo <ago@gentoo.org> itcl-3.4.1.ebuild:
+  Stable for ppc, wrt bug #543024
+
+  25 Mar 2015; Agostino Sarubbo <ago@gentoo.org> itcl-3.4.1.ebuild:
+  Stable for x86, wrt bug #543024
+
+  20 Mar 2015; Justin Lecher <jlec@gentoo.org> itcl-3.4.1.ebuild,
+  itcl-3.4_beta1.ebuild, itcl-4.0.2.ebuild, itcl-4.0.3.ebuild:
+  Fix tcl/tk slotting
+
+  12 Mar 2015; Agostino Sarubbo <ago@gentoo.org> itcl-3.4.1.ebuild:
+  Stable for amd64, wrt bug #543024
+
+  12 Mar 2015; Justin Lecher <jlec@gentoo.org> -itcl-4.0.0-r1.ebuild,
+  -itcl-4.0.0-r2.ebuild, -itcl-4.0.0.ebuild, -itcl-4.0.1.ebuild,
+  itcl-3.4.1.ebuild:
+  Version Bump; drop old
+
+*itcl-4.0.3 (12 Mar 2015)
+
+  12 Mar 2015; Justin Lecher <jlec@gentoo.org> +itcl-4.0.3.ebuild:
+  Version Bump
+
+*itcl-4.0.2 (21 Dec 2014)
+
+  21 Dec 2014; Justin Lecher <jlec@gentoo.org> +itcl-4.0.2.ebuild:
+  Version Bump
+
+*itcl-4.0.1 (15 Sep 2014)
+
+  15 Sep 2014; Justin Lecher <jlec@gentoo.org> +itcl-4.0.1.ebuild:
+  Version Bump, #522092
+
+*itcl-4.0.0-r2 (13 Jan 2013)
+
+  13 Jan 2013; Justin Lecher <jlec@gentoo.org> +itcl-4.0.0-r2.ebuild:
+  Correct LDPATH to new location
+
+*itcl-4.0.0-r1 (13 Jan 2013)
+
+  13 Jan 2013; Justin Lecher <jlec@gentoo.org> +itcl-4.0.0-r1.ebuild:
+  Correct paths in itclConfig.sh
+
+*itcl-4.0.0 (09 Jan 2013)
+
+  09 Jan 2013; Justin Lecher <jlec@gentoo.org> +itcl-4.0.0.ebuild,
+  metadata.xml:
+  Version Bump
+
+*itcl-3.4.1 (07 Oct 2012)
+
+  07 Oct 2012; Justin Lecher <jlec@gentoo.org> -itcl-3.3-r1.ebuild,
+  -itcl-3.3.1_pre20090417.ebuild, -itcl-3.3.1_pre20090417-r1.ebuild,
+  +itcl-3.4.1.ebuild, metadata.xml:
+  Version Bump, #433014; drop old
+
+  07 Jun 2012; Zac Medico <zmedico@gentoo.org> itcl-3.3.1_pre20090417-r1.ebuild:
+  inherit multilib for get_libdir
+
+  04 Jun 2011; Raúl Porcel <armin76@gentoo.org> itcl-3.4_beta1.ebuild:
+  alpha/ia64/sparc stable wrt #363991
+
+  28 May 2011; Brent Baude <ranger@gentoo.org> itcl-3.4_beta1.ebuild:
+  Marking itcl-3.4_beta1 ppc for bug 363991
+
+  21 May 2011; Thomas Kahle <tomka@gentoo.org> itcl-3.4_beta1.ebuild:
+  x86 stable per bug 363991
+
+  26 Apr 2011; Christoph Mende <angelos@gentoo.org> itcl-3.4_beta1.ebuild:
+  Stable on amd64 wrt bug #363991
+
+  19 Apr 2011; Justin Lecher <jlec@gentoo.org> itcl-3.4_beta1.ebuild:
+  No automagic addition of -pipe to CFLAGS, thanks ago for the fix
+
+  18 Apr 2011; Justin Lecher <jlec@gentoo.org> +files/3.4_beta1-test.patch,
+  itcl-3.4_beta1.ebuild:
+  Fix for tests, upstream didn't correct test according to code changes
+
+  18 Apr 2011; Justin Lecher <jlec@gentoo.org> itcl-3.3-r1.ebuild,
+  itcl-3.3.1_pre20090417.ebuild, itcl-3.3.1_pre20090417-r1.ebuild:
+  Fix env.d file's LDPATH points to wrong directory, #363793
+
+  18 Jun 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  itcl-3.3.1_pre20090417.ebuild:
+  Added a env.d file for stable version too
+
+*itcl-3.4_beta1 (07 Jun 2010)
+
+  07 Jun 2010; Justin Lecher <jlec@gentoo.org> +itcl-3.4_beta1.ebuild:
+  Version Bump, adding LDPATH - fix for #317087
+
+*itcl-3.3.1_pre20090417-r1 (02 Apr 2010)
+
+  02 Apr 2010; Justin Lecher <jlec@gentoo.org>
+  +itcl-3.3.1_pre20090417-r1.ebuild:
+  Imported from prefix overlay
+
+  22 Sep 2009; Markus Meier <maekke@gentoo.org>
+  itcl-3.3.1_pre20090417.ebuild:
+  amd64 stable, bug #281400
+
+  12 Sep 2009; Raúl Porcel <armin76@gentoo.org>
+  itcl-3.3.1_pre20090417.ebuild:
+  ia64/sparc stable wrt #281400
+
+  29 Aug 2009; nixnut <nixnut@gentoo.org> itcl-3.3.1_pre20090417.ebuild:
+  ppc stable #281400
+
+  29 Aug 2009; Tobias Klausmann <klausman@gentoo.org>
+  itcl-3.3.1_pre20090417.ebuild:
+  Stable on alpha, bug #281400
+
+  18 Aug 2009; Christian Faulhammer <fauli@gentoo.org>
+  itcl-3.3.1_pre20090417.ebuild:
+  stable x86, bug 281400
+
+*itcl-3.3.1_pre20090417 (17 Apr 2009)
+
+  17 Apr 2009; Federico Ferri <mescalinum@gentoo.org>
+  +itcl-3.3.1_pre20090417.ebuild:
+  adding prerelease of incrTcl-3.3.1 suite. fixes bug #210765
+
+  22 Sep 2006; MATSUU Takuto <matsuu@gentoo.org>
+  -files/itcl-3.2.1-gentoo.diff, -files/itcl-3.2-r2-gentoo.diff,
+  -itcl-3.2-r2.ebuild, -itcl-3.2.1-r1.ebuild, -itcl-3.3.ebuild:
+  Removed old versions
+
+  16 Sep 2006; Michael Sterrett <mr_bones_@gentoo.org> itcl-3.2.1-r1.ebuild:
+  drop alpha keywords to avoid broken deps
+
+  24 May 2006; Michael Hanselmann <hansmi@gentoo.org> itcl-3.3-r1.ebuild:
+  Stable on ppc.
+
+  19 May 2006; Thomas Cort <tcort@gentoo.org> itcl-3.3-r1.ebuild:
+  Stable on alpha and amd64 wrt Bug #116342.
+
+  17 May 2006; Joshua Jackson <tsunam@gentoo.org> itcl-3.3-r1.ebuild:
+  stable on x86; bug #116342
+
+  02 May 2006; Gustavo Zacarias <gustavoz@gentoo.org> itcl-3.3-r1.ebuild:
+  Stable on sparc
+
+  10 Mar 2006; Aron Griffis <agriffis@gentoo.org> itcl-3.3-r1.ebuild:
+  Mark 3.3-r1 stable on ia64
+
+  16 Jan 2006; Jason Wever <weeve@gentoo.org> itcl-3.3.ebuild:
+  Stable on SPARC.
+
+*itcl-3.3-r1 (09 Jan 2006)
+
+  09 Jan 2006; MATSUU Takuto <matsuu@gentoo.org> +itcl-3.3-r1.ebuild:
+  Fixed fails with bash-3.1, Bug 116342.
+
+  29 Dec 2005; Simon Stelling <blubb@gentoo.org> itcl-3.3.ebuild:
+  stable on amd64
+
+  24 Dec 2005; Michael Hanselmann <hansmi@gentoo.org> itcl-3.3.ebuild:
+  Stable on ppc.
+
+  16 Dec 2005; Mark Loeser <halcy0n@gentoo.org> itcl-3.3.ebuild:
+  Stable on x86; bug #115177
+
+*itcl-3.3 (03 Jul 2005)
+
+  03 Jul 2005; MATSUU Takuto <matsuu@gentoo.org> +itcl-3.3.ebuild:
+  Version bumped. Bug 93307.
+
+  21 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> itcl-3.2.1-r1.ebuild:
+  Stable on ppc.
+
+  31 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> itcl-3.2.1-r1.ebuild:
+  Stable on amd64.
+
+  10 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> itcl-3.2.1-r1.ebuild:
+  Stable on alpha.
+
+  09 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> itcl-3.2.1-r1.ebuild:
+  Add ~alpha keyword.
+
+  22 Apr 2004; Danny van Dyk <kugelfang@gentoo.org> itcl-3.2.1-r1.ebuild:
+  marked ~amd64
+
+  14 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> itcl-3.2-r2.ebuild,
+  itcl-3.2.1-r1.ebuild:
+  Inherit eutils, added IUSE=
+
+  04 Apr 2004; Chris Aniszczyk <zx@gentoo.org> itcl-3.2-r2.ebuild,
+  itcl-3.2.1-r1.ebuild, itcl-3.2.1.ebuild, metadata.xml:
+  Clean up. Added missing metadata.xml
+
+  24 Mar 2004; Jason Wever <weeve@gentoo.org> itcl-3.2.1.ebuild:
+  Stable on sparc.
+
+  08 Mar 2004; Robin Johnson <robbat2@gentoo.org>
+  itcl-3.2.1-r1.ebuild:
+  fix bug 44022, editing glitch
+
+*itcl-3.2.1-r1 (07 Mar 2004)
+
+  07 Mar 2004; Robin H. Johnson <robbat2@gentoo.org> itcl-3.2.1-r1.ebuild:
+  add prospective fix for bug #43770
+
+*itcl-3.2.1 (28 Oct 2003)
+
+  28 Oct 2003; Robin H. Johnson <robbat2@gentoo.org> itcl-3.2-r2.ebuild,
+  itcl-3.2.1.ebuild, files/itcl-3.2.1-gentoo.diff:
+  add error checking to old ebuild, and rewrite new ebuild for version bump
+
+  26 Oct 2003; Brad House <brad_mssw@gentoo.org> itcl-3.2-r2.ebuild:
+  add amd64 flag
+
+  09 Sep 2003; Aron Griffis <agriffis@gentoo.org> itcl-3.2-r2.ebuild:
+  Mark stable on alpha
+
+  08 Jul 2003; Aron Griffis <agriffis@gentoo.org> itcl-3.2-r2.ebuild:
+  Add ~alpha to KEYWORDS
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*itcl-3.2-r2 (27 May 2002)
+
+  09 Aug 2002; George Shapovalov <george@gentoo.org> itcl-3.2-r2.ebuild :
+
+  fixed build problems - removed "bad" parts of the patch
+
+  27 May 2002; Seemant Kulleen <seemant@gentoo.org> itcl-3.2-r2.ebuild
+  files/digest-itcl-3.2-r2 files/itcl-3.2-r2-gentoo.diff :
+
+  Adjusted dependency to generic dev-lang/tk instead of specific tk version,
+  and adjusted man page locations to be LFH compliant. This closes bug #2936
+  by kodath@freezingmail.com
+
+*itcl-3.2-r1 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

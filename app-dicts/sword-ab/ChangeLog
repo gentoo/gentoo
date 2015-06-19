@@ -1,0 +1,10 @@
+# ChangeLog for app-dicts/sword-ab
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/sword-ab/ChangeLog,v 1.1 2008/03/14 01:32:53 beandog Exp $
+
+*sword-ab-1.3 (14 Mar 2008)
+
+  14 Mar 2008; Steve Dibb <beandog@gentoo.org> +metadata.xml,
+  +sword-ab-1.3.ebuild:
+  Initial commit
+

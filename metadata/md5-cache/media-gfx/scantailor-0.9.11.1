@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=media-libs/libpng-1.2.43 >=media-libs/tiff-3.9.4 sys-libs/zlib virtual/jpeg x11-libs/libXrender dev-qt/qtgui:4 opengl? ( dev-qt/qtopengl:4 ) dev-libs/boost sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=A interactive post-processing tool for scanned pages
+EAPI=4
+HOMEPAGE=http://scantailor.sourceforge.net/
+IUSE=opengl test
+KEYWORDS=amd64 x86
+LICENSE=GPL-2 GPL-3 public-domain
+RDEPEND=>=media-libs/libpng-1.2.43 >=media-libs/tiff-3.9.4 sys-libs/zlib virtual/jpeg x11-libs/libXrender dev-qt/qtgui:4 opengl? ( dev-qt/qtopengl:4 )
+SLOT=0
+SRC_URI=mirror://sourceforge/scantailor/scantailor-0.9.11.1.tar.gz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	virtualx	73cfc129b4b9ba23aed1abb10c825d86
+_md5_=2636ebb69e5627972de5d8d79a0b9f54

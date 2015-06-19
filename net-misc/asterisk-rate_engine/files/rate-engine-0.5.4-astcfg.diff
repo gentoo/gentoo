@@ -1,0 +1,41 @@
+--- rate-engine-0.5.4/Makefile.orig	2005-02-21 04:42:24.046680160 +0100
++++ rate-engine-0.5.4/Makefile	2005-02-21 04:47:38.049944408 +0100
+@@ -10,7 +10,7 @@
+ 
+ DEBUG+=		-g -fno-inline-functions
+ 
+-CFLAGS+=	-O3 -W -Wall -Wmissing-prototypes -Wstrict-prototypes -Wshadow \
++CFLAGS+=	-fPIC -W -Wall -Wmissing-prototypes -Wstrict-prototypes -Wshadow \
+ 		$(DEBUG) -D_REENTRANT -I/usr/include/pcre
+ LDFLAGS+=	$(DEBUG)
+ LDLIBS+=	-lpthread
+@@ -26,9 +26,9 @@
+ OBJS:=		$(SRCS:%.c=%.o)
+ MOD=		rate_engine.so
+ 
+-ASTLIBDIR=	/usr/lib/asterisk/modules
+-ASTCONFDIR=	/etc/asterisk
+-BINDIR=		/usr/bin
++ASTLIBDIR=	$(shell /usr/bin/asterisk-config --modulesdir)
++ASTCONFDIR=	$(shell /usr/bin/asterisk-config --sysconfdir)
++BINDIR=		$(shell /usr/bin/asterisk-config --bindir)
+ 
+ .PHONY:		all
+ 
+@@ -50,12 +50,14 @@
+ .PHONY:		install
+ 
+ install:	all
+-	install -m 755 $(MOD) $(ASTLIBDIR)
++	if [ ! -d $(DESTDIR)$(ASTLIBDIR) ]; then mkdir -p $(DESTDIR)$(ASTLIBDIR); fi
++	install -m 755 $(MOD) $(DESTDIR)$(ASTLIBDIR)
+ 
+ .PHONY:		samples
+ 
+ samples:
+-	install -m 644 rate_engine.conf.sample $(ASTCONFDIR)/rate_engine.conf
++	if [ ! -d $(DESTDIR)$(ASTCONFDIR) ]; then mkdir -p $(DESTDIR)$(ASTCONFDIR); fi
++	install -m 644 rate_engine.conf.sample $(DESTDIR)$(ASTCONFDIR)/rate_engine.conf
+ 
+ ifneq ($(wildcard .depend),)
+ include .depend

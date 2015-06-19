@@ -1,0 +1,54 @@
+# ChangeLog for dev-ml/batteries
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/batteries/ChangeLog,v 1.12 2014/12/01 08:59:34 aballier Exp $
+
+*batteries-2.3 (01 Dec 2014)
+
+  01 Dec 2014; Alexis Ballier <aballier@gentoo.org> +batteries-2.3.ebuild:
+  version bump
+
+*batteries-2.2 (13 Apr 2014)
+
+  13 Apr 2014; Alexis Ballier <aballier@gentoo.org> +batteries-2.2.ebuild:
+  version bump
+
+  19 Aug 2013; Alexis Ballier <aballier@gentoo.org> batteries-2.1.ebuild,
+  +files/batteries-2.1-ocaml-4.01.patch:
+  Add fix from upstream to build with ocaml 4.01
+
+  16 Aug 2013; Alexis Ballier <aballier@gentoo.org> -batteries-1.5.0.ebuild:
+  remove old
+
+*batteries-2.1 (22 Jul 2013)
+
+  22 Jul 2013; Alexis Ballier <aballier@gentoo.org> +batteries-2.1.ebuild:
+  version bump
+
+  03 Mar 2013; Alexis Ballier <aballier@gentoo.org> batteries-1.5.0.ebuild:
+  eapi5, use slotdeps and define subslot
+
+  03 Mar 2013; Alexis Ballier <aballier@gentoo.org> -batteries-1.4.2.ebuild:
+  remove old
+
+*batteries-1.5.0 (07 Aug 2012)
+
+  07 Aug 2012; Alexis Ballier <aballier@gentoo.org> +batteries-1.5.0.ebuild:
+  version bump
+
+  09 Jul 2012; Ulrich Müller <ulm@gentoo.org> batteries-1.4.2.ebuild:
+  Update LICENSE, bug 425140.
+
+  18 May 2012; Alexis Ballier <aballier@gentoo.org> -batteries-1.4.1.ebuild:
+  remove old
+
+*batteries-1.4.2 (04 May 2012)
+
+  04 May 2012; Alexis Ballier <aballier@gentoo.org> +batteries-1.4.2.ebuild:
+  version bump
+
+*batteries-1.4.1 (28 Mar 2012)
+
+  28 Mar 2012; Alexis Ballier <aballier@gentoo.org> +batteries-1.4.1.ebuild,
+  +metadata.xml:
+  initial import, ebuild by various people in bug #325941 and converted to
+  oasis.eclass

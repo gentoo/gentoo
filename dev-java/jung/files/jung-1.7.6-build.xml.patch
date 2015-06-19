@@ -1,0 +1,20 @@
+--- build.xml	2009-05-24 12:12:51.007684864 +1200
++++ build.xml	2009-05-24 12:39:01.796913330 +1200
+@@ -83,7 +83,7 @@
+ 		</fileset>
+ 	</path>
+ 
+-	<taskdef classpathref="jcoverage" resource="tasks.properties"/>
++	<!--<taskdef classpathref="jcoverage" resource="tasks.properties"/>-->
+ 
+ 	<target name="clean" description="clean up build artefacts" unless="cleaned">
+ 		<delete quiet="true">
+@@ -157,7 +157,7 @@
+         the instrumented classes reference classes used by the
+         jcoverage runtime.
+       -->
+-			<classpath refid="jcoverage"/>
++      			<!--<classpath refid="jcoverage"/>-->
+ 			<classpath refid="alljars"/>
+ 			<!--	  <formatter type="brief" usefile="false"/> -->
+ 			<formatter type="xml"/>

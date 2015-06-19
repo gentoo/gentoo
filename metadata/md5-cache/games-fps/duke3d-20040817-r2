@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=media-libs/libsdl media-libs/sdl-mixer media-sound/timidity++ media-sound/timidity-eawpatches perl? ( dev-lang/perl[-ithreads] ) opengl? ( virtual/opengl ) demo? ( app-arch/unzip ) !pic? ( x86? ( dev-lang/nasm ) )
+DESCRIPTION=Port of the original Duke Nukem 3D
+EAPI=2
+HOMEPAGE=http://icculus.org/projects/duke3d/
+IUSE=demo pic perl opengl
+KEYWORDS=hppa ppc x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl media-libs/sdl-mixer media-sound/timidity++ media-sound/timidity-eawpatches perl? ( dev-lang/perl[-ithreads] ) opengl? ( virtual/opengl ) games-misc/games-envd
+SLOT=0
+SRC_URI=mirror://gentoo/duke3d-20040817.tar.bz2 demo? ( ftp://ftp.3drealms.com/share/3dduke13.zip ftp://ftp.planetmirror.com/pub/gameworld/downloads/3dduke13.zip )
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	games	1ad3205dbf62a2c98249f2f59b0a2d39	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=0b0bcb0d09782ae650f9c4a77a252c68

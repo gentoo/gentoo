@@ -1,0 +1,75 @@
+# ChangeLog for net-analyzer/iplog
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/iplog/ChangeLog,v 1.21 2014/07/12 17:52:32 jer Exp $
+
+  12 Jul 2014; Jeroen Roovers <jer@gentoo.org> iplog-2.2.3-r2.ebuild,
+  files/2.2.3-DLT_LINUX_SSL.patch:
+  EAPI bump. Clean up patch.
+
+  24 Jul 2012; Anthony G. Basile <blueness@gentoo.org> iplog-2.2.3-r2.ebuild:
+  Keyword ~mips
+
+  28 Apr 2007; Torsten Veller <tove@gentoo.org> iplog-2.2.3-r2.ebuild:
+  Use newinitd
+
+  30 Sep 2006; Robin H. Johnson <robbat2@gentoo.org> iplog-2.2.3-r2.ebuild:
+  Add ~amd64 so I can use it.
+
+  05 Mar 2006; Markus Ullmann <jokey@gentoo.org> iplog-2.2.3-r2.ebuild:
+  COPYING cleanup
+
+  15 Feb 2006; Markus Ullmann <jokey@gentoo.org> iplog-2.2.3-r2.ebuild:
+  Removing virtual/libpcap wrt bug #117898
+
+  15 Sep 2005; Aron Griffis <agriffis@gentoo.org> iplog-2.2.3-r2.ebuild:
+  Mark 2.2.3-r2 stable on alpha
+
+  24 Apr 2005; Marcelo Goes <vanquirius@gentoo.org> -iplog-2.2.3-r1.ebuild,
+  -iplog-2.2.3.ebuild:
+  Removing old ebuilds.
+
+  29 Jan 2005; Daniel Black <dragonheart@gentoo.org> iplog-2.2.3-r1.ebuild,
+  iplog-2.2.3-r2.ebuild, iplog-2.2.3.ebuild:
+  changed net-libs/libpcap depend to virtual/libcap
+
+  08 Nov 2004; Bryan Østergaard <kloeri@gentoo.org> iplog-2.2.3-r1.ebuild,
+  iplog-2.2.3-r2.ebuild, iplog-2.2.3.ebuild:
+  ~alpha keyword, fix license syntax.
+
+  21 Mar 2004; Michael Boman <mboman@gentoo.org> iplog-2.2.3-r1.ebuild,
+  iplog-2.2.3-r2.ebuild, iplog-2.2.3.ebuild:
+  QA: IUSE variable was missing, unnecessary definition of S removed.
+
+  10 Mar 2004; Jason Wever <weeve@gentoo.org> iplog-2.2.3-r2.ebuild:
+  Stable on sparc.
+
+  27 Feb 2004; Michael Boman <mboman@gentoo.org> iplog-2.2.3-r2.ebuild,
+  files/iplog.rc6:
+  - Marked stable on x86. Closes 42998.
+  - re-indented the init.d script.
+  - Changed some internal stuff in the ebuild so it's a bit cleaner.
+
+*iplog-2.2.3-r2 (26 Oct 2003)
+
+  26 Oct 2003; Robin H. Johnson <robbat2@gentoo.org> iplog-2.2.3-r2.ebuild,
+  files/iplog.rc6:
+  add my own startup script for iplog
+
+*iplog-2.2.3-r1 (18 Oct 2003)
+
+  18 Oct 2003; Mike Frysinger <vapier@gentoo.org> :
+  Add dlt patch to support more interface types #27928.
+
+*iplog-2.2.3 (1 Feb 2002)
+
+  21 Jul 2002; Owen Stampflee <owen@gentoo.org> :
+
+  Tested and Added PPC to KEYWORDS.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

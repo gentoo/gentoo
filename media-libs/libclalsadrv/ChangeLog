@@ -1,0 +1,90 @@
+# ChangeLog for media-libs/libclalsadrv
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libclalsadrv/ChangeLog,v 1.19 2012/09/07 22:38:59 radhermit Exp $
+
+  07 Sep 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+  20 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  libclalsadrv-2.0.0.ebuild:
+  Change HOMEPAGE to Debian page for libclalsadrv and SRC_URI to Gentoo
+  mirrors.
+
+  20 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -libclalsadrv-1.0.1.ebuild, -files/libclalsadrv-1.0.1-makefile.patch,
+  -libclalsadrv-1.2.1.ebuild, -files/libclalsadrv-1.2.1-makefile.patch:
+  old
+
+  20 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  libclalsadrv-1.0.1.ebuild:
+  Revert back to ~sparc (no stable reverse dependencies)
+
+  20 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  libclalsadrv-2.0.0.ebuild, files/libclalsadrv-2.0.0-makefile.patch:
+  Remove forced -O2 from CXXFLAGS wrt #376619 by Agostino Sarubbo. Install
+  missing soname symlink.
+
+*libclalsadrv-2.0.0 (12 Apr 2010)
+
+  12 Apr 2010; Alexis Ballier <aballier@gentoo.org>
+  +libclalsadrv-2.0.0.ebuild, +files/libclalsadrv-2.0.0-makefile.patch:
+  version bump
+
+  25 Jan 2009; Markus Meier <maekke@gentoo.org> libclalsadrv-1.2.2.ebuild:
+  amd64/x86 stable, bug #256042
+
+*libclalsadrv-1.2.2 (14 May 2007)
+
+  14 May 2007; Alexis Ballier <aballier@gentoo.org>
+  +files/libclalsadrv-1.2.2-makefile.patch, +libclalsadrv-1.2.2.ebuild:
+  version bump
+
+*libclalsadrv-1.2.1 (19 Apr 2007)
+
+  19 Apr 2007; Alexis Ballier <aballier@gentoo.org>
+  +files/libclalsadrv-1.2.1-makefile.patch, +libclalsadrv-1.2.1.ebuild:
+  Version bump
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  06 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  files/libclalsadrv-1.0.1-makefile.patch, metadata.xml,
+  libclalsadrv-1.0.1.ebuild:
+  Respect multilib libdir, don't run ldconfig, use CXX to build, drop
+  virtual/libc dependency.
+
+  04 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  libclalsadrv-1.0.1.ebuild:
+  Don't instasll COPYING file.
+
+  26 Aug 2005; Diego Pettenò <flameeyes@gentoo.org>
+  libclalsadrv-1.0.1.ebuild:
+  epatch doesn't need die.
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libclalsadrv-1.0.1.ebuild:
+  Stable amd64, sparc, x86.
+
+  27 Nov 2004; Joseph Jezak <josejx@gentoo.org> libclalsadrv-1.0.1.ebuild:
+  Marked ~ppc as a dependency of bug #71979.
+
+  22 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libclalsadrv-1.0.1.ebuild:
+  Added to ~sparc.
+
+  17 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libclalsadrv-1.0.1.ebuild:
+  Stable x86.  Added ~amd64.
+
+  21 Oct 2004; Christian Parpart <trapni@gentoo.org>
+  libclalsadrv-1.0.1.ebuild:
+  some QA fixes
+
+*libclalsadrv-1.0.1 (10 Oct 2004)
+
+  10 Oct 2004; Christian Parpart <trapni@gentoo.org> +metadata.xml,
+  +files/libclalsadrv-1.0.1-makefile.patch, +libclalsadrv-1.0.1.ebuild:
+  Ebuild and patch submitted by ron widler <ron@einfach.org> (bug #66618)
+  just very minor changes be me
+

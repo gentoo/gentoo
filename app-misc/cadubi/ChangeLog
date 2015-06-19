@@ -1,0 +1,31 @@
+# ChangeLog for app-misc/cadubi
+# Copyright 2000-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/cadubi/ChangeLog,v 1.10 2009/04/25 10:55:19 patrick Exp $
+
+  25 Apr 2009; Patrick Lauer <patrick@gentoo.org> cadubi-1.3:
+  Adding ~amd64 keyword. Fixes #267403
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing usata from metadata.xml as per #22931. Assigning to maintainer-needed.
+
+  08 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  19 Sept 2004; Tom Gall <tgall@gentoo.org> cadubi-1.3.ebuild:
+  stable on ppc64, bug #63660
+
+  28 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> cadubi-1.3.ebuild:
+  Stable on ppc.
+
+  24 Jun 2004; David Holm <dholm@gentoo.org> cadubi-1.3.ebuild:
+  Added to ~ppc.
+
+  07 May 2004; Mamoru KOMACHI <usata@gentoo.org> cadubi-1.3.ebuild:
+  Marked as stable.
+
+*cadubi-1.3 (30 Mar 2004)
+
+  30 Mar 2004; Mamoru KOMACHI <usata@gentoo.org> cadubi-1.3.ebuild:
+  Initial import. Ebuild submitted by Tobias Klauser <tklauser@nuerscht.ch>,
+  closing bug #46153
+

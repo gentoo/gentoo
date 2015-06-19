@@ -1,0 +1,13 @@
+diff --git a/src/absio.orig.c b/src/absio.c
+index 7be9255..e19d7cd 100644
+--- a/src/absio.orig.c
++++ b/src/absio.c
+@@ -181,7 +181,7 @@ int tl_selectr(int sock, long int timeout)
+             {
+                 if ((rv == 0) && !cfg.stop && !cfg.rbreak && !FD_ISSET(sock, &readfds))
+                 {
+-                    char buf[32];
++                    char buf[64];
+                     int r;
+                     char buf2[64];
+ 

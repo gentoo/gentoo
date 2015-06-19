@@ -1,0 +1,50 @@
+Description: Fix compilation with gcc 4.7
+Author: John Stamp <jstamp@users.sourceforge.net>
+http://bugs.debian.org/667236
+https://bugs.gentoo.org/show_bug.cgi?id=423221
+--- a/src/libUnicorn/UnicornCommon.cpp
++++ b/src/libUnicorn/UnicornCommon.cpp
+@@ -32,6 +32,8 @@
+ #ifdef WIN32
+     #include <windows.h>
+     #include <shlobj.h>
++#else
++    #include <unistd.h>
+ #endif
+ 
+ using namespace std;
+--- a/src/lastfmapplication.cpp
++++ b/src/lastfmapplication.cpp
+@@ -59,6 +59,8 @@
+ 
+ #ifdef WIN32
+     #include <windows.h>
++#else
++    #include <unistd.h>
+ #endif
+ 
+ #ifdef Q_WS_MAC
+--- a/src/libUnicorn/Settings.h
++++ b/src/libUnicorn/Settings.h
+@@ -105,7 +105,7 @@
+     public:
+         MyQSettings( const UserSettings* const s )
+         {
+-            beginGroup( s->username() );
++            this->beginGroup( s->username() );
+         }
+     };
+ 
+--- a/src/playerlistener.cpp
++++ b/src/playerlistener.cpp
+@@ -33,6 +33,10 @@
+ #include <iostream>
+ #include <algorithm>
+ 
++#ifdef Q_OS_UNIX
++    #include <unistd.h>
++#endif
++
+ using namespace std;
+ 
+ 

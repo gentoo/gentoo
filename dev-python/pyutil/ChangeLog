@@ -1,0 +1,44 @@
+# ChangeLog for dev-python/pyutil
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyutil/ChangeLog,v 1.11 2015/04/18 07:38:38 mr_bones_ Exp $
+
+  18 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org> -pyutil-1.9.7.ebuild:
+  old
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> pyutil-1.9.7.ebuild,
+  pyutil-2.0.0.ebuild:
+  Drop old Python implementations
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> pyutil-2.0.0.ebuild:
+  Stable for x86, wrt bug #535366
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> pyutil-2.0.0.ebuild:
+  Stable for amd64, wrt bug #535366
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> pyutil-1.9.7.ebuild,
+  pyutil-2.0.0.ebuild:
+  Clean up obsolete dependencies on virtual/python-argparse and virtual/python-
+  unittest2 (those packages were only required for <=python-2.6).
+
+*pyutil-2.0.0 (18 Mar 2014)
+
+  18 Mar 2014; Julian Ospald <hasufell@gentoo.org> +pyutil-2.0.0.ebuild:
+  version bump
+
+  24 Nov 2013; Agostino Sarubbo <ago@gentoo.org> pyutil-1.9.7.ebuild:
+  Stable for x86, wrt bug #491540
+
+  24 Nov 2013; Agostino Sarubbo <ago@gentoo.org> pyutil-1.9.7.ebuild:
+  Stable for amd64, wrt bug #491540
+
+  03 Aug 2013; Michał Górny <mgorny@gentoo.org> pyutil-1.9.7.ebuild:
+  Move dev-python/twisted to dev-python/twisted-core.
+
+*pyutil-1.9.7 (01 Aug 2013)
+
+  01 Aug 2013; Julian Ospald <hasufell@gentoo.org> +pyutil-1.9.7.ebuild,
+  +metadata.xml:
+  initial import wrt #110078

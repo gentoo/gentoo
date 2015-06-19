@@ -1,0 +1,31 @@
+From b0513cd2e44705058ffdaa7a9c3f32371e9fcd5b Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Thu, 17 Nov 2011 23:44:06 -0500
+Subject: [PATCH] use DESTDIR with udev install
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ SConstruct |    7 ++++---
+ 1 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/SConstruct b/SConstruct
+index 1f99740..b7a98e4 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -1505,9 +1505,10 @@ if env['python']:
+ # is plugged in.
+ 
+ Utility('udev-install', '', [
+-    'cp $SRCDIR/gpsd.rules /lib/udev/rules.d/25-gpsd.rules',
+-    'cp $SRCDIR/gpsd.hotplug /lib/udev/',
+-    'chmod a+x /lib/udev/gpsd.hotplug',
++    'mkdir -p ' + DESTDIR + '/lib/udev/rules.d',
++    'cp $SRCDIR/gpsd.rules ' + DESTDIR + '/lib/udev/rules.d/25-gpsd.rules',
++    'cp $SRCDIR/gpsd.hotplug ' + DESTDIR + '/lib/udev/',
++    'chmod a+x ' + DESTDIR + '/lib/udev/gpsd.hotplug',
+         ])
+ 
+ Utility('udev-uninstall', '', [
+-- 
+1.7.6.1
+

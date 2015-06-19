@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# 50unload_alx: unload the alx module during suspend (LP #1173952)
+
+[ -d /sys/module/alx ] || exit 0
+
+. "${PM_FUNCTIONS}"
+
+case "$1" in
+	suspend)
+		echo "Unloading alx kernel module ..."
+		modunload alx && echo Done. || echo Failed.
+		;;
+	resume)
+		echo "Reloading alx kernel module ..."
+		;;
+esac
+exit 0

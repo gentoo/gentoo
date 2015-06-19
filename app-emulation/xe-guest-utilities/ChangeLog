@@ -1,0 +1,18 @@
+# ChangeLog for app-emulation/xe-guest-utilities
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/xe-guest-utilities/ChangeLog,v 1.1 2014/06/23 14:30:35 robbat2 Exp $
+
+*xe-guest-utilities-5.6.0_p595 (23 Jun 2014)
+*xe-guest-utilities-6.1.0_p1033 (23 Jun 2014)
+*xe-guest-utilities-6.2.0_p1120 (23 Jun 2014)
+
+  23 Jun 2014; Robin H. Johnson <robbat2@gentoo.org> +files/xe-daemon.initd,
+  +files/xe-guest-utilities-5.6.100_p651-gentoo.patch,
+  +files/xe-guest-utilities-5.6.100_p651-update-guest-attrs.patch,
+  +files/xe-guest-utilities-6.2.0_p1120-Guest-Attributes.patch,
+  +files/xe-guest-utilities-6.2.0_p1120-Linux-Distribution.patch, +metadata.xml,
+  +xe-guest-utilities-5.6.0_p595.ebuild, +xe-guest-utilities-6.1.0_p1033.ebuild,
+  +xe-guest-utilities-6.2.0_p1120.ebuild:
+  Initial commit, based off Chris Camisa's work in his OpenStack overlay:
+  https://github.com/Camisa/OpenStack-Overlay/tree/master/sys-cluster/xe-guest-
+  utilities; I intend to proxy further commits from him.

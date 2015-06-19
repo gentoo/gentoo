@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst
+DEPEND=dev-libs/glib:2 usb? ( virtual/libusb:1 ) nls? ( virtual/libintl ) virtual/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=Library to handle different link cables for TI calculators
+EAPI=5
+HOMEPAGE=http://lpg.ticalc.org/prj_tilp/
+IUSE=debug doc nls static-libs usb
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=dev-libs/glib:2 usb? ( virtual/libusb:1 ) nls? ( virtual/libintl )
+SLOT=0
+SRC_URI=mirror://sourceforge/tilp/tilp2-linux/libticables2-1.3.3.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=da7b3279a58176de2e45e0f0f2f1691e

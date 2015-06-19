@@ -1,0 +1,11 @@
+# ChangeLog for app-benchmarks/forkbomb
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/forkbomb/ChangeLog,v 1.1 2008/11/23 10:53:12 patrick Exp $
+
+*forkbomb-1.4 (23 Nov 2008)
+
+  23 Nov 2008; Patrick Lauer <patrick@gentoo.org> +metadata.xml,
+  +forkbomb-1.4.ebuild:
+  Initial import, fixes #110093 Original ebuild by Fernando V.
+  <email@missionaccomplish.com>
+

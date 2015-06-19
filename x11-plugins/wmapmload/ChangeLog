@@ -1,0 +1,61 @@
+# ChangeLog for x11-plugins/wmapmload
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmapmload/ChangeLog,v 1.17 2015/05/06 20:55:00 mrueg Exp $
+
+  06 May 2015; Manuel Rüger <mrueg@gentoo.org> -wmapmload-0.3.3.ebuild:
+  Remove old.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> wmapmload-0.3.3.ebuild,
+  wmapmload-0.3.4.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  13 Dec 2011; Agostino Sarubbo <ago@gentoo.org> wmapmload-0.3.4.ebuild:
+  Stable for AMD64, wrt bug #392807
+
+  11 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> wmapmload-0.3.4.ebuild:
+  x86 stable wrt bug #392807
+
+*wmapmload-0.3.4 (27 Sep 2010)
+
+  27 Sep 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  +wmapmload-0.3.4.ebuild:
+  Version bump, reported by Agostino Sarubbo <ago@autistici.org> in bug
+  #338914
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  wmapmload-0.3.3.ebuild:
+  Drop virtual/x11 references.
+
+  06 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  22 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> metadata.xml,
+  -wmapmload-0.3.0.ebuild, wmapmload-0.3.3.ebuild:
+  Fixed DEPEND for modular X.
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> wmapmload-0.3.3.ebuild:
+  Stable on amd64.
+
+*wmapmload-0.3.3 (04 Jul 2004)
+
+  13 Jul 2004; Michele Noberasco <s4t4n@gentoo.org> wmapmload-0.3.3.ebuild:
+  Stable on x86.
+
+  04 Jul 2004; David Holm <dholm@gentoo.org> wmapmload-0.3.3.ebuild:
+  Added to ~ppc.
+
+  04 Jul 2004; Michele Noberasco <s4t4n@gentoo.org> wmapmload-0.3.3.ebuild:
+  Version bump.
+
+*wmapmload-0.3.0 (29 Oct 2002)
+
+  13 Apr 2004; Don Seiler <rizzo@gentoo.org>; wmapmload-0.3.0.ebuild:
+  Changed dependency to virtual/x11 to work with x11-base/xorg-x11
+
+  12 Jun 2003; <msterret@gentoo.org> wmapmload-0.3.0.ebuild:
+  add Header
+
+  29 Oct 2002; Brad Cowan <bcowan@gentoo.org> wmapmload-0.3.0.ebuild,
+  ChangeLog, files/digest-wmapmload-0.3.0 :
+  
+  Initial import thanks to Autobot.

@@ -1,0 +1,218 @@
+# ChangeLog for sys-cluster/pacemaker
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/pacemaker/ChangeLog,v 1.42 2015/04/07 08:10:44 ultrabug Exp $
+
+  07 Apr 2015; Ultrabug <ultrabug@gentoo.org> -pacemaker-1.0.10.ebuild,
+  -pacemaker-1.0.12.ebuild, metadata.xml:
+  drop vulnerable wrt #457572
+
+  02 Apr 2015; Jeroen Roovers <jer@gentoo.org> pacemaker-1.1.12-r2.ebuild:
+  Stable for HPPA (bug #539608).
+
+  24 Mar 2015; Agostino Sarubbo <ago@gentoo.org> pacemaker-1.1.12-r2.ebuild:
+  Stable for x86, wrt bug #539608
+
+  24 Mar 2015; Agostino Sarubbo <ago@gentoo.org> pacemaker-1.1.12-r2.ebuild:
+  Stable for amd64, wrt bug #539608
+
+*pacemaker-1.1.12-r2 (23 Mar 2015)
+
+  23 Mar 2015; Ultrabug <ultrabug@gentoo.org> -pacemaker-1.1.12-r1.ebuild,
+  +pacemaker-1.1.12-r2.ebuild, +files/pacemaker-1.1.12-glib.patch,
+  +files/pacemaker-1.1.12-stonith.patch, +files/ping:
+  fix #490908 #539608 wrt #457572
+
+*pacemaker-1.1.12-r1 (01 Jan 2015)
+
+  01 Jan 2015; Michał Górny <mgorny@gentoo.org> +pacemaker-1.1.12-r1.ebuild,
+  -pacemaker-1.1.10.ebuild, -pacemaker-1.1.12.ebuild:
+  Fix use of python-single-r1. python_convert_shebangs -> python_fix_shebang.
+  Replace base.eclass inherit. Remove broken versions.
+
+*pacemaker-1.1.12 (12 Dec 2014)
+
+  12 Dec 2014; Ultrabug <ultrabug@gentoo.org> -pacemaker-1.1.7.ebuild,
+  -pacemaker-1.1.8-r2.ebuild, pacemaker-1.1.10.ebuild,
+  +pacemaker-1.1.12.ebuild, +files/pacemaker-1.1.10-tinfo.patch:
+  fix #526770, drop old and version bump
+
+  02 Dec 2014; Ultrabug <ultrabug@gentoo.org> pacemaker-1.0.10.ebuild,
+  pacemaker-1.0.12.ebuild:
+  add blocker wrt #454056
+
+*pacemaker-1.1.10 (29 Aug 2013)
+
+  29 Aug 2013; Ultrabug <ultrabug@gentoo.org> -pacemaker-1.1.10_rc1.ebuild,
+  +pacemaker-1.1.10.ebuild:
+  version bump, drop old
+
+*pacemaker-1.1.8-r2 (23 Apr 2013)
+
+  23 Apr 2013; Ultrabug <ultrabug@gentoo.org> -pacemaker-1.1.8-r1.ebuild,
+  +pacemaker-1.1.8-r2.ebuild, pacemaker-1.1.10_rc1.ebuild:
+  drop sys-cluster/crmsh dependency fix #466672 thx to Eric Renfro
+
+  18 Apr 2013; Ultrabug <ultrabug@gentoo.org> pacemaker-1.0.10.ebuild,
+  pacemaker-1.0.12.ebuild:
+  add blockers for glib-2.32* on pacemaker-1.0.x wrt #441730
+
+*pacemaker-1.1.10_rc1 (17 Apr 2013)
+
+  17 Apr 2013; Ultrabug <ultrabug@gentoo.org> -pacemaker-1.1.9.ebuild,
+  +pacemaker-1.1.10_rc1.ebuild:
+  drop bugged version, version bump
+
+*pacemaker-1.1.9 (13 Mar 2013)
+
+  13 Mar 2013; Ultrabug <ultrabug@gentoo.org> +pacemaker-1.1.9.ebuild:
+  Version bump fix #457572
+
+*pacemaker-1.1.7 (08 Mar 2013)
+
+  08 Mar 2013; Ultrabug <ultrabug@gentoo.org> +pacemaker-1.1.7.ebuild:
+  Add back pacemaker-1.1.7 as pacemaker-gui depends on it
+
+  24 Jan 2013; Kacper Kowalik <xarthisius@gentoo.org> -pacemaker-1.0.11.ebuild,
+  -pacemaker-1.1.7.ebuild, -pacemaker-1.1.8.ebuild, pacemaker-1.1.8-r1.ebuild:
+  Pass --without-corosync to configure when heartbeat is set. Fixes bug 433433
+  by Alois Schmid <alois.schmid@gmx.de>. Drop old
+
+*pacemaker-1.1.8-r1 (18 Jan 2013)
+
+  18 Jan 2013; Ultrabug <ultrabug@gentoo.org> +pacemaker-1.1.8-r1.ebuild,
+  files/pacemaker.initd:
+  Do not keepdir /var/run/crm wrt #449878
+
+  14 Nov 2012; Jeroen Roovers <jer@gentoo.org> pacemaker-1.1.8.ebuild:
+  Marked ~hppa (bug #442408).
+
+  13 Nov 2012; Ultrabug <ultrabug@gentoo.org> pacemaker-1.1.8.ebuild:
+  move sys-cluster/crmsh to PDEPEND to avoid circular dependency
+
+*pacemaker-1.1.8 (09 Nov 2012)
+
+  09 Nov 2012; Ultrabug <ultrabug@gentoo.org>
+  +files/1.1.8-backwards_compatibility.patch, -pacemaker-1.1.6.1.ebuild,
+  +pacemaker-1.1.8.ebuild:
+  Version bump with fixed backwards compatibility. Drop old.
+
+  23 Aug 2012; Kacper Kowalik <xarthisius@gentoo.org>
+  +files/1.1.7-glibc2.16.patch, pacemaker-1.1.7.ebuild:
+  Fix building with glibc-2.16 wrt #432012 by Diego Elio Pettenò
+  <flameeyes@gentoo.org>
+
+*pacemaker-1.0.12 (11 Jul 2012)
+
+  11 Jul 2012; Ultrabug <ultrabug@gentoo.org>
+  +files/1.0.12-BUILD_VERSION.patch, +pacemaker-1.0.12.ebuild:
+  1.0 branch version bump thx to Kazuyoshi, fix #425670.
+
+  30 May 2012; Kacper Kowalik <xarthisius@gentoo.org> pacemaker-1.1.6.1.ebuild,
+  pacemaker-1.1.7.ebuild:
+  Define PYTHON_DEPEND before inheriting python.eclass and convert shebangs to
+  python2 wrt #418237 by Marcin Mirosław <bug@mejor.pl>
+
+  24 May 2012; Kacper Kowalik <xarthisius@gentoo.org> pacemaker-1.0.10.ebuild,
+  pacemaker-1.0.11.ebuild:
+  Backport glib-2.32 fix to 1.0.x ebuilds
+
+*pacemaker-1.1.7 (16 May 2012)
+
+  16 May 2012; Ultrabug <ultrabug@gentoo.org> -pacemaker-1.1.4-r4.ebuild,
+  -files/pacemaker-1.1.4-autotools-r2.patch, -pacemaker-1.1.5.ebuild,
+  -files/pacemaker-1.1.5-autotools.patch, +pacemaker-1.1.7.ebuild:
+  Version bump, drop old, wtr #356629.
+
+  16 May 2012; Kacper Kowalik <xarthisius@gentoo.org> pacemaker-1.1.6.1.ebuild:
+  Fix building with glib-2.32, thanks to Marc Schiffbauer <mschiff@gentoo.org>
+  for patch
+
+  24 Oct 2011; Ultrabug <ultrabug@gentoo.org> +pacemaker-1.1.6.1.ebuild,
+  metadata.xml:
+  EAPI4, add cman compatibility via IUSE, move to GitHub for sources.
+
+  18 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  pacemaker-1.1.4-r4.ebuild, pacemaker-1.1.5.ebuild:
+  Depend either on corosync or on heartbeat stack wrt bug #387581 by Jeroen
+  Roovers <jer@gentoo.org>
+
+*pacemaker-1.1.6.1 (12 Oct 2011)
+
+  12 Oct 2011; Ultrabug <ultrabug@gentoo.org> +pacemaker-1.1.6.1.ebuild,
+  metadata.xml:
+  Version bump, add cman to IUSE.
+
+  21 Sep 2011; Ultrabug <ultrabug@gentoo.org> pacemaker-1.1.5.ebuild:
+  Fix missing dep #382957, thanks to Guillaume Chanaud.
+
+  08 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> pacemaker-1.0.11.ebuild,
+  pacemaker-1.1.5.ebuild:
+  Drop unused eclasses, quotes, pacemaker -> PN
+
+*pacemaker-1.1.5 (08 Jul 2011)
+
+  08 Jul 2011; Ultrabug <ultrabug@gentoo.org> +pacemaker-1.1.5.ebuild,
+  +files/pacemaker-1.1.5-autotools.patch:
+  Version bump.
+
+*pacemaker-1.0.11 (05 Jul 2011)
+
+  05 Jul 2011; Ultrabug <ultrabug@gentoo.org> +pacemaker-1.0.11.ebuild:
+  Version bump wrt #373481.
+
+*pacemaker-1.1.4-r4 (21 Feb 2011)
+
+  21 Feb 2011; Ultrabug <ultrabug@gentoo.org> +pacemaker-1.1.4-r4.ebuild,
+  +files/pacemaker-1.1.4-autotools-r2.patch, +files/pacemaker.initd,
+  +files/pacemaker.service:
+  pacemaker 1.1.x series bump
+
+  21 Feb 2011; Jeroen Roovers <jer@gentoo.org> pacemaker-1.0.10.ebuild:
+  Stable for HPPA (bug #354461).
+
+  21 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  pacemaker-1.0.10.ebuild:
+  x86 stable wrt bug #354461
+
+  11 Feb 2011; Markos Chandras <hwoarang@gentoo.org> pacemaker-1.0.10.ebuild:
+  Stable on amd64 wrt bug #354461
+
+*pacemaker-1.0.10 (21 Nov 2010)
+
+  21 Nov 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  -files/pacemaker-1.0.8-asneeded.patch,
+  -files/pacemaker-1.0.8-installpaths.patch, -pacemaker-1.0.9.1-r1.ebuild,
+  +pacemaker-1.0.10.ebuild, +files/pacemaker-1.0.10-asneeded.patch,
+  +files/pacemaker-1.0.10-installpaths.patch:
+  Version bump. Thanks to Ultrabug <ultrabug@ultrabug.net>. Drop old.
+
+*pacemaker-1.0.9.1-r1 (12 Aug 2010)
+
+  12 Aug 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  -pacemaker-1.0.9.1.ebuild, +pacemaker-1.0.9.1-r1.ebuild, metadata.xml:
+  Add support for SMTP via libesmtp. Thanks to Ultrabug for report and
+  testing.
+
+*pacemaker-1.0.9.1 (02 Aug 2010)
+
+  02 Aug 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -pacemaker-1.0.8.ebuild, +pacemaker-1.0.9.1.ebuild:
+  Add latest pacemaker version. Drop older. Thx to LuckyLuke for reportin'.
+
+  16 Jul 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  pacemaker-1.0.8.ebuild:
+  Fix typo. Thx to ultrabug for spotting.
+
+  12 Jul 2010; Jeroen Roovers <jer@gentoo.org> pacemaker-1.0.8.ebuild:
+  Marked ~hppa (bug #326423).
+
+  07 Jul 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  pacemaker-1.0.8.ebuild:
+  Correct HOMEPAGE
+
+*pacemaker-1.0.8 (01 Jul 2010)
+
+  01 Jul 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  +pacemaker-1.0.8.ebuild, +files/pacemaker-1.0.8-asneeded.patch,
+  +files/pacemaker-1.0.8-installpaths.patch, +metadata.xml:
+  Initial import. Ebuild written by Tomáš Chvátal <scarabeus@gentoo.org>

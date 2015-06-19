@@ -1,0 +1,19 @@
+# ChangeLog for app-vim/repeat
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/repeat/ChangeLog,v 1.4 2015/06/06 09:44:56 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  01 Dec 2013; Johannes Huber <johu@gentoo.org> repeat-1.1.ebuild:
+  x86 stable wrt bug #481882
+
+  05 Nov 2013; Tony Vroon <chainsaw@gentoo.org> repeat-1.1.ebuild:
+  Marked stable on AMD64 based on arch testing by Elijah "Armageddon" El
+  Lazkani in bug #481882.
+
+*repeat-1.1 (09 Jul 2013)
+
+  09 Jul 2013; Tim Harder <radhermit@gentoo.org> +repeat-1.1.ebuild,
+  +metadata.xml:
+  Initial import.

@@ -1,0 +1,56 @@
+# ChangeLog for app-portage/g-octave
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-portage/g-octave/ChangeLog,v 1.11 2015/06/06 07:43:35 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  04 Dec 2014; Rafael G. Martins <rafaelmartins@gentoo.org>
+  g-octave-0.4.1-r4.ebuild:
+  fixed homepage and post-install message
+
+*g-octave-0.4.1-r4 (19 Oct 2013)
+
+  19 Oct 2013; Rafael G. Martins <rafaelmartins@gentoo.org>
+  +files/g-octave-0.4.1-fix-Makefile.patch, +g-octave-0.4.1-r4.ebuild,
+  -g-octave-0.4.1-r3.ebuild:
+  Fix .oct installation path. Thanks to Fabio Rossi (bug #488534).
+
+*g-octave-0.4.1-r3 (03 Dec 2012)
+
+  03 Dec 2012; Rafael G. Martins <rafaelmartins@gentoo.org>
+  -g-octave-0.4.1-r2.ebuild, +g-octave-0.4.1-r3.ebuild,
+  +files/g-octave-0.4.1-fix-sourceforge-svn-root.patch:
+  revbump. new package database. fixed urls. fixed sourceforge svn root.
+
+  26 Feb 2012; Patrick Lauer <patrick@gentoo.org> g-octave-0.4.1-r2.ebuild:
+  Restricting python bits
+
+*g-octave-0.4.1-r2 (18 Sep 2011)
+
+  18 Sep 2011; Rafael G. Martins <rafaelmartins@gentoo.org>
+  -g-octave-0.4.1-r1.ebuild, +g-octave-0.4.1-r2.ebuild:
+  Revision bump. New package database.
+
+*g-octave-0.4.1-r1 (31 May 2011)
+
+  31 May 2011; Rafael G. Martins <rafaelmartins@gentoo.org>
+  -g-octave-0.4.1.ebuild, +g-octave-0.4.1-r1.ebuild,
+  +files/g-octave-0.4.1-add_cave_support.patch:
+  Revision bump, fixes bug #368675, thanks to Karol Szumski
+
+  24 Oct 2010; Rafael G. Martins <rafaelmartins@gentoo.org>
+  g-octave-0.4.1.ebuild:
+  Fixed pkg_config phase.
+
+*g-octave-0.4.1 (24 Oct 2010)
+
+  24 Oct 2010; Rafael G. Martins <rafaelmartins@gentoo.org>
+  -g-octave-0.4.ebuild, +g-octave-0.4.1.ebuild:
+  Version bump. Removed old ebuild.
+
+*g-octave-0.4 (27 Sep 2010)
+
+  27 Sep 2010; Rafael G. Martins <rafaelmartins@gentoo.org>
+  +g-octave-0.4.ebuild, +metadata.xml:
+  Initial commit, moved from the science overlay. (bug #299039)

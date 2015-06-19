@@ -1,0 +1,118 @@
+# ChangeLog for dev-perl/Test-Requires
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-Requires/ChangeLog,v 1.29 2014/10/17 20:35:07 zlogene Exp $
+
+*Test-Requires-0.80.0 (17 Oct 2014)
+
+  17 Oct 2014; Mikle Kolyada <zlogene@gentoo.org> +Test-Requires-0.80.0.ebuild:
+  Version bump
+
+*Test-Requires-0.60.0-r1 (20 Aug 2014)
+
+  20 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Test-Requires-0.60.0-r1.ebuild, -Test-Requires-0.60.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  01 Feb 2014; Mike Frysinger <vapier@gentoo.org> Test-Requires-0.60.0.ebuild:
+  Add arm64/m68k love.
+
+  05 Jan 2014; Markos Chandras <hwoarang@gentoo.org>
+  Test-Requires-0.60.0.ebuild:
+  Add ~mips
+
+  08 Jul 2013; Vicente Olivert Riera <vincent@gentoo.org>
+  Test-Requires-0.60.0.ebuild:
+  ppc64 stable. bug #449576
+
+  17 Dec 2012; Agostino Sarubbo <ago@gentoo.org> Test-Requires-0.60.0.ebuild:
+  Add ~ppc64, wrt bug #442188
+
+  09 Sep 2012; Raúl Porcel <armin76@gentoo.org> Test-Requires-0.60.0.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #418803
+
+  05 Aug 2012; Markus Meier <maekke@gentoo.org> Test-Requires-0.60.0.ebuild:
+  arm stable, bug #418803
+
+  02 Aug 2012; Jeroen Roovers <jer@gentoo.org> Test-Requires-0.60.0.ebuild:
+  Stable for HPPA (bug #418803).
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  01 Apr 2012; Raúl Porcel <armin76@gentoo.org> Test-Requires-0.60.0.ebuild:
+  Add ~ia64/~s390/~sh/~sparc wrt #403413
+
+  31 Mar 2012; Torsten Veller <tove@gentoo.org> -Test-Requires-0.05.ebuild:
+  Cleanup
+
+  24 Mar 2012; Fabian Groffen <grobian@gentoo.org> Test-Requires-0.60.0.ebuild:
+  Add Prefix keywords, bug #403413
+
+  09 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  Test-Requires-0.60.0.ebuild:
+  x86 stable wrt bug #400237
+
+  27 Feb 2012; Brent Baude <ranger@gentoo.org> Test-Requires-0.60.0.ebuild:
+  Marking Test-Requires-0.60.0 ppc for bug 400237
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org> Test-Requires-0.60.0.ebuild:
+  Stable for amd64, wrt bug #400237
+
+  19 Feb 2012; Tobias Klausmann <klausman@gentoo.org>
+  Test-Requires-0.60.0.ebuild:
+  Keyworded on alpha, bug #389001
+
+  14 Feb 2012; Alexis Ballier <aballier@gentoo.org>
+  Test-Requires-0.60.0.ebuild:
+  keyword ~x86-fbsd
+
+  06 Nov 2011; Markus Meier <maekke@gentoo.org> Test-Requires-0.60.0.ebuild:
+  add ~arm, bug #389001
+
+  31 Oct 2011; Jeroen Roovers <jer@gentoo.org> Test-Requires-0.60.0.ebuild:
+  Marked ~hppa (bug #389001).
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Test-Requires-0.60.ebuild:
+  Cleanup
+
+*Test-Requires-0.60.0 (28 Aug 2011)
+
+  28 Aug 2011; Torsten Veller <tove@gentoo.org> +Test-Requires-0.60.0.ebuild:
+  Change version scheme
+
+  13 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  Test-Requires-0.05.ebuild:
+  ppc stable wrt #350853
+
+*Test-Requires-0.60 (12 Jan 2011)
+
+  12 Jan 2011; Torsten Veller <tove@gentoo.org> +Test-Requires-0.60.ebuild:
+  Version bump
+
+  14 Oct 2010; Brent Baude <ranger@gentoo.org> Test-Requires-0.05.ebuild:
+  Marking Test-Requires-0.05 ~ppc for bug 322961
+
+  11 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  Test-Requires-0.05.ebuild:
+  Stable on amd64 wrt bug #340024
+
+  11 Oct 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  Test-Requires-0.05.ebuild:
+  x86 stable wrt bug #340024
+
+  27 Aug 2010; Torsten Veller <tove@gentoo.org> +Test-Requires-0.05.ebuild,
+  +metadata.xml:
+  Import from perl-experimental for MooseX-Getopt
+
+*Test-Requires-0.05 (29 Apr 2010)
+
+  29 Apr 2010; Torsten Veller <tove@gentoo.org> -Test-Requires-0.03.ebuild,
+  +Test-Requires-0.05.ebuild:
+  Version bump. Cleanup
+
+*Test-Requires-0.03 (24 Jan 2010)
+
+  24 Jan 2010; Torsten Veller <tove@gentoo.org> +Test-Requires-0.03.ebuild,
+  +metadata.xml:
+  Initial commit

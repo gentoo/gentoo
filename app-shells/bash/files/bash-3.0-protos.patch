@@ -1,0 +1,68 @@
+move prototypes around so they show up when needed
+
+--- a/externs.h
++++ b/externs.h
+@@ -327,6 +327,9 @@
+ #undef xstrchr
+ extern char *xstrchr __P((const char *, int));
+ 
++/* declarations for functions defined in lib/sh/zcatfd.c */
++extern int zcatfd __P((int, int, char *));
++
+ /* declarations for functions defined in lib/sh/zread.c */
+ extern ssize_t zread __P((int, char *, size_t));
+ extern ssize_t zreadintr __P((int, char *, size_t));
+--- a/jobs.h
++++ b/jobs.h
+@@ -175,6 +175,8 @@
+ extern void ignore_tty_job_signals __P((void));
+ extern void default_tty_job_signals __P((void));
+ 
++extern void close_pgrp_pipe __P((void));
++
+ #if defined (JOB_CONTROL)
+ extern int job_control;
+ #endif
+--- a/general.c
++++ b/general.c
+@@ -39,6 +39,8 @@
+ #include "bashintl.h"
+ 
+ #include "shell.h"
++#include "test.h"
++
+ #include <tilde/tilde.h>
+ 
+ #if !defined (errno)
+--- a/builtins/evalfile.c
++++ b/builtins/evalfile.c
+@@ -39,6 +39,7 @@
+ #include "../flags.h"
+ #include "../input.h"
+ #include "../execute_cmd.h"
++#include "../trap.h"
+ 
+ #if defined (HISTORY)
+ #  include "../bashhist.h"
+--- a/lib/glob/strmatch.c
++++ b/lib/glob/strmatch.c
+@@ -25,9 +25,6 @@
+ #include "strmatch.h"
+ 
+ extern int xstrmatch __P((char *, char *, int));
+-#if defined (HAVE_MULTIBYTE)
+-extern int internal_wstrmatch __P((wchar_t *, wchar_t *, int));
+-#endif
+ 
+ int
+ strmatch (pattern, string, flags)
+--- a/lib/glob/strmatch.h
++++ b/lib/glob/strmatch.h
+@@ -57,6 +57,7 @@
+ 
+ #if HANDLE_MULTIBYTE
+ extern int wcsmatch __P((wchar_t *, wchar_t *, int));
++extern int internal_wstrmatch __P((wchar_t *, wchar_t *, int));
+ #endif
+ 
+ #endif /* _STRMATCH_H */

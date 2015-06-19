@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=dev-lang/mozart
+DESCRIPTION=The Mozart Standard Library
+EAPI=2
+HOMEPAGE=http://www.mozart-oz.org/
+KEYWORDS=-amd64 ppc -ppc64 x86
+LICENSE=Mozart
+RDEPEND=dev-lang/mozart
+SLOT=0
+SRC_URI=http://www.mozart-oz.org/download/mozart-ftp/store/1.4.0-2008-07-02-tar/mozart-1.4.0.20080704-std.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=34f9cdaa8176cd8b2819d9d91d4f39a6

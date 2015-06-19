@@ -1,0 +1,183 @@
+# ChangeLog for media-sound/denemo
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/denemo/ChangeLog,v 1.43 2013/05/14 06:15:06 radhermit Exp $
+
+*denemo-1.0.2 (14 May 2013)
+
+  14 May 2013; Tim Harder <radhermit@gentoo.org> +denemo-1.0.2.ebuild:
+  Version bump.
+
+  02 Apr 2013; Tim Harder <radhermit@gentoo.org> -denemo-0.9.2.ebuild,
+  -files/denemo-0.9.2-glib-2.31.patch, -denemo-0.9.4.ebuild:
+  Remove old.
+
+*denemo-1.0.0 (02 Apr 2013)
+
+  02 Apr 2013; Tim Harder <radhermit@gentoo.org> +denemo-1.0.0.ebuild:
+  Version bump.
+
+  29 Sep 2012; Tim Harder <radhermit@gentoo.org> denemo-0.9.6.ebuild,
+  +files/denemo-0.9.6-jack.patch:
+  Add missing header files to fix build with jack enabled (bug #436376 by
+  Dominique Michel).
+
+*denemo-0.9.6 (22 Sep 2012)
+
+  22 Sep 2012; Tim Harder <radhermit@gentoo.org> +denemo-0.9.6.ebuild,
+  +files/denemo-0.9.6-alsa.patch, +files/denemo-0.9.6-desktop.patch,
+  +files/denemo-0.9.6-implicit-declarations.patch:
+  Version bump.
+
+*denemo-0.9.4 (11 Jul 2012)
+
+  11 Jul 2012; Tim Harder <radhermit@gentoo.org> +denemo-0.9.4.ebuild,
+  metadata.xml:
+  Version bump. Build for gtk3 and add alsa and portmidi use flags.
+
+  15 May 2012; Samuli Suominen <ssuominen@gentoo.org> denemo-0.9.2.ebuild,
+  +files/denemo-0.9.2-glib-2.31.patch:
+  Fix building with dev-libs/glib >= 2.31 by "jesterchen" from Gentoo Forums.
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> denemo-0.9.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  13 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> -denemo-0.8.16.ebuild,
+  -denemo-0.8.2.ebuild, -denemo-0.9.0.ebuild:
+  old
+
+  08 Oct 2011; Raúl Porcel <armin76@gentoo.org> denemo-0.8.2.ebuild,
+  denemo-0.8.16.ebuild, denemo-0.9.0.ebuild:
+  Drop sparc keywords
+
+*denemo-0.9.2 (01 Oct 2011)
+
+  01 Oct 2011; Tim Harder <radhermit@gentoo.org> +denemo-0.9.2.ebuild:
+  Version bump.
+
+*denemo-0.9.0 (05 May 2011)
+
+  05 May 2011; Christoph Mende <angelos@gentoo.org> +denemo-0.9.0.ebuild,
+  metadata.xml:
+  Version bump
+
+  21 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> denemo-0.8.2.ebuild,
+  denemo-0.8.16.ebuild:
+  Fix slot-deps on gnome libs
+
+*denemo-0.8.16 (23 Apr 2010)
+
+  23 Apr 2010; Samuli Suominen <ssuominen@gentoo.org> +denemo-0.8.16.ebuild:
+  Version bump wrt #293299 by Simone Scanzoni.
+
+  26 Jun 2009; Raúl Porcel <armin76@gentoo.org> denemo-0.8.2.ebuild:
+  sparc stable wrt #272863
+
+  11 Jun 2009; Christian Faulhammer <fauli@gentoo.org> denemo-0.8.2.ebuild:
+  stable x86, bug 272863
+
+*denemo-0.8.2 (05 May 2009)
+
+  05 May 2009; Samuli Suominen <ssuominen@gentoo.org> -denemo-0.8.0.ebuild,
+  -files/denemo-0.8.0-DESTDIR.patch, +denemo-0.8.2.ebuild:
+  Version bump.
+
+  04 Dec 2008; Samuli Suominen <ssuominen@gentoo.org> denemo-0.8.0.ebuild:
+  Missing dep. of dev-scheme/guile for bug 246760, thanks to Christopher
+  Robin Elmersson. Add pkg_postinst message about media-sound/timidity++
+  which seems optional.
+
+*denemo-0.8.0 (13 Nov 2008)
+
+  13 Nov 2008; Peter Alfredsen <loki_val@gentoo.org>
+  +files/denemo-0.8.0-DESTDIR.patch, +denemo-0.8.0.ebuild:
+  Bump, as per bug 241882, on request of ssuominen.
+
+  31 Jan 2008; Raúl Porcel <armin76@gentoo.org> denemo-0.7.7.ebuild:
+  Re-add ~sparc wrt #207603
+
+*denemo-0.7.7 (26 Jan 2008)
+
+  26 Jan 2008; Alexis Ballier <aballier@gentoo.org> +denemo-0.7.7.ebuild:
+  version bump, bug #207603
+
+  13 Jan 2008; Alexis Ballier <aballier@gentoo.org> denemo-0.7.6.ebuild:
+  add missing pkgconfig dep, bug #205673
+
+  21 Aug 2007; Jurek Bartuszek <jurek@gentoo.org> denemo-0.7.6.ebuild:
+  x86 stable (bug #189135)
+
+  16 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org> denemo-0.7.6.ebuild:
+  Stable on sparc wrt #189135
+
+*denemo-0.7.6 (25 Jul 2007)
+
+  25 Jul 2007; Samuli Suominen <ssuominen@gentoo.org> +denemo-0.7.6.ebuild:
+  Version bump and install denemo.png to correct pixmaps directory.
+
+  25 Oct 2006; Simon Stelling <blubb@gentoo.org> denemo-0.5.9.ebuild,
+  denemo-0.7.2.ebuild:
+  0.7.2 doesn't compile with gcc 4.1; 0.7.4 crashes right upon start; 0.7.5
+  fails to play anything and has buggy keybindings -> back to ~amd64
+
+  15 Oct 2006; MATSUU Takuto <matsuu@gentoo.org> denemo-0.7.4.ebuild,
+  denemo-0.7.5.ebuild:
+  Added gnome-base/librsvg to RDEPEND, bug #146186.
+
+  10 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org> denemo-0.7.4.ebuild:
+  Stable on sparc wrt #146186
+
+  08 Oct 2006; Andrej Kacian <ticho@gentoo.org> denemo-0.7.4.ebuild:
+  Stable on x86, bug #146186.
+
+*denemo-0.7.5 (07 Oct 2006)
+
+  07 Oct 2006; MATSUU Takuto <matsuu@gentoo.org> +denemo-0.7.5.ebuild:
+  Version bumped.
+
+  07 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> denemo-0.5.9.ebuild:
+  Drop virtual/libc dependency.
+
+*denemo-0.7.4 (02 Dec 2005)
+
+  02 Dec 2005; Luis Medinas <metalgod@gentoo.org> +denemo-0.7.4.ebuild:
+  Version Bump. Thanks to Felix Braun <Felix.Braun@mail.mcgill.ca> closes bug
+  #112493.
+
+  19 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove retired developer from metadata.xml.
+
+  14 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> denemo-0.7.2.ebuild:
+  Stable amd64, sparc.
+
+  25 Aug 2004; Sven Wegener <swegener@gentoo.org> denemo-0.5.9.ebuild,
+  denemo-0.7.2.ebuild:
+  Changed SRC_URI to use mirror:// syntax.
+
+  03 Aug 2004; David Holm <dholm@gentoo.org> denemo-0.7.2.ebuild:
+  Added to ~ppc.
+
+  12 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> denemo-0.7.2.ebuild:
+  Added -fpermissive to work with gcc-3.4.  Adde ~sparc and ~amd64.
+  Thanks to Patrick Dawson <pkdawson@buffalo.edu> for getting us the 3.4 fix.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> denemo-0.5.9.ebuild:
+  virtual/glibc -> virtual/libc
+
+  10 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> denemo-0.5.9.ebuild,
+  denemo-0.7.2.ebuild:
+  ebuild cleanup.  0.7.2 stable x86.
+
+*denemo-0.7.2 (18 Feb 2004)
+
+  18 Feb 2004; <torbenh@gentoo.org> denemo-0.5.9.ebuild, denemo-0.7.2.ebuild,
+  metadata.xml:
+  Version bump.
+  Added metadata.xml
+
+*denemo-0.5.9 (15 Mar 2003)
+
+  15 Mar 2003; jje denemo-0.5.9.ebuild:
+  Initial revision.
+  
+  Submitted by: Sourav Mandal
+

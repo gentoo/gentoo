@@ -1,0 +1,171 @@
+# ChangeLog for app-emacs/color-theme
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/color-theme/ChangeLog,v 1.43 2014/06/01 10:39:50 ulm Exp $
+
+  01 Jun 2014; Ulrich Müller <ulm@gentoo.org> color-theme-6.6.0-r1.ebuild:
+  Drop ~sparc-fbsd keyword because its dependency tree is broken.
+
+  18 Feb 2014; Ulrich Müller <ulm@gentoo.org> color-theme-6.6.0-r1.ebuild:
+  Update ebuild to EAPI 5. Use readme.gentoo.eclass. Specify LICENSE more
+  precisely.
+
+  24 Nov 2009; Christian Faulhammer <fauli@gentoo.org>
+  color-theme-6.6.0-r1.ebuild:
+  import changes from Prefix overlay
+
+  10 Oct 2009; Ulrich Mueller <ulm@gentoo.org>
+  -files/51color-theme-gentoo.el, -color-theme-6.6.0.ebuild:
+  Remove old.
+
+  10 Oct 2009; Raúl Porcel <armin76@gentoo.org>
+  color-theme-6.6.0-r1.ebuild:
+  sparc stable wrt #285069
+
+  27 Sep 2009; nixnut <nixnut@gentoo.org> color-theme-6.6.0-r1.ebuild:
+  ppc stable #285069
+
+  16 Sep 2009; Romain Perier <mrpouet@gentoo.org>
+  color-theme-6.6.0-r1.ebuild:
+  Stable for amd64 per bug #285069.
+
+  16 Sep 2009; Christian Faulhammer <fauli@gentoo.org>
+  color-theme-6.6.0-r1.ebuild:
+  stable x86, bug 285069
+
+*color-theme-6.6.0-r1 (10 Aug 2009)
+
+  10 Aug 2009; Ulrich Mueller <ulm@gentoo.org>
+  +files/50color-theme-gentoo.el, +color-theme-6.6.0-r1.ebuild,
+  +files/color-theme-6.6.0-replace-in-string.patch:
+  Avoid name clash for function replace-in-string, fixes bug 280293.
+  Update HOMEPAGE and SRC_URI. Install documentation.
+
+  19 Dec 2008; Ulrich Mueller <ulm@gentoo.org> color-theme-6.6.0.ebuild:
+  Add postinst message about non-interactive usage, bug 73192.
+
+  08 Sep 2007; Ulrich Mueller <ulm@gentoo.org>
+  -files/50color-theme-gentoo.el, -files/6.5.5-easy-menu-gentoo.patch,
+  -files/6.5.4-easy-menu-gentoo.patch, -color-theme-6.5.4-r1.ebuild,
+  -color-theme-6.5.5.ebuild:
+  Clean up.
+
+  08 Sep 2007; nixnut <nixnut@gentoo.org> color-theme-6.6.0.ebuild:
+  Stable on ppc wrt bug 191336
+
+  06 Sep 2007; Ulrich Mueller <ulm@gentoo.org> color-theme-6.5.4-r1.ebuild,
+  color-theme-6.5.5.ebuild, color-theme-6.6.0.ebuild:
+  Drop ~ppc-macos keyword wrt bug #191336.
+
+  06 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  color-theme-6.6.0.ebuild:
+  stable x86, bug 191336
+
+  06 Sep 2007; Jose Luis Rivero <yoswink@gentoo.org>
+  color-theme-6.6.0.ebuild:
+  Stable on sparc wrt bug #191336
+
+  05 Sep 2007; Christoph Mende <angelos@gentoo.org>
+  color-theme-6.6.0.ebuild:
+  Stable on amd64 wrt bug #191336
+
+  05 Sep 2007; Ulrich Mueller <ulm@gentoo.org> color-theme-6.6.0.ebuild:
+  Inherit eutils is no longer needed.
+
+  27 Jun 2007; Christian Faulhammer <opfer@gentoo.org>
+  color-theme-6.6.0.ebuild, ChangeLog:
+  changed email address of contributor and added some quotes
+
+  23 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  -color-theme-6.5.4.ebuild:
+  clean up
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  02 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  color-theme-6.6.0.ebuild:
+  Add ~sparc-fbsd keyword.
+
+*color-theme-6.6.0 (08 Aug 2006)
+
+  08 Aug 2006; Matthew Kennedy <mkennedy@gentoo.org>
+  +files/51color-theme-gentoo.el, +color-theme-6.6.0.ebuild:
+  New upstream version; Resolves Bug #142422 and also Bug #125617.
+
+  26 Jun 2006; Diego Pettenò <flameeyes@gentoo.org>
+  color-theme-6.5.5.ebuild:
+  Add ~x86-fbsd keyword.
+
+*color-theme-6.5.5 (16 Jan 2006)
+
+  16 Jan 2006; Matthew Kennedy <mkennedy@gentoo.org>
+  +files/6.5.5-easy-menu-gentoo.patch, +color-theme-6.5.5.ebuild:
+  New upstream version; Alter the Emacs 22 versus Emacs 21 patch for
+  easy-menu-add-item so the check is done during evaluation.
+
+  20 Aug 2005; Fabian Groffen <grobian@gentoo.org>
+  color-theme-6.5.4-r1.ebuild:
+  Marking ~ppc-macos (bug #72582)
+
+  16 Jul 2005; Joseph Jezak <josejx@gentoo.org> color-theme-6.5.4-r1.ebuild:
+  Marked ppc stable for bug #99185.
+
+  27 Jun 2005; David Holm <dholm@gentoo.org> color-theme-6.5.4-r1.ebuild:
+  Added to ~ppc.
+
+*color-theme-6.5.4-r1 (27 Jun 2005)
+
+  27 Jun 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  -color-theme-5.2.13.ebuild, -color-theme-6.5.2.ebuild,
+  color-theme-6.5.4.ebuild, +color-theme-6.5.4-r1.ebuild:
+  Conditionally apply menu patch based on whether the GNU Emacs major version
+  is 21* or 22* (CVS) resolves Bug #73192; Correct spelling error in
+  DESCRIPTION resolves Bug #94001; Remove old ebuilds.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> color-theme-6.5.4.ebuild:
+  stable on amd64
+
+  11 Nov 2004; Matthew Kenendy <mkennedy@gentoo.org>
+  +files/6.5.4-easy-menu-gentoo.patch, color-theme-6.5.4.ebuild:
+  Minor easy-menu patch to continue compatibility with emacs CVS HEAD
+
+  31 Oct 2004; Jason Wever <weeve@gentoo.org> color-theme-6.5.4.ebuild:
+  Stable on sparc.
+
+  10 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> -color-theme-6.5.0.ebuild,
+  color-theme-6.5.4.ebuild:
+  Stable on x86.
+
+  10 May 2004; Jason Wever <weeve@gentoo.org> color-theme-6.5.4.ebuild:
+  Added ~sparc keyword to help resolve bug #50695.
+
+*color-theme-6.5.4 (26 Dec 2003)
+
+  26 Dec 2003; Jeremy Maitin-Shepard <jbms@gentoo.org>
+  color-theme-6.5.4.ebuild:
+  Version bump: resolves bug #36529.
+
+*color-theme-6.5.2 (24 Oct 2003)
+
+  24 Oct 2003; Matthew Kennedy <mkennedy@gentoo.org> :
+  new upstream
+
+  19 Sep 2003; Seemant Kulleen <seemant@gentoo.org> color-theme-5.2.13.ebuild,
+  color-theme-6.5.0.ebuild:
+  fixed typo in description -- thanks to: Mark Trolley <marktrolley@gmail.com>
+  in bug #28934
+
+*color-theme-6.5.0 (20 Mar 2003)
+
+  20 Mar 2003; Matthew Kennedy <mkennedy@gentoo.org>
+  color-theme-6.5.0.ebuild, files/50color-theme-gentoo.el:
+  typo fix in -gentoo.el and minor version bump
+
+*color-theme-5.2.13 (31 Oct 2002)
+
+  31 Oct 2002; Matthew Kennedy <mkennedy@gentoo.org> ChangeLog,
+  color-theme-5.2.13.ebuild, files/50color-theme-gentoo.el,
+  files/digest-color-theme-5.2.13 :
+
+  Initial import.
+

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>games</herd>
+	<use>
+		<flag name='aplaymidi'>Enables midi music in game, using aplaymidi as an external player</flag>
+
+		<flag name='openmedia'>Enables the free open media sets: OpenGFX, OpenSFX, OpenMSX, removing the requirement for proprietary TTD assets to play OpenTTD.</flag>
+		<flag name='lzo'>Enables LZO compression for savegames. This is only needed to load extremely old savegames. (versions before 0.2)</flag>
+		<flag name='dedicated'>Build only the openttd server, and not the client.</flag>
+	</use>
+</pkgmetadata>

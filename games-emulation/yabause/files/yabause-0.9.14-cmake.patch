@@ -1,0 +1,51 @@
+--- yabause-0.9.13.orig/l10n/CMakeLists.txt
++++ yabause-0.9.13/l10n/CMakeLists.txt
+@@ -2,9 +2,12 @@
+ 
+ set(LANGS de es fr it lt nl pt pt_BR sv)
+ 
++# paths
++set(TRANSDIR "share/yabause/yts" CACHE STRING "dir to translation files")
++
+ if (UNIX AND NOT APPLE)
+     foreach(LANG ${LANGS})
+-	    install(FILES "yabause_${LANG}.yts" DESTINATION "share/yabause/yts" RENAME "${LANG}.yts")
++	    install(FILES "yabause_${LANG}.yts" DESTINATION ${TRANSDIR} RENAME "${LANG}.yts")
+     endforeach()
+ elseif (WIN32)
+     foreach(LANG ${LANGS})
+--- yabause-0.9.13.orig/src/gtk/CMakeLists.txt
++++ yabause-0.9.13/src/gtk/CMakeLists.txt
+@@ -59,7 +59,10 @@
+ yab_port_success(yabause-gtk)
+ configure_file(yabause.desktop.in ${YAB_PORT_NAME}.desktop)
+ 
+-install(TARGETS yabause-gtk DESTINATION "bin")
++# paths
++set(BINDIR "bin" CACHE STRING "dir to binary")
++
++install(TARGETS yabause-gtk DESTINATION ${BINDIR})
+ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${YAB_PORT_NAME}.desktop DESTINATION "share/applications")
+ install(FILES "doc/yabause.1" DESTINATION "${YAB_MAN_DIR}/man1" RENAME "${YAB_PORT_NAME}.1")
+ install(FILES "yabause.png" DESTINATION "share/pixmaps")
+--- yabause-0.9.13.orig/src/qt/CMakeLists.txt
++++ yabause-0.9.13/src/qt/CMakeLists.txt
+@@ -237,6 +237,9 @@
+ yab_port_success(yabause-qt)
+ configure_file(yabause.desktop.in ${YAB_PORT_NAME}.desktop)
+ 
++# paths
++set(BINDIR "bin" CACHE STRING "dir to binary")
++
+ if (WIN32)
+ 	install(TARGETS yabause-qt DESTINATION ".")
+ 	if (GLUT_FOUND)
+@@ -277,7 +280,7 @@
+ 		endif()
+ 	endif ()
+ else ()
+-	install(TARGETS yabause-qt DESTINATION "bin")
++	install(TARGETS yabause-qt DESTINATION ${BINDIR})
+ 	install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${YAB_PORT_NAME}.desktop DESTINATION "share/applications")
+ 	install(FILES "doc/yabause.1" DESTINATION "${YAB_MAN_DIR}/man1" RENAME "${YAB_PORT_NAME}.1")
+ 	install(FILES "resources/icons/yabause.png" DESTINATION "share/pixmaps")

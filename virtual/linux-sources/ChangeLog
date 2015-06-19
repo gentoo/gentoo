@@ -1,0 +1,109 @@
+# ChangeLog for virtual/linux-sources
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/linux-sources/ChangeLog,v 1.28 2015/05/30 16:25:09 mpagano Exp $
+
+  30 May 2015; Mike Pagano <mpagano@gentoo.org> linux-sources-1.ebuild:
+  Add sys-kernel/raspberrypi-sources. Bug #550096
+
+  02 Aug 2014; Raúl Porcel <armin76@gentoo.org> linux-sources-0.ebuild,
+  linux-sources-1.ebuild:
+  alpha/ia64/sparc stable wrt #512846
+
+  31 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> linux-sources-1.ebuild:
+  x86 stable wrt bug #512846
+
+  31 Jul 2014; Jeroen Roovers <jer@gentoo.org> linux-sources-1.ebuild:
+  Stable for HPPA (bug #512846).
+
+  30 Jul 2014; Anthony G. Basile <blueness@gentoo.org> linux-sources-1.ebuild:
+  Stable for arm, bug #512846
+
+  30 Jul 2014; Anthony G. Basile <blueness@gentoo.org> linux-sources-1.ebuild:
+  Stable ppc and ppc64, bug #512846
+
+  30 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> linux-sources-1.ebuild:
+  amd64 stable wrt bug #512846
+
+  30 Jul 2014; Anthony G. Basile <blueness@gentoo.org> linux-sources-0.ebuild,
+  linux-sources-1.ebuild:
+  Bump EAPI from 2 to 5
+
+  03 Apr 2014; Tom Wijsman <TomWij@gentoo.org> linux-sources-0.ebuild,
+  linux-sources-1.ebuild:
+  Change the keywording for minor arches per Council's decision to drop their
+  stable.
+
+  05 Sep 2013; Mike Frysinger <vapier@gentoo.org> linux-sources-1.ebuild:
+  Sync KEYWORDS between PV=0 and PV=1 #457082.
+
+  14 Feb 2013; Jeroen Roovers <jer@gentoo.org> linux-sources-1.ebuild:
+  Marked ~hppa (bug #457082).
+
+*linux-sources-1 (14 Feb 2013)
+
+  14 Feb 2013; Anthony G. Basile <blueness@gentoo.org> +linux-sources-1.ebuild,
+  metadata.xml:
+  Add DEPEND on linux firmware, bug #457082
+
+  19 Jan 2013; Ian Whyman <thev00d00@gentoo.org> linux-sources-0.ebuild:
+  Add aufs-sources
+
+  24 Nov 2012; Pacho Ramos <pacho@gentoo.org> linux-sources-0.ebuild:
+  cell-sources will be dropped (#366959)
+
+  16 Jun 2012; Pacho Ramos <pacho@gentoo.org> linux-sources-0.ebuild:
+  Drop cluster-sources due bug #411405#c6
+
+  13 May 2012; Pacho Ramos <pacho@gentoo.org> linux-sources-0.ebuild:
+  Drop sources that will be removed.
+
+  26 Apr 2012; <psomas@gentoo.org> linux-sources-0.ebuild:
+  mm-sources masked for removal wrt #412189. Remove them from RDEPEND
+
+  07 Jan 2012; Anthony G. Basile <blueness@gentoo.org> linux-sources-0.ebuild:
+  Added sys-kernel/rsbac-sources to the list of providers
+
+  20 Dec 2011; Anthony G. Basile <blueness@gentoo.org> linux-sources-0.ebuild:
+  Added sys-kernel/rt-sources to the list of providers
+
+  24 Sep 2011; Anthony G. Basile <blueness@gentoo.org> metadata.xml:
+  Changed herd name to kernel
+
+  22 Sep 2011; Anthony G. Basile <blueness@gentoo.org> ChangeLog:
+  Fix gpg sign failure
+
+  22 Sep 2011; Anthony G. Basile <blueness@gentoo.org> metadata.xml:
+  Added myself as maintainer
+
+*linux-sources-0 (09 Aug 2011)
+
+  09 Aug 2011; Ulrich Mueller <ulm@gentoo.org> +linux-sources-0.ebuild,
+  -linux-sources-2.4.ebuild, -linux-sources-2.6.ebuild:
+  Drop versioning.
+
+  30 Jul 2011; Anthony G. Basile <blueness@gentoo.org>
+  linux-sources-2.6.ebuild:
+  Remove hardened use flag, bug #375873
+
+  26 Jul 2011; Ulrich Mueller <ulm@gentoo.org> linux-sources-2.6.ebuild,
+  -linux-sources-3.ebuild, metadata.xml:
+  Version 3 isn't really different from 2.6, therefore it can use the same
+  virtual. As discussed on gentoo-kernel mailing list. Fixes bug 376461.
+  Remove xrc USE flag.
+
+*linux-sources-3 (25 Jul 2011)
+
+  25 Jul 2011; Samuli Suominen <ssuominen@gentoo.org> +linux-sources-3.ebuild:
+  While 3.x should be compatible with 2.6, it was concluded that new virtual
+  for 3 series is more clean.
+
+  30 Jun 2011; Alexey Shvetsov <alexxy@gentoo.org> linux-sources-2.6.ebuild,
+  metadata.xml:
+  Add xrc use for infiniband stuff
+
+*linux-sources-2.6 (30 Apr 2011)
+*linux-sources-2.4 (30 Apr 2011)
+
+  30 Apr 2011; Ulrich Mueller <ulm@gentoo.org> +linux-sources-2.4.ebuild,
+  +linux-sources-2.6.ebuild, +metadata.xml:
+  Initial import, bug 118442.

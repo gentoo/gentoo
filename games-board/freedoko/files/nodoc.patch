@@ -1,0 +1,10 @@
+--- Makefile.orig
++++ Makefile
+@@ -139,7 +139,6 @@
+ 	$(MAKE) Version
+ 	cp AUTHORS COPYING ChangeLog README LIESMICH Version release/FreeDoko_$(VERSION)/
+ 	$(MAKE) -C data release
+-	$(MAKE) -C doc release
+ 	$(RM) -r `find release/FreeDoko_$(VERSION)/ -name ".svn"`
+ 
+ .PHONY: release_linux_binary

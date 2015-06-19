@@ -1,0 +1,514 @@
+# ChangeLog for www-apps/horde
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/horde/ChangeLog,v 1.119 2012/08/22 15:19:45 a3li Exp $
+
+  22 Aug 2012; Alex Legler <a3li@gentoo.org> metadata.xml:
+  removing from metadata
+
+  29 Dec 2010; Markos Chandras <hwoarang@gentoo.org> horde-3.3.11.ebuild:
+  Stable on amd64 wrt bug #346697
+
+  07 Dec 2010; Jeroen Roovers <jer@gentoo.org> horde-3.3.11.ebuild:
+  Stable for PPC (bug #346697).
+
+  04 Dec 2010; Raúl Porcel <armin76@gentoo.org> horde-3.3.11.ebuild:
+  alpha/sparc stable wrt #346697
+
+  02 Dec 2010; Christian Faulhammer <fauli@gentoo.org> horde-3.3.11.ebuild:
+  stable x86, security bug 346697
+
+  30 Nov 2010; Jeroen Roovers <jer@gentoo.org> horde-3.3.11.ebuild:
+  Stable for HPPA (bug #346697).
+
+*horde-3.3.11 (28 Nov 2010)
+
+  28 Nov 2010; Alex Legler <a3li@gentoo.org> +horde-3.3.11.ebuild:
+  Version bump, fixes security bug 346697, thanks to Tim Sammut.
+
+  22 Oct 2010; Alex Legler <a3li@gentoo.org> -horde-3.3.6.ebuild,
+  -horde-3.3.8.ebuild:
+  cleanup
+
+  19 Oct 2010; Jeroen Roovers <jer@gentoo.org> horde-3.3.9.ebuild:
+  Stable for HPPA (bug #336319).
+
+  10 Oct 2010; Raúl Porcel <armin76@gentoo.org> horde-3.3.9.ebuild:
+  sparc stable wrt #336319
+
+  08 Oct 2010; Brent Baude <ranger@gentoo.org> horde-3.3.9.ebuild:
+  Marking horde-3.3.9 ppc for bug 336319
+
+  05 Oct 2010; Markus Meier <maekke@gentoo.org> horde-3.3.9.ebuild:
+  x86 stable, bug #336319
+
+  03 Oct 2010; Markos Chandras <hwoarang@gentoo.org> horde-3.3.9.ebuild:
+  Stable on amd64 wrt bug #336319
+
+  02 Oct 2010; Tobias Klausmann <klausman@gentoo.org> horde-3.3.9.ebuild:
+  Stable on alpha, bug #336319
+
+*horde-3.3.9 (29 Sep 2010)
+
+  29 Sep 2010; Alex Legler <a3li@gentoo.org> +horde-3.3.9.ebuild:
+  Version bump. Fixes CVE-2010-3077, bug 336319.
+
+  18 Sep 2010; Raúl Porcel <armin76@gentoo.org> horde-3.3.8.ebuild:
+  alpha/sparc stable wrt #333207
+
+  11 Sep 2010; Matti Bickel <mabi@gentoo.org> horde-3.3.6.ebuild,
+  horde-3.3.8.ebuild:
+  change virtual/php to dev-lang/php (bug #319623)
+
+  23 Aug 2010; Markus Meier <maekke@gentoo.org> horde-3.3.8.ebuild:
+  x86 stable, bug #333207
+
+  19 Aug 2010; Markos Chandras <hwoarang@gentoo.org> horde-3.3.8.ebuild:
+  Stable on amd64 wrt bug #333207
+
+*horde-3.3.8 (17 Jul 2010)
+
+  17 Jul 2010; Alex Legler <a3li@gentoo.org> +horde-3.3.8.ebuild:
+  Version bump
+
+  06 Jan 2010; Alex Legler <a3li@gentoo.org> -horde-3.3.5.ebuild:
+  Removing vulnerable ebuild, bug 297306
+
+  28 Dec 2009; nixnut <nixnut@gentoo.org> horde-3.3.6.ebuild:
+  ppc stable #297306
+
+  21 Dec 2009; Raúl Porcel <armin76@gentoo.org> horde-3.3.6.ebuild:
+  alpha/sparc stable wrt #297306
+
+  21 Dec 2009; Alex Legler <a3li@gentoo.org> horde-3.3.6.ebuild:
+  amd64 stable, bug 297306
+
+  19 Dec 2009; Jeroen Roovers <jer@gentoo.org> horde-3.3.6.ebuild:
+  Stable for HPPA (bug #297306).
+
+  17 Dec 2009; Christian Faulhammer <fauli@gentoo.org> horde-3.3.6.ebuild:
+  stable x86, security bug 297306
+
+*horde-3.3.6 (17 Dec 2009)
+
+  17 Dec 2009; Alex Legler <a3li@gentoo.org> -horde-3.3.4.ebuild,
+  +horde-3.3.6.ebuild, metadata.xml:
+  Version bump for security bug 297306. Taking over maintenance from wrobel
+
+  03 Nov 2009; Raúl Porcel <armin76@gentoo.org> horde-3.3.5.ebuild:
+  Add ~ia64 wrt #282942
+
+  18 Oct 2009; nixnut <nixnut@gentoo.org> horde-3.3.5.ebuild:
+  ppc stable #285052
+
+  22 Sep 2009; Raúl Porcel <armin76@gentoo.org> horde-3.3.5.ebuild:
+  alpha/sparc stable wrt #285052
+
+  19 Sep 2009; Markus Meier <maekke@gentoo.org> horde-3.3.5.ebuild:
+  amd64 stable, bug #285052
+
+  16 Sep 2009; Christian Faulhammer <fauli@gentoo.org> horde-3.3.5.ebuild:
+  stable x86, security bug 285052
+
+  15 Sep 2009; Jeroen Roovers <jer@gentoo.org> horde-3.3.5.ebuild:
+  Stable for HPPA (bug #285052).
+
+*horde-3.3.5 (15 Sep 2009)
+
+  15 Sep 2009; Alex Legler <a3li@gentoo.org> +horde-3.3.5.ebuild:
+  Non-maintainer commit: Version bump for security bug 285052.
+
+  12 Sep 2009; Alex Legler <a3li@gentoo.org> -horde-3.1.9.ebuild,
+  -horde-3.2.2.ebuild:
+  Non-maintainer commit: Removing vulnerable ebuilds, GLSA 200909-14.
+
+  29 Aug 2009; nixnut <nixnut@gentoo.org> horde-3.3.4.ebuild:
+  ppc stable #256125
+
+  25 Aug 2009; Raúl Porcel <armin76@gentoo.org> horde-3.3.4.ebuild:
+  sparc stable wrt #256125
+
+  25 Aug 2009; Jeroen Roovers <jer@gentoo.org> horde-3.3.4.ebuild:
+  Stable for HPPA (bug #256125).
+
+  25 Aug 2009; Tobias Klausmann <klausman@gentoo.org> horde-3.3.4.ebuild:
+  Stable on alpha, bug #256125
+
+  25 Aug 2009; Christian Faulhammer <fauli@gentoo.org> horde-3.3.4.ebuild:
+  stable x86, security bug 256125
+
+  24 Aug 2009; Steve Dibb <beandog@gentoo.org> horde-3.3.4.ebuild:
+  amd64 stable, bug 256125
+
+*horde-3.3.4 (24 Aug 2009)
+
+  24 Aug 2009; Alex Legler <a3li@gentoo.org> -horde-3.3.ebuild,
+  +horde-3.3.4.ebuild:
+  Non-maintainer commit: Version bump for security bug #256125 and bug
+  #262978. Removing unneded vulnerable version.
+
+*horde-3.3 (20 Oct 2008)
+
+  20 Oct 2008; Mike Frysinger <vapier@gentoo.org> +horde-3.3.ebuild:
+  Version bump.
+
+  02 Oct 2008; wrobel@gentoo.org -horde-3.1.8.ebuild:
+  Removed insecure horde-3.1.8 (#237362).
+
+  19 Sep 2008; Tobias Scherbaum <dertobi123@gentoo.org> horde-3.1.9.ebuild:
+  ppc stable, bug #237362
+
+  17 Sep 2008; Markus Meier <maekke@gentoo.org> horde-3.1.9.ebuild:
+  amd64 stable, bug #237362
+
+  17 Sep 2008; Raúl Porcel <armin76@gentoo.org> horde-3.2.2.ebuild:
+  alpha/x86 stable wrt #237362
+
+  16 Sep 2008; Jeroen Roovers <jer@gentoo.org> horde-3.1.9.ebuild:
+  Stable for HPPA (bug #237362).
+
+  15 Sep 2008; Ferris McCormick <fmccor@gentoo.org> horde-3.1.9.ebuild:
+  Sparc stable, Security Bug #237362.
+
+*horde-3.2.2 (15 Sep 2008)
+*horde-3.1.9 (15 Sep 2008)
+
+  15 Sep 2008; wrobel@gentoo.org +horde-3.1.9.ebuild, -horde-3.2.1.ebuild,
+  +horde-3.2.2.ebuild:
+  Added horde-3.1.9, -3.2.2, removed horde-3.2.1 in response to sec issue
+  #237362.
+
+  01 Aug 2008; wrobel@gentoo.org -horde-3.1.7.ebuild:
+  Removed vulnerable version wrt sec issue #228507.
+
+  06 Jul 2008; Markus Meier <maekke@gentoo.org> horde-3.1.8.ebuild:
+  amd64 stable, bug #228507
+
+  28 Jun 2008; Jeroen Roovers <jer@gentoo.org> horde-3.1.8.ebuild:
+  Stable for HPPA (bug #228507).
+
+  26 Jun 2008; Tobias Scherbaum <dertobi123@gentoo.org> horde-3.1.8.ebuild:
+  ppc stable, bug #228507
+
+  26 Jun 2008; Raúl Porcel <armin76@gentoo.org> horde-3.1.8.ebuild:
+  alpha/sparc stable wrt #228507
+
+  24 Jun 2008; Christian Faulhammer <opfer@gentoo.org> horde-3.1.8.ebuild:
+  stable x86, security bug 228507
+
+  24 Jun 2008; wrobel@gentoo.org -horde-3.2.ebuild:
+  Removed vulnerable horde-3.2 (#228507).
+
+*horde-3.2.1 (24 Jun 2008)
+*horde-3.1.8 (24 Jun 2008)
+
+  24 Jun 2008; wrobel@gentoo.org metadata.xml, +horde-3.1.8.ebuild,
+  +horde-3.2.1.ebuild:
+  Added horde-3.1.8 and horde-3.2.1 (sec issue #228507). Changed package
+  maintainer from vapier to wrobel.
+
+*horde-3.2 (01 Jun 2008)
+
+  01 Jun 2008; Mike Frysinger <vapier@gentoo.org> +horde-3.2.ebuild:
+  Version bump #224333 by Arfrever Frehtes Taifersar Arahesis.
+
+  21 Mar 2008; Markus Meier <maekke@gentoo.org> horde-3.1.7.ebuild:
+  amd64 stable, security bug #213493
+
+  18 Mar 2008; Raúl Porcel <armin76@gentoo.org> horde-3.1.7.ebuild:
+  alpha/sparc/x86 stable wrt #213493
+
+  18 Mar 2008; Jeroen Roovers <jer@gentoo.org> horde-3.1.7.ebuild:
+  Stable for HPPA (bug #213493).
+
+  18 Mar 2008; Tobias Scherbaum <dertobi123@gentoo.org> horde-3.1.7.ebuild:
+  ppc stable, bug #213493
+
+*horde-3.1.7 (09 Mar 2008)
+
+  09 Mar 2008; Mike Frysinger <vapier@gentoo.org> +horde-3.1.7.ebuild:
+  Version bump.
+
+  08 Feb 2008; Mike Frysinger <vapier@gentoo.org> horde-3.1.3.ebuild,
+  horde-3.1.4.ebuild, horde-3.1.5.ebuild, horde-3.1.6.ebuild:
+  Dont bother mentioning full path to php.ini as it moves around #209044 by
+  Jakub Moc.
+
+*horde-3.1.6 (12 Jan 2008)
+
+  12 Jan 2008; Mike Frysinger <vapier@gentoo.org> +horde-3.1.6.ebuild:
+  Version bump.
+
+*horde-3.1.5 (23 Dec 2007)
+
+  23 Dec 2007; Mike Frysinger <vapier@gentoo.org> +horde-3.1.5.ebuild:
+  Version bump.
+
+  12 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org> horde-3.1.4.ebuild:
+  Stable on sparc
+
+*horde-3.1.4 (05 May 2007)
+
+  05 May 2007; Mike Frysinger <vapier@gentoo.org> +horde-3.1.4.ebuild:
+  Version bump #170977.
+
+  29 Aug 2006; <blubb@gentoo.org> horde-3.1.3.ebuild:
+  stable on amd64 wrt bug 144874
+
+  29 Aug 2006; Joshua Jackson <tsunam@gentoo.org> horde-3.1.3.ebuild:
+  Stable x86; bug #144874
+
+  27 Aug 2006; Bryan Østergaard <kloeri@gentoo.org> horde-3.1.3.ebuild:
+  Stable on alpha, bug 144874.
+
+  27 Aug 2006; Rene Nussbaumer <killerfox@gentoo.org> horde-3.1.3.ebuild:
+  Stable on hppa. See bug #144874.
+
+  25 Aug 2006; Gustavo Zacarias <gustavoz@gentoo.org> horde-3.1.3.ebuild:
+  Stable on sparc wrt security #144874
+
+  24 Aug 2006; Tobias Scherbaum <dertobi123@gentoo.org> horde-3.1.3.ebuild:
+  ppc stable, bug #144874
+
+*horde-3.0.10 (23 Aug 2006)
+
+  23 Aug 2006; Mike Frysinger <vapier@gentoo.org> +horde-3.0.10.ebuild:
+  Version bump #144874 by Sune Kloppenborg Jeppesen.
+
+*horde-3.1.3 (23 Aug 2006)
+
+  23 Aug 2006; Mike Frysinger <vapier@gentoo.org> +horde-3.1.3.ebuild:
+  Version bump #144874 by Sune Kloppenborg Jeppesen.
+
+*horde-3.1.2-r1 (20 Aug 2006)
+
+  20 Aug 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/horde-3.1.2-perms.patch, +horde-3.1.2-r1.ebuild:
+  Fix from upstream for #143639 by Chris Carlin.
+
+*horde-3.1.2 (05 Aug 2006)
+
+  05 Aug 2006; Mike Frysinger <vapier@gentoo.org> +horde-3.1.2.ebuild:
+  Version bump #142722 by David Bosso.
+
+  22 Jun 2006; Mike Frysinger <vapier@gentoo.org> horde-3.1.1-r1.ebuild:
+  Force some tighter permissions on the sql files users run to create horde
+  databases #137510 by Sebastian Witt.
+
+  20 Jun 2006; Thomas Cort <tcort@gentoo.org> horde-3.1.1-r1.ebuild:
+  Stable on alpha and amd64 wrt security Bug #136830.
+
+  20 Jun 2006; Joshua Jackson <tsunam@gentoo.org> horde-3.1.1-r1.ebuild:
+  Stable x86; bug #136830
+
+  17 Jun 2006; Rene Nussbaumer <killerfox@gentoo.org> horde-3.1.1-r1.ebuild:
+  Stable on hppa. See bug #136830.
+
+  16 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org> horde-3.1.1-r1.ebuild:
+  Stable on sparc wrt security #136830
+
+  15 Jun 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  horde-3.1.1-r1.ebuild:
+  ppc stable, bug #136830
+
+*horde-3.1.1-r1 (15 Jun 2006)
+
+  15 Jun 2006; Luca Longinotti <chtekk@gentoo.org>
+  +files/horde-3.1.1-xss.diff, +horde-3.1.1-r1.ebuild:
+  Fix bug #136830.
+
+  31 Mar 2006; Jose Luis Rivero <yoswink@gentoo.org> horde-3.1.1.ebuild:
+  Stable on alpha wrt security bug #127889
+
+  30 Mar 2006; <blubb@gentoo.org> horde-3.1.1.ebuild:
+  stable on amd64 wrt bug 127889
+
+  29 Mar 2006; Tobias Scherbaum <dertobi123@gentoo.org> horde-3.1.1.ebuild:
+  ppc stable, bug #127889
+
+  29 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org> horde-3.1.1.ebuild:
+  Stable on hppa & sparc wrt security bug #127889
+
+  29 Mar 2006; Mark Loeser <halcy0n@gentoo.org> horde-3.1.1.ebuild:
+  Stable on x86; bug #127889
+
+*horde-3.1.1 (29 Mar 2006)
+
+  29 Mar 2006; Mike Frysinger <vapier@gentoo.org> +horde-3.1.1.ebuild:
+  Version bump #127889.
+
+  28 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org> horde-3.1.ebuild:
+  Stable on hppa wrt security #126435
+
+  28 Mar 2006; Mark Loeser <halcy0n@gentoo.org> horde-3.1.ebuild:
+  Stable on x86; bug #126435
+
+  25 Mar 2006; Joseph Jezak <josejx@gentoo.org> horde-3.1.ebuild:
+  Marked ppc stable for bug #126435.
+
+  20 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org> horde-3.1.ebuild:
+  Stable on sparc wrt security #126435
+
+*horde-3.1 (09 Mar 2006)
+
+  09 Mar 2006; Mike Frysinger <vapier@gentoo.org> +horde-3.1.ebuild:
+  Version bump #125571 by Pol.
+
+*horde-3.0.9 (15 Dec 2005)
+
+  15 Dec 2005; Mike Frysinger <vapier@gentoo.org> +horde-3.0.9.ebuild:
+  Version bump #115215.
+
+*horde-3.0.8 (12 Dec 2005)
+
+  12 Dec 2005; Mike Frysinger <vapier@gentoo.org> +horde-3.0.8.ebuild:
+  Version bump #115215.
+
+*horde-3.0.7 (22 Nov 2005)
+
+  22 Nov 2005; Mike Frysinger <vapier@gentoo.org> +horde-3.0.7.ebuild:
+  Version bump #113276 by Christoph Gysin.
+
+  19 Nov 2005; Simon Stelling <blubb@gentoo.org> horde-2.2.9.ebuild:
+  stable on amd64 wrt bug 112491
+
+  18 Nov 2005; Mark Loeser <halcy0n@gentoo.org> horde-2.2.9.ebuild:
+  Stable on x86; bug #112491
+
+  16 Nov 2005; Jose Luis Rivero <yoswink@gentoo.org> horde-2.2.9.ebuild:
+  Stable on alpha wrt security #112491
+
+  15 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> horde-2.2.9.ebuild:
+  Stable on hppa, ppc. See bug #112491.
+
+  15 Nov 2005; Gustavo Zacarias <gustavoz@gentoo.org> horde-2.2.9.ebuild:
+  Stable on sparc wrt security #112491
+
+*horde-2.2.9 (15 Nov 2005)
+
+  15 Nov 2005; Mike Frysinger <vapier@gentoo.org> +horde-2.2.9.ebuild:
+  Version bump for security #112491.
+
+*horde-3.0.6 (28 Oct 2005)
+
+  28 Oct 2005; Mike Frysinger <vapier@gentoo.org> +horde-3.0.6.ebuild:
+  Version bump #110754 by Christoph Gysin.
+
+*horde-3.0.5 (07 Aug 2005)
+
+  07 Aug 2005; Mike Frysinger <vapier@gentoo.org> +horde-3.0.5.ebuild:
+  Version bump.
+
+*horde-3.0.4-r1 (07 May 2005)
+
+  07 May 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/horde-3.0.4-freebusy.patch, +horde-3.0.4-r1.ebuild:
+  Add patch from upstream to fix Free/Busy information #89227 by Jeffrey
+  Crawford.
+
+*horde-2.2.8 (26 Apr 2005)
+
+  26 Apr 2005; Mike Frysinger <vapier@gentoo.org> +horde-2.2.8.ebuild:
+  Version bump for security #90365.
+
+*horde-3.0.4 (29 Mar 2005)
+
+  29 Mar 2005; Mike Frysinger <vapier@gentoo.org> -horde-3.0.3.ebuild,
+  +horde-3.0.4.ebuild:
+  Version bump for security #87134.
+
+*horde-3.0.3 (23 Feb 2005)
+
+  23 Feb 2005; Mike Frysinger <vapier@gentoo.org> -horde-3.0.2.ebuild,
+  +horde-3.0.3.ebuild:
+  Version bump.
+
+*horde-3.0.2 (16 Jan 2005)
+
+  16 Jan 2005; Mike Frysinger <vapier@gentoo.org> +horde-3.0.2.ebuild,
+  -horde-3.0.ebuild:
+  Version bump for security #77872.
+
+*horde-3.0 (24 Dec 2004)
+
+  17 Dec 2004; Mike Frysinger <vapier@gentoo.org> +horde-3.0.ebuild:
+  Version bump #72276 by Jory A. Pratt.
+
+*horde-2.2.7 (08 Nov 2004)
+
+  08 Nov 2004; Mike Frysinger <vapier@gentoo.org> horde-2.2.5.ebuild,
+  +horde-2.2.7.ebuild:
+  Version bump.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  15 Aug 2004; Stuart Herbert <stuart@gentoo.org> horde-2.2.5.ebuild:
+  Deps updated to reflect net-www split
+
+*horde-2.2.5 (15 Aug 2004)
+
+  15 Aug 2004; Stuart Herbert <stuart@gentoo.org> +metadata.xml,
+  +horde-2.2.5.ebuild:
+  Moved from net-www/horde to www-apps/horde.
+
+  01 Apr 2004; Chris Aniszczyk <zx@gentoo.org> horde-2.2.5.ebuild:
+  Marking ~hppa
+
+*horde-2.2.5 (26 Feb 2004)
+
+  26 Feb 2004; Martin Holzer <mholzer@gentoo.org> horde-2.2.5.ebuild:
+  Version bumped.
+
+  15 Dec 2003; Stuart Herbert <stuart@gentoo.org> horde-2.2.4.ebuild:
+  Fix for bug #32636
+
+  06 Dec 2003; Martin Holzer <mholzer@gentoo.org> horde-2.2.4.ebuild:
+  fixing access violation
+
+  06 Dec 2003; Martin Holzer <mholzer@gentoo.org> horde-2.2.4.ebuild:
+  fixing chown
+
+  11 Nov 2003; Martin Holzer <mholzer@gentoo.org> horde-2.2.4.ebuild:
+  using webapp-apache
+
+  02 Oct 2003; Martin Holzer <mholzer@gentoo.org> horde-2.2.4.ebuild:
+  moved docs to /usr/share/${P}
+
+*horde-2.2.4 (11 Sep 2003)
+
+  11 Sep 2003; Martin Holzer <mholzer@gentoo.org> horde-2.2.4.ebuild:
+  Version bumped.
+
+*horde-2.2.4_rc2 (01 Sep 2003)
+
+  01 Sep 2003; Daniel Ahlberg <aliz@gentoo.org> horde-2.2.4_rc2.ebuild :
+  Security update.
+
+*horde-2.2.3 (12 May 2003)
+  12 May 2003; Dean Bailey <alron@gentoo.org> horde-2.2.3 :
+  Version bump to 2.2.3 final. Has the vfs stuff so no patch is needed any more.
+
+*horde-2.2.1-r2 (10 Apr 2003)
+  10 Apr 2003;Dean Bailey <alron@gentoo.org> horde-2.2.1-r2 :
+  Added vfs.sql, a table needed to use hordes VFS functions. Was missing from the
+  horde 2.2.1 tarball.
+
+*horde-2.2.1-r1 (08 Apr 2003)
+  08 Apr 2003; Dean Bailey <alron@gentoo.org> horde-2.2.1-r1 :
+  Fixed an issue where alot of the required pear files were missing or outdated.
+  Added dependancy on horde-pear.
+
+*horde-2.2.1 (09 Feb 2003)
+  09 Feb 2003; Dean Bailey <alron@gentoo.org> horde-2.2.1 :
+  Version bump to 2.2.1
+
+*horde-2.2 (03 Feb 2003)
+  03 Feb 2003; Dean Bailey <alron@gentoo.org> horde-2.2 :
+  Updated to version 2.2 of the Horde Framework.
+  
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*horde-2.1 (21 Oct 2002)
+
+  30 Oct 2002; Karl Trygve Kalleberg <karltk@gentoo.org> horde-2.1.ebuild files/digest-horde-2.1 :
+  Initial import.  Ebuild submitted by Christophe GUILLOUX <cg@rootix.info>.  

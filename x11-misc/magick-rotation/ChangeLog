@@ -1,0 +1,33 @@
+# ChangeLog for x11-misc/magick-rotation
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/magick-rotation/ChangeLog,v 1.5 2015/01/14 05:39:20 pinkbyte Exp $
+
+  14 Jan 2015; Sergey Popov <pinkbyte@gentoo.org>
+  magick-rotation-1.6.2-r1.ebuild:
+  Restrict SLOT in dev-python/pygobject dependency
+
+*magick-rotation-1.6.2-r1 (14 Jan 2015)
+
+  14 Jan 2015; Sergey Popov <pinkbyte@gentoo.org>
+  -magick-rotation-1.6.2.ebuild, +magick-rotation-1.6.2-r1.ebuild:
+  Revision bump: migrate to python-single-r1 eclass, wrt bug #531620, thanks to
+  Aaron Bauman <bauman.aaron AT gmail.com>. Add missing dependencies on
+  dev-python/pygtk and x11-libs/libXrandr. Require python interpreter with XML
+  support. Add support for user patches via epatch_user. Use udev eclass to
+  install rules in proper location. Drop old revision
+
+  24 Jan 2013; Sergey Popov <pinkbyte@gentoo.org> magick-rotation-1.6.2.ebuild:
+  Restrict tests, cause there are no tests in package and default src_test
+  should not be called, wrt bug #453672
+
+  11 Nov 2012; Sergey Popov <pinkbyte@gentoo.org> magick-rotation-1.6.2.ebuild:
+  Respect CFLAGS, LDFLAGS, fix buiding with '--as-needed', add output to
+  src_compile, wrt bug #442638
+
+*magick-rotation-1.6.2 (20 Oct 2012)
+
+  20 Oct 2012; Sergey Popov <pinkbyte@gentoo.org>
+  +magick-rotation-1.6.2.ebuild, +metadata.xml:
+  Initial commit wrt bug #436000. Ebuild is written by Vadim Efimov. He will
+  maintain this package through proxy maintainers
+

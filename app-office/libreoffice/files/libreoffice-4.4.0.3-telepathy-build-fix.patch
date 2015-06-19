@@ -1,0 +1,40 @@
+From 623b38fa5769f8cdec10b54b2a600bc4c4e077e6 Mon Sep 17 00:00:00 2001
+From: David Tardon <dtardon@redhat.com>
+Date: Sun, 11 Jan 2015 13:08:37 +0100
+Subject: OSL_ENSURE was not declared in this scope
+
+Change-Id: I426c0feee7b76fe02473e07fa209a61967af3e99
+
+diff --git a/tubes/source/conference.cxx b/tubes/source/conference.cxx
+index 86986fc..df4a63f 100644
+--- a/tubes/source/conference.cxx
++++ b/tubes/source/conference.cxx
+@@ -248,7 +248,7 @@ static void channel_closed_cb( TpChannel *channel, gpointer user_data, GObject *
+ 
+ void TeleConference::setChannel( TpAccount *pAccount, TpDBusTubeChannel* pChannel )
+ {
+-    OSL_ENSURE( !mpChannel, "TeleConference::setChannel: already have channel");
++    SAL_WARN_IF( mpChannel, "tubes", "TeleConference::setChannel: already have channel");
+     if (mpChannel)
+         g_object_unref( mpChannel);
+     if (mpAccount)
+@@ -297,7 +297,7 @@ bool TeleConference::offerTube()
+ {
+     INFO_LOGGER( "TeleConference::offerTube");
+ 
+-    OSL_ENSURE( mpChannel, "TeleConference::offerTube: no channel");
++    SAL_WARN_IF( !mpChannel, "tubes", "TeleConference::offerTube: no channel");
+     if (!mpChannel)
+         return false;
+ 
+@@ -319,7 +319,7 @@ bool TeleConference::setTube( GDBusConnection* pTube)
+ {
+     INFO_LOGGER( "TeleConference::setTube");
+ 
+-    OSL_ENSURE( !pImpl->mpTube, "TeleConference::setTube: already tubed");
++    SAL_WARN_IF( pImpl->mpTube, "tubes", "TeleConference::setTube: already tubed");
+ 
+     pImpl->mpTube = pTube;
+ 
+-- 
+cgit v0.10.2

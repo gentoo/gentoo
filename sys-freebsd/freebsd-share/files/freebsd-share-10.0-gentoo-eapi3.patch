@@ -1,0 +1,17 @@
+diff --git a/share/i18n/esdb/Makefile.part b/share/i18n/esdb/Makefile.part
+index 9ca8577..329e9fb 100644
+--- a/share/i18n/esdb/Makefile.part
++++ b/share/i18n/esdb/Makefile.part
+@@ -13,10 +13,10 @@ PART!=	sed '/^\#/d;/^ *$$/d' ${PARTFILE}
+ .endif
+ .if !defined(NO_EPREFIX)
+ CODESETS?= ${PART:C/^/${CODE}${SEP}/}
+-EPREFIX?= ${CODE}${SEP}
++EPREFIX= ${CODE}${SEP}
+ .else
+ CODESETS?= ${PART}
+-EPREFIX?=	
++EPREFIX=	
+ .endif
+ ESUBDIR?= ${CODE}
+ ESDB?=	${CODESETS:C/$/.esdb/:S/:/@/}

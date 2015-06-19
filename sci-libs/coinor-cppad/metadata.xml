@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci</herd>
+  <longdescription lang="en">
+  We refer to the step by step conversion from an algorithm that
+  computes function values to an algorithm that computes derivative
+  values as Algorithmic Differentiation (AD); often referred to as
+  automatic differentiation. Given a C++ algorithm that computes
+  function values, CppAD generates an algorithm that computes
+  corresponding derivative values (of arbitrary order using either
+  forward or reverse mode).
+</longdescription>
+</pkgmetadata>

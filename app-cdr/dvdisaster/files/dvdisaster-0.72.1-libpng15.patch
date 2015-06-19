@@ -1,0 +1,11 @@
+--- tools/pngio.c
++++ tools/pngio.c
+@@ -17,6 +17,8 @@
+  *  or direct your browser at http://www.gnu.org.
+  */
+ 
++#include <zlib.h>
++
+ #include <errno.h>
+ #include <stdio.h>
+ #include <stdlib.h>

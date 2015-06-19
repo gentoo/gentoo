@@ -1,0 +1,54 @@
+# ChangeLog for games-puzzle/meandmyshadow
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/meandmyshadow/ChangeLog,v 1.13 2015/04/23 21:38:04 mr_bones_ Exp $
+
+  23 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/meandmyshadow-0.4-cmake.patch, meandmyshadow-0.4.ebuild:
+  add patch to fix building with newer versions of cmake (bug #547494)
+
+  22 Feb 2015; Tupone Alfredo <tupone@gentoo.org> meandmyshadow-0.4.ebuild:
+  EAPI 5
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> meandmyshadow-0.4.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  07 Feb 2013; Ulrich Müller <ulm@gentoo.org> meandmyshadow-0.4.ebuild:
+  Move Creative Commons licenses to shorter names.
+
+  24 Oct 2012; Tupone Alfredo <tupone@gentoo.org> -meandmyshadow-0.3.ebuild,
+  -files/meandmyshadow-0.3-cmake.patch:
+  Removing old version
+
+  17 Oct 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  meandmyshadow-0.4.ebuild:
+  x86 stable wrt bug #435716
+
+  28 Sep 2012; Agostino Sarubbo <ago@gentoo.org> meandmyshadow-0.4.ebuild:
+  Stable for amd64, wrt bug #435716
+
+*meandmyshadow-0.4 (25 Jul 2012)
+
+  25 Jul 2012; Julian Ospald <hasufell@gentoo.org> +meandmyshadow-0.4.ebuild:
+  version bump
+
+  14 Jul 2012; Julian Ospald <hasufell@gentoo.org> meandmyshadow-0.3.ebuild:
+  update icon cache wrt bug #426580
+
+  21 May 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  meandmyshadow-0.3.ebuild:
+  x86 stable wrt bug #413931
+
+  30 Apr 2012; Michael Sterrett <mr_bones_@gentoo.org> meandmyshadow-0.3.ebuild:
+  respect CXXFLAGS
+
+  30 Apr 2012; Agostino Sarubbo <ago@gentoo.org> meandmyshadow-0.3.ebuild:
+  Stable for amd64, wrt bug #413931
+
+*meandmyshadow-0.3 (27 Mar 2012)
+
+  27 Mar 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  +meandmyshadow-0.3.ebuild, +files/meandmyshadow-0.3-cmake.patch,
+  +metadata.xml:
+  Initial commit; ebuild submission and patch from hasufell and barul (bug
+  #408811)

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>netmon</herd>
+<longdescription>
+  vnStat is a network traffic monitor for Linux that keeps a log of daily
+  network traffic for the selected interface(s). vnStat isn't a packet sniffer.
+  The traffic information is analyzed from the /proc filesystem. That way vnStat
+  can be used even without root permissions.
+</longdescription>
+</pkgmetadata>

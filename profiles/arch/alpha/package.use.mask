@@ -1,0 +1,295 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/alpha/package.use.mask,v 1.187 2015/06/09 15:35:00 eva Exp $
+
+# Gilles Dartiguelongue <eva@gentoo.org> (09 Jun 2015)
+# net-fs/libnfs lacks alpha keyword, bug #551576
+gnome-base/gvfs nfs
+
+# Gilles Dartiguelongue <eva@gentoo.org> (09 Jun 2015)
+# dev-lang/luajit and dev-lua/lgi and lack alpha keyword, bug #551540
+dev-libs/libpeas lua jit
+
+# Ben de Groot <yngwin@gentoo.org> (03 May 2015)
+# media-libs/rubberband lacks alpha keyword, bug #548446
+media-video/mpv rubberband
+
+# Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
+# Needs sci-physics/bullet tested #499974
+dev-libs/efl physics
+
+# Michał Górny <mgorny@gentoo.org> (08 Mar 2015)
+# Dependency not keyworded on this arch, bug #542570.
+xfce-base/xfce4-settings libinput
+
+# Michał Górny <mgorny@gentoo.org> (22 Feb 2015)
+# Dependency not keyworded for some reason.
+media-libs/gegl umfpack
+
+# Michał Górny <mgorny@gentoo.org> (21 Feb 2015)
+# The external QCA plugins are not keyworded on this arch. Since
+# this is only a temporary measure and nothing depends on them,
+# just masking them until the new version goes stable.
+<app-crypt/qca-2.1 pkcs11
+
+# Patrick Lauer <patrick@gentoo.org> (10 Feb 2015)
+# Missing keywords for media-libs/x265
+media-video/libav x265
+
+# Johannes Huber <johu@gentoo.org> (28 Jan 2015)
+# Missing keyword on dev-libs/botan
+app-crypt/qca botan
+
+# Pacho Ramos <pacho@gentoo.org> (10 Jan 2014)
+# Missing keywords
+net-misc/networkmanager teamd
+
+# Gilles Dartiguelongue <eva@gentoo.org> (23 Dec 2014)
+# New dependencies for wayland support in Gnome 3.14
+# See bug #533420.
+media-libs/clutter egl
+x11-wm/mutter kms
+
+# Mark Wright <gienah@gentoo.org> (14-23 Dec 2014)
+# test dependencies need keywording
+dev-haskell/binary test
+dev-haskell/text test
+dev-haskell/vector test
+
+# Tobias Klausmann <klausman@gentoo.org> (20 Nov 2014)
+# OpenCV likely will never work on Alpha
+media-video/vlc opencv
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2014)
+# Missing keywords, bug #523686
+>=dev-libs/libgdata-0.16.1 test
+
+# Michał Górny <mgorny@gentoo.org> (30 Oct 2014)
+# Requires non-keyworded >=x11-libs/libxkbcommon-0.4.
+sys-apps/systemd terminal
+sys-apps/systemd xkb
+
+# Tobias Klausmann <klausman@gentoo.org> (11 Oct 2014)
+# app-emulation/qemu is not keyworded on alpha, masking flag that triggers
+# dependency
+net-misc/spice-gtk smartcard
+
+# Gilles Dartiguelongue <eva@gentoo.org> (05 Oct 2014)
+# Missing keyword on app-accessibility/brltty
+app-accessibility/orca braille
+
+# Maciej Mrozowski <reavertm@gentoo.org> (13 Aug 2014)
+# Missing keywords on dev-libs/protobuf-c (bug 519772)
+>=net-libs/libgadu-1.12.0 gg11
+
+# Tobias Klausmann <klausman@gentoo.org>
+# media-libs/x265 doesn't work on alpha (bug 519046)
+media-video/ffmpeg x265
+
+# Tobias Klausmann <klausman@gentoo.org (16 Jul 2014)
+# neither dietlibc nor klibc will likely ever build/work on alpha, bug #487672
+>=sys-fs/dmraid-1.0.0_rc16-r3 dietlibc klibc
+
+# Maxim Koltsov <maksbotan@gentoo.org> (9 Jul 2014)
+# Missing keywords on dev-python/rst2pdf, bug #515222
+media-video/mpv doc-pdf
+
+# Julian Ospald <hasufell@gentoo.org> (20 Apr 2014)
+# Missing keywords, bug #508226
+media-video/mpv sdl
+
+# Pacho Ramos <pacho@gentoo.org> (15 Mar 2014)
+# Missing keywords, bug #504672
+>=net-misc/vinagre-3.10 rdp
+
+# Pacho Ramos <pacho@gentoo.org> (22 Feb 2014)
+# Missing keywords, bug #495250
+>=gnome-base/gnome-extra-apps-3.10 tracker
+
+# Pacho Ramos <pacho@gentoo.org> (11 Jan 2014)
+sys-kernel/dracut -dracut_modules_systemd
+
+# Pacho Ramos <pacho@gentoo.org> (02 Dec 2013)
+# Missing keywords, bug #493156
+media-libs/libgphoto2 serial
+
+# Pacho Ramos <pacho@gentoo.org> (28 Nov 2013)
+# Missing keywords, bug #492820
+net-im/telepathy-connection-managers sipe
+
+# Pacho Ramos <pacho@gentoo.org> (13 Nov 2013)
+# Missing keywords, bug #478254
+>=gnome-base/gnome-3.8 classic
+
+# Mark Wright <gienah@gentoo.org> (26 Oct 2013)
+# template-haskell not yet available
+dev-haskell/dataenc test
+
+# Tom Wijsman <TomWij@gentoo.org> (16 Oct 2013)
+# Mask luajit on ~media-video/mpv-0.2.0 because it only has amd64 x86 keywords. See bug #488318.
+>=media-video/mpv-0.2.0 luajit
+
+# Pacho Ramos <pacho@gentoo.org> (20 Jul 2013)
+# Keywords pending, bug #476710
+>=gnome-base/gnome-extra-apps-3.8 games
+
+# William Hubbs <williamh@gentoo.org> (22 Jun 2013)
+# dev-python/cython is not keyworded for alpha
+>=app-accessibility/brltty-4.5 python
+
+# Patrick Lauer <patrick@gentoo.org> (17 Jun 2013)
+# Fix per-arch mask of phonon[zeitgeist] #460140
+media-libs/phonon zeitgeist
+
+# Gilles Dartiguelongue <eva@gentoo.org> (1 Apr 2013)
+# missing keyword on media-libs/tremor, bug #453200
+media-libs/gst-plugins-base ivorbis
+
+# Julian Ospald <hasufell@gentoo.org> (31 Mar 2013)
+# depends on mono
+>=net-irc/hexchat-2.9.4-r1 theme-manager
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (31 Jan 2013)
+# remove mask when net-libs/libqmi is keyworded here
+net-misc/modemmanager qmi qmi-newest
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (22 Jan 2013)
+# remove mask if/when media-gfx/argyllcms is keywored here.
+x11-misc/colord argyllcms extra-print-profiles
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (31 Dec 2012)
+# requires app-office/unoconv, which requires virtual/ooo, which is not
+# keyworded here. Remove mask if this situation changes.
+gnome-extra/sushi office
+
+# Raúl Porcel <armin76@gentoo.org> (30 Dec 2012)
+# Needs testing
+media-libs/phonon gstreamer vlc
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (27 Dec 2012)
+# remove mask when dev-java/fop is keyworded here
+gnome-extra/libgda reports
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (15 Dec 2012)
+# media-video/coherence not keyworded
+=media-video/totem-2* upnp-av
+
+# Luca Barbato <lu_zero@gentoo.org> (11 Nov 2012)
+# Libav 9 can use fdk-aac
+>=media-video/libav-9_beta2 fdk
+
+# Robin H Johnson <robbat2@gentoo.org> (01 Nov 2012)
+# MySQL 5.5 wants systemtap, tcmalloc & jemalloc
+>=dev-db/mysql-5.5 tcmalloc
+>=dev-db/mariadb-5.5 tcmalloc
+>=dev-db/percona-server-5.5 tcmalloc
+
+# Raúl Porcel <armin76@gentoo.org> (25 Jun 2012)
+# dev-qt/qtwebkit doesn't seem to work
+dev-python/PyQt4 webkit
+dev-qt/assistant webkit
+dev-qt/designer webkit
+dev-qt/qtdeclarative webkit
+dev-qt/qthelp webkit
+net-irc/kvirc webkit
+
+# Raúl Porcel <armin76@gentoo.org> (28 May 2012)
+# Needs x11-misc/lightdm(which also requires some other deps)
+x11-misc/xscreensaver new-login
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (25 May 2012)
+# Remove mask entry when app-accessibility/at-spi2-core
+# is keyworded here, bug #411761
+net-libs/webkit-gtk webkit2
+
+# Alexey Shvetsov <alexxy@gentoo.org> (17 Dec 2011)
+# mask use numa for openmpi
+sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_ofed_features_rdmacm
+
+# Patrick McLean <chutzpah@gentoo.org> (08 Nov 2011)
+# mask conntrack USE flag for dnsmasq as dep is not keyworded
+net-dns/dnsmasq conntrack
+
+# Tobias Klausmann <klausman@gentoo.org> (02 Nov 2011)
+# libpcre jit is not supported on alpha
+dev-libs/libpcre jit
+
+# Pacho Ramos <pacho@gentoo.org> (24 Oct 2011)
+# Missing keywords in needed packages, bug #388367
+net-im/empathy map
+
+# Raúl Porcel <armin76@gentoo.org> (08 Oct 2011)
+# Needs media-sound/lilypond
+app-text/asciidoc test
+
+# Patrick McLean <chutzpah@gentoo.org> (07 Sep 2011)
+# missing keywords on dependencies
+media-video/x264-encoder ffmpegsource
+
+# Robin H. Johnson <robbat2@gentoo.org> (03 Sep 2011)
+# Remove this for your arch after you keyword dev-utils/google-perftools (bug #381737)
+dev-libs/libmemcached tcmalloc
+
+# Alexey Shvetsov <alexxy@gentoo.org> (31 Aug 2011)
+# Mask numa use flag per bug #381313
+sys-apps/hwloc numa
+
+# Pacho Ramos <pacho@gentoo.org> (19 Jul 2011)
+# Missing keywords on dependencies
+app-cdr/brasero dvd
+
+# Pacho Ramos <pacho@gentoo.org> (30 Jun 2011)
+# Needed plugins are not keyworded on this arch
+media-plugins/gst-plugins-meta dts libvisual
+
+# Pacho Ramos <pacho@gentoo.org> (02 Apr 2011)
+# quvi support is needed to play youtube files now
+media-video/totem flash youtube
+
+# Diego Elio Pettenò <flameeyes@gentoo.org> (17 Dec 2010)
+# needs sys-libs/libcap-ng that is masked right now
+sys-apps/smartmontools caps
+
+# Raúl Porcel <armin76@gentoo.org> (5 Dec 2010)
+# Mask doc-pdf because of Java dependencies (bug #347259)
+net-analyzer/wireshark doc-pdf
+# legacy mask
+www-client/elinks javascript
+
+# Justin Lecher <jlec@gentoo.org> (13 Aug 2010)
+# MKL not available on this arch
+media-gfx/povray mkl
+
+# Raúl Porcel <armin76@gentoo.org> (26 Jun 2010)
+# custom-optimization doesn't work on alpha
+mail-client/thunderbird custom-optimization
+www-client/firefox custom-optimization
+www-client/seamonkey custom-optimization
+
+# Kacper Kowalik <xarthisius@gentoo.org> (30 May 2010)
+# quesoglc is not keyworded
+x11-misc/rss-glx quesoglc
+
+# uses games-board/ggz-gtk-client
+games-strategy/freeciv ggz
+
+# Ben de Groot <yngwin@gentoo.org> (16 Jan 2010)
+# qtmultimedia is not keyworded, bug 293671
+dev-python/PyQt4 multimedia
+
+# Raúl Porcel <armin76@gentoo.org> (07 Jul 2008)
+# Make clisp deps minimal
+dev-lisp/clisp hyperspec pari svm
+
+# Tobias Klausmann <klausman@gentoo.org> (15 Jun 2008)
+# No hardware to test net-dialup/linux-atm on alpha, so mask atm use flag
+# on those.
+sys-apps/iproute2 atm
+net-dialup/ppp atm
+
+# Needs nut and qstat respectively, neither is keyworded on alpha.
+net-analyzer/nagios-plugins ups nagios-game
+
+# Matt Turner <mattst88@gentoo.org> (26 Dec 2010)
+# No idea why. Bug 347827
+www-client/elinks javascript

@@ -1,0 +1,58 @@
+--- src/probes/linux/rpmdb.h.old	2010-10-22 15:16:49.000000000 +0200
++++ src/probes/linux/rpmdb.h	2010-10-22 15:22:09.000000000 +0200
+@@ -8,8 +8,8 @@
+  */
+ 
+ #include <assert.h>
+-#include "rpmlib.h"
+-#include "rpmsw.h"
++/*#include <rpmlib.h>
++#include <rpmsw.h>*/
+ #include "db.h"
+ 
+ /*@-exportlocal@*/
+@@ -508,7 +508,7 @@
+  * @param opx		per-rpmdb accumulator index (aka rpmtsOpX)
+  * @return		per-rpmdb accumulator pointer
+  */
+-void * dbiStatsAccumulator(dbiIndex dbi, int opx)
++rpmop_s * dbiStatsAccumulator(dbiIndex dbi, int opx)
+         /*@*/;
+ 
+ #if !defined(SWIG)
+@@ -576,7 +576,7 @@
+ 	/*@globals fileSystem, internalState @*/
+ 	/*@modifies dbi, *dbcursor, fileSystem, internalState @*/
+ {
+-    void * sw = dbiStatsAccumulator(dbi, 16);	/* RPMTS_OP_DBDEL */
++    rpmop_s *sw = dbiStatsAccumulator(dbi, 16);	/* RPMTS_OP_DBDEL */
+     int rc;
+     assert(key->data != NULL && key->size > 0);
+     (void) rpmswEnter(sw, 0);
+@@ -600,7 +600,7 @@
+ 	/*@globals fileSystem, internalState @*/
+ 	/*@modifies dbi, *dbcursor, *key, *data, fileSystem, internalState @*/
+ {
+-    void * sw = dbiStatsAccumulator(dbi, 14);	/* RPMTS_OP_DBGET */
++    rpmop_s * sw = dbiStatsAccumulator(dbi, 14);	/* RPMTS_OP_DBGET */
+     int rc;
+     assert((flags == DB_NEXT) || (key->data != NULL && key->size > 0));
+     (void) rpmswEnter(sw, 0);
+@@ -625,7 +625,7 @@
+ 	/*@globals fileSystem, internalState @*/
+ 	/*@modifies dbi, *dbcursor, *key, *pkey, *data, fileSystem, internalState @*/
+ {
+-    void * sw = dbiStatsAccumulator(dbi, 14);	/* RPMTS_OP_DBGET */
++    rpmop_s * sw = dbiStatsAccumulator(dbi, 14);	/* RPMTS_OP_DBGET */
+     int rc;
+     assert((flags == DB_NEXT) || (key->data != NULL && key->size > 0));
+     (void) rpmswEnter(sw, 0);
+@@ -649,7 +649,7 @@
+ 	/*@globals fileSystem, internalState @*/
+ 	/*@modifies dbi, *dbcursor, *key, fileSystem, internalState @*/
+ {
+-    void * sw = dbiStatsAccumulator(dbi, 15);	/* RPMTS_OP_DBPUT */
++    rpmop_s * sw = dbiStatsAccumulator(dbi, 15);	/* RPMTS_OP_DBPUT */
+     int rc;
+     assert(key->data != NULL && key->size > 0 && data->data != NULL && data->size > 0);
+     (void) rpmswEnter(sw, 0);

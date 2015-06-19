@@ -1,0 +1,33 @@
+# ChangeLog for dev-tex/slatex
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/slatex/ChangeLog,v 1.7 2015/05/31 00:14:05 mrueg Exp $
+
+  31 May 2015; Manuel Rüger <mrueg@gentoo.org> -slatex-20050609.ebuild:
+  Remove old.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> slatex-20050609.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  04 Nov 2012; Ulrich Müller <ulm@gentoo.org> slatex-20050609.ebuild,
+  slatex-20090928.ebuild:
+  Change LICENSE to "freedist": The license of the package doesn't grant the
+  right for modifications.
+
+*slatex-20090928 (01 Jul 2010)
+
+  01 Jul 2010; Tomas Touceda <chiiph@gentoo.org> +slatex-20090928.ebuild:
+  Version bump
+
+  17 Apr 2010; Panagiotis Christopoulos <pchrist@gentoo.org>
+  slatex-20050609.ebuild:
+  Fix old blocker drscheme to plt-scheme, fixes bug 304951
+
+  18 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  slatex-20050609.ebuild:
+  keyworded ~x86, bug 206526
+
+*slatex-20050609 (17 Jan 2008)
+
+  17 Jan 2008; Marijn Schouten <hkBst@gentoo.org> +metadata.xml,
+  +slatex-20050609.ebuild:
+  Initial commit, bug 188118

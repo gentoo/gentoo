@@ -1,0 +1,44 @@
+# ChangeLog for dev-java/jlfgr
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jlfgr/ChangeLog,v 1.11 2013/04/16 18:48:03 ulm Exp $
+
+  16 Apr 2013; Ulrich Müller <ulm@gentoo.org> jlfgr-1.0-r1.ebuild:
+  Fix LICENSE, bug 464000.
+
+  25 Dec 2007; Petteri Räty <betelgeuse@gentoo.org> -jlfgr-1.0.ebuild:
+  Remove generation 1 ebuild.
+
+  09 Dec 2007; Krzysiek Pawlik <nelchael@gentoo.org> jlfgr-1.0-r1.ebuild:
+  Stable on ppc, bug #201312.
+
+  06 Dec 2007; Samuli Suominen <drac@gentoo.org> jlfgr-1.0-r1.ebuild:
+  amd64 stable wrt #201312
+
+  05 Dec 2007; Markus Meier <maekke@gentoo.org> jlfgr-1.0-r1.ebuild:
+  x86 stable, bug #201312
+
+*jlfgr-1.0-r1 (30 Jan 2007)
+
+  30 Jan 2007; Miroslav Šulc <fordfrog@gentoo.org> +jlfgr-1.0-r1.ebuild:
+  Migrated by Alistair Bush <alistair.bush@gmail.com>, I just did minor
+  corrections (removed hardcoded version and added empty src_compile() to
+  prevent unneeded message).
+
+  05 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org> jlfgr-1.0.ebuild:
+  Dropping sparc keywords, see #96229
+
+  05 May 2005; Jan Brinkmann <luckyduck@gentoo.org> jlfgr-1.0.ebuild:
+  stable on amd64, ppc and x86
+
+  03 Nov 2004; Thomas Matthijs <axxo@gentoo.org> jlfgr-1.0.ebuild:
+  depend on app-arch/unzip
+
+  22 Oct 2004; Dylan Carlson <absinthe@gentoo.org> jlfgr-1.0.ebuild:
+  Keywords ~amd64.
+
+*jlfgr-1.0 (07 Oct 2004)
+
+  07 Oct 2004; Thomas Matthijs <axxo@gentoo.org> +metadata.xml,
+  +jlfgr-1.0.ebuild:
+  Initial import, added as a dep
+

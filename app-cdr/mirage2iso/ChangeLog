@@ -1,0 +1,56 @@
+# ChangeLog for app-cdr/mirage2iso
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/mirage2iso/ChangeLog,v 1.13 2015/06/07 19:02:02 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add bitbucket to remote-id in metadata.xml
+
+*mirage2iso-0.4.1 (24 Feb 2015)
+
+  24 Feb 2015; Michał Górny <mgorny@gentoo.org> +mirage2iso-0.4.1.ebuild:
+  Version bump. Fixes libmirage-3.0.0 compatibility.
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> mirage2iso-0.4.ebuild,
+  mirage2iso-9999.ebuild:
+  Replace obsolete mirror://bitbucket with the real URI.
+
+  14 Oct 2013; Michał Górny <mgorny@gentoo.org> mirage2iso-9999.ebuild:
+  Switch to git-r3. Add slot operators.
+
+  29 Jun 2013; Michael Palimaka <kensington@gentoo.org>
+  -mirage2iso-0.3.1.ebuild:
+  Remove old version which has unsatisfiable dependencies.
+
+*mirage2iso-0.4 (28 Jan 2013)
+
+  28 Jan 2013; Michał Górny <mgorny@gentoo.org> +mirage2iso-0.4.ebuild,
+  mirage2iso-9999.ebuild:
+  Version bump. Support libmirage-2.0.0.
+
+  28 Jan 2013; Michał Górny <mgorny@gentoo.org> mirage2iso-0.3.1.ebuild:
+  Update libmirage dep due to API change in 2.0.0. Bug #454360.
+
+*mirage2iso-9999 (15 Dec 2012)
+
+  15 Dec 2012; Michał Górny <mgorny@gentoo.org> +mirage2iso-9999.ebuild:
+  Import the live ebuild.
+
+  30 Aug 2012; Michał Górny <mgorny@gentoo.org> metadata.xml,
+  mirage2iso-0.3.1.ebuild:
+  Sync to the live ebuild, and fix build issues with gold linker.
+
+  24 Apr 2012; Michał Górny <mgorny@gentoo.org> mirage2iso-0.3.1.ebuild:
+  Update to use mirror://.
+
+  05 Jan 2011; Michał Górny <mgorny@gentoo.org> mirage2iso-0.3.1.ebuild:
+  Fix needless double-unpacking of tests.
+
+  05 Jan 2011; Michał Górny <mgorny@gentoo.org> mirage2iso-0.3.1.ebuild:
+  EAPI bump.
+
+*mirage2iso-0.3.1 (02 Jan 2011)
+
+  02 Jan 2011; Michał Górny <mgorny@gentoo.org> +mirage2iso-0.3.1.ebuild,
+  +metadata.xml:
+  New ebuild for mirage2iso CD/DVD image converter, as requested in bug
+  #283565.

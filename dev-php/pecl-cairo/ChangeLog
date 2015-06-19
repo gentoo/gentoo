@@ -1,0 +1,35 @@
+# ChangeLog for dev-php/pecl-cairo
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/pecl-cairo/ChangeLog,v 1.7 2014/10/10 02:09:47 grknight Exp $
+
+  30 Sep 2014; Brian Evans <grknight@gentoo.org> -pecl-cairo-0.3.1.ebuild:
+  Drop old
+
+*pecl-cairo-0.3.2 (09 Dec 2013)
+
+  09 Dec 2013; Matti Bickel <mabi@gentoo.org> +pecl-cairo-0.3.2.ebuild:
+  version bump, eapi bump; Replace custom src_unpack by setting S/PHP_EXT_S
+  according to non-standard pecl-cairo packaging
+
+  13 Apr 2012; Ulrich Müller <ulm@gentoo.org> pecl-cairo-0.3.1.ebuild:
+  Move EAPI assignment to top of ebuild, bug 411875.
+
+  16 Feb 2012; Ole Markus With <olemarkus@gentoo.org>
+  -pecl-cairo-0.2.0-r1.ebuild:
+  Removing 0.2.0. No way this ebuild even installs anymore
+
+*pecl-cairo-0.3.1 (16 Feb 2012)
+
+  16 Feb 2012; Ole Markus With <olemarkus@gentoo.org> +pecl-cairo-0.3.1.ebuild:
+  Version bump
+
+*pecl-cairo-0.2.0-r1 (31 Oct 2010)
+
+  31 Oct 2010; <olemarkus@gentoo.org> +pecl-cairo-0.2.0-r1.ebuild:
+  Added a version that supports minor version slotting
+
+*pecl-cairo-0.2.0 (27 Sep 2010)
+
+  27 Sep 2010; <olemarkus@gentoo.org> +pecl-cairo-0.2.0.ebuild,
+  +metadata.xml:
+  Added pecl-cairo-0.2.0

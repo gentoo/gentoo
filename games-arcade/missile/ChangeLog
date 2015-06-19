@@ -1,0 +1,50 @@
+# ChangeLog for games-arcade/missile
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/missile/ChangeLog,v 1.16 2015/03/31 16:09:48 mr_bones_ Exp $
+
+  31 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> missile-1.0.1.ebuild:
+  alpha and sparc are unstable
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> missile-1.0.1.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  03 Apr 2014; Michael Sterrett <mr_bones_@gentoo.org> missile-1.0.1.ebuild:
+  EAPI=5; fix up linking (bug #496950); improve icon install
+
+  11 Oct 2010; Michael Sterrett <mr_bones_@gentoo.org> missile-1.0.1.ebuild:
+  tidy; honor CC; add use-deps
+
+  22 Sep 2010; Tupone Alfredo <tupone@gentoo.org> missile-1.0.1.ebuild,
+  +files/missile-1.0.1-ldflags.patch:
+  Respect LDFLAGS. Bug #337913 by flameeyes@gentoo.org
+
+  06 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org> missile-1.0.1.ebuild:
+  Removed sed-4 from *DEPEND.
+
+  11 May 2006; Thomas Cort <tcort@gentoo.org> missile-1.0.1.ebuild:
+  Stable on alpha.
+
+  05 Mar 2006; Fernando J. Pereda <ferdy@gentoo.org> missile-1.0.1.ebuild:
+  Add ~alpha keyword, wrt bug #123888. Tested by Mike Hlavac
+  <mike@flyingpenguins.org> and Thomas Cort <tcort@cs.ubishops.ca>
+
+  15 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org> missile-1.0.1.ebuild:
+  Removed INSTALL file.
+
+  31 May 2005; Marcus D. Hanwell <marcus@gentoo.org> missile-1.0.1.ebuild:
+  Stable on amd64.
+
+  30 May 2004; Gustavo Zacarias <gustavoz@gentoo.org> missile-1.0.1.ebuild:
+  Stable on sparc
+
+  07 May 2004; Ciaran McCreesh <ciaranm@gentoo.org> missile-1.0.1.ebuild:
+  Added ~sparc, #50388
+
+  24 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> missile-1.0.1.ebuild:
+  IUSE; tidy; error check sed
+
+*missile-1.0.1 (07 Jul 2003)
+
+  07 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Matsuu Takuto <matsuu@gentoo.org>.

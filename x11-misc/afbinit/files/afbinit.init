@@ -1,0 +1,14 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/afbinit/files/afbinit.init,v 1.3 2004/07/15 01:03:55 agriffis Exp $
+
+depend() {
+	before xdm
+}
+
+start() {
+	ebegin "Loading afbinit"
+	/usr/sbin/rc.afb
+	eend $? "Failed to load afbinit"
+}

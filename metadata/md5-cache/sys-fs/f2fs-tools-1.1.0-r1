@@ -1,0 +1,9 @@
+DEFINED_PHASES=configure
+DESCRIPTION=Tools for Flash-Friendly File System (F2FS)
+EAPI=4
+HOMEPAGE=http://sourceforge.net/projects/f2fs-tools/ http://git.kernel.org/?p=linux/kernel/git/jaegeuk/f2fs-tools.git;a=summary
+KEYWORDS=amd64 arm ppc ppc64 x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~blueness/f2fs-tools/f2fs-tools-1.1.0.tar.gz
+_md5_=a5107d677e117c857957c782baa7ec57

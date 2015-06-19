@@ -1,0 +1,649 @@
+--- a/nepenthes-core/src/Makefile.am
++++ b/nepenthes-core/src/Makefile.am
+@@ -4,7 +4,7 @@
+ 
+ AUTOMAKE_OPTIONS = foreign
+ 
+-AM_CPPFLAGS = -I../include -I ../.. -Wall -Werror
++AM_CPPFLAGS = -I../include -I ../.. -Wall 
+ AM_LDFLAGS = ${LIB_MAGIC} ${LIB_CAP} ${LIB_DL}
+ 
+ bin_PROGRAMS = nepenthes
+--- a/modules/x-3/Makefile.am
++++ b/modules/x-3/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = x3.la
+--- a/modules/vuln-ftpd/Makefile.am
++++ b/modules/vuln-ftpd/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = vulnftpd.la
+--- a/modules/download-link/Makefile.am
++++ b/modules/download-link/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = downloadlink.la
+--- a/modules/vuln-netbiosname/Makefile.am
++++ b/modules/vuln-netbiosname/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = vulnnetbiosname.la
+--- a/modules/submit-http/Makefile.am
++++ b/modules/submit-http/Makefile.am
+@@ -1,7 +1,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ AM_LDFLAGS = $(LIB_CURL)
+ 
+--- a/modules/download-creceive/Makefile.am
++++ b/modules/download-creceive/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = downloadcreceive.la
+--- a/modules/module-bridge/Makefile.am
++++ b/modules/module-bridge/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = modulebridge.la
+--- a/modules/vuln-sub7/Makefile.am
++++ b/modules/vuln-sub7/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = vulnsub7.la
+--- a/modules/x-9/Makefile.am
++++ b/modules/x-9/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = x9.la
+--- a/modules/module-honeytrap/Makefile.am
++++ b/modules/module-honeytrap/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE -I/usr/include/libipq
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ AM_LDFLAGS = ${LIB_PCAP} ${LIB_IPQ} 
+ 
+ pkglib_LTLIBRARIES = modulehoneytrap.la
+--- a/modules/x-6/Makefile.am
++++ b/modules/x-6/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = x6.la
+--- a/modules/log-hexdump/Makefile.am
++++ b/modules/log-hexdump/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = loghexdump.la
+--- a/modules/submit-gotek/Makefile.am
++++ b/modules/submit-gotek/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = submitgotek.la
+--- a/modules/dnsresolve-adns/Makefile.am
++++ b/modules/dnsresolve-adns/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ AM_LDFLAGS = ${LIB_ADNS}
+ 
+ pkglib_LTLIBRARIES = dnsresolveadns.la
+--- a/modules/download-ftp/Makefile.am
++++ b/modules/download-ftp/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = downloadftp.la
+--- a/modules/vuln-realvnc/Makefile.am
++++ b/modules/vuln-realvnc/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = vulnrealvnc.la
+--- a/modules/module-peiros/Makefile.am
++++ b/modules/module-peiros/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = modulepeiros.la
+--- a/modules/submit-postgres/Makefile.am
++++ b/modules/submit-postgres/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = submitpostgres.la
+--- a/modules/download-curl/Makefile.am
++++ b/modules/download-curl/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ AM_LDFLAGS = ${LIB_CURL}
+ 
+ pkglib_LTLIBRARIES = downloadcurl.la
+--- a/modules/download-http/Makefile.am
++++ b/modules/download-http/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = downloadhttp.la
+--- a/modules/log-surfnet/Makefile.am
++++ b/modules/log-surfnet/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -I/usr/include/postgresql -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ pkglib_LTLIBRARIES = logsurfnet.la
+ 
+--- a/modules/log-download/Makefile.am
++++ b/modules/log-download/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = logdownload.la
+--- a/modules/download-csend/Makefile.am
++++ b/modules/download-csend/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = downloadcsend.la
+--- a/modules/submit-mwserv/Makefile.am
++++ b/modules/submit-mwserv/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ AM_LDFLAGS = $(LIB_CURL)
+ 
+--- a/modules/vuln-wins/Makefile.am
++++ b/modules/vuln-wins/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = vulnwins.la
+--- a/modules/x-2/Makefile.am
++++ b/modules/x-2/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = x2.la
+--- a/modules/vuln-pnp/Makefile.am
++++ b/modules/vuln-pnp/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = vulnpnp.la
+--- a/modules/vuln-upnp/Makefile.am
++++ b/modules/vuln-upnp/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = vulnupnp.la
+--- a/modules/vuln-msmq/Makefile.am
++++ b/modules/vuln-msmq/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = vulnmsmq.la
+--- a/modules/vuln-dcom/Makefile.am
++++ b/modules/vuln-dcom/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = vulndcom.la
+--- a/modules/vuln-mydoom/Makefile.am
++++ b/modules/vuln-mydoom/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = vulnmydoom.la
+--- a/modules/submit-norman/Makefile.am
++++ b/modules/submit-norman/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ AM_LDFLAGS = ${LIB_CURL}
+ 
+ pkglib_LTLIBRARIES = submitnorman.la
+--- a/modules/vuln-asn1/Makefile.am
++++ b/modules/vuln-asn1/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = vulnasn1.la
+--- a/modules/vuln-lsass/Makefile.am
++++ b/modules/vuln-lsass/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = vulnlsass.la
+--- a/modules/log-irc/Makefile.am
++++ b/modules/log-irc/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = logirc.la
+--- a/modules/vuln-netdde/Makefile.am
++++ b/modules/vuln-netdde/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = vulnnetdde.la
+--- a/modules/vuln-optix/Makefile.am
++++ b/modules/vuln-optix/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ AM_LDFLAGS = ${LIB_PCRE}
+ 
+ pkglib_LTLIBRARIES = vulnoptix.la
+--- a/modules/vuln-sav/Makefile.am
++++ b/modules/vuln-sav/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ pkglib_LTLIBRARIES = vulnsav.la
+ 
+--- a/modules/vuln-sasserftpd/Makefile.am
++++ b/modules/vuln-sasserftpd/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = vulnsasserftpd.la
+--- a/modules/submit-file/Makefile.am
++++ b/modules/submit-file/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = submitfile.la
+--- a/modules/vuln-bagle/Makefile.am
++++ b/modules/vuln-bagle/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ pkglib_LTLIBRARIES = vulnbagle.la
+ 
+--- a/modules/vuln-ssh/Makefile.am
++++ b/modules/vuln-ssh/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ AM_LDFLAGS = ${LIB_SSH}
+ 
+ pkglib_LTLIBRARIES = vulnssh.la
+--- a/modules/vuln-kuang2/Makefile.am
++++ b/modules/vuln-kuang2/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = vulnkuang2.la
+--- a/modules/vuln-msdtc/Makefile.am
++++ b/modules/vuln-msdtc/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = vulnmsdtc.la
+--- a/modules/x-5/Makefile.am
++++ b/modules/x-5/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = x5.la
+--- a/modules/shellemu-winnt/Makefile.am
++++ b/modules/shellemu-winnt/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = shellemuwinnt.la
+--- a/modules/x-1/Makefile.am
++++ b/modules/x-1/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = x1.la
+--- a/modules/x-4/Makefile.am
++++ b/modules/x-4/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = x4.la
+--- a/modules/vuln-mssql/Makefile.am
++++ b/modules/vuln-mssql/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ pkglib_LTLIBRARIES = vulnmssql.la
+ 
+--- a/modules/shellcode-signatures/Makefile.am
++++ b/modules/shellcode-signatures/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ AM_CFLAGS = -Wall
+ AM_LDFLAGS = ${LIB_PCRE} @LEXLIB@ ${LIB_LIBY}
+ 
+--- a/modules/download-rcp/Makefile.am
++++ b/modules/download-rcp/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = downloadrcp.la
+--- a/modules/shellcode-generic/Makefile.am
++++ b/modules/shellcode-generic/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ AM_LDFLAGS = ${LIB_PCRE}
+ 
+ pkglib_LTLIBRARIES = shellcodegeneric.la
+--- a/modules/module-portwatch/Makefile.am
++++ b/modules/module-portwatch/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = moduleportwatch.la
+--- a/modules/vuln-dameware/Makefile.am
++++ b/modules/vuln-dameware/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = vulndameware.la
+--- a/modules/sqlhandler-postgres/Makefile.am
++++ b/modules/sqlhandler-postgres/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ AM_LDFLAGS = ${LIB_POSTGRES}
+ 
+ pkglib_LTLIBRARIES = sqlhandlerpostgres.la
+--- a/modules/vuln-iis/Makefile.am
++++ b/modules/vuln-iis/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = vulniis.la
+--- a/modules/download-tftp/Makefile.am
++++ b/modules/download-tftp/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = downloadtftp.la
+--- a/modules/vuln-veritas/Makefile.am
++++ b/modules/vuln-veritas/Makefile.am
+@@ -5,7 +5,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/nepenthes-core/include -I$(top_srcdir)/nepenthes-core/src -pipe -D _GNU_SOURCE
+-AM_CXXFLAGS = -Wall -Werror
++AM_CXXFLAGS = -Wall 
+ 
+ 
+ pkglib_LTLIBRARIES = vulnveritas.la

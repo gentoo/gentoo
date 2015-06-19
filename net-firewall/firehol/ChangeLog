@@ -1,0 +1,279 @@
+# ChangeLog for net-firewall/firehol
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/firehol/ChangeLog,v 1.57 2015/04/30 18:12:41 alonbl Exp $
+
+  30 Apr 2015; Alon Bar-Lev <alonbl@gentoo.org> firehol-2.0.2.ebuild:
+  Override ip6tables at configure as it has no effect, bug#547188
+
+*firehol-2.0.2 (14 Apr 2015)
+
+  14 Apr 2015; Alon Bar-Lev <alonbl@gentoo.org>
+  +files/firehol-2.0.2-autosave.patch, +firehol-2.0.2.ebuild,
+  -firehol-2.0.1.ebuild:
+  Version bump
+
+  05 Mar 2015; Alon Bar-Lev <alonbl@gentoo.org> firehol-2.0.1.ebuild:
+  fix autosave locations
+
+*firehol-2.0.1 (05 Mar 2015)
+
+  05 Mar 2015; Alon Bar-Lev <alonbl@gentoo.org> +files/fireqos.conf.d,
+  +files/fireqos.initrd, +firehol-2.0.1.ebuild, -files/firehol.initrd,
+  files/firehol.initrd.1:
+  Version bump, bug#542148
+
+  14 Dec 2012; Alon Bar-Lev <alonbl@gentoo.org> metadata.xml:
+  Assign as a maintainer
+
+  22 Aug 2012; Johannes Huber <johu@gentoo.org> -firehol-1.273-r1.ebuild,
+  -firehol-1.273-r2.ebuild:
+  Remove old.
+
+  22 Aug 2012; Johannes Huber <johu@gentoo.org> firehol-1.273-r3.ebuild:
+  Stable for x86, wrt bug #429162
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> firehol-1.273-r3.ebuild:
+  Stable for amd64, wrt bug #429162
+
+*firehol-1.273-r3 (12 Jun 2012)
+
+  12 Jun 2012; Michael Weber <xmw@gentoo.org> +files/firehol.initrd.1,
+  +firehol-1.273-r3.ebuild:
+  Version bump (bug 420147 by Khayyam)
+
+  03 Apr 2012; Pacho Ramos <pacho@gentoo.org> +files/RESERVED_IPS:
+  Commit missing files, #410689 by Alon Bar-Lev
+
+*firehol-1.273-r2 (02 Apr 2012)
+
+  02 Apr 2012; Pacho Ramos <pacho@gentoo.org>
+  +files/firehol-1.273-log-output.patch, +firehol-1.273-r2.ebuild:
+  Add missing kernel checks (#310797 by Phil Koenig, Tom Knight, Tyler
+  Montbriand), use static and fixed RESERVED_IPS file (#332135 by Richard Gray),
+  handle errors better (#332507 by Tyler Montbriand).
+
+  25 Feb 2012; Robin H. Johnson <robbat2@gentoo.org> firehol-1.273-r1.ebuild:
+  Bug #405687: Depend on virtual/modutils instead of sys-apps/module-init-tools.
+
+  24 Apr 2011; Ulrich Mueller <ulm@gentoo.org> firehol-1.273-r1.ebuild:
+  Replace dependency on virtual/modutils, bug 358891.
+
+  29 Sep 2009; Thilo Bangert <bangert@gentoo.org>
+  -files/firehol-1.226-to-228.patch, -firehol-1.250-r2.ebuild,
+  -files/firehol-1.250-printf.patch, -firehol-1.256-r1.ebuild,
+  -firehol-1.273.ebuild:
+  remove old versions
+
+  04 Sep 2009; Víctor Ostorga <vostorga@gentoo.org>
+  -files/firehol-1.250-groupwith.patch, -files/firehol-1.256-printf.patch:
+  Cleaning out unused patches
+
+  16 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  firehol-1.273-r1.ebuild:
+  stable x86, security bug 246013
+
+*firehol-1.273-r1 (15 Jul 2009)
+
+  15 Jul 2009; Robert Buchholz <rbu@gentoo.org>
+  +files/firehol-1.273-CVE-2008-4953.patch, +firehol-1.273-r1.ebuild:
+  Patch CVE-2008-4953, symlink attack on a firehol directory in /tmp. Patch
+  tested by Kerin Millar, thanks. Fixes bug 246013.
+
+  09 Mar 2009; Raúl Porcel <armin76@gentoo.org> firehol-1.273.ebuild:
+  x86 stable wrt #261699
+
+  25 Jan 2009; Jeremy Olexa <darkside@gentoo.org>
+  -files/firehol-1.226-to-250.patch, -firehol-1.250.ebuild,
+  -firehol-1.250-r1.ebuild, firehol-1.250-r2.ebuild, -firehol-1.256.ebuild:
+  (non maintainer commit) [QA] Move big file to mirrors, bug 248994. Also
+  remove old versions
+
+*firehol-1.273 (13 Oct 2008)
+
+  13 Oct 2008; Gordon Malm <gengor@gentoo.org> +firehol-1.273.ebuild:
+  Version bump.  Thanks to Syed Amer Gilani and Kerin Millar in bug #233787.
+
+  27 Sep 2008; Petteri Räty <betelgeuse@gentoo.org>
+  firehol-1.256-r1.ebuild:
+  Use EAPI 2 use dependencies instead of built_with_use.
+
+  28 May 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Dominik Stadler (centic) from metadata.xml (as per #40994).
+  Assigning to maintainer-needed.
+
+  26 Apr 2008; Alon Bar-Lev <alonbl@gentoo.org> files/firehol.initrd:
+  Add 'after bootmisc' to init script, as openrc cleans /tmp while firefox uses it
+
+  13 Feb 2008; Alon Bar-Lev <alonbl@gentoo.org> files/firehol.initrd:
+  Add 'need localmount' to init.d script, bug#198169
+
+  03 Nov 2007; Dominik Stadler <centic@gentoo.org> firehol-1.250.ebuild,
+  firehol-1.250-r1.ebuild, firehol-1.250-r2.ebuild, firehol-1.256.ebuild,
+  firehol-1.256-r1.ebuild:
+  Bug 198217: fix mistake in quoting
+
+*firehol-1.256-r1 (02 Nov 2007)
+
+  02 Nov 2007; Dominik Stadler <centic@gentoo.org> firehol-1.250.ebuild,
+  firehol-1.250-r1.ebuild, firehol-1.250-r2.ebuild, firehol-1.256.ebuild,
+  +firehol-1.256-r1.ebuild:
+  Bug 195378, fix check for zcat, Bug 172000, add check for kernel
+  configuration, also add missing quotes as reported by repoman
+
+*firehol-1.256 (01 Jun 2007)
+
+  01 Jun 2007; <dstadler@gentoo.org> +files/firehol-1.256-printf.patch,
+  +firehol-1.256.ebuild:
+  Bump to version 1.256, fixes bug 180302, thanks for providing patches
+
+  15 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  06 May 2007; Marius Mauch <genone@gentoo.org> firehol-1.250.ebuild,
+  firehol-1.250-r1.ebuild, firehol-1.250-r2.ebuild:
+  Replacing einfo with elog
+
+*firehol-1.250-r2 (05 May 2007)
+
+  05 May 2007; Dominik Stadler <centic@gentoo.org> +firehol-1.250-r2.ebuild:
+  Revert bug 171719, breaks group with, see Bug 176862.
+
+  28 Apr 2007; Sven Wegener <swegener@gentoo.org> firehol-1.250.ebuild:
+  Fix *initd, *confd and *envd calls (#173884, #174266)
+
+*firehol-1.250-r1 (26 Apr 2007)
+
+  26 Apr 2007; Dominik Stadler <centic@gentoo.org>
+  +files/firehol-1.250-groupwith.patch, -firehol-1.226-r1.ebuild,
+  +firehol-1.250-r1.ebuild:
+  remove 1.226, 250 is as stable as 226. Add patch for 'group with', fixes Bug
+  171719, thanks to Marshal Newrock for the patch. Use newconfd, fixes Bug
+  174266.
+
+  26 Jan 2007; Dominik Stadler <centic@gentoo.org> firehol-1.226-r1.ebuild,
+  firehol-1.250.ebuild:
+  Don't include COPYING, mark 1.250 stable on x86
+
+  30 Dec 2006; Dominik Stadler <centic@gentoo.org>
+  files/firehol-1.226-to-250.patch:
+  Fix patch again, CVS-replacement played tricks on me.
+
+  29 Dec 2006; Dominik Stadler <centic@gentoo.org>
+  files/firehol-1.226-to-250.patch:
+  Fix invalid patch, not sure how this worked before for me.
+
+*firehol-1.250 (27 Dec 2006)
+
+  27 Dec 2006; Dominik Stadler <centic@gentoo.org>
+  +files/firehol-1.226-to-250.patch, +files/firehol-1.250-printf.patch,
+  +firehol-1.250.ebuild:
+  Add version 250 from CVS, fixes bug 151588. Depend on iproute2, fixes Bug
+  152537. Change printf-statements, fixes Bugs 153858 and 139526
+
+  20 Aug 2006; Jason Wever <weeve@gentoo.org> firehol-1.226-r1.ebuild:
+  Added ~sparc keyword wrt bug #137899.
+
+  23 Jul 2006; Dominik Stadler <centic@gentoo.org>
+  -files/firehol-1.191-bash-3.0.patch, -firehol-1.120.ebuild,
+  -firehol-1.159-r1.ebuild, -firehol-1.224.ebuild, -firehol-1.226.ebuild:
+  Remove old versions including some that have security problems, fixes part
+  of Bug 140517
+
+  21 Apr 2005; Dominik Stadler <centic@gentoo.org> firehol-1.226-r1.ebuild:
+  Mark stable on x86
+
+  17 Mar 2005; Joseph Jezak <josejx@gentoo.org> firehol-1.226-r1.ebuild:
+  Marked ~ppc for bug #85474.
+
+  13 Feb 2005; Dominik Stadler <centic@gentoo.org> firehol-1.226-r1.ebuild:
+  Small fix to comments
+
+*firehol-1.226-r1 (12 Feb 2005)
+
+  12 Feb 2005; Dominik Stadler <centic@gentoo.org>
+  files/firehol.initrd:
+  Fix firehol.initrd with try-action. Fixes Bug 81313
+
+*firehol-1.226-r1 (12 Feb 2005)
+
+  12 Feb 2005; Dominik Stadler <centic@gentoo.org>
+  +files/firehol-1.226-to-228.patch, +firehol-1.226-r1.ebuild:
+  Add patch to include changes from 1.228 for embedded Gentoo-GNAP.
+  Also add check to make sure that iproute2 is not installed with 
+  USE="minimal", fixes Bug 81600.
+  
+
+  02 Feb 2005; Dominik Stadler <centic@gentoo.org> -firehol-1.191-r2.ebuild,
+  -firehol-1.214.ebuild:
+  Remove old versions.
+
+*firehol-1.226 (02 Feb 2005)
+
+  02 Feb 2005; Dominik Stadler <centic@gentoo.org> +firehol-1.226.ebuild:
+  Add new Version 1.226
+
+*firehol-1.224 (27 Jan 2005)
+
+  27 Jan 2005; Dominik Stadler <centic@gentoo.org>
+  +files/firehol-1.224-to-226.patch, +firehol-1.224.ebuild:
+  Add new version to fix security problems, see Bug 79330
+
+  30 Dec 2004; Dominik Stadler <centic@gentoo.org> firehol-1.159-r1.ebuild,
+  -firehol-1.159.ebuild, -firehol-1.191-r1.ebuild, firehol-1.191-r2.ebuild,
+  -firehol-1.191.ebuild, firehol-1.214.ebuild, -firehol-1.91.ebuild:
+  Remove old versions and mark stable on x86.
+
+  12 Nov 2004; Simon Stelling <blubb@gentoo.org> firehol-1.214.ebuild:
+  added ~amd64
+
+*firehol-1.214 (09 Nov 2004)
+
+  09 Nov 2004; Dominik Stadler <centic@gentoo.org> files/firehol.initrd,
+  +firehol-1.214.ebuild:
+  Add new Version 1.214, fix order of options in init-script
+
+*firehol-1.191-r2 (02 Oct 2004)
+
+  02 Oct 2004; Dominik Stadler <centic@gentoo.org> metadata.xml,
+  files/firehol.initrd, firehol-1.191-r1.ebuild, +firehol-1.191-r2.ebuild:
+  Add 1.191-r2 with enhanced init-script, fixes Bug 65718, thanks to Eric R.
+  Stoeckel, Jr. for the script. Update metadata.xml
+
+*firehol-1.191-r1 (01 Aug 2004)
+
+  01 Aug 2004; Dominik Stadler <centic@gentoo.org>
+  +files/firehol-1.191-bash-3.0.patch, +firehol-1.191-r1.ebuild:
+  Add patch to fix problems with bash-3.0, see Bug 59098
+
+*firehol-1.191 (18 May 2004)
+
+  18 May 2004; Dominik Stadler <centic@gentoo.org> +files/firehol.initrd,
+  +firehol-1.191.ebuild:
+  Add new Version 1.191, should fix Bug 49822 and also Bug 46487 and Bug 33428
+
+  03 May 2004; David Holm <dholm@gentoo.org> firehol-1.159-r1.ebuild:
+  Added to ~ppc.
+
+*firehol-1.159-r1 (02 May 2004)
+
+  02 May 2004; Dominik Stadler <centic@gentoo.org> +metadata.xml,
+  firehol-1.120.ebuild, +firehol-1.159-r1.ebuild, firehol-1.159.ebuild:
+  Avoid warnings because of deprectated command syntax when calling 'head'. Add
+  missing IUSE.
+
+*firehol-1.159 (14 Oct 2003)
+
+  14 Oct 2003; Martin Holzer <mholzer@gentoo.org> firehol-1.159.ebuild:
+  Version bumped. closes #31052.
+
+*firehol-1.120 (06 Apr 2003)
+
+  06 Apr 2003; Sascha Schwabbauer <cybersystem@gentoo.org> firehol-1.120.ebuild, files/digest-firehol-1.120 :
+
+  Version bump, again thanks to Maik Schreiber <blizzy@blizzy.de> in bug #18837
+
+*firehol-1.91 (05 Apr 2003)
+
+  05 Apr 2003; Sascha Schwabbauer <cybersystem@gentoo.org> ChangeLog, firehol-1.91.ebuild, files/digest-firehol-1.91 :
+
+  Initial commit, made by Maik Schreiber <blizzy@blizzy.de> in bug #18808

@@ -1,0 +1,12 @@
+# ChangeLog for dev-haskell/hsb2hs
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hsb2hs/ChangeLog,v 1.2 2015/02/18 21:15:38 slyfox Exp $
+
+  18 Feb 2015; Sergei Trofimovich <slyfox@gentoo.org> hsb2hs-0.2.ebuild:
+  amd64/x86 stable, bug #490692
+
+*hsb2hs-0.2 (18 Feb 2015)
+
+  18 Feb 2015; Sergei Trofimovich <slyfox@gentoo.org> +hsb2hs-0.2.ebuild,
+  +metadata.xml:
+  Initial commit. A depend for app-text/pandoc.

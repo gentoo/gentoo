@@ -1,0 +1,27 @@
+#!/sbin/runscript
+# Copyright 2006 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-usbin/files/powerd.initd,v 1.3 2007/02/23 14:03:08 uberlord Exp $
+
+depend() {
+	need localmount
+}
+
+start() {
+	local args=
+	[ -n "${BATTERY_MODE}" ] && args="${args} -b ${BATTERY_MODE}"
+	[ -n "${AC_MODE}" ] && args="${args} -a ${AC_MODE}"
+	
+	ebegin "Starting Power Control Daemon"
+	start-stop-daemon --start --exec /usr/sbin/powerd \
+		--pidfile /var/run/powerd.pid \
+		-- ${args} ${POWERD_OPTS}
+	eend $? "Failed to start powerd"
+}
+
+stop() {
+	ebegin "Stopping Power Control Daemon"
+	start-stop-daemon --stop --exec /usr/sbin/powerd \
+		--pidfile /var/run/powerd.pid
+	eend $? "Failed to stop powerd"
+}

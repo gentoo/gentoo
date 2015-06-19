@@ -1,0 +1,60 @@
+# ChangeLog for games-util/gslist
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-util/gslist/ChangeLog,v 1.14 2015/04/20 16:57:41 mr_bones_ Exp $
+
+  20 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/gslist-0.8.8a-build.patch, -gslist-0.8.8a.ebuild:
+  old
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org> gslist-0.8.11a.ebuild:
+  Stable for x86, wrt bug #546674
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org> gslist-0.8.11a.ebuild:
+  Stable for amd64, wrt bug #546674
+
+*gslist-0.8.11a (16 Mar 2015)
+
+  16 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/gslist-0.8.11a-build.patch, +gslist-0.8.11a.ebuild,
+  files/gslist-0.8.8a-build.patch:
+  version bump
+
+  25 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org> gslist-0.8.8a.ebuild:
+  Fix S
+
+  19 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org> gslist-0.8.8a.ebuild:
+  EAPI=5
+
+  22 May 2010; Pacho Ramos <pacho@gentoo.org> gslist-0.8.8a.ebuild:
+  stable amd64, bug 303833
+
+  03 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> gslist-0.8.8a.ebuild:
+  x86 stable wrt bug #303833
+
+*gslist-0.8.8a (08 Jan 2010)
+
+  08 Jan 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +gslist-0.8.8a.ebuild, +files/gslist-0.8.8a-build.patch:
+  version bump (bug #299926)
+
+  06 Jan 2010; Jeroen Roovers <jer@gentoo.org> gslist-0.8.8.ebuild:
+  Marked ~hppa too.
+
+  29 Oct 2009; Markus Meier <maekke@gentoo.org> gslist-0.8.8.ebuild:
+  amd64/x86 stable, bug #288937
+
+*gslist-0.8.8 (29 Jul 2009)
+
+  29 Jul 2009; Tristan Heaven <nyhm@gentoo.org> +gslist-0.8.8.ebuild,
+  +files/gslist-0.8.8-build.patch, metadata.xml:
+  Version bump
+
+  18 Mar 2008; Tristan Heaven <nyhm@gentoo.org>
+  files/gslist-0.8.2-build.patch, gslist-0.8.2.ebuild:
+  Add ~amd64 keyword
+
+*gslist-0.8.2 (04 Jan 2007)
+
+  04 Jan 2007; Tristan Heaven <nyhm@gentoo.org>
+  +files/gslist-0.8.2-build.patch, +metadata.xml, +gslist-0.8.2.ebuild:
+  Initial commit, bug #111319

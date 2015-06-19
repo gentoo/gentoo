@@ -1,0 +1,103 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/features/prefix/package.mask,v 1.1 2014/01/18 02:01:20 redlizard Exp $
+
+# Fabian Groffen <grobian@gentoo.org> (09 Nov 2012)
+# fails to properly run config.status (and thus create libtool) on
+# non-Linux platforms, fails with hard error when not using bash, caused
+# by EAPI 4's --disable-dependency-tracking (#383863 c12)
+=dev-libs/libgpg-error-1.10-r1
+
+# Fabian Groffen <grobian@gentoo.org> (27 Oct 2012)
+# fails to compile with parallel make (help2man issues)
+# fails to link wrt libiconv
+=sys-apps/coreutils-8.20
+
+# Benda Xu <heroxbd@gentoo.org> (07 Aug 2012)
+# mask revision for testing out openrc. bug #415895. 
+=sys-apps/baselayout-prefix-1.12.14-r1
+
+# Fabian Groffen <grobian@gentoo.org> (01 Aug 2012)
+# Causes spurious errors due to considering some small files being
+# binary, bug #425668, comment #21.
+=sys-apps/grep-2.13
+
+# Jeremy Olexa <darkside@gentoo.org> (28 Oct 2011)
+# Masking selective games-*, www-apps/*, net-proxy/* packages because:
+# 1) It is unclear if there are any users
+# 2) We would like to NOT migrate packages (to gentoo-x86) if we don't have to.
+#
+# If this is a package that you would like to see in the tree, please open a bug
+# report for inclusion (search first).
+# This mask will be lifted in 60 days and the packages will not be supporting
+# Gentoo Prefix at that time.
+games-arcade/rocksndiamonds
+games-board/xscrabble
+games-misc/cowsay
+games-misc/fortune-mod-gentoo-dev
+games-misc/rfksay
+games-sports/bygfoot
+net-proxy/tinyproxy
+www-apps/trac
+
+# Fabian Groffen <grobian@gentoo.org> (21 Apr 2011)
+# Fails to link anything, since it crt1.o cannot be found.  They haven't
+# got linking right yet, numerous people on the web report the same
+# problem.  Let's just wait for the moment.
+~sys-devel/llvm-2.9
+~sys-devel/clang-2.9
+
+# Fabian Groffen <grobian@gentoo.org> (03 Feb 2011)
+# Diego's experimental flex for fixing from autoconf problem, breaks
+# bootstrapping, bug #353609
+=sys-devel/flex-2.5.35_p10
+
+# Fabian Groffen <grobian@gentoo.org> (24 Jan 2011)
+# This release breaks in multiple ways (posix_memalign, O_DIRECT), wait
+# for upstream to sanitise their code (or someone else to do it, since
+# many people are affected: uClibc, BSD, ...)
+=sys-fs/e2fsprogs-1.41.14
+
+# Jeremy Olexa <darkside@gentoo.org> (30 Jun 2009)
+# The PAM auth system just will not work in Gentoo Prefix, instead the host auth
+# system should be used.
+sys-libs/pam
+sys-auth/pambase
+
+# Jeremy Olexa <darkside@gentoo.org> (02 Jun 2009)
+# If you have MacFuse or some other implementation of fuse installed, you can
+# probably use this by placing sys-fs/fuse in package.provided, bug 272210
+net-fs/curlftpfs
+
+# Jeremy Olexa <darkside@gentoo.org> (21 Apr 2009)
+# User reported that it works fine but will not install for me due to unknown
+# kernel location, etc. See bug 265276 for an example.
+net-wireless/iw
+dev-libs/libnl
+net-wireless/aircrack-ng
+
+# Jeremy Olexa <darkside@gentoo.org> (02 Dec 2008)
+# Reported to work. However, you will need to package.provide some deps. 
+# See bug 248809 for more details.
+net-fs/openafs
+
+# Markus Duft <mduft@gentoo.org> (17 Apr 2008)
+# Breaks things like gettext and fastjar because it introduces some
+# circular dependencies while running aclocal (bug #218122)
+~sys-devel/autoconf-2.62
+
+# Fabian Groffen <grobian@gentoo.org> (11 Jan 2008)
+# Screws up things, see bug #204998
+<sys-devel/gcc-3.4.0
+
+# Fabian Groffen <grobian@gentoo.org> (05 Jan 2008)
+# missing rule in the build.xml file
+=dev-java/sun-javamail-1.4.1
+
+# Fabian Groffen <grobian@gentoo.org> (02 Jan 2008)
+# rlogin seems not to work, consider using ssh anyway
+net-misc/netkit-rsh
+
+# Elias Pipping <pipping@gentoo.org>
+# work in progress (in prefix)
+app-emacs/jde

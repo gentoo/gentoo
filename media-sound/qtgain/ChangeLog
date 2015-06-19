@@ -1,0 +1,22 @@
+# ChangeLog for media-sound/qtgain
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/qtgain/ChangeLog,v 1.5 2013/03/02 22:02:13 hwoarang Exp $
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> qtgain-0.9.5.ebuild:
+  Move Qt dependencies to the new category
+
+  21 May 2012; Samuli Suominen <ssuominen@gentoo.org> qtgain-0.9.5.ebuild:
+  inherit eutils for make_desktop_entry
+
+  27 Mar 2012; Johannes Huber <johu@gentoo.org> -qtgain-0.8.0.ebuild:
+  Remove old with deprecated eclass usage.
+
+*qtgain-0.9.5 (03 Feb 2012)
+
+  03 Feb 2012; Johannes Huber <johu@gentoo.org> +qtgain-0.9.5.ebuild:
+  Version bump by Ben 'yngwin' de Groot <yngwin@gmail.com> wrt bug #370139.
+
+*qtgain-0.8.0 (23 Dec 2009)
+
+  23 Dec 2009; Samuli Suominen <ssuominen@gentoo.org> +qtgain-0.8.0.ebuild:
+  Initial commit.

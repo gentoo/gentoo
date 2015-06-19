@@ -1,0 +1,28 @@
+#!/sbin/runscript
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-sbin/files/sysctl.initd,v 1.5 2008/02/01 12:37:30 flameeyes Exp $
+
+depend() {
+	after checkroot root
+}
+
+start() {
+	ebegin "Configuring kernel parameters"
+
+	if [ ! -f /etc/sysctl.conf ]; then
+		eend 1 "/etc/sysctl.conf" "not found"
+		return 1
+	fi
+	
+	local retval=0 var= comments=
+	while read var comments ; do
+		case "${var}" in
+			""|"#"*) continue;;
+		esac
+		sysctl "${var}" >/dev/null || retval=1
+	done < /etc/sysctl.conf
+	eend ${retval} "Some errors were encountered"
+}
+
+# vim: set ts=4 :

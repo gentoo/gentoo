@@ -1,0 +1,338 @@
+# ChangeLog for x11-libs/libXpm
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libXpm/ChangeLog,v 1.100 2014/06/18 21:10:09 mgorny Exp $
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> libXpm-3.5.10-r1.ebuild,
+  libXpm-3.5.11.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+  15 Jun 2014; Mike Frysinger <vapier@gentoo.org> libXpm-3.5.11.ebuild:
+  Add arm64 love.
+
+  08 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libXpm-3.5.11.ebuild:
+  Stable for x86, wrt bug #475480
+
+  07 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libXpm-3.5.11.ebuild:
+  Stable for sparc, wrt bug #475480
+
+  06 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libXpm-3.5.11.ebuild:
+  Stable for ia64, wrt bug #475480
+
+  05 Oct 2013; Markus Meier <maekke@gentoo.org> libXpm-3.5.11.ebuild:
+  arm stable, bug #475480
+
+  05 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libXpm-3.5.11.ebuild:
+  Stable for alpha, wrt bug #475480
+
+  04 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libXpm-3.5.11.ebuild:
+  Stable for ppc64, wrt bug #475480
+
+  03 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libXpm-3.5.11.ebuild:
+  Stable for ppc, wrt bug #475480
+
+  02 Oct 2013; Jeroen Roovers <jer@gentoo.org> libXpm-3.5.11.ebuild:
+  Stable for HPPA (bug #475480).
+
+  29 Sep 2013; Agostino Sarubbo <ago@gentoo.org> libXpm-3.5.11.ebuild:
+  Stable for amd64, wrt bug #475480
+
+*libXpm-3.5.11 (11 Sep 2013)
+
+  11 Sep 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +libXpm-3.5.11.ebuild, -libXpm-3.5.9.ebuild:
+  Version bump.
+
+*libXpm-3.5.10-r1 (26 Feb 2013)
+
+  26 Feb 2013; Michał Górny <mgorny@gentoo.org> +libXpm-3.5.10-r1.ebuild:
+  Enable multilib.
+
+  22 Feb 2013; Zac Medico <zmedico@gentoo.org> libXpm-3.5.10.ebuild:
+  Add ~arm-linux keyword.
+
+  26 Aug 2012; Raúl Porcel <armin76@gentoo.org> libXpm-3.5.10.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #419473
+
+  12 Jul 2012; Brent Baude <ranger@gentoo.org> libXpm-3.5.10.ebuild:
+  Marking libXpm-3.5.10 ppc stable for bug 419473
+
+  11 Jul 2012; Brent Baude <ranger@gentoo.org> libXpm-3.5.10.ebuild:
+  Marking libXpm-3.5.10 ppc64 stable for bug 419473
+
+  29 Jun 2012; Markus Meier <maekke@gentoo.org> libXpm-3.5.10.ebuild:
+  arm stable, bug #419473
+
+  28 Jun 2012; Jeroen Roovers <jer@gentoo.org> libXpm-3.5.10.ebuild:
+  Stable for HPPA (bug #419473).
+
+  24 Jun 2012; Agostino Sarubbo <ago@gentoo.org> libXpm-3.5.10.ebuild:
+  Stable for x86, wrt bug #419473
+
+  22 Jun 2012; Agostino Sarubbo <ago@gentoo.org> libXpm-3.5.10.ebuild:
+  Stable for amd64, wrt bug #419473
+
+  06 May 2012; Fabian Groffen <grobian@gentoo.org> libXpm-3.5.10.ebuild:
+  Fix -lintl fixup for Solaris
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> libXpm-3.5.10.ebuild:
+  keyword ~amd64-fbsd
+
+*libXpm-3.5.10 (09 Mar 2012)
+
+  09 Mar 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +libXpm-3.5.10.ebuild:
+  Version bump.
+
+  22 Jun 2011; Fabian Groffen <grobian@gentoo.org> libXpm-3.5.9.ebuild:
+  Marked ~x64-macos, bug #371861
+
+  14 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> libXpm-3.5.9.ebuild:
+  ppc stable wrt #344827, #354237
+
+  12 Feb 2011; Raúl Porcel <armin76@gentoo.org> libXpm-3.5.9.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #344827
+
+  22 Jan 2011; Fabian Groffen <grobian@gentoo.org> libXpm-3.5.9.ebuild:
+  Move Solaris fix to src_configure, where it *does* work.
+
+  31 Dec 2010; Jeroen Roovers <jer@gentoo.org> libXpm-3.5.9.ebuild:
+  Stable for HPPA (bug #344827).
+
+  29 Dec 2010; Markus Meier <maekke@gentoo.org> libXpm-3.5.9.ebuild:
+  arm stable, bug #344827
+
+  25 Dec 2010; Christian Faulhammer <fauli@gentoo.org> libXpm-3.5.9.ebuild:
+  x86 stable, bug 344827
+
+  23 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> libXpm-3.5.9.ebuild:
+  amd64 stable wrt #344827
+
+  19 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> libXpm-3.5.9.ebuild:
+  ppc64 stable wrt #344827
+
+*libXpm-3.5.9 (31 Oct 2010)
+
+  31 Oct 2010; Tomáš Chvátal <scarabeus@gentoo.org> +libXpm-3.5.9.ebuild:
+  Version bump
+
+  07 Apr 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  libXpm-3.5.8.ebuild:
+  Fix building in solaris prefix, bug #303197
+
+  25 Feb 2010; Jonathan Callen <abcd@gentoo.org> libXpm-3.5.8.ebuild:
+  Transfer prefix keywords (no other changes)
+
+  23 Jan 2010; Tomáš Chvátal <scarabeus@gentoo.org> -libXpm-3.5.7.ebuild:
+  rm
+
+  19 Jan 2010; Raúl Porcel <armin76@gentoo.org> libXpm-3.5.8.ebuild:
+  s390 stable wrt #294958
+
+  18 Jan 2010; Raúl Porcel <armin76@gentoo.org> libXpm-3.5.8.ebuild:
+  alpha/ia64/sh/sparc stable wrt #294958
+
+  14 Jan 2010; Markus Meier <maekke@gentoo.org> libXpm-3.5.8.ebuild:
+  arm stable, bug #294958
+
+  14 Jan 2010; Jeroen Roovers <jer@gentoo.org> libXpm-3.5.8.ebuild:
+  Stable for HPPA (bug #294958).
+
+  27 Dec 2009; Joseph Jezak <josejx@gentoo.org> libXpm-3.5.8.ebuild:
+  Marked ppc stable for bug #294958.
+
+  26 Dec 2009; <solar@gentoo.org> libXpm-3.5.8.ebuild:
+  The gettext dep should be wrapped with the nls use flag
+
+  15 Dec 2009; Brent Baude <ranger@gentoo.org> libXpm-3.5.8.ebuild:
+  Marking libXpm-3.5.8 ppc64 stable for bug 294958
+
+  10 Dec 2009; Christian Faulhammer <fauli@gentoo.org> libXpm-3.5.8.ebuild:
+  x86 stable, bug 294958
+
+  10 Dec 2009; Samuli Suominen <ssuominen@gentoo.org> libXpm-3.5.8.ebuild:
+  amd64 stable wrt #294958
+
+  14 Oct 2009; Rémi Cardona <remi@gentoo.org> libXpm-3.5.8.ebuild:
+  sync ebuild with overlay
+
+*libXpm-3.5.8 (12 Oct 2009)
+
+  12 Oct 2009; Tomáš Chvátal <scarabeus@gentoo.org> -libXpm-3.5.6.ebuild,
+  +libXpm-3.5.8.ebuild:
+  Version bump. Remove old.
+
+  16 Apr 2009; Jeroen Roovers <jer@gentoo.org> libXpm-3.5.7.ebuild:
+  Stable for HPPA (bug #251832).
+
+  15 Apr 2009; Raúl Porcel <armin76@gentoo.org> ChangeLog:
+  ia64/sh stable wrt #251832
+
+  03 Feb 2009; Steve Dibb <beandog@gentoo.org> libXpm-3.5.6.ebuild,
+  libXpm-3.5.7.ebuild:
+  Add missing gettext to DEPEND, bug 191669
+
+  05 Feb 2008; Markus Rothe <corsair@gentoo.org> libXpm-3.5.7.ebuild:
+  Stable on ppc64
+
+  19 Dec 2007; Dawid Węgliński <cla@gentoo.org> libXpm-3.5.7.ebuild:
+  Stable on x86 (bug #202087)
+
+  16 Dec 2007; nixnut <nixnut@gentoo.org> libXpm-3.5.7.ebuild:
+  Stable on ppc wrt bug 202087
+
+  15 Dec 2007; Doug Klima <cardoe@gentoo.org> libXpm-3.5.7.ebuild:
+  amd64 stable wrt bug #202087
+
+  13 Dec 2007; Raúl Porcel <armin76@gentoo.org> libXpm-3.5.7.ebuild:
+  alpha/ia64 stable wrt #202087
+
+  12 Dec 2007; Ferris McCormick <fmccor@gentoo.org> libXpm-3.5.7.ebuild:
+  Sparc stable, Bug #202087, assuming this version intended.
+
+  12 Dec 2007; Ferris McCormick <fmccor@gentoo.org> libXpm-3.5.7.ebuild:
+  Sparc stable --- Bug #202087 --- good for 3 months.
+
+  09 Oct 2007; Donnie Berkholz <dberkholz@gentoo.org>; -libXpm-3.5.5.ebuild:
+  Drop old ebuilds.
+
+*libXpm-3.5.7 (08 Sep 2007)
+
+  08 Sep 2007; Donnie Berkholz <dberkholz@gentoo.org>; +libXpm-3.5.7.ebuild:
+  Bump for 7.3.
+
+  07 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org> libXpm-3.5.6.ebuild:
+  Stable on sparc wrt #175465
+
+  03 Jul 2007; Lars Weiler <pylon@gentoo.org> libXpm-3.5.6.ebuild:
+  Stable on ppc; bug #175465.
+
+  02 Jul 2007; Raúl Porcel <armin76@gentoo.org> libXpm-3.5.6.ebuild:
+  alpha stable wrt #175465
+
+  27 May 2007; Joshua Kinard <kumba@gentoo.org> libXpm-3.5.6.ebuild:
+  Stable on mips.
+
+  20 May 2007; Jeroen Roovers <jer@gentoo.org> libXpm-3.5.6.ebuild:
+  Stable for HPPA (bug #175465).
+
+  04 May 2007; Daniel Gryniewicz <dang@gentoo.org> libXpm-3.5.6.ebuild:
+  Marked stable on amd64 for bug #175465
+
+  29 Apr 2007; Andrej Kacian <ticho@gentoo.org> libXpm-3.5.6.ebuild:
+  Stable on x86, bug #175465.
+
+  25 Apr 2007; Raúl Porcel <armin76@gentoo.org> libXpm-3.5.6.ebuild:
+  Stable on ia64 wrt bug #175465
+
+  25 Apr 2007; Markus Rothe <corsair@gentoo.org> libXpm-3.5.6.ebuild:
+  Stable on ppc64; bug #175465
+
+*libXpm-3.5.6 (21 Oct 2006)
+
+  21 Oct 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +libXpm-3.5.6.ebuild:
+  Version bump.
+
+  19 Jul 2006; Guy Martin <gmsoft@gentoo.org> libXpm-3.5.5.ebuild:
+  Stable on hppa.
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org> libXpm-3.5.5.ebuild:
+  Mark 3.5.5 stable on ia64
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>; libXpm-3.5.5.ebuild:
+  ppc/sparc/mips/alpha/arm/sh stable
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  -libXpm-3.5.4.2.ebuild:
+  Pull old ebuild.
+
+  30 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org> libXpm-3.5.5.ebuild:
+  Stable on amd64.
+
+  30 Jun 2006; Markus Rothe <corsair@gentoo.org> libXpm-3.5.5.ebuild:
+  Stable on ppc64
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>; libXpm-3.5.5.ebuild:
+  x86 stable.
+
+  03 May 2006; Marien Zwart <marienz@gentoo.org> Manifest:
+  Re-recommit manifest for sha256 issues.
+
+*libXpm-3.5.5 (29 Apr 2006)
+
+  29 Apr 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +libXpm-3.5.5.ebuild:
+  Version bump.  Fixes a possible NULL dereference.
+
+  28 Apr 2006; Alec Warner <antarus@gentoo.org> Manifest:
+  Fixing SHA256 digest, pass four
+
+  31 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> libXpm-3.5.4.2.ebuild:
+  Add ~x86-fbsd keyword.
+
+  09 Mar 2006; Aron Griffis <agriffis@gentoo.org> libXpm-3.5.4.2.ebuild:
+  Mark 3.5.4.2 ~ia64
+
+  14 Feb 2006; Markus Rothe <corsair@gentoo.org> libXpm-3.5.4.2.ebuild:
+  Added ~ppc64
+
+  31 Jan 2006; Rene Nussbaumer <killerfox@gentoo.org> libXpm-3.5.4.2.ebuild:
+  Unstable on hppa.
+
+  26 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -libXpm-3.5.4.1.ebuild:
+  Pull old versions.
+
+  26 Dec 2005; Stefaan De Roeck <stefaan@gentoo.org> libXpm-3.5.4.2.ebuild:
+  Marked ~alpha
+
+*libXpm-3.5.4.2 (17 Dec 2005)
+
+  17 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +libXpm-3.5.4.2.ebuild:
+  Bump for 7.0RC4.
+
+  09 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>; -libXpm-3.5.3.ebuild,
+  -libXpm-3.5.4.ebuild:
+  Pull old versions.
+
+*libXpm-3.5.4.1 (04 Dec 2005)
+
+  04 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +libXpm-3.5.4.1.ebuild:
+  Bump for 7.0RC3.
+
+*libXpm-3.5.4 (11 Nov 2005)
+
+  11 Nov 2005; Donnie Berkholz <spyderous@gentoo.org>; +libXpm-3.5.4.ebuild:
+  Bump for 7.0RC2.
+
+  04 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -libXpm-3.5.2.ebuild:
+  Drop old version.
+
+*libXpm-3.5.3 (20 Oct 2005)
+
+  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>; +libXpm-3.5.3.ebuild:
+  Bump for 7.0 RC1.
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  04 Sep 2005; MATSUU Takuto <matsuu@gentoo.org> libXpm-3.5.2.ebuild:
+  Added ~sh
+
+  23 Aug 2005; Herbie Hopkins <herbs@gentoo.org> libXpm-3.5.2.ebuild:
+  Marked ~amd64.
+
+  20 Aug 2005; Luca Barbato <lu_zero@gentoo.org> libXpm-3.5.2.ebuild:
+  Marked ~ppc
+
+  09 Aug 2005; Ferris McCormick <fmccor@gentoo.org> libXpm-3.5.2.ebuild:
+  Add ~sparc keyword (X modular testing).
+
+*libXpm-3.5.2 (08 Aug 2005)
+
+  08 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>; +libXpm-3.5.2.ebuild:
+  Initial commit for modular X.

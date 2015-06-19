@@ -1,0 +1,28 @@
+# ChangeLog for dev-php/Savant3
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/Savant3/ChangeLog,v 1.4 2015/05/06 17:49:38 grknight Exp $
+
+*Savant3-3.0.1 (06 May 2015)
+
+  06 May 2015; Brian Evans <grknight@gentoo.org> +Savant3-3.0.1.ebuild,
+  +files/channel.xml, -Savant3-3.0.0.ebuild:
+  Version bump
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> Savant3-3.0.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  10 Jun 2012; Matti Bickel <mabi@gentoo.org> Savant3-3.0.0.ebuild:
+  remove unneeded depend.php call
+
+  30 Aug 2007; Markus Ullmann <jokey@gentoo.org> Savant3-3.0.0.ebuild:
+  Update IUSE
+
+  30 Aug 2007; Markus Ullmann <jokey@gentoo.org> +metadata.xml,
+  +Savant3-3.0.0.ebuild:
+  Port from project overlay
+
+*Savant3-3.0.0 (30 Aug 2007)
+
+  30 Aug 2007; Markus Ullmann <jokey@gentoo.org> +metadata.xml,
+  +Savant3-3.0.0.ebuild:
+  Port from project overlay

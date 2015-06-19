@@ -1,0 +1,256 @@
+# ChangeLog for media-sound/darkice
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/darkice/ChangeLog,v 1.68 2013/09/23 07:00:34 polynomial-c Exp $
+
+  23 Sep 2013; Lars Wendler <polynomial-c@gentoo.org>
+  -files/darkice-0.18.1-gcc43.patch, -files/darkice-0.19-gcc44.patch:
+  Removed old patches as well.
+
+  23 Sep 2013; Lars Wendler <polynomial-c@gentoo.org> -darkice-0.19.ebuild,
+  -darkice-1.1.ebuild:
+  Removed old.
+
+  06 Sep 2013; Agostino Sarubbo <ago@gentoo.org> darkice-1.2.ebuild:
+  Stable for sparc, wrt bug #477172
+
+  19 Aug 2013; Agostino Sarubbo <ago@gentoo.org> darkice-1.2.ebuild:
+  Stable for ppc, wrt bug #477172
+
+  18 Aug 2013; Agostino Sarubbo <ago@gentoo.org> darkice-1.2.ebuild:
+  Stable for x86, wrt bug #477172
+
+  17 Aug 2013; Agostino Sarubbo <ago@gentoo.org> darkice-1.2.ebuild:
+  Stable for amd64, wrt bug #477172
+
+  16 Aug 2013; Jeroen Roovers <jer@gentoo.org> darkice-1.2.ebuild:
+  Stable for HPPA (bug #477172).
+
+  17 Jul 2013; Lars Wendler <polynomial-c@gentoo.org> darkice-1.2.ebuild,
+  metadata.xml:
+  Added aacplus and debug support.
+
+  16 Jul 2013; Lars Wendler <polynomial-c@gentoo.org> darkice-1.2.ebuild:
+  Really fix bug #460072 this time.
+
+*darkice-1.2 (16 Jul 2013)
+
+  16 Jul 2013; Lars Wendler <polynomial-c@gentoo.org> -darkice-1.0.ebuild,
+  +darkice-1.2.ebuild, -files/darkice-1.0-gcc44.patch,
+  +files/darkice-1.2-gcc47.patch, metadata.xml:
+  Non-maintainer commit: Version bump (bug #476926). Fixes automagic dependency
+  on pulseaudio (bug #460072) and compilation failure with gcc-4.7 (bug
+  #428596). Removed old.
+
+  07 Sep 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+*darkice-1.1 (13 Dec 2011)
+
+  13 Dec 2011; Steve Dibb <beandog@gentoo.org> +darkice-1.1.ebuild:
+  Version bump, bug 394165
+
+*darkice-1.0 (29 Jul 2010)
+
+  29 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> +darkice-1.0.ebuild,
+  +files/darkice-1.0-gcc44.patch:
+  Version bump.
+
+  10 Jul 2009; Samuli Suominen <ssuominen@gentoo.org>
+  -darkice-0.18.1.ebuild, darkice-0.19.ebuild,
+  +files/darkice-0.19-gcc44.patch:
+  Fix building with GLIBC 2.10 and GCC 4.4 wrt #277216, thanks to Diego E.
+  'Flameeyes' Pettenò.
+
+  25 Jun 2009; Raúl Porcel <armin76@gentoo.org> darkice-0.19.ebuild:
+  sparc stable wrt #270783
+
+  01 Jun 2009; nixnut <nixnut@gentoo.org> darkice-0.19.ebuild:
+  ppc stable #270783
+
+  29 May 2009; Steve Dibb <beandog@gentoo.org> darkice-0.19.ebuild:
+  amd64 stable, bug 270783
+
+  26 May 2009; Christian Faulhammer <fauli@gentoo.org> darkice-0.19.ebuild:
+  stable x86, bug 270783
+
+  23 May 2009; Jeroen Roovers <jer@gentoo.org> darkice-0.19.ebuild:
+  Stable for HPPA (bug #270783).
+
+  14 Jul 2008; Ben de Groot <yngwin@gentoo.org> Manifest:
+  Forcing Manifest update to fix bug 231094
+
+*darkice-0.19 (07 Jul 2008)
+
+  07 Jul 2008; Samuli Suominen <drac@gentoo.org> +darkice-0.19.ebuild:
+  Version bump for bug 231062, thanks to Ákos Maróy for reporting.
+
+  27 Mar 2008; Samuli Suominen <drac@gentoo.org>
+  -files/darkice-0.17.1-64bit.patch, +files/darkice-0.18.1-gcc43.patch,
+  -darkice-0.17.1.ebuild, darkice-0.18.1.ebuild:
+  If none of USE flags encode, aac, vorbis or twolame is selected, select
+  vorbis so ebuild doesn't annoyingly die and ewarn it about user. Apply GCC
+  4.3 fix from 214773, thanks to impulze.
+
+  22 Dec 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  darkice-0.18.1.ebuild:
+  ppc stable, bug #200414
+
+  17 Dec 2007; Jeroen Roovers <jer@gentoo.org> darkice-0.18.1.ebuild:
+  Stable for HPPA (bug #200414).
+
+  28 Nov 2007; Raúl Porcel <armin76@gentoo.org> darkice-0.18.1.ebuild:
+  sparc stable wrt #200414
+
+  27 Nov 2007; Markus Meier <maekke@gentoo.org> darkice-0.18.1.ebuild:
+  x86 stable, bug #200414
+
+  26 Nov 2007; Christoph Mende <angelos@gentoo.org> darkice-0.18.1.ebuild:
+  Stable on amd64 wrt bug #200414
+
+*darkice-0.18.1 (23 Jul 2007)
+
+  23 Jul 2007; Samuli Suominen <drac@gentoo.org> -darkice-0.14.ebuild,
+  -darkice-0.15.ebuild, -darkice-0.17.ebuild, +darkice-0.18.1.ebuild:
+  Version bump for bug 169505, thanks to Ákos Maróy for reporting, armin76
+  at gentoo.org for poking.
+
+  23 Jul 2007; Raúl Porcel <armin76@gentoo.org> darkice-0.14.ebuild,
+  darkice-0.15.ebuild, darkice-0.17.ebuild:
+  Drop alpha keyword
+
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org> darkice-0.14.ebuild:
+  (QA) RESTRICT clean up.
+
+  06 Apr 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  darkice-0.17.1.ebuild:
+  ppc stable, bug #133776
+
+  11 Mar 2007; Raúl Porcel <armin76@gentoo.org> darkice-0.17.1.ebuild:
+  x86 stable wrt bug 133776
+
+  14 Feb 2007; Jeroen Roovers <jer@gentoo.org> darkice-0.17.1.ebuild:
+  Stable for HPPA (bug #133776).
+
+  12 Feb 2007; Gustavo Zacarias <gustavoz@gentoo.org> darkice-0.17.1.ebuild:
+  Stable on sparc
+
+  11 Feb 2007; Lars Weiler <pylon@gentoo.org> darkice-0.17.1.ebuild:
+  Added ~ppc; bug #133776.
+
+  05 Feb 2007; Jeroen Roovers <jer@gentoo.org> darkice-0.17.1.ebuild:
+  Marked ~hppa (bug #133776).
+
+  04 Feb 2007; Steve Dibb <beandog@gentoo.org> darkice-0.17.1.ebuild:
+  amd64 stable, bug 133776
+
+  02 Feb 2007; Raúl Porcel <armin76@gentoo.org> darkice-0.17.ebuild:
+  x86 stable wrt bug 133776
+
+  01 Feb 2007; Gustavo Zacarias <gustavoz@gentoo.org> darkice-0.17.ebuild,
+  darkice-0.17.1.ebuild:
+  0.17 sparc stable wrt #133776, 0.17.1 ~sparc keyworded
+
+*darkice-0.17.1 (08 Oct 2006)
+
+  08 Oct 2006; MATSUU Takuto <matsuu@gentoo.org>
+  +files/darkice-0.17.1-64bit.patch, +darkice-0.17.1.ebuild:
+  Version bumped, bug 133775.
+  Added aac and twolame to IUSE.
+  Fixed 64bit compile issue, bug 149246.
+  Removed ~alpha, ~hppa, ~ppc and ~sparc because media-sound/twolame has no them.
+
+  01 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org> darkice-0.15.ebuild:
+  hppa stable, bug #122729
+
+  07 Apr 2006; Tobias Scherbaum <dertobi123@gentoo.org> darkice-0.15.ebuild:
+  ppc stable, bug #122729
+
+  04 Apr 2006; Thomas Cort <tcort@gentoo.org> darkice-0.15.ebuild:
+  Alpha stable wrt Bug #122729.
+
+  18 Feb 2006; Simon Stelling <blubb@gentoo.org> darkice-0.15.ebuild:
+  stable on amd64
+
+  16 Feb 2006; Gustavo Zacarias <gustavoz@gentoo.org> darkice-0.15.ebuild:
+  Stable on sparc wrt #122729
+
+  16 Feb 2006; Joshua Jackson <tsunam@gentoo.org> darkice-0.15.ebuild:
+  Stable on x86; bug #122729
+
+*darkice-0.17 (11 Feb 2006)
+
+  11 Feb 2006; Patrick McLean <chutzpah@gentoo.org> +darkice-0.17.ebuild:
+  Version bump.
+
+  26 Dec 2005; Luca Barbato <lu_zero@gentoo.org> darkice-0.14.ebuild:
+  oggvorbis Cleanup
+
+  07 Nov 2005; Diego Pettenò <flameeyes@gentoo.org> darkice-0.14.ebuild:
+  Don't install COPYING file.
+
+  14 Sep 2005; Aron Griffis <agriffis@gentoo.org> darkice-0.14.ebuild:
+  Mark 0.14 stable on alpha
+
+  04 May 2005; Jan Brinkmann <luckyduck@gentoo.org> darkice-0.15.ebuild:
+  introduced support for the jack useflag. fixes #90995
+
+*darkice-0.15 (25 Apr 2005)
+
+  25 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> -darkice-0.13.2.ebuild,
+  -darkice-0.13.ebuild, +darkice-0.15.ebuild:
+  new upstream version, fixes #90268. changed oggvorbis useflag to vorbis,
+  oggvorbis is deprecated.
+
+  14 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> darkice-0.14.ebuild:
+  Stable amd64, sparc.
+
+  08 Aug 2004; Tom Martin <slarti@gentoo.org> darkice-0.13.2.ebuild,
+  darkice-0.13.ebuild, darkice-0.14.ebuild:
+  Typo in DESCRIPTION: simulatenously -> simultaneously. Bug 59717.
+
+  19 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> darkice-0.14.ebuild:
+  ~amd64
+
+  07 Jun 2004; Aron Griffis <agriffis@gentoo.org> darkice-0.13.2.ebuild,
+  darkice-0.13.ebuild, darkice-0.14.ebuild:
+  Fix use invocation
+
+  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> darkice-0.13.2.ebuild,
+  darkice-0.13.ebuild:
+  Add die following econf for bug 48950
+
+  08 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> darkice-0.14.ebuild:
+  Stable x86.
+
+  03 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> darkice-0.14.ebuild:
+  Back in ~x86 as it has an alsa-1.0 dep in this new version.
+
+  31 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  darkice-0.13.2.ebuild, darkice-0.13.ebuild, darkice-0.14.ebuild:
+  Removed explicit S=.  Stable on x86.
+
+*darkice-0.14 (01 Mar 2004)
+
+  01 Mar 2004; Martin Holzer <mholzer@gentoo.org> darkice-0.14.ebuild:
+  Version bumped.
+
+*darkice-0.13.2 (20 Jan 2004)
+
+  20 Jan 2004; Martin Holzer <mholzer@gentoo.org> darkice-0.13.2.ebuild:
+  Version bumped. Closes 38758
+
+*darkice-0.13 (14 Mar 2003)
+
+  14 Mar 2003; Seemant Kulleen <seemant@gentoo.org> darkice-0.13.ebuild:
+  version bump, thanks to: Otavio R. Piske <angusy@brturbo.com> in bug #15670
+
+*darkice-0.12 (14 Jan 2003)
+
+  14 Jan 2003; L. Boshell <leonardop@gentoo.org> : New version. Thanks to
+  Blake Watters for his report (bug #12037).
+
+*darkice-0.10.1 (13 Aug 2002)
+
+  13 Aug 2002; Arcady Genkin <agenkin@thpoon.com> darkice-0.10.1.ebuild :
+
+  Initial version, submitted by Blake Watters <sbw@ibiblio.org>.

@@ -1,0 +1,41 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/courier-imap/files/courier-imap-4.0.6-r1-courier-imapd-ssl.rc6,v 1.4 2014/11/20 10:25:15 mrueg Exp $
+
+depend() {
+	need net courier-authlib
+	use famd
+}
+
+source /etc/courier-imap/imapd-ssl
+
+checkconfig() {
+	if [[ ! -e /etc/courier-imap/imapd-ssl ]] ; then
+		eerror "You need an /etc/courier-imap/imapd-ssl file to run courier-imapd-ssl"
+		return 1
+	fi
+	source /etc/courier-imap/imapd-ssl || {
+		eerror "There are syntax errors in /etc/courier-imap/imapd-ssl"
+		eerror "Please correct them before trying to start courier-imapd-ssl"
+		return 3
+	}
+	if [[ ! -e "${TLS_CERTFILE}" ]] ; then
+		eerror "You need to create a SSL certificate to use IMAP over SSL"
+		eerror "Edit /etc/courier-imap/imapd.cnf, then run: mkimapdcert"
+		return 2
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting courier-imapd over SSL"
+	/usr/bin/env - /usr/GENTOO_LIBDIR/courier-imap/gentoo-imapd-ssl.rc --pid=${SSLPIDFILE}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping courier-imapd over SSL"
+	start-stop-daemon --quiet --stop --pid=${SSLPIDFILE}
+	eend $?
+}

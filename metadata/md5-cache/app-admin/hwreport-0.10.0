@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install postinst
+DESCRIPTION=Collect system informations for the hardware4linux.info site
+HOMEPAGE=http://hardware4linux.info/
+KEYWORDS=amd64 ~ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=>=sys-apps/dmidecode-2.8 >=sys-apps/pciutils-2.2.0
+SLOT=0
+SRC_URI=http://hardware4linux.info/res/hwreport-0.10.0.tar.bz2
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=54e85094173d5d53632f010cd306fc25

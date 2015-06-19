@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure
+DEPEND=>=dev-db/spatialite-3.0.1[geos,xls] dev-libs/expat >=sci-libs/geos-3.3 sci-libs/proj sci-geosciences/readosm readline? ( sys-libs/ncurses sys-libs/readline )
+DESCRIPTION=A complete Spatial DBMS in a nutshell built upon sqlite
+EAPI=4
+HOMEPAGE=http://www.gaia-gis.it/spatialite
+IUSE=readline
+KEYWORDS=~amd64 ~x86
+LICENSE=MPL-1.1
+RDEPEND=>=dev-db/spatialite-3.0.1[geos,xls] dev-libs/expat >=sci-libs/geos-3.3 sci-libs/proj sci-geosciences/readosm readline? ( sys-libs/ncurses sys-libs/readline )
+SLOT=0
+SRC_URI=http://www.gaia-gis.it/gaia-sins/spatialite-tools-sources/spatialite-tools-3.1.0.tar.gz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=a2c255b98676419390d07fcd3f06e475

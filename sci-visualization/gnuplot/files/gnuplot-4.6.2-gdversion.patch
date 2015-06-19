@@ -1,0 +1,21 @@
+Gnuplot supports using fontconfig in gd terminals. There was a bug in
+gd-2.0.35 that prevented this from working; therefore the mechanism
+was disabled by testing the GD version. Gentoo has backported the fix
+to media-libs/gd-2.0.35-r3 so our test can be different.
+
+Patch by Bernardo Costa <bernardofpc@gmail.com>.
+Gentoo specific, not to be submitted upstream.
+https://bugs.gentoo.org/462996
+https://bugs.gentoo.org/363367
+
+--- gnuplot-4.6.2-orig/term/gd.trm
++++ gnuplot-4.6.2/term/gd.trm
+@@ -149,7 +149,7 @@
+ /* Before version 2.0.36, the libgd function gdFTUseFontConfig() didn't */
+ /* do what we need.  Test for earlier versions and ignore it.           */
+ #ifdef GD_MAJOR_VERSION
+-#  if (GD_MINOR_VERSION > 0  ||  GD_RELEASE_VERSION > 35)
++#  if (GD_MINOR_VERSION > 0  ||  GD_RELEASE_VERSION >= 35)
+ #    define gdUseFontConfig(x) gdFTUseFontConfig(x)
+ #  endif
+ #endif

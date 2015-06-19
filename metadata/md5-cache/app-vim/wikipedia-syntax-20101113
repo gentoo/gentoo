@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst postrm
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: Wikipedia syntax highlighting
+HOMEPAGE=http://en.wikipedia.org/wiki/Wikipedia:Text_editor_support#Vim
+KEYWORDS=amd64 ~hppa ~mips ppc ppc64 x86
+LICENSE=CC-BY-SA-3.0
+RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+SRC_URI=mirror://gentoo/wikipedia-syntax-20101113.tar.bz2 http://dev.gentoo.org/~radhermit/vim/wikipedia-syntax-20101113.tar.bz2
+_eclasses_=vim-doc	1c18baeec98cec3287524cbf2fee2bd2	vim-plugin	286547e90fbbc4c841eee80cd73e646c
+_md5_=27377cb9f9d6f5e973a3159e288ae617

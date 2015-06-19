@@ -1,0 +1,61 @@
+# ChangeLog for games-misc/fortune-mod-flashrider
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-flashrider/ChangeLog,v 1.7 2013/08/02 05:24:31 zzam Exp $
+
+*fortune-mod-flashrider-1.10 (02 Aug 2013)
+
+  02 Aug 2013; Matthias Schwarzott <zzam@gentoo.org>
+  +fortune-mod-flashrider-1.10.ebuild:
+  Version bumped. Switched to EAPI=5.
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  fortune-mod-flashrider-1.00.ebuild:
+  x86 stable wrt bug #397039
+
+*fortune-mod-flashrider-1.00 (27 Jun 2011)
+
+  27 Jun 2011; Matthias Schwarzott <zzam@gentoo.org>
+  +fortune-mod-flashrider-1.00.ebuild:
+  Version bumped.
+
+*fortune-mod-flashrider-0.90 (10 Feb 2011)
+
+  10 Feb 2011; Matthias Schwarzott <zzam@gentoo.org>
+  +fortune-mod-flashrider-0.90.ebuild:
+  Version bumped
+
+  12 Dec 2010; Fabian Groffen <grobian@gentoo.org>
+  fortune-mod-flashrider-0.80.ebuild:
+  Added Prefix keywords
+
+  11 Dec 2010; Fabian Groffen <grobian@gentoo.org>
+  fortune-mod-flashrider-0.80.ebuild:
+  Bump EAPI to 3, fix for Prefix
+
+*fortune-mod-flashrider-0.80 (30 Oct 2010)
+*fortune-mod-flashrider-0.25 (30 Oct 2010)
+
+  30 Oct 2010; Matthias Schwarzott <zzam@gentoo.org>
+  +fortune-mod-flashrider-0.25.ebuild, +fortune-mod-flashrider-0.80.ebuild,
+  +metadata.xml:
+  Moved games-misc/fortune-mod-prolinux to fortune-mod-flashrider due to
+  upstream name change.
+
+  07 Sep 2010; Tristan Heaven <nyhm@gentoo.org>
+  fortune-mod-prolinux-0.25.ebuild:
+  Add ~amd64 keyword; dodoc; EAPI=2
+
+  20 Oct 2009; Markus Meier <maekke@gentoo.org>
+  fortune-mod-prolinux-0.25.ebuild:
+  x86 stable, bug #285398
+
+  03 Aug 2009; Matthias Schwarzott <zzam@gentoo.org>
+  fortune-mod-prolinux-0.25.ebuild:
+  Add fortune-mod to DEPEND for strfile
+
+*fortune-mod-prolinux-0.25 (03 Aug 2009)
+
+  03 Aug 2009; Matthias Schwarzott <zzam@gentoo.org>
+  +fortune-mod-prolinux-0.25.ebuild, +metadata.xml:
+  Initial import.
+

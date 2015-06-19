@@ -1,0 +1,114 @@
+--- a/configure.in
++++ b/configure.in
+@@ -44,6 +44,8 @@ dnl
+ AC_INIT(lib/saslint.h)
+ AC_PREREQ([2.54])
+ 
++AC_CONFIG_MACRO_DIR([cmulocal] [config])
++
+ dnl use ./config.cache as the default cache file.
+ dnl we require a cache file to successfully configure our build.
+ if test $cache_file = "/dev/null"; then
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -43,6 +43,8 @@ AUTOMAKE_OPTIONS = 1.7
+ #
+ ################################################################
+ 
++ACLOCAL_AMFLAGS = -I cmulocal -I config
++
+ if SASLAUTHD
+ SAD = saslauthd
+ else
+--- a/saslauthd/configure.in
++++ b/saslauthd/configure.in
+@@ -1,7 +1,8 @@
+ AC_INIT(mechanisms.h)
+ AC_PREREQ([2.54])
+ 
+-AC_CONFIG_AUX_DIR(config)
++AC_CONFIG_MACRO_DIR([../cmulocal] [../config])
++AC_CONFIG_AUX_DIR([config])
+ AC_CANONICAL_HOST
+ 
+ dnl Should we enable SASLAUTHd at all?
+@@ -164,30 +165,30 @@ AC_SUBST(LTLIBOBJS)
+ 
+ dnl Checks for which function macros exist
+ AC_MSG_CHECKING(whether $CC implements __func__)
+-AC_CACHE_VAL(have_func,
++AC_CACHE_VAL(_cv_have_func,
+ [AC_TRY_LINK([#include <stdio.h>],[printf("%s", __func__);],
+-have_func=yes,
+-have_func=no)])
+-AC_MSG_RESULT($have_func)
+-if test "$have_func" = yes; then
++_cv_have_func=yes,
++_cv_have_func=no)])
++AC_MSG_RESULT($_cv_have_func)
++if test "$_cv_have_func" = yes; then
+        AC_DEFINE(HAVE_FUNC,[],[Does the compiler understand __func__])
+ else
+        AC_MSG_CHECKING(whether $CC implements __PRETTY_FUNCTION__)
+-       AC_CACHE_VAL(have_pretty_function,
++       AC_CACHE_VAL(_cv_have_pretty_function,
+        [AC_TRY_LINK([#include <stdio.h>],[printf("%s", __PRETTY_FUNCTION__);],
+-       have_pretty_function=yes,
+-       have_pretty_function=no)])
+-       AC_MSG_RESULT($have_pretty_function)
+-       if test "$have_pretty_function" = yes; then
++       _cv_have_pretty_function=yes,
++       _cv_have_pretty_function=no)])
++       AC_MSG_RESULT($_cv_have_pretty_function)
++       if test "$_cv_have_pretty_function" = yes; then
+                AC_DEFINE(HAVE_PRETTY_FUNCTION,[],[Does compiler understand __PRETTY_FUNCTION__])
+        else
+                AC_MSG_CHECKING(whether $CC implements __FUNCTION__)
+-               AC_CACHE_VAL(have_function,
++               AC_CACHE_VAL(_cv_have_function,
+                [AC_TRY_LINK([#include <stdio.h>],[printf("%s", __FUNCTION__);],
+-               have_function=yes,
+-               have_function=no)])
+-               AC_MSG_RESULT($have_function)
+-               if test "$have_function" = yes; then
++               _cv_have_function=yes,
++               _cv_have_function=no)])
++               AC_MSG_RESULT($_cv_have_function)
++               if test "$_cv_have_function" = yes; then
+                        AC_DEFINE(HAVE_FUNCTION,[],[Does compiler understand __FUNCTION__])
+                fi
+        fi
+--- a/saslauthd/Makefile.am
++++ b/saslauthd/Makefile.am
+@@ -1,4 +1,6 @@
+ AUTOMAKE_OPTIONS = 1.7
++ACLOCAL_AMFLAGS = -I ../cmulocal -I ../config
++
+ sbin_PROGRAMS	= saslauthd testsaslauthd
+ EXTRA_PROGRAMS  = saslcache
+ 
+--- a/config/kerberos_v4.m4
++++ b/config/kerberos_v4.m4
+@@ -89,18 +89,18 @@ AC_DEFUN([SASL_KERBEROS_V4_CHK], [
+     dnl if we were ambitious, we would look more aggressively for the
+     dnl krb4 install
+     if test -d ${krb4}; then
+-       AC_CACHE_CHECK(for Kerberos includes, cyrus_krbinclude, [
++       AC_CACHE_CHECK(for Kerberos includes, cyrus_cv_krbinclude, [
+          for krbhloc in include/kerberosIV include/kerberos include
+          do
+            if test -f ${krb4}/${krbhloc}/krb.h ; then
+-             cyrus_krbinclude=${krb4}/${krbhloc}
++             cyrus_cv_krbinclude=${krb4}/${krbhloc}
+              break
+            fi
+          done
+          ])
+ 
+-       if test -n "${cyrus_krbinclude}"; then
+-         CPPFLAGS="$CPPFLAGS -I${cyrus_krbinclude}"
++       if test -n "${cyrus_cv_krbinclude}"; then
++         CPPFLAGS="$CPPFLAGS -I${cyrus_cv_krbinclude}"
+        fi
+        LDFLAGS="$LDFLAGS -L$krb4/lib"
+     fi

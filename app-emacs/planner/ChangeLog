@@ -1,0 +1,109 @@
+# ChangeLog for app-emacs/planner
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/planner/ChangeLog,v 1.24 2014/02/23 09:17:25 ulm Exp $
+
+  23 Feb 2014; Ulrich Müller <ulm@gentoo.org> planner-3.42.ebuild:
+  Update ebuild to EAPI 5. Specify LICENSE more precisely.
+
+  01 Dec 2012; Raúl Porcel <armin76@gentoo.org> planner-3.42.ebuild:
+  Drop sparc keywords
+
+  03 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  -planner-3.41-r2.ebuild:
+  clean up
+
+*planner-3.42 (14 Feb 2009)
+
+  14 Feb 2009; Ulrich Mueller <ulm@gentoo.org> planner-3.41-r2.ebuild,
+  +planner-3.42.ebuild:
+  Version bump. Add RESTRICT=test, bug 258924. Licence changed to GPL-3.
+
+  01 Dec 2007; Ulrich Mueller <ulm@gentoo.org> -files/81planner-gentoo.el,
+  -planner-3.41-r1.ebuild:
+  Remove old.
+
+  07 Jul 2007; Ulrich Mueller <ulm@gentoo.org> files/80planner-gentoo.el:
+  Use defvaralias in sitefile since the variable does not exist at this point.
+
+*planner-3.41-r2 (26 Jun 2007)
+
+  26 Jun 2007; Ulrich Mueller <ulm@gentoo.org> files/80planner-gentoo.el,
+  +planner-3.41-r2.ebuild:
+  Use previous sitefile again. Setup remember to work with planner.
+
+  27 Apr 2007; Ulrich Mueller <ulm@gentoo.org> planner-3.41-r1.ebuild:
+  Moved app-emacs/remember to PDEPEND to break circular dependency, fixing bug
+  #172137. Don't install COPYING in doc directory.
+
+  01 Mar 2007; Christian Faulhammer <opfer@gentoo.org> -planner-3.26.ebuild,
+  -planner-3.30.ebuild, -planner-3.40.ebuild, -planner-3.41.ebuild:
+  clean up
+
+  28 Feb 2007; Simon Stelling <blubb@gentoo.org> planner-3.41-r1.ebuild:
+  ~amd64; bug 163401
+
+  11 Feb 2007; Joseph Jezak <josejx@gentoo.org> planner-3.41-r1.ebuild:
+  Marked ~ppc for bug #163401.
+
+  02 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  files/81planner-gentoo.el:
+  added collaboration with bbdb
+
+  02 Feb 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  planner-3.41-r1.ebuild:
+  Keyworded ~sparc wrt #163401
+
+*planner-3.41-r1 (02 Feb 2007)
+
+  02 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  +files/81planner-gentoo.el, +planner-3.41-r1.ebuild:
+  added app-emacs/emacs-w3m, app-emacs/remember as dependencies
+  removed texinfo from DEPEND as it is a base package
+  reworked SITEFILE a bit to load some extras on start
+  all inspired by thierry volpiatto <tvolpiatt@neuf.fr>
+
+  23 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org> planner-3.41.ebuild:
+  Keyworded ~sparc wrt #163401
+
+  23 Jan 2007; Christian Faulhammer <opfer@gentoo.org> planner-3.41.ebuild:
+  added app-emacs/bbdb as dependency. Need for that has been observed by
+  Sebastian Spaeth <Sebastian@SSpaeth.de> in bug 163043
+  Added RDEPEND equal to DEPEND
+
+  23 Jan 2007; Christian Faulhammer <opfer@gentoo.org> planner-3.30.ebuild,
+  planner-3.41.ebuild:
+  using mirror:// syntax for Debian, as requested in bug #163307 and added a
+  quote
+
+*planner-3.41 (28 Nov 2006)
+
+  28 Nov 2006; Matthew Kennedy <mkennedy@gentoo.org>
+  files/80planner-gentoo.el, +planner-3.41.ebuild:
+  New upstream version; Replace expensive site-lisp initialization with
+  Planner's generated autoloads.
+
+*planner-3.40 (22 Jan 2006)
+
+  22 Jan 2006; <wrobel@gentoo.org> +planner-3.40.ebuild:
+  Added new version 3.40
+
+*planner-3.30 (20 Dec 2005)
+
+  20 Dec 2005; Matthew Kennedy <mkennedy@gentoo.org> +planner-3.30.ebuild:
+  New upstream version.
+
+  24 Oct 2005; Joseph Jezak <josejx@gentoo.org> planner-3.26.ebuild:
+  Marked ~ppc.
+
+  01 Jul 2005; Matthew Kennedy <mkennedy@gentoo.org> planner-3.26.ebuild:
+  Keywording ~amd64.
+
+  22 Jun 2005; Jason Wever <weeve@gentoo.org> planner-3.26.ebuild:
+  Added ~sparc keyword.
+
+*planner-3.26 (01 Feb 2005)
+
+  01 Feb 2005; Matthew Kennedy <mkennedy@gentoo.org> +metadata.xml,
+  +files/80planner-gentoo.el, +planner-3.26.ebuild:
+  Initial port.  Ebuild contributed by Matthew Kennedy <mkennedy@gentoo.org>
+

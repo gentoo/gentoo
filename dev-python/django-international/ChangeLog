@@ -1,0 +1,44 @@
+# ChangeLog for dev-python/django-international
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/django-international/ChangeLog,v 1.10 2015/06/07 19:24:20 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add bitbucket to remote-id in metadata.xml
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org>
+  django-international-0.0.3.ebuild, django-international-0.0.6.ebuild:
+  Drop old Python implementations
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> django-international-0.0.6.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> django-international-0.0.6.ebuild:
+  amd64 stable, bug 540290
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org>
+  django-international-0.0.3.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  22 May 2013; Ian Delaney <idella4@gentoo.org>
+  django-international-0.0.6.ebuild:
+  drop pypy support to match django, add PYTHON_USEDEP to django
+
+*django-international-0.0.6 (05 May 2013)
+
+  05 May 2013; Theo Chatzimichos <tampakrap@gentoo.org>
+  +django-international-0.0.6.ebuild:
+  Version bump
+
+  06 Jan 2013; Ian Delaney <idella4@gentoo.org>
+  django-international-0.0.3.ebuild:
+  added requ'd {] to setuptools, customised install of a keyfile into docdir,
+  missed by std. install
+
+*django-international-0.0.3 (06 Jan 2013)
+
+  06 Jan 2013; Ian Delaney <idella4@gentoo.org>
+  +django-international-0.0.3.ebuild, +metadata.xml:
+  new ebuild, written by idella4, requested by tampkrap in bug #449278

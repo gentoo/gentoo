@@ -1,0 +1,230 @@
+diff --git a/make/include/mksh/defs.h b/make/include/mksh/defs.h
+index 1992205..8065a77 100644
+--- a/make/include/mksh/defs.h
++++ b/make/include/mksh/defs.h
+@@ -63,7 +63,6 @@
+ #include <widec.h>
+ #endif
+ 
+-#ifndef __sun
+ /*
+  * Definition of wchar functions.
+  */
+@@ -90,7 +89,6 @@
+ #	define wscmp(x,y) wcscmp(x,y)
+ #	undef wsncmp
+ #	define wsncmp(x,y,z) wcsncmp(x,y,z)
+-#endif
+ 
+ #if defined (__FreeBSD__) || defined (__APPLE__) || defined (__hpux)
+ extern "C" { wchar_t	*wcsdup(const wchar_t *s); }
+diff --git a/make/makestate/lock.c b/make/makestate/lock.c
+index cdf7562..aa6083e 100644
+--- a/make/makestate/lock.c
++++ b/make/makestate/lock.c
+@@ -42,18 +42,6 @@
+ #include <sys/errno.h>
+ #include <errno.h>		/* errno */
+ 
+-#if defined(_LP64)
+-/*
+- * The symbols _sys_errlist and _sys_nerr are not visible in the
+- * LP64 libc.  Use strerror(3C) instead.
+- */
+-#else  /* #_LP64 */
+-#if defined (__sun) || defined (__hpux)
+-extern	char *		sys_errlist[];
+-extern	int		sys_nerr;
+-#endif
+-#endif /* #_LP64 */
+-
+ static	void		file_lock_error(char *, char *, const char *, char *, char *);
+ 
+ /*
+@@ -167,16 +155,7 @@ file_lock_error(char * msg, char * file, const char * str, char * arg1,
+ 	len = strlen(msg);
+ 	sprintf(&msg[len], str, arg1, arg2);
+ 	strcat(msg, " failed - ");
+-#if defined(_LP64)
+ 	/* Needs to be changed to use strerror(3C) instead. */
+ 	len = strlen(msg);
+ 	sprintf(&msg[len], "errno %d", errno);
+-#else  /* #_LP64 */
+-	if (errno < sys_nerr) {
+-		strcat(msg, sys_errlist[errno]);
+-	} else {
+-		len = strlen(msg);
+-		sprintf(&msg[len], "errno %d", errno);
+-	}
+-#endif /* #_LP64 */
+ }
+diff --git a/make/mksh/macro.cc b/make/mksh/macro.cc
+index 6ddb624..23b0315 100644
+--- a/make/mksh/macro.cc
++++ b/make/mksh/macro.cc
+@@ -43,6 +43,7 @@
+ /*
+  * Included files
+  */
++#include <alloca.h>
+ #include <wordexp.h>
+ #include <mksh/dosys.h>		/* sh_command2string() */
+ #include <mksh/i18n.h>		/* get_char_semantics_value() */
+@@ -1403,13 +1404,6 @@ found_it:;
+ 			new_value = ALLOC_WC(length);
+ 			new_value_allocated = true;
+ 			WCSTOMBS(mbs_buffer, old_vr);
+-#ifdef __sun
+-			wsprintf(new_value,
+-				        NOCATGETS("/usr/arch/%s/%s:%s"),
+-				        ha->string_mb + 1,
+-				        ta->string_mb + 1,
+-				        mbs_buffer);
+-#else
+ 			char * mbs_new_value = (char *)getmem(length);
+ 			sprintf(mbs_new_value,
+ 				        NOCATGETS("/usr/arch/%s/%s:%s"),
+@@ -1418,7 +1412,6 @@ found_it:;
+ 				        mbs_buffer);
+ 			MBSTOWCS(new_value, mbs_new_value);
+ 			retmem_mb(mbs_new_value);
+-#endif
+ 		}
+ 		if (new_value[0] != 0) {
+ 			setvar_daemon(virtual_root,
+diff --git a/make/mksh/misc.cc b/make/mksh/misc.cc
+index 11122cf..d617591 100644
+--- a/make/mksh/misc.cc
++++ b/make/mksh/misc.cc
+@@ -382,30 +382,7 @@ setup_char_semantics(void)
+ char *
+ errmsg(int errnum)
+ {
+-#ifndef __sun
+ 	return strerror(errnum);
+-#else // __sun
+-
+-	extern int		sys_nerr;
+-#ifdef SUN4_x
+-	extern char		*sys_errlist[];
+-#endif
+-	char			*errbuf;
+-
+-	if ((errnum < 0) || (errnum > sys_nerr)) {
+-		errbuf = getmem(6+1+11+1);
+-		sprintf(errbuf, "Error %d", errnum);
+-		return errbuf;
+-	} else {
+-#ifdef SUN4_x
+-		return(sys_errlist[errnum]);
+-#endif
+-#ifdef SUN5_0
+-		return strerror(errnum);
+-#endif
+-
+-	}
+-#endif // !__sun
+ }
+ 
+ extern const char	*progname;
+diff --git a/make/src/implicit.cc b/make/src/implicit.cc
+index 2d388cc..a1cee7e 100644
+--- a/make/src/implicit.cc
++++ b/make/src/implicit.cc
+@@ -43,10 +43,13 @@
+ /*
+  * Included files
+  */
++#include <cstdio>
+ #include <mk/defs.h>
+ #include <mksh/macro.h>		/* expand_value() */
+ #include <mksh/misc.h>		/* retmem() */
+ 
++using std::printf;
++
+ /*
+  * Defined macros
+  */
+@@ -97,8 +100,6 @@ extern	void		add_target_to_chain(Name target, Chain * query);
+  *		recursion_level	Used for tracing
+  */
+ 
+-extern int printf (const char *, ...);
+-
+ static Boolean actual_doname = false;
+ 
+ /* /tolik/
+diff --git a/make/src/nse_printdep.cc b/make/src/nse_printdep.cc
+index 6201a18..38826d2 100644
+--- a/make/src/nse_printdep.cc
++++ b/make/src/nse_printdep.cc
+@@ -37,9 +37,12 @@
+ /*
+  * Included files
+  */
++#include <cstdio>
+ #include <mk/defs.h>
+ #include <mksh/misc.h>		/* get_prop() */
+ 
++using std::printf;
++
+ /*
+  * File table of contents
+  */
+@@ -59,7 +62,6 @@ static void	print_rule(register Name target);
+ static	void	print_rec_info(Name target);
+ static Boolean	is_out_of_date(Property line);
+ extern void depvar_print_results (void);
+-extern int printf (const char *, ...);
+ extern int _flsbuf (unsigned int, FILE *);
+ 
+ /*
+diff --git a/make/vroot/lock.cc b/make/vroot/lock.cc
+index 1d6239b..1a20bc0 100644
+--- a/make/vroot/lock.cc
++++ b/make/vroot/lock.cc
+@@ -48,11 +48,6 @@
+ #include <signal.h>
+ #include <errno.h>			/* errno */
+ 
+-#if defined(sun) || defined(HP_UX)
+-extern	char		*sys_errlist[];
+-extern	int		sys_nerr;
+-#endif
+-
+ static	void		file_lock_error(char *msg, char *file, char *str, int arg1, int arg2);
+ 
+ #define BLOCK_INTERUPTS sigfillset(&newset) ; \
+@@ -179,20 +174,6 @@ file_lock_error(char *msg, char *file, char *str, int arg1, int arg2)
+ 	len = strlen(msg);
+ 	sprintf(&msg[len], str, arg1, arg2);
+ 	strcat(msg, " failed - ");
+-#ifdef __sun
+-	if (errno < sys_nerr) {
+-#ifdef SUN4_x
+-		strcat(msg, sys_errlist[errno]);
+-#endif
+-#ifdef SUN5_0
+-		strcat(msg, strerror(errno));
+-#endif
+-	} else {
+-		len = strlen(msg);
+-		sprintf(&msg[len], NOCATGETS("errno %d"), errno);
+-	}
+-#else
+ 	strcat(msg, strerror(errno));
+-#endif
+ }
+ 
+diff --git a/sccs/src/vc.c b/sccs/src/vc.c
+index d7f7187..1c0ffb1 100644
+--- a/sccs/src/vc.c
++++ b/sccs/src/vc.c
+@@ -37,6 +37,7 @@
+  */
+ /*	from OpenSolaris "sccs:cmd/vc.c"	*/
+ # include	<defines.h>
++# include	<limits.h>
+ # include	<locale.h>
+ 
+ 

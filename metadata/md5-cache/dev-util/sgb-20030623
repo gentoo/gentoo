@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=|| ( >=dev-util/cweb-3.00 virtual/tex-base )
+DESCRIPTION=Stanford GraphBase
+HOMEPAGE=ftp://labrea.stanford.edu/pub/sgb/
+KEYWORDS=~amd64 ~ppc x86
+LICENSE=BSD
+RDEPEND=|| ( >=dev-util/cweb-3.00 virtual/tex-base )
+SLOT=0
+SRC_URI=ftp://labrea.stanford.edu/pub/sgb/sgb-2003-06-23.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=6b6ab3bfb01dc1e5eec4b7796ba1648b

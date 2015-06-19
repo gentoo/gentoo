@@ -1,0 +1,227 @@
+# ChangeLog for sys-apps/pcmciautils
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/pcmciautils/ChangeLog,v 1.51 2014/09/01 05:17:12 ssuominen Exp $
+
+*pcmciautils-018_p8-r1 (01 Sep 2014)
+
+  01 Sep 2014; Samuli Suominen <ssuominen@gentoo.org>
+  +pcmciautils-018_p8-r1.ebuild:
+  Fix handling of USE="staticsocket" wrt #521856 by Mehmet Giritli
+
+  30 Jul 2014; Samuli Suominen <ssuominen@gentoo.org> pcmciautils-018_p8.ebuild:
+  Use shorter get_udevdir() instead of the longer deprecated udev_get_udevdir()
+  version.
+
+  05 Jan 2013; Michael Palimaka <kensington@gentoo.org>
+  -files/014-udev-rules.patch, -pcmciautils-014-r1.ebuild:
+  Remove old.
+
+  05 Jan 2013; Raúl Porcel <armin76@gentoo.org> pcmciautils-018_p8.ebuild:
+  sh stable wrt #434082
+
+  18 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop mobile herd as talked in gentoo-dev ML
+
+  13 Nov 2012; Agostino Sarubbo <ago@gentoo.org> pcmciautils-018_p8.ebuild:
+  Stable for x86, wrt bug #434082
+
+  12 Nov 2012; Anthony G. Basile <blueness@gentoo.org>
+  pcmciautils-018_p8.ebuild:
+  stable arm, bug #434082
+
+  12 Nov 2012; Anthony G. Basile <blueness@gentoo.org>
+  pcmciautils-018_p8.ebuild:
+  stable ppc, bug #434082
+
+  02 Nov 2012; <ago@gentoo.org> pcmciautils-018_p8.ebuild:
+  Stable for amd64, wrt bug #434082
+
+  02 Nov 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -pcmciautils-015.ebuild, -pcmciautils-016.ebuild, -pcmciautils-017.ebuild:
+  old
+
+*pcmciautils-018_p8 (01 Nov 2012)
+
+  01 Nov 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +pcmciautils-018_p8.ebuild:
+  Version bump. Include patch from Debian to remove sys-fs/sysfsutils
+  dependency wrt #377697 by Anthony Basile. Remove now out of date notification
+  from pkg_postinst() wrt #440592 by "poletti.marco"
+
+  31 Oct 2012; Samuli Suominen <ssuominen@gentoo.org> pcmciautils-017.ebuild:
+  Use virtual/yacc instead of hardcoding dev-util/yacc wrt #425756 by David
+  Carlos Manuelda
+
+  31 Oct 2012; Samuli Suominen <ssuominen@gentoo.org> pcmciautils-017.ebuild:
+  Use udev.eclass for determining correct udevdir value from udev.pc pkg-config
+  file by using the udev_get_udevdir() function.
+
+  25 Feb 2012; Robin H. Johnson <robbat2@gentoo.org> pcmciautils-014-r1.ebuild,
+  pcmciautils-015.ebuild, pcmciautils-016.ebuild, pcmciautils-017.ebuild:
+  Bug #405687: Depend on virtual/modutils instead of sys-apps/module-init-tools.
+
+*pcmciautils-017 (26 May 2010)
+
+  26 May 2010; Thilo Bangert <bangert@gentoo.org> +pcmciautils-017.ebuild:
+  version bump (#300810)
+
+*pcmciautils-016 (16 Oct 2009)
+
+  16 Oct 2009; Thilo Bangert <bangert@gentoo.org> pcmciautils-014-r1.ebuild,
+  pcmciautils-015.ebuild, +pcmciautils-016.ebuild:
+  needs yacc (bug #239422) - version bump fixes bug #255317
+
+*pcmciautils-015 (01 Sep 2008)
+
+  01 Sep 2008; Mike Frysinger <vapier@gentoo.org> +pcmciautils-015.ebuild:
+  Version bump and cleanup.
+
+  23 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  03 Jun 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  pcmciautils-014-r1.ebuild:
+  fix yacc typo
+
+  26 Sep 2007; Hanno Boeck <hanno@gentoo.org> pcmciautils-014-r1.ebuild:
+  Can use bison's yacc.
+
+  10 Feb 2007; <genstef@gentoo.org>
+  -files/pcmciautils-012-pccardctl-uclibc.patch, -pcmciautils-012.ebuild,
+  -pcmciautils-013.ebuild, -pcmciautils-014.ebuild,
+  pcmciautils-014-r1.ebuild:
+  Remove udev useflag, bug 158114, remove old ebuilds
+
+  06 Feb 2007; Simon Stelling <blubb@gentoo.org> pcmciautils-014-r1.ebuild:
+  stable on amd64; bug 158859
+
+  14 Jan 2007; Joseph Jezak <josejx@gentoo.org> pcmciautils-014-r1.ebuild:
+  Marked ppc stable for bug #158859.
+
+  09 Jan 2007; Andrej Kacian <ticho@gentoo.org> pcmciautils-014-r1.ebuild:
+  Stable on x86, bug #158859.
+
+*pcmciautils-014-r1 (22 Dec 2006)
+
+  22 Dec 2006; Petteri Räty <betelgeuse@gentoo.org>
+  +files/014-udev-rules.patch, +pcmciautils-014-r1.ebuild:
+  Added patch for udev rules from bug #146948. Thanks to Lukasz Pawelczyk
+  <havner@kamp.pl>.
+
+  10 Sep 2006; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove brix from metadata.xml.
+
+*pcmciautils-014 (01 Jun 2006)
+
+  01 Jun 2006; Henrik Brix Andersen <brix@gentoo.org>
+  +pcmciautils-014.ebuild:
+  Version bump.
+
+  24 May 2006; Michael Hanselmann <hansmi@gentoo.org>
+  pcmciautils-013.ebuild:
+  Stable on ppc.
+
+  26 Apr 2006; Henrik Brix Andersen <brix@gentoo.org>
+  pcmciautils-013.ebuild:
+  Stable on x86.
+
+  26 Mar 2006; Daniel Goller <morfic@gentoo.org> pcmciautils-012.ebuild:
+  pcmciautils-012 stable on amd64 wrt bug #121192
+
+*pcmciautils-013 (26 Mar 2006)
+
+  26 Mar 2006; Henrik Brix Andersen <brix@gentoo.org>
+  -pcmciautils-010.ebuild, -pcmciautils-011.ebuild, +pcmciautils-013.ebuild:
+  Version bump. Pruned old ebuilds.
+
+  24 Mar 2006; Henrik Brix Andersen <brix@gentoo.org>
+  +files/pcmciautils-012-pccardctl-uclibc.patch, pcmciautils-012.ebuild:
+  Fix compilation with uClibc, thanks to Natanael Copa in bug #125598.
+
+  17 Feb 2006; Joseph Jezak <josejx@gentoo.org> pcmciautils-012.ebuild:
+  Marked ppc stable for bug #121192.
+
+  01 Feb 2006; Henrik Brix Andersen <brix@gentoo.org>
+  pcmciautils-012.ebuild:
+  Stable on x86, bug #121192.
+
+  19 Jan 2006; Henrik Brix Andersen <brix@gentoo.org>
+  pcmciautils-010.ebuild, pcmciautils-011.ebuild, pcmciautils-012.ebuild:
+  Updated for new style virtual/pcmcia.
+
+  12 Jan 2006; Henrik Brix Andersen <brix@gentoo.org>
+  pcmciautils-010.ebuild, pcmciautils-011.ebuild, pcmciautils-012.ebuild:
+  Remove cis USE flag + DEPEND.
+
+*pcmciautils-012 (28 Dec 2005)
+
+  28 Dec 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +pcmciautils-012.ebuild:
+  Version bump.
+
+  12 Dec 2005; Luis Medinas <metalgod@gentoo.org> pcmciautils-011.ebuild:
+  Added ~amd64 keyword. Bug #114383.
+
+  09 Dec 2005; Joseph Jezak <josejx@gentoo.org> pcmciautils-011.ebuild:
+  Marked ~ppc for bug #114383.
+
+  07 Dec 2005; Henrik Brix Andersen <brix@gentoo.org>
+  pcmciautils-010.ebuild, pcmciautils-011.ebuild:
+  Block virtual/pcmcia.
+
+*pcmciautils-011 (06 Dec 2005)
+
+  06 Dec 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +pcmciautils-011.ebuild:
+  Version bump.
+
+  10 Nov 2005; Henrik Brix Andersen <brix@gentoo.org>
+  pcmciautils-010.ebuild:
+  Updated HOMEPAGE.
+
+  22 Oct 2005; Henrik Brix Andersen <brix@gentoo.org>
+  -pcmciautils-007.ebuild, -pcmciautils-008.ebuild:
+  Pruned old versions.
+
+*pcmciautils-010 (20 Oct 2005)
+
+  20 Oct 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +pcmciautils-010.ebuild:
+  Version bump. This version installs as an udev handler when USE=udev, and as
+  a hotplug handler when USE=-udev.
+
+*pcmciautils-008 (29 Aug 2005)
+
+  29 Aug 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +pcmciautils-008.ebuild:
+  Version bump.
+
+  26 Aug 2005; Henrik Brix Andersen <brix@gentoo.org>
+  -pcmciautils-004.ebuild, -pcmciautils-005.ebuild, -pcmciautils-006.ebuild:
+  Pruned old versions.
+
+*pcmciautils-007 (29 Jul 2005)
+
+  29 Jul 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +pcmciautils-007.ebuild:
+  Version bump.
+
+*pcmciautils-006 (18 Jul 2005)
+
+  18 Jul 2005; <brix@gentoo.org> +pcmciautils-006.ebuild:
+  Version bump.
+
+  07 Jul 2005; <brix@gentoo.org> pcmciautils-004.ebuild,
+  pcmciautils-005.ebuild:
+  Fixed DEPEND/RDEPEND issue.
+
+*pcmciautils-005 (03 Jul 2005)
+
+  03 Jul 2005; <brix@gentoo.org> +pcmciautils-005.ebuild:
+  Version bump.
+
+*pcmciautils-004 (30 Jun 2005)
+
+  30 Jun 2005; <brix@gentoo.org> +metadata.xml, +pcmciautils-004.ebuild:
+  Initial import, bug #84234. A big thank you to Dominik Brodowski for
+  providing the initial ebuild - and the package itself.

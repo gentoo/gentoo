@@ -1,0 +1,91 @@
+From 97363d64cc488433f4d7598e6250f65a440272cd Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Manuel=20R=C3=BCger?= <manuel@rueg.eu>
+Date: Fri, 24 Oct 2014 17:05:19 +0200
+Subject: [PATCH] Support Gentoo's package managers.
+
+---
+ Makefile                          |  2 --
+ etckeeper.conf                    | 14 ++++++++++++--
+ list-installed.d/50list-installed |  4 ++++
+ update-ignore.d/01update-ignore   |  4 ++++
+ 4 files changed, 20 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 1ba3ac1..3c17c88 100644
+--- a/Makefile
++++ b/Makefile
+@@ -27,7 +27,6 @@ install:
+ 	mkdir -p $(DESTDIR)$(mandir)/man8
+ 	$(INSTALL_DATA) etckeeper.8 $(DESTDIR)$(mandir)/man8/etckeeper.8
+ 	mkdir -p $(DESTDIR)$(etcdir)/bash_completion.d
+-	$(INSTALL_DATA) bash_completion $(DESTDIR)$(etcdir)/bash_completion.d/etckeeper
+ ifeq ($(HIGHLEVEL_PACKAGE_MANAGER),apt)
+ 	mkdir -p $(DESTDIR)$(etcdir)/apt/apt.conf.d
+ 	$(INSTALL_DATA) apt.conf $(DESTDIR)$(etcdir)/apt/apt.conf.d/05etckeeper
+@@ -48,7 +47,6 @@ ifeq ($(HIGHLEVEL_PACKAGE_MANAGER),zypper)
+ 	mkdir -p $(DESTDIR)$(prefix)/lib/zypp/plugins/commit
+ 	$(INSTALL) zypper-etckeeper.py $(DESTDIR)$(prefix)/lib/zypp/plugins/commit/zypper-etckeeper.py
+ endif
+-	-$(PYTHON) ./etckeeper-bzr/__init__.py install --root=$(DESTDIR) ${PYTHON_INSTALL_OPTS} || echo "** bzr support not installed"
+ 	echo "** installation successful"
+ 
+ clean: etckeeper.spec
+diff --git a/etckeeper.conf b/etckeeper.conf
+index f988c10..55420e8 100644
+--- a/etckeeper.conf
++++ b/etckeeper.conf
+@@ -31,11 +31,21 @@ DARCS_COMMIT_OPTIONS="-a"
+ 
+ # The high-level package manager that's being used.
+ # (apt, pacman-g2, yum, zypper etc)
+-HIGHLEVEL_PACKAGE_MANAGER=apt
++#HIGHLEVEL_PACKAGE_MANAGER=apt
++
++# Gentoo specific:
++# For portage this is emerge
++# For paludis this is cave
++HIGHLEVEL_PACKAGE_MANAGER=emerge
+ 
+ # The low-level package manager that's being used.
+ # (dpkg, rpm, pacman, pacman-g2, etc)
+-LOWLEVEL_PACKAGE_MANAGER=dpkg
++#LOWLEVEL_PACKAGE_MANAGER=dpkg
++
++# Gentoo specific:
++# For portage this is qlist
++# For paludis this is cave
++LOWLEVEL_PACKAGE_MANAGER=qlist
+ 
+ # To push each commit to a remote, put the name of the remote here.
+ # (eg, "origin" for git). Space-separated lists of multiple remotes
+diff --git a/list-installed.d/50list-installed b/list-installed.d/50list-installed
+index f392027..02eb179 100755
+--- a/list-installed.d/50list-installed
++++ b/list-installed.d/50list-installed
+@@ -9,4 +9,8 @@ elif [ "$LOWLEVEL_PACKAGE_MANAGER" = rpm ]; then
+ 	rpm -qa --qf "%|epoch?{%{epoch}}:{0}|:%{name}-%{version}-%{release}.%{arch}\n" | sort
+ elif [ "$LOWLEVEL_PACKAGE_MANAGER" = pacman ]; then
+ 	pacman -Q
++elif [ "$LOWLEVEL_PACKAGE_MANAGER" = qlist ]; then
++	qlist -ICv
++elif [ "$LOWLEVEL_PACKAGE_MANAGER" = cave ]; then
++	cave print-packages -r installed
+ fi
+diff --git a/update-ignore.d/01update-ignore b/update-ignore.d/01update-ignore
+index 528ff8a..39ca107 100755
+--- a/update-ignore.d/01update-ignore
++++ b/update-ignore.d/01update-ignore
+@@ -99,6 +99,10 @@ writefile () {
+ 		ignore "*.pacorig"
+ 		ignore "*.pacsave"
+ 		nl
++	elif [ "$LOWLEVEL_PACKAGE_MANAGER" = "qlist" -o "$LOWLEVEL_PACKAGE_MANAGER" = "cave" ]; then
++		comment "new and old versions of conffiles, stored by emerge"
++		ignore "._cfg*"
++		nl
+ 	fi
+ 	
+ 	comment "old versions of files"
+-- 
+2.1.2
+

@@ -1,0 +1,34 @@
+From cb10a844f9e91322aca91340b7adc0db19c96b36 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Diego=20Elio=20Petten=C3=B2?= <flameeyes@flameeyes.eu>
+Date: Mon, 30 Apr 2012 17:07:41 -0700
+Subject: [PATCH] build-sys: fix parallel install in avahi-utils
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The moment install-exec-local is called, we might still not have
+created ${DESTDIR}/${bindir} so we should make sure to create it
+first, and then try to chdir into it.
+
+Signed-off-by: Diego Elio Pettenò <flameeyes@flameeyes.eu>
+---
+ avahi-utils/Makefile.am |    3 ++-
+ 1 files changed, 2 insertions(+), 1 deletions(-)
+
+diff --git a/avahi-utils/Makefile.am b/avahi-utils/Makefile.am
+index a644b4a..1abc79a 100644
+--- a/avahi-utils/Makefile.am
++++ b/avahi-utils/Makefile.am
+@@ -54,7 +54,8 @@ avahi_set_host_name_CFLAGS = $(AM_CFLAGS)
+ avahi_set_host_name_LDADD = $(AM_LDADD) ../avahi-client/libavahi-client.la ../avahi-common/libavahi-common.la
+ 
+ install-exec-local:
+-	cd $(DESTDIR)/$(bindir) && \
++	$(mkdir_p) $(DESTDIR)/$(bindir) && \
++		cd $(DESTDIR)/$(bindir) && \
+ 		rm -f avahi-resolve-host-name avahi-resolve-address avahi-browse-domains avahi-publish-address avahi-publish-service && \
+ 		$(LN_S) avahi-resolve avahi-resolve-host-name && \
+ 		$(LN_S) avahi-resolve avahi-resolve-address && \
+-- 
+1.7.8.6
+

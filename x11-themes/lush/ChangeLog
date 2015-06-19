@@ -1,0 +1,65 @@
+# ChangeLog for x11-themes/lush
+# Copyright 2002-2006 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/lush/ChangeLog,v 1.19 2006/11/28 00:23:23 flameeyes Exp $
+
+  28 Nov 2006; Diego Pettenò <flameeyes@gentoo.org> lush-0.1.0-r2.ebuild:
+  Remove the dummy src_compile, and use doins instead of cp to copy the icons.
+
+  05 Sep 2006; Gustavo Zacarias <gustavoz@gentoo.org> lush-0.1.0-r2.ebuild:
+  Stable on sparc
+
+  31 Jul 2006; Diego Pettenò <flameeyes@gentoo.org> -lush-0.1.0-r1.ebuild:
+  Remove old broken version.
+
+  30 Jul 2006; Bryan Østergaard <kloeri@gentoo.org> lush-0.1.0-r2.ebuild:
+  Stable on alpha + ia64.
+
+  28 Jul 2006; Danny van Dyk <kugelfang@gentoo.org> lush-0.1.0-r2.ebuild:
+  Marked stable on amd64.
+
+  23 Jul 2006; Joshua Jackson <tsunam@gentoo.org> lush-0.1.0-r2.ebuild:
+  Stable x86; bug #141453
+
+  23 Jul 2006; Diego Pettenò <flameeyes@gentoo.org> lush-0.1.0-r2.ebuild:
+  Add ~x86-fbsd keyword.
+
+  23 Jul 2006; Luca Barbato <lu_zero@gentoo.org> lush-0.1.0-r2.ebuild:
+  Marked ppc
+
+*lush-0.1.0-r2 (23 Jul 2006)
+
+  23 Jul 2006; Diego Pettenò <flameeyes@gentoo.org> +lush-0.1.0-r2.ebuild:
+  Revision bump, by removing the useless inheritance of kde and installing in
+  /usr/share instead of in KDE's prefix. Also point to Gentoo mirrors as the
+  original site is now unavailable.
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> lush-0.1.0-r1.ebuild:
+  Mark 0.1.0-r1 stable on alpha
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> lush-0.1.0-r1.ebuild:
+  Mark 0.1.0-r1 stable on ia64
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> lush-0.1.0-r1.ebuild:
+  add ~ia64
+
+  07 Apr 2005; Simon Stelling <blubb@gentoo.org> lush-0.1.0-r1.ebuild:
+  stable on amd64
+
+  28 Nov 2004; Dominik Stadler <centic@gentoo.org> lush-0.1.0-r1.ebuild:
+  Mark stable on x86
+
+  14 Aug 2004; Sven Wegener <swegener@gentoo.org> lush-0.1.0-r1.ebuild,
+  lush-0.1.0.ebuild:
+  Fixed CVS Header.
+
+*lush-0.1.0-r1 (26 Apr 2004)
+
+  26 Apr 2004; Dominik Stadler <centic@gentoo.org> +lush-0.1.0-r1.ebuild:
+  Corrected the wrong install path, thanks to <elias.probst@gmx.de>, see Bug
+  38220
+
+*lush-0.1.0 (20 June 2003)
+
+  20 June 2003; Troy Dack <tad@gentoo.org> lush-0.1.0.ebuild :
+  Initial import. Ebuild submitted by Elias Probst <elias.probst@t-online.de>
+  

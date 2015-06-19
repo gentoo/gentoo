@@ -1,0 +1,185 @@
+diff -NrU5 zhcon-0.2.6.orig/src/basefont.cpp zhcon-0.2.6/src/basefont.cpp
+--- zhcon-0.2.6.orig/src/basefont.cpp	2008-04-29 23:15:08.000000000 +0200
++++ zhcon-0.2.6/src/basefont.cpp	2008-04-29 23:15:37.000000000 +0200
+@@ -27,10 +27,12 @@
+ #include "global.h"
+ #include "debug.h"
+ #include "hzdecoder.h"
+ #include "basefont.h"
+ 
++#include <cstring>
++
+ BaseFont::BaseFont(string & fn, int w, int h)
+ :mFd(0)
+ ,mpBuf(0)
+ ,mWidth(w)
+ ,mHeight(h) {
+diff -NrU5 zhcon-0.2.6.orig/src/display/fblinear4.cpp zhcon-0.2.6/src/display/fblinear4.cpp
+--- zhcon-0.2.6.orig/src/display/fblinear4.cpp	2008-04-29 23:15:08.000000000 +0200
++++ zhcon-0.2.6/src/display/fblinear4.cpp	2008-04-29 23:15:37.000000000 +0200
+@@ -20,10 +20,12 @@
+ #include <assert.h>
+ #include <endian.h>
+ #include "global.h"
+ #include "fblinear4.h"
+ 
++#include <cstring>
++
+ __u16 FBLinear4::nibbletab_cfb4[] = {
+ #if BYTE_ORDER == LITTLE_ENDIAN
+ 0x0000,0xf000,0x0f00,0xff00,
+ 0x00f0,0xf0f0,0x0ff0,0xfff0,
+ 0x000f,0xf00f,0x0f0f,0xff0f,
+diff -NrU5 zhcon-0.2.6.orig/src/display/fblinear8.cpp zhcon-0.2.6/src/display/fblinear8.cpp
+--- zhcon-0.2.6.orig/src/display/fblinear8.cpp	2008-04-29 23:15:08.000000000 +0200
++++ zhcon-0.2.6/src/display/fblinear8.cpp	2008-04-29 23:15:37.000000000 +0200
+@@ -20,10 +20,12 @@
+ #include <assert.h>
+ #include <endian.h>
+ #include "global.h"
+ #include "fblinear8.h"
+ 
++#include <cstring>
++
+ __u32 FBLinear8::nibbletab_cfb8[] = {
+ #if BYTE_ORDER == LITTLE_ENDIAN
+ 0x00000000,0xff000000,0x00ff0000,0xffff0000,
+ 0x0000ff00,0xff00ff00,0x00ffff00,0xffffff00,
+ 0x000000ff,0xff0000ff,0x00ff00ff,0xffff00ff,
+diff -NrU5 zhcon-0.2.6.orig/src/display/fbvgaplanes.cpp zhcon-0.2.6/src/display/fbvgaplanes.cpp
+--- zhcon-0.2.6.orig/src/display/fbvgaplanes.cpp	2008-04-29 23:15:08.000000000 +0200
++++ zhcon-0.2.6/src/display/fbvgaplanes.cpp	2008-04-29 23:15:37.000000000 +0200
+@@ -36,10 +36,12 @@
+         : "a" ((char) value),
+         "d" ((unsigned short) port));
+ }
+ #endif
+ 
++#include <cstring>
++
+ /* based on kernel
+  * Force strict CPU ordering.
+  * And yes, this is required on UP too when we're talking
+  * to devices.
+  *
+diff -NrU5 zhcon-0.2.6.orig/src/display/vgadev.cpp zhcon-0.2.6/src/display/vgadev.cpp
+--- zhcon-0.2.6.orig/src/display/vgadev.cpp	2008-04-29 23:15:08.000000000 +0200
++++ zhcon-0.2.6/src/display/vgadev.cpp	2008-04-29 23:15:37.000000000 +0200
+@@ -35,10 +35,12 @@
+ #include <cassert>
+ #include "debug.h"
+ #include "vgadev.h"
+ #include "lrmi.h"
+ 
++#include <cstring>
++
+ #define GRAPH_BASE 0xA0000
+ #define GRAPH_ADDR  0x3ce
+ #define GRAPH_DATA  0x3cf
+ 
+ char *VGADev::mpBuf = NULL;
+diff -NrU5 zhcon-0.2.6.orig/src/graphdev.cpp zhcon-0.2.6/src/graphdev.cpp
+--- zhcon-0.2.6.orig/src/graphdev.cpp	2008-04-29 23:15:08.000000000 +0200
++++ zhcon-0.2.6/src/graphdev.cpp	2008-04-29 23:16:14.000000000 +0200
+@@ -24,20 +24,23 @@
+ #include <fcntl.h>
+ #include <sys/ioctl.h>
+ #include <sys/mman.h>
+ #include <assert.h>
+ #include <iostream>
++#include <cstdlib>
+ #include "debug.h"
+ 
+ #include "display/fbdev.h"
+ #include "display/vgadev.h"
+ #if defined(linux) || defined(__FreeBSD__)
+     #ifdef HAVE_GGI_LIB
+     #include "display/libggi.h"
+     #endif
+ #endif
+ 
++#include <cstring>
++
+ using namespace std;
+ // mmap framebuffer address
+ GraphDev *GraphDev::mpGraphDev = NULL;
+ 
+ // font
+diff -NrU5 zhcon-0.2.6.orig/src/inputclient.cpp zhcon-0.2.6/src/inputclient.cpp
+--- zhcon-0.2.6.orig/src/inputclient.cpp	2008-04-29 23:15:08.000000000 +0200
++++ zhcon-0.2.6/src/inputclient.cpp	2008-04-29 23:15:37.000000000 +0200
+@@ -14,10 +14,12 @@
+  *   the Free Software Foundation; either version 2 of the License, or     *
+  *   (at your option) any later version.                                   *
+  *                                                                         *
+  ***************************************************************************/
+ 
++#include <cstdlib>
++
+ #include "inputclient.h"
+ 
+ Console* InputClient::mpCon = NULL;
+ InputClient::InputClient()
+ : mVisible(false),
+diff -NrU5 zhcon-0.2.6.orig/src/inputmanager.cpp zhcon-0.2.6/src/inputmanager.cpp
+--- zhcon-0.2.6.orig/src/inputmanager.cpp	2008-04-29 23:15:08.000000000 +0200
++++ zhcon-0.2.6/src/inputmanager.cpp	2008-04-29 23:19:01.000000000 +0200
+@@ -22,10 +22,11 @@
+ using namespace std;
+ 
+ #include <unistd.h>
+ #include <sys/time.h>
+ #include <string>
++#include <cstdlib>
+ 
+ #include "global.h"
+ #include "debug.h"
+ #include "keymap.h"
+ #include "console.h"
+diff -NrU5 zhcon-0.2.6.orig/src/inputmanager.h zhcon-0.2.6/src/inputmanager.h
+--- zhcon-0.2.6.orig/src/inputmanager.h	2008-04-29 23:15:08.000000000 +0200
++++ zhcon-0.2.6/src/inputmanager.h	2008-04-29 23:15:37.000000000 +0200
+@@ -24,10 +24,11 @@
+   *@author ejoy
+   */
+ using namespace std;
+ #include <cassert>
+ #include <vector>
++#include <sys/types.h>
+ 
+ #include "mouse.h"
+ #if defined(__FreeBSD__)
+     #include <sys/kbio.h>
+ #endif
+diff -NrU5 zhcon-0.2.6.orig/src/window.cpp zhcon-0.2.6/src/window.cpp
+--- zhcon-0.2.6.orig/src/window.cpp	2008-04-29 23:15:08.000000000 +0200
++++ zhcon-0.2.6/src/window.cpp	2008-04-29 23:15:37.000000000 +0200
+@@ -22,10 +22,12 @@
+ #include <algorithm>
+ #include "global.h"
+ #include "debug.h"
+ #include "window.h"
+ 
++#include <cstring>
++
+ //static members for all the windows
+ Window* Window::mpConsole = NULL;
+ char* Window::mpOverlaps = NULL;
+ 
+ Window::Window(int x1, int y1, int x2, int y2, int type)
+diff -NrU5 zhcon-0.2.6.orig/src/zhcon.cpp zhcon-0.2.6/src/zhcon.cpp
+--- zhcon-0.2.6.orig/src/zhcon.cpp	2008-04-29 23:15:08.000000000 +0200
++++ zhcon-0.2.6/src/zhcon.cpp	2008-04-29 23:15:37.000000000 +0200
+@@ -81,10 +81,12 @@
+ #ifndef NDEBUG
+ #include "debug.h"
+ ofstream debug("debug");
+ #endif
+ 
++#include <cstring>
++
+ Zhcon* Zhcon::mpZhcon = NULL;
+ int Zhcon::mTtyPid = 0;
+ Zhcon::STATE Zhcon::mState = STOP;
+ 
+ void Zhcon::SignalVtLeave(int signo) {

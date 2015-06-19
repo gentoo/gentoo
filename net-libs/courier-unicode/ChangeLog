@@ -1,0 +1,31 @@
+# ChangeLog for net-libs/courier-unicode
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/courier-unicode/ChangeLog,v 1.8 2015/05/15 11:56:41 pacho Exp $
+
+  15 May 2015; Pacho Ramos <pacho@gentoo.org> courier-unicode-1.1.ebuild:
+  ppc stable wrt bug #548176
+
+  13 May 2015; Agostino Sarubbo <ago@gentoo.org> courier-unicode-1.1.ebuild:
+  Stable for amd64, wrt bug #548176
+
+  03 May 2015; Jeroen Roovers <jer@gentoo.org> courier-unicode-1.1.ebuild:
+  Stable for HPPA PPC64 (bug #548176).
+
+  01 May 2015; Jeroen Roovers <jer@gentoo.org> courier-unicode-1.1.ebuild:
+  Marked ~ppc64 (bug #532520).
+
+  03 Mar 2015; Markus Meier <maekke@gentoo.org> courier-unicode-1.1.ebuild:
+  add ~arm, bug #532520
+
+  15 Jan 2015; Andreas Schuerch <nativemad@gentoo.org>
+  courier-unicode-1.1.ebuild:
+  marked ~x86, see bug 532520
+
+  15 Dec 2014; Jeroen Roovers <jer@gentoo.org> courier-unicode-1.1.ebuild:
+  Marked ~hppa (bug #532520).
+
+*courier-unicode-1.1 (16 Sep 2014)
+
+  16 Sep 2014; Hanno Boeck <hanno@gentoo.org> +courier-unicode-1.1.ebuild,
+  +metadata.xml:
+  Initial commit, dep for next courier update.

@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure
+DEPEND=net-print/cups
+DESCRIPTION=CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
+EAPI=5
+HOMEPAGE=http://sourceforge.net/projects/cups-bjnp/
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=net-print/cups
+SLOT=0
+SRC_URI=mirror://sourceforge/cups-bjnp/2.0/cups-bjnp-2.0.tar.gz
+_md5_=1e681776f177d382a3815f7d4c09e353

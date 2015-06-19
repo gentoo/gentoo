@@ -1,0 +1,32 @@
+# ChangeLog for dev-perl/IO-Capture
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/IO-Capture/ChangeLog,v 1.7 2014/08/26 14:50:40 axs Exp $
+
+*IO-Capture-0.50.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +IO-Capture-0.50.0-r1.ebuild, -IO-Capture-0.50.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  18 Nov 2012; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Drop duplication of myself as a maintainer where there is a herd.
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -IO-Capture-0.05.ebuild:
+  Cleanup
+
+*IO-Capture-0.50.0 (30 Aug 2011)
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org> +IO-Capture-0.50.0.ebuild:
+  Change version scheme
+
+  23 Jun 2009; Torsten Veller <tove@gentoo.org> IO-Capture-0.05.ebuild:
+  Add description
+
+*IO-Capture-0.05 (23 Jun 2009)
+
+  23 Jun 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +IO-Capture-0.05.ebuild, +metadata.xml:
+  Initial commit. Ebuild by Robin H. Johnson <robbat2@gentoo.org>.

@@ -1,0 +1,1680 @@
+# ChangeLog for x11-drivers/xf86-video-intel
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-video-intel/ChangeLog,v 1.170 2015/06/15 12:26:19 chithanh Exp $
+
+*xf86-video-intel-2.99.917-r2 (15 Jun 2015)
+
+  15 Jun 2015; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/xf86-video-intel-2.99.917-libdrm-kernel-4_0-crash.patch,
+  +xf86-video-intel-2.99.917-r2.ebuild:
+  Add patch to fix SNA crash with newer libdrm/kernel, bug #552124.
+
+*xf86-video-intel-2.99.917-r1 (13 Jun 2015)
+
+  13 Jun 2015; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/xf86-video-intel-2.99.917-sna-udev-fstat.patch,
+  +files/xf86-video-intel-2.99.917-uxa-udev-fstat.patch,
+  +xf86-video-intel-2.99.917-r1.ebuild:
+  Add patches to fix building against newer gcc, bug #550784.
+
+  19 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-intel-2.99.917.ebuild:
+  Stable for x86, wrt bug #530652
+
+  18 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-intel-2.99.917.ebuild:
+  Stable for amd64, wrt bug #530652
+
+  12 Jan 2015; Rémi Cardona <remi@gentoo.org>
+  -xf86-video-intel-2.99.911-r1.ebuild, -xf86-video-intel-2.99.912.ebuild,
+  -xf86-video-intel-2.99.912-r1.ebuild:
+  Remove versions vulnerable to CVE-2014-4910, see bug #536356.
+
+*xf86-video-intel-2.99.917 (26 Dec 2014)
+
+  26 Dec 2014; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-intel-2.99.917.ebuild:
+  Bump to 2.99.917, remove glamor support (removed upstream).
+
+*xf86-video-intel-2.99.916 (08 Sep 2014)
+
+  08 Sep 2014; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-intel-2.99.916.ebuild:
+  Bump to 2.99.916.
+
+*xf86-video-intel-2.99.914 (24 Jul 2014)
+
+  24 Jul 2014; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-intel-2.99.914.ebuild:
+  Bump to 2.99.914.
+
+*xf86-video-intel-2.99.912-r1 (18 Jun 2014)
+
+  18 Jun 2014; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-intel-2.99.912-r1.ebuild,
+  +files/xf86-video-intel-2.99.912-disable-dri3.patch:
+  Disable DRI3 support (see bug #513500)
+
+*xf86-video-intel-2.99.912 (10 Jun 2014)
+
+  10 Jun 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-intel-2.99.912.ebuild:
+  Bump to latest prerelease.
+
+*xf86-video-intel-2.99.911-r1 (14 May 2014)
+
+  14 May 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +files/xf86-video-intel-2.99.911-sna-pixmap-migration.patch,
+  +xf86-video-intel-2.99.911-r1.ebuild, -xf86-video-intel-2.99.911.ebuild:
+  fixed sna acceleration issue affecting gstreamer-0.10, upstream bug
+  https://bugs.freedesktop.org/show_bug.cgi?id=77063 , fixes bug 506542
+
+*xf86-video-intel-2.99.911 (26 Mar 2014)
+
+  26 Mar 2014; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-intel-2.99.911.ebuild:
+  Bump to 2.99.911.
+
+*xf86-video-intel-2.99.910 (10 Feb 2014)
+
+  10 Feb 2014; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-intel-2.99.910.ebuild:
+  Bump to 2.99.910.
+
+  10 Feb 2014; Rémi Cardona <remi@gentoo.org>
+  xf86-video-intel-2.99.909.ebuild:
+  Bump glamor dependency, see bug #500846.
+
+  04 Feb 2014; Rémi Cardona <remi@gentoo.org>
+  -xf86-video-intel-2.21.10-r1.ebuild, -xf86-video-intel-2.21.11.ebuild,
+  -xf86-video-intel-2.21.12.ebuild, -xf86-video-intel-2.21.13.ebuild,
+  -xf86-video-intel-2.21.14.ebuild, -xf86-video-intel-2.99.901.ebuild,
+  -xf86-video-intel-2.99.905.ebuild, -xf86-video-intel-2.99.907.ebuild,
+  -files/xf86-video-intel-2.21.10-sna-clear-clear-hint.patch:
+  Prune old revisions.
+
+*xf86-video-intel-2.99.909 (03 Feb 2014)
+
+  03 Feb 2014; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-intel-2.99.909.ebuild:
+  Bump to 2.99.909.
+
+  26 Jan 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/xf86-video-intel-2.21.15-handle-updates-to-DamageUnregister-API.patch,
+  xf86-video-intel-2.21.15.ebuild:
+  Fix building against xorg-server-1.15, bug #496682.
+
+*xf86-video-intel-2.99.907-r1 (06 Jan 2014)
+
+  06 Jan 2014; Jason A. Donenfeld <zx2c4@gentoo.org>
+  +files/xf86-video-intel-2.99.907-invalidation.patch,
+  +xf86-video-intel-2.99.907-r1.ebuild:
+  Fix issues with window decoration corruption on ivy bridge.
+
+*xf86-video-intel-2.99.907 (02 Jan 2014)
+
+  02 Jan 2014; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-intel-2.99.907.ebuild:
+  Bump to 2.99.907.
+
+*xf86-video-intel-2.99.906 (17 Nov 2013)
+
+  17 Nov 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/xf86-video-intel-2.99.906-server-crash.patch,
+  +xf86-video-intel-2.99.906.ebuild:
+  Version bump.
+
+  08 Nov 2013; Rémi Cardona <remi@gentoo.org> xf86-video-intel-2.21.15.ebuild:
+  Fix build failure (wrong CFLAGS variable), see bug #490342.
+
+*xf86-video-intel-2.99.905-r1 (04 Nov 2013)
+
+  04 Nov 2013; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-intel-2.99.905-r1.ebuild,
+  +files/xf86-video-intel-2.99.905-fix-randr.patch:
+  Add patch to fix RandR segfault, see bug #490414.
+
+  03 Nov 2013; Rémi Cardona <remi@gentoo.org>
+  xf86-video-intel-2.99.905.ebuild:
+  Update REQUIRED_USE as glamor support requires UXA, see bug #486860. Reported
+  by darkbasic, patch adapted from Mao Pu's.
+
+*xf86-video-intel-2.99.905 (23 Oct 2013)
+
+  23 Oct 2013; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-intel-2.99.905.ebuild:
+  Bump to 2.99.905.
+
+  08 Oct 2013; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-intel-2.21.15.ebuild:
+  Stable for x86, wrt bug #475480
+
+  29 Sep 2013; Rémi Cardona <remi@gentoo.org> -xf86-video-intel-2.21.3.ebuild,
+  -xf86-video-intel-2.21.4.ebuild, -xf86-video-intel-2.21.5.ebuild,
+  -xf86-video-intel-2.21.6.ebuild, -xf86-video-intel-2.21.7.ebuild,
+  -xf86-video-intel-2.21.8.ebuild, -xf86-video-intel-2.21.9.ebuild,
+  -xf86-video-intel-2.21.10.ebuild:
+  Prune old revisions.
+
+*xf86-video-intel-2.99.903 (29 Sep 2013)
+
+  29 Sep 2013; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-intel-2.99.903.ebuild:
+  Bump to 2.99.903.
+
+  29 Sep 2013; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-intel-2.21.15.ebuild:
+  Stable for amd64, wrt bug #475480
+
+*xf86-video-intel-2.99.901 (04 Sep 2013)
+
+  04 Sep 2013; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-intel-2.99.901.ebuild:
+  Bump to 2.99.901.
+
+*xf86-video-intel-2.21.15 (23 Aug 2013)
+
+  23 Aug 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-intel-2.21.15.ebuild:
+  Version bump.
+
+*xf86-video-intel-2.21.14 (04 Aug 2013)
+
+  04 Aug 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-intel-2.21.14.ebuild:
+  Version bump.
+
+*xf86-video-intel-2.21.13 (02 Aug 2013)
+
+  02 Aug 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-intel-2.21.13.ebuild:
+  Version bump, bug #478848.
+
+*xf86-video-intel-2.21.12 (14 Jul 2013)
+
+  14 Jul 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-intel-2.21.12.ebuild:
+  Version bump.
+
+*xf86-video-intel-2.21.11 (01 Jul 2013)
+
+  01 Jul 2013; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-intel-2.21.11.ebuild:
+  Bump to 2.21.11.
+
+*xf86-video-intel-2.21.10-r1 (25 Jun 2013)
+
+  25 Jun 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/xf86-video-intel-2.21.10-sna-clear-clear-hint.patch,
+  +xf86-video-intel-2.21.10-r1.ebuild:
+  Add patch to fix rendering problems, bug #474670.
+
+*xf86-video-intel-2.21.10 (23 Jun 2013)
+
+  23 Jun 2013; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-intel-2.21.10.ebuild:
+  Bump to 2.21.10.
+
+*xf86-video-intel-2.21.9 (07 Jun 2013)
+
+  07 Jun 2013; Rémi Cardona <remi@gentoo.org> +xf86-video-intel-2.21.9.ebuild:
+  Bump to 2.21.9.
+
+*xf86-video-intel-2.21.8 (27 May 2013)
+
+  27 May 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-intel-2.21.8.ebuild:
+  Version bump.
+
+*xf86-video-intel-2.21.7 (21 May 2013)
+
+  21 May 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-intel-2.21.7.ebuild:
+  Version bump.
+
+*xf86-video-intel-2.21.6 (11 Apr 2013)
+
+  11 Apr 2013; Rémi Cardona <remi@gentoo.org> +xf86-video-intel-2.21.6.ebuild:
+  Bump to 2.21.6.
+
+*xf86-video-intel-2.21.5 (27 Mar 2013)
+
+  27 Mar 2013; Rémi Cardona <remi@gentoo.org> +xf86-video-intel-2.21.5.ebuild:
+  Bump to 2.21.5.
+
+*xf86-video-intel-2.21.4 (11 Mar 2013)
+
+  11 Mar 2013; Rémi Cardona <remi@gentoo.org> +xf86-video-intel-2.21.4.ebuild:
+  Bump to 2.21.4.
+
+  11 Mar 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -files/xf86-video-intel-2.20.19-discard-mappings.patch,
+  -xf86-video-intel-2.20.19-r1.ebuild, -xf86-video-intel-2.20.2.ebuild,
+  -xf86-video-intel-2.21.0.ebuild, -xf86-video-intel-2.21.2.ebuild,
+  xf86-video-intel-2.19.0.ebuild:
+  Drop some old versions, adjust dependency on others to account for xorg-
+  server-1.14 incompatibility, bug #461360.
+
+*xf86-video-intel-2.21.3 (22 Feb 2013)
+
+  22 Feb 2013; Rémi Cardona <remi@gentoo.org> +xf86-video-intel-2.21.3.ebuild:
+  Bump to 2.21.3.
+
+*xf86-video-intel-2.21.2 (11 Feb 2013)
+
+  11 Feb 2013; Rémi Cardona <remi@gentoo.org> +xf86-video-intel-2.21.2.ebuild:
+  Bump to 2.21.2.
+
+*xf86-video-intel-2.21.0 (05 Feb 2013)
+
+  05 Feb 2013; Matt Turner <mattst88@gentoo.org>
+  +xf86-video-intel-2.21.0.ebuild:
+  Version bump to 2.21.0, bug 455532. Fixes bug 454412.
+
+*xf86-video-intel-2.20.19-r1 (31 Jan 2013)
+
+  31 Jan 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/xf86-video-intel-2.20.19-discard-mappings.patch,
+  +xf86-video-intel-2.20.19-r1.ebuild, -xf86-video-intel-2.20.15.ebuild,
+  -xf86-video-intel-2.20.16.ebuild, -xf86-video-intel-2.20.17.ebuild,
+  -xf86-video-intel-2.20.18.ebuild, -xf86-video-intel-2.20.19.ebuild,
+  xf86-video-intel-2.20.13.ebuild:
+  Add patch for bug #454412. Remove old.
+
+*xf86-video-intel-2.20.19 (23 Jan 2013)
+
+  23 Jan 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-intel-2.20.19.ebuild, xf86-video-intel-2.19.0.ebuild:
+  Version bump.
+
+*xf86-video-intel-2.20.18 (17 Jan 2013)
+
+  17 Jan 2013; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-intel-2.20.18.ebuild:
+  Bump to 2.20.18.
+
+*xf86-video-intel-2.20.17 (10 Jan 2013)
+
+  10 Jan 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-intel-2.20.17.ebuild:
+  Version bump, bug #449396.
+
+  02 Jan 2013; Matt Turner <mattst88@gentoo.org> xf86-video-intel-2.9.1.ebuild,
+  xf86-video-intel-2.19.0.ebuild, xf86-video-intel-2.20.2.ebuild,
+  xf86-video-intel-2.20.13.ebuild, xf86-video-intel-2.20.15.ebuild,
+  xf86-video-intel-2.20.16.ebuild:
+  Drop -ia64 keywords.
+
+  02 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  marked -ia64, wrt bug #449816
+
+  29 Dec 2012; Rémi Cardona <remi@gentoo.org> -xf86-video-intel-2.8.1.ebuild,
+  -xf86-video-intel-2.10.0-r1.ebuild, -xf86-video-intel-2.11.0.ebuild,
+  -xf86-video-intel-2.13.0.ebuild, -xf86-video-intel-2.14.0.ebuild,
+  -xf86-video-intel-2.15.0-r1.ebuild, -xf86-video-intel-2.16.0.ebuild,
+  -xf86-video-intel-2.17.0-r3.ebuild, -xf86-video-intel-2.18.0.ebuild,
+  -xf86-video-intel-2.20.10.ebuild, -xf86-video-intel-2.20.12.ebuild,
+  -xf86-video-intel-2.20.14.ebuild:
+  Prune old revisions.
+
+*xf86-video-intel-2.20.16 (16 Dec 2012)
+
+  16 Dec 2012; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-intel-2.20.16.ebuild:
+  Bump to 2.20.16.
+
+*xf86-video-intel-2.20.15 (03 Dec 2012)
+
+  03 Dec 2012; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-intel-2.20.15.ebuild:
+  Bump to 2.20.15.
+
+  02 Dec 2012; Samuli Suominen <ssuominen@gentoo.org>
+  xf86-video-intel-2.20.10.ebuild, xf86-video-intel-2.20.12.ebuild,
+  xf86-video-intel-2.20.13.ebuild, xf86-video-intel-2.20.14.ebuild:
+  Use virtual/udev instead of sys-fs/udev
+
+*xf86-video-intel-2.20.14 (26 Nov 2012)
+
+  26 Nov 2012; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-intel-2.20.14.ebuild:
+  Bump to 2.20.14.
+
+  18 Nov 2012; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-intel-2.20.13.ebuild:
+  Stable for x86, wrt bug #440872
+
+  16 Nov 2012; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-intel-2.20.13.ebuild:
+  Stable for amd64, wrt bug #440872
+
+  12 Nov 2012; Rémi Cardona <remi@gentoo.org> -xf86-video-intel-2.20.8.ebuild,
+  -xf86-video-intel-2.20.9.ebuild:
+  Prune older 2.20.x revisions.
+
+*xf86-video-intel-2.20.13 (12 Nov 2012)
+
+  12 Nov 2012; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-intel-2.20.13.ebuild:
+  Bump to 2.20.13.
+
+  24 Oct 2012; Rémi Cardona <remi@gentoo.org> +xf86-video-intel-2.20.2.ebuild:
+  Bring 2.20.2 back from the dead for bug #439420.
+
+  21 Oct 2012; Rémi Cardona <remi@gentoo.org> -xf86-video-intel-2.20.0.ebuild,
+  -xf86-video-intel-2.20.1.ebuild, -xf86-video-intel-2.20.2.ebuild,
+  -xf86-video-intel-2.20.3.ebuild, -xf86-video-intel-2.20.5.ebuild,
+  -xf86-video-intel-2.20.6.ebuild, -xf86-video-intel-2.20.7.ebuild:
+  Prune older 2.20.x revisions.
+
+*xf86-video-intel-2.20.12 (21 Oct 2012)
+
+  21 Oct 2012; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-intel-2.20.12.ebuild:
+  Bump to 2.20.12.
+
+*xf86-video-intel-2.20.10 (16 Oct 2012)
+
+  16 Oct 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/xf86-video-intel-2.20.10-filter-blend-flags.patch,
+  +xf86-video-intel-2.20.10.ebuild:
+  Version bump.
+
+*xf86-video-intel-2.20.9 (30 Sep 2012)
+
+  30 Sep 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-intel-2.20.9.ebuild:
+  Version bump.
+
+  17 Sep 2012; Rémi Cardona <remi@gentoo.org> xf86-video-intel-2.20.8.ebuild:
+  Add udev USE flag, see bug #434794.
+
+*xf86-video-intel-2.20.8 (17 Sep 2012)
+
+  17 Sep 2012; Rémi Cardona <remi@gentoo.org> +xf86-video-intel-2.20.8.ebuild:
+  Bump to 2.20.8.
+
+  13 Sep 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  xf86-video-intel-2.20.7.ebuild:
+  Require at least one acceleration method at build time, bug #434920.
+
+  11 Sep 2012; Rémi Cardona <remi@gentoo.org> xf86-video-intel-2.20.7.ebuild,
+  metadata.xml:
+  Add USE=xvmc, patch by Nikoli, see bug #434720.
+
+*xf86-video-intel-2.20.7 (10 Sep 2012)
+
+  10 Sep 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-intel-2.20.7.ebuild, metadata.xml:
+  Version bump. Import USE flag #434336 and dependency #434330 changes from the
+  x11 overlay.
+
+  03 Sep 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  xf86-video-intel-2.18.0.ebuild, xf86-video-intel-2.19.0.ebuild,
+  xf86-video-intel-2.20.0.ebuild, xf86-video-intel-2.20.1.ebuild,
+  xf86-video-intel-2.20.2.ebuild, xf86-video-intel-2.20.3.ebuild,
+  xf86-video-intel-2.20.5.ebuild, xf86-video-intel-2.20.6.ebuild:
+  Depend on pixman unconditionally, bug #410813 comment 3.
+
+*xf86-video-intel-2.20.6 (02 Sep 2012)
+
+  02 Sep 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-intel-2.20.6.ebuild:
+  Version bump.
+
+*xf86-video-intel-2.20.5 (01 Sep 2012)
+
+  01 Sep 2012; Rémi Cardona <remi@gentoo.org> +xf86-video-intel-2.20.5.ebuild:
+  Bump to 2.20.5, closes bug #432030.
+
+  26 Aug 2012; Raúl Porcel <armin76@gentoo.org>
+  xf86-video-intel-2.19.0.ebuild:
+  ia64 stable wrt #419473
+
+*xf86-video-intel-2.20.3 (04 Aug 2012)
+
+  04 Aug 2012; Rémi Cardona <remi@gentoo.org> +xf86-video-intel-2.20.3.ebuild:
+  Bump to 2.20.3.
+
+*xf86-video-intel-2.20.2 (27 Jul 2012)
+
+  27 Jul 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-intel-2.20.2.ebuild:
+  Version bump.
+
+*xf86-video-intel-2.20.1 (23 Jul 2012)
+
+  23 Jul 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-intel-2.20.1.ebuild:
+  Version bump, bug #427736.
+
+*xf86-video-intel-2.20.0 (19 Jul 2012)
+
+  19 Jul 2012; Rémi Cardona <remi@gentoo.org> +xf86-video-intel-2.20.0.ebuild:
+  Bump to 2.20.0, sync with x11 overlay, see bug #426854.
+
+  04 Jul 2012; Rémi Cardona <remi@gentoo.org>
+  xf86-video-intel-2.10.0-r1.ebuild, xf86-video-intel-2.11.0.ebuild,
+  xf86-video-intel-2.13.0.ebuild, xf86-video-intel-2.14.0.ebuild,
+  xf86-video-intel-2.15.0-r1.ebuild, xf86-video-intel-2.16.0.ebuild,
+  xf86-video-intel-2.17.0-r3.ebuild, xf86-video-intel-2.18.0.ebuild,
+  xf86-video-intel-2.19.0.ebuild:
+  Fix automagic dependency on xcb-aux (provided by x11-libs/xcb-utils), see bug
+  ##352573.
+
+  26 Jun 2012; Robin H. Johnson <robbat2@gentoo.org>
+  xf86-video-intel-2.10.0-r1.ebuild, xf86-video-intel-2.11.0.ebuild,
+  xf86-video-intel-2.13.0.ebuild, xf86-video-intel-2.14.0.ebuild,
+  xf86-video-intel-2.15.0-r1.ebuild, xf86-video-intel-2.16.0.ebuild,
+  xf86-video-intel-2.17.0-r3.ebuild, xf86-video-intel-2.18.0.ebuild,
+  xf86-video-intel-2.19.0.ebuild, xf86-video-intel-2.8.1.ebuild,
+  xf86-video-intel-2.9.1.ebuild:
+  Bug #364041: Ebuild produced strange warnings because it did not trigger
+  linux-info_pkg_setup after inheriting linux-info.
+
+  24 Jun 2012; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-intel-2.19.0.ebuild:
+  Stable for x86, wrt bug #419473
+
+  22 Jun 2012; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-intel-2.19.0.ebuild:
+  Stable for amd64, wrt bug #419473
+
+  03 Jun 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  xf86-video-intel-2.8.1.ebuild, xf86-video-intel-2.9.1.ebuild:
+  Drop non-bsd keywords.
+
+  24 May 2012; Matt Turner <mattst88@gentoo.org>
+  xf86-video-intel-2.18.0.ebuild, xf86-video-intel-2.19.0.ebuild:
+  Bump pixman requirement to 0.24, bug 410813.
+
+  16 May 2012; Alexis Ballier <aballier@gentoo.org>
+  xf86-video-intel-2.19.0.ebuild:
+  keyword ~amd64-fbsd (compile tested only)
+
+*xf86-video-intel-2.19.0 (01 May 2012)
+
+  01 May 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-intel-2.19.0.ebuild, metadata.xml:
+  Version bump, bug #414097.
+
+*xf86-video-intel-2.18.0 (24 Feb 2012)
+
+  24 Feb 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-intel-2.18.0.ebuild:
+  Version bump.
+
+  19 Feb 2012; Raúl Porcel <armin76@gentoo.org>
+  xf86-video-intel-2.17.0-r3.ebuild:
+  ia64 stable wrt #394393
+
+  27 Dec 2011; Markus Meier <maekke@gentoo.org>
+  xf86-video-intel-2.17.0-r3.ebuild:
+  x86 stable, bug #394393
+
+  20 Dec 2011; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-intel-2.17.0-r3.ebuild:
+  Stable for AMD64, wrt bug #394393
+
+*xf86-video-intel-2.17.0-r3 (11 Dec 2011)
+
+  11 Dec 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -xf86-video-intel-2.17.0-r2.ebuild, +xf86-video-intel-2.17.0-r3.ebuild,
+  +files/xf86-video-intel-2.17-sna-pipeline-flush.patch:
+  Add patch for bug #393427
+
+*xf86-video-intel-2.17.0-r2 (26 Nov 2011)
+
+  26 Nov 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -xf86-video-intel-2.17.0-r1.ebuild, +xf86-video-intel-2.17.0-r2.ebuild:
+  Actually apply the patch from bug #391819.
+
+*xf86-video-intel-2.17.0-r1 (25 Nov 2011)
+
+  25 Nov 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -xf86-video-intel-2.17.0.ebuild, +xf86-video-intel-2.17.0-r1.ebuild,
+  +files/xf86-video-intel-2.17-sna-offsets.patch:
+  Add patch to fix screen corruption, bug #391819.
+
+*xf86-video-intel-2.17.0 (17 Nov 2011)
+
+  17 Nov 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -xf86-video-intel-2.16.902.ebuild, +xf86-video-intel-2.17.0.ebuild:
+  Version bump.
+
+*xf86-video-intel-2.16.902 (13 Nov 2011)
+
+  13 Nov 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -xf86-video-intel-2.16.901.ebuild, +xf86-video-intel-2.16.902.ebuild:
+  Bump to latest development release.
+
+*xf86-video-intel-2.16.901 (31 Oct 2011)
+
+  31 Oct 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-intel-2.16.901.ebuild:
+  Bump to latest development release.
+
+  02 Oct 2011; Raúl Porcel <armin76@gentoo.org>
+  xf86-video-intel-2.15.0-r1.ebuild:
+  ia64 stable wrt #380421
+
+  04 Sep 2011; Markus Meier <maekke@gentoo.org>
+  xf86-video-intel-2.15.0-r1.ebuild:
+  x86 stable, bug #380421
+
+  30 Aug 2011; Tony Vroon <chainsaw@gentoo.org>
+  xf86-video-intel-2.15.0-r1.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo in bug
+  #380421 filed by Chí-Thanh Christopher Nguyễn.
+
+*xf86-video-intel-2.16.0 (11 Aug 2011)
+
+  11 Aug 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-intel-2.16.0.ebuild, metadata.xml:
+  Version bump.
+
+  04 Jul 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  xf86-video-intel-2.15.0-r1.ebuild:
+  Add dependency on libdrm that was lost between 2.14.0 and 2.15.0, bug #374049
+
+*xf86-video-intel-2.15.0-r1 (08 Jun 2011)
+
+  08 Jun 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -xf86-video-intel-2.15.0.ebuild, +xf86-video-intel-2.15.0-r1.ebuild,
+  +files/xf86-video-intel-2.15-batch-overrun.patch,
+  +files/xf86-video-intel-2.15-unsigned-promotion.patch:
+  Add patches to fix segfault, bug #366091, upstream #36319.
+
+*xf86-video-intel-2.15.0 (18 Apr 2011)
+
+  18 Apr 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-intel-2.15.0.ebuild:
+  Version bump, bug #363983.
+
+  05 Mar 2011; Raúl Porcel <armin76@gentoo.org>
+  xf86-video-intel-2.14.0.ebuild:
+  ia64 stable wrt #354237
+
+  13 Feb 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -xf86-video-intel-2.12.0.ebuild:
+  old
+
+  12 Feb 2011; Raúl Porcel <armin76@gentoo.org>
+  xf86-video-intel-2.13.0.ebuild:
+  ia64 stable wrt #344827
+
+  12 Feb 2011; Christian Faulhammer <fauli@gentoo.org>
+  xf86-video-intel-2.14.0.ebuild:
+  stable x86, bug 354237
+
+  12 Feb 2011; Markos Chandras <hwoarang@gentoo.org>
+  xf86-video-intel-2.14.0.ebuild:
+  Stable on amd64 wrt bug #354237
+
+  09 Jan 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  xf86-video-intel-2.14.0.ebuild:
+  Raise libdrm dependency, bug #351255
+
+*xf86-video-intel-2.14.0 (09 Jan 2011)
+
+  09 Jan 2011; Rémi Cardona <remi@gentoo.org> +xf86-video-intel-2.14.0.ebuild:
+  Bump to 2.14.0
+
+  25 Dec 2010; Christian Faulhammer <fauli@gentoo.org>
+  xf86-video-intel-2.13.0.ebuild:
+  x86 stable, bug 344827
+
+  23 Dec 2010; Samuli Suominen <ssuominen@gentoo.org>
+  xf86-video-intel-2.13.0.ebuild:
+  amd64 stable wrt #344827
+
+*xf86-video-intel-2.13.0 (10 Oct 2010)
+
+  10 Oct 2010; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-intel-2.13.0.ebuild:
+  bump to 2.13.0
+
+  30 Sep 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  xf86-video-intel-2.10.0-r1.ebuild, xf86-video-intel-2.11.0.ebuild,
+  xf86-video-intel-2.12.0.ebuild:
+  Update for libdrm changes.
+
+  11 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org> -files/i810.xinf:
+  drop useless file
+
+  09 Jul 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  xf86-video-intel-2.9.1.ebuild:
+  Adjust libdrm dependency, does not build against 2.4.21
+
+*xf86-video-intel-2.12.0 (25 Jun 2010)
+
+  25 Jun 2010; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-intel-2.12.0.ebuild:
+  bump to 2.12.0
+
+  25 Apr 2010; Alexis Ballier <aballier@gentoo.org>
+  xf86-video-intel-2.10.0-r1.ebuild, xf86-video-intel-2.11.0.ebuild:
+  Keyword -x86-fbsd versions that require kms and will not work on FreeBSD,
+  bug #314827
+
+*xf86-video-intel-2.11.0 (01 Apr 2010)
+
+  01 Apr 2010; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-intel-2.11.0.ebuild:
+  bump to 2.11.0, fix kernel config check (see bugs #310353 and #312605)
+
+  14 Mar 2010; Rémi Cardona <remi@gentoo.org>
+  xf86-video-intel-2.10.0-r1.ebuild:
+  xineramaproto is still needed for the 2.10 branch
+
+*xf86-video-intel-2.10.0-r1 (14 Mar 2010)
+
+  14 Mar 2010; Rémi Cardona <remi@gentoo.org>
+  +files/2.10.0-0001-Extract-pixel-value-for-all-formats-to-avoid-hitting.pa
+  tch, -xf86-video-intel-2.10.0.ebuild, +xf86-video-intel-2.10.0-r1.ebuild:
+  new 2.10.0 ebuild from the overlay, fixes bugs #299907, #308501 and
+  #309067
+
+  14 Mar 2010; Rémi Cardona <remi@gentoo.org>
+  -files/2.6.3-0001-clean-up-man-page-generation-and-remove-all-traces-o.pat
+  ch, -xf86-video-intel-2.6.3-r1.ebuild, -xf86-video-intel-2.7.1.ebuild,
+  -xf86-video-intel-2.9.0.ebuild,
+  -files/2.6.3-0002-Fix-Xv-crash-with-overlay-video.patch:
+  drop old ebuilds
+
+  18 Jan 2010; Raúl Porcel <armin76@gentoo.org>
+  xf86-video-intel-2.9.1.ebuild:
+  ia64 stable wrt #294958
+
+*xf86-video-intel-2.10.0 (07 Jan 2010)
+
+  07 Jan 2010; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-intel-2.10.0.ebuild:
+  bump to 2.10.0
+
+  15 Dec 2009; Raúl Porcel <armin76@gentoo.org>
+  xf86-video-intel-2.8.1.ebuild:
+  ia64 stable wrt #282290
+
+  10 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  xf86-video-intel-2.9.1.ebuild:
+  x86 stable, bug 294958
+
+  10 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  xf86-video-intel-2.9.1.ebuild:
+  amd64 stable wrt #294958
+
+*xf86-video-intel-2.9.1 (26 Oct 2009)
+
+  26 Oct 2009; Rémi Cardona <remi@gentoo.org>
+  -files/2.9.0-0001-drmmode-with-1.7-server-set-mode-major-doesn-t-get-g.pat
+  ch, -xf86-video-intel-2.9.0-r1.ebuild, +xf86-video-intel-2.9.1.ebuild,
+  -files/2.9.0-0002-uxa-Free-the-ScratchPixmapHeader-after-its-associate.pat
+  ch, -files/2.9.0-0003-Drop-frontbuffer-from-crtc-in-I830CloseScreen.patch:
+  bump to 2.9.1, drop 2.9.0-r1
+
+*xf86-video-intel-2.9.0-r1 (22 Oct 2009)
+
+  22 Oct 2009; Rémi Cardona <remi@gentoo.org>
+  +files/2.9.0-0001-drmmode-with-1.7-server-set-mode-major-doesn-t-get-g.pat
+  ch, +xf86-video-intel-2.9.0-r1.ebuild,
+  +files/2.9.0-0002-uxa-Free-the-ScratchPixmapHeader-after-its-associate.pat
+  ch, +files/2.9.0-0003-Drop-frontbuffer-from-crtc-in-I830CloseScreen.patch:
+  add patches from the 2.9 branch (should fix bug #289980)
+
+  22 Oct 2009; Rémi Cardona <remi@gentoo.org>
+  -files/2.1.1-fix_build_without_dri.patch,
+  -files/2.7.99.902-0001-Fix-XV-scan-line-calculation-when-rotated.patch,
+  -files/2.7.0-0001-KMS-hook-up-output-properties-for-randr.patch,
+  -files/2.5.1-0001-clean-up-man-page-generation-and-remove-all-traces-o.pat
+  ch,
+  -files/2.6.1-0001-clean-up-man-page-generation-and-remove-all-traces-o.pat
+  ch, -files/2.2.1-0001-fixup-pciaccess-version-detect.patch,
+  -files/2.3.2-0001-intel-fix-drm-check.patch,
+  -files/2.4.3-0001-never-enable-DRI_MM-on-this-branch.patch,
+  -xf86-video-intel-2.4.3.ebuild,
+  -files/2.7.99.902-0002-Reset-framebuffer-offset-when-rebinding-aperture-22
+  7.patch, -xf86-video-intel-2.5.1-r1.ebuild,
+  -files/2.5.1-0002-include-X11-Xmd.h-to-define-CARD16-needed-by-edid.patch,
+  -xf86-video-intel-2.7.99.902-r1.ebuild, -xf86-video-intel-2.8.0.ebuild,
+  -files/2.7.99.902-0003-Use-batch_start_atomic-to-fix-batchbuffer-wrapping-
+  p.patch,
+  -files/2.7.99.902-0004-Fix-915-class-Render-after-the-8xx-class-Render-fix
+  .patch,
+  -files/2.7.99.902-0005-Really-fix-i915-render.-Fail-at-commit-amend.patch,
+  -files/2.7.99.902-0006-accessing-a-pixmap-if-prepare_access-fails-is-verbo
+  t.patch, -files/2.7.99.902-0007-Update-to-xextproto-7.1-support.patch:
+  drop old ebuilds
+
+  05 Oct 2009; Christian Faulhammer <fauli@gentoo.org>
+  xf86-video-intel-2.8.1.ebuild:
+  x86 stable, bug 282290
+
+  30 Sep 2009; Samuli Suominen <ssuominen@gentoo.org>
+  xf86-video-intel-2.8.1.ebuild:
+  amd64 stable wrt #282290
+
+*xf86-video-intel-2.9.0 (29 Sep 2009)
+
+  29 Sep 2009; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-intel-2.9.0.ebuild:
+  bump to 2.9.0, sync with x11 overlay
+
+*xf86-video-intel-2.8.1 (27 Aug 2009)
+
+  27 Aug 2009; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-intel-2.8.1.ebuild:
+  bump to 2.8.1
+
+  22 Jul 2009; Rémi Cardona <remi@gentoo.org>
+  -xf86-video-intel-2.7.99.901.ebuild, -xf86-video-intel-2.7.99.902.ebuild:
+  drop old ebuilds
+
+*xf86-video-intel-2.8.0 (22 Jul 2009)
+
+  22 Jul 2009; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-intel-2.8.0.ebuild:
+  bump to 2.8.0
+
+*xf86-video-intel-2.7.99.902-r1 (20 Jul 2009)
+
+  20 Jul 2009; Rémi Cardona <remi@gentoo.org>
+  files/2.7.99.902-0001-Fix-XV-scan-line-calculation-when-rotated.patch,
+  +xf86-video-intel-2.7.99.902-r1.ebuild,
+  files/2.7.99.902-0002-Reset-framebuffer-offset-when-rebinding-aperture-227
+  .patch,
+  files/2.7.99.902-0003-Use-batch_start_atomic-to-fix-batchbuffer-wrapping-p
+  .patch,
+  +files/2.7.99.902-0004-Fix-915-class-Render-after-the-8xx-class-Render-fix
+  .patch,
+  +files/2.7.99.902-0005-Really-fix-i915-render.-Fail-at-commit-amend.patch,
+  +files/2.7.99.902-0006-accessing-a-pixmap-if-prepare_access-fails-is-verbo
+  t.patch, +files/2.7.99.902-0007-Update-to-xextproto-7.1-support.patch:
+  backport another 4 patches from git master
+
+*xf86-video-intel-2.7.99.902 (16 Jul 2009)
+
+  16 Jul 2009; Rémi Cardona <remi@gentoo.org>
+  +files/2.7.99.902-0001-Fix-XV-scan-line-calculation-when-rotated.patch,
+  +xf86-video-intel-2.7.99.902.ebuild,
+  +files/2.7.99.902-0002-Reset-framebuffer-offset-when-rebinding-aperture-22
+  7.patch,
+  +files/2.7.99.902-0003-Use-batch_start_atomic-to-fix-batchbuffer-wrapping-
+  p.patch:
+  bump to 2.7.99.902
+
+  14 Jul 2009; Rémi Cardona <remi@gentoo.org>
+  xf86-video-intel-2.7.99.901.ebuild:
+  up dep on libdrm (fixes bug #277816, thanks Thilo :) )
+
+  07 Jul 2009; Rémi Cardona <remi@gentoo.org>
+  xf86-video-intel-2.7.99.901.ebuild:
+  forgot to run eautoreconf for 2.8 RC 1
+
+  07 Jul 2009; Rémi Cardona <remi@gentoo.org>
+  -xf86-video-intel-2.1.1.ebuild, -xf86-video-intel-2.2.1.ebuild,
+  -xf86-video-intel-2.3.2.ebuild, -xf86-video-intel-2.6.1.ebuild,
+  -xf86-video-intel-2.6.3.ebuild:
+  drop old ebuilds
+
+*xf86-video-intel-2.7.99.901 (07 Jul 2009)
+
+  07 Jul 2009; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-intel-2.7.99.901.ebuild:
+  add updated 2.8 RC 1 snapshot
+
+  13 Jun 2009; Rémi Cardona <remi@gentoo.org>
+  -xf86-video-intel-2.7.0.ebuild:
+  drop broken 2.7.0
+
+*xf86-video-intel-2.7.1 (14 May 2009)
+
+  14 May 2009; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-intel-2.7.1.ebuild:
+  bump to 2.7.1 (no patches for the first time in months!)
+
+  08 May 2009; Rémi Cardona <remi@gentoo.org>
+  -files/1.6.5-fix_no_dri.patch, -xf86-video-intel-1.6.5.ebuild,
+  -xf86-video-intel-1.7.4.ebuild:
+  finally drop pre-2.0 drivers
+
+  05 May 2009; Rémi Cardona <remi@gentoo.org>
+  xf86-video-intel-2.7.0.ebuild:
+  up the dep on libdrm (fixes bug #266851)
+
+*xf86-video-intel-2.7.0 (05 May 2009)
+
+  05 May 2009; Rémi Cardona <remi@gentoo.org>
+  +files/2.7.0-0001-KMS-hook-up-output-properties-for-randr.patch,
+  +xf86-video-intel-2.7.0.ebuild:
+  bump to 2.7.0 with a patch from the 2.7 branch
+
+  04 May 2009; Samuli Suominen <ssuominen@gentoo.org>
+  xf86-video-intel-1.6.5.ebuild, xf86-video-intel-1.7.4.ebuild,
+  xf86-video-intel-2.1.1.ebuild, xf86-video-intel-2.2.1.ebuild,
+  xf86-video-intel-2.3.2.ebuild, xf86-video-intel-2.4.3.ebuild,
+  xf86-video-intel-2.5.1-r1.ebuild, xf86-video-intel-2.6.1.ebuild,
+  xf86-video-intel-2.6.3.ebuild, xf86-video-intel-2.6.3-r1.ebuild:
+  Move use_ functions out of global scope.
+
+  15 Apr 2009; Raúl Porcel <armin76@gentoo.org>
+  xf86-video-intel-2.6.3-r1.ebuild:
+  ia64 stable wrt #251832
+
+  05 Apr 2009; Markus Meier <maekke@gentoo.org>
+  xf86-video-intel-2.6.3-r1.ebuild:
+  x86 stable, bug #251832
+
+  05 Apr 2009; Olivier Crête <tester@gentoo.org>
+  xf86-video-intel-2.6.3-r1.ebuild:
+  Stable on amd64, bug #251832
+
+*xf86-video-intel-2.6.3-r1 (21 Mar 2009)
+
+  21 Mar 2009; Rémi Cardona <remi@gentoo.org>
+  +files/2.6.3-0002-Fix-Xv-crash-with-overlay-video.patch,
+  +xf86-video-intel-2.6.3-r1.ebuild:
+  backport patch to fix Xv (fixes bug #261531)
+
+  13 Mar 2009; Raúl Porcel <armin76@gentoo.org>
+  xf86-video-intel-1.6.5.ebuild, xf86-video-intel-1.7.4.ebuild,
+  xf86-video-intel-2.1.1.ebuild, xf86-video-intel-2.2.1.ebuild,
+  xf86-video-intel-2.3.2.ebuild, xf86-video-intel-2.4.3.ebuild,
+  xf86-video-intel-2.5.1-r1.ebuild, xf86-video-intel-2.6.1.ebuild,
+  xf86-video-intel-2.6.3.ebuild:
+  Drop ~arm/~sh, its not available there
+
+  07 Mar 2009; Rémi Cardona <remi@gentoo.org>
+  -files/2.6.2-0001-clean-up-man-page-generation-and-remove-all-traces-o.pat
+  ch,
+  -files/2.6.2-0002-Disable-fb-resizing-for-DRI1-only-server-so-that-DRI.pat
+  ch, -xf86-video-intel-2.6.2.ebuild:
+  remove broken 2.6.2 release
+
+*xf86-video-intel-2.6.3 (05 Mar 2009)
+
+  05 Mar 2009; Rémi Cardona <remi@gentoo.org>
+  +files/2.6.3-0001-clean-up-man-page-generation-and-remove-all-traces-o.pat
+  ch, +xf86-video-intel-2.6.3.ebuild:
+  bump to 2.6.3 (without p.mask this time)
+
+  28 Feb 2009; Rémi Cardona <remi@gentoo.org>
+  +files/2.6.2-0002-Disable-fb-resizing-for-DRI1-only-server-so-that-DRI.pat
+  ch, xf86-video-intel-2.6.2.ebuild:
+  add patch to fix bug on DRI1-only servers (fdo bug #20325)
+
+*xf86-video-intel-2.6.2 (26 Feb 2009)
+
+  26 Feb 2009; Rémi Cardona <remi@gentoo.org>
+  +files/2.6.2-0001-clean-up-man-page-generation-and-remove-all-traces-o.pat
+  ch, +xf86-video-intel-2.6.2.ebuild:
+  bump to 2.6.2, under p.mask as the ChangeLog is scary
+
+  01 Feb 2009; Rémi Cardona <remi@gentoo.org>
+  -files/2.5.0-0001-Default-kernel-mode-setting-to-off-add-configure-fl.patc
+  h, -files/2.4.2-0001-Don-t-allocate-a-pipe-for-hotplug-detection.patch,
+  -files/2.4.2-0002-Disable-render-standby.patch,
+  -files/2.5.0-0002-clean-up-man-pages-generation-and-installation.patch,
+  -files/2.4.2-0003-never-enable-DRI_MM-on-this-branch.patch,
+  -files/2.5.0-0003-use-standard-automake-macros-for-handling-symlinks.patch
+  ,
+  -files/2.5.0-0004-add-a-configure-switch-for-pre-2.0-compatibility-sym.pat
+  ch, -xf86-video-intel-2.4.2-r3.ebuild, -xf86-video-intel-2.5.0.ebuild,
+  -xf86-video-intel-2.5.1.ebuild, xf86-video-intel-2.6.1.ebuild:
+  remove old ebuilds and don't use wildcards in PATCHES
+
+*xf86-video-intel-2.6.1 (01 Feb 2009)
+
+  01 Feb 2009; Rémi Cardona <remi@gentoo.org>
+  +files/2.6.1-0001-clean-up-man-page-generation-and-remove-all-traces-o.pat
+  ch, +xf86-video-intel-2.6.1.ebuild:
+  bump to 2.6.1, copy from the x11 overlay
+
+  10 Jan 2009; Rémi Cardona <remi@gentoo.org>
+  xf86-video-intel-2.5.1-r1.ebuild:
+  remove useless configure switch, fixes bug #253601
+
+*xf86-video-intel-2.5.1-r1 (17 Dec 2008)
+
+  17 Dec 2008; Rémi Cardona <remi@gentoo.org>
+  +files/2.5.1-0002-include-X11-Xmd.h-to-define-CARD16-needed-by-edid.patch,
+  +xf86-video-intel-2.5.1-r1.ebuild:
+  add build patch (see bug #245095)
+
+  26 Nov 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  xf86-video-intel-1.6.5.ebuild, xf86-video-intel-1.7.4.ebuild,
+  xf86-video-intel-2.1.1.ebuild, xf86-video-intel-2.2.1.ebuild,
+  xf86-video-intel-2.3.2.ebuild, xf86-video-intel-2.4.2-r3.ebuild,
+  xf86-video-intel-2.4.3.ebuild, xf86-video-intel-2.5.0.ebuild,
+  xf86-video-intel-2.5.1.ebuild:
+  The USE=dri check is handled in x-modular.eclass now so it's not
+  duplicated everywhere.
+
+  17 Nov 2008; Rémi Cardona <remi@gentoo.org>
+  -xf86-video-intel-2.2.0.90.ebuild, -xf86-video-intel-2.4.2-r2.ebuild,
+  -xf86-video-intel-2.4.98.0.ebuild:
+  remove older versions
+
+*xf86-video-intel-2.5.1 (17 Nov 2008)
+*xf86-video-intel-2.4.3 (17 Nov 2008)
+
+  17 Nov 2008; Rémi Cardona <remi@gentoo.org>
+  +files/2.5.1-0001-clean-up-man-page-generation-and-remove-all-traces-o.pat
+  ch, +files/2.4.3-0001-never-enable-DRI_MM-on-this-branch.patch,
+  +xf86-video-intel-2.4.3.ebuild, +xf86-video-intel-2.5.1.ebuild:
+  bump to both 2.4.3 and 2.5.1
+
+  28 Oct 2008; Rémi Cardona <remi@gentoo.org>
+  xf86-video-intel-2.2.1.ebuild:
+  epatch typo (fixes bug #244771, thanks to Luyang Han)
+
+*xf86-video-intel-2.5.0 (28 Oct 2008)
+
+  28 Oct 2008; Rémi Cardona <remi@gentoo.org>
+  +files/2.5.0-0001-Default-kernel-mode-setting-to-off-add-configure-fl.patc
+  h, +files/2.5.0-0002-clean-up-man-pages-generation-and-installation.patch,
+  +files/2.5.0-0003-use-standard-automake-macros-for-handling-symlinks.patch
+  ,
+  +files/2.5.0-0004-add-a-configure-switch-for-pre-2.0-compatibility-sym.pat
+  ch, +xf86-video-intel-2.5.0.ebuild:
+  bump to 2.5.0 with patches to remove old symlinks
+
+  22 Oct 2008; Rémi Cardona <remi@gentoo.org>
+  xf86-video-intel-1.6.5.ebuild, xf86-video-intel-1.7.4.ebuild,
+  xf86-video-intel-2.1.1.ebuild, xf86-video-intel-2.2.0.90.ebuild,
+  xf86-video-intel-2.2.1.ebuild, xf86-video-intel-2.3.2.ebuild,
+  xf86-video-intel-2.4.2-r2.ebuild, xf86-video-intel-2.4.2-r3.ebuild,
+  xf86-video-intel-2.4.98.0.ebuild:
+  remove XDPVER cruft from ebuilds
+
+*xf86-video-intel-2.4.98.0 (22 Oct 2008)
+*xf86-video-intel-2.4.2-r3 (22 Oct 2008)
+*xf86-video-intel-2.4.2-r2 (22 Oct 2008)
+*xf86-video-intel-2.3.2 (22 Oct 2008)
+*xf86-video-intel-2.2.1 (22 Oct 2008)
+*xf86-video-intel-2.2.0.90 (22 Oct 2008)
+*xf86-video-intel-2.1.1 (22 Oct 2008)
+*xf86-video-intel-1.7.4 (22 Oct 2008)
+*xf86-video-intel-1.6.5 (22 Oct 2008)
+
+  22 Oct 2008; Rémi Cardona <remi@gentoo.org>
+  +files/1.6.5-fix_no_dri.patch,
+  +files/2.4.2-0001-Don-t-allocate-a-pipe-for-hotplug-detection.patch,
+  +files/2.2.1-0001-fixup-pciaccess-version-detect.patch,
+  +files/2.4.2-0002-Disable-render-standby.patch,
+  +files/2.1.1-fix_build_without_dri.patch,
+  +files/2.3.2-0001-intel-fix-drm-check.patch,
+  +files/2.4.2-0003-never-enable-DRI_MM-on-this-branch.patch,
+  +files/i810.xinf, +metadata.xml, +xf86-video-intel-1.6.5.ebuild,
+  +xf86-video-intel-1.7.4.ebuild, +xf86-video-intel-2.1.1.ebuild,
+  +xf86-video-intel-2.2.0.90.ebuild, +xf86-video-intel-2.2.1.ebuild,
+  +xf86-video-intel-2.3.2.ebuild, +xf86-video-intel-2.4.2-r2.ebuild,
+  +xf86-video-intel-2.4.2-r3.ebuild, +xf86-video-intel-2.4.98.0.ebuild:
+  start the pkgmove
+
+*xf86-video-i810-2.4.98.0 (19 Oct 2008)
+
+  19 Oct 2008; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-i810-2.4.98.0.ebuild:
+  bump to 2.4.98.0 (release candidate)
+
+  19 Oct 2008; Rémi Cardona <remi@gentoo.org>
+  -files/xf86-video-i810-2.4.1-0001-Fix-reverted-LVDS-bios-capability-dword-
+  definition.patch, -xf86-video-i810-2.4.0.ebuild,
+  -xf86-video-i810-2.4.1.ebuild, -xf86-video-i810-2.4.1-r1.ebuild,
+  -xf86-video-i810-2.4.2.ebuild, -xf86-video-i810-2.4.2-r1.ebuild:
+  remove old cruft
+
+*xf86-video-i810-2.4.2-r3 (19 Oct 2008)
+
+  19 Oct 2008; Rémi Cardona <remi@gentoo.org>
+  +files/xf86-video-i810-2.4.2-0003-never-enable-DRI_MM-on-this-branch.patch
+  , +xf86-video-i810-2.4.2-r3.ebuild:
+  add patch for libdrm 2.4.0 support
+
+*xf86-video-i810-2.4.2-r2 (30 Sep 2008)
+
+  30 Sep 2008; Rémi Cardona <remi@gentoo.org>
+  +files/xf86-video-i810-2.4.2-0001-Don-t-allocate-a-pipe-for-hotplug-detect
+  ion.patch, +files/xf86-video-i810-2.4.2-0002-Disable-render-standby.patch,
+  -files/xf86-video-i810-2.4.2-fix-flicker.patch,
+  xf86-video-i810-2.4.2-r1.ebuild, +xf86-video-i810-2.4.2-r2.ebuild:
+  add another patch from upstream's 2.4-branch
+
+*xf86-video-i810-2.4.2-r1 (02 Sep 2008)
+
+  02 Sep 2008; Rémi Cardona <remi@gentoo.org>
+  +files/xf86-video-i810-2.4.2-fix-flicker.patch,
+  +xf86-video-i810-2.4.2-r1.ebuild:
+  add patch to try to fix flickering
+
+*xf86-video-i810-2.4.2 (29 Aug 2008)
+
+  29 Aug 2008; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-i810-2.4.2.ebuild:
+  bump to 2.4.2
+
+  29 Aug 2008; Rémi Cardona <remi@gentoo.org> metadata.xml:
+  reassigning to x11 as I'm on the team now
+
+*xf86-video-i810-2.4.1-r1 (19 Aug 2008)
+
+  19 Aug 2008; Rémi Cardona <remi@gentoo.org>
+  +files/xf86-video-i810-2.4.1-0001-Fix-reverted-LVDS-bios-capability-dword-
+  definition.patch, +xf86-video-i810-2.4.1-r1.ebuild:
+  add a fix for LFP dithering
+
+  19 Aug 2008; Rémi Cardona <remi@gentoo.org>
+  -files/2.4.0/0007-Disable-display-clock-gating-for-4-series-chips.patch,
+  -files/2.4.0/0001-Update-DSPARB-while-planes-are-still-off.patch,
+  -files/2.4.0/0002-Reorder-visuals-reported-by-the-intel-driver.patch,
+  -files/2.4.0/0003-Don-t-program-dsparb-on-new-Intel-chip.patch,
+  -files/2.4.0/0004-Fix-SDVO-reg-definition.patch,
+  -files/2.4.0/0005-Fix-up-the-HP-Pavilion-ze4944ea-quirk.patch,
+  -files/2.4.0/0008-Fix-possible-spurious-interrupts-in-hotplug-detect-o.pat
+  ch, -files/2.4.0/0006-Fix-SDVO-HDMI-encoding-detect-16920.patch,
+  -xf86-video-i810-2.4.0-r1.ebuild:
+  remove 2.4.0-r1
+
+*xf86-video-i810-2.4.1 (18 Aug 2008)
+
+  18 Aug 2008; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-i810-2.4.1.ebuild:
+  bump to 2.4.1
+
+  11 Aug 2008; Rémi Cardona <remi@gentoo.org>
+  -files/2.3.1/0001-Skip-copying-on-FOURCC_XVMC-surfaces.patch,
+  -files/2.3.1/0002-Only-use-FOURCC_XVMC-when-INTEL_XVMC-is-defined.patch,
+  -files/2.3.1/0003-Panel-fitting-fix-letterbox-modes.patch,
+  -files/2.3.1/0004-Add-glproto-to-DRI-dependencies.patch,
+  -files/2.3.1/0005-Revert-Add-FIFO-watermark-regs-to-register-dumper.patch,
+  -files/2.3.1/0006-Fix-typo-in-xvmc-block-destroy.patch,
+  -files/2.3.1/0007-Define-DEFFILEMODE-for-OS-es-that-don-t-have-it.patch,
+  -files/2.3.1/0008-Disable-a-bunch-of-clock-gating-disables-on-IGD_GM.patch
+  , -files/2.3.1/0009-Fixup-power-saving-registers.patch,
+  -files/2.3.1/0010-xvmc-remove-unused-dri-drawable.patch,
+  -files/2.3.1/0011-xvmc-a-little-cleanup.patch,
+  -files/2.3.1/0012-Set-SDVO-sync-polarity-to-default-on-965.patch,
+  -files/2.3.1/0013-Just-remove-the-mprotect-kludge.patch,
+  -files/2.3.1/0014-Replace-a-couple-of-wait-for-ring-idles-with-a-singl.pat
+  ch,
+  -files/2.3.1/0015-Remove-duplicated-i830_stop_ring-SetHWOperatingSta.patch
+  ,
+  -files/2.3.1/0016-Remove-gratuitous-wait_ring_idle-after-I830Sync.-Sy.patc
+  h,
+  -files/2.3.1/0017-Move-BIOS-scratch-register-setup-to-EnterVT-instead.patc
+  h,
+  -files/2.3.1/0018-Initialize-clock-gating-from-EnterVT-and-save-restor.pat
+  ch, -files/2.3.1/0019-Remove-SVG_WORK_CONTROL-init.patch,
+  -files/2.3.1/0020-Move-debug-clock-printout-from-ErrorF-to-X_INFO.patch,
+  -files/2.3.1/0021-Fix-TV-out-connection-type-detection.patch,
+  -files/2.3.1/0022-Fix-TV-programming-add-vblank-wait-after-TV_CTL-wr.patch
+  , -files/2.3.1/0023-Two-more-Dell-quirks.patch,
+  -files/2.3.1/0024-Set-up-restore-PWRCTXA-from-enter-leavevt-not-server.pat
+  ch, -files/2.3.1/0025-Fix-compiler-warning-when-disable-xvmc-config.patch:
+  clean up unused patches
+
+*xf86-video-i810-2.4.0-r1 (11 Aug 2008)
+
+  11 Aug 2008; Rémi Cardona <remi@gentoo.org>
+  +files/2.4.0/0007-Disable-display-clock-gating-for-4-series-chips.patch,
+  +files/2.4.0/0001-Update-DSPARB-while-planes-are-still-off.patch,
+  +files/2.4.0/0002-Reorder-visuals-reported-by-the-intel-driver.patch,
+  +files/2.4.0/0003-Don-t-program-dsparb-on-new-Intel-chip.patch,
+  +files/2.4.0/0004-Fix-SDVO-reg-definition.patch,
+  +files/2.4.0/0005-Fix-up-the-HP-Pavilion-ze4944ea-quirk.patch,
+  +files/2.4.0/0008-Fix-possible-spurious-interrupts-in-hotplug-detect-o.pat
+  ch, +files/2.4.0/0006-Fix-SDVO-HDMI-encoding-detect-16920.patch,
+  +xf86-video-i810-2.4.0-r1.ebuild:
+  add patches from the upcoming 2.4.1
+
+*xf86-video-i810-2.4.0 (03 Aug 2008)
+
+  03 Aug 2008; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-i810-2.4.0.ebuild:
+  bump to 2.4.0, see bug #232908
+
+  02 Jul 2008; Rémi Cardona <remi@gentoo.org>
+  -xf86-video-i810-2.3.0.ebuild, -xf86-video-i810-2.3.1.ebuild,
+  -xf86-video-i810-2.3.1-r1.ebuild, -xf86-video-i810-2.3.1-r2.ebuild:
+  clean up old releases
+
+  01 Jul 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  +files/0001-intel-fix-drm-check.patch, xf86-video-i810-2.3.1-r2.ebuild,
+  xf86-video-i810-2.3.2.ebuild:
+  (#227389) Fix building against released DRM versions. Don't assume libdrm
+  2.3.1 has TTM support, push that to 2.4.0 instead.
+
+*xf86-video-i810-2.3.2 (18 Jun 2008)
+
+  18 Jun 2008; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-i810-2.3.2.ebuild:
+  bump to 2.3.2
+
+*xf86-video-i810-2.3.1-r2 (13 Jun 2008)
+
+  13 Jun 2008; Rémi Cardona <remi@gentoo.org>
+  files/2.3.1/0001-Skip-copying-on-FOURCC_XVMC-surfaces.patch,
+  files/2.3.1/0002-Only-use-FOURCC_XVMC-when-INTEL_XVMC-is-defined.patch,
+  files/2.3.1/0003-Panel-fitting-fix-letterbox-modes.patch,
+  files/2.3.1/0004-Add-glproto-to-DRI-dependencies.patch,
+  files/2.3.1/0005-Revert-Add-FIFO-watermark-regs-to-register-dumper.patch,
+  +files/2.3.1/0006-Fix-typo-in-xvmc-block-destroy.patch,
+  +files/2.3.1/0007-Define-DEFFILEMODE-for-OS-es-that-don-t-have-it.patch,
+  +files/2.3.1/0008-Disable-a-bunch-of-clock-gating-disables-on-IGD_GM.patch
+  , +files/2.3.1/0009-Fixup-power-saving-registers.patch,
+  +files/2.3.1/0010-xvmc-remove-unused-dri-drawable.patch,
+  +files/2.3.1/0011-xvmc-a-little-cleanup.patch,
+  +files/2.3.1/0012-Set-SDVO-sync-polarity-to-default-on-965.patch,
+  +files/2.3.1/0013-Just-remove-the-mprotect-kludge.patch,
+  +files/2.3.1/0014-Replace-a-couple-of-wait-for-ring-idles-with-a-singl.pat
+  ch,
+  +files/2.3.1/0015-Remove-duplicated-i830_stop_ring-SetHWOperatingSta.patch
+  ,
+  +files/2.3.1/0016-Remove-gratuitous-wait_ring_idle-after-I830Sync.-Sy.patc
+  h,
+  +files/2.3.1/0017-Move-BIOS-scratch-register-setup-to-EnterVT-instead.patc
+  h,
+  +files/2.3.1/0018-Initialize-clock-gating-from-EnterVT-and-save-restor.pat
+  ch, +files/2.3.1/0019-Remove-SVG_WORK_CONTROL-init.patch,
+  +files/2.3.1/0020-Move-debug-clock-printout-from-ErrorF-to-X_INFO.patch,
+  +files/2.3.1/0021-Fix-TV-out-connection-type-detection.patch,
+  +files/2.3.1/0022-Fix-TV-programming-add-vblank-wait-after-TV_CTL-wr.patch
+  , +files/2.3.1/0023-Two-more-Dell-quirks.patch,
+  +files/2.3.1/0024-Set-up-restore-PWRCTXA-from-enter-leavevt-not-server.pat
+  ch, +files/2.3.1/0025-Fix-compiler-warning-when-disable-xvmc-config.patch,
+  +xf86-video-i810-2.3.1-r2.ebuild:
+  add patches from the upcoming 2.3.2 release
+
+*xf86-video-i810-2.3.1-r1 (22 May 2008)
+
+  22 May 2008; Rémi Cardona <remi@gentoo.org>
+  +files/2.3.1/0001-Skip-copying-on-FOURCC_XVMC-surfaces.patch,
+  +files/2.3.1/0002-Only-use-FOURCC_XVMC-when-INTEL_XVMC-is-defined.patch,
+  +files/2.3.1/0003-Panel-fitting-fix-letterbox-modes.patch,
+  +files/2.3.1/0004-Add-glproto-to-DRI-dependencies.patch,
+  +files/2.3.1/0005-Revert-Add-FIFO-watermark-regs-to-register-dumper.patch,
+  +xf86-video-i810-2.3.1-r1.ebuild:
+  Add a few patches from the xf86-video-intel-2.3-branch, containing a fix
+  for bug #222981
+
+  20 May 2008; Rémi Cardona <remi@gentoo.org> xf86-video-i810-1.6.5.ebuild,
+  xf86-video-i810-2.2.1.ebuild:
+  make repoman happy, use bash arrays for PATCHES
+
+  20 May 2008; Rémi Cardona <remi@gentoo.org> xf86-video-i810-2.1.1.ebuild:
+  use eclass variables rather than hand-crafted src_unpack, fixes bug
+  #221121
+
+*xf86-video-i810-2.3.1 (20 May 2008)
+
+  20 May 2008; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-i810-2.3.1.ebuild:
+  bump to 2.3.1, bugfix release
+
+  14 May 2008; Rémi Cardona <remi@gentoo.org> xf86-video-i810-2.1.1.ebuild,
+  xf86-video-i810-2.2.0.90.ebuild, xf86-video-i810-2.2.1.ebuild,
+  xf86-video-i810-2.3.0.ebuild:
+  add glproto dep, see bug #205689
+
+  14 May 2008; Rémi Cardona <remi@gentoo.org>
+  -files/xf86-video-i810-2.2.99.902-enable_center_panel_fitting_on_i8xx.patc
+  h, -files/xf86-video-i810-2.2.99.903-fix-panel-resize-on-i8xx.patch,
+  -xf86-video-i810-2.2.99.901.ebuild, -xf86-video-i810-2.2.99.902.ebuild,
+  -xf86-video-i810-2.2.99.903.ebuild, -xf86-video-i810-2.2.99.903-r1.ebuild:
+  remove 2.3 release candidates and patches
+
+*xf86-video-i810-2.3.0 (29 Apr 2008)
+
+  29 Apr 2008; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-i810-2.3.0.ebuild:
+  Bump to 2.3.0
+
+*xf86-video-i810-2.2.99.903-r1 (18 Apr 2008)
+
+  18 Apr 2008; Rémi Cardona <remi@gentoo.org>
+  +files/xf86-video-i810-2.2.99.903-fix-panel-resize-on-i8xx.patch,
+  +xf86-video-i810-2.2.99.903-r1.ebuild:
+  Add patches to fix non-native resolution on i8xx-attached LFP displays
+
+*xf86-video-i810-2.2.99.903 (14 Apr 2008)
+
+  14 Apr 2008; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-i810-2.2.99.903.ebuild:
+  Bump to 2.2.99.903
+
+*xf86-video-i810-2.2.99.902 (06 Apr 2008)
+
+  06 Apr 2008; Rémi Cardona <remi@gentoo.org>
+  +files/xf86-video-i810-2.2.99.902-enable_center_panel_fitting_on_i8xx.patc
+  h, +xf86-video-i810-2.2.99.902.ebuild:
+  bump to 2.2.99.902 with patch to fix LFP bug on i855
+
+*xf86-video-i810-2.2.99.901 (28 Mar 2008)
+
+  28 Mar 2008; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-i810-2.2.99.901.ebuild:
+  Bump to 2.2.99.901, RC1 for 2.3
+
+  15 Mar 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  +files/0001-fixup-pciaccess-version-detect.patch,
+  xf86-video-i810-2.2.1.ebuild:
+  Detect libpciaccess correctly to fix build with 1.5 servers.
+
+*xf86-video-i810-2.2.1 (27 Feb 2008)
+
+  27 Feb 2008; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-i810-2.2.1.ebuild:
+  bump to 2.2.1
+
+  24 Feb 2008; Donnie Berkholz <dberkholz@gentoo.org>; ChangeLog:
+  Update my email.
+
+  20 Feb 2008; Rémi Cardona <remi@gentoo.org>
+  -files/1.7.0-fix_vt_switch.patch, -files/fix_965_xv.patch,
+  -files/xf86-video-i810-2.2.0-fix_xv_segfault.patch,
+  -xf86-video-i810-2.2.1_pre20080125.ebuild:
+  remove outdated snapshot and useless patches
+
+*xf86-video-i810-2.2.0.90 (06 Feb 2008)
+
+  06 Feb 2008; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-i810-2.2.0.90.ebuild:
+  Bump to 2.2.0.90 (release candidate)
+
+  01 Feb 2008; Rémi Cardona <remi@gentoo.org>
+  -xf86-video-i810-2.0.0.ebuild, -xf86-video-i810-2.1.0.ebuild,
+  -xf86-video-i810-2.2.0-r1.ebuild,
+  -xf86-video-i810-2.2.1_pre20080123.ebuild:
+  Pruning old or broken versions
+
+*xf86-video-i810-2.2.1_pre20080125 (25 Jan 2008)
+
+  25 Jan 2008; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-i810-2.2.1_pre20080125.ebuild:
+  Add another home made snapshot
+
+*xf86-video-i810-2.2.1_pre20080123 (24 Jan 2008)
+
+  24 Jan 2008; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-i810-2.2.1_pre20080123.ebuild:
+  Adding a home made snapshot of the future 2.2.1 release
+
+  23 Jan 2008; Raúl Porcel <armin76@gentoo.org>
+  xf86-video-i810-2.1.1.ebuild:
+  ia64 stable
+
+  18 Jan 2008; Rémi Cardona <remi@gentoo.org> xf86-video-i810-2.1.1.ebuild,
+  xf86-video-i810-2.2.0-r1.ebuild:
+  add xineramaproto dep (fixes bug #204926)
+
+  13 Jan 2008; Rémi Cardona <remi@gentoo.org>
+  -xf86-video-i810-2.1.99.ebuild, -xf86-video-i810-2.2.0.ebuild:
+  prune old versions
+
+  13 Jan 2008; Rémi Cardona <remi@gentoo.org>
+  +files/xf86-video-i810-2.1.1-fix_build_without_dri.patch,
+  xf86-video-i810-2.1.1.ebuild, xf86-video-i810-2.2.0-r1.ebuild:
+  Add patch to fix build with USE=-dri (see bug #103192)
+
+  10 Jan 2008; Daniel Gryniewicz <dang@gentoo.org>
+  xf86-video-i810-2.1.1.ebuild:
+  Marked stable on amd64 for bug #202087
+
+*xf86-video-i810-2.2.0-r1 (27 Dec 2007)
+
+  27 Dec 2007; Rémi Cardona <remi@gentoo.org>
+  +files/xf86-video-i810-2.2.0-fix_xv_segfault.patch,
+  +xf86-video-i810-2.2.0-r1.ebuild:
+  Add patch from git HEAD to fix XVideo support
+
+  19 Dec 2007; Dawid Węgliński <cla@gentoo.org>
+  xf86-video-i810-2.1.1.ebuild:
+  Stable on x86 (bug #202087)
+
+  05 Dec 2007; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  remi's taking over maintenance.
+
+  01 Dec 2007; Donnie Berkholz <dberkholz@gentoo.org>; files/i810.xinf:
+  Update xinf file, used by sys-apps/kudzu and thus by system-config-display.
+
+*xf86-video-i810-2.2.0 (01 Dec 2007)
+
+  01 Dec 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xf86-video-i810-2.2.0.ebuild:
+  (#199896) Bump, with more than 160 bugfixes since 2.1. Framebuffer
+  compression should be enabled by default now (except on 965GM), which will
+  save some power (~0.5W during typical 2D usage). It won't work if you have
+  tiling forced off, though. Other than that, lots of EXA fixes, some
+  dual-monitor fixes, enabled the CH7017/7018 DVO driver by default, a few
+  backlight fixes, and more.
+
+*xf86-video-i810-2.1.99 (13 Nov 2007)
+
+  13 Nov 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xf86-video-i810-2.1.99.ebuild:
+  (#198677) Add 2.2 prerelease, unkeyworded. Add it to your package.keywords
+  file with '**' to use it.
+
+  09 Sep 2007; Raúl Porcel <armin76@gentoo.org>
+  xf86-video-i810-2.1.0.ebuild:
+  ia64 stable wrt #191615
+
+  07 Sep 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  xf86-video-i810-2.1.0.ebuild:
+  Stable on amd64 wrt bug #191615.
+
+*xf86-video-i810-2.1.1 (14 Aug 2007)
+
+  14 Aug 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xf86-video-i810-2.1.1.ebuild:
+  Bump. Lots of bugfixes; if you've had issues with the 2.x series so far,
+  please try this.
+
+*xf86-video-i810-2.1.0 (14 Jul 2007)
+
+  14 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xf86-video-i810-2.1.0.ebuild:
+  Bump. Vast quantities of changes. Some include performance improvements,
+  power savings, support for new chipsets, fixes for VT switching, sDVO RGB
+  outputs, and 830 fixes.
+
+  27 May 2007; Donnie Berkholz <dberkholz@gentoo.org>; files/i810.xinf:
+  Import new stuff from RH: moves 945 and 965 chips onto the 'intel' driver.
+
+  05 May 2007; Daniel Gryniewicz <dang@gentoo.org>
+  xf86-video-i810-1.7.4.ebuild:
+  Marked stable on amd64 for bug #175465
+
+  29 Apr 2007; Andrej Kacian <ticho@gentoo.org>
+  xf86-video-i810-1.7.4.ebuild:
+  Stable on x86, bug #175465.
+
+  25 Apr 2007; Raúl Porcel <armin76@gentoo.org>
+  xf86-video-i810-1.7.4.ebuild:
+  Stable on ia64 wrt bug #175465
+
+  21 Apr 2007; Joshua Baergen <joshuabaergen@gentoo.org>
+  -xf86-video-i810-1.6.0.ebuild, -xf86-video-i810-1.7.0-r1.ebuild,
+  -xf86-video-i810-1.7.2.ebuild, -xf86-video-i810-1.7.2-r1.ebuild,
+  -xf86-video-i810-1.7.3.ebuild:
+  Drop unused versions.
+
+  21 Apr 2007; Joshua Baergen <joshuabaergen@gentoo.org>
+  -xf86-video-i810-1.9.91.ebuild, -xf86-video-i810-1.9.92.ebuild,
+  -xf86-video-i810-1.9.93.ebuild, -xf86-video-i810-1.9.94.ebuild:
+  Clean out 2.0 RCs.
+
+*xf86-video-i810-2.0.0 (21 Apr 2007)
+
+  21 Apr 2007; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-i810-2.0.0.ebuild:
+  Bump to 2.0 final.
+
+*xf86-video-i810-1.9.94 (06 Apr 2007)
+
+  06 Apr 2007; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-i810-1.9.94.ebuild:
+  Bump to 2.0RC4.  965GM support and several fixes.
+
+*xf86-video-i810-1.9.93 (28 Mar 2007)
+
+  28 Mar 2007; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-i810-1.9.93.ebuild:
+  Bump to 2.0 RC3.
+
+  22 Mar 2007; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-i810-1.9.92.ebuild:
+  Bump version to 2.0RC2.  Includes various bugfixes.
+
+*xf86-video-i810-1.9.91 (08 Mar 2007)
+
+  08 Mar 2007; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-i810-1.9.91.ebuild:
+  Release candidate to go along with the new xserver.  This brings the
+  long-awaited modesetting/RandR 1.2 work, along with some EXA work.
+  
+  This version breaks lots of stuff, probably including Compiz/Beryl.  You've
+  been warned!
+
+  24 Jan 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  -xf86-video-i810-1.4.1.3.ebuild:
+  Stop supporting Xorg 7.0.
+
+*xf86-video-i810-1.7.4 (14 Jan 2007)
+
+  14 Jan 2007; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-i810-1.7.4.ebuild:
+  Version bump.  Fixes issues on the i915 when restarting X.
+
+  09 Dec 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  xf86-video-i810-1.7.3.ebuild:
+  Fix libdrm dependency (needs >=2.2).  Thanks to Miguel Barao of bug #157585.
+
+*xf86-video-i810-1.7.3 (08 Dec 2006)
+
+  08 Dec 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-i810-1.7.3.ebuild:
+  Version bump.  Includes various bugfixes across the board, and support for the
+  new DRM memory manager.
+
+*xf86-video-i810-1.7.2-r1 (02 Nov 2006)
+
+  02 Nov 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +files/fix_965_xv.patch, +xf86-video-i810-1.7.2-r1.ebuild:
+  Fix xv on 965 chipsets.  (Bug #153101, Jack Lloyd)
+
+  19 Oct 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +files/1.6.5-fix_no_dri.patch, xf86-video-i810-1.6.5.ebuild:
+  Add upstream's patch to allow building without dri support.  This patch is
+  included in versions newer than 1.6.5 (1.7+).  (Bug #151347, Stan Behrens for
+  the report)
+
+  14 Oct 2006; Aron Griffis <agriffis@gentoo.org>
+  xf86-video-i810-1.6.5.ebuild:
+  Mark 1.6.5 stable on ia64. #144549
+
+*xf86-video-i810-1.7.2 (14 Oct 2006)
+
+  14 Oct 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-i810-1.7.2.ebuild:
+  Version bump.  Main fixes include a suspend/resume fix and the VT switching
+  patch from 1.7.0-r1.
+
+  13 Oct 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  xf86-video-i810-1.6.5.ebuild:
+  AMD64/x86 stable for bug #144549 (X7.1).
+
+  05 Oct 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  -xf86-video-i810-1.6.1.ebuild:
+  Clean out an old ebuild from testing.
+
+*xf86-video-i810-1.7.0-r1 (05 Oct 2006)
+
+  05 Oct 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +files/1.7.0-fix_vt_switch.patch, -xf86-video-i810-1.7.0.ebuild,
+  +xf86-video-i810-1.7.0-r1.ebuild:
+  Fix VT switching on some systems. (Phil Blacker, bug #139290)
+
+*xf86-video-i810-1.7.0 (02 Oct 2006)
+
+  02 Oct 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-i810-1.7.0.ebuild:
+  Version bump. Includes various bugfixes, including some 9xx-series fixes.
+
+  29 Sep 2006; Donnie Berkholz <dberkholz@gentoo.org>; files/i810.xinf:
+  Update xinf file from Fedora CVS. Adds Apple 945GM and Aopen Mini PC.
+
+  05 Sep 2006; Donnie Berkholz <dberkholz@gentoo.org>; +files/i810.xinf:
+  Add hwdata files for system-config-display.
+
+  14 Aug 2006; Joshua Baergen <joshuabaergen@gentoo.org> ChangeLog:
+  Fixed up the ChangeLog.  Thanks to nelchael for noticing.
+
+*xf86-video-i810-1.6.5 (11 Aug 2006)
+
+  11 Aug 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  -files/1.6.4-fix_dri_abi.patch, -xf86-video-i810-1.6.4-r1.ebuild,
+  +xf86-video-i810-1.6.5.ebuild:
+  Version bump.  Includes previous patch and various other fixes, including
+  improved i915 textured video support.
+
+*xf86-video-i810-1.6.4-r1 (10 Aug 2006)
+
+  10 Aug 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +files/1.6.4-fix_dri_abi.patch, -xf86-video-i810-1.6.4.ebuild,
+  +xf86-video-i810-1.6.4-r1.ebuild:
+  Add a patch from upstream that fixes the DRI ABI.  (Bug #143419, Sebastian
+  Bergmann.  Thanks to Roderick B. Greening for the upstream poking.)
+
+*xf86-video-i810-1.6.4 (10 Aug 2006)
+
+  10 Aug 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-i810-1.6.4.ebuild:
+  Version bump.  Adds MergedFB and i965 support.
+
+*xf86-video-i810-1.6.1 (29 Jul 2006)
+
+  29 Jul 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-i810-1.6.1.ebuild:
+  Version bump.  Includes a bunch of code cleanups and fixes.
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org>
+  xf86-video-i810-1.6.0.ebuild:
+  Mark 1.6.0 stable on ia64
+
+  01 Jul 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  xf86-video-i810-1.6.0.ebuild:
+  stable on sh
+
+  30 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  xf86-video-i810-1.4.1.3.ebuild:
+  Stable on amd64.
+
+  30 Jun 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  xf86-video-i810-1.4.1.3.ebuild:
+  x86 stable.
+
+  17 Jun 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  xf86-video-i810-1.6.0.ebuild:
+  ~x86-fbsd keyworded the lower version but not this.
+
+  16 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xf86-video-i810-1.4.1.3.ebuild:
+  Add ~x86-fbsd keyword.
+
+  14 Apr 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  -xf86-video-i810-1.5.1.0.ebuild:
+  Remove older masked version.
+
+*xf86-video-i810-1.6.0 (14 Apr 2006)
+
+  14 Apr 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-i810-1.6.0.ebuild:
+  Bump for 7.1 RC1.
+
+  07 Apr 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  xf86-video-i810-1.5.1.0.ebuild:
+  (#129072) Change xorg-server dep to minimum 1.0.2 for randrstr.h. Fix by
+  Alberto Bertogli.
+
+*xf86-video-i810-1.5.1.0 (01 Apr 2006)
+
+  01 Apr 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-i810-1.5.1.0.ebuild:
+  Add new i810 driver.  The 1.5.x series will only work with Mesa 6.5/HEAD.
+
+  30 Jan 2006; Patrick McLean <chutzpah@gentoo.org>
+  xf86-video-i810-1.4.1.3.ebuild:
+  Added to ~amd64.
+
+  26 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -xf86-video-i810-1.4.1.1.ebuild, -xf86-video-i810-1.4.1.2.ebuild:
+  Pull old versions.
+
+*xf86-video-i810-1.4.1.3 (23 Dec 2005)
+
+  23 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-i810-1.4.1.3.ebuild:
+  Bump for 7.0.
+
+*xf86-video-i810-1.4.1.2 (18 Dec 2005)
+
+  18 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-i810-1.4.1.2.ebuild:
+  Bump for 7.0RC4.
+
+  09 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  files/digest-xf86-video-i810-1.4.1.1, Manifest:
+  Update digest to match patch introduced by x-modular.eclass changes.
+
+  09 Dec 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  -xf86-video-i810-1.4.0-r3.ebuild, -xf86-video-i810-1.4.0.1.ebuild,
+  -xf86-video-i810-1.4.1.ebuild:
+  Pull old versions.
+
+*xf86-video-i810-1.4.1.1 (04 Dec 2005)
+
+  04 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-i810-1.4.1.1.ebuild:
+  Bump for 7.0RC3.
+
+*xf86-video-i810-1.4.1 (11 Nov 2005)
+
+  11 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-i810-1.4.1.ebuild:
+  Bump for 7.0RC2.
+
+*xf86-video-i810-1.4.0.1 (20 Oct 2005)
+
+  20 Oct 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-i810-1.4.0.1.ebuild:
+  Bump for 7.0 RC1.
+
+  09 Sep 2005; Donnie Berkholz <dberkholz@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  06 Sep 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  xf86-video-i810-1.4.0-r3.ebuild:
+  Moved x11-libs/libXvMC from DEPEND to RDEPEND.
+
+  02 Sep 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -files/xf86-video-i810-1.4.0-add-i830-shadow.patch:
+  Oops, missed removing this patch in the first run.
+
+*xf86-video-i810-1.4.0-r3 (02 Sep 2005)
+
+  02 Sep 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -files/1.4.0-i810-unresolved-symbols.patch,
+  -xf86-video-i810-1.4.0-r2.ebuild, +xf86-video-i810-1.4.0-r3.ebuild:
+  Sent a new snapshot to the mirrors bringing this driver in sync with CVS.  This
+  snapshot includes both prior patches.  Also added the x11-libs/XvMC dep as
+  XvMC support has been added as required for the time being.
+
+  23 Aug 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  -xf86-video-i810-1.4.0.ebuild, -xf86-video-i810-1.4.0-r1.ebuild:
+  Pull old versions.
+
+*xf86-video-i810-1.4.0-r2 (23 Aug 2005)
+
+  23 Aug 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  +files/1.4.0-i810-unresolved-symbols.patch,
+  +xf86-video-i810-1.4.0-r2.ebuild:
+  (fd.o #4066) Add 1.4.0-i810-unresolved-symbols.patch to make i810 driver work.
+
+  12 Aug 2005; Donnie Berkholz <dberkholz@gentoo.org>; -files/dri.patch:
+  Pull unused patch.
+
+*xf86-video-i810-1.4.0-r1 (12 Aug 2005)
+
+  12 Aug 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  +files/xf86-video-i810-1.4.0-add-i830-shadow.patch,
+  +xf86-video-i810-1.4.0-r1.ebuild:
+  Bump to link in i830_shadow.c. This should allow X to start properly.
+  Reported by Joshua Baerge <joshuabaergen@gentoo.org>.
+
+*xf86-video-i810-1.4.0 (08 Aug 2005)
+
+  08 Aug 2005; Donnie Berkholz <dberkholz@gentoo.org>; +files/dri.patch,
+  +xf86-video-i810-1.4.0.ebuild:
+  Initial commit for modular X.

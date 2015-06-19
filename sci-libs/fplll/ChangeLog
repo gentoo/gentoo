@@ -1,0 +1,12 @@
+# ChangeLog for sci-libs/fplll
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/fplll/ChangeLog,v 1.2 2014/11/25 22:55:49 hasufell Exp $
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+*fplll-4.0.4 (15 Jul 2013)
+
+  15 Jul 2013; Julian Ospald <hasufell@gentoo.org> +fplll-4.0.4.ebuild,
+  +metadata.xml:
+  initial import wrt #230427

@@ -1,0 +1,43 @@
+--- src/atom.h.orig	2008-06-09 03:59:34.262567972 -0500
++++ src/atom.h	2008-06-09 04:00:07.136698792 -0500
+@@ -10,6 +10,8 @@
+ #ifndef ATOM_H
+ #define ATOM_H
+ 
++#include <cstdlib>
++#include <cstring>
+ #include "libghemicaldefine.h"
+ #include "libghemicalconfig2.h"
+ 
+--- src/notice.h.orig	2008-06-09 04:00:24.472509840 -0500
++++ src/notice.h	2008-06-09 04:00:44.608265748 -0500
+@@ -10,6 +10,7 @@
+ #ifndef NOTICE_H
+ #define NOTICE_H
+ 
++#include <cstring>
+ #include "libghemicaldefine.h"
+ #include "libghemicalconfig2.h"
+ 
+--- src/sasaeval.cpp	2008-08-01 09:39:01.000000000 +0530
++++ src/sasaeval.cpp	2008-08-01 09:40:33.000000000 +0530
+@@ -21,6 +21,9 @@
+ #include "sasaeval.h"
+
+ #include "engine.h"
++#include <vector>
++#include <algorithm>
++using namespace std;
+
+ // the surface area code apparently contains some bugs, since it sometimes
+ // crashes. another possibility is that the surface area math contains some
+--- src/sasaeval.h	2008-07-31 00:40:08.000000000 +0530
++++ src/sasaeval.h	2008-08-01 09:40:04.000000000 +0530
+@@ -24,6 +24,7 @@
+ #define SASAEVAL_H
+
+ #include "typedef.h"
++#include <stdlib.h>
+
+ struct cg_nbt3_nl;	// SASA neighbor list.
+

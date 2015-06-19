@@ -1,0 +1,20 @@
+#!/sbin/runscript
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/atokx2/files/iiim.initd,v 1.1 2005/02/10 11:54:47 usata Exp $
+
+depend() {
+	need net atokx2
+}
+
+start() {
+	ebegin "Starting iiim"
+	start-stop-daemon -b --start --quiet --exec /usr/lib/im/htt
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping iiim"
+	start-stop-daemon --stop --quiet --exec /usr/lib/im/htt
+	eend $?
+}

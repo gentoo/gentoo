@@ -1,0 +1,39 @@
+# ChangeLog for net-analyzer/pchar
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/pchar/ChangeLog,v 1.9 2014/08/10 21:00:03 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> pchar-1.5-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*pchar-1.5-r1 (20 Aug 2012)
+
+  20 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> +pchar-1.5-r1.ebuild,
+  -pchar-1.5.ebuild:
+  Bump to EAPI=4 to be able to depend on ucd-compat for net-snmp; also respect
+  CXX setting and don't depend on automake (unneeded).
+
+  01 Jan 2010; Christian Faulhammer <fauli@gentoo.org> pchar-1.5.ebuild:
+  Transfer Prefix keywords
+
+  04 Aug 2008; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Describe local USE flags for GLEP 56.
+
+  26 Jan 2008; Patrick McLean <chutzpah@gentoo.org> pchar-1.5.ebuild:
+  Move eautoreconf call to src_unpack (bug #207465)
+
+  29 Jan 2007; Patrick McLean <chutzpah@gentoo.org> pchar-1.5.ebuild:
+  Add WANT_AUTOCONF and WANT_AUTOMAKE vars so this will actually build again.
+
+  01 Nov 2006; Patrick McLean <chutzpah@gentoo.org>
+  +files/pchar-1.5-snmp.patch, pchar-1.5.ebuild:
+  Re-add snmp USE flag (bug #152701). Thanks to Francisco Javier
+  <ffelix@sshinf.com> for the patch.
+
+  24 Mar 2006; Patrick McLean <chutzpah@gentoo.org> pchar-1.5.ebuild:
+  Dropped snmp USE flag to fix bug #127389.
+
+*pchar-1.5 (23 Mar 2006)
+
+  23 Mar 2006; Patrick McLean <chutzpah@gentoo.org> +metadata.xml,
+  +pchar-1.5.ebuild:
+  Initial version.

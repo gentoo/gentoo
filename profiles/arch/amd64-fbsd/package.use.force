@@ -1,0 +1,4 @@
+# Multilib flag for the system is forced
+sys-freebsd/freebsd-lib abi_x86_32
+sys-freebsd/freebsd-ubin abi_x86_32
+sys-freebsd/freebsd-libexec abi_x86_32

@@ -1,0 +1,58 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/ganeti/files/ganeti-kvm-poweroff.initd,v 1.1 2011/01/22 02:07:43 ramereth Exp $
+
+depend() {
+    after ganeti
+    after bootmisc
+}
+
+CONTROL_PATH="/var/run/ganeti/kvm-hypervisor/ctrl"
+GANETI_KVM_TIMEOUT=${GANETI_KVM_TIMEOUT:-60}
+
+start() {
+    return 0
+}
+
+# Taken from doc/examples/ganeti-kvm-poweroff.initd.in in ganeti package
+stop() {
+    ebegin "Stopping Ganeti KVM VMs"
+    # shutdown VMs and remove sockets of those not running
+    for vm_monitor in $(find $CONTROL_PATH -type s -name '*.monitor') ; do
+        if ! echo system_powerdown | \
+            socat -U UNIX:$vm_monitor STDIO > /dev/null 2>&1; then
+            # remove disconnected socket
+            rm -f $vm_monitor
+        fi
+    done
+
+    einfo " Waiting for VMs to poweroff"
+    waiting=true
+    remaining=$GANETI_KVM_TIMEOUT
+    while $waiting && [ $remaining -ne 0 ]; do
+        if [ -z "$(find $CONTROL_PATH -type s -name '*.monitor')" ] ; then
+            break
+        fi
+
+        echo -n "."
+        for vm_monitor in $(find $CONTROL_PATH -type s -name '*.monitor') ; do
+            if ! echo | socat -U UNIX:$vm_monitor STDIO > /dev/null 2>&1; then
+                rm -rf $vm_monitor
+            fi
+        done
+
+        sleep 5
+        let remaining-=5 1
+    done
+
+    if [ -n "$(find $CONTROL_PATH -type s -name '*.monitor')" ] ; then
+        eerror " Some ganeti VMs did not shutdown"
+    fi
+    echo
+    eend $? 
+}
+
+restart() {
+    eerror "restart not supported"
+}

@@ -1,0 +1,74 @@
+# ChangeLog for x11-libs/gtkhotkey
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtkhotkey/ChangeLog,v 1.18 2013/05/11 04:11:16 patrick Exp $
+
+  11 May 2013; Patrick Lauer <patrick@gentoo.org> gtkhotkey-0.2.1.ebuild:
+  Fixing inherit
+
+  03 Mar 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop to maintainer-needed as talked with him
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> gtkhotkey-0.2.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  21 Feb 2012; Serkan Kaba <serkan@gentoo.org>
+  files/gtkhotkey-0.2.1-glibheaders.patch:
+  Further fix bug #404397. Patch by Aljosha Papsch <papsch.al@googlemail.com>
+
+  19 Feb 2012; Serkan Kaba <serkan@gentoo.org> gtkhotkey-0.2.1.ebuild,
+  +files/gtkhotkey-0.2.1-glibheaders.patch:
+  Fix bug #404397 reported by Aljosha Papsch <papsch.al@googlemail.com>
+
+  27 Feb 2011; Serkan Kaba <serkan@gentoo.org>
+  -files/gtkhotkey-0.2.0-buildfixes.patch,
+  -files/gtkhotkey-0.2.0-fix-implicit-declaration.patch:
+  Remove unneeded patches.
+
+  27 Feb 2011; Serkan Kaba <serkan@gentoo.org>
+  -gtkhotkey-0.2.0.ebuild, gtkhotkey-0.2.1.ebuild:
+  Use slot deps in preparation for gtk3. Remove old.
+
+  26 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gtkhotkey-0.2.1.ebuild:
+  x86 stable wrt bug #314619
+
+  13 Apr 2010; Markos Chandras <hwoarang@gentoo.org> gtkhotkey-0.2.1.ebuild:
+  Stable on amd64 wrt bug #314619
+
+*gtkhotkey-0.2.1 (13 Feb 2010)
+
+  13 Feb 2010; Serkan Kaba <serkan@gentoo.org> +gtkhotkey-0.2.1.ebuild:
+  Version bump.
+
+  20 Apr 2009; Markus Meier <maekke@gentoo.org> gtkhotkey-0.2.0:
+  amd64 stable, bug #259052
+
+  22 Mar 2009; Markus Meier <maekke@gentoo.org> gtkhotkey-0.2.0.ebuild:
+  x86 stable, bug #259052
+
+  22 Mar 2009; Serkan Kaba <serkan@gentoo.org>
+  +files/gtkhotkey-0.2.0-fix-implicit-declaration.patch, gtkhotkey-0.2.0:
+  Fix bug #259052 c#5. Thanks to Markus Meier <maekke@gentoo.org> for
+  spotting the issue.
+
+  22 Mar 2009; Serkan Kaba <serkan@gentoo.org> gtkhotkey-0.2.0:
+  Restrict tests per bug #259052 c#3
+
+  30 Nov 2008; Serkan Kaba <serkan@gentoo.org> gtkhotkey-0.2.0.ebuild:
+  Fix Makefile.in to avoid plain docs to be installed.
+
+  27 Nov 2008; Serkan Kaba <serkan@gentoo.org>
+  +files/gtkhotkey-0.2.0-buildfixes.patch, gtkhotkey-0.2.0.ebuild:
+  Fix compilation with --as-needed reported in bug #248537. Don't compile
+  tests when not needed. Thanks to Diego Pettenò <flameeyes@gentoo.org> for
+  the report and help.
+
+  09 Nov 2008; Markus Meier <maekke@gentoo.org> gtkhotkey-0.2.0.ebuild:
+  add ~x86, bug #246077
+
+*gtkhotkey-0.2.0 (05 Nov 2008)
+
+  05 Nov 2008; Serkan Kaba <serkan@gentoo.org> +metadata.xml,
+  +gtkhotkey-0.2.0.ebuild:
+  Initial import based on ebuild by Mikel Olasagasti
+  <hey_neken@mundurat.net>. Fixes bug #245153.

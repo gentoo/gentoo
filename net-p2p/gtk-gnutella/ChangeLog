@@ -1,0 +1,731 @@
+# ChangeLog for net-p2p/gtk-gnutella
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/gtk-gnutella/ChangeLog,v 1.168 2015/04/09 06:11:25 graaff Exp $
+
+*gtk-gnutella-1.1.3 (09 Apr 2015)
+
+  09 Apr 2015; Hans de Graaff <graaff@gentoo.org> -gtk-gnutella-1.1.2.ebuild,
+  +gtk-gnutella-1.1.3.ebuild:
+  Version bump. Remove buggy version.
+
+*gtk-gnutella-1.1.2 (22 Mar 2015)
+
+  22 Mar 2015; Hans de Graaff <graaff@gentoo.org> +gtk-gnutella-1.1.2.ebuild:
+  Version bump.
+
+  01 Jan 2015; Hans de Graaff <graaff@gentoo.org> -gtk-gnutella-1.0.1.ebuild,
+  -files/gtk-gnutella-0.96.7-ldflags.patch,
+  -files/gtk-gnutella-1.0.0-bdf.patch,
+  -files/gtk-gnutella-1.0.0-gtkg-hostile.patch:
+  Cleanup.
+
+  18 Oct 2014; Agostino Sarubbo <ago@gentoo.org> gtk-gnutella-1.1.1.ebuild:
+  Stable for ppc, wrt bug #524424
+
+  10 Oct 2014; Agostino Sarubbo <ago@gentoo.org> gtk-gnutella-1.1.1.ebuild:
+  Stable for x86, wrt bug #524424
+
+  09 Oct 2014; Agostino Sarubbo <ago@gentoo.org> gtk-gnutella-1.1.1.ebuild:
+  Stable for amd64, wrt bug #524424
+
+  04 Oct 2014; Hans de Graaff <graaff@gentoo.org> -gtk-gnutella-1.1.0.ebuild:
+  Cleanup.
+
+*gtk-gnutella-1.1.1 (03 Sep 2014)
+
+  03 Sep 2014; Hans de Graaff <graaff@gentoo.org> +gtk-gnutella-1.1.1.ebuild:
+  Version bump.
+
+*gtk-gnutella-1.1.0 (05 Jul 2014)
+
+  05 Jul 2014; Hans de Graaff <graaff@gentoo.org> +gtk-gnutella-1.1.0.ebuild:
+  Version bump.
+
+  10 May 2014; Hans de Graaff <graaff@gentoo.org> -gtk-gnutella-1.0.0.ebuild,
+  -gtk-gnutella-1.0.0-r1.ebuild:
+  Cleanup.
+
+  10 May 2014; Agostino Sarubbo <ago@gentoo.org> gtk-gnutella-1.0.1.ebuild:
+  Stable for ppc, wrt bug #500760
+
+  04 May 2014; Agostino Sarubbo <ago@gentoo.org> gtk-gnutella-1.0.1.ebuild:
+  Stable for x86, wrt bug #500760
+
+  26 Apr 2014; Chema Alonso <nimiux@gentoo.org> gtk-gnutella-1.0.1.ebuild:
+  Stable for amd64 wrt bug #500760
+
+  22 Apr 2014; Hans de Graaff <graaff@gentoo.org> gtk-gnutella-1.0.1.ebuild:
+  Work around parallel build bug reported in bug 500760.
+
+  09 Feb 2014; Hans de Graaff <graaff@gentoo.org> -gtk-gnutella-0.98.4.ebuild:
+  Cleanup.
+
+  02 Feb 2014; Agostino Sarubbo <ago@gentoo.org> gtk-gnutella-1.0.0.ebuild:
+  Stable for ppc, wrt bug #489180
+
+*gtk-gnutella-1.0.1 (01 Jan 2014)
+
+  01 Jan 2014; Hans de Graaff <graaff@gentoo.org> +gtk-gnutella-1.0.1.ebuild:
+  Version bump.
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> gtk-gnutella-1.0.0.ebuild:
+  Stable for x86, wrt bug #489180
+
+*gtk-gnutella-1.0.0-r1 (04 Dec 2013)
+
+  04 Dec 2013; Hans de Graaff <graaff@gentoo.org>
+  +gtk-gnutella-1.0.0-r1.ebuild, +files/gtk-gnutella-1.0.0-gtkg-hostile.patch:
+  Fix bug causing all other gtk-gnutella instances to be reported as hostile.
+
+  29 Oct 2013; Tony Vroon <chainsaw@gentoo.org> gtk-gnutella-1.0.0.ebuild:
+  Marked stable on AMD64 based on arch testing by Elijah "Armageddon" El
+  Lazkani in bug #489180.
+
+*gtk-gnutella-1.0.0 (10 Sep 2013)
+
+  10 Sep 2013; Hans de Graaff <graaff@gentoo.org> +gtk-gnutella-1.0.0.ebuild,
+  +files/gtk-gnutella-1.0.0-bdf.patch:
+  Version bump. Closes bug 484460.
+
+  09 May 2013; Hans de Graaff <graaff@gentoo.org> -gtk-gnutella-0.98.3.ebuild:
+  Cleanup.
+
+  22 Jan 2013; Agostino Sarubbo <ago@gentoo.org> gtk-gnutella-0.98.4.ebuild:
+  Stable for x86, wrt bug #451618
+
+  16 Jan 2013; Agostino Sarubbo <ago@gentoo.org> gtk-gnutella-0.98.4.ebuild:
+  Stable for ppc, wrt bug #451618
+
+  14 Jan 2013; Agostino Sarubbo <ago@gentoo.org> gtk-gnutella-0.98.4.ebuild:
+  Stable for amd64, wrt bug #451618
+
+*gtk-gnutella-0.98.4 (11 Nov 2012)
+
+  11 Nov 2012; Hans de Graaff <graaff@gentoo.org> +gtk-gnutella-0.98.4.ebuild:
+  Version bump.
+
+  11 Nov 2012; Hans de Graaff <graaff@gentoo.org> -gtk-gnutella-0.98.2.ebuild:
+  Cleanup.
+
+  22 Aug 2012; Johannes Huber <johu@gentoo.org> gtk-gnutella-0.98.3.ebuild:
+  Stable for x86, wrt bug #429190
+
+  08 Aug 2012; Brent Baude <ranger@gentoo.org> gtk-gnutella-0.98.3.ebuild:
+  Marking gtk-gnutella-0.98.3 ppc for bug 429190
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> gtk-gnutella-0.98.3.ebuild:
+  Stable for amd64, wrt bug #429190
+
+  01 Aug 2012; Hans de Graaff <graaff@gentoo.org>
+  -gtk-gnutella-0.98.2-r1.ebuild:
+  Cleanup.
+
+*gtk-gnutella-0.98.3 (05 Jun 2012)
+
+  05 Jun 2012; Hans de Graaff <graaff@gentoo.org> +gtk-gnutella-0.98.3.ebuild:
+  Version bump.
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> gtk-gnutella-0.98.2.ebuild,
+  gtk-gnutella-0.98.2-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  08 Mar 2012; Hans de Graaff <graaff@gentoo.org> -gtk-gnutella-0.96.8.ebuild,
+  -gtk-gnutella-0.97.1.ebuild:
+  Remove old versions.
+
+  07 Mar 2012; Brent Baude <ranger@gentoo.org> gtk-gnutella-0.97.1.ebuild:
+  Marking gtk-gnutella-0.97.1 ppc for bug 387007
+
+  23 Feb 2012; Brent Baude <ranger@gentoo.org> gtk-gnutella-0.98.2.ebuild:
+  Marking gtk-gnutella-0.98.2 ppc for bug 401369
+
+  19 Feb 2012; Hans de Graaff <graaff@gentoo.org>
+  gtk-gnutella-0.98.2-r1.ebuild:
+  Empty the LINGUAS file instead of removing it to avoid tripping up the
+  MANIFEST checking. Fixes bug 404455.
+
+*gtk-gnutella-0.98.2-r1 (18 Feb 2012)
+
+  18 Feb 2012; Hans de Graaff <graaff@gentoo.org>
+  +gtk-gnutella-0.98.2-r1.ebuild:
+  Move to EAPI=4. Only install requested LINGUAS per bug 403645.
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gtk-gnutella-0.98.2.ebuild:
+  x86 stable wrt bug #401369
+
+  01 Feb 2012; Hans de Graaff <graaff@gentoo.org> gtk-gnutella-0.98.2.ebuild:
+  Add missing runtime dependencies, reported in bug 401369.
+
+  31 Jan 2012; Agostino Sarubbo <ago@gentoo.org> gtk-gnutella-0.98.2.ebuild:
+  Stable for amd64, wrt bug #401369
+
+  29 Jan 2012; Hans de Graaff <graaff@gentoo.org> -gtk-gnutella-0.98.ebuild,
+  -gtk-gnutella-0.98.1.ebuild:
+  Remove old versions with various problems.
+
+*gtk-gnutella-0.98.2 (30 Dec 2011)
+
+  30 Dec 2011; Hans de Graaff <graaff@gentoo.org> +gtk-gnutella-0.98.2.ebuild:
+  Version bump.
+
+*gtk-gnutella-0.98.1 (16 Dec 2011)
+
+  16 Dec 2011; Hans de Graaff <graaff@gentoo.org> +gtk-gnutella-0.98.1.ebuild:
+  Version bump.
+
+  12 Dec 2011; Hans de Graaff <graaff@gentoo.org> +gtk-gnutella-0.98.ebuild:
+  Version bump.
+
+*gtk-gnutella-0.98 (12 Dec 2011)
+
+  12 Dec 2011; Hans de Graaff <graaff@gentoo.org> +gtk-gnutella-0.98.ebuild:
+  Version bump.
+
+  12 Dec 2011; Hans de Graaff <graaff@gentoo.org> -gtk-gnutella-0.97.ebuild:
+  Remove old version.
+
+  14 Oct 2011; Tony Vroon <chainsaw@gentoo.org> gtk-gnutella-0.97.1.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo & Ian
+  "idella4" Delaney in bug #387007.
+
+  13 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gtk-gnutella-0.97.1.ebuild:
+  x86 stable wrt bug #387007
+
+  08 Oct 2011; Hans de Graaff <graaff@gentoo.org> -gtk-gnutella-0.96.9.ebuild:
+  Remove old version.
+
+  18 Sep 2011; Markus Meier <maekke@gentoo.org> gtk-gnutella-0.97.ebuild:
+  x86 stable, bug #382565
+
+  13 Sep 2011; Markos Chandras <hwoarang@gentoo.org> gtk-gnutella-0.97.ebuild:
+  Stable on amd64 wrt bug #382565
+
+  12 Sep 2011; Hans de Graaff <graaff@gentoo.org> gtk-gnutella-0.97.1.ebuild:
+  Patch build.sh instead after discussing with upstream.
+
+  12 Sep 2011; Hans de Graaff <graaff@gentoo.org> gtk-gnutella-0.97.1.ebuild:
+  Respect Gentoo's C compiler choice and don't force specific optimizations,
+  thanks to Agostino Sarubbo in bug 382595.
+
+*gtk-gnutella-0.97.1 (11 Sep 2011)
+
+  11 Sep 2011; Hans de Graaff <graaff@gentoo.org> +gtk-gnutella-0.97.1.ebuild:
+  Version bump.
+
+  18 Jul 2011; Hans de Graaff <graaff@gentoo.org> gtk-gnutella-0.97.ebuild:
+  Drop libxml2 dependency, it is no longer needed.
+
+  18 Jul 2011; Hans de Graaff <graaff@gentoo.org> gtk-gnutella-0.97.ebuild:
+  Touch the nm file so that it has a later date than the stripped version to
+  avoid a warning at startup.
+
+*gtk-gnutella-0.97 (18 Jul 2011)
+
+  18 Jul 2011; Hans de Graaff <graaff@gentoo.org> +gtk-gnutella-0.97.ebuild:
+  Version bump.
+
+  22 May 2011; Thomas Kahle <tomka@gentoo.org> gtk-gnutella-0.96.9.ebuild:
+  x86 stable per bug 364505
+
+  26 Apr 2011; Markos Chandras <hwoarang@gentoo.org>
+  gtk-gnutella-0.96.9.ebuild:
+  Stable on amd64 wrt bug #364505
+
+*gtk-gnutella-0.96.9 (14 Mar 2011)
+
+  14 Mar 2011; Hans de Graaff <graaff@gentoo.org>
+  +gtk-gnutella-0.96.9.ebuild:
+  Version bump. Switch gnutls USE flag to more generic ssl (but still
+  provided by gnutls).
+
+  01 Mar 2011; Hans de Graaff <graaff@gentoo.org>
+  gtk-gnutella-0.96.8.ebuild:
+  Add slot to gtk+ dependency.
+
+  31 Oct 2010; Hans de Graaff <graaff@gentoo.org>
+  gtk-gnutella-0.96.8.ebuild:
+  Let gtk dependency depend on the gtk USE flag.
+
+  22 Aug 2010; Hans de Graaff <graaff@gentoo.org>
+  gtk-gnutella-0.96.8.ebuild:
+  Avoid unneeded probe for nawk. Fixes bug 333833.
+
+  25 May 2010; Hans de Graaff <graaff@gentoo.org>
+  -gtk-gnutella-0.96.6.ebuild:
+  Remove old version.
+
+  24 May 2010; Pacho Ramos <pacho@gentoo.org> gtk-gnutella-0.96.8.ebuild:
+  stable amd64, bug 316879
+
+  23 May 2010; <nixnut@gentoo.org> gtk-gnutella-0.96.8.ebuild:
+  ppc stable #316879
+
+  24 May 2010; Raúl Porcel <armin76@gentoo.org> gtk-gnutella-0.96.6.ebuild,
+  gtk-gnutella-0.96.8.ebuild:
+  Drop alpha/sparc keyword
+
+  10 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gtk-gnutella-0.96.8.ebuild:
+  x86 stable wrt bug #316879
+
+  22 Mar 2010; Hans de Graaff <graaff@gentoo.org>
+  -gtk-gnutella-0.96.6-r1.ebuild, -gtk-gnutella-0.96.7.ebuild:
+  Remove old versions.
+
+*gtk-gnutella-0.96.8 (22 Mar 2010)
+
+  22 Mar 2010; Hans de Graaff <graaff@gentoo.org>
+  +gtk-gnutella-0.96.8.ebuild:
+  Version bump with important bug fixes.
+
+  17 Mar 2010; Hans de Graaff <graaff@gentoo.org> metadata.xml:
+  Update metadata.xml to list myself as primary maintainer.
+
+*gtk-gnutella-0.96.7 (17 Mar 2010)
+
+  17 Mar 2010; Hans de Graaff <graaff@gentoo.org>
+  +gtk-gnutella-0.96.7.ebuild, +files/gtk-gnutella-0.96.7-ldflags.patch:
+  Version bump.
+
+*gtk-gnutella-0.96.6-r1 (13 Jul 2009)
+
+  13 Jul 2009; Hans de Graaff <graaff@gentoo.org>
+  +gtk-gnutella-0.96.6-r1.ebuild:
+  Switch to EAPI-"2". Add gtk USE flag so taht we can also support building
+  without a GUI at all. Move configuration into its own phase. Use the build
+  script only for configuration so that we can use emake and thus support
+  parallel compilation.
+
+  13 Jul 2009; Hans de Graaff <graaff@gentoo.org>
+  -gtk-gnutella-0.96.5.ebuild:
+  Remove old version.
+
+  20 May 2009; nixnut <nixnut@gentoo.org> gtk-gnutella-0.96.6.ebuild:
+  ppc stable #268646
+
+  14 May 2009; Markus Meier <maekke@gentoo.org> gtk-gnutella-0.96.6.ebuild:
+  amd64 stable, bug #268646
+
+  09 May 2009; Raúl Porcel <armin76@gentoo.org> gtk-gnutella-0.96.6.ebuild:
+  alpha/sparc stable wrt #264646
+
+  07 May 2009; Christian Faulhammer <fauli@gentoo.org>
+  gtk-gnutella-0.96.6.ebuild:
+  stable x86, bug 268646
+
+*gtk-gnutella-0.96.6 (29 Mar 2009)
+
+  29 Mar 2009; Hans de Graaff <graaff@gentoo.org>
+  +gtk-gnutella-0.96.6.ebuild:
+  Version bump. The currently stable 0.96.5 version will timeout on April 1st,
+  meaning that it won't be possible to bootstrap (e.g. use for the first time)
+  with that version.
+
+  27 Jul 2008; Hans de Graaff <graaff@gentoo.org>
+  gtk-gnutella-0.96.5.ebuild:
+  Add dependency on pkgconfig, fixing #233053.
+
+  27 Jul 2008; Hans de Graaff <graaff@gentoo.org>
+  -gtk-gnutella-0.96.4.ebuild:
+  Remove old version
+
+  14 Jun 2008; Christoph Mende <angelos@gentoo.org>
+  gtk-gnutella-0.96.5.ebuild:
+  Stable on amd64, bug #225345
+
+  10 Jun 2008; Raúl Porcel <armin76@gentoo.org> gtk-gnutella-0.96.5.ebuild:
+  alpha/x86 stable wrt #225345
+
+  08 Jun 2008; Friedrich Oslage <bluebird@gentoo.org>
+  gtk-gnutella-0.96.5.ebuild:
+  stable on sparc, bug #225345
+
+  08 Jun 2008; nixnut <nixnut@gentoo.org> gtk-gnutella-0.96.5.ebuild:
+  Stable on ppc wrt bug 225345
+
+*gtk-gnutella-0.96.5 (26 Apr 2008)
+
+  26 Apr 2008; Hans de Graaff <graaff@gentoo.org>
+  +gtk-gnutella-0.96.5.ebuild:
+  Version bump, closing #219265
+
+  16 Nov 2007; Hans de Graaff <graaff@gentoo.org>
+  -gtk-gnutella-0.96.3.ebuild:
+  Remove old version
+
+  23 Aug 2007; Christoph Mende <angelos@gentoo.org>
+  gtk-gnutella-0.96.4.ebuild:
+  Stable on amd64 wrt bug #187798
+
+  15 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  gtk-gnutella-0.96.4.ebuild:
+  ppc stable, bug #187798
+
+  08 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  gtk-gnutella-0.96.4.ebuild:
+  Stable on sparc wrt #187798
+
+  05 Aug 2007; Raúl Porcel <armin76@gentoo.org> gtk-gnutella-0.96.4.ebuild:
+  alpha/x86 stable wrt #187798
+
+*gtk-gnutella-0.96.4 (07 Jul 2007)
+
+  07 Jul 2007; Hans de Graaff <graaff@gentoo.org>
+  +gtk-gnutella-0.96.4.ebuild:
+  Version bump with numerous improvements and bug fixes.
+  This version no longer uses sqlite for some of its internal data.
+  Removed RESTRICT=mirror after discussion with upstream on IRC.
+
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org>
+  gtk-gnutella-0.96.3.ebuild:
+  (QA) RESTRICT clean up.
+
+  13 May 2007; Hans de Graaff <graaff@gentoo.org> metadata.xml:
+  Add myself explicitly as maintainer as I'm leaving the herd
+
+  07 May 2007; Hans de Graaff <graaff@gentoo.org>
+  -gtk-gnutella-0.96.1.ebuild:
+  Remove old version
+
+  23 Apr 2007; Peter Weller <welp@gentoo.org> gtk-gnutella-0.96.3.ebuild:
+  Keyworde ~x86-fbsd
+
+  04 Jan 2007; Bryan Østergaard <kloeri@gentoo.org>
+  gtk-gnutella-0.96.3.ebuild:
+  Stable on Alpha, bug 158821.
+
+  26 Dec 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  gtk-gnutella-0.96.3.ebuild:
+  Stable on sparc wrt #158821
+
+  24 Dec 2006; Andrej Kacian <ticho@gentoo.org> gtk-gnutella-0.96.3.ebuild:
+  Stable on x86, bug #158821.
+
+  22 Dec 2006; Peter Weller <welp@gentoo.org> gtk-gnutella-0.96.3.ebuild:
+  Stable on amd64. Bug #158821
+
+  22 Dec 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  gtk-gnutella-0.96.3.ebuild:
+  Stable on ppc wrt bug #158821.
+
+*gtk-gnutella-0.96.3 (02 Dec 2006)
+
+  02 Dec 2006; Hans de Graaff <graaff@gentoo.org>
+  -files/gtk-gnutella.desktop, -gtk-gnutella-0.95.4-r1.ebuild,
+  +gtk-gnutella-0.96.3.ebuild:
+  Version bump, fixes #152674. Remove old version and unused files.
+
+  29 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  gtk-gnutella-0.96.1.ebuild:
+  Stable on x86 wrt bug #137392.
+
+  25 Jun 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  gtk-gnutella-0.96.1.ebuild:
+  ppc stable, bug #137392
+
+  24 Jun 2006; Jason Wever <weeve@gentoo.org> gtk-gnutella-0.96.1.ebuild:
+  Stable on SPARC wrt bug #137392.
+
+  23 Jun 2006; Thomas Cort <tcort@gentoo.org> gtk-gnutella-0.96.1.ebuild:
+  Stable on alpha wrt Bug #137392.
+
+  20 Jun 2006; Jon Hood <squinky86@gentoo.org> -gtk-gnutella-0.96.ebuild,
+  gtk-gnutella-0.96.1.ebuild:
+  Stable on amd64. Remove old version.
+
+*gtk-gnutella-0.96.1 (23 Apr 2006)
+
+  23 Apr 2006; Jon Hood <squinky86@gentoo.org> -files/0.95-gtk2.6.patch,
+  -gtk-gnutella-0.95-r2.ebuild, -gtk-gnutella-0.96_beta.ebuild,
+  +gtk-gnutella-0.96.1.ebuild:
+  Version bump, #123743. Remove old versions.
+
+  13 Feb 2006; Marcin Kryczek <mkay@gentoo.org> -gtk-gnutella-0.95.ebuild,
+  -gtk-gnutella-0.95-r1.ebuild, -gtk-gnutella-0.95.4.ebuild:
+  Removing old versions with deprecated gtk2 USE flag
+
+  07 Feb 2006; Aron Griffis <agriffis@gentoo.org>
+  gtk-gnutella-0.95.4-r1.ebuild:
+  Mark 0.95.4-r1 stable on alpha
+
+  27 Jan 2006; Michael Hanselmann <hansmi@gentoo.org>
+  gtk-gnutella-0.95.4-r1.ebuild:
+  Stable on ppc.
+
+  24 Jan 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  gtk-gnutella-0.95.4-r1.ebuild:
+  Stable on sparc wrt #120069
+
+  24 Jan 2006; Luis Medinas <metalgod@gentoo.org>
+  gtk-gnutella-0.95.4-r1.ebuild:
+  Stable on amd64. Bug #120069.
+
+  23 Jan 2006; Marcin Kryczek <mkay@gentoo.org>
+  gtk-gnutella-0.95.4-r1.ebuild:
+  Marked stable on x86
+
+*gtk-gnutella-0.96b-r1 (23 Jan 2006)
+
+  23 Jan 2006; Marcin Kryczek <mkay@gentoo.org> -gtk-gnutella-0.96b.ebuild,
+  +gtk-gnutella-0.96b-r1.ebuild:
+  Removing gtk2 flag from IUSE
+
+*gtk-gnutella-0.96b (29 Dec 2005)
+
+  29 Dec 2005; Eldad Zack <eldad@gentoo.org> +gtk-gnutella-0.96b.ebuild:
+  Version bump. added dbus useflag. Bug #113746.
+
+  21 Sep 2005; <mkay@gentoo.org> -gtk-gnutella-0.93.3.ebuild,
+  -gtk-gnutella-0.94.ebuild, -gtk-gnutella-0.95.3.ebuild:
+  Removing old versions
+
+*gtk-gnutella-0.95.4-r1 (20 Sep 2005)
+
+  20 Oct 2005; <mkay@gentoo.org> +gtk-gnutella-0.95.4:
+  New revision bump without gtk2 flag
+
+  13 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  gtk-gnutella-0.95.4.ebuild:
+  Stable on sparc wrt #105147
+
+  09 Sep 2005; Joseph Jezak <josejx@gentoo.org> gtk-gnutella-0.95.4.ebuild:
+  Marked ppc stable for bug #105147.
+
+  08 Sep 2005; Jose Luis Rivero <yoswink@gentoo.org> ChangeLog:
+  Marked stable on alpha wrt bug #105147
+
+  07 Sep 2005; <sekretarz@gentoo.org> gtk-gnutella-0.95.4.ebuild:
+  Stable on amd64 and x86
+
+  16 Aug 2005; Jason Wever <weeve@gentoo.org> gtk-gnutella-0.95.3.ebuild:
+  Stable on SPARC wrt bug #102175.
+
+  14 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  gtk-gnutella-0.95.3.ebuild:
+  Stable on ppc.
+
+  13 Aug 2005; Jose Luis Rivero <yoswink@gentoo.org>
+  gtk-gnutella-0.95.3.ebuild:
+  Stable on alpha wrt #102175
+
+  12 Aug 2005; Luis Medinas <metalgod@gentoo.org>
+  gtk-gnutella-0.95.3.ebuild:
+  Stable on AMD64.
+
+  12 Aug 2005; <sekretarz@gentoo.org> gtk-gnutella-0.95.3.ebuild:
+  Stable on x86, bug #102175
+
+*gtk-gnutella-0.95.4 (01 Aug 2005)
+
+  01 Aug 2005; <sekretarz@gentoo.org> +gtk-gnutella-0.95.4.ebuild:
+  Version bump, bug #101015
+
+  14 Jul 2005; <sekretarz@gentoo.org> files/gtk-gnutella.desktop,
+  gtk-gnutella-0.94.ebuild, gtk-gnutella-0.95.3.ebuild:
+  Moved desktop file to proper place, bug #97734. Thanks Joe Gallo
+  <jsg8pitt@yahoo.com>.
+
+*gtk-gnutella-0.95.3 (23 Jun 2005)
+
+  23 Jun 2005; <sekretarz@gentoo.org> gtk-gnutella-0.95.ebuild,
+  +gtk-gnutella-0.95.3.ebuild:
+  Version bump, bug #91697. Release fixes bug #95524, #71353 and #63746. Fixed
+  DEPEND variable to hit gtk+-2.6, bug #77918
+
+  29 May 2005; Jose Luis Rivero <yoswink@gentoo.org>
+  gtk-gnutella-0.95-r1.ebuild:
+  Keyworded ~alpha due to #94303
+
+  07 Apr 2005; Simon Stelling <blubb@gentoo.org> gtk-gnutella-0.94.ebuild:
+  stable on amd64
+
+*gtk-gnutella-0.95-r1 (30 Jan 2005)
+
+  30 Jan 2005; Jon Hood <squinky86@gentoo.org> +files/0.95-gtk2.6.patch,
+  +gtk-gnutella-0.95-r1.ebuild:
+  Add gtk patch, #79125; thanks Jani Alanko <jpalan@utu.fi> and Tim Hentenaar
+  <tth@one.net>.
+
+*gtk-gnutella-0.95 (28 Nov 2004)
+
+  28 Nov 2004; Jon Hood <squinky86@gentoo.org> -files/0.93-Configure.patch,
+  -files/0.93.4-gcc34.patch, -gtk-gnutella-0.91.1.ebuild,
+  -gtk-gnutella-0.93.4.ebuild, +gtk-gnutella-0.95.ebuild:
+  Version bump and cleanup old versions.
+
+  22 Aug 2004; Jason Wever <weeve@gentoo.org> gtk-gnutella-0.94.ebuild:
+  Stable on sparc.
+
+  13 Aug 2004; Jon Hood <squinky86@gentoo.org> gtk-gnutella-0.94.ebuild:
+  Stable on x86.
+
+  30 Jul 2004; Jon Hood <squinky86@gentoo.org> gtk-gnutella-0.93.4.ebuild:
+  Stable on x86.
+
+*gtk-gnutella-0.94 (15 Jul 2004)
+
+*gtk-gnutella-0.93.4 (24 Jun 2004)
+
+  24 Jun 2004; Jon Hood <squinky86@gentoo.org> +files/0.93.4-gcc34.patch,
+  -gtk-gnutella-0.92.ebuild, -gtk-gnutella-0.93-r1.ebuild,
+  +gtk-gnutella-0.93.4.ebuild, -gtk-gnutella-0.93.ebuild:
+  version bump, ebuild cleanups; add patch for gcc-3.4 segfaults
+
+  14 Jun 2004; Aron Griffis <agriffis@gentoo.org> gtk-gnutella-0.91.1.ebuild,
+  gtk-gnutella-0.92.ebuild, gtk-gnutella-0.93-r1.ebuild,
+  gtk-gnutella-0.93.3.ebuild, gtk-gnutella-0.93.ebuild:
+  Fix use invocation. Get rid of subshell in src_install so that error-checking
+  can be done. Add error-checking.
+
+  06 Jun 2004; Jason Wever <weeve@gentoo.org> gtk-gnutella-0.93.3.ebuild:
+  Stable on sparc.
+
+  11 May 2004; Jon Hood <squinky86@gentoo.org> files/gtk-gnutella.desktop:
+  fixed .desktop file so it displays the icon correctly. Closes #50798.
+
+  05 May 2004; Jon Hood <squinky86@gentoo.org> gtk-gnutella-0.93-r1.ebuild,
+  gtk-gnutella-0.93.3.ebuild, gtk-gnutella-0.93.ebuild:
+  stable on x86
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  gtk-gnutella-0.91.1.ebuild:
+  Added IUSE.
+
+  25 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  gtk-gnutella-0.93-r1.ebuild, gtk-gnutella-0.93.3.ebuild,
+  gtk-gnutella-0.93.ebuild:
+  don't use deprecated ? : use syntax
+
+  13 Mar 2004; Jason Wever <weeve@gentoo.org> gtk-gnutella-0.92.ebuild:
+  Stable on sparc.
+
+*gtk-gnutella-0.93.3 (11 Feb 2004)
+
+  11 Feb 2004; Martin Holzer <mholzer@gentoo.org> gtk-gnutella-0.93.3.ebuild:
+  Version bumped. Closes 41104
+
+  11 Feb 2004; Martin Holzer <mholzer@gentoo.org> gtk-gnutella-0.91.1.ebuild,
+  gtk-gnutella-0.92.ebuild, gtk-gnutella-0.93-r1.ebuild,
+  gtk-gnutella-0.93.ebuild:
+  adding RESTRICT=nomirror
+
+  22 Jan 2004; Brandon Low <lostlogic@gentoo.org> gtk-gnutella-0.93-r1.ebuild:
+  Depends on Yacc
+
+*gtk-gnutella-0.93-r1 (24 Nov 2003)
+
+  24 Nov 2003; Brandon Low <lostlogic@gentoo.org> gtk-gnutella-0.93-r1.ebuild:
+  Thanks to Keith Constable <kccricket@twistedgamer.com> on Bug 32597 for doing
+  the leg work to use the commandline arguments for the new gtk-gnutella
+  configurator that I didn't want to do, this ebuild should also fix Bug 33660
+  thanks to a little bit of additional hacking I did.
+
+  16 Nov 2003; Brandon Low <lostlogic@gentoo.org>
+  gtk-gnutella-0.91.9.1.ebuild, gtk-gnutella-0.92.ebuild,
+  gtk-gnutella-0.92_rc.ebuild, gtk-gnutella-0.93.ebuild:
+  Move 0.92 to stable
+  Comments and a warning about gtk2 in 0.93
+  Remove unneeded ebuilds
+
+*gtk-gnutella-0.93 (16 Nov 2003)
+
+  16 Nov 2003; Brandon Low <lostlogic@gentoo.org> gtk-gnutella-0.93.ebuild,
+  files/0.93-Configure.patch:
+  Long belated bump to gtk-gnutella version.  Many appologies for the delay
+
+  Pending any bugs posted about this ebuild within the next 1 week, I 
+  will bump it to stable.
+
+*gtk-gnutella-0.92 (23 Jun 2003)
+
+  23 Jun 2003; Brandon Low <lostlogic@gentoo.org> gtk-gnutella-0.92.ebuild:
+  Bump
+
+*gtk-gnutella-0.92_rc (03 Jun 2003)
+
+  03 Jun 2003; Brandon Low <lostlogic@gentoo.org> gtk-gnutella-0.92_rc.ebuild:
+  Bumpage, still unstable
+
+*gtk-gnutella-0.91.9.1 (06 Mar 2003)
+
+  06 Mar 2003; Brandon Low <lostlogic@gentoo.org>
+  gtk-gnutella-0.91.9.1.ebuild:
+  bump
+
+*gtk-gnutella-0.91.1 (27 Nov 2002)
+
+  27 Feb 2003; Brandon Low <lostlogic@gentoo.org> :
+  Bump to latest beta, unstable, this will never be stable, just to prepare for
+  the final release.
+
+  07 Dec 2002; Jack Morgan <jmorgan@gentoo.org> gtk-gnutella-0.90-r2.ebuild,
+  gtk-gnutella-0.91.ebuild, gtk-gnutella-0.91.1.ebuild :
+  Changed sparc64 to sparc keyword gtk-gnutella-0.90-r2.ebuild
+  Changed ~sparc64 to sparc keyword gtk-gnutella-0.91.ebuild
+  Changed ~sparc64 to ~sparc keyword gtk-gnutella-0.91.1.ebuild
+
+  27 Nov 2002; Brandon Low <lostlogic@gentoo.org> gtk-gnutella-0.91.1.ebuild :
+
+  New stable release of gtk-gnutella, party on.  This is mostly a bug
+  fix from the upstreamers, but there are some new features so I'll
+  leave it onstable for the moment.
+
+  17 Nov 2002; Olivier Reisch <doctomoe@gentoo.org> gtk-gnutella-0.91.ebuild :
+  Added ppc keyword
+
+*gtk-gnutella-0.91 (19 Oct 2002)
+
+  19 Oct 2002; Brandon Low <lostlogic@gentoo.org> gtk-gnutella-0.91.ebuild :
+
+  New stable release of gtk-gnutella, party on.
+
+*gtk-gnutella-0.90-r2 (08 Jul 2002)
+
+  24 Jul 2002; Mark Guertin <gerk@gentoo.org> :
+  Added ppc to keywords
+
+  08 Jul 2002; Brandon Low <lostlogic@gentoo.org> gtk-gnutella-0.90-r2.ebuild :
+
+  0.90 Stable released you were close to this with -r1, but this is the latest
+  greatest from the gtk-gnutella folks who I've been working with to get this
+  out with as perfect quality for all users as possible, enjoy.
+
+*gtk-gnutella-0.90-r1 (07 Jul 2002)
+
+  07 Jul 2002; Brandon Low <lostlogic@gentoo.org> gtk-gnutella-0.90-r1.ebuild :
+
+  Update to post-beta2 sources, enjoy.
+
+*gtk-gnutella-0.90 (28 Jun 2002)
+
+  28 Jun 2002; Brandon Low <lostlogic@gentoo.org> gtk-gnutella-0.90.ebuild :
+
+  New version, just a version bump, looks good from the website announcement.
+
+  Had to apply a patch from the gtk-gnutella cvs to get this one working, but
+  I've been using it for a couple hours nwo and no problems yet :)
+
+  Personal appology that this version had been out 4 days before I caught it!
+
+  26 Jun 2002; Thilo Bangert <bangert@gentoo.org> :
+
+  moved to net-p2p; added SLOT="0"
+
+*gtk-gnutella-0.85 (13 Apr 2002)
+
+  13 Apr 2002; Seemant Kulleen <seemant@gentoo.org> gtk-gnutella-0.85.ebuild :
+
+  Thanks to terjekv@math.uio.no (Terje Kvernes) in bug #1645 for reporting
+  this upgrade version.
+
+*gtk-gnutella-0.18 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

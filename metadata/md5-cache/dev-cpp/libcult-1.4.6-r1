@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-util/build:0.3 sys-devel/m4
+DESCRIPTION=A collection of C++ libraries
+EAPI=4
+HOMEPAGE=http://kolpackov.net/projects/libcult/
+IUSE=examples
+KEYWORDS=amd64 ~arm ppc ppc64 x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=ftp://kolpackov.net/pub/projects/libcult/1.4/libcult-1.4.6.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=d5961d0741d367db6de646325d7ef9f9

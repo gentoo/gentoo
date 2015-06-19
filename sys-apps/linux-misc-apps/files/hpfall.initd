@@ -1,0 +1,45 @@
+#!/sbin/runscript
+# Copyright 2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/linux-misc-apps/files/hpfall.initd,v 1.1 2012/11/19 10:02:22 robbat2 Exp $
+
+checkconfig() {
+    if [ -z "$DISK" ] ; then
+	eerror "You need to setup DISK in /etc/conf.d/hpfall first"
+	return 1
+    fi
+
+    if [ ! -b /dev/${DISK} ]; then
+        eerror "Could not find disk /dev/${DISK}!"
+        eerror "Adjust the DISK setting in /etc/conf.d/hpfall"
+        return 1
+    fi
+
+    if [ ! -e /sys/block/${DISK}/device/unload_heads ] ; then
+        eerror "No protect entry for ${DISK}!"
+        eerror "Kernel 2.6.28 and above is required"
+        return 1
+    fi
+
+    if [ ! -c /dev/freefall ]; then
+        ebegin "Loading hp_accel module"
+        modprobe hp_accel
+        eend $? || return 1
+    fi
+}
+
+start () {
+    checkconfig || return 1
+
+    ebegin "Starting active hard-drive protection daemon"
+    start-stop-daemon --start --quiet \
+        --exec /usr/sbin/hpfall /dev/${DISK}
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping active hard-drive protection daemon"
+    start-stop-daemon --stop --quiet \
+        --exec /usr/sbin/hpfall
+    eend $?
+}

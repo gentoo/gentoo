@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+  <email>bicatali@gentoo.org</email>
+  <description>Feel free to update and/or fix</description>
+</maintainer>
+<longdescription lang='en'>
+  StarPU is a runtime system that offers support for heterogeneous
+  multicore machines. While many efforts are devoted to design efficient
+  computation kernels for those architectures (e.g. to implement BLAS
+  kernels on GPUs or on Cell's SPUs), StarPU not only takes care of
+  offloading such kernels (and implementing data coherency across
+  the machine), but it also makes sure the kernels are executed as
+  efficiently as possible.
+</longdescription>
+<use>
+  <flag name="cuda">Enable NVIDIA CUDA toolkit support</flag>
+  <flag name="gcc-plugin">Enable GCC extension plugin (experimental)</flag>
+  <flag name="opencl">Enable OpenCL support</flag>
+</use>
+</pkgmetadata>

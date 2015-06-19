@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst postrm
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: automatically detect file indent settings
+HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=1171
+KEYWORDS=amd64 ~hppa ~mips ppc sparc x86
+LICENSE=vim
+RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+SRC_URI=mirror://gentoo/detectindent-1.0.tar.bz2 http://dev.gentoo.org/~radhermit/vim/detectindent-1.0.tar.bz2
+_eclasses_=vim-doc	1c18baeec98cec3287524cbf2fee2bd2	vim-plugin	286547e90fbbc4c841eee80cd73e646c
+_md5_=84c95d2e63bfc60447ddde5d9ffbff55

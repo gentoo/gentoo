@@ -1,0 +1,8 @@
+DEFINED_PHASES=install
+DESCRIPTION=A replacement for libcrypt with DES, MD5 and blowfish support
+HOMEPAGE=http://www.suse.de/us/private/products/suse_linux/i386/packages_personal/libxcrypt.html
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2
+SLOT=0
+SRC_URI=mirror://gentoo/libxcrypt-2.0.tar.bz2
+_md5_=eb76f203a31bafbea2b17feb7bcc08eb

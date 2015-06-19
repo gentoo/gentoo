@@ -1,0 +1,19 @@
+# ChangeLog for dev-java/miglayout
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/miglayout/ChangeLog,v 1.4 2012/06/01 06:45:52 jdhore Exp $
+
+  01 Jun 2012; Jeff Horelick <jdhore@gentoo.org> miglayout-4.0.ebuild:
+  marked x86 per bug 418043
+
+  29 May 2012; Agostino Sarubbo <ago@gentoo.org> miglayout-4.0.ebuild:
+  Stable for amd64, wrt bug #418043
+
+  03 Mar 2012; Tupone Alfredo <tupone@gentoo.org> miglayout-4.0.ebuild:
+  Adding ~x86 keyword
+
+*miglayout-4.0 (28 Dec 2011)
+
+  27 Dec 2011; Ralph Sennhauser <sera@gentoo.org> +miglayout-4.0.ebuild,
+  +metadata.xml:
+  New package. Thanks to Johannes Rauh <jarauh@hotmail.com> #301493
+

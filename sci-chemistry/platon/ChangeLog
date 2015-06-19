@@ -1,0 +1,145 @@
+# ChangeLog for sci-chemistry/platon
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/platon/ChangeLog,v 1.28 2015/04/07 14:37:49 jlec Exp $
+
+  19 Oct 2012; Justin Lecher <jlec@gentoo.org> platon-20110126.ebuild,
+  metadata.xml:
+  Remove virtual/fortran and always call fortran-2_pkg_setup as intend by the
+  updated fortran-2.eclass
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> platon-20110126.ebuild:
+  Add dependency on virtual/fortran
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> platon-20110126.ebuild:
+  Added fortran-2.eclass support
+
+*platon-20110126 (26 Jan 2011)
+
+  26 Jan 2011; Justin Lecher <jlec@gentoo.org>
+  +files/20110126-buffer-overflow.patch, -files/20101125-buffer-overflow.patch,
+  -platon-20101125.ebuild, +platon-20110126.ebuild:
+  Version Bump, #352440; fetch sources, RESTRICT=mirror
+
+  16 Dec 2010; Justin Lecher <jlec@gentoo.org> platon-20101125.ebuild:
+  Removal of fortran.eclass, #348851
+
+*platon-20101125 (25 Nov 2010)
+
+  25 Nov 2010; Justin Lecher <jlec@gentoo.org>
+  +files/20101125-buffer-overflow.patch, -files/20101113-buffer-overflow.patch,
+  -platon-20101113.ebuild, +platon-20101125.ebuild:
+  Version Bump, #346789
+
+*platon-20101113 (13 Nov 2010)
+
+  13 Nov 2010; Justin Lecher <jlec@gentoo.org>
+  -files/20100712-buffer-overflow.patch, -platon-20100712.ebuild,
+  +files/20101113-buffer-overflow.patch, +platon-20101113.ebuild:
+  Version Bump
+
+*platon-20100712 (13 Jul 2010)
+
+  13 Jul 2010; Justin Lecher <jlec@gentoo.org>
+  -files/20100629-buffer-overflow.patch, -platon-20100629.ebuild,
+  +files/20100712-buffer-overflow.patch, +platon-20100712.ebuild:
+  Version Bump
+
+*platon-20100629 (29 Jun 2010)
+
+  29 Jun 2010; Justin Lecher <jlec@gentoo.org>
+  -files/20100625-buffer-overflow.patch, -platon-20100625.ebuild,
+  +files/20100629-buffer-overflow.patch, +platon-20100629.ebuild:
+  Version Bump
+
+*platon-20100625 (27 Jun 2010)
+
+  27 Jun 2010; Justin Lecher <jlec@gentoo.org>
+  +files/20100625-buffer-overflow.patch, -platon-20100615.ebuild,
+  +platon-20100625.ebuild:
+  Version Bump, fix for bufferoverflow, #325065
+
+*platon-20100615 (24 Jun 2010)
+
+  24 Jun 2010; Justin Lecher <jlec@gentoo.org> -platon-20080702.ebuild,
+  -platon-20080725.ebuild, +platon-20100615.ebuild:
+  Version Bump, #255619; reduced optimization to prevend bufferoverflows;
+  #325065
+
+  07 Jul 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  platon-20080725.ebuild:
+  Use elog for fetch error.
+
+  07 Oct 2008; Markus Dittrich <markusle@gentoo.org> platon-20080725.ebuild:
+  Removed linking against -lf2c with gfortran since platon misbehaves
+  otherwise (fixes bug #240238). Thanks much to Honza Macháček
+  <Hloupy.Honza@centrum.cz> for his suggested improvements.
+
+*platon-20080725 (30 Aug 2008)
+
+  30 Aug 2008; Markus Dittrich <markusle@gentoo.org>
+  -platon-20060717.ebuild, -platon-20070425.ebuild, +platon-20080725.ebuild:
+  Version bump and removed old ebuilds (see bug #183828). Also added 
+  amd64 keyword.
+
+  07 Jul 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  platon-20080702.ebuild:
+  Fix minor syntax errors.
+
+*platon-20080702 (07 Jul 2008)
+
+  07 Jul 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  +platon-20080702.ebuild:
+  (#183828) Bump.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  platon-20060717.ebuild, platon-20070425.ebuild:
+  Drop virtual/x11 references.
+
+*platon-20070425 (26 Apr 2007)
+
+  26 Apr 2007; Jeff Gardner <je_fro@gentoo.org> +platon-20070425.ebuild:
+  Version bump wrt bug #155351.
+
+  24 Apr 2007; Jeff Gardner <je_fro@gentoo.org>
+  files/digest-platon-20060717, Manifest:
+  Re-Digest wrt bug #155351
+
+  07 Jan 2007; Danny van Dyk <kugelfang@gentoo.org> -platon-20060621.ebuild:
+  QA: Removed unused versions.
+
+  20 Sep 2006; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  (#148281) Change herd to sci-chemistry from sci.
+
+*platon-20060717 (07 Aug 2006)
+
+  07 Aug 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  +platon-20060717.ebuild:
+  (#137734) Bump.
+
+  05 Aug 2006; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  Remove myself as maintainer, anyone feel free to work on this, although I'll
+  continue to do so as well.
+
+  07 Jul 2006; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  Update to my new email address.
+
+*platon-20060621 (23 Jun 2006)
+
+  23 Jun 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  -platon-20051215.ebuild, -platon-20060530.ebuild, +platon-20060621.ebuild:
+  (#137734) Bump -- old versions no longer accessible.
+
+*platon-20060530 (03 Jun 2006)
+
+  03 Jun 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  +platon-20060530.ebuild:
+  Bump to latest. Fix for gcc4 by linking against libf2c in the non-gcc3 case.
+  Keyword ~ppc.
+
+*platon-20051215 (16 Dec 2005)
+
+  16 Dec 2005; Donnie Berkholz <dberkholz@gentoo.org>; +metadata.xml,
+  +platon-20051215.ebuild:
+  Another crystallography package. This one considers itself a versatile,
+  SHELX-97 compatible, multipurpose tool.
+

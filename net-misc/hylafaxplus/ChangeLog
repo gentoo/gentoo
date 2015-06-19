@@ -1,0 +1,78 @@
+# ChangeLog for net-misc/hylafaxplus
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/hylafaxplus/ChangeLog,v 1.14 2015/06/13 09:37:05 mrueg Exp $
+
+  13 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -hylafaxplus-5.5.1-r1.ebuild,
+  -hylafaxplus-5.5.4.ebuild:
+  Remove old.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  hylafaxplus-5.5.1-r1.ebuild, hylafaxplus-5.5.4-r1.ebuild,
+  hylafaxplus-5.5.4.ebuild, hylafaxplus-5.5.5.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  26 Jul 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  hylafaxplus-5.5.4-r1.ebuild:
+  x86 stable wrt bug #512564
+
+  21 Jul 2014; Chema Alonso <nimiux@gentoo.org> hylafaxplus-5.5.4-r1.ebuild:
+  Stable for amd64 wrt bug #512564
+
+*hylafaxplus-5.5.5 (06 Jun 2014)
+
+  06 Jun 2014; Matthew Marlowe <mattm@gentoo.org> +hylafaxplus-5.5.5.ebuild:
+  Bump 5.5.5, with testing - hopefully this can replace all older ebuilds and
+  become new stable.
+
+  13 Jan 2014; Matthew Marlowe <mattm@gentoo.org> hylafaxplus-5.5.4-r1.ebuild:
+  keyword 5.5.4-r1 patch bump for testing (~amd64,~x86)
+
+*hylafaxplus-5.5.4-r1 (11 Jan 2014)
+
+  11 Jan 2014; Matthew Marlowe <mattm@gentoo.org>
+  +files/hylafax-cryptglibc.patch, +hylafaxplus-5.5.4-r1.ebuild:
+  Testing user submitted patch for bug 491164
+
+  27 Sep 2013; Sergey Popov <pinkbyte@gentoo.org> -hylafaxplus-5.5.1.ebuild:
+  Drop old
+
+*hylafaxplus-5.5.4 (27 Sep 2013)
+
+  27 Sep 2013; Sergey Popov <pinkbyte@gentoo.org> +hylafaxplus-5.5.4.ebuild,
+  metadata.xml:
+  Version bump, wrt bug #438600. EAPI 5, respect CC/CXX/AR/RANLIB. Partially
+  respect LDFLAGS. drop broken auto-detection of page format. Add net-dialup
+  herd to metadata
+
+  10 Mar 2013; Christoph Junghans <ottxor@gentoo.org>
+  hylafaxplus-5.5.1-r1.ebuild, hylafaxplus-5.5.1.ebuild:
+  switch to virtual/awk (bug #455674)
+
+  16 Aug 2012; Andreas Schuerch <nativemad@gentoo.org>
+  hylafaxplus-5.5.1-r1.ebuild:
+  x86 stable, see bug 422155
+
+  03 Aug 2012; Markos Chandras <hwoarang@gentoo.org>
+  hylafaxplus-5.5.1-r1.ebuild:
+  Stable on amd64 wrt bug #422155
+
+  05 Apr 2012; Matthew Marlowe <mattm@gentoo.org> +hylafaxplus-5.5.1-r1.ebuild:
+  tests for 5.5.1 have been good so far, keywording for ~amd64/~x86
+
+*hylafaxplus-5.5.1-r1 (05 Apr 2012)
+
+  05 Apr 2012; Matthew Marlowe <mattm@gentoo.org> +hylafaxplus-5.5.1-r1.ebuild:
+  hylafax really does require -j1. Repoman is going to be unhappy.
+
+  05 Apr 2012; Matthew Marlowe <mattm@gentoo.org> +hylafaxplus-5.5.1.ebuild,
+  +files/hylafaxplus-conf, +files/hylafaxplus-init, +files/ldconfig-patch,
+  +metadata.xml:
+  several additional fixes requested by repoman
+
+*hylafaxplus-5.5.1 (05 Apr 2012)
+
+  05 Apr 2012; Matthew Marlowe <mattm@gentoo.org> +hylafaxplus-5.5.1.ebuild,
+  +files/hylafaxplus-conf, +files/hylafaxplus-init, +files/ldconfig-patch,
+  +metadata.xml:
+  minor fixes to user created ebuild for first version, temp masked until all
+  bugs and issues worked out

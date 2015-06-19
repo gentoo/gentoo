@@ -1,0 +1,55 @@
+# ChangeLog for media-libs/quesoglc
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/quesoglc/ChangeLog,v 1.15 2015/03/23 01:20:06 mr_bones_ Exp $
+
+  23 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> quesoglc-0.7.2.ebuild:
+  EAPI=5
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> quesoglc-0.7.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  10 Jan 2010; nixnut <nixnut@gentoo.org> quesoglc-0.7.2.ebuild:
+  ppc stable #292854
+
+  26 Dec 2009; Raúl Porcel <armin76@gentoo.org> quesoglc-0.7.2.ebuild:
+  sparc stable wrt #292854
+
+  14 Nov 2009; Markus Meier <maekke@gentoo.org> quesoglc-0.7.2.ebuild:
+  amd64/x86 stable, bug #292854
+
+*quesoglc-0.7.2 (12 Oct 2009)
+
+  12 Oct 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +quesoglc-0.7.2.ebuild:
+  version bump
+
+  16 Mar 2009; Brent Baude <ranger@gentoo.org> quesoglc-0.7.1.ebuild:
+  Marking quesoglc-0.7.1 ppc for bug 254875
+
+  18 Feb 2009; Raúl Porcel <armin76@gentoo.org> quesoglc-0.7.1.ebuild:
+  sparc stable wrt #254875
+
+  18 Jan 2009; Tobias Klausmann <klausman@gentoo.org> quesoglc-0.7.1.ebuild:
+  Alpha keyword removed since only masked/unkeyworded packages use this
+  library on alpha
+
+  18 Jan 2009; Markus Meier <maekke@gentoo.org> quesoglc-0.7.1.ebuild:
+  amd64/x86 stable, bug #254875
+
+  15 Dec 2008; Ferris McCormick <fmccor@gentoo.org> quesoglc-0.7.1.ebuild:
+  Add ~sparc for testing, related to Bug #245771.
+
+  25 Oct 2008; Pieter Van den Abeele <pvdabeel@gentoo.org> quesoglc-0.7.1.ebuild:
+  Keyworded ~ppc. Closes bug #214144
+
+  17 May 2008; Tobias Klausmann <klausman@gentoo.org> quesoglc-0.7.1.ebuild:
+  Keyworded on alpha, bug #222017
+
+  21 Mar 2008; Tristan Heaven <nyhm@gentoo.org> quesoglc-0.7.1.ebuild:
+  Add doc and examples USE flags
+
+*quesoglc-0.7.1 (20 Mar 2008)
+
+  20 Mar 2008; Tristan Heaven <nyhm@gentoo.org> +metadata.xml,
+  +quesoglc-0.7.1.ebuild:
+  Initial commit, bug #195096

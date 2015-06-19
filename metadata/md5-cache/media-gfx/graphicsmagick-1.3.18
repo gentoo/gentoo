@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=>=sys-devel/libtool-2.2.6b bzip2? ( app-arch/bzip2 ) fpx? ( media-libs/libfpx ) imagemagick? ( !media-gfx/imagemagick ) jbig? ( media-libs/jbigkit ) jpeg? ( virtual/jpeg ) jpeg2k? ( media-libs/jasper ) lcms? ( media-libs/lcms:2 ) lzma? ( app-arch/xz-utils ) perl? ( dev-lang/perl ) png? ( media-libs/libpng:0 ) postscript? ( app-text/ghostscript-gpl ) svg? ( dev-libs/libxml2 ) tiff? ( media-libs/tiff:0 ) truetype? ( media-fonts/urw-fonts >=media-libs/freetype-2 ) wmf? ( media-libs/libwmf ) X? ( x11-libs/libSM x11-libs/libXext ) zlib? ( sys-libs/zlib )
+DESCRIPTION=Collection of tools and libraries for many image formats
+EAPI=5
+HOMEPAGE=http://www.graphicsmagick.org/
+IUSE=bzip2 cxx debug fpx imagemagick jbig jpeg jpeg2k lcms lzma modules openmp perl png postscript q16 q32 static-libs svg threads tiff truetype wmf X zlib
+KEYWORDS=alpha amd64 hppa ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=MIT
+RDEPEND=>=sys-devel/libtool-2.2.6b bzip2? ( app-arch/bzip2 ) fpx? ( media-libs/libfpx ) imagemagick? ( !media-gfx/imagemagick ) jbig? ( media-libs/jbigkit ) jpeg? ( virtual/jpeg ) jpeg2k? ( media-libs/jasper ) lcms? ( media-libs/lcms:2 ) lzma? ( app-arch/xz-utils ) perl? ( dev-lang/perl ) png? ( media-libs/libpng:0 ) postscript? ( app-text/ghostscript-gpl ) svg? ( dev-libs/libxml2 ) tiff? ( media-libs/tiff:0 ) truetype? ( media-fonts/urw-fonts >=media-libs/freetype-2 ) wmf? ( media-libs/libwmf ) X? ( x11-libs/libSM x11-libs/libXext ) zlib? ( sys-libs/zlib )
+SLOT=0
+SRC_URI=mirror://sourceforge/graphicsmagick/GraphicsMagick-1.3.18.tar.xz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=2a37fee93ee565ed7ff838d00ce8d35d

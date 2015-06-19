@@ -1,0 +1,60 @@
+# ChangeLog for media-sound/takcd
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/takcd/ChangeLog,v 1.17 2011/05/07 17:17:23 angelos Exp $
+
+  07 May 2011; Christoph Mende <angelos@gentoo.org> takcd-0.10.ebuild,
+  +files/takcd-0.10-overflow.patch:
+  Fix possible overflow (bug #337849)
+
+  03 Dec 2010; Diego E. Pettenò <flameeyes@gentoo.org> takcd-0.10.ebuild:
+  Rebuild with modern autotools.
+
+  30 Nov 2008; <ssuominen@gentoo.org> takcd-0.10.ebuild:
+  Remove redudant src_compile. Use DESTDIR. Don't install README.SunOS.
+  Install manpages.
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing seemant from metadata.xml as per #202469.
+
+  23 Jan 2007; Seemant Kulleen <seemant@gentoo.org> takcd-0.10.ebuild:
+  Fix for bug #163370, thanks to: Zak Kipling
+
+  29 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> takcd-0.10.ebuild:
+  Fix autotools rebuilding, thanks to Patrick Lauer in bug #153362.
+
+  15 Sep 2005; Aron Griffis <agriffis@gentoo.org> takcd-0.10.ebuild:
+  Mark 0.10 stable on alpha
+
+  18 Jul 2005; Seemant Kulleen <seemant@gentoo.org> takcd-0.10.ebuild:
+  fix the autoconf version to be more up to date, thanks to: Jeff Spencer
+  <jeff@alkcc.com> in bug #98699
+
+  09 May 2005; Aron Griffis <agriffis@gentoo.org> takcd-0.10.ebuild:
+  stable on ia64
+
+  15 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> takcd-0.10.ebuild:
+  Stable amd64, sparc.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> takcd-0.10.ebuild:
+  virtual/glibc -> virtual/libc
+
+  01 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> takcd-0.08.ebuild,
+  takcd-0.10.ebuild:
+  Stable on x86.  Fixed DEPEND.
+
+*takcd-0.10 (20 Oct 2003)
+
+  20 Oct 2003; Seemant Kulleen <seemant@gentoo.org> takcd-0.10.ebuild:
+  Matt Kennedy made a patch which got accepted upstream, to allow for a config
+  file (and allows you to specify which your cdrom device is, if it is not
+  /dev/cdrom)
+
+*takcd-0.08 (07 Feb 2003)
+
+  12 Apr 2003; Graham Forest <vladimir@gentoo.org> takcd-0.08.ebuild:
+  set ~ppc in keywords
+
+  07 Feb 2003; Seemant Kulleen <seemant@gentoo.org> takcd-0.08.ebuild
+  ChangeLog files/digest-takcd-0.08 :
+
+  Command line CD player which runs very well with media-sound/waif

@@ -1,0 +1,21 @@
+# ChangeLog for dev-php/pecl-ncurses
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/pecl-ncurses/ChangeLog,v 1.4 2014/10/10 02:24:42 grknight Exp $
+
+*pecl-ncurses-1.0.2-r1 (30 Sep 2014)
+
+  30 Sep 2014; Brian Evans <grknight@gentoo.org> +pecl-ncurses-1.0.2-r1.ebuild,
+  -pecl-ncurses-1.0.1.ebuild, -pecl-ncurses-1.0.2.ebuild:
+  Revbump to drop 5.3 support and add 5.6
+
+*pecl-ncurses-1.0.2 (04 Jan 2014)
+
+  04 Jan 2014; Matti Bickel <mabi@gentoo.org> +pecl-ncurses-1.0.2.ebuild:
+  version bump, compiles and tests fine against newer php versions - indicate
+  that in USE_PHP
+
+*pecl-ncurses-1.0.1 (22 Jan 2012)
+
+  22 Jan 2012; Matti Bickel <mabi@gentoo.org> +metadata.xml,
+  +pecl-ncurses-1.0.1.ebuild:
+  New pkg pecl-ncurses, thanks to Mike Thompson for the ebuild (bug #325163)

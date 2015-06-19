@@ -1,0 +1,10 @@
+DEFINED_PHASES=config configure install postinst preinst prepare prerm
+DESCRIPTION=Framework for biometric-based authentication
+EAPI=2
+HOMEPAGE=http://code.google.com/p/bioapi-linux/
+KEYWORDS=amd64 x86
+LICENSE=bioapi
+SLOT=0
+SRC_URI=http://bioapi-linux.googlecode.com/files/bioapi_1.2.3.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=e172ecbd31c548d9ea77e3ab48dce66f

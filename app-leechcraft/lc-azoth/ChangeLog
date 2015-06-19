@@ -1,0 +1,326 @@
+# ChangeLog for app-leechcraft/lc-azoth
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-leechcraft/lc-azoth/ChangeLog,v 1.27 2015/03/02 19:08:06 maksbotan Exp $
+
+  02 Mar 2015; Maxim Koltsov <maksbotan@gentoo.org> lc-azoth-0.6.60.ebuild,
+  lc-azoth-0.6.65.ebuild, lc-azoth-0.6.70.ebuild, lc-azoth-9999.ebuild:
+  Removed msn use flag and support because of coming last rite of libmsn due to
+  the death of the service.
+
+  22 Feb 2015; Michał Górny <mgorny@gentoo.org> lc-azoth-0.6.60.ebuild,
+  lc-azoth-0.6.65.ebuild, lc-azoth-0.6.70.ebuild, lc-azoth-9999.ebuild:
+  Update dependency on QCA plugins to use USE flags on app-crypt/qca:2
+  unconditionally, to provide a single sane path for dependency resolution. Bug
+  #541066.
+
+  28 Jan 2015; Johannes Huber <johu@gentoo.org> lc-azoth-0.6.60.ebuild,
+  lc-azoth-0.6.65.ebuild, lc-azoth-0.6.70.ebuild, lc-azoth-9999.ebuild:
+  Adjust dependencies to handle merged plugins in >=app-crypt/qca-2.1.
+
+  06 Dec 2014; Maxim Koltsov <maksbotan@gentoo.org> lc-azoth-0.6.70.ebuild,
+  lc-azoth-9999.ebuild, metadata.xml:
+  Add missing 'velvetbird' useflag to 0.6.70 and 9999.
+
+  05 Aug 2014; Maxim Koltsov <maksbotan@gentoo.org> lc-azoth-9999.ebuild,
+  metadata.xml:
+  Add sarin plugin to 9999. Thanks to 0xd34df00d
+
+*lc-azoth-0.6.70 (03 Aug 2014)
+
+  03 Aug 2014; Maxim Koltsov <maksbotan@gentoo.org> +lc-azoth-0.6.70.ebuild:
+  Bump LeechCraft to 0.6.70, thanks to 0xd34df00d.
+
+  16 Jun 2014; Maxim Koltsov <maksbotan@gentoo.org> lc-azoth-9999.ebuild:
+  Remove p100q useflag from 9999 as plugin was removed upstream
+
+  26 May 2014; Maxim Koltsov <maksbotan@gentoo.org> lc-azoth-9999.ebuild:
+  Switch from qtmultimedia to qt-mobility[multimedia] in lc-azoth-9999, thanks
+  to 0xd34df00d.
+
+*lc-azoth-0.6.65 (10 Apr 2014)
+
+  10 Apr 2014; Maxim Koltsov <maksbotan@gentoo.org> +lc-azoth-0.6.65.ebuild:
+  Bump LeechCraft to 0.5.65, thanks to 0xd34df00d.
+
+  03 Apr 2014; Mikle Kolyada <zlogene@gentoo.org> lc-azoth-0.6.60.ebuild:
+  x86 stable wrt bug #500914
+
+  02 Apr 2014; Mikle Kolyada <zlogene@gentoo.org> lc-azoth-0.6.60.ebuild:
+  amd64 stable wrt bug #500914
+
+  29 Jan 2014; Maxim Koltsov <maksbotan@gentoo.org> lc-azoth-9999.ebuild:
+  Update spell dependency after app-leechcraft/lc-rosenthal addition
+
+*lc-azoth-0.6.60 (08 Jan 2014)
+
+  08 Jan 2014; Maxim Koltsov <maksbotan@gentoo.org> +lc-azoth-0.6.60.ebuild:
+  Bump to LeecChraft-0.6.60 release, thanks to 0xd34df00d.
+
+  25 Sep 2013; Sergey Popov <pinkbyte@gentoo.org> lc-azoth-9999.ebuild,
+  metadata.xml:
+  Add USE-flag and dependency for Twitter plugin, minor dependency corrections,
+  thanks to 0xd34df00d
+
+  24 Sep 2013; Maxim Koltsov <maksbotan@gentoo.org> lc-azoth-0.5.90.ebuild,
+  lc-azoth-0.5.99.ebuild, lc-azoth-0.6.0.ebuild, lc-azoth-9999.ebuild:
+  Fix double qtmultimedia dependency, add qjson dependency
+
+*lc-azoth-0.6.0 (24 Sep 2013)
+
+  24 Sep 2013; Maxim Koltsov <maksbotan@gentoo.org> +lc-azoth-0.6.0.ebuild:
+  Bump LeechCraft to 0.6.0
+
+  10 Aug 2013; Maxim Koltsov <maksbotan@gentoo.org> lc-azoth-9999.ebuild,
+  metadata.xml:
+  Add murm use flag to 9999, thanks to 0xd34df00d
+
+  19 Jul 2013; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Remove redundant useflag descriptions
+
+*lc-azoth-0.5.99 (18 Jul 2013)
+
+  18 Jul 2013; <maks@gentoo.org> +lc-azoth-0.5.99.ebuild:
+  Bump app-leechcraft/lc-azoth to 0.5.99, thanks to 0xd34df00d
+
+*lc-azoth-0.5.98 (03 Jul 2013)
+
+  03 Jul 2013; Maxim Koltsov <maksbotan@gentoo.org> +lc-azoth-0.5.98.ebuild:
+  Bump LeechCraft to 0.5.98, thanks to 0xd34df00d.
+
+*lc-azoth-0.5.97 (11 Jun 2013)
+
+  11 Jun 2013; Maxim Koltsov <maksbotan@gentoo.org> +lc-azoth-0.5.97.ebuild:
+  Bump LeechCraft suite to 0.5.97, thanks to 0xd34df00d.
+
+*lc-azoth-0.5.96 (26 May 2013)
+
+  26 May 2013; Maxim Koltsov <maksbotan@gentoo.org> +lc-azoth-0.5.96.ebuild:
+  Bump LeechCraft suite to 0.5.96, thanks to 0xd34df00d
+
+  08 May 2013; Maxim Koltsov <maksbotan@gentoo.org> lc-azoth-9999.ebuild:
+  Add lc-xtazy dependency to 9999
+
+*lc-azoth-0.5.95 (02 May 2013)
+
+  02 May 2013; Sergey Popov <pinkbyte@gentoo.org> +lc-azoth-0.5.95.ebuild:
+  Bump app-leechcraft/lc-azoth to 0.5.95, thanks to 0xd34df00d
+
+  14 Apr 2013; Sergey Popov <pinkbyte@gentoo.org> lc-azoth-9999.ebuild:
+  Correct doxygen dependency - add USE 'dot'
+
+  14 Apr 2013; Sergey Popov <pinkbyte@gentoo.org> lc-azoth-9999.ebuild:
+  Bump EAPI to 5, add documentation building and installing, thanks to
+  0xd34df00d
+
+*lc-azoth-9999 (08 Mar 2013)
+*lc-azoth-0.5.90 (08 Mar 2013)
+*lc-azoth-0.5.85 (08 Mar 2013)
+
+  08 Mar 2013; Maxim Koltsov <maksbotan@gentoo.org> +lc-azoth-0.5.85.ebuild,
+  +lc-azoth-0.5.90.ebuild, +lc-azoth-9999.ebuild, +metadata.xml:
+  Move to app-leechcraft/category
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org>
+  leechcraft-azoth-0.5.85.ebuild, leechcraft-azoth-0.5.90.ebuild,
+  leechcraft-azoth-9999.ebuild:
+  Move Qt dependencies to the new category
+
+  16 Feb 2013; Agostino Sarubbo <ago@gentoo.org> leechcraft-azoth-0.5.90.ebuild:
+  Stable for x86, wrt bug #457824
+
+  16 Feb 2013; Agostino Sarubbo <ago@gentoo.org> leechcraft-azoth-0.5.90.ebuild:
+  Stable for amd64, wrt bug #457824
+
+*leechcraft-azoth-0.5.90 (25 Dec 2012)
+
+  25 Dec 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  +leechcraft-azoth-0.5.90.ebuild:
+  Bump LeechCraft to 0.5.90, thanks to 0xd34df00d
+
+  19 Dec 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  -leechcraft-azoth-0.5.70.ebuild, -leechcraft-azoth-0.5.75-r1.ebuild,
+  -leechcraft-azoth-0.5.80.ebuild:
+  Remove old LeechCraft versions
+
+  08 Dec 2012; Sergey Popov <pinkbyte@gentoo.org> leechcraft-azoth-9999.ebuild,
+  metadata.xml:
+  Replace USE-flag zheet with USE-flag msn, wrt bug #402833
+
+  27 Nov 2012; Sergey Popov <pinkbyte@gentoo.org> leechcraft-azoth-9999.ebuild,
+  metadata.xml:
+  Use global USE-flags, where it is possible, fix description for old flags,
+  wrt bug #402833
+
+  10 Nov 2012; Sergey Popov <pinkbyte@gentoo.org> leechcraft-azoth-9999.ebuild,
+  metadata.xml:
+  Add shell command executor plugin support
+
+  20 Oct 2012; Sergey Popov <pinkbyte@gentoo.org>
+  leechcraft-azoth-0.5.70.ebuild, leechcraft-azoth-0.5.75-r1.ebuild,
+  leechcraft-azoth-0.5.80.ebuild, leechcraft-azoth-0.5.85.ebuild:
+  Fix net-libs/libotr dependency wrt bug #438958
+
+*leechcraft-azoth-0.5.85 (08 Oct 2012)
+
+  08 Oct 2012; Sergey Popov <pinkbyte@gentoo.org>
+  +leechcraft-azoth-0.5.85.ebuild:
+  Bump LeechCraft to 0.5.85, thanks to 0xd34df00d
+
+  06 Sep 2012; Sergey Popov <pinkbyte@gentoo.org> leechcraft-azoth-9999.ebuild:
+  Remove USE-flag dependency on net-libs/qxmpp-9999, 'extras' USE-flag was
+  dropped from it earlier
+
+*leechcraft-azoth-0.5.80 (13 Aug 2012)
+
+  13 Aug 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  +leechcraft-azoth-0.5.80.ebuild:
+  Bump LeechCraft to 0.5.80, thanks to 0xd34df00d
+
+*leechcraft-azoth-0.5.75-r1 (10 Aug 2012)
+
+  10 Aug 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  +leechcraft-azoth-0.5.75-r1.ebuild, -leechcraft-azoth-0.5.75.ebuild,
+  leechcraft-azoth-9999.ebuild:
+  Require at least one style plugin to be enabled, bug #430728.
+
+  07 Aug 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  leechcraft-azoth-9999.ebuild, metadata.xml:
+  Add birthdaynotifier use to 9999
+
+*leechcraft-azoth-0.5.75 (19 Jul 2012)
+
+  19 Jul 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  +leechcraft-azoth-0.5.75.ebuild, -leechcraft-azoth-0.4.99.ebuild,
+  -leechcraft-azoth-0.5.0.ebuild, -leechcraft-azoth-0.5.60.ebuild,
+  -leechcraft-azoth-0.5.65.ebuild:
+  Removed old versions, bumped to 0.5.75
+
+  15 Jul 2012; Michael Palimaka <kensington@gentoo.org>
+  leechcraft-azoth-0.4.99.ebuild, leechcraft-azoth-0.5.0.ebuild,
+  leechcraft-azoth-0.5.60.ebuild, leechcraft-azoth-0.5.65.ebuild,
+  leechcraft-azoth-0.5.70.ebuild, leechcraft-azoth-9999.ebuild:
+  Add missing slot dependencies on Qt.
+
+  07 Jul 2012; Johannes Huber <johu@gentoo.org> leechcraft-azoth-0.5.70.ebuild:
+  Stable for x86, wrt bug #424613
+
+  04 Jul 2012; Agostino Sarubbo <ago@gentoo.org>
+  leechcraft-azoth-0.5.70.ebuild:
+  Stable for amd64, wrt bug #424613
+
+  03 Jul 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  leechcraft-azoth-0.5.70.ebuild:
+  Change depend on qxmpp to 0.3.61 version, thanks to Pinkbyte and 0xd34df00d
+
+  01 Jul 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  leechcraft-azoth-0.5.70.ebuild:
+  Depend strictly on given qxmpp version, bug 423205. Thanks to 0xd34df00d
+
+  12 Jun 2012; Maxim Koltsov <maksbotan@gentoo.org> metadata.xml:
+  Fix zheet use flag description in metadata
+
+*leechcraft-azoth-0.5.70 (01 Jun 2012)
+
+  01 Jun 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  +leechcraft-azoth-0.5.70.ebuild, leechcraft-azoth-9999.ebuild, metadata.xml:
+  Bump LeechCraft to 0.5.70 "Hessian Blade"
+
+  23 May 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  leechcraft-azoth-9999.ebuild:
+  Add app-text/hunspell DEPEND to leechcraft-azoth-9999
+
+*leechcraft-azoth-0.5.65 (22 Apr 2012)
+
+  22 Apr 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  +leechcraft-azoth-0.5.65.ebuild:
+  Bump net-im/leechcraft-azoth to 0.5.65, thanks to 0xd34df00d
+
+  07 Apr 2012; Markus Meier <maekke@gentoo.org> leechcraft-azoth-0.4.99.ebuild:
+  x86 stable, bug #400605
+
+*leechcraft-azoth-0.5.60 (20 Mar 2012)
+
+  20 Mar 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  +leechcraft-azoth-0.5.60.ebuild:
+  Bump LeechCraft to 0.5.60, thank to 0xd34df00d
+
+  04 Mar 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  leechcraft-azoth-9999.ebuild, metadata.xml:
+  Add depends for telepathy and keeso plugin to 9999. Thanks to 0xd34df00d
+
+  09 Feb 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  leechcraft-azoth-0.5.0.ebuild, leechcraft-azoth-9999.ebuild:
+  Added missing (R)DEPEND to 0.5.0 and 9999
+
+*leechcraft-azoth-0.5.0 (09 Feb 2012)
+
+  09 Feb 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  +leechcraft-azoth-0.5.0.ebuild, -leechcraft-azoth-0.4.96-r1.ebuild,
+  -leechcraft-azoth-0.4.97.ebuild:
+  Bumped LeechCraft to 0.5.0, removed 0.4.96-r1 and 0.4.97
+
+  04 Feb 2012; Agostino Sarubbo <ago@gentoo.org>
+  leechcraft-azoth-0.4.99.ebuild:
+  Stable for amd64, wrt bug #400605
+
+  02 Feb 2012; Maxim Koltsov <maksbotan@gentoo.org> Manifest:
+  Big leechcraft bump to 0.4.99, thanks to 0xd34df00d
+
+*leechcraft-azoth-0.4.99 (02 Feb 2012)
+
+  02 Feb 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  +leechcraft-azoth-0.4.99.ebuild:
+  Bump app-editors/leechcraft-popishu to 0.4.99, thanks to 0xd34df00d
+
+  24 Jan 2012; Johannes Huber <johu@gentoo.org> leechcraft-azoth-9999.ebuild:
+  Non maintainer commit. Change dep according package move.
+
+*leechcraft-azoth-0.4.97 (31 Dec 2011)
+
+  31 Dec 2011; Maxim Koltsov <maksbotan@gentoo.org>
+  -leechcraft-azoth-0.4.85.ebuild, -leechcraft-azoth-0.4.90.ebuild,
+  +leechcraft-azoth-0.4.97.ebuild:
+  Bump to 0.4.97, remove 0.4.80 and 0.4.90
+
+  24 Dec 2011; Maxim Koltsov <maksbotan@gentoo.org>
+  leechcraft-azoth-9999.ebuild, metadata.xml:
+  Add zheet use flag to 9999
+
+*leechcraft-azoth-0.4.96-r1 (16 Dec 2011)
+
+  16 Dec 2011; Maxim Koltsov <maksbotan@gentoo.org>
+  -leechcraft-azoth-0.4.96.ebuild, +leechcraft-azoth-0.4.96-r1.ebuild,
+  leechcraft-azoth-9999.ebuild:
+  Bump to eapi4, fix bug 394935
+
+*leechcraft-azoth-0.4.96 (15 Dec 2011)
+
+  15 Dec 2011; Maxim Koltsov <maksbotan@gentoo.org>
+  +leechcraft-azoth-0.4.96.ebuild:
+  Bump net-im/leechcraft-azoth to 0.4.96, thanks to 0xd34df00d
+
+  23 Oct 2011; Maxim Koltsov <maksbotan@gentoo.org>
+  leechcraft-azoth-9999.ebuild, metadata.xml:
+  Add isterique plugin to 9999 version
+
+  24 Sep 2011; Maxim Koltsov <maksbotan@gentoo.org>
+  leechcraft-azoth-9999.ebuild, metadata.xml:
+  Add otroid use flag to 9999 version
+
+*leechcraft-azoth-0.4.90 (14 Sep 2011)
+
+  14 Sep 2011; Maxim Koltsov <maksbotan@gentoo.org>
+  +leechcraft-azoth-0.4.90.ebuild:
+  Bump net-im/leechcraft-azoth to 0.4.90, thanks to 0xd34df00d
+
+  25 Aug 2011; Maxim Koltsov <maksbotan@gentoo.org>
+  leechcraft-azoth-0.4.85.ebuild, leechcraft-azoth-9999.ebuild:
+  Add missing x11-libs/qt-dbus dependency, make 'metacontacts' use '+'
+
+*leechcraft-azoth-9999 (23 Aug 2011)
+*leechcraft-azoth-0.4.85 (23 Aug 2011)
+
+  23 Aug 2011; Maxim Koltsov <maksbotan@gentoo.org>
+  +leechcraft-azoth-0.4.85.ebuild, +leechcraft-azoth-9999.ebuild,
+  +metadata.xml:
+  Copy net-im/leechcraft-azoth from rion-overlay, thanks to 0xd34df00d

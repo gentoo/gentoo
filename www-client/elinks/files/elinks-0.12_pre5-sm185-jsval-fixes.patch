@@ -1,0 +1,124 @@
+--- a/src/scripting/smjs/action_object.c	2012-06-28 11:46:58.000000000 -0400
++++ b/src/scripting/smjs/action_object.c	2012-06-28 11:52:42.000000000 -0400
+@@ -50,7 +50,7 @@
+ 	assert(smjs_ctx);
+ 	if_assert_failed return JS_FALSE;
+ 
+-	value = JS_FALSE;
++	value = JSVAL_FALSE;
+ 
+ 	if (JS_TRUE != JS_ValueToObject(ctx, argv[-2], &fn_obj)) {
+ 		JS_SET_RVAL(ctx, rval, value);
+@@ -76,7 +76,7 @@
+ 
+ 	do_action(hop->ses, hop->action_id, 1);
+ 
+-	value = JS_TRUE;
++	value = JSVAL_TRUE;
+ 	JS_SET_RVAL(ctx, rval, value);
+ 
+ 	return JS_TRUE;
+--- a/src/scripting/smjs/bookmarks.c	2012-06-28 11:57:40.000000000 -0400
++++ b/src/scripting/smjs/bookmarks.c	2012-06-28 12:08:20.000000000 -0400
+@@ -250,11 +250,20 @@
+ 
+ /* @bookmark_folder_class.getProperty */
+ static JSBool
++#if JS_VERSION >= 185
++bookmark_folder_get_property(JSContext *ctx, JSObject *obj, jsid iid, jsval *vp)
++#else
+ bookmark_folder_get_property(JSContext *ctx, JSObject *obj, jsid id, jsval *vp)
++#endif
+ {
+ 	struct bookmark *bookmark;
+ 	struct bookmark *folder;
+ 	unsigned char *title = NULL;
++#if JS_VERSION >= 185
++	jsval id;
++	if (!JS_IdToValue(ctx,iid,&id))
++		return JS_FALSE;
++#endif
+ 
+ 	/* This can be called if @obj if not itself an instance of the
+ 	 * appropriate class but has one in its prototype chain.  Fail
+--- a/src/scripting/smjs/elinks_object.c	2012-06-28 12:11:15.000000000 -0400
++++ b/src/scripting/smjs/elinks_object.c	2012-06-28 12:14:50.000000000 -0400
+@@ -185,7 +185,7 @@
+ 	                               method, rval))
+ 		return JS_FALSE;
+ 
+-	if (JSVAL_VOID == *rval)
++	if (JSVAL_IS_VOID(*rval))
+ 		return JS_FALSE;
+ 
+ 	return JS_CallFunctionValue(smjs_ctx, smjs_elinks_object,
+--- a/src/scripting/smjs/globhist.c	2012-06-28 12:20:25.000000000 -0400
++++ b/src/scripting/smjs/globhist.c	2012-06-28 12:20:15.000000000 -0400
+@@ -201,11 +201,20 @@
+ 
+ /* @smjs_globhist_class.getProperty */
+ static JSBool
+-smjs_globhist_get_property(JSContext *ctx, JSObject *obj, jsid id, jsval *vp)
++#if JS_VERSION >= 185
++smjs_globhist_get_property(JSContext *ctx, JSObject *obj, jsid iid, jsval *vp)
++#else
++smjs_globhist_get_property(JSContext *ctx, JSObject *obj, jsval id, jsval *vp)
++#endif
+ {
+ 	JSObject *jsobj;
+ 	unsigned char *uri_string;
+ 	struct global_history_item *history_item;
++#if JS_VERSION >= 185
++	jsval id;
++	if (!JS_IdToValue(ctx,iid,&id))
++		return JS_FALSE;
++#endif
+ 
+ 	uri_string = JS_EncodeString(ctx, JS_ValueToString(ctx, id));
+ 	if (!uri_string) goto ret_null;
+--- a/src/scripting/smjs/keybinding.c	2012-06-28 12:21:39.000000000 -0400
++++ b/src/scripting/smjs/keybinding.c.new	2012-06-28 12:48:00.000000000 -0400
+@@ -17,11 +17,20 @@
+ 
+ /* @keymap_class.getProperty */
+ static JSBool
+-keymap_get_property(JSContext *ctx, JSObject *obj, jsid id, jsval *vp)
++#if JS_VERSION >= 185
++keymap_get_property(JSContext *ctx, JSObject *obj, jsid iid, jsval *vp)
++#else
++keymap_get_property(JSContext *ctx, JSObject *obj, jsval id, jsval *vp)
++#endif
+ {
+ 	unsigned char *action_str;
+ 	const unsigned char *keystroke_str;
+ 	int *data;
++#if JS_VERSION >= 185
++	jsval id;
++	if (!JS_IdToValue(ctx,iid,&id))
++		return JS_FALSE;
++#endif
+ 
+ 	/* This can be called if @obj if not itself an instance of the
+ 	 * appropriate class but has one in its prototype chain.  Fail
+@@ -70,11 +79,20 @@
+ 
+ /* @keymap_class.setProperty */
+ static JSBool
+-keymap_set_property(JSContext *ctx, JSObject *obj, jsid id, JSBool strict, jsval *vp)
++#if JS_VERSION >= 185
++keymap_set_property(JSContext *ctx, JSObject *obj, jsid iid, JSBool strict, jsval *vp)
++#else
++keymap_set_property(JSContext *ctx, JSObject *obj, jsval id, JSBool strict, jsval *vp)
++#endif
+ {
+ 	int *data;
+ 	unsigned char *keymap_str;
+ 	const unsigned char *keystroke_str;
++#if JS_VERSION >= 185
++	jsval id;
++	if (!JS_IdToValue(ctx,iid,&id))
++		return JS_FALSE;
++#endif
+ 
+ 	/* This can be called if @obj if not itself an instance of the
+ 	 * appropriate class but has one in its prototype chain.  Fail

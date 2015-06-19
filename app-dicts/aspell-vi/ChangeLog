@@ -1,0 +1,64 @@
+# ChangeLog for app-dicts/aspell-vi
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/aspell-vi/ChangeLog,v 1.20 2014/01/05 11:10:13 pacho Exp $
+
+  05 Jan 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/app-dicts-herd-is-empty-
+  td271273.html
+
+  17 May 2012; Alexis Ballier <aballier@gentoo.org> aspell-vi-0.01.1.1.ebuild:
+  keyword ~amd64-fbsd
+
+  08 Oct 2010; Mart Raudsepp <leio@gentoo.org> aspell-vi-0.01.1.1.ebuild:
+  Drop to ~mips
+
+  18 Oct 2009; Mark Loeser <halcy0n@gentoo.org> aspell-vi-0.01.1.1.ebuild:
+  QA fixes; IUSE is not defined
+
+  16 Aug 2008; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove pclouds from metadata.xml (#49680)
+
+  03 Nov 2007; Roy Marples <uberlord@gentoo.org> aspell-vi-0.01.1.1.ebuild:
+  Keyworded ~sparc-fbsd and ~x86-fbsd
+
+  10 Aug 2007; Jeroen Roovers <jer@gentoo.org> aspell-vi-0.01.1.1.ebuild:
+  Stable for HPPA (bug #178690).
+
+  09 Aug 2007; Markus Rothe <corsair@gentoo.org> aspell-vi-0.01.1.1.ebuild:
+  Stable on ppc64; bug #178690
+
+  06 Aug 2007; Joshua Kinard <kumba@gentoo.org> aspell-vi-0.01.1.1.ebuild:
+  Stable on mips.
+
+  05 Aug 2007; Raúl Porcel <armin76@gentoo.org> aspell-vi-0.01.1.1.ebuild:
+  alpha/ia64/x86 stable wrt #178690
+
+  05 Aug 2007; nixnut <nixnut@gentoo.org> aspell-vi-0.01.1.1.ebuild:
+  Stable on ppc wrt bug 178690
+
+  04 Aug 2007; Ferris McCormick <fmccor@gentoo.org>
+  aspell-vi-0.01.1.1.ebuild:
+  Sparc stable --- part of Bug #178690
+
+  04 Aug 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  aspell-vi-0.01.1.1.ebuild:
+  Marked stable on amd64 as per bug 178690.
+
+  03 Jun 2007; Joshua Kinard <kumba@gentoo.org> aspell-vi-0.01.1.1.ebuild:
+  Marked unstable on mips.
+
+  16 May 2007; Raúl Porcel <armin76@gentoo.org> aspell-vi-0.01.1.1.ebuild:
+  Add ~alpha wrt #147568
+
+  12 May 2007; Markus Rothe <corsair@gentoo.org> aspell-vi-0.01.1.1.ebuild:
+  Added ~ppc64; bug #147568
+
+  01 Dec 2006; Kevin F. Quinn <kevquinn@gentoo.org>
+  aspell-vi-0.01.1.1.ebuild:
+  Ebuild cleanups for bug #132718
+
+*aspell-vi-0.01.1.1 (08 Jun 2006)
+
+  08 Jun 2006; <pclouds@gentoo.org> +metadata.xml,
+  +aspell-vi-0.01.1.1.ebuild:
+  Initial ebuild for aspell-vi-0.01.1.1

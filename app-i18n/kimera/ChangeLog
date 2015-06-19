@@ -1,0 +1,107 @@
+# ChangeLog for app-i18n/kimera
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/kimera/ChangeLog,v 1.25 2015/06/09 11:19:54 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  20 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -kimera-2.11.ebuild:
+  Remove old.
+
+  05 Jul 2014; Naohiro Aota <naota@gentoo.org> kimera-2.11-r1.ebuild:
+  Add missing deps. #514200
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> kimera-2.11-r1.ebuild,
+  kimera-2.11.ebuild:
+  Move Qt dependencies to the new category
+
+  01 Jun 2012; Zac Medico <zmedico@gentoo.org> kimera-2.11-r1.ebuild,
+  kimera-2.11.ebuild:
+  inherit multilib for get_libdir
+
+  08 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> kimera-2.11-r1.ebuild:
+  x86 stable wrt bug #399933
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org> kimera-2.11-r1.ebuild:
+  Stable for amd64, wrt bug #399933
+
+*kimera-2.11-r1 (17 Jul 2011)
+
+  17 Jul 2011; Naohiro Aota <naota@gentoo.org> +kimera-2.11-r1.ebuild,
+  +files/kimera-2.11-underlinking.patch:
+  Fix underlinking. bug #369557
+
+  27 Mar 2010; Ben de Groot <yngwin@gentoo.org> kimera-2.11.ebuild,
+  -files/kimera-2.11-gentoo.patch:
+  Migrate to eapi3 and qt4-r2.eclass. Drop patch since that is taken care
+  off by the eclass.
+
+  15 May 2009; Markus Meier <maekke@gentoo.org> kimera-2.11.ebuild:
+  amd64 stable, bug #269834
+
+  15 May 2009; Christian Faulhammer <fauli@gentoo.org> kimera-2.11.ebuild:
+  stable x86, bug 269834
+
+*kimera-2.11 (11 Feb 2009)
+
+  11 Feb 2009; MATSUU Takuto <matsuu@gentoo.org>
+  +files/kimera-2.11-gentoo.patch, +kimera-2.11.ebuild:
+  Version bumped, bug #258022.
+
+*kimera-2.00 (31 Aug 2008)
+
+  31 Aug 2008; MATSUU Takuto <matsuu@gentoo.org>
+  +files/kimera-2.00-gentoo.patch, +kimera-2.00.ebuild:
+  Version bumped. cleanup
+
+  31 Jul 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56.
+
+  27 Jul 2008; Carsten Lohrke <carlo@gentoo.org> kimera-1.32.ebuild,
+  kimera-1.40.ebuild:
+  QA: Get rid of deprecated qt_min_version(). Fix broken inheritance of
+  kde-functions.eclass and qt3.eclass.
+
+*kimera-1.40 (24 Apr 2007)
+
+  24 Apr 2007; MATSUU Takuto <matsuu@gentoo.org> +kimera-1.40.ebuild:
+  Version bumped.
+
+  28 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> -kimera-1.0.ebuild,
+  -kimera-1.1.ebuild, -kimera-1.2.ebuild:
+  Remove old versions.
+
+  28 Oct 2006; Christian Faulhammer <opfer@gentoo.org> kimera-1.32.ebuild:
+  x86 stable wrt bug #151274
+
+  21 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> kimera-1.32.ebuild:
+  Add missing dependency over Qt 3; avoid pre-stripping.
+
+*kimera-1.32 (20 May 2006)
+
+  20 May 2006; MATSUU Takuto <matsuu@gentoo.org> +kimera-1.32.ebuild:
+  Version bumped, Bug 131446.
+  Added ~amd64.
+
+*kimera-1.2 (17 Jan 2006)
+
+  17 Jan 2006; Mamoru KOMACHI <usata@gentoo.org> +kimera-1.2.ebuild:
+  Version bumped.
+
+  07 Jan 2006; Carsten Lohrke <carlo@gentoo.org> kimera-1.0.ebuild,
+  kimera-1.1.ebuild:
+  QA: need-qt() needs to be called after R/DEPEND.
+
+*kimera-1.1 (04 Dec 2005)
+
+  04 Dec 2005; Mamoru KOMACHI <usata@gentoo.org> kimera-1.0.ebuild,
+  +kimera-1.1.ebuild:
+  Version bumped. Marked 1.0 stable on x86.
+
+  09 Nov 2005; Mamoru KOMACHI <usata@gentoo.org> kimera-1.0.ebuild:
+  Fixed compile error when anthy not present. Thanks to AOYAMA Kazuharu.
+
+*kimera-1.0 (30 Oct 2005)
+
+  30 Oct 2005; Mamoru KOMACHI <usata@gentoo.org> +kimera-1.0.ebuild:
+  Initial import.

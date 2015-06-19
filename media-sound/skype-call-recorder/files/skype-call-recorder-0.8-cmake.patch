@@ -1,0 +1,19 @@
+diff -ruN skype-call-recorder-0.8/CMakeLists.txt my/CMakeLists.txt
+--- skype-call-recorder-0.8/CMakeLists.txt	2008-11-18 23:39:18.000000000 +0100
++++ my/CMakeLists.txt	2011-07-23 15:39:56.456877971 +0200
+@@ -5,14 +5,9 @@
+ PROJECT(skype-call-recorder)
+ SET(TARGET skype-call-recorder)
+ 
+-SET(CMAKE_BUILD_TYPE RELEASE)
+-#SET(CMAKE_BUILD_TYPE DEBUG)
+-
+ # compiler flags
+ 
+-SET(CMAKE_CXX_FLAGS "-Wall -W -pipe -fno-exceptions")
+-SET(CMAKE_CXX_FLAGS_DEBUG "-ggdb")
+-SET(CMAKE_CXX_FLAGS_RELEASE "-O2 -s")
++SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -W -pipe -fno-exceptions")
+ 
+ # sources
+ 

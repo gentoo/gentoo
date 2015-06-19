@@ -1,0 +1,31 @@
+From c00dd0bd93d961bc2dfaea3406c59b672741fd26 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?V=C3=ADctor=20Manuel=20J=C3=A1quez=20Leal?= <vjaquez@igalia.com>
+Date: Fri, 1 Feb 2013 15:14:57 +0100
+Subject: [PATCH] Fix missing linking depenendency on -ldl
+
+Recent versions of GCC ship with a linker that doesn't add the deps of the
+DSOs of the linking process. This behavior is also found in GNU gold. This
+change fixes building with those linkers.
+
+Some references
+
+http://wiki.debian.org/ToolChain/DSOLinking
+https://fedoraproject.org/wiki/UnderstandingDSOLinkChange
+---
+ configure.ac |    3 +++
+ 1 files changed, 3 insertions(+), 0 deletions(-)
+
+Index: hwdecode-demos-0.9.5/configure.ac
+===================================================================
+--- hwdecode-demos-0.9.5.orig/configure.ac
++++ hwdecode-demos-0.9.5/configure.ac
+@@ -69,6 +69,9 @@ fi
+ dnl Checks for libraries.
+ AC_CHECK_LIB(rt, timer_create)
+ 
++dnl Checks if dl() comes from the C library or -ldl
++AC_SEARCH_LIBS([dlopen], [dl])
++
+ dnl Checks for library functions.
+ AC_CHECK_FUNCS(clock_gettime)
+ 

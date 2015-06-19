@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=>=media-libs/libsdl-1.2.7-r2[X,video] >=media-libs/sdl-image-1.2.3-r1 >=media-libs/sdl-ttf-2.0.9 dev-util/scons >=sys-apps/sed-4
+DESCRIPTION=Displays test patterns to spot dead/hot pixels on LCD screens
+EAPI=5
+HOMEPAGE=http://www.brouhaha.com/~eric/software/lcdtest/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=>=media-libs/libsdl-1.2.7-r2[X,video] >=media-libs/sdl-image-1.2.3-r1 >=media-libs/sdl-ttf-2.0.9 media-fonts/liberation-fonts
+SLOT=0
+SRC_URI=http://www.brouhaha.com/~eric/software/lcdtest/download/lcdtest-1.18.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	scons-utils	988e24b9e2e4642189b4e97c03e5ae71	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=2b13feb63d27aa0226d87a741a7e95b2

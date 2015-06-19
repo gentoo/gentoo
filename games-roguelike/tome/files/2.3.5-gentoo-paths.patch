@@ -1,0 +1,31 @@
+diff -rU 1 tome-225-src.orig/src/files.c tome-225-src/src/files.c
+--- tome-225-src.orig/src/files.c	2004-01-14 11:17:02.423263360 -0500
++++ tome-225-src/src/files.c	2004-01-14 11:17:50.074019344 -0500
+@@ -5670,3 +5670,3 @@
+ 	/* Build the filename */
+-	path_build(buf, 1024, ANGBAND_DIR_APEX, "scores.raw");
++	sprintf(buf, "GENTOO_DIR/tome-scores.raw");
+ 
+@@ -5748,3 +5748,3 @@
+ 	/* Build the filename */
+-	path_build(buf, 1024, ANGBAND_DIR_APEX, "scores.raw");
++	sprintf(buf, "GENTOO_DIR/tome-scores.raw");
+ 
+@@ -5846,3 +5846,3 @@
+ 	/* Build the filename */
+-	path_build(buf, 1024, ANGBAND_DIR_APEX, "scores.raw");
++	sprintf(buf, "GENTOO_DIR/tome-scores.raw");
+ 
+@@ -6296,3 +6296,3 @@
+ 	/* Build the filename */
+-	path_build(buf, 1024, ANGBAND_DIR_APEX, "scores.raw");
++	sprintf(buf, "GENTOO_DIR/tome-scores.raw");
+ 
+diff -rU 1 tome-225-src.orig/src/init2.c tome-225-src/src/init2.c
+--- tome-225-src.orig/src/init2.c	2004-01-14 11:17:02.473255760 -0500
++++ tome-225-src/src/init2.c	2004-01-14 11:17:58.286770816 -0500
+@@ -6686,3 +6686,3 @@
+ 	/* Build the filename */
+-	path_build(buf, 1024, ANGBAND_DIR_APEX, "scores.raw");
++	sprintf(buf, "GENTOO_DIR/tome-scores.raw");
+ 

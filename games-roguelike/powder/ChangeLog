@@ -1,0 +1,80 @@
+# ChangeLog for games-roguelike/powder
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-roguelike/powder/ChangeLog,v 1.20 2014/08/28 07:10:23 mr_bones_ Exp $
+
+  28 Aug 2014; Michael Sterrett <mr_bones_@gentoo.org> powder-117.ebuild:
+  EAPI=5
+
+  28 Aug 2014; Michael Sterrett <mr_bones_@gentoo.org> -powder-116.ebuild:
+  old
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> powder-116.ebuild,
+  powder-117.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  10 Aug 2013; Agostino Sarubbo <ago@gentoo.org> powder-117.ebuild:
+  amd64 really stable now, wrt bug #450058
+
+  07 Feb 2013; Ulrich Müller <ulm@gentoo.org> powder-116.ebuild,
+  powder-117.ebuild:
+  Move Creative Commons licenses to shorter names.
+
+  24 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org> -powder-115.ebuild:
+  old
+
+  13 Jan 2013; Agostino Sarubbo <ago@gentoo.org> powder-117.ebuild:
+  Stable for x86, wrt bug #450058
+
+  05 Jan 2013; Agostino Sarubbo <ago@gentoo.org> powder-116.ebuild:
+  Stable for amd64, wrt bug #450058
+
+*powder-117 (21 Oct 2012)
+
+  21 Oct 2012; Michael Sterrett <mr_bones_@gentoo.org> +powder-117.ebuild:
+  version bump (bug #439180)
+
+  28 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> powder-116.ebuild:
+  x86 stable wrt bug #400833
+
+  26 Jan 2012; Agostino Sarubbo <ago@gentoo.org> powder-116.ebuild:
+  Stable for amd64, wrt bug #400833
+
+*powder-116 (09 Dec 2011)
+
+  09 Dec 2011; Michael Sterrett <mr_bones_@gentoo.org> -powder-114.ebuild,
+  -files/powder-114-make.patch, +powder-116.ebuild:
+  version bump (bug #394127) with patch from Michael (kensington)
+
+  23 May 2011; Thomas Kahle <tomka@gentoo.org> powder-115.ebuild:
+  x86 stable per bug 364841
+
+  27 Apr 2011; Christoph Mende <angelos@gentoo.org> powder-115.ebuild:
+  Stable on amd64 wrt bug #364841
+
+*powder-115 (26 Mar 2011)
+
+  26 Mar 2011; Michael Sterrett <mr_bones_@gentoo.org> +powder-115.ebuild:
+  version bump
+
+  17 Jul 2010; Christian Faulhammer <fauli@gentoo.org> powder-114.ebuild:
+  stable x86, bug 327345
+
+  09 Jul 2010; Pacho Ramos <pacho@gentoo.org> powder-114.ebuild:
+  stable amd64, bug 327345
+
+*powder-114 (03 Jun 2010)
+
+  03 Jun 2010; Michael Sterrett <mr_bones_@gentoo.org> +powder-114.ebuild,
+  +files/powder-114-make.patch:
+  version bump
+
+  04 May 2010; Michael Sterrett <mr_bones_@gentoo.org> powder-113.ebuild,
+  files/powder-113-make.patch:
+  reroll and actually apply patch
+
+*powder-113 (03 May 2010)
+
+  03 May 2010; Michael Sterrett <mr_bones_@gentoo.org> +powder-113.ebuild,
+  +files/powder-113-make.patch, +metadata.xml:
+  initial commit - ebuild and patch submitted by Sergey Zasenko via bug
+  #256768 with additional help from Anton Romanov

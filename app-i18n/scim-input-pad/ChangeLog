@@ -1,0 +1,52 @@
+# ChangeLog for app-i18n/scim-input-pad
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/scim-input-pad/ChangeLog,v 1.12 2015/06/09 11:31:08 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+*scim-input-pad-0.1.3.1 (15 Jan 2013)
+
+  15 Jan 2013; Naohiro Aota <naota@gentoo.org> +scim-input-pad-0.1.3.1.ebuild:
+  bumped. #451904
+
+  09 Aug 2012; Naohiro Aota <naota@gentoo.org> scim-input-pad-0.1.3.ebuild:
+  Remove intltool.m4 to update it. #428540
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> scim-input-pad-0.1.1.ebuild,
+  scim-input-pad-0.1.3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*scim-input-pad-0.1.3 (18 Aug 2011)
+
+  18 Aug 2011; Naohiro Aota <naota@gentoo.org> +scim-input-pad-0.1.3.ebuild:
+  Version bumped.
+
+  27 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  scim-input-pad-0.1.1.ebuild:
+  Fix slot-dep on gtk+
+
+  01 Jul 2009; MATSUU Takuto <matsuu@gentoo.org>
+  scim-input-pad-0.1.1.ebuild:
+  Fixed elog message, bug #272902.
+
+  20 Jun 2008; MATSUU Takuto <matsuu@gentoo.org>
+  scim-input-pad-0.1.1.ebuild:
+  Added dev-util/pkgconfig to DEPEND, bug #227575.
+
+  10 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  scim-input-pad-0.1.1.ebuild:
+  x86 stable, bug 189292
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  scim-input-pad-0.1.1.ebuild:
+  Convert to use elog.
+
+*scim-input-pad-0.1.1 (16 Feb 2006)
+
+  16 Feb 2006; Alastair Tse <liquidx@gentoo.org> +metadata.xml,
+  +scim-input-pad-0.1.1.ebuild:
+  initial ebuild thanks to Mathieu Bonnet (#100599)

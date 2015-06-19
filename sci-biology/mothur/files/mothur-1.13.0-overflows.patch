@@ -1,0 +1,82 @@
+Fix buffer overflows
+
+http://www.mothur.org/forum/viewtopic.php?f=4&t=591
+
+--- Mothur.source/filterseqscommand.cpp
++++ Mothur.source/filterseqscommand.cpp
+@@ -305,8 +305,8 @@
+ 					
+ 					//wait on chidren
+ 					for(int i = 1; i < processors; i++) { 
+-						char buf[4];
+-						MPI_Recv(buf, 4, MPI_CHAR, i, tag, MPI_COMM_WORLD, &status); 
++						char buf[5];
++						MPI_Recv(buf, 5, MPI_CHAR, i, tag, MPI_COMM_WORLD, &status); 
+ 					}
+ 					
+ 				}else { //you are a child process
+@@ -326,11 +326,11 @@
+ 					
+ 					if (m->control_pressed) {  MPI_File_close(&inMPI);  MPI_File_close(&outMPI);  return 0;  }
+ 					
+-					char buf[4];
++					char buf[5];
+ 					strcpy(buf, "done"); 
+ 					
+ 					//tell parent you are done.
+-					MPI_Send(buf, 4, MPI_CHAR, 0, tag, MPI_COMM_WORLD);
++					MPI_Send(buf, 5, MPI_CHAR, 0, tag, MPI_COMM_WORLD);
+ 				}
+ 				
+ 				MPI_File_close(&outMPI);
+--- Mothur.source/distancecommand.cpp
++++ Mothur.source/distancecommand.cpp
+@@ -271,8 +271,8 @@
+ 				for(int i = 1; i < processors; i++) { 
+ 					if (m->control_pressed) { MPI_File_close(&outMPI);  delete distCalculator;  return 0; }
+ 					
+-					char buf[4];
+-					MPI_Recv(buf, 4, MPI_CHAR, i, tag, MPI_COMM_WORLD, &status); 
++					char buf[5];
++					MPI_Recv(buf, 5, MPI_CHAR, i, tag, MPI_COMM_WORLD, &status); 
+ 				}
+ 			}else { //you are a child process
+ 				//do your part
+@@ -280,10 +280,10 @@
+ 				
+ 				if (m->control_pressed) { MPI_File_close(&outMPI);  delete distCalculator;  return 0; }
+ 			
+-				char buf[4];
++				char buf[5];
+ 				strcpy(buf, "done"); 
+ 				//tell parent you are done.
+-				MPI_Send(buf, 4, MPI_CHAR, 0, tag, MPI_COMM_WORLD);
++				MPI_Send(buf, 5, MPI_CHAR, 0, tag, MPI_COMM_WORLD);
+ 			}
+ 			
+ 			MPI_File_close(&outMPI);
+--- Mothur.source/chimeracheckcommand.cpp
++++ Mothur.source/chimeracheckcommand.cpp
+@@ -269,8 +269,8 @@
+ 					
+ 					//wait on chidren
+ 					for(int j = 1; j < processors; j++) { 
+-						char buf[4];
+-						MPI_Recv(buf, 4, MPI_CHAR, j, tag, MPI_COMM_WORLD, &status); 
++						char buf[5];
++						MPI_Recv(buf, 5, MPI_CHAR, j, tag, MPI_COMM_WORLD, &status); 
+ 					}
+ 				}else{ //you are a child process
+ 					MPI_Recv(&numSeqs, 1, MPI_INT, 0, tag, MPI_COMM_WORLD, &status);
+@@ -288,9 +288,9 @@
+ 					if (m->control_pressed) {  MPI_File_close(&inMPI);  MPI_File_close(&outMPI);   for (int j = 0; j < outputNames.size(); j++) {	remove(outputNames[j].c_str());	}  delete chimera; return 0;  }
+ 					
+ 					//tell parent you are done.
+-					char buf[4];
++					char buf[5];
+ 					strcpy(buf, "done"); 
+-					MPI_Send(buf, 4, MPI_CHAR, 0, tag, MPI_COMM_WORLD);
++					MPI_Send(buf, 5, MPI_CHAR, 0, tag, MPI_COMM_WORLD);
+ 				}
+ 				
+ 				//close files 

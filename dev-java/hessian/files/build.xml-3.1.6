@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<project name="hessian" default="all" basedir=".">
+	<target name="compile">
+		<mkdir dir="build"/>
+		<javac debug="false" srcdir="src" destdir="build">
+			<classpath>
+				<fileset dir="lib" includes="**/*.jar"/>
+			</classpath>
+		</javac>
+	</target>
+	<target name="all" depends="hessian.jar,burlap.jar,services.jar"/>
+	<target name="hessian.jar" depends="compile">
+		<jar destfile="hessian.jar">
+			<fileset dir="build" includes="**/hessian/**/*.class"/>
+		</jar>
+	</target>
+	<target name="burlap.jar" depends="compile">
+		<jar destfile="burlap.jar">
+			<fileset dir="build" includes="**/burlap/**/*.class"/>
+		</jar>
+	</target>
+	<target name="services.jar" depends="compile">
+		<jar destfile="services.jar">
+			<fileset dir="build" includes="**/services/**/*.class"/>
+		</jar>
+	</target>
+</project>

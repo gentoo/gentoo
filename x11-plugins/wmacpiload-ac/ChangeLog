@@ -1,0 +1,47 @@
+# ChangeLog for x11-plugins/wmacpiload-ac
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmacpiload-ac/ChangeLog,v 1.11 2014/08/10 20:03:54 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  wmacpiload-ac-0.2.0-r1.ebuild, wmacpiload-ac-0.2.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*wmacpiload-ac-0.2.0-r1 (18 Oct 2012)
+
+  18 Oct 2012; Michele Noberasco <s4t4n@gentoo.org> wmacpiload-ac-0.2.0-r1.ebuild:
+  Revision bump. Closes bug #372417.
+
+  28 Jun 2008; Markus Meier <maekke@gentoo.org> wmacpiload-ac-0.2.0.ebuild:
+  x86 stable, bug #229547
+
+*wmacpiload-ac-0.2.0 (01 Feb 2008)
+
+  01 Feb 2008; Michele Noberasco <s4t4n@gentoo.org> wmacpiload-ac-0.2.0.ebuild:
+  Version bump. Closes bug #207922.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  wmacpiload-ac-0.1.2_p3.ebuild:
+  Drop virtual/x11 references.
+
+  06 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  22 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  wmacpiload-ac-0.1.2_p3.ebuild:
+  Fixed DEPEND for modular X.
+
+  01 Oct 2005; Daniel Goller <morfic@gentoo.org>
+  wmacpiload-ac-0.1.2_p3.ebuild:
+  Adding ~amd64 since it works
+
+  25 Jul 2005; Jonathan Smith <smithj@gentoo.org>
+  wmacpiload-ac-0.1.2_p3.ebuild:
+  #100255: changed homepage
+
+  06 Sep 2004; Michele Noberasco <s4t4n@gentoo.org> wmacpiload-ac-0.1.2_p3.ebuild:
+  Stable for x86.
+
+*wmacpiload-ac-0.1.2_p3 (30 Jul 2004)
+
+  30 Jul 2004; Michele Noberasco <s4t4n@gentoo.org> wmacpiload-ac-0.1.2_p3.ebuild:
+  Initial import. Thanks to Eric Olinger, closes #49347.

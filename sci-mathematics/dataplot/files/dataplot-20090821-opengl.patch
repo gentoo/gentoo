@@ -1,0 +1,47 @@
+--- gl_src.c.orig	2001-02-28 16:45:56.000000000 -0500
++++ gl_src.c	2008-04-10 17:03:03.000000000 -0400
+@@ -154,7 +154,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <math.h>
+-#include <strings.h>
++#include <string.h>
+ 
+ #if UNIX == 0
+ #include <X11/Xlib.h>
+@@ -257,7 +257,7 @@
+ /* flags for current attribute settings */
+ static int    OPEN_FLAG = 0;      /* 0 - X11 closed, 1 - X11 open */
+ static int    OPEN_FLAG_2 = 0;    /* 0 - repeat graph window closed, 1 - open */
+-int           GRAPH_FLAG = 0;     /* 0 - gleras has not been called, 1 - gleras has been called  */
++static int           GRAPH_FLAG = 0;     /* 0 - gleras has not been called, 1 - gleras has been called  */
+ int           WIDTH_CURRENT;      /* current line width */
+ int           LINE_STYLE_CURRENT; /* current line style */
+ char          FONT_NAME_CURRENT[80];  /* name of current font */
+@@ -922,7 +922,7 @@
+    glNewList(list_id, GL_COMPILE_AND_EXECUTE);
+ 
+    glClearColor(red_temp,green_temp,blue_temp,1.0);
+-   glclear(GL_COLOR_BUFFER_BIT);
++   glClear(GL_COLOR_BUFFER_BIT);
+ 
+    GRAPH_FLAG = 1;
+ }
+@@ -1486,7 +1486,7 @@
+  *           Color only set if being changed.
+  */
+ #if APPEND_UNDERSCORE == 1 && SUBROUTINE_CASE == 1
+-void glseco(jcol, red, green, blue)
++void glseco_(jcol, red, green, blue)
+ #elif APPEND_UNDERSCORE == 1 && SUBROUTINE_CASE == 0
+ void GLSECO_(jcol, red, green, blue)
+ #elif APPEND_UNDERSCORE == 0 && SUBROUTINE_CASE == 1
+@@ -1691,7 +1691,7 @@
+    width = isize[0];
+ #endif
+    if (width < 1.0) width = 1.0;
+-   glPointsize(width);
++   glPointSize(width);
+    glBegin(GL_POINTS);
+ #if PRECISION == 0
+    glVertex2f(*ix, *iy);

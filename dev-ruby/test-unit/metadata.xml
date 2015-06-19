@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>ruby</herd>
+  <longdescription lang="en">
+    Improved version of the Test::Unit framework as shipped by Ruby
+    1.8, compatible with Ruby 1.9.
+  </longdescription>
+</pkgmetadata>

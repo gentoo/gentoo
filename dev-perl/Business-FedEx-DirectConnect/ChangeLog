@@ -1,0 +1,76 @@
+# ChangeLog for dev-perl/Business-FedEx-DirectConnect
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Business-FedEx-DirectConnect/ChangeLog,v 1.15 2014/08/24 01:58:12 axs Exp $
+
+*Business-FedEx-DirectConnect-1.10.0-r1 (24 Aug 2014)
+
+  24 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Business-FedEx-DirectConnect-1.10.0-r1.ebuild,
+  -Business-FedEx-DirectConnect-1.10.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  27 Dec 2011; Torsten Veller <tove@gentoo.org>
+  -Business-FedEx-DirectConnect-1.01.ebuild,
+  Business-FedEx-DirectConnect-1.10.0.ebuild:
+  Merge KEYWORDS from 1.01. Cleanup
+
+*Business-FedEx-DirectConnect-1.10.0 (04 Sep 2011)
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  +Business-FedEx-DirectConnect-1.10.0.ebuild:
+  Maintenance. Use CPAN mirrors. Change version scheme
+
+  20 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  Business-FedEx-DirectConnect-1.01.ebuild:
+  Marking amd64 stable
+
+  10 Sep 2006; Michael Cummings <mcummings@gentoo.org>
+  Business-FedEx-DirectConnect-1.01.ebuild:
+  Keywording ~amd64
+
+  04 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Business-FedEx-DirectConnect-1.01.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  13 Jul 2006; Aron Griffis <agriffis@gentoo.org>
+  Business-FedEx-DirectConnect-1.01.ebuild:
+  Mark 1.01 stable on ia64
+
+  03 Jul 2006; Christian Hartmann <ian@gentoo.org>
+  Business-FedEx-DirectConnect-1.01.ebuild:
+  Fixed RDEPEND wrt bug #134781
+
+  30 Mar 2006; Aron Griffis <agriffis@gentoo.org>
+  Business-FedEx-DirectConnect-1.01.ebuild:
+  Mark 1.01 ~ia64
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  -Business-FedEx-DirectConnect-0.19.ebuild,
+  Business-FedEx-DirectConnect-1.01.ebuild:
+  Marking stable x86
+
+  25 Apr 2005; Sven Wegener <swegener@gentoo.org>
+  Business-FedEx-DirectConnect-1.01.ebuild:
+  Fixed SRC_URI.
+
+  25 Apr 2005; Elfyn McBratney <beu@gentoo.org>
+  Business-FedEx-DirectConnect-1.01.ebuild:
+  Move to mirror://gentoo - none of our cpan (thirdpartymirrors) are carrying
+  these.
+
+*Business-FedEx-DirectConnect-1.01 (25 Apr 2005)
+
+  25 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  Business-FedEx-DirectConnect-0.19.ebuild,
+  +Business-FedEx-DirectConnect-1.01.ebuild:
+  Cleaning; bump
+
+*Business-FedEx-DirectConnect-0.19 (07 Feb 2005)
+
+  07 Feb 2005; Michael Cummings <mcummings@gentoo.org> +metadata.xml,
+  +Business-FedEx-DirectConnect-0.19.ebuild:
+  Bug 59148

@@ -1,0 +1,21 @@
+# ChangeLog for dev-lua/lua-cjson
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lua/lua-cjson/ChangeLog,v 1.5 2015/06/06 19:40:03 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> lua-cjson-2.1.0.ebuild:
+  Add SLOT operators
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  23 Mar 2015; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Drop myself as maintainer.
+
+  09 May 2013; Tim Harder <radhermit@gentoo.org> lua-cjson-2.1.0.ebuild:
+  Use correct DESCRIPTION.
+
+*lua-cjson-2.1.0 (09 May 2013)
+
+  09 May 2013; Tim Harder <radhermit@gentoo.org> +lua-cjson-2.1.0.ebuild,
+  +metadata.xml:
+  Initial import, ebuild by me.

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=net-libs/libpcap
+DESCRIPTION=p0f performs passive OS detection based on SYN packets
+EAPI=3
+HOMEPAGE=http://lcamtuf.coredump.cx/p0f.shtml
+IUSE=static
+KEYWORDS=amd64 ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=LGPL-2.1
+RDEPEND=net-libs/libpcap
+SLOT=0
+SRC_URI=http://lcamtuf.coredump.cx/p0f/p0f-2.0.8.tgz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=ce82e3db0c9a28b8c0be4ed2d4cc9b22

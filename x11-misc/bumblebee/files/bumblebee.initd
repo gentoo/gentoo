@@ -1,0 +1,23 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/bumblebee/files/bumblebee.initd,v 1.2 2012/06/04 19:46:24 pacho Exp $
+
+depend() {
+	need xdm vgl
+}
+
+PIDFILE="${PIDFILE:-/var/run/bumblebee.pid}"
+
+start() {
+	ebegin "Starting BumbleBee Daemon"
+		start-stop-daemon -S -p "${PIDFILE}" -x /usr/sbin/bumblebeed -- -D ${BUMBLEBEE_EXTRA_OPTS} --pidfile "${PIDFILE}"
+	eend $?
+}
+
+stop() {
+
+	ebegin "Stopping BumbleBee Daemon"
+		start-stop-daemon -K -p "${PIDFILE}" -R SIGTERM/10
+	eend $?
+}

@@ -1,0 +1,72 @@
+# ChangeLog for dev-python/frozen-flask
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/frozen-flask/ChangeLog,v 1.16 2015/06/07 13:21:47 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> frozen-flask-0.11-r1.ebuild:
+  Drop old Python implementations
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> frozen-flask-0.11-r1.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> frozen-flask-0.11-r1.ebuild:
+  amd64 stable, bug 540290
+
+  01 Feb 2015; Manuel Rüger <mrueg@gentoo.org> -frozen-flask-0.10.ebuild,
+  -frozen-flask-0.11.ebuild:
+  Remove old.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> frozen-flask-0.10.ebuild,
+  frozen-flask-0.11-r1.ebuild, frozen-flask-0.11.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*frozen-flask-0.11-r1 (21 Jan 2014)
+
+  21 Jan 2014; Patrick Lauer <patrick@gentoo.org> +frozen-flask-0.11-r1.ebuild,
+  -frozen-flask-0.7.ebuild, -frozen-flask-0.8.ebuild,
+  -frozen-flask-0.9-r1.ebuild, -frozen-flask-0.9.ebuild:
+  Remove old, migrate 0.11 to accidentally dropped new py eclass
+
+  10 Sep 2013; Patrick Lauer <patrick@gentoo.org> frozen-flask-0.9-r1.ebuild:
+  Whitespace
+
+*frozen-flask-0.11 (20 Jun 2013)
+
+  20 Jun 2013; Patrick Lauer <patrick@gentoo.org> +frozen-flask-0.11.ebuild:
+  Bump
+
+  17 Jun 2013; Patrick Lauer <patrick@gentoo.org> frozen-flask-0.9-r1.ebuild:
+  Fix python targets as flask was downrated
+
+*frozen-flask-0.9-r1 (13 Jun 2013)
+
+  13 Jun 2013; Ian Delaney <idella4@gentoo.org> +frozen-flask-0.9-r1.ebuild:
+  revbump; migrate -> disutils-r1, add doc build
+
+*frozen-flask-0.10 (20 Mar 2013)
+
+  20 Mar 2013; Patrick Lauer <patrick@gentoo.org> +frozen-flask-0.10.ebuild:
+  Bump
+
+*frozen-flask-0.9 (19 Mar 2012)
+
+  19 Mar 2012; Rafael G. Martins <rafaelmartins@gentoo.org>
+  +frozen-flask-0.9.ebuild:
+  Version bump. bug #408559
+
+*frozen-flask-0.8 (09 Mar 2012)
+
+  09 Mar 2012; Patrick Lauer <patrick@gentoo.org> +frozen-flask-0.8.ebuild:
+  Bump for #404415
+
+  27 Nov 2011; Rafael G. Martins <rafaelmartins@gentoo.org>
+  frozen-flask-0.7.ebuild:
+  this package supports python 2.5
+
+*frozen-flask-0.7 (27 Nov 2011)
+
+  27 Nov 2011; Rafael G. Martins <rafaelmartins@gentoo.org>
+  +frozen-flask-0.7.ebuild, +metadata.xml:
+  Initial commit.

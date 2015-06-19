@@ -1,0 +1,26 @@
+# ChangeLog for app-misc/vittk
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/vittk/ChangeLog,v 1.4 2015/03/20 07:05:42 jlec Exp $
+
+  20 Mar 2015; Justin Lecher <jlec@gentoo.org> vittk-1.3.ebuild:
+  Fix tcl/tk slotting
+
+*vittk-1.3 (13 Mar 2011)
+
+  13 Mar 2011; Tim Harder <radhermit@gentoo.org> -vittk-1.1.1.ebuild,
+  -files/vittk-1.1.1-configure.patch, -files/vittk-1.1.1-makefile.patch,
+  +vittk-1.3.ebuild, +files/vittk-1.3-configure.patch,
+  +files/vittk-1.3-makefile.patch:
+  Version bump and remove old.
+
+  01 Feb 2011; Tim Harder <radhermit@gentoo.org> vittk-1.1.1.ebuild,
+  files/vittk-1.1.1-configure.patch:
+  Move dev-lang/tk to RDEPEND and replace the last reference of wish with tclsh
+  in the configure script.
+
+*vittk-1.1.1 (01 Feb 2011)
+
+  01 Feb 2011; Tim Harder <radhermit@gentoo.org> +vittk-1.1.1.ebuild,
+  +files/vittk-1.1.1-configure.patch, +files/vittk-1.1.1-dirs.patch,
+  +files/vittk-1.1.1-makefile.patch, +metadata.xml:
+  Initial import.

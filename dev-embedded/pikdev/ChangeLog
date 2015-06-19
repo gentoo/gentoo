@@ -1,0 +1,15 @@
+# ChangeLog for dev-embedded/pikdev
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/pikdev/ChangeLog,v 1.39 2014/08/10 20:04:09 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> pikdev-1.4.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  10 Mar 2014; Michael Palimaka <kensington@gentoo.org> pikdev-1.4.0.ebuild:
+  Pin Qt dependencies to SLOT 4.
+
+*pikdev-1.4.0 (25 Dec 2013)
+
+  25 Dec 2013; Rafael G. Martins <rafaelmartins@gentoo.org> +metadata.xml,
+  +pikdev-1.4.0.ebuild:
+  "Initial" commit, readding after Qt4 port

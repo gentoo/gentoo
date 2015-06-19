@@ -1,0 +1,115 @@
+# ChangeLog for media-fonts/droid
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/droid/ChangeLog,v 1.28 2015/03/07 03:47:57 yngwin Exp $
+
+  07 Mar 2015; Ben de Groot <yngwin@gentoo.org> droid-113-r4.ebuild:
+  Mark latest revision stable
+
+*droid-113-r4 (07 Mar 2015)
+
+  07 Mar 2015; Ben de Groot <yngwin@gentoo.org> +droid-113-r4.ebuild:
+  Do not install Ahem font, which is for layout testing only (bug #530158)
+
+*droid-113-r3 (07 Nov 2014)
+
+  07 Nov 2014; Ben de Groot <yngwin@gentoo.org> +droid-113-r3.ebuild,
+  -droid-113-r2.ebuild:
+  Revbump to propagate fontconfig file fix (bug #528054)
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> droid-113-r2.ebuild:
+  Add arm/arm64 love.
+
+  21 Aug 2013; Ben de Groot <yngwin@gentoo.org> files/59-google-droid-sans.conf:
+  Fix multimple values in test, bug #471083
+
+  07 Oct 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, #274113
+
+  20 Aug 2012; Tomáš Chvátal <scarabeus@gentoo.org> -droid-113-r1.ebuild,
+  droid-113-r2.ebuild:
+  Stabilise on all archs, remove older. Wrt bug#429112.
+
+*droid-113-r2 (27 May 2012)
+
+  27 May 2012; Ben de Groot <yngwin@gentoo.org> +droid-113-r2.ebuild,
+  +files/59-google-droid-sans-mono.conf, +files/59-google-droid-sans.conf,
+  +files/59-google-droid-serif.conf, -droid-112_p1.ebuild:
+  Add fontconfig files as suggested in bug #416417. Remove old.
+
+  27 Jan 2011; Dror Levin <spatz@gentoo.org> -droid-112_p1-r1.ebuild,
+  -droid-113.ebuild, droid-113-r1.ebuild:
+  Stabilize for all, noarch package (only font files). Drop old.
+
+*droid-113-r1 (08 Jul 2010)
+
+  08 Jul 2010; Dror Levin <spatz@gentoo.org> +droid-113-r1.ebuild:
+  Revbump, add Hebrew and Arabic versions.
+
+  11 Jun 2010; Dror Levin <spatz@gentoo.org> metadata.xml:
+  Take maintainership over.
+
+*droid-113 (26 Mar 2010)
+
+  26 Mar 2010; Dror Levin <spatz@gentoo.org> -droid-107.ebuild,
+  -droid-112.ebuild, +droid-113.ebuild:
+  Version bump, contains new font: Clockopia. Remove old.
+
+  07 Jan 2010; Dror Levin <spatz@gentoo.org> droid-112_p1-r1.ebuild,
+  metadata.xml:
+  Install all monotyped versions instead of using USE flags.
+
+*droid-112_p1-r1 (07 Jan 2010)
+
+  07 Jan 2010; Dror Levin <spatz@gentoo.org> +droid-112_p1-r1.ebuild,
+  metadata.xml:
+  Add new USE flags for slashed and dotted versions of the monotyped font,
+  bug 293701.
+
+  27 Sep 2009; Mounir Lamouri <volkmar@gentoo.org> droid-112_p1.ebuild:
+  Stable for ppc. Fix bug 283910
+
+  11 Sep 2009; Markus Meier <maekke@gentoo.org> droid-112_p1.ebuild:
+  amd64/x86 stable, bug #283910
+
+  07 Sep 2009; Brent Baude <ranger@gentoo.org> droid-112_p1.ebuild:
+  Marking droid-112_p1 ppc64 for bug 283910
+
+*droid-112_p1 (26 Jul 2009)
+
+  26 Jul 2009; Ben de Groot <yngwin@gentoo.org> +droid-112_p1.ebuild:
+  Still supposedly build 112, but upstream added DroidSansJapanese.ttf, so
+  we update our archive.
+
+  12 May 2009; Peter Alfredsen <loki_val@gentoo.org> droid-107.ebuild,
+  droid-112.ebuild:
+  Set empty RDEPEND w.r.t. bug 269503. Thanks to James Rowe
+  <jnrowe@gmail.com> for reporting.
+
+  14 Jan 2009; Joseph Jezak <josejx@gentoo.org> droid-112.ebuild:
+  Marked ~ppc/~ppc64 for bug #254373.
+
+*droid-112 (20 Dec 2008)
+
+  20 Dec 2008; Peter Volkov <pva@gentoo.org> +droid-112.ebuild:
+  Version bump, bug #251288, thank St.MPA3b for report.
+
+  13 Oct 2008; Peter Volkov <pva@gentoo.org> -droid-1.ebuild:
+  Removed old.
+
+  28 Sep 2008; Markus Meier <maekke@gentoo.org> droid-107.ebuild:
+  x86 stable, bug #234980
+
+  25 Sep 2008; Peter Volkov <pva@gentoo.org> droid-107.ebuild:
+  amd64 stable, bug #234980.
+
+*droid-107 (26 Aug 2008)
+
+  26 Aug 2008; Peter Volkov <pva@gentoo.org> droid-1.ebuild,
+  +droid-107.ebuild:
+  Version bump. Now let's use build number as a version.
+
+*droid-1 (24 Jul 2008)
+
+  24 Jul 2008; Ben de Groot <yngwin@gentoo.org> +metadata.xml,
+  +droid-1.ebuild:
+  Initial import. Ebuild by me.

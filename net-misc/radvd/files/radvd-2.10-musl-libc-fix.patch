@@ -1,0 +1,87 @@
+From 1d8973e13d89802eee0b648451e2b97ac65cf9e0 Mon Sep 17 00:00:00 2001
+From: Reuben Hawkins <reubenhwk@gmail.com>
+Date: Sat, 16 May 2015 09:27:38 -0700
+Subject: [PATCH] device-linux.c: IEEE 802.15.4 musl libc fix
+
+The ARPHRD_IEEE802154 macro's definition and name have been recently
+moved around from kernel header to glibc headers.  Include linux/if_arp.h
+if available and then use either ARPHRD_IEEE802154_MONITOR or ARPHRD_IEEE802154_PHY,
+whichever comes first.
+---
+ configure.ac   | 1 +
+ device-linux.c | 8 ++++++++
+ includes.h     | 6 ++++++
+ 3 files changed, 15 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index 0c1efd6..4bd4c9d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -156,6 +156,7 @@ AC_HEADER_STDC
+ AC_CHECK_HEADERS( \
+ 	getopt.h \
+ 	ifaddrs.h \
++	linux/if_arp.h \
+ 	machine/limits.h \
+ 	machine/param.h \
+ 	net/if_arp.h \
+diff --git a/device-linux.c b/device-linux.c
+index fa7d978..de83f2e 100644
+--- a/device-linux.c
++++ b/device-linux.c
+@@ -79,10 +79,12 @@ int update_device_info(int sock, struct Interface *iface)
+ 		iface->sllao.if_maxmtu = -1;
+ 		break;
+ #endif				/* ARPHDR_ARCNET */
++#ifdef ARPHRD_IEEE802154
+ 	case ARPHRD_IEEE802154:
+ 		iface->sllao.if_hwaddr_len = 64;
+ 		iface->sllao.if_prefix_len = 64;
+ 		break;
++#endif
+ 	default:
+ 		iface->sllao.if_hwaddr_len = -1;
+ 		iface->sllao.if_prefix_len = -1;
+@@ -371,9 +373,15 @@ static char const *hwstr(unsigned short sa_family)
+ 	case ARPHRD_IEEE802154:
+ 		rc = "ARPHRD_IEEE802154";
+ 		break;
++#if ARPHRD_IEEE802154_MONITOR
++	case ARPHRD_IEEE802154_MONITOR:
++		rc = "ARPHRD_IEEE802154_MONITOR";
++		break;
++#elif ARPHRD_IEEE802154_PHY
+ 	case ARPHRD_IEEE802154_PHY:
+ 		rc = "ARPHRD_IEEE802154_PHY";
+ 		break;
++#endif
+ 	case ARPHRD_VOID:
+ 		rc = "ARPHRD_VOID";
+ 		break;
+diff --git a/includes.h b/includes.h
+index 39a36d2..d2449c4 100644
+--- a/includes.h
++++ b/includes.h
+@@ -81,9 +81,11 @@
+ #ifdef HAVE_NET_IF_DL_H
+ #include <net/if_dl.h>
+ #endif
++
+ #ifdef HAVE_NET_IF_TYPES_H
+ #include <net/if_types.h>
+ #endif
++
+ #if defined(HAVE_NET_IF_ARP_H) && !defined(ARPHRD_ETHER)
+ #include <net/if_arp.h>
+ #endif				/* defined(HAVE_NET_IF_ARP_H) && !defined(ARPHRD_ETHER) */
+@@ -100,3 +102,7 @@
+ #include <ifaddrs.h>
+ #endif
+ 
++#ifdef HAVE_LINUX_IF_ARP_H
++#include <linux/if_arp.h>
++#endif
++
+-- 
+2.3.6
+

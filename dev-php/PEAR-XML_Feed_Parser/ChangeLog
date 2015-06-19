@@ -1,0 +1,25 @@
+# ChangeLog for dev-php/PEAR-XML_Feed_Parser
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-XML_Feed_Parser/ChangeLog,v 1.5 2014/11/07 14:48:08 grknight Exp $
+
+  07 Nov 2014; Brian Evans <grknight@gentoo.org>
+  PEAR-XML_Feed_Parser-1.0.5-r1.ebuild:
+  Add dev-php/PEAR-Log in RDEPEND for bug 524746
+
+*PEAR-XML_Feed_Parser-1.0.5-r1 (07 Nov 2014)
+
+  07 Nov 2014; Brian Evans <grknight@gentoo.org>
+  +PEAR-XML_Feed_Parser-1.0.5-r1.ebuild, -PEAR-XML_Feed_Parser-1.0.5.ebuild:
+  EAPI revbump
+
+  08 Oct 2014; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Remove short <longdescription>.
+
+  16 Dec 2012; Kacper Kowalik <xarthisius@gentoo.org> metadata.xml:
+  Drop no-herd from metadata.xml
+
+*PEAR-XML_Feed_Parser-1.0.5 (05 Sep 2012)
+
+  05 Sep 2012; <lordvan@gentoo.org> +PEAR-XML_Feed_Parser-1.0.5.ebuild:
+  inital import from bug #258604 Thanks to Lutz Heermann
+  <Lutz.Heermann@isa.de.com>

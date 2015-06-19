@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci-biology</herd>
+  <use>
+    <flag name="dmalloc">Enable debugging with the dmalloc library</flag>
+    <flag name="lowmem">Build for environments with low amounts of memory</flag>
+  </use>
+</pkgmetadata>

@@ -1,0 +1,55 @@
+# ChangeLog for sci-biology/prank
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/prank/ChangeLog,v 1.11 2015/03/29 13:52:32 jlec Exp $
+
+*prank-140603 (29 Mar 2015)
+
+  29 Mar 2015; Justin Lecher <jlec@gentoo.org> +prank-140603.ebuild,
+  prank-100701.ebuild, prank-111130.ebuild:
+  Version Bump
+
+  11 Mar 2013; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Drop Andrey as maintainer so that bugs get assigned to sci-biology directly
+
+  20 Jun 2012; Justin Lecher <jlec@gentoo.org> prank-100701.ebuild,
+  prank-111130.ebuild, +files/prank-111130-gcc-4.7.patch:
+  Fix compilation with gcc-4.7, #422581
+
+*prank-111130 (28 Feb 2012)
+
+  28 Feb 2012; Andrey Kislyuk <weaver@gentoo.org> -prank-081202.ebuild,
+  -files/prank-081202-gcc44.patch, -prank-091016.ebuild,
+  -prank-100311.ebuild, +prank-111130.ebuild:
+  Version bump, remove old
+
+  09 Aug 2010; Kacper Kowalik <xarthisius@gentoo.org> prank-100701.ebuild:
+  Respect user FLAGS wrt bug 331799. Thanks to Diego for report. Drop perl
+  from src_prepare.
+
+*prank-100701 (15 Jul 2010)
+
+  15 Jul 2010; Andrey Kislyuk <weaver@gentoo.org> +prank-100701.ebuild:
+  Version bump
+
+*prank-100311 (23 Mar 2010)
+
+  23 Mar 2010; Andrey Kislyuk <weaver@gentoo.org> +prank-100311.ebuild:
+  Version bump
+
+  28 Oct 2009; Andrey Kislyuk <weaver@gentoo.org> prank-091016.ebuild:
+  Restore erroneously removed patch
+
+*prank-091016 (28 Oct 2009)
+
+  28 Oct 2009; Andrey Kislyuk <weaver@gentoo.org> +prank-091016.ebuild:
+  Version bump
+
+  10 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> prank-081202.ebuild,
+  +files/prank-081202-gcc44.patch:
+  Fix building with GCC 4.4+ wrt #277246.
+
+*prank-081202 (09 Apr 2009)
+
+  09 Apr 2009; Andrey Kislyuk <weaver@gentoo.org> +metadata.xml,
+  +prank-081202.ebuild:
+  New package, ebuild written by me

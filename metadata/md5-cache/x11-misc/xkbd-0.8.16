@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=x11-libs/libXrender x11-libs/libX11 x11-libs/libXft x11-libs/libXtst x11-libs/libXpm media-libs/freetype dev-libs/expat sys-libs/zlib doc? ( app-text/docbook-sgml-utils ) x11-proto/xproto x11-proto/xextproto
+DESCRIPTION=onscreen soft keyboard for X11
+EAPI=4
+HOMEPAGE=http://trac.hackable1.org/trac/wiki/Xkbd
+IUSE=doc debug
+KEYWORDS=~amd64 ~arm ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libXrender x11-libs/libX11 x11-libs/libXft x11-libs/libXtst x11-libs/libXpm media-libs/freetype dev-libs/expat sys-libs/zlib doc? ( app-text/docbook-sgml-utils )
+SLOT=0
+SRC_URI=http://trac.hackable1.org/trac/raw-attachment/wiki/Xkbd/xkbd-0.8.16.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=40b5742fa7043715db7c3f8c471dba14

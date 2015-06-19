@@ -1,0 +1,31 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/net-irc/ircservices/files/ircservices.initd,v 1.2 2011/12/17 04:41:25 binki Exp $
+
+depend() {
+	need net
+	use ircd
+	provide irc-services
+}
+
+start() {
+	IRCSERVICES_RUNDIR="${IRCSERVICES_PIDFILE%/*}"
+	if ! [ -d "${IRCSERVICES_RUNDIR}" ]; then
+		ebegin "Creating ${IRCSERVICES_RUNDIR} for ${SVCNAME}"
+		mkdir "${IRCSERVICES_RUNDIR}" && chown "${IRCSERVICES_USER}" "${IRCSERVICES_RUNDIR}"
+		eend $?
+	fi
+
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --user ircservices --exec /usr/bin/ircservices -- \
+		-dir=/var/lib/ircservices \
+		-log=/var/log/ircservices/ircservices.log
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --pidfile "${IRCSERVICES_PIDFILE}"
+	eend $?
+}

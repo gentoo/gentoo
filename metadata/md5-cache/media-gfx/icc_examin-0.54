@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure prepare
+DEPEND=app-admin/elektra media-libs/ftgl media-libs/libXcm <media-libs/oyranos-0.9.5 media-libs/tiff x11-libs/fltk x11-libs/libX11 x11-libs/libXinerama x11-libs/libXpm x11-libs/libXrandr x11-libs/libXxf86vm virtual/pkgconfig
+DESCRIPTION=viewer for ICC and CGATS profiles, argylls gamut vrml visualisations and video card gamma tables
+EAPI=4
+HOMEPAGE=http://www.oyranos.org/wiki/index.php?title=ICC_Examin
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=app-admin/elektra media-libs/ftgl media-libs/libXcm <media-libs/oyranos-0.9.5 media-libs/tiff x11-libs/fltk x11-libs/libX11 x11-libs/libXinerama x11-libs/libXpm x11-libs/libXrandr x11-libs/libXxf86vm
+SLOT=0
+SRC_URI=mirror://sourceforge/oyranos/ICC%20Examin/ICC%20Examin%200.54/icc_examin-0.54.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=934d7d4dea36620694222bc5e5d8e100

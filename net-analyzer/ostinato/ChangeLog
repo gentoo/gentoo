@@ -1,0 +1,91 @@
+# ChangeLog for net-analyzer/ostinato
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ostinato/ChangeLog,v 1.22 2014/01/23 14:06:16 zerochaos Exp $
+
+  23 Jan 2014; Rick Farina <zerochaos@gentoo.org> -ostinato-0.5.ebuild,
+  ostinato-0.5.1.ebuild:
+  cleanup old, add sub-slot dep on protobuf
+
+  07 Aug 2013; Agostino Sarubbo <ago@gentoo.org> ostinato-0.5.1.ebuild:
+  Stable for x86, wrt bug #477170
+
+  23 Jul 2013; Agostino Sarubbo <ago@gentoo.org> ostinato-0.5.1.ebuild:
+  Stable for arm, wrt bug #477170
+
+  22 Jul 2013; Chema Alonso <nimiux@gentoo.org> ostinato-0.5.1.ebuild:
+  Stable for amd64 wrt bug #477170
+
+  17 Jul 2013; Rick Farina <zerochaos@gentoo.org> ostinato-0.5.1.ebuild:
+  adding ~arm
+
+  02 Jun 2013; Rick Farina <zerochaos@gentoo.org> metadata.xml:
+  picking up from maintainer-needed
+
+  02 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #328951
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> ostinato-0.5.1.ebuild,
+  ostinato-0.5.ebuild:
+  Move Qt dependencies to the new category
+
+*ostinato-0.5.1 (14 Oct 2012)
+
+  14 Oct 2012; Dane Smith <c1pher@gentoo.org> -ostinato-0.3.ebuild,
+  -ostinato-0.4.1.ebuild, +ostinato-0.5.1.ebuild:
+  Version bump wrt bug 432056. Drop old.
+
+  05 Apr 2012; Jeff Horelick <jdhore@gentoo.org> ostinato-0.5.ebuild:
+  marked x86 per bug 404815
+
+  28 Mar 2012; Agostino Sarubbo <ago@gentoo.org> ostinato-0.5.ebuild:
+  Stable for amd64, wrt bug #404815
+
+*ostinato-0.5 (05 Nov 2011)
+
+  05 Nov 2011; Dane Smith <c1pher@gentoo.org> +ostinato-0.5.ebuild:
+  Version bump.
+
+  10 May 2011; Dane Smith <c1pher@gentoo.org> +files/protobuf-2.4.0.diff:
+  Readd patch. Still needed in stable.
+
+*ostinato-0.4.1 (10 May 2011)
+
+  10 May 2011; Dane Smith <c1pher@gentoo.org> -ostinato-0.4.ebuild,
+  +ostinato-0.4.1.ebuild, -files/protobuf-2.4.0.diff:
+  Version bump. Gentoo patches merged into upstream. Remove old experimental
+  and patch.
+
+*ostinato-0.4 (19 Apr 2011)
+
+  19 Apr 2011; Dane Smith <c1pher@gentoo.org> +ostinato-0.4.ebuild:
+  0.4 released. Version bump.
+
+  19 Apr 2011; Dane Smith <c1pher@gentoo.org> -ostinato-0.2.ebuild,
+  ostinato-0.3.ebuild, +files/protobuf-2.4.0.diff:
+  Add new patch for 0.3 wrt bug 363911. Now works protobuf-2.4.0a
+
+  18 Apr 2011; Dane Smith <c1pher@gentoo.org> ostinato-0.2.ebuild,
+  ostinato-0.3.ebuild:
+  Remove my unintentional downgrade force wrt bug 363911.
+
+  18 Apr 2011; Dane Smith <c1pher@gentoo.org> ostinato-0.2.ebuild,
+  ostinato-0.3.ebuild:
+  Change protobuf dep to depend on <2.4.0 in both 0.2 and 0.3 wrt bug
+  363911.
+
+  18 Dec 2010; Markos Chandras <hwoarang@gentoo.org> ostinato-0.3.ebuild:
+  Stable on amd64 wrt bug #348576
+
+  13 Dec 2010; Dane Smith <c1pher@gentoo.org> ostinato-0.3.ebuild:
+  Stable x86 wrt bug 348576.
+
+*ostinato-0.3 (11 Nov 2010)
+
+  11 Nov 2010; Dane Smith <c1pher@gentoo.org> +ostinato-0.3.ebuild:
+  Version bump.
+
+*ostinato-0.2 (23 Oct 2010)
+
+  23 Oct 2010; Dane Smith <c1pher@gentoo.org> +ostinato-0.2.ebuild,
+  +metadata.xml:
+  New ebuild for Ostinato. Moved from Sunrise overlay wrt bug 317201.

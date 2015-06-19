@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>games</herd>
+	<longdescription>
+		This is a sample library which allows you to use TrueType
+		fonts in your SDL applications. It
+		comes with an example program "showfont" which displays an
+		example string for a given
+		TrueType font file.
+	</longdescription>
+</pkgmetadata>

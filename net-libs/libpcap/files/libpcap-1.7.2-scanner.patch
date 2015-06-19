@@ -1,0 +1,11 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -447,7 +447,7 @@
+ 	@rm -f $@ $@.bottom
+ 	$(srcdir)/runlex.sh $(LEX) -o$@ $<
+ 	mv $@ $@.bottom
+-	cat $@.top $@.bottom > $@
++	cat ${srcdir}/$@.top $@.bottom > $@
+ 	@rm $@.bottom
+ 
+ scanner.o: scanner.c tokdefs.h

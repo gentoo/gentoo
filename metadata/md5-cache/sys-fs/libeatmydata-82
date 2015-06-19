@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=sys-apps/sed
+DESCRIPTION=LD_PRELOAD hack to convert sync()/msync() and the like to NO-OP
+EAPI=5
+HOMEPAGE=https://launchpad.net/libeatmydata/
+KEYWORDS=~x86 ~amd64
+LICENSE=GPL-3
+RESTRICT=test
+SLOT=0
+SRC_URI=https://launchpad.net/libeatmydata/trunk/libeatmydata-82/+download/libeatmydata-82.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=7a616688ee7535c70dc642fb52850d3b

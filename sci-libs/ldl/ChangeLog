@@ -1,0 +1,42 @@
+# ChangeLog for sci-libs/ldl
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/ldl/ChangeLog,v 1.8 2015/02/22 00:46:04 mattst88 Exp $
+
+  22 Feb 2015; Matt Turner <mattst88@gentoo.org> ldl-2.0.4.ebuild,
+  ldl-2.1.0.ebuild:
+  Drop alpha keyword.
+
+  24 Jun 2013; Sébastien Fabbro <bicatali@gentoo.org> -ldl-2.0.3-r1.ebuild,
+  ldl-2.1.0.ebuild:
+  Switch to EAPI5 and new tar ball
+
+*ldl-2.1.0 (12 Nov 2012)
+
+  12 Nov 2012; Sébastien Fabbro <bicatali@gentoo.org> +ldl-2.1.0.ebuild:
+  Version bump
+
+*ldl-2.0.4 (20 Jan 2012)
+
+  20 Jan 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  -files/ldl-2.0.1-autotools.patch, +ldl-2.0.4.ebuild:
+  Version bump
+
+*ldl-2.0.3-r1 (22 Mar 2011)
+
+  22 Mar 2011; Sébastien Fabbro <bicatali@gentoo.org> -ldl-2.0.1.ebuild,
+  -ldl-2.0.3.ebuild, +ldl-2.0.3-r1.ebuild, +files/ldl-2.0.3-autotools.patch:
+  Now install a working library, bug #359975
+
+*ldl-2.0.3 (23 Feb 2011)
+
+  23 Feb 2011; Sébastien Fabbro <bicatali@gentoo.org> +ldl-2.0.3.ebuild:
+  Bump
+
+  25 Dec 2010; Sébastien Fabbro <bicatali@gentoo.org> ldl-2.0.1.ebuild:
+  Added static-libs flag
+
+*ldl-2.0.1 (05 Feb 2008)
+
+  05 Feb 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/ldl-2.0.1-autotools.patch, +metadata.xml, +ldl-2.0.1.ebuild:
+  Initial import, part of the suitesparse

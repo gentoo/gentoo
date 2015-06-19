@@ -1,0 +1,24 @@
+# ChangeLog for games-emulation/mupen64plus-input-sdl
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/mupen64plus-input-sdl/ChangeLog,v 1.4 2014/08/15 10:19:19 mgorny Exp $
+
+*mupen64plus-input-sdl-2.0-r1 (15 Aug 2014)
+
+  15 Aug 2014; Michał Górny <mgorny@gentoo.org>
+  +mupen64plus-input-sdl-2.0-r1.ebuild, metadata.xml:
+  Remove games team maintainership following the Council decision. Use standard
+  install layout.
+
+  19 Dec 2013; Michał Górny <mgorny@gentoo.org>
+  mupen64plus-input-sdl-2.0.ebuild:
+  Update SRC_URI following the upstream move to github.
+
+  16 Dec 2013; Michał Górny <mgorny@gentoo.org>
+  mupen64plus-input-sdl-2.0.ebuild:
+  Remove implicit CPU flags from the Makefiles. Support epatch_user.
+
+*mupen64plus-input-sdl-2.0 (15 Dec 2013)
+
+  15 Dec 2013; Michał Górny <mgorny@gentoo.org> +metadata.xml,
+  +mupen64plus-input-sdl-2.0.ebuild:
+  Introduce the SDL input plugin for mupen64plus-2.0.

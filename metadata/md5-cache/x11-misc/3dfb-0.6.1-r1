@@ -1,0 +1,12 @@
+DEFINED_PHASES=prepare
+DEPEND=dev-libs/glib:2 media-libs/freeglut virtual/opengl x11-libs/libXmu virtual/pkgconfig
+DESCRIPTION=3D File Browser
+EAPI=5
+HOMEPAGE=http://sourceforge.net/projects/dz3d/
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/glib:2 media-libs/freeglut virtual/opengl x11-libs/libXmu
+SLOT=0
+SRC_URI=mirror://sourceforge/dz3d/3dfb-0.6.1.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=ea826a2e79217e8ac5a0db4eaaef6ad0

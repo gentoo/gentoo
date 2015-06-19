@@ -1,0 +1,22 @@
+diff --git a/events.c b/events.c
+index dbb46f0..f9990f9 100644
+--- a/events.c
++++ b/events.c
+@@ -5311,7 +5311,7 @@ xi2_emulate_action(struct xdvi_action *actp, struct xi2_valinfo *valinfo,
+ 		}
+ 
+ 		if (actp->proc == Act_wheel) {
+-#  if XAW
++#  if !MOTIF
+ 		    if (globals.widgets.y_bar != NULL)
+ 			XtCallCallbacks(globals.widgets.y_bar, XtNscrollProc,
+ 			  cast_int_to_XtPointer(dist));
+@@ -5322,7 +5322,7 @@ xi2_emulate_action(struct xdvi_action *actp, struct xi2_valinfo *valinfo,
+ #  endif /* MOTIF */
+ 		}
+ 		else {	/* Act_hwheel */
+-#  if XAW
++#  if !MOTIF
+ 		    if (globals.widgets.x_bar != NULL)
+ 			XtCallCallbacks(globals.widgets.x_bar, XtNscrollProc,
+ 			  cast_int_to_XtPointer(dist));

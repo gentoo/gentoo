@@ -1,0 +1,113 @@
+# ChangeLog for dev-python/twisted-pair
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/twisted-pair/ChangeLog,v 1.39 2015/05/26 06:20:07 patrick Exp $
+
+*twisted-pair-15.2.1 (26 May 2015)
+
+  26 May 2015; Patrick Lauer <patrick@gentoo.org> +twisted-pair-15.2.1.ebuild:
+  Bump
+
+*twisted-pair-15.1.0 (13 May 2015)
+
+  13 May 2015; Patrick Lauer <patrick@gentoo.org> +twisted-pair-15.1.0.ebuild:
+  Bump
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> twisted-pair-13.0.0-r1.ebuild,
+  twisted-pair-13.2.0.ebuild, twisted-pair-14.0.0.ebuild:
+  Drop old Python implementations
+
+  09 Mar 2015; Pacho Ramos <pacho@gentoo.org> twisted-pair-13.2.0.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> twisted-pair-13.2.0.ebuild:
+  amd64 stable, bug 540290
+
+  21 Nov 2014; Mike Gilbert <floppym@gentoo.org> -twisted-pair-12.3.0.ebuild,
+  -twisted-pair-13.0.0.ebuild:
+  Remove ebuilds using twisted.eclass.
+
+*twisted-pair-14.0.2 (18 Nov 2014)
+
+  18 Nov 2014; Patrick Lauer <patrick@gentoo.org> +twisted-pair-14.0.2.ebuild:
+  Bump
+
+*twisted-pair-14.0.1 (12 Nov 2014)
+
+  12 Nov 2014; Ian Delaney <idella4@gentoo.org> +twisted-pair-14.0.1.ebuild:
+  bump, drop py2.6
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org> twisted-pair-13.0.0-r1.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org> twisted-pair-13.0.0-r1.ebuild:
+  Stable for amd64, wrt bug #512912
+
+  28 May 2014; Ian Delaney <idella4@gentoo.org> +files/14.0.0-tests.patch,
+  twisted-pair-14.0.0.ebuild:
+  patch to fix tests, fixes Bug #510834 by Patrick, re-keyword ~arm, tested on
+  armv7, cubieboard2 wrt Bug #510832 also by Patrick
+
+*twisted-pair-14.0.0 (20 May 2014)
+
+  20 May 2014; Patrick Lauer <patrick@gentoo.org> +twisted-pair-14.0.0.ebuild:
+  Bump
+
+  21 Jan 2014; Patrick Lauer <patrick@gentoo.org> -twisted-pair-11.1.0.ebuild,
+  -twisted-pair-12.0.0.ebuild, -twisted-pair-12.2.0.ebuild:
+  Remove old
+
+*twisted-pair-13.2.0 (20 Jan 2014)
+
+  20 Jan 2014; Ian Delaney <idella4@gentoo.org> +twisted-pair-13.2.0.ebuild:
+  bump
+
+  24 Nov 2013; Agostino Sarubbo <ago@gentoo.org> twisted-pair-12.3.0.ebuild:
+  Stable for arm, wrt bug #468150
+
+  01 Sep 2013; Agostino Sarubbo <ago@gentoo.org> twisted-pair-12.3.0.ebuild:
+  Stable for x86, wrt bug #468150
+
+  01 Sep 2013; Agostino Sarubbo <ago@gentoo.org> twisted-pair-12.3.0.ebuild:
+  Stable for amd64, wrt bug #468150
+
+  09 Aug 2013; Michał Górny <mgorny@gentoo.org> twisted-pair-13.0.0-r1.ebuild:
+  Drop stale versionator inherit.
+
+*twisted-pair-13.0.0-r1 (09 Aug 2013)
+
+  09 Aug 2013; Michał Górny <mgorny@gentoo.org> +twisted-pair-13.0.0-r1.ebuild:
+  Migrate to twisted-r1.
+
+  03 Aug 2013; Michał Górny <mgorny@gentoo.org> twisted-pair-11.1.0.ebuild,
+  twisted-pair-12.0.0.ebuild, twisted-pair-12.2.0.ebuild,
+  twisted-pair-12.3.0.ebuild, twisted-pair-13.0.0.ebuild:
+  Move dev-python/twisted to dev-python/twisted-core.
+
+*twisted-pair-13.0.0 (08 Apr 2013)
+
+  08 Apr 2013; Patrick Lauer <patrick@gentoo.org> +twisted-pair-13.0.0.ebuild:
+  Bump
+
+*twisted-pair-12.3.0 (14 Jan 2013)
+
+  14 Jan 2013; Patrick Lauer <patrick@gentoo.org> +twisted-pair-12.3.0.ebuild:
+  Bump
+
+  08 Oct 2012; Marien Zwart <marienz@gentoo.org> twisted-pair-12.2.0.ebuild:
+  Fix python dependency to match dev-python/twisted's, spotted by Arfrever.
+
+*twisted-pair-12.2.0 (27 Sep 2012)
+
+  27 Sep 2012; Marien Zwart <marienz@gentoo.org> +twisted-pair-12.2.0.ebuild:
+  Bump to 12.2.0 (bug #423793)
+
+*twisted-pair-12.0.0 (22 Mar 2012)
+
+  22 Mar 2012; Patrick Lauer <patrick@gentoo.org> +twisted-pair-12.0.0.ebuild:
+  Bump
+
+*twisted-pair-11.1.0 (27 Dec 2011)
+
+  27 Dec 2011; Mike Gilbert <floppym@gentoo.org> +metadata.xml,
+  +twisted-pair-11.1.0.ebuild:
+  New package to fill in the twisted suite.

@@ -1,0 +1,65 @@
+# ChangeLog for app-i18n/fcitx-rime
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/fcitx-rime/ChangeLog,v 1.15 2015/05/09 13:38:18 yngwin Exp $
+
+  09 May 2015; Ben de Groot <yngwin@gentoo.org> -fcitx-rime-0.2.2.ebuild,
+  -fcitx-rime-0.3.0.ebuild, fcitx-rime-0.3.1.ebuild:
+  Mark stable on amd64 (bug #540844). Remove old.
+
+  01 May 2015; Jeroen Roovers <jer@gentoo.org> fcitx-rime-0.3.1.ebuild:
+  Stable for PPC64 (bug #540844).
+
+  19 Apr 2015; Anthony G. Basile <blueness@gentoo.org> fcitx-rime-0.2.0.ebuild,
+  fcitx-rime-0.2.2.ebuild, fcitx-rime-0.3.0.ebuild, fcitx-rime-0.3.1.ebuild:
+  Keyword ~ppc and ~ppc64.  Bug #498686.
+
+*fcitx-rime-0.3.1 (20 May 2014)
+
+  20 May 2014; Yixun Lan <dlan@gentoo.org> +fcitx-rime-0.3.1.ebuild:
+  version bump to 0.3.1
+
+  08 Mar 2014; Pacho Ramos <pacho@gentoo.org> fcitx-rime-0.2.2.ebuild:
+  amd64 stable, bug 498688
+
+*fcitx-rime-0.3.0 (20 Jan 2014)
+
+  20 Jan 2014; Ben de Groot <yngwin@gentoo.org> +fcitx-rime-0.3.0.ebuild:
+  version bump
+
+  17 Jan 2014; Yixun Lan <dlan@gentoo.org> -fcitx-rime-0.1.2.ebuild,
+  metadata.xml:
+  drop old version, update maintainer email
+
+  02 Sep 2013; Agostino Sarubbo <ago@gentoo.org> fcitx-rime-0.2.0.ebuild:
+  Stable for x86, wrt bug #479286
+
+  31 Aug 2013; Agostino Sarubbo <ago@gentoo.org> fcitx-rime-0.2.0.ebuild:
+  Stable for amd64, wrt bug #479286
+
+*fcitx-rime-0.2.2 (24 Jul 2013)
+
+  24 Jul 2013; Ben de Groot <yngwin@gentoo.org> +fcitx-rime-0.2.2.ebuild:
+  Version bump
+
+  31 Jan 2013; Ben de Groot <yngwin@gentoo.org> metadata.xml:
+  update metadata
+
+*fcitx-rime-0.2.0 (31 Jan 2013)
+
+  31 Jan 2013; Ben de Groot <yngwin@gentoo.org> +fcitx-rime-0.2.0.ebuild:
+  Version bump, bug #454488. Thanks to Dennis Lan and Wang Jiajun for
+  contributions.
+
+  28 Jan 2013; Ben de Groot <yngwin@gentoo.org> -fcitx-rime-0.1.1.ebuild:
+  drop old
+
+*fcitx-rime-0.1.2 (16 Jan 2013)
+
+  16 Jan 2013; Ben de Groot <yngwin@gentoo.org> +fcitx-rime-0.1.2.ebuild:
+  version bump
+
+*fcitx-rime-0.1.1 (01 Sep 2012)
+
+  01 Sep 2012; Ben de Groot <yngwin@gentoo.org> +fcitx-rime-0.1.1.ebuild,
+  +metadata.xml:
+  Initial commit. Ebuild from gentoo-zh overlay, polished by dlan and me.

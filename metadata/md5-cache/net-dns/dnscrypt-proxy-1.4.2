@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install setup
+DEPEND=dev-libs/libsodium ldns? ( net-libs/ldns ) virtual/pkgconfig
+DESCRIPTION=A tool for securing communications between a client and a DNS resolver
+EAPI=5
+HOMEPAGE=http://dnscrypt.org/
+IUSE=+plugins ldns systemd
+KEYWORDS=~amd64 ~x86
+LICENSE=ISC
+RDEPEND=dev-libs/libsodium ldns? ( net-libs/ldns ) systemd? ( sys-apps/systemd )
+SLOT=0
+SRC_URI=http://download.dnscrypt.org/dnscrypt-proxy/dnscrypt-proxy-1.4.2.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=473b4e34023a63ed9f994044cd9d0ca6

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst setup
+DEPEND=|| ( >=sys-apps/util-linux-2.23[tty-helpers] <=sys-apps/sysvinit-2.88-r4 sys-freebsd/freebsd-ubin ) cgi? ( >=media-libs/gd-1.8.4 ) nls? ( sys-devel/gettext ) snmp? ( net-analyzer/net-snmp ) gnome? ( >=x11-libs/gtk+-2.4.0:2 dev-libs/glib:2 >=gnome-base/gconf-2.0 ) virtual/pkgconfig
+DESCRIPTION=APC UPS daemon with integrated tcp/ip remote shutdown
+EAPI=3
+HOMEPAGE=http://www.apcupsd.org/
+IUSE=snmp +usb cgi nls gnome kernel_linux
+KEYWORDS=amd64 ppc x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=|| ( >=sys-apps/util-linux-2.23[tty-helpers] <=sys-apps/sysvinit-2.88-r4 sys-freebsd/freebsd-ubin ) cgi? ( >=media-libs/gd-1.8.4 ) nls? ( sys-devel/gettext ) snmp? ( net-analyzer/net-snmp ) gnome? ( >=x11-libs/gtk+-2.4.0:2 dev-libs/glib:2 >=gnome-base/gconf-2.0 ) virtual/mailx
+SLOT=0
+SRC_URI=mirror://sourceforge/apcupsd/apcupsd-3.14.8.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=b3b11fa6d8e5182ce010dc664282d0a6

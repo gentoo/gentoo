@@ -1,0 +1,55 @@
+# ChangeLog for app-admin/watchfolder
+# Copyright 2002-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/watchfolder/ChangeLog,v 1.16 2015/06/09 08:47:07 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  10 Aug 2014; Patrick Lauer <patrick@gentoo.org> watchfolder-0.3.3.ebuild:
+  Fix description for more repoman happy
+
+  01 Mar 2009; Patrick Lauer <patrick@gentoo.org>
+  +files/0.3.3-fortify-sources.patch, watchfolder-0.3.3.ebuild:
+  Fix for gcc 4.3.3 / fortify_sources. Patch by Magnus Granberg.
+
+  03 Jan 2009; Christoph Mende <angelos@gentoo.org>
+  -watchfolder-0.3.1.1.ebuild, watchfolder-0.3.3.ebuild:
+  QA: Cleanup
+
+  23 Oct 2008; Diego Pettenò <flameeyes@gentoo.org>
+  watchfolder-0.3.3.ebuild:
+  Respect CFLAGS, LDFLAGS and CC.
+
+  15 Jul 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Assigning to m-needed, as deltacow is being retired (#118063).
+
+  08 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  19 Mar 2006; Fernando J. Pereda <ferdy@gentoo.org>
+  watchfolder-0.3.3.ebuild:
+  Add ~alpha wrt bug #123840. Thanks to Thomas Cort <tcort@cs.ubishops.ca>.
+
+  11 Mar 2006; Scott Stoddard <deltacow@gentoo.org>
+  +files/0.3.3-64bit.patch, metadata.xml, watchfolder-0.3.3.ebuild:
+  Patch added to remove warnings on 64 bit architectures.  Contributed by 
+  Tom Cort <linuxgeek@gmail.com> and addressing bug #123840.
+
+*watchfolder-0.3.3 (15 Feb 2006)
+
+  15 Feb 2006; Scott Stoddard <deltacow@gentoo.org>
+  +watchfolder-0.3.3.ebuild:
+  Version bump, clears bug 61613.
+
+  15 Feb 2006; Scott Stoddard <deltacow@gentoo.org>
+  watchfolder-0.3.1.1.ebuild:
+  ~amd64 added.  Added link to a project page.
+
+  23 Apr 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  watchfolder-0.3.1.1.ebuild:
+  marked ~ppc
+
+*watchfolder-0.3.1.1 (04 Jan 2003)
+
+  04 Jan 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Initial import. Ebuild submitted by Peter Turczak <p_turczak@wiwa.de> in #11132.

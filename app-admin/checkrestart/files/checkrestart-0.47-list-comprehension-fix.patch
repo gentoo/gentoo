@@ -1,0 +1,11 @@
+--- a/checkrestart
++++ b/checkrestart
+@@ -216,7 +216,7 @@
+                     package.initscripts.append(path)
+ 
+             # Remove duplicate inits
+-            package.initscripts = [ u for u in package.initscripts if u not in locals()['_[1]'] ]
++            package.initscripts = list(set(package.initscripts))
+ 
+     restartable = []
+     nonrestartable = []

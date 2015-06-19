@@ -1,0 +1,200 @@
+# ChangeLog for media-sound/xnoise
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/xnoise/ChangeLog,v 1.40 2014/07/27 10:40:33 phajdan.jr Exp $
+
+  26 Jul 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> xnoise-0.2.21.ebuild:
+  x86 stable wrt bug #509524
+
+  08 Jul 2014; Chema Alonso <nimiux@gentoo.org> xnoise-0.2.21.ebuild:
+  Stable for amd64 wrt bug #509524
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> xnoise-0.2.20.ebuild,
+  xnoise-0.2.21.ebuild:
+  Replace obsolete mirror://bitbucket with the real URI.
+
+  22 Mar 2014; Christoph Mende <angelos@gentoo.org> xnoise-0.2.21.ebuild:
+  Fix QA warnings in xnoise.desktop
+
+*xnoise-0.2.21 (22 Mar 2014)
+
+  22 Mar 2014; Christoph Mende <angelos@gentoo.org> +xnoise-0.2.21.ebuild,
+  -xnoise-0.2.19.ebuild, xnoise-9999.ebuild:
+  Version bump, remove old, update live ebuild
+
+*xnoise-0.2.20 (13 Dec 2013)
+
+  13 Dec 2013; Christoph Mende <angelos@gentoo.org> +xnoise-0.2.20.ebuild,
+  -xnoise-0.2.18.ebuild:
+  Version bump, remove old
+
+*xnoise-0.2.19 (31 Oct 2013)
+
+  31 Oct 2013; Christoph Mende <angelos@gentoo.org> -xnoise-0.2.17.ebuild,
+  +xnoise-0.2.19.ebuild:
+  Version bump, remove old
+
+*xnoise-0.2.18 (11 May 2013)
+
+  11 May 2013; Christoph Mende <angelos@gentoo.org> +xnoise-0.2.18.ebuild,
+  -xnoise-0.2.15.ebuild, xnoise-9999.ebuild:
+  Version bump, update live ebuild
+
+  29 Mar 2013; Christoph Mende <angelos@gentoo.org> xnoise-9999.ebuild:
+  Convert to vala.eclass
+
+*xnoise-0.2.17 (16 Mar 2013)
+
+  16 Mar 2013; Christoph Mende <angelos@gentoo.org> +xnoise-0.2.17.ebuild,
+  -xnoise-0.2.14.ebuild, xnoise-9999.ebuild:
+  Version bump, remove old
+
+  23 Feb 2013;  <christoph@gentoo.org> xnoise-0.2.14.ebuild,
+  xnoise-0.2.15.ebuild, xnoise-9999.ebuild:
+  Add gst-plugins-meta dependency (bug #458066)
+
+  12 Feb 2013;  <christoph@gentoo.org> xnoise-0.2.14.ebuild,
+  xnoise-0.2.15.ebuild, xnoise-9999.ebuild:
+  Add librsvg dependency (bug #456414) and gstreamer:1.0 to -9999 (bug #456416)
+
+*xnoise-0.2.15 (09 Feb 2013)
+
+  09 Feb 2013;  <christoph@gentoo.org> +xnoise-0.2.15.ebuild,
+  -xnoise-0.2.10.ebuild, -xnoise-0.2.11.ebuild, -xnoise-0.2.13.ebuild:
+  Version bump, remove old
+
+*xnoise-0.2.14 (20 Jan 2013)
+
+  20 Jan 2013;  <christoph@gentoo.org> +xnoise-0.2.14.ebuild, metadata.xml,
+  xnoise-9999.ebuild:
+  Version bump, update live ebuild
+
+*xnoise-0.2.13 (23 Dec 2012)
+
+  23 Dec 2012;  <christoph@gentoo.org> +xnoise-0.2.13.ebuild:
+  Version bump
+
+*xnoise-0.2.11 (20 Sep 2012)
+
+  20 Sep 2012; Christoph Mende <angelos@gentoo.org> +xnoise-0.2.11.ebuild,
+  -xnoise-0.2.5.ebuild:
+  Version bump, remove old
+
+*xnoise-0.2.10 (16 Sep 2012)
+
+  16 Sep 2012; Christoph Mende <angelos@gentoo.org> +xnoise-0.2.10.ebuild,
+  -xnoise-0.2.4.ebuild:
+  Version bump, remove old
+
+*xnoise-0.2.5 (16 Aug 2012)
+
+  16 Aug 2012; Christoph Mende <angelos@gentoo.org> +xnoise-0.2.5.ebuild,
+  -xnoise-0.2.2.ebuild, -xnoise-0.2.3.ebuild, xnoise-9999.ebuild:
+  Version bump
+
+*xnoise-0.2.4 (29 Jul 2012)
+
+  29 Jul 2012; Christoph Mende <angelos@gentoo.org> +xnoise-0.2.4.ebuild,
+  xnoise-9999.ebuild:
+  Versio bump, update live ebuild
+
+  16 Jul 2012; Christoph Mende <angelos@gentoo.org> -xnoise-0.1.30.ebuild,
+  -xnoise-0.1.31.ebuild:
+  Remove old
+
+*xnoise-0.2.3 (12 Jul 2012)
+
+  12 Jul 2012; Christoph Mende <angelos@gentoo.org> +xnoise-0.2.3.ebuild,
+  xnoise-9999.ebuild:
+  Version bump
+
+*xnoise-0.2.2 (26 May 2012)
+
+  26 May 2012; Christoph Mende <angelos@gentoo.org> +xnoise-0.2.2.ebuild,
+  xnoise-9999.ebuild:
+  Version bump
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> xnoise-0.1.30.ebuild,
+  xnoise-0.1.31.ebuild, xnoise-9999.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  23 Apr 2012; Michał Górny <mgorny@gentoo.org> xnoise-0.1.31.ebuild:
+  Use mirror:// in SRC_URI.
+
+*xnoise-0.1.31 (23 Mar 2012)
+
+  23 Mar 2012; Christoph Mende <angelos@gentoo.org> +xnoise-0.1.31.ebuild,
+  xnoise-9999.ebuild:
+  Version bump, update live ebuild
+
+*xnoise-0.1.30 (18 Dec 2011)
+
+  18 Dec 2011; Christoph Mende <angelos@gentoo.org> +xnoise-0.1.30.ebuild,
+  -files/xnoise-0.1.29-disable-deprecated.patch, -xnoise-0.1.28.ebuild,
+  -xnoise-0.1.29.ebuild, metadata.xml, xnoise-9999.ebuild:
+  Version bump, remove old
+
+*xnoise-0.1.29 (14 Oct 2011)
+
+  14 Oct 2011; Christoph Mende <angelos@gentoo.org>
+  -files/xnoise-0.1.23-automagic-libindicate.patch, -xnoise-0.1.26.ebuild,
+  -xnoise-0.1.27.ebuild, +xnoise-0.1.29.ebuild,
+  +files/xnoise-0.1.29-disable-deprecated.patch:
+  Version bump
+
+*xnoise-0.1.28 (23 Sep 2011)
+
+  23 Sep 2011; Christoph Mende <angelos@gentoo.org> +xnoise-0.1.28.ebuild:
+  Version bump
+
+*xnoise-0.1.27 (21 Aug 2011)
+
+  21 Aug 2011; Christoph Mende <angelos@gentoo.org> -xnoise-0.1.23.ebuild,
+  -xnoise-0.1.25.ebuild, +xnoise-0.1.27.ebuild:
+  Version bump, remove old
+
+*xnoise-0.1.26 (08 Jul 2011)
+
+  08 Jul 2011; Christoph Mende <angelos@gentoo.org> +xnoise-0.1.26.ebuild,
+  xnoise-9999.ebuild:
+  Version bump, don't install NEWS
+
+  26 Jun 2011; Christoph Mende <angelos@gentoo.org> xnoise-0.1.25.ebuild:
+  Remove patch that's applied upstream
+
+*xnoise-0.1.25 (25 Jun 2011)
+
+  25 Jun 2011; Christoph Mende <angelos@gentoo.org> +xnoise-0.1.25.ebuild:
+  Version bump
+
+  30 May 2011; Christoph Mende <angelos@gentoo.org> xnoise-0.1.23.ebuild,
+  +files/xnoise-0.1.23-automagic-libindicate.patch:
+  Fix automagic dependency on libindicate (bug #369215)
+
+  26 May 2011; Christoph Mende <angelos@gentoo.org> xnoise-9999.ebuild:
+  Bump autoconf dep to >=2.67 (bug #368789)
+
+  24 May 2011; Christoph Mende <angelos@gentoo.org> -xnoise-0.1.22.ebuild,
+  xnoise-0.1.23.ebuild, xnoise-9999.ebuild:
+  Enable soundmenu2, remove old
+
+  23 May 2011; Thomas Kahle <tomka@gentoo.org> xnoise-0.1.23.ebuild:
+  ~x86 per bug 366315
+
+*xnoise-0.1.23 (21 May 2011)
+
+  21 May 2011; Christoph Mende <angelos@gentoo.org> +xnoise-0.1.23.ebuild:
+  Version bump
+
+*xnoise-9999 (17 May 2011)
+
+  17 May 2011; Christoph Mende <angelos@gentoo.org> +xnoise-9999.ebuild:
+  Add live ebuild
+
+  16 May 2011; Christoph Mende <angelos@gentoo.org> xnoise-0.1.22.ebuild:
+  Force vala-0.12 (bug #366563)
+
+*xnoise-0.1.22 (07 May 2011)
+
+  07 May 2011; Christoph Mende <angelos@gentoo.org> +xnoise-0.1.22.ebuild,
+  +metadata.xml:
+  Initial import

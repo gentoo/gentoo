@@ -1,0 +1,48 @@
+ lib/binsrch.c | 4 ++--
+ src/wn.c      | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/lib/binsrch.c b/lib/binsrch.c
+index 8b71216..9ac51a7 100644
+--- a/lib/binsrch.c
++++ b/lib/binsrch.c
+@@ -193,7 +193,7 @@ char *replace_line(char *new_line, char *searchkey, FILE *fp)
+     copyfile(fp, tfp);
+     if (fseek(fp, offset, 0) == -1)
+ 	return(NULL);		/* could not seek to offset */
+-    fprintf(fp, new_line);	/* write line */
++    fprintf(fp, "%s", new_line);	/* write line */
+     rewind(tfp);
+     copyfile(tfp, fp);
+ 
+@@ -220,7 +220,7 @@ char *insert_line(char *new_line, char *searchkey, FILE *fp)
+     copyfile(fp, tfp);
+     if (fseek(fp, offset, 0) == -1)
+ 	return(NULL);		/* could not seek to offset */
+-    fprintf(fp, new_line);	/* write line */
++    fprintf(fp, "%s", new_line);	/* write line */
+     rewind(tfp);
+     copyfile(tfp, fp);
+ 
+diff --git a/src/wn.c b/src/wn.c
+index 004e1e6..398632f 100644
+--- a/src/wn.c
++++ b/src/wn.c
+@@ -284,7 +284,7 @@ static void printsearches(char *word, int dbase, unsigned long search)
+ 	    printf("\t");
+ 	    printf(searchstr[j].template,
+ 		   partchars[dbase], partchars[dbase]);
+-	    printf(searchstr[j].helpstr);
++	    printf("%s", searchstr[j].helpstr);
+ 	    printf("\n");
+ 	}
+ }
+@@ -345,7 +345,7 @@ static int getoptidx(char *searchtype)
+ 
+ static int error_message(char *msg)
+ {
+-    fprintf(stderr, msg);
++    fprintf(stderr, "%s", msg);
+     return(0);
+ }
+ 

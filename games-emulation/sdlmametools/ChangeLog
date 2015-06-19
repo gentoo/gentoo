@@ -1,0 +1,37 @@
+# ChangeLog for games-emulation/sdlmametools
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/sdlmametools/ChangeLog,v 1.7 2015/06/04 16:36:38 mr_bones_ Exp $
+
+  04 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  sdlmametools-0.148_p1.ebuild:
+  replace nonfatal with file checking (bug #551170)
+
+  04 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  sdlmametools-0.149.ebuild:
+  remove pointless nonfatal (bug #551170)
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> sdlmametools-0.148_p1.ebuild,
+  sdlmametools-0.149.ebuild:
+  Drop old Python implementations
+
+  22 Nov 2013; Julian Ospald <hasufell@gentoo.org> sdlmametools-0.148_p1.ebuild:
+  stable on x86 wrt #486686
+
+  03 Oct 2013; Chema Alonso <nimiux@gentoo.org> sdlmametools-0.148_p1.ebuild:
+  Stable for amd64 wrt bug #486686
+
+*sdlmametools-0.149 (26 Jun 2013)
+
+  26 Jun 2013; Julian Ospald <hasufell@gentoo.org> +sdlmametools-0.149.ebuild,
+  +files/sdlmametools-0.149-QA.patch,
+  +files/sdlmametools-0.149-debugger-linking.patch,
+  +files/sdlmametools-0.149-no-opengl.patch,
+  +files/sdlmametools-0.149-system-lua.patch:
+  version bump
+
+*sdlmametools-0.148_p1 (15 Mar 2013)
+
+  15 Mar 2013; Julian Ospald <hasufell@gentoo.org>
+  +sdlmametools-0.148_p1.ebuild, +files/sdlmametools-0.148_p1-makefile.patch,
+  +files/sdlmametools-0.148_p1-no-opengl.patch, +metadata.xml:
+  initial import, splitted from games-emulation/sdlmame

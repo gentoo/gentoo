@@ -1,0 +1,55 @@
+# ChangeLog for dev-dotnet/google-gdata-sharp
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/google-gdata-sharp/ChangeLog,v 1.10 2013/02/05 18:20:30 pacho Exp $
+
+  05 Feb 2013; Pacho Ramos <pacho@gentoo.org>
+  -google-gdata-sharp-1.4.0.2.ebuild, metadata.xml:
+  Cleanup after talking with Ford_Prefect
+
+  22 Dec 2010; Markos Chandras <hwoarang@gentoo.org>
+  google-gdata-sharp-1.4.0.2-r2.ebuild:
+  Stable on amd64 wrt bug #313107
+
+  03 Dec 2010; Christian Faulhammer <fauli@gentoo.org>
+  google-gdata-sharp-1.4.0.2-r2.ebuild:
+  stable x86, bug 313107
+
+*google-gdata-sharp-1.4.0.2-r2 (26 Oct 2010)
+
+  26 Oct 2010; Pacho Ramos <pacho@gentoo.org>
+  -google-gdata-sharp-1.4.0.2-r1.ebuild,
+  +google-gdata-sharp-1.4.0.2-r2.ebuild:
+  r1 wasn't installing anything, and PREFIX is also needed at compile time
+  to generate pkgconfig files properly. Remove broken version.
+
+  15 Oct 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  google-gdata-sharp-1.4.0.2-r1.ebuild:
+  Dropping base.eclass meant dropping eutils.eclass as well, fix missing
+  epatch.
+
+*google-gdata-sharp-1.4.0.2-r1 (15 Oct 2010)
+
+  15 Oct 2010; Arun Raghavan <ford_prefect@gentoo.org>
+  +google-gdata-sharp-1.4.0.2-r1.ebuild:
+  Pass arguments to emake instead of setting MAKEOPTS. Drop base.eclass
+  while we're at it.
+
+  12 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  google-gdata-sharp-1.4.0.2.ebuild:
+  stable x86, bug 327279
+
+  09 Jul 2010; Pacho Ramos <pacho@gentoo.org>
+  google-gdata-sharp-1.4.0.2.ebuild:
+  amd64 stable, bug 327279
+
+  08 Jul 2010; Pacho Ramos <pacho@gentoo.org>
+  google-gdata-sharp-1.4.0.2.ebuild:
+  Restrict tests due bug #310101 (as fedora is also doing). Reconsider in
+  future bumps.
+
+*google-gdata-sharp-1.4.0.2 (11 Mar 2010)
+
+  11 Mar 2010; Arun Raghavan <ford_prefect@gentoo.org>
+  +google-gdata-sharp-1.4.0.2.ebuild, +files/pkgconfig-typo-fix.patch,
+  +metadata.xml:
+  Initial commit of C# bindings for the GData API.

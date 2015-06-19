@@ -1,0 +1,13 @@
+# ChangeLog for media-sound/din
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/din/ChangeLog,v 1.2 2015/03/25 16:01:54 jlec Exp $
+
+  25 Mar 2015; Justin Lecher <jlec@gentoo.org> din-5.2.1.ebuild:
+  Fix tcl/tk slotting
+
+*din-5.2.1 (06 Apr 2013)
+
+  06 Apr 2013; Tim Harder <radhermit@gentoo.org> +din-5.2.1.ebuild,
+  +files/din-5.2.1-desktop.patch, +files/din-5.2.1-makefile.patch,
+  +files/din-5.2.1-tcl.patch, +metadata.xml:
+  Initial import.

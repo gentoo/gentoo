@@ -1,0 +1,300 @@
+# Bazaar merge directive format 2 (Bazaar 0.90)
+# revision_id: serkan@gentoo.org-20110328160500-s98m2vzg7wh44xsx
+# target_branch: ../mainline
+# testament_sha1: 3cf7a2a7e1af3fab89b8ead7f906642d84977eb2
+# timestamp: 2011-03-28 19:11:05 +0300
+# source_branch: /usr/portage/dev-java/java-gnome/files/java-gnome-\
+#   4.0.19-libnotify-0.7.patch
+# base_revision_id: andrew@operationaldynamics.com-20110214064042-\
+#   fv6tgq41rru7wjng
+# 
+# Begin patch
+=== modified file 'configure'
+--- configure	2011-02-14 06:40:42 +0000
++++ configure	2011-02-14 22:27:29 +0000
+@@ -805,7 +805,7 @@
+ 			"gtkspell");
+ 
+ 	check_system_library(@gnomedev_libs,
+-			"libnotify >= 0.4.5 libnotify < 0.7.0",
++			"libnotify >= 0.7.0",
+ 			"LibNotify",
+ 			"libnotify");
+ 
+@@ -853,7 +853,7 @@
+ 			"FIXME");
+ 
+ 	check_system_library(@gnomedev_libs,
+-			"libnotify >= 0.4.5 libnotify < 0.7.0",
++			"libnotify >= 0.7.0",
+ 			"LibNotify",
+ 			"FIXME");
+ 
+@@ -917,7 +917,7 @@
+ 			"libgtksourceview2.0-dev");
+ 
+ 	check_system_library(@gnomedev_libs,
+-			"libnotify >= 0.4.5 libnotify < 0.7.0",
++			"libnotify >= 0.7.0",
+ 			"LibNotify",
+ 			"libnotify-dev");
+ 
+@@ -968,7 +968,7 @@
+ 			"FIXME");
+ 
+ 	check_system_library(@gnomedev_libs,
+-			"libnotify >= 0.4.5 libnotify < 0.7.0",
++			"libnotify >= 0.7.0",
+ 			"LibNotify",
+ 			"FIXME");
+ 
+@@ -1020,7 +1020,7 @@
+ 			"lib${cpu_arch}gtksourceview-2.0-devel");
+ 
+ 	check_system_library(@gnomedev_libs,
+-			"libnotify >= 0.4.5 libnotify < 0.7.0",
++			"libnotify >= 0.7.0",
+ 			"LibNotify",
+ 			"lib${cpu_arch}notify-devel");
+ 
+@@ -1083,7 +1083,7 @@
+ 			"FIXME");
+ 
+ 	check_system_library(@gnomedev_libs,
+-			"libnotify >= 0.4.5 libnotify < 0.7.0",
++			"libnotify >= 0.7.0",
+ 			"LibNotify",
+ 			"FIXME");
+ 
+
+=== modified file 'doc/examples/notify/ExampleLowBattery.java'
+--- doc/examples/notify/ExampleLowBattery.java	2010-01-06 06:54:34 +0000
++++ doc/examples/notify/ExampleLowBattery.java	2011-03-28 16:05:00 +0000
+@@ -61,7 +61,7 @@
+          */
+ 
+         notification = new Notification("Low Battery Example", "Your battery is low!",
+-                "messagebox_warning", icon);
++                "messagebox_warning");
+ 
+         /*
+          * Quit the application after notification disappears.
+
+=== modified file 'src/bindings/org/gnome/notify/Notification.java'
+--- src/bindings/org/gnome/notify/Notification.java	2011-02-14 03:34:07 +0000
++++ src/bindings/org/gnome/notify/Notification.java	2011-03-13 22:23:48 +0000
+@@ -80,46 +80,9 @@
+      */
+ 
+     public Notification(String summary, String body, String icon) {
+-        super(NotifyNotification.createNotification(summary, body, icon, null));
++        super(NotifyNotification.createNotification(summary, body, icon));
+     }
+ 
+-    /**
+-     * Create a new notification.
+-     * 
+-     * <p>
+-     * The summary appears on the titlebar of notification and body appears as
+-     * its text. Icon may be a string defining a theme icon or the filename
+-     * identifying the icon that appears next to text. Attach identifies the
+-     * widget that the notification relates to.
+-     * 
+-     * <p>
+-     * Note that all but summary can be <code>null</code>.
+-     * 
+-     * @since 4.0.12
+-     * @deprecated In GNOME 3, notifications will be independent of widgets
+-     *             and status icons. See
+-     *             http://live.gnome.org/GnomeShell/Design
+-     *             /Guidelines/MessageTray/Compatibility
+-     */
+-
+-    public Notification(String summary, String body, String icon, Widget attach) {
+-        super(NotifyNotification.createNotification(summary, body, icon, attach));
+-    }
+-
+-    /**
+-     * Create a new notification attached to a {@link StatusIcon}. See
+-     * {@link #Notification(String,String,String,Widget) Notification()} for
+-     * other parameters.
+-     * 
+-     * @since 4.0.12
+-     * @deprecated In GNOME 3, notifications will be independent of widgets
+-     *             and status icons. See
+-     *             http://live.gnome.org/GnomeShell/Design
+-     *             /Guidelines/MessageTray/Compatibility
+-     */
+-    public Notification(String summary, String body, String icon, StatusIcon statusIcon) {
+-        super(NotifyNotification.createNotificationWithStatusIcon(summary, body, icon, statusIcon));
+-    }
+ 
+     /**
+      * Updates the notification with given parameters see
+@@ -135,43 +98,6 @@
+     }
+ 
+     /**
+-     * Attaches Notification to a Widget setting hints to its location.
+-     * 
+-     * @since 4.0.12
+-     * @deprecated In GNOME 3, notifications will be independent of widgets
+-     *             and status icons. See
+-     *             http://live.gnome.org/GnomeShell/Design
+-     *             /Guidelines/MessageTray/Compatibility
+-     */
+-    public void attach(Widget attach) {
+-        NotifyNotification.attachToWidget(this, attach);
+-    }
+-
+-    /**
+-     * Attaches Notification to a {@link StatusIcon} setting hints to its
+-     * location.
+-     * 
+-     * @since 4.0.12
+-     * @deprecated In GNOME 3, notifications will be independent of widgets
+-     *             and status icons. See
+-     *             http://live.gnome.org/GnomeShell/Design
+-     *             /Guidelines/MessageTray/Compatibility
+-     */
+-    public void attach(StatusIcon statusIcon) {
+-        NotifyNotification.attachToStatusIcon(this, statusIcon);
+-    }
+-
+-    /**
+-     * Sets the position of the notification to display on screen.
+-     * 
+-     * @since 4.0.12
+-     * @deprecated In GNOME 3
+-     */
+-    public void setGeometryHints(Screen screen, int x, int y) {
+-        NotifyNotification.setGeometryHints(this, screen, x, y);
+-    }
+-
+-    /**
+      * Display the notification on screen.
+      * 
+      * @since 4.0.12
+
+=== modified file 'src/defs/NotifyNotification.defs'
+--- src/defs/NotifyNotification.defs	2009-05-16 05:46:28 +0000
++++ src/defs/NotifyNotification.defs	2011-01-31 17:58:10 +0000
+@@ -15,19 +15,6 @@
+     '("const-gchar*" "summary")
+     '("const-gchar*" "body" (null-ok))
+     '("const-gchar*" "icon" (null-ok))
+-    '("GtkWidget*" "attach" (null-ok))
+-  )
+-)
+-
+-(define-function notify_notification_new_with_status_icon
+-  (is-constructor-of "NotifyNotification")
+-  (c-name "notify_notification_new_with_status_icon")
+-  (return-type "NotifyNotification*")
+-  (parameters
+-    '("const-gchar*" "summary")
+-    '("const-gchar*" "body" (null-ok))
+-    '("const-gchar*" "icon" (null-ok))
+-    '("GtkStatusIcon*" "status_icon")
+   )
+ )
+ 
+@@ -42,35 +29,6 @@
+   )
+ )
+ 
+-(define-method attach_to_widget
+-  (of-object "NotifyNotification")
+-  (c-name "notify_notification_attach_to_widget")
+-  (return-type "none")
+-  (parameters
+-    '("GtkWidget*" "attach")
+-  )
+-)
+-
+-(define-method attach_to_status_icon
+-  (of-object "NotifyNotification")
+-  (c-name "notify_notification_attach_to_status_icon")
+-  (return-type "none")
+-  (parameters
+-    '("GtkStatusIcon*" "status_icon")
+-  )
+-)
+-
+-(define-method set_geometry_hints
+-  (of-object "NotifyNotification")
+-  (c-name "notify_notification_set_geometry_hints")
+-  (return-type "none")
+-  (parameters
+-    '("GdkScreen*" "screen")
+-    '("gint" "x")
+-    '("gint" "y")
+-  )
+-)
+-
+ (define-method show
+   (of-object "NotifyNotification")
+   (c-name "notify_notification_show")
+
+# Begin bundle
+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
+5IpwoSEBdhhE

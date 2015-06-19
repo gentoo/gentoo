@@ -1,0 +1,17 @@
+dont ignore ldflags
+bug #209731
+
+
+Index: detex-2.8/Makefile
+===================================================================
+--- detex-2.8.orig/Makefile
++++ detex-2.8/Makefile
+@@ -104,7 +104,7 @@ D_OBJ	= detex.o
+ all:	${PROGS}
+ 
+ detex: ${D_OBJ}
+-	${CC} ${CFLAGS} -o $@ ${D_OBJ} ${LEXLIB}
++	${CC} $(LDFLAGS) ${CFLAGS} -o $@ ${D_OBJ} ${LEXLIB}
+ 
+ detex.c:
+ 	sed -f states.sed detex.l > xxx.l

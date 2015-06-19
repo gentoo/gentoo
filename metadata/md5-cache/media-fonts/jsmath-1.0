@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst postrm setup
+DEPEND=X? ( x11-apps/mkfontdir media-fonts/encodings )
+DESCRIPTION=Raster fonts for jsmath
+HOMEPAGE=http://www.math.union.edu/~dpvc/jsMath/
+IUSE=X
+KEYWORDS=amd64 ppc x86
+LICENSE=Apache-2.0
+SLOT=0
+SRC_URI=http://www.math.union.edu/~dpvc/jsMath/download/TeX-fonts-linux.tgz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	font	b3239d2dc442d1717b9725e2be7cb5d6	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=1c76325676c03b87081f48ce90c7bf41

@@ -1,0 +1,15 @@
+# ChangeLog for games-fps/duke3d-demodata
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/duke3d-demodata/ChangeLog,v 1.3 2014/11/25 23:12:11 hasufell Exp $
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+  01 Jun 2014; Julian Ospald <hasufell@gentoo.org> duke3d-demodata-1.3.ebuild:
+  stable
+
+*duke3d-demodata-1.3 (02 Feb 2013)
+
+  02 Feb 2013; Julian Ospald <hasufell@gentoo.org> +duke3d-demodata-1.3.ebuild,
+  +metadata.xml:
+  initial import

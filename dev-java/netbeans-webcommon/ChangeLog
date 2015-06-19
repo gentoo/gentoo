@@ -1,0 +1,60 @@
+# ChangeLog for dev-java/netbeans-webcommon
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/netbeans-webcommon/ChangeLog,v 1.12 2015/05/21 14:59:01 monsieurp Exp $
+
+  21 May 2015; Patrice Clement <monsieurp@gentoo.org>
+  -netbeans-webcommon-7.2.ebuild:
+  Remove old.
+
+  21 May 2015; Agostino Sarubbo <ago@gentoo.org>
+  netbeans-webcommon-8.0.2.ebuild:
+  Stable for x86, wrt bug #538862
+
+  21 May 2015; Agostino Sarubbo <ago@gentoo.org>
+  netbeans-webcommon-8.0.2.ebuild:
+  Stable for amd64, wrt bug #538862
+
+  04 Feb 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-webcommon-7.3.ebuild, -netbeans-webcommon-7.4.ebuild,
+  -netbeans-webcommon-8.0.ebuild:
+  removed obsolete ebuilds
+
+  04 Feb 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  netbeans-webcommon-8.0.2.ebuild:
+  restricted compilation to jdk7
+
+*netbeans-webcommon-8.0.2 (07 Dec 2014)
+
+  07 Dec 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-webcommon-8.0.2.ebuild:
+  bumped to version 8.0.2 in 8.0 slot
+
+*netbeans-webcommon-8.0 (23 Mar 2014)
+
+  23 Mar 2014; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-webcommon-8.0.ebuild:
+  new ebuild for version 8.0
+
+*netbeans-webcommon-7.4 (16 Oct 2013)
+
+  16 Oct 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-webcommon-7.4.ebuild:
+  version bump
+
+*netbeans-webcommon-7.3 (21 Feb 2013)
+
+  21 Feb 2013; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-webcommon-7.3.ebuild:
+  version bump
+
+  09 Dec 2012; <ago@gentoo.org> netbeans-webcommon-7.2.ebuild:
+  Stable for x86, wrt bug #441170
+
+  09 Dec 2012; <ago@gentoo.org> netbeans-webcommon-7.2.ebuild:
+  Stable for amd64, wrt bug #441170
+
+*netbeans-webcommon-7.2 (25 Jul 2012)
+
+  25 Jul 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +netbeans-webcommon-7.2.ebuild:
+  netbeans 7.2 release

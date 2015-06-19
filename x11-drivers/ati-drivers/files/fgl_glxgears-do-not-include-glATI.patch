@@ -1,0 +1,11 @@
+diff -Nur extra/fgl_glxgears/fgl_glxgears.c extra-r1/fgl_glxgears/fgl_glxgears.c
+--- extra/fgl_glxgears/fgl_glxgears.c	2012-08-29 09:59:03.000000000 +0300
++++ extra-r1/fgl_glxgears/fgl_glxgears.c	2013-09-07 09:26:11.034723135 +0300
+@@ -78,7 +78,6 @@
+ #endif // _WIN32
+ 
+ #define INT_PTR ptrdiff_t
+-#include <GL/glATI.h>
+ 
+ #ifdef _WIN32
+ #include <GL/wglATI.h>

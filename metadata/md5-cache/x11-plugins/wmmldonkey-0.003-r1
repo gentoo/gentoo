@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst prepare
+DEPEND=x11-libs/libXext x11-libs/libX11 x11-libs/libXpm net-p2p/mldonkey
+DESCRIPTION=wmmsg is a dockapp to show the up and downloadrate from your mldonkey
+EAPI=5
+HOMEPAGE=http://dockapps.windowmaker.org/file.php/id/174
+KEYWORDS=amd64 x86
+LICENSE=GPL-1
+RDEPEND=x11-libs/libXext x11-libs/libX11 x11-libs/libXpm
+SLOT=0
+SRC_URI=http://dockapps.windowmaker.org/download.php/id/298/wmmldonkey3.tar.gz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=e0cb17f86e58f0afca1e80b0e70e8f06

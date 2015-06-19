@@ -1,0 +1,34 @@
+# ChangeLog for games-mud/wxmud
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-mud/wxmud/ChangeLog,v 1.9 2015/04/08 18:11:16 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> wxmud-9999.ebuild:
+  Drop old Python implementations
+
+  17 Aug 2014; Mart Raudsepp <leio@gentoo.org> metadata.xml:
+  Remove games herd from maintainership.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> wxmud-9999.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  01 Apr 2013; Julian Ospald <hasufell@gentoo.org> wxmud-9999.ebuild:
+  use python-single-r1, bump EAPI
+
+  27 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> wxmud-9999.ebuild:
+  Fix slot-dep on gtk+
+
+  15 Nov 2009; Tomáš Chvátal <scarabeus@gentoo.org> wxmud-9999.ebuild:
+  QA: drop keywords from live package.
+
+  13 Feb 2008; Mart Raudsepp <leio@gentoo.org> wxmud-9999.ebuild:
+  Add ~amd64
+
+  28 Dec 2007; Mart Raudsepp <leio@gentoo.org> wxmud-9999.ebuild:
+  Use games.eclass
+
+*wxmud-9999 (28 Dec 2007)
+
+  28 Dec 2007; Mart Raudsepp <leio@gentoo.org> +metadata.xml,
+  +wxmud-9999.ebuild:
+  Initial import of wxMUD as a live SVN version till first release is out - a
+  graphical MUD client with MXP support amongst other more usual features

@@ -1,0 +1,23 @@
+Sun Feb 17 19:33:56 FET 2013  Adam Vogt <vogt.adam@gmail.com>
+  * Remove unnecessary contexts from L.MultiToggle
+diff -rN -u old-XMonadContrib/XMonad/Layout/MultiToggle.hs new-XMonadContrib/XMonad/Layout/MultiToggle.hs
+--- old-XMonadContrib/XMonad/Layout/MultiToggle.hs	2014-02-06 00:58:32.422844682 +0300
++++ new-XMonadContrib/XMonad/Layout/MultiToggle.hs	2014-02-06 00:58:32.462844684 +0300
+@@ -99,7 +99,7 @@
+     transform :: (LayoutClass l a) => t -> l a ->
+         (forall l'. (LayoutClass l' a) => l' a -> (l' a -> l a) -> b) -> b
+ 
+-data (LayoutClass l a) => EL l a = forall l'. (LayoutClass l' a) => EL (l' a) (l' a -> l a)
++data  EL l a = forall l'. (LayoutClass l' a) => EL (l' a) (l' a -> l a)
+ 
+ unEL :: (LayoutClass l a) => EL l a -> (forall l'. (LayoutClass l' a) => l' a -> b) -> b
+ unEL (EL x _) k = k x
+@@ -159,7 +159,7 @@
+ infixr 0 ??
+ -- | Prepend an element to a heterogeneous list. Used to build transformer
+ -- tables for 'mkToggle'.
+-(??) :: (HList b w) => a -> b -> HCons a b
++(??) ::  a -> b -> HCons a b
+ (??) = HCons
+ 
+ -- | Construct a singleton transformer table.

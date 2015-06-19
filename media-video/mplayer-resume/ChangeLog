@@ -1,0 +1,52 @@
+# ChangeLog for media-video/mplayer-resume
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer-resume/ChangeLog,v 1.12 2012/11/18 17:45:08 hwoarang Exp $
+
+  18 Nov 2012; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Remove beandog wrt #131511
+
+  14 Sep 2012; Matti Bickel <mabi@gentoo.org> -mplayer-resume-1.3.ebuild,
+  -mplayer-resume-1.5.ebuild, -mplayer-resume-1.6.ebuild:
+  remove old
+
+  20 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  mplayer-resume-2.0.ebuild:
+  Stable on amd64 wrt bug #336869
+
+  14 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  mplayer-resume-2.0.ebuild:
+  x86 stable, bug 336869
+
+  03 Jul 2010; Matti Bickel <mabi@gentoo.org> mplayer-resume-2.0.ebuild:
+  update RDEPEND for php-5.3 (bug #298205)
+
+*mplayer-resume-2.0 (12 Aug 2009)
+
+  12 Aug 2009; Steve Dibb <beandog@gentoo.org> +mplayer-resume-2.0.ebuild:
+  Version bump
+
+*mplayer-resume-1.6 (16 Dec 2008)
+
+  16 Dec 2008; Steve Dibb <beandog@gentoo.org> +mplayer-resume-1.6.ebuild:
+  Version bump
+
+*mplayer-resume-1.5 (13 Jan 2008)
+
+  13 Jan 2008; Steve Dibb <beandog@gentoo.org> +mplayer-resume-1.5.ebuild:
+  Version bump
+
+  01 May 2007; Marius Mauch <genone@gentoo.org> mplayer-resume-1.3.ebuild:
+  Replacing einfo with elog
+
+  27 Feb 2007; Simon Stelling <blubb@gentoo.org> mplayer-resume-1.3.ebuild:
+  stable on amd64; bug 165387
+
+  08 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  mplayer-resume-1.3.ebuild:
+  stable x86; bug #165387
+
+*mplayer-resume-1.3 (25 Oct 2006)
+
+  25 Oct 2006; Steve Dibb <beandog@gentoo.org> +metadata.xml,
+  +mplayer-resume-1.3.ebuild:
+  Initial commit

@@ -1,0 +1,74 @@
+# ChangeLog for media-plugins/vamp-aubio-plugins
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vamp-aubio-plugins/ChangeLog,v 1.16 2015/05/17 20:04:46 pacho Exp $
+
+  17 May 2015; Pacho Ramos <pacho@gentoo.org> vamp-aubio-plugins-0.5.0.ebuild:
+  ppc64 stable wrt bug #547606
+
+  13 May 2015; Agostino Sarubbo <ago@gentoo.org>
+  vamp-aubio-plugins-0.5.0.ebuild:
+  Stable for x86, wrt bug #547606
+
+  13 May 2015; Agostino Sarubbo <ago@gentoo.org>
+  vamp-aubio-plugins-0.5.0.ebuild:
+  Stable for amd64, wrt bug #547606
+
+*vamp-aubio-plugins-0.5.0 (11 Mar 2015)
+
+  11 Mar 2015; Alexis Ballier <aballier@gentoo.org>
+  +vamp-aubio-plugins-0.5.0.ebuild:
+  version bump
+
+  12 Jun 2010; Alexis Ballier <aballier@gentoo.org>
+  -vamp-aubio-plugins-0.3.2b.ebuild,
+  -files/vamp-aubio-plugins-0.3.2b-gcc43.patch:
+  remove old
+
+  06 Jan 2010; Brent Baude <ranger@gentoo.org>
+  vamp-aubio-plugins-0.3.2c.ebuild:
+  Marking vamp-aubio-plugins-0.3.2c ppc64 for bug 286995
+
+  03 Oct 2009; Markus Meier <maekke@gentoo.org>
+  vamp-aubio-plugins-0.3.2c.ebuild:
+  amd64 stable, bug #286995
+
+  03 Oct 2009; Markus Meier <maekke@gentoo.org>
+  vamp-aubio-plugins-0.3.2c.ebuild:
+  x86 stable, bug #286995
+
+  09 May 2009; Alexis Ballier <aballier@gentoo.org>
+  vamp-aubio-plugins-0.3.2b.ebuild:
+  explicitly assign rdepend
+
+*vamp-aubio-plugins-0.3.2c (09 May 2009)
+
+  09 May 2009; Alexis Ballier <aballier@gentoo.org>
+  +vamp-aubio-plugins-0.3.2c.ebuild:
+  version bump
+
+  11 Jul 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/vamp-aubio-plugins-0.3.2b-gcc43.patch,
+  vamp-aubio-plugins-0.3.2b.ebuild:
+  gcc 4.3 build fix
+
+  29 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  vamp-aubio-plugins-0.3.2b.ebuild:
+  stable x86, security bug 199751
+
+  29 Jan 2008; Markus Rothe <corsair@gentoo.org>
+  vamp-aubio-plugins-0.3.2b.ebuild:
+  Stable on ppc64; bug #199751
+
+  25 Nov 2007; Brent Baude <ranger@gentoo.org>
+  vamp-aubio-plugins-0.3.2b.ebuild:
+  Marking ~ppc for dep on bug 199390
+
+  20 Nov 2007; Markus Rothe <corsair@gentoo.org>
+  vamp-aubio-plugins-0.3.2b.ebuild:
+  Added ~ppc64; bug #199390
+
+*vamp-aubio-plugins-0.3.2b (17 Nov 2007)
+
+  17 Nov 2007; Alexis Ballier <aballier@gentoo.org> +metadata.xml,
+  +vamp-aubio-plugins-0.3.2b.ebuild:
+  initial import

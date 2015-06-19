@@ -1,0 +1,48 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-dns/dnscrypt-proxy/files/dnscrypt-proxy.initd,v 1.1 2014/12/22 14:30:41 dlan Exp $
+
+DNSCRYPT_LOGFILE=${DNSCRYPT_LOGFILE:-/var/log/dnscrypt-proxy.log}
+
+rundir=${rundir:-/var/run/dnscrypt-proxy}
+pidfile=${pidfile:-${rundir}/dnscrypt-proxy.pid}
+rundir=${rundir:-/var/run/dnscrypt-proxy}
+runas_user=${runas_user:-dnscrypt}
+runas_group=${runas_user:-dnscrypt}
+
+depend() {
+	use net
+	before dns
+	after logger
+}
+
+start() {
+	if [ ! -d "${rundir}" ]; then
+		mkdir "${rundir}"
+		if [ -n "${runas_user}" ]; then
+			touch  ${DNSCRYPT_LOGFILE}
+			chown ${runas_user}:${runas_group} ${DNSCRYPT_LOGFILE}
+			chown -R ${runas_user}:${runas_group} "${rundir}"
+		fi
+	fi
+
+	ebegin "Starting dnscrypt-proxy"
+	start-stop-daemon --start --quiet \
+		--exec /usr/sbin/dnscrypt-proxy \
+		-- \
+		--pidfile=${pidfile} \
+		--logfile=${DNSCRYPT_LOGFILE} \
+		--daemonize --user=${runas_user} \
+		--local-address=${DNSCRYPT_LOCALIP}:${DNSCRYPT_LOCALPORT} \
+		--resolver-address=${DNSCRYPT_RESOLVERIP}:${DNSCRYPT_RESOLVERPORT} \
+		--provider-name=${DNSCRYPT_PROVIDER_NAME} \
+		--provider-key=${DNSCRYPT_PROVIDER_KEY}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping dnscrypt-proxy"
+	start-stop-daemon --stop --quiet --exec /usr/sbin/dnscrypt-proxy
+	eend $?
+}

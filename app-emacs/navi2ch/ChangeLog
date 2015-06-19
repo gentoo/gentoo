@@ -1,0 +1,273 @@
+# ChangeLog for app-emacs/navi2ch
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/navi2ch/ChangeLog,v 1.74 2015/06/09 11:02:37 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  09 May 2013; Christian Faulhammer <fauli@gentoo.org> navi2ch-1.8.3-r1.ebuild,
+  navi2ch-1.8.4.ebuild:
+  extend DESCRIPTION field as proposed on bug 458528 by Jonas Stein
+
+  08 Mar 2012; Brent Baude <ranger@gentoo.org> navi2ch-1.8.4.ebuild:
+  Marking navi2ch-1.8.4 ppc64 for bug 392817
+
+  28 Feb 2012; Brent Baude <ranger@gentoo.org> navi2ch-1.8.4.ebuild:
+  Marking navi2ch-1.8.4 ppc for bug 392817
+
+  05 Feb 2012; Raúl Porcel <armin76@gentoo.org> navi2ch-1.8.3-r1.ebuild,
+  navi2ch-1.8.4.ebuild:
+  Drop alpha/sparc keywords
+
+  11 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> navi2ch-1.8.4.ebuild:
+  x86 stable wrt bug #392817
+
+  09 Dec 2011; Markos Chandras <hwoarang@gentoo.org> navi2ch-1.8.4.ebuild:
+  Stable on amd64 wrt bug #392819
+
+*navi2ch-1.8.4 (29 Mar 2011)
+
+  29 Mar 2011; MATSUU Takuto <matsuu@gentoo.org> +navi2ch-1.8.4.ebuild:
+  Version bumped.
+
+  23 May 2010; Ulrich Mueller <ulm@gentoo.org> -navi2ch-1.8.3.ebuild:
+  Remove old.
+
+  23 May 2010; Pacho Ramos <pacho@gentoo.org> navi2ch-1.8.3-r1.ebuild:
+  stable amd64, bug 309043
+
+  05 Apr 2010; Raúl Porcel <armin76@gentoo.org> navi2ch-1.8.3-r1.ebuild:
+  alpha/sparc stable wrt #309043
+
+  24 Mar 2010; Brent Baude <ranger@gentoo.org> navi2ch-1.8.3-r1.ebuild:
+  stable ppc, bug 309043
+
+  16 Mar 2010; Christian Faulhammer <fauli@gentoo.org>
+  navi2ch-1.8.3-r1.ebuild:
+  stable x86, bug 309043
+
+  13 Mar 2010; Brent Baude <ranger@gentoo.org> navi2ch-1.8.3-r1.ebuild:
+  stable ppc64, bug 309043
+
+*navi2ch-1.8.3-r1 (31 Jan 2010)
+
+  31 Jan 2010; Ulrich Mueller <ulm@gentoo.org> +navi2ch-1.8.3-r1.ebuild:
+  Add prefix keywords, change EAPI to 3.
+
+  31 Aug 2009; Christian Faulhammer <fauli@gentoo.org>
+  -navi2ch-1.8.1.ebuild, -navi2ch-1.8.2.ebuild:
+  clean up
+
+  31 Aug 2009; Brent Baude <ranger@gentoo.org> navi2ch-1.8.3.ebuild:
+  stable ppc64, bug 272465
+
+  11 Jun 2009; Markus Meier <maekke@gentoo.org> navi2ch-1.8.3.ebuild:
+  amd64 stable, bug #272465
+
+  07 Jun 2009; Ferris McCormick <fmccor@gentoo.org> navi2ch-1.8.3.ebuild:
+  Sparc stable, Bug #272465.
+
+  07 Jun 2009; Tobias Klausmann <klausman@gentoo.org> navi2ch-1.8.3.ebuild:
+  Stable on alpha, bug #272465
+
+  06 Jun 2009; nixnut <nixnut@gentoo.org> navi2ch-1.8.3.ebuild:
+  ppc stable #272465
+
+  04 Jun 2009; Christian Faulhammer <fauli@gentoo.org> navi2ch-1.8.3.ebuild:
+  stable x86, bug 272465
+
+*navi2ch-1.8.3 (11 May 2009)
+
+  11 May 2009; MATSUU Takuto <matsuu@gentoo.org> +navi2ch-1.8.3.ebuild:
+  Version bumped.
+
+*navi2ch-1.8.2 (01 Mar 2009)
+
+  01 Mar 2009; MATSUU Takuto <matsuu@gentoo.org> +navi2ch-1.8.2.ebuild:
+  Version bumped.
+
+  08 Jan 2009; Christian Faulhammer <fauli@gentoo.org>
+  -navi2ch-1.7.5_p20070510.ebuild, -navi2ch-1.7.5_p20080325.ebuild:
+  clean up
+
+  07 Jan 2009; Brent Baude <ranger@gentoo.org> navi2ch-1.8.1.ebuild:
+  stable ppc64, bug 253327
+
+  05 Jan 2009; Raúl Porcel <armin76@gentoo.org> navi2ch-1.8.1.ebuild:
+  alpha stable wrt #253327
+
+  04 Jan 2009; Tiago Cunha <tcunha@gentoo.org> navi2ch-1.8.1.ebuild:
+  stable sparc, bug 253327
+
+  04 Jan 2009; Markus Meier <maekke@gentoo.org> navi2ch-1.8.1.ebuild:
+  amd64/x86 stable, bug #253327
+
+  02 Jan 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  navi2ch-1.8.1.ebuild:
+  ppc stable, bug #253327
+
+*navi2ch-1.8.1 (01 Dec 2008)
+
+  01 Dec 2008; MATSUU Takuto <matsuu@gentoo.org> +navi2ch-1.8.1.ebuild:
+  Version bumped.
+
+  14 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  -navi2ch-1.7.5.ebuild:
+  clean up
+
+  14 Jun 2008; nixnut <nixnut@gentoo.org> navi2ch-1.7.5_p20070510.ebuild:
+  Stable on ppc wrt bug 222039
+
+  15 May 2008; Markus Meier <maekke@gentoo.org>
+  navi2ch-1.7.5_p20070510.ebuild:
+  amd64 stable, bug #222039
+
+  15 May 2008; Raúl Porcel <armin76@gentoo.org>
+  navi2ch-1.7.5_p20070510.ebuild:
+  alpha/sparc stable wrt #222039
+
+  14 May 2008; Christian Faulhammer <opfer@gentoo.org>
+  navi2ch-1.7.5_p20070510.ebuild:
+  stable x86, bug 222039
+
+  14 May 2008; Markus Rothe <corsair@gentoo.org>
+  navi2ch-1.7.5_p20070510.ebuild:
+  Stable on ppc64; bug #222039
+
+*navi2ch-1.7.5_p20070510 (28 Apr 2008)
+
+  28 Apr 2008; Ulrich Mueller <ulm@gentoo.org>
+  +navi2ch-1.7.5_p20070510.ebuild:
+  Also add snapshot recommended by upstream, bug 219449.
+
+*navi2ch-1.7.5_p20080325 (27 Apr 2008)
+
+  27 Apr 2008; Ulrich Mueller <ulm@gentoo.org> files/50navi2ch-gentoo.el,
+  +navi2ch-1.7.5_p20080325.ebuild:
+  Add CVS snapshot, bug 219449.
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing usata from metadata.xml as per #22931.
+
+  16 Oct 2007; Christian Faulhammer <opfer@gentoo.org> navi2ch-1.7.5.ebuild:
+  stable amd64, bug 195112
+
+  12 Oct 2007; Ulrich Mueller <ulm@gentoo.org> -navi2ch-1.7.4.ebuild:
+  Remove old.
+
+  11 Oct 2007; Tom Gall <tgall@gentoo.org> navi2ch-1.7.5.ebuild:
+  stable on ppc64 bug #195112
+
+  09 Oct 2007; Raúl Porcel <armin76@gentoo.org> navi2ch-1.7.5.ebuild:
+  alpha/sparc stable wrt #195112
+
+  09 Oct 2007; Lars Weiler <pylon@gentoo.org> navi2ch-1.7.5.ebuild:
+  stable ppc, bug #195112
+
+  08 Oct 2007; Christian Faulhammer <opfer@gentoo.org> navi2ch-1.7.5.ebuild:
+  stable x86, bug 195112
+
+  08 Oct 2007; Christian Faulhammer <opfer@gentoo.org> navi2ch-1.7.5.ebuild:
+  adjust DESCRIPTION and straighten pkg_postinst
+
+  06 Oct 2007; Ulrich Mueller <ulm@gentoo.org> navi2ch-1.7.4.ebuild,
+  navi2ch-1.7.5.ebuild:
+  Minor QA: quote some variables. Remove redundant virtual/emacs dependency.
+  Drop ppc-macos keyword.
+
+  23 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  -navi2ch-1.7.3.ebuild:
+  clean up
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> navi2ch-1.7.3.ebuild,
+  navi2ch-1.7.4.ebuild, navi2ch-1.7.5.ebuild:
+  Convert to use elog.
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> navi2ch-1.7.3.ebuild,
+  navi2ch-1.7.4.ebuild, navi2ch-1.7.5.ebuild:
+  Remove gnuconfig_update usage, leave it to econf.
+
+  01 Jul 2005; Matthew Kennedy <mkennedy@gentoo.org> navi2ch-1.7.5.ebuild:
+  Keywording ~amd64.
+
+  19 Dec 2004; Yuta SATOH <nigoro@gentoo.org> navi2ch-1.7.4.ebuild:
+  Stable on ppc64
+
+  30 Oct 2004; Jason Wever <weeve@gentoo.org> navi2ch-1.7.4.ebuild:
+  Stable on sparc.
+
+*navi2ch-1.7.5 (14 Oct 2004)
+
+  14 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> +navi2ch-1.7.5.ebuild:
+  Version bumped.
+
+  10 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> -navi2ch-1.7.1.ebuild,
+  -navi2ch-1.7.2.ebuild, navi2ch-1.7.4.ebuild:
+  Stable on x86, alpha and ppc.
+
+  18 Sep 2004; Jason Wever <weeve@gentoo.org> navi2ch-1.7.3.ebuild:
+  Stable on sparc.
+
+  29 Aug 2004; Tom Gall <tgall@gentoo.org> navi2ch-1.7.3.ebuild,
+  navi2ch-1.7.4.ebuild:
+  add ~ppc64 (1.7.3), ppc64 (1.7.4), bug #61407
+
+*navi2ch-1.7.4 (20 Aug 2004)
+
+  20 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> +navi2ch-1.7.4.ebuild:
+  Version bumped. Added to macos.
+
+  23 May 2004; Mamoru KOMACHI <usata@gentoo.org> navi2ch-1.7.2.ebuild,
+  navi2ch-1.7.3.ebuild:
+  Stable on x86, alpha and ppc
+
+*navi2ch-1.7.3 (05 May 2004)
+
+  05 May 2004; Mamoru KOMACHI <usata@gentoo.org> navi2ch-1.7.3.ebuild:
+  Version bumped.
+
+  25 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> navi2ch-1.7.1.ebuild,
+  navi2ch-1.7.2.ebuild, navi2ch-1.7.ebuild:
+  Marked stable on x86 and alpha. Don't assign default to S.
+
+*navi2ch-1.7.2 (22 Mar 2004)
+
+  22 Mar 2004; Mamoru KOMACHI <usata@gentoo.org> navi2ch-1.7.2.ebuild:
+  Version bumped.
+
+  15 Dec 2003; Mamoru KOMACHI <usata@gentoo.org> navi2ch-1.7.1.ebuild,
+  navi2ch-1.7.ebuild:
+  Removed mule-ucs from DEPEND (Emacs 21 doesn't need it)
+
+*navi2ch-1.7.1 (29 Sep 2003)
+
+  10 Nov 2003; Mamoru KOMACHI <usata@gentoo.org> navi2ch-1.7.1.ebuild,
+  navi2ch-1.7.1_beta1.ebuild:
+  Marked as stable on ppc and sparc. Removed beta version.
+
+  11 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> navi2ch-1.7.1.ebuild:
+  Considered as stable for x86 and alpha
+
+  29 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> navi2ch-1.7.1.ebuild:
+  Version bumped
+
+*navi2ch-1.7.1_beta1 (22 Sep 2003)
+
+  22 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> navi2ch-1.7.1_beta1.ebuild:
+  Version bumped.
+
+*navi2ch-1.7 (25 Jul 2003)
+
+  30 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> navi2ch-1.7.ebuild:
+  Marked as stable for all arch
+
+  13 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> navi2ch-1.7.ebuild:
+  Marked stable on x86
+
+  25 Jul 2003; Mamoru KOMACHI <usata@gentoo.org> navi2ch-1.7.ebuild,
+  files/50navi2ch-gentoo.el:
+  Initial import, based on the ebuild submitted by Masatomo Nakano
+  <nakano@gentoo.org> at GentooJP BugTrack

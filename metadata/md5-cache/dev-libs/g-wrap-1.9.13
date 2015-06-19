@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure
+DEPEND=dev-libs/glib:2 dev-scheme/guile-lib dev-scheme/guile[deprecated] virtual/libffi virtual/pkgconfig dev-util/indent
+DESCRIPTION=A tool for exporting C libraries into Scheme
+EAPI=4
+HOMEPAGE=http://www.nongnu.org/g-wrap/
+KEYWORDS=amd64 hppa ppc ppc64 x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/glib:2 dev-scheme/guile-lib dev-scheme/guile[deprecated] virtual/libffi
+SLOT=0
+SRC_URI=http://download.savannah.gnu.org/releases/g-wrap/g-wrap-1.9.13.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=a1e57664c8afbd5e0765bda9ab1368cc

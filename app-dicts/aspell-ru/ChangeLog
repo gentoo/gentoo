@@ -1,0 +1,109 @@
+# ChangeLog for app-dicts/aspell-ru
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/aspell-ru/ChangeLog,v 1.32 2014/01/05 11:08:01 pacho Exp $
+
+  05 Jan 2014; Pacho Ramos <pacho@gentoo.org> -aspell-ru-0.50.2.ebuild,
+  -aspell-ru-0.99.1.ebuild, metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/app-dicts-herd-is-empty-
+  td271273.html
+
+  17 May 2012; Alexis Ballier <aballier@gentoo.org> aspell-ru-0.50.2.ebuild,
+  aspell-ru-0.99.1-r1.ebuild, aspell-ru-0.99.1.ebuild:
+  keyword ~amd64-fbsd
+
+  17 Mar 2012; Matt Turner <mattst88@gentoo.org> aspell-ru-0.99.1.ebuild,
+  aspell-ru-0.99.1-r1.ebuild:
+  Added ~mips. How did this get dropped?
+
+  08 Oct 2010; Mart Raudsepp <leio@gentoo.org> aspell-ru-0.50.2.ebuild:
+  Drop to ~mips
+
+  05 Jun 2010; Raúl Porcel <armin76@gentoo.org> aspell-ru-0.99.1-r1.ebuild:
+  alpha/arm/ia64/s390/sh stable wrt #310015
+
+  14 May 2010; Jeroen Roovers <jer@gentoo.org> aspell-ru-0.99.1-r1.ebuild:
+  Stable for HPPA (bug #310015).
+
+  05 Apr 2010; Markus Meier <maekke@gentoo.org> aspell-ru-0.99.1-r1.ebuild:
+  amd64/arm/x86 stable, bug #310015
+
+  27 Mar 2010; Tiago Cunha <tcunha@gentoo.org> aspell-ru-0.99.1-r1.ebuild:
+  stable sparc, bug 310015
+
+  24 Mar 2010; Brent Baude <ranger@gentoo.org> aspell-ru-0.99.1-r1.ebuild:
+  Marking aspell-ru-0.99.1-r1 ppc stable for bug 310015
+
+  21 Mar 2010; Brent Baude <ranger@gentoo.org> aspell-ru-0.99.1-r1.ebuild:
+  Marking aspell-ru-0.99.1-r1 ppc64 stable for bug 310015
+
+*aspell-ru-0.99.1-r1 (25 Dec 2009)
+
+  25 Dec 2009; Peter Volkov <pva@gentoo.org> +aspell-ru-0.99.1-r1.ebuild:
+  Change default dictionary on yeyo, bug #280498, thank Nikoli, Jan
+  Aniŝĉuk and other guys there.
+
+  18 Oct 2009; Mark Loeser <halcy0n@gentoo.org> aspell-ru-0.50.2.ebuild,
+  aspell-ru-0.99.1.ebuild:
+  QA fixes; IUSE is not defined
+
+  03 Nov 2007; Roy Marples <uberlord@gentoo.org> aspell-ru-0.99.1.ebuild:
+  Keyworded ~sparc-fbsd and ~x86-fbsd
+
+  15 Aug 2007; Jeroen Roovers <jer@gentoo.org> aspell-ru-0.99.1.ebuild:
+  Stable for HPPA (bug #178690).
+
+  09 Aug 2007; Markus Rothe <corsair@gentoo.org> aspell-ru-0.99.1.ebuild:
+  Stable on ppc64; bug #178690
+
+  05 Aug 2007; Raúl Porcel <armin76@gentoo.org> aspell-ru-0.99.1.ebuild:
+  alpha/ia64/x86 stable wrt #178690
+
+  05 Aug 2007; nixnut <nixnut@gentoo.org> aspell-ru-0.99.1.ebuild:
+  Stable on ppc wrt bug 178690
+
+  04 Aug 2007; Ferris McCormick <fmccor@gentoo.org> aspell-ru-0.99.1.ebuild:
+  Sparc stable --- part of Bug #178690
+
+  04 Aug 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  aspell-ru-0.99.1.ebuild:
+  Marked stable on amd64 as per bug 178690.
+
+  04 Aug 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  aspell-ru-0.99.1.ebuild:
+  Tested on alpha and re-added the ~alpha keyword.
+
+  12 May 2007; Markus Rothe <corsair@gentoo.org> aspell-ru-0.99.1.ebuild:
+  Added ~ppc64; bug #147568
+
+  22 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  aspell-ru-0.99.1.ebuild:
+  Use mirror://gnu/ rather than ftp.gnu.org.
+
+  01 Dec 2006; Kevin F. Quinn <kevquinn@gentoo.org> aspell-ru-0.50.2.ebuild,
+  aspell-ru-0.99.1.ebuild:
+  Ebuild cleanups for bug #132718
+
+  20 Feb 2005; Anders Rune Jensen <arj@gentoo.org> aspell-ru-0.99.1.ebuild:
+  Fix KEYWORDS. Remove IUSE, repoman is broken, the eclass has it.
+
+  05 Oct 2004; Anders Rune Jensen <arj@gentoo.org> aspell-ru-0.99.1.ebuild:
+  Added to ~amd64 and ~sparc to sync with aspell-0.6.
+
+*aspell-ru-0.99.1 (03 Oct 2004)
+
+  03 Oct 2004; Anders Rune Jensen <arj@gentoo.org> +aspell-ru-0.99.1.ebuild:
+  version bump. Aspell-0.60 only.
+	
+  30 Jul 2004; Anders Rune Jensen <arj@gentoo.org> +metadata.xml, 
+  QA - IUSE fix and {add missing,correct} metatata.xml.
+
+*aspell-ru-0.50.2 (22 Oct 2002)
+
+  02 Dec 2002; Seemant Kulleen <seemant@gentoo.org> * :
+
+  Moved from app-i18n to app-dicts
+
+  22 Oct 2002; Seemant Kulleen <seemant@gentoo.org> aspell-ru-0.50.2.ebuild
+  ChangeLog files/digest-aspell-ru-0.50.2 :
+
+  Russian language dictionary for aspell.

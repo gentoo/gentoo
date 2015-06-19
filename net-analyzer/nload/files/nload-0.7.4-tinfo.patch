@@ -1,0 +1,10 @@
+--- a/configure.in
++++ b/configure.in
+@@ -70,6 +70,7 @@
+ esac
+ 
+ dnl Checks for libraries.
++PKG_CHECK_MODULES([NCURSES],[ncurses],[LIBS="$LIBS $NCURSES_LIBS"],[AC_MSG_ERROR([ncurses was not found])])
+ AC_CHECK_LIB(ncurses, initscr)
+ AC_CHECK_LIB(form, new_form)
+ 

@@ -1,0 +1,75 @@
+# ChangeLog for dev-python/htmlgen
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/htmlgen/ChangeLog,v 1.22 2015/04/08 08:05:28 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> htmlgen-2.2.2-r1.ebuild:
+  Drop old Python implementations
+
+  10 Jun 2014; Mike Gilbert <floppym@gentoo.org> -htmlgen-2.2.2.ebuild:
+  Remove old.
+
+  18 Mar 2014; Agostino Sarubbo <ago@gentoo.org> htmlgen-2.2.2-r1.ebuild:
+  Stable for ia64, wrt bug #502782
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> htmlgen-2.2.2-r1.ebuild:
+  Stable for ppc, wrt bug #502782
+
+  04 Mar 2014; Agostino Sarubbo <ago@gentoo.org> htmlgen-2.2.2-r1.ebuild:
+  Stable for x86, wrt bug #502782
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> htmlgen-2.2.2-r1.ebuild:
+  amd64 stable, bug #502782
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> htmlgen-2.2.2-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  08 Jun 2013; Mike Gilbert <floppym@gentoo.org> htmlgen-2.2.2-r1.ebuild:
+  Add PYTHON_DEPS.
+
+*htmlgen-2.2.2-r1 (08 Jun 2013)
+
+  08 Jun 2013; Mike Gilbert <floppym@gentoo.org> +files/htmlgen-pillow.patch,
+  +htmlgen-2.2.2-r1.ebuild:
+  Convert to python-r1. Fix PIL imports, bug 471506.
+
+  08 Nov 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  htmlgen-2.2.2.ebuild:
+  Update EAPI. Fix dependencies. Set SUPPORT_PYTHON_ABIS.
+
+  18 Jul 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  htmlgen-2.2.2.ebuild, +files/htmlgen-2.2.2-python-2.5.patch:
+  Fix support for Python 2.5 (bug #278167).
+
+  27 Oct 2008; Ali Polatel <hawking@gentoo.org> htmlgen-2.2.2.ebuild:
+  Use python_need_rebuild.
+
+  18 Aug 2008; Jesus Rivero <neurogeek@gentoo.org> htmlgen-2.2.2.ebuild:
+  Minor enhancements to the ebuild. Thanks to Necoro <gentoo@necoro.eu>. Bug
+  #233646
+
+  12 Jul 2006; Aron Griffis <agriffis@gentoo.org> htmlgen-2.2.2.ebuild:
+  Mark 2.2.2 stable on ia64
+
+  01 Apr 2006; Aron Griffis <agriffis@gentoo.org> htmlgen-2.2.2.ebuild:
+  Mark 2.2.2 ~ia64
+
+  16 Jul 2005; Joseph Jezak <josejx@gentoo.org> htmlgen-2.2.2.ebuild:
+  Marked ppc stable.
+
+  31 May 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  htmlgen-2.2.2.ebuild:
+  mark ~ppc
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  19 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> htmlgen-2.2.2.ebuild:
+  dev-python/Imaging renamed to dev-python/imaging.
+
+*htmlgen-2.2.2 (08 Mar 2003)
+
+  25 Mar 2003; Alastair Tse <liquidx@gentoo.org> htmlgen-2.2.2.ebuild:
+  bump to stable
+
+  08 Mar 2003; Alastair Tse <liquidx@gentoo.org> htmlgen-2.2.2.ebuild:
+  initial ebuild. solves #10653.

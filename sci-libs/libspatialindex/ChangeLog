@@ -1,0 +1,44 @@
+# ChangeLog for sci-libs/libspatialindex
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/libspatialindex/ChangeLog,v 1.9 2014/10/10 20:55:34 hasufell Exp $
+
+*libspatialindex-1.8.4 (10 Oct 2014)
+
+  10 Oct 2014; Julian Ospald <hasufell@gentoo.org>
+  +libspatialindex-1.8.4.ebuild:
+  version bump
+
+  10 Oct 2014; Agostino Sarubbo <ago@gentoo.org> libspatialindex-1.8.1.ebuild:
+  Stable for x86, wrt bug #523540
+
+  09 Oct 2014; Agostino Sarubbo <ago@gentoo.org> libspatialindex-1.8.1.ebuild:
+  Stable for amd64, wrt bug #523540
+
+*libspatialindex-1.8.3 (23 Sep 2014)
+
+  23 Sep 2014; Julian Ospald <hasufell@gentoo.org>
+  +libspatialindex-1.8.3.ebuild:
+  version bump
+
+*libspatialindex-1.8.1 (30 Jun 2013)
+
+  30 Jun 2013; Julian Ospald <hasufell@gentoo.org>
+  +libspatialindex-1.8.1.ebuild, +files/libspatialindex-1.8.1-QA.patch,
+  +files/libspatialindex-1.8.1-pkgconfig.patch:
+  version bump
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> libspatialindex-1.8.0.ebuild:
+  Stable for amd64, wrt bug #474422
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> libspatialindex-1.8.0.ebuild:
+  Stable for x86, wrt bug #474422
+
+  17 Feb 2013; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  set correct maintainer
+
+*libspatialindex-1.8.0 (11 Feb 2013)
+
+  11 Feb 2013; Julian Ospald <hasufell@gentoo.org>
+  +libspatialindex-1.8.0.ebuild, +files/libspatialindex-1.8.0-QA.patch,
+  +metadata.xml:
+  initial import wrt #413367

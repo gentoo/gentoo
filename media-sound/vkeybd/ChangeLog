@@ -1,0 +1,169 @@
+# ChangeLog for media-sound/vkeybd
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/vkeybd/ChangeLog,v 1.41 2011/04/19 13:50:40 aballier Exp $
+
+  19 Apr 2011; Alexis Ballier <aballier@gentoo.org> -vkeybd-0.1.17b-r1.ebuild,
+  -files/vkeybd-0.1.17b-desktop-entry.patch, -files/vkeybd-0.1.17b-lash.patch,
+  -files/vkeybd-0.1.17b-makefile.patch, -vkeybd-0.1.18c.ebuild:
+  remove old
+
+  13 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  vkeybd-0.1.18d.ebuild:
+  stable x86, bug 318201
+
+  27 Jun 2010; Christoph Mende <angelos@gentoo.org> vkeybd-0.1.18d.ebuild:
+  Stable on amd64 wrt bug #318201
+
+  27 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> vkeybd-0.1.18d.ebuild:
+  Localization postinst message wrt #320091.
+
+*vkeybd-0.1.18d (15 Sep 2009)
+
+  15 Sep 2009; Alexis Ballier <aballier@gentoo.org> +vkeybd-0.1.18d.ebuild:
+  version bump
+
+*vkeybd-0.1.18c (16 Jul 2009)
+
+  16 Jul 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +vkeybd-0.1.18c.ebuild, +files/vkeybd-0.1.18c-desktop_entry.patch:
+  Version bump.
+
+  16 Jul 2009; Samuli Suominen <ssuominen@gentoo.org>
+  vkeybd-0.1.17b-r1.ebuild:
+  stable amd64, bug 277964
+
+  16 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  vkeybd-0.1.17b-r1.ebuild:
+  stable x86, bug 277964
+
+*vkeybd-0.1.17b-r1 (15 Jul 2009)
+
+  15 Jul 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +vkeybd-0.1.17b-r1.ebuild, +files/vkeybd-0.1.17b-lash.patch:
+  Port from ladcca to lash, thanks to proaudio overlay maintainers.
+
+  14 Apr 2008; Samuli Suominen <ssuominen@gentoo.org>
+  +files/vkeybd-0.1.17b-desktop-entry.patch, vkeybd-0.1.17b.ebuild:
+  Missing Categories entry in .desktop file.
+
+  10 Apr 2008; Samuli Suominen <ssuominen@gentoo.org>
+  vkeybd-0.1.17b.ebuild:
+  amd64/x86 stable, because current linux-headers doesn't provide awe_voice.h
+  wrt #205949 and #216928.
+
+*vkeybd-0.1.17b (26 Jan 2008)
+
+  26 Jan 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/vkeybd-0.1.17b-makefile.patch, +vkeybd-0.1.17b.ebuild:
+  version bump, closes bug #205949
+
+  27 Nov 2006; <malc@gentoo.org> vkeybd-0.1.15-r2.ebuild:
+  Stable on amd64 - bug #155639
+
+  26 Nov 2006; Christian Faulhammer <opfer@gentoo.org>
+  vkeybd-0.1.15-r2.ebuild:
+  stable x86, bug #155639
+
+*vkeybd-0.1.17a (25 Nov 2006)
+
+  25 Nov 2006; Alexis Ballier <aballier@gentoo.org>
+  +files/vkeybd-0.1.17a-makefile.patch, +vkeybd-0.1.17a.ebuild:
+  Version bump
+
+*vkeybd-0.1.15-r2 (25 Nov 2006)
+
+  25 Nov 2006; Alexis Ballier <aballier@gentoo.org>
+  +files/vkeybd-0.1.15-makefile.patch, +vkeybd-0.1.15-r2.ebuild:
+  rev bump: dont ignore cflags nor ldflags, install into /usr instead of
+  /usr/local, bug #155639; dont pre-strip binaries
+
+  28 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  vkeybd-0.1.15-r1.ebuild:
+  Fix building with alsa useflag disabled. Thanks to Patrick Lauer for
+  reporting in bug #153150.
+
+  27 Aug 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  -vkeybd-0.1.15.ebuild:
+  clean out old, non-modX ebuild
+
+  24 Jul 2006; Joshua Jackson <tsunam@gentoo.org> vkeybd-0.1.15-r1.ebuild:
+  Stable x86; bug #140624
+
+  19 Jul 2006; Simon Stelling <blubb@gentoo.org> vkeybd-0.1.15-r1.ebuild:
+  stable on amd64
+
+  28 Jan 2006; Andrej Kacian <ticho@gentoo.org> vkeybd-0.1.15-r1.ebuild:
+  Ported dependencies for modular X.
+
+  17 Aug 2005; Frank van de Pol <fvdpol@gentoo.org> vkeybd-0.1.15-r1.ebuild:
+  fixed faulty behaviour for USE="-ladcca". Closes bug 101633.
+
+*vkeybd-0.1.15-r1 (18 Jul 2005)
+
+  18 Jul 2005; Frank van de Pol <fvdpol@gentoo.org> +vkeybd-0.1.15-r1.ebuild:
+  Fixed compilation problem when use=ladcca. Closes bug #99445, #85914.
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  vkeybd-0.1.15.ebuild:
+  Added to ~sparc.
+
+  08 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  -files/vkeybd-0.1.12-Makefile.destdir.patch,
+  -files/vkeybd-0.1.12-Makefile.passvariables.patch,
+  -files/vkeybd-0.1.13-Makefile.passvariables.patch,
+  -files/vkeybd-0.1.13-alsa-fix.patch,
+  -files/vkeybd-0.1.13-vkb.c-ladcca.patch, -vkeybd-0.1.12.ebuild,
+  -vkeybd-0.1.13-r1.ebuild:
+  Removing old versions.  Fixed tclsh in global context.
+
+  15 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> vkeybd-0.1.15.ebuild:
+  Stable amd64.
+
+  07 Jun 2004; Aron Griffis <agriffis@gentoo.org> vkeybd-0.1.12.ebuild:
+  Fix use invocation
+
+  24 Apr 2004; Danny van Dyk <kugelfang@gentoo.org> vkeybd-0.1.15.ebuild:
+  marked ~amd64.
+
+  01 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  vkeybd-0.1.13-r1.ebuild, vkeybd-0.1.15.ebuild:
+  inherit eutils.  Stable on x86.
+
+  01 Feb 2004; Brian Harring <ferringb@gentoo.org> vkeybd-0.1.12.ebuild,
+  vkeybd-0.1.13-r1.ebuild, vkeybd-0.1.15.ebuild, 
+  files/vkeybd-0.1.13-alsa-fix.patch:
+  Closing bugs 23468 and 39119.  Adjusted copyright headers to 2004.
+
+*vkeybd-0.1.15 (20 Dec 2003)
+
+  20 Dec 2003; Martin Holzer <mholzer@gentoo.org> vkeybd-0.1.15.ebuild:
+  Version bumped. Closes 35923
+
+*vkeybd-0.1.13-r1 (18 May 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+  18 May 2003; Torben Hohn <torbenh@gentoo.org> vkeybd-0.1.13.ebuild,
+  vkeybd-0.1.13.ebuild:
+  media-libs/ladcca-0.1 is gone. build against >=media-libs/ladcca-0.3.1
+  and therefor apply the patch.
+  files/vkeybd-0.1.13-vkb.c-ladcca.patch: fixes the new cca_init signature.
+
+*vkeybd-0.1.13 (22 Apr 2003)
+
+  24 Apr 2003; Stanislav Brabec <utx@gentoo.org> vkeybd-0.1.13.ebuild:
+  Limit ladcca support to media-libs/ladcca-0.1. Simplified ebuild.
+
+  22 Apr 2003; Stanislav Brabec <utx@gentoo.org> vkeybd-0.1.13.ebuild,
+  files/vkeybd-0.1.13-Makefile.passvariables.patch:
+  Updated to version 0.1.13, fixed bug #19557.
+
+*vkeybd-0.1.12 (20 Dec 2002)
+
+  25 Dec 2002; Arcady Genkin <agenkin@gentoo.org> :
+  Ebuild improvements from Rene Wagner <reenoo@gmx.de>.  Now really
+  closes #12217 ;^).
+
+  20 Dec 2002; Arcady Genkin <agenkin@gentoo.org> :
+  Initial version by Rene Wagner <reenoo@gmx.de>.  Closes #12217.

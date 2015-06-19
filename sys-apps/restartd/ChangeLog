@@ -1,0 +1,20 @@
+# ChangeLog for sys-apps/restartd
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/restartd/ChangeLog,v 1.4 2010/12/31 18:15:53 jer Exp $
+
+*restartd-0.2.2 (31 Dec 2010)
+
+  31 Dec 2010; Jeroen Roovers <jer@gentoo.org> -restartd-0.1_alpha3.ebuild,
+  +restartd-0.2.2.ebuild:
+  Version bump. Respect LDFLAGS (bug #337606), CC. Remove old, failing ebuild.
+
+  15 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+*restartd-0.1_alpha3 (14 Oct 2005)
+
+  14 Oct 2005; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Mike Fox #59878.

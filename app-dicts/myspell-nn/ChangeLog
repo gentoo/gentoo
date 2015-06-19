@@ -1,0 +1,110 @@
+# ChangeLog for app-dicts/myspell-nn
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/myspell-nn/ChangeLog,v 1.28 2014/01/05 11:26:42 pacho Exp $
+
+  05 Jan 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/app-dicts-herd-is-empty-
+  td271273.html
+
+*myspell-nn-2.0.10 (23 Jul 2012)
+
+  23 Jul 2012; Tomáš Chvátal <scarabeus@gentoo.org>
+  +myspell-nn-2.0.10.ebuild, -myspell-nn-20060316.ebuild,
+  -myspell-nn-20060530.ebuild, -myspell-nn-20080310.ebuild:
+  Use the upstream versioning. Basically equal to 20080310.
+
+  17 May 2012; Alexis Ballier <aballier@gentoo.org> myspell-nn-20060316.ebuild,
+  myspell-nn-20060530.ebuild, myspell-nn-20080310.ebuild:
+  keyword ~amd64-fbsd
+
+  02 Mar 2012; Tobias Klausmann <klausman@gentoo.org>
+  myspell-nn-20080310.ebuild:
+  Stable on alpha, bug #396787
+
+  17 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  myspell-nn-20080310.ebuild:
+  x86 stable wrt bug #396787
+
+  14 Feb 2012; Brent Baude <ranger@gentoo.org> myspell-nn-20080310.ebuild:
+  Marking myspell-nn-20080310 ppc for bug 396787
+
+  02 Feb 2012; Agostino Sarubbo <ago@gentoo.org> myspell-nn-20080310.ebuild:
+  Stable for amd64, wrt bug #396787
+
+  27 Sep 2010; Mart Raudsepp <leio@gentoo.org> myspell-nn-20080310.ebuild:
+  Add ~mips
+
+  22 May 2010; Raúl Porcel <armin76@gentoo.org> myspell-nn-20060316.ebuild,
+  myspell-nn-20060530.ebuild, myspell-nn-20080310.ebuild:
+  alpha/arm/ia64/sh/sparc stable
+
+  13 May 2010; Joseph Jezak <josejx@gentoo.org> myspell-nn-20080310.ebuild:
+  Marked ppc64 stable.
+
+  22 Jun 2009; Jeroen Roovers <jer@gentoo.org> myspell-nn-20080310.ebuild:
+  Stable for HPPA too.
+
+  30 Mar 2009; Raúl Porcel <armin76@gentoo.org> myspell-nn-20060316.ebuild,
+  myspell-nn-20080310.ebuild:
+  Add ~arm/~sh wrt #261064
+
+*myspell-nn-20080310 (29 Mar 2008)
+
+  29 Mar 2008; Wulf C. Krueger <philantrop@gentoo.org>
+  +myspell-nn-20080310.ebuild:
+  Version bump as per bug 213069. Thanks, Asbjørn Nilsen Riseth, for
+  providing the ebuilds.
+
+  12 Mar 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Kevin Quinn (kevquinn, #93689) from metadata.xml.
+
+  09 Feb 2008; Raúl Porcel <armin76@gentoo.org> myspell-nn-20060530.ebuild:
+  Re-add ~alpha/~ia64
+
+  06 Jan 2008; Brent Baude <ranger@gentoo.org> myspell-nn-20060530.ebuild:
+  Marking myspell-nn-20060530 ~ppc64 for bug 204587
+
+  02 Jan 2008; Raúl Porcel <armin76@gentoo.org> myspell-nn-20060316.ebuild:
+  Add ~alpha/~ia64
+
+  25 Dec 2007; Jeroen Roovers <jer@gentoo.org> myspell-nn-20060530.ebuild:
+  Marked ~hppa for armin76.
+
+*myspell-nn-20060530 (06 Aug 2006)
+
+  06 Aug 2006; Kevin F. Quinn <kevquinn@gentoo.org>
+  +myspell-nn-20060530.ebuild:
+  Bump to new data from http://spell-norwegian.alioth.debian.org/ - bug #142459
+
+  01 Aug 2006; Simon Stelling <blubb@gentoo.org> myspell-nn-20060316.ebuild:
+  stable on amd64
+
+  16 Jul 2006; Joshua Jackson <tsunam@gentoo.org>
+  myspell-nn-20060316.ebuild:
+  x86 stable; for openoffice-2.0.3
+
+  09 Jul 2006; Kevin F. Quinn <kevquinn@gentoo.org>
+  myspell-nn-20060316.ebuild:
+  rearrange to avoid clobber of DESCRIPTION by multilib.eclass - thanks
+  Mr_Bones_ for the heads-up
+
+  08 Jul 2006; Lars Weiler <pylon@gentoo.org> myspell-nn-20060316.ebuild:
+  Stable on ppc.
+
+  23 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  myspell-nn-20060316.ebuild:
+  Stable on sparc
+
+  22 May 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  myspell-nn-20060316.ebuild:
+  Stick a ~sparc in
+
+  19 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  myspell-nn-20060316.ebuild:
+  Add ~x86-fbsd and ~amd64 keywords.
+
+*myspell-nn-20060316 (01 May 2006)
+
+  01 May 2006; Kevin F. Quinn <kevquinn@gentoo.org> +metadata.xml,
+  +myspell-nn-20060316.ebuild:
+  New ebuild for Norwegian myspell dictionary

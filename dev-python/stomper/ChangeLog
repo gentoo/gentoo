@@ -1,0 +1,105 @@
+# ChangeLog for dev-python/stomper
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/stomper/ChangeLog,v 1.26 2015/01/26 11:11:27 mrueg Exp $
+
+  26 Jan 2015; Manuel Rüger <mrueg@gentoo.org> -stomper-0.2.7.ebuild,
+  -stomper-0.2.8.ebuild:
+  Remove old.
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> stomper-0.3.0.ebuild:
+  Stable for x86, wrt bug #535378
+
+  22 Jan 2015; Agostino Sarubbo <ago@gentoo.org> stomper-0.3.0.ebuild:
+  Stable for amd64, wrt bug #535378
+
+*stomper-0.3.0 (15 Oct 2014)
+
+  15 Oct 2014; Ian Delaney <idella4@gentoo.org> +stomper-0.3.0.ebuild,
+  stomper-0.2.8.ebuild:
+  bump
+
+*stomper-0.2.8 (18 Apr 2014)
+
+  18 Apr 2014; Ian Delaney <idella4@gentoo.org> +stomper-0.2.8.ebuild,
+  -stomper-0.2.4.ebuild, -stomper-0.2.5.ebuild, -stomper-0.2.6.ebuild:
+  bump, rm old
+
+  03 Mar 2014; Pacho Ramos <pacho@gentoo.org> stomper-0.2.7.ebuild:
+  amd64 stable, bug #495642
+
+  23 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> stomper-0.2.7.ebuild:
+  x86 stable wrt bug #495642
+
+*stomper-0.2.7 (25 Jun 2013)
+
+  25 Jun 2013; Patrick Lauer <patrick@gentoo.org> +stomper-0.2.7.ebuild:
+  Bump
+
+*stomper-0.2.6 (19 Jun 2013)
+
+  19 Jun 2013; Patrick Lauer <patrick@gentoo.org> +stomper-0.2.6.ebuild:
+  Bump
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> stomper-0.2.5.ebuild:
+  Stable for x86, wrt bug #470462
+
+  19 May 2013; Agostino Sarubbo <ago@gentoo.org> stomper-0.2.5.ebuild:
+  Stable for amd64, wrt bug #470462
+
+*stomper-0.2.5 (08 Apr 2013)
+
+  08 Apr 2013; Patrick Lauer <patrick@gentoo.org> +stomper-0.2.5.ebuild:
+  Bump
+
+  23 Oct 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -stomper-0.2.2-r1.ebuild,
+  -files/stomper-0.2.2-dont_require_separate_uuid_package.patch,
+  -stomper-0.2.3.ebuild:
+  Delete.
+
+  21 Oct 2010; Christian Faulhammer <fauli@gentoo.org> stomper-0.2.4.ebuild:
+  stable x86, bug 341339
+
+  18 Oct 2010; Markos Chandras <hwoarang@gentoo.org> stomper-0.2.4.ebuild:
+  Stable on amd64 wrt bug #341339
+
+*stomper-0.2.4 (29 Sep 2010)
+
+  29 Sep 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +stomper-0.2.4.ebuild:
+  Version bump.
+
+*stomper-0.2.3 (15 Sep 2010)
+
+  15 Sep 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +stomper-0.2.3.ebuild:
+  Version bump.
+
+  25 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  stomper-0.2.2-r1.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+  02 Jun 2010; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove caleb from metadata.xml (#317071)
+
+  07 Feb 2010; Peter Volkov <pva@gentoo.org> stomper-0.2.2-r1.ebuild:
+  Add inherit eutils: epatch is defined there.
+
+  25 Nov 2009; Markus Meier <maekke@gentoo.org> stomper-0.2.2-r1.ebuild:
+  amd64 stable, bug #281571
+
+  12 Sep 2009; Christian Faulhammer <fauli@gentoo.org>
+  stomper-0.2.2-r1.ebuild:
+  stable x86, bug 281571
+
+*stomper-0.2.2-r1 (30 Aug 2009)
+
+  30 Aug 2009; Caleb Tennis <caleb@gentoo.org> +stomper-0.2.2-r1.ebuild,
+  +files/stomper-0.2.2-dont_require_separate_uuid_package.patch:
+  bump stomper to remove uuid dep per #283199
+
+*stomper-0.2.2 (19 Apr 2009)
+
+  19 Apr 2009; Caleb Tennis <caleb@gentoo.org +metadata.xml,
+  +stomper-0.2.2.ebuild:
+  Initial import

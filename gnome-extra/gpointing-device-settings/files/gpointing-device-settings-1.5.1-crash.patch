@@ -1,0 +1,30 @@
+commit 70add06dec8413965f3e98b6ba9a3c82168ea72c
+Author: Hiroyuki Ikezoe <poincare@ikezoe.net>
+Date:   Tue Mar 16 19:56:17 2010 +0900
+
+    Fix crash.
+    
+    We need to get xinput property if there is no gconf value for tapping time.
+    
+    Fix for #613022.
+
+diff --git a/modules/gpds-touchpad-ui.c b/modules/gpds-touchpad-ui.c
+index 3bbcda6..a1cd31b 100644
+--- a/modules/gpds-touchpad-ui.c
++++ b/modules/gpds-touchpad-ui.c
+@@ -1067,8 +1067,14 @@ set_tapping_time_from_preference (GpdsUI *ui, GtkBuilder *builder)
+         }
+     }
+ 
+-    if (!gpds_ui_get_gconf_int(ui, GPDS_TOUCHPAD_TAP_TIME_KEY, &value))
++    if (!gpds_ui_get_gconf_int(ui, GPDS_TOUCHPAD_TAP_TIME_KEY, &value) && !values) {
++        if (!gpds_xinput_ui_get_xinput_int_property(GPDS_XINPUT_UI(ui),
++                                                    GPDS_TOUCHPAD_TAP_TIME,
++                                                    &values, &n_values)) {
++            return;
++        }
+         value = values[0];
++    }
+ 
+     double_value = value;
+     object = gpds_ui_get_ui_object_by_name(GPDS_UI(ui), "tapping_time_scale");

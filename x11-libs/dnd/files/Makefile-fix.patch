@@ -1,0 +1,44 @@
+--- Makefile.in.orig	1997-05-22 22:18:22.000000000 -0400
++++ Makefile.in	2004-06-16 14:41:19.673035936 -0400
+@@ -16,7 +16,7 @@
+ 
+ prefix = @prefix@
+ exec_prefix = @exec_prefix@
+-LIB_DIR = @libdir@
++LIB_DIR = $(DESTDIR)@libdir@
+-INC_DIR = @includedir@/OffiX
++INC_DIR = $(DESTDIR)@includedir@/OffiX
+ 
+ COMPILE = $(CC) $(INCLUDES) $(CFLAGS) -c
+@@ -42,19 +42,22 @@
+ 	$(COMPILE) dndtest.c
+ 	$(LINK) dndtest.o -L. -lDnd $(LIBS)
+ 
+-libDnd.a: DragAndDrop.c
+-	rm -f DragAndDrop.o
+-	$(COMPILE) DragAndDrop.c
++libDnd.a: DragAndDropC.o
+ 	rm -f libDnd.a
+-	$(AR) cru libDnd.a DragAndDrop.o
++	$(AR) cru libDnd.a DragAndDropC.o
+ 	$(RANLIB) libDnd.a
+ 
+-libDnd++.a: DragAndDrop.c
+-	rm -f DragAndDrop.o DragAndDrop.cxx
+-	ln -s DragAndDrop.c DragAndDrop.cxx
+-	$(CXXCOMPILE) DragAndDrop.cxx
++DragAndDropC.o: DragAndDrop.c
++	rm -f DragAndDropC.o
++	$(COMPILE) DragAndDrop.c -o DragAndDropC.o
++
++DragAndDropCpp.o: DragAndDrop.c
++	rm -f DragAndDropCpp.o
++	$(CXXCOMPILE) DragAndDrop.c -o DragAndDropCpp.o
++
++libDnd++.a: DragAndDropCpp.o
+ 	rm -f libDnd++.a
+-	$(AR) cru libDnd++.a DragAndDrop.o
++	$(AR) cru libDnd++.a DragAndDropCpp.o
+ 	$(RANLIB) libDnd++.a
+ 
+ clean:

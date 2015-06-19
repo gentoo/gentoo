@@ -1,0 +1,9 @@
+DEFINED_PHASES=compile install unpack
+DESCRIPTION=small, robust, flexible library for downloading files via HTTP using the GET method
+HOMEPAGE=http://http-fetcher.sourceforge.net/
+IUSE=debug
+KEYWORDS=alpha amd64 ppc x86
+LICENSE=LGPL-2.1
+SLOT=0
+SRC_URI=mirror://sourceforge/http-fetcher/http_fetcher-1.1.0.tar.gz
+_md5_=bff81ccb0890313a358267b27783d66c

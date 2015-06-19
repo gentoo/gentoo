@@ -1,0 +1,12 @@
+Index: swh-plugins-0.4.15/configure.in
+===================================================================
+--- swh-plugins-0.4.15.orig/configure.in
++++ swh-plugins-0.4.15/configure.in
+@@ -52,6 +52,7 @@ AC_PROG_CC
+ AC_REQUIRE_CPP
+ ALL_LINGUAS="en_GB"
+ AM_GNU_GETTEXT([external])
++AM_GNU_GETTEXT_VERSION([0.13])
+ AC_C_BIGENDIAN
+ 
+ LIBS="$LIBS -lm"

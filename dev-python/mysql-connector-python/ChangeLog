@@ -1,0 +1,28 @@
+# ChangeLog for dev-python/mysql-connector-python
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/mysql-connector-python/ChangeLog,v 1.5 2015/04/08 06:59:20 idella4 Exp $
+
+*mysql-connector-python-2.1.1 (08 Apr 2015)
+
+  08 Apr 2015; Ian Delaney <idella4@gentoo.org>
+  +mysql-connector-python-2.1.1.ebuild, -mysql-connector-python-2.0.2.ebuild:
+  bump one remove one
+
+*mysql-connector-python-2.0.3 (08 Feb 2015)
+
+  08 Feb 2015; Ian Delaney <idella4@gentoo.org>
+  +mysql-connector-python-2.0.3.ebuild:
+  bump
+
+  30 Dec 2014; Markus Meier <maekke@gentoo.org>
+  mysql-connector-python-2.0.2.ebuild:
+  add ~arm, bug #533252
+
+  16 Dec 2014; Brian Evans <grknight@gentoo.org> metadata.xml:
+  Add python herd; ack by mgorny
+
+*mysql-connector-python-2.0.2 (16 Dec 2014)
+
+  16 Dec 2014; Brian Evans <grknight@gentoo.org> +metadata.xml,
+  +mysql-connector-python-2.0.2.ebuild:
+  Initial import

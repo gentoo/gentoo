@@ -1,0 +1,231 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2
+# $Header: /var/cvsroot/gentoo-x86/x11-base/xorg-server/files/xdm.initd-11,v 1.1 2014/04/14 16:19:25 chithanh Exp $
+
+# This is here to serve as a note to myself, and future developers.
+#
+# Any Display manager (gdm,kdm,xdm) has the following problem:  if
+# it is started before any getty, and no vt is specified, it will
+# usually run on vt2.  When the getty on vt2 then starts, and the
+# DM is already started, the getty will take control of the keyboard,
+# leaving us with a "dead" keyboard.
+#
+# Resolution: add the following line to /etc/inittab
+#
+#  x:a:once:/etc/X11/startDM.sh
+#
+# and have /etc/X11/startDM.sh start the DM in daemon mode if
+# a lock is present (with the info of what DM should be started),
+# else just fall through.
+#
+# How this basically works, is the "a" runlevel is a additional
+# runlevel that you can use to fork processes with init, but the
+# runlevel never gets changed to this runlevel.  Along with the "a"
+# runlevel, the "once" key word means that startDM.sh will only be
+# run when we specify it to run, thus eliminating respawning
+# startDM.sh when "xdm" is not added to the default runlevel, as was
+# done previously.
+#
+# This script then just calls "telinit a", and init will run
+# /etc/X11/startDM.sh after the current runlevel completes (this
+# script should only be added to the actual runlevel the user is
+# using).
+#
+# Martin Schlemmer
+# aka Azarah
+# 04 March 2002
+
+depend() {
+	need localmount xdm-setup
+
+	# this should start as early as possible
+	# we can't do 'before *' as that breaks it
+	# (#139824) Start after ypbind and autofs for network authentication
+	# (#145219 #180163) Could use lirc mouse as input device
+	# (#70689 comment #92) Start after consolefont to avoid display corruption
+	# (#291269) Start after quota, since some dm need readable home
+	# (#390609) gdm-3 will fail when dbus is not running
+	# (#366753) starting keymaps after X causes problems
+	after bootmisc consolefont modules netmount
+	after readahead-list ypbind autofs openvpn gpm lircmd
+	after quota keymaps
+	before alsasound
+
+	# Start before X
+	use consolekit dbus xfs
+}
+
+setup_dm() {
+	local MY_XDM
+	
+	MY_XDM=$(echo "${DISPLAYMANAGER}" | tr '[:upper:]' '[:lower:]')
+
+	# Load our root path from profile.env
+	# Needed for kdm
+	PATH=${PATH}:$(. /etc/profile.env; echo "${ROOTPATH}")
+
+	NAME=
+	case "${MY_XDM}" in
+		kdm|kde)
+			EXE=/usr/bin/kdm
+			PIDFILE=/run/kdm.pid
+			;;
+		entrance*)
+			EXE=/usr/sbin/entrance
+			PIDFILE=/run/entrance.pid
+			;;
+		gdm|gnome)
+			# gdm-3 and above has different paths
+			if [ -f /usr/sbin/gdm ]; then
+				EXE=/usr/sbin/gdm
+				PIDFILE=/run/gdm/gdm.pid
+				START_STOP_ARGS="--background"
+				AUTOCLEAN_CGROUP="yes"
+			else
+				EXE=/usr/bin/gdm
+				PIDFILE=/run/gdm.pid
+			fi
+			[ "${RC_UNAME}" != "Linux" ] && NAME=gdm-binary
+			;;
+		wdm)
+			EXE=/usr/bin/wdm
+			PIDFILE=
+			;;
+		gpe)
+			EXE=/usr/bin/gpe-dm
+			PIDFILE=/run/gpe-dm.pid
+			;;
+		lxdm)
+			EXE=/usr/sbin/lxdm-binary
+			PIDFILE=/run/lxdm.pid
+			START_STOP_ARGS="--background"
+			;;
+		lightdm)
+			EXE=/usr/sbin/lightdm
+			PIDFILE=/run/lightdm.pid
+			START_STOP_ARGS="--background"
+			;;
+		sddm)
+			EXE="/usr/bin/sddm"
+			START_STOP_ARGS="-m --background"
+			PIDFILE=/run/sddm.pid
+			;;
+		*)
+			# first find out if there is such executable
+			EXE="$(command -v ${MY_XDM} 2>/dev/null)"
+			PIDFILE="/run/${MY_XDM}.pid"
+
+			# warn user that he is doing sick things if the exe was not found
+			if [ -z "${EXE}" ]; then
+				echo "ERROR: Your XDM value is invalid."
+				echo "  No ${MY_XDM} executable could be found on your system."
+			fi
+			;;
+	esac
+
+	if ! [ -x "${EXE}" ]; then
+		EXE=/usr/bin/xdm
+		PIDFILE=/run/xdm.pid
+		if ! [ -x "/usr/bin/xdm" ]; then
+			echo "ERROR: Please set your DISPLAYMANAGER variable in /etc/conf.d/xdm,"
+			echo "	or install x11-apps/xdm package"
+			eend 255
+		fi
+	fi
+}
+
+# Check to see if something is defined on our VT
+vtstatic() {
+	if [ -e /etc/inittab ] ; then
+		grep -Eq "^[^#]+.*\<tty$1\>" /etc/inittab
+	elif [ -e /etc/ttys ] ; then
+		grep -q "^ttyv$(($1 - 1))" /etc/ttys
+	else
+		return 1
+	fi
+}
+
+start() {
+	local EXE NAME PIDFILE AUTOCLEAN_CGROUP
+	setup_dm
+
+	if [ -f /etc/.noxdm ]; then
+		einfo "Skipping ${EXE##*/}, /etc/.noxdm found or \"nox\" bootparam passed."
+		rm /etc/.noxdm
+		return 0
+	fi
+
+	ebegin "Setting up ${EXE##*/}"
+
+	# save the prefered DM
+	save_options "service" "${EXE}"
+	save_options "name"    "${NAME}"
+	save_options "pidfile" "${PIDFILE}"
+	save_options "start_stop_args" "${START_STOP_ARGS}"
+	save_options "autoclean_cgroup" "${AUTOCLEAN_CGROUP:-no}"
+
+	if [ -n "${CHECKVT-y}" ] ; then
+		if vtstatic "${CHECKVT:-7}" ; then
+			if [ -x /sbin/telinit ] && [ "${SOFTLEVEL}" != "BOOT" ] && [ "${RC_SOFTLEVEL}" != "BOOT" ]; then
+				ewarn "Something is already defined on VT ${CHECKVT:-7}, will start X later"
+				telinit a >/dev/null 2>&1
+				return 0
+			else
+				eerror "Something is already defined on VT ${CHECKVT:-7}, not starting"
+				return 1
+			fi
+		fi
+	fi
+
+	/etc/X11/startDM.sh
+	eend 0
+}
+
+stop() {
+	local curvt retval
+
+	retval=0
+	if [ -t 0 ]; then
+		if type fgconsole >/dev/null 2>&1; then
+			curvt=$(fgconsole 2>/dev/null)
+		else
+			curvt=$(tty)
+			case "${curvt}" in
+				/dev/ttyv[0-9]*) curvt=${curvt#/dev/ttyv} ;;
+				*) curvt= ;;
+			esac
+		fi
+	fi
+	local myexe myname mypidfile myservice
+	myexe=$(get_options "service")
+	myname=$(get_options "name")
+	mypidfile=$(get_options "pidfile")
+	myservice=${myexe##*/}
+	yesno "${rc_cgroup_cleanup:-no}" || rc_cgroup_cleanup=$(get_options "autoclean_cgroup")
+
+	[ -z "${myexe}" ] && return 0
+
+	ebegin "Stopping ${myservice}"
+
+	if start-stop-daemon --quiet --test --stop --exec "${myexe}"; then
+		start-stop-daemon --stop --exec "${myexe}" --retry TERM/5/TERM/5 \
+			${mypidfile:+--pidfile} ${mypidfile} \
+			${myname:+--name} ${myname}
+		retval=${?}
+	fi
+
+	# switch back to original vt
+	if [ -n "${curvt}" ]; then
+		if type chvt >/dev/null 2>&1; then
+			chvt "${curvt}"
+		else
+			vidcontrol -s "$((curvt + 1))"
+		fi
+	fi
+
+	eend ${retval} "Error stopping ${myservice}"
+	return ${retval}
+}
+
+# vim: set ts=4 :

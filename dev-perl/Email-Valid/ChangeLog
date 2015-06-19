@@ -1,0 +1,303 @@
+# ChangeLog for dev-perl/Email-Valid
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Email-Valid/ChangeLog,v 1.77 2015/04/12 13:08:46 zlogene Exp $
+
+  12 Apr 2015; Mikle Kolyada <zlogene@gentoo.org> Email-Valid-1.196.0.ebuild:
+  Add ~x86-linux keyword wrt bug #545660
+
+  11 Apr 2015; Mikle Kolyada <zlogene@gentoo.org> Email-Valid-1.196.0.ebuild:
+  Add ~ppc and ~ppc64 keywords wrt bug #545660
+
+  10 Apr 2015; Mikle Kolyada <zlogene@gentoo.org> Email-Valid-1.196.0.ebuild:
+  Add ~mips keyword wrt bug #545660
+
+  06 Apr 2015; Jeroen Roovers <jer@gentoo.org> Email-Valid-1.196.0.ebuild:
+  Marked ~hppa (bug #545660).
+
+*Email-Valid-1.196.0 (05 Apr 2015)
+
+  05 Apr 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Email-Valid-1.196.0.ebuild:
+  Version bump
+
+*Email-Valid-1.192.0-r1 (21 Aug 2014)
+
+  21 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Email-Valid-1.192.0-r1.ebuild, -Email-Valid-1.192.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  05 Aug 2014; Mikle Kolyada <zlogene@gentoo.org> Email-Valid-1.192.0.ebuild:
+  Fix DESCRIPTION
+
+  16 Feb 2014; Mikle Kolyada <zlogene@gentoo.org> -Email-Valid-0.190.0.ebuild,
+  Email-Valid-1.192.0.ebuild:
+  ppc stable wrt bug #492144; Drop old.
+
+  16 Feb 2014; Mikle Kolyada <zlogene@gentoo.org> Email-Valid-1.192.0.ebuild:
+  ppc64 stable wrt bug #492144
+
+  16 Feb 2014; Mikle Kolyada <zlogene@gentoo.org> Email-Valid-1.192.0.ebuild:
+  x86 stable wrt bug #492144
+
+  16 Feb 2014; Mikle Kolyada <zlogene@gentoo.org> Email-Valid-1.192.0.ebuild:
+  amd64 stable wrt bug #492144
+
+  11 Feb 2014; Jeroen Roovers <jer@gentoo.org> Email-Valid-1.192.0.ebuild:
+  Stable for HPPA (bug #492144).
+
+*Email-Valid-1.192.0 (18 Sep 2013)
+
+  18 Sep 2013; Patrick Lauer <patrick@gentoo.org> +Email-Valid-1.192.0.ebuild:
+  Bump
+
+  05 Dec 2012; Fabian Groffen <grobian@gentoo.org> Email-Valid-0.190.0.ebuild:
+  Marked ~x86-linux, bug #444950
+
+  02 Sep 2012; Torsten Veller <tove@gentoo.org>
+  -files/0.181-disable-online-test.patch, -Email-Valid-0.184.ebuild,
+  -Email-Valid-0.187.0.ebuild, -Email-Valid-0.188.0.ebuild:
+  Cleanup
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  17 Jun 2012; Raúl Porcel <armin76@gentoo.org> Email-Valid-0.184.ebuild,
+  Email-Valid-0.187.0.ebuild, Email-Valid-0.188.0.ebuild,
+  Email-Valid-0.190.0.ebuild:
+  Drop alpha/ia64/sparc keywords
+
+  06 May 2012; Brent Baude <ranger@gentoo.org> Email-Valid-0.190.0.ebuild:
+  Marking Email-Valid-0.190.0 ppc for bug 413001
+
+  26 Apr 2012; Jeroen Roovers <jer@gentoo.org> Email-Valid-0.190.0.ebuild:
+  Stable for HPPA (bug #413001).
+
+  24 Apr 2012; Jeff Horelick <jdhore@gentoo.org> Email-Valid-0.190.0.ebuild:
+  marked x86 per bug 413001
+
+  23 Apr 2012; Brent Baude <ranger@gentoo.org> Email-Valid-0.190.0.ebuild:
+  Marking Email-Valid-0.190.0 ppc64 for bug 413001
+
+  22 Apr 2012; Agostino Sarubbo <ago@gentoo.org> Email-Valid-0.190.0.ebuild:
+  Stable for amd64, wrt bug #413001
+
+*Email-Valid-0.190.0 (29 Mar 2012)
+
+  29 Mar 2012; Torsten Veller <tove@gentoo.org> +Email-Valid-0.190.0.ebuild:
+  Version bump
+
+*Email-Valid-0.188.0 (17 Mar 2012)
+
+  17 Mar 2012; Torsten Veller <tove@gentoo.org> +Email-Valid-0.188.0.ebuild:
+  Version bump
+
+  18 Feb 2012; Torsten Veller <tove@gentoo.org> -Email-Valid-0.185.0.ebuild,
+  -Email-Valid-0.186.0.ebuild:
+  Cleanup
+
+*Email-Valid-0.187.0 (28 Jan 2012)
+
+  28 Jan 2012; Torsten Veller <tove@gentoo.org> +Email-Valid-0.187.0.ebuild:
+  Version bump
+
+*Email-Valid-0.186.0 (24 Jan 2012)
+
+  24 Jan 2012; Torsten Veller <tove@gentoo.org> +Email-Valid-0.186.0.ebuild:
+  Version bump
+
+*Email-Valid-0.185.0 (16 Aug 2011)
+
+  16 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +files/0.185-disable-online-test.patch, +Email-Valid-0.185.0.ebuild:
+  Version bump
+
+  14 Jan 2011; Torsten Veller <tove@gentoo.org> -Email-Valid-0.179.ebuild,
+  -Email-Valid-0.181.ebuild:
+  Cleanup
+
+  13 Jan 2011; Brent Baude <ranger@gentoo.org> Email-Valid-0.184.ebuild:
+  Marking Email-Valid-0.184 ppc stable for bug 341865
+
+  13 Nov 2010; Raúl Porcel <armin76@gentoo.org> Email-Valid-0.184.ebuild:
+  alpha/ia64/sparc stable wrt #341865
+
+  05 Nov 2010; Samuli Suominen <ssuominen@gentoo.org>
+  Email-Valid-0.184.ebuild:
+  ppc64 stable wrt #341865
+
+  05 Nov 2010; Markos Chandras <hwoarang@gentoo.org>
+  Email-Valid-0.184.ebuild:
+  Stable on amd64 wrt bug #341865
+
+  05 Nov 2010; Jeroen Roovers <jer@gentoo.org> Email-Valid-0.184.ebuild:
+  Stable for HPPA (bug #341865).
+
+  04 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  Email-Valid-0.184.ebuild:
+  x86 stable, bug 341865
+
+*Email-Valid-0.184 (12 Jun 2010)
+
+  12 Jun 2010; Torsten Veller <tove@gentoo.org>
+  files/0.181-disable-online-test.patch, +Email-Valid-0.184.ebuild:
+  Version bump
+
+  08 Jun 2009; Torsten Veller <tove@gentoo.org>
+  +files/0.181-disable-online-test.patch, Email-Valid-0.181.ebuild:
+  Disable online test
+
+  02 May 2009; Torsten Veller <tove@gentoo.org> -Email-Valid-0.180.ebuild:
+  Cleanup
+
+*Email-Valid-0.181 (24 Mar 2009)
+
+  24 Mar 2009; Torsten Veller <tove@gentoo.org> +Email-Valid-0.181.ebuild:
+  Version bump
+
+*Email-Valid-0.180 (16 Jan 2009)
+
+  16 Jan 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +Email-Valid-0.180.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  30 Sep 2008; Torsten Veller <tove@gentoo.org> -Email-Valid-0.15-r1.ebuild,
+  -Email-Valid-0.175.ebuild, Email-Valid-0.179.ebuild:
+  Cleanup
+
+  19 Mar 2008; Jeroen Roovers <jer@gentoo.org> Email-Valid-0.179.ebuild:
+  Stable for HPPA too.
+
+  07 Jul 2007; Tom Gall <tgall@gentoo.org> Email-Valid-0.179.ebuild:
+  stable on ppc64
+
+  05 Jul 2007; Raúl Porcel <armin76@gentoo.org> Email-Valid-0.179.ebuild:
+  alpha/ia64/x86 stable
+
+  05 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  Email-Valid-0.179.ebuild:
+  ppc stable
+
+  15 Apr 2007; Markus Rothe <corsair@gentoo.org> Email-Valid-0.175.ebuild:
+  Stable on ppc64
+
+  10 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  Email-Valid-0.179.ebuild:
+  sparc stable
+
+  09 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  Email-Valid-0.179.ebuild:
+  Marking stable amd64
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org> Email-Valid-0.175.ebuild:
+  Stable on x86, bug #169152.
+
+  26 Feb 2007; Michael Cummings <mcummings@gentoo.org>
+  Email-Valid-0.179.ebuild:
+  Keywording ~mips, tested on swarm
+
+*Email-Valid-0.179 (06 Feb 2007)
+
+  06 Feb 2007; Michael Cummings <mcummings@gentoo.org>
+  +Email-Valid-0.179.ebuild:
+  Version bump
+
+  15 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  -Email-Valid-0.15.ebuild, Email-Valid-0.15-r1.ebuild,
+  Email-Valid-0.175.ebuild:
+  Ebuild maintenance
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  Email-Valid-0.175.ebuild:
+  Stable on Alpha.
+
+  15 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  Email-Valid-0.175.ebuild:
+  Stable on ia64.
+
+  28 Sep 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  Email-Valid-0.175.ebuild:
+  Stable on hppa
+
+  16 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  Email-Valid-0.175.ebuild:
+  ppc stable
+
+  07 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Email-Valid-0.175.ebuild:
+  Marking stable sparc, amd64
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Email-Valid-0.15.ebuild, Email-Valid-0.15-r1.ebuild,
+  Email-Valid-0.175.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  04 Jul 2006; Christian Hartmann <ian@gentoo.org> Email-Valid-0.15.ebuild,
+  Email-Valid-0.15-r1.ebuild, Email-Valid-0.175.ebuild:
+  Fixed RDEPEND wrt bug #134781
+
+*Email-Valid-0.175 (02 Jul 2006)
+
+  02 Jul 2006; Christian Hartmann <ian@gentoo.org> Email-Valid-0.15.ebuild,
+  Email-Valid-0.15-r1.ebuild, +Email-Valid-0.175.ebuild:
+  Fixed HOMEPAGE of old versions; Version bump (upstream maintainer changed)
+
+  13 Feb 2006; Stuart Longland <redhatter@gentoo.org> ChangeLog:
+  Marking dev-perl/Email-Valid-0.15-r1 ~mips (dependancy of dev-util/git) as
+  per bug #108215
+
+  28 Nov 2005; Tom Gall <tgall@gentoo.org> Email-Valid-0.15-r1.ebuild:
+  stable on ppc64
+
+*Email-Valid-0.15-r1 (18 Jul 2005)
+
+  18 Jul 2005; Michael Cummings <mcummings@gentoo.org>
+  -Email-Valid-0.14.ebuild, +Email-Valid-0.15-r1.ebuild:
+  bug 99088 - missing dep, bumped to catch
+
+  08 May 2005; Yuta SATOH <nigoro@gentoo.org> Email-Valid-0.15.ebuild:
+  added ~ppc64
+
+  08 May 2005; Aron Griffis <agriffis@gentoo.org> Email-Valid-0.15.ebuild:
+  stable on ia64
+
+  01 May 2005; Tom Martin <slarti@gentoo.org> Email-Valid-0.15.ebuild:
+  Stable on amd64.
+
+  26 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
+  Email-Valid-0.15.ebuild:
+  ~ia64 keyword.
+
+  26 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
+  Email-Valid-0.15.ebuild:
+  Stable on alpha.
+
+  25 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  Email-Valid-0.14.ebuild, Email-Valid-0.15.ebuild:
+  cleaning
+
+  12 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org> Email-Valid-0.14.ebuild:
+  Stable on sparc
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*Email-Valid-0.15 (05 Jun 2004)
+
+  05 Jun 2004; Michael Cummings <mcummings@gentoo.org>
+  Email-Valid-0.15.ebuild:
+  new version on cpan. that dep for net::dns is tricky - it isn't a prereq in
+  the makefile, but is definitely used by the module.
+
+  26 May 2004; Bryan Østergaard <kloeri@gentoo.org> Email-Valid-0.14.ebuild:
+  Stable on alpha.
+
+  07 Jun 2003; <rac@gentoo.org> Email-Valid-0.14.ebuild:
+  Add IUSE
+
+*Email-Valid-0.14 (09 May 2003)
+
+  09 May 2003; <rac@gentoo.org> Email-Valid-0.14.ebuild:
+  Initial import from bug 4919. Thanks to Erwann CORVELLEC
+  <Erwann.Corvellec@free.fr>. g-cpan.pl can almost handle this one, except for
+  the Net-DNS dependency.

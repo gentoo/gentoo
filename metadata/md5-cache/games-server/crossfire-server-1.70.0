@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=net-misc/curl X? ( x11-libs/libXaw media-libs/libpng:0 )
+DESCRIPTION=server for the crossfire clients
+EAPI=5
+HOMEPAGE=http://crossfire.real-time.com/
+IUSE=X
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=net-misc/curl X? ( x11-libs/libXaw media-libs/libpng:0 ) games-misc/games-envd
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/crossfire/crossfire-1.70.0.tar.gz mirror://sourceforge/crossfire/crossfire-1.70.0.maps.tar.gz
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	games	1ad3205dbf62a2c98249f2f59b0a2d39	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=9142a5a401c57d83ee5ec857cb782930

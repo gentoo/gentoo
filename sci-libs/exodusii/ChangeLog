@@ -1,0 +1,62 @@
+# ChangeLog for sci-libs/exodusii
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/exodusii/ChangeLog,v 1.10 2015/03/09 00:05:49 pacho Exp $
+
+  09 Mar 2015; Pacho Ramos <pacho@gentoo.org> exodusii-6.02.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> exodusii-6.02.ebuild:
+  amd64 stable, bug 540290
+
+  24 Oct 2014; Alexis Ballier <aballier@gentoo.org> exodusii-6.02.ebuild:
+  keyword ~arm
+
+*exodusii-6.02 (01 Jan 2014)
+*exodusii-5.26 (01 Jan 2014)
+
+  01 Jan 2014; Justin Lecher <jlec@gentoo.org> +exodusii-5.26.ebuild,
+  +exodusii-6.02.ebuild, +files/exodusii-5.26-multilib.patch:
+  Version Bump
+
+  18 Jul 2013; Zac Medico <zmedico@gentoo.org> exodusii-5.24.ebuild:
+  Fix SRC_URI.
+
+*exodusii-5.24 (18 Jul 2013)
+
+  18 Jul 2013; Justin Lecher <jlec@gentoo.org> +exodusii-5.24.ebuild:
+  Version Bump
+
+  13 Dec 2012; Justin Lecher <jlec@gentoo.org> exodusii-5.22b.ebuild,
+  metadata.xml:
+  fox long description and keyword correctly
+
+  13 Dec 2012; Justin Lecher <jlec@gentoo.org> exodusii-5.22b.ebuild:
+  readd missing USE=test
+
+  13 Dec 2012; Justin Lecher <jlec@gentoo.org> exodusii-5.22b.ebuild,
+  files/exodusii-5.22b-multilib.patch:
+  Do things the gentoo way; fix tests
+
+*exodusii-5.22b (13 Dec 2012)
+
+  13 Dec 2012; Justin Lecher <jlec@gentoo.org> +exodusii-5.22b.ebuild,
+  +files/exodusii-5.22b-multilib.patch, +metadata.xml:
+  Imported from sci overlay, #344063; needed for #433481
+
+*exodusii-5.22 (04 Sep 2012)
+
+  04 Sep 2012; Justin Lecher <jlec@gentoo.org> -exodusii-4.98.ebuild,
+  -files/exodusii-4.98-find-netcdf.patch, +exodusii-5.22.ebuild,
+  +files/exodusii-5.22-multilib.patch:
+  Version Bump
+
+  22 May 2012; Justin Lecher <jlec@gentoo.org> exodusii-4.98.ebuild,
+  metadata.xml:
+  Add missing eutils.eclass, bump to EAPI=4, remove unnecessary bits
+
+*exodusii-4.98 (15 Dec 2010)
+
+  15 Dec 2010; Nico Schlömer <nico.schloemer@gmail.com>
+  +exodusii-4.98.ebuild, +files/exodusii-4.98-find-netcdf.patch,
+  +metadata.xml:
+  Initial import.

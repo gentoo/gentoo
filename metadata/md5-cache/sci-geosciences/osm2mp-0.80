@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DEPEND=dev-perl/Template-Toolkit virtual/perl-Getopt-Long app-arch/unzip
+DESCRIPTION=Converts openstreetmap data to mp format (used e. g. by mkgmap)
+EAPI=4
+HOMEPAGE=http://forum.openstreetmap.org/viewtopic.php?id=1162
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-perl/Template-Toolkit virtual/perl-Getopt-Long
+SLOT=0
+SRC_URI=http://garminmapsearch.com/osm/osm2mp_v080.zip
+_md5_=e2062f0bae614c7908483eb68c00dd7d

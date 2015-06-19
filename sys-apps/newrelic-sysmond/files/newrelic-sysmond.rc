@@ -1,0 +1,24 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/newrelic-sysmond/files/newrelic-sysmond.rc,v 1.2 2012/07/18 16:27:27 hollow Exp $
+
+depend() {
+	use net
+}
+
+start() {
+	ebegin "Starting NewRelic System Monitor"
+	start-stop-daemon --start \
+		--user newrelic \
+		--exec /usr/sbin/nrsysmond -- \
+		-c /etc/newrelic/nrsysmond.cfg \
+		-p /var/run/newrelic/nrsysmond.pid
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping NewRelic System Monitor"
+	start-stop-daemon --stop --pidfile /var/run/newrelic/nrsysmond.pid
+	eend $?
+}

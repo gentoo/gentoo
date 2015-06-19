@@ -1,0 +1,26 @@
+# ChangeLog for dev-java/biojava
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/biojava/ChangeLog,v 1.5 2014/05/24 07:34:23 pacho Exp $
+
+  24 May 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #199047
+
+  20 Mar 2010; Petteri Räty <betelgeuse@gentoo.org> biojava-1.7.ebuild:
+  Keyword ~x86.
+
+*biojava-1.7 (10 Jul 2009)
+
+  10 Jul 2009; Andrey Kislyuk <weaver@gentoo.org> +biojava-1.7.ebuild:
+  Version bump
+
+  07 Feb 2009; weaver <weaver@gentoo.org> metadata.xml:
+  Assume ownership
+
+*biojava-1.6 (25 Jan 2009)
+
+  25 Jan 2009; weaver <weaver@gentoo.org> +metadata.xml,
+  +biojava-1.6.ebuild:
+  Import from Java overlay, thanks to serkan
+
+  22 Jan 2009; Alistair Bush <ali_bush@gentoo.org> ChangeLog:
+  Add ChangeLog for QA.

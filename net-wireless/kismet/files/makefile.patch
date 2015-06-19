@@ -1,0 +1,119 @@
+diff -Naur kismet-2011-03-R2-orig/plugin-autowep/Makefile kismet-2011-03-R2/plugin-autowep/Makefile
+--- kismet-2011-03-R2-orig/plugin-autowep/Makefile	2009-11-05 21:50:32.000000000 -0500
++++ kismet-2011-03-R2/plugin-autowep/Makefile	2011-05-31 21:15:06.000000000 -0400
+@@ -1,6 +1,7 @@
+ # You will need kismet newcore sources
+ KIS_SRC_DIR ?= /usr/src/kismet
+ KIS_INC_DIR ?= $(KIS_SRC_DIR)
++LIBDIR ?= /lib
+ 
+ include $(KIS_SRC_DIR)/Makefile.inc
+ 
+@@ -21,8 +22,8 @@
+ 	$(LD) $(PLUGINLDFLAGS) $(PLUGOBJS) -o $(PLUGOUT) $(LIBS)
+ 
+ install:	$(PLUGOUT)
+-	mkdir -p $(DESTDIR)$(prefix)/lib/kismet/
+-	install -o $(INSTUSR) -g $(INSTGRP) -m 644 $^ $(DESTDIR)$(prefix)/lib/kismet/$^
++	mkdir -p $(DESTDIR)$(prefix)/$(LIBDIR)/kismet/
++	install -o $(INSTUSR) -g $(INSTGRP) -m 644 $^ $(DESTDIR)$(prefix)/$(LIBDIR)/kismet/$^
+ 
+ userinstall:	$(PLUGOUT)
+ 	mkdir -p ${HOME}/.kismet/plugins/
+diff -Naur kismet-2011-03-R2-orig/plugin-btscan/Makefile kismet-2011-03-R2/plugin-btscan/Makefile
+--- kismet-2011-03-R2-orig/plugin-btscan/Makefile	2010-04-28 15:31:26.000000000 -0400
++++ kismet-2011-03-R2/plugin-btscan/Makefile	2011-05-31 21:23:55.000000000 -0400
+@@ -1,6 +1,7 @@
+ # You will need kismet newcore sources
+ KIS_SRC_DIR ?= /usr/src/kismet
+ KIS_INC_DIR ?= $(KIS_SRC_DIR)
++LIBDIR ?= /lib
+ 
+ include $(KIS_SRC_DIR)/Makefile.inc
+ 
+@@ -27,10 +28,10 @@
+ 	$(LD) $(PLUGINLDFLAGS) $(SRVOBJS) -o $(SRVOUT) $(LIBS)
+ 
+ install:	$(SRVOUT) $(CLIOUT)
+-	mkdir -p $(DESTDIR)$(prefix)/lib/kismet/
+-	install -o $(INSTUSR) -g $(INSTGRP) -m 644 $(SRVOUT) $(DESTDIR)$(prefix)/lib/kismet/$(SRVOUT)
+-	mkdir -p $(DESTDIR)$(prefix)/lib/kismet_client/
+-	install -o $(INSTUSR) -g $(INSTGRP) -m 644 $(CLIOUT) $(DESTDIR)$(prefix)/lib/kismet_client/$(CLIOUT)
++	mkdir -p $(DESTDIR)$(prefix)/$(LIBDIR)/kismet/
++	install -o $(INSTUSR) -g $(INSTGRP) -m 644 $(SRVOUT) $(DESTDIR)$(prefix)/$(LIBDIR)/kismet/$(SRVOUT)
++	mkdir -p $(DESTDIR)$(prefix)/$(LIBDIR)/kismet_client/
++	install -o $(INSTUSR) -g $(INSTGRP) -m 644 $(CLIOUT) $(DESTDIR)$(prefix)/$(LIBDIR)/kismet_client/$(CLIOUT)
+ 
+ userinstall:	$(SRVOUT) $(CLIOUT)
+ 	mkdir -p ${HOME}/.kismet/plugins/
+diff -Naur kismet-2011-03-R2-orig/plugin-dot15d4/Makefile kismet-2011-03-R2/plugin-dot15d4/Makefile
+--- kismet-2011-03-R2-orig/plugin-dot15d4/Makefile	2010-07-29 20:59:16.000000000 -0400
++++ kismet-2011-03-R2/plugin-dot15d4/Makefile	2011-05-31 21:17:25.000000000 -0400
+@@ -1,6 +1,7 @@
+ # You will need kismet newcore sources
+ KIS_SRC_DIR ?= /usr/src/kismet
+ KIS_INC_DIR ?= $(KIS_SRC_DIR)
++LIBDIR ?= /lib
+ 
+ include $(KIS_SRC_DIR)/Makefile.inc
+ 
+@@ -26,8 +27,8 @@
+ 	$(LD) $(PLUGINLDFLAGS) $(SRVOBJS) -o $(SRVOUT) $(LIBS)
+ 
+ install:	$(SRVOUT) $(CLIOUT)
+-	mkdir -p $(DESTDIR)$(prefix)/lib/kismet/
+-	install -o $(INSTUSR) -g $(INSTGRP) -m 644 $(SRVOUT) $(DESTDIR)$(prefix)/lib/kismet/$(SRVOUT)
++	mkdir -p $(DESTDIR)$(prefix)/$(LIBDIR)/kismet/
++	install -o $(INSTUSR) -g $(INSTGRP) -m 644 $(SRVOUT) $(DESTDIR)$(prefix)/$(LIBDIR)/kismet/$(SRVOUT)
+ 
+ userinstall:	$(SRVOUT) $(CLIOUT)
+ 	mkdir -p ${HOME}/.kismet/plugins/
+diff -Naur kismet-2011-03-R2-orig/plugin-ptw/Makefile kismet-2011-03-R2/plugin-ptw/Makefile
+--- kismet-2011-03-R2-orig/plugin-ptw/Makefile	2010-04-28 15:31:26.000000000 -0400
++++ kismet-2011-03-R2/plugin-ptw/Makefile	2011-05-31 21:18:14.000000000 -0400
+@@ -1,6 +1,7 @@
+ # You will need kismet newcore sources
+ KIS_SRC_DIR ?= /usr/src/kismet
+ KIS_INC_DIR ?= $(KIS_SRC_DIR)
++LIBDIR ?= /lib
+ 
+ include $(KIS_SRC_DIR)/Makefile.inc
+ 
+@@ -21,9 +22,8 @@
+ 	$(LD) $(PLUGINLDFLAGS) $(PLUGOBJS) -o $(PLUGOUT) $(LIBS)
+ 
+ install:	$(PLUGOUT)
+-	mkdir -p $(DESTDIR)$(prefix)/lib/kismet/
+-
+-	install -o $(INSTUSR) -g $(INSTGRP) -m 644 $^ $(DESTDIR)$(prefix)/lib/kismet/$^
++	mkdir -p $(DESTDIR)$(prefix)/$(LIBDIR)/kismet/
++	install -o $(INSTUSR) -g $(INSTGRP) -m 644 $^ $(DESTDIR)$(prefix)/$(LIBDIR)/kismet/$^
+ 
+ userinstall:	$(PLUGOUT)
+ 	mkdir -p ${HOME}/.kismet/plugins/
+diff -Naur kismet-2011-03-R2-orig/plugin-spectools/Makefile kismet-2011-03-R2/plugin-spectools/Makefile
+--- kismet-2011-03-R2-orig/plugin-spectools/Makefile	2010-01-07 18:33:30.000000000 -0500
++++ kismet-2011-03-R2/plugin-spectools/Makefile	2011-05-31 21:19:09.000000000 -0400
+@@ -1,6 +1,7 @@
+ # You will need kismet newcore sources
+ KIS_SRC_DIR ?= /usr/src/kismet
+ KIS_INC_DIR ?= $(KIS_SRC_DIR)
++LIBDIR ?= /lib
+ 
+ include $(KIS_SRC_DIR)/Makefile.inc
+ 
+@@ -27,10 +28,10 @@
+ 	$(LD) $(PLUGINLDFLAGS) $(SRVOBJS) -o $(SRVOUT) $(LIBS)
+ 
+ install:	$(SRVOUT) $(CLIOUT)
+-	mkdir -p $(DESTDIR)$(prefix)/lib/kismet/
+-	install -o $(INSTUSR) -g $(INSTGRP) -m 644 $(SRVOUT) $(DESTDIR)$(prefix)/lib/kismet/$(SRVOUT)
+-	mkdir -p $(DESTDIR)$(prefix)/lib/kismet_client/
+-	install -o $(INSTUSR) -g $(INSTGRP) -m 644 $(CLIOUT) $(DESTDIR)$(prefix)/lib/kismet_client/$(CLIOUT)
++	mkdir -p $(DESTDIR)$(prefix)/$(LIBDIR)/kismet/
++	install -o $(INSTUSR) -g $(INSTGRP) -m 644 $(SRVOUT) $(DESTDIR)$(prefix)/$(LIBDIR)/kismet/$(SRVOUT)
++	mkdir -p $(DESTDIR)$(prefix)/$(LIBDIR)/kismet_client/
++	install -o $(INSTUSR) -g $(INSTGRP) -m 644 $(CLIOUT) $(DESTDIR)$(prefix)/$(LIBDIR)/kismet_client/$(CLIOUT)
+ 
+ userinstall:	$(SRVOUT) $(CLIOUT)
+ 	mkdir -p ${HOME}/.kismet/plugins/

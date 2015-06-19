@@ -1,0 +1,83 @@
+# ChangeLog for dev-python/requests-cache
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/requests-cache/ChangeLog,v 1.17 2015/05/05 18:08:18 jlec Exp $
+
+*requests-cache-0.4.10 (05 May 2015)
+
+  05 May 2015; Justin Lecher <jlec@gentoo.org> +requests-cache-0.4.10.ebuild:
+  Version Bump
+
+  27 Mar 2015; Justin Lecher <jlec@gentoo.org> -requests-cache-0.4.5.ebuild,
+  -requests-cache-0.4.6.ebuild, -requests-cache-0.4.8.ebuild, metadata.xml:
+  Drop old
+
+  27 Mar 2015; Agostino Sarubbo <ago@gentoo.org> requests-cache-0.4.9.ebuild:
+  Stable for amd64, wrt bug #507316
+
+  22 Mar 2015; Andreas Schuerch <nativemad@gentoo.org>
+  requests-cache-0.4.9.ebuild:
+  x86 stable - finally, see bug 507316
+
+*requests-cache-0.4.9 (26 Jan 2015)
+
+  26 Jan 2015; Patrick Lauer <patrick@gentoo.org> +requests-cache-0.4.9.ebuild:
+  Bump
+
+*requests-cache-0.4.8 (19 Dec 2014)
+
+  19 Dec 2014; Patrick Lauer <patrick@gentoo.org> +requests-cache-0.4.8.ebuild:
+  Bump
+
+  17 Oct 2014; Mike Gilbert <floppym@gentoo.org> requests-cache-0.4.5.ebuild,
+  requests-cache-0.4.6.ebuild:
+  Restore minimum version to requests dep.
+
+*requests-cache-0.4.6 (16 Oct 2014)
+
+  16 Oct 2014; Ian Delaney <idella4@gentoo.org> +requests-cache-0.4.6.ebuild,
+  -requests-cache-0.3.0.ebuild, -requests-cache-0.4.0.ebuild,
+  -requests-cache-0.4.2.ebuild, -requests-cache-0.4.3.ebuild,
+  -requests-cache-0.4.4.ebuild, requests-cache-0.4.5.ebuild:
+  bump; tidy to deps, rm old
+
+  02 Sep 2014; Patrick Lauer <patrick@gentoo.org> requests-cache-0.4.5.ebuild:
+  Whitespace
+
+*requests-cache-0.4.5 (31 Aug 2014)
+
+  31 Aug 2014; Ian Delaney <idella4@gentoo.org> +requests-cache-0.4.5.ebuild:
+  bump; drop py2.6 add py3.4 pypy, add doc build, tidy
+
+*requests-cache-0.4.4 (26 Nov 2013)
+
+  26 Nov 2013; Patrick Lauer <patrick@gentoo.org> +requests-cache-0.4.4.ebuild:
+  Bump
+
+*requests-cache-0.4.3 (18 Sep 2013)
+
+  18 Sep 2013; Patrick Lauer <patrick@gentoo.org> +requests-cache-0.4.3.ebuild:
+  Bump
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> requests-cache-0.3.0.ebuild,
+  requests-cache-0.4.0.ebuild, requests-cache-0.4.2.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*requests-cache-0.4.2 (02 Sep 2013)
+
+  02 Sep 2013; Patrick Lauer <patrick@gentoo.org> +requests-cache-0.4.2.ebuild:
+  Bump
+
+*requests-cache-0.4.0 (02 May 2013)
+
+  02 May 2013; Patrick Lauer <patrick@gentoo.org> +requests-cache-0.4.0.ebuild:
+  Bump
+
+  28 Feb 2013; Jason A. Donenfeld <zx2c4@gentoo.org>
+  requests-cache-0.3.0.ebuild:
+  Fix metadata.
+
+*requests-cache-0.3.0 (28 Feb 2013)
+
+  28 Feb 2013; Jason A. Donenfeld <zx2c4@gentoo.org> +metadata.xml,
+  +requests-cache-0.3.0.ebuild:
+  Import based on dev-python/requests.

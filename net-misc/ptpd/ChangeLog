@@ -1,0 +1,14 @@
+# ChangeLog for net-misc/ptpd
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ptpd/ChangeLog,v 1.1 2015/06/12 10:55:53 mgorny Exp $
+
+*ptpd-2.3.1_rc4 (12 Jun 2015)
+*ptpd-2.3.0 (12 Jun 2015)
+
+  12 Jun 2015; Michał Górny <mgorny@gentoo.org> +files/ptpd-2.3.0-ntpdc.patch,
+  +files/ptpd-2.3.0-statistics-clear.patch,
+  +files/ptpd-2.3.1_rc4-debug-display.patch, +files/ptpd2.confd,
+  +files/ptpd2.rc, +files/ptpd2.service, +metadata.xml, +ptpd-2.3.0.ebuild,
+  +ptpd-2.3.1_rc4.ebuild:
+  New ebuild from Jan Breuer: PTPd -- implementation of Precise Time Protocol
+  (IEEE 1588). https://github.com/gentoo/gentoo-portage-rsync-mirror/pull/144.

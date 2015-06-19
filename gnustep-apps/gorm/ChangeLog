@@ -1,0 +1,253 @@
+# ChangeLog for gnustep-apps/gorm
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/gorm/ChangeLog,v 1.50 2015/05/22 13:15:40 voyageur Exp $
+
+*gorm-1.2.22 (22 May 2015)
+
+  22 May 2015; Bernard Cafarelli <voyageur@gentoo.org> +gorm-1.2.22.ebuild:
+  Version bump
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> gorm-1.2.20.ebuild:
+  Stable for amd64, wrt bug #474218
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> gorm-1.2.20.ebuild:
+  Stable for x86, wrt bug #474218
+
+*gorm-1.2.20 (24 Apr 2013)
+
+  24 Apr 2013; Bernard Cafarelli <voyageur@gentoo.org> +gorm-1.2.20.ebuild:
+  Version bump
+
+  23 Sep 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> gorm-1.2.18.ebuild:
+  x86 stable wrt bug #429074
+
+  14 Aug 2012; Agostino Sarubbo <ago@gentoo.org> gorm-1.2.18.ebuild:
+  Stable for amd64, wrt bug #429074
+
+*gorm-1.2.18 (20 Jun 2012)
+
+  20 Jun 2012; Bernard Cafarelli <voyageur@gentoo.org> -gorm-1.2.12.ebuild,
+  -files/gorm-1.2.12-objc2_support.patch, +gorm-1.2.18.ebuild:
+  Version bump, code cleanup, stability fixes and support for newer runtimes.
+  Remove old
+
+  07 Apr 2012; Markus Meier <maekke@gentoo.org> gorm-1.2.16.ebuild:
+  x86 stable, bug #410601
+
+  05 Apr 2012; Agostino Sarubbo <ago@gentoo.org> gorm-1.2.16.ebuild:
+  Stable for amd64, wrt bug #410601
+
+*gorm-1.2.16 (08 Feb 2012)
+
+  08 Feb 2012; Bernard Cafarelli <voyageur@gentoo.org> +gorm-1.2.16.ebuild:
+  Version bump, includes XIB reading and bugfixes
+
+  19 Aug 2011; Bernard Cafarelli <voyageur@gentoo.org> -gorm-1.2.8.ebuild,
+  -gorm-1.2.10.ebuild, gorm-1.2.12.ebuild,
+  +files/gorm-1.2.12-objc2_support.patch:
+  Fix objc2 support, bug #374813. Remove old
+
+  12 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org> gorm-1.2.8.ebuild,
+  gorm-1.2.10.ebuild, gorm-1.2.12.ebuild:
+  Drop ppc keyword wrt #332259
+
+  22 Aug 2010; Markus Meier <maekke@gentoo.org> gorm-1.2.12.ebuild:
+  amd64/x86 stable, bug #332259
+
+*gorm-1.2.12 (19 May 2010)
+
+  19 May 2010; Bernard Cafarelli <voyageur@gentoo.org> +gorm-1.2.12.ebuild:
+  Version bump for latest gnustep support
+
+  10 Feb 2010; Bernard Cafarelli <voyageur@gentoo.org> -gorm-1.2.4.ebuild,
+  -gorm-1.2.6.ebuild, -files/gorm-1.2.6-gormcore-as-needed.patch:
+  Drop old version
+
+  19 Jul 2009; nixnut <nixnut@gentoo.org> gorm-1.2.8.ebuild:
+  ppc stable #272673
+
+  11 Jun 2009; Markus Meier <maekke@gentoo.org> gorm-1.2.8.ebuild:
+  amd64 stable, bug #272673
+
+  10 Jun 2009; Christian Faulhammer <fauli@gentoo.org> gorm-1.2.8.ebuild:
+  stable x86, bug 272673
+
+*gorm-1.2.10 (09 Jun 2009)
+
+  09 Jun 2009; Bernard Cafarelli <voyageur@gentoo.org> +gorm-1.2.10.ebuild:
+  Version bump, bugfixes, limited support for standalone views
+
+*gorm-1.2.8 (28 Dec 2008)
+
+  28 Dec 2008; Bernard Cafarelli <voyageur@gentoo.org> +gorm-1.2.8.ebuild:
+  Version bump, bugfixes, nib loading refactored, changes to new gnustep-gui
+  headers (0.16.0)
+
+  03 Dec 2008; Bernard Cafarelli <voyageur@gentoo.org>
+  +files/gorm-1.2.6-gormcore-as-needed.patch, gorm-1.2.6.ebuild:
+  Fix compilation with --as-needed, bug #249510
+
+*gorm-1.2.6 (28 Oct 2008)
+
+  28 Oct 2008; Bernard Cafarelli <voyageur@gentoo.org> -gorm-1.2.1.ebuild,
+  -gorm-1.2.2.ebuild, +gorm-1.2.6.ebuild:
+  Version bump, remove some old versions
+
+  21 Sep 2008; nixnut <nixnut@gentoo.org> gorm-1.2.4.ebuild:
+  Stable on ppc wrt bug 235922
+
+  17 Sep 2008; Markus Meier <maekke@gentoo.org> gorm-1.2.4.ebuild:
+  amd64/x86 stable, bug #235922
+
+*gorm-1.2.4 (07 Apr 2008)
+
+  07 Apr 2008; Bernard Cafarelli <voyageur@gentoo.org> +gorm-1.2.4.ebuild:
+  Version bump
+
+  08 Mar 2008; Santiago M. Mola <coldwind@gentoo.org> gorm-1.2.1.ebuild:
+  amd64 stable wrt bug #207381
+
+  30 Jan 2008; Brent Baude <ranger@gentoo.org> gorm-1.2.1.ebuild:
+  Marking gorm-1.2.1 ppc for bug 207381
+
+  25 Jan 2008; Christian Faulhammer <opfer@gentoo.org> gorm-1.2.1.ebuild:
+  quote variable
+
+  25 Jan 2008; Christian Faulhammer <opfer@gentoo.org> gorm-1.2.1.ebuild:
+  stable x86, bug 207381
+
+*gorm-1.2.2 (09 Jan 2008)
+
+  09 Jan 2008; Bernard Cafarelli <voyageur@gentoo.org> +gorm-1.2.2.ebuild:
+  Version bump (needs unstable gnustep)
+
+*gorm-1.2.1 (10 Sep 2007)
+
+  10 Sep 2007; Bernard Cafarelli <voyageur@gentoo.org> -gorm-1.0.4.ebuild,
+  -gorm-1.0.6.ebuild, -gorm-1.1.0.ebuild, +gorm-1.2.1.ebuild:
+  Version bump from the GNUstep overlay
+
+  22 Aug 2007; Christoph Mende <angelos@gentoo.org> gorm-1.1.0.ebuild:
+  Added ~amd64 wrt bug #170433
+
+  22 Aug 2007; Roy Marples <uberlord@gentoo.org> gorm-1.1.0.ebuild:
+  Keyworded ~x86-fbsd, #183467 thanks to Nathan Smith.
+
+*gorm-1.1.0 (05 Dec 2006)
+
+  05 Dec 2006; Fabian Groffen <grobian@gentoo.org> -gorm-0.9.10.ebuild,
+  +gorm-1.1.0.ebuild:
+  Version bump, solves bug #145598, remove old
+
+*gorm-1.0.6 (16 Apr 2006)
+
+  16 Apr 2006; Fabian Groffen <grobian@gentoo.org> +gorm-1.0.6.ebuild:
+  Version bump to 1.0.6 (bug #129801)
+
+*gorm-1.0.4 (25 Mar 2006)
+
+  25 Mar 2006; Fabian Groffen <grobian@gentoo.org> -gorm-0.9.2.ebuild,
+  +gorm-1.0.4.ebuild:
+  Version bump, removal of old version
+
+*gorm-0.9.10 (07 Jul 2005)
+
+  07 Jul 2005; Armando Di Cianno <fafhrd@gentoo.org> -gorm-0.8.0-r1.ebuild,
+  -gorm-0.9.3_pre20050312.ebuild, +gorm-0.9.10.ebuild:
+  Version bump; cleanups
+
+*gorm-0.9.2 (17 Mar 2005)
+
+  17 Mar 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  -gorm-0.8.1_pre20041203.ebuild, -gorm-0.8.1_pre20050106.ebuild,
+  +gorm-0.9.2.ebuild, +gorm-0.9.3_pre20050312.ebuild:
+  ebuild updates for GNUstep base, libs, and apps across the board; proper
+  versions (to be stabilized, in due time) added where apropos, cvs-pull
+  versions updated where needed
+
+*gorm-0.8.1_pre20050106 (10 Jan 2005)
+
+  10 Jan 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  -gorm-0.8.1_pre20040927-r1.ebuild, +gorm-0.8.1_pre20050106.ebuild:
+  cvs snapshot version bumps; cleaned out old cvs versioned ebuilds; fixed
+  date spec on ebuild headers as repoman was complaining
+
+  09 Jan 2005; Sven Wegener <swegener@gentoo.org>
+  gorm-0.8.1_pre20040927-r1.ebuild, gorm-0.8.1_pre20041203.ebuild:
+  Added missing parentheses in SRC_URI/*DEPEND/LICENSE.
+
+*gorm-0.8.1_pre20041203 (03 Dec 2004)
+
+  03 Dec 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  +gorm-0.8.1_pre20041203.ebuild:
+  General version bump
+
+  11 Nov 2004; Armando Di Cianno <fafhrd@gentoo.org> -gorm-0.3.0.ebuild,
+  gorm-0.8.0-r1.ebuild, -gorm-0.8.0.ebuild, gorm-0.8.1_pre20040927-r1.ebuild,
+  -gorm-0.8.1_pre20040927.ebuild:
+  Mass Update: gnustep.eclass revamped to allow configurable root install;
+  gnustep-base/libs/apps updated to utilize new gnustep.eclass (only versions
+  bumped where files would change); some KEYWORDS were accidentally dropped
+  between version bumps of packages -- this has been resolved; windowmaker
+  correctly supports gnustep now
+
+  17 Oct 2004; David Holm <dholm@gentoo.org>
+  gorm-0.8.1_pre20040927-r1.ebuild:
+  Added to ~ppc.
+
+*gorm-0.8.0-r1 (04 Oct 2004)
+
+  04 Oct 2004; Armando Di Cianno <fafhrd@gentoo.org> +gorm-0.8.0-r1.ebuild,
+  +gorm-0.8.1_pre20040927-r1.ebuild:
+  Fixed Documenation install paths; bug 66305
+
+*gorm-0.8.1_pre20040927 (28 Sep 2004)
+
+  28 Sep 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  +gorm-0.8.1_pre20040927.ebuild:
+  Version bump; pre release date specd live cvs pull.
+
+*gorm-0.8.0 (26 Sep 2004)
+
+  26 Sep 2004; Armando Di Cianno <fafhrd@gentoo.org> metadata.xml,
+  +gorm-0.8.0.ebuild:
+  New version; key'd for ~x86.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  23 Jul 2004; Armando Di Cianno <fafhrd@gentoo.org> gorm-0.3.0.ebuild:
+  Changed referenced categories in ebuilds to reflect recent epkgmove changes.
+
+*gorm-0.3.0 (23 Jul 2004)
+
+  23 Jul 2004; Armando Di Cianno <fafhrd@gentoo.org> +metadata.xml,
+  +gorm-0.3.0.ebuild:
+  Moved from app-gnustep/gorm to gnustep-apps/gorm.
+
+  22 Jul 2004; Armando Di Cianno <fafhrd@gentoo.org> gorm-0.3.0.ebuild:
+  Changing the eclass to gnustep-old
+
+  17 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> gorm-0.3.0.ebuild:
+  Added IUSE=
+
+  18 Feb 2004; David Holm <dholm@gentoo.org> gorm-0.3.0.ebuild:
+  Added to ~ppc.
+
+  18 Oct 2003; Nick Hadaway <raker@gentoo.org> gorm-0.3.0.ebuild:
+  Removed stale ebuilds and fixed the policy violation of setting ${A}
+
+*gorm-0.3.0 (30 Jul 2003)
+
+  30 Jul 2003; Nick Hadaway <raker@gentoo.org> gorm-0.3.0.ebuild:
+  Version bump.
+
+*gorm-0.2.6 (16 Jul 2003)
+
+  16 Jul 2003; Michele Balistreri <brain@gentoo.org> gorm-0.2.6-r1.ebuild:
+  Fixing compilation with gnustep-base-1.7.1/gnustep-gui-0.8.7
+
+*gorm-0.2.6 (15 Jul 2003)
+
+  15 Jul 2003; Nick Hadaway <raker@gentoo.org> gorm-0.2.6.ebuild:
+  New ebuild.

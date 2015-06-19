@@ -1,0 +1,20 @@
+# ChangeLog for dev-perl/MooseX-FollowPBP
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/MooseX-FollowPBP/ChangeLog,v 1.4 2015/01/31 14:20:56 zlogene Exp $
+
+  31 Jan 2015; Mikle Kolyada <zlogene@gentoo.org>
+  MooseX-FollowPBP-0.50.0.ebuild:
+  Add ~x86-fbsd keyword
+
+  29 Nov 2014; Mikle Kolyada <zlogene@gentoo.org>
+  MooseX-FollowPBP-0.50.0.ebuild:
+  Add ~ppc ~ppc64 keywords
+
+  23 Oct 2014; Markus Meier <maekke@gentoo.org> MooseX-FollowPBP-0.50.0.ebuild:
+  add ~arm, bug #358465
+
+*MooseX-FollowPBP-0.50.0 (14 Oct 2014)
+
+  14 Oct 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +MooseX-FollowPBP-0.50.0.ebuild, +metadata.xml:
+  New package, dependency of dev-perl/Template-Plugin-Latex

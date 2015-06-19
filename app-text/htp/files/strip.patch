@@ -1,0 +1,15 @@
+don't strip
+
+http://bugs.gentoo.org/240110
+
+--- src/Makefile
++++ src/Makefile
+@@ -33,7 +33,7 @@
+ 
+ install-bin: $(MAINEXE)
+ 	mkdir -p $(bindir)
+-	$(INSTALL) -s $(MAINEXE) $(bindir)
++	$(INSTALL) $(MAINEXE) $(bindir)
+ 
+ #
+ # explicit dependency: final executable

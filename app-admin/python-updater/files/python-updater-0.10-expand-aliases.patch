@@ -1,0 +1,11 @@
+--- python-updater
++++ python-updater
+@@ -67,6 +67,8 @@
+ # Portage variables.
+ PKG_DBDIR="/var/db/pkg"
+ 
++shopt -s expand_aliases
++
+ # usage()
+ # display usage
+ usage() {

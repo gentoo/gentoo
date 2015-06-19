@@ -1,0 +1,16 @@
+fix parallel make
+https://bugs.gentoo.org/show_bug.cgi?id=422683
+
+Index: odns-0.3/OCamlMakefile
+===================================================================
+--- odns-0.3.orig/OCamlMakefile
++++ odns-0.3/OCamlMakefile
+@@ -1152,7 +1152,7 @@ $(BCDIDIR)/%.di $(NCDIDIR)/%.di:	%.mli
+ $(DOC_DIR)/$(RESULT)/html:
+ 	mkdir -p $@
+ 
+-$(DOC_DIR)/$(RESULT)/html/index.html: $(DOC_DIR)/$(RESULT)/html $(DOC_FILES)
++$(DOC_DIR)/$(RESULT)/html/index.html: $(DOC_DIR)/$(RESULT)/html $(DOC_FILES) byte-code-library
+ 	rm -rf $</*
+ 	$(QUIET)pp=`sed -n -e '/^#/d' -e 's/(\*pp \([^*]*\) \*)/\1/p;q' $(FIRST_DOC_FILE)`; \
+ 	if [ -z "$$pp" ]; then \

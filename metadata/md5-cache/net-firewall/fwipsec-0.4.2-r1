@@ -1,0 +1,10 @@
+DEFINED_PHASES=install postinst
+DEPEND=>=net-firewall/iptables-1.2.7 sys-apps/iproute2
+DESCRIPTION=Firewall scripts that control iptables, FreeS/WAN, and squid
+HOMEPAGE=http://fwipsec.sourceforge.net/
+KEYWORDS=alpha amd64 ~hppa ia64 ~mips ~ppc ~sparc x86
+LICENSE=GPL-2
+RDEPEND=>=net-firewall/iptables-1.2.7 sys-apps/iproute2
+SLOT=0
+SRC_URI=mirror://gentoo/fwipsec-0.4.2.tar.bz2
+_md5_=074aafc9dec8a4f185548c880f14752e

@@ -1,0 +1,141 @@
+# ChangeLog for dev-libs/libg15
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libg15/ChangeLog,v 1.32 2015/06/09 14:28:26 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  03 Nov 2013; Lars Wendler <polynomial-c@gentoo.org> metadata.xml:
+  Added myself as maintainer.
+
+  13 May 2013; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Removing removed lcd herd from metadata
+
+  12 Oct 2012; Robin H. Johnson <robbat2@gentoo.org> +files/g15tools.patch,
+  libg15-1.2.7-r1.ebuild, libg15-9999.ebuild:
+  Real working G510 support now, so my keyboard works. See also the libg15render
+  and g15daemon bumps.
+
+*libg15-9999 (08 Oct 2012)
+
+  08 Oct 2012; Robin H. Johnson <robbat2@gentoo.org> +libg15-9999.ebuild:
+  Make a live version, since there has not been a release in years, and G510
+  support is only in SVN.
+
+*libg15-1.2.7-r1 (09 Sep 2011)
+
+  09 Sep 2011; Tomáš Chvátal <scarabeus@gentoo.org> -libg15-1.2.2.ebuild,
+  -libg15-1.2.5.ebuild, -libg15-1.2.7.ebuild, +libg15-1.2.7-r1.ebuild:
+  Revision bump in order to remove static library and libtool archive. Bump the
+  eapi to 4.
+
+  09 Mar 2010; Joseph Jezak <josejx@gentoo.org> libg15-1.2.5.ebuild,
+  libg15-1.2.7.ebuild:
+  Marked ppc/ppc64 stable.
+
+  06 Mar 2010; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Changing maintainer per emails of Jan 18th.
+
+  16 May 2009; Robin H. Johnson <robbat2@gentoo.org> libg15-1.2.2.ebuild,
+  libg15-1.2.5.ebuild, libg15-1.2.7.ebuild:
+  Migration to virtual/libusb. Verified by testing hardware (by
+  Polynomial-C).
+
+  01 Feb 2009; <jokey@gentoo.org> -libg15-1.2.1.ebuild,
+  -libg15-1.2.4.ebuild, -libg15-1.2.6.ebuild, libg15-1.2.7.ebuild:
+  Stable on x86 and amd64
+
+*libg15-1.2.7 (04 Dec 2008)
+
+  04 Dec 2008; <chainsaw@gentoo.org> +libg15-1.2.7.ebuild:
+  Version bump from upstream. If you had random keypress problems on the
+  Y-UW92, this is for you. Closes bug #248828 by Phillip Scholz
+  <zyanklee@gmail.com>.
+
+  12 May 2008; Markus Rothe <corsair@gentoo.org> libg15-1.2.5.ebuild:
+  Stable on ppc64
+
+*libg15-1.2.6 (21 Feb 2008)
+
+  21 Feb 2008; Tony Vroon <chainsaw@gentoo.org> libg15-1.2.5.ebuild,
+  +libg15-1.2.6.ebuild:
+  Version bump as requested by Efimov Vadim <evadim@evadim.ru>, closes bug
+  #208769. Mark 1.2.5 stable on X86, tested on a second-generation G15 (amber
+  LCD).
+
+*libg15-1.2.5 (05 Jan 2008)
+
+  05 Jan 2008; Markus Ullmann <jokey@gentoo.org> +libg15-1.2.5.ebuild:
+  Version bump
+
+*libg15-1.2.4 (19 Dec 2007)
+
+  25 Aug 2007; Steve Dibb <beandog@gentoo.org> libg15-1.2.2.ebuild:
+  amd64 stable
+
+  13 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org> libg15-1.2.2.ebuild:
+  ppc. stable
+
+  01 May 2007; Markus Rothe <corsair@gentoo.org> libg15-1.2.2.ebuild:
+  Stable on ppc64; bug #175120
+
+  22 Apr 2007; Tobias Scherbaum <dertobi123@gentoo.org> libg15-1.2.1.ebuild:
+  ppc stable, bug #175120
+
+  23 Mar 2007; Peter Weller <welp@gentoo.org> libg15-1.2.1.ebuild:
+  Stable on amd64 wrt bug 170417
+
+  15 Mar 2007; Torsten Veller <tove@gentoo.org> libg15-1.2.1.ebuild:
+  Stable on x86 (#170417)
+
+*libg15-1.2.2 (11 Mar 2007)
+
+  11 Mar 2007; Robert Buchholz <rbu@gentoo.org> -libg15-1.1.1.ebuild,
+  +libg15-1.2.2.ebuild:
+  Version bump and drop of old version
+
+  27 Jan 2007; Joseph Jezak <josejx@gentoo.org> libg15-1.1.1.ebuild,
+  libg15-1.2.1.ebuild:
+  Marked ~ppc for bug #148072.
+
+  02 Jan 2007; Robert Buchholz <rbu@gentoo.org> metadata.xml,
+  -libg15-1.1.0.ebuild:
+  Removing 1.1.0, metadata update
+
+*libg15-1.2.1 (30 Dec 2006)
+
+  30 Dec 2006; Robert Buchholz <rbu@gentoo.org> +libg15-1.2.1.ebuild:
+  Version bump
+
+*libg15-1.1.1 (18 Dec 2006)
+
+  18 Dec 2006; Markus Ullmann <jokey@gentoo.org> -libg15-1.0.1.ebuild,
+  +libg15-1.1.1.ebuild:
+  Version bump and drop old
+
+*libg15-1.1.0 (13 Nov 2006)
+
+  13 Nov 2006; Markus Ullmann <jokey@gentoo.org> -libg15-1.0.ebuild,
+  +libg15-1.1.0.ebuild:
+  Version bump
+
+*libg15-1.0.1 (31 Oct 2006)
+
+  31 Oct 2006; Markus Ullmann <jokey@gentoo.org> +libg15-1.0.1.ebuild:
+  Version bump
+
+  18 Oct 2006; Markus Ullmann <jokey@gentoo.org> metadata.xml:
+  Metadata update
+
+  14 Oct 2006; Markus Rothe <corsair@gentoo.org> libg15-1.0.ebuild:
+  Added ~ppc64; bug #150934
+
+  10 Oct 2006; Markus Ullmann <jokey@gentoo.org> libg15-1.0.ebuild:
+  Improving QA
+
+*libg15-1.0 (04 Oct 2006)
+
+  04 Oct 2006; Markus Ullmann <jokey@gentoo.org> +metadata.xml,
+  +libg15-1.0.ebuild:
+  Needed dep for upcoming lcdproc-0.5.1, thanks to Alessio Cassibba ( related
+  bug #148766 and bug #148769 )

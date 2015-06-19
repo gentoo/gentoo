@@ -1,0 +1,78 @@
+# ChangeLog for dev-ruby/hike
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/hike/ChangeLog,v 1.20 2015/06/07 17:57:12 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  22 Apr 2015; Hans de Graaff <graaff@gentoo.org> hike-1.2.3-r1.ebuild:
+  Add ruby22.
+
+  29 Jan 2015; Hans de Graaff <graaff@gentoo.org> hike-2.1.2.ebuild:
+  Add ruby22.
+
+  11 Nov 2014; Manuel Rüger <mrueg@gentoo.org> hike-1.2.3-r1.ebuild,
+  hike-1.2.3.ebuild, hike-2.1.2.ebuild:
+  Drop jruby target.
+
+  12 Aug 2014; Anthony G. Basile <blueness@gentoo.org> hike-1.2.3-r1.ebuild,
+  hike-1.2.3.ebuild, hike-2.1.2.ebuild:
+  Keyword ~ppc and ~ppc64, bug #519170
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> hike-1.2.3-r1.ebuild,
+  hike-1.2.3.ebuild, hike-2.1.2.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  26 May 2014; Manuel Rüger <mrueg@gentoo.org> hike-1.2.3-r1.ebuild,
+  hike-1.2.3.ebuild:
+  Remove ruby18 target.
+
+*hike-2.1.2 (17 May 2014)
+
+  17 May 2014; Hans de Graaff <graaff@gentoo.org> +hike-2.1.2.ebuild:
+  Version bump.
+
+*hike-1.2.3-r1 (27 Dec 2013)
+
+  27 Dec 2013; Manuel Rüger <mrueg@gentoo.org> +hike-1.2.3-r1.ebuild:
+  Add ruby21 target.
+
+  15 Sep 2013; Hans de Graaff <graaff@gentoo.org> -hike-1.2.2.ebuild:
+  Cleanup.
+
+*hike-1.2.3 (17 Jul 2013)
+
+  17 Jul 2013; Hans de Graaff <graaff@gentoo.org> +hike-1.2.3.ebuild:
+  Version bump.
+
+  17 Jul 2013; Hans de Graaff <graaff@gentoo.org> -hike-1.2.1.ebuild:
+  Cleanup.
+
+*hike-1.2.2 (04 May 2013)
+
+  04 May 2013; Hans de Graaff <graaff@gentoo.org> +hike-1.2.2.ebuild:
+  Version bump.
+
+  15 Jan 2013; Rick Farina <zerochaos@gentoo.org> hike-1.2.1.ebuild:
+  adding ~arm keywords to net-analyzer/metasploit rdeps
+
+  17 May 2012; Thomas Kahle <tomka@gentoo.org> hike-1.2.1.ebuild:
+  marked ~x86 per bug 396547
+
+  01 May 2012; Raúl Porcel <armin76@gentoo.org> hike-1.2.1.ebuild:
+  Drop ia64/sparc keywords
+
+  11 Mar 2012; Brent Baude <ranger@gentoo.org> hike-1.2.1.ebuild:
+  Marking hike-1.2.1 ~ppc64 for bug 396547
+
+  31 Dec 2011; Fabian Groffen <grobian@gentoo.org> hike-1.2.1.ebuild:
+  Add Prefix keywords, bug #396547
+
+  28 Dec 2011; Hans de Graaff <graaff@gentoo.org> hike-1.2.1.ebuild:
+  Add ruby19, jruby. Drop unneeded virtual/ruby-test-unit dependency.
+
+*hike-1.2.1 (07 Oct 2011)
+
+  07 Oct 2011; Hans de Graaff <graaff@gentoo.org> +hike-1.2.1.ebuild,
+  +metadata.xml:
+  Initial import. New dependency for forthcoming Rails 3.1 (via sprockets).

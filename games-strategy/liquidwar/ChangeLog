@@ -1,0 +1,145 @@
+# ChangeLog for games-strategy/liquidwar
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/liquidwar/ChangeLog,v 1.31 2014/07/28 18:25:30 mr_bones_ Exp $
+
+  28 Jul 2014; Michael Sterrett <mr_bones_@gentoo.org> -liquidwar-5.6.4.ebuild:
+  old
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> liquidwar-5.6.4-r1.ebuild:
+  Stable for x86, wrt bug #490658
+
+  13 Nov 2013; Tony Vroon <chainsaw@gentoo.org> liquidwar-5.6.4-r1.ebuild:
+  Marked stable on AMD64 based on arch testing by Elijah "Armageddon" El
+  Lazkani in bug #490658.
+
+*liquidwar-5.6.4-r1 (04 Mar 2013)
+
+  04 Mar 2013; Julian Ospald <hasufell@gentoo.org> +liquidwar-5.6.4-r1.ebuild:
+  fix bug 460344, bump EAPI
+
+  22 Mar 2012; Michael Sterrett <mr_bones_@gentoo.org> liquidwar-5.6.4.ebuild:
+  add X use dep for allegro (bug #409115)
+
+  14 Oct 2011; Mike Frysinger <vapier@gentoo.org> liquidwar-5.6.4.ebuild:
+  Use a SLOT dep instead of "<" for allegro.
+
+  22 Jun 2011; Tupone Alfredo <tupone@gentoo.org> liquidwar-5.6.4.ebuild,
+  +files/liquidwar-5.6.4-underlink.patch:
+  Fix underlink. Bug #371749 by Diego Elio Pettenò
+
+  26 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> liquidwar-5.6.3.ebuild,
+  liquidwar-5.6.4.ebuild:
+  Pin media-libs/allegro to old version.
+
+  26 Oct 2010; Tupone Alfredo <tupone@gentoo.org> liquidwar-5.6.4.ebuild,
+  +files/liquidwar-5.6.4-ovflfix.patch:
+  Fix overflow. Bug #342307 by flameeyes@gentoo.org
+
+  13 Feb 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  liquidwar-5.6.4.ebuild:
+  EAPI=2
+
+  05 Feb 2008; Santiago M. Mola <coldwind@gentoo.org>
+  liquidwar-5.6.4.ebuild:
+  amd64 stable
+
+  05 Feb 2008; Santiago M. Mola <coldwind@gentoo.org>
+  liquidwar-5.6.4.ebuild:
+  Disable asm on non-x86, #196519
+
+*liquidwar-5.6.4 (18 Oct 2007)
+
+  18 Oct 2007; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/liquidwar-5.6.4-exec-stack.patch, +liquidwar-5.6.4.ebuild:
+  version bump
+
+  04 May 2007; Steve Dibb <beandog@gentoo.org> liquidwar-5.6.3.ebuild:
+  amd64 stable, bug 175310
+
+  30 Oct 2006; Tristan Heaven <nyhm@gentoo.org>
+  +files/liquidwar-5.6.3-exec-stack.patch, liquidwar-5.6.3.ebuild:
+  No exec stack and let portage strip binaries
+
+  30 Aug 2006; Michael Hanselmann <hansmi@gentoo.org>
+  liquidwar-5.6.3.ebuild:
+  Stable on ppc.
+
+  15 Aug 2006; Markus Rothe <corsair@gentoo.org> liquidwar-5.6.3.ebuild:
+  Added ~ppc64
+
+  06 Aug 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  liquidwar-5.6.3.ebuild:
+  stable for x86
+
+  08 Dec 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  liquidwar-5.6.3.ebuild:
+  fix the deps (bug #114196)
+
+*liquidwar-5.6.3 (01 Dec 2005)
+
+  01 Dec 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +liquidwar-5.6.3.ebuild:
+  version bump
+
+  03 Sep 2005; Luis Medinas <metalgod@gentoo.org> liquidwar-5.6.2.ebuild:
+  Added ~amd64 keywords.
+
+  02 Jan 2005; Mike Frysinger <vapier@gentoo.org> liquidwar-5.6.2.ebuild:
+  Pass --disable-target-opt since all it does is add -mcpu to CFLAGS #76338 by
+  Simon Stelling.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  07 Nov 2004; Joseph Jezak <josejx@gentoo.org> liquidwar-5.6.2.ebuild:
+  Marked ppc stable.
+
+  09 Apr 2004; David Holm <dholm@gentoo.org> liquidwar-5.6.2.ebuild:
+  Added to ~ppc.
+
+*liquidwar-5.6.2 (08 Apr 2004)
+
+  08 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> liquidwar-5.6.2.ebuild:
+  version bump
+
+*liquidwar-5.6.1 (12 Jan 2004)
+
+  12 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org> liquidwar-5.6.1.ebuild:
+  version bump (bug 37917)
+
+  06 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> liquidwar-5.5.9.ebuild:
+  turn off the messages from the Makefile; more error checking/messages
+
+*liquidwar-5.5.9 (05 Jun 2003)
+
+  05 Jun 2003; Martin Holzer <mholzer@gentoo.org> liquidwar-5.5.9.ebuild:
+  Version bumped. closes #19962
+
+*liquidwar-5.5.8 (05 Mar 2003)
+
+  05 Mar 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #15292.
+
+*liquidwar-5.5.7 (12 Dec 2002)
+
+  12 Dec 2002; Mike Frysinger <vapier@gentoo.org> :
+  games eclass support and version bump #9018.
+
+*liquidwar-5.5.6 (01 Oct 2002)
+
+  1 Oct 2002; Matthew Turk <satai@gentoo.org> liquidwar-5.5.6.ebuild:
+  Fix tetex errors.  Now PS and PDF docs aren't built; but info still is.
+
+*liquidwar-5.5.6 (18 Jul 2002)
+
+  18 Jul 2002; Spider <spider@gentoo.org> liquidwar-5.5.6.ebuild:
+  update teh version, just a copy work. 
+ 
+*liquidwar-5.5.3.ebuild (17 julio 2002)
+
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> Changelog :
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

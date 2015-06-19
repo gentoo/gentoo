@@ -1,0 +1,90 @@
+--- src/I2CImp.c.orig	2004-10-17 16:23:02.000000000 +0200
++++ src/I2CImp.c	2006-10-26 21:25:32.000000000 +0200
+@@ -87,6 +87,7 @@
+ 	if( !handler.sa_handler ) signal( SIGIO, SIG_IGN );
+ #endif /* !__FreeBSD__ */
+ #if defined(__linux__) 
++#if 0
+ 	/* Lets let people who upgraded kernels know they may have problems */
+ 	if (uname (&name) == -1)
+ 	{
+@@ -98,6 +99,7 @@
+ 		fprintf(stderr, "\n\n\nRXTX WARNING:  This library was compiled to run with OS release %s and you are currently running OS release %s.  In some cases this can be a problem.  Try recompiling RXTX if you notice strange behavior.  If you just compiled RXTX make sure /usr/include/linux is a symbolic link to the include files that came with the kernel source and not an older copy.\n\n\npress enter to continue\n",UTS_RELEASE,name.release);
+ 		getchar();
+ 	}
++#endif
+ #endif /* __linux__ */
+ #endif /* WIN32 */
+ }
+--- src/RawImp.c.orig	2004-10-16 18:20:35.000000000 +0200
++++ src/RawImp.c	2006-10-26 21:25:59.000000000 +0200
+@@ -231,6 +231,7 @@
+ 	if( !handler.sa_handler ) signal( SIGIO, SIG_IGN );
+ #endif /* !__FreeBSD__ */
+ #if defined(__linux__) 
++#if 0
+ 	/* Lets let people who upgraded kernels know they may have problems */
+ 	if (uname (&name) == -1)
+ 	{
+@@ -242,6 +243,7 @@
+ 		fprintf(stderr, "\n\n\nRXTX WARNING:  This library was compiled to run with OS release %s and you are currently running OS release %s.  In some cases this can be a problem.  Try recompiling RXTX if you notice strange behavior.  If you just compiled RXTX make sure /usr/include/linux is a symbolic link to the include files that came with the kernel source and not an older copy.\n\n\npress enter to continue\n",UTS_RELEASE,name.release);
+ 		getchar();
+ 	}
++#endif
+ #endif /* __linux__ */
+ #endif /* WIN32 */
+ }
+--- src/RS485Imp.c.orig	2004-10-16 18:20:35.000000000 +0200
++++ src/RS485Imp.c	2006-10-26 21:26:23.000000000 +0200
+@@ -87,6 +87,7 @@
+ 	if( !handler.sa_handler ) signal( SIGIO, SIG_IGN );
+ #endif /* !__FreeBSD__ */
+ #if defined(__linux__) 
++#if 0
+ 	/* Lets let people who upgraded kernels know they may have problems */
+ 	if (uname (&name) == -1)
+ 	{
+@@ -98,6 +99,7 @@
+ 		fprintf(stderr, "\n\n\nRXTX WARNING:  This library was compiled to run with OS release %s and you are currently running OS release %s.  In some cases this can be a problem.  Try recompiling RXTX if you notice strange behavior.  If you just compiled RXTX make sure /usr/include/linux is a symbolic link to the include files that came with the kernel source and not an older copy.\n\n\npress enter to continue\n",UTS_RELEASE,name.release);
+ 		getchar();
+ 	}
++#endif
+ #endif /* __linux__ */
+ #endif /* WIN32 */
+ }
+--- src/SerialImp.c.orig	2006-01-29 23:19:04.000000000 +0100
++++ src/SerialImp.c	2006-10-26 21:26:59.000000000 +0200
+@@ -280,6 +280,7 @@
+ 	gettimeofday(&seloop, NULL);
+ #endif /* DEBUG_TIMING */
+ #if defined(DEBUG) && defined(__linux__)
++#if 0
+ 	/* Lets let people who upgraded kernels know they may have problems */
+ 	if (uname (&name) == -1)
+ 	{
+@@ -295,6 +296,7 @@
+ 		getchar();
+ 	}
+ 	LEAVE( "RXTXPort:Initialize" );
++#endif
+ #endif /* DEBUG && __linux__ */
+ }
+ 
+--- src/SerialImp.cpp.orig	2004-10-12 10:59:27.000000000 +0200
++++ src/SerialImp.cpp	2006-10-26 21:27:44.000000000 +0200
+@@ -102,6 +102,7 @@
+ 	if( !handler.sa_handler ) signal( SIGIO, SIG_IGN );
+ #endif /* !__FreeBSD__ */
+ #ifdef DEBUG
++#if 0
+ 	/* Lets let people who upgraded kernels know they may have problems */
+ 	if (uname (&name) == -1)
+ 	{
+@@ -114,6 +115,7 @@
+ 			name.release);
+ 		getchar();
+ 	}
++#endif
+ #endif /* DEBUG */
+ #endif /* __BEOS__ */
+ #endif /* WIN32 */

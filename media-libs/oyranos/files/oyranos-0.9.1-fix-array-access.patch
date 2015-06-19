@@ -1,0 +1,29 @@
+From 11d848a38608deeeca61288d46cfca55c6916788 Mon Sep 17 00:00:00 2001
+From: Kai-Uwe Behrmann <ku.b@gmx.de>
+Date: Mon, 18 Mar 2013 19:07:16 +0100
+Subject: [PATCH] * [oyX1]: fix array access
+
+---
+ modules/devices/oyranos_monitor_x11.c |    7 +++++++
+ 1 files changed, 7 insertions(+), 0 deletions(-)
+
+diff --git a/modules/devices/oyranos_monitor_x11.c b/modules/devices/oyranos_monitor_x11.c
+index a530a81..bac09c1 100644
+--- a/modules/devices/oyranos_monitor_x11.c
++++ b/modules/devices/oyranos_monitor_x11.c
+@@ -1329,6 +1329,13 @@ oyX1Monitor_s* oyX1Monitor_newFrom_      ( const char        * display_name,
+         int n_scr_info = 0;
+         XineramaScreenInfo *scr_info = XineramaQueryScreens( display,
+                                                              &n_scr_info );
++        if(n_scr_info <= selected_screen)
++        {
++          XFree( scr_info );
++          oyX1Monitor_release_( &disp );
++          return 0;
++        }
++
+         geo[0] = scr_info[selected_screen].x_org;
+         geo[1] = scr_info[selected_screen].y_org;
+         geo[2] = scr_info[selected_screen].width;
+-- 
+1.5.6.5

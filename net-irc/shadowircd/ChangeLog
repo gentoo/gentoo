@@ -1,0 +1,40 @@
+# ChangeLog for net-irc/shadowircd
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/shadowircd/ChangeLog,v 1.10 2013/02/02 17:23:04 jdhore Exp $
+
+  02 Feb 2013; Jeff Horelick <jdhore@gentoo.org> -shadowircd-6.3.2.1.ebuild:
+  Remove old vulnerable version
+
+  03 Jan 2013; Agostino Sarubbo <ago@gentoo.org> shadowircd-6.3.3.ebuild:
+  Stable for x86, wrt bug #449790
+
+  03 Jan 2013; Agostino Sarubbo <ago@gentoo.org> shadowircd-6.3.3.ebuild:
+  Stable for amd64, wrt bug #449790
+
+*shadowircd-6.3.3 (31 Dec 2012)
+
+  31 Dec 2012; Jeff Horelick <jdhore@gentoo.org> +shadowircd-6.3.3.ebuild:
+  Version bump due to security advisory ASA-2012-12-31
+
+  05 Apr 2012; Jeff Horelick <jdhore@gentoo.org> shadowircd-6.3.2.1.ebuild:
+  marked x86 per bug 410849
+
+  05 Apr 2012; Agostino Sarubbo <ago@gentoo.org> shadowircd-6.3.2.1.ebuild:
+  Stable for amd64, wrt bug #410849
+
+  04 Apr 2012; Jeff Horelick <jdhore@gentoo.org> shadowircd-6.3.2.1.ebuild:
+  Cleanups
+
+  03 Mar 2012; Jeff Horelick <jdhore@gentoo.org> files/shadowircd.initd:
+  Fix a small typo.
+
+  03 Mar 2012; Jeff Horelick <jdhore@gentoo.org> files/shadowircd.confd,
+  files/shadowircd.initd, shadowircd-6.3.2.1.ebuild:
+  Fix some CVS headers.
+
+*shadowircd-6.3.2.1 (03 Mar 2012)
+
+  03 Mar 2012; Jeff Horelick <jdhore@gentoo.org> +files/shadowircd.confd,
+  +files/shadowircd.initd, +metadata.xml, +shadowircd-6.3.2.1.ebuild:
+  Add net-irc/shadowircd-6.3.2.1, an IRCd based on charybdis, but adds several
+  useful features.

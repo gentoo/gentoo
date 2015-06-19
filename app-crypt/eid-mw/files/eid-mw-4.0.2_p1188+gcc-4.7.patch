@@ -1,0 +1,38 @@
+Index: eid-mw-4.0.2/common/src/socket/socket.cpp
+===================================================================
+--- eid-mw-4.0.2.orig/common/src/socket/socket.cpp
++++ eid-mw-4.0.2/common/src/socket/socket.cpp
+@@ -21,6 +21,8 @@
+ #include "../eiderrors.h"
+ #include <iostream>
+ 
++#include <unistd.h>
++
+ namespace eIDMW
+ {
+ 
+Index: eid-mw-4.0.2/common/src/socket/socketserver.cpp
+===================================================================
+--- eid-mw-4.0.2.orig/common/src/socket/socketserver.cpp
++++ eid-mw-4.0.2/common/src/socket/socketserver.cpp
+@@ -26,6 +26,7 @@
+ #include <netinet/in.h>
+ #include <sys/ioctl.h>
+ #include <errno.h>
++#include <unistd.h>
+ #ifndef SOCKET_ERROR
+ #define SOCKET_ERROR -1
+ #endif
+Index: eid-mw-4.0.2/common/src/util.cpp
+===================================================================
+--- eid-mw-4.0.2.orig/common/src/util.cpp
++++ eid-mw-4.0.2/common/src/util.cpp
+@@ -27,6 +27,8 @@
+ 
+ #include <stdlib.h>
+ 
++#include <unistd.h>
++
+ #ifdef WIN32
+ #include <windows.h>
+ #endif

@@ -1,0 +1,103 @@
+# ChangeLog for sci-chemistry/molrep
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/molrep/ChangeLog,v 1.22 2013/02/21 22:00:47 jlec Exp $
+
+  21 Feb 2013; Justin Lecher <jlec@gentoo.org> molrep-11.0.02.ebuild,
+  -molrep-11.0.03.ebuild, molrep-11.0.03-r1.ebuild, metadata.xml:
+  Use tc-getPKG_CONFIG from toolchain-funcs.eclass instead of plain pkg-config;
+  drop old
+
+  19 Oct 2012; Justin Lecher <jlec@gentoo.org> molrep-11.0.02.ebuild,
+  molrep-11.0.03.ebuild, molrep-11.0.03-r1.ebuild:
+  Remove virtual/fortran and always call fortran-2_pkg_setup as intend by the
+  updated fortran-2.eclass
+
+*molrep-11.0.03-r1 (04 Oct 2011)
+
+  04 Oct 2011; Justin Lecher <jlec@gentoo.org> +files/11.0.03-EOR.patch,
+  +molrep-11.0.03-r1.ebuild:
+  Fix for Molrep: input fixed model mode failure
+
+*molrep-11.0.03 (07 Sep 2011)
+
+  07 Sep 2011; Justin Lecher <jlec@gentoo.org> +molrep-11.0.03.ebuild:
+  Version Bump
+
+  02 Jul 2011; Justin Lecher <jlec@gentoo.org> molrep-11.0.02.ebuild,
+  metadata.xml:
+  Use pkg-config to detect mmdb and lapack libs
+
+  28 Jun 2011; Brent Baude <ranger@gentoo.org> molrep-11.0.02.ebuild:
+  Marking molrep-11.0.02 ppc for bug 352065
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> molrep-11.0.02.ebuild:
+  Add dependency on virtual/fortran
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> molrep-11.0.02.ebuild:
+  Added fortran-2.eclass support
+
+  31 Jan 2011; Christian Faulhammer <fauli@gentoo.org>
+  molrep-11.0.02.ebuild:
+  stable x86, bug 352065
+
+  20 Jan 2011; Markos Chandras <hwoarang@gentoo.org> molrep-11.0.02.ebuild:
+  Stable on amd64 wrt bug #352056
+
+  18 Jan 2011; Justin Lecher <jlec@gentoo.org> -molrep-10.2.38.ebuild,
+  -molrep-11.0.00_p3.ebuild:
+  removed old
+
+  16 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> molrep-11.0.02.ebuild:
+  marked ~ppc wrt #303931
+
+*molrep-11.0.02 (25 Nov 2010)
+
+  25 Nov 2010; Justin Lecher <jlec@gentoo.org> -molrep-10.2.35.ebuild,
+  -molrep-11.0.00-r1.ebuild, -molrep-11.0.00_p1.ebuild,
+  -molrep-11.0.00_p2.ebuild, +molrep-11.0.02.ebuild:
+  Version Bump and cleaned old
+
+*molrep-11.0.00_p3 (23 Jul 2010)
+
+  23 Jul 2010; Justin Lecher <jlec@gentoo.org> +molrep-11.0.00_p3.ebuild:
+  Version bump
+
+*molrep-11.0.00_p2 (02 Jul 2010)
+
+  02 Jul 2010; Justin Lecher <jlec@gentoo.org> +molrep-11.0.00_p2.ebuild:
+  Version Bump
+
+*molrep-11.0.00_p1 (18 Jun 2010)
+
+  18 Jun 2010; Justin Lecher <jlec@gentoo.org> +molrep-11.0.00_p1.ebuild:
+  Version Bump
+
+*molrep-11.0.00-r1 (15 Jun 2010)
+
+  15 Jun 2010; Justin Lecher <jlec@gentoo.org> -molrep-11.0.00.ebuild,
+  +molrep-11.0.00-r1.ebuild:
+  Necessary bump
+
+*molrep-11.0.00 (15 Jun 2010)
+
+  15 Jun 2010; Justin Lecher <jlec@gentoo.org>
+  +files/11.0.00-respect-FLAGS.patch, +molrep-11.0.00.ebuild,
+  +files/11.0.00-test.patch:
+  Version Bump, test cases fixed
+
+*molrep-10.2.38 (12 Mar 2010)
+
+  12 Mar 2010; Justin Lecher <jlec@gentoo.org>
+  +molrep-10.2.38.ebuild:
+  Version Bump
+
+  15 Feb 2010; Justin Lecher <jlec@gentoo.org> molrep-10.2.35.ebuild,
+  metadata.xml:
+  Removed broken test per 305145
+
+*molrep-10.2.35 (06 Feb 2010)
+
+  06 Feb 2010; Justin Lecher <jlec@gentoo.org>
+  +files/10.2.35-respect-FLAGS.patch, +molrep-10.2.35.ebuild:
+  molrep splitted from ccp4
+

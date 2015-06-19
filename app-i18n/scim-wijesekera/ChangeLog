@@ -1,0 +1,31 @@
+# ChangeLog for app-i18n/scim-wijesekera
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/scim-wijesekera/ChangeLog,v 1.6 2015/04/20 19:37:39 mrueg Exp $
+
+  20 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -scim-wijesekera-0.3.3.ebuild:
+  Remove old.
+
+  02 Oct 2012;  <naota@gentoo.org> scim-wijesekera-0.3.3-r1.ebuild,
+  scim-wijesekera-0.3.3.ebuild:
+  Force scim not to use gtk3.
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> scim-wijesekera-0.3.3.ebuild,
+  scim-wijesekera-0.3.3-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*scim-wijesekera-0.3.3-r1 (28 Dec 2008)
+
+  28 Dec 2008; MATSUU Takuto <matsuu@gentoo.org>
+  +files/scim-wijesekera-0.3.3-gcc43.patch,
+  +scim-wijesekera-0.3.3-r1.ebuild:
+  Fixed gcc-4.3 issue, bug #250680.
+
+  04 Oct 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  scim-wijesekera-0.3.3.ebuild:
+  Fix pkgconfig build failures, bug 239619
+
+*scim-wijesekera-0.3.3 (02 May 2008)
+
+  02 May 2008; MATSUU Takuto <matsuu@gentoo.org> +metadata.xml,
+  +scim-wijesekera-0.3.3.ebuild:
+  Initial import, bug #217558.

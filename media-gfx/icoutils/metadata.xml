@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+		<herd>proxy-maintainers</herd>
+        <maintainer>
+                <email>res@crystalspace3d.org</email>
+                <name>Frank Richter (upstream)</name>
+        </maintainer>
+        <maintainer>
+                <email>patrick@gentoo.org</email>
+                <name>Patrick Lauer (proxy)</name>
+        </maintainer>
+</pkgmetadata>

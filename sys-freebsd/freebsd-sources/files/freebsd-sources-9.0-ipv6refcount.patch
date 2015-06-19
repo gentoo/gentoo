@@ -1,0 +1,128 @@
+Index: sys/netinet6/in6.c
+===================================================================
+--- sys/netinet6/in6.c.orig
++++ sys/netinet6/in6.c
+@@ -1369,6 +1369,8 @@ in6_purgeaddr(struct ifaddr *ifa)
+ 	}
+ 
+ cleanup:
++	if (ifa0 != NULL)
++		ifa_free(ifa0);
+ 
+ 	plen = in6_mask2len(&ia->ia_prefixmask.sin6_addr, NULL); /* XXX */
+ 	if ((ia->ia_flags & IFA_ROUTE) && plen == 128) {
+@@ -1393,8 +1395,6 @@ cleanup:
+ 			return;
+ 		ia->ia_flags &= ~IFA_ROUTE;
+ 	}
+-	if (ifa0 != NULL)
+-		ifa_free(ifa0);
+ 
+ 	in6_unlink_ifa(ia, ifp);
+ }
+@@ -1667,14 +1667,19 @@ in6_lifaddr_ioctl(struct socket *so, u_long cmd, c
+ 			hostid = IFA_IN6(ifa);
+ 
+ 			/* prefixlen must be <= 64. */
+-			if (64 < iflr->prefixlen)
++			if (64 < iflr->prefixlen) {
++				if (ifa != NULL)
++					ifa_free(ifa);
+ 				return EINVAL;
++			}
+ 			prefixlen = iflr->prefixlen;
+ 
+ 			/* hostid part must be zero. */
+ 			sin6 = (struct sockaddr_in6 *)&iflr->addr;
+ 			if (sin6->sin6_addr.s6_addr32[2] != 0 ||
+ 			    sin6->sin6_addr.s6_addr32[3] != 0) {
++				if (ifa != NULL)
++					ifa_free(ifa);
+ 				return EINVAL;
+ 			}
+ 		} else
+@@ -2265,14 +2265,20 @@ in6_ifawithifp(struct ifnet *ifp, struct in6_addr
+ 		IN6_IFADDR_RUNLOCK();
+ 		return (struct in6_ifaddr *)ifa;
+ 	}
+-	IN6_IFADDR_RUNLOCK();
+ 
+ 	/* use the last-resort values, that are, deprecated addresses */
+-	if (dep[0])
++	if (dep[0]) {
++		ifa_ref((struct ifaddr *)dep[0]);
++		IN6_IFADDR_RUNLOCK();
+ 		return dep[0];
+-	if (dep[1])
++	}
++	if (dep[1]) {
++		ifa_ref((struct ifaddr *)dep[1]);
++		IN6_IFADDR_RUNLOCK();
+ 		return dep[1];
++	}
+ 
++	IN6_IFADDR_RUNLOCK();
+ 	return NULL;
+ }
+ 
+Index: sys/netinet6/ip6_input.c
+===================================================================
+--- sys/netinet6/ip6_input.c.orig
++++ sys/netinet6/ip6_input.c
+@@ -879,19 +879,23 @@ passin:
+ 	 * as our interface address (e.g. multicast addresses, addresses
+ 	 * within FAITH prefixes and such).
+ 	 */
+-	if (deliverifp && !ip6_getdstifaddr(m)) {
++	if (deliverifp) {
+ 		struct in6_ifaddr *ia6;
+ 
+-		ia6 = in6_ifawithifp(deliverifp, &ip6->ip6_dst);
+-		if (ia6) {
+-			if (!ip6_setdstifaddr(m, ia6)) {
+-				/*
+-				 * XXX maybe we should drop the packet here,
+-				 * as we could not provide enough information
+-				 * to the upper layers.
+-				 */
++ 		if ((ia6 = ip6_getdstifaddr(m)) != NULL) {
++			ifa_free(&ia6->ia_ifa);
++		} else {
++			ia6 = in6_ifawithifp(deliverifp, &ip6->ip6_dst);
++			if (ia6) {
++				if (!ip6_setdstifaddr(m, ia6)) {
++					/*
++					 * XXX maybe we should drop the packet here,
++					 * as we could not provide enough information
++					 * to the upper layers.
++					 */
++				}
++				ifa_free(&ia6->ia_ifa);
+ 			}
+-			ifa_free(&ia6->ia_ifa);
+ 		}
+ 	}
+ 
+Index: sys/netinet/tcp_input.c
+===================================================================
+--- sys/netinet/tcp_input.c.orig
++++ sys/netinet/tcp_input.c
+@@ -512,6 +512,8 @@ tcp6_input(struct mbuf **mp, int *offp, int proto)
+ 			    (caddr_t)&ip6->ip6_dst - (caddr_t)ip6);
+ 		return IPPROTO_DONE;
+ 	}
++	if (ia6)
++		ifa_free(&ia6->ia_ifa);
+ 
+ 	tcp_input(m, *offp);
+ 	return IPPROTO_DONE;
+@@ -1240,7 +1242,8 @@ relocked:
+ 				rstreason = BANDLIM_RST_OPENPORT;
+ 				goto dropwithreset;
+ 			}
+-			ifa_free(&ia6->ia_ifa);
++			if (ia6)
++				ifa_free(&ia6->ia_ifa);
+ 		}
+ #endif /* INET6 */
+ 		/*

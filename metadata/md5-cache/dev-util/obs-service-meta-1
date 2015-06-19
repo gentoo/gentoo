@@ -1,0 +1,9 @@
+DEFINED_PHASES=postinst
+DESCRIPTION=Metapackage to pull all open build service services
+EAPI=5
+HOMEPAGE=http://openbuildservice.org/
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=dev-util/obs-service-cpanspec dev-util/obs-service-download_files dev-util/obs-service-download_src_package dev-util/obs-service-download_url dev-util/obs-service-extract_file dev-util/obs-service-format_spec_file dev-util/obs-service-generator_driver_update_disk dev-util/obs-service-recompress dev-util/obs-service-set_version dev-util/obs-service-source_validator dev-util/obs-service-verify_file
+SLOT=0
+_md5_=45d496573c2714203184026805171003

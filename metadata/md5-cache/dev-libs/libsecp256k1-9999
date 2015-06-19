@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=gmp? ( dev-libs/gmp:0 ) virtual/pkgconfig >=sys-devel/gcc-4.7 test? ( dev-libs/openssl:0 ) dev-vcs/git !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Optimized C library for EC operations on curve secp256k1
+EAPI=5
+HOMEPAGE=https://github.com/bitcoin/secp256k1
+IUSE=asm doc endomorphism gmp test
+LICENSE=MIT
+RDEPEND=gmp? ( dev-libs/gmp:0 )
+REQUIRED_USE=asm? ( amd64 )
+SLOT=0
+_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	git-2	e28f0d8a9b321431b1e699782851b827	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=bd8195660f86d5613bff9a8aac84c46f

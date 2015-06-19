@@ -1,0 +1,43 @@
+# ChangeLog for dev-util/ccglue
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/ccglue/ChangeLog,v 1.9 2012/06/21 20:51:25 radhermit Exp $
+
+  21 Jun 2012; Tim Harder <radhermit@gentoo.org> -ccglue-0.5.1.ebuild:
+  Remove old.
+
+*ccglue-0.6.0 (21 Jun 2012)
+
+  21 Jun 2012; Tim Harder <radhermit@gentoo.org> +ccglue-0.6.0.ebuild:
+  Version bump.
+
+  31 May 2012; Tim Harder <radhermit@gentoo.org> ccglue-0.5.1.ebuild,
+  +files/ccglue-0.5.1-cflags.patch:
+  Respect CFLAGS.
+
+*ccglue-0.5.1 (31 May 2012)
+
+  31 May 2012; Tim Harder <radhermit@gentoo.org> +ccglue-0.5.1.ebuild:
+  Version bump.
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> ccglue-0.3.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  31 Aug 2011; Tim Harder <radhermit@gentoo.org> -ccglue-0.2.0.ebuild,
+  -files/ccglue-0.2.0-string.patch:
+  Remove old.
+
+  31 Aug 2011; Tim Harder <radhermit@gentoo.org> ccglue-0.3.1.ebuild,
+  +files/ccglue-0.3.1-as-needed.patch:
+  Fix as-needed issue (bug #381345).
+
+*ccglue-0.3.1 (25 Jun 2011)
+
+  25 Jun 2011; Tim Harder <radhermit@gentoo.org> +ccglue-0.3.1.ebuild:
+  Version bump.
+
+*ccglue-0.2.0 (03 Jun 2011)
+
+  03 Jun 2011; Tim Harder <radhermit@gentoo.org> +ccglue-0.2.0.ebuild,
+  +files/ccglue-0.2.0-string.patch, +metadata.xml:
+  Initial import.
+

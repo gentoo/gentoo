@@ -1,0 +1,144 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/openconnect/files/openconnect.init.in-r2,v 1.1 2014/03/17 17:05:14 hasufell Exp $
+
+VPN="${RC_SVCNAME#*.}"
+VPNLOG="/var/log/openconnect/${VPN}"
+VPNLOGFILE="${VPNLOG}/openconnect.log"
+VPNERRFILE="${VPNLOG}/openconnect.err"
+VPNPID="/run/openconnect/${VPN}.pid"
+VPNDIR="/etc/openconnect/${VPN}"
+PREUPSCRIPT="${VPNDIR}/preup.sh"
+PREDOWNSCRIPT="${VPNDIR}/predown.sh"
+POSTUPSCRIPT="${VPNDIR}/postup.sh"
+POSTDOWNSCRIPT="${VPNDIR}/postdown.sh"
+SERVER="server_${VPN}"
+PASSWORD="password_${VPN}"
+VPNOPTS="vpnopts_${VPN}"
+
+depend() {
+	before netmount
+}
+
+checkconfig() {
+	if [ $VPN = "openconnect" ]; then
+		eerror "You cannot call openconnect directly. You must create a symbolic link to it with the vpn name:"
+		echo
+		eerror "ln -s /etc/init.d/openconnect /etc/init.d/openconnect.vpn0"
+		echo
+		eerror "And then call it instead:"
+		echo
+		eerror "/etc/init.d/openconnect.vpn0 start"
+		return 1
+	fi
+}
+
+checktuntap() {
+	if [ $(uname -s) = "Linux" ] ; then
+		if [ ! -e /dev/net/tun ]; then
+			if ! modprobe tun ; then
+				eerror "TUN/TAP support is not available in this kernel"
+				return 1
+			fi
+		fi
+		if [ -h /dev/net/tun ] && [ -c /dev/misc/net/tun ]; then
+			ebegin "Detected broken /dev/net/tun symlink, fixing..."
+			rm -f /dev/net/tun
+			ln -s /dev/misc/net/tun /dev/net/tun
+			eend $?
+		fi
+	fi
+}
+
+start() {
+	ebegin "Starting OpenConnect: ${VPN}"
+
+	local tmp_SERVER tmp_VPNOPTS tmp_PASSWORD
+	eval tmp_SERVER="\${${SERVER}}"
+	eval tmp_VPNOPTS="\${${VPNOPTS}}"
+	eval tmp_PASSWORD="\${${PASSWORD}}"
+
+	checkconfig || return 1
+
+	checktuntap || return 1
+
+	if [ "${tmp_SERVER}" = "vpn.server.tld" ]; then
+		eend 1 "${VPN} not configured"
+		return 1
+	fi
+
+	if [ ! -e "${VPNLOG}" ]; then
+		mkdir -p "${VPNLOG}"
+	fi
+
+        local piddir="${VPNPID%/*}"
+        if [ ! -d "$piddir" ] ; then
+                mkdir -p "$piddir"
+                if [ $? -ne 0 ]; then
+                        eerror "Directory $piddir for pidfile does not exist and cannot be created"
+                        return 1
+                fi
+        fi
+
+	if [ -x "${PREUPSCRIPT}" ] ; then
+		"${PREUPSCRIPT}"
+	fi
+
+	start-stop-daemon --start \
+		--make-pidfile \
+		--pidfile "${VPNPID}" \
+		--stderr "${VPNERRFILE}" \
+		--stdout "${VPNLOGFILE}" \
+		--background \
+		--exec /usr/sbin/openconnect -- \
+			--interface="${VPN}" \
+			--pid-file="${VPNPID}" \
+			${tmp_VPNOPTS} \
+			${tmp_SERVER} <<-E
+			${tmp_PASSWORD}
+			E
+
+ 	local retval=$?
+
+ 	if [ ! ${retval} -eq 0 ]; then
+		eend ${retval}
+		return ${retval}
+ 	fi
+
+	if [ -x "${POSTUPSCRIPT}" ] ; then
+		# wait until the interface is up and an ip address is set before running postup
+		while true; do
+			if [ -n "$(ip addr show $VPN | grep inet)" ]; then
+				"${POSTUPSCRIPT}"
+				break
+			fi
+		done
+	fi
+
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping OpenConnect: ${VPN}"
+
+	checkconfig || return 1
+
+	if [ -x "${PREDOWNSCRIPT}" ] ; then
+		"${PREDOWNSCRIPT}"
+	fi
+
+	start-stop-daemon --pidfile "${VPNPID}" --stop /usr/sbin/openconnect
+ 	local retval=$?
+
+ 	if [ ! ${retval} -eq 0 ]; then
+		eend ${retval}
+ 		return ${retval}
+ 	fi
+
+
+	if [ -x "${POSTDOWNSCRIPT}" ] ; then
+		"${POSTDOWNSCRIPT}"
+	fi
+	eend $?
+}

@@ -1,0 +1,13 @@
+diff -Naur markad-0.1.4.orig/command/decoder.cpp markad-0.1.4/command/decoder.cpp
+--- markad-0.1.4.orig/command/decoder.cpp	2014-01-29 20:16:23.000000000 +0100
++++ markad-0.1.4/command/decoder.cpp	2014-01-29 20:17:49.000000000 +0100
+@@ -152,7 +152,8 @@
+     }
+ 
+     video_codec=NULL;
+-    CodecID video_codecid;
++//    CodecID video_codecid;
++    AVCodecID video_codecid;
+ 
+     if (useH264)
+     {

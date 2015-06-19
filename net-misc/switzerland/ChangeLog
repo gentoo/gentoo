@@ -1,0 +1,26 @@
+# ChangeLog for net-misc/switzerland
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/switzerland/ChangeLog,v 1.5 2014/07/18 21:14:42 jer Exp $
+
+  18 Jul 2014; Jeroen Roovers <jer@gentoo.org> -switzerland-0.0.5.ebuild,
+  switzerland-0.1.0.ebuild, files/Makefile:
+  EAPI bump. Migrate to distutils-r1. Simplify files/Makefile.
+
+  01 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #151880
+
+*switzerland-0.1.0 (08 May 2011)
+
+  08 May 2011; Jeroen Roovers <jer@gentoo.org> +switzerland-0.1.0.ebuild,
+  files/Makefile:
+  Version bump thanks to Arfrever Frehtes Taifersar Arahesis (bug #362219).
+
+  05 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  switzerland-0.0.5.ebuild:
+  Use Python 2 (bug #315845).
+
+*switzerland-0.0.5 (03 Aug 2008)
+
+  03 Aug 2008; Cédric Krier <cedk@gentoo.org> +files/Makefile,
+  +metadata.xml, +switzerland-0.0.5.ebuild:
+  New ebuild for bug #233662 thanks to Beau Henderson

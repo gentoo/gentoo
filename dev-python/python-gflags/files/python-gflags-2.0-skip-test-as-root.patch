@@ -1,0 +1,28 @@
+http://bugs.gentoo.org/475134
+
+From 6e93aa28e1e116619a82e1b78ffbc15ce1133d51 Mon Sep 17 00:00:00 2001
+From: Michael Marineau <mike@marineau.org>
+Date: Thu, 27 Jun 2013 19:26:23 -0400
+Subject: [PATCH 3/3] Skip a permissions check when running as root.
+
+---
+ tests/gflags_unittest.py | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/tests/gflags_unittest.py b/tests/gflags_unittest.py
+index 091ebd9..ddd3b5c 100755
+--- a/tests/gflags_unittest.py
++++ b/tests/gflags_unittest.py
+@@ -1111,6 +1111,9 @@ class LoadFromFlagFileTest(googletest.TestCase):
+ 
+   def testMethod_flagfiles_NoPermissions(self):
+     """Test that --flagfile raises except on file that is unreadable."""
++    # This test doesn't work as root
++    if os.getuid() == 0:
++        return
+     tmp_files = self._SetupTestFiles()
+     # specify our temp file on the fake cmd line
+     fake_cmd_line = ('fooScript --SomeFlag some_arg --flagfile=%s'
+-- 
+1.8.1.5
+

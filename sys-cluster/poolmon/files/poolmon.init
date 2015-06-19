@@ -1,0 +1,18 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/poolmon/files/poolmon.init,v 1.1 2014/09/18 17:25:35 mschiff Exp $
+
+start() {
+	local pidfile=/run/poolmon.pid
+	ebegin "Starting poolmon"
+	start-stop-daemon --pidfile "${pidfile}" --exec /usr/bin/poolmon -- ${OPTIONS}
+	eend $?
+}
+
+stop() {
+	local pidfile=/run/poolmon.pid
+	ebegin "Stopping poolmon"
+	start-stop-daemon --stop --pidfile "${pidfile}"
+	eend $?
+}

@@ -1,0 +1,233 @@
+# ChangeLog for dev-libs/libunique
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libunique/ChangeLog,v 1.61 2013/01/13 16:35:38 eva Exp $
+
+  13 Jan 2013; Gilles Dartiguelongue <eva@gentoo.org> -libunique-1.1.6.ebuild,
+  libunique-1.1.6-r1.ebuild, libunique-3.0.2.ebuild:
+  Add dbus[X] to dependencies for tests, bug #402461. Does not really affect
+  dependency tree since libunique is targeted for use by X applications.
+
+  26 Oct 2012; Anthony G. Basile <blueness@gentoo.org>
+  libunique-1.1.6-r1.ebuild:
+  keyword ~mips
+
+  21 May 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  libunique-1.1.6-r1.ebuild:
+  Need eutils for epatch.
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> libunique-1.1.6.ebuild,
+  libunique-1.1.6-r1.ebuild, libunique-3.0.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org> libunique-3.0.2.ebuild:
+  alpha/ia64/sh/sparc stable wrt #393007
+
+  05 Mar 2012; Brent Baude <ranger@gentoo.org> libunique-3.0.2.ebuild:
+  Marking libunique-3.0.2 ppc stable for bug 393007
+
+  05 Mar 2012; Brent Baude <ranger@gentoo.org> libunique-3.0.2.ebuild:
+  Marking libunique-3.0.2 ppc64 stable for bug 393007
+
+  18 Jan 2012; Markus Meier <maekke@gentoo.org> libunique-3.0.2.ebuild:
+  arm stable, bug #393007
+
+  14 Jan 2012; Markus Meier <maekke@gentoo.org> libunique-3.0.2.ebuild:
+  x86 stable, bug #393007
+
+  29 Dec 2011; Pacho Ramos <pacho@gentoo.org> libunique-3.0.2.ebuild:
+  amd64 stable, bug 393007
+
+  20 Dec 2011; Jeroen Roovers <jer@gentoo.org> libunique-3.0.2.ebuild:
+  Stable for HPPA (bug #393007).
+
+  30 Oct 2011; Raúl Porcel <armin76@gentoo.org> libunique-1.1.6-r1.ebuild:
+  alpha/ia64/sh/sparc stable wrt #385699
+
+  28 Oct 2011; Markus Meier <maekke@gentoo.org> libunique-1.1.6-r1.ebuild:
+  arm stable, bug #385699
+
+  21 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  libunique-1.1.6-r1.ebuild:
+  x86 stable wrt bug #385699
+
+  18 Oct 2011; Jeroen Roovers <jer@gentoo.org> libunique-1.1.6-r1.ebuild:
+  Stable for HPPA (bug #385699).
+
+  16 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  libunique-1.1.6-r1.ebuild:
+  ppc/ppc64 stable wrt #385699
+
+  14 Oct 2011; Samuli Suominen <ssuominen@gentoo.org>
+  libunique-1.1.6-r1.ebuild:
+  amd64 stable wrt #385699
+
+  29 Sep 2011; Samuli Suominen <ssuominen@gentoo.org> libunique-3.0.2.ebuild:
+  Change GCONF_DEBUF to GCONF_DEBUG to match gnome2.eclass. Remove
+  -DG_DISABLE_DEPRECATED and -DGTK_DISABLE_DEPRECATED from build system to
+  allow building against glib-2.30 and pango-1.28.
+
+*libunique-1.1.6-r1 (25 Jul 2011)
+
+  25 Jul 2011; Pacho Ramos <pacho@gentoo.org> +libunique-1.1.6-r1.ebuild,
+  +files/libunique-1.1.6-G_CONST_RETURN.patch,
+  +files/libunique-1.1.6-compiler-warnings.patch,
+  +files/libunique-1.1.6-fix-test.patch,
+  +files/libunique-1.1.6-include-terminator.patch, -libunique-3.0.0.ebuild:
+  Include upstream patches committed to 1.1 branch and backport by tetromino
+  for working ok with latest glib-2.29.x (bug #376259 by Alexandre Rostovtsev).
+  Remove old.
+
+  11 Jul 2011; Matt Turner <mattst88@gentoo.org> libunique-3.0.2.ebuild:
+  Added ~mips, bug 364693
+
+*libunique-3.0.2 (15 Jun 2011)
+
+  15 Jun 2011; Nirbheek Chauhan <nirbheek@gentoo.org> +libunique-3.0.2.ebuild:
+  Bump to 3.0.2
+
+  29 Apr 2011; Jeroen Roovers <jer@gentoo.org> libunique-3.0.0.ebuild:
+  Marked ~hppa (bug #364693).
+
+*libunique-3.0.0 (24 Apr 2011)
+
+  24 Apr 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  libunique-1.1.6.ebuild, +libunique-3.0.0.ebuild:
+  Move libunique:3 from the gnome overlay to tree, use GNOME2_LA_PUNT
+  instead of a 'find' call, ~hppa dropped w.r.t. KEYWORDREQ bug 364693
+
+  10 Apr 2011; Samuli Suominen <ssuominen@gentoo.org> libunique-1.1.6.ebuild:
+  Punt useless libtool file.
+
+  09 Apr 2011; Gilles Dartiguelongue <eva@gentoo.org> -libunique-1.0.8.ebuild,
+  -files/libunique-1.0.8-automagic-dbus.patch:
+  Clean up old revision.
+
+  16 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  libunique-1.0.8.ebuild, libunique-1.1.6.ebuild:
+  Fix slot-deps on gtk+ and other libs
+
+  09 Feb 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  libunique-1.0.8.ebuild, libunique-1.1.6.ebuild:
+  Change SLOT from 0 to 1
+
+  17 Oct 2010; Raúl Porcel <armin76@gentoo.org> libunique-1.1.6.ebuild:
+  alpha/ia64/sh/sparc stable wrt #324077
+
+  14 Oct 2010; Markus Meier <maekke@gentoo.org> libunique-1.1.6.ebuild:
+  arm stable, bug #324077
+
+  07 Oct 2010; Samuli Suominen <ssuominen@gentoo.org>
+  libunique-1.1.6.ebuild:
+  ppc64 stable wrt #324077
+
+  11 Sep 2010; Joseph Jezak <josejx@gentoo.org> libunique-1.1.6.ebuild:
+  Marked ppc for bug #324077.
+
+  05 Aug 2010; Jeroen Roovers <jer@gentoo.org> libunique-1.1.6.ebuild:
+  Stable for HPPA (bug #324077).
+
+  01 Aug 2010; Christian Faulhammer <fauli@gentoo.org>
+  libunique-1.1.6.ebuild:
+  x86 stable, bug 324077
+
+  31 Jul 2010; Pacho Ramos <pacho@gentoo.org> libunique-1.1.6.ebuild:
+  amd64 stable, bug 324077
+
+  28 Jul 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  libunique-1.1.6.ebuild:
+  Sync ebuild code with the one in gnome overlay.
+
+  20 Jun 2010; Nirbheek Chauhan <nirbheek@gentoo.org>
+  libunique-1.1.6.ebuild, metadata.xml:
+  Add introspection support
+
+  15 Jun 2010; Pacho Ramos <pacho@gentoo.org> libunique-1.1.6.ebuild:
+  Pass --enable-introspection=no since we are not yet ready for
+  introspection usage due issues like bug 324045
+
+  15 Jun 2010; Jeremy Olexa <darkside@gentoo.org> libunique-1.1.6.ebuild:
+  Add back dropped Gentoo Prefix keywords. As tested by myself
+
+  14 Jun 2010; Olivier Crête <tester@gentoo.org> libunique-1.1.6.ebuild:
+  Remove duplicated keywords
+
+*libunique-1.1.6 (14 Jun 2010)
+
+  14 Jun 2010; Olivier Crête <tester@gentoo.org> +libunique-1.1.6.ebuild:
+  Version bump
+
+  28 Feb 2010; Nirbheek Chauhan <nirbheek@gentoo.org>
+  libunique-1.0.8.ebuild:
+  unset DISPLAY as well to re-fix bug 279840
+
+  16 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  libunique-1.0.8.ebuild:
+  Transfer Prefix keywords
+
+  14 Jan 2010; Jeroen Roovers <jer@gentoo.org> libunique-1.0.8.ebuild:
+  Stable for HPPA (bug #281427).
+
+  28 Nov 2009; Raúl Porcel <armin76@gentoo.org> libunique-1.0.8.ebuild:
+  ia64/sh/sparc stable
+
+  05 Nov 2009; Markus Meier <maekke@gentoo.org> libunique-1.0.8.ebuild:
+  arm stable, bug #281427
+
+  24 Oct 2009; nixnut <nixnut@gentoo.org> libunique-1.0.8.ebuild:
+  ppc stable #281427
+
+  16 Oct 2009; Markus Meier <maekke@gentoo.org> libunique-1.0.8.ebuild:
+  x86 stable, bug #281427
+
+  08 Oct 2009; Olivier Crête <tester@gentoo.org> ChangeLog:
+  Stable on amd64, bug #281427
+
+  06 Oct 2009; Samuli Suominen <ssuominen@gentoo.org>
+  libunique-1.0.8.ebuild:
+  amd64 stable wrt #278718
+
+  28 Aug 2009; Tobias Klausmann <klausman@gentoo.org>
+  libunique-1.0.8.ebuild:
+  Stable on alpha, bug #278718
+
+  01 Aug 2009; Nirbheek Chauhan <nirbheek@gentoo.org>
+  libunique-1.0.8.ebuild:
+  Workaround for bug 279840 -- Xemake using the user's X instead of spawning
+  Xvfb
+
+  23 May 2009; Brent Baude <ranger@gentoo.org> libunique-1.0.8.ebuild:
+  Marking libunique-1.0.8 ~ppc for bug 268487
+
+  19 May 2009; Brent Baude <ranger@gentoo.org> libunique-1.0.8.ebuild:
+  stable ppc64, bug 268487
+
+  11 May 2009; Brent Baude <ranger@gentoo.org> libunique-1.0.8.ebuild:
+  keyworded ~arch for ppc64, bug 269233
+
+  10 May 2009; Alexis Ballier <aballier@gentoo.org> libunique-1.0.8.ebuild:
+  keyword ~x86-fbsd, bug #268487
+
+  10 May 2009; Nirbheek Chauhan <nirbheek@gentoo.org>
+  files/libunique-1.0.8-automagic-dbus.patch:
+  Fix POSIX issue with test in configure.ac patch
+
+  07 May 2009; Ferris McCormick <fmccor@gentoo.org> libunique-1.0.8.ebuild:
+  Add ~sparc for testing, bug #268487.
+
+  06 May 2009; Jeroen Roovers <jer@gentoo.org> libunique-1.0.8.ebuild:
+  Marked ~hppa (bug #268487).
+
+  05 May 2009; Raúl Porcel <armin76@gentoo.org> libunique-1.0.8.ebuild:
+  Add ~alpha/~arm/~ia64/~sh wrt #268487
+
+  03 May 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  libunique-1.0.8.ebuild:
+  Fix missing gtk-doc-am dependency, bug #268432.
+
+*libunique-1.0.8 (02 May 2009)
+
+  02 May 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  +files/libunique-1.0.8-automagic-dbus.patch, +files/run-tests,
+  +metadata.xml, +libunique-1.0.8.ebuild:
+  Original ebuild is courtesy of Christoph Brill <egore@gmx.de>, closes bug
+  #236899.

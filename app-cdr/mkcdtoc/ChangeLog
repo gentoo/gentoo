@@ -1,0 +1,18 @@
+# ChangeLog for app-cdr/mkcdtoc
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/mkcdtoc/ChangeLog,v 1.4 2015/06/09 09:27:11 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #92799
+
+  05 Sep 2010; Stefan Briesenick <sbriesen@gentoo.org> mkcdtoc-1.0.ebuild:
+  install man-page to correct place.
+
+*mkcdtoc-1.0 (22 Jul 2010)
+
+  22 Jul 2010; Stefan Briesenick <sbriesen@gentoo.org> +mkcdtoc-1.0.ebuild,
+  +metadata.xml:
+  initial commit

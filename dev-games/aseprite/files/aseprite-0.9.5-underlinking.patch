@@ -1,0 +1,21 @@
+From 169edeaa69cce2670213c39232a249a487670883 Mon Sep 17 00:00:00 2001
+From: hasufell <hasufell@hasufell.de>
+Date: Sun, 2 Nov 2014 16:58:33 +0100
+Subject: [PATCH] Fix underlinking with USE_SHARED_ALLEGRO4=ON
+
+---
+ src/CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 21c3352..0ce11d2 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -58,6 +58,7 @@ if(USE_SHARED_ALLEGRO4)
+     OUTPUT_VARIABLE LIBALLEGRO4_LINK_FLAGS
+     OUTPUT_STRIP_TRAILING_WHITESPACE)
+ 
++  set(LIBALLEGRO4_LINK_FLAGS ${LIBALLEGRO4_LINK_FLAGS} ${PLATFORM_LIBS})
+   include_directories(${LIBALLEGRO4_INCLUDE_DIR})
+ else()
+   add_definitions(-DALLEGRO4_WITH_RESIZE_PATCH)

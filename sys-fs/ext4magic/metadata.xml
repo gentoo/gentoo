@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>gokturk@binghamton.edu</email>
+		<name>Gokturk 'gokturk' Yuksek</name>
+		<description>Maintainer. Assign bugs on him</description>
+	</maintainer>
+	<maintainer>
+		<email>pinkbyte@gentoo.org</email>
+		<name>Sergey Popov</name>
+		<description>Proxy maintainer. CC him on bugs</description>
+	</maintainer>
+	<use>
+		<flag name="expert-mode">Builds ext4magic with expert mode. Highly useful in recovering data from a corrupted filesystem</flag>
+		<flag name="file-attr">Enable the recovery of file attributes (append, immutable, nodump etc)</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">ext4magic</remote-id>
+	</upstream>
+</pkgmetadata>

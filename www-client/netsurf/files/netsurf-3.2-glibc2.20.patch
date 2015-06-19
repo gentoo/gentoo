@@ -1,0 +1,30 @@
+--- netsurf-3.2/framebuffer/Makefile.target
++++ netsurf-3.2/framebuffer/Makefile.target
+@@ -43,7 +43,7 @@
+ $(eval $(call pkg_config_find_and_add_enabled,JS,mozilla-js,JavaScript))
+ 
+ CFLAGS += -std=c99 -Dsmall $(WARNFLAGS) 	\
+-	  -D_BSD_SOURCE \
++	  -D_DEFAULT_SOURCE \
+ 	  -D_XOPEN_SOURCE=600 \
+ 	  -D_POSIX_C_SOURCE=200112L \
+ 	  $(shell $(PKG_CONFIG) --cflags libnsfb libhubbub libcss openssl)
+--- netsurf-3.2/gtk/Makefile.target
++++ netsurf-3.2/gtk/Makefile.target
+@@ -46,7 +46,7 @@
+ 
+ GTKCFLAGS := -std=c99 -Dgtk -Dnsgtk \
+ 		$(GTKDEPFLAGS) \
+-		-D_BSD_SOURCE \
++		-D_DEFAULT_SOURCE \
+ 		-D_XOPEN_SOURCE=600 \
+ 		-D_POSIX_C_SOURCE=200809L \
+ 		-D_NETBSD_SOURCE \
+--- netsurf-3.2/test/Makefile
++++ netsurf-3.2/test/Makefile
+@@ -1,4 +1,4 @@
+-CFLAGS := -std=c99 -D_BSD_SOURCE -D_POSIX_C_SOURCE -I.. \
++CFLAGS := -std=c99 -D_DEFAULT_SOURCE -D_POSIX_C_SOURCE -I.. \
+ 		$(shell pkg-config --cflags libcurl)
+ LDFLAGS := $(shell pkg-config --libs libcurl) -lz
+ 

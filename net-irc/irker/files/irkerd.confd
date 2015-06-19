@@ -1,0 +1,21 @@
+# /etc/conf.d/irkerd: config file for /etc/init.d/irkerd
+
+# Nick-Serv login
+# IRKERD_NICK=""
+
+# Nick-Server password
+# IRKERD_PASSWORD=""
+
+# Log file, intended for debug purpose only, no logrotate will
+# handle this logfile
+# IRKERD_LOGFILE=""
+
+# Debug Level (critical, error, warning, info, debug)
+# IRKERD_LOGLEVEL=""
+
+# To run an anonymous irkerd safely. It should not able able
+# to write to anywhere on your system
+# IRKERD_USER=""
+
+# see man pages for irkerd for valid cmdline options
+# IRKERD_OPTS=""

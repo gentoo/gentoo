@@ -1,0 +1,73 @@
+# ChangeLog for dev-libs/vanessa-adt
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/vanessa-adt/ChangeLog,v 1.19 2015/05/05 16:25:39 mrueg Exp $
+
+  05 May 2015; Manuel Rüger <mrueg@gentoo.org> -vanessa-adt-0.0.4_beta4.ebuild,
+  -vanessa-adt-0.0.7.ebuild, -vanessa-adt-0.0.8.ebuild:
+  Remove old.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  vanessa-adt-0.0.4_beta4.ebuild, vanessa-adt-0.0.6.ebuild,
+  vanessa-adt-0.0.7.ebuild, vanessa-adt-0.0.8.ebuild, vanessa-adt-0.0.9.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*vanessa-adt-0.0.9 (09 Mar 2012)
+
+  09 Mar 2012; Patrick Lauer <patrick@gentoo.org> +vanessa-adt-0.0.9.ebuild:
+  Bump
+
+  02 Jun 2010; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Assimilating package
+
+  02 Jun 2010; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove xmerlin from metadata.xml (#69210)
+
+*vanessa-adt-0.0.8 (08 Nov 2009)
+
+  08 Nov 2009; Patrick Lauer <patrick@gentoo.org> +vanessa-adt-0.0.8.ebuild:
+  Bump
+
+  05 Jan 2008; Robert Buchholz <rbu@gentoo.org> vanessa-adt-0.0.6.ebuild,
+  vanessa-adt-0.0.7.ebuild:
+  keyworded ~amd64 (bug #176064)
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*vanessa-adt-0.0.7 (25 Dec 2005)
+
+  25 Dec 2005; Christian Zoffoli <xmerlin@gentoo.org>
+  +vanessa-adt-0.0.7.ebuild:
+  Version bumped.
+
+  07 Mar 2005; Christian Zoffoli <xmerlin@gentoo.org>
+  vanessa-adt-0.0.6.ebuild:
+  vanessa-adt-0.0.6 marked stable on x86
+
+  22 Jan 2005; Christian Zoffoli <xmerlin@gentoo.org> :
+  added metadata.xml, improved ebuild maintainability
+
+  05 Sep 2004; David Holm <dholm@gentoo.org> vanessa-adt-0.0.6.ebuild:
+  Added to ~ppc.
+
+*vanessa-adt-0.0.6 (25 Aug 2004)
+
+  25 Aug 2004; Michael Imhof <tantive@gentoo.org> +vanessa-adt-0.0.6.ebuild:
+  Version bumped. Closes #51333.
+
+  03 Aug 2004; David Holm <dholm@gentoo.org> vanessa-adt-0.0.4_beta4.ebuild:
+  Added to ~ppc.
+
+  19 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  vanessa-adt-0.0.4_beta4.ebuild:
+  fix depend (bug #45110); tidy
+
+*vanessa-adt-0.0.4_beta4 (14 Mar 2003)
+
+  14 Mar 2003; George Shapovalov <george@gentoo.org> vanessa-adt-0.0.4_beta4.ebuild, files/digest-vanessa-adt-0.0.4_beta4 :
+  initial release (#17400)
+  Provides Abstract Data Types (ADTs) Includes queue, dynamic array, hash and key value ADT.
+  ebuild submitted by Todd Punderson <todd@doonga.net>

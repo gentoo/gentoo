@@ -1,0 +1,10 @@
+DEFINED_PHASES=install test
+DESCRIPTION=Tools for processing phylogenetic trees (re-root, subtrees, trimming, pruning, condensing, drawing)
+EAPI=2
+HOMEPAGE=http://cegg.unige.ch/newick_utils
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=!dev-games/libnw
+SLOT=0
+SRC_URI=http://cegg.unige.ch/pub/newick-utils-1.5.0.tar.gz
+_md5_=701b21b50d9ba07420e61c1161ba65bc

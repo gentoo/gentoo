@@ -1,0 +1,17 @@
+# ChangeLog for dev-php/mmslib
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/mmslib/ChangeLog,v 1.2 2012/01/28 14:06:34 mabi Exp $
+
+  28 Jan 2012; Matti Bickel <mabi@gentoo.org> mmslib-0.97.ebuild:
+  EAPI bump
+
+*mmslib-0.97 (28 Oct 2007)
+
+  28 Oct 2007; Markus Ullmann <jokey@gentoo.org> +metadata.xml,
+  +mmslib-0.97.ebuild:
+  Initial import from php project overlay
+
+  14 Aug 2007; Jakub Moc <jakub@gentoo.org> +metadata.xml,
+  +mmslib-0.97.ebuild:
+  New ebuild for  Bug 183805
+

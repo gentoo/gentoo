@@ -1,0 +1,13 @@
+the scons logic is dumb and will always regenerate the man pages.
+forcibly disable that as the releases contain the man pages.
+
+--- a/SConstruct
++++ b/SConstruct
+@@ -575,6 +575,7 @@
+     manbuilder = "xmlto man $SOURCE; mv `basename $TARGET` $TARGET"
+ else:
+     announce("Neither xsltproc nor xmlto found, documentation cannot be built.")
++manbuilder = htmlbuilder = False
+ if manbuilder:
+     env['BUILDERS']["Man"] = Builder(action=manbuilder)
+     env['BUILDERS']["HTML"] = Builder(action=htmlbuilder,

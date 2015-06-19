@@ -1,0 +1,123 @@
+# ChangeLog for dev-libs/maloc
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/maloc/ChangeLog,v 1.30 2015/01/26 11:40:54 jlec Exp $
+
+  26 Jan 2015; Justin Lecher <jlec@gentoo.org> -maloc-0.2.1-r3.ebuild:
+  Drop old
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> maloc-1.5-r1.ebuild:
+  Stable for x86, wrt bug #534622
+
+  17 Jan 2015; Agostino Sarubbo <ago@gentoo.org> maloc-1.5-r1.ebuild:
+  Stable for ppc, wrt bug #534622
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> maloc-1.5-r1.ebuild:
+  Stable for amd64, wrt bug #534622
+
+  04 Jan 2015; Justin Lecher <jlec@gentoo.org> -maloc-1.4.ebuild,
+  -maloc-1.5.ebuild, maloc-1.5-r1.ebuild:
+  Drop old
+
+*maloc-1.5-r1 (01 May 2014)
+
+  01 May 2014; Justin Lecher <jlec@gentoo.org> +maloc-1.5-r1.ebuild,
+  metadata.xml:
+  Backport upstream change to make it compatible latest apbs
+
+  02 May 2012; Justin Lecher <jlec@gentoo.org> maloc-1.5.ebuild:
+  Move to autotools-utils.eclass
+
+  20 Jul 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #105599
+
+  16 Apr 2011; Justin Lecher <jlec@gentoo.org> maloc-1.4.ebuild,
+  maloc-1.5.ebuild:
+  Moved app-doc/doxygen from RDEPEND to DEPEND
+
+*maloc-1.5 (16 Apr 2011)
+
+  16 Apr 2011; Justin Lecher <jlec@gentoo.org> +maloc-1.5.ebuild:
+  Version Bump
+
+  02 Nov 2010; Justin Lecher <jlec@gentoo.org> +files/1.4-doc.patch,
+  maloc-1.4.ebuild:
+  Fixed automagic doxygen usage
+
+*maloc-1.4 (31 Oct 2010)
+
+  31 Oct 2010; Justin Lecher <jlec@gentoo.org> +files/1.4-asneeded.patch,
+  maloc-0.2.1-r3.ebuild, +files/1.4-mpi.patch, +maloc-1.4.ebuild:
+  Version Bump
+
+  27 Jun 2010; <nixnut@gentoo.org> maloc-0.2.1-r3.ebuild:
+  ppc stable #324321
+
+  22 Jun 2010; Justin Lecher <jlec@gentoo.org> -maloc-0.1.3.ebuild:
+  Dropping old version having issues on 64bit, 324321
+
+  21 Jun 2010; Markus Meier <maekke@gentoo.org> maloc-0.2.1-r3.ebuild:
+  amd64/x86 stable, bug #324321
+
+*maloc-0.2.1-r3 (09 Jun 2010)
+
+  09 Jun 2010; Justin Lecher <jlec@gentoo.org> -maloc-0.2.1-r2.ebuild,
+  +maloc-0.2.1-r3.ebuild:
+  Fixing underlinking with USE=mpi
+
+  09 Jun 2010; Justin Lecher <jlec@gentoo.org> -maloc-0.1.2.ebuild,
+  -maloc-0.2.1.ebuild:
+  Cleaned up old version
+
+  05 May 2010; Justin Lecher <jlec@gentoo.org> +files/0.2.1-asneeded.patch,
+  maloc-0.2.1-r2.ebuild:
+  As-needed fix
+
+*maloc-0.2.1-r2 (05 May 2010)
+
+  05 May 2010; Justin Lecher <jlec@gentoo.org> -maloc-0.2.1-r1.ebuild,
+  +maloc-0.2.1-r2.ebuild:
+  rev bump needed
+
+  05 May 2010; Justin Lecher <jlec@gentoo.org> maloc-0.2.1-r1.ebuild:
+  Build shared-libs, added static-libs for static ones
+
+*maloc-0.2.1-r1 (28 Mar 2010)
+
+  28 Mar 2010; Justin Lecher <jlec@gentoo.org> +files/0.2.1-mpi.patch,
+  +maloc-0.2.1-r1.ebuild:
+  USE=-mpi should not include mpi-code
+
+*maloc-0.2.1 (12 Jan 2010)
+
+  12 Jan 2010; Markus Dittrich <markusle@gentoo.org> +maloc-0.2.1.ebuild:
+  Version bump. Also fixed emake QA issues (fixes bug #298738).
+
+  06 Jan 2010; Jeremy Olexa <darkside@gentoo.org> maloc-0.1.3.ebuild:
+  Add prefix keywords, bug 298739
+
+  06 May 2009; Markus Meier <maekke@gentoo.org> maloc-0.1.3.ebuild:
+  amd64/x86 stable, bug #250903
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  12 Oct 2006; Jeff Gardner <je_fro@gentoo.org>; maloc-0.1.3.ebuild:
+  Keyword ~amd64
+
+  16 Sep 2006; Donnie Berkholz <dberkholz@gentoo.org>; maloc-0.1.3.ebuild:
+  Keyword ~ppc.
+
+*maloc-0.1.3 (08 Mar 2006)
+
+  08 Mar 2006; Markus Dittrich <markusle@gentoo.org> +maloc-0.1.3.ebuild:
+  Version bump. Thanks to je_fro <je_fro@yahoo.com> for the ebuild
+  (see bug #124793).
+
+  12 Dec 2005; Markus Dittrich <markusle@gentoo.org> metadata.xml:
+  marked maloc-0.1.2.ebuild as ~x86
+
+*maloc-0.1.2 (20 Oct 2005)
+
+  20 Oct 2005; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +maloc-0.1.2.ebuild:
+  Initial import. Thanks to Markus Dittrich <markusle@gmail.com> for his work.

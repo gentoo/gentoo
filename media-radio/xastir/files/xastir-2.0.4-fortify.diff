@@ -1,0 +1,144 @@
+--- src/rac_data.c.orig	2012-09-23 18:19:22.000000000 +0200
++++ src/rac_data.c	2012-11-29 21:00:53.000000000 +0100
+@@ -212,7 +212,8 @@
+     char char_offset[16];
+     char index[32];
+     int found = 0;
+-    rac_record racdata;
++    char buffer[sizeof(rac_record)];
++    rac_record *racdata = (rac_record *)buffer;
+     /*char        filler[8];*/
+     char amacall_path[MAX_VALUE];
+ 
+@@ -220,7 +221,7 @@
+ 
+ 
+     xastir_snprintf(index, sizeof(index)," ");
+-    xastir_snprintf(racdata.callsign, sizeof(racdata.callsign)," ");
++    xastir_snprintf(racdata->callsign, sizeof(racdata->callsign)," ");
+ 
+     /* ====================================================================    */
+     /*    Search thru the index, get the RBA                */
+@@ -257,19 +258,19 @@
+         if (callsign[5] == '-')
+             (void)chomp(callsign,5);
+ 
+-        while (!feof(fdb) && strncmp((char *)&racdata, callsign, 6) < 0)
++        while (!feof(fdb) && strncmp(buffer, callsign, 6) < 0)
+ 
+ //WE7U
+ // Problem here:  We're sticking 8 bytes too many into racdata!
+-            rc = fgets((char *)&racdata, sizeof(racdata), fdb);
++            rc = fgets(buffer, sizeof(buffer), fdb);
+ 
+     } else
+         fprintf(stderr,"Search:Could not open RAC data base: %s\n", get_data_base_dir("fcc/AMACALL.LST") );
+ 
+     /*  || (callsign[5] == '-' && strncmp((char *)&racdata,callsign,5) < 0)) */
+-    (void)chomp(racdata.callsign, 6);
++    (void)chomp(racdata->callsign, 6);
+ 
+-    if (!strncmp((char *)racdata.callsign, callsign, 6)) {
++    if (!strncmp(racdata->callsign, callsign, 6)) {
+         found = 1;
+ 
+ // Some of these cause problems on 64-bit processors, so commented
+@@ -293,82 +294,82 @@
+         xastir_snprintf(data->callsign,
+             sizeof(data->callsign),
+             "%s",
+-            racdata.callsign);
++            racdata->callsign);
+ 
+         xastir_snprintf(data->first_name,
+             sizeof(data->first_name),
+             "%s",
+-            racdata.first_name);
++            racdata->first_name);
+  
+         xastir_snprintf(data->last_name,
+             sizeof(data->last_name),
+             "%s",
+-            racdata.last_name);
++            racdata->last_name);
+  
+         xastir_snprintf(data->address,
+             sizeof(data->address),
+             "%s",
+-            racdata.address);
++            racdata->address);
+  
+         xastir_snprintf(data->city,
+             sizeof(data->city),
+             "%s",
+-            racdata.city);
++            racdata->city);
+  
+         xastir_snprintf(data->province,
+             sizeof(data->province),
+             "%s",
+-            racdata.province);
++            racdata->province);
+  
+         xastir_snprintf(data->postal_code,
+             sizeof(data->postal_code),
+             "%s",
+-            racdata.postal_code);
++            racdata->postal_code);
+  
+         xastir_snprintf(data->qual_a,
+             sizeof(data->qual_a),
+             "%s",
+-            racdata.qual_a);
++            racdata->qual_a);
+  
+         xastir_snprintf(data->qual_b,
+             sizeof(data->qual_b),
+             "%s",
+-            racdata.qual_b);
++            racdata->qual_b);
+  
+         xastir_snprintf(data->qual_c,
+             sizeof(data->qual_c),
+             "%s",
+-            racdata.qual_c);
++            racdata->qual_c);
+  
+         xastir_snprintf(data->qual_d,
+             sizeof(data->qual_d),
+             "%s",
+-            racdata.qual_d);
++            racdata->qual_d);
+  
+         xastir_snprintf(data->club_name,
+             sizeof(data->club_name),
+             "%s",
+-            racdata.club_name);
++            racdata->club_name);
+  
+         xastir_snprintf(data->club_address,
+             sizeof(data->club_address),
+             "%s",
+-            racdata.club_address);
++            racdata->club_address);
+  
+         xastir_snprintf(data->club_city,
+             sizeof(data->club_city),
+             "%s",
+-            racdata.club_city);
++            racdata->club_city);
+  
+         xastir_snprintf(data->club_province,
+             sizeof(data->club_province),
+             "%s",
+-            racdata.club_province);
++            racdata->club_province);
+  
+         xastir_snprintf(data->club_postal_code,
+             sizeof(data->club_postal_code),
+             "%s",
+-            racdata.club_postal_code);
++            racdata->club_postal_code);
+  
+     }
+     (void)fclose(fdb);

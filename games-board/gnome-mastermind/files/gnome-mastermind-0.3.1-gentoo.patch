@@ -1,0 +1,11 @@
+--- Makefile.in.old	2007-08-25 01:12:01.000000000 +0200
++++ Makefile.in	2007-08-25 01:14:29.000000000 +0200
+@@ -685,7 +685,7 @@
+ 
+ info-am:
+ 
+-install-data-am: install-pkgdataDATA
++install-data-am:
+ 
+ install-exec-am:
+ 

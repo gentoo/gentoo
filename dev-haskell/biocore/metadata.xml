@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		A set of core definitions and data structures
+		commonly used in bioinformatics.  The intention is that bioinformatics
+		libraries will use this as a common ground to avoid needless incompatibilities
+		and duplicated work.
+	</longdescription>
+</pkgmetadata>

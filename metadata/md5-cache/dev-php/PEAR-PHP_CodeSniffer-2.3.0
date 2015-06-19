@@ -1,0 +1,12 @@
+DEFINED_PHASES=install setup
+DEPEND=dev-lang/php:* >=dev-php/pear-1.8.1
+DESCRIPTION=Tokenises PHP code and detects violations of a defined set of coding standards
+EAPI=5
+HOMEPAGE=http://pear.php.net/PHP_CodeSniffer
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=dev-lang/php-5.1.2:*[cli] dev-lang/php:* >=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=http://pear.php.net/get/PHP_CodeSniffer-2.3.0.tgz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	php-pear-r1	6199074ba0005674c2291a5a8d0274e2	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=0af341ff1aec923643ad7bda78902a90

@@ -1,0 +1,19 @@
+# ChangeLog for games-roguelike/rogue
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-roguelike/rogue/ChangeLog,v 1.4 2014/06/05 06:30:55 tupone Exp $
+
+  05 Jun 2014; Tupone Alfredo <tupone@gentoo.org> rogue-5.4.4.ebuild:
+  Fails to build with ncurses[tinfo]. Bug #459490 by flameeyes@gentoo.org
+
+  15 Jul 2010; Christian Faulhammer <fauli@gentoo.org> rogue-5.4.4.ebuild:
+  stable x86, bug 322635
+
+  24 Jun 2010; Pacho Ramos <pacho@gentoo.org> rogue-5.4.4.ebuild:
+  stable amd64, bug 322635
+
+*rogue-5.4.4 (03 May 2010)
+
+  03 May 2010; Michael Sterrett <mr_bones_@gentoo.org> +rogue-5.4.4.ebuild,
+  +metadata.xml:
+  Initial commit - ebuild submitted by Michał Kiedrowicz via bug #318299
+

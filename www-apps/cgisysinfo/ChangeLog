@@ -1,0 +1,30 @@
+# ChangeLog for www-apps/cgisysinfo
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/cgisysinfo/ChangeLog,v 1.5 2014/08/10 20:12:53 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> cgisysinfo-0.4.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*cgisysinfo-0.4.1 (06 Apr 2013)
+
+  06 Apr 2013; Rafael G. Martins <rafaelmartins@gentoo.org>
+  -cgisysinfo-0.4.ebuild, +cgisysinfo-0.4.1.ebuild:
+  Version bump.
+
+*cgisysinfo-0.4 (20 Nov 2012)
+
+  20 Nov 2012; Rafael G. Martins <rafaelmartins@gentoo.org>
+  -cgisysinfo-0.2.ebuild, +cgisysinfo-0.4.ebuild:
+  Version bump. Remove old.
+
+*cgisysinfo-0.2 (27 Mar 2011)
+
+  27 Mar 2011; Rafael G. Martins <rafaelmartins@gentoo.org>
+  -cgisysinfo-0.1.ebuild, +cgisysinfo-0.2.ebuild:
+  Version bump.
+
+*cgisysinfo-0.1 (02 Mar 2011)
+
+  02 Mar 2011; Rafael G. Martins <rafaelmartins@gentoo.org>
+  +cgisysinfo-0.1.ebuild, +metadata.xml:
+  Initial commit.

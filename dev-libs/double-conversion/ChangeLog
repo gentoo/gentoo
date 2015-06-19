@@ -1,0 +1,18 @@
+# ChangeLog for dev-libs/double-conversion
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/double-conversion/ChangeLog,v 1.1 2014/04/02 22:54:52 bicatali Exp $
+
+*double-conversion-1.1.1 (02 Apr 2013)
+
+  02 Apr 2013; Guillaume Horel <guillaume.horel@gmail.com>
+  -double-conversion-1.1.ebuild, +double-conversion-1.1.1.ebuild,
+  +files/double-conversion-1.1.1-scons.patch,
+  -files/double-conversion-1.1-scons.patch:
+  Version bump and move header files into subdirectory
+
+*double-conversion-1.1 (11 Jul 2012)
+
+  11 Jul 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  +double-conversion-1.1.ebuild, +files/double-conversion-1.1-scons.patch,
+  +metadata.xml:
+  dev-libs/double-conversion: Initial import

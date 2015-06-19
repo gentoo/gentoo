@@ -1,0 +1,23 @@
+initscr is not used anywhere in lame sourcetree, check for used tgetent instead
+check for separate tinfo library optionally built out from libncurses source tree,
+like used in debian and gentoo
+- ssuominen@g.o
+
+http://bugs.gentoo.org/454322
+
+--- configure.in
++++ configure.in
+@@ -372,9 +372,10 @@
+ 
+ AC_CHECK_HEADERS(termcap.h)
+ AC_CHECK_HEADERS(ncurses/termcap.h)
+-AC_CHECK_LIB(termcap, initscr, HAVE_TERMCAP="termcap")
+-AC_CHECK_LIB(curses, initscr, HAVE_TERMCAP="curses")
+-AC_CHECK_LIB(ncurses, initscr, HAVE_TERMCAP="ncurses")
++AC_CHECK_LIB(termcap, tgetent, HAVE_TERMCAP="termcap")
++AC_CHECK_LIB(curses, tgetent, HAVE_TERMCAP="curses")
++AC_CHECK_LIB(ncurses, tgetent, HAVE_TERMCAP="ncurses")
++AC_CHECK_LIB(tinfo, tgetent, HAVE_TERMCAP="tinfo")
+ 
+ AM_ICONV
+  

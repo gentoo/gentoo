@@ -1,0 +1,46 @@
+# ChangeLog for media-libs/libnsbmp
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libnsbmp/ChangeLog,v 1.9 2015/06/09 22:06:24 xmw Exp $
+
+*libnsbmp-0.1.2-r1 (09 Jun 2015)
+
+  09 Jun 2015; Michael Weber <xmw@gentoo.org> +libnsbmp-0.1.2-r1.ebuild,
+  -libnsbmp-0.1.2.ebuild:
+  Revbump for multilib fix.
+
+*libnsbmp-0.1.2 (22 Mar 2015)
+
+  22 Mar 2015; Michael Weber <xmw@gentoo.org>
+  +files/libnsbmp-0.1.2-glibc2.20.patch, +libnsbmp-0.1.2.ebuild,
+  -libnsbmp-0.0.3.ebuild, -libnsbmp-0.1.0.ebuild:
+  Version bump (bug 543846).
+
+*libnsbmp-0.1.1 (15 Nov 2014)
+
+  15 Nov 2014; Michael Weber <xmw@gentoo.org>
+  +files/libnsbmp-0.1.1-glibc2.20.patch, +libnsbmp-0.1.1.ebuild:
+  Version bump, new build system, glibc2.20/werror issue (bug 528934)
+
+  05 Jan 2014; Fabian Groffen <grobian@gentoo.org> libnsbmp-0.1.0.ebuild:
+  Marked ~m68k-mint, bug #494512
+
+  23 Jun 2013; Michael Weber <xmw@gentoo.org> libnsbmp-0.1.0.ebuild:
+  Migrate to netsurf.eclass
+
+*libnsbmp-0.1.0 (17 Jun 2013)
+
+  17 Jun 2013; Michael Weber <xmw@gentoo.org> +libnsbmp-0.1.0.ebuild:
+  Version bump (bug 470720), multilib build, preparations for netsurf eclass.
+
+  27 Feb 2013; Michael Weber <xmw@gentoo.org> libnsbmp-0.0.3.ebuild:
+  Add DEPEND virtual/pkgconfig.
+
+  27 Feb 2013; Michael Weber <xmw@gentoo.org> libnsbmp-0.0.3.ebuild:
+  netsurf eclass preparation. Restore cross-compile functionality (thanks James
+  Le Cuirot, bug 431884)
+
+*libnsbmp-0.0.3 (17 Jul 2012)
+
+  17 Jul 2012; Michael Weber <xmw@gentoo.org> +libnsbmp-0.0.3.ebuild,
+  +metadata.xml:
+  Initial import

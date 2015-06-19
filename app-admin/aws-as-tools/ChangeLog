@@ -1,0 +1,12 @@
+# ChangeLog for app-admin/aws-as-tools
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/aws-as-tools/ChangeLog,v 1.2 2013/03/17 15:29:30 hwoarang Exp $
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+*aws-as-tools-1.0.49.1 (16 Feb 2012)
+
+  16 Feb 2012; Fabio Erculiani <lxnay@gentoo.org>
+  +aws-as-tools-1.0.49.1.ebuild, +metadata.xml:
+  new ebuild

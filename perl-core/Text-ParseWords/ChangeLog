@@ -1,0 +1,57 @@
+# ChangeLog for perl-core/Text-ParseWords
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/perl-core/Text-ParseWords/ChangeLog,v 1.11 2015/06/12 22:40:44 dilfridge Exp $
+
+  12 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  -Text-ParseWords-3.280.0.ebuild:
+  Remove old
+
+  08 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -Text-ParseWords-3.270.0-r1.ebuild:
+  Remove old
+
+  27 Sep 2014; Mikle Kolyada <zlogene@gentoo.org>
+  Text-ParseWords-3.290.0.ebuild:
+  x86 stable wrt bug #512092
+
+  30 Aug 2014; Chema Alonso <nimiux@gentoo.org> Text-ParseWords-3.290.0.ebuild:
+  Stable for amd64 wrt bug #512092
+
+  31 Jul 2014; Vladimir Smirnov Text-ParseWords-3.290.0.ebuild:
+  Keyword for ~arm
+
+*Text-ParseWords-3.270.0-r1 (26 Jul 2014)
+
+  26 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Text-ParseWords-3.270.0-r1.ebuild, -Text-ParseWords-3.270.0.ebuild:
+  EAPI bump
+
+*Text-ParseWords-3.290.0 (24 Aug 2013)
+
+  24 Aug 2013; Patrick Lauer <patrick@gentoo.org>
+  +Text-ParseWords-3.290.0.ebuild:
+  Bump
+
+*Text-ParseWords-3.280.0 (13 Mar 2013)
+
+  13 Mar 2013; Torsten Veller <tove@gentoo.org>
+  +Text-ParseWords-3.280.0.ebuild:
+  Version bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> Text-ParseWords-3.270.0.ebuild:
+  Depend on app-arch/unzip
+
+*Text-ParseWords-3.270.0 (24 Jun 2012)
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org>
+  +Text-ParseWords-3.270.0.ebuild, +metadata.xml:
+  Move to perl-core
+
+*Text-ParseWords-3.27 (23 Jun 2012)
+
+  23 Jun 2012; Doug Goldstein <cardoe@gentoo.org> +Text-ParseWords-3.27.ebuild,
+  +metadata.xml:
+  Add initial version

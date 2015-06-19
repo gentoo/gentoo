@@ -1,0 +1,7 @@
+
+  11 May 2013; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Add doctype to metadata.xml
+
+  27 Dec 2012;  <qnikst@gentoo.org> +files/kbdd-0.7-fix-non-dbus-build.patch,
+  kbdd-0.7.ebuild:
+  fix build bug #448720

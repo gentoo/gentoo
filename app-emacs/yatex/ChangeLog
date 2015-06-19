@@ -1,0 +1,163 @@
+# ChangeLog for app-emacs/yatex
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/yatex/ChangeLog,v 1.45 2013/08/07 13:26:32 ago Exp $
+
+  07 Aug 2013; Agostino Sarubbo <ago@gentoo.org> yatex-1.77.ebuild:
+  Stable for x86, wrt bug #470324
+
+  28 Jul 2013; Agostino Sarubbo <ago@gentoo.org> yatex-1.77.ebuild:
+  Stable for ppc, wrt bug #470324
+
+  28 Jul 2013; Agostino Sarubbo <ago@gentoo.org> yatex-1.77.ebuild:
+  Stable for amd64, wrt bug #470324
+
+*yatex-1.77 (03 Apr 2013)
+
+  03 Apr 2013; Ulrich Müller <ulm@gentoo.org> -files/yatex-1.73-gentoo.patch,
+  -yatex-1.74.ebuild, +yatex-1.77.ebuild, +files/yatex-1.77-texinfo-5.patch:
+  Version bump. Fix build failure with texinfo-5.1, bug 464316. Remove old.
+
+  17 Oct 2012; Anthony G. Basile <blueness@gentoo.org> yatex-1.76.ebuild:
+  stable ppc, bug #433187
+
+  17 Oct 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> yatex-1.76.ebuild:
+  x86 stable wrt bug #433187
+
+  16 Oct 2012; Agostino Sarubbo <ago@gentoo.org> yatex-1.76.ebuild:
+  Stable for amd64, wrt bug #433187
+
+  15 Oct 2012; Ulrich Müller <ulm@gentoo.org> yatex-1.76.ebuild:
+  Fix character code issue with Texinfo files, bug 438456.
+
+  14 Oct 2012; Raúl Porcel <armin76@gentoo.org> yatex-1.74.ebuild,
+  yatex-1.76.ebuild:
+  Drop alpha/sparc keywords
+
+  11 Oct 2012; Ulrich Müller <ulm@gentoo.org> yatex-1.76.ebuild,
+  +files/yatex-1.76-direntry.patch:
+  Fix GNU Info files, bug 437612. Drop ppc to unstable again.
+
+  11 Oct 2012; Chema Alonso <nimiux@gentoo.org> yatex-1.76.ebuild:
+  Missed the blocker bug (#437612) marking unstable for amd64
+
+  11 Oct 2012; Chema Alonso <nimiux@gentoo.org> yatex-1.76.ebuild:
+  stable for amd64 wrt bug #433187
+
+  11 Oct 2012; Anthony G. Basile <blueness@gentoo.org> yatex-1.76.ebuild:
+  stable ppc, bug #433187
+
+  10 Oct 2012; Brent Baude <ranger@gentoo.org> yatex-1.76.ebuild:
+  Backing out ppc stabile to yatex-1.76
+
+  10 Oct 2012; Brent Baude <ranger@gentoo.org> yatex-1.76.ebuild:
+  Marking yatex-1.76 ppc for bug 433187
+
+  26 Sep 2012; Ulrich Müller <ulm@gentoo.org> yatex-1.74.ebuild,
+  yatex-1.76.ebuild:
+  Specify LICENSE more precisely. Bump ebuild to EAPI 4.
+
+*yatex-1.76 (08 Jul 2012)
+
+  08 Jul 2012; Naohiro Aota <naota@gentoo.org> +files/yatex-1.76-gentoo.patch,
+  +yatex-1.76.ebuild:
+  Version bump to 1.76.
+
+  13 Dec 2009; Ulrich Mueller <ulm@gentoo.org> -yatex-1.72.ebuild,
+  -files/yatex-1.72-gentoo.diff, -files/yatex-1.72-yatexhlp-gentoo.diff,
+  -yatex-1.73.ebuild:
+  Remove old.
+
+  13 Dec 2009; Raúl Porcel <armin76@gentoo.org> yatex-1.74.ebuild:
+  alpha/sparc stable wrt #293419
+
+  08 Dec 2009; nixnut <nixnut@gentoo.org> yatex-1.74.ebuild:
+  ppc stable #293419
+
+  19 Nov 2009; Markus Meier <maekke@gentoo.org> yatex-1.74.ebuild:
+  amd64/x86 stable, bug #293419
+
+*yatex-1.74 (16 Oct 2009)
+
+  16 Oct 2009; Ulrich Mueller <ulm@gentoo.org> +yatex-1.74.ebuild:
+  Version bump.
+
+*yatex-1.73 (30 Jul 2008)
+
+  30 Jul 2008; Ulrich Mueller <ulm@gentoo.org>
+  +files/yatex-1.73-gentoo.patch, metadata.xml, +yatex-1.73.ebuild:
+  Version bump. Replace cjk USE flag by linguas_ja. Install help files in
+  etc directory.
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing usata from metadata.xml as per #22931.
+
+  26 Aug 2007; Ulrich Mueller <ulm@gentoo.org>
+  -files/yatex-1.71-gentoo.diff, -files/yatex-1.71-yatexhlp-gentoo.diff,
+  yatex-1.72.ebuild:
+  Clean up. Drop ~ppc-macos keyword.
+
+  04 Jul 2007; Christian Faulhammer <opfer@gentoo.org> yatex-1.72.ebuild:
+  canonicalise SITEFILE handling; relocated IUSE; removed some unneeded blank
+  lines
+
+  08 Apr 2007; Markus Rothe <corsair@gentoo.org> yatex-1.72.ebuild:
+  Added ~ppc64; bug #173258
+
+  23 Feb 2007; Christian Faulhammer <opfer@gentoo.org> -yatex-1.71.ebuild:
+  real clean up
+
+  23 Feb 2007; Christian Faulhammer <opfer@gentoo.org> yatex-1.72.ebuild:
+  clean up, adjusted DESCRIPTION and added some quotes
+
+  03 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  28 Aug 2005; Olivier Crête <tester@gentoo.org> yatex-1.72.ebuild:
+  Marked ~amd64, thanks to AT AJ Armstrong <aja@gentoo.org> for testing
+
+  12 Dec 2004; Jason Wever <weeve@gentoo.org> yatex-1.72.ebuild:
+  Stable on sparc.
+
+  14 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> yatex-1.71.ebuild,
+  yatex-1.72.ebuild:
+  Added to ~ppc-macos.
+
+  15 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> yatex-1.71.ebuild,
+  yatex-1.72.ebuild:
+  Stable on ppc.
+
+  01 Jun 2004; Aron Griffis <agriffis@gentoo.org> yatex-1.71.ebuild,
+  yatex-1.72.ebuild:
+  Fix use invocation
+
+  05 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> yatex-1.71.ebuild,
+  yatex-1.72.ebuild:
+  Corrected LICENSE and marked 1.72 stable.
+
+*yatex-1.72 (27 Dec 2003)
+
+  27 Dec 2003; Mamoru KOMACHI <usata@gentoo.org> yatex-1.71.ebuild,
+  yatex-1.72.ebuild, files/lp.el, files/yatex-1.72-gentoo.diff,
+  files/yatex-1.72-yatexhlp-gentoo.diff:
+  Version bumped
+
+*yatex-1.71 (12 Sep 2003)
+
+  09 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> yatex-1.71.ebuild,
+  files/yatex-1.71-yatexhlp-gentoo.diff:
+  Turned to not byte-compile because it fails on alpha, ppc and sparc.
+  Added ~alpha, ~ppc and ~sparc keywords.  Fixed yatexhlp install
+  directory path.
+
+  07 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> yatex-1.71.ebuild,
+  files/lp.el:
+  Fixed build failure problem with brand-new install
+
+  13 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> files/50yatex-gentoo.el,
+  files/yatex-1.71-gentoo.diff:
+  Added missing files directory. Thanks to YAMAKURA Makoto <yakina@gentoo.org>
+  for reporting the bug.
+
+  12 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> yatex-1.71.ebuild:
+  Initial import.  Ebuild submitted by Naoaki Shindo
+  <shindo-n@zephyr.dti.ne.jp> at GentooJP BugTrack.

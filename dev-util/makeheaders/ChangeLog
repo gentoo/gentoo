@@ -1,0 +1,22 @@
+# ChangeLog for dev-util/makeheaders
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/makeheaders/ChangeLog,v 1.5 2012/05/18 11:59:54 xmw Exp $
+
+  18 May 2012; Michael Weber <xmw@gentoo.org> makeheaders-0_p4.ebuild:
+  Add keywords ~pcc ~sparc (needed for net-p2p/ncdc).
+
+  18 May 2012; Jeff Horelick <jdhore@gentoo.org> makeheaders-0_p4.ebuild:
+  marked x86 per bug 415133
+
+  08 May 2012; Agostino Sarubbo <ago@gentoo.org> makeheaders-0_p4.ebuild:
+  Stable for amd64, wrt bug #415133
+
+  20 Feb 2012; Mike Gilbert <floppym@gentoo.org> metadata.xml:
+  Drop no-herd.
+
+*makeheaders-0_p4 (03 Oct 2011)
+
+  03 Oct 2011; Michael Weber <xmw@gentoo.org> +makeheaders-0_p4.ebuild,
+  +metadata.xml:
+  Initial import from my overlay
+

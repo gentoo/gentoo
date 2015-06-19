@@ -1,0 +1,149 @@
+# ChangeLog for dev-ml/camomile
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/camomile/ChangeLog,v 1.41 2015/06/08 15:37:00 jlec Exp $
+
+  08 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Correct remote id
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*camomile-0.8.5 (01 Dec 2014)
+
+  01 Dec 2014; Alexis Ballier <aballier@gentoo.org> +camomile-0.8.5.ebuild:
+  version bump, bug #522496 by José Romildo Malaquias
+
+  28 Nov 2014; Alexis Ballier <aballier@gentoo.org> camomile-0.8.4.ebuild:
+  update deps for ocaml 4.02
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> camomile-0.8.4.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  06 Mar 2013; Alexis Ballier <aballier@gentoo.org> camomile-0.8.4.ebuild:
+  eapi5: define subslot; use slot deps and remove useless || die
+
+  12 Jun 2012; Alexis Ballier <aballier@gentoo.org> -camomile-0.8.3.ebuild:
+  remove old
+
+  29 May 2012; Brent Baude <ranger@gentoo.org> camomile-0.8.4.ebuild:
+  Marking camomile-0.8.4 ppc for bug 416529
+
+  22 May 2012; Jeff Horelick <jdhore@gentoo.org> camomile-0.8.4.ebuild:
+  marked x86 per bug 416529
+
+  23 Feb 2012; Alexis Ballier <aballier@gentoo.org> -camomile-0.8.1.ebuild:
+  remove old
+
+  06 Feb 2012; Brent Baude <ranger@gentoo.org> camomile-0.8.3.ebuild:
+  Marking camomile-0.8.3 ppc for bug 374965
+
+*camomile-0.8.4 (10 Jan 2012)
+
+  10 Jan 2012; Alexis Ballier <aballier@gentoo.org> +camomile-0.8.4.ebuild:
+  version bump
+
+  23 Jul 2011; Markus Meier <maekke@gentoo.org> camomile-0.8.3.ebuild:
+  x86 stable, bug #374965
+
+  30 Jun 2011; Alexis Ballier <aballier@gentoo.org> -camomile-0.7.3.ebuild,
+  -camomile-0.8.2.ebuild:
+  remove old
+
+  30 Jun 2011; Brent Baude <ranger@gentoo.org> camomile-0.8.1.ebuild:
+  Marking camomile-0.8.1 ppc for bug 343745
+
+*camomile-0.8.3 (24 May 2011)
+
+  24 May 2011; Alexis Ballier <aballier@gentoo.org> +camomile-0.8.3.ebuild:
+  version bump
+
+*camomile-0.8.2 (14 Apr 2011)
+
+  14 Apr 2011; Alexis Ballier <aballier@gentoo.org> +camomile-0.8.2.ebuild:
+  version bump
+
+  05 Nov 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  camomile-0.8.1.ebuild:
+  x86 stable wrt bug #343745
+
+*camomile-0.8.1 (17 Jul 2010)
+
+  17 Jul 2010; Alexis Ballier <aballier@gentoo.org> +camomile-0.8.1.ebuild:
+  version bump
+
+  17 Jul 2010; Alexis Ballier <aballier@gentoo.org> -camomile-0.7.2.ebuild:
+  remove old
+
+  11 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  camomile-0.7.3.ebuild:
+  stable x86, bug 324815
+
+  27 Jun 2010; <nixnut@gentoo.org> camomile-0.7.3.ebuild:
+  ppc stable #324815
+
+*camomile-0.7.3 (19 May 2010)
+
+  19 May 2010; Alexis Ballier <aballier@gentoo.org> +camomile-0.7.3.ebuild:
+  version bump
+
+  01 Sep 2009; Alexis Ballier <aballier@gentoo.org> -camomile-0.7.1.ebuild:
+  remove old
+
+  01 Sep 2009; Christian Faulhammer <fauli@gentoo.org>
+  camomile-0.7.2.ebuild:
+  stable x86, bug 280415
+
+  09 Aug 2009; nixnut <nixnut@gentoo.org> camomile-0.7.2.ebuild:
+  ppc stable #280415
+
+*camomile-0.7.2 (21 Jun 2009)
+
+  21 Jun 2009; Alexis Ballier <aballier@gentoo.org> +camomile-0.7.2.ebuild:
+  version bump
+
+  21 Jun 2009; Alexis Ballier <aballier@gentoo.org> camomile-0.7.1.ebuild:
+  define eapi before inherit and assign rdepend explicitly
+
+  20 Apr 2008; Alexis Ballier <aballier@gentoo.org>
+  -camomile-0.5.3-r1.ebuild, -camomile-0.6.0.ebuild:
+  remove old
+
+  20 Apr 2008; Markus Meier <maekke@gentoo.org> camomile-0.7.1.ebuild:
+  x86 stable, bug #217547
+
+  19 Apr 2008; nixnut <nixnut@gentoo.org> camomile-0.7.1.ebuild:
+  Stable on ppc wrt bug 217547
+
+  03 Jan 2008; Alexis Ballier <aballier@gentoo.org> camomile-0.7.1.ebuild:
+  Allow to disable ocamlopt via an useflag
+
+*camomile-0.7.1 (26 May 2007)
+
+  26 May 2007; Alexis Ballier <aballier@gentoo.org> +camomile-0.7.1.ebuild:
+  Version bump, ~amd64
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*camomile-0.6.0 (10 Sep 2004)
+
+  10 Sep 2004; Matthieu Sozeau <mattam@gentoo.org> +camomile-0.5.3-r1.ebuild,
+  -camomile-0.5.3.ebuild, +camomile-0.6.0.ebuild:
+  Fix bug #63560 issues, add new version released yesterday.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  25 Aug 2004; Sven Wegener <swegener@gentoo.org> camomile-0.5.3.ebuild:
+  Changed SRC_URI to use mirror:// syntax.
+
+  22 Aug 2004; Matthieu Sozeau <mattam@gentoo.org> camomile-0.5.3.ebuild:
+  Adapt to findlib eclass, move to stable.
+
+  09 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org> camomile-0.5.3.ebuild:
+  header fix; tidy
+
+*camomile-0.5.3 (08 Aug 2004)
+
+  08 Aug 2004; Matthieu Sozeau <mattam@gentoo.org> +camomile-0.5.3.ebuild:
+  Camomile is a comprehensive unicode library for ocaml. Adding latest version.

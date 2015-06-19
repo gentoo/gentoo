@@ -1,0 +1,156 @@
+# ChangeLog for sys-auth/polkit-qt
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/polkit-qt/ChangeLog,v 1.41 2015/05/16 15:14:47 kensington Exp $
+
+  16 May 2015; Michael Palimaka <kensington@gentoo.org>
+  -polkit-qt-0.103.0.ebuild, -polkit-qt-0.112.0.ebuild:
+  Remove old.
+
+  16 May 2015; Jeroen Roovers <jer@gentoo.org> polkit-qt-0.112.0-r1.ebuild:
+  Stable for PPC64 (bug #524294).
+
+  15 Apr 2015; Yixun Lan <dlan@gentoo.org> polkit-qt-0.112.0-r1.ebuild:
+  keyword arm64, tested on cortex-a53 hardware; support lxqt, bug 528676
+
+  29 Mar 2015; Mikle Kolyada <zlogene@gentoo.org> polkit-qt-0.112.0-r1.ebuild:
+  x86 stable wrt bug #524294
+
+  02 Mar 2015; Agostino Sarubbo <ago@gentoo.org> polkit-qt-0.112.0-r1.ebuild:
+  Stable for ppc, wrt bug #524294
+
+  08 Dec 2014; Mikle Kolyada <zlogene@gentoo.org> polkit-qt-0.112.0-r1.ebuild:
+  amd64 stable wrt bug #524294
+
+*polkit-qt-0.112.0-r1 (24 Nov 2014)
+
+  24 Nov 2014; Michael Palimaka <kensington@gentoo.org>
+  +polkit-qt-0.112.0-r1.ebuild:
+  Solve issue where multibuild image is discarded wrt bug #529686.
+
+  05 Oct 2014; Manuel Rüger <mrueg@gentoo.org> polkit-qt-0.112.0.ebuild:
+  Mark stable on amd64. Bug #524294
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> polkit-qt-0.103.0.ebuild,
+  polkit-qt-0.112.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  30 Jul 2014; Johannes Huber <johu@gentoo.org> polkit-qt-0.112.0.ebuild:
+  Drop USE dep glib on dev-qt/*:5, bug #518588.
+
+*polkit-qt-0.112.0 (22 Jul 2014)
+
+  22 Jul 2014; Michael Palimaka <kensington@gentoo.org>
+  +polkit-qt-0.112.0.ebuild:
+  Version bump.
+
+  01 Aug 2013; Michael Palimaka <kensington@gentoo.org>
+  polkit-qt-0.103.0.ebuild:
+  Correct dependencies wrt bug #478416.
+
+  10 Jul 2013; Patrick Lauer <patrick@gentoo.org> polkit-qt-0.103.0.ebuild:
+  Fixing qtgui deps for qt-4.8.5
+
+  02 Apr 2013; Agostino Sarubbo <ago@gentoo.org> polkit-qt-0.103.0.ebuild:
+  Stable for ppc64, wrt bug #462890
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> polkit-qt-0.103.0.ebuild:
+  Move Qt dependencies to the new category
+
+  19 Aug 2012; Tomáš Chvátal <scarabeus@gentoo.org> -polkit-qt-0.99.0.ebuild,
+  polkit-qt-0.103.0.ebuild:
+  Stable on ppc, drop stable ppc64 as there are no rdeps stable. Drop older. Wrt
+  bug#431896.
+
+  15 Jul 2012; Michael Palimaka <kensington@gentoo.org>
+  polkit-qt-0.103.0.ebuild, polkit-qt-0.99.0.ebuild:
+  Add missing slot dependencies on Qt.
+
+  18 Apr 2012; Markus Meier <maekke@gentoo.org> polkit-qt-0.103.0.ebuild:
+  x86 stable, bug #409403
+
+  04 Apr 2012; Agostino Sarubbo <ago@gentoo.org> polkit-qt-0.103.0.ebuild:
+  Stable for amd64, wrt bug #409403
+
+  16 Dec 2011; Johannes Huber <johu@gentoo.org> polkit-qt-0.103.0.ebuild:
+  Bump polkit dep.
+
+*polkit-qt-0.103.0 (15 Dec 2011)
+
+  15 Dec 2011; Johannes Huber <johu@gentoo.org> +polkit-qt-0.103.0.ebuild,
+  -polkit-qt-0.96.1.ebuild:
+  Version bump.
+
+  13 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> polkit-qt-0.99.0.ebuild:
+  ppc64 stable wrt #354033
+
+  01 Jun 2011; Brent Baude <ranger@gentoo.org> polkit-qt-0.99.0.ebuild:
+  Marking polkit-qt-0.99.0 ppc stable for bug 354033
+
+  09 May 2011; Markos Chandras <hwoarang@gentoo.org> polkit-qt-0.99.0.ebuild:
+  Stable on amd64 wrt bug #354033
+
+  09 May 2011; Thomas Kahle <tomka@gentoo.org> polkit-qt-0.99.0.ebuild:
+  x86 stable per bug 354033
+
+  13 Feb 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -polkit-qt-0.95.1.ebuild:
+  old
+
+  29 Jan 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  polkit-qt-0.99.0.ebuild:
+  Require qt built with glib support (bug 353143)
+
+  26 Jan 2011; Alexey Shvetsov <alexxy@gentoo.org> polkit-qt-0.99.0.ebuild:
+  readd accidently dropped keywords
+
+*polkit-qt-0.99.0 (26 Jan 2011)
+
+  26 Jan 2011; Alexey Shvetsov <alexxy@gentoo.org> +polkit-qt-0.99.0.ebuild:
+  Version bump for kde sc 4.6.0
+
+  12 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  polkit-qt-0.96.1.ebuild:
+  x86 stable wrt bug #335787
+
+  11 Sep 2010; Maciej Mrozowski <reavertm@gentoo.org>
+  polkit-qt-0.96.1.ebuild:
+  amd64 stable, bug 336787
+
+  03 Sep 2010; Joseph Jezak <josejx@gentoo.org> polkit-qt-0.95.1.ebuild:
+  Marked ppc64 stable for bug #322791.
+
+  09 Aug 2010; Joseph Jezak <josejx@gentoo.org> polkit-qt-0.95.1.ebuild:
+  Marked ppc stable for bug #322791.
+
+*polkit-qt-0.96.1 (22 Jul 2010)
+
+  22 Jul 2010; Maciej Mrozowski <reavertm@gentoo.org>
+  polkit-qt-0.95.1.ebuild, +polkit-qt-0.96.1.ebuild:
+  Version bump 0.96.1, update SRC_URI for 0.95.1 (they moved tarball
+  elsewhere)
+
+  27 Jun 2010; Christian Faulhammer <fauli@gentoo.org>
+  polkit-qt-0.95.1.ebuild:
+  x86 stable, bug 322791
+
+  24 Jun 2010; Christoph Mende <angelos@gentoo.org> polkit-qt-0.95.1.ebuild:
+  Stable on amd64 wrt bug #322791
+
+  19 May 2010; Robert Piasek <dagger@gentoo.org> polkit-qt-0.95.1.ebuild:
+  Added ~arm keyword
+
+  15 May 2010; Maciej Mrozowski <reavertm@gentoo.org>
+  polkit-qt-0.95.1.ebuild:
+  Update automoc category
+
+  02 May 2010; Alexis Ballier <aballier@gentoo.org> polkit-qt-0.95.1.ebuild:
+  keyword ~x86-fbsd
+
+  23 Feb 2010; Joseph Jezak <josejx@gentoo.org> polkit-qt-0.95.1.ebuild:
+  Marked ~ppc/~ppc64 for bug #296548.
+
+*polkit-qt-0.95.1 (08 Feb 2010)
+
+  08 Feb 2010; Alexey Shvetsov <alexxy@gentoo.org> +polkit-qt-0.95.1.ebuild,
+  +metadata.xml:
+  Initial import

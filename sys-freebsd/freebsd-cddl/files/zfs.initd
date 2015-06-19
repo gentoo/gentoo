@@ -1,0 +1,24 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-cddl/files/zfs.initd,v 1.1 2012/05/27 06:23:07 naota Exp $
+
+depend() {
+	need hostid
+	before fsck
+}
+
+start() {
+	einfo "Starting zfs ..."
+	zfs mount -a
+	zfs share -a
+	if [ ! -r /etc/zfs/exports ]; then
+		touch /etc/zfs/exports
+	fi
+}
+
+stop() {
+	einfo "Stopping zfs ..."
+	zfs unshare -a
+	zfs unmount -a
+}

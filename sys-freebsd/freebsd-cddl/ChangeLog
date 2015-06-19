@@ -1,0 +1,215 @@
+# ChangeLog for sys-freebsd/freebsd-cddl
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-cddl/ChangeLog,v 1.43 2015/06/05 16:43:55 mgorny Exp $
+
+  05 Jun 2015; Michał Górny <mgorny@gentoo.org> freebsd-cddl-10.1.ebuild:
+  Bump to EAPI=5. Use upstream tarballs.
+
+  24 May 2015; Michał Górny <mgorny@gentoo.org>
+  -files/freebsd-cddl-9.2-underlink.patch, -freebsd-cddl-9.2.ebuild,
+  -freebsd-cddl-9.2_rc1.ebuild, -freebsd-cddl-9.2_rc2.ebuild,
+  -freebsd-cddl-9.2_rc3.ebuild:
+  Remove 9.2. Part of https://github.com/gentoo/gentoo-portage-rsync-
+  mirror/pull/126 by nigoro.
+
+*freebsd-cddl-10.1 (08 Mar 2015)
+
+  08 Mar 2015; Michał Górny <mgorny@gentoo.org>
+  +files/freebsd-cddl-10.1-underlink.patch, +freebsd-cddl-10.1.ebuild:
+  Add FreeBSD 10.1 ebuilds, https://github.com/gentoo/gentoo-portage-rsync-
+  mirror/pull/46 by nigoro.
+
+*freebsd-cddl-9.2 (09 Nov 2013)
+
+  09 Nov 2013; Alexis Ballier <aballier@gentoo.org> +freebsd-cddl-9.2.ebuild:
+  bump to 9.2
+
+*freebsd-cddl-9.2_rc3 (26 Aug 2013)
+
+  26 Aug 2013; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-cddl-9.2_rc3.ebuild:
+  bump to rc3
+
+*freebsd-cddl-9.2_rc2 (22 Aug 2013)
+
+  22 Aug 2013; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-cddl-9.2_rc2.ebuild:
+  bump to rc2
+
+  19 Aug 2013; Alexis Ballier <aballier@gentoo.org>
+  files/freebsd-cddl-9.2-underlink.patch:
+  Fix build without a previous version installed, bug #481334. Fix by Yuta
+  SATOH
+
+  11 Aug 2013; Alexis Ballier <aballier@gentoo.org>
+  freebsd-cddl-9.2_rc1.ebuild:
+  fbsd-lib has its own libelf now, bug #479494 by Yuta SATOH
+
+  10 Aug 2013; Alexis Ballier <aballier@gentoo.org>
+  freebsd-cddl-9.2_rc1.ebuild:
+  Move libzfs_core to / too
+
+*freebsd-cddl-9.2_rc1 (09 Aug 2013)
+
+  09 Aug 2013; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-cddl-9.2_rc1.ebuild, +files/freebsd-cddl-9.2-libpaths.patch,
+  +files/freebsd-cddl-9.2-underlink.patch:
+  Version bump, based on work of Yuta SATOH in bug #476646
+
+  09 Aug 2013; Alexis Ballier <aballier@gentoo.org> -freebsd-cddl-9.0.ebuild:
+  remove old
+
+  18 Jun 2013; Alexis Ballier <aballier@gentoo.org> -freebsd-cddl-7.2.ebuild,
+  -freebsd-cddl-8.0.ebuild, -files/freebsd-cddl-7.1-libpaths.patch,
+  -files/freebsd-cddl-7.1-xdr_header.patch:
+  remove old
+
+  07 Feb 2013; Naohiro Aota <naota@gentoo.org> freebsd-cddl-7.2.ebuild,
+  freebsd-cddl-8.0.ebuild, freebsd-cddl-8.2.ebuild, freebsd-cddl-9.0.ebuild,
+  freebsd-cddl-9.1.ebuild:
+  Drop useless duplicated SYS tar.bz2 from SRC_URI. #455228
+
+  27 Jan 2013; Alexis Ballier <aballier@gentoo.org>
+  -freebsd-cddl-9.1_rc1.ebuild, -freebsd-cddl-9.1_rc2.ebuild,
+  -freebsd-cddl-9.1_rc3.ebuild:
+  remove rc versions
+
+*freebsd-cddl-9.1 (27 Jan 2013)
+
+  27 Jan 2013; Alexis Ballier <aballier@gentoo.org> +freebsd-cddl-9.1.ebuild:
+  Bump to 9.1
+
+*freebsd-cddl-9.1_rc3 (06 Nov 2012)
+
+  06 Nov 2012; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-cddl-9.1_rc3.ebuild:
+  bump to rc3
+
+*freebsd-cddl-9.1_rc2 (14 Oct 2012)
+
+  14 Oct 2012; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-cddl-9.1_rc2.ebuild:
+  bump to 9.1_rc2
+
+*freebsd-cddl-9.1_rc1 (11 Sep 2012)
+
+  11 Sep 2012; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-cddl-9.1_rc1.ebuild:
+  bump to 9.1_rc1 from bsd overlay by Yuta SATOH, bug #426838
+
+  20 Aug 2012; Naohiro Aota <naota@gentoo.org> freebsd-cddl-7.2.ebuild,
+  freebsd-cddl-8.0.ebuild, freebsd-cddl-8.2.ebuild, freebsd-cddl-9.0.ebuild:
+  Add init script LICENSE. #426162
+
+  27 May 2012; Naohiro Aota <naota@gentoo.org> +files/zfs.initd,
+  freebsd-cddl-9.0.ebuild:
+  Add zfs initd script. #415129
+
+  16 May 2012; Alexis Ballier <aballier@gentoo.org> freebsd-cddl-9.0.ebuild:
+  put libavl in / too as it is required by libzpool.
+
+  12 May 2012; Alexis Ballier <aballier@gentoo.org> freebsd-cddl-9.0.ebuild:
+  fix installation, bug #414879 and simplify ebuild
+
+  12 May 2012; Naohiro Aota <naota@gentoo.org> +files/zvol.initd-9.0,
+  freebsd-cddl-9.0.ebuild:
+  Remove no more supported command "zfs volinit" from the init script for -9.0.
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> freebsd-cddl-9.0.ebuild:
+  keyword ~amd64-fbsd
+
+  31 Mar 2012; Naohiro Aota <naota@gentoo.org>
+  +files/freebsd-cddl-9.0-libpaths.patch, freebsd-cddl-9.0.ebuild:
+  Add patch to fix libpath for 9.0
+
+  30 Mar 2012; Alexis Ballier <aballier@gentoo.org>
+  -freebsd-cddl-9.0_rc1.ebuild, -freebsd-cddl-9.0_rc2.ebuild,
+  -freebsd-cddl-9.0_rc3.ebuild:
+  remove old
+
+  30 Mar 2012; Naohiro Aota <naota@gentoo.org> freebsd-cddl-9.0.ebuild:
+  Apply patch to add library search path. #409693; Install library proper place
+  according to requesting binaries' (such as /sbin/zfs) path.
+
+*freebsd-cddl-9.0 (16 Jan 2012)
+
+  16 Jan 2012; Alexis Ballier <aballier@gentoo.org> +freebsd-cddl-9.0.ebuild:
+  bump to 9.0
+
+*freebsd-cddl-9.0_rc3 (09 Dec 2011)
+
+  09 Dec 2011; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-cddl-9.0_rc3.ebuild:
+  bump to 9.0_rc3
+
+*freebsd-cddl-9.0_rc2 (07 Dec 2011)
+
+  07 Dec 2011; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-cddl-9.0_rc2.ebuild:
+  bump to rc2
+
+*freebsd-cddl-9.0_rc1 (07 Nov 2011)
+
+  07 Nov 2011; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-cddl-9.0_rc1.ebuild, +files/freebsd-cddl-9.0-bsdxml.patch,
+  +files/freebsd-cddl-9.0-underlink.patch:
+  bump to 9.0_rc1
+
+*freebsd-cddl-8.2 (06 Jul 2011)
+
+  06 Jul 2011; Alexis Ballier <aballier@gentoo.org> +freebsd-cddl-8.2.ebuild,
+  +files/freebsd-cddl-8.2-libpaths.patch:
+  bump to 8.2
+
+  06 Jul 2011; Alexis Ballier <aballier@gentoo.org> files/zvol.initd:
+  fix zvol init script
+
+  04 Apr 2010; Javier Villavicencio <the_paya@gentoo.org>
+  freebsd-cddl-8.0.ebuild, +files/zvol.initd:
+  Add script to initialize zfs volumes and activate swap when required.
+
+*freebsd-cddl-8.0 (19 Mar 2010)
+
+  19 Mar 2010; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-cddl-8.0.ebuild, +files/freebsd-cddl-8.0-libpaths.patch:
+  bump to 8.0 from the bsd overlay
+
+  11 Mar 2010; Alexis Ballier <aballier@gentoo.org>
+  -freebsd-cddl-7.1-r1.ebuild:
+  remove old
+
+  22 May 2009; Alexis Ballier <aballier@gentoo.org> freebsd-cddl-7.2.ebuild:
+  make PATCHES a bash array
+
+  22 May 2009; Alexis Ballier <aballier@gentoo.org>
+  -freebsd-cddl-7.1.ebuild:
+  remove old
+
+*freebsd-cddl-7.2 (22 May 2009)
+
+  22 May 2009; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-cddl-7.2.ebuild:
+  bump to 7.2
+
+*freebsd-cddl-7.1-r1 (05 Feb 2009)
+
+  05 Feb 2009; Javier Villavicencio <the_paya@gentoo.org>
+  +freebsd-cddl-7.1-r1.ebuild:
+  Make dev-libs/libelf a dependency since libelf is being removed from
+  freebsd-lib.
+
+  25 Jan 2009; Javier Villavicencio <the_paya@gentoo.org>
+  freebsd-cddl-7.1.ebuild:
+  Missed build in IUSE.
+
+  24 Jan 2009; Javier Villavicencio <the_paya@gentoo.org>
+  files/freebsd-cddl-7.1-libpaths.patch:
+  Fixed linking of dtrace.
+
+*freebsd-cddl-7.1 (23 Jan 2009)
+
+  23 Jan 2009; Javier Villavicencio <the_paya@gentoo.org>
+  +files/freebsd-cddl-7.1-libpaths.patch,
+  +files/freebsd-cddl-7.1-xdr_header.patch, +metadata.xml,
+  +freebsd-cddl-7.1.ebuild:
+  Initial import from gentoo-bsd overlay. ZFS userland for FreeBSD.

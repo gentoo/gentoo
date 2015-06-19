@@ -1,0 +1,14 @@
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/desc/vmware_guest.desc,v 1.1 2011/03/27 14:57:17 vadimk Exp $
+
+# This file contains descriptions of VMWARE_GUEST USE_EXPAND flags.
+
+# Keep it sorted.
+
+freebsd - Install VMware Tools for FreeBSD guests
+linux - Install VMware Tools for Linux guests
+netware - Install VMware Tools for Netware guests
+solaris - Install VMware Tools for Solaris guests
+windows - Install VMware Tools for Windows 2000+ guests
+winPre2k - Install VMware Tools for Windows 95/98/ME guests

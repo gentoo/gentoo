@@ -1,0 +1,10 @@
+Index: ucspi-tcp-0.88/tcprulescheck.c
+===================================================================
+--- ucspi-tcp-0.88.orig/tcprulescheck.c
++++ ucspi-tcp-0.88/tcprulescheck.c
+@@ -1,3 +1,5 @@
++#include <unistd.h>
++
+ #include "byte.h"
+ #include "buffer.h"
+ #include "strerr.h"

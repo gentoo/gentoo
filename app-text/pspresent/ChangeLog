@@ -1,0 +1,111 @@
+# ChangeLog for app-text/pspresent
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/pspresent/ChangeLog,v 1.33 2014/08/10 18:29:44 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> pspresent-1.3-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  27 Jun 2012; Michael Palimaka <kensington@gentoo.org> -pspresent-1.3.ebuild:
+  Remove old.
+
+  29 May 2012; Brent Baude <ranger@gentoo.org> pspresent-1.3-r1.ebuild:
+  Marking pspresent-1.3-r1 ppc for bug 391599
+
+  28 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> pspresent-1.3-r1.ebuild:
+  x86 stable wrt bug #391599
+
+  25 Nov 2011; Markos Chandras <hwoarang@gentoo.org> pspresent-1.3-r1.ebuild:
+  Stable on amd64 wrt bug #391599
+
+*pspresent-1.3-r1 (28 Sep 2010)
+
+  28 Sep 2010; Jeroen Roovers <jer@gentoo.org> -pspresent-1.2.ebuild,
+  -pspresent-1.2-r1.ebuild, +pspresent-1.3-r1.ebuild:
+  Respect LDFLAGS (bug #335715), CC, CFLAGS.
+
+  26 Dec 2009; Peter Volkov <pva@gentoo.org> pspresent-1.2.ebuild,
+  pspresent-1.2-r1.ebuild, pspresent-1.3.ebuild:
+  virtual/ghostscript->app-text/ghostscript-gpl: ghostscript-gpl is the only
+  implementation left in the tree.
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> pspresent-1.2.ebuild,
+  pspresent-1.2-r1.ebuild, pspresent-1.3.ebuild:
+  Remove virtual/libc
+
+  20 Oct 2007; Christoph Mende <angelos@gentoo.org> pspresent-1.3.ebuild:
+  Stable on amd64 wrt bug #195176
+
+  10 Oct 2007; Lars Weiler <pylon@gentoo.org> pspresent-1.3.ebuild:
+  stable ppc, bug #195176
+
+  09 Oct 2007; Christian Faulhammer <opfer@gentoo.org> pspresent-1.3.ebuild:
+  stable x86, bug 195176
+
+  22 Jul 2007; David Shakaryan <omp@gentoo.org> pspresent-1.2.ebuild,
+  pspresent-1.2-r1.ebuild, pspresent-1.3.ebuild:
+  Remove virtual/x11 from dependencies.
+
+*pspresent-1.3 (05 Mar 2007)
+
+  05 Mar 2007; Anant Narayanan <anant@gentoo.org> +pspresent-1.3.ebuild:
+  vBump to 1.3, closes bug #150019
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  06 Jan 2007; Danny van Dyk <kugelfang@gentoo.org> -pspresent-1.1.ebuild:
+  QA: Removed unused versions.
+
+  12 May 2006; Thomas Cort <tcort@gentoo.org> pspresent-1.1.ebuild,
+  pspresent-1.2.ebuild:
+  Removed COPYING from dodoc.
+
+  21 Apr 2006; Carsten Lohrke <carlo@gentoo.org> metadata.xml,
+  pspresent-1.1.ebuild, pspresent-1.2.ebuild, pspresent-1.2-r1.ebuild:
+  Removed PROVIDE as of bug #130746.
+
+*pspresent-1.2-r1 (14 Feb 2006)
+
+  14 Feb 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +pspresent-1.2-r1.ebuild:
+  Incorporate Ulrich Mueller's cleanups from bug #122652.
+
+  14 Feb 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  pspresent-1.1.ebuild, pspresent-1.2.ebuild:
+  Fix dependencies for modular X (bug #122652, Ulrich Mueller).
+
+  16 Jul 2005; Joseph Jezak <josejx@gentoo.org> pspresent-1.2.ebuild:
+  Marked ppc stable for bug #99217.
+
+  28 Jun 2005; Simon Stelling <blubb@gentoo.org> pspresent-1.2.ebuild:
+  added ~amd64 keyword
+
+  02 Jun 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  pspresent-1.2.ebuild:
+  mark ~ppc
+
+  22 Mar 2005; Mamoru KOMACHI <usata@gentoo.org> pspresent-1.2.ebuild:
+  Stable on x86.
+
+*pspresent-1.2 (20 Jan 2005)
+
+  20 Jan 2005; Mamoru KOMACHI <usata@gentoo.org> +pspresent-1.2.ebuild:
+  Version bumped. This closes bug #76751.
+
+  25 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> pspresent-1.1.ebuild:
+  Provide virtual/psviewer; bug #50423. Stable on x86.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> pspresent-1.1.ebuild:
+  virtual/glibc -> virtual/libc
+
+  02 Jun 2004; Aron Griffis <agriffis@gentoo.org> pspresent-1.1.ebuild:
+  Fix use invocation
+
+  09 Dec 2003; Heinrich Wendel <lanius@gentoo.org> pspresent-1.1.ebuild:
+  changed app-text/ghostscript to virtual/ghostscript
+
+*pspresent-1.1 (19 Sep 2003)
+
+  19 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> pspresent-1.1.ebuild:
+  Initial import. Ebuild submitted by gim <ghostgim@yahoo.fr>.
+  This closes Bug #29064

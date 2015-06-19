@@ -1,0 +1,20 @@
+# ChangeLog for app-emacs/bison-mode
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/bison-mode/ChangeLog,v 1.4 2015/06/05 12:21:01 jlec Exp $
+
+  05 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  20 Apr 2015; Ulrich Müller <ulm@gentoo.org> bison-mode-0.3.ebuild,
+  metadata.xml:
+  Add package to emacs herd. Specify LICENSE more precisely. Install README
+  file. Remove empty longdescription and variables.
+
+  13 Apr 2015; Nicolas Bock <nicolasbock@gentoo.org> bison-mode-0.3.ebuild:
+  app-emacs/bison-mode: Added ~x86 keyword.
+
+*bison-mode-0.3 (13 Apr 2015)
+
+  13 Apr 2015; Nicolas Bock <nicolasbock@gentoo.org> +bison-mode-0.3.ebuild,
+  +files/50bison-mode-gentoo.el, +metadata.xml:
+  app-emacs/bison-mode: Adding new package.

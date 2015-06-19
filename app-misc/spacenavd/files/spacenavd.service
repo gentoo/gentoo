@@ -1,0 +1,8 @@
+[Unit]
+Description=3Dconnexion Input Devices Userspace Driver
+
+[Service]
+ExecStart=/usr/bin/spacenavd -d
+
+[Install]
+WantedBy=multi-user.target

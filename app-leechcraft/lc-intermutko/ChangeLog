@@ -1,0 +1,9 @@
+# ChangeLog for app-leechcraft/lc-intermutko
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-leechcraft/lc-intermutko/ChangeLog,v 1.1 2015/02/03 14:38:06 maksbotan Exp $
+
+*lc-intermutko-9999 (03 Feb 2015)
+
+  03 Feb 2015; Maxim Koltsov <maksbotan@gentoo.org> +lc-intermutko-9999.ebuild,
+  +metadata.xml:
+  Add lc-intermutko plugin, thanks to 0xd34df00d

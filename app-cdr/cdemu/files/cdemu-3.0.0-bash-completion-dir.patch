@@ -1,0 +1,14 @@
+diff --git a/cdemu-client/CMakeLists.txt b/cdemu-client/CMakeLists.txt
+index 99b595e..e4f9b6e 100644
+--- a/cdemu-client/CMakeLists.txt
++++ b/cdemu-client/CMakeLists.txt
+@@ -39,7 +39,8 @@ install (
+ 
+ install (
+     FILES data/cdemu-bash-completion.sh
+-    DESTINATION ${CMAKE_INSTALL_SYSCONFDIR}/bash_completion.d
++    DESTINATION ${GENTOO_BASHCOMPDIR}
++    RENAME cdemu
+ )
+ 
+ install (

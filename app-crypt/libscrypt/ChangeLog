@@ -1,0 +1,30 @@
+# ChangeLog for app-crypt/libscrypt
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/libscrypt/ChangeLog,v 1.7 2015/06/05 12:05:34 jlec Exp $
+
+  05 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  10 Apr 2015; Agostino Sarubbo <ago@gentoo.org> libscrypt-1.20.ebuild:
+  Stable for amd64/x86/sparc, wrt bug #545940
+
+  09 Apr 2015; Anthony G. Basile <blueness@gentoo.org> libscrypt-1.20.ebuild:
+  Stable on arm, ppc and ppc64.  Bug #545940.
+
+  09 Jan 2015; Anthony G. Basile <blueness@gentoo.org> libscrypt-1.19.ebuild,
+  libscrypt-1.20.ebuild:
+  Keyword ~mips and ~x86.  Needed for net-misc/tor.
+
+*libscrypt-1.20 (08 Jan 2015)
+
+  08 Jan 2015; Anthony G. Basile <blueness@gentoo.org> +libscrypt-1.20.ebuild:
+  Version bump
+
+  08 Jan 2015; Anthony G. Basile <blueness@gentoo.org> libscrypt-1.19.ebuild:
+  Keyword ~arm ~ppc ~ppc64.  Needed for net-misc/tor.
+
+*libscrypt-1.19 (31 Oct 2014)
+
+  31 Oct 2014; Anthony G. Basile <blueness@gentoo.org> +libscrypt-1.19.ebuild,
+  +metadata.xml:
+  Initial commit, needed for tor-0.2.6.x

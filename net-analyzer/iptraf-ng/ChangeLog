@@ -1,0 +1,290 @@
+# ChangeLog for net-analyzer/iptraf-ng
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/iptraf-ng/ChangeLog,v 1.79 2014/08/22 16:10:02 jer Exp $
+
+*iptraf-ng-1.1.4-r2 (22 Aug 2014)
+
+  22 Aug 2014; Jeroen Roovers <jer@gentoo.org> +iptraf-ng-1.1.4-r2.ebuild,
+  +files/iptraf-ng-1.1.4-printf-format.patch,
+  +files/iptraf-ng-1.1.4-sprintf-format.patch:
+  Fix three format security bugs (already fixed upstream, bug #520562).
+
+  06 May 2014; Jeroen Roovers <jer@gentoo.org> -iptraf-ng-1.1.3.1-r2.ebuild,
+  -files/iptraf-ng-1.1.3.1-kernel-v3.5-kill-off-token-ring-support.patch:
+  Old.
+
+  03 May 2014; Mikle Kolyada <zlogene@gentoo.org> iptraf-ng-1.1.4-r1.ebuild:
+  alpha stable wrt bug #498566
+
+  03 May 2014; Mikle Kolyada <zlogene@gentoo.org> iptraf-ng-1.1.4-r1.ebuild:
+  ppc64 stable wrt bug #498566
+
+  20 Feb 2014; Akinori Hattori <hattya@gentoo.org> iptraf-ng-1.1.4-r1.ebuild:
+  ia64 stable wrt bug #498566
+
+  02 Feb 2014; Sergey Popov <pinkbyte@gentoo.org> iptraf-ng-1.1.4-r1.ebuild:
+  Stable on arm, wrt bug #498566
+
+  26 Jan 2014; Agostino Sarubbo <ago@gentoo.org> iptraf-ng-1.1.4-r1.ebuild:
+  Stable for sparc, wrt bug #498566
+
+  20 Jan 2014; Agostino Sarubbo <ago@gentoo.org> iptraf-ng-1.1.4-r1.ebuild:
+  Stable for ppc, wrt bug #498566
+
+  20 Jan 2014; Sergey Popov <pinkbyte@gentoo.org> iptraf-ng-1.1.4-r1.ebuild:
+  Stable on amd64 and x86, wrt bug #498566
+
+  20 Jan 2014; Jeroen Roovers <jer@gentoo.org> iptraf-ng-1.1.4-r1.ebuild:
+  Stable for HPPA (bug #498566).
+
+*iptraf-ng-9999 (19 Jan 2014)
+*iptraf-ng-1.1.4-r1 (19 Jan 2014)
+
+  19 Jan 2014; Jeroen Roovers <jer@gentoo.org> -iptraf-ng-1.1.4.ebuild,
+  +iptraf-ng-1.1.4-r1.ebuild, +iptraf-ng-9999.ebuild,
+  +files/iptraf-ng-1.1.4-tcplog_flowrate_msg.patch:
+  Fix floating point exception in tcplog_flowrate_msg() (bug #483024). Add live
+  ebuild.
+
+*iptraf-ng-1.1.4 (23 Jul 2013)
+
+  23 Jul 2013; Jeroen Roovers <jer@gentoo.org> +iptraf-ng-1.1.4.ebuild:
+  Version bump.
+
+  01 Mar 2013; Jeroen Roovers <jer@gentoo.org> -iptraf-ng-1.1.3.1-r1.ebuild:
+  Old.
+
+  01 Mar 2013; Agostino Sarubbo <ago@gentoo.org> iptraf-ng-1.1.3.1-r2.ebuild:
+  Stable for sh, wrt bug #457414
+
+  21 Feb 2013; Agostino Sarubbo <ago@gentoo.org> iptraf-ng-1.1.3.1-r2.ebuild:
+  Stable for ia64, wrt bug #457414
+
+  20 Feb 2013; Agostino Sarubbo <ago@gentoo.org> iptraf-ng-1.1.3.1-r2.ebuild:
+  Stable for s390, wrt bug #457414
+
+  17 Feb 2013; Agostino Sarubbo <ago@gentoo.org> iptraf-ng-1.1.3.1-r2.ebuild:
+  Stable for x86, wrt bug #457414
+
+  16 Feb 2013; Jeroen Roovers <jer@gentoo.org> iptraf-ng-1.1.3.1-r2.ebuild:
+  Stable for HPPA (bug #457414).
+
+  15 Feb 2013; Agostino Sarubbo <ago@gentoo.org> iptraf-ng-1.1.3.1-r2.ebuild:
+  Stable for alpha, wrt bug #457414
+
+  15 Feb 2013; Agostino Sarubbo <ago@gentoo.org> iptraf-ng-1.1.3.1-r2.ebuild:
+  Stable for sparc, wrt bug #457414
+
+  15 Feb 2013; Sergey Popov <pinkbyte@gentoo.org> iptraf-ng-1.1.3.1-r2.ebuild:
+  Stable on arm, wrt bug #457414
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> iptraf-ng-1.1.3.1-r2.ebuild:
+  Stable for ppc, wrt bug #457414
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> iptraf-ng-1.1.3.1-r2.ebuild:
+  Stable for ppc64, wrt bug #457414
+
+  14 Feb 2013; Sergey Popov <pinkbyte@gentoo.org> iptraf-ng-1.1.3.1-r2.ebuild:
+  Stable on amd64, wrt bug #457414
+
+  02 Jan 2013; Jeroen Roovers <jer@gentoo.org> iptraf-ng-1.1.3.1-r1.ebuild,
+  iptraf-ng-1.1.3.1-r2.ebuild:
+  Set LOCKDIR to /run/lock (still bug #442002).
+
+  02 Jan 2013; Jeroen Roovers <jer@gentoo.org> iptraf-ng-1.1.3.1-r1.ebuild,
+  iptraf-ng-1.1.3.1-r2.ebuild:
+  Do not keepdir /var/lock, only unused code references that (bug #442002).
+
+*iptraf-ng-1.1.3.1-r2 (02 Jan 2013)
+
+  02 Jan 2013; Jeroen Roovers <jer@gentoo.org> +iptraf-ng-1.1.3.1-r2.ebuild:
+  Rename rvnamed,iptraf{,-ng} in man pages.
+
+  19 Dec 2012; Jeroen Roovers <jer@gentoo.org> -iptraf-ng-1.1.3.1.ebuild:
+  Old.
+
+  16 Dec 2012; Raúl Porcel <armin76@gentoo.org> iptraf-ng-1.1.3.1-r1.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #441426
+
+  20 Nov 2012; Agostino Sarubbo <ago@gentoo.org> iptraf-ng-1.1.3.1-r1.ebuild:
+  Stable for x86, wrt bug #441426
+
+  07 Nov 2012; Jeroen Roovers <jer@gentoo.org> iptraf-ng-1.1.3.1-r1.ebuild:
+  Stable for HPPA (bug #441426).
+
+  03 Nov 2012; Anthony G. Basile <blueness@gentoo.org>
+  iptraf-ng-1.1.3.1-r1.ebuild:
+  stable arm, bug #441426
+
+  03 Nov 2012; Anthony G. Basile <blueness@gentoo.org>
+  iptraf-ng-1.1.3.1-r1.ebuild:
+  stable ppc ppc64, bug #441426
+
+  03 Nov 2012; Sergey Popov <pinkbyte@gentoo.org> iptraf-ng-1.1.3.1-r1.ebuild:
+  Stable on amd64 wrt bug #441426
+
+  27 Aug 2012; Jeroen Roovers <jer@gentoo.org> -iptraf-ng-1.1.1.ebuild,
+  -iptraf-ng-1.1.2.ebuild:
+  Old.
+
+  26 Aug 2012; Raúl Porcel <armin76@gentoo.org> iptraf-ng-1.1.3.1.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #427044
+
+  08 Aug 2012; Samuli Suominen <ssuominen@gentoo.org>
+  iptraf-ng-1.1.3.1-r1.ebuild:
+  Respect environment CFLAGS wrt #430454 by Diego Elio Pettenò
+
+  06 Aug 2012; Samuli Suominen <ssuominen@gentoo.org> iptraf-ng-1.1.3.1.ebuild,
+  iptraf-ng-1.1.3.1-r1.ebuild:
+  Pull in virtual/os-headers.
+
+*iptraf-ng-1.1.3.1-r1 (06 Aug 2012)
+
+  06 Aug 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +iptraf-ng-1.1.3.1-r1.ebuild,
+  +files/iptraf-ng-1.1.3.1-kernel-v3.5-kill-off-token-ring-support.patch:
+  Fix building with linux-headers >= 3.5 wrt #427902 by Justin Lecher
+
+  04 Aug 2012; Jeroen Roovers <jer@gentoo.org> iptraf-ng-1.1.3.1.ebuild:
+  Force verbose build output (bug #429784).
+
+  04 Aug 2012; Agostino Sarubbo <ago@gentoo.org> iptraf-ng-1.1.3.1.ebuild:
+  Stable for amd64, wrt bug #427044
+
+  23 Jul 2012; Markus Meier <maekke@gentoo.org> iptraf-ng-1.1.3.1.ebuild:
+  arm stable, bug #427044
+
+  18 Jul 2012; Jeroen Roovers <jer@gentoo.org> iptraf-ng-1.1.3.1.ebuild:
+  Stable for HPPA (bug #427044).
+
+  18 Jul 2012; Anthony G. Basile <blueness@gentoo.org>
+  iptraf-ng-1.1.3.1.ebuild:
+  Keyword ~mips
+
+  18 Jul 2012; Anthony G. Basile <blueness@gentoo.org>
+  iptraf-ng-1.1.3.1.ebuild:
+  Stable ppc/ppc64, bug #427044
+
+  18 Jul 2012; Jeff Horelick <jdhore@gentoo.org> iptraf-ng-1.1.3.1.ebuild:
+  marked x86 per bug 427044
+
+*iptraf-ng-1.1.3.1 (24 May 2012)
+
+  24 May 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +iptraf-ng-1.1.3.1.ebuild:
+  Version bump.
+
+  19 May 2012; Jeroen Roovers <jer@gentoo.org> iptraf-ng-1.1.1.ebuild,
+  iptraf-ng-1.1.2.ebuild:
+  Set RESTRICT="test" by Markus Meier (bug #414841).
+
+  08 May 2012; Jeroen Roovers <jer@gentoo.org> iptraf-ng-1.1.2.ebuild:
+  Make HTML documentation installation optional. Do not install the entire
+  directory, but the HTML documentation only, and install into html/, not
+  html/Documentation.
+
+*iptraf-ng-1.1.2 (04 May 2012)
+
+  04 May 2012; Tomáš Chvátal <scarabeus@gentoo.org> +iptraf-ng-1.1.2.ebuild,
+  -iptraf-ng-1.0.2.ebuild, -iptraf-ng-1.1.0.ebuild,
+  -iptraf-ng-1.1.1.20120321.ebuild:
+  Version bump to actual release. Drop overshadowed stuff.
+
+  01 Apr 2012; Raúl Porcel <armin76@gentoo.org> iptraf-ng-1.1.1.ebuild:
+  alpha/ia64/s390/sh/sparc/x86 stable wrt #408203
+
+  25 Mar 2012; Markus Meier <maekke@gentoo.org> iptraf-ng-1.1.1.ebuild:
+  arm stable, bug #408203
+
+*iptraf-ng-1.1.1.20120321 (21 Mar 2012)
+
+  21 Mar 2012; Jeroen Roovers <jer@gentoo.org>
+  +iptraf-ng-1.1.1.20120321.ebuild:
+  Bump to add PPP/TUN interfaces back by Pinkbyte (bug #408203 comment #7).
+
+  16 Mar 2012; Brent Baude <ranger@gentoo.org> iptraf-ng-1.1.1.ebuild:
+  Marking iptraf-ng-1.1.1 ppc for bug 408203
+
+  16 Mar 2012; Brent Baude <ranger@gentoo.org> iptraf-ng-1.1.1.ebuild:
+  Marking iptraf-ng-1.1.1 ppc64 for bug 408203
+
+  15 Mar 2012; Jeroen Roovers <jer@gentoo.org> iptraf-ng-1.1.1.ebuild:
+  Stable for HPPA (bug #408203).
+
+  15 Mar 2012; Agostino Sarubbo <ago@gentoo.org> iptraf-ng-1.1.1.ebuild:
+  Stable for amd64, wrt bug #408203
+
+*iptraf-ng-1.1.1 (07 Feb 2012)
+
+  07 Feb 2012; Jeroen Roovers <jer@gentoo.org> +iptraf-ng-1.1.1.ebuild:
+  Version bump.
+
+*iptraf-ng-1.1.0 (13 Jan 2012)
+
+  13 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> +iptraf-ng-1.1.0.ebuild:
+  Version bump.
+
+  29 Jan 2011; Raúl Porcel <armin76@gentoo.org> iptraf-ng-1.0.2.ebuild:
+  ia64/s390/sh stable wrt #305781
+
+  10 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  iptraf-ng-1.0.2.ebuild:
+  ppc64 stable wrt #305781
+
+  15 Dec 2010; Tobias Klausmann <klausman@gentoo.org> iptraf-ng-1.0.2.ebuild:
+  Stable on alpha, bug #305781
+
+  30 Nov 2010; Michael Weber <xmw@gentoo.org> iptraf-ng-1.0.2.ebuild:
+  arm stable (bug 305781)
+
+  30 Nov 2010; Markus Meier <maekke@gentoo.org> iptraf-ng-1.0.2.ebuild:
+  amd64/x86 stable, bug #305781
+
+  29 Nov 2010; Jeroen Roovers <jer@gentoo.org> iptraf-ng-1.0.2.ebuild:
+  Stable for HPPA PPC SPARC (bug #305781).
+
+  26 Nov 2010; Jeroen Roovers <jer@gentoo.org> iptraf-ng-1.0.2.ebuild:
+  Fix typo in DESCRIPTION.
+
+  01 Nov 2010; Mark Loeser <halcy0n@gentoo.org> iptraf-ng-1.0.2.ebuild:
+  Add ~ppc64; bug #305781
+
+  25 Jul 2010; Raúl Porcel <armin76@gentoo.org> iptraf-ng-1.0.2.ebuild:
+  Add ~ia64/~sh/~sparc wrt #305781
+
+  21 Jul 2010; Markus Meier <maekke@gentoo.org> iptraf-ng-1.0.2.ebuild:
+  add ~arm, bug #305781
+
+  17 Jul 2010; Tobias Klausmann <klausman@gentoo.org>
+  iptraf-ng-1.0.2.ebuild:
+  Keyworded on alpha, bug #305781
+
+  30 Jun 2010; Jeroen Roovers <jer@gentoo.org> iptraf-ng-1.0.2.ebuild:
+  econf dies on its own.
+
+  29 Jun 2010; Jeroen Roovers <jer@gentoo.org> iptraf-ng-1.0.2.ebuild:
+  USE=static-libs thanks to scarabeus.
+
+  29 Jun 2010; Jeroen Roovers <jer@gentoo.org> iptraf-ng-1.0.2.ebuild:
+  Remove useless unicode USE flag and move blocker to RDEPEND thanks to
+  scarabeus.
+
+  29 Jun 2010; Jeroen Roovers <jer@gentoo.org> iptraf-ng-1.0.2.ebuild:
+  Marked ~ppc (bug #305781).
+
+  29 Jun 2010; Jeroen Roovers <jer@gentoo.org> iptraf-ng-1.0.2.ebuild:
+  Remove duplicate CFLAGS. Marked ~hppa too.
+
+  29 Jun 2010; Jeroen Roovers <jer@gentoo.org> iptraf-ng-1.0.2.ebuild:
+  New style dep and marked ~amd64 thanks to Polynomial-C.
+
+*iptraf-ng-1.0.2 (24 Mar 2010)
+
+  24 Mar 2010; Jeroen Roovers <jer@gentoo.org> +iptraf-ng-1.0.2.ebuild:
+  Version bump.
+
+*iptraf-ng-1.0.1 (10 Mar 2010)
+
+  10 Mar 2010; Jeroen Roovers <jer@gentoo.org> +iptraf-ng-1.0.1.ebuild,
+  +metadata.xml:
+  Initial commit (bug #305781).

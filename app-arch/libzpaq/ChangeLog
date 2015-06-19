@@ -1,0 +1,81 @@
+# ChangeLog for app-arch/libzpaq
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/libzpaq/ChangeLog,v 1.15 2015/04/16 09:09:37 mgorny Exp $
+
+*libzpaq-7.04 (16 Apr 2015)
+
+  16 Apr 2015; Michał Górny <mgorny@gentoo.org> +libzpaq-7.04.ebuild:
+  Version bump, bug #535990
+
+*libzpaq-6.53 (17 Jun 2014)
+
+  17 Jun 2014; Michał Górny <mgorny@gentoo.org> +libzpaq-6.53.ebuild:
+  Version bump, bug #513538.
+
+*libzpaq-6.49 (19 Feb 2014)
+
+  19 Feb 2014; Michał Górny <mgorny@gentoo.org> +libzpaq-6.49.ebuild:
+  Version bump.
+
+  19 Feb 2014; Michał Górny <mgorny@gentoo.org> -libzpaq-6.38.ebuild,
+  files/0001-Add-autotools-files.patch, libzpaq-6.41.ebuild:
+  Drop old. Remove stale features from the patch.
+
+*libzpaq-6.41 (19 Sep 2013)
+
+  19 Sep 2013; Michał Górny <mgorny@gentoo.org> +libzpaq-6.41.ebuild,
+  -libzpaq-5.01.ebuild, -libzpaq-6.10.ebuild,
+  files/0001-Add-autotools-files.patch:
+  Version bump. Remove old versions and clean up the patch.
+
+*libzpaq-6.38 (20 Jul 2013)
+
+  20 Jul 2013; Michał Górny <mgorny@gentoo.org> +libzpaq-6.38.ebuild:
+  Version bump. Increase EAPI and introduce sub-slot for SONAME.
+
+  14 Oct 2012; Michał Górny <mgorny@gentoo.org> -libzpaq-2.02a-r1.ebuild,
+  -libzpaq-3.00.ebuild:
+  Drop ancient.
+
+*libzpaq-6.10 (14 Oct 2012)
+
+  14 Oct 2012; Michał Górny <mgorny@gentoo.org> +libzpaq-6.10.ebuild:
+  Version bump.
+
+  24 May 2012; Mike Frysinger <vapier@gentoo.org> libzpaq-2.02a-r1.ebuild,
+  libzpaq-3.00.ebuild, libzpaq-5.01.ebuild:
+  Inherit eutils for epatch.
+
+  20 May 2012; Mike Frysinger <vapier@gentoo.org> libzpaq-2.02a-r1.ebuild,
+  libzpaq-3.00.ebuild, libzpaq-5.01.ebuild:
+  Backport autotools eclass fixes to older versions.
+
+  11 Apr 2012; Michał Górny <mgorny@gentoo.org> libzpaq-5.01.ebuild,
+  metadata.xml:
+  Add a USEflag for JIT.
+
+*libzpaq-5.01 (10 Apr 2012)
+
+  10 Apr 2012; Michał Górny <mgorny@gentoo.org> +libzpaq-5.01.ebuild:
+  Version bump.
+
+*libzpaq-3.00 (25 Aug 2011)
+*libzpaq-2.02a-r1 (25 Aug 2011)
+
+  25 Aug 2011; Michał Górny <mgorny@gentoo.org> -libzpaq-2.02a.ebuild,
+  +libzpaq-2.02a-r1.ebuild, +libzpaq-3.00.ebuild,
+  files/0001-Add-autotools-files.patch:
+  Version bump. Support installing shared libs.
+
+*libzpaq-2.02a (06 Jan 2011)
+
+  06 Jan 2011; Michał Górny <mgorny@gentoo.org>
+  files/0001-Add-autotools-files.patch, -libzpaq-2.02.ebuild,
+  +libzpaq-2.02a.ebuild:
+  Version bump. The new version replaces libzpaq.txt with a manpage.
+
+*libzpaq-2.02 (05 Jan 2011)
+
+  05 Jan 2011; Michał Górny <mgorny@gentoo.org>
+  +files/0001-Add-autotools-files.patch, +libzpaq-2.02.ebuild, +metadata.xml:
+  Add a stand-alone libzpaq ebuild.

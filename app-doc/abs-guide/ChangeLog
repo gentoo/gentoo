@@ -1,0 +1,376 @@
+# ChangeLog for app-doc/abs-guide
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-doc/abs-guide/ChangeLog,v 1.92 2015/05/08 06:42:11 rhill Exp $
+
+*abs-guide-10 (08 May 2015)
+
+  08 May 2015; Ryan Hill <rhill@gentoo.org> +abs-guide-10.ebuild:
+  Version bump to final release. Change license to public-domain.
+
+  11 Mar 2013; Ryan Hill <dirtyepic@gentoo.org> -abs-guide-6.5.ebuild,
+  abs-guide-6.6.ebuild:
+  Stabilize (bug #461058). Remove old.
+
+  27 Jan 2013; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+*abs-guide-6.6 (20 Jan 2013)
+
+  20 Jan 2013; Ryan Hill <dirtyepic@gentoo.org> -abs-guide-6.4.ebuild,
+  +abs-guide-6.6.ebuild:
+  Version bump. Remove old.
+
+  26 Jun 2012; Ryan Hill <dirtyepic@gentoo.org> metadata.xml:
+  Maintainer -> app-doc.
+
+  02 Jun 2012; Ryan Hill <dirtyepic@gentoo.org> abs-guide-6.5.ebuild:
+  Stable everywhere.
+
+*abs-guide-6.5 (29 Apr 2012)
+
+  29 Apr 2012; Ryan Hill <dirtyepic@gentoo.org> -abs-guide-6.3.ebuild,
+  +abs-guide-6.5.ebuild:
+  Version bump.
+
+  02 Jan 2012; Ryan Hill <dirtyepic@gentoo.org> abs-guide-6.4.ebuild:
+  Stabilize on all.
+
+*abs-guide-6.4 (31 Aug 2011)
+
+  31 Aug 2011; Ryan Hill <dirtyepic@gentoo.org> -abs-guide-6.2.ebuild,
+  abs-guide-6.3.ebuild, +abs-guide-6.4.ebuild:
+  Version bump, remove old. Stabilize previous version everywhere.
+
+*abs-guide-6.3 (16 Jun 2011)
+
+  16 Jun 2011; Ryan Hill <dirtyepic@gentoo.org> -abs-guide-6.1.ebuild,
+  +abs-guide-6.3.ebuild:
+  Version bump (bug #369441 by Sebastián Magrí).
+
+  23 Jan 2011; Ryan Hill <dirtyepic@gentoo.org> abs-guide-6.2.ebuild:
+  Stabilize for all.
+
+*abs-guide-6.2 (17 Mar 2010)
+
+  17 Mar 2010; Ryan Hill <dirtyepic@gentoo.org> -abs-guide-6.0.ebuild,
+  +abs-guide-6.2.ebuild:
+  Version bump.
+
+  08 Nov 2009; Ryan Hill <dirtyepic@gentoo.org> -abs-guide-5.5.ebuild,
+  abs-guide-6.0.ebuild, abs-guide-6.1.ebuild:
+  Stable on all.
+
+  10 Oct 2009; Raúl Porcel <armin76@gentoo.org> abs-guide-6.0.ebuild:
+  sparc stable wrt #286602
+
+  30 Sep 2009; Jeroen Roovers <jer@gentoo.org> abs-guide-6.0.ebuild:
+  Stable for HPPA (bug #286602).
+
+*abs-guide-6.1 (30 Sep 2009)
+
+  30 Sep 2009; Ryan Hill <dirtyepic@gentoo.org> +abs-guide-6.1.ebuild:
+  Version bump.
+
+  27 Sep 2009; nixnut <nixnut@gentoo.org> abs-guide-6.0.ebuild:
+  ppc stable #286602
+
+  27 Sep 2009; Markus Meier <maekke@gentoo.org> abs-guide-6.0.ebuild:
+  amd64/x86 stable, bug #286602
+
+  27 Sep 2009; Ryan Hill <dirtyepic@gentoo.org> -abs-guide-5.4.ebuild:
+  Remove old.
+
+  07 Apr 2009; Jeroen Roovers <jer@gentoo.org> abs-guide-5.5.ebuild:
+  Stable for HPPA (bug #264143).
+
+  03 Apr 2009; Raúl Porcel <armin76@gentoo.org> abs-guide-5.5.ebuild:
+  alpha/x86 stable wrt #264143
+
+  31 Mar 2009; Tiago Cunha <tcunha@gentoo.org> abs-guide-5.5.ebuild:
+  stable amd64, bug 264143
+
+  29 Mar 2009; Joseph Jezak <josejx@gentoo.org> abs-guide-5.5.ebuild:
+  Marked ppc stable for bug #264143.
+
+  29 Mar 2009; Ferris McCormick <fmccor@gentoo.org> abs-guide-5.5.ebuild:
+  Sparc stable, Bug #264143.
+
+*abs-guide-6.0 (29 Mar 2009)
+
+  29 Mar 2009; Ryan Hill <dirtyepic@gentoo.org> +abs-guide-6.0.ebuild:
+  Version bump, now covers Bash 4.
+  Add pdf USE flag to install pdf version.
+
+  07 Dec 2008; Ryan Hill <dirtyepic@gentoo.org> -abs-guide-5.3.ebuild,
+  abs-guide-5.5.ebuild:
+  Stop installing docs into a subdir of DOCDIR so DOC_SYMLINKS_DIR works
+  again. Remove old.
+
+  29 Nov 2008; Ryan Hill <dirtyepic@gentoo.org> abs-guide-5.4.ebuild:
+  amd64 stable, bug #249134.
+
+  29 Nov 2008; Raúl Porcel <armin76@gentoo.org> abs-guide-5.4.ebuild:
+  alpha/sparc/x86 stable wrt #249134
+
+  29 Nov 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  abs-guide-5.4.ebuild:
+  ppc stable, bug #249134
+
+  27 Nov 2008; Jeroen Roovers <jer@gentoo.org> abs-guide-5.4.ebuild:
+  Stable for HPPA (bug #249134).
+
+*abs-guide-5.5 (27 Nov 2008)
+
+  27 Nov 2008; Ryan Hill <dirtyepic@gentoo.org> -abs-guide-5.0.ebuild,
+  +abs-guide-5.5.ebuild:
+  Version bump.
+
+*abs-guide-5.4 (22 Jul 2008)
+
+  22 Jul 2008; Ryan Hill <dirtyepic@gentoo.org> +abs-guide-5.4.ebuild:
+  Version bump. See http://personal.riverusers.com/~thegrendel/Change.log
+  for changes.
+
+  17 Jul 2008; Ryan Hill <dirtyepic@gentoo.org> Manifest:
+  Fix Manifest.
+
+  01 Jul 2008; Jeroen Roovers <jer@gentoo.org> abs-guide-5.3.ebuild:
+  Stable for HPPA (bug #228273).
+
+  20 Jun 2008; Raúl Porcel <armin76@gentoo.org> abs-guide-5.3.ebuild:
+  alpha/sparc stable wrt #228273
+
+  19 Jun 2008; Christian Faulhammer <opfer@gentoo.org> abs-guide-5.3.ebuild:
+  stable x86, bug 228273
+
+  19 Jun 2008; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  abs-guide-5.3.ebuild:
+  stable on ppc (bug #228273)
+
+  19 Jun 2008; Ryan Hill <dirtyepic@gentoo.org> -abs-guide-5.1.ebuild,
+  abs-guide-5.3.ebuild:
+  stable on amd64. drop old ebuild.
+
+*abs-guide-5.3 (18 May 2008)
+
+  18 May 2008; Ryan Hill <dirtyepic@gentoo.org> +abs-guide-5.3.ebuild:
+  Version bump.
+
+  13 Dec 2007; Ryan Hill <dirtyepic@gentoo.org> -abs-guide-4.2.ebuild,
+  abs-guide-5.0.ebuild:
+  Stable on mips.  Remove old.
+
+*abs-guide-5.1 (13 Dec 2007)
+
+  13 Dec 2007; Ryan Hill <dirtyepic@gentoo.org> abs-guide-5.0.ebuild,
+  +abs-guide-5.1.ebuild:
+  Version bump.  Thanks to Tim Harder for reporting.
+
+  09 Sep 2007; Ryan Hill <dirtyepic@gentoo.org> abs-guide-5.0.ebuild:
+  Mirror the tarball ourselves since upstream likes changing it without
+  updating the version number. Bug #191224 by David Leverton
+
+  15 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  abs-guide-5.0.ebuild:
+  ppc stable, bug #188490
+
+  15 Aug 2007; Jeroen Roovers <jer@gentoo.org> abs-guide-5.0.ebuild:
+  Stable for HPPA (bug #188490).
+
+  14 Aug 2007; Raúl Porcel <armin76@gentoo.org> abs-guide-5.0.ebuild:
+  alpha stable wrt #188490
+
+  14 Aug 2007; Christian Faulhammer <opfer@gentoo.org> abs-guide-5.0.ebuild:
+  stable x86, bug 188490
+
+  13 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org> abs-guide-5.0.ebuild:
+  Stable on sparc wrt #188490
+
+  11 Aug 2007; Steve Dibb <beandog@gentoo.org> abs-guide-5.0.ebuild:
+  amd64 stable, bug 188490
+
+*abs-guide-5.0 (30 Jun 2007)
+
+  30 Jun 2007; Ryan Hill <dirtyepic@gentoo.org> -abs-guide-4.1.ebuild,
+  -abs-guide-4.3.ebuild, +abs-guide-5.0.ebuild:
+  Version bump.  Remove old.
+
+  23 Jun 2007; Joshua Kinard <kumba@gentoo.org> abs-guide-4.2.ebuild:
+  Stable on mips, per #182268.
+
+  21 Jun 2007; Jeroen Roovers <jer@gentoo.org> abs-guide-4.2.ebuild:
+  Stable for HPPA (bug #182268).
+
+  19 Jun 2007; Gustavo Zacarias <gustavoz@gentoo.org> abs-guide-4.2.ebuild:
+  Stable on sparc wrt #182268
+
+  17 Jun 2007; Raúl Porcel <armin76@gentoo.org> abs-guide-4.2.ebuild:
+  alpha/x86 stable wrt #182268
+
+  17 Jun 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  abs-guide-4.2.ebuild:
+  ppc stable, bug #182268
+
+  17 Jun 2007; Christoph Mende <angelos@gentoo.org> abs-guide-4.2.ebuild:
+  Stable on amd64 wrt bug 182268
+
+*abs-guide-4.3 (16 Jun 2007)
+
+  16 Jun 2007; Ryan Hill <dirtyepic@gentoo.org> +abs-guide-4.3.ebuild:
+  Version bump.
+
+  16 Jun 2007; Ryan Hill <dirtyepic@gentoo.org> metadata.xml:
+  Added maintainer.
+
+  19 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove ka0ttic from metadata.xml due to retirement.
+
+*abs-guide-4.2 (13 Jan 2007)
+
+  13 Jan 2007; Ryan Hill <dirtyepic@gentoo.org> -abs-guide-3.7.ebuild,
+  -abs-guide-4.0.ebuild, +abs-guide-4.2.ebuild:
+  Version bump, see http://personal.riverusers.com/~thegrendel/Change.log
+  Removed old versions.
+
+*abs-guide-4.1 (14 Oct 2006)
+
+  14 Oct 2006; Aaron Walker <ka0ttic@gentoo.org> +abs-guide-4.1.ebuild:
+  Version bump.
+
+*abs-guide-4.0 (01 Jul 2006)
+
+  01 Jul 2006; Aaron Walker <ka0ttic@gentoo.org> -abs-guide-3.6.ebuild,
+  +abs-guide-4.0.ebuild:
+  Version bump; tidy old ebuild.
+
+*abs-guide-3.7 (21 Oct 2005)
+
+  21 Oct 2005; Aaron Walker <ka0ttic@gentoo.org> -abs-guide-3.5.ebuild,
+  +abs-guide-3.7.ebuild:
+  Version bump; tidy old ebuild.
+
+*abs-guide-3.6 (29 Aug 2005)
+
+  29 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> +abs-guide-3.6.ebuild:
+  Version bump.
+
+  13 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> abs-guide-3.5.ebuild:
+  Stable on mips.
+
+  28 Jul 2005; Aaron Walker <ka0ttic@gentoo.org> abs-guide-3.5.ebuild:
+  Added ~mips.
+
+  12 Jul 2005; Aaron Walker <ka0ttic@gentoo.org> -abs-guide-3.3.ebuild,
+  -abs-guide-3.4.ebuild:
+  Tidy old ebuilds.
+
+*abs-guide-3.5 (06 Jun 2005)
+
+  06 Jun 2005; Aaron Walker <ka0ttic@gentoo.org> +abs-guide-3.5.ebuild:
+  Version bump.
+
+*abs-guide-3.4 (09 May 2005)
+
+  09 May 2005; Aaron Walker <ka0ttic@gentoo.org> -abs-guide-3.2.ebuild,
+  +abs-guide-3.4.ebuild:
+  Version bump.
+
+*abs-guide-3.3 (21 Mar 2005)
+
+  21 Mar 2005; Aaron Walker <ka0ttic@gentoo.org> -abs-guide-3.1.ebuild,
+  +abs-guide-3.3.ebuild:
+  Version bump.
+
+*abs-guide-3.2 (11 Feb 2005)
+
+  11 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> -abs-guide-3.0.ebuild,
+  +abs-guide-3.2.ebuild:
+  Version bump.
+
+  19 Dec 2004; Jason Huebel <jhuebel@gentoo.org> abs-guide-3.1.ebuild:
+  amd64, just docs, no need for testing
+
+  20 Nov 2004; Karol Wojtaszek <sekretarz@gentoo.org> abs-guide-3.1.ebuild:
+  Keyworded ~amd64, bug #71039
+
+*abs-guide-3.1 (16 Nov 2004)
+
+  16 Nov 2004; Aaron Walker <ka0ttic@gentoo.org> -abs-guide-2.7.ebuild,
+  -abs-guide-2.8.ebuild, +abs-guide-3.1.ebuild:
+  Version bump; tidy old ebuilds.
+
+*abs-guide-3.0 (04 Oct 2004)
+
+  04 Oct 2004; Aaron Walker <ka0ttic@gentoo.org> metadata.xml,
+  +abs-guide-3.0.ebuild:
+  Version bump (bug #66259); update metadata info.
+
+  12 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org> -abs-guide-2.1.ebuild,
+  -abs-guide-2.2.ebuild, -abs-guide-2.3.ebuild, -abs-guide-2.4.ebuild,
+  -abs-guide-2.5.ebuild, -abs-guide-2.6.ebuild:
+  prune old versions
+
+*abs-guide-2.8 (12 Jul 2004)
+
+  12 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org> +abs-guide-2.8.ebuild:
+  version bump
+
+*abs-guide-2.7 (07 Jun 2004)
+
+  07 Jun 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
+  abs-guide-2.1.ebuild, abs-guide-2.2.ebuild, abs-guide-2.3.ebuild,
+  abs-guide-2.4.ebuild, abs-guide-2.5.ebuild, abs-guide-2.6.ebuild,
+  +abs-guide-2.7.ebuild:
+  QA - IUSE fix. Version bump
+
+  27 Mar 2004; Chuck Short <zul@gentoo.org> :
+  Fixed bad digest, closes #45888.
+
+*abs-guide-2.6 (25 Mar 2004)
+
+  25 Mar 2004; Chuck Short <zul@gentoo.org> abs-guide-2.6.ebuild:
+  Version bump.
+
+*abs-guide-2.5 (17 Feb 2004)
+
+  17 Feb 2004; Chuck Short <zul@gentoo.org> abs-guide-2.5.ebuild:
+  version bump.
+
+*abs-guide-2.4 (25 Jan 2004)
+
+  25 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org> abs-guide-2.4.ebuild:
+  version bump
+
+*abs-guide-2.3 (05 Jan 2004)
+
+  05 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org> abs-guide-2.3.ebuild:
+  version bump
+
+*abs-guide-2.2 (03 Nov 2003)
+
+  03 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> abs-guide-2.2.ebuild:
+  version bump; install in versioned directory; more error checking/messages
+
+  15 Sep 2003; Michael Sterrett <msterret@gentoo.org> abs-guide-1.8.ebuild,
+  abs-guide-1.9.ebuild, abs-guide-2.0.ebuild:
+  cleaned old versions
+
+*abs-guide-2.1 (15 Sep 2003)
+
+  15 Sep 2003; Michael Sterrett <msterret@gentoo.org> abs-guide-2.1.ebuild:
+  version bump
+
+*abs-guide-2.0 (25 Aug 2003)
+
+  25 Aug 2003; Michael Sterrett <msterret@gentoo.org> abs-guide-2.0.ebuild:
+  version bump
+
+*abs-guide-1.9 (30 Jun 2003)
+
+  30 Jun 2003; Christian Birchinger <joker@gentoo.org> abs-guide-1.9.ebuild:
+  Version bump
+
+*abs-guide-1.8 (23 May 2003)
+
+  23 May 2003; Chuck Short <chuck_short@rogers.com.> abs-guide-1.8.ebuild:
+  Initial import.  Ebuild submitted by Chuck Short <chuck_short@rogers.com>.

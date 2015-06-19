@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure prepare
+DEPEND=>=sys-auth/polkit-0.102 x11-libs/gtk+:3 !gnome-extra/polkit-gnome >=dev-util/intltool-0.40.0 virtual/pkgconfig sys-devel/gettext
+DESCRIPTION=A simple PolicyKit authentication agent
+EAPI=4
+HOMEPAGE=http://lxde.git.sourceforge.net/git/gitweb.cgi?p=lxde/lxpolkit;a=summary http://blog.lxde.org/?p=674
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RDEPEND=>=sys-auth/polkit-0.102 x11-libs/gtk+:3 !gnome-extra/polkit-gnome
+SLOT=0
+SRC_URI=mirror://sourceforge/project/lxde/LXPolkit/lxpolkit-0.1.0.tar.gz
+_md5_=3999a1d54d7ba7c38e23f5fa817cfa46

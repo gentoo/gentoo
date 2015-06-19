@@ -1,0 +1,20 @@
+#!/bin/sh
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-block/vblade/files/vbladed,v 1.1 2006/01/25 06:17:55 robbat2 Exp $
+#
+# run a vblade daemon using a logger process
+# output is directed to syslogd
+#
+# Although logging goes to syslog, let's going to
+# protect ourselves against the most common way or
+# calling vbladed: without arguments.
+if [ -z "$*" ]
+then
+    echo "Usage: vbladed <shelf> <slot> <ethn> <device>" >&2
+    exit 1
+fi
+
+[ -z "${LOGTAG}" ] && LOGTAG=vbladed
+
+/usr/sbin/vblade "${@}" </dev/null 2>&1 | /usr/bin/logger -t "${LOGTAG}"

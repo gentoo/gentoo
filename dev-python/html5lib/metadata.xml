@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <longdescription>
+  html5lib is a pure-python library for parsing HTML. It is designed
+  to conform to the WHATWG HTML specification, as is implemented by
+  all major web browsers.
+</longdescription>
+  <upstream>
+    <remote-id type="pypi">html5lib</remote-id>
+    <remote-id type="github">html5lib/html5lib-python</remote-id>
+  </upstream>
+</pkgmetadata>

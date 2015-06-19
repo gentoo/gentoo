@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=media-libs/libsdl[video] app-arch/unzip
+DESCRIPTION=Gothic science fantasy roguelike game
+EAPI=5
+HOMEPAGE=https://freecode.com/projects/wrogue
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RDEPEND=media-libs/libsdl[video] games-misc/games-envd
+SLOT=0
+SRC_URI=mirror://gentoo/wrogue-0.8.0b.zip
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	games	1ad3205dbf62a2c98249f2f59b0a2d39	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=f6862caca2e378b7dab73d879f24330c

@@ -1,0 +1,69 @@
+ Makefile.am  | 14 +++++++-------
+ configure.ac |  5 -----
+ 2 files changed, 7 insertions(+), 12 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 6322db1..45d8b67 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -10,13 +10,13 @@ ACLOCAL_AMFLAGS = -I m4
+ 
+ if ENABLE_LIBRARIES
+     API_SUBDIRS = api lib
+-if ENABLE_SERVER
+-    API_SUBDIRS += zip
+-endif
++#if ENABLE_SERVER
++#    API_SUBDIRS += zip
++#endif
+ endif
+ 
+ if ENABLE_SERVER
+-   SERVER_SUBDIRS = db test py sched apps tools vda html
++   SERVER_SUBDIRS = db test py sched apps tools vda
+ ## once contained samples/example_app which breaks out-of-source-tree builds
+ endif
+ 
+@@ -26,9 +26,9 @@ endif
+ 
+ if ENABLE_MANAGER
+    CLIENTGUI_SUBDIRS = clientgui locale
+-if BUILD_X11_SCREENSAVER
+-   CLIENTGUI_SUBDIRS += clientscr
+-endif
++#if BUILD_X11_SCREENSAVER
++#   CLIENTGUI_SUBDIRS += clientscr
++#endif
+ endif
+ 
+ # ORDER MATTERS below.  One must build dependencies FIRST, then things
+diff --git a/configure.ac b/configure.ac
+index 2bef437..5a9e104 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -955,7 +955,6 @@ AC_CONFIG_FILES([
+                  apps/Makefile
+                  clientgui/Makefile
+                  clientgui/res/Makefile
+-                 clientscr/Makefile
+                  client/Makefile
+                  client/win/boinc_path_config.py:py/boinc_path_config.py.in
+                  client/scripts/Makefile
+@@ -963,7 +962,6 @@ AC_CONFIG_FILES([
+                  db/Makefile
+                  doc/Makefile
+                  doc/manpages/Makefile
+-                 html/Makefile
+                  lib/Makefile
+                  locale/Makefile
+                  Makefile
+@@ -993,9 +991,6 @@ AC_CONFIG_FILES([
+                  tools/boinc_path_config.py:py/boinc_path_config.py.in
+                  tools/Makefile
+                  vda/Makefile
+-                 zip/Makefile
+-                 zip/zip/Makefile
+-                 zip/unzip/Makefile
+                  m4/Makefile
+ 		])
+ 

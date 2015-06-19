@@ -1,0 +1,214 @@
+# ChangeLog for gnustep-base/gnustep-back-cairo
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnustep-base/gnustep-back-cairo/ChangeLog,v 1.44 2015/05/18 14:59:17 voyageur Exp $
+
+*gnustep-back-cairo-0.24.1 (18 May 2015)
+
+  18 May 2015; Bernard Cafarelli <voyageur@gentoo.org>
+  +gnustep-back-cairo-0.24.1.ebuild:
+  Version bump
+
+*gnustep-back-cairo-0.24.0-r1 (20 Feb 2015)
+
+  20 Feb 2015; Bernard Cafarelli <voyageur@gentoo.org>
+  +gnustep-back-cairo-0.24.0-r1.ebuild,
+  +files/gnustep-back-cairo-0.24.0-cairo-scrolling.patch,
+  +files/gnustep-back-cairo-0.24.0-format-security.patch:
+  Fix compilation with format-security, bug #536120 by ago. Also fix a
+  scrolling bug with >=cairo-1.14
+
+  27 Dec 2014; Agostino Sarubbo <ago@gentoo.org>
+  gnustep-back-cairo-0.24.0.ebuild:
+  Stable for amd64, wrt bug #508626
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  gnustep-back-cairo-0.22.0.ebuild, gnustep-back-cairo-0.23.0.ebuild,
+  gnustep-back-cairo-0.24.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*gnustep-back-cairo-0.24.0 (29 Jan 2014)
+
+  29 Jan 2014; Bernard Cafarelli <voyageur@gentoo.org>
+  +gnustep-back-cairo-0.24.0.ebuild:
+  Version bump
+
+*gnustep-back-cairo-0.23.0 (08 Mar 2013)
+
+  08 Mar 2013; Bernard Cafarelli <voyageur@gentoo.org>
+  +gnustep-back-cairo-0.23.0.ebuild:
+  Version bump
+
+  20 Dec 2012; Bernard Cafarelli <voyageur@gentoo.org>
+  -gnustep-back-cairo-0.18.0.ebuild:
+  Remove version using old gnustep layout
+
+  20 Dec 2012; Agostino Sarubbo <ago@gentoo.org>
+  gnustep-back-cairo-0.22.0.ebuild:
+  Stable for sparc, wrt bug #410601
+
+  07 Jun 2012; Michael Weber <xmw@gentoo.org> gnustep-back-cairo-0.22.0.ebuild:
+  ppc stable (bug 410601)
+
+  02 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  gnustep-back-cairo-0.18.0.ebuild, gnustep-back-cairo-0.22.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  07 Apr 2012; Markus Meier <maekke@gentoo.org>
+  gnustep-back-cairo-0.22.0.ebuild:
+  x86 stable, bug #410601
+
+  05 Apr 2012; Agostino Sarubbo <ago@gentoo.org>
+  gnustep-back-cairo-0.22.0.ebuild:
+  Stable for amd64, wrt bug #410601
+
+  23 Feb 2012; Bernard Cafarelli <voyageur@gentoo.org>
+  -gnustep-back-cairo-0.20.1.ebuild:
+  Remove old unstable version
+
+  17 Feb 2012; Bernard Cafarelli <voyageur@gentoo.org>
+  gnustep-back-cairo-0.22.0.ebuild:
+  Clean and make gnustep-back-* ebuilds closer
+
+*gnustep-back-cairo-0.22.0 (08 Feb 2012)
+
+  08 Feb 2012; Bernard Cafarelli <voyageur@gentoo.org>
+  +gnustep-back-cairo-0.22.0.ebuild:
+  Version bump
+
+  23 Aug 2011; Bernard Cafarelli <voyageur@gentoo.org>
+  gnustep-back-cairo-0.20.1.ebuild:
+  Fix opengl USE-flag handling, thanks to Hypnos in bug #379823
+
+*gnustep-back-cairo-0.20.1 (08 May 2011)
+
+  08 May 2011; Bernard Cafarelli <voyageur@gentoo.org>
+  -gnustep-back-cairo-0.20.0.ebuild, +gnustep-back-cairo-0.20.1.ebuild:
+  Bugfix release, fixes a startup delay
+
+*gnustep-back-cairo-0.20.0 (20 Apr 2011)
+
+  20 Apr 2011; Bernard Cafarelli <voyageur@gentoo.org>
+  +gnustep-back-cairo-0.20.0.ebuild:
+  Version bump
+
+  20 Aug 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  -gnustep-back-cairo-0.16.0.ebuild:
+  Drop old stable versions, security bug #325577
+
+  13 Aug 2010; Joseph Jezak <josejx@gentoo.org>
+  gnustep-back-cairo-0.18.0.ebuild:
+  Marked ppc stable for bug #325577.
+
+  03 Aug 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  gnustep-back-cairo-0.16.0.ebuild, gnustep-back-cairo-0.18.0.ebuild,
+  metadata.xml:
+  Drop media-libs/glitz support, was commented for ages, and glitz is
+  unmaintained, bug #330955
+
+  27 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gnustep-back-cairo-0.18.0.ebuild:
+  x86 stable wrt security bug #325577
+
+  26 Jun 2010; Christoph Mende <angelos@gentoo.org>
+  gnustep-back-cairo-0.18.0.ebuild:
+  Stable on amd64 wrt bug #325577
+
+*gnustep-back-cairo-0.18.0 (10 May 2010)
+
+  10 May 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  +gnustep-back-cairo-0.18.0.ebuild:
+  Stable release bump
+
+  10 Feb 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  -gnustep-back-cairo-0.14.0.ebuild, -gnustep-back-cairo-0.14.0-r1.ebuild:
+  Drop old versions
+
+  07 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  gnustep-back-cairo-0.16.0.ebuild:
+  Transfer Prefix keywords
+
+  11 Jun 2009; Markus Meier <maekke@gentoo.org>
+  gnustep-back-cairo-0.16.0.ebuild:
+  amd64 stable, bug #272673
+
+  10 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  gnustep-back-cairo-0.16.0.ebuild:
+  stable x86, bug 272673
+
+*gnustep-back-cairo-0.16.0 (22 Dec 2008)
+
+  22 Dec 2008; Bernard Cafarelli <voyageur@gentoo.org>
+  +gnustep-back-cairo-0.16.0.ebuild:
+  Major version bump, general cleanup of code
+
+  17 Nov 2008; Bernard Cafarelli <voyageur@gentoo.org>
+  -gnustep-back-cairo-0.12.1.ebuild:
+  Remove old stable branch packages
+
+*gnustep-back-cairo-0.14.0-r1 (03 Oct 2008)
+
+  03 Oct 2008; Bernard Cafarelli <voyageur@gentoo.org>
+  +gnustep-back-cairo-0.14.0-r1.ebuild:
+  Use EAPI=2 and USE dependencies
+
+  21 Sep 2008; nixnut <nixnut@gentoo.org> gnustep-back-cairo-0.14.0.ebuild:
+  ~ppc wrt bug 235922
+
+  17 Sep 2008; Markus Meier <maekke@gentoo.org> ChangeLog:
+  amd64/x86 stable, bug #235922
+
+  17 Sep 2008; Markus Meier <maekke@gentoo.org>
+  gnustep-back-cairo-0.14.0.ebuild:
+  amd64/x86 stable, bug #235922
+
+  06 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+*gnustep-back-cairo-0.14.0 (16 Jun 2008)
+
+  16 Jun 2008; Bernard Cafarelli <voyageur@gentoo.org>
+  -gnustep-back-cairo-0.13.2.ebuild, +gnustep-back-cairo-0.14.0.ebuild:
+  New stable branch, remove unstable version
+
+  10 Jun 2008; Bernard Cafarelli <voyageur@gentoo.org>
+  gnustep-back-cairo-0.12.1.ebuild, gnustep-back-cairo-0.13.2.ebuild:
+  Check that cairo was built with USE=X, bug #225225
+
+  10 Jun 2008; Bernard Cafarelli <voyageur@gentoo.org>
+  -gnustep-back-cairo-0.12.0.ebuild:
+  Stable gnustep versions cleanup
+
+  17 May 2008; Fabian Groffen <grobian@gentoo.org>
+  gnustep-back-cairo-0.12.0.ebuild, gnustep-back-cairo-0.12.1.ebuild,
+  gnustep-back-cairo-0.13.2.ebuild:
+  put dev-util/pkgconfig only in DEPEND, bug #217278
+
+*gnustep-back-cairo-0.13.2 (20 Mar 2008)
+
+  20 Mar 2008; Bernard Cafarelli <voyageur@gentoo.org>
+  -gnustep-back-cairo-0.13.1.ebuild, +gnustep-back-cairo-0.13.2.ebuild:
+  Unstable version bump
+
+  18 Jan 2008; Bernard Cafarelli <voyageur@gentoo.org>
+  gnustep-back-cairo-0.12.0.ebuild, gnustep-back-cairo-0.12.1.ebuild,
+  gnustep-back-cairo-0.13.1.ebuild:
+  Add pkgconfig depend, bug #206542
+
+*gnustep-back-cairo-0.13.1 (09 Jan 2008)
+
+  09 Jan 2008; Bernard Cafarelli <voyageur@gentoo.org>
+  +gnustep-back-cairo-0.13.1.ebuild:
+  Add unstable version
+
+*gnustep-back-cairo-0.12.1 (03 Jan 2008)
+
+  03 Jan 2008; Bernard Cafarelli <voyageur@gentoo.org>
+  +gnustep-back-cairo-0.12.1.ebuild:
+  Stable version bump
+
+*gnustep-back-cairo-0.12.0 (18 Aug 2007)
+
+  18 Aug 2007; Fabian Groffen <grobian@gentoo.org> +metadata.xml,
+  +gnustep-back-cairo-0.12.0.ebuild:
+  Initial import of GNUstep's Cairo backend (experimental) from the gnustep
+  overlay

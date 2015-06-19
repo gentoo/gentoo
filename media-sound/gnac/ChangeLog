@@ -1,0 +1,11 @@
+# ChangeLog for media-sound/gnac
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/gnac/ChangeLog,v 1.1 2012/08/28 00:51:56 radhermit Exp $
+
+*gnac-0.2.4.1 (28 Aug 2012)
+
+  28 Aug 2012; Tim Harder <radhermit@gentoo.org> +gnac-0.2.4.1.ebuild,
+  +files/gnac-0.2.4.1-cflags.patch, +files/gnac-0.2.4.1-nls.patch,
+  +metadata.xml:
+  Initial import. Ebuild by me.
+

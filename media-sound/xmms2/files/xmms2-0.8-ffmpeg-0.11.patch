@@ -1,0 +1,18 @@
+commit 8743e0c3a4f06053d89b74e40a362ba4949ed53c
+Author: Juho Vähä-Herttua <juhovh@iki.fi>
+Date:   Fri Jun 8 09:30:47 2012 +0300
+
+    OTHER: Quick fix to make XMMS2 compile on ffmpeg 0.11
+
+diff --git a/src/plugins/avcodec/avcodec_compat.h b/src/plugins/avcodec/avcodec_compat.h
+index df87b27..f1b1af7 100644
+--- a/src/plugins/avcodec/avcodec_compat.h
++++ b/src/plugins/avcodec/avcodec_compat.h
+@@ -65,3 +65,7 @@ typedef struct AVPacket {
+ # define AVMEDIA_TYPE_AUDIO CODEC_TYPE_AUDIO
+ #endif
+ 
++/* Calling avcodec_init is not necessary after 53.04 (ffmpeg 0.9) */
++#if LIBAVCODEC_VERSION_INT >= 0x350400
++# define avcodec_init()
++#endif

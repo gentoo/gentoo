@@ -1,0 +1,86 @@
+# ChangeLog for net-mail/vacation
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/vacation/ChangeLog,v 1.23 2013/07/21 09:44:38 pacho Exp $
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> -vacation-1.2.6.2.ebuild,
+  -vacation-1.2.6.3.ebuild, metadata.xml:
+  Cleanup due #473480
+
+  10 Oct 2010; Tobias Klausmann <klausman@gentoo.org>
+  vacation-1.2.7.0.ebuild:
+  Stable on alpha, bug #334699
+
+  31 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  vacation-1.2.7.0.ebuild:
+  Stable on amd64 wrt bug #334699
+
+  28 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  vacation-1.2.7.0.ebuild:
+  x86 stable wrt bug #334699
+
+  26 Aug 2010; Patrick Kursawe <phosphan@gentoo.org>
+  vacation-1.2.7.0.ebuild:
+  Respects LDFLAGS now, see bug #334645.
+
+  10 Aug 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  vacation-1.2.6.3.ebuild:
+  stable amd64, bug #233248
+
+  10 Aug 2008; Patrick Kursawe <phosphan@gentoo.org>
+  vacation-1.2.6.3.ebuild, vacation-1.2.7.0.ebuild:
+  Fixes for pre-stripped binaries and wrong man path according to bug #233248.
+
+  01 Aug 2008; Raúl Porcel <armin76@gentoo.org> vacation-1.2.6.3.ebuild:
+  alpha/x86 stable wrt #233248
+
+*vacation-1.2.7.0 (31 Jul 2008)
+
+  31 Jul 2008; Patrick Kursawe <phosphan@gentoo.org>
+  -vacation-1.2.6.1.ebuild, vacation-1.2.6.2.ebuild,
+  vacation-1.2.6.3.ebuild, +vacation-1.2.7.0.ebuild:
+  Version bump, bug #231379. Fixed some unquoted variables, removed obsolete
+  version 1.2.6.1.
+
+  24 Aug 2007; Raúl Porcel <armin76@gentoo.org> vacation-1.2.6.2.ebuild,
+  vacation-1.2.6.3.ebuild:
+  alpha stable wrt #189111
+
+  22 Aug 2007; Jurek Bartuszek <jurek@gentoo.org> vacation-1.2.6.2.ebuild:
+  x86 stable (bug #189111)
+
+  19 Aug 2007; Christoph Mende <angelos@gentoo.org> vacation-1.2.6.2.ebuild:
+  Stable on amd64 wrt bug #189111
+
+*vacation-1.2.6.3 (17 Aug 2007)
+
+  17 Aug 2007; Patrick Kursawe <phosphan@gentoo.org>
+  +vacation-1.2.6.3.ebuild:
+  Version bump. Also installing vaclook now.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*vacation-1.2.6.2 (23 Oct 2006)
+
+  23 Oct 2006; Patrick Kursawe <phosphan@gentoo.org>
+  +vacation-1.2.6.2.ebuild:
+  First version bump.
+
+  25 Nov 2004; Andrej Kacian <ticho@gentoo.org> vacation-1.2.6.1.ebuild:
+  Block mail-mta/sendmail, see bug #37462, reported by Jan Schubert
+  <Jan.Schubert@GMX.li>.
+
+  16 Aug 2004; Tom Martin <slarti@gentoo.org> vacation-1.2.6.1.ebuild:
+  Marked ~amd64; resolves bug 58828. Thanks to Justin Wind
+  <jwind-gentoo@squeep.com> for reporting.
+
+  03 Mar 2004; Patrick Kursawe <phosphan@gentoo.org> vacation-1.2.6.1.ebuild:
+  Cleaning up sed stuff
+
+  17 Jun 2003; Aron Griffis <agriffis@gentoo.org> vacation-1.2.6.1.ebuild:
+  Add alpha to KEYWORDS
+
+*vacation-1.2.6.1 (14 Mar 2003)
+
+  14 Mar 2003; Patrick Kursawe <phosphan@gentoo.org> :
+  Initial import. Ebuild submitted by myself earlier, bug #11100 

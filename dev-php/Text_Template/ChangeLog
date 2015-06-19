@@ -1,0 +1,52 @@
+# ChangeLog for dev-php/Text_Template
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/Text_Template/ChangeLog,v 1.7 2013/06/23 13:48:46 jer Exp $
+
+  23 Jun 2013; Jeroen Roovers <jer@gentoo.org> Text_Template-1.1.1.ebuild:
+  Stable for HPPA too.
+
+  19 Jan 2013; Jeroen Roovers <jer@gentoo.org> Text_Template-1.1.1.ebuild:
+  DEPENDS -> DEPEND by Gordon Pettey (bug #452868).
+
+  21 Aug 2012; Ole Markus With <olemarkus@gentoo.org>
+  -Text_Template-1.0.0.ebuild:
+  Removing old version
+
+  21 Aug 2012; Johannes Huber <johu@gentoo.org> Text_Template-1.1.1.ebuild:
+  Stable for x86, wrt bug #430654
+
+  11 Aug 2012; Agostino Sarubbo <ago@gentoo.org> Text_Template-1.1.1.ebuild:
+  Stable for amd64, wrt bug #430654
+
+  23 Jun 2012; Ole Markus With <olemarkus@gentoo.org> +files/channel.xml:
+  Added missing channel.xml file
+
+  08 Nov 2011; Ole Markus With <olemarkus@gentoo.org>
+  php-texttemplate-1.1.1.ebuild:
+  Fixed dependency on pear (Bug #389649)
+
+*php-texttemplate-1.1.1 (03 Nov 2011)
+
+  03 Nov 2011; Ole Markus With <olemarkus@gentoo.org>
+  +php-texttemplate-1.1.1.ebuild:
+  Version bump
+
+*php-texttemplate-1.1.0 (15 Oct 2011)
+
+  15 Oct 2011; Ole Markus With <olemarkus@gentoo.org>
+  +php-texttemplate-1.1.0.ebuild:
+  Version bump (issue 376351)
+
+  24 May 2011; Markos Chandras <hwoarang@gentoo.org>
+  PEAR-Text_Template-1.0.0.ebuild:
+  Stable on amd64 wrt bug #368293
+
+  23 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  PEAR-Text_Template-1.0.0.ebuild:
+  x86 stable wrt bug #368293
+
+*PEAR-Text_Template-1.0.0 (04 Oct 2010)
+
+  04 Oct 2010; Markus Ullmann <jokey@gentoo.org>
+  +PEAR-Text_Template-1.0.0.ebuild, +metadata.xml:
+  Initial import for phpunit-3.5

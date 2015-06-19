@@ -1,0 +1,20 @@
+#!/sbin/runscript
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/xmbmon/files/mbmon.rc,v 1.1 2005/06/18 04:48:54 vapier Exp $
+
+start() {
+	einfo "Start Mother Board Monitor"
+	mbmon \
+		-P ${MBMON_PORT} \
+		${MBMON_OPTS}
+	eend $?
+}
+
+stop() {
+	einfo "Stop Mother Board Monitor"
+	start-stop-daemon --stop --pidfile /var/run/mbmon.pid
+	local ret=$?
+	rm -f /var/run/mbmon.pid
+	eend ${ret}
+}

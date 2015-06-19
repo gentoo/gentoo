@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=dev-libs/libxml2:2 x11-libs/gtk+:2 gnome-base/libglade:2.0 gnome-base/libgnome >=gnome-base/libgnomeui-2.12 >=gnome-base/libgnomecanvas-2.12 >=x11-libs/cairo-1.2 x11-libs/gtksourceview:2.0 >=dev-util/scons-0.96.1 virtual/pkgconfig dev-util/scons
+DESCRIPTION=Oregano is an application for schematic capture and simulation of electrical circuits
+EAPI=5
+HOMEPAGE=http://oregano.gforge.lug.fi.uba.ar/
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/libxml2:2 x11-libs/gtk+:2 gnome-base/libglade:2.0 gnome-base/libgnome >=gnome-base/libgnomeui-2.12 >=gnome-base/libgnomecanvas-2.12 >=x11-libs/cairo-1.2 x11-libs/gtksourceview:2.0 sci-electronics/electronics-menu
+SLOT=0
+SRC_URI=mirror://debian/pool/main/o/oregano/oregano_0.69.1.orig.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	scons-utils	988e24b9e2e4642189b4e97c03e5ae71	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=918fab5e4100c81edc05c02653833d06

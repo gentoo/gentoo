@@ -1,0 +1,59 @@
+# ChangeLog for app-crypt/eid-mw
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/eid-mw/ChangeLog,v 1.12 2015/03/04 17:44:08 swift Exp $
+
+  04 Mar 2015; Sven Vermeulen <swift@gentoo.org> -eid-mw-4.0.2_p1188.ebuild,
+  -eid-mw-4.0.4_p1253.ebuild:
+  Drop 4.0.2 and 4.0.4 as recent e-ids require later versions to be read/used
+
+*eid-mw-4.0.6_p1620 (24 Jan 2015)
+
+  24 Jan 2015; Sven Vermeulen <swift@gentoo.org> +eid-mw-4.0.6_p1620.ebuild,
+  eid-mw-9999.ebuild:
+  Fix bug #536504 - Use github as source repo and bump to 4.0.6_p1620 thanks to
+  Vincent Hardy
+
+  10 Aug 2014; Patrick Lauer <patrick@gentoo.org> eid-mw-4.0.2_p1188.ebuild,
+  eid-mw-4.0.4_p1253.ebuild, eid-mw-4.0.6_p1480.ebuild, eid-mw-9999.ebuild:
+  Fix description for more repoman happy
+
+*eid-mw-9999 (10 Jul 2014)
+*eid-mw-4.0.6_p1480 (10 Jul 2014)
+
+  10 Jul 2014; Sven Vermeulen <swift@gentoo.org> +eid-mw-4.0.6_p1480.ebuild,
+  +eid-mw-9999.ebuild, +files/fix-nodialog-bug.patch:
+  Fix bug #515680 - Bump eid-mw, also commit live ebuild. Thanks to Vincent
+  Hardy
+
+*eid-mw-4.0.4_p1253 (07 Mar 2014)
+
+  07 Mar 2014; Sven Vermeulen <swift@gentoo.org> +eid-mw-4.0.4_p1253.ebuild:
+  New eid middleware version, thanks to Vincent Hardy (bug #494772)
+
+  30 Mar 2013; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Fix gtk package name in metadata, wrt bug #438314. Thanks to Arne Stäcker
+  for discovering this issue
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  24 Jun 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  files/eid-mw-4.0.2_p1188+gcc-4.7.patch:
+  Fix patch to always include unistd.h without conditions for now. Thanks
+  Xavier.
+
+  24 Jun 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +files/eid-mw-4.0.2_p1188+gcc-4.7.patch, eid-mw-4.0.2_p1188.ebuild:
+  Add patch to build with GCC 4.7 (fixes bug #422873).
+
+  31 May 2012; Zac Medico <zmedico@gentoo.org> eid-mw-4.0.2_p1188.ebuild:
+  inherit multilib for get_libdir
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> eid-mw-4.0.2_p1188.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*eid-mw-4.0.2_p1188 (07 Apr 2012)
+
+  07 Apr 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +eid-mw-4.0.2_p1188.ebuild, +metadata.xml:
+  Initial import of eid-mw by Vincent Hardy.

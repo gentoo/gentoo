@@ -1,0 +1,26 @@
+# ChangeLog for dev-ruby/colorator
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/colorator/ChangeLog,v 1.6 2015/06/07 17:29:23 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  25 Feb 2015; Hans de Graaff <graaff@gentoo.org> colorator-0.1-r1.ebuild:
+  Add ruby22. Call rdoc via the recipe to avoid an rspec dependency.
+
+  25 Jul 2014; Manuel Rüger <mrueg@gentoo.org> colorator-0.1-r1.ebuild:
+  Add ruby21 target.
+
+  20 Dec 2013; Manuel Rüger <mrueg@gentoo.org> -colorator-0.1.ebuild:
+  Cleanup old.
+
+*colorator-0.1-r1 (09 Oct 2013)
+
+  09 Oct 2013; Manuel Rüger <mrueg@gentoo.org> +colorator-0.1-r1.ebuild:
+  Add ruby20 target.
+
+*colorator-0.1 (19 Aug 2013)
+
+  19 Aug 2013; Manuel Rüger <mrueg@gentoo.org> +colorator-0.1.ebuild,
+  +metadata.xml:
+  Initial version.

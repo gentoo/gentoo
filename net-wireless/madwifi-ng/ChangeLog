@@ -1,0 +1,688 @@
+# ChangeLog for net-wireless/madwifi-ng
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/madwifi-ng/ChangeLog,v 1.86 2013/02/16 13:01:02 pacho Exp $
+
+  16 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #96436
+
+  21 Dec 2012; Rick Farina <zerochaos@gentoo.org> metadata.xml:
+  adding myself as maintainer to help ease the transition
+
+  18 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop mobile herd as talked in gentoo-dev ML
+
+*madwifi-ng-0.9.4.4180.20120502 (13 Jun 2012)
+
+  13 Jun 2012; Michael Weber <xmw@gentoo.org>
+  +madwifi-ng-0.9.4.4180.20120502.ebuild:
+  Version bump (bug 417611 reported by Jens, permission by steev)
+
+  13 Jun 2012; Michael Weber <xmw@gentoo.org>
+  madwifi-ng-0.9.4.4165.20110816.ebuild:
+  ppc stable (bug 385267)
+
+  15 Oct 2011; Markus Meier <maekke@gentoo.org>
+  madwifi-ng-0.9.4.4165.20110816.ebuild:
+  amd64/x86 stable, bug #385267
+
+*madwifi-ng-0.9.4.4165.20110816 (25 Aug 2011)
+
+  25 Aug 2011; Peter Volkov <pva@gentoo.org>
+  -madwifi-ng-0.9.4.4136.20110203.ebuild,
+  +madwifi-ng-0.9.4.4165.20110816.ebuild:
+  Version bump wrt Blackstar. Drop old.
+
+*madwifi-ng-0.9.4.4136.20110203 (30 Apr 2011)
+
+  30 Apr 2011; Peter Volkov <pva@gentoo.org>
+  +madwifi-ng-0.9.4.4136.20110203.ebuild:
+  Version bump for kernel 2.6.38, bug #361801, thank Oschtan for report.
+
+  03 Jan 2011; Christian Faulhammer <fauli@gentoo.org>
+  madwifi-ng-0.9.4.4133.20100621.ebuild:
+  stable x86, bug 331125
+
+  20 Dec 2010; Markos Chandras <hwoarang@gentoo.org>
+  madwifi-ng-0.9.4.4133.20100621.ebuild:
+  Stable on amd64 wrt bug #331125
+
+*madwifi-ng-0.9.4.4133.20100621 (11 Aug 2010)
+
+  11 Aug 2010; Peter Volkov <pva@gentoo.org>
+  -madwifi-ng-0.9.4.4030.20090529.ebuild,
+  -madwifi-ng-0.9.4.4100.20090929.ebuild,
+  +madwifi-ng-0.9.4.4133.20100621.ebuild:
+  Version bump to address 2.6.35 compatibility issue, bug #331125, thank
+  Oschtan for report and teidakankan for testing. Drop old.
+
+  26 Jun 2010; <nixnut@gentoo.org> madwifi-ng-0.9.4.4119.20100201.ebuild:
+  ppc stable #306851
+
+  12 Apr 2010; Markus Meier <maekke@gentoo.org>
+  madwifi-ng-0.9.4.4119.20100201.ebuild:
+  amd64/x86 stable, bug #306851
+
+*madwifi-ng-0.9.4.4119.20100201 (03 Mar 2010)
+
+  03 Mar 2010; Peter Volkov <pva@gentoo.org>
+  +madwifi-ng-0.9.4.4119.20100201.ebuild:
+  Version bump, bug #306851, thank Oschtan for report and Andrey for
+  explanation of the problem.
+
+  24 Oct 2009; nixnut <nixnut@gentoo.org>
+  madwifi-ng-0.9.4.4030.20090529.ebuild:
+  ppc stable #288386
+
+  15 Oct 2009; Markus Meier <maekke@gentoo.org>
+  madwifi-ng-0.9.4.4030.20090529.ebuild:
+  amd64/x86 stable, bug #288386
+
+*madwifi-ng-0.9.4.4100.20090929 (10 Oct 2009)
+
+  10 Oct 2009; Peter Volkov <pva@gentoo.org>
+  +madwifi-ng-0.9.4.4100.20090929.ebuild:
+  Version bump to fix build issue with 2.6.31, bug #287656 thank xo0ox for
+  report and tests.
+
+  04 Jun 2009; Peter Volkov <pva@gentoo.org>
+  madwifi-ng-0.9.4.4030.20090529.ebuild:
+  Drop -Werror, now builds with gcc-4.4, bug #271611, thank hirakendu for
+  report.
+
+  03 Jun 2009; Peter Volkov <pva@gentoo.org>
+  +files/madwifi-ng-injection-r3925.patch:
+  Added missed injection patch, bug #272372, thank Pierre-Yves AILLET for
+  report.
+
+*madwifi-ng-0.9.4.4030.20090529 (01 Jun 2009)
+
+  01 Jun 2009; Peter Volkov <pva@gentoo.org>
+  +madwifi-ng-0.9.4.4030.20090529.ebuild:
+  Bump to most recent svn snapshot for 0.9.4 branch. Fixes build problems
+  with 2.6.29, bug #262761, thank Tobias Kral, Draco Levanah, Ivan
+  Kukharchuk and other guys, that helped us.
+
+  01 Jun 2009; Peter Volkov <pva@gentoo.org> -madwifi-ng-0.9.3.1.ebuild,
+  -madwifi-ng-0.9.3.2.ebuild, -files/madwifi-2.6.22.patch:
+  Remove old and vulnerable versions, bug #271697, thank Robert Buchholz for
+  report.
+
+  31 Jan 2009; Peter Volkov <pva@gentoo.org>
+  +files/madwifi-ng-0.9.4-request_module-build.patch,
+  madwifi-ng-0.9.4.ebuild, madwifi-ng-0.9.4-r1.ebuild:
+  Fixed build problem with gcc-4.3, bug #256669, thank cilly for report and
+  fix.
+
+  15 Nov 2008; Peter Volkov <pva@gentoo.org> madwifi-ng-0.9.4.ebuild,
+  madwifi-ng-0.9.4-r1.ebuild:
+  Workaround for our build system was commited into linux-mod.eclass, bug
+  #237618. So it safe to remove it from madwifi-ng-0.9.4-r1. Also to avoid
+  somewhat unnecessary round of stabilization patch for build failure on
+  2.6.27 moved into madwifi-ng-0.9.4. Now madwifi-ng-0.9.4-r1 and
+  madwifi-ng-0.9.4 are equal, but don't remove any of them to avoid
+  unnecessary rebuilds.
+
+  15 Nov 2008; Peter Volkov <pva@gentoo.org> madwifi-ng-0.9.3.1.ebuild,
+  madwifi-ng-0.9.3.2.ebuild, madwifi-ng-0.9.3.3.ebuild,
+  madwifi-ng-0.9.4.ebuild, madwifi-ng-0.9.4-r1.ebuild:
+  madwifi.org changed to madwifi-project.org, bug #246289, thank hitachi for
+  report.
+
+  22 Oct 2008; Peter Volkov <pva@gentoo.org>
+  files/madwifi-ng-0.9.4-2.6.27-r3811.patch:
+  Updated patch to make it workable with all sys-devel/patch versions.
+
+  20 Oct 2008; Peter Volkov <pva@gentoo.org>
+  +files/madwifi-ng-0.9.4-2.6.27-r3811.patch, madwifi-ng-0.9.4-r1.ebuild:
+  Added patch to make it buildable with 2.6.27 kernel.
+
+*madwifi-ng-0.9.4-r1 (14 Oct 2008)
+
+  14 Oct 2008; Peter Volkov <pva@gentoo.org> +madwifi-ng-0.9.4-r1.ebuild:
+  Added workaround for unresolved symbols if CONFIG_MODVERSIONS is set, bug
+  #232099.
+
+  13 Sep 2008; Peter Volkov <pva@gentoo.org> madwifi-ng-0.9.4.ebuild:
+  Removed app-arch/sharutils from DEPEND as madwifi-ng builds fine without
+  it, bug #232099.
+
+  25 Aug 2008; nixnut <nixnut@gentoo.org> madwifi-ng-0.9.4.ebuild:
+  Stable on ppc wrt bug 225099
+
+  23 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  14 Aug 2008; Steev Klimaszewski <steev@gentoo.org> metadata.xml,
+  madwifi-ng-0.9.4.ebuild:
+  Add injection use flag to metadata.xml
+
+  14 Aug 2008; Steev Klimaszewski <steev@gentoo.org>
+  madwifi-ng-0.9.4.ebuild:
+  Cosmetic fix to an elog line in 0.9.4 so it isn't split
+
+  21 Jul 2008; Steev Klimaszewski <steev@gentoo.org>
+  +files/madwifi-dfs-ieee80211-skb-update.patch, madwifi-ng-0.9.4.ebuild:
+  Add patch to make madwifi-ng-0.9.4 work with 2.6.26 kernels.
+
+  07 Jul 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  madwifi-ng-0.9.4.ebuild:
+  stable amd64, bug 225099, thanks to ciberfred for testing
+
+  18 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  madwifi-ng-0.9.4.ebuild:
+  stable x86, bug 225099
+
+  06 Jun 2008; Peter Volkov <pva@gentoo.org> metadata.xml:
+  Added myself as maintainer.
+
+*madwifi-ng-0.9.4 (14 Feb 2008)
+
+  14 Feb 2008; Steev Klimaszewski <steev@gentoo.org>
+  +madwifi-ng-0.9.4.ebuild:
+  New upstream release of madwifi-ng. This release is based off 0.9.3.3, not
+  trunk so unfortunately, still no AR5007 or AR5008 support. There is a patch
+  in upstreams ticket system for 5007 and 5008 support is in trunk.
+
+  17 Jan 2008; Steev Klimaszewski <steev@gentoo.org>
+  madwifi-ng-0.9.3.3.ebuild:
+  Fix the KMOD check.  No need to specify CONFIG.
+
+  16 Jan 2008; Steev Klimaszewski <steev@gentoo.org>
+  madwifi-ng-0.9.3.3.ebuild:
+  Add a check for CONFIG_KMOD and error if it is not set.  This should fix 
+  bug #174168.  Thanks to David Brigada <brigad@rpi.edu> for reporting, 
+  and Gordon Malm <bugs-gentoo-org-02@bumpin.org> for his work tracking it 
+  down.
+
+  26 Oct 2007; Steve Dibb <beandog@gentoo.org> madwifi-ng-0.9.3.3.ebuild:
+  amd64 stable, security bug 195705
+
+  24 Oct 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  madwifi-ng-0.9.3.3.ebuild:
+  ppc stable, bug #195705
+
+  21 Oct 2007; Markus Meier <maekke@gentoo.org> madwifi-ng-0.9.3.3.ebuild:
+  x86 stable, security bug #195705
+
+  15 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  madwifi-ng-0.9.3.2.ebuild:
+  ppc stable, bug #188902
+
+  15 Aug 2007; Christoph Mende <angelos@gentoo.org>
+  madwifi-ng-0.9.3.2.ebuild:
+  Stable on amd64 wrt security bug #188902
+
+  14 Aug 2007; Andrej Kacian <ticho@gentoo.org> madwifi-ng-0.9.3.2.ebuild:
+  Stable on x86, security bug #188902.
+
+*madwifi-ng-0.9.3.2 (14 Aug 2007)
+
+  14 Aug 2007; Steev Klimaszewski <steev@gentoo.org>
+  +madwifi-ng-0.9.3.2.ebuild:
+  New upstream release, various fixes, read the changelog :)
+
+  13 Jul 2007; Stefan Schweizer <genstef@gentoo.org>
+  files/madwifi-2.6.22.patch:
+  Add new 2.6.22 patch that works for amd64 too thanks to Thomas S. Howard
+  <thoward1120@sbcglobal.net> in bug 184804
+
+  07 Jul 2007; Stefan Schweizer <genstef@gentoo.org>
+  -files/madwifi-ng-0.9.2.1-linux-2.6.20.patch,
+  -files/madwifi-ng-0.9.2-allow-cipher-none.diff,
+  -files/madwifi-ng-0.9.2-ath_intr.diff,
+  -files/madwifi-ng-0.9.2-config.h.diff,
+  -files/madwifi-ng-0.9.2-crypto_cipher_encrypt_one.diff,
+  -files/madwifi-association-fix.patch,
+  -files/madwifi-ng-uudecode-gcda-fix.patch, -madwifi-ng-0.9.2.1.ebuild,
+  -madwifi-ng-0.9.3-r2.ebuild, -madwifi-ng-0.9.3-r3.ebuild,
+  madwifi-ng-0.9.3.1.ebuild:
+  remove old vulnerable, fix help text variable
+
+  02 Jun 2007; Peter Weller <welp@gentoo.org> madwifi-ng-0.9.3.1.ebuild:
+  Stable on amd46 wrt security bug 179532
+
+  29 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  madwifi-ng-0.9.3.1.ebuild:
+  ppc stable, bug #179532
+
+  24 May 2007; Christian Faulhammer <opfer@gentoo.org>
+  madwifi-ng-0.9.3.1.ebuild:
+  stable x86, security bug 179532
+
+*madwifi-ng-0.9.3.1 (23 May 2007)
+
+  23 May 2007; Stefan Schweizer <genstef@gentoo.org>
+  +madwifi-ng-0.9.3.1.ebuild:
+  Version bump to fix security bug 179532 and to not contain the headers bug
+  179348
+
+  13 May 2007; Stefan Schweizer <genstef@gentoo.org>
+  +files/madwifi-2.6.22.patch, madwifi-ng-0.9.3-r3.ebuild:
+  Add 2.6.22 patch
+
+*madwifi-ng-0.9.3-r3 (16 Apr 2007)
+
+  16 Apr 2007; Steev Klimaszewski <steev@gentoo.org>
+  +madwifi-ng-0.9.3-r3.ebuild:
+  Add wireless-tools to RDEPEND and add back the injection useflag/patch.
+  Closes bug #159006 and bug #174198.
+
+  09 Apr 2007; Marcus D. Hanwell <cryos@gentoo.org>
+  madwifi-ng-0.9.3-r2.ebuild:
+  Stable on amd64, bug 173434.
+
+  08 Apr 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  madwifi-ng-0.9.3-r2.ebuild:
+  ppc stable, bug #173434
+
+  06 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
+  madwifi-ng-0.9.3-r2.ebuild:
+  stable x86, security bug 173434
+
+  21 Mar 2007; Steev Klimaszewski <steev@gentoo.org>
+  madwifi-ng-0.9.3-r2.ebuild:
+  Add IUSE, apparently it is a MUST/Required, though repoman doesn't complain
+  about it.
+
+*madwifi-ng-0.9.3-r2 (21 Mar 2007)
+
+  21 Mar 2007; Steev Klimaszewski <steev@gentoo.org>
+  -madwifi-ng-0.9.3-r1.ebuild, +madwifi-ng-0.9.3-r2.ebuild:
+  Fixes the issues that dsd pointed out in bug 171529, thanks to Gordon for his
+  faster responses than I.  Hopefully, shouldn't need to bump it anymore.
+
+*madwifi-ng-0.9.3-r1 (21 Mar 2007)
+
+  21 Mar 2007; Steev Klimaszewski <steev@gentoo.org>
+  -madwifi-ng-0.9.3.ebuild, +madwifi-ng-0.9.3-r1.ebuild:
+  Fix up the ebuild a bit (and revbump because of building all the rate control
+  modules now) - thanks to the unknown person in bug #171529.
+
+*madwifi-ng-0.9.3 (20 Mar 2007)
+
+  20 Mar 2007; Steev Klimaszewski <steev@gentoo.org>
+  +files/madwifi-ng-0.9.3-uudecode-gcda-fix.patch, +madwifi-ng-0.9.3.ebuild:
+  New upstream release.  Tested on an AR5212 Cardbus card, and an AR5005G.
+  Still no support for AR5008 :(
+
+  20 Feb 2007; <genstef@gentoo.org> -madwifi-ng-0.9.2.ebuild,
+  madwifi-ng-0.9.2.1.ebuild:
+  Use atheros-hal license for truedfx bug 146319
+
+  10 Feb 2007; Steev Klimaszewski <steev@gentoo.org>
+  +files/madwifi-ng-0.9.2-allow-cipher-none.diff, madwifi-ng-0.9.2.1.ebuild:
+  Add patch from bug #157677 to fix cipher none issues.  Thanks to Jon Howell
+  for the patch.  Will be in upstream 0.9.3 release.
+
+  10 Feb 2007; Mike Auty <ikelos@gentoo.org>
+  files/madwifi-ng-0.9.2.1-linux-2.6.20.patch:
+  Fix up 'unable to attach hardware' problem, bug 165477.
+
+  05 Feb 2007; Daniel Drake <dsd@gentoo.org>
+  +files/madwifi-ng-0.9.2.1-linux-2.6.20.patch, madwifi-ng-0.9.2.1.ebuild:
+  Move patches into src_unpack, and add 2.6.20 compatibility patch
+
+  29 Jan 2007; <genstef@gentoo.org> +files/madwifi-ng-r1886.patch,
+  madwifi-ng-0.9.2.1.ebuild:
+  Add injection useflag and patch thanks to jdettner
+
+  10 Dec 2006; Mike Doty <kingtaco@gentoo.org> madwifi-ng-0.9.2.1.ebuild:
+  amd64 stable, bug 157449
+
+  08 Dec 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  madwifi-ng-0.9.2.1.ebuild:
+  ppc stable, bug #157449
+
+  08 Dec 2006; Christian Faulhammer <opfer@gentoo.org>
+  madwifi-ng-0.9.2.1.ebuild:
+  stable x86, security bug #157449
+
+*madwifi-ng-0.9.2.1 (07 Dec 2006)
+
+  07 Dec 2006; Stefan Schweizer <genstef@gentoo.org>
+  -madwifi-ng-0.0.1443.20060207.ebuild,
+  -madwifi-ng-0.0.1531.20060427.ebuild, +madwifi-ng-0.9.2.1.ebuild:
+  Security version bump, bug 157449 also fixes 2.6.19 building
+
+  17 Nov 2006; Stefan Schweizer <genstef@gentoo.org>
+  +files/madwifi-ng-0.9.2-ath_intr.diff,
+  +files/madwifi-ng-0.9.2-config.h.diff,
+  +files/madwifi-ng-0.9.2-crypto_cipher_encrypt_one.diff,
+  madwifi-ng-0.9.2.ebuild:
+  Add 2.6.19 support patches thanks to Horst Schirmeier
+  <gentoo@schirmeier.com> and Martin Heimburger <vispillo@vispillo.org> in bug
+  152595
+
+  24 Sep 2006; Michael Hanselmann <hansmi@gentoo.org>
+  madwifi-ng-0.9.2.ebuild:
+  Stable on ppc.
+
+  14 Sep 2006; Daniel Drake <dsd@gentoo.org> madwifi-ng-0.9.2.ebuild:
+  Stable on amd64
+
+  11 Sep 2006; <ticho@gentoo.org> madwifi-ng-0.9.2.ebuild:
+  Stable on x86, security bug #144996.
+
+  08 Sep 2006; Steev Klimaszewski <steev@gentoo.org>
+  madwifi-ng-0.9.2.ebuild:
+  Leaving the patch in the files dir, but removing it from the 0.9.2 ebuild.
+  Closes/fixes bug #146459. Thanks to dsd for his work in finding, and
+  reporting, this issue.
+
+  04 Sep 2006; Stefan Schweizer <genstef@gentoo.org> metadata.xml,
+  -madwifi-ng-0.9.1.ebuild, -madwifi-ng-0.9.2_rc1692.ebuild,
+  madwifi-ng-0.9.2.ebuild:
+  remove old, mention as-is in license, bug 146319, remove brix from metadata
+
+  21 Aug 2006; Benjamin Schindler <config@gentoo.org>
+  +files/madwifi-association-fix.patch, madwifi-ng-0.9.2.ebuild:
+  Add patch to fix issue http://madwifi.org/ticket/776
+
+  05 Aug 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  madwifi-ng-0.0.1531.20060427.ebuild:
+  ppc stable, bug #139998
+
+*madwifi-ng-0.9.2 (29 Jul 2006)
+
+  29 Jul 2006; Stefan Schweizer <genstef@gentoo.org>
+  +madwifi-ng-0.9.2.ebuild:
+  version bump thanks to Conrad Kostecki <ConiKost@gmx.de> in bug 142043
+
+*madwifi-ng-0.9.2_rc1692 (26 Jul 2006)
+
+  26 Jul 2006; Stefan Schweizer <genstef@gentoo.org>
+  +madwifi-ng-0.9.2_rc1692.ebuild:
+  Add release candidate works with 2.6.18, closes bug 141631 thanks to Thomas
+  Meyer <thomas.mey@web.de>
+
+*madwifi-ng-0.9.1 (23 Jul 2006)
+
+  23 Jul 2006; Steev Klimaszewski <steev@gentoo.org>
+  +files/madwifi-ng-uudecode-gcda-fix.patch, +madwifi-ng-0.9.1.ebuild:
+  New upstream release, committing because Brix is on vacation.  Thanks to Yang
+  Zhao for the initial report, and everyone else in bug #134438. As well as
+  Agent86 for testing before I commit.
+
+*madwifi-ng-0.0.1531.20060427 (09 Jul 2006)
+*madwifi-ng-0.0.1443.20060207 (09 Jul 2006)
+
+  09 Jul 2006; Henrik Brix Andersen <brix@gentoo.org>
+  +madwifi-ng-0.0.1443.20060207.ebuild,
+  +madwifi-ng-0.0.1531.20060427.ebuild, -madwifi-ng-0.1443.20060207.ebuild,
+  -madwifi-ng-0.1531.20060427.ebuild:
+  New version scheme in preparation for version 0.9.x.
+
+  25 Jun 2006; Henrik Brix Andersen <brix@gentoo.org>
+  -madwifi-ng-0.1401.20060117.ebuild, -madwifi-ng-0.1420.20060201.ebuild,
+  -madwifi-ng-0.1440.20060206.ebuild, -madwifi-ng-0.1473.20060312.ebuild,
+  -madwifi-ng-0.1485.20060325.ebuild, -madwifi-ng-0.1502.20060414.ebuild:
+  Pruned old versions.
+
+  11 May 2006; Henrik Brix Andersen <brix@gentoo.org>
+  madwifi-ng-0.1531.20060427.ebuild:
+  Stable on x86. Fixes bug #132787.
+
+  30 Apr 2006; Simon Stelling <blubb@gentoo.org>
+  madwifi-ng-0.1443.20060207.ebuild:
+  stable on amd64
+
+*madwifi-ng-0.1531.20060427 (27 Apr 2006)
+
+  27 Apr 2006; Henrik Brix Andersen <brix@gentoo.org>
+  +madwifi-ng-0.1531.20060427.ebuild:
+  New snapshot.
+
+*madwifi-ng-0.1502.20060414 (14 Apr 2006)
+*madwifi-ng-0.1485.20060325 (14 Apr 2006)
+*madwifi-ng-0.1473.20060312 (14 Apr 2006)
+*madwifi-ng-0.1443.20060207 (14 Apr 2006)
+*madwifi-ng-0.1440.20060206 (14 Apr 2006)
+*madwifi-ng-0.1420.20060201 (14 Apr 2006)
+*madwifi-ng-0.1401.20060117 (14 Apr 2006)
+
+  14 Apr 2006; Henrik Brix Andersen <brix@gentoo.org> +metadata.xml,
+  +madwifi-ng-0.1401.20060117.ebuild, +madwifi-ng-0.1420.20060201.ebuild,
+  +madwifi-ng-0.1440.20060206.ebuild, +madwifi-ng-0.1443.20060207.ebuild,
+  +madwifi-ng-0.1473.20060312.ebuild, +madwifi-ng-0.1485.20060325.ebuild,
+  +madwifi-ng-0.1502.20060414.ebuild:
+  Renamed from net-wireless/madwifi-driver to net-wireless/madwifi-ng.
+
+*madwifi-driver-0.1485.20060325 (27 Mar 2006)
+
+  27 Mar 2006; Henrik Brix Andersen <brix@gentoo.org>
+  +madwifi-driver-0.1485.20060325.ebuild:
+  New madwifi-ng snapshot.
+
+*madwifi-driver-0.1473.20060312 (12 Mar 2006)
+
+  12 Mar 2006; Henrik Brix Andersen <brix@gentoo.org>
+  +madwifi-driver-0.1473.20060312.ebuild:
+  New snapshot, bug #125933.
+
+  05 Mar 2006; Henrik Brix Andersen <brix@gentoo.org>
+  madwifi-driver-0.1443.20060207.ebuild:
+  Stable on x86.
+
+  17 Feb 2006; Henrik Brix Andersen <brix@gentoo.org>
+  madwifi-driver-0.1_pre20050420-r1.ebuild,
+  madwifi-driver-0.1401.20060117.ebuild,
+  madwifi-driver-0.1420.20060201.ebuild,
+  madwifi-driver-0.1440.20060206.ebuild,
+  madwifi-driver-0.1443.20060207.ebuild:
+  Added note about remerging wpa_supplicant/hostapd after upgrading
+  madwifi-driver. Thanks to Chris Bainbridge in bug #122553.
+
+*madwifi-driver-0.1443.20060207 (07 Feb 2006)
+
+  07 Feb 2006; Henrik Brix Andersen <brix@gentoo.org>
+  +madwifi-driver-0.1443.20060207.ebuild:
+  New snapshot. The udev rules are no longer needed, bug #121913.
+
+*madwifi-driver-0.1440.20060206 (06 Feb 2006)
+
+  06 Feb 2006; Henrik Brix Andersen <brix@gentoo.org>
+  +madwifi-driver-0.1440.20060206.ebuild:
+  Version bump, bug #121783.
+
+  01 Feb 2006; Henrik Brix Andersen <brix@gentoo.org>
+  -madwifi-driver-0.1_pre20051111.ebuild:
+  Removed broken version.
+
+*madwifi-driver-0.1420.20060201 (01 Feb 2006)
+
+  01 Feb 2006; Henrik Brix Andersen <brix@gentoo.org>
+  +madwifi-driver-0.1420.20060201.ebuild:
+  New snapshot. Fixes bug #120290.
+
+  17 Jan 2006; Roy Marples <uberlord@gentoo.org>
+  madwifi-driver-0.1401.20060117.ebuild:
+  Marked ~amd64.
+
+*madwifi-driver-0.1401.20060117 (17 Jan 2006)
+
+  17 Jan 2006; Henrik Brix Andersen <brix@gentoo.org>
+  +madwifi-driver-0.1401.20060117.ebuild:
+  New snapshot, changed naming scheme to match upstream. Fixes bug #112853 and
+  bug #102104. Thank you to Sebastian Siewior, Uberlord and cryos for testing.
+
+  16 Nov 2005; Stefan Schweizer <genstef@gentoo.org>
+  madwifi-driver-0.1_pre20051111.ebuild:
+  Remove ath_rate_amrr if it is leftover from an old installation, #112728
+
+  15 Nov 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  madwifi-driver-0.1_pre20051111.ebuild:
+  Marked -amd64, kernel oops caused by traffic over the interface.
+
+*madwifi-driver-0.1_pre20051111 (13 Nov 2005)
+
+  13 Nov 2005; Stefan Schweizer <genstef@gentoo.org>
+  -files/madwifi-driver-0.1-arp-packets-33958.patch,
+  -files/madwifi-driver-2.6.8-20040814-proc_dointvec.patch,
+  -files/madwifi-multi-ssid-support.patch,
+  -madwifi-driver-0.1_pre20050107.ebuild,
+  -madwifi-driver-0.1_pre20050224.ebuild,
+  -madwifi-driver-0.1_pre20050420.ebuild,
+  -madwifi-driver-0.1_pre20050809.ebuild,
+  -madwifi-driver-0.1_pre20050809-r1.ebuild,
+  -madwifi-driver-0.1_pre20051031.ebuild,
+  +madwifi-driver-0.1_pre20051111.ebuild:
+  Version bump, remove old ebuilds
+
+  12 Nov 2005; Stefan Schweizer <genstef@gentoo.org>
+  madwifi-driver-0.1_pre20051031.ebuild:
+  Add wlan_scan_sta, wlan_scan_ap, postinst einfo note, new homepage, extra
+  docs, madwifi-tools DEPEND
+
+*madwifi-driver-0.1_pre20051031 (09 Nov 2005)
+
+  09 Nov 2005; Peter Johanson <latexer@gentoo.org>
+  +madwifi-driver-0.1_pre20051031.ebuild:
+  Bump with new CVS snapshot.
+
+*madwifi-driver-0.1_pre20050809-r1 (22 Aug 2005)
+*madwifi-driver-0.1_pre20050420-r1 (22 Aug 2005)
+
+  22 Aug 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +madwifi-driver-0.1_pre20050420-r1.ebuild,
+  +madwifi-driver-0.1_pre20050809-r1.ebuild:
+  Install header files for use by net-wireless/hostapd and
+  net-wireless/wpa_supplicant.
+
+*madwifi-driver-0.1_pre20050809 (10 Aug 2005)
+
+  10 Aug 2005; Stefan Schweizer <genstef@gentoo.org>
+  +madwifi-driver-0.1_pre20050809.ebuild:
+  Version bump thanks to Miles Lubin <miles@lubin.us> in bug 101872
+
+  30 Jun 2005; Joseph Jezak <josejx@gentoo.org>
+  madwifi-driver-0.1_pre20050420.ebuild:
+  Added ~ppc and PPC target, bug #97001.
+
+*madwifi-driver-0.1_pre20050420 (25 Apr 2005)
+
+  25 Apr 2005; <solar@gentoo.org> -madwifi-driver-0.1_pre20041019.ebuild,
+  -madwifi-driver-0.1_pre20050106.ebuild,
+  +madwifi-driver-0.1_pre20050420.ebuild:
+  - remove older snapshots that were using kernel-mod.eclass and updated snapshot
+
+*madwifi-driver-0.1_pre20050224 (27 Feb 2005)
+
+  27 Feb 2005; Stefan Schweizer <genstef@gentoo.org>
+  +madwifi-driver-0.1_pre20050224.ebuild:
+  New madwifi cvs-snapshot, bug 81766, and module build order restructure, bug
+  82752
+
+  09 Jan 2005; <solar@gentoo.org> madwifi-driver-0.1_pre20050107.ebuild:
+  - removing masking and put ebuild in ~arch
+
+  08 Jan 2005; Stefan Schweizer <genstef@gentoo.org>
+  madwifi-driver-0.1_pre20050107.ebuild:
+  S= --> S=/madwifi, thanks to Dominic Battre <dominic.battre@gmx.de> in bug
+  75654 comment #22
+
+*madwifi-driver-0.1_pre20050107 (07 Jan 2005)
+
+  07 Jan 2005; <solar@gentoo.org> +madwifi-driver-0.1_pre20050107.ebuild:
+  - linux-mod update from Stefan Schweizer
+
+*madwifi-driver-0.1_pre20050106 (07 Jan 2005)
+
+  07 Jan 2005; <solar@gentoo.org> -madwifi-driver-0.1_pre20040824-r1.ebuild,
+  -madwifi-driver-0.1_pre20040906.ebuild,
+  +madwifi-driver-0.1_pre20050106.ebuild:
+  - version bump for 2.6.x kernels
+
+  22 Oct 2004; <solar@gentoo.org> madwifi-driver-0.1_pre20041019.ebuild:
+  added app-arch/sharutils to DEPEND
+
+*madwifi-driver-0.1_pre20041019 (19 Oct 2004)
+
+  19 Oct 2004; <solar@gentoo.org> -madwifi-driver-0.1_pre20031213-r1.ebuild,
+  -madwifi-driver-0.1_pre20040108.ebuild,
+  -madwifi-driver-0.1_pre20040212.ebuild,
+  -madwifi-driver-0.1_pre20040514.ebuild,
+  -madwifi-driver-0.1_pre20040726.ebuild,
+  madwifi-driver-0.1_pre20040906.ebuild,
+  +madwifi-driver-0.1_pre20041019.ebuild:
+  Flushed a few of the older ebuilds and added a new 20041019 snapshot for
+  kernel 2.6.9 - madwifi-multi-ssid.patch still appears to be needed
+
+*madwifi-driver-0.1_pre20040906 (06 Sep 2004)
+
+  06 Sep 2004; <solar@gentoo.org> -madwifi-driver-0.1_pre20040824.ebuild,
+  +madwifi-driver-0.1_pre20040906.ebuild:
+  updated the cvs snapshot of madwifi-driver. The WPA branch was merged back
+  into HEAD
+
+*madwifi-driver-0.1_pre20040824-r1 (29 Aug 2004)
+
+  29 Aug 2004; <solar@gentoo.org>
+  +files/madwifi-driver-2.6.8-20040814-proc_dointvec.patch,
+  +files/madwifi-multi-ssid-support.patch,
+  +madwifi-driver-0.1_pre20040824-r1.ebuild:
+  update for 2.6.8 kernels
+
+  24 Aug 2004; <solar@gentoo.org> :
+  updated snapshot, pulling from the wpa branch
+
+*madwifi-driver-0.1_pre20040726 (26 Jul 2004)
+
+  26 Jul 2004; <solar@gentoo.org> madwifi-driver-0.1_pre20040726.ebuild,
+  files/madwifi-driver-0.1-arp-packets-33958.patch:
+  new snapshot and added patch from madwifi mailing list which resolves corrupt
+  frames on wlan0 when ath0 and wlan0 are in the same bridge
+
+  15 May 2004; Peter Johanson <latexer@gentoo.org>
+  madwifi-driver-0.1_pre20040514.ebuild:
+  Small fix for 2.6 kernels. Silly me.
+
+*madwifi-driver-0.1_pre20040514 (14 May 2004)
+
+  14 May 2004; Peter Johanson <latexer@gentoo.org>
+  madwifi-driver-0.1_pre20040514.ebuild:
+  Bump with new CVS snapshot. Includes small changes to handing of makefile variables.
+
+*madwifi-driver-0.1_pre20040212 (12 Feb 2004)
+
+  12 Feb 2004; Stephen Diener <sediener@gentoo.org>
+  madwifi-driver-0.1_pre20030702.ebuild,
+  madwifi-driver-0.1_pre20030802.ebuild,
+  madwifi-driver-0.1_pre20031110.ebuild,
+  madwifi-driver-0.1_pre20031213-r1.ebuild,
+  madwifi-driver-0.1_pre20031213.ebuild,
+  madwifi-driver-0.1_pre20040212.ebuild:
+  Cleared out all but the last three monthly snapshots.  Added Febs snap.
+
+*madwifi-driver-0.1_pre20040108 (08 Jan 2004)
+
+  08 Jan 2004; Stephen Diener <sediener@gentoo.org>
+  madwifi-driver-0.1_pre20040108.ebuild:
+  monthly CVS snapshot for Jan
+
+*madwifi-driver-0.1_pre20031213-r1 (19 Dec 2003)
+
+  19 Dec 2003; Stephen Diener <sediener@gentoo.org>
+  madwifi-driver-0.1_pre20031213-r1.ebuild:
+  Modified to work with 2.6 kernels: thanks to flokno@gmx.net and Jani Vaarala
+  <flame@pymgyprojects.com> for debugging
+
+*madwifi-driver-0.1_pre20031213 (13 Dec 2003)
+
+  13 Dec 2003; Stephen Diener <sediener@gentoo.org>
+  madwifi-driver-0.1_pre20031213.ebuild:
+  new monthly snapshot as promised
+
+  11 Nov 2003; Peter Johanson <latexer@gentoo.org> metadata.xml:
+  Now in the better "mobile" herd
+
+*madwifi-driver-0.1_pre20030802 (03 Aug 2003)
+
+  03 Aug 2003; Stephen Diener <sediener@gentoo.org>
+  madwifi-driver-0.1_pre20030802.ebuild:
+  New release
+
+*madwifi-driver-0.1_pre20030702 (18 Jul 2003)
+
+  18 Jul 2003; Peter Johanson <latexer@gentoo.org>
+  madwifi-driver-0.1_pre20030702.ebuild:
+  Initial import. Drivers for the Atheros chipset (a/b/g)

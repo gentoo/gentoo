@@ -1,0 +1,36 @@
+# ChangeLog for net-analyzer/nbwmon
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nbwmon/ChangeLog,v 1.7 2015/01/18 18:45:28 jer Exp $
+
+*nbwmon-0.5.2 (18 Jan 2015)
+
+  18 Jan 2015; Jeroen Roovers <jer@gentoo.org> +nbwmon-0.5.2.ebuild,
+  +files/nbwmon-0.5.2-tinfo.patch:
+  Version bump.
+
+  30 Oct 2014; Jeroen Roovers <jer@gentoo.org> nbwmon-0.5.1.ebuild:
+  Update HOMEPAGE/SRC_URI.
+
+*nbwmon-0.5.1 (30 Oct 2014)
+
+  30 Oct 2014; Jeroen Roovers <jer@gentoo.org> -nbwmon-0.3.2.ebuild,
+  +nbwmon-0.5.1.ebuild, -files/nbwmon-0.3.2-tinfo.patch:
+  Version bump (bug #527456).
+
+  24 Oct 2014; Anthony G. Basile <blueness@gentoo.org> nbwmon-0.4.3.ebuild:
+  Keyword ~ppc64, bug #526064
+
+  21 Sep 2014; Agostino Sarubbo <ago@gentoo.org> nbwmon-0.4.3.ebuild:
+  Add ~ppc, wrt bug #523344
+
+*nbwmon-0.4.3 (20 Sep 2014)
+
+  20 Sep 2014; Jeroen Roovers <jer@gentoo.org> +nbwmon-0.4.3.ebuild,
+  +files/nbwmon-0.4.3-tinfo.patch:
+  Version bump.
+
+*nbwmon-0.3.2 (04 Sep 2014)
+
+  04 Sep 2014; Jeroen Roovers <jer@gentoo.org> +nbwmon-0.3.2.ebuild,
+  +files/nbwmon-0.3.2-tinfo.patch, +metadata.xml:
+  Initial commit (bug #520822 by Ari Malinen).

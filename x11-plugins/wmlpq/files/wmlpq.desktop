@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=WmLpq
+Comment=Printqueues monitor
+Comment[pl]=Monitor kolejki drukarek
+Exec=wmlpq
+Type=Application
+Terminal=false
+Categories=System;

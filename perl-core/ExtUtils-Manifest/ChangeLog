@@ -1,0 +1,207 @@
+# ChangeLog for perl-core/ExtUtils-Manifest
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/perl-core/ExtUtils-Manifest/ChangeLog,v 1.43 2015/02/28 21:35:34 dilfridge Exp $
+
+  28 Feb 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  ExtUtils-Manifest-1.630.0-r1.ebuild, ExtUtils-Manifest-1.700.0.ebuild:
+  Add another blocker for bug 541544
+
+*ExtUtils-Manifest-1.700.0 (27 Feb 2015)
+
+  27 Feb 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +ExtUtils-Manifest-1.700.0.ebuild:
+  Version bump
+
+  08 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -ExtUtils-Manifest-1.610.0-r1.ebuild:
+  Remove old
+
+*ExtUtils-Manifest-1.630.0-r1 (26 Jul 2014)
+*ExtUtils-Manifest-1.610.0-r1 (26 Jul 2014)
+
+  26 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +ExtUtils-Manifest-1.610.0-r1.ebuild, +ExtUtils-Manifest-1.630.0-r1.ebuild,
+  -ExtUtils-Manifest-1.610.0.ebuild, -ExtUtils-Manifest-1.630.0.ebuild:
+  EAPI bump
+
+  06 Jul 2014; Mikle Kolyada <zlogene@gentoo.org>
+  -ExtUtils-Manifest-1.580.0.ebuild, -ExtUtils-Manifest-1.590.0.ebuild,
+  -ExtUtils-Manifest-1.600.0.ebuild:
+  Drop old.
+
+  02 Feb 2014; Mike Frysinger <vapier@gentoo.org>
+  ExtUtils-Manifest-1.610.0.ebuild, ExtUtils-Manifest-1.630.0.ebuild:
+  Add m68k love.
+
+  20 Jan 2014; Mike Frysinger <vapier@gentoo.org>
+  ExtUtils-Manifest-1.580.0.ebuild, ExtUtils-Manifest-1.590.0.ebuild,
+  ExtUtils-Manifest-1.600.0.ebuild:
+  Add arm64 love.
+
+  19 Jan 2014; Mike Frysinger <vapier@gentoo.org>
+  ExtUtils-Manifest-1.610.0.ebuild, ExtUtils-Manifest-1.630.0.ebuild:
+  Add arm64 love.
+
+*ExtUtils-Manifest-1.630.0 (09 Sep 2013)
+
+  09 Sep 2013; Patrick Lauer <patrick@gentoo.org>
+  +ExtUtils-Manifest-1.630.0.ebuild:
+  Bump
+
+  20 Apr 2013; Matt Turner <mattst88@gentoo.org>
+  ExtUtils-Manifest-1.610.0.ebuild:
+  Added ~mips.
+
+  16 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  ExtUtils-Manifest-1.610.0.ebuild:
+  Stable for ppc64, wrt bug #456568
+
+  02 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  ExtUtils-Manifest-1.610.0.ebuild:
+  Stable for sh, wrt bug #458122
+
+  23 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  ExtUtils-Manifest-1.610.0.ebuild:
+  Stable for sparc, wrt bug #458122
+
+  21 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  ExtUtils-Manifest-1.610.0.ebuild:
+  Stable for ia64, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  ExtUtils-Manifest-1.610.0.ebuild:
+  Stable for arm, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  ExtUtils-Manifest-1.610.0.ebuild:
+  Stable for s390, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  ExtUtils-Manifest-1.610.0.ebuild:
+  Stable for alpha, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  ExtUtils-Manifest-1.610.0.ebuild:
+  Stable for hppa, wrt bug #458122
+
+  18 Feb 2013; Zac Medico <zmedico@gentoo.org> ExtUtils-Manifest-1.610.0.ebuild:
+  Add ~arm-linux keyword.
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  ExtUtils-Manifest-1.610.0.ebuild:
+  Stable for ppc, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  ExtUtils-Manifest-1.610.0.ebuild:
+  Stable for x86, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  ExtUtils-Manifest-1.610.0.ebuild:
+  Stable for amd64, wrt bug #458122
+
+  06 Jan 2013; Raúl Porcel <armin76@gentoo.org>
+  ExtUtils-Manifest-1.580.0.ebuild:
+  s390/sh stable
+
+*ExtUtils-Manifest-1.610.0 (13 Sep 2012)
+
+  13 Sep 2012; Torsten Veller <tove@gentoo.org>
+  +ExtUtils-Manifest-1.610.0.ebuild:
+  Version bump
+
+  05 Aug 2012; Markus Meier <maekke@gentoo.org>
+  ExtUtils-Manifest-1.600.0.ebuild:
+  arm stable, bug #418803
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  28 Apr 2012; Alexis Ballier <aballier@gentoo.org>
+  ExtUtils-Manifest-1.600.0.ebuild:
+  keyword ~amd64-fbsd
+
+  24 Mar 2012; Fabian Groffen <grobian@gentoo.org>
+  ExtUtils-Manifest-1.600.0.ebuild:
+  Add Prefix keywords
+
+  14 Feb 2012; Alexis Ballier <aballier@gentoo.org>
+  ExtUtils-Manifest-1.600.0.ebuild:
+  keyword ~x86-fbsd
+
+  04 Feb 2012; Raúl Porcel <armin76@gentoo.org>
+  ExtUtils-Manifest-1.580.0.ebuild, ExtUtils-Manifest-1.590.0.ebuild,
+  ExtUtils-Manifest-1.600.0.ebuild:
+  Add ~arm/~s390/~sh
+
+*ExtUtils-Manifest-1.600.0 (25 Aug 2011)
+
+  25 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +ExtUtils-Manifest-1.600.0.ebuild:
+  Version bump
+
+*ExtUtils-Manifest-1.590.0 (09 Aug 2011)
+
+  09 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +ExtUtils-Manifest-1.590.0.ebuild:
+  Version bump
+
+  26 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  ExtUtils-Manifest-1.580.0.ebuild:
+  Marked ~ppc64 wrt #357599
+
+*ExtUtils-Manifest-1.580.0 (21 May 2011)
+
+  21 May 2011; Torsten Veller <tove@gentoo.org> -ExtUtils-Manifest-1.58.ebuild,
+  +ExtUtils-Manifest-1.580.0.ebuild:
+  Change version scheme
+
+  13 Sep 2010; Joseph Jezak <josejx@gentoo.org>
+  ExtUtils-Manifest-1.58.ebuild:
+  Marked ppc stable for bug #330387.
+
+  28 Aug 2010; Raúl Porcel <armin76@gentoo.org>
+  ExtUtils-Manifest-1.58.ebuild:
+  alpha/ia64/sparc stable wrt #330387
+
+  31 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  ExtUtils-Manifest-1.58.ebuild:
+  Stable on amd64 wrt bug #330387
+
+  30 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  ExtUtils-Manifest-1.58.ebuild:
+  stable x86, bug 330387
+
+  29 Jul 2010; Jeroen Roovers <jer@gentoo.org>
+  ExtUtils-Manifest-1.58.ebuild:
+  Stable for HPPA (bug #330387).
+
+  14 May 2010; Jeroen Roovers <jer@gentoo.org>
+  ExtUtils-Manifest-1.58.ebuild:
+  Marked ~hppa (bug #317877).
+
+  12 May 2010; Joseph Jezak <josejx@gentoo.org>
+  ExtUtils-Manifest-1.58.ebuild:
+  Marked ~ppc for bug #317877.
+
+  09 May 2010; Raúl Porcel <armin76@gentoo.org>
+  ExtUtils-Manifest-1.58.ebuild:
+  Add ~alpha/~ia64/~sparc wrt #317877
+
+  30 Apr 2010; Torsten Veller <tove@gentoo.org>
+  ExtUtils-Manifest-1.58.ebuild:
+  Import from perl-experimental for ExtUtils-MakeMaker
+
+*ExtUtils-Manifest-1.58 (06 Dec 2009)
+
+  06 Dec 2009; Torsten Veller <tove@gentoo.org>
+  +ExtUtils-Manifest-1.58.ebuild:
+  Version bump
+
+*ExtUtils-Manifest-1.57 (11 Oct 2009)
+
+  11 Oct 2009; Kent Fredric <kentfredric@gmail.com>
+  +ExtUtils-Manifest-1.57.ebuild:
+  Bumped to 1.57 ( after a fight with echangelog )
+
+  11 May 2009; Kent Fredric <kentfredric@gmail.com> +metadata.xml:
+  Added for Dist::ZIlla

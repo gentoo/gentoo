@@ -1,0 +1,105 @@
+# ChangeLog for sys-boot/gnu-efi
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/gnu-efi/ChangeLog,v 1.27 2015/06/18 19:30:56 radhermit Exp $
+
+  18 Jun 2015; Tim Harder <radhermit@gentoo.org> gnu-efi-3.0.2.ebuild:
+  Update HOMEPAGE.
+
+*gnu-efi-3.0.2 (13 Apr 2015)
+
+  13 Apr 2015; Mike Frysinger <vapier@gentoo.org> +gnu-efi-3.0.2.ebuild:
+  Version bump #537550 by David Holm.
+
+  28 Jun 2014; Raúl Porcel <armin76@gentoo.org> gnu-efi-3.0s.ebuild:
+  Add the fix from 3.0u to 3.0s since its stable, bug #503210
+
+  15 Mar 2014; Mike Frysinger <vapier@gentoo.org> gnu-efi-3.0u.ebuild:
+  Avoid -maccumulate-outgoing-args on ia64 systems #503210 by Dennis Schridde.
+
+  07 Jul 2013; Agostino Sarubbo <ago@gentoo.org> gnu-efi-3.0s.ebuild:
+  Stable for ia64, wrt bug #450908
+
+*gnu-efi-3.0u (03 Jul 2013)
+
+  03 Jul 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +gnu-efi-3.0u.ebuild:
+  Version bump, bug #475532.
+
+  03 Jul 2013; Agostino Sarubbo <ago@gentoo.org> gnu-efi-3.0s.ebuild:
+  Stable for x86, wrt bug #450908
+
+  03 Jul 2013; Agostino Sarubbo <ago@gentoo.org> gnu-efi-3.0s.ebuild:
+  Stable for amd64, wrt bug #450908
+
+*gnu-efi-3.0s (25 Nov 2012)
+
+  25 Nov 2012; Mike Frysinger <vapier@gentoo.org> +gnu-efi-3.0s.ebuild:
+  Version bump and update to EAPI=4 #412645 by Rod Smith.  Disable QA checks on
+  compiled objects as they do not make sense for bootloaders #329823 by Dane
+  Smith.  Disable ssp since that requires a C library (like glibc) to work, and
+  does not make sense for bootloaders #444246 by Maxim Kammerer.
+
+  28 Aug 2010; Mike Frysinger <vapier@gentoo.org> gnu-efi-3.0i.ebuild:
+  Clean up and document the ebuild a bit.
+
+  24 Jul 2010; Raúl Porcel <armin76@gentoo.org> -gnu-efi-3.0e.ebuild,
+  gnu-efi-3.0i.ebuild:
+  ia64 stable
+
+*gnu-efi-3.0i (10 Jan 2010)
+
+  10 Jan 2010; Raúl Porcel <armin76@gentoo.org> gnu-efi-3.0g.ebuild,
+  +gnu-efi-3.0i.ebuild:
+  ia64 stable, version bump
+
+*gnu-efi-3.0g (02 Jun 2009)
+
+  02 Jun 2009; Raúl Porcel <armin76@gentoo.org> +gnu-efi-3.0g.ebuild:
+  Version bump
+
+  23 Feb 2008; Robin H. Johnson <robbat2@gentoo.org> gnu-efi-3.0e.ebuild:
+  This builds on amd64 too! Add ~amd64.
+
+*gnu-efi-3.0e (08 Feb 2008)
+
+  08 Feb 2008; Raúl Porcel <armin76@gentoo.org> -gnu-efi-3.0a.ebuild,
+  +gnu-efi-3.0e.ebuild:
+  Version bump, thanks to plasmaroo for testing
+
+  13 Mar 2007; Raúl Porcel <armin76@gentoo.org> gnu-efi-3.0a-r1.ebuild:
+  x86 stable
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  07 Apr 2005; <plasmaroo@gentoo.org> gnu-efi-3.0a-r1.ebuild:
+  Stable -r1 on IA64.
+
+*gnu-efi-3.0a-r1 (05 Apr 2005)
+
+  05 Apr 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/gnu-efi-3.0a-lds-redhat.patch, +gnu-efi-3.0a-r1.ebuild:
+  Update the linker script with a patch from redhat which supports newer
+  versions of binutils.
+
+  23 Jan 2005; <plasmaroo@gentoo.org> gnu-efi-3.0a.ebuild:
+  Adding missing pcituils dependency; solves merge failures on bootstrapping.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> gnu-efi-3.0a.ebuild:
+  virtual/glibc -> virtual/libc
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> gnu-efi-3.0a.ebuild:
+  Add inherit eutils
+
+  04 Mar 2004; <agriffis@gentoo.org> gnu-efi-3.0a.ebuild:
+  stable on ia64
+
+  21 Jan 2004; <agriffis@gentoo.org> gnu-efi-3.0a.ebuild:
+  Move to /usr instead of root dir
+
+*gnu-efi-3.0a (21 Jan 2004)
+
+  21 Jan 2004; <agriffis@gentoo.org> gnu-efi-3.0a.ebuild,
+  files/gnu-efi-3.0a-lds.patch:
+  New ebuild for gnu-efi with patches from Debian. Thanks to Matt Anderson in
+  bug 38875

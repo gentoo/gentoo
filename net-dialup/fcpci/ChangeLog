@@ -1,0 +1,104 @@
+# ChangeLog for net-dialup/fcpci
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/fcpci/ChangeLog,v 1.27 2014/06/27 06:38:56 pinkbyte Exp $
+
+  27 Jun 2014; Sergey Popov <pinkbyte@gentoo.org> fcpci-0.1-r3.ebuild:
+  Enable verbose build
+
+*fcpci-0.1-r3 (24 Jul 2013)
+
+  24 Jul 2013; Sergey Popov <pinkbyte@gentoo.org> -fcpci-0.1-r2.ebuild,
+  +fcpci-0.1-r3.ebuild, -files/fcpci-linux-2.6.34.diff,
+  +files/fcpci-kernel-2.6.34.patch, +files/kernel-2.6.34.patch,
+  +files/fcpci-kernel-2.6.39-amd64.patch, +files/fcpci-kernel-2.6.39.patch,
+  +files/kernel-2.6.39.patch, +files/fcpci-kernel-3.2.0.patch,
+  +files/fcpci-kernel-3.4.0.patch, +files/fcpci-kernel-3.8.0.patch,
+  +files/fcpci-kernel-3.10.0.patch:
+  Revision bump: EAPI 5, epatch_user, add patches to support new kernels.
+  Patches are borrowed from dfreise overlay. Drop old revision
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #92799
+
+  19 Mar 2012; Ulrich Müller <ulm@gentoo.org> fcpci-0.1-r2.ebuild:
+  Non-maintainer commit: Add mirror restriction, bug 398711.
+
+  06 Jun 2011; Robin H. Johnson <robbat2@gentoo.org> fcpci-0.1-r2.ebuild:
+  Linux-3.0 changes.
+
+  19 Dec 2010; Stefan Briesenick <sbriesen@gentoo.org> fcpci-0.1-r2.ebuild:
+  fixed minor QA issues
+
+*fcpci-0.1-r2 (19 Dec 2010)
+
+  19 Dec 2010; Stefan Briesenick <sbriesen@gentoo.org> +fcpci-0.1-r2.ebuild,
+  +files/fcpci-linux-2.6.34.diff:
+  added updated ebuild for kernels >= 2.6.34, thanks to Tilo Prütz. Solving
+  bug #348424.
+
+  19 Dec 2010; Stefan Briesenick <sbriesen@gentoo.org> -fcpci-0.1.ebuild,
+  -fcpci-0.1-r1.ebuild:
+  removed old versions
+
+*fcpci-0.1-r1 (30 Jan 2008)
+
+  30 Jan 2008; Stefan Briesenick <sbriesen@gentoo.org> +fcpci-0.1-r1.ebuild:
+  fixing string.h problem (see bug #202385).
+
+  06 Jan 2008; Stefan Briesenick <sbriesen@gentoo.org>
+  -fcpci-3.11.02-r2.ebuild:
+  removed old ebuild.
+
+*fcpci-0.1 (06 Jan 2008)
+
+  06 Jan 2008; Stefan Briesenick <sbriesen@gentoo.org> metadata.xml,
+  +fcpci-0.1.ebuild:
+  using special openSUSE repository for AVM drivers from now on.
+
+  12 Mar 2006; Alin Nastac <mrness@gentoo.org> fcpci-3.11.02-r2.ebuild:
+  Quote $WORKDIR.
+
+*fcpci-3.11.02-r2 (09 Mar 2005)
+
+  09 Mar 2005; Stefan Schweizer <genstef@gentoo.org>
+  -fcpci-3.11.02-r1.ebuild, +fcpci-3.11.02-r2.ebuild:
+  Revision bump, removing 2.6 kernel support in favour of fritzcapi.
+
+  09 Mar 2005; Alin Nastac <mrness@gentoo.org> fcpci-3.11.02-r1.ebuild:
+  Replace kernel-mod inheritance with linux-mod.
+
+  06 Feb 2005; Alin Nastac <mrness@gentoo.org> -fcpci-03.11.02.ebuild:
+  Remove obsolete ebuild.
+
+  10 Jan 2005; Alin Nastac <mrness@gentoo.org> -files/tools.c.diff,
+  -fcpci-03.10.02.ebuild, fcpci-3.11.02-r1.ebuild:
+  Mark stable on x86 and remove old ebuild.
+
+  19 Nov 2004; Alin Nastac <mrness@gentoo.org> -fcpci-03.09.10.ebuild,
+  fcpci-03.11.02.ebuild:
+  Marked stable on x86. Removed old ebuild.
+
+*fcpci-3.11.02-r1 (13 Nov 2004)
+
+  13 Nov 2004; Alin Nastac <mrness@gentoo.org> +fcpci-3.11.02-r1.ebuild:
+  Add support for 2.6 kernels. See #55902
+
+*fcpci-03.11.02 (10 Apr 2004)
+
+  10 Apr 2004; Heinrich Wendel <lanius@gentoo.org> :
+  version bump, bug #45355, add kernel 2.6 warning bug #46769
+
+  19 Nov 2003; Heinrich Wendel <lanius@gentoo.org> metadata.xml:
+  metadata
+
+*fcpci-03.10.02 (25 Apr 2003)
+
+  25 Apr 2003; Martin Holzer <mholzer@gentoo.org> fcpci-03.10.02.ebuild:
+  Version bumped. Submitted by Georg Lippold <georg.lippold@gmx.de> in #12348.
+
+*fcpci-03.09.10 (9 Aug 2002)
+
+  9 Aug 2002; Bart Verwilst <verwilst@gentoo.org> :
+
+  Initial version, just in time for our Gentoo 1.4 release :o)
+  This version will be included on our bootcd.

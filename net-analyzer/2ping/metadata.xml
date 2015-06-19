@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>blueness@gentoo.org</email>
+		<name>Anthony G. Basile</name>
+	</maintainer>
+	<longdescription>
+		A bi-directional ping utility
+	</longdescription>
+	<use>
+		<flag name='crc'>Enable crc check.</flag>
+		<flag name='md5'>Enable md5 hash check.</flag>
+		<flag name='sha'>Enable sha1 or sha256 check.</flag>
+		<flag name='server'>Install the server init scripts.</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,212 @@
+# ChangeLog for dev-java/jikes
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jikes/ChangeLog,v 1.57 2015/06/09 13:47:52 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  27 Jul 2014; Pacho Ramos <pacho@gentoo.org> -jikes-1.22-r1.ebuild:
+  Remove masked for removal package
+
+  09 Jul 2014; Patrick Lauer <patrick@gentoo.org> jikes-1.22-r1.ebuild:
+  Improve ebuild for repoman happy
+
+  07 Feb 2014; Tom Wijsman <TomWij@gentoo.org> jikes-1.22-r13.ebuild:
+  Quote variables to fix repoman warnings.
+
+  24 May 2013; Patrick Lauer <patrick@gentoo.org> jikes-1.22-r13.ebuild:
+  Dropping arm stable keyword until java-config-2 catches up #469266
+
+  23 Jan 2011; Raúl Porcel <armin76@gentoo.org> jikes-1.22-r1.ebuild,
+  jikes-1.22-r13.ebuild:
+  Drop alpha/ia64 keywords
+
+  13 Feb 2009; Raúl Porcel <armin76@gentoo.org> jikes-1.22-r13.ebuild:
+  Add ~alpha
+
+  15 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  jikes-1.22-r13.ebuild:
+  ppc stable. bug #147254
+
+  15 Oct 2006; Joshua Nichols <nichoj@gentoo.org> jikes-1.22-r13.ebuild:
+  Stabilizing on ia64 as part of new Java system, bug #147254.
+
+  14 Oct 2006; Joshua Nichols <nichoj@gentoo.org> jikes-1.22-r13.ebuild:
+  Stabilizing on amd64 as part of new Java system, bug #147254.
+
+  14 Oct 2006; Joshua Nichols <nichoj@gentoo.org> jikes-1.22-r13.ebuild:
+  Stabilizing on ppc64 as part of new Java system, bug #147254.
+
+  14 Oct 2006; Joshua Jackson <tsunam@gentoo.org> jikes-1.22-r13.ebuild:
+  New java stable on x86; bug #147254
+
+  05 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org> jikes-1.22-r1.ebuild,
+  jikes-1.22-r13.ebuild:
+  Dropping sparc keywords, see #96229
+
+  02 Sep 2006; Fernando J. Pereda <ferdy@gentoo.org> jikes-1.22-r13.ebuild:
+  Alpha doesn't support java-config-2.
+
+  23 Jul 2006; Diego Pettenò <flameeyes@gentoo.org> jikes-1.22-r13.ebuild:
+  Add ~x86-fbsd keyword.
+
+*jikes-1.22-r13 (30 Jun 2006)
+
+  30 Jun 2006; Joshua Nichols <jnichols@gentoo.org> files/jikes,
+  -jikes-1.22-r12.ebuild, +jikes-1.22-r13.ebuild:
+  Fixed wrapper script to address bug #138281
+
+  25 Jun 2006; <nichoj@gentoo.org> +files/compiler-settings, +files/jikes:
+  Revision bump to add support for new Java system.
+
+  03 Jun 2006; Guy Martin <gmsoft@gentoo.org> jikes-1.22-r1.ebuild:
+  Removing hppa KEYWORDS. HPPA will not support java anymore.
+
+  18 Mar 2006; Markus Rothe <corsair@gentoo.org> jikes-1.22-r1.ebuild:
+  Stable on ppc64
+
+  16 Oct 2005; Tom Gall <tgall@gentoo.org> jikes-1.22-r1.ebuild:
+  added ~ppc64
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org> jikes-1.22-r1.ebuild:
+  Mark 1.22-r1 stable on alpha
+
+  28 Aug 2005; Guy Martin <gmsoft@gentoo.org> jikes-1.22-r1.ebuild:
+  Stable on hppa.
+
+  23 Aug 2005; Aron Griffis <agriffis@gentoo.org> jikes-1.22-r1.ebuild:
+  stable on ia64
+
+  18 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> jikes-1.22-r1.ebuild:
+  Stable on ppc.
+
+  14 Aug 2005; Luis Medinas <metalgod@gentoo.org> jikes-1.22-r1.ebuild:
+  Stable on AMD64.
+
+  26 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org> jikes-1.22-r1.ebuild:
+  Stable on sparc
+
+  25 Mar 2005; Thomas Matthijs <axxo@gentoo.org> jikes-1.21.ebuild,
+  jikes-1.22-r1.ebuild:
+  jikes moved to a new home
+
+  13 Oct 2004; Thomas Matthijs <axxo@gentoo.org> files/deprecated.patch,
+  jikes-1.22-r1.ebuild:
+  fix patch, stupid cvs headers
+
+  12 Oct 2004; Thomas Matthijs <axxo@gentoo.org> -jikes-1.22.ebuild:
+  removing broken version
+
+*jikes-1.22-r1 (12 Oct 2004)
+
+  12 Oct 2004; Thomas Matthijs <axxo@gentoo.org> +files/deprecated.patch,
+  +jikes-1.22-r1.ebuild:
+  upstream patch for
+  (http://oss.software.ibm.com/developerworks/bugs/?func=detailbug&bug_id=4058
+  &group_id=10) closes bug 66977,66840 (partly)
+
+*jikes-1.22 (06 Oct 2004)
+
+  06 Oct 2004; Thomas Matthijs <axxo@gentoo.org> +jikes-1.22.ebuild:
+  version bump
+
+  13 Aug 2004; Chris Aniszczyk <zx@gentoo.org> -jikes-1.19.ebuild,
+  -jikes-1.20.ebuild, jikes-1.21.ebuild:
+  Clean up
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> jikes-1.19.ebuild,
+  jikes-1.20.ebuild, jikes-1.21.ebuild:
+  virtual/glibc -> virtual/libc
+
+  21 May 2004; Chris Aniszczyk <zx@gentoo.org> :
+  Version bump. Closes #51560
+  Thanks to Haroon Rafique <corporate_gadfly@hotmail.com> for the heads up.
+
+*jikes-1.20 (20 Apr 2004)
+
+  20 Apr 2004; Chris Aniszczyk <zx@gentoo.org> jikes-1.20.ebuild:
+  Version bumptastic. Closes #48390
+
+  18 Apr 2004; Chris Aniszczyk <zx@gentoo.org> jikes-1.19.ebuild:
+  Marking stable on hppa
+
+  18 Apr 2004; Chris Aniszczyk <zx@gentoo.org> jikes-1.19.ebuild:
+  Filtering flags -fno-rtti, closes #47612.
+  Thanks to Marcin Wojtczuk <fastviper@poczta.onet.pl> for the heads up.
+
+  21 Mar 2004; Chris Aniszczyk <zx@gentoo.org> jikes-1.19.ebuild:
+  Marking stable on all archs except hppa, hppa is marked unstabled. Fixed issue
+  with depend.
+
+  17 Feb 2004; Aron Griffis <agriffis@gentoo.org> jikes-1.19.ebuild:
+  add ~alpha and ~ia64
+
+*jikes-1.19 (07 Feb 2004)
+
+  07 Feb 2004; Adrian Almenar <strider@gentoo.org> jikes-1.19.ebuild:
+  Version Bump.
+
+  18 Jan 2004; Adrian Almenar <strider@gentoo.org> jikes-1.18.ebuild:
+  Added amd64 keyword.
+
+  25 Sep 2003; Adrian Almenar <strider@gentoo.org> jikes-1.18.ebuild:
+  Added keyword for ia64.
+
+  15 Aug 2003; Adrian Almenar <strider@gentoo.org> jikes-1.18.ebuild:
+  Fixed Dependency.
+
+  05 Jan 2003; Rodney Rees <manson@gentoo.org> jikes-1.1*.ebuild
+  changed keywords from ~sparc to sparc
+
+  24 Dec 2002; Mark Guertin <gerk@gentoo.org> jikes-1.17.ebuild:
+  Added ~ppc to keywords
+
+*jikes-1.18 (22 Nov 2002)
+
+  06 Apr 2003; Dylan Carlson <absinthe@gentoo.org> jikes-1.18.ebuild:
+  moved to stable for x86 ppc.
+
+  31 Dec 2002; Joshua Brindle <method@gentoo.org> jikes-1.18.ebuild:
+  added ~sparc
+
+  22 Nov 2002; Maik Schreiber <blizzy@gentoo.org> jikes-1.18.ebuild:
+  New version.
+
+  13 Oct 2002; Maik Schreiber <blizzy@gentoo.org> jikes-1.15.ebuild,
+  jikes-1.16.ebuild, jikes-1.17.ebuild: Fixed SRC_URI again.
+
+*jikes-1.17 (12 Oct 2002)
+
+  31 Dec 2002; Joshua Brindle <method@gentoo.org> jikes-1.17.ebuild:
+  added ~sparc
+
+  12 Oct 2002; Maik Schreiber <blizzy@gentoo.org> : New version.
+
+  12 Oct 2002; Maik Schreiber <blizzy@gentoo.org> jikes-1.15.ebuild:
+  Fixed SRC_URI.
+
+*jikes-1.16 (26 Jul 2002)
+
+  20 Sep 2002; Mike Frysinger <vapier@gentoo.org> :
+  Fixed HOMPAGE misspelling
+
+  13 Sep 2002; Owen Stampflee <owen@gentoo.org> :
+  Added PPC to KEYWORDS.
+
+  26 Jul 2002; Maik Schreiber <blizzy@gentoo.org>:
+
+  New version.
+
+  07 Apr 2002; G.Bevin <gbevin@gentoo.org> jikes-1.15.ebuild,
+  files/jikes-1.15-gcc3.patch:
+
+  GCC 3 related fixes.
+
+*jikes-1.15 (05 Dec 2001)
+
+  20 Sep 2002; Mike Frysinger <vapier@gentoo.org> :
+  Fixed HOMPAGE misspelling
+
+  05 Dec 2001; G.Bevin <gbevin@gentoo.org> :
+
+  New version.

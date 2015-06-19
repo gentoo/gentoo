@@ -1,0 +1,74 @@
+# ChangeLog for dev-perl/Email-Date-Format
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Email-Date-Format/ChangeLog,v 1.18 2014/08/21 19:03:03 axs Exp $
+
+*Email-Date-Format-1.2.0-r1 (21 Aug 2014)
+
+  21 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Email-Date-Format-1.2.0-r1.ebuild, -Email-Date-Format-1.2.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  07 Sep 2011; Justin Lecher <jlec@gentoo.org> Email-Date-Format-1.2.0.ebuild,
+  metadata.xml:
+  keyworded *-linux, tested by me
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  -Email-Date-Format-1.002.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> Email-Date-Format-1.2.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*Email-Date-Format-1.2.0 (31 Aug 2011)
+
+  31 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +Email-Date-Format-1.2.0.ebuild:
+  Change version scheme
+
+  18 Mar 2010; Jeremy Olexa <darkside@gentoo.org> Email-Date-Format-1.002.ebuild:
+  add ~x86-solaris ~sparc-solaris kw, as tested on bug 308683
+
+  15 Feb 2010; Joseph Jezak <josejx@gentoo.org>
+  Email-Date-Format-1.002.ebuild:
+  Marked ppc/ppc64 stable for bug #304683.
+
+  15 Feb 2010; Raúl Porcel <armin76@gentoo.org>
+  Email-Date-Format-1.002.ebuild:
+  alpha/ia64/sparc stable wrt #304683
+
+  14 Feb 2010; Torsten Veller <tove@gentoo.org>
+  Email-Date-Format-1.002.ebuild:
+  Stable on amd64 and x86 (#304683). EAPI=2. Fix LICENSE.
+
+  12 Dec 2008; Joseph Jezak <josejx@gentoo.org>
+  Email-Date-Format-1.002.ebuild:
+  Marked ~ppc for bug #235557.
+
+  12 Dec 2008; Joseph Jezak <josejx@gentoo.org>
+  Email-Date-Format-1.002.ebuild:
+  Marked ~ppc for bug #235557.
+
+  25 Aug 2008; Raúl Porcel <armin76@gentoo.org>
+  Email-Date-Format-1.002.ebuild:
+  Add ~alpha/~ia64 wrt #235557
+
+  24 Aug 2008; Markus Rothe <corsair@gentoo.org>
+  Email-Date-Format-1.002.ebuild:
+  Added ~ppc64; bug #235557
+
+  24 Aug 2008; <bluebird@gentoo.org> Email-Date-Format-1.002.ebuild:
+  Add ~sparc keyword, bug #235557
+
+  24 Aug 2008; Markus Meier <maekke@gentoo.org>
+  Email-Date-Format-1.002.ebuild:
+  add ~amd64, bug #235557
+
+*Email-Date-Format-1.002 (23 Aug 2008)
+
+  23 Aug 2008; Torsten Veller <tove@gentoo.org> +metadata.xml,
+  +Email-Date-Format-1.002.ebuild:
+  Initial commit

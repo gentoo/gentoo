@@ -1,0 +1,29 @@
+# ChangeLog for sys-apps/lcdsplash
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/lcdsplash/ChangeLog,v 1.6 2010/10/08 02:04:46 leio Exp $
+
+  08 Oct 2010; Mart Raudsepp <leio@gentoo.org> lcdsplash-0.3.ebuild:
+  Drop to ~mips
+
+  28 Mar 2007; Mike Frysinger <vapier@gentoo.org> lcdsplash-0.3.ebuild:
+  Fix install path for rcscript addon #172391 by Georgi Georgiev.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*lcdsplash-0.3 (29 Mar 2005)
+
+  29 Mar 2005; Mike Frysinger <vapier@gentoo.org> -lcdsplash-0.2.ebuild,
+  +lcdsplash-0.3.ebuild:
+  Add support for some x86-serial lcds.
+
+*lcdsplash-0.2 (22 Nov 2004)
+
+  22 Nov 2004; Mike Frysinger <vapier@gentoo.org> -lcdsplash-0.1.ebuild,
+  +lcdsplash-0.2.ebuild:
+  Version bump.
+
+*lcdsplash-0.1 (16 Nov 2004)
+
+  16 Nov 2004; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me.

@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install postinst preinst setup unpack
+DESCRIPTION=Duke Nukem 3D data files
+HOMEPAGE=http://www.3drealms.com/
+KEYWORDS=amd64 hppa ppc x86
+LICENSE=DUKE3D
+PROPERTIES=interactive
+RDEPEND=|| ( games-fps/eduke32 games-fps/duke3d ) games-misc/games-envd
+SLOT=0
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	cdrom	49b4b952fb5c83fac6c616b532723e60	eutils	9fb270e417e0e83d64ca52586c4a79de	games	1ad3205dbf62a2c98249f2f59b0a2d39	multilib	62927b3db3a589b0806255f3a002d5d3	portability	a45c088f246ef5091e029f6285d7ce42	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=fee9d4df70811d04c50f6ed4af4b0b98

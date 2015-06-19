@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst prepare test
+DEPEND=static? ( dev-libs/tre[static-libs] ) !static? ( dev-libs/tre ) mew? ( app-emacs/mew ) mimencode? ( net-mail/metamail ) normalizemime? ( mail-filter/normalizemime ) test? ( sys-apps/miscfiles )
+DESCRIPTION=A powerful text processing tool, mainly used for spam filtering
+EAPI=2
+HOMEPAGE=http://crm114.sourceforge.net/
+IUSE=mew mimencode nls normalizemime static test
+KEYWORDS=amd64 ppc x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=static? ( dev-libs/tre[static-libs] ) !static? ( dev-libs/tre ) mew? ( app-emacs/mew ) mimencode? ( net-mail/metamail ) normalizemime? ( mail-filter/normalizemime )
+SLOT=0
+SRC_URI=http://crm114.sourceforge.net/tarballs/crm114-20100106-BlameMichelson.src.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=e894fb4c7b7fab8f35086febbe2215fa

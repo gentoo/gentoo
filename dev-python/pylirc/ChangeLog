@@ -1,0 +1,81 @@
+# ChangeLog for dev-python/pylirc
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pylirc/ChangeLog,v 1.24 2015/06/09 16:24:05 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> pylirc-0.0.5-r1.ebuild:
+  Drop old Python implementations
+
+  26 Jan 2015; Manuel Rüger <mrueg@gentoo.org> -pylirc-0.0.5.ebuild:
+  Remove old.
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> pylirc-0.0.5-r1.ebuild:
+  Stable for ppc, wrt bug #495618
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> pylirc-0.0.5-r1.ebuild:
+  amd64 stable, bug #495618
+
+  23 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> pylirc-0.0.5-r1.ebuild:
+  x86 stable wrt bug #495618
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> pylirc-0.0.5-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*pylirc-0.0.5-r1 (01 Jul 2013)
+
+  01 Jul 2013; Ian Delaney <idella4@gentoo.org> +pylirc-0.0.5-r1.ebuild:
+  revbump; migrate -> distutils-r1
+
+  23 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pylirc-0.0.5.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+  05 Jan 2010; nixnut <nixnut@gentoo.org> pylirc-0.0.5.ebuild:
+  ppc stable #296264
+
+  16 Dec 2009; Markus Meier <maekke@gentoo.org> pylirc-0.0.5.ebuild:
+  amd64/x86 stable, bug #296264
+
+  27 Jun 2007; Raúl Porcel <armin76@gentoo.org> pylirc-0.0.4.ebuild,
+  pylirc-0.0.5.ebuild:
+  Drop alpha/ia64 keyword as nobody has hardware to test
+
+  21 Feb 2007; Lukasz Strzygowski <lucass@gentoo.org>
+  files/digest-pylirc-0.0.4, files/digest-pylirc-0.0.5, Manifest:
+  Convert to Manifest2.
+
+  01 Apr 2006; Aron Griffis <agriffis@gentoo.org> pylirc-0.0.5.ebuild:
+  Mark 0.0.5 ~ia64
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> pylirc-0.0.4.ebuild:
+  Stable on ppc.
+
+  24 Apr 2005; Simon Stelling <blubb@gentoo.org> pylirc-0.0.4.ebuild:
+  stable on amd64
+
+*pylirc-0.0.5 (22 Mar 2005)
+
+  22 Mar 2005; Fernando Serboncini <fserb@gentoo.org> +pylirc-0.0.5.ebuild:
+  Version bump
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  31 Oct 2004; <iggy@gentoo.org> pylirc-0.0.4.ebuild:
+  marking 0.0.4 x86 as a dep of freevo
+
+  11 Sep 2004; <blubb@gentoo.org> pylirc-0.0.4.ebuild:
+  added ~amd64
+
+  04 May 2004; Bryan Østergaard <kloeri@gentoo.org> pylirc-0.0.4.ebuild:
+  Add missing IUSE.
+
+  16 Nov 2003; <max@gentoo.org> pylirc-0.0.4.ebuild:
+  Move inherit line to the top so it doesn't stomp DEPENDs.
+
+*pylirc-0.0.4 (10 Sep 2003)
+
+  10 Sep 2003; Max Kalika <max@gentoo.org> pylirc-0.0.4.ebuild:
+  Initial version.

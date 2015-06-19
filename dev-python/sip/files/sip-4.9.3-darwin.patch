@@ -1,0 +1,41 @@
+Don't require a framework builds, and produce .bundle files
+
+--- siputils.py
++++ siputils.py
+@@ -818,8 +818,6 @@
+         """
+         if self.generator in ("MSVC", "MSVC.NET", "BMAKE"):
+             plib = clib + ".lib"
+-        elif sys.platform == "darwin" and framework:
+-            plib = "-framework " + clib
+         else:
+             plib = "-l" + clib
+ 
+@@ -836,8 +834,6 @@
+ 
+         if self.generator in ("MSVC", "MSVC.NET", "BMAKE"):
+             prl_name = os.path.join(self.config.qt_lib_dir, clib + ".prl")
+-        elif sys.platform == "darwin" and framework:
+-            prl_name = os.path.join(self.config.qt_lib_dir, clib + ".framework", clib + ".prl")
+         else:
+             prl_name = os.path.join(self.config.qt_lib_dir, "lib" + clib + ".prl")
+ 
+@@ -1396,9 +1392,6 @@
+             # 'real_prefix' exists if virtualenv is being used.
+             dl = getattr(sys, 'real_prefix', sys.exec_prefix).split(os.sep)
+ 
+-            if "Python.framework" not in dl:
+-                error("SIP requires Python to be built as a framework")
+-
+             self.LFLAGS.append("-undefined dynamic_lookup")
+ 
+         Makefile.finalise(self)
+@@ -1478,7 +1471,7 @@
+             if sys.platform == "win32":
+                 ext = "pyd"
+             elif sys.platform == "darwin":
+-                ext = "so"
++                ext = "bundle"
+             elif sys.platform == "cygwin":
+                 ext = "dll"
+             else:

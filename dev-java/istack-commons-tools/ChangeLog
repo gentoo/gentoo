@@ -1,0 +1,71 @@
+# ChangeLog for dev-java/istack-commons-tools
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/istack-commons-tools/ChangeLog,v 1.15 2015/06/12 16:31:55 monsieurp Exp $
+
+  12 Jun 2015; Patrice Clement <monsieurp@gentoo.org>
+  istack-commons-tools-2.22.ebuild:
+  Soften SLOT and change it to 0 after checking compatibility with apicheck.
+
+*istack-commons-tools-2.22 (12 Jun 2015)
+
+  12 Jun 2015; Patrice Clement <monsieurp@gentoo.org>
+  +istack-commons-tools-2.22.ebuild:
+  Version bump. Fix bug 188015.
+
+  13 Apr 2012; Ulrich Müller <ulm@gentoo.org>
+  istack-commons-tools-20090620.ebuild:
+  Move EAPI assignment to top of ebuild, bug 411875.
+
+  20 Mar 2010; Petteri Räty <betelgeuse@gentoo.org>
+  -istack-commons-tools-20070122.ebuild:
+  Remove old revision.
+
+  08 Jul 2009; Alistair Bush <ali_bush@gentoo.org>
+  istack-commons-tools-20090620.ebuild:
+  Fix strict build error. Make ant-core a build-only dep.
+
+*istack-commons-tools-20090620 (21 Jun 2009)
+
+  21 Jun 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +istack-commons-tools-20090620.ebuild:
+  Add new istack-commons (upstream pom.xml tag is 1.1-SNAPSHOT) in a new
+  slot, needed for jersey.
+
+  25 Oct 2008; nixnut <nixnut@gentoo.org>
+  istack-commons-tools-20070122-r1.ebuild:
+  Stable on ppc wrt bug 243124
+
+  23 Oct 2008; Markus Meier <maekke@gentoo.org>
+  istack-commons-tools-20070122-r1.ebuild:
+  amd64/x86 stable, bug #243124
+
+*istack-commons-tools-20070122-r1 (18 Jul 2008)
+
+  18 Jul 2008; Petteri Räty <betelgeuse@gentoo.org>
+  +istack-commons-tools-20070122-r1.ebuild:
+  Remove unneeded dependencies on sun-jaf and istack-commons-runtime.
+
+  28 Mar 2008; nixnut <nixnut@gentoo.org>
+  istack-commons-tools-20070122.ebuild:
+  Stable on ppc wrt bug 214778
+
+  19 Aug 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  istack-commons-tools-20070122.ebuild:
+  amd64 stable, bug #187681.
+
+  15 Aug 2007; Christian Faulhammer <opfer@gentoo.org>
+  istack-commons-tools-20070122.ebuild:
+  stable x86, bug 187681
+
+  11 Aug 2007; Krzysiek Pawlik <nelchael@gentoo.org> metadata.xml:
+  Remove myself from <maintainer>.
+
+  23 May 2007; Diego Pettenò <flameeyes@gentoo.org>
+  istack-commons-tools-20070122.ebuild:
+  Add ~x86-fbsd keyword. Bug #176906.
+
+*istack-commons-tools-20070122 (01 May 2007)
+
+  01 May 2007; Krzysiek Pawlik <nelchael@gentoo.org> +metadata.xml,
+  +istack-commons-tools-20070122.ebuild:
+  Initial commit of istack-commons-tools.

@@ -1,0 +1,96 @@
+# ChangeLog for net-mail/automx
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/automx/ChangeLog,v 1.20 2015/03/25 15:46:17 jlec Exp $
+
+  25 Mar 2015; Justin Lecher <jlec@gentoo.org> -automx-0.10.2.ebuild:
+  Drop old
+
+  25 Mar 2015; Agostino Sarubbo <ago@gentoo.org> automx-0.10.2-r1.ebuild:
+  Stable for x86, wrt bug #544052
+
+  24 Mar 2015; Agostino Sarubbo <ago@gentoo.org> automx-0.10.2-r1.ebuild:
+  Stable for amd64, wrt bug #544052
+
+*automx-0.10.2-r1 (21 Mar 2015)
+
+  21 Mar 2015; Justin Lecher <jlec@gentoo.org> +automx-0.10.2-r1.ebuild,
+  -automx-0.8-r1.ebuild, metadata.xml:
+  Drop old; fix python eclass usage
+
+  19 Mar 2015; Andreas Schuerch <nativemad@gentoo.org> automx-0.10.2.ebuild:
+  x86 stable, see bug 496250
+
+  27 Dec 2014; Agostino Sarubbo <ago@gentoo.org> automx-0.10.2.ebuild:
+  Stable for amd64, wrt bug #496250
+
+  17 Sep 2014; Marc Schiffbauer <mschiff@gentoo.org> -automx-0.10.1.ebuild,
+  automx-0.10.2.ebuild:
+  Removed automx-0.10.1.ebuild. Added DISTUTILS_SINGLE_IMPL=1 to 0.10.2 to fix
+  installation with mod_wsgi
+
+*automx-0.10.2 (27 Apr 2014)
+
+  27 Apr 2014; Marc Schiffbauer <mschiff@gentoo.org> +automx-0.10.2.ebuild:
+  Bump version.
+
+  02 Feb 2014; Marc Schiffbauer <mschiff@gentoo.org> -automx-0.10.0.ebuild:
+  Remove Version 0.10.0. Fixes bug #496642. Thanks to Rolf Eike Beer.
+
+*automx-0.10.1 (02 Feb 2014)
+
+  02 Feb 2014; Marc Schiffbauer <mschiff@gentoo.org> -automx-0.9.2.ebuild,
+  +automx-0.10.1.ebuild:
+  Bump version, remove old. Fixes bug #499918. Thanks to Rolf Eike Beer
+
+  01 Jan 2014; Marc Schiffbauer <mschiff@gentoo.org> automx-0.9.2.ebuild,
+  automx-0.10.0.ebuild:
+  Fix dependency on www-apache/mod_wsgi. Fixes #496676. Thanks to Rolf Eike
+  Beer.
+
+*automx-0.10.0 (28 Dec 2013)
+
+  28 Dec 2013; Marc Schiffbauer <mschiff@gentoo.org> +automx-0.10.0.ebuild:
+  Bump version. Closes #494652. Thanks to Andreis Vinogradovs.
+
+*automx-0.9.2 (30 Mar 2013)
+
+  30 Mar 2013; Marc Schiffbauer <mschiff@gentoo.org> +automx-0.9.2.ebuild,
+  metadata.xml:
+  Version bump.
+
+  24 Mar 2013; Vicente Olivert Riera <vincent@gentoo.org> automx-0.8-r1.ebuild:
+  amd64 and x86 stable wrt bug #462812
+
+*automx-0.8-r1 (02 Jan 2013)
+
+  02 Jan 2013; Marc Schiffbauer <mschiff@gentoo.org> -automx-0.8.ebuild,
+  +automx-0.8-r1.ebuild:
+  Fix bug #449702 - thanks to Marcin Mirosław. Bump revision. Remove old
+  ebuild.
+
+*automx-0.8 (28 Mar 2012)
+
+  28 Mar 2012; Marc Schiffbauer <mschiff@gentoo.org> -automx-0.8_rc2.ebuild,
+  +automx-0.8.ebuild:
+  Bump version. Remove old version.
+
+*automx-0.8_rc2 (23 Mar 2012)
+
+  23 Mar 2012; Marc Schiffbauer <mschiff@gentoo.org> -automx-0.8_rc1.ebuild,
+  +automx-0.8_rc2.ebuild:
+  Bump version. Remove old version. Added sql USE flag.
+
+*automx-0.8_rc1 (15 Mar 2012)
+
+  15 Mar 2012; Marc Schiffbauer <mschiff@gentoo.org> -automx-0.8_beta1.ebuild,
+  +automx-0.8_rc1.ebuild:
+  Version bump. Drop old version.
+
+  28 Feb 2012; Marc Schiffbauer <mschiff@gentoo.org> automx-0.8_beta1.ebuild:
+  Always install INSTALL file.
+
+*automx-0.8_beta1 (28 Feb 2012)
+
+  28 Feb 2012; Marc Schiffbauer <mschiff@gentoo.org> +automx-0.8_beta1.ebuild,
+  +metadata.xml:
+  New ebuild for automx.

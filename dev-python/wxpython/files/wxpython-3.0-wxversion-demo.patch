@@ -1,0 +1,10 @@
+--- demo/demo.org
++++ demo/demo.py
+@@ -1,4 +1,7 @@
+ #!/usr/bin/env python
+ 
++import wxversion
++wxversion.select("3.0")
++
+ import Main
+ Main.main()

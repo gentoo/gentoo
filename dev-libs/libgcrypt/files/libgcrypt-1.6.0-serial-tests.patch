@@ -1,0 +1,11 @@
+--- configure.ac	2014-01-23 12:16:46.291335724 +0100
++++ configure.ac	2014-01-23 17:25:50.021776443 +0100
+@@ -73,7 +73,7 @@
+ VERSION=$PACKAGE_VERSION
+ 
+ AC_CONFIG_SRCDIR([src/libgcrypt.vers])
+-AM_INIT_AUTOMAKE
++AM_INIT_AUTOMAKE([serial-tests])
+ AC_CONFIG_HEADER(config.h)
+ AC_CONFIG_MACRO_DIR([m4])
+ AC_CONFIG_LIBOBJ_DIR([compat])

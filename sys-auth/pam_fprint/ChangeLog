@@ -1,0 +1,61 @@
+# ChangeLog for sys-auth/pam_fprint
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/pam_fprint/ChangeLog,v 1.17 2014/01/15 12:57:06 ago Exp $
+
+  15 Jan 2014; Agostino Sarubbo <ago@gentoo.org> pam_fprint-0.2-r1.ebuild:
+  Stable for alpha, wrt bug #488782
+
+  14 Jan 2014; Pacho Ramos <pacho@gentoo.org> pam_fprint-0.2-r1.ebuild:
+  ia64 stable, bug #488782 (thanks to Emeric Maschino for testing)
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> pam_fprint-0.2-r1.ebuild:
+  Stable for ppc64, wrt bug #488782
+
+  23 Dec 2013; Markus Meier <maekke@gentoo.org> pam_fprint-0.2-r1.ebuild:
+  arm stable, bug #488782
+
+  23 Dec 2013; Agostino Sarubbo <ago@gentoo.org> pam_fprint-0.2-r1.ebuild:
+  Stable for sparc, wrt bug #488782
+
+  23 Dec 2013; Agostino Sarubbo <ago@gentoo.org> pam_fprint-0.2-r1.ebuild:
+  Stable for ppc, wrt bug #488782
+
+  07 Dec 2013; Pacho Ramos <pacho@gentoo.org> pam_fprint-0.2-r1.ebuild:
+  x86 stable, bug #488782
+
+  16 Nov 2013; Pacho Ramos <pacho@gentoo.org> pam_fprint-0.2-r1.ebuild:
+  amd64 stable, bug #488782
+
+  02 Feb 2013; Agostino Sarubbo <ago@gentoo.org> pam_fprint-0.2-r1.ebuild:
+  Add ~arm, wrt bug #449220
+
+  06 Jan 2013; Agostino Sarubbo <ago@gentoo.org> pam_fprint-0.2-r1.ebuild:
+  Add ~sparc, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> pam_fprint-0.2-r1.ebuild:
+  Add ~alpha, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> pam_fprint-0.2-r1.ebuild:
+  Add ~ia64, wrt bug #449220
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org> pam_fprint-0.2-r1.ebuild:
+  Add ~ppc64, wrt bug #449220
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org> pam_fprint-0.2-r1.ebuild:
+  Add ~ppc, wrt bug #449220
+
+  26 Jan 2012; Thomas Kahle <tomka@gentoo.org> pam_fprint-0.2-r1.ebuild:
+  ~x86 per bug 390345
+
+*pam_fprint-0.2-r1 (16 Jun 2011)
+
+  16 Jun 2011; Michael Weber <xmw@gentoo.org> -pam_fprint-0.2.ebuild,
+  +pam_fprint-0.2-r1.ebuild:
+  Revbump to fix pam modules directory (bug 343349)
+
+*pam_fprint-0.2 (17 Oct 2010)
+
+  17 Oct 2010; Michael Weber <xmw@gentoo.org> +pam_fprint-0.2.ebuild,
+  +files/pam_fprint-0.2-headers.patch, +metadata.xml:
+  Initial import, fixes bug 227671, thanks to Jan Buecken and others on this
+  bug.

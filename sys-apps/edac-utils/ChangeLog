@@ -1,0 +1,27 @@
+# ChangeLog for sys-apps/edac-utils
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/edac-utils/ChangeLog,v 1.5 2014/03/03 23:55:39 pacho Exp $
+
+  03 Mar 2014; Pacho Ramos <pacho@gentoo.org> edac-utils-0.18.ebuild:
+  amd64 stable, bug #500066
+
+*edac-utils-0.18 (09 Apr 2013)
+
+  09 Apr 2013; Tiziano Müller <dev-zero@gentoo.org> +edac-utils-0.18.ebuild,
+  -edac-utils-0.12.ebuild, -edac-utils-0.16.ebuild:
+  Version bump, upstream address changed. Drop old.
+
+  15 Dec 2009; Peter Volkov <pva@gentoo.org> metadata.xml:
+  metadata.xml: added required herd tag.
+
+*edac-utils-0.16 (03 Aug 2009)
+
+  03 Aug 2009; Tiziano Müller <dev-zero@gentoo.org>
+  +edac-utils-0.16.ebuild:
+  Version bump.
+
+*edac-utils-0.12 (09 Apr 2008)
+
+  09 Apr 2008; Tiziano Müller <dev-zero@gentoo.org> +metadata.xml,
+  +edac-utils-0.12.ebuild:
+  Initial commit.

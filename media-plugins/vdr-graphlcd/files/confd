@@ -1,0 +1,22 @@
+# /etc/conf.d/vdr.graphlcd
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-graphlcd/files/confd,v 1.1 2006/01/08 15:36:55 hd_brummy Exp $
+
+####### Global config for Graphlcd ####################
+#
+# set fine tuning for your Display
+# in selected ${GRAPHLCD_DIR}
+#
+
+#
+# set the DIR of the graphlcd config file
+#	allowed values: directory names
+#	default: /etc/vdr/plugins/graphlcd/graphlcd.conf
+#GRAPHLCD_DIR=/etc/vdr/plugins/graphlcd/graphlcd.conf
+
+#
+# select driver for graphlcd display
+#	allowed values: framebuffer, gu140x32f, gu256x64-372,
+#				   gu256x64C-3xx0, hd61830, image, ks0108,
+#				   sed1520, sed1330, simlcd, t6963c
+#	default: t6963c
+#GRAPHLCD_DISPLAY=t6963c

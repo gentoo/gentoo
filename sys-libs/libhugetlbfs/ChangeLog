@@ -1,0 +1,72 @@
+# ChangeLog for sys-libs/libhugetlbfs
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/libhugetlbfs/ChangeLog,v 1.14 2015/05/29 07:32:54 polynomial-c Exp $
+
+*libhugetlbfs-2.19 (29 May 2015)
+
+  29 May 2015; Lars Wendler <polynomial-c@gentoo.org>
+  -libhugetlbfs-2.16.ebuild, -libhugetlbfs-2.17.ebuild,
+  +libhugetlbfs-2.19.ebuild:
+  Version bump. Removed old.
+
+*libhugetlbfs-2.18 (25 Apr 2014)
+
+  25 Apr 2014; Tim Harder <radhermit@gentoo.org> +libhugetlbfs-2.18.ebuild:
+  Version bump.
+
+  10 Nov 2013; Tim Harder <radhermit@gentoo.org> libhugetlbfs-2.16.ebuild:
+  Fix error handling for tests build failure.
+
+  10 Nov 2013; Tim Harder <radhermit@gentoo.org> -libhugetlbfs-2.6.ebuild,
+  -libhugetlbfs-2.9.ebuild, -libhugetlbfs-2.15.ebuild:
+  Remove old.
+
+*libhugetlbfs-2.17 (10 Nov 2013)
+
+  10 Nov 2013; Tim Harder <radhermit@gentoo.org> +libhugetlbfs-2.17.ebuild:
+  Version bump, add static-libs use flag.
+
+*libhugetlbfs-2.16 (22 May 2013)
+
+  22 May 2013; Tim Harder <radhermit@gentoo.org> +libhugetlbfs-2.16.ebuild:
+  Version bump (bug #466880).
+
+*libhugetlbfs-2.15 (06 Jan 2013)
+
+  06 Jan 2013; Mike Frysinger <vapier@gentoo.org> +libhugetlbfs-2.15.ebuild:
+  Version bump #450618 by Agostino Sarubbo.
+
+  07 Mar 2012; Tim Harder <radhermit@gentoo.org> libhugetlbfs-2.6.ebuild,
+  libhugetlbfs-2.9.ebuild:
+  Update HOMEPAGE.
+
+  14 Aug 2010; Mike Frysinger <vapier@gentoo.org> libhugetlbfs-2.9.ebuild,
+  +files/libhugetlbfs-2.9-build.patch:
+  Respect user LDFLAGS when linking apps #332517 by Diego E. Pettenò.
+
+*libhugetlbfs-2.9 (04 Aug 2010)
+
+  04 Aug 2010; Robin H. Johnson <robbat2@gentoo.org>
+  files/libhugetlbfs-2.6-fixup-testsuite.patch, +libhugetlbfs-2.9.ebuild:
+  Bug #330491: version bump. Tune patch to apply to both versions.
+
+  04 Nov 2009; Robin H. Johnson <robbat2@gentoo.org>
+  libhugetlbfs-2.6.ebuild, +files/libhugetlbfs-2.6-fixup-testsuite.patch:
+  Fully wire up the upstream testsuite.
+
+*libhugetlbfs-2.6 (31 Oct 2009)
+
+  31 Oct 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +libhugetlbfs-2.6.ebuild, +files/libhugetlbfs-2.6-noexec-stack.patch:
+  Version bump so it can be used for new memcached fun. src_test needs some
+  work still.
+
+*libhugetlbfs-1.2 (5 Feb 2008)
+
+  05 Feb 2008; Tom Gall <tgall@gentoo.org> : +libhugetlbfs-1.2.ebuild:
+  added new 1.2 version
+
+*libhugetlbfs-1.1 (13 Jul 2007)
+
+  13 Jul 2007; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me.

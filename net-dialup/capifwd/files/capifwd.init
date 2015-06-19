@@ -1,0 +1,22 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/capifwd/files/capifwd.init,v 1.1 2004/11/24 06:04:45 mrness Exp $
+
+opts="start stop"
+
+depend() {
+	need capi
+}
+
+start() {
+	ebegin "Starting capi forwarding daemon"
+	start-stop-daemon --start --quiet --exec /usr/sbin/capifwd -- -p ${PORT}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping capi forwarding daemon"
+	start-stop-daemon --stop --quiet --retry 5 --exec /usr/sbin/capifwd 
+	eend $?
+}

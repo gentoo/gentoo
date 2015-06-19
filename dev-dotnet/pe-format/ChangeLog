@@ -1,0 +1,200 @@
+# ChangeLog for dev-dotnet/pe-format
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/pe-format/ChangeLog,v 1.50 2015/06/07 19:09:51 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add bitbucket to remote-id in metadata.xml
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> pe-format-2.1.2.ebuild,
+  pe-format-2.9999.ebuild:
+  Replace obsolete mirror://bitbucket with the real URI.
+
+  14 Oct 2013; Michał Górny <mgorny@gentoo.org> pe-format-2.9999.ebuild:
+  Switch to git-r3.
+
+  11 Sep 2013; Michał Górny <mgorny@gentoo.org> pe-format-2.9999.ebuild:
+  sys-devel/systemd-sdk has been renamed to systemd-m4.
+
+  11 Sep 2013; Michał Górny <mgorny@gentoo.org> -pe-format-2.1.1.ebuild,
+  pe-format-2.1.2.ebuild, pe-format-2.9999.ebuild:
+  systemd_to_myeconfargs is deprecated, use systemd_with_unitdir instead. Drop
+  old.
+
+  26 May 2013; Agostino Sarubbo <ago@gentoo.org> pe-format-2.1.2.ebuild:
+  Stable for ppc, wrt bug #471158
+
+  25 May 2013; Agostino Sarubbo <ago@gentoo.org> pe-format-2.1.2.ebuild:
+  Stable for x86, wrt bug #471158
+
+  25 May 2013; Agostino Sarubbo <ago@gentoo.org> pe-format-2.1.2.ebuild:
+  Stable for amd64, wrt bug #471158
+
+*pe-format-2.1.2 (24 May 2013)
+
+  24 May 2013; Michał Górny <mgorny@gentoo.org> +pe-format-2.1.2.ebuild:
+  Version bump. The new version fixes permissions on handler config file.
+
+*pe-format-2.9999 (15 Dec 2012)
+
+  15 Dec 2012; Michał Górny <mgorny@gentoo.org> +pe-format-2.9999.ebuild:
+  Import the live ebuild.
+
+  31 Aug 2012; Michał Górny <mgorny@gentoo.org> metadata.xml,
+  pe-format-2.1.1.ebuild:
+  Sync to the live ebuild (URIs).
+
+  14 Apr 2012; Michał Górny <mgorny@gentoo.org> -pe-format-1.ebuild,
+  -pe-format-2.0.5.ebuild, -pe-format-2.1.ebuild:
+  Remove obsolete versions. The package was never suitable for Prefix, so
+  remove that as well.
+
+  28 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> pe-format-2.1.1.ebuild:
+  x86 stable wrt bug #399817
+
+  27 Jan 2012; Brent Baude <ranger@gentoo.org> pe-format-2.1.1.ebuild:
+  Marking pe-format-2.1.1 ppc for bug 399817
+
+  23 Jan 2012; Agostino Sarubbo <ago@gentoo.org> pe-format-2.1.1.ebuild:
+  Stable for amd64, wrt bug #399817
+
+  14 Dec 2011; Agostino Sarubbo <ago@gentoo.org> pe-format-2.1.ebuild:
+  Stable for AMD64, wrt bug #389183
+
+*pe-format-2.1.1 (12 Dec 2011)
+
+  12 Dec 2011; Michał Górny <mgorny@gentoo.org> +pe-format-2.1.1.ebuild,
+  metadata.xml:
+  Version bump. The new version installs .desktop file for file manager
+  association.
+
+  11 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> pe-format-2.1.ebuild:
+  x86 stable wrt bug #389183
+
+*pe-format-2.1 (17 Oct 2011)
+
+  17 Oct 2011; Michał Górny <mgorny@gentoo.org> +pe-format-2.1.ebuild:
+  Version bump. The new version reuses binfmt.d directory, and thus is
+  compatible both with new OpenRC and systemd.
+
+  09 Sep 2011; Tony Vroon <chainsaw@gentoo.org> pe-format-2.0.5.ebuild:
+  Marked stable based on arch testing by Ian "idella4" Delaney & Agostino "ago"
+  Sarubbo in bug #371163.
+
+  05 Sep 2011; Naohiro Aota <naota@gentoo.org> pe-format-1.ebuild:
+  Drop ~x86-fbsd. Bug #336937
+
+  21 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> pe-format-2.0.5.ebuild:
+  x86 stable wrt bug #371163
+
+  26 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  pe-format-2.0.5.ebuild:
+  Marked ~ppc wrt #336937
+
+  05 Jan 2011; Michał Górny <mgorny@gentoo.org> -pe-format-2.0.4.ebuild,
+  pe-format-2.0.5.ebuild:
+  EAPI bump, drop old version.
+
+  20 Dec 2010; Michał Górny <mgorny@gentoo.org> pe-format-2.0.4.ebuild,
+  pe-format-2.0.5.ebuild:
+  Change the SRC_URIs to use cloud.github.com directly. This avoids issues with
+  (pointless) SSL and old wget versions.
+
+  19 Dec 2010; Michał Górny <mgorny@gentoo.org> metadata.xml:
+  Add a <bugs-to/> to clarify bug reporting preference.
+
+*pe-format-2.0.5 (19 Dec 2010)
+
+  19 Dec 2010; Michał Górny <mgorny@gentoo.org> -pe-format-2.0.3.ebuild,
+  +pe-format-2.0.5.ebuild:
+  Version bump. The new version features a general code cleanup and fixed
+  alternate installation path support (supposedly Prefix support?).
+
+*pe-format-2.0.4 (27 Nov 2010)
+
+  27 Nov 2010; Michał Górny <mgorny@gentoo.org> +pe-format-2.0.4.ebuild:
+  Version bump. The new version uses autotools, and adds support for 64-bit
+  Windows executables (for use with wine64).
+
+  31 Oct 2010; Raúl Porcel <armin76@gentoo.org> pe-format-1.ebuild:
+  Drop sparc keywords
+
+  24 Oct 2010; Michał Górny <mgorny@gentoo.org> metadata.xml:
+  Clarify the maintainership information in metadata.xml
+
+  13 Oct 2010; Markus Meier <maekke@gentoo.org> pe-format-2.0.3.ebuild:
+  add ~x86, bug #336937
+
+  07 Oct 2010; Pacho Ramos <pacho@gentoo.org> -pe-format-0.ebuild,
+  -files/pe-format.init:
+  Remove old.
+
+  05 Oct 2010; Michał Górny <mgorny@gentoo.org> metadata.xml:
+  Update the maintainer information.
+
+*pe-format-2.0.3 (12 Sep 2010)
+
+  12 Sep 2010; Pacho Ramos <pacho@gentoo.org> +pe-format-2.0.3.ebuild,
+  metadata.xml:
+  Version bump with a new upstream, new proxy maintainer and fixing old bugs
+  #246456, #29795 (for support more exe files), #294749 (stop using bashisms
+  and adapt script to openrc), #321233 (pe-format2 is now pe-format). Really
+  thanks a lot to Michał Górny for taking care of this package.
+
+  12 Sep 2010; Joseph Jezak <josejx@gentoo.org> pe-format-1.ebuild:
+  Marked ppc for bug #327279.
+
+  12 Jul 2010; Christian Faulhammer <fauli@gentoo.org> pe-format-1.ebuild:
+  stable x86, bug 327279
+
+  09 Jul 2010; Pacho Ramos <pacho@gentoo.org> pe-format-1.ebuild:
+  amd64 stable, bug 327279
+
+  02 Jan 2010; Christian Faulhammer <fauli@gentoo.org> pe-format-1.ebuild:
+  Transfer Prefix keywords
+
+*pe-format-1 (28 Jul 2009)
+
+  28 Jul 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +files/pe-format.init-1, +pe-format-1.ebuild:
+  Add new version that properly executes after procfs have been mounted.
+
+  20 Mar 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  pe-format-0.ebuild:
+  Fixed the package after I broke it with last commit.
+
+  20 Mar 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Removing compnerd as a maintainer since he was retired.
+
+  30 Apr 2007; Roy Marples <uberlord@gentoo.org> pe-format-0.ebuild:
+  Added ~x86-fbsd keyword.
+
+  23 Mar 2007; Saleem Abdulrasool <compnerd@gentoo.org>
+  files/pe-format.init:
+  Update the scripts to fix reference to the wrong file and use of exit (bug
+  #170846)
+
+  14 Feb 2007; Gustavo Zacarias <gustavoz@gentoo.org> pe-format-0.ebuild:
+  Keyworded ~sparc
+
+  14 Jan 2007; Olivier Crête <tester@gentoo.org> pe-format-0.ebuild:
+  Stable on amd64
+
+  08 Jan 2007; Tobias Scherbaum <dertobi123@gentoo.org> pe-format-0.ebuild:
+  Stable on ppc wrt bug #159886.
+
+  06 Jan 2007; Christian Faulhammer <opfer@gentoo.org> pe-format-0.ebuild:
+  stable x86, security bug #159886
+
+  21 Dec 2006; Timothy Redaelli <drizzt@gentoo.org> pe-format-0.ebuild:
+  Add ~ppc keyword
+
+  21 Dec 2006; Saleem Abdulrasool <compnerd@gentoo.org> pe-format-0.ebuild:
+  Add ~amd64 keyword
+
+*pe-format-0 (21 Dec 2006)
+
+  21 Dec 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  +files/pe-format.conf, +files/pe-format.init, +metadata.xml,
+  +pe-format-0.ebuild:
+  Initial import of ebuild

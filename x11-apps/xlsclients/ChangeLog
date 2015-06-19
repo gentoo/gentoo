@@ -1,0 +1,272 @@
+# ChangeLog for x11-apps/xlsclients
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-apps/xlsclients/ChangeLog,v 1.73 2013/10/08 05:04:08 ago Exp $
+
+  08 Oct 2013; Agostino Sarubbo <ago@gentoo.org> xlsclients-1.1.3.ebuild:
+  Stable for x86, wrt bug #475480
+
+  07 Oct 2013; Agostino Sarubbo <ago@gentoo.org> xlsclients-1.1.3.ebuild:
+  Stable for sparc, wrt bug #475480
+
+  06 Oct 2013; Agostino Sarubbo <ago@gentoo.org> xlsclients-1.1.3.ebuild:
+  Stable for ia64, wrt bug #475480
+
+  05 Oct 2013; Markus Meier <maekke@gentoo.org> xlsclients-1.1.3.ebuild:
+  arm stable, bug #475480
+
+  05 Oct 2013; Agostino Sarubbo <ago@gentoo.org> xlsclients-1.1.3.ebuild:
+  Stable for alpha, wrt bug #475480
+
+  04 Oct 2013; Agostino Sarubbo <ago@gentoo.org> xlsclients-1.1.3.ebuild:
+  Stable for ppc64, wrt bug #475480
+
+  03 Oct 2013; Agostino Sarubbo <ago@gentoo.org> xlsclients-1.1.3.ebuild:
+  Stable for ppc, wrt bug #475480
+
+  02 Oct 2013; Jeroen Roovers <jer@gentoo.org> xlsclients-1.1.3.ebuild:
+  Stable for HPPA (bug #475480).
+
+  29 Sep 2013; Agostino Sarubbo <ago@gentoo.org> xlsclients-1.1.3.ebuild:
+  Stable for amd64, wrt bug #475480
+
+*xlsclients-1.1.3 (11 Sep 2013)
+
+  11 Sep 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xlsclients-1.1.3.ebuild, -xlsclients-1.1.1.ebuild:
+  Version bump.
+
+  15 May 2012; Alexis Ballier <aballier@gentoo.org> xlsclients-1.1.2.ebuild:
+  keyword ~amd64-fbsd
+
+  20 Aug 2011; Jeroen Roovers <jer@gentoo.org> xlsclients-1.1.2.ebuild:
+  Stable for HPPA (bug #371857).
+
+  30 Jul 2011; Raúl Porcel <armin76@gentoo.org> xlsclients-1.1.2.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #371857
+
+  29 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> xlsclients-1.1.2.ebuild:
+  ppc64 stable wrt #371857
+
+  13 Jul 2011; Markus Meier <maekke@gentoo.org> xlsclients-1.1.2.ebuild:
+  x86 stable, bug #371857
+
+  28 Jun 2011; Brent Baude <ranger@gentoo.org> xlsclients-1.1.2.ebuild:
+  Marking xlsclients-1.1.2 ppc stable for bug 371857
+
+  26 Jun 2011; Markus Meier <maekke@gentoo.org> xlsclients-1.1.2.ebuild:
+  arm stable, bug #371857
+
+  23 Jun 2011; Markos Chandras <hwoarang@gentoo.org> xlsclients-1.1.2.ebuild:
+  Stable on amd64 wrt bug #372333
+
+*xlsclients-1.1.2 (03 May 2011)
+
+  03 May 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -files/1.1.1-xcb_util.patch, -xlsclients-1.1.1-r1.ebuild,
+  +xlsclients-1.1.2.ebuild:
+  Version bump and drop patched revision.
+
+*xlsclients-1.1.1-r1 (26 Apr 2011)
+
+  26 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  +files/1.1.1-xcb_util.patch, +xlsclients-1.1.1-r1.ebuild:
+  Revision bump to fix building with new xcb-util. Per bug #364967.
+
+  14 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  xlsclients-1.1.1.ebuild:
+  ppc stable wrt #344827, #354237
+
+  12 Feb 2011; Raúl Porcel <armin76@gentoo.org> xlsclients-1.1.1.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #344827
+
+  31 Dec 2010; Jeroen Roovers <jer@gentoo.org> xlsclients-1.1.1.ebuild:
+  Stable for HPPA (bug #344827).
+
+  29 Dec 2010; Markus Meier <maekke@gentoo.org> xlsclients-1.1.1.ebuild:
+  arm stable, bug #344827
+
+  25 Dec 2010; Christian Faulhammer <fauli@gentoo.org>
+  xlsclients-1.1.1.ebuild:
+  x86 stable, bug 344827
+
+  23 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> xlsclients-1.1.1.ebuild:
+  amd64 stable wrt #344827
+
+  19 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> xlsclients-1.1.1.ebuild:
+  ppc64 stable wrt #344827
+
+  21 Oct 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -xlsclients-1.0.2.ebuild:
+  old
+
+  21 Oct 2010; Brent Baude <ranger@gentoo.org> ChangeLog:
+  Marking xlsclients-1.1.0 ppc stable for bug 239063
+
+  28 Sep 2010; Samuli Suominen <ssuominen@gentoo.org>
+  xlsclients-1.1.0.ebuild:
+  ppc64 stable wrt #327777
+
+*xlsclients-1.1.1 (24 Sep 2010)
+
+  24 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  +xlsclients-1.1.1.ebuild:
+  Version bump.
+
+  19 Sep 2010; Raúl Porcel <armin76@gentoo.org> xlsclients-1.1.0.ebuild:
+  ia64/s390/sh/sparc stable wrt #327777
+
+  12 Sep 2010; Tobias Klausmann <klausman@gentoo.org>
+  xlsclients-1.1.0.ebuild:
+  Stable on alpha, bug #327777
+
+  22 Jul 2010; Markus Meier <maekke@gentoo.org> xlsclients-1.1.0.ebuild:
+  arm stable, bug #327777
+
+  14 Jul 2010; Jeroen Roovers <jer@gentoo.org> xlsclients-1.1.0.ebuild:
+  Stable for HPPA (bug #327777).
+
+  13 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  xlsclients-1.1.0.ebuild:
+  x86 stable, bug 327777
+
+  12 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  xlsclients-1.1.0.ebuild:
+  Stable on amd64 wrt bug #327777
+
+*xlsclients-1.1.0 (08 Jun 2010)
+
+  08 Jun 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  +xlsclients-1.1.0.ebuild:
+  Version bump.
+
+  23 Jan 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -xlsclients-1.0.1.ebuild:
+  rm
+
+  19 Jan 2010; Raúl Porcel <armin76@gentoo.org> xlsclients-1.0.2.ebuild:
+  s390 stable wrt #294958
+
+  18 Jan 2010; Raúl Porcel <armin76@gentoo.org> xlsclients-1.0.2.ebuild:
+  alpha/ia64/sh/sparc stable wrt #294958
+
+  17 Jan 2010; Jeroen Roovers <jer@gentoo.org> xlsclients-1.0.2.ebuild:
+  Stable for HPPA (bug #294958).
+
+  14 Jan 2010; Markus Meier <maekke@gentoo.org> xlsclients-1.0.2.ebuild:
+  arm stable, bug #294958
+
+  27 Dec 2009; Joseph Jezak <josejx@gentoo.org> xlsclients-1.0.2.ebuild:
+  Marked ppc stable for bug #294958.
+
+  15 Dec 2009; Brent Baude <ranger@gentoo.org> xlsclients-1.0.2.ebuild:
+  Marking xlsclients-1.0.2 ppc64 stable for bug 294958
+
+  10 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  xlsclients-1.0.2.ebuild:
+  x86 stable, bug 294958
+
+  10 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  xlsclients-1.0.2.ebuild:
+  amd64 stable wrt #294958
+
+  21 Nov 2009; Raúl Porcel <armin76@gentoo.org> xlsclients-1.0.1.ebuild:
+  ia64/sparc stable
+
+*xlsclients-1.0.2 (19 Oct 2009)
+
+  19 Oct 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  +xlsclients-1.0.2.ebuild:
+  Version bump.
+
+  07 Jul 2009; Jeroen Roovers <jer@gentoo.org> xlsclients-1.0.1.ebuild:
+  Stable for HPPA too.
+
+  23 Jun 2009; Tobias Klausmann <klausman@gentoo.org>
+  xlsclients-1.0.1.ebuild:
+  Stable on alpha for xorg-server-1.5/xorg-x11-7.4
+
+  28 May 2009; Raúl Porcel <armin76@gentoo.org> xlsclients-1.0.1.ebuild:
+  Add ~alpha
+
+  05 May 2009; Christian Faulhammer <fauli@gentoo.org>
+  xlsclients-1.0.1.ebuild:
+  fix repoman warnings
+
+  03 Oct 2008; Raúl Porcel <armin76@gentoo.org> xlsclients-1.0.1.ebuild:
+  Add ~ia64 wrt #237411
+
+  26 Sep 2008; Jeroen Roovers <jer@gentoo.org> xlsclients-1.0.1.ebuild:
+  Marked ~hppa (bug #237411).
+
+  24 Sep 2008; Alexis Ballier <aballier@gentoo.org> xlsclients-1.0.1.ebuild:
+  keyword ~x86-fbsd
+
+  12 May 2007; nixnut <nixnut@gentoo.org> xlsclients-1.0.1.ebuild:
+  Stable on ppc wrt bug 169222
+
+  12 May 2007; Markus Rothe <corsair@gentoo.org> xlsclients-1.0.1.ebuild:
+  Stable on ppc64; bug #169222
+
+  08 May 2007; Raúl Porcel <armin76@gentoo.org> xlsclients-1.0.1.ebuild:
+  x86 stable wrt bug 169222
+
+  08 May 2007; Olivier Crête <tester@gentoo.org> xlsclients-1.0.1.ebuild:
+  Stable on amd64 for bug #169222
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  20 May 2006; Robin H. Johnson <robbat2@gentoo.org>
+  xlsclients-1.0.1.ebuild:
+  Added ~ppc after testing.
+
+  14 Feb 2006; Markus Rothe <corsair@gentoo.org> xlsclients-1.0.1.ebuild:
+  Added ~ppc64
+
+  26 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -xlsclients-0.99.2.ebuild, -xlsclients-1.0.0.ebuild:
+  Pull old versions.
+
+*xlsclients-1.0.1 (23 Dec 2005)
+
+  23 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +xlsclients-1.0.1.ebuild:
+  Bump for 7.0.
+
+*xlsclients-1.0.0 (18 Dec 2005)
+
+  18 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xlsclients-1.0.0.ebuild:
+  Bump for 7.0RC4.
+
+  09 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  -xlsclients-0.99.0.ebuild, -xlsclients-0.99.1.ebuild:
+  Pull old versions.
+
+*xlsclients-0.99.2 (04 Dec 2005)
+
+  04 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xlsclients-0.99.2.ebuild:
+  Bump for 7.0RC3.
+
+  17 Nov 2005; Herbie Hopkins <herbs@gentoo.org> xlsclients-0.99.1.ebuild:
+  Marked ~amd64.
+
+*xlsclients-0.99.1 (20 Oct 2005)
+
+  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +xlsclients-0.99.1.ebuild:
+  Bump for 7.0 RC1.
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org>
+  xlsclients-0.99.0.ebuild:
+  Add ~sparc keyword (Modular X testing).
+
+*xlsclients-0.99.0 (08 Aug 2005)
+
+  08 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +xlsclients-0.99.0.ebuild:
+  Initial commit for modular X.

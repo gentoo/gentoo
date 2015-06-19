@@ -1,0 +1,10 @@
+# ChangeLog for sci-biology/uchime
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/uchime/ChangeLog,v 1.1 2012/08/14 15:36:10 jlec Exp $
+
+*uchime-4.2.40 (14 Aug 2012)
+
+  14 Aug 2012; Justin Lecher <jlec@gentoo.org> +uchime-4.2.40.ebuild,
+  +files/CMakeLists.txt, +metadata.xml:
+  New addition
+

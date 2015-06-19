@@ -1,0 +1,15 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/linux-standalone/make.defaults,v 1.1 2014/12/15 20:58:21 redlizard Exp $
+
+# 'Sane' defaults
+ELIBC="glibc"
+KERNEL="linux"
+
+# 2006/10/28 - Luca Barbato <lu_zero@gentoo.org>
+# on glibc system you cannot turn it off
+USE="iconv"
+
+# build gcc with parallelization support
+USE="${USE} openmp"
+

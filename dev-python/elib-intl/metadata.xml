@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>python</herd>
+	<maintainer>
+		<email>nixphoeni@gentoo.org</email>
+		<name>Joe Sapp</name>
+	</maintainer>
+	<longdescription>
+		The elib.intl module provides enhanced internationalization
+		(I18N) services for your Python modules and applications.
+	</longdescription>
+	<upstream>
+		<maintainer>
+			<email>dieterv@optionexplicit.be</email>
+			<name>Dieter Verfaillie</name>
+		</maintainer>
+		<bugs-to>https://github.com/dieterv/elib.intl/issues</bugs-to>
+		<remote-id type="github">dieterv/elib.intl</remote-id>
+	</upstream>
+</pkgmetadata>

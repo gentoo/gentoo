@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare setup
+DEPEND=>=dev-libs/boost-1.48[python?,threads(+)] >=sys-devel/libtool-2.2 sys-libs/zlib examples? ( !net-p2p/mldonkey ) ssl? ( dev-libs/openssl ) python? ( =dev-lang/python-2.7* ) python? ( =dev-lang/python-2.7*[threads] )
+DESCRIPTION=C++ BitTorrent implementation focusing on efficiency and scalability
+EAPI=4
+HOMEPAGE=http://www.rasterbar.com/products/libtorrent/
+IUSE=debug doc examples python ssl static-libs test
+KEYWORDS=amd64 arm ppc ppc64 sparc x86 ~x86-fbsd
+LICENSE=BSD
+RDEPEND=>=dev-libs/boost-1.48[python?,threads(+)] >=sys-devel/libtool-2.2 sys-libs/zlib examples? ( !net-p2p/mldonkey ) ssl? ( dev-libs/openssl ) python? ( =dev-lang/python-2.7* ) python? ( =dev-lang/python-2.7*[threads] )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/libtorrent/libtorrent-rasterbar-0.16.17.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=26b3bc954e058b11ac6f348e07c9aa03

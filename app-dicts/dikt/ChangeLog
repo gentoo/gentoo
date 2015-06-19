@@ -1,0 +1,26 @@
+# ChangeLog for app-dicts/dikt
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/dikt/ChangeLog,v 1.5 2014/03/19 18:10:51 johu Exp $
+
+*dikt-2l (19 Mar 2014)
+
+  19 Mar 2014; Johannes Huber <johu@gentoo.org> +dikt-2l.ebuild,
+  -dikt-2d.ebuild:
+  Version bump, remove old.
+
+  29 Oct 2011; Jonathan Callen <abcd@gentoo.org> dikt-2d.ebuild:
+  Bump to EAPI=4
+
+  06 Oct 2010; Theo Chatzimichos <tampakrap@gentoo.org> -dikt-1l.ebuild,
+  dikt-2d.ebuild:
+  EAPI3, cleanup, remove block (added entry in profiles/updates), remove old
+
+*dikt-2d (01 Jun 2010)
+
+  01 Jun 2010; Dror Levin <spatz@gentoo.org> +dikt-2d.ebuild:
+  Version bump.
+
+*dikt-1l (27 Dec 2009)
+
+  27 Dec 2009; Samuli Suominen <ssuominen@gentoo.org> +dikt-1l.ebuild:
+  Initial commit wrt #296200 by Andrew Fedorov.

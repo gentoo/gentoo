@@ -1,0 +1,61 @@
+# ChangeLog for app-eselect/eselect-vdr
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-eselect/eselect-vdr/ChangeLog,v 1.1 2015/03/31 16:57:45 ulm Exp $
+
+  31 Mar 2015; Ulrich Müller <ulm@gentoo.org> +eselect-vdr-0.0.3.ebuild,
+  +metadata.xml:
+  Move package from app-admin to app-eselect category.
+
+  11 Feb 2015; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -eselect-vdr-0.0.2.ebuild, -eselect-vdr-0.0.2-r1.ebuild,
+  eselect-vdr-0.0.3.ebuild:
+  cleanup old; eapi=5
+
+  20 Oct 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  eselect-vdr-0.0.3.ebuild:
+  stable x86; keyworded ~arm
+
+  22 Dec 2010; Joerg Bornkessel <hd_brummy@gentoo.org>
+  eselect-vdr-0.0.3.ebuild:
+  Stable amd64
+
+*eselect-vdr-0.0.3 (22 Jan 2010)
+
+  22 Jan 2010; Matthias Schwarzott <zzam@gentoo.org>
+  +eselect-vdr-0.0.3.ebuild:
+  Version bumped. Fixes Bug #292116.
+
+  12 Mar 2009; Matthias Schwarzott <zzam@gentoo.org>
+  eselect-vdr-0.0.2-r1.ebuild:
+  Mark stable on x86.
+
+*eselect-vdr-0.0.2-r1 (15 May 2008)
+
+  15 May 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +eselect-vdr-0.0.2-r1.ebuild:
+  Added symlink vdr-plugin-config for easy executing.
+
+  05 Oct 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  eselect-vdr-0.0.2.ebuild:
+  Added ~ppc, bug #193527
+
+  23 Sep 2007; Matthias Schwarzott <zzam@gentoo.org>
+  -eselect-vdr-0.0.1.ebuild, eselect-vdr-0.0.2.ebuild:
+  Marked stable on x86. Removed old version.
+
+*eselect-vdr-0.0.2 (29 Jul 2007)
+
+  29 Jul 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +eselect-vdr-0.0.2.ebuild:
+  Updated to v0.0.2, this just renames the eselect-module to vdr-plugin.
+
+  04 Jun 2007; Matthias Schwarzott <zzam@gentoo.org>
+  eselect-vdr-0.0.1.ebuild:
+  Keyworded ~amd64.
+
+*eselect-vdr-0.0.1 (03 Jun 2007)
+
+  03 Jun 2007; Matthias Schwarzott <zzam@gentoo.org> +metadata.xml,
+  +eselect-vdr-0.0.1.ebuild:
+  Initial import of ebuild for eselect-vdr, solving Bug #145573.
+

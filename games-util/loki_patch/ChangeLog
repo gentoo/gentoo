@@ -1,0 +1,69 @@
+# ChangeLog for games-util/loki_patch
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-util/loki_patch/ChangeLog,v 1.14 2015/02/19 08:53:38 mr_bones_ Exp $
+
+  19 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  loki_patch-20091105.ebuild:
+  EAPI=5
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> loki_patch-20091105.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  09 Jan 2010; Samuli Suominen <ssuominen@gentoo.org>
+  loki_patch-20091105.ebuild:
+  amd64/x86 stable wrt #299849 (Tested with Soldier of Fortune CDROM).
+
+*loki_patch-20091105 (05 Nov 2009)
+
+  05 Nov 2009; Tristan Heaven <nyhm@gentoo.org> +loki_patch-20091105.ebuild,
+  +files/loki_patch-20091105-build.patch,
+  +files/loki_patch-20091105-patchdata.patch:
+  Version bump, fixes bugs #251102 and #281440
+
+  04 Mar 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  -loki_patch-20051209.ebuild:
+  Removing 20051209 version for bug #133407.
+
+  15 Jan 2008; Samuli Suominen <drac@gentoo.org> loki_patch-20050324.ebuild,
+  loki_patch-20051209.ebuild:
+  change dev-util/xdelta dep. to =dev-util/xdelta-1*
+
+  08 Feb 2007; Chris Gianelloni <wolf31o2@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  19 Dec 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/loki_patch-20050324-gcc4.patch, loki_patch-20050324.ebuild:
+  Added gcc4 patch to 20050324 version since the newer one breaks on older
+  patch files. Closing bug #114920.
+
+*loki_patch-20051209 (09 Dec 2005)
+
+  09 Dec 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  +loki_patch-20051209.ebuild:
+  Version bumped for gcc 4.0 compatibility and closing bug #114920.
+
+  11 Apr 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -loki_patch-20040916.ebuild:
+  Cleaning up older version.
+
+  11 Apr 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  loki_patch-20050324.ebuild:
+  Marking stable on x86/amd64 and closing bug #85814.
+
+*loki_patch-20050324 (24 Mar 2005)
+
+  24 Mar 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/loki_patch-20050324-amd64.patch, +loki_patch-20050324.ebuild:
+  Updated to 20050324 CVS snapshot and added patch to allow it to build on
+  amd64. This could conceivably allow older Loki titles to work/install on
+  amd64.
+
+  17 Oct 2004; David Holm <dholm@gentoo.org> loki_patch-20040916.ebuild:
+  Added to ~ppc.
+
+*loki_patch-20040916 (21 Sep 2004)
+
+  21 Sep 2004; Chris Gianelloni <wolf31o2@gentoo.org> +metadata.xml,
+  +loki_patch-20040916.ebuild:
+  Initial import. Ebuild submitted by Alex Linke <incubation.11@freenet.de> to
+  bug #63649. Closing bug #63649.

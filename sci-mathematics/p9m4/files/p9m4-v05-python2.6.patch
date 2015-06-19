@@ -1,0 +1,44 @@
+diff -Nur p9m4-0.5/my_setup.py p9m4-0.5.new/my_setup.py
+--- p9m4-0.5/my_setup.py	2008-01-14 23:30:55.000000000 +0000
++++ p9m4-0.5.new/my_setup.py	2008-01-14 23:35:45.000000000 +0000
+@@ -158,7 +158,9 @@
+                     self.ed.SetStyle(start, end,
+                                      wx.TextAttr('RED',
+                                                  wx.Colour(200,200,255)))
+-            error_dialog('%s\n%s' % (message,error if error else ''))
++                error_dialog('%s\n%s' % (message,error))
++            else:
++                error_dialog(message)
+         else:
+             frame = Text_frame(self, to_top(self).box_font,
+                                'Error Output',
+diff -Nur p9m4-0.5/partition_input.py p9m4-0.5.new/partition_input.py
+--- p9m4-0.5/partition_input.py	2008-01-14 23:30:55.000000000 +0000
++++ p9m4-0.5.new/partition_input.py	2008-01-14 23:35:45.000000000 +0000
+@@ -63,14 +63,23 @@
+             m2 = r2.search(str, m1.end())
+             while m2 and in_span(m2.start(), comments):
+                 m2 = r2.search(str, m2.end())
+-            match_end = m2.end() if m2 else len(str)
++            if m2:
++                match_end = m2.end()
++            else:
++                match_end = len(str)
+             other   += str[other_start:m1.start()]
+             if remove_patterns:
+                 keep_start = m1.end()
+-                keep_end = m2.start() if m2 else len(str)
++                if m2:
++                    keep_end = m2.start()
++                else:
++                    keep_end = len(str)
+             else:
+                 keep_start = m1.start()
+-                keep_end = m2.end() if m2 else len(str)
++                if m2:
++                    keep_end = m2.end()
++                else:
++                    keep_end = len(str)
+             matched += str[keep_start:keep_end]
+             next = other_start = match_end
+         else:

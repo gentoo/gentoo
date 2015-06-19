@@ -1,0 +1,32 @@
+# ChangeLog for net-print/c2esp
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-print/c2esp/ChangeLog,v 1.5 2014/03/10 17:07:29 mrueg Exp $
+
+*c2esp-26 (10 Mar 2014)
+
+  10 Mar 2014; Manuel Rüger <mrueg@gentoo.org> +c2esp-26.ebuild,
+  +files/c2esp-26-ldflags-cppflags.patch, -c2esp-24.ebuild:
+  Version bump. Thanks to Lukasz Jankowski. Fixes bug #479430.
+
+*c2esp-25c (25 Jul 2012)
+
+  25 Jul 2012; Nathan Phillip Brink <binki@gentoo.org> +c2esp-25c.ebuild,
+  +files/c2esp-25c-ldflags-cppflags.patch:
+  Bump to c2esp-25c.
+
+  10 Mar 2012; Nathan Phillip Brink <binki@gentoo.org> -c2esp-18.ebuild,
+  -files/c2esp-18-ldflags.patch:
+  Drop old c2esp-18.
+
+*c2esp-24 (10 Mar 2012)
+
+  10 Mar 2012; Nathan Phillip Brink <binki@gentoo.org> +c2esp-24.ebuild,
+  +files/c2esp-24-ldflags-cppflags.patch:
+  Bump to c2esp-24 for bug #406505 by Navid Zamani. Fix docdir and respect
+  CPPFLAGS in the new version.
+
+*c2esp-18 (23 Aug 2011)
+
+  23 Aug 2011; Nathan Phillip Brink <binki@gentoo.org> +c2esp-18.ebuild,
+  +files/c2esp-18-ldflags.patch, +metadata.xml:
+  Add c2esp-18, a driver for certain Canon ESP series printers.

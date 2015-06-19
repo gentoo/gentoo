@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst postrm preinst
+DESCRIPTION=Perl based e-mail filtering tool, sensitive to html tags, mime types and attachments
+EAPI=4
+HOMEPAGE=http://mailtools.anomy.net/
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl >=virtual/perl-MIME-Base64-2.12-r2 >=dev-perl/Mail-Audit-2.1-r1 dev-perl/Convert-TNEF dev-perl/MIME-tools dev-perl/libwww-perl virtual/mta
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~jlec/distfiles/sample_e-mail-architecture.png.tar http://mailtools.anomy.net/dist/anomy-sanitizer-1.76.tar.gz http://dev.gentoo.org/~pacho/maintainer-needed/sample_e-mail-architektur.flw
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=654016af96ed4ddb12094b23475a6dde

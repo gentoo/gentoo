@@ -1,0 +1,11 @@
+--- Setup.hs.orig	2014-11-03 00:57:44.033467328 +0530
++++ Setup.hs	2014-11-03 00:58:05.775218672 +0530
+@@ -205,7 +205,7 @@
+                        else docdir (absoluteInstallDirs pd lbi cd) `joinFileName` "doc"
+         let manDir = if isWindows
+                        then dataPref `joinFileName` "Documentation"
+-                       else datadir (absoluteInstallDirs pd lbi cd) `joinFileName` ".." `joinFileName` "man" `joinFileName` "man1"
++                       else datadir (absoluteInstallDirs pd lbi cd) `joinFileName` ".." `joinFileName` ".." `joinFileName` "man" `joinFileName` "man1"
+         createDirectoryIfMissing True docDir
+         installOrdinaryFile v (lhs2texDocDir `joinFileName` "Guide2.pdf") (docDir `joinFileName` "Guide2.pdf")
+         when (not isWindows) $

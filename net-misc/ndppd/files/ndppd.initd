@@ -1,0 +1,14 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ndppd/files/ndppd.initd,v 1.1 2013/04/17 20:57:30 zx2c4 Exp $
+
+command="/usr/sbin/ndppd"
+pidfile="/var/run/ndppd.pid"
+command_args="-p $pidfile -d"
+start_stop_daemon_args="--quiet"
+description="Proxies NDP messages between interfaces."
+
+depend() {
+	use net
+}

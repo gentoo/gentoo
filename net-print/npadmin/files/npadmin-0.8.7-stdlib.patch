@@ -1,0 +1,10 @@
+--- npadmin-0.8.7/snmpsock.h	1998-12-31 04:04:42.000000000 +0100
++++ npadmin-0.8.7-patched/snmpsock.h	2005-02-23 15:37:41.082565000 +0100
+@@ -2,6 +2,7 @@
+ #define __SNMPSOCK_H_
+ 
+ #include <pthread.h>
++#include <stdlib.h>
+ 
+ class SNMP_socket {
+   int sock;

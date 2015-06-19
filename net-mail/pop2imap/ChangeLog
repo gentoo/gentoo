@@ -1,0 +1,47 @@
+# ChangeLog for net-mail/pop2imap
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/pop2imap/ChangeLog,v 1.12 2014/02/04 05:45:10 radhermit Exp $
+
+*pop2imap-1.21 (04 Feb 2014)
+
+  04 Feb 2014; Tim Harder <radhermit@gentoo.org> +pop2imap-1.21.ebuild:
+  Version bump, update LICENSE.
+
+  27 Aug 2012; Raúl Porcel <armin76@gentoo.org> pop2imap-1.18.ebuild:
+  Drop alpha keywords
+
+  01 Dec 2011; Eray Aslan <eras@gentoo.org> -pop2imap-1.12.ebuild:
+  remove old
+
+  28 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> pop2imap-1.18.ebuild:
+  x86 stable wrt bug #391295
+
+  18 Jul 2011; Markos Chandras <hwoarang@gentoo.org> pop2imap-1.18.ebuild:
+  keyworded for amd64. Bug #371003
+
+  11 Jun 2011; Eray Aslan <eras@gentoo.org> pop2imap-1.18.ebuild:
+  EAPI bump.
+
+*pop2imap-1.18 (10 Jun 2011)
+
+  10 Jun 2011; Eray Aslan <eras@gentoo.org> +pop2imap-1.18.ebuild:
+  Version bump - bug #371003
+
+  01 Apr 2007; Andrej Kacian <ticho@gentoo.org> pop2imap-1.12.ebuild:
+  Stable on x86.
+
+  08 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  10 May 2006; Thomas Cort <tcort@gentoo.org> pop2imap-1.12.ebuild:
+  Added ~alpha keyword wrt Bug #129854.
+
+  10 May 2006; Fernando J. Pereda <ferdy@gentoo.org> pop2imap-1.12.ebuild:
+  Don't install GPL and INSTALL.
+
+*pop2imap-1.12 (03 Apr 2005)
+
+  03 Apr 2005; Fernando J. Pereda <ferdy@gentoo.org> +metadata.xml,
+  +pop2imap-1.12.ebuild:
+  initial commit wrt #68832
+

@@ -1,0 +1,16 @@
+Avoid un-needed d'loading
+diff -ur Flask-PyMongo-0.2.1.orig/docs/conf.py Flask-PyMongo-0.2.1/docs/conf.py
+--- docs/conf.py	2012-12-23 00:52:16.000000000 +0800
++++ docs/conf.py	2013-06-10 01:26:28.430485499 +0800
+@@ -247,11 +247,3 @@
+ 
+ # How to display URL addresses: 'footnote', 'no', or 'inline'.
+ #texinfo_show_urls = 'footnote'
+-
+-
+-# Example configuration for intersphinx: refer to the Python standard library.
+-intersphinx_mapping = {
+-    'python': ('http://docs.python.org/', None),
+-    'flask': ('http://flask.pocoo.org/docs/', None),
+-    'pymongo': ('http://api.mongodb.org/python/current/', None),
+-}

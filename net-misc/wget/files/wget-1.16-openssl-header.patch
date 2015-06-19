@@ -1,0 +1,31 @@
+From 1b5928e14fe5f40b2c8396fc622317790c9a368f Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Mon, 27 Oct 2014 14:39:41 -0400
+Subject: [PATCH] openssl: fix implicit decl warning
+
+Include the right header to fix:
+
+openssl.c: In function 'ssl_init':
+openssl.c:195:3: warning: implicit declaration of function
+	'ENGINE_load_builtin_engines' [-Wimplicit-function-declaration]
+   ENGINE_load_builtin_engines();
+   ^
+---
+ src/openssl.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/openssl.c b/src/openssl.c
+index e24954a..2a3e0d6 100644
+--- a/src/openssl.c
++++ b/src/openssl.c
+@@ -42,6 +42,7 @@ as that of the covered work.  */
+ #include <openssl/rand.h>
+ #if OPENSSL_VERSION_NUMBER >= 0x00907000
+ #include <openssl/conf.h>
++#include <openssl/engine.h>
+ #endif
+ 
+ #include "utils.h"
+-- 
+2.1.2
+

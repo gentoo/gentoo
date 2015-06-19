@@ -1,0 +1,51 @@
+From 8c34d5a0d4c763db9b8f1e54be0c6c3ded6c54e0 Mon Sep 17 00:00:00 2001
+From: Alexander Holler <alexander.holler@1und1.de>
+Date: Mon, 9 Jan 2012 13:16:55 +0100
+Subject: [PATCH] libipvs: Fix reporting of the state of the backup-daemon.
+
+ipvsadm -l --daemon didn't report a running ipvs-backup-daemon
+(if no master-daemon was run).
+
+It seems there was some misunderstanding of
+how the daemons got reported (without using netlink). The state of
+the backup-daemon is always reported (by the kernel) in the second
+element of type ip_vs_daemon_user which is returned by the kernel
+through IP_VS_SO_GET_DAEMON or IPVS_CMD_GET_DAEMON.
+---
+ keepalived/libipvs-2.6/libipvs.c |   11 ++++++-----
+ 1 files changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/keepalived/libipvs-2.6/libipvs.c b/keepalived/libipvs-2.6/libipvs.c
+index ea5e851..6bee837 100644
+--- a/keepalived/libipvs-2.6/libipvs.c
++++ b/keepalived/libipvs-2.6/libipvs.c
+@@ -1003,12 +1003,9 @@ static int ipvs_daemon_parse_cb(struct nl_msg *msg, void *arg)
+ 	struct nlattr *attrs[IPVS_CMD_ATTR_MAX + 1];
+ 	struct nlattr *daemon_attrs[IPVS_DAEMON_ATTR_MAX + 1];
+ 	ipvs_daemon_t *u = (ipvs_daemon_t *)arg;
++	__u32 state;
+ 	int i = 0;
+ 
+-	/* We may get two daemons.  If we've already got one, this is the second */
+-	if (u[0].state)
+-		i = 1;
+-
+ 	if (genlmsg_parse(nlh, 0, attrs, IPVS_CMD_ATTR_MAX, ipvs_cmd_policy) != 0)
+ 		return -1;
+ 	
+@@ -1021,7 +1018,11 @@ static int ipvs_daemon_parse_cb(struct nl_msg *msg, void *arg)
+ 	      daemon_attrs[IPVS_DAEMON_ATTR_SYNC_ID]))
+ 		return -1;
+ 
+-	u[i].state = nla_get_u32(daemon_attrs[IPVS_DAEMON_ATTR_STATE]);
++	state = nla_get_u32(daemon_attrs[IPVS_DAEMON_ATTR_STATE]);
++	/* The second element is used for the state of the backup daemon. */
++	if (state == IP_VS_STATE_BACKUP)
++		i = 1;
++	u[i].state = state;
+ 	strncpy(u[i].mcast_ifn,
+ 		nla_get_string(daemon_attrs[IPVS_DAEMON_ATTR_MCAST_IFN]),
+ 		IP_VS_IFNAME_MAXLEN);
+-- 
+1.7.6.5
+

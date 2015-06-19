@@ -1,0 +1,69 @@
+# ChangeLog for games-rpg/sumwars
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/sumwars/ChangeLog,v 1.19 2015/04/18 20:32:25 mr_bones_ Exp $
+
+  18 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/sumwars-0.5.6-build.patch, -sumwars-0.5.6-r2.ebuild:
+  old
+
+  18 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org> sumwars-0.5.8.ebuild:
+  EAPI=5
+
+  18 Apr 2015; Pacho Ramos <pacho@gentoo.org> sumwars-0.5.8.ebuild:
+  x86 stable wrt bug #518230
+
+  27 Mar 2015; Agostino Sarubbo <ago@gentoo.org> sumwars-0.5.8.ebuild:
+  Stable for amd64, wrt bug #518230
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+  28 Oct 2014; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Fix e-mail address.
+
+*sumwars-0.5.8 (12 May 2014)
+
+  12 May 2014; Julian Ospald <hasufell@gentoo.org> +sumwars-0.5.8.ebuild:
+  version bump
+
+  17 Aug 2013; Denis Dupeyron <calchan@gentoo.org> sumwars-0.5.6-r2.ebuild:
+  Improve cegui dependency for better resolution.
+
+  29 Mar 2013; Julian Ospald <hasufell@gentoo.org> sumwars-0.5.6-r2.ebuild:
+  use bash syntax
+
+  29 Mar 2013; Julian Ospald <hasufell@gentoo.org> sumwars-0.5.6-r2.ebuild:
+  fix dependencies
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  07 Feb 2013; Ulrich Müller <ulm@gentoo.org> sumwars-0.5.6-r2.ebuild:
+  Move Creative Commons licenses to shorter names.
+
+  03 Jul 2012; Jeff Horelick <jdhore@gentoo.org> sumwars-0.5.6-r2.ebuild:
+  marked x86 per bug 423237
+
+  24 Jun 2012; Agostino Sarubbo <ago@gentoo.org> sumwars-0.5.6-r2.ebuild:
+  Stable for amd64, wrt bug #423237
+
+  05 Jun 2012; Julian Ospald <hasufell@gentoo.org> sumwars-0.5.6-r2.ebuild:
+  fix QA issues
+
+  05 Jun 2012; Julian Ospald <hasufell@gentoo.org> sumwars-0.5.6-r2.ebuild:
+  use new doicon functionality
+
+  02 Jun 2012; Julian Ospald <hasufell@gentoo.org> sumwars-0.5.6-r2.ebuild:
+  bump to EAPI=4
+
+*sumwars-0.5.6-r2 (30 May 2012)
+
+  30 May 2012; Julian Ospald <hasufell@gentoo.org> -sumwars-0.5.6-r1.ebuild,
+  +sumwars-0.5.6-r2.ebuild:
+  force revbump to unblock dev-games/ogre[threads] wrt #418279
+
+*sumwars-0.5.6-r1 (21 May 2012)
+
+  21 May 2012; Julian Ospald <hasufell@gentoo.org> +sumwars-0.5.6-r1.ebuild,
+  +files/sumwars-0.5.6-build.patch, +metadata.xml:
+  initial import with Michael Kunz wrt #383377

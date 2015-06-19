@@ -1,0 +1,38 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/usermin/files/init.d.usermin,v 1.6 2005/08/17 21:02:30 eradicator Exp $
+
+depend() {
+	use net logger
+}
+
+
+checkconfig() {
+	if [ -f /etc/usermin/config ]; then
+		return 0;
+	else
+		eerror "Error starting usermin.  Have you run '/usr/libexec/usermin/setup.sh'?"
+		return 1;
+	fi
+}
+
+start() { # copied from /etc/usermin/start
+	checkconfig || return 1
+	ebegin "Starting Usermin"
+
+	LANG=
+	export LANG
+
+	unset PERLIO
+	export PERLIO
+	start-stop-daemon --start --quiet \
+		--exec /usr/libexec/usermin/miniserv.pl -- /etc/usermin/miniserv.conf
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping Usermin"
+	start-stop-daemon --stop --pidfile /var/run/usermin.pid --quiet
+	eend $?
+}

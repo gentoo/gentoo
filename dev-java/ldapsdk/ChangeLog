@@ -1,0 +1,85 @@
+# ChangeLog for dev-java/ldapsdk
+# Copyright 2000-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/ldapsdk/ChangeLog,v 1.20 2014/11/25 10:38:33 mrueg Exp $
+
+  25 Nov 2014; Manuel Rüger <mrueg@gentoo.org> -ldapsdk-4.1.7-r3.ebuild:
+  Cleanup old.
+
+  25 Nov 2014; Agostino Sarubbo <ago@gentoo.org> ldapsdk-4.1.7-r4.ebuild:
+  Stable for x86, wrt bug #525012
+
+  10 Nov 2014; Agostino Sarubbo <ago@gentoo.org> ldapsdk-4.1.7-r4.ebuild:
+  Stable for amd64, wrt bug #525012
+
+*ldapsdk-4.1.7-r4 (21 Jun 2014)
+
+  21 Jun 2014; Johann Schmitz <ercpe@gentoo.org>
+  +files/4.1.7-fix-jdk-1.7-enum.patch, +ldapsdk-4.1.7-r4.ebuild:
+  EAPI bump; fixed bug #513580 (renamed variables named "enum"), some QA
+
+  17 Jun 2014; Manuel Rüger <mrueg@gentoo.org> -ldapsdk-4.1.7-r2.ebuild:
+  NM: Cleanup superseeded ebuilds.
+
+  28 Apr 2008; Petteri Räty <betelgeuse@gentoo.org>
+  ldapsdk-4.1.7-r3.ebuild:
+  The changes in this revision would not have warranted a revision bump so
+  just stable myself.
+
+*ldapsdk-4.1.7-r3 (14 Feb 2008)
+
+  14 Feb 2008; William L. Thomson Jr. <wltjr@gentoo.org>
+  +ldapsdk-4.1.7-r3.ebuild:
+  Quoted vars, set EAPI=1 and switched to slot deps, set JAVA_PKG_IUSE
+
+  04 Feb 2007; Vlastimil Babka <caster@gentoo.org> -ldapsdk-4.1.7-r1.ebuild:
+  Cleanup.
+
+  03 Feb 2007; Steve Dibb <beandog@gentoo.org> ldapsdk-4.1.7-r2.ebuild:
+  amd64 stable, bug 164734
+
+  01 Feb 2007; Petteri Räty <betelgeuse@gentoo.org>
+  ldapsdk-4.1.7-r2.ebuild:
+  Does not compile with jikes so filtering it. Fixes bug #164828.
+
+  31 Jan 2007; Petteri Räty <betelgeuse@gentoo.org>
+  ldapsdk-4.1.7-r1.ebuild, ldapsdk-4.1.7-r2.ebuild:
+  Marked -r2 stable on x86 and relaxed dev-java/jss dependency atom for the
+  upcoming 4.2 version bump.
+
+*ldapsdk-4.1.7-r2 (21 Dec 2006)
+
+  21 Dec 2006; Petteri Räty <betelgeuse@gentoo.org>
+  +ldapsdk-4.1.7-r2.ebuild:
+  Revision bump using generation 2. Added the source use flag.
+
+  05 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  ldapsdk-4.1.7-r1.ebuild:
+  Dropping sparc keywords, see #96229
+
+  12 Jul 2005; Thomas Matthijs <axxo@gentoo.org> ldapsdk-4.1.7-r1.ebuild:
+  Style/Dep fixes
+
+  26 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  ldapsdk-4.1.7-r1.ebuild:
+  Stable on sparc
+
+  02 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> ldapsdk-4.1.7-r1.ebuild,
+  -ldapsdk-4.1.7.ebuild:
+  cleanup, removed old revision with a dependency to oro.
+
+*ldapsdk-4.1.7-r1 (29 Mar 2005)
+
+  29 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> +ldapsdk-4.1.7-r1.ebuild:
+  moved from dev-java/oro to dev-java/jakarta-oro dependency. see #71337.
+
+  23 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> ldapsdk-4.1.7.ebuild:
+  Keyworded ~sparc wrt #84992
+
+  04 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> ldapsdk-4.1.7.ebuild:
+  stable on x86 and amd64.
+
+*ldapsdk-4.1.7 (18 Dec 2004)
+
+  18 Dec 2004; Karl Trygve Kalleberg <karltk@gentoo.org> ldapsdk-4.1.7.ebuild:
+  Initial import. Ebuild submitted by the fearsome Jan Brinkmann 
+  <lucky@the-luckyduck.de>, fixes #74290.

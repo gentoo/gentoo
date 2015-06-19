@@ -1,0 +1,17 @@
+# ChangeLog for dev-lisp/clx
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/clx/ChangeLog,v 1.2 2015/06/06 19:38:27 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*clx-9999 (23 Dec 2014)
+*clx-0.7.4 (23 Dec 2014)
+
+  23 Dec 2014; Chema Alonso <nimiux@gentoo.org> +clx-0.7.4.ebuild,
+  +clx-9999.ebuild, +files/gentoo-fix-dynamic-extent-sbcl-1.0.45.patch,
+  +files/gentoo-fix-asd.patch, +files/gentoo-fix-dep-openmcl.patch,
+  +files/gentoo-fix-obsolete-eval-when.patch,
+  +files/gentoo-fix-unused-vars.patch, +metadata.xml:
+  Add current version and live ebuild of package CLX. Should replace package
+  cl-clx

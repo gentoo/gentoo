@@ -1,0 +1,15 @@
+--- configure.in	2005-02-04 11:24:55.000000000 +0100
++++ configure.in	2012-03-01 22:56:25.985725178 +0100
+@@ -46,11 +46,9 @@
+ 			;;
+ 		*)
+ 			AC_MSG_RESULT(no)
+-			CFLAGS="$CFLAGS -O2"
+ 			;;
+ 	esac],
+-	[AC_MSG_RESULT(no)
+-	CFLAGS="$CFLAGS -O2"]
++	[AC_MSG_RESULT(no)]
+ )
+ 
+ AC_MSG_CHECKING(whether to compile in profiling info)

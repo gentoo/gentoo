@@ -1,0 +1,21 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/wwwoffle/files/wwwoffle.initd,v 1.1 2005/04/22 19:15:12 mrness Exp $
+
+depend() {
+	need localmount
+}
+
+start() {
+	ebegin "Starting wwwoffled"
+	start-stop-daemon --start --quiet --exec /usr/sbin/wwwoffled \
+		-u wwwoffle -- -c /etc/wwwoffle/wwwoffle.conf 2>&1
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping wwwoffled"
+	start-stop-daemon --stop --quiet --name wwwoffled
+	eend $?
+}

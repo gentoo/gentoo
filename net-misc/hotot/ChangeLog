@@ -1,0 +1,166 @@
+# ChangeLog for net-misc/hotot
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/hotot/ChangeLog,v 1.35 2014/12/28 18:47:11 floppym Exp $
+
+  28 Dec 2014; Mike Gilbert <floppym@gentoo.org> hotot-0.9.8.14.ebuild,
+  hotot-0.9.8.14_p20130514.ebuild, hotot-9999.ebuild:
+  Clean up python-single-r1 conversion.
+
+  25 Jun 2013; Michael Weber <xmw@gentoo.org> -hotot-0.9.8.11.ebuild:
+  Drop broken API version.
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> hotot-0.9.8.14.ebuild:
+  Stable for amd64, wrt bug #473136
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> hotot-0.9.8.14.ebuild:
+  Stable for x86, wrt bug #473136
+
+*hotot-0.9.8.14 (12 Jun 2013)
+*hotot-0.9.8.14_p20130514 (12 Jun 2013)
+
+  12 Jun 2013; Michael Weber <xmw@gentoo.org> +hotot-0.9.8.14.ebuild,
+  +hotot-0.9.8.14_p20130514.ebuild, hotot-9999.ebuild:
+  Version bumps to address twitter API 1.0 deprectation, migtrate to python-r1
+  eclasses
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> hotot-0.9.8.11.ebuild,
+  hotot-9999.ebuild:
+  Move Qt dependencies to the new category
+
+  07 Feb 2013; Michael Weber <xmw@gentoo.org> -hotot-0.9.8.8_pre.ebuild,
+  -files/hotot-0.9.8.8_pre-it_IT.patch:
+  Drop old
+
+  28 Jan 2013; Michael Weber <xmw@gentoo.org> hotot-9999.ebuild:
+  Updated EGIT_REPO_URI.
+
+  18 Jan 2013; Agostino Sarubbo <ago@gentoo.org> hotot-0.9.8.11.ebuild:
+  Stable for x86, wrt bug #452472
+
+  18 Jan 2013; Agostino Sarubbo <ago@gentoo.org> hotot-0.9.8.11.ebuild:
+  Stable for amd64, wrt bug #452472
+
+*hotot-0.9.8.11 (16 Dec 2012)
+
+  16 Dec 2012; Michael Weber <xmw@gentoo.org> -hotot-0.9.8.7.ebuild,
+  +hotot-0.9.8.11.ebuild:
+  Version bump
+
+  12 Dec 2012; Michael Weber <xmw@gentoo.org> -hotot-0.9.8.7.ebuild:
+  Drop old
+
+  06 Dec 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  hotot-0.9.8.8_pre.ebuild:
+  x86 stable wrt bug #445444
+
+  01 Dec 2012; <ago@gentoo.org> hotot-0.9.8.8_pre.ebuild:
+  Stable for amd64, wrt bug #445444
+
+*hotot-0.9.8.8_pre (29 Aug 2012)
+
+  29 Aug 2012; Michael Weber <xmw@gentoo.org>
+  +files/hotot-0.9.8.8_pre-it_IT.patch, +hotot-0.9.8.8_pre.ebuild,
+  -hotot-0.9.8.7-r1.ebuild, hotot-0.9.8.7.ebuild, hotot-9999.ebuild:
+  Version bump, mark qt-sql as build DEPEND.
+
+  29 Aug 2012; Michael Weber <xmw@gentoo.org> hotot-0.9.8.7-r1.ebuild,
+  hotot-0.9.8.7.ebuild:
+  Temporary fix for bug 427294, revert previous unconditional addition of dev-
+  python/PyQt4[sql]
+
+  29 Aug 2012; Michael Weber <xmw@gentoo.org> -hotot-0.9.8.4.ebuild,
+  -hotot-0.9.8.ebuild:
+  Drop old
+
+*hotot-0.9.8.7-r1 (27 Aug 2012)
+
+  27 Aug 2012; Patrick Lauer <patrick@gentoo.org> +hotot-0.9.8.7-r1.ebuild,
+  hotot-0.9.8.7.ebuild:
+  Fix dependencies #427294 #432818
+
+  09 Jul 2012; Agostino Sarubbo <ago@gentoo.org> hotot-0.9.8.7.ebuild:
+  Stable for amd64, wrt bug #425226
+
+  08 Jul 2012; Jeff Horelick <jdhore@gentoo.org> hotot-0.9.8.7.ebuild:
+  marked x86 per bug 425226
+
+  08 Jul 2012; Michael Weber <xmw@gentoo.org> hotot-0.9.8.ebuild,
+  hotot-0.9.8.4.ebuild, hotot-0.9.8.7.ebuild, hotot-9999.ebuild:
+  Add REQUIRED_USE (bug 424910, thanks Diego Elio Pettenò)
+
+  13 Jun 2012; Michael Weber <xmw@gentoo.org> hotot-0.9.8.ebuild:
+  vcs-snapshot eclass
+
+  13 Jun 2012; Michael Weber <xmw@gentoo.org> hotot-0.9.8.4.ebuild,
+  hotot-0.9.8.7.ebuild:
+  vcs-snapshot eclass
+
+  06 Jun 2012; Jeff Horelick <jdhore@gentoo.org> hotot-0.9.8.ebuild:
+  marked x86 per bug 419695
+
+  05 Jun 2012; Agostino Sarubbo <ago@gentoo.org> hotot-0.9.8.ebuild:
+  Stable for amd64, wrt bug #419695
+
+*hotot-0.9.8.7 (05 Jun 2012)
+
+  05 Jun 2012; Michael Weber <xmw@gentoo.org> +hotot-0.9.8.7.ebuild:
+  Version bump
+
+*hotot-0.9.8.4 (22 May 2012)
+
+  22 May 2012; Michael Weber <xmw@gentoo.org> -hotot-0.9.7.51.ebuild,
+  +hotot-0.9.8.4.ebuild:
+  Version bump
+
+*hotot-0.9.8 (19 Apr 2012)
+
+  19 Apr 2012; Michael Weber <xmw@gentoo.org> -hotot-0.9.6_p20110726.ebuild,
+  -hotot-0.9.6_p20111015.ebuild, +hotot-0.9.8.ebuild:
+  Version bump to beta (thanks patkoscsaba, bug 412631), remove old versions.
+
+*hotot-0.9.7.51 (26 Mar 2012)
+
+  26 Mar 2012; Michael Weber <xmw@gentoo.org> +hotot-0.9.7.51.ebuild,
+  hotot-9999.ebuild:
+  Version bump to git commit as requested by patkoscsaba (bug 407933)
+
+  25 Mar 2012; Michael Weber <xmw@gentoo.org> hotot-9999.ebuild, metadata.xml:
+  Update live build, new VCS repo, cmake-utils, use flags (bug 407933)
+
+*hotot-0.9.6_p20111015 (15 Oct 2011)
+
+  15 Oct 2011; Michael Weber <xmw@gentoo.org> -hotot-0.9.6_p20110703-r1.ebuild,
+  +hotot-0.9.6_p20111015.ebuild:
+  Remove old version, add new snapshot to fix segfault reported by mori rámar
+  (bug 385969) and reported fixed by upstream.
+
+*hotot-0.9.6_p20110726 (26 Jul 2011)
+
+  26 Jul 2011; Michael Weber <xmw@gentoo.org> -hotot-0.9.5.531.ebuild,
+  -hotot-0.9.5.531_p20110218.ebuild, +hotot-0.9.6_p20110726.ebuild:
+  New snapshot, remove old versions
+
+*hotot-0.9.6_p20110703-r1 (26 Jul 2011)
+
+  26 Jul 2011; Michael Weber <xmw@gentoo.org> -hotot-0.9.6_p20110703.ebuild,
+  +hotot-0.9.6_p20110703-r1.ebuild:
+  Revbump to trigger mirror update
+
+*hotot-0.9.6_p20110703 (14 Jul 2011)
+
+  14 Jul 2011; Michael Weber <xmw@gentoo.org> +hotot-0.9.6_p20110703.ebuild:
+  Version bump, new snapshot
+
+*hotot-0.9.5.531_p20110218 (19 Feb 2011)
+
+  19 Feb 2011; Michael Weber <xmw@gentoo.org>
+  +hotot-0.9.5.531_p20110218.ebuild:
+  Version bump to tarballed CVS.
+
+*hotot-9999 (05 Jan 2011)
+*hotot-0.9.5.531 (05 Jan 2011)
+
+  05 Jan 2011; Michael Weber <xmw@gentoo.org> +hotot-0.9.5.531.ebuild,
+  +hotot-9999.ebuild, +metadata.xml:
+  Initial import, thanks to Paweł Pogorzelski <pawelpogorzelski@gmail.com> on
+  bug #346297.

@@ -1,0 +1,12 @@
+--- configure.ac~	2011-11-09 23:50:21.000000000 +0900
++++ configure.ac	2011-11-09 23:54:54.139482817 +0900
+@@ -19,7 +19,8 @@
+ AC_MSG_CHECKING([for GNU ld])
+ LD=`$CC -print-prog-name=ld 2>&5`
+ 
+-if test `$LD -v 2>&1 | $ac_cv_path_GREP -c "GNU ld"` = 0; then
++if test `$LD -v 2>&1 | $ac_cv_path_GREP -c "GNU ld"` = 0 -a \
++   test `$LD -v 2>&1 | $ac_cv_path_GREP -c "GNU gold"` = 0; then
+   # Not
+   GNU_LD=""
+   AC_MSG_RESULT([no])

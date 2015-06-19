@@ -1,0 +1,239 @@
+# ChangeLog for www-apps/groupoffice
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/groupoffice/ChangeLog,v 1.34 2014/03/03 23:52:34 pacho Exp $
+
+  03 Mar 2014; Pacho Ramos <pacho@gentoo.org> groupoffice-4.1.7.ebuild:
+  amd64 stable, bug #495970
+
+  11 Sep 2013; Agostino Sarubbo <ago@gentoo.org> groupoffice-4.0.97.ebuild:
+  Stable for amd64, wrt bug #433988
+
+*groupoffice-4.1.7 (02 Jan 2013)
+
+  02 Jan 2013; Matti Bickel <mabi@gentoo.org> +groupoffice-4.1.7.ebuild,
+  -groupoffice-2.18.6.ebuild:
+  remove ancient version
+
+*groupoffice-4.0.144 (25 Dec 2012)
+
+  25 Dec 2012; Matti Bickel <mabi@gentoo.org> +groupoffice-4.0.144.ebuild:
+  version bump
+
+  30 Sep 2012; Raúl Porcel <armin76@gentoo.org> groupoffice-2.18.6.ebuild,
+  groupoffice-3.7.52.ebuild, groupoffice-4.0.47.ebuild,
+  groupoffice-4.0.97.ebuild:
+  Drop alpha/ia64 keywords
+
+  18 Sep 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+*groupoffice-4.0.97 (14 Sep 2012)
+
+  14 Sep 2012; Matti Bickel <mabi@gentoo.org> +groupoffice-4.0.97.ebuild:
+  version bump, fixes security issues (bug #433988)
+
+  16 Aug 2012; Agostino Sarubbo <ago@gentoo.org> groupoffice-3.7.52.ebuild:
+  Stable for amd64, wrt bug #361221
+
+*groupoffice-3.7.52 (24 Jun 2012)
+*groupoffice-4.0.47 (24 Jun 2012)
+
+  24 Jun 2012; Matti Bickel <mabi@gentoo.org> +groupoffice-3.7.52.ebuild,
+  +groupoffice-4.0.47.ebuild, -groupoffice-2.15.ebuild,
+  -groupoffice-2.16.8.ebuild:
+  version bump. 4.0 is still beta, so use 3.7 in production. this is a security
+  update (bug #361221). Also fixes bugs #332525, #285538, #417223.
+
+  25 Aug 2008; Raúl Porcel <armin76@gentoo.org> groupoffice-2.18.6.ebuild:
+  alpha stable wrt #235058
+
+  20 Aug 2008; Markus Meier <maekke@gentoo.org> groupoffice-2.18.6.ebuild:
+  amd64 stable, bug #235058
+
+  09 Aug 2008; Christian Hoffmann <hoffie@gentoo.org>
+  groupoffice-2.15.ebuild, groupoffice-2.16.8.ebuild,
+  groupoffice-2.18.6.ebuild:
+  (cosmetic changes only) removing occurences of "php-4"
+
+  02 Dec 2007; <wrobel@gentoo.org> files/postinstall2-en.txt:
+  -m Add instructions for additional functionality.
+
+*groupoffice-2.18.6 (02 Dec 2007)
+
+  02 Dec 2007; <wrobel@gentoo.org> +groupoffice-2.18.6.ebuild:
+  -m Added groupoffice-2.18.6 to the tree (see #200403).
+
+  19 Jan 2007; Jeroen Roovers <jer@gentoo.org> groupoffice-2.16.8.ebuild:
+  Marked ~hppa (bug #159784).
+
+  15 Jan 2007; Renat Lumpau <rl03@gentoo.org> files/postinstall2-en.txt,
+  groupoffice-2.16.8.ebuild:
+  Minor tweaks
+
+*groupoffice-2.16.8 (14 Jan 2007)
+
+  14 Jan 2007; Renat Lumpau <rl03@gentoo.org> +groupoffice-2.16.8.ebuild:
+  Version bump, bug #161939
+
+  02 Jan 2007; Renat Lumpau <rl03@gentoo.org> -groupoffice-2.02.ebuild,
+  -groupoffice-2.04.ebuild, -groupoffice-2.13.ebuild,
+  groupoffice-2.15.ebuild:
+  Housekeeping. Drop mysql dep wrt bug #159781.
+
+  25 Nov 2006; Bryan Østergaard <kloeri@gentoo.org>
+  groupoffice-2.15.ebuild:
+  Stable on Alpha, bug 134768.
+
+  23 Nov 2006; Francesco Riosa <vivo@gentoo.org> groupoffice-2.02.ebuild,
+  groupoffice-2.04.ebuild, groupoffice-2.13.ebuild, groupoffice-2.15.ebuild:
+  dev-db/mysql => virtual/mysql
+
+  30 Aug 2006; <blubb@gentoo.org> groupoffice-2.15.ebuild:
+  stable on amd64
+
+*groupoffice-2.15 (01 Aug 2006)
+
+  01 Aug 2006; Renat Lumpau <rl03@gentoo.org> +groupoffice-2.15.ebuild:
+  Version bump, bug #141624.
+
+  09 Jul 2006; Renat Lumpau <rl03@gentoo.org> -files/postinstall-en.txt,
+  -groupoffice-2.09.ebuild, -groupoffice-2.10.ebuild,
+  -groupoffice-2.11a.ebuild, -groupoffice-2.12.ebuild,
+  groupoffice-2.13.ebuild:
+  Housekeeping; einfo->elog
+
+  22 Aug 2005; Renat Lumpau <rl03@gentoo.org> files/postinstall2-en.txt:
+  Housekeeping
+
+  21 Aug 2005; Renat Lumpau <rl03@gentoo.org> files/postinstall2-en.txt,
+  groupoffice-2.13.ebuild:
+  Housekeeping
+
+*groupoffice-2.13 (07 Jul 2005)
+
+  07 Jul 2005; Renat Lumpau <rl03@gentoo.org> files/postinstall2-en.txt,
+  +groupoffice-2.13.ebuild:
+  Version bump (#88374).
+
+*groupoffice-2.12 (24 Apr 2005)
+
+  24 Apr 2005; Martin Holzer <mholzer@gentoo.org>
+  +files/postinstall2-en.txt, +groupoffice-2.12.ebuild:
+  Version bumped.
+
+*groupoffice-2.11a (28 Mar 2005)
+
+  28 Mar 2005; Martin Holzer <mholzer@gentoo.org> +groupoffice-2.11a.ebuild:
+  Version bumped. Closes 81653
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*groupoffice-2.10 (23 Nov 2004)
+
+  23 Nov 2004; Martin Holzer <mholzer@gentoo.org> +groupoffice-2.10.ebuild:
+  Version bumped.
+
+*groupoffice-2.09 (14 Nov 2004)
+
+  14 Nov 2004; Martin Holzer <mholzer@gentoo.org> +groupoffice-2.09.ebuild:
+  Version bumped.
+
+*groupoffice-2.07 (14 Nov 2004)
+
+  14 Nov 2004; Martin Holzer <mholzer@gentoo.org> +metadata.xml,
+  +files/postinstall-en.txt, +groupoffice-2.02.ebuild,
+  +groupoffice-2.04.ebuild, +groupoffice-2.05.ebuild,
+  +groupoffice-2.06.ebuild, +groupoffice-2.07.ebuild:
+  Moved from dev-php/groupoffice to www-apps/groupoffice.
+
+*groupoffice-2.07 (13 Nov 2004)
+
+  13 Nov 2004; Martin Holzer <mholzer@gentoo.org> +groupoffice-2.07.ebuild:
+  Version bumped.
+
+*groupoffice-2.06 (31 Oct 2004)
+
+  31 Oct 2004; Martin Holzer <mholzer@gentoo.org> -groupoffice-1.98.ebuild,
+  -groupoffice-2.01.ebuild, +groupoffice-2.06.ebuild:
+  Version bumped.
+
+  07 Aug 2004; Tom Martin <slarti@gentoo.org> groupoffice-1.98.ebuild,
+  groupoffice-2.01.ebuild, groupoffice-2.02.ebuild, groupoffice-2.04.ebuild,
+  groupoffice-2.05.ebuild:
+  Typo in DESCRIPTION: powerfull -> powerful. Bug 59717.
+
+  31 May 2004; Bryan Østergaard <kloeri@gentoo.org> groupoffice-2.04.ebuild:
+  Stable on alpha.
+
+*groupoffice-2.05 (23 May 2004)
+
+  23 May 2004; Martin Holzer <mholzer@gentoo.org> groupoffice-2.05.ebuild,
+  files/postinstall-en.txt:
+  Version bumped.
+
+  17 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> groupoffice-1.98.ebuild,
+  groupoffice-2.01.ebuild, groupoffice-2.02.ebuild:
+  Added IUSE, unmasked on amd64.
+
+*groupoffice-2.04 (25 Mar 2004)
+
+*groupoffice-2.02 (10 Mar 2004)
+
+  10 Mar 2004; Martin Holzer <mholzer@gentoo.org> groupoffice-2.02.ebuild:
+  Version bumped.
+
+*groupoffice-2.01 (09 Mar 2004)
+
+  09 Mar 2004; Martin Holzer <mholzer@gentoo.org> groupoffice-1.98.ebuild,
+  groupoffice-2.01.ebuild:
+  Version bumped.
+
+*groupoffice-1.98 (19 Feb 2004)
+
+  19 Feb 2004; Martin Holzer <mholzer@gentoo.org> groupoffice-1.98.ebuild:
+  Version bumped.
+
+*groupoffice-1.97 (11 Feb 2004)
+
+  11 Feb 2004; Martin Holzer <mholzer@gentoo.org> groupoffice-1.97.ebuild:
+  Version bumped.
+
+*groupoffice-1.95 (21 Jan 2004)
+
+  21 Jan 2004; Martin Holzer <mholzer@gentoo.org> groupoffice-1.95.ebuild:
+  Version bumped.
+
+  08 Jan 2004; Robin H. Johnson <robbat2@gentoo.org> groupoffice-1.93.ebuild,
+  groupoffice-1.94.ebuild:
+  remove mips and arm KEYWORDS due to lack of support, ready for new repoman.
+
+  15 Dec 2003; Stuart Herbert <stuart@gentoo.org> groupoffice-1.93.ebuild,
+  groupoffice-1.94.ebuild:
+  Fix for bug #32636
+
+  23 Nov 2003; Martin Holzer <mholzer@gentoo.org> groupoffice-1.93.ebuild,
+  groupoffice-1.94.ebuild:
+  crystal theme update
+
+*groupoffice-1.94 (23 Nov 2003)
+
+  23 Nov 2003; Martin Holzer <mholzer@gentoo.org> groupoffice-1.94.ebuild:
+  Version bumped.
+
+  02 Nov 2003; Martin Holzer <mholzer@gentoo.org> groupoffice-1.93.ebuild:
+  making webapps.eclass ability.
+
+*groupoffice-1.93 (26 Oct 2003)
+
+  26 Oct 2003; Martin Holzer <mholzer@gentoo.org> groupoffice-1.91.ebuild,
+  groupoffice-1.93.ebuild:
+  Version bumped.
+
+  13 Oct 2003; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  add metadata.xml
+
+*groupoffice-1.91 (14 Oct 2003)
+
+  14 Oct 2003; Martin Holzer <mholzer@gentoo.org> groupoffice-1.91.ebuild:
+  Initial verison.

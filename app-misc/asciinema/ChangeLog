@@ -1,0 +1,26 @@
+# ChangeLog for app-misc/asciinema
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/asciinema/ChangeLog,v 1.6 2014/12/31 12:13:58 kensington Exp $
+
+  31 Dec 2014; Michael Palimaka <kensington@gentoo.org> metadata.xml:
+  Drop to maintainer-needed.
+
+  24 Nov 2014; Michael Palimaka <kensington@gentoo.org> asciinema-0.9.8.ebuild:
+  Add Python 3.4 target wrt bug #530354. Remove old targets.
+
+  14 Jun 2014; Michael Palimaka <kensington@gentoo.org> -asciinema-0.9.7.ebuild:
+  Remove old.
+
+  13 Jun 2014; Chema Alonso <nimiux@gentoo.org> asciinema-0.9.8.ebuild:
+  Stable for amd64 wrt bug #507318
+
+*asciinema-0.9.8 (18 Feb 2014)
+
+  18 Feb 2014; Michael Palimaka <kensington@gentoo.org> +asciinema-0.9.8.ebuild:
+  Version bump.
+
+*asciinema-0.9.7 (20 Jan 2014)
+
+  20 Jan 2014; Michael Palimaka <kensington@gentoo.org> +asciinema-0.9.7.ebuild,
+  +metadata.xml:
+  New package wrt bug #497648. Ebuild by Ondrej Sukup <mimi.vx@gmail.com>.

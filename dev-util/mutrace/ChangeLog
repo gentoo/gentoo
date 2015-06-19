@@ -1,0 +1,22 @@
+# ChangeLog for dev-util/mutrace
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/mutrace/ChangeLog,v 1.5 2015/03/29 12:46:47 pacho Exp $
+
+  29 Mar 2015; Pacho Ramos <pacho@gentoo.org>
+  +files/mutrace-0.2-missing-header.patch:
+  Commit the patch :S
+
+  29 Mar 2015; Pacho Ramos <pacho@gentoo.org> mutrace-0.2.ebuild:
+  Fix building with current binutils, bug #430706 by Jaak Ristioja
+
+  05 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup after talking with Ford_Prefect
+
+  23 Nov 2009; Robin H. Johnson <robbat2@gentoo.org> mutrace-0.2.ebuild:
+  Works on amd64 and arm.
+
+*mutrace-0.2 (26 Oct 2009)
+
+  26 Oct 2009; Arun Raghavan <ford_prefect@gentoo.org> +mutrace-0.2.ebuild,
+  +metadata.xml:
+  Initial commit

@@ -1,0 +1,42 @@
+Pouze v /tmp/hwdecode-demos-0.9.5/src/: config.h
+Pouze v /tmp/hwdecode-demos-0.9.5/src/: .deps
+diff -ur /var/tmp/portage/media-video/hwdecode-demos-0.9.5/work/hwdecode-demos-0.9.5/src/ffmpeg_video.c /tmp/hwdecode-demos-0.9.5/src/ffmpeg_video.c
+--- /var/tmp/portage/media-video/hwdecode-demos-0.9.5/work/hwdecode-demos-0.9.5/src/ffmpeg_video.c	2013-06-22 19:45:54.776768969 +0200
++++ /tmp/hwdecode-demos-0.9.5/src/ffmpeg_video.c	2013-06-22 19:45:44.720769327 +0200
+@@ -96,7 +96,7 @@
+     if (avformat_open_input(&ic, "", format, NULL) < 0)
+         goto end;
+ 
+-    if (av_find_stream_info(ic) < 0)
++    if (avformat_find_stream_info(ic, NULL) < 0)
+         goto end;
+     av_dump_format(ic, 0, "", 0);
+ 
+@@ -115,7 +115,7 @@
+ 
+     if ((codec = avcodec_find_decoder(avctx->codec_id)) == NULL)
+         goto end;
+-    if (avcodec_open(avctx, codec) < 0)
++    if (avcodec_open2(avctx, codec, NULL) < 0)
+         goto end;
+ 
+     got_picture = 0;
+Pouze v /tmp/hwdecode-demos-0.9.5/src/: Makefile
+Pouze v /tmp/hwdecode-demos-0.9.5/src/: stamp-h1
+diff -ur /var/tmp/portage/media-video/hwdecode-demos-0.9.5/work/hwdecode-demos-0.9.5/src/utils_glx.h /tmp/hwdecode-demos-0.9.5/src/utils_glx.h
+--- /var/tmp/portage/media-video/hwdecode-demos-0.9.5/work/hwdecode-demos-0.9.5/src/utils_glx.h	2011-01-06 09:15:35.000000000 +0100
++++ /tmp/hwdecode-demos-0.9.5/src/utils_glx.h	2013-06-22 19:45:44.720769327 +0200
+@@ -28,6 +28,13 @@
+ #include <GL/glx.h>
+ #include <GL/glxext.h>
+ 
++#if GL_GLEXT_VERSION >= 85
++	/* XXX: PFNGLMULTITEXCOORD2FPROC got out of the GL_VERSION_1_3_DEPRECATED
++	  block and is not defined if GL_VERSION_1_3 is defined in <GL/gl.h>
++	  Redefine the type here as an interim solution */
++	typedef void (*PFNGLMULTITEXCOORD2FPROC) (GLenum target, GLfloat s, GLfloat t);
++#endif
++
+ const char *
+ gl_get_error_string(GLenum error);
+ 

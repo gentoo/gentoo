@@ -1,0 +1,15 @@
+# ChangeLog for sys-libs/mars
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/mars/ChangeLog,v 1.2 2008/11/14 12:06:05 lu_zero Exp $
+
+*mars-1.0.1 (14 Nov 2008)
+
+  14 Nov 2008; Luca Barbato <lu_zero@gentoo.org> +mars-1.0.1.ebuild,
+  -mars-08.06.26.ebuild:
+  New version
+
+*mars-08.06.26 (23 Aug 2008)
+
+  23 Aug 2008; Luca Barbato <lu_zero@gentoo.org> +mars-08.06.26.ebuild:
+  First commit
+

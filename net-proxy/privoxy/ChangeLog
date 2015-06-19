@@ -1,0 +1,601 @@
+# ChangeLog for net-proxy/privoxy
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/privoxy/ChangeLog,v 1.116 2015/02/27 03:41:09 bircoph Exp $
+
+  27 Feb 2015; Andrew Savchenko <bircoph@gentoo.org> -privoxy-3.0.21-r2.ebuild,
+  -privoxy-3.0.22.ebuild, -files/privoxy-3.0.22-force.patch:
+  Remove vulnerable versions from tree, see bugs 531292, 537884.
+
+  26 Feb 2015; Markus Meier <maekke@gentoo.org> privoxy-3.0.23.ebuild:
+  arm stable, bug #537884
+
+  26 Feb 2015; Markus Meier <maekke@gentoo.org> privoxy-3.0.22.ebuild:
+  arm stable, bug #531292
+
+  24 Feb 2015; Agostino Sarubbo <ago@gentoo.org> privoxy-3.0.23.ebuild:
+  Stable for alpha, wrt bug #537884
+
+  18 Feb 2015; Agostino Sarubbo <ago@gentoo.org> privoxy-3.0.23.ebuild:
+  Stable for ppc64, wrt bug #537884
+
+  16 Feb 2015; Agostino Sarubbo <ago@gentoo.org> privoxy-3.0.23.ebuild:
+  Stable for sparc, wrt bug #537884
+
+  15 Feb 2015; Agostino Sarubbo <ago@gentoo.org> privoxy-3.0.23.ebuild:
+  Stable for x86, wrt bug #537884
+
+  31 Jan 2015; Agostino Sarubbo <ago@gentoo.org> privoxy-3.0.23.ebuild:
+  Stable for ppc, wrt bug #537884
+
+  28 Jan 2015; Agostino Sarubbo <ago@gentoo.org> privoxy-3.0.23.ebuild:
+  Stable for amd64, wrt bug #537884
+
+*privoxy-3.0.23 (26 Jan 2015)
+
+  26 Jan 2015; Andrew Savchenko <bircoph@gentoo.org> +privoxy-3.0.23.ebuild:
+  Version bump. Fixes multiple security issues, see bug 537884.
+
+  25 Jan 2015; Agostino Sarubbo <ago@gentoo.org> privoxy-3.0.22.ebuild:
+  Stable for alpha, wrt bug #531292
+
+  15 Jan 2015; Agostino Sarubbo <ago@gentoo.org> privoxy-3.0.22.ebuild:
+  Stable for ppc, wrt bug #531292
+
+  14 Jan 2015; Agostino Sarubbo <ago@gentoo.org> privoxy-3.0.22.ebuild:
+  Stable for ppc64, wrt bug #531292
+
+  13 Jan 2015; Agostino Sarubbo <ago@gentoo.org> privoxy-3.0.22.ebuild:
+  Stable for sparc, wrt bug #531292
+
+  12 Jan 2015; Agostino Sarubbo <ago@gentoo.org> privoxy-3.0.22.ebuild:
+  Stable for amd64, wrt bug #531292
+
+  11 Jan 2015; Andreas Schuerch <nativemad@gentoo.org> privoxy-3.0.22.ebuild:
+  x86 stable, see bug 531292
+
+  09 Jan 2015; Andrew Savchenko <bircoph@gentoo.org> privoxy-3.0.22.ebuild:
+  Cosmetics: move REQUIRED_USE to an upper part.
+
+  09 Jan 2015; Andrew Savchenko <bircoph@gentoo.org>
+  files/privoxy-3.0.22-force.patch:
+  Fix bug 536082: remove patch chunk mangled by CVS, it is not needed
+  to fix build with --disable-force.
+
+*privoxy-3.0.22 (08 Jan 2015)
+
+  08 Jan 2015; Andrew Savchenko <bircoph@gentoo.org> +privoxy-3.0.22.ebuild,
+  +files/privoxy-3.0.22-force.patch, metadata.xml:
+  Version bump. Provides security fix for bug 531292.
+  Add ipv6 USE flag, fixes bug 528072.
+  Add multiple USE flags for package fine-tuning.
+
+  08 Jan 2015; Andrew Savchenko <bircoph@gentoo.org> metadata.xml:
+  Add myself to maintainers.
+
+*privoxy-3.0.21-r2 (08 Jan 2015)
+
+  08 Jan 2015; Pacho Ramos <pacho@gentoo.org> +privoxy-3.0.21-r2.ebuild,
+  -privoxy-3.0.21-r1.ebuild:
+  reintroduce proper revision (#535994 by monogolid and Duncan)
+
+  07 Jan 2015; Pacho Ramos <pacho@gentoo.org> -privoxy-3.0.21-r2.ebuild,
+  -privoxy-3.0.21.ebuild, metadata.xml:
+  Reassign as and cleanup discussed at https://www.mail-archive.com/gentoo-
+  dev@lists.gentoo.org/msg66357.html
+
+  04 Nov 2014; Jeroen Roovers <jer@gentoo.org>
+  -files/privoxy-3.0.12-gentoo.patch, -files/privoxy-3.0.13_beta-gentoo.patch,
+  -files/privoxy-3.0.14_beta-gentoo.patch,
+  -files/privoxy-3.0.15_beta-gentoo.patch, -files/privoxy-3.0.16-gentoo.patch,
+  -files/privoxy-3.0.17-gentoo.patch, metadata.xml:
+  Remove short <longdescription>. Remove old.
+
+  18 Jan 2014; Agostino Sarubbo <ago@gentoo.org> privoxy-3.0.21-r2.ebuild:
+  Stable for alpha, wrt bug #485236
+
+  23 Dec 2013; Agostino Sarubbo <ago@gentoo.org> privoxy-3.0.21-r2.ebuild:
+  Stable for sparc, wrt bug #485236
+
+  22 Dec 2013; Agostino Sarubbo <ago@gentoo.org> privoxy-3.0.21-r2.ebuild:
+  Stable for ppc64, wrt bug #485236
+
+  21 Dec 2013; Agostino Sarubbo <ago@gentoo.org> privoxy-3.0.21-r2.ebuild:
+  Stable for ppc, wrt bug #485236
+
+  07 Dec 2013; Pacho Ramos <pacho@gentoo.org> privoxy-3.0.21-r2.ebuild:
+  x86 stable, bug #485236
+
+  27 Nov 2013; Markus Meier <maekke@gentoo.org> privoxy-3.0.21-r2.ebuild:
+  arm stable, bug #485236
+
+  19 Oct 2013; Pacho Ramos <pacho@gentoo.org> privoxy-3.0.21-r2.ebuild:
+  amd64 stable, bug #485236
+
+  17 Oct 2013; Markus Meier <maekke@gentoo.org> privoxy-3.0.21-r1.ebuild:
+  arm stable, bug #485236
+
+*privoxy-3.0.21-r2 (08 Oct 2013)
+
+  08 Oct 2013; Pavlos Ratis <dastergon@gentoo.org> +privoxy-3.0.21-r2.ebuild,
+  privoxy-3.0.21-r1.ebuild:
+  Revision bump: EAPI 5 and added new configure option
+
+*privoxy-3.0.21-r1 (03 Sep 2013)
+
+  03 Sep 2013; Pacho Ramos <pacho@gentoo.org> +files/privoxy.service,
+  +privoxy-3.0.21-r1.ebuild:
+  Add unit file (#483370 by Andrius Štikonas)
+
+  17 Mar 2013; Agostino Sarubbo <ago@gentoo.org> -privoxy-3.0.12.ebuild,
+  -privoxy-3.0.13_beta.ebuild, -privoxy-3.0.14_beta.ebuild,
+  -privoxy-3.0.15_beta.ebuild, -privoxy-3.0.16.ebuild, -privoxy-3.0.17.ebuild,
+  -privoxy-3.0.19.ebuild:
+  Remove old
+
+  17 Mar 2013; Agostino Sarubbo <ago@gentoo.org> privoxy-3.0.21.ebuild:
+  Stable for sparc, wrt bug #461526
+
+  17 Mar 2013; Agostino Sarubbo <ago@gentoo.org> privoxy-3.0.21.ebuild:
+  Stable for alpha, wrt bug #461526
+
+  17 Mar 2013; Agostino Sarubbo <ago@gentoo.org> privoxy-3.0.21.ebuild:
+  Stable for arm, wrt bug #461526
+
+  17 Mar 2013; Agostino Sarubbo <ago@gentoo.org> privoxy-3.0.21.ebuild:
+  Stable for ppc64, wrt bug #461526
+
+  17 Mar 2013; Agostino Sarubbo <ago@gentoo.org> privoxy-3.0.21.ebuild:
+  Stable for ppc, wrt bug #461526
+
+  17 Mar 2013; Agostino Sarubbo <ago@gentoo.org> privoxy-3.0.21.ebuild:
+  Stable for x86, wrt bug #461526
+
+  17 Mar 2013; Agostino Sarubbo <ago@gentoo.org> privoxy-3.0.21.ebuild:
+  Stable for amd64, wrt bug #461526
+
+*privoxy-3.0.21 (13 Mar 2013)
+
+  13 Mar 2013; Tom Wijsman <TomWij@gentoo.org> +privoxy-3.0.21.ebuild:
+  Version bump to 3.0.21.
+
+  29 Jul 2012; Raúl Porcel <armin76@gentoo.org> privoxy-3.0.19.ebuild:
+  alpha/sparc stable wrt #415763
+
+  29 May 2012; Brent Baude <ranger@gentoo.org> privoxy-3.0.19.ebuild:
+  Marking privoxy-3.0.19 ppc for bug 415763
+
+  29 May 2012; Brent Baude <ranger@gentoo.org> privoxy-3.0.19.ebuild:
+  Marking privoxy-3.0.19 ppc64 for bug 415763
+
+  28 May 2012; Markus Meier <maekke@gentoo.org> privoxy-3.0.19.ebuild:
+  arm stable, bug #415763
+
+  23 May 2012; Mike Frysinger <vapier@gentoo.org> privoxy-3.0.12.ebuild,
+  privoxy-3.0.13_beta.ebuild, privoxy-3.0.14_beta.ebuild,
+  privoxy-3.0.15_beta.ebuild, privoxy-3.0.16.ebuild, privoxy-3.0.17.ebuild,
+  privoxy-3.0.19.ebuild:
+  Inherit user for enewuser/etc...
+
+  13 May 2012; Jeff Horelick <jdhore@gentoo.org> privoxy-3.0.19.ebuild:
+  marked x86 per bug 415763
+
+  13 May 2012; Markos Chandras <hwoarang@gentoo.org> privoxy-3.0.19.ebuild:
+  Stable on amd64 wrt bug #415763
+
+  25 Apr 2012; Justin Lecher <jlec@gentoo.org> privoxy-3.0.12.ebuild,
+  privoxy-3.0.13_beta.ebuild, privoxy-3.0.14_beta.ebuild,
+  privoxy-3.0.15_beta.ebuild, privoxy-3.0.16.ebuild, privoxy-3.0.17.ebuild:
+  Drop unnessecary die
+
+*privoxy-3.0.19 (18 Mar 2012)
+
+  18 Mar 2012; Torsten Veller <tove@gentoo.org> +privoxy-3.0.19.ebuild,
+  +files/privoxy-3.0.19-gentoo.patch:
+  Version bump (#391853,#405517). Move to EAPI=4 (#382533)
+
+  01 Mar 2011; Brent Baude <ranger@gentoo.org> privoxy-3.0.17.ebuild:
+  stable ppc64, bug 353284
+
+  22 Feb 2011; nixnut <nixnut@gentoo.org> privoxy-3.0.17.ebuild:
+  ppc stable #353284
+
+  13 Feb 2011; Raúl Porcel <armin76@gentoo.org> privoxy-3.0.17.ebuild:
+  alpha/sparc stable wrt #353284
+
+  10 Feb 2011; Markos Chandras <hwoarang@gentoo.org> privoxy-3.0.17.ebuild:
+  Stable on amd64 wrt bug #353284
+
+  06 Feb 2011; Markus Meier <maekke@gentoo.org> privoxy-3.0.17.ebuild:
+  arm stable, bug #353284
+
+  05 Feb 2011; Christian Faulhammer <fauli@gentoo.org>
+  privoxy-3.0.17.ebuild:
+  stable x86, bug 353284
+
+*privoxy-3.0.17 (23 Nov 2010)
+
+  23 Nov 2010; Torsten Veller <tove@gentoo.org> +privoxy-3.0.17.ebuild,
+  +files/privoxy-3.0.17-gentoo.patch:
+  Version bump
+
+  06 Jun 2010; Raúl Porcel <armin76@gentoo.org> privoxy-3.0.12.ebuild:
+  arm stable wrt #300829
+
+*privoxy-3.0.16 (08 May 2010)
+
+  08 May 2010; Torsten Veller <tove@gentoo.org> +privoxy-3.0.16.ebuild,
+  +files/privoxy-3.0.16-gentoo.patch:
+  Version bump (#308615). Fix docdir and logdir (#297206)
+
+  23 Jan 2010; Raúl Porcel <armin76@gentoo.org> privoxy-3.0.12.ebuild,
+  privoxy-3.0.13_beta.ebuild, privoxy-3.0.14_beta.ebuild,
+  privoxy-3.0.15_beta.ebuild:
+  Add ~arm wrt #300829
+
+*privoxy-3.0.15_beta (22 Oct 2009)
+
+  22 Oct 2009; Alin Năstac <mrness@gentoo.org> -privoxy-3.0.10.ebuild,
+  -privoxy-3.0.11.ebuild, -privoxy-3.0.11-r1.ebuild,
+  -files/privoxy-3.0.11-gentoo.patch, -files/privoxy-3.0.11-timeout.patch,
+  +privoxy-3.0.15_beta.ebuild, +files/privoxy-3.0.15_beta-gentoo.patch:
+  Version bump.
+
+  27 Sep 2009; Brent Baude <ranger@gentoo.org> privoxy-3.0.12.ebuild:
+  Marking privoxy-3.0.12 ppc64 for bug 277487
+
+*privoxy-3.0.14_beta (08 Aug 2009)
+
+  08 Aug 2009; Alin Năstac <mrness@gentoo.org>
+  +files/privoxy-3.0.14_beta-gentoo.patch, +privoxy-3.0.14_beta.ebuild:
+  Version bump (#279447).
+
+  27 Jul 2009; <chainsaw@gentoo.org> privoxy-3.0.12.ebuild:
+  Marked stable on AMD64 as requested by Alin Năstac <mrness@gentoo.org> in
+  bug #277487. Compile-tested with USE="ipv6 threads zlib (-selinux)" on a
+  Core2 Duo.
+
+  22 Jul 2009; Raúl Porcel <armin76@gentoo.org> privoxy-3.0.12.ebuild:
+  alpha/sparc stable wrt #277487
+
+  19 Jul 2009; nixnut <nixnut@gentoo.org> privoxy-3.0.12.ebuild:
+  ppc stable #277487
+
+  14 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  privoxy-3.0.12.ebuild:
+  stable x86, bug 277487
+
+*privoxy-3.0.13_beta (12 Jul 2009)
+
+  12 Jul 2009; Alin Năstac <mrness@gentoo.org>
+  +files/privoxy-3.0.13_beta-gentoo.patch, +privoxy-3.0.13_beta.ebuild:
+  Version bump (#277085).
+
+*privoxy-3.0.12 (09 Apr 2009)
+
+  09 Apr 2009; Alin Năstac <mrness@gentoo.org>
+  +files/privoxy-3.0.12-gentoo.patch, +privoxy-3.0.12.ebuild:
+  Version bump. Add IPv6 support, thanks to Petr Pisar <petr dot pisar at
+  atlas dot cz> (#265354).
+
+*privoxy-3.0.11-r1 (22 Mar 2009)
+
+  22 Mar 2009; Alin Năstac <mrness@gentoo.org>
+  +files/privoxy-3.0.11-timeout.patch, +privoxy-3.0.11-r1.ebuild:
+  Import upstream fix for a bug regarding timeout handling (#262820).
+
+*privoxy-3.0.11 (13 Mar 2009)
+
+  13 Mar 2009; Alin Năstac <mrness@gentoo.org>
+  +files/privoxy-3.0.11-gentoo.patch, +privoxy-3.0.11.ebuild:
+  Version bump (#261865).
+
+  13 Dec 2008; Alin Năstac <mrness@gentoo.org>
+  -files/privoxy-3.0.6-implicit-decl.patch, -privoxy-3.0.6.ebuild,
+  -privoxy-3.0.8.ebuild, -privoxy-3.0.9_beta-r1.ebuild:
+  Remove obsolete versions.
+
+  13 Nov 2008; Brent Baude <ranger@gentoo.org> privoxy-3.0.10.ebuild:
+  stable ppc64, bug 242542
+
+  21 Oct 2008; Raúl Porcel <armin76@gentoo.org> privoxy-3.0.10.ebuild:
+  alpha/sparc/x86 stable wrt #232542
+
+  18 Oct 2008; Dawid Węgliński <cla@gentoo.org> privoxy-3.0.10.ebuild:
+  Stable on amd64 (bug #242542)
+
+  18 Oct 2008; nixnut <nixnut@gentoo.org> privoxy-3.0.10.ebuild:
+  Stable on ppc wrt bug 242542
+
+*privoxy-3.0.10 (07 Sep 2008)
+
+  07 Sep 2008; Alin Năstac <mrness@gentoo.org> +privoxy-3.0.10.ebuild:
+  Version bump (#236875).
+
+*privoxy-3.0.9_beta-r1 (30 Jul 2008)
+
+  30 Jul 2008; Alin Năstac <mrness@gentoo.org> -privoxy-3.0.9_beta.ebuild,
+  +privoxy-3.0.9_beta-r1.ebuild:
+  Remove pcre USE flag and add libpcre as unconditional dependency (#233358).
+
+*privoxy-3.0.9_beta (24 Jul 2008)
+
+  24 Jul 2008; Alin Năstac <mrness@gentoo.org>
+  +files/privoxy-3.0.6-implicit-decl.patch, +privoxy-3.0.6.ebuild,
+  +privoxy-3.0.9_beta.ebuild:
+  Revive the previous stable version and bump to the latest beta version
+  (#229049).
+
+  13 Jul 2008; Alin Năstac <mrness@gentoo.org>
+  -files/privoxy-3.0.6-implicit-decl.patch, -privoxy-3.0.6.ebuild:
+  Remove obsolete version.
+
+  28 Jun 2008; Raúl Porcel <armin76@gentoo.org> privoxy-3.0.8.ebuild:
+  alpha stable wrt #228745
+
+  25 Jun 2008; nixnut <nixnut@gentoo.org> privoxy-3.0.8.ebuild:
+  Stable on ppc wrt bug 228745
+
+  23 Jun 2008; Friedrich Oslage <bluebird@gentoo.org> privoxy-3.0.8.ebuild:
+  Stable on sparc, bug #228745
+
+  22 Jun 2008; Kenneth Prugh <ken69267@gentoo.org> privoxy-3.0.8.ebuild:
+  amd64 stable, bug #228745
+
+  22 Jun 2008; Markus Rothe <corsair@gentoo.org> privoxy-3.0.8.ebuild:
+  Stable on ppc64; bug #228745
+
+  22 Jun 2008; Christian Faulhammer <opfer@gentoo.org> privoxy-3.0.8.ebuild:
+  stable x86, bug 228745
+
+  30 Jan 2008; Alin Năstac <mrness@gentoo.org> privoxy-3.0.8.ebuild:
+  Add threads and zlib USE flags (#208129).
+
+*privoxy-3.0.8 (29 Jan 2008)
+
+  29 Jan 2008; Alin Năstac <mrness@gentoo.org> +privoxy-3.0.8.ebuild:
+  Version bump (#204182).
+
+  14 Nov 2007; Alin Năstac <mrness@gentoo.org> files/privoxy.initd:
+  Set PIDFILE and CONFFILE init script parameters to values based on service
+  name (#199031).
+
+  04 Nov 2007; Alin Năstac <mrness@gentoo.org> privoxy-3.0.6.ebuild:
+  Remove useless pkg_preinst function.
+
+  28 Oct 2007; Markus Rothe <corsair@gentoo.org> privoxy-3.0.6.ebuild:
+  Stable on ppc64; bug #174109
+
+  04 Aug 2007; Markus Rothe <corsair@gentoo.org> privoxy-3.0.6.ebuild:
+  Added ~ppc64
+
+  17 Jun 2007; Alin Năstac <mrness@gentoo.org>
+  -files/privoxy-3.0.3-zlib.patch, +files/privoxy.initd, -files/privoxy.rc7,
+  -files/privoxy-zlib.patch, -privoxy-3.0.3-r3.ebuild,
+  -privoxy-3.0.3-r5.ebuild, -privoxy-3.0.5_beta.ebuild,
+  privoxy-3.0.6.ebuild:
+  Remove obsolete versions.
+
+  24 Apr 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  privoxy-3.0.6.ebuild:
+  ppc stable, bug #174157
+
+  22 Apr 2007; Bryan Østergaard <kloeri@gentoo.org> privoxy-3.0.6.ebuild:
+  Stable on Alpha, bug 174157.
+
+  11 Apr 2007; Alin Năstac <mrness@gentoo.org>
+  +files/privoxy-3.0.6-implicit-decl.patch, privoxy-3.0.6.ebuild:
+  Fix QA issue.
+
+  13 Mar 2007; Raúl Porcel <armin76@gentoo.org> privoxy-3.0.6.ebuild:
+  x86 stable
+
+  09 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org> privoxy-3.0.6.ebuild:
+  Stable on sparc
+
+  17 Jan 2007; Alin Năstac <mrness@gentoo.org> privoxy-3.0.6.ebuild:
+  Stable on amd64.
+
+*privoxy-3.0.6 (01 Dec 2006)
+
+  01 Dec 2006; Alin Năstac <mrness@gentoo.org> +privoxy-3.0.6.ebuild:
+  Version bump (#156728).
+
+*privoxy-3.0.5_beta (20 Oct 2006)
+
+  20 Oct 2006; Alin Nastac <mrness@gentoo.org> +privoxy-3.0.5_beta.ebuild:
+  Version bumped without zlib USE flag, the patch being incompatible with this
+  version (#151737).
+
+  21 Aug 2006; Daniel Gryniewicz <dang@gentoo.org> privoxy-3.0.3-r5.ebuild:
+  Marked stable on amd64 for bug #144559
+
+  17 Aug 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  privoxy-3.0.3-r5.ebuild:
+  Stable on sparc
+
+  17 Jul 2006; Alin Nastac <mrness@gentoo.org> privoxy-3.0.3-r5.ebuild:
+  Revise installed files permissions and owner:group (#140610).
+
+  16 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  privoxy-3.0.3-r5.ebuild:
+  Don't use root group, use group 0 instead, for Gentoo/Alt compatibility. Add
+  ~x86-fbsd keyword.
+
+  25 Jun 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  privoxy-3.0.3-r5.ebuild:
+  ppc stable
+
+  18 Jun 2006; Alin Nastac <mrness@gentoo.org> privoxy-3.0.3-r5.ebuild:
+  Stable on x86.
+
+*privoxy-3.0.3-r5 (06 Apr 2006)
+
+  06 Apr 2006; Alin Nastac <mrness@gentoo.org> -privoxy-3.0.3-r4.ebuild,
+  +privoxy-3.0.3-r5.ebuild:
+  Apply zlib patch only if zlib USE flag is enabled (#127917).
+
+*privoxy-3.0.3-r4 (30 Mar 2006)
+
+  30 Mar 2006; Alin Nastac <mrness@gentoo.org>
+  +files/privoxy-3.0.3-zlib.patch, +privoxy-3.0.3-r4.ebuild:
+  Activate scanning on compressed pages through zlib USE flag.
+  Thanks goes to Georg Sauthoff <g_sauthoff@web.de> (#127917).
+
+  12 Jan 2006; Marcus D. Hanwell <cryos@gentoo.org> privoxy-3.0.3-r3.ebuild:
+  Stable on amd64.
+
+  06 Dec 2005; Alin Nastac <mrness@gentoo.org> files/privoxy.logrotate:
+  Fix log files permissions in logrotate config file (#113803).
+
+  04 Jun 2005; Alin Nastac <mrness@gentoo.org> -files/privoxy.rc6,
+  -privoxy-3.0.2.ebuild, -privoxy-3.0.3.ebuild:
+  Remove obsolete versions.
+
+  25 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
+  privoxy-3.0.3-r3.ebuild:
+  Stable on alpha.
+
+  22 Apr 2005; Alin Nastac <mrness@gentoo.org> :
+  Rename category & herd www-proxy to net-proxy
+
+  08 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  privoxy-3.0.3-r3.ebuild:
+  Stable on ppc.
+
+  08 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  privoxy-3.0.3-r3.ebuild:
+  Stable on sparc
+
+  06 Apr 2005; Alin Nastac <mrness@gentoo.org> privoxy-3.0.3-r3.ebuild:
+  Stable on x86
+
+*privoxy-3.0.3-r3 (27 Feb 2005)
+
+  27 Feb 2005; Alin Nastac <mrness@gentoo.org> -files/privoxy-3.0.3.2.patch,
+  -privoxy-3.0.3-r1.ebuild, -privoxy-3.0.3-r2.ebuild,
+  +privoxy-3.0.3-r3.ebuild:
+  Remove patch added from #83205. See #83278 for more info.
+
+*privoxy-3.0.3-r2 (27 Feb 2005)
+
+  27 Feb 2005; Alin Nastac <mrness@gentoo.org> +files/privoxy-3.0.3.2.patch,
+  +files/privoxy-zlib.patch, privoxy-3.0.2.ebuild, privoxy-3.0.3-r1.ebuild,
+  +privoxy-3.0.3-r2.ebuild, privoxy-3.0.3.ebuild:
+  Bump version to 3.0.3-2 (#83205) and add support for zlib decompression
+  (#83278).
+
+*privoxy-3.0.3-r1 (24 Feb 2005)
+
+  24 Feb 2005; Alin Nastac <mrness@gentoo.org> metadata.xml,
+  -files/privoxy-gentoo.diff, +files/privoxy.logrotate, +files/privoxy.rc7,
+  -privoxy-2.9.14_beta.ebuild, +privoxy-3.0.3-r1.ebuild:
+  Changed herd from web-apps to www-proxy. Added pcre and logrotate support,
+  thanks to Torsten Veller <tove@gentoo.org> (#71557). Removed old version.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  privoxy-3.0.2.ebuild:
+  Masked privoxy-3.0.2.ebuild stable for ppc
+
+  15 Aug 2004; Stuart Herbert <stuart@gentoo.org> privoxy-2.9.14_beta.ebuild,
+  privoxy-3.0.2.ebuild, privoxy-3.0.3.ebuild:
+  Fix pkg_preinst() -> pkg_setup()
+
+*privoxy-3.0.2 (08 Aug 2004)
+
+  08 Aug 2004; Stuart Herbert <stuart@gentoo.org> +metadata.xml,
+  +files/privoxy-gentoo.diff, +files/privoxy.rc6, +privoxy-2.9.14_beta.ebuild,
+  +privoxy-3.0.2.ebuild, +privoxy-3.0.3.ebuild:
+  Moved from net-www/privoxy to www-proxy/privoxy.
+
+  27 Jul 2004; Rob Holland <tigger@gentoo.org> privoxy-2.9.14_beta.ebuild,
+  privoxy-3.0.2.ebuild, privoxy-3.0.3.ebuild:
+  Fix user/group addition re #58526
+
+  11 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> privoxy-3.0.3.ebuild:
+  Stable on alpha.
+
+  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> privoxy-3.0.2.ebuild,
+  privoxy-3.0.3.ebuild:
+  Add die following econf for bug 48950
+
+  13 Apr 2004; Danny van Dyk <kugelfang@gentoo.org> privoxy-3.0.3.ebuild:
+  marked ~amd64
+
+  11 Apr 2004; Jason Wever <weeve@gentoo.org> privoxy-3.0.2.ebuild:
+  Stable on sparc.
+
+  06 Apr 2004; Joshua Brindle <method@gentoo.org> privoxy-2.9.14_beta.ebuild,
+  privoxy-3.0.2.ebuild, privoxy-3.0.3.ebuild:
+  added selinux policy to rdepend
+
+  22 Mar 2004; Jason Wever <weeve@gentoo.org> privoxy-3.0.2.ebuild,
+  privoxy-3.0.3.ebuild:
+  Added ~sparc keywords to 3.0.2 and 3.0.3
+
+*privoxy-3.0.3 (16 Feb 2004)
+
+  16 Feb 2004; Martin Holzer <mholzer@gentoo.org> privoxy-3.0.3.ebuild:
+  Version bumped.
+
+  03 Feb 2004; Martin Holzer <mholzer@gentoo.org> privoxy-2.9.14_beta.ebuild:
+  fixing .keep issue. closes 39827
+
+  18 Jan 2004; Martin Holzer <mholzer@gentoo.org> privoxy-3.0.0.ebuild,
+  privoxy-3.0.2.ebuild:
+  adding keepdir for logfile and RESTRICT=nomirror
+
+  19 Oct 2003; Martin Holzer <mholzer@gentoo.org> privoxy-3.0.2.ebuild:
+  x86 stable.
+
+  01 Oct 2003; Tavis Ormandy <taviso@gentoo.org> privoxy-3.0.2.ebuild:
+  Stable on alpha
+
+  11 Jun 2003; Jon Portnoy <avenj@gentoo.org> privoxy-3.0.2.ebuild :
+  Removed textbrowser dependency to fix bug #20265.
+
+  09 Jun 2003; <msterret@gentoo.org> privoxy-3.0.0.ebuild,
+  privoxy-3.0.2.ebuild:
+  DEPEND on sed >= 4
+
+*privoxy-3.0.2 (29 Apr 2003)
+
+  29 Apr 2003; Martin Holzer <mholzer@gentoo.org> privoxy-3.0.0.ebuild,
+  privoxy-3.0.2.ebuild, files/privoxy-3.0.0-gentoo.diff:
+  diff now done with sed. Version bumped. Closes #20011.
+
+*privoxy-3.0.0 (14 Dec 2002)
+
+  16 Apr 2003; Tavis Ormandy <taviso@gentoo.org> privoxy-3.0.0.ebuild:
+  Marking ~alpha.
+
+  27 Feb 2003; Martin Holzer <mholzer@gentoo.org> privoxy-3.0.0.ebuild :
+  Marked as stable and changed SLOT="2" to prevent broken package.
+  Closes #16462.
+
+  15 Feb 2003; Mark Guertin <gerk@gentoo.org> privoxy-3.0.0.ebuild :
+  set ~ppc in keywords
+
+  14 Dec 2002; Seemant Kulleen <seemant@gentoo.org> privoxy-3.0.0.ebuild
+  files/digest-privoxy-3.0.0 files/privoxy-3.0.0-gentoo.diff
+  files/privoxy.rc6 :
+
+  Version bump and fixes from fridtjof@fbunet.de (Fridtjof Busse) in bug
+  #11835
+
+*privoxy-2.9.14_beta (07 Jul 2002)
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  29 Aug 2002; Seemant Kulleen <seemant@gentoo.org> privoxy-2.9.14_beta :
+
+  Cleaned up ebuild slightly, and added a virtual/textbrowser dependency,
+  which closes bug #7175 by: fridtjof@fbunet.de  Also added a .keep file in
+  /var/log/privoxy
+
+  07 Jul 2002; Georg Sauthoff <g_sauthoff@web.de> *: Initial Ebuild!

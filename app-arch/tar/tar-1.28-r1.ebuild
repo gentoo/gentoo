@@ -1,0 +1,76 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/tar/tar-1.28-r1.ebuild,v 1.2 2015/05/05 06:38:42 vapier Exp $
+
+EAPI=4
+
+inherit flag-o-matic eutils
+
+DESCRIPTION="Use this to make tarballs :)"
+HOMEPAGE="http://www.gnu.org/software/tar/"
+SRC_URI="mirror://gnu/tar/${P}.tar.bz2
+	mirror://gnu-alpha/tar/${P}.tar.bz2"
+
+LICENSE="GPL-3+"
+SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+IUSE="acl minimal nls selinux static userland_GNU xattr"
+
+RDEPEND="acl? ( virtual/acl )
+	selinux? ( sys-libs/libselinux )"
+DEPEND="${RDEPEND}
+	nls? ( >=sys-devel/gettext-0.10.35 )
+	xattr? ( sys-apps/attr )"
+
+src_prepare() {
+	if ! use userland_GNU ; then
+		sed -i \
+			-e 's:/backup\.sh:/gbackup.sh:' \
+			scripts/{backup,dump-remind,restore}.in \
+			|| die "sed non-GNU"
+	fi
+	epatch "${FILESDIR}"/${P}-concat-listed.patch #546294
+	epatch "${FILESDIR}"/${P}-xattr.patch #548024
+}
+
+src_configure() {
+	use static && append-ldflags -static
+	FORCE_UNSAFE_CONFIGURE=1 \
+	econf \
+		--enable-backup-scripts \
+		--bindir="${EPREFIX}"/bin \
+		--libexecdir="${EPREFIX}"/usr/sbin \
+		$(usex userland_GNU "" "--program-prefix=g") \
+		$(use_with acl posix-acls) \
+		$(use_enable nls) \
+		$(use_with selinux) \
+		$(use_with xattr xattrs)
+}
+
+src_install() {
+	default
+
+	local p=$(usex userland_GNU "" "g")
+	if [[ -z ${p} ]] ; then
+		# a nasty yet required piece of baggage
+		exeinto /etc
+		doexe "${FILESDIR}"/rmt
+	fi
+
+	# autoconf looks for gtar before tar (in configure scripts), hence
+	# in Prefix it is important that it is there, otherwise, a gtar from
+	# the host system (FreeBSD, Solaris, Darwin) will be found instead
+	# of the Prefix provided (GNU) tar
+	if use prefix ; then
+		dosym tar /bin/gtar
+	fi
+
+	mv "${ED}"/usr/sbin/${p}backup{,-tar} || die
+	mv "${ED}"/usr/sbin/${p}restore{,-tar} || die
+
+	if use minimal ; then
+		find "${ED}"/etc "${ED}"/*bin/ "${ED}"/usr/*bin/ \
+			-type f -a '!' '(' -name tar -o -name ${p}tar ')' \
+			-delete || die
+	fi
+}

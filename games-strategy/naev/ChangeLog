@@ -1,0 +1,99 @@
+# ChangeLog for games-strategy/naev
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/naev/ChangeLog,v 1.25 2015/05/28 19:08:26 mr_bones_ Exp $
+
+  28 May 2015; Michael Sterrett <mr_bones_@gentoo.org> -naev-0.5.3.ebuild:
+  old
+
+  27 May 2015; Agostino Sarubbo <ago@gentoo.org> naev-0.6.0.ebuild:
+  Stable for x86, wrt bug #549526
+
+  21 May 2015; Agostino Sarubbo <ago@gentoo.org> naev-0.6.0.ebuild:
+  Stable for amd64, wrt bug #549526
+
+*naev-0.6.0 (15 Apr 2015)
+
+  15 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org> +naev-0.6.0.ebuild:
+  version bump (bug #546562)
+
+  07 Jun 2014; Michael Sterrett <mr_bones_@gentoo.org> naev-0.5.3.ebuild:
+  EAPI=5; build with --as-needed (bug #510458)
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> naev-0.5.3.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  02 Jul 2013; Julian Ospald <hasufell@gentoo.org> naev-0.5.3.ebuild:
+  make build log verbose
+
+  07 Feb 2013; Ulrich Müller <ulm@gentoo.org> naev-0.5.3.ebuild:
+  Move Creative Commons licenses to shorter names.
+
+  22 Oct 2012; Michael Sterrett <mr_bones_@gentoo.org> naev-0.5.3.ebuild:
+  use newicon
+
+  30 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> -naev-0.5.0.ebuild,
+  -files/naev-0.5.0-libpng15.patch:
+  old
+
+  08 Jun 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> naev-0.5.3.ebuild:
+  x86 stable wrt bug #418993
+
+  01 Jun 2012; Agostino Sarubbo <ago@gentoo.org> naev-0.5.3.ebuild:
+  Stable for amd64, wrt bug #418993
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> naev-0.5.0.ebuild,
+  naev-0.5.3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  16 Apr 2012; Samuli Suominen <ssuominen@gentoo.org> -naev-0.5.1.ebuild,
+  -naev-0.5.2.ebuild:
+  old
+
+*naev-0.5.3 (16 Apr 2012)
+
+  16 Apr 2012; Samuli Suominen <ssuominen@gentoo.org> +naev-0.5.3.ebuild:
+  Version bump.
+
+*naev-0.5.2 (03 Apr 2012)
+
+  03 Apr 2012; Samuli Suominen <ssuominen@gentoo.org> +naev-0.5.2.ebuild:
+  Version bump.
+
+*naev-0.5.1 (02 Mar 2012)
+
+  02 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> +naev-0.5.1.ebuild:
+  Version bump.
+
+  02 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> -naev-0.4.2.ebuild:
+  old
+
+  29 Jul 2011; Samuli Suominen <ssuominen@gentoo.org> naev-0.5.0.ebuild,
+  +files/naev-0.5.0-libpng15.patch:
+  Fix missing zlib.h include for Z_DEFAULT_COMPRESSION after libpng headers got
+  cleaned up.
+
+  19 Jul 2011; Markus Meier <maekke@gentoo.org> naev-0.5.0.ebuild:
+  amd64/x86 stable, bug #375489
+
+*naev-0.5.0 (04 Jun 2011)
+
+  04 Jun 2011; Markos Chandras <hwoarang@gentoo.org> -naev-0.5.0_beta2.ebuild,
+  +naev-0.5.0.ebuild:
+  Version bump thanks to Samuli Suominen <ssuominen@gentoo.org>
+
+*naev-0.5.0_beta2 (29 May 2011)
+
+  29 May 2011; Kacper Kowalik <xarthisius@gentoo.org> +naev-0.5.0_beta2.ebuild:
+  Version bump by ssuominen
+
+  27 Apr 2010; Samuli Suominen <ssuominen@gentoo.org> naev-0.4.2.ebuild:
+  amd64 stable wrt #315913
+
+  27 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> naev-0.4.2.ebuild:
+  x86 stable wrt bug #315913
+
+*naev-0.4.2 (18 Mar 2010)
+
+  18 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> +naev-0.4.2.ebuild:
+  Initial commit.

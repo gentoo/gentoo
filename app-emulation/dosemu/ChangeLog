@@ -1,0 +1,277 @@
+# ChangeLog for app-emulation/dosemu
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/dosemu/ChangeLog,v 1.63 2015/06/09 11:07:43 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  01 Mar 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  dosemu-1.4.1_pre20091009.ebuild:
+  Drop outdated workaround for hardened: bug #540912 by Toralf Förster.
+
+  17 Jan 2015; Sergei Trofimovich <slyfox@gentoo.org> -dosemu-1.4.0.1.ebuild,
+  -dosemu-1.4.1_pre20130107-r2.ebuild, -dosemu-1.4.1_pre20130107.ebuild,
+  dosemu-1.4.1_pre20091009.ebuild:
+  Drop old.
+
+  05 Sep 2013; Sergei Trofimovich <slyfox@gentoo.org>
+  dosemu-1.4.1_pre20130107-r3.ebuild:
+  Respect AR (bug #483740 by Agostino Sarubbo).
+
+*dosemu-1.4.1_pre20130107-r3 (05 Aug 2013)
+
+  05 Aug 2013; Sergei Trofimovich <slyfox@gentoo.org>
+  +dosemu-1.4.1_pre20130107-r3.ebuild,
+  +files/dosemu-1.4.1_pre20130107-fortify.patch,
+  dosemu-1.4.1_pre20130107-r2.ebuild:
+  Fixed stack struct overflow (bug #343577 by Diego Elio Pettenò).
+
+  05 Aug 2013; Sergei Trofimovich <slyfox@gentoo.org>
+  dosemu-1.4.1_pre20130107-r2.ebuild:
+  Fixed typos.
+
+*dosemu-1.4.1_pre20130107-r2 (05 Aug 2013)
+
+  05 Aug 2013; Sergei Trofimovich <slyfox@gentoo.org>
+  +dosemu-1.4.1_pre20130107-r2.ebuild, -dosemu-1.4.1_pre20130107-r1.ebuild:
+  Added basic hardened support (bug #392261 by Daniel Keyhani).
+
+*dosemu-1.4.1_pre20130107-r1 (05 Aug 2013)
+
+  05 Aug 2013; Sergei Trofimovich <slyfox@gentoo.org>
+  +dosemu-1.4.1_pre20130107-r1.ebuild:
+  Picked FluidR3_GM.sf2 from media-sound/fluid-soundfont as a default soundfont
+  (bug #479534 by Michelangelo Scopelliti)
+
+*dosemu-1.4.1_pre20130107 (17 Jul 2013)
+
+  17 Jul 2013; Sergei Trofimovich <slyfox@gentoo.org>
+  +dosemu-1.4.1_pre20130107.ebuild, metadata.xml:
+  Bump snapshot version of dosemu (ebuild and bug #451092 by Ben Kohler). Added
+  myself as a co-maintainer.
+
+  11 Jun 2013; Sergei Trofimovich <slyfox@gentoo.org>
+  +files/dosemu-1.4.1_pre20091009-flex.patch, dosemu-1.4.1_pre20091009.ebuild:
+  Fix build failure against modern flex (like 2.5.37). Bug #437074 by Chris
+  Smith and others.
+
+  24 Jun 2010; Christoph Mende <angelos@gentoo.org>
+  dosemu-1.4.1_pre20091009.ebuild:
+  Stable on amd64 wrt bug #301325
+
+  19 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  dosemu-1.4.1_pre20091009.ebuild:
+  stable x86, bug 301325
+
+*dosemu-1.4.1_pre20091009 (09 Oct 2009)
+
+  09 Oct 2009; Hanno Boeck <hanno@gentoo.org>
+  +dosemu-1.4.1_pre20091009.ebuild:
+  Bump to svn snapshot, needed for newer CPUs.
+
+  06 Feb 2009; Hanno Boeck <hanno@gentoo.org>
+  +files/dosemu-1.4.0.1-gcc433.diff, dosemu-1.4.0.1.ebuild:
+  Patch from upstream svn to fix compilation with gcc 4.3.3.
+
+  21 Nov 2008; Hanno Boeck <hanno@gentoo.org> dosemu-1.4.0.1.ebuild:
+  xf86dgaproto is only a build-time dep.
+
+*dosemu-1.4.0.1 (27 Mar 2008)
+
+  27 Mar 2008; Hanno Boeck <hanno@gentoo.org> +dosemu-1.4.0.1.ebuild:
+  Version bump.
+
+  24 Mar 2008; Santiago M. Mola <coldwind@gentoo.org> dosemu-1.4.0.ebuild:
+  amd64 stable
+
+  24 Feb 2008; Markus Meier <maekke@gentoo.org> dosemu-1.4.0.ebuild:
+  x86 stable, bug #211135, add quotes
+
+  09 Feb 2008; Samuli Suominen <drac@gentoo.org> dosemu-1.4.0.ebuild:
+  Drop invalid patch wrt #198859.
+
+  22 Jul 2007; David Shakaryan <omp@gentoo.org> dosemu-1.2.2-r1.ebuild,
+  dosemu-1.3.2.ebuild, dosemu-1.3.4.ebuild, dosemu-1.3.5.ebuild,
+  dosemu-1.4.0.ebuild:
+  Remove virtual/x11 from dependencies.
+
+  16 May 2007; Daniel Gryniewicz <dang@gentoo.org> dosemu-1.4.0.ebuild:
+  Marked ~amd64
+
+*dosemu-1.4.0 (06 May 2007)
+
+  06 May 2007; Hanno Boeck <hanno@gentoo.org> +dosemu-1.4.0.ebuild:
+  Version bump.
+
+*dosemu-1.3.5 (02 May 2007)
+
+  02 May 2007; Hanno Boeck <hanno@gentoo.org>
+  +files/dosemu-1.3.5-slang2.diff, +dosemu-1.3.5.ebuild:
+  Version bump.
+
+*dosemu-1.3.4 (02 Apr 2007)
+
+  02 Apr 2007; Hanno Boeck <hanno@gentoo.org> +files/dosemu-1.3.4-shm.diff,
+  +files/dosemu-1.3.4-slang2.diff, +files/dosemu-compile-asm.diff,
+  +dosemu-1.3.4.ebuild:
+  Version bump and a bunch of fixes.
+
+  25 Feb 2007; Samuli Suominen <drac@gentoo.org> dosemu-1.3.3.ebuild:
+  Remove virtual/x11 usage wrt bug 166370.
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  19 Oct 2006; Hanno Boeck <hanno@gentoo.org> dosemu-1.3.3.ebuild:
+  Add some missing deps.
+
+  05 Oct 2006; Joshua Jackson <tsunam@gentoo.org> dosemu-1.3.3.ebuild:
+  Stable x86; bug #145823
+
+  09 Sep 2006; Hanno Boeck <hanno@gentoo.org> dosemu-1.3.3.ebuild:
+  Add some dodoc.
+
+*dosemu-1.3.3 (05 Sep 2006)
+
+  05 Sep 2006; Hanno Boeck <hanno@gentoo.org>
+  +files/dosemu-1.3.3-configure.ac.patch, +dosemu-1.3.3.ebuild:
+  Version bump.
+
+  28 Jul 2006; Hanno Boeck <hanno@gentoo.org> dosemu-1.2.2-r1.ebuild,
+  dosemu-1.3.2.ebuild:
+  Change slang dep for slotting.
+
+  24 Jan 2006; Hanno Boeck <hanno@gentoo.org> dosemu-1.3.2.ebuild:
+  Add some missing modular x deps.
+
+  14 Jan 2006; Hanno Boeck <hanno@gentoo.org> dosemu-1.2.2-r1.ebuild,
+  dosemu-1.3.2.ebuild:
+  Modular X dependencies.
+
+*dosemu-1.3.2 (05 Jun 2005)
+
+  05 Jun 2005; Hanno Boeck <hanno@gentoo.org> +dosemu-1.3.2.ebuild:
+  Version bump.
+
+  23 May 2005; Hanno Boeck <hanno@gentoo.org> dosemu-1.2.2-r1.ebuild:
+  Append -fno-pic instead of filtering -fPIC for hardened-gcc.
+
+  21 May 2005; Hanno Boeck <hanno@gentoo.org> dosemu-1.2.2-r1.ebuild:
+  Unset KERNEL-Variable to fix compilation (see bug #91261).
+
+  19 Apr 2005; Hanno Boeck <hanno@gentoo.org> dosemu-1.2.2-r1.ebuild:
+  Stable on x86.
+
+  05 Apr 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/dosemu-1.2.2-cflags.patch, dosemu-1.2.2-r1.ebuild:
+  Respect user CFLAGS.
+
+  18 Feb 2005; Hanno Boeck <hanno@gentoo.org> dosemu-1.2.2-r1.ebuild:
+  Fixed compilation on hardened profile.
+
+  13 Feb 2005; Hanno Boeck <hanno@gentoo.org> dosemu-1.2.2-r1.ebuild:
+  Fixed installing freedos-tarball, see bug #80194.
+
+*dosemu-1.2.2-r1 (10 Jan 2005)
+
+  10 Jan 2005; Hanno Boeck <hanno@gentoo.org> +dosemu-1.2.2-r1.ebuild:
+  A bunch of cleanups and fixes, most of them found in bug #62882.
+
+*dosemu-1.2.2 (31 Jul 2004)
+
+  31 Jul 2004; Konstantin Arkhipov <voxus@gentoo.org> dosemu-1.2.2.ebuild:
+  Version bump, added gpm use flag.
+
+  27 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> dosemu-1.2.0.ebuild,
+  dosemu-1.2.1.ebuild:
+  inherit flag-o-matic; move replace-flags into src_unpack
+
+*dosemu-1.2.1 (09 Mar 2004)
+
+  09 Mar 2004; Hanno Boeck <hanno@gentoo.org> dosemu-1.2.1.ebuild:
+  Version bump.
+
+  09 Feb 2004; Hanno Boeck <hanno@gentoo.org> dosemu-1.2.0.ebuild:
+  Marked x86.
+
+*dosemu-1.2.0 (19 Jan 2004)
+
+  19 Jan 2004; Hanno Boeck <hanno@gentoo.org> dosemu-1.2.0.ebuild:
+  Version bump.
+
+*dosemu-1.1.99.2 (14 Jan 2004)
+
+  14 Jan 2004; Hanno Boeck <hanno@gentoo.org> dosemu-1.1.99.2.ebuild:
+  Version bump.
+
+*dosemu-1.1.99.1-r1 (07 Oct 2003)
+
+  07 Oct 2003; Hanno Boeck <hanno@gentoo.org> dosemu-1.1.99.1-r1.ebuild,
+  files/dosemu_kernel26_patch:
+  Re-added dosemu-broken-links.diff and added patch for compatibility with
+  kernel 2.6.
+
+*dosemu-1.1.99.1 (01 Oct 2003)
+
+  01 Oct 2003; Hanno Boeck <hanno@gentoo.org> dosemu-1.1.99.1.ebuild:
+  Version bump. Cleaned up ebuild a lot, strip -O3 and above to -O2.
+
+*dosemu-1.1.5-r1 (20 Jun 2003)
+
+  20 Jun 2003; Hanno Boeck <hanno@gentoo.org> dosemu-1.1.5-r1.ebuild:
+  Added patch to resolve installation problems (see bug #23110).
+  Changed ebuild to use CFLAGS.
+
+  18 Jun 2003; Hanno Boeck <hanno@gentoo.org> dosemu-1.1.5.ebuild:
+  Change ~x86 to x86.
+
+*dosemu-1.1.5 (07 Jun 2003)
+
+  07 Jun 2003; Hanno Boeck <hanno@gentoo.org> dosemu-1.1.5.ebuild:
+  Update to latest versions of dosemu and freedos.
+
+*dosemu-1.1.4.15 (16 Apr 2003)
+
+  16 Apr 2003; Alastair Tse <liquidx@gentoo.org> dosemu-1.1.4.15.ebuild,
+  dosemu-1.1.4.ebuild:
+  bumping to an unstable testing version because this fixes the ugly build
+  scripts and also the errno problem with slang .ar.
+
+*dosemu-1.1.4 (07 Feb 2003)
+
+  07 Feb 2003; Ryan Phillips <rphillips@gentoo.org> dosemu-1.1.4.ebuild :
+  new version
+
+*dosemu-1.1.3-r1 (27 Jul 2002)
+
+  19 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> dosemu-1.1.3-r1.ebuild :
+  Updated to mirror://sourceforge in SRC_URI.
+
+  06 Aug 2002; Mark Guertin <gerk@gentoo.org> :
+  Added -ppc to keywords
+
+  27 Jul 2002; Stuart Bouyer <stubear@gentoo.org> dosemu-1.1.3-r1.ebuild :
+
+  Added KEYWORDS="x86", SLOTS and RDEPEND for QA.
+
+*dosemu-1.1.3-r1 (27 May 2002)
+
+  28 May 2002; Ryan Phillips <rphillips@gentoo.org> dosemu-1.1.3-r1.ebuild :
+
+  Tweaked ebuild slightly to be more robust.
+
+  27 May 2002; Ryan Phillips <rphillips@gentoo.org> dosemu-1.1.3-r1.ebuild :
+
+	1. add/fix manpage installation to /usr/share/man/man1
+	2. enable mitsumi extentions, previously disabled due to compile errors
+	3. enable compiletime 'experimental options' for ASPI and Mousedev support
+	4. fix small typo and remove unnessacery make/make install stubs
+
+	Fixes #3067.  Thanks Phillip.
+
+*dosemu-1.1.3 (18 May 2002)
+
+  18 May 2002; Ryan Phillips <rphillips@gentoo.org> ChangeLog :
+
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. 

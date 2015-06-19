@@ -1,0 +1,10 @@
+DEFINED_PHASES=install nofetch unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files 1.6.0
+HOMEPAGE=http://www.oracle.com/technetwork/java/javase/overview/index-jsp-136246.html
+KEYWORDS=amd64 x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=Oracle-BCLA-JavaSE
+RESTRICT=fetch
+SLOT=1.6
+SRC_URI=jce_policy-6.zip
+_md5_=72269748ffb309e2d43f581984741d8c

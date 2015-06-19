@@ -1,0 +1,22 @@
+#!/sbin/runscript
+# Copyright 1999-2006 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/lcdproc/files/0.5.2-r2-lcdproc.initd,v 1.1 2008/09/12 23:58:55 rbu Exp $
+
+depend(){
+	use LCDd
+	after ntp-client
+}
+
+start() {
+	ebegin "Starting lcdproc"
+	start-stop-daemon --start --background \
+		--exec /usr/bin/lcdproc
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping lcdproc"
+	start-stop-daemon --stop --exec /usr/bin/lcdproc
+	eend $?
+}

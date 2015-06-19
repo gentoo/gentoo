@@ -1,0 +1,19 @@
+# ChangeLog for dev-haskell/ifelse
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/ifelse/ChangeLog,v 1.4 2014/07/25 08:58:59 slyfox Exp $
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+  21 Jul 2013; Christoph Junghans <ottxor@gentoo.org> ifelse-0.85.ebuild:
+  added ~amd64-linux (tested by me)
+
+  12 Sep 2012; Alexander Vershilov <qnikst@gentoo.org> ifelse-0.85.ebuild:
+  move dev-haskell/ifelse/ifelse-0.85.ebuild ebuild to mirror://hackage
+
+*ifelse-0.85 (24 Mar 2012)
+
+  24 Mar 2012; Sergei Trofimovich <slyfox@gentoo.org> +ifelse-0.85.ebuild,
+  +metadata.xml:
+  Initial version. dev-haskell/mtl control flow combinator library. A depend for
+  >=dev-vcs/git-annex-3.20120315.

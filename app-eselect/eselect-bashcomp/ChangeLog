@@ -1,0 +1,51 @@
+# ChangeLog for app-eselect/eselect-bashcomp
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-eselect/eselect-bashcomp/ChangeLog,v 1.1 2015/03/31 16:46:38 ulm Exp $
+
+  31 Mar 2015; Ulrich Müller <ulm@gentoo.org> +eselect-bashcomp-1.3.6.ebuild,
+  +metadata.xml:
+  Move package from app-admin to app-eselect category.
+
+  26 Nov 2014; Ulrich Müller <ulm@gentoo.org> metadata.xml:
+  New maintainer, update metadata.xml on behalf of mgorny.
+
+  13 Jul 2014; Ulrich Müller <ulm@gentoo.org> metadata.xml:
+  Add package to eselect herd.
+
+  26 Mar 2014; Agostino Sarubbo <ago@gentoo.org> eselect-bashcomp-1.3.6.ebuild:
+  Stable for ppc64, wrt bug #505848
+
+  26 Mar 2014; Agostino Sarubbo <ago@gentoo.org> eselect-bashcomp-1.3.6.ebuild:
+  Stable for ppc, wrt bug #505848
+
+  19 Jan 2014; Mike Frysinger <vapier@gentoo.org> eselect-bashcomp-1.3.6.ebuild:
+  Add arm64 love.
+
+  17 Dec 2013; Raúl Porcel <armin76@gentoo.org> eselect-bashcomp-1.3.6.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #485502
+
+  27 Sep 2013; Agostino Sarubbo <ago@gentoo.org> eselect-bashcomp-1.3.6.ebuild:
+  Stable for arm, wrt bug #485502
+
+  23 Sep 2013; Rick Farina <zerochaos@gentoo.org> eselect-bashcomp-1.3.6.ebuild:
+  Stable for x86, wrt bug #485502
+
+  22 Sep 2013; Jeroen Roovers <jer@gentoo.org> eselect-bashcomp-1.3.6.ebuild:
+  Stable for HPPA (bug #485502).
+
+  21 Sep 2013; Agostino Sarubbo <ago@gentoo.org> eselect-bashcomp-1.3.6.ebuild:
+  Stable for amd64, wrt bug #485502
+
+  28 Aug 2013; Raúl Porcel <armin76@gentoo.org> eselect-bashcomp-1.3.6.ebuild:
+  Add ~s390 wrt #482782
+
+  28 Aug 2013; Ulrich Müller <ulm@gentoo.org> eselect-bashcomp-1.3.6.ebuild:
+  Add proper version information to the module.
+
+*eselect-bashcomp-1.3.6 (28 Aug 2013)
+
+  28 Aug 2013; Ulrich Müller <ulm@gentoo.org> +eselect-bashcomp-1.3.6.ebuild,
+  +metadata.xml:
+  Initial import, split off from app-admin/eselect, keywords carried over from
+  there. This package is a stopgap solution to make the bashcomp.eselect module
+  available to previous versions of app-shells/bash-completion.

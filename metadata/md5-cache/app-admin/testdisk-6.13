@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure
+DEPEND=>=sys-libs/ncurses-5.2 jpeg? ( virtual/jpeg ) ntfs? ( sys-fs/ntfs3g ) reiserfs? ( >=sys-fs/progsreiserfs-0.3.1_rc8 ) >=sys-fs/e2fsprogs-1.35 sys-libs/zlib
+DESCRIPTION=Checks and undeletes partitions + PhotoRec, signature based recovery tool
+EAPI=4
+HOMEPAGE=http://www.cgsecurity.org/wiki/TestDisk
+IUSE=jpeg ntfs reiserfs static
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=!static? ( >=sys-libs/ncurses-5.2 jpeg? ( virtual/jpeg ) ntfs? ( sys-fs/ntfs3g ) reiserfs? ( >=sys-fs/progsreiserfs-0.3.1_rc8 ) >=sys-fs/e2fsprogs-1.35 sys-libs/zlib )
+SLOT=0
+SRC_URI=http://www.cgsecurity.org/testdisk-6.13.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=4b10bafb84bd655726ed8637995f8104

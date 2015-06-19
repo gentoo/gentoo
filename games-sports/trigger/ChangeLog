@@ -1,0 +1,132 @@
+# ChangeLog for games-sports/trigger
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-sports/trigger/ChangeLog,v 1.31 2015/04/20 16:58:47 mr_bones_ Exp $
+
+  20 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/trigger-0.6.0-ldflags.patch, -trigger-0.6.0.ebuild:
+  old
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org> trigger-0.6.1.ebuild:
+  Stable for x86, wrt bug #546396
+
+  13 Apr 2015; Agostino Sarubbo <ago@gentoo.org> trigger-0.6.1.ebuild:
+  Stable for amd64, wrt bug #546396
+
+*trigger-0.6.1 (13 Mar 2015)
+
+  13 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> +trigger-0.6.1.ebuild:
+  version bump
+
+  20 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/trigger-0.5.2.1-ldflags.patch, -trigger-0.5.2.1.ebuild:
+  old
+
+  01 Nov 2012; Michael Sterrett <mr_bones_@gentoo.org> trigger-0.6.0.ebuild:
+  work around jam's AR handling (bug #440828)
+
+  04 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> trigger-0.6.0.ebuild:
+  x86 stable wrt bug #395455
+
+  21 Dec 2011; Agostino Sarubbo <ago@gentoo.org> trigger-0.6.0.ebuild:
+  Stable for AMD64, wrt bug #395455
+
+*trigger-0.6.0 (12 Nov 2011)
+
+  12 Nov 2011; Tristan Heaven <tristan@gentoo.org> +trigger-0.6.0.ebuild,
+  +files/trigger-0.6.0-ldflags.patch:
+  Version bump
+
+  30 Sep 2010; Tupone Alfredo <tupone@gentoo.org> trigger-0.5.2.1.ebuild,
+  +files/trigger-0.5.2.1-ldflags.patch:
+  Respect LDFLAGS. Bug #339200 by flameeyes@gentoo.org
+
+  20 Jan 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  trigger-0.5.2.1.ebuild:
+  EAPI=2; add use-based dep
+
+  21 Nov 2007; Ryan Hill <dirtyepic@gentoo.org> trigger-0.5.2.1.ebuild:
+  Allow building with ftjam for bug #188194
+
+  12 Mar 2007; Tristan Heaven <nyhm@gentoo.org> trigger-0.5.2.1.ebuild:
+  Install menu entry, bug #160255
+
+  04 Nov 2006; Danny van Dyk <kugelfang@gentoo.org> trigger-0.5.2.1.ebuild:
+  Marked stable on amd64.
+
+  21 Oct 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  trigger-0.5.2.1.ebuild:
+  MAKEOPTS to jam is a bad idea (bug #152187)
+
+*trigger-0.5.2.1 (20 Oct 2006)
+
+  20 Oct 2006; Tristan Heaven <nyhm@gentoo.org> +trigger-0.5.2.1.ebuild:
+  Version bump
+
+  17 Oct 2006; Tristan Heaven <nyhm@gentoo.org> trigger-0.5.2-r1.ebuild:
+  Use autotools eclass; fix dependencies
+
+  23 Jul 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/trigger-0.5.2-physfs.patch, trigger-0.5.2.ebuild,
+  trigger-0.5.2-r1.ebuild:
+  patch to fix use of latest sdl-image (bug #141072), patch from Tristan Heaven
+
+  14 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  trigger-0.5.2-r1.ebuild:
+  Stable on x86 in preparation of split openal/freealut.
+
+  02 Jun 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  trigger-0.5.2-r1.ebuild:
+  fix dep pointed out by nyhm
+
+  23 May 2006; <Tupone@gentoo.org> +files/trigger-0.5.2-gcc41.patch,
+  trigger-0.5.2.ebuild, trigger-0.5.2-r1.ebuild:
+  Fix for gcc-4.1, bug #132097 by nyhm
+
+*trigger-0.5.2-r1 (15 May 2006)
+
+  15 May 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/trigger-0.5.2-freealut.patch, +trigger-0.5.2-r1.ebuild:
+  Revision bump for the split freealut/openal and closing bug #132839.
+
+  29 Jan 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  trigger-0.5.1c.ebuild, trigger-0.5.2.ebuild:
+  Add modular X dependencies.
+
+*trigger-0.5.2 (14 Jan 2006)
+
+  14 Jan 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  +trigger-0.5.2.ebuild:
+  version bump (bug #118909) - patches from Jasmine Langridge and Stefan
+  Schweizer
+
+  30 Jul 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/trigger-0.5.1c-glx-check.patch, trigger-0.5.1c.ebuild:
+  Refine the glx version check #100374 by David Grant.
+
+  26 Jul 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  trigger-0.5.1c.ebuild:
+  mention ~/.trigger/trigger.config in pkg_postinst
+
+  26 Jul 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  -trigger-0.5.0.ebuild, -trigger-0.5.1.ebuild:
+  clean old versions
+
+*trigger-0.5.1c (09 May 2005)
+
+  09 May 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +trigger-0.5.1c.ebuild:
+  version bump (bug #91933)
+
+  19 Dec 2004; Simon Stelling <blubb@gentoo.org> trigger-0.5.1.ebuild:
+  added ~amd64
+
+*trigger-0.5.1 (13 Dec 2004)
+
+  13 Dec 2004; Mike Frysinger <vapier@gentoo.org> +trigger-0.5.1.ebuild:
+  Version bump.
+
+*trigger-0.5.0 (20 Oct 2004)
+
+  20 Oct 2004; Michael Sterrett <mr_bones_@gentoo.org> +metadata.xml,
+  +trigger-0.5.0.ebuild:
+  initial commit - ebuild submitted by Jonas Bahr via bug #62972

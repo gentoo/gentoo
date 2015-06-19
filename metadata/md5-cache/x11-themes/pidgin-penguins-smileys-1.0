@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=app-arch/unzip !x11-themes/pidgin-smileys
+DESCRIPTION=Penguins pidgin smiley theme
+EAPI=5
+HOMEPAGE=http://gnome-look.org/content/show.php?content=62566
+KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-1+
+RDEPEND=net-im/pidgin
+SLOT=0
+SRC_URI=mirror://gentoo/pidgin-penguins-smileys-1.0.tar.bz2
+_md5_=dbf543f23a9c4fff63bb2766ed6ec3a3

@@ -1,0 +1,67 @@
+# ChangeLog for dev-perl/Class-C3-XS
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Class-C3-XS/ChangeLog,v 1.16 2014/08/22 19:01:35 axs Exp $
+
+*Class-C3-XS-0.130.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Class-C3-XS-0.130.0-r1.ebuild, -Class-C3-XS-0.130.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Class-C3-XS-0.13.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> Class-C3-XS-0.130.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*Class-C3-XS-0.130.0 (01 Sep 2011)
+
+  01 Sep 2011; Torsten Veller <tove@gentoo.org> +Class-C3-XS-0.130.0.ebuild:
+  Change version scheme
+
+  27 Jun 2010; <nixnut@gentoo.org> Class-C3-XS-0.13.ebuild:
+  ppc stable #323529
+
+  09 May 2010; Raúl Porcel <armin76@gentoo.org> Class-C3-XS-0.13.ebuild:
+  ia64/sparc stable
+
+  23 Dec 2009; Fabian Groffen <grobian@gentoo.org> Class-C3-XS-0.13.ebuild:
+  Marked ~x86-solaris, bug #296509
+
+  02 Dec 2009; Torsten Veller <tove@gentoo.org> Class-C3-XS-0.13.ebuild:
+  Stable on amd64 and x86 (#293622)
+
+  26 Oct 2009; Mounir Lamouri <volkmar@gentoo.org> Class-C3-XS-0.13.ebuild:
+  Keywording for ppc, bug 283244
+
+  12 Oct 2009; Torsten Veller <tove@gentoo.org> -Class-C3-XS-0.11.ebuild:
+  Cleanup
+
+*Class-C3-XS-0.13 (25 Sep 2009)
+
+  25 Sep 2009; Torsten Veller <tove@gentoo.org> +Class-C3-XS-0.13.ebuild:
+  Version bump
+
+  01 May 2009; Torsten Veller <tove@gentoo.org> -Class-C3-XS-0.08.ebuild,
+  -Class-C3-XS-0.09.ebuild:
+  Cleanup
+
+*Class-C3-XS-0.11 (01 Apr 2009)
+
+  01 Apr 2009; Torsten Veller <tove@gentoo.org> +Class-C3-XS-0.11.ebuild:
+  Version bump
+
+*Class-C3-XS-0.09 (25 Mar 2009)
+
+  25 Mar 2009; Torsten Veller <tove@gentoo.org> +Class-C3-XS-0.09.ebuild:
+  Version bump
+
+*Class-C3-XS-0.08 (14 Jan 2009)
+
+  14 Jan 2009; Torsten Veller <tove@gentoo.org> +metadata.xml,
+  +Class-C3-XS-0.08.ebuild:
+  Initial commit. From the perl overlay

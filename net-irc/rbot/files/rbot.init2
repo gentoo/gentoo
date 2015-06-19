@@ -1,0 +1,54 @@
+#!/sbin/runscript
+# Copyright 1999-2010 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/rbot/files/rbot.init2,v 1.1 2010/07/28 07:58:08 a3li Exp $
+
+depend() {
+	 need net
+	 use dns
+}
+
+start() {
+	if ! [ -d "${RBOTDIR}" ]; then
+		eerror "The path you specified (${RBOTDIR}) is not a directory."
+		eerror "Please set RBOTDIR variable in /etc/conf.d/${SVCNAME}"
+		eerror "to a proper value for an rbot base directory."
+		return 1
+	fi
+
+	if ! [ -f "${RBOTDIR}/conf.yaml" ]; then
+		eerror "You didn't configure rbot yet. Please configure rbot by running"
+		eerror "	rbot ${RBOTDIR}"
+		eerror "at least once."
+		return 1
+	fi
+
+        if ! [ -x "${RBOTRUBY}" ]; then
+		eerror "The configured Ruby interpreter for rbot is not an executable."
+		eerror "Use \`eselect ruby' to set a default interpreter or adapt the"
+		eerror "RBOTRUBY variable in /etc/conf.d/${SVCNAME}."
+		return 1
+	fi
+
+	export USER="${RBOTUSER%%:*}"
+	export HOME="/dev/null"
+	ebegin "Starting rbot"
+	start-stop-daemon \
+		--start \
+		--exec "${RBOTRUBY}" --name "$(basename ${RBOTRUBY})" \
+		--pidfile "${RBOTDIR}/rbot.pid" \
+		--chuid "${RBOTUSER}" \
+		-- /usr/bin/rbot --background "${RBOTDIR}"
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping rbot"
+	start-stop-daemon --stop \
+		--exec "${RBOTRUBY}" \
+		--pidfile "${RBOTDIR}/rbot.pid" \
+		--user "${RBOTUSER%%:*}"
+	eend $?
+}
+
+# vim:set sts=8 sw=8 ts=8 noexpandtab:

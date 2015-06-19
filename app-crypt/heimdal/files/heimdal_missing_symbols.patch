@@ -1,0 +1,28 @@
+Add missing symbols.  Cherry picked from upstream master.
+Bug #420821.
+
+--- a/lib/krb5/version-script.map	2012-01-10 21:53:51.000000000 +0000
++++ b/lib/krb5/version-script.map	2012-06-13 16:23:26.000000000 +0000
+@@ -42,6 +42,7 @@
+ 		krb5_auth_con_getrcache;
+ 		krb5_auth_con_getremoteseqnumber;
+ 		krb5_auth_con_getremotesubkey;
++		krb5_auth_con_getsendsubkey;
+ 		krb5_auth_con_init;
+ 		krb5_auth_con_removeflags;
+ 		krb5_auth_con_setaddrs;
+@@ -383,6 +384,14 @@
+ 		krb5_h_errno_to_heim_errno;
+ 		krb5_have_error_string;
+ 		krb5_hmac;
++		krb5_init_creds_init;
++		krb5_init_creds_set_service;
++		krb5_init_creds_set_keytab;
++		krb5_init_creds_get;
++		krb5_init_creds_set_password;
++		krb5_init_creds_free;
++		krb5_init_creds_get_creds;
++		krb5_init_creds_get_error;
+ 		krb5_init_context;
+ 		krb5_init_ets;
+ 		krb5_initlog;

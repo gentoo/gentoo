@@ -1,0 +1,30 @@
+From 284cca2a5ebc98257275585083321a7100fb89b3 Mon Sep 17 00:00:00 2001
+From: Jonathon Jongsma <jjongsma@redhat.com>
+Date: Fri, 30 May 2014 18:45:02 +0000
+Subject: Fix assert in mjpeg_encoder_adjust_params_to_bit_rate()
+
+If mjpeg_encoder_reset_quality() is called with the same quality as currently
+set, it will not reset last_enc_size but not reset num_recent_enc_frames,
+violating some assumptions in _adjust_params_to_bit_rate(). To avoid aborting
+the server, simply return early from this function.
+
+Resolves: rhbz#1086820
+---
+diff --git a/server/mjpeg_encoder.c b/server/mjpeg_encoder.c
+index f465d88..12447da 100644
+--- a/server/mjpeg_encoder.c
++++ b/server/mjpeg_encoder.c
+@@ -625,7 +625,10 @@ static void mjpeg_encoder_adjust_params_to_bit_rate(MJpegEncoder *encoder)
+         return;
+     }
+ 
+-    spice_assert(rate_control->num_recent_enc_frames);
++    if (!rate_control->num_recent_enc_frames) {
++        spice_debug("No recent encoded frames");
++        return;
++    }
+ 
+     if (rate_control->num_recent_enc_frames < MJPEG_AVERAGE_SIZE_WINDOW &&
+         rate_control->num_recent_enc_frames < rate_control->fps) {
+--
+cgit v0.9.0.2-2-gbebe

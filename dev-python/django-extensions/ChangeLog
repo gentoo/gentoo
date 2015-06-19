@@ -1,0 +1,93 @@
+# ChangeLog for dev-python/django-extensions
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/django-extensions/ChangeLog,v 1.18 2015/06/07 13:06:21 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+*django-extensions-1.5.5 (14 May 2015)
+
+  14 May 2015; Justin Lecher <jlec@gentoo.org> +django-extensions-1.5.5.ebuild:
+  Version Bump
+
+*django-extensions-1.5.3 (06 May 2015)
+
+  06 May 2015; Justin Lecher <jlec@gentoo.org> +django-extensions-1.5.3.ebuild:
+  Version Bump
+
+*django-extensions-1.5.2 (08 Apr 2015)
+
+  08 Apr 2015; Justin Lecher <jlec@gentoo.org> +django-extensions-1.5.2.ebuild:
+  Version Bump
+
+  01 Mar 2015; Justin Lecher <jlec@gentoo.org>
+  -django-extensions-1.0.2-r1.ebuild, -django-extensions-1.3.3.ebuild,
+  -django-extensions-1.3.7.ebuild, django-extensions-1.4.0.ebuild:
+  Drop old; remove USE constraints from django
+
+*django-extensions-1.5.0 (27 Feb 2015)
+
+  27 Feb 2015; Justin Lecher <jlec@gentoo.org> +django-extensions-1.5.0.ebuild,
+  metadata.xml:
+  Version Bump, fixes #476762 (python3 support) and #538038 (Uneeded dependency
+  on db support in django)
+
+  28 Nov 2014; Pacho Ramos <pacho@gentoo.org> django-extensions-1.4.0.ebuild:
+  Support python 3.4
+
+*django-extensions-1.4.0 (12 Oct 2014)
+
+  12 Oct 2014; Johann Schmitz <ercpe@gentoo.org>
+  +django-extensions-1.4.0.ebuild:
+  Version bump of django-extensions
+
+  01 Jun 2014; Ian Delaney <idella4@gentoo.org> django-extensions-1.3.3.ebuild,
+  django-extensions-1.3.7.ebuild:
+  delete duplicated entry in deps, observed by Arfrever
+
+*django-extensions-1.3.7 (27 May 2014)
+
+  27 May 2014; Johann Schmitz <ercpe@gentoo.org>
+  +django-extensions-1.3.7.ebuild:
+  Version bump of django-extensions to get rid of django warnings about
+  json/simplejson imports
+
+*django-extensions-1.3.3 (26 Mar 2014)
+
+  26 Mar 2014; Ian Delaney <idella4@gentoo.org> +django-extensions-1.3.3.ebuild:
+  bump; add py3.3 support, add IUSE test, tidy deps, add REQUIRED_USE settings
+  to cater to USE flags supporting only py2 capable deps
+
+*django-extensions-1.0.2-r1 (22 May 2013)
+
+  22 May 2013; Ian Delaney <idella4@gentoo.org>
+  +django-extensions-1.0.2-r1.ebuild, -django-extensions-0.5.ebuild,
+  -django-extensions-0.8.ebuild, -django-extensions-1.0.2.ebuild:
+  revbump, migrate -> distutils-r1, drop old ebuilds
+
+  05 Jan 2013; Ian Delaney <idella4@gentoo.org> django-extensions-1.0.2.ebuild:
+  Reduced testing() by use of , thanks Arfrever
+
+*django-extensions-1.0.2 (05 Jan 2013)
+
+  05 Jan 2013; Ian Delaney <idella4@gentoo.org> +django-extensions-1.0.2.ebuild:
+  bump to 1.0.2, addition of a src_test over-riding a hostile setup.py invoking
+  downloading within the testsuite
+
+*django-extensions-0.8 (09 May 2012)
+
+  09 May 2012; Jesus Rivero <neurogeek@gentoo.org>
+  +django-extensions-0.8.ebuild:
+  Version bump
+
+  25 Apr 2011; Thomas Kahle <tomka@gentoo.org> django-extensions-0.5.ebuild:
+  ~x86 per bug 357801
+
+*django-extensions-0.5 (27 Aug 2010)
+
+  27 Aug 2010; Tiziano Müller <dev-zero@gentoo.org>
+  +django-extensions-0.5.ebuild, +metadata.xml:
+  Initial commit (bug #294084).

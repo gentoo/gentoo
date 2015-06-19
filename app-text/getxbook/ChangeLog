@@ -1,0 +1,35 @@
+# ChangeLog for app-text/getxbook
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/getxbook/ChangeLog,v 1.6 2015/03/21 09:25:25 jlec Exp $
+
+*getxbook-1.0-r1 (21 Mar 2015)
+
+  21 Mar 2015; Justin Lecher <jlec@gentoo.org> +getxbook-1.0-r1.ebuild,
+  -getxbook-1.0.ebuild, files/getxbook-1.0.patch, metadata.xml:
+  Bump EAPI; respect CC and use LDFLAGS correctly for as-needed; use dobin
+  instead of exeinto && doexe
+
+  06 Aug 2014; Patrick Lauer <patrick@gentoo.org> getxbook-1.0.ebuild:
+  Make description more repoman-happy
+
+  24 Jul 2013; Andrey Grozin <grozin@gentoo.org> -getxbook-0.9.ebuild,
+  getxbook-1.0.ebuild, -files/getxbook-makefile.patch:
+  Added keyword ~amd64, cleaned old
+
+*getxbook-1.0 (20 Aug 2012)
+
+  20 Aug 2012; Andrey Grozin <grozin@gentoo.org> -getxbook-0.8.ebuild,
+  +getxbook-1.0.ebuild, +files/getxbook-1.0.patch:
+  Version bump
+
+*getxbook-0.9 (27 Apr 2012)
+
+  27 Apr 2012; Andrey Grozin <grozin@gentoo.org> getxbook-0.8.ebuild,
+  +getxbook-0.9.ebuild:
+  Version bump; fixing a typo in the old ebuild
+
+*getxbook-0.8 (15 Feb 2012)
+
+  15 Feb 2012; Andrey Grozin <grozin@gentoo.org> +getxbook-0.8.ebuild,
+  +files/getxbook-makefile.patch, +metadata.xml:
+  Initial import

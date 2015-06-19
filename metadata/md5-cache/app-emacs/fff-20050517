@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEPEND=>=virtual/emacs-23
+DESCRIPTION=Fast file finder for Emacs
+EAPI=5
+HOMEPAGE=http://www.splode.com/~friedman/software/emacs-lisp/
+KEYWORDS=amd64 x86
+LICENSE=GPL-2+
+RDEPEND=sys-apps/mlocate >=virtual/emacs-23
+SLOT=0
+SRC_URI=mirror://gentoo/fff-20050517.tar.bz2
+_eclasses_=elisp	d13b0507622afb8ac9e3f54e91d58614	elisp-common	9a16929c1a6aec7e1c903289983e114c	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=c0543705434de80315e37f76eb7336c9

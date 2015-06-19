@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile config configure install postinst postrm prepare setup unpack
+DEPEND=vdr? ( >=media-video/vdr-1.6.0 libextractor? ( >=media-libs/libextractor-0.5.20 ) caps? ( sys-libs/libcap ) ) xine? ( ( >=media-libs/xine-lib-1.2 virtual/ffmpeg ) fbcon? ( jpeg? ( virtual/jpeg:* ) ) X? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXrender xinerama? ( x11-libs/libXinerama ) dbus? ( dev-libs/dbus-glib dev-libs/glib:2 ) vdpau? ( x11-libs/libvdpau >=media-libs/xine-lib-1.2 ) jpeg? ( virtual/jpeg:* ) bluray? ( media-libs/libbluray ) opengl? ( virtual/opengl ) ) ) virtual/pkgconfig sys-kernel/linux-headers nls? ( sys-devel/gettext ) xine? ( X? ( x11-proto/xproto x11-libs/libXxf86vm ) ) >=media-tv/gentoo-vdr-scripts-0.4.2 virtual/linuxtv-dvb-headers
+DESCRIPTION=VDR Plugin: Xinelib PlugIn
+EAPI=5
+HOMEPAGE=http://sourceforge.net/projects/xineliboutput/
+IUSE=bluray caps dbus fbcon jpeg libextractor nls opengl +vdr vdpau +X +xine xinerama
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=vdr? ( >=media-video/vdr-1.6.0 libextractor? ( >=media-libs/libextractor-0.5.20 ) caps? ( sys-libs/libcap ) ) xine? ( ( >=media-libs/xine-lib-1.2 virtual/ffmpeg ) fbcon? ( jpeg? ( virtual/jpeg:* ) ) X? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXrender xinerama? ( x11-libs/libXinerama ) dbus? ( dev-libs/dbus-glib dev-libs/glib:2 ) vdpau? ( x11-libs/libvdpau >=media-libs/xine-lib-1.2 ) jpeg? ( virtual/jpeg:* ) bluray? ( media-libs/libbluray ) opengl? ( virtual/opengl ) ) ) >=media-tv/gentoo-vdr-scripts-0.4.2 >=app-eselect/eselect-vdr-0.0.2
+REQUIRED_USE=|| ( vdr xine )
+SLOT=0
+SRC_URI=http://vdr.websitec.de/download/vdr-xineliboutput/vdr-xineliboutput-2.0.0_p20150220.tar.xz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52	vdr-plugin-2	3cba10b397a7c399a0b953c28aa27529
+_md5_=c2d8b9928a48b907ced450d75699b5b7

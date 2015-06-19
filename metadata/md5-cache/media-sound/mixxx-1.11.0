@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=dev-libs/protobuf:= dev-libs/libusb:1 >=media-libs/fidlib-0.9.10-r1 media-libs/flac media-libs/libid3tag media-libs/libogg media-libs/libsndfile >=media-libs/libsoundtouch-1.5 media-libs/libvorbis >=media-libs/portaudio-19_pre media-libs/portmidi media-libs/taglib virtual/glu virtual/opengl dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 dev-qt/qtscript:4 dev-qt/qtsql:4 aac? ( media-libs/faad2 media-libs/libmp4v2:0 ) hid? ( dev-libs/hidapi ) mp3? ( media-libs/libmad ) mp4? ( media-libs/libmp4v2 ) pulseaudio? ( media-sound/pulseaudio ) shout? ( media-libs/libshout ) wavpack? ( media-sound/wavpack ) vamp? ( media-libs/vamp-plugin-sdk ) virtual/pkgconfig dev-util/scons
+DESCRIPTION=A Qt based Digital DJ tool
+EAPI=5
+HOMEPAGE=http://mixxx.sourceforge.net
+IUSE=aac debug doc hid mp3 mp4 pulseaudio shout vamp wavpack
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/protobuf:= dev-libs/libusb:1 >=media-libs/fidlib-0.9.10-r1 media-libs/flac media-libs/libid3tag media-libs/libogg media-libs/libsndfile >=media-libs/libsoundtouch-1.5 media-libs/libvorbis >=media-libs/portaudio-19_pre media-libs/portmidi media-libs/taglib virtual/glu virtual/opengl dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 dev-qt/qtscript:4 dev-qt/qtsql:4 aac? ( media-libs/faad2 media-libs/libmp4v2:0 ) hid? ( dev-libs/hidapi ) mp3? ( media-libs/libmad ) mp4? ( media-libs/libmp4v2 ) pulseaudio? ( media-sound/pulseaudio ) shout? ( media-libs/libshout ) wavpack? ( media-sound/wavpack ) vamp? ( media-libs/vamp-plugin-sdk )
+SLOT=0
+SRC_URI=http://downloads.mixxx.org/mixxx-1.11.0/mixxx-1.11.0-src.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	scons-utils	988e24b9e2e4642189b4e97c03e5ae71	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=01f8f54b5ddc157482115e479d6cff51

@@ -1,0 +1,27 @@
+diff -up VTK6.0.0/CMake/vtkModuleMacros.cmake.system VTK6.0.0/CMake/vtkModuleMacros.cmake
+--- VTK6.0.0/CMake/vtkModuleMacros.cmake.system	2013-06-12 13:47:10.000000000 -0600
++++ VTK6.0.0/CMake/vtkModuleMacros.cmake	2013-12-27 20:59:39.548152746 -0700
+@@ -613,7 +613,7 @@ macro(vtk_module_third_party _pkg)
+     message(FATAL_ERROR "Cannot specify both LIBRARIES and NO_LIBRARIES")
+   endif()
+ 
+-  option(VTK_USE_SYSTEM_${_upper} "Use system-installed ${_pkg}" OFF)
++  option(VTK_USE_SYSTEM_${_upper} "Use system-installed ${_pkg}" ${VTK_USE_SYSTEM_LIBRARIES})
+   mark_as_advanced(VTK_USE_SYSTEM_${_upper})
+ 
+   if(VTK_USE_SYSTEM_${_upper})
+diff -up VTK6.0.0/CMakeLists.txt.system VTK6.0.0/CMakeLists.txt
+--- VTK6.0.0/CMakeLists.txt.system	2013-06-12 13:47:10.000000000 -0600
++++ VTK6.0.0/CMakeLists.txt	2013-12-27 20:59:39.548152746 -0700
+@@ -107,6 +107,11 @@ set(VTK_INSTALL_INCLUDE_DIR_CM24 ${VTK_I
+ set(VTK_INSTALL_DOXYGEN_DIR_CM24 ${VTK_INSTALL_DATA_DIR}/doxygen)
+ 
+ #-----------------------------------------------------------------------------
++# Do we try to use system libraries by default?
++OPTION(VTK_USE_SYSTEM_LIBRARIES "Use the system's libraries by default." OFF)
++MARK_AS_ADVANCED(VTK_USE_SYSTEM_LIBRARIES)
++
++#-----------------------------------------------------------------------------
+ # The third party macros are still used in one or two third party builds.
+ include(vtkThirdParty)
+ 

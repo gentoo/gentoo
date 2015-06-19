@@ -1,0 +1,10 @@
+[Unit]
+Description=Machine Check Exception Logging Daemon
+After=syslog.target
+
+[Service]
+ExecStart=/usr/sbin/mcelog --ignorenodev --daemon --foreground 
+StandardOutput=syslog
+
+[Install]
+WantedBy=multi-user.target

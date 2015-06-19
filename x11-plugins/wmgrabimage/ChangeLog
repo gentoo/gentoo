@@ -1,0 +1,73 @@
+# ChangeLog for x11-plugins/wmgrabimage
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmgrabimage/ChangeLog,v 1.18 2015/03/20 07:57:53 jlec Exp $
+
+  20 Mar 2015; Justin Lecher <jlec@gentoo.org> files/wmgrabimage.desktop:
+  Fix desktop file
+
+  01 Sep 2014; Bernard Cafarelli <voyageur@gentoo.org>
+  wmgrabimage-0.72-r1.ebuild:
+  Replace einstall with emake install, bug #521682
+
+  05 Sep 2012; Justin Lecher <jlec@gentoo.org> wmgrabimage-0.72-r1.ebuild:
+  Use domenu instead insinto + doins to install .desktop files
+
+  15 Feb 2012; Bernard Cafarelli <voyageur@gentoo.org>
+  wmgrabimage-0.72-r1.ebuild:
+  Update HOMEPAGE and SRC_URI, thanks Lorenz in bug #394607
+
+  02 Sep 2010; Michele Noberasco <s4t4n@gentoo.org> wmgrabimage-0.72-r1.ebuild:
+  Honour Gentoo LDFLAGS. Closes bug #331869.
+
+  16 Mar 2009; Michele Noberasco <s4t4n@gentoo.org> wmgrabimage-0.72-r1.ebuild:
+  Updated SRC_URI and HOMEPAGE. Closes bug #259614.
+
+  14 Jan 2009; Michele Noberasco <s4t4n@gentoo.org> wmgrabimage-0.72-r1.ebuild:
+  Prevent automatic stripping of binaries. Closes bug #252107.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  wmgrabimage-0.72-r1.ebuild:
+  Drop virtual/x11 references.
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  31 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  wmgrabimage-0.72-r1.ebuild:
+  Fixed DEPEND for modular X.
+
+  11 Apr 2005; Michele Noberasco <s4t4n@gentoo.org> wmgrabimage-0.72.ebuild:
+  Wiped out older revision.
+
+  10 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  wmgrabimage-0.72-r1.ebuild:
+  Stable on ppc.
+
+  29 Jan 2005; Michele Noberasco <s4t4n@gentoo.org> wmgrabimage-0.72-r1.ebuild:
+  Stable for x86. Fix copyright headers.
+  wmgrabimage-0.72.ebuild:
+  Fix copyright headers.
+
+*wmgrabimage-0.72-r1 (05 Dec 2004)
+
+  05 Dec 2004; Michele Noberasco <s4t4n@gentoo.org> wmgrabimage-0.72-r1.ebuild:
+  Revision bump.
+  Change HOMEPAGE and SRC_URI to the www.dockapps.org ones as the official
+  pages can no longer be reached. Some magic sed (thanks Clemens Noss <cnoss@gmx.de>)
+  to make calls to 'convert' using the '-geometry' cmd line arg, needed by newer
+  versions of media-gfx/imagemagick, closing #71894.
+
+  04 Sep 2004; Michele Noberasco <s4t4n@gentoo.org> wmgrabimage-0.72.ebuild:
+  Stable for x86.
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  wmgrabimage-0.72.ebuild:
+  Masked wmgrabimage-0.72.ebuild stable for ppc
+
+  21 Jul 2004; David Holm <dholm@gentoo.org> wmgrabimage-0.72.ebuild:
+  Added to ~ppc.
+
+*wmgrabimage-0.72 (19 Jul 2004)
+
+  19 Jul 2004; Michele Noberasco <s4t4n@gentoo.org> wmgrabimage-0.72.ebuild:
+  Initial import. Thanks to Przemyslaw Maciag. Closes #54945.

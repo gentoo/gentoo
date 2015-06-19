@@ -1,0 +1,18 @@
+diff -urNp firehol-2.0.1/sbin/firehol.in firehol-2.0.1.new/sbin/firehol.in
+--- firehol-2.0.1/sbin/firehol.in	2015-02-15 17:08:03.000000000 +0200
++++ firehol-2.0.1.new/sbin/firehol.in	2015-04-14 18:05:22.262234003 +0300
+@@ -846,12 +846,12 @@ test -z "$FIREHOL_ROUTING" && \
+ # Where /etc/init.d/iptables expects its configuration?
+ # Leave it empty for automatic detection
+ test -z "$FIREHOL_AUTOSAVE" && \
+-	FIREHOL_AUTOSAVE=
++	FIREHOL_AUTOSAVE="@FIREHOL_AUTOSAVE@"
+ 
+ # Where /etc/init.d/ip6tables expects its configuration?
+ # Leave it empty for automatic detection
+ test -z "$FIREHOL_AUTOSAVE6" && \
+-	FIREHOL_AUTOSAVE6=
++	FIREHOL_AUTOSAVE6="@FIREHOL_AUTOSAVE6@"
+ 
+ # Set to non-empty to wait (max 60 seconds) for a network interface
+ test -z "$WAIT_FOR_IFACE" && \

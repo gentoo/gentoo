@@ -1,0 +1,29 @@
+--- libs/locale/build/Jamfile.v2
++++ libs/locale/build/Jamfile.v2
+@@ -58,8 +58,8 @@
+ 
+ if $(ICU_LINK)
+ {
+-    ICU_OPTS = <include>$(ICU_PATH)/include <linkflags>$(ICU_LINK) <dll-path>$(ICU_PATH)/bin <runtime-link>shared ;
+-    ICU64_OPTS = <include>$(ICU_PATH)/include <linkflags>$(ICU_LINK) <dll-path>$(ICU_PATH)/bin64 <runtime-link>shared ;
++    ICU_OPTS = <include>$(ICU_PATH)/include <linkflags>$(ICU_LINK) <runtime-link>shared ;
++    ICU64_OPTS = <include>$(ICU_PATH)/include <linkflags>$(ICU_LINK) <runtime-link>shared ;
+ }
+ else
+ {
+@@ -117,7 +117,6 @@
+       <library>icuuc/<link>shared/<runtime-link>shared 
+       <library>icudt/<link>shared/<runtime-link>shared 
+       <library>icuin/<link>shared/<runtime-link>shared
+-      <dll-path>$(ICU_PATH)/bin
+         <runtime-link>shared ;
+ 
+ 
+@@ -176,7 +175,6 @@
+       <library>icuuc_64/<link>shared/<runtime-link>shared 
+       <library>icudt_64/<link>shared/<runtime-link>shared 
+       <library>icuin_64/<link>shared/<runtime-link>shared
+-      <dll-path>$(ICU_PATH)/bin64
+         <runtime-link>shared ;
+  
+     

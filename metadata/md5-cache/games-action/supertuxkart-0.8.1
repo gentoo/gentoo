@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test unpack
+DEPEND=media-libs/freeglut media-libs/libpng:0 media-libs/libvorbis media-libs/openal net-misc/curl sys-libs/zlib virtual/glu virtual/jpeg:0 virtual/libintl virtual/opengl x11-libs/libX11 x11-libs/libXxf86vm fribidi? ( dev-libs/fribidi ) wiimote? ( net-wireless/bluez ) sys-devel/gettext virtual/pkgconfig >=sys-apps/sed-4 sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=A kart racing game starring Tux, the linux penguin (TuxKart fork)
+EAPI=5
+HOMEPAGE=http://supertuxkart.sourceforge.net/
+IUSE=debug fribidi wiimote
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-3 CC-BY-SA-3.0 CC-BY-2.0 public-domain ZLIB
+RDEPEND=media-libs/freeglut media-libs/libpng:0 media-libs/libvorbis media-libs/openal net-misc/curl sys-libs/zlib virtual/glu virtual/jpeg:0 virtual/libintl virtual/opengl x11-libs/libX11 x11-libs/libXxf86vm fribidi? ( dev-libs/fribidi ) wiimote? ( net-wireless/bluez ) games-misc/games-envd
+SLOT=0
+SRC_URI=mirror://sourceforge/supertuxkart/SuperTuxKart/0.8.1/supertuxkart-0.8.1-src.tar.bz2 mirror://gentoo/supertuxkart.png
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	games	1ad3205dbf62a2c98249f2f59b0a2d39	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=3b7a0057db322be6d5a047ae294c9691

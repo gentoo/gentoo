@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare setup test
+DEPEND=>=sys-fs/lvm2-2.02.45 sys-fs/fuse x11-libs/wxGTK:2.8[X?] app-admin/sudo !ppc? ( dev-lang/nasm )
+DESCRIPTION=Free open-source disk encryption software
+EAPI=5
+HOMEPAGE=http://www.truecrypt.org/
+IUSE=X +asm
+LICENSE=truecrypt-3.0
+RDEPEND=>=sys-fs/lvm2-2.02.45 sys-fs/fuse x11-libs/wxGTK:2.8[X?] app-admin/sudo
+RESTRICT=bindist
+SLOT=0
+SRC_URI=mirror://sourceforge/truecrypt/TrueCrypt/Other/TrueCrypt-7.2-source-unix.tar.gz http://git.gnupg.org/cgi-bin/gitweb.cgi?p=scute.git;a=blob_plain;f=src/pkcs11.h;hb=38bdba0bb1ab93950489c645938c93ed577f9139 -> truecrypt-7.2-pkcs11.h
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	pax-utils	dfe060cb70d89757fde5c1ff8405e950	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f	wxwidgets	6d6eec2685256d35511e7b6d5461bec9
+_md5_=a316a953a4d5b06d2a41933ad3827c7f

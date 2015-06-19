@@ -1,0 +1,19 @@
+--- src/lib/scenegraph/Component_Text.c	15 Aug 2012 13:31:45 -0000	1.56
++++ src/lib/scenegraph/Component_Text.c	29 Aug 2012 14:18:43 -0000	1.57
+@@ -370,6 +370,7 @@
+     FcPattern *FW_fp=NULL;
+     FcPattern *FW_fm=NULL;
+     FcChar8 *FW_file=NULL;
++    FcResult fcjunkresult;
+     #else
+ 
+     if (!p->font_directory) {
+@@ -487,7 +488,7 @@
+     #ifdef HAVE_FONTCONFIG
+     FcConfigSubstitute(0,FW_fp,FcMatchPattern);
+     FcDefaultSubstitute(FW_fp);
+-    if (!(FW_fm = FcFontMatch(0,FW_fp,0))) {
++    if (!(FW_fm = FcFontMatch(0,FW_fp,&fcjunkresult))) {
+ 	/* do whatever is done when no match found */
+ 	printf ("could not find font for id %x\n",num);
+     } else {

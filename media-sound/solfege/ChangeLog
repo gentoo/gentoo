@@ -1,0 +1,455 @@
+# ChangeLog for media-sound/solfege
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/solfege/ChangeLog,v 1.103 2014/11/04 03:19:24 radhermit Exp $
+
+  04 Nov 2014; Tim Harder <radhermit@gentoo.org> solfege-3.22.2.ebuild:
+  Drop python2_6 support that's gone from the tree.
+
+  04 Nov 2014; Tim Harder <radhermit@gentoo.org> -solfege-3.22.0.ebuild,
+  -solfege-3.22.1.ebuild:
+  Remove old.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> solfege-3.22.0.ebuild,
+  solfege-3.22.1.ebuild, solfege-3.22.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> solfege-3.22.2.ebuild:
+  Stable for x86, wrt bug #495808
+
+  12 Jan 2014; Pacho Ramos <pacho@gentoo.org> solfege-3.22.2.ebuild:
+  amd64 stable, bug #495808
+
+*solfege-3.22.2 (09 Oct 2013)
+
+  09 Oct 2013; Tim Harder <radhermit@gentoo.org> +solfege-3.22.2.ebuild:
+  Version bump.
+
+*solfege-3.22.1 (18 Sep 2013)
+
+  18 Sep 2013; Tim Harder <radhermit@gentoo.org> +solfege-3.22.1.ebuild:
+  Version bump.
+
+  07 Jul 2013; Tim Harder <radhermit@gentoo.org> -solfege-3.20.6.ebuild,
+  -solfege-3.20.8.ebuild, -solfege-3.21.4.ebuild:
+  Remove old.
+
+  30 Jun 2013; Agostino Sarubbo <ago@gentoo.org> solfege-3.22.0.ebuild:
+  Stable for x86, wrt bug #475298
+
+  30 Jun 2013; Agostino Sarubbo <ago@gentoo.org> solfege-3.22.0.ebuild:
+  Stable for amd64, wrt bug #475298
+
+*solfege-3.22.0 (29 May 2013)
+
+  29 May 2013; Tim Harder <radhermit@gentoo.org> +solfege-3.22.0.ebuild:
+  Version bump.
+
+  02 Apr 2013; Tim Harder <radhermit@gentoo.org> -solfege-3.20.7.ebuild,
+  -solfege-3.21.0.ebuild:
+  Remove old.
+
+*solfege-3.21.4 (02 Apr 2013)
+
+  02 Apr 2013; Tim Harder <radhermit@gentoo.org> +solfege-3.21.4.ebuild:
+  Version bump.
+
+*solfege-3.20.8 (15 Jan 2013)
+
+  15 Jan 2013; Tim Harder <radhermit@gentoo.org> +solfege-3.20.8.ebuild:
+  Version bump.
+
+*solfege-3.20.7 (03 Jan 2013)
+
+  03 Jan 2013; Tim Harder <radhermit@gentoo.org> +solfege-3.20.7.ebuild:
+  Version bump. Update to use python-single-r1 eclass.
+
+  25 Sep 2012; Tim Harder <radhermit@gentoo.org> -solfege-3.20.4.ebuild:
+  Remove old.
+
+  23 Sep 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> solfege-3.20.6.ebuild:
+  x86 stable wrt bug #433878
+
+  07 Sep 2012; Agostino Sarubbo <ago@gentoo.org> solfege-3.20.6.ebuild:
+  Stable for amd64, wrt bug #433878
+
+  21 Jun 2012; Tim Harder <radhermit@gentoo.org>
+  -files/solfege-3.16.4-parallel-install.patch, -solfege-3.18.7.ebuild,
+  -solfege-3.20.0.ebuild:
+  Remove old.
+
+*solfege-3.20.6 (21 Jun 2012)
+
+  21 Jun 2012; Tim Harder <radhermit@gentoo.org> +solfege-3.20.6.ebuild:
+  Version bump.
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> solfege-3.18.7.ebuild,
+  solfege-3.20.0.ebuild, solfege-3.20.4.ebuild, solfege-3.21.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  28 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> solfege-3.20.4.ebuild:
+  x86 stable wrt bug #400409
+
+  27 Jan 2012; Agostino Sarubbo <ago@gentoo.org> solfege-3.20.4.ebuild:
+  Stable for amd64, wrt bug #400409
+
+  18 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> solfege-3.18.7.ebuild:
+  Revert back to ~ppc wrt #375479
+
+  24 Oct 2011; Tim Harder <radhermit@gentoo.org> -solfege-3.20.3.ebuild:
+  Remove old.
+
+*solfege-3.21.0 (24 Oct 2011)
+
+  24 Oct 2011; Tim Harder <radhermit@gentoo.org> +solfege-3.21.0.ebuild:
+  Version bump to new dev release.
+
+*solfege-3.20.4 (23 Oct 2011)
+
+  23 Oct 2011; Tim Harder <radhermit@gentoo.org> +solfege-3.20.4.ebuild:
+  Version bump.
+
+  29 Sep 2011; Tim Harder <radhermit@gentoo.org> -solfege-3.18.8.ebuild,
+  -solfege-3.19.9.ebuild, -solfege-3.20.1.ebuild, -solfege-3.20.2.ebuild,
+  -files/solfege-3.20.2-doc.patch:
+  Remove old.
+
+  29 Sep 2011; Tim Harder <radhermit@gentoo.org> solfege-3.20.0.ebuild,
+  solfege-3.20.3.ebuild:
+  Add dependencies on librsvg and timidity++ (bug #384833 by Dmitri Perunov).
+
+*solfege-3.20.3 (27 Sep 2011)
+
+  27 Sep 2011; Tim Harder <radhermit@gentoo.org> +solfege-3.20.3.ebuild:
+  Version bump.
+
+*solfege-3.20.2 (15 Sep 2011)
+
+  15 Sep 2011; Tim Harder <radhermit@gentoo.org> +solfege-3.20.2.ebuild,
+  +files/solfege-3.20.2-doc.patch:
+  Version bump.
+
+  23 Jul 2011; Markus Meier <maekke@gentoo.org> solfege-3.20.0.ebuild:
+  x86 stable, bug #375479
+
+  18 Jul 2011; Markos Chandras <hwoarang@gentoo.org> solfege-3.20.0.ebuild:
+  Stable on amd64 wrt bug #375479
+
+*solfege-3.20.1 (11 Jul 2011)
+
+  11 Jul 2011; Tim Harder <radhermit@gentoo.org> +solfege-3.20.1.ebuild:
+  Version bump.
+
+*solfege-3.20.0 (17 Jun 2011)
+
+  17 Jun 2011; Tim Harder <radhermit@gentoo.org> +solfege-3.20.0.ebuild:
+  Version bump.
+
+*solfege-3.18.8 (02 Jun 2011)
+
+  02 Jun 2011; Tim Harder <radhermit@gentoo.org> +solfege-3.18.8.ebuild:
+  Version bump to new stable series release.
+
+*solfege-3.19.9 (27 May 2011)
+
+  27 May 2011; Tim Harder <radhermit@gentoo.org> -solfege-3.19.8.ebuild,
+  +solfege-3.19.9.ebuild:
+  Version bump and remove old.
+
+*solfege-3.19.8 (16 May 2011)
+
+  16 May 2011; Tim Harder <radhermit@gentoo.org> -solfege-3.19.7.ebuild,
+  +solfege-3.19.8.ebuild:
+  Version bump and remove old.
+
+*solfege-3.19.7 (26 Apr 2011)
+
+  26 Apr 2011; Tim Harder <radhermit@gentoo.org> -solfege-3.19.6.ebuild,
+  +solfege-3.19.7.ebuild:
+  Version bump and remove old.
+
+*solfege-3.19.6 (11 Apr 2011)
+
+  11 Apr 2011; Tim Harder <radhermit@gentoo.org> -solfege-3.19.5.ebuild,
+  +solfege-3.19.6.ebuild:
+  Version bump and remove old.
+
+*solfege-3.19.5 (11 Mar 2011)
+
+  11 Mar 2011; Tim Harder <radhermit@gentoo.org> -solfege-3.19.4.ebuild,
+  -files/solfege-3.19.4-skipmanual.patch, +solfege-3.19.5.ebuild:
+  Version bump and remove old.
+
+  04 Mar 2011; Tim Harder <radhermit@gentoo.org> solfege-3.19.4.ebuild,
+  +files/solfege-3.19.4-skipmanual.patch:
+  Apply patch to properly skip help manual generation.
+
+*solfege-3.19.4 (04 Mar 2011)
+
+  04 Mar 2011; Tim Harder <radhermit@gentoo.org> -solfege-3.19.2.ebuild,
+  +solfege-3.19.4.ebuild:
+  Version bump to new development release and remove old.
+
+  14 Jan 2011; Tim Harder <radhermit@gentoo.org> -solfege-3.16.4.ebuild,
+  -files/solfege-3.16.4-ldflags.patch, -files/solfege-3.16.4-makefile.patch,
+  -files/solfege-3.16.4-swig2.patch:
+  Remove old
+
+  14 Jan 2011; Brent Baude <ranger@gentoo.org> solfege-3.18.7.ebuild:
+  stable ppc, bug 348234
+
+*solfege-3.19.2 (30 Dec 2010)
+
+  30 Dec 2010; Tim Harder <radhermit@gentoo.org> -solfege-3.19.1.ebuild,
+  +solfege-3.19.2.ebuild:
+  Version bump and remove old.
+
+  21 Dec 2010; Christian Faulhammer <fauli@gentoo.org>
+  solfege-3.18.7.ebuild:
+  stable x86, bug 348234
+
+  15 Dec 2010; Markos Chandras <hwoarang@gentoo.org> solfege-3.18.7.ebuild:
+  Stable on amd64 wrt bug #348234
+
+  29 Nov 2010; Tim Harder <radhermit@gentoo.org> solfege-3.16.4.ebuild,
+  +files/solfege-3.16.4-parallel-install.patch, solfege-3.18.7.ebuild,
+  solfege-3.19.1.ebuild:
+  Fix parallel install issue (bug #347055 by Teun).
+
+*solfege-3.19.1 (28 Nov 2010)
+
+  28 Nov 2010; Tim Harder <radhermit@gentoo.org> -solfege-3.19.0.ebuild,
+  +solfege-3.19.1.ebuild:
+  Version bump and remove old.
+
+*solfege-3.19.0 (14 Nov 2010)
+
+  14 Nov 2010; Tim Harder <radhermit@gentoo.org> +solfege-3.19.0.ebuild:
+  Version bump to new development release. Add alsa USE flag and dependency,
+  drop unused runtime dependencies, and remove RDEPEND from DEPEND.
+
+*solfege-3.18.7 (30 Oct 2010)
+
+  30 Oct 2010; Tim Harder <radhermit@gentoo.org> -solfege-3.18.6.ebuild,
+  +solfege-3.18.7.ebuild:
+  Version bump and remove old.
+
+*solfege-3.18.6 (26 Oct 2010)
+
+  26 Oct 2010; Tim Harder <radhermit@gentoo.org> -solfege-3.18.5.ebuild,
+  +solfege-3.18.6.ebuild:
+  Version bump and remove old.
+
+  26 Oct 2010; Tim Harder <radhermit@gentoo.org> -solfege-3.14.2.ebuild:
+  Remove old version.
+
+  24 Oct 2010; Brent Baude <ranger@gentoo.org> solfege-3.16.4.ebuild:
+  Marking solfege-3.16.4 ppc for bug 340309
+
+*solfege-3.18.5 (19 Oct 2010)
+
+  19 Oct 2010; Tim Harder <radhermit@gentoo.org> -solfege-3.18.4.ebuild,
+  +solfege-3.18.5.ebuild:
+  Version bump and remove old.
+
+  15 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  solfege-3.16.4.ebuild:
+  stable x86, bug 340309
+
+  15 Oct 2010; Tim Harder <radhermit@gentoo.org> solfege-3.16.4.ebuild,
+  +files/solfege-3.16.4-makefile.patch, solfege-3.18.4.ebuild:
+  Don't compile python files and add better failure messages for die.
+
+  13 Oct 2010; Markos Chandras <hwoarang@gentoo.org> solfege-3.16.4.ebuild:
+  Stable on amd64 wrt bug #340309
+
+*solfege-3.18.4 (12 Oct 2010)
+
+  12 Oct 2010; Tim Harder <radhermit@gentoo.org> -solfege-3.18.3.ebuild,
+  -files/solfege-3.18.3-swig2.patch, +solfege-3.18.4.ebuild:
+  Version bump to new bugfix release and remove old.
+
+  10 Oct 2010; Tim Harder <radhermit@gentoo.org> solfege-3.18.3.ebuild,
+  +files/solfege-3.18.3-swig2.patch:
+  Fix compile with swig-2.
+
+  10 Oct 2010; Tim Harder <radhermit@gentoo.org> solfege-3.16.4.ebuild,
+  +files/solfege-3.16.4-ldflags.patch:
+  Respect LDFLAGS.
+
+*solfege-3.18.3 (10 Oct 2010)
+
+  10 Oct 2010; Tim Harder <radhermit@gentoo.org> -solfege-3.18.1.ebuild,
+  +solfege-3.18.3.ebuild:
+  Version bump to new bugfix release and remove old.
+
+*solfege-3.18.1 (07 Oct 2010)
+
+  07 Oct 2010; Tim Harder <radhermit@gentoo.org> -solfege-3.17.0.ebuild,
+  +solfege-3.18.1.ebuild:
+  Version bump and remove old development release.
+
+*solfege-3.17.0 (28 Sep 2010)
+
+  28 Sep 2010; Tim Harder <radhermit@gentoo.org> +solfege-3.17.0.ebuild:
+  Version bump to the latest development release (package.masked until some
+  of the new features are less buggy).
+
+  29 Aug 2010; Tim Harder <radhermit@gentoo.org> -solfege-3.16.1.ebuild,
+  solfege-3.16.4.ebuild, +files/solfege-3.16.4-swig2.patch:
+  Fix compile with swig-2, thanks to Mark for reporting (bug #334933).
+  Remove old version.
+
+*solfege-3.16.4 (27 Aug 2010)
+
+  27 Aug 2010; Tim Harder <radhermit@gentoo.org> +solfege-3.16.4.ebuild:
+  Version bump for bug #328335.
+
+  23 Apr 2010; Samuli Suominen <ssuominen@gentoo.org> solfege-3.16.1.ebuild:
+  Don't include headers from /usr/src/linux wrt #316759.
+
+*solfege-3.16.1 (22 Apr 2010)
+
+  22 Apr 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +solfege-3.16.1.ebuild:
+  Version bump wrt #291281 by Maxim Britov.
+
+  26 Dec 2009; Peter Volkov <pva@gentoo.org> solfege-3.14.2.ebuild,
+  solfege-3.15.1.ebuild:
+  virtual/ghostscript->app-text/ghostscript-gpl: ghostscript-gpl is the only
+  implementation left in the tree.
+
+  27 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> solfege-3.14.2.ebuild:
+  amd64/x86 stable
+
+  07 Jun 2009; Samuli Suominen <ssuominen@gentoo.org> solfege-3.14.2.ebuild:
+  Insert LANGUAGE=C as a temp. workaround before emake wrt #271501.
+
+*solfege-3.14.2 (11 May 2009)
+
+  11 May 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +solfege-3.14.2.ebuild, solfege-3.15.1.ebuild:
+  Version bump to latest stable version, and drop keywords from latest
+  development for now because it doesn't seem to function properly.
+
+*solfege-3.15.1 (11 May 2009)
+
+  11 May 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +solfege-3.15.1.ebuild:
+  Version bump wrt #250818 and #250819, thanks to Gokdeniz Karadag for
+  reporting.
+
+  04 Dec 2008; Gilles Dartiguelongue <eva@gentoo.org> solfege-3.8.2.ebuild,
+  solfege-3.10.3.ebuild, solfege-3.10.4.ebuild:
+  Replace dependency on gtkhtml by real deps on python packages, bug
+  #247636.
+
+*solfege-3.10.4 (28 Sep 2008)
+
+  28 Sep 2008; Peter Alfredsen <loki_val@gentoo.org> +solfege-3.10.4.ebuild:
+  Bump, bug 223303.
+
+*solfege-3.10.3 (17 Apr 2008)
+
+  17 Apr 2008; Samuli Suominen <ssuominen@gentoo.org> -solfege-3.10.2.ebuild,
+  +solfege-3.10.3.ebuild:
+  Version bump wrt #215666, thanks to Tim Harder for reporting. Make sure
+  python doesn't get byte-compiled at install time wrt #210305.
+
+*solfege-3.10.2 (15 Feb 2008)
+
+  15 Feb 2008; Samuli Suominen <ssuominen@gentoo.org> +solfege-3.10.2.ebuild:
+  Version bump wrt 209788 by Tim Harder.
+
+  24 Nov 2007; Dawid Węgliński <cla@gentoo.org> -solfege-3.6.0.ebuild,
+  solfege-3.8.2.ebuild:
+  Stable on x86 (bug #200127); remove old version
+
+*solfege-3.8.2 (17 Oct 2007)
+
+  17 Oct 2007; Samuli Suominen <ssuominen@gentoo.org> +solfege-3.8.2.ebuild:
+  Version bump for bug 196135, thanks to Tim Harder for reporting.
+
+*solfege-3.8.1 (26 Jun 2007)
+
+  26 Jun 2007; Samuli Suominen <ssuominen@gentoo.org> +solfege-3.8.1.ebuild:
+  Version bump for bug 183189, thanks to Tim Harder for reporting.
+
+*solfege-3.8.0 (12 Jun 2007)
+
+  12 Jun 2007; Alexis Ballier <aballier@gentoo.org> +solfege-3.8.0.ebuild:
+  Version bump, bug #179965
+
+  25 Mar 2007; Raúl Porcel <armin76@gentoo.org> solfege-3.6.0.ebuild:
+  x86 stable wrt bug 147432
+
+  05 Feb 2007; Alexis Ballier <aballier@gentoo.org> solfege-3.6.0.ebuild:
+  Update docbook-xsl-stylesheets deps, thanks to Bruno Roggeri for the patch,
+  bug #159611
+
+*solfege-3.6.0 (08 Oct 2006)
+
+  08 Oct 2006; MATSUU Takuto <matsuu@gentoo.org> +solfege-3.6.0.ebuild:
+  Version bumped, 138673.
+
+  15 Aug 2006; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  solfege-3.0.2.ebuild:
+  mark ~ppc
+
+  12 Jan 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  solfege-2.0.5.ebuild, solfege-2.0.6.ebuild:
+  pkgmove gnome-extra/libgtkhtml gnome-extra/gtkhtml
+
+*solfege-3.0.2 (04 Oct 2005)
+
+  04 Oct 2005; MATSUU Takuto <matsuu@gentoo.org> +solfege-3.0.2.ebuild:
+  Version bumped.
+  Cleanup ebuild.
+
+  04 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> solfege-2.0.5.ebuild,
+  solfege-2.0.6.ebuild:
+  Don't install COPYING and INSTALL files.
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  solfege-2.0.6.ebuild:
+  Stable x86.
+
+*solfege-2.0.6 (19 Nov 2004)
+
+  19 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  -solfege-2.0.4.ebuild, solfege-2.0.5.ebuild, +solfege-2.0.6.ebuild:
+  Moved to -amd64, -sparc as the package compiles but crashes at startup.
+
+*solfege-2.0.6 (19 Nov 2004)
+
+  19 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  -solfege-2.0.4.ebuild, solfege-2.0.5.ebuild, +solfege-2.0.6.ebuild:
+  Version bump.
+
+  06 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  solfege-2.0.5.ebuild:
+  get_libdir fixes.
+
+  03 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> solfege-2.0.5.ebuild:
+  Stable x86.
+
+*solfege-2.0.5 (30 Jul 2004)
+
+  30 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +solfege-2.0.5.ebuild:
+  Version bump closes bug #58535.
+
+  19 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> solfege-2.0.4.ebuild:
+  Added ~amd64
+
+  20 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> solfege-2.0.4.ebuild:
+  Forcing oss as it is required... see bug #43889.  Stable x86.
+
+  10 Feb 2004; Jeremy Huddleston <eradicator@gentoo.org> solfege-2.0.4.ebuild:
+  Added sed to DEPEND
+
+*solfege-2.0.4 (10 Feb 2004)
+
+  10 Feb 2004; Jeremy Huddleston <eradicator@gentoo.org> metadata.xml,
+  solfege-2.0.4.ebuild:
+  solfege is a package to help you practice ear training (scales, dictation,
+  rythm, etc). Ebuild submitted by TGL <degrenier@easyconnect.fr> ib bug #25085.

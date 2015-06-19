@@ -1,0 +1,10 @@
+diff --git a/scripts/gajim.in b/scripts/gajim.in
+index e163a9b..73dc9e0 100644
+--- a/scripts/gajim.in
++++ b/scripts/gajim.in
+@@ -30,4 +30,4 @@ fi
+ [ "$APP" = "gajim-history-manager" ] && APP="history_manager"
+ 
+ cd "@GAJIM_SRCDIR@"
+-exec "@PYTHON@" -OO $APP.py "$@"
++exec "@PYTHON@@PYTHON_VERSION@" -OO $APP.py "$@"

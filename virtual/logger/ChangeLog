@@ -1,0 +1,32 @@
+# ChangeLog for virtual/logger
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/logger/ChangeLog,v 1.8 2013/07/26 03:59:21 williamh Exp $
+
+  26 Jul 2013; William Hubbs <williamh@gentoo.org> logger-0.ebuild:
+  fix systemd dependency to >=sys-apps/systemd-38, the version which introduced
+  the journal.
+
+  26 Jul 2013; William Hubbs <williamh@gentoo.org> logger-0.ebuild:
+  add sys-apps/systemd for bug #398631 and migrate to eapi 3 due to eapi 2
+  deprecation.
+
+  15 Feb 2013; Anthony G. Basile <blueness@gentoo.org> logger-0.ebuild:
+  Optionally depend on sys-apps/busybox when USE=syslog, bug #444718
+
+  03 Feb 2013; Mike Frysinger <vapier@gentoo.org> logger-0.ebuild:
+  Drop app-admin/busybox-sysklogd as it no longer exists #444718 by Andreis
+  Vinogradovs.
+
+  21 Aug 2012; Stefan Briesenick <sbriesen@gentoo.org> logger-0.ebuild:
+  added app-admin/busybox-sysklogd.
+
+  16 May 2012; Alexis Ballier <aballier@gentoo.org> logger-0.ebuild:
+  keyword ~amd64-fbsd
+
+  09 Apr 2011; <alexys@gentoo.org> metadata.xml:
+  fix herd and maitainer
+
+*logger-0 (07 Apr 2011)
+
+  07 Apr 2011; Ultrabug <ultrabug@gentoo.org> +logger-0.ebuild, +metadata.xml:
+  new-style virtual, wrt #358881

@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install postinst postrm preinst
+DEPEND=dev-lang/perl gnome-base/librsvg >=sys-apps/sed-4
+DESCRIPTION=A massively improved variant of the well-known Gartoon theme
+EAPI=2
+HOMEPAGE=http://gnome-look.org/content/show.php/?content=74841
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RESTRICT=binchecks strip
+SLOT=0
+SRC_URI=http://tweenk.artfx.pl/gartoon/source/gartoon-redux-1.10.tar.gz
+_eclasses_=gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=502a54422a2ef6b7b3c490178ad08c86

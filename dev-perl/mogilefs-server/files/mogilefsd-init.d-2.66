@@ -1,0 +1,29 @@
+#!/sbin/runscript
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/mogilefs-server/files/mogilefsd-init.d-2.66,v 1.1 2013/06/25 04:20:45 robbat2 Exp $
+
+NAME="mogilefsd"
+BINARY="/usr/bin/mogilefsd"
+MOGILE_UID="mogile"
+MOGILE_GID="mogile"
+
+depend() {
+	use net mysql postgresql
+	after mysql postgresql
+}
+
+start() {
+	install -o $MOGILE_UID -g $MOGILE_GID -d $(dirname $PIDFILE)
+	ebegin "Starting $NAME"
+	start-stop-daemon --chuid ${MOGILE_UID}:${MOGILE_GID} --start \
+		--pidfile ${PIDFILE} --exec ${BINARY} \
+		-- ${MOGILEFSD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping $NAME"
+	start-stop-daemon --stop --quiet --pidfile="${PIDFILE}"
+	eend $?
+}
+
+# vim: ft=gentoo-init-d:

@@ -1,0 +1,356 @@
+# ChangeLog for net-nds/ypbind
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-nds/ypbind/ChangeLog,v 1.96 2014/11/13 06:22:44 kensington Exp $
+
+  13 Nov 2014; Michael Palimaka <kensington@gentoo.org> -ypbind-1.37.1.ebuild:
+  Remove old.
+
+  11 Nov 2014; Agostino Sarubbo <ago@gentoo.org> ypbind-1.37.2.ebuild:
+  Stable for ia64, wrt bug #525064
+
+  04 Nov 2014; Agostino Sarubbo <ago@gentoo.org> ypbind-1.37.2.ebuild:
+  Stable for sparc, wrt bug #525064
+
+  02 Nov 2014; Agostino Sarubbo <ago@gentoo.org> ypbind-1.37.2.ebuild:
+  Stable for alpha, wrt bug #525064
+
+  01 Nov 2014; Agostino Sarubbo <ago@gentoo.org> ypbind-1.37.2.ebuild:
+  Stable for ppc, wrt bug #525064
+
+  31 Oct 2014; Agostino Sarubbo <ago@gentoo.org> ypbind-1.37.2.ebuild:
+  Stable for ppc64, wrt bug #525064
+
+  30 Oct 2014; Agostino Sarubbo <ago@gentoo.org> ypbind-1.37.2.ebuild:
+  Stable for x86, wrt bug #525064
+
+  29 Oct 2014; Agostino Sarubbo <ago@gentoo.org> ypbind-1.37.2.ebuild:
+  Stable for amd64, wrt bug #525064
+
+  11 Oct 2014; Jeroen Roovers <jer@gentoo.org> ypbind-1.37.2.ebuild:
+  Stable for HPPA (bug #525064).
+
+*ypbind-1.37.2 (24 Sep 2014)
+
+  24 Sep 2014; Pacho Ramos <pacho@gentoo.org> +ypbind-1.37.2.ebuild:
+  Version bump, fixes systemd linking (#502530)
+
+  26 Jun 2014; Michael Palimaka <kensington@gentoo.org>
+  -files/ypbind-1.31-man-port.patch, -ypbind-1.33.ebuild:
+  Remove old.
+
+  19 Mar 2014; Agostino Sarubbo <ago@gentoo.org> ypbind-1.37.1.ebuild:
+  Stable for alpha, wrt bug #499314
+
+  18 Mar 2014; Agostino Sarubbo <ago@gentoo.org> ypbind-1.37.1.ebuild:
+  Stable for ia64, wrt bug #499314
+
+  14 Mar 2014; Agostino Sarubbo <ago@gentoo.org> ypbind-1.37.1.ebuild:
+  Stable for ppc64, wrt bug #499314
+
+  20 Feb 2014; Agostino Sarubbo <ago@gentoo.org> ypbind-1.37.1.ebuild:
+  Stable for x86, wrt bug #499314
+
+  09 Feb 2014; Chema Alonso <nimiux@gentoo.org> ypbind-1.37.1.ebuild:
+  Stable for amd64 wrt bug #499314
+
+  02 Feb 2014; Agostino Sarubbo <ago@gentoo.org> ypbind-1.37.1.ebuild:
+  Stable for ppc, wrt bug #499314
+
+  27 Jan 2014; Jeroen Roovers <jer@gentoo.org> ypbind-1.37.1.ebuild:
+  Stable for HPPA (bug #499314).
+
+  26 Jan 2014; Agostino Sarubbo <ago@gentoo.org> ypbind-1.37.1.ebuild:
+  Stable for sparc, wrt bug #499314
+
+*ypbind-1.37.1 (22 Dec 2013)
+
+  22 Dec 2013; Pacho Ramos <pacho@gentoo.org> +files/ypbind.service,
+  +ypbind-1.37.1.ebuild:
+  Version bump, add systemd support (#493776)
+
+  08 Sep 2013; Markus Meier <maekke@gentoo.org> ypbind-1.33.ebuild:
+  add ~arm, bug #372871
+
+  27 Jun 2012; Michael Palimaka <kensington@gentoo.org> -ypbind-1.32-r1.ebuild,
+  -ypbind-1.32.ebuild:
+  Remove old.
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org> ypbind-1.33.ebuild:
+  alpha/ia64/sparc stable wrt #404843
+
+  02 Mar 2012; Brent Baude <ranger@gentoo.org> ypbind-1.33.ebuild:
+  Marking ypbind-1.33 ppc64 for bug 404843
+
+  24 Feb 2012; Brent Baude <ranger@gentoo.org> ypbind-1.33.ebuild:
+  Marking ypbind-1.33 ppc for bug 404843
+
+  24 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> ypbind-1.33.ebuild:
+  x86 stable wrt bug #404843
+
+  21 Feb 2012; Jeroen Roovers <jer@gentoo.org> ypbind-1.33.ebuild:
+  Stable for HPPA (bug #404843).
+
+  21 Feb 2012; Agostino Sarubbo <ago@gentoo.org> ypbind-1.33.ebuild:
+  Stable for amd64, wrt bug #404843
+
+*ypbind-1.33 (17 Jun 2011)
+
+  17 Jun 2011; Jeroen Roovers <jer@gentoo.org> +ypbind-1.33.ebuild:
+  Version bump.
+
+  20 May 2011; Kacper Kowalik <xarthisius@gentoo.org> -ypbind-1.31.ebuild:
+  Drop old
+
+  20 May 2011; Kacper Kowalik <xarthisius@gentoo.org> ypbind-1.32.ebuild:
+  ppc/ppc64 stable wrt #360165
+
+  16 Apr 2011; Raúl Porcel <armin76@gentoo.org> ypbind-1.32.ebuild:
+  ia64/sparc stable wrt #360165
+
+  30 Mar 2011; Jeroen Roovers <jer@gentoo.org> ypbind-1.32.ebuild:
+  Stable for HPPA (bug #360165).
+
+  28 Mar 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> ypbind-1.32.ebuild:
+  x86 stable wrt bug #360165
+
+  27 Mar 2011; Tobias Klausmann <klausman@gentoo.org> ypbind-1.32.ebuild:
+  Stable on alpha, bug #360165
+
+*ypbind-1.32-r1 (24 Mar 2011)
+
+  24 Mar 2011; Jeroen Roovers <jer@gentoo.org> +ypbind-1.32-r1.ebuild:
+  Add new dependencies/USE flags.
+
+  23 Mar 2011; Christoph Mende <angelos@gentoo.org> ypbind-1.32.ebuild:
+  Stable on amd64 wrt bug #360165
+
+  30 Sep 2010; Brent Baude <ranger@gentoo.org> ypbind-1.31.ebuild:
+  stable ppc64, bug 320327
+
+*ypbind-1.32 (28 Aug 2010)
+
+  28 Aug 2010; Jeroen Roovers <jer@gentoo.org> +ypbind-1.32.ebuild:
+  Version bump.
+
+  28 Aug 2010; Jeroen Roovers <jer@gentoo.org> ypbind-1.31.ebuild:
+  Stable for HPPA (bug #320327).
+
+  24 May 2010; <nixnut@gentoo.org> ypbind-1.31.ebuild:
+  ppc stable #320327
+
+  23 May 2010; Raúl Porcel <armin76@gentoo.org> ypbind-1.31.ebuild:
+  ia64/sparc/x86 stable wrt #320327
+
+  18 May 2010; Markos Chandras <hwoarang@gentoo.org> ypbind-1.31.ebuild:
+  Stable on amd64 wrt bug #320327
+
+  28 Feb 2010; Jeroen Roovers <jer@gentoo.org> ypbind-1.31.ebuild:
+  Readd dropped keywords (bug #306627).
+
+*ypbind-1.31 (23 Feb 2010)
+
+  23 Feb 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> +ypbind-1.31.ebuild,
+  +files/ypbind-1.31-man-port.patch:
+  Version bump.
+
+  03 Nov 2009; Ulrich Mueller <ulm@gentoo.org> ypbind-1.19.1-r2.ebuild,
+  +files/ypbind-1.19.1-man-port.patch:
+  Mention "-p port" option in man page, bug 77810.
+
+  07 Jul 2009; Jeroen Roovers <jer@gentoo.org> -ypbind-1.19.1.ebuild:
+  Remove old.
+
+  07 Jul 2009; Jeroen Roovers <jer@gentoo.org> ypbind-1.19.1-r1.ebuild:
+  Stable for HPPA too.
+
+*ypbind-1.19.1-r2 (07 Jul 2009)
+
+  07 Jul 2009; Jeroen Roovers <jer@gentoo.org> +ypbind-1.19.1-r2.ebuild,
+  +files/ypbind-1.19.1-strip.patch:
+  Do not strip. Use emake instead of make.
+
+  04 Jun 2009; Mike Frysinger <vapier@gentoo.org> ypbind-1.19.1-r1.ebuild:
+  Allow portmap or rpcbind #272363 by peteru.
+
+  24 Feb 2009; Timothy Redaelli <drizzt@gentoo.org> files/ypbind.initd:
+  Remove bashism in init.d file
+
+  20 Nov 2008; Jeroen Roovers <jer@gentoo.org> ypbind-1.19.1.ebuild:
+  Fix quoting (bug #247610).
+
+  20 Nov 2008; Jeroen Roovers <jer@gentoo.org> ypbind-1.19.1-r1.ebuild:
+  Fix quoting (bug #247610).
+
+  02 Nov 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Whitespace.
+
+  02 Nov 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml, ypbind-1.19.1.ebuild, ypbind-1.19.1-r1.ebuild:
+  Removing eradicator as a maintainer since he was retired. Quoted some
+  vars.
+
+  15 Aug 2007; Jeremy Huddleston <eradicator@gentoo.org> files/ypbind.initd:
+  Removed bashisms in init script.  Closes bug #188778.
+
+  12 Jun 2007; Jeroen Roovers <jer@gentoo.org> ypbind-1.19.1-r1.ebuild:
+  Marked ~hppa (bug #181672).
+
+  23 May 2007; Jeremy Huddleston <eradicator@gentoo.org> files/ypbind.initd:
+  Fixed bug #176125 thanks to DominikBuerkle <dominik.buerkle@webde.de>.
+
+  26 Mar 2007; Alec Warner <antarus@gentoo.org> ypbind-1.19.1.ebuild,
+  ypbind-1.19.1-r1.ebuild:
+  Remove dependency on portage: ref bug 162516
+
+*ypbind-1.19.1-r1 (15 Aug 2006)
+
+  15 Aug 2006; Roy Marples <uberlord@gentoo.org> +ypbind-1.19.1-r1.ebuild:
+  Bump to close #129451.
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org> files/digest-ypbind-1.19.1,
+  Manifest:
+  Fixing SHA256 digest, pass four
+
+  10 Apr 2006; Jeremy Huddleston <eradicator@gentoo.org>
+  -ypbind-1.17.2-r1.ebuild:
+  Removing old version.
+
+  10 Apr 2006; Jeremy Huddleston <eradicator@gentoo.org> files/ypbind.initd:
+  use domainname instead of need since new baselayout doesn't provide it any
+  more.
+
+  04 Apr 2006; Aron Griffis <agriffis@gentoo.org> ypbind-1.19.1.ebuild:
+  Mark 1.19.1 stable on ia64
+
+  01 Apr 2006; Jeremy Huddleston <eradicator@gentoo.org>
+  ypbind-1.19.1.ebuild:
+  Install yp.conf.example instead of yp.conf. Use DESTDIR rather than
+  einstall. Closes bug #108980.
+
+  31 Mar 2006; Michael Hanselmann <hansmi@gentoo.org> ypbind-1.19.1.ebuild:
+  Stable on ppc.
+
+  29 Mar 2006; Jeremy Huddleston <eradicator@gentoo.org>
+  ypbind-1.19.1.ebuild:
+  Stable on amd64, ppc64, sparc, and x86.
+
+  19 Feb 2006; Joshua Kinard <kumba@gentoo.org> ypbind-1.19.1.ebuild:
+  Added ~mips to KEYWORDS.
+
+*ypbind-1.19.1 (11 Aug 2005)
+
+  11 Aug 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  ypbind-1.17.2-r1.ebuild, +ypbind-1.19.1.ebuild:
+  Version bump.  Bug #102136.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  22 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  -files/ypbind.confd, -files/ypbind.rc5, -files/ypbind.rc6,
+  -ypbind-1.11-r1.ebuild, -ypbind-1.12.ebuild, -ypbind-1.17.2.ebuild:
+  Cleaning up old versions.
+
+  22 Nov 2004; Markus Rothe <corsair@gentoo.org> ypbind-1.17.2-r1.ebuild:
+  Stable on ppc64; bug #66786
+
+  08 Oct 2004; Michael Hanselmann <hansmi@gentoo.org> ypbind-1.17.2-r1.ebuild:
+  Marked stable on ppc. See bug #66786.
+
+  08 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  ypbind-1.17.2-r1.ebuild:
+  Fixed DEPENDs
+
+  04 Sep 2004; Bryan Østergaard <kloeri@gentoo.org> ypbind-1.17.2-r1.ebuild:
+  Stable on alpha.
+
+  24 Aug 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  ypbind-1.11-r1.ebuild, ypbind-1.12.ebuild, ypbind-1.17.2-r1.ebuild,
+  ypbind-1.17.2.ebuild:
+  1.17.2-r1 stable on x86, sparc, and amd64.  Added slp USE flag support.
+
+  23 Aug 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  ypbind-1.11-r1.ebuild, ypbind-1.12.ebuild, ypbind-1.17.2-r1.ebuild,
+  ypbind-1.17.2.ebuild:
+  Adding missing DEPEND on openslp to fix bug #60239.
+
+*ypbind-1.17.2-r1 (23 Jul 2004)
+
+  23 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/ypbind.confd-r1, +files/ypbind.initd, +ypbind-1.17.2-r1.ebuild:
+  Revision bump to fix init scripts. Now depending on domainname to set
+  ypdomainname. Stable x86, sparc, amd64.
+
+  16 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org> ypbind-1.17.2.ebuild:
+  use emake; use use_enable; don't install COPYING; tidy
+
+  08 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> ypbind-1.17.2.ebuild:
+  Stable on alpha.
+
+  09 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> files/ypbind.rc5,
+  files/ypbind.rc6:
+  Added eends to the init script.
+
+  04 Apr 2004; Aron Griffis <agriffis@gentoo.org> ypbind-1.11-r1.ebuild:
+  Stable on ia64 for bug 46557
+
+  25 Feb 2004; Daniel Ahlberg <aliz@gentoo.org> ypbind-1.17.2.ebuild:
+  Adding amd64 keyword. Closing #42619.
+
+*ypbind-1.17.2 (24 Feb 2004)
+
+  24 Feb 2004; <tester@gentoo.org> ypbind-1.11-r1.ebuild, ypbind-1.12.ebuild,
+  ypbind-1.17.2.ebuild:
+  Version bump, and added comment on proper use with dhcpcd per bug #10728
+
+  24 Feb 2004; <tester@gentoo.org> ypbind-1.11-r1.ebuild, ypbind-1.12.ebuild:
+  Fix src_uri
+
+*ypbind-1.12 (10 Jul 2003)
+
+  10 Jul 2003; Donny Davies <woodchip@gentoo.org> ypbind-1.12.ebuild,
+  files/ypbind.confd:
+  Updates from N. Owen Gunden" <ogunden@phauna.org>.
+
+  25 May 2003; Martin Holzer <mholzer@gentoo.org> ypbind-1.11-r1.ebuild:
+  now uses mirror://kernel
+
+  06 May 2003; Will Woods <wwoods@gentoo.org> ypbind-1.11-r1.ebuild:
+  Added alpha to KEYWORDS
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*ypbind-1.11-r1 (4 Jun 2002)
+
+  4 Jun 2002; Seemant Kulleen <seemant@gentoo.org> ypbind-1.11-r1.ebuild
+  files/digest-ypbind-1.11-r1 :
+
+  fix in the /etc/init.d script from lars.pechan@paradise.net.nz (Lars
+  Pechan) in bug #3103
+
+*ypbind-1.11 (27 May 2002)
+
+  27 May 2002; Aron Griffis <agriffis@gentoo.org> ypbind-1.11.ebuild :
+
+  Updated to version 1.11.  Also added "depend() { use ypserv }" so that
+  ypserv will start prior to ypbind (in case the localhost is the server).
+  Thanks to Scott Friedman for the bug report.
+
+*ypbind-1.10 (27 Apr 2002)
+
+  27 Apr 2002; Seemant Kulleen <seemant@gentoo.org> ypbind-1.10.ebuild
+  files/digest-ypbind-1.10 :
+
+  Version bump, including USE dependent NLS support. Thanks to bug #1146 by
+  stefan@mdy.univie.ac.at (Stefan Boresch)
+
+*ypbind-1.7-r6 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

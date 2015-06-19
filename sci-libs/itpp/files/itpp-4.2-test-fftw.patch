@@ -1,0 +1,14 @@
+--- itpp/branches/itpp-4-2/tests/Makefile.am	2010/09/21 18:23:47	1807
++++ itpp/branches/itpp-4-2/tests/Makefile.am	2010/12/30 23:47:09	1837
+@@ -20,9 +20,9 @@
+ 
+ OPTIM_TESTS = newton_search_test
+ 
+-SIGNAL_TESTS = filter_test source_test window_test
++SIGNAL_TESTS = filter_test source_test
+ SIGNAL_LAP_TESTS = fastica_test poly_test
+-SIGNAL_FFT_TESTS = freq_filt_test sigfun_test transforms_test
++SIGNAL_FFT_TESTS = freq_filt_test sigfun_test transforms_test window_test
+ SIGNAL_LAP_FFT_TESTS = filter_design_test
+ 
+ STAT_TESTS = histogram_test

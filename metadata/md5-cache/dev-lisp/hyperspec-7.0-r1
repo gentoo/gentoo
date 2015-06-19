@@ -1,0 +1,9 @@
+DEFINED_PHASES=install nofetch
+DESCRIPTION=Common Lisp ANSI-standard Hyperspec
+HOMEPAGE=http://www.lispworks.com/reference/HyperSpec/
+KEYWORDS=amd64 ppc sparc x86 ~x86-fbsd
+LICENSE=HyperSpec
+RESTRICT=mirror fetch
+SLOT=0
+SRC_URI=ftp://ftp.lispworks.com/pub/software_tools/reference/HyperSpec-7-0.tar.gz
+_md5_=0ae68d9a6279e1d91b2de4040d8803cf

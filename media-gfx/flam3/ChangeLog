@@ -1,0 +1,83 @@
+# ChangeLog for media-gfx/flam3
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/flam3/ChangeLog,v 1.15 2013/05/02 03:25:24 patrick Exp $
+
+  02 May 2013; Patrick Lauer <patrick@gentoo.org> flam3-3.0.1.ebuild,
+  flam3-9999.ebuild:
+  Automake 1.13 fix #468134
+
+  23 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> -flam3-2.7.18-r1.ebuild,
+  -flam3-3.0.ebuild:
+  old
+
+  08 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> flam3-3.0.1.ebuild:
+  amd64 stable wrt #385979
+
+  08 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> flam3-3.0.1.ebuild:
+  x86 stable wrt bug #385979
+
+*flam3-3.0.1 (09 Aug 2011)
+
+  09 Aug 2011; Samuli Suominen <ssuominen@gentoo.org> +flam3-3.0.1.ebuild,
+  +files/flam3-3.0.1-libpng15.patch:
+  Version bump with libpng15 compability patch wrt #378469 by Diego Elio
+  Pettenò
+
+  26 Feb 2011; Kevin McCarthy <signals@gentoo.org> flam3-2.7.18-r1.ebuild,
+  flam3-3.0.ebuild, flam3-9999.ebuild:
+  Updated depends from media-libs/jpeg to virtual/jpeg
+
+*flam3-3.0 (24 Nov 2010)
+
+  24 Nov 2010; Patrick Lauer <patrick@gentoo.org> +flam3-3.0.ebuild:
+  Bump
+
+*flam3-9999 (02 Nov 2010)
+
+  02 Nov 2010; Patrick Lauer <patrick@gentoo.org> +flam3-9999.ebuild:
+  Adding flam3 live ebuild for #339448
+
+  30 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  flam3-2.7.18-r1.ebuild:
+  x86 stable wrt bug #320139
+
+  25 May 2010; Markos Chandras <hwoarang@gentoo.org> flam3-2.7.18-r1.ebuild:
+  Stable on amd64 wrt bug #320139
+
+*flam3-2.7.18-r1 (17 May 2010)
+
+  17 May 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +flam3-2.7.18-r1.ebuild:
+  Don't hardcode libpng12 in flam3.pc wrt #320121 by Diego E. Pettenò.
+
+  02 Feb 2010; Tobias Klausmann <klausman@gentoo.org> flam3-2.7.18.ebuild:
+  Stable on amd64, bug #303207
+
+  31 Dec 2009; Markus Meier <maekke@gentoo.org> flam3-2.7.18.ebuild:
+  x86 stable, bug #298735
+
+*flam3-2.7.18 (09 May 2009)
+
+  09 May 2009; Patrick Lauer <patrick@gentoo.org> +flam3-2.7.18.ebuild:
+  Bump to 2.7.18, closes #268871
+
+*flam3-2.7.17 (01 May 2009)
+
+  01 May 2009; Patrick Lauer <patrick@gentoo.org> +flam3-2.7.17.ebuild,
+  +metadata.xml:
+  Initial import from sunrise. Fixes #237107
+
+  10 Jan 2009; David Bitseff (useer) <dbitsef@zipcon.net>
+  -flam3-2.7.16.ebuild, +flam3-2.7.17.ebuild:
+  version bump
+
+  14 Sep 2008; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  flam3-2.7.16.ebuild:
+  Drop unneeded eutils.eclass
+
+  12 Sep 2008; David Bitseff (useer) <dbitsef@zipcon.net> -files:
+  Removed unused files directory.
+
+  11 Sep 2008; David Bitseff (useer) <dbitsef@zipcon.net>
+  +flam3-2.7.16.ebuild, +metadata.xml:
+  New ebuild for bug #237107

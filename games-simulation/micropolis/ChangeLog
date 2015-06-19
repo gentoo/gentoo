@@ -1,0 +1,25 @@
+# ChangeLog for games-simulation/micropolis
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-simulation/micropolis/ChangeLog,v 1.6 2014/06/19 17:14:01 mr_bones_ Exp $
+
+  19 Jun 2014; Michael Sterrett <mr_bones_@gentoo.org> micropolis-1.0.ebuild:
+  tidy
+
+  19 Jun 2014; Chris Reffett <creffett@gentoo.org> micropolis-1.0.ebuild:
+  [QA] Respect LDFLAGS wrt bug 335095, credit to Christophe Lefebvre
+  <chtof62@gmail.com> for the fix.
+
+  09 Mar 2010; Jonathan Callen <abcd@gentoo.org> micropolis-1.0.ebuild:
+  QA: When not using an absolute path, you MUST NOT use a file extension
+  (.png, .svg, or .xpm) on the icon name for make_desktop_entry
+
+  29 Oct 2009; Markus Meier <maekke@gentoo.org> micropolis-1.0.ebuild:
+  amd64/x86 stable, bug #288954
+
+  20 Feb 2009; Hanno Boeck <hanno@gentoo.org> micropolis-1.0.ebuild:
+  Add sdl-mixer to dependencies.
+
+*micropolis-1.0 (11 Jun 2008)
+
+  11 Jun 2008; Hanno Boeck <hanno@gentoo.org> +micropolis-1.0.ebuild:
+  Initial commit, based on the ebuilds from matsuu and Mike Gualtieri.

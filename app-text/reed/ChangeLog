@@ -1,0 +1,41 @@
+# ChangeLog for app-text/reed
+# Copyright 2000-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/reed/ChangeLog,v 1.13 2014/11/15 12:29:35 jer Exp $
+
+  15 Nov 2014; Jeroen Roovers <jer@gentoo.org> reed-5.4.ebuild:
+  Fix building against sys-libs/ncurses[tinfo] (bug #528382).
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> reed-5.4.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  29 Oct 2012; Agostino Sarubbo <ago@gentoo.org> reed-5.4.ebuild:
+  EAPI4, add ~amd64
+
+  27 Jan 2009; Peter Volkov <pva@gentoo.org> reed-5.4.ebuild:
+  Update HOMEPAGE to point on webarchive.org since origianl does not
+  exist...
+
+  27 Jan 2009; Peter Volkov <pva@gentoo.org> reed-5.4.ebuild:
+  Respect LDFLAGS. Don't install wrap, as it collides with talkfilters, bug
+  #247396, thank Diego E. 'Flameeyes' Pettenò for report.
+
+  30 Dec 2008; Christoph Mende <angelos@gentoo.org> reed-5.4.ebuild:
+  QA: Respect CC (bug 243740), prevent stripping (bug 239875)
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  04 Nov 2003; Brandy Westcott brandy@gentoo.org reed-5.4.ebuild:
+  Small fix to install docs.
+
+  21 Oct 2003; Brandy Westcott brandy@gentoo.org reed-5.4.ebuild:
+  Added sys-libs/ncurses as a dependency; Allow the compile process to use
+  CFLAGS.
+
+*reed-5.4 (01 Oct 2003)
+
+  01 Oct 2003; Markus Nigbur <pyrania@gentoo.org> reed-5.4.ebuild:
+  Initial import.

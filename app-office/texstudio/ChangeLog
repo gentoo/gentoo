@@ -1,0 +1,236 @@
+# ChangeLog for app-office/texstudio
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-office/texstudio/ChangeLog,v 1.50 2015/06/09 11:59:57 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  27 May 2015; Justin Lecher <jlec@gentoo.org> -texstudio-2.8.4.ebuild,
+  -texstudio-2.8.6.ebuild, -texstudio-2.9.0.ebuild:
+  Drop old
+
+  27 May 2015; Agostino Sarubbo <ago@gentoo.org> texstudio-2.8.8.ebuild:
+  Stable for x86, wrt bug #542712
+
+  21 May 2015; Agostino Sarubbo <ago@gentoo.org> texstudio-2.8.8.ebuild:
+  Stable for amd64, wrt bug #542712
+
+  10 May 2015; Davide Pesavento <pesa@gentoo.org> texstudio-2.8.4.ebuild,
+  texstudio-2.8.6.ebuild:
+  Add missing usedep for qtsingleapplication.
+
+  05 May 2015; Justin Lecher <jlec@gentoo.org> texstudio-2.8.8.ebuild:
+  Handle non existing USE=qt4 in qtsingleapplication package
+
+*texstudio-2.9.4 (27 Mar 2015)
+
+  27 Mar 2015; Justin Lecher <jlec@gentoo.org> +texstudio-2.9.4.ebuild:
+  Version Bump, bug #544174
+
+  11 Mar 2015; Justin Lecher <jlec@gentoo.org> texstudio-2.9.0.ebuild:
+  Add missing qt5 deps, #542736
+
+  09 Mar 2015; Justin Lecher <jlec@gentoo.org> texstudio-2.9.0.ebuild:
+  Set default qt choice
+
+*texstudio-2.9.0 (09 Mar 2015)
+
+  09 Mar 2015; Justin Lecher <jlec@gentoo.org> +texstudio-2.9.0.ebuild:
+  Version bump;add qt5 support
+
+  02 Mar 2015; Agostino Sarubbo <ago@gentoo.org> texstudio-2.8.4.ebuild,
+  texstudio-2.8.6.ebuild, texstudio-2.8.8.ebuild:
+  Add ~ppc64, wrt bug #488996
+
+  02 Mar 2015; Agostino Sarubbo <ago@gentoo.org> texstudio-2.8.4.ebuild,
+  texstudio-2.8.6.ebuild, texstudio-2.8.8.ebuild:
+  Add ~ppc, wrt bug #488996
+
+  03 Feb 2015; Justin Lecher <jlec@gentoo.org> texstudio-2.8.6.ebuild:
+  Add another missing USE constraint
+
+  03 Feb 2015; Justin Lecher <jlec@gentoo.org> texstudio-2.8.8.ebuild:
+  Add missing USE_DEP for dev-qt/qtsingleapplication
+
+  04 Jan 2015; Justin Lecher <jlec@gentoo.org> +texstudio-2.8.4.ebuild:
+  Add stable version back, #533826
+
+  31 Dec 2014; Michael Palimaka <kensington@gentoo.org> texstudio-2.8.6.ebuild,
+  texstudio-2.8.8.ebuild:
+  Enforce USE dependency for media-libs/phonon.
+
+  26 Dec 2014; Justin Lecher <jlec@gentoo.org> -texstudio-2.6.0.ebuild,
+  -texstudio-2.8.2.ebuild, -texstudio-2.8.4.ebuild:
+  Drop old
+
+  26 Dec 2014; Agostino Sarubbo <ago@gentoo.org> texstudio-2.8.4.ebuild:
+  Stable for x86, wrt bug #528102
+
+  22 Dec 2014; Chema Alonso <nimiux@gentoo.org> texstudio-2.8.4.ebuild:
+  Stable for amd64 wrt bug #528102
+
+*texstudio-2.8.8 (08 Dec 2014)
+
+  08 Dec 2014; Justin Lecher <jlec@gentoo.org> +texstudio-2.8.8.ebuild:
+  Version Bump, #531972
+
+*texstudio-2.8.6 (03 Nov 2014)
+
+  03 Nov 2014; Justin Lecher <jlec@gentoo.org> +texstudio-2.8.6.ebuild:
+  Version Bump, #528030
+
+*texstudio-2.8.4 (16 Sep 2014)
+
+  16 Sep 2014; Justin Lecher <jlec@gentoo.org> texstudio-2.6.0.ebuild,
+  -texstudio-2.6.2.ebuild, -texstudio-2.6.4.ebuild, -texstudio-2.6.6.ebuild,
+  -texstudio-2.7.0.ebuild, -texstudio-2.8.0.ebuild, texstudio-2.8.2.ebuild,
+  +texstudio-2.8.4.ebuild:
+  Version Bump, #522692; fixes build problem with Werror=format-security,
+  #521120; Drop obsolete deps; drop old
+
+*texstudio-2.8.2 (12 Aug 2014)
+
+  12 Aug 2014; Justin Lecher <jlec@gentoo.org> +texstudio-2.8.2.ebuild,
+  +files/texstudio-2.8.2-desktop.patch:
+  Version Bump, #518430
+
+*texstudio-2.8.0 (06 Jul 2014)
+
+  06 Jul 2014; Justin Lecher <jlec@gentoo.org> +texstudio-2.8.0.ebuild:
+  version Bump, #515862
+
+*texstudio-2.7.0 (20 Mar 2014)
+
+  20 Mar 2014; Justin Lecher <jlec@gentoo.org> +texstudio-2.7.0.ebuild:
+  Version Bump, #505140
+
+*texstudio-2.6.6 (06 Nov 2013)
+
+  06 Nov 2013; Justin Lecher <jlec@gentoo.org> +texstudio-2.6.6.ebuild:
+  Version Bump, #490510
+
+*texstudio-2.6.4 (22 Oct 2013)
+
+  22 Oct 2013; Justin Lecher <jlec@gentoo.org> +texstudio-2.6.4.ebuild,
+  +files/texstudio-2.6.4-hunspell-quazip.patch, +files/texmakerx_my.pri:
+  Version Bump, #488942
+
+  05 Sep 2013; Agostino Sarubbo <ago@gentoo.org> texstudio-2.6.0.ebuild:
+  Stable for ppc64, wrt bug #476558
+
+  04 Sep 2013; Agostino Sarubbo <ago@gentoo.org> texstudio-2.6.0.ebuild:
+  Stable for ppc, wrt bug #476558
+
+  26 Aug 2013; Justin Lecher <jlec@gentoo.org> texstudio-2.6.0.ebuild,
+  texstudio-2.6.2.ebuild:
+  Debian style fix for compilation problem on ppc, #476728
+
+
+  18 Aug 2013; Agostino Sarubbo <ago@gentoo.org> texstudio-2.6.0.ebuild:
+  Stable for x86, wrt bug #476558
+
+  23 Jul 2013; Michael Palimaka <kensington@gentoo.org> texstudio-2.6.0.ebuild,
+  texstudio-2.6.2.ebuild:
+  Fix Qt dependencies.
+
+*texstudio-2.6.2 (18 Jul 2013)
+
+  18 Jul 2013; Justin Lecher <jlec@gentoo.org> +texstudio-2.6.2.ebuild,
+  -files/texstudio-2.2-hunspell.patch, -files/texstudio-2.3-gcc47.patch,
+  -files/texstudio-2.3-hunspell.patch, -files/texstudio-2.3-test.patch,
+  -files/texstudio-2.3-xdg-open.patch, -files/texstudio-2.4-desktop.patch,
+  -files/texstudio-2.4-hunspell.patch, -files/texstudio-2.5-hunspell.patch,
+  -files/texstudio-2.5-qtsingle.patch:
+  Version Bump, #477292; drop old patches
+
+  18 Jul 2013; Patrick Lauer <patrick@gentoo.org> texstudio-2.6.0.ebuild:
+  Fixing qtgui deps for qt-4.8.5
+
+  14 Jul 2013; Justin Lecher <jlec@gentoo.org> -texstudio-2.5.2.ebuild,
+  -texstudio-2.5.2-r1.ebuild, texstudio-2.6.0.ebuild:
+  Correct DESCRIPTION
+
+  12 Jul 2013; Agostino Sarubbo <ago@gentoo.org> texstudio-2.6.0.ebuild:
+  Stable for amd64, wrt bug #476558
+
+*texstudio-2.6.0 (26 Jun 2013)
+
+  26 Jun 2013; Justin Lecher <jlec@gentoo.org> +texstudio-2.6.0.ebuild,
+  +files/texstudio-2.6.0-desktop.patch,
+  +files/texstudio-2.6.0-hunspell-quazip.patch:
+  Version Bump, #474428
+
+  25 Apr 2013; Justin Lecher <jlec@gentoo.org> texstudio-2.5.2.ebuild,
+  texstudio-2.5.2-r1.ebuild:
+  Drop dev-qt/qtwebkit dep, #466886
+
+*texstudio-2.5.2-r1 (17 Mar 2013)
+
+  17 Mar 2013; Justin Lecher <jlec@gentoo.org> -texstudio-2.3-r1.ebuild,
+  -texstudio-2.4.ebuild, -texstudio-2.5.ebuild, +texstudio-2.5.2-r1.ebuild:
+  Add subslot operator for app-text/poppler, #462020
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> texstudio-2.3-r1.ebuild,
+  texstudio-2.4.ebuild, texstudio-2.5.2.ebuild, texstudio-2.5.ebuild:
+  Move Qt dependencies to the new category
+
+*texstudio-2.5.2 (07 Jan 2013)
+
+  07 Jan 2013; Justin Lecher <jlec@gentoo.org> +texstudio-2.5.2.ebuild,
+  metadata.xml:
+  Version Bump
+
+*texstudio-2.5 (05 Nov 2012)
+
+  05 Nov 2012; Justin Lecher <jlec@gentoo.org> +texstudio-2.5.ebuild,
+  +files/texstudio-2.5-hunspell.patch, +files/texstudio-2.5-qtsingle.patch,
+  +files/texstudio-2.5-viewers-use-xdg-open.patch:
+  Version Bump, #439816
+
+*texstudio-2.4 (05 Sep 2012)
+
+  05 Sep 2012; Justin Lecher <jlec@gentoo.org> -texstudio-2.2.ebuild,
+  -texstudio-2.3.ebuild, texstudio-2.3-r1.ebuild, +texstudio-2.4.ebuild,
+  +files/texstudio-2.4-desktop.patch, +files/texstudio-2.4-hunspell.patch:
+  Version Bump; Update desktop mime db; drop old
+
+  18 Jul 2012; Justin Lecher <jlec@gentoo.org> texstudio-2.3.ebuild:
+  Drop patch for gcc-4.7 from all but last revision
+
+*texstudio-2.3-r1 (15 Jul 2012)
+
+  15 Jul 2012; Justin Lecher <jlec@gentoo.org> +texstudio-2.3-r1.ebuild,
+  files/texstudio-2.3-gcc47.patch, +files/texstudio-2.3-test.patch,
+  +files/texstudio-2.3-xdg-open.patch:
+  Fix compilation with gg-4.6 whichw as broken by gcc-4.7 patch, #422619;
+  imported a couple of patches form fedora including support of xdg-open and
+  desktop file installation
+
+  20 Jun 2012; Justin Lecher <jlec@gentoo.org> texstudio-2.3.ebuild,
+  +files/texstudio-2.3-gcc47.patch:
+  Fix for gcc-4.7, #422619
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> texstudio-2.2.ebuild,
+  texstudio-2.3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*texstudio-2.3 (13 Feb 2012)
+
+  13 Feb 2012; Justin Lecher <jlec@gentoo.org> +texstudio-2.3.ebuild,
+  +files/texstudio-2.3-hunspell.patch:
+  Version Bump
+
+*texstudio-2.2 (07 Sep 2011)
+
+  07 Sep 2011; Justin Lecher <jlec@gentoo.org> +texstudio-2.2.ebuild,
+  +files/texstudio-2.2-hunspell.patch, +metadata.xml:
+  Version Bump of app-office/texmakerx with rename to texstudio, #377947
+
+  17 Jun 2011; Justin Lecher <jlec@gentoo.org> texmakerx-2.1.ebuild:
+  Add missing deps, #371739
+
+*texmakerx-2.1 (12 Jun 2011)
+
+  12 Jun 2011; Justin Lecher <jlec@gentoo.org> +texmakerx-2.1.ebuild,
+  +files/texmakerx-2.1-hunspell.patch, +metadata.xml:
+  Addition, #338436

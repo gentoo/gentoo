@@ -1,0 +1,166 @@
+# ChangeLog for dev-perl/Package-DeprecationManager
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Package-DeprecationManager/ChangeLog,v 1.37 2014/08/21 14:09:48 axs Exp $
+
+*Package-DeprecationManager-0.130.0-r1 (21 Aug 2014)
+
+  21 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Package-DeprecationManager-0.130.0-r1.ebuild,
+  -Package-DeprecationManager-0.130.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  01 Feb 2014; Mike Frysinger <vapier@gentoo.org>
+  Package-DeprecationManager-0.130.0.ebuild:
+  Add arm64/m68k love.
+
+  08 Jul 2013; Vicente Olivert Riera <vincent@gentoo.org>
+  Package-DeprecationManager-0.130.0.ebuild:
+  ppc64 stable. bug #449576
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org>
+  Package-DeprecationManager-0.130.0.ebuild:
+  Add ~ppc64, wrt bug #403413
+
+  09 Sep 2012; Raúl Porcel <armin76@gentoo.org>
+  Package-DeprecationManager-0.130.0.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #418803
+
+  02 Sep 2012; Torsten Veller <tove@gentoo.org>
+  -Package-DeprecationManager-0.110.0.ebuild:
+  Cleanup
+
+  01 Sep 2012; Fabian Groffen <grobian@gentoo.org>
+  Package-DeprecationManager-0.130.0.ebuild:
+  Marked ~ppc-aix, bug #432288
+
+  09 Aug 2012; Brent Baude <ranger@gentoo.org>
+  Package-DeprecationManager-0.130.0.ebuild:
+  Marking Package-DeprecationManager-0.130.0 ppc for bug 418835
+
+  05 Aug 2012; Markus Meier <maekke@gentoo.org>
+  Package-DeprecationManager-0.130.0.ebuild:
+  arm stable, bug #418803
+
+  05 Aug 2012; Johannes Huber <johu@gentoo.org>
+  Package-DeprecationManager-0.130.0.ebuild:
+  Stable for x86, wrt bug #418835
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org>
+  Package-DeprecationManager-0.130.0.ebuild:
+  Stable for amd64, wrt bug #418835
+
+  02 Aug 2012; Jeroen Roovers <jer@gentoo.org>
+  Package-DeprecationManager-0.130.0.ebuild:
+  Stable for HPPA (bug #418803).
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  01 Apr 2012; Raúl Porcel <armin76@gentoo.org>
+  Package-DeprecationManager-0.110.0.ebuild,
+  Package-DeprecationManager-0.130.0.ebuild:
+  Add ~ia64/~s390/~sh/~sparc wrt #403413
+
+*Package-DeprecationManager-0.130.0 (10 Mar 2012)
+
+  10 Mar 2012; Torsten Veller <tove@gentoo.org>
+  +Package-DeprecationManager-0.130.0.ebuild:
+  Version bump
+
+  19 Feb 2012; Tobias Klausmann <klausman@gentoo.org>
+  Package-DeprecationManager-0.110.0.ebuild:
+  Keyworded on alpha, bug #389001
+
+  18 Feb 2012; Torsten Veller <tove@gentoo.org>
+  -Package-DeprecationManager-0.10.ebuild:
+  Cleanup
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  Package-DeprecationManager-0.110.0.ebuild:
+  x86 stable wrt bug #396939
+
+  14 Feb 2012; Alexis Ballier <aballier@gentoo.org>
+  Package-DeprecationManager-0.110.0.ebuild:
+  keyword ~x86-fbsd
+
+  06 Feb 2012; Brent Baude <ranger@gentoo.org>
+  Package-DeprecationManager-0.110.0.ebuild:
+  Marking Package-DeprecationManager-0.110.0 ppc for bug 396939
+
+  03 Feb 2012; Agostino Sarubbo <ago@gentoo.org>
+  Package-DeprecationManager-0.110.0.ebuild:
+  Stable for amd64, wrt bug #396939
+
+  07 Nov 2011; Fabian Groffen <grobian@gentoo.org>
+  Package-DeprecationManager-0.110.0.ebuild:
+  Added Prefix keywords, bug #389001
+
+  06 Nov 2011; Markus Meier <maekke@gentoo.org>
+  Package-DeprecationManager-0.110.0.ebuild:
+  add ~arm, bug #389001
+
+  31 Oct 2011; Jeroen Roovers <jer@gentoo.org>
+  Package-DeprecationManager-0.110.0.ebuild:
+  Marked ~hppa (bug #389001).
+
+  24 Sep 2011; Fabian Groffen <grobian@gentoo.org>
+  Package-DeprecationManager-0.110.0.ebuild:
+  Marked ~x64-macos
+
+  13 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  Package-DeprecationManager-0.10.ebuild:
+  ppc stable wrt #350853
+
+*Package-DeprecationManager-0.110.0 (23 Jun 2011)
+
+  23 Jun 2011; Torsten Veller <tove@gentoo.org>
+  +Package-DeprecationManager-0.110.0.ebuild:
+  Version bump
+
+  02 Apr 2011; Torsten Veller <tove@gentoo.org>
+  -Package-DeprecationManager-0.04.ebuild,
+  -Package-DeprecationManager-0.09.ebuild:
+  Cleanup
+
+  27 Mar 2011; Torsten Veller <tove@gentoo.org>
+  Package-DeprecationManager-0.10.ebuild:
+  Stable on x86 (#350853)
+
+  11 Mar 2011; Markos Chandras <hwoarang@gentoo.org>
+  Package-DeprecationManager-0.10.ebuild:
+  Stable on amd64 wrt bug #350853
+
+  13 Jan 2011; Brent Baude <ranger@gentoo.org>
+  Package-DeprecationManager-0.10.ebuild:
+  Marking Package-DeprecationManager-0.10 ~ppc for bug 343479
+
+*Package-DeprecationManager-0.10 (31 Oct 2010)
+
+  31 Oct 2010; Torsten Veller <tove@gentoo.org>
+  +Package-DeprecationManager-0.10.ebuild:
+  Version bump
+
+*Package-DeprecationManager-0.09 (18 Oct 2010)
+
+  18 Oct 2010; Torsten Veller <tove@gentoo.org>
+  +Package-DeprecationManager-0.09.ebuild:
+  Version bump
+
+  14 Oct 2010; Brent Baude <ranger@gentoo.org>
+  Package-DeprecationManager-0.04.ebuild:
+  Marking Package-DeprecationManager-0.04 ~ppc for bug 322961
+
+  11 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  Package-DeprecationManager-0.04.ebuild:
+  Stable on amd64 wrt bug #340024
+
+  11 Oct 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  Package-DeprecationManager-0.04.ebuild:
+  x86 stable wrt bug #340024
+
+*Package-DeprecationManager-0.04 (26 Jul 2010)
+
+  26 Jul 2010; Torsten Veller <tove@gentoo.org>
+  +Package-DeprecationManager-0.04.ebuild, +metadata.xml:
+  Initial commit for dev-perl/Class-MOP

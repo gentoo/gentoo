@@ -1,0 +1,10 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=Gentoo specific zsh completion support (includes emerge and ebuild commands)
+EAPI=5
+HOMEPAGE=https://github.com/radhermit/gentoo-zsh-completions
+KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc64-solaris
+LICENSE=ZSH
+RDEPEND=>=app-shells/zsh-4.3.5
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~radhermit/dist/gentoo-zsh-completions-20141115.tar.xz
+_md5_=afdee576dcc480c41d5aad03ab216590

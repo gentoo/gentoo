@@ -1,0 +1,51 @@
+# ChangeLog for games-fps/quake1-data
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/quake1-data/ChangeLog,v 1.12 2014/08/12 11:33:21 vapier Exp $
+
+  12 Aug 2014; Mike Frysinger <vapier@gentoo.org> quake1-data-2.40.ebuild:
+  Add ia64 love.
+
+  18 Apr 2014; Ulrich Müller <ulm@gentoo.org> quake1-data-2.40.ebuild:
+  LICENSE changed to all-rights-reserved, bug 418067.
+
+  16 Jan 2012; Ulrich Müller <ulm@gentoo.org> quake1-data-2.40.ebuild:
+  Migrate to cdrom.eclass, bug 398809.
+
+  18 Mar 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  quake1-data-2.40.ebuild:
+  EAPI=2; built_with_use -> has_version
+
+  26 Sep 2008; Zac Medico <zmedico@gentoo.org> quake1-data-2.40.ebuild:
+  Set PROPERTIES=interactive since src_unpack() calls cdrom_get_cds().
+
+  24 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake1-data-2.40.ebuild:
+  Moved cdrom_get_cds to src_unpack since binary packages don't require the
+  original media to install.
+
+  11 Aug 2006; Mike Frysinger <vapier@gentoo.org> quake1-data-2.40.ebuild:
+  Add support for newer Quake cds #142207 by Joe Quanaim.
+
+  27 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake1-data-2.40.ebuild:
+  Added check for quake1-demodata to make sure we don't have a file collision.
+  Closing bug #137497.
+
+  13 Apr 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake1-data-2.40.ebuild:
+  Moved games_pkg_setup to the beginning of pkg_setup.
+
+  04 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake1-data-2.40.ebuild:
+  Apparently, lha can only extract self-extracting executables if they have an
+  .exe extension. Thanks to Henrique Rodrigues <hmtr@rnl.ist.utl.pt> and
+  closing bug #117125.
+
+  03 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake1-data-2.40.ebuild:
+  Fixing bug #117125.
+
+*quake1-data-2.40 (30 Oct 2005)
+
+  30 Oct 2005; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me.

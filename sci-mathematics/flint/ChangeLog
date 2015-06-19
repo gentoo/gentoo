@@ -1,0 +1,62 @@
+# ChangeLog for sci-mathematics/flint
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/flint/ChangeLog,v 1.14 2015/04/05 11:19:35 tomka Exp $
+
+  05 Apr 2015; Thomas Kahle <tomka@gentoo.org> +files/flint-2.4.5-ntl62.patch,
+  flint-2.4.5.ebuild:
+  Fix ntl compatibility (bug 545318)
+
+  03 Apr 2015; Thomas Kahle <tomka@gentoo.org>
+  +files/flint-2.4.5-gmp6-compat.patch, flint-2.4.5.ebuild:
+  Fix tests with gmp-6 (bug 545378)
+
+  03 Apr 2015; Patrick Lauer <patrick@gentoo.org> flint-2.4.5.ebuild:
+  Restrict ntl dep #545318
+
+*flint-2.4.5 (02 Apr 2015)
+
+  02 Apr 2015; Thomas Kahle <tomka@gentoo.org> +flint-2.4.5.ebuild:
+  Bump to 2.4.5 (542682)
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+  14 Aug 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> flint-2.4.4-r1.ebuild:
+  x86 stable wrt bug #518208
+
+  01 Aug 2014; Chema Alonso <nimiux@gentoo.org> flint-2.4.4-r1.ebuild:
+  Stable for amd64 wrt bug #518208
+
+*flint-2.4.4-r1 (30 Jul 2014)
+
+  30 Jul 2014; Julian Ospald <hasufell@gentoo.org> -flint-2.4.4.ebuild,
+  +flint-2.4.4-r1.ebuild:
+  fix deps wrt #518500
+
+  02 Jul 2014; Julian Ospald <hasufell@gentoo.org> flint-2.4.4.ebuild,
+  +files/flint-2.4.4-test.patch:
+  fix NTL test build wrt #516028
+
+*flint-2.4.4 (20 Jun 2014)
+
+  20 Jun 2014; Julian Ospald <hasufell@gentoo.org> +flint-2.4.4.ebuild:
+  version bump
+
+  18 May 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  add myself as maintainer
+
+*flint-2.4.3 (18 May 2014)
+
+  18 May 2014; Julian Ospald <hasufell@gentoo.org> +flint-2.4.3.ebuild,
+  +files/flint-2.4.3-cflags-ldflags.patch, +files/flint-2.4.3-libdir.patch,
+  +files/flint-2.4.3-whitespaces.patch, metadata.xml:
+  version bump wrt #507572
+
+  21 May 2013; Patrick Lauer <patrick@gentoo.org> flint-2.3.ebuild:
+  Fixing libdir for #470732
+
+*flint-2.3 (26 Nov 2012)
+
+  26 Nov 2012; Patrick Lauer <patrick@gentoo.org> +flint-2.3.ebuild,
+  +metadata.xml:
+  Initial import, ebuild by me, fixes #230437

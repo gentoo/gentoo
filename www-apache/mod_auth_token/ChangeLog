@@ -1,0 +1,33 @@
+# ChangeLog for www-apache/mod_auth_token
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_auth_token/ChangeLog,v 1.7 2014/08/10 20:14:27 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  mod_auth_token-1.0.6_beta.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  24 Jun 2012; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Update metadata, helps my own bug templating script.
+
+  14 Feb 2012; Torsten Veller <tove@gentoo.org>
+  mod_auth_token-1.0.6_beta.ebuild:
+  Fix ebuild header (#398773)
+
+  31 Aug 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  mod_auth_token-1.0.6_beta.ebuild:
+  Respect CFLAGS/LDFLAGS properly.
+
+  31 Aug 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  mod_auth_token-1.0.6_beta.ebuild:
+  Forgot to save.
+
+*mod_auth_token-1.0.6_beta (31 Aug 2011)
+
+  31 Aug 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  +files/75_mod_auth_token.conf, +mod_auth_token-1.0.6_beta.ebuild,
+  +files/mod_auth_token-1.0.6_beta-ap_pstrcat.patch, +metadata.xml:
+  Initial import of mod_auth_token; ebuild by Pavel Stratil (proxied
+  maintainer), fix for ap_pstrcat function call by me.

@@ -1,0 +1,15 @@
+# ChangeLog for net-analyzer/ntopng
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ntopng/ChangeLog,v 1.3 2015/04/16 04:57:29 slis Exp $
+
+  16 Apr 2015; Sławek Lis <slis@gentoo.org> ntopng-1.2.1.ebuild:
+  Fixed dependencies (#539970)
+
+  21 Mar 2015; Justin Lecher <jlec@gentoo.org> ntopng-1.2.1.ebuild:
+  use dobin instead of exeinto /usr/bin/ && doexe
+
+*ntopng-1.2.1 (03 Feb 2015)
+
+  03 Feb 2015; Sławek Lis <slis@gentoo.org> +files/ntopng.conf.d,
+  +files/ntopng.init.d, +metadata.xml, +ntopng-1.2.1.ebuild:
+  added ntopng, #475960

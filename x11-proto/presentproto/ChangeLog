@@ -1,0 +1,42 @@
+# ChangeLog for x11-proto/presentproto
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-proto/presentproto/ChangeLog,v 1.12 2015/03/03 12:30:49 dlan Exp $
+
+  03 Mar 2015; Yixun Lan <dlan@gentoo.org> presentproto-1.0.ebuild:
+  add arm64 support, tested on A53 board
+
+  08 Jun 2014; Agostino Sarubbo <ago@gentoo.org> presentproto-1.0.ebuild:
+  Stable for arm, wrt bug #500368
+
+  19 Apr 2014; Agostino Sarubbo <ago@gentoo.org> presentproto-1.0.ebuild:
+  Stable for sparc, wrt bug #500368
+
+  17 Apr 2014; Agostino Sarubbo <ago@gentoo.org> presentproto-1.0.ebuild:
+  Stable for ia64, wrt bug #500368
+
+  16 Apr 2014; Agostino Sarubbo <ago@gentoo.org> presentproto-1.0.ebuild:
+  Stable for ppc64, wrt bug #500368
+
+  08 Apr 2014; Agostino Sarubbo <ago@gentoo.org> presentproto-1.0.ebuild:
+  Stable for ppc, wrt bug #500368
+
+  06 Apr 2014; Agostino Sarubbo <ago@gentoo.org> presentproto-1.0.ebuild:
+  Stable for x86, wrt bug #500368
+
+  29 Mar 2014; Matt Turner <mattst88@gentoo.org> presentproto-1.0.ebuild:
+  alpha stable, bug #500368.
+
+  28 Mar 2014; Jeroen Roovers <jer@gentoo.org> presentproto-1.0.ebuild:
+  Stable for HPPA (bug #500368).
+
+  27 Mar 2014; Agostino Sarubbo <ago@gentoo.org> presentproto-1.0.ebuild:
+  Stable for amd64, wrt bug #500368
+
+  08 Nov 2013; Matt Turner <mattst88@gentoo.org> presentproto-1.0.ebuild:
+  Add multilib support.
+
+*presentproto-1.0 (01 Nov 2013)
+
+  01 Nov 2013; Matt Turner <mattst88@gentoo.org> +metadata.xml,
+  +presentproto-1.0.ebuild:
+  New package.

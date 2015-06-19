@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup
+DEPEND=dev-python/pygtk dev-python/numpy >=dev-python/pycairo-1.4 dev-libs/protobuf[python] >=dev-libs/json-c-0.11 >=media-libs/lcms-2.0 media-libs/libpng dev-lang/swig virtual/pkgconfig >=sys-apps/sed-4 dev-util/scons || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* )
+DESCRIPTION=fast and easy graphics application for digital painters
+EAPI=4
+HOMEPAGE=http://mypaint.intilinux.com/
+IUSE=linguas_cs linguas_de linguas_en_CA linguas_es linguas_fr linguas_hu linguas_id linguas_it linguas_ja linguas_ko linguas_nb linguas_nn_NO linguas_pl linguas_pt_BR linguas_ru linguas_sl linguas_sv linguas_uk linguas_zh_CN linguas_zh_TW
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-python/pygtk dev-python/numpy >=dev-python/pycairo-1.4 dev-libs/protobuf[python] >=dev-libs/json-c-0.11 >=media-libs/lcms-2.0 media-libs/libpng || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* )
+SLOT=0
+SRC_URI=http://download.gna.org/mypaint/mypaint-1.1.0.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	scons-utils	988e24b9e2e4642189b4e97c03e5ae71	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=bc5d9c5ff5743bcb687a91e4b3d44b26

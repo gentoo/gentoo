@@ -1,0 +1,14 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -109,9 +109,8 @@
+ 	if test ! -f "$WHERE_FTPATH/include/ftlib.h"; then
+ 		AC_MSG_ERROR(ftlib.h file not found in flow-tools directory '$WHERE_FTPATH'. Use --with-ftpath=PATH)
+ 	fi
+-	if test ! -f "$WHERE_FTPATH/lib/libft.a"; then
+-		AC_MSG_ERROR(libft.a not found in flow-tools directory '$WHERE_FTPATH'. Build flow tools first)
+-	fi
++	AC_CHECK_LIB([ft], [main],,
++		AC_MSG_ERROR(libft not found in flow-tools directory '$WHERE_FTPATH'. Build flow tools first))
+ 	FT_INCLUDES="-I$WHERE_FTPATH/include -I$WHERE_FTPATH/lib"
+ 	FT_LDFLAGS="-L$WHERE_FTPATH/lib"
+ else

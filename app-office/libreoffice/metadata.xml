@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>openoffice</herd>
+  <longdescription>LibreOffice is a fork of OpenOffice.org. 
+This ebuild allows you to compile it yourself. Unfortunately this 
+compilation can take up to a day depending on the speed of your 
+computer. It will however make a snappier openoffice than the binary 
+version</longdescription>
+  <use>
+    <flag name="coinmp">Use sci-libs/coinor-mp as alternative solver</flag>
+    <flag name="collada">Enable Collada for rendering 3D models stored in *.dae and *.kmz format</flag>
+    <flag name="gltf">Use media-libs/libgltf for inserting 3D models in the glTF format into presentations</flag>
+    <flag name="gtk3">Enable highly experimental gtk3 frontend</flag>
+    <flag name="jemalloc">Use <pkg>dev-libs/jemalloc</pkg> for allocations</flag>
+    <flag name="odk">Build the Office Development Kit</flag>
+    <flag name="telepathy">Enable document colaboration features using telepathy communication framework.</flag>
+    <flag name="vlc">Use <pkg>media-video/vlc</pkg> for video embedding</flag>
+  </use>
+</pkgmetadata>

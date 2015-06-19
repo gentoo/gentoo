@@ -1,0 +1,158 @@
+# ChangeLog for app-text/lv
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/lv/ChangeLog,v 1.47 2013/09/07 19:53:25 slyfox Exp $
+
+  07 Sep 2013; Sergei Trofimovich <slyfox@gentoo.org> lv-4.51-r3.ebuild:
+  Add missing 'autotools' inherit for 'eautoreconf'.
+
+  24 May 2013; Alexis Ballier <aballier@gentoo.org> lv-4.51-r3.ebuild:
+  keyword ~amd64-fbsd thanks to Yuta SATOH , bug #432410
+
+  10 May 2013; Patrick Lauer <patrick@gentoo.org> lv-4.51-r3.ebuild:
+  Fix inherit
+
+  04 Mar 2013; Naohiro Aota <naota@gentoo.org> +files/lv-4.51-tinfo.patch,
+  lv-4.51-r3.ebuild:
+  Add a patch to scan ncurses pkg-config file. #459594
+
+  27 Feb 2013; Akinori Hattori <hattya@gentoo.org> -lv-4.51-r1.ebuild:
+  remove old ebuild
+
+  18 Sep 2012; Christoph Junghans <ottxor@gentoo.org> lv-4.51-r3.ebuild:
+  added prefix keywords
+
+  06 Mar 2012; Brent Baude <ranger@gentoo.org> lv-4.51-r3.ebuild:
+  Marking lv-4.51-r3 ppc64 for bug 396839
+
+  12 Feb 2012; Raúl Porcel <armin76@gentoo.org> lv-4.51-r3.ebuild:
+  alpha/ia64/sh/sparc/x86 stable wrt #396839
+
+  03 Feb 2012; Brent Baude <ranger@gentoo.org> lv-4.51-r3.ebuild:
+  Marking lv-4.51-r3 ppc for bug 396839
+
+  02 Feb 2012; Agostino Sarubbo <ago@gentoo.org> lv-4.51-r3.ebuild:
+  Stable for amd64, wrt bug #396839
+
+  13 Aug 2011; Akinori Hattori <hattya@gentoo.org> -lv-4.51-r2.ebuild,
+  lv-4.51-r3.ebuild, files/lv-4.51-xz.diff:
+  update to EAPI 4.
+
+*lv-4.51-r3 (13 Jan 2011)
+
+  13 Jan 2011; MATSUU Takuto <matsuu@gentoo.org> +lv-4.51-r3.ebuild:
+  Added src_configure, bug #351473.
+
+*lv-4.51-r2 (11 Oct 2010)
+
+  11 Oct 2010; Akinori Hattori <hattya@gentoo.org> +lv-4.51-r2.ebuild,
+  +files/lv-4.51-xz.diff, metadata.xml:
+  add filter for .lzma and .xz.
+
+  25 Aug 2010; Markus Meier <maekke@gentoo.org> lv-4.51-r1.ebuild:
+  add ~arm, bug #333853
+
+  23 Jan 2010; Alexis Ballier <aballier@gentoo.org> lv-4.51-r1.ebuild:
+  keyword ~x86-fbsd thanks to Naohiro Aota <naota@elisp.net>, bug #301885
+
+  11 Apr 2009; MATSUU Takuto <matsuu@gentoo.org> -lv-4.51.ebuild:
+  Removed old version.
+
+  01 Dec 2008; Brent Baude <ranger@gentoo.org> lv-4.51-r1.ebuild:
+  Marking lv-4.51-r1 ppc64 for bug 243734
+
+  16 Nov 2008; MATSUU Takuto <matsuu@gentoo.org> lv-4.51-r1.ebuild:
+  Added !app-editors/levee to RDEPEND, bug #246966.
+
+  03 Nov 2008; Raúl Porcel <armin76@gentoo.org> lv-4.51-r1.ebuild:
+  alpha/ia64/sh/sparc stable wrt #243734
+
+  02 Nov 2008; Markus Meier <maekke@gentoo.org> lv-4.51-r1.ebuild:
+  amd64/x86 stable, bug #243734
+
+  01 Nov 2008; nixnut <nixnut@gentoo.org> lv-4.51-r1.ebuild:
+  Stable on ppc wrt bug 243734
+
+*lv-4.51-r1 (07 Oct 2008)
+
+  07 Oct 2008; MATSUU Takuto <matsuu@gentoo.org>
+  +files/lv-4.51-gentoo.patch, +lv-4.51-r1.ebuild:
+  Removed strip and clean up, bug #239874.
+
+  21 Mar 2008; Christian Faulhammer <opfer@gentoo.org> lv-4.51.ebuild:
+  PROVIDE for virtual/pager not needed anymore, there is a new-style virtual
+  in the tree now
+
+  22 Jan 2008; Fabian Groffen <grobian@gentoo.org> lv-4.51.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  03 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  18 Aug 2005; Mike Frysinger <vapier@gentoo.org> lv-4.51.ebuild:
+  Add a PROVIDE for virtual/pager #89232.
+
+  17 Jul 2005; MATSUU Takuto <matsuu@gentoo.org> lv-4.51.ebuild:
+  Stable on sh.
+
+  12 Feb 2005; Masatomo Nakano <nakano@gentoo.org> lv-4.50.ebuild:
+  removed old ebuild
+
+  24 Jul 2004; Mamoru KOMACHI <usata@gentoo.org> lv-4.50.ebuild,
+  lv-4.51.ebuild:
+  Added to macos.
+
+  17 Jul 2004; Tom Gall <tgall@gentoo.org> lv-4.51.ebuild:
+  stable on ppc64, bug #55681
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> lv-4.50.ebuild,
+  lv-4.51.ebuild:
+  virtual/glibc -> virtual/libc
+
+  05 Mar 2004; Masatomo Nakano <nakano@gentoo.org> lv-4.51.ebuild:
+  Marked as stable.
+
+*lv-4.51 (17 Jan 2004)
+
+  17 Jan 2004; MATSUU Takuto <matsuu@gentoo.org> lv-4.49.5-r1.ebuild,
+  lv-4.51.ebuild:
+  Version bump. and removed old versions.
+
+  05 Jan 2004; Masatomo Nakano <nakano@gentoo.org> lv-4.49.4.ebuild,
+  lv-4.49.5-r1.ebuild, lv-4.49.5.ebuild, lv-4.50.ebuild, metadata.xml:
+  Markded as stable and removed old versions.
+
+*lv-4.50 (19 Nov 2003)
+
+  19 Nov 2003; MATSUU Takuto <matsuu@gentoo.org> lv-4.50.ebuild:
+  Version bump. Add dodoc. Fix some issues.
+
+*lv-4.49.5-r1 (18 May 2003)
+  12 Nov 2003; MATSUU Takuto <matsuu@gentoo.org> lv-4.49.5-r1.ebuild:
+  Marked amd64 and sparc.
+
+  19 May 2003; Masatomo Nakano <nakano@gentoo.org> lv-4.49.5-r1.ebuild:
+  Marked as stable.
+
+  18 May 2003; Masatomo Nakano <nakano@gentoo.org> lv-4.49.5-r1.ebuild:
+  Marked ~ppc and ~alpha.
+
+  18 May 2003; Masatomo Nakano <nakano@gentoo.org> : lv-4.49.5-r1.ebuild:
+
+  Fixed bug. Commited as unstable.
+
+*lv-4.49.5 (11 May 2003)
+  14 May 2003; Masatomo Nakano <nakano@gentoo.org> : lv-4.49.5.ebuild, ChangeLog:
+  Moved to stable.
+
+  11 May 2003; Masatomo Nakano <nakano@gentoo.org> : lv-4.49.5.ebuild, ChangeLog:
+  Version bump.
+
+*lv-4.49.4 (10 Dec 2002)
+
+  11 Dec 2002; Masatomo Nakano <nakano@gentoo.org> : lv-4.49.4.ebuild, ChangeLog
+  
+	buged fix. added lib ncurses.
+
+  10 Dec 2002; Masatomo Nakano <nakano@gentoo.org> : lv-4.49.4.ebuild, files/digest-lv-4.49.4, ChangeLog
+
+  Initial import.  

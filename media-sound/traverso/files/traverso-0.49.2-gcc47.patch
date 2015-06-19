@@ -1,0 +1,20 @@
+--- src/core/FileHelpers.cpp
++++ src/core/FileHelpers.cpp
+@@ -22,6 +22,7 @@
+ 
+ #include "FileHelpers.h"
+ 
++#include <unistd.h> /* read and write */
+ #include <sys/stat.h>
+ #include "Config.h"
+ #include <QDir>
+--- src/traverso/Main.cpp
++++ src/traverso/Main.cpp
+@@ -19,6 +19,7 @@
+ 
+ */
+ 
++#include <unistd.h> /* getpgrp */
+ #include <signal.h>
+ #include <stdlib.h>
+ 

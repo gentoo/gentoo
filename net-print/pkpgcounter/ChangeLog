@@ -1,0 +1,82 @@
+# ChangeLog for net-print/pkpgcounter
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-print/pkpgcounter/ChangeLog,v 1.16 2013/06/09 18:56:00 floppym Exp $
+
+  09 Jun 2013; Mike Gilbert <floppym@gentoo.org> pkpgcounter-3.50-r1.ebuild:
+  Depend on virtual/python-imaging.
+
+*pkpgcounter-3.50-r1 (13 May 2012)
+
+  13 May 2012; Pacho Ramos <pacho@gentoo.org> +pkpgcounter-3.50-r1.ebuild,
+  -pkpgcounter-3.50.ebuild, metadata.xml:
+  Drop psyco support, bug #410359.
+
+  05 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pkpgcounter-3.50.ebuild:
+  Use Python 2 (bug #315871).
+
+  05 Apr 2011; Ulrich Mueller <ulm@gentoo.org> pkpgcounter-3.20.ebuild,
+  pkpgcounter-3.50.ebuild:
+  Depend on dev-lang/python because virtual/python will go away, bug 358849.
+
+*pkpgcounter-3.50 (06 Oct 2008)
+
+  06 Oct 2008; Stefan Briesenick <sbriesen@gentoo.org>
+  +pkpgcounter-3.50.ebuild:
+  version bump.
+
+  16 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  14 Mar 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Christian Andreetta (satya, #48841) from metadata.xml.
+
+*pkpgcounter-3.20 (18 Nov 2007)
+
+  18 Nov 2007; Stefan Schweizer <genstef@gentoo.org>
+  -pkpgcounter-1.72.ebuild, -pkpgcounter-1.80.ebuild,
+  -pkpgcounter-1.83.ebuild, -pkpgcounter-2.10.ebuild,
+  +pkpgcounter-3.20.ebuild:
+  version bump thanks to Daniel Heule <nerve@ipwar.ch> in bug 196892
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*pkpgcounter-2.10 (02 Oct 2006)
+
+  02 Oct 2006; Patrick McLean <chutzpah@gentoo.org>
+  +pkpgcounter-2.10.ebuild:
+  Version bump.
+
+  24 Aug 2006; Patrick McLean <chutzpah@gentoo.org> pkpgcounter-1.72.ebuild,
+  pkpgcounter-1.80.ebuild, pkpgcounter-1.83.ebuild:
+  Change the docs cleaning rm to use  rather than the name of the package.
+
+*pkpgcounter-1.83 (23 Aug 2006)
+
+  23 Aug 2006; Patrick McLean <chutzpah@gentoo.org> pkpgcounter-1.72.ebuild,
+  pkpgcounter-1.80.ebuild, +pkpgcounter-1.83.ebuild:
+  Version bump (bug #143517). Update HOMEPAGE and SRC_URI to new locations in
+  all versions since the old values are no longer valid.
+
+  23 Aug 2006; Patrick McLean <chutzpah@gentoo.org> metadata.xml,
+  pkpgcounter-1.72.ebuild, pkpgcounter-1.80.ebuild:
+  Make sure that only one copy of the docs are installed (bug #143518). Remove
+  the "x86?" for the psyco use flag as it is now in use.mask for all non-x86
+  arches.
+
+*pkpgcounter-1.80 (16 Feb 2006)
+
+  16 Feb 2006; Christian Andreetta <satya@gentoo.org>
+  +pkpgcounter-1.80.ebuild:
+  Version bump. 'psyco' local use flag to use dev-python/psyco accelerator (x86
+  only)
+
+  15 Nov 2005; <dang@gentoo.org> pkpgcounter-1.72.ebuild:
+  Marked ~amd64
+
+*pkpgcounter-1.72 (08 Nov 2005)
+
+  08 Nov 2005; Christian Andreetta <satya@gentoo.org> +metadata.xml,
+  +pkpgcounter-1.72.ebuild:
+  new ebuild submission: net-print/pykota dependency (bug #110679)

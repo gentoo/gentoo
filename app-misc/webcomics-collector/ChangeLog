@@ -1,0 +1,75 @@
+# ChangeLog for app-misc/webcomics-collector
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/webcomics-collector/ChangeLog,v 1.16 2014/12/27 18:45:22 mgorny Exp $
+
+*webcomics-collector-0.7.3-r1 (27 Dec 2014)
+
+  27 Dec 2014; Michał Górny <mgorny@gentoo.org>
+  +webcomics-collector-0.7.3-r1.ebuild:
+  Convert to distutils-r1.
+
+  12 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  webcomics-collector-0.7.3.ebuild:
+  Use Python 2 (bug #311537).
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  30 Sep 2005; Luis Medinas <metalgod@gentoo.org>
+  webcomics-collector-0.7.3.ebuild:
+  Added ~amd64 keywords. Bug #107642.
+
+*webcomics-collector-0.7.3 (21 Nov 2004)
+
+  21 Nov 2004; Mike Frysinger <vapier@gentoo.org>
+  +webcomics-collector-0.7.3.ebuild:
+  Version bump #71446 by Anders Bruun Olsen.
+
+*webcomics-collector-0.7.2 (08 Nov 2004)
+
+  08 Nov 2004; Mike Frysinger <vapier@gentoo.org>
+  +webcomics-collector-0.7.2.ebuild:
+  Version bump #70271.
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  webcomics-collector-0.7.1.ebuild:
+  Masked webcomics-collector-0.7.1.ebuild stable for ppc
+
+  28 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Gentoo Technologies, Inc. -> Gentoo Foundation
+
+*webcomics-collector-0.7.1 (14 Sep 2004)
+
+  14 Sep 2004; Mike Frysinger <vapier@gentoo.org>
+  +webcomics-collector-0.7.1.ebuild:
+  Version bump #63190.
+
+*webcomics-collector-0.7.0 (10 Aug 2004)
+
+  10 Aug 2004; Mike Frysinger <vapier@gentoo.org>
+  webcomics-collector-0.5.3.ebuild, +webcomics-collector-0.7.0.ebuild:
+  Version bump #59975 by Anders Bruun Olsen.
+
+*webcomics-collector-0.5.3 (02 Aug 2004)
+
+  02 Aug 2004; Mike Frysinger <vapier@gentoo.org>
+  -webcomics-collector-0.5.0.ebuild, -webcomics-collector-0.5.2.ebuild,
+  +webcomics-collector-0.5.3.ebuild:
+  Version bump #58659 by Anders Bruun Olsen.
+
+*webcomics-collector-0.5.2 (20 Jul 2004)
+
+  20 Jul 2004; Mike Frysinger <vapier@gentoo.org>
+  +webcomics-collector-0.5.2.ebuild:
+  Version bump #57460 by Anders Bruun Olsen.
+
+  18 Jul 2004; David Holm <dholm@gentoo.org> webcomics-collector-0.5.0.ebuild:
+  Added to ~ppc.
+
+*webcomics-collector-0.5.0 (18 Jul 2004)
+
+  18 Jul 2004; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Anders Bruun Olsen #56693.

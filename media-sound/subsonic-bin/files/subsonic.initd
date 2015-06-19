@@ -1,0 +1,39 @@
+#!/sbin/openrc-run
+# Distributed under the terms of the GNU General Public License, v2 or later
+
+SUBSONIC_HOME=${SUBSONIC_HOME:-/var/lib/${SVCNAME}}
+SUBSONIC_USER=${SUBSONIC_USER:-${SVCNAME}}
+PIDFILE=${PIDFILE:-${SUBSONIC_HOME}/subsonic.pid}
+
+depend() {
+	after net
+}
+
+start() {
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon \
+		--start --user "${SUBSONIC_USER}" --name subsonic \
+		--env HOME="${SUBSONIC_HOME}" --exec /usr/bin/subsonic \
+		--nicelevel "${NICELEVEL}" \
+		-- --pidfile="${PIDFILE}" \
+		--home="${SUBSONIC_HOME}" \
+		--host="${SUBSONIC_HOST}" \
+		--port="${SUBSONIC_PORT}" \
+		--https-port="${SUBSONIC_HTTPS_PORT}" \
+		--context-path="${SUBSONIC_CONTEXT_PATH}" \
+		--max-memory="${SUBSONIC_MAX_MEMORY}" \
+		--default-music-folder="${SUBSONIC_DEFAULT_MUSIC_FOLDER}" \
+		--default-podcast-folder="${SUBSONIC_DEFAULT_PODCAST_FOLDER}" \
+		--default-playlist-folder="${SUBSONIC_DEFAULT_PLAYLIST_FOLDER}" \
+		${SUBSONIC_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --user "${SUBSONIC_USER}" \
+		--pidfile "${PIDFILE}" \
+		--wait 30000 \
+		--progress
+	eend $?
+}

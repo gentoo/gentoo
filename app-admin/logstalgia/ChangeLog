@@ -1,0 +1,25 @@
+# ChangeLog for app-admin/logstalgia
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/logstalgia/ChangeLog,v 1.4 2015/06/07 07:17:53 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*logstalgia-1.0.6 (23 Apr 2015)
+
+  23 Apr 2015; Sergey Popov <pinkbyte@gentoo.org> +logstalgia-1.0.6.ebuild:
+  Version bump, wrt bug #541562. Thanks to Jesse Adelman <jesse AT
+  boldandbusted.com> for discovering this issue
+
+*logstalgia-1.0.3-r1 (09 Apr 2013)
+
+  09 Apr 2013; Sergey Popov <pinkbyte@gentoo.org> -logstalgia-1.0.3.ebuild,
+  +logstalgia-1.0.3-r1.ebuild:
+  Revbump, adding subslot operator for media-libs/libpng dependency
+
+*logstalgia-1.0.3 (07 Dec 2012)
+
+  07 Dec 2012; Sergey Popov <pinkbyte@gentoo.org> +logstalgia-1.0.3.ebuild,
+  +metadata.xml:
+  Initial import from sunrise with my fixes, wrt bug #242414. Thanks to
+  everyone, who worked on this ebuild

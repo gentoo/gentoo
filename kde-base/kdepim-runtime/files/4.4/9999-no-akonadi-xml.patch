@@ -1,0 +1,11 @@
+diff -ruN kdepim-runtime-4.4.11.1.orig/CMakeLists.txt kdepim-runtime-4.4.11.1/CMakeLists.txt
+--- kdepim-runtime-4.4.11.1.orig/CMakeLists.txt	2011-04-21 15:41:44.000000000 +0200
++++ kdepim-runtime-4.4.11.1/CMakeLists.txt	2013-12-15 14:29:33.078294758 +0100
+@@ -102,7 +102,6 @@
+ ############### Now, we add the components ###############
+ 
+ add_subdirectory(libkdepim-copy)
+-add_subdirectory(xml)
+ add_subdirectory(resourcetester)
+ add_subdirectory(resources)
+ add_subdirectory(agents)

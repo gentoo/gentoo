@@ -1,0 +1,236 @@
+# ChangeLog for net-misc/networkmanager-vpnc
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/networkmanager-vpnc/ChangeLog,v 1.48 2015/05/27 20:33:25 pacho Exp $
+
+  27 May 2015; Pacho Ramos <pacho@gentoo.org> networkmanager-vpnc-1.0.2.ebuild:
+  Newer vpnc is needed (#549038)
+
+  17 May 2015; Agostino Sarubbo <ago@gentoo.org>
+  networkmanager-vpnc-1.0.2.ebuild:
+  Stable for x86, wrt bug #545980
+
+  17 May 2015; Agostino Sarubbo <ago@gentoo.org>
+  networkmanager-vpnc-1.0.2.ebuild:
+  Stable for amd64, wrt bug #545980
+
+*networkmanager-vpnc-1.0.2 (17 May 2015)
+
+  17 May 2015; Pacho Ramos <pacho@gentoo.org> +networkmanager-vpnc-1.0.2.ebuild:
+  Version bump
+
+  15 Mar 2015; Pacho Ramos <pacho@gentoo.org> networkmanager-vpnc-1.0.0.ebuild:
+  x86 stable, bug 534012
+
+  14 Mar 2015; Pacho Ramos <pacho@gentoo.org> networkmanager-vpnc-1.0.0.ebuild:
+  amd64 stable, bug 534012
+
+*networkmanager-vpnc-1.0.0 (10 Jan 2015)
+
+  10 Jan 2015; Pacho Ramos <pacho@gentoo.org> +networkmanager-vpnc-1.0.0.ebuild:
+  Version bump
+
+  19 Dec 2014; Pacho Ramos <pacho@gentoo.org>
+  networkmanager-vpnc-0.9.10.0.ebuild:
+  amd64 stable, bug 529964
+
+  18 Dec 2014; Pacho Ramos <pacho@gentoo.org>
+  networkmanager-vpnc-0.9.10.0.ebuild:
+  x86 stable, bug 529964
+
+*networkmanager-vpnc-0.9.10.0 (23 Sep 2014)
+
+  23 Sep 2014; Pacho Ramos <pacho@gentoo.org>
+  +networkmanager-vpnc-0.9.10.0.ebuild:
+  Version bump, drop old
+
+  24 Jun 2014; Alexandre Rostovtsev <tetromino@gentoo.org>
+  networkmanager-vpnc-0.9.8.6.ebuild:
+  Missing libgnome-keyring dependency (bug #514712, thanks to tka).
+
+  27 Apr 2014; Pacho Ramos <pacho@gentoo.org>
+  -networkmanager-vpnc-0.9.6.0.ebuild, -networkmanager-vpnc-0.9.8.2.ebuild:
+  drop old
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org>
+  networkmanager-vpnc-0.9.8.6.ebuild:
+  x86 stable, bug #478252
+
+  01 Dec 2013; Markus Meier <maekke@gentoo.org>
+  networkmanager-vpnc-0.9.8.6.ebuild:
+  add ~arm, bug #488574
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org>
+  networkmanager-vpnc-0.9.8.6.ebuild:
+  amd64 stable, bug #478252
+
+*networkmanager-vpnc-0.9.8.6 (16 Sep 2013)
+
+  16 Sep 2013; Alexandre Rostovtsev <tetromino@gentoo.org>
+  networkmanager-vpnc-0.9.6.0.ebuild, networkmanager-vpnc-0.9.8.2.ebuild,
+  +networkmanager-vpnc-0.9.8.6.ebuild:
+  Version bump, update license.
+
+  16 Jun 2013; Pacho Ramos <pacho@gentoo.org>
+  -networkmanager-vpnc-0.9.8.0.ebuild, metadata.xml:
+  Drop old, gnome team will take this
+
+*networkmanager-vpnc-0.9.8.2 (10 Jun 2013)
+
+  10 Jun 2013; Pacho Ramos <pacho@gentoo.org>
+  +networkmanager-vpnc-0.9.8.2.ebuild, -networkmanager-vpnc-0.9.4.0.ebuild:
+  Version bump, drop old
+
+*networkmanager-vpnc-0.9.8.0 (07 Apr 2013)
+
+  07 Apr 2013; Pacho Ramos <pacho@gentoo.org>
+  +networkmanager-vpnc-0.9.8.0.ebuild:
+  Version bump for Gnome 3.8
+
+  03 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #333419
+
+  27 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  networkmanager-vpnc-0.9.6.0.ebuild:
+  Stable for x86, wrt bug #448006
+
+  27 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  networkmanager-vpnc-0.9.6.0.ebuild:
+  Stable for amd64, wrt bug #448006
+
+  24 Jan 2013; Alexandre Rostovtsev <tetromino@gentoo.org> metadata.xml:
+  Add myself to maintainer list to reflect reality.
+
+  07 Oct 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer as talked with him.
+
+*networkmanager-vpnc-0.9.6.0 (13 Sep 2012)
+
+  13 Sep 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -networkmanager-vpnc-0.8.2.ebuild, -networkmanager-vpnc-0.9.0.ebuild,
+  -networkmanager-vpnc-0.9.2.0.ebuild, +networkmanager-vpnc-0.9.6.0.ebuild:
+  Version bump, drop old.
+
+  17 Aug 2012; Johannes Huber <johu@gentoo.org>
+  networkmanager-vpnc-0.9.4.0.ebuild:
+  Stable for x86, wrt bug #430370
+
+  16 Aug 2012; Agostino Sarubbo <ago@gentoo.org>
+  networkmanager-vpnc-0.9.4.0.ebuild:
+  Stable for amd64, wrt bug #430370
+
+  14 Aug 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  networkmanager-vpnc-0.8.2.ebuild, networkmanager-vpnc-0.9.0.ebuild,
+  networkmanager-vpnc-0.9.2.0.ebuild, networkmanager-vpnc-0.9.4.0.ebuild:
+  Renamed 'gnome' USE flag to 'gtk', since non-gnome users probably want it too
+  (bug #427406, thanks to Alex Brandt).
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  networkmanager-vpnc-0.8.2.ebuild, networkmanager-vpnc-0.9.0.ebuild,
+  networkmanager-vpnc-0.9.2.0.ebuild, networkmanager-vpnc-0.9.4.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*networkmanager-vpnc-0.9.4.0 (27 Mar 2012)
+
+  27 Mar 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +networkmanager-vpnc-0.9.4.0.ebuild:
+  Version bump for the 0.9.4 series.
+
+  28 Nov 2011; Pacho Ramos <pacho@gentoo.org>
+  networkmanager-vpnc-0.9.2.0.ebuild:
+  Drop DEPRECATED flags, bug #384987
+
+*networkmanager-vpnc-0.9.2.0 (25 Nov 2011)
+
+  25 Nov 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +networkmanager-vpnc-0.9.2.0.ebuild:
+  Version bump to the 0.9.2 release; mostly UI improvements. Skip test that
+  requires a specific locale to be installed (other tests pass).
+
+  03 Oct 2011; Pacho Ramos <pacho@gentoo.org> networkmanager-vpnc-0.8.2.ebuild:
+  Drop DEPRECATED flags, bug #384987
+
+*networkmanager-vpnc-0.9.0 (23 Aug 2011)
+
+  23 Aug 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  -networkmanager-vpnc-0.8.ebuild, -networkmanager-vpnc-0.8.1.ebuild,
+  -networkmanager-vpnc-0.9_rc2.ebuild, +networkmanager-vpnc-0.9.0.ebuild:
+  Bump to 0.9, remove old
+
+  16 Aug 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  networkmanager-vpnc-0.9_rc2.ebuild:
+  Fix SRC_URI, silly NM versioning
+
+*networkmanager-vpnc-0.9_rc2 (15 Aug 2011)
+
+  15 Aug 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  +networkmanager-vpnc-0.9_rc2.ebuild, metadata.xml:
+  Bump to 0.9_rc2, from gnome overlay for NM 0.9
+
+  29 Mar 2011; Christoph Mende <angelos@gentoo.org>
+  networkmanager-vpnc-0.8.ebuild, networkmanager-vpnc-0.8.1.ebuild,
+  networkmanager-vpnc-0.8.2.ebuild:
+  Fix gtk+ slot deps
+
+*networkmanager-vpnc-0.8.2 (10 Nov 2010)
+
+  10 Nov 2010; Robert Piasek <dagger@gentoo.org>
+  +networkmanager-vpnc-0.8.2.ebuild:
+  add version 0.8.2
+
+*networkmanager-vpnc-0.8.1 (28 Jul 2010)
+
+  28 Jul 2010; Robert Piasek <dagger@gentoo.org>
+  -networkmanager-vpnc-0.7.999.ebuild, +networkmanager-vpnc-0.8.1.ebuild:
+  Version bump to 0.8.1. Removed 0.8 RC
+
+*networkmanager-vpnc-0.8 (26 Feb 2010)
+
+  26 Feb 2010; Robert Piasek <dagger@gentoo.org>
+  +networkmanager-vpnc-0.8.ebuild:
+  Version bump for VPNC's plugin for NetworkManager 0.8
+
+*networkmanager-vpnc-0.7.999 (28 Jan 2010)
+
+  28 Jan 2010; Nirbheek Chauhan <nirbheek@gentoo.org>
+  +networkmanager-vpnc-0.7.999.ebuild:
+  Bump to 0.7.999 (masked), goes with networkmanager-0.7.99
+
+  18 Jan 2010; Robert Buchholz <rbu@gentoo.org> metadata.xml:
+  Dropping maintenance
+
+*networkmanager-vpnc-0.7.2 (02 Dec 2009)
+
+  02 Dec 2009; Robert Piasek <dagger@gentoo.org>
+  -networkmanager-vpnc-0.7.0.ebuild, +networkmanager-vpnc-0.7.2.ebuild:
+  Version bump for NetworkManager's VPNC plugin
+
+*networkmanager-vpnc-0.7.1 (22 Apr 2009)
+
+  22 Apr 2009; Robert Buchholz <rbu@gentoo.org>
+  networkmanager-vpnc-0.6.4_p20070621.ebuild,
+  networkmanager-vpnc-0.7.0.ebuild, +networkmanager-vpnc-0.7.1.ebuild:
+  Version bump by Robert Piasek (bugs 266184).
+  Hard-code NM minor dependency.
+
+  05 Dec 2008; Robert Buchholz <rbu@gentoo.org> metadata.xml:
+  Add Robert Piasek to metadata
+
+*networkmanager-vpnc-0.7.0 (04 Dec 2008)
+
+  04 Dec 2008; Tomas Chvatal <scarabeus@gentoo.org>
+  networkmanager-vpnc-0.6.4_p20070621.ebuild,
+  +networkmanager-vpnc-0.7.0.ebuild:
+  New version. Thanks to robert.piasek@member.fsf.org for ebuild. Fix
+  quoting in old ebuild.
+
+  24 Mar 2008; Mart Raudsepp <leio@gentoo.org>
+  networkmanager-vpnc-0.6.4_p20070621.ebuild:
+  Fix build with newer intltool. Noticed by Priit Laes
+
+*networkmanager-vpnc-0.6.4_p20070621 (23 Aug 2007)
+
+  23 Aug 2007; Robert Buchholz <rbu@gentoo.org>
+  +files/networkmanager-vpnc-0.6.4_p20070621-service-name.patch,
+  +files/nm-vpnc-dbus_conf.patch, +files/nm-vpnc-path.patch, +metadata.xml,
+  +networkmanager-vpnc-0.6.4_p20070621.ebuild:
+  Initial import to tree. Ebuild base by Stephen Klimaszewski

@@ -1,0 +1,237 @@
+# ChangeLog for media-tv/tvbrowser
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-tv/tvbrowser/ChangeLog,v 1.45 2015/05/31 00:56:25 monsieurp Exp $
+
+*tvbrowser-9999 (31 May 2015)
+
+  31 May 2015; Patrice Clement <monsieurp@gentoo.org>
+  +files/tvbrowser-9999-build.xml, +tvbrowser-9999.ebuild:
+  Introduce live Subversion ebuild to the tree. Fix bug 300658.
+
+  30 May 2015; Johannes Huber <johu@gentoo.org> metadata.xml:
+  Remove myself as maintainer.
+
+*tvbrowser-3.4.1.0 (24 Mar 2015)
+
+  24 Mar 2015; Patrice Clement <monsieurp@gentoo.org>
+  +files/3.4.1.0-build.xml.patch, +files/3.4.1.0-remove-registrykey.patch,
+  +tvbrowser-3.4.1.0.ebuild, tvbrowser-3.2.1-r1.ebuild, tvbrowser-3.4.ebuild:
+  Version bump. Fix bug 543272.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> tvbrowser-3.2.1-r1.ebuild,
+  tvbrowser-3.4.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*tvbrowser-3.4 (12 Jul 2014)
+
+  12 Jul 2014; Johann Schmitz <ercpe@gentoo.org> +files/3.4-build.xml.patch,
+  +files/3.4-remove-registrykey.patch, +tvbrowser-3.4.ebuild:
+  Version bump of tvbrowser (bug #476594); based on work by Small_Penguin
+
+  16 Aug 2013; Tom Wijsman <TomWij@gentoo.org> -tvbrowser-3.2.1.ebuild,
+  -tvbrowser-3.2.ebuild:
+  Remove old / broken versions, see bug #451788.
+
+*tvbrowser-3.2.1-r1 (13 Aug 2013)
+
+  13 Aug 2013; Tom Wijsman <TomWij@gentoo.org> +files/tvbrowser-3.2.1-build.xml,
+  +tvbrowser-3.2.1-r1.ebuild, metadata.xml:
+  Revision bump. EAPI 5. Use virtualx for tests. Slotted all dependencies; added
+  swt and test? ( dev-java/ant-junit:0 ) dependency, the latter fixes tests
+  together with setting the test classpath. Renamed src_prepare to java_prepare
+  such that the preparation from the Java eclasses runs. Dropped dependency on
+  class files from build.xml as well as parts that are unnecessary for Linux
+  packaging, including fetching of dependencies. Made use of
+  EANT_GENTOO_CLASSPATH and EANT_TEST_GENTOO_CLASSPATH and build.xml rewriting
+  to simplify java_prepare. Replaced src_compile by EANT_BUILD_TARGET and
+  EANT_DOC_TARGET. Reordered and shortened src_install, moved categories from
+  sed to make_desktop_entry call. Sorted variables. Removed redundancy. Fixing
+  up of dependencies fixes bug #480652 filed by Heiko Baums and Nils Kneuper.
+  Removal of dependency fetching from build.xml fixes bug #451788 filed by Diego
+  Elio Pettenò (flameeyes). Next steps should be unbundling as well as bumping
+  more dependencies (filed bug #480922 for this purpose), perhaps best done as
+  part of the next version bump.
+
+*tvbrowser-3.2.1 (12 Nov 2012)
+
+  12 Nov 2012; Johannes Huber <johu@gentoo.org> +tvbrowser-3.2.1.ebuild,
+  -tvbrowser-3.1.ebuild:
+  Version bump, remove old.
+
+*tvbrowser-3.2 (28 Oct 2012)
+
+  28 Oct 2012; Johannes Huber <johu@gentoo.org> +tvbrowser-3.2.ebuild:
+  Version bump.
+
+  13 Apr 2012; Ulrich Müller <ulm@gentoo.org> tvbrowser-3.1.ebuild:
+  Move EAPI assignment to top of ebuild, bug 411875.
+
+*tvbrowser-3.1 (07 Feb 2012)
+
+  07 Feb 2012; Johannes Huber <johu@gentoo.org> +tvbrowser-3.1.ebuild,
+  -tvbrowser-2.7.1.ebuild, -tvbrowser-2.7.4.ebuild:
+  Version bump wrt bug #313053. Initial ebuild by Robert Schedel
+  <r.schedel@yahoo.de>, changed by me. Fixes bug #298664 too. Punt jurassic
+  versions.
+
+  27 Jan 2012; Johannes Huber <johu@gentoo.org> metadata.xml:
+  Take package over. Remove proxy maintainer and add myself.
+
+  16 Nov 2009; Matthias Schwarzott <zzam@gentoo.org>
+  -files/tvbrowser-2.1-makefiles.patch, -tvbrowser-2.2.1.ebuild,
+  -files/tvbrowser-2.2.1-makefiles.patch, -tvbrowser-2.5.ebuild,
+  -tvbrowser-2.5-r1.ebuild, -tvbrowser-2.5.2.ebuild,
+  -files/tvbrowser-2.5.2_buildxml.patch,
+  -files/tvbrowser-2.5.2_noWin32.patch, -tvbrowser-2.5.3.ebuild,
+  -files/tvbrowser-2.5.3_buildxml.patch,
+  -files/tvbrowser-2.5.3_noWin32.patch,
+  -files/tvbrowser-2.5-makefiles.patch,
+  -files/tvbrowser-2.5_Localizer.patch, -files/tvbrowser-2.5_buildxml.patch,
+  -files/tvbrowser-2.5_noWin32.patch, -tvbrowser-2.6.2.ebuild,
+  -tvbrowser-2.6.3.ebuild, -files/tvbrowser-2.6._Localizer.patch,
+  tvbrowser-2.7.1.ebuild:
+  Cleanup.
+
+*tvbrowser-2.7.4 (16 Nov 2009)
+
+  16 Nov 2009; Matthias Schwarzott <zzam@gentoo.org>
+  +tvbrowser-2.7.4.ebuild:
+  Version bumped. Bug #258280.
+
+*tvbrowser-2.7.1 (08 Nov 2008)
+
+  08 Nov 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +tvbrowser-2.7.1.ebuild:
+  Added ebuild from Bug 229087 with some cleanups.
+
+  22 Oct 2008; Miroslav Šulc <fordfrog@gentoo.org> tvbrowser-2.5.2.ebuild,
+  tvbrowser-2.5.3.ebuild, tvbrowser-2.6.2.ebuild:
+  Migrated to EAPI-1 and restricted to dev-java/poi:0 because of
+  incompatibility with dev-java/poi-3.2
+
+*tvbrowser-2.6.3 (22 Jan 2008)
+
+  22 Jan 2008; Vlastimil Babka <caster@gentoo.org> +tvbrowser-2.6.3.ebuild:
+  Version bump, bug #197703. Prevent absorbing dependencies in tvbrowser's
+  jars. Use system skinlf again, remove some unneeded deps.
+
+  13 Jan 2008; Joerg Bornkessel <hd_brummy@gentoo.org>
+  files/tvbrowser-2.6._Localizer.patch:
+  fixed wrong file format unix/dos in patch
+
+  13 Jan 2008; Joerg Bornkessel <hd_brummy@gentoo.org>
+  tvbrowser-2.6.2.ebuild:
+  typo fixed
+
+*tvbrowser-2.6.2 (13 Jan 2008)
+
+  13 Jan 2008; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/tvbrowser-2.6._Localizer.patch, +tvbrowser-2.6.2.ebuild:
+  version bump; bug 197703
+
+  10 Jan 2008; Vlastimil Babka <caster@gentoo.org> tvbrowser-2.2.1.ebuild,
+  tvbrowser-2.5.ebuild, tvbrowser-2.5-r1.ebuild, tvbrowser-2.5.2.ebuild,
+  tvbrowser-2.5.3.ebuild:
+  Restrict junit dependency.
+
+  04 Jan 2008; Matthias Schwarzott <zzam@gentoo.org> metadata.xml:
+  Assigned package to vdr-project.
+
+  19 Dec 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  -tvbrowser-2.1.ebuild:
+  Removed gen1 version.
+
+  27 Nov 2007; Matthias Schwarzott <zzam@gentoo.org> tvbrowser-2.1.ebuild,
+  tvbrowser-2.2.1.ebuild, tvbrowser-2.5.ebuild, tvbrowser-2.5-r1.ebuild:
+  Fixed quoting.
+
+  15 Nov 2007; Petteri Räty <betelgeuse@gentoo.org> tvbrowser-2.5.2.ebuild,
+  tvbrowser-2.5.3.ebuild:
+  Fix dev-java/xerces dependency so that it doesn't match multiple slots.
+
+*tvbrowser-2.5.3 (30 Jul 2007)
+
+  30 Jul 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/tvbrowser-2.5.3_buildxml.patch,
+  +files/tvbrowser-2.5.3_noWin32.patch, +tvbrowser-2.5.3.ebuild:
+  Version bumped, bug #186824.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; tvbrowser-2.1.ebuild,
+  tvbrowser-2.2.1.ebuild, tvbrowser-2.5.ebuild, tvbrowser-2.5-r1.ebuild:
+  Drop virtual/x11 references.
+
+  18 May 2007; Matthias Schwarzott <zzam@gentoo.org> metadata.xml:
+  Changing herd to java.
+
+  29 Apr 2007; Matthias Schwarzott <zzam@gentoo.org> tvbrowser-2.5.2.ebuild:
+  Adding desktop entry, requested by Bug #176404.
+
+  28 Apr 2007; Vlastimil Babka <caster@gentoo.org> tvbrowser-2.5.2.ebuild:
+  Raise dev-java/skinlf dependency to >=6.7 which fixes bug #170361.
+
+  27 Mar 2007; Petteri Räty <betelgeuse@gentoo.org> tvbrowser-2.5.2.ebuild:
+  Ebuild cleanup.
+
+*tvbrowser-2.5.2 (27 Mar 2007)
+
+  27 Mar 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/tvbrowser-2.5.2_buildxml.patch,
+  +files/tvbrowser-2.5.2_noWin32.patch, +tvbrowser-2.5.2.ebuild:
+  Proxy commit for Mirko Günther: Version bumped. Cleanup of bundled jars.
+  Register lib instead of manually tweaking the libpath. Bug #170947.
+
+*tvbrowser-2.5-r1 (11 Mar 2007)
+
+  11 Mar 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/tvbrowser-2.5_Localizer.patch, +tvbrowser-2.5-r1.ebuild:
+  Now systray icon works, Bug #170364. Country options can be changed, Bug
+  #170363. Thanks to Mirko Günther for the changes.
+
+  30 Jan 2007; Steve Dibb <beandog@gentoo.org> tvbrowser-2.2.1.ebuild:
+  Add ~amd64, bug 151858
+
+*tvbrowser-2.5 (09 Jan 2007)
+
+  09 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/tvbrowser-2.5-makefiles.patch, +files/tvbrowser-2.5_buildxml.patch,
+  +files/tvbrowser-2.5_noWin32.patch, metadata.xml, +tvbrowser-2.5.ebuild:
+  Updated to Version 2.5, thanks to ReneGart, added him as proxied maintainer.
+
+  06 Jan 2007; Matthias Schwarzott <zzam@gentoo.org> tvbrowser-2.1.ebuild,
+  tvbrowser-2.2.1.ebuild:
+  Converted to elog.
+
+  04 Jan 2007; Matthias Schwarzott <zzam@gentoo.org> tvbrowser-2.2.1.ebuild:
+  Now use edos2unix from eutils.eclass
+
+  04 Jan 2007; Matthias Schwarzott <zzam@gentoo.org> tvbrowser-2.1.ebuild,
+  tvbrowser-2.2.1.ebuild:
+  Added WANT_AUTO* (Flameeyes), removed jikes use-flag (Caster).
+
+  20 Oct 2006; Matthias Schwarzott <zzam@gentoo.org> tvbrowser-2.2.1.ebuild:
+  Readded the allthemes SRC_URI, due to Bernd Pachur <valirion@thybaria.de>,
+  Bug #151958.
+
+*tvbrowser-2.2.1 (18 Oct 2006)
+
+  18 Oct 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +files/tvbrowser-2.2.1-makefiles.patch, +tvbrowser-2.2.1.ebuild:
+  Version bumped. This needs a load of new depends. Thanks to spiralvoice
+  <spiralvoice@hotmail.com> for noticing, Bug #135554. Removed amd64-keyword
+  until dependencies are keyworded.
+
+  02 Feb 2006; Patrick McLean <chutzpah@gentoo.org> tvbrowser-2.1.ebuild:
+  Add ~amd64 keyword (but #120087) and port to modular X. The dependencies for
+  modular X are based on a ldd of the Java binary libraries as I can't simply
+  check the links as is normally done since this is a Java application. Also
+  added "themes" to IUSE.
+
+  24 Jan 2006; Matthias Schwarzott <zzam@gentoo.org> tvbrowser-2.1.ebuild:
+  Make ebuild work with other architectures than x86
+
+*tvbrowser-2.1 (22 Jan 2006)
+
+  22 Jan 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +files/tvbrowser-2.1-makefiles.patch, +metadata.xml,
+  +tvbrowser-2.1.ebuild:
+  Inital import of ebuild (ebuild slightly based on the one from Bug #104792)

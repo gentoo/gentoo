@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst prepare setup
+DEPEND=virtual/krb5 =www-servers/apache-2* virtual/pkgconfig
+DESCRIPTION=An Apache authentication module using Kerberos
+EAPI=5
+HOMEPAGE=http://modauthkerb.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD openafs-krb5-a HPND
+RDEPEND=virtual/krb5 =www-servers/apache-2*
+SLOT=0
+SRC_URI=mirror://sourceforge/modauthkerb/mod_auth_kerb-5.4.tar.gz
+_eclasses_=apache-module	5c4c90da2d68c2dc8391666824f1293c	depend.apache	1a38534d3f755d1ab1d92ce120bd7dbd	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=00f75267d808655f0824fb347d5d5a0d

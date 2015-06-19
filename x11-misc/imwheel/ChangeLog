@@ -1,0 +1,90 @@
+# ChangeLog for x11-misc/imwheel
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/imwheel/ChangeLog,v 1.22 2010/08/27 02:58:46 jer Exp $
+
+*imwheel-1.0.0_pre13_p20100827 (27 Aug 2010)
+
+  27 Aug 2010; Jeroen Roovers <jer@gentoo.org>
+  +imwheel-1.0.0_pre13_p20100827.ebuild:
+  Version bump.
+
+  07 Jan 2008; Krzysiek Pawlik <nelchael@gentoo.org>
+  imwheel-1.0.0_pre12.ebuild:
+  Add missing x11-proto/inputproto to DEPEND, see bug #204597.
+
+  22 Jul 2007; Santiago M. Mola <coldwind@gentoo.org>
+  imwheel-1.0.0_pre12.ebuild:
+  virtual/x11 removed.
+
+  06 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  15 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  -files/imwheel-1.0.0_pre2-gentoo.diff, -imwheel-1.0.0_pre11.ebuild,
+  imwheel-1.0.0_pre12.ebuild:
+  Fix DEPEND for modular X (bug #117110), removed old version.
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  imwheel-1.0.0_pre12.ebuild:
+  Mark 1.0.0_pre12 stable on alpha
+
+  19 Jun 2005; Jonathan Smith <smithj@gentoo.org>
+  -imwheel-1.0.0_pre2.ebuild:
+  old ebuild cleanup
+
+  14 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  imwheel-1.0.0_pre12.ebuild:
+  stable on amd64
+
+  13 Sep 2004; Brandon Hale <tseng@gentoo.org> imwheel-1.0.0_pre12.ebuild:
+  Stable on x86.
+
+*imwheel-1.0.0_pre12 (12 Sep 2004)
+
+  12 Sep 2004; Brandon Hale <tseng@gentoo.org> +imwheel-1.0.0_pre12.ebuild:
+  Version bump for security bug #61135
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  imwheel-1.0.0_pre11.ebuild, imwheel-1.0.0_pre2.ebuild:
+  Masked imwheel-1.0.0_pre2.ebuild stable for ppc
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  imwheel-1.0.0_pre11.ebuild:
+  Masked imwheel-1.0.0_pre11.ebuild stable for ppc
+
+  17 Aug 2004; Aron Griffis <agriffis@gentoo.org> imwheel-1.0.0_pre11.ebuild:
+  add ~alpha #60071
+
+  28 Jun 2004; Aron Griffis <agriffis@gentoo.org> imwheel-1.0.0_pre11.ebuild:
+  add sed-4 dep
+
+  19 Jun 2004; <pyrania@gentoo.org> -files/imwheel-1.0.0_pre11-gentoo.diff,
+  imwheel-1.0.0_pre11.ebuild:
+  Closing bug #53866.
+
+*imwheel-1.0.0_pre11 (13 Jun 2004)
+
+  13 Jun 2004; <pyrania@gentoo.org> +files/imwheel-1.0.0_pre11-gentoo.diff,
+  +imwheel-1.0.0_pre11.ebuild:
+  Version bump. Closing bug #51236.
+
+  31 May 2004; Douglas Russell,,, <puggy@gentoo.org>
+  imwheel-1.0.0_pre2.ebuild:
+  Keyworded ~ppc
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> imwheel-1.0.0_pre2.ebuild:
+  Add inherit eutils
+
+  11 Apr 2004; Markus Nigbur <pyrania@gentoo.org> imwheel-1.0.0_pre2.ebuild:
+  Go epatch!
+
+  03 Nov 2003; Abhishek Amit <abhishek@gentoo.org> metadata.xml:
+  Added metadata.xml
+
+*imwheel-1.0.0_pre2 (13 Nov 2002)
+
+  13 Nov 2002; Nick Hadaway <raker@gentoo.org>
+  imwheel-1.0.0_pre2.ebuild, files/digest-imwheel-1.0.0_pre2,
+  files/imwheel-1.0.0_pre2-gentoo.diff :
+  New ebuild.
+ 

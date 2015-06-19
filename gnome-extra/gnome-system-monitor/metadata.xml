@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>gnome</herd>
+<use>
+	<flag name="systemd">Display <pkg>sys-apps/systemd</pkg> metadata, e.g.
+		unit names, for running processes</flag>
+</use>
+</pkgmetadata>

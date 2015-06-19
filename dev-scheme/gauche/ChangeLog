@@ -1,0 +1,426 @@
+# ChangeLog for dev-scheme/gauche
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-scheme/gauche/ChangeLog,v 1.46 2015/06/09 17:31:40 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  07 Sep 2014; Akinori Hattori <hattya@gentoo.org> gauche-0.9.3.3.ebuild:
+  update to EAPI 5
+
+*gauche-0.9.4 (07 Sep 2014)
+
+  07 Sep 2014; Akinori Hattori <hattya@gentoo.org> +gauche-0.9.4.ebuild,
+  files/gauche-gauche.m4.diff:
+  new upstream release
+
+  10 Jul 2012; Akinori Hattori <hattya@gentoo.org> -gauche-0.9.2.ebuild:
+  remove old ebuild
+
+  10 Jul 2012; Akinori Hattori <hattya@gentoo.org> gauche-0.9.3.3.ebuild:
+  ia64 stable
+
+  10 Jul 2012; Akinori Hattori <hattya@gentoo.org> gauche-0.9.3.3.ebuild:
+  x86 stable
+
+  10 Jul 2012; Akinori Hattori <hattya@gentoo.org> metadata.xml:
+  format metadata.xml
+
+  08 Jul 2012; Akinori Hattori <hattya@gentoo.org> gauche-0.9.2.ebuild,
+  gauche-0.9.3.3.ebuild:
+  keyword ~alpha wrt bug #316469
+
+  03 Jun 2012; Akinori Hattori <hattya@gentoo.org> gauche-0.9.3.3.ebuild:
+  fixes parallel make race condition.
+
+*gauche-0.9.3.3 (02 Jun 2012)
+
+  02 Jun 2012; Akinori Hattori <hattya@gentoo.org> -gauche-0.9.3.2.ebuild,
+  -files/gauche-0.9.3.2-Makefile.diff, +gauche-0.9.3.3.ebuild,
+  +files/gauche-0.9.3.3-gauche.threads.diff:
+  new upstream release.
+
+  26 May 2012; Akinori Hattori <hattya@gentoo.org> -gauche-0.9.1.ebuild,
+  -files/gauche-0.9.1-bzip2-info.diff, -files/gauche-0.9.1-list-queue.diff,
+  -files/gauche-0.9.1-number.diff, -files/gauche-0.9.1-vminexact.diff,
+  gauche-0.9.2.ebuild:
+  stable on ia64.
+
+  26 May 2012; Akinori Hattori <hattya@gentoo.org> gauche-0.9.2.ebuild:
+  stable on x86.
+
+*gauche-0.9.3.2 (26 May 2012)
+
+  26 May 2012; Akinori Hattori <hattya@gentoo.org> +gauche-0.9.3.2.ebuild,
+  +files/gauche-0.9.3.2-Makefile.diff, +files/gauche-rfc.tls.diff:
+  new upstream release.
+
+  13 Aug 2011; Akinori Hattori <hattya@gentoo.org> gauche-0.9.1.ebuild:
+  update to EAPI 4.
+
+  13 Aug 2011; Akinori Hattori <hattya@gentoo.org> -gauche-0.8.14.ebuild,
+  gauche-0.9.1.ebuild, -files/gauche-runpath.diff:
+  stable on ia64.
+
+  13 Aug 2011; Akinori Hattori <hattya@gentoo.org> -gauche-0.9-r2.ebuild,
+  gauche-0.9.1.ebuild:
+  stable on x86.
+
+*gauche-0.9.2 (13 Aug 2011)
+
+  13 Aug 2011; Akinori Hattori <hattya@gentoo.org> +gauche-0.9.2.ebuild:
+  new upstream release.
+
+  11 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org> gauche-0.9.1.ebuild:
+  Marked ~ppc64 wrt #316471 by Stephen Lewis <lewis+gentoo@freeshell.org>
+
+  23 May 2011; Akinori Hattori <hattya@gentoo.org> -gauche-0.8.10.ebuild,
+  -files/gauche-0.8.10-stack-trace.diff, gauche-0.8.14.ebuild:
+  stable on ia64.
+
+*gauche-0.9.1 (18 May 2011)
+
+  18 May 2011; Akinori Hattori <hattya@gentoo.org> +gauche-0.9.1.ebuild,
+  +files/gauche-0.9.1-bzip2-info.diff, +files/gauche-0.9.1-list-queue.diff,
+  +files/gauche-0.9.1-number.diff, +files/gauche-0.9.1-vminexact.diff,
+  +files/gauche-ext-ldflags.diff, +files/gauche-rpath.diff,
+  +files/gauche-xz-info.diff:
+  new upstream release.
+
+  18 May 2011; Akinori Hattori <hattya@gentoo.org> -gauche-0.8.13.ebuild,
+  -gauche-0.9-r1.ebuild, files/gauche-gauche.m4.diff,
+  files/gauche-runpath.diff:
+  clean up.
+
+  14 Nov 2010; Justin Lecher <jlec@gentoo.org> gauche-0.8.10.ebuild,
+  gauche-0.8.13.ebuild, gauche-0.8.14.ebuild:
+  Some QA on empty lines, quoting, ebuild style
+
+*gauche-0.9-r2 (14 Nov 2010)
+
+  14 Nov 2010; Justin Lecher <jlec@gentoo.org> gauche-0.9-r1.ebuild,
+  +gauche-0.9-r2.ebuild:
+  Imported prefix changes from overlay
+
+*gauche-0.9-r1 (06 Oct 2010)
+
+  06 Oct 2010; Tomas Touceda <chiiph@gentoo.org> -gauche-0.9.ebuild,
+  +gauche-0.9-r1.ebuild:
+  Port 0.9 to EAPI 3 and fix it to respect LDFLAGS
+
+*gauche-0.9 (25 Dec 2009)
+
+  25 Dec 2009; Akinori Hattori <hattya@gentoo.org> +gauche-0.9.ebuild:
+  new upstream release.
+
+  25 Dec 2009; Akinori Hattori <hattya@gentoo.org> gauche-0.8.14.ebuild:
+  stable on x86.
+
+  12 Jan 2009; Akinori Hattori <hattya@gentoo.org>
+  -files/gauche-0.8.11-socket-buffering.diff, -files/gauche-dbm.ac.diff,
+  -gauche-0.8.12.ebuild, gauche-0.8.13.ebuild:
+  stable on x86.
+
+*gauche-0.8.14 (12 Jan 2009)
+
+  12 Jan 2009; Akinori Hattori <hattya@gentoo.org> +gauche-0.8.14.ebuild:
+  new upstream release.
+
+  19 Jun 2008; Akinori Hattori <hattya@gentoo.org> -gauche-0.8.9.ebuild,
+  -gauche-0.8.11-r1.ebuild:
+  cleaned out old ebuild(s).
+
+  19 Jun 2008; Akinori Hattori <hattya@gentoo.org> gauche-0.8.12.ebuild:
+  stable on x86.
+
+*gauche-0.8.13 (19 Jun 2008)
+
+  19 Jun 2008; Akinori Hattori <hattya@gentoo.org> +gauche-0.8.13.ebuild:
+  new upstream release.
+
+*gauche-0.8.12 (15 Dec 2007)
+
+  15 Dec 2007; Akinori Hattori <hattya@gentoo.org> +gauche-0.8.12.ebuild:
+  new upstream release.
+
+  08 Oct 2007; Akinori Hattori <hattya@gentoo.org> gauche-0.8.11-r1.ebuild:
+  stable on x86.
+
+  09 Sep 2007; Akinori Hattori <hattya@gentoo.org> gauche-0.8.10.ebuild:
+  stable on ia64.
+
+*gauche-0.8.11-r1 (27 Aug 2007)
+
+  27 Aug 2007; Akinori Hattori <hattya@gentoo.org>
+  +files/gauche-0.8.11-socket-buffering.diff, -gauche-0.8.11.ebuild,
+  +gauche-0.8.11-r1.ebuild:
+  fix of socket buffering bug.
+
+*gauche-0.8.11 (25 Aug 2007)
+
+  25 Aug 2007; Akinori Hattori <hattya@gentoo.org> +gauche-0.8.11.ebuild:
+  new upstream release.
+
+  09 Aug 2007; Akinori Hattori <hattya@gentoo.org> -gauche-0.8.7.ebuild:
+  cleaned out old ebuild.
+
+  09 Aug 2007; Akinori Hattori <hattya@gentoo.org> gauche-0.8.10.ebuild:
+  stable on x86.
+
+  09 Jun 2007; Akinori Hattori <hattya@gentoo.org> gauche-0.8.10.ebuild:
+  fixes bug #110817 and bug #180971.
+
+*gauche-0.8.10 (04 Jun 2007)
+
+  04 Jun 2007; Akinori Hattori <hattya@gentoo.org>
+  +files/gauche-0.8.10-stack-trace.diff, +gauche-0.8.10.ebuild:
+  new upstream release.
+
+  21 Apr 2007; Raúl Porcel <armin76@gentoo.org> gauche-0.8.9.ebuild:
+  ia64 stable
+
+  12 Mar 2007; Akinori Hattori <hattya@gentoo.org>
+  -files/gauche-0.8.8-report-error.diff, -files/gauche-gauche.m4-cc.diff,
+  -files/gauche-gdbm-gentoo.diff, -gauche-0.8.8.ebuild, gauche-0.8.9.ebuild:
+  stable on x86.
+
+  19 Jan 2007; Akinori Hattori <hattya@gentoo.org> gauche-0.8.8.ebuild:
+  stable on x86.
+
+*gauche-0.8.9 (19 Jan 2007)
+
+  19 Jan 2007; Akinori Hattori <hattya@gentoo.org> +gauche-0.8.9.ebuild:
+  new upstream release.
+
+  10 Jan 2007; <marijn@gentoo.org> +files/gauche-0.8.8-report-error.diff,
+  +files/gauche-dbm.ac.diff, +files/gauche-gauche.m4-cc.diff,
+  +files/gauche-gauche.m4.diff, +files/gauche-gdbm-gentoo.diff,
+  +files/gauche-runpath.diff, +metadata.xml, +gauche-0.8.7.ebuild,
+  +gauche-0.8.8.ebuild:
+  Moved from dev-lang/gauche to dev-scheme/gauche.
+
+*gauche-0.8.8 (01 Dec 2006)
+
+  01 Dec 2006; Akinori Hattori <hattya@gentoo.org>
+  +files/gauche-0.8.8-report-error.diff, -gauche-0.8.6-r1.ebuild,
+  +gauche-0.8.8.ebuild:
+  new upstream release.
+
+  14 Jul 2006; Akinori Hattori <hattya@gentoo.org> gauche-0.8.7.ebuild:
+  stable on ia64.
+
+  14 Jul 2006; Akinori Hattori <hattya@gentoo.org> gauche-0.8.7.ebuild:
+  stable on x86.
+
+  14 Jul 2006; Akinori Hattori <hattya@gentoo.org>
+  -files/gauche-aclocal.m4-1.31.diff, -files/gauche-aclocal.m4-cc.diff,
+  +files/gauche-dbm.ac.diff, +files/gauche-gauche.m4.diff,
+  gauche-0.8.7.ebuild:
+  fixes dynamic link problem of dbm.ndbm.
+
+*gauche-0.8.7 (20 Apr 2006)
+
+  20 Apr 2006; Akinori Hattori <hattya@gentoo.org> -gauche-0.8.3.ebuild,
+  -gauche-0.8.5.ebuild, +gauche-0.8.7.ebuild:
+  new upstream release.
+
+  03 Feb 2006; Aron Griffis <agriffis@gentoo.org> gauche-0.8.6-r1.ebuild:
+  Mark 0.8.6-r1 stable on ia64
+
+  16 Nov 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  gauche-0.8.6-r1.ebuild:
+  Marking stable on x86 wrt bug #112577.
+
+*gauche-0.8.6-r1 (16 Nov 2005)
+
+  16 Nov 2005; Akinori Hattori <hattya@gentoo.org>
+  +files/gauche-runpath.diff, -gauche-0.8.6.ebuild, +gauche-0.8.6-r1.ebuild:
+  fixes bug #112577.
+
+*gauche-0.8.6 (13 Nov 2005)
+
+  13 Nov 2005; Akinori Hattori <hattya@gentoo.org>
+  +files/gauche-gauche.m4-cc.diff, +gauche-0.8.6.ebuild:
+  new upstream release.
+
+  13 Nov 2005; Akinori Hattori <hattya@gentoo.org> gauche-0.8.5.ebuild:
+  stable on x86.
+
+  13 Oct 2005; Luis Medinas <metalgod@gentoo.org> gauche-0.8.5.ebuild:
+  Added ~amd64 keyword. Bug #108735.
+
+  24 Jul 2005; Akinori Hattori <hattya@gentoo.org> -gauche-0.8.4.ebuild:
+  0.8.5 is the bug fix release of this.
+
+*gauche-0.8.5 (24 Jul 2005)
+
+  24 Jul 2005; Akinori Hattori <hattya@gentoo.org> +gauche-0.8.5.ebuild:
+  new upstream release.
+
+*gauche-0.8.4 (04 Jun 2005)
+
+  04 Jun 2005; Akinori Hattori <hattya@gentoo.org>
+  -files/gauche-extract-1.13.diff, +files/gauche-aclocal.m4-cc.diff,
+  -gauche-0.8.ebuild, -gauche-0.8.1.ebuild, +gauche-0.8.4.ebuild:
+  new upstream release.
+
+  04 May 2005; Akinori Hattori <hattya@gentoo.org>
+  files/gauche-aclocal.m4-1.31.diff:
+  remove Id. fixes bug #89136.
+
+  23 Apr 2005; Akinori Hattori <hattya@gentoo.org>
+  +files/gauche-aclocal.m4-1.31.diff, gauche-0.8.3.ebuild:
+  fixes bug #89136.
+
+  31 Mar 2005; Aron Griffis <agriffis@gentoo.org> gauche-0.8.3.ebuild:
+  stable on ia64
+
+  26 Jan 2005; Akinori Hattori <hattya@gentoo.org> gauche-0.8.3.ebuild:
+  stable on x86.
+
+  14 Dec 2004; Akinori Hattori <hattya@gentoo.org> gauche-0.8.1.ebuild,
+  gauche-0.8.ebuild:
+  remove RESTRICT=nomirror.
+
+*gauche-0.8.3 (14 Dec 2004)
+
+  14 Dec 2004; Akinori Hattori <hattya@gentoo.org> +gauche-0.8.3.ebuild:
+  new upstream release.
+
+  05 Dec 2004; Jason Wever <weeve@gentoo.org> gauche-0.8.1.ebuild:
+  Added ~sparc keyword.
+
+  17 Oct 2004; Akinori Hattori <hattya@gentoo.org> gauche-0.8.1.ebuild:
+  stable on ia64.
+
+  07 Sep 2004; Akinori Hattori <hattya@gentoo.org> gauche-0.8.1.ebuild:
+  add ~ia64
+
+  07 Sep 2004; Akinori Hattori <hattya@gentoo.org> -gauche-0.7.3.ebuild,
+  -gauche-0.7.4.1.ebuild, -gauche-0.7.4.2.ebuild, gauche-0.8.1.ebuild:
+  cleaned out old ebuilds.
+
+  07 Sep 2004; Akinori Hattori <hattya@gentoo.org> gauche-0.8.1.ebuild:
+  stable on x86.
+
+*gauche-0.8.1 (06 Aug 2004)
+
+  06 Aug 2004; Akinori Hattori <hattya@gentoo.org> +gauche-0.8.1.ebuild:
+  new upstream release.
+
+*gauche-0.8 (11 Jul 2004)
+
+  11 Jul 2004; Akinori Hattori <hattya@gentoo.org> +metadata.xml,
+  +files/gauche-extract-1.13.diff, +files/gauche-gdbm-gentoo.diff,
+  +gauche-0.7.3.ebuild, +gauche-0.7.4.1.ebuild, +gauche-0.7.4.2.ebuild,
+  +gauche-0.8.ebuild:
+  moved from dev-lisp/gauche to dev-lang/gauche.
+
+  04 Jul 2004; Akinori Hattori <hattya@gentoo.org> gauche-0.8.ebuild:
+  marked stable on x86.
+
+  03 Jun 2004; Aron Griffis <agriffis@gentoo.org> gauche-0.7.3.ebuild:
+  Fix use invocation
+
+*gauche-0.8 (26 May 2004)
+
+  26 May 2004; Akinori Hattori <hattya@gentoo.org> gauche-0.8.ebuild:
+  version bump.
+
+  07 Apr 2004; Akinori Hattori <hattya@gentoo.org> gauche-0.7.4.2.ebuild:
+  marked stable on x86.
+
+  01 Apr 2004; Akinori Hattori <hattya@gentoo.org> gauche-0.7.3.ebuild,
+  gauche-0.7.4.1.ebuild:
+  inherit eutils.
+
+  28 Mar 2004; Akinori Hattori <hattya@gentoo.org> gauche-0.7.4.2.ebuild,
+  files/gauche-extract-1.13.diff:
+  added gauche-extract-1.13.diff.
+  this patch will fix a wrong regexp in doc/extract, which is used to
+  generate gauche-refj.texi.
+
+  14 Mar 2004; David Holm <dholm@gentoo.org> gauche-0.7.4.2.ebuild:
+  Added to ~ppc.
+
+*gauche-0.7.4.2 (14 Mar 2004)
+
+  14 Mar 2004; Akinori Hattori <hattya@gentoo.org> gauche-0.7.4.2.ebuild:
+  version bumped.
+
+  21 Feb 2004; Akinori Hattori <hattya@gentoo.org> gauche-0.7.1.ebuild,
+  gauche-0.7.2.ebuild:
+  cleaned out old ebuilds.
+
+  21 Feb 2004; Akinori Hattori <hattya@gentoo.org> gauche-0.7.4.1.ebuild:
+  fixed bug #42233. marked stable on x86.
+
+  20 Feb 2004; Akinori Hattori <hattya@gentoo.org> gauche-0.7.3.ebuild:
+  fixed bug #42233.
+
+  14 Feb 2004; Akinori Hattori <hattya@gentoo.org> gauche-0.7.3.ebuild:
+  Marked stable on x86.
+
+*gauche-0.7.4.1 (06 Feb 2004)
+
+  06 Feb 2004; Akinori Hattori <hattya@gentoo.org> gauche-0.7.4.1.ebuild:
+  Version bumped.
+
+  04 Feb 2004; Akinori Hattori <hattya@gentoo.org> gauche-0.5.7.ebuild,
+  gauche-0.6.ebuild, gauche-0.7.1.ebuild, gauche-0.7.2.ebuild,
+  gauche-0.7.3.ebuild, metadata.xml:
+  Cleaned out old ebuilds. Updated copyright year.
+  I've taken over from karltk.
+
+*gauche-0.7.3 (30 Dec 2003)
+
+  30 Dec 2003; George Shapovalov <george@gentoo.org> gauche-0.7.3.ebuild :
+  new version (#36666), thanks to Andrei Barbu <teval@myrealbox.com> for notification
+
+  04 Nov 2003; Karl Trygve Kalleberg <karltk@gentoo.org> gauche-0.7.2.ebuild:
+  Marked as stable.
+  
+  08 Oct 2003; Karl Trygve Kalleberg <karltk@gentoo.org> 
+  gauche-0.7.2.ebuild:
+  Didn't compile on all boxes with gdbm. Fixes #30569.
+  
+*gauche-0.7.2 (05 Oct 2003)
+
+  05 Oct 2003; Karl Trygve Kalleberg <karltk@gentoo.org> 
+  gauche-0.7.2.ebuild:
+  New upstream version. Fixes #30407.
+  
+  06 Sep 2003; Karl Trygve Kalleberg <karltk@gentoo.org> 
+  gauche-0.6.ebuild, gauche-0.7.1.ebuild:
+  Fails to compile on x86. Unmasked 0.7.1 to cover.
+
+*gauche-0.7.1 (06 Sep 2003)
+
+  06 Sep 2003; Karl Trygve Kalleberg <karltk@gentoo.org> 
+  gauche-0.7.1.ebuild:
+  New upstream version. Fixes #25740.	
+
+*gauche-0.6 (19 Jul 2002)
+
+  07 Dec 2002; Jack Morgan <jmorgan@gentoo.org> gauche-0.5.7.ebuild, gauche-0.6.ebuild :
+  Changed sparc64 to sparc keyword
+
+  19 Jul 2002; Karl Trygve Kalleberg <karltk@gentoo.org> gauche-0.6.ebuild files/digest-gauche-0.6:
+  New upstream version.
+
+*gauche-0.5.7 (12 Jul 2002)
+
+  12 Jul 2002; Karl Trygve Kalleberg <karltk@gentoo.org> gauche-0.5.7.ebuild files/digest-gauche-0.5.7:
+
+  New upstream version. 
+
+  Old version, gauche-0.5.2, removed.
+
+*gauche-0.5.2 (12 Apr 2002)
+
+  12 Apr 2002; Karl Trygve Kalleberg <karltk@gentoo.org> gauche-0.5.2.ebuild files/digest-gauche-0.5.2:
+
+  Gauche is an R5RS Scheme implementation developed to be a handy script 
+  interpreter, which allows programmers and system administrators to write 
+  small to large scripts for their daily chores. Quick startup, built-in 
+  system interface, native multilingual support are some of my goals.

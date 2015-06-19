@@ -1,0 +1,13 @@
+Index: tilda-0.9.6/src/tomboykeybinder.h
+===================================================================
+--- tilda-0.9.6.orig/src/tomboykeybinder.h
++++ tilda-0.9.6/src/tomboykeybinder.h
+@@ -2,7 +2,7 @@
+ #ifndef __TOMBOY_KEY_BINDER_H__
+ #define __TOMBOY_KEY_BINDER_H__
+ 
+-#include <glib/gtypes.h>
++#include <glib.h>
+ 
+ G_BEGIN_DECLS
+ 

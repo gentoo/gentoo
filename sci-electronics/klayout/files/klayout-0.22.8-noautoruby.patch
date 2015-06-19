@@ -1,0 +1,18 @@
+diff -ruN klayout-0.22.8.orig/build.sh klayout-0.22.8/build.sh
+--- klayout-0.22.8.orig/build.sh	2013-06-22 00:43:11.000000000 +0200
++++ klayout-0.22.8/build.sh	2013-10-13 20:13:36.493108910 +0200
+@@ -62,10 +62,10 @@
+ RUBYINCLUDE2="not-used"
+ RUBYLIBFILE=""
+ 
+-RUBY=""
+-if [ "`ruby1.9 -v`" != "" ]; then RUBY="ruby1.9"; fi
+-if [ "`ruby1.8 -v`" != "" ]; then RUBY="ruby1.8"; fi
+-if [ "`ruby -v`" != "" ]; then RUBY="ruby"; fi
++#RUBY=""
++#if [ "`ruby1.9 -v`" != "" ]; then RUBY="ruby1.9"; fi
++#if [ "`ruby1.8 -v`" != "" ]; then RUBY="ruby1.8"; fi
++#if [ "`ruby -v`" != "" ]; then RUBY="ruby"; fi
+ if [ "$RUBY" != "" ]; then
+ 
+   echo "Found ruby interpreter: $RUBY"

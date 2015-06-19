@@ -1,0 +1,56 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-tv/mythtv/files/mythbackend.init,v 1.4 2012/06/30 05:05:10 cardoe Exp $
+
+description="MythTV backend recording daemon"
+extra_commands="resched upnprebuild"
+description_resched="Forces the recording scheduler to update"
+description_upnprebuild="Rebuilds the UPnP media cache"
+
+depend() {
+	# mythbackend doesn't need to run on the same machine that
+	# mysql runs on. so its use for that reason
+	need net
+	use mysql LCDd
+}
+
+start() {
+	[ -z "${MYTHBACKEND_VERBOSE}" ] && \
+		MYTHBACKEND_VERBOSE="general"
+
+	#fixes for bug #101308
+	unset DISPLAY
+	unset SESSION_MANAGER
+
+	# Work around any strange permissions that may be on these files.
+	chown -R mythtv:video /var/log/mythtv/
+	chown -R mythtv:video /home/mythtv/
+
+	ebegin "Starting MythTV Backend"
+	start-stop-daemon --start --quiet --exec /usr/bin/mythbackend \
+                --pidfile /var/run/mythbackend.pid -- \
+		--daemon --pidfile /var/run/mythbackend.pid --user mythtv \
+		--verbose ${MYTHBACKEND_VERBOSE} \
+		--logpath /var/log/mythtv/ \
+		${MYTHBACKEND_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping MythTV Backend"
+	start-stop-daemon --stop --quiet --pidfile=/var/run/mythbackend.pid
+	eend $?
+}
+
+resched() {
+	ebegin "Updating the recording scheduler"
+	/usr/bin/mythbackend --resched
+	eend $?
+}
+
+upnprebuild() {
+	ebegin "Rebuilding UPnP media cache"
+	/usr/bin/mythbackend --upnprebuild
+	eend $?
+}

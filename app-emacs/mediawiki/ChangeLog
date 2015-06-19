@@ -1,0 +1,12 @@
+# ChangeLog for app-emacs/mediawiki
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/mediawiki/ChangeLog,v 1.2 2015/06/09 11:02:00 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+*mediawiki-2.2.4.1 (18 Feb 2014)
+
+  18 Feb 2014; Ulrich Müller <ulm@gentoo.org> +mediawiki-2.2.4.1.ebuild,
+  +files/50mediawiki-gentoo.el, +metadata.xml:
+  Initial import, from Emacs overlay. Ebuild contributed by me.

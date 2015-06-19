@@ -1,0 +1,258 @@
+# ChangeLog for dev-util/ltrace
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/ltrace/ChangeLog,v 1.66 2014/08/27 12:39:46 ago Exp $
+
+  27 Aug 2014; Agostino Sarubbo <ago@gentoo.org> ltrace-0.7.2.ebuild:
+  Stable for ppc, wrt bug #445538
+
+  08 Aug 2014; <mad@gentoo.org> ltrace-0.7.2.ebuild:
+  x86 stable, see bug 445538
+
+  29 May 2014; Jeroen Roovers <jer@gentoo.org> ltrace-0.7.3_p4.ebuild:
+  Re-add ~sparc.
+
+*ltrace-0.7.3_p4 (29 May 2014)
+
+  29 May 2014; Jeroen Roovers <jer@gentoo.org> +ltrace-0.7.3_p4.ebuild:
+  Add an ebuild with Debian patches.
+
+*ltrace-0.7.3 (18 Sep 2013)
+
+  18 Sep 2013; Tim Harder <radhermit@gentoo.org> +ltrace-0.7.3.ebuild:
+  Version bump.
+
+  17 Mar 2013; Agostino Sarubbo <ago@gentoo.org> ltrace-0.7.2.ebuild:
+  Stable for amd64, wrt bug #445538
+
+  17 Feb 2013; Mike Frysinger <vapier@gentoo.org> ltrace-0.7.2.ebuild:
+  Fix automagic depend on libselinux.
+
+  05 Jan 2013; Tim Harder <radhermit@gentoo.org>
+  -files/0.4-cross-compile.patch, -files/ltrace-0.3.31-64bit-fixes.patch,
+  -files/ltrace-0.3.31-gcc4.patch, -ltrace-0.7.1-r1.ebuild,
+  -files/ltrace-0.7.1-libunwind-pkgconfig.patch, -files/0.4-summary.patch:
+  Remove old.
+
+*ltrace-0.7.2 (08 Dec 2012)
+
+  08 Dec 2012; Tim Harder <radhermit@gentoo.org> +ltrace-0.7.2.ebuild:
+  Version bump.
+
+  01 Dec 2012; Tim Harder <radhermit@gentoo.org> -ltrace-0.4-r1.ebuild,
+  -ltrace-0.5.3.ebuild, -ltrace-0.7.1.ebuild:
+  Remove old.
+
+*ltrace-0.7.1-r1 (01 Dec 2012)
+
+  01 Dec 2012; Tim Harder <radhermit@gentoo.org> +ltrace-0.7.1-r1.ebuild,
+  +files/ltrace-0.7.1-libunwind-pkgconfig.patch, metadata.xml:
+  Revision bump. Add debug and unwind use flags. Use pkg-config to detect
+  unwind libraries (fixes bug #445438).
+
+*ltrace-0.7.1 (30 Nov 2012)
+
+  30 Nov 2012; Tim Harder <radhermit@gentoo.org> +ltrace-0.7.1.ebuild:
+  Version bump (bug #432996).
+
+  24 May 2010; Raúl Porcel <armin76@gentoo.org> ltrace-0.5.3.1.ebuild:
+  sparc stable wrt #302471
+
+  26 Mar 2010; Pacho Ramos <pacho@gentoo.org> ltrace-0.5.3.1.ebuild:
+  amd64 stable, bug 302471
+
+  23 Mar 2010; Brent Baude <ranger@gentoo.org> ltrace-0.5.3.1.ebuild:
+  stable ppc, bug 302471
+
+  22 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  ltrace-0.5.3.1.ebuild:
+  x86 stable wrt bug #302471
+
+  27 Jul 2009; Ryan Hill <dirtyepic@gentoo.org> ltrace-0.5.3.1.ebuild,
+  +files/ltrace-0.5.3.1-gcc43-testsuite.patch:
+  Add patch to fix testsuite failures with GCC 4.3. (bug #233958)
+  Add test USE to pull in missing dejagnu dep.
+
+  28 Sep 2008; Raúl Porcel <armin76@gentoo.org> ltrace-0.5.3.1.ebuild:
+  Add ~arm wrt #225275
+
+*ltrace-0.5.3.1 (21 Sep 2008)
+
+  21 Sep 2008; Raúl Porcel <armin76@gentoo.org> +ltrace-0.5.3.1.ebuild:
+  Version bump
+
+  10 Aug 2008; Raúl Porcel <armin76@gentoo.org> ltrace-0.4-r1.ebuild,
+  ltrace-0.5.3.ebuild:
+  Mark -alpha
+
+  11 Apr 2008; Markus Rothe <corsair@gentoo.org>
+  files/ltrace-0.5.3-ppc.patch, ltrace-0.5.3.ebuild:
+  Update ppc patch to replace HOST_CPU powerpc64 with ppc. Add ~ppc64. Bug
+  #217219
+
+  27 Mar 2008; Raúl Porcel <armin76@gentoo.org> ltrace-0.4-r1.ebuild:
+  Fix debian HOMEPAGE
+
+  27 Jan 2008; Petteri Räty <betelgeuse@gentoo.org> -ltrace-0.3.36.ebuild,
+  -ltrace-0.4.ebuild:
+  Delete old versions.
+
+  26 Dec 2007; nixnut <nixnut@gentoo.org> +files/ltrace-0.5.3-ppc.patch,
+  ltrace-0.5.3.ebuild:
+  patch to make ltrace-0.5.3 build on ppc wrt bug 203380
+
+*ltrace-0.5.3 (24 Dec 2007)
+
+  24 Dec 2007; Mike Frysinger <vapier@gentoo.org>
+  +files/ltrace-0.5.3-cross.patch, +ltrace-0.5.3.ebuild:
+  Version bump #191268 by Nuno Lopes.
+
+  26 Jun 2007; Joseph Jezak <josejx@gentoo.org> ltrace-0.4-r1.ebuild:
+  Marked ppc stable for bug #182880.
+
+  24 Jun 2007; Raúl Porcel <armin76@gentoo.org> ltrace-0.4-r1.ebuild:
+  x86 stable wrt #182880
+
+  22 Jun 2007; Christoph Mende <angelos@gentoo.org> ltrace-0.4-r1.ebuild:
+  Stable on amd64 wrt bug 182880
+
+  30 May 2007; Raúl Porcel <armin76@gentoo.org> ltrace-0.4-r1.ebuild:
+  alpha stable wrt #161844
+
+  23 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org> ltrace-0.4-r1.ebuild:
+  Stable on sparc
+
+  08 Apr 2007; Joseph Jezak <josejx@gentoo.org>
+  files/0.4-cross-compile.patch:
+  Fix cross-compile patch to allow powerpc as a host_cpu fixes bug #170496.
+
+  13 Mar 2007; Petteri Räty <betelgeuse@gentoo.org> ltrace-0.3.36.ebuild,
+  ltrace-0.4.ebuild, ltrace-0.4-r1.ebuild:
+  Remove useless dependency on virtual/libc.
+
+  13 Mar 2007; Petteri Räty <betelgeuse@gentoo.org>
+  +files/0.4-parallel-make.patch, ltrace-0.4-r1.ebuild:
+  Add a patch that hopefully fixes parallel make issues wrt bug #103941.
+  Thanks to Tuomas Suutari <thsuut@utu.fi>.
+
+  12 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org> ltrace-0.4-r1.ebuild:
+  Give it ~sparc love wrt #170585
+
+*ltrace-0.4-r1 (10 Mar 2007)
+
+  10 Mar 2007; Petteri Räty <betelgeuse@gentoo.org>
+  +files/0.4-summary.patch, ltrace-0.4.ebuild, +ltrace-0.4-r1.ebuild:
+  Apply patch from Josef Reidinger <queen.killer@seznam.cz> to fix QA Notice
+  and don't move the cross-compile applying only to this revision bump. Fixes
+  bug #166856.
+
+  10 Mar 2007; Petteri Räty <betelgeuse@gentoo.org> -ltrace-0.3.31.ebuild:
+  Remove old version.
+
+  10 Mar 2007; Petteri Räty <betelgeuse@gentoo.org>
+  +files/0.4-cross-compile.patch, ltrace-0.4.ebuild:
+  Fix cross compiling. Fixes bug #169310.
+
+  10 Feb 2007; nixnut <nixnut@gentoo.org> ltrace-0.4.ebuild:
+  Stable on ppc wrt bug 161844
+
+  10 Feb 2007; Simon Stelling <blubb@gentoo.org> ltrace-0.4.ebuild:
+  stable on amd64; bug 161844
+
+  07 Feb 2007; Jeroen Roovers <jer@gentoo.org> ltrace-0.3.31.ebuild,
+  ltrace-0.3.36.ebuild, ltrace-0.4.ebuild:
+  HPPA keywording was mistakenly introduced. Removing keywords as it has never
+  even compiled due to a missing machine dependent patch. See also
+  http://sources.gentoo.org/viewcvs.py/gentoo-x86/dev-util/ltrace/ltrace-0.3.3
+  1.ebuild?r1=1.3\&r2=1.4 and http://packages.debian.org/unstable/utils/ltrace.html
+
+  06 Feb 2007; Raúl Porcel <armin76@gentoo.org> ltrace-0.4.ebuild:
+  x86 stable wrt bug 161844
+
+*ltrace-0.4 (24 Sep 2006)
+
+  24 Sep 2006; Daniel Black <dragonheart@gentoo.org> metadata.xml,
+  +ltrace-0.4.ebuild:
+  version bump as per bug #125538 thanks Nuno Lopes
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org> ltrace-0.3.36.ebuild:
+  Mark 0.3.36 stable on alpha
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> ltrace-0.3.36.ebuild:
+  Stable on ppc.
+
+  17 Jun 2005; Aaron Walker <ka0ttic@gentoo.org> metadata.xml:
+  Added to dev-tools herd.
+
+  02 Jun 2005; Aaron Walker <ka0ttic@gentoo.org>
+  +files/ltrace-0.3.31-gcc4.patch, ltrace-0.3.31.ebuild:
+  Added patch so 0.3.31 will build with gcc-4.
+
+  25 May 2005; Aaron Walker <ka0ttic@gentoo.org> ltrace-0.3.36.ebuild:
+  Stable on x86.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> ltrace-0.3.31.ebuild:
+  Stable on ppc.
+
+*ltrace-0.3.36 (10 Feb 2005)
+
+  10 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> +metadata.xml,
+  +files/ltrace-0.3.31-64bit-fixes.patch,
+  -files/ltrace-0.3.31-64bit-fixes.patch.bz2, ltrace-0.3.31.ebuild,
+  +ltrace-0.3.36.ebuild:
+  Version bump; 64-bit fixes are no longer required. Also uncompressed 64-bit
+  patch as compressed files are evil (and it's only 5k uncompressed).
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> ltrace-0.3.31.ebuild:
+  virtual/glibc -> virtual/libc
+
+  13 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> ltrace-0.3.31.ebuild:
+  Updated SRC_URI.
+
+  13 Mar 2004; Jason Wever <weeve@gentoo.org> ltrace-0.3.31.ebuild:
+  Masked on sparc since there's no sparc support in ltrace.
+
+  24 Feb 2004; Daniel Ahlberg <aliz@gentoo.org> ltrace-0.3.31.ebuild:
+  Add support for amd64 by adding patch and tarball from Mandrake. Closing
+  #38726.
+
+  13 Oct 2003; Heinrich Wendel <lanius@gentoo.org> ltrace-0.3.26-r1.ebuild:
+  cleanup
+
+  10 Oct 2003; Tavis Ormandy <taviso@gentoo.org> ltrace-0.3.31.ebuild:
+  typo, moved Makefile then attempted inline sed.
+
+  02 Oct 2003; Seemant Kulleen <seemant@gentoo.org> ltrace-0.3.31.ebuild:
+  added an || make (unconfirmed emake failure), closing bug #28121 by Marc
+  Bevand <bevand_m@epita.fr>. Also did some minor cleanup of the ebuild
+
+*ltrace-0.3.31 (21 May 2003)
+
+  21 May 2003; Joshua Kinard <kumba@gentoo.org> ltrace-0.3.31.ebuild:
+  Bumped version
+ 
+*ltrace-0.3.26-r1 (28 Jun 2002)
+
+  21 May 2003; Joshua Kinard <kumba@gentoo.org> ltrace-0.3.26-r1.ebuild:
+  Masked for sparc and mips, as these targets do not exist in ltrace
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+
+  06 Nov 2002; Jon Nall <nall@gentoo.org> ltrace-0.3.26-r1.ebuild :
+  added ~ppc to KEYWORDS
+
+  28 Jun 2002; Seemant Kulleen <seemant@gentoo.org> ltrace-0.3.26-r1.ebuild
+  files/digest-ltrace-0.3.26-r1 :
+
+  LFH/man page fixes, SLOT and LICENSE.
+
+*ltrace-0.3.26 (06 Jun 2002)
+
+  06 Jun 2002; Olivier Reisch <doctomoe@gentoo.org> ltrace-0.3.26.ebuild :
+
+  Update to 0.3.26. Closes BUG #3173.
+
+*ltrace-0.3.23 (26 Mar 2002)
+
+  26 Mar 2002; Bruce A. Locke <blocke@shivan.org> ltrace-0.3.23.ebuild :
+
+  Ebuild cleanup and update to 0.3.23

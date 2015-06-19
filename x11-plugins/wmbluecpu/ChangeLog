@@ -1,0 +1,60 @@
+# ChangeLog for x11-plugins/wmbluecpu
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmbluecpu/ChangeLog,v 1.16 2014/08/10 20:05:02 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> wmbluecpu-0.6.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  25 Nov 2008; Tiago Cunha <tcunha@gentoo.org> wmbluecpu-0.6.ebuild:
+  stable sparc, bug 215651
+
+  17 Jan 2008; Samuli Suominen <drac@gentoo.org> wmbluecpu-0.6.ebuild:
+  Stop pre-stripping main binary. Respect CC and LDFLAGS. Keyword ~amd64.
+  Change SRC_URI to gentoo mirrors and HOMEPAGE to something that distantly
+  looks close enough.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; wmbluecpu-0.6.ebuild:
+  Drop virtual/x11 references.
+
+  06 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  24 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> wmbluecpu-0.6.ebuild:
+  Fixed DEPEND for modular X.
+
+  07 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> wmbluecpu-0.6.ebuild:
+  Removed INSTALL from dodoc.
+  wmbluecpu-0.4.ebuild:
+  Wiped out older release.
+
+  02 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> wmbluecpu-0.6.ebuild:
+  Stable on ppc.
+
+  29 Aug 2005; Michele Noberasco <s4t4n@gentoo.org> wmbluecpu-0.6.ebuild:
+  Stable for x86.
+
+*wmbluecpu-0.6 (16 May 2005)
+
+  16 May 2005; Michele Noberasco <s4t4n@gentoo.org> wmbluecpu-0.6.ebuild:
+  Version bump, Closes bug #92581...
+
+  23 Nov 2004; Jason Wever <weeve@gentoo.org> wmbluecpu-0.4.ebuild:
+  Added ~sparc keyword.
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  wmbluecpu-0.4.ebuild:
+  Masked wmbluecpu-0.4.ebuild stable for ppc
+
+*wmbluecpu-0.4 (04 Jul 2004)
+
+  13 Jul 2004; Michele Noberasco <s4t4n@gentoo.org> wmbluecpu-0.4.ebuild:
+  Stable for x86.
+
+  05 Jul 2004; Michele Noberasco <s4t4n@gentoo.org> wmbluecpu-0.4.ebuild:
+  Don't install COPYING.
+
+  04 Jul 2004; David Holm <dholm@gentoo.org> wmbluecpu-0.4.ebuild:
+  Added to ~ppc.
+
+  04 Jul 2004; Michele Noberasco <s4t4n@gentoo.org> wmbluecpu-0.4.ebuild:
+  Initial import.

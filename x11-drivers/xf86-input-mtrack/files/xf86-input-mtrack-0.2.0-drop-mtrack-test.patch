@@ -1,0 +1,13 @@
+diff --git a/Makefile.am b/Makefile.am
+index b22df2f..ed4c53c 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -14,7 +14,7 @@ SOURCES_COMMON = \
+ 	$(srcdir)/driver/mprops.c
+ @DRIVER_NAME@_drv_ladir = @inputdir@
+ 
+-noinst_PROGRAMS = mtrack-test
++noinst_PROGRAMS =
+ mtrack_test_SOURCES = $(SOURCES_COMMON) \
+ 	$(srcdir)/tools/mtrack-test.c
+ mtrack_test_CFLAGS = $(AM_CFLAGS)

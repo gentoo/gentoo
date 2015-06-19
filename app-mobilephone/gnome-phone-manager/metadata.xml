@@ -1,0 +1,15 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>gnome</herd>
+<longdescription>Phone Manager is a program created to allow you to control aspects 
+of your mobile phone from your GNOME desktop.
+
+The software is in its early stages right now. Current features include:
+    * Runs in the background; indicates status on the panel notification area.
+    * Display on-screen alert when text message (SMS) arrives
+    * Text message (SMS) sending facility
+
+Phone Manager supports any mobile phone that can connect to your 
+computer as a serial port: via Bluetooth, IrDA or a serial cable.</longdescription>
+</pkgmetadata>

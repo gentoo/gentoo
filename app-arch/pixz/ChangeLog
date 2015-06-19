@@ -1,0 +1,40 @@
+# ChangeLog for app-arch/pixz
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/pixz/ChangeLog,v 1.8 2015/06/05 11:49:41 jlec Exp $
+
+  05 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  10 Jun 2013; Rick Farina <zerochaos@gentoo.org> -pixz-1.0.ebuild,
+  pixz-1.0.2.ebuild, pixz-9999.ebuild:
+  removing old ebuild, fixing subslot deps
+
+  18 Feb 2013; Mike Frysinger <vapier@gentoo.org> +files/pixz-1.0.2-lm.patch,
+  pixz-1.0.2.ebuild:
+  Add missing -lm to linking.
+
+  11 Jan 2013; Rick Farina <zerochaos@gentoo.org> pixz-1.0.2.ebuild,
+  pixz-9999.ebuild:
+  fix man page installation, thanks to radhermit for reporting
+
+*pixz-1.0.2 (09 Jan 2013)
+
+  09 Jan 2013; Rick Farina <zerochaos@gentoo.org> +pixz-1.0.2.ebuild,
+  pixz-9999.ebuild:
+  version bump
+
+  06 Dec 2012; Mike Frysinger <vapier@gentoo.org> pixz-1.0.ebuild,
+  pixz-9999.ebuild:
+  Add USE=static and move to EAPI=4 since EAPI=5 features are not in use.
+
+*pixz-1.0 (25 Nov 2012)
+
+  25 Nov 2012; Rick Farina <zerochaos@gentoo.org> +pixz-1.0.ebuild,
+  pixz-9999.ebuild:
+  suggested changes and stable version added from bug #444530
+
+*pixz-9999 (13 Nov 2012)
+
+  13 Nov 2012; Rick Farina <zerochaos@gentoo.org> +metadata.xml,
+  +pixz-9999.ebuild:
+  pixz initial commit

@@ -1,0 +1,18 @@
+# ChangeLog for dev-java/glassfish-ejb-api
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/glassfish-ejb-api/ChangeLog,v 1.3 2015/06/08 21:30:26 monsieurp Exp $
+
+  08 Jun 2015; Patrice Clement <monsieurp@gentoo.org>
+  glassfish-ejb-api-3.2.ebuild:
+  Add ~x86 keyword.
+
+  23 Oct 2013; Tom Wijsman <TomWij@gentoo.org> glassfish-ejb-api-3.2.ebuild:
+  Use the virtual instead for XML RPC.
+
+*glassfish-ejb-api-3.2 (23 Oct 2013)
+
+  23 Oct 2013; Tom Wijsman <TomWij@gentoo.org> +glassfish-ejb-api-3.2.ebuild,
+  +metadata.xml:
+  New ebuild for dev-java/glassfish-ejb-api, project GlassFish Enterprise
+  JavaBean API; indirect dependency of dev-java/spring-context and dev-java
+  /struts-xwork.

@@ -1,0 +1,39 @@
+# ChangeLog for www-apache/mod_rpaf
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_rpaf/ChangeLog,v 1.8 2015/05/09 11:55:19 pacho Exp $
+
+*mod_rpaf-0.6-r1 (09 May 2015)
+
+  09 May 2015; Pacho Ramos <pacho@gentoo.org> +files/003_ipv6.patch,
+  +files/010_multiple_proxies.patch, +files/011_apache2.4.patch,
+  +files/012_Add-missing-header-for-inet_addr.patch, +mod_rpaf-0.6-r1.ebuild:
+  Apply debian patches also adding support for apache 2.4 (#532864)
+
+  27 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop apache herd as discussed in http://www.gossamer-
+  threads.com/lists/gentoo/dev/262834
+
+  12 Oct 2012; Patrick Lauer <patrick@gentoo.org> mod_rpaf-0.6.ebuild:
+  Restricting to apache 2.2
+
+  27 Apr 2008; Markus Meier <maekke@gentoo.org> mod_rpaf-0.6.ebuild:
+  x86 stable, bug #219245
+
+  25 Apr 2008; Benedikt Böhm <hollow@gentoo.org> -mod_rpaf-0.5.ebuild,
+  mod_rpaf-0.6.ebuild:
+  amd64 stable wrt #219245
+
+*mod_rpaf-0.6 (22 Mar 2008)
+
+  22 Mar 2008; Benedikt Böhm <hollow@gentoo.org> +mod_rpaf-0.6.ebuild:
+  version bump wrt #212991
+
+  31 Jan 2008; Benedikt Böhm <hollow@gentoo.org> files/10_mod_rpaf.conf,
+  metadata.xml:
+  update metadata; cleanup
+
+*mod_rpaf-0.5 (21 Oct 2007)
+
+  21 Oct 2007; Benedikt Böhm <hollow@gentoo.org> +files/10_mod_rpaf.conf,
+  +metadata.xml, +mod_rpaf-0.5.ebuild:
+  initial ebuild, #196272

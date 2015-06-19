@@ -1,0 +1,54 @@
+# ChangeLog for app-portage/gpytage
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-portage/gpytage/ChangeLog,v 1.13 2012/03/04 20:41:51 dolsen Exp $
+
+  04 Mar 2012; Brian Dolbec <dolsen@gentoo.org> metadata.xml:
+  Take over as maintainer, update metadata.xml.
+
+  04 Mar 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #206112
+
+  10 Oct 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  gpytage-0.3.0_rc1.ebuild:
+  Update EAPI. Call python_pkg_setup().
+
+  27 May 2010; Kenneth Prugh <ken69267@gentoo.org> -gpytage-0.2.0.ebuild:
+  drop old
+
+  27 May 2010; Markos Chandras <hwoarang@gentoo.org>
+  gpytage-0.3.0_rc1.ebuild:
+  Stable on amd64 wrt bug #316023
+
+  23 May 2010; <nixnut@gentoo.org> gpytage-0.3.0_rc1.ebuild:
+  ppc stable #316023
+
+  09 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gpytage-0.3.0_rc1.ebuild:
+  x86 stable wrt bug #316023
+
+  13 Apr 2010; Kenneth Prugh <ken69267@gentoo.org> gpytage-0.3.0_rc1.ebuild:
+  update for bug 311779
+
+*gpytage-0.3.0_rc1 (20 Dec 2009)
+
+  20 Dec 2009; Kenneth Prugh <ken69267@gentoo.org>
+  -gpytage-0.2.0_rc1.ebuild, +gpytage-0.3.0_rc1.ebuild:
+  version bump
+
+  13 Sep 2008; nixnut <nixnut@gentoo.org> gpytage-0.2.0.ebuild:
+  Stable on ppc wrt bug 236915
+
+  07 Sep 2008; Markus Meier <maekke@gentoo.org> gpytage-0.2.0.ebuild:
+  amd64/x86 stable, bug #236915
+
+*gpytage-0.2.0 (06 Aug 2008)
+
+  06 Aug 2008; Kenneth Prugh <ken69267@gentoo.org> +gpytage-0.2.0.ebuild:
+  version bump
+
+*gpytage-0.2.0_rc1 (05 Jun 2008)
+
+  05 Jun 2008; Kenneth Prugh <ken69267@gentoo.org> +metadata.xml,
+  +gpytage-0.2.0_rc1.ebuild:
+  Initial commit. Fixes bug #217449
+

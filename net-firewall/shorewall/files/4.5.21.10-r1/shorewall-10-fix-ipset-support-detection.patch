@@ -1,0 +1,29 @@
+Beginning with 3.14, the address family of the ipset was checked and an
+error is generated:
+
+root@jessie:~# ipset -N foo iphash
+root@jessie:~# ip6tables -N foo
+root@jessie:~# ip6tables -A foo -m set --match-set foo src
+ip6tables v1.4.21: The protocol family of set foo is IPv4, which is not
+applicable.
+
+Try `ip6tables -h' or 'ip6tables --help' for more information.
+root@jessie:~#
+
+This caused the failure. By reversing the order of the terms, an ipv6
+ipset is created (if supported) and the ip6tables command succeeds.
+
+http://thread.gmane.org/gmane.comp.security.shorewall/31349
+
+diff -rupN old/shorewall-4.5.21.10/Perl/Shorewall/Config.pm new/shorewall-4.5.21.10/Perl/Shorewall/Config.pm
+--- old/shorewall-4.5.21.10/Perl/Shorewall/Config.pm	2014-05-26 16:47:21.000000000 +0200
++++ new/shorewall-4.5.21.10/Perl/Shorewall/Config.pm	2014-07-20 18:11:28.186658453 +0200
+@@ -3961,7 +3961,7 @@ sub IPSet_Match() {
+     if ( $ipset && -x $ipset ) {
+ 	qt( "$ipset -X $sillyname" );
+ 
+-	if ( qt( "$ipset -N $sillyname iphash" ) || qt( "$ipset -N $sillyname hash:ip family $fam") ) {
++	if ( qt( "$ipset -N $sillyname hash:ip family $fam" ) || qt( "$ipset -N $sillyname iphash" ) ) {
+ 	    if ( qt1( "$iptables $iptablesw -A $sillyname -m set --match-set $sillyname src -j ACCEPT" ) ) {
+ 		qt1( "$iptables $iptablesw -F $sillyname" );
+ 		$result = ! ( $capabilities{OLD_IPSET_MATCH} = 0 );

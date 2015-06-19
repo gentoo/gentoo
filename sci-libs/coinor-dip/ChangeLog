@@ -1,0 +1,24 @@
+# ChangeLog for sci-libs/coinor-dip
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/coinor-dip/ChangeLog,v 1.5 2014/02/04 10:14:00 jlec Exp $
+
+  04 Feb 2014; Justin Lecher <jlec@gentoo.org> coinor-dip-0.9.8.ebuild:
+  Move preparations to src_prepare
+
+  04 Feb 2014; Justin Lecher <jlec@gentoo.org> coinor-dip-0.9.8.ebuild:
+  Fix the common coinor pkg-config installation problem
+
+*coinor-dip-0.9.8 (15 Jan 2014)
+
+  15 Jan 2014; Sébastien Fabbro <bicatali@gentoo.org> +coinor-dip-0.9.8.ebuild,
+  -coinor-dip-0.83.2.ebuild:
+  Replaced to newer version (upstream wrong numbering)
+
+  15 Jan 2014; Sébastien Fabbro <bicatali@gentoo.org> coinor-dip-0.83.2.ebuild:
+  Simplified ebuild
+
+*coinor-dip-0.83.2 (20 Jul 2012)
+
+  20 Jul 2012; Sébastien Fabbro <bicatali@gentoo.org> +coinor-dip-0.83.2.ebuild,
+  +metadata.xml:
+  sci-libs/coinor-dip: Initial import

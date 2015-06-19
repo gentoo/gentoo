@@ -1,0 +1,47 @@
+# ChangeLog for app-eselect/eselect-mpg123
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-eselect/eselect-mpg123/ChangeLog,v 1.1 2015/03/31 16:51:42 ulm Exp $
+
+  31 Mar 2015; Ulrich Müller <ulm@gentoo.org> +eselect-mpg123-0.1.ebuild,
+  +files/mpg123.eselect-0.1, +metadata.xml:
+  Move package from app-admin to app-eselect category.
+
+  02 Mar 2015; Yixun Lan <dlan@gentoo.org> eselect-mpg123-0.1.ebuild:
+  add arm64 support, tested on A53 board
+
+  07 Aug 2013; Agostino Sarubbo <ago@gentoo.org> eselect-mpg123-0.1.ebuild:
+  Stable for x86, wrt bug #477588
+
+  04 Aug 2013; Agostino Sarubbo <ago@gentoo.org> eselect-mpg123-0.1.ebuild:
+  Stable for ia64, wrt bug #477588
+
+  03 Aug 2013; Agostino Sarubbo <ago@gentoo.org> eselect-mpg123-0.1.ebuild:
+  Stable for sparc, wrt bug #477588
+
+  30 Jul 2013; Agostino Sarubbo <ago@gentoo.org> eselect-mpg123-0.1.ebuild:
+  Stable for alpha, wrt bug #477588
+
+  28 Jul 2013; Alexis Ballier <aballier@gentoo.org> eselect-mpg123-0.1.ebuild:
+  keyword ~amd64-fbsd, bug #477750
+
+  23 Jul 2013; Agostino Sarubbo <ago@gentoo.org> eselect-mpg123-0.1.ebuild:
+  Stable for arm, wrt bug #477588
+
+  22 Jul 2013; Agostino Sarubbo <ago@gentoo.org> eselect-mpg123-0.1.ebuild:
+  Stable for ppc64, wrt bug #477588
+
+  22 Jul 2013; Agostino Sarubbo <ago@gentoo.org> eselect-mpg123-0.1.ebuild:
+  Stable for ppc, wrt bug #477588
+
+  22 Jul 2013; Vicente Olivert Riera <vincent@gentoo.org>
+  eselect-mpg123-0.1.ebuild:
+  amd64 stable, bug #477588
+
+  22 Jul 2013; Jeroen Roovers <jer@gentoo.org> eselect-mpg123-0.1.ebuild:
+  Stable for HPPA (bug #477588).
+
+*eselect-mpg123-0.1 (15 Jan 2013)
+
+  15 Jan 2013; Samuli Suominen <ssuominen@gentoo.org>
+  +files/mpg123.eselect-0.1, +eselect-mpg123-0.1.ebuild:
+  Initial commit.

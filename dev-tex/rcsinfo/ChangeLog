@@ -1,0 +1,19 @@
+# ChangeLog for dev-tex/rcsinfo
+# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/rcsinfo/ChangeLog,v 1.4 2007/03/13 00:35:35 nattfodd Exp $
+
+  12 Mar 2007; Alexandre Buisse <nattfodd@gentoo.org> metadata.xml:
+  Replaced text-markup by tex as maintaining herd (text-markup split).
+
+  05 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  28 Dec 2004; Dylan Carlson <absinthe@gentoo.org> rcsinfo-1.9.ebuild:
+  Keywords ~amd64.
+
+*rcsinfo-1.9 (07 Nov 2004)
+
+  07 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> +metadata.xml,
+  +rcsinfo-1.9.ebuild:
+  Initial import. Thanks to Abraham Smith <adsmith@math.duke.edu>; bug #65697.
+

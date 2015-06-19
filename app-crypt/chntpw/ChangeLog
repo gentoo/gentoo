@@ -1,0 +1,98 @@
+# ChangeLog for app-crypt/chntpw
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/chntpw/ChangeLog,v 1.22 2015/03/16 16:48:43 alonbl Exp $
+
+*chntpw-140201 (16 Mar 2015)
+
+  16 Mar 2015; Alon Bar-Lev <alonbl@gentoo.org> +chntpw-140201.ebuild,
+  -chntpw-100627.ebuild:
+  Version bump, bug#543520, thanks to Bob Wya. Cleanup
+
+  02 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #328951
+
+  09 Mar 2012; Tim Harder <radhermit@gentoo.org> chntpw-110511.ebuild:
+  Update to EAPI 4, only build static binaries when the static use flag is set,
+  and add dependency on openssl[static-libs] for static builds (fixes bug
+  #402629).
+
+*chntpw-110511 (16 May 2011)
+
+  16 May 2011; Dane Smith <c1pher@gentoo.org> +chntpw-110511.ebuild:
+  Version bump to 110511 wrt bug 367267.
+
+  05 Apr 2011; Dane Smith <c1pher@gentoo.org> metadata.xml:
+  Updated metadata to reflect me as the new maintainer. Added to the 
+  crypto herd as well.
+
+*chntpw-100627 (13 Jul 2010)
+
+  13 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> +chntpw-100627.ebuild:
+  Version bump.
+
+  28 Oct 2009; Robin H. Johnson <robbat2@gentoo.org> chntpw-080526.ebuild:
+  Keyword for ~amd64.
+
+  30 Dec 2008; Christoph Mende <angelos@gentoo.org> chntpw-080526.ebuild:
+  QA: Respect CC (bug 243538)
+
+*chntpw-080526 (29 Jun 2008)
+
+  29 Jun 2008; Jeremy Olexa <darkside@gentoo.org>
+  -chntpw-0.99.4.20070923.ebuild, +chntpw-080526.ebuild:
+  Version bump and remove old. bug #226371. Change version name to match what
+  upstream calls it.
+
+  10 Jan 2008; Alon Bar-Lev <alonbl@gentoo.org>
+  -files/chntpw-0.99.3.20040818-gcc4.diff:
+  Cleanup
+
+  10 Jan 2008; Alon Bar-Lev <alonbl@gentoo.org>
+  -chntpw-0.99.3.20040818.ebuild, -chntpw-0.99.4.20070409.ebuild,
+  chntpw-0.99.4.20070923.ebuild:
+  Add unzip dependency, bug#205158, thanks to yahya, cleanup
+
+  15 Nov 2007; Alon Bar-Lev <alonbl@gentoo.org> metadata.xml:
+  Assign to maintainer-needed@gentoo.org, bug#185411.
+
+*chntpw-0.99.4.20070923 (28 Sep 2007)
+
+  28 Sep 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  +chntpw-0.99.4.20070923.ebuild:
+  Version bump
+
+*chntpw-0.99.4.20070409 (14 Jul 2007)
+
+  14 Jul 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  -chntpw-0.99.3.20070409.ebuild, +chntpw-0.99.4.20070409.ebuild:
+  Fix versioning bug#185183 (again)
+
+*chntpw-0.99.3.20070409 (13 Jul 2007)
+
+  13 Jul 2007; Alon Bar-Lev <alonbl@gentoo.org> metadata.xml,
+  +chntpw-0.99.3.20070409.ebuild:
+  Version bump, bug#185183, thanks to Matthias Vill
+
+  08 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  09 Apr 2005; Marcelo Goes <vanquirius@gentoo.org>
+  +files/chntpw-0.99.3.20040818-gcc4.diff, chntpw-0.99.3.20040818.ebuild:
+  Adding gcc4 patch from Debian.
+
+  07 Jan 2005; Robin H. Johnson <robbat2@gentoo.org>
+  chntpw-0.99.3.20040818.ebuild:
+  Bug #69831.
+
+  04 Nov 2004; Daniel Black <dragonheart@gentoo.org>
+  chntpw-0.99.3.20040818.ebuild:
+  added app-arch/zip dependancy as per bug #69831
+
+  14 Oct 2004; David Holm <dholm@gentoo.org> chntpw-0.99.3.20040818.ebuild:
+  Added to ~ppc.
+
+*chntpw-0.99.3.20040818 (19 Sep 2004)
+
+  19 Sep 2004; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +chntpw-0.99.3.20040818.ebuild:
+  Initial commit. Ebuild by Robin H. Johnson <robbat2@gentoo.org>.

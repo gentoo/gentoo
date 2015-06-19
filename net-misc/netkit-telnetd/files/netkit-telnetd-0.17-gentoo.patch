@@ -1,0 +1,81 @@
+diff -r -u netkit-telnet-0.17_orig/telnet/main.cc netkit-telnet-0.17/telnet/main.cc
+--- netkit-telnet-0.17_orig/telnet/main.cc	1999-08-01 07:06:37.000000000 +0200
++++ netkit-telnet-0.17/telnet/main.cc	2002-04-05 09:22:35.000000000 +0200
+@@ -43,6 +43,7 @@
+ 
+ #include "../version.h"
+ 
++#include <stdlib.h>
+ #include <sys/types.h>
+ #include <getopt.h>
+ #include <string.h>
+diff -r -u netkit-telnet-0.17_orig/telnet/Makefile netkit-telnet-0.17/telnet/Makefile
+--- netkit-telnet-0.17_orig/telnet/Makefile	1999-08-01 07:06:37.000000000 +0200
++++ netkit-telnet-0.17/telnet/Makefile	2002-04-05 09:26:01.000000000 +0200
+@@ -7,7 +7,7 @@
+ 
+ # -DAUTHENTICATE
+ CXXFLAGS += -DUSE_TERMIO -DKLUDGELINEMODE
+-LIBS += $(LIBTERMCAP)
++LIBS += $(LIBTERMCAP) -lcurses
+ 
+ SRCS = commands.cc main.cc network.cc ring.cc sys_bsd.cc telnet.cc \
+ 	terminal.cc tn3270.cc utilities.cc genget.cc environ.cc netlink.cc
+diff -r -u netkit-telnet-0.17_orig/telnet/netlink.cc netkit-telnet-0.17/telnet/netlink.cc
+--- netkit-telnet-0.17_orig/telnet/netlink.cc	2000-07-23 06:16:25.000000000 +0200
++++ netkit-telnet-0.17/telnet/netlink.cc	2002-04-05 09:24:35.000000000 +0200
+@@ -2,6 +2,7 @@
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include <sys/socket.h>
+ #include <netinet/in.h>
+ #include <arpa/inet.h>
+diff -r -u netkit-telnet-0.17_orig/telnet/network.cc netkit-telnet-0.17/telnet/network.cc
+--- netkit-telnet-0.17_orig/telnet/network.cc	1996-08-13 10:09:58.000000000 +0200
++++ netkit-telnet-0.17/telnet/network.cc	2002-04-05 09:22:52.000000000 +0200
+@@ -37,6 +37,7 @@
+ char net_rcsid[] = 
+   "$Id: netkit-telnetd-0.17-gentoo.patch,v 1.1 2002/04/05 07:48:02 gbevin Exp $";
+ 
++#include <stdlib.h>
+ #include <sys/types.h>
+ #include <sys/socket.h>
+ #include <sys/time.h>
+diff -r -u netkit-telnet-0.17_orig/telnet/terminal.cc netkit-telnet-0.17/telnet/terminal.cc
+--- netkit-telnet-0.17_orig/telnet/terminal.cc	1999-12-12 20:48:05.000000000 +0100
++++ netkit-telnet-0.17/telnet/terminal.cc	2002-04-05 09:23:53.000000000 +0200
+@@ -41,6 +41,8 @@
+ #include <sys/types.h>
+ #include <sys/time.h>
+ #include <termios.h>
++#include <string.h>
++#include <stdlib.h>
+ #include <unistd.h>
+ #include <signal.h>
+ #include <errno.h>
+diff -r -u netkit-telnet-0.17_orig/telnet/utilities.cc netkit-telnet-0.17/telnet/utilities.cc
+--- netkit-telnet-0.17_orig/telnet/utilities.cc	1999-12-12 16:33:40.000000000 +0100
++++ netkit-telnet-0.17/telnet/utilities.cc	2002-04-05 09:24:14.000000000 +0200
+@@ -46,6 +46,8 @@
+ #include <sys/time.h>
+ #include <sys/socket.h>
+ #include <unistd.h>
++#include <string.h>
++#include <stdlib.h>
+ #include <ctype.h>
+ 
+ #include "ring.h"
+diff -r -u netkit-telnet-0.17_orig/telnetd/Makefile netkit-telnet-0.17/telnetd/Makefile
+--- netkit-telnet-0.17_orig/telnetd/Makefile	1999-12-14 01:43:30.000000000 +0100
++++ netkit-telnet-0.17/telnetd/Makefile	2002-04-05 09:36:47.000000000 +0200
+@@ -10,7 +10,7 @@
+ 
+ CFLAGS += '-DISSUE_FILE="/etc/issue.net"' -DPARANOID_TTYS \
+ 	   -DNO_REVOKE -DKLUDGELINEMODE -DDIAGNOSTICS
+-# LIBS += $(LIBTERMCAP)
++LIBS += -lutil
+ 
+ OBJS = telnetd.o state.o termstat.o slc.o sys_term.o utility.o \
+ 	global.o setproctitle.o

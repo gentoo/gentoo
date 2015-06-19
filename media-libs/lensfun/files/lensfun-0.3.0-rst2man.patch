@@ -1,0 +1,12 @@
+diff -r -U1 lensfun-0.3.0.orig/docs/CMakeLists.txt lensfun-0.3.0/docs/CMakeLists.txt
+--- lensfun-0.3.0.orig/docs/CMakeLists.txt	2014-10-01 00:37:34.000000000 +0700
++++ lensfun-0.3.0/docs/CMakeLists.txt	2014-10-08 15:50:44.135182005 +0700
+@@ -28,5 +28,5 @@
+   TARGET man
+-  COMMAND rst2man ${CMAKE_CURRENT_SOURCE_DIR}/man/g-lensfun-update-data.1.rst > ${CMAKE_CURRENT_BINARY_DIR}/g-lensfun-update-data.1
+-  COMMAND rst2man ${CMAKE_CURRENT_SOURCE_DIR}/man/lensfun-update-data.1.rst > ${CMAKE_CURRENT_BINARY_DIR}/lensfun-update-data.1
+-  COMMAND rst2man ${CMAKE_CURRENT_SOURCE_DIR}/man/lensfun-add-adapter.1.rst > ${CMAKE_CURRENT_BINARY_DIR}/lensfun-add-adapter.1
++  COMMAND rst2man.py ${CMAKE_CURRENT_SOURCE_DIR}/man/g-lensfun-update-data.1.rst > ${CMAKE_CURRENT_BINARY_DIR}/g-lensfun-update-data.1
++  COMMAND rst2man.py ${CMAKE_CURRENT_SOURCE_DIR}/man/lensfun-update-data.1.rst > ${CMAKE_CURRENT_BINARY_DIR}/lensfun-update-data.1
++  COMMAND rst2man.py ${CMAKE_CURRENT_SOURCE_DIR}/man/lensfun-add-adapter.1.rst > ${CMAKE_CURRENT_BINARY_DIR}/lensfun-add-adapter.1
+   WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}"

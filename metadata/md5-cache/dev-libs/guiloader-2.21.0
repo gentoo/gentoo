@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=>=x11-libs/gtk+-2.22:2 >=dev-libs/glib-2.26:2 virtual/pkgconfig nls? ( >=sys-devel/gettext-0.18 )
+DESCRIPTION=library to create GTK+ interfaces from GuiXml at runtime
+EAPI=3
+HOMEPAGE=http://www.crowdesigner.org
+IUSE=nls linguas_ru
+KEYWORDS=amd64 x86
+LICENSE=MIT
+RDEPEND=>=x11-libs/gtk+-2.22:2 >=dev-libs/glib-2.26:2
+SLOT=0
+SRC_URI=http://nothing-personal.googlecode.com/files/guiloader-2.21.0.tar.bz2
+_md5_=ad33479706df82d3c4d90406a86190e5

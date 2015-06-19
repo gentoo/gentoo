@@ -1,0 +1,80 @@
+# ChangeLog for sci-biology/readseq
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/readseq/ChangeLog,v 1.13 2014/08/10 20:31:52 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  readseq-20080420-r1.ebuild, readseq-20100513.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*readseq-20100513 (08 Feb 2014)
+
+  08 Feb 2014; Johann Schmitz <ercpe@gentoo.org> +readseq-20100513.ebuild:
+  Version bump of sci-biology/readseq
+
+*readseq-20080420-r1 (08 Feb 2014)
+
+  08 Feb 2014; Johann Schmitz <ercpe@gentoo.org>
+  +files/20080420-no-bundling.patch, +readseq-20080420-r1.ebuild,
+  -files/19930201-buffer.patch, -files/19930201-getline.patch,
+  -files/19930201-impl-dec.patch, -files/19930201-ldflags.patch,
+  -readseq-20080420.ebuild:
+  Dropped unneeded patch files and dropped unneeded dependencies (bug #500488
+  and #239161)
+
+  01 Feb 2013; Justin Lecher <jlec@gentoo.org> -readseq-19930201.ebuild,
+  -readseq-19930201-r1.ebuild, readseq-20080420.ebuild, metadata.xml:
+  Drop old; Resolve file collision sci-biology/meme, #455010
+
+*readseq-19930201-r1 (28 Nov 2010)
+
+  28 Nov 2010; Justin Lecher <jlec@gentoo.org> +files/19930201-buffer.patch,
+  +files/19930201-getline.patch, +files/19930201-ldflags.patch,
+  +readseq-19930201-r1.ebuild, +files/19930201-impl-dec.patch:
+  Fixes fo various problems, #346883
+
+
+  24 Mar 2009; Olivier Fisette <ribosome@gentoo.org> metadata.xml:
+  Giving up maintainership of this package.
+
+  16 Jul 2008; Raúl Porcel <armin76@gentoo.org> readseq-20080420.ebuild:
+  Add ~x86 wrt #231945
+
+*readseq-20080420 (26 Apr 2008)
+
+  26 Apr 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  +readseq-20080420.ebuild:
+  Add the Java version, which is actually maintained. This could possibly
+  use some more enhancement to add wrappers for the GUI and such, but the
+  ebuild is already a fully functional replacement for the old version.
+
+  17 Aug 2006; Jason Wever <weeve@gentoo.org> readseq-19930201.ebuild:
+  Added ~sparc keyword wrt bug #144246.
+
+  21 Jan 2006; Olivier Fisette <ribosome@gentoo.org>
+  readseq-19930201.ebuild:
+  Ebuild clean-up.
+
+  10 Nov 2005; <dang@gentoo.org> readseq-19930201.ebuild:
+  Marked ~amd64
+
+*readseq-19930201 (23 Dec 2004)
+
+  23 Dec 2004; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +readseq-19930201.ebuild:
+  Moved from app-sci/readseq to sci-biology/readseq.
+
+  31 Oct 2004; Olivier Fisette <ribosome@gentoo.org> readseq-19930201.ebuild:
+  Added to x86. Fixed bug with SRC_URI.
+
+  09 Aug 2004; Olivier Fisette <ribosome@gentoo.org> readseq-19930201.ebuild:
+  Use "mirror://debian/" syntax.
+
+  17 Jul 2004; David Holm <dholm@gentoo.org> readseq-19930201.ebuild:
+  Added to ~ppc.
+
+*readseq-19930201 (14 Jul 2004)
+
+  14 Jul 2004; Olivier Fisette <ribosome@gentoo.org>
+  readseq-19930201.ebuild, metadata.xml
+  Initial import (#51992), suggested by Koen Deforche 
+  <koen.deforche@uz.kuleuven.ac.be>, with modifications.

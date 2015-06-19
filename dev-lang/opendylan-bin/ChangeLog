@@ -1,0 +1,39 @@
+# ChangeLog for dev-lang/opendylan-bin
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/opendylan-bin/ChangeLog,v 1.8 2015/01/07 04:14:47 patrick Exp $
+
+*opendylan-bin-2014.1 (07 Jan 2015)
+
+  07 Jan 2015; Patrick Lauer <patrick@gentoo.org> +opendylan-bin-2014.1.ebuild:
+  Bump
+
+*opendylan-bin-2013.2 (07 Jan 2014)
+
+  07 Jan 2014; Patrick Lauer <patrick@gentoo.org> +opendylan-bin-2013.2.ebuild:
+  Bump
+
+  12 Jul 2013; Patrick Lauer <patrick@gentoo.org> opendylan-bin-2012.1.ebuild,
+  opendylan-bin-2013.1.ebuild:
+  Small path fix
+
+*opendylan-bin-2013.1 (11 Jul 2013)
+
+  11 Jul 2013; Patrick Lauer <patrick@gentoo.org> +opendylan-bin-2013.1.ebuild:
+  Bump
+
+*opendylan-bin-2012.1 (24 Dec 2012)
+
+  24 Dec 2012; Patrick Lauer <patrick@gentoo.org> +opendylan-bin-2012.1.ebuild:
+  Bump
+
+  21 Aug 2012; Patrick Lauer <patrick@gentoo.org> opendylan-bin-2011.1.ebuild:
+  Minor cleanups
+
+  20 Aug 2012; Patrick Lauer <patrick@gentoo.org> opendylan-bin-2011.1.ebuild:
+  Fixing quoting oopsie
+
+*opendylan-bin-2011.1 (20 Aug 2012)
+
+  20 Aug 2012; Patrick Lauer <patrick@gentoo.org> +metadata.xml,
+  +opendylan-bin-2011.1.ebuild:
+  Initial import, ebuilds by me

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>java</herd>
+	<longdescription lang="en">
+		Commons VFS provides a single API for accessing various different file
+		systems. It presents a uniform view of the files from various different
+		sources, such as the files on local disk, on an HTTP server, or inside
+		a Zip archive.
+	</longdescription>
+</pkgmetadata>

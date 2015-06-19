@@ -1,0 +1,138 @@
+# ChangeLog for dev-dotnet/mono-addins
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/mono-addins/ChangeLog,v 1.33 2012/05/04 03:56:57 jdhore Exp $
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> mono-addins-0.6.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  22 Jan 2012; Pacho Ramos <pacho@gentoo.org> -mono-addins-0.6.ebuild:
+  Drop old.
+
+  10 Nov 2011; Kacper Kowalik <xarthisius@gentoo.org> mono-addins-0.6.2.ebuild:
+  ppc stable wrt #389181
+
+  05 Nov 2011; Markos Chandras <hwoarang@gentoo.org> mono-addins-0.6.2.ebuild:
+  Stable on amd64 wrt bug #389181
+
+  04 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  mono-addins-0.6.2.ebuild:
+  x86 stable wrt bug #389181
+
+*mono-addins-0.6.2 (10 Sep 2011)
+
+  10 Sep 2011; Pacho Ramos <pacho@gentoo.org> -mono-addins-0.5.ebuild,
+  +mono-addins-0.6.2.ebuild:
+  Version bump, remove old.
+
+  11 May 2011; Christoph Mende <angelos@gentoo.org> mono-addins-0.6.ebuild:
+  Stable on amd64 wrt bug #359651
+
+  07 May 2011; Thomas Kahle <tomka@gentoo.org> mono-addins-0.6.ebuild:
+  x86 stable per bug 359651
+
+  29 Apr 2011; Mark Loeser <halcy0n@gentoo.org> metadata.xml:
+  Invalid herd: dev-dotnet -> dotnet
+
+  21 Mar 2011; Brent Baude <ranger@gentoo.org> mono-addins-0.6.ebuild:
+  Marking mono-addins-0.6 ppc stable for bug 359651
+
+*mono-addins-0.6 (01 Mar 2011)
+
+  01 Mar 2011; Alistair Bush <ali_bush@gentoo.org> +mono-addins-0.6.ebuild:
+  Version Bump.
+
+  07 Oct 2010; Pacho Ramos <pacho@gentoo.org>
+  -files/mono-addins-0.2-disable-gui.patch, -mono-addins-0.3.ebuild,
+  -mono-addins-0.3.1.ebuild, -mono-addins-0.4.ebuild,
+  -mono-addins-0.4-r1.ebuild:
+  Remove old.
+
+  12 Sep 2010; Joseph Jezak <josejx@gentoo.org> mono-addins-0.5.ebuild:
+  Marked ppc for bug #327279.
+
+  12 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  mono-addins-0.5.ebuild:
+  stable x86, bug 327279
+
+  09 Jul 2010; Pacho Ramos <pacho@gentoo.org> mono-addins-0.5.ebuild:
+  amd64 stable, bug 327279
+
+  06 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  mono-addins-0.4-r1.ebuild:
+  Stable on amd64 wrt bug #326911
+
+*mono-addins-0.5 (04 Jul 2010)
+
+  04 Jul 2010; Pacho Ramos <pacho@gentoo.org> +mono-addins-0.5.ebuild:
+  Version bump.
+
+*mono-addins-0.4-r1 (16 Sep 2009)
+
+  16 Sep 2009; Peter Alfredsen <loki_val@gentoo.org>
+  +mono-addins-0.4-r1.ebuild:
+  Add revision which respects libdir
+
+  04 Apr 2009; Markus Meier <maekke@gentoo.org> mono-addins-0.4.ebuild:
+  amd64/x86 stable, bug #234305
+
+  27 Mar 2009; Brent Baude <ranger@gentoo.org> mono-addins-0.4.ebuild:
+  Marking mono-addins-0.4 ppc stable for bug 234305
+
+*mono-addins-0.4 (30 Nov 2008)
+
+  30 Nov 2008; Peter Alfredsen <loki_val@gentoo.org>
+  +mono-addins-0.4.ebuild:
+  Bump for mono-2
+
+  23 Nov 2008; Peter Alfredsen <loki_val@gentoo.org>
+  -mono-addins-0.2.ebuild, mono-addins-0.3.1.ebuild:
+  Remove libdir fixups, since mono-addins installs no 64-bit code and libdir
+  fixups were causin maintainer mode to be run. Punt 0.2
+
+  10 Aug 2008; Markus Meier <maekke@gentoo.org> mono-addins-0.3.ebuild:
+  x86 stable, bug #229709
+
+  30 Jul 2008; Brent Baude <ranger@gentoo.org> mono-addins-0.3.1.ebuild:
+  Marking mono-addins-0.3.1 ~ppc for bug 233181
+
+  27 Jul 2008; Olivier Crête <tester@gentoo.org> mono-addins-0.3.ebuild:
+  Stable on amd64 for tomboy, for bug #229709
+
+  01 Jun 2008; Jurek Bartuszek <jurek@gentoo.org> mono-addins-0.3.1.ebuild:
+  Updated dev-lang/mono dependency to >=1.9 (bug #224441)
+
+  31 May 2008; Jurek Bartuszek <jurek@gentoo.org> mono-addins-0.2.ebuild,
+  +mono-addins-0.3.1.ebuild:
+  Version bump (bug #213381)
+  Changed DESCRIPTION in 0.2 ebuild
+
+*mono-addins-0.3.1 (31 May 2008)
+
+  01 Mar 2008; Saleem Abdulrasool <compnerd@gentoo.org>
+  mono-addins-0.3.ebuild:
+  Up mono dependency as per bug #211871
+
+  30 Dec 2007; Saleem Abdulrasool <compnerd@gentoo.org>
+  mono-addins-0.3.ebuild:
+  Add ~amd64 keyword
+
+  30 Dec 2007; Saleem Abdulrasool <compnerd@gentoo.org>
+  mono-addins-0.2.ebuild:
+  Fix some quoting issues
+
+*mono-addins-0.3 (30 Dec 2007)
+
+  30 Dec 2007; Saleem Abdulrasool <compnerd@gentoo.org>
+  +mono-addins-0.3.ebuild:
+  Version bump from upstream
+
+  21 Jul 2007; Jurek Bartuszek <jurek@gentoo.org> mono-addins-0.2.ebuild:
+  Updated description
+
+*mono-addins-0.2 (20 Jul 2007)
+
+  20 Jul 2007; Jurek Bartuszek <jurek@gentoo.org>
+  +files/mono-addins-0.2-disable-gui.patch, +metadata.xml,
+  +mono-addins-0.2.ebuild:
+  Initial version
+

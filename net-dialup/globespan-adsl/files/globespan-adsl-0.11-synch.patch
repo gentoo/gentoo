@@ -1,0 +1,85 @@
+diff --git a/eciadsl-synch.c b/eciadsl-synch.c
+index 27c1f34..31c51dc 100644
+--- a/eciadsl-synch.c
++++ b/eciadsl-synch.c
+@@ -322,7 +322,7 @@ void read_endpoint(pusb_endpoint_t ep_int, int epnum){
+ 		  device. So we revert to the old behaviour : NO TIMEOUTS ...
+ 		*/
+ 
+-		ret = pusb_endpoint_read(ep_int, lbuf, sizeof(lbuf), 0);
++		ret = pusb_endpoint_read_int(ep_int, lbuf, sizeof(lbuf));
+ 		
+ 		if (ret < 0)
+ 		{
+diff --git a/pusb-linux.c b/pusb-linux.c
+index 79b7545..b5bf1dd 100644
+--- a/pusb-linux.c
++++ b/pusb-linux.c
+@@ -340,6 +340,54 @@ int pusb_endpoint_rw_no_timeout(int fd, int ep,
+ 	return(purb->actual_length);
+ }
+ 
++int pusb_endpoint_read_int_no_timeout(int fd, int ep,
++		       unsigned char* buf, int size)
++{
++	struct usbdevfs_urb urb, *purb = &urb;
++	int ret;
++
++	memset(purb, 0, sizeof(urb));
++
++	purb->type = USBDEVFS_URB_TYPE_INTERRUPT;
++	purb->endpoint = ep;
++	purb->flags  = 0;
++	purb->buffer = buf;
++	purb->buffer_length = size;
++	purb->signr = 0;
++
++	do
++	{
++		ret = ioctl(fd, USBDEVFS_SUBMITURB, purb);
++	}
++	while (ret < 0 && errno == EINTR);
++
++	if (ret < 0)
++		return(ret);
++
++	do
++	{
++		ret = ioctl(fd, USBDEVFS_REAPURB, &purb);
++	}
++	while (ret < 0 && errno == EINTR);
++
++	if (ret < 0)
++		return(ret);
++
++	if (purb != &urb)
++		printf("purb=%p, &urb=%p\n", (void*)purb, (void*)&urb);
++
++	if (purb->buffer != buf)
++		printf("purb->buffer=%p, buf=%p\n", (void*)purb->buffer, (void*)buf);
++
++	return(purb->actual_length);
++}
++
++int pusb_endpoint_read_int(pusb_endpoint_t ep, 
++			unsigned char* buf, int size)
++{
++	return(pusb_endpoint_read_int_no_timeout(ep->fd, ep->ep|USB_DIR_IN, buf, size));
++}
++
+ int pusb_endpoint_rw(int fd, int ep, unsigned char* buf, int size, int timeout)
+ {
+ 	struct usbdevfs_bulktransfer bulk;
+diff --git a/pusb.h b/pusb.h
+index 921543b..112e41f 100644
+--- a/pusb.h
++++ b/pusb.h
+@@ -30,6 +30,8 @@ int pusb_release_interface(pusb_device_t dev,int interface);
+ pusb_endpoint_t pusb_endpoint_open(pusb_device_t dev, int epnum, int flags);
+ int pusb_endpoint_read(pusb_endpoint_t ep, 
+ 		       unsigned char *buf, int size, int timeout);
++int pusb_endpoint_read_int(pusb_endpoint_t ep, 
++		       unsigned char *buf, int size);
+ int pusb_endpoint_write(pusb_endpoint_t ep, 
+ 			const unsigned char *buf, int size, int timeout);
+ 

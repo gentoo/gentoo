@@ -1,0 +1,13 @@
+A number of these settings are simply unworkable in gentoo
+diff -ur flask-restless-0.11.0.orig/docs/conf.py flask-restless-0.11.0/docs/conf.py
+--- docs/conf.py	2013-05-19 01:50:21.000000000 +0800
++++ docs/conf.py	2013-06-10 23:39:05.741199580 +0800
+@@ -26,7 +26,7 @@
+ 
+ # Add any Sphinx extension module names here, as strings. They can be extensions
+ # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
+-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.intersphinx']
++extensions = ['sphinx.ext.autodoc']
+ extensions += ['sphinxcontrib.httpdomain']
+ extensions += ['sphinxcontrib.issuetracker']
+ 

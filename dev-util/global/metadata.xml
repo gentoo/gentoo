@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>naota@gentoo.org</email>
+	</maintainer>
+	<maintainer>
+		<email>arfrever.fta@gmail.com</email> 
+		<description>Proxy maintainer</description>   
+	</maintainer>    
+	<use>
+		<flag name="vim">Integrate the GNU GLOBAL source code tag system with Vim</flag>
+	</use>
+</pkgmetadata>

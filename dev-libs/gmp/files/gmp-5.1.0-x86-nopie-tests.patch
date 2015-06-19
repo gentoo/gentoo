@@ -1,0 +1,119 @@
+2010-07-27	Magnus Granberg	<zorry@gentoo.org>
+
+		#236054
+		tests/Makefile.in	add -nopie to CFLAGS
+		test/misc/Makefile.in	likewise
+		test/mpbsd/Makefile.in	likewise
+		test/mpf/Makefile.in	likewise
+		test/mpn/Makefile.in	likewise
+		test/mpq/Makefile.in	likewise
+		test/mpz/Makefile.in	likewise
+		test/randMakefile.in	likewise
+		test/cxx/Makefile.in		likewise and CXXFLAGS
+
+--- a/tests/Makefile.in 2010-07-27 00:53:05.000000000 +0000
++++ b/tests/Makefile.in 2010-07-27 00:35:10.000000000 +0000
+@@ -200,7 +200,7 @@
+ CC = @CC@
+ CCAS = @CCAS@
+ CC_FOR_BUILD = @CC_FOR_BUILD@
+-CFLAGS = @CFLAGS@
++CFLAGS = @CFLAGS@ -nopie
+ CPP = @CPP@
+ CPPFLAGS = @CPPFLAGS@
+ CPP_FOR_BUILD = @CPP_FOR_BUILD@
+--- a/tests/devel/Makefile.in   2010-07-27 00:53:05.000000000 +0000
++++ b/tests/devel/Makefile.in   2010-07-27 00:35:10.000000000 +0000
+@@ -200,7 +200,7 @@
+ CC = @CC@
+ CCAS = @CCAS@
+ CC_FOR_BUILD = @CC_FOR_BUILD@
+-CFLAGS = @CFLAGS@
++CFLAGS = @CFLAGS@ -nopie
+ CPP = @CPP@
+ CPPFLAGS = @CPPFLAGS@
+ CPP_FOR_BUILD = @CPP_FOR_BUILD@
+--- a/tests/misc/Makefile.in    2010-07-27 00:53:05.000000000 +0000
++++ b/tests/misc/Makefile.in    2010-07-27 00:35:10.000000000 +0000
+@@ -200,7 +200,7 @@
+ CC = @CC@
+ CCAS = @CCAS@
+ CC_FOR_BUILD = @CC_FOR_BUILD@
+-CFLAGS = @CFLAGS@
++CFLAGS = @CFLAGS@ -nopie
+ CPP = @CPP@
+ CPPFLAGS = @CPPFLAGS@
+ CPP_FOR_BUILD = @CPP_FOR_BUILD@
+--- a/tests/mpf/Makefile.in     2010-07-27 00:53:05.000000000 +0000
++++ b/tests/mpf/Makefile.in     2010-07-27 00:35:10.000000000 +0000
+@@ -200,7 +200,7 @@
+ CC = @CC@
+ CCAS = @CCAS@
+ CC_FOR_BUILD = @CC_FOR_BUILD@
+-CFLAGS = @CFLAGS@
++CFLAGS = @CFLAGS@ -nopie
+ CPP = @CPP@
+ CPPFLAGS = @CPPFLAGS@
+ CPP_FOR_BUILD = @CPP_FOR_BUILD@
+--- a/tests/mpn/Makefile.in     2010-07-27 00:53:05.000000000 +0000
++++ b/tests/mpn/Makefile.in     2010-07-27 00:35:10.000000000 +0000
+@@ -200,7 +200,7 @@
+ CC = @CC@
+ CCAS = @CCAS@
+ CC_FOR_BUILD = @CC_FOR_BUILD@
+-CFLAGS = @CFLAGS@
++CFLAGS = @CFLAGS@ -nopie
+ CPP = @CPP@
+ CPPFLAGS = @CPPFLAGS@
+ CPP_FOR_BUILD = @CPP_FOR_BUILD@
+--- a/tests/mpq/Makefile.in     2010-07-27 00:53:05.000000000 +0000
++++ b/tests/mpq/Makefile.in     2010-07-27 00:35:10.000000000 +0000
+@@ -200,7 +200,7 @@
+ CC = @CC@
+ CCAS = @CCAS@
+ CC_FOR_BUILD = @CC_FOR_BUILD@
+-CFLAGS = @CFLAGS@
++CFLAGS = @CFLAGS@ -nopie
+ CPP = @CPP@
+ CPPFLAGS = @CPPFLAGS@
+ CPP_FOR_BUILD = @CPP_FOR_BUILD@
+--- a/tests/mpz/Makefile.in     2010-07-27 00:53:05.000000000 +0000
++++ b/tests/mpz/Makefile.in     2010-07-27 00:35:10.000000000 +0000
+@@ -200,7 +200,7 @@
+ CC = @CC@
+ CCAS = @CCAS@
+ CC_FOR_BUILD = @CC_FOR_BUILD@
+-CFLAGS = @CFLAGS@
++CFLAGS = @CFLAGS@ -nopie
+ CPP = @CPP@
+ CPPFLAGS = @CPPFLAGS@
+ CPP_FOR_BUILD = @CPP_FOR_BUILD@
+--- a/tests/rand/Makefile.in    2010-07-27 00:53:05.000000000 +0000
++++ b/tests/rand/Makefile.in    2010-07-27 00:35:10.000000000 +0000
+@@ -200,7 +200,7 @@
+ CC = @CC@
+ CCAS = @CCAS@
+ CC_FOR_BUILD = @CC_FOR_BUILD@
+-CFLAGS = @CFLAGS@
++CFLAGS = @CFLAGS@ -nopie
+ CPP = @CPP@
+ CPPFLAGS = @CPPFLAGS@
+ CPP_FOR_BUILD = @CPP_FOR_BUILD@
+--- a/tests/cxx/Makefile.in     2010-02-06 12:43:21.000000000 +0000
++++ b/tests/cxx/Makefile.in     2010-07-27 01:31:43.000000000 +0000
+@@ -189,13 +189,13 @@
+ CC = @CC@
+ CCAS = @CCAS@
+ CC_FOR_BUILD = @CC_FOR_BUILD@
+-CFLAGS = @CFLAGS@
++CFLAGS = @CFLAGS@ -nopie
+ CPP = @CPP@
+ CPPFLAGS = @CPPFLAGS@
+ CPP_FOR_BUILD = @CPP_FOR_BUILD@
+ CXX = @CXX@
+ CXXCPP = @CXXCPP@
+-CXXFLAGS = @CXXFLAGS@
++CXXFLAGS = @CXXFLAGS@ -nopie
+ CYGPATH_W = @CYGPATH_W@
+ DEFN_LONG_LONG_LIMB = @DEFN_LONG_LONG_LIMB@
+ DEFS = @DEFS@

@@ -1,0 +1,44 @@
+# ChangeLog for mail-filter/amavisd-milter
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/amavisd-milter/ChangeLog,v 1.10 2015/01/16 11:08:17 mschiff Exp $
+
+*amavisd-milter-1.6.0-r1 (16 Jan 2015)
+
+  16 Jan 2015; Marc Schiffbauer <mschiff@gentoo.org>
+  +amavisd-milter-1.6.0-r1.ebuild, +files/amavisd-milter-1.6.0-policybank.patch:
+  Fix new -B option. Thanks to Christian Roessner. Fixes #517088
+
+  07 Jun 2014; Agostino Sarubbo <ago@gentoo.org> amavisd-milter-1.5.0-r1.ebuild:
+  Stable for x86, wrt bug #502824
+
+  28 May 2014; Chema Alonso <nimiux@gentoo.org> amavisd-milter-1.5.0-r1.ebuild:
+  Stable for amd64 wrt bug #502824
+
+*amavisd-milter-1.6.0 (16 May 2014)
+
+  16 May 2014; Eray Aslan <eras@gentoo.org> +amavisd-milter-1.6.0.ebuild:
+  Version bump - bug #509292
+
+*amavisd-milter-1.5.0-r1 (27 Nov 2013)
+
+  27 Nov 2013; Marc Schiffbauer <mschiff@gentoo.org>
+  +amavisd-milter-1.5.0-r1.ebuild:
+  revbump: update EAPI, add epatch_user. Fixes #492672.
+
+  11 Aug 2012; Agostino Sarubbo <ago@gentoo.org> amavisd-milter-1.5.0.ebuild:
+  Stable for amd64, wrt bug #427196
+
+  24 Jul 2012; Eray Aslan <eras@gentoo.org> files/amavisd-milter.initd:
+  Fix init script warnings
+
+  24 Jul 2012; Jeff Horelick <jdhore@gentoo.org> amavisd-milter-1.5.0.ebuild:
+  marked x86 per bug 427196
+
+  18 Nov 2011; Eray Aslan <eras@gentoo.org> amavisd-milter-1.5.0.ebuild:
+  Depend on libmilter or sendmail - bug #390927
+
+*amavisd-milter-1.5.0 (25 Apr 2011)
+
+  25 Apr 2011; Eray Aslan <eras@gentoo.org> +amavisd-milter-1.5.0.ebuild,
+  +files/amavisd-milter.confd, +files/amavisd-milter.initd, +metadata.xml:
+  Initial commit - thanks to Oleg Gawriloff bug #318853

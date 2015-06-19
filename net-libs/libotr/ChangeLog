@@ -1,0 +1,214 @@
+# ChangeLog for net-libs/libotr
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libotr/ChangeLog,v 1.59 2015/02/27 11:09:04 ago Exp $
+
+  27 Feb 2015; Agostino Sarubbo <ago@gentoo.org> libotr-4.1.0.ebuild:
+  Stable for sparc, wrt bug #536254
+
+  23 Feb 2015; Agostino Sarubbo <ago@gentoo.org> libotr-4.1.0.ebuild:
+  Stable for ppc64, wrt bug #536254
+
+  28 Jan 2015; Agostino Sarubbo <ago@gentoo.org> libotr-4.1.0.ebuild:
+  Stable for ppc, wrt bug #536254
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> libotr-4.1.0.ebuild:
+  Stable for x86, wrt bug #536254
+
+  22 Jan 2015; Agostino Sarubbo <ago@gentoo.org> libotr-4.1.0.ebuild:
+  Stable for amd64, wrt bug #536254
+
+  19 Jan 2015; Jeroen Roovers <jer@gentoo.org> libotr-4.1.0.ebuild:
+  Stable for HPPA (bug #536254).
+
+  10 Jan 2015; Manuel Rüger <mrueg@gentoo.org> -libotr-4.0.0.ebuild:
+  Remove old.
+
+*libotr-4.1.0 (02 Nov 2014)
+
+  02 Nov 2014; Manuel Rüger <mrueg@gentoo.org> +libotr-4.1.0.ebuild:
+  Version bump.
+
+  01 Mar 2014; Michał Górny <mgorny@gentoo.org> libotr-3.2.1.ebuild,
+  libotr-4.0.0.ebuild:
+  Update libgcrypt dep to use slot :0.
+
+  14 Feb 2014; Manuel Rüger <mrueg@gentoo.org> libotr-3.2.1.ebuild,
+  libotr-4.0.0.ebuild:
+  Update HOMEPAGE and SRC_URI. Fixes bug #501076.
+
+  20 Jun 2013; Lars Wendler <polynomial-c@gentoo.org> -libotr-3.1.0.ebuild,
+  -libotr-3.2.0.ebuild, libotr-4.0.0.ebuild:
+  Removed old (vulnerable?) versions. Converted libotr-4.0.0.ebuild to EAPI-5.
+
+  13 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libotr-3.2.1.ebuild:
+  Stable for sparc, wrt bug #430486
+
+  12 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libotr-3.2.1.ebuild:
+  Stable for x86, wrt bug #430486
+
+  11 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libotr-3.2.1.ebuild:
+  Stable for ppc64, wrt bug #430486
+
+  11 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libotr-3.2.1.ebuild:
+  Stable for ppc, wrt bug #430486
+
+  08 Apr 2013; Jeroen Roovers <jer@gentoo.org> libotr-3.2.1.ebuild:
+  Stable for HPPA (bug #430486).
+
+  08 Apr 2013; Sergey Popov <pinkbyte@gentoo.org> libotr-3.2.1.ebuild:
+  Stable on amd64, wrt bug #430486
+
+*libotr-3.2.1 (08 Apr 2013)
+
+  08 Apr 2013; Sergey Popov <pinkbyte@gentoo.org> +libotr-3.2.1.ebuild:
+  Version bump, wrt bug #430486
+
+  22 Oct 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+*libotr-4.0.0 (18 Oct 2012)
+
+  18 Oct 2012; Michael Palimaka <kensington@gentoo.org> +libotr-4.0.0.ebuild:
+  Version bump, wrt bug #433940.
+
+  19 Jan 2010; Jeroen Roovers <jer@gentoo.org> libotr-3.2.0.ebuild:
+  Stable for HPPA too.
+
+  10 Jan 2010; Christian Faulhammer <fauli@gentoo.org> libotr-3.2.0.ebuild:
+  Transfer Prefix keywords
+
+  21 Dec 2009; Raúl Porcel <armin76@gentoo.org> libotr-3.2.0.ebuild:
+  sparc stable wrt #281643
+
+  31 Oct 2009; Brent Baude <ranger@gentoo.org> libotr-3.2.0.ebuild:
+  Marking libotr-3.2.0 ppc64 for bug 262554
+
+  10 Oct 2009; Samuli Suominen <ssuominen@gentoo.org> libotr-3.2.0.ebuild:
+  amd64 stable wrt #262554
+
+  29 Aug 2009; nixnut <nixnut@gentoo.org> libotr-3.2.0.ebuild:
+  ppc stable #281643
+
+  25 Aug 2009; Christian Faulhammer <fauli@gentoo.org> libotr-3.2.0.ebuild:
+  stable x86, bug 281643
+
+  22 Aug 2009; Mark Loeser <halcy0n@gentoo.org> libotr-3.1.0.ebuild,
+  libotr-3.2.0.ebuild:
+  Remove unnecessary CFLAG stripping; bug #235990
+
+  22 Aug 2009; Olivier Crête <tester@gentoo.org> libotr-3.1.0.ebuild,
+  libotr-3.2.0.ebuild:
+  Build with parallel make, remove -j1, bug #235990
+
+  11 Apr 2009; Raúl Porcel <armin76@gentoo.org> libotr-3.2.0.ebuild:
+  Add ~alpha
+
+  11 Sep 2008; Raúl Porcel <armin76@gentoo.org> libotr-3.2.0.ebuild:
+  Add ~arm wrt #190684
+
+  19 Jul 2008; Alexis Ballier <aballier@gentoo.org> libotr-3.2.0.ebuild:
+  keyword ~x86-fbsd
+
+*libotr-3.2.0 (02 Jul 2008)
+
+  02 Jul 2008; Olivier Crête <tester@gentoo.org> -libotr-1.0.4.ebuild,
+  -libotr-2.0.0.ebuild, -libotr-2.0.1.ebuild, -libotr-2.0.2.ebuild,
+  -libotr-3.0.0.ebuild, +libotr-3.2.0.ebuild:
+  Version bump, cleanup old
+
+  27 Mar 2008; Markus Rothe <corsair@gentoo.org> libotr-3.1.0.ebuild:
+  Stable on ppc64; bug #215064
+
+  27 Jan 2008; Christoph Mende <angelos@gentoo.org> libotr-3.1.0.ebuild:
+  Stable on amd64, bug #204427
+
+  16 Jan 2008; Brent Baude <ranger@gentoo.org> libotr-3.1.0.ebuild:
+  Marking libotr-3.1.0 ppc for bug 204287
+
+  05 Jan 2008; Markus Meier <maekke@gentoo.org> libotr-3.1.0.ebuild:
+  x86 stable, needed for bug #204287
+
+  05 Jan 2008; Markus Ullmann <jokey@gentoo.org> libotr-3.1.0.ebuild:
+  Quoting
+
+  05 Jan 2008; Markus Ullmann <jokey@gentoo.org> libotr-3.1.0.ebuild:
+  Stable on sparc as dep for mcabber 0.9.5
+
+  28 Aug 2007; nixnut <nixnut@gentoo.org> libotr-3.0.0.ebuild:
+  Stable on ppc wrt bug 189781
+
+  26 Aug 2007; Wulf C. Krueger <philantrop@gentoo.org> libotr-3.0.0.ebuild:
+  Marked stable on amd64 as per bug 189781.
+
+  24 Aug 2007; Christian Faulhammer <opfer@gentoo.org> libotr-3.0.0.ebuild:
+  stable x86, bug 189781
+
+  22 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org> libotr-3.0.0.ebuild:
+  Stable on sparc wrt #189781
+
+*libotr-3.1.0 (07 Aug 2007)
+
+  07 Aug 2007; Olivier Crête <tester@gentoo.org> +libotr-3.1.0.ebuild:
+  Version bump, bug #187573
+
+  04 May 2007; Jeroen Roovers <jer@gentoo.org> libotr-3.0.0.ebuild:
+  Marked ~hppa (bug #176926).
+
+  02 May 2007; Raúl Porcel <armin76@gentoo.org> libotr-3.0.0.ebuild:
+  Add ~ia64 wrt ~176731
+
+  02 May 2007; Markus Rothe <corsair@gentoo.org> libotr-3.0.0.ebuild:
+  Added ~ppc64; bug #176731
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  04 Feb 2007; <welp@gentoo.org> libotr-2.0.2.ebuild:
+  Stable on amd64 wrt bug #146259
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> libotr-1.0.4.ebuild,
+  libotr-2.0.0.ebuild, libotr-2.0.1.ebuild, libotr-2.0.2.ebuild,
+  libotr-3.0.0.ebuild:
+  Remove debug.eclass usage.
+
+*libotr-3.0.0 (14 Nov 2005)
+
+  14 Nov 2005; Don Seiler <rizzo@gentoo.org> +libotr-3.0.0.ebuild:
+  Version bump for bug #111645
+
+  01 Aug 2005; Joseph Jezak <josejx@gentoo.org> libotr-2.0.2.ebuild:
+  Marked ~ppc for bug #100396.
+
+  10 Jul 2005; Sven Wegener <swegener@gentoo.org> libotr-1.0.4.ebuild,
+  libotr-2.0.0.ebuild, libotr-2.0.1.ebuild, libotr-2.0.2.ebuild:
+  QA: Removed 'emake || make || die' and variants. Either a package is
+  parallel build safe or it is not. There's nothing like trying and falling
+  back.
+
+*libotr-2.0.2 (17 May 2005)
+
+  17 May 2005; Don Seiler <rizzo@gentoo.org> +libotr-2.0.2.ebuild:
+  Version bump
+
+  30 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> libotr-2.0.1.ebuild:
+  Keyworded ~sparc
+
+*libotr-2.0.1 (17 Feb 2005)
+
+  17 Feb 2005; Don Seiler <rizzo@gentoo.org> +libotr-2.0.1.ebuild:
+  Version bump, closes bug #82285
+
+*libotr-2.0.0 (10 Feb 2005)
+
+  10 Feb 2005; Don Seiler <rizzo@gentoo.org> +libotr-2.0.0.ebuild:
+  Version bump
+
+*libotr-1.0.4 (23 Jan 2005)
+
+  23 Jan 2005; Don Seiler <rizzo@gentoo.org> +libotr-1.0.4.ebuild:
+  Version bump
+
+*libotr-1.0.3 (21 Jan 2005)
+
+  21 Jan 2005; Don Seiler <rizzo@gentoo.org> +libotr-1.0.3.ebuild:
+  Initial add

@@ -1,0 +1,79 @@
+# ChangeLog for media-plugins/vdr-vdrmanager
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-vdrmanager/ChangeLog,v 1.12 2014/08/31 11:42:19 hd_brummy Exp $
+
+  31 Aug 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-vdrmanager-0.8.ebuild, -vdr-vdrmanager-0.9.ebuild,
+  -vdr-vdrmanager-0.10.ebuild, -files/vdr-vdrmanager-0.9_vdr-2.1.2.diff:
+  cleanup old
+
+*vdr-vdrmanager-0.12 (01 Jun 2014)
+
+  01 Jun 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-vdrmanager-0.12.ebuild, +files/confd-0.12, +files/rc-addon-0.12.sh:
+  bump
+
+*vdr-vdrmanager-0.10 (27 Dec 2013)
+
+  27 Dec 2013; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-vdrmanager-0.10.ebuild:
+  bump
+
+  26 Oct 2013; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-vdrmanager-0.9.ebuild, +files/vdr-vdrmanager-0.9_vdr-2.1.2.diff:
+  compile fix >=vdr-2.1.2
+
+*vdr-vdrmanager-0.9 (31 Mar 2013)
+
+  31 Mar 2013; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-vdrmanager-0.9.ebuild:
+  bump, taken from vdr-devel overlay
+
+  16 Dec 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-vdrmanager-0.8.ebuild:
+  fixed homepage
+
+  02 Dec 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-vdrmanager-0.8.ebuild, +files/confd, +files/rc-addon.sh, +metadata.xml:
+  moved from overlay vdr-devel
+
+  28 Nov 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-vdrmanager-0.6-r1.ebuild, -vdr-vdrmanager-0.7.ebuild,
+  vdr-vdrmanager-0.8.ebuild:
+  clean up; fixed homepage, thx to T.Rausch on bug 444998
+
+*vdr-vdrmanager-0.8 (27 Nov 2012)
+
+  27 Nov 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-vdrmanager-0.8.ebuild:
+  bump
+
+*vdr-vdrmanager-0.7 (15 Jun 2012)
+
+  15 Jun 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-vdrmanager-0.7.ebuild:
+  bump; need then also to update the android app
+
+  30 Apr 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-vdrmanager-0.6-r1.ebuild, +files/confd, +files/rc-addon.sh,
+  +metadata.xml:
+  taken from maintree, wrong depend on >=vdr-1.7.5 there
+
+*vdr-vdrmanager-0.6-r1 (02 Mar 2012)
+
+  02 Mar 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-vdrmanager-0.6.ebuild, +vdr-vdrmanager-0.6-r1.ebuild, files/confd,
+  files/rc-addon.sh:
+  make the -s parameter configurable
+
+  02 Mar 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-vdrmanager-0.6.ebuild, files/confd, files/rc-addon.sh:
+  typo fixed
+
+*vdr-vdrmanager-0.6 (24 Feb 2012)
+
+  24 Feb 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-vdrmanager-0.6.ebuild, +files/confd, +files/rc-addon.sh, +metadata.xml:
+  initial ebuild, thanks to M.Lange on bug 389543 and T.Rheinhold on IRC for
+  some inspiration
+

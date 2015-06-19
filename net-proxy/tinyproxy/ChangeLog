@@ -1,0 +1,272 @@
+# ChangeLog for net-proxy/tinyproxy
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/tinyproxy/ChangeLog,v 1.56 2015/02/28 20:03:10 maekke Exp $
+
+  28 Feb 2015; Markus Meier <maekke@gentoo.org> tinyproxy-1.8.3-r3.ebuild:
+  add ~arm, bug #540102
+
+  07 Jan 2015; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Reassign as and cleanup discussed at https://www.mail-archive.com/gentoo-
+  dev@lists.gentoo.org/msg66357.html
+
+  10 Oct 2013; Tom Wijsman <TomWij@gentoo.org> -tinyproxy-1.8.3-r1.ebuild,
+  -tinyproxy-1.8.3-r2.ebuild, -tinyproxy-1.8.3.ebuild:
+  Cleanup of old ebuilds for security bug #432046.
+
+  09 Oct 2013; Agostino Sarubbo <ago@gentoo.org> tinyproxy-1.8.3-r3.ebuild:
+  Stable for sparc, wrt bug #432046
+
+  07 Oct 2013; Agostino Sarubbo <ago@gentoo.org> tinyproxy-1.8.3-r3.ebuild:
+  Stable for ppc, wrt bug #432046
+
+  06 Oct 2013; Agostino Sarubbo <ago@gentoo.org> tinyproxy-1.8.3-r3.ebuild:
+  Stable for alpha, wrt bug #432046
+
+  06 Oct 2013; Agostino Sarubbo <ago@gentoo.org> tinyproxy-1.8.3-r3.ebuild:
+  Stable for ia64, wrt bug #432046
+
+  06 Oct 2013; Agostino Sarubbo <ago@gentoo.org> tinyproxy-1.8.3-r3.ebuild:
+  Stable for x86, wrt bug #432046
+
+  23 Sep 2013; Agostino Sarubbo <ago@gentoo.org> tinyproxy-1.8.3-r3.ebuild:
+  Stable for amd64, wrt bug #432046
+
+  01 Sep 2013; Tom Wijsman <TomWij@gentoo.org>
+  +files/tinyproxy-1.8.3-r2-DoS-Prevention.patch,
+  -files/tinyproxy-1.8.3-DoS-Prevention.patch, tinyproxy-1.8.3-r2.ebuild,
+  tinyproxy-1.8.3-r3.ebuild:
+  Put back patch revision to denote with which ebuild revision it was
+  introduced, that makes tracking easy. Tested whether all versions properly
+  build again.
+
+  31 Aug 2013; Jeroen Roovers <jer@gentoo.org> tinyproxy-1.8.3-r3.ebuild:
+  Fix PF usage for init script.
+
+  31 Aug 2013; Jeroen Roovers <jer@gentoo.org> tinyproxy-1.8.3-r2.ebuild,
+  tinyproxy-1.8.3-r3.ebuild, +files/tinyproxy-1.8.3-DoS-Prevention.patch,
+  -files/tinyproxy-1.8.3-r2-DoS-Prevention.patch:
+  Fix patch name (Gentoo revisions do not make sense).
+
+*tinyproxy-1.8.3-r3 (31 Aug 2013)
+
+  31 Aug 2013; Pacho Ramos <pacho@gentoo.org> +files/tinyproxy.service,
+  +files/tinyproxy.tmpfiles.conf, +tinyproxy-1.8.3-r3.ebuild:
+  Add unit file (#480242 by Charles Nérot)
+
+  30 May 2013; Tom Wijsman <TomWij@gentoo.org> ChangeLog,
+  +tinyproxy-1.8.3-r2.ebuild, +files/tinyproxy-1.8.3-r2.initd,
+  +files/tinyproxy-1.8.3-r2-DoS-Prevention.patch:
+  Use /run instead of /var/run, fixes bug #444167. Apply DoS Prevention
+  patches, temporary fixes for bug #432046. Fix ChangeLog issues; there was an
+  empty log message above header by flameeyes and an empty message by jer.
+
+  29 May 2013; Diego E. Pettenò <flameeyes@gentoo.org>
+  +files/tinyproxy-1.8.3.initd, +tinyproxy-1.8.3-r1.ebuild:
+  Cleanup ebuild, use REQUIRED_USE, always install docs, improve init script so
+  that now it actually works.
+
+  24 Apr 2013; Jeroen Roovers <jer@gentoo.org> tinyproxy-1.8.3.ebuild:
+  Disable silent make rules. Fix building with automake-1.13.
+
+  21 Nov 2012; Jeroen Roovers <jer@gentoo.org> tinyproxy-1.8.3.ebuild:
+  Remove subdir requirement in default pid config.
+
+  21 Nov 2012; Jeroen Roovers <jer@gentoo.org> tinyproxy-1.8.3.ebuild,
+  -files/tinyproxy.initd:
+  Remove keepdir /var/run/${PN} by Cedric Godin (bug #444167).
+
+  03 Sep 2011; Tomáš Chvátal <scarabeus@gentoo.org> metadata.xml:
+  Remove unused local desc.
+
+  27 Aug 2011; Jeroen Roovers <jer@gentoo.org> -tinyproxy-1.6.3-r1.ebuild,
+  -tinyproxy-1.6.4.ebuild, -tinyproxy-1.6.5.ebuild, -tinyproxy-1.8.2.ebuild,
+  -files/tinyproxy-no-via.patch:
+  ^
+
+  27 Aug 2011; Raúl Porcel <armin76@gentoo.org> tinyproxy-1.8.3.ebuild:
+  alpha/ia64/sparc stable wrt #363425
+
+  18 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org> tinyproxy-1.8.3.ebuild:
+  ppc stable wrt #363425
+
+  17 Aug 2011; Tony Vroon <chainsaw@gentoo.org> tinyproxy-1.8.3.ebuild:
+  1.8.3 marked stable on AMD64 based on arch testing by Elijah El Lazkani &
+  Agostino "ago" Sarubbo in security bug #363425 filed by Tim Sammut.
+
+  17 Aug 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> tinyproxy-1.8.3.ebuild:
+  x86 stable wrt security bug #363425
+
+*tinyproxy-1.8.3 (16 Aug 2011)
+
+  16 Aug 2011; Jeroen Roovers <jer@gentoo.org> +tinyproxy-1.8.3.ebuild:
+  Version bump (bug #363425).
+
+  16 Apr 2011; Raúl Porcel <armin76@gentoo.org> tinyproxy-1.8.2.ebuild:
+  ia64/sparc stable wrt #358091
+
+  28 Mar 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  tinyproxy-1.8.2.ebuild:
+  x86 stable wrt bug #358091
+
+  28 Mar 2011; Jeroen Roovers <jer@gentoo.org> tinyproxy-1.8.2.ebuild:
+  Remove unneeded fortune dep. Explain why emake test is used. Add
+  USE=xtinyproxy-header requirement in src_test() thanks to andreas schürch
+  (bug #358113 again).
+
+  27 Mar 2011; Tobias Klausmann <klausman@gentoo.org> tinyproxy-1.8.2.ebuild:
+  Stable on alpha, bug #358091
+
+  11 Mar 2011; Markos Chandras <hwoarang@gentoo.org> tinyproxy-1.8.2.ebuild:
+  Stable on amd64 wrt bug #358091
+
+  11 Mar 2011; Jeroen Roovers <jer@gentoo.org> tinyproxy-1.8.2.ebuild,
+  +files/tinyproxy-1.8.2.initd:
+  Use a static initd script instead of a dynamically changed one (bug #358123).
+
+  10 Mar 2011; Jeroen Roovers <jer@gentoo.org> tinyproxy-1.8.2.ebuild:
+  The test suite needs fortune to be installed, by Myckel Habets (bug #358113).
+
+  10 Mar 2011; Jeroen Roovers <jer@gentoo.org> tinyproxy-1.8.2.ebuild:
+  Use the correct patch file by Myckel Habets (bug #358117).
+
+  25 Jan 2011; Jeroen Roovers <jer@gentoo.org> tinyproxy-1.8.2.ebuild:
+  Add src_test() to ensure the tests are run - make check does not do that.
+
+*tinyproxy-1.8.2 (25 Jan 2011)
+
+  25 Jan 2011; Jeroen Roovers <jer@gentoo.org>
+  files/tinyproxy-1.8.1-ldflags.patch, +tinyproxy-1.8.2.ebuild,
+  files/tinyproxy-no-via.patch:
+  Version bump by Christian Zuckschwerdt (bug #352617). Clean up patches.
+
+  04 Jun 2010; Jeroen Roovers <jer@gentoo.org> tinyproxy-1.8.1-r1.ebuild:
+  Invert USE=minimal logic thanks to Ben Kohler (bug #321753 again).
+
+*tinyproxy-1.8.1-r1 (03 Jun 2010)
+
+  03 Jun 2010; Jeroen Roovers <jer@gentoo.org> -tinyproxy-1.8.1.ebuild,
+  tinyproxy-1.8.1-r1.ebuild:
+  Fix various directory paths. Add tinyproxy user and make it own its
+  directories. Fix configuration file location as used in initd script.
+
+  03 Jun 2010; Jeroen Roovers <jer@gentoo.org> tinyproxy-1.8.1.ebuild:
+  Remove USE=doc, only use USE=minimal.
+
+  03 Jun 2010; Jeroen Roovers <jer@gentoo.org> tinyproxy-1.8.1.ebuild,
+  +files/tinyproxy-1.8.1-minimal.patch:
+  Introduce USE=minimal to not install documentation or man pages and to not
+  depend on app-text/asciidoc thanks to jakie jia (bug #321753). Do not move
+  HTML templates to docdir as they are not docs.
+
+*tinyproxy-1.8.1 (26 May 2010)
+
+  26 May 2010; Jeroen Roovers <jer@gentoo.org> +tinyproxy-1.8.1.ebuild,
+  +files/tinyproxy-1.8.1-ldflags.patch, metadata.xml:
+  Version bump thanks to Alexander Orlenko (bug #320079). Respect LDFLAGS.
+  Expose more configure options as USE flags.
+
+*tinyproxy-1.6.5 (29 Nov 2009)
+
+  29 Nov 2009; Alin Năstac <mrness@gentoo.org> +tinyproxy-1.6.5.ebuild,
+  +files/tinyproxy-no-via.patch, metadata.xml:
+  Add http-via-header USE flag (#292715). Migrate to EAPI 2.
+
+*tinyproxy-1.6.4 (25 Sep 2008)
+
+  25 Sep 2008; Alin Năstac <mrness@gentoo.org> +tinyproxy-1.6.4.ebuild:
+  Version bump and update HOMEPAGE (#238149).
+
+  23 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+*tinyproxy-1.6.3-r1 (16 Feb 2008)
+
+  16 Feb 2008; Alin Năstac <mrness@gentoo.org> +files/tinyproxy.initd,
+  -files/tinyproxy.rc, -tinyproxy-1.6.3.ebuild, +tinyproxy-1.6.3-r1.ebuild:
+  Improve init script (#209115).
+
+  28 Apr 2007; Sven Wegener <swegener@gentoo.org> tinyproxy-1.6.3.ebuild:
+  Fix *initd, *confd and *envd calls (#17388, #174266)
+
+  21 Aug 2006; Daniel Gryniewicz <dang@gentoo.org> tinyproxy-1.6.3.ebuild:
+  Marked stable on amd64 for bug #144626
+
+  06 Jul 2006; Alin Nastac <mrness@gentoo.org> tinyproxy-1.6.3.ebuild:
+  Explain filter option in post-install function (#138977).
+
+  15 Sep 2005; Aron Griffis <agriffis@gentoo.org> tinyproxy-1.6.3.ebuild:
+  Mark 1.6.3 stable on alpha
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> tinyproxy-1.6.3.ebuild:
+  stable on ia64
+
+  04 Jun 2005; Alin Nastac <mrness@gentoo.org> -tinyproxy-1.6.2.ebuild:
+  Remove obsolete version.
+
+  21 May 2005; Aron Griffis <agriffis@gentoo.org> tinyproxy-1.6.3.ebuild:
+  add ~alpha ~amd64 ~ia64
+
+  22 Apr 2005; Alin Nastac <mrness@gentoo.org> :
+  Rename category & herd www-proxy to net-proxy
+
+  08 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  tinyproxy-1.6.3.ebuild:
+  Stable on ppc.
+
+  06 Apr 2005; Alin Nastac <mrness@gentoo.org> tinyproxy-1.6.3.ebuild:
+  Stable on x86
+
+*tinyproxy-1.6.3 (22 Feb 2005)
+
+  22 Feb 2005; Alin Nastac <mrness@gentoo.org> +tinyproxy-1.6.3.ebuild:
+  Version bump (#82962).
+
+  17 Feb 2005; Alin Nastac <mrness@gentoo.org> +metadata.xml,
+  -tinyproxy-1.6.1.ebuild, tinyproxy-1.6.2.ebuild:
+  Remove old version and add metadata.xml
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  tinyproxy-1.6.2.ebuild:
+  Masked tinyproxy-1.6.2.ebuild stable for ppc
+
+  31 Aug 2004; David Holm <dholm@gentoo.org> tinyproxy-1.6.2.ebuild:
+  Added to ~ppc.
+
+  30 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org> tinyproxy-1.6.2.ebuild:
+  Keyworded ~sparc wrt #61783
+
+*tinyproxy-1.6.1 (15 Aug 2004)
+
+  15 Aug 2004; Stuart Herbert <stuart@gentoo.org> +files/tinyproxy.rc,
+  +tinyproxy-1.6.1.ebuild, +tinyproxy-1.6.2.ebuild:
+  Moved from net-www/tinyproxy to www-proxy/tinyproxy.
+
+*tinyproxy-1.6.2 (27 Oct 2003)
+
+  27 Oct 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump.
+
+*tinyproxy-1.6.1 (06 Sep 2003)
+
+  09 Oct 2003; Mike Frysinger <vapier@gentoo.org> :
+  Add a small init.d script.
+
+  06 Sep 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump.
+
+*tinyproxy-1.5.2 (10 Mar 2003)
+
+  12 Jun 2003; <msterret@gentoo.org> tinyproxy-1.5.1.ebuild,
+  tinyproxy-1.5.2.ebuild:
+  fix Header
+
+  10 Mar 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump.
+
+*tinyproxy-1.5.1 (11 Nov 2002)
+
+  11 Nov 2002; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me.

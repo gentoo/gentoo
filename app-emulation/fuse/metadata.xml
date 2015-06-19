@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>jmfo1982@yahoo.es</email>
+		<description>Proxied Maintainer. Please assign on bugs.</description>
+		<name>José Manuel Ferrer Ortiz</name>
+	</maintainer>
+	<maintainer>
+		<email>neurogeek@gentoo.org</email>
+		<name>Jesus Rivero</name>
+		<description>Proxy Maintainer. Please CC on bugs</description>
+	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">fuse-emulator</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,9 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=dailystrips automatically downloads your favorite online comics from the web
+HOMEPAGE=http://dailystrips.sourceforge.net/
+KEYWORDS=alpha amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=>=dev-perl/libwww-perl-5.50 dev-perl/DateTime dev-perl/TimeDate
+SLOT=0
+SRC_URI=mirror://sourceforge/dailystrips/dailystrips-1.0.28.tar.gz
+_md5_=012b1364376ce50be85dfa5d5172cb72

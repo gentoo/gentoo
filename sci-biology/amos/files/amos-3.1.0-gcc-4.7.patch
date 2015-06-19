@@ -1,0 +1,15 @@
+ src/Align/find-tandem.cc |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/src/Align/find-tandem.cc b/src/Align/find-tandem.cc
+index ddf1cab..a29e21e 100644
+--- a/src/Align/find-tandem.cc
++++ b/src/Align/find-tandem.cc
+@@ -7,6 +7,7 @@
+ #include <vector>
+ #include <ctime>
+ #include <sys/time.h>
++#include <unistd.h>
+ using namespace std;
+ 
+ const int OFFSET_TABLE_SIZE = 100;

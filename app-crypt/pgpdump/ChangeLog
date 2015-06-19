@@ -1,0 +1,139 @@
+# ChangeLog for app-crypt/pgpdump
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/pgpdump/ChangeLog,v 1.37 2015/02/27 11:05:06 ago Exp $
+
+  27 Feb 2015; Agostino Sarubbo <ago@gentoo.org> pgpdump-0.29.ebuild:
+  Stable for sparc, wrt bug #534830
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> pgpdump-0.29.ebuild:
+  Stable for x86, wrt bug #534830
+
+  17 Jan 2015; Agostino Sarubbo <ago@gentoo.org> pgpdump-0.29.ebuild:
+  Stable for ppc, wrt bug #534830
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> pgpdump-0.29.ebuild:
+  Stable for amd64, wrt bug #534830
+
+*pgpdump-0.29 (03 Aug 2014)
+
+  03 Aug 2014; Manuel Rüger <mrueg@gentoo.org> +pgpdump-0.29.ebuild:
+  Version bump.
+
+  24 Dec 2013; Manuel Rüger <mrueg@gentoo.org> -pgpdump-0.27.ebuild:
+  Cleanup old.
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> pgpdump-0.28-r1.ebuild:
+  Stable for x86, wrt bug #488408
+
+  23 Dec 2013; Agostino Sarubbo <ago@gentoo.org> pgpdump-0.28-r1.ebuild:
+  Stable for sparc, wrt bug #488408
+
+  21 Dec 2013; Agostino Sarubbo <ago@gentoo.org> pgpdump-0.28-r1.ebuild:
+  Stable for ppc, wrt bug #488408
+
+  02 Nov 2013; Chema Alonso <nimiux@gentoo.org> pgpdump-0.28-r1.ebuild:
+  Stable for amd64 wrt bug #488408
+
+*pgpdump-0.28-r1 (10 Aug 2013)
+
+  10 Aug 2013; Manuel Rüger <mrueg@gentoo.org>
+  +files/pgpdump-0.28-respect-ldflags.patch, +pgpdump-0.28-r1.ebuild,
+  -pgpdump-0.28.ebuild:
+  Respect LDFLAGS. Fixes bug #480538
+
+*pgpdump-0.28 (10 Aug 2013)
+
+  10 Aug 2013; Manuel Rüger <mrueg@gentoo.org> +pgpdump-0.28.ebuild,
+  metadata.xml:
+  Version bump. Add myself as maintainer. Fixes bug #480524.
+
+  10 Feb 2013; Michael Palimaka <kensington@gentoo.org> -pgpdump-0.26.ebuild:
+  Remove old.
+
+  10 Feb 2013; Agostino Sarubbo <ago@gentoo.org> pgpdump-0.27.ebuild:
+  Stable for ppc, wrt bug #391547
+
+  06 Feb 2013; Agostino Sarubbo <ago@gentoo.org> pgpdump-0.27.ebuild:
+  Stable for sparc, wrt bug #391547
+
+  03 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #22900
+
+  17 Nov 2012; Ulrich Müller <ulm@gentoo.org> pgpdump-0.26.ebuild,
+  pgpdump-0.27.ebuild:
+  Fix LICENSE, see COPYRIGHT file in tarball, bug 441762.
+
+  09 Dec 2011; Markos Chandras <hwoarang@gentoo.org> pgpdump-0.27.ebuild:
+  Stable on amd64 wrt bug #391547
+
+  01 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> pgpdump-0.27.ebuild:
+  x86 stable wrt bug #391547
+
+*pgpdump-0.27 (10 May 2011)
+
+  10 May 2011; MATSUU Takuto <matsuu@gentoo.org> +pgpdump-0.27.ebuild:
+  Version bumped.
+
+  19 May 2009; MATSUU Takuto <matsuu@gentoo.org> -pgpdump-0.22.ebuild:
+  Removed old version.
+
+  11 Jan 2009; Markus Meier <maekke@gentoo.org> pgpdump-0.26.ebuild:
+  x86 stable, bug #253325
+
+  08 Jan 2009; Tiago Cunha <tcunha@gentoo.org> pgpdump-0.26.ebuild:
+  stable sparc, bug 253325
+
+  03 Jan 2009; Dawid Węgliński <cla@gentoo.org> pgpdump-0.26.ebuild:
+  Stable on amd64 (bug #253325)
+
+  02 Jan 2009; Tobias Scherbaum <dertobi123@gentoo.org> pgpdump-0.26.ebuild:
+  ppc stable, bug #253325
+
+  01 Jan 2009; MATSUU Takuto <matsuu@gentoo.org> -pgpdump-0.24.ebuild:
+  Removed old version.
+
+*pgpdump-0.26 (04 Nov 2008)
+
+  04 Nov 2008; MATSUU Takuto <matsuu@gentoo.org> +pgpdump-0.26.ebuild:
+  FIxed CC variable, bug #243550. Fixed HOMEPAGE and SRC_URI. Clean up
+  ebuild.
+
+  13 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add herd
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  08 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*pgpdump-0.24 (26 Dec 2004)
+
+  26 Dec 2004; MATSUU Takuto <matsuu@gentoo.org> +pgpdump-0.24.ebuild:
+  Version bumped.
+
+  06 Oct 2004; MATSUU Takuto <matsuu@gentoo.org> pgpdump-0.22.ebuild:
+  Set IUSE. Bugs #66410.
+  Mark stable.
+
+*pgpdump-0.22 (16 Jul 2004)
+
+  16 Jul 2004; Daniel Ahlberg <aliz@gentoo.org> pgpdump-0.22.ebuild:
+  Version bump, ebuild contributed by Justin Guyett <justin@soze.net>.
+
+*pgpdump-0.21 (17 Jan 2004)
+
+  17 Jan 2004; MATSUU Takuto <matsuu@gentoo.org> pgpdump-0.21.ebuild:
+  Version bumped. Added ~ppc and ~sparc to KEYWORDS.
+
+*pgpdump-0.20 (09 Dec 2003)
+
+  09 Dec 2003; MATSUU Takuto <matsuu@gentoo.org> pgpdump-0.20.ebuild:
+  Version bump.
+  Add app-arch/bzip2 to DEPENDS.
+  Add ~amd64 to KEYWORDS.
+
+*pgpdump-0.19 (19 Jul 2003)
+
+  19 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Initial import. Ebuild submitted by Matsuu Takuto <matsuu@gentoo.org> in #21978.

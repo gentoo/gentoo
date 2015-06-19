@@ -1,0 +1,457 @@
+# ChangeLog for sys-fs/xfsdump
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/xfsdump/ChangeLog,v 1.111 2014/09/04 05:19:58 polynomial-c Exp $
+
+  04 Sep 2014; Lars Wendler <polynomial-c@gentoo.org> xfsdump-3.1.4.ebuild:
+  Fixed dependency on xfsprogs which lead to a compile failure (bug #522030).
+
+*xfsdump-3.1.4 (02 Sep 2014)
+
+  02 Sep 2014; Lars Wendler <polynomial-c@gentoo.org> +xfsdump-3.1.4.ebuild:
+  Version bump.
+
+  19 Jan 2014; Agostino Sarubbo <ago@gentoo.org> xfsdump-3.1.3.ebuild:
+  Stable for ppc64, wrt bug #495956
+
+  18 Jan 2014; Agostino Sarubbo <ago@gentoo.org> xfsdump-3.1.3.ebuild:
+  Stable for alpha, wrt bug #495956
+
+  15 Jan 2014; Agostino Sarubbo <ago@gentoo.org> xfsdump-3.1.3.ebuild:
+  Stable for ia64, wrt bug #495956
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> xfsdump-3.1.3.ebuild:
+  Stable for ppc, wrt bug #495956
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> xfsdump-3.1.3.ebuild:
+  Stable for x86, wrt bug #495956
+
+  12 Jan 2014; Pacho Ramos <pacho@gentoo.org> xfsdump-3.1.3.ebuild:
+  amd64 stable, bug #495956
+
+  26 Dec 2013; Jeroen Roovers <jer@gentoo.org> xfsdump-3.1.3.ebuild:
+  Stable for HPPA (bug #495956).
+
+*xfsdump-3.1.3 (18 Oct 2013)
+
+  18 Oct 2013; Lars Wendler <polynomial-c@gentoo.org> -xfsdump-3.0.1.ebuild,
+  -xfsdump-3.1.0.ebuild, +xfsdump-3.1.3.ebuild:
+  Version bump. Removed old.
+
+  02 Apr 2013; Agostino Sarubbo <ago@gentoo.org> xfsdump-3.1.2.ebuild:
+  Stable for hppa, wrt bug #457484
+
+  30 Mar 2013; Agostino Sarubbo <ago@gentoo.org> xfsdump-3.1.2.ebuild:
+  Stable for alpha, wrt bug #457484
+
+  28 Mar 2013; Agostino Sarubbo <ago@gentoo.org> xfsdump-3.1.2.ebuild:
+  Stable for ia64, wrt bug #457484
+
+  27 Mar 2013; Agostino Sarubbo <ago@gentoo.org> xfsdump-3.1.2.ebuild:
+  Stable for ppc64, wrt bug #457484
+
+  26 Mar 2013; Agostino Sarubbo <ago@gentoo.org> xfsdump-3.1.2.ebuild:
+  Stable for ppc, wrt bug #457484
+
+  26 Mar 2013; Agostino Sarubbo <ago@gentoo.org> xfsdump-3.1.2.ebuild:
+  Stable for x86, wrt bug #457484
+
+  26 Mar 2013; Agostino Sarubbo <ago@gentoo.org> xfsdump-3.1.2.ebuild:
+  Stable for amd64, wrt bug #457484
+
+*xfsdump-3.1.2 (06 Jan 2013)
+
+  06 Jan 2013; Mike Frysinger <vapier@gentoo.org> +xfsdump-3.1.2.ebuild:
+  Version bump #450586 by Agostino Sarubbo.
+
+  15 Jul 2012; Raúl Porcel <armin76@gentoo.org> xfsdump-3.1.0.ebuild:
+  alpha/ia64 stable wrt #422223
+
+  28 Jun 2012; Brent Baude <ranger@gentoo.org> xfsdump-3.1.0.ebuild:
+  Marking xfsdump-3.1.0 ppc for bug 422223
+
+  27 Jun 2012; Jeroen Roovers <jer@gentoo.org> xfsdump-3.1.0.ebuild:
+  Stable for HPPA (bug #422223).
+
+  22 Jun 2012; Brent Baude <ranger@gentoo.org> xfsdump-3.1.0.ebuild:
+  Marking xfsdump-3.1.0 ppc64 for bug 422223
+
+  21 Jun 2012; Jeff Horelick <jdhore@gentoo.org> xfsdump-3.1.0.ebuild:
+  marked x86 per bug 422223
+
+  19 Jun 2012; Agostino Sarubbo <ago@gentoo.org> xfsdump-3.1.0.ebuild:
+  Stable for amd64, wrt bug #422223
+
+  06 May 2012; Raúl Porcel <armin76@gentoo.org> xfsdump-3.0.6.ebuild:
+  alpha/ia64 stable wrt #404865
+
+*xfsdump-3.1.0 (26 Apr 2012)
+
+  26 Apr 2012; Tomáš Chvátal <scarabeus@gentoo.org> +xfsdump-3.1.0.ebuild,
+  -files/xfsdump-2.2.42-Makefile-deps.patch, -files/xfsdump-3.0.4-headers.patch,
+  -xfsdump-2.2.48.ebuild, -xfsdump-3.0.4-r1.ebuild, -xfsdump-3.0.5.ebuild:
+  Version bump to latest xfsdump, update to eapi4. Cleanup older versions.
+
+  02 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> xfsdump-3.0.6.ebuild:
+  ppc64 stable wrt #404865
+
+  24 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> xfsdump-3.0.6.ebuild:
+  x86 stable wrt bug #404865
+
+  23 Feb 2012; Brent Baude <ranger@gentoo.org> xfsdump-3.0.6.ebuild:
+  Marking xfsdump-3.0.6 ppc for bug 404865
+
+  21 Feb 2012; Jeroen Roovers <jer@gentoo.org> xfsdump-3.0.6.ebuild:
+  Stable for HPPA (bug #404865).
+
+  21 Feb 2012; Agostino Sarubbo <ago@gentoo.org> xfsdump-3.0.6.ebuild:
+  Stable for amd64, wrt bug #404865
+
+*xfsdump-3.0.6 (06 Nov 2011)
+
+  06 Nov 2011; Mike Frysinger <vapier@gentoo.org> +xfsdump-3.0.6.ebuild,
+  +files/xfsdump-3.0.6-path-overflow.patch:
+  Version bump, and fix fortify overflows #370949 by Diego Elio Pettenò.
+
+*xfsdump-3.0.5 (12 Apr 2011)
+
+  12 Apr 2011; Mike Frysinger <vapier@gentoo.org> +xfsdump-3.0.5.ebuild,
+  +files/xfsdump-3.0.5-prompt-overflow.patch:
+  Version bump #363261 by Lars Wendler.
+
+  29 Aug 2010; Mike Frysinger <vapier@gentoo.org> xfsdump-3.0.4-r1.ebuild,
+  +files/xfsdump-3.0.4-headers.patch:
+  Fix building with glibc-2.12.
+
+*xfsdump-3.0.4-r1 (11 Jul 2010)
+
+  11 Jul 2010; Patrick Lauer <patrick@gentoo.org> -xfsdump-3.0.4.ebuild,
+  +xfsdump-3.0.4-r1.ebuild, +files/xfsdump-3.0.4-no-symlink.patch:
+  Fix for #311881, actually installs xfsdump/xfsrestore now. Thanks to Yuri
+  Karaban
+
+  11 May 2010; Joseph Jezak <josejx@gentoo.org> xfsdump-3.0.1.ebuild:
+  Marked ppc/ppc64 stable for bug #311383.
+
+  06 May 2010; Jeroen Roovers <jer@gentoo.org> xfsdump-3.0.1.ebuild:
+  Stable for HPPA (bug #311383).
+
+  25 Apr 2010; Raúl Porcel <armin76@gentoo.org> xfsdump-3.0.1.ebuild:
+  alpha/ia64 stable wrt #311383
+
+  05 Apr 2010; Markus Meier <maekke@gentoo.org> xfsdump-3.0.1.ebuild:
+  amd64/x86 stable, bug #311383
+
+*xfsdump-3.0.4 (26 Mar 2010)
+
+  26 Mar 2010; Mike Frysinger <vapier@gentoo.org> +xfsdump-3.0.4.ebuild:
+  Version bump.
+
+*xfsdump-3.0.1 (25 Jun 2009)
+
+  25 Jun 2009; Mike Frysinger <vapier@gentoo.org> +xfsdump-3.0.1.ebuild:
+  Version bump #275405 by Lars Wendler.
+
+  24 Feb 2009; Mike Frysinger <vapier@gentoo.org> xfsdump-3.0.0.ebuild:
+  Apply blocker as some binaries have moved from xfsdump to xfsprogs #259966
+  by Robin Johnson.
+
+*xfsdump-3.0.0 (22 Feb 2009)
+
+  22 Feb 2009; Mike Frysinger <vapier@gentoo.org> +xfsdump-3.0.0.ebuild:
+  Version bump #259894 by Lars (Polynomial-C).
+
+  31 Jan 2009; Jeroen Roovers <jer@gentoo.org> xfsdump-2.2.48.ebuild:
+  Stable for HPPA (bug #235017).
+
+  25 Aug 2008; nixnut <nixnut@gentoo.org> xfsdump-2.2.48.ebuild:
+  Stable on ppc wrt bug 235017
+
+  25 Aug 2008; Raúl Porcel <armin76@gentoo.org> xfsdump-2.2.48.ebuild:
+  ia64 stable wrt #235017
+
+  24 Aug 2008; Tobias Klausmann <klausman@gentoo.org> xfsdump-2.2.48.ebuild:
+  Stable on alpha, bug #235017
+
+  24 Aug 2008; Markus Rothe <corsair@gentoo.org> xfsdump-2.2.48.ebuild:
+  Stable on ppc64; bug #235017
+
+  17 Aug 2008; Markus Meier <maekke@gentoo.org> xfsdump-2.2.48.ebuild:
+  amd64/x86 stable, bug #235017
+
+*xfsdump-2.2.48 (23 Feb 2008)
+
+  23 Feb 2008; Mike Frysinger <vapier@gentoo.org> +xfsdump-2.2.48.ebuild:
+  Version bump #211113 by Raúl Porcel.
+
+  19 Nov 2007; Joshua Kinard <kumba@gentoo.org> xfsdump-2.2.46.ebuild:
+  Stable on mips, per #197204.
+
+  02 Nov 2007; Steve Dibb <beandog@gentoo.org> xfsdump-2.2.46.ebuild:
+  amd64 stable, bug 197204
+
+  31 Oct 2007; Jeroen Roovers <jer@gentoo.org> xfsdump-2.2.46.ebuild:
+  Stable for HPPA (bug #197204).
+
+  30 Oct 2007; nixnut <nixnut@gentoo.org> xfsdump-2.2.46.ebuild:
+  Stable on ppc wrt bug 197204
+
+  29 Oct 2007; Raúl Porcel <armin76@gentoo.org> xfsdump-2.2.46.ebuild:
+  alpha/ia64/x86 stable wrt #197204
+
+  28 Oct 2007; Markus Rothe <corsair@gentoo.org> xfsdump-2.2.46.ebuild:
+  Stable on ppc64; bug #197204
+
+*xfsdump-2.2.46 (20 Sep 2007)
+
+  20 Sep 2007; Mike Frysinger <vapier@gentoo.org> +xfsdump-2.2.46.ebuild:
+  Version bump #192647 by Arfrever Frehtes Taifersar Arahesis.
+
+  25 Aug 2007; Mike Frysinger <vapier@gentoo.org> xfsdump-2.2.45.ebuild:
+  Pull in gettext at build time #161179.
+
+  16 Jun 2007; Christoph Mende <angelos@gentoo.org> xfsdump-2.2.45.ebuild:
+  Stable on amd64 wrt security bug 180367
+
+  13 Jun 2007; Mike Frysinger <vapier@gentoo.org>
+  +files/xfsdump-2.2.45-LDFLAGS.patch, xfsdump-2.2.45.ebuild:
+  Respect LDFLAGS while linking the library.
+
+  03 Jun 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  xfsdump-2.2.45.ebuild:
+  ppc stable, bug #180367
+
+  02 Jun 2007; Markus Rothe <corsair@gentoo.org> xfsdump-2.2.45.ebuild:
+  Stable on ppc64; bug #180367
+
+  01 Jun 2007; Jeroen Roovers <jer@gentoo.org> xfsdump-2.2.45.ebuild:
+  Stable for HPPA (bug #180367).
+
+  31 May 2007; Raúl Porcel <armin76@gentoo.org> xfsdump-2.2.45.ebuild:
+  alpha/ia64/x86 stable wrt security #180367
+
+*xfsdump-2.2.45 (31 May 2007)
+
+  31 May 2007; Mike Frysinger <vapier@gentoo.org> +xfsdump-2.2.45.ebuild:
+  Version bump #180367.
+
+  07 Jan 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  xfsdump-2.2.42.ebuild:
+  ppc stable, bug #159469
+
+  30 Dec 2006; Bryan Østergaard <kloeri@gentoo.org> xfsdump-2.2.42.ebuild:
+  Stable on Alpha, bug 159469.
+
+  11 Dec 2006; Peter Weller <welp@gentoo.org> xfsdump-2.2.42.ebuild:
+  Added amd64 keyword wrt bug #156840
+
+  07 Dec 2006; Guy Martin <gmsoft@gentoo.org> xfsdump-2.2.42.ebuild:
+  Stable on hppa.
+
+  07 Dec 2006; Markus Rothe <corsair@gentoo.org> xfsdump-2.2.42.ebuild:
+  Stable on ppc64
+
+  07 Dec 2006; Christian Faulhammer <opfer@gentoo.org>
+  xfsdump-2.2.42.ebuild:
+  stable x86, bug #156840
+
+*xfsdump-2.2.42 (27 Sep 2006)
+
+  27 Sep 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/xfsdump-2.2.42-Makefile-deps.patch, +xfsdump-2.2.42.ebuild:
+  Version bump.
+
+  05 Sep 2006; Joshua Kinard <kumba@gentoo.org> xfsdump-2.2.33-r1.ebuild:
+  Marked stable on mips.
+
+  18 Aug 2006; Luis Medinas <metalgod@gentoo.org> xfsdump-2.2.33-r1.ebuild:
+  Stable on amd64. Bug #143414.
+
+  17 Aug 2006; Markus Rothe <corsair@gentoo.org> xfsdump-2.2.33-r1.ebuild:
+  Stable on ppc64
+
+  11 Aug 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  xfsdump-2.2.33-r1.ebuild:
+  ppc stable, bug #143414
+
+  11 Aug 2006; Andrej Kacian <ticho@gentoo.org> xfsdump-2.2.33-r1.ebuild:
+  Stable on x86. Bug #143414.
+
+*xfsdump-2.2.38 (10 Aug 2006)
+
+  10 Aug 2006; Mike Frysinger <vapier@gentoo.org> xfsdump-2.2.33-r1.ebuild,
+  +xfsdump-2.2.38.ebuild:
+  Version bump.
+
+  09 Aug 2006; Brent Baude <ranger@gentoo.org> xfsdump-2.2.30.ebuild:
+  Marking xfsdump-2.2.30 ~ppc64 as a dep to support bug #142829
+
+*xfsdump-2.2.33-r1 (11 Jun 2006)
+
+  11 Jun 2006; Robin H. Johnson <robbat2@gentoo.org>
+  +files/xfsdump-2.2.33-Makefile-deps.patch, +xfsdump-2.2.33-r1.ebuild:
+  Bug #136373 - parallel compile fixes.
+
+  07 Jun 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/xfsdump-2.2.33-no-compress-docs.patch, xfsdump-2.2.33.ebuild:
+  Let portage compress the docs #129486 by Stefan de Konink.
+
+  20 Apr 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/xfsdump-2.2.33-LDFLAGS.patch, xfsdump-2.2.33.ebuild:
+  Respect user LDFLAGS #126825 by Diego Pettenò.
+
+  20 Feb 2006; Joshua Kinard <kumba@gentoo.org> xfsdump-2.2.30.ebuild:
+  Marked stable on mips.
+
+  29 Jan 2006; Simon Stelling <blubb@gentoo.org> xfsdump-2.2.30.ebuild:
+  stable on amd64
+
+  28 Jan 2006; Mark Loeser <halcy0n@gentoo.org> xfsdump-2.2.30.ebuild:
+  Stable on x86; bug #120488
+
+  27 Jan 2006; Luca Barbato <lu_zero@gentoo.org> xfsdump-2.2.30.ebuild:
+  Marked ppc
+
+  27 Jan 2006; Aron Griffis <agriffis@gentoo.org> xfsdump-2.2.30.ebuild:
+  Mark 2.2.30 stable on alpha #120488
+
+*xfsdump-2.2.33 (27 Jan 2006)
+
+  27 Jan 2006; Mike Frysinger <vapier@gentoo.org> +xfsdump-2.2.33.ebuild:
+  Version bump.
+
+  04 Sep 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/xfsdump-2.2.30-docs.patch, xfsdump-2.2.30.ebuild:
+  Touchup doc install and fix sandbox issues #104711.
+
+*xfsdump-2.2.30 (02 Sep 2005)
+
+  02 Sep 2005; Mike Frysinger <vapier@gentoo.org> +xfsdump-2.2.30.ebuild:
+  Version bump.
+
+  28 Apr 2005; Aron Griffis <agriffis@gentoo.org> -xfsdump-2.2.21.ebuild,
+  xfsdump-2.2.25.ebuild:
+  Update dep to >=sys-apps/attr-2.4.19 since xfsdump doesn't build with older
+  versions. Trim older version.
+
+  25 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> xfsdump-2.2.25.ebuild:
+  Stable on alpha.
+
+  20 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> xfsdump-2.2.25.ebuild:
+  Stable on ppc.
+
+  16 Dec 2004; Dylan Carlson <absinthe@gentoo.org> xfsdump-2.2.24.ebuild:
+  Stable on amd64.
+
+*xfsdump-2.2.25 (03 Dec 2004)
+
+  03 Dec 2004; Mike Frysinger <vapier@gentoo.org> +xfsdump-2.2.25.ebuild:
+  Version bump.
+
+*xfsdump-2.2.24 (08 Oct 2004)
+
+  08 Oct 2004; Mike Frysinger <vapier@gentoo.org> +xfsdump-2.2.24.ebuild:
+  Version bump.
+
+*xfsdump-2.2.21 (31 Aug 2004)
+
+  31 Aug 2004; Robin H. Johnson <robbat2@gentoo.org> +xfsdump-2.2.21.ebuild:
+  Cleanup of XFS-related apps: dmapi, acl, xfsdump, attr.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> xfsdump-1.1.7.ebuild:
+  virtual/glibc -> virtual/libc
+
+  27 Jun 2004; Aron Griffis <agriffis@gentoo.org> xfsdump-2.2.16.ebuild:
+  QA - fix use invocation
+
+  24 Mar 2004; Jon Portnoy <avenj@gentoo.org> xfsdump-2.2.16.ebuild :
+  Stable on AMD64
+
+  26 Feb 2004; Aron Griffis <agriffis@gentoo.org> xfsdump-2.2.16.ebuild:
+  stable on alpha and ia64 for bug 42232
+
+  21 Feb 2004; Jason Wever <weeve@gentoo.org> xfsdump-1.1.7.ebuild,
+  xfsdump-2.2.16.ebuild, xfsdump-2.2.4-r1.ebuild:
+  Masked on sparc. I've added changes to 2.2.16 to get xfsdump to build on
+  sparc64, but according to http://oss.sgi.com/bugzilla/show_bug.cgi?id=298,
+  xfsdump will not function correctly when the kernel is 64 bit but the userland
+  is 32. In the future we may be able to remove this once 64 bit binary support
+  is enabled in the sparc64 profile. This may also work on sparc32, but it needs
+  testing (and can play around with keywords and masking at that time).
+
+*xfsdump-2.2.16 (11 Feb 2004)
+
+  11 Feb 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #19406
+
+  17 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org> :
+  manifest fix
+
+  16 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org> xfsdump-2.2.4-r1.ebuild:
+  set ppc in keywords
+
+  15 Dec 2003; Jason Wever <weeve@gentoo.org> xfsdump-2.2.4-r1.ebuild:
+  Added ~sparc keyword.
+
+  28 Sep 2003; David Holm <dholm@gentoo.org> xfsdump-2.2.4-r1.ebuild:
+  Added to ~ppc.
+
+*xfsdump-1.1.7 (15 Sep 2003)
+
+  15 Sep 2003; Seemant Kulleen <seemant@gentoo.org> xfsdump-1.1.7.ebuild,
+  xfsdump-2.0.0_p20020330.ebuild, xfsdump-2.1.5.ebuild,
+  xfsdump-2.2.4-r1.ebuild, xfsdump-2.2.4.ebuild:
+  moved to sys-fs
+
+  21 Dec 2002; Daniel Robbins <drobbins@gentoo.org>: changed 20020330
+  ebuild to 2.0.0_p20020330 to fix policy violation.
+
+*xfsdump-2.2.4-r1 (16 Dec 2002)
+
+  24 Feb 2003; Nicholas Wourms <dragon@gentoo.org> xfsdump-2.2.4-r1.ebuild :
+  Marked as testing for mips.  Made ChangeLog compatible with echangelog.
+
+  16 Dec 2002; Brad Cowan <bcowan@gentoo.org> xfsdump-2.2.4-r1.ebuild,
+  files/digest-xfsdump-2.2.4-r1:
+  
+  Changed symlinks.
+
+*xfsdump-2.2.4 (09 Dec 2002)
+
+  09 Dec 2002; Donny Davies <woodchip@gentoo.org> : Chase latest release.
+
+*xfsdump-2.1.5 (27 Sep 2002)
+
+  27 Sep 2002; Brad Cowan <bcowan@gentoo.org> xfsdump-2.1.5.ebuild
+  files/digest-xfsdump-2.1.5 :
+  
+  version bump thanks to Hanno Boeck <hanno@gentoo.org>
+
+  05 Oct 2002; Brad Cowan <bcowan@gentoo.org> xfsdump-2.1.5.ebuild :
+  
+  "Modernized" ebuild.
+
+*xfsdump-20020330 (14 July 2002)
+
+  21 Jul 2002; Mark Guertin <gerk@gentoo.org>:
+  updated keywords (ppc)
+
+  14 Jul 2002; phoen][x <phoenix@gentoo.org> xfsdump-20020330.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+*xfsdump-1.1.7 (14 July 2002)
+
+  14 Jul 2002; phoen][x <phoenix@gentoo.org> xfsdump-1.1.7.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+*xfsdump-20020124 (1 Feb 2002)
+
+  14 Jul 2002; phoen][x <phoenix@gentoo.org> xfsdump-20020124.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

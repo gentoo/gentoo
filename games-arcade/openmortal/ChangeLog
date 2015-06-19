@@ -1,0 +1,77 @@
+# ChangeLog for games-arcade/openmortal
+# Copyright 2000-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/openmortal/ChangeLog,v 1.20 2014/10/27 19:24:33 mr_bones_ Exp $
+
+  27 Oct 2014; Michael Sterrett <mr_bones_@gentoo.org> -openmortal-0.7.ebuild:
+  old
+
+  18 Oct 2014; Agostino Sarubbo <ago@gentoo.org> openmortal-0.7-r1.ebuild:
+  Stable for ppc, wrt bug #522006
+
+  12 Oct 2014; Agostino Sarubbo <ago@gentoo.org> openmortal-0.7-r1.ebuild:
+  Stable for x86, wrt bug #522006
+
+  10 Oct 2014; Agostino Sarubbo <ago@gentoo.org> openmortal-0.7-r1.ebuild:
+  Stable for amd64, wrt bug #522006
+
+*openmortal-0.7-r1 (02 Sep 2014)
+
+  02 Sep 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/openmortal-0.7-freetype.patch, +openmortal-0.7-r1.ebuild:
+  add freetype patch from Andrei Slavoiu (bug #506762); EAPI=5
+
+  07 Feb 2007; Tristan Heaven <nyhm@gentoo.org> openmortal-0.7.ebuild:
+  Install menu entry, bug #160239
+
+  02 Apr 2006; <Tupone@gentoo.org> +files/openmortal-0.7-gcc41.patch,
+  openmortal-0.7.ebuild:
+  Fix for gcc-4.1, bugs #120760 by Joshua Baergen
+
+  28 Jan 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  openmortal-0.7.ebuild:
+  Remove x11 dependencies as this package does not directly depend on X.
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  31 May 2005; Marcus D. Hanwell <marcus@gentoo.org> ChangeLog:
+  Stable on amd64.
+
+  12 May 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  -openmortal-0.5.ebuild, -openmortal-0.6.ebuild:
+  clean older ebuilds
+
+*openmortal-0.7 (30 Apr 2004)
+
+  30 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> openmortal-0.7.ebuild:
+  version bump
+
+  05 Mar 2004; David Holm <dholm@gentoo.org> openmortal-0.6.ebuild:
+  Added to ~ppc.
+
+*openmortal-0.6 (05 Mar 2004)
+
+  05 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> openmortal-0.6.ebuild:
+  version bump
+
+  03 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org> openmortal-0.5.ebuild:
+  add sdl-net depend (bug 40277)
+
+*openmortal-0.5 (02 Feb 2004)
+
+  02 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org> openmortal-0.4.ebuild,
+  openmortal-0.5.ebuild:
+  version bump (bug 40174)
+
+*openmortal-0.4 (08 Jan 2004)
+
+  08 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org> openmortal-0.4.ebuild:
+  version bump
+
+  28 Sep 2003; Michael Sterrett <mr_bones_@gentoo.org> openmortal-0.3.ebuild:
+  Needs media-libs/sdl-ttf; doesn't need src_compile() (handled in games eclass)
+
+*openmortal-0.3 (13 Sep 2003)
+
+  13 Sep 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Freyr Gunnar Ólafsson <gnarlin@utopia.is> #28575.

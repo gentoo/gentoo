@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare setup
+DEPEND=x11-libs/libX11 virtual/fortran
+DESCRIPTION=Design and analysis of subsonic isolated airfoils
+EAPI=4
+HOMEPAGE=http://raphael.mit.edu/xfoil/
+IUSE=doc examples
+KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11 virtual/fortran
+SLOT=0
+SRC_URI=http://web.mit.edu/drela/Public/web/xfoil/xfoil6.97.tar.gz doc? ( http://web.mit.edu/drela/Public/web/xfoil/dataflow.pdf )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fortran-2	db8710b355fc5598015c4bc3aad3bdb0	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=b8524ecf90e62b6a758a9f7915f8dfc0

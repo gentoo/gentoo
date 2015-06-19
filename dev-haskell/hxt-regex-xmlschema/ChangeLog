@@ -1,0 +1,51 @@
+# ChangeLog for dev-haskell/hxt-regex-xmlschema
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hxt-regex-xmlschema/ChangeLog,v 1.9 2015/04/04 09:02:11 gienah Exp $
+
+*hxt-regex-xmlschema-9.2.0.2 (04 Apr 2015)
+
+  04 Apr 2015; Mark Wright <gienah@gentoo.org>
+  +hxt-regex-xmlschema-9.2.0.2.ebuild:
+  Bump hxt-regex-xmlschema to 9.2.0.2
+
+*hxt-regex-xmlschema-9.2.0 (13 Dec 2014)
+
+  13 Dec 2014; Mark Wright <gienah@gentoo.org>
+  +hxt-regex-xmlschema-9.2.0.ebuild, -hxt-regex-xmlschema-9.0.1.ebuild:
+  Bump hxt-regex-xmlschema to 9.2.0
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org>
+  hxt-regex-xmlschema-9.1.0.ebuild:
+  Stable for x86, wrt bug #464338
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org>
+  hxt-regex-xmlschema-9.1.0.ebuild:
+  Stable for amd64, wrt bug #464338
+
+*hxt-regex-xmlschema-9.1.0 (02 Apr 2013)
+
+  02 Apr 2013; Mark Wright <gienah@gentoo.org>
+  +hxt-regex-xmlschema-9.1.0.ebuild:
+  Bump hxt-regex-xmlschema to 9.1.0
+
+  12 Sep 2012; Alexander Vershilov <qnikst@gentoo.org>
+  hxt-regex-xmlschema-9.0.1.ebuild, hxt-regex-xmlschema-9.0.4.ebuild:
+  move dev-haskell/hxt-regex-xmlschema/hxt-regex-xmlschema-9.0.1.ebuild ebuild
+  to mirror://hackage
+
+*hxt-regex-xmlschema-9.0.4 (02 Jun 2012)
+
+  02 Jun 2012; Mark Wright <gienah@gentoo.org>
+  +hxt-regex-xmlschema-9.0.4.ebuild:
+  Bump hxt-regex-xmlschema to 9.0.4
+
+*hxt-regex-xmlschema-9.0.1 (04 Dec 2011)
+
+  04 Dec 2011; Sergei Trofimovich <slyfox@gentoo.org>
+  +hxt-regex-xmlschema-9.0.1.ebuild,
+  +files/hxt-regex-xmlschema-9.0.1-ghc-7.2.patch, +metadata.xml:
+  Initial version. A regular expression library for W3C XML Schema regular
+  expressions (dev-haskell/hxt depend)

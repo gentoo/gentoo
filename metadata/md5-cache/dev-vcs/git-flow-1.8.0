@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=Git extensions to provide high-level repository operations for Vincent Driessen's branching model
+EAPI=5
+HOMEPAGE=https://github.com/petervanderdoes/gitflow
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD MIT
+RDEPEND=dev-util/shflags dev-vcs/git
+SLOT=0
+SRC_URI=https://github.com/petervanderdoes/gitflow/archive/1.8.0.tar.gz -> git-flow-1.8.0.tar.gz https://github.com/petervanderdoes/git-flow-completion/archive/0.5.1.tar.gz -> git-flow-completion-0.5.1.tar.gz
+_eclasses_=bash-completion-r1	c8399c7c7ecbcf7ed6e5bd3abb3d4af3	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=7fcb62013debcc5ef85e73ca20a0dd96

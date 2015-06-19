@@ -1,0 +1,511 @@
+# ChangeLog for dev-libs/soprano
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/soprano/ChangeLog,v 1.124 2015/06/09 14:52:12 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  18 Jan 2014; Michael Palimaka <kensington@gentoo.org>
+  -files/soprano-2.9.3-libdl.patch, -soprano-2.9.2.ebuild,
+  -soprano-2.9.3.ebuild:
+  Remove old.
+
+  11 Dec 2013; Agostino Sarubbo <ago@gentoo.org> soprano-2.9.4.ebuild:
+  Stable for ppc64, wrt bug #484884
+
+  10 Dec 2013; Agostino Sarubbo <ago@gentoo.org> soprano-2.9.4.ebuild:
+  Stable for ppc, wrt bug #484884
+
+  09 Dec 2013; Agostino Sarubbo <ago@gentoo.org> soprano-2.9.4.ebuild:
+  Stable for x86, wrt bug #484884
+
+  08 Dec 2013; Agostino Sarubbo <ago@gentoo.org> soprano-2.9.4.ebuild:
+  Stable for amd64, wrt bug #484884
+
+*soprano-2.9.4 (12 Oct 2013)
+
+  12 Oct 2013; Johannes Huber <johu@gentoo.org> +soprano-2.9.4.ebuild:
+  Version bump.
+
+  14 Aug 2013; Michael Palimaka <kensington@gentoo.org>
+  +files/soprano-2.9.3-libdl.patch, soprano-2.9.3.ebuild:
+  Fix build on systems that do not have a separate libdl wrt bug #478644. Patch
+  by Yuta SATOH <nigoro.gentoo@0x100.com>.
+
+*soprano-2.9.3 (12 Jul 2013)
+
+  12 Jul 2013; Johannes Huber <johu@gentoo.org> +soprano-2.9.3.ebuild:
+  Version bump.
+
+  25 Jun 2013; Johannes Huber <johu@gentoo.org> -soprano-2.9.0.ebuild:
+  Remove old.
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> soprano-2.9.2.ebuild:
+  Stable for amd64, wrt bug #473090
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> soprano-2.9.2.ebuild:
+  Stable for x86, wrt bug #473090
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> soprano-2.9.2.ebuild:
+  Stable for x86, wrt bug #473090
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> soprano-2.9.2.ebuild:
+  Stable for ppc64, wrt bug #473090
+
+  24 Jun 2013; Agostino Sarubbo <ago@gentoo.org> soprano-2.9.2.ebuild:
+  Stable for ppc, wrt bug #473090
+
+*soprano-2.9.2 (10 May 2013)
+
+  10 May 2013; Johannes Huber <johu@gentoo.org> +soprano-2.9.2.ebuild,
+  -soprano-2.9.1.ebuild:
+  Version bump.
+
+*soprano-2.9.1 (06 May 2013)
+
+  06 May 2013; Johannes Huber <johu@gentoo.org> +soprano-2.9.1.ebuild:
+  Version bump.
+
+  08 Apr 2013; Michael Palimaka <kensington@gentoo.org> -soprano-2.7.6.ebuild,
+  -soprano-2.8.0.ebuild, metadata.xml:
+  Remove old.
+
+  02 Apr 2013; Agostino Sarubbo <ago@gentoo.org> soprano-2.9.0.ebuild:
+  Stable for ppc64, wrt bug #462890
+
+  01 Apr 2013; Agostino Sarubbo <ago@gentoo.org> soprano-2.9.0.ebuild:
+  Stable for ppc, wrt bug #462890
+
+  31 Mar 2013; Agostino Sarubbo <ago@gentoo.org> soprano-2.9.0.ebuild:
+  Stable for x86, wrt bug #462890
+
+  31 Mar 2013; Agostino Sarubbo <ago@gentoo.org> soprano-2.9.0.ebuild:
+  Stable for amd64, wrt bug #462890
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> soprano-2.7.6.ebuild,
+  soprano-2.8.0.ebuild, soprano-2.9.0.ebuild:
+  Move Qt dependencies to the new category
+
+  07 Feb 2013; Alexey Shvetsov <alexxy@gentoo.org> soprano-2.9.0.ebuild:
+  Sync keywords
+
+*soprano-2.9.0 (06 Feb 2013)
+
+  06 Feb 2013; Alexey Shvetsov <alexxy@gentoo.org> +soprano-2.9.0.ebuild:
+  Version bump KDE SC 4.10.0
+
+  30 Nov 2012; <ago@gentoo.org> soprano-2.8.0.ebuild:
+  Stable for ppc, wrt bug #442394
+
+  23 Nov 2012; Agostino Sarubbo <ago@gentoo.org> soprano-2.8.0.ebuild:
+  Stable for x86, wrt bug #442394
+
+  23 Nov 2012; Agostino Sarubbo <ago@gentoo.org> soprano-2.8.0.ebuild:
+  Stable for amd64, wrt bug #442394
+
+  10 Sep 2012; Andreas K. Huettel <dilfridge@gentoo.org> soprano-2.8.0.ebuild:
+  Disable clucene index, since soprano 2.8.0 fails to build against current
+  clucene and this combination is also not supported anymore. See
+  http://sourceforge.net/p/soprano/bugs/19/
+
+  05 Aug 2012; Johannes Huber <johu@gentoo.org> soprano-2.8.0.ebuild:
+  Bump dep on dev-db/virtuoso-server.
+
+*soprano-2.8.0 (01 Aug 2012)
+
+  01 Aug 2012; Johannes Huber <johu@gentoo.org> +soprano-2.8.0.ebuild:
+  Version bump.
+
+  10 Jun 2012; Tomáš Chvátal <scarabeus@gentoo.org> -soprano-2.7.4.ebuild,
+  -soprano-2.7.5.ebuild, soprano-2.7.6.ebuild:
+  Stabilise 2.7.6 on amd64, x86, pcc and ppc64. Remove older. Solves crasher for
+  me in stable.
+
+  18 May 2012; Alexis Ballier <aballier@gentoo.org> soprano-2.7.6.ebuild:
+  keyword ~amd64-fbsd
+
+*soprano-2.7.6 (16 May 2012)
+
+  16 May 2012; Michael Palimaka <kensington@gentoo.org> +soprano-2.7.6.ebuild:
+  Version bump. Install documentation correctly, based on patch by Ian Delaney
+  <johneed@hotmail.com>. Fixes bug #406849.
+
+  25 Mar 2012; Johannes Huber <johu@gentoo.org>
+  -files/soprano-2.7.3-largefile-support.patch, -soprano-2.7.0.ebuild,
+  -soprano-2.7.3.ebuild:
+  Remove old.
+
+  25 Mar 2012; Brent Baude <ranger@gentoo.org> soprano-2.7.4.ebuild:
+  Marking soprano-2.7.4 ppc64 for bug 406013
+
+*soprano-2.7.5 (13 Mar 2012)
+
+  13 Mar 2012; Johannes Huber <johu@gentoo.org> +soprano-2.7.5.ebuild:
+  Version bump.
+
+  09 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> soprano-2.7.4.ebuild:
+  x86 stable wrt bug #406013
+
+  07 Mar 2012; Brent Baude <ranger@gentoo.org> soprano-2.7.4.ebuild:
+  Marking soprano-2.7.4 ppc for bug 406013
+
+  27 Feb 2012; Agostino Sarubbo <ago@gentoo.org> soprano-2.7.4.ebuild:
+  Stable for amd64, wrt bug #406013
+
+*soprano-2.7.4 (12 Jan 2012)
+
+  12 Jan 2012; Johannes Huber <johu@gentoo.org> +soprano-2.7.4.ebuild:
+  Version bump.
+
+*soprano-2.7.3 (02 Nov 2011)
+
+  02 Nov 2011; Maciej Mrozowski <reavertm@gentoo.org>
+  +files/soprano-2.7.3-largefile-support.patch, +soprano-2.7.3.ebuild:
+  Version bump, also fix bug 389299 (largefile support)
+
+  18 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> metadata.xml:
+  Remove unused description for USE="java"
+
+  18 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> -soprano-2.4.4.ebuild,
+  -soprano-2.5.3.ebuild, -soprano-2.6.0.ebuild, -soprano-2.6.51.ebuild:
+  old
+
+  18 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> soprano-2.7.0.ebuild:
+  ppc/ppc64 stable wrt #382641
+
+  17 Oct 2011; Jeroen Roovers <jer@gentoo.org> soprano-2.4.4.ebuild,
+  soprano-2.5.3.ebuild, soprano-2.6.0.ebuild, soprano-2.6.51.ebuild,
+  soprano-2.7.0.ebuild:
+  Drop HPPA keywording (bug #382641).
+
+  05 Oct 2011; Andreas Schuerch <nativemad@gentoo.org> soprano-2.7.0.ebuild:
+  x86 stable, thanks David. Bug 382641
+
+  20 Sep 2011; Tony Vroon <chainsaw@gentoo.org> soprano-2.7.0.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo & Ian
+  "idella4" Delaney in bug #382641.
+
+  03 Sep 2011; Andreas K. Huettel <dilfridge@gentoo.org> soprano-2.7.0.ebuild:
+  Restrict tests, bug 281712
+
+*soprano-2.7.0 (07 Aug 2011)
+
+  07 Aug 2011; Samuli Suominen <ssuominen@gentoo.org> +soprano-2.7.0.ebuild:
+  Version bump.
+
+  29 Jul 2011; Samuli Suominen <ssuominen@gentoo.org> soprano-2.6.0.ebuild,
+  soprano-2.6.51.ebuild:
+  Fix media-libs/raptor depend to use old SLOTs; no raptor2 support in 2.6.51
+
+*soprano-2.6.51 (27 Jul 2011)
+
+  27 Jul 2011; Alexey Shvetsov <alexxy@gentoo.org> +soprano-2.6.51.ebuild:
+  Version bump for KDE SC 4.7.0
+
+  13 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> soprano-2.6.0.ebuild:
+  ppc64 stable wrt #354033
+
+  01 Jun 2011; Brent Baude <ranger@gentoo.org> soprano-2.6.0.ebuild:
+  Marking soprano-2.6.0 ppc stable for bug 354033
+
+  09 May 2011; Markos Chandras <hwoarang@gentoo.org> soprano-2.6.0.ebuild:
+  Stable on amd64 wrt bug #354033
+
+  09 May 2011; Justin Lecher <jlec@gentoo.org> soprano-2.4.4.ebuild,
+  soprano-2.5.3.ebuild, soprano-2.6.0.ebuild:
+  Corrected HOMEPAGE from sourceforge project page to upstreams homepage
+
+  09 May 2011; Thomas Kahle <tomka@gentoo.org> soprano-2.6.0.ebuild:
+  x86 stable per bug 354033
+
+*soprano-2.6.0 (02 Feb 2011)
+
+  02 Feb 2011; Theo Chatzimichos <tampakrap@gentoo.org>
+  -soprano-2.5.63_pre20101127.ebuild, +soprano-2.6.0.ebuild:
+  Version bump, remove the snapshot
+
+*soprano-2.5.3 (27 Jan 2011)
+
+  27 Jan 2011; Maciej Mrozowski <reavertm@gentoo.org> -soprano-2.5.2.ebuild,
+  +soprano-2.5.3.ebuild:
+  Version bump 2.5.3, remove old
+
+*soprano-2.5.63_pre20101127 (26 Jan 2011)
+
+  26 Jan 2011; Alexey Shvetsov <alexxy@gentoo.org>
+  +soprano-2.5.63_pre20101127.ebuild:
+  Version bump for kde sc 4.6.0
+
+  12 Jan 2011; Theo Chatzimichos <tampakrap@gentoo.org>
+  files/soprano-2.4.4-make-broken-redland-fatal.cmake, soprano-2.5.2.ebuild:
+  Remove sesame2(java) backend support
+
+  26 Nov 2010; Jeroen Roovers <jer@gentoo.org> soprano-2.4.4.ebuild:
+  Stable for HPPA (bug #331761).
+
+  24 Oct 2010; Brent Baude <ranger@gentoo.org> soprano-2.4.4.ebuild:
+  stable ppc, bug 331761
+
+*soprano-2.5.2 (15 Oct 2010)
+
+  15 Oct 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  +soprano-2.5.2.ebuild:
+  Version bump.
+
+  30 Sep 2010; Brent Baude <ranger@gentoo.org> soprano-2.4.4.ebuild:
+  stable ppc64, bug 331761
+
+  06 Sep 2010; Theo Chatzimichos <tampakrap@gentoo.org>
+  +soprano-2.5.0.ebuild:
+  Fix keywords and restrict tests
+
+*soprano-2.5.0 (06 Sep 2010)
+
+  06 Sep 2010; Theo Chatzimichos <tampakrap@gentoo.org>
+  +soprano-2.5.0.ebuild:
+  Version bump
+
+  03 Sep 2010; Joseph Jezak <josejx@gentoo.org> soprano-2.4.3.ebuild:
+  Marked ppc64 stable for bug #322791.
+
+  15 Aug 2010; Raúl Porcel <armin76@gentoo.org> soprano-2.3.1-r1.ebuild,
+  soprano-2.4.3.ebuild, soprano-2.4.4.ebuild:
+  Drop alpha/ia64/sparc
+
+  10 Aug 2010; Markos Chandras <hwoarang@gentoo.org> soprano-2.4.4.ebuild:
+  Stable on amd64 wrt bug #331761
+
+  10 Aug 2010; Christian Faulhammer <fauli@gentoo.org> soprano-2.4.4.ebuild:
+  stable x86, bug 331761
+
+  10 Aug 2010; Maciej Mrozowski <reavertm@gentoo.org>
+  soprano-2.3.1-r1.ebuild, soprano-2.4.3.ebuild, soprano-2.4.4.ebuild:
+  Use cmake-utils_src_test now, restrict tests (bug 331761)
+
+  09 Aug 2010; Joseph Jezak <josejx@gentoo.org> soprano-2.4.3.ebuild:
+  Marked ppc stable for bug #322791.
+
+*soprano-2.4.4 (06 Jul 2010)
+
+  06 Jul 2010; Maciej Mrozowski <reavertm@gentoo.org>
+  soprano-2.3.1-r1.ebuild, +soprano-2.4.4.ebuild,
+  +files/soprano-2.4.4-make-broken-redland-fatal.cmake:
+  Version bump 2.4.4, backport qt-test deps to 2.3.1, add patch to make
+  broken Redland fatal (bug 318861)
+
+  27 Jun 2010; Christian Faulhammer <fauli@gentoo.org> soprano-2.4.3.ebuild:
+  x86 stable, bug 322791
+
+  24 Jun 2010; Christoph Mende <angelos@gentoo.org> soprano-2.4.3.ebuild:
+  Stable on amd64 wrt bug #322791
+
+  16 Jun 2010; Maciej Mrozowski <reavertm@gentoo.org> soprano-2.4.3.ebuild:
+  Added qt-test dependency
+
+  27 May 2010; Maciej Mrozowski <reavertm@gentoo.org> -soprano-2.4.1.ebuild:
+  Remove old
+
+  06 May 2010; Maciej Mrozowski <reavertm@gentoo.org> soprano-2.4.1.ebuild,
+  soprano-2.4.3.ebuild:
+  Deprecate java backend
+
+  02 May 2010; Alexis Ballier <aballier@gentoo.org> soprano-2.4.3.ebuild:
+  keyword ~x86-fbsd
+
+*soprano-2.4.3 (29 Apr 2010)
+
+  29 Apr 2010; Dror Levin <spatz@gentoo.org> +soprano-2.4.3.ebuild:
+  Version bump, bug 316733.
+
+  18 Apr 2010; Maciej Mrozowski <reavertm@gentoo.org>
+  -soprano-2.4.0.1.ebuild:
+  Remove old
+
+*soprano-2.4.1 (11 Mar 2010)
+
+  11 Mar 2010; Maciej Mrozowski <reavertm@gentoo.org> +soprano-2.4.1.ebuild:
+  Version bump, bug 308607
+
+*soprano-2.4.0.1 (11 Feb 2010)
+
+  11 Feb 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +soprano-2.4.0.1.ebuild:
+  Version bump.
+
+*soprano-2.4.0-r1 (11 Feb 2010)
+
+  11 Feb 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +soprano-2.4.0-r1.ebuild, +files/soprano-2.4.0-socketMutex.unlock.patch:
+  Apply upstream "unlock the mutex before deleting it" patch.
+
+*soprano-2.4.0 (09 Feb 2010)
+
+  09 Feb 2010; Maciej Mrozowski <reavertm@gentoo.org>
+  -soprano-2.3.73.ebuild, +soprano-2.4.0.ebuild:
+  Version bump 2.4.0, remove snapshot.
+
+*soprano-2.3.73 (08 Feb 2010)
+
+  08 Feb 2010; Alexey Shvetsov <alexxy@gentoo.org> +soprano-2.3.73.ebuild:
+  Version bump
+
+  18 Jan 2010; Jonathan Callen <abcd@gentoo.org> soprano-2.3.1-r1.ebuild:
+  Keyword ~amd64-linux/~x86-linux
+
+  14 Jan 2010; Jeroen Roovers <jer@gentoo.org> soprano-2.3.1-r1.ebuild:
+  Stable for HPPA too.
+
+  27 Dec 2009; Raúl Porcel <armin76@gentoo.org> soprano-2.3.1-r1.ebuild:
+  Add ~arm
+
+  27 Dec 2009; Raúl Porcel <armin76@gentoo.org> soprano-2.3.1-r1.ebuild:
+  alpha/ia64/sparc stable
+
+  10 Dec 2009; Jonathan Callen <abcd@gentoo.org> soprano-2.3.1-r1.ebuild:
+  Convert mycmakeargs to an array (required due to usage in src_test)
+
+  05 Dec 2009; Jonathan Callen <abcd@gentoo.org> metadata.xml:
+  Update metadata.xml from overlay
+
+*soprano-2.3.1-r1 (03 Dec 2009)
+
+  03 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +soprano-2.3.1-r1.ebuild:
+  (Dummy) revision bump straight to stable for bug #295388.
+
+  30 Nov 2009; Joseph Jezak <josejx@gentoo.org> soprano-2.3.1.ebuild:
+  Marked ppc/ppc64 stable.
+
+  29 Nov 2009; Raúl Porcel <armin76@gentoo.org> soprano-2.3.1.ebuild:
+  Add ~sparc
+
+  23 Nov 2009; Jonathan Callen <abcd@gentoo.org> soprano-2.3.1.ebuild:
+  Fix typo in DESCRIPTION
+
+  17 Oct 2009; Markus Meier <maekke@gentoo.org> soprano-2.3.1.ebuild:
+  x86 stable, bug #287689
+
+  13 Oct 2009; Samuli Suominen <ssuominen@gentoo.org> soprano-2.3.1.ebuild:
+  Change append-ldflags -lpthread to append-flags -pthread wrt #226889
+
+  09 Oct 2009; Samuli Suominen <ssuominen@gentoo.org> soprano-2.3.1.ebuild:
+  amd64 stable wrt #287689
+
+*soprano-2.3.1 (24 Sep 2009)
+
+  24 Sep 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -soprano-2.3.0.ebuild, -soprano-2.3.0-r1.ebuild, +soprano-2.3.1.ebuild:
+  Version bump. Remove old.
+
+  12 Sep 2009; Raúl Porcel <armin76@gentoo.org> soprano-2.3.0.ebuild,
+  soprano-2.3.0-r1.ebuild:
+  Add ~alpha/~ia64 wrt #280312
+
+*soprano-2.3.0-r1 (01 Sep 2009)
+
+  01 Sep 2009; Theo Chatzimichos <tampakrap@gentoo.org>
+  -soprano-2.2.2.ebuild, -soprano-2.2.4.ebuild, +soprano-2.3.0-r1.ebuild:
+  Version bump, remove old
+
+*soprano-2.3.0 (04 Aug 2009)
+
+  04 Aug 2009; Alex Alexander <wired@gentoo.org> +soprano-2.3.0.ebuild:
+  version bump. kde 4.3 dep.
+
+*soprano-2.2.4 (28 Jun 2009)
+
+  28 Jun 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -soprano-2.0.2.ebuild, -soprano-2.1.1.ebuild, -soprano-2.2.ebuild,
+  -soprano-2.2.1.ebuild, -soprano-2.2.1-r1.ebuild, +soprano-2.2.4.ebuild,
+  -files/soprano-make-optional-targets.patch, metadata.xml:
+  Version bump, remove old.
+
+*soprano-2.2.2 (15 Mar 2009)
+
+  15 Mar 2009; Tomas Chvatal <scarabeus@gentoo.org> metadata.xml,
+  +soprano-2.2.2.ebuild:
+  Version bump. This version renames sesame2 useflag onto java. More
+  convinient for java haters. Next comes ebuilds that request java instead
+  of sesame2 per EAPI2.
+
+  12 Mar 2009; Jeroen Roovers <jer@gentoo.org> soprano-2.2.1-r1.ebuild:
+  Marked ~hppa (bug #260777).
+
+*soprano-2.2.1-r1 (09 Mar 2009)
+
+  09 Mar 2009; Alistair Bush <ali_bush@gentoo.org> +soprano-2.2.1-r1.ebuild:
+  Fix bug 261792. Java class function were overridden resulting in invalid
+  java environment.
+
+  15 Feb 2009; Tomas Chvatal <scarabeus@gentoo.org> soprano-2.2.1.ebuild:
+  Update deps. Per bug #259069.
+
+*soprano-2.2.1 (02 Feb 2009)
+
+  02 Feb 2009; Tomas Chvatal <scarabeus@gentoo.org>
+  +files/soprano-make-optional-targets.patch, +soprano-2.2.1.ebuild:
+  Version bump. Thanks to reavertm.
+
+  01 Feb 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  soprano-2.2.ebuild:
+  Restored ~ppc and ~ppc64 keywords to KDE-4.2.0
+
+*soprano-2.2 (27 Jan 2009)
+
+  27 Jan 2009; Alexey Shvetsov <alexxy@gentoo.org> +soprano-2.2.ebuild:
+  Bump to new soprano-2.2
+
+*soprano-2.1.1 (03 Dec 2008)
+
+  03 Dec 2008; Tomas Chvatal <scarabeus@gentoo.org> -soprano-2.1.ebuild,
+  +soprano-2.1.1.ebuild:
+  Version bump, remove problematic one. Per bug #249705.
+
+  02 Nov 2008; Mike Frysinger <vapier@gentoo.org> soprano-2.1.ebuild:
+  Add ppc64 love for KDE 4.
+
+*soprano-2.1 (02 Oct 2008)
+
+  25 Oct 2008; Pieter Van den Abeele <pvdabeel@gentoo.org> soprano-2.1.ebuild:
+  Keyworded ~ppc. Closes bug #244238
+
+  02 Oct 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml, +soprano-2.1.ebuild:
+  dev-libs
+
+  29 Sep 2008; Mike Frysinger <vapier@gentoo.org> soprano-2.0.2.ebuild:
+  Add ~ppc love.
+
+  06 Aug 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56.
+
+  27 Jul 2008; Carsten Lohrke <carlo@gentoo.org> soprano-2.0.2.ebuild:
+  Fix broken split Qt 4.4 dependencies, cf. bug 217161 comment 11.
+
+  22 Mar 2008; Ingmar Vanhassel <ingmar@gentoo.org> -soprano-2.0.0.ebuild,
+  -soprano-2.0.3.ebuild:
+  Old.
+
+*soprano-2.0.3 (21 Mar 2008)
+
+  21 Mar 2008; Ingmar Vanhassel <ingmar@gentoo.org> +soprano-2.0.3.ebuild:
+  Version bump.
+
+*soprano-2.0.2 (08 Mar 2008)
+
+  08 Mar 2008; Ingmar Vanhassel <ingmar@gentoo.org> +soprano-2.0.2.ebuild:
+  Added soprano-2.0.2.ebuild. Fix dependencies for Qt-4.4.0_beta1.
+
+  18 Jan 2008; Ingmar Vanhassel <ingmar@gentoo.org> soprano-2.0.0.ebuild:
+  Depend on at least >=dev-libs/rasqal-0.9.15. Thanks to Carsten Lorke, bug
+  206570.
+
+  14 Jan 2008; Ingmar Vanhassel <ingmar@gentoo.org>
+  soprano-2.0.0.ebuild:
+  Disable the optional Sesame storage backend until sesame is in portage.
+
+*soprano-2.0.0 (13 Jan 2008)
+
+  13 Jan 2008; Wulf C. Krueger <philantrop@gentoo.org> +metadata.xml,
+  +soprano-2.0.0.ebuild:
+  Initial import to the tree as per bug 205646.

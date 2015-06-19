@@ -1,0 +1,36 @@
+# ChangeLog for games-rpg/sacred-gold
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/sacred-gold/ChangeLog,v 1.8 2015/06/14 18:14:03 ulm Exp $
+
+  14 Jun 2015; Ulrich Müller <ulm@gentoo.org> sacred-gold-1.0.ebuild,
+  sacred-gold-1.0.01.ebuild:
+  [QA] Remove emul-linux-x86-* from dependencies.
+
+  15 Oct 2014; Pacho Ramos <pacho@gentoo.org> sacred-gold-1.0.01.ebuild,
+  sacred-gold-1.0.ebuild:
+  Support multilib providers for deps. Bump to EAPI=5.
+
+  16 Apr 2014; Ulrich Müller <ulm@gentoo.org> sacred-gold-1.0.ebuild,
+  sacred-gold-1.0.01.ebuild:
+  Fix LICENSE, add mirror and bindist restrictions, bug 505742.
+
+  01 Mar 2012; Ulrich Müller <ulm@gentoo.org> sacred-gold-1.0.ebuild,
+  sacred-gold-1.0.01.ebuild:
+  Migrate to cdrom.eclass, bug 398809.
+
+  05 Feb 2012; Mike Frysinger <vapier@gentoo.org> sacred-gold-1.0.01.ebuild:
+  Move to new unpacker eclass for unpack_makeself.
+
+*sacred-gold-1.0.01 (23 Jan 2010)
+
+  23 Jan 2010; Denis Dupeyron <calchan@gentoo.org>
+  +sacred-gold-1.0.01.ebuild:
+  Version bump (bug #267993).
+
+  15 Dec 2009; Peter Volkov <pva@gentoo.org> metadata.xml:
+  metadata.xml: added required herd tag.
+
+*sacred-gold-1.0 (29 Jul 2009)
+
+  29 Jul 2009; Denis Dupeyron <calchan@gentoo.org> +sacred-gold-1.0.ebuild:
+  Initial commit. Enjoy.

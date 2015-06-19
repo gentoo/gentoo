@@ -1,0 +1,155 @@
+diff -ru concentration-1.2.orig/src/ShiftyEngine.c concentration-1.2/src/ShiftyEngine.c
+--- concentration-1.2.orig/src/ShiftyEngine.c	2004-09-20 21:08:59.000000000 -0400
++++ concentration-1.2/src/ShiftyEngine.c	2010-05-18 13:39:22.717713130 -0400
+@@ -61,13 +61,13 @@
+ 	int len = strlen(name);
+ 	assert(name);
+ 
+-	gameName = (char *)malloc((sizeof(char) * len) + 1);
++	gameName = malloc(len + 1);
+ 	if(!gameName) {
+ 		fprintf(stderr, "Out Of Memory.");
+ 		exit(1);
+ 	}
+ 
+-	strncpy(gameName, name, len);
++	snprintf(gameName, len + 1, "%s", name);
+ }
+ 
+ /*****************************************************
+@@ -87,13 +87,13 @@
+ 	int len = strlen(name);
+ 	assert(name);
+ 
+-	backgroundName = (char *)malloc((sizeof(char) * len) + 1);
++	backgroundName = malloc(len + 1);
+ 	if(!backgroundName) {
+ 		fprintf(stderr, "Out Of Memory.");
+ 		exit(1);
+ 	}
+ 
+-	strncpy(backgroundName, name, len);
++	snprintf(backgroundName, len + 1, "%s", name);
+ }
+ 
+ /*****************************************************
+@@ -175,7 +175,7 @@
+ 		exit(1);
+ 	}
+ 
+-	strncpy(t->name, name, 16);
++	snprintf(t->name, 16, "%s", name);
+ 	t->x = x;
+ 	t->y = y;
+ 	t->w = w;
+diff -ru concentration-1.2.orig/src/concentration.c concentration-1.2/src/concentration.c
+--- concentration-1.2.orig/src/concentration.c	2005-11-09 11:05:02.000000000 -0500
++++ concentration-1.2/src/concentration.c	2010-05-18 13:42:19.688474410 -0400
+@@ -202,7 +202,7 @@
+ 
+ /*****************************************************
+  ****************************************************/
+-inline void drawText(char * str, SDL_Color color, int x, int y, TTF_Font * font)
++void drawText(char * str, SDL_Color color, int x, int y, TTF_Font * font)
+ {
+ 	static SDL_Rect dest;
+ 	
+@@ -814,7 +814,7 @@
+ 				SE_Error("A blit failed.");
+ 			SDL_FreeSurface(text);
+ 			
+-			sprintf(str, "%d seconds", myclock);
++			snprintf(str, sizeof(str), "%d seconds", myclock);
+ 			text   = TTF_RenderText_Blended(smallFont, str, black);
+ 			if(!text)
+ 				SE_Error("A render failed.");
+@@ -831,7 +831,7 @@
+ 				SE_Error("A blit failed.");
+ 			SDL_FreeSurface(text);
+ 			
+-			sprintf(str, "%d trys", hits + misses);
++			snprintf(str, sizeof(str), "%d trys", hits + misses);
+ 			text   = TTF_RenderText_Blended(smallFont, str, black);
+ 			if(!text)
+ 				SE_Error("A render failed.");
+@@ -840,7 +840,7 @@
+ 				SE_Error("A blit failed.");
+ 			SDL_FreeSurface(text);
+ 			
+-			sprintf(str, "Total pairs: %d", (size == 2) ? 2 : (size == 4) ? 8 : 36);
++			snprintf(str, sizeof(str), "Total pairs: %d", (size == 2) ? 2 : (size == 4) ? 8 : 36);
+ 			text   = TTF_RenderText_Blended(smallFont, str, black);
+ 			if(!text)
+ 				SE_Error("A render failed.");
+@@ -1327,7 +1327,7 @@
+ {
+ 	int x, makeFullScreen = 0;
+ 
+-	char name[16];
++	char name[64];
+ 	
+ 	SE_SetName("Concentration 1.2");
+ 	SE_SetBackground("pics/background.png");
+@@ -1395,13 +1395,13 @@
+ 
+ 	/* load icon set 1 */
+ 	for(x = 1; x <= 30; x++) {
+-		sprintf(name, "pics/set1/%d.png", x);
++		snprintf(name, sizeof(name), "pics/set1/%d.png", x);
+ 		icons[x] = loadPNG(name);
+ 
+-		sprintf(name, "pics/set2/%d.png", x);
++		snprintf(name, sizeof(name), "pics/set2/%d.png", x);
+ 		icons2[x] = loadPNG(name);
+ 
+-		sprintf(name, "pics/set3/%d.png", x);
++		snprintf(name, sizeof(name), "pics/set3/%d.png", x);
+ 		icons3[x] = loadPNG(name);
+ 	}
+ 
+diff -ru concentration-1.2.orig/src/gfx.c concentration-1.2/src/gfx.c
+--- concentration-1.2.orig/src/gfx.c	2004-09-20 21:08:59.000000000 -0400
++++ concentration-1.2/src/gfx.c	2010-05-18 13:39:22.718722669 -0400
+@@ -39,8 +39,7 @@
+ 		exit(1);
+ 	}
+ 
+-	strcpy(newname, sg_data_path);
+-	strcat(newname, name);
++	snprintf(newname, len1 + len2 + 1, "%s%s", sg_data_path, name);
+ 
+ 	temp = IMG_Load(newname);
+ 	if (temp == NULL) {
+@@ -67,8 +66,7 @@
+ 		exit(1);
+ 	}
+ 
+-	strcpy(newname, sg_data_path);
+-	strcat(newname, name);
++	snprintf(newname, len1 + len2 + 1, "%s%s", sg_data_path, name);
+ 
+ 	temp = IMG_Load(newname);
+ 	if (temp == NULL) {
+@@ -99,8 +97,7 @@
+ 		exit(1);
+ 	}
+ 
+-	strcpy(newname, sg_data_path);
+-	strcat(newname, name);
++	snprintf(newname, len1 + len2 + 1, "%s%s", sg_data_path, name);
+ 
+ 	temp = TTF_OpenFont(newname, size);
+ 	if (temp == NULL) {
+diff -ru concentration-1.2.orig/src/sound.c concentration-1.2/src/sound.c
+--- concentration-1.2.orig/src/sound.c	2004-09-20 21:08:59.000000000 -0400
++++ concentration-1.2/src/sound.c	2010-05-18 13:39:22.718722669 -0400
+@@ -57,8 +57,7 @@
+ 		fprintf(stderr, "Out of memory!\n");
+ 		exit(1);
+ 	}
+-	strcpy(newname, sg_data_path);
+-	strcat(newname, name);
++	snprintf(newname, len1 + len2 + 1, "%s%s", sg_data_path, name);
+ 
+ 	temp = Mix_LoadWAV(newname);
+ 	if(!temp)

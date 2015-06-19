@@ -1,0 +1,9 @@
+# ChangeLog for dev-haskell/regex-pcre
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/regex-pcre/ChangeLog,v 1.1 2014/08/11 15:20:47 slyfox Exp $
+
+*regex-pcre-0.94.4-r1 (11 Aug 2014)
+
+  11 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> +metadata.xml,
+  +regex-pcre-0.94.4-r1.ebuild:
+  PCRE bindings for haskell (ganeti depend: #491214).

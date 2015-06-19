@@ -1,0 +1,15 @@
+Index: cxfe-0.9.2/Makefile.in
+===================================================================
+--- cxfe-0.9.2.orig/Makefile.in
++++ cxfe-0.9.2/Makefile.in
+@@ -14,8 +14,8 @@ mandir = $(prefix)/man/man1
+ CC = @CC@ -Wall
+ CPPFLAGS = @CPPFLAGS@
+ CFLAGS = $(CPPFLAGS) @CFLAGS@ `xine-config --cflags`
+-LIBS = @LIBS@
+-LDFLAGS = `xine-config --libs` -L/usr/X11R6/lib -lXext@LDFLAGS@ @LIBS@ -lX11 
++LDLIBS = `xine-config --libs` -L/usr/X11R6/lib -lXext @LIBS@ -lX11
++LDFLAGS = @LDFLAGS@
+ INSTALL = @INSTALL@
+ 
+ #CC=gcc -Wall -g -O2

@@ -1,0 +1,9 @@
+# ChangeLog for dev-java/args4j
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/args4j/ChangeLog,v 1.1 2015/06/12 14:57:37 monsieurp Exp $
+
+*args4j-2.32 (12 Jun 2015)
+
+  12 Jun 2015; Patrice Clement <monsieurp@gentoo.org> +args4j-2.32.ebuild,
+  +metadata.xml:
+  Initial commit. New dependency for dev-java/istack-commons-soimp.

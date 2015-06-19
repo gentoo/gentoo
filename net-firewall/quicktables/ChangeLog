@@ -1,0 +1,17 @@
+# ChangeLog for net-firewall/quicktables
+# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/quicktables/ChangeLog,v 1.4 2007/05/15 13:59:32 bangert Exp $
+
+  15 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  12 Jul 2005; David Holm <dholm@gentoo.org> quicktables-2.3.ebuild:
+  Added to ~ppc.
+
+*quicktables-2.3 (11 Jul 2005)
+
+  11 Jul 2005; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by ali3n@eliteitminds.com #63085.

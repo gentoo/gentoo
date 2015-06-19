@@ -1,0 +1,83 @@
+# ChangeLog for dev-ruby/ammeter
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ammeter/ChangeLog,v 1.20 2015/06/07 16:44:49 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  06 Jun 2015; Hans de Graaff <graaff@gentoo.org> -ammeter-0.2.9.ebuild,
+  -ammeter-0.2.9-r1.ebuild:
+  Cleanup.
+
+  11 Mar 2015; Agostino Sarubbo <ago@gentoo.org> ammeter-1.1.2.ebuild:
+  Add ~x86, wrt bug #510614
+
+*ammeter-1.1.2 (16 Jan 2015)
+
+  16 Jan 2015; Hans de Graaff <graaff@gentoo.org> +ammeter-1.1.2.ebuild:
+  Version bump.
+
+  28 Dec 2014; Hans de Graaff <graaff@gentoo.org> ammeter-0.2.9-r1.ebuild:
+  Lock to rspec:2.
+
+  24 Sep 2014; Hans de Graaff <graaff@gentoo.org> ammeter-0.2.9-r1.ebuild:
+  Add ruby21.
+
+*ammeter-0.2.9-r1 (27 May 2014)
+
+  27 May 2014; Hans de Graaff <graaff@gentoo.org> +ammeter-0.2.9-r1.ebuild:
+  Add ruby20. Do not test with Rails 4.1 since that fails. Run specs through
+  bundler to get all the dependencies right. Drop x86 keyword due to bug
+  510614.
+
+  26 May 2014; Manuel Rüger <mrueg@gentoo.org> ammeter-0.2.9.ebuild:
+  Remove ruby18 target.
+
+  11 Nov 2013; Manuel Rüger <mrueg@gentoo.org> -ammeter-0.2.8.ebuild:
+  Cleanup old.
+
+*ammeter-0.2.9 (19 Jun 2013)
+
+  19 Jun 2013; Hans de Graaff <graaff@gentoo.org> +ammeter-0.2.9.ebuild:
+  Version bump.
+
+  19 Jun 2013; Hans de Graaff <graaff@gentoo.org> -ammeter-0.2.5.ebuild:
+  Cleanup.
+
+  16 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> ammeter-0.2.5.ebuild,
+  ammeter-0.2.8.ebuild:
+  Update after Ruby packages move.
+
+*ammeter-0.2.8 (28 Jul 2012)
+
+  28 Jul 2012; Hans de Graaff <graaff@gentoo.org> +ammeter-0.2.8.ebuild:
+  Version bump.
+
+  28 Jul 2012; Hans de Graaff <graaff@gentoo.org> -ammeter-0.2.2.ebuild,
+  -ammeter-0.2.3.ebuild:
+  Cleanup.
+
+  23 Jul 2012; Andreas Schuerch <nativemad@gentoo.org> ammeter-0.2.5.ebuild:
+  x86 keyworded, see bug 417587
+
+*ammeter-0.2.5 (25 May 2012)
+
+  25 May 2012; Hans de Graaff <graaff@gentoo.org> +ammeter-0.2.5.ebuild:
+  Version bump.
+
+*ammeter-0.2.3 (01 Apr 2012)
+
+  01 Apr 2012; Hans de Graaff <graaff@gentoo.org> +ammeter-0.2.3.ebuild:
+  Version bump.
+
+  29 Jan 2012; Hans de Graaff <graaff@gentoo.org> ammeter-0.2.2.ebuild:
+  Add ruby19.
+
+  29 Jan 2012; Hans de Graaff <graaff@gentoo.org> ammeter-0.2.2.ebuild:
+  Fix USE=doc, there is no documentation task.
+
+*ammeter-0.2.2 (16 Jan 2012)
+
+  16 Jan 2012; Diego E. Pettenò <flameeyes@gentoo.org> +ammeter-0.2.2.ebuild,
+  +metadata.xml:
+  Initial import of ammeter gem required by mongoid.

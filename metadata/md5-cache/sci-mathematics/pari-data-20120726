@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=!<sci-libs/pari-2.5.0-r1
+DESCRIPTION=Data sets for pari
+EAPI=4
+HOMEPAGE=http://pari.math.u-bordeaux.fr/
+KEYWORDS=~alpha ~amd64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=!<sci-libs/pari-2.5.0-r1
+SLOT=0
+SRC_URI=http://pari.math.u-bordeaux.fr/pub/pari/packages/elldata.tgz -> elldata-20120726.tgz http://pari.math.u-bordeaux.fr/pub/pari/packages/galdata.tgz -> galdata-20120726.tgz http://pari.math.u-bordeaux.fr/pub/pari/packages/galpol.tgz -> galpol-20120726.tgz http://pari.math.u-bordeaux.fr/pub/pari/packages/seadata.tgz -> seadata-20120726.tgz http://pari.math.u-bordeaux.fr/pub/pari/packages/nftables.tgz -> nftables-20120726.tgz
+_md5_=16e29df6f16abe1901d620142a6d0a4c

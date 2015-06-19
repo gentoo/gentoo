@@ -1,0 +1,15 @@
+--- luminance-hdr-2.3.1/CMakeLists.txt
++++ luminance-hdr-2.3.1/CMakeLists.txt
+@@ -250,12 +250,6 @@
+ 
+     INSTALL(FILES ${CMAKE_SOURCE_DIR}/images/luminance-hdr.png DESTINATION share/icons/hicolor/48x48/apps) # icon
+     INSTALL(FILES ${CMAKE_SOURCE_DIR}/luminance-hdr.desktop DESTINATION share/applications) #desktop entry
+-    INSTALL(FILES
+-    ${CMAKE_SOURCE_DIR}/AUTHORS
+-    ${CMAKE_SOURCE_DIR}/README
+-    ${CMAKE_SOURCE_DIR}/LICENSE
+-    ${CMAKE_SOURCE_DIR}/Changelog
+-    DESTINATION share/luminance-hdr) #info files
+     INSTALL(DIRECTORY ${CMAKE_SOURCE_DIR}/help DESTINATION share/luminance-hdr) # help directory
+ # Microsoft Windows
+ ELSEIF(WIN32)

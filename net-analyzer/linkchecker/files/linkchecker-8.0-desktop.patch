@@ -1,0 +1,28 @@
+ doc/linkchecker-gui.desktop | 2 +-
+ doc/linkchecker.desktop     | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/doc/linkchecker-gui.desktop b/doc/linkchecker-gui.desktop
+index 7e06b6e..1b3988f 100644
+--- a/doc/linkchecker-gui.desktop
++++ b/doc/linkchecker-gui.desktop
+@@ -6,5 +6,5 @@ Version=1.0
+ Type=Application
+ Exec=linkchecker-gui
+ Terminal=false
+-Categories=Network;WebDevelopment
++Categories=Network;WebDevelopment;
+ Icon=logo48x48
+diff --git a/doc/linkchecker.desktop b/doc/linkchecker.desktop
+index 0c0617c..7a88405 100644
+--- a/doc/linkchecker.desktop
++++ b/doc/linkchecker.desktop
+@@ -5,6 +5,6 @@ GenericName[de]=URL Validator
+ Version=1.0
+ Type=Application
+ Exec=linkchecker
+-Terminal=True
+-Categories=Network;WebDevelopment
++Terminal=true
++Categories=Network;WebDevelopment;
+ Icon=logo48x48

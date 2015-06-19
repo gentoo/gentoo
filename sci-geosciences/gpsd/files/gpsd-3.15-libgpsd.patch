@@ -1,0 +1,80 @@
+From 7b29fcb88a476daab12957ac22512edf66aee813 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sun, 7 Jun 2015 01:08:48 -0400
+Subject: [PATCH] reenable libgpsd
+
+Upstream has decided to drop the shared libgpsd (since it wasn't used
+externally anymore), but this also meant they statically link the code
+into every app.  Re-enable the shared lib so that the various runtime
+programs can continue to share and save on resources.
+---
+ SConstruct | 25 +++++++++++++------------
+ 1 file changed, 13 insertions(+), 12 deletions(-)
+
+diff --git a/SConstruct b/SConstruct
+index a050f38..53f697d 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -903,7 +903,7 @@ else:
+         obj_list = []
+         for s in Flatten(sources):
+             if type(s) is str:
+-                obj_list.append(env.SharedObject(s))
++                obj_list.append(env.SharedObject(s, parse_flags=parse_flags))
+             else:
+                 obj_list.append(s)
+         return env.SharedLibrary(target=target,
+@@ -925,9 +925,11 @@ static_gpslib = env.StaticLibrary("gps_static",
+                                   [env.StaticObject(s) for s in libgps_sources],
+                                   rtlibs)
+ 
+-compiled_gpsdlib = env.StaticLibrary(target="gpsd",
+-                           source=[env.StaticObject(s, parse_flags=usbflags + bluezflags) for s in libgpsd_sources],
+-                           parse_flags=usbflags + bluezflags)
++compiled_gpsdlib = Library(env=env,
++                           target="gpsd",
++                           sources=libgpsd_sources,
++                           version=libgps_version,
++                           parse_flags=usbflags + rtlibs + bluezflags + ["-lgps"])
+ 
+ libraries = [compiled_gpslib, compiled_gpsdlib]
+ 
+@@ -985,21 +987,19 @@ gpsmon_sources = [
+ 
+ ## Production programs
+ 
+-gpsd = env.Program('gpsd', gpsd_sources,
+-                   LIBS=['gpsd'], parse_flags=gpsdflags+gpslibs)
+-env.Depends(gpsd, [compiled_gpslib])
++gpsd = env.Program('gpsd', gpsd_sources, parse_flags=gpsdlibs)
++env.Depends(gpsd, [compiled_gpsdlib, compiled_gpslib])
+ 
+-gpsdecode = env.Program('gpsdecode', ['gpsdecode.c'],
+-                        LIBS=['gpsd'], parse_flags=gpsdflags+gpslibs)
+-env.Depends(gpsdecode, [compiled_gpslib])
++gpsdecode = env.Program('gpsdecode', ['gpsdecode.c'], parse_flags=gpsdlibs)
++env.Depends(gpsdecode, [compiled_gpsdlib, compiled_gpslib])
+ 
+ gpsctl = env.Program('gpsctl', ['gpsctl.c'],
+                      LIBS=['gpsd'], parse_flags=gpsdflags+gpslibs)
+-env.Depends(gpsctl, [compiled_gpslib])
++env.Depends(gpsctl, [compiled_gpslib, compiled_gpslib])
+ 
+ gpsmon = env.Program('gpsmon', gpsmon_sources,
+                      LIBS=['gpsd'], parse_flags=gpsdflags+gpslibs + ncurseslibs)
+-env.Depends(gpsmon, [compiled_gpslib])
++env.Depends(gpsmon, [compiled_gpslib, compiled_gpslib])
+ 
+ gpsdctl = env.Program('gpsdctl', ['gpsdctl.c'], parse_flags=gpslibs)
+ env.Depends(gpsdctl, compiled_gpslib)
+@@ -1339,6 +1339,7 @@ binaryinstall.append(env.Install(installdir('bindir'),  [gpsdecode, gpsctl, gpsp
+ if env["ncurses"]:
+     binaryinstall.append(env.Install(installdir('bindir'), [cgps, gpsmon]))
+ binaryinstall.append(LibraryInstall(env, installdir('libdir'), compiled_gpslib, libgps_version))
++binaryinstall.append(LibraryInstall(env, installdir('libdir'), compiled_gpsdlib, libgps_version))
+ # Work arount a minor bug in InstallSharedLib() link handling
+ env.AddPreAction(binaryinstall, 'rm -f %s/libgps.*' % (installdir('libdir'), ))
+ 
+-- 
+2.4.1
+

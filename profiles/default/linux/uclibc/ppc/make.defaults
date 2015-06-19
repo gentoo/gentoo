@@ -1,0 +1,21 @@
+# Copyright 1999-2014 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/default/linux/uclibc/ppc/make.defaults,v 1.1 2014/08/16 20:43:29 blueness Exp $
+
+ARCH="ppc"
+ACCEPT_KEYWORDS="${ARCH}"
+
+CHOST="powerpc-gentoo-linux-uclibc"
+CFLAGS="-O2 -pipe"
+CXXFLAGS="${CFLAGS}"
+FFLAGS="${CFLAGS}"
+FCFLAGS="${CFLAGS}"
+
+# Anthony G. Basile <blueness@gentoo.org> (01 Jul 2014)
+# Multilib-related setup, bug #515130
+ABI="ppc"
+DEFAULT_ABI="ppc"
+MULTILIB_ABIS="ppc"
+CHOST_ppc=${CHOST}
+LIBDIR_ppc="lib"
+IUSE_IMPLICIT="abi_ppc_32"

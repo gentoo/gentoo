@@ -1,0 +1,13 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id: notify-send.eselect-0.1,v 1.1 2015/03/31 16:52:10 ulm Exp $
+
+DESCRIPTION="Manage /usr/bin/notify-send implementation"
+MAINTAINER="ssuominen@gentoo.org"
+VERSION="0.1"
+
+SYMLINK_PATH=/usr/bin/notify-send
+SYMLINK_TARGETS=( libnotify-notify-send tinynotify-send )
+SYMLINK_DESCRIPTION='notify-send binary'
+
+inherit bin-symlink

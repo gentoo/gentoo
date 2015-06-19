@@ -1,0 +1,94 @@
+# ChangeLog for app-emacs/emacs-wiki
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/emacs-wiki/ChangeLog,v 1.23 2015/01/27 18:13:43 ulm Exp $
+
+*emacs-wiki-2.72-r2 (27 Jan 2015)
+
+  27 Jan 2015; Ulrich Müller <ulm@gentoo.org> -emacs-wiki-2.72-r1.ebuild,
+  +emacs-wiki-2.72-r2.ebuild:
+  Update HOMEPAGE, bug 537928. Update ebuild to EAPI 5.
+
+  07 Jun 2014; Ulrich Müller <ulm@gentoo.org> emacs-wiki-2.72-r1.ebuild:
+  Remove redundant NEED_EMACS assignment. Specify LICENSE more precisely.
+
+  01 Dec 2012; Raúl Porcel <armin76@gentoo.org> emacs-wiki-2.72-r1.ebuild:
+  Drop sparc keywords
+
+  28 Aug 2008; Ulrich Mueller <ulm@gentoo.org> emacs-wiki-2.72-r1.ebuild:
+  Use elisp-compile instead of elisp-comp, bug 235442.
+
+  16 Nov 2007; Ulrich Mueller <ulm@gentoo.org> emacs-wiki-2.72-r1.ebuild:
+  Byte compilation fails with Emacs 21, add NEED_EMACS=22. Emacs 22 includes
+  pgg and table; remove RESTRICT=test and app-emacs/table from DEPEND.
+
+*emacs-wiki-2.72-r1 (16 Oct 2007)
+
+  16 Oct 2007; Ulrich Mueller <ulm@gentoo.org> files/50emacs-wiki-gentoo.el,
+  -emacs-wiki-2.72.ebuild, +emacs-wiki-2.72-r1.ebuild:
+  Use autoload mechanism in site-init file.
+
+  04 Jul 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-wiki-2.72.ebuild:
+  added some quotes; added die comments
+
+  07 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  files/50emacs-wiki-gentoo.el:
+  add load path correctly, fixes bug 169588, reported by Ulrich Mueller
+  <ulm@kph.uni-mainz.de>
+
+  08 Dec 2006; Christian Faulhammer <opfer@gentoo.org>
+  -emacs-wiki-2.69.ebuild, -emacs-wiki-2.70.ebuild:
+  clean-up of old versions
+
+*emacs-wiki-2.72 (08 Dec 2006)
+
+  08 Dec 2006; Christian Faulhammer <opfer@gentoo.org>
+  +emacs-wiki-2.72.ebuild:
+  version bump
+
+*emacs-wiki-2.70 (20 Dec 2005)
+
+  20 Dec 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  +emacs-wiki-2.70.ebuild:
+  New upstream version.
+
+  24 Oct 2005; Joseph Jezak <josejx@gentoo.org> emacs-wiki-2.69.ebuild:
+  Marked ~ppc.
+
+  01 Jul 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  -emacs-wiki-2.14.ebuild, -emacs-wiki-2.40.ebuild,
+  -emacs-wiki-2.67.1.ebuild, -emacs-wiki-2.68.ebuild,
+  emacs-wiki-2.69.ebuild:
+  Keywording ~amd64.
+
+  22 Jun 2005; Jason Wever <weeve@gentoo.org> emacs-wiki-2.69.ebuild:
+  Added ~sparc keyword.
+
+*emacs-wiki-2.69 (22 Apr 2005)
+
+  22 Apr 2005; Ming Zhao <ming@gentoo.org> +emacs-wiki-2.69.ebuild:
+  minor version bump
+
+*emacs-wiki-2.68 (12 Apr 2005)
+
+  12 Apr 2005; Ming Zhao <ming@gentoo.org> emacs-wiki-2.68.ebuild :
+  version bumped. SRC_URI was changed to the maintainers homepage.
+
+*emacs-wiki-2.67.1 (01 Feb 2005)
+
+  01 Feb 2005; Matthew Kennedy <mkennedy@gentoo.org> metadata.xml,
+  +emacs-wiki-2.67.1.ebuild:
+  New upstream version; Expanded metadata.xml
+
+*emacs-wiki-2.40 (10 Sep 2003)
+
+  10 Sep 2003; Matthew Kennedy <mkennedy@gentoo.org> :
+  minor version bump
+
+*emacs-wiki-2.14 (31 Oct 2002)
+
+  31 Oct 2002; Matthew Kennedy <mkennedy@gentoo.org> ChangeLog,
+  emacs-wiki-2.14.ebuild, files/50emacs-wiki-gentoo.el, 
+  files/digest-emacs-wiki-2.14 :
+
+  Initial import.

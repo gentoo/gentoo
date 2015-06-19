@@ -1,0 +1,12 @@
+diff -urN ptpd-2.3.0.old/src/dep/statistics.c ptpd-2.3.0/src/dep/statistics.c
+--- ptpd-2.3.0.old/src/dep/statistics.c	2013-11-22 17:17:58.000000000 +0100
++++ ptpd-2.3.0/src/dep/statistics.c	2015-06-07 10:29:45.697110725 +0200
+@@ -528,7 +528,7 @@
+ void
+ clearPtpEngineSlaveStats(PtpEngineSlaveStats* stats)
+ {
+-	memset(stats, 0, sizeof(stats));
++	memset(stats, 0, sizeof(*stats));
+ }
+ 
+ void

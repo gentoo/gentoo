@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test unpack
+DEPEND=x11-libs/wxGTK:2.8[gnome,opengl,X] dev-python/wxpython:2.8[opengl] >=dev-util/cmake-2.6.4 >=dev-libs/boost-1.49[python] app-doc/doxygen sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) >=sys-apps/sed-4
+DESCRIPTION=Electronic Schematic and PCB design tools
+EAPI=5
+HOMEPAGE=http://www.kicad-pcb.org
+IUSE=debug linguas_de linguas_en linguas_es linguas_fr linguas_hu linguas_it linguas_ja linguas_pl linguas_pt linguas_ru linguas_zh_CN
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 kicad-doc
+RDEPEND=x11-libs/wxGTK:2.8[gnome,opengl,X] dev-python/wxpython:2.8[opengl] sys-libs/zlib sci-electronics/electronics-menu
+SLOT=0
+SRC_URI=http://iut-tice.ujf-grenoble.fr/cao/kicad-sources-stable_2013-05-18_BZR4017.zip http://iut-tice.ujf-grenoble.fr/cao/kicad-2013-05-18-BZR4017-stable-UBUNTU_12.04_full_with_components_doc.tgz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	flag-o-matic	c9602887773166fe300444712fc7ff98	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52	wxwidgets	6d6eec2685256d35511e7b6d5461bec9
+_md5_=f35331e48dd6fea3b119a5d8a023934e

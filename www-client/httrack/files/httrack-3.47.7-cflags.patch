@@ -1,0 +1,27 @@
+From f780de5a662deeea66df4dc9056ac642c447bbaf Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Fri, 3 May 2013 00:58:15 +0200
+Subject: [PATCH] Fix CFLAGS
+
+---
+ configure.ac | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index c956081..7ceeb39 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -14,9 +14,8 @@ AM_PROG_LIBTOOL
+ AC_PROG_LN_S
+ 
+ ### Default CFLAGS
+-DEFAULT_CFLAGS=""
+-DEFAULT_CFLAGS="-O -g3 -Wall -Wcast-align -Wstrict-prototypes \
++DEFAULT_CFLAGS="-Wall -Wcast-align -Wstrict-prototypes \
+ -Wmissing-prototypes -Wmissing-declarations -Wpointer-arith \
+ -Wnested-externs -D_REENTRANT"
+ AC_SUBST(DEFAULT_CFLAGS)
+ 
+-- 
+1.8.1.5
+

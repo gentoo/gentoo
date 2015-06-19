@@ -1,0 +1,9 @@
+# ChangeLog for dev-perl/IO-SessionData
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/IO-SessionData/ChangeLog,v 1.1 2015/04/02 21:18:24 dilfridge Exp $
+
+*IO-SessionData-1.30.0 (02 Apr 2015)
+
+  02 Apr 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +IO-SessionData-1.30.0.ebuild, +metadata.xml:
+  New package, split out of and needed for dev-perl/SOAP-Lite

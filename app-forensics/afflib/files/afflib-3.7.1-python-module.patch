@@ -1,0 +1,14 @@
+--- afflib-3.7.1/pyaff/Makefile.am
++++ afflib-3.7.1/pyaff/Makefile.am
+@@ -7,8 +7,8 @@
+ pyexec_LTLIBRARIES 	= pyaff.la
+ 
+ pyaff_la_SOURCES	= pyaff.c
+-pyaff_la_LIBADD		= ../lib/libafflib.la
++pyaff_la_LIBADD		= @top_builddir@/lib/libafflib.la
+ pyaff_la_CPPFLAGS 	= $(PYTHON_CPPFLAGS)
+-pyaff_la_CFLAGS                = -fno-strict-aliasing
+-pyaff_la_LDFLAGS 	= -module -avoid-version $(PYTHON_LDFLAGS)
++pyaff_la_CFLAGS     = $(AM_CFLAGS) -shared -fno-strict-aliasing
++pyaff_la_LDFLAGS 	= -module -avoid-version -shared $(PYTHON_LDFLAGS)
+ endif

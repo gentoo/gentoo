@@ -1,0 +1,78 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/www-servers/varnish/files/varnishd.initd-r3,v 1.1 2014/05/22 20:23:48 idl0r Exp $
+
+VARNISHD_PID=${VARNISHD_PID:-/run/${SVCNAME}.pid}
+CONFIGFILES="${CONFIGFILE:-/etc/varnish/default.vcl}"
+
+command="${VARNISHD:-/usr/sbin/varnishd}"
+command_args="-P ${VARNISHD_PID} -f ${CONFIGFILE} ${VARNISHD_OPTS}"
+pidfile="${VARNISHD_PID}"
+
+extra_commands="configtest"
+extra_started_commands="reload"
+
+description_configtest="Run syntax tests for configuration files."
+description_reload="Reloads the configuration."
+
+depend() {
+	need net
+}
+
+configtest() {
+	ebegin "Checking ${SVCNAME} configuration"
+	checkconfig
+	eend $?
+}
+
+checkconfig() {
+	${VARNISHD} -C -f ${CONFIGFILE} >/dev/null 2>&1
+	ret=$?
+	if [ $ret -ne 0 ]; then
+		eerror "${SVCNAME} has detected an error in your setup:"
+		${VARNISHD} -C -f ${CONFIGFILE}
+	fi
+
+	return $ret
+}
+
+start_pre() {
+	checkconfig || return 1
+}
+
+stop_pre() {
+	if [ "${RC_CMD}" = "restart" ]; then
+		checkconfig || return 1
+	fi
+}
+
+reload() {
+	checkconfig || return 1
+
+	ebegin "Reloading varnish"
+
+	$VARNISHADM vcl.list >/dev/null 2>&1
+	ret=$?
+	if [ $ret -ne 0 ]; then
+		eerror "${SVCNAME} cannot list configuration"
+		return 1
+	fi
+
+	new_config="reload_$(date +%FT%H:%M:%S)"
+	$VARNISHADM vcl.load $new_config $CONFIGFILE >/dev/null 2>&1
+	ret=$?
+	if [ $ret -ne 0 ]; then
+		eerror "${SVCNAME} cannot load configuration"
+		return 1
+	fi
+
+	$VARNISHADM vcl.use $new_config >/dev/null 2>&1
+	ret=$?
+	if [ $ret -ne 0 ]; then
+		eerror "${SVCNAME} cannot switch configuration"
+		return 1
+	fi
+
+	eend 0
+}

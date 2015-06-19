@@ -1,0 +1,41 @@
+# ChangeLog for media-video/v4l2loopback
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/v4l2loopback/ChangeLog,v 1.6 2014/03/04 21:42:45 naota Exp $
+
+*v4l2loopback-0.8.0 (04 Mar 2014)
+
+  04 Mar 2014; Naohiro Aota <naota@gentoo.org> +v4l2loopback-0.8.0.ebuild:
+  Version bump wrt #488448
+
+*v4l2loopback-0.6.3-r1 (15 May 2013)
+
+  15 May 2013; Naohiro Aota <naota@gentoo.org> +v4l2loopback-0.6.3-r1.ebuild:
+  Install docs. Introduce USE=example to install example programs. #466828
+
+*v4l2loopback-0.6.3 (25 Feb 2013)
+
+  25 Feb 2013; Naohiro Aota <naota@gentoo.org> +v4l2loopback-0.6.3.ebuild:
+  version bump
+
+*v4l2loopback-0.6.1 (06 May 2012)
+
+  06 May 2012; Naohiro Aota <naota@gentoo.org> +v4l2loopback-0.6.1.ebuild:
+  Version bump to 0.6.1
+
+*v4l2loopback-0.4.1 (28 Nov 2011)
+
+  28 Nov 2011; Naohiro Aota <naota@gentoo.org> +v4l2loopback-0.4.1.ebuild:
+  Version bumped.
+
+  28 Nov 2011; Naohiro Aota <naota@gentoo.org> +v4l2loopback-0.4.0.ebuild,
+  +metadata.xml:
+  Moved from betagarden.
+
+  27 Oct 2011; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Removed no-herd from herd tag in metadata.xml
+
+*v4l2loopback-0.4.0 (10 Jul 2011)
+
+  10 Jul 2011; Naohiro Aota <naota@gentoo.org> +v4l2loopback-0.4.0.ebuild,
+  +metadata.xml:
+  New ebuild media-vide/v4l2loopback

@@ -1,0 +1,60 @@
+# ChangeLog for games-action/orbital-eunuchs-sniper
+# Copyright 2000-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/orbital-eunuchs-sniper/ChangeLog,v 1.14 2015/02/06 13:41:19 ago Exp $
+
+  06 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  orbital-eunuchs-sniper-1.30.ebuild:
+  Stable for amd64, wrt bug #539042
+
+  06 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  orbital-eunuchs-sniper-1.30.ebuild:
+  add desktop entry
+
+  19 Oct 2013; Tristan Heaven <tristan@gentoo.org>
+  orbital-eunuchs-sniper-1.30.ebuild:
+  Remove unnecessary build delay
+
+  30 Apr 2008; Tristan Heaven <nyhm@gentoo.org>
+  +files/orbital-eunuchs-sniper-1.30-gcc43.patch,
+  orbital-eunuchs-sniper-1.30.ebuild:
+  Fix building with gcc-4.3
+
+  19 Mar 2008; Tristan Heaven <nyhm@gentoo.org>
+  orbital-eunuchs-sniper-1.30.ebuild:
+  Add ~amd64 keyword
+
+*orbital-eunuchs-sniper-1.30 (07 Feb 2007)
+
+  07 Feb 2007; Tristan Heaven <nyhm@gentoo.org>
+  +files/orbital-eunuchs-sniper-1.30-datadir.patch,
+  +orbital-eunuchs-sniper-1.30.ebuild:
+  Version bump
+
+  21 Apr 2006; <Tupone@gentoo.org>
+  +files/orbital-eunuchs-sniper-1.29-gcc41.patch,
+  orbital-eunuchs-sniper-1.29.ebuild:
+  Fixing crash like the one at bug #103403 by Simon Koch
+
+  09 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org> +files/1.29-ai.patch,
+  orbital-eunuchs-sniper-1.29.ebuild:
+  Add patch from upstream bugzilla to fix crash. Reported by Florian Loitsch via
+  bug #67812
+
+  16 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  orbital-eunuchs-sniper-1.29.ebuild:
+  fix wrapper script (bug #41740); check sed return
+
+*orbital-eunuchs-sniper-1.29 (22 Apr 2003)
+
+  31 Dec 2003; Mike Frysinger <vapier@gentoo.org> :
+  Add patch to clean up the install ... now binaries are in /usr/games/bin while data is in /usr/share/games/<PN>.
+
+  24 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org>
+  orbital-eunuchs-sniper-1.29.ebuild:
+  use more of games eclass; more error messages; tidy
+
+  22 Apr 2003; Phil Bordelon <sunflare@gentoo.org> orbital-eunuchs-sniper-1.29.ebuild:
+  lu_zero tested it on PPC, and it worked.  Joy and rapture!  Added.
+
+  22 Apr 2003; Phil Bordelon <sunflare@gentoo.org> orbital-eunuchs-sniper-1.29.ebuild:
+  Initial commit.  Thanks to zakk for goading me into finishing these up.

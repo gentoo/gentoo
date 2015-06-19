@@ -1,0 +1,19 @@
+Description: explicitly include sys/resource.h, for eglibc 2.16
+ sys/resource.h is no longer included by sys/wait.h
+ http://sourceware.org/git/?p=glibc.git;a=commitdiff;h=d94a4670800de6e8f088b8630ad5142866127980
+Author: Stefano Rivera <stefanor@ubuntu.com>
+Last-Updated: 2012-11-07
+
+--- a/ksh_wait.h
++++ b/ksh_wait.h
+@@ -5,6 +5,10 @@
+ # include <sys/wait.h>
+ #endif
+ 
++#ifdef HAVE_SYS_RESOURCE_H
++# include <sys/resource.h>
++#endif
++
+ #ifndef POSIX_SYS_WAIT
+ /* Get rid of system macros (which probably use union wait) */
+ # undef WIFCORED

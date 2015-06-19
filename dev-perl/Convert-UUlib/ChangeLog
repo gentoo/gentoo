@@ -1,0 +1,271 @@
+# ChangeLog for dev-perl/Convert-UUlib
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Convert-UUlib/ChangeLog,v 1.69 2014/10/11 20:20:41 zlogene Exp $
+
+  11 Oct 2014; Mikle Kolyada <zlogene@gentoo.org>
+  Convert-UUlib-1.400.0-r2.ebuild:
+  Add ~ppc64 keyword wrt bug #268307
+
+*Convert-UUlib-1.400.0-r2 (11 Oct 2014)
+
+  11 Oct 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Convert-UUlib-1.400.0-r2.ebuild,
+  +files/Convert-UUlib-1.400.0-unbundle.patch:
+  Unbundle uulib, bug 268307
+
+*Convert-UUlib-1.400.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Convert-UUlib-1.400.0-r1.ebuild, -Convert-UUlib-1.400.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  02 Sep 2012; Torsten Veller <tove@gentoo.org> -Convert-UUlib-1.340.ebuild:
+  Cleanup
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  17 Jun 2012; Raúl Porcel <armin76@gentoo.org> Convert-UUlib-1.400.0.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #413087
+
+  06 May 2012; Brent Baude <ranger@gentoo.org> Convert-UUlib-1.400.0.ebuild:
+  Marking Convert-UUlib-1.400.0 ppc for bug 413087
+
+  26 Apr 2012; Jeroen Roovers <jer@gentoo.org> Convert-UUlib-1.400.0.ebuild:
+  Stable for HPPA (bug #413087).
+
+  25 Apr 2012; Markus Meier <maekke@gentoo.org> Convert-UUlib-1.400.0.ebuild:
+  arm stable, bug #413087
+
+  24 Apr 2012; Agostino Sarubbo <ago@gentoo.org> Convert-UUlib-1.400.0.ebuild:
+  Stable for amd64, wrt bug #413087
+
+  24 Apr 2012; Jeff Horelick <jdhore@gentoo.org> Convert-UUlib-1.400.0.ebuild:
+  marked x86 per bug 413087
+
+  23 Apr 2012; Brent Baude <ranger@gentoo.org> Convert-UUlib-1.400.0.ebuild:
+  Marking Convert-UUlib-1.400.0 ppc64 for bug 413087
+
+*Convert-UUlib-1.400.0 (30 May 2011)
+
+  30 May 2011; Torsten Veller <tove@gentoo.org> +Convert-UUlib-1.400.0.ebuild:
+  Version bump
+
+  24 Jan 2011; Torsten Veller <tove@gentoo.org> -Convert-UUlib-1.12.ebuild,
+  -Convert-UUlib-1.33.ebuild:
+  Cleanup
+
+  24 Jan 2011; Jeroen Roovers <jer@gentoo.org> Convert-UUlib-1.340.ebuild:
+  Stable for HPPA (bug #352317).
+
+  22 Jan 2011; Raúl Porcel <armin76@gentoo.org> Convert-UUlib-1.340.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc stable wrt #352317
+
+  21 Jan 2011; Christian Faulhammer <fauli@gentoo.org>
+  Convert-UUlib-1.340.ebuild:
+  stable x86, security bug 352317
+
+  21 Jan 2011; Markos Chandras <hwoarang@gentoo.org>
+  Convert-UUlib-1.340.ebuild:
+  Stable on amd64 wrt bug #352317
+
+  21 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  Convert-UUlib-1.340.ebuild:
+  ppc/ppc64 stable wrt #352317
+
+*Convert-UUlib-1.340 (13 Jan 2011)
+
+  13 Jan 2011; Torsten Veller <tove@gentoo.org> +Convert-UUlib-1.340.ebuild:
+  Version bump
+
+  10 Nov 2009; Torsten Veller <tove@gentoo.org> -Convert-UUlib-1.30.ebuild:
+  Cleanup
+
+*Convert-UUlib-1.33 (10 Nov 2009)
+
+  10 Nov 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +Convert-UUlib-1.33.ebuild:
+  Version bump via perl-bump experimental tool.
+
+*Convert-UUlib-1.30 (29 Aug 2009)
+
+  29 Aug 2009; Torsten Veller <tove@gentoo.org> +Convert-UUlib-1.30.ebuild:
+  Version bump
+
+  08 May 2009; Torsten Veller <tove@gentoo.org> -Convert-UUlib-1.09.ebuild,
+  -Convert-UUlib-1.11.ebuild:
+  Cleanup
+
+  07 May 2009; Raúl Porcel <armin76@gentoo.org> Convert-UUlib-1.12.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc stable wrt #268280
+
+  03 May 2009; Brent Baude <ranger@gentoo.org> Convert-UUlib-1.12.ebuild:
+  stable ppc64, bug 268280
+
+  02 May 2009; Torsten Veller <tove@gentoo.org> Convert-UUlib-1.12.ebuild:
+  Stable on x86 (#268280)
+
+  02 May 2009; nixnut <nixnut@gentoo.org> Convert-UUlib-1.12.ebuild:
+  ppc stable #268280
+
+  02 May 2009; Thomas Anderson <gentoofan23@gentoo.org>
+  Convert-UUlib-1.12.ebuild:
+  stable amd64, bug 268280
+
+  26 Nov 2008; Guy Martin <gmsoft@gentoo.org> Convert-UUlib-1.12.ebuild:
+  hppa stable
+
+*Convert-UUlib-1.12 (22 Oct 2008)
+
+  22 Oct 2008; Torsten Veller <tove@gentoo.org> +Convert-UUlib-1.12.ebuild:
+  Version bump
+
+*Convert-UUlib-1.11 (30 Sep 2008)
+
+  30 Sep 2008; Torsten Veller <tove@gentoo.org> -Convert-UUlib-1.06.ebuild,
+  -Convert-UUlib-1.08.ebuild, Convert-UUlib-1.09.ebuild,
+  +Convert-UUlib-1.11.ebuild, -Convert-UUlib-1.051.ebuild:
+  Version bump. Cleanup
+
+  10 Nov 2007; Samuli Suominen <drac@gentoo.org> Convert-UUlib-1.09.ebuild:
+  amd64 stable
+
+  09 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  Convert-UUlib-1.09.ebuild:
+  Stable on ppc.
+
+  22 Jul 2007; Tom Gall <tgall@gentoo.org> Convert-UUlib-1.09.ebuild:
+  stable on ppc64
+
+  10 Jul 2007; Raúl Porcel <armin76@gentoo.org> Convert-UUlib-1.09.ebuild:
+  alpha/ia64/x86 stable
+
+  09 Jul 2007; Michael Cummings <mcummings@gentoo.org>
+  Convert-UUlib-1.09.ebuild:
+  sparc stable
+
+  06 Jul 2007; Tom Gall <tgall@gentoo.org> Convert-UUlib-1.08.ebuild:
+  stable on ppc64
+
+  05 Jul 2007; Raúl Porcel <armin76@gentoo.org> Convert-UUlib-1.08.ebuild:
+  alpha/ia64/x86 stable
+
+*Convert-UUlib-1.09 (09 Jun 2007)
+
+  09 Jun 2007; Michael Cummings <mcummings@gentoo.org>
+  +Convert-UUlib-1.09.ebuild:
+  Version bump
+
+  10 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  Convert-UUlib-1.08.ebuild:
+  sparc stable
+
+  08 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  Convert-UUlib-1.08.ebuild:
+  Marking amd64 stable
+
+  20 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  -Convert-UUlib-1.07.ebuild:
+  Maintenance
+
+*Convert-UUlib-1.08 (02 Jan 2007)
+
+  02 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  +Convert-UUlib-1.08.ebuild:
+  Version bump
+
+*Convert-UUlib-1.07 (16 Dec 2006)
+
+  16 Dec 2006; Michael Cummings <mcummings@gentoo.org>
+  +Convert-UUlib-1.07.ebuild:
+  Version bump
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Convert-UUlib-1.06.ebuild, Convert-UUlib-1.051.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  02 Jul 2006; Michael Cummings <mcummings@gentoo.org>
+  Convert-UUlib-1.06.ebuild:
+  Marking stable amd64
+
+  27 Mar 2006; Markus Rothe <corsair@gentoo.org> Convert-UUlib-1.06.ebuild:
+  Stable on ppc64
+
+  26 Mar 2006; Michael Hanselmann <hansmi@gentoo.org>
+  Convert-UUlib-1.06.ebuild:
+  Stable on ppc.
+
+  26 Mar 2006; Michael Cummings <mcummings@gentoo.org>
+  Convert-UUlib-1.06.ebuild:
+  60+ days, marking stable for sparc and x86
+
+*Convert-UUlib-1.06 (13 Jan 2006)
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  +Convert-UUlib-1.06.ebuild:
+  Version bump upstream
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org>
+  Convert-UUlib-1.051.ebuild:
+  Mark 1.051 stable on ia64
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  Convert-UUlib-1.051.ebuild:
+  add ~ia64
+
+  25 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -Convert-UUlib-0.31-r1.ebuild, -Convert-UUlib-0.31.ebuild,
+  -Convert-UUlib-1.03.ebuild:
+  cleaning
+
+  20 Apr 2005; Markus Rothe <corsair@gentoo.org> Convert-UUlib-1.051.ebuild:
+  Stable on ppc64; bug #89501
+
+  19 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
+  Convert-UUlib-1.051.ebuild:
+  Stable on alpha, bug 89501.
+
+  18 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  Convert-UUlib-1.051.ebuild:
+  Marking stable for x86 and sparc
+
+  18 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  Convert-UUlib-1.051.ebuild:
+  Stable on ppc.
+
+  18 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  Convert-UUlib-1.051.ebuild:
+  stable on amd64 wrt #89501
+
+*Convert-UUlib-1.051 (18 Apr 2005)
+
+  18 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  +Convert-UUlib-1.051.ebuild:
+  License change; fixes a segfault problem
+
+  06 Feb 2005; Markus Rothe <corsair@gentoo.org> Convert-UUlib-0.31-r1.ebuild,
+  Convert-UUlib-1.03.ebuild:
+  Stable on ppc64/Added ~ppc64 to KEYWORDS
+
+  29 Dec 2004; Markus Rothe <corsair@gentoo.org> Convert-UUlib-0.31-r1.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+*Convert-UUlib-1.03 (05 Jun 2004)
+
+  05 Jun 2004; Michael Cummings <mcummings@gentoo.org>
+  Convert-UUlib-1.03.ebuild:
+  new version on cpan
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*Convert-UUlib-0.31-r1 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*Convert-UUlib-0.31 (23 Oct 2002)
+
+  23 Oct 2002; Nick Hadaway <raker@gentoo.org>
+  Convert-UUlib-0.31.ebuild, files/digest-Convert-UUlib-0.31 :
+  New ebuild.  Added to support net-mail/amavis.

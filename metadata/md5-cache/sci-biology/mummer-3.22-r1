@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=A rapid whole genome aligner
+EAPI=3
+HOMEPAGE=http://mummer.sourceforge.net/
+IUSE=doc
+KEYWORDS=amd64 x86
+LICENSE=Artistic
+RDEPEND=app-shells/tcsh
+SLOT=0
+SRC_URI=mirror://sourceforge/mummer/MUMmer3.22.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=8c37e1f885dfaef4f87b3419642d1384

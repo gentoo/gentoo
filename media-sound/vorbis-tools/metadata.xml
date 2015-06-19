@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sound</herd>
+  <use>
+    <flag name="kate">Adds support for Ogg Kate subtitles via libkate.</flag>
+    <flag name="ogg123">Build ogg123 player, needs libao and curl</flag>
+  </use>
+</pkgmetadata>

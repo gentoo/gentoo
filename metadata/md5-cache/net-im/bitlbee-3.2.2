@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare setup
+DEPEND=>=dev-libs/glib-2.14 purple? ( net-im/pidgin ) libevent? ( dev-libs/libevent ) otr? ( >=net-libs/libotr-4 ) gnutls? ( net-libs/gnutls ) !gnutls? ( nss? ( dev-libs/nss ) !nss? ( ssl? ( dev-libs/openssl ) ) ) virtual/pkgconfig selinux? ( sec-policy/selinux-bitlbee ) skype? ( app-text/asciidoc ) test? ( dev-libs/check ) virtual/pkgconfig
+DESCRIPTION=irc to IM gateway that support multiple IM protocols
+EAPI=5
+HOMEPAGE=http://www.bitlbee.org/
+IUSE=debug gnutls ipv6 +xmpp libevent msn nss +oscar otr +plugins purple selinux skype ssl test twitter +yahoo xinetd python_targets_python2_7
+KEYWORDS=amd64 ppc ~ppc64 x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2.14 purple? ( net-im/pidgin ) libevent? ( dev-libs/libevent ) otr? ( >=net-libs/libotr-4 ) gnutls? ( net-libs/gnutls ) !gnutls? ( nss? ( dev-libs/nss ) !nss? ( ssl? ( dev-libs/openssl ) ) ) virtual/logger skype? ( dev-python/skype4py[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] net-im/skype ) xinetd? ( sys-apps/xinetd )
+REQUIRED_USE=|| ( purple xmpp msn oscar yahoo ) msn? ( || ( gnutls nss ssl ) ) xmpp? ( !nss )
+SLOT=0
+SRC_URI=http://get.bitlbee.org/src/bitlbee-3.2.2.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	7a178335dbd6ea7f50ed4e3e1c13c1e4	python-utils-r1	096f8247eae93026af13ab88cf4305cd	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=2a6bcc9e40f5da91cfc5b72e847ecadb

@@ -1,0 +1,36 @@
+# ChangeLog for games-fps/red-blue-quake2
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/red-blue-quake2/ChangeLog,v 1.9 2010/10/18 07:42:31 tupone Exp $
+
+  18 Oct 2010; Tupone Alfredo <tupone@gentoo.org> files/0.1-gentoo.patch,
+  red-blue-quake2-0.1.ebuild, files/red-blue-quake2-0.1-gcc41.patch,
+  +files/red-blue-quake2-0.1-ldflags.patch:
+  Respect LDFLAGS. Bug #334583 by flameeyes@gentoo.org
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  05 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  red-blue-quake2-0.1.ebuild:
+  Removing old virtual/x11 dependency.
+
+  06 May 2006; <Tupone@gentoo.org> +files/red-blue-quake2-0.1-gcc41.patch,
+  red-blue-quake2-0.1.ebuild:
+  Fix for gcc-4.1
+
+  15 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  red-blue-quake2-0.1.ebuild:
+  Changed to use idsoftware thirdpartymirror.
+
+  15 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  red-blue-quake2-0.1.ebuild:
+  Changed to use idsoftware thirdpartymirror.
+
+  26 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  red-blue-quake2-0.1.ebuild:
+  Making games last on inherit line.
+
+*red-blue-quake2-0.1 (26 Jul 2003)
+
+  26 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me.

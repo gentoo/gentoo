@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=~app-pda/libopensync-0.22 dev-libs/glib:2 dev-libs/libxml2 >=dev-libs/openobex-1.0[bluetooth?,irda?] bluetooth? ( net-wireless/bluez ) virtual/pkgconfig
+DESCRIPTION=OpenSync IrMC plugin
+EAPI=4
+HOMEPAGE=http://www.opensync.org/
+IUSE=+bluetooth irda
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=~app-pda/libopensync-0.22 dev-libs/glib:2 dev-libs/libxml2 >=dev-libs/openobex-1.0[bluetooth?,irda?] bluetooth? ( net-wireless/bluez )
+REQUIRED_USE=|| ( bluetooth irda )
+SLOT=0
+SRC_URI=http://www.opensync.org/download/releases/0.22/libopensync-plugin-irmc-0.22.tar.bz2
+_md5_=0e4b0ff29920b440de8660bbbaf2d1ca

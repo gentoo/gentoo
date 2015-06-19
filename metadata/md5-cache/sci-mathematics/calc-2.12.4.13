@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare test
+DEPEND=sys-libs/ncurses sys-libs/readline
+DESCRIPTION=Arbitrary precision C-like arithmetic system
+EAPI=5
+HOMEPAGE=http://www.isthe.com/chongo/tech/comp/calc/
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=LGPL-2
+RDEPEND=sys-libs/ncurses sys-libs/readline
+SLOT=0
+SRC_URI=http://www.isthe.com/chongo/src/calc/calc-2.12.4.13.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=52a7ce40a33662ab93d949ae76ea8393

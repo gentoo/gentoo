@@ -1,0 +1,82 @@
+# ChangeLog for games-puzzle/picpuz
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/picpuz/ChangeLog,v 1.18 2014/03/02 19:27:15 slyfox Exp $
+
+  02 Mar 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  +files/picpuz-2.5-pthread-underlinking.patch, picpuz-2.5.ebuild:
+  Fix pthread underlinking.
+
+  24 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/picpuz-2.1.1-build.patch, -picpuz-2.1.1.ebuild:
+  old
+
+  07 Aug 2012; Johannes Huber <johu@gentoo.org> picpuz-2.5.ebuild:
+  Stable for x86, wrt bug #428062
+
+  04 Aug 2012; Markos Chandras <hwoarang@gentoo.org> picpuz-2.5.ebuild:
+  Stable on amd64 wrt bug #428062
+
+*picpuz-2.5 (24 Jul 2012)
+
+  24 Jul 2012; Pacho Ramos <pacho@gentoo.org> +files/picpuz-2.5-build.patch,
+  +picpuz-2.5.ebuild:
+  Version bump, also fixing glib-2.32 compilation. Thanks a lot to Julian Ospald
+  (hasufell) for his work.
+
+  21 Jul 2012; Julian Ospald <hasufell@gentoo.org> ChangeLog:
+  fix bug 427520
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> picpuz-2.1.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  23 May 2010; Pacho Ramos <pacho@gentoo.org> picpuz-2.1.1.ebuild:
+  stable amd64, bug 310599
+
+  12 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> picpuz-2.1.1.ebuild:
+  x86 stable wrt bug #310599
+
+*picpuz-2.1.1 (19 Feb 2010)
+
+  19 Feb 2010; Michael Sterrett <mr_bones_@gentoo.org> +picpuz-2.1.1.ebuild,
+  +files/picpuz-2.1.1-build.patch:
+  version bump
+
+  26 Nov 2009; Markus Meier <maekke@gentoo.org> picpuz-2.0.ebuild:
+  amd64/x86 stable, bug #294535
+
+*picpuz-2.0 (13 Oct 2009)
+
+  13 Oct 2009; Michael Sterrett <mr_bones_@gentoo.org> +picpuz-2.0.ebuild,
+  +files/picpuz-2.0-build.patch:
+  version bump
+
+*picpuz-1.9.3 (16 Jul 2009)
+
+  16 Jul 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/picpuz-1.9.3-build.patch, +picpuz-1.9.3.ebuild:
+  version bump
+
+*picpuz-1.9.2 (11 Jun 2009)
+
+  11 Jun 2009; Tristan Heaven <nyhm@gentoo.org> +picpuz-1.9.2.ebuild,
+  +files/picpuz-1.9.2-build.patch:
+  Version bump
+
+  10 Feb 2009; Alfredo Tupone <tupone@gentoo.org>
+  +files/picpuz-1.7-gentoo.patch, picpuz-1.7.ebuild:
+  Fix --as-needed bug #247444 by flameeyes@gentoo.org
+
+*picpuz-1.7 (25 Aug 2008)
+
+  25 Aug 2008; Michael Sterrett <mr_bones_@gentoo.org> +picpuz-1.7.ebuild:
+  version bump
+
+  01 May 2008; Tristan Heaven <nyhm@gentoo.org>
+  +files/picpuz-06-gcc43.patch, picpuz-06.ebuild:
+  Fix building with gcc-4.3
+
+*picpuz-06 (21 Feb 2007)
+
+  21 Feb 2007; Michael Sterrett <mr_bones_@gentoo.org> +metadata.xml,
+  +picpuz-06.ebuild:
+  initial commit - ebuild submitted by Wojciech Myrda via bug #158391

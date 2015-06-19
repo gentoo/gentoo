@@ -1,0 +1,351 @@
+# ChangeLog for www-misc/vdradmin-am
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-misc/vdradmin-am/ChangeLog,v 1.36 2014/10/03 11:33:13 hd_brummy Exp $
+
+*vdradmin-am-3.6.10 (03 Oct 2014)
+
+  03 Oct 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdradmin-am-3.6.10.ebuild:
+  bump, thx to M.Dummer for testing
+
+  29 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> vdradmin-am-3.6.9-r3.ebuild,
+  vdradmin-am-3.6.9.ebuild:
+  perl-core/libnet -> virtual/perl-libnet
+
+*vdradmin-am-3.6.9-r3 (11 Jul 2014)
+
+  11 Jul 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdradmin-am-3.6.9-r2.ebuild, +vdradmin-am-3.6.9-r3.ebuild,
+  files/vdradmind.service:
+  droped vdr use-flag, droped media-video/vdr from depend, droped useless
+  service line 'After=vdr.service'
+
+*vdradmin-am-3.6.9-r2 (11 May 2014)
+
+  11 May 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdradmin-am-3.6.9-r1.ebuild, +vdradmin-am-3.6.9-r2.ebuild:
+  better systemd support, if use-flag ssl, ipv6 are enabled
+
+*vdradmin-am-3.6.9-r1 (19 Apr 2014)
+
+  19 Apr 2014; Pacho Ramos <pacho@gentoo.org> +files/vdradmind.conf,
+  +files/vdradmind.service, +vdradmin-am-3.6.9-r1.ebuild:
+  Add unit file (#507736 by Joachim Herb)
+
+  12 Apr 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdradmin-am-3.6.8.ebuild:
+  cleanup old
+
+  04 Apr 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdradmin-am-3.6.9.ebuild:
+  stable amd64 x86
+
+  14 Feb 2013; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdradmin-am-3.6.8.ebuild, vdradmin-am-3.6.9.ebuild:
+  missing inherit user.eclass added
+
+  24 Feb 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  files/vdradmin-3.6.6.conf:
+  info about SSL using added
+
+*vdradmin-am-3.6.9 (24 Feb 2012)
+
+  24 Feb 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdradmin-am-3.6.8.ebuild, +vdradmin-am-3.6.9.ebuild:
+  bump; #bug 405513, thx to T.Rheinhold for testing
+
+  25 Jan 2012; Daniel Pielmeier <billie@gentoo.org>
+  -vdradmin-am-3.6.7-r1.ebuild:
+  Remove old.
+
+  11 Jan 2012; Daniel Pielmeier <billie@gentoo.org> metadata.xml:
+  Remove myself from maintainers as I don't own a vdr anymore.
+
+  21 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  vdradmin-am-3.6.8.ebuild:
+  x86 stable wrt bug #393975
+
+  18 Dec 2011; Agostino Sarubbo <ago@gentoo.org> vdradmin-am-3.6.8.ebuild:
+  Stable for AMD64, wrt bug #393975
+
+*vdradmin-am-3.6.8 (07 Jun 2011)
+
+  07 Jun 2011; Daniel Pielmeier <billie@gentoo.org> -files/vdradmin-3.6.6.init,
+  -vdradmin-am-3.6.7.ebuild, +vdradmin-am-3.6.8.ebuild:
+  Version bump. Remove old.
+
+  27 Feb 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdradmin-am-3.6.7-r1.ebuild:
+  stable amd64 x86
+
+  16 Feb 2011; Daniel Pielmeier <billie@gentoo.org>
+  vdradmin-am-3.6.7-r1.ebuild:
+  Ebuild cleanup.
+
+  07 Nov 2010; Daniel Pielmeier <billie@gentoo.org>
+  vdradmin-am-3.6.7-r1.ebuild, files/vdradmin-3.6.7.init:
+  Fix configuration file permissions.
+
+  26 Oct 2010; Daniel Pielmeier <billie@gentoo.org>
+  vdradmin-am-3.6.7.ebuild:
+  Also fix bug #342801 for old version.
+
+*vdradmin-am-3.6.7-r1 (26 Oct 2010)
+
+  26 Oct 2010; Daniel Pielmeier <billie@gentoo.org>
+  +vdradmin-am-3.6.7-r1.ebuild, +files/vdradmin-3.6.7.init:
+  Revision bump. Fixes bug #342801. Thanks Diego E. 'Flameeyes' Pettenò for
+  reporting. Also fix some long overdue QA issues reported by Christophe
+  LEFEBVRE from the same bug. Init script now uses install instead of ch*.
+  SSL certificates are now removed after package removal.
+
+  18 Jul 2010; Daniel Pielmeier <billie@gentoo.org> -files/confd-2,
+  -vdradmin-am-3.6.4-r1.ebuild, -files/vdradmin-4,
+  -files/vdradmin-am-config-autoflush.diff:
+  Remove old.
+
+  17 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  vdradmin-am-3.6.7.ebuild:
+  stable x86, bug 328155
+
+  12 Jul 2010; Daniel Pielmeier <billie@gentoo.org>
+  +files/vdradmin-am-config-autoflush.diff:
+  Still used!
+
+  12 Jul 2010; Daniel Pielmeier <billie@gentoo.org>
+  -files/vdradmin-am-config-autoflush.diff:
+  Remove unused patch.
+
+  12 Jul 2010; Daniel Pielmeier <billie@gentoo.org>
+  -vdradmin-am-3.6.6.ebuild:
+  Remove old.
+
+  22 Apr 2010; Daniel Pielmeier <billie@gentoo.org>
+  files/vdradmin-3.6.6.init:
+  Let the init script create all needed directories under /var in case they
+  are missing. Thanks to Helmut Auer in bug #316625.
+
+*vdradmin-am-3.6.7 (11 Apr 2010)
+
+  11 Apr 2010; Daniel Pielmeier <billie@gentoo.org> -files/vdradmin-rc-3,
+  -vdradmin-am-3.6.2.ebuild, -vdradmin-am-3.6.4.ebuild,
+  +vdradmin-am-3.6.7.ebuild:
+  Version bump. Remove old.
+
+*vdradmin-am-3.6.6 (16 Mar 2010)
+
+  16 Mar 2010; Daniel Pielmeier <billie@gentoo.org>
+  +vdradmin-am-3.6.6.ebuild, +files/vdradmin-3.6.6.conf,
+  +files/vdradmin-3.6.6.init, +files/vdradmin-3.6.6.logrotate, metadata.xml:
+  Version bump. Add myself to maintainers.
+
+  06 Feb 2010; Matthias Schwarzott <zzam@gentoo.org>
+  vdradmin-am-3.6.4-r1.ebuild:
+  Fix creating user and group
+
+  06 Feb 2010; Matthias Schwarzott <zzam@gentoo.org>
+  vdradmin-am-3.6.4-r1.ebuild:
+  Marked stable on x86.
+
+  19 Jul 2009; Torsten Veller <tove@gentoo.org> vdradmin-am-3.6.2.ebuild,
+  vdradmin-am-3.6.4.ebuild, vdradmin-am-3.6.4-r1.ebuild:
+  IO-Compress replaces Compress-Zlib
+
+  11 Apr 2009; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdradmin-am-3.6.2.ebuild:
+  stabel again after move
+
+  11 Apr 2009; Joerg Bornkessel <hd_brummy@gentoo.org> +files/confd-2,
+  +files/vdradmin-rc-3, +files/vdradmin-4,
+  +files/vdradmin-am-config-autoflush.diff, +metadata.xml,
+  +vdradmin-am-3.6.2.ebuild, +vdradmin-am-3.6.4.ebuild,
+  +vdradmin-am-3.6.4-r1.ebuild:
+  package moved net-www/xxv - www-misc/xxv #265569
+
+  08 Mar 2009; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdradmin-am-3.6.4.ebuild, vdradmin-am-3.6.4-r1.ebuild:
+  fixed fail on install, changed vdradmin.pl to vdradmin in ebuild
+
+  15 Feb 2009; Joerg Bornkessel <hd_brummy@gentoo.org> files/vdradmin-rc-3,
+  files/vdradmin-4:
+  added --pidfile for baselayout2 start script part, bug 255423; thanks to
+  D. Pielmeier
+
+  13 Jan 2009; Joerg Bornkessel <hd_brummy@gentoo.org> files/vdradmin-4,
+  metadata.xml, +vdradmin-am-3.6.4-r1.ebuild:
+  bug #171947; added version to run vdradmin-am on a vdr-less install, use
+  -vdr then
+
+*vdradmin-am-3.6.4-r1 (07 Jan 2009)
+
+  07 Jan 2009; Joerg Bornkessel <hd_brummy@gentoo.org> files/vdradmin-4,
+  +vdradmin-am-3.6.4-r1.ebuild:
+  #171947 vdradmin-am can now install on vdr-less system if use-flag vdr is
+  disabled; using EAPI to enable use-flag vdr by default
+
+*vdradmin-am-3.6.4 (05 Jan 2009)
+
+  05 Jan 2009; Joerg Bornkessel <hd_brummy@gentoo.org> -files/vdradmin-2,
+  +files/vdradmin-4, -vdradmin-am-3.5.3.ebuild,
+  -vdradmin-am-3.6.0_beta.ebuild, -vdradmin-am-3.6.0_rc.ebuild,
+  -vdradmin-am-3.6.0.ebuild, -vdradmin-am-3.6.1.ebuild,
+  -vdradmin-am-3.6.1-r1.ebuild, vdradmin-am-3.6.2.ebuild,
+  +vdradmin-am-3.6.4.ebuild:
+  versions bump; vdradmin-am-3.6.2 stabel on x86; clean up old versions
+
+  18 Nov 2008; Torsten Veller <tove@gentoo.org> vdradmin-am-3.5.3.ebuild,
+  vdradmin-am-3.6.0_beta.ebuild, vdradmin-am-3.6.0_rc.ebuild,
+  vdradmin-am-3.6.0.ebuild, vdradmin-am-3.6.1.ebuild,
+  vdradmin-am-3.6.1-r1.ebuild, vdradmin-am-3.6.2.ebuild:
+  New virtuals: Compress-Zlib
+
+*vdradmin-am-3.6.2 (30 Jun 2008)
+
+  30 Jun 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +vdradmin-am-3.6.2.ebuild:
+  Version bumped. utf8 support is now contained by default.
+
+  29 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
+  vdradmin-am-3.6.1-r1.ebuild:
+  Marked stable on x86.
+
+*vdradmin-am-3.6.1-r1 (29 Feb 2008)
+
+  29 Feb 2008; Matthias Schwarzott <zzam@gentoo.org> +files/vdradmin-rc-3,
+  +vdradmin-am-3.6.1-r1.ebuild:
+  Fix initscript on openrc, thanks to Daniel Pielmeier
+  <daniel.pielmeier@googlemail.com>.
+
+*vdradmin-am-3.6.1 (20 Dec 2007)
+
+  20 Dec 2007; Matthias Schwarzott <zzam@gentoo.org>
+  vdradmin-am-3.5.3.ebuild, vdradmin-am-3.6.0_beta.ebuild,
+  vdradmin-am-3.6.0_rc.ebuild, vdradmin-am-3.6.0.ebuild,
+  +vdradmin-am-3.6.1.ebuild:
+  Version bumped. Fixed quoting.
+
+  21 Sep 2007; Matthias Schwarzott <zzam@gentoo.org>
+  vdradmin-am-3.6.0.ebuild:
+  Updated to fixed tarball.
+
+*vdradmin-am-3.6.0 (21 Sep 2007)
+
+  21 Sep 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +vdradmin-am-3.6.0.ebuild:
+  Version bumped.
+
+*vdradmin-am-3.6.0_rc (27 Aug 2007)
+
+  27 Aug 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +vdradmin-am-3.6.0_rc.ebuild:
+  Version bumped.
+
+*vdradmin-am-3.6.0_beta (18 Aug 2007)
+
+  18 Aug 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +vdradmin-am-3.6.0_beta.ebuild:
+  Version bumped.
+
+  26 Jun 2007; Matthias Schwarzott <zzam@gentoo.org>
+  -files/vdradmin-am-3.4.7_opera-search.diff, -vdradmin-am-3.4.7-r1.ebuild:
+  Removed old ebuild.
+
+  04 Jun 2007; Matthias Schwarzott <zzam@gentoo.org> files/vdradmin-2:
+  Remove some bashisms.
+
+  13 Mar 2007; Matthias Schwarzott <zzam@gentoo.org> -files/vdradmin,
+  -vdradmin-am-3.4.6.ebuild, -vdradmin-am-3.4.7.ebuild,
+  -vdradmin-am-3.5.0.ebuild, -vdradmin-am-3.5.1.ebuild,
+  -vdradmin-am-3.5.2-r2.ebuild:
+  Cleaned up almost all old versions, but latest and latest that supports old
+  vdradmin-autotimers.
+
+  13 Mar 2007; Matthias Schwarzott <zzam@gentoo.org>
+  vdradmin-am-3.5.3.ebuild:
+  Marked stable on x86.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  25 Jan 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  files/digest-vdradmin-am-3.5.3, Manifest:
+  digest  fixed; damnd, some changes afterwards in sources
+
+*vdradmin-am-3.5.3 (25 Jan 2007)
+
+  25 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +vdradmin-am-3.5.3.ebuild:
+  Version bumped.
+
+*vdradmin-am-3.5.2-r2 (21 Jan 2007)
+
+  21 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
+  -vdradmin-am-3.5.2.ebuild, -vdradmin-am-3.5.2-r1.ebuild,
+  +vdradmin-am-3.5.2-r2.ebuild:
+  Now remove all additional packages, keep only one that is new.
+
+*vdradmin-am-3.5.2-r1 (19 Jan 2007)
+
+  19 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +vdradmin-am-3.5.2-r1.ebuild:
+  No longer install modules already provided by dependencies, and added URI to
+  depend, makes creating initial config no longer fail (and if, then die),
+  thanks to Sebastian Kemper <sebastian_ml@gmx.net>.
+
+  06 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
+  vdradmin-am-3.4.6.ebuild, vdradmin-am-3.4.7.ebuild,
+  vdradmin-am-3.4.7-r1.ebuild, vdradmin-am-3.5.0.ebuild,
+  vdradmin-am-3.5.1.ebuild, vdradmin-am-3.5.2.ebuild:
+  Converted to elog.
+
+  18 Dec 2006; Matthias Schwarzott <zzam@gentoo.org>
+  vdradmin-am-3.4.6.ebuild, vdradmin-am-3.4.7.ebuild,
+  vdradmin-am-3.4.7-r1.ebuild, vdradmin-am-3.5.0.ebuild,
+  vdradmin-am-3.5.1.ebuild, vdradmin-am-3.5.2.ebuild:
+  Removed useless RESTRICT-statement.
+
+*vdradmin-am-3.5.2 (08 Dec 2006)
+
+  08 Dec 2006; Matthias Schwarzott <zzam@gentoo.org> files/confd-2,
+  +vdradmin-am-3.5.2.ebuild:
+  Version bumped. Added small comment about ports below 1024.
+
+  07 Dec 2006; Matthias Schwarzott <zzam@gentoo.org> files/vdradmin-2:
+  Let the init-script correct permission errors of the tmp-directory.
+
+*vdradmin-am-3.5.1 (02 Dec 2006)
+
+  02 Dec 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdradmin-am-3.5.1.ebuild:
+  version bump
+
+*vdradmin-am-3.5.0 (11 Nov 2006)
+
+  11 Nov 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdradmin-am-3.5.0.ebuild:
+  version bump
+
+*vdradmin-am-3.4.7-r1 (06 Nov 2006)
+
+  06 Nov 2006; Matthias Schwarzott <zzam@gentoo.org> +files/confd-2,
+  +files/vdradmin-2, +files/vdradmin-am-3.4.7_opera-search.diff,
+  +files/vdradmin-am-config-autoflush.diff, +vdradmin-am-3.4.7-r1.ebuild:
+  Copied revision from vdr-testing overlay. Contains patch for problem with
+  opera-browser. Init-script disables utf8 for non utf8-enabled vdr. Ebuild
+  now generates a good initial-configuration with correct pathes.
+
+  15 Oct 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdradmin-am-3.4.7.ebuild:
+  fixed unicode handling; tanks to L.Muresan on #151396
+
+*vdradmin-am-3.4.7 (29 Sep 2006)
+
+  29 Sep 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdradmin-am-3.4.7.ebuild:
+  version bump
+
+*vdradmin-am-3.4.6 (14 Jul 2006)
+
+  14 Jul 2006; Joerg Bornkessel <hd_brummy@gentoo.org> +files/vdradmin,
+  +metadata.xml, +vdradmin-am-3.4.6.ebuild:
+  initial import; find older versions on gentoo.de overlay

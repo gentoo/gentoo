@@ -1,0 +1,21 @@
+# ChangeLog for media-sound/bpmdetect
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/bpmdetect/ChangeLog,v 1.4 2013/03/02 21:53:36 hwoarang Exp $
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> bpmdetect-0.6.1.ebuild:
+  Move Qt dependencies to the new category
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> bpmdetect-0.6.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  03 Jun 2009; Samuli Suominen <ssuominen@gentoo.org>
+  bpmdetect-0.6.1.ebuild,
+  +files/bpmdetect-0.6.1-gcc44_and_fmodex_path.patch:
+  Fix compile with GCC 4.4, and append correct fmodex library path in /opt
+  wrt #252400.
+
+*bpmdetect-0.6.1 (21 Dec 2008)
+
+  21 Dec 2008; Samuli Suominen <ssuominen@gentoo.org> +bpmdetect-0.6.1.ebuild:
+  Initial commit for bug 180878, thanks to Jürgen Prömer from
+  #gentoo-media, Freenode for helping out.

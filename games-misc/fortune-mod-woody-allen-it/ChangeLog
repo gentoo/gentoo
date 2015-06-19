@@ -1,0 +1,29 @@
+# ChangeLog for games-misc/fortune-mod-woody-allen-it
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-woody-allen-it/ChangeLog,v 1.6 2015/02/05 17:47:28 tupone Exp $
+
+  05 Feb 2015; Tupone Alfredo <tupone@gentoo.org>
+  fortune-mod-woody-allen-it-0.1.ebuild:
+  EAPI 5
+
+  14 Nov 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  fortune-mod-woody-allen-it-0.1.ebuild:
+  tidy
+
+  11 Dec 2010; Fabian Groffen <grobian@gentoo.org>
+  fortune-mod-woody-allen-it-0.1.ebuild:
+  Added Prefix keywords
+
+  01 Aug 2008; Kenneth Prugh <ken69267@gentoo.org>
+  fortune-mod-woody-allen-it-0.1.ebuild:
+  amd64 stable, bug #233444
+
+  01 Aug 2008; Raúl Porcel <armin76@gentoo.org>
+  fortune-mod-woody-allen-it-0.1.ebuild:
+  x86 stable wrt #233444
+
+*fortune-mod-woody-allen-it-0.1 (23 Aug 2007)
+
+  23 Aug 2007; Tupone Alfredo <tupone@gentoo.org> +metadata.xml,
+  +fortune-mod-woody-allen-it-0.1.ebuild:
+  New ebuild requested with bug #175459 by gutter

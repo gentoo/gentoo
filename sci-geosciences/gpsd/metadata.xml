@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci-geosciences</herd>
+  <longdescription>Unbundled GPS daemon and library to support USB and serial
+ GPS devices and various GPS/mapping clients, such as GPSDrive, kismet, and
+ pygps.
+</longdescription>
+  <use>
+    <flag name="dbus">export gpsd data over dbus connections</flag>
+    <flag name="latency_timing">support latency timing information</flag>
+    <flag name="ntp">Enable <pkg>net-misc/ntp</pkg> shared memory interface
+    and PPS kernel support for GPS time</flag>
+    <flag name="sockets">export gpsd over unix sockets</flag>
+    <flag name="shm">export gpsd over shared memory</flag>
+  </use>
+</pkgmetadata>

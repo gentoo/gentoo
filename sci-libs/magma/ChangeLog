@@ -1,0 +1,18 @@
+# ChangeLog for sci-libs/magma
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/magma/ChangeLog,v 1.3 2015/04/08 18:49:16 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> magma-1.4.0.ebuild,
+  magma-1.4.1.ebuild:
+  Drop old Python implementations
+
+*magma-1.4.1 (15 Jan 2014)
+
+  15 Jan 2014; Sébastien Fabbro <bicatali@gentoo.org> +magma-1.4.1.ebuild:
+  Version bump
+
+*magma-1.4.0 (07 Jan 2014)
+
+  07 Jan 2014; Sébastien Fabbro <bicatali@gentoo.org> +magma-1.4.0.ebuild,
+  +metadata.xml:
+  Initial import into main tree

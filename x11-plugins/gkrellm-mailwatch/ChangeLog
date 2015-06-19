@@ -1,0 +1,139 @@
+# ChangeLog for x11-plugins/gkrellm-mailwatch
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellm-mailwatch/ChangeLog,v 1.32 2013/06/01 11:33:08 pacho Exp $
+
+  01 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #144305
+
+  20 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  -gkrellm-mailwatch-2.4.3.ebuild:
+  Remove obsolete version (masked).
+
+  01 Nov 2010; Jim Ramsay <lack@gentoo.org>
+  gkrellm-mailwatch-2.4.3-r1.ebuild,
+  +files/2.4.3-0004-Do-not-force-O2-in-CFLAGS.patch:
+  One more change: Do not force -O2 in CFLAGS to allow user override
+
+*gkrellm-mailwatch-2.4.3-r1 (01 Nov 2010)
+
+  01 Nov 2010; Jim Ramsay <lack@gentoo.org>
+  +files/2.4.3-0001-Respect-LDFLAGS.patch,
+  +gkrellm-mailwatch-2.4.3-r1.ebuild,
+  +files/2.4.3-0002-Use-gkrellm_gkd_string_width.patch,
+  +files/2.4.3-0003-Remove-a-few-more-GCC-warnings.patch:
+  Patches to fix bug #341483 and #335085
+
+  12 Mar 2010; Sebastian Pipping <sping@gentoo.org>
+  gkrellm-mailwatch-2.4.3.ebuild:
+  Fix HOMEPAGE (bug #305855)
+
+  19 Apr 2007; Jim Ramsay <lack@gentoo.org> -gkrellm-mailwatch-2.4.2.ebuild:
+  Version cleanup
+
+  04 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  gkrellm-mailwatch-2.4.3.ebuild:
+  Stable on sparc
+
+  12 Mar 2007; Raúl Porcel <armin76@gentoo.org>
+  gkrellm-mailwatch-2.4.3.ebuild:
+  x86 stable
+
+  09 Mar 2007; Jim Ramsay <lack@gentoo.org> gkrellm-mailwatch-2.4.2.ebuild,
+  gkrellm-mailwatch-2.4.3.ebuild:
+  Updated to use new gkrellm-plugin eclass
+
+  21 Feb 2007; Jim Ramsay <lack@gentoo.org> metadata.xml,
+  -gkrellm-mailwatch-0.7.2.ebuild:
+  Cleaning up old versions for gkrellm-1.2 removal
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  gkrellm-mailwatch-2.4.3.ebuild:
+  Mark 2.4.3 stable on alpha
+
+  27 Apr 2005; Herbie Hopkins <herbs@gentoo.org>
+  gkrellm-mailwatch-2.4.3.ebuild:
+  Stable on amd64.
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gkrellm-mailwatch-2.4.3.ebuild:
+  Masked gkrellm-mailwatch-2.4.3.ebuild stable for ppc
+
+  10 Jul 2004; Tom Martin <slarti@gentoo.org> gkrellm-mailwatch-2.4.3.ebuild:
+  Marked ~amd64.
+
+*gkrellm-mailwatch-2.4.3 (22 Jun 2004)
+
+  22 Jun 2004; Martin Holzer <mholzer@gentoo.org>
+  gkrellm-mailwatch-2.4.3.ebuild, metadata.xml:
+  Version bumped. Closes 51472
+
+  21 Jan 2004; Sven Blumenstein <bazik@gentoo.org>
+  gkrellm-mailwatch-2.4.2.ebuild:
+  Stable on sparc.
+
+  15 Jan 2004; Aron Griffis <agriffis@gentoo.org>
+  gkrellm-mailwatch-2.4.2.ebuild:
+  stable on alpha
+
+  17 Jul 2003; Martin Holzer <mholzer@gentoo.org>
+  gkrellm-mailwatch-2.4.1.ebuild, gkrellm-mailwatch-2.4.2.ebuild:
+  Removed imlib from DEPEND. Close s#24547.
+
+*gkrellm-mailwatch-2.4.2 (25 Jun 2003)
+
+  25 Jun 2003; Martin Holzer <mholzer@gentoo.org>
+  gkrellm-mailwatch-2.4.2.ebuild:
+  Version bumped.
+
+*gkrellm-mailwatch-2.4.1 (19 May 2003)
+
+  19 May 2003; Martin Holzer <mholzer@gentoo.org>
+  gkrellm-mailwatch-2.4.1.ebuild:
+  Version bumped. Closes #19763.
+
+*gkrellm-mailwatch-2.3.0 (23 Mar 2003)
+
+  23 Mar 2003; Martin Holzer <mholzer@gentoo.org>
+  gkrellm-mailwatch-2.3.0.ebuild:
+  Version bumped.
+
+*gkrellm-mailwatch-2.2.2 (19 Feb 2003)
+
+  19 Feb 2003; Martin Holzer <mholzer@gentoo.org> gkrellm-mailwatch-2.2.2.ebuild  files/digest-gkrellm-mailwatch-2.2.2 ChangeLog :
+  Version bumped.
+
+*gkrellm-mailwatch-2.1 (18 Jan 2003)
+
+  19 Feb 2003; Martin Holzer <mholzer@gentoo.org> gkrellm-mailwatch-2.1.ebuild:
+  Marked as stable.
+
+  18 Jan 2003; Martin Holzer <mholzer@gentoo.org> gkrellm-mailwatch-2.1.ebuild
+  files/digest-gkrellm-mailwatch-2.1 ChangeLog :
+  Version bumped. Closes #14136
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*gkrellm-mailwatch-2.0 (16 Oct 2002)
+
+  16 Oct 2002; Seemant Kulleen <seemant@gentoo.org>
+  gkrellm-mailwatch-2.0.ebuild files/digest-gkrellm-mailwatch-2.0 :
+
+  GKrellM2 version, submitted by: gustavo@felisberto.net (Gustavo
+  Felisberto) in bug #8926.
+
+*gkrellm-mailwatch-0.7.2 (26 Apr 2002)
+
+  11 Sep 2002; Owen Stampflee <owen@gentoo.org> :
+  Added PPC to KEYWORDS.
+
+  29 Aug 2002; Seemant Kulleen <seemant@gentoo.org> * :
+
+  Relocated to x11-plugins
+
+  26 Apr 2002; Seemant Kulleen <seemant@gentoo.org> gkrellm-mailwatch-0.7.2.ebuild
+  files/digest-gkrellm-mailwatch-0.7.2 :
+
+  New plugin for gkrellm

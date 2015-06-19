@@ -1,0 +1,592 @@
+# ChangeLog for app-accessibility/festival
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/festival/ChangeLog,v 1.122 2015/06/09 12:50:43 mrueg Exp $
+
+  09 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -festival-2.1.ebuild:
+  Remove old.
+
+  17 May 2015; Pacho Ramos <pacho@gentoo.org> festival-2.1-r1.ebuild:
+  ppc64 stable wrt bug #510598
+
+  13 May 2015; Mikle Kolyada <zlogene@gentoo.org> festival-2.1-r1.ebuild:
+  sparc stable wrt bug #510598
+
+  26 Apr 2015; Mikle Kolyada <zlogene@gentoo.org> festival-2.1-r1.ebuild:
+  ia64 stable wrt bug #510598
+
+  18 Apr 2015; Pacho Ramos <pacho@gentoo.org> festival-2.1-r1.ebuild:
+  x86 stable wrt bug #510598
+
+  13 Apr 2015; Agostino Sarubbo <ago@gentoo.org> festival-2.1-r1.ebuild:
+  Stable for alpha, wrt bug #510598
+
+  02 Mar 2015; Agostino Sarubbo <ago@gentoo.org> festival-2.1-r1.ebuild:
+  Stable for ppc, wrt bug #510598
+
+  31 Jan 2015; Agostino Sarubbo <ago@gentoo.org> festival-2.1-r1.ebuild:
+  Stable for amd64, wrt bug #510598
+
+  23 Jan 2015; Jeroen Roovers <jer@gentoo.org> festival-2.1-r1.ebuild:
+  Stable for HPPA (bug #510598).
+
+  20 Dec 2013; Jeroen Roovers <jer@gentoo.org>
+  -files/speech-tools-1.2.96_beta-gcc43-include.patch:
+  Old.
+
+  02 Feb 2013; Agostino Sarubbo <ago@gentoo.org> festival-2.1-r1.ebuild:
+  Add ~arm, wrt bug #449220
+
+  28 Dec 2012; Ulrich Müller <ulm@gentoo.org> festival-2.1.ebuild,
+  festival-2.1-r1.ebuild:
+  Fix LICENSE, see COPYING and README files, bug 447290.
+
+  03 Dec 2012; Jesus Rivero <neurogeek@gentoo.org> -festival-1.96_beta.ebuild,
+  -files/festival-1.96_beta-gcc43.patch,
+  -files/festival-1.96_beta-hts-voices.patch,
+  -files/festival-1.96_beta-init-scm.patch, -files/festival.rc,
+  -files/server.scm, metadata.xml:
+  Removed older version because of security issues. Closes bugs #386319 and
+  #425854
+
+*festival-2.1-r1 (03 Dec 2012)
+
+  03 Dec 2012; Jesus Rivero <neurogeek@gentoo.org> +festival-2.1-r1.ebuild,
+  +files/festival-2.1-gcc4.7.patch:
+  Revbump. Makes it compile with gcc-4.7
+
+  20 Sep 2012; Jesus Rivero <neurogeek@gentoo.org>
+  -festival-1.96_beta-r1.ebuild, -festival-2.0.95_beta.ebuild,
+  -files/festival-2.0.95_beta-init-scm.patch:
+  Updated Manifest wrt bug #435518. Removed keyworded versions.
+
+  31 May 2012; Zac Medico <zmedico@gentoo.org> festival-1.96_beta-r1.ebuild,
+  festival-1.96_beta.ebuild, festival-2.0.95_beta.ebuild, festival-2.1.ebuild:
+  inherit multilib for get_libdir
+
+  23 May 2012; Mike Frysinger <vapier@gentoo.org> festival-1.96_beta-r1.ebuild,
+  festival-1.96_beta.ebuild, festival-2.0.95_beta.ebuild, festival-2.1.ebuild:
+  Inherit user eclass for enewuser/etc...
+
+  17 Apr 2012; Jesus Rivero <neurogeek@gentoo.org> festival-2.1.ebuild:
+  Dropped alsa-lib support as speech-tools already handles it. Closes bug
+  #380501
+
+  29 Dec 2011; Mark Loeser <halcy0n@gentoo.org> festival-2.1.ebuild:
+  Stable for ppc/ppc64; bug #380775
+
+  24 Sep 2011; Raúl Porcel <armin76@gentoo.org> festival-2.1.ebuild:
+  alpha/ia64/sparc stable wrt #380775
+
+  04 Sep 2011; Markus Meier <maekke@gentoo.org> festival-2.1.ebuild:
+  x86 stable, bug #380775
+
+  01 Sep 2011; Jeroen Roovers <jer@gentoo.org> festival-2.1.ebuild:
+  Stable for HPPA (bug #380775).
+
+  27 Aug 2011; Markos Chandras <hwoarang@gentoo.org> festival-2.1.ebuild:
+  Stable on amd64 wrt bug #380775
+
+  26 Aug 2011; Jesus Rivero <neurogeek@gentoo.org> festival-2.1.ebuild:
+  Changes to DEPEND wrt bug #380501 thanks to Michael. Added fix for prefix
+  wrt bug #309983
+
+  22 Mar 2011; Jesus Rivero <neurogeek@gentoo.org>
+  festival-1.96_beta.ebuild, festival-1.96_beta-r1.ebuild:
+  Minor change in mbrola dep.
+
+  22 Mar 2011; Jesus Rivero <neurogeek@gentoo.org> festival-2.1.ebuild:
+  Quoted LDFLAGS per bugs #340317 and #359723
+
+  17 Mar 2011; Jesus Rivero <neurogeek@gentoo.org> festival-2.1.ebuild:
+  Readded siteinit.scm instructions
+
+*festival-2.1 (16 Mar 2011)
+
+  16 Mar 2011; Jesus Rivero <neurogeek@gentoo.org> +festival-2.1.ebuild,
+  +files/festival-2.1-gentoo-system.patch,
+  +files/festival-2.1-init-scm.patch, +files/festival-2.1-ldflags.patch:
+  Version bump. Closes bug #340317 and #357381.
+
+  04 Mar 2011; William Hubbs <williamh@gentoo.org> festival-1.96_beta.ebuild,
+  festival-1.96_beta-r1.ebuild, festival-2.0.95_beta.ebuild:
+  fix dependencies on speech-tools for bug #357251.
+
+  13 Jul 2010; Jesus Rivero <neurogeek@gentoo.org>
+  festival-2.0.95_beta.ebuild:
+  Reverted change to emake -j1. Parallel make does not work. Closes bug
+  #326453
+
+*festival-2.0.95_beta (30 Jun 2010)
+
+  30 Jun 2010; Jesus Rivero <neurogeek@gentoo.org>
+  +festival-2.0.95_beta.ebuild, +files/festival-2.0.95_beta-init-scm.patch:
+  Version bump.
+
+  30 Jun 2010; Jesus Rivero <neurogeek@gentoo.org>
+  festival-1.96_beta.ebuild, festival-1.96_beta-r1.ebuild:
+  Changed DEPS on app-accessibility/speech-tools to prepare for the new
+  speech-tools/festival versions.
+
+  19 May 2010; Jesus Rivero <neurogeek@gentoo.org>
+  festival-1.96_beta-r1.ebuild:
+  Fixed SRC_URI
+
+  08 Jul 2009; William Hubbs <williamh@gentoo.org> metadata.xml:
+  Added neurogeek back as maintainer.
+
+  15 Mar 2009; William Hubbs <williamh@gentoo.org> metadata.xml:
+  Adding neurogeek as maintainer.
+
+  09 Feb 2009; William Hubbs <williamh@gentoo.org>
+  festival-1.96_beta-r1.ebuild:
+  Fixed the gcc 4.3 patch order for bug #205401.
+
+*festival-1.96_beta-r1 (09 Feb 2009)
+
+  09 Feb 2009; William Hubbs <williamh@gentoo.org>
+  +files/speech-tools-1.2.96_beta-gcc43-include.patch,
+  +files/festival-1.96_beta-hts-voices.patch, +festival-1.96_beta-r1.ebuild:
+  Add back the HTS voices, thanks to garlicbread@ntlworld.com for the patch.
+  Also add back the MultiSyn engine.
+  This closes bug #211214.
+
+  23 Nov 2008; Patrick Lauer <patrick@gentoo.org> festival-1.96_beta.ebuild:
+  Fixing homepage to point directly at the actual project page.
+
+  10 Aug 2008; William Hubbs <williamh@gentoo.org>
+  festival-1.96_beta.ebuild:
+  Closes bug 220285 (alsa support), thanks to solar. Also, this adds back
+  the speech synthesis engines needed by bug 211214. Again, thanks to solar.
+
+  15 Jul 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  20 Mar 2008; William Hubbs <williamh@gentoo.org>
+  -files/festival-1.4.3-asterisk.patch,
+  -files/festival-1.95_beta-asterisk.patch,
+  -files/festival-1.95_beta-fbsd.patch,
+  -files/festival-1.95_beta-gcc41-amd64-int-pointer.patch,
+  -files/festival-1.95_beta-gcc41-amd64.patch,
+  -files/festival-1.95_beta-gcc41.patch, -files/festival-gcc3.3.diff,
+  -files/festival-1.95_beta-init-scm.patch, -festival-1.4.3-r3.ebuild,
+  -festival-1.4.3-r4.ebuild, -festival-1.95_beta.ebuild,
+  -festival-1.95_beta-r1.ebuild, -festival-1.95_beta-r2.ebuild,
+  -festival-1.95_beta-r3.ebuild, -festival-1.95_beta-r4.ebuild:
+  Removed old versions.
+
+  13 Mar 2008; William Hubbs <williamh@gentoo.org>
+  festival-1.96_beta.ebuild:
+  Adding back the ~x86-fbsd keyword; I'm not sure why it was dropped.
+
+  07 Mar 2008; William Hubbs <williamh@gentoo.org>
+  festival-1.96_beta.ebuild:
+  I am adding back the mips keyword since I'm the maintainer and I'm not sure
+  how it got dropped.  This closes #209077.
+
+  03 Mar 2008; Raúl Porcel <armin76@gentoo.org> festival-1.96_beta.ebuild:
+  alpha/ia64/sparc stable wrt #209081
+
+  10 Feb 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  festival-1.96_beta.ebuild:
+  ppc stable, bug #209081
+
+  07 Feb 2008; Jeroen Roovers <jer@gentoo.org> festival-1.96_beta.ebuild:
+  Stable for HPPA (bug #209081).
+
+  07 Feb 2008; Brent Baude <ranger@gentoo.org> festival-1.96_beta.ebuild:
+  stable ppc64, bug 209081
+
+  06 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  festival-1.96_beta.ebuild:
+  stable x86 amd64, bug 209081
+
+  12 Jan 2008; William Hubbs <williamh@gentoo.org>
+  +files/festival-1.96_beta-gcc43.patch, festival-1.96_beta.ebuild:
+  Fixed dependencies for bug #199886.
+  Applied a gcc 4.3 patch for bug #205401 -- thanks to dirtyepic@gentoo.org.
+
+  29 Aug 2007; William Hubbs <williamh@gentoo.org>
+  +files/festival-1.96_beta-init-scm.patch:
+  Fixed patch bug #190619.
+
+*festival-1.96_beta (28 Aug 2007)
+
+  28 Aug 2007; William Hubbs <williamh@gentoo.org>
+  +festival-1.96_beta.ebuild:
+  Version bump #188821.
+  Also, I have been able to re-enstate the dependency on speech-tools.
+
+  06 Jul 2007; Roy Marples <uberlord@gentoo.org>
+  +files/festival-1.95_beta-fbsd.patch, festival-1.95_beta-r4.ebuild:
+  Add patch to build on fbsd, #183686 thanks to Nathan Smith.
+  Keyworded ~x86-fbsd.
+
+  11 Jun 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  festival-1.95_beta-r4.ebuild:
+  Stable on sparc wrt security #170477
+
+  10 Jun 2007; Raúl Porcel <armin76@gentoo.org>
+  festival-1.95_beta-r4.ebuild:
+  x86 stable wrt security #170477
+
+  09 Jun 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  festival-1.95_beta-r4.ebuild:
+  Marked stable on amd64 as per bug 170477.
+
+  09 Jun 2007; Jose Luis Rivero <yoswink@gentoo.org>
+  festival-1.95_beta-r4.ebuild:
+  Stable on alpha wrt security bug #170477. Thanks to Brian Evans (grknight)
+  for testing.
+
+  09 Jun 2007; Markus Rothe <corsair@gentoo.org>
+  festival-1.95_beta-r4.ebuild:
+  Stable on ppc64; bug #170477
+
+  09 Jun 2007; Jeroen Roovers <jer@gentoo.org> festival-1.95_beta-r4.ebuild:
+  Stable for HPPA (bug #170477).
+
+  09 Jun 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  festival-1.95_beta-r4.ebuild:
+  ppc stable, bug #170477
+
+*festival-1.95_beta-r4 (09 Jun 2007)
+
+  09 Jun 2007; William Hubbs <williamh@gentoo.org> files/festival.rc,
+  files/server.scm, +festival-1.95_beta-r4.ebuild:
+  Fix for security bug #170477.
+  Thanks to solar for the patch.
+
+  28 Apr 2007; Sven Wegener <swegener@gentoo.org> festival-1.4.3-r3.ebuild,
+  festival-1.4.3-r4.ebuild, festival-1.95_beta.ebuild,
+  festival-1.95_beta-r1.ebuild, festival-1.95_beta-r2.ebuild,
+  festival-1.95_beta-r3.ebuild:
+  Fix *initd, *confd and *envd calls (#173884, #174266)
+
+*festival-1.95_beta-r3 (06 Nov 2006)
+
+  06 Nov 2006; William Hubbs <williamh@gentoo.org>
+  +festival-1.95_beta-r3.ebuild:
+  Did a rev bump to install the multisyn code.
+
+*festival-1.95_beta-r2 (04 Nov 2006)
+
+  04 Nov 2006; William Hubbs <williamh@gentoo.org> files/server.scm,
+  +festival-1.95_beta-r2.ebuild:
+  This revision fixes bug #118404, now libfestival.a will be installed.
+  Also, I revised server.scm so that it only contains  server settings.
+
+  19 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  festival-1.95_beta-r1.ebuild:
+  Stable on Alpha.
+
+  15 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  festival-1.95_beta-r1.ebuild:
+  Stable on ia64.
+
+  12 Oct 2006; Guy Martin <gmsoft@gentoo.org> festival-1.95_beta-r1.ebuild:
+  Stable on hppa.
+
+  26 Sep 2006; Jason Wever <weeve@gentoo.org> festival-1.95_beta-r1.ebuild:
+  Stable the right one for SPARC wrt bug #146897.
+
+  26 Sep 2006; Jason Wever <weeve@gentoo.org> festival-1.95_beta.ebuild:
+  Stable on SPARC wrt bug #146897.
+
+  24 Sep 2006; Michael Hanselmann <hansmi@gentoo.org>
+  festival-1.95_beta-r1.ebuild:
+  Stable on ppc.
+
+  22 Sep 2006; Michael Cummings <mcummings@gentoo.org>
+  festival-1.95_beta-r1.ebuild:
+  Keywording amd64, bug 146897
+
+  21 Sep 2006; <ticho@gentoo.org> festival-1.95_beta-r1.ebuild:
+  Stable on x86, bug #146897.
+
+  21 Sep 2006; Markus Rothe <corsair@gentoo.org>
+  festival-1.95_beta-r1.ebuild:
+  Stable on ppc64; bug #146897
+
+*festival-1.95_beta-r1 (21 Sep 2006)
+
+  21 Sep 2006; William Hubbs <williamh@gentoo.org>
+  +files/festival-1.95_beta-init-scm.patch, festival-1.4.3-r3.ebuild,
+  festival-1.4.3-r4.ebuild, +festival-1.95_beta-r1.ebuild:
+  This revision fixes dependencies for X and esd use flags.
+  It also makes it possible to configure siteinit.scm and sitevars.scm by
+  moving them to /etc/festival.
+  The dependency between festival and speech-tools has been broken because
+  festival now directly includes source files from speech-tools.
+  I added a blocker so that old versions of festival cannot be installed with
+  the new speech-tools.
+  This is for bug #146897.
+
+  20 Sep 2006; <blubb@gentoo.org> festival-1.95_beta.ebuild:
+  stable on amd64
+
+  09 Sep 2006; <nixnut@gentoo.org> festival-1.95_beta.ebuild:
+  Stable on ppc wrt bug 146897
+
+  08 Aug 2006; William Hubbs <williamh@gentoo.org>
+  +files/festival-1.95_beta-gcc41-amd64-int-pointer.patch,
+  festival-1.95_beta.ebuild:
+  Added another amd64 patch.  Thanks again Ed.
+
+  20 Jul 2006; William Hubbs <williamh@gentoo.org>
+  +files/festival-1.95_beta-gcc41-amd64.patch,
+  +files/festival-1.95_beta-gcc41.patch, festival-1.95_beta.ebuild:
+  Added Ed Catmur's patches so this will compile under gcc 4.1.
+  This is for bug #116030.
+
+  19 Jul 2006; <psi29a@gentoo.org> festival-1.4.3-r3.ebuild,
+  festival-1.4.3-r4.ebuild:
+  stable on mips
+
+  16 Jun 2006; Jon Hood <squinky86@gentoo.org> festival-1.4.3-r4.ebuild,
+  festival-1.95_beta.ebuild:
+  Add linguas_es IUSE wrt #136953.
+
+  05 Jun 2006; Jeremy Huddleston <eradicator@gentoo.org>
+  festival-1.4.3-r4.ebuild:
+  Stable amd64 and sparc.
+
+*festival-1.95_beta (16 May 2006)
+
+  16 May 2006; William Hubbs <williamh@gentoo.org>
+  +files/festival-1.95_beta-asterisk.patch, +festival-1.95_beta.ebuild:
+  Version Bump.
+
+  18 Apr 2006; William Hubbs <williamh@gentoo.org> metadata.xml:
+  Updated metadata.
+
+  26 Oct 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  festival-1.4.3-r4.ebuild:
+  Don't do the prerm deletion of the symlinks because they get removed during
+  subsequent emerges.
+
+  09 Sep 2005; Aron Griffis <agriffis@gentoo.org> festival-1.4.3-r3.ebuild:
+  Mark 1.4.3-r3 stable on alpha
+
+  24 Aug 2005; Aron Griffis <agriffis@gentoo.org> festival-1.4.3-r4.ebuild:
+  add ~alpha ~ia64 #100083
+
+  23 Aug 2005; Aron Griffis <agriffis@gentoo.org> festival-1.4.3-r3.ebuild:
+  stable on ia64
+
+  01 Aug 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  festival-1.4.3-r3.ebuild:
+  Properly create the /usr/lib/festival symlink.
+
+  30 Jul 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  -files/festival-1.4.2.patch, files/server.scm, -festival-1.4.3-r2.ebuild,
+  festival-1.4.3-r3.ebuild, festival-1.4.3-r4.ebuild:
+  -r3 stable ppc per JoseJX.  Finally cleaning out crufty old versions.
+
+  27 Jul 2005; Guy Martin <gmsoft@gentoo.org> festival-1.4.3-r3.ebuild,
+  festival-1.4.3-r4.ebuild:
+  Stable on hppa.
+
+  24 Jul 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  festival-1.4.3-r4.ebuild:
+  Changing tts USE flags to linguas_.
+
+*festival-1.4.3-r4 (24 Jul 2005)
+
+  24 Jul 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +festival-1.4.3-r4.ebuild:
+  Revision bump with cleanups thanks to Vincent Poinot
+  <vincent.poinot@wanadoo.fr>. Also, it now uses the correct toolchain
+  compiler.
+
+  21 Jul 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  -festival-1.4.3-r1.ebuild, festival-1.4.3-r3.ebuild:
+  Stable amd64, sparc, x86.
+
+  04 Jul 2005; Bryan Østergaard <kloeri@gentoo.org>
+  festival-1.4.3-r3.ebuild:
+  Add ~alpha keyword.
+
+  09 Jun 2005; Markus Rothe <corsair@gentoo.org> festival-1.4.3-r3.ebuild:
+  Stable on ppc64
+
+  11 May 2005; Aron Griffis <agriffis@gentoo.org> festival-1.4.3-r3.ebuild:
+  add ~ia64
+
+  27 Apr 2005; Markus Rothe <corsair@gentoo.org> festival-1.4.3-r3.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  27 Mar 2005; Michael Hanselmann <hansmi@gentoo.org>
+  festival-1.4.3-r2.ebuild:
+  Stable on ppc.
+
+*festival-1.4.3-r3 (09 Feb 2005)
+
+  09 Feb 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +festival-1.4.3-r3.ebuild:
+  Move to /usr/share/festival as that's the proper place for us.
+
+  05 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  festival-1.4.3-r1.ebuild, festival-1.4.3-r2.ebuild:
+  Fix compilation problems with not finding speech-tools... closes bug #76810.
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  festival-1.4.3-r2.ebuild:
+  Stable amd64, sparc, x86.
+
+*festival-1.4.3-r2 (19 Oct 2004)
+
+  19 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +festival-1.4.3-r2.ebuild, -festival-1.4.3.ebuild:
+  get_libdir updates.  Now installs header files to close bug #64504.
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  festival-1.4.3-r1.ebuild, festival-1.4.3.ebuild:
+  Masked festival-1.4.3.ebuild stable for ppc
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  festival-1.4.3-r1.ebuild:
+  Masked festival-1.4.3-r1.ebuild stable for ppc
+
+  28 Jun 2004; Aron Griffis <agriffis@gentoo.org> festival-1.4.3.ebuild:
+  sync IUSE (+doc)
+
+  28 Jun 2004; Aron Griffis <agriffis@gentoo.org> festival-1.4.3.ebuild:
+  QA - fix use invocation, econf || die, sync IUSE, glibc -> libc
+
+  25 Apr 2004; Aron Griffis <agriffis@gentoo.org> festival-1.4.3.ebuild:
+  Add die following econf
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  festival-1.4.3-r1.ebuild, festival-1.4.3.ebuild:
+  Removed unneccessary GCCPV to close bug #48383.
+
+  30 Mar 2004; Todd Sunderlin <todd@gentoo.org> festival-1.4.3-r1.ebuild:
+  set stable on sparc
+
+  25 Mar 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  festival-1.4.3-r1.ebuild, festival-1.4.3.ebuild:
+  ~sparced, closes #41330
+
+  24 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> festival-1.4.3.ebuild:
+  inherit eutils.  doc in IUSE
+
+  21 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> files/server.scm:
+  Fixed voice selection in server.scm
+
+  21 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  festival-1.4.3-r1.ebuild:
+  Massive ebuild cleanup.
+
+  16 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  festival-1.4.3-r1.ebuild, festival-1.4.3.ebuild:
+  speech-tools is in app-accessibility.
+
+  16 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  festival-1.4.3-r1.ebuild, festival-1.4.3.ebuild, metadata.xml,
+  files/festival-1.4.2.patch, files/festival-1.4.3-asterisk.patch,
+  files/festival-gcc3.3.diff, files/festival.rc, files/server.scm:
+  Moved from media-sound/festival to app-accessibility/festival.
+
+  13 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> files/server.scm:
+  fixed sticky keyboard typo.  bug #44557.
+
+  13 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  festival-1.4.2-r3.ebuild:
+  Removing borked ebuild to fix bug #41228.
+
+*festival-1.4.3-r1 (12 Mar 2004)
+
+  12 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  festival-1.4.3-r1.ebuild, files/festival.rc, files/server.scm:
+  Adding init script and configuration to use festival server... part of the fix
+  for bug #43374.
+
+  25 Feb 2004; Sven Blumenstein <bazik@gentoo.org> festival-1.4.3.ebuild:
+  DEPEND media-sounds/speech-tools is broken on sparc, see bug #41329.
+
+  18 Feb 2004; <augustus@gentoo.org> festival-1.4.3.ebuild:
+  Added amd64 to keywords. festival works fine on AMD64. Marked stable since
+  it's the only release.
+
+  12 Feb 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  festival-1.4.3.ebuild:
+  Fixed RDEPEND/DEPEND to close bug #41412
+
+  11 Feb 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  festival-1.4.2-r1.ebuild, festival-1.4.2-r2.ebuild,
+  festival-1.4.2-r3.ebuild, festival-1.4.2.ebuild, festival-1.4.3.ebuild:
+  Removing crusty ebuilds.
+
+  10 Feb 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  festival-1.4.3.ebuild, metadata.xml, files/festival-1.4.3-asterisk.patch:
+  Added optional patch that adds a new command named tts_textasterisk that is
+  required by Asterisk to communicate with the Festival server. Submitted by Ray
+  Russell Reese III <anti@gentoo.org> in bug #30456.
+
+  25 Jan 2004; <carpaski@gentoo.org> festival-1.4.2*: Fixed all references
+	to $T as that is a portage variable and yields AccessViolations when set
+	incorrectly.
+
+  08 Jan 2004; <gustavoz@gentoo.org> festival-1.4.2-r3.ebuild:
+  the parrot is stable on sparc
+
+  10 Nov 2003; Ciaran McCreesh <ciaranm@gentoo.org> festival-1.4.2-r3.ebuild:
+  Moving to ~sparc, thanks to gust4voz in #gentoo-sparc
+
+*festival-1.4.3 (20 Jul 2003)
+
+  20 Jul 2003; jje <jje@gentoo.org> festival-1.4.3.ebuild:
+  Version bump. Speech-tools is now split out into a seperate build.
+  
+  Submitted by: Paul Giordano <giordano@covad.net>
+
+*festival-1.4.2-r3 (01 Dec 2002)
+
+  01 Dec 2002; Matt Keadle <mkeadle@gentoo.org> festival-1.4.2-r3.ebuild
+  files/digest-festival-1.4.2-r3 ChangeLog
+
+  -r2 was an attempt at building for all arch types, but it just didn't cut it.
+  Thanks to J Robert Ray and his wicked CyrixIII/VIA-C3/VIA-C5 processor for
+  pointing this out.
+
+*festival-1.4.2-r2 (16 Nov 2002)
+
+  16 Nov 2002; Matt Keadle <mkeadle@gentoo.org> festival-1.4.2-r2.ebuild
+  files/digest-festival-1.4.2-r2 ChangeLog
+
+  -r1 was hardcoded to i686. This build should check your arch type and build
+  accordingly. Also added IUSE="" for completeness.
+
+*festival-1.4.2-r1 (16 Nov 2002)
+
+  16 Nov 2002; Sascha Schwabbauer <cybersystem@gentoo.org> festival-1.4.2-r1.ebuild, festival-1.4.2.ebuild :
+
+  Added -ppc to keywords.
+
+*festivial-1.4.2-r1 (14 Nov 2002)
+
+	John P. Davis <zhen@gentoo.org>
+	I changed emake to make in the top of the src_compile function. (it is commented)
+	This change is made to force festival to use -jX where X <=2.
+
+*festival-1.4.2-r1 (23 Oct 2002)
+
+  23 Oct 2002; Matt Keadle <mkeadle@gentoo.org> festival-1.4.2-r1.ebuild
+  files/digest-festival-1.4.2-r1 files/festival-1.4.2.patch
+
+  This should take care of issues with gcc3.2, killing bug #8280. Thanks to
+  Paul Thompson, Rigo Ketelings, Tom Ribbens, Julian J., Chris Bruner,
+  Paul Oswald and Michal Maruska for all the comments made and support and
+  testing provided.
+
+*festival-1.4.2 (24 Aug 2002)
+
+  24 Aug 2002; Sascha Schwabbauer <cybersystem@gentoo.org> festival-1.4.2.ebuild :
+
+  Added ppc to keywords.
+
+*festival-1.4.2.ebuild (28 May 2002)
+
+  28 May 2002; Michael Nazaroff <naz@gentoo.org> Initial release of festival
+  package, requires patch's to install and build properly on a our system.
+ 

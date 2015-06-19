@@ -1,0 +1,66 @@
+# ChangeLog for dev-java/sat4j-core
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/sat4j-core/ChangeLog,v 1.14 2012/08/09 20:37:46 johu Exp $
+
+  09 Aug 2012; Johannes Huber <johu@gentoo.org> sat4j-core-2.3.1-r1.ebuild:
+  Stable for x86, wrt bug #418727
+
+  03 Aug 2012; Markos Chandras <hwoarang@gentoo.org> sat4j-core-2.3.1-r1.ebuild:
+  Stable on amd64 wrt bug #418727
+
+*sat4j-core-2.3.1-r1 (25 Dec 2011)
+
+  25 Dec 2011; Miroslav Šulc <fordfrog@gentoo.org> -sat4j-core-2.3.1.ebuild,
+  +sat4j-core-2.3.1-r1.ebuild:
+  Version 2.3.1 has to be slotted
+
+*sat4j-core-2.3.1 (25 Dec 2011)
+
+  25 Dec 2011; Miroslav Šulc <fordfrog@gentoo.org> +sat4j-core-2.3.1.ebuild:
+  Version bump
+
+  17 Oct 2010; Vlastimil Babka <caster@gentoo.org> -sat4j-core-2.1.ebuild,
+  -sat4j-core-2.1.1.ebuild:
+  Remove old.
+
+  21 Sep 2010; Markos Chandras <hwoarang@gentoo.org>
+  sat4j-core-2.2.0.ebuild:
+  Stable on amd64 wrt bug #337039
+
+  14 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  sat4j-core-2.2.0.ebuild:
+  x86 stable wrt bug #337039
+
+*sat4j-core-2.2.0 (13 Aug 2010)
+
+  13 Aug 2010; Alistair Bush <ali_bush@gentoo.org> +sat4j-core-2.2.0.ebuild:
+  Version Bump. Thanks to Matt Whitlock <matt@whitlock.name>
+
+  29 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  sat4j-core-2.1.1.ebuild:
+  x86 stable wrt bug #318541
+
+  25 May 2010; Pacho Ramos <pacho@gentoo.org> sat4j-core-2.1.1.ebuild:
+  stable amd64, bug 318541
+
+  13 Apr 2010; Christian Faulhammer <fauli@gentoo.org>
+  sat4j-core-2.1.ebuild:
+  stable x86, bug 310181
+
+*sat4j-core-2.1.1 (05 Apr 2010)
+
+  05 Apr 2010; Alistair Bush <ali_bush@gentoo.org> +sat4j-core-2.1.1.ebuild:
+  Version Bump.
+
+  20 Mar 2010; Pacho Ramos <pacho@gentoo.org> sat4j-core-2.1.ebuild:
+  amd64 stable, bug 310181
+
+  09 Dec 2009; Alistair Bush <ali_bush@gentoo.org> +sat4j-core-2.1.ebuild,
+  +metadata.xml:
+  Move into main tree to await the arrival of eclipse-sdk.
+
+*sat4j-core-2.1 (03 Nov 2009)
+
+  03 Nov 2009; Alistair Bush <ali_bush@gentoo.org> +sat4j-core-2.1.ebuild,
+  +metadata.xml:
+  New Ebuild based on the work done by Matt Whitlock <matt@whitlock.name>

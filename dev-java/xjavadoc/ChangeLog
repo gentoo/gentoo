@@ -1,0 +1,70 @@
+# ChangeLog for dev-java/xjavadoc
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xjavadoc/ChangeLog,v 1.19 2015/06/09 14:05:30 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  17 Jun 2014; Manuel Rüger <mrueg@gentoo.org> -xjavadoc-1.1-r1.ebuild:
+  NM: Cleanup superseded ebuilds.
+
+  04 Mar 2014; Pacho Ramos <pacho@gentoo.org> xjavadoc-1.1-r2.ebuild:
+  amd64 stable, bug 315557
+
+  07 Dec 2012; Agostino Sarubbo <ago@gentoo.org> xjavadoc-1.1-r2.ebuild:
+  Stable for ppc, wrt bug #441174
+
+  07 Dec 2012; <ago@gentoo.org> xjavadoc-1.1-r2.ebuild:
+  Stable for x86, wrt bug #441174
+
+  07 Dec 2012; <ago@gentoo.org> xjavadoc-1.1-r2.ebuild:
+  Stable for amd64, wrt bug #441174
+
+*xjavadoc-1.1-r2 (27 Sep 2012)
+
+  27 Sep 2012; Ralph Sennhauser <sera@gentoo.org> +xjavadoc-1.1-r2.ebuild:
+  Require >=jdk-1.5 for javacc-5.0. #315557
+
+  03 Aug 2007; Petteri Räty <betelgeuse@gentoo.org> xjavadoc-1.1-r1.ebuild:
+  Remove monolithic ant support as split ant is stable now.
+
+  26 Apr 2007; Vlastimil Babka <caster@gentoo.org> xjavadoc-1.1-r1.ebuild:
+  Add missing junit dep, minor style tweaks.
+
+  14 Apr 2007; Petteri Räty <betelgeuse@gentoo.org> xjavadoc-1.1-r1.ebuild:
+  Migrate to splitted ant.
+
+  18 Feb 2007; Petteri Räty <betelgeuse@gentoo.org> -xjavadoc-1.1.ebuild:
+  Remove generation 1 ebuild.
+
+  18 Feb 2007; nixnut <nixnut@gentoo.org> xjavadoc-1.1-r1.ebuild:
+  Stable on ppc wrt bug 164268
+
+  03 Feb 2007; Steve Dibb <beandog@gentoo.org> xjavadoc-1.1-r1.ebuild:
+  amd64 stable, bug 164268
+
+  01 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  xjavadoc-1.1-r1.ebuild:
+  stable x86; bug #164268
+
+*xjavadoc-1.1-r1 (25 Aug 2006)
+
+  25 Aug 2006; Joshua Nichols <nichoj@gentoo.org>
+  +files/xjavadoc-1.1-nojunit.patch, +xjavadoc-1.1-r1.ebuild:
+  Migrated to new Java system by Caster.
+
+  14 May 2005; Jan Brinkmann <luckyduck@gentoo.org> xjavadoc-1.1.ebuild:
+  stable on amd64, ppc and x86
+
+  19 Apr 2005; Thomas Matthijs <axxo@gentoo.org> xjavadoc-1.1.ebuild:
+  fix src_uri
+
+  03 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> xjavadoc-1.1.ebuild:
+  added ~ppc to KEYWORDS.
+
+*xjavadoc-1.1 (03 Apr 2005)
+
+  03 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> +metadata.xml,
+  +files/xjavadoc-1.1-buildfile.patch, +xjavadoc-1.1.ebuild:
+  Initial import, ebuild based on the contribution by Dan
+  <dan@intuitivelyobvious.net>. Fixes #66727

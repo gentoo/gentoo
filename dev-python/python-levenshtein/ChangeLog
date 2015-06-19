@@ -1,0 +1,122 @@
+# ChangeLog for dev-python/python-levenshtein
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-levenshtein/ChangeLog,v 1.29 2015/06/07 15:42:56 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  14 Apr 2015; Agostino Sarubbo <ago@gentoo.org>
+  python-levenshtein-0.11.2.ebuild:
+  Stable for ia64, wrt bug #540290
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org>
+  python-levenshtein-0.10.2-r1.ebuild, python-levenshtein-0.11.1.ebuild,
+  python-levenshtein-0.11.2.ebuild, python-levenshtein-0.12.0.ebuild:
+  Drop old Python implementations
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> python-levenshtein-0.11.2.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> python-levenshtein-0.11.2.ebuild:
+  amd64 stable, bug 540290
+
+*python-levenshtein-0.12.0 (18 Dec 2014)
+
+  18 Dec 2014; Patrick Lauer <patrick@gentoo.org>
+  +python-levenshtein-0.12.0.ebuild:
+  Bump
+
+  25 Nov 2014; Pacho Ramos <pacho@gentoo.org> python-levenshtein-0.11.2.ebuild:
+  Support python 3.4
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org>
+  python-levenshtein-0.10.2-r1.ebuild, python-levenshtein-0.11.1.ebuild,
+  python-levenshtein-0.11.2.ebuild:
+  Add support for the new PyPy slotting.
+
+  30 Mar 2014; Ian Delaney <idella4@gentoo.org>
+  python-levenshtein-0.11.2.ebuild:
+  Add py3 support (except for doc build), fixes Bug #493998
+
+*python-levenshtein-0.11.2 (08 Feb 2014)
+
+  08 Feb 2014; Patrick Lauer <patrick@gentoo.org>
+  +python-levenshtein-0.11.2.ebuild:
+  Bump
+
+*python-levenshtein-0.11.1 (03 Dec 2013)
+
+  03 Dec 2013; Patrick Lauer <patrick@gentoo.org>
+  +python-levenshtein-0.11.1.ebuild:
+  Bump
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org>
+  python-levenshtein-0.10.2-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  14 Aug 2013; Michał Górny <mgorny@gentoo.org>
+  -python-levenshtein-0.10.2.ebuild, -python-levenshtein-0.10.ebuild,
+  python-levenshtein-0.10.2-r1.ebuild:
+  Add missing setuptools dep, QA fixes, drop old.
+
+  22 May 2013; Agostino Sarubbo <ago@gentoo.org>
+  python-levenshtein-0.10.2-r1.ebuild:
+  Stable for ia64, wrt bug #470456
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org>
+  python-levenshtein-0.10.2-r1.ebuild:
+  Stable for x86, wrt bug #470456
+
+  19 May 2013; Agostino Sarubbo <ago@gentoo.org>
+  python-levenshtein-0.10.2-r1.ebuild:
+  Stable for amd64, wrt bug #470456
+
+*python-levenshtein-0.10.2-r1 (17 Apr 2013)
+
+  17 Apr 2013; Ian Delaney <idella4@gentoo.org>
+  +python-levenshtein-0.10.2-r1.ebuild:
+  migration -> distutils-r1
+
+  17 Dec 2012; Agostino Sarubbo <ago@gentoo.org>
+  python-levenshtein-0.10.2.ebuild:
+  Stable for ia64, wrt bug #436876
+
+  03 Oct 2012; Agostino Sarubbo <ago@gentoo.org>
+  python-levenshtein-0.10.2.ebuild:
+  Stable for amd64, wrt bug #436876
+
+  24 May 2012; Johannes Huber <johu@gentoo.org>
+  python-levenshtein-0.10.2.ebuild:
+  Stable for x86, wrt bug #410859
+
+  21 Feb 2012; Patrick Lauer <patrick@gentoo.org>
+  python-levenshtein-0.10.2.ebuild, python-levenshtein-0.10.ebuild:
+  Restricting jython
+
+*python-levenshtein-0.10.2 (16 Sep 2011)
+
+  16 Sep 2011; Jesus Rivero <neurogeek@gentoo.org>
+  +python-levenshtein-0.10.2.ebuild:
+  Version bump wrt bug #371371
+
+  18 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  python-levenshtein-0.10.ebuild:
+  Stable on amd64 wrt bug #328511
+
+  18 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  python-levenshtein-0.10.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+  31 Jan 2009; Patrick Lauer <patrick@gentoo.org>
+  python-levenshtein-0.10.ebuild:
+  Adding ~amd64 keyword, closes #256426
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  01 Apr 2006; Aron Griffis <agriffis@gentoo.org>
+  python-levenshtein-0.10.ebuild:
+  Mark 0.10 ~ia64
+
+  25 May 2004; Carsten Lohrke <carlo@gentoo.org> files/genextdoc.py:
+  Initial import.

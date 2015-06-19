@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>proxy-maintainers</herd>
+<maintainer>
+	<email>hendrik@consetetur.de</email>
+	<name>Hendrik v. Raven (lorem_ipsum)</name>
+</maintainer>
+<maintainer>
+	<email>xmw@gentoo.org</email>
+	<name>Michael Weber</name>
+</maintainer>
+<longdescription lang="en">
+	abduco provides session management i.e. it allows programs to be run independently from its controlling terminal. That is programs can be detached - run in the background - and then later reattached. Together with dvtm it provides a simpler and cleaner alternative to tmux or screen.
+</longdescription>
+</pkgmetadata>

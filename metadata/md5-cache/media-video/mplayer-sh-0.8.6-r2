@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Video Disk Recorder Mplayer API Script
+EAPI=5
+HOMEPAGE=http://batleth.sapienti-sat.org/
+KEYWORDS=x86 ~amd64
+LICENSE=all-rights-reserved
+RDEPEND=>=media-video/mplayer-0.90_rc4
+RESTRICT=mirror bindist
+SLOT=0
+SRC_URI=http://batleth.sapienti-sat.org/projects/VDR/mplayer.sh-0.8.6.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=48fc7de9825dd59c28a6f6e5e84864b8

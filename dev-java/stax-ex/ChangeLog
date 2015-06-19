@@ -1,0 +1,58 @@
+# ChangeLog for dev-java/stax-ex
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/stax-ex/ChangeLog,v 1.14 2015/04/10 22:43:25 chewi Exp $
+
+*stax-ex-1.0-r3 (10 Apr 2015)
+
+  10 Apr 2015; James Le Cuirot <chewi@gentoo.org> +stax-ex-1.0-r3.ebuild,
+  -stax-ex-1.0-r2.ebuild, stax-ex-1.7.6.ebuild:
+  Stable for ppc, wrt bug #535094, in accordance with ALLARCHES policy. Revbump
+  1.0 to r3 to deal with missing SLOTs on dependencies.
+
+  27 Mar 2015; Agostino Sarubbo <ago@gentoo.org> stax-ex-1.7.6.ebuild:
+  Stable for x86, wrt bug #535094
+
+  27 Mar 2015; Agostino Sarubbo <ago@gentoo.org> stax-ex-1.7.6.ebuild:
+  Stable for amd64, wrt bug #535094
+
+*stax-ex-1.0-r2 (17 Aug 2014)
+
+  17 Aug 2014; Johann Schmitz <ercpe@gentoo.org> +stax-ex-1.0-r2.ebuild:
+  Bump to EAPI 5, dropped ant
+
+*stax-ex-1.7.6 (17 Aug 2014)
+
+  17 Aug 2014; Johann Schmitz <ercpe@gentoo.org> +stax-ex-1.7.6.ebuild:
+  Version bump of stax-ex to 1.7.6
+
+  21 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> stax-ex-1.0-r1.ebuild:
+  x86 stable wrt bug #393955
+
+  18 Dec 2011; Agostino Sarubbo <ago@gentoo.org> stax-ex-1.0-r1.ebuild:
+  Stable for AMD64, wrt bug #393955
+
+*stax-ex-1.0-r1 (11 Oct 2008)
+
+  11 Oct 2008; Serkan Kaba <serkan@gentoo.org> +stax-ex-1.0-r1.ebuild:
+  Migrate to stax-api and jaf virtuals.
+
+  28 Mar 2008; nixnut <nixnut@gentoo.org> stax-ex-1.0.ebuild:
+  Stable on ppc wrt bug 214778
+
+  19 Aug 2007; William L. Thomson Jr. <wltjr@gentoo.org> stax-ex-1.0.ebuild:
+  amd64 stable, bug #187681.
+
+  15 Aug 2007; Christian Faulhammer <opfer@gentoo.org> stax-ex-1.0.ebuild:
+  stable x86, bug 187681
+
+  11 Aug 2007; Krzysiek Pawlik <nelchael@gentoo.org> metadata.xml:
+  Remove myself from <maintainer>.
+
+  23 May 2007; Diego Pettenò <flameeyes@gentoo.org> stax-ex-1.0.ebuild:
+  Add ~x86-fbsd keyword. Bug #176906.
+
+*stax-ex-1.0 (01 May 2007)
+
+  01 May 2007; Krzysiek Pawlik <nelchael@gentoo.org> +files/build.xml-1.0,
+  +metadata.xml, +stax-ex-1.0.ebuild:
+  Initial commit of stax-ex.

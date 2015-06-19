@@ -1,0 +1,13 @@
+# ChangeLog for sys-process/memwatch
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-process/memwatch/ChangeLog,v 1.2 2015/06/03 20:51:05 monsieurp Exp $
+
+  03 Jun 2015; Patrice Clement <monsieurp@gentoo.org> memwatch-0.0.2.ebuild:
+  Make use of ${P}.
+
+*memwatch-0.0.2 (03 Jun 2015)
+
+  03 Jun 2015; Patrice Clement <monsieurp@gentoo.org> +memwatch-0.0.2.ebuild,
+  +metadata.xml:
+  Initial commit. Ebuild added courtesy of Pavel Balaev <pascal@unixdev.ru>. Fix
+  bug 550352.

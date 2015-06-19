@@ -1,0 +1,132 @@
+# ChangeLog for media-libs/libexif-gtk
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libexif-gtk/ChangeLog,v 1.38 2012/05/05 08:02:28 jdhore Exp $
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> libexif-gtk-0.3.5-r2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  26 Oct 2011; Samuli Suominen <ssuominen@gentoo.org>
+  libexif-gtk-0.3.5-r2.ebuild:
+  USE="static-libs" and remove libtool archive in favour of pkg-config file.
+
+  12 Mar 2011; Tim Harder <radhermit@gentoo.org> libexif-gtk-0.3.5-r2.ebuild:
+  Update to EAPI 2 and use slot dep for gtk+.
+
+  15 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  libexif-gtk-0.3.5-r2.ebuild:
+  Transfer Prefix keywords
+
+  24 Nov 2008; <ssuominen@gentoo.org> metadata.xml:
+  Re-assign to maintainer-needed.
+
+  02 Nov 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Removing eradicator as a maintainer since he was retired.
+
+  17 Nov 2007; nixnut <nixnut@gentoo.org> libexif-gtk-0.3.5-r2.ebuild:
+  Stable on ppc wrt bug 198845
+
+  14 Nov 2007; Raúl Porcel <armin76@gentoo.org>
+  libexif-gtk-0.3.5-r2.ebuild:
+  alpha/ia64/sparc stable wrt #198845
+
+  13 Nov 2007; Christian Faulhammer <opfer@gentoo.org>
+  libexif-gtk-0.3.5-r2.ebuild:
+  stable x86, bug 198845
+
+  12 Nov 2007; Samuli Suominen <drac@gentoo.org>
+  libexif-gtk-0.3.5-r2.ebuild:
+  amd64 stable
+
+*libexif-gtk-0.3.5-r2 (04 Oct 2007)
+
+  04 Oct 2007; Samuli Suominen <drac@gentoo.org>
+  +files/libexif-gtk-0.3.5-gtk212.patch, +libexif-gtk-0.3.5-r2.ebuild:
+  Fix building with GTK+-2.12 wrt #194680.
+
+  06 Apr 2007; Samuli Suominen <drac@gentoo.org> -libexif-gtk-0.3.5.ebuild,
+  libexif-gtk-0.3.5-r1.ebuild:
+  Stable on Alpha after discussing it with wolf31o2. Remove old completely
+  broken version. Bug 167729.
+
+  06 Apr 2007; Peter Weller <welp@gentoo.org> libexif-gtk-0.3.5-r1.ebuild:
+  Stable on amd64 wrt bug 167729
+
+  02 Apr 2007; Raúl Porcel <armin76@gentoo.org>
+  libexif-gtk-0.3.5-r1.ebuild:
+  ia64 stable wrt bug 167729
+
+  24 Mar 2007; nixnut <nixnut@gentoo.org> libexif-gtk-0.3.5-r1.ebuild:
+  Stable on ppc wrt bug 167729
+
+  21 Mar 2007; Raúl Porcel <armin76@gentoo.org>
+  libexif-gtk-0.3.5-r1.ebuild:
+  x86 stable wrt bug 167729
+
+  21 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  libexif-gtk-0.3.5-r1.ebuild:
+  Stable on sparc wrt #167729
+
+*libexif-gtk-0.3.5-r1 (21 Feb 2007)
+
+  21 Feb 2007; Samuli Suominen <drac@gentoo.org>
+  -files/libexif-gtk-0.3.3-gtk24.patch, -libexif-gtk-0.3.3.ebuild,
+  +libexif-gtk-0.3.5-r1.ebuild:
+  Fix bug 167729. Use emake. Install ChangeLog. Remove old version.
+
+  01 Apr 2006; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/libexif-gtk-0.3.5-confcheck.patch, libexif-gtk-0.3.5.ebuild:
+  Added patch to correct detection of libexif.  Closes bug #118018.
+
+  10 Mar 2006; Michael Hanselmann <hansmi@gentoo.org>
+  libexif-gtk-0.3.5.ebuild:
+  Stable on ppc.
+
+  25 Feb 2006; Mark Loeser <halcy0n@gentoo.org> libexif-gtk-0.3.5.ebuild:
+  Stable on x86; bug #120238
+
+  25 Feb 2006; Olivier Crête <tester@gentoo.org> libexif-gtk-0.3.5.ebuild:
+  Stable on amd64
+
+  06 Feb 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  libexif-gtk-0.3.5.ebuild:
+  Stable on sparc
+
+  13 Oct 2005; Aron Griffis <agriffis@gentoo.org> libexif-gtk-0.3.5.ebuild:
+  Mark 0.3.5 stable on alpha/ia64
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> libexif-gtk-0.3.5.ebuild:
+  add ~ia64
+
+*libexif-gtk-0.3.5 (19 Jun 2005)
+
+  19 Jun 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +libexif-gtk-0.3.5.ebuild:
+  Version bump to fix bug #84985.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  libexif-gtk-0.3.3.ebuild:
+  Stable on ppc.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> libexif-gtk-0.3.3.ebuild:
+  Add inherit eutils
+
+  25 Apr 2004; Aron Griffis <agriffis@gentoo.org> libexif-gtk-0.3.3.ebuild:
+  Add die following econf for bug 48950
+
+  28 Mar 2004; Alastair Tse <liquidx@gentoo.org> libexif-gtk-0.3.3.ebuild,
+  files/libexif-gtk-0.3.3-gtk24.patch:
+  patch for gtk2.4 compatibility (#45510)
+
+  16 Feb 2004; Dylan Carlson <absinthe@gentoo.org> libexif-gtk-0.3.3.ebuild:
+  added ~amd64 keyword.
+
+  10 Jun 2003; Alastair Tse <liquidx@gentoo.org> libexif-gtk-0.3.3.ebuild:
+  bumped to stable
+
+*libexif-gtk-0.3.3 (08 Jan 2003)
+
+  08 Jan 2003; Martin Holzer <mholzer@gentoo.org> libexif-gtk-0.3.3.ebuild
+  files/digest-libexif-gtk-0.3.3 ChangeLog : 
+  Initial version submitted by asl@launay.org in #13461.
+

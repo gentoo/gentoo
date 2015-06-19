@@ -1,0 +1,199 @@
+# ChangeLog for x11-libs/goocanvas
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/goocanvas/ChangeLog,v 1.51 2014/11/23 22:12:48 pacho Exp $
+
+  23 Nov 2014; Pacho Ramos <pacho@gentoo.org> goocanvas-1.0.0.ebuild:
+  Bump eapi, kill doc USE flag and follow current policies
+
+  27 Apr 2014; Pacho Ramos <pacho@gentoo.org> -goocanvas-2.0.1.ebuild:
+  drop old
+
+  26 Apr 2014; Pacho Ramos <pacho@gentoo.org> -goocanvas-2.0.1-r1.ebuild,
+  goocanvas-2.0.2.ebuild:
+  Adapt to latest pygobject don't providing python2.6 support
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> goocanvas-2.0.2.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> goocanvas-2.0.2.ebuild:
+  arch stable, bug 888
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> goocanvas-2.0.2.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> goocanvas-2.0.2.ebuild:
+  amd64 stable, bug #478252
+
+*goocanvas-2.0.2 (10 Nov 2013)
+
+  10 Nov 2013; Pacho Ramos <pacho@gentoo.org> +goocanvas-2.0.2.ebuild,
+  -goocanvas-0.14.ebuild, -goocanvas-2.0.0.ebuild, metadata.xml:
+  Version bump, drop old, move to gnome herd as the rest of the team is also
+  taking care of this (and Gilles is a team member too, letting him to work with
+  it when wanted).
+
+*goocanvas-2.0.1-r1 (12 Aug 2013)
+
+  12 Aug 2013; Alexandre Rostovtsev <tetromino@gentoo.org>
+  goocanvas-0.14.ebuild, goocanvas-1.0.0.ebuild, goocanvas-2.0.0.ebuild,
+  goocanvas-2.0.1.ebuild, +goocanvas-2.0.1-r1.ebuild,
+  +files/goocanvas-1.0.0-gold.patch:
+  Add upstream patches to fix compatibility with modern gobject-introspection
+  and pygobject versions (bug #480494, thanks to Harris Landgarten) and
+  modernize ebuild. Fix 1.0.0's underlinking failure with gold (bug #464734,
+  thanks to cmuelle8). Fix license information (LGPL, not GPL).
+
+  22 Apr 2013; Agostino Sarubbo <ago@gentoo.org> goocanvas-1.0.0.ebuild:
+  Stable for sparc, wrt bug #465664
+
+  18 Apr 2013; Agostino Sarubbo <ago@gentoo.org> goocanvas-1.0.0.ebuild:
+  Stable for ia64, wrt bug #465664
+
+  18 Apr 2013; Agostino Sarubbo <ago@gentoo.org> goocanvas-1.0.0.ebuild:
+  Stable for alpha, wrt bug #465664
+
+  14 Apr 2013; Agostino Sarubbo <ago@gentoo.org> goocanvas-1.0.0.ebuild:
+  Stable for ppc64, wrt bug #465664
+
+  14 Apr 2013; Agostino Sarubbo <ago@gentoo.org> goocanvas-1.0.0.ebuild:
+  Stable for ppc, wrt bug #465664
+
+  13 Apr 2013; Agostino Sarubbo <ago@gentoo.org> goocanvas-1.0.0.ebuild:
+  Stable for x86, wrt bug #465664
+
+  13 Apr 2013; Agostino Sarubbo <ago@gentoo.org> goocanvas-1.0.0.ebuild:
+  Stable for amd64, wrt bug #465664
+
+  28 May 2012; Raúl Porcel <armin76@gentoo.org> goocanvas-2.0.1.ebuild:
+  alpha/ia64/sparc stable wrt #404875
+
+  21 May 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  goocanvas-2.0.1.ebuild:
+  Need eutils for epatch.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> goocanvas-0.14.ebuild,
+  goocanvas-1.0.0.ebuild, goocanvas-2.0.0.ebuild, goocanvas-2.0.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  17 Apr 2012; Brent Baude <ranger@gentoo.org> goocanvas-2.0.1.ebuild:
+  Marking goocanvas-2.0.1 ppc64 for bug 404875
+
+  16 Apr 2012; Brent Baude <ranger@gentoo.org> goocanvas-2.0.1.ebuild:
+  Marking goocanvas-2.0.1 ppc for bug 404875
+
+  05 Apr 2012; Jeff Horelick <jdhore@gentoo.org> goocanvas-2.0.1.ebuild:
+  marked x86 per bug 404875
+
+  03 Apr 2012; Justin Lecher <jlec@gentoo.org> goocanvas-1.0.0.ebuild,
+  metadata.xml:
+  Keyworded for ~-linux tested by me
+
+  28 Mar 2012; Agostino Sarubbo <ago@gentoo.org> goocanvas-2.0.1.ebuild:
+  Stable for amd64, wrt bug #404875
+
+  10 Mar 2012; Justin Lecher <jlec@gentoo.org> goocanvas-2.0.1.ebuild,
+  +files/goocanvas-2.0.1-gold.patch:
+  Add fix for underlinking detected by gold
+
+  15 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> goocanvas-2.0.1.ebuild:
+  Empty py-compile script instead of symlinking it to /path/to/true for
+  automake-1.11.2 compability.
+
+*goocanvas-2.0.1 (20 Nov 2011)
+
+  20 Nov 2011; Gilles Dartiguelongue <eva@gentoo.org> +goocanvas-2.0.1.ebuild,
+  metadata.xml:
+  Version bump. Add introspection support.
+
+  28 Sep 2011; Samuli Suominen <ssuominen@gentoo.org> goocanvas-1.0.0.ebuild:
+  Remove useless libtool archive (libgoocanvas.la) which is causing other pkgs
+  to fail after libpng upgrade.
+
+*goocanvas-2.0.0 (01 May 2011)
+
+  01 May 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  +goocanvas-2.0.0.ebuild:
+  Move goocanvas from the gnome overlay to the tree
+
+  29 Mar 2011; Christoph Mende <angelos@gentoo.org> goocanvas-0.14.ebuild:
+  Fix gtk+ slot deps
+
+*goocanvas-1.0.0 (22 Feb 2011)
+
+  22 Feb 2011; Gilles Dartiguelongue <eva@gentoo.org> +goocanvas-1.0.0.ebuild:
+  Version bump, bug #342273.
+
+  19 Nov 2010; Justin Lecher <jlec@gentoo.org> goocanvas-0.14.ebuild:
+  Cleaned DESCRIPTION to fit ebuild writing guide lines
+
+  09 Sep 2010; Brent Baude <ranger@gentoo.org> goocanvas-0.14.ebuild:
+  Marking goocanvas-0.14 ppc64 for bug 327899
+
+  27 Aug 2010; Raúl Porcel <armin76@gentoo.org> goocanvas-0.14.ebuild:
+  alpha/ia64/sparc stable wrt #327899
+
+  29 May 2010; Raúl Porcel <armin76@gentoo.org> goocanvas-0.14.ebuild:
+  Add ~alpha/~ia64/~sparc
+
+  11 Mar 2010; Joseph Jezak <josejx@gentoo.org> goocanvas-0.14.ebuild:
+  Marked ~ppc64.
+
+  07 Mar 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  -goocanvas-0.10.ebuild, -goocanvas-0.13.ebuild, metadata.xml:
+  Take maintainer-ship. Clean up old revisions.
+
+  08 Nov 2009; nixnut <nixnut@gentoo.org> goocanvas-0.14.ebuild:
+  ppc stable #286916
+
+  03 Oct 2009; Markus Meier <maekke@gentoo.org> goocanvas-0.14.ebuild:
+  amd64/x86 stable, bug #286916
+
+*goocanvas-0.14 (18 Mar 2009)
+
+  18 Mar 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  +goocanvas-0.14.ebuild:
+  Bump to 0.14.
+
+*goocanvas-0.13 (18 Jan 2009)
+
+  18 Jan 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  +goocanvas-0.13.ebuild:
+  Bump to 0.13.
+
+  14 Dec 2008; Gilles Dartiguelongue <eva@gentoo.org> goocanvas-0.10.ebuild:
+  Build fix for gtk+-2.14.
+
+*goocanvas-0.10 (01 May 2008)
+
+  01 May 2008; Samuli Suominen <drac@gentoo.org> -goocanvas-0.8.ebuild,
+  -goocanvas-0.9.ebuild, +goocanvas-0.10.ebuild:
+  Version bump wrt #219954, thanks to Dieter Verfaillie for reporting.
+
+  31 Jan 2008; Michael Hanselmann <hansmi@gentoo.org> metadata.xml:
+  Remove myself as maintainer.
+
+  09 Nov 2007; Joe Peterson <lavajoe@gentoo.org> goocanvas-0.9.ebuild:
+  Add ~x86-fbsd keyword and elibtoolize (bug #198475); fix HOMEPAGE URL
+
+  08 Sep 2007; Christoph Mende <angelos@gentoo.org> goocanvas-0.9.ebuild:
+  Added ~amd64 wrt bug #190230
+
+*goocanvas-0.9 (20 Aug 2007)
+
+  20 Aug 2007; Michael Hanselmann <hansmi@gentoo.org> -goocanvas-0.4.ebuild,
+  +goocanvas-0.9.ebuild:
+  Version bump (bug 189446).
+
+  27 Apr 2007; Michael Hanselmann <hansmi@gentoo.org> goocanvas-0.8.ebuild:
+  Fix description, dependencies and clean up functions.
+
+*goocanvas-0.8 (27 Apr 2007)
+
+  27 Apr 2007; Michael Hanselmann <hansmi@gentoo.org> +goocanvas-0.8.ebuild:
+  Version bump, bug #176124.
+
+*goocanvas-0.4 (14 Dec 2006)
+
+  14 Dec 2006; Michael Hanselmann <hansmi@gentoo.org> +metadata.xml,
+  +goocanvas-0.4.ebuild:
+  Added to portage, ebuild by myself.

@@ -1,0 +1,21 @@
+# ChangeLog for dev-ruby/faraday_middleware-multi_json
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/faraday_middleware-multi_json/ChangeLog,v 1.4 2015/06/07 17:45:43 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  25 May 2015; Patrick Lauer <patrick@gentoo.org>
+  faraday_middleware-multi_json-0.0.6.ebuild:
+  Keyword for ~x86
+
+  25 May 2015; Hans de Graaff <graaff@gentoo.org>
+  faraday_middleware-multi_json-0.0.6.ebuild:
+  Run tests. Fix repoman warnings. Drop x86 keyword since dependencies are not
+  keyworded. Avoid unlisted dependency on dev-vcs/git. Install documentation.
+
+*faraday_middleware-multi_json-0.0.6 (24 May 2015)
+
+  24 May 2015; Robin H. Johnson <robbat2@gentoo.org>
+  +faraday_middleware-multi_json-0.0.6.ebuild, +metadata.xml:
+  Initial commit, dependency for app-admin/r10k-1.5.x

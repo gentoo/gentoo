@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=sys-devel/bison sys-devel/flex
+DESCRIPTION=Draw any kind of boxes around your text
+EAPI=5
+HOMEPAGE=http://boxes.thomasjensen.com/ https://github.com/ascii-boxes/boxes
+KEYWORDS=alpha amd64 ia64 ~mips ppc ppc64 sparc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=https://github.com/ascii-boxes/boxes/archive/v1.1.2.tar.gz -> boxes-1.1.2.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=89950f3f223fad0dc392b3697750f23c

@@ -1,0 +1,865 @@
+# ChangeLog for dev-util/eclipse-sdk
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/eclipse-sdk/ChangeLog,v 1.164 2012/10/07 11:00:25 xarthisius Exp $
+
+  07 Oct 2012; Kacper Kowalik <xarthisius@gentoo.org> metadata.xml:
+  Drop dev-tools from metadata
+
+  18 Jul 2012; Ralph Sennhauser <sera@gentoo.org> -files/eclipse-3.2,
+  -files/3.4/eclipse_build-libs.diff, -files/eclipse-3.2-r1,
+  -files/3.4/ant-osgi-manifest.mf,
+  -files/3.4/fedora/eclipse-pde.build-add-package-build.patch,
+  -files/3.4/eclipse-3.4, -eclipse-sdk-3.4-r2.ebuild,
+  -files/3.4/eclipse_String.compareTo.diff,
+  -files/3.4/eclipse_buildfix-pde.diff, -files/3.4/eclipserc,
+  -files/3.4/fedora/eclipse-libupdatebuild2.patch:
+  Remove 3.4. #362217
+
+  21 May 2012; Samuli Suominen <ssuominen@gentoo.org>
+  eclipse-sdk-3.4-r2.ebuild, eclipse-sdk-3.5.1-r1.ebuild:
+  inherit eutils for make_desktop_entry
+
+  04 Apr 2011; Alistair Bush <ali_bush@gentoo.org> eclipse-sdk-3.4-r2.ebuild:
+  Updated SRC_URI after package moved. see #324683. Thanks to Christoph Brill
+  (egore).
+
+  04 Apr 2011; Alistair Bush <ali_bush@gentoo.org>
+  -files/3.3/ant-osgi-manifest.mf, -files/3.3/eclipse-3.3-r1,
+  -files/3.3/disable-jdt-tool.diff, -files/3.3/eclipse-3.3,
+  -eclipse-sdk-3.5.1.ebuild, -files/3.3/disable-jdk6.diff,
+  -files/3.3/disable-swt.diff, -files/3.3/eclipse-jsch-api-update.patch,
+  -files/3.3/eclipse-workbench-miscompile-workaround.diff,
+  -files/3.3/eclipserc, -files/3.3/fedora/eclipse-fileinitializer.patch,
+  -files/3.3/fedora/eclipse-libupdatebuild2.patch,
+  -files/3.3/fedora/eclipse-pde.build-add-package-build.patch,
+  -files/3.3/launcher_double-free.diff, -files/3.3/set-java-home.diff:
+  Cleanup eclipse-sdk.
+
+  03 Apr 2011; Alistair Bush <ali_bush@gentoo.org> files/3.4/eclipse-3.4:
+  Fix for #274545. Thanks to Christoph Brill
+
+  13 Apr 2010; Christian Faulhammer <fauli@gentoo.org>
+  eclipse-sdk-3.5.1-r1.ebuild:
+  stable x86, bug 310181
+
+  13 Apr 2010; Vlastimil Babka <caster@gentoo.org>
+  eclipse-sdk-3.5.1-r1.ebuild:
+  Move the compiler forcing before first eant call so that it works.
+
+  09 Apr 2010; Vlastimil Babka <caster@gentoo.org>
+  eclipse-sdk-3.5.1-r1.ebuild:
+  Force javac, as building with ecj fails, probably due to classpath
+  polution.
+
+  20 Mar 2010; Pacho Ramos <pacho@gentoo.org> eclipse-sdk-3.5.1-r1.ebuild:
+  amd64 stable, bug 310181
+
+  05 Mar 2010; Alistair Bush <ali_bush@gentoo.org>
+  files/3.5/gtk_makefile.patch:
+  Update makefile patch to also pass LDFLAGS to exe. #296796.
+
+*eclipse-sdk-3.5.1-r1 (05 Mar 2010)
+
+  05 Mar 2010; Alistair Bush <ali_bush@gentoo.org>
+  +files/3.5/gtk_makefile.patch, +eclipse-sdk-3.5.1-r1.ebuild,
+  +files/3.5/hamcrest-junit-lib.patch:
+  Revbump with fixes for #296796, #296298 and #296796
+
+  03 Mar 2010; Alistair Bush <ali_bush@gentoo.org> files/3.5/eclipse-3.5:
+  Make shell script POSIX compliant. Thanks for patch from Michał Górny
+  <gentoo@mgorny.alt.pl>
+
+  09 Feb 2010; Alistair Bush <ali_bush@gentoo.org> +files/3.5/jvmarg.patch,
+  eclipse-sdk-3.5.1.ebuild:
+  Fix out of memory exceptions thanks to Cybercide <cybercide@f2s.com>. see
+  #297057.
+
+*eclipse-sdk-3.5.1 (09 Dec 2009)
+
+  09 Dec 2009; Alistair Bush <ali_bush@gentoo.org> +files/3.5/eclipse-3.5,
+  +files/3.5/eclipserc-3.5, +eclipse-sdk-3.5.1.ebuild:
+  Version bump, moved eclipse 3.5 from overlay. Thanks to Matt Whitlock
+  <matt@whitlock.name> for all the great work.
+
+  09 Nov 2009; Markus Meier <maekke@gentoo.org> eclipse-sdk-3.4-r2.ebuild:
+  amd64/x86 stable, bug #292114
+
+  15 Mar 2009; Petteri Räty <betelgeuse@gentoo.org>
+  eclipse-sdk-3.2.1-r2.ebuild, eclipse-sdk-3.2.1-r3.ebuild:
+  Add dependencies to x11 packages needed by swt. List taken from
+  dev-java/swt ebuilds. Fixes bug #262456.
+
+*eclipse-sdk-3.4-r2 (05 Aug 2008)
+
+  05 Aug 2008; Jean-Noël Rivasseau <elvanor@gentoo.org>
+  +files/3.4/eclipse-3.4, +files/3.4/eclipse_build-libs.diff,
+  +files/3.4/eclipserc, +files/3.4/ant-osgi-manifest.mf,
+  +files/3.4/eclipse_String.compareTo.diff,
+  +files/3.4/eclipse_buildfix-pde.diff,
+  +files/3.4/fedora/eclipse-libupdatebuild2.patch,
+  +files/3.4/fedora/eclipse-pde.build-add-package-build.patch,
+  +eclipse-sdk-3.4-r2.ebuild:
+  Eclipse 3.4 (Ganymede) version bump (moved from overlay).
+
+  01 Aug 2008; Jean-Noël Rivasseau <elvanor@gentoo.org>
+  eclipse-sdk-3.3.1.1-r2.ebuild:
+  Fix for #233574, slotted ecj dependency.
+
+*eclipse-sdk-3.3.1.1-r2 (28 Jul 2008)
+
+  28 Jul 2008; Jean-Noël Rivasseau <elvanor@gentoo.org>
+  +eclipse-sdk-3.3.1.1-r2.ebuild:
+  Changed dependency on icu4j to SLOT=0, now that icu4j-4.0 is in tree.
+
+  17 Apr 2008; Vlastimil Babka <caster@gentoo.org> files/eclipse-3.2-r1,
+  files/3.3/eclipse-3.3-r1:
+  Add 1.6.0.06 to the workaround in startup scripts for bug #215150. No
+  revbump, remerge eclipse if you hit the bug.
+
+  10 Apr 2008; Markus Meier <maekke@gentoo.org> eclipse-sdk-3.2.1-r3.ebuild:
+  amd64/x86 stable, bug #215150
+
+  08 Apr 2008; Vlastimil Babka <caster@gentoo.org>
+  eclipse-sdk-3.3.1.1.ebuild, eclipse-sdk-3.3.1.1-r1.ebuild:
+  Force swt to <dev-java/swt-3.4_alpha:3 to force new portage version to
+  downgrade.
+
+*eclipse-sdk-3.3.1.1-r1 (06 Apr 2008)
+
+  06 Apr 2008; Vlastimil Babka <caster@gentoo.org>
+  +files/3.3/eclipse-3.3-r1, +eclipse-sdk-3.3.1.1-r1.ebuild:
+  Revbump for workaround of bug #215150 in the eclipse startup script. Also
+  get MOZILLA_FIVE_HOME variable from swt's package.env (bug #214785) - this
+  was by mistake already applied to 3.3.1.1 when locking swt dep (see below)
+  but only revbump gets this to everyone.
+
+*eclipse-sdk-3.2.1-r3 (06 Apr 2008)
+
+  06 Apr 2008; Vlastimil Babka <caster@gentoo.org> +files/eclipse-3.2-r1,
+  +eclipse-sdk-3.2.1-r3.ebuild:
+  Revbump for workaround of bug #215150 in the eclipse startup script.
+
+  03 Apr 2008; Vlastimil Babka <caster@gentoo.org> files/3.3/eclipse-3.3,
+  eclipse-sdk-3.3.1.1.ebuild:
+  Lock swt dep to slot 3.
+
+  06 Feb 2008; Vlastimil Babka <caster@gentoo.org>
+  eclipse-sdk-3.3.1.1.ebuild:
+  Update commons-logging dependency to pull osgi-aware revision. Fixes one
+  instance of bug #209087.
+
+  24 Jan 2008; Vlastimil Babka <caster@gentoo.org>
+  eclipse-sdk-3.3.1.1.ebuild:
+  Replace sun-j2me-bin dependency with new opensource cldc-api package, bug
+  #207270.
+
+  23 Jan 2008; Jean-Noël Rivasseau <elvanor@gentoo.org>
+  files/3.3/eclipse-3.3:
+  Fix for -Djava.library.path not found on Sun JDK 1.5 and amd64 (at least).
+
+*eclipse-sdk-3.3.1.1 (21 Jan 2008)
+
+  21 Jan 2008; Jean-Noël Rivasseau <elvanor@gentoo.org>
+  +files/3.3/ant-osgi-manifest.mf, +files/3.3/disable-jdt-tool.diff,
+  +files/3.3/eclipse-workbench-miscompile-workaround.diff,
+  +files/3.3/eclipse-3.3, +files/3.3/eclipserc,
+  +files/3.3/disable-jdk6.diff, +files/3.3/disable-swt.diff,
+  +files/3.3/eclipse-jsch-api-update.patch,
+  +files/3.3/fedora/eclipse-fileinitializer.patch,
+  +files/3.3/fedora/eclipse-libupdatebuild2.patch,
+  +files/3.3/fedora/eclipse-pde.build-add-package-build.patch,
+  +files/3.3/launcher_double-free.diff, +files/3.3/set-java-home.diff,
+  eclipse-sdk-3.2.1-r2.ebuild, +eclipse-sdk-3.3.1.1.ebuild:
+  Version bump to Eclipse 3.3.1.1.
+
+  17 Jan 2008; Petteri Räty <betelgeuse@gentoo.org>
+  eclipse-sdk-3.2.1-r2.ebuild:
+  USE EAPI 1 slot deps to only match slot 1 of dev-java/lucene.
+
+  02 Jan 2008; Vlastimil Babka <caster@gentoo.org>
+  -eclipse-sdk-3.2.1-r1.ebuild, eclipse-sdk-3.2.1-r2.ebuild:
+  Remove direct dependencies to dev-java/ant-tasks
+
+  15 Jun 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  eclipse-sdk-3.2.1-r2.ebuild:
+  ppc stable, bug #176856
+
+  28 May 2007; Vlastimil Babka <caster@gentoo.org> -files/eclipse-2.desktop,
+  -files/eclipse-3, -files/04-amd64-gtk.patch, -files/eclipse-3.0.2,
+  -files/eclipse-3.1, -files/05-mozilla-xpcom.patch,
+  -files/eclipse-3.1.desktop, -files/03-motif-java1.5-build.patch,
+  -files/eclipse-3.desktop, -files/06-path-fixups.patch, -files/eclipse-2,
+  -files/eclipse.1, -eclipse-sdk-3.0.1-r3.ebuild,
+  -eclipse-sdk-3.0.2-r1.ebuild, -eclipse-sdk-3.1.2-r3.ebuild:
+  Cleanup old versions after month in package.mask.
+
+  12 May 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  eclipse-sdk-3.2.1-r2.ebuild:
+  Stable on amd64, bug #176856
+
+  05 May 2007; Andrej Kacian <ticho@gentoo.org> eclipse-sdk-3.2.1-r2.ebuild:
+  Stable on x86, bug #176856.
+
+  04 May 2007; Vlastimil Babka <caster@gentoo.org>
+  eclipse-sdk-3.2.1-r2.ebuild:
+  Micromanage ant-tasks dep to prevent bug #177079.
+
+*eclipse-sdk-3.2.1-r2 (30 Apr 2007)
+
+  30 Apr 2007; Vlastimil Babka <caster@gentoo.org>
+  eclipse-sdk-3.2.1-r1.ebuild, +eclipse-sdk-3.2.1-r2.ebuild:
+  Fix bug #176596 for 3.2.1-r1; revbump that depends on split-ant and links
+  whole ant plugin lib dir to /usr/share/ant/lib instead of calling jar-from.
+
+  25 Apr 2007; Petteri Räty <betelgeuse@gentoo.org>
+  -eclipse-sdk-3.2.ebuild, -eclipse-sdk-3.2.1.ebuild:
+  Cleanup.
+
+  19 Apr 2007; Petteri Räty <betelgeuse@gentoo.org>
+  files/digest-eclipse-sdk-3.1.2-r3, Manifest:
+  Fix 3.1.2 digest for bug #170143
+
+  12 Apr 2007; <welp@gentoo.org> eclipse-sdk-3.2.1-r1.ebuild:
+  Stable on amd64 wrt bug 173245
+
+  07 Apr 2007; Joseph Jezak <josejx@gentoo.org> eclipse-sdk-3.2.1-r1.ebuild:
+  Marked ppc stable for bug #173245.
+
+  06 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
+  eclipse-sdk-3.2.1-r1.ebuild:
+  stable x86, bug 173245
+
+  05 Apr 2007; Petteri Räty <betelgeuse@gentoo.org> files/eclipse-3.2:
+  Fix sourcing of ${HOME}/.eclipserc.
+
+  03 Apr 2007; Joshua Nichols <nichoj@gentoo.org> metadata.xml:
+  Added java to metadata.
+
+  05 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  eclipse-sdk-3.2.ebuild:
+  stable x86; bug #143325
+
+  28 Jan 2007; Petteri Räty <betelgeuse@gentoo.org>
+  eclipse-sdk-3.2.1-r1.ebuild:
+  Apply a quick fix for bug #163969. Still need to find out why popd and push
+  have changed behaviour.
+
+  26 Oct 2006; Vlastimil Babka <caster@gentoo.org>
+  -eclipse-sdk-3.0.1-r2.ebuild, -eclipse-sdk-3.0.2.ebuild:
+  Remove ebuilds using deprecated mozilla USE flags for bug #137665.
+
+  08 Oct 2006; Joshua Nichols <nichoj@gentoo.org>
+  eclipse-sdk-3.2.1-r1.ebuild:
+  Made branded splash depend on branding use flag.
+
+*eclipse-sdk-3.2.1-r1 (08 Oct 2006)
+
+  08 Oct 2006; Joshua Nichols <nichoj@gentoo.org>
+  +eclipse-sdk-3.2.1-r1.ebuild:
+  Updated to use patchset from fedora. New splash screen! See bug #150314.
+
+*eclipse-sdk-3.2.1 (01 Oct 2006)
+
+  01 Oct 2006; Joshua Nichols <nichoj@gentoo.org> +eclipse-sdk-3.2.1.ebuild:
+  Version bump with help from Federico Fissore <justice@ngi.it>, bug #149574.
+
+  28 Sep 2006; Joshua Nichols <nichoj@gentoo.org>
+  eclipse-sdk-3.0.1-r3.ebuild:
+  Added missing java-pkg inherit, for bug #147101.
+
+  06 Jul 2006; Joshua Nichols <jnichols@gentoo.org>
+  eclipse-sdk-3.0.1-r3.ebuild:
+  Fixed jdk dep for 3.0.1.
+
+*eclipse-sdk-3.0.2-r1 (06 Jul 2006)
+*eclipse-sdk-3.0.1-r3 (06 Jul 2006)
+
+  06 Jul 2006; Joshua Nichols <jnichols@gentoo.org>
+  +eclipse-sdk-3.0.1-r3.ebuild, +eclipse-sdk-3.0.2-r1.ebuild:
+  Disabling mozilla support in 3.0.x for bug #137665
+
+  06 Jul 2006; Joshua Nichols <nichoj@gentoo.org>
+  eclipse-sdk-3.0.1-r2.ebuild:
+  Fixed JDK dependency for 3.0.1.
+
+  06 Jul 2006; Joshua Nichols <jnichols@gentoo.org>
+  -eclipse-sdk-3.1.1.ebuild, -eclipse-sdk-3.1.2-r2.ebuild:
+  Pruning old revisions with SLOT='3.1'
+
+*eclipse-sdk-3.2 (06 Jul 2006)
+*eclipse-sdk-3.1.2-r3 (06 Jul 2006)
+
+  06 Jul 2006; Joshua Nichols <jnichols@gentoo.org>
+  eclipse-sdk-3.1.2-r2.ebuild, +eclipse-sdk-3.1.2-r3.ebuild,
+  -eclipse-sdk-3.2_rc7-r1.ebuild, +eclipse-sdk-3.2.ebuild:
+  Revision bump for 3.1.2 to disable embedded browser support (bug #137665).
+  Version bump to 3.2 (bug #139191).
+
+*eclipse-sdk-3.2_rc7-r1 (04 Jul 2006)
+
+  04 Jul 2006; Joshua Nichols <nichoj@gentoo.org> +files/eclipse-3.2,
+  +eclipse-sdk-3.2_rc7-r1.ebuild:
+  Version bump. Uses seamonkey instead of gecko-sdk. bug #112537
+
+  03 Jul 2006; Petteri Räty <betelgeuse@gentoo.org>
+  -files/01-distribute_ant_target-2.1.patch,
+  -files/02-konqueror_help_browser-2.1.patch,
+  -files/01-distribute_ant_target-3.0.patch, -eclipse-sdk-2.1.3-r5.ebuild,
+  -eclipse-sdk-3.0.0-r3.ebuild:
+  Removed old versions and patches. Fixes bug #138728.
+
+*eclipse-sdk-3.1.2-r2 (20 Apr 2006)
+
+  20 Apr 2006; Joshua Nichols <nichoj@gentoo.org>
+  -eclipse-sdk-3.1.2-r1.ebuild, +eclipse-sdk-3.1.2-r2.ebuild:
+  Changed source and doc back to nosrc and nodoc
+
+  19 Apr 2006; Joshua Nichols <nichoj@gentoo.org>
+  -eclipse-sdk-3.1-r1.ebuild, -eclipse-sdk-3.1.2.ebuild:
+  Cleaning out some ebuilds.
+
+*eclipse-sdk-3.1.2-r1 (18 Apr 2006)
+
+  18 Apr 2006; Joshua Nichols <nichoj@gentoo.org>
+  +eclipse-sdk-3.1.2-r1.ebuild:
+  Loads of cleanup. Now compiles against gecko-sdk, instead of firefox or
+  mozilla.
+
+*eclipse-sdk-3.1.2 (17 Apr 2006)
+
+  17 Apr 2006; Dominik Stadler <centic@gentoo.org>
+  +eclipse-sdk-3.1.2.ebuild:
+  Add 3.1.2, fixes Bug 120723, also regenerate some of digest-files with
+  RMD160 and SHA256 digests and update copyright
+
+  12 Nov 2005; Thomas Matthijs <axxo@gentoo.org> -eclipse-sdk-3.1.ebuild:
+  remove broken ebuild
+
+*eclipse-sdk-3.1.1 (09 Nov 2005)
+
+  09 Nov 2005; Thomas Matthijs <axxo@gentoo.org> +eclipse-sdk-3.1.1.ebuild:
+  version bump
+
+  15 Aug 2005; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.1-r1.ebuild:
+  Fixes #100360.
+
+  24 Jul 2005; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.1-r1.ebuild:
+  Fixed some platform-breaking settings.
+
+*eclipse-sdk-3.1-r1 (23 Jul 2005)
+
+  23 Jul 2005; Karl Trygve Kalleberg <karltk@gentoo.org>
+  +eclipse-sdk-3.1-r1.ebuild:
+  Dropped gcj support altogether. Cleaner usage of ant, which is compatible
+  with 1.6.5.
+
+  04 Jul 2005; Karl Trygve Kalleberg <karltk@gentoo.org>
+  -eclipse-sdk-3.1_rc1.ebuild, eclipse-sdk-3.1.ebuild:
+  Removed rc1, since it requires gcc 4.0
+
+  04 Jul 2005; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.1.ebuild:
+  Removed gcj flag.
+
+  03 Jul 2005; Karl Trygve Kalleberg <karltk@gentoo.org>
+  -eclipse-sdk-3.0.1.ebuild, -eclipse-sdk-3.0.1-r1.ebuild,
+  -eclipse-sdk-3.1_pre1.ebuild, -eclipse-sdk-3.1_pre2.ebuild,
+  -eclipse-sdk-3.1_pre3.ebuild, -eclipse-sdk-3.1_pre4.ebuild,
+  -eclipse-sdk-3.1_pre5.ebuild, -eclipse-sdk-3.1_pre6.ebuild,
+  -eclipse-sdk-3.1_pre6-r1.ebuild, -eclipse-sdk-3.1_pre7.ebuild:
+  Removed old versions.
+
+*eclipse-sdk-3.1 (03 Jul 2005)
+
+  03 Jul 2005; Karl Trygve Kalleberg <karltk@gentoo.org>
+  +files/06-path-fixups.patch, +eclipse-sdk-3.1.ebuild:
+  New upstream release. Adapted ebuild submitted by Mikko Tiihonen
+  <mikko.tiihonen@hut.fi>. Tentatively fixes #97347.
+
+  19 May 2005; Sven Wegener <swegener@gentoo.org>
+  eclipse-sdk-3.1_pre6-r1.ebuild:
+  Removed * postfix from >= dependency.
+
+*eclipse-sdk-3.1_rc1 (01 Jun 2005)
+
+  01 Jun 2005; Karl Trygve Kalleberg <karltk@gentoo.org>
+  +eclipse-sdk-3.1_rc1.ebuild:
+  New upstream release.
+
+*eclipse-sdk-3.1_pre7 (18 May 2005)
+
+  18 May 2005; Karl Trygve Kalleberg <karltk@gentoo.org>
+  +eclipse-sdk-3.1_pre7.ebuild:
+  New upstream release. Fixes #92606.
+
+*eclipse-sdk-3.1_pre6-r1 (18 May 2005)
+
+  18 May 2005; Karl Trygve Kalleberg <karltk@gentoo.org>
+  +eclipse-sdk-3.1_pre6-r1.ebuild:
+  Partial fix for #91607.
+
+*eclipse-sdk-3.1_pre6-r1 (14 May 2005)
+
+  14 May 2005; Karl Trygve Kalleberg <karltk@gentoo.org>
+  +eclipse-sdk-3.1_pre6-r1.ebuild:
+  Added in support for the IBM JDK again.
+
+  05 May 2005; Sven Wegener <swegener@gentoo.org>
+  eclipse-sdk-3.1_pre4.ebuild, eclipse-sdk-3.1_pre5.ebuild,
+  eclipse-sdk-3.1_pre6.ebuild:
+  Removed * postfix from <, <=, >= and > dependencies.
+
+  21 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  eclipse-sdk-3.0.1-r2.ebuild:
+  Stable on ppc.
+
+  13 Apr 2005; Thomas Matthijs <axxo@gentoo.org>
+  eclipse-sdk-3.1_pre6.ebuild:
+  fix bug 88961
+
+*eclipse-sdk-3.0.2 (08 Apr 2005)
+
+  08 Apr 2005; Karl Trygve Kalleberg <karltk@gentoo.org>
+  +files/eclipse-3.0.2, +files/05-mozilla-xpcom.patch,
+  +eclipse-sdk-3.0.2.ebuild, eclipse-sdk-3.1_pre6.ebuild:
+  Patches and most ebuild modifications provided by Mikko Tiihonen
+  <mikko.tiihonen@hut.fi>. Fixes #86850.
+
+*eclipse-sdk-3.1_pre6 (06 Apr 2005)
+
+  06 Apr 2005; Karl Trygve Kalleberg <karltk@gentoo.org> files/eclipse-3.1,
+  +eclipse-sdk-3.1_pre6.ebuild:
+  New upstream release. Disabled Motif and KDE support, since this is
+  deprecated upstream. Can now be bootstrapped with jikes. In theory, 
+  eclipse-sdk should now be compilable on any VM which provide the JNI
+  headers, using Jikes.
+
+  23 Mar 2005; Seemant Kulleen <seemant@gentoo.org>
+  eclipse-sdk-2.1.3-r5.ebuild, eclipse-sdk-3.0.0-r3.ebuild,
+  eclipse-sdk-3.0.1.ebuild, eclipse-sdk-3.0.1-r1.ebuild,
+  eclipse-sdk-3.0.1-r2.ebuild, eclipse-sdk-3.1_pre1.ebuild,
+  eclipse-sdk-3.1_pre2.ebuild, eclipse-sdk-3.1_pre3.ebuild,
+  eclipse-sdk-3.1_pre4.ebuild, eclipse-sdk-3.1_pre5.ebuild:
+  change dep from net-www/mozilla to www-client/mozilla
+
+  03 Mar 2005; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.1_pre5.ebuild:
+  Dropped amd64 as it doesn't compile there anymore. See #75806.
+
+*eclipse-sdk-3.1_pre5a (21 Feb 2005)
+
+  21 Feb 2005; Karl Trygve Kalleberg <karltk@gentoo.org>
+  +eclipse-sdk-3.1_pre5a.ebuild:
+  New upstream version. Portage doesn't allow a sensible version name on this
+  release (M5a), so I've just called it pre5.
+
+  13 Feb 2005; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.1_pre4.ebuild:
+  Added bail-out on attempt to compile with a 1.5.x VM. Fixes #72519.
+
+  04 Feb 2005; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.1_pre4.ebuild:
+  Added proper build id. Updated to work only with Mozilla >=1.7.x series
+  (only tested with 1.7.5).
+
+  03 Feb 2005; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.0.1-r2.ebuild:
+  Marked stable on x86, so we'll see what happens.
+
+  01 Feb 2005; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.1_pre4.ebuild:
+  Temporarily dropped firefox support.
+
+  28 Jan 2005; Gregorio Guidi <greg_g@gentoo.org> eclipse-sdk-3.0.1-r2.ebuild,
+  eclipse-sdk-3.1_pre4.ebuild:
+  Avoid installing things in /usr/kde.
+
+*eclipse-sdk-3.1_pre4 (24 Dec 2004)
+
+  24 Dec 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  +eclipse-sdk-3.1_pre4.ebuild:
+  New upstream release. Fixes #75440.
+
+  11 Dec 2004; <SeJo@gentoo.org> eclipse-sdk-3.0.0-r3.ebuild:
+  stable on ppc
+
+  26 Nov 2004; Karl Trygve Kalleberg <karltk@gentoo.org> files/eclipse-2, files/eclipse-3,
+  files/eclipse-3.1:
+  Using @ instead of *, so paths with spaces act sanely.
+
+  24 Nov 2004; Karl Trygve Kalleberg <karltk@gentoo.org> -files/00-refactor_rename.patch,
+  -eclipse-sdk-2.1.3-r3.ebuild, eclipse-sdk-2.1.3-r5.ebuild:
+  Removed the huge 00-refactor_rename.patch, fixes #72369. Also removed old
+  revisions and marked -r5 stable on ppc, x86 and sparc.
+
+  24 Nov 2004; Karl Trygve Kalleberg <karltk@gentoo.org> eclipse-sdk-3.0.1-r2.ebuild:
+  Added link files, fixes #72367.
+
+*eclipse-sdk-3.0.1-r2 (16 Nov 2004)
+
+  16 Nov 2004; Karl Trygve Kalleberg <karltk@gentoo.org> +files/04-amd64-gtk.patch,
+  +eclipse-sdk-3.0.1-r2.ebuild:
+  Added amd64 patch from #65962, thanks to Dan <dan@intuitivelyobvious.net>.
+
+*eclipse-sdk-3.1_pre3 (06 Nov 2004)
+
+  06 Nov 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.1_pre3.ebuild:
+  New upstream version.
+
+*eclipse-sdk-3.1_pre1 (31 Oct 2004)
+
+  31 Oct 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.1_pre2.ebuild:
+  New upstream version. Merged rewrite of pre1 with pauldv's pre2
+  ebuild. Fixes #66813.
+ 
+  09 Oct 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.0.1-r1.ebuild: 
+  Fixed one motif build problem. 
+  
+  09 Oct 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.0.1-r1.ebuild: 
+  Rewrote and cleaned up a bit. Hopefully fixes #66810, #66822.
+
+*eclipse-sdk-3.0.1-r1 (07 Oct 2004)
+
+  07 Oct 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.0.1-r1.ebuild: 
+  Added support for multiple KDEs. Added amd64 patch by
+  Dan <dan@intuitivelyobvious.net>, fixes #65962.
+
+  23 Sep 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.1_pre1.ebuild:
+  Masked. Added notice about conservative bug reporting.
+
+*eclipse-sdk-3.0.1 (18 Sep 2004)
+
+  18 Sep 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.0.1.ebuild:
+  New upstream version. Removed jikes useflag.
+
+  16 Sep 2004; <SeJo@gentoo.org> eclipse-sdk-3.0.0-r3.ebuild:
+  added a warning about memory requirements in ppc
+
+*eclipse-sdk-3.1_pre1 (08 Sep 2004)
+
+  08 Aug 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.1_pre1.ebuild, files/eclipse-3.1, files/eclipse-3.1.desktop:
+  New upstream version.
+
+  22 Aug 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.0.0-r3.ebuild, eclipse-sdk-2.1.3-r5.ebuild:
+  Added dependency on app-arch/zip, fixing #60199. Patch by
+  Jose Gonzalez Gomez <jgonzalez@opentechnet.com>.
+
+  22 Aug 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.0.0-r3.ebuild, eclipse-sdk-2.1.3-r5.ebuild:
+  Added the graphics.jar to the IBM JDK classpath. Ugh, when will
+  we learn;) Should fix #59673. Added quiet option to and in 2.1.3-r5,
+  and early-out on errors. Removed xml.jar as classpath variable, as it
+  breaks the compilation.
+
+  09 Aug 2004; <SeJo@gentoo.org> eclipse-sdk-2.1.3-r5.ebuild:
+  added the xml.jar to the ppc classpath
+
+  02 Aug 2004; <SeJo@gentoo.org> eclipse-sdk-3.0.0-r3.ebuild:
+  added ~ppc keyword
+
+  01 Aug 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-2.1.3-r5.ebuild: Fixed || () problems, see #56840. Removed old
+  revisions of 2.1.3 and 3.0.0.
+
+  30 Jul 2004; <SeJo@gentoo.org> eclipse-sdk-3.0.0-r2.ebuild,
+  eclipse-sdk-3.0.0-r3.ebuild, eclipse-sdk-3.0.0.ebuild:
+  added the xml.jar for ppc to bootclasspath
+
+*eclipse-sdk-3.0.0-r3 (30 Jul 2004)
+
+  30 Jul 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.0.0-r3.ebuild: Trying to get it working on PPC.
+
+*eclipse-sdk-3.0.0-r2 (27 Jul 2004)
+
+  27 Jul 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-2.1.3-r5.ebuild:
+  Added manpage.
+
+*eclipse-sdk-2.1.3-r5 (27 Jul 2004)
+
+  27 Jul 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-2.1.3-r5.ebuild:
+  Added manpage.
+
+*eclipse-sdk-3.0.0-r1 (21 Jul 2004)
+
+  21 Jul 2004; Karl Trygve Kalleberg <karltk@gentoo.org> 
+  Fixed mozilla embedding problem, #56516. Fixed dependency issue, #56840.
+
+  17 Jul 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.0.0_pre9.ebuild, eclipse-sdk-3.0.0_rc1.ebuild, 
+  eclipse-sdk-3.0.0_rc2.ebuild, eclipse-sdk-3.0.0_rc3.ebuild:
+  Removed.
+
+*eclipse-sdk-2.1.3-r4 (09 Jul 2004)
+
+  09 Jul 2004; Karl Trygve Kalleberg <karltk@gentoo.org> 
+  eclipse-sdk-2.1.3-r4.ebuild: Reworked use flags so that only
+  one frontend is actually compiled when multiple are selected,
+  fixes #55162.
+
+  07 Jul 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.0.0.ebuild: Added patch to allow compiling the
+  Motif frontend with Tiger, sorry, Java 1.5, sorry, 5.0.
+
+*eclipse-sdk-3.0.0 (04 Jul 2004) 
+
+  04 Jul 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.0.0.ebuild: New upstream version. Added block
+  against media-fonts/unifont, at the request of Billy Biggs
+  from Eclipse.
+
+  29 Jun 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.0.0_rc3.ebuild: Added temporary check that at least
+  one of motif or gtk has been specified in the USE flags. Should
+  rather have a default fallback. Fixes #55200.
+
+  22 Jun 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.0.0_rc1.ebuild, eclipse-sdk-3.0.0_rc2.ebuild,
+  eclipse-sdk-3.0.0_rc3.ebuild: Fixes #54723, thanks to Bert Geens
+  <theblackdragon@linux.be>.
+
+  22 Jun 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.0.0_pre8-r3.ebuild: Removed.
+
+  22 Jun 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.0.0_rc3.ebuild: New upstream version.
+
+  22 Jun 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.0.0_rc2.ebuild, eclipse-sdk-3.0.0_pre9: Fixes
+  #54407, thanks to Alexander Gretencord <arutha@gmx.de>.
+
+  21 Jun 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.0.0_rc2.ebuild: New upstream version.
+
+  17 Jun 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.0.0._rc1.ebuild: Fixed minor bug preventing motif from
+  working.
+
+  17 Jun 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-2.1.3-r3.ebuild: Added back gtk+ 2.4 workaround, fixes
+  #53906.
+
+  12 Jun 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.0.0_rc1.ebuild: Added dep for libgnomeui, fixes #53690.
+
+  07 Jun 2004; Ferris McCormick <fmccor@gentoo.org>
+  eclipse-sdk-2.1.3-r3.ebuild:
+  Marked stable on sparc.
+
+*eclipse-sdk-3.0.0_rc1 (06 Jun 2004)
+
+  04 Jun 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.0.0_rc1.ebuild, eclipse-2.1.3-r2.ebuild: New upstream 
+  version. Fixes #52760. Temporarily removed Jikes as a compiler for
+  both these versions, as it simply doesn't compile it.
+
+  04 Jun 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-2.1.3-r3.ebuild: Added jikes as compile-time dep, since 
+  it appears to consistently compile with jikes now.
+
+  03 Jun 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-2.1.3-r3.ebuild: Marked as stable on x86, as it improves
+  markedly on previous versions anyway.
+
+  02 Jun 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.0.0_pre9.ebuild, eclipse-sdk-3.0.0_pre8-r3.ebuild: Added 
+  fugly workaround to keep repoman happy.
+
+  28 May 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-2.1.1.ebuild, eclipse-sdk-2.1.2-r1.ebuild, files/eclipse,
+  files/eclipse.desktop: Removed these, as 2.1.3 appears more stable and
+  works on the same platforms.
+
+  28 May 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.0.0_pre9.ebuild, eclipse-sdk-3.0.0_pre8-r3.ebuild: Added check
+  to ensure it's only compiled with 1.4.2 JDKs and newer. Works with
+  blackdown-jdk-1.4.2_rc1. Removed eclipse-sdk-3.0.0_pre8-r2.ebuild
+
+*eclipse-sdk-3.0.0_pre9 (28 May 2004)
+
+  28 May 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.0.0_pre9.ebuild: New upstream release. Help no longer works.
+  Does not compile with blackdown, only tested successfully with 
+  sun-jdk. Fixes #51845.
+
+  26 May 2004; Ferris McCormick <fmccor@gentoo.org>
+  eclipse-sdk-2.1.3-r3.ebuild:
+  Add ~sparc keyword.
+
+*eclipse-sdk-3.0.0_pre8-r3 (26 May 2004)
+
+  26 May 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.0.0_pre8-r3.ebuild eclipse-sdk-2.1.3-r3: Fixes #51953. Adds
+  initial sparc support to 2.1.3-r3, not added ~sparc yet.
+
+  25 May 2004; Karl Trygve Kalleberg <karltk@gentoo.org> 
+  eclipse-sdk-2.1.1.ebuild, eclipse-sdk-2.1.2-r1.ebuild, 
+  files/eclipse.desktop, eclipse-3.0.0_pre8-r2: Removed. 
+  
+  19 May 2004; Luca Barbato <lu_zero@gentoo.org> eclipse-sdk-2.1.3-r3.ebuild:
+  Marked ~ppc, added -o to unzip to avoid interactivity
+
+  18 May 2004; Karl Trygve Kalleberg <karltk@gentoo.org> 
+  eclipse-sdk-2.1.3-r3.ebuild: Added back the refactor-rename patch.
+
+*eclipse-sdk-3.0.0_pre8-r2 (18 May 2004)
+
+  17 May 2004; Karl Trygve Kalleberg <karltk@gentoo.org> 
+  eclipse-sdk-3.0.0_pre8-r2.ebuild, files/01-distribute_ant_target-3.0.patch,
+  files/02-konqueror_help_browser-3.0.patch: Reworked build system to better
+  support KDE and version all installed plugins properly. The update manager
+  behaves much better.
+
+  Removed eclipse-sdk-2.1.3, eclipse-sdk-2.1.3-r1, eclipse-sdk-2.1.3-r2,
+  eclipse-sdk-3.0.0_pre5, eclipse-sdk-3.0.0_pre8, eclipse-sdk-3.0.0_pre8-r1,
+  eclipse-sdk-2.1, eclipse-2.1.2 and cruft in files/.
+
+*eclipse-sdk-2.1.3-r3 (16 May 2004)
+
+  16 May 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-2.1.3-r3.ebuild: Added install.ini to /usr/lib/eclipse-2/, fixing
+  the annoying "Completing install..." splash, #26174. Doesn't compile GNOME
+  in motif frontend, fixes #50828 for this version. Added optional dep on
+  mozilla, since an alternative browser can easily be specified. Uses
+  konqueror by default if kde is in USE.
+  
+  14 May 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-2.1.3-r2.ebuild: Added pauldv's build patches. Fixes #50759.
+  Can not be safely compiled with jikes at the moment.
+
+  10 May 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.0.0_pre8-r1.ebuild: Added -fPIC when compiling xpcom.o
+  thanks to lu_zero.
+
+*eclipse-sdk-2.1.3-r2 (10 May 2004)
+
+  10 May 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-2.1.3-r2.ebuild: Complete rewrite based on the 3.0.0_pre8-r1.
+  Hopefully fixes a lot of the installation trouble seen with the old ebuild
+  series.
+
+*eclipse-sdk-3.0.0_pre8-r1 (10 May 2004)
+
+  10 May 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.0.0_pre8-r1.ebuild: Fixed missing linking to gthread-2.0, which
+  makes it run with sun-jdk too. Fixes #50582.
+
+  10 May 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.0.0_pre8.ebuild: Added support for the motif frontend again.
+
+  09 May 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.0.0_pre8.ebuild: Added small fix for gtk+-2.4.x to compile
+  again. Fixes #50480.
+
+*eclipse-sdk-3.0.0_pre8 (07 May 2004)
+
+  07 May 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.0.0_pre8.ebuild: Totally revamped st_lim's submission. Will only
+  work for gtk currently. Hopefully fixes #36471.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> eclipse-sdk-2.1.3-r1.ebuild:
+  Add inherit eutils
+
+  20 Apr 2004; Gustavo Felisberto <humpback@gentoo.org>;
+  eclipse-sdk-3.0_rc8.ebuild:
+  Cosmetics in ewarn
+
+  15 Apr 2004; Gustavo Felisberto <humpback@gentoo.org>;
+  eclipse-sdk-3.0_rc8.ebuild:
+  Fixed header and added small warning
+
+*eclipse-sdk-3.0_rc8 (05 Apr 2004)
+
+  05 Apr 2004; Gustavo Felisberto <humpback@gentoo.org>;
+  eclipse-sdk-3.0_rc8.ebuild:
+  Adding version M8 of eclipse 3. This is a milestone release it is getting near
+  final (we hope)
+
+*eclipse-sdk-2.1.3-r1 (02 Apr 2004)
+
+  02 Apr 2004; Lim Swee Tat <st_lim@gentoo.org> eclipse-sdk-2.1.3-r1.ebuild,
+  eclipse-sdk-2.1.3.ebuild:
+  Thanks to Christo <serlin@engsoc.org> for bug 45442
+  Added the GTK_DISABLE_DEPRECATED hack
+
+  28 Mar 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-2.1.3.ebuild:
+  Cleaned the RDEPEND and DEPEND a bit, trying to move away from the ?: 
+  notation, but the new || () notation is not working properly, so we can't 
+  yet.
+  
+*eclipse-sdk-2.1.3 (25 Mar 2004)
+
+  25 Mar 2004; Lim Swee Tat <st_lim@gentoo.org>
+  eclipse-sdk-2.1.2-r1.ebuild:
+  Updated eclipse-sdk-2.1.2-r1 and added eclipse-2.1.3 There is a deprecation of
+  GtkCombo in gtk+-2.4 and the deprecation causes compilation of libswt-pi-gtk
+  to fail. Removed "#define GTK_DISABLE_DEPRECATION" to allow for compilation
+  Only tested against gtk+-2.4
+
+  11 Jan 2004; Heinrich Wendel <lanius@gentoo.org> eclipse-sdk-2.1.1.ebuild,
+  eclipse-sdk-2.1.2-r1.ebuild, eclipse-sdk-2.1.2.ebuild,
+  eclipse-sdk-3.0.0_pre5.ebuild:
+  fixed motif dep
+
+  21 Dec 2003; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-2.1.2-r1.ebuild:
+  Fixed compilation with IBM JDK, tries to fix #37421. Must test it
+  on ppc.
+  
+*eclipse-sdk-3.0.0_pre5 (11 Dec 2003)
+
+  11 Dec 2003; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-3.0.0_pre5:	
+  Added experimental upstream version, thanks to submission by David
+  Love <dlove@nighton.net>. Fixes #35416. Don't use it if you don't mean
+  it; this is highly volatile stuff.
+  
+*eclipse-sdk-2.1.2-r1 (28 Nov 2003)
+
+  28 Nov 2003; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-2.1.2-r1.ebuild, files/00-refactor_rename.patch:
+  Stole patch from Debian. Fixes #33124.
+  
+*eclipse-sdk-2.1.2 (17 Nov 2003)
+
+  17 Nov 2003; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-2.1.2.ebuild:
+  New upstream version. Fixes #33680.
+  
+*eclipse-sdk-2.1.1 (04 Nov 2003)
+
+  04 Oct 2003; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-2.1.1.ebuild:
+  Fixes #32165. We blindly assume that any system will either have sh-utils 
+  or coreutils installed, which should be a reasonable assumption.
+  
+*eclipse-sdk-2.1.1 (05 Oct 2003)
+
+  05 Oct 2003; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-2.1.1.ebuild, files/eclipse:
+  Thanks to the wonderful work of Jesse <yurkjes@iit.edu> and Tom Prado
+  <tprado@charter.net>, we finally have from-source ebuild for the SDK.
+  Fixes #19317.
+  
+*eclipse-sdk-2.1 (30 Jun 2003)
+
+  30 Jun 2003; Karl Trygve Kalleberg <karltk@gentoo.org>
+  eclipse-sdk-2.1.ebuild, files/eclipse.desktop:
+  Initial import. Note that a binary ebuild for Eclipse also exists, as
+  eclipse-sdk-bin. This ebuild will eventually try to build all of Eclipse 
+  from sources. For now, it only builds the basic platform, and none of the
+  GTK+ stuff.

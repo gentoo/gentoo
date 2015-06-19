@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>desktop-dock</herd>
+<longdescription>
+Wmfsm monitors your filesystem usage. It features three display modes, 
+different colorschemes and exclusion of filesystems (eg /cdrom).
+</longdescription>
+</pkgmetadata>

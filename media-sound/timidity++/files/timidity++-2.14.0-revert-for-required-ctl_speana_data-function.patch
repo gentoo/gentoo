@@ -1,0 +1,28 @@
+This will revert part of the commit from:
+
+http://timidity.git.sourceforge.net/git/gitweb.cgi?p=timidity/timidity;a=commit;h=e73b53437dbc1e57e61dd4d0c1407784797b08d9
+
+Because otherwise TiMidity++ simply won't build as per:
+
+../interface/libinterface.a(xskin_c.o): In function `ctl_event':
+xskin_c.c:(.text+0x17c): undefined reference to `ctl_speana_data'
+collect2: error: ld returned 1 exit status
+
+--- interface/xskin_c.c
++++ interface/xskin_c.c
+@@ -228,7 +228,6 @@
+     }
+ }
+ 
+-#if 0
+ static void ctl_speana_data(double *val, int size) {
+ 
+   /* 0 <= val[n] <= (AMP*NCOLOR) */
+@@ -280,7 +279,6 @@
+ 
+   return;
+ }
+-#endif
+ 
+ /*ARGSUSED*/
+ static int ctl_open(int using_stdin, int using_stdout) {

@@ -1,0 +1,159 @@
+# ChangeLog for app-admin/bcfg2
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/bcfg2/ChangeLog,v 1.34 2015/06/09 12:51:46 mrueg Exp $
+
+  09 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -bcfg2-1.2.3-r1.ebuild,
+  -bcfg2-1.2.3.ebuild, -bcfg2-1.2.4.ebuild:
+  Remove old.
+
+*bcfg2-1.2.4-r1 (15 Dec 2014)
+
+  15 Dec 2014; Michał Górny <mgorny@gentoo.org> +bcfg2-1.2.4-r1.ebuild:
+  Convert to distutils-r1.
+
+  23 Dec 2013; Tom Wijsman <TomWij@gentoo.org>
+  -files/bcfg2-1.2.2-CVE-2012-3366-Trigger-plugin.patch:
+  [QA] Remove unused files.
+
+*bcfg2-1.2.4 (21 Apr 2013)
+
+  21 Apr 2013; Michael Weber <xmw@gentoo.org> +bcfg2-1.2.4.ebuild:
+  Version bump
+
+  18 Mar 2013; Michael Weber <xmw@gentoo.org> -bcfg2-1.2.2.ebuild,
+  -bcfg2-1.2.2-r1.ebuild:
+  Drop old versions
+
+*bcfg2-1.2.3-r1 (18 Mar 2013)
+
+  18 Mar 2013; Michael Weber <xmw@gentoo.org> +bcfg2-1.2.3-r1.ebuild:
+  Revbump to include dev-python/nose RDEPEND (thanks Alexandr Tiurin, bug
+  447396)
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+*bcfg2-1.2.3 (23 Jul 2012)
+
+  23 Jul 2012; Michael Weber <xmw@gentoo.org> +bcfg2-1.2.3.ebuild:
+  Version bump (thanks euscan)
+
+*bcfg2-1.2.2-r1 (29 Jun 2012)
+
+  29 Jun 2012; Michael Weber <xmw@gentoo.org> +bcfg2-1.2.2-r1.ebuild,
+  +files/bcfg2-1.2.2-CVE-2012-3366-Trigger-plugin.patch:
+  Revbump to fix trigger plugin security problem (bug 424025)
+
+  29 Jun 2012; Michael Weber <xmw@gentoo.org> bcfg2-1.2.2.ebuild, metadata.xml:
+  Add IUSE cheetah (bug 423231 by Alexandr Tiurin)
+
+  04 Jun 2012; Michael Weber <xmw@gentoo.org> -bcfg2-1.2.0.ebuild:
+  Remove old version
+
+  16 Apr 2012; Michael Weber <xmw@gentoo.org> bcfg2-1.2.2.ebuild:
+  Fix dependencies (thanks solj, bug 411979)
+
+  14 Apr 2012; Michael Weber <xmw@gentoo.org> bcfg2-1.2.2.ebuild:
+  Replace gam-server with virtual/fam (thanks ssuominen)
+
+*bcfg2-1.2.2 (14 Apr 2012)
+
+  14 Apr 2012; Michael Weber <xmw@gentoo.org> +bcfg2-1.2.2.ebuild:
+  Version bump, add IUSE doc (thanks solj, bug 411881), add depends
+  dev-python/genshi and app-admin/gam-server (thanks Alexandr Tiurin, bug
+  409569).
+
+  14 Apr 2012; Michael Weber <xmw@gentoo.org> -files/bcfg2-server.rc,
+  -bcfg2-1.1.3.ebuild, -bcfg2-1.2.0_rc2.ebuild, bcfg2-1.2.0.ebuild:
+  Remove old version, really fix bug 395235
+
+*bcfg2-1.2.0 (28 Dec 2011)
+
+  28 Dec 2011; Michael Weber <xmw@gentoo.org> +bcfg2-1.2.0.ebuild,
+  +files/bcfg2-server-1.2.0.rc:
+  Version bump, fixing --startas (bug 395235, thanks m.cassaniti), fixing gamin
+  (r)dep (bug 395233, thanks m.cassaniti and jer)
+
+*bcfg2-1.2.0_rc2 (11 Nov 2011)
+*bcfg2-1.1.3 (11 Nov 2011)
+
+  11 Nov 2011; Michael Weber <xmw@gentoo.org> -bcfg2-1.1.0.ebuild,
+  -bcfg2-1.1.2.ebuild, +bcfg2-1.1.3.ebuild, +bcfg2-1.2.0_rc2.ebuild:
+  Version bump to address security issues (bug 381543)
+
+*bcfg2-1.1.2 (12 Jun 2011)
+
+  12 Jun 2011; Michael Weber <xmw@gentoo.org> +bcfg2-1.1.2.ebuild,
+  metadata.xml:
+  Version bump (bug 370549, thanks for the report)
+
+  14 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  bcfg2-1.1.0.ebuild:
+  Fix installation.
+
+  16 Oct 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  bcfg2-1.1.0.ebuild:
+  Support installation for multiple Python ABIs (bug #308265).
+
+  16 Oct 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -bcfg2-1.0.1.ebuild:
+  Delete.
+
+*bcfg2-1.1.0 (07 Oct 2010)
+
+  07 Oct 2010; Dawid Węgliński <cla@gentoo.org> +bcfg2-1.1.0.ebuild:
+  Version bump (bug #339886)
+
+  31 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> bcfg2-1.0.1.ebuild:
+  Fix slotting wrt #312423.
+
+  28 Mar 2010; Jeremy Olexa <darkside@gentoo.org> metadata.xml:
+  Drop myself from metadata, add maintainer-needed
+
+  20 Feb 2010; Jonathan Callen <abcd@gentoo.org> bcfg2-1.0.1.ebuild:
+  Transfer prefix keywords, bump EAPI
+
+*bcfg2-1.0.1 (22 Jan 2010)
+
+  22 Jan 2010; Jeremy Olexa <darkside@gentoo.org> +bcfg2-1.0.1.ebuild:
+  Version bump, bug 301851
+
+*bcfg2-1.0.0 (17 Jan 2010)
+
+  17 Jan 2010; Jeremy Olexa <darkside@gentoo.org> -bcfg2-1.0_pre2.ebuild,
+  +bcfg2-1.0.0.ebuild:
+  Version bump. Patch by solj in bug 292869
+
+*bcfg2-1.0_pre2 (20 May 2009)
+
+  20 May 2009; Jeremy Olexa <darkside@gentoo.org> -bcfg2-0.9.6_pre2.ebuild,
+  +bcfg2-1.0_pre2.ebuild:
+  Version bump, patch by solj - bug 263983
+
+  08 Jan 2009; Jeremy Olexa <darkside@gentoo.org> bcfg2-0.9.6.ebuild:
+  drop gamin dep in favor of gam-server - forget about fam completely, too
+  much hassle
+
+  08 Jan 2009; Jeremy Olexa <darkside@gentoo.org> bcfg2-0.9.6.ebuild:
+  fix typo
+
+*bcfg2-0.9.6 (08 Jan 2009)
+
+  08 Jan 2009; Jeremy Olexa <darkside@gentoo.org> +bcfg2-0.9.6.ebuild:
+  Version bump, bug 252146
+
+*bcfg2-0.9.6_pre2 (08 Sep 2008)
+
+  08 Sep 2008; Jeremy Olexa <darkside@gentoo.org> -bcfg2-0.9.6_pre1.ebuild,
+  +bcfg2-0.9.6_pre2.ebuild:
+  Version bump and small changes from Luca Lesinigo in bug #230602
+
+  08 Sep 2008; Jeremy Olexa <darkside@gentoo.org> bcfg2-0.9.6_pre1.ebuild:
+  ~amd64 kw, bug #230602. Thanks Chad for testing
+
+*bcfg2-0.9.6_pre1 (03 Jul 2008)
+
+  03 Jul 2008; Jeremy Olexa <darkside@gentoo.org> +files/bcfg2-server.rc,
+  +metadata.xml, +bcfg2-0.9.6_pre1.ebuild:
+  Initial commit. ebuild written by Michael Jinks <mjinks@uchicago.edu>,
+  proxied maintainer, bug #164467

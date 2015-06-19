@@ -1,0 +1,133 @@
+fix from upstream for building on ia64
+
+https://bugs.gentoo.org/425736
+
+From 197571915c70b9ccd0978c13f12acb2a5f3058d4 Mon Sep 17 00:00:00 2001
+From: Ken Werner <ken.werner@linaro.org>
+Date: Tue, 11 Oct 2011 15:13:35 +0200
+Subject: [PATCH] Change _UPTi_find_unwind_table to return an integer.
+
+This keeps the definition on IA64 and all the other architectures in sync with
+the declaration of _UPTi_find_unwind_table. This also mimics the behaviour of
+what's done for local unwinding and allows the function to provide more than
+one way to undwind.
+
+Signed-off-by: Ken Werner <ken.werner@linaro.org>
+---
+ src/ptrace/_UPT_find_proc_info.c         |    8 ++++----
+ src/ptrace/_UPT_get_dyn_info_list_addr.c |    6 ++----
+ src/ptrace/_UPT_internal.h               |    2 +-
+ 3 files changed, 7 insertions(+), 9 deletions(-)
+
+diff --git a/src/ptrace/_UPT_find_proc_info.c b/src/ptrace/_UPT_find_proc_info.c
+index 44feb34..7aaa0c2 100644
+--- a/src/ptrace/_UPT_find_proc_info.c
++++ b/src/ptrace/_UPT_find_proc_info.c
+@@ -95,7 +95,7 @@ find_gp (struct UPT_info *ui, Elf64_Phdr *pdyn, Elf64_Addr load_base)
+   return gp;
+ }
+ 
+-HIDDEN unw_dyn_info_t *
++HIDDEN int
+ _UPTi_find_unwind_table (struct UPT_info *ui, unw_addr_space_t as,
+ 			 char *path, unw_word_t segbase, unw_word_t mapoff,
+ 			 unw_word_t ip)
+@@ -105,7 +105,7 @@ _UPTi_find_unwind_table (struct UPT_info *ui, unw_addr_space_t as,
+   int i;
+ 
+   if (!_Uelf64_valid_object (&ui->ei))
+-    return NULL;
++    return -UNW_ENOINFO;
+ 
+   ehdr = ui->ei.image;
+   phdr = (Elf64_Phdr *) ((char *) ui->ei.image + ehdr->e_phoff);
+@@ -132,7 +132,7 @@ _UPTi_find_unwind_table (struct UPT_info *ui, unw_addr_space_t as,
+ 	}
+     }
+   if (!ptxt || !punw)
+-    return NULL;
++    return 0;
+ 
+   ui->di_cache.start_ip = segbase;
+   ui->di_cache.end_ip = ui->di_cache.start_ip + ptxt->p_memsz;
+@@ -143,7 +143,7 @@ _UPTi_find_unwind_table (struct UPT_info *ui, unw_addr_space_t as,
+   ui->di_cache.u.ti.table_len = punw->p_memsz / sizeof (unw_word_t);
+   ui->di_cache.u.ti.table_data = (unw_word_t *)
+     ((char *) ui->ei.image + (punw->p_vaddr - ptxt->p_vaddr));
+-  return &ui->di_cache;
++  return 1;
+ }
+ 
+ #elif UNW_TARGET_X86 || UNW_TARGET_X86_64 || UNW_TARGET_HPPA \
+
+From 962366dace4fed902ad5e89df1b34c13c3224b8b Mon Sep 17 00:00:00 2001
+From: Arun Sharma <asharma@fb.com>
+Date: Fri, 23 Sep 2011 11:11:34 -0700
+Subject: [PATCH] Fixup compile errors on ia64.
+
+Suggested-by: Harald Servat <harald.servat@bsc.es>
+---
+ src/ptrace/_UPT_get_dyn_info_list_addr.c |    2 +-
+ src/ptrace/_UPT_internal.h               |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/ptrace/_UPT_get_dyn_info_list_addr.c b/src/ptrace/_UPT_get_dyn_info_list_addr.c
+index d82d4e4..ba9c795 100644
+--- a/src/ptrace/_UPT_get_dyn_info_list_addr.c
++++ b/src/ptrace/_UPT_get_dyn_info_list_addr.c
+@@ -62,7 +62,7 @@ get_list_addr (unw_addr_space_t as, unw_word_t *dil_addr, void *arg,
+ 
+       Debug (16, "checking object %s\n", path);
+ 
+-      di = _UPTi_find_unwind_table (ui, as, path, lo, off);
++      di = _UPTi_find_unwind_table (ui, as, path, lo, off, 0);
+       if (di)
+ 	{
+ 	  res = _Uia64_find_dyn_list (as, di, arg);
+From d93d96ad833390519ea68a2df22dd55dd26a3214 Mon Sep 17 00:00:00 2001
+From: Martin Milata <mmilata@redhat.com>
+Date: Tue, 22 May 2012 11:51:06 +0200
+Subject: [PATCH] Fix compilation on IA64
+
+ - Add tdep macro for {dwarf,ia64}_find_unwind_table so that ia64
+   doesn't try to use dwarf code.
+ - Fix extraneous #if.
+ - Fix mistyped filename in Makefile.am.
+ - Link ia64-specific tests with correct libraries.
+
+Signed-off-by: Martin Milata <mmilata@redhat.com>
+---
+ include/tdep-arm/libunwind_i.h           |    1 +
+ include/tdep-hppa/libunwind_i.h          |    1 +
+ include/tdep-ia64/libunwind_i.h          |    1 +
+ include/tdep-mips/libunwind_i.h          |    1 +
+ include/tdep-ppc32/libunwind_i.h         |    1 +
+ include/tdep-ppc64/libunwind_i.h         |    1 +
+ include/tdep-x86/libunwind_i.h           |    1 +
+ include/tdep-x86_64/libunwind_i.h        |    1 +
+ src/Makefile.am                          |    4 ++--
+ src/ia64/Gfind_unwind_table.c            |    3 ---
+ src/ptrace/_UPT_find_proc_info.c         |    2 +-
+ src/ptrace/_UPT_get_dyn_info_list_addr.c |    2 +-
+ tests/Makefile.am                        |   11 +++++++++++
+ 13 files changed, 23 insertions(+), 7 deletions(-)
+
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index 26e7987..4b3bce3 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -165,3 +165,14 @@ test_setjmp_LDADD = $(LIBUNWIND_setjmp)
+ test_setjmp_LDADD = $(LIBUNWIND_setjmp)
+ ia64_test_setjmp_LDADD = $(LIBUNWIND_setjmp)
+ 
++
++Gia64_test_nat_LDADD = $(LIBUNWIND) $(LIBUNWIND_local)
++Gia64_test_stack_LDADD = $(LIBUNWIND) $(LIBUNWIND_local)
++Gia64_test_rbs_LDADD = $(LIBUNWIND) $(LIBUNWIND_local)
++Gia64_test_readonly_LDADD = $(LIBUNWIND) $(LIBUNWIND_local)
++Lia64_test_nat_LDADD = $(LIBUNWIND_local)
++Lia64_test_stack_LDADD = $(LIBUNWIND_local)
++Lia64_test_rbs_LDADD = $(LIBUNWIND_local)
++Lia64_test_readonly_LDADD = $(LIBUNWIND_local)
++ia64_test_dyn1_LDADD = $(LIBUNWIND)
++ia64_test_sig_LDADD = $(LIBUNWIND)

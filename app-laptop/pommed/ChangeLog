@@ -1,0 +1,295 @@
+# ChangeLog for app-laptop/pommed
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-laptop/pommed/ChangeLog,v 1.69 2014/06/24 08:44:11 naota Exp $
+
+  24 Jun 2014; Naohiro Aota <naota@gentoo.org> -pommed-1.21-r1.ebuild,
+  -pommed-1.30.ebuild, -pommed-1.31.ebuild, -pommed-1.39.ebuild:
+  Drop EAPI=1. #513918
+
+  21 Dec 2013; Agostino Sarubbo <ago@gentoo.org> pommed-1.39-r1.ebuild:
+  Stable for ppc, wrt bug #487738
+
+  26 Nov 2013; Pacho Ramos <pacho@gentoo.org> pommed-1.39-r1.ebuild:
+  x86 stable, bug #487738
+
+  16 Nov 2013; Pacho Ramos <pacho@gentoo.org> pommed-1.39-r1.ebuild:
+  amd64 stable, bug #487738
+
+*pommed-1.39-r1 (28 Sep 2013)
+
+  28 Sep 2013; Pacho Ramos <pacho@gentoo.org> +files/pommed.service,
+  +pommed-1.39-r1.ebuild:
+  Add unit file (#485926 by Tilo Prütz)
+
+  09 Sep 2012; Joseph Jezak <josejx@gentoo.org> pommed-1.39.ebuild:
+  Marked ppc stable for bug #425828.
+
+  05 Sep 2012; Justin Lecher <jlec@gentoo.org> pommed-1.21-r1.ebuild,
+  pommed-1.30.ebuild, pommed-1.31.ebuild, pommed-1.39.ebuild:
+  Use domenu instead insinto + doins to install .desktop files
+
+  15 Jul 2012; Agostino Sarubbo <ago@gentoo.org> pommed-1.39.ebuild:
+  Stable for amd64, wrt bug #425828
+
+  14 Jul 2012; Jeff Horelick <jdhore@gentoo.org> pommed-1.39.ebuild:
+  marked x86 per bug 425828
+
+  03 Jun 2012; Michael Weber <xmw@gentoo.org> pommed-1.31.ebuild:
+  ppc stable (bug 389661)
+
+  02 May 2012; Jeff Horelick <jdhore@gentoo.org> pommed-1.21-r1.ebuild,
+  pommed-1.30.ebuild, pommed-1.31.ebuild, pommed-1.39.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  28 Nov 2011; Tony Vroon <chainsaw@gentoo.org> pommed-1.31.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo &
+  Elijah "Armageddon" El Lazkani in bug #389661.
+
+  24 Nov 2011; Naohiro Aota <naota@gentoo.org> files/pommed-1.31.patch:
+  Drop -g from CFLAGS. Bug #389661
+
+  22 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> pommed-1.31.ebuild:
+  x86 stable wrt bug #389661
+
+  20 Nov 2011; Naohiro Aota <naota@gentoo.org> pommed-1.39.ebuild:
+  Tiny fix. Remove missing install file.
+
+*pommed-1.39 (10 Jul 2011)
+
+  10 Jul 2011; Naohiro Aota <naota@gentoo.org> +pommed-1.39.ebuild,
+  +files/pommed-1.39.patch:
+  version bump. Fix bug #331295
+
+  10 Jul 2011; Naohiro Aota <naota@gentoo.org> metadata.xml:
+  Change maintainer to me
+
+  27 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> pommed-1.21-r1.ebuild,
+  pommed-1.30.ebuild, pommed-1.31.ebuild:
+  Fix slot-dep on gtk+
+
+  17 Jun 2010; Robin H. Johnson <robbat2@gentoo.org> pommed-1.30.ebuild,
+  pommed-1.31.ebuild:
+  CONFIG_CHECK should be non-fatal in this context.
+
+*pommed-1.31 (28 Feb 2010)
+
+  28 Feb 2010; Cédric Krier <cedk@gentoo.org> +pommed-1.31.ebuild,
+  +files/pommed-1.31.patch:
+  Version bump
+
+  07 Jan 2010; Joseph Jezak <josejx@gentoo.org> pommed-1.30.ebuild:
+  Fix for x86/amd64 kernel check not needed on ppc.
+
+  07 Jan 2010; Joseph Jezak <josejx@gentoo.org> pommed-1.30.ebuild:
+  Marked ppc stable for bug #297779.
+
+  03 Jan 2010; Markus Meier <maekke@gentoo.org> pommed-1.30.ebuild:
+  amd64/x86 stable, bug #297779
+
+  21 Nov 2009; Cédric Krier <cedk@gentoo.org> -pommed-1.25.ebuild,
+  -files/pommed-1.25.patch, -pommed-1.26.ebuild, -files/pommed-1.26.patch:
+  Remove old
+
+*pommed-1.30 (21 Nov 2009)
+
+  21 Nov 2009; Cédric Krier <cedk@gentoo.org> +pommed-1.30.ebuild,
+  +files/pommed-1.30.patch:
+  Version bump and fix for bug #284158
+
+*pommed-1.26 (28 May 2009)
+
+  28 May 2009; Cédric Krier <cedk@gentoo.org> +files/pommed-1.26.patch,
+  +pommed-1.26.ebuild:
+  Version bump
+
+  15 Apr 2009; Cédric Krier <cedk@gentoo.org> -files/pommed-1.21.patch,
+  -pommed-1.21.ebuild:
+  Remove old
+
+  15 Apr 2009; Cédric Krier <cedk@gentoo.org> pommed-1.21.ebuild,
+  pommed-1.21-r1.ebuild, pommed-1.25.ebuild:
+  Add missing dev-libs/dbus-glib dependency for bug #264345
+
+  20 Mar 2009; Joseph Jezak <josejx@gentoo.org> pommed-1.21-r1.ebuild:
+  Marked ppc stable for bug #256722.
+
+  01 Feb 2009; Markus Meier <maekke@gentoo.org> pommed-1.21-r1.ebuild:
+  amd64/x86 stable, bug #256722
+
+*pommed-1.25 (28 Jan 2009)
+
+  28 Jan 2009; Cédric Krier <cedk@gentoo.org> +files/pommed-1.25.patch,
+  +pommed-1.25.ebuild:
+  Version bump
+
+  21 Dec 2008; Cédric Krier <cedk@gentoo.org> -files/pommed-1.14.patch,
+  -files/pommed-1.16.patch, -files/pommed-1.17.patch,
+  -files/pommed-1.20.patch, -pommed-1.14.ebuild, -pommed-1.16.ebuild,
+  -pommed-1.17.ebuild, -pommed-1.20.ebuild:
+  Remove old
+
+*pommed-1.21-r1 (21 Dec 2008)
+
+  21 Dec 2008; Cédric Krier <cedk@gentoo.org> +files/pommed-1.21-r1.patch,
+  +pommed-1.21-r1.ebuild:
+  Fix build with --as-needed for bug #246900
+
+  01 Nov 2008; nixnut <nixnut@gentoo.org> pommed-1.21.ebuild:
+  Stable on ppc wrt bug 244531
+
+  27 Oct 2008; Markus Meier <maekke@gentoo.org> pommed-1.21.ebuild:
+  amd64/x86 stable, bug #244531
+
+  09 Oct 2008; Joseph Jezak <josejx@gentoo.org> pommed-1.20.ebuild:
+  Marked ppc stable for bug #238937.
+
+  04 Oct 2008; Markus Meier <maekke@gentoo.org> pommed-1.20.ebuild:
+  amd64/x86 stable, bug #238937
+
+*pommed-1.21 (28 Sep 2008)
+
+  28 Sep 2008; Cédric Krier <cedk@gentoo.org> +files/pommed-1.21.patch,
+  +pommed-1.21.ebuild:
+  Version bump
+
+  03 Aug 2008; Cédric Krier <cedk@gentoo.org> pommed-1.20.ebuild:
+  Fix depend on dbus-1.1 for bug #233074
+
+*pommed-1.20 (28 Jun 2008)
+
+  28 Jun 2008; Cédric Krier <cedk@gentoo.org> +files/pommed-1.20.patch,
+  +pommed-1.20.ebuild:
+  Version bump
+
+  17 May 2008; Cédric Krier <cedk@gentoo.org> pommed-1.14.ebuild,
+  pommed-1.16.ebuild, pommed-1.17.ebuild:
+  Fix dev-util/pkgconfig in RDEPEND for bug #217278
+
+*pommed-1.17 (05 May 2008)
+
+  05 May 2008; Cédric Krier <cedk@gentoo.org> +files/pommed-1.17.patch,
+  +pommed-1.17.ebuild:
+  Version bump
+
+  27 Apr 2008; Cédric Krier <cedk@gentoo.org> pommed-1.14.ebuild,
+  pommed-1.16.ebuild:
+  Add missing pkg-config dependency
+
+  27 Apr 2008; Cédric Krier <cedk@gentoo.org> -files/pommed-1.11.patch,
+  +files/pommed-1.14.patch, files/pommed-1.16.patch, pommed-1.14.ebuild:
+  Use pgk-config for libpci, bug #217610
+
+  05 Apr 2008; Cédric Krier <cedk@gentoo.org> -files/pommed-1.5.patch,
+  -pommed-1.5.ebuild, -pommed-1.12.ebuild:
+  Remove old
+
+  05 Apr 2008; Cédric Krier <cedk@gentoo.org> pommed-1.14.ebuild,
+  pommed-1.16.ebuild:
+  Add libXpm dependency for bug #216439
+
+*pommed-1.16 (05 Apr 2008)
+
+  05 Apr 2008; Cédric Krier <cedk@gentoo.org> +files/pommed-1.16.patch,
+  +pommed-1.16.ebuild:
+  Version bump
+
+  24 Mar 2008; Markus Meier <maekke@gentoo.org> pommed-1.14.ebuild:
+  amd64 stable, bug #206680
+
+  09 Mar 2008; nixnut <nixnut@gentoo.org> pommed-1.14.ebuild:
+  Stable on ppc wrt bug 206680
+
+  27 Feb 2008; Markus Meier <maekke@gentoo.org> pommed-1.14.ebuild:
+  x86 stable, bug #206680
+
+  27 Feb 2008; Cédric Krier <cedk@gentoo.org> pommed-1.5.ebuild,
+  pommed-1.12.ebuild, pommed-1.14.ebuild:
+  Fix DEPEND/RDEPEND for bug #210856
+
+  26 Jan 2008; Tobias Scherbaum <dertobi123@gentoo.org> pommed-1.12.ebuild:
+  ppc stable, bug #206680
+
+  21 Jan 2008; Christian Faulhammer <opfer@gentoo.org> pommed-1.12.ebuild:
+  stable x86, bug 206680
+
+*pommed-1.14 (19 Jan 2008)
+
+  19 Jan 2008; Cédric Krier <cedk@gentoo.org> +pommed-1.14.ebuild:
+  Version bump
+
+*pommed-1.12 (24 Nov 2007)
+
+  24 Nov 2007; Cédric Krier <cedk@gentoo.org> -pommed-1.11.ebuild,
+  +pommed-1.12.ebuild:
+  Version bump and remove old
+
+  18 Nov 2007; Cédric Krier <cedk@gentoo.org> -files/pommed-1.7.patch,
+  -files/pommed-1.10.patch, pommed-1.5.ebuild, -pommed-1.7.ebuild,
+  -pommed-1.8.ebuild, -pommed-1.10.ebuild:
+  Remove old and add quote
+
+*pommed-1.11 (18 Nov 2007)
+
+  18 Nov 2007; Cédric Krier <cedk@gentoo.org> +files/pommed-1.11.patch,
+  +pommed-1.11.ebuild:
+  Version bump
+
+*pommed-1.10 (21 Oct 2007)
+
+  21 Oct 2007; Cédric Krier <cedk@gentoo.org> +files/pommed-1.10.patch,
+  +pommed-1.10.ebuild:
+  Version bump
+
+  09 Sep 2007; Joseph Jezak <josejx@gentoo.org> pommed-1.5.ebuild,
+  pommed-1.7.ebuild, pommed-1.8.ebuild:
+  Fixed building on ppc.  Marked pommed-1.5 ppc stable.
+
+*pommed-1.8 (11 Aug 2007)
+
+  11 Aug 2007; Cédric Krier <cedk@gentoo.org> +pommed-1.8.ebuild:
+  Version bump
+
+  01 Aug 2007; <metalgod@gentoo.org> pommed-1.5.ebuild:
+  Stable on amd64. Bug #185314
+
+  23 Jul 2007; Christian Faulhammer <opfer@gentoo.org> pommed-1.5.ebuild:
+  stable x86, bug 185314
+
+*pommed-1.7 (14 Jul 2007)
+
+  14 Jul 2007; Cédric Krier <cedk@gentoo.org> -files/pommed-1.2.patch,
+  -files/pommed-1.4.patch, +files/pommed-1.7.patch, -pommed-1.2-r1.ebuild,
+  -pommed-1.4.ebuild, +pommed-1.7.ebuild:
+  Version bump and clean old
+
+*pommed-1.5 (21 May 2007)
+
+  21 May 2007; Cédric Krier <cedk@gentoo.org> +files/pommed-1.5.patch,
+  +pommed-1.5.ebuild:
+  Version bump
+
+  14 May 2007; Cédric Krier <cedk@gentoo.org> files/pommed.rc,
+  pommed-1.4.ebuild:
+  Fix rc script for bug #178496 and dependencies for bug #178508
+
+*pommed-1.4 (13 May 2007)
+
+  13 May 2007; Cedric Krier <cedk@gentoo.org> +files/pommed-1.4.patch,
+  +pommed-1.4.ebuild:
+  Version bump
+
+  12 Mar 2007; Cedric Krier <cedk@gentoo.org> -pommed-1.2.ebuild,
+  pommed-1.2-r1.ebuild:
+  Change RDEPENDS to virtual/eject and remove old
+
+*pommed-1.2-r1 (05 Mar 2007)
+
+  05 Mar 2007; Cedric Krier <cedk@gentoo.org> +pommed-1.2-r1.ebuild:
+  Fix depencie to gtk+-2, add amd64,ppc
+
+*pommed-1.2 (04 Mar 2007)
+
+  04 Mar 2007; Cedric Krier <cedk@gentoo.org> +files/pommed-1.2.patch,
+  +files/pommed.rc, +metadata.xml, +pommed-1.2.ebuild:
+  New ebuild for bug #163497 thanks to Daniel Vianna, Guillaume Pujol, Markus
+  Rothe

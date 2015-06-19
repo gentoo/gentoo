@@ -1,0 +1,33 @@
+diff --git a/auth-ldap-2.0.4_pre20131110/aclocal.m4 b/auth-ldap-2.0.4_pre20131110/aclocal.m4
+index e509555..3b73520 100644
+--- a/auth-ldap-2.0.4_pre20131110/aclocal.m4
++++ b/auth-ldap-2.0.4_pre20131110/aclocal.m4
+@@ -130,7 +130,6 @@ AC_DEFUN([OD_OBJC_RUNTIME],[
+ 			AC_LINK_IFELSE([
+ 					AC_LANG_PROGRAM([
+ 							#include <objc/objc.h>
+-							#include <objc/objc-api.h>
+ 						], [
+ 							id class = objc_lookUpClass("Object");
+ 							id obj = @<:@class alloc@:>@;
+@@ -157,7 +156,6 @@ AC_DEFUN([OD_OBJC_RUNTIME],[
+ 			AC_LINK_IFELSE([
+ 					AC_LANG_PROGRAM([
+ 							#include <objc/objc.h>
+-							#include <objc/objc-api.h>
+ 						], [
+ 							id class = objc_lookup_class("Object");
+ 							id obj = @<:@class alloc@:>@;
+diff --git a/auth-ldap-2.0.4_pre20131110/src/TRString.h b/auth-ldap-2.0.4_pre20131110/src/TRString.h
+index 6755c63..77d139b 100644
+--- a/auth-ldap-2.0.4_pre20131110/src/TRString.h
++++ b/auth-ldap-2.0.4_pre20131110/src/TRString.h
+@@ -35,7 +35,7 @@
+ #endif
+ 
+ #import <stdlib.h>
+-
++#include <stdarg.h>
+ #import "TRObject.h"
+ 
+ @interface TRString : TRObject {

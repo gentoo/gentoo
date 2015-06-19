@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare setup
+DEPEND=benchmark? ( >=dev-libs/glib-2.8 ) libedit? ( >=dev-libs/libedit-3 ) libevent? ( dev-libs/libevent ) lzo? ( dev-libs/lzo ) mecab? ( >=app-text/mecab-0.80 ) msgpack? ( dev-libs/msgpack ) sphinx? ( >=dev-python/sphinx-1.0.1 ) zeromq? ( net-libs/zeromq ) zlib? ( sys-libs/zlib ) virtual/pkgconfig sphinx? ( dev-python/sphinx )
+DESCRIPTION=An Embeddable Fulltext Search Engine
+EAPI=5
+HOMEPAGE=http://groonga.org/
+IUSE=abort benchmark debug doc dynamic-malloc-change +exact-alloc-count examples fmalloc futex libedit libevent lzo mecab msgpack +nfkc sphinx static-libs uyield zeromq zlib
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=benchmark? ( >=dev-libs/glib-2.8 ) libedit? ( >=dev-libs/libedit-3 ) libevent? ( dev-libs/libevent ) lzo? ( dev-libs/lzo ) mecab? ( >=app-text/mecab-0.80 ) msgpack? ( dev-libs/msgpack ) sphinx? ( >=dev-python/sphinx-1.0.1 ) zeromq? ( net-libs/zeromq ) zlib? ( sys-libs/zlib )
+REQUIRED_USE=abort? ( dynamic-malloc-change ) fmalloc? ( dynamic-malloc-change ) sphinx? ( doc )
+SLOT=0
+SRC_URI=http://packages.groonga.org/source/groonga/groonga-5.0.3.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=85b3100def3114f832a437c7f2a91f2d

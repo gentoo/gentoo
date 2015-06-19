@@ -1,0 +1,227 @@
+# ChangeLog for dev-python/redis-py
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/redis-py/ChangeLog,v 1.57 2015/06/07 15:59:18 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  05 May 2015; Jeroen Roovers <jer@gentoo.org> redis-py-2.9.1.ebuild,
+  redis-py-2.10.1.ebuild, redis-py-2.10.3.ebuild:
+  Mark ~ppc64 (bug #510626).
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> redis-py-2.7.4.ebuild:
+  Drop old Python implementations
+
+  05 Dec 2014; Agostino Sarubbo <ago@gentoo.org> redis-py-2.10.3.ebuild:
+  Stable for x86, wrt bug #530594
+
+  04 Dec 2014; Agostino Sarubbo <ago@gentoo.org> redis-py-2.10.3.ebuild:
+  Stable for amd64, wrt bug #530594
+
+  27 Nov 2014; Ian Delaney <idella4@gentoo.org> redis-py-2.9.1.ebuild:
+  clean old python impl
+
+  15 Oct 2014; Ian Delaney <idella4@gentoo.org> redis-py-2.10.3.ebuild:
+  re-add kill statement to end of test phase
+
+*redis-py-2.10.3 (14 Oct 2014)
+
+  14 Oct 2014; Ian Delaney <idella4@gentoo.org> +redis-py-2.10.3.ebuild,
+  redis-py-2.10.1.ebuild:
+  bump; fix, upgrade and refine test phase
+
+  14 Oct 2014; Ian Delaney <idella4@gentoo.org> redis-py-2.10.1.ebuild:
+  correction to deps, noted by Arfrever
+
+  25 Jun 2014; Ian Delaney <idella4@gentoo.org> -redis-py-2.7.1.ebuild,
+  -redis-py-2.7.2-r1.ebuild, -redis-py-2.7.5.ebuild, -redis-py-2.7.6.ebuild:
+  rm old versions
+
+*redis-py-2.10.1 (25 Jun 2014)
+
+  25 Jun 2014; Ian Delaney <idella4@gentoo.org> +redis-py-2.10.1.ebuild:
+  bump; add py3.4 support
+
+  20 May 2014; Jeroen Roovers <jer@gentoo.org> redis-py-2.9.1.ebuild:
+  Marked ~hppa (bug #510626).
+
+  20 May 2014; Ian Delaney <idella4@gentoo.org> redis-py-2.9.1.ebuild:
+  drop py2.6 pypy2_0 add py3.4 support
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> redis-py-2.7.2-r1.ebuild,
+  redis-py-2.7.4.ebuild, redis-py-2.7.5.ebuild, redis-py-2.7.6.ebuild,
+  redis-py-2.9.1.ebuild:
+  Add support for the new PyPy slotting.
+
+*redis-py-2.9.1 (06 Feb 2014)
+
+  06 Feb 2014; Sébastien Fabbro <bicatali@gentoo.org> +redis-py-2.9.1.ebuild:
+  Version bump and keyword amd64-linux and x86-linux
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> redis-py-2.7.2-r1.ebuild,
+  redis-py-2.7.4.ebuild, redis-py-2.7.5.ebuild, redis-py-2.7.6.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> redis-py-2.7.4.ebuild:
+  Stable for amd64, wrt bug #473554
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> redis-py-2.7.4.ebuild:
+  Stable for x86, wrt bug #473554
+
+*redis-py-2.7.6 (17 Jun 2013)
+
+  17 Jun 2013; Dirkjan Ochtman <djc@gentoo.org> +redis-py-2.7.6.ebuild:
+  Version bump redis-py to 2.7.6.
+
+*redis-py-2.7.5 (22 May 2013)
+
+  22 May 2013; Patrick Lauer <patrick@gentoo.org> +redis-py-2.7.5.ebuild:
+  Bump
+
+  14 May 2013; Agostino Sarubbo <ago@gentoo.org> redis-py-2.7.2-r1.ebuild:
+  Stable for x86, wrt bug #469662
+
+  14 May 2013; Agostino Sarubbo <ago@gentoo.org> redis-py-2.7.2-r1.ebuild:
+  Stable for amd64, wrt bug #469662
+
+*redis-py-2.7.4 (13 May 2013)
+
+  13 May 2013; Dirkjan Ochtman <djc@gentoo.org> +redis-py-2.7.4.ebuild:
+  Version bump redis-py to 2.7.4.
+
+  13 May 2013; Dirkjan Ochtman <djc@gentoo.org> -redis-py-2.4.12.ebuild,
+  -redis-py-2.4.13.ebuild, -redis-py-2.7.2.ebuild:
+  Remove old versions.
+
+  13 May 2013; Dirkjan Ochtman <djc@gentoo.org> metadata.xml:
+  Set remote-id.
+
+  23 Jan 2013; Michał Górny <mgorny@gentoo.org> redis-py-2.7.2-r1.ebuild:
+  Fix installing "tests" module.
+
+*redis-py-2.7.2-r1 (13 Jan 2013)
+
+  13 Jan 2013; Michał Górny <mgorny@gentoo.org> +redis-py-2.7.2-r1.ebuild:
+  Migrate to distutils-r1. Disallow the test server from using TCP sockets.
+  Disable the tests which require TCP sockets.
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org> redis-py-2.7.1.ebuild:
+  Stable for x86, wrt bug #449414
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org> redis-py-2.7.1.ebuild:
+  Stable for amd64, wrt bug #449414
+
+*redis-py-2.7.2 (31 Dec 2012)
+
+  31 Dec 2012; Dirkjan Ochtman <djc@gentoo.org> +redis-py-2.7.2.ebuild:
+  Version bump to 2.7.2.
+
+  11 Oct 2012; Michael Sterrett <mr_bones_@gentoo.org> redis-py-2.7.1.ebuild:
+  add missing test to IUSE
+
+  10 Oct 2012; Dirkjan Ochtman <djc@gentoo.org> -redis-py-2.4.10.ebuild,
+  -redis-py-2.4.11.ebuild:
+  Remove old versions.
+
+*redis-py-2.7.1 (10 Oct 2012)
+
+  10 Oct 2012; Dirkjan Ochtman <djc@gentoo.org> +redis-py-2.7.1.ebuild:
+  Version bump to 2.7.1 (bug 437030, thanks to Johan Bergström).
+
+*redis-py-2.4.13 (28 Jun 2012)
+
+  28 Jun 2012; Patrick Lauer <patrick@gentoo.org> +redis-py-2.4.13.ebuild:
+  Bump
+
+  21 Jun 2012; Jeff Horelick <jdhore@gentoo.org> redis-py-2.4.12.ebuild:
+  marked x86 per bug 422069
+
+  20 Jun 2012; Agostino Sarubbo <ago@gentoo.org> redis-py-2.4.12.ebuild:
+  Stable for amd64, wrt bug #422069
+
+  21 May 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> redis-py-2.4.11.ebuild:
+  x86 stable wrt bug #415877
+
+  14 May 2012; Agostino Sarubbo <ago@gentoo.org> redis-py-2.4.11.ebuild:
+  Stable for amd64, wrt bug #415877
+
+  08 May 2012; Dirkjan Ochtman <djc@gentoo.org> -redis-py-2.4.9.ebuild:
+  Remove old version.
+
+*redis-py-2.4.12 (08 May 2012)
+
+  08 May 2012; Dirkjan Ochtman <djc@gentoo.org> +redis-py-2.4.12.ebuild:
+  Version bump to 2.4.12.
+
+  24 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> redis-py-2.4.10.ebuild:
+  x86 stable wrt bug #404107
+
+  17 Feb 2012; Agostino Sarubbo <ago@gentoo.org> redis-py-2.4.10.ebuild:
+  Stable for amd64, wrt bug #404107
+
+  16 Feb 2012; Dirkjan Ochtman <djc@gentoo.org> metadata.xml:
+  Remove myself as a maintainer.
+
+*redis-py-2.4.11 (16 Feb 2012)
+
+  16 Feb 2012; Dirkjan Ochtman <djc@gentoo.org> +redis-py-2.4.11.ebuild:
+  Version bump to 2.4.11.
+
+  04 Feb 2012; Sven Wegener <swegener@gentoo.org> redis-py-2.4.9.ebuild,
+  redis-py-2.4.10.ebuild:
+  Require at least python 2.5.
+
+*redis-py-2.4.10 (30 Nov 2011)
+
+  30 Nov 2011; Dirkjan Ochtman <djc@gentoo.org> -redis-py-2.2.4.ebuild,
+  -redis-py-2.4.1.ebuild, -redis-py-2.4.5.ebuild, +redis-py-2.4.10.ebuild:
+  Remove old versions, bump to 2.4.10.
+
+  30 Nov 2011; Dirkjan Ochtman <djc@gentoo.org> -redis-py-2.2.4.ebuild,
+  -redis-py-2.4.1.ebuild, -redis-py-2.4.5.ebuild:
+  Remove old versions.
+
+  13 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> redis-py-2.4.9.ebuild:
+  x86 stable wrt bug #386045
+
+  09 Oct 2011; Markos Chandras <hwoarang@gentoo.org> redis-py-2.4.9.ebuild:
+  Stable on amd64 wrt bug #386045
+
+*redis-py-2.4.9 (05 Sep 2011)
+
+  05 Sep 2011; Dirkjan Ochtman <djc@gentoo.org> +redis-py-2.4.9.ebuild:
+  Version bump to 2.4.9.
+
+*redis-py-2.4.5 (04 Jul 2011)
+
+  04 Jul 2011; Dirkjan Ochtman <djc@gentoo.org> +redis-py-2.4.5.ebuild:
+  Version bump to 2.4.5.
+
+*redis-py-2.4.1 (06 Jun 2011)
+
+  06 Jun 2011; Dirkjan Ochtman <djc@gentoo.org> +redis-py-2.4.1.ebuild:
+  Version bump to 2.4.1.
+
+  06 Jun 2011; Dirkjan Ochtman <djc@gentoo.org> -redis-py-2.2.2.ebuild:
+  Remove old version.
+
+  24 May 2011; Markus Meier <maekke@gentoo.org> redis-py-2.2.4.ebuild:
+  x86 stable, bug #365535
+
+  02 May 2011; Markos Chandras <hwoarang@gentoo.org> redis-py-2.2.4.ebuild:
+  Stable on amd64 wrt bug #365535
+
+  26 Mar 2011; Dirkjan Ochtman <djc@gentoo.org> redis-py-2.2.2.ebuild,
+  redis-py-2.2.4.ebuild:
+  Prevent collision with redis tarball (bug 360495).
+
+*redis-py-2.2.4 (17 Mar 2011)
+
+  17 Mar 2011; Dirkjan Ochtman <djc@gentoo.org> +redis-py-2.2.4.ebuild:
+  Version bump to 2.2.4.
+
+*redis-py-2.2.2 (04 Mar 2011)
+
+  04 Mar 2011; Dirkjan Ochtman <djc@gentoo.org> +redis-py-2.2.2.ebuild,
+  +metadata.xml:
+  Initial version of redis-py.

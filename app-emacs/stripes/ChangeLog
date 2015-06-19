@@ -1,0 +1,49 @@
+# ChangeLog for app-emacs/stripes
+# Copyright 2000-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/stripes/ChangeLog,v 1.15 2015/01/27 19:30:44 ulm Exp $
+
+  27 Jan 2015; Ulrich Müller <ulm@gentoo.org> stripes-0.2-r1.ebuild:
+  Update HOMEPAGE, bug 537928.
+
+  12 Feb 2014; Ulrich Müller <ulm@gentoo.org> stripes-0.2-r1.ebuild,
+  +files/50stripes-gentoo.el, -files/51stripes-gentoo.el:
+  Update ebuild to EAPI 5. Specify LICENSE more precisely.
+
+  18 Oct 2007; Ulrich Mueller <ulm@gentoo.org> stripes-0.2-r1.ebuild:
+  amd64 stable, bug #195512.
+
+  07 Jun 2007; Fabian Groffen <grobian@gentoo.org> stripes-0.2-r1.ebuild:
+  Dropped ppc-macos keyword, see you in prefix.
+
+  27 May 2007; Ulrich Mueller <ulm@gentoo.org> -files/50stripes-gentoo.el,
+  -stripes-0.2.ebuild:
+  Remove old.
+
+  20 May 2007; Christian Faulhammer <opfer@gentoo.org>
+  stripes-0.2-r1.ebuild:
+  stable x86, bug 179170
+
+*stripes-0.2-r1 (20 Apr 2007)
+
+  20 Apr 2007; Ulrich Mueller <ulm@gentoo.org> +files/51stripes-gentoo.el,
+  +stripes-0.2-r1.ebuild:
+  Use autoload instead of require.
+
+  06 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  09 Sep 2005; Aron Griffis <agriffis@gentoo.org> stripes-0.2.ebuild:
+  Mark 0.2 stable on alpha
+
+  28 Aug 2005; Olivier Crête <tester@gentoo.org> stripes-0.2.ebuild:
+  Marked ~amd64, thanks to AT AJ Armstrong <aja@gentoo.org> for testing
+
+  01 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> stripes-0.2.ebuild:
+  Stable on x86. Added to ~alpha and ~ppc-macos.
+
+*stripes-0.2 (11 Nov 2003)
+
+  11 Nov 2003; <mkennedy@gentoo.org> metadata.xml, stripes-0.2.ebuild,
+  files/50stripes-gentoo.el:
+  initial import. ebuild contributed by Matthew Kennedy <mkennedy@gentoo.org>
+

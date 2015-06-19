@@ -1,0 +1,58 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-dns/ddclient/files/ddclient.initd-r3,v 1.1 2011/11/13 16:42:02 titanofold Exp $
+
+if [ -d /run ] ; then
+	PIDFILE=${PIDFILE:-/run/ddclient/ddclient.pid}
+else
+	PIDFILE=${PIDFILE:-/var/run/ddclient/ddclient.pid}
+fi
+
+depend() {
+	before cron
+	need net
+	use dns logger squid
+}
+
+checkconfig() {
+	local conf="/etc/ddclient/ddclient.conf"
+
+	if [ -e "${conf}" ] ; then
+		if [ -n "$(find /etc/ddclient -maxdepth 1 -name ddclient.conf -perm +0044)" ] ; then
+			eerror "${conf} must not be world or group readable. Try:"
+			eerror "    chmod 600 ${conf}"
+			eerror "    chown ddclient:ddclient ${conf}"
+			return 1
+		fi
+	else
+		eerror "${conf} is needed to run ddclient"
+		eerror "There is a sample file in /etc/ddclient/"
+		return 1
+	fi
+}
+
+start() {
+	checkconfig || return 1
+
+	local piddir=$(dirname ${PIDFILE})
+	if [ ! -d ${piddir} ] ; then
+		ebegin "Making ${piddir}"
+		mkdir -p ${piddir}
+		eend $?
+		ebegin "Changing permissions of ${piddir}"
+		chown ddclient:ddclient ${piddir}
+		eend $?
+	fi
+
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --user ddclient --exec /usr/sbin/ddclient \
+		--name ddclient --pidfile ${PIDFILE} -- -pid=${PIDFILE}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --signal USR1 --pidfile ${PIDFILE}
+	eend $?
+}

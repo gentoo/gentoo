@@ -1,0 +1,30 @@
+From ae20dbd7f2ef2810d3150e870ece6f5b7278f676 Mon Sep 17 00:00:00 2001
+From: slis <lis.slawek@gmail.com>
+Date: Mon, 17 Mar 2014 07:48:19 +0100
+Subject: [PATCH 2/2] Fix for non-existing libraries version
+ (https://bugs.gentoo.org/show_bug.cgi?id=504654#c5)
+
+---
+ pym/gentoolkit/revdep_rebuild/analyse.py | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/pym/gentoolkit/revdep_rebuild/analyse.py b/pym/gentoolkit/revdep_rebuild/analyse.py
+index d7b210b..bd1b6b7 100644
+--- a/pym/gentoolkit/revdep_rebuild/analyse.py
++++ b/pym/gentoolkit/revdep_rebuild/analyse.py
+@@ -185,7 +185,11 @@ class LibCheck(object):
+ 			scanned_files = self.scanned_files
+ 		found_libs = {}
+ 		for bits in self.searchbits:
+-			scanned = scanned_files[bits]
++			try:
++				scanned = scanned_files[bits]
++			except KeyError:
++				self.logger.debug('There are no %s-bit libraries'%bits) 
++				continue
+ 			self.logger.debug(self.smsg % bits)
+ 			self.setlibs(sorted(scanned), bits)
+ 			for soname, filepaths in scanned.items():
+-- 
+1.9.1
+

@@ -1,0 +1,97 @@
+--- pyfits-3.2.orig/setup.cfg	2014-02-05 14:11:01.244895447 -0800
++++ pyfits-3.2/setup.cfg	2014-02-05 14:28:44.175030178 -0800
+@@ -36,91 +36,12 @@
+ 
+ [extension=pyfits.compression]
+ sources = 
+-	cextern/cfitsio/adler32.c
+-	cextern/cfitsio/buffers.c
+-	cextern/cfitsio/cfileio.c
+-	cextern/cfitsio/checksum.c
+-	cextern/cfitsio/crc32.c
+-	cextern/cfitsio/deflate.c
+-	cextern/cfitsio/drvrfile.c
+-	cextern/cfitsio/drvrgsiftp.c
+-	cextern/cfitsio/drvrmem.c
+-	cextern/cfitsio/drvrnet.c
+-	cextern/cfitsio/drvrsmem.c
+-	cextern/cfitsio/editcol.c
+-	cextern/cfitsio/edithdu.c
+-	cextern/cfitsio/eval_f.c
+-	cextern/cfitsio/eval_l.c
+-	cextern/cfitsio/eval_y.c
+-	cextern/cfitsio/fitscore.c
+-	cextern/cfitsio/fits_hcompress.c
+-	cextern/cfitsio/fits_hdecompress.c
+-	cextern/cfitsio/getcolb.c
+-	cextern/cfitsio/getcol.c
+-	cextern/cfitsio/getcold.c
+-	cextern/cfitsio/getcole.c
+-	cextern/cfitsio/getcoli.c
+-	cextern/cfitsio/getcolj.c
+-	cextern/cfitsio/getcolk.c
+-	cextern/cfitsio/getcoll.c
+-	cextern/cfitsio/getcolsb.c
+-	cextern/cfitsio/getcols.c
+-	cextern/cfitsio/getcolui.c
+-	cextern/cfitsio/getcoluj.c
+-	cextern/cfitsio/getcoluk.c
+-	cextern/cfitsio/getkey.c
+-	cextern/cfitsio/group.c
+-	cextern/cfitsio/grparser.c
+-	cextern/cfitsio/histo.c
+-	cextern/cfitsio/imcompress.c
+-	cextern/cfitsio/infback.c
+-	cextern/cfitsio/inffast.c
+-	cextern/cfitsio/inflate.c
+-	cextern/cfitsio/inftrees.c
+-	cextern/cfitsio/iraffits.c
+-	cextern/cfitsio/modkey.c
+-	cextern/cfitsio/pliocomp.c
+-	cextern/cfitsio/putcolb.c
+-	cextern/cfitsio/putcol.c
+-	cextern/cfitsio/putcold.c
+-	cextern/cfitsio/putcole.c
+-	cextern/cfitsio/putcoli.c
+-	cextern/cfitsio/putcolj.c
+-	cextern/cfitsio/putcolk.c
+-	cextern/cfitsio/putcoll.c
+-	cextern/cfitsio/putcolsb.c
+-	cextern/cfitsio/putcols.c
+-	cextern/cfitsio/putcolu.c
+-	cextern/cfitsio/putcolui.c
+-	cextern/cfitsio/putcoluj.c
+-	cextern/cfitsio/putcoluk.c
+-	cextern/cfitsio/putkey.c
+-	cextern/cfitsio/quantize.c
+-	cextern/cfitsio/region.c
+-	cextern/cfitsio/ricecomp.c
+-	cextern/cfitsio/scalnull.c
+-	cextern/cfitsio/swapproc.c
+-	cextern/cfitsio/trees.c
+-	cextern/cfitsio/uncompr.c
+-	cextern/cfitsio/wcssub.c
+-	cextern/cfitsio/wcsutil.c
+-	cextern/cfitsio/zcompress.c
+-	cextern/cfitsio/zuncompress.c
+-	cextern/cfitsio/zutil.c
+ 	src/compressionmodule.c
+ include_dirs = 
+ 	numpy
+-	cextern/cfitsio
+-extra_compile_args = 
+-	-Wno-unused-variable
+-	-Wno-parentheses
+-	-Wno-uninitialized
+-	-Wno-format
+-	-Wno-strict-prototypes
+-	-Wno-unused
+-	-Wno-comments
+-	-Wno-switch
+-optional = True
++libraries =
++	cfitsio
++optional = False
+ fail_message = 
+ 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ 	Failed to build PyFITS tile compression support.  PyFITS will still

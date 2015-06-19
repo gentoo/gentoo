@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>accessibility</herd>
+	<herd>java</herd>
+	<use>
+		<flag name="jsapi">build Java Speech API (JSAPI)</flag>
+		<flag name="mbrola">Adds support for mbrola voices</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">freetts</remote-id>
+	</upstream>
+</pkgmetadata>

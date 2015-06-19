@@ -1,0 +1,47 @@
+diff -urN gpscorrelate-1.6.1.old/Makefile gpscorrelate-1.6.1/Makefile
+--- gpscorrelate-1.6.1.old/Makefile	2011-06-08 13:51:06.000000000 +0200
++++ gpscorrelate-1.6.1/Makefile	2011-06-08 14:13:18.000000000 +0200
+@@ -4,11 +4,15 @@
+ 
+ COBJS    = main-command.o unixtime.o gpx-read.o correlate.o exif-gps.o
+ GOBJS    = main-gui.o gui.o unixtime.o gpx-read.o correlate.o exif-gps.o
+-CFLAGS   = -Wall
+-override CFLAGS += $(shell pkg-config --cflags libxml-2.0 gtk+-2.0) -I/usr/include/exiv2
+-OFLAGS   = -Wall
+-override OFLAGS += $(shell pkg-config --libs libxml-2.0 gtk+-2.0) -lm -lexiv2
+-prefix   = /usr/local
++CFLAGS += $(shell pkg-config --cflags libxml-2.0) -I/usr/include/exiv2
++CXXFLAGS += $(shell pkg-config --cflags libxml-2.0) -I/usr/include/exiv2
++CLIBS = $(shell pkg-config --libs libxml-2.0) -lm -lexiv2 -lstdc++
++ifdef BUILD_GUI
++CXXFLAGS += $(shell pkg-config --cflags gtk+-2.0)
++CFLAGS += $(shell pkg-config --cflags gtk+-2.0)
++CLIBS += $(shell pkg-config --libs gtk+-2.0)
++endif
++prefix   ?= /usr/local
+ bindir   = $(prefix)/bin
+ datadir  = $(prefix)/share
+ mandir   = $(datadir)/man
+@@ -18,16 +22,16 @@
+ all:	gpscorrelate gpscorrelate-gui gpscorrelate.1
+ 
+ gpscorrelate: $(COBJS)
+-	g++ $(OFLAGS) -o $@ $(COBJS)
++	$(CXX) $(LDFLAGS) $(COBJS) $(CLIBS) -o $@
+ 
+ gpscorrelate-gui: $(GOBJS)
+-	g++ $(OFLAGS) -o $@ $(GOBJS)
++	$(CXX) $(LDFLAGS) $(GOBJS) $(CLIBS) -o $@
+ 
+-.c.o:
+-	gcc $(CFLAGS) -c -o $*.o $<
++%.o: %.c
++	$(CC) -c -o $@ $< $(CFLAGS)
+ 
+-.cpp.o:
+-	g++ $(CFLAGS) -c -o $*.o $<
++%.o: %.cpp $(DEPS)
++	$(CXX) -c -o $@ $< $(CXXFLAGS)
+ 
+ clean:
+ 	rm -f *.o gpscorrelate{,.exe} gpscorrelate-gui{,.exe}

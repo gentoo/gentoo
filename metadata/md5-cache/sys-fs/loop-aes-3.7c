@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup
+DEPEND=app-crypt/loop-aes-losetup kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=Linux kernel module to encrypt local file systems and disk partitions with AES cipher
+EAPI=5
+HOMEPAGE=http://loop-aes.sourceforge.net/loop-AES.README
+IUSE=cpu_flags_x86_aes extra-ciphers keyscrub cpu_flags_x86_padlock kernel_linux
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=mirror://sourceforge/loop-aes/loop-AES-v3.7c.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	linux-info	8cbc678e083c23e4ad546ca6509cf304	linux-mod	101302d4b7b694ea9622bbffb187d0de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=bdaa343fd4879dedd84a9deaf3cf9215

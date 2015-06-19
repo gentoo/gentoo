@@ -1,0 +1,127 @@
+# ChangeLog for sci-mathematics/rstudio
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/rstudio/ChangeLog,v 1.20 2015/04/18 15:55:11 pacho Exp $
+
+  18 Apr 2015; Pacho Ramos <pacho@gentoo.org> rstudio-0.98.490-r1.ebuild:
+  x86 stable wrt bug #516464
+
+  28 Feb 2015; Mark Wright <gienah@gentoo.org>
+  +files/rstudio-0.98.1091-boost-1.57.patch, rstudio-0.97.336.ebuild,
+  rstudio-0.97.551.ebuild, rstudio-0.98.1028.ebuild, rstudio-0.98.1091.ebuild,
+  rstudio-0.98.490-r1.ebuild, rstudio-0.98.490.ebuild, rstudio-0.98.932.ebuild,
+  rstudio-0.98.953.ebuild:
+  Patch rstudio-0.98.1091 to build with boost 1.57
+
+*rstudio-0.98.1091 (06 Dec 2014)
+
+  06 Dec 2014; Mark Wright <gienah@gentoo.org> +files/rsession.conf,
+  +files/rstudio-0.98.1091-pandoc.patch, +files/rstudio-server.conf,
+  +files/rstudio-server.initd, +rstudio-0.98.1091.ebuild,
+  -files/rstudio-rserver.initd, -rstudio-0.97.318.ebuild,
+  rstudio-0.97.336.ebuild, rstudio-0.97.551.ebuild, rstudio-0.98.1028.ebuild,
+  rstudio-0.98.490-r1.ebuild, rstudio-0.98.490.ebuild, rstudio-0.98.932.ebuild,
+  rstudio-0.98.953.ebuild:
+  Bump rstudio to 0.98.1091. Fix Bug 519290 sci-mathematics/rstudio-0.98.490 -
+  rstudio-server start: /usr/bin/rstudio-server: 1: eval: /etc/init.d/rstudio-
+  server: not found, thanks to Franz Fellner for reporting, Adam Tygart and
+  Franz Fellner for suggesting the fix, Silvio for testing. Fix Bug 522196 -
+  sci-mathematics/rstudio lack of server part and two more conf files, thanks to
+  Silvio for reporting and providing the conf files. Fix Bug 523296 - sci-
+  mathematics/rstudio-0.98-1028 with dev-libs/boost-1.56.0 -
+  .../work/rstudio-0.98.1028/src/cpp/core/Assert.cpp:40:10: error:
+  boost::core::log has not been declared. paxmark m rstudio for Gentoo Hardened.
+  Add missing dependencies app-text/pandoc and dev-haskell/pandoc-citeproc to
+  rstudio-0.98.1028.ebuild. Remove obsolete rstudio-0.97.318.ebuild, as the this
+  failed to build in my tests.
+
+  29 Nov 2014; Mark Wright <gienah@gentoo.org> metadata.xml:
+  Set the maintainer.
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+  30 Aug 2014; Chema Alonso <nimiux@gentoo.org> rstudio-0.98.490-r1.ebuild:
+  Stable for amd64 wrt bug #516464
+
+*rstudio-0.98.1028 (27 Aug 2014)
+
+  27 Aug 2014; Julian Ospald <hasufell@gentoo.org> +rstudio-0.98.1028.ebuild:
+  version bump
+
+*rstudio-0.98.490-r1 (27 Aug 2014)
+
+  27 Aug 2014; Julian Ospald <hasufell@gentoo.org> +rstudio-0.98.490-r1.ebuild:
+  rm server support wrt #519290
+
+  26 Jul 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> rstudio-0.98.490.ebuild:
+  x86 stable wrt bug #516464
+
+*rstudio-0.98.953 (04 Jul 2014)
+
+  04 Jul 2014; Julian Ospald <hasufell@gentoo.org> +rstudio-0.98.953.ebuild:
+  another version bump
+
+*rstudio-0.98.932 (04 Jul 2014)
+
+  04 Jul 2014; Julian Ospald <hasufell@gentoo.org> +rstudio-0.98.932.ebuild,
+  +files/rstudio-0.98.932-pandoc.patch, +files/rstudio-0.98.932-paths.patch:
+  version bump wrt #513862
+
+  23 Dec 2013; Julian Ospald <hasufell@gentoo.org> rstudio-0.98.490.ebuild:
+  fix build with +server wrt #494362
+
+*rstudio-0.98.490 (14 Dec 2013)
+
+  14 Dec 2013; Julian Ospald <hasufell@gentoo.org>
+  +files/rstudio-0.98.490-linker_flags.patch,
+  +files/rstudio-0.98.490-paths.patch, +files/rstudio-0.98.490-prefs.patch,
+  +rstudio-0.98.490.ebuild:
+  version bump
+
+*rstudio-0.97.551 (16 Jul 2013)
+
+  16 Jul 2013; Julian Ospald <hasufell@gentoo.org> +rstudio-0.97.551.ebuild,
+  +files/rstudio-0.97.551-boost-1.53.patch,
+  +files/rstudio-0.97.551-linker_flags.patch,
+  +files/rstudio-0.97.551-paths.patch, +files/rstudio-0.97.551-prefs.patch:
+  version bump
+
+  15 Jul 2013; Julian Ospald <hasufell@gentoo.org> rstudio-0.97.336.ebuild,
+  +files/rstudio-0.97.336-boost-1.53.patch:
+  fix building with boost-1.53 wrt #476274
+
+*rstudio-0.97.336 (18 Apr 2013)
+
+  18 Apr 2013; Julian Ospald <hasufell@gentoo.org> +rstudio-0.97.336.ebuild,
+  +files/rstudio-0.97.336-linker_flags.patch,
+  +files/rstudio-0.97.336-paths.patch, +files/rstudio-0.97.336-prefs.patch:
+  version bump wrt #464880
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> rstudio-0.97.318.ebuild:
+  Move Qt dependencies to the new category
+
+  17 Feb 2013; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  set correct maintainer
+
+*rstudio-0.97.318 (16 Feb 2013)
+
+  16 Feb 2013; Julian Ospald <hasufell@gentoo.org> +rstudio-0.97.318.ebuild,
+  +files/rstudio-0.97.318-linker_flags.patch,
+  +files/rstudio-0.97.318-paths.patch, +files/rstudio-0.97.318-prefs.patch,
+  +files/rstudio-rserver.initd, +metadata.xml:
+  initial import from science overlay.
+
+*rstudio-0.97.237 (09 Dec 2012)
+
+  09 Dec 2012; Denis Dupeyron <calchan@gentoo.org> +rstudio-0.97.237.ebuild,
+  +files/rstudio-0.97.237-prefs.patch:
+  sci-mathematics/rstudio: version bump. The desktop patch isn't needed any
+  longer. Updated prefs patch. Updated gwt version.
+
+*rstudio-0.96.316 (29 Jun 2012)
+
+  29 Jun 2012; Sebastien Fabbro <fabbros@gentoo.org> +rstudio-0.96.316.ebuild,
+  +files/rstudio-0.96.316-linker_flags.patch,
+  +files/rstudio-0.96.316-paths.patch, +files/rstudio-0.96.316-prefs.patch,
+  +.Rhistory, +files/rstudio-rserver.initd, +metadata.xml:
+  Initial import. Ebuild inspired from Eric Johnson and others, bug #365595

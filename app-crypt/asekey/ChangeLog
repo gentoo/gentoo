@@ -1,0 +1,57 @@
+# ChangeLog for app-crypt/asekey
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/asekey/ChangeLog,v 1.14 2014/07/30 19:28:45 ssuominen Exp $
+
+  30 Jul 2014; Samuli Suominen <ssuominen@gentoo.org> asekey-3.7.ebuild:
+  Use shorter get_udevdir() instead of the longer deprecated udev_get_udevdir()
+  version.
+
+  05 Jan 2013; Alon Bar-Lev <alonbl@gentoo.org> -asekey-3.4.ebuild:
+  Remove non-working with current in-tree pcsc-lite ebuilds
+
+*asekey-3.7 (05 Jan 2013)
+
+  05 Jan 2013; Alon Bar-Lev <alonbl@gentoo.org> +asekey-3.7.ebuild,
+  +files/asekey-3.7-bundle.patch:
+  Version bump, per bug#355363, thanks to Petr Pisar
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> asekey-3.4.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  26 Dec 2010; Diego E. Pettenò <flameeyes@gentoo.org> -asekey-3.3.ebuild:
+  Wishfully remove 3.3 version.
+
+  16 Jul 2010; Tomáš Chvátal <scarabeus@gentoo.org> metadata.xml:
+  Maintainer should not be the herd. Remove wrong entry from metadata. Thx
+  to leio and his grumpy for reporting.
+
+  14 Oct 2009; Mark Loeser <halcy0n@gentoo.org> asekey-3.3.ebuild:
+  QA fixes; remove useless dodoc LICENSE
+
+  16 May 2009; Robin H. Johnson <robbat2@gentoo.org> asekey-3.3.ebuild,
+  asekey-3.4.ebuild:
+  Migration to virtual/libusb. Verified by code inspection.
+
+*asekey-3.4 (10 Apr 2009)
+
+  10 Apr 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +asekey-3.4.ebuild:
+  Version bump.
+
+  01 Jun 2008; Daniel Black <dragonheart@gentoo.org> asekey-3.3.ebuild:
+  QA - add IUSE - bug #224349 thanks Marek Miller
+
+  15 Feb 2007; Alon Bar-Lev <alonbl@gentoo.org> asekey-3.3.ebuild:
+  Fix postrm for multi libraries
+
+  14 Feb 2007; Alon Bar-Lev <alonbl@gentoo.org> asekey-3.3.ebuild:
+  Fixup for pcsc-lite-1.4
+
+  24 Jan 2007; Marius Mauch <genone@gentoo.org> asekey-3.3.ebuild:
+  Replacing einfo with elog
+
+*asekey-3.3 (16 Dec 2006)
+
+  16 Dec 2006; Alon Bar-Lev <alonbl@gentoo.org> +metadata.xml,
+  +asekey-3.3.ebuild:
+  Initial import

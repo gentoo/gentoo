@@ -1,0 +1,22 @@
+diff -urN ptpd-2.3.0.old/src/dep/ntpengine/ntpdcontrol.c ptpd-2.3.0.new/src/dep/ntpengine/ntpdcontrol.c
+--- ptpd-2.3.0.old/src/dep/ntpengine/ntpdcontrol.c	2013-11-22 17:17:57.000000000 +0100
++++ ptpd-2.3.0.new/src/dep/ntpengine/ntpdcontrol.c	2014-10-08 01:37:09.000000000 +0200
+@@ -74,7 +74,7 @@
+ 	if(!options->enableEngine)
+ 	    return FALSE;
+ 
+-	memset(control, 0, sizeof(control));
++	memset(control, 0, sizeof(*control));
+ 
+ 	if(!hostLookup(options->hostAddress, &control->serverAddress)) {
+                 control->serverAddress = 0;
+@@ -236,8 +236,7 @@
+ 	int	maclen;
+ 	static char *key;
+ 
+-	key=malloc(21);
+-	memset (key, 0, sizeof(key));
++	key=calloc(21,sizeof(char));
+ 	strncpy(key,options->key,20);
+ 
+ 	memset(&qpkt, 0, sizeof(qpkt));

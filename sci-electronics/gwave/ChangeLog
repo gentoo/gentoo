@@ -1,0 +1,162 @@
+# ChangeLog for sci-electronics/gwave
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/gwave/ChangeLog,v 1.33 2015/06/07 09:56:50 tomjbe Exp $
+
+  07 Jun 2015; Thomas Beierlein <tomjbe@gentoo.org> gwave-20090213-r1.ebuild:
+  Drop 'nonfatal dodoc' (Bug #551188)
+
+  17 Oct 2013; Thomas Beierlein <tomjbe@gentoo.org> gwave-20090213-r1.ebuild:
+  Fix missing -lX11 (bug #487934). Thanks M. Rowell for reporting
+
+  12 Mar 2013; Thomas Beierlein <tomjbe@gentoo.org> gwave-20090213-r1.ebuild:
+  Fix Homepage
+
+  08 Jan 2012; Thomas Beierlein <tomjbe@gentoo.org> -gwave-20031224.ebuild,
+  -gwave-20051222.ebuild, -gwave-20060606.ebuild, -gwave-20080127.ebuild,
+  -gwave-20090213.ebuild:
+  Cleanup old
+
+  28 Jun 2011; Brent Baude <ranger@gentoo.org> gwave-20090213-r1.ebuild:
+  Marking gwave-20090213-r1 ppc for bug 305031 
+
+  02 Mar 2011; Justin Lecher <jlec@gentoo.org> gwave-20031224.ebuild,
+  gwave-20051222.ebuild:
+  Correct Slots for gtk 3 introduction to tree
+
+  07 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gwave-20090213-r1.ebuild:
+  x86 stable wrt bug #305031
+
+  24 Jun 2010; Christoph Mende <angelos@gentoo.org>
+  gwave-20090213-r1.ebuild:
+  Stable on amd64 wrt bug #305031
+
+*gwave-20090213-r1 (30 May 2010)
+
+  30 May 2010; Thomas Beierlein <tomjbe@gentoo.org>
+  +gwave-20090213-r1.ebuild, +files/gwave-20090213-as-needed.patch:
+  Fix for bug #248351
+
+  17 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gwave-20090213.ebuild:
+  x86 stable wrt bug #305031
+
+  09 Mar 2010; Jonathan Callen <abcd@gentoo.org> gwave-20090213.ebuild:
+  QA: When not using an absolute path, you MUST NOT use a file extension
+  (.png, .svg, or .xpm) on the icon name for make_desktop_entry
+
+*gwave-20090213 (29 Nov 2009)
+
+  29 Nov 2009; Denis Dupeyron <calchan@gentoo.org> +gwave-20090213.ebuild:
+  gwave2 is finally working, thanks to Ivan Filgueiras (bug #293397). With
+  help from Rafael Martins.
+
+  14 Nov 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -gwave-20070514.ebuild:
+  QA: Drop old masked version since newer is around.
+
+  04 Oct 2009; Samuli Suominen <ssuominen@gentoo.org> gwave-20051222.ebuild,
+  gwave-20060606.ebuild:
+  Replace filtering of -Wl,--as-needed with function from flag-o-matic
+  eclass.
+
+  30 Apr 2008; Denis Dupeyron <calchan@gentoo.org> gwave-20080127.ebuild:
+  Fixed SRC_URI, bug #219846.
+
+*gwave-20080127 (20 Apr 2008)
+
+  20 Apr 2008; Denis Dupeyron <calchan@gentoo.org> +gwave-20080127.ebuild:
+  Version bump, thanks to Fabio Rossi (bug #216527).
+
+  25 Nov 2007; Denis Dupeyron <calchan@gentoo.org> gwave-20070514.ebuild:
+  Removed ~amd64 again as the fix for guile-gnome-platform doesn't appear to
+  be working so well.
+
+  25 Nov 2007; Denis Dupeyron <calchan@gentoo.org> gwave-20070514.ebuild:
+  Fixed SRC_URI, thanks to Samuli Suominen.
+
+  25 Nov 2007; Denis Dupeyron <calchan@gentoo.org> gwave-20070514.ebuild:
+  Re-keyworded ~amd64 now that dev-scheme/guile-gnome-platform works on that
+  architecture.
+
+*gwave-20070514 (25 Nov 2007)
+
+  25 Nov 2007; Denis Dupeyron <calchan@gentoo.org> +gwave-20070514.ebuild:
+  Version bump with guile-1.8 support, thanks to Fabio Rossi (bug #195072).
+  Fixed linking with --as-needed instead of filtering it.
+
+  22 Jun 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  gwave-20031224.ebuild, gwave-20051222.ebuild:
+  Depend on guile-gtk 1.2 series only, now that 2.x is out. Also change one
+  >=gtk+-1.2.10 dep to =gtk+-1.2*.
+
+*gwave-20060606 (06 May 2007)
+
+  06 May 2007; Denis Dupeyron <calchan@gentoo.org> +gwave-20060606.ebuild:
+  Version bump.
+
+  03 Mar 2007; Denis Dupeyron <calchan@gentoo.org> gwave-20031224.ebuild,
+  gwave-20051222.ebuild:
+  Fixed guile dependency, thanks to Paul Taylor and Benoît-Pierre Demaine
+  (bug #163411).
+
+  10 Jan 2007; Piotr Jaroszyński <peper@gentoo.org>
+  files/digest-gwave-20031224, Manifest:
+  Fix Manifest.
+
+  10 Jan 2007; <marijn@gentoo.org> gwave-20051222.ebuild:
+  Dependency update: dev-util/guile -> dev-scheme/guile.
+
+  10 Jan 2007; <marijn@gentoo.org> gwave-20031224.ebuild:
+  Dependency update: dev-util/guile -> dev-scheme/guile.
+
+*gwave-20051222 (08 Jul 2006)
+
+  08 Jul 2006; Denis Dupeyron <calchan@gentoo.org> +gwave-20051222.ebuild:
+  Version bump.
+
+  13 Mar 2006; Scott Stoddard <deltacow@gentoo.org> gwave-20031224.ebuild:
+  Added ~amd64.
+
+  02 Oct 2005; Olivier Fisette <ribosome@gentoo.org>
+  -files/gwave-20030804.gcc33.patch.bz2, metadata.xml,
+  -gwave-20020122.ebuild, -gwave-20030804.ebuild, gwave-20031224.ebuild:
+  Removed obsolete versions. Ebuild clean-up.
+
+  02 Oct 2005; Mark Loeser <halcy0n@gentoo.org> gwave-20031224.ebuild:
+  Stable on x86.
+
+  17 May 2005; Michael Hanselmann <hansmi@gentoo.org> gwave-20031224.ebuild:
+  Stable on ppc.
+
+*gwave-20031224 (27 Dec 2004)
+
+  27 Dec 2004; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +files/gwave-20030804.gcc33.patch.bz2, +gwave-20020122.ebuild,
+  +gwave-20030804.ebuild, +gwave-20031224.ebuild:
+  Moved from app-sci/gwave to sci-electronics/gwave.
+
+  05 Jun 2004; David Holm <dholm@gentoo.org> gwave-20031224.ebuild:
+  Added to ~ppc.
+
+  25 Apr 2004; Aron Griffis <agriffis@gentoo.org> gwave-20020122.ebuild:
+  Add die following econf for bug 48950
+
+  19 Apr 2004; Patrick Kursawe <phosphan@gentoo.org> gwave-20020122.ebuild,
+  gwave-20030804.ebuild, gwave-20031224.ebuild:
+  Added IUSE
+
+*gwave-20031224 (01 Feb 2004)
+
+  01 Feb 2004; <plasmaroo@gentoo.org> gwave-20031224.ebuild:
+  Version bumped.
+
+*gwave-20030804 (28 Nov 2003)
+
+  28 Nov 2003; <plasmaroo@gentoo.org> gwave-20030804.ebuild:
+  Version bumped.
+
+*gwave-20020122 (23 Nov 2002)
+
+  23 Nov 2002; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Chris Bainbridge <chrb@dcs.ed.ac.uk>.

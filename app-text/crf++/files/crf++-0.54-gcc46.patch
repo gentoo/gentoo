@@ -1,0 +1,11 @@
+diff -Naur CRF++-0.54.orig/path.h CRF++-0.54/path.h
+--- CRF++-0.54.orig/path.h	2009-04-05 20:42:35.000000000 +0900
++++ CRF++-0.54/path.h	2011-05-31 01:31:43.845198215 +0900
+@@ -8,6 +8,7 @@
+ #ifndef CRFPP_PATH_H_
+ #define CRFPP_PATH_H_
+ 
++#include <cstddef>
+ #include <vector>
+ #include "node.h"
+ 

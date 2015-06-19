@@ -1,0 +1,65 @@
+# ChangeLog for media-sound/pnmixer
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/pnmixer/ChangeLog,v 1.11 2014/09/23 22:55:22 hasufell Exp $
+
+*pnmixer-0.6_pre20140924 (23 Sep 2014)
+
+  23 Sep 2014; Julian Ospald <hasufell@gentoo.org>
+  +pnmixer-0.6_pre20140924.ebuild:
+  version bump
+
+*pnmixer-9999 (26 Jul 2014)
+
+  26 Jul 2014; Julian Ospald <hasufell@gentoo.org> +pnmixer-9999.ebuild,
+  metadata.xml:
+  add live ebuild, add upstream info
+
+  30 Jun 2014; Julian Ospald <hasufell@gentoo.org>
+  pnmixer-0.6_pre20111213.ebuild:
+  fix dependencies
+
+  27 Apr 2013; Julian Ospald <hasufell@gentoo.org>
+  files/pnmixer-0.6_pre20111213-build.patch:
+  update patch to fix automake-1.13 build
+
+  03 Mar 2013; Vicente Olivert Riera <vincent@gentoo.org>
+  pnmixer-0.6_pre20111213.ebuild:
+  Stable on ppc, wrt bug #460158
+
+  30 Jan 2013; Agostino Sarubbo <ago@gentoo.org> pnmixer-0.6_pre20111213.ebuild:
+  Stable for x86, wrt bug #448038
+
+  24 Dec 2012; Julian Ospald <hasufell@gentoo.org>
+  files/pnmixer-0.6_pre20111213-build.patch:
+  use the right patch wrt #448380
+
+  23 Dec 2012; Julian Ospald <hasufell@gentoo.org>
+  pnmixer-0.6_pre20111213.ebuild, files/pnmixer-0.6_pre20111213-build.patch:
+  add debug useflag
+
+  22 Dec 2012; Agostino Sarubbo <ago@gentoo.org> pnmixer-0.6_pre20111213.ebuild:
+  Add ~ppc, wrt bug #448048
+
+  21 Dec 2012; Sergey Popov <pinkbyte@gentoo.org>
+  pnmixer-0.6_pre20111213.ebuild:
+  Stable on amd64, wrt bug #448038
+
+  17 Nov 2012; Julian Ospald <hasufell@gentoo.org>
+  +pnmixer-0.6_pre20111213.ebuild, +files/pnmixer-0.6_pre20111213-build.patch,
+  +files/pnmixer-0.6_pre20111213-desktopfile.patch, +metadata.xml:
+  move from category x11-misc/ to media-sound/
+
+  16 Nov 2012; Julian Ospald <hasufell@gentoo.org>
+  pnmixer-0.6_pre20111213.ebuild:
+  dep-fix, add die
+
+  16 Nov 2012; Julian Ospald <hasufell@gentoo.org>
+  pnmixer-0.6_pre20111213.ebuild:
+  clarify description
+
+*pnmixer-0.6_pre20111213 (16 Nov 2012)
+
+  16 Nov 2012; Julian Ospald <hasufell@gentoo.org>
+  +pnmixer-0.6_pre20111213.ebuild, +files/pnmixer-0.6_pre20111213-build.patch,
+  +files/pnmixer-0.6_pre20111213-desktopfile.patch:
+  initial import wrt #432460

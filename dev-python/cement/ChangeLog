@@ -1,0 +1,45 @@
+# ChangeLog for dev-python/cement
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/cement/ChangeLog,v 1.13 2015/04/08 08:05:14 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> cement-2.0.2.ebuild:
+  Drop old Python implementations
+
+  03 Jan 2015; Jan Matejka <yac@gentoo.org> metadata.xml:
+  Removing myself from maintainers  as there is really no reason for it in
+  addition to python herd and it seems discouraging other devs to touch the
+  package.
+
+  24 Nov 2014; Pacho Ramos <pacho@gentoo.org> cement-2.0.2.ebuild:
+  Support python 3.4
+
+  27 Aug 2014; Patrick Lauer <patrick@gentoo.org> cement-2.0.2.ebuild:
+  Shuffle dependencies so that test deps are not in RDEPEND
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> cement-2.0.2.ebuild:
+  Clean up obsolete dependencies on virtual/python-argparse and virtual/python-
+  unittest2 (those packages were only required for <=python-2.6).
+
+  28 Nov 2013; Jan Matejka <yac@gentoo.org> cement-2.0.2.ebuild:
+  stabilizing
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> cement-2.0.2.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  02 Sep 2013; Mike Gilbert <floppym@gentoo.org> cement-2.0.2.ebuild:
+  Add python3.3; unable to reproduce bug 469316.
+
+  10 May 2013; Patrick Lauer <patrick@gentoo.org> cement-2.0.2.ebuild:
+  Whitespace
+
+  03 May 2013; Jan Matejka <yac@gentoo.org> metadata.xml:
+  + python herd
+
+  03 May 2013; Jan Matejka <yac@gentoo.org> metadata.xml:
+  fix metadata indent
+
+*cement-2.0.2 (28 Apr 2013)
+
+  28 Apr 2013; Jan Matejka <yac@gentoo.org> +cement-2.0.2.ebuild,
+  +files/tests-installation.patch, +metadata.xml:
+  New ebuild for dev-python/cement. Fixes bug 459580

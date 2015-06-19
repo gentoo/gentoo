@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DESCRIPTION=Third-person sneaker like Splinter Cell
+EAPI=5
+HOMEPAGE=http://linuxgamepublishing.com/info.php?id=coldwar
+KEYWORDS=~amd64 ~x86
+LICENSE=all-rights-reserved
+RDEPEND=>=dev-libs/glib-2.34.3[abi_x86_32(-)] >=media-libs/libogg-1.3.0[abi_x86_32(-)] >=media-libs/libvorbis-1.3.3-r1[abi_x86_32(-)] >=media-libs/openal-1.15.1[abi_x86_32(-)] >=media-libs/smpeg-0.4.4-r10[abi_x86_32(-)] >=virtual/opengl-7.0-r1[abi_x86_32(-)] >=x11-libs/libX11-1.6.2[abi_x86_32(-)] >=x11-libs/libXext-1.3.2[abi_x86_32(-)] games-misc/games-envd
+RESTRICT=mirror bindist strip
+SLOT=0
+SRC_URI=http://demofiles.linuxgamepublishing.com/coldwar/coldwar-demo.run
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	games	1ad3205dbf62a2c98249f2f59b0a2d39	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=fd32ff2c6acec38fca6cde69a5bce45e

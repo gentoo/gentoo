@@ -1,0 +1,96 @@
+# ChangeLog for app-admin/quickswitch
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/quickswitch/ChangeLog,v 1.28 2015/06/09 08:44:25 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  19 Jan 2010; Dawid Węgliński <cla@gentoo.org> quickswitch-1.05.ebuild:
+  Remove dosed call on missing file, #299637
+
+  11 Oct 2009; Mark Loeser <halcy0n@gentoo.org> quickswitch-1.05.ebuild:
+  QA fixes; remove useless dodoc LICENSE
+
+  28 Aug 2009; Víctor Ostorga <vostorga@gentoo.org>
+  -files/net.eth0-switchto.rc6:
+  Cleaning out unused patch
+
+  07 Jun 2007; Christian Faulhammer <opfer@gentoo.org> ChangeLog:
+  modified ChangeLog to meet common standards
+
+  12 Apr 2007; Raúl Porcel <armin76@gentoo.org> quickswitch-1.05.ebuild:
+  Fix sample, bug 134335
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> quickswitch-1.05.ebuild:
+  stable on amd64
+
+  20 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  -quickswitch-0.10.ebuild, -quickswitch-1.02.ebuild:
+  clean old
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  quickswitch-1.02.ebuild:
+  Masked quickswitch-1.02.ebuild stable for ppc
+
+  06 Sep 2004; Lars Weiler <pylon@gentoo.org> quickswitch-1.05.ebuild:
+  Stable on ppc.
+
+  01 Jun 2004; Aron Griffis <agriffis@gentoo.org> quickswitch-1.02.ebuild,
+  quickswitch-1.05.ebuild:
+  Fix use invocation
+
+  10 May 2004; Daniel Ahlberg <aliz@gentoo.org> quickswitch-1.05.ebuild:
+  Added amd64 keyword, closing #50529.
+
+  17 Apr 2004; Michael McCabe <randy@gentoo.org> quickswitch-1.05.ebuild:
+  Adding s390 keywords
+
+  13 Mar 2004; Jason Wever <weeve@gentoo.org> quickswitch-1.05.ebuild:
+  Stable on sparc.
+
+  01 Mar 2004; Markus Nigbur <pyrania@gentoo.org> quickswitch-1.02.ebuild,
+  quickswitch-1.05.ebuild:
+  Stable on x86.
+
+  22 Feb 2004; Luca Barbato <lu_zero@gentoo.org> quickswitch-1.02.ebuild,
+  quickswitch-1.05.ebuild:
+  Fixed the configuration example as requested in bug #41975
+
+*quickswitch-1.05 (29 Nov 2003)
+
+  29 Nov 2003; Luca Barbato <lu_zero@gentoo.org> quickswitch-1.02.ebuild,
+  quickswitch-1.05.ebuild:
+  New version
+
+  01 Apr 2003; Wout Mertens <wmertens@gentoo.org> quickswitch-1.02.ebuild:
+  Fixed home page
+
+*quickswitch-1.02 (22 Mar 2003)
+
+  22 Mar 2003; Lars Weiler <pylon@gentoo.org> quickswitch-1.02.ebuild:
+  version bump.
+  will copy switcher only if USE=curses and compile therefore CursesWidgets
+  closes bug #14823
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  29 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> quickswitch-1.0_pre1.ebuild :
+  Added ppc to KEYWORDS. Added RDEPEND.
+
+*quickswitch-1.0_pre1.ebuild (26 Jun 2002)
+
+  26 June 2002; Chad Huneycutt <chadh@gentoo.org> +quickswitch-1.0_pre1.ebuild :
+  updated to most recent version
+
+*quickswitch-0.10 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

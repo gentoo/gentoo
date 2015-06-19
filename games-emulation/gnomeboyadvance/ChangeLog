@@ -1,0 +1,45 @@
+# ChangeLog for games-emulation/gnomeboyadvance
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/gnomeboyadvance/ChangeLog,v 1.12 2012/10/24 05:46:20 naota Exp $
+
+  24 Oct 2012;  <naota@gentoo.org> gnomeboyadvance-0.1.ebuild:
+  Add ~x86-fbsd. #233624
+
+  04 Jun 2011; Pacho Ramos <pacho@gentoo.org> gnomeboyadvance-0.1.ebuild:
+  RDEPEND on splitted python ebuilds (bug #352924 with Mr. Bones approval).
+
+  27 Apr 2010; Tupone Alfredo <tupone@gentoo.org>
+  gnomeboyadvance-0.1.ebuild:
+  Force python2 fixing bug #312247 by arfrever@gentoo.org
+
+  07 Feb 2007; Tristan Heaven <nyhm@gentoo.org> gnomeboyadvance-0.1.ebuild:
+  Use mirror://berlios
+
+  06 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  gnomeboyadvance-0.1.ebuild:
+  Removed sed-4 from *DEPEND.
+
+  31 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  gnomeboyadvance-0.1.ebuild:
+  Changing nomirror to mirror.
+
+  28 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  gnomeboyadvance-0.1.ebuild:
+  fix HOMEPAGE (bug #103905)
+
+  01 May 2005; Michael Hanselmann <hansmi@gentoo.org>
+  gnomeboyadvance-0.1.ebuild:
+  Stable on ppc.
+
+  05 Nov 2004; Joseph Jezak <josejx@gentoo.org> gnomeboyadvance-0.1.ebuild:
+  Added ~ppc.
+
+  29 Aug 2003; Michael Sterrett <msterret@gentoo.org>
+  gnomeboyadvance-0.1.ebuild:
+  mark stable now that gnome-python-1.99 is stable
+
+*gnomeboyadvance-0.1 (31 Jul 2003)
+
+  31 Jul 2003; Michael Sterrett <msterret@gentoo.org>
+  gnomeboyadvance-0.1.ebuild:
+  initial commit; modified ebuild from Alexander Kahl (bug 25669)

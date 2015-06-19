@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure install prepare test unpack
+DEPEND=dev-lang/perl >=sys-devel/automake-wrapper-9 >=sys-devel/autoconf-2.69 >=sys-apps/texinfo-4.7 sys-devel/gnuconfig sys-apps/help2man dev-vcs/git
+DESCRIPTION=Used to generate Makefile.in from Makefile.am
+EAPI=4
+HOMEPAGE=http://www.gnu.org/software/automake/
+LICENSE=GPL-3
+RDEPEND=dev-lang/perl >=sys-devel/automake-wrapper-9 >=sys-devel/autoconf-2.69 >=sys-apps/texinfo-4.7 sys-devel/gnuconfig
+SLOT=9999
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	git-2	e28f0d8a9b321431b1e699782851b827	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=ea0b60c4b12f5ff5f6c8652c8a0323d1

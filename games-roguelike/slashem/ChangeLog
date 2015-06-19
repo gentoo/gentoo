@@ -1,0 +1,88 @@
+# ChangeLog for games-roguelike/slashem
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-roguelike/slashem/ChangeLog,v 1.19 2014/08/10 21:20:58 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> slashem-0.0.772.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> slashem-0.0.772.ebuild:
+  Move Qt dependencies to the new category
+
+  07 Mar 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  slashem-0.0.772.ebuild:
+  QA cleanup: Fix quoting.
+
+  12 Mar 2007; Marius Mauch <genone@gentoo.org> slashem-0.0.760.ebuild,
+  slashem-0.0.772.ebuild:
+  Replacing einfo with elog
+
+  18 Nov 2006; Saleem Abdulrasool <compnerd@gentoo.org> slashem-0.0.760.ebuild,
+  slashem-0.0.772.ebuild:
+  Dropping gnome useflag for gnome-1.x mask
+
+  29 Oct 2006; Tristan Heaven <nyhm@gentoo.org> slashem-0.0.760.ebuild:
+  Add modular X dependencies
+
+  06 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -files/0.0.6E4F8-errno.patch, -files/0.0.6E4F8-gentoo-paths.patch,
+  -files/0.0.6E4F8-makefile.patch, -files/0.0.7E7/gentoo-paths.patch,
+  -files/X11.configure, -files/dot.slashemrc, -files/gnome.configure,
+  -files/gtk.configure, -files/qt.configure, slashem-0.0.772.ebuild:
+  Added patch for saving by Pekka Rousu <prousu@users.sourceforge.net>.
+  Closing bug #103586.
+
+*slashem-0.0.772 (05 Oct 2006)
+
+  05 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/0.0.7E7/GTK.configure, +files/0.0.7E7/Gentoo.configure,
+  +files/0.0.7E7/Proxy.configure, +files/0.0.7E7/X11.configure,
+  +files/0.0.7E7/dot.slashemrc, +files/0.0.7E7/gentoo-paths.patch,
+  +files/0.0.7E7/gnome.configure, +files/0.0.7E7/makefile.patch,
+  +files/0.0.7E7/opengl.configure, +files/0.0.7E7/prepare-gui.configure,
+  +files/0.0.7E7/proxy.slashemrc, +files/0.0.7E7/qt.configure,
+  +files/0.0.7E7/sdl.configure, +slashem-0.0.772.ebuild:
+  Version bump to 772 and closing bug #103583.
+
+  09 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  slashem-0.0.760.ebuild:
+  Added sys-devel/bc to DEPEND and closing bug #135762.
+
+  09 Jul 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/0.0.7E6/Gentoo.configure, slashem-0.0.760.ebuild:
+  Add fix by Pekka Rousu since the path to gzip binary is diff from default
+  #98318.
+
+  27 Jan 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/0.0.7E6/va_copy.patch, slashem-0.0.760.ebuild:
+  Added patch for gcc-3.4 from OKUMURA N. Shin-ya (bug #76509)
+
+*slashem-0.0.760 (26 Dec 2004)
+
+  26 Dec 2004; Mike Frysinger <vapier@gentoo.org>
+  +files/0.0.7E6/GTK.configure, +files/0.0.7E6/Proxy.configure,
+  +files/0.0.7E6/X11.configure, +files/0.0.7E6/dot.slashemrc,
+  +files/0.0.7E6/gentoo-paths.patch, +files/0.0.7E6/gnome.configure,
+  +files/0.0.7E6/makefile.patch, +files/0.0.7E6/opengl.configure,
+  +files/0.0.7E6/prepare-gui.configure, +files/0.0.7E6/proxy.slashemrc,
+  +files/0.0.7E6/qt.configure, +files/0.0.7E6/sdl.configure,
+  +slashem-0.0.760.ebuild:
+  Version bump #43500 by Pekka Rousu.
+
+  17 Dec 2004; Joseph Jezak <josejx@gentoo.org> slashem-0.0.648.ebuild:
+  Marked ppc stable.
+
+  30 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> slashem-0.0.648.ebuild:
+  virtual/x11; error check sed; tidy DEPEND; tidy use; append-flags into
+  src_unpack
+
+  15 Mar 2004; David Holm <dholm@gentoo.org> slashem-0.0.648.ebuild:
+  Added to ~ppc.
+
+  20 Jan 2004; Jon Portnoy <avenj@gentoo.org> slashem-0.0.648.ebuild :
+  AMD64 keywords.
+
+*slashem-0.0.648 (14 Aug 2003)
+
+  14 Aug 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Pekka Rousu <prousu@despammed.com>. #11692
+  This entire package is his doing and daaaaaaaaamn is it *good*.  Many thanks :)

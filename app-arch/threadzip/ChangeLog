@@ -1,0 +1,17 @@
+# ChangeLog for app-arch/threadzip
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/threadzip/ChangeLog,v 1.3 2015/05/14 07:30:33 mr_bones_ Exp $
+
+  14 May 2015; Michael Sterrett <mr_bones_@gentoo.org> -threadzip-1.2.ebuild:
+  old
+
+*threadzip-1.2-r1 (21 Mar 2015)
+
+  21 Mar 2015; Michał Górny <mgorny@gentoo.org> +threadzip-1.2-r1.ebuild:
+  EAPI bump, bug #543168.
+
+*threadzip-1.2 (29 Jan 2014)
+
+  29 Jan 2014; Mike Frysinger <vapier@gentoo.org> +metadata.xml,
+  +threadzip-1.2.ebuild:
+  Initial ebuild by me.

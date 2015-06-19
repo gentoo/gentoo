@@ -1,0 +1,55 @@
+# ChangeLog for sys-apps/arrayprobe
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/arrayprobe/ChangeLog,v 1.12 2015/04/26 23:22:23 mrueg Exp $
+
+  26 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -arrayprobe-2.0.ebuild:
+  Remove old.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> arrayprobe-2.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  08 Mar 2014; Mike Frysinger <vapier@gentoo.org> arrayprobe-2.0-r2.ebuild:
+  Add ia64 love.
+
+  23 Dec 2013; Mike Frysinger <vapier@gentoo.org> arrayprobe-2.0-r2.ebuild:
+  Update to EAPI=4.
+
+  17 Sep 2010; Robin H. Johnson <robbat2@gentoo.org> arrayprobe-2.0.ebuild,
+  arrayprobe-2.0-r2.ebuild:
+  Builds fine with no sources installed.
+
+  24 Jun 2010; Christoph Mende <angelos@gentoo.org>
+  arrayprobe-2.0-r2.ebuild:
+  Stable on amd64 wrt bug #300819
+
+  14 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  arrayprobe-2.0-r2.ebuild:
+  stable x86, bug 300819
+
+*arrayprobe-2.0-r2 (13 Jan 2010)
+
+  13 Jan 2010; Tobias Klausmann <klausman@gentoo.org>
+  +files/2.0-ida_headers.patch, -arrayprobe-2.0-r1.ebuild,
+  +arrayprobe-2.0-r2.ebuild:
+  Added 2.0-r2 inclduing a patch to make arrayprobe independent of the
+  kernel sources.
+
+*arrayprobe-2.0-r1 (13 Jan 2010)
+
+  13 Jan 2010; <chainsaw@gentoo.org> +files/2.0-malloc-strlen.patch,
+  +arrayprobe-2.0-r1.ebuild:
+  Patch scavenged from Ubuntu by Tobias "Blackb rd" Klausmann
+  <klausman@gentoo.org> resolves a misplaced bracket in a strlen statement
+  and removes a malloc that does not belong. From bug #300819.
+
+  23 Dec 2006; Piotr Jaroszyński <peper@gentoo.org> arrayprobe-2.0.ebuild:
+  Add ~amd64 wrt bug #157911.
+
+  29 Nov 2006; Tony Vroon <chainsaw@gentoo.org> arrayprobe-2.0.ebuild:
+  Mark stable on X86.
+
+*arrayprobe-2.0 (05 Sep 2006)
+
+  05 Sep 2006; Tony Vroon <chainsaw@gentoo.org> +metadata.xml,
+  +arrayprobe-2.0.ebuild:
+  Initial commit. Ebuild by me.

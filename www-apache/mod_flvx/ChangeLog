@@ -1,0 +1,22 @@
+# ChangeLog for www-apache/mod_flvx
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_flvx/ChangeLog,v 1.4 2015/04/04 06:15:06 mr_bones_ Exp $
+
+  04 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org> -mod_flvx-0.0.1.ebuild:
+  old
+
+*mod_flvx-0.0.1-r1 (27 Mar 2015)
+
+  27 Mar 2015; Sebastian Pipping <sping@gentoo.org> +mod_flvx-0.0.1-r1.ebuild,
+  files/20_mod_flvx.conf:
+  Resolve use of AddHandler for security (bug #544572)
+
+  27 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop apache herd as discussed in http://www.gossamer-
+  threads.com/lists/gentoo/dev/262834
+
+*mod_flvx-0.0.1 (08 Feb 2008)
+
+  08 Feb 2008; Benedikt Böhm <hollow@gentoo.org> +files/20_mod_flvx.conf,
+  +metadata.xml, +mod_flvx-0.0.1.ebuild:
+  initial ebuild

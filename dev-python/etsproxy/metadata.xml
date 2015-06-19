@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>python</herd>
+<longdescription lang="en">
+  This is the ETS proxy package, it contains the proxy modules for all
+  ETS projects which map the old enthought namespace imports to the
+  namespace-refactored ETS packages. It should be only needed to
+  switch from ETS-3 to ETS-4 packages.
+</longdescription>
+</pkgmetadata>

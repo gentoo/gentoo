@@ -1,0 +1,314 @@
+# ChangeLog for media-sound/abcmidi
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/abcmidi/ChangeLog,v 1.63 2015/02/24 02:26:14 radhermit Exp $
+
+  24 Feb 2015; Tim Harder <radhermit@gentoo.org> -abcmidi-2014.02.05.ebuild,
+  -abcmidi-2014.04.03.ebuild, -abcmidi-2014.04.10.ebuild,
+  -abcmidi-2014.04.24.ebuild, -abcmidi-2014.09.28.ebuild,
+  -abcmidi-2014.10.16.ebuild, -abcmidi-2014.11.02.ebuild,
+  -abcmidi-2014.11.18.ebuild:
+  Remove old.
+
+*abcmidi-2015.02.22 (24 Feb 2015)
+
+  24 Feb 2015; Tim Harder <radhermit@gentoo.org> +abcmidi-2015.02.22.ebuild:
+  Version bump.
+
+*abcmidi-2014.12.25 (04 Jan 2015)
+
+  04 Jan 2015; Tim Harder <radhermit@gentoo.org> +abcmidi-2014.12.25.ebuild:
+  Version bump.
+
+*abcmidi-2014.11.18 (24 Nov 2014)
+
+  24 Nov 2014; Tim Harder <radhermit@gentoo.org> +abcmidi-2014.11.18.ebuild:
+  Version bump.
+
+*abcmidi-2014.11.02 (05 Nov 2014)
+
+  05 Nov 2014; Tim Harder <radhermit@gentoo.org> +abcmidi-2014.11.02.ebuild:
+  Version bump.
+
+*abcmidi-2014.10.16 (18 Oct 2014)
+
+  18 Oct 2014; Tim Harder <radhermit@gentoo.org> +abcmidi-2014.10.16.ebuild:
+  Version bump.
+
+*abcmidi-2014.09.28 (09 Oct 2014)
+
+  09 Oct 2014; Tim Harder <radhermit@gentoo.org> +abcmidi-2014.09.28.ebuild:
+  Version bump.
+
+*abcmidi-2014.04.24 (25 Apr 2014)
+
+  25 Apr 2014; Tim Harder <radhermit@gentoo.org> +abcmidi-2014.04.24.ebuild:
+  Version bump.
+
+*abcmidi-2014.04.10 (15 Apr 2014)
+
+  15 Apr 2014; Tim Harder <radhermit@gentoo.org> +abcmidi-2014.04.10.ebuild:
+  Version bump.
+
+  04 Apr 2014; Tim Harder <radhermit@gentoo.org> -abcmidi-2013.11.17.ebuild,
+  -abcmidi-2013.11.26.ebuild, -abcmidi-2013.12.14.ebuild,
+  -abcmidi-2013.12.25.ebuild, -abcmidi-2014.01.05.ebuild,
+  -abcmidi-2014.01.20.ebuild:
+  Remove old.
+
+*abcmidi-2014.04.03 (04 Apr 2014)
+
+  04 Apr 2014; Tim Harder <radhermit@gentoo.org> +abcmidi-2014.04.03.ebuild:
+  Version bump.
+
+*abcmidi-2014.02.05 (06 Feb 2014)
+
+  06 Feb 2014; Tim Harder <radhermit@gentoo.org> +abcmidi-2014.02.05.ebuild:
+  Version bump.
+
+*abcmidi-2014.01.20 (22 Jan 2014)
+
+  22 Jan 2014; Tim Harder <radhermit@gentoo.org> +abcmidi-2014.01.20.ebuild:
+  Version bump.
+
+*abcmidi-2014.01.05 (11 Jan 2014)
+
+  11 Jan 2014; Tim Harder <radhermit@gentoo.org> +abcmidi-2014.01.05.ebuild:
+  Version bump.
+
+*abcmidi-2013.12.25 (28 Dec 2013)
+
+  28 Dec 2013; Tim Harder <radhermit@gentoo.org> +abcmidi-2013.12.25.ebuild:
+  Version bump.
+
+  16 Dec 2013; Tim Harder <radhermit@gentoo.org> -abcmidi-2013.05.10.ebuild,
+  -abcmidi-2013.06.09.ebuild, -abcmidi-2013.09.15.ebuild,
+  -abcmidi-2013.10.01.ebuild, -abcmidi-2013.10.22.ebuild,
+  -abcmidi-2013.11.05.ebuild:
+  Remove old.
+
+*abcmidi-2013.12.14 (16 Dec 2013)
+
+  16 Dec 2013; Tim Harder <radhermit@gentoo.org> +abcmidi-2013.12.14.ebuild:
+  Version bump.
+
+*abcmidi-2013.11.26 (02 Dec 2013)
+
+  02 Dec 2013; Tim Harder <radhermit@gentoo.org> +abcmidi-2013.11.26.ebuild:
+  Version bump.
+
+*abcmidi-2013.11.17 (23 Nov 2013)
+
+  23 Nov 2013; Tim Harder <radhermit@gentoo.org> +abcmidi-2013.11.17.ebuild:
+  Version bump.
+
+*abcmidi-2013.11.05 (12 Nov 2013)
+
+  12 Nov 2013; Tim Harder <radhermit@gentoo.org> +abcmidi-2013.11.05.ebuild:
+  Version bump.
+
+*abcmidi-2013.10.22 (27 Oct 2013)
+
+  27 Oct 2013; Tim Harder <radhermit@gentoo.org> +abcmidi-2013.10.22.ebuild:
+  Version bump.
+
+*abcmidi-2013.10.01 (17 Oct 2013)
+
+  17 Oct 2013; Tim Harder <radhermit@gentoo.org> +abcmidi-2013.10.01.ebuild:
+  Version bump.
+
+*abcmidi-2013.09.15 (18 Sep 2013)
+
+  18 Sep 2013; Tim Harder <radhermit@gentoo.org> -abcmidi-2013.09.10.ebuild,
+  +abcmidi-2013.09.15.ebuild:
+  Version bump and remove old.
+
+*abcmidi-2013.09.10 (16 Sep 2013)
+
+  16 Sep 2013; Tim Harder <radhermit@gentoo.org> +abcmidi-2013.09.10.ebuild:
+  Version bump.
+
+  15 Jun 2013; Tim Harder <radhermit@gentoo.org> -abcmidi-2013.03.26.ebuild,
+  -abcmidi-2013.04.15.ebuild, -abcmidi-2013.04.24.ebuild,
+  -abcmidi-2013.05.07.ebuild:
+  Remove old.
+
+*abcmidi-2013.06.09 (15 Jun 2013)
+
+  15 Jun 2013; Tim Harder <radhermit@gentoo.org> +abcmidi-2013.06.09.ebuild:
+  Version bump.
+
+*abcmidi-2013.05.10 (13 May 2013)
+
+  13 May 2013; Tim Harder <radhermit@gentoo.org> +abcmidi-2013.05.10.ebuild:
+  Version bump.
+
+*abcmidi-2013.05.07 (08 May 2013)
+
+  08 May 2013; Tim Harder <radhermit@gentoo.org> +abcmidi-2013.05.07.ebuild:
+  Version bump.
+
+  29 Apr 2013; Tim Harder <radhermit@gentoo.org> -abcmidi-2012.12.12.ebuild,
+  -abcmidi-2012.12.25.ebuild, -abcmidi-2013.02.26.ebuild,
+  -abcmidi-2013.03.21.ebuild:
+  Remove old.
+
+*abcmidi-2013.04.24 (29 Apr 2013)
+
+  29 Apr 2013; Tim Harder <radhermit@gentoo.org> +abcmidi-2013.04.24.ebuild:
+  Version bump.
+
+*abcmidi-2013.04.15 (16 Apr 2013)
+
+  16 Apr 2013; Tim Harder <radhermit@gentoo.org> +abcmidi-2013.04.15.ebuild:
+  Version bump.
+
+*abcmidi-2013.03.26 (01 Apr 2013)
+
+  01 Apr 2013; Tim Harder <radhermit@gentoo.org> +abcmidi-2013.03.26.ebuild:
+  Version bump.
+
+*abcmidi-2013.03.21 (23 Mar 2013)
+
+  23 Mar 2013; Tim Harder <radhermit@gentoo.org> +abcmidi-2013.03.21.ebuild:
+  Version bump.
+
+*abcmidi-2013.02.26 (02 Mar 2013)
+
+  02 Mar 2013; Tim Harder <radhermit@gentoo.org> +abcmidi-2013.02.26.ebuild:
+  Version bump.
+
+  14 Jan 2013; Tim Harder <radhermit@gentoo.org> -abcmidi-2012.08.08.ebuild,
+  -abcmidi-2012.11.23.ebuild, -abcmidi-2012.12.01.ebuild:
+  Remove old.
+
+*abcmidi-2012.12.25 (14 Jan 2013)
+
+  14 Jan 2013; Tim Harder <radhermit@gentoo.org> +abcmidi-2012.12.25.ebuild:
+  Version bump.
+
+*abcmidi-2012.12.12 (24 Dec 2012)
+
+  24 Dec 2012; Tim Harder <radhermit@gentoo.org> +abcmidi-2012.12.12.ebuild:
+  Version bump.
+
+*abcmidi-2012.12.01 (08 Dec 2012)
+
+  08 Dec 2012; Tim Harder <radhermit@gentoo.org> +abcmidi-2012.12.01.ebuild:
+  Version bump.
+
+  23 Nov 2012; Tim Harder <radhermit@gentoo.org> -abcmidi-2012.06.04.ebuild,
+  -abcmidi-2012.07.04.ebuild:
+  Remove old.
+
+*abcmidi-2012.11.23 (23 Nov 2012)
+
+  23 Nov 2012; Tim Harder <radhermit@gentoo.org> +abcmidi-2012.11.23.ebuild:
+  Version bump.
+
+*abcmidi-2012.08.08 (21 Aug 2012)
+
+  21 Aug 2012; Tim Harder <radhermit@gentoo.org> +abcmidi-2012.08.08.ebuild:
+  Version bump.
+
+  11 Jul 2012; Tim Harder <radhermit@gentoo.org> -abcmidi-2012.04.15.ebuild,
+  -abcmidi-2012.05.29.ebuild:
+  Remove old.
+
+*abcmidi-2012.07.04 (11 Jul 2012)
+
+  11 Jul 2012; Tim Harder <radhermit@gentoo.org> +abcmidi-2012.07.04.ebuild:
+  Version bump.
+
+*abcmidi-2012.06.04 (08 Jun 2012)
+
+  08 Jun 2012; Tim Harder <radhermit@gentoo.org> +abcmidi-2012.06.04.ebuild:
+  Version bump.
+
+  29 May 2012; Tim Harder <radhermit@gentoo.org> -abcmidi-2012.03.22.ebuild,
+  -abcmidi-2012.03.27.ebuild, -abcmidi-2012.04.03.ebuild:
+  Remove old.
+
+*abcmidi-2012.05.29 (29 May 2012)
+
+  29 May 2012; Tim Harder <radhermit@gentoo.org> +abcmidi-2012.05.29.ebuild:
+  Version bump.
+
+*abcmidi-2012.04.15 (22 Apr 2012)
+
+  22 Apr 2012; Tim Harder <radhermit@gentoo.org> +abcmidi-2012.04.15.ebuild:
+  Version bump.
+
+  04 Apr 2012; Tim Harder <radhermit@gentoo.org> -abcmidi-2012.03.08.ebuild:
+  Remove old.
+
+*abcmidi-2012.04.03 (04 Apr 2012)
+
+  04 Apr 2012; Tim Harder <radhermit@gentoo.org> +abcmidi-2012.04.03.ebuild:
+  Version bump.
+
+*abcmidi-2012.03.27 (31 Mar 2012)
+
+  31 Mar 2012; Tim Harder <radhermit@gentoo.org> +abcmidi-2012.03.27.ebuild:
+  Version bump.
+
+  25 Mar 2012; Tim Harder <radhermit@gentoo.org> -abcmidi-2012.02.05.ebuild:
+  Remove old.
+
+*abcmidi-2012.03.22 (25 Mar 2012)
+
+  25 Mar 2012; Tim Harder <radhermit@gentoo.org> +abcmidi-2012.03.22.ebuild:
+  Version bump.
+
+*abcmidi-2012.03.08 (08 Mar 2012)
+
+  08 Mar 2012; Tim Harder <radhermit@gentoo.org> +abcmidi-2012.03.08.ebuild:
+  Version bump.
+
+  06 Mar 2012; Tim Harder <radhermit@gentoo.org> -abcmidi-2011.12.11.ebuild,
+  -abcmidi-2011.12.19.ebuild:
+  Remove old.
+
+*abcmidi-2012.02.05 (07 Feb 2012)
+
+  07 Feb 2012; Tim Harder <radhermit@gentoo.org> -abcmidi-2012.02.01.ebuild,
+  +abcmidi-2012.02.05.ebuild:
+  Version bump and remove old.
+
+*abcmidi-2012.02.01 (03 Feb 2012)
+
+  03 Feb 2012; Tim Harder <radhermit@gentoo.org> +abcmidi-2012.02.01.ebuild:
+  Version bump.
+
+  25 Jan 2012; Tim Harder <radhermit@gentoo.org> -abcmidi-2011.10.19.ebuild,
+  -abcmidi-2011.11.18.ebuild, -abcmidi-2011.12.08.ebuild:
+  Remove old.
+
+*abcmidi-2011.12.19 (25 Jan 2012)
+
+  25 Jan 2012; Tim Harder <radhermit@gentoo.org> +abcmidi-2011.12.19.ebuild:
+  Version bump.
+
+*abcmidi-2011.12.11 (13 Dec 2011)
+
+  13 Dec 2011; Tim Harder <radhermit@gentoo.org> +abcmidi-2011.12.11.ebuild:
+  Version bump.
+
+*abcmidi-2011.12.08 (10 Dec 2011)
+
+  10 Dec 2011; Tim Harder <radhermit@gentoo.org> +abcmidi-2011.12.08.ebuild:
+  Version bump.
+
+*abcmidi-2011.11.18 (26 Nov 2011)
+
+  26 Nov 2011; Tim Harder <radhermit@gentoo.org> +abcmidi-2011.11.18.ebuild:
+  Version bump.
+
+  21 Oct 2011; Tim Harder <radhermit@gentoo.org> abcmidi-2011.10.19.ebuild:
+  Remove unneeded docdir setting.
+
+*abcmidi-2011.10.19 (21 Oct 2011)
+
+  21 Oct 2011; Tim Harder <radhermit@gentoo.org> +abcmidi-2011.10.19.ebuild,
+  +files/abcmidi-2011.10.19-install.patch, +metadata.xml:
+  Initial import (bug #76017).
+

@@ -1,0 +1,200 @@
+# ChangeLog for net-libs/gupnp-av
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/gupnp-av/ChangeLog,v 1.48 2015/03/15 13:30:27 pacho Exp $
+
+  15 Mar 2015; Pacho Ramos <pacho@gentoo.org> gupnp-av-0.12.7.ebuild:
+  x86 stable, bug 534012
+
+  14 Mar 2015; Pacho Ramos <pacho@gentoo.org> gupnp-av-0.12.7.ebuild:
+  amd64 stable, bug 534012
+
+*gupnp-av-0.12.7 (14 Jan 2015)
+
+  14 Jan 2015; Pacho Ramos <pacho@gentoo.org> +gupnp-av-0.12.7.ebuild:
+  Version bump
+
+  15 Dec 2014; Pacho Ramos <pacho@gentoo.org> -gupnp-av-0.12.5.ebuild,
+  gupnp-av-0.12.6.ebuild:
+  vala-0.22 is the minimum required version (#532568 by hfern@fernhout.info ),
+  drop old.
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org> gupnp-av-0.12.6.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org> gupnp-av-0.12.6.ebuild:
+  Stable for amd64, wrt bug #512912
+
+*gupnp-av-0.12.6 (13 Jun 2014)
+
+  13 Jun 2014; Pacho Ramos <pacho@gentoo.org> +gupnp-av-0.12.6.ebuild:
+  Version bump
+
+  27 Apr 2014; Pacho Ramos <pacho@gentoo.org> -gupnp-av-0.12.4.ebuild:
+  drop old
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> gupnp-av-0.12.5.ebuild:
+  x86 stable, bug 499954
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> gupnp-av-0.12.5.ebuild:
+  amd64 stable, bug 499954
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> gupnp-av-0.12.5.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> gupnp-av-0.12.5.ebuild:
+  arch stable, bug 888
+
+*gupnp-av-0.12.5 (06 Feb 2014)
+
+  06 Feb 2014; Gilles Dartiguelongue <eva@gentoo.org> -gupnp-av-0.10.3.ebuild,
+  -gupnp-av-0.12.2.ebuild, +gupnp-av-0.12.5.ebuild:
+  Version bump. Clean up old revision.
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> gupnp-av-0.12.4.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> gupnp-av-0.12.4.ebuild:
+  amd64 stable, bug #478252
+
+*gupnp-av-0.12.4 (19 Nov 2013)
+
+  19 Nov 2013; Pacho Ramos <pacho@gentoo.org> +gupnp-av-0.12.4.ebuild,
+  -gupnp-av-0.12.3.ebuild, metadata.xml:
+  Version bump, drop old. This is only being maintained by gnome herd for a long
+  time.
+
+*gupnp-av-0.12.3 (17 Oct 2013)
+
+  17 Oct 2013; Pacho Ramos <pacho@gentoo.org> +gupnp-av-0.12.3.ebuild:
+  Version bump
+
+  02 Jun 2013; Pacho Ramos <pacho@gentoo.org> -gupnp-av-0.12.1.ebuild,
+  gupnp-av-0.12.2.ebuild:
+  Remove unneeded DOCS variable, letting PM to handle installation (that will
+  also stop installing empty file), drop old.
+
+*gupnp-av-0.12.2 (30 May 2013)
+
+  30 May 2013; Pacho Ramos <pacho@gentoo.org> +gupnp-av-0.12.2.ebuild,
+  -gupnp-av-0.10.2.ebuild, -gupnp-av-0.8.0.ebuild:
+  Version bump, remove old
+
+  31 Mar 2013; Gilles Dartiguelongue <eva@gentoo.org> gupnp-av-0.12.1.ebuild:
+  Cosmetic + QA fixes.
+
+*gupnp-av-0.12.1 (28 Mar 2013)
+
+  28 Mar 2013; Pacho Ramos <pacho@gentoo.org> +gupnp-av-0.12.1.ebuild:
+  Version bump for Gnome 3.8
+
+  02 Feb 2013; Agostino Sarubbo <ago@gentoo.org> gupnp-av-0.10.3.ebuild:
+  Add ~arm, wrt bug #449220
+
+  06 Jan 2013; Agostino Sarubbo <ago@gentoo.org> gupnp-av-0.10.3.ebuild:
+  Add ~sparc, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> gupnp-av-0.10.3.ebuild:
+  Add ~alpha, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> gupnp-av-0.10.3.ebuild:
+  Add ~ia64, wrt bug #449220
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org> gupnp-av-0.10.3.ebuild:
+  Add ~ppc64, wrt bug #449220
+
+  04 Oct 2012; Agostino Sarubbo <ago@gentoo.org> gupnp-av-0.10.3.ebuild:
+  Stable for amd64, wrt bug #427544
+
+  01 Oct 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> gupnp-av-0.10.3.ebuild:
+  x86 stable wrt bug #427560
+
+  07 Sep 2012; Agostino Sarubbo <ago@gentoo.org> gupnp-av-0.8.0.ebuild:
+  Stable for amd64, wrt bug #427560
+
+*gupnp-av-0.10.3 (24 Aug 2012)
+
+  24 Aug 2012; Gilles Dartiguelongue <eva@gentoo.org> -gupnp-av-0.10.1.ebuild,
+  +gupnp-av-0.10.3.ebuild, metadata.xml:
+  Version bump. Drop old revision. Add gnome to metadata.xml.
+
+*gupnp-av-0.10.2 (22 Jul 2012)
+
+  22 Jul 2012; Gilles Dartiguelongue <eva@gentoo.org> +gupnp-av-0.10.2.ebuild:
+  Version bump.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> gupnp-av-0.8.0.ebuild,
+  gupnp-av-0.10.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*gupnp-av-0.10.1 (08 Sep 2011)
+
+  08 Sep 2011; Gilles Dartiguelongue <eva@gentoo.org> +gupnp-av-0.10.1.ebuild:
+  Version bump.
+
+  14 Aug 2011; Nirbheek Chauhan <nirbheek@gentoo.org> -gupnp-av-0.4.1.ebuild,
+  -gupnp-av-0.5.2.ebuild, -gupnp-av-0.5.7.ebuild, -gupnp-av-0.6.1.ebuild,
+  -gupnp-av-0.6.3.ebuild, -gupnp-av-0.7.1.ebuild, gupnp-av-0.8.0.ebuild:
+  Remove old, use EAPI 4
+
+  05 Aug 2011; Diego E. Pettenò <flameeyes@gentoo.org> gupnp-av-0.8.0.ebuild:
+  QA: fix obvious typo.
+
+*gupnp-av-0.8.0 (24 Jul 2011)
+
+  24 Jul 2011; Gilles Dartiguelongue <eva@gentoo.org> +gupnp-av-0.8.0.ebuild:
+  Version bump. Fix XML node names for 'artist' and 'author'. Fix linking
+  issues.
+
+*gupnp-av-0.7.1 (22 Feb 2011)
+
+  22 Feb 2011; Gilles Dartiguelongue <eva@gentoo.org> +gupnp-av-0.7.1.ebuild:
+  Version bump. Required for recent rygel releases, with permission from herd.
+
+*gupnp-av-0.6.3 (10 Jan 2011)
+
+  10 Jan 2011; Arun Raghavan <ford_prefect@gentoo.org> +gupnp-av-0.6.3.ebuild:
+  Bump to 0.6.3. Number of bug fixes, add missing gobject-introspection dep.
+
+*gupnp-av-0.6.1 (01 Oct 2010)
+
+  01 Oct 2010; Arun Raghavan <ford_prefect@gentoo.org>
+  +gupnp-av-0.6.1.ebuild:
+  Bump to 0.6.1. Stable release - adds some fixes and documentation updates
+  over 0.5.7. DLNA media support moved to media-libs/gupnp-dlna.
+
+  21 Jul 2010; Arun Raghavan <ford_prefect@gentoo.org>
+  -gupnp-av-0.5.1.ebuild:
+  Remove old version.
+
+*gupnp-av-0.5.7 (21 Jul 2010)
+
+  21 Jul 2010; Arun Raghavan <ford_prefect@gentoo.org>
+  +gupnp-av-0.5.7.ebuild, metadata.xml:
+  Bump to 0.5.7. Several bug fixes, some enhancements, introspection
+  support.
+
+*gupnp-av-0.5.2 (09 Dec 2009)
+
+  09 Dec 2009; Arun Raghavan <ford_prefect@gentoo.org>
+  +gupnp-av-0.5.2.ebuild:
+  Bump to 0.5.2. Bug and documentation fixes.
+
+*gupnp-av-0.5.1 (19 Oct 2009)
+
+  19 Oct 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +gupnp-av-0.5.1.ebuild:
+  Version bump.
+
+  11 Sep 2009; Mounir Lamouri <volkmar@gentoo.org> gupnp-av-0.4.1.ebuild:
+  Keywording for ppc.
+
+*gupnp-av-0.4.1 (18 Jun 2009)
+
+  18 Jun 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +gupnp-av-0.4.1.ebuild:
+  Version bump wrt #274453, thanks to Alex Legler for reporting.
+
+*gupnp-av-0.1 (24 Apr 2008)
+
+  24 Apr 2008; Samuli Suominen <ssuominen@gentoo.org> +gupnp-av-0.1.ebuild:
+  Initial commit.

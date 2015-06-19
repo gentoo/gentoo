@@ -1,0 +1,25 @@
+--- Makefile	2002-10-23 18:36:20.000000000 +0200
++++ Makefile_new	2013-03-16 14:02:42.979029588 +0100
+@@ -12,10 +12,10 @@
+ # This should point to the GKrellM headers
+ GKRELLM_HDRS = /usr/include
+ 
+-CC := gcc
++CC = $(CC)
+ GTKFLAGS := $(shell pkg-config gtk+-2.0 --cflags)
+-CFLAGS := $(CFLAGS) -fPIC -Wall $(GTKFLAGS) -I$(GKRELLM_HDRS)
+-LDFLAGS := -shared -Wl
++CFLAGS := $(CFLAGS) -fPIC $(GTKFLAGS) -I$(GKRELLM_HDRS)
++LFLAGS = -shared
+ INST_DIR := $(DESTDIR)/usr/lib/gkrellm2/plugins
+ USER_INST_DIR := $(DESTDIR)$(HOME)/.gkrellm2/plugins
+ MANPAGES := gkrellkam-list.5
+@@ -26,7 +26,7 @@
+ all: $(TARGET).so
+ 
+ %.so: %.o
+-	$(CC) $(LDFLAGS) -o $@ $<
++	$(CC) $(CFLAGS) $(LDFLAGS) $(LFLAGS) -o $@ $<
+ 
+ clean:
+ 	-rm -f $(TARGET).so $(TARGET).o

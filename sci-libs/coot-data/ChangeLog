@@ -1,0 +1,65 @@
+# ChangeLog for sci-libs/coot-data
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/coot-data/ChangeLog,v 1.17 2013/08/28 11:13:00 ago Exp $
+
+  28 Aug 2013; Agostino Sarubbo <ago@gentoo.org> coot-data-2-r1.ebuild:
+  Stable for x86, wrt bug #477184
+
+  10 Aug 2013; Agostino Sarubbo <ago@gentoo.org> coot-data-2-r1.ebuild:
+  Stable for ppc, wrt bug #477184
+
+  21 Jul 2013; Agostino Sarubbo <ago@gentoo.org> coot-data-2-r1.ebuild:
+  Stable for amd64, wrt bug #477184
+
+*coot-data-2-r1 (17 Jul 2013)
+
+  17 Jul 2013; Justin Lecher <jlec@gentoo.org> +coot-data-2-r1.ebuild,
+  metadata.xml:
+  Bump to EAPI=5
+
+  21 Nov 2011; Justin Lecher <jlec@gentoo.org> coot-data-2.ebuild:
+  keyworded for ~x86-macos ~x64-macos, tested by Johan Hattne #390123
+
+  15 Jul 2010; Markus Meier <maekke@gentoo.org> coot-data-2.ebuild:
+  x86 stable, bug #326001
+
+  28 Jun 2010; Christoph Mende <angelos@gentoo.org> coot-data-2.ebuild:
+  Stable on amd64 wrt bug #326001
+
+  28 Jun 2010; Justin Lecher <jlec@gentoo.org> coot-data-2.ebuild:
+  Keyworded for linux prefix
+
+*coot-data-2 (05 Feb 2010)
+
+  05 Feb 2010; Justin Lecher (jlec) <jlec@gentoo.org> -coot-data-1.ebuild,
+  +coot-data-2.ebuild:
+  Version Bump
+
+  10 Oct 2009; Patrick Lauer <patrick@gentoo.org> coot-data-1.ebuild:
+  Fixing Homepage, other half of #285068
+
+  23 Feb 2009; Jeremy Olexa <darkside@gentoo.org> coot-data-1.ebuild:
+  add ~amd64, bug 259603
+
+  15 Mar 2007; Danny van Dyk <kugelfang@gentoo.org> coot-data-1.ebuild:
+  QA: Removed illegal use of ${ROOT}. Bug #168043
+
+  26 Sep 2006; Donnie Berkholz <dberkholz@gentoo.org>; coot-data-1.ebuild:
+  Stable on x86/ppc.
+
+  26 Sep 2006; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  Change herd to sci-chemistry from sci.
+
+  05 Aug 2006; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  Remove myself as maintainer, anyone feel free to work on this, although I'll
+  continue to do so as well.
+
+  07 Jul 2006; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  Update to my new email address.
+
+*coot-data-1 (16 Jun 2006)
+
+  16 Jun 2006; Donnie Berkholz <dberkholz@gentoo.org>; +metadata.xml,
+  +coot-data-1.ebuild:
+  Add rarely-changing data for sci-chemistry/coot, so we don't reinstall it on
+  every Coot upgrade.

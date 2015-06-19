@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DEPEND=>=dev-libs/glib-2 dev-libs/libgcrypt dev-lang/perl virtual/pkgconfig
+DESCRIPTION=Spectrum emulation library
+HOMEPAGE=http://www.srcf.ucam.org/~pak21/spectrum/libspectrum.html
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2 dev-libs/libgcrypt dev-lang/perl
+SLOT=0
+SRC_URI=mirror://sourceforge/fuse-emulator/libspectrum-0.2.2.tar.gz
+_md5_=a1fd5d48043d6918745baa0046e4c280

@@ -1,0 +1,73 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/chrome-remote-desktop/files/chrome-remote-desktop.rc,v 1.1 2015/01/06 20:15:37 vapier Exp $
+
+extra_started_commands="checkconfig reload"
+
+CRD=/opt/google/chrome-remote-desktop/chrome-remote-desktop
+
+depend() {
+	need net
+	use logger
+}
+
+checkconfig() {
+	local ret=0
+	if [ -z "${CHROME_REMOTING_USERS}" ] ; then
+		eerror "You must set CHROME_REMOTING_USERS in /etc/conf.d/${SVCNAME} first"
+		ret=1
+	else
+		local user
+		for user in ${CHROME_REMOTING_USERS} ; do
+			if ! id "${user}" >/dev/null ; then
+				eerror "Invalid user found in CHROME_REMOTING_USERS: ${user}"
+				ret=1
+			fi
+		done
+	fi
+	return ${ret}
+}
+
+for_users() {
+	local user ret msg log
+	msg=$1; shift
+
+	set -- -- "$@"
+	[ "${CHROME_REMOTE_DESKTOP_DEFAULT_DESKTOP_SIZES+set}" = "set" ] \
+		&& set -- -e CHROME_REMOTE_DESKTOP_DEFAULT_DESKTOP_SIZES="${CHROME_REMOTE_DESKTOP_DEFAULT_DESKTOP_SIZES}" "$@"
+	: ${CHROME_REMOTE_DESKTOP_LOG_DIR:=/var/log}
+
+	for user in ${CHROME_REMOTING_USERS} ; do
+		ebegin "${msg} ${SVCNAME} for ${user}"
+
+		log="${CHROME_REMOTE_DESKTOP_LOG_DIR}/${SVCNAME}.${user}.log"
+		checkpath -f -m 0600 -o "${user}" "${log}"
+
+		# We need to background the app as it won't fork until the network
+		# (including DNS) is available.
+		start-stop-daemon \
+			-b \
+			-u "${user}" \
+			-x "${CRD}" \
+			-e "CHROME_REMOTE_DESKTOP_LOG_FILE=${log}" \
+			"$@"
+		eend $?
+		: $(( ret += $? ))
+	done
+
+	return ${ret}
+}
+
+start() {
+	checkconfig || return
+	for_users Starting --start
+}
+
+stop() {
+	for_users Stopping --stop
+}
+
+reload() {
+	for_users Reloading --reload
+}

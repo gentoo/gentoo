@@ -1,0 +1,85 @@
+# ChangeLog for java-virtuals/stax-api
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/java-virtuals/stax-api/ChangeLog,v 1.22 2014/12/02 14:27:37 mrueg Exp $
+
+  02 Dec 2014; Manuel Rüger <mrueg@gentoo.org> stax-api-1-r4.ebuild:
+  Update to EAPI=5
+
+  27 Jun 2013; Alexis Ballier <aballier@gentoo.org> stax-api-1-r4.ebuild:
+  keyword ~amd64-fbsd
+
+  05 Feb 2013; Rick Farina <zerochaos@gentoo.org> stax-api-1-r4.ebuild:
+  adding ~arm
+
+  04 Oct 2012; Ralph Sennhauser <sera@gentoo.org> stax-api-1-r4.ebuild:
+  Change license to public-domain. #426800
+
+  29 Sep 2012; Fabian Groffen <grobian@gentoo.org> stax-api-1-r4.ebuild:
+  Marked ~x64-macos
+
+*stax-api-1-r4 (22 Oct 2011)
+
+  22 Oct 2011; Vlastimil Babka <caster@gentoo.org> -stax-api-1-r3.ebuild,
+  +stax-api-1-r4.ebuild:
+  Another revbump to really fix the provider string, bug #388113 thanks to
+  Ralph Sennhauser.
+
+  22 Oct 2011; Vlastimil Babka <caster@gentoo.org> -stax-api-1-r1.ebuild,
+  stax-api-1-r3.ebuild:
+  Stabilize the revbump everywhere and drop the old version. Nothing
+  arch-specific here and we don't want bug 383175.
+
+*stax-api-1-r3 (16 Sep 2011)
+
+  16 Sep 2011; Serkan Kaba <serkan@gentoo.org> -stax-api-1-r2.ebuild,
+  +stax-api-1-r3.ebuild:
+  Revbump to fix typo
+
+*stax-api-1-r2 (11 Sep 2011)
+
+  11 Sep 2011; Serkan Kaba <serkan@gentoo.org> +stax-api-1-r2.ebuild:
+  Bump to add jre7
+
+  24 Apr 2010; Fabian Groffen <grobian@gentoo.org> stax-api-1-r1.ebuild:
+  Marked ~sparc-solaris ~x86-solaris, bug #314093
+
+  15 Jan 2010; Fabian Groffen <grobian@gentoo.org> stax-api-1-r1.ebuild:
+  Marked ~x64-solaris
+
+  16 Dec 2009; Christian Faulhammer <fauli@gentoo.org> stax-api-1-r1.ebuild:
+  QA: transfer Prefix keywords
+
+  16 Oct 2009; Petteri Räty <betelgeuse@gentoo.org> -stax-api-1.ebuild:
+  Remove old revision.
+
+  16 Oct 2009; Petteri Räty <betelgeuse@gentoo.org> stax-api-1-r1.ebuild:
+  Add ̃~x86-fbsd.
+
+  19 Jul 2009; nixnut <nixnut@gentoo.org> stax-api-1-r1.ebuild:
+  ppc stable #274029
+
+  04 Jul 2009; Brent Baude <ranger@gentoo.org> stax-api-1-r1.ebuild:
+  Marking stax-api-1-r1 ppc64 for bug 275190
+
+  02 Jul 2009; Markus Meier <maekke@gentoo.org> stax-api-1-r1.ebuild:
+  amd64 stable, bug #274029
+
+  01 Jul 2009; Christian Faulhammer <fauli@gentoo.org> stax-api-1-r1.ebuild:
+  stable x86, bug 275190
+
+  17 Jun 2009; Christian Faulhammer <fauli@gentoo.org> stax-api-1.ebuild:
+  stable x86, bug 274029
+
+*stax-api-1-r1 (23 May 2009)
+
+  23 May 2009; Alistair Bush <ali_bush@gentoo.org> +stax-api-1-r1.ebuild:
+  Bump to support features available in java-config-2.1.8
+
+  20 Mar 2009; Joseph Jezak <josejx@gentoo.org> stax-api-1.ebuild:
+  Marked ~ppc64.
+
+*stax-api-1 (05 Oct 2008)
+
+  05 Oct 2008; Serkan Kaba <serkan@gentoo.org> +metadata.xml,
+  +stax-api-1.ebuild:
+  Add java-virtuals/stax-api. Fixes bug #224677.

@@ -1,0 +1,18 @@
+# ChangeLog for media-libs/libomxil-bellagio
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libomxil-bellagio/ChangeLog,v 1.3 2014/12/10 09:56:37 ago Exp $
+
+  10 Dec 2014; Agostino Sarubbo <ago@gentoo.org> libomxil-bellagio-0.9.3.ebuild:
+  Stable for x86, wrt bug #513736
+
+  10 Dec 2014; Agostino Sarubbo <ago@gentoo.org> libomxil-bellagio-0.9.3.ebuild:
+  Stable for amd64, wrt bug #513736
+
+*libomxil-bellagio-0.9.3 (12 Feb 2014)
+
+  12 Feb 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/libomxil-bellagio-0.9.3-dynamicloader-linking.patch,
+  +files/libomxil-bellagio-0.9.3-parallel-build.patch,
+  +files/libomxil-bellagio-0.9.3-version.patch, +libomxil-bellagio-0.9.3.ebuild,
+  +metadata.xml:
+  initial commit for bug #191149.

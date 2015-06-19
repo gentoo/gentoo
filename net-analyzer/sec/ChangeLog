@@ -1,0 +1,131 @@
+# ChangeLog for net-analyzer/sec
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/sec/ChangeLog,v 1.31 2015/02/15 09:59:01 jer Exp $
+
+*sec-2.7.7 (15 Feb 2015)
+*sec-2.7.6-r1 (15 Feb 2015)
+
+  15 Feb 2015; Jeroen Roovers <jer@gentoo.org> -sec-2.7.5.ebuild,
+  -sec-2.7.6.ebuild, +sec-2.7.6-r1.ebuild, +sec-2.7.7.ebuild, files/sec.init.d:
+  Version bump. Fix sec.pl -> sec in init.d script, /var/run -> /run.
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> sec-2.7.6.ebuild:
+  Stable for x86, wrt bug #535540
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> sec-2.7.6.ebuild:
+  Stable for amd64, wrt bug #535540
+
+  14 Aug 2014; Jeroen Roovers <jer@gentoo.org> -sec-2.7.0.ebuild:
+  Old.
+
+  11 Aug 2014; Chema Alonso <nimiux@gentoo.org> sec-2.7.5.ebuild:
+  Stable for amd64 wrt bug #517274
+
+  26 Jul 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> sec-2.7.5.ebuild:
+  x86 stable wrt bug #517274
+
+*sec-2.7.6 (16 Jul 2014)
+
+  16 Jul 2014; Jeroen Roovers <jer@gentoo.org> sec-2.7.5.ebuild,
+  +sec-2.7.6.ebuild, files/sec.conf.d, metadata.xml:
+  Version bump. Remove short <longdescription>. Update conf.d comments.
+
+*sec-2.7.5 (04 May 2014)
+
+  04 May 2014; Jeroen Roovers <jer@gentoo.org> -sec-2.6.2.ebuild,
+  +sec-2.7.5.ebuild:
+  Version bump.
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> sec-2.7.0.ebuild:
+  Stable for x86, wrt bug #461202
+
+  16 May 2013; Agostino Sarubbo <ago@gentoo.org> sec-2.7.0.ebuild:
+  Stable for amd64, wrt bug #461202
+
+*sec-2.7.0 (04 Feb 2013)
+
+  04 Feb 2013; Sergey Popov <pinkbyte@gentoo.org> +sec-2.7.0.ebuild:
+  Version bump, add ~amd64-linux keyword
+
+  09 Oct 2012; Agostino Sarubbo <ago@gentoo.org> sec-2.6.2.ebuild:
+  Stable for amd64, wrt bug #419231
+
+  14 Jun 2012; Jeroen Roovers <jer@gentoo.org> -sec-2.6.1.ebuild:
+  Old.
+
+  14 Jun 2012; Jeff Horelick <jdhore@gentoo.org> sec-2.6.2.ebuild:
+  marked x86 per bug 419231
+
+  04 Jun 2012; Jeroen Roovers <jer@gentoo.org> -sec-2.4.0.ebuild,
+  -sec-2.4.1.ebuild, -sec-2.4.2.ebuild, -sec-2.6.0.ebuild:
+  Old.
+
+  28 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> sec-2.6.1.ebuild:
+  x86 stable wrt bug #400429
+
+*sec-2.6.2 (24 Jan 2012)
+
+  24 Jan 2012; Jeroen Roovers <jer@gentoo.org> sec-2.6.1.ebuild,
+  +sec-2.6.2.ebuild:
+  Version bump. Fix RDEPEND.
+
+*sec-2.6.1 (07 Oct 2011)
+
+  07 Oct 2011; Tim Harder <radhermit@gentoo.org> +sec-2.6.1.ebuild:
+  Version bump. Update to EAPI 4.
+
+*sec-2.6.0 (01 Jun 2011)
+
+  01 Jun 2011; Jeroen Roovers <jer@gentoo.org> +sec-2.6.0.ebuild:
+  Version bump.
+
+*sec-2.4.2 (03 Aug 2008)
+
+  03 Aug 2008; Cédric Krier <cedk@gentoo.org> +sec-2.4.2.ebuild:
+  Version bump
+
+*sec-2.4.1 (15 Jan 2008)
+
+  15 Jan 2008; Markus Ullmann <jokey@gentoo.org> +sec-2.4.1.ebuild:
+  Version bump wrt bug #205977 thanks to Tiago Cunha
+
+  06 Sep 2007; Markus Ullmann <jokey@gentoo.org> -sec-2.3.1.ebuild,
+  -sec-2.3.2.ebuild:
+  Cleanup
+
+  20 Mar 2007; Raúl Porcel <armin76@gentoo.org> sec-2.4.0.ebuild:
+  x86 stable
+
+*sec-2.4.0 (16 Dec 2006)
+
+  16 Dec 2006; Cedric Krier <cedk@gentoo.org> +files/sec.conf.d,
+  +files/sec.init.d, +sec-2.4.0.ebuild:
+  Version bump and add init script for bug #137699
+
+*sec-2.3.2 (22 Nov 2005)
+
+  22 Nov 2005; Marcelo Goes <vanquirius@gentoo.org> -sec-2.2.5.ebuild,
+  +sec-2.3.2.ebuild:
+  Version bump. Thanks to bramble for e-mailing.
+
+  17 Nov 2005; Homer Parker <hparker@gentoo.org> sec-2.3.1.ebuild:
+  Marked ~amd64 fixing bug 109712
+
+  19 Jul 2005; David Holm <dholm@gentoo.org> sec-2.3.1.ebuild:
+  Added to ~ppc.
+
+  29 Apr 2005; Marcelo Goes <vanquirius@gentoo.org> sec-2.3.1.ebuild:
+  Marked x86 stable.
+
+*sec-2.3.1 (22 Mar 2005)
+
+  22 Mar 2005; Marcelo Goes <vanquirius@gentoo.org> +sec-2.3.1.ebuild:
+  Version bump
+
+  28 Aug 2004; Eldad Zack <eldad@gentoo.org> sec-2.2.5.ebuild:
+  x86 stable
+
+*sec-2.2.5 (24 Jul 2004)
+
+  24 Jul 2004; Eldad Zack <eldad@gentoo.org> +metadata.xml, +sec-2.2.5.ebuild:
+  Initial ebuild. Closes #57589.

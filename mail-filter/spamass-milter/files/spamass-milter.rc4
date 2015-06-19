@@ -1,0 +1,55 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/spamass-milter/files/spamass-milter.rc4,v 1.1 2011/11/29 21:52:06 eras Exp $
+
+depend() {
+	need net spamd
+	use logger
+	before mta
+}
+
+piddir=${PIDFILE%/*}
+socketdir=${SOCKET%/*}
+
+checkconfig() {
+	if [ ! -d ${piddir:=/var/run/milter} ]; then
+		checkpath -q -d -o milter:milter -m 0755 ${piddir} || return 1
+	fi
+	if [ ! -d ${socketdir:=/var/run/milter} ]; then
+		checkpath -q -d -o ${SOCKET_USER:-milter}:${SOCKET_GROUP:-milter} \
+		-m 0755 ${socketdir} || return 1
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting spamass-milter"
+	start-stop-daemon --start --quiet --pidfile ${PIDFILE} -u ${SOCKET_USER:-milter}:${SOCKET_GROUP:-milter} \
+		--exec ${DAEMON} -- -P ${PIDFILE} -p ${SOCKET} -f ${OPTIONS}
+	eend $? "Failed to start ${DAEMON}"
+	spamass_timeout=0
+	while [ $spamass_timeout -le 20 ]
+	do
+		if [ ! -S "${SOCKET}" -o ! -r "${SOCKET}" ]
+		then
+			sleep 1
+			spamass_timeout=$(( $spamass_timeout+1 ))
+		else
+			break
+		fi
+	done
+	echo $spamass_timeout
+	chown ${SOCKET_USER:-milter}:${SOCKET_GROUP:-milter} ${SOCKET} 1>/dev/null 2>&1
+	chmod ${SOCKET_MODE:-664} ${SOCKET} 1>/dev/null 2>&1
+}
+
+stop() {
+	ebegin "Stopping spamass-milter"
+	start-stop-daemon --stop --quiet --pidfile ${PIDFILE} &&
+	{
+		sleep 5
+		rm -f ${SOCKET}
+	}
+	eend $? "Failed to stop ${DAEMON}"
+}

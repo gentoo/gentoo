@@ -1,0 +1,42 @@
+From 1b896582a0cd74854f99e08854554807a8f1f764 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Tue, 22 May 2012 14:12:23 -0400
+Subject: [PATCH] link against -ldl when -lltdl is not available
+
+If ltdl isn't found, the code will use dlopen if it's available.
+But it won't link to -ldl which can cause link errors like so:
+
+  CCLD   opensc-tool
+../../src/libopensc/.libs/libopensc.so: error: undefined reference to 'dlopen'
+../../src/libopensc/.libs/libopensc.so: error: undefined reference to 'dlsym'
+../../src/libopensc/.libs/libopensc.so: error: undefined reference to 'dlerror'
+../../src/libopensc/.libs/libopensc.so: error: undefined reference to 'dlclose'
+collect2: ld returned 1 exit status
+make[3]: *** [opensc-tool] Error 1
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ configure.ac |    7 +++++++
+ 1 files changed, 7 insertions(+), 0 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 2751f0f..123aeb1 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -277,6 +277,13 @@ if test -z "${LTLIB_LIBS}"; then
+ 		[LTLIB_LIBS="-lltdl"]
+ 	)
+ fi
++if test -z "${LTLIB_LIBS}"; then
++	AC_CHECK_LIB(
++		[dl],
++		[dlopen],
++		[LTLIB_LIBS="-ldl"]
++	)
++fi
+ 
+ saved_CFLAGS="${CFLAGS}"
+ CFLAGS="${CFLAGS} ${LTLIB_CFLAGS}"
+-- 
+1.7.8.6
+

@@ -1,0 +1,3 @@
+# suacomp library is required on interix now! this is a crucial part of the system.
+# without it, there is only a broken poll, no multi-cpu/core support, etc...
+*sys-libs/suacomp

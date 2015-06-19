@@ -1,0 +1,11 @@
+--- webkitgtk-2.4.6.orig/Source/WebKit2/WebProcess/soup/WebProcessSoup.cpp	2014-09-26 11:40:45.000000000 +0400
++++ webkitgtk-2.4.6.orig/Source/WebKit2/WebProcess/soup/WebProcessSoup.cpp	2014-10-11 20:43:16.687116807 +0400
+@@ -110,7 +110,7 @@ 
+     WebCore::memoryCache()->setDeadDecodedDataDeletionInterval(deadDecodedDataDeletionInterval);
+     WebCore::pageCache()->setCapacity(pageCacheCapacity);
+ 
+-#if PLATFORM(GTK)
++#if PLATFORM(GTK) && USE(ACCELERATED_COMPOSITING)
+     WebCore::pageCache()->setShouldClearBackingStores(true);
+ #endif
+ 

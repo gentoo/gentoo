@@ -1,0 +1,23 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-nds/ypserv/files/ypserv,v 1.4 2006/04/10 20:00:18 eradicator Exp $
+
+depend() {
+	need net portmap
+	use domainname
+}
+
+start() {
+	ebegin "Starting NIS Server"
+	YOPTS=""
+	if [ -n "${YPSERV_OPTS}" ]; then YOPTS="-- ${YPSERV_OPTS}"; fi
+	start-stop-daemon --start --quiet --exec /usr/sbin/ypserv ${YOPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping NIS Server"
+	start-stop-daemon --stop --quiet --exec /usr/sbin/ypserv
+	eend $?
+}

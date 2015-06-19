@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DEPEND=>=dev-libs/efl-1.8.1 >=media-libs/elementary-1.8.0 virtual/pkgconfig
+DESCRIPTION=Feature rich terminal emulator using the Enlightenment Foundation Libraries
+EAPI=5
+HOMEPAGE=http://www.enlightenment.org/p.php?p=about/terminology
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD-2
+RDEPEND=>=dev-libs/efl-1.8.1 >=media-libs/elementary-1.8.0
+SLOT=0
+SRC_URI=http://download.enlightenment.org/rel/apps/terminology/terminology-0.5.0.tar.bz2
+_md5_=08b43dc0d18127647ef974d73131b2a4

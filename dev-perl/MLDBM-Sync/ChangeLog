@@ -1,0 +1,57 @@
+# ChangeLog for dev-perl/MLDBM-Sync
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/MLDBM-Sync/ChangeLog,v 1.14 2014/08/24 01:15:03 axs Exp $
+
+*MLDBM-Sync-0.300.0-r1 (24 Aug 2014)
+
+  24 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +MLDBM-Sync-0.300.0-r1.ebuild, -MLDBM-Sync-0.300.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -MLDBM-Sync-0.30.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> MLDBM-Sync-0.300.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*MLDBM-Sync-0.300.0 (30 Aug 2011)
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org> +MLDBM-Sync-0.300.0.ebuild:
+  Change version scheme
+
+  26 Apr 2010; Markus Meier <maekke@gentoo.org> MLDBM-Sync-0.30.ebuild:
+  x86 stable, bug #314733
+
+  22 Oct 2009; Torsten Veller <tove@gentoo.org> MLDBM-Sync-0.30.ebuild:
+  Remove test dependencies from RDEPEND
+
+  03 Jun 2007; Raúl Porcel <armin76@gentoo.org> MLDBM-Sync-0.30.ebuild:
+  Add ~alpha wrt #173114
+
+  14 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  MLDBM-Sync-0.30.ebuild:
+  sparc stable
+
+  09 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  MLDBM-Sync-0.30.ebuild:
+  Marking stable amd64
+
+  26 Feb 2007; Michael Cummings <mcummings@gentoo.org>
+  MLDBM-Sync-0.30.ebuild:
+  Bug 158445, keywording ~sparc
+
+  24 Feb 2007; nixnut <nixnut@gentoo.org> MLDBM-Sync-0.30.ebuild:
+  Added ~ppc wrt bug 168060
+
+  23 Feb 2007; Markus Rothe <corsair@gentoo.org> MLDBM-Sync-0.30.ebuild:
+  Added ~ppc64; bug #168060
+
+*MLDBM-Sync-0.30 (07 Feb 2007)
+
+  07 Feb 2007; Christian Hartmann <ian@gentoo.org> +metadata.xml,
+  +MLDBM-Sync-0.30.ebuild:
+  Dep for new pending package mail-filter/spamassassin-fuzzyocr; bug #158445

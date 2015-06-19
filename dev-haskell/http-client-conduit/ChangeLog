@@ -1,0 +1,27 @@
+# ChangeLog for dev-haskell/http-client-conduit
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/http-client-conduit/ChangeLog,v 1.5 2015/06/06 11:42:48 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+*http-client-conduit-0.3.0 (02 Jul 2014)
+
+  02 Jul 2014; Mark Wright <gienah@gentoo.org>
+  +http-client-conduit-0.3.0.ebuild:
+  Bump http-client-conduit to 0.3.0
+
+*http-client-conduit-0.2.0.1 (09 Mar 2014)
+
+  09 Mar 2014; Mark Wright <gienah@gentoo.org>
+  +http-client-conduit-0.2.0.1.ebuild:
+  Bump http-client-conduit to 0.2.0.1
+
+*http-client-conduit-0.2.0.0 (11 Dec 2013)
+
+  11 Dec 2013; Mark Wright <gienah@gentoo.org>
+  +http-client-conduit-0.2.0.0.ebuild, +metadata.xml:
+  Add http-client-conduit 0.2.0.0

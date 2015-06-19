@@ -1,0 +1,36 @@
+# ChangeLog for sci-libs/parmgridgen
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/parmgridgen/ChangeLog,v 1.4 2015/02/22 11:02:10 pacho Exp $
+
+  22 Feb 2015; Pacho Ramos <pacho@gentoo.org> parmgridgen-1.0.ebuild:
+  amd64/x86 stable, bug #540494
+
+  16 Apr 2014; Ulrich Müller <ulm@gentoo.org> parmgridgen-1.0.ebuild:
+  Fix LICENSE, add mirror and bindist restrictions, bug 470796.
+
+  21 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  parmgridgen-1.0.ebuild, +files/parmgridgen-1.0-as-needed.patch:
+  add patch for forced --as-needed linker flag (bug 272653), patch provided
+  by Priit Laes <amd@astore20.com> in bug 232491
+  Ported to EAPI 2
+
+*parmgridgen-1.0 (25 Apr 2009)
+
+  25 Apr 2009; Patrick Lauer <patrick@gentoo.org>
+  +files/parmgridgen-1.0-autotools.patch, +metadata.xml,
+  +parmgridgen-1.0.ebuild:
+  Initial import from sunrise overlay. Dependency of OpenFoam. Thanks to
+  Oliver Borm for the ebuild
+
+  19 Jan 2009; Christian Ruppert (idl0r) <spooky85@gmail.com>
+  parmgridgen-1.0.ebuild:
+  Add suggested RDEPEND=${DEPEND}, add die statement.
+
+  20 Jul 2008; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  parmgridgen-1.0.ebuild:
+  Use dodoc
+
+  20 Jul 2008; Oliver Borm (boroli) <oli.borm@web.de>
+  +parmgridgen-1.0.ebuild, +files/parmgridgen-1.0-autotools.patch,
+  +metadata.xml:
+  New ebuild for bug 232491.

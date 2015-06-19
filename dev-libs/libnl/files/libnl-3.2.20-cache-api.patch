@@ -1,0 +1,9 @@
+--- a/tests/test-cache-mngr.c
++++ b/tests/test-cache-mngr.c
+@@ -1,5 +1,5 @@
+ #include <netlink/netlink.h>
+-#include <netlink/cache.h>
++#include <netlink/cache-api.h>
+ #include <netlink/cli/utils.h>
+ #include <signal.h>
+ 

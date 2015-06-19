@@ -1,0 +1,75 @@
+# ChangeLog for dev-libs/libwapcaplet
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libwapcaplet/ChangeLog,v 1.17 2015/06/09 22:01:35 xmw Exp $
+
+*libwapcaplet-0.2.2-r1 (09 Jun 2015)
+
+  09 Jun 2015; Michael Weber <xmw@gentoo.org> +libwapcaplet-0.2.2-r1.ebuild,
+  -libwapcaplet-0.2.2.ebuild:
+  Revbump for multilib fix.
+
+*libwapcaplet-0.2.2 (21 Mar 2015)
+
+  21 Mar 2015; Michael Weber <xmw@gentoo.org>
+  +files/libwapcaplet-0.2.2-glibc20.patch, +libwapcaplet-0.2.2.ebuild,
+  -libwapcaplet-0.1.1.ebuild, -libwapcaplet-0.2.0.ebuild,
+  -libwapcaplet-0.2.1.ebuild:
+  Version bump (bug 543846).
+
+*libwapcaplet-0.2.1-r1 (15 Nov 2014)
+
+  15 Nov 2014; Michael Weber <xmw@gentoo.org> +libwapcaplet-0.2.1-r1.ebuild:
+  Revbump to new build system
+
+*libwapcaplet-0.2.1 (06 Nov 2014)
+
+  06 Nov 2014; Michael Weber <xmw@gentoo.org>
+  +files/libwapcaplet-0.2.1-glibc20.patch, +libwapcaplet-0.2.1.ebuild:
+  Version bump with patch for bug 526382 and bug 526384.
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> libwapcaplet-0.2.0.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+  17 Jun 2014; Michał Górny <mgorny@gentoo.org> libwapcaplet-0.2.0.ebuild:
+  Enable tests on non-native ABIs since dev-libs/check is multilib nowadays.
+
+  05 Jan 2014; Fabian Groffen <grobian@gentoo.org> libwapcaplet-0.2.0.ebuild:
+  Marked ~m68k-mint, bug #494512
+
+  23 Jun 2013; Michael Weber <xmw@gentoo.org> libwapcaplet-0.2.0.ebuild:
+  Migrate to netsurf.eclass
+
+*libwapcaplet-0.2.0 (17 Jun 2013)
+
+  17 Jun 2013; Michael Weber <xmw@gentoo.org> +libwapcaplet-0.2.0.ebuild:
+  Version bump (bug 470720), multilib build, preparations for netsurf eclass.
+
+  27 Feb 2013; Michael Weber <xmw@gentoo.org> libwapcaplet-0.1.1.ebuild:
+  netsurf eclass preparation
+
+  27 Feb 2013; Michael Weber <xmw@gentoo.org> libwapcaplet-0.1.1.ebuild:
+  Keep -Werror
+
+  27 Feb 2013; Michael Weber <xmw@gentoo.org> libwapcaplet-0.1.1.ebuild:
+  Restore cross-compile functionality (thanks James Le Cuirot, bug 431884)
+
+  18 Jul 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  libwapcaplet-0.1.1.ebuild:
+  add missing test to IUSE
+
+  18 Jul 2012; Michael Weber <xmw@gentoo.org> libwapcaplet-0.1.1.ebuild:
+  fix inherit, static/shared on test.
+
+  18 Jul 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  libwapcaplet-0.1.1.ebuild:
+  add missing test to IUSE
+
+  17 Jul 2012; Michael Weber <xmw@gentoo.org> libwapcaplet-0.1.1.ebuild:
+  remove newline
+
+*libwapcaplet-0.1.1 (17 Jul 2012)
+
+  17 Jul 2012; Michael Weber <xmw@gentoo.org> +libwapcaplet-0.1.1.ebuild,
+  +metadata.xml:
+  Initial import

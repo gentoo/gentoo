@@ -1,0 +1,172 @@
+# ChangeLog for dev-perl/Net-CUPS
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-CUPS/ChangeLog,v 1.44 2014/08/24 13:01:13 axs Exp $
+
+*Net-CUPS-0.610.0-r2 (24 Aug 2014)
+
+  24 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Net-CUPS-0.610.0-r2.ebuild, -Net-CUPS-0.610.0-r1.ebuild:
+  bumped current stable ebuild(s) EAPI to 5; committed directly to stable as no
+  other changes present and revbump helps stable systems to keep from dieing on
+  perl-5.18 upgrade
+
+  06 Jan 2013; Torsten Veller <tove@gentoo.org> -Net-CUPS-0.610.0.ebuild:
+  Cleanup
+
+  06 Dec 2012; <ago@gentoo.org> Net-CUPS-0.610.0-r1.ebuild:
+  Stable for x86, wrt bug #441242
+
+  06 Dec 2012; <ago@gentoo.org> Net-CUPS-0.610.0-r1.ebuild:
+  Stable for amd64, wrt bug #441242
+
+*Net-CUPS-0.610.0-r1 (24 Aug 2012)
+
+  24 Aug 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  Net-CUPS-0.610.0.ebuild, +Net-CUPS-0.610.0-r1.ebuild,
+  +files/Net-CUPS-0.610.0-cups16.patch:
+  Add patch by Jiří Popelka to fix build against cups-1.6, bug 428740
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  03 Jun 2012; Torsten Veller <tove@gentoo.org> -Net-CUPS-0.59.ebuild:
+  Cleanup
+
+  06 May 2012; Raúl Porcel <armin76@gentoo.org> Net-CUPS-0.59.ebuild,
+  Net-CUPS-0.610.0.ebuild:
+  Drop ia64 keywords
+
+  09 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> Net-CUPS-0.610.0.ebuild:
+  x86 stable wrt bug #400179
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org> Net-CUPS-0.610.0.ebuild:
+  Stable for amd64, wrt bug #400179
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Net-CUPS-0.61.ebuild:
+  Cleanup
+
+*Net-CUPS-0.610.0 (29 Aug 2011)
+
+  29 Aug 2011; Torsten Veller <tove@gentoo.org> +Net-CUPS-0.610.0.ebuild:
+  Change version scheme
+
+  07 Sep 2009; Torsten Veller <tove@gentoo.org> -Net-CUPS-0.60.ebuild:
+  Cleanup
+
+*Net-CUPS-0.61 (22 Aug 2009)
+
+  22 Aug 2009; Torsten Veller <tove@gentoo.org> +Net-CUPS-0.61.ebuild:
+  Version bump
+
+  16 Aug 2009; Torsten Veller <tove@gentoo.org>
+  -files/CUPS_FOO_DEVICE.patch:
+  Remove unused patch
+
+*Net-CUPS-0.60 (15 Aug 2009)
+
+  15 Aug 2009; Torsten Veller <tove@gentoo.org> +Net-CUPS-0.60.ebuild:
+  Version bump
+
+  02 May 2009; Torsten Veller <tove@gentoo.org> -Net-CUPS-0.55.ebuild:
+  Cleanup
+
+  08 Oct 2008; Raúl Porcel <armin76@gentoo.org> Net-CUPS-0.59.ebuild:
+  ia64/x86 stable wrt #239729
+
+  06 Oct 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  Net-CUPS-0.59.ebuild:
+  stable amd64, bug 239729
+
+  15 Sep 2008; Torsten Veller <tove@gentoo.org> -Net-CUPS-0.41-r1.ebuild,
+  -Net-CUPS-0.50.ebuild, -Net-CUPS-0.51.ebuild:
+  Cleanup
+
+*Net-CUPS-0.59 (10 Sep 2008)
+
+  10 Sep 2008; Torsten Veller <tove@gentoo.org> +Net-CUPS-0.59.ebuild:
+  Version bump. Fixes also bug #216766
+
+  17 Dec 2007; Samuli Suominen <drac@gentoo.org> Net-CUPS-0.55.ebuild:
+  amd64 stable
+
+  06 Dec 2007; Raúl Porcel <armin76@gentoo.org> Net-CUPS-0.55.ebuild:
+  ia64/x86 stable
+
+  10 Nov 2007; Samuli Suominen <drac@gentoo.org> Net-CUPS-0.51.ebuild:
+  amd64 stable
+
+*Net-CUPS-0.55 (19 Oct 2007)
+
+  19 Oct 2007; Christian Hartmann <ian@gentoo.org> +Net-CUPS-0.55.ebuild:
+  Version bump
+
+  29 Jul 2007; Raúl Porcel <armin76@gentoo.org> Net-CUPS-0.51.ebuild:
+  ia64/x86 stable
+
+  09 Apr 2007; Michael Cummings <mcummings@gentoo.org> Net-CUPS-0.50.ebuild:
+  Marking stable amd64
+
+*Net-CUPS-0.51 (29 Mar 2007)
+
+  29 Mar 2007; Christian Hartmann <ian@gentoo.org> +Net-CUPS-0.51.ebuild:
+  Version bump
+
+  22 Feb 2007; Christian Hartmann <ian@gentoo.org> -Net-CUPS-0.37.ebuild:
+  Removed broken version
+
+  18 Feb 2007; Raúl Porcel <armin76@gentoo.org> Net-CUPS-0.41-r1.ebuild:
+  x86 stable wrt bug 167375
+
+*Net-CUPS-0.50 (17 Feb 2007)
+
+  17 Feb 2007; Christian Hartmann <ian@gentoo.org> +Net-CUPS-0.50.ebuild:
+  Version bump
+
+  19 Jan 2007; Michael Cummings <mcummings@gentoo.org> Net-CUPS-0.37.ebuild,
+  -Net-CUPS-0.41.ebuild, Net-CUPS-0.41-r1.ebuild:
+  Version bump, thanks seemant
+
+  21 Oct 2006; Aron Griffis <agriffis@gentoo.org> Net-CUPS-0.41-r1.ebuild:
+  Mark 0.41-r1 stable on ia64
+
+  21 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  Net-CUPS-0.41-r1.ebuild:
+  Marking amd64 stable
+
+  15 Oct 2006; Bryan Østergaard <kloeri@gentoo.org> Net-CUPS-0.41.ebuild:
+  Stable on ia64.
+
+*Net-CUPS-0.41-r1 (20 Sep 2006)
+
+  20 Sep 2006; Christian Hartmann <ian@gentoo.org>
+  +files/CUPS_FOO_DEVICE.patch, +Net-CUPS-0.41-r1.ebuild:
+  Revbump with patch for CUPS 1.2 goodness - see bug #143039
+
+  06 Aug 2006; Michael Cummings <mcummings@gentoo.org> Net-CUPS-0.41.ebuild:
+  Marking amd64 stable
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org> Net-CUPS-0.37.ebuild,
+  Net-CUPS-0.41.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org> Net-CUPS-0.37.ebuild:
+  Mark 0.37 stable on ia64
+
+  26 Jun 2006; Michael Cummings <mcummings@gentoo.org> Net-CUPS-0.41.ebuild:
+  Keywording ~amd64
+
+*Net-CUPS-0.41 (01 May 2006)
+
+  01 May 2006; <mcumming@gentoo.org> +Net-CUPS-0.41.ebuild:
+  Version bump
+
+  30 Mar 2006; Aron Griffis <agriffis@gentoo.org> Net-CUPS-0.37.ebuild:
+  Mark 0.37 ~ia64
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org> Net-CUPS-0.37.ebuild:
+  Marking stable x86
+
+*Net-CUPS-0.37 (12 Dec 2005)
+
+  12 Dec 2005; <mcumming@gentoo.org> +metadata.xml, +Net-CUPS-0.37.ebuild:
+  Dep for podbrowser for cups support

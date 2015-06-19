@@ -1,0 +1,9 @@
+diff -ruN linux-gpib-3.2.16.orig/language/Makefile.am linux-gpib-3.2.16/language/Makefile.am
+--- linux-gpib-3.2.16.orig/language/Makefile.am	2009-09-16 19:26:53.000000000 +0200
++++ linux-gpib-3.2.16/language/Makefile.am	2011-08-14 03:32:53.000000000 +0200
+@@ -67,4 +67,4 @@
+ 	$(RM) perl/Makefile
+ 
+ perl/Makefile:
+-	-(cd perl && $(PERL) Makefile.PL)
++	-(cd perl && $(PERL) Makefile.PL PREFIX=$(EPREFIX)/usr INSTALLDIRS=vendor INSTALLMAN3DIR='none' DESTDIR="$(DESTDIR)" )

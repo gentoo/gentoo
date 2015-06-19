@@ -1,0 +1,10 @@
+# ChangeLog for sci-chemistry/pdbcns
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/pdbcns/ChangeLog,v 1.1 2012/03/01 16:12:16 jlec Exp $
+
+*pdbcns-2.0.010504 (01 Mar 2012)
+
+  01 Mar 2012; Justin Lecher <jlec@gentoo.org> +pdbcns-2.0.010504.ebuild,
+  +metadata.xml:
+  New addition
+

@@ -1,0 +1,12 @@
+Fix process substitution on BSD
+
+--- execute_cmd.c
++++ execute_cmd.c
+@@ -2672,6 +2672,7 @@
+ 
+ 	  do_piping (pipe_in, pipe_out);
+ 
++	  subshell_environment = 0;
+ 	  if (async)
+ 	    subshell_environment |= SUBSHELL_ASYNC;
+ 	  if (pipe_in != NO_PIPE || pipe_out != NO_PIPE)

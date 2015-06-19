@@ -1,0 +1,112 @@
+From 69372a32025ac16578ad277c6356e89713a3f9f4 Mon Sep 17 00:00:00 2001
+From: Matthias Maier <tamiko@kyomu.43-1.org>
+Date: Mon, 3 Nov 2014 00:51:35 +0100
+Subject: [PATCH] Do not use /etc/sysconf
+
+---
+ daemon/Makefile.am               | 4 +---
+ daemon/libvirtd.service.in       | 3 +--
+ src/Makefile.am                  | 3 ---
+ src/locking/virtlockd.service.in | 3 +--
+ tools/Makefile.am                | 2 +-
+ tools/libvirt-guests.service.in  | 2 +-
+ 6 files changed, 5 insertions(+), 12 deletions(-)
+
+diff --git a/daemon/Makefile.am b/daemon/Makefile.am
+index b95a79d..1e98422 100644
+--- a/daemon/Makefile.am
++++ b/daemon/Makefile.am
+@@ -328,9 +328,7 @@ uninstall-logrotate:
+ 	rmdir $(DESTDIR)$(sysconfdir)/logrotate.d || :
+ 
+ install-sysconfig:
+-	$(MKDIR_P) $(DESTDIR)$(sysconfdir)/sysconfig
+-	$(INSTALL_DATA) $(srcdir)/libvirtd.sysconf \
+-	  $(DESTDIR)$(sysconfdir)/sysconfig/libvirtd
++
+ uninstall-sysconfig:
+ 	rm -f $(DESTDIR)$(sysconfdir)/sysconfig/libvirtd
+ 	rmdir $(DESTDIR)$(sysconfdir)/sysconfig || :
+diff --git a/daemon/libvirtd.service.in b/daemon/libvirtd.service.in
+index 1759ac8..cd337a1 100644
+--- a/daemon/libvirtd.service.in
++++ b/daemon/libvirtd.service.in
+@@ -10,8 +10,7 @@ Documentation=http://libvirt.org
+ 
+ [Service]
+ Type=notify
+-EnvironmentFile=-/etc/sysconfig/libvirtd
+-ExecStart=@sbindir@/libvirtd $LIBVIRTD_ARGS
++ExecStart=@sbindir@/libvirtd
+ ExecReload=/bin/kill -HUP $MAINPID
+ KillMode=process
+ Restart=on-failure
+diff --git a/src/Makefile.am b/src/Makefile.am
+index e65177f..18bbbb4 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -2269,9 +2269,6 @@ EXTRA_DIST += locking/virtlockd.sysconf \
+ 	locking/test_libvirt_lockd.aug.in
+ 
+ install-sysconfig:
+-	$(MKDIR_P) $(DESTDIR)$(sysconfdir)/sysconfig
+-	$(INSTALL_DATA) $(srcdir)/locking/virtlockd.sysconf \
+-	  $(DESTDIR)$(sysconfdir)/sysconfig/virtlockd
+ 
+ uninstall-sysconfig:
+ 	rm -f $(DESTDIR)$(sysconfdir)/sysconfig/virtlockd
+diff --git a/src/locking/virtlockd.service.in b/src/locking/virtlockd.service.in
+index 57089b0..ace0c83 100644
+--- a/src/locking/virtlockd.service.in
++++ b/src/locking/virtlockd.service.in
+@@ -5,8 +5,7 @@ Documentation=man:virtlockd(8)
+ Documentation=http://libvirt.org
+ 
+ [Service]
+-EnvironmentFile=-/etc/sysconfig/virtlockd
+-ExecStart=@sbindir@/virtlockd $VIRTLOCKD_ARGS
++ExecStart=@sbindir@/virtlockd
+ ExecReload=/bin/kill -USR1 $MAINPID
+ # Loosing the locks is a really bad thing that will
+ # cause the machine to be fenced (rebooted), so make
+diff --git a/tools/Makefile.am b/tools/Makefile.am
+index 93d642d..2da0e97 100644
+--- a/tools/Makefile.am
++++ b/tools/Makefile.am
+@@ -259,7 +259,7 @@ uninstall-local: uninstall-init uninstall-systemd
+ install-sysconfig:
+ 	$(MKDIR_P) $(DESTDIR)$(sysconfdir)/sysconfig
+ 	$(INSTALL_DATA) $(srcdir)/libvirt-guests.sysconf \
+-	  $(DESTDIR)$(sysconfdir)/sysconfig/libvirt-guests
++	  $(DESTDIR)$(sysconfdir)/libvirt/libvirt-guests.conf
+ 
+ uninstall-sysconfig:
+ 	rm -f $(DESTDIR)$(sysconfdir)/sysconfig/libvirt-guests
+diff --git a/tools/libvirt-guests.service.in b/tools/libvirt-guests.service.in
+index cc04b6d..9be514b 100644
+--- a/tools/libvirt-guests.service.in
++++ b/tools/libvirt-guests.service.in
+@@ -5,7 +5,7 @@ Documentation=man:libvirtd(8)
+ Documentation=http://libvirt.org
+ 
+ [Service]
+-EnvironmentFile=-/etc/sysconfig/libvirt-guests
++EnvironmentFile=-/etc/libvirt/libvirt-guests.conf
+ # Hack just call traditional service until we factor
+ # out the code
+ ExecStart=@libexecdir@/libvirt-guests.sh start
+--- a/tools/libvirt-guests.sysconf
++++ b/tools/libvirt-guests.sysconf
+@@ -1,3 +1,10 @@
++#
++# Warning: This configuration file is only sourced by the systemd
++# libvirt-guests.service unit. The coresponding openrc facility is in
++# /etc/init.d/libvirtd and /etc/conf.d/libvirtd
++#
++
++
+ # URIs to check for running guests
+  # example: URIS='default xen:/// vbox+tcp://host/system lxc:///'
+   #URIS=default
+-- 
+2.0.4

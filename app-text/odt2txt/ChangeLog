@@ -1,0 +1,38 @@
+# ChangeLog for app-text/odt2txt
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/odt2txt/ChangeLog,v 1.9 2013/01/30 18:55:36 hwoarang Exp $
+
+  30 Jan 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Update metadata.xml
+
+  31 Mar 2012; Tomáš Chvátal <scarabeus@gentoo.org> odt2txt-0.4-r1.ebuild:
+  Add blocker on app-office/unoconv which is different approach for the solution
+  provided here. Wrt bug#410057.
+
+  02 Feb 2011; Mark Loeser <halcy0n@gentoo.org> odt2txt-0.4-r1.ebuild:
+  Mark ~ppc64; bug #296794
+
+  29 Jan 2011; Raúl Porcel <armin76@gentoo.org> odt2txt-0.4-r1.ebuild:
+  alpha/ia64/sparc stable wrt #351794
+
+  25 Jan 2011; Christian Faulhammer <fauli@gentoo.org>
+  odt2txt-0.4-r1.ebuild:
+  stable x86, bug 351794
+
+  23 Jan 2011; Markos Chandras <hwoarang@gentoo.org> odt2txt-0.4-r1.ebuild:
+  Stable on amd64 wrt bug #351794
+
+*odt2txt-0.4-r1 (20 Jan 2011)
+
+  20 Jan 2011; Markos Chandras <hwoarang@gentoo.org> +odt2txt-0.4-r1.ebuild:
+  Respect CC,CFLAGS. Bug #351794
+
+  28 Nov 2010; Raúl Porcel <armin76@gentoo.org> odt2txt-0.4.ebuild:
+  Add ~alpha/~ia64/~sparc wrt #296794
+
+*odt2txt-0.4 (05 Nov 2010)
+
+  05 Nov 2010; Markos Chandras <hwoarang@gentoo.org> +odt2txt-0.4.ebuild,
+  +files/odt2txt-0.4-darwin_iconv.patch, +metadata.xml:
+  Moved from sunrise overlay. Bug #263574. Thanks to Dirk Tilger
+  <dirk@miriup.de> for the initial ebuild. Montjoie will be proxy maintainer

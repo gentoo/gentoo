@@ -1,0 +1,50 @@
+# ChangeLog for app-misc/g15stats
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/g15stats/ChangeLog,v 1.12 2015/06/09 11:42:22 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  17 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -files/g15stats-1.0.confd,
+  -files/g15stats-1.0.initd, -g15stats-1.0.ebuild:
+  Remove old.
+
+  03 Nov 2013; Lars Wendler <polynomial-c@gentoo.org> metadata.xml:
+  Added myself as maintainer.
+
+  13 May 2013; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Remove removed lcd herd from metadata
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> g15stats-1.0.ebuild,
+  g15stats-1.9.7.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*g15stats-1.9.7 (03 Aug 2011)
+
+  03 Aug 2011; Robin H. Johnson <robbat2@gentoo.org> +g15stats-1.9.7.ebuild,
+  +files/g15stats-1.9.7.confd, +files/g15stats-1.9.7.initd:
+  Bug #349482: version bump.
+
+  06 Mar 2010; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Changing maintainer per emails of Jan 18th.
+
+  05 Jun 2009; Peter Alfredsen <loki_val@gentoo.org> metadata.xml:
+  Retiring, bug 220219.
+
+  01 Mar 2009; Peter Alfredsen <loki_val@gentoo.org> g15stats-1.0.ebuild:
+  Fix description w.r.t. 260754. Thanks to TheLaN <thelan75@gmail.com>.
+
+  05 Oct 2008; Diego Pettenò <flameeyes@gentoo.org> g15stats-1.0.ebuild:
+  Fix obvious typo in DEPEND.
+
+  14 Aug 2008; Peter Volkov <pva@gentoo.org> g15stats-1.0.ebuild:
+  ~amd64 keyworded as this package was initially tested on amd64, bug
+  #210192, thank Vadim Efimov for report.
+
+*g15stats-1.0 (06 Jul 2008)
+
+  06 Jul 2008; Peter Alfredsen <loki_val@gentoo.org>
+  +files/g15stats-1.0.confd, +files/g15stats-1.0.initd, +metadata.xml,
+  +g15stats-1.0.ebuild:
+  Initial commit. Thanks Vadim Efimov <evadim@evadim.ru> of bug #210192 for
+  the ebuild.

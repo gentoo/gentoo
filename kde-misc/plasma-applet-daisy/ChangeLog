@@ -1,0 +1,70 @@
+# ChangeLog for kde-misc/plasma-applet-daisy
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/plasma-applet-daisy/ChangeLog,v 1.12 2014/04/24 15:19:23 johu Exp $
+
+  24 Apr 2014; Johannes Huber <johu@gentoo.org>
+  -plasma-applet-daisy-0.0.4.26.ebuild, plasma-applet-daisy-0.0.4.26-r1.ebuild:
+  amd64/x86 stable, remove old.
+
+*plasma-applet-daisy-0.0.4.26-r1 (21 Mar 2014)
+
+  21 Mar 2014; Johannes Huber <johu@gentoo.org>
+  +plasma-applet-daisy-0.0.4.26-r1.ebuild:
+  Revision bump to EAPI 5.
+
+  23 Nov 2012; Agostino Sarubbo <ago@gentoo.org>
+  plasma-applet-daisy-0.0.4.26.ebuild:
+  Stable for x86, wrt bug #442394
+
+  23 Nov 2012; Agostino Sarubbo <ago@gentoo.org>
+  plasma-applet-daisy-0.0.4.26.ebuild:
+  Stable for amd64, wrt bug #442394
+
+*plasma-applet-daisy-0.0.4.26 (16 Jul 2012)
+
+  16 Jul 2012; Johannes Huber <johu@gentoo.org>
+  +plasma-applet-daisy-0.0.4.26.ebuild,
+  -files/plasma-applet-daisy-0.0.4.25-kde48.patch,
+  -plasma-applet-daisy-0.0.4.25-r1.ebuild, -plasma-applet-daisy-0.0.4.25.ebuild:
+  Version bump, remove old.
+
+*plasma-applet-daisy-0.0.4.25-r1 (08 Mar 2012)
+
+  08 Mar 2012; Johannes Huber <johu@gentoo.org>
+  +files/plasma-applet-daisy-0.0.4.25-kde48.patch,
+  +plasma-applet-daisy-0.0.4.25-r1.ebuild, plasma-applet-daisy-0.0.4.25.ebuild:
+  Revision bump adds an upstream patch from a fork to build with kde 4.8 spotted
+  by kensington <gentoo@scribeofthenile.com>, bug #405857.
+
+  29 Oct 2011; Jonathan Callen <abcd@gentoo.org>
+  plasma-applet-daisy-0.0.4.25.ebuild:
+  Bump to EAPI=4
+
+  31 Jan 2011; Theo Chatzimichos <tampakrap@gentoo.org>
+  -plasma-applet-daisy-0.0.4.23.ebuild, plasma-applet-daisy-0.0.4.25.ebuild:
+  Slotmove to 4
+
+*plasma-applet-daisy-0.0.4.25 (06 Jan 2011)
+
+  06 Jan 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +plasma-applet-daisy-0.0.4.25.ebuild:
+  Version bump (bug 348442)
+
+*plasma-applet-daisy-0.0.4.23 (07 Jul 2010)
+
+  07 Jul 2010; Dror Levin <spatz@gentoo.org>
+  -plasma-applet-daisy-0.0.4.22.ebuild,
+  -files/plasma-applet-daisy-0.0.4.22-gcc45.patch,
+  +plasma-applet-daisy-0.0.4.23.ebuild:
+  Version bump, drop old.
+
+  03 Jun 2010; Dror Levin <spatz@gentoo.org>
+  plasma-applet-daisy-0.0.4.22.ebuild,
+  +files/plasma-applet-daisy-0.0.4.22-gcc45.patch:
+  Fix building with gcc 4.5, bug 322593.
+
+*plasma-applet-daisy-0.0.4.22 (18 Mar 2010)
+
+  18 Mar 2010; Dror Levin <spatz@gentoo.org>
+  +plasma-applet-daisy-0.0.4.22.ebuild, +metadata.xml:
+  Initial import from kde overlay. First version by hwoarang.

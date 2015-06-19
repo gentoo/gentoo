@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Norwegian dictionaries for myspell/hunspell
+EAPI=4
+HOMEPAGE=http://spell-norwegian.alioth.debian.org/
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=https://alioth.debian.org/frs/download.php/2357/no_NO-pack2-2.0.10.zip
+_eclasses_=myspell-r2	16f301e982001f671a68d8c364cabbd0
+_md5_=1b31673ae46fe06c8cb213cfa7bc90e2

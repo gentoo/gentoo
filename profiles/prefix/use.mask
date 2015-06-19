@@ -1,0 +1,12 @@
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/use.mask,v 1.9 2014/01/18 02:01:21 redlizard Exp $
+
+# Mask all glibc/linux combination, unmasked in the appropriate profiles
+elibc_glibc
+kernel_linux
+
+# USE=acl will probably never work because of how it is related to the kernel
+# and Gentoo Prefix does not have access to that. Also, definately problems with
+# coreutils on darwin.
+acl

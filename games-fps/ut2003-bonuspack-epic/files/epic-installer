@@ -1,0 +1,48 @@
+#!/bin/bash
+
+if [[ -d $HOME/.ut2003/System ]] ; then
+	cd "$HOME/.ut2003/System"
+	echo "Editing UT2003.ini in $PWD"
+	cat >> UT2003.ini <<EOT
+
+[Xinterface.Tab_AudioSettings]
+BonusPackInfo[1]=(PackageName="AnnouncerEvil.uax",Description="Evil")
+BonusPackInfo[2]=(PackageName="AnnouncerFemale.uax",Description="Female")
+BonusPackInfo[3]=(PackageName="AnnouncerSexy.uax",Description="Aroused")
+
+EOT
+
+	ed UT2003.ini >/dev/null 2>&1 <<EOT
+/\[xInterface.ExtendedConsole\]
+a
+MusicManagerClassName=OGGPlayer.UT2OGGMenu
+.
+wq
+EOT
+
+	ed UT2003.ini >/dev/null 2>&1 <<EOT
+$
+?EditPackages?
+a
+EditPackages=BonusPack
+EditPackages=SkaarjPack
+EditPackages=SkaarjPack_rc
+.
+wq
+EOT
+
+	ed UT2003.ini >/dev/null 2>&1 <<EOT
+$
+?ServerPackages?
+a
+ServerPackages=BonusPack
+ServerPackages=SkaarjPack
+ServerPackages=SkaarjPack_rc
+.
+wq
+EOT
+
+	echo "Editing User.ini in $PWD"
+	sed 's/^F11=.*$/F11=MusicMenu/g' < User.ini > User.ini~~
+	mv User.ini~~ User.ini
+fi

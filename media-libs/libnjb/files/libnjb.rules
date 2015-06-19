@@ -1,0 +1,35 @@
+SUBSYSTEM!="usb_device", GOTO="libnjb_rules_end"
+ACTION!="add", GOTO="libnjb_rules_end"
+
+# Creative Nomad Jukebox
+ATTRS{idVendor}=="0471", ATTRS{idProduct}=="0222", GROUP="plugdev", MODE="0660"
+# Creative Nomad Jukebox 2
+ATTRS{idVendor}=="041e", ATTRS{idProduct}=="4100", GROUP="plugdev", MODE="0660"
+# Creative Nomad Jukebox 3
+ATTRS{idVendor}=="041e", ATTRS{idProduct}=="4101", GROUP="plugdev", MODE="0660"
+# Creative Nomad Jukebox Zen
+ATTRS{idVendor}=="041e", ATTRS{idProduct}=="4108", GROUP="plugdev", MODE="0660"
+# Creative Nomad Jukebox Zen USB 2.0
+ATTRS{idVendor}=="041e", ATTRS{idProduct}=="410b", GROUP="plugdev", MODE="0660"
+# Creative Nomad Jukebox Zen NX
+ATTRS{idVendor}=="041e", ATTRS{idProduct}=="4109", GROUP="plugdev", MODE="0660"
+# Creative Nomad Jukebox Zen Xtra
+ATTRS{idVendor}=="041e", ATTRS{idProduct}=="4110", GROUP="plugdev", MODE="0660"
+# Dell Digital Jukebox
+ATTRS{idVendor}=="041e", ATTRS{idProduct}=="4111", GROUP="plugdev", MODE="0660"
+# Creative Nomad Jukebox Zen Touch
+ATTRS{idVendor}=="041e", ATTRS{idProduct}=="411b", GROUP="plugdev", MODE="0660"
+# Creative Zen (Zen Micro variant)
+ATTRS{idVendor}=="041e", ATTRS{idProduct}=="411d", GROUP="plugdev", MODE="0660"
+# Creative Nomad Jukebox Zen Micro
+ATTRS{idVendor}=="041e", ATTRS{idProduct}=="411e", GROUP="plugdev", MODE="0660"
+# Second Generation Dell Digital Jukebox
+ATTRS{idVendor}=="041e", ATTRS{idProduct}=="4126", GROUP="plugdev", MODE="0660"
+# Dell Pocket DJ
+ATTRS{idVendor}=="041e", ATTRS{idProduct}=="4127", GROUP="plugdev", MODE="0660"
+# Creative Zen Sleek
+ATTRS{idVendor}=="041e", ATTRS{idProduct}=="4136", GROUP="plugdev", MODE="0660"
+# Third Generation Dell Digital Jukebox
+ATTRS{idVendor}=="041e", ATTRS{idProduct}=="412f", GROUP="plugdev", MODE="0660"
+
+LABEL="libnjb_rules_end"

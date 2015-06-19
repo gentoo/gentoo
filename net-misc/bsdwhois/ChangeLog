@@ -1,0 +1,53 @@
+# ChangeLog for net-misc/bsdwhois
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/bsdwhois/ChangeLog,v 1.13 2012/08/21 03:44:26 ottxor Exp $
+
+  21 Aug 2012; Christoph Junghans <ottxor@gentoo.org> bsdwhois-1.43.2.1.ebuild:
+  added prefix support (bug #432000)
+
+  04 Nov 2009; Markus Meier <maekke@gentoo.org> bsdwhois-1.43.2.1.ebuild:
+  x86 stable, bug #214397
+
+  25 Oct 2009; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove drizzt from metadata.xml (#149111)
+
+  23 Oct 2009; Samuli Suominen <ssuominen@gentoo.org>
+  bsdwhois-1.43.2.1.ebuild:
+  amd64 stable wrt #214397
+
+  11 Apr 2007; Timothy Redaelli <drizzt@gentoo.org>
+  bsdwhois-1.43.2.1.ebuild:
+  Use use "userland_BSD" instead of "${USERLAND}"
+
+  02 Nov 2006; Timothy Redaelli <drizzt@gentoo.org>
+  bsdwhois-1.43.2.1.ebuild:
+  Used [[]] instead of [].
+
+  01 Nov 2006; Timothy Redaelli <drizzt@gentoo.org>
+  bsdwhois-1.43.2.1.ebuild:
+  Added ~ppc keyword.
+
+  29 Oct 2006; Timothy Redaelli <drizzt@gentoo.org>
+  bsdwhois-1.43.2.1.ebuild:
+  Removed support for eselect-whois.
+
+  27 Oct 2006; Roy Marples <uberlord@gentoo.org> bsdwhois-1.43.2.1.ebuild:
+  Added ~sparc-fbsd keyword.
+
+  27 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  bsdwhois-1.43.2.1.ebuild:
+  Add ~x86-fbsd keyword.
+
+  27 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  bsdwhois-1.43.2.1.ebuild:
+  Update to use eselect-whois (don't install as whois on BSD userland).
+
+  23 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  bsdwhois-1.43.2.1.ebuild:
+  Add ~amd64 keyword.
+
+*bsdwhois-1.43.2.1 (18 Oct 2006)
+
+  18 Oct 2006; Timothy Redaelli <drizzt@gentoo.org> +metadata.xml,
+  +bsdwhois-1.43.2.1.ebuild:
+  Initial version, BSD version of whois, usable also on Linux.

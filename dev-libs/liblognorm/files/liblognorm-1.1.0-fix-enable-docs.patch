@@ -1,0 +1,41 @@
+[PATCH] Turn --disable-docs into --enable-docs and make it work
+
+See upstream issue #16 for more details.
+---
+ configure.ac | 22 ++++++++++++++--------
+ 1 file changed, 14 insertions(+), 8 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 547908c..26a2f96 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -96,15 +96,21 @@ fi
+ 
+ # docs (html) build settings
+ AC_ARG_ENABLE(docs,
+-	[AS_HELP_STRING([--disable-docs],[Disable building HTML docs (requires Sphinx)])],
+-	[enable_docs="no"],
+-	[enable_docs="yes"]
++	[AS_HELP_STRING([--enable-docs],[Enable building HTML docs (requires Sphinx) @<:@default=no@:>@])],
++	[case "${enableval}" in
++		yes) enable_docs="yes" ;;
++		no) enable_docs="no" ;;
++		*) AC_MSG_ERROR(bad value ${enableval} for --enable-docs) ;;
++	esac],
++	[enable_docs="no"]
+ )
+-AC_CHECK_PROGS([SPHINXBUILD], [sphinx-build sphinx-build3 sphinx-build2], [no])
+-AS_IF([test "$enable_docs" = "yes" -a "x$SPHINXBUILD" = xno],
+-    [AC_MSG_ERROR([sphinx-build is required to build documentation, install it or try --disable-docs])]
+-)
+-AM_CONDITIONAL([ENABLE_DOCS], [test "$enable_docs" = yes])
++if test "$enable_docs" = "yes"; then
++	AC_CHECK_PROGS([SPHINXBUILD], [sphinx-build sphinx-build3 sphinx-build2], [no])
++	if test "$SPHINXBUILD" = "no"; then
++		AC_MSG_ERROR([sphinx-build is required to build documentation, install it or try --disable-docs])
++	fi
++fi
++AM_CONDITIONAL([ENABLE_DOCS], [test "$enable_docs" = "yes"])
+ 
+ AC_ARG_ENABLE(testbench,
+         [AS_HELP_STRING([--enable-testbench],[testbench enabled @<:@default=no@:>@])],

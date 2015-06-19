@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare setup
+DEPEND=>=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] app-text/docbook-xsl-stylesheets dev-libs/libxslt sys-cluster/cluster-glue >=sys-cluster/libqb-0.14.0 sys-cluster/resource-agents cman? ( sys-cluster/cman ) heartbeat? ( >=sys-cluster/heartbeat-3.0.0 ) !heartbeat? ( sys-cluster/corosync ) smtp? ( net-libs/libesmtp ) snmp? ( net-analyzer/net-snmp ) !<sys-devel/gettext-0.18.1.1-r3 =sys-devel/automake-1.12* >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Pacemaker CRM
+EAPI=5
+HOMEPAGE=http://www.linux-ha.org/wiki/Pacemaker
+IUSE=acl cman heartbeat smtp snmp static-libs python_targets_python2_7
+KEYWORDS=amd64 hppa x86
+LICENSE=GPL-2
+RDEPEND=>=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] app-text/docbook-xsl-stylesheets dev-libs/libxslt sys-cluster/cluster-glue >=sys-cluster/libqb-0.14.0 sys-cluster/resource-agents cman? ( sys-cluster/cman ) heartbeat? ( >=sys-cluster/heartbeat-3.0.0 ) !heartbeat? ( sys-cluster/corosync ) smtp? ( net-libs/libesmtp ) snmp? ( net-analyzer/net-snmp )
+REQUIRED_USE=python_targets_python2_7
+SLOT=0
+SRC_URI=https://github.com/ClusterLabs/pacemaker/archive/Pacemaker-1.1.12.tar.gz
+_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	7a178335dbd6ea7f50ed4e3e1c13c1e4	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=69b87e293a3028a4d7a819405f8ddb34

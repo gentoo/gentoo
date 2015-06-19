@@ -1,0 +1,15 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/freeipmi/files/bmc-watchdog.initd.3,v 1.1 2011/10/18 09:01:08 flameeyes Exp $
+
+extra_commands="condrestart"
+description_condrestart="Restart the service only if started already"
+
+command="/usr/sbin/${SVCNAME}"
+command_args="${OPTIONS}"
+pidfile=/var/run/$SVCNAME.pid
+
+condrestart() {
+	service_started && restart
+}

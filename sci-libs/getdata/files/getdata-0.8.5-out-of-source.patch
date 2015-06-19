@@ -1,0 +1,16 @@
+ bindings/python/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/bindings/python/Makefile.am b/bindings/python/Makefile.am
+index c2ab221..f5ade68 100644
+--- a/bindings/python/Makefile.am
++++ b/bindings/python/Makefile.am
+@@ -35,7 +35,7 @@ LIBS=
+ 
+ BUILT_SOURCES = pyconstants.c
+ AM_CFLAGS = ${WALL} -fno-strict-aliasing
+-AM_CPPFLAGS = $(CPPFLAGS) $(PYTHON_CPPFLAGS) $(NUMPY_CPPFLAGS)
++AM_CPPFLAGS = $(CPPFLAGS) $(PYTHON_CPPFLAGS) $(NUMPY_CPPFLAGS) -I$(top_srcdir)/src
+ pygetdata_la_LDFLAGS = -module -avoid-version \
+ 											 -export-symbols-regex initpygetdata
+ pygetdata_la_LIBADD = $(PYTHON_LIBS) ../../src/libgetdata.la

@@ -1,0 +1,13 @@
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/darwin/macos/10.4/package.use.mask,v 1.1 2011/12/30 15:49:34 grobian Exp $
+
+
+# Fabian Groffen <grobian@gentoo.org> (28 Apr 2008)
+# mach_override.h missing
+# http://www.erlang.org/pipermail/erlang-questions/2007-July/027870.html
+dev-lang/erlang hipe
+
+# Elias Pipping <pipping@gentoo.org> (25 Nov 2007)
+# there's no (official) java6 on macosx
+dev-util/checkstyle test

@@ -1,0 +1,50 @@
+# ChangeLog for media-fonts/symbola
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/symbola/ChangeLog,v 1.11 2014/05/25 21:45:04 chithanh Exp $
+
+  25 May 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -symbola-7.01.ebuild, -symbola-7.08.ebuild, -symbola-7.11.ebuild:
+  Remove old.
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> symbola-7.12.ebuild:
+  Stable for ppc, wrt bug #495692
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> symbola-7.12.ebuild:
+  amd64 stable, bug #495692
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> symbola-7.12.ebuild:
+  x86 stable wrt bug #495692
+
+*symbola-7.12 (15 Sep 2013)
+
+  15 Sep 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +symbola-7.12.ebuild:
+  Version bump.
+
+*symbola-7.11 (27 Aug 2013)
+
+  27 Aug 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +symbola-7.11.ebuild:
+  Version bump.
+
+*symbola-7.08 (16 Jul 2013)
+
+  16 Jul 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +symbola-7.08.ebuild:
+  Add new version.
+
+  03 Jan 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  symbola-7.01.ebuild:
+  Replace as-is license with Unicode_Fonts_for_Ancient_Scripts, bug #449152.
+
+  22 May 2012; Jeff Horelick <jdhore@gentoo.org> symbola-7.01.ebuild:
+  marked x86 per bug 416491
+
+  19 May 2012; Agostino Sarubbo <ago@gentoo.org> symbola-7.01.ebuild:
+  Stable for amd64, wrt bug #416491
+
+*symbola-7.01 (02 Apr 2012)
+
+  02 Apr 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> +metadata.xml,
+  +symbola-7.01.ebuild:
+  Initial commit.

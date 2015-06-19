@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst prepare setup
+DEPEND=dev-libs/glib net-libs/libsoup net-libs/webkit-gtk:2 x11-libs/gtk+:2 x11-libs/libX11 virtual/pkgconfig
+DESCRIPTION=a simple web browser based on WebKit/GTK+
+EAPI=5
+HOMEPAGE=http://surf.suckless.org/
+IUSE=savedconfig
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=!sci-chemistry/surf dev-libs/glib net-libs/libsoup net-libs/webkit-gtk:2 x11-libs/gtk+:2 x11-libs/libX11 x11-apps/xprop x11-misc/dmenu !savedconfig? ( net-misc/curl x11-terms/st )
+SLOT=0
+SRC_URI=http://dl.suckless.org/surf/surf-0.6.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	portability	a45c088f246ef5091e029f6285d7ce42	savedconfig	5313100f525c41f6c72c6e04edeb4f65	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=90307eade1d3fa4d8be2910d18dd9946

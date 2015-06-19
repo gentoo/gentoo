@@ -1,0 +1,20 @@
+--- treewm-0.4.5b/src/action.cc	2009-01-17 18:17:32.000000000 -0400
++++ treewm-0.4.5/src/action.cc	2009-01-17 18:20:41.000000000 -0400
+@@ -9,6 +9,7 @@
+ #include "clienttree.h"
+ #include "clientinfo.h"
+ #include <unistd.h>
++#include <string.h>
+ 
+ Action::Action(Section *section) {
+   s = section;
+--- treewm-0.4.5b/src/resmanager.h	2009-01-17 18:17:32.000000000 -0400
++++ treewm-0.4.5/src/resmanager.h	2009-01-17 18:21:10.000000000 -0400
+@@ -12,6 +12,7 @@
+ #include "global.h"
+ #include "client.h"
+ #include <map>
++#include <string.h>
+ 
+ struct ltstr {
+   bool operator() (const char* s1, const char* s2) const  {

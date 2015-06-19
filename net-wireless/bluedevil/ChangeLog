@@ -1,0 +1,284 @@
+# ChangeLog for net-wireless/bluedevil
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/bluedevil/ChangeLog,v 1.71 2015/06/11 14:28:15 ago Exp $
+
+  11 Jun 2015; Agostino Sarubbo <ago@gentoo.org> bluedevil-2.1.1.ebuild:
+  Stable for ppc, wrt bug #550746
+
+  09 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -bluedevil-2.0.ebuild,
+  -bluedevil-2.1.ebuild:
+  Remove old.
+
+  09 Jun 2015; Agostino Sarubbo <ago@gentoo.org> bluedevil-2.1.1.ebuild:
+  Stable for x86, wrt bug #550746
+
+  08 Jun 2015; Agostino Sarubbo <ago@gentoo.org> bluedevil-2.1.1.ebuild:
+  Stable for amd64, wrt bug #550746
+
+*bluedevil-2.1.1 (16 Apr 2015)
+
+  16 Apr 2015; Manuel Rüger <mrueg@gentoo.org> +bluedevil-2.1.1.ebuild:
+  Version bump.
+
+  08 Jan 2015; Manuel Rüger <mrueg@gentoo.org> -bluedevil-1.3.2.ebuild:
+  Remove old.
+
+*bluedevil-2.1 (22 Dec 2014)
+
+  22 Dec 2014; Manuel Rüger <mrueg@gentoo.org> +bluedevil-2.1.ebuild:
+  Version bump.
+
+  12 Dec 2014; Pacho Ramos <pacho@gentoo.org> -bluedevil-2.0_rc1-r1.ebuild,
+  bluedevil-2.0_rc1.ebuild:
+  Fix dependencies, drop unneeded revision (#509358)
+
+  11 Dec 2014; Michael Palimaka <kensington@gentoo.org> bluedevil-1.3.2.ebuild,
+  bluedevil-2.0.ebuild, bluedevil-2.0_rc1-r1.ebuild, bluedevil-2.0_rc1.ebuild:
+  Pin net-libs/libbluedevil to SLOT 4 wrt bug #532164.
+
+*bluedevil-2.0 (04 Dec 2014)
+
+  04 Dec 2014; Michael Palimaka <kensington@gentoo.org> +bluedevil-2.0.ebuild:
+  Version bump wrt bug #531670.
+
+  06 Aug 2014; Johannes Huber <johu@gentoo.org> bluedevil-2.0_rc1-r1.ebuild:
+  Remove blocker.
+
+  11 May 2014; Agostino Sarubbo <ago@gentoo.org> bluedevil-2.0_rc1.ebuild:
+  Stable for ppc64, wrt bug #508862
+
+  10 May 2014; Agostino Sarubbo <ago@gentoo.org> bluedevil-2.0_rc1.ebuild:
+  Stable for ppc, wrt bug #508862
+
+  10 May 2014; Johannes Huber <johu@gentoo.org> bluedevil-2.0_rc1-r1.ebuild:
+  Remove blocker.
+
+*bluedevil-2.0_rc1-r1 (02 May 2014)
+
+  02 May 2014; Johannes Huber <johu@gentoo.org> +bluedevil-2.0_rc1-r1.ebuild:
+  Block app-mobilephone/obex-data-server and app-mobilephone/obexd which breaks
+  sending data with bluez 5, bug #509358.
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> bluedevil-2.0_rc1.ebuild:
+  x86 stable, bug 499954
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> bluedevil-2.0_rc1.ebuild:
+  amd64 stable, bug 499954
+
+*bluedevil-2.0_rc1 (04 Feb 2014)
+
+  04 Feb 2014; Manuel Rüger <mrueg@gentoo.org> +bluedevil-2.0_rc1.ebuild:
+  Add bluez-5 compatible release candidate.
+
+  30 Jan 2014; Manuel Rüger <mrueg@gentoo.org> bluedevil-1.3.2.ebuild:
+  Depend on libbluedevil-1 only. Fixes bug #499786.
+
+  30 Jan 2014; Manuel Rüger <mrueg@gentoo.org> -bluedevil-1.3.1.ebuild:
+  Cleanup old.
+
+  19 Jan 2014; Pacho Ramos <pacho@gentoo.org> bluedevil-1.3.2.ebuild:
+  amd64 stable, bug 492690
+
+  19 Jan 2014; Pacho Ramos <pacho@gentoo.org> bluedevil-1.3.2.ebuild:
+  amd64 stable, bug 492690
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> bluedevil-1.3.2.ebuild:
+  Stable for x86, wrt bug #492690
+
+  22 Dec 2013; Agostino Sarubbo <ago@gentoo.org> bluedevil-1.3.2.ebuild:
+  Stable for ppc64, wrt bug #492690
+
+  21 Dec 2013; Agostino Sarubbo <ago@gentoo.org> bluedevil-1.3.2.ebuild:
+  Stable for ppc, wrt bug #492690
+
+*bluedevil-1.3.2 (04 Sep 2013)
+
+  04 Sep 2013; Manuel Rüger <mrueg@gentoo.org> +bluedevil-1.3.2.ebuild:
+  Version bump.
+
+  09 Jun 2013; Johannes Huber <johu@gentoo.org> -bluedevil-1.3.ebuild,
+  -files/bluedevil-1.2.4-desktop.patch:
+  Remove old.
+
+  08 Jun 2013; Agostino Sarubbo <ago@gentoo.org> bluedevil-1.3.1.ebuild:
+  Stable for ppc64, wrt bug #471392
+
+  06 Jun 2013; Agostino Sarubbo <ago@gentoo.org> bluedevil-1.3.1.ebuild:
+  Stable for ppc, wrt bug #471392
+
+  05 Jun 2013; Agostino Sarubbo <ago@gentoo.org> bluedevil-1.3.1.ebuild:
+  Stable for x86, wrt bug #471392
+
+  04 Jun 2013; Agostino Sarubbo <ago@gentoo.org> bluedevil-1.3.1.ebuild:
+  Stable for amd64, wrt bug #471392
+
+  21 Apr 2013; Johannes Huber <johu@gentoo.org> bluedevil-1.3.1.ebuild:
+  Raise deps on net-libs/libbluedevil to fix build on mixed stable/testing
+  systems by Manuel Rüger <gentoo@rueg.eu>.
+
+*bluedevil-1.3.1 (20 Apr 2013)
+
+  20 Apr 2013; Johannes Huber <johu@gentoo.org> +bluedevil-1.3.1.ebuild,
+  -bluedevil-1.2.4.ebuild:
+  Version bump by Manuel Rüger <gentoo@rueg.eu> +me. Remove old.
+
+  02 Apr 2013; Agostino Sarubbo <ago@gentoo.org> bluedevil-1.3.ebuild:
+  Stable for ppc64, wrt bug #462890
+
+  01 Apr 2013; Agostino Sarubbo <ago@gentoo.org> bluedevil-1.3.ebuild:
+  Stable for ppc, wrt bug #462890
+
+  31 Mar 2013; Agostino Sarubbo <ago@gentoo.org> bluedevil-1.3.ebuild:
+  Stable for x86, wrt bug #462890
+
+  31 Mar 2013; Agostino Sarubbo <ago@gentoo.org> bluedevil-1.3.ebuild:
+  Stable for amd64, wrt bug #462890
+
+  23 Feb 2013; Agostino Sarubbo <ago@gentoo.org> bluedevil-1.3.ebuild:
+  Add ~ppc64, wrt bug #455960
+
+  20 Feb 2013; Agostino Sarubbo <ago@gentoo.org> bluedevil-1.3.ebuild:
+  Add ~ppc
+
+*bluedevil-1.3 (11 Feb 2013)
+
+  11 Feb 2013; Chris Reffett <creffett@gentoo.org> +bluedevil-1.3.ebuild:
+  Version bump to 1.3
+
+  28 Jan 2013; Michael Palimaka <kensington@gentoo.org> -bluedevil-1.2.3.ebuild:
+  Remove old.
+
+  27 Jan 2013; Agostino Sarubbo <ago@gentoo.org> bluedevil-1.2.4.ebuild:
+  Stable for x86, wrt bug #450678
+
+  27 Jan 2013; Agostino Sarubbo <ago@gentoo.org> bluedevil-1.2.4.ebuild:
+  Stable for amd64, wrt bug #450678
+
+*bluedevil-1.2.4 (10 Dec 2012)
+
+  10 Dec 2012; Michael Palimaka <kensington@gentoo.org> +bluedevil-1.2.4.ebuild,
+  +files/bluedevil-1.2.4-desktop.patch:
+  Version bump wrt bug #446676.
+
+  24 May 2012; Johannes Huber <johu@gentoo.org> -bluedevil-1.2.2.ebuild:
+  Remove old.
+
+  24 May 2012; Agostino Sarubbo <ago@gentoo.org> bluedevil-1.2.3.ebuild:
+  Stable for x86, wrt bug #414605
+
+  22 May 2012; Kacper Kowalik <xarthisius@gentoo.org> bluedevil-1.2.3.ebuild:
+  Drop ~ppc* until dependencies are also keyworded
+
+  18 May 2012; Johannes Huber <johu@gentoo.org> bluedevil-1.2.3.ebuild:
+  Stable for amd64, wrt bug #414605.
+
+  18 May 2012; Joseph Jezak <josejx@gentoo.org> bluedevil-1.2.3.ebuild:
+  Marked ~ppc ~ppc64 for bug #402989.
+
+*bluedevil-1.2.3 (30 Apr 2012)
+
+  30 Apr 2012; Johannes Huber <johu@gentoo.org> +bluedevil-1.2.3.ebuild:
+  Version bump.
+
+  24 Feb 2012; Johannes Huber <johu@gentoo.org> -bluedevil-1.2.1.ebuild:
+  Remove old.
+
+  24 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> bluedevil-1.2.2.ebuild:
+  x86 stable wrt bug #404847
+
+  21 Feb 2012; Agostino Sarubbo <ago@gentoo.org> bluedevil-1.2.2.ebuild:
+  Stable for amd64, wrt bug #404847
+
+*bluedevil-1.2.2 (30 Oct 2011)
+
+  30 Oct 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -bluedevil-1.1-r2.ebuild, bluedevil-1.2.1.ebuild, +bluedevil-1.2.2.ebuild,
+  -files/bluedevil-mimetypes.patch:
+  Version bump to 1.2.2 stabilise 1.2.1 on x86 and amd64. Drop overshadowed
+  version.
+
+  10 Oct 2011; Tomáš Chvátal <scarabeus@gentoo.org> bluedevil-1.2.1.ebuild:
+  Drop handbook useflag, doc is just empty folder and it confuses the unpack.
+  Wrt bug #386519.
+
+*bluedevil-1.2.1 (09 Oct 2011)
+
+  09 Oct 2011; Tomáš Chvátal <scarabeus@gentoo.org> -bluedevil-1.2.ebuild,
+  +bluedevil-1.2.1.ebuild:
+  Version bump to latest. Drop older.
+
+*bluedevil-1.2 (24 Sep 2011)
+
+  24 Sep 2011; Andreas K. Huettel <dilfridge@gentoo.org> +bluedevil-1.2.ebuild:
+  Version bump
+
+  14 Aug 2011; Markus Meier <maekke@gentoo.org> bluedevil-1.1-r2.ebuild:
+  add ~arm, bug #376613
+
+*bluedevil-1.1-r2 (30 May 2011)
+
+  30 May 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -bluedevil-1.1-r1.ebuild, +bluedevil-1.1-r2.ebuild,
+  +files/bluedevil-mimetypes.patch:
+  Fix annoying non-compilant virtual mime-types definition. Revision bump with
+  preserved keywords so we force everyone to update.
+
+  09 May 2011; Markos Chandras <hwoarang@gentoo.org> bluedevil-1.1-r1.ebuild:
+  Stable on amd64 wrt bug #354033
+
+  09 May 2011; Thomas Kahle <tomka@gentoo.org> bluedevil-1.1-r1.ebuild:
+  x86 stable per bug 354033
+
+*bluedevil-1.1-r1 (23 Apr 2011)
+
+  23 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org> -bluedevil-1.1.ebuild,
+  +bluedevil-1.1-r1.ebuild:
+  Update libbuledevil dep and revbump so all features work.
+
+*bluedevil-1.1 (18 Apr 2011)
+
+  18 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org> -bluedevil-1.0.4.ebuild,
+  +bluedevil-1.1.ebuild:
+  Version bump.
+
+*bluedevil-1.0.4 (14 Apr 2011)
+
+  14 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org> -bluedevil-1.0.3.ebuild,
+  +bluedevil-1.0.4.ebuild:
+  Version bump.
+
+  11 Apr 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  bluedevil-1.0.3.ebuild:
+  Raise libbluedevil dependency, bug 362835
+
+*bluedevil-1.0.3 (21 Mar 2011)
+
+  21 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org> -bluedevil-1.0.1.ebuild,
+  -bluedevil-1.0.2.ebuild, +bluedevil-1.0.3.ebuild:
+  Version bump
+
+  05 Mar 2011; Theo Chatzimichos <tampakrap@gentoo.org> bluedevil-1.0.1.ebuild,
+  bluedevil-1.0.2.ebuild:
+  Correct HOMEPAGE, bug 356801
+
+*bluedevil-1.0.2 (27 Feb 2011)
+
+  27 Feb 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +bluedevil-1.0.2.ebuild:
+  Version bump
+
+  07 Feb 2011; Tomáš Chvátal <scarabeus@gentoo.org> bluedevil-1.0.1.ebuild:
+  Fix depending on obexd[server]. Fixes bug #353825.
+
+*bluedevil-1.0.1 (27 Jan 2011)
+
+  27 Jan 2011; Tomáš Chvátal <scarabeus@gentoo.org> -bluedevil-1.0.ebuild,
+  +bluedevil-1.0.1.ebuild:
+  Version bump. Fixes bug #352940.
+
+*bluedevil-1.0 (02 Jan 2011)
+
+  02 Jan 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +bluedevil-1.0.ebuild, +metadata.xml:
+  New application (imported from kde overlay), fixes bug 345239. Thanks to
+  Christian Schmitt <chris@ilovelinux.de> for all the work.

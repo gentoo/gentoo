@@ -1,0 +1,17 @@
+In file included from ./ArgusModeler.h:330:0,
+                 from ./argus.h:40,
+                 from ArgusSource.c:67:
+./ArgusSource.h:893:6: error: ‘ArgusIpNetPacket’ undeclared here (not in a function)
+
+--- a/argus/ArgusSource.h
++++ b/argus/ArgusSource.h
+@@ -889,9 +889,6 @@
+ #ifdef DLT_JUNIPER_ETHER
+    { ArgusJuniperPacket,   DLT_JUNIPER_ETHER,  "ArgusJuniperPacket()" },
+ #endif
+-#ifdef DLT_IPNET
+-   { ArgusIpNetPacket,   DLT_IPNET,  "ArgusIpNetPacket()" },
+-#endif
+    { NULL, DLT_NULL, "" },
+ #endif
+    { NULL, 0, NULL},

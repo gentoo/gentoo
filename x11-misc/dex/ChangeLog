@@ -1,0 +1,30 @@
+# ChangeLog for x11-misc/dex
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/dex/ChangeLog,v 1.7 2015/05/22 05:52:23 pinkbyte Exp $
+
+*dex-0.7 (22 May 2015)
+
+  22 May 2015; Sergey Popov <pinkbyte@gentoo.org> +dex-0.7.ebuild:
+  Version bump, wrt bug #503958
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> dex-0.6.ebuild:
+  Drop old Python implementations
+
+  25 Nov 2014; Pacho Ramos <pacho@gentoo.org> dex-0.6.ebuild:
+  Support python 3.4
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> dex-0.6.ebuild:
+  Clean up obsolete dependencies on virtual/python-argparse and virtual/python-
+  unittest2 (those packages were only required for <=python-2.6).
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> dex-0.6.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  09 Jan 2013; Sergey Popov <pinkbyte@gentoo.org> dex-0.6.ebuild:
+  Fix dependencies, thanks to Tim Harder
+
+*dex-0.6 (07 Jan 2013)
+
+  07 Jan 2013; Sergey Popov <pinkbyte@gentoo.org> +dex-0.6.ebuild,
+  +metadata.xml:
+  Initial import, wrt bug #433840. Ebuild by Marcin Kowalski and Russell York

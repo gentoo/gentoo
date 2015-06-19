@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sci-astronomy</herd>
+<longdescription lang="en">
+  SkyCat is a tool that combines visualization of images and access
+  to catalogs and archive data for astronomy. It was developed at
+  the European Southern Observatory.
+</longdescription>
+</pkgmetadata>

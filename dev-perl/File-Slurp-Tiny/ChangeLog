@@ -1,0 +1,9 @@
+# ChangeLog for dev-perl/File-Slurp-Tiny
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/File-Slurp-Tiny/ChangeLog,v 1.1 2015/03/13 17:27:26 monsieurp Exp $
+
+*File-Slurp-Tiny-0.003 (13 Mar 2015)
+
+  13 Mar 2015; Patrice Clement <monsieurp@gentoo.org>
+  +File-Slurp-Tiny-0.003.ebuild, +metadata.xml:
+  Adding File-Slurp-Tiny to satify Tree-DAG_Node's new deps.

@@ -1,0 +1,47 @@
+# ChangeLog for net-analyzer/rtpbreak
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/rtpbreak/ChangeLog,v 1.9 2014/10/27 17:39:47 mrueg Exp $
+
+*rtpbreak-1.3a-r1 (27 Oct 2014)
+
+  27 Oct 2014; Manuel Rüger <mrueg@gentoo.org> +rtpbreak-1.3a-r1.ebuild,
+  -rtpbreak-1.3a.ebuild:
+  Cleanup superseded EAPI1 ebuild.
+
+  05 Apr 2011; Kevin McCarthy <signals@gentoo.org> rtpbreak-1.3a.ebuild,
+  +files/rtpbreak-1.3a-missing-headers.patch:
+  Add missing udp.h include. #351602
+
+  01 Mar 2011; Christian Ruppert <idl0r@gentoo.org>
+  -files/rtpbreak-1.0-ldflags.patch, -files/rtpbreak-1.2-build.patch,
+  -files/rtpbreak-1.2-ldflags.patch:
+  Remove unused patches
+
+  23 Dec 2009; Víctor Ostorga <vostorga@gentoo.org> -rtpbreak-1.0.ebuild,
+  -rtpbreak-1.2.ebuild, rtpbreak-1.3a.ebuild:
+  Removing old ebuilds, fixing missing documentation, bug #298010
+
+  25 Oct 2009; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove drizzt from metadata.xml (#149111)
+
+*rtpbreak-1.3a (05 Feb 2009)
+
+  05 Feb 2009; Timothy Redaelli <drizzt@gentoo.org>
+  +files/rtpbreak-1.3a-limits.patch, +rtpbreak-1.3a.ebuild:
+  Version bump, new homepage and add ~amd64 keyword
+
+  14 Jan 2009; Mike Frysinger <vapier@gentoo.org>
+  +files/rtpbreak-1.2-build.patch, rtpbreak-1.2.ebuild:
+  Fix building with newer glibc #247936 by Diego E. Pettenò.
+
+*rtpbreak-1.2 (26 Sep 2007)
+
+  26 Sep 2007; Timothy Redaelli <drizzt@gentoo.org>
+  +files/rtpbreak-1.2-ldflags.patch, +rtpbreak-1.2.ebuild:
+  Version bump as reported by upstream.
+
+*rtpbreak-1.0 (28 May 2007)
+
+  28 May 2007; Timothy Redaelli <drizzt@gentoo.org>
+  +files/rtpbreak-1.0-ldflags.patch, +rtpbreak-1.0.ebuild:
+  New ebuild.

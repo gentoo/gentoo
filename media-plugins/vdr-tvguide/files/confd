@@ -1,0 +1,12 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-tvguide/files/confd,v 1.1 2014/01/28 20:18:53 idl0r Exp $
+
+# /etc/conf.d/vdr.tvguide
+# Configuration file for the VDR skin nOpacity
+
+#TVGUIDE_EPGIMAGESPATH=
+
+#TVGUIDE_ICONSPATH=
+
+#TVGUIDE_LOGOPATH=

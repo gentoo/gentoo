@@ -1,0 +1,29 @@
+diff -Naur a/Makefile.global.in b/Makefile.global.in
+--- a/Makefile.global.in	2012-01-25 14:13:40.000000000 -0500
++++ b/Makefile.global.in	2012-02-22 06:14:05.240047000 -0500
+@@ -80,7 +80,7 @@
+ subdir=$(slony_subdir)
+ 
+ override CPPFLAGS := -I${pgincludeserverdir} -I${pgincludedir} $(CPPFLAGS)
+-LDFLAGS =   -L${pglibdir} -L${pgpkglibdir} -lpq @NLSLIB@
++override LDFLAGS  += -L${pglibdir} -L${pgpkglibdir} -lpq @NLSLIB@
+ 
+ ifeq ($(GCC), yes)
+     CFLAGS += -Wall -Wmissing-prototypes -Wmissing-declarations
+diff -Naur a/makefiles/Makefile.linux b/makefiles/Makefile.linux
+--- a/makefiles/Makefile.linux	2012-01-25 14:13:40.000000000 -0500
++++ b/makefiles/Makefile.linux	2012-02-22 06:15:45.652523000 -0500
+@@ -12,9 +12,9 @@
+ endif
+ 
+ %.so: %.o
+-	$(CC) -shared -o $@ $<
++	$(CC) $(LDFLAGS) -shared -o $@ $<
+ 
+ %.o: %.c
+-	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -c -o $@ $<
+ 
+-sqlmansect = 7
+\ No newline at end of file
++sqlmansect = 7

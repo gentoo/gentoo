@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=sys-libs/ncurses virtual/pkgconfig
+DESCRIPTION=Utilities for SAM (Sequence Alignment/Map), a format for large nucleotide sequence alignments
+EAPI=5
+HOMEPAGE=http://samtools.sourceforge.net/
+IUSE=examples python_targets_python2_7
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos
+LICENSE=MIT
+RDEPEND=sys-libs/ncurses dev-lang/lua dev-lang/perl
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=mirror://sourceforge/samtools/samtools-0.1.19.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	python-r1	6d3a3cb5705b9fff1aeb7cfa4e3336fe	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=c37bf9f0224f1be8ef7166d52af3c1ae

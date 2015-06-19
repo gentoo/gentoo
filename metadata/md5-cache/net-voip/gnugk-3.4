@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=net-libs/ptlib:= net-libs/h323plus:= dev-libs/openssl firebird? ( dev-db/firebird ) lua? ( dev-lang/lua ) mysql? ( virtual/mysql ) odbc? ( dev-db/unixODBC ) postgres? ( dev-db/postgresql ) snmp? ( net-analyzer/net-snmp ) ssh? ( net-libs/libssh ) sqlite? ( dev-db/sqlite:3 ) doc? ( app-text/linuxdoc-tools )
+DESCRIPTION=GNU H.323 gatekeeper
+EAPI=5
+HOMEPAGE=http://www.gnugk.org/
+IUSE=doc firebird lua mysql odbc postgres radius snmp sqlite ssh linguas_en linguas_es linguas_fr
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=net-libs/ptlib:= net-libs/h323plus:= dev-libs/openssl firebird? ( dev-db/firebird ) lua? ( dev-lang/lua ) mysql? ( virtual/mysql ) odbc? ( dev-db/unixODBC ) postgres? ( dev-db/postgresql ) snmp? ( net-analyzer/net-snmp ) ssh? ( net-libs/libssh ) sqlite? ( dev-db/sqlite:3 )
+REQUIRED_USE=doc? ( || ( linguas_en linguas_es linguas_fr ) )
+SLOT=0
+SRC_URI=mirror://sourceforge/openh323gk/gnugk-3.4.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=c51b6109aa6d257e21f90f09081a915d

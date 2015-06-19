@@ -1,0 +1,20 @@
+# ChangeLog for dev-lang/go-bootstrap
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/go-bootstrap/ChangeLog,v 1.3 2015/06/16 17:08:42 williamh Exp $
+
+  16 Jun 2015; William Hubbs <williamh@gentoo.org> -go-bootstrap-1.4.1.ebuild:
+  remove old version
+
+*go-bootstrap-1.4.2 (18 Mar 2015)
+
+  18 Mar 2015; William Hubbs <williamh@gentoo.org> +go-bootstrap-1.4.2.ebuild:
+  version bump
+
+*go-bootstrap-1.4.1 (20 Jan 2015)
+
+  20 Jan 2015; William Hubbs <williamh@gentoo.org> +go-bootstrap-1.4.1.ebuild,
+  +metadata.xml:
+  Initial commit of go-bootstrap for bug #536960.
+  go-bootstrap is intended only as a build time dependency used to build
+  newer versions of go.
+  See https://golang.org/s/go15bootstrap for how this works.

@@ -1,0 +1,23 @@
+Tests are set to compulsory fail, cannot be set to expectedFailure
+diff -ur nose-1.2.1.orig/functional_tests/test_program.py nose-1.2.1/functional_tests/test_program.py
+--- functional_tests/test_program.py	2011-12-14 22:01:38.000000000 +0800
++++ functional_tests/test_program.py	2013-03-02 14:50:28.628004408 +0800
+@@ -1,5 +1,8 @@
+-import os
+-import unittest
++import os, sys
++if sys.version_info[:2] == (2, 7) or hasattr(sys, 'pypy_version_info'):
++    import unittest
++else:
++    import unittest2 as unittest
+ from cStringIO import StringIO
+ from nose import SkipTest
+ from nose.core import TestProgram
+@@ -91,6 +91,7 @@
+         assert not res.errors
+         assert not res.failures
+ 
++    @unittest.skip("tests set to exit with compulsory fail, error")
+     def test_run_support_twist(self):
+         """Collect and run tests in functional/support/twist
+ 

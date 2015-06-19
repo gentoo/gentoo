@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>tex</herd>
+<maintainer>
+  <email>ulm@gentoo.org</email>
+</maintainer>
+<longdescription lang="de">
+  Mit diesem Paket (und den dazugehörigen Schriften) soll das Setzen von
+  gebrochenen Schriften unter LaTeX erleichtert werden. Hierzu wird eine
+  neue Schriftkodierung definiert, die die in gebrochenen Schriften
+  üblichen Ligaturen, sowie das "lange s" enthält.
+</longdescription>
+<longdescription lang="en">
+  This package (and the respective fonts) is intended to facilitate
+  typesetting of blackletter scripts in LaTeX. For this purpose a new
+  encoding is defined, containing common ligatures used in blackletter,
+  as well as the "long s".
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,14 @@
+# ChangeLog for app-eselect/eselect-lua
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-eselect/eselect-lua/ChangeLog,v 1.1 2015/03/31 16:50:33 ulm Exp $
+
+  31 Mar 2015; Ulrich Müller <ulm@gentoo.org> +eselect-lua-1.ebuild,
+  +files/lua.eselect-1, +metadata.xml:
+  Move package from app-admin to app-eselect category.
+
+*eselect-lua-1 (22 Apr 2014)
+
+  22 Apr 2014; Matti Bickel <mabi@gentoo.org> +eselect-lua-1.ebuild,
+  +files/lua.eselect-1, +metadata.xml:
+  Introduce slotted versions of lua. Use with eselect to define the "main"
+  version.

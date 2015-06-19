@@ -1,0 +1,28 @@
+# ChangeLog for dev-lang/bff
+# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/bff/ChangeLog,v 1.7 2007/04/08 11:12:21 blubb Exp $
+
+  08 Apr 2007; Simon Stelling <blubb@gentoo.org> metadata.xml:
+  reassign to maintainer-needed
+
+  30 Dec 2006; Mike Frysinger <vapier@gentoo.org> bff-1.0.3.1.ebuild:
+  Respect user LDFLAGS, add src_test, and add more KEYWORDS.
+
+  09 Sep 2006; <blubb@gentoo.org> bff-1.0.3.1.ebuild:
+  bug 146887
+
+  25 May 2006; <blubb@gentoo.org> bff-1.0.3.1.ebuild:
+  marking stable on x86 with permissions from the x86 team
+
+  13 Mar 2006; Simon Stelling <blubb@gentoo.org> bff-1.0.3.1.ebuild:
+  seems to work well on x86
+
+  30 Jan 2006; Simon Stelling <blubb@gentoo.org> bff-1.0.3.1.ebuild:
+  stable on amd64
+
+*bff-1.0.3.1 (30 Dec 2005)
+
+  30 Dec 2005; Simon Stelling <blubb@gentoo.org> +metadata.xml,
+  +bff-1.0.3.1.ebuild:
+  Initial import
+

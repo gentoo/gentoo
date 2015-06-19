@@ -1,0 +1,271 @@
+# ChangeLog for dev-perl/Parse-RecDescent
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Parse-RecDescent/ChangeLog,v 1.65 2015/06/13 22:31:08 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  Parse-RecDescent-1.967.9-r1.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+*Parse-RecDescent-1.967.9-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Parse-RecDescent-1.967.9-r1.ebuild, -Parse-RecDescent-1.967.9.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  09 Jun 2014; Mike Frysinger <vapier@gentoo.org>
+  Parse-RecDescent-1.967.9.ebuild:
+  Add arm64 love.
+
+  06 Jan 2013; Torsten Veller <tove@gentoo.org>
+  -Parse-RecDescent-1.965.1.ebuild:
+  Cleanup
+
+  27 Dec 2012; Raúl Porcel <armin76@gentoo.org>
+  Parse-RecDescent-1.967.9.ebuild:
+  alpha/s390/sh/sparc stable wrt #441248
+
+  13 Dec 2012; Agostino Sarubbo <ago@gentoo.org>
+  Parse-RecDescent-1.967.9.ebuild:
+  Stable for ia64, wrt bug #441248
+
+  10 Dec 2012; Agostino Sarubbo <ago@gentoo.org>
+  Parse-RecDescent-1.967.9.ebuild:
+  Stable for ppc64, wrt bug #441248
+
+  09 Dec 2012; Markus Meier <maekke@gentoo.org>
+  Parse-RecDescent-1.967.9.ebuild:
+  arm stable, bug #441248
+
+  08 Dec 2012; Jeroen Roovers <jer@gentoo.org> Parse-RecDescent-1.967.9.ebuild:
+  Stable for HPPA (bug #441248).
+
+  06 Dec 2012; Agostino Sarubbo <ago@gentoo.org>
+  Parse-RecDescent-1.967.9.ebuild:
+  Stable for ppc, wrt bug #441248
+
+  06 Dec 2012; <ago@gentoo.org> Parse-RecDescent-1.967.9.ebuild:
+  Stable for x86, wrt bug #441248
+
+  06 Dec 2012; <ago@gentoo.org> Parse-RecDescent-1.967.9.ebuild:
+  Stable for amd64, wrt bug #441248
+
+  22 Sep 2012; Anthony G. Basile <blueness@gentoo.org>
+  Parse-RecDescent-1.967.9.ebuild:
+  keyword ~ppc64, bug #384677
+
+  01 Sep 2012; Fabian Groffen <grobian@gentoo.org>
+  Parse-RecDescent-1.967.9.ebuild:
+  Marked ~ppc-aix, bug #432288
+
+  08 Aug 2012; Naohiro Aota <naota@gentoo.org> Parse-RecDescent-1.967.9.ebuild:
+  Add ~x86-fbsd wrt bug #428248
+
+  06 Aug 2012; Alexis Ballier <aballier@gentoo.org>
+  Parse-RecDescent-1.967.9.ebuild:
+  keyword ~amd64-fbsd
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  21 Apr 2012; Torsten Veller <tove@gentoo.org>
+  -Parse-RecDescent-1.967.3.ebuild, -Parse-RecDescent-1.967.6.ebuild:
+  Cleanup
+
+*Parse-RecDescent-1.967.9 (17 Mar 2012)
+
+  17 Mar 2012; Torsten Veller <tove@gentoo.org>
+  +Parse-RecDescent-1.967.9.ebuild:
+  Version bump
+
+*Parse-RecDescent-1.967.6 (12 Feb 2012)
+
+  12 Feb 2012; Torsten Veller <tove@gentoo.org>
+  +Parse-RecDescent-1.967.6.ebuild:
+  Version bump
+
+*Parse-RecDescent-1.967.3 (31 Jan 2012)
+
+  31 Jan 2012; Torsten Veller <tove@gentoo.org>
+  +Parse-RecDescent-1.967.3.ebuild:
+  Version bump
+
+  24 Apr 2011; Fabian Groffen <grobian@gentoo.org>
+  Parse-RecDescent-1.965.1.ebuild:
+  Marked ~x86-solaris, bug #296509
+
+*Parse-RecDescent-1.965.1 (14 Jan 2011)
+
+  14 Jan 2011; Torsten Veller <tove@gentoo.org> -Parse-RecDescent-1.94.ebuild,
+  -Parse-RecDescent-1.965.001.ebuild, +Parse-RecDescent-1.965.1.ebuild:
+  Convert ebuild version. Cleanup
+
+  05 Nov 2010; Samuli Suominen <ssuominen@gentoo.org>
+  Parse-RecDescent-1.965.001.ebuild:
+  ppc64 stable wrt #341865
+
+  18 Oct 2010; Jeroen Roovers <jer@gentoo.org>
+  Parse-RecDescent-1.965.001.ebuild:
+  Stable for HPPA (bug #323529).
+
+  27 Jun 2010; <nixnut@gentoo.org> Parse-RecDescent-1.965.001.ebuild:
+  ppc stable #323529
+
+  21 Jun 2010; Raúl Porcel <armin76@gentoo.org>
+  Parse-RecDescent-1.965.001.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #323529
+
+  15 Jun 2010; Torsten Veller <tove@gentoo.org>
+  Parse-RecDescent-1.965.001.ebuild:
+  Stable on amd64 and x86 (#323529)
+
+  09 Apr 2010; Torsten Veller <tove@gentoo.org>
+  -Parse-RecDescent-1.962.2.ebuild, -Parse-RecDescent-1.963.ebuild,
+  -Parse-RecDescent-1.964.ebuild:
+  Cleanup
+
+*Parse-RecDescent-1.965.001 (07 Apr 2010)
+
+  07 Apr 2010; Torsten Veller <tove@gentoo.org>
+  +Parse-RecDescent-1.965.001.ebuild:
+  Version bump
+
+*Parse-RecDescent-1.964 (17 Feb 2010)
+
+  17 Feb 2010; Torsten Veller <tove@gentoo.org>
+  +Parse-RecDescent-1.964.ebuild:
+  Version bump
+
+*Parse-RecDescent-1.963 (21 Jan 2010)
+
+  21 Jan 2010; Torsten Veller <tove@gentoo.org>
+  +Parse-RecDescent-1.963.ebuild:
+  Version bump
+
+  21 Jan 2010; Torsten Veller <tove@gentoo.org>
+  Parse-RecDescent-1.94.ebuild:
+  mips -> ~mips
+
+  10 Jan 2010; Fabian Groffen <grobian@gentoo.org>
+  Parse-RecDescent-1.962.2.ebuild:
+  Transfer Prefix keywords
+
+  07 Sep 2009; Torsten Veller <tove@gentoo.org>
+  -Parse-RecDescent-1.96.0.ebuild, -Parse-RecDescent-1.962.0.ebuild:
+  Cleanup
+
+*Parse-RecDescent-1.962.2 (29 Aug 2009)
+
+  29 Aug 2009; Torsten Veller <tove@gentoo.org>
+  +Parse-RecDescent-1.962.2.ebuild:
+  Version bump
+
+*Parse-RecDescent-1.962.0 (26 Aug 2009)
+
+  26 Aug 2009; Torsten Veller <tove@gentoo.org>
+  +Parse-RecDescent-1.962.0.ebuild:
+  Version bump
+
+*Parse-RecDescent-1.96.0 (23 Apr 2009)
+
+  23 Apr 2009; Torsten Veller <tove@gentoo.org>
+  +Parse-RecDescent-1.96.0.ebuild:
+  Version bump (#267150). Thanks to Kent Fredric.
+
+  16 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  Parse-RecDescent-1.94.ebuild:
+  Bug 151203, pointing to the virtual for text-balanced. Thanks cfuga
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Parse-RecDescent-1.94.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  04 Jul 2006; Christian Hartmann <ian@gentoo.org>
+  Parse-RecDescent-1.94.ebuild:
+  Fixed RDEPEND wrt bug #134781; fixed header
+
+  27 Nov 2005; Tom Gall <tgall@gentoo.org> Parse-RecDescent-1.94.ebuild:
+  stable on ppc64
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  Parse-RecDescent-1.94.ebuild:
+  dev-perl/Text-Balanced => perl-core/Text-Balanced migration
+
+  28 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -Parse-RecDescent-1.80-r2.ebuild, -Parse-RecDescent-1.80-r3.ebuild,
+  Parse-RecDescent-1.94.ebuild:
+  Cleaning up for mirror
+
+  10 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  Parse-RecDescent-1.94.ebuild:
+  Stable on ppc.
+
+  04 Jan 2005; Michael Cummings <mcummings@gentoo.org>
+  Parse-RecDescent-1.80-r2.ebuild, Parse-RecDescent-1.80-r3.ebuild,
+  Parse-RecDescent-1.94.ebuild:
+  bug 76590
+
+  24 Dec 2004; Yuta SATOH <nigoro@gentoo.org> Parse-RecDescent-1.94.ebuild:
+  added ~ppc64
+
+  14 Apr 2004; Stephen P. Becker <geoman@gentoo.org>
+  Parse-RecDescent-1.94.ebuild:
+  Marked stable on mips.
+
+  07 Mar 2004; Stephen P. Becker <geoman@gentoo.org>
+  Parse-RecDescent-1.94.ebuild:
+  Added ~mips keyword.
+
+  07 Jan 2004; <gustavoz@gentoo.org> Parse-RecDescent-1.94.ebuild:
+  marked stable on sparc
+
+  24 Jun 2003; Aron Griffis <agriffis@gentoo.org>
+  Parse-RecDescent-1.94.ebuild:
+  Mark stable on alpha
+
+*Parse-RecDescent-1.94 (31 May 2003)
+
+  03 Jul 2003; Guy Martin <gmsoft@gentoo.org> Parse-RecDescent-1.94.ebuild :
+  Added hppa to KEYWORDS.
+
+  31 May 2003; Michael Cummings <mcummings@gentoo.org>
+  Parse-RecDescent-1.94.ebuild:
+  New version from CPAN
+  Added missing DEPEND
+
+  28 May 2003; Michael Cummings <mcummings@gentoo.org> : corrected 
+  description of module to be a description, not 'Perl Module'
+
+  Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
+  forced version bump to install into correct locations
+
+*Parse-RecDescent-1.80-r3 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*Parse-RecDescent-1.80-r2 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*Parse-RecDescent-1.80-r1 (27 Mar 2002)
+
+  24 Jul 2002; Mark Guertin <gerk@gentoo.org> :
+  Added ppc to keywords
+
+  27 Mar 2002; Seemant Kulleen <seemant@gentoo.org> Parse-RecDescent-1.80-r1.ebuild :
+
+  Ungzipped HTML documentation.
+
+*Parse-RecDescent-1.80 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

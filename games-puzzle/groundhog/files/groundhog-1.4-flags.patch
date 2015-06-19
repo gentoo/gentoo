@@ -1,0 +1,32 @@
+respect flags
+
+applied on top of debian patches
+
+--- configure.in
++++ configure.in
+@@ -46,8 +46,6 @@
+ dnl Checks for libraries.
+ dnl AM_PATH_GTK_2_0(2.0.0,,AC_MSG_ERROR(Groundhog needs GTK 2.0))
+ 
+-CXXFLAGS="-O2 -Wall"
+-
+ dnl Checks for header files.
+ AC_CHECK_HEADERS(unistd.h)
+ 
+@@ -57,16 +55,6 @@
+ 
+ dnl Checks for library functions.
+ 
+-dnl Use -Wall if we have gcc.
+-changequote(,)dnl
+-if test "x$GCC" = "xyes"; then
+-  case " $CFLAGS " in
+-  *[\ \	]-Wall[\ \	]*) ;;
+-  *) CFLAGS="$CFLAGS -Wall" ;;
+-  esac
+-fi
+-changequote([,])dnl
+-
+ AC_OUTPUT([ m4/Makefile  intl/Makefile
+ Makefile 
+ src/Makefile 

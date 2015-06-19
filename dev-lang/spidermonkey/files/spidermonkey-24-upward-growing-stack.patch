@@ -1,0 +1,41 @@
+diff -Naur mozjs-24.2.0/js/src/gc/RootMarking.cpp mozjs-24.2.0.new/js/src/gc/RootMarking.cpp
+--- mozjs-24.2.0/js/src/gc/RootMarking.cpp	2013-10-29 16:40:26.000000000 -0400
++++ mozjs-24.2.0.new/js/src/gc/RootMarking.cpp	2014-05-05 16:16:15.570098309 -0400
+@@ -320,7 +320,7 @@
+ 
+     uintptr_t *stackMin, *stackEnd;
+ #if JS_STACK_GROWTH_DIRECTION > 0
+-    stackMin = rt->nativeStackBase;
++    stackMin = reinterpret_cast<uintptr_t *>(rt->nativeStackBase);
+     stackEnd = cgcd->nativeStackTop;
+ #else
+     stackMin = cgcd->nativeStackTop + 1;
+diff -Naur mozjs-24.2.0/js/src/jsapi.cpp mozjs-24.2.0.new/js/src/jsapi.cpp
+--- mozjs-24.2.0/js/src/jsapi.cpp	2013-12-06 17:52:35.000000000 -0500
++++ mozjs-24.2.0.new/js/src/jsapi.cpp	2014-05-05 16:17:01.330099145 -0400
+@@ -863,10 +863,6 @@
+ 
+     PodZero(&debugHooks);
+     PodZero(&atomState);
+-
+-#if JS_STACK_GROWTH_DIRECTION > 0
+-    nativeStackLimit = UINTPTR_MAX;
+-#endif
+ }
+ 
+ bool
+diff -Naur mozjs-24.2.0/js/src/jsfriendapi.cpp mozjs-24.2.0.new/js/src/jsfriendapi.cpp
+--- mozjs-24.2.0/js/src/jsfriendapi.cpp	2013-10-29 16:40:20.000000000 -0400
++++ mozjs-24.2.0.new/js/src/jsfriendapi.cpp	2014-05-05 16:18:30.350100769 -0400
+@@ -32,7 +32,11 @@
+                  PerThreadDataFriendFields::RuntimeMainThreadOffset);
+ 
+ PerThreadDataFriendFields::PerThreadDataFriendFields()
++#if JS_STACK_GROWTH_DIRECTION > 0
++  : nativeStackLimit(UINTPTR_MAX)
++#else
+   : nativeStackLimit(0)
++#endif
+ {
+ #if defined(JSGC_ROOT_ANALYSIS) || defined(JSGC_USE_EXACT_ROOTING)
+     PodArrayZero(thingGCRooters);

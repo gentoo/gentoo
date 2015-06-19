@@ -1,0 +1,104 @@
+# ChangeLog for media-gfx/mypaint
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/mypaint/ChangeLog,v 1.24 2015/02/26 14:26:18 idella4 Exp $
+
+*mypaint-1.1.0-r2 (26 Feb 2015)
+
+  26 Feb 2015; Ian Delaney <idella4@gentoo.org> +mypaint-1.1.0-r2.ebuild:
+  revbump; convert -> python-single-r1 and upgrade EAPI, consent by maintainer
+  hwoarang
+
+*mypaint-1.1.0-r1 (11 Oct 2013)
+
+  11 Oct 2013; Markos Chandras <hwoarang@gentoo.org>
+  +files/mypaint-1.1.0-build-env-vars.patch, +files/mypaint-1.1.0-desktop.patch,
+  +mypaint-1.1.0-r1.ebuild:
+  Respect all compiler flags. Drop static lib and pkgconfig file. Multiple other
+  fixes by Nikoli. Bug #452456
+
+  26 Apr 2013; Markos Chandras <hwoarang@gentoo.org>
+  +files/mypaint-1.1.0-json-c-0.11.patch, mypaint-1.1.0.ebuild:
+  Add patch for new json-c. Bug #467322. Thanks to Helmut Jarausch
+  <jarausch@igpm.rwth-aachen.de>
+
+  15 Jan 2013; Markos Chandras <hwoarang@gentoo.org> mypaint-1.1.0.ebuild:
+  Fix SConscript file for proper multilib support
+
+*mypaint-1.1.0 (15 Jan 2013)
+
+  15 Jan 2013; Markos Chandras <hwoarang@gentoo.org>
+  +files/mypaint-1.1.0-gentoo.patch, +mypaint-1.1.0.ebuild:
+  Version bump. Bug #450316. Thanks to Alexander Soloviëv <no.friday@yandex.ru>
+
+  24 Jul 2012; Markos Chandras <hwoarang@gentoo.org> -mypaint-0.9.0.ebuild,
+  -mypaint-0.9.1.ebuild, -mypaint-1.0.0.ebuild, mypaint-1.0.0-r1.ebuild:
+  Stable on amd64 wrt bug #427630. Remove old
+
+  23 Jul 2012; Jeff Horelick <jdhore@gentoo.org> mypaint-1.0.0-r1.ebuild:
+  marked x86 per bug 427630
+
+  21 May 2012; Markos Chandras <hwoarang@gentoo.org> mypaint-1.0.0-r1.ebuild:
+  Respect LINGUAS. Bug #407859
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> mypaint-1.0.0.ebuild,
+  mypaint-1.0.0-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  10 Feb 2012; Patrick Lauer <patrick@gentoo.org> mypaint-1.0.0-r1.ebuild:
+  Changing python deps in preparation for 2.4 removal
+
+  07 Dec 2011; Maxim Koltsov <maksbotan@gentoo.org> mypaint-1.0.0-r1.ebuild:
+  Swap python_pkg_setup and python_set_active_version, thanks to Arfrever
+
+  05 Dec 2011; Maxim Koltsov <maksbotan@gentoo.org> mypaint-1.0.0-r1.ebuild:
+  Add python_pkg_setup call
+
+*mypaint-1.0.0-r1 (05 Dec 2011)
+
+  05 Dec 2011; Maxim Koltsov <maksbotan@gentoo.org> +mypaint-1.0.0-r1.ebuild:
+  Ported to python.eclass, dropped python dependecy, dropped scons dependency
+  (set by scons-utils.eclass)
+
+  04 Dec 2011; Markos Chandras <hwoarang@gentoo.org> mypaint-1.0.0.ebuild:
+  Add missing pkgconfig dependency. Bug #393165
+
+*mypaint-1.0.0 (04 Dec 2011)
+
+  04 Dec 2011; Markos Chandras <hwoarang@gentoo.org> +mypaint-1.0.0.ebuild:
+  Version bump. Bug #391867
+
+  04 Sep 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> mypaint-0.9.1.ebuild:
+  x86 stable wrt bug #381095
+
+  30 Aug 2011; Tony Vroon <chainsaw@gentoo.org> mypaint-0.9.1.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo in bug
+  #381095 filed by Markos "hwoarang" Chandras.
+
+*mypaint-0.9.1 (04 Apr 2011)
+
+  04 Apr 2011; Markos Chandras <hwoarang@gentoo.org> +mypaint-0.9.1.ebuild,
+  +files/mypaint-0.9.1-gentoo.patch:
+  Version bump. Bug #361711
+
+  13 Mar 2011; Markos Chandras <hwoarang@gentoo.org> mypaint-0.9.0.ebuild:
+  Stable on amd64 wrt bug #358579
+
+  13 Mar 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> mypaint-0.9.0.ebuild:
+  x86 stable wrt bug #358579
+
+  10 Mar 2011; Markos Chandras <hwoarang@gentoo.org> mypaint-0.9.0.ebuild:
+  Export LANG on src_compile to fix problem with some locales. Bug #352700
+
+  31 Dec 2010; Markos Chandras <hwoarang@gentoo.org> mypaint-0.9.0.ebuild:
+  Use a png icon instead of .ico
+
+  31 Dec 2010; Markos Chandras <hwoarang@gentoo.org> mypaint-0.9.0.ebuild:
+  Use fdo-mime eclass thanks to Samuli Suominen
+
+*mypaint-0.9.0 (31 Dec 2010)
+
+  31 Dec 2010; Markos Chandras <hwoarang@gentoo.org> +mypaint-0.9.0.ebuild,
+  +files/mypaint-0.9.0-gentoo.patch, +metadata.xml:
+  Ebuild moved from sunrise overlay. Thanks to Arne Babenhauserheide (ArneBab)
+  <arne_bab@web.de> and Mike Limansky <limanski@narod.ru>. Thanks to Mike
+  Frysinger for the scons build system shiny code. Bug #197672

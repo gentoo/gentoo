@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=systemd? ( sys-apps/systemd ) virtual/pkgconfig
+DESCRIPTION=Liblogging is an easy to use, portable, open source library for system logging
+EAPI=5
+HOMEPAGE=http://www.liblogging.org
+IUSE=rfc3195 static-libs +stdlog systemd
+KEYWORDS=amd64 ~arm hppa x86
+LICENSE=BSD-2
+RDEPEND=systemd? ( sys-apps/systemd )
+SLOT=0/0
+SRC_URI=http://download.rsyslog.com/liblogging/liblogging-1.0.4.tar.gz
+_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=9072c8b6f4cce3b42381476ae66e7a0d

@@ -1,0 +1,47 @@
+#!/sbin/runscript
+# Copyright 1999-2006 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need localmount
+	after bootmisc hostname
+	before net
+}
+
+start() {
+	# Services may depend on us, so mark us as inactive
+	mark_service_inactive "${SVCNAME}"
+
+	# Create a queue so that if things went UP DOWN UP DOWN UP DOWN UP
+	# We just do an UP
+	# This is used by /etc/devd_queue
+	mkdir -p /var/run/devd
+
+	ebegin "Starting the Device State Change Daemon"
+	sysctl hw.bus.devctl_disable=0 >/dev/null
+	start-stop-daemon --start --exec /sbin/devd \
+		--pidfile /var/run/devd.pid
+	eend $? "Failed to start devd" \
+	|| return $?
+
+	ebegin "Waiting for Device State Change Daemon to settle"
+	LC_ALL=C sleep "${DEVD_WAIT:-2}"
+	eend $?
+
+	# Now flush the queue
+	einfo "Flushing Device State Change Daemon queue"
+	/etc/devd_queue flush
+
+	mark_service_started "${SVCNAME}"
+	return 0
+}
+
+stop() {
+	ebegin "Stopping the Device State Change Daemon"
+	sysctl hw.bus.devctl_disable=1 >/dev/null
+	start-stop-daemon --stop --exec /sbin/devd \
+		--pidfile /var/run/devd.pid
+	eend $? "Failed to stop devd"
+}
+
+# vim: ts=4 :

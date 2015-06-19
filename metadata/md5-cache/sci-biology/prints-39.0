@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DEPEND=emboss? ( sci-biology/emboss )
+DESCRIPTION=A protein motif fingerprint database
+HOMEPAGE=http://www.bioinf.man.ac.uk/dbbrowser/PRINTS/
+IUSE=emboss minimal
+KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris
+LICENSE=public-domain
+RDEPEND=emboss? ( sci-biology/emboss )
+SLOT=0
+SRC_URI=mirror://gentoo/prints-39.0.tar.bz2
+_md5_=929737a46f5f4a222aed5efa482c1fec

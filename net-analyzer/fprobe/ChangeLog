@@ -1,0 +1,75 @@
+# ChangeLog for net-analyzer/fprobe
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/fprobe/ChangeLog,v 1.16 2014/07/11 12:55:05 jer Exp $
+
+  11 Jul 2014; Jeroen Roovers <jer@gentoo.org> -fprobe-1.1-r1.ebuild,
+  fprobe-1.1-r2.ebuild, files/fprobe-1.1-pidfile-sanity.patch,
+  files/fprobe-1.1-setgroups.patch:
+  EAPI bump. Clean up patches.
+
+  04 Aug 2008; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Describe local USE flags for GLEP 56.
+
+*fprobe-1.1-r2 (26 Jun 2008)
+
+  26 Jun 2008; Robin H. Johnson <robbat2@gentoo.org> files/init.d-fprobe,
+  +fprobe-1.1-r2.ebuild:
+  The init script was always running in promisc mode UNLESS you tried to not
+  run promisc.
+
+*fprobe-1.1-r1 (17 Mar 2008)
+
+  17 Mar 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +files/fprobe-1.1-pidfile-sanity.patch, +files/fprobe-1.1-setgroups.patch,
+  +files/conf.d-fprobe, +files/init.d-fprobe, +fprobe-1.1-r1.ebuild:
+  Patch up the code to work properly under start-stop-daemon, and with the
+  builtin chroot support. Also include Gentoo init.d support finally, modelled
+  after the flow-tools init.d script.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  01 Mar 2006; Marcelo Goes <vanquirius@gentoo.org> fprobe-1.1.ebuild:
+  Do not install COPYING/INSTALL.
+
+  15 Feb 2006; Markus Ullmann <jokey@gentoo.org> fprobe-1.1.ebuild:
+  Removing virtual/libpcap wrt bug #117898
+
+  29 Aug 2005; <dang@gentoo.org> fprobe-1.1.ebuild:
+  Marked ~amd64
+
+*fprobe-1.1 (03 Feb 2005)
+
+  03 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> -fprobe-1.0.6.ebuild,
+  +fprobe-1.1.ebuild:
+  Version bump for sec bug 80269; keeping keywords. removed vulnerable version.
+
+  29 Jan 2005; Daniel Black <dragonheart@gentoo.org> fprobe-1.0.6.ebuild:
+  changed net-libs/libpcap depend to virtual/libcap
+
+*fprobe-1.0.6 (27 Sep 2004)
+
+  27 Sep 2004; Jon Hood <squinky86@gentoo.org> -fprobe-1.0.4.ebuild,
+  -fprobe-1.0.5.ebuild, +fprobe-1.0.6.ebuild:
+  Version bump, #65544, thanks lewk.
+
+  15 Sep 2004; Jon Hood <squinky86@gentoo.org> fprobe-1.0.5.ebuild:
+  Stable on x86.
+
+  04 Sep 2004; Jon Hood <squinky86@gentoo.org> fprobe-1.0.4.ebuild:
+  Stable on x86.
+
+  29 Aug 2004; David Holm <dholm@gentoo.org> fprobe-1.0.5.ebuild:
+  Added to ~ppc.
+
+*fprobe-1.0.5 (16 Aug 2004)
+
+  16 Aug 2004; Jon Hood <squinky86@gentoo.org> +fprobe-1.0.5.ebuild:
+  Version bump.
+
+*fprobe-1.0.4 (04 Aug 2004)
+
+  04 Aug 2004; Jon Hood <squinky86@gentoo.org> +metadata.xml,
+  +fprobe-1.0.4.ebuild:
+  Initial commit. Thanks to BlueRaven <blue@ravenconsulting.it> in #55533.
+

@@ -1,0 +1,59 @@
+# ChangeLog for x11-misc/denu
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/denu/ChangeLog,v 1.18 2014/08/10 20:02:02 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> denu-2.3.2-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  09 May 2012; Michael Palimaka <kensington@gentoo.org> -denu-2.3.2.ebuild:
+  Remove old.
+
+  24 Feb 2012; Brent Baude <ranger@gentoo.org> denu-2.3.2-r1.ebuild:
+  Marking denu-2.3.2-r1 ppc for bug 404887
+
+  24 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> denu-2.3.2-r1.ebuild:
+  x86 stable wrt bug #404887
+
+  21 Feb 2012; Jeroen Roovers <jer@gentoo.org> denu-2.3.2-r1.ebuild:
+  Stable for HPPA (bug #404887).
+
+  21 Feb 2012; Agostino Sarubbo <ago@gentoo.org> denu-2.3.2-r1.ebuild:
+  Stable for amd64, wrt bug #404887
+
+*denu-2.3.2-r1 (26 Nov 2011)
+
+  26 Nov 2011; Mike Gilbert <floppym@gentoo.org> +denu-2.3.2-r1.ebuild:
+  Python-related improvements by Ian Delaney. Bug 317005.
+
+  06 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> denu-2.3.2.ebuild:
+  Remove portage DEPEND wrt #263696 because by looking at the source it
+  seems to do a runtime check.
+
+  22 Apr 2007; Markus Rothe <corsair@gentoo.org> denu-2.3.2.ebuild:
+  Added ~ppc64
+
+  08 Apr 2007; Simon Stelling <blubb@gentoo.org> metadata.xml:
+  reassign to maintainer-needed
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  13 May 2005; Simon Stelling <blubb@gentoo.org> denu-2.3.2.ebuild:
+  stable on hppa
+
+  01 May 2005; Michael Hanselmann <hansmi@gentoo.org> denu-2.3.2.ebuild:
+  Stable on ppc.
+
+  19 Apr 2005; Simon Stelling <blubb@gentoo.org> denu-2.3.2.ebuild:
+  stable on x86 and amd64
+
+  09 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> denu-2.3.2.ebuild:
+  Added to ~ppc and ~hppa.
+
+*denu-2.3.2 (19 Mar 2005)
+
+  19 Mar 2005; <blubb@gentoo.org> +denu-2.3.2.ebuild:
+  new version with support for gnome-2.10
+
+  19 Mar 2005; <blubb@gentoo.org> :
+  initial import

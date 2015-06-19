@@ -1,0 +1,33 @@
+From 96b4891d2323cb44f479bc94d1410348b1468298 Mon Sep 17 00:00:00 2001
+From: Justin Bronder <jsbronder@gmail.com>
+Date: Mon, 24 Jun 2013 19:03:17 -0400
+Subject: [PATCH] growler:  support >=gntp-1.0
+
+Fixes Gentoo bug https://bugs.gentoo.org/show_bug.cgi?id=474540
+---
+ sabnzbd/growler.py | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/sabnzbd/growler.py b/sabnzbd/growler.py
+index d250703..f39bb44 100644
+--- a/sabnzbd/growler.py
++++ b/sabnzbd/growler.py
+@@ -31,7 +31,14 @@ import sabnzbd
+ import sabnzbd.cfg
+ from sabnzbd.encoding import unicoder, latin1
+ from sabnzbd.constants import NOTIFY_KEYS
+-from gntp import GNTPRegister
++
++try:
++    # <= version 0.6
++    from gntp import GNTPRegister
++except ImportError:
++    # >= version 1.0
++    from gntp.core import GNTPRegister
++
+ from gntp.notifier import GrowlNotifier
+ try:
+     import Growl
+-- 
+1.8.1.5
+

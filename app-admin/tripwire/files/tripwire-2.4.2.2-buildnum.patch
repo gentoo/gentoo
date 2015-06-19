@@ -1,0 +1,7 @@
+diff -Nur a/src/buildnum.h b/src/buildnum.h
+--- a/src/buildnum.h	2011-11-21 17:06:56.000000000 +0100
++++ b/src/buildnum.h	2012-03-28 11:33:11.689974085 +0200
+@@ -1,2 +1,2 @@
+-#define BUILD_NUM _T("2")
++#define BUILD_NUM _T("0")
+ 

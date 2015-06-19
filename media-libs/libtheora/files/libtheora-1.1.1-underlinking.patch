@@ -1,0 +1,14 @@
+http://bugs.gentoo.org/504270
+
+--- examples/Makefile.am
++++ examples/Makefile.am
+@@ -22,7 +22,7 @@
+ 
+ player_example_SOURCES = player_example.c
+ player_example_CFLAGS = $(SDL_CFLAGS) $(OGG_CFLAGS) $(VORBIS_CFLAGS)
+-player_example_LDADD = $(LDADDDEC) $(SDL_LIBS) $(VORBIS_LIBS) $(OSS_LIBS)
++player_example_LDADD = $(LDADDDEC) $(SDL_LIBS) $(VORBIS_LIBS) $(OSS_LIBS) -lm
+ 
+ encoder_example_SOURCES = encoder_example.c
+ EXTRA_encoder_example_SOURCES = getopt.c getopt1.c getopt.h
+

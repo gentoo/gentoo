@@ -1,0 +1,35 @@
+# ChangeLog for media-libs/aften
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/aften/ChangeLog,v 1.9 2013/06/01 23:42:47 radhermit Exp $
+
+  01 Jun 2013; Tim Harder <radhermit@gentoo.org> aften-0.0.8.ebuild:
+  Drop unused eutils inherit.
+
+  01 Jun 2013; Tim Harder <radhermit@gentoo.org> aften-0.0.8.ebuild:
+  Use src_configure instead of src_compile, make PATCHES array multiline, drop
+  empty DEPEND, and other minor fixes.
+
+  01 Jun 2013; Chris Reffett <creffett@gentoo.org> aften-0.0.8.ebuild:
+  EAPI bump wrt bug 460572
+
+  07 Sep 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+  22 Jun 2008; Markus Meier <maekke@gentoo.org> aften-0.0.8.ebuild:
+  amd64/x86 stable, bug #227307
+
+  16 Jun 2008; nixnut <nixnut@gentoo.org> aften-0.0.8.ebuild:
+  Stable on ppc wrt bug 227307
+
+  18 May 2008; Ben de Groot <yngwin@gentoo.org> metadata.xml:
+  Change maintainer to generic sound herd
+
+  06 Jan 2008; Joseph Jezak <josejx@gentoo.org>
+  +files/aften-0.0.8-ppc.patch, aften-0.0.8.ebuild:
+  Added patch to fix compilation on ppc, bug #200866.
+
+*aften-0.0.8 (23 Nov 2007)
+
+  23 Nov 2007; Alexis Ballier <aballier@gentoo.org>
+  +files/aften-0.0.8-multilib.patch, +metadata.xml, +aften-0.0.8.ebuild:
+  initial import, thanks to Ben de Groot <ben@berkano.net>, bug #199858

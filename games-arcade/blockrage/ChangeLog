@@ -1,0 +1,39 @@
+# ChangeLog for games-arcade/blockrage
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/blockrage/ChangeLog,v 1.10 2015/01/03 16:45:55 tupone Exp $
+
+  03 Jan 2015; Tupone Alfredo <tupone@gentoo.org> blockrage-0.2.3.ebuild:
+  EAPI 4
+
+  06 Jan 2010; Joseph Jezak <josejx@gentoo.org> blockrage-0.2.3.ebuild:
+  Marked ppc stable for bug #289091.
+
+  21 Nov 2009; Markus Meier <maekke@gentoo.org> blockrage-0.2.3.ebuild:
+  x86 stable, bug #289091
+
+  23 Oct 2009; Samuli Suominen <ssuominen@gentoo.org>
+  blockrage-0.2.3.ebuild:
+  amd64 stable wrt #289091
+
+  14 Oct 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  blockrage-0.2.3.ebuild:
+  EAPI=2
+
+  28 Mar 2008; Tristan Heaven <nyhm@gentoo.org> blockrage-0.2.3.ebuild:
+  Add ~amd64 keyword
+
+  08 Apr 2007; Joseph Jezak <josejx@gentoo.org> blockrage-0.2.3.ebuild:
+  Marked ~ppc for bug #173426.
+
+  08 Feb 2007; Tristan Heaven <nyhm@gentoo.org>
+  files/blockrage-0.2.3-config.patch, blockrage-0.2.3.ebuild:
+  Leave the stripping to portage
+
+  07 Feb 2007; <tupone@gentoo.org> +files/blockrage-0.2.3-config.patch:
+  Missing configure patch. Bug #165739 by Jiri Svoboda
+
+*blockrage-0.2.3 (06 Feb 2007)
+
+  06 Feb 2007; <tupone@gentoo.org> +blockrage-0.2.3.ebuild:
+  New ebuild. Bug #107452 by Jiri Svoboda
+

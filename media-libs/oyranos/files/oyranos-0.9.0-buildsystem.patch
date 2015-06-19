@@ -1,0 +1,114 @@
+--- oyranos-0.4.0/configure_tests.sh
++++ oyranos-0.4.0/configure_tests.sh
+@@ -3,7 +3,7 @@
+ set > testset.txt
+ ERROR=0
+ WARNING=0
+-STRIPOPT='s/-O.// ; s/-isysroot [[:graph:]]*// ; s/-arch ppc// ; s/-arch i386//'
++STRIPOPT='s/-isysroot [[:graph:]]*// ; s/-arch ppc// ; s/-arch i386//'
+ 
+ mkdir -p tests
+ 
+--- oyranos-0.9.0/oforms/oyranos_xforms.makefile
++++ oyranos-0.9.0/oforms/oyranos_xforms.makefile
+@@ -1,8 +1,8 @@
+-INCL    = $(INCLUDE) -I../ -I./ $(DEBUG)
+-CC      = gcc
+-DEBUG  = -Wall -g -O0
++INCL    = $(INCLUDE) -I../ -I./
++CC      ?= gcc
++CXX     ?= c++
+ LDFLAGS_ = $$LDFLAGS -L../fl_i18n
+-OY_LIBS := $(shell pkg-config oyranos libxml-2.0 --libs --cflags)
++OY_LIBS := $(shell pkg-config libxml-2.0 --libs --cflags) ../liboyranos.so ../liboyranos_object.so ../liboyranos_core.so ../liboyranos_config.so ../liboyranos_modules.so
+ OY_FLAGS = -L../ $(OY_LIBS)
+ FLTK_FLAGS := $(shell fltk-config --ldflags --cxxflags | sed s/-O2//) -lpthread
+ 
+@@ -15,15 +15,15 @@
+ 
+ oyranos-xforms:	$(SRCDIR)oyranos_xforms.c
+ 	echo "Compiling $(SRCDIR)$< + Linking $@ ..."
+-	gcc -Wall -g $(CFLAGS) $(INCL)  $(SRCDIR)oyranos_xforms.c -o oyranos-xforms -pedantic $(OY_FLAGS) $(LDFLAGS_)
++	$(CC) -Wall $(CFLAGS) $(LDFLAGS) $(INCL)  $(SRCDIR)oyranos_xforms.c -o oyranos-xforms -pedantic $(OY_FLAGS) $(LDFLAGS_)
+ 
+ oyranos-xforms-modules:	$(SRCDIR)oyranos_xforms_modules.c
+ 	echo "Compiling $(SRCDIR)$< + Linking $@ ..."
+-	gcc -Wall -g $(CFLAGS) $(INCL)  $< -o $@ -pedantic $(OY_FLAGS) $(LDFLAGS_)
++	$(CC) -Wall $(CFLAGS) $(LDFLAGS) $(INCL)  $< -o $@ -pedantic $(OY_FLAGS) $(LDFLAGS_)
+ 
+ oyranos-xforms-fltk:	$(SRCDIR)oyranos_xforms_fltk.cxx $(SRCDIR)oyranos_forms_fltk.cxx $(SRCDIR)oyranos_widgets_fltk.cxx $(SRCDIR)oyranos_widgets_fltk.h
+ 	echo "Compiling $(SRCDIR)$< + Linking $@ ..."
+-	-c++ $(LDFLAGS_) -Wall -g $(CXXFLAGS) $(INCL)  $(SRCDIR)oyranos_xforms_fltk.cxx -o oyranos-xforms-fltk -pedantic -loyforms_fltk -lfl_i18n $(FLTK_FLAGS) $(OY_FLAGS)
++	$(CXX) $(LDFLAGS_) -Wall $(CXXFLAGS) $(LDFLAGS) $(INCL)  $(SRCDIR)oyranos_xforms_fltk.cxx -o oyranos-xforms-fltk -pedantic -loyforms_fltk -lfl_i18n $(FLTK_FLAGS) $(OY_FLAGS)
+ 
+ 
+ # Build commands and filename extensions...
+--- oyranos-0.9.0/oyranos-config.in
++++ oyranos-0.9.0/oyranos-config.in
+@@ -109,7 +109,7 @@
+ 
+ if [ "$echo_ldflags" = "yes" ]; then
+   if [ -f liboyranos.so ]; then
+-    echo "-L. -loyranos -loyranos_config -loyranos_modules -loyranos_object -loyranos_core $elektra $oyranos_add"
++    echo "lliboyranos.so liboyranos_config.so liboyranos_modules.so liboyranos_object.so liboyranos_core.so $elektra $oyranos_add"
+   else
+     echo "-L$libdir -loyranos -loyranos_config -loyranos_modules -loyranos_object -loyranos_core $elektra $oyranos_add"
+   fi
+--- oyranos-0.9.0/configure
++++ oyranos-0.9.0/configure
+@@ -121,8 +121,6 @@
+ fi
+ IFS=$old_IFS
+ 
+-STRIPOPT="sed s/-O.//"
+-
+ if [ $# -gt 0 ]; then
+   prefix=""
+   while [ $# -gt 0 ]; do
+@@ -680,17 +678,8 @@
+ test -n "$ECHO" && $ECHO "CC = $CC" >> $CONF_NV
+ export CC CXX
+ 
+-# many constant strings are much longer than the C90 allowed, skip the warning
+-CFLAGS_COMMON="`echo $CFLAGS_COMMON | $STRIPOPT` \$(DEBUG) \$(OPENMP)"
+-CXXFLAGS_COMMON="`echo $CXXFLAGS_COMMON | $STRIPOPT` \$(DEBUG) \$(OPENMP)"
+-CFLAGS="`echo $CFLAGS | $STRIPOPT`"
+-CXXFLAGS="`echo $CXXFLAGS | $STRIPOPT`"
+ 
+-if [ -z "$LDFLAGS" ]; then
+-  LDFLAGS="-L./ -L$libdir"
+-else
+-  LDFLAGS="`echo $LDFLAGS | $STRIPOPT` -L./ -L$libdir"
+-fi
++#LDFLAGS="-L./ -L$libdir"
+ 
+ 
+ # detect Libraries
+@@ -760,12 +749,12 @@
+         --copyright-holder='Kai-Uwe Behrmann' \
+         --msgid-bugs-address='ku.b@gmx.de' \
+         --from-code=utf-8" >> $CONF
+-  oyranos_add="-L\$libdir \$ltdl \$xml2 \$iconv \$intl \$yajl"
++  oyranos_add="\$ltdl \$xml2 \$iconv \$intl \$yajl"
+   if [ $OSUNAME = "Linux" ]; then
+     COPY="cp -vdpa"
+     MOVE="mv -v"
+     RM="rm -vf"
+-    LDFLAGS="$LDFLAGS -L."
++    LDFLAGS="$LDFLAGS"
+     test -n "$ECHO" && $ECHO "LINK_FLAGS_STATIC =" >> $CONF
+     if [ -n "$rpath" ]; then 
+       test -n "$ECHO" && $ECHO "LINK_LIB_PATH = -Wl,--rpath -Wl," >> $CONF
+@@ -1294,9 +1283,9 @@
+ test -n "$ECHO" && $ECHO "" >> $VERS_H
+ test -n "$ECHO" && $ECHO "#endif /*OYRANOS_VERSION_H*/" >> $VERS_H
+ 
+-CFLAGS="$CFLAGS_COMMON `echo $CFLAGS | $STRIPOPT`"
+-CXXFLAGS="$CXXFLAGS_COMMON `echo $CXXFLAGS | $STRIPOPT`"
+-LDFLAGS="`echo $LDFLAGS | $STRIPOPT` \$(dl) \$(DEVEL_LIBS)"
++CFLAGS="$CFLAGS_COMMON $CFLAGS"
++CXXFLAGS="$CXXFLAGS_COMMON $CXXFLAGS"
++LDFLAGS="$LDFLAGS \$(dl) \$(DEVEL_LIBS)"
+ 
+ test -n "$ECHO" && $ECHO "CFLAGS=$CFLAGS"     >> $CONF_NV
+ test -n "$ECHO" && $ECHO "CFLAGS = $CFLAGS"   >> $CONF_I18N

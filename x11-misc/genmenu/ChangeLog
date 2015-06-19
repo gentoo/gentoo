@@ -1,0 +1,117 @@
+# ChangeLog for x11-misc/genmenu
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/genmenu/ChangeLog,v 1.28 2012/05/14 15:31:05 pacho Exp $
+
+*genmenu-1.1.0 (14 May 2012)
+
+  14 May 2012; Pacho Ramos <pacho@gentoo.org> +genmenu-1.1.0.ebuild,
+  -files/genmenu-1.0.7-e16.patch, -genmenu-1.0.9.ebuild:
+  Version bump, drop old (#415683 by df).
+
+*genmenu-1.0.9 (25 Feb 2012)
+
+  25 Feb 2012; Pacho Ramos <pacho@gentoo.org> +genmenu-1.0.9.ebuild,
+  -genmenu-1.0.7-r1.ebuild:
+  Version bump (also fixes bug #330419 by Paul Chany and teidakankan. Drop old.
+
+  17 Sep 2008; Santiago M. Mola <coldwind@gentoo.org> -genmenu-1.0.6.ebuild,
+  -genmenu-1.0.7.ebuild:
+  Remove old versions.
+
+  21 Apr 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Fix up metadata.xml. If there's no maintainer for the package, the metadata
+  also needs to contain m-needed@g.o.
+
+  02 Aug 2007; Roy Marples <uberlord@gentoo.org> genmenu-1.0.7.ebuild,
+  genmenu-1.0.7-r1.ebuild:
+  Keyworded ~x86-fbsd, #156902 thanks to Marc Kowarsky.
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+*genmenu-1.0.7-r1 (03 Nov 2006)
+
+  03 Nov 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/genmenu-1.0.7-e16.patch, +genmenu-1.0.7-r1.ebuild:
+  Add support for new e16 homedir #153876 by ScytheMan.
+
+  15 Jul 2006; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove lanius from metadata.xml as he's retired.
+
+  13 Oct 2005; Luis Medinas <metalgod@gentoo.org> genmenu-1.0.7.ebuild:
+  Added ~amd64 keyword.
+
+  22 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> genmenu-1.0.7.ebuild:
+  Stable on sparc
+
+  19 Jun 2005; Jonathan Smith <smithj@gentoo.org> -genmenu-1.0.3.ebuild,
+  genmenu-1.0.7.ebuild:
+  cleanup and 1.0.7 stable x86
+
+  12 Sep 2004; Jason Wever <weeve@gentoo.org> genmenu-1.0.6.ebuild:
+  Stable on sparc.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  genmenu-1.0.7.ebuild:
+  Masked genmenu-1.0.7.ebuild stable for ppc
+
+  19 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org> genmenu-1.0.7.ebuild:
+  virtual/glibc -> virtual/libc; tidy
+
+  28 Jun 2004; Aron Griffis <agriffis@gentoo.org> genmenu-1.0.3.ebuild,
+  genmenu-1.0.6.ebuild:
+  glibc -> libc
+
+*genmenu-1.0.7 (18 Aug 2004)
+
+  18 Aug 2004; Heinrich Wendel <lanius@gentoo.org> genmenu-1.0.6.ebuild,
+  genmenu-1.0.7.ebuild:
+  version bump, bug #58803, mark 1.0.6 stable on x86
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> genmenu-1.0.3.ebuild:
+  Add inherit eutils
+
+*genmenu-1.0.6 (08 May 2004)
+
+  08 May 2004; Heinrich Wendel <lanius@gentoo.org> genmenu-1.0.3.ebuild,
+  genmenu-1.0.6.ebuild:
+  version bump
+
+  09 Apr 2004; Heinrich Wendel <lanius@gentoo.org> genmenu-1.0.3.ebuild:
+  remove S=${WORKDIR}/${P}
+
+  17 Oct 2003; Heinrich Wendel <lanius@gentoo.org> genmenu-1.0.2.ebuild,
+  genmenu-1.0.3.ebuild:
+  stable bump, cleanup
+
+*genmenu-1.0.3 (04 Aug 2003)
+
+  04 Aug 2003; Heinrich Wendel <lanius@gentoo.org> genmenu-0.9.0.ebuild,
+  genmenu-1.0.3.ebuild, files/genmenu-0.9.0.patch:
+  version bump
+
+*genmenu-1.0.2 (28 May 2003)
+
+  28 May 2003; George Shapovalov <george@gentoo.org> genmenu-1.0.2, files/{digest-genmenu-
+  1.0.2,genmenu-1.0.2.patch} :
+  new version
+  now tries to keep styles and fonts consistent
+  also menu generation for *box'es have been combined from what I can tell
+  Some cleanups to bring this ebuild in accordance with recent regulations..
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*genmenu-0.9.0 (26 Oct 2002)
+
+  26 Oct 2002; George Shapovalov <george@gentoo.org> genmenu-0.9.0.ebuild, files/{digest-genmenu-0.9.0,genmenu-0.9.0.patch} :
+
+  new package
+
+  menu generator for few wm's. From the freshmeat page:
+  Genmenu generates menus for some common window managers based on which program binaries genmenu finds 
+  installed on a system (a list of programs to search for are contained within the script). Users can 
+  to a limited degree further customize their menu via a set of interactive questions. Genmenu supports 
+  Blackbox, fluxbox, WindowMaker, and Enlightenment window managers. 
+  Author: Geir Torstein Kristiansen <gtk@techie.online.no> 
+
+  I modified the script to make backup copies of original menu files (they will have .orig extention)

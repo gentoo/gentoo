@@ -1,0 +1,60 @@
+# ChangeLog for sci-visualization/gfsview
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-visualization/gfsview/ChangeLog,v 1.11 2012/08/07 00:52:47 bicatali Exp $
+
+*gfsview-20120706 (07 Aug 2012)
+
+  07 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> +gfsview-20120706.ebuild,
+  -gfsview-20091219.ebuild, -gfsview-20100407.ebuild, metadata.xml:
+  Version bump. Added OpenGL underlinking fix
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> gfsview-20091219.ebuild,
+  gfsview-20100407.ebuild, gfsview-20111003.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*gfsview-20111003 (23 Jan 2012)
+
+  23 Jan 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  +gfsview-20111003.ebuild:
+  Version bump, closing bug #387219, adding some required dependencies to avoid
+  automagic
+
+  20 Jul 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #105599
+
+  02 Mar 2011; Justin Lecher <jlec@gentoo.org> gfsview-20091219.ebuild,
+  gfsview-20100407.ebuild:
+  Correct Slots for gtk 3 introduction to tree
+
+*gfsview-20100407 (21 May 2010)
+
+  21 May 2010; Justin Lecher <jlec@gentoo.org> +gfsview-20100407.ebuild:
+  Version Bump
+
+*gfsview-20091219 (15 Jan 2010)
+
+  15 Jan 2010; Sébastien Fabbro <bicatali@gentoo.org> -gfsview-0.4.ebuild,
+  -gfsview-0.4.2.ebuild, +gfsview-20091219.ebuild,
+  -files/gtk-client-events-handling.patch:
+  Version bump, now builds, and stay in main tree. Batch mode disabled
+  because libOSmesa is forced disabled in media-libs/mesa
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+*gfsview-0.4.2 (05 Apr 2006)
+
+  05 Apr 2006; Markus Dittrich <markusle@gentoo.org> +gfsview-0.4.2.ebuild:
+  Version bump. Thanks to Tim Cera <timcera@earthlink.net> for his
+  ebuild. This fixes bug #128597.
+
+  17 Mar 2006; Scott Stoddard <deltacow@gentoo.org> gfsview-0.4.ebuild:
+  Added ~amd64.
+
+*gfsview-0.4 (07 Feb 2006)
+
+  07 Feb 2006; Markus Dittrich <markusle@gentoo.org>
+  +files/gtk-client-events-handling.patch, +metadata.xml,
+  +gfsview-0.4.ebuild:
+  Initial import (fixes bug #102325). Many thanks to Tim Cera 
+  <timcera@earthlink.net> for his ebuild and patches.

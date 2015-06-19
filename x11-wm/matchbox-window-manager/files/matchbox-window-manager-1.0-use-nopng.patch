@@ -1,0 +1,27 @@
+diff -Naurp matchbox-window-manager-1.0.orig/src/structs.h matchbox-window-manager-1.0/src/structs.h
+--- matchbox-window-manager-1.0.orig/src/structs.h	2006-02-19 16:00:52.000000000 -0500
++++ matchbox-window-manager-1.0/src/structs.h	2006-06-12 18:52:53.000000000 -0400
+@@ -81,23 +81,12 @@
+ 
+ #define GENERIC_ICON        PKGDATADIR "/mbnoapp.xpm"
+ 
+-#ifdef MB_HAVE_PNG
+-
+ #define DEFAULT_THEME       DATADIR "/themes/Default/matchbox/theme.xml"
+-
+ #define DEFAULTTHEME       DATADIR "/themes/Default/matchbox/theme.xml"
+ 
+ #define DEFAULT_THEMENAME  "Default"
+-
+ #define DEFAULTTHEMENAME  "Default"
+ 
+-#else
+-
+-#define DEFAULT_THEME       DATADIR "/themes/Default/matchbox/theme.xml"
+-#define DEFAULT_THEME_NAME  "Default"
+-
+-#endif
+-
+ #define CONFDEFAULTS       PKGDATADIR "/defaults"
+ 
+ /* Simple Macros  */

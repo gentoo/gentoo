@@ -1,0 +1,23 @@
+# ChangeLog for games-misc/rfksay
+# Copyright 2000-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/rfksay/ChangeLog,v 1.7 2015/02/06 21:47:32 tupone Exp $
+
+  06 Feb 2015; Tupone Alfredo <tupone@gentoo.org> rfksay-0.1.ebuild:
+  EAPI 5
+
+  14 Nov 2013; Michael Sterrett <mr_bones_@gentoo.org> rfksay-0.1.ebuild:
+  tidy
+
+  05 Feb 2008; Fabian Groffen <grobian@gentoo.org> rfksay-0.1.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  08 Feb 2007; Chris Gianelloni <wolf31o2@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  12 Aug 2005; Fabian Groffen <grobian@gentoo.org> rfksay-0.1.ebuild:
+  Marked ~ppc-macos
+
+*rfksay-0.1 (03 Jan 2004)
+
+  03 Jan 2004; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Ryan Finnie <ryan@finnie.org> #36152.

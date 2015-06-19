@@ -1,0 +1,28 @@
+# ChangeLog for net-misc/netprofiles-ims
+# Copyright 2000-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/netprofiles-ims/ChangeLog,v 1.7 2014/08/10 20:45:26 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  netprofiles-ims-0.1.0134.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing pyrania from metadata.xml as per #26352. Assigning to
+  maintainer-needed.
+
+  28 Apr 2007; Sven Wegener <swegener@gentoo.org>
+  netprofiles-ims-0.1.0134.ebuild:
+  Fix *initd, *confd and *envd calls (#17388, #174266)
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  11 Apr 2004; Markus Nigbur <pyrania@gentoo.org>
+  netprofiles-ims-0.1.0134.ebuild:
+  Marking stable.
+
+*netprofiles-ims-0.1.0134 (07 Oct 2003)
+
+  07 Oct 2003; Markus Nigbur <pyrania@gentoo.org> metadata.xml,
+  netprofiles-ims-0.1.0134.ebuild:
+  Initial import. Thanks to Curtis Hogg (bug 23363).

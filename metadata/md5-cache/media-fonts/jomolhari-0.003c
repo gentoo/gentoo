@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm setup
+DEPEND=X? ( x11-apps/mkfontdir media-fonts/encodings )
+DESCRIPTION=Bhutanese style dbu-can font for Tibetan and Dzongkha text named after Mt Jomolhari
+EAPI=5
+HOMEPAGE=http://chris.fynn.googlepages.com/jomolhari
+IUSE=X
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
+LICENSE=OFL
+SLOT=0
+SRC_URI=http://download.savannah.nongnu.org/releases/free-tibetan/jomolhari/jomolhari-alpha3c.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	font	b3239d2dc442d1717b9725e2be7cb5d6	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=868835ccbd2f5855b09a1d7c10de0bac

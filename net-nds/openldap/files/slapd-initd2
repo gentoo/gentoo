@@ -1,0 +1,22 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-nds/openldap/files/slapd-initd2,v 1.1 2010/04/11 15:14:48 jokey Exp $
+
+depend() {
+	need net
+	before dbus hald avahi-daemon
+	provide ldap
+}
+
+start() {
+	ebegin "Starting ldap-server"
+	eval start-stop-daemon --start --pidfile /var/run/openldap/slapd.pid --exec /usr/lib/openldap/slapd -- -u ldap -g ldap "${OPTS}"
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ldap-server"
+	start-stop-daemon --stop --signal 2 --quiet --pidfile /var/run/openldap/slapd.pid 
+	eend $?
+}

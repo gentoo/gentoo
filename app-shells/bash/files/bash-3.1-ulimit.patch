@@ -1,0 +1,122 @@
+Ripped from Fedora
+
+Add support for RLIMIT_NICE/RLIMIT_RTPRIO and add missing documentation
+for many other options
+
+--- builtins/ulimit.def
++++ builtins/ulimit.def
+@@ -24,7 +24,7 @@
+ $BUILTIN ulimit
+ $FUNCTION ulimit_builtin
+ $DEPENDS_ON !_MINIX
+-$SHORT_DOC ulimit [-SHacdfilmnpqstuvx] [limit]
++$SHORT_DOC ulimit [-SHacdefilmnpqrstuvx] [limit]
+ Ulimit provides control over the resources available to processes
+ started by the shell, on systems that allow such control.  If an
+ option is given, it is interpreted as follows:
+@@ -34,18 +34,20 @@
+     -a	all current limits are reported
+     -c	the maximum size of core files created
+     -d	the maximum size of a process's data segment
++    -e	the maximum scheduling priority (`nice')
+     -f	the maximum size of files created by the shell
+-    -i  the maximum number of pending signals
++    -i	the maximum number of pending signals
+     -l	the maximum size a process may lock into memory
+     -m	the maximum resident set size
+     -n	the maximum number of open file descriptors
+     -p	the pipe buffer size
+-    -q  the maximum number of bytes in POSIX message queues
++    -q	the maximum number of bytes in POSIX message queues
++    -r	the maximum rt priority
+     -s	the maximum stack size
+     -t	the maximum amount of cpu time in seconds
+     -u	the maximum number of user processes
+     -v	the size of virtual memory
+-    -x  the maximum number of file locks
++    -x	the maximum number of file locks
+ 
+ If LIMIT is given, it is the new value of the specified resource;
+ the special LIMIT values `soft', `hard', and `unlimited' stand for
+@@ -202,6 +204,9 @@
+ #ifdef RLIMIT_DATA
+   { 'd',	RLIMIT_DATA,  1024,	"data seg size",	"kbytes" },
+ #endif
++#ifdef RLIMIT_NICE
++  { 'e',	RLIMIT_NICE,  1,	"max nice",	(char *)NULL},
++#endif
+   { 'f',	RLIMIT_FILESIZE, 1024,	"file size",		"blocks" },
+ #ifdef RLIMIT_SIGPENDING
+   { 'i',	RLIMIT_SIGPENDING, 1,	"pending signals",	(char *)NULL },
+@@ -217,6 +222,9 @@
+ #ifdef RLIMIT_MSGQUEUE
+   { 'q',	RLIMIT_MSGQUEUE, 1,	"POSIX message queues",	"bytes" },
+ #endif
++#ifdef RLIMIT_RTPRIO
++  { 'r',	RLIMIT_RTPRIO, 1,	"max rt priority",	(char *)NULL},
++#endif
+ #ifdef RLIMIT_STACK
+   { 's',	RLIMIT_STACK, 1024,	"stack size",		"kbytes" },
+ #endif
+--- doc/bashref.texi
++++ doc/bashref.texi
+@@ -3833,7 +3833,7 @@
+ @item ulimit
+ @btindex ulimit
+ @example
+-ulimit [-acdfilmnpqstuvxSH] [@var{limit}]
++ulimit [-acdefilmnpqrstuvxSH] [@var{limit}]
+ @end example
+ @code{ulimit} provides control over the resources available to processes
+ started by the shell, on systems that allow such control.  If an
+@@ -3854,6 +3854,9 @@
+ @item -d
+ The maximum size of a process's data segment.
+ 
++@item -e
++The maximum scheduling priority.
++
+ @item -f
+ The maximum size of files created by the shell.
+ 
+@@ -3875,6 +3878,9 @@
+ @item -q
+ The maximum number of bytes in POSIX message queues.
+ 
++@item -r
++The maximum RT priority.
++
+ @item -s
+ The maximum stack size.
+ 
+--- doc/bash.1
++++ doc/bash.1
+@@ -8490,7 +8490,7 @@
+ returns true if any of the arguments are found, false if
+ none are found.
+ .TP
+-\fBulimit\fP [\fB\-SHacdfilmnpqstuvx\fP [\fIlimit\fP]]
++\fBulimit\fP [\fB\-SHacdefilmnpqrstuvx\fP [\fIlimit\fP]]
+ Provides control over the resources available to the shell and to
+ processes started by it, on systems that allow such control.
+ The \fB\-H\fP and \fB\-S\fP options specify that the hard or soft limit is
+@@ -8526,6 +8526,9 @@
+ .B \-d
+ The maximum size of a process's data segment
+ .TP
++.B \-e
++The maximum scheduling priority (`nice')
++.TP
+ .B \-f
+ The maximum size of files created by the shell
+ .TP
+@@ -8548,6 +8551,9 @@
+ .B \-q
+ The maximum number of bytes in POSIX message queues
+ .TP
++.B \-r
++The maximum rt priority
++.TP
+ .B \-s
+ The maximum stack size
+ .TP

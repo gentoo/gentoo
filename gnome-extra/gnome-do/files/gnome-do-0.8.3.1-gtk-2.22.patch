@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/show_bug.cgi?id=346123
+
+Removes depracted use of gdk_display.
+
+=== modified file 'libdo/keybinder.c'
+--- libdo/keybinder.c	2009-07-23 07:17:00 +0000
++++ libdo/keybinder.c	2010-11-09 10:45:25 +0000
+@@ -319,7 +319,7 @@
+ 	XModifierKeymap *mod_keymap;
+ 	gboolean retval = FALSE;
+ 
+-	mod_keymap = XGetModifierMapping (gdk_display);
++        mod_keymap = XGetModifierMapping (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()));
+ 
+ 	map_size = 8 * mod_keymap->max_keypermod;
+ 
+

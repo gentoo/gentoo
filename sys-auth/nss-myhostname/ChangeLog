@@ -1,0 +1,63 @@
+# ChangeLog for sys-auth/nss-myhostname
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/nss-myhostname/ChangeLog,v 1.17 2014/01/15 13:06:05 ago Exp $
+
+  15 Jan 2014; Agostino Sarubbo <ago@gentoo.org> nss-myhostname-0.3.ebuild:
+  Stable for arm, wrt bug #488756
+
+  15 Jan 2014; Agostino Sarubbo <ago@gentoo.org> nss-myhostname-0.3.ebuild:
+  Stable for ia64, wrt bug #488756
+
+  23 Dec 2013; Agostino Sarubbo <ago@gentoo.org> nss-myhostname-0.3.ebuild:
+  Stable for sparc, wrt bug #488756
+
+  04 Nov 2013; Matt Turner <mattst88@gentoo.org> nss-myhostname-0.3.ebuild:
+  alpha stable, bug 488756.
+
+  02 Feb 2013; Agostino Sarubbo <ago@gentoo.org> nss-myhostname-0.3.ebuild:
+  Add ~arm, wrt bug #449220
+
+  21 Jan 2013; Alexandre Rostovtsev <tetromino@gentoo.org>
+  nss-myhostname-0.3.ebuild:
+  Block >=systemd-197 since it now includes a copy of nss-myhostname (bug
+  #453026, thanks to Michał Bartoszkiewicz).
+
+  06 Jan 2013; Agostino Sarubbo <ago@gentoo.org> nss-myhostname-0.3.ebuild:
+  Add ~sparc, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> nss-myhostname-0.3.ebuild:
+  Add ~alpha, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> nss-myhostname-0.3.ebuild:
+  Add ~ia64, wrt bug #449220
+
+  28 Nov 2012; Brent Baude <ranger@gentoo.org> nss-myhostname-0.3.ebuild:
+  Marking nss-myhostname-0.3 ppc for bug 439088
+
+  21 Nov 2012; Agostino Sarubbo <ago@gentoo.org> nss-myhostname-0.3.ebuild:
+  Stable for x86, wrt bug #439088
+
+  13 Nov 2012; Brent Baude <ranger@gentoo.org> nss-myhostname-0.3.ebuild:
+  Marking nss-myhostname-0.3 ppc64 for bug 439088
+
+  24 Oct 2012; <ago@gentoo.org> nss-myhostname-0.3.ebuild:
+  Stable for amd64, wrt bug #439088
+
+  20 Oct 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  nss-myhostname-0.3.ebuild:
+  Update license.
+
+  23 Sep 2012; Anthony G. Basile <blueness@gentoo.org>
+  nss-myhostname-0.3.ebuild:
+  keyword ~ppc, bug #379651
+
+  23 Sep 2012; Anthony G. Basile <blueness@gentoo.org>
+  nss-myhostname-0.3.ebuild:
+  keyword ~ppc64, bug #379651
+
+*nss-myhostname-0.3 (08 Feb 2012)
+
+  08 Feb 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +nss-myhostname-0.3.ebuild, +metadata.xml:
+  New ebuild for an nss module that ensures the system's hostname is always
+  resolvable.

@@ -1,0 +1,356 @@
+# ChangeLog for dev-libs/cdk
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/cdk/ChangeLog,v 1.91 2015/05/14 07:15:58 mr_bones_ Exp $
+
+  14 May 2015; Michael Sterrett <mr_bones_@gentoo.org> -cdk-5.0.20140118.ebuild,
+  -files/cdk-5.0.20110517-makefile.patch, -files/cdk-5.0.20120323-ldflags.patch:
+  old
+
+  03 Feb 2015; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Drop myself as maintainer.
+
+  03 Feb 2015; Tim Harder <radhermit@gentoo.org> -cdk-5.0.20090215.ebuild,
+  -cdk-5.0.20120323.ebuild, -cdk-5.0.20130901.ebuild,
+  -files/cdk-5.0.20090215-ldflags.patch:
+  Remove old.
+
+*cdk-5.0.20141106 (28 Jan 2015)
+
+  28 Jan 2015; Tim Harder <radhermit@gentoo.org> +cdk-5.0.20141106.ebuild:
+  Version bump.
+
+*cdk-5.0.20140118 (25 Jun 2014)
+
+  25 Jun 2014; Tim Harder <radhermit@gentoo.org> +cdk-5.0.20140118.ebuild:
+  Version bump.
+
+  19 Mar 2014; Agostino Sarubbo <ago@gentoo.org> cdk-5.0.20131107.ebuild:
+  Stable for alpha, wrt bug #474162
+
+  12 Mar 2014; Agostino Sarubbo <ago@gentoo.org> cdk-5.0.20131107.ebuild:
+  Stable for sparc, wrt bug #474162
+
+  06 Mar 2014; Agostino Sarubbo <ago@gentoo.org> cdk-5.0.20131107.ebuild:
+  Stable for ppc64, wrt bug #474162
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> cdk-5.0.20131107.ebuild:
+  Stable for ppc, wrt bug #474162
+
+  02 Mar 2014; Agostino Sarubbo <ago@gentoo.org> cdk-5.0.20131107.ebuild:
+  Stable for x86, wrt bug #474162
+
+  01 Mar 2014; Pacho Ramos <pacho@gentoo.org> cdk-5.0.20131107.ebuild:
+  amd64 stable, bug #474162
+
+  22 Feb 2014; Akinori Hattori <hattya@gentoo.org> cdk-5.0.20131107.ebuild:
+  ia64 stable wrt bug #474162
+
+  18 Feb 2014; Jeroen Roovers <jer@gentoo.org> cdk-5.0.20131107.ebuild:
+  Stable for HPPA (bug #474162).
+
+*cdk-5.0.20131107 (02 Dec 2013)
+
+  02 Dec 2013; Tim Harder <radhermit@gentoo.org> +cdk-5.0.20131107.ebuild:
+  Version bump.
+
+*cdk-5.0.20130901 (02 Sep 2013)
+
+  02 Sep 2013; Tim Harder <radhermit@gentoo.org> +cdk-5.0.20130901.ebuild:
+  Version bump, update to EAPI 5, add subslot.
+
+  14 Apr 2012; Tim Harder <radhermit@gentoo.org> -cdk-5.0.20110517.ebuild,
+  -files/cdk-5.0.20110517-ldflags.patch:
+  Remove old.
+
+  14 Apr 2012; Tim Harder <radhermit@gentoo.org> cdk-5.0.20090215.ebuild:
+  Fix parallel build issue for current stable too (bug #411879).
+
+  14 Apr 2012; Tim Harder <radhermit@gentoo.org> cdk-5.0.20120323.ebuild,
+  +files/cdk-5.0.20120323-parallel-make.patch:
+  Fix parallel make failure (bug #411879, patch by Nathan Phillip Brink).
+
+*cdk-5.0.20120323 (25 Mar 2012)
+
+  25 Mar 2012; Tim Harder <radhermit@gentoo.org> +cdk-5.0.20120323.ebuild,
+  +files/cdk-5.0.20120323-ldflags.patch:
+  Version bump.
+
+  14 Feb 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Add myself as maintainer.
+
+*cdk-5.0.20110517 (09 Jun 2011)
+
+  09 Jun 2011; Tim Harder <radhermit@gentoo.org> -cdk-5.0.20060507.ebuild,
+  -files/cdk-5.0.20060507-as-needed.patch, -cdk-5.0.20081105.ebuild,
+  -files/cdk-5.0.20081105-ldflags.patch, +cdk-5.0.20110517.ebuild,
+  +files/cdk-5.0.20110517-ldflags.patch,
+  +files/cdk-5.0.20110517-makefile.patch:
+  Version bump and remove old. Add static-libs and unicode USE flags.
+
+  25 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> cdk-5.0.20090215.ebuild:
+  ppc stable wrt #299479
+
+  02 Feb 2011; Mark Loeser <halcy0n@gentoo.org> cdk-5.0.20090215.ebuild:
+  Stable on ppc64; bug #299479
+
+  29 Jan 2011; Raúl Porcel <armin76@gentoo.org> cdk-5.0.20090215.ebuild:
+  alpha/ia64/s390/sparc stable wrt #299479
+
+  25 Jan 2011; Markos Chandras <hwoarang@gentoo.org> cdk-5.0.20090215.ebuild:
+  Stable on amd64 wrt bug #299479
+
+  24 Jan 2011; Jeroen Roovers <jer@gentoo.org> cdk-5.0.20090215.ebuild:
+  Stable for HPPA (bug #299479).
+
+  15 Jan 2011; Markus Meier <maekke@gentoo.org> cdk-5.0.20090215.ebuild:
+  x86 stable, bug #299479
+
+  20 Feb 2010; Jonathan Callen <abcd@gentoo.org> cdk-5.0.20090215.ebuild:
+  Transfer prefix keywords, bump EAPI
+
+*cdk-5.0.20090215 (17 Jan 2010)
+
+  17 Jan 2010; Dawid Węgliński <cla@gentoo.org> +cdk-5.0.20090215.ebuild,
+  +files/cdk-5.0.20090215-ldflags.patch:
+  Version bump. Patches by Tim Harder. (bug #301028)
+
+  15 Dec 2009; Raúl Porcel <armin76@gentoo.org> cdk-5.0.20081105.ebuild:
+  ia64/s390/sparc stable wrt #287511
+
+  11 Dec 2009; Brent Baude <ranger@gentoo.org> cdk-5.0.20081105.ebuild:
+  Marking cdk-5.0.20081105 ppc64 for bug 287511
+
+  09 Dec 2009; nixnut <nixnut@gentoo.org> cdk-5.0.20081105.ebuild:
+  ppc stable #287511
+
+  26 Nov 2009; Víctor Ostorga <vostorga@gentoo.org>
+  cdk-5.0.20060507.ebuild, cdk-5.0.20081105.ebuild:
+  Fixing documentation install path, bug #294458
+
+  16 Nov 2009; Jeroen Roovers <jer@gentoo.org> cdk-5.0.20081105.ebuild:
+  Stable for HPPA (bug #287511).
+
+  09 Nov 2009; Markus Meier <maekke@gentoo.org> cdk-5.0.20081105.ebuild:
+  amd64/x86 stable, bug #287511
+
+  26 Oct 2009; Tobias Klausmann <klausman@gentoo.org>
+  cdk-5.0.20081105.ebuild:
+  Stable on alpha, bug #287511
+
+  25 Oct 2009; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove drizzt from metadata.xml (#149111)
+
+  02 Feb 2009; <drizzt@gentoo.org> -cdk-4.9.10.20020430.ebuild,
+  -cdk-4.9.10.20020809.ebuild, -cdk-4.9.10.20020809-r1.ebuild,
+  -cdk-4.9.11.20031210.ebuild, -cdk-4.9.11.20031210-r1.ebuild,
+  -cdk-4.9.11.20031210-r2.ebuild, -cdk-5.0.20050424.ebuild,
+  -cdk-5.0.20060220.ebuild:
+  Clean
+
+*cdk-5.0.20081105 (02 Feb 2009)
+
+  02 Feb 2009; <drizzt@gentoo.org> +files/cdk-5.0.20081105-ldflags.patch,
+  +cdk-5.0.20081105.ebuild:
+  Version Bump Fix for bug #186273 and #221611
+
+  27 Nov 2008; Jeroen Roovers <jer@gentoo.org> cdk-5.0.20060507.ebuild:
+  Stable for HPPA (bug #249039).
+
+  22 Aug 2007; Roy Marples <uberlord@gentoo.org> cdk-5.0.20060507.ebuild:
+  Keyworded ~x86-fbsd.
+
+  19 Jun 2007; Raúl Porcel <armin76@gentoo.org> cdk-5.0.20060507.ebuild:
+  alpha stable wrt #168106
+
+  28 Mar 2007; Raúl Porcel <armin76@gentoo.org> cdk-5.0.20060507.ebuild:
+  ia64 stable wrt bug 168106
+
+  17 Mar 2007; Steve Dibb <beandog@gentoo.org> cdk-5.0.20060507.ebuild:
+  amd64 stable, bug 168106
+
+  09 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  cdk-5.0.20060507.ebuild:
+  Stable on sparc wrt #168106
+
+  24 Feb 2007; nixnut <nixnut@gentoo.org> cdk-5.0.20060507.ebuild:
+  Stable on ppc wrt bug 168106
+
+  23 Feb 2007; Markus Rothe <corsair@gentoo.org> cdk-5.0.20060507.ebuild:
+  Stable on ppc64; bug #168106
+
+  23 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  cdk-5.0.20060507.ebuild:
+  stable x86; bug 168106
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  23 Nov 2006; Timothy Redaelli <drizzt@gentoo.org> metadata.xml,
+  cdk-5.0.20060507.ebuild:
+  Added -j1 to emake install to fix bug #155586.
+
+*cdk-5.0.20060507 (09 Nov 2006)
+
+  09 Nov 2006; Timothy Redaelli <drizzt@gentoo.org>
+  +files/cdk-5.0.20060507-as-needed.patch, +cdk-5.0.20060507.ebuild:
+  Version bump.
+  Applied my patch for as-needed.
+  Used toolchain-funcs to export CC.
+
+  09 Aug 2006; Simon Stelling <blubb@gentoo.org> cdk-5.0.20060220.ebuild:
+  stable on amd64
+
+  06 Aug 2006; Torsten Veller <tove@gentoo.org> cdk-5.0.20060220.ebuild:
+  Stable on x86 (#123374).
+
+  25 Jun 2006; Markus Rothe <corsair@gentoo.org> cdk-5.0.20060220.ebuild:
+  Stable on ppc64; bug #123374
+
+  23 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  cdk-5.0.20060220.ebuild:
+  Stable on sparc wrt #123374
+
+  21 Apr 2006; Thomas Cort <tcort@gentoo.org> cdk-5.0.20060220.ebuild:
+  Stable on alpha wrt Bug #123374.
+
+  03 Apr 2006; Aron Griffis <agriffis@gentoo.org> cdk-5.0.20060220.ebuild:
+  Mark 5.0.20060220 stable on ia64
+
+  29 Mar 2006; Chris White <chriswhite@gentoo.org> cdk-5.0.20060220.ebuild:
+  ppc stable for cdk-5.0.200602220.
+
+  25 Mar 2006; Aron Griffis <agriffis@gentoo.org> cdk-5.0.20060220.ebuild:
+  Remove append-flags -fPIC, it's no longer needed since this package builds a
+  .so #117256
+
+  10 Mar 2006; Aron Griffis <agriffis@gentoo.org> cdk-5.0.20050424.ebuild:
+  Mark 5.0.20050424 stable on ia64
+
+  04 Mar 2006; <nixnut@gentoo.org> cdk-5.0.20050424.ebuild:
+  Back to ~ppc; bug #123374
+
+*cdk-5.0.20060220 (23 Feb 2006)
+
+  23 Feb 2006; Marcelo Goes <vanquirius@gentoo.org>
+  -files/cdk-5.0-20051230-include.patch, -cdk-5.0.20051230.ebuild,
+  +cdk-5.0.20060220.ebuild:
+  5.0.20060220 version bump. This version has an upstream fix for the include
+  problem.
+
+  21 Feb 2006; Markus Rothe <corsair@gentoo.org> cdk-5.0.20050424.ebuild:
+  Back to ~ppc64; bug #123374
+
+  20 Feb 2006; Markus Rothe <corsair@gentoo.org> cdk-5.0.20050424.ebuild:
+  Stable on ppc64
+
+  19 Feb 2006; Michael Hanselmann <hansmi@gentoo.org>
+  cdk-5.0.20050424.ebuild:
+  Stable on ppc.
+
+*cdk-5.0.20051230 (19 Feb 2006)
+
+  19 Feb 2006; Marcelo Goes <vanquirius@gentoo.org>
+  +files/cdk-5.0-20051230-include.patch, +cdk-5.0.20051230.ebuild:
+  5.0.20051230 version bump. Include patch should fix app-misc/pms compilation
+  issue of bug 123374, reported by Marti Raudsepp <marti at juffo dot org>.
+
+  04 Feb 2006; Aron Griffis <agriffis@gentoo.org> cdk-5.0.20050424.ebuild:
+  Mark 5.0.20050424 stable on alpha
+
+  13 Dec 2005; Torsten Veller <tove@gentoo.org>
+  cdk-4.9.10.20020809-r1.ebuild:
+  Stable on x86.
+  Added -fPIC to fix licq TEXTRELs (see also entry 25 Aug 2005).
+
+  12 Nov 2005; Konstantin Arkhipov <voxus@gentoo.org cdk-5.0.20050424.ebuild:
+  Stable on amd64.
+
+*cdk-5.0.20050424 (07 Sep 2005)
+
+  07 Sep 2005; Marcelo Goes <vanquirius@gentoo.org>
+  +cdk-5.0.20050424.ebuild:
+  Version bump.
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  cdk-4.9.10.20020430.ebuild, cdk-4.9.10.20020809.ebuild,
+  cdk-4.9.10.20020809-r1.ebuild, cdk-4.9.11.20031210.ebuild,
+  cdk-4.9.11.20031210-r1.ebuild, cdk-4.9.11.20031210-r2.ebuild:
+  inherit flag-o-matic for append-flags
+
+*cdk-4.9.11.20031210-r2 (25 Aug 2005)
+*cdk-4.9.10.20020809-r1 (25 Aug 2005)
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  cdk-4.9.10.20020430.ebuild, cdk-4.9.10.20020809.ebuild,
+  +cdk-4.9.10.20020809-r1.ebuild, cdk-4.9.11.20031210.ebuild,
+  cdk-4.9.11.20031210-r1.ebuild, +cdk-4.9.11.20031210-r2.ebuild:
+  licq links against libcdk.a, so it needs to be build with -fPIC.  Add
+  cdk-4.9.10.20020809-r1 ia64-only edition to force users to get the fix.
+  Additionally add cdk-4.9.11.20031210-r2 (~arch) which turns on -fPIC for all
+  arches.
+
+  01 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  cdk-4.9.10.20020809.ebuild:
+  Stable on ppc.
+
+  09 Nov 2004; Konstantin Arkhipov <voxus@gentoo.org>
+  cdk-4.9.11.20031210-r1.ebuild:
+  Added libtool dependency, closing #70125.
+
+*cdk-4.9.11.20031210-r1 (04 Nov 2004)
+
+  04 Nov 2004; Konstantin Arkhipov <voxus@gentoo.org>
+  +cdk-4.9.11.20031210-r1.ebuild:
+  Closing bug #66332.
+
+  29 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  cdk-4.9.11.20031210.ebuild:
+  header fix; add IUSE; tidy
+
+*cdk-4.9.11.20031210 (24 Aug 2004)
+
+  24 Aug 2004; <stkn@gentoo.org> +cdk-4.9.11.20031210.ebuild:
+  version bump
+
+  31 Jul 2004; Tom Gall <tgall@gentoo.org> cdk-4.9.10.20020809.ebuild:
+  stable on ppc64, bug #57131
+
+  16 Apr 2004; Michael McCabe <randy@gentoo.org>
+  cdk-4.9.10.20020809.ebuild:
+  Adding s390 keywords
+
+  05 Mar 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  cdk-4.9.10.20020809.ebuild:
+  stable on sparc
+
+  18 Feb 2004; Aron Griffis <agriffis@gentoo.org> cdk-4.9.10.20020809.ebuild:
+  stable on alpha and ia64
+
+  29 Nov 2003; Brad House <brad_mssw@gentoo.org> cdk-4.9.10.20020809.ebuild:
+  mark stable on amd64
+
+  26 Oct 2003; Brad House <brad_mssw@gentoo.org> cdk-4.9.10.20020809.ebuild:
+  add ~amd64 flags
+
+  24 Jun 2003; Luca Barbato <lu_zero@gentoo.org> cdk-4.9.10.20020430.ebuild:
+  added ppc to KEYWORDS
+
+  19 Jun 2003; Will Woods <wwoods@gentoo.org> cdk-4.9.10.20020430.ebuild:
+  added alpha to KEYWORDS
+
+*cdk-4.9.10.20020809 (05 Feb 2003)
+
+  05 Feb 2003; Nick Hadaway <raker@gentoo.org> cdk-3.9.10.20020809.ebuild,
+  files/digest-cdk-3.9.10.20020809 :
+  Version bump.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*cdk-4.9.10.20020430 (11 Jun 2002)
+
+  11 Jun 2002; Seemant Kulleen <seemant@gentoo.org>
+  cdk-4.9.10.20020430.ebuild, ChangeLog, files/digest-cdk-4.9.10.20020430 :
+  08 Jun 2002;
+
+  Initial version submitted by  M.Krainer <markus-krainer@chello.at> in bug
+  #3529

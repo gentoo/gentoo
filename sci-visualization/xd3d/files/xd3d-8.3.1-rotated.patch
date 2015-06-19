@@ -1,0 +1,10 @@
+--- src/X/rotated.c.orig	2009-12-04 18:09:55.000000000 +0000
++++ src/X/rotated.c	2009-12-04 18:10:37.000000000 +0000
+@@ -29,6 +29,7 @@
+ #include <stdio.h>
+ #include <math.h>
+ #include <string.h>
++#include <stdlib.h>
+ #include "rotated.h"
+ 
+ 

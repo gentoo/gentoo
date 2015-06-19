@@ -1,0 +1,16 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header:
+
+start() {
+        ebegin "Starting zemberek-server"
+        /sbin/start-stop-daemon -b --start --quiet --pidfile /var/run/zemberek-server.pid --make-pidfile --exec /usr/bin/zemberek-server
+        eend $?
+}
+
+stop()  {
+        ebegin "Stopping zemberek-server"
+        start-stop-daemon --stop --pidfile /var/run/zemberek-server.pid --quiet
+        eend $?
+}

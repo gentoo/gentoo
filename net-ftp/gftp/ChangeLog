@@ -1,0 +1,353 @@
+# ChangeLog for net-ftp/gftp
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/gftp/ChangeLog,v 1.92 2015/06/11 19:40:39 pacho Exp $
+
+  11 Jun 2015; Pacho Ramos <pacho@gentoo.org> -gftp-2.0.19-r1.ebuild:
+  Drop old
+
+  11 Jun 2015; Agostino Sarubbo <ago@gentoo.org> gftp-2.0.19-r2.ebuild:
+  Stable for ppc, wrt bug #550464
+
+  02 Jun 2015; Jack Morgan <jmorgan@gentoo.org> gftp-2.0.19-r2.ebuild:
+  sparc stable wrt bug #550464
+
+  01 Jun 2015; Jeroen Roovers <jer@gentoo.org> gftp-2.0.19-r2.ebuild:
+  Stable for PPC64 (bug #550464).
+
+  27 May 2015; Agostino Sarubbo <ago@gentoo.org> gftp-2.0.19-r2.ebuild:
+  Stable for x86, wrt bug #550464
+
+  27 May 2015; Agostino Sarubbo <ago@gentoo.org> gftp-2.0.19-r2.ebuild:
+  Stable for amd64, wrt bug #550464
+
+*gftp-2.0.19-r2 (02 May 2015)
+
+  02 May 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +gftp-2.0.19-r2.ebuild, -gftp-9999.ebuild:
+  Drop live ebuild (dead); port to EAPI=5; fix openssl and readline slots
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> gftp-2.0.19-r1.ebuild,
+  gftp-9999.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  27 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> gftp-2.0.19-r1.ebuild,
+  gftp-9999.ebuild:
+  Fix slot-dep on gtk+
+
+  08 Oct 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  -gftp-2.0.18-r6.ebuild, -files/gftp-2.0.18-188252.patch,
+  -files/gftp-2.0.18-ipv6.patch, -files/gftp-2.0.18-ssh2-read.patch,
+  -files/gftp-2.0.18-ssl-wildcardcert.patch, -gftp-2.0.19.ebuild:
+  Clean up old revisions.
+
+  09 Aug 2009; nixnut <nixnut@gentoo.org> gftp-2.0.19-r1.ebuild:
+  ppc stable #276468
+
+  16 Jul 2009; Jeremy Olexa <darkside@gentoo.org> gftp-2.0.19-r1.ebuild:
+  amd64 stable, bug 276468
+
+  12 Jul 2009; Raúl Porcel <armin76@gentoo.org> gftp-2.0.19-r1.ebuild:
+  alpha/sparc stable wrt #276468
+
+  08 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  gftp-2.0.19-r1.ebuild:
+  stable x86, bug 276468
+
+  04 Jul 2009; Brent Baude <ranger@gentoo.org> gftp-2.0.19-r1.ebuild:
+  Marking gftp-2.0.19-r1 ppc64 for bug 276468
+
+*gftp-2.0.19-r1 (04 Jul 2009)
+
+  04 Jul 2009; Romain Perier <mrpouet@gentoo.org>
+  +gftp-2.0.19-r1.ebuild, +files/gftp-2.0.19-gftp-expand-path-sigsegv.patch:
+  Fix SIGSEGV for gftp_expand_path function
+
+  07 Feb 2009; Raúl Porcel <armin76@gentoo.org> gftp-2.0.19.ebuild:
+  sparc stable wrt #255853
+
+  01 Feb 2009; Markus Meier <maekke@gentoo.org> gftp-2.0.19.ebuild:
+  x86 stable, bug #255853
+
+  01 Feb 2009; nixnut <nixnut@gentoo.org> gftp-2.0.19.ebuild:
+  ppc stable #255853
+
+  26 Jan 2009; Tobias Klausmann <klausman@gentoo.org> gftp-2.0.19.ebuild:
+  Stable on alpha, bug #255853
+
+  24 Jan 2009; Kenneth Prugh <ken69267@gentoo.org> gftp-2.0.19.ebuild:
+  amd64 stable, bug #255853
+
+  23 Jan 2009; Brent Baude <ranger@gentoo.org> gftp-2.0.19.ebuild:
+  stable ppc64, bug 255853
+
+*gftp-2.0.19 (01 Dec 2008)
+
+  01 Dec 2008; Mart Raudsepp <leio@gentoo.org> +gftp-2.0.19.ebuild:
+  Version bump with many changes
+
+  17 Nov 2008; Diego E. Pettenò <flameeyes@gentoo.org>
+  files/gftp-2.0.18-ipv6.patch:
+  Fix patch with absolute paths.
+
+  24 Sep 2008; Alexis Ballier <aballier@gentoo.org> gftp-2.0.18-r6.ebuild:
+  keyword ~x86-fbsd thanks to Matt "gfunkmonk" Rinsch <gfunkmonk@gmail.com>,
+  bug #237025
+
+  27 Jul 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  -gftp-2.0.18-r4.ebuild, -gftp-2.0.18-r5.ebuild,
+  gftp-2.0.18-r6.ebuild, +gftp-9999.ebuild:
+  remove old revisions, fix QA warnings, add live ebuild.
+
+  25 Sep 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  gftp-2.0.18-r6.ebuild:
+  ppc stable, bug #188252
+
+  25 Sep 2007; Raúl Porcel <armin76@gentoo.org> gftp-2.0.18-r6.ebuild:
+  sparc stable wrt security #188252
+
+  22 Sep 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  gftp-2.0.18-r6.ebuild:
+  Marked stable on amd64 as per bug 188252.
+
+  22 Sep 2007; Markus Rothe <corsair@gentoo.org> gftp-2.0.18-r6.ebuild:
+  Stable on ppc64; bug #188252
+
+  22 Sep 2007; Raúl Porcel <armin76@gentoo.org> gftp-2.0.18-r6.ebuild:
+  alpha stable wrt security #188252
+
+  21 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  gftp-2.0.18-r6.ebuild:
+  stable x86, security bug 188252
+
+*gftp-2.0.18-r6 (21 Sep 2007)
+
+  21 Sep 2007; Daniel Gryniewicz <dang@gentoo.org>
+  +files/gftp-2.0.18-188252.patch, +gftp-2.0.18-r6.ebuild:
+  Bump to 2.0.18-r6
+  	Fix for issues in bug #188252
+
+*gftp-2.0.18-r5 (14 Jan 2007)
+
+  14 Jan 2007; Mart Raudsepp <leio@gentoo.org>
+  +files/gftp-2.0.18-ipv6.patch, +files/gftp-2.0.18-ssl-wildcardcert.patch,
+  +gftp-2.0.18-r5.ebuild:
+  Fix bug 100187 and bug 137257, thanks to Kai Blaschke and Konstantin
+
+  28 Aug 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  -files/gftp-2.0.15-64bit_fixes.patch, -files/gftp-2.0.16-ipv6_fix.patch,
+  -files/gftp-2.0.18-fix_gtk1.patch, -gftp-2.0.18-r1.ebuild,
+  -gftp-2.0.18-r2.ebuild, -gftp-2.0.18-r3.ebuild:
+  pruning old revisions, gftp is now gtk2 useflag free!
+
+  19 May 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  gftp-2.0.18-r4.ebuild:
+  ppc stable, bug #133704
+
+  19 May 2006; Markus Rothe <corsair@gentoo.org> gftp-2.0.18-r4.ebuild:
+  Stable on ppc64; bug #133704
+
+  19 May 2006; Thomas Cort <tcort@gentoo.org> gftp-2.0.18-r4.ebuild:
+  Stable on alpha wrt Bug #133704.
+
+  19 May 2006; Gustavo Zacarias <gustavoz@gentoo.org> gftp-2.0.18-r4.ebuild:
+  Stable on sparc wrt #133704
+
+  19 May 2006; Joshua Jackson <tsunam@gentoo.org> gftp-2.0.18-r4.ebuild:
+  Stable on x86; bug #133704
+
+  18 May 2006; Thomas Cort <tcort@gentoo.org> gftp-2.0.18-r4.ebuild:
+  Stable on amd64 wrt Bug #133704.
+
+*gftp-2.0.18-r4 (22 Jan 2006)
+
+  22 Jan 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  +gftp-2.0.18-r4.ebuild:
+  Fix dependencies and configuration options to resolve bug #109658
+
+  14 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  gftp-2.0.18-r1.ebuild, gftp-2.0.18-r2.ebuild, gftp-2.0.18-r3.ebuild:
+  Dropped the virtual/x11 dependency as no x11 packages are used directly.
+
+*gftp-2.0.18-r3 (06 Nov 2005)
+
+  06 Nov 2005; Mike Gardiner <obz@gentoo.org>
+  +files/gftp-2.0.18-ssh2-read.patch, +gftp-2.0.18-r3.ebuild:
+  Added revision -r3 with a fix for downloading files over ssh2 that are
+  read-only (non-writable). See bug #91269 and the upstream link.
+
+*gftp-2.0.18-r2 (14 Oct 2005)
+
+  14 Oct 2005; John N. Laliberte <allanonjl@gentoo.org> -gftp-2.0.14.ebuild,
+  -gftp-2.0.15.ebuild, -gftp-2.0.16-r1.ebuild, -gftp-2.0.17.ebuild,
+  +gftp-2.0.18-r2.ebuild:
+  get rid of gtk2 useflag, clean up old ebuilds, fixes #108555
+
+  15 Sep 2005; Aron Griffis <agriffis@gentoo.org> gftp-2.0.18-r1.ebuild:
+  Mark 2.0.18-r1 stable on alpha
+
+  07 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> gftp-2.0.18-r1.ebuild:
+  ~alpha keyword, bug 87365.
+
+  19 Feb 2005; Joseph Jezak <josejx@gentoo.org> gftp-2.0.18-r1.ebuild:
+  Marked ppc stable for bug #81994.
+
+  14 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org> gftp-2.0.18-r1.ebuild:
+  Stable on sparc wrt #81994
+
+  14 Feb 2005; Markus Rothe <corsair@gentoo.org> gftp-2.0.18-r1.ebuild:
+  Stable on ppc64; bug #81994
+
+  14 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> gftp-2.0.18-r1.ebuild:
+  stable on amd64, see #81994
+
+*gftp-2.0.18-r1 (14 Feb 2005)
+
+  14 Feb 2005; foser <foser@gentoo.org> gftp-2.0.18-r1.ebuild :
+  Add patch to fix buildtime issue (#80845)
+
+  14 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> gftp-2.0.18.ebuild:
+  stable on amd64. see #81994
+
+  04 Feb 2005; Simon Stelling <blubb@gentoo.org> gftp-2.0.18.ebuild:
+  testing on amd64
+
+*gftp-2.0.18 (04 Feb 2005)
+
+  04 Feb 2005; Joe McCann <joem@gentoo.org> +gftp-2.0.18.ebuild:
+  new version with several bug fixes that should solve some amd64 issues.
+  Closes bug 80753
+
+  02 Nov 2004; Markus Rothe <corsair@gentoo.org> gftp-2.0.17.ebuild:
+  Stable on ppc64
+
+  04 Aug 2004; Travis Tilley <lv@gentoo.org> gftp-2.0.15.ebuild,
+  gftp-2.0.16-r1.ebuild, gftp-2.0.17.ebuild:
+  gftp 2.0.16 and up dont work on amd64 yet, marking -amd64
+
+  23 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> gftp-2.0.17.ebuild:
+  Stable amd64.
+
+  12 Jul 2004; Tom Gall <tgall@gentoo.org> gftp-2.0.17.ebuild:
+  add ~ppc64 bug #55069
+
+  09 Jun 2004; Aron Griffis <agriffis@gentoo.org> gftp-2.0.14.ebuild,
+  gftp-2.0.15.ebuild, gftp-2.0.16-r1.ebuild, gftp-2.0.17.ebuild:
+  Fix use invocation
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> gftp-2.0.15.ebuild,
+  gftp-2.0.16-r1.ebuild:
+  Add inherit eutils
+
+*gftp-2.0.17 (01 Apr 2004)
+
+  01 Apr 2004; Travis Tilley <lv@gentoo.org> :
+  version bumped and ~amd64 keyword added due to recent 64 bit cleanups upstream
+
+  25 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> gftp-2.0.15.ebuild,
+  gftp-2.0.16-r1.ebuild:
+  don't use deprecated ? : use syntax
+
+  25 Feb 2004; Daniel Ahlberg <aliz@gentoo.org> gftp-2.0.15.ebuild:
+  Adding patch from Ryan C. Gordon <ryan@epicgames.com> to fix segfaults on
+  amd64. Closing #34440.
+
+  06 Feb 2004; <gustavoz@gentoo.org> gftp-2.0.16-r1.ebuild:
+  stable on sparc
+
+  04 Feb 2004; Alastair Tse <liquidx@gentoo.org> gftp-2.0.16-r1.ebuild:
+  stable bump, should solve (#39289)
+
+  07 Jan 2004; Jason Wever <weeve@gentoo.org> gftp-2.0.15.ebuild:
+  Marked stable on sparc.
+
+*gftp-2.0.16-r1 (27 Nov 2003)
+
+  27 Nov 2003; foser <foser@gentoo.org> gftp-2.0.16-r1.ebuild :
+  Added patch fixing issues with ipv4/ipv6 servers
+  reported in #34475 by Mats Huttunen <sumc@bredband.net>
+
+*gftp-2.0.16 (09 Nov 2003)
+
+  10 Nov 2003; foser <foser@gentoo.org> gftp-2.0.{15,16}.ebuild :
+  Fixed !gtk -> !gtk?
+
+  09 Nov 2003; Alastair Tse <liquidx@gentoo.org> gftp-2.0.13.ebuild,
+  gftp-2.0.14_rc1.ebuild, gftp-2.0.16.ebuild, files/gftp-2.0.13-gtk2.2.patch:
+  version bump and cleanup
+
+*gftp-2.0.15 (22 Aug 2003)
+
+  22 Aug 2003; <spider@gentoo.org> gftp-2.0.15.ebuild :
+  Versionbump. Revamped the dependencies completely. USE="ssl" support
+  USE="-gtk" dependencies added. Now handles gtk and gtk2 dependencies in a
+  nested fashion, disablig gtk gives text frontend Fixed up the deps for
+  textmode. (readline,ncurses and glib-1.2)
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*gftp-2.0.14 (06 Dec 2002)
+
+  04 Apr 2003; Jason Wever <weeve@gentoo.org> gftp-2.0.14.ebuild:
+  Changed ~sparc keyword to sparc.
+
+  23 Mar 2003; Graham Forest <vladimir@gentoo.org> gftp-2.0.14.ebuild:
+  set ppc in keywords
+
+  06 Dec 2002; foser <foser@gentoo.org> gftp-2.0.14.ebuild :
+  New version
+
+*gftp-2.0.14_rc1 (29 Nov 2002)
+
+  29 Nov 2002; foser <foser@gentoo.org> gftp-2.0.14_rc1.ebuild :
+  New version
+
+*gftp-2.0.13 (23 Jul 2002)
+
+  13 Apr 2003; Alastair Tse <liquidx@gentoo.org> gftp-2.0.13.ebuild,
+  files/gftp-2.0.13-gtk2.2.patch:
+  fix compile problems with gtk2.2
+
+  20 Aug 2002; Mark Guertin <gerk@gentoo.org> gftp-2.0.13.ebuild :
+  Added ppc to keywords
+
+  23 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> gftp-2.0.13.ebuild :
+
+  Version bump.
+
+*gftp-2.0.12-r3 (18 Jul 2002)
+
+  18 Jul 2002; Seemant Kulleen <seemant@gentoo.org> gftp-2.0.12-r3.ebuild
+  files/digest-gftp-2.0.12-r3 :
+
+  Sandbox violation fixed. Closes bug # 5217 by yariv@vipe.technion.ac.il
+  (Yariv Ido)
+
+*gftp-2.0.12-r2 (06 Jul 2002)
+  06 Jul 2002; Spider <spider@gentoo.org> gftp-2.0.12-r2.ebuild :
+  using the gtk2 USE flag and fixed it up to pass lintool checks
+
+*gftp-2.0.12-r1 (27 May 2002)
+  27 May 2002; Spider <spider@gentoo.org> gftp-2.0.12-r1.ebuild :
+  Updating the ebuild with a check for gtk+-2.0 and enabling that if
+  found, also changed the dependencies on gtk+ and glib
+
+*gftp-2.0.12 (24 May 2002)
+
+  24 May 2002; Ryan Phillips <rphillips@gentoo.org> gftp-2.0.12.ebuild :
+
+  Updated version
+
+  
+  11 Apr 2002; Spider <spider@gentoo.org>
+  Update all glib dependencies to use glib-1.2*  in preparation of unmasking the glib-2.0.1 packages
+
+
+*gftp-2.0.11 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

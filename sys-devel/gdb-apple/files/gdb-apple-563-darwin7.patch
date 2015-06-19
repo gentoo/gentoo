@@ -1,0 +1,110 @@
+* Fabian Groffen <grobian@gentoo.org>
+  Mac OS X Panther (10.3) doesn't have mach_vm_size_t yet, and
+  apparently this was forseen in macosx-nat-inferior-debug.c.  However,
+  macosx-nat-inferior-debug.h also uses the provided types, hence we
+  move the backwards-compatibility logic to the .h file.
+
+* Fabian Groffen <grobian@gentoo.org>
+  On Mac OS X Panther (10.3) an older version of the Launch Services is
+  available, which doesn't cover the requirements made by Xcode here.
+  Because it's for Xcode only, and we don't use it on Gentoo, we just
+  enable the functionality that doesn't compile on 10.3.
+
+--- gdb/macosx/macosx-nat-inferior-debug.c
++++ gdb/macosx/macosx-nat-inferior-debug.c
+@@ -53,24 +53,6 @@
+ 
+ #include <AvailabilityMacros.h>
+ 
+-#define MACH64 (MAC_OS_X_VERSION_MAX_ALLOWED >= 1040)
+-
+-#if MACH64
+-
+-#include <mach/mach_vm.h>
+-
+-#else /* ! MACH64 */
+-
+-#define mach_vm_size_t vm_size_t
+-#define mach_vm_address_t vm_address_t
+-#define mach_vm_read vm_read
+-#define mach_vm_write vm_write
+-#define mach_vm_region vm_region
+-#define VM_REGION_BASIC_INFO_COUNT_64 VM_REGION_BASIC_INFO_COUNT
+-#define VM_REGION_BASIC_INFO_64 VM_REGION_BASIC_INFO
+-
+-#endif /* MACH64 */
+-
+ FILE *inferior_stderr = NULL;
+ int inferior_debug_flag = 0;
+ int timestamps_debug_flag = 0;
+--- gdb/macosx/macosx-nat-inferior-debug.h
++++ gdb/macosx/macosx-nat-inferior-debug.h
+@@ -6,6 +6,24 @@
+ 
+ #include "defs.h"
+ 
++#define MACH64 (MAC_OS_X_VERSION_MAX_ALLOWED >= 1040)
++
++#if MACH64
++
++#include <mach/mach_vm.h>
++
++#else /* ! MACH64 */
++
++#define mach_vm_size_t vm_size_t
++#define mach_vm_address_t vm_address_t
++#define mach_vm_read vm_read
++#define mach_vm_write vm_write
++#define mach_vm_region vm_region
++#define VM_REGION_BASIC_INFO_COUNT_64 VM_REGION_BASIC_INFO_COUNT
++#define VM_REGION_BASIC_INFO_64 VM_REGION_BASIC_INFO
++
++#endif /* MACH64 */
++
+ extern FILE *inferior_stderr;
+ extern int inferior_debug_flag;
+ 
+--- gdb/macosx/macosx-tdep.c
++++ gdb/macosx/macosx-tdep.c
+@@ -413,6 +413,7 @@
+ } BabelAESelInfo;
+ #pragma options align=reset
+ 
++#if (MAC_OS_X_VERSION_MAX_ALLOWED >= 1040)
+ static int 
+ open_file_with_LS (const char *file_path, int lineno)
+ {
+@@ -538,7 +539,9 @@
+     
+   return 1;
+ }
++#endif
+ 
++#if (MAC_OS_X_VERSION_MAX_ALLOWED >= 1040)
+ /* Opens the file pointed to in ARGS with the default editor
+    given by LaunchServices.  If ARGS is NULL, opens the current
+    source file & line.  You can also supply file:line and it will
+@@ -609,6 +612,7 @@
+ 
+   open_file_with_LS (filename, line_no);
+ }
++#endif
+ 
+ void
+ _initialize_macosx_tdep ()
+@@ -618,13 +622,15 @@
+ 
+   add_info ("trampoline", info_trampoline_command,
+             "Resolve function for DYLD trampoline stub and/or Objective-C call");
++#if (MAC_OS_X_VERSION_MAX_ALLOWED >= 1040)
+   c = add_com ("open", class_support, open_command, _("\
+ Open the named source file in an application determined by LaunchServices.\n\
+ With no arguments, open the currently selected source file.\n\
+ Also takes file:line to hilight the file at the given line."));
+   set_cmd_completer (c, filename_completer);
+   add_com_alias ("op", "open", class_support, 1);
+   add_com_alias ("ope", "open", class_support, 1);
++#endif
+ 
+   add_com ("flushstack", class_maintenance, stack_flush_command,
+            "Force gdb to flush its stack-frame cache (maintainer command)");

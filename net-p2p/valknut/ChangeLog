@@ -1,0 +1,508 @@
+# ChangeLog for net-p2p/valknut
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/valknut/ChangeLog,v 1.81 2013/03/03 13:48:03 xarthisius Exp $
+
+  03 Mar 2013; Kacper Kowalik <xarthisius@gentoo.org>
+  +files/valknut-0.4.9-gcc47.patch, valknut-0.4.9.ebuild:
+  Fix building with gcc-4.7 wrt #423045 by Diego Elio Pettenò
+  <flameeyes@gentoo.org>
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> valknut-0.4.9.ebuild:
+  Move Qt dependencies to the new category
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> valknut-0.4.9.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  16 Jan 2010; Raúl Porcel <armin76@gentoo.org> valknut-0.3.18.ebuild,
+  valknut-0.4.9.ebuild:
+  Drop alpha/ia64 keyword
+
+  14 Jan 2010; Jeroen Roovers <jer@gentoo.org> valknut-0.4.9.ebuild:
+  Stable for HPPA (bug #297186).
+
+  10 Jan 2010; nixnut <nixnut@gentoo.org> valknut-0.4.9.ebuild:
+  ppc stable #297186
+
+  02 Jan 2010; Brent Baude <ranger@gentoo.org> valknut-0.4.9.ebuild:
+  Marking valknut-0.4.9 ppc64 for bug 297186
+
+  31 Dec 2009; Samuli Suominen <ssuominen@gentoo.org> valknut-0.4.9.ebuild:
+  amd64 stable wrt #297186
+
+  31 Dec 2009; Christian Faulhammer <fauli@gentoo.org> valknut-0.4.9.ebuild:
+  stable x86, bug 297186
+
+  25 Dec 2009; <hwoarang@gentoo.org> valknut-0.3.23.ebuild:
+  Stable for amd64 wrt bug #297186
+
+  22 Dec 2009; Jeroen Roovers <jer@gentoo.org> valknut-0.3.23.ebuild:
+  Stable for HPPA (bug #297186).
+
+*valknut-0.4.9 (16 Dec 2009)
+
+  16 Dec 2009; Samuli Suominen <ssuominen@gentoo.org> +valknut-0.4.9.ebuild:
+  Version bump wrt #235031, thanks to Mario Kicherer for reporting.
+
+*valknut-0.3.23 (08 Jun 2009)
+
+  08 Jun 2009; Raúl Porcel <armin76@gentoo.org> +valknut-0.3.23.ebuild:
+  Version bump
+
+*valknut-0.3.21a (24 Sep 2008)
+
+  24 Sep 2008; Raúl Porcel <armin76@gentoo.org> +valknut-0.3.21a.ebuild:
+  Version bump
+
+  23 Aug 2008; Markus Meier <maekke@gentoo.org> valknut-0.3.18.ebuild:
+  amd64 stable, bug #234660
+
+  14 Aug 2008; Raúl Porcel <armin76@gentoo.org> -valknut-0.3.12.ebuild,
+  valknut-0.3.18.ebuild:
+  alpha/ia64/x86 stable
+
+*valknut-0.3.19 (14 Aug 2008)
+
+  14 Aug 2008; Raúl Porcel <armin76@gentoo.org> -valknut-0.3.14a.ebuild,
+  +valknut-0.3.19.ebuild:
+  Version bump
+
+  27 Jul 2008; Carsten Lohrke <carlo@gentoo.org> valknut-0.3.12.ebuild,
+  valknut-0.3.13.ebuild, valknut-0.3.14a.ebuild, valknut-0.3.18.ebuild:
+  QA: Get rid of deprecated qt_min_version().
+
+*valknut-0.3.18 (11 Jul 2008)
+
+  11 Jul 2008; Raúl Porcel <armin76@gentoo.org> +valknut-0.3.18.ebuild:
+  Version bump
+
+  27 Jun 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  valknut-0.3.13.ebuild:
+  stable amd64, bug 225029
+
+  17 Jun 2008; Jeroen Roovers <jer@gentoo.org> valknut-0.3.13.ebuild:
+  Stable for HPPA (bug #225029).
+
+  07 Jun 2008; nixnut <nixnut@gentoo.org> valknut-0.3.13.ebuild:
+  Stable on ppc wrt bug 225029
+
+*valknut-0.3.14a (06 Jun 2008)
+
+  06 Jun 2008; Raúl Porcel <armin76@gentoo.org> +valknut-0.3.14a.ebuild:
+  Version bump
+
+  06 Jun 2008; Markus Rothe <corsair@gentoo.org> valknut-0.3.13.ebuild:
+  Stable on ppc64; bug #225029
+
+  05 Jun 2008; Raúl Porcel <armin76@gentoo.org> valknut-0.3.13.ebuild:
+  alpha/ia64/x86 stable
+
+*valknut-0.3.13 (19 Apr 2008)
+
+  19 Apr 2008; Raúl Porcel <armin76@gentoo.org> +valknut-0.3.13.ebuild:
+  Version bump
+
+  04 Feb 2008; Samuli Suominen <drac@gentoo.org> -valknut-0.3.10.ebuild,
+  -valknut-0.3.11.ebuild, valknut-0.3.12.ebuild:
+  amd64 stable
+
+  19 Jan 2008; nixnut <nixnut@gentoo.org> valknut-0.3.12.ebuild:
+  Stable on ppc wrt bug 202615
+
+  16 Jan 2008; Jeroen Roovers <jer@gentoo.org> valknut-0.3.12.ebuild:
+  Stable for HPPA (bug #202615).
+
+  16 Jan 2008; Raúl Porcel <armin76@gentoo.org> valknut-0.3.12.ebuild:
+  alpha/ia64/x86 stable
+
+  14 Jan 2008; Raúl Porcel <armin76@gentoo.org> valknut-0.3.10.ebuild,
+  valknut-0.3.11.ebuild, valknut-0.3.12.ebuild:
+  Add missing pkgconfig dep, bug #205360
+
+  24 Dec 2007; Jeroen Roovers <jer@gentoo.org> valknut-0.3.11.ebuild:
+  Stable for HPPA (bug #202615).
+
+  22 Dec 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  valknut-0.3.11.ebuild:
+  ppc stable, bug #202615
+
+*valknut-0.3.12 (17 Dec 2007)
+
+  17 Dec 2007; Raúl Porcel <armin76@gentoo.org> valknut-0.3.11.ebuild,
+  +valknut-0.3.12.ebuild:
+  alpha/ia64/x86 stable and version bump
+
+*valknut-0.3.11 (25 Oct 2007)
+
+  25 Oct 2007; Raúl Porcel <armin76@gentoo.org> +valknut-0.3.11.ebuild:
+  Version bump, bug #196137
+
+  11 Sep 2007; Raúl Porcel <armin76@gentoo.org>
+  -files/valknut-0.3.7-gcc41.patch, -valknut-0.3.7.ebuild,
+  -valknut-0.3.8.1.ebuild, -valknut-0.3.9.ebuild:
+  old
+
+  09 Sep 2007; Markus Rothe <corsair@gentoo.org> valknut-0.3.10.ebuild:
+  Stable on ppc64; bug #186352
+
+  04 Sep 2007; Christoph Mende <angelos@gentoo.org> valknut-0.3.10.ebuild:
+  Stable on amd64 wrt bug #186352
+
+  01 Sep 2007; nixnut <nixnut@gentoo.org> valknut-0.3.10.ebuild:
+  Stable on ppc wrt bug 186352
+
+  28 Aug 2007; Raúl Porcel <armin76@gentoo.org> valknut-0.3.10.ebuild:
+  alpha/ia64/x86 stable wrt #186352
+
+  28 Aug 2007; Jeroen Roovers <jer@gentoo.org> valknut-0.3.10.ebuild:
+  Stable for HPPA again (bug #186352).
+
+  27 Aug 2007; Christoph Mende <angelos@gentoo.org> valknut-0.3.9.ebuild:
+  Stable on amd64 wrt bug #186352
+
+  22 Aug 2007; Jeroen Roovers <jer@gentoo.org> valknut-0.3.9.ebuild:
+  Stable for HPPA (bug #186352).
+
+  30 Jul 2007; Markus Rothe <corsair@gentoo.org> valknut-0.3.9.ebuild:
+  Stable on ppc64; bug #186352
+
+  28 Jul 2007; nixnut <nixnut@gentoo.org> valknut-0.3.9.ebuild:
+  Stable on ppc wrt bug 186352
+
+*valknut-0.3.10 (23 Jul 2007)
+
+  23 Jul 2007; Raúl Porcel <armin76@gentoo.org> valknut-0.3.9.ebuild,
+  +valknut-0.3.10.ebuild:
+  alpha/ia64/x86 stable and version bump, bug 184022
+
+*valknut-0.3.9 (12 May 2007)
+
+  12 May 2007; Raúl Porcel <armin76@gentoo.org> +valknut-0.3.9.ebuild:
+  Version bump, bug 178115
+
+  10 Feb 2007; Raúl Porcel <armin76@gentoo.org> -valknut-0.3.8.ebuild:
+  drop unneeded
+
+*valknut-0.3.8.1 (28 Jan 2007)
+
+  28 Jan 2007; Raúl Porcel <armin76@gentoo.org> +valknut-0.3.8.1.ebuild:
+  Version bump
+
+  22 Jan 2007; Raúl Porcel <armin76@gentoo.org> valknut-0.3.8.ebuild:
+  Fix HOMEPAGE
+
+*valknut-0.3.8 (10 Jan 2007)
+
+  10 Jan 2007; Raúl Porcel <armin76@gentoo.org> valknut-0.3.7.ebuild,
+  +valknut-0.3.8.ebuild:
+  version bump, bug 156051
+
+  10 Jan 2007; Raúl Porcel <armin76@gentoo.org> -valknut-0.2.20.ebuild,
+  -valknut-0.2.21.ebuild, -valknut-0.3.0.ebuild, -valknut-0.3.3.ebuild,
+  -valknut-0.3.5.ebuild:
+  drop old
+
+  01 Oct 2006; Jeroen Roovers <jer@gentoo.org> valknut-0.3.7.ebuild:
+  Stable for HPPA (bug #140724).
+
+  08 Aug 2006; Chris Gianelloni <wolf31o2@gentoo.org> valknut-0.3.7.ebuild:
+  Stable on amd64 wrt bug #140724.
+
+  25 Jul 2006; Joshua Jackson <tsunam@gentoo.org> valknut-0.3.7.ebuild:
+  Stable x86; bug #140724
+
+  22 Jul 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  valknut-0.3.7.ebuild:
+  ppc stable, bug #140724
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org> files/digest-valknut-0.2.20,
+  files/digest-valknut-0.2.21, files/digest-valknut-0.3.0,
+  files/digest-valknut-0.3.3, files/digest-valknut-0.3.5, Manifest:
+  Fixing SHA256 digest, pass four
+
+  26 Feb 2006; Mark Loeser <halcy0n@gentoo.org>
+  +files/valknut-0.3.7-gcc41.patch, valknut-0.3.7.ebuild:
+  Add patch to fix compilation with gcc-4.1 by Jan Jitse Venselaar <janjitse
+  AT a-eskwadraat DOT nl>; bug #119579
+
+  04 Oct 2005; Rene Nussbaumer <killerfox@gentoo.org> valknut-0.3.5.ebuild:
+  Stable on hppa. See bug #88544.
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  15 Sep 2005; Aron Griffis <agriffis@gentoo.org> valknut-0.3.7.ebuild:
+  Mark 0.3.7 stable on alpha
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> valknut-0.3.7.ebuild:
+  stable on ia64
+
+  28 Jul 2005; Caleb Tennis <caleb@gentoo.org> valknut-0.2.20.ebuild,
+  valknut-0.2.21.ebuild:
+  Fix qt dep per bug #100235
+
+  07 Jul 2005; Caleb Tennis <caleb@gentoo.org> valknut-0.3.0.ebuild,
+  valknut-0.3.3.ebuild, valknut-0.3.5.ebuild:
+  Fix qt dep
+
+  27 Jun 2005; Markus Rothe <corsair@gentoo.org> valknut-0.3.7.ebuild:
+  Stable on ppc64
+
+  18 Jun 2005; <sekretarz@gentoo.org> valknut-0.3.5.ebuild:
+  Stable on x86, bug #88544
+
+  14 Jun 2005; Jose Luis Rivero <yoswink@gentoo.org> valknut-0.3.5.ebuild:
+  Stable on alpha due to #88544
+
+  14 May 2005; Markus Rothe <corsair@gentoo.org> valknut-0.3.7.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  08 May 2005; Gregorio Guidi <greg_g@gentoo.org> valknut-0.3.7.ebuild:
+  Fix usage of kde eclasses.
+
+  07 May 2005; David Holm <dholm@gentoo.org> valknut-0.3.5.ebuild:
+  Stable on ppc.
+
+  30 Apr 2005; Karol Wojtaszek <sekretarz@gentoo.org> valknut-0.3.5.ebuild:
+  Stable on amd64, bug #88544
+
+  30 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> valknut-0.3.5.ebuild:
+  Stable on ia64, bug 88544.
+
+*valknut-0.3.7 (25 Apr 2005)
+
+  25 Apr 2005; Karol Wojtaszek <sekretarz@gentoo.org> +valknut-0.3.7.ebuild:
+  Version bump, bug #90200
+
+*valknut-0.3.5 (29 Jan 2005)
+
+  29 Jan 2005; Jon Hood <squinky86@gentoo.org> +valknut-0.3.5.ebuild:
+  Version bump, #77489. Thanks Robert Führicht <the_master_of_disaster@gmx.at>.
+
+*valknut-0.3.2 (18 Dec 2004)
+
+  18 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org> -valknut-0.3.2.ebuild:
+  clean repoman-broken ebuild
+
+  11 Nov 2004; Bryan Østergaard <kloeri@gentoo.org> valknut-0.3.3.ebuild:
+  Stable on alpha.
+
+  12 Oct 2004; Guy Martin <gmsoft@gentoo.org> valknut-0.3.3.ebuild:
+  Stable on hppa.
+
+  01 Oct 2004; Jon Hood <squinky86@gentoo.org> valknut-0.3.3.ebuild:
+  Stable on x86.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+*valknut-0.3.3 (22 Aug 2004)
+
+  22 Aug 2004; Jon Hood <squinky86@gentoo.org> dcgui-qt-0.2.20.ebuild,
+  dcgui-qt-0.2.21.ebuild, dcgui-qt-0.3.0.ebuild, dcgui-qt-0.3.2.ebuild,
+  +valknut-0.3.3.ebuild:
+  Version bump, closes #61192. Thanks go to colyte <colyte@crashmag.net> and
+  luke-jr. Also moving net-p2p/dcgui-qt to net-p2p/valknut
+
+  13 Aug 2004; Jon Hood <squinky86@gentoo.org> dcgui-qt-0.3.2.ebuild:
+  Apply fix from bug #60174 from Peter <preach@home.se>.
+
+  08 Aug 2004; Jon Hood <squinky86@gentoo.org> metadata.xml,
+  -dcgui-qt-0.2.22.ebuild, -dcgui-qt-0.3.1.ebuild, dcgui-qt-0.3.2.ebuild:
+  Stable on x86, ebuild cleanups, now under net-p2p herd.
+
+  03 Jul 2004; Guy Martin <gmsoft@gentoo.org> dcgui-qt-0.3.0.ebuild:
+  Marked stable on hppa.
+
+  28 Jun 2004; Daniel Ahlberg <aliz@gentoo.org> dcgui-qt-0.3.0.ebuild:
+  Unmasked on x86 and amd64.
+
+  14 Jun 2004; Daniel Ahlberg <aliz@gentoo.org> dcgui-qt-0.2.22.ebuild:
+  Unmasked on x86 and amd64.
+
+*dcgui-qt-0.3.2 (05 Jun 2004)
+
+  05 Jun 2004; Jon Hood <squinky86@gentoo.org> +dcgui-qt-0.3.2.ebuild:
+  version bump found by Paulo Fidalgo <kanniball@zmail.pt>; #53028
+
+*dcgui-qt-0.3.1 (30 May 2004)
+
+  30 May 2004; Daniel Ahlberg <aliz@gentoo.org> dcgui-qt-0.3.1.ebuild:
+  Version bump, found by Kris Overholt <virtuaspy@yahoo.com> in #52310.
+
+*dcgui-qt-0.3.0 (25 May 2004)
+
+  25 May 2004; Daniel Ahlberg <aliz@gentoo.org> dcgui-qt-0.3.0.ebuild:
+  Version bump.
+
+  07 May 2004; Caleb Tennis <caleb@gentoo.org> :
+  Add an addwrite
+
+*dcgui-qt-0.2.22 (06 May 2004)
+
+  06 May 2004; Daniel Ahlberg <aliz@gentoo.org> dcgui-qt-0.2.22.ebuild:
+  Version bump. Found by Tom Samstag <gentoo@modtwo.com> in #50064.
+
+*dcgui-qt-0.2.21 (28 Feb 2004)
+
+  28 Feb 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #43155 by Paulo Fidalgo.
+
+*dcgui-qt-0.2.20 (06 Oct 2003)
+
+  06 Oct 2003; Daniel Ahlberg <aliz@gentoo.org> dcgui-qt-0.2.20.ebuild:
+  Version bump
+
+*dcgui-qt-0.2.19 (09 Sep 2003)
+
+  09 Sep 2003; Daniel Ahlberg <aliz@gentoo.org> dcgui-qt-0.2.19.ebuild:
+  Version bump
+
+*dcgui-qt-0.2.18 (21 Aug 2003)
+
+  21 Aug 2003; Daniel Ahlberg <aliz@gentoo.org> dcgui-qt-0.2.18.ebuild:
+  version bump
+
+*dcgui-qt-0.2.4-r1 (06 May 2003)
+ 
+  13 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*dcgui-qt-0.2.16 (25 Jun 2003)
+
+  25 Jun 2003; Daniel Ahlberg <aliz@gentoo.org> dcgui-qt-0.2.16.euild :
+  Version bump.
+
+*dcgui-qt-0.2.15 (08 Jun 2003)
+
+  17 Jun 2003; Daniel Ahlberg <aliz@gentoo.org> qt-dcgui-0.2.15.ebuild :
+  Version bump. Deleted old files.
+
+*qt-dcgui-0.2.14 (08 Jun 2003)
+
+  08 Jun 2003; Daniel Ahlberg <aliz@gentoo.org> qt-dcgui-0.2.14.ebuild :
+  Version bump. 
+
+*qt-dcgui-0.2.13 (06 May 2003)
+
+  06 May 2003; Daniel Ahlberg <aliz@gentoo.org> qt-dcgui-0.2.13.ebuild :
+  Version bump. Removed old files and renamed package.
+
+  30 Apr 2003; Daniel Ahlberg <aliz@gentoo.org> qt-dcgui-0.2.12.ebuild :
+  Added workaround for compilation error. Closes #20177.
+
+*qt-dcgui-0.2.12 (29 Apr 2003)
+
+  29 Apr 2003; Daniel Ahlberg <aliz@gentoo.org> qt-dcgui-0.2.12.ebuild :
+  Version bump.
+
+*qt-dcgui-0.2.10 (17 Apr 2003)
+
+  17 Apr 2003; Daniel Ahlberg <aliz@gentoo.org> qt-dcgui-0.2.10.ebuild :
+  Version bump.
+
+*qt-dcgui-0.2.9 (11 Apr 2003)
+
+  11 Apr 2003; Daniel Ahlberg <aliz@gentoo.org> qt-dcgui-0.2.9.ebuild :
+  Version bump.
+
+*qt-dcgui-0.2.8 (31 Mar 2003)
+
+  31 Mar 2003; Daniel Ahlberg <aliz@gentoo.org> qt-dcgui-0.2.8.ebuild :
+  Version bump.
+
+*qt-dcgui-0.2.7-r1 (20 Mar 2003)
+
+  20 Mar 2003; Seemant Kulleen <seemant@gentoo.org> qt-dcgui-0.2.4-r1.ebuild,
+  qt-dcgui-0.2.7-r1.ebuild:
+  removed pic cruft
+
+*qt-dcgui-0.2.7 (14 Mar 2003)
+
+  14 Mar 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump.
+
+*qt-dcgui-0.2.6 (09 Mar 2003)
+
+  09 Mar 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump.
+
+*qt-dcgui-0.2.5 (11 Feb 2003)
+
+  11 Feb 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #15459.
+
+*qt-dcgui-0.2.4 (02 Feb 2003)
+
+  04 Feb 2003; Daniel Ahlberg <aliz@gentoo.org> qt-dcgui-0.2.4.ebuild :
+  Marked stable becuse of security.
+
+  02 Feb 2003; Joachim Blaabjerg <styx@gentoo.org> qt-dcgui-0.2.4.ebuild 
+  files/digest-qt-dcgui-0.2.4 ChangeLog :
+  Actual bump ;), and hopefully fixed bug #14893 by inheriting kde-functions.
+  Removed old ebuilds.
+
+  02 Feb 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump.
+
+*qt-dcgui-0.2.3 (27 Jan 2003)
+
+  27 Jan 2003; Joachim Blaabjerg <styx@gentoo.org> qt-dcgui-0.2.3.ebuild
+  files/digest-qt-dcgui-0.2.3 ChangeLog :
+  Version bump to 0.2.3, fixes bug #14628
+
+*qt-dcgui-0.2.1 (20 Jan 2003)
+
+  20 Jan 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump
+
+*qt-dcgui-0.2_rc5 (10 Jan 2003)
+
+  10 Jan 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #13639.
+
+*qt-dcgui-0.2_rc4 (01 Jan 2003)
+
+  01 Jan 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump
+
+*qt-dcgui-0.2_rc3 (19 Dec 2002)
+
+  19 Dec 2002; Mike Frysinger <vapier@gentoo.org> :
+  Version bump
+
+*qt-dcgui-0.2_rc1 (08 Dec 2002)
+
+  08 Dec 2002; Mike Frysinger <vapier@gentoo.org> :
+  Version bump
+
+*qt-dcgui-0.2_beta5 (02 Dec 2002)
+
+  02 Dec 2002; Mike Frysinger <vapier@gentoo.org> :
+  Version bump
+
+*qt-dcgui-0.2_beta4 (01 Dec 2002)
+
+  01 Dec 2002; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #11284
+
+*qt-dcgui-0.2_beta1 (23 Oct 2002)
+
+  23 Oct 2002; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #9622
+
+*qt-dcgui-0.1 (07 Oct 2002)
+
+  02 Oct 2002; Mike Frysinger <vapier@gentoo.org> qt-dcgui-0.1.ebuild :
+  Version bump #8837
+
+*qt-dcgui-0.1_rc2 (02 Oct 2002)
+
+  02 Oct 2002; Mike Frysinger <vapier@gentoo.org> qt-dcgui-0.1_rc2.ebuild :
+  Version bump
+
+*qt-dcgui-0.1_beta8 (6 Jul 2002)
+
+  06 Jul 2002; Seemant Kulleen <seemant@gentoo.org>
+  qt-dcgui-0.1_beta8.ebuild files/digest-qt-dcgui-0.1_beta8 :
+  New packge -- Qt client for DirectConnect. Submitted by:
+  mikael.grahn@telia.com (Mikael Grahn) in bug #4203

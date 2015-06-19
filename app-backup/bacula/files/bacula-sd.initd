@@ -1,0 +1,22 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-backup/bacula/files/bacula-sd.initd,v 1.1 2011/05/14 09:28:46 tomjbe Exp $
+
+depend() {
+	need net
+	use dns
+}
+
+start() {
+	ebegin "Starting bacula storage daemon"
+	start-stop-daemon --start --quiet --exec /usr/sbin/bacula-sd \
+		-- ${SD_OPTIONS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping bacula storage daemon"
+	start-stop-daemon --stop --quiet --pidfile /var/run/bacula-sd.*.pid 
+	eend $?
+}

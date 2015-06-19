@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: integrate vim with R
+EAPI=5
+HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=2628
+KEYWORDS=~amd64 ~x86
+LICENSE=public-domain
+RDEPEND=dev-lang/R || ( app-vim/conque app-vim/screen ) || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+SRC_URI=mirror://gentoo/vim-r-0.9.9.8.tar.bz2 http://dev.gentoo.org/~radhermit/vim/vim-r-0.9.9.8.tar.bz2
+_eclasses_=vim-doc	1c18baeec98cec3287524cbf2fee2bd2	vim-plugin	286547e90fbbc4c841eee80cd73e646c
+_md5_=5cb25ece16ee72eeff77afa916c193a8

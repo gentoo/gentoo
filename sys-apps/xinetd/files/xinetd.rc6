@@ -1,0 +1,33 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/xinetd/files/xinetd.rc6,v 1.24 2011/10/11 01:26:08 vapier Exp $
+
+extra_started_commands="reload dump check"
+
+depend() {
+	use net
+}
+
+start() {
+	ebegin "Starting xinetd"
+	start-stop-daemon --start --exec /usr/sbin/xinetd -- \
+		-pidfile /var/run/xinetd.pid ${XINETD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping xinetd"
+	start-stop-daemon --stop --quiet --pidfile /var/run/xinetd.pid
+	eend $?
+}
+
+do_sig() {
+	local sig=$1 ; shift
+	ebegin "$*"
+	start-stop-daemon --signal ${sig} --pidfile /var/run/xinetd.pid
+	eend $?
+}
+reload() { do_sig HUP  "Reloading configuration" ; }
+dump()   { do_sig USR1 "Dumping configuration" ; }
+check()  { do_sig IOT  "Performing Consistency Check" ; }

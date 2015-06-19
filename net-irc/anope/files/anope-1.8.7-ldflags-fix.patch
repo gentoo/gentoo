@@ -1,0 +1,47 @@
+diff -aurp a/src/core/Makefile b/src/core/Makefile
+--- a/src/core/Makefile	2010-10-10 19:55:31.396999906 +0000
++++ b/src/core/Makefile	2010-10-10 19:53:54.877001245 +0000
+@@ -24,7 +24,7 @@ distclean: spotless
+ 	$(CC) ${CFLAGS} ${CDEFS} ${MODULEFLAGS} -I../${INCLUDEDIR} -c $<
+ 
+ .o.s:
+-	$(CC) ${SHARED} ../mod_version.o $< -o $*.so ${PROFILE}
++	$(CC) $(CFLAGS) $(LDFLAGS) ${SHARED} ../mod_version.o $< -o $*.so ${PROFILE}
+ 	@$(TOUCH) $*.s
+ 
+ subs:
+diff -aurp a/src/modules/Makefile b/src/modules/Makefile
+--- a/src/modules/Makefile	2010-10-10 19:55:32.486000023 +0000
++++ b/src/modules/Makefile	2010-10-10 19:54:07.240000026 +0000
+@@ -27,7 +27,7 @@ distclean: spotless
+ 	$(CC) ${CFLAGS} ${CDEFS} ${MODULEFLAGS} -I../${INCLUDEDIR} -c $<
+ 
+ .o.s:
+-	$(CC) ${SHARED} ../mod_version.o $< -o $*.so  ${PROFILE}
++	$(CC) $(CFLAGS) $(LDFLAGS) ${SHARED} ../mod_version.o $< -o $*.so  ${PROFILE}
+ 	@$(TOUCH) $*.s
+ 
+ subs:
+diff -aurp a/src/protocol/Makefile b/src/protocol/Makefile
+--- a/src/protocol/Makefile	2010-10-10 19:55:33.605002302 +0000
++++ b/src/protocol/Makefile	2010-10-10 19:54:19.271997806 +0000
+@@ -24,7 +24,7 @@ distclean: clean spotless
+ 	$(CC) ${CFLAGS} ${CDEFS} ${MODULEFLAGS} -I../${INCLUDEDIR} -c $<
+ 
+ .o.s:
+-	$(CC) ${SHARED} ../mod_version.o  $< -o $*.so ${PROFILE}
++	$(CC) $(CFLAGS) $(LDFLAGS) ${SHARED} ../mod_version.o  $< -o $*.so ${PROFILE}
+ 	@$(TOUCH) $*.s
+ 
+ subs:
+--- a/src/tools/Makefile	2011-12-28 20:00:00.646427623 +0000
++++ b/src/tools/Makefile	2011-12-28 20:00:41.030430806 +0000
+@@ -10,7 +10,7 @@ MAKEARGS = 'CFLAGS=${CFLAGS}' 'CC=${CC}'
+    	   'RUNGROUP=${RUNGROUP}' 
+ 
+ .c.o:
+-	$(CC) $(CFLAGS) -I../include/ $< -o $*
++	$(CC) $(LDFLAGS) $(CFLAGS) -I../include/ $< -o $*
+ 
+ all: ${OBJS}
+ 

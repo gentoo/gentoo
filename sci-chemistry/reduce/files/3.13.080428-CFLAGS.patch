@@ -1,0 +1,22 @@
+diff --git a/reduce_src/Makefile b/reduce_src/Makefile
+index 598e367..067ace4 100644
+--- a/reduce_src/Makefile
++++ b/reduce_src/Makefile
+@@ -12,7 +12,7 @@ PROG_FLGS   = -DAROMATICS_ACCEPT_HBONDS \
+ #              -DDEBUGMOVABLENODE -DDEBUGDOTCOUNTS
+ #              -DMINPREDEFINED -DMAXPREDEFINED\
+ 
+-CFLAGS = $(OPT) $(DEBUG) $(PROG_FLGS) $(DICT_LOC)\
++CXXFLAGS = $(OPT) $(DEBUG) $(PROG_FLGS) $(DICT_LOC)\
+          -I$(PDBHOME) -I$(TOOLHOME) 
+ #         -Wall
+ 
+@@ -26,7 +26,7 @@ OBJLIST = GraphToHoldScores.o reduce.o CTab.o ElementInfo.o StdResH.o ResBlk.o A
+ CXX		= g++
+ 
+ .cpp.o:
+-	$(CXX) -c $*.cpp $(CFLAGS)
++	$(CXX) -c $*.cpp $(CXXFLAGS)
+ 
+ OPT             = -O3
+ DEBUG           = $(CXXDEBUGFLAGS)

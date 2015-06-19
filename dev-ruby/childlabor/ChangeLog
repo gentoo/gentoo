@@ -1,0 +1,48 @@
+# ChangeLog for dev-ruby/childlabor
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/childlabor/ChangeLog,v 1.13 2015/06/07 17:20:33 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  20 Mar 2015; Hans de Graaff <graaff@gentoo.org> childlabor-0.0.3-r1.ebuild:
+  Add ruby22.
+
+  28 Dec 2014; Hans de Graaff <graaff@gentoo.org> childlabor-0.0.3-r1.ebuild:
+  Use eclass rspec invocation to use the rspec-2 wrapper.
+
+  30 Oct 2014; Manuel Rüger <mrueg@gentoo.org> childlabor-0.0.3-r1.ebuild:
+  Drop jruby target.
+
+  12 Aug 2014; Anthony G. Basile <blueness@gentoo.org>
+  childlabor-0.0.3-r1.ebuild:
+  Keyword ~ppc and ~ppc64, bug #519170
+
+  19 Apr 2014; Hans de Graaff <graaff@gentoo.org> childlabor-0.0.3-r1.ebuild:
+  Add ruby21. Avoid spec failing with portage.
+
+  11 Mar 2014; Johannes Huber <johu@gentoo.org> childlabor-0.0.3-r1.ebuild:
+  ~x86 added, bug #487206
+
+  10 Mar 2014; Manuel Rüger <mrueg@gentoo.org> -childlabor-0.0.3.ebuild:
+  Cleanup old.
+
+*childlabor-0.0.3-r1 (09 Nov 2013)
+
+  09 Nov 2013; Manuel Rüger <mrueg@gentoo.org> +childlabor-0.0.3-r1.ebuild:
+  Add ruby20 target. Add snapshot from github to provide tests.
+
+  15 Jan 2013; Rick Farina <zerochaos@gentoo.org> childlabor-0.0.3.ebuild:
+  adding ~arm keywords to net-analyzer/metasploit rdeps
+
+  14 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Update metadata.xml so that it's the same as most other packages.
+
+  08 Jun 2012; Hans de Graaff <graaff@gentoo.org> metadata.xml:
+  Drop long description from another package.
+
+*childlabor-0.0.3 (07 Jun 2012)
+
+  07 Jun 2012; Diego E. Pettenò <flameeyes@gentoo.org> +childlabor-0.0.3.ebuild,
+  +metadata.xml:
+  Initial import of childlabor (new dependency of thor0.

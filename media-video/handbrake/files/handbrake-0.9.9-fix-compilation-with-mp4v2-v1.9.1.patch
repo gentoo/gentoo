@@ -1,0 +1,73 @@
+https://github.com/rbrito/pkg-handbrake/blob/master/debian/patches/0005-libhb-Fix-compilation-with-mp4v2-v1.9.1.patch
+
+From: =?UTF-8?q?Rog=C3=A9rio=20Brito?= <rbrito@ime.usp.br>
+Date: Sun, 22 Apr 2012 05:34:40 -0300
+Subject: libhb: Fix compilation with mp4v2 v1.9.1.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Forwarded: no
+Last-Update: 2012-05-15
+Reviewed-by: Rogério Theodoro de Brito <rbrito@ime.usp.br>
+Signed-off-by: Rogério Theodoro de Brito <rbrito@ime.usp.br>
+---
+ libhb/decmetadata.c |    4 ++--
+ libhb/muxmp4.c      |    8 ++++----
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+--- a/libhb/decmetadata.c
++++ b/libhb/decmetadata.c
+@@ -13,7 +13,7 @@
+     MP4FileHandle input_file;
+     hb_deep_log( 2, "Got an MP4 input, read the metadata");
+ 
+-    input_file = MP4Read( title->path, 0 );
++    input_file = MP4Read(title->path);
+ 
+     if( input_file != MP4_INVALID_FILE_HANDLE )
+     { 
+@@ -92,7 +92,7 @@
+             }
+         }
+ 
+-        MP4Close( input_file );
++        MP4Close(input_file, 0);
+     }
+ }
+ 
+--- a/libhb/muxmp4.c
++++ b/libhb/muxmp4.c
+@@ -93,13 +93,13 @@
+     if (job->largeFileSize)
+     /* Use 64-bit MP4 file */
+     {
+-        m->file = MP4Create( job->file, MP4_DETAILS_ERROR, MP4_CREATE_64BIT_DATA );
++        m->file = MP4Create( job->file, MP4_CREATE_64BIT_DATA );
+         hb_deep_log( 2, "muxmp4: using 64-bit MP4 formatting.");
+     }
+     else
+     /* Limit MP4s to less than 4 GB */
+     {
+-        m->file = MP4Create( job->file, MP4_DETAILS_ERROR, 0 );
++        m->file = MP4Create( job->file, 0 );
+     }
+ 
+     if (m->file == MP4_INVALID_FILE_HANDLE)
+@@ -1331,14 +1331,14 @@
+             MP4TagsFree( tags );
+         }
+ 
+-        MP4Close( m->file );
++        MP4Close( m->file, 0 );
+ 
+         if ( job->mp4_optimize )
+         {
+             hb_log( "muxmp4: optimizing file" );
+             char filename[1024]; memset( filename, 0, 1024 );
+             snprintf( filename, 1024, "%s.tmp", job->file );
+-            MP4Optimize( job->file, filename, MP4_DETAILS_ERROR );
++            MP4Optimize( job->file, filename );
+             remove( job->file );
+             rename( filename, job->file );
+         }

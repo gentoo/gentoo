@@ -1,0 +1,35 @@
+# ChangeLog for net-firewall/nfacct
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/nfacct/ChangeLog,v 1.8 2013/05/20 11:21:49 pinkbyte Exp $
+
+  20 May 2013; Sergey Popov <pinkbyte@gentoo.org> nfacct-1.0.1.ebuild:
+  Stable on amd64 and x86, wrt bug #470542
+
+  23 Mar 2013; Sergey Popov <pinkbyte@gentoo.org> nfacct-1.0.0.ebuild,
+  nfacct-1.0.1.ebuild:
+  Add ~arm keyword
+
+  07 Mar 2013; Sergey Popov <pinkbyte@gentoo.org> nfacct-1.0.0.ebuild,
+  nfacct-1.0.1.ebuild:
+  Make check for NETFILTER_NETLINK_ACCT option non-fatal, add pkgconfig to
+  buildtime dependencies
+
+*nfacct-1.0.1 (07 Mar 2013)
+
+  07 Mar 2013; Sergey Popov <pinkbyte@gentoo.org> +nfacct-1.0.1.ebuild:
+  Version bump
+
+  30 Jan 2013; Agostino Sarubbo <ago@gentoo.org> nfacct-1.0.0.ebuild:
+  Stable for x86, wrt bug #449218
+
+  02 Jan 2013; Sergey Popov <pinkbyte@gentoo.org> nfacct-1.0.0.ebuild:
+  Stable on amd64, wrt bug #449218
+
+  23 Oct 2012; Jeroen Roovers <jer@gentoo.org> nfacct-1.0.0.ebuild:
+  Update net-libs/libnetfilter_acct dependency.
+
+*nfacct-1.0.0 (31 Aug 2012)
+
+  31 Aug 2012; Sergey Popov <pinkbyte@gentoo.org> +nfacct-1.0.0.ebuild,
+  +metadata.xml:
+  New ebuild for nfacct, wrt bug #429452

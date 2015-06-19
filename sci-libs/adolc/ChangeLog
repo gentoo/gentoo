@@ -1,0 +1,58 @@
+# ChangeLog for sci-libs/adolc
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/adolc/ChangeLog,v 1.11 2015/04/07 14:40:27 jlec Exp $
+
+*adolc-2.5.2 (31 Oct 2014)
+
+  31 Oct 2014; Justin Lecher <jlec@gentoo.org> +adolc-2.5.2.ebuild,
+  files/adolc-2.5.0-no-colpack.patch, +files/adolc-2.5.2-dash.patch,
+  metadata.xml:
+  Version Bump; fix installation with /bin/sh -> dash; #527492
+
+  17 Jun 2014; Jauhien Piatlicki <jauhien@gentoo.org> adolc-2.5.0.ebuild:
+  fix MPI support, thanks to  Erik Zeek, see bug #511456
+
+  16 Jun 2014; Jauhien Piatlicki <jauhien@gentoo.org> adolc-2.5.0.ebuild:
+  Add mpi USE, see bug #511456
+
+  29 May 2014; Sébastien Fabbro <bicatali@gentoo.org> adolc-2.5.0.ebuild:
+  Remove mpi flag until we have AMPI in portage, bug #511456 thanks Michelangelo
+  Scopelliti
+
+*adolc-2.5.0 (21 May 2014)
+
+  21 May 2014; Sébastien Fabbro <bicatali@gentoo.org> +adolc-2.5.0.ebuild,
+  +files/adolc-2.5.0-no-colpack.patch,
+  +files/adolc-2.5.0-pkgconfig-no-ldflags.patch:
+  Version bump
+
+  15 Jan 2014; Sébastien Fabbro <bicatali@gentoo.org> -adolc-2.4.0.ebuild,
+  adolc-2.4.1.ebuild:
+  Cleanup, removed old, sub-slotted
+
+*adolc-2.4.1 (26 May 2013)
+
+  26 May 2013; Sébastien Fabbro <bicatali@gentoo.org> +adolc-2.4.1.ebuild,
+  -adolc-2.3.0-r1.ebuild, -files/adolc-2.3.0-libdir.patch,
+  -files/adolc-2.3.0-no-colpack.patch:
+  Version bump
+
+*adolc-2.4.0 (03 Mar 2013)
+
+  03 Mar 2013; Sébastien Fabbro <bicatali@gentoo.org> +adolc-2.4.0.ebuild,
+  +files/adolc-2.4.0-no-colpack.patch:
+  Version bump. Thanks Jauhien Piatlicki (bug #459880)
+
+*adolc-2.3.0-r1 (19 Jul 2012)
+
+  19 Jul 2012; Sébastien Fabbro <bicatali@gentoo.org> +adolc-2.3.0-r1.ebuild,
+  +files/adolc-2.3.0-libdir.patch, +files/adolc-2.3.0-no-colpack.patch,
+  -adolc-2.3.0.ebuild:
+  Fixed libdir installation directory (affects amd64-linux) and do not link with
+  colpack when not asked
+
+*adolc-2.3.0 (09 Jul 2012)
+
+  09 Jul 2012; Sébastien Fabbro <bicatali@gentoo.org> +adolc-2.3.0.ebuild,
+  +metadata.xml:
+  Fixed when sparse is not set (bug #425408), and import to the main tree

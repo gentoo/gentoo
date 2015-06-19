@@ -1,0 +1,160 @@
+# ChangeLog for net-misc/vde
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/vde/ChangeLog,v 1.34 2014/08/23 12:03:02 swift Exp $
+
+*vde-2.3.2-r2 (23 Aug 2014)
+
+  23 Aug 2014; Sven Vermeulen <swift@gentoo.org> +vde-2.3.2-r2.ebuild:
+  RDEPEND on sec-policy/selinux-vde if USE=selinux
+
+*vde-2.3.2-r1 (20 Aug 2014)
+
+  20 Aug 2014; Sergey Popov <pinkbyte@gentoo.org> +vde-2.3.2-r1.ebuild:
+  Revision bump: add support for user patches, fix DESCRIPTION, migrate to
+  python-single-r1 eclass, wrt bug #514714
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> vde-2.2.2.ebuild,
+  vde-2.3.1.ebuild, vde-2.3.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*vde-2.3.2 (31 May 2014)
+
+  31 May 2014; Sven Vermeulen <swift@gentoo.org> +vde-2.3.2.ebuild:
+  Adding vde-2.3.2 to the tree, thanks to Torsten Kurbad (bug #409867)
+
+  16 Jan 2014; Jeroen Roovers <jer@gentoo.org> vde-2.2.2.ebuild,
+  vde-2.3.1.ebuild:
+  Spelling.
+
+  08 Jan 2014; Mike Frysinger <vapier@gentoo.org> vde-2.2.2.ebuild,
+  vde-2.3.1.ebuild:
+  Inherit the user eclass for enewuser/etc...
+
+  29 Mar 2013; Markos Chandras <hwoarang@gentoo.org> files/vde.init:
+  Drop bashisms from init script. Thanks to Nico Baggus
+  <mlspamcb@noci.xs4all.nl>. Bug #447240
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  08 Jun 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer from metadata as talked with him, bug #90641.
+
+  01 Mar 2012; Brent Baude <ranger@gentoo.org> vde-2.2.2.ebuild:
+  Marking vde-2.2.2 ppc for bug 356685
+
+  23 Oct 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -files/Unixterm_20070403.patch, -vde-1.5.7.ebuild, -vde-2.0.2.ebuild,
+  -vde-2.1.6.ebuild, -vde-2.1.6-r1.ebuild, -files/vde-2.1.6-gcc43.patch,
+  -vde-2.2.3.ebuild, vde-2.3.1.ebuild:
+  Bump to eapi4 and make static libs optional, punt overshadowed as only
+  consumer does not care about version.
+
+*vde-2.3.1 (26 Aug 2010)
+
+  26 Aug 2010; Daniel Gryniewicz <dang@gentoo.org> +vde-2.3.1.ebuild:
+  Bump to vde-2.3.1
+
+
+  12 Jan 2010; Daniel Gryniewicz <dang@gentoo.org> files/vde.conf,
+  files/vde.init:
+  Make it possible to change the options to vde_switch; bug #300282
+
+*vde-2.2.3 (21 Oct 2009)
+
+  21 Oct 2009; Diego E. Pettenò <flameeyes@gentoo.org> +vde-2.2.3.ebuild,
+  metadata.xml:
+  Version bump (with dang's permission); add USE flags for pcap and ssl, fix
+  installed documentation. Patches were all merged upstream.
+
+  06 Apr 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +files/vde-2.2.2-slirpvde-buffer-overflow.patch, vde-2.2.2.ebuild:
+  Added patch to fix the buffer overflow that kills slirpvde under fortify.
+
+  03 Apr 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Added myself to vde metadata.xml.
+
+  24 Mar 2009; Daniel Gryniewicz <dang@gentoo.org> metadata.xml:
+  Taking maintainership for genstef
+
+  01 Feb 2009; Markus Meier <maekke@gentoo.org> vde-2.2.2.ebuild:
+  x86 stable, bug #245300
+
+  20 Jan 2009; Caleb Tennis <caleb@gentoo.org> vde-2.2.2.ebuild:
+  amd64 stable
+
+*vde-2.2.2 (04 Sep 2008)
+
+  04 Sep 2008; Peter Alfredsen <loki_val@gentoo.org>
+  +files/vde-2.2.2-gcc43.patch, +vde-2.2.2.ebuild:
+  Bump, thx to jbergstroem for the nudge.
+
+  20 Jul 2008; Peter Alfredsen <loki_val@gentoo.org>
+  +files/vde-2.1.6-gcc43.patch, vde-2.1.6-r1.ebuild:
+  Fix to compile with gcc-4.3. Bug 231428. Thanks to Bernd Buschinski
+  <b.buschinski@web.de>
+
+  11 Mar 2008; Stefan Schweizer <genstef@gentoo.org> files/vde.init:
+  needs to start after net.tap according to Etaoin Shrdlu
+  <shrdlu@unlimitedmail.org> in bug 199929
+
+*vde-2.1.6-r1 (07 Jul 2007)
+
+  07 Jul 2007; Stefan Schweizer <genstef@gentoo.org>
+  +files/Unixterm_20070403.patch, +vde-2.1.6-r1.ebuild:
+  patch to enable unixterm to receive commands from standard input thanks to
+  Adrian Lambeck <adrian@basicsedv.de> in bug 184429
+
+  09 Jun 2007; Stefan Schweizer <genstef@gentoo.org> files/vde.init:
+  Fix failing script thanks to Giuliano Gagliardi <gentoo@gogi.tv> in bug 181193
+
+  12 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> vde-2.1.6.ebuild:
+  Add ~amd64 wrt bug #166346.
+
+*vde-2.1.6 (10 Feb 2007)
+
+  10 Feb 2007; <genstef@gentoo.org> +vde-2.1.6.ebuild:
+  version bump thanks to Josh G <joshin@hotmail.com> in bug 166161
+
+  24 Oct 2006; Daniel Gryniewicz <dang@gentoo.org> vde-2.0.2.ebuild:
+  Marked ~amd64 for bug #143194
+
+*vde-2.1.1 (16 Aug 2006)
+
+  16 Aug 2006; Stefan Schweizer <genstef@gentoo.org> +vde-2.1.1.ebuild:
+  version bump thanks to Clemmitt M. Sigler <csigler@vt.edu> in bug 144150
+
+  26 Jun 2006; Stefan Schweizer <genstef@gentoo.org>
+  -files/vde-1.5.8-makefile.patch, -files/vde.init.d, -vde-1.5.8.ebuild,
+  vde-2.0.2.ebuild:
+  inherit eutils and remove old versions
+
+*vde-2.0.2 (26 Jun 2006)
+
+  26 Jun 2006; Stefan Schweizer <genstef@gentoo.org> +files/vde.conf,
+  +files/vde.init, metadata.xml, +vde-2.0.2.ebuild:
+  Take over maintainer and version bump thanks to Lorenzo Grandi
+  <popposoft@gmail.com> in bug 113554 also allows to set a group in the init
+  script, thanks to Jean-François Richard <jean-francois@richard.name> in bug
+  113482 and works with qemu 0.8, thanks to Tim Redman
+  <tredman1@tampabay.rr.com> and Nico Baggus <mlspamcb@noci.xs4all.nl> in bug
+  116840, big thanks to Rob M. (Adamant) <thehandoftyr@gmail.com> to notify me
+  of this one in IRC #gentoo-dev-help.
+
+  04 Apr 2006; <rphillips@gentoo.org> +files/vde-1.5.8-makefile.patch:
+  Committed halycon's patches from bug #125135
+
+  09 Jun 2005; <rphillips@gentoo.org> +files/vde.init.d, vde-1.5.8.ebuild:
+  Added init script from Nico Baggus
+
+*vde-1.5.8 (09 Jun 2005)
+
+  09 Jun 2005; <rphillips@gentoo.org> +files/vde-qemu-Makefile.in.diff,
+  +vde-1.5.8.ebuild:
+  version bump. Thanks to Nico Baggus. Fixes #95611
+
+*vde-1.5.7 (06 Feb 2005)
+
+  06 Feb 2005; <rphillips@gentoo.org> vde-1.5.7.ebuild:
+  Initial commit. thanks to Nico Baggus.

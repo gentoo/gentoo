@@ -1,0 +1,44 @@
+# ChangeLog for sci-calculators/speedcrunch
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-calculators/speedcrunch/ChangeLog,v 1.8 2014/06/14 20:06:17 jlec Exp $
+
+*speedcrunch-0.11-r2 (14 Jun 2014)
+
+  14 Jun 2014; Justin Lecher <jlec@gentoo.org> +speedcrunch-0.11-r2.ebuild,
+  metadata.xml:
+  Add missing locales, #500266
+
+*speedcrunch-0.11-r1 (04 Feb 2014)
+
+  04 Feb 2014; Justin Lecher <jlec@gentoo.org> +speedcrunch-0.11-r1.ebuild,
+  -speedcrunch-0.11.ebuild:
+  handle langs, #500266 thanks Nikoli for the patch; use ninja
+
+*speedcrunch-0.11 (04 Feb 2014)
+
+  04 Feb 2014; Sébastien Fabbro <bicatali@gentoo.org> +speedcrunch-0.11.ebuild:
+  Version bump bug #499816
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> speedcrunch-0.10.1.ebuild:
+  Move Qt dependencies to the new category
+
+  04 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> speedcrunch-0.10.1.ebuild:
+  keyword amd64-linux, x86-linux
+
+  25 Dec 2009; Ben de Groot <yngwin@gentoo.org> speedcrunch-0.10.1.ebuild:
+  Remove deprecated dependency on x11-libs/qt
+
+  11 Sep 2009; Markus Meier <maekke@gentoo.org> speedcrunch-0.10.1.ebuild:
+  amd64/x86 stable, bug #283420
+
+*speedcrunch-0.10.1 (18 Nov 2008)
+
+  18 Nov 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/speedcrunch-0.10.1-iconname.patch, +metadata.xml,
+  +speedcrunch-0.10.1.ebuild:
+  Import to the main tree from the science overlay and version bump with
+  translation fixes
+
+  02 Jun 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/speedcrunch-0.10-fix-icon-name.patch, +speedcrunch-0.10.ebuild:
+  Initial import, see bug #78113

@@ -1,0 +1,169 @@
+# ChangeLog for x11-misc/wbar
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/wbar/ChangeLog,v 1.36 2014/11/25 23:28:44 hasufell Exp $
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+  22 Oct 2014; Jeroen Roovers <jer@gentoo.org> -wbar-1.3.3.ebuild,
+  -wbar-2.2.2.ebuild, -wbar-2.3.0.ebuild, -wbar-2.3.1.ebuild,
+  -wbar-2.3.3.ebuild, wbar-2.3.4-r1.ebuild, wbar-2.3.4-r2.ebuild,
+  -files/wbar-1.3.3-Makefile.patch, -files/wbar-1.3.3-gcc43.patch,
+  -files/wbar-2.3.0-cfg.patch, -files/wbar-2.3.1-desktopfile.patch,
+  -files/wbar-2.3.1-nowerror.patch, -files/wbar-2.3.1-version.patch,
+  files/wbar-2.3.3-cfg.patch, files/wbar-2.3.3-nowerror.patch,
+  files/wbar-2.3.3-test.patch, files/wbar-2.3.4-automake-1.13.patch:
+  Remove old. Clean up some patches.
+
+*wbar-2.3.4-r2 (22 Oct 2014)
+
+  22 Oct 2014; Jeroen Roovers <jer@gentoo.org> +wbar-2.3.4-r2.ebuild,
+  +files/wbar-2.3.4-completion.patch:
+  Fix completion (bug #526344).
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> wbar-1.3.3.ebuild,
+  wbar-2.2.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  31 Aug 2013; Samuli Suominen <ssuominen@gentoo.org> wbar-2.3.4-r1.ebuild:
+  Fix bash-completion completions directory wrt #482358 by "SN (Enlik)"
+
+  11 Aug 2013; Samuli Suominen <ssuominen@gentoo.org> wbar-2.3.0.ebuild,
+  wbar-2.3.1.ebuild, wbar-2.3.3.ebuild, wbar-2.3.4-r1.ebuild:
+  Remove virtual/init from build and runtime dependencies wrt #480576
+
+  27 Apr 2013; Julian Ospald <hasufell@gentoo.org> wbar-2.3.4-r1.ebuild,
+  +files/wbar-2.3.4-automake-1.13.patch:
+  fix build with automake-1.13
+
+  21 Nov 2012; Agostino Sarubbo <ago@gentoo.org> wbar-2.3.4-r1.ebuild:
+  Stable for x86, wrt bug #439780
+
+  28 Oct 2012; Markos Chandras <hwoarang@gentoo.org> wbar-2.3.4-r1.ebuild:
+  Stable on amd64 wrt bug #439780
+
+*wbar-2.3.4-r1 (27 Oct 2012)
+
+  27 Oct 2012; Julian Ospald <hasufell@gentoo.org> -wbar-2.3.4.ebuild,
+  +wbar-2.3.4-r1.ebuild:
+  add elog wrt #439898, fix bashcomp install dest
+
+*wbar-2.3.4 (24 Sep 2012)
+
+  24 Sep 2012; Julian Ospald <hasufell@gentoo.org> +wbar-2.3.4.ebuild:
+  version bump
+
+  21 Sep 2012; Julian Ospald <hasufell@gentoo.org> wbar-2.3.3.ebuild,
+  +files/wbar-2.3.3-test.patch:
+  fix test phase
+
+*wbar-2.3.3 (21 Sep 2012)
+
+  21 Sep 2012; Julian Ospald <hasufell@gentoo.org> +wbar-2.3.3.ebuild,
+  +files/wbar-2.3.3-cfg.patch, +files/wbar-2.3.3-desktopfile.patch,
+  +files/wbar-2.3.3-nowerror.patch:
+  version bump
+
+  26 Aug 2012; Julian Ospald <hasufell@gentoo.org> wbar-2.3.1.ebuild,
+  +files/wbar-2.3.1-version.patch:
+  fix ...version in build system
+
+*wbar-2.3.1 (26 Aug 2012)
+
+  26 Aug 2012; Julian Ospald <hasufell@gentoo.org> +wbar-2.3.1.ebuild,
+  +files/wbar-2.3.1-desktopfile.patch, +files/wbar-2.3.1-nowerror.patch:
+  version bump
+
+  29 Jul 2012; Julian Ospald <hasufell@gentoo.org> wbar-2.3.0.ebuild:
+  stable for amd64 wrt bug #427658
+
+  23 Jul 2012; Jeff Horelick <jdhore@gentoo.org> wbar-2.3.0.ebuild:
+  marked x86 per bug 427658
+
+  14 May 2012; Julian Ospald <hasufell@gentoo.org> wbar-2.3.0.ebuild:
+  force virtual/init
+
+  14 May 2012; Julian Ospald <hasufell@gentoo.org> wbar-2.3.0.ebuild:
+  missed sys-process/procps virtual/init
+
+  14 May 2012; Julian Ospald <hasufell@gentoo.org> wbar-2.3.0.ebuild,
+  +files/wbar-2.3.0-cfg.patch:
+  fix deps wrt #415945, append -Wno-error flag
+
+*wbar-2.3.0 (14 May 2012)
+
+  14 May 2012; Julian Ospald <hasufell@gentoo.org> +wbar-2.3.0.ebuild,
+  metadata.xml:
+  adopt package, bump version (rm autotools and eutils, keep Werror flag, fix
+  SRC_URI)
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> wbar-2.2.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  15 Dec 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #353461
+
+  14 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> wbar-2.2.2.ebuild:
+  Add missing deps wrt #375131 by nzqr <candysnell@ya.ru>
+
+*wbar-2.2.2 (19 Jun 2011)
+
+  19 Jun 2011; Kacper Kowalik <xarthisius@gentoo.org> -wbar-2.2.1.ebuild,
+  +wbar-2.2.2.ebuild:
+  Version bump, bug #367549 was fixed upstream, drop old
+
+*wbar-2.2.1 (17 May 2011)
+
+  17 May 2011; Kacper Kowalik <xarthisius@gentoo.org> -wbar-2.1.1.ebuild,
+  -files/wbar-2.1.1-as-needed.patch, -files/wbar-2.1.1-fix-warnings.patch,
+  -files/wbar-2.1.1-opt-config.patch, -wbar-2.1.3.ebuild,
+  -files/wbar-2.1.3-as-needed.patch, +wbar-2.2.1.ebuild:
+  Version bump. Fix underlinking wrt #367549. Thanks to Diego Elio Pettenò
+  <flameeyes@gentoo.org> for the report. Drop old.
+
+*wbar-2.1.3 (06 May 2011)
+
+  06 May 2011; Kevin McCarthy <signals@gentoo.org> +wbar-2.1.3.ebuild,
+  +files/wbar-2.1.3-as-needed.patch:
+  Version bump.
+
+  15 Apr 2011; Kevin McCarthy <signals@gentoo.org> wbar-2.1.1.ebuild:
+  Removed -Werror from CFLAGS.
+
+  14 Mar 2011; Kevin McCarthy <signals@gentoo.org> wbar-2.1.1.ebuild,
+  files/wbar-2.1.1-as-needed.patch:
+  Fix issue with 2 Main.cc files and respect for CXXFLAGS. Thanks to
+  xarthisius.
+
+  13 Mar 2011; Kevin McCarthy <signals@gentoo.org> wbar-2.1.1.ebuild,
+  +files/wbar-2.1.1-as-needed.patch:
+  Use LDADD for libraries. Fixes bug #358557
+
+*wbar-2.1.1 (24 Feb 2011)
+
+  24 Feb 2011; Kevin McCarthy <signals@gentoo.org> +wbar-2.1.1.ebuild,
+  +files/wbar-2.1.1-fix-warnings.patch, +files/wbar-2.1.1-opt-config.patch:
+  New ebuild for version 2.1.1. Added "gtk" USE flag to control
+  building of the GTK based wbar-config utility.
+
+  14 Jan 2010; Samuli Suominen <ssuominen@gentoo.org>
+  files/wbar-1.3.3-Makefile.patch:
+  Link to -lX11 even if media-libs/imlib2 is built with USE="-X" wrt
+  #248580, thanks to Diego E. Pettenò for reporting.
+
+  19 Jun 2008; Samuli Suominen <drac@gentoo.org>
+  +files/wbar-1.3.3-gcc43.patch, wbar-1.3.3.ebuild:
+  Include stdlib.h for getenv wrt #228231, thanks to Evil Compile Person for
+  reporting.
+
+  22 Mar 2008; Markus Meier <maekke@gentoo.org> wbar-1.3.3.ebuild:
+  add ~x86
+
+  22 Mar 2008; Samuli Suominen <drac@gentoo.org> wbar-1.3.3.ebuild:
+  amd64 stable
+
+*wbar-1.3.3 (13 Jan 2008)
+
+  13 Jan 2008; Samuli Suominen <drac@gentoo.org>
+  +files/wbar-1.3.3-Makefile.patch, +wbar-1.3.3.ebuild:
+  Initial commit wrt #159365, thanks to warlock for reporting.

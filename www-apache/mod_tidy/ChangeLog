@@ -1,0 +1,26 @@
+# ChangeLog for www-apache/mod_tidy
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_tidy/ChangeLog,v 1.5 2012/11/27 19:33:26 pacho Exp $
+
+  27 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop apache herd as discussed in http://www.gossamer-
+  threads.com/lists/gentoo/dev/262834
+
+*mod_tidy-0.5.5-r1 (17 Sep 2009)
+
+  17 Sep 2009; Benedikt Böhm <hollow@gentoo.org> -mod_tidy-0.5.5.ebuild,
+  +mod_tidy-0.5.5-r1.ebuild:
+  remove bundled tidy library wrt #253489
+
+  31 Jan 2008; Benedikt Böhm <hollow@gentoo.org> files/55_mod_tidy.conf,
+  metadata.xml, mod_tidy-0.5.5.ebuild:
+  fix depend.apache usage wrt #208033; update metadata; cleanup
+
+  10 Sep 2007; Benedikt Böhm <hollow@gentoo.org> metadata.xml:
+  fix metadata
+
+*mod_tidy-0.5.5 (08 Sep 2007)
+
+  08 Sep 2007; Benedikt Böhm <hollow@gentoo.org> +files/55_mod_tidy.conf,
+  +metadata.xml, +mod_tidy-0.5.5.ebuild:
+  initial version; #103126

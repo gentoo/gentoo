@@ -1,0 +1,46 @@
+# ChangeLog for games-puzzle/world-of-goo-demo
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/world-of-goo-demo/ChangeLog,v 1.9 2015/01/09 16:11:18 mr_bones_ Exp $
+
+  09 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  world-of-goo-demo-1.41-r1.ebuild:
+  EAPI=5
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org>
+  world-of-goo-demo-1.41-r1.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  22 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  -world-of-goo-demo-1.41.ebuild:
+  old
+
+  19 Jun 2012; Jeff Horelick <jdhore@gentoo.org>
+  world-of-goo-demo-1.41-r1.ebuild:
+  marked x86 per bug 418989
+
+  11 Jun 2012; Agostino Sarubbo <ago@gentoo.org>
+  world-of-goo-demo-1.41-r1.ebuild:
+  Stable for amd64, wrt bug #418989
+
+*world-of-goo-demo-1.41-r1 (01 Feb 2012)
+
+  01 Feb 2012; Tristan Heaven <tristan@gentoo.org>
+  +world-of-goo-demo-1.41-r1.ebuild:
+  Remove bundled libraries, bug #380173
+
+  02 Sep 2009; Tristan Heaven <nyhm@gentoo.org>
+  world-of-goo-demo-1.41.ebuild:
+  Stable on amd64/x86
+
+*world-of-goo-demo-1.41 (06 Jul 2009)
+
+  06 Jul 2009; Tristan Heaven <nyhm@gentoo.org>
+  +world-of-goo-demo-1.41.ebuild:
+  Version bump, bug #275957
+
+*world-of-goo-demo-1.40 (15 Feb 2009)
+
+  15 Feb 2009; Mike Frysinger <vapier@gentoo.org> +metadata.xml,
+  +world-of-goo-demo-1.40.ebuild:
+  Initial ebuild #258960 by Vladimir Berezhnoy.

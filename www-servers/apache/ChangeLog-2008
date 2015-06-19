@@ -1,0 +1,2787 @@
+# ChangeLog for www-servers/apache
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-servers/apache/ChangeLog-2008,v 1.1 2012/01/01 21:31:12 dilfridge Exp $
+
+*apache-2.2.10 (25 Oct 2008)
+
+  25 Oct 2008; Benedikt Böhm <hollow@gentoo.org> +apache-2.2.10.ebuild:
+  version bump wrt #242878
+
+  03 Sep 2008; Jeroen Roovers <jer@gentoo.org> apache-2.2.9-r1.ebuild:
+  Stable for HPPA (bug #234088).
+
+  01 Sep 2008; Markus Rothe <corsair@gentoo.org> apache-2.2.9-r1.ebuild:
+  Stable on ppc64; bug #234088
+
+  31 Aug 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  apache-2.2.9-r1.ebuild:
+  ppc stable, bug #234088
+
+  30 Aug 2008; Raúl Porcel <armin76@gentoo.org> apache-2.2.9-r1.ebuild:
+  alpha/ia64 stable wrt #234088
+
+  30 Aug 2008; Friedrich Oslage <bluebird@gentoo.org>
+  apache-2.2.9-r1.ebuild:
+  Stable on sparc, security bug #234088
+
+  30 Aug 2008; Markus Meier <maekke@gentoo.org> apache-2.2.9-r1.ebuild:
+  amd64/x86 stable, bug #234088
+
+*apache-2.2.9-r1 (29 Aug 2008)
+
+  29 Aug 2008; Benedikt Böhm <hollow@gentoo.org> +apache-2.2.9-r1.ebuild:
+  fix #230690, #232083, #234088, #235152
+
+  22 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  16 Jun 2008; Brent Baude <ranger@gentoo.org> apache-2.2.9.ebuild:
+  Marking apache-2.2.9 ppc64 for bug 227111
+
+  16 Jun 2008; Raúl Porcel <armin76@gentoo.org> apache-2.2.9.ebuild:
+  alpha/ia64/sparc stable wrt #227111
+
+  16 Jun 2008; Benedikt Böhm <hollow@gentoo.org> apache-2.2.9.ebuild:
+  stable amd64, security bug 227111
+
+  16 Jun 2008; Christian Faulhammer <opfer@gentoo.org> apache-2.2.9.ebuild:
+  stable x86, security bug 227111
+
+  16 Jun 2008; Jeroen Roovers <jer@gentoo.org> apache-2.2.9.ebuild:
+  Stable for HPPA (bug #227111).
+
+  15 Jun 2008; Tobias Scherbaum <dertobi123@gentoo.org> apache-2.2.9.ebuild:
+  ppc stable, bug #227111
+
+  15 Jun 2008; Benedikt Böhm <hollow@gentoo.org> apache-2.2.9.ebuild:
+  remove old warning cruft
+
+*apache-2.2.9 (15 Jun 2008)
+
+  15 Jun 2008; Benedikt Böhm <hollow@gentoo.org> +apache-2.2.9.ebuild:
+  version bump wrt security #227111
+
+  14 Jun 2008; Zac Medico <zmedico@gentoo.org> apache-2.2.8.ebuild,
+  apache-2.2.8-r3.ebuild, apache-2.2.8-r4.ebuild:
+  Bug #226505 - For compatibility with phase execution order in
+  >=portage-2.1.5, call has_version inside pkg_preinst instead of
+  pkg_postinst.
+
+*apache-2.2.8-r4 (11 Jun 2008)
+
+  11 Jun 2008; Benedikt Böhm <hollow@gentoo.org> -apache-2.2.6-r7.ebuild,
+  -apache-2.2.8-r2.ebuild, +apache-2.2.8-r4.ebuild:
+  fix #220353
+
+  07 Jun 2008; Alexis Ballier <aballier@gentoo.org> apache-2.2.8-r3.ebuild:
+  keyword ~sparc-fbsd
+
+  05 Jun 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  apache-2.2.8-r3.ebuild:
+  ppc stable, bug #222643
+
+  02 Jun 2008; Richard Freeman <rich0@gentoo.org> apache-2.2.8-r3.ebuild:
+  amd64 stable - 222643
+
+  02 Jun 2008; Raúl Porcel <armin76@gentoo.org> apache-2.2.8-r3.ebuild:
+  alpha/ia64/sparc stable wrt #222643
+
+  02 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  apache-2.2.8-r3.ebuild:
+  stable x86, security bug 222643
+
+  02 Jun 2008; Markus Rothe <corsair@gentoo.org> apache-2.2.8-r3.ebuild:
+  Stable on ppc64; bug #222643
+
+  02 Jun 2008; Jeroen Roovers <jer@gentoo.org> apache-2.2.8-r3.ebuild:
+  Stable for HPPA (bug #222643).
+
+*apache-2.2.8-r3 (01 Jun 2008)
+
+  01 Jun 2008; Benedikt Böhm <hollow@gentoo.org> +apache-2.2.8-r3.ebuild:
+  fix mod_ssl memory leak wrt #222643
+
+  19 Apr 2008; Benedikt Böhm <hollow@gentoo.org> -apache-2.2.8-r1.ebuild,
+  apache-2.2.8-r2.ebuild:
+  add mod_substitute wrt #218356
+
+*apache-2.2.8-r2 (22 Mar 2008)
+
+  22 Mar 2008; Benedikt Böhm <hollow@gentoo.org> +apache-2.2.8-r2.ebuild:
+  fix #110556, #209095, #212837
+
+  17 Feb 2008; Christoph Mende <angelos@gentoo.org> apache-2.2.8.ebuild:
+  Stable on amd64, security bug #205195
+
+*apache-2.2.8-r1 (02 Feb 2008)
+
+  02 Feb 2008; Benedikt Böhm <hollow@gentoo.org> +apache-2.2.8-r1.ebuild:
+  remove incremental mod_dir patches, fixes #139451
+
+  31 Jan 2008; Tobias Scherbaum <dertobi123@gentoo.org> apache-2.2.8.ebuild:
+  ppc stable, bug #205195
+
+  29 Jan 2008; Raúl Porcel <armin76@gentoo.org> apache-2.2.8.ebuild:
+  alpha/ia64/sparc stable wrt security #205195
+
+  29 Jan 2008; Christian Faulhammer <opfer@gentoo.org> apache-2.2.8.ebuild:
+  stable x86, security bug 205195
+
+  29 Jan 2008; Jeroen Roovers <jer@gentoo.org> apache-2.2.8.ebuild:
+  Stable for HPPA (bug #205195).
+
+  29 Jan 2008; Brent Baude <ranger@gentoo.org> apache-2.2.8.ebuild:
+  Marking apache-2.2.8 ppc64 for bug 205195
+
+  28 Jan 2008; Benedikt Böhm <hollow@gentoo.org> -apache-2.0.58-r2.ebuild,
+  -apache-2.0.59-r5.ebuild, -apache-2.0.61.ebuild:
+  remove apache-2.0 wrt #203578
+
+*apache-2.2.8 (19 Jan 2008)
+
+  19 Jan 2008; Benedikt Böhm <hollow@gentoo.org>
+  -files/apache-2.2.6_CVE-2007-5000.patch, -apache-2.2.6-r5.ebuild,
+  -apache-2.2.6-r6.ebuild, +apache-2.2.8.ebuild:
+  version bump; cleanup
+
+  12 Jan 2008; Benedikt Böhm <hollow@gentoo.org> apache-2.2.6-r7.ebuild:
+  fix define for mod_status
+
+  10 Jan 2008; Richard Freeman <rich0@gentoo.org> apache-2.2.6-r7.ebuild:
+  amd64 stable - bug 204838
+
+  08 Jan 2008; Jeroen Roovers <jer@gentoo.org> apache-2.2.6-r7.ebuild:
+  Stable for HPPA (bug #204838).
+
+  08 Jan 2008; Raúl Porcel <armin76@gentoo.org> apache-2.2.6-r7.ebuild:
+  alpha/ia64/sparc stable wrt #204838
+
+  08 Jan 2008; Markus Meier <maekke@gentoo.org> apache-2.2.6-r7.ebuild:
+  x86 stable, bug #204838
+
+  08 Jan 2008; Brent Baude <ranger@gentoo.org> apache-2.2.6-r7.ebuild:
+  Marking apache-2.2.6-r7 ppc64 for bug 204838
+
+  08 Jan 2008; Brent Baude <ranger@gentoo.org> apache-2.2.6-r7.ebuild:
+  Marking apache-2.2.6-r7 ppc for bug 204838
+
+*apache-2.2.6-r7 (07 Jan 2008)
+
+  07 Jan 2008; Benedikt Böhm <hollow@gentoo.org> +apache-2.2.6-r7.ebuild:
+  fix #204822, #204408, #204409 and #204410
+
+  19 Dec 2007; Benedikt Böhm <hollow@gentoo.org> -apache-2.2.6.ebuild,
+  apache-2.2.6-r6.ebuild:
+  fix #202800; cleanup
+
+  16 Dec 2007; Peter Weller <welp@gentoo.org> apache-2.2.6-r5.ebuild:
+  Stable on amd64; bug 202327
+
+  16 Dec 2007; Markus Rothe <corsair@gentoo.org> apache-2.2.6-r5.ebuild:
+  Stable on ppc64; bug #202327
+
+  16 Dec 2007; Raúl Porcel <armin76@gentoo.org> apache-2.2.6-r5.ebuild:
+  alpha/ia64/sparc/x86 stable wrt security #202327
+
+  15 Dec 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  apache-2.2.6-r5.ebuild:
+  ppc stable, bug #202327
+
+  15 Dec 2007; Jeroen Roovers <jer@gentoo.org> apache-2.2.6-r5.ebuild:
+  Stable for HPPA (bug #202327).
+
+*apache-2.2.6-r6 (15 Dec 2007)
+
+  15 Dec 2007; Benedikt Böhm <hollow@gentoo.org> -apache-2.2.6-r2.ebuild,
+  -apache-2.2.6-r4.ebuild, +apache-2.2.6-r6.ebuild:
+  fix #201163, #201586, #201923, #202327, #202376; first unmasked USE_EXPAND
+  version
+
+*apache-2.2.6-r5 (14 Dec 2007)
+
+  14 Dec 2007; Benedikt Böhm <hollow@gentoo.org>
+  +files/apache-2.2.6_CVE-2007-5000.patch, +apache-2.2.6-r5.ebuild:
+  fix CVE-2007-5000 (#202327)
+
+  29 Nov 2007; Benedikt Böhm <hollow@gentoo.org> apache-2.2.6-r4.ebuild:
+  fix order of variables/inherit
+
+*apache-2.2.6-r4 (28 Nov 2007)
+
+  28 Nov 2007; Benedikt Böhm <hollow@gentoo.org> -apache-2.2.6-r1.ebuild,
+  -apache-2.2.6-r3.ebuild, +apache-2.2.6-r4.ebuild:
+  Rewrite for apache-2 eclass; uses USE_EXPAND for APACHE2_MODULES and
+  APACHE2_MPMS; also fixes #198088, #197032, #197870
+
+  10 Nov 2007; Benedikt Böhm <hollow@gentoo.org> apache-2.2.6-r3.ebuild:
+  fix SNI patch, #198701
+
+*apache-2.2.6-r3 (25 Oct 2007)
+
+  25 Oct 2007; Benedikt Böhm <hollow@gentoo.org> +apache-2.2.6-r3.ebuild:
+  added TLS Server Name Indication patch
+
+*apache-2.2.6-r2 (20 Oct 2007)
+
+  20 Oct 2007; Benedikt Böhm <hollow@gentoo.org> +apache-2.2.6-r2.ebuild:
+  fix #82311, #193492, #194415, #194546, #194828, #195792
+
+  25 Sep 2007; Raúl Porcel <armin76@gentoo.org> apache-2.0.59-r5.ebuild,
+  apache-2.2.6.ebuild:
+  sparc stable wrt security #186219
+
+*apache-2.2.6-r1 (21 Sep 2007)
+
+  21 Sep 2007; Benedikt Böhm <hollow@gentoo.org> +apache-2.2.6-r1.ebuild:
+  fix #192179, #192218, #192746, #193295, #193354
+
+  16 Sep 2007; Benedikt Böhm <hollow@gentoo.org> apache-2.0.58-r2.ebuild,
+  apache-2.0.59-r5.ebuild, apache-2.0.61.ebuild, -apache-2.2.4-r12.ebuild:
+  fix #192666; cleanup
+
+  11 Sep 2007; Chris Gianelloni <wolf31o2@gentoo.org> apache-2.2.6.ebuild:
+  Stable on amd64 wrt bug #186219.
+
+  10 Sep 2007; Tobias Scherbaum <dertobi123@gentoo.org> apache-2.2.6.ebuild:
+  ppc stable, bug #186219
+
+  10 Sep 2007; Benedikt Böhm <hollow@gentoo.org> apache-2.2.6.ebuild:
+  fix #191967
+
+  09 Sep 2007; Markus Rothe <corsair@gentoo.org> apache-2.2.6.ebuild:
+  Stable on ppc64; bug #186219
+
+  09 Sep 2007; Markus Rothe <corsair@gentoo.org> apache-2.0.59-r5.ebuild:
+  Stable on ppc64; bug #186219
+
+  09 Sep 2007; Raúl Porcel <armin76@gentoo.org> apache-2.2.6.ebuild:
+  alpha/ia64 stable wrt security #186219
+
+  09 Sep 2007; Markus Meier <maekke@gentoo.org> apache-2.2.6.ebuild:
+  stable on x86, wrt security bug #186219
+
+  08 Sep 2007; Jeroen Roovers <jer@gentoo.org> apache-2.2.6.ebuild:
+  Stable for HPPA (bug #186219).
+
+  08 Sep 2007; Benedikt Böhm <hollow@gentoo.org> apache-2.2.6.ebuild:
+  fix mod_cgi(d) selection on threaded MPMs
+
+  08 Sep 2007; Jeroen Roovers <jer@gentoo.org> apache-2.0.59-r5.ebuild:
+  Stable for HPPA (bug #190331).
+
+  08 Sep 2007; Benedikt Böhm <hollow@gentoo.org> apache-2.2.4-r12.ebuild,
+  apache-2.2.6.ebuild:
+  fix #191368; cleanup for #160189
+
+*apache-2.2.6 (07 Sep 2007)
+*apache-2.0.61 (07 Sep 2007)
+
+  07 Sep 2007; Benedikt Böhm <hollow@gentoo.org> -apache-2.0.59-r2.ebuild,
+  +apache-2.0.61.ebuild, +apache-2.2.6.ebuild:
+  version bumps
+
+  04 Sep 2007; Raúl Porcel <armin76@gentoo.org> apache-2.0.59-r5.ebuild,
+  apache-2.2.4-r12.ebuild:
+  alpha/ia64/x86 stable wrt #190331
+
+  02 Sep 2007; Benedikt Böhm <hollow@gentoo.org> apache-2.0.59-r5.ebuild:
+  fix #190966
+
+  02 Sep 2007; nixnut <nixnut@gentoo.org> apache-2.0.59-r5.ebuild,
+  apache-2.2.4-r12.ebuild:
+  Stable on ppc wrt bug 190331
+
+  31 Aug 2007; Christoph Mende <angelos@gentoo.org> apache-2.2.4-r12.ebuild:
+  Stable on amd64 wrt bug #190331
+
+  31 Aug 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  apache-2.0.59-r5.ebuild:
+  Stable on amd64/x86 for bug #190331.
+
+  30 Aug 2007; Jeroen Roovers <jer@gentoo.org> apache-2.2.4-r12.ebuild:
+  Stable for HPPA (bug #190331).
+
+*apache-2.0.59-r5 (28 Aug 2007)
+
+  28 Aug 2007; Benedikt Böhm <hollow@gentoo.org> -apache-2.0.59-r4.ebuild,
+  +apache-2.0.59-r5.ebuild, -apache-2.2.4-r10.ebuild,
+  -apache-2.2.4-r11.ebuild:
+  fix the config backport mess
+
+  27 Aug 2007; Christian Heim <phreak@gentoo.org> -apache-2.0.59-r3.ebuild:
+  Removing apache-2.0.59-r3, as it was kinda buggy (thanks to me -- see #189916).
+
+*apache-2.0.59-r4 (26 Aug 2007)
+
+  26 Aug 2007; Christian Heim <phreak@gentoo.org> +apache-2.0.59-r4.ebuild:
+  Fixing the LOAD_MODULE replacement (as reported in #189916 thanks to Marius
+  Kjeldahl <marius at kjeldahl.net>).
+
+*apache-2.0.59-r3 (21 Aug 2007)
+
+  21 Aug 2007; Benedikt Böhm <hollow@gentoo.org> +apache-2.0.59-r3.ebuild:
+  fix #187258 for 2.0.59
+
+*apache-2.2.4-r12 (19 Aug 2007)
+
+  19 Aug 2007; Benedikt Böhm <hollow@gentoo.org> +apache-2.2.4-r12.ebuild:
+  fix patch for CVE 2007-3304 and adapt mpm-itk; backport mod_dbd from trunk,
+  maybe fixes #182430
+
+*apache-2.2.4-r11 (01 Aug 2007)
+
+  01 Aug 2007; Benedikt Böhm <hollow@gentoo.org> -apache-2.2.4-r6.ebuild,
+  -apache-2.2.4-r7.ebuild, -apache-2.2.4-r8.ebuild, -apache-2.2.4-r9.ebuild,
+  +apache-2.2.4-r11.ebuild:
+  fix #183552, #187258, #186475, #187302
+
+  29 Jul 2007; Christian Heim <phreak@gentoo.org> apache-2.0.58-r2.ebuild,
+  apache-2.0.59-r2.ebuild, apache-2.2.4-r6.ebuild, apache-2.2.4-r7.ebuild,
+  apache-2.2.4-r8.ebuild, apache-2.2.4-r9.ebuild, apache-2.2.4-r10.ebuild:
+  Fixing the DEPEND/RDEPEND for the move of net-www/apache to
+  www-servers/apache (#78622).
+
+*apache-2.2.4-r6 (29 Jul 2007)
+
+  29 Jul 2007; Christian Heim <phreak@gentoo.org> +metadata.xml,
+  +apache-2.0.58-r2.ebuild, +apache-2.0.59-r2.ebuild,
+  +apache-2.2.4-r6.ebuild, +apache-2.2.4-r7.ebuild, +apache-2.2.4-r8.ebuild,
+  +apache-2.2.4-r9.ebuild, +apache-2.2.4-r10.ebuild:
+  Moving net-www/apache to www-servers/apache (#78622).
+
+*apache-2.2.4-r10 (12 Jul 2007)
+
+  12 Jul 2007; Christian Heim <phreak@gentoo.org> +apache-2.2.4-r10.ebuild:
+  Yet another revision bump, pulling back in the DEFAULT_VHOST changes. Also
+  updating the postinst user notification.
+
+*apache-2.2.4-r9 (10 Jul 2007)
+
+  10 Jul 2007; Christian Heim <phreak@gentoo.org> +apache-2.2.4-r9.ebuild:
+  Revision bump to force the removal of *.conf~ files in
+  /etc/apache2/modules.d, which seem to have slipped in with the -r7
+  patchtarball.
+
+*apache-2.2.4-r8 (08 Jul 2007)
+
+  08 Jul 2007; Christian Heim <phreak@gentoo.org> +apache-2.2.4-r8.ebuild:
+  Fixing SUEXEC_SAFEPATH (erroneous quotes for SUEXEC SAFEPATH - #182451,
+  thanks to Martin von Gagern <Martin.vGagern at gmx.net>). Making
+  SUEXEC_SAFEPATH configureable too.
+
+*apache-2.2.4-r7 (15 Jun 2007)
+
+  15 Jun 2007; Benedikt Böhm <hollow@gentoo.org> +apache-2.2.4-r7.ebuild:
+  fix #178966
+
+  13 Jun 2007; Luca Longinotti <chtekk@gentoo.org>
+  -apache-1.3.34-r14.ebuild, -apache-1.3.37.ebuild:
+  Remove Apache1.
+
+  05 Jun 2007; Markus Ullmann <jokey@gentoo.org> -apache-2.2.4-r5.ebuild
+  +apache-2.2.4-r6.ebuild:
+  Fix from jakub on IRC
+
+*apache-2.2.4-r5 (05 Jun 2007)
+
+  05 Jun 2007; Christian Heim <phreak@gentoo.org> -apache-2.2.4-r4.ebuild,
+  +apache-2.2.4-r5.ebuild:
+  Yet another revision bump, removing the previously installed original apache
+  configs (install-conf), some config changes (Yet again, yes), adding a patch
+  to fix the case where indexing would be *veery* slow (bug 139451 - thanks to
+  Joshua Pettett <bugs.gentoo.devel at homelinkcs.com>); adding support for
+  /etc/init.d/apache2 modules showing a list of present (as in loaded and
+  compiled-in) modules.
+
+  02 Jun 2007; Luca Longinotti <chtekk@gentoo.org> apache-2.2.4-r4.ebuild:
+  Expand elog message for upgrades.
+
+  02 Jun 2007; Christian Heim <phreak@gentoo.org> apache-2.2.4-r4.ebuild:
+  Adding the missing mods="${mods} suexec" declaration to the ebuild, fixing
+  #180544 (thanks to Lada Durchanek).
+
+  02 Jun 2007; Christian Heim <phreak@gentoo.org> apache-2.2.4-r4.ebuild:
+  Adding a blocker, due to apxs.8 previously belonging to apache-tools, which
+  needs to be in apache now.
+
+*apache-2.2.4-r4 (27 May 2007)
+
+  27 May 2007; Christian Heim <phreak@gentoo.org> -apache-2.2.4-r3.ebuild,
+  +apache-2.2.4-r4.ebuild:
+  Fixing the installation of apxs(2), reported in bug #177697 and bug #180006.
+  I'm really sorry for this, I kinda forgot to add apxs to the PROGRAMS
+  definition in support/Makefile.in when rewriting it.
+
+  26 May 2007; Christian Heim <phreak@gentoo.org> apache-2.2.4-r3.ebuild:
+  Restrict to primaryuri for now, as the patchtarball on the mirrors is broken.
+
+*apache-2.2.4-r3 (26 May 2007)
+
+  26 May 2007; Christian Heim <phreak@gentoo.org> -apache-2.2.4-r2.ebuild,
+  +apache-2.2.4-r3.ebuild:
+  Updated ebuild, including an updated patch tarball. Fixing bug #110556, bug
+  #178457, bug #179445, bug #179522.
+
+  23 May 2007; Luca Longinotti <chtekk@gentoo.org> -apache-2.2.4.ebuild,
+  -apache-2.2.4-r1.ebuild, apache-2.2.4-r2.ebuild:
+  Cleanup outdated ebuilds. Readd libcap dep for mpm-itk on 2.2.
+
+*apache-2.2.4-r2 (22 May 2007)
+
+  22 May 2007; Benedikt Böhm <hollow@gentoo.org> +apache-2.2.4-r2.ebuild:
+  fix digests; whitespace cleanups; remove apache-tools at patch level
+
+  22 May 2007; Benedikt Böhm <hollow@gentoo.org> apache-2.2.4-r1.ebuild:
+  fix itk patch name
+
+  18 May 2007; Christian Heim <phreak@gentoo.org> apache-2.2.4-r1.ebuild:
+  Fix the chmod's for suexec, as chmod can't be used on symlinks (triggers a
+  sandbox violation).
+
+  18 May 2007; Christian Heim <phreak@gentoo.org> apache-2.2.4-r1.ebuild:
+  Updated patchtarball, including updated peruser and itk patches.
+
+  18 May 2007; Christian Heim <phreak@gentoo.org> apache-2.2.4-r1.ebuild:
+  Explicitly mention USERDIR in pkg_postinst since users keep overlooking it.
+
+  18 May 2007; Christian Heim <phreak@gentoo.org> apache-2.2.4-r1.ebuild:
+  Renaming /usr/sbin/suexec to /usr/sbin/suexec2 in src_install (#178295 -
+  thanks to Rajiv Aaron Managlani <rajiv at gentoo.org>).
+
+  18 May 2007; Christian Heim <phreak@gentoo.org> apache-2.2.4-r1.ebuild:
+  Adding mpm-itk back.
+
+*apache-2.2.4-r1 (09 May 2007)
+
+  09 May 2007; Bryan Østergaard <kloeri@gentoo.org>
+  +apache-2.2.4-r1.ebuild:
+  Throw in some symlinks to solve bug 177697.
+
+  07 May 2007; Bryan Østergaard <kloeri@gentoo.org> apache-2.2.4.ebuild:
+  Fix SLOT.
+
+  07 May 2007; Christian Heim <phreak@gentoo.org> apache-2.2.4.ebuild:
+  Importing Luca's and my work from the overlay, apache-2.2.4 should now be
+  ready and should be fixing all those open bugreports.
+
+  21 Apr 2007; Christian Heim <phreak@gentoo.org> apache-1.3.34-r14.ebuild,
+  apache-1.3.37.ebuild:
+  Stop using insinto /etc/conf.d and use the newconfd function instead, #174266.
+
+  09 Apr 2007; Christian Heim <phreak@gentoo.org> apache-2.0.59-r2.ebuild:
+  Fixing the built_with_use for apache-2.0.59, since apache-2.0 only supports
+  apr-0* for now. Thanks to Marijn for the bugreport and Jakub for the diff.
+  Fixing #173750.
+
+  31 Jan 2007; Luca Longinotti <chtekk@gentoo.org> -apache-2.2.3-r2.ebuild:
+  Remove old 2.2 version.
+
+  28 Jan 2007; Luca Longinotti <chtekk@gentoo.org> apache-2.0.58-r2.ebuild,
+  apache-2.0.59-r2.ebuild, apache-2.2.3-r2.ebuild, apache-2.2.4.ebuild:
+  Fix apr deps.
+
+*apache-2.2.4 (21 Jan 2007)
+
+  21 Jan 2007; Christian Heim <phreak@gentoo.org> +apache-2.2.4.ebuild:
+  Version bump (thanks to Dean Baender <dcb at baender.com> and Kalin
+  Kozhuharov <kalin at ThinRope.net> in #114232).
+
+  20 Jan 2007; Christian Heim <phreak@gentoo.org> apache-2.2.3-r2.ebuild:
+  Fixing a small typo in =net-www/apache-2.2.3-r2.
+
+  18 Jan 2007; Luca Longinotti <chtekk@gentoo.org> apache-2.2.3-r2.ebuild:
+  Fix quoting, fix ldap dep, use econf correctly, thanks to phreak.
+
+*apache-2.2.3-r2 (15 Jan 2007)
+
+  15 Jan 2007; Luca Longinotti <chtekk@gentoo.org> metadata.xml,
+  -apache-2.2.3.ebuild, -apache-2.2.3-r1.ebuild, +apache-2.2.3-r2.ebuild:
+  Fix bug #161700, remove srvdir USE flag, misc cleanup.
+
+  11 Jan 2007; Christian Heim <phreak@gentoo.org> apache-1.3.34-r14.ebuild,
+  apache-1.3.37.ebuild, apache-2.0.58-r2.ebuild, apache-2.0.59-r2.ebuild,
+  apache-2.2.3.ebuild, apache-2.2.3-r1.ebuild:
+  Adding EXTRA_ECONF to the ./configure usage (fixes #125798 - thanks to samLT
+  <samuelethiec at hotmail.com>).
+
+  09 Jan 2007; Bryan Østergaard <kloeri@gentoo.org>
+  -apache-1.3.34-r10.ebuild, -apache-1.3.34-r11.ebuild,
+  -apache-2.0.54-r31.ebuild, -apache-2.0.58.ebuild, -apache-2.0.59.ebuild,
+  -apache-2.2.2-r1.ebuild:
+  Clean out old versions.
+
+  08 Jan 2007; Christian Heim <phreak@gentoo.org> apache-2.2.2-r1.ebuild,
+  apache-2.2.3.ebuild, apache-2.2.3-r1.ebuild:
+  Fixing IUSE (#161029) and WANT_AUTOCONF (#161027) for apache-2.2.
+
+*apache-2.2.3-r1 (27 Nov 2006)
+
+  27 Nov 2006; Michael Stewart <vericgar@gentoo.org>
+  +apache-2.2.3-r1.ebuild:
+  This should now be feature complete: Completed init script, linked
+  apache2ctl to init script, added example virtual host configurations, added
+  USE=srvdir support
+
+*apache-2.0.59-r2 (02 Nov 2006)
+
+  02 Nov 2006; Michael Stewart <vericgar@gentoo.org>
+  -apache-2.0.59-r1.ebuild, +apache-2.0.59-r2.ebuild:
+  Fix the init script so that is works with older versions of baselayout.
+  Removed 2.0.59-r1 because it needed a newer baselayout and it's environment
+  handling was buggy.
+
+  01 Nov 2006; Michael Stewart <vericgar@gentoo.org>
+  apache-2.0.59-r1.ebuild:
+  New tarball that fixes a typo with environment handling in the init script.
+
+*apache-2.0.59-r1 (15 Oct 2006)
+
+  15 Oct 2006; Michael Stewart <vericgar@gentoo.org>
+  +apache-2.0.59-r1.ebuild:
+  Updated init script to use start-stop-daemon so that apache stops correctly
+  instead of just exiting after the signal is sent
+
+  20 Sep 2006; Michael Stewart <vericgar@gentoo.org>
+  apache-1.3.34-r10.ebuild, apache-1.3.34-r11.ebuild,
+  apache-1.3.34-r14.ebuild, apache-1.3.37.ebuild, apache-2.0.54-r31.ebuild,
+  apache-2.0.58.ebuild, apache-2.0.58-r2.ebuild, apache-2.0.59.ebuild:
+  Remove no-suexec USE-flag from 1.3 and 2.0 as it's broken and requires
+  modification to configuration to get it working. Fixes bug 148082.
+
+  10 Sep 2006; Javier Villavicencio <the_paya@gentoo.org>
+  apache-2.2.3.ebuild:
+  Add ~x86-fbsd keyword.
+
+  08 Sep 2006; Bryan Østergaard <kloeri@gentoo.org>
+  apache-1.3.34-r14.ebuild, apache-2.0.58-r2.ebuild:
+  Stable on ia64.
+
+  05 Sep 2006; Joshua Kinard <kumba@gentoo.org> apache-2.0.58-r2.ebuild:
+  Marked stable on mips.
+
+  02 Sep 2006; Michael Stewart <vericgar@gentoo.org> apache-1.3.37.ebuild:
+  Remove dependency on db-1.85 for ndbm because apache doesn't detect db
+  correctly on amd64. This leave gdbm as the sole provider for ndbm on apache.
+  See bug 145931
+
+  16 Aug 2006; Michael Stewart <vericgar@gentoo.org>
+  -apache-1.3.34-r12.ebuild, -apache-1.3.34-r13.ebuild,
+  -apache-2.0.55-r1.ebuild, -apache-2.0.58-r1.ebuild,
+  -apache-2.2.0-r1.ebuild, -apache-2.2.0-r2.ebuild, -apache-2.2.2.ebuild:
+  Remove old versions
+
+  02 Aug 2006; Michael Stewart <vericgar@gentoo.org> apache-2.2.3.ebuild:
+  Actually create /var/www/localhost before trying to put stuff in it. Thanks
+  to Conrad Kostecki for the report
+
+*apache-2.2.3 (30 Jul 2006)
+
+  30 Jul 2006; Michael Stewart <vericgar@gentoo.org> +apache-2.2.3.ebuild:
+  Version Bump
+
+*apache-2.0.59 (30 Jul 2006)
+
+  30 Jul 2006; Michael Stewart <vericgar@gentoo.org> +apache-2.0.59.ebuild:
+  Version Bump
+
+  29 Jul 2006; Bryan Østergaard <kloeri@gentoo.org>
+  apache-1.3.34-r14.ebuild, apache-2.0.58-r2.ebuild:
+  Stable on alpha.
+
+*apache-1.3.37 (29 Jul 2006)
+
+  29 Jul 2006; Bryan Østergaard <kloeri@gentoo.org> +apache-1.3.37.ebuild:
+  Bump version, bug 141986.
+
+*apache-2.2.2-r1 (26 Jul 2006)
+*apache-2.0.58-r2 (26 Jul 2006)
+*apache-1.3.34-r14 (26 Jul 2006)
+
+  26 Jul 2006; Michael Stewart <vericgar@gentoo.org>
+  +apache-1.3.34-r14.ebuild, +apache-2.0.58-r2.ebuild,
+  +apache-2.2.2-r1.ebuild:
+  New revisions to address CVE-2006-3747. Fixes bug 141986
+
+  21 Jul 2006; Michael Stewart <vericgar@gentoo.org>
+  apache-1.3.34-r10.ebuild, apache-1.3.34-r11.ebuild,
+  apache-1.3.34-r12.ebuild, apache-1.3.34-r13.ebuild,
+  apache-2.0.54-r31.ebuild, apache-2.0.55-r1.ebuild, apache-2.0.58.ebuild,
+  apache-2.0.58-r1.ebuild, apache-2.2.0-r1.ebuild, apache-2.2.0-r2.ebuild,
+  apache-2.2.2.ebuild:
+  Moved enewuser/enewgroup to pkg_setup so that src_install has the user and
+  group setup
+
+*apache-2.0.58-r1 (08 Jul 2006)
+
+  08 Jul 2006; Luca Longinotti <chtekk@gentoo.org> +apache-2.0.58-r1.ebuild:
+  Update patchset and configuration to support MPM-itk, closing bug #139623.
+
+  28 Jun 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  apache-2.0.58.ebuild:
+  ppc stable, #138011
+
+  28 Jun 2006; Joshua Jackson <tsunam@gentoo.org> apache-2.0.58.ebuild:
+  Stable x86; bug #138011
+
+  27 Jun 2006; Marcus D. Hanwell <cryos@gentoo.org> apache-2.0.58.ebuild:
+  Marked stable on amd64, bug 138011.
+
+  27 Jun 2006; Guy Martin <gmsoft@gentoo.org> apache-2.0.58.ebuild:
+  Stable on hppa.
+
+  26 Jun 2006; Markus Rothe <corsair@gentoo.org> apache-2.0.58.ebuild:
+  Stable on ppc64; bug #138011
+
+  26 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org> apache-2.0.58.ebuild:
+  Stable on sparc wrt #138011
+
+*apache-2.2.2 (07 Jun 2006)
+
+  07 Jun 2006; Michael Stewart <vericgar@gentoo.org> +apache-2.2.2.ebuild:
+  Version Bump. Includes now complete suexec-config utility. Also now uses the
+  already installed libpcre rather then the bundled one. Refer to bug 114232.
+  Fixes bugs 124599, 133036, 133191.
+
+  06 Jun 2006; Michael Stewart <vericgar@gentoo.org> apache-2.2.0-r2.ebuild:
+  Remove as-needed filtering
+
+*apache-1.3.34-r13 (05 Jun 2006)
+
+  05 Jun 2006; Benedikt Böhm <hollow@gentoo.org> +apache-1.3.34-r13.ebuild:
+  fix #112919 and #106455
+
+  05 Jun 2006; Michael Stewart <vericgar@gentoo.org>
+  -files/apache-2.0.48-export.diff, -files/apache-2.0.48-gentoo.diff,
+  -files/httpd-2.0.48-ipv6.patch, -files/httpd-2.0.49-cgi.patch,
+  -files/apache-2.0.49-gentoo.diff, -files/2.0.49/40_mod_ssl.conf,
+  -files/httpd-2.0.49-ipv6.patch,
+  -files/2.0.49/41_mod_ssl.default-vhost.conf,
+  -files/2.0.49/45_mod_dav.conf, -files/2.0.49/46_mod_ldap.conf,
+  -files/00_apache_manual.conf, -files/2.0.49/apache2-builtin-mods,
+  -files/2.0.49/apache2.confd, -files/2.0.49/apache2.initd,
+  -files/2.0.49/apache2logserverstatus, -files/2.0.49/apache2splitlogfile,
+  -files/2.0.49/gentestcrt.sh, -files/apache.confd, -files/apache.rc6,
+  -files/apache-builtin-mods, -files/apache2, -files/apacheaddmod,
+  -files/apachedelmod, -files/apachelogserverstatus,
+  -files/apachesplitlogfile, -files/common/apr-config.layout,
+  -files/common/apr-util-config.layout, -files/common/config.layout,
+  -files/conf/DynamicVhosts.conf, -files/conf/Vhosts.conf,
+  -files/conf/VirtualHomePages.conf, -files/conf/apache.conf,
+  -files/conf/commonapache.conf,
+  -files/patches/2.0.49-r1/00_ssl_verify_client.patch,
+  -files/patches/2.0.49-r1/01_apache_ldap_fixes.patch,
+  -files/patches/2.0.49-r1/04_ssl_makefile.patch,
+  -files/patches/2.0.49-r1/Readme.PATCHES,
+  -files/patches/2.0.49-r2/01_gentoo_cgi.patch, -files/robots.txt,
+  -files/suexec.pam, -files/suexec_pam_gentoo.patch,
+  -apache-1.3.32-r1.ebuild, -apache-1.3.33-r6.ebuild,
+  -apache-1.3.33-r13.ebuild, -apache-1.3.34-r1.ebuild,
+  -apache-1.3.34-r2.ebuild, -apache-2.0.54-r9.ebuild,
+  -apache-2.0.54-r15.ebuild, -apache-2.0.54-r16.ebuild,
+  -apache-2.0.54-r30.ebuild, -apache-2.0.55.ebuild,
+  -apache-2.0.55-r2.ebuild:
+  Remove old-style ebuilds and clean out files directory
+
+*apache-2.0.58 (16 May 2006)
+
+  16 May 2006; Michael Stewart <vericgar@gentoo.org> +apache-2.0.58.ebuild:
+  Version Bump. Resynced the configuration with upstream. Reworked
+  /var/www/localhost handling and removed dependency on
+  gentoo-webroot-default. Updated mpm-peruser to 0.2.0. This fixes several
+  bugs: 90748, 105778, 107299, 110864, 117106, 124857, 125244, 130078, 132669
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org> Manifest:
+  Fixing SHA256 digest, pass four
+
+  22 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  apache-2.0.55-r2.ebuild:
+  Add ~x86-fbsd keyword.
+
+  19 Apr 2006; Luca Longinotti <chtekk@gentoo.org> apache-1.3.33-r13.ebuild,
+  apache-1.3.34-r10.ebuild, apache-1.3.34-r11.ebuild,
+  apache-1.3.34-r12.ebuild, apache-2.0.54-r9.ebuild,
+  apache-2.0.54-r15.ebuild, apache-2.0.54-r16.ebuild,
+  apache-2.0.54-r30.ebuild, apache-2.0.54-r31.ebuild, apache-2.0.55.ebuild,
+  apache-2.0.55-r1.ebuild, apache-2.0.55-r2.ebuild, apache-2.2.0-r1.ebuild,
+  apache-2.2.0-r2.ebuild:
+  Fix bug #130459, move enewuser/enewgroup from src_install() to pkg_preinst().
+
+*apache-1.3.34-r12 (01 Apr 2006)
+
+  01 Apr 2006; Michael Stewart <vericgar@gentoo.org>
+  +apache-1.3.34-r12.ebuild:
+  Replace the patch for AddDirectoryIndex with a rewritten one. This should
+  fix the segfaults reported in bug 106808
+
+*apache-2.0.55-r2 (31 Mar 2006)
+
+  31 Mar 2006; Michael Stewart <vericgar@gentoo.org>
+  +apache-2.0.55-r2.ebuild:
+  Replace the patch for AddDirectoryIndex with a rewritten one. This should
+  fix the segfaults reported in bug 106808
+
+  08 Mar 2006; Michael Stewart <vericgar@gentoo.org> apache-2.2.0-r2.ebuild:
+  Actually install apache2-builtin-mods to the location where we expect it.
+  This should fix bug 124930.
+
+*apache-2.2.0-r2 (06 Mar 2006)
+
+  06 Mar 2006; Benedikt Boehm <hollow@gentoo.org> +apache-2.2.0-r2.ebuild:
+  Add peruser MPM
+
+  28 Feb 2006; Michael Stewart <vericgar@gentoo.org> -apache-2.2.0.ebuild,
+  apache-2.2.0-r1.ebuild:
+  Fix an issue where LoadModule lines weren't created on systems that use
+  /usr/lib64 instead of /usr/lib.
+
+*apache-2.2.0-r1 (27 Feb 2006)
+
+  27 Feb 2006; Michael Stewart <vericgar@gentoo.org>
+  +apache-2.2.0-r1.ebuild:
+  Fix parse_modules_config so that it correctly detects an upgrade. Thanks to
+  bemis for helping debug this. Fixes bug 124245
+
+*apache-2.2.0 (15 Feb 2006)
+
+  15 Feb 2006; Michael Stewart <vericgar@gentoo.org> +apache-2.2.0.ebuild:
+  Add a testing build for apache-2.2. See bug 114232.
+
+  06 Feb 2006; Simon Stelling <blubb@gentoo.org> apache-1.3.34-r2.ebuild,
+  apache-1.3.34-r11.ebuild:
+  stable on amd64 wrt bug 118875
+
+  01 Feb 2006; Bryan Østergaard <kloeri@gentoo.org apache-1.3.34-r2.ebuild,
+  apache-1.3.34-r11.ebuild:
+  Stable on x86, bug 118875.
+
+  01 Feb 2006; Aron Griffis <agriffis@gentoo.org> apache-1.3.34-r2.ebuild,
+  apache-1.3.34-r11.ebuild:
+  Mark 1.3.34-r11 1.3.34-r2 stable on alpha/ia64 #118875
+
+  01 Feb 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  apache-1.3.34-r2.ebuild, apache-1.3.34-r11.ebuild:
+  ppc stable, bug #118875
+
+  01 Feb 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  apache-1.3.34-r2.ebuild, apache-1.3.34-r11.ebuild:
+  Stable on sparc wrt security #118875
+
+  01 Feb 2006; Rene Nussbaumer <killerfox@gentoo.org>
+  apache-1.3.34-r2.ebuild, apache-1.3.34-r11.ebuild:
+  Stable on hppa. See bug #118875.
+
+  01 Feb 2006; Markus Rothe <corsair@gentoo.org> apache-1.3.34-r2.ebuild,
+  apache-1.3.34-r11.ebuild:
+  Stable on ppc64: bug #118875
+
+*apache-1.3.34-r11 (31 Jan 2006)
+*apache-1.3.34-r2 (31 Jan 2006)
+
+  31 Jan 2006; Michael Stewart <vericgar@gentoo.org>
+  +apache-1.3.34-r2.ebuild, +apache-1.3.34-r11.ebuild:
+  Security bump to address CVE-2005-3352. Fixes bug 118875
+
+  19 Jan 2006; Bryan Østergaard <kloeri@gentoo.org
+  apache-2.0.54-r16.ebuild, apache-2.0.55-r1.ebuild:
+  Stable on alpha and ia64.
+
+  19 Jan 2006; Mark Loeser <halcy0n@gentoo.org> apache-2.0.54-r16.ebuild,
+  apache-2.0.55-r1.ebuild:
+  Stable on x86; bug #118875
+
+  19 Jan 2006; Marcus D. Hanwell <cryos@gentoo.org>
+  apache-2.0.54-r16.ebuild, apache-2.0.55-r1.ebuild:
+  Stable on amd64, bug 118875.
+
+  18 Jan 2006; Rene Nussbaumer <killerfox@gentoo.org>
+  apache-2.0.54-r16.ebuild, apache-2.0.55-r1.ebuild:
+  Stable on hppa. See bug #118875.
+
+  18 Jan 2006; Markus Rothe <corsair@gentoo.org> apache-2.0.54-r16.ebuild,
+  apache-2.0.55-r1.ebuild:
+  Stable on ppc64; bug #118875
+
+  18 Jan 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  apache-2.0.54-r16.ebuild, apache-2.0.55-r1.ebuild:
+  Stable on sparc wrt security #118875
+
+  18 Jan 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  apache-2.0.54-r16.ebuild, apache-2.0.55-r1.ebuild:
+  ppc stable, bug #118875
+
+*apache-2.0.55-r1 (16 Jan 2006)
+*apache-2.0.54-r16 (16 Jan 2006)
+
+  16 Jan 2006; Michael Stewart <vericgar@gentoo.org>
+  +apache-2.0.54-r16.ebuild, +apache-2.0.55-r1.ebuild:
+  Security bump. Fixes bugs 115324 and 118875.
+
+  15 Jan 2006; Marcus D. Hanwell <cryos@gentoo.org> apache-2.0.55.ebuild:
+  Stable on amd64, bug 117835.
+
+  13 Jan 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  apache-2.0.55.ebuild:
+  ppc stable, bug #117835
+
+  12 Jan 2006; Markus Rothe <corsair@gentoo.org> apache-2.0.55.ebuild:
+  Stable on ppc64; bug #117835
+
+  10 Jan 2006; Gustavo Zacarias <gustavoz@gentoo.org> apache-2.0.55.ebuild:
+  Stable on sparc wrt #117835
+
+  09 Jan 2006; Bryan Østergaard <kloeri@gentoo.org apache-2.0.55.ebuild:
+  Stable on x86, alpha and ia64, bug 117835.
+
+  23 Dec 2005; Markus Rothe <corsair@gentoo.org> apache-1.3.34-r10.ebuild:
+  Stable on ppc64
+
+  21 Dec 2005; Markus Rothe <corsair@gentoo.org> apache-1.3.34-r1.ebuild:
+  Stable on ppc64; bug #109895
+
+  19 Dec 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  apache-1.3.34-r1.ebuild, apache-1.3.34-r10.ebuild:
+  Stable on sparc wrt security #109895
+
+  19 Dec 2005; Danny van Dyk <kugelfang@gentoo.org> apache-1.3.34-r1.ebuild,
+  apache-1.3.34-r10.ebuild:
+  Marked stable on amd64 wrt security bug #109895.
+
+  19 Dec 2005; Michael Hanselmann <hansmi@gentoo.org>
+  apache-1.3.34-r1.ebuild, apache-1.3.34-r10.ebuild:
+  Stable on hppa, ppc. See bug #109895.
+
+  15 Dec 2005; Bryan Østergaard <kloeri@gentoo.org apache-1.3.34-r1.ebuild,
+  apache-1.3.34-r10.ebuild:
+  Stable on alpha, ia64 and x86, bug 109895.
+
+*apache-1.3.34-r1 (14 Dec 2005)
+
+  14 Dec 2005; Michael Stewart <vericgar@gentoo.org>
+  +apache-1.3.34-r1.ebuild:
+  Version bump for old-style configuration. Fixes bug 109895
+
+*apache-1.3.34-r10 (13 Dec 2005)
+
+  13 Dec 2005; Michael Stewart <vericgar@gentoo.org> -apache-1.3.34.ebuild,
+  +apache-1.3.34-r10.ebuild:
+  Bump new-style 1.3.34 to -r10 to make room for supporting old-style security
+  bug
+
+  12 Dec 2005; Michael Hanselmann <hansmi@gentoo.org> apache-1.3.34.ebuild:
+  Stable on hppa, ppc.
+
+  12 Dec 2005; Gustavo Zacarias <gustavoz@gentoo.org> apache-1.3.34.ebuild:
+  Stable on sparc wrt #109895
+
+*apache-1.3.34 (11 Dec 2005)
+
+  11 Dec 2005; Michael Stewart <vericgar@gentoo.org> +apache-1.3.34.ebuild:
+  Version Bump.
+
+  11 Dec 2005; Michael Stewart <vericgar@gentoo.org>
+  apache-2.0.54-r31.ebuild, apache-2.0.55.ebuild:
+  Remove generated/unused mime.types to fix bug 108200. Fix enewgroup/enewuser
+  call location so that we work when installed from a binary package - fixes
+  bug 110636.
+
+*apache-1.3.33-r13 (04 Dec 2005)
+
+  04 Dec 2005; Michael Stewart <vericgar@gentoo.org>
+  +apache-1.3.33-r13.ebuild:
+  Fixed detection/dependency on ndbm.h. Closes bug #95140
+
+  23 Oct 2005; Michael Stewart <vericgar@gentoo.org>
+  apache-1.3.33-r12.ebuild, apache-2.0.55.ebuild:
+  New tarball with patch fixing QA lazybinding issue, fixes bugs 95532 and 110236
+
+*apache-2.0.55 (22 Oct 2005)
+
+  22 Oct 2005; Michael Stewart <vericgar@gentoo.org> +apache-2.0.55.ebuild:
+  Version Bump
+
+  07 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  apache-1.3.33-r12.ebuild, apache-2.0.54-r31.ebuild:
+  Stable on sparc wrt #106421
+
+  02 Oct 2005; MATSUU Takuto <matsuu@gentoo.org> apache-2.0.54-r31.ebuild:
+  Stable on sh.
+
+  02 Oct 2005; Bryan Østergaard <kloeri@gentoo.org>
+  apache-1.3.33-r12.ebuild, apache-2.0.54-r31.ebuild:
+  ia64 stable.
+
+  24 Sep 2005; Bryan Østergaard <kloeri@gentoo.org>
+  apache-2.0.54-r31.ebuild:
+  Fix link to apache-upgrading doc.
+
+  24 Sep 2005; Bryan Østergaard <kloeri@gentoo.org>
+  apache-1.3.33-r12.ebuild, apache-2.0.54-r31.ebuild:
+  Stable on alpha.
+
+  20 Sep 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  apache-1.3.33-r12.ebuild:
+  Stable on amd64, bug 106421, thanks to aja@gentoo.org.
+
+  19 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  apache-1.3.33-r12.ebuild:
+  Stable on hppa, ppc.
+
+  19 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  apache-2.0.54-r31.ebuild:
+  Stable on hppa and ppc.
+
+  19 Sep 2005; Markus Rothe <corsair@gentoo.org> apache-1.3.33-r12.ebuild,
+  apache-2.0.54-r31.ebuild:
+  Stable on ppc64 (bug #106421)
+
+  18 Sep 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  apache-2.0.54-r31.ebuild:
+  Stable on amd64, bug 106421.
+
+  18 Sep 2005; Michael Stewart <vericgar@gentoo.org>
+  apache-2.0.54-r31.ebuild:
+  New tarball to fix ExtendedStatus issue
+
+  18 Sep 2005; Michael Stewart <vericgar@gentoo.org>
+  apache-1.3.33-r12.ebuild:
+  Stable on x86
+
+*apache-2.0.54-r31 (18 Sep 2005)
+*apache-1.3.33-r12 (18 Sep 2005)
+
+  18 Sep 2005; Michael Stewart <vericgar@gentoo.org>
+  +apache-1.3.33-r12.ebuild, +apache-2.0.54-r31.ebuild:
+  Apache is now multilib aware
+
+  18 Sep 2005; Bryan Østergaard <kloeri@gentoo.org>
+  apache-1.3.33-r6.ebuild:
+  Stable on ia64, bug 104807.
+
+  17 Sep 2005; Michael Stewart <vericgar@gentoo.org> ChangeLog:
+  Modify incremental DirectoryIndex patch to work with gcc-2. Fixes bug 100025
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> ChangeLog:
+  Mark 2.0.54-r15 stable on ia64
+
+  16 Sep 2005; Simon Stelling <blubb@gentoo.org> apache-1.3.33-r6.ebuild,
+  apache-2.0.54-r15.ebuild:
+  stable on amd64 wrt bug 104807
+
+  15 Sep 2005; Bryan Østergaard <kloeri@gentoo.org>
+  apache-1.3.33-r6.ebuild, apache-2.0.54-r15.ebuild:
+  Stable on alpha, bug 104807.
+
+  15 Sep 2005; Michael Stewart <vericgar@gentoo.org>
+  apache-2.0.54-r30.ebuild:
+  Added error checking for ldap USE-flag. Fixes bug #105972.
+
+  12 Sep 2005; Jason Wever <weeve@gentoo.org> apache-1.3.33-r6.ebuild,
+  apache-2.0.54-r15.ebuild:
+  Marked stable on SPARC wrt security bug #104807.
+
+  11 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  apache-1.3.33-r6.ebuild, apache-2.0.54-r15.ebuild:
+  Stable on hppa and ppc.
+
+  11 Sep 2005; Markus Rothe <corsair@gentoo.org> apache-1.3.33-r6.ebuild,
+  apache-2.0.54-r15.ebuild:
+  Stable on ppc64
+
+*apache-2.0.54-r15 (10 Sep 2005)
+
+  10 Sep 2005; Michael Stewart <vericgar@gentoo.org>
+  +apache-2.0.54-r15.ebuild:
+  Security bump for CAN-2005-2491 and CAN-2005-2700. Fixes bugs 103554 and 104807
+
+*apache-1.3.33-r11 (10 Sep 2005)
+*apache-1.3.33-r6 (10 Sep 2005)
+
+  10 Sep 2005; Michael Stewart <vericgar@gentoo.org>
+  +apache-1.3.33-r6.ebuild, +apache-1.3.33-r11.ebuild:
+  Security bump to address CAN-2005-2700. Fixes bug 104807
+
+  10 Sep 2005; Michael Stewart <vericgar@gentoo.org> -apache-2.0.50.ebuild,
+  -apache-2.0.51.ebuild, -apache-2.0.51-r1.ebuild, -apache-2.0.52.ebuild,
+  -apache-2.0.52-r1.ebuild, -apache-2.0.52-r2.ebuild,
+  -apache-2.0.54-r7.ebuild, -apache-2.0.54-r8.ebuild,
+  -apache-2.0.54-r10.ebuild, -apache-2.0.54-r11.ebuild,
+  -apache-2.0.54-r12.ebuild, -apache-2.0.54-r13.ebuild,
+  -apache-2.0.54-r14.ebuild:
+  Removing old versions and revisions. Note that new-style for apache is now
+  -r30 and above.
+
+*apache-2.0.54-r30 (10 Sep 2005)
+
+  10 Sep 2005; Michael Stewart <vericgar@gentoo.org>
+  +apache-2.0.54-r30.ebuild:
+  Security bump for CAN-2005-2491 and CAN-2005-2700. Fixes bugs 103554 and 104807 for new-style.
+
+  04 Sep 2005; Hardave Riar <hardave@gentoo.org> apache-2.0.54-r9.ebuild:
+  Stable on mips, bug #102991.
+
+  21 Aug 2005; Luis Medinas <metalgod@gentoo.org> apache-2.0.54-r9.ebuild:
+  Marked Stable on AMD64. Fixes bug #102991.
+
+  21 Aug 2005; Markus Rothe <corsair@gentoo.org> apache-2.0.54-r9.ebuild:
+  Stable on ppc64 (bug #102991)
+
+  21 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org> Manifest:
+  fix manifest
+
+  21 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  apache-2.0.54-r9.ebuild:
+  alpha stable wrt bug #102991
+
+  20 Aug 2005; Josh Grebe <squash@gentoo.org> apache-2.0.54-r9.ebuild:
+  -m Stable on sparc, bug #102991
+
+  20 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  apache-2.0.54-r9.ebuild:
+  Stable on ppc and hppa.
+
+*apache-2.0.54-r14 (20 Aug 2005)
+*apache-2.0.54-r9 (20 Aug 2005)
+
+  20 Aug 2005; Michael Stewart <vericgar@gentoo.org>
+  +apache-2.0.54-r9.ebuild, +apache-2.0.54-r14.ebuild:
+  Add patch to fix byterange bug that can cause a DoS. Fixes bug 102991
+
+  28 Jul 2005; Michael Stewart <vericgar@gentoo.org>
+  +apache-2.0.54-r13.ebuild:
+  Check to see if apache is running on reload, error out if it isn't. Fixes
+  bugs 98496 and 99987
+
+*apache-2.0.54-r13 (28 Jul 2005)
+
+  28 Jul 2005; Michael Stewart <vericgar@gentoo.org>
+  +apache-2.0.54-r13.ebuild:
+  Added IfDefines around the default virtual host and default SSL virtual
+  host. Fixes bug 100624. Note that this breaks backwards compatibility with
+  previous revisions, users will need to add DEFAULT_VHOST and
+  SSL_DEFAULT_VHOST to APACHE2_OPTS in /etc/conf.d/apache2 after running
+  etc-update
+
+  16 Jul 2005; Joseph Jezak <josejx@gentoo.org> apache-1.3.33-r1.ebuild:
+  Marked ppc stable for bug #86052.
+
+  13 Jul 2005; Bryan Østergaard <kloeri@gentoo.org>
+  apache-2.0.54-r8.ebuild:
+  Stable on alpha + ia64, bug 98358.
+
+  13 Jul 2005; Simon Stelling <blubb@gentoo.org> apache-2.0.54-r8.ebuild:
+  stable on amd64 per bug 98358
+
+  13 Jul 2005; bret curtis <psi29a@gentoo.org> apache-2.0.54-r12.ebuild:
+  added to ~mips
+
+  13 Jul 2005; Michael Stewart <vericgar@gentoo.org>
+  apache-1.3.33-r10.ebuild, apache-2.0.54-r12.ebuild:
+  New tarball: Splits the default vhost into it's own file, makes all
+  references to configuration files absolute, clears up general user
+  confusion. Fixes bugs 84133, 91745, 92024, 92891, 94168.
+
+  12 Jul 2005; Michael Stewart <vericgar@gentoo.org>
+  apache-2.0.54-r8.ebuild:
+  Added apache user creation as it's no longer in baselayout. Fixed bug 98755
+
+*apache-1.3.33-r10 (12 Jul 2005)
+*apache-1.3.33-r5 (12 Jul 2005)
+
+  12 Jul 2005; Michael Stewart <vericgar@gentoo.org>
+  +apache-1.3.33-r5.ebuild, +apache-1.3.33-r10.ebuild:
+  Support systems that don't use PAM, fixes bug 75922
+
+  11 Jul 2005; Hardave Riar <hardave@gentoo.org> apache-2.0.54-r8.ebuild:
+  Stable on mips, bug #98358.
+
+  11 Jul 2005; Markus Rothe <corsair@gentoo.org> apache-2.0.54-r8.ebuild:
+  Stable on ppc64 (bug #98358)
+
+  10 Jul 2005; Jason Wever <weeve@gentoo.org> apache-2.0.54-r8.ebuild:
+  Stable on SPARC wrt security bug #98358.
+
+  10 Jul 2005; Tobias Scherbaum <dertobi123@gentoo.org>
+  apache-2.0.54-r8.ebuild:
+  ppc stable, bug #98358
+
+  10 Jul 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  apache-2.0.54-r8.ebuild:
+  Stable on hppa. bug #98358
+
+*apache-2.0.54-r12 (10 Jul 2005)
+*apache-2.0.54-r8 (10 Jul 2005)
+
+  10 Jul 2005; Michael Stewart <vericgar@gentoo.org>
+  +apache-2.0.54-r8.ebuild, +apache-2.0.54-r12.ebuild:
+  Security fix: added patch to address CAN-2005-2088, bug 98358
+
+  08 Jul 2005; Hardave Riar <hardave@gentoo.org> apache-2.0.54-r7.ebuild:
+  Stable on mips.
+
+  07 Jul 2005; Michael Stewart <vericgar@gentoo.org>
+  apache-2.0.54-r7.ebuild:
+  Removed 00_apache_manual.conf as a simpler solution is already in place.
+  Fixes bug #98162
+
+  05 Jul 2005; Sven Wegener <swegener@gentoo.org> apache-1.3.29-r2.ebuild,
+  apache-1.3.31-r1.ebuild, apache-1.3.31-r2.ebuild, apache-1.3.31-r3.ebuild,
+  apache-1.3.32.ebuild, apache-1.3.32-r1.ebuild, apache-1.3.33.ebuild,
+  apache-1.3.33-r1.ebuild, apache-1.3.33-r2.ebuild, apache-1.3.33-r3.ebuild,
+  apache-1.3.33-r4.ebuild, apache-2.0.50.ebuild, apache-2.0.51.ebuild,
+  apache-2.0.51-r1.ebuild, apache-2.0.52.ebuild, apache-2.0.52-r1.ebuild,
+  apache-2.0.52-r2.ebuild, apache-2.0.54-r7.ebuild,
+  apache-2.0.54-r10.ebuild, apache-2.0.54-r11.ebuild:
+  Added selinux to IUSE.
+
+  27 Jun 2005; Simon Stelling <blubb@gentoo.org> apache-1.3.33-r1.ebuild:
+  stable on amd64
+
+*apache-2.0.54-r11 (08 Jun 2005)
+
+  08 Jun 2005; Bryan Østergaard <kloeri@gentoo.org>
+  +apache-2.0.54-r11.ebuild:
+  Fix </IfDefine INFO> issue reported by Seemant Kulleen.
+
+*apache-2.0.54-r10 (07 Jun 2005)
+
+  07 Jun 2005; Michael Stewart <vericgar@gentoo.org> +apache-2.0.54-r10.ebuild:
+  New tarball: Made it easier to enable /server-info for troubleshooting
+  New style will now always be > -r10 until it's marked stable
+
+*apache-2.0.54-r7 (07 Jun 2005)
+
+  07 Jun 2005; Michael Stewart <vericgar@gentoo.org> +apache-2.0.54-r7.ebuild:
+  Fix installation of configuration so that it's now owned by root instead of
+  apache
+
+  01 Jun 2005; Michael Tindal <urilith@gentoo.org> apache-2.0.54-r6.ebuild:
+  Bail if more than one MPM is specified.
+
+  01 Jun 2005; Michael Tindal <urilith@gentoo.org> apache-2.0.54-r6.ebuild:
+  Fix the ebuild not selecting a default MPM if no MPM use flags are present.
+
+*apache-2.0.54-r6 (01 Jun 2005)
+
+  01 Jun 2005; Michael Tindal <urilith@gentoo.org> +apache-2.0.54-r6.ebuild:
+  Removed multiple MPM support from apache due to problems it was causing
+  external modules. Revision bumped from r5 to r6.
+
+  21 May 2005; Jan Brinkmann <luckyduck@gentoo.org> apache-2.0.54-r4.ebuild:
+  stable on amd64
+
+  18 May 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  apache-1.3.33-r1.ebuild:
+  stable on hppa; bug #86052
+
+  18 May 2005; Markus Rothe <corsair@gentoo.org> apache-1.3.33-r1.ebuild:
+  Stable on ppc64
+
+  13 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  apache-2.0.54-r4.ebuild:
+  Stable on sparc
+
+  13 May 2005; Markus Rothe <corsair@gentoo.org> apache-2.0.54-r4.ebuild:
+  Stable on ppc64
+
+  13 May 2005; Lars Weiler <pylon@gentoo.org> apache-2.0.54-r4.ebuild:
+  Stable on ppc; bug #91737 (again).
+
+  12 May 2005; Bryan Østergaard <kloeri@gentoo.org>
+  apache-2.0.54-r4.ebuild:
+  Stable on ia64, bug 91737.
+
+  12 May 2005; Bryan Østergaard <kloeri@gentoo.org>
+  apache-2.0.54-r4.ebuild:
+  Stable on alpha, bug 91737.
+
+  12 May 2005; Guy Martin <gmsoft@gentoo.org> apache-2.0.54-r4.ebuild:
+  Stable on hppa.
+
+  12 May 2005; Elfyn McBratney <beu@gentoo.org> apache-2.0.54-r4.ebuild:
+  Stable on x86, bug #91737.
+
+*apache-2.0.54-r5 (12 May 2005)
+*apache-2.0.54-r4 (12 May 2005)
+
+  12 May 2005; Bryan Østergaard <kloeri@gentoo.org>
+  +apache-2.0.54-r4.ebuild, +apache-2.0.54-r5.ebuild:
+  Fixed ebuilds, bug 92348 and bug 91737.
+
+  12 May 2005; Lars Weiler <pylon@gentoo.org> apache-2.0.54-r2.ebuild:
+  Stable on ppc; bug #91737.
+
+  12 May 2005; Markus Rothe <corsair@gentoo.org> apache-2.0.54-r2.ebuild:
+  Stable on ppc64; bug #91737
+
+*apache-2.0.54-r3 (12 May 2005)
+*apache-2.0.54-r2 (12 May 2005)
+
+  12 May 2005; Elfyn McBratney <beu@gentoo.org> +apache-2.0.54-r2.ebuild,
+  +apache-2.0.54-r3.ebuild:
+  Revision bumps to satisfy security bug #91737. 2.0.54-r2 is the (old-style)
+  ebuild going stable, 2.0.54-r3 is the new-style ebuild. -r2 stable on x86.
+
+  11 May 2005; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  apache is a group effort so remove Hollow as maintainer.
+
+  10 May 2005; Elfyn McBratney <beu@gentoo.org> :
+  Fix digest.
+
+  10 May 2005; Bret Curtis <psi29a@gentoo.org> apache-2.0.52-r3.ebuild:
+  marked for testing, ~mips
+
+*apache-2.0.54-r1 (10 May 2005)
+*apache-2.0.53-r1 (10 May 2005)
+*apache-2.0.52-r4 (10 May 2005)
+
+  10 May 2005; Elfyn McBratney <beu@gentoo.org> +apache-2.0.52-r4.ebuild,
+  +apache-2.0.53-r1.ebuild, +apache-2.0.54-r1.ebuild:
+  Version bumps for LFS-removal.
+
+  09 May 2005; Aron Griffis <agriffis@gentoo.org> apache-1.3.33-r1.ebuild:
+  stable on ia64 #86052
+
+  06 May 2005; Bryan Østergaard <kloeri@gentoo.org> apache-2.0.54.ebuild:
+  Fix broken SRC_URI.
+
+  05 May 2005; Bryan Østergaard <kloeri@gentoo.org>
+  apache-1.3.29-r2.ebuild, apache-1.3.33-r2.ebuild, apache-1.3.33-r4.ebuild,
+  apache-2.0.50.ebuild, apache-2.0.52.ebuild, apache-2.0.52-r1.ebuild,
+  apache-2.0.52-r3.ebuild, apache-2.0.53.ebuild, apache-2.0.54.ebuild:
+  Update SRC_URI for patches.
+
+  04 May 2005; Elfyn McBratney <beu@gentoo.org> apache-2.0.54.ebuild:
+  Move to mirror://apache.
+
+*apache-1.3.33-r4 (03 May 2005)
+*apache-1.3.33-r3 (03 May 2005)
+
+  03 May 2005; Elfyn McBratney <beu@gentoo.org> +apache-1.3.33-r3.ebuild,
+  +apache-1.3.33-r4.ebuild:
+  More bumps - the -r1 and -r2 bumps didn't play nicely together what with -r1
+  existing as new- and old-style with the same name.
+
+  25 Apr 2005; Elfyn McBratney <beu@gentoo.org> apache-2.0.51.ebuild,
+  apache-2.0.52.ebuild, apache-2.0.52-r1.ebuild, apache-2.0.52-r3.ebuild,
+  apache-2.0.53.ebuild, apache-2.0.54.ebuild:
+  Add missing openldap dependency and drop the whitespace in function
+  declarations to make gentoo-syntax happy.
+
+  20 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  apache-1.3.33-r1.ebuild:
+  Stable on sparc wrt #86052
+
+  16 Apr 2005; Benedikt Boehm <hollow@gentoo.org> apache-2.0.54.ebuild:
+  Added logrotate script - bug 80263
+
+  14 Apr 2005; Markus Rothe <corsair@gentoo.org> apache-1.3.33-r2.ebuild:
+  Back to ~ppc64, as hollow sais this version isn't stable - bug #88639
+
+*apache-2.0.54 (13 Apr 2005)
+
+  13 Apr 2005; Christian Parpart <trapni@gentoo.org> +apache-2.0.54.ebuild:
+  version bump. not yet released, so hard masked anyway. Needs a SRC_URI
+  adjustment on official release as well.
+
+  11 Apr 2005; Markus Rothe <corsair@gentoo.org> apache-1.3.33-r2.ebuild:
+  Stable on ppc64; bug #88639
+
+  09 Apr 2005; Christian Parpart <trapni@gentoo.org>
+  apache-1.3.29-r2.ebuild, apache-1.3.31.ebuild, apache-1.3.31-r1.ebuild,
+  apache-1.3.31-r2.ebuild, apache-1.3.31-r3.ebuild, apache-1.3.32.ebuild,
+  apache-1.3.32-r1.ebuild, apache-1.3.33.ebuild, apache-1.3.33-r1.ebuild:
+  adding blocks to apr and apr-util for obsolete apache1 ebuilds as well, so,
+  that users wanting to upgrade are enforced to unmerge their old apache
+  before they emerge the newer versions
+
+  09 Apr 2005; Christian Parpart <trapni@gentoo.org> apache-2.0.50.ebuild,
+  apache-2.0.51.ebuild, apache-2.0.51-r1.ebuild, apache-2.0.52.ebuild,
+  apache-2.0.52-r1.ebuild, apache-2.0.52-r2.ebuild:
+  adding blocks to apr and apr-util for obsolete apache2 ebuilds, so, that
+  users wanting to upgrad are enforced to unmerge before they emerge the newer
+  versions
+
+  09 Apr 2005; Benedikt Boehm <hollow@gentoo.org> apache-1.3.33-r1.ebuild:
+  fixed dependency issues, see bug #86052 and mod_ssl changelog for details
+
+  03 Apr 2005; Elfyn McBratney <beu@gentoo.org> apache-1.3.33-r1.ebuild:
+  Back into testing for you - hard masked; going back in once arches
+  have confirmed that it's working correctly with mod_ssl (or someone
+  from the apache herd nurses its stabilisation *wink* ;)
+
+  21 Mar 2005; Elfyn McBratney <beu@gentoo.org> apache-1.3.33-r1.ebuild:
+  Stable on x86 (bug #86052).
+
+*apache-1.3.33-r2 (20 Mar 2005)
+
+  20 Mar 2005; Elfyn McBratney <beu@gentoo.org> apache-1.3.33-r1.ebuild,
+  +apache-1.3.33-r2.ebuild:
+  Version bump to fix incompatabilities with mod_ssl and older dbm libs.
+  1.3.33-r1 -> -r2.  Marked stable on x86 for bug #86052.
+
+  20 Mar 2005; Elfyn McBratney <beu@gentoo.org> apache-1.3.29-r2.ebuild,
+  apache-1.3.31-r1.ebuild, apache-1.3.31-r2.ebuild, apache-1.3.31-r3.ebuild,
+  apache-1.3.31.ebuild, apache-1.3.32-r1.ebuild, apache-1.3.32.ebuild,
+  apache-1.3.33-r1.ebuild, apache-1.3.33.ebuild, apache-2.0.50.ebuild,
+  apache-2.0.51-r1.ebuild, apache-2.0.51.ebuild, apache-2.0.52-r1.ebuild,
+  apache-2.0.52-r2.ebuild, apache-2.0.52.ebuild:
+  Ebuild cleanup; drop sys-apps/sed from DEPEND and ht_fix_file a few more
+  helper scripts.
+
+  20 Mar 2005; Elfyn McBratney <beu@gentoo.org> apache-2.0.52-r3.ebuild,
+  apache-2.0.53.ebuild:
+  Make it a little more clearer that the metux and peruser MPM's are not
+	in the slightest bit supported.
+
+  09 Mar 2005; Markus Rothe <corsair@gentoo.org> apache-1.3.33-r1.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  07 Mar 2005; Elfyn McBratney <beu@gentoo.org> apache-2.0.53.ebuild:
+  Remove all traces of metuxmpm. ;-)
+
+  05 Mar 2005; Elfyn McBratney <beu@gentoo.org> apache-2.0.52-r3.ebuild,
+  apache-2.0.53.ebuild:
+  Depend on the 'best version' of apr-util, too.
+
+  05 Mar 2005; Elfyn McBratney <beu@gentoo.org> apache-2.0.52-r3.ebuild,
+  apache-2.0.53.ebuild:
+  Depend on the 'best version' of apr.
+
+  04 Mar 2005; Elfyn McBratney <beu@gentoo.org> apache-2.0.53.ebuild:
+  Drop metux MPM support.
+
+*apache-2.0.53 (04 Mar 2005)
+
+  04 Mar 2005; Elfyn McBratney <beu@gentoo.org> +apache-2.0.53.ebuild:
+  Version bump, closes bug #81267
+
+  27 Feb 2005; Michael Stewart <vericgar@gentoo.org> apache-2.0.52-r3.ebuild:
+  Remove mips, s390, arm due to apr and apr-util dependency. Bug 77455
+
+  26 Feb 2005; Michael Stewart <vericgar@gentoo.org> apache-2.0.52-r3.ebuild:
+  Adding debugging support
+
+  24 Feb 2005; Elfyn McBratney <beu@gentoo.org> apache-2.0.52-r1.ebuild:
+  Always create /var/cache/apache2 (closes bug #83187).
+
+  24 Feb 2005; Elfyn McBratney <beu@gentoo.org> apache-2.0.52-r1.ebuild:
+  Create /var/log/apache2 and /etc/apache2/conf/ssl (former closes bug #76044).
+
+  21 Feb 2005; Elfyn McBratney <beu@gentoo.org> apache-2.0.52-r3.ebuild:
+  Call gentestcrt.sh in pkg_postinst (thanks to Seemant for noticing).
+
+  20 Feb 2005; Michael Stewart <vericgar@gentoo.org> apache-1.3.33-r1.ebuild,
+  apache-2.0.52-r3.ebuild:
+  Fix SSL test certificate generation; New patch that creates AddDirectoryIndex
+  and RemoveDirectoryIndex directives - fixes bug #50611
+
+  18 Feb 2005; Elfyn McBratney <beu@gentoo.org> apache-1.3.33-r1.ebuild,
+  apache-2.0.52-r3.ebuild:
+  Only reference the gentoo mirrors for the patchball's.
+
+  18 Feb 2005; Elfyn McBratney <beu@gentoo.org> apache-1.3.33-r1.ebuild,
+  apache-2.0.52-r3.ebuild:
+  Updated patchball (apachectl now exits with an error if lynx is not installed).
+
+  05 Feb 2005; Christian Parpart <trapni@gentoo.org>
+  apache-1.3.33-r1.ebuild, apache-2.0.52-r3.ebuild:
+  Added enewgroup/enewuser for apache
+
+  01 Feb 2005; Christian Parpart <trapni@gentoo.org> :
+  dropping php useflag and DEPEND
+
+  22 Jan 2005; Christian Parpart <trapni@gentoo.org> :
+  apache now DEPENDs on new net-www/gentoo-webroot-default
+
+  10 Jan 2005; Michael Stewart <vericgar@gentoo.org> apache-2.0.52-r3.ebuild:
+  Updating keywords on 2.0.52-r3 to match -r2, not sure how I missed this before
+  the merge
+
+  09 Jan 2005; Sven Wegener <swegener@gentoo.org> apache-1.3.33-r1.ebuild:
+  Added missing parentheses in SRC_URI/*DEPEND/LICENSE.
+
+*apache-2.0.52-r3 (08 Jan 2005)
+
+  08 Jan 2005; Michael Stewart <vericgar@gentoo.org> +apache-2.0.52-r3.ebuild:
+  Apache herd package refresh
+
+*apache-1.3.33-r1 (09 Jan 2005)
+
+  09 Jan 2005; Benedikt Boehm <hollow@gentoo.org> metadata.xml,
+  +apache-1.3.33-r1.ebuild:
+  Apache herd package refresh
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*apache-2.0.52-r2 (23 Dec 2004)
+
+  23 Dec 2004; Stuart Herbert <stuart@gentoo.org> apache-2.0.52-r2.ebuild:
+  Improvements for first-time installation of Apache
+
+  15 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> :
+  Fix broken digest, bug 74531.
+
+  14 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> apache-1.3.33.ebuild:
+  Also fix src_uri in apache-1.x.
+
+  14 Dec 2004; Bryan Østergaard <kloeri@gentoo.org>
+  apache-2.0.52-r1.ebuild:
+  Use mirror://apache/.. in SRC_URI.
+
+  14 Dec 2004; Stuart Herbert <stuart@gentoo.org> :
+  Fix for SSL directory bug + moved all configuration files out of CVS and into
+  the apache-conf tarball created by urilith.
+
+  24 Nov 2004; Sven Wegener <swegener@gentoo.org> :
+  Removed unused digest entries. Added missing digest entries.
+
+  09 Nov 2004; Simon Stelling <blubb@gentoo.org> apache-2.0.52-r1.ebuild:
+  stable on amd64. bug #70138
+
+  09 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> apache-1.3.33.ebuild:
+  Stable on sparc wrt Stuart ;)
+
+  09 Nov 2004; Michael Tindal <urilith@gentoo.org>
+  files/2.0.49/40_mod_ssl.conf:
+  SELinux fixes for bugs
+
+  07 Nov 2004; Joshua Kinard <kumba@gentoo.org> apache-1.3.32-r1.ebuild,
+  apache-2.0.52-r1.ebuild:
+  Marked stable on mips (Bugs #68564, #70138).
+
+  05 Nov 2004; Michael Tindal <urilith@gentoo.org> :
+  Fix circular dependency on mod_ssl, bug #69793
+
+  05 Nov 2004; Olivier Crete <tester@gentoo.org> apache-2.0.52-r1.ebuild:
+  Stable on x86 wrt security bug 70138
+
+  06 Nov 2004; Bryan Østergaard <kloeri@gentoo.org>
+  apache-2.0.52-r1.ebuild:
+  Stable on alpha, bug 70138.
+
+  05 Nov 2004; Markus Rothe <corsair@gentoo.org> apache-2.0.52-r1.ebuild:
+  Stable on ppc64; bug #70138
+
+  05 Nov 2004; <SeJo@gentoo.org> apache-2.0.52-r1.ebuild:
+  stable on ppc gdsla: 70138
+
+  05 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> apache-2.0.52-r1.ebuild:
+  Stable on sparc wrt #70138
+
+*apache-2.0.52-r1 (05 Nov 2004)
+
+  05 Nov 2004; Michael Tindal <urilith@gentoo.org> +apache-2.0.52-r1.ebuild:
+  Security fix for CAN-2004-0942, bug
+
+  05 Nov 2004; Michael Tindal <urilith@gentoo.org>
+  -files/2.0.40/40_mod_ssl.conf,
+  -files/2.0.40/41_mod_ssl.default-vhost.conf,
+  -files/2.0.40/45_mod_dav.conf, -files/2.0.40/46_mod_ldap.conf,
+  -files/2.0.40/apache2-builtin-mods, -files/2.0.40/apache2.conf,
+  -files/2.0.40/apache2.confd, -files/2.0.40/apache2.initd,
+  -files/2.0.40/apache2logserverstatus, -files/2.0.40/apache2splitlogfile,
+  -files/2.0.40/commonapache2.conf, -files/2.0.40/dynamic-vhosts.conf,
+  -files/2.0.40/gentestcrt.sh, -files/2.0.40/highperformance.conf,
+  -files/2.0.40/httpd.conf, -files/2.0.40/ssl.conf,
+  -files/2.0.40/vhosts.conf, -files/2.0.40/virtual-homepages.conf,
+  -files/2.0.48-r1/apache2.conf, -files/2.0.48-r1/apache2.confd,
+  -files/2.0.48-r1/apache2.initd, -files/2.0.48-r1/commonapache2.conf,
+  -files/2.0.49/apache2.conf, -files/2.0.49/commonapache2.conf,
+  -files/2.0.49/dynamic-vhosts.conf, -files/2.0.49/vhosts.conf,
+  -files/2.0.49/virtual-homepages.conf:
+  More cleanups to make repoman happy.  Cleaning out some stale files in files/.
+  Configuration has been moved to apache2-conf.tar.bz2 on the mirrors to stop
+  repoman from complaining about file size.  Ill get to 1.3.x later tonight.
+
+  04 Nov 2004; Michael Tindal <urilith@gentoo.org>
+  -files/httpd-2.0.49-ssl_engine_kernel.patch,
+  -files/patches/2.0.49-r1/00_ssl_engine.patch,
+  -files/patches/2.0.49-r1/01_ssl_engine_kernel.patch,
+  -files/patches/2.0.50-r1/00_ssl_engine.patch:
+  Removed old patches repoman was complaining about.
+
+  30 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> apache-1.3.33.ebuild:
+  Stable on alpha, bug 68564.
+
+  29 Oct 2004; Michael Hanselmann <hansmi@gentoo.org> apache-1.3.33.ebuild:
+  Stable on ppc.
+
+  29 Oct 2004; Stuart Herbert <stuart@gentoo.org> apache-1.3.32-r1.ebuild,
+  apache-1.3.33.ebuild:
+  Added ssl USE flag support
+
+  29 Oct 2004; Stuart Herbert <stuart@gentoo.org> apache-1.3.32-r1.ebuild,
+  apache-1.3.33.ebuild:
+  Marked stable on x86
+
+  29 Oct 2004; Stuart Herbert <stuart@gentoo.org> apache-1.3.33.ebuild:
+  Updated to use existing mod_ssl for now
+
+*apache-1.3.33 (29 Oct 2004)
+
+  29 Oct 2004; Stuart Herbert <stuart@gentoo.org> +apache-1.3.33.ebuild:
+  Added masked ebuild, pending release of upstream's mod_ssl
+
+  26 Oct 2004; Bryan Østergaard <kloeri@gentoo.org>
+  apache-1.3.32-r1.ebuild:
+  Stable on alpha, bug 68564.
+
+  26 Oct 2004; <SeJo@gentoo.org> apache-1.3.32-r1.ebuild:
+  stable on ppc gsla: 68564
+
+  26 Oct 2004; Karol Wojtaszek <sekretarz@gentoo.org>
+  apache-1.3.32-r1.ebuild:
+  Stable on amd64, bug #68564
+
+  25 Oct 2004; Jason Wever <weeve@gentoo.org> apache-1.3.32-r1.ebuild:
+  Stable on sparc wrt security bug #68564.
+
+*apache-1.3.32-r1 (25 Oct 2004)
+
+  25 Oct 2004; Rob Holland <tigger@gentoo.org> +apache-1.3.32-r1.ebuild:
+  Security fix. #68564. Work done on behalf of stuart@gentoo.org
+
+*apache-1.3.32 (23 Oct 2004)
+
+  23 Oct 2004; Stuart Herbert <stuart@gentoo.org> +apache-1.3.32.ebuild:
+  Version bump
+
+  15 Oct 2004; Danny van Dyk <kugelfang@gentoo.org> apache-2.0.52.ebuild:
+  Marked stable on amd64.
+
+  14 Oct 2004; Hardave Riar <hardave@gentoo.org> apache-2.0.52.ebuild:
+  stable on mips, bug #66807
+
+  13 Oct 2004; Olivier Crete <tester@gentoo.org> apache-2.0.52.ebuild:
+  Marking stable on x86 wrt security bug #66807
+
+  09 Oct 2004; Tom Gall <tgall@gentoo.org> apache-2.0.52.ebuild:
+  stable on ppc64, bug #66807
+
+  09 Oct 2004; <SeJo@gentoo.org> apache-2.0.52.ebuild:
+  stable ppc gsla: 66807
+
+  09 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> apache-2.0.52.ebuild:
+  Stable on alpha, bug 66807.
+
+*apache-2.0.52 (08 Oct 2004)
+
+  08 Oct 2004; Jason Wever <weeve@gentoo.org> apache-2.0.52.ebuild:
+  Stable on sparc wrt security bug #66807.
+
+  23 Sep 2004; Olivier Crete <tester@gentoo.org> apache-2.0.51-r1.ebuild:
+  Stable on x86 wrt security bug #64804
+
+  22 Sep 2004; Bryan Østergaard <kloeri@gentoo.org>
+  apache-2.0.51-r1.ebuild:
+  Stable on alpha, bug 64804.
+
+  22 Sep 2004; Joshua Kinard <kumba@gentoo.org> apache-2.0.51-r1.ebuild:
+  Marked stable on mips.
+
+  21 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org> apache-2.0.51-r1.ebuild:
+  Stable on sparc wrt #64804
+
+  21 Sep 2004; Stuart Herbert <stuart@gentoo.org> apache-2.0.51-r1.ebuild,
+  apache-2.0.51.ebuild:
+  Added dep on autconf-2.59-r4; fixes bug #64365; thanks to Thomas Stein
+  <himbeere@leowol.com> for the fix
+
+  21 Sep 2004; <SeJo@gentoo.org> apache-2.0.51-r1.ebuild:
+  stable on ppc gsla bug: 64804
+
+*apache-2.0.51-r1 (21 Sep 2004)
+
+  21 Sep 2004; Stuart Herbert <stuart@gentoo.org> +apache-2.0.51-r1.ebuild:
+  Added security patch from UPSTREAM for security issue CAN-2004-0811; thanks to
+  chipig for the heads up
+
+  17 Sep 2004; Bryan Østergaard,,, <kloeri@gentoo.org> apache-2.0.51.ebuild:
+  Stable on alpha.
+
+  16 Sep 2004; Stephen P. Becker <geoman@gentoo.org> apache-2.0.51.ebuild:
+  Stable on mips.
+
+  16 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org> apache-2.0.51.ebuild:
+  Stable on ppc64 wrt #62626 #63948 #64145 and Stuart
+
+  16 Sep 2004; Guy Martin <gmsoft@gentoo.org> apache-2.0.51.ebuild:
+  Stable on hppa.
+
+  16 Sep 2004; Danny van Dyk <kugelfang@gentoo.org> apache-2.0.51.ebuild:
+  Marked stable on amd64.
+
+  16 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org> apache-2.0.51.ebuild:
+  Stable on sparc wrt #62626
+
+  16 Sep 2004; Stuart Herbert <stuart@gentoo.org> apache-2.0.51.ebuild:
+  Stable on x86
+
+  16 Sep 2004; <SeJo@gentoo.org> apache-2.0.51.ebuild:
+  stable ppc bug: 62626
+
+  16 Sep 2004; Stuart Herbert <stuart@gentoo.org> -apache-2.0.49-r3.ebuild,
+  -apache-2.0.49-r4.ebuild, -apache-2.0.50-r1.ebuild,
+  -apache-2.0.50-r2.ebuild, -apache-2.0.50-r3.ebuild, -apache-2.0.50.ebuild:
+  Obsolete version; removed by eversionrm tool
+
+  16 Sep 2004; Stuart Herbert <stuart@gentoo.org> -apache-2.0.49-r3.ebuild,
+  -apache-2.0.49-r4.ebuild, -apache-2.0.50-r1.ebuild,
+  -apache-2.0.50-r2.ebuild, -apache-2.0.50.ebuild:
+  Obsolete version; removed by eversionrm tool
+
+  16 Sep 2004; Stuart Herbert <stuart@gentoo.org> -apache-2.0.49-r3.ebuild,
+  -apache-2.0.49-r4.ebuild, -apache-2.0.50-r1.ebuild, -apache-2.0.50.ebuild:
+  Obsolete version; removed by eversionrm tool
+
+  16 Sep 2004; Stuart Herbert <stuart@gentoo.org> -apache-2.0.49-r3.ebuild,
+  -apache-2.0.49-r4.ebuild, -apache-2.0.50.ebuild:
+  Obsolete version; removed by eversionrm tool
+
+  16 Sep 2004; Stuart Herbert <stuart@gentoo.org> -apache-2.0.49-r3.ebuild,
+  -apache-2.0.49-r4.ebuild:
+  Obsolete version; removed by eversionrm tool
+
+  16 Sep 2004; Stuart Herbert <stuart@gentoo.org> -apache-2.0.49-r3.ebuild:
+  Obsolete version; removed by eversionrm tool
+
+*apache-2.0.51 (15 Sep 2004)
+
+  15 Sep 2004; Stuart Herbert <stuart@gentoo.org> +apache-2.0.51.ebuild:
+  Version bump
+
+  15 Sep 2004; Danny van Dyk <kugelfang@gentoo.org> apache-2.0.50-r3.ebuild:
+  Stable on amd64. BUG #62626.
+
+  14 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org> apache-2.0.50-r3.ebuild:
+  Stable on sparc wrt #62626 take 2, #63948
+
+  14 Sep 2004; Danny van Dyk <kugelfang@gentoo.org> apache-2.0.50-r2.ebuild:
+  Marked stable on amd64.
+
+  13 Sep 2004; Guy Martin <gmsoft@gentoo.org> apache-2.0.50-r2.ebuild:
+  Stable on hppa.
+
+  13 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org> apache-2.0.50-r2.ebuild:
+  Stable on sparc wrt #62626
+
+*apache-2.0.50-r3 (14 Sep 2004)
+
+  14 Sep 2004; Stuart Herbert <stuart@gentoo.org> +apache-2.0.50-r3.ebuild:
+  Added patch for security issue CAN-2004-0809; see bug #63948
+
+*apache-2.0.50-r2 (13 Sep 2004)
+
+  13 Sep 2004; Stuart Herbert <stuart@gentoo.org> +apache-2.0.50-r2.ebuild:
+  Fix for CAN-2004-0751 (see Gentoo bug #62626)
+
+  08 Sep 2004; Joshua Kinard <kumba@gentoo.org> apache-2.0.50-r1.ebuild:
+  Marked stable on mips.
+
+  09 Sep 2004; Bryan Østergaard <kloeri@gentoo.org> apache-2.0.50-r1.ebuild:
+  Stable on alpha, bug 62626.
+
+  08 Sep 2004; Olivier Crete <tester@gentoo.org> apache-2.0.50-r1.ebuild:
+  Marking stable on x86 per bug 62626
+
+  08 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org> apache-2.0.50-r1.ebuild:
+  Stable on sparc wrt #62626
+
+*apache-2.0.50-r1 (07 Sep 2004)
+
+  07 Sep 2004; Stuart Herbert <stuart@gentoo.org>
+  +files/patches/2.0.50-r1/00_ssl_engine.patch,
+  +files/patches/2.0.50-r1/Readme.PATCHES, +apache-2.0.50-r1.ebuild:
+  Fix for bug #62626
+
+  06 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> apache-2.0.49-r3.ebuild,
+  apache-2.0.49-r4.ebuild, apache-2.0.50.ebuild:
+  Switch to use epause and ebeep, bug #62950
+
+  01 Sep 2004; Travis Tilley <lv@gentoo.org> apache-1.3.31-r3.ebuild:
+  stable on amd64
+
+  30 Aug 2004; <solar@gentoo.org> apache-1.3.29-r2.ebuild,
+  apache-1.3.31-r1.ebuild, apache-1.3.31-r2.ebuild, apache-1.3.31-r3.ebuild:
+  QA fix: add whitespace to DEPENDS
+
+  28 Aug 2004; Guy Martin <gmsoft@gentoo.org> apache-1.3.31-r3.ebuild:
+  Marked stable on hppa.
+
+  21 Aug 2004; Joshua Kinard <kumba@gentoo.org> apache-2.0.50.ebuild:
+  Marked stable on mips.
+
+  18 Aug 2004; Jason Wever <weeve@gentoo.org> apache-1.3.31-r3.ebuild:
+  Stable on sparc wrt security bug #59715.
+
+  18 Aug 2004; Hardave Riar <hardave@gentoo.org> apache-1.3.31-r3.ebuild:
+  Stable on mips. Bug #59715
+
+  18 Aug 2004; Aron Griffis <agriffis@gentoo.org> apache-1.3.31-r3.ebuild:
+  stable on alpha and ia64 #59715
+
+  17 Aug 2004; Stuart Herbert <stuart@gentoo.org> apache-1.3.31-r3.ebuild:
+  Stable on x86
+
+  17 Aug 2004; Stuart Herbert <stuart@gentoo.org> apache-1.3.31-r3.ebuild:
+  Fixed problem with looking for a patch in the wrong place
+
+*apache-1.3.31-r3 (17 Aug 2004)
+
+  17 Aug 2004; Stuart Herbert <stuart@gentoo.org> +apache-1.3.31-r3.ebuild:
+  Bumped the mod_ssl patch to match the separate mod_ssl package
+
+  11 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  apache-2.0.49-r3.ebuild, apache-2.0.49-r4.ebuild:
+  gnuconfig_update in src_unpack
+
+  03 Aug 2004; <agriffis@gentoo.org> apache-1.3.31-r2.ebuild,
+  apache-2.0.50.ebuild:
+  stable on alpha and ia64
+
+  02 Aug 2004; Chuck Short <zul@gentoo.org> apache-2.0.50.ebuild:
+  -doc fix. Closes #50060.
+
+  27 Jul 2004; Chuck Short <zul@gentoo.org> files/00_apache_manual.conf:
+  Added multiviews support for manual. Closes #57792.
+
+  27 Jul 2004; Chuck Short <zul@gentoo.org> apache-2.0.49-r3.ebuild,
+  apache-2.0.49-r4.ebuild, apache-2.0.50.ebuild:
+  Uclibc support. Patch from solar@gentoo.org
+
+  21 Jul 2004; Gustavo Zacarias <gustavoz@gentoo.org> apache-2.0.50.ebuild:
+  Stable on hppa
+
+  10 Jul 2004; Chuck Short <zul@gentoo.org> apache-2.0.50.ebuild:
+  Marked stable for x86 and sparc.
+
+  10 Jul 2004; Chuck Short <zul@gentoo.org> apache-2.0.49-r4.ebuild:
+  Apparently I cant spell.
+
+  09 Jul 2004; Chuck Short <zul@gentoo.org> files/2.0.49/commonapache2.conf:
+  Fixed buglet. Closes #56457.
+
+  09 Jul 2004; Chuck Short <zul@gentoo.org> apache-1.3.29-r2.ebuild,
+  apache-1.3.31-r1.ebuild, apache-1.3.31-r2.ebuild, apache-2.0.49-r3.ebuild,
+  apache-2.0.49-r4.ebuild, apache-2.0.50.ebuild:
+  Added selinux support. Closes #56380.
+
+  07 Jul 2004; Aron Griffis <agriffis@gentoo.org> apache-2.0.49-r4.ebuild:
+  stable on ia64 #5541
+
+  04 Jul 2004; Michael Hanselmann <hansmi@gentoo.org> apache-2.0.49-r4.ebuild:
+  Stable on ppc.
+
+  03 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> apache-2.0.49-r4.ebuild:
+  Stable on alpha, bug #55441.
+
+  02 Jul 2004; Gustavo Zacarias <gustavoz@gentoo.org> apache-2.0.49-r4.ebuild:
+  Stable on hppa
+
+*apache-2.0.50 (02 Jul 2004)
+
+  02 Jul 2004; Chuck Short <zul@gentoo.org> apache-2.0.50.ebuild:
+  Version bump, closes #5570
+  Mod_proxy updates, closes #55599
+
+  29 Jun 2004; Ian Leitch <port001@gentoo.org> apache-2.0.49-r4.ebuild:
+  Marked stable on x86 - #55441
+
+  29 Jun 2004; Ciaran McCreesh <ciaranm@gentoo.org> apache-2.0.49-r4.ebuild:
+  Stable on mips, bug #55441
+
+  29 Jun 2004; Ciaran McCreesh <ciaranm@gentoo.org> apache-2.0.49-r4.ebuild:
+  Stable on sparc, bug #55441
+
+  29 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  apache-2.0.49-r4.ebuild:
+  Stable amd64.  Fixed MANUAL_VERSION.
+
+*apache-2.0.49-r4 (28 Jun 2004)
+
+  28 Jun 2004; Chuck Short <zul@gentoo.org> apache-2.0.49-r4.ebuild:
+  Version bump. Closes #5541.
+  - Added patch to fix apache dos. CAN-2004-0493.
+
+  28 Jun 2004; Chuck Short <zul@gentoo.org> apache-2.0.49-r1.ebuild:
+  Removed old versions.
+
+  25 Jun 2004; Chuck Short <zul@gentoo.org> apache-2.0.49-r3.ebuild:
+  Replaced version berkdb detection with something that is much more smarter.
+  Shamelessly taken from the php.eclass. Closes #54932.
+
+  21 Jun 2004; Danny van Dyk <kugelfang@gentoo.org> apache-1.3.31-r2.ebuild:
+  Marked stable on amd64.
+
+  21 Jun 2004; Luca Barbato <lu_zero@gentoo.org> apache-1.3.31-r2.ebuild:
+  Marked ppc
+
+  19 Jun 2004; Chuck Short <zul@gentoo.org> apache-2.0.49-r2.ebuild,
+  files/patches/2.0.49-r2/00_gentoo_base.patch,
+  files/patches/2.0.49-r2/01_apache_ldap_fixes.patch,
+  files/patches/2.0.49-r2/01_gentoo_cvs_sync.patch,
+  files/patches/2.0.49-r2/01_gentoo_ipv6.patch,
+  files/patches/2.0.49-r2/01_ssl_engine_kernel.patch,
+  files/patches/2.0.49-r2/01_ssl_verify_client.patch,
+  files/patches/2.0.49-r2/03_redhat_xfsz.patch,
+  files/patches/2.0.49-r2/04_ssl_makefile.patch,
+  files/patches/2.0.49-r2/Readme.PATCHES:
+  Ebuild cleanup. -r2 was marked unstable while -r3 was marked stable. Removed
+  -r2.
+
+  19 Jun 2004; Chuck Short <zul@gentoo.org> apache-2.0.49-r3.ebuild,
+  files/patches/2.0.49-r3/00_gentoo_base.patch,
+  files/patches/2.0.49-r3/01_apache_ldap_fixes.patch,
+  files/patches/2.0.49-r3/01_gentoo_cgi.patch,
+  files/patches/2.0.49-r3/01_gentoo_cvs_sync.patch,
+  files/patches/2.0.49-r3/01_gentoo_ipv6.patch,
+  files/patches/2.0.49-r3/01_ssl_engine_kernel.patch,
+  files/patches/2.0.49-r3/01_ssl_verify_client.patch,
+  files/patches/2.0.49-r3/03_redhat_xfsz.patch,
+  files/patches/2.0.49-r3/04_ssl_makefile.patch:
+  Moved patches to mirror://gentoo at seemants request.
+
+  16 Jun 2004; Guy Martin <gmsoft@gentoo.org> apache-1.3.31-r2.ebuild:
+  Marked stable on hppa.
+
+  15 Jun 2004; Brandon Hale <tseng@gentoo.org> apache-1.3.31-r2.ebuild:
+  Stable on x86, bug #53544
+
+  14 Jun 2004; Chuck Short <zul@gentoo.org> files/apachesplitlogfile:
+  Fixed typo.
+
+  13 Jun 2004; Chuck Short <zul@gentoo.org> files/apachesplitlogfile,
+  files/2.0.49/apache2splitlogfile:
+  Added change from Phillip Gaschuetz <pg@corpex.de> Use strtime rather than the
+  date command. Closes #53350.
+
+  12 Jun 2004; Joshua Kinard <kumba@gentoo.org> apache-1.3.31-r2.ebuild:
+  Marked stable on mips.
+
+  12 Jun 2004; Jason Wever <weeve@gentoo.org> apache-1.3.31-r2.ebuild:
+  Stable on sparc wrt bug #53544.
+
+  12 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> apache-1.3.31-r2.ebuild:
+  Stable on alpha, bug #53544.
+
+*apache-1.3.31-r2 (11 Jun 2004)
+
+  11 Jun 2004; Chuck Short <zul@gentoo.org> apache-1.3.31-r2.ebuild,
+  files/patches/1.3.31-r2/00_apache_proxy_security_fix.patch,
+  files/patches/1.3.31-r2/00_gentoo_apachectl.patch,
+  files/patches/1.3.31-r2/00_gentoo_base.patch,
+  files/patches/1.3.31-r2/00_gentoo_db4_detect.patch,
+  files/patches/1.3.31-r2/00_gentoo_suexec_pam.patch:
+  Added patch for mod_proxy security hole. Closes #53544.
+
+  09 Jun 2004; Guy Martin <gmsoft@gentoo.org> apache-1.3.31-r1.ebuild,
+  apache-2.0.49-r3.ebuild:
+  Marked stable on hppa.
+
+  08 Jun 2004; Daniel Ostrow <dostrow@gentoo.org> apache-1.3.31-r1.ebuild,
+  apache-2.0.49-r3.ebuild:
+  Stable on ppc.
+
+  10 Jun 2004; Chuck Short <zul@gentoo.org> apache-2.0.49-r1.ebuild,
+  apache-2.0.49-r2.ebuild, apache-2.0.49-r3.ebuild,
+  files/00_apache_manual.conf:
+  Make apache easier to maintain.
+
+  07 Jun 2004; Aron Griffis <agriffis@gentoo.org> apache-1.3.31-r1.ebuild,
+  apache-2.0.49-r3.ebuild:
+  Stable on ia64
+
+  06 Jun 2004; Chuck Short <zul@gentoo.org> apache-1.3.31-r1.ebuild:
+  mod_rewrite needs db-1.85-r1 to compile properly. Closes #52201.
+
+  06 Jun 2004; Chuck Short <zul@gentoo.org> apache-1.3.31.ebuild:
+  Added dependency on sys-libs/db-1.85-r1.
+
+  06 Jun 2004; Chuck Short <zul@gentoo.org> apache-1.3.29-r1.ebuild:
+  Ebuild cleanup. We dont want 1.3.29-r1.
+
+*apache-1.3.29-r1 (06 Jun 2004)
+
+  06 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  apache-1.3.29-r1.ebuild:
+  resurrect apache-1.3.29-r1.ebuild since the deps for net-www/mod_ssl were
+  broken
+
+  06 Jun 2004; Chuck Short <zul@gentoo.org> apache-2.0.49-r1.ebuild,
+  apache-2.0.49-r2.ebuild, apache-2.0.49-r3.ebuild:
+  Strip out in CFLAGS that apache doesnt like. If you must know apache configure
+  bails out saying that the CFLAGS have changed between the buildconf and
+  configure if there are any extra spaces in the CFLAGS. :-).
+
+  05 Jun 2004; Chuck Short <zul@gentoo.org> apache-1.3.29-r1.ebuild,
+  apache-2.0.48-r4.ebuild, apache-2.0.49.ebuild:
+  Removed old ebuilds.
+
+  03 Jun 2004; Chuck Short <zul@gentoo.org> files/2.0.49/commonapache2.conf,
+  files/conf/commonapache.conf:
+  Added option to execute perl scripts in subdirs. Closes #38130. Option is
+  turned off by default.
+
+  03 Jun 2004; Chuck Short <zul@gentoo.org> apache-1.3.31-r1.ebuild,
+  apache-2.0.49-r3.ebuild:
+  Marked stable for x86.
+
+  03 Jun 2004; Chuck Short <zul@gentoo.org> apache-2.0.49-r3.ebuild,
+  files/patches/2.0.49-r3/00_gentoo_base.patch,
+  files/patches/2.0.49-r3/01_apache_ldap_fixes.patch,
+  files/patches/2.0.49-r3/01_gentoo_cgi.patch,
+  files/patches/2.0.49-r3/01_gentoo_cvs_sync.patch,
+  files/patches/2.0.49-r3/01_gentoo_ipv6.patch,
+  files/patches/2.0.49-r3/01_ssl_engine_kernel.patch,
+  files/patches/2.0.49-r3/01_ssl_verify_client.patch,
+  files/patches/2.0.49-r3/03_redhat_xfsz.patch,
+  files/patches/2.0.49-r3/04_ssl_makefile.patch:
+  Changed patch location.
+
+  02 Jun 2004; Danny van Dyk <kugelfang@gentoo.org> apache-1.3.31-r1.ebuild,
+  apache-2.0.49-r3.ebuild:
+  Marked stable on amd64.
+
+  01 Jun 2004; Tom Gall <tgall@gentoo.org> apache-2.0.49-r3.ebuild:
+  marked stable on ppc64, bug #52719 
+
+  01 Jun 2004; Joshua Kinard <kumba@gentoo.org> apache-1.3.31-r1.ebuild,
+  apache-2.0.49-r3.ebuild:
+  Marked stable on sparc and mips.
+
+  02 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> apache-1.3.31-r1.ebuild,
+  apache-2.0.49-r3.ebuild:
+  Stable on alpha, bug 51368.
+
+  01 Jun 2004; Grant Goodyear <g2boojum@gentoo.org> apache-2.0.49-r3.ebuild:
+  Fixed ebuild to use the -r2 patch directory for patches.
+
+*apache-2.0.49-r3 (01 Jun 2004)
+
+  01 Jun 2004; Chuck Short <zul@gentoo.org> apache-2.0.49-r3.ebuild:
+  Version bump.
+
+  29 May 2004; Chuck Short <zul@gentoo.org>
+  files/patches/1.3.31-r1/00_gentoo_apachectl.patch,
+  files/patches/1.3.31-r1/00_gentoo_base.patch,
+  files/patches/1.3.31-r1/00_gentoo_db4_detect.patch,
+  files/patches/1.3.31-r1/00_gentoo_suexec_pam.patch:
+  Re-added patches for 1.3.31-r1.
+
+  29 May 2004; Chuck Short <zul@gentoo.org> apache-2.0.49-r1.ebuild,
+  apache-2.0.49-r2.ebuild, apache-2.0.49.ebuild,
+  files/httpd-2.0.49-ssl_engine_kernel.patch,
+  files/patches/2.0.49-r1/01_ssl_engine_kernel.patch,
+  files/patches/2.0.49-r2/01_ssl_engine_kernel.patch:
+  Added ssl patch. Helps close #51368.
+
+*apache-1.3.31-r1 (29 May 2004)
+
+  29 May 2004; Chuck Short <zul@gentoo.org> apache-1.3.31-r1.ebuild:
+  Version bump, to use the new mod_ssl whitch takes cares of some security
+  holes. See #51638.
+
+  26 May 2004; Stuart Herbert <stuart@gentoo.org> apache-2.0.49-r1.ebuild,
+  apache-2.0.49-r2.ebuild, files/patches/2.0.49-r1/04_ssl_makefile.patch,
+  files/patches/2.0.49-r1/Readme.PATCHES,
+  files/patches/2.0.49-r2/04_ssl_makefile.patch,
+  files/patches/2.0.49-r2/Readme.PATCHES:
+  Fix for bug #52065; thanks to tigger^ for the details
+
+  25 May 2004; Danny van Dyk <kugelfang@gentoo.org> apache-1.3.31.ebuild:
+  Marked stable on amd64.
+
+  25 May 2004; Guy Martin <gmsoft@gentoo.org> apache-1.3.31.ebuild:
+  Marked stable on hppa.
+
+  25 May 2004; Chuck Short <zul@gentoo.org> apache-2.0.49-r2.ebuild:
+  Fix repoman error.
+
+  25 May 2004; Chuck Short <zul@gentoo.org> apache-2.0.49-r2.ebuild:
+  Added static support for adding mod_ldap.
+
+  24 May 2004; Bryan Østergaard <kloeri@gentoo.org> apache-1.3.31.ebuild:
+  Stable on alpha.
+
+  23 May 2004; Christian Birchinger <joker@gentoo.org> apache-1.3.31.ebuild:
+  Added sparc stable keyword
+
+  25 May 2004; Chuck Short <zul@gentoo.org> apache-1.3.29-r1.ebuild,
+  apache-1.3.29-r2.ebuild:
+  Updated depends.
+
+  23 May 2004; Luca Barbato <lu_zero@gentoo.org> apache-1.3.31.ebuild:
+  Marked ppc
+
+  23 May 2004; Joshua Kinard <kumba@gentoo.org> apache-1.3.31.ebuild:
+  Marked stable on mips.
+
+  25 May 2004; Chuck Short <zul@gentoo.org> apache-2.0.49-r1.ebuild,
+  apache-2.0.49-r2.ebuild:
+  Fixed possible bug if DATADIR had changed.
+
+  25 May 2004; Chuck Short <zul@gentoo.org> apache-1.3.31.ebuild:
+  Marked stable for x86.
+
+  21 May 2004; Michael McCabe <randy@gentoo.org> apache-2.0.49-r2.ebuild:
+  Stable on s390
+
+  23 May 2004; Chuck Short <zul@gentoo.org> apache-2.0.49-r1.ebuild,
+  apache-2.0.49-r2.ebuild, files/patches/2.0.49-r1/01_apache_ldap_fixes.patch,
+  files/patches/2.0.49-r2/01_apache_ldap_fixes.patch,
+  files/patches/2.0.49-r2/Readme.PATCHES:
+  Added upstream patches for LDAP.
+
+  23 May 2004; Chuck Short <zul@gentoo.org> apache-2.0.49-r1.ebuild,
+  apache-2.0.49-r2.ebuild, files/patches/2.0.49-r1/01_apache_ldap_fixes.patch:
+  Added upstream patches for LDAP. Closes #51683.
+
+  20 May 2004; Joshua Kinard <kumba@gentoo.org> apache-2.0.49-r1.ebuild,
+  apache-2.0.49-r2.ebuild:
+  Added gnuconfig support for mips.
+
+  21 May 2004; Chuck Short <zul@gentoo.org> files/2.0.48-r1/apache2.conf:
+  Commented out the experimental modules for 2.0.48-r1. Closes #51188.
+
+*apache-2.0.49-r2 (21 May 2004)
+
+  21 May 2004; Chuck Short <zul@gentoo.org> apache-2.0.49-r2.ebuild,
+  files/patches/2.0.49-r2/00_gentoo_base.patch,
+  files/patches/2.0.49-r2/01_gentoo_cgi.patch,
+  files/patches/2.0.49-r2/01_gentoo_cvs_sync.patch,
+  files/patches/2.0.49-r2/01_gentoo_ipv6.patch,
+  files/patches/2.0.49-r2/01_ssl_verify_client.patch,
+  files/patches/2.0.49-r2/03_redhat_xfsz.patch,
+  files/patches/2.0.49-r2/Readme.PATCHES:
+  New version.
+  - Bugfixes from upstream.
+  - Added support for large log files. ( > 2GB ).
+  - Added fedora core patches.
+
+  17 May 2004; Chuck Short <zul@gentoo.org> apache-2.0.49-r1.ebuild,
+  apache-2.0.49.ebuild, files/httpd-2.0.49-cgi.patch:
+  Added fix for mod_cgi vulnerability. Closes 29893.
+
+  17 May 2004; Chuck Short <zul@gentoo.org> files/2.0.49/apache2.initd:
+  Fix typo in init script.
+
+  14 May 2004; Joshua Kinard <kumba@gentoo.org> apache-1.3.29-r2.ebuild,
+  apache-2.0.49-r1.ebuild:
+  Marked Stable on mips.
+
+  15 May 2004; Chuck Short <zul@gentoo.org> files/2.0.49/apache2.initd:
+  apache2 init scripts for 2.0.49 now executes /usr/lib/apache2/envvars for
+  apache2 environment variables. If you need to add environments variables for
+  this is the place to do it. Closes #46925 and #30616.
+
+*apache-1.3.31 (12 May 2004)
+
+  12 May 2004; Chuck Short <zul@gentoo.org> apache-1.3.31.ebuild:
+  Re-added EAPI and SHARED_CORE.
+
+  12 May 2004; Chuck Short <zul@gentoo.org> apache-1.3.31.ebuild:
+  To trigger happy. removed.
+
+*apache-1.3.31 (12 May 2004)
+
+  12 May 2004; Chuck Short <zul@gentoo.org> apache-1.3.31.ebuild:
+  - Version bump
+  - Added support for db4.1
+  - Patches are now located in patches/${PV}.
+
+  08 May 2004; David Holm <dholm@gentoo.org> apache-2.0.49-r1.ebuild:
+  Stable on ppc.
+
+  09 May 2004; Chuck Short <zul@gentoo.org>
+  files/patches/1.3.31/00_gentoo_apachectl.patch,
+  files/patches/1.3.31/00_gentoo_base.patch,
+  files/patches/1.3.31/00_gentoo_db4_detect.patch,
+  files/patches/1.3.31/00_gentoo_suexec_pam.patch,
+  files/patches/1.3.31/Readme.PATCHES:
+  Added patches for 1.3.31 in readyness for relase next week.
+
+  06 May 2004; Aron Griffis <agriffis@gentoo.org> apache-2.0.49-r1.ebuild:
+  Stable on ia64
+
+  06 May 2004; Jon Portnoy <avenj@gentoo.org> apache-2.0.49-r1.ebuild :
+  Stable on AMD64.
+
+  07 May 2004; Chuck Short <zul@gentoo.org> apache-2.0.49-r1.ebuild,
+  apache-2.0.49.ebuild:
+  Improved error message on what to do if ./configure failed.
+
+  06 May 2004; Chuck Short <zul@gentoo.org> apache-2.0.49-r1.ebuild:
+  If use docs is enabled make the symlink for apache-manual if not. Dont. The
+  manual is going to be installed anyways because its apart of the setup for
+  apache. Closes #50060.
+
+  06 May 2004; <zul@gentoo.org> apache-1.3.29-r1.ebuild:
+  Added dependency on db. Closes #49556.
+
+  04 May 2004; Jason Wever <weeve@gentoo.org> apache-2.0.49-r1.ebuild:
+  Stable on sparc.
+
+  04 May 2004; Chuck Short <zul@gentoo.org> apache-2.0.49-r1.ebuild:
+  Makeopts fix. Closes #49843.
+
+  04 May 2004; Chuck Short <zul@gentoo.org> files/2.0.49/apache2.initd:
+  Added postgres to init script.
+
+  04 May 2004; Chuck Short <zul@gentoo.org> files/apache.rc6:
+  Added postgres to init script.
+
+  02 May 2004; Chuck Short <zul@gentoo.org> apache-2.0.49-r1.ebuild:
+  Backed out patches.
+
+  02 May 2004; Chuck Short <zul@gentoo.org> apache-2.0.49-r1.ebuild,
+  files/patches/2.0.49-r1/Readme.PATCHES:
+  Updated patches readme.
+
+  02 May 2004; Chuck Short <zul@gentoo.org> apache-2.0.49-r1.ebuild:
+  Marked stable on alpha.
+
+  02 May 2004; Chuck Short <zul@gentoo.org> apache-2.0.49-r1.ebuild,
+  files/patches/2.0.49-r1/00_ssl_engine.patch,
+  files/patches/2.0.49-r1/Readme.PATCHES:
+  Added two patches for ssl issues.
+
+  01 May 2004; Chuck Short <zul@gentoo.org> apache-2.0.49-r1.ebuild:
+  Marked stable for x86.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> apache-1.3.29-r1.ebuild:
+  Add inherit eutils
+
+  29 Apr 2004; Chuck Short <zul@gentoo.org> apache-2.0.49-r1.ebuild:
+  Added support for the apache-manual wrapper. To enable it. Add "doc" to your
+  use-flags. Closes #48066.
+
+*apache-1.3.29-r2 (26 Apr 2004)
+
+  26 Apr 2004; Chuck Short <zul@gentoo.org> apache-1.3.29-r2.ebuild,
+  files/apache-1.3.29-usertrack_bug.patch:
+  Ebuild cleanup. Added workaround patch work CookieName patch.
+
+  24 Apr 2004; Chuck Short <zul@gentoo.org> apache-2.0.48-r4.ebuild,
+  apache-2.0.49-r1.ebuild, apache-2.0.49.ebuild:
+  Added get_number_of_jobs to make sure that makeopts are sane. Closes #38299.
+
+  23 Apr 2004; Chuck Short <zul@gentoo.org>
+  files/apache-1.3.27_db4_gentoo.patch:
+  Updated 1.3.29 db4 patch to support db4.1. Closes #48795.
+
+  22 Apr 2004; Chuck Short <zul@gentoo.org> files/apachesplitlogfile:
+  Fixed error message in apachesplitlogfiles to make it more understandable.
+  Closes #48499.
+
+  20 Apr 2004; Chuck Short <zul@gentoo.org> files/common/config.layout:
+  Fix another typo.
+
+  20 Apr 2004; Chuck Short <zul@gentoo.org> apache-2.0.48-r4.ebuild:
+  Fixes qa issue in 48335.
+
+  20 Apr 2004; Chuck Short <zul@gentoo.org> apache-2.0.49-r1.ebuild:
+  Changed --with-random to --with-devrandom, closes #48432.
+
+  17 Apr 2004; Chuck Short <zul@gentoo.org> apache-2.0.49-r1.ebuild:
+  Reverted back to install syntax for /var/log/apache2. Closes #48063.
+
+  16 Apr 2004; Chuck Short <zul@gentoo.org> files/2.0.49/commonapache2.conf:
+  Fixed typo, closes #46028.
+
+  15 Apr 2004; Chuck Short <zul@gentoo.org> files/2.0.49/commonapache2.conf:
+  Added mod_perl2 support to commonapache2.conf. Closes #33149.
+
+  15 Apr 2004; Chuck Short <zul@gentoo.org> apache-2.0.49-r1.ebuild:
+  Added missing ipv6 patch.
+
+*apache-2.0.49-r1 (15 Apr 2004)
+
+  15 Apr 2004; Chuck Short <zul@gentoo.org> apache-2.0.49-r1.ebuild,
+  files/httpd-2.0.49-ipv6.patch, files/common/apr-config.layout,
+  files/common/apr-util-config.layout, files/common/config.layout:
+  Version bump.
+  Bunch of fixes for reported bugs with apache:
+  - Added ipv6 patch. Closes 42007.
+  - Added UserDIR detection. Closes #46772.
+  - Added the threads use flag. Closes #35568.
+  - Added berkely db version detection. Closes #39562.
+  Ebuild cleanus as well.
+
+  10 Apr 2004; Chuck Short <zul@gentoo.org> files/apache2:
+  Improved apache2 rottelog format.
+
+  09 Apr 2004; Robin H. Johnson <robbat2@gentoo.org> apache-1.3.27-r3.ebuild,
+  apache-1.3.27-r4.ebuild, apache-1.3.28-r1.ebuild, apache-1.3.28.ebuild,
+  apache-1.3.29.ebuild, apache-2.0.46.ebuild, apache-2.0.47-r1.ebuild,
+  apache-2.0.47.ebuild, apache-2.0.48-r1.ebuild, apache-2.0.48-r2.ebuild,
+  apache-2.0.48-r3.ebuild, apache-2.0.48.ebuild,
+  files/apache-1.3.28-zombie-cgi.patch, files/apache-2.0.44-gentoo.diff,
+  files/apache-2.0.45-gentoo.diff, files/apache-2.0.46-gentoo.diff,
+  files/apache-2.0.47-gentoo.diff:
+  remove old ebuilds, keep latest stable and unstable for each arch
+
+  09 Apr 2004; Joshua Kinard <kumba@gentoo.org> apache-1.3.29-r1.ebuild,
+  apache-2.0.49.ebuild:
+  Marked stable on mips.
+
+  08 Apr 2004; Stuart Herbert <stuart@gentoo.org> files/2.0.49/apache2.initd:
+  Fix for bug #44559 - problems with apache2 init script
+
+  05 Apr 2004; Chuck Short <zul@gentoo.org> apache-2.0.48-r1.ebuild,
+  apache-2.0.48-r2.ebuild, apache-2.0.48-r3.ebuild, apache-2.0.48-r4.ebuild,
+  apache-2.0.48.ebuild, files/httpd-2.0.48-ipv6.patch:
+  Fixed IPV6 start error. IPV6 works as expected under 2.0.48. Closes #32389.
+
+  04 Apr 2004; Chuck Short <zul@gentoo.org> files/apache.confd,
+  files/apache.rc6:
+  Keep the $PERL5LIB sane when starting apache. Closes #34615.
+
+  04 Apr 2004; Chuck Short <zul@gentoo.org> files/conf/apache.conf:
+  Added LimitRequestBody directive, commented out ofcourse, since it 
+  might affect other applications if it wasnt. Closes #34516.
+
+  03 Apr 2004; Chuck Short <zul@gentoo.org> apache-2.0.48.ebuild,
+  files/conf/commonapache.conf:
+  Added multiviews for /usr/share/doc. Closes #30862.
+
+  02 Apr 2004; Robin H. Johnson <robbat2@gentoo.org> apache-2.0.49.ebuild:
+  fix bug #46585.
+
+  02 Apr 2004; Chuck Short <zul@gentoo.org> apache-2.0.49.ebuild,
+  files/apache2:
+  Added apache2 log rotate. Closes #42537.
+
+  01 Apr 2004; Chuck Short <zul@gentoo.org> metadata.xml:
+  Updated metadata.xml.
+
+  01 Apr 2004; Chuck Short <zul@gentoo.org> apache-1.3.29.ebuild:
+  mod_db_auth patch backported to apache_1.3.29.
+  Closes #43558.
+
+  01 Apr 2004; Chuck Short <zul@gentoo.org> apache-1.3.29-r1.ebuild,
+  files/apache-1.3.29_mod_auth_db.patch:
+  Added patch so that mod_auth_db will compile with db4.1 and above. This patch
+  should not be needed in the next release.
+
+  29 Mar 2004; Chuck Short <zul@gentoo.org> files/conf/Vhosts.conf:
+  Fixed typo in Vhosts.conf config file, closes #34335.
+
+  28 Mar 2004; <randy@gentoo.org> apache-2.0.48-r4.ebuild:
+  adding s390 keywords
+
+  26 Mar 2004; <zul@gentoo.org> files/2.0.49/gentestcrt.sh:
+  Copied missing gentestcrt.sh from ${FILESDIR}/2.0.40. Closes #45786.
+
+  26 Mar 2004; Robin H. Johnson <robbat2@gentoo.org>
+  files/2.0.49/apache2.initd:
+  fix bug #45774.
+
+  24 Mar 2004; Chris Aniszczyk <zx@gentoo.org> apache-2.0.49.ebuild:
+  Marking stable on hppa.
+
+  23 Mar 2004; Brandon Hale <tseng@gentoo.org> apache-2.0.49.ebuild:
+  Marked stable on x86 for Ms. A Escriva-Sammer. Hugs all around.
+
+  23 Mar 2004; Aron Griffis <agriffis@gentoo.org> apache-2.0.49.ebuild:
+  stable on alpha and ia64
+
+  23 Mar 2004; Luca Barbato <lu_zero@gentoo.org> apache-2.0.49.ebuild:
+  Stable on ppc
+
+  22 Mar 2004; Jon Portnoy <avenj@gentoo.org> apache-2.0.49.ebuild :
+  Stable on AMD64.
+
+*apache-2.0.49 (22 Mar 2004)
+
+  22 Mar 2004; Jason Wever <weeve@gentoo.org> apache-2.0.49.ebuild:
+  Marked stable on sparc wrt bug #45206.
+
+  22 Mar 2004; Stuart Herbert <stuart@gentoo.org>
+  files/2.0.49/40_mod_ssl.conf, files/2.0.49/41_mod_ssl.default-vhost.conf,
+  files/2.0.49/45_mod_dav.conf, files/2.0.49/46_mod_ldap.conf,
+  files/2.0.49/apache2-builtin-mods, files/2.0.49/apache2.conf,
+  files/2.0.49/apache2.confd, files/2.0.49/apache2.initd,
+  files/2.0.49/apache2logserverstatus, files/2.0.49/apache2splitlogfile,
+  files/2.0.49/commonapache2.conf, files/2.0.49/dynamic-vhosts.conf,
+  files/2.0.49/vhosts.conf, files/2.0.49/virtual-homepages.conf:
+  Version bump - fixes security bug 45206, and bug #45418
+  
+  Updated ebuild to no longer rely on files in files/2.0.40 directory.  We
+  can get rid of that once we're happy that this ebuild is stable.
+  
+  Changed the vhosts configuration.  Now ships with all vhost config files
+  commented out by default.
+
+  Fixed the 'has_version in global scope' warning.
+
+  11 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  apache-1.3.29-r1.ebuild:
+  ppc64 needs dev-libs/mm first
+
+  06 Feb 2004; Lars Weiler <pylon@gentoo.org> apache-2.0.48-r4.ebuild:
+  Tested on ppc.  Making stable.
+
+*apache-2.0.48-r4 (28 Jan 2004)
+
+  28 Jan 2004; Robin H. Johnson <robbat2@gentoo.org> apache-2.0.48-r4.ebuild:
+  fix bug #39027 for old versions of portage.
+
+  20 Jan 2004; Robin H. Johnson <robbat2@gentoo.org>
+  files/2.0.48-r1/apache2.initd:
+  fix bug #38787, remember to always update your conf.d files!
+  
+  19 Jan 2004; <tuxus@gentoo.org> apache-1.3.29-r1.ebuild:
+  Added ~mips to KEYWORDS.
+
+  17 Jan 2004; Robin H. Johnson <robbat2@gentoo.org>
+  files/2.0.48-r1/apache2.initd:
+  add some catches/warnings to .48-r2 init.d script
+
+*apache-2.0.48-r3 (18 Jan 2004)
+
+  18 Jan 2004; rob holland <tigger@gentoo.org> apache-2.0.48-r1.ebuild,
+  apache-2.0.48-r3.ebuild, files/apache-2.0.48-export.diff:
+  Added export patch to fix compilation on some boxes. #32588.
+  Reported by marco@md2.ath.cx. Pointer from Chris Nott.
+
+  14 Jan 2004; Robin H. Johnson <robbat2@gentoo.org> apache-1.3.27-r3.ebuild,
+  apache-1.3.27-r4.ebuild, apache-1.3.28-r1.ebuild, apache-1.3.28.ebuild,
+  apache-1.3.29-r1.ebuild, apache-1.3.29.ebuild, apache-2.0.46.ebuild,
+  apache-2.0.47-r1.ebuild, apache-2.0.47.ebuild, apache-2.0.48-r1.ebuild,
+  apache-2.0.48-r2.ebuild, apache-2.0.48.ebuild:
+  fix bug #38040. cleanup all apache2 DEPENDS to block mips from ldap until they
+  have openldap supported.
+
+*apache-2.0.48-r2 (12 Jan 2004)
+
+  12 Jan 2004; Robin H. Johnson <robbat2@gentoo.org> apache-2.0.48-r2.ebuild,
+  files/2.0.48-r1/apache2.conf, files/2.0.48-r1/apache2.confd,
+  files/2.0.48-r1/apache2.initd, files/2.0.48-r1/commonapache2.conf:
+  change ServerRoot to /usr/lib/apache2 to get rid of all access to binaries via
+  /etc. fix bug #37962 by improving the init/conf files.
+
+  10 Jan 2004; <agriffis@gentoo.org> apache-1.3.29-r1.ebuild,
+  apache-2.0.48-r1.ebuild:
+  stable on ia64
+
+  25 Dec 2003; Robin H. Johnson <robbat2@gentoo.org> apache-1.3.27-r3.ebuild,
+  apache-1.3.27-r4.ebuild, apache-1.3.28-r1.ebuild, apache-1.3.28.ebuild,
+  apache-1.3.29-r1.ebuild, apache-1.3.29.ebuild:
+  change to keepdir as per bug #35308
+
+  15 Dec 2003; Guy Martin <gmsoft@gentoo.org> apache-2.0.48-r1.ebuild:
+  Marked stable on hppa.
+
+  03 Dec 2003; Robin H. Johnson <robbat2@gentoo.org> apache-2.0.48-r1.ebuild:
+  properly fix bug #32444
+
+  28 Nov 2003; Robin H. Johnson <robbat2@gentoo.org> apache-2.0.48-r1.ebuild:
+  workaround for  bug #32444 - disable SCTP support
+
+  19 Nov 2003; Daniel Robbins <drobbins@gentoo.org> apache-1.3.29-r1.ebuild:
+  unmasking on all arches so we can get out the much-delayed GLSA 200310-03.
+  
+  16 Nov 2003; Aron Griffis <agriffis@gentoo.org> apache-2.0.48-r1.ebuild:
+  Stable on alpha
+
+*apache-1.3.29-r1 (04 Nov 2003)
+*apache-2.0.48-r1 (04 Nov 2003)
+
+  04 Nov 2003; Donny Davies <woodchip@gentoo.org> apache-1.3.29-r1.ebuild,
+  apache-2.0.48-r1.ebuild:
+  Fix/close #32361.
+
+*apache-1.3.29 (02 Nov 2003)
+
+  02 Nov 2003; Martin Holzer <mholzer@gentoo.org> apache-1.3.29.ebuild:
+  Version bumped.
+
+  31 Oct 2003; Jason Wever <weeve@gentoo.org> apache-2.0.48.ebuild:
+  Marked stable on sparc in accordance with GLSA 200310-04.
+
+  30 Oct 2003; Robin H. Johnson <robbat2@gentoo.org> apache-2.0.48.ebuild:
+  fix for bug #24215, be aware that it may break on non-Linux Portage.
+
+  30 Oct 2003; Rajiv Aaron Manglani <rajiv@gentoo.org> files/apache.rc6,
+  files/2.0.40/apache2.initd:
+  initscript fixes.
+
+  30 Oct 2003; Donny Davies <woodchip@gentoo.org> files/apache.rc6,
+  files/2.0.40/apache2.initd:
+  Fixo; Use full path to start-stop-daemon.  Thanks klieber.
+
+*apache-2.0.48 (30 Oct 2003)
+
+  30 Oct 2003; Donny Davies <woodchip@gentoo.org> apache-2.0.48.ebuild,
+  files/apache-2.0.48-gentoo.diff, files/2.0.40/40_mod_ssl.conf,
+  files/2.0.40/apache2-builtin-mods, files/2.0.40/apache2.initd,
+  files/2.0.40/vhosts.con, files/apache.rc6:
+  Bump for security fixes.  Remove dupe 'mod_alias' from apache2-builtin-mods.
+  Re-diff our patch; added two mod_ssl fixes from Rawhide and fix hardcoded
+  path to /usr/sbin/suexec2.  Fix/close #31427, #32035, #31787, #31503, #30161.
+  Added comments to the patchfile (please maintain these).
+
+  30 Oct 2003; Jason Wever <weeve@gentoo.org> apache-2.0.47.ebuild:
+  Marked stable for sparc.
+
+  16 Oct 2003; Paul de Vrieze <pauldv@gentoo.org> apache-1.3.28-r1.ebuild,
+  files/apache-1.3.27_db4_gentoo.patch:
+  Make sure that a db version lower than 4.1 is installed and fix the checking
+  script to get the right headers.
+
+  06 Oct 2003; Jason Wever <weeve@gentoo.org> apache-1.3.28.ebuild:
+  Marked stable for sparc.
+
+  04 Oct 2003; Brad House <brad_mssw@gentoo.org> apache-1.3.28.ebuild:
+  add ~amd64 flag
+
+  29 Sep 2003; Donny Davies <woodchip@gentoo.org> apache-1.3.28.ebuild,
+  metadata.xml:
+  Add metadata and repoman fix.
+
+  29 Sep 2003; Donny Davies <woodchip@gentoo.org> apache-1.3.27-r4.ebuild,
+  apache-1.3.28.ebuild, apache-2.0.46.ebuild, apache-2.0.47.ebuild:
+  Cleanup for #29843.
+
+*apache-1.3.28-r1 (27 Sep 2003)
+
+  27 Sep 2003; Donny Davies <woodchip@gentoo.org> apache-1.3.28-r1.ebuild,
+  files/apache-1.3.27_db4_gentoo.patch, files/apache-1.3.28-zombie-cgi.patch,
+  files/apache.rc6, files/2.0.40/apache2.confd,
+  files/2.0.40/commonapache2.conf, files/conf/apache.conf,
+  files/conf/commonapache.conf:
+  Move --datadir to /var/www/localhost; prepare for the upcoming vhost-config
+  and webapp-config tools.  Added patches to fix #26632 and #29124.  Hopefully
+  fix #28552 and #28619.  Fix #29606 and #29329.
+
+*apache-2.0.47-r1 (24 Sep 2003)
+
+  24 Sep 2003; Donny Davies <woodchip@gentoo.org> apache-2.0.47-r1.ebuild,
+  files/apache-2.0.47-gentoo.diff, files/2.0.40/41_mod_ssl.default-vhost.conf,
+  files/2.0.40/apache2.conf, files/2.0.40/apache2.confd,
+  files/2.0.40/apache2.initd, files/2.0.40/commonapache2.conf:
+  Fix #25258, #25999.  Add RH patches to fix parallel build and *.conf crash.
+  Move --datadir to /var/www/localhost; prepare for the upcoming vhost-config
+  and webapp-config tools.
+
+  25 Aug 2003; Jason Wever <weeve@gentoo.org> apache-1.3.27-r3.ebuild,
+  apache-1.3.27-r4.ebuild, apache-1.3.28.ebuild, apache-2.0.46.ebuild,
+  apache-2.0.47.ebuild:
+  Added AcceptMutex fixes for sparcs for bug #7172.
+
+  26 Jul 2003; Donny Davies <woodchip@gentoo.org> apache-1.3.28.ebuild:
+  Fix #25212.  Mark x86 stable.
+
+*apache-1.3.28 (23 Jul 2003)
+
+  25 Jul 2003; Guy Martin <gmsoft@gentoo.org> apache-1.3.28.ebuild :
+  Marked stable on hppa.
+
+  23 Jul 2003; Donny Davies <woodchip@gentoo.org> apache-1.3.28.ebuild:
+  Security update.  Will un-arch-mask after a few "it works for me" reports.
+
+  20 Jul 2003; Donny Davies <woodchip@gentoo.org>
+  files/2.0.40/commonapache2.conf:
+  Close #24627, two smallish typos.
+
+  14 Jul 2003; Donny Davies <woodchip@gentoo.org> apache-2.0.47.ebuild:
+  Re-add dev-util/yacc; modules/ssl calls yacc on modules/ssl/ssl_expr_parse.y
+
+  12 Jul 2003; Donny Davies <woodchip@gentoo.org> apache-2.0.47.ebuild:
+  Marked x86 stable.
+
+  11 Jul 2003; Donny Davies <woodchip@gentoo.org> apache-1.3.27-r4.ebuild,
+  files/apache-1.3.27-apachectl.patch:
+  Tidy the user/group bits and apachectl.
+
+  11 Jul 2003; Donny Davies <woodchip@gentoo.org> files/apache.rc6,
+  files/2.0.40/apache2.initd:
+  Close #23854.
+
+*apache-2.0.47 (09 Jul 2003)
+
+  25 Jul 2003; Guy Martin <gmsoft@gentoo.org> apache-2.0.47.ebuild :
+  Marked stable on hppa.
+
+  09 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Filter out largefile support on glibc-2.2.x
+
+  09 Jul 2003; Donny Davies <woodchip@gentoo.org> apache-1.3.27-r1.ebuild,
+  apache-1.3.27-r2.ebuild, apache-1.3.27.ebuild, apache-2.0.43-r1.ebuild,
+  apache-2.0.44.ebuild, apache-2.0.45.ebuild, apache-2.0.47.ebuild:
+  Bump to latest release.  Remove dev-util/yacc from DEPEND (I dont see
+  what needs this).  Cosmetic clean-up of certificate creation message.
+
+  22 Jun 2003; Paul de Vrieze <pauldv@gentoo.org> apache-1.3.27-r4.ebuild:
+  Fix the compilation with versioned symbols in db
+
+  17 Jun 2003; Donny Davies <woodchip@gentoo.org> apache-2.0.46.ebuild:
+  Close #13191; GNU deprecated the -1 shortcuts (/me shakes head).
+  Add fixes to use `getent' instead of grepping through /etc/{passwd,group}.
+
+*apache-2.0.46 (28 May 2003)
+
+  04 Jun 2003; Donny Davies <woodchip@gentoo.org> apache-2.0.46.ebuild:
+  Close #12637.
+
+  28 May 2003; Donny Davies <woodchip@gentoo.org> Manifest, apache-2.0.46.ebuild,
+  files/apache-2.0.46-gentoo.diff:
+  Chase latest release; re-diff the patch.
+
+*apache-2.0.45 (06 Apr 2003)
+
+  22 May 2003; Donny Davies <woodchip@gentoo.org> commonapache2.conf:
+  Close #12006.
+
+  06 Apr 2003; Donny Davies <woodchip@gentoo.org> apache-2.0.45.ebuild,
+  files/apache-2.0.45-gentoo.diff, files/2.0.40/40_mod_ssl.conf,
+  files/2.0.40/apache2.initd, files/2.0.40/commonapache2.conf:
+  New version.  Added optional ldap mods, couple of small config
+  file cleanups.  Fix bugs #17651, 17145. 
+
+*apache-1.3.27-r4 (23 Feb 2003)
+
+  26 Mar 2003; Thomas Raschbacher <lordvan@gentoo.org> apache-1.3.27-r[34].ebuild:
+  changed mod_ssl_ver to 2.8.14 fixing bug #18172
+  changed mod_ssl_ver in -r4 so that it doesn't contain apache version for ipv6 patch use
+	
+  25 Feb 2003; Donny Davies <woodchip@gentoo.org> apache.rc6, apache2.initd :
+  Send USR1 signal only to parent in reload(); #16326.
+
+  12 Mar 2003; Zach Welch <zwelch@gentoo.org> apache-1.3.27-r4.ebuild:
+  add arm keyword
+
+  23 Feb 2003; Martin Holzer <mholzer@gentoo.org> apache-1.3.27-r4.ebuild files/digest-apache-1.3.27-r4 ChangeLog :
+  Added openssl to DEPEND.
+
+  24 Feb 2003; Martin Holzer <mholzer@gentoo.org> apache-1.3.27-r4.ebuild ChangeLog :
+  Removed Changes done from -r2 to -r4.
+
+*apache-1.3.27-r3 (23 Feb 2003)
+
+  24 Feb 2003; Martin Holzer <mholzer@gentoo.org> apache-1.3.27-r3.ebuild ChangeLog :
+  Removed Changes done from -r1 to -r3.
+
+  23 Feb 2003; Martin Holzer <mholzer@gentoo.org> apache-1.3.27-r3.ebuild files/digest-apache-1.3.27-r3 ChangeLog :
+  Added openssl to DEPEND.
+
+  23 Feb 2003; Donny Davies <woodchip@gentoo.org> :
+  Fix #14561, #14589, #14724, #14818, #15592, #15806, #16158.
+
+*apache-2.0.44 (21 Jan 2003)
+
+  26 Mar 2003; Jason Wever <weeve@gentoo.org> apache-2.0.44.ebuild:
+  Added ~sparc to keywords.
+
+  15 Mar 2003; Jan Seidel <tuxus@gentoo.org> :
+  Added ~mips to KEYWORDS
+
+  18 Feb 2003;  <seemant@gentoo.org> apache-2.0.44.ebuild :
+  added yacc as a DEPEND
+
+  12 Feb 2003; Guy Martin <gmsoft@gentoo.org> :
+  Added hppa to keywords.
+
+  21 Jan 2003; Donny Davies <woodchip@gentoo.org> apache-2.0.44.ebuild,
+  commonapache2.conf :  Version bump, #14300, add fix for #13152, close #13304.
+
+*apache-1.3.27-r2 (16 Dec 2002)
+
+  16 Dec 2002; Donny Davies <woodchip@gentoo.org> : #11209; Added pam support
+  to suexec, and ipv6 support/patch. Thanks to Andrey Ulanov <drey@rt.mipt.ru>.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*apache-2.0.43-r1 (28 Nov 2002)
+
+  12 Feb 2003; Seemant Kulleen <seemant@gentoo.org> apache-2.0.43-r1.ebuild :
+  cosmetic fixes
+
+  15 Dec 2002; Bjoern Brauel <bjb@gentoo.org> apache-2.0.43-r1.ebuild :
+  Add alpha to KEYWORDS
+
+  28 Nov 2002; Donny Davies <woodchip@gentoo.org> : Updated layout!
+  Getting closer to fully deprecating Apache1.  Third party module
+  integration is now somewhat simplified; simply install the desired
+  module and edit /etc/conf.d/apache2.  There's no longer the need
+  for the 'ebuild /var/db/pkg/.../foo.ebuild config' dance.  Yay.
+
+*apache-2.0.43 (02 Nov 2002)
+
+  02 Nov 2002; Donny Davies <woodchip@gentoo.org> : Chase latest; #9967.
+
+*apache-1.3.27-r1 (12 Oct 2002)
+
+  12 Oct 2002; Donny Davies <woodchip@gentoo.org> :
+  Added redhat db-4 patch, tweaked sys-libs/db dependency to make things
+  more sane.  Swept up patches into a single diff.  Added (Gentoo/Linux)
+  to the server_version string.  Clean out old junk.  Help out with #8759.
+
+*apache-1.3.27 (06 Oct 2002)
+
+  06 Oct 2002; Nicholas Jones <carpaski@gentoo.org> :
+  GLSA update. Version Bump with files dir moved to gentoo mirrors.
+
+*apache-2.0.40-r1 (04 Sept 2002)
+
+  14 Sep 2002; Nicholas Jones <carpaski@gentoo.org> :
+  Added the capability for a graceful restart. Should ensure that
+  the server, when restarted, actually dies before it's started again.
+
+  04 Sep 2002; Nicholas Jones <carpaski@gentoo.org> :
+  Made it path compliant. Fixed the modules files. Fixed the init.d and
+  conf.d files. Still needs default configs and more tuning.
+
+*apache-2.0.40 (15 Aug 2002)
+
+  15 Aug 2002; Michael J. Cohen <mjc@gentoo.org> :
+  Initial release, needs a few modules cleaned up as well as paths
+
+*apache-1.3.26-r4 (3 Jul 2002)
+
+  02 Oct 2002; Donny Davies <woodchip@gentoo.org> apache-1.3.26-r4.ebuild :
+  Fix for #6149.
+
+  28 Sep 2002; Daniel Ahlberg <aliz@gentoo.org> files/apache.rc6 :
+  Made restart send signal to  apache processes instead of httpd processes. Thanks to ska-fan
+  in #gentoo-dev for finding this.
+
+  19 Sep 2002; Michael Frysinger <vapier@gentoo.org> apache-1.3.26-r4.ebuild files/apache.rc6 :
+  Fixed the grep expressions for DATA_DIR and GID ... #8124
+  Fixed 'use named' (was already added to 2.0.x just not 1.3.x) ... #5556
+
+  17 Sep 2002; Nicholas Jones <carpaski@gentoo.org> :
+  Fixed the graceful restart... It wasn't paying heed to ${APACHE_OPTS}
+
+  14 Sep 2002; Nicholas Jones <carpaski@gentoo.org> :
+  Added the capability for a graceful restart. Should ensure that
+  the server, when restarted, actually dies before it's started again.
+
+  14 Sep 2002; Donny Davies <woodchip@gentoo.org> mime_type_fix :
+  Add x-ogg; #7245.  Cleanup.
+
+  14 Aug 2002; Pieter Van den Abeele <pvdabeel@gentoo.org> :
+  Added ppc keyword
+
+  14 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> apache-1.3.26.ebuild :
+  Added KEYWORDS.
+
+  14 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> apache-1.3.26-r4.ebuild :
+  Added KEYWORDS.
+
+  3 Jul 2002; Brandon Low <lostlogic@gentoo.org> apache-1.3.26-r4.ebuild:
+  Just .keep some directories we make so that they will be handled more 
+  sanely in unmerge and clean operations.
+
+*apache-1.3.26-r3 (2 Jul 2002)
+
+  19 Sep 2002; Michael Frysinger <vapier@gentoo.org> apache-1.3.26-r3.ebuild :
+  Fixed the grep expressions for DATA_DIR ... #8124
+
+  14 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> apache-1.3.26-r3.ebuild :
+  Added KEYWORDS.
+
+  2 Jul 2002; Jon Nelson <jnelson@gentoo.org> apache-1.3.26-r3.ebuild:
+  Basically, move stuff from pkg_setup() to postinst.
+
+*apache-1.3.26-r2 (22 Jun 2002)
+
+  14 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> apache-1.3.26-r2.ebuild :
+  Added KEYWORDS.
+
+  22 Jun 2002; Nicholas Jones <carpaski@gentoo.org> :
+  Bugfix... Configs weren't actually changed properly.
+  Moved sed on DATA_DIR after configs were coppied from ${FILESDIR} 
+
+*apache-1.3.26-r1 (20 Jun 2002)
+
+  14 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> apache-1.3.26-r1.ebuild :
+  Added KEYWORDS.
+
+  20 Jun 2002; Nicholas Jones <carpaski@gentoo.org> :
+  Another attempt at fixing the LDAP user issue. Change the user check.
+  Also added in checks to make sure that DATA_DIR is set.
+
+  Turn 'install-quiet' back on.	
+
+*apache-1.3.26 (19 Jun 2002)
+
+  19 Jun 2002; Nicholas Jones <carpaski@gentoo.org> :
+  The real exploit fix. Also patched a mdk patch so that it applied.
+
+*apache-1.3.24-r6 (18 Jun 2002)
+
+  14 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> apache-1.3.24-r6.ebuild :
+  Added KEYWORDS.
+
+  18 Jun 2002; Nicholas Jones <carpaski@gentoo.org> :
+  ADDED PATCH FOR PROXY-HTTP1.1-CHUNKS EXPLOIT
+  Fixed bug #2313 -- Better checks for group/user
+  Fixed bug #3533 -- User can setup user/group and the homedir
+                     of the apache user will be the data directory
+
+*apache-1.3.24-r2 (4 May 2002)
+
+  14 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> apache-1.3.24-r2.ebuild :
+  Added KEYWORDS.
+
+  4 May 2002; Donny Davies <woodchip@gentoo.org> :
+  Added LICENSE, SLOT, $Headers.
+
+  26 Apr 2002; Donny Davies <woodchip@gentoo.org> :
+  Made the user/group id's 81 in pkg_setup after thusly adding them to
+  Gentoo's baselayout.  No need to upgrade folks; cosmetic-only fix.
+
+  10 Apr 2002; Donny Davies <woodchip@gentoo.org> apache-1.3.24-r1.ebuild,
+  files/conf/commonapache.conf :
+  Corrected the apache user's home directory (/var/www -> /home/httpd).
+  Corrected the icons directory (/var/www/icons -> /home/httpd/icons).
+  Ripped the php mime types from the commonapache.conf file.  I moved
+  them to the php package, as an addon config snippet.
+  (/etc/apache/conf/mod_php.conf)
+
+*apache-1.3.24-r1 (9 Apr 2002)
+
+  9 Apr 2002; Donny Davies <woodchip@gentoo.org> apache-1.3.24-r1.ebuild :
+  data is now in /home/httpd/{htdocs,icons,cgi-bin} (new standard location for Gentoo)
+  server now runs as user/group apache
+  mod_ssl was split into a separate package
+  link with the mm library; provides modules with shared memory pools (EAPI_MM=SYSTEM)
+  link with the system expat library
+  all modules are now built using SHARED_CHAIN (smaller mod sizes)
+  several patches from debian/mandrake are included.  the most interesting one is the
+  mandrake serverroot patch which makes configuring and organizing apache easier.
+  the EAPI patch is now unconditionally included.  previously you only got it if you
+  had ssl in your USE variable.
+  provide an easy way to tune up the HARD_SERVER_LIMIT
+  created a build-time config file for the modules distributed with apache.  now you
+  can finely tune your own modules selection, and have your choices preserved across
+  upgrades.  a gentoo-only feature ;)
+  suexec is now fixed and restricted to user/group apache.
+  added some support scripts (from mandrake).  two of these allow easy addition and
+  removal of third-party modules into your apache.conf.  this should make writing
+  ebuilds for extra mods easier.  see net-www/mod_* for examples.
+  the config files are now in /etc/apache/conf, conveniently organized into
+  separate directories for addon-modules and vhosts.  this simplifies things for
+  everybody and especially for those with complicated/large sites.
+
+*apache-1.3.24 (27 Mar 2002)
+
+  27 Mar 2002; Donny Davies <woodchip@gentoo.org> apache-1.3.24.ebuild :
+  Bump up to apache-1.3.24, mod_ssl-2.8.8; fixes some security issues. This port is
+  being re-written, will be ready soon.
+
+*apache-1.3.23 (4 Feb 2002)
+
+  4 Feb 2002; Donny Davies <woodchip@gentoo.org> apache-1.3.23.ebuild :
+  Bump apache to 1.3.23, mod_ssl to 2.8.6-1.3.23.
+
+*apache-1.3.22-r6 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

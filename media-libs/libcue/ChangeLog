@@ -1,0 +1,83 @@
+# ChangeLog for media-libs/libcue
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libcue/ChangeLog,v 1.25 2014/01/14 21:16:34 pacho Exp $
+
+  14 Jan 2014; Pacho Ramos <pacho@gentoo.org> libcue-1.4.0.ebuild:
+  ia64 stable, bug #488768 (thanks to Emeric Maschino for testing)
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> libcue-1.4.0.ebuild:
+  Add ~ia64, wrt bug #449220
+
+  11 Jul 2012; Tim Harder <radhermit@gentoo.org> -libcue-1.3.0.ebuild:
+  Remove old.
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org> libcue-1.4.0.ebuild:
+  sh/sparc stable wrt #397069
+
+  02 Mar 2012; Tobias Klausmann <klausman@gentoo.org> libcue-1.4.0.ebuild:
+  Stable on alpha, bug #397069
+
+  02 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> libcue-1.4.0.ebuild:
+  ppc/ppc64 stable wrt #397069
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> libcue-1.4.0.ebuild:
+  x86 stable wrt bug #397069
+
+  10 Feb 2012; Markus Meier <maekke@gentoo.org> libcue-1.4.0.ebuild:
+  arm stable, bug #397069
+
+  07 Feb 2012; Jeroen Roovers <jer@gentoo.org> libcue-1.4.0.ebuild:
+  Stable for HPPA (bug #397069).
+
+  03 Feb 2012; Agostino Sarubbo <ago@gentoo.org> libcue-1.4.0.ebuild:
+  Stable for amd64, wrt bug #397069
+
+  11 May 2011; Tomáš Chvátal <scarabeus@gentoo.org> libcue-1.4.0.ebuild:
+  Make static libs optional. Punt .la file.
+
+*libcue-1.4.0 (19 Apr 2011)
+
+  19 Apr 2011; Alexis Ballier <aballier@gentoo.org> +libcue-1.4.0.ebuild:
+  version bump
+
+  16 Jan 2010; Tobias Klausmann <klausman@gentoo.org> libcue-1.3.0.ebuild:
+  Stable on alpha, bug #295051
+
+  13 Dec 2009; Tobias Klausmann <klausman@gentoo.org> libcue-1.3.0.ebuild:
+  Keyworded on alpha, bug #292526
+
+  06 Sep 2009; Brent Baude <ranger@gentoo.org> libcue-1.3.0.ebuild:
+  Marking libcue-1.3.0 ppc64 for bug 278677
+
+  16 Aug 2009; Raúl Porcel <armin76@gentoo.org> libcue-1.3.0.ebuild:
+  arm/sh/sparc stable wrt #278677
+
+  03 Aug 2009; Jeroen Roovers <jer@gentoo.org> libcue-1.3.0.ebuild:
+  Stable for HPPA (bug #278677).
+
+  27 Jul 2009; nixnut <nixnut@gentoo.org> libcue-1.3.0.ebuild:
+  ppc stable #278677
+
+  22 Jul 2009; Dawid Węgliński <cla@gentoo.org> libcue-1.3.0.ebuild:
+  Stable on amd64 (bug #278677)
+
+  22 Jul 2009; Christian Faulhammer <fauli@gentoo.org> libcue-1.3.0.ebuild:
+  stable x86, bug 278677
+
+  20 May 2009; Raúl Porcel <armin76@gentoo.org> libcue-1.3.0.ebuild:
+  Add ~arm/~sh/~sparc wrt #269531
+
+  20 May 2009; Brent Baude <ranger@gentoo.org> libcue-1.3.0.ebuild:
+  marking libcue-1.3.0 ~ppc and ~ppc64 for bug 269531
+
+  14 May 2009; Jeroen Roovers <jer@gentoo.org> libcue-1.3.0.ebuild:
+  Marked ~hppa (bug #269531).
+
+  14 May 2009; Samuli Suominen <ssuominen@gentoo.org> libcue-1.3.0.ebuild:
+  Keyword ~x86, thanks to Poly-C for testing at #gentoo-x86.
+
+*libcue-1.3.0 (12 May 2009)
+
+  12 May 2009; Samuli Suominen <ssuominen@gentoo.org> +libcue-1.3.0.ebuild:
+  Initial commit wrt #268879, thanks to Ihar Hrachyshka. This library will
+  be needed for >=media-sound/mpd-0.15_beta1.

@@ -1,0 +1,28 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/irqbalance/files/irqbalance.init.3,v 1.1 2013/01/25 18:59:14 cardoe Exp $
+
+depend() {
+	need localmount
+	after bootmisc
+}
+
+command="/usr/sbin/irqbalance"
+command_args="${IRQBALANCE_OPTS}"
+
+check_sysfs() {
+	if grep -q MSI /proc/interrupts 2>/dev/null && \
+	test -z "$(find /sys/devices -type d -name msi_irqs 2>/dev/null)"; then
+		eerror "MSI interrupts found in /proc/interrupts but none found in sysfs."
+		eerror "You need to update your kernel."
+		return 1
+	fi
+}
+
+start() {
+	check_sysfs || return 1
+	ebegin "Starting irqbalance"
+	start-stop-daemon --exec ${command} --start -- ${IRQBALANCE_OPTS}
+	eend $?
+}

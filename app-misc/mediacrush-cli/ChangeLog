@@ -1,0 +1,16 @@
+# ChangeLog for app-misc/mediacrush-cli
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/mediacrush-cli/ChangeLog,v 1.3 2015/06/05 14:50:07 jlec Exp $
+
+  05 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  18 Feb 2014; Maxim Koltsov <maksbotan@gentoo.org> mediacrush-cli-9999.ebuild:
+  Drop vim-core dependency in 9999
+
+*mediacrush-cli-9999 (17 Feb 2014)
+*mediacrush-cli-1.1.2 (17 Feb 2014)
+
+  17 Feb 2014; Maxim Koltsov <maksbotan@gentoo.org>
+  +mediacrush-cli-1.1.2.ebuild, +mediacrush-cli-9999.ebuild, +metadata.xml:
+  Add app-misc/mediacrush-cli

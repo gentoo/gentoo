@@ -1,0 +1,55 @@
+# ChangeLog for dev-util/bluej
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/bluej/ChangeLog,v 1.14 2014/12/26 14:42:29 kensington Exp $
+
+  26 Dec 2014; Michael Palimaka <kensington@gentoo.org> -bluej-3.0.8.ebuild,
+  -bluej-3.0.9.ebuild, -bluej-3.1.0.ebuild:
+  Remove old.
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+  21 Aug 2014; Chema Alonso <nimiux@gentoo.org> bluej-3.1.1.ebuild:
+  Stable for amd64 wrt bug #518188
+
+  14 Aug 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> bluej-3.1.1.ebuild:
+  x86 stable wrt bug #518188
+
+*bluej-3.1.1 (04 Mar 2014)
+
+  04 Mar 2014; Julian Ospald <hasufell@gentoo.org> +bluej-3.1.1.ebuild:
+  version bump
+
+  28 Aug 2013; Agostino Sarubbo <ago@gentoo.org> bluej-3.1.0.ebuild:
+  Stable for x86, wrt bug #480792
+
+  13 Aug 2013; Agostino Sarubbo <ago@gentoo.org> bluej-3.1.0.ebuild:
+  Stable for amd64, wrt bug #480792
+
+*bluej-3.1.0 (23 Jun 2013)
+
+  23 Jun 2013; Julian Ospald <hasufell@gentoo.org> +bluej-3.1.0.ebuild:
+  version bump
+
+  15 Apr 2013; Agostino Sarubbo <ago@gentoo.org> bluej-3.0.9.ebuild:
+  Stable for x86, wrt bug #464438
+
+  08 Apr 2013; Chema Alonso <nimiux@gentoo.org> bluej-3.0.9.ebuild:
+  Stable for amd64 wrt bug #464438
+
+*bluej-3.0.9 (23 Feb 2013)
+
+  23 Feb 2013; Julian Ospald <hasufell@gentoo.org> +bluej-3.0.9.ebuild:
+  version bump
+
+  06 Dec 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> bluej-3.0.8.ebuild:
+  x86 stable wrt bug #445097
+
+  29 Nov 2012; Agostino Sarubbo <ago@gentoo.org> bluej-3.0.8.ebuild:
+  Stable for amd64, wrt bug #445097
+
+*bluej-3.0.8 (06 Oct 2012)
+
+  06 Oct 2012; Julian Ospald <hasufell@gentoo.org> +bluej-3.0.8.ebuild,
+  +files/bluej.wrapper, +metadata.xml:
+  initial import

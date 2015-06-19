@@ -1,0 +1,69 @@
+# ChangeLog for dev-embedded/ftdi_eeprom
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/ftdi_eeprom/ChangeLog,v 1.16 2015/05/17 13:43:38 mrueg Exp $
+
+  17 May 2015; Manuel Rüger <mrueg@gentoo.org> -ftdi_eeprom-0.2.ebuild:
+  Remove old.
+
+*ftdi_eeprom-1.0 (13 May 2015)
+
+  13 May 2015; Mike Frysinger <vapier@gentoo.org> +ftdi_eeprom-1.0.ebuild:
+  Add ebuild to transition to new libftdi[tools] #410679 by Ole Henrik Jahren.
+
+  13 May 2015; Mike Frysinger <vapier@gentoo.org> ftdi_eeprom-0.3-r1.ebuild:
+  Force older libftdi #465962 by Patrick Lauer.
+
+  08 Sep 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant metadata.
+
+  21 Aug 2012; Johannes Huber <johu@gentoo.org> ftdi_eeprom-0.3-r1.ebuild:
+  Stable for x86, wrt bug #422013
+
+  17 Aug 2012; Agostino Sarubbo <ago@gentoo.org> ftdi_eeprom-0.3-r1.ebuild:
+  Stable for amd64, wrt bug #422013
+
+  16 Aug 2012; Mike Frysinger <vapier@gentoo.org> ftdi_eeprom-0.3-r1.ebuild:
+  Use right patch name #431538.
+
+  17 Jun 2012; Mike Frysinger <vapier@gentoo.org>
+  +files/ftdi_eeprom-0.2-chip-type.patch,
+  +files/ftdi_eeprom-0.3-chip-type.patch, ftdi_eeprom-0.2.ebuild,
+  ftdi_eeprom-0.3-r1.ebuild:
+  Fix by Egor Y. Egorov for building with newer libftdi versions #390805 by
+  Paweł Hajdan, Jr.
+
+  25 May 2012; Samuli Suominen <ssuominen@gentoo.org> -ftdi_eeprom-0.2-r1.ebuild,
+  -ftdi_eeprom-0.3.ebuild:
+  old
+
+  25 May 2012; Samuli Suominen <ssuominen@gentoo.org> ftdi_eeprom-0.2.ebuild:
+  Remove unused virtual/libusb dependency; only libftdi symbols like
+  ftdi_usb_open or ftdi_usb_close present.
+
+*ftdi_eeprom-0.3-r1 (20 Aug 2011)
+
+  20 Aug 2011; Mike Frysinger <vapier@gentoo.org> +ftdi_eeprom-0.3-r1.ebuild,
+  +files/ftdi_eeprom-0.3-newer-chips.patch:
+  Add patch by Robert Pearce to support newer FTDI chips #376117.
+
+*ftdi_eeprom-0.3 (22 Jun 2010)
+
+  22 Jun 2010; Mike Frysinger <vapier@gentoo.org> +ftdi_eeprom-0.3.ebuild:
+  Version bump #323417 by Wilfried Holzke. Add amd64 love #287421 by jon
+  R-B.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*ftdi_eeprom-0.2-r1 (06 May 2006)
+
+  06 May 2006; Henrik Brix Andersen <brix@gentoo.org>
+  +ftdi_eeprom-0.2-r1.ebuild:
+  Install example configuration file.
+
+*ftdi_eeprom-0.2 (13 Jan 2005)
+
+  13 Jan 2005; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
+  +ftdi_eeprom-0.2.ebuild:
+  Initial import as per bug #77635. Thanks to Laurence Withers
+  <lwithers@users.sf.net>

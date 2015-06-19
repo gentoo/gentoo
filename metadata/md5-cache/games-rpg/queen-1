@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=linguas_de? ( games-engines/scummvm[vorbis] ) linguas_en? ( games-engines/scummvm[mp3?] ) linguas_fr? ( games-engines/scummvm[vorbis] ) linguas_he? ( games-engines/scummvm[vorbis] ) linguas_it? ( games-engines/scummvm[vorbis] ) linguas_de? ( app-arch/unzip ) linguas_en? ( mp3? ( app-arch/unzip ) ) linguas_fr? ( app-arch/unzip ) linguas_he? ( app-arch/unzip ) linguas_it? ( app-arch/unzip )
+DESCRIPTION=Flight of the Amazon Queen - a 2D point-and-click adventure game set in the 1940s
+EAPI=4
+HOMEPAGE=http://scummvm.sourceforge.net/
+IUSE=mp3 linguas_de +linguas_en linguas_fr linguas_he linguas_it
+KEYWORDS=amd64 ~ppc ~ppc64 x86
+LICENSE=queen
+RDEPEND=linguas_de? ( games-engines/scummvm[vorbis] ) linguas_en? ( games-engines/scummvm[mp3?] ) linguas_fr? ( games-engines/scummvm[vorbis] ) linguas_he? ( games-engines/scummvm[vorbis] ) linguas_it? ( games-engines/scummvm[vorbis] ) games-misc/games-envd
+REQUIRED_USE=|| ( linguas_de linguas_en linguas_fr linguas_he linguas_it )
+SLOT=0
+SRC_URI=linguas_de? ( mirror://sourceforge/scummvm/FOTAQ_Ger_talkie-1.0.zip http://www.lysator.liu.se/~zino/scummvm/queen/readme.txt -> queen-readme.txt ) linguas_en? ( mp3? ( mirror://sourceforge/scummvm/FOTAQ_Talkie-1.1.zip ) !mp3? ( http://www.lysator.liu.se/~zino/scummvm/queen/queen.1.bz2 http://www.lysator.liu.se/~zino/scummvm/queen/readme.txt -> queen-readme.txt ) ) linguas_fr? ( mirror://sourceforge/scummvm/FOTAQ_Fr_Talkie_1.0.zip ) linguas_he? ( mirror://sourceforge/scummvm/FOTAQ_Heb_talkie.zip http://www.lysator.liu.se/~zino/scummvm/queen/readme.txt -> queen-readme.txt ) linguas_it? ( mirror://sourceforge/scummvm/FOTAQ_It_Talkie_1.0.zip ) http://www.scummvm.org/images/cat-queen.png
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	games	1ad3205dbf62a2c98249f2f59b0a2d39	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=96606c07dac05582222c7f6736281f89

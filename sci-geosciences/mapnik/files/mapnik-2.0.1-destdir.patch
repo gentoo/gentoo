@@ -1,0 +1,12 @@
+diff -urN mapnik-v2.0.1.old/SConstruct mapnik-v2.0.1/SConstruct
+--- mapnik-v2.0.1.old/SConstruct	2012-05-26 11:04:50.364638533 +0200
++++ mapnik-v2.0.1/SConstruct	2012-05-26 11:26:29.003516741 +0200
+@@ -1445,7 +1445,7 @@
+                     site_packages = '''%s -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(plat_specific=True))"''' % env['PYTHON']
+                 else:
+                     site_packages = '''%s -c "from distutils.sysconfig import get_python_lib; print get_python_lib(plat_specific=True)"''' % env['PYTHON']                    
+-                env['PYTHON_SITE_PACKAGES'] = call(site_packages)
++                env['PYTHON_SITE_PACKAGES'] =  os.path.normpath(os.path.realpath(env['DESTDIR'])) + call(site_packages)
+             else:
+                 env['PYTHON_SYS_PREFIX'] = os.popen('''%s -c "import sys; print sys.prefix"''' % env['PYTHON']).read().strip()
+                 env['PYTHON_VERSION'] = os.popen('''%s -c "import sys; print sys.version"''' % env['PYTHON']).read()[0:3]

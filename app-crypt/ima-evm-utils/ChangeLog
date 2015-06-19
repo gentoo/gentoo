@@ -1,0 +1,19 @@
+# ChangeLog for app-crypt/ima-evm-utils
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/ima-evm-utils/ChangeLog,v 1.2 2014/08/17 08:30:33 swift Exp $
+
+*ima-evm-utils-0.8 (17 Aug 2014)
+
+  17 Aug 2014; Sven Vermeulen <swift@gentoo.org> +ima-evm-utils-0.8.ebuild:
+  Bump to 0.8
+
+*ima-evm-utils-0.2 (27 Dec 2012)
+
+  27 Dec 2012; <swift@gentoo.org> +ima-evm-utils-0.2.ebuild,
+  ima-evm-utils-9999.ebuild:
+  Adding release 0.2
+
+*ima-evm-utils-9999 (12 Nov 2012)
+
+  12 Nov 2012; <swift@gentoo.org> +ima-evm-utils-9999.ebuild, +metadata.xml:
+  Initial live ebuild for the ima and evm utilities

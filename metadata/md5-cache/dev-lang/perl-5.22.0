@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst postrm prepare test
+DEPEND=berkdb? ( sys-libs/db:* ) gdbm? ( >=sys-libs/gdbm-1.8.3 ) app-arch/bzip2 sys-libs/zlib !prefix? ( elibc_FreeBSD? ( sys-freebsd/freebsd-mk-defs ) )
+DESCRIPTION=Larry Wall's Practical Extraction and Report Language
+EAPI=5
+HOMEPAGE=http://www.perl.org/
+IUSE=berkdb debug doc gdbm ithreads
+KEYWORDS=~alpha ~amd64 ~amd64-fbsd ~amd64-linux ~arm ~arm64 ~hppa ~hppa-hpux ~ia64 ~ia64-hpux ~ia64-linux ~m68k ~m68k-mint ~mips ~ppc ~ppc64 ~ppc-aix ~ppc-macos ~s390 ~sh ~sparc ~sparc64-solaris ~sparc-solaris ~x64-freebsd ~x64-macos ~x64-solaris ~x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~x86-linux ~x86-macos ~x86-solaris
+LICENSE=|| ( Artistic GPL-1+ )
+PDEPEND=>=app-admin/perl-cleaner-2.5 >=virtual/perl-File-Temp-0.230.400-r2 >=virtual/perl-Data-Dumper-2.154.0
+RDEPEND=berkdb? ( sys-libs/db:* ) gdbm? ( >=sys-libs/gdbm-1.8.3 ) app-arch/bzip2 sys-libs/zlib
+SLOT=0/5.22
+SRC_URI=mirror://cpan/src/5.0/perl-5.22.0.tar.bz2 mirror://cpan/authors/id/S/SH/SHAY/perl-5.22.0.tar.bz2 mirror://gentoo/perl-5.22.0-patches-1.tar.xz http://dev.gentoo.org/~civil/distfiles/perl-5.22.0-patches-1.tar.xz
+_eclasses_=alternatives	326031758c86cd08f5844f475f03ac01	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=79c1e57b80fea935fa2e319613026515

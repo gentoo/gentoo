@@ -1,0 +1,162 @@
+# ChangeLog for dev-tcltk/bwidget
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/bwidget/ChangeLog,v 1.49 2015/06/09 17:44:08 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  01 Jun 2015; Justin Lecher <jlec@gentoo.org> -bwidget-1.9.0.ebuild,
+  -bwidget-1.9.7.ebuild, bwidget-1.9.8.ebuild:
+  Drop old
+
+  30 May 2015; Mikle Kolyada <zlogene@gentoo.org> bwidget-1.9.8.ebuild:
+  arm stable wrt bug #545932
+
+  17 May 2015; Pacho Ramos <pacho@gentoo.org> bwidget-1.9.8.ebuild:
+  ppc64 stable wrt bug #545932
+
+  28 Apr 2015; Agostino Sarubbo <ago@gentoo.org> bwidget-1.9.8.ebuild:
+  Stable for sparc, wrt bug #545932
+
+  21 Apr 2015; Pacho Ramos <pacho@gentoo.org> bwidget-1.9.8.ebuild:
+  ppc stable wrt bug #545932
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org> bwidget-1.9.8.ebuild:
+  Stable for x86, wrt bug #545932
+
+  14 Apr 2015; Jeroen Roovers <jer@gentoo.org> bwidget-1.9.8.ebuild:
+  Stable for HPPA (bug #545932).
+
+  13 Apr 2015; Agostino Sarubbo <ago@gentoo.org> bwidget-1.9.8.ebuild:
+  Stable for alpha, wrt bug #545932
+
+  08 Apr 2015; Agostino Sarubbo <ago@gentoo.org> bwidget-1.9.8.ebuild:
+  Stable for amd64, wrt bug #545932
+
+  02 Apr 2015; Markus Meier <maekke@gentoo.org> bwidget-1.9.7.ebuild:
+  arm stable, bug #542428
+
+  01 Apr 2015; Agostino Sarubbo <ago@gentoo.org> bwidget-1.9.7.ebuild:
+  Stable for sparc, wrt bug #542428
+
+  31 Mar 2015; Agostino Sarubbo <ago@gentoo.org> bwidget-1.9.7.ebuild:
+  Stable for ppc64, wrt bug #542428
+
+  28 Mar 2015; Agostino Sarubbo <ago@gentoo.org> bwidget-1.9.7.ebuild:
+  Stable for ppc, wrt bug #542428
+
+  25 Mar 2015; Agostino Sarubbo <ago@gentoo.org> bwidget-1.9.7.ebuild:
+  Stable for x86, wrt bug #542428
+
+  17 Mar 2015; Jeroen Roovers <jer@gentoo.org> bwidget-1.9.7.ebuild:
+  Stable for HPPA (bug #542428).
+
+  09 Mar 2015; Agostino Sarubbo <ago@gentoo.org> bwidget-1.9.7.ebuild:
+  Stable for amd64, wrt bug #542428
+
+*bwidget-1.9.8 (07 Mar 2015)
+
+  07 Mar 2015; Justin Lecher <jlec@gentoo.org> +bwidget-1.9.8.ebuild,
+  +files/bwidget-1.9.7-test.patch, +files/bwidget-1.9.8-test.patch,
+  bwidget-1.9.7.ebuild:
+  Version Bump
+
+*bwidget-1.9.7 (18 Mar 2014)
+
+  18 Mar 2014; Justin Lecher <jlec@gentoo.org> +bwidget-1.9.7.ebuild,
+  metadata.xml:
+  Version Bump, #504966
+
+  11 Jun 2013; Markus Meier <maekke@gentoo.org> bwidget-1.9.0.ebuild:
+  arm stable, bug #472596
+
+  22 Apr 2013; Agostino Sarubbo <ago@gentoo.org> bwidget-1.9.0.ebuild:
+  Stable for ppc, wrt bug #461100
+
+  21 Apr 2013; Markus Meier <maekke@gentoo.org> bwidget-1.9.0.ebuild:
+  add ~arm, bug #452728
+
+  18 Apr 2013; Jeroen Roovers <jer@gentoo.org> bwidget-1.9.0.ebuild:
+  Stable for HPPA (bug #461100).
+
+  18 Apr 2013; Agostino Sarubbo <ago@gentoo.org> bwidget-1.9.0.ebuild:
+  Stable for alpha, wrt bug #461100
+
+  16 Apr 2013; Agostino Sarubbo <ago@gentoo.org> bwidget-1.9.0.ebuild:
+  Stable for ppc64, wrt bug #461100
+
+  24 Jan 2013; Jeroen Roovers <jer@gentoo.org> bwidget-1.9.0.ebuild:
+  Marked ~hppa (bug #452728).
+
+  05 Dec 2012; Ulrich Müller <ulm@gentoo.org> bwidget-1.9.0.ebuild:
+  Update LICENSE, BWidget was a duplicate of tcltk, bug 445468.
+
+  05 Dec 2012; Justin Lecher <jlec@gentoo.org> -bwidget-1.7.0.ebuild,
+  -bwidget-1.8.0.ebuild:
+  Drop old
+
+  20 Nov 2012; Agostino Sarubbo <ago@gentoo.org> bwidget-1.9.0.ebuild:
+  Stable for x86, wrt bug #433279
+
+  15 Oct 2012; Agostino Sarubbo <ago@gentoo.org> bwidget-1.9.0.ebuild:
+  Stable for amd64, wrt bug #433279
+
+*bwidget-1.9.0 (17 Jul 2012)
+
+  17 Jul 2012; Justin Lecher <jlec@gentoo.org> -bwidget-1.4.1.ebuild,
+  bwidget-1.7.0.ebuild, bwidget-1.8.0.ebuild, +bwidget-1.9.0.ebuild,
+  metadata.xml:
+  Version Bump, #426408; move to EAPI=4; drop old
+
+  07 Jun 2012; Zac Medico <zmedico@gentoo.org> bwidget-1.7.0.ebuild,
+  bwidget-1.8.0.ebuild:
+  inherit multilib for get_libdir
+
+  06 Sep 2009; Markus Meier <maekke@gentoo.org> bwidget-1.8.0.ebuild:
+  amd64 stable, bug #280484
+
+  11 Aug 2009; Christian Faulhammer <fauli@gentoo.org> bwidget-1.8.0.ebuild:
+  stable x86, bug 280484
+
+*bwidget-1.8.0 (20 Apr 2007)
+
+  20 Apr 2007; Steve Arnold <nerdboy@gentoo.org> bwidget-1.7.0.ebuild,
+  +bwidget-1.8.0.ebuild:
+  Updated to current version required by setools (the latter won't build
+  the apol gui against earlier versions).  Also fixed lib path in 1.7.0
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> bwidget-1.7.0.ebuild:
+  stable on amd64
+
+  02 Apr 2005; Jason Wever <weeve@gentoo.org> bwidget-1.7.0.ebuild:
+  Stable on SPARC.
+
+  31 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  03 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> bwidget-1.7.0.ebuild:
+  Stable on alpha.
+
+  14 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> bwidget-1.4.1.ebuild:
+  Added IUSE=
+
+*bwidget-1.7.0 (04 Apr 2004)
+
+  04 Apr 2004; Chris Aniszczyk <zx@gentoo.org> :
+  Version bump. Added metadata.xml.
+
+  14 Jan 2004; Aron Griffis <agriffis@gentoo.org> bwidget-1.4.1.ebuild:
+  add ~alpha
+
+  15 Dec 2003; Jason Wever <weeve@gentoo.org> bwidget-1.4.1.ebuild:
+  Added ~sparc keyword to fix broken dependencies in app-sci/lard.
+
+  13 Feb 2003; Mark Guertin <gerk@gentoo.org> bwidget-1.4.1.ebuild :
+  set ppc in keywords
+
+*bwidget-1.4.1 (14 Aug 2002)
+  14 Aug 2002; Daniel Ahlberg <aliz@gentoo.org> bwidget-1.4.1.ebuild :
+  Initial import. Ebuild submitted by Chris Bainbridge <chrb@dcs.ed.ac.uk>.

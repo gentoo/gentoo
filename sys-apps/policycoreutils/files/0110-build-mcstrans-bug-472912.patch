@@ -1,0 +1,64 @@
+diff -uNr policycoreutils-2.4-rc2.orig/Makefile policycoreutils-2.4-rc2/Makefile
+--- policycoreutils-2.4-rc2.orig/Makefile	2014-08-28 20:31:19.563664821 +0200
++++ policycoreutils-2.4-rc2/Makefile	2014-08-28 20:32:25.900667435 +0200
+@@ -1,4 +1,4 @@
+-SUBDIRS = sepolicy setfiles semanage load_policy newrole run_init secon audit2allow sestatus semodule_package semodule semodule_link semodule_expand semodule_deps sepolgen-ifgen setsebool scripts po man gui hll
++SUBDIRS = sepolicy setfiles semanage load_policy newrole run_init secon audit2allow sestatus semodule_package semodule semodule_link semodule_expand semodule_deps sepolgen-ifgen setsebool scripts po man gui hll mcstrans
+ 
+ INOTIFYH ?= n
+ 
+diff -uNr policycoreutils-2.4-rc2.orig/mcstrans/src/Makefile policycoreutils-2.4-rc2/mcstrans/src/Makefile
+--- policycoreutils-2.4-rc2.orig/mcstrans/src/Makefile	2014-08-28 20:31:19.562664821 +0200
++++ policycoreutils-2.4-rc2/mcstrans/src/Makefile	2014-08-28 20:33:39.345670329 +0200
+@@ -1,23 +1,10 @@
+ ARCH = $(shell uname -i)
+-ifeq "$(ARCH)" "x86_64"
+-	# In case of 64 bit system, use these lines
+-	LIBDIR=/usr/lib64
+-else 
+-ifeq "$(ARCH)" "i686"
+-	# In case of 32 bit system, use these lines
+-	LIBDIR=/usr/lib
+-else
+-ifeq "$(ARCH)" "i386"
+-	# In case of 32 bit system, use these lines
+-	LIBDIR=/usr/lib
+-endif
+-endif
+-endif
+ # Installation directories.
+ PREFIX  ?= $(DESTDIR)/usr
+ SBINDIR ?= $(DESTDIR)/sbin
+ INITDIR ?= $(DESTDIR)/etc/rc.d/init.d
+ SYSTEMDDIR ?= $(DESTDIR)/usr/lib/systemd
++LIBDIR ?= $(PREFIX)/lib
+ 
+ PROG_SRC=mcstrans.c  mcscolor.c  mcstransd.c  mls_level.c
+ PROG_OBJS= $(patsubst %.c,%.o,$(PROG_SRC))
+diff -uNr policycoreutils-2.4-rc2.orig/mcstrans/utils/Makefile policycoreutils-2.4-rc2/mcstrans/utils/Makefile
+--- policycoreutils-2.4-rc2.orig/mcstrans/utils/Makefile	2014-08-28 20:31:19.556664821 +0200
++++ policycoreutils-2.4-rc2/mcstrans/utils/Makefile	2014-08-28 20:34:14.145671701 +0200
+@@ -3,22 +3,7 @@
+ BINDIR ?= $(PREFIX)/sbin
+ 
+ ARCH = $(shell uname -i)
+-ifeq "$(ARCH)" "x86_64"
+-        # In case of 64 bit system, use these lines
+-        LIBDIR=/usr/lib64
+-else
+-ifeq "$(ARCH)" "i686"
+-        # In case of 32 bit system, use these lines
+-        LIBDIR=/usr/lib
+-else
+-ifeq "$(ARCH)" "i386"
+-        # In case of 32 bit system, use these lines
+-        LIBDIR=/usr/lib
+-endif
+-endif
+-endif
+-
+-
++LIBDIR ?= $(PREFIX)/lib
+ CFLAGS ?= -Wall
+ override CFLAGS += -I../src -D_GNU_SOURCE
+ LDLIBS += -L../src ../src/mcstrans.o ../src/mls_level.o -lselinux -lpcre $(LIBDIR)/libsepol.a

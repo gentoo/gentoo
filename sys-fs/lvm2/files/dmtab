@@ -1,0 +1,12 @@
+#/etc/dmraid: config file for adding device-mapper volumes at boot
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/lvm2/files/dmtab,v 1.1 2009/04/09 23:00:10 caleb Exp $
+
+# Format: <volume name>: <table>
+# Example: isw0: 0 312602976 striped 2 128 /dev/sda 0 /dev/sdb 0
+#
+# Alternatively you can create all your volumes the first time, and just run:
+#
+#   dmsetup table >> /etc/dmtab
+#
+# and verify that they are correct.
+

@@ -1,0 +1,18 @@
+Gentoo currently uses unversioned lua:0 - lua.pc instad of lua5.1.pc, /usr/bin/lua instead of /usr/bin/lua5.1
+
+diff --git a/configure.ac b/configure.ac
+index 810a288..51ca607 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -305,9 +305,9 @@ else
+     fi
+ 
+     if test "x$found_lua51" != "xyes"; then
+-        PKG_CHECK_EXISTS([lua5.1 >= $LUA51_REQUIRED], [
++        PKG_CHECK_EXISTS([lua >= $LUA51_REQUIRED], [
+             found_lua51=yes
+-            with_lua51=lua5.1
++            with_lua51=lua
+         ], [
+             found_lua51=no
+         ])

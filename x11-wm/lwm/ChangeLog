@@ -1,0 +1,98 @@
+# ChangeLog for x11-wm/lwm
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/lwm/ChangeLog,v 1.28 2013/10/19 15:26:28 pacho Exp $
+
+  19 Oct 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due desktop-wm removal
+
+  22 Jul 2013; Agostino Sarubbo <ago@gentoo.org> lwm-1.2.2.ebuild:
+  Stable for ppc, wrt bug #391561
+
+*lwm-1.2.3 (22 Jul 2013)
+
+  22 Jul 2013; Jeroen Roovers <jer@gentoo.org> +lwm-1.2.3.ebuild:
+  Version bump.
+
+  02 Dec 2011; Markos Chandras <hwoarang@gentoo.org> lwm-1.2.2.ebuild:
+  Stable on amd64 wrt bug #391561
+
+  01 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> lwm-1.2.2.ebuild:
+  x86 stable wrt bug #391561
+
+  11 Jun 2011; Kacper Kowalik <xarthisius@gentoo.org> lwm-1.2.2.ebuild:
+  Fix underlinking wrt #370127, bump to EAPI4, don't install useless docs
+
+*lwm-1.2.2 (11 Apr 2010)
+
+  11 Apr 2010; Jeroen Roovers <jer@gentoo.org> +lwm-1.2.2.ebuild:
+  Version bump. Respect CC, CFLAGS, LDFLAGS. Do not install README.
+
+  22 Aug 2008; David Shakaryan <omp@gentoo.org> lwm-1.2.1.ebuild:
+  Add x11-libs/libSM dependency. (bug #235373)
+
+  02 Aug 2007; Roy Marples <uberlord@gentoo.org> lwm-1.2.1.ebuild:
+  Keyworded ~x86-fbsd, #157553 thanks to Marc Kowarsky.
+
+  22 Jul 2007; David Shakaryan <omp@gentoo.org> lwm-1.2.1.ebuild:
+  Remove virtual/x11 from dependencies.
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  28 Apr 2006; Marien Zwart <marienz@gentoo.org> files/digest-lwm-1.2.1,
+  Manifest:
+  Fixing SHA256 digest, pass four
+
+  11 Feb 2006; Krzysiek Pawlik <nelchael@gentoo.org> -lwm-1.2.0.ebuild,
+  lwm-1.2.1.ebuild:
+  Fixed DEPEND for modular X.
+
+  06 Jul 2005; Herbie Hopkins <herbs@gentoo.org> lwm-1.2.1.ebuild:
+  Marked ~amd64 wrt bug #97951.
+
+  07 Nov 2004; Jason Wever <weeve@gentoo.org> lwm-1.2.1.ebuild:
+  Stable on sparc.
+
+  04 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> lwm-1.2.1.ebuild:
+  Stable on x86 and ppc.
+
+*lwm-1.2.1 (10 Oct 2004)
+
+  10 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> -lwm-1.1.5.ebuild,
+  lwm-1.2.0.ebuild, +lwm-1.2.1.ebuild:
+  Version bumped. Removed motif IUSE flag which is not relevant anymore.
+
+  18 Jun 2004; Jason Wever <weeve@gentoo.org> lwm-1.2.0.ebuild:
+  Stable on sparc.
+
+*lwm-1.2.0 (21 Feb 2004)
+
+  21 Feb 2004; Mamoru KOMACHI <usata@gentoo.org> lwm-1.2.0.ebuild:
+  Version bumped. Included a manpage. This closes bug #41842
+
+  11 Jan 2004; Heinrich Wendel <lanius@gentoo.org> lwm-1.1.5.ebuild,
+  lwm-1.1.6.ebuild:
+  fixed motif dep
+
+*lwm-1.1.6 (06 Dec 2003)
+
+  06 Dec 2003; Brandon Hale <tseng@gentoo.org> lwm-1.1.6.ebuild:
+  Version bump, closes 34908
+
+  17 Sep 2003; Seemant Kulleen <seemant@gentoo.org> lwm-1.1.5.ebuild:
+  added virtual/motif to DEPEND. Really, that should have been in there in the
+  first place. Thanks to: Marius Mauch <genone@genone.de> in bug #28952
+
+*lwm-1.1.5 (21 Aug 2003)
+
+  21 Aug 2003; Seemant Kulleen <seemant@gentoo.org> lwm-1.1.5.ebuild:
+  version bump thanks to Jim Nutt <jim@nuttz.org> in bug #24553
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*lwm-1.01 (22 May 2002)
+
+  22 May 2002; Seemant Kulleen <seemant@gentoo.org> lwm-1.01.ebuild
+  ChangeLog files/digest-lwm-1.01 :
+
+  New package for lightweight window manager.

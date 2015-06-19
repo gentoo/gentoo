@@ -1,0 +1,90 @@
+# ChangeLog for dev-java/jdbc-informix
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jdbc-informix/ChangeLog,v 1.20 2009/07/07 23:22:17 flameeyes Exp $
+
+  07 Jul 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  jdbc-informix-3.00.3.ebuild:
+  Use elog for fetch error.
+
+  25 Dec 2007; Petteri Räty <betelgeuse@gentoo.org>
+  -jdbc-informix-2.21.5.ebuild:
+  Remove old version.
+
+  09 Dec 2007; Krzysiek Pawlik <nelchael@gentoo.org>
+  jdbc-informix-3.00.3.ebuild:
+  Stable on ppc.
+
+  25 Nov 2007; Samuli Suominen <drac@gentoo.org>
+  jdbc-informix-3.00.3.ebuild:
+  amd64 stable wrt #197705
+
+  25 Nov 2007; Vlastimil Babka <caster@gentoo.org>
+  jdbc-informix-3.00.3.ebuild:
+  Add addpredict to workaround sandbox violation, bug #197705.
+
+  01 Nov 2007; Christian Faulhammer <opfer@gentoo.org>
+  jdbc-informix-3.00.3.ebuild:
+  stable x86, bug 197705
+
+*jdbc-informix-3.00.3 (15 Aug 2007)
+*jdbc-informix-2.21.5 (15 Aug 2007)
+
+  15 Aug 2007; Vlastimil Babka <caster@gentoo.org>
+  +jdbc-informix-2.21.5.ebuild, +jdbc-informix-3.00.3.ebuild,
+  -jdbc-informix-221-r4.ebuild, -jdbc-informix-221-r5.ebuild:
+  Version bump, migrated to gen-2 eclass. Adds examples USE flag to install
+  demos. Remove unused version and change 221-r5 to more proper 2.21.5. Will
+  seem like a downgrade, that's fine.
+
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org>
+  jdbc-informix-221-r4.ebuild, jdbc-informix-221-r5.ebuild:
+  (QA) RESTRICT clean up.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  18 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  jdbc-informix-221-r5.ebuild:
+  Stable on ppc.
+
+  06 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  jdbc-informix-221-r4.ebuild, jdbc-informix-221-r5.ebuild:
+  Unkeyworded sparc, none tested this, bad keywording
+
+  22 Apr 2005; Simon Stelling <blubb@gentoo.org>
+  jdbc-informix-221-r5.ebuild:
+  stable on amd64
+
+  03 Apr 2005; Thomas Matthijs <axxo@gentoo.org>
+  jdbc-informix-221-r5.ebuild:
+  keyword x86
+
+  03 Apr 2005; Thomas Matthijs <axxo@gentoo.org>
+  jdbc-informix-221-r4.ebuild, jdbc-informix-221-r5.ebuild:
+  fix 62589
+
+  22 Oct 2004; Thomas Matthijs <axxo@gentoo.org>
+  jdbc-informix-221-r4.ebuild, jdbc-informix-221-r5.ebuild:
+  global addpredit == evil
+
+*jdbc-informix-221-r5 (20 Oct 2004)
+
+  20 Oct 2004; Dylan Carlson <absinthe@gentoo.org>
+  jdbc-informix-221-r4.ebuild, +jdbc-informix-221-r5.ebuild:
+  Fixed HOMEPAGE. Version bump. Added ~amd64 keywords.
+
+  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org>
+  jdbc-informix-221-r4.ebuild:
+  use java-pkg_dohtml instead of dohtml to also install the package-list in
+  case of api docs: #50740
+
+  10 Feb 2004; Adrian Almenar <strider@gentoo.org>
+  jdbc-informix-221-r4.ebuild:
+  Removed alpha keyword.
+
+*jdbc-informix-221-r4 (14 May 2003)
+
+  14 May 2003; Dylan Carlson <absinthe@gentoo.org>
+  jdbc-informix-221-r4.ebuild:
+  Initial import.
+

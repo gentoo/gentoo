@@ -1,0 +1,45 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/www-servers/varnish/files/varnishncsa.initd-r1,v 1.1 2014/10/03 18:15:09 blueness Exp $
+
+VARNISHNCSA_PID=${VARNISHNCSA_PID:-/run/${SVCNAME}.pid}
+
+command="${VARNISHNCSA:-/usr/bin/varnishncsa}"
+command_args="-D -P ${VARNISHNCSA_PID} ${VARNISHNCSA_OPTS}"
+pidfile="${VARNISHNCSA_PID}"
+
+extra_started_commands="reload rotate flush"
+
+description_rotate="Rotate the log file"
+description_flush="Flush any outstanding transactions"
+
+# We need to make sure varnishd has started first, bug #524284
+start_pre() {
+	TIMEOUT=${TIMEOUT:-5}
+
+	local i=0
+	while [ $i -lt ${TIMEOUT} ]; do
+		echo status | varnishadm 2>/dev/null | grep -q "Child in state running"
+		test $? -eq 0  && break
+
+		sleep 1 && i=$(expr $i + 1)
+	done
+}
+
+rotate() {
+	ebegin "Rotating log file"
+	start-stop-daemon -p ${VARNISHNCSA_PID} -s SIGHUP
+	eend $?
+}
+
+flush() {
+	ebegin "Flushing any outstanding transactions"
+	start-stop-daemon -p ${VARNISHNCSA_PID} -s SIGUSR1
+	eend $?
+}
+
+reload() {
+	flush
+	rotate
+}

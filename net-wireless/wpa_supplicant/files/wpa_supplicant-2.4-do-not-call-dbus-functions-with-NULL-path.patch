@@ -1,0 +1,60 @@
+diff -aurp a/wpa_supplicant/dbus/dbus_new_helpers.c b/wpa_supplicant/dbus/dbus_new_helpers.c
+--- a/wpa_supplicant/dbus/dbus_new_helpers.c	2012-05-15 07:28:37.616150164 +0000
++++ b/wpa_supplicant/dbus/dbus_new_helpers.c	2012-05-15 07:30:21.904157611 +0000
+@@ -882,7 +882,7 @@ void wpa_dbus_mark_property_changed(stru
+ 	const struct wpa_dbus_property_desc *dsc;
+ 	int i = 0;
+ 
+-	if (iface == NULL)
++	if (iface == NULL || path == NULL)
+ 		return;
+ 
+ 	dbus_connection_get_object_path_data(iface->con, path,
+diff -aurp a/wpa_supplicant/dbus/dbus_old.c b/wpa_supplicant/dbus/dbus_old.c
+--- a/wpa_supplicant/dbus/dbus_old.c	2012-05-15 07:28:29.502149373 +0000
++++ b/wpa_supplicant/dbus/dbus_old.c	2012-05-15 07:30:48.859162441 +0000
+@@ -379,7 +379,7 @@ void wpa_supplicant_dbus_notify_scan_res
+ 	DBusMessage *_signal;
+ 
+ 	/* Do nothing if the control interface is not turned on */
+-	if (iface == NULL)
++	if (iface == NULL || wpa_s->dbus_path == NULL)
+ 		return;
+ 
+ 	_signal = dbus_message_new_signal(wpa_s->dbus_path,
+@@ -419,7 +419,7 @@ void wpa_supplicant_dbus_notify_state_ch
+ 	if (wpa_s->global == NULL)
+ 		return;
+ 	iface = wpa_s->global->dbus;
+-	if (iface == NULL)
++	if (iface == NULL || wpa_s->dbus_path == NULL)
+ 		return;
+ 
+ 	/* Only send signal if state really changed */
+@@ -478,7 +478,7 @@ void wpa_supplicant_dbus_notify_scanning
+ 	dbus_bool_t scanning = wpa_s->scanning ? TRUE : FALSE;
+ 
+ 	/* Do nothing if the control interface is not turned on */
+-	if (iface == NULL)
++	if (iface == NULL || wpa_s->dbus_path == NULL)
+ 		return;
+ 
+ 	_signal = dbus_message_new_signal(wpa_s->dbus_path,
+@@ -513,7 +513,7 @@ void wpa_supplicant_dbus_notify_wps_cred
+ 	if (wpa_s->global == NULL)
+ 		return;
+ 	iface = wpa_s->global->dbus;
+-	if (iface == NULL)
++	if (iface == NULL || wpa_s->dbus_path == NULL)
+ 		return;
+ 
+ 	_signal = dbus_message_new_signal(wpa_s->dbus_path,
+@@ -564,7 +564,7 @@ void wpa_supplicant_dbus_notify_certific
+ 	if (wpa_s->global == NULL)
+ 		return;
+ 	iface = wpa_s->global->dbus;
+-	if (iface == NULL)
++	if (iface == NULL || wpa_s->dbus_path == NULL)
+ 		return;
+ 
+ 	_signal = dbus_message_new_signal(wpa_s->dbus_path,

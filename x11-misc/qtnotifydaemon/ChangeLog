@@ -1,0 +1,27 @@
+# ChangeLog for x11-misc/qtnotifydaemon
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/qtnotifydaemon/ChangeLog,v 1.5 2013/03/02 23:52:36 hwoarang Exp $
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org>
+  qtnotifydaemon-1.0.14.ebuild:
+  Move Qt dependencies to the new category
+
+  06 Aug 2012; Michael Palimaka <kensington@gentoo.org>
+  +files/qtnotifydaemon-1.0.14-build.patch, metadata.xml,
+  qtnotifydaemon-1.0.14.ebuild:
+  Add upstream metadata. Fix underlinking and build with GCC 4.7 wrt bug
+  #429654.
+
+  15 May 2012; Samuli Suominen <ssuominen@gentoo.org>
+  qtnotifydaemon-1.0.14.ebuild:
+  Remove second HOMEPAGE since the server isn't online always wrt #416123
+
+  30 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  qtnotifydaemon-1.0.14.ebuild:
+  Missing x11-libs/qt-qt3support:4 RDEPEND wrt #401309 by James Rowe
+
+*qtnotifydaemon-1.0.14 (28 Jan 2012)
+
+  28 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +qtnotifydaemon-1.0.14.ebuild:
+  Initial commit.

@@ -1,0 +1,30 @@
+# ChangeLog for x11-apps/amlc
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-apps/amlc/ChangeLog,v 1.8 2015/01/26 18:55:40 jer Exp $
+
+  26 Jan 2015; Jeroen Roovers <jer@gentoo.org> amlc-0.5.1.ebuild:
+  Fix HOMEPAGE/SRC_URI (bug #537820).
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> amlc-0.5.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  24 Nov 2008; <ssuominen@gentoo.org> metadata.xml:
+  Rename my old e-mail drac at gentoo.org to ssuominen at gentoo.org.
+
+  25 Feb 2008; Samuli Suominen <drac@gentoo.org> amlc-0.5.1.ebuild:
+  amd64 stable
+
+  21 Nov 2007; Samuli Suominen <drac@gentoo.org> amlc-0.5.1.ebuild:
+  Keyword ~amd64.
+
+  14 Jul 2007; Raúl Porcel <armin76@gentoo.org> amlc-0.5.1.ebuild:
+  x86 stable
+
+  14 Jul 2007; Samuli Suominen <drac@gentoo.org> amlc-0.5.1.ebuild:
+  Cosmetics.
+
+*amlc-0.5.1 (04 Feb 2007)
+
+  04 Feb 2007; <drac@gentoo.org> +amlc-0.5.1.ebuild:
+  Initial ebuild for bug 82759 from Sunrise Overlay after discussing with
+  upstream.

@@ -1,0 +1,99 @@
+# ChangeLog for media-libs/libbs2b
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libbs2b/ChangeLog,v 1.27 2015/05/06 09:58:55 mrueg Exp $
+
+  06 May 2015; Manuel Rüger <mrueg@gentoo.org> -libbs2b-3.1.0.ebuild:
+  Remove old.
+
+  05 May 2015; Jeroen Roovers <jer@gentoo.org> libbs2b-3.1.0-r1.ebuild:
+  Stable for PPC64 (bug #526006).
+
+*libbs2b-3.1.0-r2 (06 Mar 2015)
+
+  06 Mar 2015; Tony Vroon <chainsaw@gentoo.org> +libbs2b-3.1.0-r2.ebuild,
+  +files/3.1.0-format-security.patch:
+  Fix insecure printf statement in error path, as pointed out by Toralf
+  Förster in bug #542138.
+
+  02 Mar 2015; Agostino Sarubbo <ago@gentoo.org> libbs2b-3.1.0-r1.ebuild:
+  Stable for ppc, wrt bug #526006
+
+  16 Jan 2015; Raúl Porcel <armin76@gentoo.org> libbs2b-3.1.0-r1.ebuild:
+  alpha/sparc stable wrt #526006
+
+  23 Oct 2014; Pacho Ramos <pacho@gentoo.org> libbs2b-3.1.0-r1.ebuild:
+  amd64/x86 stable, bug #526006
+
+  21 Oct 2014; Jeroen Roovers <jer@gentoo.org> libbs2b-3.1.0-r1.ebuild:
+  Stable for HPPA (bug #526006).
+
+*libbs2b-3.1.0-r1 (27 Jul 2014)
+
+  27 Jul 2014; Alexis Ballier <aballier@gentoo.org> +libbs2b-3.1.0-r1.ebuild:
+  convert to multilib (used by ffmpeg)
+
+  04 Mar 2014; Vicente Olivert Riera <vincent@gentoo.org> libbs2b-3.1.0.ebuild:
+  Add ~mips keyword.
+
+  28 Jul 2013; Alexis Ballier <aballier@gentoo.org> libbs2b-3.1.0.ebuild:
+  keyword ~amd64-fbsd, bug #477750
+
+  11 Jul 2012; Tim Harder <radhermit@gentoo.org> -libbs2b-3.0.0.ebuild,
+  -files/libbs2b-3.0.0-freebsd.patch:
+  Remove old.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> libbs2b-3.0.0.ebuild,
+  libbs2b-3.1.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  26 Nov 2009; Raúl Porcel <armin76@gentoo.org> libbs2b-3.1.0.ebuild:
+  sparc stable wrt #279238
+
+  02 Sep 2009; Jeroen Roovers <jer@gentoo.org> libbs2b-3.1.0.ebuild:
+  Stable for HPPA (bug #279238).
+
+  31 Aug 2009; Brent Baude <ranger@gentoo.org> libbs2b-3.1.0.ebuild:
+  Marking libbs2b-3.1.0 ppc64 for bug 279238
+
+  28 Aug 2009; Tobias Klausmann <klausman@gentoo.org> libbs2b-3.1.0.ebuild:
+  Stable on alpha, bug #279238
+
+  02 Aug 2009; nixnut <nixnut@gentoo.org> libbs2b-3.1.0.ebuild:
+  ppc stable #279238
+
+  02 Aug 2009; Markus Meier <maekke@gentoo.org> libbs2b-3.1.0.ebuild:
+  x86 stable, bug #279238
+
+  26 Jul 2009; <chainsaw@gentoo.org> libbs2b-3.1.0.ebuild:
+  Marked stable on AMD64 as a required dependency of Audacious 2.1; tested
+  on a Xonar D2X soundcard with Grado SR325i headphones.
+
+  26 Jun 2009; Raúl Porcel <armin76@gentoo.org> libbs2b-3.1.0.ebuild:
+  Add ~sparc wrt #270203
+
+  04 Jun 2009; Tobias Klausmann <klausman@gentoo.org> libbs2b-3.0.0.ebuild:
+  Keyworded on alpha, bug #270203
+
+*libbs2b-3.1.0 (04 Jun 2009)
+
+  04 Jun 2009; <chainsaw@gentoo.org> +libbs2b-3.1.0.ebuild:
+  Version bump, incorporates the BSD portability patch by Flameeyes. More
+  compilation warnings have been assasinated.
+
+  20 May 2009; Jeroen Roovers <jer@gentoo.org> libbs2b-3.0.0.ebuild:
+  Marked ~hppa (bug #270203).
+
+  19 May 2009; Dawid Węgliński <cla@gentoo.org> libbs2b-3.0.0.ebuild:
+  Keyword ~x86 per bug #270203
+
+  19 May 2009; Brent Baude <ranger@gentoo.org> libbs2b-3.0.0.ebuild:
+  Marking libbs2b-3.0.0 ~ppc and ~ppc64 for bug 270203
+
+  17 May 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  libbs2b-3.0.0.ebuild, +files/libbs2b-3.0.0-freebsd.patch:
+  Add patch to build under FreeBSD and mark ~x86-fbsd (seems to be working).
+
+*libbs2b-3.0.0 (17 May 2009)
+
+  17 May 2009; <chainsaw@gentoo.org> +libbs2b-3.0.0.ebuild:
+  Initial commit, ebuild by Sebastian Pipping with a minor fix by me.

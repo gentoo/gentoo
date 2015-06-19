@@ -1,0 +1,36 @@
+#!/sbin/runscript
+# Copyright 1999-2010 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/glusterfs/files/glusterd.initd,v 1.1 2010/11/21 18:56:20 xarthisius Exp $
+
+PIDFILE=/var/run/glusterd.pid
+
+depend() {
+	need net
+	before netmount
+}
+
+start() {
+	ebegin "Starting glusterd"
+	start-stop-daemon --start -q --exec /usr/sbin/glusterd \
+		--pidfile "${PIDFILE}" --make-pidfile --background \
+		-- -N
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping glusterd"
+	start-stop-daemon --stop -q --pidfile "${PIDFILE}"
+	eindent
+
+	einfo "Unmounting GlusterFS filesystems"
+	umount -t fuse.glusterfs -a
+
+	einfo "Killing remaining GlusterFS processes"
+	for PID in $(find /var/lib/glusterd/ -type f -name "*.pid" -exec cat {} \;); do
+		kill "${PID}"
+	done
+
+	eoutdent
+	eend $?
+}

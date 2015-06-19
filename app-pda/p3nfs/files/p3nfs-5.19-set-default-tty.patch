@@ -1,0 +1,14 @@
+--- configure.in.orig	2014-04-09 14:05:32.579648000 +0400
++++ configure.in	2014-04-09 14:10:05.162648000 +0400
+@@ -81,7 +81,10 @@
+     break
+   fi
+ done
+-test -z "$DDEV" && AC_MSG_ERROR(serial device not found... Try harder.)
++if test -z "$DDEV"; then
++	DDEV="/dev/ttyS0"
++	AC_MSG_RESULT(serial device not found... Setting default one to $DDEV)
++fi
+ AC_SUBST(DDEV)
+ 
+ dnl Looking for Symbian SDKs:

@@ -1,0 +1,31 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or
+# later
+# $Header: /var/cvsroot/gentoo-x86/net-im/bitlbee/files/bitlbee.initd-r1,v 1.2 2014/10/09 09:51:50 wired Exp $
+
+DAEMON=/usr/sbin/bitlbee
+PIDFILE=/var/run/bitlbee/bitlbee.pid
+
+depend() {
+	need logger net
+}
+
+start () {
+	ebegin "Starting bitlbee"
+	checkpath -d -m 0755 -o bitlbee:bitlbee $(dirname ${PIDFILE})
+	start-stop-daemon --start --quiet \
+		-u bitlbee:bitlbee --exec ${DAEMON} --pidfile ${PIDFILE} \
+		-- -P ${PIDFILE} ${BITLBEE_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping bitlbee"
+	local pidfile=
+	yesno ${BITLBEE_STOP_ALL:-YES} ||
+		pidfile="--pidfile ${PIDFILE}"
+	start-stop-daemon --stop --quiet ${pidfile} -u bitlbee:bitlbee
+	eend $?
+}
+

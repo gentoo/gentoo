@@ -1,0 +1,25 @@
+# /etc/conf.d/vdr.satip:
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-satip/files/confd,v 1.1 2015/02/02 20:51:30 hd_brummy Exp $
+
+#Configuration:
+
+#The plugin accepts a "--devices" (-d) command-line parameter defaulting
+#to one. This parameter defines how many simultaneous transponders can
+#be received, if there are available SAT>IP tuners.
+
+#The plugin accepts also a "--server" (-s) command-line parameter, that
+#can be used to manually configure static SAT>IP servers if autodetection
+#via UPnP somehow can't be used. The parameter string is a semicolon
+#separated list of "<ipaddress>|<model>|<description>" entries. The model
+#consists of a DVB system (DVBS2,DVBT2,DVBT,DVBC) and number of available
+#frontends separated by a hyphen:
+
+#vdr -P 'satip -s <ipaddress>|<model>|<description>;...'
+#vdr -P 'satip -s 192.168.0.1|DVBS2-2,DVBT2-2|Octo1'
+#vdr -P 'satip -s 192.168.0.1|DVBS2-4|Octo1;192.168.0.2|DVBT2-4|Octo2'
+
+# no default parameters
+# uncomment the next line and add your personal settings,
+# depend on the infos from ahead
+#
+#_EXTRAOPTS""

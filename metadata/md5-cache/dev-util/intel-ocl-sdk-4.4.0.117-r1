@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst prepare unpack
+DEPEND=>=app-arch/rpm2targz-9.0.0.3g
+DESCRIPTION=Intel's implementation of the OpenCL standard
+EAPI=5
+HOMEPAGE=http://software.intel.com/en-us/articles/opencl-sdk/
+IUSE=android +system-tbb system-clang +system-boost +system-qt
+KEYWORDS=-* ~amd64
+LICENSE=Intel-SDP
+RDEPEND=app-eselect/eselect-opencl sys-process/numactl system-tbb? ( >=dev-cpp/tbb-4.2.20131118 ) system-clang? ( =sys-devel/clang-3.4* ) system-boost? ( >=dev-libs/boost-1.52.0:= ) system-qt? ( >=dev-qt/qtgui-4.8.5:4 >=dev-qt/qtcore-4.8.5:4 )
+RESTRICT=mirror
+SLOT=0
+SRC_URI=http://registrationcenter.intel.com/irc_nas/4181/intel_sdk_for_ocl_applications_2014_ubuntu_4.4.0.117_x64.tgz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	rpm	b94b54b44f14d6bee3e966c8f5c86fba	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=5a84795f9ed4532c628e0ac73e08affb

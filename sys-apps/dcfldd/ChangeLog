@@ -1,0 +1,56 @@
+# ChangeLog for sys-apps/dcfldd
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/dcfldd/ChangeLog,v 1.13 2012/09/08 02:10:51 radhermit Exp $
+
+  08 Sep 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+  03 Dec 2011; Markos Chandras <hwoarang@gentoo.org> dcfldd-1.3.4.1.ebuild:
+  add missing RDEPEND. stable on amd64. bug #392419
+
+  01 Dec 2011; Tim Harder <radhermit@gentoo.org> -dcfldd-1.2.2.ebuild,
+  -dcfldd-1.2.4.ebuild, -dcfldd-1.2.4-r1.ebuild,
+  -files/dcfldd-1.2.4_md5_amd64_fix.patch:
+  Remove old.
+
+  21 Mar 2007; Raúl Porcel <armin76@gentoo.org> dcfldd-1.3.4.1.ebuild:
+  x86 stable
+
+*dcfldd-1.3.4.1 (15 Feb 2007)
+
+  15 Feb 2007; George Shapovalov <george@gentoo.org> +dcfldd-1.3.4.1.ebuild:
+  new version (#155464)
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*dcfldd-1.2.4-r1 (12 Oct 2005)
+
+  12 Oct 2005; Daniel Black <dragonheart@gentoo.org>
+  +files/dcfldd-1.2.4_md5_amd64_fix.patch, dcfldd-1.2.2.ebuild,
+  dcfldd-1.2.4.ebuild, +dcfldd-1.2.4-r1.ebuild:
+  -amd64 masked on versions 1.2.2 and 1.2.4 due to bad md5 implenation in bug
+  108653. Corrected version in 1.2.4-r1 thanks to Martin Scharrer for the bug
+  report and the patch
+
+  25 Sep 2005; Daniel Black <dragonheart@gentoo.org> dcfldd-1.2.4.ebuild:
+  ~ppc keyworded
+
+  25 Sep 2005; Daniel Black <dragonheart@gentoo.org> metadata.xml,
+  dcfldd-1.2.4.ebuild:
+  forensics herd takes maintainence. Thanks vapier. 1.2.4 stable now too
+
+*dcfldd-1.2.4 (20 Aug 2005)
+
+  20 Aug 2005; Mike Frysinger <vapier@gentoo.org> +dcfldd-1.2.4.ebuild:
+  Version bump #96789 by Joe Corrigan.
+
+*dcfldd-1.2.2 (06 May 2005)
+
+  06 May 2005; Mike Frysinger <vapier@gentoo.org> +dcfldd-1.2.2.ebuild:
+  Version bump #91581 by Ken Garland.
+
+*dcfldd-1.0 (21 Feb 2004)
+
+  21 Feb 2004; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Daniel Fullmer #41190.

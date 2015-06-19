@@ -1,0 +1,13 @@
+DEFINED_PHASES=install unpack
+DEPEND=unicode? ( virtual/libiconv ) >=app-arch/rpm2targz-9.0.0.3g
+DESCRIPTION=AVM DSL Assistant for autodetecting DSL values (VPI, VCI, VPP) for 'fcdsl' based cards
+HOMEPAGE=http://opensuse.foehr-it.de/
+IUSE=unicode
+KEYWORDS=~amd64 x86
+LICENSE=AVM-FC
+RDEPEND=net-dialup/capi4k-utils
+RESTRICT=mirror strip test
+SLOT=0
+SRC_URI=x86? ( http://opensuse.foehr-it.de/rpms/10_3/2.6.22.13_0.3/32bit/drdsl-1.0-1.i586.rpm ) amd64? ( http://opensuse.foehr-it.de/rpms/10_3/2.6.22.13_0.3/64bit/drdsl-1.0-1.x86_64.rpm )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	rpm	b94b54b44f14d6bee3e966c8f5c86fba	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=10ab6683f6a1e0ce0b0c21663a7ac106

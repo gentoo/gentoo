@@ -1,0 +1,11 @@
+--- Makefile.old	2010-10-16 21:34:09.000000000 +0200
++++ Makefile	2010-10-16 21:34:24.000000000 +0200
+@@ -17,7 +17,7 @@
+ 
+ # dynamically linked binary:
+ $(TARGET): $(OBJS)
+-	$(CXX) $^ -o $@ `sdl-config --libs` -lSDL_image -lSDL_mixer -lSDL_sound -lSDL_sound -lSGE
++	$(CXX) $(LDFLAGS) $^ -o $@ `sdl-config --libs` -lSDL_image -lSDL_mixer -lSDL_sound -lSDL_sound -lSGE
+ 	mv ./$(TARGET) ..
+ 
+ clean:

@@ -1,0 +1,87 @@
+https://bugs.gentoo.org/show_bug.cgi?id=289942
+
+From d91f1f17be33dfc5ed771829639791b5463417a2 Mon Sep 17 00:00:00 2001
+From: Jeremy Olexa <darkside@gentoo.org>
+Date: Wed, 28 Oct 2009 20:58:45 -0500
+Subject: [PATCH 1/2] Add rsync monitoring support to mirmon.
+
+You will also need to modify mirmon.conf to use probe-mirmon instead
+Original patch located at: http://www.tug.org/texlive/mirmon/probe-mirmon
+---
+ mirmon       |    2 +-
+ probe-mirmon |   50 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 51 insertions(+), 1 deletions(-)
+ create mode 100644 probe-mirmon
+
+diff --git a/mirmon b/mirmon
+index a1261f5..6c0aaa8 100755
+--- a/mirmon
++++ b/mirmon
+@@ -384,7 +384,7 @@ sub get_ccs
+ sub type_site
+   { my $url = shift ;
+     my ( $type, $site, $home ) ;
+-    if ( $url =~ m!^(ftp|http)://([^/:]+)(:\d+)?/! )
++    if ( $url =~ m!^(ftp|https?|rsync)://([^/:]+)(:\d+)?/! )
+       { $type = $1 ; $site = $2 ; $home = $& ; }
+     return $type, $site, $home ;
+   }
+diff --git a/probe-mirmon b/probe-mirmon
+new file mode 100644
+index 0000000..a7fe513
+--- /dev/null
++++ b/probe-mirmon
+@@ -0,0 +1,50 @@
++#!/usr/bin/env perl
++# $Id: 0001-Add-rsync-monitoring-support-to-mirmon.patch,v 1.1 2010/05/09 22:06:26 darkside Exp $
++# public domain.  Originally written by Karl Berry, 2009.
++# 
++# Probe rsync url's for mirmon; use wget for anything else.
++# From description at http://people.cs.uu.nl/henkp/mirmon.
++# 
++# Also requires a patch to mirmon itself to accept rsync urls
++# (and I wanted https too):
++# --- /usr/local/share/mirmon/ORIG/mirmon	2007-08-18 18:05:47.000000000 +0200
++# +++ /usr/local/share/mirmon/mirmon	2009-07-03 22:38:00.000000000 +0200
++# @@ -386,3 +386,3 @@
++#      my ( $type, $site, $home ) ;
++# -    if ( $url =~ m!^(ftp|http)://([^/:]+)(:\d+)?/! )
++# +    if ( $url =~ m!^(ftp|https?|rsync)://([^/:]+)(:\d+)?/! )
++#        { $type = $1 ; $site = $2 ; $home = $& ; }
++
++exit (&main ());
++
++sub main
++{
++  my ($timeout,$url) = @ARGV;
++  my $ret;
++
++  if ($url =~ m,^rsync://,) {
++    $ret = &handle_rsync ($timeout, $url);
++  } else {
++    $ret = system qq(wget -q -O - -t 1 -T $timeout $url);
++  }
++  return $ret;
++}
++
++
++sub handle_rsync
++{
++  my ($timeout,$url) = @_;
++  
++  my $tmpdir = "rsync-tmp";
++  -d $tmpdir || mkdir ($tmpdir, 0700);
++  
++  (my $file = $url) =~ s/\W/_/g;  # translate all non-letters to _
++  my $local = "$tmpdir/$file";
++  my $ret = system
++             qq(/usr/local/bin/rsync --no-motd --timeout $timeout $url $local);
++
++  @ARGV = ($local);  # don't care about our args any more.
++  print <>;          # let perl autoprint
++
++  return $ret;
++}
+-- 
+1.6.4.4
+

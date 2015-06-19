@@ -1,0 +1,43 @@
+# @GENTOO_PORTAGE_EPREFIX@/etc/zsh/zprofile
+# $Header: /var/cvsroot/gentoo-x86/app-shells/zsh/files/zprofile-1,v 1.1 2010/08/15 12:21:56 tove Exp $
+
+# Load environment settings from profile.env, which is created by
+# env-update from the files in /etc/env.d
+if [ -e "@GENTOO_PORTAGE_EPREFIX@"/etc/profile.env ] ; then
+	. "@GENTOO_PORTAGE_EPREFIX@"/etc/profile.env
+fi
+
+# You should override these in your ~/.zprofile (or equivalent) for per-user
+# settings.  For system defaults, you can add a new file in /etc/profile.d/.
+export EDITOR=${EDITOR:-/bin/nano}
+export PAGER=${PAGER:-/usr/bin/less}
+
+# 077 would be more secure, but 022 is generally quite realistic
+umask 022
+
+# Set up PATH depending on whether we're root or a normal user.
+# There's no real reason to exclude sbin paths from the normal user,
+# but it can make tab-completion easier when they aren't in the
+# user's PATH to pollute the executable namespace.
+#
+# It is intentional in the following line to use || instead of -o.
+# This way the evaluation can be short-circuited and calling whoami is
+# avoided.
+if [ "$EUID" = "0" ] || [ "$USER" = "root" ] ; then
+	@ZSH_NOPREFIX@PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:${ROOTPATH}"
+	@ZSH_PREFIX@PATH="@GENTOO_PORTAGE_EPREFIX@/usr/sbin:@GENTOO_PORTAGE_EPREFIX@/usr/bin:@GENTOO_PORTAGE_EPREFIX@/sbin:@GENTOO_PORTAGE_EPREFIX@/bin:${ROOTPATH}:/usr/sbin:/usr/bin:/sbin:/bin"
+else
+	@ZSH_NOPREFIX@PATH="/usr/local/bin:/usr/bin:/bin:${PATH}"
+	@ZSH_PREFIX@PATH="@GENTOO_PORTAGE_EPREFIX@/usr/bin:@GENTOO_PORTAGE_EPREFIX@/bin:${PATH}:/usr/bin:/bin"
+fi
+export PATH
+unset ROOTPATH
+
+shopts=$-
+setopt nullglob
+for sh in "@GENTOO_PORTAGE_EPREFIX@"/etc/profile.d/*.sh ; do
+	[ -r "$sh" ] && . "$sh"
+done
+unsetopt nullglob
+set -$shopts
+unset sh shopts

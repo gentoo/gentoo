@@ -1,0 +1,50 @@
+# ChangeLog for net-misc/pedro
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/pedro/ChangeLog,v 1.13 2012/03/26 12:50:58 keri Exp $
+
+  23 Mar 2012; <keri@gentoo.org> -pedro-1.5.ebuild:
+  Remove old version
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org> pedro-1.5.ebuild,
+  pedro-1.6.ebuild:
+  Drop sparc keywords
+
+  15 Feb 2012; Brent Baude <ranger@gentoo.org> pedro-1.6.ebuild:
+  Marking pedro-1.6 ppc for bug 398813
+
+  21 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> pedro-1.6.ebuild:
+  x86 stable wrt bug #398813
+
+  13 Jan 2012; Agostino Sarubbo <ago@gentoo.org> pedro-1.6.ebuild:
+  Stable for AMD64, wrt bug #398813
+
+*pedro-1.6 (19 Nov 2011)
+
+  19 Nov 2011; <keri@gentoo.org> +pedro-1.6.ebuild,
+  +files/pedro-1.6-portage.patch:
+  Version bump
+
+  29 Oct 2010; <keri@gentoo.org> pedro-1.5.ebuild:
+  QA - tidy up examples installation, add die to doins calls
+
+  24 Oct 2010; Brent Baude <ranger@gentoo.org> pedro-1.5.ebuild:
+  Marking pedro-1.5 ppc for bug 330967
+
+  18 Sep 2010; Raúl Porcel <armin76@gentoo.org> pedro-1.5.ebuild:
+  sparc stable wrt #330967
+
+  08 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> pedro-1.5.ebuild:
+  x86 stable wrt bug #330967
+
+  03 Aug 2010; Markos Chandras <hwoarang@gentoo.org> pedro-1.5.ebuild:
+  Stable on amd64 wrt bug #330967
+
+  03 Jul 2010; <keri@gentoo.org> pedro-1.5.ebuild,
+  +files/pedro-1.5-portage.patch:
+  Respect LDFLAGS
+
+*pedro-1.5 (02 Jul 2010)
+
+  02 Jul 2010; <keri@gentoo.org> +pedro-1.5.ebuild, +metadata.xml:
+  Initial import.
+

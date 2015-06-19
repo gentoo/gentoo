@@ -1,0 +1,24 @@
+# ChangeLog for media-libs/portmidi
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/portmidi/ChangeLog,v 1.5 2014/11/30 10:46:00 mgorny Exp $
+
+*portmidi-217-r1 (30 Nov 2014)
+
+  30 Nov 2014; Michał Górny <mgorny@gentoo.org> +portmidi-217-r1.ebuild:
+  Convert to distutils-r1.
+
+  13 Jun 2012; Johannes Huber <johu@gentoo.org> portmidi-217.ebuild:
+  Stable for x86, wrt bug #417127
+
+  25 May 2012; Agostino Sarubbo <ago@gentoo.org> portmidi-217.ebuild:
+  Stable for amd64, wrt bug #417127
+
+  25 May 2012; Tim Harder <radhermit@gentoo.org> portmidi-217.ebuild:
+  Add latex deps for doxygen manual build.
+
+*portmidi-217 (27 Feb 2012)
+
+  27 Feb 2012; Tim Harder <radhermit@gentoo.org> +portmidi-217.ebuild,
+  +files/portmidi-217-cmake.patch, +files/portmidi-217-python.patch,
+  +metadata.xml:
+  Initial import from sunrise (bug #90614, thanks to all contributors).

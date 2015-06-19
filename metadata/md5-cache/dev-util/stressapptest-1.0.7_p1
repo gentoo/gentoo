@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure
+DEPEND=dev-libs/libaio
+DESCRIPTION=Stressful Application Test
+EAPI=4
+HOMEPAGE=http://code.google.com/p/stressapptest/
+IUSE=debug
+KEYWORDS=~amd64 ~arm ~mips ~x86
+LICENSE=Apache-2.0
+RDEPEND=dev-libs/libaio
+SLOT=0
+SRC_URI=mirror://gentoo/stressapptest-1.0.7_p1.tar.xz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=d4e8b9e6d432d15ac731510bb29ff109

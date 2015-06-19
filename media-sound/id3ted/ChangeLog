@@ -1,0 +1,18 @@
+# ChangeLog for media-sound/id3ted
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/id3ted/ChangeLog,v 1.4 2014/11/25 23:25:53 hasufell Exp $
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+  27 Aug 2012; Johannes Huber <johu@gentoo.org> id3ted-1.0_beta3.ebuild:
+  Stable for x86, wrt bug #432728
+
+  26 Aug 2012; Agostino Sarubbo <ago@gentoo.org> id3ted-1.0_beta3.ebuild:
+  Stable for amd64, wrt bug #432728
+
+*id3ted-1.0_beta3 (14 Jul 2012)
+
+  14 Jul 2012; Julian Ospald <hasufell@gentoo.org> +id3ted-1.0_beta3.ebuild,
+  +metadata.xml:
+  initial import wrt bug #330973

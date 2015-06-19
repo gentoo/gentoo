@@ -1,0 +1,154 @@
+# ChangeLog for sys-devel/bin86
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/bin86/ChangeLog,v 1.37 2015/01/26 10:39:40 ago Exp $
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> bin86-0.16.21.ebuild:
+  Stable for x86, wrt bug #535672
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> bin86-0.16.21.ebuild:
+  Stable for amd64, wrt bug #535672
+
+  12 Jun 2014; Lars Wendler <polynomial-c@gentoo.org> bin86-0.16.21.ebuild:
+  Removed unneeded patch from SRC_URI.
+
+*bin86-0.16.21 (28 May 2014)
+
+  28 May 2014; Lars Wendler <polynomial-c@gentoo.org> -bin86-0.16.17.ebuild,
+  -bin86-0.16.18.ebuild, -bin86-0.16.19.ebuild, +bin86-0.16.21.ebuild:
+  Version bump. Removed old.
+
+  18 May 2014; Mike Frysinger <vapier@gentoo.org> bin86-0.16.20-r2.ebuild:
+  Add ppc/ppc64 keywords as this project can build on any arch (it will still
+  generate x86 output, but that is what projects usually want).
+
+  04 May 2014; Agostino Sarubbo <ago@gentoo.org> bin86-0.16.20-r2.ebuild:
+  Stable for x86, wrt bug #502928
+
+  21 Apr 2014; Chema Alonso <nimiux@gentoo.org> bin86-0.16.20-r2.ebuild:
+  Stable for amd64 wrt bug #502928
+
+*bin86-0.16.20-r2 (02 Jan 2014)
+
+  02 Jan 2014; Lars Wendler <polynomial-c@gentoo.org> -bin86-0.16.20-r1.ebuild,
+  +bin86-0.16.20-r2.ebuild:
+  Revbump to add upstream fix for lilo build breakage (bug #491828).
+
+  09 Dec 2013; Anthony G. Basile <blueness@gentoo.org> ChangeLog:
+  Fix gpg signing of manifest
+
+*bin86-0.16.20-r1 (09 Dec 2013)
+
+  09 Dec 2013; Anthony G. Basile <blueness@gentoo.org> +bin86-0.16.20-r1.ebuild,
+  +files/bin86-0.16.20-remove-seg-ss-check.patch, -bin86-0.16.20.ebuild:
+  Disable seg ss check which breaks lilo, bug #491828
+
+*bin86-0.16.20 (10 Nov 2013)
+
+  10 Nov 2013; Agostino Sarubbo <ago@gentoo.org> +bin86-0.16.20.ebuild:
+  Version bump to 0.16.20
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> bin86-0.16.19.ebuild:
+  Stable for amd64, wrt bug #474304
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> bin86-0.16.19.ebuild:
+  Stable for x86, wrt bug #474304
+
+  24 May 2013; Alexis Ballier <aballier@gentoo.org> bin86-0.16.19.ebuild:
+  keyword ~amd64-fbsd, bug #428228
+
+*bin86-0.16.19 (06 Jan 2013)
+
+  06 Jan 2013; Mike Frysinger <vapier@gentoo.org> +bin86-0.16.19.ebuild:
+  Version bump #450572 by Agostino Sarubbo.
+
+  01 Aug 2012; Naohiro Aota <naota@gentoo.org> bin86-0.16.18.ebuild:
+  Add ~x86-fbsd.
+
+  29 Jul 2012; Mike Frysinger <vapier@gentoo.org> bin86-0.16.18.ebuild,
+  files/bin86-0.16.17-amd64-build.patch:
+  Always apply amd64 build patch, and convert ebuild to EAPI=4 #428228 by
+  Richard Yao.
+
+*bin86-0.16.18 (07 Dec 2010)
+
+  07 Dec 2010; Mike Frysinger <vapier@gentoo.org>
+  files/bin86-0.16.17-amd64-build.patch, +bin86-0.16.18.ebuild,
+  +files/bin86-0.16.18-headers.patch:
+  Version bump. Add patch by David J Cozatt #347817.
+
+  05 Oct 2009; Mike Frysinger <vapier@gentoo.org> bin86-0.16.17.ebuild:
+  Update HOMEPAGE and SRC_URI.
+
+  15 Jul 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Assigning to base-system, as beu is being retired (#66608).
+
+  13 Aug 2006; Chris Bainbridge <chrb@gentoo.org> metadata.xml,
+  -bin86-0.16.0.ebuild:
+  Add myself as maintainer, remove old ebuild.
+
+  29 Dec 2005; Olivier Crête <tester@gentoo.org> bin86-0.16.17.ebuild:
+  Stable on amd64
+
+  09 May 2005; Olivier Crête <tester@gentoo.org>
+  +files/bin86-0.16.17-amd64-build.patch, bin86-0.16.17.ebuild:
+  Added patch to make it build on amd64
+
+*bin86-0.16.17 (30 Jan 2005)
+
+  30 Jan 2005; Mike Frysinger <vapier@gentoo.org> +bin86-0.16.17.ebuild:
+  Version bump.
+
+*bin86-0.16.16 (29 Nov 2004)
+
+  29 Nov 2004; Mike Frysinger <vapier@gentoo.org> +bin86-0.16.16.ebuild:
+  Version bump.
+
+  02 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> bin86-0.15.5.ebuild,
+  bin86-0.16.0.ebuild, bin86-0.16.11-r1.ebuild, bin86-0.16.13.ebuild:
+  virtual/glibc -> virtual/libc
+
+  07 Jan 2004; <gustavoz@gentoo.org> bin86-0.15.5.ebuild, bin86-0.16.0.ebuild,
+  bin86-0.16.11-r1.ebuild, bin86-0.16.13.ebuild:
+  -sparc all of them, this doesn't work on sparc!
+
+*bin86-0.16.13 (04 Oct 2003)
+
+  04 Oct 2003; Martin Schlemmer <azarah@gentoo.org> bin86-0.16.13.ebuild:
+  Update version.
+
+*bin86-0.16.11-r1 (17 Aug 2003)
+
+  17 Aug 2003; Robin H. Johnson <robbat2@gentoo.org> bin86-0.16.11-r1.ebuild:
+  Update ebuild to actually build with the users CFLAGS
+
+  16 Mar 2003; Martin Schlemmer <azarah@gentoo.org> bin86-0.16.0.ebuild :
+  Mark stable for x86.
+
+*bin86-0.16.11 (16 Mar 2003)
+
+  16 Mar 2003; Martin Schlemmer <azarah@gentoo.org> bin86-0.16.11.ebuild :
+  Update version.
+
+*bin86-0.16.10 (30 Dec 2002)
+
+  30 Dec 2002; Martin Schlemmer <azarah@gentoo.org> bin86-0.16.10.ebuild :
+  Update version.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> :
+  Changed sparc ~sparc keywords
+ 
+*bin86-0.16.0 (16 Nov 2002)
+
+  16 Nov 2002; Brandon Low <lostlogic@gentoo.org> bin86-0.16.0.ebuild :
+  Ok here is 0.16.0, the make system of this package smells bad, but I
+  kicked it into shape.  Hope you all enjoy the new version.
+
+*bin86-0.15.5 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>x11</herd>
+<maintainer>
+<email>leio@gentoo.org</email>
+</maintainer>
+<use>
+<flag name="ztv">Enable building the V4L2 ZTV driver</flag>
+</use>
+<longdescription lang="en">
+	X.Org driver for AMD Geode GX2 and Geode LX platforms.
+</longdescription>
+</pkgmetadata>

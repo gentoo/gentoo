@@ -1,0 +1,13 @@
+Build auto_index tool with USE="tools"
+Gentoo bug report: https://bugs.gentoo.org/show_bug.cgi?id=529066
+
+--- tools/Jamfile.v2.orig	2014-12-24 12:57:32.290880067 +0300
++++ tools/Jamfile.v2	2014-12-24 12:58:38.403883250 +0300
+@@ -20,6 +20,7 @@
+ use-project /boost/regression : regression/build ;
+ 
+ TOOLS =
++    auto_index/build//auto_index
+     bcp//bcp
+     inspect/build//inspect
+     quickbook//quickbook

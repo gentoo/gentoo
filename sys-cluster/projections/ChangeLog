@@ -1,0 +1,9 @@
+# ChangeLog for sys-cluster/projections
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/projections/ChangeLog,v 1.1 2013/12/13 20:13:12 nicolasbock Exp $
+
+*projections-6.2.1 (13 Dec 2013)
+
+  13 Dec 2013; Nicolas Bock <nicolasbock@gentoo.org> +metadata.xml,
+  +projections-6.2.1.ebuild:
+  sys-cluster/projections: Copied latest ebuild from sci overlay.

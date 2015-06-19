@@ -1,0 +1,310 @@
+# ChangeLog for dev-db/libdbi-drivers
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/libdbi-drivers/ChangeLog,v 1.72 2015/06/09 13:12:00 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  15 Mar 2015; Ulrich Müller <ulm@gentoo.org> libdbi-drivers-0.9.0.ebuild:
+  Add conditional bindist restriction and remove bindist USE flag, bug 541482.
+
+  28 Dec 2014; Aaron W. Swenson <titanofold@gentoo.org>
+  libdbi-drivers-0.9.0.ebuild:
+  Rename virtual/postgresql to dev-db/postgresql
+
+  23 Nov 2014; Pacho Ramos <pacho@gentoo.org>
+  -files/libdbi-drivers-0.8.3-doc-build-fix.patch,
+  -files/libdbi-drivers-0.8.3-firebird-fix.patch,
+  -files/libdbi-drivers-0.8.3-fix-ac-macro.patch,
+  -files/libdbi-drivers-0.8.3-oracle-build-fix.patch,
+  -libdbi-drivers-0.8.3-r2.ebuild, -libdbi-drivers-0.8.3.ebuild:
+  Drop old
+
+  03 Nov 2014; Aaron W. Swenson <titanofold@gentoo.org>
+  libdbi-drivers-0.8.3.ebuild, libdbi-drivers-0.8.3-r2.ebuild,
+  libdbi-drivers-0.9.0.ebuild:
+  Update PostgreSQL dependencies and/or checks to virtual/postgresql.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  libdbi-drivers-0.8.3-r2.ebuild, libdbi-drivers-0.8.3.ebuild,
+  libdbi-drivers-0.9.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  09 Jun 2014; Mike Frysinger <vapier@gentoo.org> libdbi-drivers-0.9.0.ebuild:
+  Mark arm64/m68k/s390/sh stable.
+
+  15 Jan 2014; Agostino Sarubbo <ago@gentoo.org> libdbi-drivers-0.9.0.ebuild:
+  Stable for sparc, wrt bug #486476
+
+  15 Jan 2014; Agostino Sarubbo <ago@gentoo.org> libdbi-drivers-0.9.0.ebuild:
+  Stable for alpha, wrt bug #486476
+
+  15 Jan 2014; Agostino Sarubbo <ago@gentoo.org> libdbi-drivers-0.9.0.ebuild:
+  Stable for ia64, wrt bug #486476
+
+  22 Dec 2013; Agostino Sarubbo <ago@gentoo.org> libdbi-drivers-0.9.0.ebuild:
+  Stable for ppc, wrt bug #486476
+
+  22 Dec 2013; Agostino Sarubbo <ago@gentoo.org> libdbi-drivers-0.9.0.ebuild:
+  Stable for ppc64, wrt bug #486476
+
+  27 Nov 2013; Markus Meier <maekke@gentoo.org> libdbi-drivers-0.9.0.ebuild:
+  arm stable, bug #486476
+
+  24 Nov 2013; Pacho Ramos <pacho@gentoo.org> libdbi-drivers-0.9.0.ebuild:
+  x86 stable, bug #486476
+
+  23 Nov 2013; Pacho Ramos <pacho@gentoo.org> libdbi-drivers-0.9.0.ebuild:
+  amd64 stable, bug #486476
+
+  11 Nov 2013; Jeroen Roovers <jer@gentoo.org> libdbi-drivers-0.9.0.ebuild:
+  Stable for HPPA (bug #486476).
+
+  10 Sep 2013; Patrick Lauer <patrick@gentoo.org> libdbi-drivers-0.9.0.ebuild:
+  Whitespace
+
+*libdbi-drivers-0.9.0 (29 Aug 2013)
+
+  29 Aug 2013; Robin H. Johnson <robbat2@gentoo.org>
+  +files/libdbi-drivers-0.9.0-doc-build-fix.patch, +libdbi-drivers-0.9.0.ebuild:
+  Bump per bug #465716.
+
+  14 May 2013; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +files/libdbi-drivers-0.8.3-fix-ac-macro.patch,
+  libdbi-drivers-0.8.3-r2.ebuild:
+  [dev-db/libdbi-drivers] Add patch to replace AM_CONFIG_HEADER with
+  AC_CONFIG_HEADERS - fixes build with automake-1.13..
+
+  13 Sep 2012; Tomáš Chvátal <scarabeus@gentoo.org>
+  libdbi-drivers-0.8.3-r2.ebuild:
+  Conditionalize static lib creation and prune the .la file.
+
+  13 Sep 2012; Tomáš Chvátal <scarabeus@gentoo.org>
+  -files/libdbi-drivers-0.8.1-oci8.diff, -libdbi-drivers-0.8.1-r1.ebuild,
+  -libdbi-drivers-0.8.1-r2.ebuild, -libdbi-drivers-0.8.3-r1.ebuild,
+  libdbi-drivers-0.8.3-r2.ebuild:
+  Cleanup the ebuild to be eapi4. Drop sqlite2 support to have saner sqlite way.
+  Redux older versions. Stabilise latest on all arches as it emerged on my
+  stable boxen without issue contrary the old stable. Keep old stable around
+  just in case.
+
+*libdbi-drivers-0.8.3-r2 (28 Sep 2010)
+
+  28 Sep 2010; Robin H. Johnson <robbat2@gentoo.org>
+  libdbi-drivers-0.8.1-r1.ebuild, libdbi-drivers-0.8.1-r2.ebuild,
+  libdbi-drivers-0.8.3.ebuild, libdbi-drivers-0.8.3-r1.ebuild,
+  +libdbi-drivers-0.8.3-r2.ebuild:
+  Bug #329033: postgres virtual migration converted this to depending on
+  -server instead of -base. Fix up, with a revbump also redoing RDEPEND vs
+  DEPEND.
+
+  17 Jun 2010; Patrick Lauer <patrick@gentoo.org>
+  libdbi-drivers-0.8.1-r1.ebuild, libdbi-drivers-0.8.1-r2.ebuild,
+  libdbi-drivers-0.8.3.ebuild, libdbi-drivers-0.8.3-r1.ebuild:
+  Migrating away from deprecated postgres virtuals
+
+*libdbi-drivers-0.8.3-r1 (26 Oct 2009)
+
+  26 Oct 2009; Robin H. Johnson <robbat2@gentoo.org>
+  libdbi-drivers-0.8.3.ebuild, +libdbi-drivers-0.8.3-r1.ebuild,
+  +files/libdbi-drivers-0.8.3-firebird-fix.patch,
+  +files/libdbi-drivers-0.8.3-oracle-build-fix.patch:
+  Bug #289519: Fixup for Firebird compile. Bug #256411: Fix for Oracle
+  compile. Bug #254851: USE-default for tinderbox build.
+
+  24 Feb 2009; Raúl Porcel <armin76@gentoo.org>
+  libdbi-drivers-0.8.3.ebuild:
+  arm/s390/sh stable
+
+  07 Feb 2009; Raúl Porcel <armin76@gentoo.org>
+  libdbi-drivers-0.8.3.ebuild:
+  Add ~arm/~s390/~sh
+
+  25 Jan 2009; Markus Meier <maekke@gentoo.org> libdbi-drivers-0.8.3.ebuild:
+  amd64 stable, bug #253663
+
+  25 Jan 2009; Ferris McCormick <fmccor@gentoo.org>
+  libdbi-drivers-0.8.3.ebuild:
+  Sparc stable, related to Bug #256132.
+
+  25 Jan 2009; Brent Baude <ranger@gentoo.org> libdbi-drivers-0.8.3.ebuild:
+  Marking libdbi-drivers-0.8.3 ppc64 for bug 256132
+
+  20 Jan 2009; Alexis Ballier <aballier@gentoo.org>
+  libdbi-drivers-0.8.3.ebuild:
+  keyword ~x86-fbsd
+
+  11 Jan 2009; Markus Meier <maekke@gentoo.org> libdbi-drivers-0.8.3.ebuild:
+  x86 stable, bug #253663
+
+  09 Jan 2009; Brent Baude <ranger@gentoo.org> libdbi-drivers-0.8.3.ebuild:
+  Marking libdbi-drivers-0.8.3 ppc for bug 253663
+
+  05 Jan 2009; Jeroen Roovers <jer@gentoo.org> libdbi-drivers-0.8.3.ebuild:
+  Stable for HPPA (bug #253663).
+
+  16 Dec 2008; Peter Volkov <pva@gentoo.org> libdbi-drivers-0.8.3.ebuild:
+  ~mips keyworded for dictd, bug #245413
+
+  01 Dec 2008; Brent Baude <ranger@gentoo.org> libdbi-drivers-0.8.3.ebuild:
+  Marking libdbi-drivers-0.8.3 ~ppc64 for bug 244246
+
+  14 Nov 2008; Raúl Porcel <armin76@gentoo.org>
+  libdbi-drivers-0.8.3.ebuild:
+  ia64 stable wrt #244246
+
+  09 Nov 2008; Tobias Klausmann <klausman@gentoo.org>
+  libdbi-drivers-0.8.3.ebuild:
+  Stable on alpha, bug #244246
+
+  09 Nov 2008; Raúl Porcel <armin76@gentoo.org>
+  libdbi-drivers-0.8.3.ebuild:
+  Add ~alpha/~ia64 wrt #245413
+
+  03 Nov 2008; Ferris McCormick <fmccor@gentoo.org>
+  libdbi-drivers-0.8.1-r2.ebuild:
+  Sparc stable, related to Bug #245413 and to Bug #244246.
+
+  28 Oct 2008; Jeroen Roovers <jer@gentoo.org>
+  libdbi-drivers-0.8.1-r2.ebuild:
+  Stable for HPPA (bug #240974).
+
+  16 Oct 2008; Markus Meier <maekke@gentoo.org>
+  libdbi-drivers-0.8.1-r2.ebuild:
+  amd64/x86 stable, bug #240974
+
+  14 Oct 2008; Robin H. Johnson <robbat2@gentoo.org>
+  libdbi-drivers-0.8.1-r1.ebuild, libdbi-drivers-0.8.1-r2.ebuild,
+  libdbi-drivers-0.8.3.ebuild:
+  Disable interactive tests better.
+
+  12 Oct 2008; nixnut <nixnut@gentoo.org> libdbi-drivers-0.8.1-r2.ebuild:
+  Stable on ppc wrt bug 240974
+
+  10 Oct 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +files/libdbi-drivers-0.8.3-doc-build-fix.patch,
+  libdbi-drivers-0.8.3.ebuild:
+  Make documentation build properly optional instead of dependant on system
+  contents.
+
+  29 Sep 2008; Robin H. Johnson <robbat2@gentoo.org>
+  -libdbi-drivers-0.7.1.ebuild, -libdbi-drivers-0.7.1-r1.ebuild,
+  -libdbi-drivers-0.8.0.ebuild, -libdbi-drivers-0.8.1.ebuild,
+  libdbi-drivers-0.8.1-r1.ebuild:
+  Cleanup old ebuilds and repoman warnings.
+
+*libdbi-drivers-0.8.3 (29 Sep 2008)
+
+  29 Sep 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +libdbi-drivers-0.8.3.ebuild:
+  Version bump per bug #237993.
+
+  21 May 2008; Tiziano Müller <dev-zero@gentoo.org>
+  libdbi-drivers-0.7.1-r1.ebuild, libdbi-drivers-0.8.0.ebuild,
+  libdbi-drivers-0.8.1.ebuild, libdbi-drivers-0.8.1-r1.ebuild,
+  libdbi-drivers-0.8.1-r2.ebuild:
+  Changed dependency for postgresql from dev-db/postgresql to
+  virtual/postgresql-server
+
+*libdbi-drivers-0.8.1-r2 (26 Nov 2007)
+
+  26 Nov 2007; Robin H. Johnson <robbat2@gentoo.org>
+  +libdbi-drivers-0.8.1-r2.ebuild:
+  Block USE=firebird when USE=bindist is in play, per bug #200284 for license
+  conflicts.
+
+  20 Jun 2007; Christian Faulhammer <opfer@gentoo.org>
+  libdbi-drivers-0.8.1-r1.ebuild:
+  stable x86, bug 181579
+
+  15 Jun 2007; Christoph Mende <angelos@gentoo.org>
+  libdbi-drivers-0.8.1-r1.ebuild:
+  Stable on amd64 wrt bug 181579
+
+  23 Nov 2006; Francesco Riosa <vivo@gentoo.org>
+  libdbi-drivers-0.7.1-r1.ebuild, libdbi-drivers-0.8.0.ebuild,
+  libdbi-drivers-0.8.1.ebuild, libdbi-drivers-0.8.1-r1.ebuild:
+  dev-db/mysql => virtual/mysql
+
+  17 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  libdbi-drivers-0.8.1-r1.ebuild:
+  ppc stable
+
+  16 Sep 2006; Robin H. Johnson <robbat2@gentoo.org>
+  libdbi-drivers-0.8.1-r1.ebuild:
+  Bug #147808, inherit eutils.
+
+  11 Jun 2006; Robin H. Johnson <robbat2@gentoo.org>
+  +files/libdbi-drivers-0.8.1-oci8.diff, libdbi-drivers-0.8.1-r1.ebuild:
+  Bug #134918 - Compile fix for oci8 driver.
+
+  24 Mar 2006; Joseph Jezak <josejx@gentoo.org>
+  libdbi-drivers-0.7.1-r1.ebuild:
+  Marked ppc stable.
+
+  07 Mar 2006; Jeroen Roovers <jer@gentoo.org>
+  libdbi-drivers-0.8.1-r1.ebuild:
+  Stable on hppa.
+
+*libdbi-drivers-0.8.1-r1 (25 Feb 2006)
+
+  25 Feb 2006; Robin H. Johnson <robbat2@gentoo.org>
+  +libdbi-drivers-0.8.1-r1.ebuild:
+  Bug #104601, sqlite3 support is now controlled by a seperate use flag.
+
+  25 Feb 2006; Robin H. Johnson <robbat2@gentoo.org>
+  libdbi-drivers-0.8.0.ebuild, libdbi-drivers-0.8.1.ebuild:
+  Bug 123943, IUSE cleanup.
+
+*libdbi-drivers-0.8.1 (16 Feb 2006)
+
+  16 Feb 2006; Karol Wojtaszek <sekretarz@gentoo.org>
+  +libdbi-drivers-0.8.1.ebuild:
+  Version bump
+
+  26 Jan 2006; Patrick McLean <chutzpah@gentoo.org>
+  libdbi-drivers-0.7.1-r1.ebuild:
+  Stable on amd64.
+
+  04 Jan 2006; Jeroen Roovers <jer@gentoo.org> libdbi-drivers-0.8.0.ebuild:
+  Marked ~hppa (bug #105447).
+
+  13 Nov 2005; Jason Wever <weeve@gentoo.org> libdbi-drivers-0.8.0.ebuild:
+  Added ~sparc keyword wrt bug #105447.
+
+  04 Sep 2005; Robin H. Johnson <robbat2@gentoo.org>
+  libdbi-drivers-0.8.0.ebuild:
+  Bug #104601 again. Make libdbi-drivers bring in both slots of sqlite.
+
+*libdbi-drivers-0.8.0 (03 Sep 2005)
+
+  03 Sep 2005; Robin H. Johnson <robbat2@gentoo.org>
+  +libdbi-drivers-0.8.0.ebuild:
+  Version bump, bug #104601.
+
+  30 Aug 2005; Robin H. Johnson <robbat2@gentoo.org>
+  libdbi-drivers-0.7.1-r1.ebuild:
+  Stable on x86.
+
+*libdbi-drivers-0.7.1-r1 (27 Mar 2005)
+
+  27 Mar 2005; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +libdbi-drivers-0.7.1-r1.ebuild:
+  Bug #86514, fix DEPEND. Also add metadata.
+
+  28 Feb 2005; Christian Parpart <trapni@gentoo.org>
+  libdbi-drivers-0.7.1.ebuild:
+  adding to ~amd64
+
+  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> libdbi-drivers-0.7.1.ebuild:
+  Add die following econf for bug 48950
+
+  25 Mar 2004; David Holm <dholm@gentoo.org> libdbi-drivers-0.7.1.ebuild:
+  Added to ~ppc.
+
+*libdbi-drivers-0.7.1 (24 Mar 2004)
+
+  24 Mar 2004; Robin H. Johnson <robbat2@gentoo.org>
+  libdbi-drivers-0.7.1.ebuild:
+  Initial commit. Original ebuild submitted by Max <m.e.bruche@lse.ac.uk>. Bug
+  #45153.

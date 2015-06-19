@@ -1,0 +1,13 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/stuntman/files/stuntman.initd,v 1.1 2014/02/18 19:11:58 polynomial-c Exp $
+
+pidfile="/run/stunserver.pid"
+command="/usr/sbin/stunserver"
+command_args="${STUNTMAN_PARAMS}"
+command_background="true"
+
+depend() {
+	need net
+}

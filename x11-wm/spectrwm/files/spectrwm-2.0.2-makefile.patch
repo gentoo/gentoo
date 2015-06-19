@@ -1,0 +1,23 @@
+--- spectrwm-2.0.2/linux/Makefile
++++ spectrwm-2.0.2/linux/Makefile
+@@ -1,5 +1,5 @@
+-CFLAGS+= -Wall -Wextra -Wshadow -g -D_GNU_SOURCE -I. -I/usr/include/freetype2
+-CFLAGS+= -DSWM_LIB=\"$(LIBDIR)/libswmhack.so.$(LVERS)\"
++CFLAGS+= -Wall -Wextra -Wshadow -D_GNU_SOURCE -I. -I/usr/include/freetype2
++CFLAGS+= -DSWM_LIB=\"libswmhack.so.$(LVERS)\"
+ LDADD+= -lX11 -lX11-xcb -lxcb -lxcb-icccm -lxcb-randr -lxcb-keysyms -lxcb-util -lxcb-xtest -lXft -lXcursor
+ 
+ PREFIX?= /usr/local
+@@ -29,10 +29,10 @@
+ 	$(CC) $(LDFLAGS) -o $@ $+ $(LDADD)
+ 
+ %.so: %.c
+-	$(CC) $(CFLAGS) -c -fpic -DPIC $+ -o $@
++	$(CC) $(CFLAGS) $(LDFLAGS) -c -fpic -DPIC $+ -o $@
+ 
+ libswmhack.so.$(LVERS): swm_hack.so
+-	$(CC) -shared -fpic -o libswmhack.so.$(LVERS) swm_hack.so $(LDADD)
++	$(CC) $(LDFLAGS) -Wl,-soname,$@ -shared -fpic -o libswmhack.so.$(LVERS) swm_hack.so $(LDADD)
+ 
+ install: all
+ 	install -m 755 -d $(DESTDIR)$(BINDIR)

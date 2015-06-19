@@ -1,0 +1,30 @@
+# ChangeLog for dev-perl/Devel-Refactor
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Devel-Refactor/ChangeLog,v 1.5 2014/08/26 15:10:35 axs Exp $
+
+*Devel-Refactor-0.50.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Devel-Refactor-0.50.0-r1.ebuild, -Devel-Refactor-0.50.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Devel-Refactor-0.05.ebuild:
+  Cleanup
+
+*Devel-Refactor-0.50.0 (31 Aug 2011)
+
+  31 Aug 2011; Torsten Veller <tove@gentoo.org> +Devel-Refactor-0.50.0.ebuild:
+  Change version scheme
+
+  15 Feb 2010; Torsten Veller <tove@gentoo.org> +Devel-Refactor-0.05.ebuild,
+  +metadata.xml:
+  Import to gentoo from perl-experimental
+
+*Devel-Refactor-0.05 (14 Sep 2009)
+
+  14 Sep 2009; Kent Fredric <kentfredric@gmail.com>
+  +Devel-Refactor-0.05.ebuild, +metadata.xml:
+  Added

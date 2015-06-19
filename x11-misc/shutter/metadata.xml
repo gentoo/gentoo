@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>graphics</herd>
+<maintainer>
+<email>hwoarang@gentoo.org</email>
+<name>Markos Chandras</name>
+</maintainer>
+<use>
+	<flag name="webphoto">Enables screenshots of websites</flag>
+	<flag name="drawing">Enables drawing tool</flag>
+</use>
+<longdescription lang="en">
+</longdescription>
+</pkgmetadata>
+

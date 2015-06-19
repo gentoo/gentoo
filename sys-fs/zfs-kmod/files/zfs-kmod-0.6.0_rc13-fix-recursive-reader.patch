@@ -1,0 +1,40 @@
+diff --git a/module/zfs/dsl_dataset.c b/module/zfs/dsl_dataset.c
+index 21fdd08..872d44a 100644
+--- a/module/zfs/dsl_dataset.c
++++ b/module/zfs/dsl_dataset.c
+@@ -20,7 +20,7 @@
+  */
+ /*
+  * Copyright (c) 2005, 2010, Oracle and/or its affiliates. All rights reserved.
+- * Copyright (c) 2011 by Delphix. All rights reserved.
++ * Copyright (c) 2012 by Delphix. All rights reserved.
+  * Copyright (c) 2012, Joyent, Inc. All rights reserved.
+  */
+ 
+@@ -4158,9 +4220,13 @@ struct dsl_ds_releasearg {
+ 		dsl_dataset_t *snap;
+ 		uint64_t used, comp, uncomp;
+ 
+-		err = dsl_dataset_hold_obj(dp, snapobj, FTAG, &snap);
+-		if (err != 0)
+-			break;
++		if (snapobj == new->ds_object) {
++			snap = new;
++		} else {
++			err = dsl_dataset_hold_obj(dp, snapobj, FTAG, &snap);
++			if (err != 0)
++				break;
++		}
+ 
+ 		if (snap->ds_phys->ds_prev_snap_txg ==
+ 		    oldsnap->ds_phys->ds_creation_txg) {
+@@ -4189,7 +4255,8 @@ struct dsl_ds_releasearg {
+ 		 * was not a snapshot of/before new.
+ 		 */
+ 		snapobj = snap->ds_phys->ds_prev_snap_obj;
+-		dsl_dataset_rele(snap, FTAG);
++		if (snap != new)
++			dsl_dataset_rele(snap, FTAG);
+ 		if (snapobj == 0) {
+ 			err = EINVAL;
+ 			break;

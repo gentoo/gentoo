@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>printing</herd>
+	<maintainer>
+		<email>aballier@gentoo.org</email>
+		<name>Alexis Ballier</name>
+	</maintainer>
+	<longdescription lang="en">
+		 Tool for generating Encapsulated Postscript Format (EPS,EPSF) files
+		 from one-page Postscript documents
+	</longdescription>
+</pkgmetadata>
+

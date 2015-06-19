@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst
+DEPEND=>=sys-apps/sed-4
+DESCRIPTION=automatically monitor system logs and mail security violations on a periodic basis
+HOMEPAGE=http://sourceforge.net/projects/sentrytools/
+KEYWORDS=~amd64 ~arm ~mips ~ppc ~s390 ~sh ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/mailx
+SLOT=0
+SRC_URI=mirror://gentoo/logsentry-1.1.1.tar.gz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=7521ab1abc780cff179f3dbffe8a7224

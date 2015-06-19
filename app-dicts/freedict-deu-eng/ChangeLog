@@ -1,0 +1,17 @@
+# ChangeLog for app-dicts/freedict-deu-eng
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/freedict-deu-eng/ChangeLog,v 1.3 2014/01/05 11:14:04 pacho Exp $
+
+  05 Jan 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/app-dicts-herd-is-empty-
+  td271273.html
+
+  18 Oct 2009; Mark Loeser <halcy0n@gentoo.org> freedict-deu-eng-1.0.ebuild:
+  QA fixes; IUSE is not defined
+
+*freedict-deu-eng-1.0 (02 Sep 2007)
+
+  02 Sep 2007; Wulf C. Krueger <philantrop@gentoo.org> +metadata.xml,
+  +freedict-deu-eng-1.0.ebuild:
+  Added a German-English dictionary as per bug 101576. Thanks to Yosef Meller
+  for providing the ebuild!

@@ -1,0 +1,91 @@
+# ChangeLog for media-fonts/cronyx-fonts
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/cronyx-fonts/ChangeLog,v 1.20 2015/02/21 16:15:03 yngwin Exp $
+
+*cronyx-fonts-2.3.8 (21 Feb 2015)
+
+  21 Feb 2015; Ben de Groot <yngwin@gentoo.org> +cronyx-fonts-2.3.8.ebuild:
+  Version bump, which adds unicode support (bug #212544), and uses font.eclass
+  (bug #304621). Ebuild contributed by Ryan Hill. EAPI bumped to 5.
+
+  22 Jul 2007; Ryan Hill <dirtyepic@gentoo.org>
+  -cronyx-fonts-2.3.1-r1.ebuild, cronyx-fonts-2.3.1-r2.ebuild:
+  Remove virtual/x11.
+
+  19 Mar 2007; Marius Mauch <genone@gentoo.org>
+  cronyx-fonts-2.3.1-r1.ebuild, cronyx-fonts-2.3.1-r2.ebuild:
+  Replacing einfo with elog
+
+  18 Mar 2007; Simon Stelling <blubb@gentoo.org>
+  cronyx-fonts-2.3.1-r2.ebuild:
+  stable on amd64; bug 171063
+
+  17 Mar 2007; nixnut <nixnut@gentoo.org> cronyx-fonts-2.3.1-r2.ebuild:
+  Stable on ppc wrt bug 171063
+
+  12 Mar 2007; Raúl Porcel <armin76@gentoo.org>
+  cronyx-fonts-2.3.1-r2.ebuild:
+  x86 stable
+
+  26 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  cronyx-fonts-2.3.1-r2.ebuild:
+  Add ~x86-fbsd keyword.
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  cronyx-fonts-2.3.1-r2.ebuild:
+  Stable on Alpha.
+
+  07 Sep 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  cronyx-fonts-2.3.1-r2.ebuild:
+  Stable on sparc
+
+  11 Jul 2006; Aron Griffis <agriffis@gentoo.org>
+  cronyx-fonts-2.3.1-r2.ebuild:
+  Mark 2.3.1-r2 stable on ia64
+
+  23 Mar 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  cronyx-fonts-2.3.1-r1.ebuild:
+  Port to modular X.
+
+*cronyx-fonts-2.3.1-r2 (11 Jan 2006)
+
+  11 Jan 2006; Robin H. Johnson <robbat2@gentoo.org>
+  +cronyx-fonts-2.3.1-r2.ebuild:
+  Fix DEPEND/RDEPEND for modular-X.
+
+  23 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  cronyx-fonts-2.3.1-r1.ebuild:
+  Stable on sparc
+
+  23 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  cronyx-fonts-2.3.1-r1.ebuild:
+  Keyworded ~sparc
+
+  15 Jul 2005; Diego Pettenò <flameeyes@gentoo.org>
+  cronyx-fonts-2.3.1-r1.ebuild:
+  Stable on amd64.
+
+  29 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> cronyx-fonts-2.3.1-r1.ebuild,
+  -cronyx-fonts-2.3.1.ebuild:
+  Stable on x86, ppc and alpha.
+
+  29 Jul 2004; Danny van Dyk <kugelfang@gentoo.org>
+  cronyx-fonts-2.3.1-r1.ebuild:
+  Marked ~amd64.
+
+*cronyx-fonts-2.3.1-r1 (08 Jul 2004)
+
+  08 Jul 2004; Mamoru KOMACHI <usata@gentoo.org>
+  +cronyx-fonts-2.3.1-r1.ebuild:
+  Changed font path other than X.Org default and added instructions to
+  update configuration.
+
+  06 Jul 2004; David Holm <dholm@gentoo.org> cronyx-fonts-2.3.1.ebuild:
+  Added to ~ppc.
+
+*cronyx-fonts-2.3.1 (05 Jul 2004)
+
+  05 Jul 2004; Mamoru KOMACHI <usata@gentoo.org> +metadata.xml,
+  +cronyx-fonts-2.3.1.ebuild:
+  Initial import. Ebuild submitted by Alexey Spiridonov <lesha@netman.ru>,
+  closing bug #23958

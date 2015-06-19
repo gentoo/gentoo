@@ -1,0 +1,92 @@
+--- DOMALIGN-0.1.650/configure.ac
++++ DOMALIGN-0.1.650/configure.ac
+@@ -635,33 +635,6 @@
+ 
+ 
+ 
+-dnl PCRE library definitions - see the MAJOR and MINOR values
+-dnl to see which version's configure.in these lines come from
+-
+-dnl Provide the current PCRE version information. Do not use numbers
+-dnl with leading zeros for the minor version, as they end up in a C
+-dnl macro, and may be treated as octal constants. Stick to single
+-dnl digits for minor numbers less than 10. There are unlikely to be
+-dnl that many releases anyway.
+-
+-PCRE_MAJOR="7"
+-PCRE_MINOR="9"
+-PCRE_DATE="11-Apr-2009"
+-PCRE_VERSION="${PCRE_MAJOR}.${PCRE_MINOR}"
+-
+-dnl Default values for miscellaneous macros
+-
+-POSIX_MALLOC_THRESHOLD="-DPOSIX_MALLOC_THRESHOLD=10"
+-
+-dnl Provide versioning information for libtool shared libraries that
+-dnl are built by default on Unix systems.
+-
+-PCRE_LIB_VERSION="0:1:0"
+-PCRE_POSIXLIB_VERSION="0:0:0"
+-
+-
+-
+-
+ dnl FIXME: This does no longer seem required with Autoconf 2.67?
+ dnl Intel MacOSX 10.6 puts X11 in a non-standard place
+ dnl AS_IF([test "x${with_x}" != "xno"],
+@@ -737,21 +710,6 @@
+ 
+ 
+ 
+-dnl "Export" these variables for PCRE
+-
+-AC_SUBST([HAVE_MEMMOVE])
+-AC_SUBST([HAVE_STRERROR])
+-AC_SUBST([PCRE_MAJOR])
+-AC_SUBST([PCRE_MINOR])
+-AC_SUBST([PCRE_DATE])
+-AC_SUBST([PCRE_VERSION])
+-AC_SUBST([PCRE_LIB_VERSION])
+-AC_SUBST([PCRE_POSIXLIB_VERSION])
+-AC_SUBST([POSIX_MALLOC_THRESHOLD])
+-
+-
+-
+-
+ dnl Test if --enable-localforce given
+ locallink="no"
+ embprefix="/usr/local"
+@@ -874,6 +832,11 @@
+ AM_CONDITIONAL([ESYSTEMLIBS], [test "x${enable_systemlibs}" = "xyes"])
+ 
+ 
++AS_IF([test "x${enable_systemlibs}" = "xyes"],
++[
++dnl using system libraries
++  PKG_CHECK_MODULES([PLPLOT], [plplotd])
++])
+ 
+ 
+ # Enable the purify tool: --enable-purify, sets CC and LIBTOOL
+--- DOMALIGN-0.1.650/src/Makefile.am
++++ DOMALIGN-0.1.650/src/Makefile.am
+@@ -17,10 +17,7 @@
+ 	-I../../../ajax/ensembl -I../../../ajax/ajaxdb \
+ 	-I../../../ajax/acd -I../../../plplot
+ else
+-AM_CPPFLAGS = -I../include -I${embprefix}/include \
+-	-I${embprefix}/include/eplplot \
+-	$(NLINCLUDES) \
+-	-I${embprefix}/include/epcre
++AM_CPPFLAGS = -I${embprefix}/include $(NLINCLUDES) $(PLPLOT_CFLAGS)
+ endif
+ 
+ if ISSHARED
+@@ -63,5 +60,5 @@
+ 	../../../plplot/libeplplot.la $(XLIB)
+ else
+ LDADD = -L${embprefix}/lib -lnucleus -lacd -lajaxdb -lensembl -lajaxg \
+-	-lajax -lepcre $(NLADD) -leplplot $(XLIB)
++	-lajax $(NLADD) $(XLIB)
+ endif
+

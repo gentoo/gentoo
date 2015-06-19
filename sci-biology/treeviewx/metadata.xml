@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>sci-biology</herd>
+	<longdescription>
+		TreeView X is a program for displaying phylogenetic trees on Linux and
+		UNIX platforms. It can read and display NEXUS and Newick format tree
+		files (such as those output by PAUP*, ClustalX, TREE-PUZZLE, and other
+		programs).
+	</longdescription>
+</pkgmetadata>

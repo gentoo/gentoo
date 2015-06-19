@@ -1,0 +1,21 @@
+#!/sbin/runscript
+# Copyright 1999-2007 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+start() {
+    local extraopts
+    [ -n "${OPENHPID_PORT}" ] && extraopts += " -p ${OPENHPID_PORT}"
+    [ -n "${OPENHPID_READTIMEOUT}" ] && extraopts += " -s ${OPENHPID_READTIMEOUT}"
+    [ -n "${OPENHPID_THREADS}" ] && extraopts += " -t ${OPENHPID_THREADS}"
+
+    ebegin "Starting openhpid"
+    start-stop-daemon --start --exec /usr/sbin/openhpid --pidfile /var/run/openhpid.pid \
+        -- -c /etc/openhpi/openhpi.conf -f /var/run/openhpid.pid ${extraopts}
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping openhpid"
+    start-stop-daemon --stop --exec /usr/sbin/openhpid --pidfile /var/run/openhpid.pid
+    eend $?
+}

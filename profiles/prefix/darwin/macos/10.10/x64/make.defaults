@@ -1,0 +1,13 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/darwin/macos/10.10/x64/make.defaults,v 1.2 2015/01/28 21:14:41 floppym Exp $
+
+ARCH="x64-macos"
+CHOST="x86_64-apple-darwin14"
+ACCEPT_KEYWORDS="~x64-macos"
+
+USE="mmx mmxext sse sse2"
+CPU_FLAGS_X86="mmx mmxext sse sse2"
+# set arch to nocona for all MacTel users, as this enables SSE and MMX
+# support in GCC, nocona = Core2Duo = 64-bits
+CFLAGS="-march=nocona"

@@ -1,0 +1,7 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for Thread-Semaphore
+EAPI=5
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86
+RDEPEND=|| ( =dev-lang/perl-5.22* =dev-lang/perl-5.20* ~perl-core/Thread-Semaphore-2.120.0 ) !<perl-core/Thread-Semaphore-2.120.0 !>perl-core/Thread-Semaphore-2.120.0-r999
+SLOT=0
+_md5_=01e15a812c3273cb753556e43dd255bb

@@ -1,0 +1,38 @@
+# ChangeLog for sys-infiniband/librdmacm
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-infiniband/librdmacm/ChangeLog,v 1.8 2014/08/20 10:44:31 ago Exp $
+
+  20 Aug 2014; Agostino Sarubbo <ago@gentoo.org> librdmacm-1.0.18.ebuild:
+  Stable for x86, wrt bug #510208
+
+  20 Aug 2014; Agostino Sarubbo <ago@gentoo.org> librdmacm-1.0.18.ebuild:
+  Stable for amd64, wrt bug #510208
+
+*librdmacm-1.0.18 (16 Apr 2014)
+
+  16 Apr 2014; Alexey Shvetsov <alexxy@gentoo.org> +librdmacm-1.0.18.ebuild,
+  -librdmacm-1.0.15.ebuild:
+  Update ofed stack to 3.12-rc1
+
+  13 Oct 2012; Alexey Shvetsov <alexxy@gentoo.org> librdmacm-1.0.16.ebuild:
+  [sys-infiniband] Update OFED
+
+*librdmacm-1.0.16 (12 Oct 2012)
+
+  12 Oct 2012; Alexey Shvetsov <alexxy@gentoo.org> +librdmacm-1.0.16.ebuild:
+  [sys-infiniband] OFED 3.5 rc2 update
+
+*librdmacm-1.0.15 (18 Apr 2012)
+
+  18 Apr 2012; Alexey Shvetsov <alexxy@gentoo.org> +librdmacm-1.0.15.ebuild,
+  -librdmacm-1.0.14.1.ebuild:
+  [sys-infiniband/librdmacm] Version bump to OFED 1.5.4.1
+
+  02 Jul 2011; Alexey Shvetsov <alexxy@gentoo.org> librdmacm-1.0.14.1.ebuild:
+  Add ~amd64-linux keywrod
+
+*librdmacm-1.0.14.1 (30 Jun 2011)
+
+  30 Jun 2011; Alexey Shvetsov <alexxy@gentoo.org> +librdmacm-1.0.14.1.ebuild,
+  +metadata.xml:
+  Initial import to tree

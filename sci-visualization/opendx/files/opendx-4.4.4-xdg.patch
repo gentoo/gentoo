@@ -1,0 +1,26 @@
+diff -up bin/url_handler.sh.orig bin/url_handler.sh
+--- bin/url_handler.sh.orig	2009-05-02 23:21:08.000000000 +1200
++++ bin/url_handler.sh	2009-05-02 23:24:25.000000000 +1200
+@@ -27,21 +27,7 @@ case $method in
+ 	mailto)	mutt `echo "$url" | sed 's;^[^:]*:\(.*\);\1;'`
+ 		;;
+ 
+-        *)      use_xbrowser=n
+-		case "$DISPLAY" in
+-                   :0)       use_xbrowser=y
+-                             ;;
+-                   :0.*)     use_xbrowser=y
+-                             ;;
+-                   unix:0.*) use_xbrowser=y
+-                             ;;
+-                esac
+-		if [ $use_xbrowser = n ]; then
+-			lynx "$url" 
+-		else
+-			netscape -remote "openURL($url)" 2> /dev/null || \
+-			(netscape "$url" &)
+-                fi
++        *) xdg-open "$url"
+ 		;;
+ esac
+ 

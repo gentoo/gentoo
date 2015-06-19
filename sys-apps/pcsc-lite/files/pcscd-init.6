@@ -1,0 +1,23 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/pcsc-lite/files/pcscd-init.6,v 1.1 2013/01/16 20:49:25 flameeyes Exp $
+
+name="PC/SC Daemon"
+
+pidfile=/run/pcscd/pcscd.pid
+
+command=/usr/sbin/pcscd
+command_args="${EXTRA_OPTS}"
+
+start_stop_daemon_args="--user pcscd:pcscd"
+
+depend() {
+	need localmount
+	after udev openct
+	use logger
+}
+
+start_pre() {
+	checkpath -d -m 0755 -o pcscd:pcscd /run/pcscd
+}

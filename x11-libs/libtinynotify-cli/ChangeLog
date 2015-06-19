@@ -1,0 +1,50 @@
+# ChangeLog for x11-libs/libtinynotify-cli
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libtinynotify-cli/ChangeLog,v 1.9 2014/07/06 13:24:03 mgorny Exp $
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> libtinynotify-cli-9999.ebuild:
+  Replace obsolete mirror://bitbucket with the real URI.
+
+  16 Oct 2013; Michał Górny <mgorny@gentoo.org> libtinynotify-cli-9999.ebuild:
+  Switch to git-r3. Add SLOT operators to dependencies.
+
+*libtinynotify-cli-9999 (15 Dec 2012)
+
+  15 Dec 2012; Michał Górny <mgorny@gentoo.org> +libtinynotify-cli-9999.ebuild,
+  metadata.xml:
+  Import the live ebuild.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  libtinynotify-cli-1.2.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*libtinynotify-cli-1.2.1 (03 Jan 2012)
+
+  03 Jan 2012; Michał Górny <mgorny@gentoo.org>
+  -libtinynotify-cli-1.2.ebuild, +libtinynotify-cli-1.2.1.ebuild:
+  Version bump. This version fixes default timeout value in help.
+
+*libtinynotify-cli-1.2 (02 Jan 2012)
+
+  02 Jan 2012; Michał Górny <mgorny@gentoo.org>
+  -libtinynotify-cli-1.1.ebuild, +libtinynotify-cli-1.2.ebuild, metadata.xml:
+  Version bump. The new version adds a timeout option.
+
+*libtinynotify-cli-1.1 (04 Sep 2011)
+
+  04 Sep 2011; Michał Górny <mgorny@gentoo.org>
+  -libtinynotify-cli-1.0.0.ebuild, +libtinynotify-cli-1.1.ebuild:
+  Version bump. The new version introduces action support.
+
+*libtinynotify-cli-1.0.0 (29 Aug 2011)
+
+  29 Aug 2011; Michał Górny <mgorny@gentoo.org>
+  -libtinynotify-cli-0.0.1.ebuild, +libtinynotify-cli-1.0.0.ebuild:
+  Version bump. The new version is built off tinynotify-send package, and adds
+  support for --foreground option to wait for notification to close.
+
+*libtinynotify-cli-0.0.1 (21 Aug 2011)
+
+  21 Aug 2011; Michał Górny <mgorny@gentoo.org>
+  +libtinynotify-cli-0.0.1.ebuild, +metadata.xml:
+  Introduce the first ebuild for libtinynotify-cli.

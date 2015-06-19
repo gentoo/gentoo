@@ -1,0 +1,31 @@
+# ChangeLog for dev-python/oslo-vmware
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/oslo-vmware/ChangeLog,v 1.6 2015/06/08 11:59:55 mrueg Exp $
+
+  08 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -oslo-vmware-0.3.ebuild:
+  Remove old.
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+*oslo-vmware-0.11.1 (30 Apr 2015)
+
+  30 Apr 2015; Matthew Thode <prometheanfire@gentoo.org>
+  +oslo-vmware-0.11.1.ebuild:
+  bumping for kilo
+
+*oslo-vmware-0.7.0 (19 Nov 2014)
+
+  19 Nov 2014; Matthew Thode <prometheanfire@gentoo.org>
+  +oslo-vmware-0.7.0.ebuild:
+  fixing bug 529818 (adding something I thought I added)
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> oslo-vmware-0.3.ebuild:
+  Clean up obsolete dependencies on virtual/python-argparse and virtual/python-
+  unittest2 (those packages were only required for <=python-2.6).
+
+*oslo-vmware-0.3 (11 May 2014)
+
+  11 May 2014; Vadim Kuznetsov vadimk@gentoo.org +metadata.xml,
+  +oslo-vmware-0.3.ebuild:
+  Bug 509192

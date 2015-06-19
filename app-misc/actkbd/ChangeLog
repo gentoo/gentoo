@@ -1,0 +1,59 @@
+# ChangeLog for app-misc/actkbd
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/actkbd/ChangeLog,v 1.13 2014/03/11 19:50:43 pacho Exp $
+
+  11 Mar 2014; Pacho Ramos <pacho@gentoo.org> -actkbd-0.2.8.ebuild,
+  metadata.xml:
+  Cleanup due #53266
+
+  07 Aug 2013; Agostino Sarubbo <ago@gentoo.org> actkbd-0.2.8-r1.ebuild:
+  Stable for x86, wrt bug #470328
+
+  28 Jul 2013; Agostino Sarubbo <ago@gentoo.org> actkbd-0.2.8-r1.ebuild:
+  Stable for amd64, wrt bug #470328
+
+*actkbd-0.2.8-r1 (14 Mar 2013)
+
+  14 Mar 2013; Tomáš Chvátal <scarabeus@gentoo.org> +actkbd-0.2.8-r1.ebuild,
+  +files/actkbd.confd, +files/actkbd.initd:
+  Revision bump to add initscript and config file. Bump the ebuild to eapi5. The
+  new layout utilizes initscript rather than udev rule which didn't want to
+  behave correctly on my machine.
+
+  04 Mar 2011; Thomas Kahle <tomka@gentoo.org> actkbd-0.2.8.ebuild:
+  x86 stable per bug 345203
+
+  25 Jan 2011; Markos Chandras <hwoarang@gentoo.org> actkbd-0.2.8.ebuild:
+  Stable on amd64 wrt bug #345203
+
+  21 Feb 2010; Sven Wegener <swegener@gentoo.org> actkbd-0.2.8.ebuild:
+  Update HOMEPAGE and SRC_URI, bug #306007.
+
+  21 Jun 2008; Sven Wegener <swegener@gentoo.org> actkbd-0.2.8.ebuild:
+  Force correct compiler.
+
+  21 Jun 2008; Sven Wegener <swegener@gentoo.org> -actkbd-0.2.2.ebuild,
+  -actkbd-0.2.7.ebuild:
+  Cleanup.
+
+*actkbd-0.2.8 (07 Jul 2007)
+
+  07 Jul 2007; Sven Wegener <swegener@gentoo.org> +actkbd-0.2.8.ebuild:
+  Version bump.
+
+  28 Jan 2007; Marius Mauch <genone@gentoo.org> actkbd-0.2.2.ebuild,
+  actkbd-0.2.7.ebuild:
+  Replacing einfo with elog
+
+*actkbd-0.2.7 (27 Oct 2006)
+
+  27 Oct 2006; Sven Wegener <swegener@gentoo.org>
+  +files/actkbd-0.2.7-amd64.patch, actkbd-0.2.2.ebuild,
+  +actkbd-0.2.7.ebuild:
+  Version bump. Thanks to Joe Pelkey!
+
+*actkbd-0.2.2 (07 Mar 2006)
+
+  07 Mar 2006; Sven Wegener <swegener@gentoo.org> +metadata.xml,
+  +actkbd-0.2.2.ebuild:
+  Initial commit, ebuild written by me.

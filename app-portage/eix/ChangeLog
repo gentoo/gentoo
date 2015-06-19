@@ -1,0 +1,1966 @@
+# ChangeLog for app-portage/eix
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-portage/eix/ChangeLog,v 1.494 2015/06/18 05:48:43 patrick Exp $
+
+*eix-0.30.11 (18 Jun 2015)
+
+  18 Jun 2015; Patrick Lauer <patrick@gentoo.org> +eix-0.30.11.ebuild:
+  Bump
+
+  07 Jun 2015; Sebastian Pipping <sping@gentoo.org> eix-0.30.4.ebuild,
+  eix-0.30.7.ebuild, eix-0.30.8.ebuild, eix-0.30.10.ebuild:
+  Move HOMEPAGE from http:// to https:// as suggested by upstream
+
+*eix-0.30.10 (07 Jun 2015)
+
+  07 Jun 2015; Sebastian Pipping <sping@gentoo.org> +eix-0.30.10.ebuild:
+  Dare to copy-bump myself, looked trivial
+
+  05 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*eix-0.30.8 (13 Apr 2015)
+
+  13 Apr 2015; Ian Stakenvicius (_AxS_) <axs@gentoo.org> +eix-0.30.8.ebuild:
+  version bump; minor fixes, and treatment of /etc/portage/package.* has become
+  more compatible to portage (concerning sorting); also, users of eix-remote
+  will need to upgrade to avoid strange errors and incomplete data from zugaina.
+
+*eix-0.30.7 (16 Mar 2015)
+
+  16 Mar 2015; Ian Stakenvicius (_AxS_) <axs@gentoo.org> +eix-0.30.7.ebuild:
+  version bump
+
+  26 Jan 2015; Manuel Rüger <mrueg@gentoo.org> metadata.xml:
+  Drop unused USE description.
+
+  26 Jan 2015; Manuel Rüger <mrueg@gentoo.org> -eix-0.25.5.ebuild,
+  -eix-0.29.3.ebuild, -eix-0.30.3.ebuild:
+  Remove old. As requested in bug #537710.
+
+  06 Dec 2014; Agostino Sarubbo <ago@gentoo.org> eix-0.30.4.ebuild:
+  Stable for ia64, wrt bug #529510
+
+  04 Dec 2014; Agostino Sarubbo <ago@gentoo.org> eix-0.30.4.ebuild:
+  Stable for ppc64, wrt bug #529510
+
+  03 Dec 2014; Agostino Sarubbo <ago@gentoo.org> eix-0.30.4.ebuild:
+  Stable for ppc, wrt bug #529510
+
+  02 Dec 2014; Agostino Sarubbo <ago@gentoo.org> eix-0.30.4.ebuild:
+  Stable for alpha, wrt bug #529510
+
+  01 Dec 2014; Agostino Sarubbo <ago@gentoo.org> eix-0.30.4.ebuild:
+  Stable for sparc, wrt bug #529510
+
+  29 Nov 2014; Markus Meier <maekke@gentoo.org> eix-0.30.4.ebuild:
+  arm stable, bug #529510
+
+  25 Nov 2014; Agostino Sarubbo <ago@gentoo.org> eix-0.30.4.ebuild:
+  Stable for x86, wrt bug #529510
+
+  23 Nov 2014; Jeroen Roovers <jer@gentoo.org> eix-0.30.4.ebuild:
+  Stable for HPPA (bug #529510).
+
+  22 Nov 2014; Mikle Kolyada <zlogene@gentoo.org> eix-0.30.4.ebuild:
+  amd64 stable wrt bug #529510
+
+*eix-0.30.4 (18 Sep 2014)
+
+  18 Sep 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org> +eix-0.30.4.ebuild:
+  version bump, fixes severe regression affecting funtoo and possibly others
+
+*eix-0.30.3 (23 Aug 2014)
+
+  23 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org> +eix-0.30.3.ebuild,
+  -eix-0.29.6.ebuild, -eix-0.30.0.ebuild, -eix-0.30.1.ebuild,
+  -eix-0.30.2.ebuild:
+  version bump, fixes many bugs; removed old
+
+  04 Aug 2014; Mike Frysinger <vapier@gentoo.org> eix-0.30.0.ebuild,
+  eix-0.30.1.ebuild, eix-0.30.2.ebuild:
+  Add arm64 love.
+
+*eix-0.30.2 (07 May 2014)
+
+  07 May 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org> +eix-0.30.2.ebuild:
+  version bump; fixes bug 506596
+
+*eix-0.30.1 (30 Jan 2014)
+
+  30 Jan 2014; Ian Stakenvicius <axs@gentoo.org> +eix-0.30.1.ebuild:
+  version bump
+
+  27 Dec 2013; Sergey Popov <pinkbyte@gentoo.org> eix-0.25.5.ebuild:
+  Drop s390/sh/m68k to unstable
+
+  22 Nov 2013; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Fix e-mail address.
+
+*eix-0.30.0 (10 Nov 2013)
+
+  10 Nov 2013; Ian Stakenvicius <axs@gentoo.org> +eix-0.30.0.ebuild:
+  version bump -- mainly internal changes; clang support no longer requires the
+  use of a use flag.
+
+  13 Oct 2013; Michael Sterrett <mr_bones_@gentoo.org> metadata.xml:
+  remove extra tools flag
+
+*eix-0.29.6 (11 Oct 2013)
+
+  11 Oct 2013; Ian Stakenvicius <axs@gentoo.org> +eix-0.29.6.ebuild,
+  -eix-0.29.4.ebuild:
+  version bump, fixed minor regression in eix-0.29.5
+
+  12 Sep 2013; Ian Stakenvicius <axs@gentoo.org> -eix-0.23.10.ebuild,
+  -eix-0.27.4.ebuild, -eix-0.27.6.ebuild, -eix-0.28.4.ebuild,
+  -eix-0.28.5.ebuild, -eix-0.29.1.ebuild,
+  -files/eix-0.28.4-zsh-completion.patch:
+  remove old
+
+*eix-0.29.4 (10 Sep 2013)
+
+  10 Sep 2013; Ian Stakenvicius <axs@gentoo.org> +eix-0.29.4.ebuild:
+  version bump, fixes bugs 480604, 483392
+
+  07 Sep 2013; Agostino Sarubbo <ago@gentoo.org> eix-0.29.3.ebuild:
+  Stable for sparc, wrt bug #482942
+
+  05 Sep 2013; Agostino Sarubbo <ago@gentoo.org> eix-0.29.3.ebuild:
+  Stable for ppc64, wrt bug #482942
+
+  04 Sep 2013; Agostino Sarubbo <ago@gentoo.org> eix-0.29.3.ebuild:
+  Stable for ppc, wrt bug #482942
+
+  03 Sep 2013; Agostino Sarubbo <ago@gentoo.org> eix-0.29.3.ebuild:
+  Stable for ia64, wrt bug #482942
+
+  02 Sep 2013; Agostino Sarubbo <ago@gentoo.org> eix-0.29.3.ebuild:
+  Stable for alpha, wrt bug #482942
+
+  01 Sep 2013; Jeff Horelick <jdhore@gentoo.org> eix-0.29.3.ebuild:
+  marked x86 per bug 482942
+
+  31 Aug 2013; Agostino Sarubbo <ago@gentoo.org> eix-0.29.3.ebuild:
+  Stable for arm, wrt bug #482942
+
+  31 Aug 2013; Agostino Sarubbo <ago@gentoo.org> eix-0.29.3.ebuild:
+  Stable for amd64, wrt bug #482942
+
+  30 Aug 2013; Jeroen Roovers <jer@gentoo.org> eix-0.29.3.ebuild:
+  Stable for HPPA (bug #482942).
+
+  07 Aug 2013; Michael Weber <xmw@gentoo.org> metadata.xml:
+  Add myself as maintainer
+
+*eix-0.29.3 (07 Aug 2013)
+
+  07 Aug 2013; Michael Weber <xmw@gentoo.org> +eix-0.29.3.ebuild:
+  Version bump (bug 479992), fixes bug 478320 and bug 478818, NMU.
+
+*eix-0.29.1 (16 Jul 2013)
+
+  16 Jul 2013; Ian Stakenvicius <axs@gentoo.org> +eix-0.29.1.ebuild,
+  -eix-0.29.0-r1.ebuild:
+  version bump for various bug fixes
+
+  11 Jul 2013; Michael Sterrett <mr_bones_@gentoo.org> eix-0.29.0-r1.ebuild:
+  fix sed command
+
+*eix-0.29.0-r1 (11 Jul 2013)
+
+  11 Jul 2013; Ian Stakenvicius <axs@gentoo.org> +eix-0.29.0-r1.ebuild,
+  -eix-0.29.0.ebuild:
+  revbump to fix bug 475564
+
+  10 Jul 2013; Jeroen Roovers <jer@gentoo.org> eix-0.28.5.ebuild:
+  Stable for HPPA (bug #476396).
+
+*eix-0.29.0 (10 Jul 2013)
+
+  10 Jul 2013; Ian Stakenvicius <axs@gentoo.org> +eix-0.29.0.ebuild:
+  version bump for new release
+
+*eix-0.28.5 (23 May 2013)
+
+  23 May 2013; Ian Stakenvicius <axs@gentoo.org> +eix-0.28.5.ebuild:
+  version bump, adds support for /etc/portage/make.conf and /etc/eixrc being
+  directories
+
+*eix-0.28.4 (16 Apr 2013)
+
+  16 Apr 2013; Ian Stakenvicius <axs@gentoo.org> +eix-0.28.4.ebuild,
+  +files/eix-0.28.4-zsh-completion.patch, -eix-0.28.2.ebuild,
+  -eix-0.28.3.ebuild:
+  version bump, remove old:  update russian translation, fix zsh completion
+
+*eix-0.28.3 (28 Mar 2013)
+
+  28 Mar 2013; Ian Stakenvicius <axs@gentoo.org> +eix-0.28.3.ebuild,
+  metadata.xml:
+  version bump; now supports gpo.zugiana.org as a secondary (or primary, if USE
+  =+swap-remote) remote database
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+*eix-0.28.2 (01 Feb 2013)
+
+  01 Feb 2013; Ian Stakenvicius <axs@gentoo.org> -eix-0.28.1-r1.ebuild,
+  -files/eix-0.28.1-overlay-number-regression.patch, +eix-0.28.2.ebuild,
+  metadata.xml:
+  version bump, contains new strong-security flag which (for now) enables the
+  new safety features of clang[static-analyzer] and gcc-4.8
+
+*eix-0.28.1-r1 (25 Jan 2013)
+
+  25 Jan 2013; Ian Stakenvicius <axs@gentoo.org> -eix-0.28.1.ebuild,
+  +eix-0.28.1-r1.ebuild, +files/eix-0.28.1-overlay-number-regression.patch:
+  fixed bug 452548
+
+*eix-0.28.1 (14 Jan 2013)
+
+  14 Jan 2013; Ian Stakenvicius <axs@gentoo.org> -eix-0.28.0.ebuild,
+  +eix-0.28.1.ebuild:
+  fixed a regression and an ebuild coding error
+
+*eix-0.28.0 (14 Jan 2013)
+
+  14 Jan 2013; Ian Stakenvicius <axs@gentoo.org> +eix-0.28.0.ebuild:
+  version bump; internal restructuring, minor bugfixes, documentation updates
+
+  22 Dec 2012; Agostino Sarubbo <ago@gentoo.org> eix-0.27.6.ebuild:
+  Add ~ppc, wrt bug #425494
+
+  17 Dec 2012; Agostino Sarubbo <ago@gentoo.org> eix-0.27.6.ebuild:
+  Add ~ppc64, wrt bug #425494
+
+*eix-0.27.6 (09 Dec 2012)
+
+  09 Dec 2012; Ian Stakenvicius <axs@gentoo.org> -eix-0.27.5-r1.ebuild,
+  -files/eix-0.27.5-commentlines.patch, +eix-0.27.6.ebuild:
+  new upstream release, fixed colors some more
+
+  06 Dec 2012; Ian Stakenvicius <axs@gentoo.org>
+  -files/eix-0.2.5-commentlines.patch, +files/eix-0.27.5-commentlines.patch:
+  fixed typo in patch filename (bug #446178)
+
+*eix-0.27.5-r1 (05 Dec 2012)
+
+  05 Dec 2012; Ian Stakenvicius <axs@gentoo.org>
+  +files/eix-0.2.5-commentlines.patch, -eix-0.27.5.ebuild,
+  +eix-0.27.5-r1.ebuild:
+  fixed bug 446078
+
+*eix-0.27.5 (04 Dec 2012)
+
+  04 Dec 2012; Ian Stakenvicius <axs@gentoo.org> +eix-0.27.5.ebuild:
+  version bump; fixes some bugs, heuristics have saner defaults, mask handling
+  is more similar to new portage releases
+
+*eix-0.27.4 (25 Nov 2012)
+
+  25 Nov 2012; Ian Stakenvicius <axs@gentoo.org> -eix-0.26.4.ebuild,
+  -eix-0.27.1.ebuild, -eix-0.27.2.ebuild, +eix-0.27.4.ebuild:
+  Upstream version bump, fixes to zsh completions and fix a reversion for
+  solaris; remove old
+
+*eix-0.27.2 (09 Oct 2012)
+
+  09 Oct 2012; Ian Stakenvicius <axs@gentoo.org> +eix-0.27.2.ebuild:
+  version bump
+
+  19 Sep 2012; Jeremy Olexa <darkside@gentoo.org> metadata.xml:
+  update metadata
+
+*eix-0.27.1 (19 Sep 2012)
+
+  19 Sep 2012; Jeremy Olexa <darkside@gentoo.org> -eix-0.27.0.ebuild,
+  +eix-0.27.1.ebuild:
+  Version bump from upstream, support 256 color terminals, fix regression in
+  previous versions
+
+*eix-0.27.0 (17 Sep 2012)
+
+  17 Sep 2012; Jeremy Olexa <darkside@gentoo.org> +eix-0.27.0.ebuild:
+  Version bump from upstream, fixes bug 434616 as well
+
+*eix-0.26.4 (27 Aug 2012)
+
+  27 Aug 2012; Jeremy Olexa <darkside@gentoo.org> -eix-0.26.3.ebuild,
+  +eix-0.26.4.ebuild:
+  Version bump, fixes Gentoo bugs 432122, 432238, 432478
+
+  26 Aug 2012; Raúl Porcel <armin76@gentoo.org> eix-0.25.5.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #427100
+
+*eix-0.26.3 (21 Aug 2012)
+
+  21 Aug 2012; Jeremy Olexa <darkside@gentoo.org> -eix-0.26.1.ebuild,
+  +eix-0.26.3.ebuild:
+  Version bump from upstream, fixes regression in 0.26.1
+
+  19 Aug 2012; Raúl Porcel <armin76@gentoo.org> eix-0.26.1.ebuild:
+  Re-add ~alpha/~ia64/~sparc wrt #425494
+
+  04 Aug 2012; Agostino Sarubbo <ago@gentoo.org> eix-0.25.5.ebuild:
+  Stable for amd64, wrt bug #427100
+
+  25 Jul 2012; Jeroen Roovers <jer@gentoo.org> eix-0.25.5.ebuild:
+  Stable for HPPA (bug #427100).
+
+*eix-0.26.1 (24 Jul 2012)
+
+  24 Jul 2012; Jeremy Olexa <darkside@gentoo.org> -eix-0.26.0.ebuild,
+  -files/eix-0.26.0-tools.patch, +eix-0.26.1.ebuild, metadata.xml:
+  Version bump from upstream for bug fixes (closes Gentoo bugs 425512, 426256,
+  427644)
+
+  23 Jul 2012; Markus Meier <maekke@gentoo.org> eix-0.25.5.ebuild:
+  arm stable, bug #427100
+
+  19 Jul 2012; Anthony G. Basile <blueness@gentoo.org> eix-0.25.5.ebuild:
+  Stable ppc/ppc64, bug #427100
+
+  19 Jul 2012; Johannes Huber <johu@gentoo.org> eix-0.25.5.ebuild:
+  Stable for x86, wrt bug #427100
+
+  10 Jul 2012; Justin Lecher <jlec@gentoo.org> +files/eix-0.26.0-tools.patch,
+  eix-0.26.0.ebuild:
+  Add workaround for #425512
+
+  10 Jul 2012; Jeroen Roovers <jer@gentoo.org> eix-0.26.0.ebuild:
+  Marked ~hppa (bug #425494).
+
+*eix-0.26.0 (09 Jul 2012)
+
+  09 Jul 2012; Jeremy Olexa <darkside@gentoo.org> +eix-0.26.0.ebuild,
+  metadata.xml:
+  Version bump with subslot support and other fixes
+
+  22 May 2012; Jeremy Olexa <darkside@gentoo.org> eix-0.25.5.ebuild:
+  add ~amd64-fbsd
+
+  22 May 2012; Jeremy Olexa <darkside@gentoo.org> -eix-0.23.3-r1.ebuild,
+  -eix-0.24.0.ebuild, -eix-0.25.3.ebuild, -eix-0.25.4.ebuild:
+  remove old versions
+
+*eix-0.25.5 (20 May 2012)
+
+  20 May 2012; Jeremy Olexa <darkside@gentoo.org> +eix-0.25.5.ebuild:
+  Version bump, bug fixes
+
+*eix-0.25.4 (06 May 2012)
+
+  06 May 2012; Jeremy Olexa <darkside@gentoo.org> -eix-0.25.0.ebuild,
+  +eix-0.25.4.ebuild:
+  Version bump, mostly bug fixes. Closes Gentoo bugs 410205 & 408509
+
+  05 May 2012; Alexis Ballier <aballier@gentoo.org> eix-0.25.3.ebuild:
+  keyword ~amd64-fbsd
+
+  01 Apr 2012; Raúl Porcel <armin76@gentoo.org> eix-0.23.10.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #406853
+
+  19 Mar 2012; Markus Meier <maekke@gentoo.org> eix-0.23.10.ebuild:
+  arm stable, bug #406853
+
+  15 Mar 2012; Jeremy Olexa <darkside@gentoo.org> eix-0.25.3.ebuild:
+  Add file collision avoidance logic by Samuli Suominen in bug 408249
+
+*eix-0.25.3 (14 Mar 2012)
+
+  14 Mar 2012; Jeremy Olexa <darkside@gentoo.org> +eix-0.25.3.ebuild:
+  Version bump from upstream. Due to filesystem layout changes, there WILL be a
+  file collision for /var/cache/eix. It is safe to remove this file and then
+  regenerate it with 'eix-update'
+
+  09 Mar 2012; Brent Baude <ranger@gentoo.org> eix-0.23.10.ebuild:
+  Marking eix-0.23.10 ppc64 for bug 406853
+
+*eix-0.25.0 (08 Mar 2012)
+
+  08 Mar 2012; Jeremy Olexa <darkside@gentoo.org> +eix-0.25.0.ebuild,
+  metadata.xml:
+  version bump, many changes including *DEPEND support
+
+  06 Mar 2012; Brent Baude <ranger@gentoo.org> eix-0.23.10.ebuild:
+  Marking eix-0.23.10 ppc for bug 406853
+
+  06 Mar 2012; Jeff Horelick <jdhore@gentoo.org> eix-0.23.10.ebuild:
+  marked x86 per bug 406853
+
+  05 Mar 2012; Markos Chandras <hwoarang@gentoo.org> eix-0.23.10.ebuild:
+  Stable on amd64 wrt bug #406853
+
+  05 Mar 2012; Jeroen Roovers <jer@gentoo.org> eix-0.23.10.ebuild:
+  Stable for HPPA (bug #406853).
+
+*eix-0.24.0 (04 Mar 2012)
+
+  04 Mar 2012; Jeremy Olexa <darkside@gentoo.org> -eix-0.23.9.ebuild,
+  +eix-0.24.0.ebuild:
+  Version bump, major rewrite of some code areas
+
+*eix-0.23.10 (13 Feb 2012)
+
+  13 Feb 2012; Jeremy Olexa <darkside@gentoo.org> -eix-0.23.7.ebuild,
+  +eix-0.23.10.ebuild:
+  version bump from upstream
+
+*eix-0.23.9 (28 Jan 2012)
+
+  28 Jan 2012; Jeremy Olexa <darkside@gentoo.org> +eix-0.23.9.ebuild:
+  Version bump from upstream
+
+  27 Jan 2012; Jeremy Olexa <darkside@gentoo.org> -eix-0.22.11.ebuild,
+  -eix-0.23.5.ebuild:
+  remove old version
+
+  27 Jan 2012; Brent Baude <ranger@gentoo.org> eix-0.23.3-r1.ebuild:
+  Marking eix-0.23.3-r1 ppc64 for bug 393435
+
+  27 Jan 2012; Brent Baude <ranger@gentoo.org> eix-0.23.3-r1.ebuild:
+  Marking eix-0.23.3-r1 ppc for bug 393435
+
+*eix-0.23.7 (23 Jan 2012)
+
+  23 Jan 2012; Jeremy Olexa <darkside@gentoo.org> -eix-0.23.6.ebuild,
+  +eix-0.23.7.ebuild:
+  Version bump to fix regressions in last version, fixes bugs 399233, 399117,
+  399451
+
+*eix-0.23.6 (16 Jan 2012)
+
+  16 Jan 2012; Jeremy Olexa <darkside@gentoo.org> +eix-0.23.6.ebuild:
+  Version bump, small bug fixes including Gentoo bug 397589 and new cache
+  method (mainly for Funtoo Linux usage)
+
+*eix-0.23.5 (01 Jan 2012)
+
+  01 Jan 2012; Ulrich Mueller <ulm@gentoo.org> -eix-0.23.4.ebuild,
+  +eix-0.23.5.ebuild:
+  Non-maintainer commit: Version bump, bug 396729.
+
+*eix-0.23.4 (25 Dec 2011)
+
+  25 Dec 2011; Jeremy Olexa <darkside@gentoo.org> +eix-0.23.4.ebuild:
+  version bump, minor bug fixes/improvements
+
+  17 Dec 2011; Raúl Porcel <armin76@gentoo.org> eix-0.23.3-r1.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #393435
+
+  14 Dec 2011; Markus Meier <maekke@gentoo.org> eix-0.23.3-r1.ebuild:
+  arm stable, bug #393435
+
+  14 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> eix-0.23.3-r1.ebuild:
+  x86 stable wrt bug #393435
+
+  12 Dec 2011; Jeroen Roovers <jer@gentoo.org> eix-0.23.3-r1.ebuild:
+  Stable for HPPA (bug #393435).
+
+  11 Dec 2011; Agostino Sarubbo <ago@gentoo.org> eix-0.23.3-r1.ebuild:
+  Stable for AMD64, wrt bug #393435
+
+*eix-0.23.3-r1 (06 Dec 2011)
+
+  06 Dec 2011; Jeremy Olexa <darkside@gentoo.org> -eix-0.22.5.ebuild,
+  -eix-0.23.1.ebuild, -eix-0.23.2.ebuild, -eix-0.23.3.ebuild,
+  +eix-0.23.3-r1.ebuild:
+  Fix automagic bzip2 dep. Remove old versions
+
+  06 Dec 2011; Jeremy Olexa <darkside@gentoo.org> eix-0.22.11.ebuild:
+  mark ppc64, bug 379603
+
+*eix-0.23.3 (06 Nov 2011)
+
+  06 Nov 2011; Jeremy Olexa <darkside@gentoo.org> +eix-0.23.3.ebuild:
+  Version bump from upstream
+
+*eix-0.23.2 (21 Oct 2011)
+
+  21 Oct 2011; Jeremy Olexa <darkside@gentoo.org> +eix-0.23.2.ebuild:
+  Version bump from upstream, misc small improvements
+
+*eix-0.23.1 (13 Sep 2011)
+
+  13 Sep 2011; Jeremy Olexa <darkside@gentoo.org> -eix-0.23.0.ebuild,
+  +eix-0.23.1.ebuild:
+  Version bump from upstream to fix bugs 382539 & 304819
+
+*eix-0.23.0 (05 Sep 2011)
+
+  05 Sep 2011; Jeremy Olexa <darkside@gentoo.org> -eix-0.22.10.ebuild,
+  +eix-0.23.0.ebuild, metadata.xml:
+  Version bump from upstream. Touch up USE flag descriptions, remove old
+  version
+
+  03 Sep 2011; Raúl Porcel <armin76@gentoo.org> eix-0.22.11.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #379603
+
+  28 Aug 2011; Markus Meier <maekke@gentoo.org> eix-0.22.11.ebuild:
+  arm stable, bug #379603
+
+  25 Aug 2011; Jeroen Roovers <jer@gentoo.org> eix-0.22.11.ebuild:
+  Stable for HPPA (bug #379603).
+
+  21 Aug 2011; nixnut <nixnut@gentoo.org> eix-0.22.11.ebuild:
+  ppc stable #379603
+
+  21 Aug 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> eix-0.22.11.ebuild:
+  x86 stable wrt bug #379603
+
+  17 Aug 2011; Markos Chandras <hwoarang@gentoo.org> eix-0.22.11.ebuild:
+  Stable on amd64 wrt bug #379603
+
+*eix-0.22.11 (12 Aug 2011)
+
+  12 Aug 2011; Jeremy Olexa <darkside@gentoo.org> -eix-0.22.7.ebuild,
+  -eix-0.22.8.ebuild, -eix-0.22.9.ebuild, +eix-0.22.11.ebuild:
+  version bump, misc bug fixes. Remove old intermediate versions
+
+*eix-0.22.10 (02 Aug 2011)
+
+  02 Aug 2011; Sebastian Pipping <sping@gentoo.org> +eix-0.22.10.ebuild,
+  metadata.xml:
+  Bump to 0.22.10, remove use flag "deprecated" from metadata.xml
+
+*eix-0.22.9 (05 Jul 2011)
+
+  05 Jul 2011; Jeremy Olexa <darkside@gentoo.org> +eix-0.22.9.ebuild:
+  Version bump from upstream, multiple bug fixes
+
+  21 Mar 2011; Jeremy Olexa <darkside@gentoo.org> eix-0.22.8.ebuild:
+  Add prefix bit, bug 353562
+
+  15 Mar 2011; Jeremy Olexa <darkside@gentoo.org> -eix-0.17.0.ebuild,
+  -eix-0.19.2.ebuild, -eix-0.20.5.ebuild, -eix-0.22.4.ebuild,
+  -eix-0.22.6.ebuild:
+  remove old
+
+*eix-0.22.8 (12 Mar 2011)
+
+  12 Mar 2011; Jeremy Olexa <darkside@gentoo.org> +eix-0.22.8.ebuild:
+  Version bump from upstream, fixes bugs 354071, 355623, 353562, 353705
+
+  16 Feb 2011; Jeremy Olexa <darkside@gentoo.org> eix-0.22.7.ebuild:
+  mark -x64-macos, bug 354071
+
+  13 Feb 2011; Raúl Porcel <armin76@gentoo.org> eix-0.22.5.ebuild:
+  ia64/m68k/s390/sh stable wrt #347305
+
+*eix-0.22.7 (31 Jan 2011)
+
+  31 Jan 2011; Jeremy Olexa <darkside@gentoo.org> +eix-0.22.7.ebuild:
+  Version bump from upstream, fixed gentoo bug 350321 and other small fixes
+
+  08 Jan 2011; Brent Baude <ranger@gentoo.org> eix-0.22.5.ebuild:
+  stable ppc, bug 347305
+
+  05 Jan 2011; Jeremy Olexa <darkside@gentoo.org> eix-0.22.6.ebuild:
+  try to fix zsh-completion deps again with a blocker this time, bug 350129
+
+  05 Jan 2011; Jeremy Olexa <darkside@gentoo.org> eix-0.22.6.ebuild:
+  specify zsh-completion version needed for upgrade path, bug 350129
+
+  04 Jan 2011; Markos Chandras <hwoarang@gentoo.org> eix-0.22.5.ebuild:
+  Stable on amd64 wrt bug #347305
+
+*eix-0.22.6 (04 Jan 2011)
+
+  04 Jan 2011; Jeremy Olexa <darkside@gentoo.org> +eix-0.22.6.ebuild:
+  Version bump from upstream, minor fixes includes zsh-completion now
+
+  03 Jan 2011; Michael Weber <xmw@gentoo.org> eix-0.22.5.ebuild:
+  sparc stable (bug 347305)
+
+  02 Jan 2011; Tobias Klausmann <klausman@gentoo.org> eix-0.22.5.ebuild:
+  Stable on alpha, bug #347305
+
+  28 Dec 2010; Brent Baude <ranger@gentoo.org> eix-0.22.5.ebuild:
+  stable ppc64, bug 347305
+
+  26 Dec 2010; Markus Meier <maekke@gentoo.org> eix-0.22.5.ebuild:
+  arm stable, bug #347305
+
+  22 Dec 2010; Jeroen Roovers <jer@gentoo.org> eix-0.22.5.ebuild:
+  Stable for HPPA (bug #347305).
+
+  21 Dec 2010; Christian Faulhammer <fauli@gentoo.org> eix-0.22.5.ebuild:
+  stable x86, bug 347305
+
+*eix-0.22.5 (01 Dec 2010)
+
+  01 Dec 2010; Jeremy Olexa <darkside@gentoo.org> -eix-0.22.2.ebuild,
+  -eix-0.22.3.ebuild, +eix-0.22.5.ebuild:
+  Version bump for bugfixes, remove intermediate versions
+
+*eix-0.22.4 (08 Nov 2010)
+
+  08 Nov 2010; Jeremy Olexa <darkside@gentoo.org> -eix-0.20.6.ebuild,
+  -eix-0.22.1.ebuild, +eix-0.22.4.ebuild:
+  Version bump from upstream, fixes bug 343071
+
+*eix-0.22.3 (11 Oct 2010)
+
+  11 Oct 2010; Jeremy Olexa <darkside@gentoo.org> +eix-0.22.3.ebuild:
+  Version bump to add repo deps support, bug 340098
+
+  03 Oct 2010; Raúl Porcel <armin76@gentoo.org> eix-0.20.5.ebuild:
+  ia64/m68k/s390/sh/sparc stable wrt #323703
+
+*eix-0.22.2 (12 Sep 2010)
+
+  12 Sep 2010; Patrick Lauer <patrick@gentoo.org> +eix-0.22.2.ebuild:
+  Bump, fixes #336896
+
+*eix-0.22.1 (12 Sep 2010)
+
+  12 Sep 2010; Jeremy Olexa <darkside@gentoo.org> +eix-0.22.1.ebuild:
+  Version bump from upstream, many features/fixes - too numerous to list
+
+  06 Sep 2010; Brent Baude <ranger@gentoo.org> eix-0.20.5.ebuild:
+  Marking eix-0.20.5 ppc64 for bug 323703
+
+  25 Jul 2010; Tobias Klausmann <klausman@gentoo.org> eix-0.20.5.ebuild:
+  Stable on alpha, bug #323703
+
+  22 Jul 2010; Markus Meier <maekke@gentoo.org> eix-0.20.5.ebuild:
+  arm stable, bug #323703
+
+  18 Jul 2010; <nixnut@gentoo.org> eix-0.20.5.ebuild:
+  ppc stable #323703
+
+*eix-0.20.6 (03 Jul 2010)
+
+  03 Jul 2010; Jeremy Olexa <darkside@gentoo.org> -eix-0.20.4.ebuild,
+  +eix-0.20.6.ebuild:
+  Minor version bump to fix bug 326143
+
+  28 Jun 2010; Jeroen Roovers <jer@gentoo.org> eix-0.20.5.ebuild:
+  Stable for HPPA (bug #323703).
+
+  21 Jun 2010; Jeremy Olexa <darkside@gentoo.org> metadata.xml:
+  tweak USE=debug description by Martin Väth
+
+  20 Jun 2010; Markos Chandras <hwoarang@gentoo.org> eix-0.20.5.ebuild:
+  Stable on amd64 wrt bug #323703
+
+  16 Jun 2010; Christian Faulhammer <fauli@gentoo.org> eix-0.20.5.ebuild:
+  stable x86, bug 323703
+
+*eix-0.20.5 (05 Jun 2010)
+
+  05 Jun 2010; Jeremy Olexa <darkside@gentoo.org> -eix-0.20.1.ebuild,
+  -eix-0.20.2.ebuild, -eix-0.20.3.ebuild, +eix-0.20.5.ebuild:
+  Version bump with minor bug fixes
+
+*eix-0.20.4 (22 Apr 2010)
+
+  22 Apr 2010; Jeremy Olexa <darkside@gentoo.org> +eix-0.20.4.ebuild:
+  Version bump with bug fixes for bugs: 315611, 313267, 305737 and other
+  small issues
+
+  31 Mar 2010; Christian Ruppert <idl0r@gentoo.org>
+  -files/eix-0.19.0-security.patch:
+  Remove unused patch.
+
+*eix-0.20.3 (28 Mar 2010)
+
+  28 Mar 2010; Jeremy Olexa <darkside@gentoo.org> +eix-0.20.3.ebuild:
+  Version bump, small bug fixes and fix for bug 309685
+
+  11 Mar 2010; Mark Loeser <halcy0n@gentoo.org> +eix-0.17.0.ebuild:
+  Add back as the stable version of app-admin/puppet depends upon it
+
+*eix-0.20.2 (09 Mar 2010)
+
+  09 Mar 2010; Jeremy Olexa <darkside@gentoo.org> -eix-0.17.0.ebuild,
+  -eix-0.19.1.ebuild, +eix-0.20.2.ebuild, metadata.xml:
+  Version bump, small bug fixes. Fixes Gentoo bug 307479. Moved to BerliOS
+
+  08 Mar 2010; Thomas Anderson <tanderson@gentoo.org> eix-0.19.2.ebuild:
+  stable amd64, bug 300861
+
+  04 Mar 2010; Raúl Porcel <armin76@gentoo.org> eix-0.19.2.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc stable wrt #300861
+
+  28 Feb 2010; nixnut <nixnut@gentoo.org> eix-0.19.2.ebuild:
+  ppc stable #300861
+
+  28 Feb 2010; Brent Baude <ranger@gentoo.org> eix-0.19.2.ebuild:
+  Marking eix-0.19.2 ppc64 for bug 300861
+
+  16 Feb 2010; Christian Faulhammer <fauli@gentoo.org> eix-0.19.2.ebuild:
+  stable x86, bug 300861
+
+  16 Feb 2010; Jeroen Roovers <jer@gentoo.org> eix-0.19.2.ebuild:
+  Stable for HPPA (bug #300861).
+
+*eix-0.20.1 (16 Feb 2010)
+
+  16 Feb 2010; Jeremy Olexa <darkside@gentoo.org> -eix-0.20.0.ebuild,
+  +eix-0.20.1.ebuild:
+  Version bump, bug fixes. Fixes regression introduced with 0.20.0
+
+  09 Feb 2010; Jeremy Olexa <darkside@gentoo.org> metadata.xml:
+  Add more verbose USE flag descriptions, bug 304017
+
+*eix-0.20.0 (04 Feb 2010)
+
+  04 Feb 2010; Jeremy Olexa <darkside@gentoo.org> +eix-0.20.0.ebuild:
+  Version bump to 0.20.0. Minor changes of which most are internal coding
+  styles. Introduce brace command line parsing.
+
+  12 Jan 2010; Jeremy Olexa <darkside@gentoo.org> eix-0.17.0.ebuild:
+  Add dep on xz-utils or lzma-utils since xz is in the stable tree now.
+  Confirmed non-issue with this change and no rev-bump needed. bug 300617
+
+*eix-0.19.2 (10 Jan 2010)
+
+  10 Jan 2010; Jeremy Olexa <darkside@gentoo.org> -eix-0.19.0-r1.ebuild,
+  +eix-0.19.2.ebuild:
+  Version bump with fixes for bugs 299904 & 296722
+
+*eix-0.19.1 (19 Dec 2009)
+
+  19 Dec 2009; Jeremy Olexa <darkside@gentoo.org> -eix-0.17.1.ebuild,
+  -eix-0.18.2.ebuild, -eix-0.18.3.ebuild, +eix-0.19.1.ebuild:
+  Version bump with minor bug fixes and enhancements. Ebuild by Martin Väth
+
+*eix-0.19.0-r1 (02 Dec 2009)
+
+  02 Dec 2009; Jeremy Olexa <darkside@gentoo.org> -eix-0.19.0.ebuild,
+  +eix-0.19.0-r1.ebuild, +files/eix-0.19.0-security.patch:
+  Fix typo in configure, patch by Martin Väth (upstream)
+
+*eix-0.19.0 (01 Dec 2009)
+
+  01 Dec 2009; Jeremy Olexa <darkside@gentoo.org> +eix-0.19.0.ebuild:
+  Version bump. Many internal changes but not many visible to the end user.
+  Turn off IUSE defaults because enough people complained. Remove deprecated
+  IUSE flag because it has been enough time to phase out.
+
+*eix-0.18.3 (29 Oct 2009)
+
+  29 Oct 2009; Jeremy Olexa <darkside@gentoo.org> -eix-0.18.0.ebuild,
+  +eix-0.18.3.ebuild, metadata.xml:
+  Version bump with new optimization USE flags and code cleanup. Closes bugs
+  288514 & 288031
+
+*eix-0.18.2 (10 Oct 2009)
+
+  10 Oct 2009; Jeremy Olexa <darkside@gentoo.org> -eix-0.18.1.ebuild,
+  +eix-0.18.2.ebuild:
+  Version bump, fix bugs introduced with 0.18.1 regarding output format and
+  others
+
+  01 Oct 2009; Jeremy Olexa <darkside@gentoo.org> eix-0.18.1.ebuild:
+  Use prepalldocs, approved by QA team.
+
+*eix-0.18.1 (01 Oct 2009)
+
+  01 Oct 2009; Jeremy Olexa <darkside@gentoo.org> +eix-0.18.1.ebuild:
+  version bump, small bug fixes, doc updates, show IUSE defaults. Add Gentoo
+  Prefix keywords
+
+*eix-0.18.0 (20 Sep 2009)
+
+  20 Sep 2009; Jeremy Olexa <darkside@gentoo.org> -eix-0.15.4.ebuild,
+  -eix-0.16.0.ebuild, -files/eix-0.16.0-glibc-2.10.patch,
+  -eix-0.16.1.ebuild, -eix-0.16.2.ebuild, +eix-0.18.0.ebuild, metadata.xml:
+  Version bump, much for flexible 'format' language - xml output if desired
+
+  12 Sep 2009; Raúl Porcel <armin76@gentoo.org> eix-0.17.0.ebuild:
+  arm/ia64/s390/sh stable wrt #282379
+
+*eix-0.17.1 (08 Sep 2009)
+
+  08 Sep 2009; Jeremy Olexa <darkside@gentoo.org> +eix-0.17.1.ebuild,
+  metadata.xml:
+  Version bump, misc bug fixes and USE=bzip2 support
+
+  01 Sep 2009; Tiago Cunha <tcunha@gentoo.org> eix-0.17.0.ebuild:
+  stable sparc, bug 282379
+
+  31 Aug 2009; Brent Baude <ranger@gentoo.org> eix-0.17.0.ebuild:
+  Marking eix-0.17.0 ppc64 for bug 282379
+
+  30 Aug 2009; Tobias Klausmann <klausman@gentoo.org> eix-0.17.0.ebuild:
+  Stable on alpha, bug #282379
+
+  30 Aug 2009; nixnut <nixnut@gentoo.org> eix-0.17.0.ebuild:
+  ppc stable #282379
+
+  25 Aug 2009; Jeroen Roovers <jer@gentoo.org> eix-0.17.0.ebuild:
+  Stable for HPPA (bug #282379).
+
+  24 Aug 2009; Christian Faulhammer <fauli@gentoo.org> eix-0.17.0.ebuild:
+  stable x86, bug 282379
+
+  23 Aug 2009; Jeremy Olexa <darkside@gentoo.org> eix-0.17.0.ebuild:
+  amd64 stable, bug 282379. Tested by using on a stable host since inclusion
+  in the tree
+
+  20 Aug 2009; Jeremy Olexa <darkside@gentoo.org>
+  -files/eix-0.13.3-numeric-compare.patch:
+  remove unused patch
+
+  19 Jul 2009; nixnut <nixnut@gentoo.org> eix-0.16.0.ebuild:
+  ppc stable #273555
+
+  06 Jul 2009; Jeremy Olexa <darkside@gentoo.org> eix-0.17.0.ebuild:
+  style changes, no need for a local variable
+
+*eix-0.17.0 (06 Jul 2009)
+
+  06 Jul 2009; Jeremy Olexa <darkside@gentoo.org> metadata.xml,
+  +eix-0.17.0.ebuild:
+  Version bump, add 'deprecated' USE flag to enable deprecated executable
+  names. Other small fixes
+
+*eix-0.16.2 (26 Jun 2009)
+
+  26 Jun 2009; Jeremy Olexa <darkside@gentoo.org> -eix-0.15.7.ebuild,
+  +eix-0.16.2.ebuild:
+  Minor version bump, default to SAVE_WORLD=true and build system changes
+
+  19 Jun 2009; Brent Baude <ranger@gentoo.org> eix-0.16.0.ebuild:
+  stable ppc64, bug 273555
+
+  16 Jun 2009; Raúl Porcel <armin76@gentoo.org> eix-0.16.0.ebuild:
+  alpha/arm/ia64/s390/sh stable wrt #273555
+
+  13 Jun 2009; Jeremy Olexa <darkside@gentoo.org> eix-0.16.0.ebuild:
+  amd64 stable, bug 273555
+
+  11 Jun 2009; Christian Faulhammer <fauli@gentoo.org> eix-0.16.0.ebuild:
+  stable x86, bug 273555
+
+  10 Jun 2009; Jeroen Roovers <jer@gentoo.org> eix-0.16.0.ebuild:
+  Stable for HPPA (bug #273555).
+
+  10 Jun 2009; Ferris McCormick <fmccor@gentoo.org> eix-0.16.0.ebuild:
+  Sparc stable, bug #273555.
+
+*eix-0.16.1 (09 Jun 2009)
+
+  09 Jun 2009; Jeremy Olexa <darkside@gentoo.org> +eix-0.16.1.ebuild:
+  Version bump, now supports overlay metadata
+
+  22 May 2009; Peter Alfredsen <loki_val@gentoo.org> eix-0.16.0.ebuild,
+  +files/eix-0.16.0-glibc-2.10.patch:
+  Fix glibc-2.10 build, bug 270492. ++ to Martin Väth
+  <vaeth@mathematik.uni-wuerzburg.de> for the patch.
+
+  08 May 2009; Jeremy Olexa <darkside@gentoo.org> -eix-0.15.5.ebuild,
+  -eix-0.15.6.ebuild:
+  remove old, next stable candidate is 0.15.7
+
+*eix-0.16.0 (08 May 2009)
+
+  08 May 2009; Jeremy Olexa <darkside@gentoo.org> metadata.xml,
+  +eix-0.16.0.ebuild:
+  Version bump, highlights include new USE flags and internal changes
+
+*eix-0.15.7 (20 Apr 2009)
+
+  20 Apr 2009; Jeremy Olexa <darkside@gentoo.org> -eix-0.15.2.ebuild,
+  +eix-0.15.7.ebuild:
+  version bump, highlight: set use flag support
+
+  28 Mar 2009; Jeremy Olexa <darkside@gentoo.org> eix-0.15.6.ebuild:
+  add ~m68k, they snuck up on me
+
+*eix-0.15.6 (28 Mar 2009)
+
+  28 Mar 2009; Jeremy Olexa <darkside@gentoo.org> +eix-0.15.6.ebuild:
+  Version bump - new 'installedmarked format' feature
+
+  27 Mar 2009; Raúl Porcel <armin76@gentoo.org> eix-0.15.2.ebuild,
+  eix-0.15.5.ebuild:
+  ~m68k love
+
+  24 Mar 2009; Brent Baude <ranger@gentoo.org> eix-0.15.4.ebuild:
+  stable ppc64, bug 261569
+
+  22 Mar 2009; Raúl Porcel <armin76@gentoo.org> eix-0.15.4.ebuild:
+  arm/ia64/s390/sh stable wrt #262873, add ~m68k
+
+  22 Mar 2009; Markus Meier <maekke@gentoo.org> eix-0.15.4.ebuild:
+  x86 stable, bug #261569
+
+  22 Mar 2009; Tobias Klausmann <klausman@gentoo.org> eix-0.15.4.ebuild:
+  Stable on alpha, bug #261569
+
+*eix-0.15.5 (21 Mar 2009)
+
+  21 Mar 2009; Jeremy Olexa <darkside@gentoo.org> -eix-0.13.3-r1.ebuild,
+  -eix-0.15.3.ebuild, +eix-0.15.5.ebuild:
+  Version bump, remove old
+
+  21 Mar 2009; Tiago Cunha <tcunha@gentoo.org> eix-0.15.4.ebuild:
+  stable sparc, bug 261569
+
+  21 Mar 2009; Jeroen Roovers <jer@gentoo.org> eix-0.15.4.ebuild:
+  Stable for HPPA (bug #261569).
+
+  19 Mar 2009; Thomas Anderson <gentoofan23@gentoo.org> eix-0.15.4.ebuild:
+  stable amd64, bug 261569
+
+  19 Mar 2009; Brent Baude <ranger@gentoo.org> eix-0.15.4.ebuild:
+  stable ppc, bug 261569
+
+*eix-0.15.4 (31 Jan 2009)
+
+  31 Jan 2009; Jeremy Olexa <darkside@gentoo.org> +eix-0.15.4.ebuild:
+  Version bump to fix compilation issues and a few cosmetic changes
+
+*eix-0.15.3 (18 Jan 2009)
+
+  18 Jan 2009; Jeremy Olexa <darkside@gentoo.org> +eix-0.15.3.ebuild:
+  version bump, see
+  https://projects.gentooexperimental.org/eix/browser/trunk/ChangeLog for
+  changes
+
+  07 Jan 2009; Brent Baude <ranger@gentoo.org> eix-0.15.2.ebuild:
+  stable ppc64, bug 252245
+
+  29 Dec 2008; Tobias Scherbaum <dertobi123@gentoo.org> eix-0.15.2.ebuild:
+  ppc stable, bug #252245
+
+  26 Dec 2008; Jeremy Olexa <darkside@gentoo.org> -eix-0.14.2.ebuild,
+  -eix-0.15.1.ebuild, eix-0.15.2.ebuild:
+  New DESCRIPTION, requested by upstream
+
+  26 Dec 2008; Jeroen Roovers <jer@gentoo.org> eix-0.15.2.ebuild:
+  Stable for HPPA (bug #252245).
+
+  25 Dec 2008; Raúl Porcel <armin76@gentoo.org> eix-0.15.2.ebuild:
+  arm/ia64/s390/sh stable wrt #252245
+
+  25 Dec 2008; Tobias Klausmann <klausman@gentoo.org> eix-0.15.2.ebuild:
+  Stable on alpha, bug #252245
+
+  23 Dec 2008; Markus Meier <maekke@gentoo.org> eix-0.15.2.ebuild:
+  amd64/x86 stable, bug #252245
+
+  23 Dec 2008; Ferris McCormick <fmccor@gentoo.org> eix-0.15.2.ebuild:
+  Sparc stable, Bug #252245.
+
+*eix-0.15.2 (28 Nov 2008)
+
+  28 Nov 2008; Jeremy Olexa <darkside@gentoo.org> -eix-0.15.0.ebuild,
+  +eix-0.15.2.ebuild:
+  version bump, changelog:
+  https://projects.gentooexperimental.org/eix/browser/trunk/ChangeLog - next
+  stable candidate
+
+*eix-0.15.1 (16 Nov 2008)
+
+  16 Nov 2008; Jeremy Olexa <darkside@gentoo.org> +eix-0.15.1.ebuild:
+  Version bump, changelog:
+  https://projects.gentooexperimental.org/eix/browser/trunk/ChangeLog
+
+*eix-0.15.0 (07 Nov 2008)
+
+  07 Nov 2008; Jeremy Olexa <darkside@gentoo.org> -eix-0.10.2.ebuild,
+  -eix-0.13.3.ebuild, -eix-0.13.5.ebuild, -eix-0.14.0.ebuild,
+  -eix-0.14.1.ebuild, +eix-0.15.0.ebuild:
+  * Version bump to 0.15.0
+  * Changelog is here:
+  https://projects.gentooexperimental.org/eix/browser/tags/release-0.15.0/Chan
+  geLog 
+  * Remove old versions. Keep a stable version for every arch and 2
+  unstable versions.
+
+  03 Nov 2008; Michael Sterrett <mr_bones_@gentoo.org> eix-0.14.2.ebuild:
+  inherit goes near the top
+
+  31 Oct 2008; Jeremy Olexa <darkside@gentoo.org> metadata.xml:
+  I will be proxy commiting eix now.
+
+*eix-0.14.2 (30 Oct 2008)
+
+  30 Oct 2008; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  +eix-0.14.2.ebuild:
+  version bump on behalf of Martin Väth  (bug #243398)
+
+*eix-0.14.1 (11 Oct 2008)
+
+  11 Oct 2008; Thilo Bangert <bangert@gentoo.org> +eix-0.14.1.ebuild:
+  bump eix on behalf of Martin Väth as per bug #241336
+
+  01 Oct 2008; Brent Baude <ranger@gentoo.org> eix-0.13.3-r1.ebuild:
+  stable ppc64, bug 238282
+
+*eix-0.14.0 (01 Oct 2008)
+
+  01 Oct 2008; Peter Alfredsen <loki_val@gentoo.org> +eix-0.14.0.ebuild:
+  Bump, fixing bug 239199. This version fixes bug 238942, weirdness w/
+  portage sqlite backends.
+
+  24 Sep 2008; Stefan Schweizer <genstef@gentoo.org> -eix-0.12.4.ebuild:
+  remove old buggy version
+
+  22 Sep 2008; Raúl Porcel <armin76@gentoo.org> eix-0.13.3-r1.ebuild:
+  alpha/ia64/x86 stable wrt #238282
+
+  22 Sep 2008; nixnut <nixnut@gentoo.org> eix-0.13.3-r1.ebuild:
+  Stable on ppc wrt bug 238282
+
+  22 Sep 2008; Richard Freeman <rich0@gentoo.org> eix-0.13.3-r1.ebuild:
+  amd64 stable - 238282
+
+  21 Sep 2008; Ferris McCormick <fmccor@gentoo.org> eix-0.13.3-r1.ebuild:
+  Sparc stable (again) --- Bug #238282, #238216 --- patch does apply now.
+
+  21 Sep 2008; Jeroen Roovers <jer@gentoo.org> eix-0.13.3-r1.ebuild:
+  Stable for HPPA (bug #238216).
+
+  21 Sep 2008; Vlastimil Babka <caster@gentoo.org>
+  files/eix-0.13.3-numeric-compare.patch:
+  dos2unix on the patch to make it apply.
+
+  21 Sep 2008; Raúl Porcel <armin76@gentoo.org> eix-0.13.3-r1.ebuild:
+  Revert, since the patch doesn't apply
+
+  21 Sep 2008; Raúl Porcel <armin76@gentoo.org> eix-0.13.3-r1.ebuild:
+  alpha/ia64/sparc/x86 stable wrt #238282
+
+*eix-0.13.3-r1 (21 Sep 2008)
+
+  21 Sep 2008; Peter Alfredsen <loki_val@gentoo.org>
+  +files/eix-0.13.3-numeric-compare.patch, +eix-0.13.3-r1.ebuild:
+  Add 0.13.3-r1 for fast-track stabilization
+
+*eix-0.13.5 (21 Sep 2008)
+
+  21 Sep 2008; Peter Alfredsen <loki_val@gentoo.org> -eix-0.13.4.ebuild,
+  +eix-0.13.5.ebuild:
+  Bump to 0.13.5 wrt bug #238216.
+
+  19 Sep 2008; Raúl Porcel <armin76@gentoo.org> eix-0.13.3.ebuild:
+  alpha/ia64/x86 stable wrt #236281
+
+  18 Sep 2008; Jeroen Roovers <jer@gentoo.org> eix-0.13.3.ebuild:
+  Stable for HPPA (bug #236281).
+
+  18 Sep 2008; Dawid Węgliński <cla@gentoo.org> eix-0.13.3.ebuild:
+  Stable on amd64 (bug #236281)
+
+  18 Sep 2008; Brent Baude <ranger@gentoo.org> eix-0.13.3.ebuild:
+  Marking eix-0.13.3 ppc64 and ppc for bug 236281
+
+  18 Sep 2008; Ferris McCormick <fmccor@gentoo.org> eix-0.13.3.ebuild:
+  Sparc stable --- Bug #236281 --- I've been using it all the time for 6 weeks
+  now.
+
+*eix-0.13.4 (18 Sep 2008)
+
+  18 Sep 2008; Robert Buchholz <rbu@gentoo.org> -eix-0.13.1.ebuild,
+  -eix-0.13.2.ebuild, eix-0.13.3.ebuild, +eix-0.13.4.ebuild:
+  Version bump, add einfo about log file by Martin Väth (bug #236281)
+
+*eix-0.13.3 (04 Aug 2008)
+
+  04 Aug 2008; Stefan Schweizer <genstef@gentoo.org> +eix-0.13.3.ebuild:
+  version bump
+
+*eix-0.13.2 (09 Jul 2008)
+
+  09 Jul 2008; Stefan Schweizer <genstef@gentoo.org> +eix-0.13.2.ebuild:
+  version bump
+
+*eix-0.13.1 (26 Jun 2008)
+
+  26 Jun 2008; Stefan Schweizer <genstef@gentoo.org> -eix-0.10.5.ebuild,
+  -eix-0.12.5.ebuild, -eix-0.13.0.ebuild, +eix-0.13.1.ebuild:
+  version bump
+
+*eix-0.13.0 (24 Jun 2008)
+
+  24 Jun 2008; Stefan Schweizer <genstef@gentoo.org> +eix-0.13.0.ebuild:
+  version bump
+
+  04 Jun 2008; Alexis Ballier <aballier@gentoo.org> eix-0.12.5.ebuild:
+  keyword ~sparc-fbsd
+
+  04 Jun 2008; Markus Rothe <corsair@gentoo.org> eix-0.12.4.ebuild:
+  Stable on ppc64; bug #224297
+
+  02 Jun 2008; Robert Buchholz <rbu@gentoo.org> eix-0.12.4.ebuild:
+  amd64 stable (bug #224297)
+
+  02 Jun 2008; Jeroen Roovers <jer@gentoo.org> eix-0.12.4.ebuild:
+  Stable for HPPA (bug #224297).
+
+  01 Jun 2008; nixnut <nixnut@gentoo.org> eix-0.12.4.ebuild:
+  Stable on ppc wrt bug 224297
+
+  31 May 2008; Raúl Porcel <armin76@gentoo.org> eix-0.12.4.ebuild:
+  alpha/ia64/sparc/x86 stable wrt #224297
+
+  13 May 2008; Stefan Schweizer <genstef@gentoo.org> +eix-0.12.5.ebuild:
+  version bump
+
+*eix-0.12.4 (13 Apr 2008)
+
+  13 Apr 2008; Stefan Schweizer <genstef@gentoo.org> -eix-0.9.9.ebuild,
+  -eix-0.9.10.ebuild, -eix-0.10.3.ebuild, -eix-0.10.4.ebuild,
+  -eix-0.11.0.ebuild, -eix-0.12.1.ebuild, -eix-0.12.2.ebuild,
+  -eix-0.12.3.ebuild, +eix-0.12.4.ebuild:
+  version bump, remove old
+
+*eix-0.12.3 (04 Apr 2008)
+
+  04 Apr 2008; Stefan Schweizer <genstef@gentoo.org> +eix-0.12.3.ebuild:
+  version bump
+
+*eix-0.12.2 (25 Mar 2008)
+
+  25 Mar 2008; Stefan Schweizer <genstef@gentoo.org> +eix-0.12.2.ebuild:
+  version bump
+
+  21 Mar 2008; Brent Baude <ranger@gentoo.org> eix-0.10.5.ebuild:
+  stable ppc64, bug 208909
+
+  16 Mar 2008; Jeroen Roovers <jer@gentoo.org> eix-0.9.9.ebuild,
+  eix-0.10.5.ebuild:
+  0.10.5 stable for HPPA (bug #208909). 0.9.9 back to ~mips because of
+  dev-db/sqlite.
+
+  16 Mar 2008; nixnut <nixnut@gentoo.org> eix-0.10.5.ebuild:
+  Stable on ppc wrt bug 208909
+
+  16 Mar 2008; Samuli Suominen <drac@gentoo.org> eix-0.10.5.ebuild:
+  amd64 stable
+
+  16 Mar 2008; Raúl Porcel <armin76@gentoo.org> eix-0.10.5.ebuild:
+  alpha/ia64/sparc/x86 stable
+
+  15 Mar 2008; nixnut <nixnut@gentoo.org> eix-0.10.3.ebuild:
+  Stable on ppc wrt bug 208909
+
+  13 Mar 2008; Kenneth Prugh <ken69267@gentoo.org> eix-0.10.3.ebuild:
+  amd64 stable, bug #208909
+
+  13 Mar 2008; Jeroen Roovers <jer@gentoo.org> eix-0.10.3.ebuild:
+  Stable for HPPA (bug #208909).
+
+  12 Mar 2008; Raúl Porcel <armin76@gentoo.org> eix-0.10.3.ebuild:
+  alpha/ia64 stable wrt #208909
+
+  12 Mar 2008; Ferris McCormick <fmccor@gentoo.org> eix-0.10.3.ebuild:
+  Sparc stable --- Bug #208909 --- it's been fine for over 60 days.
+
+  12 Mar 2008; Dawid Węgliński <cla@gentoo.org> eix-0.10.3.ebuild:
+  Stable on x86 (bug #208909)
+
+  12 Mar 2008; Brent Baude <ranger@gentoo.org> eix-0.10.3.ebuild:
+  stable ppc64, bug 208909
+
+*eix-0.12.1 (11 Mar 2008)
+
+  11 Mar 2008; Stefan Schweizer <genstef@gentoo.org> +eix-0.12.1.ebuild:
+  version bump
+
+*eix-0.11.0 (03 Mar 2008)
+
+  03 Mar 2008; Stefan Schweizer <genstef@gentoo.org> +eix-0.11.0.ebuild:
+  version bump
+
+*eix-0.10.4 (15 Feb 2008)
+
+  15 Feb 2008; Stefan Schweizer <genstef@gentoo.org> +eix-0.10.4.ebuild:
+  version bump
+
+*eix-0.10.3 (31 Dec 2007)
+
+  31 Dec 2007; Stefan Schweizer <genstef@gentoo.org> +eix-0.10.3.ebuild:
+  version bump
+
+  23 Nov 2007; Markus Rothe <corsair@gentoo.org> eix-0.10.2.ebuild:
+  Stable on ppc64; bug #198536
+
+  21 Nov 2007; nixnut <nixnut@gentoo.org> eix-0.10.2.ebuild:
+  Stable on ppc wrt bug 198536
+
+  21 Nov 2007; Raúl Porcel <armin76@gentoo.org> eix-0.10.2.ebuild:
+  alpha/ia64 stable wrt #198536
+
+  21 Nov 2007; Jeroen Roovers <jer@gentoo.org> eix-0.10.2.ebuild:
+  Stable for HPPA (bug #198536).
+
+  21 Nov 2007; Ferris McCormick <fmccor@gentoo.org> eix-0.10.2.ebuild:
+  Sparc stable --- Bug #198536 --- looks good.
+
+  21 Nov 2007; Samuli Suominen <drac@gentoo.org> eix-0.10.2.ebuild:
+  amd64 stable wrt #198536
+
+  21 Nov 2007; Markus Meier <maekke@gentoo.org> eix-0.10.2.ebuild:
+  x86 stable, bug #198536
+
+  21 Nov 2007; Stefan Schweizer <genstef@gentoo.org> -eix-0.8.8.ebuild,
+  -eix-0.9.11.ebuild, -eix-0.9.12.ebuild, -eix-0.10.0.ebuild,
+  -eix-0.10.1.ebuild:
+  old
+
+*eix-0.10.2 (29 Oct 2007)
+
+  29 Oct 2007; Stefan Schweizer <genstef@gentoo.org> +eix-0.10.2.ebuild:
+  version bump
+
+  18 Oct 2007; Jeroen Roovers <jer@gentoo.org> eix-0.9.10.ebuild:
+  Stable for HPPA too.
+
+*eix-0.10.1 (04 Oct 2007)
+
+  04 Oct 2007; Stefan Schweizer <genstef@gentoo.org> +eix-0.10.1.ebuild:
+  version bump
+
+  03 Oct 2007; Tom Gall <tgall@gentoo.org> eix-0.9.10.ebuild:
+  stable on ppc64
+
+  27 Sep 2007; Raúl Porcel <armin76@gentoo.org> eix-0.9.10.ebuild:
+  sparc stable
+
+*eix-0.10.0 (20 Sep 2007)
+
+  20 Sep 2007; Stefan Schweizer <genstef@gentoo.org> +eix-0.10.0.ebuild:
+  version bump
+
+*eix-0.9.12 (12 Sep 2007)
+
+  12 Sep 2007; Stefan Schweizer <genstef@gentoo.org> +eix-0.9.12.ebuild:
+  version bump
+
+  12 Sep 2007; Christoph Mende <angelos@gentoo.org> eix-0.9.10.ebuild:
+  Stable on amd64
+
+  09 Sep 2007; Markus Rothe <corsair@gentoo.org> eix-0.9.9.ebuild:
+  Stable on ppc64; bug #185928
+
+*eix-0.9.11 (05 Sep 2007)
+
+  05 Sep 2007; Stefan Schweizer <genstef@gentoo.org>
+  -files/eix-0.9.8-gcc-3.patch, -eix-0.9.1.ebuild, -eix-0.9.4.ebuild,
+  -eix-0.9.8.ebuild, +eix-0.9.11.ebuild:
+  version bump, remove old
+
+  02 Sep 2007; Joshua Kinard <kumba@gentoo.org> eix-0.9.9.ebuild:
+  Stable on mips, per #185928.
+
+  02 Sep 2007; Raúl Porcel <armin76@gentoo.org> eix-0.9.10.ebuild:
+  alpha/ia64/x86 stable
+
+  23 Aug 2007; Jeroen Roovers <jer@gentoo.org> eix-0.9.9.ebuild:
+  Stable for HPPA too.
+
+  13 Aug 2007; Christoph Mende <angelos@gentoo.org> eix-0.9.9.ebuild:
+  Stable on amd64
+
+  09 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org> eix-0.9.9.ebuild:
+  Stable on ppc.
+
+  02 Aug 2007; Christian Birchinger <joker@gentoo.org> eix-0.9.9.ebuild:
+  Added sparc stable keyword
+
+*eix-0.9.10 (31 Jul 2007)
+
+  31 Jul 2007; Stefan Schweizer <genstef@gentoo.org> +eix-0.9.10.ebuild:
+  version bump
+
+  29 Jul 2007; Raúl Porcel <armin76@gentoo.org> eix-0.9.9.ebuild:
+  alpha/ia64/x86 stable
+
+  17 Jun 2007; Raúl Porcel <armin76@gentoo.org> eix-0.9.1.ebuild:
+  Back to ~arch because 0.9 is not stable enough
+
+  15 Jun 2007; <malc@gentoo.org> eix-0.9.9.ebuild:
+  Remove unneeded patch - per direction of upstream. bug #182150
+
+*eix-0.9.9 (15 Jun 2007)
+
+  15 Jun 2007; Stefan Schweizer <genstef@gentoo.org> +eix-0.9.9.ebuild:
+  version bump
+
+  06 Jun 2007; Stefan Schweizer <genstef@gentoo.org>
+  +files/eix-0.9.8-gcc-3.patch, eix-0.9.8.ebuild:
+  Add upstream patch to fix gcc-3 compiling
+
+*eix-0.9.8 (04 Jun 2007)
+
+  04 Jun 2007; Stefan Schweizer <genstef@gentoo.org> -eix-0.9.2.ebuild,
+  -eix-0.9.3.ebuild, -eix-0.9.6.ebuild, -eix-0.9.7.ebuild,
+  +eix-0.9.8.ebuild:
+  Version bump, clean up old ebuilds
+
+  03 Jun 2007; Christoph Mende <angelos@gentoo.org> eix-0.9.1.ebuild:
+  Stable on amd64
+
+*eix-0.9.7 (28 May 2007)
+
+  28 May 2007; Stefan Schweizer <genstef@gentoo.org> +eix-0.9.7.ebuild:
+  version bump
+
+  15 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+*eix-0.9.6 (12 May 2007)
+
+  12 May 2007; Stefan Schweizer <genstef@gentoo.org> -eix-0.9.5.ebuild,
+  +eix-0.9.6.ebuild:
+  version bump
+
+*eix-0.9.5 (06 May 2007)
+
+  06 May 2007; Stefan Schweizer <genstef@gentoo.org> +eix-0.9.5.ebuild:
+  version bump
+
+*eix-0.9.4 (27 Apr 2007)
+
+  27 Apr 2007; Stefan Schweizer <genstef@gentoo.org> +eix-0.9.4.ebuild:
+  version bump
+
+  23 Apr 2007; Raúl Porcel <armin76@gentoo.org> eix-0.9.1.ebuild:
+  ia64 + x86 stable
+
+*eix-0.9.3 (21 Apr 2007)
+
+  21 Apr 2007; Stefan Schweizer <genstef@gentoo.org> -eix-0.7.9.ebuild,
+  +eix-0.9.3.ebuild:
+  version bump
+
+  18 Apr 2007; Alexander H. Færøy <eroyf@gentoo.org> eix-0.8.8.ebuild:
+  Stable on MIPS; bug #170310
+
+*eix-0.9.2 (06 Apr 2007)
+
+  06 Apr 2007; Stefan Schweizer <genstef@gentoo.org> +eix-0.9.2.ebuild:
+  version bump, fixes 170868 and 169806
+
+  15 Mar 2007; Markus Rothe <corsair@gentoo.org> eix-0.8.8.ebuild:
+  Stable on ppc64; bug #170310
+
+  14 Mar 2007; Simon Stelling <blubb@gentoo.org> eix-0.8.8.ebuild:
+  stable on amd64; bug 170310
+
+  12 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> eix-0.8.8.ebuild:
+  Stable on Alpha, bug 170310.
+
+  12 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org> eix-0.8.8.ebuild:
+  Stable on sparc wrt #170310
+
+  12 Mar 2007; Jeroen Roovers <jer@gentoo.org> eix-0.8.8.ebuild:
+  Stable for HPPA (bug #170310).
+
+  11 Mar 2007; nixnut <nixnut@gentoo.org> eix-0.8.8.ebuild:
+  Stable on ppc wrt bug 170310
+
+  11 Mar 2007; Raúl Porcel <armin76@gentoo.org> eix-0.8.8.ebuild:
+  x86 stable wrt bug 170310
+
+*eix-0.9.1 (01 Mar 2007)
+
+  01 Mar 2007; <genstef@gentoo.org> -eix-0.6.4.ebuild, -eix-0.8.7.ebuild,
+  +eix-0.9.1.ebuild:
+  version bump
+
+*eix-0.8.8 (06 Feb 2007)
+
+  06 Feb 2007; <genstef@gentoo.org> eix-0.6.4.ebuild, eix-0.7.9.ebuild,
+  eix-0.8.7.ebuild, +eix-0.8.8.ebuild:
+  version bump and homepage fix
+
+*eix-0.8.7 (05 Feb 2007)
+
+  05 Feb 2007; <genstef@gentoo.org> -files/eix-0.8.3-fbsd.patch,
+  -eix-0.8.3.ebuild, -eix-0.8.4.ebuild, -eix-0.8.5.ebuild,
+  -eix-0.8.6.ebuild, +eix-0.8.7.ebuild:
+  version bump
+
+  24 Jan 2007; Marius Mauch <genone@gentoo.org> eix-0.6.4.ebuild,
+  eix-0.7.9.ebuild, eix-0.8.3.ebuild, eix-0.8.4.ebuild, eix-0.8.5.ebuild,
+  eix-0.8.6.ebuild:
+  Replacing einfo with elog
+
+*eix-0.8.6 (22 Jan 2007)
+
+  22 Jan 2007; <genstef@gentoo.org> +eix-0.8.6.ebuild:
+  version bump
+
+  19 Jan 2007; Markus Rothe <corsair@gentoo.org> eix-0.7.9.ebuild:
+  Stable on ppc64; bug #162556
+
+  17 Jan 2007; Christian Faulhammer <opfer@gentoo.org> eix-0.7.9.ebuild:
+  stable x86, bug #162556
+
+  15 Jan 2007; Jeroen Roovers <jer@gentoo.org> eix-0.7.9.ebuild:
+  Stable for HPPA.
+
+*eix-0.8.5 (11 Jan 2007)
+
+  11 Jan 2007; <genstef@gentoo.org> +eix-0.8.5.ebuild:
+  version bump
+
+*eix-0.8.4 (24 Dec 2006)
+
+  24 Dec 2006; Stefan Schweizer <genstef@gentoo.org> -eix-0.8.2.ebuild, +eix-0.8.4.ebuild:
+  New eix version as christmas present
+
+  24 Dec 2006; Tobias Scherbaum <dertobi123@gentoo.org> eix-0.7.9.ebuild:
+  Stable on ppc.
+
+  21 Dec 2006; Ferris McCormick <fmccor@gentoo.org> eix-0.7.9.ebuild:
+  Stable on sparc.
+
+  18 Dec 2006; Alexander H. Færøy <eroyf@gentoo.org> eix-0.7.9.ebuild:
+  Stable on IA64
+
+  16 Dec 2006; Alexander H. Færøy <eroyf@gentoo.org> eix-0.7.9.ebuild:
+  Stable on Alpha and MIPS.
+
+  16 Dec 2006; Timothy Redaelli <drizzt@gentoo.org>
+  +files/eix-0.8.3-fbsd.patch, eix-0.7.9.ebuild, eix-0.8.2.ebuild,
+  eix-0.8.3.ebuild:
+  Add workaround for Gentoo/FreeBSD without revbump and remove ~x86-fbsd
+  keyword from not working versions.
+
+*eix-0.8.3 (11 Dec 2006)
+
+  11 Dec 2006; Stefan Schweizer <genstef@gentoo.org> -eix-0.7.7.ebuild,
+  +eix-0.8.3.ebuild:
+  version bump
+
+  08 Dec 2006; Steve Dibb <beandog@gentoo.org> eix-0.8.2.ebuild:
+  amd64 stable, bug 157136
+
+  04 Dec 2006; Alexander H. Færøy <eroyf@gentoo.org> eix-0.6.4.ebuild:
+  Stable on MIPS.
+
+*eix-0.8.2 (19 Nov 2006)
+
+  19 Nov 2006; Stefan Schweizer <genstef@gentoo.org> -eix-0.8.1.ebuild,
+  +eix-0.8.2.ebuild:
+  version bump
+
+*eix-0.8.1 (13 Nov 2006)
+
+  13 Nov 2006; Stefan Schweizer <genstef@gentoo.org> +eix-0.8.1.ebuild:
+  version bump
+
+*eix-0.7.9 (04 Nov 2006)
+
+  04 Nov 2006; Stefan Schweizer <genstef@gentoo.org> -eix-0.7.6.ebuild,
+  +eix-0.7.9.ebuild:
+  version bump
+
+*eix-0.7.7 (13 Oct 2006)
+
+  13 Oct 2006; Stefan Schweizer <genstef@gentoo.org> -eix-0.7.4.ebuild,
+  +eix-0.7.7.ebuild:
+  version bump
+
+*eix-0.7.6 (02 Oct 2006)
+
+  02 Oct 2006; Stefan Schweizer <genstef@gentoo.org> -eix-0.7.5.ebuild,
+  +eix-0.7.6.ebuild:
+  version bump
+
+*eix-0.7.5 (01 Oct 2006)
+
+  01 Oct 2006; Stefan Schweizer <genstef@gentoo.org>
+  -files/eix-bug127184.patch, -files/eix-0.5.5-gentoo-obsd.patch,
+  -eix-0.5.5.ebuild, -eix-0.5.6.ebuild, +eix-0.7.5.ebuild:
+  version bump
+
+  23 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org> eix-0.6.4.ebuild:
+  hppa stable, bug #147246
+
+  15 Sep 2006; Fabian Groffen <grobian@gentoo.org> eix-0.6.4.ebuild:
+  Marked ppc-macos stable (bug #147246)
+
+  13 Sep 2006; Stephanie Lockwood-Childs <wormo@gentoo.org> eix-0.6.4.ebuild:
+  stable on ppc (Bug #147246)
+
+  13 Sep 2006; Aron Griffis <agriffis@gentoo.org> eix-0.6.4.ebuild:
+  Mark 0.6.4 stable on ia64. #147246
+
+  12 Sep 2006; Thomas Cort <tcort@gentoo.org> eix-0.6.4.ebuild:
+  Stable on amd64 wrt Bug #147246.
+
+  12 Sep 2006; Markus Rothe <corsair@gentoo.org> eix-0.6.4.ebuild:
+  Stable on ppc64; bug #147246
+
+  12 Sep 2006; Gustavo Zacarias <gustavoz@gentoo.org> eix-0.6.4.ebuild:
+  Stable on sparc wrt #147246
+
+  12 Sep 2006; Thomas Cort <tcort@gentoo.org> eix-0.6.4.ebuild:
+  Stable on alpha wrt Bug #147246.
+
+  12 Sep 2006; Torsten Veller <tove@gentoo.org> eix-0.6.4.ebuild:
+  Stable on x86 (#147246)
+
+  12 Sep 2006; Stefan Schweizer <genstef@gentoo.org>
+  -files/eix-0.5.1-bug121360.patch, -files/eix-0.5.1-bug122005.patch,
+  -eix-0.6.2.ebuild, -eix-0.6.3.ebuild, -eix-0.7.2.ebuild,
+  -eix-0.7.3.ebuild:
+  remove old
+
+*eix-0.7.4 (11 Sep 2006)
+
+  11 Sep 2006; Stefan Schweizer <genstef@gentoo.org> +eix-0.7.4.ebuild:
+  version bump, sqlite backend support
+
+*eix-0.7.3 (09 Sep 2006)
+
+  09 Sep 2006; Stefan Schweizer <genstef@gentoo.org> +eix-0.7.3.ebuild:
+  version bump
+
+*eix-0.7.2 (31 Aug 2006)
+
+  31 Aug 2006; Stefan Schweizer <genstef@gentoo.org> +eix-0.7.2.ebuild:
+  version bump
+
+  17 Aug 2006; Stephanie Lockwood-Childs <wormo@gentoo.org> :
+  stable on ppc (Bug #144080)
+
+*eix-0.6.4 (17 Aug 2006)
+
+  17 Aug 2006; Stefan Schweizer <genstef@gentoo.org> +eix-0.6.4.ebuild:
+  version bump
+
+  17 Aug 2006; Daniel Gryniewicz <dang@gentoo.org> eix-0.5.6.ebuild:
+  Marked stable on amd64 for bug #144080
+
+  17 Aug 2006; Joshua Jackson <tsunam@gentoo.org> eix-0.5.6.ebuild:
+  Stable x86; bug #144080. I wonder if people read these
+
+  17 Aug 2006; Thomas Cort <tcort@gentoo.org> eix-0.5.6.ebuild:
+  Stable on alpha wrt Bug #144080.
+
+  16 Aug 2006; Brent Baude <ranger@gentoo.org> eix-0.5.6.ebuild:
+  Marking eix-0.5.6 ppc64 stable wrt bug #144080
+
+  16 Aug 2006; Fabian Groffen <grobian@gentoo.org> eix-0.5.6.ebuild:
+  Marked ppc-macos stable (bug #144080)
+
+  16 Aug 2006; Ferris McCormick <fmccor@gentoo.org> eix-0.5.6.ebuild:
+  Stable on sparc --- Bug #144080 --- builds and works fine.
+
+  16 Aug 2006; Jeroen Roovers <jer@gentoo.org> eix-0.5.6.ebuild:
+  Stable for HPPA (bug #144080).
+
+  13 Aug 2006; Stefan Schweizer <genstef@gentoo.org> eix-0.6.3.ebuild:
+  add dodoc thanks to Petteri Räty <betelgeuse@gentoo.org> in bug 143780,
+  trim postinst einfo notes
+
+*eix-0.6.3 (08 Aug 2006)
+
+  08 Aug 2006; Stefan Schweizer <genstef@gentoo.org> +eix-0.6.3.ebuild:
+  version bump
+
+*eix-0.6.2 (06 Aug 2006)
+
+  06 Aug 2006; Stefan Schweizer <genstef@gentoo.org> +eix-0.6.2.ebuild:
+  version bump, fixes bugs 138629, 140555, 142469, 142503 and 141818
+
+  12 Jul 2006; Aron Griffis <agriffis@gentoo.org> eix-0.5.5.ebuild:
+  Mark 0.5.5 stable on ia64. #132931
+
+  12 Jul 2006; Stefan Schweizer <genstef@gentoo.org> metadata.xml:
+  New upstream maintainer: Martin Väth
+
+*eix-0.5.6 (12 Jul 2006)
+
+  12 Jul 2006; Stefan Schweizer <genstef@gentoo.org> +eix-0.5.6.ebuild:
+  New version thanks to Martin Väth <vaeth@mathematik.uni-wuerzburg.de>.
+  Fixes bugs 132874, 133732, 136202 and 137784
+
+  17 May 2006; Stefan Schweizer <genstef@gentoo.org> eix-0.5.5.ebuild:
+  ~x86-fbsd, spb @ #gentoo-bsd kindly allowed me to add the keyword
+
+  14 May 2006; Markus Rothe <corsair@gentoo.org> eix-0.5.5.ebuild:
+  Stable on ppc64; bug #132931
+
+  13 May 2006; Fabian Groffen <grobian@gentoo.org> eix-0.5.5.ebuild:
+  Marked ppc-macos stable (bug #132931)
+
+  13 May 2006; <nixnut@gentoo.org> eix-0.5.5.ebuild:
+  Stable on ppc. bug #132931
+
+  12 May 2006; Gustavo Zacarias <gustavoz@gentoo.org> eix-0.5.5.ebuild:
+  Stable on sparc wrt #132931
+
+  11 May 2006; Jeroen Roovers <jer@gentoo.org> eix-0.5.5.ebuild:
+  Stable on hppa (bug #132931).
+
+  10 May 2006; Thomas Cort <tcort@gentoo.org> eix-0.5.5.ebuild:
+  Stable on alpha.
+
+  10 May 2006; Thomas Cort <tcort@gentoo.org> eix-0.5.5.ebuild:
+  Stable on amd64 wrt Bug #132931.
+
+  10 May 2006; Torsten Veller <tove@gentoo.org> eix-0.5.5.ebuild:
+  Stable on x86 (#132931)
+
+  14 Apr 2006; <reb@gentoo.org> +files/eix-0.5.5-gentoo-obsd.patch,
+  eix-0.5.5.ebuild:
+  Added patch for compile on g/obsd
+
+  02 Apr 2006; Stefan Schweizer <genstef@gentoo.org>
+  -files/0.3.0-datatype-mix.patch, -files/0.3.0-dbmatchcriteria-fix.patch,
+  -files/0.3.0-getParentProfile.patch, -files/0.3.0-if-else-fi.patch,
+  -files/0.3.0-insecure-tmpfile.patch, -eix-0.3.0-r2.ebuild:
+  remove old
+
+  02 Apr 2006; Bryan Østergaard <kloeri@gentoo.org eix-0.5.1-r2.ebuild:
+  Stable on alpha, bug 114628.
+
+  01 Apr 2006; Markus Rothe <corsair@gentoo.org> eix-0.5.1-r2.ebuild:
+  Stable on ppc64; bug #114628
+
+  28 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org> eix-0.5.1-r2.ebuild:
+  Stable on sparc wrt #114628
+
+  25 Mar 2006; Fabian Groffen <grobian@gentoo.org> eix-0.5.1-r2.ebuild:
+  Marked ppc-macos stable (bug #114628)
+
+  24 Mar 2006; Aron Griffis <agriffis@gentoo.org> eix-0.5.1-r2.ebuild:
+  Mark 0.5.1-r2 stable on ia64
+
+  23 Mar 2006; Michael Hanselmann <hansmi@gentoo.org> eix-0.5.1-r2.ebuild:
+  Stable on ppc.
+
+  23 Mar 2006; Luis Medinas <metalgod@gentoo.org> eix-0.5.1-r2.ebuild:
+  Stable on amd64. See bug #114628.
+
+  23 Mar 2006; <ticho@gentoo.org> eix-0.5.1-r2.ebuild:
+  Stable on x86, bug #114628.
+
+  22 Mar 2006; Jeroen Roovers <jer@gentoo.org> eix-0.5.1-r2.ebuild:
+  Stable on hppa (bug #114628).
+
+  22 Mar 2006; Stefan Schweizer <genstef@gentoo.org>
+  +files/eix-bug127184.patch, eix-0.5.5.ebuild:
+  Add patch for bug 127184
+
+*eix-0.5.5 (22 Mar 2006)
+
+  22 Mar 2006; Stefan Schweizer <genstef@gentoo.org>
+  -files/eix-0.5.4-proper-template-usage.patch, -eix-0.5.4.ebuild,
+  +eix-0.5.5.ebuild:
+  version bump, remove old, closes bug 127101
+
+  21 Mar 2006; Stefan Schweizer <genstef@gentoo.org>
+  -files/eix-0.5.0-redir-fix.patch,
+  +files/eix-0.5.4-proper-template-usage.patch, -eix-0.3.0-r1.ebuild,
+  -eix-0.5.0.ebuild, -eix-0.5.0-r1.ebuild, -eix-0.5.1.ebuild,
+  -eix-0.5.1-r1.ebuild, -eix-0.5.3.ebuild, eix-0.5.4.ebuild:
+  Fix gcc-3.3 compiling, bug 126358, remove old ebuilds
+
+*eix-0.5.4 (20 Mar 2006)
+
+  20 Mar 2006; Stefan Schweizer <genstef@gentoo.org> +eix-0.5.4.ebuild:
+  version bump
+
+  15 Mar 2006; Jeroen Roovers <jer@gentoo.org> eix-0.5.1-r2.ebuild:
+  Marked ~hppa (bug #126193).
+
+*eix-0.5.3 (15 Mar 2006)
+
+  15 Mar 2006; Stefan Schweizer <genstef@gentoo.org> +eix-0.5.3.ebuild:
+  version bump
+
+*eix-0.5.1-r2 (08 Feb 2006)
+
+  08 Feb 2006; Stefan Schweizer <genstef@gentoo.org>
+  +files/eix-0.5.1-bug122005.patch, metadata.xml, +eix-0.5.1-r2.ebuild:
+  Fix bug 122005 and make backport default for portage-2.1
+
+  06 Feb 2006; Markus Rothe <corsair@gentoo.org> eix-0.5.0.ebuild,
+  eix-0.5.0-r1.ebuild, eix-0.5.1.ebuild, eix-0.5.1-r1.ebuild:
+  Added ~ppc64; bug #121240
+
+*eix-0.5.1-r1 (03 Feb 2006)
+
+  03 Feb 2006; Stefan Schweizer <genstef@gentoo.org>
+  +files/eix-0.5.1-bug121360.patch, +eix-0.5.1-r1.ebuild:
+  Add patch to fix bug 121360 thanks to appro
+
+*eix-0.5.1 (02 Feb 2006)
+
+  02 Feb 2006; Stefan Schweizer <genstef@gentoo.org> +eix-0.5.1.ebuild:
+  Version bump thanks to appro, closes bug 117407
+
+  14 Jan 2006; Fabian Groffen <grobian@gentoo.org> eix-0.5.0-r1.ebuild:
+  Marked ~ppc-macos (bug #118341)
+
+*eix-0.5.0-r1 (11 Jan 2006)
+
+  11 Jan 2006; Stefan Schweizer <genstef@gentoo.org> metadata.xml,
+  +eix-0.5.0-r1.ebuild:
+  Take over maintainership from hollow, add new ebuild revision to push out
+  the bug-fixing patch and simplify it.
+
+  07 Jan 2006; Benedikt Boehm <hollow@gentoo.org>
+  +files/eix-0.5.0-redir-fix.patch, eix-0.5.0.ebuild:
+  fix bug 118034
+
+*eix-0.5.0 (30 Nov 2005)
+
+  30 Nov 2005; Benedikt Boehm <hollow@gentoo.org> -eix-0.5.0_pre2.ebuild,
+  -eix-0.5.0_rc1.ebuild, +eix-0.5.0.ebuild:
+  Version bump
+
+*eix-0.5.0_rc1 (26 Nov 2005)
+
+  26 Nov 2005; Benedikt Boehm <hollow@gentoo.org> +eix-0.5.0_rc1.ebuild:
+  Version bump
+
+  26 Nov 2005; Benedikt Boehm <hollow@gentoo.org> -eix-0.5.0_beta.ebuild,
+  -eix-0.5.0_pre1.ebuild, eix-0.5.0_pre2.ebuild:
+  SRC_URI update; cleanup
+
+  21 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> eix-0.3.0-r2.ebuild:
+  Stable on ppc.
+
+  19 Nov 2005; Fernando J. Pereda <ferdy@gentoo.org> eix-0.3.0-r2.ebuild:
+  stable on alpha wrt bug #112061
+
+  19 Nov 2005; Luis Medinas <metalgod@gentoo.org> eix-0.3.0-r2.ebuild:
+  Stable on amd64. See bug #112061.
+
+  18 Nov 2005; Andrej Kacian <ticho@gentoo.org> eix-0.3.0-r2.ebuild:
+  Stable on x86, security bug #112061.
+
+  18 Nov 2005; Gustavo Zacarias <gustavoz@gentoo.org> eix-0.3.0-r2.ebuild:
+  Stable on sparc wrt #112061
+
+*eix-0.5.0_pre2 (18 Nov 2005)
+
+  18 Nov 2005; Benedikt Boehm <hollow@gentoo.org> +eix-0.5.0_pre2.ebuild:
+  Version bump
+
+*eix-0.3.0-r2 (17 Nov 2005)
+
+  17 Nov 2005; Benedikt Boehm <hollow@gentoo.org>
+  -files/0.2.2-incorrect-masks.patch, -files/0.2.6-cdb-cast.patch,
+  -files/0.2.2-unistd.h.patch, -files/0.2.6-package.cc.patch,
+  +files/0.3.0-insecure-tmpfile.patch, -eix-0.2.2.ebuild, -eix-0.2.6.ebuild,
+  -eix-0.3.0.ebuild, +eix-0.3.0-r2.ebuild:
+  fix #112061
+
+*eix-0.5.0_pre1 (14 Nov 2005)
+
+  14 Nov 2005; Benedikt Boehm <hollow@gentoo.org> +eix-0.5.0_pre1.ebuild:
+  Version bump
+
+*eix-0.5.0_beta (07 Nov 2005)
+
+  07 Nov 2005; Benedikt Boehm <hollow@gentoo.org> +eix-0.5.0_beta.ebuild:
+  Version bump
+
+  19 Sep 2005; Benedikt Boehm <hollow@gentoo.org>
+  +files/0.3.0-getParentProfile.patch, eix-0.3.0-r1.ebuild:
+  fix #105935
+
+  17 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> eix-0.3.0-r1.ebuild:
+  Stable on ppc.
+
+  17 Sep 2005; Simon Stelling <blubb@gentoo.org> eix-0.3.0-r1.ebuild:
+  stable on amd64
+
+  13 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org> eix-0.3.0-r1.ebuild:
+  Stable on sparc
+
+  12 Sep 2005; Bryan Østergaard <kloeri@gentoo.org> eix-0.3.0-r1.ebuild:
+  Stable on x86, alpha and ia64.
+
+  09 Sep 2005; Aron Griffis <agriffis@gentoo.org> eix-0.2.6.ebuild:
+  Mark 0.2.6 stable on alpha
+
+  05 Sep 2005; Jason Wever <weeve@gentoo.org> eix-0.2.6.ebuild:
+  Stable on SPARC.
+
+  04 Sep 2005; Aaron Walker <ka0ttic@gentoo.org> eix-0.3.0-r1.ebuild:
+  Added ~mips.
+
+  03 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> eix-0.2.6.ebuild:
+  Stable on ppc.
+
+*eix-0.3.0-r1 (03 Sep 2005)
+
+  03 Sep 2005; Benedikt Boehm <hollow@gentoo.org>
+  +files/0.3.0-dbmatchcriteria-fix.patch, -eix-0.2.1.ebuild,
+  eix-0.2.6.ebuild, -eix-0.3.0_beta.ebuild, eix-0.3.0.ebuild,
+  +eix-0.3.0-r1.ebuild:
+  add a nice patch to minimize search time even more
+  0.2.6 to stable + clean-up
+
+  29 Aug 2005; Benedikt Boehm <hollow@gentoo.org>
+  +files/0.3.0-datatype-mix.patch, eix-0.3.0.ebuild:
+  fix bug 104083
+
+*eix-0.3.0 (27 Aug 2005)
+
+  27 Aug 2005; Benedikt Boehm <hollow@gentoo.org>
+  +files/0.3.0-if-else-fi.patch, +eix-0.3.0.ebuild:
+  Version bump
+
+*eix-0.3.0_beta (16 Aug 2005)
+
+  16 Aug 2005; Benedikt Boehm <hollow@gentoo.org> +eix-0.3.0_beta.ebuild:
+  Version bump
+
+  07 Jul 2005; Benedikt Boehm <hollow@gentoo.org>
+  +files/0.2.6-cdb-cast.patch, eix-0.2.6.ebuild:
+  fix bug 98218
+
+  07 Jul 2005; Benedikt Boehm <hollow@gentoo.org> eix-0.2.6.ebuild:
+  fix bug 98237
+
+  06 Jul 2005; Benedikt Boehm <hollow@gentoo.org>
+  +files/0.2.6-package.cc.patch, eix-0.2.6.ebuild:
+  fix bug 97914
+
+*eix-0.2.6 (03 Jul 2005)
+
+  03 Jul 2005; Benedikt Boehm <hollow@gentoo.org> +eix-0.2.6.ebuild:
+  Version bump
+
+  13 May 2005; Fernando J. Pereda <ferdy@gentoo.org> eix-0.2.2.ebuild:
+  0.2.2 alpha stable
+
+  03 May 2005; Benedikt Boehm <hollow@gentoo.org> eix-0.2.1.ebuild,
+  eix-0.2.2.ebuild:
+  fixed homepage #91190
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> eix-0.2.2.ebuild:
+  Stable on ppc.
+
+  18 Apr 2005; Benedikt Boehm <hollow@gentoo.org>
+  +files/0.2.2-unistd.h.patch, eix-0.2.2.ebuild:
+  fixed bug 89376
+
+  11 Apr 2005; Marcus D. Hanwell <cryos@gentoo.org> eix-0.2.2.ebuild:
+  Stable on amd64, bug 84466 is relevant to 2005.0 profile.
+
+  07 Apr 2005; Benedikt Boehm <hollow@gentoo.org>
+  +files/0.2.2-incorrect-masks.patch, eix-0.2.2.ebuild:
+  fix bug 88148
+
+  05 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org> eix-0.2.2.ebuild:
+  Stable on sparc
+
+  05 Apr 2005; Benedikt Boehm <hollow@gentoo.org>
+  -files/0.2.0-bugfixes.patch, -eix-0.2.0-r1.ebuild, eix-0.2.2.ebuild:
+  move 0.2.2 to stable, fixes bug 84466 + 86001
+
+  31 Mar 2005; Aron Griffis <agriffis@gentoo.org> eix-0.2.1.ebuild:
+  stable on ia64
+
+  31 Mar 2005; <blubb@gentoo.org> eix-0.2.1.ebuild:
+  stable on amd64
+
+  30 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> eix-0.2.1.ebuild:
+  Stable on sparc
+
+*eix-0.2.2 (27 Mar 2005)
+
+  27 Mar 2005; Benedikt Boehm <hollow@gentoo.org>
+  -files/0.2.2_alpha-compile-fix.patch, eix-0.2.1.ebuild,
+  -eix-0.2.2_alpha.ebuild, -eix-0.2.2_alpha-r1.ebuild,
+  -eix-0.2.2_beta.ebuild, -eix-0.2.2_beta-r1.ebuild, +eix-0.2.2.ebuild:
+  0.2.1 to stable x86, clean up, version bump to 0.2.2
+
+*eix-0.2.2_beta-r1 (25 Mar 2005)
+
+  25 Mar 2005; Benedikt Boehm <hollow@gentoo.org> +eix-0.2.2_beta-r1.ebuild:
+  readded missing keywords, added bash-completion_pkg_postinst, fixed cache
+  update message
+
+  19 Mar 2005; <blubb@gentoo.org> eix-0.2.0-r1.ebuild:
+  stable on amd64
+
+*eix-0.2.2_beta (19 Mar 2005)
+
+  19 Mar 2005; Benedikt Boehm <hollow@gentoo.org> +eix-0.2.2_beta.ebuild:
+  Version bump
+
+  13 Mar 2005; Benedikt Boehm <hollow@gentoo.org>
+  -files/0.2.0_alpha-bugfixes.patch, -eix-0.1.2.ebuild, -eix-0.1.3.ebuild,
+  -eix-0.1.4.ebuild, eix-0.2.0-r1.ebuild, -eix-0.2.0.ebuild,
+  -eix-0.2.0_alpha.ebuild:
+  removed old versions and moved 0.2.0-r1 to stable x86
+
+*eix-0.2.2_alpha-r1 (12 Mar 2005)
+
+  12 Mar 2005; Benedikt Boehm <hollow@gentoo.org>
+  +files/0.2.2_alpha-compile-fix.patch, +eix-0.2.2_alpha-r1.ebuild:
+  compile fix, fixes 84976
+
+*eix-0.2.2_alpha (10 Mar 2005)
+
+  10 Mar 2005; Benedikt Boehm <hollow@gentoo.org> +eix-0.2.2_alpha.ebuild:
+  Version bump
+
+  27 Feb 2005; Jason Wever <weeve@gentoo.org> eix-0.2.1.ebuild:
+  Added ~sparc keyword.
+
+*eix-0.2.1 (24 Feb 2005)
+
+  24 Feb 2005; Benedikt Boehm <hollow@gentoo.org> +eix-0.2.1.ebuild:
+  Version bump
+
+  15 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org> eix-0.2.0-r1.ebuild:
+  To ~sparc wrt #82002
+
+*eix-0.2.0-r1 (14 Feb 2005)
+
+  14 Feb 2005; Benedikt Boehm <hollow@gentoo.org> +eix-0.2.0-r1.ebuild:
+  added bugfix patch. fixes #81988
+
+*eix-0.2.0 (14 Feb 2005)
+
+  14 Feb 2005; Benedikt Boehm <hollow@gentoo.org> +eix-0.2.0.ebuild:
+  Version bump
+
+  02 Feb 2005; Benedikt Boehm <hollow@gentoo.org>
+  +files/0.2.0_alpha-bugfixes.patch, -files/0.2.0_alpha-portdir.patch,
+  eix-0.2.0_alpha.ebuild:
+  removed portdir patch which is in a generic bugfix patch. fixes #80241
+
+  01 Feb 2005; Benedikt Boehm <hollow@gentoo.org>
+  +files/0.2.0_alpha-portdir.patch, eix-0.2.0_alpha.ebuild:
+  Fix bug #80318
+
+*eix-0.2.0_alpha (01 Feb 2005)
+
+  01 Feb 2005; Benedikt Boehm <hollow@gentoo.org> +eix-0.2.0_alpha.ebuild:
+  Bump to 0.2.0_alpha
+
+  31 Jan 2005; Aron Griffis <agriffis@gentoo.org> eix-0.1.4.ebuild:
+  add ~alpha and ~ia64
+
+  31 Jan 2005; Simon Stelling <blubb@gentoo.org> eix-0.1.4.ebuild:
+  added ~amd64
+
+*eix-0.1.4 (22 Jan 2005)
+
+  22 Jan 2005; Benedikt Boehm <hollow@gentoo.org> +eix-0.1.4.ebuild:
+  version bump
+
+*eix-0.1.3 (20 Jan 2005)
+
+  20 Jan 2005; Benedikt Boehm <hollow@gentoo.org> +eix-0.1.3.ebuild:
+  Version bump
+
+  18 Jan 2005; Benedikt Boehm <hollow@gentoo.org> eix-0.1.2.ebuild:
+  Fixed Keywords
+
+*eix-0.1.2 (18 Jan 2005)
+
+  18 Jan 2005; Benedikt Boehm <hollow@gentoo.org> +eix-0.1.2.ebuild:
+  Initial Import. Thanks to xororand for creating the ebuild

@@ -1,0 +1,53 @@
+# ChangeLog for sci-chemistry/autodock
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/autodock/ChangeLog,v 1.11 2015/04/13 08:02:47 jlec Exp $
+
+  13 Apr 2015; Justin Lecher <jlec@gentoo.org> -autodock-4.2.3-r1.ebuild:
+  Drop old
+
+*autodock-4.2.6 (13 Mar 2015)
+
+  13 Mar 2015; Justin Lecher <jlec@gentoo.org> +autodock-4.2.6.ebuild,
+  +files/autodock-4.2.6-buildsystem.patch, autodock-4.2.3-r1.ebuild,
+  metadata.xml:
+  Version Bump; Move to new python eclasses
+
+  26 Jun 2011; Justin Lecher <jlec@gentoo.org> autodock-4.2.3-r1.ebuild:
+  Straight out QA issues
+
+*autodock-4.2.3-r1 (25 Jun 2010)
+
+  25 Jun 2010; Justin Lecher <jlec@gentoo.org> -autodock-4.0.1.ebuild,
+  -autodock-4.0.1-r1.ebuild, -autodock-4.2.3.ebuild,
+  +autodock-4.2.3-r1.ebuild:
+  Fixed installation issue when csh is not present, #303463; fix src_test,
+  #320345; removed old, fixed PYTHON ABIs stuff
+
+*autodock-4.2.3 (04 Feb 2010)
+
+  04 Feb 2010; Alexey Shvetsov <alexxy@gentoo.org> +autodock-4.2.3.ebuild:
+  Version bump per bug #300834
+
+  24 Mar 2009; Olivier Fisette <ribosome@gentoo.org> metadata.xml:
+  Giving up maintainership of this package.
+
+  05 Aug 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  +files/4.0.1-gcc-4.3.patch, autodock-4.0.1-r1.ebuild:
+  Fix for gcc 4.3.
+
+*autodock-4.0.1-r1 (26 Jun 2007)
+
+  26 Jun 2007; Olivier Fisette <ribosome@gentoo.org>
+  +autodock-4.0.1-r1.ebuild:
+  Install documentation and parameter files. Added test suite. Ebuild clean-up.
+
+  21 Jun 2007; Olivier Fisette <ribosome@gentoo.org> autodock-4.0.1.ebuild:
+  Added a notice and URL to encourage Gentoo users to register as AutoDock
+  users for grant application purposes.
+
+*autodock-4.0.1 (19 Jun 2007)
+
+  19 Jun 2007; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +autodock-4.0.1.ebuild:
+  Initial import. Thanks to Luc Grenier <lgrenier@rsvs.ulaval.ca> for his
+  ebuild and for testing the package.

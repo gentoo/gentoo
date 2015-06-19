@@ -1,0 +1,1089 @@
+From cfeb394224f2daeb2139cf4ec489a4dd8297a44d Mon Sep 17 00:00:00 2001
+From: Brian Paul <brianp@vmware.com>
+Date: Fri, 12 Sep 2014 08:31:15 -0600
+Subject: [PATCH] mesa: break up _mesa_swizzle_and_convert() to reduce compile
+ time
+
+This reduces gcc -O3 compile time to 1/4 of what it was on my system.
+Reduces MSVC release build time too.
+
+Reviewed-by: Jason Ekstrand <jason.ekstrand@intel.com>
+---
+ src/mesa/main/format_utils.c | 1030 ++++++++++++++++++++++--------------------
+ 1 file changed, 550 insertions(+), 480 deletions(-)
+
+diff --git a/src/mesa/main/format_utils.c b/src/mesa/main/format_utils.c
+index 240e3bc..29d779a 100644
+--- a/src/mesa/main/format_utils.c
++++ b/src/mesa/main/format_utils.c
+@@ -352,9 +352,14 @@ swizzle_convert_try_memcpy(void *dst, GLenum dst_type, int num_dst_channels,
+  */
+ #define SWIZZLE_CONVERT(DST_TYPE, SRC_TYPE, CONV)                 \
+    do {                                                           \
++      const uint8_t swizzle_x = swizzle[0];                       \
++      const uint8_t swizzle_y = swizzle[1];                       \
++      const uint8_t swizzle_z = swizzle[2];                       \
++      const uint8_t swizzle_w = swizzle[3];                       \
+       const SRC_TYPE *typed_src = void_src;                       \
+       DST_TYPE *typed_dst = void_dst;                             \
+       DST_TYPE tmp[7];                                            \
++      int s, j;                                                   \
+       tmp[4] = 0;                                                 \
+       tmp[5] = one;                                               \
+       switch (num_dst_channels) {                                 \
+@@ -423,7 +428,527 @@ swizzle_convert_try_memcpy(void *dst, GLenum dst_type, int num_dst_channels,
+          }                                                        \
+          break;                                                   \
+       }                                                           \
+-   } while (0);
++   } while (0)
++
++
++static void
++convert_float(void *void_dst, int num_dst_channels,
++              const void *void_src, GLenum src_type, int num_src_channels,
++              const uint8_t swizzle[4], bool normalized, int count)
++{
++   const float one = 1.0f;
++
++   switch (src_type) {
++   case GL_FLOAT:
++      SWIZZLE_CONVERT(float, float, src);
++      break;
++   case GL_HALF_FLOAT:
++      SWIZZLE_CONVERT(float, uint16_t, _mesa_half_to_float(src));
++      break;
++   case GL_UNSIGNED_BYTE:
++      if (normalized) {
++         SWIZZLE_CONVERT(float, uint8_t, unorm_to_float(src, 8));
++      } else {
++         SWIZZLE_CONVERT(float, uint8_t, src);
++      }
++      break;
++   case GL_BYTE:
++      if (normalized) {
++         SWIZZLE_CONVERT(float, int8_t, snorm_to_float(src, 8));
++      } else {
++         SWIZZLE_CONVERT(float, int8_t, src);
++      }
++      break;
++   case GL_UNSIGNED_SHORT:
++      if (normalized) {
++         SWIZZLE_CONVERT(float, uint16_t, unorm_to_float(src, 16));
++      } else {
++         SWIZZLE_CONVERT(float, uint16_t, src);
++      }
++      break;
++   case GL_SHORT:
++      if (normalized) {
++         SWIZZLE_CONVERT(float, int16_t, snorm_to_float(src, 16));
++      } else {
++         SWIZZLE_CONVERT(float, int16_t, src);
++      }
++      break;
++   case GL_UNSIGNED_INT:
++      if (normalized) {
++         SWIZZLE_CONVERT(float, uint32_t, unorm_to_float(src, 32));
++      } else {
++         SWIZZLE_CONVERT(float, uint32_t, src);
++      }
++      break;
++   case GL_INT:
++      if (normalized) {
++         SWIZZLE_CONVERT(float, int32_t, snorm_to_float(src, 32));
++      } else {
++         SWIZZLE_CONVERT(float, int32_t, src);
++      }
++      break;
++   default:
++      assert(!"Invalid channel type combination");
++   }
++}
++
++
++static void
++convert_half_float(void *void_dst, int num_dst_channels,
++                   const void *void_src, GLenum src_type, int num_src_channels,
++                   const uint8_t swizzle[4], bool normalized, int count)
++{
++   const uint16_t one = _mesa_float_to_half(1.0f);
++
++   switch (src_type) {
++   case GL_FLOAT:
++      SWIZZLE_CONVERT(uint16_t, float, _mesa_float_to_half(src));
++      break;
++   case GL_HALF_FLOAT:
++      SWIZZLE_CONVERT(uint16_t, uint16_t, src);
++      break;
++   case GL_UNSIGNED_BYTE:
++      if (normalized) {
++         SWIZZLE_CONVERT(uint16_t, uint8_t, unorm_to_half(src, 8));
++      } else {
++         SWIZZLE_CONVERT(uint16_t, uint8_t, _mesa_float_to_half(src));
++      }
++      break;
++   case GL_BYTE:
++      if (normalized) {
++         SWIZZLE_CONVERT(uint16_t, int8_t, snorm_to_half(src, 8));
++      } else {
++         SWIZZLE_CONVERT(uint16_t, int8_t, _mesa_float_to_half(src));
++      }
++      break;
++   case GL_UNSIGNED_SHORT:
++      if (normalized) {
++         SWIZZLE_CONVERT(uint16_t, uint16_t, unorm_to_half(src, 16));
++      } else {
++         SWIZZLE_CONVERT(uint16_t, uint16_t, _mesa_float_to_half(src));
++      }
++      break;
++   case GL_SHORT:
++      if (normalized) {
++         SWIZZLE_CONVERT(uint16_t, int16_t, snorm_to_half(src, 16));
++      } else {
++         SWIZZLE_CONVERT(uint16_t, int16_t, _mesa_float_to_half(src));
++      }
++      break;
++   case GL_UNSIGNED_INT:
++      if (normalized) {
++         SWIZZLE_CONVERT(uint16_t, uint32_t, unorm_to_half(src, 32));
++      } else {
++         SWIZZLE_CONVERT(uint16_t, uint32_t, _mesa_float_to_half(src));
++      }
++      break;
++   case GL_INT:
++      if (normalized) {
++         SWIZZLE_CONVERT(uint16_t, int32_t, snorm_to_half(src, 32));
++      } else {
++         SWIZZLE_CONVERT(uint16_t, int32_t, _mesa_float_to_half(src));
++      }
++      break;
++   default:
++      assert(!"Invalid channel type combination");
++   }
++}
++
++
++static void
++convert_ubyte(void *void_dst, int num_dst_channels,
++              const void *void_src, GLenum src_type, int num_src_channels,
++              const uint8_t swizzle[4], bool normalized, int count)
++{
++   const uint8_t one = normalized ? UINT8_MAX : 1;
++
++   switch (src_type) {
++   case GL_FLOAT:
++      if (normalized) {
++         SWIZZLE_CONVERT(uint8_t, float, float_to_unorm(src, 8));
++      } else {
++         SWIZZLE_CONVERT(uint8_t, float, (src < 0) ? 0 : src);
++      }
++      break;
++   case GL_HALF_FLOAT:
++      if (normalized) {
++         SWIZZLE_CONVERT(uint8_t, uint16_t, half_to_unorm(src, 8));
++      } else {
++         SWIZZLE_CONVERT(uint8_t, uint16_t, half_to_uint(src));
++      }
++      break;
++   case GL_UNSIGNED_BYTE:
++      SWIZZLE_CONVERT(uint8_t, uint8_t, src);
++      break;
++   case GL_BYTE:
++      if (normalized) {
++         SWIZZLE_CONVERT(uint8_t, int8_t, snorm_to_unorm(src, 8, 8));
++      } else {
++         SWIZZLE_CONVERT(uint8_t, int8_t, (src < 0) ? 0 : src);
++      }
++      break;
++   case GL_UNSIGNED_SHORT:
++      if (normalized) {
++         SWIZZLE_CONVERT(uint8_t, uint16_t, unorm_to_unorm(src, 16, 8));
++      } else {
++         SWIZZLE_CONVERT(uint8_t, uint16_t, src);
++      }
++      break;
++   case GL_SHORT:
++      if (normalized) {
++         SWIZZLE_CONVERT(uint8_t, int16_t, snorm_to_unorm(src, 16, 8));
++      } else {
++         SWIZZLE_CONVERT(uint8_t, int16_t, (src < 0) ? 0 : src);
++      }
++      break;
++   case GL_UNSIGNED_INT:
++      if (normalized) {
++         SWIZZLE_CONVERT(uint8_t, uint32_t, unorm_to_unorm(src, 32, 8));
++      } else {
++         SWIZZLE_CONVERT(uint8_t, uint32_t, src);
++      }
++      break;
++   case GL_INT:
++      if (normalized) {
++         SWIZZLE_CONVERT(uint8_t, int32_t, snorm_to_unorm(src, 32, 8));
++      } else {
++         SWIZZLE_CONVERT(uint8_t, int32_t, (src < 0) ? 0 : src);
++      }
++      break;
++   default:
++      assert(!"Invalid channel type combination");
++   }
++}
++
++
++static void
++convert_byte(void *void_dst, int num_dst_channels,
++             const void *void_src, GLenum src_type, int num_src_channels,
++             const uint8_t swizzle[4], bool normalized, int count)
++{
++   const int8_t one = normalized ? INT8_MAX : 1;
++
++   switch (src_type) {
++   case GL_FLOAT:
++      if (normalized) {
++         SWIZZLE_CONVERT(uint8_t, float, float_to_snorm(src, 8));
++      } else {
++         SWIZZLE_CONVERT(uint8_t, float, src);
++      }
++      break;
++   case GL_HALF_FLOAT:
++      if (normalized) {
++         SWIZZLE_CONVERT(uint8_t, uint16_t, half_to_snorm(src, 8));
++      } else {
++         SWIZZLE_CONVERT(uint8_t, uint16_t, _mesa_half_to_float(src));
++      }
++      break;
++   case GL_UNSIGNED_BYTE:
++      if (normalized) {
++         SWIZZLE_CONVERT(int8_t, uint8_t, unorm_to_snorm(src, 8, 8));
++      } else {
++         SWIZZLE_CONVERT(int8_t, uint8_t, src);
++      }
++      break;
++   case GL_BYTE:
++      SWIZZLE_CONVERT(int8_t, int8_t, src);
++      break;
++   case GL_UNSIGNED_SHORT:
++      if (normalized) {
++         SWIZZLE_CONVERT(int8_t, uint16_t, unorm_to_snorm(src, 16, 8));
++      } else {
++         SWIZZLE_CONVERT(int8_t, uint16_t, src);
++      }
++      break;
++   case GL_SHORT:
++      if (normalized) {
++         SWIZZLE_CONVERT(int8_t, int16_t, snorm_to_snorm(src, 16, 8));
++      } else {
++         SWIZZLE_CONVERT(int8_t, int16_t, src);
++      }
++      break;
++   case GL_UNSIGNED_INT:
++      if (normalized) {
++         SWIZZLE_CONVERT(int8_t, uint32_t, unorm_to_snorm(src, 32, 8));
++      } else {
++         SWIZZLE_CONVERT(int8_t, uint32_t, src);
++      }
++      break;
++   case GL_INT:
++      if (normalized) {
++         SWIZZLE_CONVERT(int8_t, int32_t, snorm_to_snorm(src, 32, 8));
++      } else {
++         SWIZZLE_CONVERT(int8_t, int32_t, src);
++      }
++      break;
++   default:
++      assert(!"Invalid channel type combination");
++   }
++}
++
++
++static void
++convert_ushort(void *void_dst, int num_dst_channels,
++               const void *void_src, GLenum src_type, int num_src_channels,
++               const uint8_t swizzle[4], bool normalized, int count)
++{
++   const uint16_t one = normalized ? UINT16_MAX : 1;
++   
++   switch (src_type) {
++   case GL_FLOAT:
++      if (normalized) {
++         SWIZZLE_CONVERT(uint16_t, float, float_to_unorm(src, 16));
++      } else {
++         SWIZZLE_CONVERT(uint16_t, float, (src < 0) ? 0 : src);
++      }
++      break;
++   case GL_HALF_FLOAT:
++      if (normalized) {
++         SWIZZLE_CONVERT(uint16_t, uint16_t, half_to_unorm(src, 16));
++      } else {
++         SWIZZLE_CONVERT(uint16_t, uint16_t, half_to_uint(src));
++      }
++      break;
++   case GL_UNSIGNED_BYTE:
++      if (normalized) {
++         SWIZZLE_CONVERT(uint16_t, uint8_t, unorm_to_unorm(src, 8, 16));
++      } else {
++         SWIZZLE_CONVERT(uint16_t, uint8_t, src);
++      }
++      break;
++   case GL_BYTE:
++      if (normalized) {
++         SWIZZLE_CONVERT(uint16_t, int8_t, snorm_to_unorm(src, 8, 16));
++      } else {
++         SWIZZLE_CONVERT(uint16_t, int8_t, (src < 0) ? 0 : src);
++      }
++      break;
++   case GL_UNSIGNED_SHORT:
++      SWIZZLE_CONVERT(uint16_t, uint16_t, src);
++      break;
++   case GL_SHORT:
++      if (normalized) {
++         SWIZZLE_CONVERT(uint16_t, int16_t, snorm_to_unorm(src, 16, 16));
++      } else {
++         SWIZZLE_CONVERT(uint16_t, int16_t, (src < 0) ? 0 : src);
++      }
++      break;
++   case GL_UNSIGNED_INT:
++      if (normalized) {
++         SWIZZLE_CONVERT(uint16_t, uint32_t, unorm_to_unorm(src, 32, 16));
++      } else {
++         SWIZZLE_CONVERT(uint16_t, uint32_t, src);
++      }
++      break;
++   case GL_INT:
++      if (normalized) {
++         SWIZZLE_CONVERT(uint16_t, int32_t, snorm_to_unorm(src, 32, 16));
++      } else {
++         SWIZZLE_CONVERT(uint16_t, int32_t, (src < 0) ? 0 : src);
++      }
++      break;
++   default:
++      assert(!"Invalid channel type combination");
++   }
++}
++
++
++static void
++convert_short(void *void_dst, int num_dst_channels,
++              const void *void_src, GLenum src_type, int num_src_channels,
++              const uint8_t swizzle[4], bool normalized, int count)
++{
++   const int16_t one = normalized ? INT16_MAX : 1;
++
++   switch (src_type) {
++   case GL_FLOAT:
++      if (normalized) {
++         SWIZZLE_CONVERT(uint16_t, float, float_to_snorm(src, 16));
++      } else {
++         SWIZZLE_CONVERT(uint16_t, float, src);
++      }
++      break;
++   case GL_HALF_FLOAT:
++      if (normalized) {
++         SWIZZLE_CONVERT(uint16_t, uint16_t, half_to_snorm(src, 16));
++      } else {
++         SWIZZLE_CONVERT(uint16_t, uint16_t, _mesa_half_to_float(src));
++      }
++      break;
++   case GL_UNSIGNED_BYTE:
++      if (normalized) {
++         SWIZZLE_CONVERT(int16_t, uint8_t, unorm_to_snorm(src, 8, 16));
++      } else {
++         SWIZZLE_CONVERT(int16_t, uint8_t, src);
++      }
++      break;
++   case GL_BYTE:
++      if (normalized) {
++         SWIZZLE_CONVERT(int16_t, int8_t, snorm_to_snorm(src, 8, 16));
++      } else {
++         SWIZZLE_CONVERT(int16_t, int8_t, src);
++      }
++      break;
++   case GL_UNSIGNED_SHORT:
++      if (normalized) {
++         SWIZZLE_CONVERT(int16_t, uint16_t, unorm_to_snorm(src, 16, 16));
++      } else {
++         SWIZZLE_CONVERT(int16_t, uint16_t, src);
++      }
++      break;
++   case GL_SHORT:
++      SWIZZLE_CONVERT(int16_t, int16_t, src);
++      break;
++   case GL_UNSIGNED_INT:
++      if (normalized) {
++         SWIZZLE_CONVERT(int16_t, uint32_t, unorm_to_snorm(src, 32, 16));
++      } else {
++         SWIZZLE_CONVERT(int16_t, uint32_t, src);
++      }
++      break;
++   case GL_INT:
++      if (normalized) {
++         SWIZZLE_CONVERT(int16_t, int32_t, snorm_to_snorm(src, 32, 16));
++      } else {
++         SWIZZLE_CONVERT(int16_t, int32_t, src);
++      }
++      break;
++   default:
++      assert(!"Invalid channel type combination");
++   }
++}
++
++static void
++convert_uint(void *void_dst, int num_dst_channels,
++             const void *void_src, GLenum src_type, int num_src_channels,
++             const uint8_t swizzle[4], bool normalized, int count)
++{
++   const uint32_t one = normalized ? UINT32_MAX : 1;
++
++   switch (src_type) {
++   case GL_FLOAT:
++      if (normalized) {
++         SWIZZLE_CONVERT(uint32_t, float, float_to_unorm(src, 32));
++      } else {
++         SWIZZLE_CONVERT(uint32_t, float, (src < 0) ? 0 : src);
++      }
++      break;
++   case GL_HALF_FLOAT:
++      if (normalized) {
++         SWIZZLE_CONVERT(uint32_t, uint16_t, half_to_unorm(src, 32));
++      } else {
++         SWIZZLE_CONVERT(uint32_t, uint16_t, half_to_uint(src));
++      }
++      break;
++   case GL_UNSIGNED_BYTE:
++      if (normalized) {
++         SWIZZLE_CONVERT(uint32_t, uint8_t, unorm_to_unorm(src, 8, 32));
++      } else {
++         SWIZZLE_CONVERT(uint32_t, uint8_t, src);
++      }
++      break;
++   case GL_BYTE:
++      if (normalized) {
++         SWIZZLE_CONVERT(uint32_t, int8_t, snorm_to_unorm(src, 8, 32));
++      } else {
++         SWIZZLE_CONVERT(uint32_t, int8_t, (src < 0) ? 0 : src);
++      }
++      break;
++   case GL_UNSIGNED_SHORT:
++      if (normalized) {
++         SWIZZLE_CONVERT(uint32_t, uint16_t, unorm_to_unorm(src, 16, 32));
++      } else {
++         SWIZZLE_CONVERT(uint32_t, uint16_t, src);
++      }
++      break;
++   case GL_SHORT:
++      if (normalized) {
++         SWIZZLE_CONVERT(uint32_t, int16_t, snorm_to_unorm(src, 16, 32));
++      } else {
++         SWIZZLE_CONVERT(uint32_t, int16_t, (src < 0) ? 0 : src);
++      }
++      break;
++   case GL_UNSIGNED_INT:
++      SWIZZLE_CONVERT(uint32_t, uint32_t, src);
++      break;
++   case GL_INT:
++      if (normalized) {
++         SWIZZLE_CONVERT(uint32_t, int32_t, snorm_to_unorm(src, 32, 32));
++      } else {
++         SWIZZLE_CONVERT(uint32_t, int32_t, (src < 0) ? 0 : src);
++      }
++      break;
++   default:
++      assert(!"Invalid channel type combination");
++   }
++}
++
++
++static void
++convert_int(void *void_dst, int num_dst_channels,
++            const void *void_src, GLenum src_type, int num_src_channels,
++            const uint8_t swizzle[4], bool normalized, int count)
++{
++   const int32_t one = normalized ? INT32_MAX : 12;
++
++   switch (src_type) {
++   case GL_FLOAT:
++      if (normalized) {
++         SWIZZLE_CONVERT(uint32_t, float, float_to_snorm(src, 32));
++      } else {
++         SWIZZLE_CONVERT(uint32_t, float, src);
++      }
++      break;
++   case GL_HALF_FLOAT:
++      if (normalized) {
++         SWIZZLE_CONVERT(uint32_t, uint16_t, half_to_snorm(src, 32));
++      } else {
++         SWIZZLE_CONVERT(uint32_t, uint16_t, _mesa_half_to_float(src));
++      }
++      break;
++   case GL_UNSIGNED_BYTE:
++      if (normalized) {
++         SWIZZLE_CONVERT(int32_t, uint8_t, unorm_to_snorm(src, 8, 32));
++      } else {
++         SWIZZLE_CONVERT(int32_t, uint8_t, src);
++      }
++      break;
++   case GL_BYTE:
++      if (normalized) {
++         SWIZZLE_CONVERT(int32_t, int8_t, snorm_to_snorm(src, 8, 32));
++      } else {
++         SWIZZLE_CONVERT(int32_t, int8_t, src);
++      }
++      break;
++   case GL_UNSIGNED_SHORT:
++      if (normalized) {
++         SWIZZLE_CONVERT(int32_t, uint16_t, unorm_to_snorm(src, 16, 32));
++      } else {
++         SWIZZLE_CONVERT(int32_t, uint16_t, src);
++      }
++      break;
++   case GL_SHORT:
++      if (normalized) {
++         SWIZZLE_CONVERT(int32_t, int16_t, snorm_to_snorm(src, 16, 32));
++      } else {
++         SWIZZLE_CONVERT(int32_t, int16_t, src);
++      }
++      break;
++   case GL_UNSIGNED_INT:
++      if (normalized) {
++         SWIZZLE_CONVERT(int32_t, uint32_t, unorm_to_snorm(src, 32, 32));
++      } else {
++         SWIZZLE_CONVERT(int32_t, uint32_t, src);
++      }
++      break;
++   case GL_INT:
++      SWIZZLE_CONVERT(int32_t, int32_t, src);
++      break;
++   default:
++      assert(!"Invalid channel type combination");
++   }
++}
++
+ 
+ /**
+  * Convert between array-based color formats.
+@@ -478,499 +1003,44 @@ _mesa_swizzle_and_convert(void *void_dst, GLenum dst_type, int num_dst_channels,
+                           const void *void_src, GLenum src_type, int num_src_channels,
+                           const uint8_t swizzle[4], bool normalized, int count)
+ {
+-   int s, j;
+-   register uint8_t swizzle_x, swizzle_y, swizzle_z, swizzle_w;
+-
+    if (swizzle_convert_try_memcpy(void_dst, dst_type, num_dst_channels,
+                                   void_src, src_type, num_src_channels,
+                                   swizzle, normalized, count))
+       return;
+ 
+-   swizzle_x = swizzle[0];
+-   swizzle_y = swizzle[1];
+-   swizzle_z = swizzle[2];
+-   swizzle_w = swizzle[3];
+-
+    switch (dst_type) {
+    case GL_FLOAT:
+-   {
+-      const float one = 1.0f;
+-      switch (src_type) {
+-      case GL_FLOAT:
+-         SWIZZLE_CONVERT(float, float, src)
+-         break;
+-      case GL_HALF_FLOAT:
+-         SWIZZLE_CONVERT(float, uint16_t, _mesa_half_to_float(src))
+-         break;
+-      case GL_UNSIGNED_BYTE:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(float, uint8_t, unorm_to_float(src, 8))
+-         } else {
+-            SWIZZLE_CONVERT(float, uint8_t, src)
+-         }
+-         break;
+-      case GL_BYTE:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(float, int8_t, snorm_to_float(src, 8))
+-         } else {
+-            SWIZZLE_CONVERT(float, int8_t, src)
+-         }
+-         break;
+-      case GL_UNSIGNED_SHORT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(float, uint16_t, unorm_to_float(src, 16))
+-         } else {
+-            SWIZZLE_CONVERT(float, uint16_t, src)
+-         }
+-         break;
+-      case GL_SHORT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(float, int16_t, snorm_to_float(src, 16))
+-         } else {
+-            SWIZZLE_CONVERT(float, int16_t, src)
+-         }
+-         break;
+-      case GL_UNSIGNED_INT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(float, uint32_t, unorm_to_float(src, 32))
+-         } else {
+-            SWIZZLE_CONVERT(float, uint32_t, src)
+-         }
+-         break;
+-      case GL_INT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(float, int32_t, snorm_to_float(src, 32))
+-         } else {
+-            SWIZZLE_CONVERT(float, int32_t, src)
+-         }
+-         break;
+-      default:
+-         assert(!"Invalid channel type combination");
+-      }
+-   }
+-   break;
++      convert_float(void_dst, num_dst_channels, void_src, src_type,
++                    num_src_channels, swizzle, normalized, count);
++      break;
+    case GL_HALF_FLOAT:
+-   {
+-      const uint16_t one = _mesa_float_to_half(1.0f);
+-      switch (src_type) {
+-      case GL_FLOAT:
+-         SWIZZLE_CONVERT(uint16_t, float, _mesa_float_to_half(src))
+-         break;
+-      case GL_HALF_FLOAT:
+-         SWIZZLE_CONVERT(uint16_t, uint16_t, src)
+-         break;
+-      case GL_UNSIGNED_BYTE:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(uint16_t, uint8_t, unorm_to_half(src, 8))
+-         } else {
+-            SWIZZLE_CONVERT(uint16_t, uint8_t, _mesa_float_to_half(src))
+-         }
+-         break;
+-      case GL_BYTE:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(uint16_t, int8_t, snorm_to_half(src, 8))
+-         } else {
+-            SWIZZLE_CONVERT(uint16_t, int8_t, _mesa_float_to_half(src))
+-         }
+-         break;
+-      case GL_UNSIGNED_SHORT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(uint16_t, uint16_t, unorm_to_half(src, 16))
+-         } else {
+-            SWIZZLE_CONVERT(uint16_t, uint16_t, _mesa_float_to_half(src))
+-         }
+-         break;
+-      case GL_SHORT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(uint16_t, int16_t, snorm_to_half(src, 16))
+-         } else {
+-            SWIZZLE_CONVERT(uint16_t, int16_t, _mesa_float_to_half(src))
+-         }
+-         break;
+-      case GL_UNSIGNED_INT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(uint16_t, uint32_t, unorm_to_half(src, 32))
+-         } else {
+-            SWIZZLE_CONVERT(uint16_t, uint32_t, _mesa_float_to_half(src))
+-         }
+-         break;
+-      case GL_INT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(uint16_t, int32_t, snorm_to_half(src, 32))
+-         } else {
+-            SWIZZLE_CONVERT(uint16_t, int32_t, _mesa_float_to_half(src))
+-         }
+-         break;
+-      default:
+-         assert(!"Invalid channel type combination");
+-      }
+-   }
+-   break;
++      convert_half_float(void_dst, num_dst_channels, void_src, src_type,
++                    num_src_channels, swizzle, normalized, count);
++      break;
+    case GL_UNSIGNED_BYTE:
+-   {
+-      const uint8_t one = normalized ? UINT8_MAX : 1;
+-      switch (src_type) {
+-      case GL_FLOAT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(uint8_t, float, float_to_unorm(src, 8))
+-         } else {
+-            SWIZZLE_CONVERT(uint8_t, float, (src < 0) ? 0 : src)
+-         }
+-         break;
+-      case GL_HALF_FLOAT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(uint8_t, uint16_t, half_to_unorm(src, 8))
+-         } else {
+-            SWIZZLE_CONVERT(uint8_t, uint16_t, half_to_uint(src))
+-         }
+-         break;
+-      case GL_UNSIGNED_BYTE:
+-         SWIZZLE_CONVERT(uint8_t, uint8_t, src)
+-         break;
+-      case GL_BYTE:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(uint8_t, int8_t, snorm_to_unorm(src, 8, 8))
+-         } else {
+-            SWIZZLE_CONVERT(uint8_t, int8_t, (src < 0) ? 0 : src)
+-         }
+-         break;
+-      case GL_UNSIGNED_SHORT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(uint8_t, uint16_t, unorm_to_unorm(src, 16, 8))
+-         } else {
+-            SWIZZLE_CONVERT(uint8_t, uint16_t, src)
+-         }
+-         break;
+-      case GL_SHORT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(uint8_t, int16_t, snorm_to_unorm(src, 16, 8))
+-         } else {
+-            SWIZZLE_CONVERT(uint8_t, int16_t, (src < 0) ? 0 : src)
+-         }
+-         break;
+-      case GL_UNSIGNED_INT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(uint8_t, uint32_t, unorm_to_unorm(src, 32, 8))
+-         } else {
+-            SWIZZLE_CONVERT(uint8_t, uint32_t, src)
+-         }
+-         break;
+-      case GL_INT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(uint8_t, int32_t, snorm_to_unorm(src, 32, 8))
+-         } else {
+-            SWIZZLE_CONVERT(uint8_t, int32_t, (src < 0) ? 0 : src)
+-         }
+-         break;
+-      default:
+-         assert(!"Invalid channel type combination");
+-      }
+-   }
+-   break;
++      convert_ubyte(void_dst, num_dst_channels, void_src, src_type,
++                    num_src_channels, swizzle, normalized, count);
++      break;
+    case GL_BYTE:
+-   {
+-      const int8_t one = normalized ? INT8_MAX : 1;
+-      switch (src_type) {
+-      case GL_FLOAT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(uint8_t, float, float_to_snorm(src, 8))
+-         } else {
+-            SWIZZLE_CONVERT(uint8_t, float, src)
+-         }
+-         break;
+-      case GL_HALF_FLOAT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(uint8_t, uint16_t, half_to_snorm(src, 8))
+-         } else {
+-            SWIZZLE_CONVERT(uint8_t, uint16_t, _mesa_half_to_float(src))
+-         }
+-         break;
+-      case GL_UNSIGNED_BYTE:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(int8_t, uint8_t, unorm_to_snorm(src, 8, 8))
+-         } else {
+-            SWIZZLE_CONVERT(int8_t, uint8_t, src)
+-         }
+-         break;
+-      case GL_BYTE:
+-         SWIZZLE_CONVERT(int8_t, int8_t, src)
+-         break;
+-      case GL_UNSIGNED_SHORT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(int8_t, uint16_t, unorm_to_snorm(src, 16, 8))
+-         } else {
+-            SWIZZLE_CONVERT(int8_t, uint16_t, src)
+-         }
+-         break;
+-      case GL_SHORT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(int8_t, int16_t, snorm_to_snorm(src, 16, 8))
+-         } else {
+-            SWIZZLE_CONVERT(int8_t, int16_t, src)
+-         }
+-         break;
+-      case GL_UNSIGNED_INT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(int8_t, uint32_t, unorm_to_snorm(src, 32, 8))
+-         } else {
+-            SWIZZLE_CONVERT(int8_t, uint32_t, src)
+-         }
+-         break;
+-      case GL_INT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(int8_t, int32_t, snorm_to_snorm(src, 32, 8))
+-         } else {
+-            SWIZZLE_CONVERT(int8_t, int32_t, src)
+-         }
+-         break;
+-      default:
+-         assert(!"Invalid channel type combination");
+-      }
+-   }
+-   break;
++      convert_byte(void_dst, num_dst_channels, void_src, src_type,
++                   num_src_channels, swizzle, normalized, count);
++      break;
+    case GL_UNSIGNED_SHORT:
+-   {
+-      const uint16_t one = normalized ? UINT16_MAX : 1;
+-      switch (src_type) {
+-      case GL_FLOAT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(uint16_t, float, float_to_unorm(src, 16))
+-         } else {
+-            SWIZZLE_CONVERT(uint16_t, float, (src < 0) ? 0 : src)
+-         }
+-         break;
+-      case GL_HALF_FLOAT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(uint16_t, uint16_t, half_to_unorm(src, 16))
+-         } else {
+-            SWIZZLE_CONVERT(uint16_t, uint16_t, half_to_uint(src))
+-         }
+-         break;
+-      case GL_UNSIGNED_BYTE:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(uint16_t, uint8_t, unorm_to_unorm(src, 8, 16))
+-         } else {
+-            SWIZZLE_CONVERT(uint16_t, uint8_t, src)
+-         }
+-         break;
+-      case GL_BYTE:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(uint16_t, int8_t, snorm_to_unorm(src, 8, 16))
+-         } else {
+-            SWIZZLE_CONVERT(uint16_t, int8_t, (src < 0) ? 0 : src)
+-         }
+-         break;
+-      case GL_UNSIGNED_SHORT:
+-         SWIZZLE_CONVERT(uint16_t, uint16_t, src)
+-         break;
+-      case GL_SHORT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(uint16_t, int16_t, snorm_to_unorm(src, 16, 16))
+-         } else {
+-            SWIZZLE_CONVERT(uint16_t, int16_t, (src < 0) ? 0 : src)
+-         }
+-         break;
+-      case GL_UNSIGNED_INT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(uint16_t, uint32_t, unorm_to_unorm(src, 32, 16))
+-         } else {
+-            SWIZZLE_CONVERT(uint16_t, uint32_t, src)
+-         }
+-         break;
+-      case GL_INT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(uint16_t, int32_t, snorm_to_unorm(src, 32, 16))
+-         } else {
+-            SWIZZLE_CONVERT(uint16_t, int32_t, (src < 0) ? 0 : src)
+-         }
+-         break;
+-      default:
+-         assert(!"Invalid channel type combination");
+-      }
+-   }
+-   break;
++      convert_ushort(void_dst, num_dst_channels, void_src, src_type,
++                     num_src_channels, swizzle, normalized, count);
++      break;
+    case GL_SHORT:
+-   {
+-      const int16_t one = normalized ? INT16_MAX : 1;
+-      switch (src_type) {
+-      case GL_FLOAT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(uint16_t, float, float_to_snorm(src, 16))
+-         } else {
+-            SWIZZLE_CONVERT(uint16_t, float, src)
+-         }
+-         break;
+-      case GL_HALF_FLOAT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(uint16_t, uint16_t, half_to_snorm(src, 16))
+-         } else {
+-            SWIZZLE_CONVERT(uint16_t, uint16_t, _mesa_half_to_float(src))
+-         }
+-         break;
+-      case GL_UNSIGNED_BYTE:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(int16_t, uint8_t, unorm_to_snorm(src, 8, 16))
+-         } else {
+-            SWIZZLE_CONVERT(int16_t, uint8_t, src)
+-         }
+-         break;
+-      case GL_BYTE:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(int16_t, int8_t, snorm_to_snorm(src, 8, 16))
+-         } else {
+-            SWIZZLE_CONVERT(int16_t, int8_t, src)
+-         }
+-         break;
+-      case GL_UNSIGNED_SHORT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(int16_t, uint16_t, unorm_to_snorm(src, 16, 16))
+-         } else {
+-            SWIZZLE_CONVERT(int16_t, uint16_t, src)
+-         }
+-         break;
+-      case GL_SHORT:
+-         SWIZZLE_CONVERT(int16_t, int16_t, src)
+-         break;
+-      case GL_UNSIGNED_INT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(int16_t, uint32_t, unorm_to_snorm(src, 32, 16))
+-         } else {
+-            SWIZZLE_CONVERT(int16_t, uint32_t, src)
+-         }
+-         break;
+-      case GL_INT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(int16_t, int32_t, snorm_to_snorm(src, 32, 16))
+-         } else {
+-            SWIZZLE_CONVERT(int16_t, int32_t, src)
+-         }
+-         break;
+-      default:
+-         assert(!"Invalid channel type combination");
+-      }
+-   }
+-   break;
++      convert_short(void_dst, num_dst_channels, void_src, src_type,
++                    num_src_channels, swizzle, normalized, count);
++      break;
+    case GL_UNSIGNED_INT:
+-   {
+-      const uint32_t one = normalized ? UINT32_MAX : 1;
+-      switch (src_type) { case GL_FLOAT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(uint32_t, float, float_to_unorm(src, 32))
+-         } else {
+-            SWIZZLE_CONVERT(uint32_t, float, (src < 0) ? 0 : src)
+-         }
+-         break;
+-      case GL_HALF_FLOAT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(uint32_t, uint16_t, half_to_unorm(src, 32))
+-         } else {
+-            SWIZZLE_CONVERT(uint32_t, uint16_t, half_to_uint(src))
+-         }
+-         break;
+-      case GL_UNSIGNED_BYTE:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(uint32_t, uint8_t, unorm_to_unorm(src, 8, 32))
+-         } else {
+-            SWIZZLE_CONVERT(uint32_t, uint8_t, src)
+-         }
+-         break;
+-      case GL_BYTE:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(uint32_t, int8_t, snorm_to_unorm(src, 8, 32))
+-         } else {
+-            SWIZZLE_CONVERT(uint32_t, int8_t, (src < 0) ? 0 : src)
+-         }
+-         break;
+-      case GL_UNSIGNED_SHORT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(uint32_t, uint16_t, unorm_to_unorm(src, 16, 32))
+-         } else {
+-            SWIZZLE_CONVERT(uint32_t, uint16_t, src)
+-         }
+-         break;
+-      case GL_SHORT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(uint32_t, int16_t, snorm_to_unorm(src, 16, 32))
+-         } else {
+-            SWIZZLE_CONVERT(uint32_t, int16_t, (src < 0) ? 0 : src)
+-         }
+-         break;
+-      case GL_UNSIGNED_INT:
+-         SWIZZLE_CONVERT(uint32_t, uint32_t, src)
+-         break;
+-      case GL_INT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(uint32_t, int32_t, snorm_to_unorm(src, 32, 32))
+-         } else {
+-            SWIZZLE_CONVERT(uint32_t, int32_t, (src < 0) ? 0 : src)
+-         }
+-         break;
+-      default:
+-         assert(!"Invalid channel type combination");
+-      }
+-   }
+-   break;
++      convert_uint(void_dst, num_dst_channels, void_src, src_type,
++                   num_src_channels, swizzle, normalized, count);
++      break;
+    case GL_INT:
+-   {
+-      const int32_t one = normalized ? INT32_MAX : 1;
+-      switch (src_type) {
+-      case GL_FLOAT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(uint32_t, float, float_to_snorm(src, 32))
+-         } else {
+-            SWIZZLE_CONVERT(uint32_t, float, src)
+-         }
+-         break;
+-      case GL_HALF_FLOAT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(uint32_t, uint16_t, half_to_snorm(src, 32))
+-         } else {
+-            SWIZZLE_CONVERT(uint32_t, uint16_t, _mesa_half_to_float(src))
+-         }
+-         break;
+-      case GL_UNSIGNED_BYTE:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(int32_t, uint8_t, unorm_to_snorm(src, 8, 32))
+-         } else {
+-            SWIZZLE_CONVERT(int32_t, uint8_t, src)
+-         }
+-         break;
+-      case GL_BYTE:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(int32_t, int8_t, snorm_to_snorm(src, 8, 32))
+-         } else {
+-            SWIZZLE_CONVERT(int32_t, int8_t, src)
+-         }
+-         break;
+-      case GL_UNSIGNED_SHORT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(int32_t, uint16_t, unorm_to_snorm(src, 16, 32))
+-         } else {
+-            SWIZZLE_CONVERT(int32_t, uint16_t, src)
+-         }
+-         break;
+-      case GL_SHORT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(int32_t, int16_t, snorm_to_snorm(src, 16, 32))
+-         } else {
+-            SWIZZLE_CONVERT(int32_t, int16_t, src)
+-         }
+-         break;
+-      case GL_UNSIGNED_INT:
+-         if (normalized) {
+-            SWIZZLE_CONVERT(int32_t, uint32_t, unorm_to_snorm(src, 32, 32))
+-         } else {
+-            SWIZZLE_CONVERT(int32_t, uint32_t, src)
+-         }
+-         break;
+-      case GL_INT:
+-         SWIZZLE_CONVERT(int32_t, int32_t, src)
+-         break;
+-      default:
+-         assert(!"Invalid channel type combination");
+-      }
+-   }
+-   break;
++      convert_int(void_dst, num_dst_channels, void_src, src_type,
++                  num_src_channels, swizzle, normalized, count);
++      break;
+    default:
+       assert(!"Invalid channel type");
+    }
+-- 
+2.0.5
+

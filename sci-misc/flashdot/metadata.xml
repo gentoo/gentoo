@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+<email>tomka@gentoo.org</email>
+<name>Thomas Kahle</name>
+</maintainer>
+<herd>sci</herd>
+<longdescription lang="en">
+FlashDot is a program for generating and presenting visual perceptual experiments that require a high temporal
+precision.
+</longdescription>
+</pkgmetadata>

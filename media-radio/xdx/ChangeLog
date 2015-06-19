@@ -1,0 +1,116 @@
+# ChangeLog for media-radio/xdx
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-radio/xdx/ChangeLog,v 1.32 2015/05/26 18:44:04 tomjbe Exp $
+
+*xdx-2.5.0 (26 May 2015)
+
+  26 May 2015; Thomas Beierlein <tomjbe@gentoo.org> +xdx-2.5.0.ebuild:
+  Version bump
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> xdx-2.4.2.ebuild,
+  xdx-2.4.3.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  14 Jun 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> xdx-2.4.3.ebuild:
+  x86 stable wrt bug #507996
+
+  09 Jun 2014; Chema Alonso <nimiux@gentoo.org> xdx-2.4.3.ebuild:
+  Stable for amd64 wrt bug #507996
+
+*xdx-2.4.3 (07 Feb 2014)
+
+  07 Feb 2014; Thomas Beierlein <tomjbe@gentoo.org> +xdx-2.4.3.ebuild:
+  Version bump. New maintainer. New SRC_URI
+
+  30 Jul 2013; Thomas Beierlein <tomjbe@gentoo.org> xdx-2.4.2.ebuild:
+  Bump EAPI. Fix invalid desktop entry
+
+  18 Jun 2012; Agostino Sarubbo <ago@gentoo.org> -xdx-2.4.ebuild:
+  Remove old
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> xdx-2.4.ebuild,
+  xdx-2.4.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  20 Nov 2011; Pacho Ramos <pacho@gentoo.org> xdx-2.4.2.ebuild:
+  Drop DEPRECATED flags, bug #391091
+
+  12 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org> xdx-2.4.ebuild,
+  xdx-2.4.2.ebuild:
+  Drop ppc wrt #333609
+
+  29 Mar 2011; Christoph Mende <angelos@gentoo.org> xdx-2.4.ebuild,
+  xdx-2.4.2.ebuild:
+  Fixed gtk+ slot deps
+
+  23 Aug 2010; Markos Chandras <hwoarang@gentoo.org> xdx-2.4.2.ebuild:
+  Stable on amd64 wrt bug #333609
+
+  21 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> xdx-2.4.2.ebuild:
+  x86 stable wrt bug #333609
+
+  03 Jul 2010; Thomas Beierlein <tomjbe@gentoo.org> -xdx-1.2.ebuild,
+  -xdx-2.3.ebuild:
+  Remove old versions.
+
+  03 Jul 2010; Thomas Beierlein <tomjbe@gentoo.org> xdx-2.4.ebuild,
+  xdx-2.4.2.ebuild, +files/xdx-gtk-2.20.patch:
+  Fix for deprecated macro in GTK+-2.20 and later (bug #326627). Thanks
+  Diego and Kevin.
+
+*xdx-2.4.2 (30 Apr 2010)
+
+  30 Apr 2010; Thomas Beierlein <tomjbe@gentoo.org> +xdx-2.4.2.ebuild:
+  Version bump. Fixed Homepage and SRC_URI.
+
+  29 Apr 2010; Thomas Beierlein <tomjbe@gentoo.org> metadata.xml:
+  I take over maintainership. Darkside, thanks for proxying.
+
+  02 Dec 2008; Jeremy Olexa <darkside@gentoo.org> +files/xdx-2.4-gtk.patch,
+  metadata.xml, xdx-2.4.ebuild:
+  fix building with latest gtk+, bug 247951. Add Thomas Beierlein to metadata,
+  he will be maintaining this through me
+
+  08 Nov 2008; Markus Meier <maekke@gentoo.org> xdx-2.4.ebuild:
+  amd64/x86 stable, bug #245578
+
+  08 Nov 2008; nixnut <nixnut@gentoo.org> xdx-2.4.ebuild:
+  Stable on ppc wrt bug 245578
+
+*xdx-2.4 (11 Sep 2008)
+
+  11 Sep 2008; Jeremy Olexa <darkside@gentoo.org> +xdx-2.4.ebuild:
+  (non-maintainer commit) version bump, bug #232309
+
+  21 Apr 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Fix up metadata.xml. If there's no maintainer for the package, the metadata
+  also needs to contain m-needed@g.o.
+
+*xdx-2.3 (09 Nov 2007)
+
+  09 Nov 2007; Samuli Suominen <drac@gentoo.org> +xdx-2.3.ebuild:
+  Version bump, keywording for ~amd64 wrt #198497.
+
+  19 Mar 2007; Marius Mauch <genone@gentoo.org> xdx-1.2.ebuild:
+  Replacing einfo with elog
+
+  15 Dec 2006; Michael Sterrett <mr_bones_@gentoo.org> xdx-1.2.ebuild:
+  make modX-friendly, tidy
+
+  15 Jul 2006; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove rphillips from metadata.xml as he's retired.
+
+  04 Aug 2004; Robb Romans <killsoft@gentoo.org> xdx-1.2.ebuild:
+  mark stable on x86.
+
+  29 Jun 2004; Robb Romans <killsoft@gentoo.org> xdx-1.2.ebuild:
+  Move to virtual/libc
+
+  05 Jun 2004; David Holm <dholm@gentoo.org> xdx-1.2.ebuild:
+  Added to ~ppc.
+
+  03 Jun 2004; <rphillips@gentoo.org> xdx-1.2.ebuild:
+  tweaked location of hamlib
+
+  03 Jun 2004; <rphillips@gentoo.org> xdx-1.2.ebuild :
+  Initial Import. Contributed by Robb. Bug #52307

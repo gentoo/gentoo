@@ -1,0 +1,91 @@
+# ChangeLog for dev-perl/Contextual-Return
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Contextual-Return/ChangeLog,v 1.17 2014/08/26 17:20:30 axs Exp $
+
+*Contextual-Return-0.4.7-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Contextual-Return-0.4.7-r1.ebuild, -Contextual-Return-0.4.7.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  08 Jan 2013; Torsten Veller <tove@gentoo.org>
+  -Contextual-Return-0.4.3.ebuild, -Contextual-Return-0.4.4.ebuild,
+  -Contextual-Return-0.4.5.ebuild:
+  Cleanup
+
+  18 Nov 2012; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Drop duplication of myself as a maintainer where there is a herd.
+
+*Contextual-Return-0.4.7 (07 Oct 2012)
+
+  07 Oct 2012; Torsten Veller <tove@gentoo.org>
+  +Contextual-Return-0.4.7.ebuild:
+  Version bump
+
+  01 Sep 2012; Fabian Groffen <grobian@gentoo.org>
+  Contextual-Return-0.4.5.ebuild:
+  Marked ~ppc-aix, bug #432288
+
+*Contextual-Return-0.4.5 (20 Aug 2012)
+
+  20 Aug 2012; Torsten Veller <tove@gentoo.org>
+  +Contextual-Return-0.4.5.ebuild:
+  Version bump
+
+*Contextual-Return-0.4.4 (06 Aug 2012)
+
+  06 Aug 2012; Torsten Veller <tove@gentoo.org>
+  +Contextual-Return-0.4.4.ebuild:
+  Version bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  21 Apr 2012; Torsten Veller <tove@gentoo.org>
+  -Contextual-Return-0.3.1.ebuild, -Contextual-Return-0.3.2.ebuild,
+  -Contextual-Return-0.4.1.ebuild, -Contextual-Return-0.4.2.ebuild:
+  Cleanup
+
+*Contextual-Return-0.4.3 (11 Apr 2012)
+
+  11 Apr 2012; Torsten Veller <tove@gentoo.org>
+  +Contextual-Return-0.4.3.ebuild:
+  Version bump
+
+*Contextual-Return-0.4.2 (04 Mar 2012)
+
+  04 Mar 2012; Torsten Veller <tove@gentoo.org>
+  +Contextual-Return-0.4.2.ebuild:
+  Version bump
+
+*Contextual-Return-0.4.1 (16 Feb 2012)
+
+  16 Feb 2012; Torsten Veller <tove@gentoo.org>
+  +Contextual-Return-0.4.1.ebuild:
+  Version bump
+
+*Contextual-Return-0.3.2 (24 Jan 2012)
+
+  24 Jan 2012; Torsten Veller <tove@gentoo.org>
+  +Contextual-Return-0.3.2.ebuild:
+  Version bump
+
+  03 Apr 2011; Torsten Veller <tove@gentoo.org>
+  -Contextual-Return-0.2.1.ebuild:
+  Cleanup
+
+*Contextual-Return-0.3.1 (21 Feb 2011)
+
+  21 Feb 2011; Torsten Veller <tove@gentoo.org>
+  +Contextual-Return-0.3.1.ebuild:
+  Version bump
+
+  23 Nov 2009; Torsten Veller <tove@gentoo.org>
+  Contextual-Return-0.2.1.ebuild:
+  Depend on Module-Build and version (#294217)
+
+*Contextual-Return-0.2.1 (23 Jun 2009)
+
+  23 Jun 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +Contextual-Return-0.2.1.ebuild, +metadata.xml:
+  Initial commit. Ebuild by Robin H. Johnson <robbat2@gentoo.org>.

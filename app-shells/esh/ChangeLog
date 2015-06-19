@@ -1,0 +1,101 @@
+# ChangeLog for app-shells/esh
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-shells/esh/ChangeLog,v 1.30 2015/01/16 11:20:02 jer Exp $
+
+  16 Jan 2015; Jeroen Roovers <jer@gentoo.org> esh-0.8.5-r2.ebuild:
+  Remove unneeded dependency on sys-libs/ncurses.
+
+  07 Sep 2012; Johannes Huber <johu@gentoo.org> -esh-0.8.5-r1.ebuild:
+  Remove old.
+
+  07 Sep 2012; Johannes Huber <johu@gentoo.org> esh-0.8.5-r2.ebuild:
+  Stable for x86, wrt bug #433191
+
+  06 Sep 2012; Agostino Sarubbo <ago@gentoo.org> esh-0.8.5-r2.ebuild:
+  Stable for amd64, wrt bug #433191
+
+  01 Sep 2012; Anthony G. Basile <blueness@gentoo.org> esh-0.8.5-r2.ebuild:
+  Stable ppc, bug #433191
+
+*esh-0.8.5-r2 (11 Jul 2012)
+
+  11 Jul 2012; Ulrich Müller <ulm@gentoo.org> +esh-0.8.5-r2.ebuild:
+  Don't install dysfunctional esh-mode.el for Emacs, bug 425780.
+
+  10 May 2012; Agostino Sarubbo <ago@gentoo.org> -esh-0.8.5.ebuild:
+  Remove old
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org> esh-0.8.5.ebuild,
+  esh-0.8.5-r1.ebuild:
+  Drop sparc keywords
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> esh-0.8.5-r1.ebuild:
+  x86 stable wrt bug #396827
+
+  06 Feb 2012; Brent Baude <ranger@gentoo.org> esh-0.8.5-r1.ebuild:
+  Marking esh-0.8.5-r1 ppc for bug 396827
+
+*esh-0.8.5-r1 (17 Sep 2010)
+
+  17 Sep 2010; Jeroen Roovers <jer@gentoo.org> +esh-0.8.5-r1.ebuild:
+  Set RDEPEND. Introduce USE=debug. Respect LDFLAGS (bug #335379).
+
+  15 Jun 2010; Markos Chandras <hwoarang@gentoo.org> esh-0.8.5.ebuild:
+  Fix documentation typo wrt bug #314107.Keyworded for amd64
+
+  30 Dec 2008; Christoph Mende <angelos@gentoo.org> esh-0.8.5.ebuild:
+  QA: Respect CC (bug 243700)
+
+  15 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  06 Jan 2007; Danny van Dyk <kugelfang@gentoo.org> -esh-0.8-r2.ebuild:
+  QA: Removed unused versions.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> esh-0.8.5.ebuild:
+  Stable on ppc.
+
+  31 Dec 2004; Joseph Jezak <josejx@gentoo.org> esh-0.8.5.ebuild:
+  Marked ~ppc, previous bug that forced -ppc is fixed.
+
+  02 Jun 2004; Aron Griffis <agriffis@gentoo.org> esh-0.8.5.ebuild:
+  Make clean on all arches, not just non-x86, so we can rebuild with our CFLAGS
+
+  30 Jan 2004; <gustavoz@gentoo.org> esh-0.8.5.ebuild:
+  stable on sparc
+
+  10 Jan 2004; Jason Wever <weeve@gentoo.org> esh-0.8.5.ebuild:
+  Added ~sparc keyword and fix to the ebuild for non-x86 arches since upstream
+  included binary files in source tarball for some odd reason.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*esh-0.8.5 (26 Apr 2002)
+
+  28 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> esh-0.8.5.ebuild :
+
+  Added -ppc to KEYWORDS.
+
+  25 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> esh-0.8.5.ebuild :
+  Added KEYWORDS, SLOT.
+
+  26 Apr 2002; Seemant Kulleen <seemant@gentoo.org> esh-0.8.5.ebuild
+  files/digest-esh-0.8.5 :
+
+  Version bump
+
+*esh-0.8-r2 (1 Feb 2002)
+
+  25 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> esh-0.8-r2.ebuild :
+  Added KEYWORDS, SLOT.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

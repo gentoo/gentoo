@@ -1,0 +1,32 @@
+# ChangeLog for sys-apps/dmtcp
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/dmtcp/ChangeLog,v 1.7 2015/05/18 20:20:24 mrueg Exp $
+
+  18 May 2015; Manuel Rüger <mrueg@gentoo.org> -dmtcp-1.2.1.ebuild:
+  Remove old.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> dmtcp-1.2.1.ebuild,
+  dmtcp-1.2.6.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*dmtcp-1.2.6 (07 Oct 2012)
+
+  07 Oct 2012; Pacho Ramos <pacho@gentoo.org> +dmtcp-1.2.6.ebuild:
+  Version bump as current version doesn't compile for a long time (#367687).
+
+  07 Oct 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, #24135.
+
+  03 May 2011; Steve Arnold <nerdboy@gentoo.org> dmtcp-1.2.1.ebuild:
+  Removed extra testiness, some failures appear to be expected.
+
+  09 Apr 2011; Steve Arnold <nerdboy@gentoo.org> dmtcp-1.2.1.ebuild,
+  +files/dmtcp-1.2.1-gcc46.patch:
+  Updated with QA fixes and a gcc 4.6 patch. That was quick...
+
+*dmtcp-1.2.1 (09 Apr 2011)
+
+  09 Apr 2011; Steve Arnold <nerdboy@gentoo.org> +dmtcp-1.2.1.ebuild,
+  +metadata.xml:
+  New ebuild for the Distributed MultiThreaded CheckPoint tool. It does 
+  not require any special source mods or kernel modules. See the docs...

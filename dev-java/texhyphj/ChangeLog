@@ -1,0 +1,9 @@
+# ChangeLog for dev-java/texhyphj
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/texhyphj/ChangeLog,v 1.1 2014/07/12 07:41:43 ercpe Exp $
+
+*texhyphj-1.1 (12 Jul 2014)
+
+  12 Jul 2014; Johann Schmitz <ercpe@gentoo.org> +metadata.xml,
+  +texhyphj-1.1.ebuild:
+  New ebuild for texthyphj (dependency of tvbrowser)

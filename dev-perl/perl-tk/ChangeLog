@@ -1,0 +1,406 @@
+# ChangeLog for dev-perl/perl-tk
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/perl-tk/ChangeLog,v 1.109 2015/04/07 14:12:55 jlec Exp $
+
+  02 Apr 2015; Mikle Kolyada <zlogene@gentoo.org> perl-tk-804.33.0.ebuild:
+  Mark stable for all
+
+  01 Apr 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-tk-804.32.0.ebuild:
+  Remove old
+
+*perl-tk-804.33.0 (01 Apr 2015)
+
+  01 Apr 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +perl-tk-804.33.0.ebuild, +files/perl-tk-804.33.0-xorg.patch:
+  Version bump, bug 541822
+
+  17 Jan 2015; Mikle Kolyada <zlogene@gentoo.org> perl-tk-804.32.0-r1.ebuild:
+  Stable for all wrt bug #536798
+
+  17 Jan 2015; Jeroen Roovers <jer@gentoo.org> perl-tk-804.32.0-r1.ebuild:
+  Stable for HPPA (bug #536798).
+
+*perl-tk-804.32.0-r1 (21 Oct 2014)
+
+  21 Oct 2014; Justin Lecher <jlec@gentoo.org> +perl-tk-804.32.0-r1.ebuild,
+  +files/freetype_location.patch, +files/mainwindow_segfaults.patch:
+  Add fix for build against perl-5.20, thanks Norman Yarvin for the patch,
+  #523982
+
+  11 Oct 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-tk-804.29.0.ebuild, -perl-tk-804.30.0.ebuild, -perl-tk-804.31.0.ebuild,
+  -perl-tk-804.31.0-r1.ebuild, -files/804.028-path.patch,
+  -files/perl-tk-804.31.0-fix-libpng-option.patch,
+  -files/804.029-X11_XLIB_H.patch, -files/xorg.patch:
+  Remove old
+
+  10 Aug 2014; Agostino Sarubbo <ago@gentoo.org> perl-tk-804.32.0.ebuild:
+  Stable for ia64, wrt bug #518032
+
+  10 Aug 2014; Agostino Sarubbo <ago@gentoo.org> perl-tk-804.32.0.ebuild:
+  Stable for x86, wrt bug #518032
+
+  08 Aug 2014; Agostino Sarubbo <ago@gentoo.org> perl-tk-804.32.0.ebuild:
+  Stable for sparc, wrt bug #518032
+
+  06 Aug 2014; Jeroen Roovers <jer@gentoo.org> perl-tk-804.32.0.ebuild:
+  Stable for HPPA (bug #518032).
+
+  03 Aug 2014; Agostino Sarubbo <ago@gentoo.org> perl-tk-804.32.0.ebuild:
+  Stable for ppc, wrt bug #518032
+
+  02 Aug 2014; Agostino Sarubbo <ago@gentoo.org> perl-tk-804.32.0.ebuild:
+  Stable for ppc64, wrt bug #518032
+
+  01 Aug 2014; Markus Meier <maekke@gentoo.org> perl-tk-804.32.0.ebuild:
+  arm stable, bug #518032
+
+  28 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> perl-tk-804.32.0.ebuild:
+  amd64 stable wrt bug #518032
+
+  28 Jul 2014; Tobias Klausmann <klausman@gentoo.org> perl-tk-804.32.0.ebuild:
+  Stable on alpha, bug #518032
+
+*perl-tk-804.32.0 (18 Jun 2014)
+
+  18 Jun 2014; Justin Lecher <jlec@gentoo.org> +perl-tk-804.32.0.ebuild:
+  Version Bump, fixes incompatibilities with png-1.6
+
+  21 Jan 2014;  <civil@gentoo.org>
+  files/perl-tk-804.31.0-fix-libpng-option.patch:
+  Improve patch for libpng issue. Just add one missing call to pkg-config.
+
+*perl-tk-804.31.0-r1 (21 Jan 2014)
+
+  21 Jan 2014;  <civil@gentoo.org>
+  +files/perl-tk-804.31.0-fix-libpng-option.patch, +perl-tk-804.31.0-r1.ebuild:
+  Fix libpng pkg-config, force unbundling of jpeg, libpng, zlib
+
+*perl-tk-804.31.0 (13 Aug 2013)
+
+  13 Aug 2013; Justin Lecher <jlec@gentoo.org> +perl-tk-804.31.0.ebuild,
+  +files/perl-tk-804.31.0-xorg.patch:
+  Version Bump
+
+  03 Mar 2013; Mike Frysinger <vapier@gentoo.org> perl-tk-804.29.0.ebuild,
+  perl-tk-804.30.0.ebuild:
+  Add s390 lovin.
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org> perl-tk-804.30.0.ebuild:
+  keyword ~amd64-fbsd
+
+*perl-tk-804.30.0 (11 Apr 2012)
+
+  11 Apr 2012; Torsten Veller <tove@gentoo.org> +perl-tk-804.30.0.ebuild:
+  Version bump (#411241)
+
+  30 Nov 2011; Fabian Groffen <grobian@gentoo.org> perl-tk-804.29.0.ebuild:
+  Fix building on Prefix platforms, bug #385621
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -perl-tk-804.029.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> perl-tk-804.29.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+  30 Aug 2011; Fabio Erculiani <lxnay@gentoo.org> perl-tk-804.029.ebuild,
+  perl-tk-804.29.0.ebuild:
+  ouch, no RDEPEND set and EAPI=3 is quite wrong, this triggers several missing
+  runtime dependencies and broken binpkgs support
+
+*perl-tk-804.29.0 (27 Aug 2011)
+
+  27 Aug 2011; Torsten Veller <tove@gentoo.org> +perl-tk-804.29.0.ebuild:
+  Change version scheme
+
+  27 Nov 2010; Torsten Veller <tove@gentoo.org> -files/804.028-FBox.patch,
+  -files/804.028-MouseWheel.patch, -perl-tk-804.028-r2.ebuild,
+  -files/perl-tk-CVE-2008-0553.patch:
+  Cleanup
+
+  27 Nov 2010; Torsten Veller <tove@gentoo.org>
+  +files/804.029-X11_XLIB_H.patch, perl-tk-804.029.ebuild:
+  Fix build failure with libX11-1.4.0 where they added an "X11_" string to
+  header guards to avoid possible collision (#345987)
+
+  07 Nov 2010; Samuli Suominen <ssuominen@gentoo.org>
+  perl-tk-804.028-r2.ebuild, perl-tk-804.029.ebuild:
+  Use virtual/jpeg wrt #327487.
+
+  21 Oct 2010; Jeroen Roovers <jer@gentoo.org> perl-tk-804.029.ebuild:
+  Stable for HPPA (bug #333573).
+
+  30 Sep 2010; Brent Baude <ranger@gentoo.org> perl-tk-804.029.ebuild:
+  Marking perl-tk-804.029 ppc for bug 333573
+
+  30 Sep 2010; Brent Baude <ranger@gentoo.org> perl-tk-804.029.ebuild:
+  Marking perl-tk-804.029 ppc64 for bug 333573
+
+  05 Sep 2010; Raúl Porcel <armin76@gentoo.org> perl-tk-804.029.ebuild:
+  alpha/arm/ia64/sh/sparc stable wrt #333573
+
+  23 Aug 2010; Markos Chandras <hwoarang@gentoo.org> perl-tk-804.029.ebuild:
+  Stable on amd64 wrt bug #333573
+
+  22 Aug 2010; Torsten Veller <tove@gentoo.org>
+  -files/perl-tk-804.027-interix-x11.patch:
+  Remove unused patch
+
+  21 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  perl-tk-804.029.ebuild:
+  x86 stable wrt bug #333573
+
+  16 Aug 2010; Torsten Veller <tove@gentoo.org> perl-tk-804.028-r2.ebuild,
+  -perl-tk-804.028-r3.ebuild, perl-tk-804.029.ebuild:
+  Not parallel make safe (#333049). Cleanup
+
+  28 May 2010; Torsten Veller <tove@gentoo.org>
+  -perl-tk-804.028_p503.ebuild:
+  Cleanup
+
+*perl-tk-804.029 (28 May 2010)
+
+  28 May 2010; Torsten Veller <tove@gentoo.org> +perl-tk-804.029.ebuild:
+  Version bump
+
+*perl-tk-804.028_p503 (15 May 2010)
+
+  15 May 2010; Torsten Veller <tove@gentoo.org>
+  +perl-tk-804.028_p503.ebuild:
+  Version bump. This developer release works with perl-5.12. Thanks to David
+  Abbott and Denis Sokolovsky (#312813)
+
+  18 Mar 2010; Jeremy Olexa <darkside@gentoo.org> perl-tk-804.028-r3.ebuild:
+  add ~x86-solaris ~sparc-solaris kw, as tested on bug 308683
+
+  03 Feb 2010; Hanno Boeck <hanno@gentoo.org> perl-tk-804.028-r2.ebuild,
+  perl-tk-804.028-r3.ebuild:
+  Remove LICENSE so it takes the correct from perl-module.eclass.
+
+*perl-tk-804.028-r3 (10 Jan 2010)
+
+  10 Jan 2010; Fabian Groffen <grobian@gentoo.org>
+  +files/perl-tk-804.027-interix-x11.patch, +perl-tk-804.028-r3.ebuild:
+  Revision bump for Prefix fix and transfer of Prefix keywords, bug #294758
+
+  16 Aug 2009; Torsten Veller <tove@gentoo.org>
+  -files/perl-tk-800.025-dirtarget.patch:
+  Remove unused patch
+
+  11 Jun 2009; Alex Legler <a3li@gentoo.org> -perl-tk-804.028-r1.ebuild:
+  Removing vulnerable ebuild, bug 271789.
+
+  11 Jun 2009; Raúl Porcel <armin76@gentoo.org> perl-tk-804.028-r2.ebuild:
+  arm/ia64/sh stable wrt #271789
+
+  08 Jun 2009; Jeroen Roovers <jer@gentoo.org> perl-tk-804.028-r2.ebuild:
+  Stable for HPPA (bug #271789).
+
+  07 Jun 2009; Tobias Klausmann <klausman@gentoo.org>
+  perl-tk-804.028-r2.ebuild:
+  Stable on alpha, bug #271789
+
+  01 Jun 2009; Markus Meier <maekke@gentoo.org> perl-tk-804.028-r2.ebuild:
+  amd64 stable, bug #271789
+
+  31 May 2009; Brent Baude <ranger@gentoo.org> perl-tk-804.028-r2.ebuild:
+  stable ppc64, bug 271789
+
+  30 May 2009; Torsten Veller <tove@gentoo.org> perl-tk-804.028-r2.ebuild:
+  Stable on x86 (#271789)
+
+  30 May 2009; nixnut <nixnut@gentoo.org> perl-tk-804.028-r2.ebuild:
+  ppc stable #271789
+
+  29 May 2009; Ferris McCormick <fmccor@gentoo.org>
+  perl-tk-804.028-r2.ebuild:
+  Sparc stable, bug #271789 blocking security bug #208464.
+
+*perl-tk-804.028-r2 (29 May 2009)
+
+  29 May 2009; Alex Legler <a3li@gentoo.org> +perl-tk-804.028-r2.ebuild,
+  +files/perl-tk-CVE-2008-0553.patch:
+  Non-maintainer commit: Revbump to fix the CVE-2008-0553 security issue,
+  bug 208464.
+
+  08 May 2009; Torsten Veller <tove@gentoo.org> -perl-tk-804.027.ebuild,
+  -perl-tk-804.028.ebuild:
+  Cleanup
+
+  07 May 2009; Raúl Porcel <armin76@gentoo.org> perl-tk-804.028-r1.ebuild:
+  alpha/arm/ia64/sh/sparc stable wrt #268187
+
+  06 May 2009; Jeroen Roovers <jer@gentoo.org> perl-tk-804.028-r1.ebuild:
+  Stable for HPPA (bug #268187).
+
+  03 May 2009; Markus Meier <maekke@gentoo.org> perl-tk-804.028-r1.ebuild:
+  amd64/x86 stable, bug #268187
+
+  03 May 2009; Brent Baude <ranger@gentoo.org> perl-tk-804.028-r1.ebuild:
+  stable ppc64, bug 268187
+
+  02 May 2009; nixnut <nixnut@gentoo.org> perl-tk-804.028-r1.ebuild:
+  ppc stable #268187
+
+  19 Mar 2009; Joseph Jezak <josejx@gentoo.org> files/xorg.patch:
+  Fix bug #198977.
+
+*perl-tk-804.028-r1 (21 Feb 2009)
+
+  21 Feb 2009; Torsten Veller <tove@gentoo.org> +files/804.028-FBox.patch,
+  +files/804.028-MouseWheel.patch, +files/804.028-path.patch,
+  +perl-tk-804.028-r1.ebuild:
+  Fix bug #200859 (anti-aliased fonts) and bug #238079 (mouse wheel
+  problem). Add jpeg and png dependencies.
+
+*perl-tk-804.028 (23 Dec 2008)
+
+  23 Dec 2008; Robin H. Johnson <robbat2@gentoo.org> perl-tk-804.027.ebuild,
+  +perl-tk-804.028.ebuild:
+  Version bump.
+
+  22 Jul 2007; Hans de Graaff <graaff@gentoo.org> perl-tk-804.027.ebuild:
+  Drop virtual/x11 references.
+
+  19 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  perl-tk-804.027.ebuild:
+  Ebuild maintenance
+
+  26 Dec 2006; Timothy Redaelli <drizzt@gentoo.org> perl-tk-804.027.ebuild:
+  Add ~x86-fbsd keyword.
+
+  06 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  perl-tk-804.027.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  05 Jul 2006; Christian Hartmann <ian@gentoo.org> perl-tk-804.027.ebuild:
+  Fixed RDEPEND wrt bug #134781
+
+  14 Jun 2006; Michael Cummings <mcummings@gentoo.org> +files/xorg.patch,
+  perl-tk-804.027.ebuild:
+  Bug 128326 - modified to build for users that didn't install xorg meta
+
+  12 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  perl-tk-804.027.ebuild:
+  Add modular X dependencies.
+
+  22 Jul 2005; Herbie Hopkins <herbs@gentoo.org> perl-tk-804.027.ebuild:
+  Multilib fix.
+
+  27 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -perl-tk-800.024-r1.ebuild, -perl-tk-800.024-r2.ebuild,
+  -perl-tk-800.025-r1.ebuild, -perl-tk-800.025.ebuild, perl-tk-804.027.ebuild:
+  Cleaning up
+
+  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> perl-tk-804.027.ebuild:
+  stable on ia64
+
+  20 Feb 2005; Hardave Riar <hardave@gentoo.org> perl-tk-804.027.ebuild:
+  Stable on mips
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  07 Nov 2004; Markus Rothe <corsair@gentoo.org> perl-tk-804.027.ebuild:
+  Stable on ppc64; bug #60442
+
+  03 Nov 2004; Bret Curtis <psi29a@gentoo.org> perl-tk-804.027.ebuild:
+  marked ~mips for testing
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> perl-tk-804.027.ebuild:
+  Stable on amd64.
+
+  10 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> perl-tk-804.027.ebuild:
+  Stable on alpha.
+
+  08 Oct 2004; Guy Martin <gmsoft@gentoo.org> perl-tk-804.027.ebuild:
+  Marked stable on hppa.
+
+  09 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org> perl-tk-804.027.ebuild:
+  Stable on sparc
+
+  08 Aug 2004; Michael Cummings <mcummings@gentoo.org> perl-tk-804.027.ebuild:
+  Bumping stable on x86.
+
+  08 Aug 2004; Guy Martin <gmsoft@gentoo.org> perl-tk-800.025-r1.ebuild:
+  Stable on hppa.
+
+  15 Jul 2004; Tom Gall <tgall@gentoo.org> perl-tk-804.027.ebuild:
+  added ~ppc64, bug #55548
+
+*perl-tk-804.027 (07 May 2004)
+
+  07 May 2004; Michael Cummings <mcummings@gentoo.org> perl-tk-804.027.ebuild:
+  New stable version of perl-tk
+
+  10 Jan 2004; <agriffis@gentoo.org> perl-tk-800.025-r1.ebuild:
+  stable on ia64
+
+  09 Jan 2004; Aron Griffis <agriffis@gentoo.org> perl-tk-800.025-r1.ebuild:
+  stable on alpha
+
+*perl-tk-800.025-r1 (29 Nov 2003)
+
+  29 Nov 2003; <rac@gentoo.org> perl-tk-800.025-r1.ebuild,
+  files/perl-tk-800.025-dirtarget.patch:
+  Hack out dir_target stuff as per NI-S mail.  Addresses bug 33240
+
+  06 Nov 2003; Jason Wever <weeve@gentoo.org> perl-tk-800.025.ebuild:
+  Marked stable on sparc in relation to bug #30846.
+
+  06 Nov 2003; <rac@gentoo.org> perl-tk-800.025.ebuild:
+  keyword x86 and amd64
+
+*perl-tk-800.025 (02 Oct 2003)
+
+  01 Nov 2003; Guy Martin <gmsoft@gentoo.org> perl-tk-800.025.ebuild :
+  Added ~hppa to KEYWORDS.
+
+  02 Oct 2003; <rac@gentoo.org> perl-tk-800.025.ebuild:
+  Upstream version bump, works with new makemakers (and therefore with perl
+  5.8.1)
+
+  09 Sep 2003; <rac@gentoo.org> perl-tk-800.024-r2.ebuild:
+  Block MakeMaker 6.15, as it is incompatible with the tk makefiles
+
+*perl-tk-800.024-r2 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
+  forced version bump to install into correct locations
+
+*perl-tk-800.024-r1 (6 May 2002)
+  
+  1 Aug 2002; Calum Selkirk <cselkirk@gentoo.org> perl-tk-800.024-r1.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  6 May 2002; Seemant Kulleen <seemant@gentoo.org>
+  perl-tk-800.024-r1.ebuild :
+
+  eclassed
+
+*perl-tk-800.024 (26 Apr 2002)
+
+  26 Apr 2002; Seemant Kulleen <seemant@gentoo.org> perl-tk-800.024.ebuild
+  files/digest-perl-tk-800.024 :
+
+  Version bump
+
+*perl-tk-800.022 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

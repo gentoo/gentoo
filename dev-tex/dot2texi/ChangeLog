@@ -1,0 +1,70 @@
+# ChangeLog for dev-tex/dot2texi
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/dot2texi/ChangeLog,v 1.21 2012/04/22 18:30:13 grobian Exp $
+
+  22 Apr 2012; Fabian Groffen <grobian@gentoo.org> dot2texi-3.0.ebuild:
+  Marked ~amd64-linux, bug #411655
+
+  16 Feb 2012; Fabian Groffen <grobian@gentoo.org> dot2texi-3.0.ebuild:
+  Marked ~sparc-solaris
+
+  16 Dec 2011; Naohiro Aota <naota@gentoo.org> dot2texi-3.0.ebuild:
+  Add ~x86-fbsd
+
+  16 Oct 2011; Fabian Groffen <grobian@gentoo.org> dot2texi-3.0.ebuild:
+  Marked ~x86-macos
+
+  04 Oct 2011; Jeroen Roovers <jer@gentoo.org> dot2texi-3.0.ebuild:
+  Stable for HPPA (bug #355085).
+
+  18 Sep 2011; Raúl Porcel <armin76@gentoo.org> dot2texi-3.0.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #355085
+
+  28 Aug 2011; Fabian Groffen <grobian@gentoo.org> dot2texi-3.0.ebuild:
+  Marked ~x64-macos
+
+  14 Aug 2011; Markus Meier <maekke@gentoo.org> dot2texi-3.0.ebuild:
+  arm stable, bug #355085
+
+  12 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org> dot2texi-3.0.ebuild:
+  ppc/ppc64 stable wrt #355085
+
+  12 Aug 2011; Thomas Kahle <tomka@gentoo.org> dot2texi-3.0.ebuild:
+  x86 stable per bug 355085
+
+  09 Aug 2011; Markos Chandras <hwoarang@gentoo.org> dot2texi-3.0.ebuild:
+  Stable on amd64 wrt bug #355085
+
+  14 Jun 2011; Matt Turner <mattst88@gentoo.org> dot2texi-3.0.ebuild:
+  Added ~mips, bug 352300
+
+  27 Feb 2011; Raúl Porcel <armin76@gentoo.org> dot2texi-3.0.ebuild:
+  Add ~alpha/~ia64/~s390/~sh/~sparc wrt #342513
+
+  20 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> dot2texi-3.0.ebuild:
+  Marked ~ppc/~ppc64 wrt #352300
+
+  06 Feb 2011; Markus Meier <maekke@gentoo.org> dot2texi-3.0.ebuild:
+  add ~arm, bug #352300
+
+  26 Jan 2011; Fabian Groffen <grobian@gentoo.org> dot2texi-3.0.ebuild:
+  Marked ~ppc-macos for bug #352300
+
+  24 Jan 2011; Jeroen Roovers <jer@gentoo.org> dot2texi-3.0.ebuild:
+  Marked ~hppa (bug #352300).
+
+  30 May 2009; Ulrich Mueller <ulm@gentoo.org> dot2texi-3.0.ebuild:
+  Remove app-text/tetex from dependencies, bug 227443.
+
+  04 Aug 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56.
+
+  14 Jun 2008; Raúl Porcel <armin76@gentoo.org> dot2texi-3.0.ebuild:
+  Add ~x86 wrt #225749
+
+*dot2texi-3.0 (04 Jun 2008)
+
+  04 Jun 2008; Alexis Ballier <aballier@gentoo.org> +metadata.xml,
+  +dot2texi-3.0.ebuild:
+  Initial import, ebuild by Alet Roux <alet_roux@yahoo.co.uk>, bug #214714
+

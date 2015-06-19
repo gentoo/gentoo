@@ -1,0 +1,29 @@
+# ChangeLog for dev-perl/X-Osd
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/X-Osd/ChangeLog,v 1.6 2014/08/26 19:38:48 axs Exp $
+
+*X-Osd-0.700.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +X-Osd-0.700.0-r1.ebuild, -X-Osd-0.700.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -X-Osd-0.7.ebuild:
+  Cleanup
+
+*X-Osd-0.700.0 (28 Aug 2011)
+
+  28 Aug 2011; Torsten Veller <tove@gentoo.org> +X-Osd-0.700.0.ebuild:
+  Change version scheme
+
+  17 Jan 2009; Robin H. Johnson <robbat2@gentoo.org> X-Osd-0.7.ebuild:
+  Emerge on an empty system (without perl) failed due to lack of perl dep.
+
+*X-Osd-0.7 (10 Jan 2009)
+
+  10 Jan 2009; Steve Dibb <beandog@gentoo.org> +metadata.xml,
+  +X-Osd-0.7.ebuild:
+  Initial commit, bug 250687

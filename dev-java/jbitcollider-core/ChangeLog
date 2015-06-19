@@ -1,0 +1,23 @@
+# ChangeLog for dev-java/jbitcollider-core
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jbitcollider-core/ChangeLog,v 1.5 2015/06/09 13:41:32 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  24 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  jbitcollider-core-0.8.ebuild:
+  x86 stable wrt bug #405069
+
+  21 Feb 2012; Agostino Sarubbo <ago@gentoo.org> jbitcollider-core-0.8.ebuild:
+  Stable for amd64, wrt bug #405069
+
+  31 Jul 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  jbitcollider-core-0.8.ebuild:
+  Remove accidently commited ~ia64 keyword
+
+*jbitcollider-core-0.8 (31 Jul 2011)
+
+  31 Jul 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +jbitcollider-core-0.8.ebuild, +metadata.xml:
+  Initial commit, fixes bug 377011, based on ebuild by Dennis Schridde

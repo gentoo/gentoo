@@ -1,0 +1,47 @@
+# ChangeLog for games-arcade/amphetamine
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/amphetamine/ChangeLog,v 1.11 2015/01/03 13:16:41 tupone Exp $
+
+  03 Jan 2015; Tupone Alfredo <tupone@gentoo.org> amphetamine-0.8.10.ebuild:
+  EAPI 4
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> amphetamine-0.8.10.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  08 Jul 2012; Tristan Heaven <tristan@gentoo.org> amphetamine-0.8.10.ebuild,
+  +files/amphetamine-0.8.10-build.patch:
+  Fix makefile with a patch instead of sed, bug #424213
+
+  07 Jan 2010; Joseph Jezak <josejx@gentoo.org> amphetamine-0.8.10.ebuild:
+  Marked ppc stable for bug #294564.
+
+  26 Nov 2009; Markus Meier <maekke@gentoo.org> amphetamine-0.8.10.ebuild:
+  amd64/x86 stable, bug #294564
+
+  19 Oct 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  amphetamine-0.8.10.ebuild:
+  EAPI=2
+
+  12 Jul 2009; Tupone Alfredo <tupone@gentoo.org> amphetamine-0.8.10.ebuild:
+  Updating HOMEPAGE. Bug #277499 by Pacho Ramos
+
+  02 Nov 2007; Samuli Suominen <drac@gentoo.org>
+  +files/020_assumed_sizeof_long.diff, amphetamine-0.8.10.ebuild:
+  While keywording for AMD64, add a new patch from Debian, courtesy of Darren
+  Salt: fix wrong assumption that long is a 32 bit type. Also fix desktop file
+  to meet f.d.o standard, Icon= should not be suffixed if full path is not
+  specified. Bug #166049.
+
+  09 Apr 2007; Peter Weller <welp@gentoo.org> amphetamine-0.8.10.ebuild:
+  Keyworded ~x86-fbsd wrt bug 173405
+
+  08 Apr 2007; Joseph Jezak <josejx@gentoo.org> amphetamine-0.8.10.ebuild:
+  Marked ~ppc for bug #173426.
+
+*amphetamine-0.8.10 (08 Feb 2007)
+
+  08 Feb 2007; <tupone@gentoo.org> +files/amphetamine-0.8.10-gentoo.patch,
+  +metadata.xml, +amphetamine-0.8.10.ebuild:
+  New ebuild. Bug #108204 by Pacho Ramos
+

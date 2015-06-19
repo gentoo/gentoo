@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=dev-lang/perl >=sys-apps/sed-4
+DESCRIPTION=A (semi-)random e-mail signature rotator
+HOMEPAGE=http://signify.sf.net/
+KEYWORDS=ppc sparc x86 ~amd64
+LICENSE=public-domain
+RDEPEND=dev-lang/perl
+SLOT=0
+SRC_URI=mirror://debian/pool/main/s/signify/signify_1.14-1.tar.gz
+_md5_=35f3cd7a0c52eceb006123967bdb68b0

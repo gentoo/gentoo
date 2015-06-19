@@ -1,0 +1,88 @@
+# ChangeLog for app-dicts/aspell-es
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/aspell-es/ChangeLog,v 1.22 2014/01/05 11:00:17 pacho Exp $
+
+  05 Jan 2014; Pacho Ramos <pacho@gentoo.org> -aspell-es-0.50.2.ebuild,
+  metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/app-dicts-herd-is-empty-
+  td271273.html
+
+  17 May 2012; Alexis Ballier <aballier@gentoo.org> aspell-es-0.50.2.ebuild,
+  aspell-es-1.9a.ebuild:
+  keyword ~amd64-fbsd
+
+  07 Oct 2010; Mart Raudsepp <leio@gentoo.org> aspell-es-0.50.2.ebuild:
+  Drop to ~mips
+
+  05 Jun 2010; Raúl Porcel <armin76@gentoo.org> aspell-es-1.9a.ebuild:
+  alpha/arm/ia64/s390/sh stable wrt #310015
+
+  14 May 2010; Jeroen Roovers <jer@gentoo.org> aspell-es-1.9a.ebuild:
+  Stable for HPPA (bug #310015).
+
+  05 Apr 2010; Markus Meier <maekke@gentoo.org> aspell-es-1.9a.ebuild:
+  amd64/arm/x86 stable, bug #310015
+
+  27 Mar 2010; Tiago Cunha <tcunha@gentoo.org> aspell-es-1.9a.ebuild:
+  stable sparc, bug 310015
+
+  24 Mar 2010; Brent Baude <ranger@gentoo.org> aspell-es-1.9a.ebuild:
+  Marking aspell-es-1.9a ppc stable for bug 310015
+
+  21 Mar 2010; Brent Baude <ranger@gentoo.org> aspell-es-1.9a.ebuild:
+  Marking aspell-es-1.9a ppc64 stable for bug 310015
+
+  26 Dec 2009; Peter Volkov <pva@gentoo.org> aspell-es-1.9a.ebuild:
+  Add ASPOSTFIX to depend on correct aspell version.
+
+*aspell-es-1.9a (24 Dec 2009)
+
+  24 Dec 2009; Peter Volkov <pva@gentoo.org> +aspell-es-1.9a.ebuild:
+  Version bump, bug #291863, thank Fabio Correa for this work.
+
+  18 Oct 2009; Mark Loeser <halcy0n@gentoo.org> aspell-es-0.50.2.ebuild:
+  QA fixes; IUSE is not defined
+
+  03 Nov 2007; Roy Marples <uberlord@gentoo.org> aspell-es-0.50.2.ebuild:
+  Keyworded ~sparc-fbsd and ~x86-fbsd
+
+  01 Dec 2006; Kevin F. Quinn <kevquinn@gentoo.org> aspell-es-0.50.2.ebuild:
+  Ebuild cleanups for bug #132718
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  30 Jul 2004; Anders Rune Jensen <arj@gentoo.org> +metadata.xml :
+  QA - IUSE fix and {add missing,correct} metatata.xml.
+
+*aspell-es-0.50.2 (03 Sep 2002)
+
+  02 Dec 2002; Seemant Kulleen <seemant@gentoo.org> * :
+
+  Moved from app-i18n to app-dicts
+
+  03 Sep 2002; Seemant Kulleen <seemant@gentoo.org> aspell-0.50.2.ebuild
+  files/digest-aspell-0.50.2 :
+
+  Bad me forgot the ChangeLog entry for 0.50.1.  This is the bugfix update
+  to that.
+
+*aspell-0.0.0.10 (15 Aug 2002)
+
+  15 Aug 2002; Seemant Kulleen <seemant@gentoo.org>
+  aspell-es-0.0.0.10.ebuild  aspell-es-0.0_pre10.ebuild :
+
+  killed the pre ebuild, in favour of new version scheme and eclass.
+
+*aspell-0.0_pre10 (14 Aug 2002)
+
+  14 Aug 2002; Seemant Kulleen <seemant@gentoo.org>
+  aspell-es-0.0_pre10.ebuild :
+
+  Version bump to the newest GNU/aspell dictionary.
+
+*aspell-0.0.3 (16 Jun 2002)
+
+  16 jun 2002; J. Alberto Suárez L. <bass@gentoo.org> aspell-es-0.0.3.ebuild : 
+  
+  First relase

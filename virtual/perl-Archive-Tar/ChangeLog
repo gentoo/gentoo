@@ -1,0 +1,401 @@
+# ChangeLog for virtual/perl-Archive-Tar
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/perl-Archive-Tar/ChangeLog,v 1.84 2015/06/04 15:54:51 dilfridge Exp $
+
+*perl-Archive-Tar-2.40.0 (04 Jun 2015)
+
+  04 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-Archive-Tar-1.900.0-r2.ebuild, -perl-Archive-Tar-1.920.0.ebuild,
+  +perl-Archive-Tar-2.40.0.ebuild:
+  Add Perl 5.22 version, remove old
+
+  05 Apr 2015; Mike Frysinger <vapier@gentoo.org>
+  perl-Archive-Tar-1.960.0.ebuild:
+  Mark m68k/s390/sh stable.
+
+  31 Mar 2015; Tom Gall <tgall@gentoo.org> perl-Archive-Tar-1.960.0.ebuild:
+  stable on arm64
+
+  18 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-Archive-Tar-1.960.0.ebuild:
+  Stable for alpha, wrt bug #536790
+
+  17 Feb 2015; Markus Meier <maekke@gentoo.org>
+  perl-Archive-Tar-1.960.0.ebuild:
+  arm stable, bug #536790
+
+  17 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-Archive-Tar-1.960.0.ebuild:
+  Stable for ia64, wrt bug #536790
+
+  16 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-Archive-Tar-1.960.0.ebuild:
+  Stable for sparc, wrt bug #536790
+
+  15 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-Archive-Tar-1.960.0.ebuild:
+  Stable for ppc64, wrt bug #536790
+
+  14 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-Archive-Tar-1.960.0.ebuild:
+  Stable for ppc, wrt bug #536790
+
+  13 Feb 2015; Jeroen Roovers <jer@gentoo.org> perl-Archive-Tar-1.960.0.ebuild:
+  Stable for HPPA (bug #536790).
+
+  13 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-Archive-Tar-1.960.0.ebuild:
+  Stable for x86, wrt bug #536790
+
+  08 Feb 2015; Mikle Kolyada <zlogene@gentoo.org>
+  perl-Archive-Tar-1.960.0.ebuild:
+  amd64 stable wrt bug #536790
+
+*perl-Archive-Tar-1.900.0-r2 (17 Jul 2014)
+
+  17 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-Archive-Tar-1.820.0-r1.ebuild, -perl-Archive-Tar-1.900.0-r1.ebuild,
+  +perl-Archive-Tar-1.900.0-r2.ebuild, perl-Archive-Tar-1.960.0.ebuild:
+  Improve dependencies; remove old
+
+*perl-Archive-Tar-1.900.0-r1 (06 Jul 2014)
+
+  06 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-Archive-Tar-1.900.0.ebuild, +perl-Archive-Tar-1.900.0-r1.ebuild:
+  Revision bump for added provider
+
+*perl-Archive-Tar-1.960.0 (05 Jul 2014)
+
+  05 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-Archive-Tar-1.840.0.ebuild, -perl-Archive-Tar-1.860.0.ebuild,
+  -perl-Archive-Tar-1.880.0.ebuild, perl-Archive-Tar-1.900.0.ebuild,
+  +perl-Archive-Tar-1.960.0.ebuild:
+  Add perl-5.20 version and remove old
+
+  04 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-Archive-Tar-1.54.ebuild, -perl-Archive-Tar-1.72.ebuild,
+  -perl-Archive-Tar-1.780.0.ebuild, -perl-Archive-Tar-1.800.0.ebuild:
+  Remove old
+
+  28 May 2014; Mikle Kolyada <zlogene@gentoo.org>
+  -perl-Archive-Tar-1.760.0-r1.ebuild:
+  Drop old
+
+  20 Jan 2014; Mike Frysinger <vapier@gentoo.org> perl-Archive-Tar-1.72.ebuild,
+  perl-Archive-Tar-1.780.0.ebuild, perl-Archive-Tar-1.800.0.ebuild,
+  perl-Archive-Tar-1.820.0-r1.ebuild, perl-Archive-Tar-1.840.0.ebuild,
+  perl-Archive-Tar-1.860.0.ebuild, perl-Archive-Tar-1.880.0.ebuild,
+  perl-Archive-Tar-1.900.0.ebuild, perl-Archive-Tar-1.920.0.ebuild:
+  Add arm64 love.
+
+  17 Jan 2014; Mike Frysinger <vapier@gentoo.org>
+  perl-Archive-Tar-1.900.0.ebuild:
+  Mark m68k stable.
+
+*perl-Archive-Tar-1.920.0 (03 Aug 2013)
+
+  03 Aug 2013; Matt Turner <mattst88@gentoo.org>
+  +perl-Archive-Tar-1.920.0.ebuild:
+  Version bump to 1.920.0
+
+  02 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Archive-Tar-1.900.0.ebuild:
+  Stable for sh, wrt bug #458122
+
+  23 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Archive-Tar-1.900.0.ebuild:
+  Stable for sparc, wrt bug #458122
+
+  21 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Archive-Tar-1.900.0.ebuild:
+  Stable for ia64, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Archive-Tar-1.900.0.ebuild:
+  Stable for arm, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Archive-Tar-1.900.0.ebuild:
+  Stable for s390, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Archive-Tar-1.900.0.ebuild:
+  Stable for alpha, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Archive-Tar-1.900.0.ebuild:
+  Stable for hppa, wrt bug #458122
+
+  19 Feb 2013; Zac Medico <zmedico@gentoo.org> perl-Archive-Tar-1.900.0.ebuild:
+  Add ~arm-linux keyword.
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Archive-Tar-1.900.0.ebuild:
+  Stable for ppc, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Archive-Tar-1.900.0.ebuild:
+  Stable for ppc64, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Archive-Tar-1.900.0.ebuild:
+  Stable for x86, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Archive-Tar-1.900.0.ebuild:
+  Stable for amd64, wrt bug #458122
+
+*perl-Archive-Tar-1.900.0 (08 Sep 2012)
+
+  08 Sep 2012; Torsten Veller <tove@gentoo.org>
+  +perl-Archive-Tar-1.900.0.ebuild:
+  Version bump
+
+*perl-Archive-Tar-1.880.0 (02 Jun 2012)
+
+  02 Jun 2012; Torsten Veller <tove@gentoo.org>
+  +perl-Archive-Tar-1.880.0.ebuild:
+  Version bump
+
+*perl-Archive-Tar-1.860.0 (26 May 2012)
+
+  26 May 2012; Torsten Veller <tove@gentoo.org>
+  +perl-Archive-Tar-1.860.0.ebuild:
+  Version bump
+
+*perl-Archive-Tar-1.820.0-r1 (21 May 2012)
+
+  21 May 2012; Torsten Veller <tove@gentoo.org>
+  -perl-Archive-Tar-1.820.0.ebuild, +perl-Archive-Tar-1.820.0-r1.ebuild:
+  Add perl-5.16 as provider
+
+  28 Apr 2012; Alexis Ballier <aballier@gentoo.org>
+  perl-Archive-Tar-1.840.0.ebuild:
+  keyword ~amd64-fbsd
+
+*perl-Archive-Tar-1.840.0 (04 Mar 2012)
+
+  04 Mar 2012; Torsten Veller <tove@gentoo.org>
+  +perl-Archive-Tar-1.840.0.ebuild:
+  Version bump
+
+*perl-Archive-Tar-1.820.0 (23 Nov 2011)
+
+  23 Nov 2011; Torsten Veller <tove@gentoo.org>
+  +perl-Archive-Tar-1.820.0.ebuild:
+  Version bump
+
+*perl-Archive-Tar-1.800.0 (23 Oct 2011)
+
+  23 Oct 2011; Torsten Veller <tove@gentoo.org>
+  +perl-Archive-Tar-1.800.0.ebuild:
+  Version bump
+
+*perl-Archive-Tar-1.780.0 (13 Sep 2011)
+
+  13 Sep 2011; Torsten Veller <tove@gentoo.org>
+  +perl-Archive-Tar-1.780.0.ebuild:
+  Version bump
+
+  30 Jul 2011; Torsten Veller <tove@gentoo.org> perl-Archive-Tar-1.54.ebuild,
+  perl-Archive-Tar-1.72.ebuild, perl-Archive-Tar-1.760.0-r1.ebuild:
+  Drop ~sparc-fbsd KEYWORD
+
+  28 Jun 2011; Torsten Veller <tove@gentoo.org> perl-Archive-Tar-1.54.ebuild:
+  Add perl-5.12.4 virtual
+
+*perl-Archive-Tar-1.760.0-r1 (18 Jun 2011)
+
+  18 Jun 2011; Torsten Veller <tove@gentoo.org>
+  -perl-Archive-Tar-1.760.0.ebuild, +perl-Archive-Tar-1.760.0-r1.ebuild:
+  Add perl-5.14 as provider
+
+  02 May 2011; Fabian Groffen <grobian@gentoo.org>
+  perl-Archive-Tar-1.760.0.ebuild:
+  Marked ~x64-freebsd
+
+*perl-Archive-Tar-1.760.0 (25 Apr 2011)
+
+  25 Apr 2011; Torsten Veller <tove@gentoo.org> -perl-Archive-Tar-1.760.ebuild,
+  +perl-Archive-Tar-1.760.0.ebuild:
+  Change version scheme
+
+  22 Jan 2011; Torsten Veller <tove@gentoo.org> perl-Archive-Tar-1.54.ebuild:
+  Add perl-5.12.3 as provider
+
+*perl-Archive-Tar-1.760 (13 Jan 2011)
+
+  13 Jan 2011; Torsten Veller <tove@gentoo.org> +perl-Archive-Tar-1.760.ebuild:
+  Version bump
+
+  07 Dec 2010; Torsten Veller <tove@gentoo.org> -perl-Archive-Tar-1.38.ebuild,
+  -perl-Archive-Tar-1.66.ebuild, -perl-Archive-Tar-1.68.ebuild:
+  Cleanup
+
+  07 Dec 2010; Matt Turner <mattst88@gentoo.org>
+  perl-Archive-Tar-1.72.ebuild:
+  Added ~mips, for bug 262363.
+
+*perl-Archive-Tar-1.72 (22 Nov 2010)
+
+  22 Nov 2010; Torsten Veller <tove@gentoo.org> +perl-Archive-Tar-1.72.ebuild:
+  Version bump
+
+  07 Sep 2010; Torsten Veller <tove@gentoo.org>
+  perl-Archive-Tar-1.54.ebuild:
+  Add perl-5.12.2 as provider
+
+  26 Aug 2010; Torsten Veller <tove@gentoo.org>
+  -perl-Archive-Tar-1.56.ebuild, -perl-Archive-Tar-1.58.ebuild,
+  -perl-Archive-Tar-1.60.ebuild, -perl-Archive-Tar-1.64.ebuild:
+  Cleanup
+
+*perl-Archive-Tar-1.68 (20 Aug 2010)
+
+  20 Aug 2010; Robin H. Johnson <robbat2@gentoo.org>
+  +perl-Archive-Tar-1.68.ebuild:
+  Version bump via perl-bump experimental tool.
+
+*perl-Archive-Tar-1.66 (05 Aug 2010)
+
+  05 Aug 2010; Torsten Veller <tove@gentoo.org>
+  +perl-Archive-Tar-1.66.ebuild:
+  Version bump
+
+*perl-Archive-Tar-1.64 (15 Jul 2010)
+
+  15 Jul 2010; Torsten Veller <tove@gentoo.org>
+  +perl-Archive-Tar-1.64.ebuild:
+  Version bump
+
+  14 Jul 2010; Torsten Veller <tove@gentoo.org>
+  perl-Archive-Tar-1.54.ebuild:
+  Add perl-5.12 as provider
+
+*perl-Archive-Tar-1.60 (23 Apr 2010)
+
+  23 Apr 2010; Robin H. Johnson <robbat2@gentoo.org>
+  +perl-Archive-Tar-1.60.ebuild:
+  Version bump via perl-bump experimental tool.
+
+*perl-Archive-Tar-1.58 (19 Feb 2010)
+
+  19 Feb 2010; Torsten Veller <tove@gentoo.org>
+  +perl-Archive-Tar-1.58.ebuild:
+  Version bump
+
+*perl-Archive-Tar-1.56 (04 Feb 2010)
+
+  04 Feb 2010; Torsten Veller <tove@gentoo.org>
+  +perl-Archive-Tar-1.56.ebuild:
+  Version bump
+
+  17 Jan 2010; Torsten Veller <tove@gentoo.org>
+  -perl-Archive-Tar-1.40.ebuild, -perl-Archive-Tar-1.46.ebuild,
+  -perl-Archive-Tar-1.48.ebuild, -perl-Archive-Tar-1.50.ebuild,
+  -perl-Archive-Tar-1.52.ebuild:
+  Cleanup
+
+  07 Jan 2010; Torsten Veller <tove@gentoo.org>
+  perl-Archive-Tar-1.38.ebuild, perl-Archive-Tar-1.40.ebuild,
+  perl-Archive-Tar-1.46.ebuild, perl-Archive-Tar-1.48.ebuild,
+  perl-Archive-Tar-1.50.ebuild, perl-Archive-Tar-1.52.ebuild,
+  perl-Archive-Tar-1.54.ebuild:
+  Empty HOMEPAGE and LICENSE
+
+  05 Jan 2010; nixnut <nixnut@gentoo.org> perl-Archive-Tar-1.54.ebuild:
+  ppc stable #288026
+
+  15 Dec 2009; Jonathan Callen <abcd@gentoo.org>
+  perl-Archive-Tar-1.50.ebuild, perl-Archive-Tar-1.52.ebuild,
+  perl-Archive-Tar-1.54.ebuild:
+  QA: Add prefix keywords
+
+  14 Dec 2009; Raúl Porcel <armin76@gentoo.org>
+  perl-Archive-Tar-1.54.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #288026
+
+  10 Dec 2009; Brent Baude <ranger@gentoo.org> perl-Archive-Tar-1.54.ebuild:
+  Marking perl-Archive-Tar-1.54 ppc64 stable for bug 288026
+
+  07 Dec 2009; Markus Meier <maekke@gentoo.org>
+  perl-Archive-Tar-1.54.ebuild:
+  arm stable, bug #288026
+
+  07 Dec 2009; Jeroen Roovers <jer@gentoo.org> perl-Archive-Tar-1.54.ebuild:
+  Stable for HPPA (bug #288026).
+
+  04 Dec 2009; Torsten Veller <tove@gentoo.org>
+  perl-Archive-Tar-1.54.ebuild:
+  Stable on amd64 (#288026)
+
+  04 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  perl-Archive-Tar-1.54.ebuild:
+  x86 stable, bug 288026
+
+*perl-Archive-Tar-1.54 (10 Sep 2009)
+
+  10 Sep 2009; Torsten Veller <tove@gentoo.org>
+  +perl-Archive-Tar-1.54.ebuild:
+  Version bump
+
+  25 Aug 2009; Torsten Veller <tove@gentoo.org>
+  perl-Archive-Tar-1.52.ebuild:
+  Add support for perl-5.10.1
+
+*perl-Archive-Tar-1.52 (15 Jun 2009)
+
+  15 Jun 2009; Torsten Veller <tove@gentoo.org>
+  +perl-Archive-Tar-1.52.ebuild:
+  Version bump
+
+*perl-Archive-Tar-1.50 (12 Jun 2009)
+
+  12 Jun 2009; Torsten Veller <tove@gentoo.org>
+  +perl-Archive-Tar-1.50.ebuild:
+  Version bump
+
+*perl-Archive-Tar-1.48 (21 Apr 2009)
+
+  21 Apr 2009; Torsten Veller <tove@gentoo.org>
+  +perl-Archive-Tar-1.48.ebuild:
+  Version bump
+
+  18 Apr 2009; Torsten Veller <tove@gentoo.org>
+  -perl-Archive-Tar-1.32.ebuild, perl-Archive-Tar-1.38.ebuild:
+  Remove old version. Drop KEYWORDS from from vulnerable version
+
+  13 Mar 2009; Torsten Veller <tove@gentoo.org>
+  -perl-Archive-Tar-1.42.ebuild, -perl-Archive-Tar-1.44.ebuild:
+  Cleanup
+
+*perl-Archive-Tar-1.46 (05 Mar 2009)
+
+  05 Mar 2009; Torsten Veller <tove@gentoo.org>
+  +perl-Archive-Tar-1.46.ebuild:
+  Version bump
+
+*perl-Archive-Tar-1.44 (19 Jan 2009)
+
+  19 Jan 2009; Torsten Veller <tove@gentoo.org>
+  +perl-Archive-Tar-1.44.ebuild:
+  Version bump
+
+*perl-Archive-Tar-1.42 (15 Dec 2008)
+
+  15 Dec 2008; Torsten Veller <tove@gentoo.org>
+  +perl-Archive-Tar-1.42.ebuild:
+  Version bump
+
+  10 Dec 2008; Alexis Ballier <aballier@gentoo.org>
+  perl-Archive-Tar-1.40.ebuild:
+  keyword ~sparc-fbsd
+
+*perl-Archive-Tar-1.40 (01 Nov 2008)
+*perl-Archive-Tar-1.38 (01 Nov 2008)
+*perl-Archive-Tar-1.32 (01 Nov 2008)
+
+  01 Nov 2008; Yuval Yaari <yuval@gentoo.org> +metadata.xml,
+  +perl-Archive-Tar-1.32.ebuild, +perl-Archive-Tar-1.38.ebuild,
+  +perl-Archive-Tar-1.40.ebuild:
+  Adding virtuals for dual-lifed modules that come with perl-5.10

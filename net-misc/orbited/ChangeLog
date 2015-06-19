@@ -1,0 +1,57 @@
+# ChangeLog for net-misc/orbited
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/orbited/ChangeLog,v 1.13 2015/03/07 11:22:21 idella4 Exp $
+
+*orbited-0.7.10-r2 (07 Mar 2015)
+
+  07 Mar 2015; Ian Delaney <idella4@gentoo.org> +orbited-0.7.10-r2.ebuild:
+  revbump; conversion -> distutils-r1
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> orbited-0.7.10-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  03 Aug 2013; Michał Górny <mgorny@gentoo.org> orbited-0.7.10-r1.ebuild:
+  Move dev-python/twisted to dev-python/twisted-core.
+
+  12 Jul 2012; Ian Stakenvicius <axs@gentoo.org> orbited-0.7.10-r1.ebuild:
+  added GPL-2 to LICENSE per bug 426088
+
+  07 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  orbited-0.7.10-r1.ebuild:
+  Use Python 2 (bug #315837).
+
+  05 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  orbited-0.7.10-r1.ebuild:
+  Copy keywords from 0.7.10. 0.7.10-r1 only fixes dependencies.
+
+*orbited-0.7.10-r1 (13 Sep 2010)
+
+  13 Sep 2010; Michael Weber <xmw@gentoo.org> +orbited-0.7.10-r1.ebuild:
+  Revbump to revert dev-python/demjson dependency (wrt #337098 by Neil
+  Skrypuch <ns03ja@brocku.ca>).
+
+  02 Jun 2010; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove caleb from metadata.xml (#317071)
+
+  25 Nov 2009; Markus Meier <maekke@gentoo.org> orbited-0.7.10.ebuild:
+  amd64 stable, bug #281571
+
+  12 Sep 2009; Christian Faulhammer <fauli@gentoo.org>
+  orbited-0.7.10.ebuild:
+  stable x86, bug 281571
+
+*orbited-0.7.10 (30 Aug 2009)
+
+  30 Aug 2009; Caleb Tennis <caleb@gentoo.org> -files/0.7.9/orbited.cfg,
+  orbited-0.7.9.ebuild, -files/0.7.9/orbited.init, +orbited-0.7.10.ebuild,
+  +files/orbited.cfg, +files/orbited.init:
+  version bump per #283204, and fix deps and location of config files
+
+  06 May 2009; Caleb Tennis <caleb@gentoo.org> orbited-0.7.9.ebuild:
+  Add twisted-web as a dep
+
+*orbited-0.7.9 (19 Apr 2009)
+
+  19 Apr 2009; Caleb Tennis <caleb@gentoo.org +files/0.7.9/orbited.cfg,
+  +files/0.7.9/orbited.init, +metadata.xml, +orbited-0.7.9.ebuild:
+  Initial import

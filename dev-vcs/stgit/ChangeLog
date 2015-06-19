@@ -1,0 +1,274 @@
+# ChangeLog for dev-vcs/stgit
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/stgit/ChangeLog,v 1.31 2015/03/03 07:44:45 dlan Exp $
+
+  02 Mar 2015; Yixun Lan <dlan@gentoo.org> stgit-0.17.1-r1.ebuild:
+  add arm64 support, tested on A53 board
+
+  23 Oct 2014; Yixun Lan <dlan@gentoo.org> stgit-0.17.1-r1.ebuild:
+  fix build docs twice, bug 526468
+
+  22 Oct 2014; Yixun Lan <dlan@gentoo.org> stgit-0.16-r2.ebuild,
+  stgit-0.17.1-r1.ebuild:
+  fix bashcomp, bug 526282. thanks Necoro
+
+  03 Aug 2014; Yixun Lan <dlan@gentoo.org> stgit-0.16-r2.ebuild:
+  Stable for arm, bug #505796
+
+  02 Aug 2014; Agostino Sarubbo <ago@gentoo.org> stgit-0.16-r2.ebuild:
+  Stable for ppc64, wrt bug #505796
+
+  13 Jul 2014; Agostino Sarubbo <ago@gentoo.org> stgit-0.16-r2.ebuild:
+  Stable for ppc, wrt bug #505796
+
+  20 Jun 2014; Yixun Lan <dlan@gentoo.org> -stgit-0.16-r1.ebuild:
+  clean up, drop old ebuild
+
+  16 Jun 2014; Chema Alonso <nimiux@gentoo.org> stgit-0.16-r2.ebuild:
+  Stable for amd64 wrt bug #505796
+
+  14 Jun 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> stgit-0.16-r2.ebuild:
+  x86 stable wrt bug #505796
+
+*stgit-0.17.1-r1 (10 May 2014)
+
+  10 May 2014; Yixun Lan <dlan@gentoo.org> -stgit-0.17.1.ebuild,
+  +stgit-0.17.1-r1.ebuild:
+  pull in a few upstream patches
+
+*stgit-0.17.1 (25 Mar 2014)
+
+  25 Mar 2014; Yixun Lan <dlan@gentoo.org> +stgit-0.17.1.ebuild, metadata.xml:
+  bump to 0.17.1, add myself as co-maintainer
+
+  25 Mar 2014; Yixun Lan <dlan@gentoo.org> stgit-0.16-r2.ebuild:
+  keyword ~arm, tested on odroid-u3
+
+*stgit-0.16-r2 (23 Sep 2013)
+
+  23 Sep 2013; Sergey Popov <pinkbyte@gentoo.org> +stgit-0.16-r2.ebuild:
+  Revision bump: EAPI 5, distutils-r1 eclass, add Prefix support wrt bug
+  #485730. Thanks to Dennis Lan <dennis.yxun AT gmail.com> for providing
+  initial ebuild diff
+
+  22 Jul 2013; Patrick Lauer <patrick@gentoo.org> -stgit-0.15-r1.ebuild,
+  -stgit-0.16.ebuild:
+  QA: Punt old versions that depend on removed asciidoc version
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  20 Nov 2012; Agostino Sarubbo <ago@gentoo.org> stgit-0.16-r1.ebuild:
+  Stable for x86, wrt bug #441324
+
+  06 Nov 2012; Agostino Sarubbo <ago@gentoo.org> stgit-0.16-r1.ebuild:
+  Stable for amd64, wrt bug #441324
+
+*stgit-0.16-r1 (06 Aug 2012)
+
+  06 Aug 2012; Jeremy Olexa <darkside@gentoo.org> -stgit-0.14.3.ebuild,
+  +stgit-0.16-r1.ebuild, +files/stgit-0.16-asciidoc-compat.patch,
+  +files/stgit-0.16-man-linkfix.patch, metadata.xml:
+  Add revision bump for two small patches, bug 425048. Remove old version,
+  remove myself from metadata
+
+  23 Jan 2012; Jeremy Olexa <darkside@gentoo.org> stgit-0.16.ebuild:
+  Using the old missing-patches tarball creates failing tests, bug 399631
+
+*stgit-0.16 (23 Jan 2012)
+
+  23 Jan 2012; Jeremy Olexa <darkside@gentoo.org> +stgit-0.16.ebuild:
+  Version bump, bug 399631 by René 'Necoro' Neumann
+
+  30 Dec 2011; Mark Loeser <halcy0n@gentoo.org> stgit-0.14.3.ebuild:
+  Revert to ~ppc/~ppc64; bug #381127
+
+  12 Oct 2011; Michał Górny <mgorny@gentoo.org> stgit-0.15-r1.ebuild:
+  Migrate to bash-completion-r1.
+
+  25 Sep 2011; Raúl Porcel <armin76@gentoo.org> stgit-0.14.3.ebuild,
+  stgit-0.15-r1.ebuild:
+  Drop alpha keywords
+
+  04 Sep 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> stgit-0.15-r1.ebuild:
+  x86 stable wrt bug #381127
+
+  31 Aug 2011; Tony Vroon <chainsaw@gentoo.org> stgit-0.15-r1.ebuild:
+  Marked stable on AMD64 based on arch testing by Ian "idella" Delaney in bug
+  #381127 filed by Diego Elio Pettenò.
+
+  30 Aug 2011; Diego E. Pettenò <flameeyes@gentoo.org> -stgit-0.15.ebuild:
+  Remove old version.
+
+  27 Mar 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  stgit-0.14.3.ebuild, stgit-0.15.ebuild, stgit-0.15-r1.ebuild:
+  Use Python 2 (bug #329491).
+
+  27 Mar 2011; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Add myself as last-resort proxy/backup.
+
+  27 Mar 2011; Jeremy Olexa <darkside@gentoo.org> metadata.xml:
+  update metadata.xml
+
+  17 Mar 2010; Sebastian Pipping <sping@gentoo.org> stgit-0.14.3.ebuild,
+  stgit-0.15.ebuild, stgit-0.15-r1.ebuild:
+  Propagate move of dev-util/git to dev-vcs/git
+
+  06 Mar 2010; Ulrich Mueller <ulm@gentoo.org> +stgit-0.14.3.ebuild,
+  +stgit-0.15.ebuild, +stgit-0.15-r1.ebuild, +metadata.xml:
+  Move package from dev-util to dev-vcs, bug 56967.
+
+*stgit-0.15-r1 (14 Jan 2010)
+
+  14 Jan 2010; Carsten Lohrke <carlo@gentoo.org> +stgit-0.15-r1.ebuild:
+  Add missing files for a complete run of the test-suite.
+
+*stgit-0.15 (11 Nov 2009)
+
+  11 Nov 2009; Markos Chandras <hwoarang@gentoo.org> +stgit-0.15.ebuild:
+  Version bump. Fixes bug 292615. Thanks to René 'Necoro' Neumann
+  <gentoo@necoro.eu> for the ebuilds and recommendations
+
+  21 Aug 2009; Jeremy Olexa <darkside@gentoo.org> -stgit-0.10.ebuild,
+  -stgit-0.14.1.ebuild:
+  remove old
+
+  01 Jun 2009; nixnut <nixnut@gentoo.org> stgit-0.14.3.ebuild:
+  ppc stable #268759
+
+  31 May 2009; Brent Baude <ranger@gentoo.org> stgit-0.14.3.ebuild:
+  Marking stgit-0.14.3 ppc64 for bug 268759
+
+  13 May 2009; Tobias Klausmann <klausman@gentoo.org> stgit-0.14.3.ebuild:
+  Stable on alpha, bug #268759
+
+  13 May 2009; Markus Meier <maekke@gentoo.org> stgit-0.14.3.ebuild:
+  amd64/x86 stable, bug #268759
+
+  09 May 2009; Robin H. Johnson <robbat2@gentoo.org> stgit-0.14.3.ebuild:
+  The testsuite was not fully updated to the new Git libexec dir setup. Just
+  help it a bit. The app itself is fully converted.
+
+  21 Mar 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Removing ferdy as a maintainer since he was retired.
+
+  06 Oct 2008; Diego Pettenò <flameeyes@gentoo.org> stgit-0.14.3.ebuild:
+  Fix build-time dependencies.
+
+*stgit-0.14.3 (09 Jun 2008)
+
+  09 Jun 2008; Fernando J. Pereda <ferdy@gentoo.org> -stgit-0.11.ebuild,
+  -stgit-0.12.ebuild, -stgit-0.12.1.ebuild, -stgit-0.12.1-r1.ebuild,
+  -stgit-0.13.ebuild, -stgit-0.14.ebuild, +stgit-0.14.3.ebuild:
+  Version bump. Remove old versions.
+
+*stgit-0.14.1 (15 Feb 2008)
+
+  15 Feb 2008; Greg Kroah-Hartman <gregkh@gentoo.org> +stgit-0.14.1.ebuild:
+  0.14.1 release
+
+*stgit-0.14 (13 Feb 2008)
+
+  13 Feb 2008; Greg Kroah-Hartman <gregkh@gentoo.org> +stgit-0.14.ebuild:
+  0.14 version update
+
+*stgit-0.13 (11 Aug 2007)
+
+  11 Aug 2007; Fernando J. Pereda <ferdy@gentoo.org> +stgit-0.13.ebuild:
+  New upstream version.
+
+*stgit-0.12.1-r1 (10 Apr 2007)
+
+  10 Apr 2007; Fernando J. Pereda <ferdy@gentoo.org>
+  +stgit-0.12.1-r1.ebuild:
+  Add a bash-completion script. Thanks to Nicolas Boichat
+  <nicolas@boichat.ch>. Fixes bug #174014
+
+*stgit-0.12.1 (04 Apr 2007)
+
+  04 Apr 2007; Fernando J. Pereda <ferdy@gentoo.org> +stgit-0.12.1.ebuild:
+  New upstream version.
+
+*stgit-0.12 (07 Feb 2007)
+
+  07 Feb 2007; Fernando J. Pereda <ferdy@gentoo.org> +stgit-0.12.ebuild:
+  New upstream version
+
+*stgit-0.11 (21 Oct 2006)
+
+  21 Oct 2006; Fernando J. Pereda <ferdy@gentoo.org> +stgit-0.11.ebuild:
+  New upstream version.
+
+  27 Sep 2006; Fernando J. Pereda <ferdy@gentoo.org> -stgit-0.8.1.ebuild:
+  Remove old version.
+
+  09 Sep 2006; Stephanie Lockwood-Childs <wormo@gentoo.org> stgit-0.10.ebuild:
+  stable on ppc (Bug #146232)
+
+  09 Sep 2006; Torsten Veller <tove@gentoo.org> stgit-0.10.ebuild:
+  Stable on x86 (bug #146232)
+
+  06 Sep 2006; Luis Medinas <metalgod@gentoo.org> stgit-0.10.ebuild:
+  Stable on amd64. Bug #146232.
+
+  04 Sep 2006; Markus Rothe <corsair@gentoo.org> stgit-0.10.ebuild:
+  Stable on ppc64; bug #146232
+
+  04 Sep 2006; Fernando J. Pereda <ferdy@gentoo.org> -stgit-0.9.ebuild:
+  Remove 0.9
+
+  04 Sep 2006; Fernando J. Pereda <ferdy@gentoo.org> stgit-0.10.ebuild:
+  Stable on alpha wrt bug #146232
+
+*stgit-0.10 (11 Jun 2006)
+
+  11 Jun 2006; Fernando J. Pereda <ferdy@gentoo.org> +stgit-0.10.ebuild:
+  New upstream version
+
+  21 May 2006; Markus Rothe <corsair@gentoo.org> stgit-0.8.1.ebuild:
+  Stable on ppc64
+
+*stgit-0.9 (08 Apr 2006)
+
+  08 Apr 2006; Fernando J. Pereda <ferdy@gentoo.org> +stgit-0.9.ebuild:
+  New upstream version
+
+  18 Feb 2006; Simon Stelling <blubb@gentoo.org> stgit-0.8.1.ebuild:
+  added ~amd64 keyword
+
+  17 Feb 2006; Joseph Jezak <josejx@gentoo.org> stgit-0.8.1.ebuild:
+  Marked ~ppc for bug #122887.
+
+  15 Feb 2006; Markus Rothe <corsair@gentoo.org> stgit-0.8.1.ebuild:
+  Added ~ppc64
+
+  15 Feb 2006; Krzysiek Pawlik <nelchael@gentoo.org> stgit-0.8.1.ebuild:
+  Stable on x86, bug #122887.
+
+  15 Feb 2006; Fernando J. Pereda <ferdy@gentoo.org> -stgit-0.8.ebuild,
+  stgit-0.8.1.ebuild:
+  Marked stgit-0.8.1 stable on alpha, remove old version
+
+*stgit-0.8.1 (22 Jan 2006)
+
+  22 Jan 2006; Fernando J. Pereda <ferdy@gentoo.org> -stgit-0.7.1.ebuild,
+  +stgit-0.8.1.ebuild:
+  new upstream version. remove 0.7.1
+
+*stgit-0.8 (23 Dec 2005)
+
+  23 Dec 2005; Fernando J. Pereda <ferdy@gentoo.org> +stgit-0.8.ebuild:
+  New upstream version
+
+*stgit-0.7.1 (15 Oct 2005)
+
+  15 Oct 2005; Fernando J. Pereda <ferdy@gentoo.org> -stgit-0.7.ebuild,
+  +stgit-0.7.1.ebuild:
+  version bump
+
+*stgit-0.7 (05 Oct 2005)
+
+  05 Oct 2005; Fernando J. Pereda <ferdy@gentoo.org> +metadata.xml,
+  +stgit-0.7.ebuild:
+  Initial import

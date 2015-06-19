@@ -1,0 +1,12 @@
+diff -ru rocksndiamonds-3.3.1.2.orig/src/Makefile rocksndiamonds-3.3.1.2/src/Makefile
+--- rocksndiamonds-3.3.1.2.orig/src/Makefile	2013-11-24 08:05:56.000000000 -0500
++++ rocksndiamonds-3.3.1.2/src/Makefile	2014-12-31 15:47:37.539941795 -0500
+@@ -255,7 +255,7 @@
+ # build targets
+ # -----------------------------------------------------------------------------
+ 
+-all: $(AUTOCONF) libgame_dir game_em_dir game_sp_dir $(PROGNAME)
++all: $(PROGNAME)
+ 
+ $(PROGNAME): $(RNDLIBS) $(TIMESTAMP_FILE) $(OBJS) $(ICON)
+ 	$(CC) $(PROFILING) $(OBJS) $(ICON) $(RNDLIBS) $(LDFLAGS) -o $(PROGNAME)

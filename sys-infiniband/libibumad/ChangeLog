@@ -1,0 +1,36 @@
+# ChangeLog for sys-infiniband/libibumad
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-infiniband/libibumad/ChangeLog,v 1.7 2014/08/10 20:18:51 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> libibumad-1.3.8.ebuild,
+  libibumad-1.3.9.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*libibumad-1.3.9 (16 Apr 2014)
+
+  16 Apr 2014; Alexey Shvetsov <alexxy@gentoo.org> +libibumad-1.3.9.ebuild,
+  -libibumad-1.3.7-r1.ebuild:
+  Update ofed stack to 3.12-rc1
+
+  13 Oct 2012; Alexey Shvetsov <alexxy@gentoo.org> libibumad-1.3.8.ebuild:
+  [sys-infiniband] Update OFED
+
+*libibumad-1.3.8 (12 Oct 2012)
+
+  12 Oct 2012; Alexey Shvetsov <alexxy@gentoo.org> +libibumad-1.3.8.ebuild:
+  [sys-infiniband] OFED 3.5 rc2 update
+
+*libibumad-1.3.7-r1 (18 Apr 2012)
+
+  18 Apr 2012; Alexey Shvetsov <alexxy@gentoo.org> +libibumad-1.3.7-r1.ebuild,
+  -libibumad-1.3.7.ebuild:
+  [sys-infiniband/libibumad] Version bump to OFED 1.5.4.1
+
+  02 Jul 2011; Alexey Shvetsov <alexxy@gentoo.org> libibumad-1.3.7.ebuild:
+  Add ~amd64-linux keywrod
+
+*libibumad-1.3.7 (30 Jun 2011)
+
+  30 Jun 2011; Alexey Shvetsov <alexxy@gentoo.org> +libibumad-1.3.7.ebuild,
+  +metadata.xml:
+  Initial import to tree

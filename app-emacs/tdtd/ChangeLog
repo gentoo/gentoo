@@ -1,0 +1,51 @@
+# ChangeLog for app-emacs/tdtd
+# Copyright 2000-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/tdtd/ChangeLog,v 1.15 2009/03/20 22:49:40 tcunha Exp $
+
+  20 Mar 2009; Tiago Cunha <tcunha@gentoo.org> tdtd-0.7.1-r1.ebuild:
+  stable sparc
+
+  27 Aug 2008; Ulrich Mueller <ulm@gentoo.org> tdtd-0.7.1-r1.ebuild:
+  Use eclass default instead of elisp-comp, bug 235442.
+
+  16 Oct 2007; Ulrich Mueller <ulm@gentoo.org> tdtd-0.7.1-r1.ebuild:
+  amd64 stable, bug #195512.
+
+  16 Oct 2007; Ulrich Mueller <ulm@gentoo.org> files/50tdtd-gentoo.el,
+  tdtd-0.7.1-r1.ebuild:
+  Add load-path. Update HOMEPAGE and SRC_URI variables. Add empty RDEPEND.
+
+  03 Jul 2007; Christian Faulhammer <opfer@gentoo.org> tdtd-0.7.1-r1.ebuild:
+  removed src_install(); added die comment
+
+  20 Feb 2007; Christian Faulhammer <opfer@gentoo.org> -tdtd-0.7.1.ebuild:
+  clean up
+
+  18 Feb 2007; nixnut <nixnut@gentoo.org> tdtd-0.7.1-r1.ebuild:
+  Stable on ppc wrt bug 167074
+
+  15 Feb 2007; Christian Faulhammer <opfer@gentoo.org> tdtd-0.7.1-r1.ebuild:
+  stable x86; bug 167074
+
+  15 Feb 2007; Christian Faulhammer <opfer@gentoo.org> tdtd-0.7.1-r1.ebuild:
+  remove dependency on virtual/emacs; add a pair of quotes
+
+*tdtd-0.7.1-r1 (17 May 2006)
+
+  17 May 2006; Matthew Kennedy <mkennedy@gentoo.org> +tdtd-0.7.1-r1.ebuild:
+  Simplify Emacs Lisp compilation; Resolves Bug #94084; Add ~sparc and ~amd64
+  keywords.
+
+  10 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> tdtd-0.7.1.ebuild:
+  Marked as stable.
+
+  14 Mar 2004; David Holm <dholm@gentoo.org> tdtd-0.7.1.ebuild:
+  Added to ~ppc.
+
+*tdtd-0.7.1 (08 Oct 2003)
+
+  08 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> tdtd-0.7.1.ebuild,
+  files/50tdtd-gentoo.el:
+  Initial import.  Ebuild submitted by Matthieu Sozeau <mattam@altern.org>
+  This closes Bug #30396
+

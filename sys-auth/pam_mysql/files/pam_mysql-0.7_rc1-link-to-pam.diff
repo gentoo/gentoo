@@ -1,0 +1,9 @@
+--- pam_mysql-0.7RC1/Makefile.am	2005-09-20 07:43:44.000000000 +0200
++++ pam_mysql-0.7RC1-1/Makefile.am	2011-09-13 09:21:53.198200066 +0200
+@@ -3,5 +3,6 @@
+ noinst_FILES=pam_mysql.la pam_mysql.a
+ pam_mysql_la_SOURCES=pam_mysql.c
+ pam_mysql_la_LDFLAGS=-module -avoid-version
++pam_mysql_la_LIBADD=-lpam
+ INCLUDES=@INCLUDES@
+ EXTRA_DIST=COPYING NEWS README CREDITS ChangeLog INSTALL pam_mysql.spec.in install-sh missing mkinstalldirs pkg.m4 pam_mysql.spec

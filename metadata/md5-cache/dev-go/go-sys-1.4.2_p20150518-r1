@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=>=dev-lang/go-1.4
+DESCRIPTION=Go packages for low-level interaction with the operating system
+EAPI=5
+HOMEPAGE=https://godoc.org/golang.org/x/sys
+KEYWORDS=~amd64
+LICENSE=BSD
+SLOT=0
+SRC_URI=https://github.com/golang/sys/archive/58e109635f5d754f4b3a8a0172db65a52fcab866.tar.gz -> go-sys-1.4.2_p20150518.tar.gz
+_md5_=12ae6315667f2d229f5fb05bd7ebfba5

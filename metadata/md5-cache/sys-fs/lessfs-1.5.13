@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install postinst
+DEPEND=berkdb? ( sys-libs/db ) >=dev-db/tokyocabinet-1.4.42 app-crypt/mhash >=sys-fs/fuse-2.8.0 crypt? ( dev-libs/openssl ) lzo? ( dev-libs/lzo )
+DESCRIPTION=A high performance inline data deduplicating filesystem
+EAPI=5
+HOMEPAGE=http://www.lessfs.com
+IUSE=berkdb crypt debug filelog memtrace lzo
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+SLOT=0
+SRC_URI=mirror://sourceforge/lessfs/lessfs/lessfs-1.5.13/lessfs-1.5.13.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	readme.gentoo	106edea5533517715013de909a333abd	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=80b5ef706d059ae81082e25f9078d752

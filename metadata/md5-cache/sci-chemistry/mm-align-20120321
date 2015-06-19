@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) virtual/fortran
+DESCRIPTION=Protein Complex Structural Alignment
+EAPI=4
+HOMEPAGE=http://zhanglab.ccmb.med.umich.edu/MM-align/
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=tm-align
+RDEPEND=virtual/fortran
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~jlec/distfiles/MM-align-20120321.tar.xz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	fortran-2	db8710b355fc5598015c4bc3aad3bdb0	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=a09f5834e0149b5cc1cf14b0fee17986

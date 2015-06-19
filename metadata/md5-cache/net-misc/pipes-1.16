@@ -1,0 +1,9 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=>=sys-apps/sed-4
+DESCRIPTION=Very versatile TCP pipes
+HOMEPAGE=http://bisqwit.iki.fi/source/pipes.html
+KEYWORDS=x86 s390 ~ppc
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://bisqwit.iki.fi/src/arch/pipes-1.16.tar.bz2
+_md5_=ba73d6929da6f14598e53835a91c4061

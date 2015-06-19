@@ -1,0 +1,35 @@
+# ChangeLog for media-sound/baudline
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/baudline/ChangeLog,v 1.8 2015/03/10 16:07:28 xmw Exp $
+
+  10 Mar 2015; Michael Weber <xmw@gentoo.org> baudline-1.08-r1.ebuild:
+  Drop RESTRICT=binchecks (bug 542214) and fix .desktop file errors
+
+  15 Nov 2014; Rick Farina <zerochaos@gentoo.org> baudline-1.08-r1.ebuild:
+  adjust restrictions per discussion with ulm and baudline license
+
+  04 Dec 2012; Michael Weber <xmw@gentoo.org> baudline-1.08-r1.ebuild:
+  Add baudline license (thanks ulm, bug 445942)
+
+  20 Jul 2012; Michael Weber <xmw@gentoo.org> -baudline-1.08.ebuild,
+  baudline-1.08-r1.ebuild:
+  Transfer stable keywords (old stable was broken), drop old.
+
+*baudline-1.08-r1 (20 Jul 2012)
+
+  20 Jul 2012; Michael Weber <xmw@gentoo.org> +baudline-1.08-r1.ebuild:
+  Revbump to add missing font (thanks Eric F. GARIOUD, bug 426654)
+
+  07 May 2012; Michael Weber <xmw@gentoo.org> baudline-1.08.ebuild:
+  add ~x86 keyword
+
+  31 Dec 2010; Markos Chandras <hwoarang@gentoo.org> baudline-1.08.ebuild:
+  Stable on amd64 wrt bug #350005
+
+*baudline-1.08 (05 Oct 2010)
+
+  05 Oct 2010; Michael Weber <xmw@gentoo.org> +baudline-1.08.ebuild,
+  +metadata.xml:
+  Initial import, fixing bug 202845. Thanks to Ilya Kashirin
+  <seclorum@seclorum.ru>, Pham Ngoc Hai <pngochai@yahoo.com> and Denis
+  Pesotsky <obey@obey.su> for their ebuilds and testing on this bug.

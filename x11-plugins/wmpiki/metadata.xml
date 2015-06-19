@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>desktop-dock</herd>
+<longdescription>
+Wmpiki is a dockapp which checks and displays small leds 
+for indicate hosts activity (up to eight hosts). The configuration 
+file is ~/.clay/wmpiki, so use text editor to change settings.
+The method to determine hosts is very primitive and auwful, but it works ;-)
+('ping output + grep' - if you can do it better please do).
+</longdescription>
+</pkgmetadata>

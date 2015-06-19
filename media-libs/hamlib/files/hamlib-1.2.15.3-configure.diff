@@ -1,0 +1,12 @@
+# Use CXXFLAGS to built c++ components 
+--- configure.ac.old	2013-01-22 09:20:31.000000000 +0100
++++ configure.ac	2013-01-22 09:20:43.000000000 +0100
+@@ -87,7 +87,7 @@
+ ACX_PTHREAD
+ if test x"$acx_pthread_ok" = xyes; then
+ 	CFLAGS="${CFLAGS} ${PTHREAD_CFLAGS}"
+-	CXXFLAGS="${CFLAGS} ${PTHREAD_CFLAGS}"
++	CXXFLAGS="${CXXFLAGS} ${PTHREAD_CFLAGS}"
+ fi
+ 
+ AC_SYS_POSIX_TERMIOS()

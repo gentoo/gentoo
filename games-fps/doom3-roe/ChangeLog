@@ -1,0 +1,52 @@
+# ChangeLog for games-fps/doom3-roe
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/doom3-roe/ChangeLog,v 1.13 2012/01/16 19:13:03 ulm Exp $
+
+  16 Jan 2012; Ulrich Müller <ulm@gentoo.org> doom3-roe-1.ebuild:
+  Migrate to cdrom.eclass, bug 398809.
+
+  14 Dec 2011; Mike Frysinger <vapier@gentoo.org> doom3-roe-1.ebuild:
+  The games.eclass has dropped GAMES_CHECK_LICENSE support (since portage now
+  has ACCEPT_LICENSE), so drop it here too.
+
+  04 Aug 2011; Michael Sterrett <mr_bones_@gentoo.org> doom3-roe-1.ebuild:
+  Add CDROM_ROOT quoting with patch from Jared (bug #371483)
+
+  26 Sep 2008; Zac Medico <zmedico@gentoo.org> doom3-roe-1.ebuild:
+  Set PROPERTIES=interactive since src_unpack() calls cdrom_get_cds() and
+  also GAMES_CHECK_LICENSE=yes is set.
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org> doom3-roe-1.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+  12 Mar 2007; Marius Mauch <genone@gentoo.org> doom3-roe-1.ebuild:
+  Replacing einfo with elog
+
+  24 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org> doom3-roe-1.ebuild:
+  Moved cdrom_get_cds to src_unpack since binary packages don't require the
+  original media to install.
+
+  05 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org> doom3-roe-1.ebuild:
+  Stable on amd64/x86.
+
+  22 May 2006; Chris Gianelloni <wolf31o2@gentoo.org> doom3-roe-1.ebuild:
+  Added patch from Paul Bredbury <brebs@sent.com> and closing bug #134000.
+
+  31 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org> doom3-roe-1.ebuild:
+  Changed nostrip to strip.
+
+  24 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org> doom3-roe-1.ebuild:
+  Added wrapper and desktop entry. Blame Paul Bredbury <brebs@sent.com>.
+  Closing bug #127473.
+
+  23 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org> doom3-roe-1.ebuild:
+  Added specific version check on games-fps/doom3 so we don't hit
+  collision-protect.
+
+*doom3-roe-1 (23 Mar 2006)
+
+  23 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org> +metadata.xml,
+  +doom3-roe-1.ebuild:
+  Initial import. Ebuild by Paul Bredbury <brebs@sent.com>. Closing bug
+  #127244.
+

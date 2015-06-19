@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cd /opt/foldingathome
+/opt/foldingathome/FAHClient --configure
+/bin/chown -R foldingathome:nogroup /opt/foldingathome

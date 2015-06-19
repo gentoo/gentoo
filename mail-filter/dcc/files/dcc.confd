@@ -1,0 +1,14 @@
+# Config file for /etc/init.d/dcc
+
+# Start server or DCC daemon
+START_DCC_DCCD="yes"
+
+# Start DCC greylisting
+START_DCC_GREY="yes"
+
+# Start milter interface
+START_DCC_DCCM="yes"
+
+# Start general Perl and MTA interface
+# and Postfix before-queue filter
+START_DCC_DCCIF="yes"

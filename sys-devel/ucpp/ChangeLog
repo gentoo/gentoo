@@ -1,0 +1,36 @@
+# ChangeLog for sys-devel/ucpp
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/ucpp/ChangeLog,v 1.7 2013/01/29 14:58:18 scarabeus Exp $
+
+  29 Jan 2013; Tomáš Chvátal <scarabeus@gentoo.org> ucpp-1.3.4.ebuild:
+  Stable on amd64 x86 and ppc.
+
+  12 Jan 2013; Sergey Popov <pinkbyte@gentoo.org> ucpp-1.3.4.ebuild:
+  Keyword ~arm, wrt bug #451464
+
+*ucpp-1.3.4 (19 Dec 2012)
+
+  19 Dec 2012; Tomáš Chvátal <scarabeus@gentoo.org> +ucpp-1.3.4.ebuild,
+  -files/tune.h.patch, -ucpp-1.3.3.ebuild, -ucpp-1.3.ebuild:
+  Version bump, drop older.
+
+*ucpp-1.3.3 (21 Nov 2012)
+
+  21 Nov 2012; Tomáš Chvátal <scarabeus@gentoo.org> +ucpp-1.3.3.ebuild,
+  ucpp-1.3.ebuild, ucpp-9999.ebuild:
+  Version bump to release version i tagged.
+
+*ucpp-9999 (24 Sep 2012)
+
+  24 Sep 2012; Tomáš Chvátal <scarabeus@gentoo.org> +ucpp-9999.ebuild,
+  metadata.xml:
+  Add ucpp live ebuild as this will be required by lo 3.7.
+
+  02 Aug 2011; Alexey Shvetsov <alexxy@gentoo.org> ucpp-1.3.ebuild:
+  Add ~amd64-linux keyword
+
+*ucpp-1.3 (28 Jul 2011)
+
+  28 Jul 2011; Alexey Shvetsov <alexxy@gentoo.org> +ucpp-1.3.ebuild,
+  +files/tune.h.patch, +metadata.xml:
+  Initial import to tree

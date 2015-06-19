@@ -1,0 +1,263 @@
+# ChangeLog for app-text/libpaper
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/libpaper/ChangeLog,v 1.70 2014/06/09 23:31:01 vapier Exp $
+
+  09 Jun 2014; Mike Frysinger <vapier@gentoo.org> libpaper-1.1.24-r2.ebuild:
+  Mark arm64/m68k/s390/sh stable.
+
+  20 Mar 2014; Manuel Rüger <mrueg@gentoo.org> -libpaper-1.1.24-r1.ebuild:
+  Cleanup old.
+
+  19 Mar 2014; Agostino Sarubbo <ago@gentoo.org> libpaper-1.1.24-r2.ebuild:
+  Stable for alpha, wrt bug #491946
+
+  12 Mar 2014; Agostino Sarubbo <ago@gentoo.org> libpaper-1.1.24-r2.ebuild:
+  Stable for sparc, wrt bug #491946
+
+  06 Mar 2014; Agostino Sarubbo <ago@gentoo.org> libpaper-1.1.24-r2.ebuild:
+  Stable for ppc64, wrt bug #491946
+
+  23 Feb 2014; Agostino Sarubbo <ago@gentoo.org> libpaper-1.1.24-r2.ebuild:
+  Stable for ppc, wrt bug #491946
+
+  22 Feb 2014; Markus Meier <maekke@gentoo.org> libpaper-1.1.24-r2.ebuild:
+  arm stable, bug #491946
+
+  22 Feb 2014; Agostino Sarubbo <ago@gentoo.org> libpaper-1.1.24-r2.ebuild:
+  Stable for x86, wrt bug #491946
+
+  21 Feb 2014; Chema Alonso <nimiux@gentoo.org> libpaper-1.1.24-r2.ebuild:
+  Stable for amd64 wrt bug #491946
+
+  20 Feb 2014; Akinori Hattori <hattya@gentoo.org> libpaper-1.1.24-r2.ebuild:
+  ia64 stable wrt bug #491946
+
+  18 Feb 2014; Jeroen Roovers <jer@gentoo.org> libpaper-1.1.24-r2.ebuild:
+  Stable for HPPA (bug #491946).
+
+  13 Oct 2013; Michał Górny <mgorny@gentoo.org> libpaper-1.1.24-r2.ebuild:
+  Explicitly call einstalldocs in multilib_src_install_all() to accomodate bug
+  #483304.
+
+*libpaper-1.1.24-r2 (10 Aug 2013)
+
+  10 Aug 2013; Alexis Ballier <aballier@gentoo.org> +libpaper-1.1.24-r2.ebuild:
+  Convert to multilib and stack it for baselib r11
+
+  03 May 2013; Patrick Lauer <patrick@gentoo.org> libpaper-1.1.24-r1.ebuild:
+  Automake 1.13 fix
+
+  24 Mar 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  libpaper-1.1.24-r1.ebuild:
+  Fix elog message, bug 421821
+
+  24 Mar 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  -files/libpaper-1.1.14.8-malloc.patch, -libpaper-1.1.23.ebuild:
+  Remove old
+
+  24 Mar 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  libpaper-1.1.24-r1.ebuild:
+  show elog only on first install, bug 440440
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> libpaper-1.1.24-r1.ebuild:
+  keyword ~amd64-fbsd
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org> libpaper-1.1.24-r1.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #401085
+
+  03 Mar 2012; Brent Baude <ranger@gentoo.org> libpaper-1.1.24-r1.ebuild:
+  Marking libpaper-1.1.24-r1 ppc64 for bug 401085
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  libpaper-1.1.24-r1.ebuild:
+  x86 stable wrt bug #401085
+
+  13 Feb 2012; Markus Meier <maekke@gentoo.org> libpaper-1.1.24-r1.ebuild:
+  arm stable, bug #401085
+
+  08 Feb 2012; Jeroen Roovers <jer@gentoo.org> libpaper-1.1.24-r1.ebuild:
+  Stable for HPPA (bug #401085).
+
+  06 Feb 2012; Brent Baude <ranger@gentoo.org> libpaper-1.1.24-r1.ebuild:
+  Marking libpaper-1.1.24-r1 ppc for bug 401085
+
+  28 Jan 2012; Agostino Sarubbo <ago@gentoo.org> libpaper-1.1.24-r1.ebuild:
+  Stable for amd64, wrt bug #401085
+
+*libpaper-1.1.24-r1 (09 Sep 2011)
+
+  09 Sep 2011; Tomáš Chvátal <scarabeus@gentoo.org> -libpaper-1.1.24.ebuild,
+  +libpaper-1.1.24-r1.ebuild:
+  Revision bump in order to remove all static libraries and libtool archives.
+
+  28 Aug 2011; Fabian Groffen <grobian@gentoo.org> libpaper-1.1.24.ebuild:
+  Marked ~x64-macos
+
+  03 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  libpaper-1.1.24.ebuild:
+  EAPI bump; regenerate autotools files because of locale brokenness, bug
+  338615
+
+  12 Apr 2011; Jonathan Callen <abcd@gentoo.org> libpaper-1.1.24.ebuild:
+  Add prefix support, bump EAPI to 3, add prefix keywords
+
+*libpaper-1.1.24 (31 Jul 2010)
+
+  31 Jul 2010; Timo Gurr <tgurr@gentoo.org> -libpaper-1.1.21.ebuild,
+  -libpaper-1.1.23_p2.ebuild, +libpaper-1.1.24.ebuild:
+  Version bump, remove old.
+
+  08 Mar 2010; Sebastian Pipping <sping@gentoo.org> libpaper-1.1.23.ebuild:
+  Fix SRC_URI (bug #292706)
+
+*libpaper-1.1.23_p2 (08 Mar 2010)
+
+  08 Mar 2010; Sebastian Pipping <sping@gentoo.org>
+  +libpaper-1.1.23_p2.ebuild:
+  Bump to 1.1.23+nmu2
+  Drop a patch that got included
+  Move to EAPI 2
+  Minor fixes
+
+  01 Mar 2008; Christoph Mende <angelos@gentoo.org> libpaper-1.1.23.ebuild:
+  Stable on amd64, bug #209048
+
+  21 Feb 2008; Raúl Porcel <armin76@gentoo.org> libpaper-1.1.23.ebuild:
+  alpha/ia64 stable wrt #209048
+
+  08 Feb 2008; Markus Meier <maekke@gentoo.org> libpaper-1.1.23.ebuild:
+  x86 stable, bug #209048
+
+  08 Feb 2008; Jeroen Roovers <jer@gentoo.org> libpaper-1.1.23.ebuild:
+  Stable for HPPA (bug #209048).
+
+  08 Feb 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  libpaper-1.1.23.ebuild:
+  ppc stable, bug #209048
+
+  07 Feb 2008; Ferris McCormick <fmccor@gentoo.org> libpaper-1.1.23.ebuild:
+  Sparc stable --- Bug #209048 --- works fine and is useful too.
+
+  07 Feb 2008; Brent Baude <ranger@gentoo.org> libpaper-1.1.23.ebuild:
+  Marking libpaper-1.1.23 ppc64 for bug 209048
+
+*libpaper-1.1.23 (21 Dec 2007)
+
+  21 Dec 2007; Timo Gurr <tgurr@gentoo.org> +libpaper-1.1.23.ebuild:
+  Add libpaper-1.1.23.ebuild, fixes bug #200439.
+
+  20 Nov 2007; Joshua Kinard <kumba@gentoo.org> libpaper-1.1.21.ebuild:
+  Stable on mips.
+
+  22 Jul 2007; Samuli Suominen <drac@gentoo.org> -libpaper-1.1.20.ebuild,
+  libpaper-1.1.21.ebuild:
+  Change postinstallation message for bug 186179 and drop old version.
+
+  21 Jul 2007; Raúl Porcel <armin76@gentoo.org> libpaper-1.1.21.ebuild:
+  alpha stable wrt #182363, thanks to Brian Evans and Tobias Klausmann for
+  testing
+
+  12 Jul 2007; Roy Marples <uberlord@gentoo.org> libpaper-1.1.21.ebuild:
+  Keyworded ~sparc-fbsd.
+
+  26 Jun 2007; Lars Weiler <pylon@gentoo.org> libpaper-1.1.21.ebuild:
+  Stable on ppc; bug #182363.
+
+  20 Jun 2007; Jeroen Roovers <jer@gentoo.org> libpaper-1.1.21.ebuild:
+  Stable for HPPA (bug #182363).
+
+  19 Jun 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  libpaper-1.1.21.ebuild:
+  Stable on sparc wrt #182363
+
+  18 Jun 2007; Raúl Porcel <armin76@gentoo.org> libpaper-1.1.21.ebuild:
+  ia64/x86 stable and add ~alpha wrt #182363
+
+  17 Jun 2007; Christoph Mende <angelos@gentoo.org> libpaper-1.1.21.ebuild:
+  Stable on amd64 wrt bug 182363
+
+  17 Jun 2007; Markus Rothe <corsair@gentoo.org> libpaper-1.1.21.ebuild:
+  Stable on ppc64; bug #182363
+
+  29 Mar 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  libpaper-1.1.20.ebuild:
+  Stable on alpha wrt bug #170881.
+
+  28 Jan 2007; Marius Mauch <genone@gentoo.org> libpaper-1.1.20.ebuild,
+  libpaper-1.1.21.ebuild:
+  Replacing einfo with elog
+
+  03 Dec 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  libpaper-1.1.20.ebuild:
+  ppc stable, bug #155382
+
+  01 Dec 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  libpaper-1.1.20.ebuild:
+  Stable on hppa wrt #155382
+
+  30 Nov 2006; Markus Rothe <corsair@gentoo.org> libpaper-1.1.20.ebuild:
+  Stable on ppc64; bug #155382
+
+  27 Nov 2006; Patrick McLean <chutzpah@gentoo.org> libpaper-1.1.20.ebuild:
+  Stable on amd64, dep for cups-1.2 (bug #155382).
+
+  26 Nov 2006; Stefan Schweizer <genstef@gentoo.org>
+  -libpaper-1.1.14.8.ebuild, -libpaper-1.1.19.ebuild,
+  libpaper-1.1.21.ebuild:
+  Does removing all keywords make sense? No. Readd all of them and drop some
+  old ebuilds
+
+*libpaper-1.1.21 (26 Nov 2006)
+
+  26 Nov 2006; Mike Frysinger <vapier@gentoo.org> +libpaper-1.1.21.ebuild:
+  Version bump.
+
+  22 Nov 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  libpaper-1.1.20.ebuild:
+  Stable on sparc
+
+  21 Nov 2006; Christian Faulhammer <opfer@gentoo.org>
+  libpaper-1.1.20.ebuild:
+  stable x86, bug #155382
+
+  05 Sep 2006; Joshua Kinard <kumba@gentoo.org> libpaper-1.1.20.ebuild:
+  Added ~mips to KEYWORDS.
+
+*libpaper-1.1.20 (01 Sep 2006)
+
+  01 Sep 2006; Patrick McLean <chutzpah@gentoo.org> +libpaper-1.1.20.ebuild:
+  Version bump (cleared by genstef).
+
+*libpaper-1.1.19 (18 Aug 2006)
+
+  18 Aug 2006; Stefan Schweizer <genstef@gentoo.org>
+  +libpaper-1.1.19.ebuild:
+  version bump
+
+  27 Jun 2006; Guy Martin <gmsoft@gentoo.org> libpaper-1.1.14.8.ebuild:
+  Added ~hppa to KEYWORDS.
+
+  16 Jun 2006; Jason Wever <weeve@gentoo.org> libpaper-1.1.14.8.ebuild:
+  Added ~sparc keyword wrt bug #136902.
+
+  16 Jun 2006; Markus Rothe <corsair@gentoo.org> libpaper-1.1.14.8.ebuild:
+  Added ~ppc64; bug #136902
+
+  09 May 2006; Emanuele Giaquinta <exg@gentoo.org> libpaper-1.1.14.8.ebuild:
+  Add ~ppc
+
+  08 May 2006; Stefan Schweizer <genstef@gentoo.org>
+  libpaper-1.1.14.8.ebuild:
+  Add default /etc/papersize + minimal doc, no use-flag since it is easy to
+  change
+
+  08 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/libpaper-1.1.14.8-malloc.patch, libpaper-1.1.14.8.ebuild:
+  Add ~amd64 and ~x86-fbsd keywords, add patch to build on FreeBSd, add
+  elibtoolize.
+
+*libpaper-1.1.14.8 (08 May 2006)
+
+  08 May 2006; Stefan Schweizer <genstef@gentoo.org> +metadata.xml,
+  +libpaper-1.1.14.8.ebuild:
+  New ebuild, could help to fix bug 119182

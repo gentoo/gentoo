@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=Exif Jpeg camera setting parser and thumbnail remover
+EAPI=5
+HOMEPAGE=http://www.sentex.net/~mwandel/jhead
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=public-domain
+SLOT=0
+SRC_URI=http://www.sentex.net/~mwandel/jhead/jhead-3.00.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=cc51634edf5d80c477b7c8b5791ea3b1

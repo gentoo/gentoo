@@ -1,0 +1,89 @@
+# ChangeLog for media-sound/mserv
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/mserv/ChangeLog,v 1.26 2012/06/09 23:11:58 zmedico Exp $
+
+  09 Jun 2012; Zac Medico <zmedico@gentoo.org> mserv-0.35-r1.ebuild:
+  inherit user for enewgroup and enewuser
+
+  02 Nov 2011; Mike Frysinger <vapier@gentoo.org> mserv-0.35-r1.ebuild:
+  Fold extra -G argument to enewuser into existing <groups> argument to
+  enewuser as enewuser takes care of splitting into -g/-G for us.
+
+  02 Feb 2008; Benedikt Böhm <hollow@gentoo.org> mserv-0.35-r1.ebuild:
+  use depend.apache eclass wrt #208033
+
+  29 Jul 2007; Christian Heim <phreak@gentoo.org> mserv-0.35-r1.ebuild:
+  Fixing the DEPEND/RDEPEND for the move of net-www/apache to
+  www-servers/apache (#78622).
+
+  15 Jun 2007; Alexis Ballier <aballier@gentoo.org> -mserv-0.35.ebuild:
+  remove version using obsolete webapp-apache eclass, bug #182129
+
+  10 Feb 2007; Steve Dibb <beandog@gentoo.org> mserv-0.35-r1.ebuild:
+  amd64 stable, bug 134758
+
+  09 Jan 2007; Christian Faulhammer <opfer@gentoo.org> mserv-0.35-r1.ebuild:
+  stable x86, bug #134758
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> mserv-0.35.ebuild,
+  mserv-0.35-r1.ebuild:
+  Convert to use elog.
+
+  04 Jan 2007; Ryan Hill <dirtyepic@gentoo.org> mserv-0.35-r1.ebuild:
+  Fix ebuild permission and path problems for bug #134758.
+
+  30 May 2006; Jason Wever <weeve@gentoo.org> mserv-0.35-r1.ebuild:
+  Stable on SPARC wrt bug #134758.
+
+  08 May 2006; <tcort@gentoo.org> mserv-0.35-r1.ebuild:
+  Removed COPYING from dodoc.
+
+  08 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> mserv-0.35-r1.ebuild:
+  Fix last version to use vorbis useflag instead of oggvorbis.
+
+  07 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> mserv-0.35.ebuild,
+  mserv-0.35-r1.ebuild:
+  Drop virtual/libc dependency. Respect CC and LDFLAGS.
+
+*mserv-0.35-r1 (10 Jan 2006)
+
+  10 Jan 2006; Renat Lumpau <rl03@gentoo.org> +mserv-0.35-r1.ebuild:
+  Updated for webapp.eclass wrt bug #58378.
+
+  24 Aug 2005; Diego Pettenò <flameeyes@gentoo.org> mserv-0.35.ebuild:
+  Use newconfd/newinitd.
+
+  23 Aug 2005; Diego Pettenò <flameeyes@gentoo.org> mserv-0.35.ebuild:
+  Use -1 instead of /bin/false on enewuser call. Removed || die where not needed.
+
+  25 Jul 2005; David Holm <dholm@gentoo.org> mserv-0.35.ebuild:
+  Added to ~ppc.
+
+  28 May 2005; Jan Brinkmann <luckyduck@gentoo.org> mserv-0.35.ebuild:
+  Dont make use of the deprecated oggvorbis useflag any longer, see #94254.
+
+  15 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> mserv-0.35.ebuild:
+  Stable amd64, sparc.
+
+  19 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> mserv-0.35.ebuild:
+  Added to ~sparc ~amd64
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> mserv-0.35.ebuild:
+  virtual/glibc -> virtual/libc
+
+  14 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> mserv-0.35.ebuild:
+  Stable x86.  Removed apache2 from IUSE.
+
+  22 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> mserv-0.35.ebuild:
+  Using keepdir to fix bug #45361.
+
+  11 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> mserv-0.35.ebuild:
+  ebuild cleanup.
+
+*mserv-0.35 (10 Mar 2004)
+
+  10 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> metadata.xml,
+  mserv-0.35.ebuild:
+  mserv is a jukebox server. Ebuild submitted by Stephen Martin
+  <steve@deadlylaser.com> in bug #27902.
+

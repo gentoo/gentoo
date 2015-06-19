@@ -1,0 +1,27 @@
+--- mednafen.orig/src/compress/Makefile.am.inc
++++ mednafen/src/compress/Makefile.am.inc
+@@ -1 +1 @@
+-mednafen_SOURCES	+=	compress/minilzo.c compress/ioapi.c compress/unzip.c compress/GZFileStream.cpp compress/ZLInflateFilter.cpp
++mednafen_SOURCES	+=	compress/minilzo.c compress/ioapi.c compress/GZFileStream.cpp compress/ZLInflateFilter.cpp
+--- mednafen.orig/src/file.cpp
++++ mednafen/src/file.cpp
+@@ -29,7 +29,7 @@
+ #include <errno.h>
+ #include <trio/trio.h>
+ 
+-#include "compress/unzip.h"
++#include <minizip/unzip.h>
+ 
+ #include "file.h"
+ #include "general.h"
+--- mednafen.orig/src/Makefile.am
++++ mednafen/src/Makefile.am
+@@ -6,7 +6,7 @@
+ bin_PROGRAMS	=	mednafen
+ 
+ mednafen_SOURCES 	= 	debug.cpp error.cpp mempatcher.cpp settings.cpp endian.cpp mednafen.cpp git.cpp file.cpp general.cpp memory.cpp netplay.cpp state.cpp state_rewind.cpp movie.cpp player.cpp PSFLoader.cpp tests.cpp qtrecord.cpp Stream.cpp MemoryStream.cpp FileStream.cpp IPSPatcher.cpp
+-mednafen_LDADD 		= 	trio/libtrio.a
++mednafen_LDADD 		= 	trio/libtrio.a -lminizip
+ mednafen_DEPENDENCIES	=	trio/libtrio.a
+ 
+ if HAVE_SDL

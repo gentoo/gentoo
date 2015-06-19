@@ -1,0 +1,15 @@
+--- SFML-2.2/CMakeLists.txt
++++ SFML-2.2/CMakeLists.txt
+@@ -239,12 +239,6 @@
+             COMPONENT devel)
+ endif()
+ 
+-install(FILES license.txt DESTINATION ${INSTALL_MISC_DIR})
+-install(FILES readme.txt DESTINATION ${INSTALL_MISC_DIR})
+-if(NOT SFML_OS_ANDROID)
+-    install(FILES cmake/Modules/FindSFML.cmake DESTINATION ${INSTALL_MISC_DIR}/cmake/Modules)
+-endif()
+-
+ # install 3rd-party libraries and tools
+ if(SFML_OS_WINDOWS)
+ 

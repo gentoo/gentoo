@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>lxnay@gentoo.org</email>
+		<name>Fabio Erculiani</name>
+	</maintainer>
+	<longdescription lang="en">
+		Molecule is a build tool that can build, rebuild or extend Sabayon Linux or
+		Gentoo Linux OS releases OpenVZ templates and stage4 tarballs.
+		It doesn't contain any specific package manager bit and can work with
+		your favourite one. The philosophy of Molecule is simple: ease of use and
+		modularity.
+		Just like Catalyst, Molecule uses its own .spec file format and learning
+		how to write one is just about reading examples provided at
+		http://git.sabayon.org/molecules.git/.
+		You can tweak your ISO image or create one off your chroot (stage4) in no
+		time. Molecule uses a plugin-based system to implement support for new
+		execution patterns (like ISO to ISO, ISO to Tar, Chroot to ISO, etc).
+		Molecule is born inside Sabayon and is used in its release cycle for both
+		daily(live) and versioned ISO images.
+		Molecule developers are looking for help for writing user docs and HOWTOs.
+	</longdescription>
+</pkgmetadata>

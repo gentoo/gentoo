@@ -1,0 +1,67 @@
+# ChangeLog for app-cdr/bin2iso
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/bin2iso/ChangeLog,v 1.22 2010/01/01 19:53:44 fauli Exp $
+
+  01 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  bin2iso-19b-r2.ebuild:
+  Transfer Prefix keywords
+
+  25 Jan 2008; Fabian Groffen <grobian@gentoo.org> bin2iso-19b-r2.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  12 Sep 2005; Fabian Groffen <grobian@gentoo.org> bin2iso-19b-r2.ebuild:
+  Marking ~ppc-macos (Bug #105620)
+
+*bin2iso-19b-r2 (02 May 2005)
+
+  02 May 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/bin2iso-19b-sanity-checks.patch, -bin2iso-19b-r1.ebuild,
+  +bin2iso-19b-r2.ebuild:
+  Fix segfaults due to lack of error checking #90540 by Tiago Freire.
+
+  03 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> bin2iso-19b-r1.ebuild:
+  Adding amd64 keyword, closing #46530.
+
+  23 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org> bin2iso-19b-r1.ebuild:
+  more error checking/messages; tidy
+
+  23 Jan 2004; <gustavoz@gentoo.org> bin2iso-19b-r1.ebuild:
+  stable on sparc
+
+  24 Jan 2004; Mike Frysinger <vapier@gentoo.org> :
+  Move those text files into a tarball #39227.
+
+  03 Oct 2003; Aron Griffis <agriffis@gentoo.org> bin2iso-19b-r1.ebuild:
+  Stable on alpha
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*bin2iso-19b-r1 (21 Oct 2002)
+
+  25 Apr 2003; Tavis Ormandy <taviso@gentoo.org> bin2iso-19b-r1.ebuild:
+  Marking ~alpha
+
+  28 Mar 2003; Pieter Van den Abeele <pvdabeel@gentoo.org> :
+
+  Updated ~ppc to ppc  keyword
+
+  21 Oct 2002; Arcady Genkin <agenkin@gentoo.org> :
+
+  Installing into /usr/bin instead of /usr/sbin.
+
+*bin2iso-19b (10 june 2002)
+
+  21 Sep 2002; Mike Frysinger <vapier@gentoo.org> :
+
+  Updated LICENSE variable (UNKNOWN is wrong, the package is public-domain)
+
+  14 Aug 2002; Pieter Van den Abeele <pvdabeel@gentoo.org> :
+
+  Added ppc keyword
+
+  10 Jun 2002 Danny <pj34@pacbell.net> bin2iso-19b.ebuild:
+
+  Initial package.

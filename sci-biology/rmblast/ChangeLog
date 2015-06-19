@@ -1,0 +1,28 @@
+# ChangeLog for sci-biology/rmblast
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/rmblast/ChangeLog,v 1.6 2015/06/16 08:38:38 jlec Exp $
+
+  16 Jun 2015; Justin Lecher <jlec@gentoo.org> -rmblast-1.2.ebuild,
+  rmblast-1.2-r1.ebuild:
+  Add missing dependency on cpio, bug #513420
+
+  11 Mar 2013; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Drop Andrey as maintainer so that bugs get assigned to sci-biology directly
+
+*rmblast-1.2-r1 (18 Feb 2013)
+
+  18 Feb 2013; Justin Lecher <jlec@gentoo.org> rmblast-1.2.ebuild,
+  +rmblast-1.2-r1.ebuild, +files/rmblast-1.2-gcc47.patch, metadata.xml:
+  Bug fixes: Build against any boost, #356315; build with gcc-4.7, #442266
+
+  31 Oct 2012; Diego E. Pettenò <flameeyes@gentoo.org> rmblast-1.2.ebuild:
+  QA: drop maximum boost version dep; if it fails to build, it has to be fixed.
+
+  02 May 2011; Justin Lecher <jlec@gentoo.org> rmblast-1.2.ebuild:
+  Removed redundant src_install
+
+*rmblast-1.2 (06 Nov 2010)
+
+  06 Nov 2010; Andrey Kislyuk <weaver@gentoo.org> +rmblast-1.2.ebuild,
+  +metadata.xml:
+  New package, dependency of sci-biology/repeatmasker. Ebuild written by me

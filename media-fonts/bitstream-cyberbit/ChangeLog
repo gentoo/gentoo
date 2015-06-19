@@ -1,0 +1,25 @@
+# ChangeLog for media-fonts/bitstream-cyberbit
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/bitstream-cyberbit/ChangeLog,v 1.5 2013/12/02 12:20:02 chithanh Exp $
+
+  02 Dec 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  bitstream-cyberbit-2.0.ebuild:
+  Fix download URI, bug #492982.
+
+  12 Jun 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  bitstream-cyberbit-2.0.ebuild:
+  Add dependency on app-arch/unzip, bug #371217.
+
+  18 May 2010; Markos Chandras <hwoarang@gentoo.org>
+  bitstream-cyberbit-2.0.ebuild:
+  Stable on amd64 wrt bug #309605
+
+  06 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  bitstream-cyberbit-2.0.ebuild:
+  x86 stable wrt bug #309605
+
+*bitstream-cyberbit-2.0 (13 Feb 2010)
+
+  13 Feb 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +bitstream-cyberbit-2.0.ebuild, +metadata.xml:
+  Initial import for bug #284684

@@ -1,0 +1,31 @@
+--- rkhunter.conf.old	2009-01-07 17:33:11.000000000 +0100
++++ rkhunter.conf	2009-01-07 17:36:58.000000000 +0100
+@@ -19,6 +19,7 @@
+ # describing the option will say if this is so.
+ #
+ 
++INSTALLDIR=/usr
+ 
+ #
+ # If this option is set to 1, it specifies that the mirrors file
+@@ -84,17 +85,17 @@ MAIL_CMD=mail -s "[rkhunter] Warnings fo
+ # important files will be written to this directory, so be
+ # sure that the directory permissions are tight.
+ #
+-#TMPDIR=/var/lib/rkhunter/tmp
++TMPDIR=/var/lib/rkhunter/tmp
+ 
+ #
+ # Specify the database directory to use.
+ #
+-#DBDIR=/var/lib/rkhunter/db
++DBDIR=/var/lib/rkhunter/db
+ 
+ #
+ # Specify the script directory to use.
+ #
+-#SCRIPTDIR=/usr/local/lib/rkhunter/scripts
++SCRIPTDIR=/usr/lib/rkhunter/scripts
+ 
+ #
+ # Specify the root directory to use.

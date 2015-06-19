@@ -1,0 +1,402 @@
+# ChangeLog for media-gfx/fotoxx
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/fotoxx/ChangeLog,v 1.69 2015/05/31 15:50:27 grozin Exp $
+
+*fotoxx-15.05 (31 May 2015)
+
+  31 May 2015; Andrey Grozin <grozin@gentoo.org> -fotoxx-14.12.ebuild,
+  -fotoxx-15.02.ebuild, +fotoxx-15.05.ebuild, -files/fotoxx-14.12.patch,
+  -files/fotoxx-15.02.patch, +files/fotoxx-15.05.patch:
+  Version bump
+
+*fotoxx-15.04.1 (16 Apr 2015)
+
+  16 Apr 2015; Andrey Grozin <grozin@gentoo.org> +fotoxx-15.04.1.ebuild,
+  +files/fotoxx-15.04.1.patch:
+  Version bump
+
+*fotoxx-15.02 (22 Feb 2015)
+
+  22 Feb 2015; Andrey Grozin <grozin@gentoo.org> -fotoxx-14.10.2.ebuild,
+  +fotoxx-15.02.ebuild, -files/fotoxx-14.10.2.patch, +files/fotoxx-15.02.patch:
+  Version bump
+
+*fotoxx-14.12 (20 Dec 2014)
+
+  20 Dec 2014; Andrey Grozin <grozin@gentoo.org> -fotoxx-14.08.ebuild,
+  +fotoxx-14.12.ebuild, -files/fotoxx-14.08.patch, +files/fotoxx-14.12.patch:
+  Version bump
+
+*fotoxx-14.10.2 (13 Oct 2014)
+
+  13 Oct 2014; Andrey Grozin <grozin@gentoo.org> -fotoxx-14.06.1.ebuild,
+  +fotoxx-14.10.2.ebuild, -files/fotoxx-14.06.1.patch,
+  +files/fotoxx-14.10.2.patch:
+  Version bump
+
+*fotoxx-14.08 (03 Aug 2014)
+
+  03 Aug 2014; Andrey Grozin <grozin@gentoo.org> -fotoxx-14.05.ebuild,
+  +fotoxx-14.08.ebuild, -files/fotoxx-14.05.patch, +files/fotoxx-14.08.patch:
+  Version bump
+
+*fotoxx-14.06.1 (11 Jun 2014)
+
+  11 Jun 2014; Andrey Grozin <grozin@gentoo.org> -fotoxx-14.04.ebuild,
+  +fotoxx-14.06.1.ebuild, -files/fotoxx-14.04.patch,
+  +files/fotoxx-14.06.1.patch:
+  Version bump
+
+*fotoxx-14.05 (05 May 2014)
+
+  05 May 2014; Andrey Grozin <grozin@gentoo.org> -fotoxx-14.02.2.ebuild,
+  +fotoxx-14.05.ebuild, -files/fotoxx-14.02.2.patch, +files/fotoxx-14.05.patch:
+  Version bump
+
+*fotoxx-14.04 (02 Apr 2014)
+
+  02 Apr 2014; Andrey Grozin <grozin@gentoo.org> -fotoxx-13.12.ebuild,
+  +fotoxx-14.04.ebuild, -files/fotoxx-13.12.patch, +files/fotoxx-14.04.patch:
+  Version bump
+
+*fotoxx-14.02.2 (21 Feb 2014)
+
+  21 Feb 2014; Andrey Grozin <grozin@gentoo.org> +fotoxx-14.02.2.ebuild,
+  +files/fotoxx-14.02.2.patch:
+  Version bump
+
+*fotoxx-13.12 (25 Dec 2013)
+
+  25 Dec 2013; Andrey Grozin <grozin@gentoo.org> -fotoxx-13.01.ebuild,
+  -fotoxx-13.09.2.ebuild, +fotoxx-13.12.ebuild, -files/fotoxx-13.01.patch,
+  -files/fotoxx-13.09.2.patch, +files/fotoxx-13.12.patch:
+  Version bump
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> fotoxx-13.11.1.ebuild:
+  Stable for x86, wrt bug #461180
+
+  22 Dec 2013; Pacho Ramos <pacho@gentoo.org> fotoxx-13.11.1.ebuild:
+  amd64 stable, bug #461180
+
+  12 Dec 2013; Justin Lecher <jlec@gentoo.org> fotoxx-13.01.ebuild,
+  fotoxx-13.09.2.ebuild, fotoxx-13.11.1.ebuild, metadata.xml:
+  Use newmenu from eutils.eclass
+
+*fotoxx-13.11.1 (12 Nov 2013)
+
+  12 Nov 2013; Andrey Grozin <grozin@gentoo.org> -fotoxx-13.08.1.ebuild,
+  +fotoxx-13.11.1.ebuild, -files/fotoxx-13.08.1.patch,
+  +files/fotoxx-13.11.1.patch:
+  Version bump, missing dependency added (closing #490018)
+
+*fotoxx-13.09.2 (12 Sep 2013)
+
+  12 Sep 2013; Andrey Grozin <grozin@gentoo.org> -fotoxx-13.04.ebuild,
+  -fotoxx-13.05.ebuild, -fotoxx-13.06.ebuild, +fotoxx-13.09.2.ebuild,
+  -files/fotoxx-13.04.patch, -files/fotoxx-13.05.patch,
+  -files/fotoxx-13.06.patch, +files/fotoxx-13.09.2.patch:
+  Version bump, cleaning old versions
+
+*fotoxx-13.08.1 (15 Aug 2013)
+
+  15 Aug 2013; Andrey Grozin <grozin@gentoo.org> +fotoxx-13.08.1.ebuild,
+  +files/fotoxx-13.08.1.patch:
+  Version bump
+
+*fotoxx-13.06 (05 Jun 2013)
+
+  05 Jun 2013; Andrey Grozin <grozin@gentoo.org> +fotoxx-13.06.ebuild,
+  +files/fotoxx-13.06.patch:
+  Version bump
+
+*fotoxx-13.05 (03 May 2013)
+
+  03 May 2013; Andrey Grozin <grozin@gentoo.org> -fotoxx-13.03.ebuild,
+  +fotoxx-13.05.ebuild, -files/fotoxx-13.03.patch, +files/fotoxx-13.05.patch:
+  Version bump
+
+*fotoxx-13.04 (03 Apr 2013)
+
+  03 Apr 2013; Andrey Grozin <grozin@gentoo.org> -fotoxx-13.02.ebuild,
+  -files/fotoxx-13.02.patch, +fotoxx-13.04.ebuild, +files/fotoxx-13.04.patch:
+  Version bump
+
+  22 Mar 2013; Andrey Grozin <grozin@gentoo.org> files/fotoxx-13.03.patch:
+  Fix linking with gold (bug #462286), thanks to Adrian.Bassett@hotmail.co.uk
+
+*fotoxx-13.03 (19 Mar 2013)
+
+  19 Mar 2013; Andrey Grozin <grozin@gentoo.org> -fotoxx-12.11.ebuild,
+  -files/fotoxx-12.11.patch, -fotoxx-12.12.ebuild, -files/fotoxx-12.12.patch,
+  +fotoxx-13.03.ebuild, +files/fotoxx-13.03.patch:
+  Version bump
+
+  17 Feb 2013; Agostino Sarubbo <ago@gentoo.org> fotoxx-13.01.ebuild:
+  Stable for x86, wrt bug #456944
+
+  14 Feb 2013; Sergey Popov <pinkbyte@gentoo.org> fotoxx-13.01.ebuild:
+  Stable on amd64, wrt bug #456944
+
+*fotoxx-13.02 (03 Feb 2013)
+
+  03 Feb 2013; Andrey Grozin <grozin@gentoo.org> +fotoxx-13.02.ebuild,
+  +files/fotoxx-13.02.patch:
+  Version bump
+
+*fotoxx-13.01 (02 Jan 2013)
+
+  02 Jan 2013; Andrey Grozin <grozin@gentoo.org> +fotoxx-13.01.ebuild,
+  +files/fotoxx-13.01.patch:
+  Version bump
+
+*fotoxx-12.12 (02 Dec 2012)
+
+  02 Dec 2012; Andrey Grozin <grozin@gentoo.org> +fotoxx-12.12.ebuild,
+  +files/fotoxx-12.12.patch:
+  Version bump
+
+  28 Nov 2012; Andrey Grozin <grozin@gentoo.org> -fotoxx-12.05.ebuild,
+  -files/fotoxx-12.05.patch, -fotoxx-12.10.ebuild, -files/fotoxx-12.10.patch,
+  fotoxx-12.11.ebuild:
+  Add missing dependency (#444682), removing old versions
+
+  20 Nov 2012; Agostino Sarubbo <ago@gentoo.org> fotoxx-12.11.ebuild:
+  Stable for x86, wrt bug #441352
+
+  15 Nov 2012; Andrey Grozin <grozin@gentoo.org> fotoxx-12.10.ebuild,
+  fotoxx-12.11.ebuild:
+  Dependencies fixing (#441352, #443002); desktop file fixing
+
+  14 Nov 2012; Agostino Sarubbo <ago@gentoo.org> fotoxx-12.11.ebuild:
+  Stable for amd64, wrt bug #441352
+
+*fotoxx-12.11 (03 Nov 2012)
+
+  03 Nov 2012; Andrey Grozin <grozin@gentoo.org> -fotoxx-12.09.1.ebuild,
+  -files/fotoxx-12.09.1.patch, +fotoxx-12.11.ebuild, +files/fotoxx-12.11.patch:
+  Version bump
+
+*fotoxx-12.10 (01 Oct 2012)
+
+  01 Oct 2012; Andrey Grozin <grozin@gentoo.org> -fotoxx-12.08.ebuild,
+  -files/fotoxx-12.08.patch, +fotoxx-12.10.ebuild, +files/fotoxx-12.10.patch:
+  Version bump
+
+*fotoxx-12.09.1 (04 Sep 2012)
+
+  04 Sep 2012; Andrey Grozin <grozin@gentoo.org> -fotoxx-12.06.1.ebuild,
+  -files/fotoxx-12.06.1.patch, +fotoxx-12.09.1.ebuild,
+  +files/fotoxx-12.09.1.patch:
+  Version bump
+
+*fotoxx-12.08 (05 Aug 2012)
+
+  05 Aug 2012; Andrey Grozin <grozin@gentoo.org> -fotoxx-11.08.1.ebuild,
+  -files/fotoxx-11.08.1-docdir.patch, -files/fotoxx-11.08.1-makefile.patch,
+  +fotoxx-12.08.ebuild, +files/fotoxx-12.08.patch:
+  Version bump
+
+  08 Jun 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> fotoxx-12.05.ebuild:
+  x86 stable wrt bug #419065
+
+*fotoxx-12.06.1 (02 Jun 2012)
+
+  02 Jun 2012; Andrey Grozin <grozin@gentoo.org> -fotoxx-12.04.ebuild,
+  -files/fotoxx-12.04.patch, +fotoxx-12.06.1.ebuild,
+  +files/fotoxx-12.06.1.patch:
+  Version bump
+
+  02 Jun 2012; Agostino Sarubbo <ago@gentoo.org> fotoxx-12.05.ebuild:
+  Stable for amd64, wrt bug #419065
+
+*fotoxx-12.05 (25 Apr 2012)
+
+  25 Apr 2012; Andrey Grozin <grozin@gentoo.org> -fotoxx-12.03.ebuild,
+  -files/fotoxx-12.03.patch, +fotoxx-12.05.ebuild, +files/fotoxx-12.05.patch:
+  Version bump
+
+*fotoxx-12.04 (02 Apr 2012)
+
+  02 Apr 2012; Andrey Grozin <grozin@gentoo.org> -fotoxx-12.02.ebuild,
+  -files/fotoxx-12.02.patch, +fotoxx-12.04.ebuild, +files/fotoxx-12.04.patch:
+  Version bump
+
+*fotoxx-12.03 (02 Mar 2012)
+
+  02 Mar 2012; Andrey Grozin <grozin@gentoo.org> -fotoxx-12.01.2.ebuild,
+  -files/fotoxx-12.01.2.patch, +fotoxx-12.03.ebuild, +files/fotoxx-12.03.patch:
+  Version bump
+
+*fotoxx-12.02 (04 Feb 2012)
+
+  04 Feb 2012; Andrey Grozin <grozin@gentoo.org> -fotoxx-11.12.1.ebuild,
+  -files/fotoxx-11.12.1.patch, +fotoxx-12.02.ebuild, +files/fotoxx-12.02.patch:
+  Version bump
+
+*fotoxx-12.01.2 (06 Jan 2012)
+
+  06 Jan 2012; Andrey Grozin <grozin@gentoo.org> -fotoxx-12.01.ebuild,
+  +fotoxx-12.01.2.ebuild, +files/fotoxx-12.01.2.patch,
+  -files/fotoxx-12.01.patch:
+  Version bump
+
+*fotoxx-12.01 (02 Jan 2012)
+
+  02 Jan 2012; Andrey Grozin <grozin@gentoo.org> -fotoxx-11.11.1.ebuild,
+  -files/fotoxx-11.11.1.patch, +fotoxx-12.01.ebuild, +files/fotoxx-12.01.patch:
+  Version bump
+
+*fotoxx-11.12.1 (04 Dec 2011)
+
+  04 Dec 2011; Andrey Grozin <grozin@gentoo.org> -fotoxx-11.10.ebuild,
+  -files/fotoxx-11.10.patch, +fotoxx-11.12.1.ebuild,
+  +files/fotoxx-11.12.1.patch:
+  Version bump
+
+*fotoxx-11.11.1 (06 Nov 2011)
+
+  06 Nov 2011; Andrey Grozin <grozin@gentoo.org> -fotoxx-11.09.ebuild,
+  -files/fotoxx-11.09.patch, +fotoxx-11.11.1.ebuild,
+  +files/fotoxx-11.11.1.patch:
+  Version bump
+
+*fotoxx-11.10 (12 Oct 2011)
+
+  12 Oct 2011; Andrey Grozin <grozin@gentoo.org> +fotoxx-11.10.ebuild,
+  +files/fotoxx-11.10.patch:
+  Version bump
+
+*fotoxx-11.09 (22 Sep 2011)
+
+  22 Sep 2011; Andrey Grozin <grozin@gentoo.org> -fotoxx-11.07.ebuild,
+  -files/fotoxx-11.07-docdir.patch, -files/fotoxx-11.07-makefile.patch,
+  +fotoxx-11.09.ebuild, +files/fotoxx-11.09.patch:
+  Version bump
+
+  11 Sep 2011; Markus Meier <maekke@gentoo.org> fotoxx-11.08.1.ebuild:
+  x86 stable, bug #382133
+
+  08 Sep 2011; Tony Vroon <chainsaw@gentoo.org> fotoxx-11.08.1.ebuild:
+  Marked stable on AMD64 based on arch testing by Ian "idella4" Delaney &
+  Agostino "ago" Sarubbo in bug #382133 filed by Andrey Grozin.
+
+*fotoxx-11.08.1 (04 Aug 2011)
+
+  04 Aug 2011; Andrey Grozin <grozin@gentoo.org> -fotoxx-11.06.ebuild,
+  -files/fotoxx-11.06-docdir.patch, -files/fotoxx-11.06-makefile.patch,
+  +fotoxx-11.08.1.ebuild, +files/fotoxx-11.08.1-docdir.patch,
+  +files/fotoxx-11.08.1-makefile.patch:
+  Version bump, bug #358689 should be fixed
+
+*fotoxx-11.07 (14 Jul 2011)
+
+  14 Jul 2011; Andrey Grozin <grozin@gentoo.org> -fotoxx-11.04.ebuild,
+  -files/fotoxx-11.04-makefile.patch, +fotoxx-11.07.ebuild,
+  +files/fotoxx-11.07-docdir.patch, +files/fotoxx-11.07-makefile.patch:
+  Version bump
+
+*fotoxx-11.06 (06 Jun 2011)
+
+  06 Jun 2011; Andrey Grozin <grozin@gentoo.org> -fotoxx-11.02.ebuild,
+  -files/fotoxx-11.02-makefile.patch, -fotoxx-11.03.1.ebuild,
+  -files/fotoxx-11.03.1-makefile.patch, +fotoxx-11.06.ebuild,
+  +files/fotoxx-11.06-docdir.patch, +files/fotoxx-11.06-makefile.patch:
+  Version bump, closing #368379
+
+*fotoxx-11.04 (05 Apr 2011)
+
+  05 Apr 2011; Andrey Grozin <grozin@gentoo.org> +fotoxx-11.04.ebuild,
+  +files/fotoxx-11.04-makefile.patch:
+  Version bump
+
+*fotoxx-11.03.1 (16 Mar 2011)
+
+  16 Mar 2011; Andrey Grozin <grozin@gentoo.org> -fotoxx-11.03.ebuild,
+  +fotoxx-11.03.1.ebuild, +files/fotoxx-11.03.1-makefile.patch,
+  -files/fotoxx-11.03-makefile.patch:
+  Version bump
+
+*fotoxx-11.03 (03 Mar 2011)
+
+  03 Mar 2011; Andrey Grozin <grozin@gentoo.org> -fotoxx-11.01.ebuild,
+  -files/fotoxx-11.01-makefile.patch, +fotoxx-11.03.ebuild,
+  +files/fotoxx-11.03-makefile.patch:
+  Version bump
+
+*fotoxx-11.02 (09 Feb 2011)
+
+  09 Feb 2011; Andrey Grozin <grozin@gentoo.org> -fotoxx-10.12.ebuild,
+  -files/fotoxx-10.12-makefile.patch, +fotoxx-11.02.ebuild,
+  +files/fotoxx-11.02-makefile.patch:
+  Version bump
+
+*fotoxx-11.01 (04 Jan 2011)
+
+  04 Jan 2011; Andrey Grozin <grozin@gentoo.org> -fotoxx-10.11.2.ebuild,
+  -files/fotoxx-10.11.2-makefile.patch, +fotoxx-11.01.ebuild,
+  +files/fotoxx-11.01-makefile.patch:
+  Version bump
+
+*fotoxx-10.12 (03 Dec 2010)
+
+  03 Dec 2010; Andrey Grozin <grozin@gentoo.org> -fotoxx-10.10.2.ebuild,
+  -files/fotoxx-10.10.2-makefile.patch, +fotoxx-10.12.ebuild,
+  +files/fotoxx-10.12-makefile.patch:
+  Version bump
+
+*fotoxx-10.11.2 (10 Nov 2010)
+
+  10 Nov 2010; Andrey Grozin <grozin@gentoo.org> -fotoxx-10.10.ebuild,
+  -files/fotoxx-10.10-makefile.patch, +fotoxx-10.11.2.ebuild,
+  +files/fotoxx-10.11.2-makefile.patch:
+  Version bump
+
+*fotoxx-10.10.2 (15 Oct 2010)
+
+  15 Oct 2010; Andrey Grozin <grozin@gentoo.org> -fotoxx-10.9.1.ebuild,
+  -files/fotoxx-10.9.1-makefile.patch, +fotoxx-10.10.2.ebuild,
+  +files/fotoxx-10.10.2-makefile.patch:
+  Version bump
+
+*fotoxx-10.10 (02 Oct 2010)
+
+  02 Oct 2010; Andrey Grozin <grozin@gentoo.org> -fotoxx-10.8.4.ebuild,
+  +fotoxx-10.10.ebuild, +files/fotoxx-10.10-makefile.patch,
+  -files/fotoxx-makefile.patch:
+  Version bump
+
+*fotoxx-10.9.1 (14 Sep 2010)
+
+  14 Sep 2010; Andrey Grozin <grozin@gentoo.org> -fotoxx-10.8.ebuild,
+  +fotoxx-10.9.1.ebuild, +files/fotoxx-10.9.1-makefile.patch:
+  Version bump
+
+*fotoxx-10.8.4 (19 Aug 2010)
+
+  19 Aug 2010; Andrey Grozin <grozin@gentoo.org> -fotoxx-10.7.ebuild,
+  +fotoxx-10.8.4.ebuild:
+  Version bump
+
+*fotoxx-10.8 (03 Aug 2010)
+
+  03 Aug 2010; Andrey Grozin <grozin@gentoo.org> +fotoxx-10.8.ebuild:
+  Version bump
+
+  26 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> fotoxx-10.7.ebuild,
+  files/fotoxx-makefile.patch:
+  Fix building with -Wl,--as-needed wrt #329901 by Nao Nakashima.
+
+  20 Jul 2010; Andrey Grozin <grozin@gentoo.org> fotoxx-10.7.ebuild,
+  files/fotoxx-makefile.patch:
+  Ebuild cleanup, ~amd64 added, thanks to Joshua Saddler
+  <nightmorph@gentoo.org>
+
+  19 Jul 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Added missing herd tag.
+
+*fotoxx-10.7 (16 Jul 2010)
+
+  16 Jul 2010; Andrey Grozin <grozin@gentoo.org> +fotoxx-10.7.ebuild,
+  +files/fotoxx-makefile.patch, +metadata.xml:
+  Initial import, partly based on an old ebuild in sunrise

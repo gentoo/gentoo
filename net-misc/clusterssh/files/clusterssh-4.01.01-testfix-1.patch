@@ -1,0 +1,87 @@
+diff --git a/t/15config.t b/t/15config.t
+index 81d8f70..522997b 100644
+--- a/t/15config.t
++++ b/t/15config.t
+@@ -8,6 +8,7 @@ use Test::More;
+ use Test::Trap;
+ use File::Which qw(which);
+ use File::Temp qw(tempdir);
++use Test::Differences;
+ 
+ use Readonly;
+ 
+@@ -72,8 +73,8 @@ Readonly::Hash my %default_config => {
+     history_height => 10,
+ 
+     command             => q{},
+-    title             => q{15CONFIG.T},
+-    comms             => q{ssh},
++    title               => q{15CONFIG.T},
++    comms               => q{ssh},
+     max_host_menu_items => 30,
+ 
+     max_addhost_menu_cluster_items => 6,
+@@ -241,11 +242,11 @@ is( $trap->stdout, q{}, 'Expecting no STDOUT' );
+ is( $trap->stderr, q{}, 'Expecting no STDERR' );
+ is_deeply( $config, \%expected, 'amended config is correct' );
+ is( $path, which('ls'), 'Found correct path to "ls"' );
+-is( $path, $newpath, 'No change made from find_binary');
++is( $path, $newpath,    'No change made from find_binary' );
+ 
+ # give false path to force another search
+ trap {
+-    $newpath = $config->find_binary('/does/not/exist/'.$path);
++    $newpath = $config->find_binary( '/does/not/exist/' . $path );
+ };
+ is( $trap->leaveby, 'return', 'returned ok' );
+ isa_ok( $config, "App::ClusterSSH::Config" );
+@@ -254,7 +255,7 @@ is( $trap->stdout, q{}, 'Expecting no STDOUT' );
+ is( $trap->stderr, q{}, 'Expecting no STDERR' );
+ is_deeply( $config, \%expected, 'amended config is correct' );
+ is( $path, which('ls'), 'Found correct path to "ls"' );
+-is( $path, $newpath, 'No change made from find_binary');
++is( $path, $newpath,    'No change made from find_binary' );
+ 
+ note('Checks on loading configs');
+ note('empty dir');
+@@ -456,12 +457,12 @@ is( $trap->stderr,
+ );
+ 
+ note('Checking dump');
+-$config = App::ClusterSSH::Config->new();
++$config = App::ClusterSSH::Config->new(
++    send_menu_xml_file => $ENV{HOME} . '/.csshrc_send_menu' );
+ trap {
+     $config->dump();
+ };
+-my $expected = <<'EOF';
+-# Configuration dump produced by "cssh -u"
++my $expected = qq{# Configuration dump produced by "cssh -u"
+ auto_close=5
+ auto_quit=yes
+ console_position=
+@@ -486,7 +487,7 @@ screen_reserve_bottom=60
+ screen_reserve_left=0
+ screen_reserve_right=0
+ screen_reserve_top=0
+-send_menu_xml_file=/home/dferguson/.csshrc_send_menu
++send_menu_xml_file=} . $ENV{HOME} . qq{/.csshrc_send_menu
+ show_history=0
+ ssh_args=
+ telnet_args=
+@@ -509,10 +510,11 @@ use_all_a_records=0
+ use_hotkeys=yes
+ window_tiling=yes
+ window_tiling_direction=right
+-EOF
++};
++
+ isa_ok( $config, "App::ClusterSSH::Config" );
+-is( $trap->die,    undef,     'die message correct' );
+-is( $trap->stdout, $expected, 'Expecting no STDOUT' );
+-is( $trap->stderr, q{},       'Expecting no STDERR' );
++is( $trap->die, undef, 'die message correct' );
++eq_or_diff( $trap->stdout, $expected, 'Expecting no STDOUT' );
++is( $trap->stderr, q{}, 'Expecting no STDERR' );
+ 
+ done_testing();

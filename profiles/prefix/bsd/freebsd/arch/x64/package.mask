@@ -1,0 +1,8 @@
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/bsd/freebsd/arch/x64/package.mask,v 1.1 2011/12/30 17:28:18 grobian Exp $
+
+# The 32-bits profile is inherited by the 64-bits one!
+# All the FreeBSD profiles inherit from their matching arch profile here.
+
+

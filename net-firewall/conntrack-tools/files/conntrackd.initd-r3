@@ -1,0 +1,77 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+CONNTRACKD_BIN="/usr/sbin/conntrackd"
+CONNTRACKD_CFG=${CONNTRACKD_CFG:-/etc/conntrackd/conntrackd.conf}
+CONNTRACKD_LOCK=${CONNTRACKD_LOCK:-/run/lock/conntrack.lock}
+
+depend() {
+	use logger
+	need net
+}
+
+checkconfig() {
+	# check for netfilter conntrack kernel support
+	local nf_ct_available=0
+	for k in net.netfilter.nf_conntrack_max \
+		net.ipv4.netfilter.ip_conntrack_max \
+		net.nf_conntrack_max; do
+		if sysctl -e -n ${k} &>/dev/null; then
+			nf_ct_available=1 # sysctl key found
+			break
+		fi
+	done
+	if [ ${nf_ct_available} -eq 0 ]; then
+		eerror
+		eerror "Your kernel is missing netfilter conntrack support!"
+		eerror "Make sure your kernel was compiled with netfilter conntrack support."
+		eerror
+		eerror "If it was compiled as a module you need to ensure the module is being"
+		eerror "loaded before starting conntrackd."
+		eerror "Either add an entry to /etc/modules.autoload/[...] (for baselayout-1)"
+		eerror "or /etc/conf.d/modules (for baselayout-2/OpenRC) or load the module"
+		eerror "by hand like this, depending on your kernel version:"
+		eerror
+		eerror "  modprobe nf_conntrack # (for newer kernels)"
+		eerror "  modprobe ip_conntrack # (for older kernels)"
+		eerror
+		return 1
+	fi
+	# check for config file
+	if [ ! -e "${CONNTRACKD_CFG}" ]; then
+		eerror
+		eerror "The conntrackd config file (${CONNTRACKD_CFG})"
+		eerror "is missing!"
+		eerror
+		return 1
+	fi
+	# check for leftover lockfile
+	if [ -f "${CONNTRACKD_LOCK}" ]; then
+		ewarn
+		ewarn "The conntrackd lockfile (${CONNTRACKD_LOCK})"
+		ewarn "exists although the service is not marked as started."
+		ewarn "Will remove the lockfile and start the service in 10s"
+		ewarn "if not interrupted..."
+		ewarn
+		sleep 10
+		if ! rm -f "${CONNTRACKD_LOCK}"; then
+			eerror "Failed to remove the conntrackd lockfile (${CONNTRACKD_LOCK})"
+			return 1
+		fi
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting conntrackd"
+	start-stop-daemon --start --exec "${CONNTRACKD_BIN}" \
+		-- -d -C "${CONNTRACKD_CFG}" ${CONNTRACKD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping conntrackd"
+	start-stop-daemon --stop --exec "${CONNTRACKD_BIN}"
+	eend $?
+}

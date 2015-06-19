@@ -1,0 +1,151 @@
+# ChangeLog for www-apps/horde-ingo
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/horde-ingo/ChangeLog,v 1.36 2012/08/22 15:23:55 a3li Exp $
+
+  22 Aug 2012; Alex Legler <a3li@gentoo.org> metadata.xml:
+  removing from metadata
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org> horde-ingo-1.1.2.ebuild,
+  horde-ingo-1.2.3.ebuild, horde-ingo-1.2.5.ebuild:
+  Drop sparc keywords
+
+  06 Mar 2012; Brent Baude <ranger@gentoo.org> horde-ingo-1.2.5.ebuild:
+  Marking horde-ingo-1.2.5 ppc for bug 397243
+
+  02 Mar 2012; Tobias Klausmann <klausman@gentoo.org> horde-ingo-1.2.5.ebuild:
+  Stable on alpha, bug #397243
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> horde-ingo-1.2.5.ebuild:
+  x86 stable wrt bug #397243
+
+  08 Feb 2012; Jeroen Roovers <jer@gentoo.org> horde-ingo-1.2.5.ebuild:
+  Stable for HPPA (bug #397243).
+
+  04 Feb 2012; Agostino Sarubbo <ago@gentoo.org> horde-ingo-1.2.5.ebuild:
+  Stable for amd64, wrt bug #397243
+
+*horde-ingo-1.2.5 (29 Sep 2010)
+
+  29 Sep 2010; Alex Legler <a3li@gentoo.org> -horde-ingo-1.2.2.ebuild,
+  +horde-ingo-1.2.5.ebuild:
+  Version bump, contains minor bugfixes and updated i18n. Removing old
+  version.
+
+*horde-ingo-1.2.3 (17 Dec 2009)
+
+  17 Dec 2009; Alex Legler <a3li@gentoo.org> -horde-ingo-1.2.1.ebuild,
+  +horde-ingo-1.2.3.ebuild, metadata.xml:
+  Version bump, removing old version, taking over maintenance
+
+*horde-ingo-1.2.2 (17 Sep 2009)
+
+  17 Sep 2009; Alex Legler <a3li@gentoo.org> -horde-ingo-1.1.5.ebuild,
+  -horde-ingo-1.2.ebuild, +horde-ingo-1.2.2.ebuild:
+  Version bump, cleaning some old versions.
+
+*horde-ingo-1.2.1 (30 Oct 2008)
+
+  30 Oct 2008; Gunnar Wrobel <wrobel@gentoo.org> +horde-ingo-1.2.1.ebuild:
+  Added www-apps/horde-ingo-1.2.1.
+
+  07 Aug 2008; wrobel@gentoo.org metadata.xml:
+  Updated maintainer.
+
+*horde-ingo-1.2 (01 Jun 2008)
+
+  01 Jun 2008; Mike Frysinger <vapier@gentoo.org> +horde-ingo-1.2.ebuild:
+  Version bump #221505 by Arfrever Frehtes Taifersar Arahesis.
+
+  31 May 2008; Mike Frysinger <vapier@gentoo.org> horde-ingo-1.1.5.ebuild:
+  Depend on either horde or horde-groupware as pointed out by Robin Bankhead
+  #217326.
+
+*horde-ingo-1.1.5 (12 Jan 2008)
+
+  12 Jan 2008; Mike Frysinger <vapier@gentoo.org> +horde-ingo-1.1.5.ebuild:
+  Version bump.
+
+*horde-ingo-1.1.4 (23 Dec 2007)
+
+  23 Dec 2007; Mike Frysinger <vapier@gentoo.org> +horde-ingo-1.1.4.ebuild:
+  Version bump.
+
+  12 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  horde-ingo-1.1.3.ebuild:
+  Stable on sparc
+
+*horde-ingo-1.1.3 (05 May 2007)
+
+  05 May 2007; Mike Frysinger <vapier@gentoo.org> +horde-ingo-1.1.3.ebuild:
+  Version bump.
+
+  24 Nov 2006; Bryan Østergaard <kloeri@gentoo.org>
+  horde-ingo-1.1.2.ebuild:
+  Stable on Alpha, bug 153927.
+
+  20 Nov 2006; <blubb@gentoo.org> horde-ingo-1.1.2.ebuild:
+  stable on amd64
+
+  19 Nov 2006; René Nussbaumer <killerfox@gentoo.org>
+  horde-ingo-1.1.2.ebuild:
+  Stable on hppa. See bug #153927.
+
+  18 Nov 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  horde-ingo-1.1.2.ebuild:
+  ppc stable, bug #153927
+
+  16 Nov 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  horde-ingo-1.1.2.ebuild:
+  Stable on sparc wrt security #153927
+
+  16 Nov 2006; Andrej Kacian <ticho@gentoo.org> horde-ingo-1.1.2.ebuild:
+  Stable on x86, security bug #153927.
+
+*horde-ingo-1.1.2 (15 Nov 2006)
+
+  15 Nov 2006; Mike Frysinger <vapier@gentoo.org> +horde-ingo-1.1.2.ebuild:
+  Version bump #153927.
+
+*horde-ingo-1.1.1 (15 Jun 2006)
+
+  15 Jun 2006; Luca Longinotti <chtekk@gentoo.org> +horde-ingo-1.1.1.ebuild:
+  Version bump
+
+  04 Apr 2006; <blubb@gentoo.org> horde-ingo-1.1.ebuild:
+  stable on amd64 wrt bug 126435
+
+  31 Mar 2006; Jose Luis Rivero <yoswink@gentoo.org> horde-ingo-1.1.ebuild:
+  Stable on alpha wrt bug #126435
+
+  28 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org> horde-ingo-1.1.ebuild:
+  Stable on hppa wrt security #126435
+
+  28 Mar 2006; Mark Loeser <halcy0n@gentoo.org> horde-ingo-1.1.ebuild:
+  Stable on x86; bug #126435
+
+  25 Mar 2006; Joseph Jezak <josejx@gentoo.org> horde-ingo-1.1.ebuild:
+  Marked ppc stable for bug #126435.
+
+  20 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org> horde-ingo-1.1.ebuild:
+  Stable on sparc wrt security #126435
+
+*horde-ingo-1.1 (09 Mar 2006)
+
+  09 Mar 2006; Mike Frysinger <vapier@gentoo.org> +horde-ingo-1.1.ebuild:
+  Version bump #125571 by Pol.
+
+*horde-ingo-1.0.2 (14 Oct 2005)
+
+  14 Oct 2005; Mike Frysinger <vapier@gentoo.org> +horde-ingo-1.0.2.ebuild:
+  Version bump #109171 by Christoph Gysin.
+
+*horde-ingo-1.0.1 (23 Feb 2005)
+
+  23 Feb 2005; Mike Frysinger <vapier@gentoo.org> +horde-ingo-1.0.1.ebuild,
+  -horde-ingo-1.0.ebuild:
+  Version bump.
+
+*horde-ingo-1.0 (24 Dec 2004)
+
+  24 Dec 2004; Mike Frysinger <vapier@gentoo.org> +horde-ingo-4.0.ebuild:
+  Initial import.

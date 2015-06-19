@@ -1,0 +1,176 @@
+http://bugs.gentoo.org/464314
+
+upstream seems to have this fixed already
+
+--- a/build-aux/qmi-codegen/Client.py
++++ b/build-aux/qmi-codegen/Client.py
+@@ -61,10 +61,10 @@ class Client:
+                 break
+ 
+         translations = { 'underscore'                 : utils.build_underscore_name(self.name),
+-                         'no_prefix_underscore_upper' : string.upper(utils.build_underscore_name(self.name[4:])),
++                         'no_prefix_underscore_upper' : utils.build_underscore_name(self.name[4:]).upper(),
+                          'camelcase'                  : utils.build_camelcase_name(self.name),
+                          'hyphened'                   : utils.build_dashed_name(self.name),
+-                         'service'                    : string.upper(self.service) }
++                         'service'                    : self.service.upper() }
+ 
+         # Emit class header
+         template = (
+@@ -207,8 +207,8 @@ class Client:
+                     # At least one field in the indication
+                     translations['output_camelcase'] = utils.build_camelcase_name(message.output.fullname)
+                     translations['bundle_type'] = 'QMI_TYPE_' + utils.remove_prefix(utils.build_underscore_uppercase_name(message.output.fullname), 'QMI_')
+-                    translations['service'] = string.upper(self.service)
+-                    translations['message_name_dashed'] = string.replace(message.name, ' ', '-')
++                    translations['service'] = self.service.upper()
++                    translations['message_name_dashed'] = message.name.replace(' ', '-')
+                     inner_template += (
+                         '\n'
+                         '    /**\n'
+@@ -263,8 +263,8 @@ class Client:
+     def __emit_methods(self, hfile, cfile, message_list):
+         translations = { 'underscore'        : utils.build_underscore_name(self.name),
+                          'camelcase'         : utils.build_camelcase_name (self.name),
+-                         'service_lowercase' : string.lower(self.service),
+-                         'service_uppercase' : string.upper(self.service),
++                         'service_lowercase' : self.service.lower(),
++                         'service_uppercase' : self.service.upper(),
+                          'service_camelcase' : string.capwords(self.service) }
+ 
+         for message in message_list.list:
+@@ -518,7 +518,7 @@ class Client:
+     """
+     def emit_sections(self, sfile):
+         translations = { 'underscore'                 : utils.build_underscore_name(self.name),
+-                         'no_prefix_underscore_upper' : string.upper(utils.build_underscore_name(self.name[4:])),
++                         'no_prefix_underscore_upper' : utils.build_underscore_name(self.name[4:]).upper(),
+                          'camelcase'                  : utils.build_camelcase_name (self.name),
+                          'hyphened'                   : utils.build_dashed_name (self.name) }
+ 
+--- a/build-aux/qmi-codegen/Field.py
++++ b/build-aux/qmi-codegen/Field.py
+@@ -57,10 +57,10 @@ class Field:
+         self.variable = VariableFactory.create_variable(dictionary, self.fullname, self.container_type)
+ 
+         # Create the variable name within the Container
+-        self.variable_name = 'arg_' + string.lower(utils.build_underscore_name(self.name))
++        self.variable_name = 'arg_' + utils.build_underscore_name(self.name).lower()
+ 
+         # Create the ID enumeration name
+-        self.id_enum_name = string.upper(utils.build_underscore_name(self.prefix + ' TLV ' + self.name))
++        self.id_enum_name = utils.build_underscore_name(self.prefix + ' TLV ' + self.name).upper()
+ 
+         # Output Fields may have prerequisites
+         self.prerequisites = []
+--- a/build-aux/qmi-codegen/Message.py
++++ b/build-aux/qmi-codegen/Message.py
+@@ -53,7 +53,7 @@ class Message:
+         self.fullname = self.prefix + ' ' + self.service + ' ' + self.name
+ 
+         # Create the ID enumeration name
+-        self.id_enum_name = string.upper(utils.build_underscore_name(self.fullname))
++        self.id_enum_name = utils.build_underscore_name(self.fullname).upper()
+ 
+         # Build output container.
+         # Every defined message will have its own output container, which
+--- a/build-aux/qmi-codegen/MessageList.py
++++ b/build-aux/qmi-codegen/MessageList.py
+@@ -109,7 +109,7 @@ class MessageList:
+     messages of a given service.
+     """
+     def __emit_get_printable(self, hfile, cfile):
+-        translations = { 'service'    : string.lower(self.service) }
++        translations = { 'service'    : self.service.lower() }
+ 
+         template = (
+             '\n'
+@@ -175,7 +175,7 @@ class MessageList:
+     introduced.
+     """
+     def __emit_get_version_introduced(self, hfile, cfile):
+-        translations = { 'service'    : string.lower(self.service) }
++        translations = { 'service'    : self.service.lower() }
+ 
+         template = (
+             '\n'
+--- a/build-aux/qmi-codegen/Variable.py
++++ b/build-aux/qmi-codegen/Variable.py
+@@ -45,7 +45,7 @@ class Variable:
+         self.needs_dispose = False
+ 
+         self.endian = "QMI_ENDIAN_LITTLE"
+-        if dictionary.has_key('endian'):
++        if 'endian' in dictionary:
+             endian = dictionary['endian']
+             if endian == 'network' or endian == 'big':
+                 self.endian = "QMI_ENDIAN_BIG"
+--- a/build-aux/qmi-codegen/VariableArray.py
++++ b/build-aux/qmi-codegen/VariableArray.py
+@@ -86,7 +86,7 @@ class VariableArray(Variable):
+     def clear_func_name(self):
+         # element public format might be a base type like 'gchar *' rather
+         # than a structure name like QmiFooBar
+-        elt_name = string.replace(self.array_element.public_format, '*', 'pointer')
++        elt_name = self.array_element.public_format.replace('*', 'pointer')
+         return utils.build_underscore_name(self.name) + \
+              '_' + \
+              utils.build_underscore_name_from_camelcase(utils.build_camelcase_name(elt_name))
+--- a/build-aux/qmi-codegen/VariableInteger.py
++++ b/build-aux/qmi-codegen/VariableInteger.py
+@@ -247,7 +247,7 @@ class VariableInteger(Variable):
+                 '${lp}    g_string_append_printf (${printable}, "%s", tmp ? "yes" : "no");\n')
+         elif self.public_format != self.private_format:
+             translations['public_type_underscore'] = utils.build_underscore_name_from_camelcase(self.public_format)
+-            translations['public_type_underscore_upper'] = string.upper(utils.build_underscore_name_from_camelcase(self.public_format))
++            translations['public_type_underscore_upper'] = utils.build_underscore_name_from_camelcase(self.public_format).upper()
+             template += (
+                 '#if defined  __${public_type_underscore_upper}_IS_ENUM__\n'
+                 '${lp}    g_string_append_printf (${printable}, "%s", ${public_type_underscore}_get_string ((${public_format})tmp));\n'
+--- a/build-aux/qmi-codegen/utils.py
++++ b/build-aux/qmi-codegen/utils.py
+@@ -54,7 +54,7 @@ def add_copyright(f):
+ Build a header guard string based on the given filename
+ """
+ def build_header_guard(output_name):
+-    return "__LIBQMI_GLIB_" + string.upper(string.replace (output_name, '-', '_')) + "__"
++    return "__LIBQMI_GLIB_" + output_name.replace('-', '_').upper() + "__"
+ 
+ 
+ """
+@@ -145,7 +145,7 @@ Build an underscore name from the given full name
+ e.g.: "This is a message" --> "this_is_a_message"
+ """
+ def build_underscore_name(name):
+-    return string.lower(string.replace (name, ' ', '_'))
++    return name.replace(' ', '_').lower()
+ 
+ 
+ """
+@@ -153,7 +153,7 @@ Build an underscore uppercase name from the given full name
+ e.g.: "This is a message" --> "THIS_IS_A_MESSAGE"
+ """
+ def build_underscore_uppercase_name(name):
+-    return string.upper(string.replace (name, ' ', '_'))
++    return name.replace(' ', '_').upper()
+ 
+ 
+ """
+@@ -170,7 +170,7 @@ Build a camelcase name from the given full name
+ e.g.: "This is a message" --> "ThisIsAMessage"
+ """
+ def build_camelcase_name(name):
+-    return string.replace(string.capwords(name), ' ', '')
++    return string.capwords(name).replace(' ', '')
+ 
+ 
+ """
+@@ -178,7 +178,7 @@ Build a dashed lowercase name from the given full name
+ e.g.: "This is a message" --> "this-is-a-message"
+ """
+ def build_dashed_name(name):
+-    return string.replace(string.lower(name), ' ', '-')
++    return name.replace(' ', '-').lower()
+ 
+ 
+ """

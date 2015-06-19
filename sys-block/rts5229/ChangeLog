@@ -1,0 +1,45 @@
+# ChangeLog for sys-block/rts5229
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-block/rts5229/ChangeLog,v 1.7 2015/05/31 07:06:18 vikraman Exp $
+
+*rts5229-1.07-r5 (31 May 2015)
+
+  31 May 2015; Vikraman Choudhury (vikraman) <vikraman@gentoo.org>
+  +rts5229-1.07-r5.ebuild, -rts5229-1.07-r4.ebuild:
+  Fix build with linux 4.0. Fixes bug 549492.
+
+*rts5229-1.07-r4 (14 Aug 2014)
+
+  14 Aug 2014; Vikraman Choudhury (vikraman) <vikraman@gentoo.org>
+  +rts5229-1.07-r4.ebuild, -rts5229-1.07-r3.ebuild:
+  Install module to /lib/modules/${KV}/misc, wrt bug 516992. Thanks to
+  consus@gmx.com for pointing it out.
+
+  10 Jul 2014; Vikraman Choudhury (vikraman) <vikraman@gentoo.org>
+  -rts5229-1.07-r1.ebuild, -rts5229-1.07-r2.ebuild, -rts5229-1.07.ebuild:
+  Cleanup old versions
+
+*rts5229-1.07-r3 (10 Jul 2014)
+
+  10 Jul 2014; Vikraman Choudhury (vikraman) <vikraman@gentoo.org>
+  +rts5229-1.07-r3.ebuild, rts5229-1.07-r1.ebuild, rts5229-1.07-r2.ebuild,
+  rts5229-1.07.ebuild:
+  Remove use of __DATE__ and __TIME__ for gcc 4.9 wrt bug 514788
+
+*rts5229-1.07-r2 (03 Jul 2013)
+
+  03 Jul 2013; Vikraman <vikraman@gentoo.org> rts5229-1.07-r1.ebuild,
+  +rts5229-1.07-r2.ebuild, +files/rts5229-linux-3.10.patch:
+  Patch to fix build on linux 3.10
+
+*rts5229-1.07-r1 (28 May 2013)
+
+  28 May 2013; Vikraman <vikraman@gentoo.org> +rts5229-1.07-r1.ebuild,
+  +files/rts5229-linux-3.8.patch:
+  Patch to fix build on linux 3.8
+
+*rts5229-1.07 (28 Feb 2013)
+
+  28 Feb 2013; Vikraman <vikraman@gentoo.org> +rts5229-1.07.ebuild,
+  +metadata.xml:
+  New ebuild for sys-block/rts5229, PCIE RTS5229 card reader driver for Linux

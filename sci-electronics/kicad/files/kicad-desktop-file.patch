@@ -1,0 +1,35 @@
+From cacd01f36db6277111a35fe60ad4762ee3b002e1 Mon Sep 17 00:00:00 2001
+From: Denis Dupeyron <calchan@gentoo.org>
+Date: Thu, 18 Apr 2013 15:17:36 -0600
+Subject: [PATCH] Fix desktop category and semicolon
+
+---
+ resources/linux/mime/applications/eeschema.desktop | 2 +-
+ resources/linux/mime/applications/kicad.desktop    | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/resources/linux/mime/applications/eeschema.desktop b/resources/linux/mime/applications/eeschema.desktop
+index 3042eae..0ed616c 100644
+--- a/resources/linux/mime/applications/eeschema.desktop
++++ b/resources/linux/mime/applications/eeschema.desktop
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+-Categories=Development;Electronics
++Categories=Electronics;
+ Comment=Design an electronic schematic
+ Comment[fr]=Dessiner des schémas électroniques
+ Exec=eeschema
+diff --git a/resources/linux/mime/applications/kicad.desktop b/resources/linux/mime/applications/kicad.desktop
+index 1d7645b..3a23e34 100644
+--- a/resources/linux/mime/applications/kicad.desktop
++++ b/resources/linux/mime/applications/kicad.desktop
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+-Categories=Development;Electronics
++Categories=Electronics;
+ Comment=Design a printed circuit board
+ Comment[fr]=Concevoir un circuit imprimé
+ Exec=kicad
+-- 
+1.8.2.1
+

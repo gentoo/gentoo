@@ -1,0 +1,81 @@
+# ChangeLog for app-misc/ondir
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/ondir/ChangeLog,v 1.24 2011/01/12 07:26:04 jlec Exp $
+
+  12 Jan 2011; Justin Lecher <jlec@gentoo.org> -ondir-0.2.2.ebuild:
+  Removed old
+
+  11 Jan 2011; Markus Meier <maekke@gentoo.org> ondir-0.2.2-r1.ebuild:
+  x86 stable, bug #350694
+
+  07 Jan 2011; Brent Baude <ranger@gentoo.org> ondir-0.2.2-r1.ebuild:
+  Marking ondir-0.2.2-r1 ppc for bug 350694
+
+  05 Jan 2011; Markos Chandras <hwoarang@gentoo.org> ondir-0.2.2-r1.ebuild:
+  Stable on amd64 wrt bug #350694
+
+  05 Jan 2011; Justin Lecher <jlec@gentoo.org> ondir-0.2.2.ebuild,
+  ondir-0.2.2-r1.ebuild:
+  Some Clean up
+
+*ondir-0.2.2-r1 (15 Jun 2010)
+
+  15 Jun 2010; Justin Lecher <jlec@gentoo.org> +ondir-0.2.2-r1.ebuild:
+  QA, imported prefix changes
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> ondir-0.2.2.ebuild:
+  Remove virtual/libc
+
+  11 Jan 2008; Fabian Groffen <grobian@gentoo.org> ondir-0.2.2.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  19 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove ka0ttic from metadata.xml due to retirement.
+
+  04 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> ondir-0.2.2.ebuild:
+  Stable on ppc.
+
+  02 Jun 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  ondir-0.2.2.ebuild:
+  mark ~ppc
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> ondir-0.2.2.ebuild:
+  stable on amd64
+
+  27 Dec 2004; <gongloo@gentoo.org> ondir-0.2.2.ebuild:
+  Added ~ppc-macos
+
+  29 Nov 2004; Aaron Walker <ka0ttic@gentoo.org> metadata.xml,
+  ondir-0.2.2.ebuild:
+  Marked stable on x86; added myself as maintainer.
+
+  26 Oct 2004; Aaron Walker <ka0ttic@gentoo.org> ondir-0.2.2.ebuild:
+  Use tc-getCC from toolchain-funcs.eclass instead of ${CC}; fixes bug #68985
+
+*ondir-0.2.2 (25 Oct 2004)
+
+  25 Oct 2004; Aaron Walker <ka0ttic@gentoo.org> +ondir-0.2.2.ebuild:
+  Version bump; updated HOMEPAGE and SRC_URI; respect user CFLAGS; use make
+  install instead of a sleu of do* functions.
+
+  21 Oct 2004; Aaron Walker <ka0ttic@gentoo.org> +metadata.xml:
+  Add metadata (shell-tools)
+
+  10 Jul 2004; Tom Martin <slarti@gentoo.org> ondir-0.2.1.ebuild:
+  Marked ~amd64.
+
+  14 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> ondir-0.2.1.ebuild:
+  Don't assign default to S; header fix
+
+  08 Oct 2003; Joel Hill <hillster@gentoo.org> ondir-0.2.1.ebuild:
+  cleanup, marking stable
+
+*ondir-0.2.1 (21 Aug 2003)
+
+  21 Aug 2003; Lars Weiler <pylon@gentoo.org> ondir-0.2.1.ebuild:
+  Initial submission
+  Thanks to Wolfram Schlich <wolfram@schlich.org> for this ebuild.
+

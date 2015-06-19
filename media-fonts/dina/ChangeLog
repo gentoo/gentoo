@@ -1,0 +1,18 @@
+# ChangeLog for media-fonts/dina
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/dina/ChangeLog,v 1.4 2014/12/13 09:53:44 yngwin Exp $
+
+  13 Dec 2014; Ben de Groot <yngwin@gentoo.org> dina-2.89.ebuild:
+  Host tarball in my devspace to fix bug #532056
+
+  17 Apr 2013; Ulrich Müller <ulm@gentoo.org> dina-2.89.ebuild:
+  Fix LICENSE, bug 465102.
+
+  21 Sep 2009; Markus Meier <maekke@gentoo.org> dina-2.89.ebuild:
+  amd64/x86 stable, bug #285564
+
+*dina-2.89 (01 Aug 2009)
+
+  01 Aug 2009; Ben de Groot <yngwin@gentoo.org> +dina-2.89.ebuild,
+  +metadata.xml:
+  Initial commit. Ebuild based on the one by Justin in bug 279534.

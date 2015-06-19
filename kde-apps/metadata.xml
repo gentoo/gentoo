@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The kde-apps category contains packages released by
+		KDE as part of KDE Applications 5.
+	</longdescription>
+</catmetadata>

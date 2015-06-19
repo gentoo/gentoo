@@ -1,0 +1,39 @@
+# ChangeLog for dev-python/sclapp
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/sclapp/ChangeLog,v 1.10 2015/04/08 08:05:30 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> sclapp-0.5.3-r1.ebuild:
+  Drop old Python implementations
+
+  23 Jan 2015; Manuel Rüger <mrueg@gentoo.org> -sclapp-0.5.3.ebuild:
+  Remove old.
+
+  18 Sep 2014; Sebastian Pipping <sping@gentoo.org> sclapp-0.5.3.ebuild:
+  dev-python/sclapp: Fix homepage URL
+
+  18 Sep 2014; Sebastian Pipping <sping@gentoo.org> sclapp-0.5.3-r1.ebuild:
+  Fix dead homepage URL
+
+*sclapp-0.5.3-r1 (11 Apr 2014)
+
+  11 Apr 2014; Michał Górny <mgorny@gentoo.org> +sclapp-0.5.3-r1.ebuild:
+  Convert to distutils-r1.
+
+  16 Jun 2010; Sebastian Pipping <sping@gentoo.org> sclapp-0.5.3.ebuild:
+  Add missing dependency dev-python/pexpect for bug #318489
+
+  07 Feb 2010; Peter Volkov <pva@gentoo.org> sclapp-0.5.3.ebuild:
+  Add inherit eutils: epatch is defined there.
+
+  21 Dec 2009; Sebastian Pipping <sping@gentoo.org> sclapp-0.5.3.ebuild,
+  +files/sclapp-0.5.3-testsuite-fix-from-r235.patch:
+  Integrate fresh testsuite patch from upstream revision 235
+
+  20 Dec 2009; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Fix metadata: maintainer-wanted herd does not exist
+
+*sclapp-0.5.3 (20 Dec 2009)
+
+  20 Dec 2009; Sebastian Pipping <sping@gentoo.org> +sclapp-0.5.3.ebuild,
+  +metadata.xml:
+  Initial ebuild, review by Arfrever (bug 220081)

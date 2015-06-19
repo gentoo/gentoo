@@ -1,0 +1,87 @@
+# ChangeLog for dev-util/pkgconfig-openbsd
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/pkgconfig-openbsd/ChangeLog,v 1.17 2014/07/22 12:42:09 ssuominen Exp $
+
+  22 Jul 2014; Samuli Suominen <ssuominen@gentoo.org>
+  -pkgconfig-openbsd-20130507.ebuild:
+  old
+
+  30 Mar 2014; Michał Górny <mgorny@gentoo.org>
+  pkgconfig-openbsd-20130507-r1.ebuild:
+  Re-use perl path getting from perl-module.eclass, thanks to Mikle Kolyada for
+  the suggestion.
+
+*pkgconfig-openbsd-20130507-r1 (30 Mar 2014)
+
+  30 Mar 2014; Michał Górny <mgorny@gentoo.org>
+  +pkgconfig-openbsd-20130507-r1.ebuild:
+  Enable multilib support. Install to proper perl libdir.
+
+  07 May 2013; Samuli Suominen <ssuominen@gentoo.org>
+  -pkgconfig-openbsd-20130225.ebuild:
+  old
+
+*pkgconfig-openbsd-20130507 (07 May 2013)
+
+  07 May 2013; Samuli Suominen <ssuominen@gentoo.org>
+  +pkgconfig-openbsd-20130507.ebuild:
+  Latest version from upstream CVS; include /usr/lib32/pkgconfig,
+  /usr/lib64/pkgconfig, /usr/share/pkgconfig to .pc directories
+
+  25 Feb 2013; Samuli Suominen <ssuominen@gentoo.org>
+  -pkgconfig-openbsd-20120710.ebuild:
+  old
+
+*pkgconfig-openbsd-20130225 (25 Feb 2013)
+
+  25 Feb 2013; Samuli Suominen <ssuominen@gentoo.org>
+  +pkgconfig-openbsd-20130225.ebuild:
+  Version bump. Keyword ~əmd64 and ~x86 to get more people test this, not a
+  candidate for stabilization. Use pkg.m4 from pkg-config-0.28.
+
+  13 Jul 2012; Samuli Suominen <ssuominen@gentoo.org>
+  pkgconfig-openbsd-20120710.ebuild:
+  Update pkg.m4 from pkg-config-0.26 to pkg-config-0.27 for PKG_INSTALLDIR
+  (--with-pkgconfigdir) support.
+
+  10 Jul 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -pkgconfig-openbsd-20120504.ebuild:
+  old
+
+*pkgconfig-openbsd-20120710 (10 Jul 2012)
+
+  10 Jul 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +pkgconfig-openbsd-20120710.ebuild:
+  New snapshot after upstream restructure.
+
+  04 May 2012; Samuli Suominen <ssuominen@gentoo.org>
+  pkgconfig-openbsd-20120504.ebuild:
+  Remove GPL-2 from LICENSE field because pkg.m4 file has an exception that it
+  can be redistributed under the same license as the program itself wrt #414613
+
+  04 May 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -pkgconfig-openbsd-20120116.ebuild:
+  old
+
+*pkgconfig-openbsd-20120504 (04 May 2012)
+
+  04 May 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +pkgconfig-openbsd-20120504.ebuild, metadata.xml:
+  New snapshot with USE="pkg-config" for compability with virtual/pkgconfig.
+
+  17 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  pkgconfig-openbsd-20120116.ebuild:
+  Missing virtual/perl-Getopt-Long RDEPEND for "use Getopt::Long;" in
+  /usr/bin/pkg-config-openbsd.
+
+  17 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  pkgconfig-openbsd-20120116.ebuild:
+  Use "archname" instead of "ARCH" from Config.pm of dev-lang/perl to avoid
+  warning "Use of uninitialized value $machine_arch in string eq at
+  /usr/bin/pkg-config-openbsd line 114."
+
+*pkgconfig-openbsd-20120116 (16 Jan 2012)
+
+  16 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +pkgconfig-openbsd-20120116.ebuild:
+  Initial commit.

@@ -1,0 +1,298 @@
+# ChangeLog for dev-perl/Alien-wxWidgets
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Alien-wxWidgets/ChangeLog,v 1.62 2015/06/13 19:24:13 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  Alien-wxWidgets-0.640.0-r1.ebuild, Alien-wxWidgets-0.670.0.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  Alien-wxWidgets-0.640.0-r1.ebuild, Alien-wxWidgets-0.670.0.ebuild:
+  The Module::Pluggable module is no longer part of core Perl and has been
+  moved to dev-perl
+
+*Alien-wxWidgets-0.670.0 (12 Apr 2015)
+
+  12 Apr 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Alien-wxWidgets-0.670.0.ebuild:
+  Version bump
+
+  12 Sep 2014; Mikle Kolyada <zlogene@gentoo.org>
+  -Alien-wxWidgets-0.610.0.ebuild, -Alien-wxWidgets-0.620.0.ebuild:
+  Drop old.
+
+*Alien-wxWidgets-0.640.0-r1 (25 Aug 2014)
+
+  25 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Alien-wxWidgets-0.640.0-r1.ebuild, -Alien-wxWidgets-0.640.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  30 Dec 2013; Ryan Hill <dirtyepic@gentoo.org> Alien-wxWidgets-0.610.0.ebuild,
+  Alien-wxWidgets-0.620.0.ebuild, Alien-wxWidgets-0.640.0.ebuild:
+  You can't depend on multiple versions of wxGTK.
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> Alien-wxWidgets-0.640.0.ebuild:
+  Stable for x86, wrt bug #492066
+
+  22 Dec 2013; Pacho Ramos <pacho@gentoo.org> Alien-wxWidgets-0.640.0.ebuild:
+  amd64 stable, bug #492066
+
+*Alien-wxWidgets-0.640.0 (25 Aug 2013)
+
+  25 Aug 2013; Patrick Lauer <patrick@gentoo.org>
+  +Alien-wxWidgets-0.640.0.ebuild:
+  Bump
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> Alien-wxWidgets-0.620.0.ebuild:
+  Stable for x86, wrt bug #456564
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> Alien-wxWidgets-0.620.0.ebuild:
+  Stable for amd64, wrt bug #456564
+
+  08 Jan 2013; Torsten Veller <tove@gentoo.org>
+  -Alien-wxWidgets-0.590.0.ebuild, -Alien-wxWidgets-0.600.0.ebuild:
+  Cleanup
+
+*Alien-wxWidgets-0.620.0 (09 Dec 2012)
+
+  09 Dec 2012; Torsten Veller <tove@gentoo.org>
+  +Alien-wxWidgets-0.620.0.ebuild:
+  Version bump
+
+  06 Dec 2012; <ago@gentoo.org> Alien-wxWidgets-0.610.0.ebuild:
+  Stable for x86, wrt bug #441206
+
+  06 Dec 2012; <ago@gentoo.org> Alien-wxWidgets-0.610.0.ebuild:
+  Stable for amd64, wrt bug #441206
+
+*Alien-wxWidgets-0.610.0 (24 Sep 2012)
+
+  24 Sep 2012; Torsten Veller <tove@gentoo.org>
+  +Alien-wxWidgets-0.610.0.ebuild:
+  Version bump
+
+  02 Sep 2012; Torsten Veller <tove@gentoo.org>
+  -Alien-wxWidgets-0.530.0.ebuild, -Alien-wxWidgets-0.570.0.ebuild:
+  Cleanup
+
+*Alien-wxWidgets-0.600.0 (31 Aug 2012)
+
+  31 Aug 2012; Torsten Veller <tove@gentoo.org>
+  +Alien-wxWidgets-0.600.0.ebuild:
+  Version bump
+
+  11 Aug 2012; Markus Meier <maekke@gentoo.org> Alien-wxWidgets-0.590.0.ebuild:
+  x86 stable, bug #419197
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org>
+  Alien-wxWidgets-0.590.0.ebuild:
+  Stable for amd64, wrt bug #419197
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+*Alien-wxWidgets-0.590.0 (03 May 2012)
+
+  03 May 2012; Torsten Veller <tove@gentoo.org>
+  +Alien-wxWidgets-0.590.0.ebuild:
+  Version bump
+
+  21 Apr 2012; Torsten Veller <tove@gentoo.org>
+  -Alien-wxWidgets-0.550.0.ebuild, -Alien-wxWidgets-0.560.0.ebuild:
+  Cleanup
+
+*Alien-wxWidgets-0.570.0 (29 Mar 2012)
+
+  29 Mar 2012; Torsten Veller <tove@gentoo.org>
+  +Alien-wxWidgets-0.570.0.ebuild:
+  Version bump
+
+*Alien-wxWidgets-0.560.0 (17 Mar 2012)
+
+  17 Mar 2012; Torsten Veller <tove@gentoo.org>
+  +Alien-wxWidgets-0.560.0.ebuild:
+  Version bump
+
+*Alien-wxWidgets-0.550.0 (28 Feb 2012)
+
+  28 Feb 2012; Torsten Veller <tove@gentoo.org>
+  +Alien-wxWidgets-0.550.0.ebuild:
+  Version bump
+
+  27 Dec 2011; Torsten Veller <tove@gentoo.org> -Alien-wxWidgets-0.47.ebuild,
+  -Alien-wxWidgets-0.520.0.ebuild:
+  Cleanup
+
+  11 Dec 2011; Markus Meier <maekke@gentoo.org> Alien-wxWidgets-0.530.0.ebuild:
+  x86 stable, bug #388765
+
+  04 Dec 2011; Markos Chandras <hwoarang@gentoo.org>
+  Alien-wxWidgets-0.530.0.ebuild:
+  Stable on amd64 wrt bug #388765
+
+*Alien-wxWidgets-0.530.0 (21 Oct 2011)
+
+  21 Oct 2011; Torsten Veller <tove@gentoo.org>
+  +Alien-wxWidgets-0.530.0.ebuild:
+  Version bump
+
+  30 Jul 2011; Torsten Veller <tove@gentoo.org> -Alien-wxWidgets-0.51.ebuild:
+  Cleanup
+
+  05 Jul 2011; Torsten Veller <tove@gentoo.org> Alien-wxWidgets-0.47.ebuild,
+  Alien-wxWidgets-0.51.ebuild, Alien-wxWidgets-0.520.0.ebuild:
+  Inherit perl after wxwidgets (#374129) broken by wxwidgets inheriting base
+  (#372831)
+
+*Alien-wxWidgets-0.520.0 (06 Jun 2011)
+
+  06 Jun 2011; Torsten Veller <tove@gentoo.org>
+  +Alien-wxWidgets-0.520.0.ebuild:
+  Version bump
+
+  09 Apr 2010; Torsten Veller <tove@gentoo.org>
+  -Alien-wxWidgets-0.43.ebuild, -Alien-wxWidgets-0.44.ebuild,
+  -Alien-wxWidgets-0.46.ebuild, -Alien-wxWidgets-0.48.ebuild,
+  -Alien-wxWidgets-0.50.ebuild:
+  Cleanup
+
+*Alien-wxWidgets-0.51 (31 Mar 2010)
+
+  31 Mar 2010; Torsten Veller <tove@gentoo.org>
+  +Alien-wxWidgets-0.51.ebuild:
+  Version bump
+
+  14 Feb 2010; Ryan Hill <dirtyepic@gentoo.org> Alien-wxWidgets-0.43.ebuild,
+  Alien-wxWidgets-0.44.ebuild, Alien-wxWidgets-0.46.ebuild,
+  Alien-wxWidgets-0.47.ebuild, Alien-wxWidgets-0.48.ebuild,
+  Alien-wxWidgets-0.50.ebuild:
+  wxGTK-2.8 is always unicode so need-wxwidgets unicode and need-wxwidgets
+  gtk2 are equivalent.
+
+*Alien-wxWidgets-0.50 (12 Jan 2010)
+
+  12 Jan 2010; Torsten Veller <tove@gentoo.org>
+  +Alien-wxWidgets-0.50.ebuild:
+  Version bump
+
+  10 Jan 2010; Markus Meier <maekke@gentoo.org> Alien-wxWidgets-0.47.ebuild:
+  amd64 stable, bug #298178
+
+  08 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  Alien-wxWidgets-0.47.ebuild:
+  stable x86, bug 298178
+
+*Alien-wxWidgets-0.48 (26 Dec 2009)
+
+  26 Dec 2009; Torsten Veller <tove@gentoo.org>
+  +Alien-wxWidgets-0.48.ebuild:
+  Version bump
+
+*Alien-wxWidgets-0.47 (06 Dec 2009)
+
+  06 Dec 2009; Torsten Veller <tove@gentoo.org>
+  +Alien-wxWidgets-0.47.ebuild:
+  Version bump
+
+*Alien-wxWidgets-0.46 (10 Nov 2009)
+
+  10 Nov 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +Alien-wxWidgets-0.46.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  07 Sep 2009; Torsten Veller <tove@gentoo.org>
+  -Alien-wxWidgets-0.21.ebuild:
+  Cleanup
+
+  06 Sep 2009; Markus Meier <maekke@gentoo.org> Alien-wxWidgets-0.43.ebuild:
+  amd64 stable, bug #280501
+
+  02 Sep 2009; Christian Faulhammer <fauli@gentoo.org>
+  Alien-wxWidgets-0.43.ebuild:
+  stable x86, bug 280501
+
+*Alien-wxWidgets-0.44 (10 Aug 2009)
+
+  10 Aug 2009; Torsten Veller <tove@gentoo.org>
+  +Alien-wxWidgets-0.44.ebuild:
+  Version bump
+
+  03 Jun 2009; Torsten Veller <tove@gentoo.org>
+  -Alien-wxWidgets-0.42.ebuild:
+  Cleanup
+
+*Alien-wxWidgets-0.43 (22 May 2009)
+
+  22 May 2009; Torsten Veller <tove@gentoo.org>
+  +Alien-wxWidgets-0.43.ebuild:
+  Version bump
+
+  02 May 2009; Torsten Veller <tove@gentoo.org>
+  -Alien-wxWidgets-0.34.ebuild:
+  Cleanup
+
+*Alien-wxWidgets-0.42 (23 Dec 2008)
+
+  23 Dec 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +Alien-wxWidgets-0.42.ebuild:
+  Version bump.
+
+  18 Nov 2008; Torsten Veller <tove@gentoo.org> Alien-wxWidgets-0.21.ebuild,
+  Alien-wxWidgets-0.34.ebuild:
+  New virtuals: module-build Module-Pluggable
+
+  30 Sep 2008; Torsten Veller <tove@gentoo.org>
+  -Alien-wxWidgets-0.20-r1.ebuild, -Alien-wxWidgets-0.30.ebuild,
+  Alien-wxWidgets-0.34.ebuild:
+  Cleanup
+
+*Alien-wxWidgets-0.34 (28 Apr 2008)
+
+  28 Apr 2008; Yuval Yaari <yuval@gentoo.org> +Alien-wxWidgets-0.34.ebuild:
+  Version bump
+
+  22 Apr 2007; Ryan Hill <dirtyepic@gentoo.org>
+  Alien-wxWidgets-0.20-r1.ebuild, Alien-wxWidgets-0.21.ebuild,
+  Alien-wxWidgets-0.30.ebuild:
+  Fix wxwidgets handling for bug #151417.
+
+*Alien-wxWidgets-0.30 (19 Mar 2007)
+
+  19 Mar 2007; <yuval@gentoo.org> +Alien-wxWidgets-0.30.ebuild:
+  Version bump
+
+  15 Oct 2006; Aron Griffis <agriffis@gentoo.org>
+  Alien-wxWidgets-0.21.ebuild:
+  Mark 0.21 ~ia64. #144122
+
+  08 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  Alien-wxWidgets-0.21.ebuild:
+  Marking amd64 stable
+
+  07 Sep 2006; Michael Cummings <mcummings@gentoo.org>
+  -Alien-wxWidgets-0.19.ebuild, -Alien-wxWidgets-0.20.ebuild:
+  Cleaning up old ebuilds
+
+*Alien-wxWidgets-0.21 (04 Sep 2006)
+
+  04 Sep 2006; Yuval Yaari <yuval@gentoo.org> +Alien-wxWidgets-0.21.ebuild:
+  Version bump
+
+*Alien-wxWidgets-0.20-r1 (20 Aug 2006)
+
+  20 Aug 2006; Yuval Yaari <yuval@gentoo.org>
+  +Alien-wxWidgets-0.20-r1.ebuild:
+  Revision bump: making sure wxGTK's SLOTs don't make problems (reported by
+  Patterner over IRC)
+
+*Alien-wxWidgets-0.20 (20 Aug 2006)
+
+  20 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  +Alien-wxWidgets-0.20.ebuild:
+  Version bump
+
+*Alien-wxWidgets-0.19 (16 Aug 2006)
+
+  16 Aug 2006; <yuval@gentoo.org> +Alien-wxWidgets-0.19.ebuild:
+  Adding dev-perl/Alien-wxWidgets to the tree

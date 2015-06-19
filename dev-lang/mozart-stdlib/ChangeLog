@@ -1,0 +1,76 @@
+# ChangeLog for dev-lang/mozart-stdlib
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/mozart-stdlib/ChangeLog,v 1.17 2015/05/23 15:42:43 mrueg Exp $
+
+  23 May 2015; Manuel Rüger <mrueg@gentoo.org> -mozart-stdlib-1.3.2-r1.ebuild,
+  -mozart-stdlib-1.3.2.ebuild, -mozart-stdlib-1.4.0.ebuild:
+  Remove old.
+
+  16 Dec 2012; Agostino Sarubbo <ago@gentoo.org> mozart-stdlib-1.4.0-r1.ebuild:
+  Stable for x86, wrt bug #441176
+
+  07 Dec 2012; Agostino Sarubbo <ago@gentoo.org> mozart-stdlib-1.4.0-r1.ebuild:
+  Stable for ppc, wrt bug #441176
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org> mozart-stdlib-1.3.2.ebuild,
+  mozart-stdlib-1.3.2-r1.ebuild, mozart-stdlib-1.4.0.ebuild,
+  mozart-stdlib-1.4.0-r1.ebuild:
+  Drop sparc keywords
+
+*mozart-stdlib-1.4.0-r1 (20 Nov 2010)
+
+  20 Nov 2010; <keri@gentoo.org> +mozart-stdlib-1.4.0-r1.ebuild,
+  +files/mozart-stdlib-1.4.0-docroot.patch:
+  Drop doc USE flag since ozmake always installs docs; install docs into
+  /usr/share/doc
+
+  20 Nov 2010; <keri@gentoo.org> mozart-stdlib-1.4.0.ebuild:
+  QA - remove die from econf call; add die to do... function calls
+
+  27 Nov 2008; <keri@gentoo.org> mozart-stdlib-1.3.2.ebuild,
+  mozart-stdlib-1.3.2-r1.ebuild, mozart-stdlib-1.4.0.ebuild:
+  Add -amd64 -ppc64 to KEYWORDS. Bug #248276.
+
+*mozart-stdlib-1.4.0 (06 Jul 2008)
+
+  06 Jul 2008; keri <keri@gentoo.org>
+  +files/mozart-stdlib-1.4.0-ozload.patch, +mozart-stdlib-1.4.0.ebuild:
+  Version bump.
+
+  23 Feb 2008; keri <keri@gentoo.org> mozart-stdlib-1.3.2.ebuild,
+  mozart-stdlib-1.3.2-r1.ebuild:
+  QA: remove redundant call to cd ${S} in src_compile.
+
+*mozart-stdlib-1.3.2-r1 (23 Feb 2008)
+
+  23 Feb 2008; keri <keri@gentoo.org>
+  +files/mozart-stdlib-1.3.2-r1-ozmake.patch,
+  +mozart-stdlib-1.3.2-r1.ebuild:
+  Install binaries into Mozart bin dir.
+
+  16 Nov 2007; nixnut <nixnut@gentoo.org> mozart-stdlib-1.3.2.ebuild:
+  Stable on ppc wrt bug 199091
+
+  15 Nov 2007; Christian Faulhammer <opfer@gentoo.org>
+  mozart-stdlib-1.3.2.ebuild:
+  stable x86, bug 199019
+
+  14 Nov 2007; Ferris McCormick <fmccor@gentoo.org>
+  mozart-stdlib-1.3.2.ebuild:
+  Sparc stable, bug #199019.
+
+  17 Feb 2007; keri <keri@gentoo.org> mozart-stdlib-1.3.2.ebuild:
+  Parallelize build.
+
+  17 Feb 2007; keri <keri@gentoo.org> mozart-stdlib-1.3.2.ebuild:
+  Add ~sparc to KEYWORDS.
+
+  17 Feb 2007; keri <keri@gentoo.org> mozart-stdlib-1.3.2.ebuild:
+  Add ~ppc to KEYWORDS
+
+*mozart-stdlib-1.3.2 (16 Feb 2007)
+
+  16 Feb 2007; keri <keri@gentoo.org> +files/mozart-stdlib-1.3.2-doc.patch,
+  +files/mozart-stdlib-1.3.2-ozmake.patch, +metadata.xml,
+  +mozart-stdlib-1.3.2.ebuild:
+  Initial import.

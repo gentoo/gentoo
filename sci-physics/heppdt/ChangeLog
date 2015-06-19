@@ -1,0 +1,20 @@
+# ChangeLog for sci-physics/heppdt
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-physics/heppdt/ChangeLog,v 1.4 2012/08/07 17:19:39 bicatali Exp $
+
+  07 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> heppdt-3.04.01.ebuild:
+  Added static-libs flag, fixed tests when linking to shared libs, keyword
+  amd64-linux, x86-linux
+
+  25 May 2010; Pacho Ramos <pacho@gentoo.org> heppdt-3.04.01.ebuild:
+  stable amd64, bug 318463
+
+  17 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  heppdt-3.04.01.ebuild:
+  x86 stable wrt bug #318463
+
+*heppdt-3.04.01 (23 Mar 2010)
+
+  23 Mar 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  +heppdt-3.04.01.ebuild, +metadata.xml:
+  Initial import

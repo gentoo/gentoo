@@ -1,0 +1,39 @@
+From: rezso <rezso@example.com>
+Date: Mon, 19 May 2014 09:20:40 +0100
+Subject: [PATCH] fix installing lucene++ headers in 3.0.6
+
+Origin: upstream, https://github.com/luceneplusplus/LucenePlusPlus/commit/994f03cf736229044a168835ae7387696041658f
+Description: backport upstream patch to fix missing headers install
+
+Index: lucene++-3.0.6/CMakeLists.txt
+===================================================================
+--- lucene++-3.0.6.orig/CMakeLists.txt
++++ lucene++-3.0.6/CMakeLists.txt
+@@ -139,6 +139,14 @@ if(NOT WIN32)
+     DESTINATION ${LIB_DESTINATION}/pkgconfig)
+ endif()
+ 
++#################################
++# install Config.h
++#################################
++install(
++  FILES
++  "${CMAKE_CURRENT_BINARY_DIR}/include/Config.h"
++  DESTINATION include/lucene++)
++
+ ####################################
+ # custom targets
+ ####################################
+Index: lucene++-3.0.6/src/core/CMakeLists.txt
+===================================================================
+--- lucene++-3.0.6.orig/src/core/CMakeLists.txt
++++ lucene++-3.0.6/src/core/CMakeLists.txt
+@@ -20,7 +20,7 @@ file(GLOB_RECURSE lucene_internal_header
+ )
+ 
+ file(GLOB_RECURSE lucene_headers
+-  include/*.h
++  "${lucene++_SOURCE_DIR}/include/*.h"
+ )
+ 
+ add_definitions(-DLPP_BUILDING_LIB)

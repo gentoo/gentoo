@@ -1,0 +1,92 @@
+--- build.xml.orig	2012-09-27 16:13:40.750930136 +0200
++++ build.xml	2012-09-27 16:16:31.725093475 +0200
+@@ -373,21 +373,13 @@
+ 
+     <!-- create checkout directory if necessary -->
+     <target name="prepare-checkout" if="do.checkout">
+-        <mkdir dir="${svn.checkout.dir}" />
++	    <echo message="Removed by patch." />
+     </target>
+ 
+ 
+     <!-- checkout if so defined -->
+     <target name="checkout" depends="prepare" if="do.checkout">
+-        <svn javahl="${javahl.dir}" >
+-        	<checkout url="https://jython.svn.sourceforge.net/svnroot/jython/${svn.main.dir}/jython" revision="${svn.revision}" destPath="${svn.checkout.dir}/jython" />
+-        	<checkout url="https://jython.svn.sourceforge.net/svnroot/jython/${svn.main.dir}/installer" revision="${svn.revision}" destPath="${svn.checkout.dir}/installer" />
+-        </svn> 
+-
+-        <!-- checkout cpython license from the correct python maintenance branch -->
+-        <svn javahl="${javahl.dir}" >
+-               <checkout url="http://svn.python.org/projects/python/branches/release22-maint/" destPath="${svn.checkout.dir}/python" recurse="false" />
+-        </svn> 
++    	<echo message="removed by patch" />
+     </target>
+ 
+ 	
+@@ -488,6 +480,7 @@
+         />
+ 
+         <!-- java files used by tests -->
++<!--
+         <javac srcdir="${jython.base.dir}/Lib/test/"
+                includes="javatests/**"
+                destdir="${output.dir}/"
+@@ -498,6 +491,7 @@
+                deprecation="${deprecation}"
+                nowarn="${nowarn}"
+         />
++-->
+ 
+         <copy file="${source.dir}/org/python/modules/ucnhash.dat"
+               todir="${output.dir}/org/python/modules"
+@@ -551,28 +545,13 @@
+ 
+ 
+     <!-- build the .html files using the ht2html tool -->
+-    <target name="doc" depends="compile" if="full-build">
+-        <fail unless="ht2html.dir" message="ht2html.dir is not set" />
+-        <copy todir="${dist.dir}/Doc" preservelastmodified="true">
+-            <fileset dir="Doc" includes="*.ht, **/*.gif" />
+-        </copy>
+-        <!-- Create .html files in Doc -->
+-        <apply executable="${python.exe}" dir="Doc">
+-            <env key="PYTHONPATH" path="${jython.base.dir}/Misc/htgen" />
+-            <arg line="${ht2html.dir}/ht2html.py" />
+-            <arg line="-s JyLocalGenerator" />
+-            <fileset dir="${dist.dir}/Doc">
+-                <include name="*.ht" />
+-            </fileset>
+-        </apply>
+-        <delete>
+-            <fileset dir="${dist.dir}/Doc" includes="*.ht" />
+-        </delete>
++    <target name="doc" depends="compile">
++    	<echo message="Functionality removed by gentoo patch" />
+     </target>
+ 
+ 
+     <!-- javadoc -->
+-    <target name="javadoc" depends="compile" if="full-build">
++    <target name="javadoc" depends="compile">
+         <javadoc sourcepath="${source.dir}"
+                  destdir="${apidoc.dir}"
+                  source="${jdk.source.version}"
+@@ -588,7 +567,7 @@
+ 
+ 
+     <!-- copy for full distribution -->
+-    <target name="copy-full" if="full-build">
++    <target name="copy-full">
+         <!-- Misc files -->
+         <echo>copy misc files from ${jython.base.dir}</echo>
+         <copy todir="${dist.dir}" preservelastmodified="true">
+@@ -599,7 +578,7 @@
+ 
+         <!-- copy the CPython license -->
+         <echo>copy CPython LICENSE from ${svn.checkout.dir}/python</echo>
+-        <copy file="${svn.checkout.dir}/python/LICENSE" tofile="${dist.dir}/LICENSE_CPython.txt" preservelastmodified="true" />
++	<copy file="${python.lib}/../LICENSE" tofile="${dist.dir}/LICENSE_CPython.txt" preservelastmodified="true" />
+ 
+         <!-- sources: todir has to correspond with installer/**/JarInstaller.java -->
+         <echo>copy sources from ${jython.base.dir}</echo>

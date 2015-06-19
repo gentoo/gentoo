@@ -1,0 +1,14 @@
+Index: jack-rack-1.4.8_rc1/src/ui_callbacks.c
+===================================================================
+--- jack-rack-1.4.8_rc1.orig/src/ui_callbacks.c
++++ jack-rack-1.4.8_rc1/src/ui_callbacks.c
+@@ -669,7 +669,9 @@ jack_session_cb (gpointer data)
+ 
+   ui->js_event->command_line = strdup( cmd_buf );
+ 
++#ifdef HAVE_XML
+   if (!ui_save_file (ui, fname_buf))
++#endif
+     ui->js_event->flags = JackSessionSaveError;
+ 
+   jack_session_reply( ui->procinfo->jack_client, ui->js_event );

@@ -1,0 +1,15 @@
+# ChangeLog for sys-boot/makebootfat
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/makebootfat/ChangeLog,v 1.4 2010/04/25 11:11:02 jlec Exp $
+
+  29 Mar 2010; <jlec@gentoo.org> metadata.xml:
+  Took the package
+
+  20 Dec 2009; Torsten Veller <tove@gentoo.org> metadata.xml:
+  From maintainer-wanted to maintainer-needed
+
+*makebootfat-1.4 (18 May 2009)
+
+  18 May 2009; Justin Lecher <jlec@gentoo.org>
+  +makebootfat-1.4.ebuild, +metadata.xml:
+  Initial setup #270301.

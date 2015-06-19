@@ -1,0 +1,161 @@
+# ChangeLog for net-wireless/wifi-radar
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/wifi-radar/ChangeLog,v 1.39 2015/04/08 18:20:55 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> wifi-radar-2.0.8-r2.ebuild:
+  Drop old Python implementations
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  wifi-radar-2.0.8-r2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  05 Jul 2014; Jeroen Roovers <jer@gentoo.org> wifi-radar-2.0.8-r2.ebuild:
+  Update HOMEPAGE/SRC_URI (bug #516444 by hfern).
+
+  22 Mar 2014; Michael Palimaka <kensington@gentoo.org>
+  -wifi-radar-2.0.8-r1.ebuild:
+  Remove old.
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> wifi-radar-2.0.8-r2.ebuild:
+  Stable for x86, wrt bug #495908
+
+  12 Jan 2014; Pacho Ramos <pacho@gentoo.org> wifi-radar-2.0.8-r2.ebuild:
+  amd64 stable, bug #495908
+
+*wifi-radar-2.0.8-r2 (13 Oct 2013)
+
+  13 Oct 2013; Pacho Ramos <pacho@gentoo.org> +wifi-radar-2.0.8-r2.ebuild:
+  Use new eclasses, fix ifconfig path (#484380) and add missing dep on sudo
+  (#484378)
+
+  02 Feb 2013; Pacho Ramos <pacho@gentoo.org> -wifi-radar-1.9.8-r1.ebuild,
+  -wifi-radar-1.9.9.ebuild, -wifi-radar-2.0.8.ebuild, metadata.xml:
+  Cleanup up due #48914
+
+  16 Dec 2012; Agostino Sarubbo <ago@gentoo.org> wifi-radar-2.0.8-r1.ebuild:
+  Stable for x86, wrt bug #441504
+
+  08 Dec 2012; <ago@gentoo.org> wifi-radar-2.0.8-r1.ebuild:
+  Stable for amd64, wrt bug #441504
+
+  18 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop mobile herd as talked in gentoo-dev ML
+
+  05 Oct 2012; Agostino Sarubbo <ago@gentoo.org> wifi-radar-2.0.8-r1.ebuild:
+  Use more
+
+  04 Oct 2012; Agostino Sarubbo <ago@gentoo.org> wifi-radar-2.0.8-r1.ebuild:
+  move sed to src_prepare
+
+*wifi-radar-2.0.8-r1 (03 Oct 2012)
+
+  03 Oct 2012; Rick Farina <zerochaos@gentoo.org> +wifi-radar-2.0.8-r1.ebuild:
+  force python2, drop pointless use flag, create /etc/wifi-radar, makes me happy
+
+  04 Dec 2011; Markos Chandras <hwoarang@gentoo.org> wifi-radar-2.0.8.ebuild:
+  Stable on amd64 wrt bug #391487
+
+  01 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> wifi-radar-2.0.8.ebuild:
+  x86 stable wrt bug #391487
+
+  15 Apr 2011; Ulrich Mueller <ulm@gentoo.org> wifi-radar-1.9.8-r1.ebuild,
+  wifi-radar-1.9.9.ebuild, wifi-radar-2.0.8.ebuild:
+  Replace dependency on old-style virtual/dhcpc, bug 358827.
+
+*wifi-radar-2.0.8 (03 Sep 2010)
+
+  03 Sep 2010; Michele Noberasco <s4t4n@gentoo.org> wifi-radar-2.0.8.ebuild:
+  Version bump, closing bug #327947.
+
+  14 Jan 2009; Michele Noberasco <s4t4n@gentoo.org>
+  wifi-radar-1.9.8-r1.ebuild, wifi-radar-1.9.9.ebuild:
+  Fixed dodoc entries, closing bug #250162.
+  Fixed locations of config files, closing bug #249842.
+  Fixed pathing of version 1.9.8-r1, closing bug #250206.
+
+*wifi-radar-1.9.9 (02 Dec 2008)
+
+  02 Dec 2008; Michele Noberasco <s4t4n@gentoo.org> wifi-radar-1.9.9.ebuild:
+  Version bump, closing bug #249351.
+  wifi-radar-1.9.6-r1.ebuild:
+  Wiped out oldest version.
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org> wifi-radar-1.9.6-r1.ebuild,
+  wifi-radar-1.9.8-r1.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+  28 Jul 2007; Christoph Mende <angelos@gentoo.org>
+  wifi-radar-1.9.8-r1.ebuild:
+  Stable on amd64 wrt bug #179012
+
+  23 May 2007; Michele Noberasco <s4t4n@gentoo.org> wifi-radar-1.9.8-r1.ebuild:
+  Stable for x86, closing bug #179012.
+  wifi-radar-1.9.7.ebuild:
+  Wiped out.
+
+*wifi-radar-1.9.8-r1 (18 Apr 2007)
+
+  18 Apr 2007; Michele Noberasco <s4t4n@gentoo.org> wifi-radar-1.9.8-r1.ebuild:
+  Revision bump, closing bug #174713.
+  wifi-radar-1.9.8.ebuild:
+  Wiped out previous revision.
+
+  15 Apr 2007; Peter Weller <welp@gentoo.org> wifi-radar-1.9.8.ebuild:
+  Rekeyworded, bug 174713
+
+  15 Apr 2007; Peter Weller <welp@gentoo.org> wifi-radar-1.9.8.ebuild:
+  Stable on amd64 wrt bug 174713
+
+  14 Mar 2007; Michele Noberasco <s4t4n@gentoo.org> wifi-radar-1.9.8.ebuild:
+  Propose some more changes to /etc/sudoers to fix bug #158593.
+  wifi-radar-1.9.4.ebuild:
+  Wiped out oldest version.
+
+*wifi-radar-1.9.8 (13 Mar 2007)
+
+  13 Mar 2007; Michele Noberasco <s4t4n@gentoo.org> wifi-radar-1.9.8.ebuild:
+  Version bump, closing bug #166185.
+
+  12 Mar 2007; Raúl Porcel <armin76@gentoo.org> wifi-radar-1.9.7.ebuild:
+  x86 stable
+
+*wifi-radar-1.9.7 (08 Jan 2007)
+
+  08 Jan 2007; Michele Noberasco <s4t4n@gentoo.org> wifi-radar-1.9.7.ebuild:
+  Version bump, closing bug #157473.
+
+  20 Nov 2006; <blubb@gentoo.org> wifi-radar-1.9.6-r1.ebuild:
+  stable on amd64
+
+  20 Nov 2006; Christian Faulhammer <opfer@gentoo.org>
+  wifi-radar-1.9.6-r1.ebuild:
+  stable x86, bug #148948
+
+*wifi-radar-1.9.6-r1 (08 Sep 2006)
+
+  08 Sep 2006; Michele Noberasco <s4t4n@gentoo.org> wifi-radar-1.9.6-r1.ebuild:
+  Revision bump, with fix for icon installation. Closes bug #146757.
+  wifi-radar-1.9.6.ebuild:
+  Wiped out previsious revision.
+
+*wifi-radar-1.9.6 (28 Aug 2006)
+
+  28 Aug 2006; Michele Noberasco <s4t4n@gentoo.org> wifi-radar-1.9.6.ebuild:
+  Version bump. Closes bug #145202.
+  wifi-radar-1.9.4.ebuild:
+  Changed HOMEPAGE and SRC_URI to new ones.
+
+  23 Aug 2006; Michele Noberasco <s4t4n@gentoo.org> wifi-radar-1.9.4.ebuild:
+  Removed sudo from DEPEND. Marked stable for x86. Closes bug #141245
+
+  22 Feb 2006; Scott Stoddard <deltacow@gentoo.org> wifi-radar-1.9.4.ebuild:
+  ~amd64 added.  Thanks to Pierce Ward <pierceward@gmail.com> for testing 
+  and reporting.
+
+  08 Jan 2006; Joseph Jezak <josejx@gentoo.org> wifi-radar-1.9.4.ebuild:
+  Marked ~ppc for bug #114564.
+
+*wifi-radar-1.9.4 (04 Nov 2005)
+
+  04 Nov 2005; Michele Noberasco <s4t4n@gentoo.org> wifi-radar-1.9.4.ebuild:
+  Initial import. Closes bug #70591.

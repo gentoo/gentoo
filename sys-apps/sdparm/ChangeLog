@@ -1,0 +1,302 @@
+# ChangeLog for sys-apps/sdparm
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/sdparm/ChangeLog,v 1.81 2014/12/31 22:21:10 polynomial-c Exp $
+
+  31 Dec 2014; Lars Wendler <polynomial-c@gentoo.org> sdparm-1.09.ebuild:
+  Fixed dependency on sg3_utils. Thanks to Jiří Moravec for reporting this in
+  bug #534142.
+
+*sdparm-1.09 (29 Dec 2014)
+
+  29 Dec 2014; Lars Wendler <polynomial-c@gentoo.org> +sdparm-1.09.ebuild:
+  Version bump.
+
+  17 Oct 2014; Mike Frysinger <vapier@gentoo.org> sdparm-1.08-r1.ebuild:
+  Drop redundant install of sas_disk_blink #523406 by Michał Bartoszkiewicz.
+
+  14 Jan 2014; Mike Frysinger <vapier@gentoo.org> sdparm-1.08-r1.ebuild:
+  Add s390 love.
+
+  07 Jan 2014; Lars Wendler <polynomial-c@gentoo.org> -sdparm-1.03.ebuild,
+  -sdparm-1.04.ebuild, -sdparm-1.05.ebuild, -sdparm-1.06.ebuild,
+  -sdparm-1.08.ebuild:
+  Removed old versions and files.
+
+*sdparm-1.08-r1 (02 Jan 2014)
+
+  02 Jan 2014; Mike Frysinger <vapier@gentoo.org> +sdparm-1.08-r1.ebuild:
+  Fix depend on sg3_utils #479578 by Eric F. GARIOUD.
+
+*sdparm-1.08 (10 Jun 2013)
+
+  10 Jun 2013; Tim Harder <radhermit@gentoo.org> +sdparm-1.08.ebuild:
+  Version bump.
+
+  17 Feb 2013; Zac Medico <zmedico@gentoo.org> sdparm-1.07.ebuild:
+  Add ~arm-linux keyword.
+
+  28 Oct 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer as talked with him.
+
+  19 Aug 2012; Raúl Porcel <armin76@gentoo.org> sdparm-1.07.ebuild:
+  alpha/ia64/sh/sparc stable wrt #422189
+
+  14 Jul 2012; Markus Meier <maekke@gentoo.org> sdparm-1.07.ebuild:
+  arm stable, bug #422189
+
+  29 Jun 2012; Jeroen Roovers <jer@gentoo.org> sdparm-1.07.ebuild:
+  Stable for HPPA (bug #422189).
+
+  29 Jun 2012; Brent Baude <ranger@gentoo.org> sdparm-1.07.ebuild:
+  Marking sdparm-1.07 ppc for bug 422189
+
+  22 Jun 2012; Brent Baude <ranger@gentoo.org> sdparm-1.07.ebuild:
+  Marking sdparm-1.07 ppc64 for bug 422189
+
+  20 Jun 2012; Jeff Horelick <jdhore@gentoo.org> sdparm-1.07.ebuild:
+  marked x86 per bug 422189
+
+  19 Jun 2012; Agostino Sarubbo <ago@gentoo.org> sdparm-1.07.ebuild:
+  Stable for amd64, wrt bug #422189
+
+  14 Apr 2012; Zac Medico <zmedico@gentoo.org> sdparm-1.07.ebuild:
+  Add ~amd64-linux keyword.
+
+  02 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> sdparm-1.06.ebuild:
+  ppc/ppc64 stable wrt #397213
+
+*sdparm-1.07 (24 Jan 2012)
+
+  24 Jan 2012; Tim Harder <radhermit@gentoo.org> +sdparm-1.07.ebuild:
+  Version bump.
+
+  15 Jan 2012; Raúl Porcel <armin76@gentoo.org> sdparm-1.06.ebuild:
+  alpha/ia64/sh/sparc/x86 stable wrt #397213
+
+  12 Jan 2012; Markus Meier <maekke@gentoo.org> sdparm-1.06.ebuild:
+  arm stable, bug #397213
+
+  04 Jan 2012; Jeroen Roovers <jer@gentoo.org> sdparm-1.06.ebuild:
+  Stable for HPPA (bug #397213).
+
+  02 Jan 2012; Agostino Sarubbo <ago@gentoo.org> sdparm-1.06.ebuild:
+  Stable for AMD64, wrt bug #397213
+
+  29 Jul 2011; Zac Medico <zmedico@gentoo.org> sdparm-1.06.ebuild:
+  Add ~x86-linux keyword.
+
+*sdparm-1.06 (26 Nov 2010)
+
+  26 Nov 2010; Robin H. Johnson <robbat2@gentoo.org> +sdparm-1.06.ebuild:
+  Version bump.
+
+  15 Aug 2010; Raúl Porcel <armin76@gentoo.org> sdparm-1.03.ebuild:
+  sh stable
+
+  22 May 2010; Raúl Porcel <armin76@gentoo.org> sdparm-1.03.ebuild,
+  sdparm-1.04.ebuild, sdparm-1.05.ebuild:
+  Add ~sh
+
+*sdparm-1.05 (16 Apr 2010)
+
+  16 Apr 2010; Mike Frysinger <vapier@gentoo.org> +sdparm-1.05.ebuild:
+  Version bump #315605 by Samuli Suominen.
+
+  13 Oct 2009; Robin H. Johnson <robbat2@gentoo.org> sdparm-1.04.ebuild:
+  Bug 288797: <sg3_utils-1.28 and >=sdparm-1.04 have a conflict on a script
+  sas_disk_blink that moved to sdparm.
+
+*sdparm-1.04 (12 Oct 2009)
+
+  12 Oct 2009; Robin H. Johnson <robbat2@gentoo.org> +sdparm-1.04.ebuild:
+  Version bump, bug #288773.
+
+  02 Dec 2008; Brent Baude <ranger@gentoo.org> sdparm-1.03.ebuild:
+  stable ppc64, bug 241636
+
+  09 Nov 2008; Tobias Klausmann <klausman@gentoo.org> ChangeLog:
+  Stable on alpha, bug #241636
+
+  08 Nov 2008; Raúl Porcel <armin76@gentoo.org> sdparm-1.03.ebuild:
+  Fix HOMEPAGE, SRC_URI
+
+  27 Oct 2008; Jeroen Roovers <jer@gentoo.org> sdparm-1.03.ebuild:
+  Stable for HPPA (bug #241636).
+
+  26 Oct 2008; Markus Meier <maekke@gentoo.org> sdparm-1.03.ebuild:
+  amd64/x86 stable, bug #241636
+
+  26 Oct 2008; nixnut <nixnut@gentoo.org> sdparm-1.03.ebuild:
+  Stable on ppc wrt bug 241636
+
+  27 Aug 2008; Raúl Porcel <armin76@gentoo.org> sdparm-1.03.ebuild:
+  alpha/ia64/sparc stable
+
+*sdparm-1.03 (04 Jul 2008)
+
+  04 Jul 2008; Robin H. Johnson <robbat2@gentoo.org> +sdparm-1.03.ebuild:
+  Version bump per bug #230740, but just from my overlay as it has better
+  SAS support now.
+
+  11 May 2008; <solar@gentoo.org> sdparm-1.02.ebuild:
+  - keyworded for ~arm
+
+  30 Mar 2008; Markus Meier <maekke@gentoo.org> sdparm-1.02.ebuild:
+  amd64/x86 stable, bug #215074
+
+  29 Mar 2008; Brent Baude <ranger@gentoo.org> sdparm-1.02.ebuild:
+  stable ppc, bug 215074
+
+  17 Jan 2008; Jeroen Roovers <jer@gentoo.org> sdparm-1.02.ebuild:
+  Stable for HPPA too.
+
+  15 Jan 2008; Brent Baude <ranger@gentoo.org> sdparm-1.02.ebuild:
+  Marking sdparm-1.02 ppc64 for bug 205925
+
+  17 Dec 2007; Raúl Porcel <armin76@gentoo.org> sdparm-1.02.ebuild:
+  alpha/ia64/sparc stable
+
+  20 Nov 2007; Markus Rothe <corsair@gentoo.org> sdparm-1.02.ebuild:
+  Added ~ppc64; bug #199372
+
+  09 Nov 2007; Mike Frysinger <vapier@gentoo.org> sdparm-1.02.ebuild:
+  No need to run `doman` as the makefile installs it for us.
+
+*sdparm-1.02 (09 Nov 2007)
+
+  09 Nov 2007; Joshua Kinard <kumba@gentoo.org> +sdparm-1.02.ebuild:
+  New Version.
+
+  15 Jul 2007; Raúl Porcel <armin76@gentoo.org> sdparm-1.01.ebuild:
+  Add ~ia64
+
+  02 Jul 2007; Christian Faulhammer <opfer@gentoo.org> sdparm-1.01.ebuild:
+  stable x86, bug 183310
+
+  28 Jun 2007; Jeroen Roovers <jer@gentoo.org> sdparm-1.01.ebuild:
+  Stable for HPPA (bug #183310).
+
+  28 Jun 2007; Joshua Kinard <kumba@gentoo.org> ChangeLog:
+  Stable on mips, per #183310.
+
+  27 Jun 2007; Raúl Porcel <armin76@gentoo.org> sdparm-1.01.ebuild:
+  alpha stable wrt #183310, thanks to Tobias Klausmann for testing
+
+  26 Jun 2007; Christoph Mende <angelos@gentoo.org> sdparm-1.01.ebuild:
+  Stable on amd64 wrt bug 183310
+
+  26 Jun 2007; Lars Weiler <pylon@gentoo.org> sdparm-1.01.ebuild:
+  Stable on ppc; bug #183310.
+
+  23 May 2007; Gustavo Zacarias <gustavoz@gentoo.org> sdparm-1.01.ebuild:
+  Stable on sparc
+
+  16 May 2007; Joshua Kinard <kumba@gentoo.org> sdparm-1.01.ebuild:
+  Stable on mips.
+
+*sdparm-1.01 (12 Apr 2007)
+
+  12 Apr 2007; Robin H. Johnson <robbat2@gentoo.org> +sdparm-1.01.ebuild:
+  Version bump.
+
+  21 Feb 2007; Alexander H. Færøy <eroyf@gentoo.org> sdparm-1.00.ebuild:
+  Stable on MIPS; bug #158516
+
+  30 Dec 2006; Bryan Østergaard <kloeri@gentoo.org> sdparm-1.00.ebuild:
+  Stable on Alpha, bug 158516.
+
+  22 Dec 2006; Tobias Scherbaum <dertobi123@gentoo.org> sdparm-1.00.ebuild:
+  Stable on ppc wrt bug #158516.
+
+  21 Dec 2006; Andrej Kacian <ticho@gentoo.org> sdparm-1.00.ebuild:
+  Stable on x86, bug #158516.
+
+  20 Dec 2006; Steve Dibb <beandog@gentoo.org> sdparm-1.00.ebuild:
+  amd64 stable, bug 158516
+
+  19 Dec 2006; Jeroen Roovers <jer@gentoo.org> sdparm-1.00.ebuild:
+  Stable for HPPA (bug #158516).
+
+  19 Dec 2006; Gustavo Zacarias <gustavoz@gentoo.org> sdparm-1.00.ebuild:
+  Stable on sparc wrt #158516
+
+  04 Nov 2006; Jeroen Roovers <jer@gentoo.org> sdparm-1.00.ebuild:
+  Marked ~hppa.
+
+*sdparm-1.00 (24 Oct 2006)
+
+  24 Oct 2006; Mike Frysinger <vapier@gentoo.org> +sdparm-1.00.ebuild:
+  Version bump.
+
+  22 Jul 2006; Thomas Cort <tcort@gentoo.org> sdparm-0.99.ebuild:
+  Added ~alpha keyword wrt Bug #133998.
+
+*sdparm-0.99 (11 Jul 2006)
+
+  11 Jul 2006; Joshua Kinard <kumba@gentoo.org> -sdparm-0.96.ebuild,
+  sdparm-0.98.ebuild, +sdparm-0.99.ebuild:
+  Imported 0.99 (for unstable), Removed 0.96, and marked 0.98 stable for mips,
+  sparc, & x86.
+
+*sdparm-0.98 (28 Apr 2006)
+
+  28 Apr 2006; Joshua Kinard <kumba@gentoo.org> -sdparm-0.95.ebuild,
+  sdparm-0.97.ebuild, +sdparm-0.98.ebuild:
+  Imported 0.98 (for unstable), Removed 0.95, and marked 0.97 stable for mips, 
+  sparc, & x86.
+
+  26 Feb 2006; Joshua Kinard <kumba@gentoo.org> -sdparm-0.94.ebuild,
+  sdparm-0.96.ebuild:
+  Removed 0.94; Marked 0.96 stable on sparc, x86, and mips.
+
+*sdparm-0.97 (15 Dec 2005)
+
+  15 Dec 2005; Joshua Kinard <kumba@gentoo.org> +sdparm-0.97.ebuild:
+  Imported 0.97 and marked unstable for mips, sparc, & x86.
+
+*sdparm-0.96 (21 Nov 2005)
+
+  21 Nov 2005; Joshua Kinard <kumba@gentoo.org> -sdparm-0.93.ebuild,
+  sdparm-0.95.ebuild, +sdparm-0.96.ebuild:
+  Import new version of sdparm (0.96), remove 0.93, and stable 0.95 on mips,
+  sparc, and x86.
+
+*sdparm-0.95 (22 Sep 2005)
+
+  22 Sep 2005; Joshua Kinard <kumba@gentoo.org> -sdparm-0.92.ebuild,
+  sdparm-0.94.ebuild, +sdparm-0.95.ebuild:
+  Import new version of sdparm (0.95), remove 0.92, and stable 0.94 on mips,
+  sparc, and x86.
+
+  29 Jul 2005; David Holm <dholm@gentoo.org> sdparm-0.94.ebuild:
+  Added to ~ppc.
+
+  29 Jul 2005; Joshua Kinard <kumba@gentoo.org> metadata.xml:
+  Metadata update.
+
+*sdparm-0.94 (29 Jul 2005)
+
+  29 Jul 2005; Joshua Kinard <kumba@gentoo.org> -sdparm-0.91.ebuild,
+  sdparm-0.92.ebuild, sdparm-0.93.ebuild, +sdparm-0.94.ebuild:
+  Removed 0.91; Marked 0.92 and 0.93 stable on x86, sparc, and mips (amd64 needs
+  to test); Imported 0.94 into unstable.
+
+*sdparm-0.93 (04 Jun 2005)
+
+  04 Jun 2005; Joshua Kinard <kumba@gentoo.org> +sdparm-0.93.ebuild:
+  Version Bump.
+
+  28 May 2005; <dang@gentoo.org> sdparm-0.92.ebuild:
+  Marking ~amd64
+
+*sdparm-0.92 (28 May 2005)
+
+  28 May 2005; Joshua Kinard <kumba@gentoo.org> +sdparm-0.92.ebuild:
+  Version bump.
+
+*sdparm-0.91 (08 May 2005)
+
+  08 May 2005; Joshua Kinard <kumba@gentoo.org> +metadata.xml,
+  +sdparm-0.91.ebuild:
+  Initial import of sdparm. Works like hdparm to get and set settings for SCSI
+  devices. Needs conf.d and init files.

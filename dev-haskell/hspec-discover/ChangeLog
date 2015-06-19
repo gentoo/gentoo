@@ -1,0 +1,13 @@
+# ChangeLog for dev-haskell/hspec-discover
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hspec-discover/ChangeLog,v 1.2 2014/12/15 22:31:00 gienah Exp $
+
+  15 Dec 2014; Mark Wright <gienah@gentoo.org> hspec-discover-2.1.2.ebuild:
+  Drop the doc and hscolour USE flags from hspec-discover-2.1.2, as it fails to
+  build with these: haddock: No input file(s).
+
+*hspec-discover-2.1.2 (13 Dec 2014)
+
+  13 Dec 2014; Mark Wright <gienah@gentoo.org> +hspec-discover-2.1.2.ebuild,
+  +metadata.xml:
+  Add hspec-discover

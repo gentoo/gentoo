@@ -1,0 +1,30 @@
+From 035ea3a8a1c9f67721fa0b53540620c7c49bc8ab Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sun, 21 Nov 2010 16:07:26 -0500
+Subject: [PATCH] m_xt: stop using xtables_set_revision()
+
+iptables dropped the xtables_set_revision() function around version 1.4.9,
+so set the rev directly ourselves.  This should be compatible back to the
+original version m_xt itself is designed for.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ tc/m_xt.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/tc/m_xt.c b/tc/m_xt.c
+index bfc4937..ede9913 100644
+--- a/tc/m_xt.c
++++ b/tc/m_xt.c
+@@ -88,7 +88,7 @@ build_st(struct xtables_target *target, struct xt_entry_target *t)
+ 		target->t = xtables_calloc(1, size);
+ 		target->t->u.target_size = size;
+ 		strcpy(target->t->u.user.name, target->name);
+-		xtables_set_revision(target->t->u.user.name, target->revision);
++		target->t->u.user.revision = target->revision;
+ 
+ 		if (target->init != NULL)
+ 			target->init(target->t);
+-- 
+1.7.3.1
+

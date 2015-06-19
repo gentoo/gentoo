@@ -1,0 +1,144 @@
+# ChangeLog for dev-util/automoc
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/automoc/ChangeLog,v 1.20 2015/05/27 12:43:38 kensington Exp $
+
+  27 May 2015; Michael Palimaka <kensington@gentoo.org> -automoc-0.9.88.ebuild:
+  Remove old.
+
+  27 May 2015; Mikle Kolyada <zlogene@gentoo.org> automoc-0.9.88-r1.ebuild:
+  arm stable wrt bug #545522
+
+  01 May 2015; Jeroen Roovers <jer@gentoo.org> automoc-0.9.88-r1.ebuild:
+  Stable for PPC64 (bug #545522).
+
+  26 Apr 2015; Mikle Kolyada <zlogene@gentoo.org> automoc-0.9.88-r1.ebuild:
+  sparc stable wrt bug #545522
+
+  21 Apr 2015; Pacho Ramos <pacho@gentoo.org> automoc-0.9.88-r1.ebuild:
+  ppc stable wrt bug #545522
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org> automoc-0.9.88-r1.ebuild:
+  Stable for x86, wrt bug #545522
+
+  14 Apr 2015; Agostino Sarubbo <ago@gentoo.org> automoc-0.9.88-r1.ebuild:
+  Stable for ia64, wrt bug #545522
+
+  13 Apr 2015; Agostino Sarubbo <ago@gentoo.org> automoc-0.9.88-r1.ebuild:
+  Stable for alpha, wrt bug #545522
+
+  08 Apr 2015; Agostino Sarubbo <ago@gentoo.org> automoc-0.9.88-r1.ebuild:
+  Stable for amd64, wrt bug #545522
+
+  07 Apr 2015; Jeroen Roovers <jer@gentoo.org> automoc-0.9.88-r1.ebuild:
+  Stable for HPPA (bug #545522).
+
+  04 Apr 2015; Michael Palimaka <kensington@gentoo.org>
+  automoc-0.9.88-r1.ebuild:
+  Port away from base.eclass.
+
+  02 Mar 2015; Yixun Lan <dlan@gentoo.org> automoc-0.9.88-r1.ebuild:
+  add arm64 support, tested on A53 board
+
+*automoc-0.9.88-r1 (13 Aug 2014)
+
+  13 Aug 2014; Johannes Huber <johu@gentoo.org> +automoc-0.9.88-r1.ebuild:
+  Revision bump to EAPI 5.
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> automoc-0.9.88.ebuild:
+  Move Qt dependencies to the new category
+
+  03 Dec 2012; Michael Palimaka <kensington@gentoo.org> automoc-0.9.88.ebuild:
+  Correct LICENSE, wrt bug #445640.
+
+  01 Oct 2012; Fabian Groffen <grobian@gentoo.org> automoc-0.9.88.ebuild:
+  Marked ~x64-macos
+
+  17 May 2012; Alexis Ballier <aballier@gentoo.org> automoc-0.9.88.ebuild:
+  keyword ~amd64-fbsd
+
+  17 Aug 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  automoc-0.9.88.ebuild:
+  keyword ~sparc-solaris
+
+  25 Apr 2011; Fabian Groffen <grobian@gentoo.org> automoc-0.9.88.ebuild:
+  Marked ~ppc-macos
+
+*automoc-0.9.88 (15 May 2010)
+
+  15 May 2010; Maciej Mrozowski <reavertm@gentoo.org>
+  +automoc-0.9.88.ebuild, +files/automoc-0.9.88-objc++.patch, +metadata.xml:
+  Moved from kde-base/
+
+  13 Jan 2010; Jonathan Callen <abcd@gentoo.org> automoc-0.9.88.ebuild,
+  +files/automoc-0.9.88-objc++.patch:
+  Add more keywords; add patch for objc++ support
+
+  09 Jan 2010; Jonathan Callen <abcd@gentoo.org> automoc-0.9.88.ebuild:
+  Add prefix keywords
+
+  27 Dec 2009; Raúl Porcel <armin76@gentoo.org> automoc-0.9.88.ebuild:
+  arm stable
+
+  11 Dec 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -automoc-0.9.84.ebuild:
+  Drop no-longer required ebuild.
+
+  11 Dec 2009; Raúl Porcel <armin76@gentoo.org> automoc-0.9.88.ebuild:
+  sparc stable
+
+  18 Nov 2009; Raúl Porcel <armin76@gentoo.org> automoc-0.9.88.ebuild:
+  Add ~sparc
+
+  11 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  automoc-0.9.84.ebuild, automoc-0.9.88.ebuild:
+  Fix DEPEND/RDEPEND assignment.
+
+  18 Jun 2009; Alexis Ballier <aballier@gentoo.org> automoc-0.9.88.ebuild:
+  keyword ~x86-fbsd
+
+  13 Jun 2009; Raúl Porcel <armin76@gentoo.org> automoc-0.9.88.ebuild:
+  alpha/ia64 stable
+
+  02 Jun 2009; Jeroen Roovers <jer@gentoo.org> automoc-0.9.88.ebuild:
+  Stable for HPPA (bug #271903).
+
+  31 May 2009; Markus Meier <maekke@gentoo.org> automoc-0.9.88.ebuild:
+  amd64/x86 stable, bug #271903
+
+  31 May 2009; Brent Baude <ranger@gentoo.org> automoc-0.9.88.ebuild:
+  Marking automoc-0.9.88 ppc64 for bug 271903
+
+  14 Apr 2009; Tomas Chvatal <scarabeus@gentoo.org> automoc-0.9.84.ebuild,
+  automoc-0.9.88.ebuild:
+  Bashism--
+
+  11 Apr 2009; Raúl Porcel <armin76@gentoo.org> automoc-0.9.88.ebuild:
+  Add ~alpha/~ia64 wrt #260777
+
+  13 Mar 2009; Jeroen Roovers <jer@gentoo.org> automoc-0.9.88.ebuild:
+  Marked ~hppa (bug #260777).
+
+  01 Mar 2009; Patrick Lauer <patrick@gentoo.org> automoc-0.9.84.ebuild,
+  automoc-0.9.88.ebuild:
+  Fixing CFLAGS for uclibc to fix #260418
+
+  01 Feb 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  automoc-0.9.88.ebuild:
+  Restored ~ppc and ~ppc64 keywords to KDE-4.2.0
+
+*automoc-0.9.87 (27 Jan 2009)
+
+  27 Jan 2009; Alexey Shvetsov <alexxy@gentoo.org> +automoc-0.9.88.ebuild:
+  Bump to new automoc-0.9.88
+
+  02 Nov 2008; Mike Frysinger <vapier@gentoo.org> automoc-0.9.84.ebuild:
+  Add ppc64 love for KDE 4.
+
+*automoc-0.9.84 (02 Oct 2008)
+
+  24 Oct 2008; Pieter Van den Abeele <pvdabeel@gentoo.org> automoc-0.9.84.ebuild:
+  Keyworded ~ppc. Closes bug #244174
+
+  02 Oct 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +metadata.xml, +automoc-0.9.84.ebuild:
+  Add kde-4.1.2 into the tree from the kde-testing overlay.

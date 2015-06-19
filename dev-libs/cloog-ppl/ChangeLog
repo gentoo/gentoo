@@ -1,0 +1,170 @@
+# ChangeLog for dev-libs/cloog-ppl
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/cloog-ppl/ChangeLog,v 1.47 2013/07/23 01:21:21 jer Exp $
+
+  23 Jul 2013; Jeroen Roovers <jer@gentoo.org> cloog-ppl-0.15.10.ebuild:
+  Back to ~hppa.
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> cloog-ppl-0.15.10.ebuild:
+  keyword ~amd64-fbsd
+
+  20 Feb 2012; Ryan Hill <dirtyepic@gentoo.org> -cloog-ppl-0.15.8.ebuild,
+  -cloog-ppl-0.15.9.ebuild:
+  Remove old.
+
+  07 Jan 2012; Mike Frysinger <vapier@gentoo.org> cloog-ppl-0.15.10.ebuild:
+  Drop autotools-utils to avoid broken reconfigure logic #398039 by Nikoli.
+
+  20 Aug 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  cloog-ppl-0.15.10.ebuild:
+  keyword ~sparc-solaris
+
+  25 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> cloog-ppl-0.15.10.ebuild:
+  ppc/ppc64 stable wrt #373877
+
+  24 Jul 2011; Raúl Porcel <armin76@gentoo.org> cloog-ppl-0.15.10.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #373877
+
+  22 Jul 2011; Jeroen Roovers <jer@gentoo.org> cloog-ppl-0.15.10.ebuild:
+  Stable for HPPA (bug #373877).
+
+  17 Jul 2011; Markus Meier <maekke@gentoo.org> cloog-ppl-0.15.10.ebuild:
+  x86 stable, bug #373877
+
+  12 Jul 2011; Markus Meier <maekke@gentoo.org> cloog-ppl-0.15.10.ebuild:
+  arm stable, bug #373877
+
+  06 Jul 2011; Markos Chandras <hwoarang@gentoo.org> cloog-ppl-0.15.10.ebuild:
+  Stable on amd64 wrt bug #373877
+
+  27 Mar 2011; Brent Baude <ranger@gentoo.org> cloog-ppl-0.15.9.ebuild:
+  stable ppc, bug 347239
+
+  09 Jan 2011; Fabian Groffen <grobian@gentoo.org> cloog-ppl-0.15.10.ebuild:
+  Fix for Prefix, marked ~amd64-linux
+
+*cloog-ppl-0.15.10 (06 Jan 2011)
+
+  06 Jan 2011; Ryan Hill <dirtyepic@gentoo.org> +cloog-ppl-0.15.10.ebuild:
+  Version bump allowing use of PPL 0.11. No other code changes. Ported to
+  EAPI 3 and autotools-utils eclass. Changed include path and etc. to avoid
+  collisions with upstream CLooG.
+
+  06 Jan 2011; Raúl Porcel <armin76@gentoo.org> cloog-ppl-0.15.9.ebuild:
+  ia64/s390/sh/sparc stable wrt #347239
+
+  02 Jan 2011; Tobias Klausmann <klausman@gentoo.org> cloog-ppl-0.15.9.ebuild:
+  Stable on alpha, bug #347239
+
+  29 Dec 2010; Brent Baude <ranger@gentoo.org> cloog-ppl-0.15.9.ebuild:
+  stable ppc64, bug 347239
+
+  11 Dec 2010; Markus Meier <maekke@gentoo.org> cloog-ppl-0.15.9.ebuild:
+  arm stable, bug #347239
+
+  05 Dec 2010; Markos Chandras <hwoarang@gentoo.org> cloog-ppl-0.15.9.ebuild:
+  Stable on amd64 wrt bug #347239
+
+  02 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  cloog-ppl-0.15.9.ebuild:
+  x86 stable wrt bug #347239
+
+  30 Nov 2010; Ryan Hill <dirtyepic@gentoo.org> cloog-ppl-0.15.8.ebuild,
+  cloog-ppl-0.15.9.ebuild:
+  These versions won't configure with >=dev-libs/ppl-0.11.
+
+  30 Nov 2010; Jeroen Roovers <jer@gentoo.org> cloog-ppl-0.15.9.ebuild:
+  Stable for HPPA (bug #347239).
+
+  30 Nov 2010; Ryan Hill <dirtyepic@gentoo.org> -cloog-ppl-0.15.7.ebuild,
+  cloog-ppl-0.15.9.ebuild:
+  Remove old. Drop useless autotools inherit.
+
+  12 Nov 2010; <mattst88@gentoo.org> cloog-ppl-0.15.9.ebuild:
+  Add ~mips keyword, bug #269088.
+
+  10 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  cloog-ppl-0.15.8.ebuild:
+  ppc64 stable wrt #319887
+
+  06 Jun 2010; Raúl Porcel <armin76@gentoo.org> cloog-ppl-0.15.8.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #319887
+
+  03 Jun 2010; Markus Meier <maekke@gentoo.org> cloog-ppl-0.15.8.ebuild:
+  arm stable, bug #319887
+
+  27 May 2010; Jeroen Roovers <jer@gentoo.org> cloog-ppl-0.15.8.ebuild:
+  Stable for HPPA (bug #319887).
+
+  25 May 2010; Markos Chandras <hwoarang@gentoo.org>
+  cloog-ppl-0.15.8.ebuild:
+  Stable on amd64 wrt bug #319887
+
+  24 May 2010; <nixnut@gentoo.org> cloog-ppl-0.15.8.ebuild:
+  ppc stable #319887
+
+  22 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  cloog-ppl-0.15.8.ebuild:
+  x86 stable wrt bug #319887
+
+*cloog-ppl-0.15.9 (06 May 2010)
+
+  06 May 2010; Ryan Hill <dirtyepic@gentoo.org> +cloog-ppl-0.15.9.ebuild:
+  Version bump, bug #318645.
+
+  30 Apr 2010; Alexis Ballier <aballier@gentoo.org> cloog-ppl-0.15.8.ebuild:
+  keyword ~sparc-fbsd
+
+*cloog-ppl-0.15.8 (12 Feb 2010)
+
+  12 Feb 2010; Ryan Hill <dirtyepic@gentoo.org> -cloog-ppl-0.15.4.ebuild,
+  +cloog-ppl-0.15.8.ebuild:
+  Version bump. Fixes wrong-code bug w/ -floop-strip-mine.
+
+  19 Sep 2009; Alexis Ballier <aballier@gentoo.org> cloog-ppl-0.15.7.ebuild:
+  keyword ~x86-fbsd
+
+*cloog-ppl-0.15.7 (25 Aug 2009)
+
+  25 Aug 2009; Ryan Hill <dirtyepic@gentoo.org> -cloog-ppl-0.15.3.ebuild,
+  +cloog-ppl-0.15.7.ebuild, metadata.xml:
+  Version bump, minor build fixes. Move back to EAPI 0 and remove redundant
+  maintainer metadata.
+
+  01 Aug 2009; Ryan Hill <dirtyepic@gentoo.org> metadata.xml:
+  Add toolchain to metadata.xml
+
+*cloog-ppl-0.15.4 (31 Jul 2009)
+
+  31 Jul 2009; Ryan Hill <dirtyepic@gentoo.org> +cloog-ppl-0.15.4.ebuild:
+  Version bump.
+
+  22 Jul 2009; Joseph Jezak <josejx@gentoo.org> cloog-ppl-0.15.3.ebuild:
+  Marked ~ppc for bug #269088.
+
+  27 Jun 2009; Tobias Klausmann <klausman@gentoo.org>
+  cloog-ppl-0.15.3.ebuild:
+  Keyworded on alpha, bug #269088
+
+  07 Jun 2009; Raúl Porcel <armin76@gentoo.org> cloog-ppl-0.15.3.ebuild:
+  Add ~arm/~ia64/~s390/~sh/~sparc wrt #269088
+
+  30 May 2009; Brent Baude <ranger@gentoo.org> cloog-ppl-0.15.3.ebuild:
+  Marking cloog-ppl-0.15.3 ~ppc64 for bug 269088
+
+  12 May 2009; Jeroen Roovers <jer@gentoo.org> cloog-ppl-0.15.3.ebuild:
+  Marked ~hppa (bug #269088).
+
+  07 May 2009; Mark Loeser <halcy0n@gentoo.org> cloog-ppl-0.15.3.ebuild:
+  Keyworded ~x86
+
+*cloog-ppl-0.15.3 (14 Apr 2009)
+
+  14 Apr 2009; Ryan Hill <dirtyepic@gentoo.org> +metadata.xml,
+  +cloog-ppl-0.15.3.ebuild:
+  Move into gentoo-x86.
+
+  31 Jan 2009; Ryan Hill <dirtyepic@gentoo.org> +metadata.xml,
+  +cloog-ppl-0.15.ebuild:
+  Initial import for support of the Graphite framework in GCC 4.4.
+

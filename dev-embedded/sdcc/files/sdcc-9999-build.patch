@@ -1,0 +1,53 @@
+fix parallel build issues
+
+--- sdcc/device/lib/Makefile.in
++++ sdcc/device/lib/Makefile.in
+@@ -349,40 +349,23 @@
+ 	  cp -f $(PORT)/bin/*.* $(SDCCPORTDIR); \
+ 	fi
+ 
+-$(LIB_FILES): $(OBJECTS_FLOAT) $(OBJECTS_INT) $(OBJECTS_LONG) $(OBJECTS_SDCC)
+ ifeq ($(LIB_TYPE), SDCCLIB)
+-	../../bin/sdcclib -a $(SDCCPORTDIR)/libfloat.lib $(OBJECTS_FLOAT)
+-	../../bin/sdcclib -a $(SDCCPORTDIR)/libint.lib $(OBJECTS_INT)
+-	../../bin/sdcclib -a $(SDCCPORTDIR)/liblong.lib $(OBJECTS_LONG)
+-	../../bin/sdcclib -a $(SDCCPORTDIR)/libsdcc.lib $(OBJECTS_SDCC)
++  mklib = ../../bin/sdcclib -a $@ $^
+ else
+   ifeq ($(LIB_TYPE), AR)
+-	$(AR_S) -cq $(SDCCPORTDIR)/libfloat.lib $(OBJECTS_FLOAT)
+-	$(AR_S) -cq $(SDCCPORTDIR)/libint.lib $(OBJECTS_INT)
+-	$(AR_S) -cq $(SDCCPORTDIR)/liblong.lib $(OBJECTS_LONG)
+-	$(AR_S) -cq $(SDCCPORTDIR)/libsdcc.lib $(OBJECTS_SDCC)
++    mklib = $(AR_S) -cq $@ $^
+   else
+     ifeq ($(LIB_TYPE), RANLIB)
+-	$(AR_S) -cq $(SDCCPORTDIR)/libfloat.lib $(OBJECTS_FLOAT); $(top_builddir)/bin/asranlib $(SDCCPORTDIR)/libfloat.lib
+-	$(AR_S) -cq $(SDCCPORTDIR)/libint.lib $(OBJECTS_INT); $(top_builddir)/bin/asranlib $(SDCCPORTDIR)/libint.lib
+-	$(AR_S) -cq $(SDCCPORTDIR)/liblong.lib $(OBJECTS_LONG); $(top_builddir)/bin/asranlib $(SDCCPORTDIR)/liblong.lib
+-	$(AR_S) -cq $(SDCCPORTDIR)/libsdcc.lib $(OBJECTS_SDCC); $(top_builddir)/bin/asranlib $(SDCCPORTDIR)/libsdcc.lib
++      mklib = $(AR_S) -cq $@ $^ && $(top_builddir)/bin/asranlib $@
+     else
+-	rm -f $(SDCCPORTDIR)/libfloat.lib
+-	for i in $(notdir $(basename $(OBJECTS_FLOAT))); do echo $$i >> $(SDCCPORTDIR)/libfloat.lib; done
+-	cp $(OBJECTS_FLOAT) $(SDCCPORTDIR)
+-	rm -f $(SDCCPORTDIR)/libint.lib
+-	for i in $(notdir $(basename $(OBJECTS_INT))); do echo $$i >> $(SDCCPORTDIR)/libint.lib; done
+-	cp $(OBJECTS_INT) $(SDCCPORTDIR)
+-	rm -f $(SDCCPORTDIR)/liblong.lib
+-	for i in $(notdir $(basename $(OBJECTS_LONG))); do echo $$i >> $(SDCCPORTDIR)/liblong.lib; done
+-	cp $(OBJECTS_LONG) $(SDCCPORTDIR)
+-	rm -f $(SDCCPORTDIR)/libsdcc.lib
+-	for i in $(notdir $(basename $(OBJECTS_SDCC))); do echo $$i >> $(SDCCPORTDIR)/libsdcc.lib; done
+-	cp $(OBJECTS_SDCC) $(SDCCPORTDIR)
++      mklib = for i in $(notdir $(basename $^)); do echo $$i; done >> $@ && cp $^ $(SDCCPORTDIR)
+     endif
+   endif
+ endif
++$(SDCCPORTDIR)/libfloat.lib: $(OBJECTS_FLOAT); $(mklib)
++$(SDCCPORTDIR)/libint.lib: $(OBJECTS_INT); $(mklib)
++$(SDCCPORTDIR)/liblong.lib: $(OBJECTS_LONG); $(mklib)
++$(SDCCPORTDIR)/libsdcc.lib: $(OBJECTS_SDCC); $(mklib)
+ 
+ clean_intermediate:
+ 	rm -f $(SDCCPORTDIR)/*.lst $(SDCCPORTDIR)/*.sym

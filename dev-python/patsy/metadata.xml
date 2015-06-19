@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci-mathematics</herd>
+  <longdescription>
+  A Python package for describing statistical models and for building
+  design matrices. It is closely inspired by and compatible with the
+  'formula' mini-language used in R and S.
+</longdescription>
+  <upstream>
+    <remote-id type="pypi">patsy</remote-id>
+  </upstream>
+</pkgmetadata>

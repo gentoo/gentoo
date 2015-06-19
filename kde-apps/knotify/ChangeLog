@@ -1,0 +1,923 @@
+# ChangeLog for kde-base/knotify
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-apps/knotify/ChangeLog,v 1.1 2015/06/04 18:44:44 kensington Exp $
+
+  18 Feb 2015; Michał Górny <mgorny@gentoo.org> -knotify-4.12.5.ebuild:
+  Remove KDE SC 4.12
+
+  17 Feb 2015; Agostino Sarubbo <ago@gentoo.org> knotify-4.14.3.ebuild:
+  Stable for ppc64 wrt bug #517344
+
+  16 Feb 2015; Agostino Sarubbo <ago@gentoo.org> knotify-4.14.3.ebuild:
+  Stable for ppc wrt bug #517344
+
+  14 Feb 2015; Agostino Sarubbo <ago@gentoo.org> knotify-4.14.3.ebuild:
+  Stable for x86 wrt bug #517344
+
+  11 Dec 2014; Manuel Rüger <mrueg@gentoo.org> -knotify-4.14.2.ebuild:
+  Remove KDE SC 4.14.2
+
+  11 Dec 2014; Mikle Kolyada <zlogene@gentoo.org> knotify-4.14.3.ebuild:
+  amd64 stable wrt bug #517344
+
+*knotify-4.14.3 (16 Nov 2014)
+
+  16 Nov 2014; Alexey Shvetsov <alexxy@gentoo.org> +knotify-4.14.3.ebuild:
+  Version bump KDE SC 4.14.3
+
+  14 Nov 2014; Manuel Rüger <mrueg@gentoo.org> -knotify-4.13.3.ebuild,
+  -knotify-4.14.1.ebuild:
+  Cleanup old.
+
+  25 Oct 2014; Manuel Rüger <mrueg@gentoo.org> -knotify-4.14.0.ebuild:
+  Cleanup KDE SC 4.14.0
+
+*knotify-4.14.2 (25 Oct 2014)
+
+  25 Oct 2014; Michael Palimaka <kensington@gentoo.org> +knotify-4.14.2.ebuild:
+  Version bump KDE SC 4.14.2
+
+*knotify-4.14.1 (16 Sep 2014)
+
+  16 Sep 2014; Johannes Huber <johu@gentoo.org> +knotify-4.14.1.ebuild:
+  Version bump KDE SC 4.14.1
+
+*knotify-4.14.0 (20 Aug 2014)
+
+  20 Aug 2014; Johannes Huber <johu@gentoo.org> +knotify-4.14.0.ebuild:
+  Version bump KDE SC 4.14.0
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> knotify-4.12.5.ebuild,
+  knotify-4.13.3.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  23 Jul 2014; Johannes Huber <johu@gentoo.org> -knotify-4.13.2.ebuild:
+  Remove KDE SC 4.13.2
+
+*knotify-4.13.3 (16 Jul 2014)
+
+  16 Jul 2014; Johannes Huber <johu@gentoo.org> +knotify-4.13.3.ebuild:
+  Version bump KDE SC 4.13.3
+
+  19 Jun 2014; Chris Reffett <creffett@gentoo.org> -knotify-4.13.1.ebuild:
+  Remove KDE SC 4.13.1
+
+  19 Jun 2014; Chris Reffett <creffett@gentoo.org> -knotify-4.13.0.ebuild:
+  Remove KDE SC 4.13.0
+
+*knotify-4.13.2 (15 Jun 2014)
+
+  15 Jun 2014; Michael Palimaka <kensington@gentoo.org> +knotify-4.13.2.ebuild:
+  Version bump KDE SC 4.13.2
+
+*knotify-4.13.1 (13 May 2014)
+
+  13 May 2014; Johannes Huber <johu@gentoo.org> +knotify-4.13.1.ebuild:
+  Version bump KDE SC 4.13.1
+
+  08 May 2014; Agostino Sarubbo <ago@gentoo.org> -knotify-4.11.5.ebuild:
+  Remove old
+
+  08 May 2014; Agostino Sarubbo <ago@gentoo.org> knotify-4.12.5.ebuild:
+  Stable for ppc64, wrt bug #504210
+
+  07 May 2014; Agostino Sarubbo <ago@gentoo.org> knotify-4.12.5.ebuild:
+  Stable for ppc, wrt bug #504210
+
+  07 May 2014; Johannes Huber <johu@gentoo.org> -knotify-4.12.3.ebuild:
+  Remove KDE SC 4.12.3
+
+  07 May 2014; Mikle Kolyada <zlogene@gentoo.org> knotify-4.12.5.ebuild:
+  x86 stable wrt bug #504210
+
+  06 May 2014; Mikle Kolyada <zlogene@gentoo.org> knotify-4.12.5.ebuild:
+  amd64 stable wrt bug #504210
+
+  29 Apr 2014; Johannes Huber <johu@gentoo.org> -knotify-4.12.4.ebuild:
+  Remove KDE SC 4.12.4
+
+*knotify-4.12.5 (29 Apr 2014)
+
+  29 Apr 2014; Johannes Huber <johu@gentoo.org> +knotify-4.12.5.ebuild:
+  Version bump KDE SC 4.12.5
+
+  16 Apr 2014; Johannes Huber <johu@gentoo.org> knotify-4.13.0.ebuild:
+  Restore KEYWORDS for KDE SC 4.13.0
+
+*knotify-4.13.0 (16 Apr 2014)
+
+  16 Apr 2014; Johannes Huber <johu@gentoo.org> +knotify-4.13.0.ebuild:
+  Version bump KDE SC 4.13.0
+
+*knotify-4.12.4 (01 Apr 2014)
+
+  01 Apr 2014; Johannes Huber <johu@gentoo.org> +knotify-4.12.4.ebuild:
+  Version bump KDE SC 4.12.4
+
+  11 Mar 2014; Johannes Huber <johu@gentoo.org> -knotify-4.12.2.ebuild:
+  Remove KDE SC 4.12.2
+
+*knotify-4.12.3 (04 Mar 2014)
+
+  04 Mar 2014; Johannes Huber <johu@gentoo.org> +knotify-4.12.3.ebuild:
+  Version bump KDE SC 4.12.3
+
+  23 Feb 2014; Agostino Sarubbo <ago@gentoo.org> -knotify-4.11.2.ebuild:
+  Remove old
+
+  23 Feb 2014; Agostino Sarubbo <ago@gentoo.org> knotify-4.11.5.ebuild:
+  Stable for ppc64, wrt bug #493782
+
+  20 Feb 2014; Agostino Sarubbo <ago@gentoo.org> knotify-4.11.5.ebuild:
+  Stable for ppc, wrt bug #493782
+
+  16 Feb 2014; Agostino Sarubbo <ago@gentoo.org> knotify-4.11.5.ebuild:
+  Stable for x86, wrt bug #493782
+
+  14 Feb 2014; Johannes Huber <johu@gentoo.org> -knotify-4.12.1.ebuild:
+  Remove KDE SC 4.12.1
+
+  09 Feb 2014; Agostino Sarubbo <ago@gentoo.org> knotify-4.11.5.ebuild:
+  Stable for amd64, wrt bug #493782
+
+*knotify-4.12.2 (06 Feb 2014)
+
+  06 Feb 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +knotify-4.12.2.ebuild:
+  Version bump KDE SC 4.12.2
+
+  20 Jan 2014; Michael Palimaka <kensington@gentoo.org> -knotify-4.12.0.ebuild:
+  Remove KDE SC 4.12.0
+
+  20 Jan 2014; Michael Palimaka <kensington@gentoo.org> knotify-4.11.5.ebuild:
+  Restore keywords that were accidentally omitted.
+
+*knotify-4.12.1 (18 Jan 2014)
+
+  18 Jan 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +knotify-4.12.1.ebuild:
+  Version bump KDE SC 4.12.1
+
+  10 Jan 2014; Chris Reffett <creffett@gentoo.org> -knotify-4.11.4.ebuild:
+  Remove KDE SC 4.11.4
+
+*knotify-4.11.5 (10 Jan 2014)
+
+  10 Jan 2014; Chris Reffett <creffett@gentoo.org> +knotify-4.11.5.ebuild:
+  Bump KDE SC 4.11.5
+
+*knotify-4.12.0 (18 Dec 2013)
+
+  18 Dec 2013; Johannes Huber <johu@gentoo.org> +knotify-4.12.0.ebuild:
+  Version bump KDE SC 4.12.0
+
+  12 Dec 2013; Agostino Sarubbo <ago@gentoo.org> -knotify-4.10.5.ebuild:
+  Remove old
+
+  11 Dec 2013; Agostino Sarubbo <ago@gentoo.org> knotify-4.11.2.ebuild:
+  Stable for ppc64, wrt bug #484884
+
+  11 Dec 2013; Agostino Sarubbo <ago@gentoo.org> knotify-4.11.2.ebuild:
+  Stable for ppc, wrt bug #484884
+
+  10 Dec 2013; Agostino Sarubbo <ago@gentoo.org> knotify-4.11.2.ebuild:
+  Stable for ppc, wrt bug #484884
+
+  09 Dec 2013; Agostino Sarubbo <ago@gentoo.org> knotify-4.11.2.ebuild:
+  Stable for x86, wrt bug #484884
+
+  08 Dec 2013; Agostino Sarubbo <ago@gentoo.org> knotify-4.11.2.ebuild:
+  Stable for amd64, wrt bug #484884
+
+  04 Dec 2013; Johannes Huber <johu@gentoo.org> -knotify-4.11.3.ebuild:
+  Remove KDE SC 4.11.3
+
+*knotify-4.11.4 (03 Dec 2013)
+
+  03 Dec 2013; Johannes Huber <johu@gentoo.org> +knotify-4.11.4.ebuild:
+  Version bump KDE SC 4.11.4
+
+*knotify-4.11.3 (05 Nov 2013)
+
+  05 Nov 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  +knotify-4.11.3.ebuild:
+  Version bump KDE SC 4.11.3
+
+  10 Oct 2013; Chris Reffett <creffett@gentoo.org> -knotify-4.11.1.ebuild:
+  Drop KDE SC 4.11.1
+
+*knotify-4.11.2 (08 Oct 2013)
+
+  08 Oct 2013; Chris Reffett <creffett@gentoo.org> +knotify-4.11.2.ebuild:
+  Version bump KDE SC 4.11.2
+
+  03 Sep 2013; Chris Reffett <creffett@gentoo.org> -knotify-4.11.0.ebuild:
+  Drop KDE 4.11.0
+
+*knotify-4.11.1 (03 Sep 2013)
+
+  03 Sep 2013; Chris Reffett <creffett@gentoo.org> +knotify-4.11.1.ebuild:
+  Bump KDE to 4.1.1
+
+*knotify-4.11.0 (14 Aug 2013)
+
+  14 Aug 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  +knotify-4.11.0.ebuild:
+  Version bump KDE SC 4.11.0
+
+  02 Aug 2013; Johannes Huber <johu@gentoo.org> -knotify-4.10.4.ebuild:
+  Remove KDE SC 4.10.4
+
+  02 Aug 2013; Agostino Sarubbo <ago@gentoo.org> knotify-4.10.5.ebuild:
+  Stable for ppc64, wrt to bug #477634
+
+  30 Jul 2013; Agostino Sarubbo <ago@gentoo.org> knotify-4.10.5.ebuild:
+  Stable for ppc, wrt to bug #477634
+
+  29 Jul 2013; Agostino Sarubbo <ago@gentoo.org> knotify-4.10.5.ebuild:
+  Stable for x86, wrt to bug #477634
+
+  27 Jul 2013; Agostino Sarubbo <ago@gentoo.org> knotify-4.10.5.ebuild:
+  Stable for amd64, wrt to bug #477634
+
+*knotify-4.10.5 (02 Jul 2013)
+
+  02 Jul 2013; Johannes Huber <johu@gentoo.org> +knotify-4.10.5.ebuild:
+  Version bump KDE SC 4.10.5
+
+  02 Jul 2013; Agostino Sarubbo <ago@gentoo.org> -knotify-4.10.3.ebuild:
+  Remove old
+
+  02 Jul 2013; Agostino Sarubbo <ago@gentoo.org> knotify-4.10.4.ebuild:
+  Stable for ppc64, wrt to bug #473942
+
+  01 Jul 2013; Agostino Sarubbo <ago@gentoo.org> knotify-4.10.4.ebuild:
+  Stable for ppc, wrt to bug #473942
+
+  30 Jun 2013; Agostino Sarubbo <ago@gentoo.org> knotify-4.10.4.ebuild:
+  Stable for x86, wrt to bug #473942
+
+  29 Jun 2013; Agostino Sarubbo <ago@gentoo.org> knotify-4.10.4.ebuild:
+  Stable for amd64, wrt to bug #473942
+
+  08 Jun 2013; Agostino Sarubbo <ago@gentoo.org> -knotify-4.10.2.ebuild:
+  Remove old
+
+  08 Jun 2013; Agostino Sarubbo <ago@gentoo.org> knotify-4.10.3.ebuild:
+  Stable for ppc64, wrt to bug #471392
+
+  06 Jun 2013; Agostino Sarubbo <ago@gentoo.org> knotify-4.10.3.ebuild:
+  Stable for ppc, wrt to bug #471392
+
+  05 Jun 2013; Agostino Sarubbo <ago@gentoo.org> knotify-4.10.3.ebuild:
+  Stable for x86, wrt to bug #471392
+
+*knotify-4.10.4 (04 Jun 2013)
+
+  04 Jun 2013; Johannes Huber <johu@gentoo.org> +knotify-4.10.4.ebuild:
+  Version bump KDE SC 4.10.4
+
+  04 Jun 2013; Agostino Sarubbo <ago@gentoo.org> knotify-4.10.3.ebuild:
+  Stable for amd64, wrt to bug #471392
+
+*knotify-4.10.3 (06 May 2013)
+
+  06 May 2013; Johannes Huber <johu@gentoo.org> +knotify-4.10.3.ebuild:
+  Version bump KDE SC 4.10.3
+
+  05 May 2013; Agostino Sarubbo <ago@gentoo.org> -knotify-4.10.1.ebuild:
+  Remove old
+
+  05 May 2013; Agostino Sarubbo <ago@gentoo.org> knotify-4.10.2.ebuild:
+  Stable for ppc64, wrt to bug #466074
+
+  01 May 2013; Agostino Sarubbo <ago@gentoo.org> knotify-4.10.2.ebuild:
+  Stable for ppc, wrt to bug #466074
+
+  30 Apr 2013; Agostino Sarubbo <ago@gentoo.org> knotify-4.10.2.ebuild:
+  Stable for x86, wrt to bug #466074
+
+  29 Apr 2013; Agostino Sarubbo <ago@gentoo.org> knotify-4.10.2.ebuild:
+  Stable for amd64, wrt to bug #466074
+
+*knotify-4.10.2 (05 Apr 2013)
+
+  05 Apr 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  +knotify-4.10.2.ebuild:
+  Version bump KDE SC 4.10.2
+
+  02 Apr 2013; Agostino Sarubbo <ago@gentoo.org> knotify-4.10.1.ebuild:
+  Stable for ppc64, wrt to bug #462890
+
+  01 Apr 2013; Agostino Sarubbo <ago@gentoo.org> -knotify-4.10.0.ebuild,
+  -knotify-4.9.5.ebuild:
+  Remove old
+
+  01 Apr 2013; Agostino Sarubbo <ago@gentoo.org> knotify-4.10.1.ebuild:
+  Stable for ppc, wrt to bug #462890
+
+  31 Mar 2013; Agostino Sarubbo <ago@gentoo.org> knotify-4.10.1.ebuild:
+  Stable for x86, wrt bug #462890
+
+  31 Mar 2013; Agostino Sarubbo <ago@gentoo.org> knotify-4.10.1.ebuild:
+  Stable for amd64, wrt bug #462890
+
+*knotify-4.10.1 (06 Mar 2013)
+
+  06 Mar 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  +knotify-4.10.1.ebuild:
+  Version bump KDE SC 4.10.1
+
+  23 Feb 2013; Agostino Sarubbo <ago@gentoo.org> knotify-4.10.0.ebuild,
+  knotify-4.9.5.ebuild:
+  Add ~ppc64, wrt bug #455960
+
+  07 Feb 2013; Naohiro Aota <naota@gentoo.org> knotify-4.9.5.ebuild:
+  Add ~x86-fbsd wrt bug #430072
+
+*knotify-4.10.0 (06 Feb 2013)
+
+  06 Feb 2013; Alexey Shvetsov <alexxy@gentoo.org> +knotify-4.10.0.ebuild:
+  Version bump KDE SC 4.10.0
+
+  28 Jan 2013; Agostino Sarubbo <ago@gentoo.org> -knotify-4.9.3.ebuild,
+  -knotify-4.9.4.ebuild:
+  Remove old
+
+  27 Jan 2013; Agostino Sarubbo <ago@gentoo.org> knotify-4.9.5.ebuild:
+  Stable for ppc, wrt bug #450678
+
+  27 Jan 2013; Agostino Sarubbo <ago@gentoo.org> knotify-4.9.5.ebuild:
+  Stable for x86, wrt bug #450678
+
+  27 Jan 2013; Agostino Sarubbo <ago@gentoo.org> knotify-4.9.5.ebuild:
+  Stable for amd64, wrt bug #450678
+
+*knotify-4.9.5 (05 Jan 2013)
+
+  05 Jan 2013; <creffett@gentoo.org> +knotify-4.9.5.ebuild:
+  Version bump KDE SC 4.9.5
+
+  08 Dec 2012; Andreas K. Huettel <dilfridge@gentoo.org> -knotify-4.8.5.ebuild:
+  Drop KDE 4.8
+
+*knotify-4.9.4 (05 Dec 2012)
+
+  05 Dec 2012; Alexey Shvetsov <alexxy@gentoo.org> +knotify-4.9.4.ebuild:
+  Version bump KDE SC 4.9.4
+
+  30 Nov 2012; <ago@gentoo.org> knotify-4.9.3.ebuild:
+  Stable for ppc, wrt bug #442394
+
+  23 Nov 2012; Agostino Sarubbo <ago@gentoo.org> knotify-4.9.3.ebuild:
+  Stable for x86, wrt bug #442394
+
+  23 Nov 2012; Agostino Sarubbo <ago@gentoo.org> knotify-4.9.3.ebuild:
+  Stable for amd64, wrt bug #442394
+
+  13 Nov 2012; Johannes Huber <johu@gentoo.org> -knotify-4.9.2.ebuild:
+  Remove KDE SC 4.9.2
+
+  13 Nov 2012; Johannes Huber <johu@gentoo.org> -knotify-4.9.1.ebuild:
+  Remove KDE SC 4.9.1
+
+*knotify-4.9.3 (08 Nov 2012)
+
+  08 Nov 2012; <creffett@gentoo.org> +knotify-4.9.3.ebuild:
+  Version bump KDE SC 4.9.3
+
+  17 Oct 2012; Markus Meier <maekke@gentoo.org> knotify-4.9.2.ebuild:
+  add ~arm, bug #430072
+
+*knotify-4.9.2 (02 Oct 2012)
+
+  02 Oct 2012; Johannes Huber <johu@gentoo.org> +knotify-4.9.2.ebuild:
+  Version bump KDE SC 4.9.2
+
+  21 Sep 2012; Johannes Huber <johu@gentoo.org> -knotify-4.9.0.ebuild:
+  Remove KDE SC 4.9.0
+
+*knotify-4.9.1 (04 Sep 2012)
+
+  04 Sep 2012; Johannes Huber <johu@gentoo.org> +knotify-4.9.1.ebuild:
+  Version bump KDE SC 4.9.1
+
+  03 Sep 2012; Johannes Huber <johu@gentoo.org> -knotify-4.7.4.ebuild:
+  Remove KDE SC 4.7.4
+
+  03 Sep 2012; Johannes Huber <johu@gentoo.org> -knotify-4.8.3.ebuild:
+  Remove KDE SC 4.8.3
+
+  03 Sep 2012; Tomáš Chvátal <scarabeus@gentoo.org> knotify-4.8.5.ebuild:
+  Stable on ppc wrt bug#431892.
+
+  02 Sep 2012; Agostino Sarubbo <ago@gentoo.org> knotify-4.8.5.ebuild:
+  Stable for x86, wrt bug #431892
+
+  02 Sep 2012; Agostino Sarubbo <ago@gentoo.org> knotify-4.8.5.ebuild:
+  Stable for amd64, wrt bug #431892
+
+  17 Aug 2012; Johannes Huber <johu@gentoo.org> -knotify-4.8.4.ebuild:
+  Remove KDE SC 4.8.4
+
+*knotify-4.8.5 (07 Aug 2012)
+
+  07 Aug 2012; Johannes Huber <johu@gentoo.org> +knotify-4.8.5.ebuild:
+  Version bump KDE SC 4.8.5
+
+*knotify-4.9.0 (01 Aug 2012)
+
+  01 Aug 2012; Johannes Huber <johu@gentoo.org> +knotify-4.9.0.ebuild:
+  Version bump KDE SC 4.9.0
+
+*knotify-4.8.4 (21 Jun 2012)
+
+  21 Jun 2012; Andreas K. Huettel <dilfridge@gentoo.org> +knotify-4.8.4.ebuild:
+  Version bump KDE SC 4.8.4
+
+  24 May 2012; Johannes Huber <johu@gentoo.org> -knotify-4.8.1.ebuild:
+  Remove KDE SC 4.8.1
+
+  24 May 2012; Agostino Sarubbo <ago@gentoo.org> knotify-4.8.3.ebuild:
+  Stable for x86, wrt bug #414605
+
+  18 May 2012; Agostino Sarubbo <ago@gentoo.org> knotify-4.8.3.ebuild:
+  Stable for amd64, wrt bug #414605
+
+  18 May 2012; Joseph Jezak <josejx@gentoo.org> knotify-4.8.3.ebuild:
+  Marked ~ppc ~ppc64 for bug #402989.
+
+  08 May 2012; Johannes Huber <johu@gentoo.org> -knotify-4.8.2.ebuild:
+  Remove KDE SC 4.8.2
+
+*knotify-4.8.3 (03 May 2012)
+
+  03 May 2012; Johannes Huber <johu@gentoo.org> +knotify-4.8.3.ebuild:
+  Version bump KDE SC 4.8.3
+
+  18 Apr 2012; Markus Meier <maekke@gentoo.org> knotify-4.8.1.ebuild:
+  x86 stable, bug #409403
+
+*knotify-4.8.2 (04 Apr 2012)
+
+  04 Apr 2012; Johannes Huber <johu@gentoo.org> +knotify-4.8.2.ebuild:
+  Version bump KDE SC 4.8.2
+
+  04 Apr 2012; Agostino Sarubbo <ago@gentoo.org> knotify-4.8.1.ebuild:
+  Stable for amd64, wrt bug #409403
+
+  31 Mar 2012; Markus Meier <maekke@gentoo.org> knotify-4.8.1.ebuild:
+  add ~arm, bug #402989
+
+  23 Mar 2012; Johannes Huber <johu@gentoo.org> knotify-4.8.1.ebuild:
+  Restore ~x86-fbsd.
+
+  23 Mar 2012; Johannes Huber <johu@gentoo.org> -knotify-4.8.0.ebuild:
+  Remove KDE SC 4.8.0
+
+*knotify-4.8.1 (06 Mar 2012)
+
+  06 Mar 2012; Andreas K. Huettel <dilfridge@gentoo.org> +knotify-4.8.1.ebuild:
+  Version bump KDE SC 4.8.1
+
+  20 Feb 2012; Johannes Huber <johu@gentoo.org> -knotify-4.6.3.ebuild:
+  Remove KDE SC 4.6.3
+
+  18 Feb 2012; nixnut <nixnut@gentoo.org> knotify-4.7.4.ebuild:
+  ppc stable #396359
+
+*knotify-4.8.0 (25 Jan 2012)
+
+  25 Jan 2012; Johannes Huber <johu@gentoo.org> +knotify-4.8.0.ebuild:
+  Version bump KDE SC 4.8.0
+
+  17 Jan 2012; Johannes Huber <johu@gentoo.org> -knotify-4.7.3.ebuild:
+  Remove KDE SC 4.7.3
+
+  16 Jan 2012; Agostino Sarubbo <ago@gentoo.org> knotify-4.7.4.ebuild:
+  Stable for amd64, wrt bug #396359
+
+  09 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> knotify-4.7.4.ebuild:
+  x86 stable wrt bug #396359
+
+  18 Dec 2011; Andreas K. Huettel <dilfridge@gentoo.org> -knotify-4.6.5.ebuild:
+  Drop KDE 4.6.5
+
+*knotify-4.7.4 (11 Dec 2011)
+
+  11 Dec 2011; Alexey Shvetsov <alexxy@gentoo.org> +knotify-4.7.4.ebuild:
+  Version bump KDE SC 4.7.4
+
+  07 Dec 2011; Andreas K. Huettel <dilfridge@gentoo.org> -knotify-4.7.2.ebuild:
+  Drop KDE 4.7.2
+
+  07 Dec 2011; Markos Chandras <hwoarang@gentoo.org> knotify-4.7.3.ebuild:
+  Stable on amd64 wrt bug #388279
+
+  07 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> knotify-4.7.3.ebuild:
+  x86 stable wrt bug #388279
+
+*knotify-4.7.3 (02 Nov 2011)
+
+  02 Nov 2011; Alexey Shvetsov <alexxy@gentoo.org> +knotify-4.7.3.ebuild:
+  Version bump KDE SC 4.7.3
+
+  28 Oct 2011; Andreas K. Huettel <dilfridge@gentoo.org> -knotify-4.7.1.ebuild:
+  Drop KDEpim 4.6.1 and KDE 4.7.1
+
+  15 Oct 2011; Andreas K. Huettel <dilfridge@gentoo.org> -knotify-4.7.0.ebuild:
+  Drop KDE 4.7.0
+
+*knotify-4.7.2 (06 Oct 2011)
+
+  06 Oct 2011; Alexey Shvetsov <alexxy@gentoo.org> +knotify-4.7.2.ebuild:
+  Version bump KDE SC 4.7.2
+
+*knotify-4.7.1 (07 Sep 2011)
+
+  07 Sep 2011; Alexey Shvetsov <alexxy@gentoo.org> +knotify-4.7.1.ebuild:
+  Version bump KDE SC 4.7.1
+
+  15 Aug 2011; Markus Meier <maekke@gentoo.org> knotify-4.6.5.ebuild:
+  x86 stable, bug #377465
+
+  12 Aug 2011; Andreas K. Huettel <dilfridge@gentoo.org> -knotify-4.6.4.ebuild:
+  Drop KDE 4.6.4
+
+  09 Aug 2011; Markos Chandras <hwoarang@gentoo.org> knotify-4.6.5.ebuild:
+  Stable on amd64 wrt bug #377465
+
+*knotify-4.7.0 (27 Jul 2011)
+
+  27 Jul 2011; Alexey Shvetsov <alexxy@gentoo.org> +knotify-4.7.0.ebuild:
+  Version bump KDE SC 4.7.0
+
+*knotify-4.6.5 (09 Jul 2011)
+
+  09 Jul 2011; Alexey Shvetsov <alexxy@gentoo.org> +knotify-4.6.5.ebuild:
+  Version bump KDE SC 4.6.5
+
+  06 Jul 2011; Andreas K. Huettel <dilfridge@gentoo.org> -knotify-4.6.2.ebuild:
+  Drop KDE 4.6.2
+
+  25 Jun 2011; Brent Baude <ranger@gentoo.org> knotify-4.6.3.ebuild:
+  Marking knotify-4.6.3 ppc stable for bug 369979
+
+*knotify-4.6.4 (10 Jun 2011)
+
+  10 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org> +knotify-4.6.4.ebuild:
+  Version bump
+
+  10 Jun 2011; Markos Chandras <hwoarang@gentoo.org> knotify-4.6.3.ebuild:
+  Stable on amd64 wrt bug #369979
+
+  08 Jun 2011; Thomas Kahle <tomka@gentoo.org> knotify-4.6.3.ebuild:
+  x86 stable per bug 369979
+
+  02 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org> -knotify-4.4.5.ebuild:
+  Drop KDE-4.4
+
+  01 Jun 2011; Brent Baude <ranger@gentoo.org> knotify-4.6.2.ebuild:
+  Marking knotify-4.6.2 ppc stable for bug 354033
+
+  09 May 2011; Markos Chandras <hwoarang@gentoo.org> knotify-4.6.2.ebuild:
+  Stable on amd64 wrt bug #354033
+
+  09 May 2011; Thomas Kahle <tomka@gentoo.org> knotify-4.6.2.ebuild:
+  x86 stable per bug 354033
+
+*knotify-4.6.3 (07 May 2011)
+
+  07 May 2011; Tomáš Chvátal <scarabeus@gentoo.org> +knotify-4.6.3.ebuild:
+  Version bump KDE SC 4.6.3
+
+*knotify-4.6.2 (06 Apr 2011)
+
+  06 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org> -knotify-4.5.5.ebuild,
+  -knotify-4.6.0.ebuild, -knotify-4.6.1.ebuild, +knotify-4.6.2.ebuild:
+  Version bump KDE SC 4.6.2
+
+*knotify-4.6.1 (04 Mar 2011)
+
+  04 Mar 2011; Alexey Shvetsov <alexxy@gentoo.org> +knotify-4.6.1.ebuild:
+  Version bump KDE SC 4.6.1
+
+*knotify-4.6.0 (26 Jan 2011)
+
+  26 Jan 2011; Alexey Shvetsov <alexxy@gentoo.org> +knotify-4.6.0.ebuild:
+  Version bump KDE SC 4.6.0
+
+*knotify-4.5.5 (10 Jan 2011)
+
+  10 Jan 2011; Theo Chatzimichos <tampakrap@gentoo.org> +knotify-4.5.5.ebuild:
+  Version bump KDE SC 4.5.5
+
+*knotify-4.5.4 (02 Dec 2010)
+
+  02 Dec 2010; Alexey Shvetsov <alexxy@gentoo.org> +knotify-4.5.4.ebuild:
+  Version bump KDE SC 4.5.4
+
+*knotify-4.5.3 (03 Nov 2010)
+
+  03 Nov 2010; Tomáš Chvátal <scarabeus@gentoo.org> +knotify-4.5.3.ebuild:
+  Version bump
+
+*knotify-4.5.2 (05 Oct 2010)
+
+  05 Oct 2010; Alexey Shvetsov <alexxy@gentoo.org> +knotify-4.5.2.ebuild:
+  Version bump KDE SC 4.5.2
+
+*knotify-4.5.1 (06 Sep 2010)
+
+  06 Sep 2010; Theo Chatzimichos <tampakrap@gentoo.org>
+  +knotify-4.5.1.ebuild:
+  Version bump
+
+  09 Aug 2010; Tomáš Chvátal <scarabeus@gentoo.org> knotify-4.4.5.ebuild:
+  Drop alpha ia64 and sparc per the AT Lead permission.
+
+  09 Aug 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -knotify-4.3.5.ebuild, -knotify-4.4.4.ebuild:
+  rm
+
+  09 Aug 2010; Christian Faulhammer <fauli@gentoo.org> knotify-4.4.5.ebuild:
+  x86 stable, bug 322791
+
+  09 Aug 2010; Joseph Jezak <josejx@gentoo.org> knotify-4.4.5.ebuild:
+  Marked ppc stable for bug #322791.
+
+  03 Aug 2010; Markos Chandras <hwoarang@gentoo.org> knotify-4.4.5.ebuild:
+  Stable on amd64 wrt bug #322791
+
+  03 Jul 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  knotify-4.4.5.ebuild:
+  [kde-base/knotify-4.4.5] Restored ~x86-fbsd keyword.
+
+*knotify-4.4.5 (30 Jun 2010)
+
+  30 Jun 2010; Alexey Shvetsov <alexxy@gentoo.org> +knotify-4.4.5.ebuild:
+  Version bump
+
+  27 Jun 2010; Christian Faulhammer <fauli@gentoo.org> knotify-4.4.4.ebuild:
+  x86 stable, bug 322791
+
+  24 Jun 2010; Christoph Mende <angelos@gentoo.org> knotify-4.4.4.ebuild:
+  Stable on amd64 wrt bug #322791
+
+  21 Jun 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -knotify-4.3.3.ebuild, knotify-4.3.5.ebuild, knotify-4.4.4.ebuild:
+  Drop 4.3.3. Drop hppa keywords per bug #304363
+
+*knotify-4.4.4 (06 Jun 2010)
+
+  06 Jun 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -knotify-4.4.2.ebuild, -knotify-4.4.3.ebuild, +knotify-4.4.4.ebuild:
+  Remove old. Version bump.
+
+  04 May 2010; Alexey Shvetsov <alexxy@gentoo.org> knotify-4.4.3.ebuild:
+  Restore accidently dropped ~x86-fbsd keyword on KDE SC 4.4.3
+
+  03 May 2010; Alexey Shvetsov <alexxy@gentoo.org> -knotify-4.4.1.ebuild:
+  Drop KDE SC 4.4.1
+
+*knotify-4.4.3 (03 May 2010)
+
+  03 May 2010; Alexey Shvetsov <alexxy@gentoo.org> +knotify-4.4.3.ebuild:
+  Version bump
+
+  03 May 2010; Alexis Ballier <aballier@gentoo.org> knotify-4.4.2.ebuild:
+  keyword ~x86-fbsd
+
+  31 Mar 2010; Dror Levin <spatz@gentoo.org> -knotify-4.3.4.ebuild,
+  -knotify-4.4.0.ebuild:
+  Remove old KDE versions.
+
+*knotify-4.4.2 (30 Mar 2010)
+
+  30 Mar 2010; Dror Levin <spatz@gentoo.org> +knotify-4.4.2.ebuild:
+  Version bump
+
+  11 Mar 2010; Brent Baude <ranger@gentoo.org> knotify-4.3.5.ebuild:
+  Marking knotify-4.3.5 ppc stable for bug 300393
+
+*knotify-4.4.1 (02 Mar 2010)
+
+  02 Mar 2010; Theo Chatzimichos <tampakrap@gentoo.org>
+  +knotify-4.4.1.ebuild:
+  Version bump
+
+  20 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> knotify-4.3.5.ebuild:
+  amd64/x86 stable wrt #300393
+
+*knotify-4.4.0 (08 Feb 2010)
+
+  08 Feb 2010; Alexey Shvetsov <alexxy@gentoo.org> +knotify-4.4.0.ebuild:
+  Version bump to KDE SC 4.4.0
+
+*knotify-4.3.5 (25 Jan 2010)
+
+  25 Jan 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  +knotify-4.3.5.ebuild:
+  Version bump
+
+  23 Jan 2010; Raúl Porcel <armin76@gentoo.org> knotify-4.3.4.ebuild:
+  Add ~arm
+
+  20 Jan 2010; Jonathan Callen <abcd@gentoo.org> knotify-4.3.4.ebuild:
+  Keyword ~amd64-linux/~x86-linux
+
+  19 Jan 2010; Jeroen Roovers <jer@gentoo.org> knotify-4.3.3.ebuild:
+  Stable for HPPA too.
+
+  10 Dec 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -knotify-4.3.1.ebuild:
+  Drop KDE SC-4.3.1.
+
+  10 Dec 2009; Christian Faulhammer <fauli@gentoo.org> knotify-4.3.3.ebuild:
+  x86 stable, bug 292455
+
+*knotify-4.3.4 (01 Dec 2009)
+
+  01 Dec 2009; Alex Alexander <wired@gentoo.org> +knotify-4.3.4.ebuild:
+  Version bump
+
+  30 Nov 2009; Joseph Jezak <josejx@gentoo.org> knotify-4.3.3.ebuild:
+  Marked ppc/ppc64 stable for bug #292455.
+
+  29 Nov 2009; Raúl Porcel <armin76@gentoo.org> knotify-4.3.3.ebuild:
+  Add ~sparc
+
+  29 Nov 2009; Samuli Suominen <ssuominen@gentoo.org> knotify-4.3.3.ebuild:
+  amd64 stable wrt #292455
+
+  08 Nov 2009; Alexey Shvetsov <alexxy@gentoo.org> -knotify-4.3.2.ebuild:
+  Drop KDE 4.3.2
+
+  08 Nov 2009; Alexey Shvetsov <alexxy@gentoo.org> -knotify-4.2.4.ebuild:
+  Drop KDE 4.2.4
+
+*knotify-4.3.3 (02 Nov 2009)
+
+  02 Nov 2009; Alex Alexander <wired@gentoo.org> +knotify-4.3.3.ebuild:
+  Version bump
+
+  18 Oct 2009; Markus Meier <maekke@gentoo.org> knotify-4.3.1.ebuild:
+  x86 stable, bug #287697
+
+  10 Oct 2009; Samuli Suominen <ssuominen@gentoo.org> knotify-4.3.1.ebuild:
+  amd64 stable wrt #287697
+
+  08 Oct 2009; Alexey Shvetsov <alexxy@gentoo.org> -knotify-4.3.0.ebuild:
+  Drop KDE 4.3.0
+
+*knotify-4.3.2 (06 Oct 2009)
+
+  06 Oct 2009; Alexey Shvetsov <alexxy@gentoo.org> +knotify-4.3.2.ebuild:
+  Version bump
+
+*knotify-4.3.1 (01 Sep 2009)
+
+  01 Sep 2009; Theo Chatzimichos <tampakrap@gentoo.org>
+  +knotify-4.3.1.ebuild:
+  Version bump
+
+  04 Aug 2009; Alex Alexander <wired@gentoo.org> ChangeLog:
+  manifest update (upstream tarball changed)
+
+*knotify-4.3.0 (04 Aug 2009)
+
+  04 Aug 2009; Alex Alexander <wired@gentoo.org> +knotify-4.3.0.ebuild:
+  Version bump
+
+  14 Jun 2009; Alexey Shvetsov <alexxy@gentoo.org> -knotify-4.2.3.ebuild:
+  Drop KDE 4.2.3
+
+  05 Jun 2009; Alexey Shvetsov <alexxy@gentoo.org> ChangeLog:
+  Fix accidently added keywords
+
+*knotify-4.2.4 (04 Jun 2009)
+
+  04 Jun 2009; Alexey Shvetsov <alexxy@gentoo.org> +knotify-4.2.4.ebuild:
+  Version bump
+
+  03 Jun 2009; Alexey Shvetsov <alexxy@gentoo.org> -knotify-4.2.2.ebuild:
+  Drop KDE 4.2.2
+
+*knotify-4.2.3 (06 May 2009)
+
+  06 May 2009; Tomas Chvatal <scarabeus@gentoo.org> +knotify-4.2.3.ebuild:
+  Version bump
+
+  17 Apr 2009; Alexey Shvetsov <alexxy@gentoo.org> -knotify-4.2.1.ebuild,
+  knotify-4.2.2:
+  Restore ~hppa keywords
+
+  16 Apr 2009; Alexey Shvetsov <alexxy@gentoo.org> -knotify-4.2.1.ebuild:
+  Drop KDE 4.2.1
+
+*knotify-4.2.2 (11 Apr 2009)
+
+  11 Apr 2009; Alexey Shvetsov <alexxy@gentoo.org> +knotify-4.2.2.ebuild:
+  Add KDE 4.2.2
+
+  11 Apr 2009; Raúl Porcel <armin76@gentoo.org> knotify-4.2.1.ebuild:
+  Add ~alpha/~ia64 wrt #260777
+
+  11 Apr 2009; Jeroen Roovers <jer@gentoo.org> knotify-4.2.1.ebuild:
+  Marked ~hppa (bug #260777).
+
+  08 Mar 2009; Alexey Shvetsov <alexxy@gentoo.org> -knotify-4.2.0.ebuild:
+  Drop KDE 4.2.0
+
+  08 Mar 2009; Tomas Chvatal <scarabeus@gentoo.org> knotify-4.2.1.ebuild:
+  Semi-automatic merge, Update deps.
+
+*knotify-4.2.1 (04 Mar 2009)
+
+  04 Mar 2009; Alexey Shvetsov <alexxy@gentoo.org> +knotify-4.2.1.ebuild:
+  Bump KDE 4.2.1
+
+  17 Feb 2009; Alexey Shvetsov <alexxy@gentoo.org> -knotify-4.1.4.ebuild:
+  Drop KDE 4.1.4
+
+  01 Feb 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  knotify-4.2.0.ebuild:
+  Restored ~ppc and ~ppc64 keywords to KDE-4.2.0
+
+*knotify-4.2.0 (27 Jan 2009)
+
+  27 Jan 2009; Alexey Shvetsov <alexxy@gentoo.org> +knotify-4.2.0.ebuild:
+  Bump KDE-4.2.0
+
+  14 Jan 2009; Alexey Shvetsov <alexxy@gentoo.org> -knotify-4.1.2.ebuild,
+  -knotify-4.1.3.ebuild:
+  Drop KDE 4.1.2 and 4.1.3
+
+*knotify-4.1.4 (13 Jan 2009)
+
+  13 Jan 2009; Alexey Shvetsov <alexxy@gentoo.org> +knotify-4.1.4.ebuild:
+  Bump to 4.1.4
+
+  15 Nov 2008; Mike Frysinger <vapier@gentoo.org> knotify-4.1.3.ebuild:
+  Add ppc/ppc64 love #244306.
+
+*knotify-4.1.3 (08 Nov 2008)
+
+  08 Nov 2008; Tomas Chvatal <scarabeus@gentoo.org> +knotify-4.1.3.ebuild:
+  Version bump.
+
+  21 Oct 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  -knotify-4.0.4.ebuild, -knotify-4.0.5.ebuild:
+  Removing KDE-4.0.X packages now that 4.1.2 was put in the tree.
+
+*knotify-4.1.2 (02 Oct 2008)
+
+  02 Oct 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +knotify-4.1.2.ebuild:
+  Add kde-4.1.2 into the tree from the kde-testing overlay.
+
+  09 Jun 2008; Tobias Heinlein <keytoaster@gentoo.org>
+  -knotify-4.0.2.ebuild, -knotify-4.0.3.ebuild:
+  Removed old versions.
+
+*knotify-4.0.5 (05 Jun 2008)
+
+  05 Jun 2008; Tobias Heinlein <keytoaster@gentoo.org>
+  +knotify-4.0.5.ebuild:
+  Added the KDE 4.0.5 version of knotify.
+
+*knotify-4.0.4 (15 May 2008)
+
+  15 May 2008; Ingmar Vanhassel <ingmar@gentoo.org> +knotify-4.0.4.ebuild:
+  Added KDE 4.0.4 version of knotify. Thanks to Jorge Manuel B. S. Vicetto.
+
+*knotify-4.0.3 (03 Apr 2008)
+
+  03 Apr 2008; Wulf C. Krueger <philantrop@gentoo.org>
+  +knotify-4.0.3.ebuild:
+  Version bump to KDE 4.0.3. This is still not intended for mainstream so DO
+  NOT KEYWORD IT without talking to the KDE herd first.
+
+  20 Mar 2008; Ingmar Vanhassel <ingmar@gentoo.org> -knotify-4.0.1.ebuild:
+  Old.
+
+*knotify-4.0.2 (10 Mar 2008)
+
+  10 Mar 2008; Wulf C. Krueger <philantrop@gentoo.org>
+  +knotify-4.0.2.ebuild:
+  Version bump to KDE 4.0.2
+
+  16 Feb 2008; Ingmar Vanhassel <ingmar@gentoo.org> -knotify-4.0.0.ebuild:
+  Spring cleaning
+
+*knotify-4.0.1 (06 Feb 2008)
+
+  06 Feb 2008; Wulf C. Krueger <philantrop@gentoo.org>
+  +knotify-4.0.1.ebuild:
+  Version bump to KDE 4.0.1.
+
+*knotify-4.0.0 (18 Jan 2008)
+
+  18 Jan 2008; Ingmar Vanhassel <ingmar@gentoo.org> +metadata.xml,
+  +knotify-4.0.0.ebuild:
+  Added KDE 4.0.0's knotify.

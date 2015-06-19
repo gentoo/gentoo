@@ -1,0 +1,99 @@
+# ChangeLog for media-libs/liblqr
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/liblqr/ChangeLog,v 1.28 2015/05/06 12:19:53 mrueg Exp $
+
+  06 May 2015; Manuel Rüger <mrueg@gentoo.org> -liblqr-0.4.1.ebuild:
+  Remove old.
+
+  18 Jan 2014; Agostino Sarubbo <ago@gentoo.org> liblqr-0.4.2-r1.ebuild:
+  Stable for alpha, wrt bug #485672
+
+  22 Dec 2013; Agostino Sarubbo <ago@gentoo.org> liblqr-0.4.2-r1.ebuild:
+  Stable for ppc64, wrt bug #485672
+
+  21 Dec 2013; Agostino Sarubbo <ago@gentoo.org> liblqr-0.4.2-r1.ebuild:
+  Stable for ppc, wrt bug #485672
+
+  27 Nov 2013; Markus Meier <maekke@gentoo.org> liblqr-0.4.2-r1.ebuild:
+  arm stable, bug #485672
+
+  15 Nov 2013; Jeroen Roovers <jer@gentoo.org> liblqr-0.4.2-r1.ebuild:
+  Stable for HPPA (bug #485672).
+
+  15 Nov 2013; Sergey Popov <pinkbyte@gentoo.org> liblqr-0.4.2-r1.ebuild:
+  Stable on amd64 and x86, wrt bug #485672
+
+*liblqr-0.4.2-r1 (15 Nov 2013)
+
+  15 Nov 2013; Sergey Popov <pinkbyte@gentoo.org> -liblqr-0.4.2.ebuild,
+  +liblqr-0.4.2-r1.ebuild:
+  Revision bump: add epatch_user, prune unnecessary libtool files
+
+  15 Nov 2013; Sergey Popov <pinkbyte@gentoo.org> liblqr-0.4.1.ebuild,
+  liblqr-0.4.2.ebuild:
+  Correct dependency on dev-libs/glib
+
+  24 Apr 2013; Markos Chandras <hwoarang@gentoo.org> liblqr-0.4.2.ebuild:
+  Drop doc useflag because man pages are not included in the tarball anymore.
+  Bug #464040
+
+*liblqr-0.4.2 (31 Mar 2013)
+
+  31 Mar 2013; Markos Chandras <hwoarang@gentoo.org> +liblqr-0.4.2.ebuild:
+  Version bump
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org> liblqr-0.4.1.ebuild:
+  keyword ~amd64-fbsd
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> liblqr-0.4.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  04 Dec 2011; Markos Chandras <hwoarang@gentoo.org> liblqr-0.4.1.ebuild:
+  add missing pkgconfig build time dependency. Bug #391983 thanks to David Owen
+
+  10 Dec 2009; Raúl Porcel <armin76@gentoo.org> liblqr-0.4.1.ebuild:
+  arm stable wrt #284425
+
+  09 Dec 2009; Brent Baude <ranger@gentoo.org> liblqr-0.4.1.ebuild:
+  Marking liblqr-0.4.1 ppc64 for bug 284425
+
+  08 Dec 2009; nixnut <nixnut@gentoo.org> liblqr-0.4.1.ebuild:
+  ppc stable #291696
+
+  03 Dec 2009; Markus Meier <maekke@gentoo.org> liblqr-0.4.1.ebuild:
+  amd64 stable, bug #284425
+
+  24 Nov 2009; Christian Faulhammer <fauli@gentoo.org> liblqr-0.4.1.ebuild:
+  stable x86, bug 284425
+
+  22 Nov 2009; Tobias Klausmann <klausman@gentoo.org> liblqr-0.4.1.ebuild:
+  Stable on alpha, bug #284425
+
+  21 Nov 2009; Jeroen Roovers <jer@gentoo.org> liblqr-0.4.1.ebuild:
+  Stable for HPPA (bug #284425).
+
+  05 Oct 2009; Mounir Lamouri <volkmar@gentoo.org> liblqr-0.4.1.ebuild:
+  Keywording for ppc, bug 281573
+
+  27 Sep 2009; Markus Meier <maekke@gentoo.org> liblqr-0.4.1.ebuild:
+  add ~arm, bug #281573
+
+  06 Sep 2009; Brent Baude <ranger@gentoo.org> liblqr-0.4.1.ebuild:
+  Marking liblqr-0.4.1 ~ppc64 for bug 281573
+
+  29 Aug 2009; Tobias Klausmann <klausman@gentoo.org> liblqr-0.4.1.ebuild:
+  Keyworded on alpha, bug #281573
+
+  26 Aug 2009; Jeroen Roovers <jer@gentoo.org> liblqr-0.4.1.ebuild:
+  Marked ~hppa (bug #281573).
+
+  18 Aug 2009; Alexis Ballier <aballier@gentoo.org> liblqr-0.4.1.ebuild:
+  keyword ~x86-fbsd, bug #281573
+
+*liblqr-0.4.1 (04 Aug 2009)
+
+  04 Aug 2009; Markos Chandras <hwoarang@gentoo.org> +liblqr-0.4.1.ebuild,
+  +metadata.xml:
+  Initial commit of liblqr library. Fixes bug 203143. Thanks to Piotr
+  Szymaniak
+  <lazy_bum@o2.pl> for the initial ebuild

@@ -1,0 +1,40 @@
+#!/sbin/openrc-run
+# Copyright 2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/consul/files/consul.initd,v 1.1 2015/05/24 07:59:56 zmedico Exp $
+
+description="consul agent"
+extra_started_commands="reload"
+export GOMAXPROCS=${GOMAXPROCS:-2}
+group=${group:-${SVCNAME}}
+pidfile=${pidfile:-"/run/${SVCNAME}/${SVCNAME}.pid"}
+user=${user:-${SVCNAME}}
+
+command="/usr/bin/${SVCNAME}"
+command_args="agent -config-dir=/etc/consul.d ${command_args}"
+command_background="true"
+start_stop_daemon_args="--user ${user} --group ${group} \
+	--stdout /var/log/${SVCNAME}/${SVCNAME}.log \
+	--stderr /var/log/${SVCNAME}/${SVCNAME}.log"
+
+depend() {
+	need net
+	after net
+}
+
+reload() {
+	ebegin "Reloading ${SVCNAME}"
+	${command} reload
+	eend $?
+}
+
+start_pre() {
+	checkpath -d -m 0755 -o "${user}":"${group}" "${pidfile%/*}"
+}
+
+stop() {
+	# SIGINT is required for graceful shutdown of consul agent
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --signal SIGINT --pidfile "${pidfile}"
+	eend $?
+}

@@ -1,0 +1,192 @@
+# ChangeLog for sci-libs/linux-gpib
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/linux-gpib/ChangeLog,v 1.38 2015/04/08 18:49:16 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> linux-gpib-3.2.20-r1.ebuild,
+  linux-gpib-3.2.21-r1.ebuild, linux-gpib-3.2.21.ebuild:
+  Drop old Python implementations
+
+*linux-gpib-3.2.21-r1 (07 Apr 2015)
+
+  07 Apr 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +files/linux-gpib-3.2.21-ctrl-c.patch, +linux-gpib-3.2.21-r1.ebuild:
+  Add the long-desired fix for CTRL-C breakage from upstream trunk
+
+  07 Apr 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  linux-gpib-3.2.20-r1.ebuild, linux-gpib-3.2.21.ebuild:
+  Drop x86 to testing, noone uses that anyway; stabilize 3.2.21 on amd64
+
+  20 Mar 2015; Justin Lecher <jlec@gentoo.org> linux-gpib-3.2.20-r1.ebuild,
+  linux-gpib-3.2.21.ebuild:
+  Fix tcl/tk slotting
+
+*linux-gpib-3.2.21 (17 Dec 2014)
+
+  17 Dec 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +files/linux-gpib-3.2.21-build.patch, +linux-gpib-3.2.21.ebuild:
+  Version bump
+
+  28 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  linux-gpib-3.2.20-r1.ebuild:
+  Remove call to perl-module_pkg_postinst, does not do anything outside
+  perl-core
+
+  19 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  linux-gpib-3.2.20-r1.ebuild:
+  Replace perl-module_pkg_preinst with perl_set_version
+
+  19 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  linux-gpib-3.2.20-r1.ebuild:
+  Replace perl-module_pkg_setup with perl_set_version
+
+  12 Mar 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -files/linux-gpib-3.2.16-kernel-3.4-asm-includes.patch,
+  -files/linux-gpib-3.2.17-kernel37.patch, -linux-gpib-3.2.19.ebuild,
+  -linux-gpib-3.2.20.ebuild:
+  Remove old
+
+  09 Mar 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  linux-gpib-3.2.20-r1.ebuild:
+  x86 stable wrt bug #503722
+
+  07 Mar 2014; Pacho Ramos <pacho@gentoo.org> linux-gpib-3.2.20-r1.ebuild:
+  amd64 stable, bug #503722
+
+  07 Mar 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  linux-gpib-3.2.20-r1.ebuild:
+  Add subslot dependency on perl
+
+  06 Jan 2014; Justin Lecher <jlec@gentoo.org> -linux-gpib-3.2.17-r1.ebuild,
+  linux-gpib-3.2.19.ebuild, linux-gpib-3.2.20.ebuild,
+  linux-gpib-3.2.20-r1.ebuild, metadata.xml:
+  Drop old; punt base.eclass
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> linux-gpib-3.2.19.ebuild:
+  Stable for x86, wrt bug #488798
+
+*linux-gpib-3.2.20-r1 (14 Dec 2013)
+
+  14 Dec 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  +linux-gpib-3.2.20-r1.ebuild:
+  Port to python-single-r1 by floppym
+
+  14 Dec 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  linux-gpib-3.2.20.ebuild, metadata.xml:
+  Add isa useflag
+
+*linux-gpib-3.2.20 (06 Dec 2013)
+
+  06 Dec 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  -linux-gpib-3.2.18.ebuild, +linux-gpib-3.2.20.ebuild:
+  Version bump, remove old
+
+  13 Nov 2013; Chema Alonso <nimiux@gentoo.org> linux-gpib-3.2.19.ebuild:
+  Stable for amd64 wrt bug #488798
+
+*linux-gpib-3.2.19 (20 Oct 2013)
+
+  20 Oct 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  +linux-gpib-3.2.19.ebuild:
+  Version bump
+
+*linux-gpib-3.2.18 (11 Aug 2013)
+
+  11 Aug 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  -linux-gpib-3.2.16-r4.ebuild, +linux-gpib-3.2.18.ebuild:
+  Version bump; remove old
+
+  04 Jul 2013; Agostino Sarubbo <ago@gentoo.org> linux-gpib-3.2.17-r1.ebuild:
+  Stable for x86, wrt bug #475542
+
+  04 Jul 2013; Agostino Sarubbo <ago@gentoo.org> linux-gpib-3.2.17-r1.ebuild:
+  Stable for amd64, wrt bug #475542
+
+  02 Jul 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  -linux-gpib-3.2.17.ebuild:
+  Clean up
+
+  27 May 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  linux-gpib-3.2.17-r1.ebuild:
+  Builds fine on arm, adding keyword
+
+*linux-gpib-3.2.17-r1 (25 May 2013)
+*linux-gpib-3.2.16-r4 (25 May 2013)
+
+  25 May 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  -linux-gpib-3.2.16-r3.ebuild, +linux-gpib-3.2.16-r4.ebuild,
+  +files/linux-gpib-3.2.16-reallydie.patch, +linux-gpib-3.2.17-r1.ebuild,
+  +files/linux-gpib-3.2.17-kernel37.patch:
+  Stable revbump to detect silent build failures in kernel modules; add patch
+  in 3.2.17-r1 for building against kernel 3.7 and later
+
+  30 Jan 2013; Agostino Sarubbo <ago@gentoo.org> linux-gpib-3.2.16-r3.ebuild:
+  Stable for x86, wrt bug #454222
+
+  27 Jan 2013; Agostino Sarubbo <ago@gentoo.org> linux-gpib-3.2.16-r3.ebuild:
+  Stable for amd64, wrt bug #454222
+
+*linux-gpib-3.2.17 (26 Jan 2013)
+
+  26 Jan 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  linux-gpib-3.2.16-r3.ebuild, +linux-gpib-3.2.17.ebuild:
+  Version bump; remove module-rebuild from dependencies
+
+  11 Dec 2012; Ian Stakenvicius <axs@gentoo.org> linux-gpib-3.2.16-r3.ebuild:
+  install udev rules with udev.eclass to support virtual/udev
+
+  11 Sep 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  linux-gpib-3.2.16-r3.ebuild:
+  Depend on Perl and call perl phase functions only if useflag perl is set, bug
+  433537
+
+  25 Aug 2012; Samuli Suominen <ssuominen@gentoo.org>
+  linux-gpib-3.2.16-r3.ebuild:
+  Pull in user.eclass for function enewgroup.
+
+  25 Aug 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -linux-gpib-3.2.16-r1.ebuild, -linux-gpib-3.2.16-r2.ebuild:
+  old
+
+*linux-gpib-3.2.16-r3 (25 Aug 2012)
+
+  25 Aug 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +linux-gpib-3.2.16-r3.ebuild:
+  Support reading udevdir value from udev.pc pkg-config file.
+
+*linux-gpib-3.2.16-r2 (03 Aug 2012)
+
+  03 Aug 2012; Michael Weber <xmw@gentoo.org>
+  +files/linux-gpib-3.2.16-kernel-3.4-asm-includes.patch,
+  +linux-gpib-3.2.16-r2.ebuild:
+  Fix python support, restrict USE pcmcia (broken on kernels newer 2.6.38), fix
+  firmware installation (bug 379393, thanks Nicolas Boichat) and remove unwanted
+  precompiled binary generate_firmware, fix asm/system.h inclusion on kernel
+  3.4.0.
+
+  30 Nov 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  -linux-gpib-3.2.16.ebuild, linux-gpib-3.2.16-r1.ebuild:
+  Sanitize kernel version test
+
+*linux-gpib-3.2.16-r1 (14 Aug 2011)
+
+  14 Aug 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  -linux-gpib-3.2.15.ebuild, +linux-gpib-3.2.16-r1.ebuild,
+  +files/linux-gpib-3.2.16-perl.patch:
+  Make the perl bindings actually install; things should be compiled during the
+  compile phase; remove old
+
+*linux-gpib-3.2.16 (14 May 2011)
+
+  14 May 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +linux-gpib-3.2.16.ebuild:
+  Version bump with bugfix
+
+*linux-gpib-3.2.15 (31 Jan 2011)
+
+  31 Jan 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +linux-gpib-3.2.15.ebuild, +files/linux-gpib-3.2.15-build.patch,
+  +metadata.xml:
+  New package, fixes bug 165399. Thanks to antonmx and Ben Schwartz for
+  their work. Initially pmasked since the ebuild still needs a lot of QA
+  cleanup (especially concerning the language bindings) and requires exotic
+  hardware for testing.

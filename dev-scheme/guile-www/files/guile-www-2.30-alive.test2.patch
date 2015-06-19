@@ -1,0 +1,51 @@
+From cfabb94ca727d63f5712860c3fe4132926e498c9 Mon Sep 17 00:00:00 2001
+From: Thien-Thi Nguyen <ttn@gnuvola.org>
+Date: Mon, 02 May 2011 08:32:02 +0000
+Subject: [v] Refine preload: Prioritize "" instead of deleting ".scm".
+
+The 2011-04-28 change goes too far; it impedes
+loading system modules used by Guile-WWW modules.
+Reported by (Savannah user) vonbecmann:
+<https://savannah.nongnu.org/bugs/?33175>.
+
+* source/alive.test: Don't delete ".scm" from ‘%load-extensions’;
+instead, ensure only that "" is at the beginning of the list.
+---
+diff --git a/source/ChangeLog b/source/ChangeLog
+index 2de79f4..ece831e 100644
+--- a/source/ChangeLog
++++ b/source/ChangeLog
+@@ -1,3 +1,15 @@
++2011-05-02  Thien-Thi Nguyen  <ttn@gnuvola.org>
++
++	[v] Refine preload: Prioritize "" instead of deleting ".scm".
++
++	The 2011-04-28 change goes too far; it impedes
++	loading system modules used by Guile-WWW modules.
++	Reported by (Savannah user) vonbecmann:
++	<https://savannah.nongnu.org/bugs/?33175>.
++
++	* alive.test: Don't delete ".scm" from ‘%load-extensions’;
++	instead, ensure only that "" is at the beginning of the list.
++
+ 2011-04-28  Thien-Thi Nguyen  <ttn@gnuvola.org>
+ 
+ 	[v] Make alive.test avoid (mis-)loading the .scm files, if possible.
+diff --git a/source/alive.test b/source/alive.test
+index 76e91c8..6e430f4 100755
+--- a/source/alive.test
++++ b/source/alive.test
+@@ -39,8 +39,10 @@ decho 'guile:'
+ if $debug ; then ${GUILE-guile} --version ; fi
+ 
+ if $guile -c '%load-extensions' >/dev/null 2>&1 ; then
++    # Make sure "" is at head of list.
+     preload=alive.preload
+-    echo '(set! %load-extensions (delete ".scm" %load-extensions))' > $preload
++    echo '(set! %load-extensions (delete "" %load-extensions))' > $preload
++    echo '(set! %load-extensions (cons "" %load-extensions))' >> $preload
+     if $debug ; then
+         decho 'preload:'
+         cat $preload
+--
+cgit v0.9.0.2

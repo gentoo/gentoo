@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>proaudio</herd>
+<longdescription lang="en">
+	Raul (Realtime Audio Utility Library) is a C++ utility library primarily
+	aimed at audio/musical applications. 
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install preinst
+DEPEND=dev-lang/lua curl? ( net-misc/curl ) openssl? ( dev-libs/openssl )
+DESCRIPTION=A deployment and management system for Lua modules
+EAPI=4
+HOMEPAGE=http://www.luarocks.org
+IUSE=curl openssl
+KEYWORDS=~x86 ~amd64 ~ppc
+LICENSE=MIT
+RDEPEND=dev-lang/lua curl? ( net-misc/curl ) openssl? ( dev-libs/openssl ) app-arch/unzip
+SLOT=0
+SRC_URI=http://luarocks.org/releases/luarocks-2.2.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=169323bdfa397f87fa34894854189d8a

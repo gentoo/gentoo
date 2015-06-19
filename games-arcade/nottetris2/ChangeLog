@@ -1,0 +1,18 @@
+# ChangeLog for games-arcade/nottetris2
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/nottetris2/ChangeLog,v 1.4 2014/11/25 23:07:51 hasufell Exp $
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+  28 Aug 2013; Agostino Sarubbo <ago@gentoo.org> nottetris2-1.ebuild:
+  Stable for x86, wrt bug #480798
+
+  13 Aug 2013; Agostino Sarubbo <ago@gentoo.org> nottetris2-1.ebuild:
+  Stable for amd64, wrt bug #480798
+
+*nottetris2-1 (15 Jul 2013)
+
+  15 Jul 2013; Julian Ospald <hasufell@gentoo.org> +nottetris2-1.ebuild,
+  +metadata.xml:
+  initial import

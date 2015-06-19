@@ -1,0 +1,18 @@
+------------------------------------------------------------------------
+r35436 | upsuper | 2012-11-21 08:37:24 -0300 (Wed, 21 Nov 2012) | 2 lines
+
+Add missing break.
+
+------------------------------------------------------------------------
+Index: libmpcodecs/ad_ffmpeg.c
+===================================================================
+--- libmpcodecs/ad_ffmpeg.c	(revision 35435)
++++ libmpcodecs/ad_ffmpeg.c	(revision 35436)
+@@ -245,6 +245,7 @@
+         case 4:
+             copy_samples_planar(4, frame->nb_samples, channels,
+                                 buf, frame->extended_data);
++            break;
+         default:
+             copy_samples_planar(sample_size, frame->nb_samples, channels,
+                                 buf, frame->extended_data);

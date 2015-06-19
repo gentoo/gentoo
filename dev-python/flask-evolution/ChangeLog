@@ -1,0 +1,35 @@
+# ChangeLog for dev-python/flask-evolution
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/flask-evolution/ChangeLog,v 1.8 2015/06/14 15:58:18 idella4 Exp $
+
+*flask-evolution-0.6 (14 Jun 2015)
+
+  14 Jun 2015; Ian Delaney <idella4@gentoo.org> +flask-evolution-0.6.ebuild:
+  bump
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> flask-evolution-0.5-r1.ebuild:
+  Drop old Python implementations
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> flask-evolution-0.5-r1.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> flask-evolution-0.5-r1.ebuild:
+  amd64 stable, bug 540290
+
+*flask-evolution-0.5-r1 (22 Jun 2013)
+
+  22 Jun 2013; Ian Delaney <idella4@gentoo.org> +flask-evolution-0.5-r1.ebuild,
+  -flask-evolution-0.5.ebuild:
+  revbump, migrate -> distutils, remove prior ebuild
+
+  17 Jun 2013; Patrick Lauer <patrick@gentoo.org> flask-evolution-0.5.ebuild:
+  Fix python targets as flask was downrated
+
+*flask-evolution-0.5 (10 Jun 2012)
+
+  10 Jun 2012; Rafael G. Martins <rafaelmartins@gentoo.org>
+  +flask-evolution-0.5.ebuild, +metadata.xml:
+  Initial version.

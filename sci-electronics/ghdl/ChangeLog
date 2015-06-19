@@ -1,0 +1,63 @@
+# ChangeLog for sci-electronics/ghdl
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/ghdl/ChangeLog,v 1.16 2015/04/26 20:01:17 mrueg Exp $
+
+  26 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -ghdl-0.27.ebuild:
+  Remove old.
+
+  04 Aug 2013; Thomas Beierlein <tomjbe@gentoo.org> ghdl-0.29.ebuild,
+  +files/ghdl-0.29-gcc.patch:
+  Fix bug #477552, use <texinfo-5.1. Thanks qnikst for providing the patch
+
+  14 May 2011; Thomas Beierlein <tomjbe@gentoo.org> ghdl-0.29.ebuild:
+  Switch to EAPI=3 to fix bug #192761
+
+  24 Jul 2010; Thomas Beierlein <tomjbe@gentoo.org> ghdl-0.27.ebuild,
+  ghdl-0.29.ebuild:
+  Add missing 'emake -j1' for install, as per bug #277644.
+
+  20 May 2010; Jeremy Olexa <darkside@gentoo.org> ghdl-0.27.ebuild:
+  QA: Fix SRC_URI
+
+*ghdl-0.29 (21 Mar 2010)
+
+  21 Mar 2010; <calchan@gentoo.org> +ghdl-0.29.ebuild:
+  Version bump, bug #310259.
+
+  28 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org> ghdl-0.27.ebuild:
+  Use emake -j1 for install, as per bug #277644.
+
+  20 Jun 2009; Denis Dupeyron <calchan@gentoo.org> -ghdl-0.26.ebuild:
+  Removed old ebuild.
+
+  20 Jun 2009; Denis Dupeyron <calchan@gentoo.org> ghdl-0.27.ebuild:
+  Fixed bugs #248352, #273142 and #273252.
+
+*ghdl-0.27 (06 Jun 2009)
+
+  06 Jun 2009; Denis Dupeyron <calchan@gentoo.org> +ghdl-0.27.ebuild:
+  Vesion bump, bug #233109.
+
+  29 May 2009; Denis Dupeyron <calchan@gentoo.org> ghdl-0.26.ebuild:
+  Locked dependency on >=dev-lang/gnat-gcc-4.2 instead of virtual/gnat,
+  thanks to Arrigo Marchiori for reporting and to crazycasta for tracking
+  down the issue (bug #245528).
+
+  19 Apr 2009; Denis Dupeyron <calchan@gentoo.org> ghdl-0.26:
+  Fixed bug #250129.
+
+  09 Feb 2008; Denis Dupeyron <calchan@gentoo.org> ghdl-0.26.ebuild:
+  Fixed compilation on amd64, bug #203721.
+
+  31 Dec 2007; Joseph Jezak <josejx@gentoo.org> ghdl-0.26.ebuild:
+  Marked ~ppc for bug #196439.
+
+  11 Oct 2007; Denis Dupeyron <calchan@gentoo.org> ghdl-0.26.ebuild:
+  Fixed issue similar to bug #195074, thanks to vapier for his binutils fix
+  which I have ported to ghdl. Quoting fixes.
+
+*ghdl-0.26 (29 Jun 2007)
+
+  29 Jun 2007; Denis Dupeyron <calchan@gentoo.org> +ghdl-0.26.ebuild:
+  Initial commit, see bug #83877. Thanks to everybody for contributing to this
+  bug and to Zac Medico for adapting Portage to ghdl.

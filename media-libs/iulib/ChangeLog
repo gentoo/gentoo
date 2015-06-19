@@ -1,0 +1,46 @@
+# ChangeLog for media-libs/iulib
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/iulib/ChangeLog,v 1.12 2014/04/14 00:46:27 tomwij Exp $
+
+  14 Apr 2014; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  [QA] No maintainer was listed, thus checked metadata.xml patchsets and added
+  maintainer-needed.
+
+  03 Jun 2012; Mike Frysinger <vapier@gentoo.org> iulib-0.4.ebuild:
+  Update to EAPI=4, and fix multilib paths.
+
+  08 Nov 2010; Samuli Suominen <ssuominen@gentoo.org> iulib-0.3.ebuild,
+  iulib-0.4.ebuild:
+  Use virtual/jpeg wrt #327487.
+
+  21 Mar 2010; Mike Frysinger <vapier@gentoo.org> iulib-0.4.ebuild:
+  Do not put scons into RDEPEND per repoman.
+
+  21 Mar 2010; Mike Frysinger <vapier@gentoo.org> iulib-0.4.ebuild:
+  Pull in sdl-gfx depend and remove useless sdl-image include #310443 by
+  Samuli Suominen. Fix by Samuli Suominen for as-needed issues #310439.
+
+  20 Mar 2010; Mike Frysinger <vapier@gentoo.org> iulib-0.4.ebuild:
+  Fix tiff check #308955 by Samuli Suominen and automagic SDL depends
+  #297326 by Michał Górny.
+
+  19 Jan 2010; Dawid Węgliński <cla@gentoo.org> iulib-0.4.ebuild:
+  Add dev-util/scons as dependency (bug #297792)
+
+*iulib-0.4 (16 Dec 2009)
+
+  16 Dec 2009; Mike Frysinger <vapier@gentoo.org> +iulib-0.4.ebuild,
+  +files/iulib-0.4-scons-build-env.patch:
+  Version bump #297104 by Michał Górny.
+
+  04 Dec 2009; Mike Frysinger <vapier@gentoo.org> iulib-0.3.ebuild:
+  Mark amd64/x86 stable #283960 by Pierre.
+
+  02 Nov 2008; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml:
+  Vapier slacks and did not include metadata.xml
+
+*iulib-0.3 (02 Nov 2008)
+
+  02 Nov 2008; Mike Frysinger <vapier@gentoo.org>
+  +files/iulib-0.3-install.patch, +iulib-0.3.ebuild:
+  Initial ebuild by me for newer ocropus.

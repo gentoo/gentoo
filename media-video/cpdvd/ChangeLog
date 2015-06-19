@@ -1,0 +1,55 @@
+# ChangeLog for media-video/cpdvd
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/cpdvd/ChangeLog,v 1.17 2015/03/28 23:02:00 mrueg Exp $
+
+  28 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -cpdvd-1.10.ebuild:
+  Remove old.
+
+  06 Mar 2012; Brent Baude <ranger@gentoo.org> cpdvd-1.10-r1.ebuild:
+  Marking cpdvd-1.10-r1 ppc for bug 397115
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> cpdvd-1.10-r1.ebuild:
+  x86 stable wrt bug #397115
+
+  03 Feb 2012; Agostino Sarubbo <ago@gentoo.org> cpdvd-1.10-r1.ebuild:
+  Stable for amd64, wrt bug #397115
+
+  10 Mar 2009; Steve Dibb <beandog@gentoo.org> cpdvd-1.10.ebuild,
+  cpdvd-1.10-r1.ebuild:
+  Update transcode dvdread use flag dep to dvd
+
+*cpdvd-1.10-r1 (15 Oct 2008)
+
+  15 Oct 2008; Diego Pettenò <flameeyes@gentoo.org> +cpdvd-1.10-r1.ebuild:
+  Add an EAPI=2 revision with USE deps on transcode.
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> cpdvd-1.10.ebuild:
+  Remove src_compile.
+
+  05 Jul 2006; Joshua Jackson <tsunam@gentoo.org> cpdvd-1.10.ebuild:
+  Stable x86; bug #138866
+
+  04 Jul 2006; Jon Hood <squinky86@gentoo.org> cpdvd-1.10.ebuild:
+  Stable on amd64, bug #138866.
+
+  02 Jul 2006; Lars Weiler <pylon@gentoo.org> cpdvd-1.10.ebuild:
+  Stable on ppc; bug #138866.
+
+  28 Jul 2005; David Holm <dholm@gentoo.org> cpdvd-1.10.ebuild:
+  Added to ~ppc.
+
+  29 Mar 2005; Chris White <chriswhite@gentoo.org> cpdvd-1.10.ebuild:
+  Fix bug #86966.  Add a built_with_use check for transcode and dvdread.
+
+  30 Nov 2004; Sven Wegener <swegener@gentoo.org> cpdvd-1.10.ebuild:
+  Fixed invalid atoms in *DEPEND.
+
+  06 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org> cpdvd-1.10.ebuild:
+  Added to ~amd64.  Fixed LICENSE.
+
+*cpdvd-1.10 (21 Aug 2004)
+
+  21 Aug 2004; Christian Parpart <trapni@gentoo.org>:
+  Initial import. Ebuild submitted (#64508) 
+  by henning <henning@wh9.tu-dresden.de>.
+  Adapted to meet gentoo policies.

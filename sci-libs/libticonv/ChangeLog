@@ -1,0 +1,68 @@
+# ChangeLog for sci-libs/libticonv
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/libticonv/ChangeLog,v 1.8 2013/07/09 16:43:59 bicatali Exp $
+
+*libticonv-1.1.4 (09 Jul 2013)
+
+  09 Jul 2013; Sébastien Fabbro <bicatali@gentoo.org> +libticonv-1.1.4.ebuild:
+  Version bump. Switch to autototools-utils eclass
+
+  04 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> -libticonv-1.1.1.ebuild,
+  libticonv-1.1.3.ebuild:
+  keyword amd64-linux, x86-linux, removed old
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> libticonv-1.1.1.ebuild,
+  libticonv-1.1.3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*libticonv-1.1.3 (19 Feb 2012)
+
+  19 Feb 2012; Kacper Kowalik <xarthisius@gentoo.org> +libticonv-1.1.3.ebuild,
+  -libticonv-1.1.0.ebuild:
+  Version bump, remove .la file, drop old
+
+*libticonv-1.1.1 (15 Mar 2011)
+
+  15 Mar 2011; Sébastien Fabbro <bicatali@gentoo.org> +libticonv-1.1.1.ebuild:
+  Version bump
+
+  02 Mar 2011; Justin Lecher <jlec@gentoo.org> libticonv-1.1.0.ebuild:
+  Correct Slots for gtk 3 introduction to tree
+
+  24 Mar 2009; Joseph Jezak <josejx@gentoo.org> libticonv-1.1.0.ebuild:
+  Marked ~ppc for bug #263593.
+
+*libticonv-1.1.0 (03 Feb 2009)
+
+  03 Feb 2009; Sébastien Fabbro <bicatali@gentoo.org> +metadata.xml,
+  +libticonv-1.1.0.ebuild:
+  Initial import from sunrise, thanks to Christian Helbling and all
+  contributors in bug #146028
+
+  15 Jan 2008; Christian Helbling <helch@gmx.ch> -libticonv-1.0.4.ebuild,
+  +libticonv-1.1.0.ebuild:
+  Version bump
+
+  22 Sep 2007; Christian Helbling <helch@gmx.ch> -libticonv-1.0.2.ebuild,
+  +libticonv-1.0.4.ebuild:
+  version bump
+
+  30 Jun 2007; Jakub Moc <jakub@gentoo.org> libticonv-1.0.2.ebuild:
+  Fix up gettext dependencies
+
+  15 Jun 2007; Christian Helbling <helch@gmx.ch> +libticonv-1.0.2.ebuild,
+  -libticonv-20061030.ebuild:
+  Version bump. Better version numbers.
+
+  04 Dec 2006; Markus Ullmann <jokey@gentoo.org>
+  -libticonv-20060723-r1.ebuild,
+  -files/libticonv-20060723-bugfixes-20060807.diff:
+  Remove old
+
+  02 Dec 2006; Christian Helbling <helch@gmx.ch> +libticonv-20061030.ebuild:
+  Version bump
+
+  04 Sep 2006; Christian Helbling <helch@gmx.ch>
+  +libticonv-20060723-r1.ebuild,
+  +files/libticonv-20060723-bugfixes-20060807.diff, +metadata.xml:
+  New ebuild for bug 146028

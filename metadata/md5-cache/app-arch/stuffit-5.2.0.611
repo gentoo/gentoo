@@ -1,0 +1,9 @@
+DEFINED_PHASES=install nofetch postinst
+DESCRIPTION=Aladdin Software's StuffIt and StuffIt Expander
+HOMEPAGE=http://www.stuffit.com/
+KEYWORDS=-* x86 amd64
+LICENSE=Stuffit
+RESTRICT=fetch strip
+SLOT=0
+SRC_URI=http://my.smithmicro.com/downloads/files/stuffit520.611linux-i386.tar.gz
+_md5_=797decd7e1890bb5749a58ae95e884b1

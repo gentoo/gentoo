@@ -1,0 +1,9 @@
+DEFINED_PHASES=install nofetch setup unpack
+DESCRIPTION=3ware SATA+PATA RAID controller Command Line Interface tool
+HOMEPAGE=http://www.3ware.com/
+KEYWORDS=-* amd64 x86
+LICENSE=3ware
+RESTRICT=fetch strip mirror
+SLOT=0
+SRC_URI=x86? ( http://www.3ware.com/download/Escalade9650SE-Series/9.4.0/tw_cli-linux-x86-9.4.0.tgz ) amd64? ( http://www.3ware.com/download/Escalade9650SE-Series/9.4.0/tw_cli-linux-x86_64-9.4.0.tgz )
+_md5_=78bc11e7da173e29c5b0e8181abb454c

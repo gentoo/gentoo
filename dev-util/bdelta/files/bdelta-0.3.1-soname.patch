@@ -1,0 +1,21 @@
+diff --git a/src/Makefile b/src/Makefile
+index 65fb88d..3b4a261 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -3,6 +3,7 @@ PREFIX   ?= /usr
+ BINDIR   ?= $(PREFIX)/bin
+ LIBDIR   ?= ${PREFIX}/lib
+ CXXFLAGS += -O2
++DYLIB_LDFLAGS ?= -Wl,-soname,libbdelta.so
+ 
+ ifeq ($(shell uname -s),Darwin)
+ 	SHAREDLIB := libbdelta.dylib
+@@ -19,7 +20,7 @@ libbdelta.a: libbdelta.cpp compatibility.h checksum.h file.h
+ 	$(AR) rs $@ $<.o
+ 
+ libbdelta.so: libbdelta.cpp compatibility.h checksum.h file.h
+-	$(CXX) -shared -fPIC $(CXXFLAGS) $(LDFLAGS) $< -o $@
++	$(CXX) -shared -fPIC $(CXXFLAGS) $(LDFLAGS) $(DYLIB_LDFLAGS) $< -o $@
+ 
+ libbdelta.dylib: libbdelta.cpp compatibility.h checksum.h file.h
+ 	$(CXX) -dynamiclib $(CXXFLAGS) $< -o $@

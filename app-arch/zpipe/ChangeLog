@@ -1,0 +1,22 @@
+# ChangeLog for app-arch/zpipe
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/zpipe/ChangeLog,v 1.4 2015/04/16 20:26:33 mgorny Exp $
+
+  16 Apr 2015; Michał Górny <mgorny@gentoo.org> zpipe-2.01-r1.ebuild:
+  Fix missing S declaration, bug #546824
+
+*zpipe-2.01-r1 (16 Apr 2015)
+
+  16 Apr 2015; Michał Górny <mgorny@gentoo.org> +zpipe-2.01-r1.ebuild,
+  -zpipe-2.01.ebuild:
+  Bump to EAPI 5. Restrict libzpaq dependency since it does not work with
+  zpaq-7.04.
+
+  27 Dec 2014; Andrew Savchenko <bircoph@gentoo.org> zpipe-2.01.ebuild:
+  Add ~x86 keyword, bug 531934.
+
+*zpipe-2.01 (05 Jan 2011)
+
+  05 Jan 2011; Michał Górny <mgorny@gentoo.org> +zpipe-2.01.ebuild,
+  +metadata.xml:
+  New ebuild for zpipe (ZPAQ pipe compressor) per bug #350631.

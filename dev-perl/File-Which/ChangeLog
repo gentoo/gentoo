@@ -1,0 +1,130 @@
+# ChangeLog for dev-perl/File-Which
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/File-Which/ChangeLog,v 1.35 2014/08/21 19:31:39 axs Exp $
+
+*File-Which-1.90.0-r1 (21 Aug 2014)
+
+  21 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +File-Which-1.90.0-r1.ebuild, -File-Which-1.90.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  01 Sep 2012; Fabian Groffen <grobian@gentoo.org> File-Which-1.90.0.ebuild:
+  Marked ~ppc-aix, bug #432288
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  12 May 2012; Alexis Ballier <aballier@gentoo.org> File-Which-1.90.0.ebuild:
+  keyword ~amd64-fbsd
+
+  31 Mar 2012; Torsten Veller <tove@gentoo.org> -File-Which-0.05.ebuild:
+  Cleanup
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org> File-Which-1.90.0.ebuild:
+  ia64/s390/sh/sparc stable wrt #400117
+
+  08 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  File-Which-1.90.0.ebuild:
+  x86 stable wrt bug #400117
+
+  06 Mar 2012; Brent Baude <ranger@gentoo.org> File-Which-1.90.0.ebuild:
+  Marking File-Which-1.90.0 ppc for bug 400117
+
+  02 Mar 2012; Brent Baude <ranger@gentoo.org> File-Which-1.90.0.ebuild:
+  Marking File-Which-1.90.0 ppc64 for bug 400117
+
+  29 Feb 2012; Markus Meier <maekke@gentoo.org> File-Which-1.90.0.ebuild:
+  arm stable, bug #400117
+
+  27 Feb 2012; Jeroen Roovers <jer@gentoo.org> File-Which-1.90.0.ebuild:
+  Stable for HPPA (bug #400117).
+
+  25 Feb 2012; Tobias Klausmann <klausman@gentoo.org> File-Which-1.90.0.ebuild:
+  Stable on alpha, bug #400117
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org> File-Which-1.90.0.ebuild:
+  Stable for amd64, wrt bug #400117
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -File-Which-1.09.ebuild:
+  Cleanup
+
+*File-Which-1.90.0 (30 Aug 2011)
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org> +File-Which-1.90.0.ebuild:
+  Change version scheme
+
+  07 Jul 2011; Alexis Ballier <aballier@gentoo.org> File-Which-1.09.ebuild:
+  keyword ~x86-fbsd
+
+  03 Apr 2011; Torsten Veller <tove@gentoo.org> -File-Which-1.07.ebuild:
+  Cleanup
+
+  07 Dec 2010; Matt Turner <mattst88@gentoo.org> File-Which-1.09.ebuild:
+  Added ~mips, bug 285343.
+
+  09 Jan 2010; Fabian Groffen <grobian@gentoo.org> File-Which-1.09.ebuild:
+  Transfer Prefix keywords
+
+  25 Nov 2009; Torsten Veller <tove@gentoo.org> -File-Which-1.08.ebuild,
+  File-Which-1.09.ebuild:
+  Tests need a newer Test-Script (#294583). Cleanup
+
+*File-Which-1.09 (10 Nov 2009)
+
+  10 Nov 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +File-Which-1.09.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  24 Sep 2009; Raúl Porcel <armin76@gentoo.org> File-Which-1.08.ebuild:
+  Add ~arm/~s390/~sh wrt #285343
+
+*File-Which-1.08 (17 Sep 2009)
+
+  17 Sep 2009; Torsten Veller <tove@gentoo.org> File-Which-0.05.ebuild,
+  +File-Which-1.08.ebuild:
+  Version bump
+
+*File-Which-1.07 (02 Aug 2009)
+
+  02 Aug 2009; Torsten Veller <tove@gentoo.org> +File-Which-1.07.ebuild:
+  Version bump
+
+  28 Mar 2008; Jeroen Roovers <jer@gentoo.org> File-Which-0.05.ebuild:
+  Stable for HPPA too.
+
+  12 May 2007; Joshua Kinard <kumba@gentoo.org> File-Which-0.05.ebuild:
+  Stable on mips.
+
+  07 Feb 2007; Jeroen Roovers <jer@gentoo.org> File-Which-0.05.ebuild:
+  Marked ~hppa (bug #165627).
+
+  06 Feb 2007; Michael Cummings <mcummings@gentoo.org>
+  File-Which-0.05.ebuild:
+  Keywording ~mips, tested on swarm
+
+  15 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  File-Which-0.05.ebuild:
+  Ebuild maintenance
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  File-Which-0.05.ebuild:
+  Adding perl dep; fixed header; fixed DEPEND
+
+  25 Apr 2005; Michael Cummings <mcummings@gentoo.org> File-Which-0.05.ebuild:
+  cleaning
+
+  14 Dec 2004; Markus Rothe <corsair@gentoo.org> File-Which-0.05.ebuild:
+  Stable on ppc64
+
+  01 Nov 2004; Markus Rothe <corsair@gentoo.org> File-Which-0.05.ebuild:
+  Marked ~ppc64; bug #66216
+
+  14 Oct 2004; Aron Griffis <agriffis@gentoo.org> File-Which-0.05.ebuild:
+  Mark stable for muttprint #66216
+
+*File-Which-0.05 (17 Aug 2004)
+
+  17 Aug 2004; Aron Griffis <agriffis@gentoo.org> +metadata.xml,
+  +File-Which-0.05.ebuild:
+  Add File::Which module from CPAN for muttprint

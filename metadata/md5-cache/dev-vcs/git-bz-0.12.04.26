@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install setup
+DEPEND==dev-lang/python-2*
+DESCRIPTION=Bugzilla subcommand for git
+EAPI=4
+HOMEPAGE=http://www.fishsoup.net/software/git-bz/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-vcs/git =dev-lang/python-2*
+SLOT=0
+SRC_URI=https://www.bitbucket.org/mgorny/git-bz/downloads/git-bz-0.12.04.26.tar.bz2
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=f41528d92ef5535111290500e16e988d

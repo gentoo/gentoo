@@ -1,0 +1,11 @@
+Index: zpspell-0.4.3/CMakeLists.txt
+===================================================================
+--- zpspell-0.4.3.orig/CMakeLists.txt
++++ zpspell-0.4.3/CMakeLists.txt
+@@ -101,5 +101,5 @@ include_directories(${DBUS_INCLUDE_DIR})
+ include_directories(${GLIB2_INCLUDE_DIR})
+ include_directories(${GLIB_CONFIG_DIR})
+ 
+-target_link_libraries(zpspell glib-2.0 dbus-glib-1)
++target_link_libraries(zpspell glib-2.0 dbus-glib-1 gobject-2.0)
+ 

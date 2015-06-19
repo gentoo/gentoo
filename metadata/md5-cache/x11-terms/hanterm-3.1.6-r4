@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=x11-libs/libXmu x11-libs/libICE x11-libs/libXaw utempter? ( sys-libs/libutempter ) >=x11-libs/libXaw3d-1.5
+DESCRIPTION=Hanterm -- Korean terminal
+EAPI=5
+HOMEPAGE=http://www.hanterm.org/
+IUSE=utempter
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=MIT HPND
+RDEPEND=x11-libs/libXmu x11-libs/libICE x11-libs/libXaw utempter? ( sys-libs/libutempter ) >=x11-libs/libXaw3d-1.5 media-fonts/baekmuk-fonts
+SLOT=0
+SRC_URI=http://download.kldp.net/hanterm/hanterm-3.1.6.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=042268a385527be0f6e94e0a395eb303

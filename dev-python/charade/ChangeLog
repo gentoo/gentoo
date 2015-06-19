@@ -1,0 +1,57 @@
+# ChangeLog for dev-python/charade
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/charade/ChangeLog,v 1.16 2015/06/07 11:05:52 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> charade-1.0.3.ebuild:
+  Drop old Python implementations
+
+  24 Nov 2014; Pacho Ramos <pacho@gentoo.org> charade-1.0.3.ebuild:
+  Support python 3.4
+
+  11 Aug 2014; Anthony G. Basile <blueness@gentoo.org> charade-1.0.3.ebuild:
+  Keyword ~ppc, ~ppc64 for bug #519618
+
+  08 Jun 2014; Akinori Hattori <hattya@gentoo.org> charade-1.0.3.ebuild:
+  keyword ~ia64 wrt bug #509628
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> charade-1.0.3.ebuild:
+  Add support for the new PyPy slotting.
+
+  02 Nov 2013; Markos Chandras <hwoarang@gentoo.org> charade-1.0.3.ebuild:
+  Add ~mips
+
+  30 Sep 2013; Agostino Sarubbo <ago@gentoo.org> charade-1.0.3.ebuild:
+  Stable for x86, wrt bug #470630
+
+  29 Sep 2013; Agostino Sarubbo <ago@gentoo.org> charade-1.0.3.ebuild:
+  Stable for amd64, wrt bug #470630
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> charade-1.0.3.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  11 Aug 2013; Jeroen Roovers <jer@gentoo.org> charade-1.0.3.ebuild:
+  Marked ~hppa too.
+
+  16 May 2013; Markus Meier <maekke@gentoo.org> charade-1.0.3.ebuild:
+  add ~arm, bug #447650
+
+  29 Apr 2013; Ian Delaney <idella4@gentoo.org> charade-1.0.3.ebuild:
+  pypy support added
+
+*charade-1.0.3 (18 Jan 2013)
+
+  18 Jan 2013; Mike Gilbert <floppym@gentoo.org> +charade-1.0.3.ebuild,
+  -charade-1.0.1.ebuild:
+  Version bump, fixes bug 452466. Thanks to Ian Cordasco for the quick fix.
+
+  21 Dec 2012; Michał Górny <mgorny@gentoo.org> charade-1.0.1.ebuild:
+  Use PYTHON_USEDEP to properly request implementation support in deps.
+
+*charade-1.0.1 (17 Dec 2012)
+
+  17 Dec 2012; Tim Harder <radhermit@gentoo.org> +charade-1.0.1.ebuild,
+  +metadata.xml:
+  Initial import, ebuild by me.

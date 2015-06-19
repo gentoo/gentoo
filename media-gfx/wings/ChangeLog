@@ -1,0 +1,131 @@
+# ChangeLog for media-gfx/wings
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/wings/ChangeLog,v 1.30 2009/12/11 20:47:52 maekke Exp $
+
+  11 Dec 2009; Markus Meier <maekke@gentoo.org> -wings-0.99.03.ebuild,
+  -wings-0.99.60.ebuild:
+  old
+
+  11 Dec 2009; Brent Baude <ranger@gentoo.org> wings-1.1.1.ebuild:
+  Marking wings-1.1.1 ppc64 for bug 284691
+
+  25 Nov 2009; Markus Meier <maekke@gentoo.org> wings-1.1.1.ebuild:
+  amd64 stable, bug #284691
+
+  19 Nov 2009; Christian Faulhammer <fauli@gentoo.org> wings-1.1.1.ebuild:
+  stable x86, bug 284691
+
+  27 Sep 2009; nixnut <nixnut@gentoo.org> wings-1.1.1.ebuild:
+  ppc stable #284691
+
+*wings-1.1.1 (27 Jun 2009)
+
+  27 Jun 2009; Patrick Lauer <patrick@gentoo.org> +wings-1.1.1.ebuild:
+  Bump to 1.1.1. Ebuild patches by Vladimir Brik. Fixes #271009
+
+*wings-0.99.60 (27 Apr 2009)
+
+  27 Apr 2009; Markus Meier <maekke@gentoo.org> +wings-0.99.60.ebuild:
+  version bump, reported by Arvid Norlander in bug #267266
+
+  26 Oct 2008; Markus Meier <maekke@gentoo.org> -wings-0.98.32a.ebuild:
+  old
+
+  26 Oct 2008; Markus Meier <maekke@gentoo.org> wings-0.99.03.ebuild:
+  x86 stable, bug #242792
+
+  25 Oct 2008; nixnut <nixnut@gentoo.org> wings-0.99.03.ebuild:
+  Stable on ppc wrt bug 242792
+
+  21 Sep 2008; Markus Meier <maekke@gentoo.org> -wings-0.98.29b.ebuild:
+  old
+
+  21 Sep 2008; nixnut <nixnut@gentoo.org> wings-0.98.32a.ebuild:
+  Stable on ppc wrt bug 238145
+
+  20 Sep 2008; Markus Meier <maekke@gentoo.org> wings-0.98.32a.ebuild:
+  x86 stable, bug #238145
+
+*wings-0.99.03 (19 Sep 2008)
+
+  19 Sep 2008; Markus Meier <maekke@gentoo.org> files/wings.sh,
+  +wings-0.99.03.ebuild:
+  bump to wings-0.99.03 by Ben Schwartz and Jyrki Launonen in bug #205090
+
+  12 Apr 2007; Markus Rothe <corsair@gentoo.org> wings-0.98.32a.ebuild:
+  Added ~ppc64
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  11 Jun 2006; Diego Pettenò <flameeyes@gentoo.org> wings-0.98.32a.ebuild:
+  Make multilib-strict compatible.
+
+*wings-0.98.32a (05 Dec 2005)
+
+  05 Dec 2005; Mike Frysinger <vapier@gentoo.org> wings-0.98.29b.ebuild,
+  +wings-0.98.32a.ebuild:
+  Version bump #113623 by Nickolay Kolchin-Semyonov.
+
+  03 Dec 2005; Fernando J. Pereda <ferdy@gentoo.org> wings-0.98.29b.ebuild:
+  marked ~alpha wrt bug #91132
+
+*wings-0.98.29b (02 Jul 2005)
+
+  02 Jul 2005; Mike Frysinger <vapier@gentoo.org> +wings-0.98.29b.ebuild:
+  Version bump #97573 by Tupone Alfredo.
+
+*wings-0.98.21c (11 Apr 2004)
+
+  11 Apr 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bump.
+
+*wings-0.98.21 (22 Mar 2004)
+
+  22 Mar 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bump from Robust.
+
+*wings-0.98.20c (22 Mar 2004)
+
+  22 Mar 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bump from Robust.
+
+*wings-0.98.19b (21 Feb 2004)
+
+  21 Feb 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #35605.
+
+*wings-0.98.15a (14 Aug 2003)
+
+  14 Aug 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #26273.
+
+*wings-0.98.11c (13 Jul 2003)
+
+  13 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #24263.
+
+*wings-0.98.11b (13 Jul 2003)
+
+  13 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #24263.
+
+*wings-0.98.11a (28 Jun 2003)
+
+  28 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #23636.
+
+*wings-0.98.11 (21 Jun 2003)
+
+  21 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #23190.
+
+*wings-0.98.10e (19 Jun 2003)
+
+  19 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #20758.
+
+*wings-0.98.08d (17 Feb 2003)
+
+  17 Feb 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by charlie mac <charzilla@yahoo.com> #14124.

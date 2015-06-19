@@ -1,0 +1,96 @@
+diff -aurN jmol-11.0.3-orig/manifest/applet0.txt jmol-11.0.3/manifest/applet0.txt
+--- jmol-11.0.3-orig/manifest/applet0.txt	1969-12-31 18:00:00.000000000 -0600
++++ jmol-11.0.3/manifest/applet0.txt	2007-05-16 01:54:10.000000000 -0500
+@@ -0,0 +1,6 @@
++Main-Class: JmolApplet
++Sealed: true
++
++Name: org/jmol/api/
++Sealed: false
++
+diff -aurN jmol-11.0.3-orig/manifest/applet1.txt jmol-11.0.3/manifest/applet1.txt
+--- jmol-11.0.3-orig/manifest/applet1.txt	1969-12-31 18:00:00.000000000 -0600
++++ jmol-11.0.3/manifest/applet1.txt	2007-05-16 01:54:10.000000000 -0500
+@@ -0,0 +1,6 @@
++Name: org/jmol/api/
++Sealed: false
++
++Name: org/jmol/applet/
++Sealed: true
++
+diff -aurN jmol-11.0.3-orig/manifest/applet2.txt jmol-11.0.3/manifest/applet2.txt
+--- jmol-11.0.3-orig/manifest/applet2.txt	1969-12-31 18:00:00.000000000 -0600
++++ jmol-11.0.3/manifest/applet2.txt	2007-05-16 01:56:19.000000000 -0500
+@@ -0,0 +1,3 @@
++Name: javax/vecmath/
++
++
+diff -aurN jmol-11.0.3-orig/manifest/applet3.txt jmol-11.0.3/manifest/applet3.txt
+--- jmol-11.0.3-orig/manifest/applet3.txt	1969-12-31 18:00:00.000000000 -0600
++++ jmol-11.0.3/manifest/applet3.txt	2007-05-16 01:56:47.000000000 -0500
+@@ -0,0 +1,4 @@
++
++Name: org/jmol/g3d/
++Sealed: true
++
+diff -aurN jmol-11.0.3-orig/manifest/applet4.txt jmol-11.0.3/manifest/applet4.txt
+--- jmol-11.0.3-orig/manifest/applet4.txt	1969-12-31 18:00:00.000000000 -0600
++++ jmol-11.0.3/manifest/applet4.txt	2007-05-16 01:57:05.000000000 -0500
+@@ -0,0 +1,4 @@
++
++Name: org/jmol/adapter/smarter/
++Sealed: true
++
+diff -aurN jmol-11.0.3-orig/manifest/applet5.txt jmol-11.0.3/manifest/applet5.txt
+--- jmol-11.0.3-orig/manifest/applet5.txt	1969-12-31 18:00:00.000000000 -0600
++++ jmol-11.0.3/manifest/applet5.txt	2007-05-16 01:57:23.000000000 -0500
+@@ -0,0 +1,4 @@
++Name: org/openscience/jmol/ui/
++Sealed: true
++
++
+diff -aurN jmol-11.0.3-orig/manifest/applet6.txt jmol-11.0.3/manifest/applet6.txt
+--- jmol-11.0.3-orig/manifest/applet6.txt	1969-12-31 18:00:00.000000000 -0600
++++ jmol-11.0.3/manifest/applet6.txt	2007-05-16 01:57:46.000000000 -0500
+@@ -0,0 +1,4 @@
++
++Name: org/jmol/viewer/
++Sealed: true
++
+diff -aurN jmol-11.0.3-orig/manifest/appletMain.txt jmol-11.0.3/manifest/appletMain.txt
+--- jmol-11.0.3-orig/manifest/appletMain.txt	1969-12-31 18:00:00.000000000 -0600
++++ jmol-11.0.3/manifest/appletMain.txt	2007-05-16 01:54:10.000000000 -0500
+@@ -0,0 +1,5 @@
++Manifest-Version: 1.0
++Sealed: true
++
++Name: org/jmol/api/
++Sealed: false
+diff -aurN jmol-11.0.3-orig/manifest/appletMonolithic.txt jmol-11.0.3/manifest/appletMonolithic.txt
+--- jmol-11.0.3-orig/manifest/appletMonolithic.txt	1969-12-31 18:00:00.000000000 -0600
++++ jmol-11.0.3/manifest/appletMonolithic.txt	2007-05-16 01:54:10.000000000 -0500
+@@ -0,0 +1,7 @@
++Main-Class: JmolApplet
++Sealed: true
++
++Name: org/jmol/api/
++Sealed: false
++
++
+diff -aurN jmol-11.0.3-orig/manifest/applet.txt jmol-11.0.3/manifest/applet.txt
+--- jmol-11.0.3-orig/manifest/applet.txt	1969-12-31 18:00:00.000000000 -0600
++++ jmol-11.0.3/manifest/applet.txt	2007-05-16 01:54:10.000000000 -0500
+@@ -0,0 +1,2 @@
++Manifest-Version: 1.0
++Sealed: true
+\ No newline at end of file
+diff -aurN jmol-11.0.3-orig/manifest/application.txt jmol-11.0.3/manifest/application.txt
+--- jmol-11.0.3-orig/manifest/application.txt	1969-12-31 18:00:00.000000000 -0600
++++ jmol-11.0.3/manifest/application.txt	2007-05-16 01:54:10.000000000 -0500
+@@ -0,0 +1 @@
++Main-Class: org.openscience.jmol.app.Jmol
+diff -aurN jmol-11.0.3-orig/manifest/jvxl.txt jmol-11.0.3/manifest/jvxl.txt
+--- jmol-11.0.3-orig/manifest/jvxl.txt	1969-12-31 18:00:00.000000000 -0600
++++ jmol-11.0.3/manifest/jvxl.txt	2007-05-16 01:54:10.000000000 -0500
+@@ -0,0 +1 @@
++Main-Class: org.openscience.jvxl.Jvxl

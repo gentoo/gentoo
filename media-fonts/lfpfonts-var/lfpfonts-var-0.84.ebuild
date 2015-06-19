@@ -1,0 +1,23 @@
+# Copyright 1999-2007 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/lfpfonts-var/lfpfonts-var-0.84.ebuild,v 1.11 2007/09/16 03:04:39 dirtyepic Exp $
+
+inherit font font-ebdftopcf
+
+DESCRIPTION="Linux Font Project variable-width fonts"
+HOMEPAGE="http://sourceforge.net/projects/xfonts/"
+SRC_URI="mirror://sourceforge/xfonts/${PN}-src-${PV}.tar.bz2"
+LICENSE="public-domain"
+
+SLOT="0"
+KEYWORDS="alpha amd64 arm ia64 ppc s390 sh sparc x86 ~x86-fbsd"
+IUSE=""
+
+S="${WORKDIR}/${PN}-src"
+
+FONT_S="${S}/src"
+
+DOCS="${S}/doc/*"
+
+# Only installs fonts
+RESTRICT="strip binchecks"

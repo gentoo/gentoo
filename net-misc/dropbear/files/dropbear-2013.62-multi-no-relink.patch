@@ -1,0 +1,20 @@
+turn dropbearmulti into a real target so we don't constantly re-link it
+
+otherwise make has no idea what "multibinary" is and so always re-links it
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -175,10 +175,10 @@ ifeq ($(MULTI),1)
+ 	CFLAGS+=$(addprefix -DDBMULTI_, $(PROGRAMS)) -DDROPBEAR_MULTI
+ endif
+ 
+-dropbearmulti: multilink 
++dropbearmulti$(EXEEXT): $(HEADERS) $(MULTIOBJS) $(LIBTOM_DEPS) Makefile
++	$(CC) $(LDFLAGS) -o $@ $(MULTIOBJS) $(LIBS)
+ 
+-multibinary: $(HEADERS) $(MULTIOBJS) $(LIBTOM_DEPS) Makefile
+-	$(CC) $(LDFLAGS) -o dropbearmulti$(EXEEXT) $(MULTIOBJS) $(LIBS)
++multibinary: dropbearmulti$(EXEEXT)
+ 
+ multilink: multibinary $(addprefix link, $(PROGRAMS))
+ 

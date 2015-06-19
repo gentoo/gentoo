@@ -1,0 +1,46 @@
+<project name="laf_plugin" default="dist" basedir=".">
+	<description>
+		Simple build file made by Alistair Bush for the kunststoff
+		project.
+	</description>
+
+	<property name="src" location="./src"/>
+	<property name="build" location="./build"/>
+	<property name="dist" location="./dist"/>
+	<property name="api" location="api"/>
+	
+	<target name="init">
+		<tstamp/>
+		<mkdir dir="${build}"/>
+		<mkdir dir="${api}"/>
+	</target>
+
+	<target name="javadoc" depends="init" description="Produce JavaDoc">
+		<javadoc sourcepath="${src}" destdir="${api}"/>
+	</target>
+
+	<target name="compile" depends="init" description="compile the source">
+		<javac srcdir="${src}" destdir="${build}" >
+		<include name="**/*.java" />
+		</javac>
+	</target>
+
+	<target name="dist" depends="compile"
+		description="generate the distribution" >
+	
+		<copy todir="build">
+			<fileset dir="src">
+				<exclude name="**/*.java"/>
+			</fileset>
+		</copy>
+		<mkdir dir="${dist}" />
+		<jar jarfile="${dist}/laf-plugin.jar" basedir="${build}"/>
+	</target>
+
+	<target name="clean" description="Clean up">
+		<delete dir="${build}" />
+		<delete dir="${dist}" />
+		<delete file="./*.jar" />
+	</target>
+
+</project>

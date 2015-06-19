@@ -1,0 +1,13 @@
+DEFINED_PHASES=config configure install postinst postrm prepare setup
+DEPEND=!<=net-misc/ntp-4.2.0-r2 !net-misc/ntp[-openntpd] virtual/pkgconfig
+DESCRIPTION=Lightweight NTP server ported from OpenBSD
+EAPI=5
+HOMEPAGE=http://www.openntpd.org/
+IUSE=selinux
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd
+LICENSE=BSD GPL-2
+RDEPEND=!<=net-misc/ntp-4.2.0-r2 !net-misc/ntp[-openntpd] selinux? ( sec-policy/selinux-ntp )
+SLOT=0
+SRC_URI=mirror://openbsd/OpenNTPD/openntpd-5.7p4.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=d25bd3fb7003ae4c904ba602477f46cf

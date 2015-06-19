@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=sys-libs/ncurses
+DESCRIPTION=ASCII art editor
+EAPI=5
+HOMEPAGE=http://www.cs.helsinki.fi/u/penberg/duhdraw
+KEYWORDS=amd64 ppc x86 ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses
+SLOT=0
+SRC_URI=http://www.cs.helsinki.fi/u/penberg/duhdraw/duhdraw-2.8.13.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=65ad6d93e0c8b10ca2090b65ecb39112

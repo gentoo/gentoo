@@ -1,0 +1,53 @@
+# ChangeLog for app-doc/tldp-howto
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-doc/tldp-howto/ChangeLog,v 1.10 2013/10/21 03:42:12 dirtyepic Exp $
+
+  21 Oct 2013; Ryan Hill <dirtyepic@gentoo.org> tldp-howto-20120707.ebuild:
+  Fix install error when "text" is the only USE flag enabled (bug #488706).
+
+*tldp-howto-20120707 (14 Oct 2013)
+
+  14 Oct 2013; Ryan Hill <dirtyepic@gentoo.org> -tldp-howto-20100101.ebuild,
+  +tldp-howto-20120707.ebuild, metadata.xml:
+  Version bump.
+
+  05 Sep 2013; Mike Frysinger <vapier@gentoo.org> tldp-howto-20100101.ebuild,
+  tldp-howto-20100701.ebuild:
+  Mark m68k/s390/sh stable.
+
+  01 Jul 2012; Ryan Hill <dirtyepic@gentoo.org> metadata.xml:
+  Maintainer -> app-doc.
+
+  13 Apr 2012; Ulrich Müller <ulm@gentoo.org> tldp-howto-20100101.ebuild,
+  tldp-howto-20100701.ebuild:
+  Move EAPI assignment to top of ebuild, bug 411875.
+
+  26 Oct 2010; Ryan Hill <dirtyepic@gentoo.org> tldp-howto-20100101.ebuild,
+  tldp-howto-20100701.ebuild:
+  Stabilize for all.
+
+*tldp-howto-20100701 (01 Jul 2010)
+
+  01 Jul 2010; Ryan Hill <dirtyepic@gentoo.org> +tldp-howto-20100701.ebuild:
+  Version bump. The following HOWTOs have seen updates:
+
+  - The Unix and Internet Fundamentals HOWTO
+  - Text Terminal HOWTO
+  - Quake HOWTO
+  - The Software-RAID HOWTO
+  - Software Release Practise HOWTO
+  - The Unix Hardware Buyer HOWTO
+  - Linux User Group HOWTO
+
+  21 Feb 2010; Christian Faulhammer <fauli@gentoo.org>
+  tldp-howto-20100101.ebuild:
+  add ~x86 for bug 305693
+
+  19 Jan 2010; Ryan Hill <dirtyepic@gentoo.org> tldp-howto-20100101.ebuild:
+  Drop LDP license, bug #301030.
+
+*tldp-howto-20100101 (01 Jan 2010)
+
+  01 Jan 2010; Ryan Hill <dirtyepic@gentoo.org> +tldp-howto-20100101.ebuild,
+  +metadata.xml:
+  New ebuild consolidating all the app-doc/howto-* ebuilds.

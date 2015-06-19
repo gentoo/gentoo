@@ -1,0 +1,2352 @@
+# ChangeLog for media-libs/xine-lib
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/xine-lib/ChangeLog,v 1.721 2015/06/11 14:18:59 ago Exp $
+
+  11 Jun 2015; Agostino Sarubbo <ago@gentoo.org> xine-lib-1.2.6-r1.ebuild:
+  Stable for ppc, wrt bug #541672
+
+  29 May 2015; Jeroen Roovers <jer@gentoo.org> xine-lib-1.2.6-r1.ebuild:
+  Stable for HPPA (bug #541672).
+
+  28 May 2015; Jack Morgan <jmorgan@gentoo.org> xine-lib-1.2.6-r1.ebuild:
+  ppc64 stable wrt bug #541672
+
+  27 May 2015; Agostino Sarubbo <ago@gentoo.org> xine-lib-1.2.6-r1.ebuild:
+  Stable for x86, wrt bug #541672
+
+  27 May 2015; Agostino Sarubbo <ago@gentoo.org> xine-lib-1.2.6-r1.ebuild:
+  Stable for amd64, wrt bug #541672
+
+  17 May 2015; Pacho Ramos <pacho@gentoo.org> xine-lib-1.2.6.ebuild:
+  ppc64 stable wrt bug #517988
+
+  02 Mar 2015; Agostino Sarubbo <ago@gentoo.org> xine-lib-1.2.6.ebuild:
+  Stable for ppc, wrt bug #517988
+
+*xine-lib-1.2.6-r1 (01 Feb 2015)
+
+  01 Feb 2015; Michał Górny <mgorny@gentoo.org> +xine-lib-1.2.6-r1.ebuild,
+  xine-lib-1.2.9999.ebuild:
+  Introduce USE=libav to control the preferred implementation. Add subslot op to
+  force rebuilds on ABI change.
+
+  12 Dec 2014; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  USE='vaapi' is now global, removing it's description from metadata
+
+  22 Aug 2014; Samuli Suominen <ssuominen@gentoo.org> xine-lib-1.2.6.ebuild:
+  amd64/x86 stable wrt #517988
+
+  07 Aug 2014; Jeroen Roovers <jer@gentoo.org> xine-lib-1.2.6.ebuild:
+  Stable for HPPA (bug #517988).
+
+  10 Jul 2014; Samuli Suominen <ssuominen@gentoo.org> -xine-lib-1.2.5.ebuild,
+  metadata.xml:
+  old
+
+*xine-lib-1.2.6 (10 Jul 2014)
+
+  10 Jul 2014; Samuli Suominen <ssuominen@gentoo.org> +xine-lib-1.2.6.ebuild,
+  xine-lib-1.2.9999.ebuild:
+  Version bump; based on 1.2.9999 wrt #514474
+
+  10 Jul 2014; Samuli Suominen <ssuominen@gentoo.org> xine-lib-1.2.5.ebuild,
+  xine-lib-1.2.9999.ebuild:
+  Set :0 to virtual/jpeg dependency to ensure headers and .so symlink are
+  installed.
+
+  22 Jun 2014; Samuli Suominen <ssuominen@gentoo.org>
+  -files/xine-lib-1.2.1-ffmpeg-git.patch,
+  -files/xine-lib-1.2.1-fix_dvb_crc_checking.patch,
+  -files/xine-lib-1.2.1-freebsd.patch, -files/xine-lib-1.2.2-libav.patch,
+  -xine-lib-1.2.1-r1.ebuild, -xine-lib-1.2.2.ebuild, -xine-lib-1.2.4.ebuild:
+  old
+
+  22 Jun 2014; Samuli Suominen <ssuominen@gentoo.org> xine-lib-1.2.3.ebuild:
+  ppc stable wrt #451350
+
+  14 Jun 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> xine-lib-1.2.3.ebuild:
+  x86 stable wrt bug #451350
+
+  13 Apr 2014; Lars Wendler <polynomial-c@gentoo.org> xine-lib-1.2.5.ebuild:
+  Fixed dependency for packages that provide libpostproc (bug #507474).
+
+  12 Apr 2014; Lars Wendler <polynomial-c@gentoo.org> xine-lib-1.2.5.ebuild,
+  metadata.xml:
+  avformat requires >=ffmpeg-2.2 (bug #507474).
+
+*xine-lib-1.2.5 (11 Apr 2014)
+
+  11 Apr 2014; Lars Wendler <polynomial-c@gentoo.org> +xine-lib-1.2.5.ebuild,
+  metadata.xml:
+  Version bump.
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> xine-lib-1.2.3.ebuild:
+  Stable for ppc64, wrt bug #451350
+
+  28 Sep 2013; Agostino Sarubbo <ago@gentoo.org> xine-lib-1.2.3.ebuild:
+  Stable for amd64, wrt bug #451350
+
+  28 Sep 2013; Jeroen Roovers <jer@gentoo.org> xine-lib-1.2.3.ebuild:
+  Stable for HPPA (bug #451350).
+
+  25 Sep 2013; Samuli Suominen <ssuominen@gentoo.org> xine-lib-1.2.4.ebuild,
+  xine-lib-1.2.9999.ebuild:
+  Remove forced -O0 to -O3 from configure using sed in late src_prepare()
+
+  25 Sep 2013; Samuli Suominen <ssuominen@gentoo.org> xine-lib-1.2.1-r1.ebuild,
+  xine-lib-1.2.2.ebuild, xine-lib-1.2.3.ebuild:
+  Force <sys-fs/samba-4 for <media-libs/xine-lib-1.2.4 wrt #453532 by Rafał
+  Mużyło
+
+*xine-lib-1.2.4 (25 Sep 2013)
+
+  25 Sep 2013; Samuli Suominen <ssuominen@gentoo.org> +xine-lib-1.2.4.ebuild:
+  Version bump.
+
+  27 Aug 2013; Alexis Ballier <aballier@gentoo.org> xine-lib-1.2.3.ebuild,
+  xine-lib-1.2.9999.ebuild:
+  keyword ~amd64-fbsd
+
+  11 Aug 2013; Alexis Ballier <aballier@gentoo.org> xine-lib-1.2.1-r1.ebuild,
+  xine-lib-1.2.2.ebuild, xine-lib-1.2.3.ebuild, xine-lib-1.2.9999.ebuild:
+  depend on slot 0 for ffmpeg
+
+*xine-lib-1.2.3 (10 Jun 2013)
+
+  10 Jun 2013; Samuli Suominen <ssuominen@gentoo.org> +xine-lib-1.2.3.ebuild,
+  xine-lib-1.2.9999.ebuild, +files/accel_vaapi.h, metadata.xml:
+  Version bump wrt #471846 by "teidakankan"
+
+  16 May 2013; Ulrich Müller <ulm@gentoo.org> xine-lib-1.2.1-r1.ebuild,
+  xine-lib-1.2.2.ebuild, xine-lib-1.2.9999.ebuild, metadata.xml:
+  Remove real and win32codecs USE flags, because dependencies have been
+  last-rited, bug 468406.
+
+  18 Jan 2013; Agostino Sarubbo <ago@gentoo.org> xine-lib-1.2.2.ebuild:
+  Stable for x86, wrt bug #451350
+
+  18 Jan 2013; Agostino Sarubbo <ago@gentoo.org> xine-lib-1.2.2.ebuild:
+  Stable for amd64, wrt bug #451350
+
+  24 Dec 2012; Sergey Popov <pinkbyte@gentoo.org> xine-lib-1.2.1-r1.ebuild,
+  xine-lib-1.2.2.ebuild, xine-lib-1.2.9999.ebuild:
+  Make build log verbose, wrt bug #448140. Thanks to Vicente Olivert Riera for
+  discovering this issue
+
+  26 Nov 2012; Tomáš Chvátal <scarabeus@gentoo.org> metadata.xml:
+  Update to global useflag.
+
+  02 Aug 2012; Samuli Suominen <ssuominen@gentoo.org> xine-lib-1.2.2.ebuild,
+  xine-lib-1.2.9999.ebuild:
+  Pass -fomit-frame-pointer based on CHOST to gain one free register wrt
+  #422519 by Bob Raitz
+
+  06 Jul 2012; Luca Barbato <lu_zero@gentoo.org>
+  files/xine-lib-1.2.1-ffmpeg-git.patch, xine-lib-1.2.2.ebuild,
+  +files/xine-lib-1.2.2-libav.patch:
+  Fix mistake in the version check for AVFrame.age
+
+*xine-lib-1.2.2 (16 Jun 2012)
+
+  16 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> +xine-lib-1.2.2.ebuild,
+  xine-lib-1.2.9999.ebuild:
+  Version bump -- with 1.2.9999 update so it can be copied over as 1.2.x again.
+
+  01 Jun 2012; Zac Medico <zmedico@gentoo.org> xine-lib-1.2.1-r1.ebuild,
+  xine-lib-1.2.9999.ebuild:
+  tweak inherits so repoman can parse them
+
+  22 May 2012; Samuli Suominen <ssuominen@gentoo.org> xine-lib-1.2.1-r1.ebuild,
+  xine-lib-1.2.9999.ebuild:
+  Change order to || ( media-video/ffmpeg $others ) for postproc.
+
+  22 May 2012; Diego E. Pettenò <flameeyes@gentoo.org> xine-lib-1.2.1-r1.ebuild,
+  xine-lib-1.2.9999.ebuild:
+  Allow using older libav as well, for postproc.
+
+  22 May 2012; Diego E. Pettenò <flameeyes@gentoo.org> xine-lib-1.2.1-r1.ebuild,
+  xine-lib-1.2.9999.ebuild:
+  Add an explicit dependency over libpostproc.
+
+  17 May 2012; Samuli Suominen <ssuominen@gentoo.org> -xine-lib-1.2.1.ebuild:
+  old
+
+  17 May 2012; Samuli Suominen <ssuominen@gentoo.org> xine-lib-1.2.1-r1.ebuild:
+  ppc/ppc64 stable wrt #412309
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> xine-lib-1.2.1.ebuild,
+  xine-lib-1.2.1-r1.ebuild, xine-lib-1.2.9999.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  26 Apr 2012; Jeroen Roovers <jer@gentoo.org> xine-lib-1.2.1-r1.ebuild:
+  Stable for HPPA (bug #412309).
+
+  21 Apr 2012; Alexis Ballier <aballier@gentoo.org> xine-lib-1.2.1-r1.ebuild,
+  +files/xine-lib-1.2.1-freebsd.patch:
+  add patch to fix build on FreeBSD.
+
+  18 Apr 2012; Agostino Sarubbo <ago@gentoo.org> xine-lib-1.2.1-r1.ebuild:
+  Stable for amd64, wrt bug #412309
+
+  18 Apr 2012; Jeff Horelick <jdhore@gentoo.org> xine-lib-1.2.1-r1.ebuild:
+  marked x86 per bug 412309
+
+  17 Apr 2012; Samuli Suominen <ssuominen@gentoo.org> -xine-lib-1.1.19.ebuild,
+  -files/xine-lib-1.1.19-ffmpeg.patch, -files/xine-lib-1.1.19-xvmc.patch,
+  -xine-lib-1.1.20.ebuild, -files/xine-lib-1.1.20-stat.patch,
+  -xine-lib-1.2.0-r1.ebuild, -xine-lib-1.2.0-r2.ebuild,
+  -files/xine-lib-1.2.0-zlib-1.2.5.2.patch:
+  old
+
+  18 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> xine-lib-1.1.19.ebuild:
+  Remove USE="esd" because media-sound/esound isn't in tree anymore.
+
+*xine-lib-1.2.1-r1 (07 Mar 2012)
+
+  07 Mar 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +xine-lib-1.2.1-r1.ebuild, +files/xine-lib-1.2.1-fix_dvb_crc_checking.patch:
+  Upstream patch for "Fix DVB CRC checking (was wrong endianness)"
+
+  29 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> xine-lib-1.2.1.ebuild:
+  ppc64/x86 stable wrt #405659
+
+  28 Feb 2012; Alexis Ballier <aballier@gentoo.org> xine-lib-1.2.1.ebuild,
+  +files/xine-lib-1.2.1-ffmpeg-git.patch:
+  add upstream patch to fix build with ffmpeg git
+
+  28 Feb 2012; Brent Baude <ranger@gentoo.org> xine-lib-1.2.1.ebuild:
+  Marking xine-lib-1.2.1 ppc for bug 405659
+
+  28 Feb 2012; Jeroen Roovers <jer@gentoo.org> xine-lib-1.2.1.ebuild:
+  Stable for HPPA (bug #405659).
+
+  25 Feb 2012; Agostino Sarubbo <ago@gentoo.org> xine-lib-1.2.1.ebuild:
+  Stable for amd64, wrt bug #405659
+
+*xine-lib-1.2.1 (05 Feb 2012)
+
+  05 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> +xine-lib-1.2.1.ebuild:
+  Version bump.
+
+*xine-lib-1.2.0-r2 (30 Jan 2012)
+
+  30 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +xine-lib-1.2.0-r2.ebuild, +files/xine-lib-1.2.0-zlib-1.2.5.2.patch:
+  Fix compability with sys-libs/zlib >= 1.2.5.2 wrt #401449 by Ulrich Müller
+
+  28 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> xine-lib-1.2.0-r1.ebuild:
+  Rekeyword ~ppc/~ppc64 wrt #397531
+
+  28 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> xine-lib-1.1.20.ebuild:
+  ppc/ppc64 stable wrt #396521
+
+  25 Jan 2012; Jeroen Roovers <jer@gentoo.org> xine-lib-1.1.20.ebuild:
+  Stable for HPPA (bug #396521).
+
+  15 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> xine-lib-1.1.20.ebuild:
+  x86 stable wrt bug #396521
+
+  14 Jan 2012; Christian Ruppert <idl0r@gentoo.org> xine-lib-1.2.9999.ebuild:
+  Add support for custom user patches.
+
+  11 Jan 2012; Jeroen Roovers <jer@gentoo.org> xine-lib-1.2.0-r1.ebuild:
+  Marked ~hppa (bug #397531).
+
+  08 Jan 2012; Markus Meier <maekke@gentoo.org> xine-lib-1.1.20.ebuild:
+  arm stable, bug #396521
+
+  05 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> -xine-lib-1.2.0.ebuild:
+  old
+
+*xine-lib-1.2.0-r1 (05 Jan 2012)
+
+  05 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +xine-lib-1.2.0-r1.ebuild, xine-lib-1.2.9999.ebuild:
+  Use external libdvdnav (instead of bundled copy)
+
+  03 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> xine-lib-1.2.0.ebuild,
+  xine-lib-1.2.9999.ebuild:
+  Block media-libs/libbluray-xine because both provide plug-in
+  xineplug_inp_bluray.so
+
+  03 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> xine-lib-1.2.9999.ebuild:
+  Remove USE="nls" from 1.2.9999 because sys-devel/gettext is always required
+  for autopoint.
+
+*xine-lib-1.2.0 (03 Jan 2012)
+
+  03 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> +xine-lib-1.2.0.ebuild,
+  xine-lib-1.2.9999.ebuild:
+  Version bump and syncronize ebuild(s) wrt #397515
+
+  31 Dec 2011; Agostino Sarubbo <ago@gentoo.org> xine-lib-1.1.20.ebuild:
+  Stable for AMD64, wrt bug #396521
+
+  09 Dec 2011; Alexis Ballier <aballier@gentoo.org> xine-lib-1.1.20.ebuild,
+  +files/xine-lib-1.1.20-stat.patch:
+  add patch from upstream to fix build on *BSD
+
+*xine-lib-1.1.20 (16 Nov 2011)
+
+  16 Nov 2011; Samuli Suominen <ssuominen@gentoo.org> +xine-lib-1.1.20.ebuild:
+  Version bump.
+
+  30 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> xine-lib-1.2.9999.ebuild:
+  Rename obsolete USE="v4l2" to USE="v4l" wrt #385241
+
+*xine-lib-1.2.9999 (15 Oct 2011)
+
+  15 Oct 2011; Christian Ruppert <idl0r@gentoo.org> +xine-lib-1.2.9999.ebuild,
+  metadata.xml:
+  Add live ebuild for xine-lib-1.2
+
+  09 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> xine-lib-1.1.19.ebuild:
+  Remove useless libtool file libxine.la
+
+  12 Sep 2011; Tim Harder <radhermit@gentoo.org>
+  files/xine-lib-1.1.19-ffmpeg.patch:
+  Fix build with newer versions of libav (bug #376419).
+
+  11 May 2011; Alexis Ballier <aballier@gentoo.org> xine-lib-1.1.19.ebuild,
+  +files/xine-lib-1.1.19-ffmpeg.patch:
+  fix build with ffmpeg/libav trunk
+
+  10 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org> xine-lib-1.1.19.ebuild:
+  Move to virtual/ffmpeg from media-video/ffmpeg. Fixes bug #362083.
+
+  31 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org> xine-lib-1.1.19.ebuild:
+  Move back to media-video/ffmpeg as this is only package that actualy requires
+  ffmpeg-0.5. Effectively allowing us to drop 0.5 virtual.
+
+  26 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org> xine-lib-1.1.19.ebuild:
+  Depend on virtual/ffmpeg instead of media-video/ffmpeg.
+
+  06 Mar 2011; Tim Harder <radhermit@gentoo.org> xine-lib-1.1.19.ebuild:
+  Use slot dependencies for gtk+ and freetype.
+
+  10 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  xine-lib-1.1.19.ebuild:
+  ppc stable wrt #349608
+
+  09 Jan 2011; Raúl Porcel <armin76@gentoo.org> xine-lib-1.1.19.ebuild:
+  alpha/ia64/sparc stable wrt #349608
+
+  31 Dec 2010; Jeroen Roovers <jer@gentoo.org> xine-lib-1.1.19.ebuild:
+  Stable for HPPA (bug #349608).
+
+  29 Dec 2010; Markus Meier <maekke@gentoo.org> xine-lib-1.1.19.ebuild:
+  arm stable, bug #349608
+
+  25 Dec 2010; Christian Faulhammer <fauli@gentoo.org>
+  xine-lib-1.1.19.ebuild:
+  stable x86, bug 349608
+
+  24 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> xine-lib-1.1.19.ebuild:
+  amd64/ppc64 stable wrt #349608
+
+  20 Aug 2010; Samuli Suominen <ssuominen@gentoo.org>
+  xine-lib-1.1.19.ebuild, +files/xine-lib-1.1.19-xvmc.patch:
+  Fix building with recent videoproto wrt #332389 by Rahul Jain, Matteo
+  Azzali and Geoff Leach.
+
+  18 Aug 2010; Jeroen Roovers <jer@gentoo.org> xine-lib-1.1.18.1.ebuild:
+  Stable for HPPA (bug #317141).
+
+*xine-lib-1.1.19 (27 Jul 2010)
+
+  27 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +xine-lib-1.1.19.ebuild:
+  Version bump.
+
+  10 Jul 2010; Raúl Porcel <armin76@gentoo.org> xine-lib-1.1.18.1.ebuild:
+  alpha/arm/ia64/sparc stable wrt #317141
+
+  28 Jun 2010; Samuli Suominen <ssuominen@gentoo.org>
+  xine-lib-1.1.18.1.ebuild:
+  Missing dev-libs/libcdio[-minimal] depend wrt #325003 by dE.
+
+  24 May 2010; Pacho Ramos <pacho@gentoo.org> xine-lib-1.1.18.1.ebuild:
+  stable amd64, bug 317141
+
+  23 May 2010; <nixnut@gentoo.org> xine-lib-1.1.18.1.ebuild:
+  ppc stable #317141
+
+  13 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  xine-lib-1.1.18.1.ebuild:
+  x86 stable wrt bug #317141
+
+  11 May 2010; Brent Baude <ranger@gentoo.org> xine-lib-1.1.18.1.ebuild:
+  stable ppc64, bug 317141
+
+*xine-lib-1.1.18.1 (16 Mar 2010)
+
+  16 Mar 2010; Alexis Ballier <aballier@gentoo.org>
+  +xine-lib-1.1.18.1.ebuild:
+  version bump
+
+  26 Feb 2010; Samuli Suominen <ssuominen@gentoo.org>
+  xine-lib-1.1.18.ebuild:
+  Include upstream compat.c in src/dxr3/ for em8300 < 0.18.0 drivers compat
+  wrt #306857, thanks to Juergen Rose for reporting.
+
+  24 Feb 2010; Samuli Suominen <ssuominen@gentoo.org>
+  xine-lib-1.1.18.ebuild:
+  Missing app-arch/xz-utils depend wrt #306715.
+
+  24 Feb 2010; Samuli Suominen <ssuominen@gentoo.org>
+  xine-lib-1.1.18.ebuild:
+  Keyword ~sparc wrt #306645.
+
+*xine-lib-1.1.18 (24 Feb 2010)
+
+  24 Feb 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +xine-lib-1.1.18.ebuild:
+  Version bump wrt #306643, thanks to Arseny Solokha for reporting.
+
+  17 Jan 2010; Raúl Porcel <armin76@gentoo.org> xine-lib-1.1.17.ebuild:
+  alpha/arm/ia64/sparc stable wrt #297903
+
+  14 Jan 2010; Jeroen Roovers <jer@gentoo.org> xine-lib-1.1.17.ebuild:
+  Stable for HPPA (bug #297903).
+
+  09 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  xine-lib-1.1.17.ebuild:
+  stable x86, bug 297903
+
+  07 Jan 2010; Brent Baude <ranger@gentoo.org> xine-lib-1.1.17.ebuild:
+  Marking xine-lib-1.1.17 ppc for bug 297903
+
+  06 Jan 2010; Samuli Suominen <ssuominen@gentoo.org>
+  xine-lib-1.1.17.ebuild:
+  amd64 stable wrt #297903
+
+  06 Jan 2010; Brent Baude <ranger@gentoo.org> xine-lib-1.1.17.ebuild:
+  Marking xine-lib-1.1.17 ppc64 for bug 297903
+
+*xine-lib-1.1.17 (02 Dec 2009)
+
+  02 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +xine-lib-1.1.17.ebuild:
+  Version bump wrt #295396, thanks to Arseny Solokha for reporting.
+
+  21 Oct 2009; Gordon Malm <gengor@gentoo.org> xine-lib-1.1.16.3-r2.ebuild:
+  Move TEXTREL patch out of $FILESDIR.
+
+  21 Oct 2009; Samuli Suominen <ssuominen@gentoo.org>
+  xine-lib-1.1.16.3-r1.ebuild, xine-lib-1.1.16.3-r2.ebuild:
+  Remove aRts support.
+
+*xine-lib-1.1.16.3-r2 (20 Oct 2009)
+
+  20 Oct 2009; Gordon Malm <gengor@gentoo.org>
+  +files/xine-lib-1.1.15-textrel-fix.patch, +xine-lib-1.1.16.3-r2.ebuild:
+  Add TEXTREL patch from bug #164425.
+
+  06 Oct 2009; Fabio Erculiani <lxnay@gentoo.org>
+  xine-lib-1.1.16.3-r1.ebuild:
+  Rename 'dvd' USE flag to better suited 'css', close bug #287057
+
+  27 Sep 2009; nixnut <nixnut@gentoo.org> xine-lib-1.1.16.3-r1.ebuild:
+  ppc stable #281603
+
+  27 Sep 2009; Brent Baude <ranger@gentoo.org> xine-lib-1.1.16.3-r1.ebuild:
+  Marking xine-lib-1.1.16.3-r1 ppc64 for bug 281603
+
+  25 Sep 2009; Markus Meier <maekke@gentoo.org> xine-lib-1.1.16.3-r1.ebuild:
+  amd64 stable, bug #281603
+
+  24 Sep 2009; Raúl Porcel <armin76@gentoo.org>
+  xine-lib-1.1.16.3-r1.ebuild:
+  arm/ia64/sparc stable wrt #281603
+
+  29 Aug 2009; Tobias Klausmann <klausman@gentoo.org>
+  xine-lib-1.1.16.3-r1.ebuild:
+  Stable on alpha, bug #281603
+
+  25 Aug 2009; Jeroen Roovers <jer@gentoo.org> xine-lib-1.1.16.3-r1.ebuild:
+  Stable for HPPA (bug #281603).
+
+  16 Aug 2009; Christian Faulhammer <fauli@gentoo.org>
+  xine-lib-1.1.16.3-r1.ebuild:
+  stable x86, bug 281603
+
+  26 Jul 2009; Samuli Suominen <ssuominen@gentoo.org>
+  xine-lib-1.1.16.3-r1.ebuild:
+  Fix building with =libtool-1* wrt #279195.
+
+*xine-lib-1.1.16.3-r1 (26 Jul 2009)
+
+  26 Jul 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +xine-lib-1.1.16.3-r1.ebuild, +files/xine-lib-1.1.16.3-libmpcdecsv7.patch:
+  Use transition package media-libs/libmpcdecsv7 instead of
+  media-libs/libmpcdec for Musepack support.
+
+  26 Jul 2009; Samuli Suominen <ssuominen@gentoo.org>
+  xine-lib-1.1.16.3.ebuild:
+  Don't enable deprecated Musepack (libmpcdec) SV7 support by default.
+
+  15 Apr 2009; Alexis Ballier <aballier@gentoo.org>
+  -files/xine-lib-1.1.15-GetImagePixels.patch,
+  -files/xine-lib-1.1.15-buffer_h_ansi.patch,
+  -files/xine-lib-1.1.15-ffmpeg.patch,
+  -files/xine-lib-1.1.15-libmpeg2-vis.patch,
+  -files/xine-lib-1.1.16.2-avutil.patch:
+  remove also the patches...
+
+  15 Apr 2009; Alexis Ballier <aballier@gentoo.org>
+  -xine-lib-1.1.15-r1.ebuild, -xine-lib-1.1.16.ebuild,
+  -xine-lib-1.1.16.1.ebuild, -xine-lib-1.1.16.2.ebuild:
+  punt old
+
+  10 Apr 2009; Raúl Porcel <armin76@gentoo.org> xine-lib-1.1.16.3.ebuild:
+  arm/ia64/x86 stable wrt #265250
+
+  08 Apr 2009; Friedrich Oslage <bluebird@gentoo.org>
+  xine-lib-1.1.16.3.ebuild:
+  Stable on sparc, security bug #265250
+
+  08 Apr 2009; Tobias Heinlein <keytoaster@gentoo.org>
+  xine-lib-1.1.16.3.ebuild:
+  amd64 stable wrt security bug #265250
+
+  08 Apr 2009; Tobias Klausmann <klausman@gentoo.org>
+  xine-lib-1.1.16.3.ebuild:
+  Stable on alpha, bug #265250
+
+  08 Apr 2009; Jeroen Roovers <jer@gentoo.org> xine-lib-1.1.16.3.ebuild:
+  Stable for HPPA (bug #265250).
+
+  08 Apr 2009; Brent Baude <ranger@gentoo.org> xine-lib-1.1.16.3.ebuild:
+  Marking xine-lib-1.1.16.3 ppc64 and ppc for bug 265250
+
+*xine-lib-1.1.16.3 (04 Apr 2009)
+
+  04 Apr 2009; Alexis Ballier <aballier@gentoo.org>
+  +xine-lib-1.1.16.3.ebuild:
+  version bump
+
+  01 Apr 2009; Jeroen Roovers <jer@gentoo.org> xine-lib-1.1.16.2.ebuild:
+  Stable for HPPA (bug #260069).
+
+  18 Mar 2009; Brent Baude <ranger@gentoo.org> xine-lib-1.1.16.2.ebuild:
+  Marking xine-lib-1.1.16.2 ppc for bug 260069
+
+  08 Mar 2009; Alexis Ballier <aballier@gentoo.org>
+  +files/xine-lib-1.1.16.2-avutil.patch, xine-lib-1.1.16.2.ebuild:
+  Add a patch from upstream to fix build with latest libavutil
+
+  28 Feb 2009; Raúl Porcel <armin76@gentoo.org> xine-lib-1.1.16.2.ebuild:
+  alpha/arm/ia64 stable wrt #260069
+
+  26 Feb 2009; Brent Baude <ranger@gentoo.org> xine-lib-1.1.16.2.ebuild:
+  Marking xine-lib-1.1.16.2 ppc64 for bug 260069
+
+  25 Feb 2009; Ferris McCormick <fmccor@gentoo.org>
+  xine-lib-1.1.16.2.ebuild:
+  Sparc stable, Security Bug #260069.
+
+  25 Feb 2009; Markus Meier <maekke@gentoo.org> xine-lib-1.1.16.2.ebuild:
+  amd64/x86 stable, bug #260069
+
+*xine-lib-1.1.16.2 (10 Feb 2009)
+
+  10 Feb 2009; Alexis Ballier <aballier@gentoo.org>
+  +xine-lib-1.1.16.2.ebuild:
+  version bump
+
+  10 Feb 2009; Tobias Klausmann <klausman@gentoo.org>
+  xine-lib-1.1.16.1.ebuild:
+  Stable on alpha, bug #258374
+
+*xine-lib-1.1.16.1 (16 Jan 2009)
+
+  16 Jan 2009; Alexis Ballier <aballier@gentoo.org>
+  +xine-lib-1.1.16.1.ebuild:
+  version bump, by Bailey Kong <bailey@tgpsolutions.com>, bug #255168
+
+*xine-lib-1.1.16 (08 Jan 2009)
+
+  08 Jan 2009; Alexis Ballier <aballier@gentoo.org> +xine-lib-1.1.16.ebuild:
+  version bump, by Arseny Solokha <b0ntrict0r@yandex.ru>, bug #254248
+
+  19 Dec 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/xine-lib-1.1.15-GetImagePixels.patch, xine-lib-1.1.15-r1.ebuild:
+  Fix build with latest imagemagick, by Robin H. Johnson
+  <robbat2@gentoo.org> Bug #247292
+
+  23 Nov 2008; Diego E. Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.15-r1.ebuild:
+  Depend on an older version of imagemagick since otherwise it will fail to
+  build, this is known as upstream (xine) bug #177, but it hasn't been fixed
+  yet.
+
+  18 Oct 2008; Alexis Ballier <aballier@gentoo.org>
+  -files/xine-lib-1.1.8-dxr3.patch, -xine-lib-1.1.8.ebuild:
+  remove old
+
+  06 Oct 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/xine-lib-1.1.15-ffmpeg.patch, xine-lib-1.1.15-r1.ebuild:
+  add upstream patch to fix build against ffmpeg trunk
+
+  28 Sep 2008; Raúl Porcel <armin76@gentoo.org> xine-lib-1.1.15-r1.ebuild:
+  arm stable wrt #211464
+
+  08 Sep 2008; Alexis Ballier <aballier@gentoo.org>
+  -files/xine-lib-1.1.14-metadata-bugfix.patch, -xine-lib-1.1.13.ebuild,
+  -xine-lib-1.1.14-r1.ebuild, -xine-lib-1.1.15.ebuild:
+  remove old
+
+  31 Aug 2008; Tobias Klausmann <klausman@gentoo.org>
+  xine-lib-1.1.15-r1.ebuild:
+  Stable on alpha, bug #234777
+
+  30 Aug 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  xine-lib-1.1.15-r1.ebuild:
+  ppc stable, bug #234777
+
+  29 Aug 2008; Dawid Węgliński <cla@gentoo.org> xine-lib-1.1.15-r1.ebuild:
+  Stable on amd64 (bug #234777)
+
+  29 Aug 2008; Raúl Porcel <armin76@gentoo.org> xine-lib-1.1.15-r1.ebuild:
+  ia64/x86 stable wrt #234777
+
+  29 Aug 2008; Markus Rothe <corsair@gentoo.org> xine-lib-1.1.15-r1.ebuild:
+  Stable on ppc64; bug #234777
+
+  28 Aug 2008; Friedrich Oslage <bluebird@gentoo.org>
+  xine-lib-1.1.15-r1.ebuild:
+  Stable on sparc, bug #234777
+
+  27 Aug 2008; Jeroen Roovers <jer@gentoo.org> xine-lib-1.1.15-r1.ebuild:
+  Stable for HPPA (bug #234777).
+
+*xine-lib-1.1.15-r1 (22 Aug 2008)
+
+  22 Aug 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/xine-lib-1.1.15-buffer_h_ansi.patch, +xine-lib-1.1.15-r1.ebuild:
+  Import a fix from upstream to fix build of some kde applications, bug
+  #234926.
+
+  19 Aug 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  xine-lib-1.1.15.ebuild:
+  ppc stable, bug #234777
+
+  18 Aug 2008; Alexis Ballier <aballier@gentoo.org> xine-lib-1.1.15.ebuild:
+  Set the correct win32 dll path, bug #197236
+
+  16 Aug 2008; Friedrich Oslage <bluebird@gentoo.org>
+  xine-lib-1.1.15.ebuild:
+  Stable on sparc, bug #234777
+
+  16 Aug 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/xine-lib-1.1.15-libmpeg2-vis.patch, xine-lib-1.1.15.ebuild:
+  fix sparc build without vis, by Friedrich Oslage
+
+  16 Aug 2008; Markus Rothe <corsair@gentoo.org> xine-lib-1.1.15.ebuild:
+  Stable on ppc64; bug #234777
+
+  15 Aug 2008; Tobias Klausmann <klausman@gentoo.org>
+  xine-lib-1.1.15.ebuild:
+  Stable on alpha, bug #234777
+
+  15 Aug 2008; Markus Meier <maekke@gentoo.org> xine-lib-1.1.15.ebuild:
+  amd64 stable, bug #234777
+
+  15 Aug 2008; Jeroen Roovers <jer@gentoo.org> xine-lib-1.1.15.ebuild:
+  Remove compiler optimisation hack (bug #234790).
+
+  15 Aug 2008; Jeroen Roovers <jer@gentoo.org> xine-lib-1.1.15.ebuild:
+  Stable for HPPA (bug #234777).
+
+  15 Aug 2008; Raúl Porcel <armin76@gentoo.org> xine-lib-1.1.15.ebuild:
+  ia64/x86 stable wrt #234777
+
+  15 Aug 2008; Alexis Ballier <aballier@gentoo.org> metadata.xml,
+  xine-lib-1.1.15.ebuild:
+  Make vis an useflag instead of arch specific checks; bug #234789
+
+*xine-lib-1.1.15 (15 Aug 2008)
+
+  15 Aug 2008; Alexis Ballier <aballier@gentoo.org> +xine-lib-1.1.15.ebuild:
+  version bump, bug #234777
+
+  12 Aug 2008; Alexis Ballier <aballier@gentoo.org> -xine-lib-1.1.14.ebuild:
+  remove unused version
+
+  12 Aug 2008; Alexis Ballier <aballier@gentoo.org> metadata.xml:
+  add missing entries for local useflags descriptions from use.local.desc
+
+*xine-lib-1.1.14-r1 (06 Aug 2008)
+
+  06 Aug 2008; Ben de Groot <yngwin@gentoo.org>
+  +files/xine-lib-1.1.14-metadata-bugfix.patch, +xine-lib-1.1.14-r1.ebuild:
+  Adding upstream patch to fix bug 231974.
+
+  15 Jul 2008; Alexis Ballier <aballier@gentoo.org>
+  -files/xine-lib-1.1.11.1-mkv.patch, -files/xine-lib-1.1.11.1-qtniso.patch,
+  -files/xine-lib-1.1.12-CVE-2008-1878.patch, -xine-lib-1.1.11.1.ebuild,
+  -xine-lib-1.1.12.ebuild, -xine-lib-1.1.12-r1.ebuild:
+  remove old
+
+  14 Jul 2008; Tobias Klausmann <klausman@gentoo.org>
+  xine-lib-1.1.13.ebuild:
+  Stable on alpha, bug #218059
+
+  14 Jul 2008; Tobias Klausmann <klausman@gentoo.org> ChangeLog:
+  Stable on alpha, bug #218059
+
+  09 Jul 2008; Raúl Porcel <armin76@gentoo.org> xine-lib-1.1.13.ebuild:
+  ia64/sparc stable wrt #218059
+
+*xine-lib-1.1.14 (09 Jul 2008)
+
+  09 Jul 2008; Alexis Ballier <aballier@gentoo.org> +xine-lib-1.1.14.ebuild:
+  version bump, thanks to boris64 <genzilla@boris64.net> for reporting, bug
+  #230909
+
+  07 Jul 2008; Markus Meier <maekke@gentoo.org> xine-lib-1.1.13.ebuild:
+  amd64/x86 stable, bug #218059
+
+  07 Jul 2008; Brent Baude <ranger@gentoo.org> xine-lib-1.1.13.ebuild:
+  Marking xine-lib-1.1.13 ppc64 and ppc for bug 218059
+
+  07 Jul 2008; Jeroen Roovers <jer@gentoo.org> xine-lib-1.1.13.ebuild:
+  Stable for HPPA (bug #218059).
+
+*xine-lib-1.1.13 (25 Jun 2008)
+
+  25 Jun 2008; Alexis Ballier <aballier@gentoo.org> +xine-lib-1.1.13.ebuild:
+  version bump
+
+*xine-lib-1.1.12-r1 (07 Jun 2008)
+
+  07 Jun 2008; Hanno Boeck <hanno@gentoo.org>
+  +files/xine-lib-1.1.12-CVE-2008-1878.patch, +xine-lib-1.1.12-r1.ebuild:
+  Fix buffer overflow in nsf, CVE-2008-1878.
+
+*xine-lib-1.1.12 (17 Apr 2008)
+
+  17 Apr 2008; Samuli Suominen <drac@gentoo.org> +xine-lib-1.1.12.ebuild:
+  Version bump.
+
+  10 Apr 2008; Alexis Ballier <aballier@gentoo.org> -xine-lib-1.1.11.ebuild:
+  remove old
+
+  10 Apr 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  xine-lib-1.1.11.1.ebuild:
+  ppc stable, bug #214270
+
+  09 Apr 2008; Markus Meier <maekke@gentoo.org> xine-lib-1.1.11.1.ebuild:
+  amd64 stable, security bug #214270
+
+  09 Apr 2008; Raúl Porcel <armin76@gentoo.org> xine-lib-1.1.11.1.ebuild:
+  ia64/sparc/x86 stable wrt security #214270
+
+  08 Apr 2008; Tobias Klausmann <klausman@gentoo.org>
+  xine-lib-1.1.11.1.ebuild:
+  Stable on alpha, bug #214270
+
+  08 Apr 2008; Markus Rothe <corsair@gentoo.org> xine-lib-1.1.11.1.ebuild:
+  Stable on ppc64; bug #214270
+
+  08 Apr 2008; Jeroen Roovers <jer@gentoo.org> xine-lib-1.1.11.1.ebuild:
+  Stable for HPPA (bug #214270).
+
+*xine-lib-1.1.11.1 (07 Apr 2008)
+
+  07 Apr 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/xine-lib-1.1.11.1-mkv.patch, +files/xine-lib-1.1.11.1-qtniso.patch,
+  +xine-lib-1.1.11.1.ebuild:
+  version bump
+
+  07 Apr 2008; Alexis Ballier <aballier@gentoo.org>
+  -files/xine-lib-1.1.10.1-off-by-one.patch, -xine-lib-1.1.10.ebuild,
+  -xine-lib-1.1.10.1.ebuild, -xine-lib-1.1.10.1-r1.ebuild:
+  remove old
+
+  23 Mar 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  xine-lib-1.1.11.ebuild:
+  ppc stable, bug #213039
+
+  22 Mar 2008; Raúl Porcel <armin76@gentoo.org> xine-lib-1.1.11.ebuild:
+  ia64/sparc stable wrt #213039
+
+  21 Mar 2008; Brent Baude <ranger@gentoo.org> xine-lib-1.1.11.ebuild:
+  Marking xine-lib-1.1.11 ppc64 for bug 213039
+
+  21 Mar 2008; Tobias Klausmann <klausman@gentoo.org>
+  xine-lib-1.1.11.ebuild:
+  Stable on alpha, bug #213039
+
+  20 Mar 2008; Markus Meier <maekke@gentoo.org> xine-lib-1.1.11.ebuild:
+  amd64 stable, security bug #213039
+
+  20 Mar 2008; Jeroen Roovers <jer@gentoo.org> xine-lib-1.1.11.ebuild:
+  Stable for HPPA (bug #213039).
+
+  20 Mar 2008; Christian Faulhammer <opfer@gentoo.org>
+  xine-lib-1.1.11.ebuild:
+  stable x86, security bug 213039
+
+*xine-lib-1.1.11 (20 Mar 2008)
+
+  20 Mar 2008; Ben de Groot <yngwin@gentoo.org> +xine-lib-1.1.11.ebuild:
+  Version bump. See also #213039. Dropped off-by-one patch, applied
+  upstream.
+
+  07 Mar 2008; Santiago M. Mola <coldwind@gentoo.org>
+  xine-lib-1.1.10.1-r1.ebuild:
+  amd64 stable wrt bug #211464
+
+  07 Mar 2008; Brent Baude <ranger@gentoo.org> xine-lib-1.1.10.1-r1.ebuild:
+  stable ppc64, bug 211464
+
+  27 Feb 2008; Raúl Porcel <armin76@gentoo.org>
+  xine-lib-1.1.10.1-r1.ebuild:
+  alpha/ia64/sparc stable wrt security #211464
+
+  26 Feb 2008; nixnut <nixnut@gentoo.org> xine-lib-1.1.10.1-r1.ebuild:
+  Stable on ppc wrt bug 211464
+
+  26 Feb 2008; Jeroen Roovers <jer@gentoo.org> xine-lib-1.1.10.1-r1.ebuild:
+  Stable for HPPA (bug #211464).
+
+  26 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  xine-lib-1.1.10.1-r1.ebuild:
+  stable x86, bug 211464
+
+*xine-lib-1.1.10.1-r1 (25 Feb 2008)
+
+  25 Feb 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +files/xine-lib-1.1.10.1-off-by-one.patch, +xine-lib-1.1.10.1-r1.ebuild:
+  Fix FLAC playback after security fix.
+
+  19 Feb 2008; Raúl Porcel <armin76@gentoo.org> xine-lib-1.1.10.1.ebuild:
+  alpha/ia64 stable wrt security #209106
+
+  19 Feb 2008; Ferris McCormick <fmccor@gentoo.org>
+  xine-lib-1.1.10.1.ebuild:
+  Sparc stable, security Bug #209106.
+
+  15 Feb 2008; Samuli Suominen <drac@gentoo.org> xine-lib-1.1.8.ebuild,
+  xine-lib-1.1.10.ebuild, xine-lib-1.1.10.1.ebuild:
+  Remove libdts reference.
+
+  12 Feb 2008; Jeroen Roovers <jer@gentoo.org> xine-lib-1.1.10.1.ebuild:
+  Stable for HPPA (bug #209106).
+
+  11 Feb 2008; Brent Baude <ranger@gentoo.org> xine-lib-1.1.10.1.ebuild:
+  Marking xine-lib-1.1.10.1 ppc64 for bug 209106
+
+  10 Feb 2008; Olivier Crête <tester@gentoo.org> xine-lib-1.1.10.1.ebuild:
+  stable on amd64, security bug #209106
+
+  10 Feb 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  xine-lib-1.1.10.1.ebuild:
+  ppc stable, bug #209106
+
+  10 Feb 2008; Markus Meier <maekke@gentoo.org> xine-lib-1.1.10.1.ebuild:
+  x86 stable, bug #209106
+
+*xine-lib-1.1.10.1 (09 Feb 2008)
+
+  09 Feb 2008; Alexis Ballier <aballier@gentoo.org>
+  +xine-lib-1.1.10.1.ebuild:
+  version bump
+
+  09 Feb 2008; Alexis Ballier <aballier@gentoo.org> -xine-lib-1.1.9.ebuild,
+  -xine-lib-1.1.9.1.ebuild, -xine-lib-1.1.9.1-r1.ebuild:
+  remove old
+
+  01 Feb 2008; Raúl Porcel <armin76@gentoo.org> xine-lib-1.1.10.ebuild:
+  alpha/ia64/sparc stable wrt security #208100
+
+  31 Jan 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  xine-lib-1.1.10.ebuild:
+  ppc stable, bug #208100
+
+  31 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  xine-lib-1.1.10.ebuild:
+  stable x86, security bug 208100
+
+  31 Jan 2008; Peter Weller <welp@gentoo.org> xine-lib-1.1.10.ebuild:
+  Stable on amd64; bug 208100
+
+  30 Jan 2008; Jeroen Roovers <jer@gentoo.org> xine-lib-1.1.10.ebuild:
+  Stable for HPPA (bug #208100).
+
+  30 Jan 2008; Markus Rothe <corsair@gentoo.org> xine-lib-1.1.10.ebuild:
+  Stable on ppc64; bug #208100
+
+*xine-lib-1.1.10 (29 Jan 2008)
+
+  29 Jan 2008; Alexis Ballier <aballier@gentoo.org> +xine-lib-1.1.10.ebuild:
+  version bump
+
+  16 Jan 2008; Peter Weller <welp@gentoo.org> ChangeLog:
+  Stable on amd64; bug 205197
+
+  16 Jan 2008; Raúl Porcel <armin76@gentoo.org> xine-lib-1.1.9.1.ebuild:
+  alpha/ia64/sparc stable wrt security #205197
+
+  15 Jan 2008; Jeroen Roovers <jer@gentoo.org> xine-lib-1.1.9.1.ebuild:
+  Stable for HPPA (bug #205197).
+
+  13 Jan 2008; Markus Meier <maekke@gentoo.org> xine-lib-1.1.9.1.ebuild:
+  x86 stable, security bug #205197
+
+  13 Jan 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  xine-lib-1.1.9.1.ebuild:
+  ppc stable, bug #205197
+
+  13 Jan 2008; Brent Baude <ranger@gentoo.org> xine-lib-1.1.9.1.ebuild:
+  Marking xine-lib-1.1.9.1 ppc64 for bug 205197
+
+  13 Jan 2008; Brent Baude <ranger@gentoo.org> xine-lib-1.1.9.ebuild:
+  Marking xine-lib-1.1.9 ppc64 for bug 205197
+
+*xine-lib-1.1.9.1-r1 (11 Jan 2008)
+*xine-lib-1.1.9.1 (11 Jan 2008)
+
+  11 Jan 2008; Alexis Ballier <aballier@gentoo.org>
+  +xine-lib-1.1.9.1.ebuild, +xine-lib-1.1.9.1-r1.ebuild:
+  bump for security fix bug #205197, giving two ebuilds at Diego's request,
+  one candidate for stable without IUSE default, one for ~arch due to numerous
+  people bitching about some defaults... bitching--
+
+  06 Jan 2008; Diego Pettenò <flameeyes@gentoo.org>
+  -files/xine-lib-1.1.4-CVE-2007-1246.patch,
+  -files/xine-lib-1.1.6-fbsd.patch, -xine-lib-1.1.4-r2.ebuild,
+  -xine-lib-1.1.6.ebuild, -xine-lib-1.1.7.ebuild:
+  Cleanup old versions.
+
+*xine-lib-1.1.9 (06 Jan 2008)
+
+  06 Jan 2008; Diego Pettenò <flameeyes@gentoo.org> +xine-lib-1.1.9.ebuild:
+  Version bump, use EAPI 1 to provide some decent defaults for IUSE.
+
+  30 Dec 2007; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Document non-obvious USE flags on metadata.xml.
+
+  08 Oct 2007; Markus Rothe <corsair@gentoo.org> xine-lib-1.1.8.ebuild:
+  Stable on ppc64; bug #192577
+
+  24 Sep 2007; Raúl Porcel <armin76@gentoo.org> xine-lib-1.1.8.ebuild:
+  alpha/ia64 stable wrt #192577
+
+  17 Sep 2007; Markus Ullmann <jokey@gentoo.org> xine-lib-1.1.8.ebuild:
+  Stable on sparc wrt bug #192577
+
+  17 Sep 2007; Lars Weiler <pylon@gentoo.org> xine-lib-1.1.8.ebuild:
+  Stable on ppc; bug #192577.
+
+  16 Sep 2007; Jeroen Roovers <jer@gentoo.org> xine-lib-1.1.8.ebuild:
+  Stable for HPPA (bug #192577).
+
+  15 Sep 2007; Jurek Bartuszek <jurek@gentoo.org> xine-lib-1.1.8.ebuild:
+  x86 stable (bug #192577)
+
+  15 Sep 2007; Christoph Mende <angelos@gentoo.org> xine-lib-1.1.8.ebuild:
+  Stable on amd64 wrt bug #192577
+
+  04 Sep 2007; Samuli Suominen <drac@gentoo.org>
+  +files/xine-lib-1.1.8-dxr3.patch, xine-lib-1.1.8.ebuild:
+  Fix building with dxr3 support wrt bug #183692. Temporary, but harmless
+  solution until it's cleaned upstream.
+
+*xine-lib-1.1.8 (03 Sep 2007)
+
+  03 Sep 2007; Samuli Suominen <drac@gentoo.org> +xine-lib-1.1.8.ebuild:
+  Version bump wrt #191094.
+
+  31 Jul 2007; Doug Goldstein <cardoe@gentoo.org> xine-lib-1.1.2-r3.ebuild:
+  nvidia-legacy-drivers has merged with nvidia-drivers
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  xine-lib-1.1.2-r3.ebuild:
+  Drop virtual/x11 references.
+
+*xine-lib-1.1.7 (12 Jun 2007)
+
+  12 Jun 2007; Samuli Suominen <drac@gentoo.org> +xine-lib-1.1.7.ebuild:
+  Version bump for bug 181403.
+
+  16 May 2007; Jeroen Roovers <jer@gentoo.org> xine-lib-1.1.4-r2.ebuild:
+  Stable for HPPA (bug #174909).
+
+  04 May 2007; Samuli Suominen <drac@gentoo.org>
+  +files/xine-lib-1.1.6-fbsd.patch, xine-lib-1.1.6.ebuild:
+  Apply patch from Diego Flameeyes Pettenò to Fix build of CDDA input on
+  FreeBSD, the NetBSD patch broke it as sys/scsiio.h is not present on
+  FreeBSD.
+
+  22 Apr 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  xine-lib-1.1.4-r2.ebuild:
+  ppc stable, bug #174909
+
+  22 Apr 2007; Bryan Østergaard <kloeri@gentoo.org>
+  xine-lib-1.1.4-r2.ebuild, xine-lib-1.1.6.ebuild:
+  Stable on Alpha, bug 174909.
+
+  19 Apr 2007; Alexis Ballier <aballier@gentoo.org> xine-lib-1.1.6.ebuild:
+  Use libdts or libdca for dts decoding
+
+*xine-lib-1.1.6 (18 Apr 2007)
+
+  18 Apr 2007; Stefan Schweizer <genstef@gentoo.org>
+  -files/xine-lib-cdda-fix.patch, -xine-lib-1.1.5.ebuild,
+  +xine-lib-1.1.6.ebuild:
+  Version bump thanks to flameeyes in bug 175048
+
+  16 Apr 2007; Raúl Porcel <armin76@gentoo.org> xine-lib-1.1.4-r2.ebuild:
+  ia64 stable wrt bug 170208
+
+  15 Apr 2007; Markus Rothe <corsair@gentoo.org> xine-lib-1.1.4-r2.ebuild:
+  Stable on ppc64; bug #170208
+
+  14 Apr 2007; Olivier Crête <tester@gentoo.org> xine-lib-1.1.4-r2.ebuild:
+  Stable on amd64, sec bug #170208
+
+  14 Apr 2007; Raúl Porcel <armin76@gentoo.org> xine-lib-1.1.5.ebuild:
+  Add ~ia64 wrt bug 174003
+
+  14 Apr 2007; Jeroen Roovers <jer@gentoo.org> xine-lib-1.1.5.ebuild:
+  Marked ~hppa (bug #174003).
+
+  14 Apr 2007; Stefan Schweizer <genstef@gentoo.org> xine-lib-1.1.5.ebuild:
+  Patch to fix cdda playback, bug 174578
+
+*xine-lib-1.1.5 (13 Apr 2007)
+
+  13 Apr 2007; Stefan Schweizer <genstef@gentoo.org> +xine-lib-1.1.5.ebuild:
+  version bump thanks to flameeyes in bug 174003
+
+  27 Mar 2007; Raúl Porcel <armin76@gentoo.org> xine-lib-1.1.3.ebuild:
+  ia64 stable wrt bug 159054
+
+  22 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  xine-lib-1.1.4-r2.ebuild:
+  Stable on sparc
+
+  21 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  xine-lib-1.1.4-r2.ebuild:
+  stable x86, security bug 170208
+
+  19 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove flameeyes from metadata.xml due to retirement.
+
+*xine-lib-1.1.4-r2 (17 Mar 2007)
+
+  17 Mar 2007; Joshua Jackson <tsunam@gentoo.org> +xine-lib-1.1.4-r2.ebuild:
+  Adding the new revision with Real Codec Changes
+
+*xine-lib-1.1.4-r1 (09 Feb 2007)
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org>
+  +xine-lib-1.1.4-r1.ebuild:
+  Add xine-lib with a patch (not yet committed in upstream CVS, but it's going
+  to be) to use XCB rather than libX11 for xv/xshm output plugins, allowing
+  xine to be used inside frontends that embed themselves in other programs
+  (like Kaffeine with Konqueror or GwenView). The only frontend supporting
+  this right now is Kaffeine, but more will probably come.
+
+  06 Feb 2007; Raúl Porcel <armin76@gentoo.org> xine-lib-1.1.3.ebuild,
+  xine-lib-1.1.4.ebuild:
+  fix x86 flag filtering, bug 149704
+
+  07 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> xine-lib-1.1.4.ebuild:
+  Run elibtoolize, I forgot about it.
+
+  30 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> xine-lib-1.1.3.ebuild:
+  Fix libpostproc pkg-config check so that it does not bail out with newer
+  version. Closes bug #164480.
+
+  29 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Sign manifest.
+
+  29 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> xine-lib-1.1.4.ebuild:
+  Bump requirement of ffmpeg version, as the new xine-lib requires a new ffmpeg.
+
+  29 Jan 2007; Bryan Østergaard <kloeri@gentoo.org> xine-lib-1.1.4.ebuild:
+  Add ~alpha + ~ia64 keywords.
+
+*xine-lib-1.1.4 (28 Jan 2007)
+
+  28 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  -xine-lib-1.1.4_pre20070126.ebuild, +xine-lib-1.1.4.ebuild:
+  Final 1.1.4 release.
+
+*xine-lib-1.1.4_pre20070126 (26 Jan 2007)
+
+  26 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.2-r2.ebuild, xine-lib-1.1.2-r3.ebuild, xine-lib-1.1.3.ebuild,
+  -xine-lib-1.1.4_pre20070119.ebuild, +xine-lib-1.1.4_pre20070126.ebuild:
+  Update snapshot, with a new WavPack decoder and a fix for playing files over
+  Samba. As Samba was crashing badly before, disable the samba useflag for all
+  1.1.2 and 1.1.3 series ebuilds.
+
+*xine-lib-1.1.4_pre20070119 (19 Jan 2007)
+
+  19 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  -xine-lib-1.1.4_pre20070117.ebuild, +xine-lib-1.1.4_pre20070119.ebuild:
+  Update snapshot; now musepack useflag is used and respected to enable or
+  disable musepack support, and libmpcdec is used to decode MusePack files
+  rather than the internal code.
+
+*xine-lib-1.1.4_pre20070117 (18 Jan 2007)
+
+  18 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> xine-lib-1.1.3.ebuild,
+  -xine-lib-1.1.4_pre20061231.ebuild, +xine-lib-1.1.4_pre20070117.ebuild:
+  Update the snapshot to a newer version without linking errors. Also disable
+  SyncFB on 1.1.3 and later because it requires a kernel module we don't have
+  in portage anyway.
+
+  16 Jan 2007; Jeroen Roovers <jer@gentoo.org> xine-lib-1.1.3.ebuild:
+  Stable for HPPA (bug #159054).
+
+  10 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Add missing email address for herd with name != alias.
+
+  09 Jan 2007; Markus Rothe <corsair@gentoo.org> xine-lib-1.1.3.ebuild:
+  Stable on ppc64; bug #159054
+
+  06 Jan 2007; Matti Bickel <mabi@gentoo.org> xine-lib-1.1.3.ebuild:
+  ppc stable (bug #159054)
+
+  06 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  xine-lib-1.1.3.ebuild:
+  amd64 stable, bug 157814
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.4_pre20061231.ebuild:
+  Require a newer enough version of wavpack so that the pkg-config file is
+  installed.
+
+  04 Jan 2007; Christian Faulhammer <opfer@gentoo.org>
+  xine-lib-1.1.3.ebuild:
+  stable x86, bug #159054
+
+  04 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org> xine-lib-1.1.3.ebuild:
+  Stable on sparc wrt #159054
+
+*xine-lib-1.1.4_pre20061231 (31 Dec 2006)
+
+  31 Dec 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -xine-lib-1.1.4_pre20061227.ebuild, +xine-lib-1.1.4_pre20061231.ebuild:
+  Bump snapshot to a newer version with way less linking failures.
+
+  27 Dec 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.4_pre20061227.ebuild:
+  Actually 1.1.4 version works with flac-1.1.3 finally.
+
+*xine-lib-1.1.4_pre20061227 (27 Dec 2006)
+
+  27 Dec 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +xine-lib-1.1.4_pre20061227.ebuild:
+  Add a newer preview snapshot, able to play WavPacks (for instance).
+
+  27 Dec 2006; Bryan Østergaard <kloeri@gentoo.org> xine-lib-1.1.3.ebuild:
+  Re-add ~alpha and ~ia64 keywords.
+
+  25 Dec 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -xine-lib-1.1.3_pre20061129.ebuild, xine-lib-1.1.3.ebuild:
+  xine-lib 1.1.3 release does not work that well with flac 1.1.3 (although it
+  builds), so depend on 1.1.2; remove old snapshot.
+
+  04 Dec 2006; Diego Pettenò <flameeyes@gentoo.org> xine-lib-1.1.3.ebuild:
+  Fix handling of truetype useflag, thanks to Kraml Liu n bug #157097.
+
+*xine-lib-1.1.3 (03 Dec 2006)
+
+  03 Dec 2006; Diego Pettenò <flameeyes@gentoo.org> +xine-lib-1.1.3.ebuild:
+  Bump to 1.1.3 final (just a few commits away from latest snapshot).
+
+  02 Dec 2006; Bryan Østergaard <kloeri@gentoo.org>
+  xine-lib-1.1.2-r3.ebuild:
+  Stable on Alpha + ia64, bug 156645.
+
+  01 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  xine-lib-1.1.2-r3.ebuild:
+  Stable on amd64 wrt bug #156645.
+
+  01 Dec 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.3_pre20061129.ebuild:
+  Fix libtheora dependencies.
+
+  01 Dec 2006; Jeroen Roovers <jer@gentoo.org> xine-lib-1.1.2-r3.ebuild,
+  xine-lib-1.1.3_pre20061129.ebuild:
+  Marked one stable for HPPA (1.1.2-r3, bug #156645) and the other ~hppa
+  (1.1.3_pre20061129, bug #155067).
+
+  30 Nov 2006; Markus Rothe <corsair@gentoo.org> xine-lib-1.1.2-r3.ebuild:
+  Stable on ppc64; bug #156645
+
+  30 Nov 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  xine-lib-1.1.2-r3.ebuild:
+  ppc stable, bug #156645
+
+  01 Dec 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.2-r2.ebuild, xine-lib-1.1.2-r3.ebuild,
+  xine-lib-1.1.3_pre20061129.ebuild:
+  Add the (obvious) libtool dependency as per bug #156734.
+
+  30 Nov 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  xine-lib-1.1.2-r3.ebuild:
+  Stable on sparc wrt security #156645
+
+*xine-lib-1.1.2-r3 (29 Nov 2006)
+
+  29 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +xine-lib-1.1.2-r3.ebuild:
+  Bump patchset to push out a patch for the possible security issue in libreal.
+
+*xine-lib-1.1.3_pre20061129 (29 Nov 2006)
+
+  29 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -xine-lib-1.1.3_pre20061119.ebuild, +xine-lib-1.1.3_pre20061129.ebuild:
+  Update snapshot to fix a couple of serious bugs.
+
+  25 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -xine-lib-1.1.3_pre20061112.ebuild, xine-lib-1.1.3_pre20061119.ebuild:
+  Fix typo in econf line, thanks to David Watzke in bug #155463.
+
+*xine-lib-1.1.3_pre20061119 (19 Nov 2006)
+
+  19 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +xine-lib-1.1.3_pre20061119.ebuild:
+  New snapshot to fix the issue reported in bug #155630, and re-adding
+  ~x86-fbsd keyword.
+
+  18 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.3_pre20061112.ebuild:
+  The snapshot does not build on FreeBSD, will re-keyword on the new one (due
+  soon anyway).
+
+  18 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.3_pre20061112.ebuild:
+  Don't restrict the dependency to flac 1.1.2, as the current snapshot works
+  with 1.1.3.
+
+  13 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -xine-lib-1.1.3_pre20060929.ebuild, xine-lib-1.1.3_pre20061112.ebuild:
+  Remove old version and drop keywords for arches that didn't keyword ffmpeg.
+
+*xine-lib-1.1.3_pre20061112 (12 Nov 2006)
+
+  12 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +xine-lib-1.1.3_pre20061112.ebuild:
+  New snapshot from current CVS, fixed a few bugs with FLAC files, improved
+  freetype/fontconfig support, and now uses pkg-config to search for Xorg
+  libraries rather than linking tests.
+
+  30 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.2-r2.ebuild:
+  Add autotools version dependencies.
+
+  26 Oct 2006; Joshua Jackson <tsunam@gentoo.org> xine-lib-1.1.2-r2.ebuild:
+  adding a additional filter for -fno-omit per bug #149704
+
+  21 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.2-r2.ebuild:
+  As 1.1.2 is the last version without unconditional mp3 support, rename mad
+  useflag in mp3 and be done with all the reports of MP3 not working.
+
+  19 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.2-r2.ebuild, xine-lib-1.1.3_pre20060929.ebuild:
+  Depend on 1.1.2 version of flac, as the 1.1.3 version changes API.
+
+  13 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.2-r2.ebuild, -xine-lib-1.1.3_pre20060914.ebuild,
+  xine-lib-1.1.3_pre20060929.ebuild:
+  Remove old snapshot, disable freetype in all these versions as it's not
+  working as intended anyway. FreeType/FontConfig support will be present in
+  next snapshot.
+
+  05 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  xine-lib-1.1.2-r2.ebuild:
+  Removing references to media-video/nvidia-glx since it is no longer in the
+  tree.
+
+  01 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.2-r2.ebuild, xine-lib-1.1.3_pre20060914.ebuild,
+  xine-lib-1.1.3_pre20060929.ebuild:
+  Remove build-time dependency on xextproto.
+
+  30 Sep 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.3_pre20060929.ebuild:
+  Remove the extra --without-pulseaudio parameter, see bug #149587.
+
+*xine-lib-1.1.3_pre20060929 (29 Sep 2006)
+
+  29 Sep 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +xine-lib-1.1.3_pre20060929.ebuild:
+  New snapshot, with mmap support optional, a lot of Coverity fixes, and
+  Shorten files playing in Amarok.
+
+  16 Sep 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.2-r2.ebuild, -xine-lib-1.1.3_pre20060831.ebuild,
+  xine-lib-1.1.3_pre20060914.ebuild:
+  Fix gnome useflag switch, remove old snapshot.
+
+*xine-lib-1.1.3_pre20060914 (14 Sep 2006)
+
+  14 Sep 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +xine-lib-1.1.3_pre20060914.ebuild:
+  New snapshot, with quite a bit of fixes from upstream.
+
+  10 Sep 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.3_pre20060831.ebuild:
+  Drop monolithic X11 support, no more need for VIDEO_CARDS support, XvMCW is
+  used every time. Simplify the ebuild notably.
+
+  09 Sep 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.3_pre20060831.ebuild:
+  Remove asf useflag and enable it every time, now that a WMV decoder is
+  available.
+
+  08 Sep 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.2-r2.ebuild:
+  Bump patchset to fix again bug #142488.
+
+  05 Sep 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.3_pre20060831.ebuild:
+  Correctly disable pulseaudio.
+
+  01 Sep 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.3_pre20060831.ebuild:
+  Bump patchset to build again on amd64/x86.
+
+  31 Aug 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.3_pre20060831.ebuild:
+  Bump patchset, fix building on non-x86, non-amd64 systems, thanks to Alberto
+  Zennaro for reporting.
+
+  31 Aug 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.3_pre20060831.ebuild:
+  Fix typo, many thanks to David Watzke in bug #145734.
+
+  31 Aug 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.2-r2.ebuild, xine-lib-1.1.3_pre20060831.ebuild:
+  Fix visibility patch to export the plugin info for dxr3, thanks to Alejandro
+  Homs-Puron in bug #142488.
+
+*xine-lib-1.1.3_pre20060831 (30 Aug 2006)
+
+  30 Aug 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +xine-lib-1.1.3_pre20060831.ebuild:
+  Add pre-release of xine-lib depending on newer ffmpeg allowing people on
+  non-x86 platforms to play WMV files. Bugs still welcome.
+
+  26 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.2-r2.ebuild:
+  Make debug build actually be a debug build, by undefining NDEBUG as well as
+  defining DEBUG. Bump patchset to fix a build error with debug enabled.
+
+  15 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -xine-lib-1.1.2_pre20060328-r9.ebuild:
+  Drop latest vulnerable version.
+
+  15 Jul 2006; Rene Nussbaumer <killerfox@gentoo.org>
+  xine-lib-1.1.2-r2.ebuild:
+  Stable on hppa. See bug #139319.
+
+  15 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -xine-lib-1.1.1-r3.ebuild, -xine-lib-1.1.2_pre20060328-r11.ebuild,
+  -xine-lib-1.1.2_pre20060630-r1.ebuild, -xine-lib-1.1.2.ebuild,
+  -xine-lib-1.1.2-r1.ebuild:
+  Remove old, vulnerable versions.
+
+  14 Jul 2006; Thomas Cort <tcort@gentoo.org> xine-lib-1.1.2-r2.ebuild:
+  Stable on alpha wrt security Bug #139319.
+
+  13 Jul 2006; Jason Wever <weeve@gentoo.org> xine-lib-1.1.2-r2.ebuild:
+  Stable on SPARC wrt security bug #139319.
+
+  13 Jul 2006; Aron Griffis <agriffis@gentoo.org> xine-lib-1.1.2-r2.ebuild:
+  Mark 1.1.2-r2 stable on ia64
+
+  12 Jul 2006; Markus Rothe <corsair@gentoo.org> xine-lib-1.1.2-r2.ebuild:
+  Stable on ppc64; bug #139319
+
+  12 Jul 2006; Joshua Jackson <tsunam@gentoo.org> xine-lib-1.1.2-r2.ebuild:
+  Stable x86; security bug #139319
+
+  11 Jul 2006; Luis Medinas <metalgod@gentoo.org> xine-lib-1.1.2-r2.ebuild:
+  Stable on amd64. See security bug #139319.
+
+  11 Jul 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  xine-lib-1.1.2-r2.ebuild:
+  ppc stable, bug #139319
+
+*xine-lib-1.1.2-r2 (11 Jul 2006)
+
+  11 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +xine-lib-1.1.2-r2.ebuild:
+  New patch to fix possible heap overflows in MMS code. See bug #139319.
+
+*xine-lib-1.1.2-r1 (11 Jul 2006)
+
+  11 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +xine-lib-1.1.2-r1.ebuild:
+  Add the promised always-shared ffmpeg policy, need a version bump as sh does
+  not have it keyworded.
+
+*xine-lib-1.1.2 (10 Jul 2006)
+
+  10 Jul 2006; Diego Pettenò <flameeyes@gentoo.org> +xine-lib-1.1.2.ebuild:
+  Bump to 1.1.2 release, finally.
+
+  09 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.1-r3.ebuild, xine-lib-1.1.2_pre20060328-r9.ebuild,
+  xine-lib-1.1.2_pre20060328-r11.ebuild,
+  xine-lib-1.1.2_pre20060630-r1.ebuild:
+  Remove xorg-server fake depend, was an artefact produced by the first dep
+  checking scripts.
+
+  09 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.1-r3.ebuild, xine-lib-1.1.2_pre20060328-r9.ebuild,
+  xine-lib-1.1.2_pre20060328-r11.ebuild,
+  xine-lib-1.1.2_pre20060630-r1.ebuild:
+  Replace einfo with elog.
+
+  07 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.1-r3.ebuild, xine-lib-1.1.2_pre20060328-r9.ebuild,
+  xine-lib-1.1.2_pre20060328-r11.ebuild,
+  xine-lib-1.1.2_pre20060630-r1.ebuild:
+  Depend on series 6 of virtual/x11 so to not screw up stable users with
+  modular setup.
+
+  07 Jul 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  xine-lib-1.1.1-r3.ebuild, xine-lib-1.1.2_pre20060328-r9.ebuild,
+  xine-lib-1.1.2_pre20060328-r11.ebuild,
+  xine-lib-1.1.2_pre20060630-r1.ebuild:
+  Also adding nvidia-legacy-drivers, since they're also proper for older
+  nvidia cards.
+
+  07 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.1-r3.ebuild, xine-lib-1.1.2_pre20060328-r9.ebuild,
+  xine-lib-1.1.2_pre20060328-r11.ebuild,
+  xine-lib-1.1.2_pre20060630-r1.ebuild:
+  Fix dependency to accept nvidia-drivers too.
+
+*xine-lib-1.1.2_pre20060630-r1 (03 Jul 2006)
+
+  03 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -xine-lib-1.1.2_pre20060606-r2.ebuild,
+  -xine-lib-1.1.2_pre20060606-r3.ebuild, -xine-lib-1.1.2_pre20060630.ebuild,
+  +xine-lib-1.1.2_pre20060630-r1.ebuild:
+  Add a patch to fix missing timeout on network streaming, and remove old
+  versions.
+
+*xine-lib-1.1.2_pre20060630 (30 Jun 2006)
+
+  30 Jun 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +xine-lib-1.1.2_pre20060630.ebuild:
+  New snapshot with reduced patchset, near to 1.1.2 final release.
+
+  17 Jun 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.2_pre20060606-r3.ebuild:
+  Bump patchset with a new patch for 5.1 AAC support.
+
+*xine-lib-1.1.2_pre20060606-r3 (17 Jun 2006)
+
+  17 Jun 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +xine-lib-1.1.2_pre20060606-r3.ebuild:
+  Add revbump to fix strict-aliasing rules.
+
+*xine-lib-1.1.2_pre20060606-r2 (15 Jun 2006)
+
+  15 Jun 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -xine-lib-1.1.2_pre20060606-r1.ebuild,
+  +xine-lib-1.1.2_pre20060606-r2.ebuild:
+  New revision to fix bug #136870.
+
+  10 Jun 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.2_pre20060606-r1.ebuild:
+  Bump patchset to fix typo.
+
+  10 Jun 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.1-r3.ebuild, xine-lib-1.1.2_pre20060328-r9.ebuild,
+  xine-lib-1.1.2_pre20060328-r11.ebuild:
+  Disable nls for all older versions, as it's broken and doesn't work anyway.
+
+*xine-lib-1.1.2_pre20060606-r1 (10 Jun 2006)
+
+  10 Jun 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -xine-lib-1.1.2_pre20060606.ebuild, +xine-lib-1.1.2_pre20060606-r1.ebuild:
+  Bump revision fixing definitely the i18n issues so that they work.
+
+  09 Jun 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.2_pre20060606.ebuild:
+  Bump patchset to fix issues with streams after security fix. Use emake for
+  install stage.
+
+  07 Jun 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.2_pre20060328-r11.ebuild:
+  Don't apply both 237 and 240 when using gcc 3.3, better safe than sorry.
+
+  07 Jun 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.2_pre20060606.ebuild:
+  Remove the patch removal and add support for updating translations.
+
+  07 Jun 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.2_pre20060328-r9.ebuild,
+  xine-lib-1.1.2_pre20060328-r11.ebuild:
+  Don't skip the visibility patch if GCC does not support it, as the
+  constantise patch then fails to apply. Stable on -r11 is asked already.
+
+*xine-lib-1.1.2_pre20060606 (06 Jun 2006)
+
+  06 Jun 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +xine-lib-1.1.2_pre20060606.ebuild:
+  Add new snapshot with new patchset (reduced).
+
+  06 Jun 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  xine-lib-1.1.2_pre20060328-r11.ebuild:
+  ppc stable, bug #135734
+
+  06 Jun 2006; Markus Rothe <corsair@gentoo.org>
+  xine-lib-1.1.2_pre20060328-r11.ebuild:
+  Stable on ppc64; bug #135734
+
+*xine-lib-1.1.2_pre20060328-r11 (05 Jun 2006)
+
+  05 Jun 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -xine-lib-1.1.2_pre20060328-r1.ebuild,
+  -xine-lib-1.1.2_pre20060328-r10.ebuild,
+  +xine-lib-1.1.2_pre20060328-r11.ebuild:
+  Add new revision hopefully fixing the Altivec problems on PowerPC, drop old
+  revisions.
+
+  05 Jun 2006; Markus Rothe <corsair@gentoo.org>
+  xine-lib-1.1.2_pre20060328-r9.ebuild:
+  Stable on ppc64; bug #134951
+
+  03 Jun 2006; Rene Nussbaumer <killerfox@gentoo.org>
+  xine-lib-1.1.2_pre20060328-r9.ebuild:
+  Stable on hppa. See bug #134951.
+
+  03 Jun 2006; Mark Loeser <halcy0n@gentoo.org>
+  xine-lib-1.1.2_pre20060328-r9.ebuild:
+  Stable on x86; bug #134951
+
+  02 Jun 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  xine-lib-1.1.2_pre20060328-r9.ebuild:
+  ppc stable, bug #134951
+
+*xine-lib-1.1.2_pre20060328-r10 (02 Jun 2006)
+
+  02 Jun 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +xine-lib-1.1.2_pre20060328-r10.ebuild:
+  Add new revision with a fix for stream containing ' character.
+
+  01 Jun 2006; Jason Wever <weeve@gentoo.org>
+  xine-lib-1.1.2_pre20060328-r9.ebuild:
+  Stable on SPARC wrt security bug #134951.
+
+  01 Jun 2006; Thomas Cort <tcort@gentoo.org>
+  xine-lib-1.1.2_pre20060328-r9.ebuild:
+  Stable on alpha wrt security Bug #134951.
+
+  01 Jun 2006; Luis Medinas <metalgod@gentoo.org>
+  xine-lib-1.1.2_pre20060328-r9.ebuild:
+  Stable on amd64 for security bug #134951.
+
+*xine-lib-1.1.2_pre20060328-r9 (31 May 2006)
+
+  31 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -xine-lib-1.1.2_pre20060328-r6.ebuild,
+  -xine-lib-1.1.2_pre20060328-r7.ebuild,
+  -xine-lib-1.1.2_pre20060328-r8.ebuild,
+  +xine-lib-1.1.2_pre20060328-r9.ebuild:
+  Patchset bump to fix the buffer overflow reported in bug #134951. Also
+  disable the visibility patch if the compiler does not support
+  -fvisibility=hidden.
+
+*xine-lib-1.1.2_pre20060328-r8 (28 May 2006)
+
+  28 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +xine-lib-1.1.2_pre20060328-r8.ebuild:
+  Bump patchset, added patch to fix FLAC reporting no audio (KDE Bug #128217.
+
+  26 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.2_pre20060328-r7.ebuild:
+  Don't force un-parallel make.
+
+  24 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.2_pre20060328-r7.ebuild:
+  Add ~x86-fbsd keyword.
+
+*xine-lib-1.1.2_pre20060328-r7 (22 May 2006)
+
+  22 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +xine-lib-1.1.2_pre20060328-r7.ebuild:
+  Add new revision with a patch to allow playing of m4b files.
+
+  17 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -xine-lib-1.1.2_pre20060328-r2.ebuild,
+  -xine-lib-1.1.2_pre20060328-r5.ebuild:
+  Drop old versions.
+
+  14 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.2_pre20060328-r6.ebuild:
+  Filter -fforce-addr in any case, bug #132416.
+
+*xine-lib-1.1.2_pre20060328-r6 (09 May 2006)
+
+  09 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +xine-lib-1.1.2_pre20060328-r6.ebuild:
+  Add patch to play correctly 5.1 AAC streams.
+
+  07 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.2_pre20060328-r5.ebuild:
+  Enable forcefully fast install.
+
+  30 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.2_pre20060328-r5.ebuild:
+  Drop warning about omitted frame pointer as it's already fixed.
+
+  26 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.2_pre20060328-r5.ebuild:
+  Remove extra flags handling for x86.
+
+  26 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.2_pre20060328-r5.ebuild:
+  Bump patchset, to fix visibility of dvdnav plugin.
+
+*xine-lib-1.1.2_pre20060328-r5 (26 Apr 2006)
+
+  26 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -xine-lib-1.1.2_pre20060328-r4.ebuild,
+  +xine-lib-1.1.2_pre20060328-r5.ebuild:
+  Add new revision, restore internal copy of dvdnav or seeking is not
+  possible. Bump patchset to fix build with constantize patch.
+
+  26 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.2_pre20060328-r4.ebuild:
+  Bump patchset version, with an extra patch to mark constant some data
+  structures to reduce memory usage, and enforce v4l useflag.
+
+*xine-lib-1.1.2_pre20060328-r4 (26 Apr 2006)
+
+  26 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -xine-lib-1.1.2_pre20060328-r3.ebuild,
+  +xine-lib-1.1.2_pre20060328-r4.ebuild:
+  New experimental revision, this time should build with all the options
+  enabled and with minimum symbols.
+
+*xine-lib-1.1.2_pre20060328-r3 (26 Apr 2006)
+
+  26 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +xine-lib-1.1.2_pre20060328-r3.ebuild:
+  Add experimental revision that changes the FAAD fix with an oculate use of
+  -fvisibility=hidden, and also hide all the unneeded symbols on plugins to
+  speed up loading. Use external libdvdnav library (as now it works).
+
+*xine-lib-1.1.2_pre20060328-r2 (25 Apr 2006)
+
+  25 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +xine-lib-1.1.2_pre20060328-r2.ebuild:
+  Bump revision, to fix OSD horizontal lines (bug #131185) and finally bug
+  #112921.
+
+  24 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -xine-lib-1.1.1-r5.ebuild:
+  Remove old version.
+
+  22 Apr 2006; Guy Martin <gmsoft@gentoo.org>
+  xine-lib-1.1.2_pre20060328-r1.ebuild:
+  Stable on hppa.
+
+  22 Apr 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  xine-lib-1.1.2_pre20060328-r1.ebuild:
+  ppc stable, bug #128838
+
+  22 Apr 2006; Thomas Cort <tcort@gentoo.org>
+  xine-lib-1.1.2_pre20060328-r1.ebuild:
+  Stable on amd64 wrt security Bug #128838.
+
+  22 Apr 2006; Markus Rothe <corsair@gentoo.org>
+  xine-lib-1.1.2_pre20060328-r1.ebuild:
+  Stable on ppc64
+
+  22 Apr 2006; Mark Loeser <halcy0n@gentoo.org>
+  xine-lib-1.1.2_pre20060328-r1.ebuild:
+  Stable on x86; bug #128838
+
+  21 Apr 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  xine-lib-1.1.2_pre20060328-r1.ebuild:
+  Stable on sparc wrt security #128838
+
+  21 Apr 2006; Thomas Cort <tcort@gentoo.org>
+  xine-lib-1.1.2_pre20060328-r1.ebuild:
+  Stable on alpha wrt security Bug #128838.
+
+  21 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.2_pre20060328-r1.ebuild:
+  Remove the mad big fat warning from last ebuild as it doesn't crash players
+  anymore.
+
+*xine-lib-1.1.2_pre20060328-r1 (20 Apr 2006)
+
+  20 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -xine-lib-1.1.2_pre20060328.ebuild, +xine-lib-1.1.2_pre20060328-r1.ebuild:
+  Add patch to fix access to authenticated HTTP streams. Thanks to Mark
+  Kretschmann from the amaroK team for reporting and helping tracking it down.
+
+  20 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.2_pre20060328.ebuild:
+  Bump patchlevel, add patch to fix crashes trying to play mp3s when mad is
+  disabled.
+
+  17 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.2_pre20060328.ebuild:
+  Bump patchset to fix bug #130217. Fix dependencies over virtual/libintl and
+  virtual/libiconv.
+
+  06 Apr 2006; Thomas Cort <tcort@gentoo.org>
+  xine-lib-1.1.2_pre20060328.ebuild:
+  Added ~alpha keyword.
+
+  06 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -xine-lib-1.1.1-r4.ebuild:
+  Drop old version.
+
+  06 Apr 2006; Thomas Cort <tcort@gentoo.org> xine-lib-1.1.1-r5.ebuild:
+  Added ~alpha keyword wrt Bug #118526.
+
+  06 Apr 2006; Patrick McLean <chutzpah@gentoo.org>
+  xine-lib-1.1.1-r4.ebuild, xine-lib-1.1.1-r5.ebuild,
+  xine-lib-1.1.2_pre20060328.ebuild:
+  Grammar fix for the mad warning in pkg_postinst().
+
+*xine-lib-1.1.2_pre20060328 (28 Mar 2006)
+
+  28 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +xine-lib-1.1.2_pre20060328.ebuild:
+  Add CVS snapshot to test AAC support for who still has troubles with 1.1.1-r5.
+
+  28 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.1-r5.ebuild:
+  Bump patchset to fix bug #127821.
+
+  28 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.1-r5.ebuild:
+  Bump patchset with a minor fix.
+
+*xine-lib-1.1.1-r5 (27 Mar 2006)
+
+  27 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +xine-lib-1.1.1-r5.ebuild:
+  Add new version that allows to play aac/m4a files on 64-bit systems.
+
+  21 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.1-r4.ebuild:
+  Bump patchset version to fix bug #124802.
+
+  09 Feb 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.1-r4.ebuild:
+  Drop has_pic function. Leave at x86 arch team decide what to do.
+
+  04 Feb 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.1-r4.ebuild:
+  Change nvidia, i8x0 and cle266 useflags to VIDEO_CARDS values (nvidia, i810
+  and via), so that setting that variable is enough to get the right version
+  of xvmc (or the wrapper if more than one value is present). Add warning
+  about inability to play mp3s with -mad. Remove elibtoolize after
+  eautoreconf, that is already took care by autotools.
+
+  29 Jan 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -files/CVE-2005-4048.patch, -files/xine-lib-formatstring.patch,
+  -xine-lib-1_rc8-r2.ebuild, -xine-lib-1.1.0.ebuild,
+  -xine-lib-1.1.1-r2.ebuild, xine-lib-1.1.1-r3.ebuild:
+  Drop old versions (dropping ~mips keyword, see bug #111561); remove -*
+  keyword from newer ones. Remove orphan patches.
+
+  12 Jan 2006; Markus Rothe <corsair@gentoo.org> xine-lib-1.1.1-r4.ebuild:
+  Added ~ppc64
+
+  12 Jan 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.1-r3.ebuild, xine-lib-1.1.1-r4.ebuild:
+  Bump also stable version to patchset 24 and allow to actually disable xvmc.
+
+  12 Jan 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.1-r4.ebuild:
+  Allow to entirely disable XvMC and XxMC plugins with -xvmc.
+
+  10 Jan 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -xine-lib-1.0.1-r4.ebuild:
+  Remove old version.
+
+*xine-lib-1.1.1-r4 (10 Jan 2006)
+
+  10 Jan 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.1-r3.ebuild, +xine-lib-1.1.1-r4.ebuild:
+  Bumped patchset to version 23, with patch to remove automatic detection of
+  libmodplug. 1.1.1-r3 will disable modplug entirely, 1.1.1-r4 have modplug
+  useflag (so some keywords were dropped).
+
+  09 Jan 2006; Bryan Østergaard <kloeri@gentoo.org
+  xine-lib-1.1.1-r3.ebuild:
+  Stable on alpha, bug 116181.
+
+  04 Jan 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.1-r3.ebuild:
+  Bumped patchset to version 22, fixing bug #113255 (a part ffmpeg).
+
+  03 Jan 2006; Bryan Østergaard <kloeri@gentoo.org
+  xine-lib-1.1.1-r3.ebuild:
+  ~alpha keyword, bug 116181.
+
+  02 Jan 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  xine-lib-1.1.1-r3.ebuild:
+  ppc stable, bug #116181
+
+  01 Jan 2006; Simon Stelling <blubb@gentoo.org> xine-lib-1.1.1-r3.ebuild:
+  stable on amd64 wrt bug 116181
+
+  31 Dec 2005; Markus Rothe <corsair@gentoo.org> xine-lib-1.1.1-r3.ebuild:
+  Stable on ppc64
+
+  30 Dec 2005; Mark Loeser <halcy0n@gentoo.org> xine-lib-1.1.1-r3.ebuild:
+  Stable on x86; bug #116181
+
+  30 Dec 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  xine-lib-1.1.1-r3.ebuild:
+  Stable on sparc wrt security #116181
+
+  28 Dec 2005; Guy Martin <gmsoft@gentoo.org> xine-lib-1.1.1-r3.ebuild:
+  That one compiles on hppa.
+
+  26 Dec 2005; Luca Barbato <lu_zero@gentoo.org> xine-lib-1_rc8-r2.ebuild:
+  oggvorbis Cleanup
+
+  24 Dec 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -xine-lib-1.1.0-r5.ebuild:
+  Drop version 1.1.0-r5.
+
+  24 Dec 2005; Bryan Østergaard <kloeri@gentoo.org
+  xine-lib-1.1.1-r2.ebuild:
+  Stable on alpha + ia64, bug 115849.
+
+  20 Dec 2005; Mark Loeser <halcy0n@gentoo.org> xine-lib-1.1.1-r2.ebuild:
+  Stable on x86; bug #115849
+
+  19 Dec 2005; Michael Hanselmann <hansmi@gentoo.org>
+  xine-lib-1.1.1-r2.ebuild:
+  Stable on hppa.
+
+  19 Dec 2005; Luis Medinas <metalgod@gentoo.org> xine-lib-1.1.1-r2.ebuild:
+  Stable on amd64. See bug #115849.
+
+  19 Dec 2005; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.1-r2.ebuild, xine-lib-1.1.1-r3.ebuild:
+  Bump patchsets to add a build-fix for sparc, and mark sparc stable as per
+  bug #115849 on gustavoz's behalf.
+
+  18 Dec 2005; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.1-r3.ebuild:
+  Don't use digilander, use Gentoo's mirror instead.
+
+  17 Dec 2005; Michael Hanselmann <hansmi@gentoo.org>
+  xine-lib-1.1.1-r2.ebuild:
+  Stable on ppc. See bug #115849.
+
+  17 Dec 2005; Markus Rothe <corsair@gentoo.org> xine-lib-1.1.1-r2.ebuild:
+  Stable on ppc64; bug #115849
+
+  17 Dec 2005; Luca Barbato <lu_zero@gentoo.org> xine-lib-1_rc8-r2.ebuild:
+  Cleanup
+
+  16 Dec 2005; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.1-r3.ebuild:
+  Add patch to build fine with latest ffmpeg also when failing because of
+  toolchain.
+
+*xine-lib-1.1.1-r3 (16 Dec 2005)
+*xine-lib-1.1.1-r2 (16 Dec 2005)
+
+  16 Dec 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/CVE-2005-4048.patch, -xine-lib-1.1.0-r7.ebuild,
+  -xine-lib-1.1.1.ebuild, -xine-lib-1.1.1-r1.ebuild,
+  +xine-lib-1.1.1-r2.ebuild, +xine-lib-1.1.1-r3.ebuild:
+  Added patch to fix ffmpeg problems, -r2 will always use internal ffmpeg, -r3
+  will use the external if +ffmpeg is used. Don't force to not strip, as it
+  seems to work fine anyway.
+
+  29 Nov 2005; Jason Wever <weeve@gentoo.org> xine-lib-1.1.1-r1.ebuild:
+  Added ~sparc keyword wrt bug #113107.
+
+  23 Nov 2005; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.1-r1.ebuild:
+  Update the patchset, disable win32codecs entirely when not requested. Fix
+  building on FreeBSD.
+
+  22 Nov 2005; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.0.1-r4.ebuild, xine-lib-1.1.0.ebuild, xine-lib-1.1.0-r5.ebuild,
+  xine-lib-1.1.0-r7.ebuild, xine-lib-1.1.1.ebuild, xine-lib-1.1.1-r1.ebuild:
+  Use mirror://gentoo/ for patchsets.
+
+  22 Nov 2005; Luca Barbato <lu_zero@gentoo.org> xine-lib-1.1.1-r1.ebuild:
+  Marked ~ppc
+
+  22 Nov 2005; Chris White <chriswhite@gentoo.org> xine-lib-1.1.1-r1.ebuild:
+  Marked ~x86 xine-lib-1.1.1-r1 for bug #113107.
+
+  21 Nov 2005; Markus Rothe <corsair@gentoo.org> xine-lib-1.1.1-r1.ebuild:
+  Added ~ppc64 keyword; bug #113107
+
+  21 Nov 2005; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.1-r1.ebuild:
+  Add patch to replace -Os to -O2 to try to fix bug #113159.
+
+  21 Nov 2005; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.1-r1.ebuild:
+  Added debug useflag as per bug #112980.
+
+  21 Nov 2005; Herbie Hopkins <herbs@gentoo.org> xine-lib-1.1.1-r1.ebuild:
+  Marked ~amd64 wrt bug #113107.
+
+  21 Nov 2005; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.1-r1.ebuild:
+  Fix dep as per bug #113125. Repoman let this go :|
+
+  20 Nov 2005; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.1-r1.ebuild:
+  Re-state ffmpeg dependency as I forgot to re-add it.
+
+*xine-lib-1.1.1-r1 (20 Nov 2005)
+
+  20 Nov 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +xine-lib-1.1.1-r1.ebuild:
+  New version with ffmpeg support, and asf dependant on asf useflag (allows to
+  play audio of wma/wmv files using ffmpeg on non-x86 arches).
+
+*xine-lib-1.1.1 (15 Nov 2005)
+
+  15 Nov 2005; Diego Pettenò <flameeyes@gentoo.org> +xine-lib-1.1.1.ebuild:
+  Updated to latest upstream version. ffmpeg useflag is disabled until a newer
+  snapshot of ffmpeg is available, use the internal copy in the mean time.
+
+*xine-lib-1.1.0-r7 (14 Nov 2005)
+
+  14 Nov 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -xine-lib-1.1.0-r6.ebuild, +xine-lib-1.1.0-r7.ebuild:
+  Append LFS flags, as they seems to be needed for some files that does not
+  include config.h as they should. Could fix problems people were having after
+  removing optimisations.
+
+  31 Oct 2005; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1_rc8-r2.ebuild:
+  Don't install INSTALL file.
+
+  14 Oct 2005; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.0-r6.ebuild:
+  Different way to handle XvMC libraries: if more than one support is
+  requested, don't enable xvmc at all, don't die.
+
+  11 Oct 2005; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.0-r6.ebuild:
+  Don't try to use ffmpeg to decode mp3s if mad is not present, sounds like a
+  bad idea at the moment. Might solve the flac problems that someone is
+  having, or might not.
+
+  09 Oct 2005; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.0.1-r4.ebuild, xine-lib-1.1.0-r5.ebuild,
+  xine-lib-1.1.0-r6.ebuild:
+  Re-fix the virtual/os-headers as per bug #108074, the security fixes were
+  out-of-sync.
+
+*xine-lib-1.1.0-r6 (08 Oct 2005)
+*xine-lib-1.1.0-r5 (08 Oct 2005)
+*xine-lib-1.0.1-r4 (08 Oct 2005)
+*xine-lib-1_rc8-r2 (08 Oct 2005)
+
+  08 Oct 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/xine-lib-formatstring.patch, -xine-lib-1_rc8-r1.ebuild,
+  +xine-lib-1_rc8-r2.ebuild, -xine-lib-1.0-r2.ebuild,
+  -xine-lib-1.0.1-r3.ebuild, +xine-lib-1.0.1-r4.ebuild,
+  -xine-lib-1.0.2.ebuild, -xine-lib-1.1.0-r3.ebuild,
+  -xine-lib-1.1.0-r4.ebuild, +xine-lib-1.1.0-r5.ebuild,
+  +xine-lib-1.1.0-r6.ebuild:
+  Added patch wrt #107854.
+
+  04 Oct 2005; Hardave Riar <hardave@gentoo.org> xine-lib-1.1.0.ebuild:
+  Keyworded ~mips.
+
+  04 Oct 2005; Diego Pettenò <flameeyes@gentoo.org> xine-lib-1.0-r2.ebuild,
+  xine-lib-1.0.1-r3.ebuild, xine-lib-1.0.2.ebuild, xine-lib-1.1.0.ebuild,
+  xine-lib-1.1.0-r3.ebuild, xine-lib-1.1.0-r4.ebuild:
+  Change linux-headers to virtual/os-headers for v4l dependency. Fixes bug
+  #108074.
+
+  14 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.0-r4.ebuild:
+  Fix dependencies for modular Xorg.
+
+  13 Sep 2005; Aron Griffis <agriffis@gentoo.org> xine-lib-1.1.0.ebuild:
+  Mark 1.1.0 stable on alpha
+
+  11 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.0-r4.ebuild:
+  Added patch to compile on x86 with GCC4. Closes #104966.
+
+*xine-lib-1.1.0-r4 (08 Sep 2005)
+
+  08 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +xine-lib-1.1.0-r4.ebuild:
+  Added new revision with ffmpeg useflag to enable external ffmpeg as it was
+  done for 1.0.1. Dropped ~hppa and ~arm keywords as they don't have the
+  latest ffmpeg version that is needed.
+
+  05 Sep 2005; Olivier Crête <tester@gentoo.org> xine-lib-1.1.0-r3.ebuild:
+  Added strip-flags -momit-leaf-frame-pointer, see bug #104189
+
+  05 Sep 2005; Markus Rothe <corsair@gentoo.org> xine-lib-1.1.0.ebuild:
+  Stable on ppc64
+
+  05 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> xine-lib-1.0-r2.ebuild,
+  xine-lib-1.0.1-r3.ebuild, xine-lib-1.0.2.ebuild, xine-lib-1.1.0.ebuild,
+  xine-lib-1.1.0-r3.ebuild:
+  Call elibtoolize after all autotool support is rebuilt.
+
+*xine-lib-1.1.0-r3 (03 Sep 2005)
+
+  03 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -xine-lib-1.1.0-r2.ebuild, +xine-lib-1.1.0-r3.ebuild:
+  Added patch to fix internal faad in xine-lib. Thanks to Dan Doel in bug
+  #102775.
+
+  02 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Taking direct maintainership.
+
+  02 Sep 2005; Stefan Briesenick <sbriesen@gentoo.org>
+  xine-lib-1.1.0-r2.ebuild:
+  filter -fforce-addr on x86, since it breaks ffmpeg module.
+
+  02 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.0-r2.ebuild:
+  Cleanup of eautoreconf call to use the new style AT_M4DIR variable. Use at
+  least -O2 on x86 to build. Fix xvmc library name missing, thanks to Torsten
+  Tetteroo in bug #104600.
+
+  30 Aug 2005; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.0-r2.ebuild:
+  On x86 we need to force a few more flags. Added a workaround section for it
+  and a warning about the unusable debug information caused by
+  -fomit-frame-pointer.
+
+  29 Aug 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -xine-lib-1_rc6-r2.ebuild, xine-lib-1.1.0-r2.ebuild:
+  Removed 1_rc6-r2 ebuild now that sparc has a better stable.
+
+*xine-lib-1.1.0-r2 (29 Aug 2005)
+
+  29 Aug 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -xine-lib-1.1.0-r1.ebuild, +xine-lib-1.1.0-r2.ebuild:
+  Added patch to avoid adding extra cflags if user doesn't provide them.
+  Removed cflags filtering, as now it should be less picky with them (and most
+  of them was related to rc versions). Removed -r1 as that seemed to crash
+  pretty badly with some DVDs. With this version it should be possible to have
+  useful backtraces, too.
+
+  24 Aug 2005; Aron Griffis <agriffis@gentoo.org> xine-lib-1.1.0.ebuild:
+  stable on ia64
+
+  24 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> xine-lib-1.1.0.ebuild:
+  Stable on sparc wrt #98805 and others
+
+  24 Aug 2005; Aron Griffis <agriffis@gentoo.org> xine-lib-1.0.1-r3.ebuild:
+  stable on ia64
+
+  18 Aug 2005; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.1.0-r1.ebuild:
+  Added patch to let sdl support compile on FreeBSD.
+
+*xine-lib-1.1.0-r1 (18 Aug 2005)
+
+  18 Aug 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +xine-lib-1.1.0-r1.ebuild:
+  New patch to use external libraries for a52, mad and dts and make them
+  optional. Xine built with -mad now will not play mp3s. Ebuild cleanup.
+
+  13 Aug 2005; Diego Pettenò <flameeyes@gentoo.org> xine-lib-1.0-r2.ebuild,
+  xine-lib-1.0.1-r3.ebuild, xine-lib-1.0.2.ebuild, xine-lib-1.1.0.ebuild:
+  Added use_enable gnome that was missing. Thanks to Petteri Räty in bug
+  #102005.
+
+  07 Aug 2005; Diego Pettenò <flameeyes@gentoo.org> xine-lib-1.1.0.ebuild:
+  Updated 02_all_pic.patch for hardened toolchain.
+
+  05 Aug 2005; Diego Pettenò <flameeyes@gentoo.org> xine-lib-1.1.0.ebuild:
+  Updated dependencies (dropped libpng dependency, added imagemagick with
+  imagemagick useflag). Removed dataflow.dia from docs as is present no more.
+  Use tc-arch to get the local architecture (fix for G/FBSD). Get rid of [ ]
+  in favour of [[ ]].
+
+  31 Jul 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -xine-lib-1.0-r3.ebuild, -xine-lib-1.0-r4.ebuild,
+  -xine-lib-1.0.1-r1.ebuild, -xine-lib-1.0.1-r2.ebuild:
+  Removed old versions.
+
+  30 Jul 2005; Diego Pettenò <flameeyes@gentoo.org> xine-lib-1.1.0.ebuild:
+  Exclude two fbsd patches that are going to be dropped in the next patchset.
+
+  28 Jul 2005; Diego Pettenò <flameeyes@gentoo.org> xine-lib-1.1.0.ebuild:
+  Updated patches for last version, removed unused patches, added patch for
+  Gentoo/FreeBSD compatibility.
+
+  27 Jul 2005; Diego Pettenò <flameeyes@gentoo.org> xine-lib-1.1.0.ebuild:
+  Exclude vidix patch as per bug #100434.
+
+*xine-lib-1.1.0 (26 Jul 2005)
+
+  26 Jul 2005; Diego Pettenò <flameeyes@gentoo.org> +xine-lib-1.1.0.ebuild:
+  Added upstrea 1.1.0 version, external FFMPEG disabled as it needs a newer
+  version than the snapshot we have.
+
+*xine-lib-1.0.2 (26 Jul 2005)
+
+  26 Jul 2005; Diego Pettenò <flameeyes@gentoo.org> +xine-lib-1.0.2.ebuild:
+  New upstream version (1.0.2).
+
+  16 Jul 2005; Joseph Jezak <josejx@gentoo.org> xine-lib-1.0.1-r3.ebuild:
+  Marked ppc stable for bug #98805.
+
+  13 Jul 2005; Markus Rothe <corsair@gentoo.org> xine-lib-1.0.1-r3.ebuild:
+  Stable on ppc64 (bug #98805)
+
+  12 Jul 2005; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.0.1-r3.ebuild:
+  Marked stable on amd64.
+
+  01 Jul 2005; Sven Wegener <swegener@gentoo.org> xine-lib-1_rc6-r2.ebuild,
+  xine-lib-1_rc8-r1.ebuild:
+  QA: Clean up the amd64? ( X? ( ) ) dependencies.
+
+*xine-lib-1.0.1-r3 (29 May 2005)
+
+  29 May 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +xine-lib-1.0.1-r3.ebuild:
+  New revision, with patch to fix 64-bit byteswapping on non-x86 arches.
+
+*xine-lib-1.0.1-r2 (26 May 2005)
+
+  26 May 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +xine-lib-1.0.1-r2.ebuild:
+  New revision with FreeBSD's ports patches (for compatibility with
+  Gentoo/FreeBSD) and external a52dec and libmad (via useflags).
+
+  15 May 2005; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.0.1-r1.ebuild:
+  Cleanup of ebuild: using $() syntax for command expansion; better check for
+  gcc 3.4 or better (consider gcc 4).
+
+  15 May 2005; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1_rc6-r2.ebuild, xine-lib-1_rc8-r1.ebuild,
+  xine-lib-1.0-r2.ebuild, xine-lib-1.0-r3.ebuild, xine-lib-1.0-r4.ebuild,
+  xine-lib-1.0.1-r1.ebuild:
+  Moved to toolchain-funcs eclass.
+
+  09 May 2005; Aron Griffis <agriffis@gentoo.org> xine-lib-1.0-r2.ebuild:
+  stable on ia64
+
+  07 May 2005; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.0.1-r1.ebuild:
+  Add patch to fix vidix compilation with gcc4. Fixes #90868.
+
+  30 Apr 2005; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1.0.1-r1.ebuild:
+  Make xine-lib depend on fame just for dxr3 support.
+
+  29 Apr 2005; Diego Pettenò <flameeyes@gentoo.org>
+  xine-lib-1_rc6-r2.ebuild, xine-lib-1_rc8-r1.ebuild,
+  xine-lib-1.0-r2.ebuild, xine-lib-1.0-r3.ebuild, xine-lib-1.0-r4.ebuild,
+  xine-lib-1.0.1-r1.ebuild:
+  Fixed patchset urls.
+
+  29 Apr 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -files/protect-CFLAGS.patch-1_rc6,
+  -files/xine-lib-1_rc6-configure-sparc.patch,
+  -files/xine-lib-1_rc6-mmx.patch, -files/xine-lib-1_rc6-2.6.patch,
+  -files/xine-lib-1_rc6-pic.patch, -files/xine-lib-1_rc7-2.6.patch,
+  -files/xine-lib-1_rc7-configure-sparc.patch,
+  -files/xine-lib-1_rc7-mmx.patch, -files/xine-lib-1_rc7-pic.patch,
+  -files/xine-lib-1.0-wma.patch, -files/xine-lib-1_rc6-XSA-2004-8.patch,
+  -files/xine-lib-1_rc8-configure.ac.patch,
+  -files/xine-lib-XSA-2004-8.patch, -files/djb_demux_aiff.patch,
+  -files/xine-lib-configure.ac.patch,
+  -files/xine-lib-configure-checks.patch,
+  -files/xine-lib-configure-xvmc-header.patch, -files/xine-lib-gcc4.patch,
+  -files/xine-lib-hardened-mmx.patch, -files/xine-lib-x11.patch,
+  xine-lib-1_rc6-r2.ebuild, xine-lib-1_rc8-r1.ebuild,
+  xine-lib-1.0-r2.ebuild, xine-lib-1.0-r3.ebuild, xine-lib-1.0-r4.ebuild:
+  Removed all the patches from FILESDIR and moved them on patch tarballs.
+
+*xine-lib-1.0.1-r1 (29 Apr 2005)
+
+  29 Apr 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -files/xine-lib-1.0.1-configurebis.patch, -xine-lib-1.0.1.ebuild,
+  +xine-lib-1.0.1-r1.ebuild:
+  Added a patch to fix that XvMC thing which got more b0rked with 1.0.1 
+  release, fixes #90776. Moved patches on an external tarball without 
+  having to have them in FILESDIR.
+
+  26 Apr 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -files/xine-lib-0.9.12-r2-directfb.patch, -files/xineconfig.patch-0.9.13,
+  -files/xine-lib-0.9.13-kxine.patch, -files/protect-CFLAGS.patch-1_rc2,
+  -files/protect-CFLAGS.patch-1_rc3, -files/protect-CFLAGS.patch-1_rc4,
+  -files/protect-CFLAGS.patch-1_rc5-r1,
+  -files/xine-lib-1-rc4-sparc_missing_include.patch,
+  -files/xine-lib-1_rc5-configure-sparc.patch,
+  -files/xine-lib-1_rc5-vcd_overflow.patch,
+  -files/xine-lib-1_rc6-ffmpeg.patch,
+  -files/xine-lib-1rc4-libtool1.5.6.shrext_cmds.patch,
+  -files/xine-lib-2.6.patch, -files/configure-64bit-define.patch,
+  -files/xine-lib-configure.patch, -files/xine-lib-disable-directfb.patch,
+  -files/xine-lib-gcc34.patch:
+  Removed unused and unneeded files in FILESDIR.
+
+  26 Apr 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/xine-lib-1.0.1-configurebis.patch, -xine-lib-1_rc6-r1.ebuild,
+  -xine-lib-1.0.ebuild, -xine-lib-1.0-r1.ebuild, xine-lib-1.0.1.ebuild:
+  Added incremental patch to fix my wrong configure patch, fixes #90525.
+  Removed old vulnerable versions a part from rc8-r1.
+
+  26 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  xine-lib-1_rc6-r2.ebuild:
+  Stable on sparc wrt #89976
+
+*xine-lib-1.0.1 (26 Apr 2005)
+
+  26 Apr 2005; Diego Pettenò <flameeyes@gentoo.org> +xine-lib-1.0.1.ebuild:
+  Added new upstream version 1.0.1, with new configure patch. Dropped patches
+  applied upstream. Made speex useflag be honoured.
+
+*xine-lib-1_rc6-r2 (25 Apr 2005)
+
+  25 Apr 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/xine-lib-1_rc6-XSA-2004-8.patch, +xine-lib-1_rc6-r2.ebuild:
+  Backported XSA-2004-8 patch to 1_rc6 as 1.0 doesn't work on sparc.
+
+  25 Apr 2005; Martin Schlemmer <azarah@gentoo.org>
+  files/xine-lib-gcc4.patch:
+  Add another hunk required to build with gcc4.
+
+*xine-lib-1.0-r4 (24 Apr 2005)
+
+  24 Apr 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/xine-lib-1.0-wma.patch, +xine-lib-1.0-r4.ebuild:
+  Added vcd useflag which adds dependency on vcdimager as it's needed to 
+  view vcds. Fixes #90176.
+  Fixed location of documentation, now everything is installed in the 
+  right docdir and /usr/share/doc/xine is gone.
+  Added patch to support wma lossless fileformat (using win32codecs). Fixes
+  #90086.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  xine-lib-1.0-r2.ebuild:
+  Stable on hppa.
+
+  24 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> xine-lib-1.0-r2.ebuild:
+  Stable on alpha.
+
+  24 Apr 2005; Markus Rothe <corsair@gentoo.org> xine-lib-1.0-r2.ebuild:
+  Stable on ppc64; bug #89976
+
+  23 Apr 2005; Diego Pettenò <flameeyes@gentoo.org>
+  files/xine-lib-gcc4.patch:
+  Fixed patch for gcc4 with a bit better pointer arithmetic.
+
+  23 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> xine-lib-1.0-r2.ebuild:
+  stable on x86 wrt #89976
+
+  22 Apr 2005; Simon Stelling <blubb@gentoo.org> xine-lib-1.0-r2.ebuild:
+  stable on amd64 wrt bug 89976
+
+  22 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  xine-lib-1.0-r2.ebuild:
+  Stable on ppc.
+
+*xine-lib-1.0-r3 (22 Apr 2005)
+
+  22 Apr 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/xine-lib-gcc4.patch, +xine-lib-1.0-r3.ebuild:
+  Added new revision with patch to compile with GCC 4.0.0, fixes #89935.
+  Moving to -r3 as -r2 is a stable target for now.
+
+*xine-lib-1.0-r2 (21 Apr 2005)
+
+  21 Apr 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/xine-lib-XSA-2004-8.patch, +xine-lib-1.0-r2.ebuild:
+  Added new revision with security fix.
+
+  13 Apr 2005; Luca Barbato <lu_zero@gentoo.org> xine-lib-1.0-r1.ebuild:
+  useflag oggvorbis deprecated
+
+*xine-lib-1.0-r1 (13 Apr 2005)
+
+  13 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  +files/xine-lib-configure-checks.patch,
+  +files/xine-lib-configure-xvmc-header.patch, +xine-lib-1.0-r1.ebuild:
+  added 2 patches which were provided Diego Pettenò
+  <dgp85@users.sourceforge.net> who seems to be busy as a bee, like always.
+  fixes #88869
+
+  11 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> metadata.xml,
+  xine-lib-1.0.ebuild:
+  corrected if syntax, fixes #88551. updated maintainer information, chriswhite
+  is retired.
+
+  28 Mar 2005; Chris White <chriswhite@gentoo.org> xine-lib-1.0.ebuild:
+  Fixed the pic logic that was breaking lots of stuff.
+
+  17 Mar 2005; Sven Wegener <swegener@gentoo.org> xine-lib-1.0.ebuild:
+  Fixed invalid atoms in *DEPEND.
+
+  17 Mar 2005; Chris White <chriswhite@gentoo.org> xine-lib-1.0.ebuild:
+  Specifically targeted latest ffmpeg as dep target. Regression of ppc64.
+  dostrow and corsair are aware of this.
+
+  01 Mar 2005; Chris White <chriswhite@gentoo.org> xine-lib-1.0.ebuild:
+  Fixed bug #82571.  Also added in external ffmpeg support.
+
+  17 Feb 2005; Markus Rothe <corsair@gentoo.org> xine-lib-1.0.ebuild:
+  Stable on ppc64
+
+  08 Feb 2005; Chris White <chriswhite@gentoo.org> xine-lib-1.0.ebuild:
+  Fixed bug #76090 (aalib and libcaca hard links).
+
+  08 Feb 2005; Chris White <chriswhite@gentoo.org> xine-lib-1.0.ebuild,
+  xine-lib-1_rc6-r1.ebuild, xine-lib-1_rc8-r1.ebuild:
+  Removing symbol stripping as it appears to be the cause of a few ffmpeg
+  related packages crashing.
+
+  15 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> xine-lib-1.0.ebuild,
+  xine-lib-1_rc6-r1.ebuild, xine-lib-1_rc8-r1.ebuild:
+  changed X dependency to virtual/x11. fixes bug #78046.
+
+*xine-lib-1_rc8-r1 (07 Jan 2005)
+
+  07 Jan 2005; Chris White <chriswhite@gentoo.org> xine-lib-1_rc8-r1.ebuild:
+  xv support is patched in xine-lib, and it no longer requires the use flag.
+  Removing that as well as the logic, as the logic breaks stuff.
+
+  06 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  -xine-lib-1_rc5-r3.ebuild, -xine-lib-1_rc6.ebuild, -xine-lib-1_rc7.ebuild,
+  -xine-lib-1_rc8.ebuild:
+  Purging insecure versions from the tree.
+
+  05 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  xine-lib-1_rc6-r1.ebuild:
+  Stable sparc for security fix.
+
+*xine-lib-1_rc8 (05 Jan 2005)
+
+  05 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  xine-lib-1.0.ebuild, +xine-lib-1_rc6-r1.ebuild, xine-lib-1_rc6.ebuild,
+  xine-lib-1_rc7.ebuild, xine-lib-1_rc8.ebuild:
+  Add security fix to a 1_rc6 release dor sparc since we're having problems on
+  later versions. Not stable as I haven't been able to test it yet. Removed
+  IUSE=pic for conditionally applying the pic fix as it should always be
+  applied.

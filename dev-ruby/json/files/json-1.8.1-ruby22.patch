@@ -1,0 +1,17 @@
+Fix compilation issue with ruby22.
+
+See https://github.com/flori/json/issues/229
+
+Taken from the ruby-core changes.
+
+--- ext/json/ext/fbuffer/fbuffer.h.orig	2014-12-27 21:27:31.701991610 +0100
++++ ext/json/ext/fbuffer/fbuffer.h	2014-12-27 21:28:11.252956858 +0100
+@@ -172,7 +172,7 @@
+ 
+ static VALUE fbuffer_to_s(FBuffer *fb)
+ {
+-    VALUE result = rb_str_new(FBUFFER_PAIR(fb));
++    VALUE result = rb_str_new(FBUFFER_PTR(fb), FBUFFER_LEN(fb));
+     fbuffer_free(fb);
+     FORCE_UTF8(result);
+     return result;

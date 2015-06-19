@@ -1,0 +1,26 @@
+From 6a17bb8523c4c7810bf7797371df22cfb259f7a7 Mon Sep 17 00:00:00 2001
+From: MATSUU Takuto <matsuu@gentoo.org>
+Date: Sat, 16 May 2009 07:01:53 +0900
+Subject: [PATCH] Use the standard autoconf $docdir variable.
+
+--- a/extras/Makefile.am
++++ b/extras/Makefile.am
+@@ -1,6 +1,5 @@
+ 
+-docdir = $(datadir)/doc/glusterfs/
+-EditorModedir = $(docdir)/
++EditorModedir = $(docdir)
+ EditorMode_DATA = glusterfs-mode.el glusterfs.vim
+ 
+ SUBDIRS = init.d benchmarking
+--- a/extras/benchmarking/Makefile.am
++++ b/extras/benchmarking/Makefile.am
+@@ -1,7 +1,5 @@
+ 
+-docdir = $(datadir)/doc/$(PACKAGE_NAME)/benchmarking
+-
+-benchmarkingdir = $(docdir)
++benchmarkingdir = $(docdir)/benchmarking
+ 
+ benchmarking_DATA = rdd.c glfs-bm.c README launch-script.sh local-script.sh
+ 

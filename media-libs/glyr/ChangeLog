@@ -1,0 +1,98 @@
+# ChangeLog for media-libs/glyr
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/glyr/ChangeLog,v 1.25 2014/04/22 13:52:31 ssuominen Exp $
+
+  22 Apr 2014; Samuli Suominen <ssuominen@gentoo.org> -glyr-1.0.1.ebuild:
+  old
+
+  20 Apr 2014; Agostino Sarubbo <ago@gentoo.org> glyr-1.0.5.ebuild:
+  Stable for x86, wrt bug #507432
+
+  20 Apr 2014; Agostino Sarubbo <ago@gentoo.org> glyr-1.0.5.ebuild:
+  Stable for amd64, wrt bug #507432
+
+*glyr-1.0.5 (02 Mar 2014)
+
+  02 Mar 2014; Samuli Suominen <ssuominen@gentoo.org> +glyr-1.0.5.ebuild:
+  Version bump.
+
+  02 Mar 2014; Samuli Suominen <ssuominen@gentoo.org> -glyr-1.0.0.ebuild:
+  old
+
+  28 Jan 2014; Agostino Sarubbo <ago@gentoo.org> glyr-1.0.1.ebuild:
+  Stable for x86, wrt bug #496018
+
+  19 Jan 2014; Pacho Ramos <pacho@gentoo.org> glyr-1.0.1.ebuild:
+  amd64 stable, bug 496018
+
+*glyr-1.0.1 (26 May 2013)
+
+  26 May 2013; Tim Harder <radhermit@gentoo.org> +glyr-1.0.1.ebuild:
+  Version bump.
+
+  16 Nov 2012; Samuli Suominen <ssuominen@gentoo.org> -glyr-0.9.9.ebuild:
+  old
+
+  14 Nov 2012; Andreas Schuerch <nativemad@gentoo.org> glyr-1.0.0.ebuild:
+  x86 stable, see bug 439144
+
+  24 Oct 2012; <ago@gentoo.org> glyr-1.0.0.ebuild:
+  Stable for amd64, wrt bug #439144
+
+*glyr-1.0.0 (25 Sep 2012)
+
+  25 Sep 2012; Tim Harder <radhermit@gentoo.org> +glyr-1.0.0.ebuild:
+  Version bump.
+
+  18 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> -glyr-0.9.5.ebuild:
+  old
+
+  18 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> glyr-0.9.9.ebuild:
+  amd64/x86 stable
+
+*glyr-0.9.9 (02 Jun 2012)
+
+  02 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> +glyr-0.9.9.ebuild:
+  Version bump.
+
+  22 May 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -glyr-0_pre20120109.ebuild:
+  old
+
+  22 May 2012; Jeff Horelick <jdhore@gentoo.org> glyr-0.9.5.ebuild:
+  marked x86 per bug 416233
+
+  20 May 2012; Agostino Sarubbo <ago@gentoo.org> glyr-0.9.5.ebuild:
+  Stable for amd64, wrt bug #416223
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> glyr-0_pre20120109.ebuild,
+  glyr-0.9.5.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*glyr-0.9.5 (15 Mar 2012)
+
+  15 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> +glyr-0.9.5.ebuild:
+  Version bump to first released tarball.
+
+  10 Feb 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -glyr-0_pre20111118.ebuild:
+  old
+
+  10 Feb 2012; Samuli Suominen <ssuominen@gentoo.org>
+  glyr-0_pre20120109.ebuild:
+  x86 stable wrt #401305
+
+  29 Jan 2012; Agostino Sarubbo <ago@gentoo.org> glyr-0_pre20120109.ebuild:
+  Stable for amd64, wrt bug #401305
+
+*glyr-0_pre20120109 (09 Jan 2012)
+
+  09 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +glyr-0_pre20120109.ebuild:
+  New snapshot (last upstream change was 2011-12-29)
+
+*glyr-0_pre20111118 (18 Nov 2011)
+
+  18 Nov 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +glyr-0_pre20111118.ebuild:
+  Initial commit.

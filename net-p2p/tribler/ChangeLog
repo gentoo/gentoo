@@ -1,0 +1,263 @@
+# ChangeLog for net-p2p/tribler
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/tribler/ChangeLog,v 1.56 2014/11/16 20:17:27 blueness Exp $
+
+*tribler-6.3.3-r1 (16 Nov 2014)
+
+  16 Nov 2014; Anthony G. Basile <blueness@gentoo.org> +tribler-6.3.3-r1.ebuild,
+  -tribler-6.3.3.ebuild:
+  Fix download urls
+
+  15 Sep 2014; Anthony G. Basile <blueness@gentoo.org> tribler-6.3.3.ebuild:
+  Fix bug #522862
+
+  13 Sep 2014; Anthony G. Basile <blueness@gentoo.org> tribler-6.3.3.ebuild:
+  Depend on dev-python/twisted-core.  Fixes bug #522694.
+
+*tribler-6.3.3 (13 Sep 2014)
+
+  13 Sep 2014; Anthony G. Basile <blueness@gentoo.org> +tribler-6.3.3.ebuild,
+  -tribler-6.3.1.ebuild:
+  Version bump, remove older unstable
+
+  09 Sep 2014; Anthony G. Basile <blueness@gentoo.org> -tribler-6.1.0.ebuild,
+  -tribler-6.2.0.ebuild:
+  Remove older unstable versions
+
+  09 Sep 2014; Anthony G. Basile <blueness@gentoo.org> tribler-6.3.1.ebuild:
+  Depend on openssl[-bindist] for elliptic crypto, bug #519706
+
+*tribler-6.3.1 (04 Sep 2014)
+
+  04 Sep 2014; Anthony G. Basile <blueness@gentoo.org> +tribler-6.3.1.ebuild:
+  Version bump
+
+  11 Aug 2013; Alexis Ballier <aballier@gentoo.org> tribler-6.0.3.ebuild,
+  tribler-6.1.0.ebuild, tribler-6.2.0.ebuild:
+  depend on ffmpeg:0
+
+*tribler-6.2.0 (02 Aug 2013)
+
+  02 Aug 2013; Anthony G. Basile <blueness@gentoo.org>
+  +files/tribler-6.2.0-fix-desktop.patch, +tribler-6.2.0.ebuild:
+  Version bump
+
+*tribler-6.1.0 (10 May 2013)
+
+  10 May 2013; Anthony G. Basile <blueness@gentoo.org>
+  +files/tribler-6.1.0-fix-desktop.patch, +tribler-6.1.0.ebuild:
+  Version bump, bug #469168
+
+  23 Mar 2013; Mike Frysinger <vapier@gentoo.org> tribler-6.0.3.ebuild:
+  Convert to unpacker eclass for .deb unpacking.
+
+  18 Feb 2013; Anthony G. Basile <blueness@gentoo.org>
+  +files/tribler-fix-desktop.patch, -tribler-6.0.2.ebuild, tribler-6.0.3.ebuild:
+  Remove older stable; fix .desktop, bug #457582
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> tribler-6.0.3.ebuild:
+  Stable for x86, wrt bug #457460
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> tribler-6.0.3.ebuild:
+  Stable for amd64, wrt bug #457460
+
+  10 Jan 2013; Anthony G. Basile <blueness@gentoo.org> -tribler-5.9.22.ebuild:
+  Cleanup older stable version
+
+  14 Dec 2012; Agostino Sarubbo <ago@gentoo.org> tribler-6.0.2.ebuild:
+  Stable for x86, wrt bug #446520
+
+  12 Dec 2012; Agostino Sarubbo <ago@gentoo.org> tribler-6.0.2.ebuild:
+  Stable for amd64, wrt bug #446526
+
+*tribler-6.0.3 (08 Dec 2012)
+
+  08 Dec 2012; Anthony G. Basile <blueness@gentoo.org> +tribler-6.0.3.ebuild,
+  -tribler-5.9.27.ebuild, -tribler-5.9.28.ebuild, -tribler-5.9.29.ebuild,
+  -tribler-5.9.30.ebuild, -tribler-6.0.0.ebuild, -tribler-6.0.1.ebuild:
+  Version bump, remove older unstable
+
+*tribler-6.0.2 (30 Oct 2012)
+
+  30 Oct 2012; Anthony G. Basile <blueness@gentoo.org> +tribler-6.0.2.ebuild:
+  Version bump
+
+*tribler-6.0.1 (18 Oct 2012)
+
+  18 Oct 2012; Anthony G. Basile <blueness@gentoo.org> +tribler-6.0.1.ebuild:
+  Version bump
+
+*tribler-6.0.0 (13 Oct 2012)
+
+  13 Oct 2012; Anthony G. Basile <blueness@gentoo.org> +tribler-6.0.0.ebuild:
+  Version bump
+
+*tribler-5.9.30 (13 Sep 2012)
+
+  13 Sep 2012; Anthony G. Basile <blueness@gentoo.org> +tribler-5.9.30.ebuild:
+  Version bump
+
+  07 Sep 2012; Johannes Huber <johu@gentoo.org> tribler-5.9.22.ebuild:
+  Stable for x86, wrt bug #432432
+
+*tribler-5.9.29 (29 Aug 2012)
+
+  29 Aug 2012; Anthony G. Basile <blueness@gentoo.org> +tribler-5.9.29.ebuild:
+  Version bump
+
+  24 Aug 2012; Agostino Sarubbo <ago@gentoo.org> tribler-5.9.22.ebuild:
+  Stable for amd64, wrt bug #432432
+
+*tribler-5.9.28 (23 Aug 2012)
+
+  23 Aug 2012; Anthony G. Basile <blueness@gentoo.org> +tribler-5.9.28.ebuild:
+  Version bump
+
+*tribler-5.9.27 (05 Aug 2012)
+
+  05 Aug 2012; Anthony G. Basile <blueness@gentoo.org> -tribler-5.9.26.ebuild,
+  +tribler-5.9.27.ebuild:
+  Version bump, remove older unstable
+
+*tribler-5.9.26 (03 Aug 2012)
+
+  03 Aug 2012; Anthony G. Basile <blueness@gentoo.org> -tribler-5.9.24.ebuild,
+  -tribler-5.9.25.ebuild, +tribler-5.9.26.ebuild:
+  Version bump and remove older unstable
+
+*tribler-5.9.25 (02 Aug 2012)
+
+  02 Aug 2012; Anthony G. Basile <blueness@gentoo.org> +tribler-5.9.25.ebuild:
+  Version bump
+
+*tribler-5.9.24 (31 Jul 2012)
+
+  31 Jul 2012; Anthony G. Basile <blueness@gentoo.org> +tribler-5.9.24.ebuild:
+  Version bump
+
+  21 Jul 2012; Anthony G. Basile <blueness@gentoo.org> tribler-5.9.22.ebuild:
+  Suppress QA for prebuilt binary, bug #427418
+
+*tribler-5.9.22 (19 Jul 2012)
+
+  19 Jul 2012; Anthony G. Basile <blueness@gentoo.org> -tribler-5.9.17.ebuild,
+  -tribler-5.9.18.ebuild, -tribler-5.9.19.ebuild, -tribler-5.9.21.ebuild,
+  +tribler-5.9.22.ebuild:
+  Version bump, removed older bad versions
+
+*tribler-5.9.21 (14 Jul 2012)
+
+  14 Jul 2012; Anthony G. Basile <blueness@gentoo.org> +tribler-5.9.21.ebuild:
+  Version bump
+
+  07 Jul 2012; Anthony G. Basile <blueness@gentoo.org> -tribler-5.5.24.ebuild,
+  -files/tribler-5.9.12-remove-garbage.patch, -tribler-5.9.13.ebuild,
+  -tribler-5.9.14.ebuild, -tribler-5.9.15.ebuild,
+  -files/tribler-fix-global-declarations.patch:
+  Clean out older unstable versions
+
+*tribler-5.9.19 (03 Jul 2012)
+
+  03 Jul 2012; Anthony G. Basile <blueness@gentoo.org> +tribler-5.9.19.ebuild:
+  Version bump
+
+*tribler-5.9.18 (29 Jun 2012)
+
+  29 Jun 2012; Anthony G. Basile <blueness@gentoo.org> +tribler-5.9.18.ebuild:
+  Version bump
+
+*tribler-5.9.17 (28 Jun 2012)
+
+  28 Jun 2012; Anthony G. Basile <blueness@gentoo.org> +tribler-5.9.17.ebuild:
+  Version bump, new dep on dev-python/netifaces
+
+*tribler-5.9.15 (09 Jun 2012)
+
+  09 Jun 2012; Anthony G. Basile <blueness@gentoo.org> +tribler-5.9.15.ebuild:
+  Version bump
+
+  07 Jun 2012; Anthony G. Basile <blueness@gentoo.org> -tribler-5.5.19.ebuild,
+  -tribler-5.5.20.ebuild, -tribler-5.5.21.ebuild, -tribler-5.5.23.ebuild,
+  -tribler-5.9.12.ebuild:
+  Remove older versions
+
+*tribler-5.9.14 (07 Jun 2012)
+
+  07 Jun 2012; Anthony G. Basile <blueness@gentoo.org> +tribler-5.9.14.ebuild:
+  Version bump
+
+*tribler-5.9.13 (05 Jun 2012)
+
+  05 Jun 2012; Anthony G. Basile <blueness@gentoo.org> +tribler-5.9.13.ebuild:
+  Version bump
+
+  04 Jun 2012; Anthony G. Basile <blueness@gentoo.org> tribler-5.9.12.ebuild:
+  Improve python dependency, bug #419339 again
+
+  04 Jun 2012; Anthony G. Basile <blueness@gentoo.org> tribler-5.9.12.ebuild:
+  RDEPEND <dev-lang/python-3 to prevent pulling in python-3, bug #419339
+
+*tribler-5.9.12 (02 Jun 2012)
+
+  02 Jun 2012; Anthony G. Basile <blueness@gentoo.org> +tribler-5.9.12.ebuild,
+  +files/tribler-5.9.12-fix-global-declarations.patch,
+  +files/tribler-5.9.12-remove-garbage.patch:
+  Version bump, bug #419163
+
+*tribler-5.5.24 (29 Mar 2012)
+
+  29 Mar 2012; Anthony G. Basile <blueness@gentoo.org> +tribler-5.5.24.ebuild:
+  Version bump
+
+*tribler-5.5.23 (16 Mar 2012)
+
+  16 Mar 2012; Anthony G. Basile <blueness@gentoo.org> +tribler-5.5.23.ebuild:
+  Version bump
+
+*tribler-5.5.21 (13 Mar 2012)
+
+  13 Mar 2012; Anthony G. Basile <blueness@gentoo.org> +tribler-5.5.21.ebuild:
+  Version bump
+
+*tribler-5.5.20 (03 Mar 2012)
+
+  03 Mar 2012; Anthony G. Basile <blueness@gentoo.org>
+  -tribler-5.5.10-r1.ebuild, -tribler-5.5.18.ebuild, +tribler-5.5.20.ebuild:
+  Version bump and remove older unstable
+
+*tribler-5.5.19 (01 Mar 2012)
+
+  01 Mar 2012; Anthony G. Basile <blueness@gentoo.org> +tribler-5.5.19.ebuild:
+  Version bump
+
+  28 Feb 2012; Anthony G. Basile <blueness@gentoo.org> -tribler-5.5.10.ebuild:
+  Remove older ebuild
+
+*tribler-5.5.18 (28 Feb 2012)
+
+  28 Feb 2012; Anthony G. Basile <blueness@gentoo.org> +tribler-5.5.18.ebuild:
+  Version bump with python2 only code, bug #406077
+
+  28 Feb 2012; Anthony G. Basile <blueness@gentoo.org>
+  files/tribler-log2homedir.patch:
+  Make log 2 home patch strictly python 2
+
+  14 Feb 2012; Anthony G. Basile <blueness@gentoo.org>
+  +files/tribler-fix-global-declarations.patch,
+  +files/tribler-log2homedir.patch:
+  Add missing patches
+
+*tribler-5.5.10-r1 (14 Feb 2012)
+
+  14 Feb 2012; Anthony G. Basile <blueness@gentoo.org>
+  +tribler-5.5.10-r1.ebuild:
+  Optimize .py's with python_mod_optimize, bug #179384
+
+  14 Feb 2012; Anthony G. Basile <blueness@gentoo.org> tribler-5.5.10.ebuild:
+  Add use dep on sqlite for python, bug #403505
+
+*tribler-5.5.10 (10 Feb 2012)
+
+  10 Feb 2012; Anthony G. Basile <blueness@gentoo.org> +tribler-5.5.10.ebuild,
+  +metadata.xml:
+  Initial commit

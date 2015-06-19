@@ -1,0 +1,15 @@
+diff -Nuar openstack-guest-agents-unix-1.39.0.orig/scripts/gentoo/nova-agent.in openstack-guest-agents-unix-1.39.0/scripts/gentoo/nova-agent.in
+--- openstack-guest-agents-unix-1.39.0.orig/scripts/gentoo/nova-agent.in	2013-12-31 02:02:57.000000000 -0800
++++ openstack-guest-agents-unix-1.39.0/scripts/gentoo/nova-agent.in	2014-06-21 17:20:01.527148493 -0700
+@@ -35,8 +35,9 @@
+ NOVA_PYTHONPATH="${reallibdir}/${NOVA_PYTHONPATH}"
+ NOVA_PYTHONPATH="${NOVA_PYTHONPATH}:${NOVA_PYTHONPATH}/site-packages"
+ 
+-if [ `which python > /dev/null 2>&1 ; echo $?` -eq 0 ]; then
+-  PYTHONPATH="$(python -c 'import sys; print ":".join(sys.path)')"
++PYTHON=python2
++if [ `which $PYTHON > /dev/null 2>&1 ; echo $?` -eq 0 ]; then
++  PYTHONPATH="$($PYTHON -c 'import sys; print ":".join(sys.path)')"
+ fi
+ export PYTHONPATH="$NOVA_PYTHONPATH:$PYTHONPATH"
+ export PYTHONHOME="$NOVA_PYTHONPATH:$PYTHONPATH"

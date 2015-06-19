@@ -1,0 +1,46 @@
+# ChangeLog for games-misc/funny-manpages
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/funny-manpages/ChangeLog,v 1.12 2015/02/05 17:53:36 tupone Exp $
+
+  05 Feb 2015; Tupone Alfredo <tupone@gentoo.org>
+  funny-manpages-1.3_rc5-r1.ebuild:
+  EAPI 5
+
+  20 Apr 2013; Ulrich Müller <ulm@gentoo.org>
+  funny-manpages-1.3_rc5-r1.ebuild:
+  Change LICENSE to "freedist", bug 465704.
+
+  19 Oct 2010; Mart Raudsepp <leio@gentoo.org>
+  funny-manpages-1.3_rc5-r1.ebuild:
+  Drop to ~mips
+
+  06 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  funny-manpages-1.3_rc5-r1.ebuild:
+  Stable on sparc wrt #169644
+
+*funny-manpages-1.3_rc5-r1 (03 Oct 2005)
+
+  03 Oct 2005; Mike Frysinger <vapier@gentoo.org>
+  -funny-manpages-1.3_rc5.ebuild, +funny-manpages-1.3_rc5-r1.ebuild:
+  Install all manpages into man6 to avoid clobbering the real manpages #107992.
+
+  20 Dec 2004; Dylan Carlson <absinthe@gentoo.org> :
+  Keywords amd64.
+
+  12 Nov 2004; Simon Stelling <blubb@gentoo.org>
+  funny-manpages-1.3_rc5.ebuild:
+  stable on amd64
+
+  11 Nov 2004; Guy Martin <gmsoft@gentoo.org> funny-manpages-1.3_rc5.ebuild:
+  Stable on hppa.
+
+*funny-manpages-1.3_rc5 (27 Mar 2004)
+
+  27 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  funny-manpages-1.3_rc5.ebuild:
+  update to debian patch -5; use mirror://
+
+*funny-manpages-1.3_rc4 (14 Dec 2002)
+
+  14 Dec 2002; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Paul Belt <gaarde@yahoo.com>.

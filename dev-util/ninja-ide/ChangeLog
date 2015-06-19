@@ -1,0 +1,111 @@
+# ChangeLog for dev-util/ninja-ide
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/ninja-ide/ChangeLog,v 1.26 2015/04/08 17:54:02 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> ninja-ide-2.1.1-r3.ebuild,
+  ninja-ide-2.1.1-r5.ebuild, ninja-ide-2.2.ebuild, ninja-ide-2.3.ebuild:
+  Drop old Python implementations
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> ninja-ide-2.1.1-r3.ebuild,
+  ninja-ide-2.1.1-r5.ebuild, ninja-ide-2.2.ebuild, ninja-ide-2.3.ebuild:
+  Clean up obsolete dependencies on virtual/python-argparse and virtual/python-
+  unittest2 (those packages were only required for <=python-2.6).
+
+  12 Sep 2013; Michał Górny <mgorny@gentoo.org> ninja-ide-2.1.1-r3.ebuild,
+  ninja-ide-2.1.1-r5.ebuild, ninja-ide-2.2.ebuild, ninja-ide-2.3.ebuild:
+  Remove dep on virtual/python-json. JSON is now built-in in all supported
+  implementations.
+
+  28 Aug 2013; Agostino Sarubbo <ago@gentoo.org> ninja-ide-2.3.ebuild:
+  Stable for x86, wrt bug #480790
+
+  22 Aug 2013; Julian Ospald <hasufell@gentoo.org> ninja-ide-2.2.ebuild:
+  drop python3 from here as well since autocompletion is broken with it
+
+  22 Aug 2013; Julian Ospald <hasufell@gentoo.org> ninja-ide-2.3.ebuild:
+  drop broken python versions wrt #480790
+
+  13 Aug 2013; Agostino Sarubbo <ago@gentoo.org> ninja-ide-2.3.ebuild:
+  Stable for amd64, wrt bug #480790
+
+*ninja-ide-2.3 (08 Jul 2013)
+
+  08 Jul 2013; Julian Ospald <hasufell@gentoo.org> +ninja-ide-2.3.ebuild,
+  +files/ninja-ide-2.3-python2_6.patch, +files/ninja-ide-2.3-syntax.patch:
+  version bump wrt #476176
+
+  04 Jul 2013; Agostino Sarubbo <ago@gentoo.org> ninja-ide-2.2.ebuild:
+  Stable for x86, wrt bug #467132
+
+  04 Jul 2013; Agostino Sarubbo <ago@gentoo.org> ninja-ide-2.2.ebuild:
+  Stable for amd64, wrt bug #467132
+
+  03 Jul 2013; Julian Ospald <hasufell@gentoo.org> ninja-ide-2.2.ebuild,
+  +files/ninja-ide-2.2-version.patch:
+  fix version wrt #471708
+
+  16 May 2013; Julian Ospald <hasufell@gentoo.org> ninja-ide-2.1.1-r5.ebuild:
+  amd64 stable wrt #467132
+
+  24 Apr 2013; Julian Ospald <hasufell@gentoo.org> ninja-ide-2.1.1-r3.ebuild,
+  ninja-ide-2.1.1-r5.ebuild:
+  fix deps
+
+*ninja-ide-2.2 (24 Apr 2013)
+
+  24 Apr 2013; Julian Ospald <hasufell@gentoo.org> +ninja-ide-2.2.ebuild,
+  +files/ninja-ide-2.2-python2_6.patch, +files/ninja-ide-2.2-syntax.patch:
+  version bump
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+*ninja-ide-2.1.1-r5 (12 Mar 2013)
+
+  12 Mar 2013; Julian Ospald <hasufell@gentoo.org> -ninja-ide-2.1.1-r4.ebuild,
+  +ninja-ide-2.1.1-r5.ebuild, files/ninja-ide-2.1.1-syntaxhighlighting.patch:
+  finally fix syntax highlighting
+
+  12 Mar 2013; Julian Ospald <hasufell@gentoo.org> ninja-ide-2.1.1-r4.ebuild:
+  update deps
+
+*ninja-ide-2.1.1-r4 (12 Mar 2013)
+
+  12 Mar 2013; Julian Ospald <hasufell@gentoo.org> +ninja-ide-2.1.1-r4.ebuild,
+  +files/ninja-ide-2.1.1-syntaxhighlighting.patch:
+  fix syntax highlighting wrt #460710
+
+*ninja-ide-2.1.1-r3 (22 Jan 2013)
+
+  22 Jan 2013; Julian Ospald <hasufell@gentoo.org> -ninja-ide-2.1.1-r1.ebuild,
+  -ninja-ide-2.1.1-r2.ebuild, +ninja-ide-2.1.1-r3.ebuild:
+  remove old, fix eclass inheritance and make a clean revbump
+
+  22 Jan 2013; Julian Ospald <hasufell@gentoo.org> ninja-ide-2.1.1-r2.ebuild:
+  meh, fix deps
+
+  06 Jan 2013; Julian Ospald <hasufell@gentoo.org> ninja-ide-2.1.1-r2.ebuild:
+  fix argparse dep
+
+*ninja-ide-2.1.1-r2 (06 Jan 2013)
+
+  06 Jan 2013; Julian Ospald <hasufell@gentoo.org> +ninja-ide-2.1.1-r2.ebuild:
+  revbump: migrate to distutils-r1
+
+  29 Oct 2012; Michał Górny <mgorny@gentoo.org> ninja-ide-2.1.1-r1.ebuild:
+  Use virtual for argparse.
+
+*ninja-ide-2.1.1-r1 (10 Oct 2012)
+
+  10 Oct 2012; Julian Ospald <hasufell@gentoo.org> -ninja-ide-2.1.1.ebuild,
+  +ninja-ide-2.1.1-r1.ebuild, files/ninja-ide-2.1.1-lang.patch:
+  add this awesome splash screen
+
+  09 Oct 2012; Julian Ospald <hasufell@gentoo.org> ninja-ide-2.1.1.ebuild:
+  improve desktop entry
+
+*ninja-ide-2.1.1 (09 Oct 2012)
+
+  09 Oct 2012; Julian Ospald <hasufell@gentoo.org> +ninja-ide-2.1.1.ebuild,
+  +files/ninja-ide-2.1.1-lang.patch, +metadata.xml:
+  initial import with Aaron Burnett wrt #436834

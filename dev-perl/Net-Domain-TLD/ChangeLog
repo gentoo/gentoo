@@ -1,0 +1,135 @@
+# ChangeLog for dev-perl/Net-Domain-TLD
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-Domain-TLD/ChangeLog,v 1.32 2015/04/01 22:44:43 dilfridge Exp $
+
+*Net-Domain-TLD-1.730.0 (01 Apr 2015)
+
+  01 Apr 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Net-Domain-TLD-1.730.0.ebuild:
+  Version bump
+
+*Net-Domain-TLD-1.690.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Net-Domain-TLD-1.690.0-r1.ebuild, -Net-Domain-TLD-1.690.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  31 Mar 2012; Torsten Veller <tove@gentoo.org> -Net-Domain-TLD-1.65.ebuild:
+  Cleanup
+
+  08 Mar 2012; Brent Baude <ranger@gentoo.org> Net-Domain-TLD-1.690.0.ebuild:
+  Marking Net-Domain-TLD-1.690.0 ppc64 for bug 391635
+
+  02 Feb 2012; Brent Baude <ranger@gentoo.org> Net-Domain-TLD-1.690.0.ebuild:
+  Marking Net-Domain-TLD-1.690.0 ppc for bug 391635
+
+  04 Dec 2011; Raúl Porcel <armin76@gentoo.org> Net-Domain-TLD-1.65.ebuild,
+  Net-Domain-TLD-1.690.0.ebuild:
+  Drop alpha/ia64/sparc keywords
+
+  04 Dec 2011; Markos Chandras <hwoarang@gentoo.org>
+  Net-Domain-TLD-1.690.0.ebuild:
+  Stable on amd64 wrt bug #391635
+
+  01 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  Net-Domain-TLD-1.690.0.ebuild:
+  x86 stable wrt bug #391635
+
+  30 Nov 2011; Jeroen Roovers <jer@gentoo.org> Net-Domain-TLD-1.690.0.ebuild:
+  Stable for HPPA (bug #391635).
+
+  29 Jul 2011; Torsten Veller <tove@gentoo.org> -Net-Domain-TLD-1.68.ebuild:
+  Cleanup
+
+*Net-Domain-TLD-1.690.0 (19 Apr 2011)
+
+  19 Apr 2011; Torsten Veller <tove@gentoo.org> +Net-Domain-TLD-1.690.0.ebuild:
+  Version bump
+
+  18 Sep 2009; Torsten Veller <tove@gentoo.org> Net-Domain-TLD-1.68.ebuild:
+  Fix typo: s/REPEND/RDEPEND/
+
+  30 Dec 2008; Torsten Veller <tove@gentoo.org> -Net-Domain-TLD-1.62.ebuild,
+  -Net-Domain-TLD-1.67.ebuild:
+  Cleanup
+
+*Net-Domain-TLD-1.68 (16 Dec 2008)
+
+  16 Dec 2008; Torsten Veller <tove@gentoo.org> +Net-Domain-TLD-1.68.ebuild:
+  Version bump
+
+*Net-Domain-TLD-1.67 (05 Oct 2008)
+
+  05 Oct 2008; Torsten Veller <tove@gentoo.org> +Net-Domain-TLD-1.67.ebuild:
+  Version bump
+
+  16 Apr 2007; Markus Rothe <corsair@gentoo.org> Net-Domain-TLD-1.65.ebuild:
+  Stable on ppc64
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org> Net-Domain-TLD-1.65.ebuild:
+  Stable on x86, bug #169152.
+
+  19 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  -Net-Domain-TLD-1.5.ebuild, Net-Domain-TLD-1.62.ebuild,
+  Net-Domain-TLD-1.65.ebuild:
+  Version bump, thanks seemant
+
+  16 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  Net-Domain-TLD-1.65.ebuild:
+  ppc stable
+
+  17 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Net-Domain-TLD-1.62.ebuild, Net-Domain-TLD-1.65.ebuild:
+  Marking amd64 stable
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Net-Domain-TLD-1.5.ebuild, Net-Domain-TLD-1.62.ebuild,
+  Net-Domain-TLD-1.65.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  19 Jul 2006; Bryan Østergaard <kloeri@gentoo.org>
+  Net-Domain-TLD-1.65.ebuild:
+  Stable on alpha.
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org>
+  Net-Domain-TLD-1.65.ebuild:
+  Mark 1.65 stable on ia64
+
+  29 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  Net-Domain-TLD-1.65.ebuild:
+  Stable on hppa
+
+  12 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  Net-Domain-TLD-1.65.ebuild:
+  Marking sparc stable
+
+*Net-Domain-TLD-1.65 (01 May 2006)
+
+  01 May 2006; <mcumming@gentoo.org> +Net-Domain-TLD-1.65.ebuild:
+  Version bump
+
+  13 Feb 2006; Stuart Longland <redhatter@gentoo.org>
+  Net-Domain-TLD-1.62.ebuild:
+  Marking dev-perl/Net-Domain-TLD-1.62 ~mips (dependancy of
+  dev-perl/Email-Valid) as per bug #108215
+
+  18 Jan 2006; <mcumming@gentoo.org> +metadata.xml:
+  Missing metadata
+
+  27 Nov 2005; Tom Gall <tgall@gentoo.org> Net-Domain-TLD-1.62.ebuild:
+  stable on ppc64
+
+*Net-Domain-TLD-1.62 (19 Nov 2005)
+
+  19 Nov 2005; <mcumming@gentoo.org> +Net-Domain-TLD-1.62.ebuild:
+  Version bump
+
+*Net-Domain-TLD-1.5 (18 Jul 2005)
+
+  18 Jul 2005; Michael Cummings <mcummings@gentoo.org>
+  +Net-Domain-TLD-1.5.ebuild:
+  Missing dep for Email-Valid - pure perl call to TLDs. Bug 99088

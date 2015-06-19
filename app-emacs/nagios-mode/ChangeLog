@@ -1,0 +1,20 @@
+# ChangeLog for app-emacs/nagios-mode
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/nagios-mode/ChangeLog,v 1.4 2012/03/28 03:51:12 naota Exp $
+
+  28 Mar 2012; Naohiro Aota <naota@gentoo.org> nagios-mode-0.3.ebuild:
+  Add ~x86-fbsd.
+
+  23 Oct 2011; Markus Meier <maekke@gentoo.org> nagios-mode-0.3.ebuild:
+  x86 stable, bug #387229
+
+  22 Oct 2011; Markos Chandras <hwoarang@gentoo.org> nagios-mode-0.3.ebuild:
+  Stable on amd64 wrt bug #387229
+
+*nagios-mode-0.3 (17 Jul 2011)
+
+  17 Jul 2011; Ulrich Mueller <ulm@gentoo.org> +files/50nagios-mode-gentoo.el,
+  +nagios-mode-0.3.ebuild, +metadata.xml:
+  Initial import, from Emacs overlay. Ebuild contributed by Michael Orlitzky
+  <michael@orlitzky.com> in bug 333753.
+

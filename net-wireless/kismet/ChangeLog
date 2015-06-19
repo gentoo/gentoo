@@ -1,0 +1,637 @@
+# ChangeLog for net-wireless/kismet
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/kismet/ChangeLog,v 1.144 2015/03/17 18:31:45 zerochaos Exp $
+
+*kismet-2013.03.1-r2 (17 Mar 2015)
+
+  17 Mar 2015; Rick Farina <zerochaos@gentoo.org> +files/ruby19_fixes.patch,
+  +files/update-kismet_shootout.patch, +kismet-2013.03.1-r2.ebuild,
+  -kismet-2011.03.2-r3.ebuild, -kismet-2013.03.1-r1.ebuild, kismet-9999.ebuild:
+  kismet, updates to fix ruby issues, and repoman issues
+
+  02 Nov 2014; Sven Vermeulen <swift@gentoo.org> kismet-2013.03.1-r1.ebuild,
+  kismet-9999.ebuild:
+  Remove sec-policy/selinux-* dependency from DEPEND but keep in RDEPEND (bug
+  #527698)
+
+  30 Oct 2014; Jeroen Roovers <jer@gentoo.org>
+  +files/kismet-2013.03.1-tinfo.patch, kismet-2013.03.1-r1.ebuild:
+  Fix building against sys-libs/ncurses[tinfo] (bug #490972).
+
+  06 Dec 2013; Sven Vermeulen <swift@gentoo.org> kismet-2011.03.2-r3.ebuild,
+  kismet-2013.03.1-r1.ebuild, kismet-9999.ebuild:
+  Adding dependency towards SELinux policy
+
+  26 Jun 2013; Agostino Sarubbo <ago@gentoo.org> kismet-2013.03.1-r1.ebuild:
+  Stable for arm, wrt bug #474292
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> kismet-2013.03.1-r1.ebuild:
+  Stable for amd64, wrt bug #474292
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> kismet-2013.03.1-r1.ebuild:
+  Stable for x86, wrt bug #474292
+
+  24 Jun 2013; Agostino Sarubbo <ago@gentoo.org> kismet-2013.03.1-r1.ebuild:
+  Stable for ppc, wrt bug #474292
+
+  10 May 2013; Rick Farina <zerochaos@gentoo.org> -kismet-2013.03.1.ebuild,
+  kismet-2013.03.1-r1.ebuild, kismet-9999.ebuild:
+  remove old ebuild and fix libpcap[netlink] for libpcap-1.4.0
+
+*kismet-2013.03.1-r1 (25 Apr 2013)
+
+  25 Apr 2013; Rick Farina <zerochaos@gentoo.org> +kismet-2013.03.1-r1.ebuild,
+  kismet-9999.ebuild:
+  adding sub slots to kismet for kismet-ubertooth
+
+  27 Mar 2013; Rick Farina <zerochaos@gentoo.org> kismet-2013.03.1.ebuild:
+  apologies, not sure why it built when I tested it, fixed S all is well
+
+*kismet-2013.03.1 (27 Mar 2013)
+
+  27 Mar 2013; Rick Farina <zerochaos@gentoo.org> +kismet-2013.03.1.ebuild:
+  new version of kismet, mostly a bugfix release but very worthwhile due to
+  changes in kernel and userspace wifi device handling
+
+  17 Mar 2013; Rick Farina <zerochaos@gentoo.org> kismet-9999.ebuild:
+  update in line with plugin structure changes
+
+  08 Feb 2013; Rick Farina <zerochaos@gentoo.org> kismet-2011.03.2-r3.ebuild,
+  kismet-9999.ebuild, metadata.xml:
+  fix deps due to failed libpcap libnl3 changes, fix metadata from cleanup
+
+  08 Feb 2013; Rick Farina <zerochaos@gentoo.org> -files/gcc-4.3.patch,
+  -files/kismet-2007.10.1-Makefile.in.patch, -files/kismet-2007.10.1-conf.d,
+  -files/kismet-2007.10.1-init.d, -files/kismet-2008.05.1-glibc-2.10.patch,
+  -kismet-2008.05.1.ebuild, -kismet-2011.03.2-r2.ebuild,
+  kismet-2011.03.2-r3.ebuild:
+  stablizing on arm and removing old ebuilds
+
+  08 Feb 2013; Rick Farina <zerochaos@gentoo.org> kismet-2011.03.2-r3.ebuild,
+  kismet-9999.ebuild:
+  adjust deps to prevent segfault when libpcap is built against libnl:1 and
+  kismet is built against libnl:3
+
+  18 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop mobile herd as talked in gentoo-dev ML
+
+  23 Jul 2012; Rick Farina <zerochaos@gentoo.org>
+  +files/kismet-2011.03.2-cflags-backport.patch, kismet-2011.03.2-r3.ebuild:
+  closing Bug 426766, making plugins respect cxxflags
+
+  06 Jul 2012; Rick Farina <zerochaos@gentoo.org> kismet-9999.ebuild:
+  fixing missing SRC_URI in live conditional
+
+  05 Jul 2012; Rick Farina <zerochaos@gentoo.org> kismet-9999.ebuild:
+  kismet development has officially switched to git, so we follow
+
+  03 Jul 2012; Rick Farina <zerochaos@gentoo.org> kismet-9999.ebuild:
+  simplfy bluez deps and turn dot15d4 off due to build failure
+
+  03 Jul 2012; Brent Baude <ranger@gentoo.org> kismet-2011.03.2-r3.ebuild:
+  Marking kismet-2011.03.2-r3 ppc for bug 420615
+
+  13 Jun 2012; Jeff Horelick <jdhore@gentoo.org> kismet-2011.03.2-r3.ebuild:
+  marked x86 per bug 420615
+
+  13 Jun 2012; Rick Farina <zerochaos@gentoo.org> kismet-2011.03.2-r3.ebuild,
+  kismet-9999.ebuild:
+  fix inherit lines, remove unneeded toolchain-funcs and add explicit inherits
+  for multilib and user
+
+*kismet-9999 (12 Jun 2012)
+
+  12 Jun 2012; Rick Farina <zerochaos@gentoo.org> +kismet-9999.ebuild,
+  metadata.xml:
+  add live ebuild for bleeding edge users
+
+  11 Jun 2012; Rick Farina <zerochaos@gentoo.org> metadata.xml:
+  fixing metadata to include my official info
+
+  11 Jun 2012; Agostino Sarubbo <ago@gentoo.org> kismet-2011.03.2-r3.ebuild:
+  Stable for amd64, wrt bug #420615
+
+  11 Jun 2012; Rick Farina <zerochaos@gentoo.org> -kismet-2010.01.1.ebuild,
+  metadata.xml:
+  -kismet-2010.01.1.ebuild remove obsolete version
+
+  11 Jun 2012; Rick Farina <zerochaos@gentoo.org> metadata.xml:
+  Updating metadata.xml to take maintainership
+
+*kismet-2011.03.2-r3 (11 Jun 2012)
+
+  11 Jun 2012; Steev Klimaszewski <steev@gentoo.org> -kismet-2007.10.1.ebuild,
+  -kismet-2010.01.1-r1.ebuild, -kismet-2011.03.2-r1.ebuild,
+  +kismet-2011.03.2-r3.ebuild, +files/use-hostname-by-default.patch:
+  Remove old versions. Add new revision with patch to use the hostname as the
+  kismet server name by default
+
+  22 May 2012; Samuli Suominen <ssuominen@gentoo.org>
+  kismet-2011.03.2-r1.ebuild, kismet-2011.03.2-r2.ebuild:
+  Use virtual/libusb instead of dev-libs/libusb.
+
+*kismet-2011.03.2-r2 (22 May 2012)
+
+  22 May 2012; Steev Klimaszewski <steev@gentoo.org>
+  +kismet-2011.03.2-r2.ebuild:
+  Revision bump, remove ncurses useflag in favor of client, to simplify ebuild.
+  Also no longer require linux-info eclass since the stable linux headers are
+  no longer impossible to build against.
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> kismet-2010.01.1.ebuild,
+  kismet-2010.01.1-r1.ebuild, kismet-2011.03.2-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*kismet-2011.03.2-r1 (21 Feb 2012)
+
+  21 Feb 2012; Steev Klimaszewsk <steev@gentoo.org>
+  +files/header_alignment_r3326.patch, -kismet-2011.03.2.ebuild,
+  +kismet-2011.03.2-r1.ebuild:
+  Remove kismest 2011.03.2 ebuild. Revbump to add a critical patch from svn.
+  Fix the bluez dependency issue.
+
+*kismet-2011.03.2 (17 Feb 2012)
+
+  17 Feb 2012; Steev Klimaszewsk <steev@gentoo.org>
+  +files/bluechanfix_r3184.patch, +kismet-2011.03.2.ebuild,
+  +files/kismet-console-scrolling-backport.patch, +files/makefile.patch,
+  +files/plugins-ldflags.patch, metadata.xml:
+  New Kismet release, courtesy of ZeroChaos of Pentoo. He's also offered to
+  proxy-maintain, so add him as proxy-maintainer, myself as committer.
+
+  27 Oct 2011; Jeroen Roovers <jer@gentoo.org> kismet-2010.01.1.ebuild,
+  kismet-2010.01.1-r1.ebuild:
+  Fix libnl dependency (bug #388657).
+
+*kismet-2010.01.1-r1 (15 Apr 2010)
+
+  15 Apr 2010; Steev Klimaszewski <steev@gentoo.org>
+  +kismet-2010.01.1-r1.ebuild:
+  kismet: Revbump, change the fperms line to pkg_preinst() because we have 
+  to change permissions after we change ownership otherwise we lose the 
+  setuid bit. Add ~arm keyword, tested on my cortex-a8.
+
+*kismet-2010.01.1 (14 Mar 2010)
+
+  14 Mar 2010; Ben de Groot <yngwin@gentoo.org> +kismet-2010.01.1.ebuild:
+  Version bump. Ebuild as provided by Davide Pesavento in bug 273825.
+
+  09 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
+  kismet-2008.05.1.ebuild, +files/kismet-2008.05.1-glibc-2.10.patch:
+  Fix building with GLIBC 2.10+ wrt #270845.
+
+  15 Apr 2009; Hanno Boeck <hanno@gentoo.org> kismet-2008.05.1.ebuild:
+  Add dbus use-flag.
+
+  12 Feb 2009; nixnut <nixnut@gentoo.org> kismet-2008.05.1.ebuild:
+  ppc stable #245565
+
+  08 Feb 2009; Markus Meier <maekke@gentoo.org> kismet-2008.05.1.ebuild:
+  amd64/x86 stable, bug #245565
+
+*kismet-2008.05.1 (11 Aug 2008)
+
+  11 Aug 2008; Raúl Porcel <armin76@gentoo.org> +files/gcc-4.3.patch,
+  -files/kismet-2006.04.1-conf.d, -files/kismet-2006.04.1-init.d,
+  -files/kismet-2007.01.1b-Makefile.in.patch,
+  -files/kismet-2007.01.1b-conf.d, -files/kismet-2007.01.1b-init.d,
+  +files/kismet.confd, +files/kismet.initd, -kismet-2006.04.1.ebuild,
+  -kismet-2007.01.1b.ebuild, +kismet-2008.05.1.ebuild:
+  Version bump wrt #225487, add gcc-4.3 patch, bug #217843
+
+  16 Mar 2008; Santiago M. Mola <coldwind@gentoo.org>
+  kismet-2007.10.1.ebuild:
+  amd64 stable wrt bug #204911
+
+  12 Mar 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Peter Johanson (latexer, #206688) from metadata.xml.
+
+  13 Jan 2008; nixnut <nixnut@gentoo.org> kismet-2007.10.1.ebuild:
+  Stable on ppc wrt bug 204911
+
+  09 Jan 2008; Markus Meier <maekke@gentoo.org> kismet-2007.10.1.ebuild:
+  x86 stable, bug #204911
+
+*kismet-2007.10.1 (25 Nov 2007)
+
+  25 Nov 2007; Dawid Węgliński <cla@gentoo.org>
+  +files/kismet-2007.10.1-Makefile.in.patch, +kismet-2007.10.1.ebuild:
+  Version bump, fixing bug #195077; thanks to Jukka Ruohonen <drear@iki.fi>
+  for patch
+
+  04 Nov 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing myself as the maintainer.
+
+  17 Mar 2007; Steve Dibb <beandog@gentoo.org> kismet-2007.01.1b.ebuild:
+  amd64 stable, bug 171053
+
+  17 Mar 2007; nixnut <nixnut@gentoo.org> kismet-2007.01.1b.ebuild:
+  Stable on ppc wrt bug 171053
+
+  15 Mar 2007; Raúl Porcel <armin76@gentoo.org> kismet-2007.01.1b.ebuild:
+  x86 stable wrt bug 171053
+
+  31 Jan 2007; Christian Heim <phreak@gentoo.org> kismet-2006.04.1.ebuild,
+  kismet-2007.01.1b.ebuild:
+  Prevent kismet from pre-stripping the binaries, thanks to Alec Warner for
+  the modified ebuild.
+
+*kismet-2007.01.1b (20 Jan 2007)
+
+  20 Jan 2007; Christian Heim <phreak@gentoo.org>
+  +files/kismet-2007.01.1b-Makefile.in.patch,
+  +files/kismet-2007.01.1b-conf.d, +files/kismet-2007.01.1b-init.d,
+  +kismet-2007.01.1b.ebuild:
+  Version bump (thanks to ChazeFroy <chazefroy at gmail.com> in #162394 for
+  reporting it).
+
+  14 Jan 2007; Christian Heim <phreak@gentoo.org> kismet-2006.04.1.ebuild:
+  Fixing the --with-linuxheaders line, to actually get the include dir right.
+
+  15 Oct 2006; Christian Heim <phreak@gentoo.org> kismet-2006.04.1.ebuild:
+  Fixing a typo (made by me when ripping of the gpsdrive stuff), thanks to
+  Chris Frage in #151440 for reporting this issue.
+
+  14 Oct 2006; Christian Heim <phreak@gentoo.org> kismet-2006.04.1.ebuild:
+  Removing USE=gps, removing the DEPEND on app-misc/gpsdrive, which is going
+  to get punted.
+
+  28 Jun 2006; Daniel Gryniewicz <dang@gentoo.org> kismet-2006.04.1.ebuild:
+  Marked stable on amd64 per bug#137976
+
+  26 Jun 2006; Henrik Brix Andersen <brix@gentoo.org>
+  -files/kismet-2005.08.1-acx100.patch, -files/kismet-2005.08.1-conf.d,
+  -files/kismet-2005.08.1-init.d, -kismet-2005.08.1-r1.ebuild:
+  Pruned old ebuilds.
+
+  25 Jun 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  kismet-2006.04.1.ebuild:
+  ppc stable
+
+  25 Jun 2006; Henrik Brix Andersen <brix@gentoo.org>
+  -kismet-2005.08.1.ebuild:
+  Pruned old version.
+
+  26 May 2006; Henrik Brix Andersen <brix@gentoo.org>
+  kismet-2006.04.1.ebuild:
+  Stable on x86.
+
+  10 May 2006; Henrik Brix Andersen <brix@gentoo.org>
+  kismet-2006.04.1.ebuild:
+  Fix compilation with FEATURES=confcache, bug #129479.
+
+  30 Apr 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  kismet-2005.08.1-r1.ebuild:
+  ppc stable
+
+  26 Apr 2006; Henrik Brix Andersen <brix@gentoo.org>
+  kismet-2005.08.1-r1.ebuild:
+  Stable on x86.
+
+*kismet-2006.04.1 (14 Apr 2006)
+
+  14 Apr 2006; Henrik Brix Andersen <brix@gentoo.org>
+  +files/kismet-2006.04.1-conf.d, +files/kismet-2006.04.1-init.d,
+  +kismet-2006.04.1.ebuild:
+  Version bump, bug #129894.
+
+*kismet-2005.08.1-r1 (24 Mar 2006)
+
+  24 Mar 2006; Henrik Brix Andersen <brix@gentoo.org>
+  +files/kismet-2005.08.1-acx100.patch, +kismet-2005.08.1-r1.ebuild:
+  Fix acx100 issue thanks to Alex Gregory in bug #125651.
+
+  17 Aug 2005; Henrik Brix Andersen <brix@gentoo.org>
+  -files/kismet-2005.04.1-conf.d, -files/kismet-2005.04.1-init.d,
+  -files/kismet-2005.06.1-conf.d, -files/kismet-2005.06.1-init.d,
+  -files/kismet-2005.07.1-conf.d, -files/kismet-2005.07.1-init.d,
+  -files/kismet-2005.07.1a-conf.d, -files/kismet-2005.07.1a-init.d,
+  -kismet-2005.04.1.ebuild, -kismet-2005.04.1-r2.ebuild,
+  -kismet-2005.06.1.ebuild, -kismet-2005.07.1.ebuild,
+  -kismet-2005.07.1a.ebuild:
+  Removed vulnerable versions, bug #102702.
+
+  16 Aug 2005; Jory A. Pratt <anarchy@gentoo.org> kismet-2005.08.1.ebuild:
+  PPC stable wrt bug #102702
+
+  16 Aug 2005; Henrik Brix Andersen <brix@gentoo.org>
+  kismet-2005.08.1.ebuild:
+  Stable on x86, bug #102702.
+
+*kismet-2005.08.1 (16 Aug 2005)
+
+  16 Aug 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +files/kismet-2005.08.1-conf.d, +files/kismet-2005.08.1-init.d,
+  +kismet-2005.08.1.ebuild:
+  Version bump. Please note that ethereal wiretap support has been removed in
+  this release.
+
+*kismet-2005.07.1a (25 Jul 2005)
+
+  25 Jul 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +files/kismet-2005.07.1a-conf.d, +files/kismet-2005.07.1a-init.d,
+  +kismet-2005.07.1a.ebuild:
+  Version bump.
+
+*kismet-2005.07.1 (24 Jul 2005)
+
+  24 Jul 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +files/kismet-2005.07.1-conf.d, +files/kismet-2005.07.1-init.d,
+  +kismet-2005.07.1.ebuild:
+  Version bump, bug #100143.
+
+  19 Jul 2005; <brix@gentoo.org> kismet-2005.06.1.ebuild:
+  Stable on x86.
+
+  17 Jul 2005; Tobias Scherbaum <dertobi123@gentoo.org>
+  kismet-2005.04.1-r2.ebuild:
+  ppc stable
+
+  14 Jul 2005; <brix@gentoo.org> -kismet-2005.04.1-r1.ebuild,
+  kismet-2005.04.1-r2.ebuild, kismet-2005.06.1.ebuild:
+  Fixed inverse glib dependencies, bug #98994. Removed old ebuild.
+
+  12 Jul 2005; <brix@gentoo.org> kismet-2005.04.1-r2.ebuild:
+  Stable on x86.
+
+  07 Jul 2005; <brix@gentoo.org> kismet-2005.04.1.ebuild,
+  kismet-2005.04.1-r1.ebuild, kismet-2005.04.1-r2.ebuild,
+  kismet-2005.06.1.ebuild:
+  Fixed DEPEND/RDEPEND issue.
+
+*kismet-2005.06.1 (22 Jun 2005)
+
+  22 Jun 2005; <brix@gentoo.org> +files/kismet-2005.06.1-conf.d,
+  +files/kismet-2005.06.1-init.d, +kismet-2005.06.1.ebuild:
+  Version bump.
+
+*kismet-2005.04.1-r2 (14 Jun 2005)
+
+  14 Jun 2005; <brix@gentoo.org> +kismet-2005.04.1-r2.ebuild:
+  Determine which glib version to use for ethereal wiretap based on USE="gtk2",
+  fixes bug #94289.
+
+*kismet-2005.04.1-r1 (13 Jun 2005)
+
+  13 Jun 2005; <brix@gentoo.org> files/kismet-2005.04.1-conf.d,
+  files/kismet-2005.04.1-init.d, +kismet-2005.04.1-r1.ebuild:
+  Fixed bug #94205 (init script fails to stop), bug #94387 (Add curses
+  interface support in kismet) and bug #95539 (bad default configuration).
+  Also updated the Ethereal version, fixed econf parameters and removed call
+  to ifconfig from within the init script.
+
+  09 May 2005; <brix@gentoo.org> -files/kismet-2004.10.1-conf.d,
+  -files/kismet-2004.10.1-init.d, -files/kismet-2005.01.1-conf.d,
+  -files/kismet-2005.01.1-init.d, -kismet-2004.10.1-r1.ebuild,
+  -kismet-2005.01.1.ebuild, kismet-2005.04.1.ebuild:
+  Pruned old ebuilds, changed describtion.
+
+  09 May 2005; Lars Weiler <pylon@gentoo.org> kismet-2005.04.1.ebuild:
+  Stable on ppc.
+
+  04 May 2005; <brix@gentoo.org> kismet-2005.04.1.ebuild:
+  Stable on x86.
+
+*kismet-2005.04.1 (03 Apr 2005)
+
+  03 Apr 2005; <brix@gentoo.org> +files/kismet-2005.04.1-conf.d,
+  +files/kismet-2005.04.1-init.d, +kismet-2005.04.1.ebuild:
+  Version bump.
+
+  03 Apr 2005; <brix@gentoo.org> metadata.xml, kismet-2005.01.1.ebuild:
+  Stable on x86.
+
+*kismet-2005.01.1 (16 Jan 2005)
+
+  16 Jan 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +files/kismet-2005.01.1-conf.d, +files/kismet-2005.01.1-init.d,
+  +kismet-2005.01.1.ebuild:
+  Version bump.
+
+  09 Jan 2005; Sven Wegener <swegener@gentoo.org>
+  kismet-2004.10.1-r1.ebuild:
+  Added missing parentheses in SRC_URI/*DEPEND/LICENSE.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  27 Dec 2004; Henrik Brix Andersen <brix@gentoo.org>
+  kismet-2004.10.1-r1.ebuild:
+  Depend on >=net-analyzer/ethereal-${ETHEREAL_VERSION} instead of
+  =net-analyzer/ethereal-${ETHEREAL_VERSION} - let's hope this works. Fixes bug
+  #73043.
+
+  19 Dec 2004; Henrik Brix Andersen <brix@gentoo.org> -kismet-2.8.1-r1.ebuild:
+  Removed last vulnerable version wrt bug #74443.
+
+  18 Dec 2004; Jason Wever <weeve@gentoo.org> kismet-2.8.1-r1.ebuild:
+  Masked on sparc wrt security bug #74443 because it's unknown if this
+  application even works on SPARC.
+
+  18 Dec 2004; Henrik Brix Andersen <brix@gentoo.org>
+  -files/kismet_amd64.patch, -files/kismet_gcc34.gz, -files/rc-conf-3,
+  -files/rc-script-3, -kismet-2004.04.1.ebuild:
+  Prunded old version.
+
+  18 Dec 2004; Michael Hanselmann <hansmi@gentoo.org>
+  kismet-2004.10.1-r1.ebuild:
+  Stable on ppc.
+
+  18 Dec 2004; Henrik Brix Andersen <brix@gentoo.org>
+  -kismet-2004.04.1-r1.ebuild, -kismet-2004.10.1.ebuild,
+  -kismet-3.0.1-r1.ebuild:
+  Pruned old versions.
+
+*kismet-2004.10.1-r1 (16 Dec 2004)
+
+  16 Dec 2004; Henrik Brix Andersen <brix@gentoo.org>
+  +kismet-2004.10.1-r1.ebuild:
+  Bumping ethereal dep.
+
+  14 Dec 2004; Henrik Brix Andersen <brix@gentoo.org> kismet-2004.10.1.ebuild:
+  Stable on x86.
+
+  27 Oct 2004; Henrik Brix Andersen <brix@gentoo.org> kismet-2004.10.1.ebuild:
+  Updated imagemagick dependency, thanks to Simon Holm Thoegersen <simon at
+  lysbro dot net> in bug #69165.
+
+  26 Oct 2004; Henrik Brix Andersen <brix@gentoo.org> kismet-2004.10.1.ebuild:
+  Fix building with USE=-ethereal. Thanks to Hans-Werner Hilse <hilse at web dot
+  de> in bug #69030.
+
+  26 Oct 2004; Henrik Brix Andersen <brix@gentoo.org> -kismet-2.6.2-r1.ebuild,
+  -kismet-2.8.0.ebuild, -kismet-2.8.0a.ebuild, -kismet-2.8.0b-r1.ebuild,
+  -kismet-2.8.1.ebuild, -kismet-2004.02.01.ebuild, -kismet-3.0.1.ebuild:
+  Removed old versions.
+
+  26 Oct 2004; Henrik Brix Andersen <brix@gentoo.org>
+  +files/kismet-2004.10.1-conf.d, +files/kismet-2004.10.1-init.d,
+  kismet-2004.10.1.ebuild:
+  Updated to reflect new config file location.
+
+  26 Oct 2004; Henrik Brix Andersen <brix@gentoo.org>
+  kismet-2004.04.1-r1.ebuild:
+  Stable on x86
+
+*kismet-2004.10.1 (26 Oct 2004)
+
+  26 Oct 2004; Henrik Brix Andersen <brix@gentoo.org> files/rc-conf-3,
+  files/rc-script-3, +kismet-2004.10.1.ebuild:
+  Version bump. Cleaned up the ebuild and removed no-longer needed USE flags.
+  Updated dependencies to reflect reality. Fixed typos in init.d/conf.d scripts.
+
+*kismet-2004.04.1-r1 (18 Oct 2004)
+
+  18 Oct 2004; Henrik Brix Andersen <brix@gentoo.org>
+  +kismet-2004.04.1-r1.ebuild:
+  Added DEPEND on dev-perl/libwww-perl for USE=gps (bug #67204), updated to
+  build against ethereal-0.10.5.
+
+  24 Sep 2004; Luca Barbato <lu_zero@gentoo.org> files/kismet_gcc34.gz:
+  Updated the gcc-3.4 fixes
+
+  02 Sep 2004; Malcolm Lashley <malc@gentoo.org> +files/kismet_amd64.patch,
+  kismet-2004.04.1.ebuild:
+  Fix for amd64 from Vasiliy Astapov - tested with prism54
+
+  27 Jul 2004; <solar@gentoo.org> kismet-2004.04.1.ebuild:
+  added missing inherit eutils, needed for epatch ; added call to
+  gnuconfig_update, needed for uclibc and maybe others
+
+  25 Jun 2004; Hanno Boeck <hanno@gentoo.org> +files/kismet_gcc34.gz,
+  kismet-2004.04.1.ebuild:
+  Fix for gcc 3.4.
+
+  14 Jun 2004; Aron Griffis <agriffis@gentoo.org> kismet-2.8.0b-r1.ebuild,
+  kismet-2.8.1-r1.ebuild, kismet-2.8.1.ebuild, kismet-2004.02.01.ebuild,
+  kismet-2004.04.1.ebuild, kismet-3.0.1-r1.ebuild, kismet-3.0.1.ebuild:
+  Fix use invocation
+
+  01 May 2004; Bryan Østergaard <kloeri@gentoo.org> kismet-2004.02.01.ebuild,
+  kismet-3.0.1-r1.ebuild, kismet-3.0.1.ebuild:
+  Fix SRC_URI, bug #49649.
+
+  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> kismet-2.6.2-r1.ebuild:
+  Add die following econf for bug 48950
+
+*kismet-2004.04.1 (09 Apr 2004)
+
+  09 Apr 2004; Scott W Taylor <swtaylor@gentoo.org> kismet-2004.04.1.ebuild:
+  new version, new version numbering again, big changes to the included gpsmap
+
+*kismet-2004.02.01 (28 Feb 2004)
+
+  28 Feb 2004; Peter Johanson <latexer@gentoo.org> kismet-2004.02.01.ebuild:
+  Version bump. After conversation with dragorn, using this naming scheme as
+  this will be the scheme used from now on.
+
+  20 Feb 2004; Guy Martin <gmsoft@gentoo.org> kismet-3.0.1-r1.ebuild:
+  Marked stable on x86. Close #26143.
+
+  07 Feb 2004; Lars Weiler <pylon@gentoo.org> kismet-3.0.1-r1.ebuild:
+  stable on ppc
+
+*kismet-3.0.1-r1 (03 Feb 2004)
+
+  03 Feb 2003; Guy Martin <gmsoft@gentoo.org> kismet-3.0.1-r1.ebuild,
+	files/rc-script-3 files/rc-conf-3 :
+	Version bump to add/fix rc scripts. Fix #26143.
+
+  18 Dec 2003; Peter Johanson <latexer@gentoo.org> metadata.xml:
+  Added metadata.xml so seemant will still love me
+
+  12 Oct 2003; Robin H. Johnson <robbat2@gentoo.org> kismet-3.0.1.ebuild:
+  fix autoconf build issue, bug #30160
+
+  14 Sep 2003; David Holm <dholm@gentoo.org> kismet-3.0.1.ebuild:
+  Added to ~ppc, tested by Daniel Berlin <dberlin@dberlin.org>.
+
+*kismet-3.0.1 (18 Aug 2003)
+
+  18 Aug 2003; Peter Johanson <latexer@gentoo.org> kismet-3.0.1.ebuild:
+  Bump. Will add a revision with initscripts soon, but I wanted this out
+  there for testing!
+
+  12 Aug 2003; Peter Johanson <latexer@gentoo.org> kismet-2.8.0b-r1.ebuild,
+  kismet-2.8.1-r1.ebuild, kismet-2.8.1.ebuild:
+  Fixed the SRC_URI for ethereal
+
+  6 Mar 2003; Peter Johanson <latexer@gentoo.org> *.ebuild :
+  Added net-wireless/wireless-tools to RDEPENDS for all ebuilds. bug #16968
+
+*kismet-2.8.1-r1 (1 Mar 2003)
+
+  1 Mar 2003; Peter Johanson <latexer@gentoo> kismet-2.8.1-r1.ebuild :
+  Fixed ./configure, as --enable-gps actually DISables the support.
+
+  27 Feb 2003; Peter Johanson <latexer@gentoo.org> kismet-2.8.1.ebuild kismet-2.8.0b-r1.ebuild
+  kismet-2.8.0a.ebuild kismet-2.8.0.ebuild kismet-2.6.2-r1.ebuild :
+  Marked all kismet ebuilds up to kismet-2.8.1.ebuild as stable on x86.
+  Also removed outdated kismet ebuilds.
+
+  11 Feb 2003; Peter Johanson <latexer@gentoo.org> :
+  Fixed up some formatting stuff in all the ebuilds . Purely asthetics.
+
+*kismet-2.8.1 (3 Feb 2003)
+
+  15 Feb 2003; Peter Johanson <latexer@gentoo.org> files/digest-kismet-2.8.1 :
+  Fixed digest for 2.8.1
+
+  12 Feb 2003; Peter Johanson <latexer@gentoo.org> kismet-2.8.1.ebuild :
+  Sed fix and added inits to 2.8.1.ebuild
+
+  3 Feb 2003; Jared Hudson <jhhudso@gentoo.org> : Version bump.
+
+*kismet-2.8.0b-r1 (29 Jan 2003)
+
+  29 Jan 2003; Jared Hudson <jhhudso@gentoo.org> : Added ethereal use flag,
+  and made ethereal download/compile optional based on that use flag. Bug #
+  14565
+
+*kismet-2.8.0b (30 Dec 2002)
+
+  30 Dec 2002; Martin Holzer <mholzer@gentoo.org> kismet-2.8.0b.ebuild ChangeLog files/digest-kismet-2.8.0b :
+  Version bumped.
+
+*kismet-2.8.0a (29 Dec 2002)
+
+  29 Dec 2002; Mike Frysinger <vapier@gentoo.org> :
+  Version bump per #12915.
+
+*kismet-2.8.0 (28 Dec 2002)
+
+  28 Dec 2002; Mike Frysinger <vapier@gentoo.org> :
+  Version bump per #12826.
+
+*kismet-2.6.2-r1 (20 Dec 2002)
+
+  23 Dec 2002; Christian Birchinger <joker@gentoo.org> :
+  Removed sparc64 keyword.
+
+  20 Dec 2002; Jared Hudson <jhhudso@gentoo.org> : Bug ID #12459. Credit goes
+  to Nate Lynch <ntl@swt.edu>. Added dependency on >=net-libs/libpcap-0.7.1-r1.
+
+
+  19 Dev 2002; Dean Bailey <alron@gentoo.org> : removed sparc64 keyword
+
+*kismet-2.6.2 (16 Dec 2002)
+
+  16 Dec 2002; Jared Hudson <jhhudso@gentoo.org> : Bug ids #9349, 10643, 11018.
+  ebuild submitted by Alberto Ornaghi <alor@blackhats.it>
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+
+  31 Oct 2002; Hannes Mehnert <hannes@gentoo.org>:
+  moved to net-wireless
+
+*-kismet-2.4.6 (04 Aug 2002)
+
+  09 Sep 2002; Calum Selkirk <cselkirk@gentoo.org> kismet-2.4.6.ebuild :
+
+  Moved the DEPEND for glib into USE X?
+  Added DEPEND libpcap
+  Added ppc to KEYWORDS.
+
+  04 Aug 2002; Ben Lutgens <lamer@gentoo.org> ChangeLog  :
+
+  New package

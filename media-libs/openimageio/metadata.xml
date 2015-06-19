@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>graphics</herd>
+	<use>
+		<flag name="colorio">Use <pkg>media-gfx/opencolorio</pkg></flag>
+		<flag name="opencv">Use <pkg>media-libs/opencv</pkg></flag>
+		<flag name="tbb">Use <pkg>dev-cpp/tbb</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">OpenImageIO/oiio</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,28 @@
+commit ec92ac2b0180b101c30748e62eb8b76cdf0cb439
+Author: hasufell <hasufell@gentoo.org>
+Date:   Wed Jun 26 14:33:01 2013 +0200
+
+    remove unneeded linking
+    
+    if we don't build the debugger, we don't want gtk+ linking
+
+diff --git a/src/osd/sdl/sdl.mak b/src/osd/sdl/sdl.mak
+index 36655d3..2089707 100644
+--- a/src/osd/sdl/sdl.mak
++++ b/src/osd/sdl/sdl.mak
+@@ -696,6 +696,7 @@ else
+ DEFS += -DSDLMAME_X11
+ LIBS += -lX11 -lXinerama
+ 
++ifneq ($(NO_DEBUGGER),1)
+ # The newer debugger uses QT
+ ifndef NO_USE_QTDEBUG
+ INCPATH += $(shell $(PKG_CONFIG) QtGui --cflags)
+@@ -707,6 +708,7 @@ INCPATH += $(shell $(PKG_CONFIG) --cflags-only-I gtk+-2.0 gconf-2.0)
+ CCOMFLAGS += $(shell $(PKG_CONFIG) --cflags-only-other gtk+-2.0 gconf-2.0)
+ LIBS += $(shell $(PKG_CONFIG) --libs gtk+-2.0 gconf-2.0)
+ endif
++endif # NO_DEBUGGER
+ 
+ # some systems still put important things in a different prefix
+ LIBS += -L/usr/X11/lib -L/usr/X11R6/lib -L/usr/openwin/lib

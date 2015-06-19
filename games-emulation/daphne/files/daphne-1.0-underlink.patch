@@ -1,0 +1,8 @@
+--- Makefile.vars.linux_x86.old	2011-09-21 12:27:42.480566742 +0200
++++ Makefile.vars.linux_x86	2011-09-21 12:27:57.490564959 +0200
+@@ -24,4 +24,4 @@
+ 	-DUSE_MMX -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -DUSE_OPENGL
+ 
+ # platform-specific lib flags
+-LIBS = `sdl-config --libs` -ldl -lz -logg -lvorbis -lvorbisfile -lGLEW
++LIBS = `sdl-config --libs` -ldl -lz -logg -lvorbis -lvorbisfile -lGLEW -lGL -lm

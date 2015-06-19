@@ -1,0 +1,196 @@
+http://lists.gnu.org/archive/html/bug-tar/2013-12/msg00023.html
+https://bugs.gentoo.org/489170
+
+--- tar-1.27.1/configure	2013-11-17 17:18:39.000000000 +0100
++++ tar-1.27.1/configure	2013-11-17 17:18:39.000000000 +0100
+@@ -33619,19 +33619,20 @@
+ fi
+ 
+ 
+-  for ac_header in attr/xattr.h
++  for ac_header in sys/xattr.h attr/xattr.h
+ do :
+-  ac_fn_c_check_header_mongrel "$LINENO" "attr/xattr.h" "ac_cv_header_attr_xattr_h" "$ac_includes_default"
+-if test "x$ac_cv_header_attr_xattr_h" = xyes; then :
++  as_ac_Header=`$as_echo "ac_cv_header_$ac_header" | $as_tr_sh`
++ac_fn_c_check_header_mongrel "$LINENO" "$ac_header" "$as_ac_Header" "$ac_includes_default"
++if eval test \"x\$"$as_ac_Header"\" = x"yes"; then :
+   cat >>confdefs.h <<_ACEOF
+-#define HAVE_ATTR_XATTR_H 1
++#define `$as_echo "HAVE_$ac_header" | $as_tr_cpp` 1
+ _ACEOF
+ 
+ fi
+ 
+ done
+ 
+-   if test "$ac_cv_header_attr_xattr_h" = yes; then
++   if test "$ac_cv_header_sys_xattr_h" = yes -o "$ac_cv_header_attr_xattr_h" = yes; then
+   TAR_COND_XATTR_H_TRUE=
+   TAR_COND_XATTR_H_FALSE='#'
+ else
+@@ -33639,30 +33640,130 @@
+   TAR_COND_XATTR_H_FALSE=
+ fi
+ 
+-  if test "$ac_cv_header_attr_xattr_h" = yes; then
+-    for ac_func in getxattr  fgetxattr  lgetxattr \
+-                   setxattr  fsetxattr  lsetxattr \
+-                   listxattr flistxattr llistxattr
+-do :
+-  as_ac_var=`$as_echo "ac_cv_func_$ac_func" | $as_tr_sh`
+-ac_fn_c_check_func "$LINENO" "$ac_func" "$as_ac_var"
+-if eval test \"x\$"$as_ac_var"\" = x"yes"; then :
++
++  if test "$with_xattrs" != no; then
++    # If <sys/xattr.h> doesn't exist and <attr/xattr.h> does,
++    # then link against libattr.so and not libc
++    if test "$ac_cv_header_sys_xattr_h" = no -a "$ac_cv_header_attr_xattr_h" = yes; then
++      { $as_echo "$as_me:${as_lineno-$LINENO}: checking for fgetxattr in -lattr" >&5
++$as_echo_n "checking for fgetxattr in -lattr... " >&6; }
++if ${ac_cv_lib_attr_fgetxattr+:} false; then :
++  $as_echo_n "(cached) " >&6
++else
++  ac_check_lib_save_LIBS=$LIBS
++LIBS="-lattr  $LIBS"
++cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++/* end confdefs.h.  */
++
++/* Override any GCC internal prototype to avoid an error.
++   Use char because int might match the return type of a GCC
++   builtin and then its argument prototype would still apply.  */
++#ifdef __cplusplus
++extern "C"
++#endif
++char fgetxattr ();
++int
++main ()
++{
++return fgetxattr ();
++  ;
++  return 0;
++}
++_ACEOF
++if ac_fn_c_try_link "$LINENO"; then :
++  ac_cv_lib_attr_fgetxattr=yes
++else
++  ac_cv_lib_attr_fgetxattr=no
++fi
++rm -f core conftest.err conftest.$ac_objext \
++    conftest$ac_exeext conftest.$ac_ext
++LIBS=$ac_check_lib_save_LIBS
++fi
++{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_attr_fgetxattr" >&5
++$as_echo "$ac_cv_lib_attr_fgetxattr" >&6; }
++if test "x$ac_cv_lib_attr_fgetxattr" = xyes; then :
+   cat >>confdefs.h <<_ACEOF
+-#define `$as_echo "HAVE_$ac_func" | $as_tr_cpp` 1
++#define HAVE_LIBATTR 1
+ _ACEOF
+- # only when functions are present
+ 
+-$as_echo "#define HAVE_ATTR_XATTR_H 1" >>confdefs.h
++  LIBS="-lattr $LIBS"
+ 
+-        if test "$with_xattrs" != no; then
++fi
+ 
+-$as_echo "#define HAVE_XATTRS /**/" >>confdefs.h
++    fi
++    have_functions=yes
++    for xattr_func in getxattr  fgetxattr  lgetxattr \
++                      setxattr  fsetxattr  lsetxattr \
++                      listxattr flistxattr llistxattr; do \
++      as_ac_Search=`$as_echo "ac_cv_search_$xattr_func" | $as_tr_sh`
++{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for library containing $xattr_func" >&5
++$as_echo_n "checking for library containing $xattr_func... " >&6; }
++if eval \${$as_ac_Search+:} false; then :
++  $as_echo_n "(cached) " >&6
++else
++  ac_func_search_save_LIBS=$LIBS
++cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++/* end confdefs.h.  */
++
++/* Override any GCC internal prototype to avoid an error.
++   Use char because int might match the return type of a GCC
++   builtin and then its argument prototype would still apply.  */
++#ifdef __cplusplus
++extern "C"
++#endif
++char $xattr_func ();
++int
++main ()
++{
++return $xattr_func ();
++  ;
++  return 0;
++}
++_ACEOF
++for ac_lib in '' attr; do
++  if test -z "$ac_lib"; then
++    ac_res="none required"
++  else
++    ac_res=-l$ac_lib
++    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
++  fi
++  if ac_fn_c_try_link "$LINENO"; then :
++  eval "$as_ac_Search=\$ac_res"
++fi
++rm -f core conftest.err conftest.$ac_objext \
++    conftest$ac_exeext
++  if eval \${$as_ac_Search+:} false; then :
++  break
++fi
++done
++if eval \${$as_ac_Search+:} false; then :
+ 
+-        fi
++else
++  eval "$as_ac_Search=no"
++fi
++rm conftest.$ac_ext
++LIBS=$ac_func_search_save_LIBS
++fi
++eval ac_res=\$$as_ac_Search
++	       { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_res" >&5
++$as_echo "$ac_res" >&6; }
++eval ac_res=\$$as_ac_Search
++if test "$ac_res" != no; then :
++  test "$ac_res" = "none required" || LIBS="$ac_res $LIBS"
+ 
++else
++  have_functions=no
+ fi
+-done
+ 
++      test $have_functions = no && break
++    done
++    if test $have_functions = yes; then
++
++$as_echo "#define HAVE_XATTRS 1" >>confdefs.h
++
++    else
++      test "$with_xattrs" = yes && as_fn_error $? "xattr support requested but not found." "$LINENO" 5
++    fi
+   fi
+ 
+ 
+--- tar-1.27.1/lib/xattr-at.h	2013-03-14 21:18:10.000000000 +0100
++++ tar-1.27.1/lib/xattr-at.h	2013-03-14 21:18:10.000000000 +0100
+@@ -20,7 +20,15 @@
+ #define XATTRS_AT_H
+ 
+ #include <sys/types.h>
+-#include <attr/xattr.h>
++#if defined(HAVE_SYS_XATTR_H)
++# include <sys/xattr.h>
++#elif defined(HAVE_ATTR_XATTR_H)
++# include <attr/xattr.h>
++#endif
++
++#ifndef ENOATTR
++# define ENOATTR ENODATA        /* No such attribute */
++#endif
+ 
+ /* These are the dir-fd-relative variants of the functions without the
+    "at" suffix.  For example, setxattrat (AT_FDCWD, path, name, value, size,

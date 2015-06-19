@@ -1,0 +1,48 @@
+# ChangeLog for dev-python/shm
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/shm/ChangeLog,v 1.12 2015/01/09 07:22:32 idella4 Exp $
+
+*shm-1.2.2-r1 (09 Jan 2015)
+
+  09 Jan 2015; Ian Delaney <idella4@gentoo.org> +shm-1.2.2-r1.ebuild,
+  -shm-1.2.2.ebuild:
+  revbump; conversion -> distutils-r1, rm old
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> shm-1.2.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  22 Feb 2012; Patrick Lauer <patrick@gentoo.org> shm-1.2.2.ebuild:
+  Restricting jython too
+
+  20 Feb 2012; Patrick Lauer <patrick@gentoo.org> shm-1.2.2.ebuild:
+  Restricting pypy #404921
+
+  08 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  shm-1.2.2.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+  26 Jun 2010; Sebastian Pipping <sping@gentoo.org> shm-1.2.2.ebuild,
+  +files/shm-1.2.2-compiler.patch:
+  Fix setup.py to respect CC variable (bug #243966)
+
+  02 Jun 2010; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove chtekk from metadata.xml (#103720)
+
+  07 Feb 2010; Peter Volkov <pva@gentoo.org> shm-1.2.2.ebuild:
+  Never refer to a variable name in the string; include only raw text.
+
+*shm-1.2.2 (07 Jun 2008)
+ 
+  25 Oct 2008; Pieter Van den Abeele <pvdabeel@gentoo.org> shm-1.2.2.ebuild:
+  Keyworded ~ppc64. Closes bug #238010
+
+
+  07 Jun 2008; Luca Longinotti <chtekk@gentoo.org> -shm-1.2.1.ebuild,
+  +shm-1.2.2.ebuild:
+  Version bump.
+
+*shm-1.2.1 (28 Apr 2008)
+
+  28 Apr 2008; Luca Longinotti <chtekk@gentoo.org> +metadata.xml,
+  +shm-1.2.1.ebuild:
+  Add new ebuild, closes bug #194591.

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=media-libs/zita-alsa-pcmi >=media-libs/libclthreads-2.4.0 >=media-libs/libclxclient-3.6.1 x11-libs/libXft x11-libs/libX11 >=media-sound/jack-audio-connection-kit-0.109.2 media-libs/alsa-lib sys-libs/readline:0
+DESCRIPTION=A synthesised pipe organ emulator
+EAPI=5
+HOMEPAGE=http://kokkinizita.linuxaudio.org/linuxaudio/aeolus/index.html
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=media-libs/zita-alsa-pcmi >=media-libs/libclthreads-2.4.0 >=media-libs/libclxclient-3.6.1 x11-libs/libXft x11-libs/libX11 >=media-sound/jack-audio-connection-kit-0.109.2 media-libs/alsa-lib sys-libs/readline:0 media-libs/stops
+SLOT=0
+SRC_URI=http://kokkinizita.linuxaudio.org/linuxaudio/downloads/aeolus-0.9.0.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=6a94f26a14c9616f492b63f5d42b6995

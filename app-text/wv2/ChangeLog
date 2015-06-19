@@ -1,0 +1,306 @@
+# ChangeLog for app-text/wv2
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/wv2/ChangeLog,v 1.84 2013/06/12 13:01:37 kensington Exp $
+
+  12 Jun 2013; Michael Palimaka <kensington@gentoo.org> -wv2-0.4.2-r1.ebuild:
+  Remove old.
+
+  25 May 2013; Agostino Sarubbo <ago@gentoo.org> wv2-0.4.2-r2.ebuild:
+  Stable for alpha, wrt bug #470344
+
+  25 May 2013; Agostino Sarubbo <ago@gentoo.org> wv2-0.4.2-r2.ebuild:
+  Stable for sparc, wrt bug #470344
+
+  24 May 2013; Agostino Sarubbo <ago@gentoo.org> wv2-0.4.2-r2.ebuild:
+  Stable for ppc64, wrt bug #470344
+
+  22 May 2013; Agostino Sarubbo <ago@gentoo.org> wv2-0.4.2-r2.ebuild:
+  Stable for ia64, wrt bug #470344
+
+  21 May 2013; Jeroen Roovers <jer@gentoo.org> wv2-0.4.2-r2.ebuild:
+  Stable for HPPA (bug #470344).
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> wv2-0.4.2-r2.ebuild:
+  Stable for ppc, wrt bug #470344
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> wv2-0.4.2-r2.ebuild:
+  Stable for x86, wrt bug #470344
+
+  19 May 2013; Agostino Sarubbo <ago@gentoo.org> wv2-0.4.2-r2.ebuild:
+  Stable for amd64, wrt bug #470344
+
+*wv2-0.4.2-r2 (15 Apr 2013)
+
+  15 Apr 2013; Michael Palimaka <kensington@gentoo.org>
+  +files/wv2-0.4.2-libgsf.patch, +wv2-0.4.2-r2.ebuild:
+  Migrate to EAPI 5. Add a patch to fix build failure with newer libgsf, wrt bug
+  #465882.
+
+  20 Dec 2012; Michael Palimaka <kensington@gentoo.org> -wv2-0.4.2.ebuild:
+  Remove old.
+
+  16 Dec 2012; Raúl Porcel <armin76@gentoo.org> wv2-0.4.2-r1.ebuild:
+  alpha/ia64/sparc stable wrt #443420
+
+  21 Nov 2012; Agostino Sarubbo <ago@gentoo.org> wv2-0.4.2-r1.ebuild:
+  Stable for x86, wrt bug #443420
+
+  19 Nov 2012; Jeroen Roovers <jer@gentoo.org> wv2-0.4.2-r1.ebuild:
+  Stable for HPPA (bug #443420).
+
+  17 Nov 2012; Anthony G. Basile <blueness@gentoo.org> wv2-0.4.2-r1.ebuild:
+  stable ppc ppc64, bug #443420
+
+  15 Nov 2012; <ago@gentoo.org> wv2-0.4.2-r1.ebuild:
+  Stable for amd64, wrt bug #443420
+
+  17 Oct 2012; Michael Palimaka <kensington@gentoo.org>
+  +files/wv2-0.4.2-glib.patch:
+  Add missing patch, thanks to Jekyll Wu <adaptee@gmail.com> for noticing.
+
+*wv2-0.4.2-r1 (16 Oct 2012)
+
+  16 Oct 2012; Michael Palimaka <kensington@gentoo.org> +wv2-0.4.2-r1.ebuild,
+  metadata.xml:
+  Add patch from upstream bugtracker to fix build with glib-2.32. Migrate to
+  EAPI 4. Add upstream metadata. Fixes bug #438272.
+
+  15 Jan 2010; Raúl Porcel <armin76@gentoo.org> wv2-0.4.2.ebuild:
+  alpha/ia64/sparc stable wrt #299156
+
+  10 Jan 2010; Jeroen Roovers <jer@gentoo.org> wv2-0.4.2.ebuild:
+  Stable for HPPA (bug #299156).
+
+  07 Jan 2010; Brent Baude <ranger@gentoo.org> wv2-0.4.2.ebuild:
+  stable ppc, bug 299156
+
+  06 Jan 2010; Brent Baude <ranger@gentoo.org> wv2-0.4.2.ebuild:
+  Marking wv2-0.4.2 ppc64 for bug 299156
+
+  17 Dec 2009; Christian Faulhammer <fauli@gentoo.org> wv2-0.4.2.ebuild:
+  stable x86, bug 295327
+
+  17 Dec 2009; Samuli Suominen <ssuominen@gentoo.org> wv2-0.4.2.ebuild:
+  amd64 stable wrt #295327
+
+  08 Nov 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -files/0.4.0-cmake.patch, -wv2-0.4.1.ebuild, wv2-0.4.2.ebuild,
+  metadata.xml:
+  Remove old+unused patch. Drop deps that are not directly named in
+  cmakelists. Add kde as backup herd.
+
+*wv2-0.4.2 (07 Nov 2009)
+
+  07 Nov 2009; Tomáš Chvátal <scarabeus@gentoo.org> +wv2-0.4.2.ebuild:
+  Version bump. Drop old.
+
+*wv2-0.4.1 (09 Oct 2009)
+
+  09 Oct 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  files/0.4.0-cmake.patch, -wv2-0.4.0.ebuild, -files/wv2-0.4.0-elif.patch,
+  +wv2-0.4.1.ebuild:
+  Version bump. Remove old.
+
+  29 Sep 2009; Hanno Boeck <hanno@gentoo.org> wv2-0.4.0.ebuild,
+  +files/wv2-0.4.0-elif.patch:
+  Fix for gcc 4.4.
+
+*wv2-0.4.0 (29 Sep 2009)
+
+  29 Sep 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  +files/0.4.0-cmake.patch, -wv2-0.3.0.ebuild, +wv2-0.4.0.ebuild:
+  Version bump.
+
+  15 Jun 2009; Jeroen Roovers <jer@gentoo.org> wv2-0.3.1.ebuild:
+  Stable for HPPA (bug #271967).
+
+  09 Jun 2009; Raúl Porcel <armin76@gentoo.org> wv2-0.3.1.ebuild:
+  ia64 stable wrt #271967
+
+  07 Jun 2009; Tobias Klausmann <klausman@gentoo.org> wv2-0.3.1.ebuild:
+  Stable on alpha, bug #271967
+
+  06 Jun 2009; nixnut <nixnut@gentoo.org> wv2-0.3.1.ebuild:
+  ppc stable #271967
+
+  03 Jun 2009; Markus Meier <maekke@gentoo.org> wv2-0.3.1.ebuild:
+  amd64/x86 stable, bug #271967
+
+  03 Jun 2009; Ferris McCormick <fmccor@gentoo.org> wv2-0.3.1.ebuild:
+  Sparc stable, Bug #271967.
+
+*wv2-0.3.1 (24 Apr 2009)
+
+  24 Apr 2009; Patrick Lauer <patrick@gentoo.org> +wv2-0.3.1.ebuild:
+  Bump to 0.3.1. Fixes #265715
+
+*wv2-0.3.0 (19 Feb 2009)
+
+  19 Feb 2009; Tomas Chvatal <scarabeus@gentoo.org> +wv2-0.3.0.ebuild:
+  Version bump.
+
+  19 Jun 2008; Ryan Hill <dirtyepic@gentoo.org> files/wv2-0.2.3-gcc43.patch:
+  Extend GCC 4.3 patch to also fix testsuite.
+
+  18 Apr 2008; Samuli Suominen <drac@gentoo.org>
+  +files/wv2-0.2.3-gcc43.patch, wv2-0.2.3.ebuild:
+  Fix building with GCC 4.3 wrt #214264. Use DESTDIR for installing. Fix
+  LICENSE from GPL-2 to LGPL-2.
+
+  12 Mar 2007; Alexandre Buisse <nattfodd@gentoo.org> metadata.xml:
+  Replaced text-markup by tex as maintaining herd (text-markup split).
+
+  12 Feb 2007; Jeroen Roovers <jer@gentoo.org> wv2-0.2.3.ebuild:
+  Stable for HPPA (bug #162460).
+
+  29 Oct 2006; Alexandre Buisse <nattfodd@gentoo.org>
+  -files/wv2-0.2.2-respectflags.patch, -wv2-0.2.ebuild, -wv2-0.2.1.ebuild,
+  -wv2-0.2.2.ebuild:
+  Security cleanup (bug #140507).
+
+  02 Aug 2006; Diego Pettenò <flameeyes@gentoo.org> wv2-0.2.3.ebuild:
+  Add ~x86-fbsd keyword.
+
+  18 Jul 2006; Jeroen Roovers <jer@gentoo.org> wv2-0.2.3.ebuild:
+  Marking ~hppa for app-office/koffice
+
+  12 Jul 2006; Aron Griffis <agriffis@gentoo.org> wv2-0.2.3.ebuild:
+  Mark 0.2.3 stable on ia64
+
+  21 Jun 2006; Carsten Lohrke <carlo@gentoo.org> wv2-0.2.3.ebuild:
+  Stable on x86. Bug #136759.
+
+  15 Jun 2006; Markus Rothe <corsair@gentoo.org> wv2-0.2.3.ebuild:
+  Stable on ppc64; bug #136759
+
+  15 Jun 2006; Thomas Cort <tcort@gentoo.org> wv2-0.2.3.ebuild:
+  Stable on alpha wrt security Bug #136759.
+
+  14 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org> wv2-0.2.3.ebuild:
+  Stable on sparc wrt security #136759
+
+  14 Jun 2006; Tobias Scherbaum <dertobi123@gentoo.org> wv2-0.2.3.ebuild:
+  ppc stable, bug #136759
+
+  14 Jun 2006; Jon Hood <squinky86@gentoo.org> wv2-0.2.3.ebuild:
+  Stable on amd64 wrt security bug #136759.
+
+*wv2-0.2.3 (14 Jun 2006)
+
+  14 Jun 2006; Martin Ehmsen <ehmsen@gentoo.org>
+  +files/wv2-0.2.3-respectflags.patch, metadata.xml, +wv2-0.2.3.ebuild:
+  Added text-markup as herd.
+  Version bump to deal with security bug #136759.
+
+  19 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/wv2-0.2.2-respectflags.patch, wv2-0.2.2.ebuild:
+  Add patch to respect LDFLAGS.
+
+  06 Feb 2006; Aron Griffis <agriffis@gentoo.org> wv2-0.2.2.ebuild:
+  Mark 0.2.2 stable on ia64
+
+  11 Oct 2005; Aron Griffis <agriffis@gentoo.org> wv2-0.2.2.ebuild:
+  Mark 0.2.2 ~ia64
+
+  02 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  20 Dec 2004; Dylan Carlson <absinthe@gentoo.org> wv2-0.2.2.ebuild:
+  Stable on amd64.
+
+  14 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> wv2-0.2.2.ebuild:
+  Stable on alpha.
+
+  09 Dec 2004; Gustavo Zacarias <gustavoz@gentoo.org> wv2-0.2.2.ebuild:
+  Stable on sparc
+
+  07 Dec 2004; Hanno Boeck <hanno@gentoo.org> wv2-0.2.2.ebuild:
+  Marked stable x86.
+
+  01 Dec 2004; Carsten Lohrke <carlo@gentoo.org> metadata.xml:
+  brain is not a dev anymore
+
+  26 Aug 2004; Tom Gall <tgall@gentoo.org> wv-2-0.2.2.ebuild:
+  stable on ppc64, bug #58711
+
+  14 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> wv2-0.2.ebuild:
+  Stable on alpha.
+
+*wv2-0.2.2 (06 Jul 2004)
+
+  06 Jul 2004; Hanno Boeck <hanno@gentoo.org> +wv2-0.2.2.ebuild:
+  Version bump. Fixes gcc 3.4 issues.
+
+  14 May 2004; Bryan Østergaard <kloeri@gentoo.org> wv2-0.2.1.ebuild:
+  Keyword ~alpha.
+
+  05 Mar 2004; Gustavo Zacarias <gustavoz@gentoo.org> wv2-0.2.ebuild:
+  stable on sparc
+
+  26 Feb 2004; Sven Blumenstein <bazik@gentoo.org> wv2-0.1.9.ebuild:
+  Ooops, forgot a depend for KOffice ;)
+
+  14 Feb 2004; Jason Wever <weeve@gentoo.org> wv2-0.2.ebuild:
+  Added ~sparc keyword.
+
+*wv2-0.2.1 (09 Mar 2004)
+
+  09 Mar 2004; Heinrich Wendel <lanius@gentoo.org> wv2-0.0.9.ebuild,
+  wv2-0.1.9.ebuild, wv2-0.2.1.ebuild, wv2-0.2.ebuild:
+  version bump; fix homepage
+
+  09 Dec 2003; Caleb Tennis <caleb@gentoo.org> wv2-0.2.ebuild:
+  Mark x86 stable, move ~ppc to latest version
+
+*wv2-0.2 (16 Nov 2003)
+
+  16 Nov 2003; Brad House <brad_mssw@gentoo.org> wv2-0.2.ebuild:
+  mark stable on amd64
+
+  05 Nov 2003; Caleb Tennis <caleb@gentoo.org> wv2-0.0.7.ebuild, wv2-0.0.8.ebuild,
+  wv2-0.1.8.ebuild, wv2-0.1.ebuild:
+  New version, remove stale versions
+
+  23 Sep 2003; David Holm <dholm@gentoo.org> wv2-0.1.9.ebuild:
+  Added to ~ppc.
+
+  22 Sep 2003; <paul@gentoo.org> metadata.xml:
+  Fix metadata.xml
+
+*wv2-0.1.9 (02 Sep 2003)
+  02 Sep 2003; Caleb Tennis <caleb@gentoo.org> wv2-0.1.9.ebuild:
+  Version bump
+
+*wv2-0.1.8 (26 Aug 2003)
+  26 Aug 2003; Caleb Tennis <caleb@gentoo.org> wv2-0.1.8.ebuild:
+  Version bump.
+
+*wv2-0.1 (07 Jul 2003)
+  07 Jul 2003; Michele Balistreri <brain@gentoo.org> wv2-0.1.ebuild:
+  Version bump, thanks to Franz Dhin <fd@redspot.dk>.
+
+  14 Apr 2003; Dan Armak <danarmak@gentoo.org> wv2-0.0.8.ebuild,
+  wv2-0.0.9.ebuild:
+  Mask back to ~x86 because the libgsf dependancy is masked that way.
+
+*wv2-0.0.9 (13 Apr 2003)
+
+  13 Apr 2003; Dan Armak <danarmak@gentoo.org> wv2-0.0.9.ebuild:
+  A new upstream version.
+
+*wv2-0.0.8 (06 Apr 2003)
+
+  06 Apr 2003; Dan Armak <danarmak@gentoo.org> wv2-0.0.8.ebuild:
+  New version. Add stable x86 keyword.
+
+*wv2-0.0.8 (28 Mar 2003)
+
+  28 Mar 2003; Dan Armak <danarmak@gentoo.org> wv2-0.0.8.ebuild:
+  
+  New upstream (bugfix) version, also fixed ebuild so that RDEPEND
+  also contains DEPEND.
+
+*wv2-0.0.7 (25 Feb 2003)
+
+  25 Feb 2003: Bart Verwilst <verwilst@gentoo.org> wv2-0.0.7.ebuild
+  New version, initial ebuild in Portage

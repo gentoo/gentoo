@@ -1,0 +1,16 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/carbon-c-relay/files/carbon-c-relay.confd,v 1.1 2015/05/05 14:44:31 grobian Exp $
+
+# routing file to read
+#ROUTES_FILE=/etc/carbon-c-relay.conf
+
+# where to store the PID-file
+#PIDFILE=/run/carbon-c-relay.pid
+
+# user and group to run carbon-c-relay as
+#USER=carbon
+#GROUP=carbon
+
+# any options to use when starting the relay
+#EXTRA_OPTS=

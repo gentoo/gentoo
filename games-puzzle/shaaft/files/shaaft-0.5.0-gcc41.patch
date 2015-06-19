@@ -1,0 +1,11 @@
+--- utils/hashMap.hpp.old
++++ utils/hashMap.hpp
+@@ -14,7 +14,7 @@
+ //
+ #if defined( __GNUC__ )
+ 
+-#  if (__GNUC__ == 3)
++#  if (__GNUC__ >= 3)
+ #    include <ext/hash_map>
+ 
+ #    if (__GNUC_MINOR__ == 0)

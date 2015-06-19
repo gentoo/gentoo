@@ -1,0 +1,12 @@
+# ChangeLog for sci-mathematics/factmsieve
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/factmsieve/ChangeLog,v 1.2 2012/11/30 08:55:02 patrick Exp $
+
+  30 Nov 2012; Patrick Lauer <patrick@gentoo.org> files/factmsieve-76.patch:
+  Fixing patch: logfile path
+
+*factmsieve-76 (30 Nov 2012)
+
+  30 Nov 2012; Patrick Lauer <patrick@gentoo.org> +factmsieve-76.ebuild,
+  +files/factmsieve-76.patch, +metadata.xml:
+  Initial import, ebuild by me

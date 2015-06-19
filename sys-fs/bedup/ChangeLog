@@ -1,0 +1,50 @@
+# ChangeLog for sys-fs/bedup
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/bedup/ChangeLog,v 1.11 2015/04/06 16:53:14 mgorny Exp $
+
+*bedup-0.9.0_p20140413-r1 (06 Apr 2015)
+
+  06 Apr 2015; Michał Górny <mgorny@gentoo.org>
+  +bedup-0.9.0_p20140413-r1.ebuild, -bedup-0.9.0_p20140413.ebuild,
+  bedup-9999.ebuild:
+  Restrict alembic to < 0.7.
+
+  06 Sep 2014; Michał Górny <mgorny@gentoo.org> bedup-0.9.0_p20140413.ebuild,
+  bedup-9999.ebuild:
+  Enable python3.4, and disable python3.2 since alembic no longer supports it.
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> bedup-0.9.0_p20140413.ebuild,
+  bedup-9999.ebuild:
+  Clean up obsolete dependencies on virtual/python-argparse and virtual/python-
+  unittest2 (those packages were only required for <=python-2.6).
+
+  21 May 2014; Michał Górny <mgorny@gentoo.org> bedup-0.9.0_p20140413.ebuild,
+  bedup-9999.ebuild:
+  Require sqlalchemy >= 0.8.2, bug #510910.
+
+  09 May 2014; Jeroen Roovers <jer@gentoo.org> bedup-0.9.0_p20140413.ebuild:
+  Whitespace.
+
+*bedup-0.9.0_p20140413 (08 May 2014)
+
+  08 May 2014; Michał Górny <mgorny@gentoo.org> +bedup-0.9.0_p20140413.ebuild:
+  Bump to a recent snapshot.
+
+  08 May 2014; Michał Górny <mgorny@gentoo.org> bedup-9999.ebuild:
+  Add a slot operator on dev-python/cffi dep (bug #506552).
+
+  29 Mar 2014; Michał Górny <mgorny@gentoo.org> bedup-9999.ebuild:
+  Use git-r3.
+
+  29 Mar 2014; Michał Górny <mgorny@gentoo.org> bedup-9999.ebuild:
+  Update the dependencies. btrfs-progs w/ headers are in tree already, and old
+  pycparser was removed.
+
+  13 Oct 2013; Pacho Ramos <pacho@gentoo.org> bedup-9999.ebuild:
+  Also compatible with python3_3
+
+*bedup-9999 (15 Jul 2013)
+
+  15 Jul 2013; Michał Górny <mgorny@gentoo.org> +bedup-9999.ebuild,
+  +metadata.xml:
+  Introduce bedup, a btrfs deduplication tool.

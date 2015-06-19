@@ -1,0 +1,126 @@
+# ChangeLog for net-misc/s3cmd
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/s3cmd/ChangeLog,v 1.30 2015/03/31 01:51:53 idella4 Exp $
+
+*s3cmd-1.5.2-r1 (31 Mar 2015)
+
+  31 Mar 2015; Ian Delaney <idella4@gentoo.org> +s3cmd-1.5.2-r1.ebuild,
+  -s3cmd-1.5.2.ebuild:
+  revbump; add missing deps and update install phase, all wrt to bug #543266,
+  fixes said bug, remove broken ebuild
+
+  12 Mar 2015; Ian Delaney <idella4@gentoo.org> -s3cmd-1.5.0_beta1.ebuild,
+  -s3cmd-1.5.0_rc1.ebuild:
+  rm old
+
+  11 Mar 2015; Patrice Clement <monsieurp@gentoo.org> s3cmd-1.5.2.ebuild:
+  Get rid of py2.6 (deprecated) + QA.
+
+*s3cmd-1.5.2 (10 Mar 2015)
+
+  10 Mar 2015; Patrice Clement <monsieurp@gentoo.org> +s3cmd-1.5.2.ebuild:
+  Version bump, EAPI bump and conversion to distutils-r1. Fix bug 542786.
+
+  13 Feb 2015; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Fix e-mail address.
+
+  31 Jan 2015; Jeremy Olexa <darkside@gentoo.org> s3cmd-1.5.0_rc1.ebuild:
+  Add Gentoo Prefix mods and keyword, bug 537050
+
+*s3cmd-1.5.0_rc1 (13 Oct 2014)
+
+  13 Oct 2014; Robin H. Johnson <robbat2@gentoo.org> +s3cmd-1.5.0_rc1.ebuild:
+  Bump.
+
+*s3cmd-1.5.0_beta1 (30 Jun 2014)
+
+  30 Jun 2014; Robin H. Johnson <robbat2@gentoo.org> +s3cmd-1.5.0_beta1.ebuild:
+  bump.
+
+  19 Mar 2013; Aaron W. Swenson <titanofold@gentoo.org> -s3cmd-0.9.9.91.ebuild,
+  -s3cmd-1.0.0.ebuild:
+  Clean out old versions.
+
+  19 Mar 2013; Agostino Sarubbo <ago@gentoo.org> s3cmd-1.0.1.ebuild:
+  Stable for x86, wrt bug #460766
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  09 Mar 2013; Aaron W. Swenson <titanofold@gentoo.org> s3cmd-1.0.1.ebuild:
+  Added or die as reported by Chema Alonso in bug 460766.
+
+  08 Mar 2013; Chema Alonso <nimiux@gentoo.org> s3cmd-1.0.1.ebuild:
+  Stable for amd64 wrt bug #460766
+
+*s3cmd-1.0.1 (02 Feb 2012)
+
+  02 Feb 2012; Aaron W. Swenson <titanofold@gentoo.org> +s3cmd-1.0.1.ebuild,
+  metadata.xml:
+  New maintainer: Igor Testen. Version bump.
+
+  22 Dec 2011; Markus Meier <maekke@gentoo.org> s3cmd-1.0.0.ebuild:
+  x86 stable, bug #394047
+
+  16 Dec 2011; Richard Freeman <rich0@gentoo.org> s3cmd-1.0.0.ebuild:
+  amd64 stable - 394047
+
+  20 Jul 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #118937
+
+  05 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  s3cmd-0.9.9.91.ebuild, s3cmd-1.0.0.ebuild:
+  Fix dependencies, use Python 2 (bug #315841).
+
+*s3cmd-1.0.0 (14 Jan 2011)
+
+  14 Jan 2011; Thilo Bangert <bangert@gentoo.org> -s3cmd-0.9.8.4.ebuild,
+  -s3cmd-0.9.9.ebuild, +s3cmd-1.0.0.ebuild:
+  version bump - remove old
+
+  16 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  s3cmd-0.9.9.91.ebuild:
+  stable x86, bug 326641
+
+  06 Jul 2010; Markos Chandras <hwoarang@gentoo.org> s3cmd-0.9.9.91.ebuild:
+  Stable on amd64 wrt bug #326641
+
+*s3cmd-0.9.9.91 (25 Jan 2010)
+
+  25 Jan 2010; Thilo Bangert <bangert@gentoo.org> +s3cmd-0.9.9.91.ebuild:
+  version bump (#302113)
+
+  23 Feb 2009; Jeremy Olexa <darkside@gentoo.org> s3cmd-0.9.9.ebuild:
+  add ~amd64 kw, bug 259739
+
+*s3cmd-0.9.9 (19 Feb 2009)
+
+  19 Feb 2009; Thilo Bangert <bangert@gentoo.org> +s3cmd-0.9.9.ebuild:
+  version bump
+
+  02 Feb 2009; Thilo Bangert <bangert@gentoo.org> -s3cmd-0.9.4.ebuild,
+  -s3cmd-0.9.7.ebuild:
+  remove old/buggy versions
+
+*s3cmd-0.9.8.4 (30 Jan 2009)
+
+  30 Jan 2009; Thilo Bangert <bangert@gentoo.org> metadata.xml,
+  +s3cmd-0.9.8.4.ebuild:
+  version bump - fixes bug #241304 - assume maintainership
+
+*s3cmd-0.9.7 (22 Jun 2008)
+
+  22 Jun 2008; Jeremy Olexa <darkside@gentoo.org> +s3cmd-0.9.7.ebuild:
+  Version bump. bug #212010
+
+  12 Mar 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Josh Glover (jmglov, #206782) from metadata.xml.
+
+  13 Feb 2008; Christian Faulhammer <opfer@gentoo.org> metadata.xml:
+  add no-herd
+
+*s3cmd-0.9.4 (23 Sep 2007)
+
+  23 Sep 2007; Josh Glover <jmglov@gentoo.org> +metadata.xml,
+  +s3cmd-0.9.4.ebuild:
+  This package was submitted by Josh Glover in bug #193380

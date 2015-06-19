@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile config install postinst unpack
+DESCRIPTION=Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
+HOMEPAGE=http://www.iana.org/time-zones http://www.twinsun.com/tz/tz-link.htm
+IUSE=nls elibc_FreeBSD elibc_glibc
+KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd
+LICENSE=BSD public-domain
+RDEPEND=!<sys-libs/glibc-2.3.5
+SLOT=0
+SRC_URI=http://www.iana.org/time-zones/repository/releases/tzdata2012j.tar.gz http://www.iana.org/time-zones/repository/releases/tzcode2012j.tar.gz ftp://munnari.oz.au/pub/tzdata2012j.tar.gz ftp://munnari.oz.au/pub/tzcode2012j.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=2c962d7f2defa9bd787ebc15c47247d0

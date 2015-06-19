@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		Provides low-dependency functionality commonly needed by various streaming data libraries, such as conduit and pipes.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">fpco/streaming-commons</remote-id>
+	</upstream>
+</pkgmetadata>

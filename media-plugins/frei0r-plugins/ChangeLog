@@ -1,0 +1,102 @@
+# ChangeLog for media-plugins/frei0r-plugins
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/frei0r-plugins/ChangeLog,v 1.23 2015/03/29 22:31:02 mrueg Exp $
+
+  29 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -frei0r-plugins-1.1.22-r1.ebuild:
+  Remove old.
+
+  27 Aug 2013; Alexis Ballier <aballier@gentoo.org> frei0r-plugins-1.4.ebuild:
+  keyword ~amd64-fbsd
+
+*frei0r-plugins-1.4 (13 Aug 2013)
+
+  13 Aug 2013; Alexis Ballier <aballier@gentoo.org> +frei0r-plugins-1.4.ebuild:
+  version bump, update homepage, bug #469112
+
+  04 Aug 2012; Samuli Suominen <ssuominen@gentoo.org>
+  frei0r-plugins-1.3.ebuild:
+  Respect environment CFLAGS wrt #418243 by "thomasg"
+
+  14 Jun 2012; Michael Weber <xmw@gentoo.org> frei0r-plugins-1.3.ebuild:
+  ppc stable (bug 394291)
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> frei0r-plugins-1.3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  26 Dec 2011; Markus Meier <maekke@gentoo.org> frei0r-plugins-1.3.ebuild:
+  x86 stable, bug #394291
+
+  15 Dec 2011; Agostino Sarubbo <ago@gentoo.org> frei0r-plugins-1.3.ebuild:
+  Stable for AMD64, wrt bug #394291
+
+  12 Dec 2011; Jeroen Roovers <jer@gentoo.org> frei0r-plugins-1.3.ebuild:
+  Stable for HPPA (bug #394291).
+
+  10 Dec 2011; Samuli Suominen <ssuominen@gentoo.org>
+  -frei0r-plugins-1.1.22-r2.ebuild,
+  -files/frei0r-plugins-1.1.22-opencv-2.2.0-api.patch:
+  old
+
+*frei0r-plugins-1.3 (10 Dec 2011)
+
+  10 Dec 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +frei0r-plugins-1.3.ebuild:
+  Version bump wrt #340793 by "Nikoli"
+
+  10 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  frei0r-plugins-1.1.22-r1.ebuild, frei0r-plugins-1.1.22-r2.ebuild:
+  Marked ~ppc, dropped ppc64 wrt #365451
+
+  26 Jun 2011; Brent Baude <ranger@gentoo.org> frei0r-plugins-1.1.22-r1.ebuild:
+  Marking frei0r-plugins-1.1.22-r1 ppc for bug 365273
+
+  16 Jun 2011; Jeroen Roovers <jer@gentoo.org> frei0r-plugins-1.1.22-r1.ebuild:
+  Stable for HPPA (bug #365273).
+
+*frei0r-plugins-1.1.22-r2 (13 Jun 2011)
+
+  13 Jun 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +frei0r-plugins-1.1.22-r2.ebuild,
+  +files/frei0r-plugins-1.1.22-opencv-2.2.0-api.patch:
+  Fix building with OpenCV >= 2.2.0 API wrt #365495 by Nickolay
+  Kolchin-Semyonov
+
+  26 Nov 2010; Jeroen Roovers <jer@gentoo.org> frei0r-plugins-1.1.22-r1.ebuild:
+  Marked ~hppa (bug #340269).
+
+  06 Jan 2010; Joseph Jezak <josejx@gentoo.org>
+  frei0r-plugins-1.1.22-r1.ebuild:
+  Marked ~ppc/~ppc64 for bug #276679.
+
+  17 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  frei0r-plugins-1.1.22-r1.ebuild:
+  stable x86, bug 295662
+
+  04 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  frei0r-plugins-1.1.22-r1.ebuild:
+  amd64 stable wrt #295662
+
+  26 Nov 2009; Alexis Ballier <aballier@gentoo.org>
+  frei0r-plugins-1.1.22-r1.ebuild:
+  keyword ~x86-fbsd, bug #276679
+
+*frei0r-plugins-1.1.22-r1 (05 Jul 2009)
+
+  05 Jul 2009; Ben de Groot <yngwin@gentoo.org>
+  -frei0r-plugins-1.1.22.ebuild, +frei0r-plugins-1.1.22-r1.ebuild,
+  +files/frei0r-plugins-1.1.22-pkgconfig-support.patch:
+  Add patch from upstream git to add pkgconfig support, needed by
+  media-libs/mlt. Revbump just to make sure this gets installed, removing
+  previous revision.
+
+  05 Jul 2009; Ben de Groot <yngwin@gentoo.org>
+  frei0r-plugins-1.1.22.ebuild, +files/frei0r-plugins-1.1.22-libdir.patch:
+  Add libdir patch from Fedora for multilib compatibility
+
+*frei0r-plugins-1.1.22 (05 Jul 2009)
+
+  05 Jul 2009; Ben de Groot <yngwin@gentoo.org>
+  +frei0r-plugins-1.1.22.ebuild,
+  +files/frei0r-plugins-1.1.22-no-automagic-deps.patch, +metadata.xml:
+  Initial commit, based on ebuild by Roberto Castagnola in bug 255319. Added
+  patch to keep opencv and gavl optional but not automagic deps.

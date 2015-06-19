@@ -1,0 +1,28 @@
+commit c26c750103e6965bb2334938d77f213ebc2bd862
+Author: Mike Gilbert <floppym@gentoo.org>
+Date:   Sun Feb 3 13:52:58 2013 -0500
+
+    Exclude tests from installation
+    
+    https://bugs.gentoo.org/show_bug.cgi?id=455250
+
+diff --git a/MANIFEST.in b/MANIFEST.in
+new file mode 100644
+index 0000000..b562f73
+--- /dev/null
++++ b/MANIFEST.in
+@@ -0,0 +1 @@
++recursive-include tests *.py
+diff --git a/setup.py b/setup.py
+index 52fe1a1..705a485 100644
+--- a/setup.py
++++ b/setup.py
+@@ -63,7 +63,7 @@ setup(name=NAME,
+       description="A Twitter client for the console.",
+       long_description=long_description,
+       keywords="twitter client, curses, console, twitter",
+-      packages=find_packages(),
++      packages=find_packages(exclude=["tests"]),
+       entry_points={
+           'console_scripts':
+             ['turses = turses.cli:main']

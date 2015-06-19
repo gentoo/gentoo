@@ -1,0 +1,47 @@
+# ChangeLog for dev-ruby/bitescript
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/bitescript/ChangeLog,v 1.10 2014/08/05 16:01:01 mrueg Exp $
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> bitescript-0.0.9.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  25 Apr 2014; Manuel Rüger <mrueg@gentoo.org> bitescript-0.0.9.ebuild:
+  EAPI bump.
+
+  14 Jan 2012; Hans de Graaff <graaff@gentoo.org> -bitescript-0.0.8.ebuild:
+  Remove old version.
+
+*bitescript-0.0.9 (11 Jul 2011)
+
+  11 Jul 2011; Hans de Graaff <graaff@gentoo.org> +bitescript-0.0.9.ebuild:
+  Version bump.
+
+  11 Jul 2011; Hans de Graaff <graaff@gentoo.org> -bitescript-0.0.7.ebuild:
+  Remove old version.
+
+*bitescript-0.0.8 (08 Mar 2011)
+
+  08 Mar 2011; Hans de Graaff <graaff@gentoo.org> +bitescript-0.0.8.ebuild:
+  Version bump.
+
+  08 Mar 2011; Hans de Graaff <graaff@gentoo.org> -bitescript-0.0.5.ebuild,
+  -bitescript-0.0.6.ebuild:
+  Remove old versions.
+
+*bitescript-0.0.7 (11 Dec 2010)
+
+  11 Dec 2010; Hans de Graaff <graaff@gentoo.org> +bitescript-0.0.7.ebuild:
+  Version bump.
+
+*bitescript-0.0.6 (13 Jun 2010)
+
+  13 Jun 2010; Hans de Graaff <graaff@gentoo.org> +bitescript-0.0.6.ebuild:
+  Version bump.
+
+*bitescript-0.0.5 (15 Feb 2010)
+
+  15 Feb 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +bitescript-0.0.5.ebuild, +metadata.xml:
+  Initial import of bitescript ebuild for JRuby. Far from perfect, as we
+  still try to use the script with Ruby 1.8, but it's working if you're
+  using 'jruby -S'.

@@ -1,0 +1,16 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/haveged/files/haveged-init.d.2,v 1.2 2012/12/28 12:54:40 flameeyes Exp $
+
+command="/usr/sbin/${SVCNAME}"
+command_args="-r 0 ${HAVEGED_OPTS}"
+pidfile=/var/run/${SVCNAME}.pid
+
+depend() {
+	need localmount
+	use logger
+	provide entropy
+}
+
+# vim:ft=gentoo-init-d:

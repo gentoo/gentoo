@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>base-system</herd>
+  <maintainer>
+    <email>flameeyes@gentoo.org</email>
+    <description>
+      Diego and Luca are using SCTP for development, so they'll know
+      if it works
+    </description>
+  </maintainer>
+  <maintainer>
+    <email>lu_zero@gentoo.org</email>
+    <description>
+      Luca and Diego are using SCTP for development, so they'll know
+      if it works
+    </description>
+  </maintainer>
+  <upstream>
+    <remote-id type="sourceforge">lksctp</remote-id>
+  </upstream>
+</pkgmetadata>

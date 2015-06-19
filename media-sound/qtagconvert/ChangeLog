@@ -1,0 +1,29 @@
+# ChangeLog for media-sound/qtagconvert
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/qtagconvert/ChangeLog,v 1.5 2015/05/06 09:41:21 mrueg Exp $
+
+  06 May 2015; Manuel Rüger <mrueg@gentoo.org> -qtagconvert-2.0.0-r1.ebuild:
+  Remove old.
+
+*qtagconvert-2.0.0-r2 (23 Jun 2014)
+
+  23 Jun 2014; Michael Palimaka <kensington@gentoo.org>
+  +files/qtagconvert-2.0.0-desktop.patch, +qtagconvert-2.0.0-r2.ebuild:
+  EAPI bump. Add missing dependencies wrt bug #514590. Fix .desktop validation.
+  Avoid installing COPYING file.
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org>
+  qtagconvert-2.0.0-r1.ebuild:
+  Move Qt dependencies to the new category
+
+*qtagconvert-2.0.0-r1 (13 Jun 2010)
+
+  13 Jun 2010; Markos Chandras <hwoarang@gentoo.org>
+  -qtagconvert-2.0.0.ebuild, +qtagconvert-2.0.0-r1.ebuild:
+  Fix documentation path installation wrt bug #323051
+
+*qtagconvert-2.0.0 (20 May 2010)
+
+  20 May 2010; Markos Chandras <hwoarang@gentoo.org>
+  +qtagconvert-2.0.0.ebuild, +metadata.xml:
+  Initial commit of qtagconvert application. Moved from qting-edge overlay

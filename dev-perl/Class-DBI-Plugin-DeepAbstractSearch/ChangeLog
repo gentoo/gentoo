@@ -1,0 +1,30 @@
+# ChangeLog for dev-perl/Class-DBI-Plugin-DeepAbstractSearch
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Class-DBI-Plugin-DeepAbstractSearch/ChangeLog,v 1.6 2014/09/05 15:15:14 zlogene Exp $
+
+  05 Sep 2014; Mikle Kolyada <zlogene@gentoo.org>
+  Class-DBI-Plugin-DeepAbstractSearch-0.80.0.ebuild:
+  Bump to EAPI=5
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  -Class-DBI-Plugin-DeepAbstractSearch-0.08.ebuild:
+  Cleanup
+
+*Class-DBI-Plugin-DeepAbstractSearch-0.80.0 (01 Sep 2011)
+
+  01 Sep 2011; Torsten Veller <tove@gentoo.org>
+  +Class-DBI-Plugin-DeepAbstractSearch-0.80.0.ebuild:
+  Change version scheme
+
+  24 Apr 2011; Fabian Groffen <grobian@gentoo.org>
+  Class-DBI-Plugin-DeepAbstractSearch-0.08.ebuild:
+  Marked ~x86-solaris, bug #296509
+
+*Class-DBI-Plugin-DeepAbstractSearch-0.08 (14 Nov 2009)
+
+  14 Nov 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +Class-DBI-Plugin-DeepAbstractSearch-0.08.ebuild, +metadata.xml:
+  Initial commit. Ebuild by g-cpan. Dependancy for DBIx-Class-0.08113.

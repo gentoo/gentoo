@@ -1,0 +1,30 @@
+# ChangeLog for games-util/gtkevemon
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-util/gtkevemon/ChangeLog,v 1.6 2014/05/08 00:45:31 wired Exp $
+
+  08 May 2014; Alex Alexander <wired@gentoo.org> gtkevemon-9999.ebuild:
+  icon format changed to svg, bug #509782
+
+  19 Nov 2012; Alex Alexander <wired@gentoo.org> gtkevemon-9999.ebuild:
+  fixed bug #437128
+
+  24 Sep 2012; Alex Alexander <wired@gentoo.org> gtkevemon-1.8-r1.ebuild,
+  +files/gtkevemon-1.8-pthreads-build-fix.patch:
+  pthreads build fix, bug #423305
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> gtkevemon-1.8-r1.ebuild,
+  gtkevemon-9999.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  25 Jul 2011; Alex Alexander <wired@gentoo.org> gtkevemon-1.8-r1.ebuild,
+  -files/gtkevemon-1.8-learning.patch.gz:
+  moved gziped patch to distfiles
+
+*gtkevemon-9999 (21 Jul 2011)
+*gtkevemon-1.8-r1 (21 Jul 2011)
+
+  21 Jul 2011; Alex Alexander <wired@gentoo.org> +gtkevemon-1.8-r1.ebuild,
+  +files/gtkevemon-1.8-learning.patch.gz, +files/gtkevemon-1.8-portrait.patch,
+  +gtkevemon-9999.ebuild, +metadata.xml:
+  first commit. based on the sunrise ebuilds by Andre Schulz.
+

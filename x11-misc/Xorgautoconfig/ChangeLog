@@ -1,0 +1,101 @@
+# ChangeLog for x11-misc/Xorgautoconfig
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/Xorgautoconfig/ChangeLog,v 1.22 2014/08/10 20:01:08 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  Xorgautoconfig-0.2.4-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  28 Apr 2007; Torsten Veller <tove@gentoo.org>
+  Xorgautoconfig-0.2.4-r1.ebuild:
+  Use newinitd
+
+  13 Feb 2007; Joseph Jezak <josejx@gentoo.org>
+  +files/Xorgautoconfig-lz.patch, -Xorgautoconfig-0.2.3.ebuild,
+  -Xorgautoconfig-0.2.4.ebuild, Xorgautoconfig-0.2.4-r1.ebuild:
+  Removed old versions, added gzopen patch.
+
+  07 Jul 2006; Markus Rothe <corsair@gentoo.org>
+  Xorgautoconfig-0.2.4-r1.ebuild:
+  Stable on ppc64; bug #139392
+
+  06 Jul 2006; Joseph Jezak <josejx@gentoo.org>
+  Xorgautoconfig-0.2.4-r1.ebuild:
+  Marked ppc stable.
+
+*Xorgautoconfig-0.2.4-r1 (06 Jul 2006)
+
+  06 Jul 2006; Joseph Jezak <josejx@gentoo.org> +files/backingstore.patch,
+  +Xorgautoconfig-0.2.4-r1.ebuild:
+  Fixed backing store issue, bug #138563.
+
+*Xorgautoconfig-0.2.4 (18 May 2006)
+
+  18 May 2006; Joseph Jezak <josejx@gentoo.org>
+  +Xorgautoconfig-0.2.4.ebuild:
+  Added latest version (Modular X fixes).
+
+  06 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  Xorgautoconfig-0.2.3.ebuild:
+  Use the right CC for crosscompile.
+
+  21 Feb 2006; Joseph Jezak <josejx@gentoo.org>
+  -Xorgautoconfig-0.2.2.ebuild:
+  Removed old version.
+
+  20 Feb 2006; Markus Rothe <corsair@gentoo.org>
+  Xorgautoconfig-0.2.3.ebuild:
+  Stable on ppc64
+
+  18 Feb 2006; Joseph Jezak <josejx@gentoo.org> -files/pciutils.patch,
+  -Xorgautoconfig-0.2.1.ebuild, Xorgautoconfig-0.2.3.ebuild:
+  Marked ppc stable and removed old versions.
+
+  11 Feb 2006; Markus Rothe <corsair@gentoo.org>
+  Xorgautoconfig-0.2.2.ebuild:
+  Stable on ppc64
+
+  09 Feb 2006; Joseph Jezak <josejx@gentoo.org> Xorgautoconfig-0.2.2.ebuild:
+  Marked ppc stable.
+
+  22 Jan 2006; Markus Rothe <corsair@gentoo.org>
+  Xorgautoconfig-0.2.1.ebuild:
+  Stable on ppc64
+
+*Xorgautoconfig-0.2.3 (18 Jan 2006)
+
+  18 Jan 2006; Joseph Jezak <josejx@gentoo.org> Xorgautoconfig-0.2.ebuild,
+  Xorgautoconfig-0.2.1.ebuild, Xorgautoconfig-0.2.2.ebuild,
+  +Xorgautoconfig-0.2.3.ebuild:
+  Fixed ATI Radeon NV reporting as nvidia card, fixed homepage and source links.
+
+*Xorgautoconfig-0.2.2 (06 Jan 2006)
+
+  06 Jan 2006; Joseph Jezak <josejx@gentoo.org>
+  +Xorgautoconfig-0.2.2.ebuild:
+  Fixed mmio bug, thanks to cokehabit for pointing it out.
+
+  17 Oct 2005; Joseph Jezak <josejx@gentoo.org> +files/pciutils.patch,
+  Xorgautoconfig-0.2.1.ebuild:
+  Added word/byte type fix for new pciutils.
+
+  02 Oct 2005; Joseph Jezak <josejx@gentoo.org> Xorgautoconfig-0.2.1.ebuild:
+  Marked ppc stable.
+
+  02 Aug 2005; Markus Rothe <corsair@gentoo.org> Xorgautoconfig-0.2.ebuild:
+  Stable on ppc64
+
+*Xorgautoconfig-0.2.1 (20 Jul 2005)
+
+  20 Jul 2005; Joseph Jezak <josejx@gentoo.org>
+  +Xorgautoconfig-0.2.1.ebuild:
+  Fix for PowerMac 4,2 nvidia cards, now defaults to framebuffer PCI Bus ID.
+
+  02 Jul 2005; Markus Rothe <corsair@gentoo.org> Xorgautoconfig-0.2.ebuild:
+  added ~ppc64
+
+*Xorgautoconfig-0.2 (26 Jun 2005)
+
+  26 Jun 2005; Joseph Jezak <josejx@gentoo.org> +metadata.xml,
+  +Xorgautoconfig-0.2.ebuild:
+  Initial commit.

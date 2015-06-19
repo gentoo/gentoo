@@ -1,0 +1,42 @@
+diff --git a/configure.in b/configure.in
+index e13888c..4365868 100644
+--- a/configure.in
++++ b/configure.in
+@@ -332,17 +332,17 @@ if test -c /dev/urandom ; then
+     AC_DEFINE(HAVE_DEV_URANDOM, 1, [Is /dev/urandom available?])
+ fi
+ 
+-dnl added by PN 3/2/12 to detect cups
+-$as_echo "checking for cups"
+-if test -e /usr/include/cups/cups.h ; then
+-    AC_DEFINE(HAVE_CUPS, 1, [Is /usr/include/cups/cups.h available?])
+-	with_cups="yes"
+-	LIBS="-lcups  $LIBS"
+-else
+-	$as_echo "cups.h not found, you may want to install a cups development package"
+-	$as_echo "in order to autodetect network scanners in kodakaio."
+-	with_cups="no"
+-fi
++dnl added by PN 3/2/12 to detect cups commented out 15/10/13 since avahi is now used instead
++dnl $as_echo "checking for cups"
++dnl if test -e /usr/include/cups/cups.h ; then
++dnl     AC_DEFINE(HAVE_CUPS, 1, [Is /usr/include/cups/cups.h available?])
++dnl 	with_cups="yes"
++dnl 	LIBS="-lcups  $LIBS"
++dnl else
++dnl 	$as_echo "cups.h not found, you may want to install a cups development package"
++dnl 	$as_echo "in order to autodetect network scanners in kodakaio."
++dnl 	with_cups="no"
++dnl fi
+ 
+ dnl added by llagendijk 12/7/2012 to detect systemd for saned
+ $as_echo_n "Checking for systemd..."
+@@ -816,7 +816,7 @@ fi
+ echo "IPv6 support:  `eval eval echo ${ipv6}`"
+ echo "Avahi support: `eval eval echo ${enable_avahi}`"
+ echo "SNMP support:  `eval eval echo ${with_snmp}`"
+-echo "CUPS support:  `eval eval echo ${with_cups}`"
++dnl echo "CUPS support:  `eval eval echo ${with_cups}`" commented out 15/10/13
+ echo "-> The following backends will be built:"
+ for backend in ${BACKENDS} ; do
+   echo $ECHO_N "${backend} " 

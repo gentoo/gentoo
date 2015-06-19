@@ -1,0 +1,22 @@
+Index: jaaa/Makefile
+===================================================================
+--- jaaa.orig/Makefile
++++ jaaa/Makefile
+@@ -20,7 +20,7 @@ SUFFIX := $(shell uname -m | sed -e 's/^
+ LIBDIR = lib$(SUFFIX)
+ VERSION = 0.4.2
+ DISTDIR = jaaa-$(VERSION)
+-CPPFLAGS += -O3 -Wall -DVERSION=\"$(VERSION)\" -DPREFIX=\"$(PREFIX)\" -I/usr/include/freetype2
++CPPFLAGS += -Wall -DVERSION=\"$(VERSION)\" -DPREFIX=\"$(PREFIX)\" -I/usr/include/freetype2
+ #CPPFLAGS += -march=pentium4
+ 
+ LDFLAGS += -L$(PREFIX)/$(LIBDIR) -L/usr/X11R6/$(LIBDIR)
+@@ -31,7 +31,7 @@ JAAA_O = jaaa.o styles.o spectwin.o audi
+ 
+ 
+ jaaa:	$(JAAA_O)
+-	g++ $(LDFLAGS) -o jaaa $(JAAA_O) $(LDLIBS)
++	$(CXX) $(LDFLAGS) -o jaaa $(JAAA_O) $(LDLIBS)
+ 
+ 
+ install:	jaaa

@@ -1,0 +1,831 @@
+# ChangeLog for app-emacs/org-mode
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/org-mode/ChangeLog,v 1.172 2014/08/03 18:36:52 ago Exp $
+
+  03 Aug 2014; Agostino Sarubbo <ago@gentoo.org> org-mode-8.2.6.ebuild:
+  Stable for ppc, wrt bug #511592
+
+  26 Jul 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> org-mode-8.2.6.ebuild:
+  x86 stable wrt bug #511592
+
+  15 Jul 2014; Chema Alonso <nimiux@gentoo.org> org-mode-8.2.6.ebuild:
+  Stable for amd64 wrt bug #511592
+
+  14 Jun 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> org-mode-8.2.5h.ebuild:
+  x86 stable wrt bug #504560
+
+  07 Jun 2014; Ulrich Müller <ulm@gentoo.org> -org-mode-7.9.2.ebuild,
+  -org-mode-8.0.2.ebuild, org-mode-8.2.1.ebuild, org-mode-8.2.5h.ebuild,
+  org-mode-8.2.6.ebuild, -files/50org-mode-gentoo-8.el,
+  files/50org-mode-gentoo.el:
+  Remove redundant NEED_EMACS assignment. Remove old.
+
+*org-mode-8.2.6 (26 Apr 2014)
+
+  26 Apr 2014; Ulrich Müller <ulm@gentoo.org> +org-mode-8.2.6.ebuild:
+  Version bump.
+
+  26 Mar 2014; Ulrich Müller <ulm@gentoo.org> org-mode-8.2.5h.ebuild:
+  Add missing "die" statement, bug 504560#c1.
+
+  26 Mar 2014; Chema Alonso <nimiux@gentoo.org> org-mode-8.2.5h.ebuild:
+  Stable for amd64 wrt bug #504560
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> org-mode-8.2.1.ebuild:
+  x86 stable wrt bug #495334
+
+*org-mode-8.2.5h (12 Feb 2014)
+
+  12 Feb 2014; Ulrich Müller <ulm@gentoo.org> -org-mode-6.36c.ebuild,
+  -org-mode-8.2.ebuild, +org-mode-8.2.5h.ebuild:
+  Version bump. Remove old.
+
+  20 Jan 2014; Agostino Sarubbo <ago@gentoo.org> org-mode-8.2.1.ebuild:
+  Stable for ppc, wrt bug #495334
+
+  15 Jan 2014; Chema Alonso <nimiux@gentoo.org> org-mode-8.2.1.ebuild:
+  Stable for amd64 wrt bug #495334
+
+*org-mode-8.2.1 (02 Nov 2013)
+
+  02 Nov 2013; Ulrich Müller <ulm@gentoo.org> +org-mode-8.2.1.ebuild:
+  Version bump.
+
+*org-mode-8.2 (23 Sep 2013)
+
+  23 Sep 2013; Ulrich Müller <ulm@gentoo.org> +org-mode-8.2.ebuild:
+  Version bump.
+
+  06 May 2013; Ulrich Müller <ulm@gentoo.org> org-mode-7.9.2.ebuild,
+  org-mode-8.0.2.ebuild:
+  Also define infodir, bug 468574.
+
+  05 May 2013; Ulrich Müller <ulm@gentoo.org> org-mode-7.9.2.ebuild,
+  org-mode-8.0.2.ebuild:
+  Fix previous commit, EPREFIX was missing from paths, bug 468574.
+
+*org-mode-8.0.2 (02 May 2013)
+
+  02 May 2013; Ulrich Müller <ulm@gentoo.org> +org-mode-8.0.2.ebuild,
+  +files/50org-mode-gentoo-8.el:
+  Version bump, bug 466720. Thanks to Christoph Lange <langec@web.de>.
+
+  02 May 2013; Ulrich Müller <ulm@gentoo.org> org-mode-7.9.2.ebuild,
+  -files/org-mode-7.8.03-Makefile.patch, -files/50org-mode-gentoo-7.8.03.el:
+  Fix install location, "org-mode" instead of "org". Remove stale files.
+
+  09 Dec 2012; Ulrich Müller <ulm@gentoo.org> org-mode-7.9.2.ebuild:
+  Fix sed options.
+
+  22 Nov 2012; Christian Faulhammer <fauli@gentoo.org> -org-mode-7.7.ebuild,
+  -org-mode-7.8.11.ebuild:
+  clean up
+
+  22 Nov 2012; Ulrich Müller <ulm@gentoo.org> -org-mode-7.9.1.ebuild,
+  org-mode-7.9.2.ebuild:
+  Add RESTRICT="test": The "testing" subdirectory needed for tests is only
+  present in the upstream git repository, but not distributed with the
+  package's tarball, bug 441072 comment #4. Remove old.
+
+  21 Nov 2012; Agostino Sarubbo <ago@gentoo.org> org-mode-7.9.2.ebuild:
+  Stable for ppc, tested by Vincent Olivert Riera <peratu@carrosses.com>, wrt
+  bug #441072
+
+  20 Nov 2012; Agostino Sarubbo <ago@gentoo.org> org-mode-7.9.2.ebuild:
+  Stable for x86, wrt bug #441072
+
+  04 Nov 2012; Agostino Sarubbo <ago@gentoo.org> org-mode-7.9.2.ebuild:
+  Stable for amd64, wrt bug #441072
+
+*org-mode-7.9.2 (01 Oct 2012)
+
+  01 Oct 2012; Ulrich Müller <ulm@gentoo.org> +org-mode-7.9.2.ebuild:
+  Version bump.
+
+*org-mode-7.9.1 (26 Sep 2012)
+
+  26 Sep 2012; Ulrich Müller <ulm@gentoo.org> org-mode-6.36c.ebuild,
+  org-mode-7.7.ebuild, -org-mode-7.8.03-r1.ebuild, -org-mode-7.8.09.ebuild,
+  org-mode-7.8.11.ebuild, +org-mode-7.9.1.ebuild, metadata.xml:
+  Version bump. Add odt-schema USE flag to control installation of non-free
+  Relax-NG schemas. Clarify LICENSE. Remove old.
+
+  23 Sep 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> org-mode-7.8.11.ebuild:
+  x86 stable wrt bug #428866
+
+  13 Sep 2012; Agostino Sarubbo <ago@gentoo.org> org-mode-7.8.11.ebuild:
+  Stable for amd64, wrt bug #428866
+
+*org-mode-7.8.11 (05 Jun 2012)
+
+  05 Jun 2012; Ulrich Müller <ulm@gentoo.org> +org-mode-7.8.11.ebuild:
+  Version bump.
+
+*org-mode-7.8.09 (22 Apr 2012)
+
+  22 Apr 2012; Ulrich Müller <ulm@gentoo.org> -org-mode-7.8.02-r1.ebuild,
+  -files/org-mode-7.8.02-odt-styles.patch, -files/50org-mode-gentoo-7.8.02.el,
+  +org-mode-7.8.09.ebuild:
+  Version bump, bug 413069. Remove intermediate version.
+
+  06 Jan 2012; Ulrich Mueller <ulm@gentoo.org> -org-mode-7.5.ebuild:
+  Remove intermediate version.
+
+  06 Jan 2012; Brent Baude <ranger@gentoo.org> org-mode-7.7.ebuild:
+  Marking org-mode-7.7 ppc for bug 396001
+
+*org-mode-7.8.03-r1 (05 Jan 2012)
+
+  05 Jan 2012; Ulrich Mueller <ulm@gentoo.org> -org-mode-7.8.02.ebuild,
+  -org-mode-7.8.03.ebuild, +org-mode-7.8.03-r1.ebuild,
+  files/50org-mode-gentoo-7.8.03.el:
+  Fix typo in site-init file, bug 397721. Remove old.
+
+  04 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> org-mode-7.7.ebuild:
+  x86 stable wrt bug #396001
+
+*org-mode-7.8.03 (04 Jan 2012)
+
+  04 Jan 2012; Ulrich Mueller <ulm@gentoo.org> +org-mode-7.8.03.ebuild,
+  +files/org-mode-7.8.03-Makefile.patch, +files/50org-mode-gentoo-7.8.03.el:
+  Version bump.
+
+*org-mode-7.8.02-r1 (01 Jan 2012)
+
+  01 Jan 2012; Ulrich Mueller <ulm@gentoo.org> +org-mode-7.8.02-r1.ebuild,
+  +files/org-mode-7.8.02-odt-styles.patch, +files/50org-mode-gentoo-7.8.02.el:
+  Install OpenDocument style files. Fixes bug 396269.
+
+  25 Dec 2011; Agostino Sarubbo <ago@gentoo.org> org-mode-7.7.ebuild:
+  Stable for AMD64, wrt bug #396001
+
+*org-mode-7.8.02 (25 Dec 2011)
+
+  25 Dec 2011; Ulrich Mueller <ulm@gentoo.org> org-mode-7.7.ebuild,
+  +org-mode-7.8.02.ebuild:
+  Version bump.
+
+  09 Oct 2011; Ulrich Mueller <ulm@gentoo.org> -org-mode-7.6.ebuild,
+  org-mode-7.7.ebuild:
+  With USE="contrib", add the contrib subdirectory to load-path, bug 386243.
+  Remove intermediate version.
+
+*org-mode-7.7 (04 Aug 2011)
+
+  04 Aug 2011; Ulrich Mueller <ulm@gentoo.org> -org-mode-7.4-r1.ebuild,
+  +org-mode-7.7.ebuild:
+  Version bump. Remove old.
+
+*org-mode-7.6 (06 Jul 2011)
+
+  06 Jul 2011; Ulrich Mueller <ulm@gentoo.org> -org-mode-7.3.ebuild,
+  +org-mode-7.6.ebuild:
+  Version bump. Remove old.
+
+  19 Jun 2011; Raúl Porcel <armin76@gentoo.org> org-mode-6.36c.ebuild,
+  org-mode-7.3.ebuild, org-mode-7.4-r1.ebuild, org-mode-7.5.ebuild:
+  Drop sparc keywords
+
+  28 May 2011; Brent Baude <ranger@gentoo.org> org-mode-7.5.ebuild:
+  Marking org-mode-7.5 ppc for bug 366329
+
+  22 May 2011; Ulrich Mueller <ulm@gentoo.org> -org-mode-7.4.ebuild,
+  org-mode-7.5.ebuild:
+  Call default function in src_compile. Remove old.
+
+  10 May 2011; Markos Chandras <hwoarang@gentoo.org> org-mode-7.5.ebuild:
+  Stable on amd64 wrt bug #366329
+
+  08 May 2011; Christian Faulhammer <fauli@gentoo.org> org-mode-7.5.ebuild:
+  stable x86, bug 366329
+
+  17 Mar 2011; Fabian Groffen <grobian@gentoo.org> org-mode-7.5.ebuild:
+  Marked ~x86-macos, thanks wangbin in bug #357733
+
+*org-mode-7.5 (16 Mar 2011)
+
+  16 Mar 2011; Ulrich Mueller <ulm@gentoo.org> +org-mode-7.5.ebuild:
+  Version bump. Replace D by ED in order to prepare for prefix, bug 357733.
+
+*org-mode-7.4-r1 (30 Jan 2011)
+
+  30 Jan 2011; Ulrich Mueller <ulm@gentoo.org> +org-mode-7.4-r1.ebuild:
+  Don't call prepalldocs, it is no longer needed with EAPI 4. Bug 262925.
+
+  08 Jan 2011; Ulrich Mueller <ulm@gentoo.org> -org-mode-7.01h-r1.ebuild,
+  -org-mode-7.02.ebuild:
+  Remove old.
+
+  08 Jan 2011; Brent Baude <ranger@gentoo.org> org-mode-7.3.ebuild:
+  Marking org-mode-7.3 ppc for bug 348197
+
+  04 Jan 2011; Michael Weber <xmw@gentoo.org> org-mode-7.3.ebuild:
+  sparc stable (bug 348197)
+
+  22 Dec 2010; Markos Chandras <hwoarang@gentoo.org> org-mode-7.3.ebuild:
+  Stable on amd64 wrt bug #348197
+
+  12 Dec 2010; Thomas Kahle <tomka@gentoo.org> org-mode-7.3.ebuild:
+  x86 stable per bug 348197
+
+*org-mode-7.4 (10 Dec 2010)
+
+  10 Dec 2010; Ulrich Mueller <ulm@gentoo.org> +org-mode-7.4.ebuild:
+  Version bump.
+
+*org-mode-7.3 (02 Nov 2010)
+
+  02 Nov 2010; Ulrich Mueller <ulm@gentoo.org> +org-mode-7.3.ebuild,
+  metadata.xml:
+  Version bump. Install contributed files with USE=contrib, bug 293773.
+
+*org-mode-7.02 (29 Oct 2010)
+
+  29 Oct 2010; Ulrich Mueller <ulm@gentoo.org> -org-mode-7.01h.ebuild,
+  +org-mode-7.02.ebuild:
+  Version bump.
+
+*org-mode-7.01h-r1 (27 Oct 2010)
+
+  27 Oct 2010; Ulrich Mueller <ulm@gentoo.org> +org-mode-7.01h-r1.ebuild:
+  Install GNU Info file without .info extension. Install orgguide.pdf.
+
+  14 Oct 2010; Ulrich Mueller <ulm@gentoo.org> -org-mode-6.33f.ebuild:
+  Remove old.
+
+  14 Oct 2010; Brent Baude <ranger@gentoo.org> org-mode-6.36c.ebuild:
+  stable ppc, bug 338726
+
+  12 Oct 2010; Raúl Porcel <armin76@gentoo.org> org-mode-6.36c.ebuild:
+  sparc stable wrt #338726
+
+  05 Oct 2010; Markus Meier <maekke@gentoo.org> org-mode-6.36c.ebuild:
+  x86 stable, bug #338726
+
+  27 Sep 2010; Markos Chandras <hwoarang@gentoo.org> org-mode-6.36c.ebuild:
+  Stable on amd64 wrt bug #338726
+
+  25 Sep 2010; Ulrich Mueller <ulm@gentoo.org> +org-mode-6.36c.ebuild,
+  -org-mode-7.01g.ebuild:
+  Restore version 6.36c. Delete intermediate version.
+
+  18 Aug 2010; Christian Faulhammer <fauli@gentoo.org>
+  -org-mode-6.36c.ebuild, -org-mode-7.01f.ebuild:
+  clean up
+
+*org-mode-7.01h (18 Aug 2010)
+
+  18 Aug 2010; Christian Faulhammer <fauli@gentoo.org>
+  +org-mode-7.01h.ebuild:
+  version bump
+
+*org-mode-7.01g (27 Jul 2010)
+
+  27 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  +org-mode-7.01g.ebuild:
+  version bump
+
+  21 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  -org-mode-6.35i.ebuild:
+  clean up
+
+*org-mode-7.01f (21 Jul 2010)
+
+  21 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  +org-mode-7.01f.ebuild:
+  version bump, drop compatability with GNU Emacs 21, version 22 is the
+  lowest workiorking with this; revamp ebuild a little bit
+
+*org-mode-6.36c (15 May 2010)
+
+  15 May 2010; Ulrich Mueller <ulm@gentoo.org> -org-mode-6.35h.ebuild,
+  +org-mode-6.36c.ebuild:
+  Version bump. Remove intermediate version.
+
+  22 Apr 2010; Christian Faulhammer <fauli@gentoo.org>
+  -org-mode-6.35g.ebuild:
+  clean up
+
+*org-mode-6.35i (22 Apr 2010)
+
+  22 Apr 2010; Christian Faulhammer <fauli@gentoo.org>
+  +org-mode-6.35i.ebuild:
+  version bump
+
+  12 Apr 2010; Christian Faulhammer <fauli@gentoo.org>
+  -org-mode-6.34c.ebuild, -org-mode-6.35c.ebuild:
+  clean up
+
+*org-mode-6.35h (12 Apr 2010)
+
+  12 Apr 2010; Christian Faulhammer <fauli@gentoo.org>
+  +org-mode-6.35h.ebuild:
+  version bump
+
+*org-mode-6.35g (11 Apr 2010)
+
+  11 Apr 2010; Ulrich Mueller <ulm@gentoo.org> +org-mode-6.35g.ebuild:
+  Version bump.
+
+  07 Apr 2010; Christian Faulhammer <fauli@gentoo.org>
+  -org-mode-6.34b.ebuild:
+  clean up
+
+*org-mode-6.35c (07 Apr 2010)
+
+  07 Apr 2010; Christian Faulhammer <fauli@gentoo.org>
+  +org-mode-6.35c.ebuild:
+  version bump
+
+*org-mode-6.34c (19 Jan 2010)
+
+  19 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  -org-mode-6.34a.ebuild, +org-mode-6.34c.ebuild:
+  version bump and clean up
+
+*org-mode-6.34b (16 Jan 2010)
+
+  16 Jan 2010; Ulrich Mueller <ulm@gentoo.org> +org-mode-6.34b.ebuild:
+  Version bump.
+
+*org-mode-6.34a (12 Jan 2010)
+
+  12 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  -org-mode-6.21b.ebuild, -org-mode-6.34.ebuild, +org-mode-6.34a.ebuild:
+  version bump and clean up
+
+  12 Jan 2010; Tiago Cunha <tcunha@gentoo.org> org-mode-6.33f.ebuild:
+  stable sparc, bug 297564
+
+*org-mode-6.34 (10 Jan 2010)
+
+  10 Jan 2010; Ulrich Mueller <ulm@gentoo.org> -files/51org-mode-gentoo.el,
+  org-mode-6.21b.ebuild, -org-mode-6.32b.ebuild, +org-mode-6.34.ebuild:
+  Version bump. Remove intermediate version.
+
+  07 Jan 2010; Brent Baude <ranger@gentoo.org> org-mode-6.33f.ebuild:
+  stable ppc, bug 297564
+
+  03 Jan 2010; Markus Meier <maekke@gentoo.org> org-mode-6.33f.ebuild:
+  amd64 stable, bug #297564
+
+  29 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  org-mode-6.33f.ebuild:
+  stable x86, bug 297564
+
+*org-mode-6.33f (20 Nov 2009)
+
+  20 Nov 2009; Ulrich Mueller <ulm@gentoo.org> -org-mode-6.33c.ebuild,
+  +org-mode-6.33f.ebuild:
+  Version bump. Remove intermediate version.
+
+*org-mode-6.33c (16 Nov 2009)
+
+  16 Nov 2009; Ulrich Mueller <ulm@gentoo.org> -org-mode-6.33.ebuild,
+  +org-mode-6.33c.ebuild:
+  Version bump.
+
+*org-mode-6.33 (13 Nov 2009)
+
+  13 Nov 2009; Ulrich Mueller <ulm@gentoo.org> -org-mode-6.31a.ebuild,
+  +org-mode-6.33.ebuild:
+  Version bump. Remove intermediate version.
+
+*org-mode-6.32b (30 Oct 2009)
+
+  30 Oct 2009; Ulrich Mueller <ulm@gentoo.org> +files/50org-mode-gentoo.el,
+  -org-mode-6.32.ebuild, +org-mode-6.32b.ebuild:
+  Version bump. Remove intermediate version.
+
+  26 Oct 2009; Christian Faulhammer <fauli@gentoo.org>
+  -org-mode-6.30e.ebuild:
+  clean up
+
+*org-mode-6.32 (26 Oct 2009)
+
+  26 Oct 2009; Christian Faulhammer <fauli@gentoo.org>
+  +org-mode-6.32.ebuild:
+  version bump
+
+  03 Oct 2009; Christian Faulhammer <fauli@gentoo.org>
+  -org-mode-6.30.ebuild:
+  clean up
+
+*org-mode-6.31a (03 Oct 2009)
+
+  03 Oct 2009; Christian Faulhammer <fauli@gentoo.org>
+  +org-mode-6.31a.ebuild:
+  version bump
+
+  08 Sep 2009; Christian Faulhammer <fauli@gentoo.org>
+  -org-mode-6.29c.ebuild:
+  clean up
+
+*org-mode-6.30e (08 Sep 2009)
+
+  08 Sep 2009; Christian Faulhammer <fauli@gentoo.org>
+  +org-mode-6.30e.ebuild:
+  version bump
+
+*org-mode-6.30 (02 Sep 2009)
+
+  02 Sep 2009; Christian Faulhammer <fauli@gentoo.org>
+  +org-mode-6.30.ebuild:
+  version bump
+
+  17 Aug 2009; Christian Faulhammer <fauli@gentoo.org>
+  -org-mode-6.28d.ebuild, -org-mode-6.28e.ebuild:
+  clean up
+
+*org-mode-6.29c (08 Aug 2009)
+
+  08 Aug 2009; Christian Faulhammer <fauli@gentoo.org>
+  +org-mode-6.29c.ebuild:
+  version bump
+
+*org-mode-6.28e (29 Jun 2009)
+
+  29 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  -org-mode-6.27a.ebuild, +org-mode-6.28e.ebuild:
+  version bump and clean up
+
+*org-mode-6.28d (27 Jun 2009)
+
+  27 Jun 2009; Ulrich Mueller <ulm@gentoo.org> +org-mode-6.28d.ebuild:
+  Version bump.
+
+  03 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  -org-mode-6.26d.ebuild, -org-mode-6.27.ebuild:
+  clean up
+
+*org-mode-6.27a (27 May 2009)
+
+  27 May 2009; Christian Faulhammer <fauli@gentoo.org>
+  +org-mode-6.27a.ebuild:
+  version bump
+
+*org-mode-6.27 (24 May 2009)
+
+  24 May 2009; Ulrich Mueller <ulm@gentoo.org> -org-mode-6.26a.ebuild,
+  +org-mode-6.27.ebuild:
+  Version bump. Remove intermediate version.
+
+*org-mode-6.26d (22 Apr 2009)
+
+  22 Apr 2009; Christian Faulhammer <fauli@gentoo.org>
+  -org-mode-6.25f.ebuild, +org-mode-6.26d.ebuild:
+  version bump and clean up
+
+*org-mode-6.26a (20 Apr 2009)
+
+  20 Apr 2009; Christian Faulhammer <fauli@gentoo.org>
+  -org-mode-6.25e.ebuild, +org-mode-6.26a.ebuild:
+  version bump and clean up
+
+*org-mode-6.25f (15 Apr 2009)
+
+  15 Apr 2009; Christian Faulhammer <fauli@gentoo.org>
+  -org-mode-6.25d.ebuild, +org-mode-6.25f.ebuild:
+  version bump and clean up
+
+*org-mode-6.25e (12 Apr 2009)
+
+  12 Apr 2009; Christian Faulhammer <fauli@gentoo.org>
+  -org-mode-6.25b.ebuild, +org-mode-6.25e.ebuild:
+  version bump and clean up
+
+*org-mode-6.25d (08 Apr 2009)
+
+  08 Apr 2009; Christian Faulhammer <fauli@gentoo.org>
+  -org-mode-6.25a.ebuild, +org-mode-6.25d.ebuild:
+  version bump and clean up
+
+*org-mode-6.25b (03 Apr 2009)
+
+  03 Apr 2009; Ulrich Mueller <ulm@gentoo.org> +org-mode-6.25b.ebuild:
+  Version bump.
+
+*org-mode-6.25a (03 Apr 2009)
+
+  03 Apr 2009; Christian Faulhammer <fauli@gentoo.org>
+  -org-mode-6.16c.ebuild, -org-mode-6.24b.ebuild, -org-mode-6.25.ebuild,
+  +org-mode-6.25a.ebuild:
+  version bump and clean up
+
+*org-mode-6.25 (01 Apr 2009)
+
+  01 Apr 2009; Christian Faulhammer <fauli@gentoo.org>
+  +org-mode-6.25.ebuild:
+  version bump
+
+  18 Mar 2009; Brent Baude <ranger@gentoo.org> org-mode-6.21b.ebuild:
+  stable ppc, bug 261901
+
+*org-mode-6.24b (12 Mar 2009)
+
+  12 Mar 2009; Christian Faulhammer <fauli@gentoo.org>
+  -org-mode-6.24.ebuild, -org-mode-6.24a.ebuild, +org-mode-6.24b.ebuild:
+  version bump and clean up
+
+  10 Mar 2009; Tiago Cunha <tcunha@gentoo.org> org-mode-6.21b.ebuild:
+  stable amd64, bug 261901
+
+  09 Mar 2009; Ferris McCormick <fmccor@gentoo.org> org-mode-6.21b.ebuild:
+  Sparc stable, Bug #261901.
+
+*org-mode-6.24a (09 Mar 2009)
+
+  09 Mar 2009; Christian Faulhammer <fauli@gentoo.org>
+  +org-mode-6.24a.ebuild:
+  version bump
+
+  09 Mar 2009; Christian Faulhammer <fauli@gentoo.org>
+  org-mode-6.21b.ebuild:
+  stable x86, bug 261901
+
+*org-mode-6.24 (06 Mar 2009)
+
+  06 Mar 2009; Christian Faulhammer <fauli@gentoo.org>
+  -org-mode-6.22b.ebuild, -org-mode-6.23b.ebuild, +org-mode-6.24.ebuild:
+  version bump and removal of intermediate versions
+
+*org-mode-6.23b (25 Feb 2009)
+
+  25 Feb 2009; Ulrich Mueller <ulm@gentoo.org> org-mode-6.16c.ebuild,
+  org-mode-6.21b.ebuild, org-mode-6.22b.ebuild, +org-mode-6.23b.ebuild:
+  Version bump. Licence of documentation changed to FDL-1.3.
+
+  19 Feb 2009; Ulrich Mueller <ulm@gentoo.org> -org-mode-6.05b.ebuild,
+  -org-mode-6.20c.ebuild:
+  Remove old.
+
+  19 Feb 2009; nixnut <nixnut@gentoo.org> org-mode-6.16c.ebuild:
+  ppc stable #257691
+
+*org-mode-6.22b (13 Feb 2009)
+
+  13 Feb 2009; Christian Faulhammer <fauli@gentoo.org>
+  +org-mode-6.22b.ebuild:
+  version bump
+
+*org-mode-6.21b (07 Feb 2009)
+
+  07 Feb 2009; Christian Faulhammer <fauli@gentoo.org>
+  +org-mode-6.21b.ebuild:
+  version bump
+
+  07 Feb 2009; Christian Faulhammer <fauli@gentoo.org>
+  org-mode-6.16c.ebuild:
+  stable x86, bug 257691
+
+  06 Feb 2009; Tiago Cunha <tcunha@gentoo.org> org-mode-6.16c.ebuild:
+  stable amd64/sparc, bug 257691
+
+  29 Jan 2009; Christian Faulhammer <fauli@gentoo.org>
+  -org-mode-5.22a.ebuild:
+  clean up
+
+*org-mode-6.20c (29 Jan 2009)
+
+  29 Jan 2009; Christian Faulhammer <fauli@gentoo.org>
+  +org-mode-6.20c.ebuild:
+  version bump
+
+*org-mode-6.16c (03 Jan 2009)
+
+  03 Jan 2009; Ulrich Mueller <ulm@gentoo.org> -org-mode-6.13a.ebuild,
+  -org-mode-6.16a.ebuild, +org-mode-6.16c.ebuild:
+  Version bump. Remove intermediate versions.
+
+*org-mode-6.16a (23 Dec 2008)
+
+  23 Dec 2008; Ulrich Mueller <ulm@gentoo.org> -org-mode-6.12a.ebuild,
+  +org-mode-6.16a.ebuild:
+  Version bump. Remove intermediate version.
+
+*org-mode-6.13a (01 Dec 2008)
+
+  01 Dec 2008; Ulrich Mueller <ulm@gentoo.org> -org-mode-6.10c.ebuild,
+  -org-mode-6.11a.ebuild, +org-mode-6.13a.ebuild:
+  Version bump. Remove intermediate versions.
+
+*org-mode-6.12a (11 Nov 2008)
+
+  11 Nov 2008; Ulrich Mueller <ulm@gentoo.org> +org-mode-6.12a.ebuild:
+  Version bump.
+
+*org-mode-6.11a (08 Nov 2008)
+
+  08 Nov 2008; Ulrich Mueller <ulm@gentoo.org> -org-mode-6.11.ebuild,
+  +org-mode-6.11a.ebuild:
+  Version bump, fixes bug 246084. Remove intermediate version.
+
+*org-mode-6.11 (08 Nov 2008)
+
+  08 Nov 2008; Ulrich Mueller <ulm@gentoo.org> -org-mode-6.09a.ebuild,
+  +org-mode-6.11.ebuild:
+  Version bump. Remove intermediate version.
+
+*org-mode-6.10c (25 Oct 2008)
+
+  25 Oct 2008; Ulrich Mueller <ulm@gentoo.org> -org-mode-5.23a.ebuild,
+  -org-mode-6.06b.ebuild, +org-mode-6.10c.ebuild:
+  Version bump. Remove intermediate versions.
+
+*org-mode-6.09a (13 Oct 2008)
+
+  13 Oct 2008; Ulrich Mueller <ulm@gentoo.org> +org-mode-6.09a.ebuild:
+  Version bump. LICENSE corrected.
+
+*org-mode-6.06b (08 Aug 2008)
+
+  08 Aug 2008; Ulrich Mueller <ulm@gentoo.org> -org-mode-6.04c.ebuild,
+  +org-mode-6.06b.ebuild:
+  Version bump. Remove intermediate version.
+
+  08 Aug 2008; nixnut <nixnut@gentoo.org> org-mode-6.05b.ebuild:
+  Stable on ppc wrt bug 233833
+
+  07 Aug 2008; Markus Meier <maekke@gentoo.org> org-mode-6.05b.ebuild:
+  amd64/x86 stable, bug #233833
+
+  03 Aug 2008; Ferris McCormick <fmccor@gentoo.org> org-mode-6.05b.ebuild:
+  Sparc stable, Bug #233833.
+
+*org-mode-6.05b (30 Jun 2008)
+
+  30 Jun 2008; Ulrich Mueller <ulm@gentoo.org> -org-mode-6.03.ebuild,
+  +org-mode-6.05b.ebuild:
+  Version bump. Remove intermediate version.
+
+*org-mode-6.04c (14 Jun 2008)
+
+  14 Jun 2008; Ulrich Mueller <ulm@gentoo.org> -org-mode-6.02b.ebuild,
+  +org-mode-6.04c.ebuild:
+  Version bump. Remove intermediate version.
+
+*org-mode-6.03 (15 May 2008)
+
+  15 May 2008; Ulrich Mueller <ulm@gentoo.org> +org-mode-6.03.ebuild:
+  Version bump.
+
+*org-mode-6.02b (03 May 2008)
+
+  03 May 2008; Ulrich Mueller <ulm@gentoo.org> -org-mode-6.02a.ebuild,
+  +org-mode-6.02b.ebuild:
+  Version bump. Remove intermediate version.
+
+*org-mode-6.02a (26 Apr 2008)
+
+  26 Apr 2008; Ulrich Mueller <ulm@gentoo.org> +org-mode-6.02a.ebuild:
+  Major version bump; upstream distribution has new directory structure.
+
+  22 Mar 2008; nixnut <nixnut@gentoo.org> org-mode-5.22a.ebuild:
+  Stable on ppc wrt bug 213910
+
+  21 Mar 2008; Ferris McCormick <fmccor@gentoo.org> org-mode-5.22a.ebuild:
+  Sparc stable, Bug #213910.
+
+  21 Mar 2008; Christian Faulhammer <opfer@gentoo.org>
+  org-mode-5.22a.ebuild:
+  stable x86/amd64, bug 213910
+
+*org-mode-5.23a (19 Mar 2008)
+
+  19 Mar 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml,
+  -org-mode-5.18a.ebuild, -org-mode-5.21.ebuild, +org-mode-5.23a.ebuild:
+  Version bump. Remove old. Add longdescription to metadata.
+
+*org-mode-5.22a (22 Feb 2008)
+
+  22 Feb 2008; Ulrich Mueller <ulm@gentoo.org> +org-mode-5.22a.ebuild:
+  Version bump.
+
+*org-mode-5.21 (07 Feb 2008)
+
+  07 Feb 2008; Ulrich Mueller <ulm@gentoo.org> -org-mode-5.20.ebuild,
+  +org-mode-5.21.ebuild:
+  Version bump.
+
+*org-mode-5.20 (06 Feb 2008)
+
+  06 Feb 2008; Ulrich Mueller <ulm@gentoo.org> -org-mode-5.17a.ebuild,
+  -org-mode-5.19a.ebuild, +org-mode-5.20.ebuild:
+  Version bump.
+
+*org-mode-5.19a (18 Jan 2008)
+
+  18 Jan 2008; Ulrich Mueller <ulm@gentoo.org> -org-mode-5.18.ebuild,
+  +org-mode-5.19a.ebuild:
+  Version bump. Remove intermediate version.
+
+  10 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  files/digest-org-mode-5.18, Manifest:
+  regenerate all digests and Manifest, thanks to toto <toto AT darkside DOT
+  tomsk DOT ru>
+
+*org-mode-5.18a (08 Jan 2008)
+
+  08 Jan 2008; Ulrich Mueller <ulm@gentoo.org> +org-mode-5.18a.ebuild:
+  Version bump.
+
+*org-mode-5.18 (06 Jan 2008)
+
+  06 Jan 2008; Ulrich Mueller <ulm@gentoo.org> +org-mode-5.18.ebuild:
+  Version bump.
+
+  04 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  -org-mode-5.15.ebuild, -org-mode-5.16b.ebuild:
+  clean up
+
+*org-mode-5.17a (28 Dec 2007)
+
+  28 Dec 2007; Ulrich Mueller <ulm@gentoo.org> +org-mode-5.17a.ebuild:
+  Version bump, bug #203609.
+
+*org-mode-5.16b (07 Dec 2007)
+
+  07 Dec 2007; Christian Faulhammer <opfer@gentoo.org>
+  -org-mode-5.13i.ebuild, +org-mode-5.16b.ebuild:
+  version bump and clean up
+
+*org-mode-5.15 (30 Nov 2007)
+
+  30 Nov 2007; Christian Faulhammer <opfer@gentoo.org>
+  -org-mode-5.13h.ebuild, +org-mode-5.15.ebuild:
+  version bump and clean up
+
+*org-mode-5.13i (06 Nov 2007)
+
+  06 Nov 2007; Christian Faulhammer <opfer@gentoo.org>
+  -org-mode-5.13d.ebuild, +org-mode-5.13i.ebuild:
+  version bump and clean up
+
+*org-mode-5.13h (01 Nov 2007)
+
+  01 Nov 2007; Christian Faulhammer <opfer@gentoo.org>
+  -org-mode-5.12c.ebuild, +org-mode-5.13h.ebuild:
+  version bump
+
+*org-mode-5.13d (23 Oct 2007)
+
+  23 Oct 2007; Christian Faulhammer <opfer@gentoo.org>
+  -org-mode-5.11b.ebuild, +org-mode-5.13d.ebuild:
+  version bump and clean up
+
+*org-mode-5.12c (18 Oct 2007)
+
+  18 Oct 2007; Christian Faulhammer <opfer@gentoo.org>
+  -org-mode-5.10b.ebuild, +org-mode-5.12c.ebuild:
+  version bump and drop old
+
+*org-mode-5.11b (07 Oct 2007)
+
+  07 Oct 2007; Christian Faulhammer <opfer@gentoo.org>
+  +org-mode-5.11b.ebuild:
+  version bump
+
+  02 Oct 2007; Christian Faulhammer <opfer@gentoo.org>
+  org-mode-5.10b.ebuild:
+  change LICENSE to GPL-3
+
+*org-mode-5.10b (02 Oct 2007)
+
+  02 Oct 2007; Christian Faulhammer <opfer@gentoo.org>
+  -org-mode-4.74.ebuild, -org-mode-5.01.ebuild, +org-mode-5.10b.ebuild:
+  version bump and clean up; new HOMEPAGE
+
+*org-mode-5.01 (03 Jul 2007)
+
+  03 Jul 2007; Christian Faulhammer <opfer@gentoo.org>
+  -org-mode-4.68.ebuild, +org-mode-5.01.ebuild:
+  version bump, fixes bug 184108; clean-up
+
+*org-mode-4.74 (16 May 2007)
+
+  16 May 2007; Ulrich Mueller <ulm@gentoo.org> files/51org-mode-gentoo.el,
+  +org-mode-4.74.ebuild:
+  Version bump. Install some documentation. Dropped ~ppc-macos keyword.
+  Activate auto-mode for .org files, as suggested by MATSUYAMA Tomohiro
+  <matsuyama@ariel-networks.com> in bug #178770.
+
+  10 Apr 2007; Christian Faulhammer <opfer@gentoo.org> org-mode-4.68.ebuild:
+  added FDL license
+
+  30 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  -org-mode-4.63.ebuild:
+  clean up
+
+*org-mode-4.68 (13 Mar 2007)
+
+  13 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  +org-mode-4.68.ebuild:
+  version bumps, fixes bug #170717
+
+*org-mode-4.63 (02 Feb 2007)
+
+  02 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  +files/51org-mode-gentoo.el, +metadata.xml, +org-mode-4.63.ebuild:
+  intial commit
+  ebuild taken from bug 163947, thanks to Tassilo Horn <tassilo@member.fsf.org>
+  updated version of the org-mode included with Emacs 22

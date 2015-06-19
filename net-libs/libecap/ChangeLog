@@ -1,0 +1,161 @@
+# ChangeLog for net-libs/libecap
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libecap/ChangeLog,v 1.48 2015/05/13 06:34:48 jmorgan Exp $
+
+  13 May 2015; Jack Morgan <jmorgan@gentoo.org> libecap-1.0.0.ebuild:
+  sparc stable wrt bug #495854
+
+  18 Apr 2015; Pacho Ramos <pacho@gentoo.org> libecap-1.0.0.ebuild:
+  ppc64 stable wrt bug #495854
+
+  20 Mar 2015; Andreas Schuerch <nativemad@gentoo.org> libecap-1.0.0.ebuild:
+  x86 stable, see bug 495854
+
+  25 Jan 2015; Markus Meier <maekke@gentoo.org> libecap-1.0.0.ebuild:
+  arm stable, bug #495854
+
+  08 Jan 2015; Eray Aslan <eras@gentoo.org> metadata.xml:
+  Add myself as maintainer
+
+  08 Jan 2015; Eray Aslan <eras@gentoo.org> -files/libecap-limits.patch,
+  -libecap-0.0.3.ebuild:
+  Remove old
+
+  08 Jan 2015; Eray Aslan <eras@gentoo.org> libecap-1.0.0.ebuild:
+  Add blocker to libecap:0.2 - bug #501658
+
+  07 Jan 2015; Pacho Ramos <pacho@gentoo.org> -libecap-0.0.2.ebuild,
+  metadata.xml:
+  Reassign as discussed at https://www.mail-archive.com/gentoo-
+  dev@lists.gentoo.org/msg66357.html
+
+  27 Aug 2014; Agostino Sarubbo <ago@gentoo.org> libecap-1.0.0.ebuild:
+  Stable for ppc, wrt bug #495854
+
+  04 Jul 2014; Tobias Klausmann <klausman@gentoo.org> libecap-1.0.0.ebuild:
+  Stable on alpha, bug #495854
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> libecap-1.0.0.ebuild:
+  amd64 stable, bug #495854
+
+  15 Feb 2014; Akinori Hattori <hattya@gentoo.org> libecap-1.0.0.ebuild:
+  ia64 stable wrt bug #495854
+
+  11 Feb 2014; Jeroen Roovers <jer@gentoo.org> libecap-1.0.0.ebuild:
+  Stable for HPPA (bug #495854).
+
+*libecap-1.0.0 (23 Sep 2013)
+
+  23 Sep 2013; Tom Wijsman <TomWij@gentoo.org> +libecap-1.0.0.ebuild,
+  libecap-0.0.2.ebuild, libecap-0.0.3.ebuild, libecap-0.2.0.ebuild:
+  Version bump to 1.0.0. Moved SLOT=2 to SLOT=0.2 for version 0.0.2.
+
+  13 Apr 2013; Tom Wijsman <TomWij@gentoo.org> libecap-0.0.2.ebuild,
+  libecap-0.0.3.ebuild, libecap-0.2.0.ebuild:
+  Respect AR, reported by Agostino Sarubbo. (bug #457734)
+
+  03 Mar 2013; Agostino Sarubbo <ago@gentoo.org> libecap-0.2.0.ebuild:
+  Stable for sparc, wrt bug #457664
+
+  21 Feb 2013; Jeroen Roovers <jer@gentoo.org> libecap-0.2.0.ebuild:
+  Stable for HPPA (bug #457664).
+
+  21 Feb 2013; Agostino Sarubbo <ago@gentoo.org> libecap-0.2.0.ebuild:
+  Stable for ia64, wrt bug #457664
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> libecap-0.2.0.ebuild:
+  Stable for arm, wrt bug #457664
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> libecap-0.2.0.ebuild:
+  Stable for alpha, wrt bug #457664
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> libecap-0.2.0.ebuild:
+  Stable for ppc64, wrt bug #457664
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> libecap-0.2.0.ebuild:
+  Stable for ppc, wrt bug #457664
+
+  15 Feb 2013; Agostino Sarubbo <ago@gentoo.org> libecap-0.2.0.ebuild:
+  Stable for x86, wrt bug #457664
+
+  15 Feb 2013; Agostino Sarubbo <ago@gentoo.org> libecap-0.2.0.ebuild:
+  Stable for amd64, wrt bug #457664
+
+  04 Sep 2012; Eray Aslan <eras@gentoo.org> libecap-0.0.2.ebuild,
+  libecap-0.0.3.ebuild, libecap-0.2.0.ebuild:
+  Add blockers to different slots - bug #432942
+
+  03 Sep 2012; Eray Aslan <eras@gentoo.org> libecap-0.2.0.ebuild:
+  move to slot 2 - bug #432942
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org> libecap-0.0.3.ebuild:
+  alpha/ia64/sparc stable wrt #400439
+
+  08 Mar 2012; Brent Baude <ranger@gentoo.org> libecap-0.0.3.ebuild:
+  Marking libecap-0.0.3 ppc64 for bug 400439
+
+  08 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> libecap-0.0.3.ebuild:
+  x86 stable wrt bug #400439
+
+  07 Mar 2012; Brent Baude <ranger@gentoo.org> libecap-0.0.3.ebuild:
+  Marking libecap-0.0.3 ppc for bug 400439
+
+  02 Mar 2012; Markus Meier <maekke@gentoo.org> libecap-0.0.3.ebuild:
+  arm stable, bug #400439
+
+  27 Feb 2012; Jeroen Roovers <jer@gentoo.org> libecap-0.0.3.ebuild:
+  Stable for HPPA (bug #400439).
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org> libecap-0.0.3.ebuild:
+  Stable for amd64, wrt bug #400439
+
+  28 Nov 2011; Tim Harder <radhermit@gentoo.org> libecap-0.0.3.ebuild,
+  libecap-0.2.0.ebuild:
+  Fix autotools-utils usage (bug #392165).
+
+*libecap-0.2.0 (16 Aug 2011)
+*libecap-0.0.3 (16 Aug 2011)
+
+  16 Aug 2011; Jeroen Roovers <jer@gentoo.org> +libecap-0.0.3.ebuild,
+  +libecap-0.2.0.ebuild:
+  Version bumps thanks to Adam Carter (bug #379343).
+
+  06 Sep 2010; Brent Baude <ranger@gentoo.org> libecap-0.0.2.ebuild:
+  Marking libecap-0.0.2 ppc64 for bug 301828
+
+  04 Sep 2010; Raúl Porcel <armin76@gentoo.org> libecap-0.0.2.ebuild:
+  alpha/arm/ia64/sparc stable
+
+  09 Aug 2010; Jeroen Roovers <jer@gentoo.org> libecap-0.0.2.ebuild:
+  Stable for PPC (bug #301828).
+
+  09 Aug 2010; Jeroen Roovers <jer@gentoo.org> libecap-0.0.2.ebuild:
+  Stable for HPPA (bug #301828).
+
+  08 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> libecap-0.0.2.ebuild:
+  x86 stable wrt security bug #301828
+
+  08 Aug 2010; Markos Chandras <hwoarang@gentoo.org> libecap-0.0.2.ebuild:
+  Stable on amd64. Security bug #301828
+
+  22 Oct 2009; Mounir Lamouri <volkmar@gentoo.org> libecap-0.0.2.ebuild:
+  Keywording for ppc, bug 277883
+
+  05 Sep 2009; Brent Baude <ranger@gentoo.org> libecap-0.0.2.ebuild:
+  Marking libecap-0.0.2 ~ppc64 for bug 277883
+
+  28 Jul 2009; Jeroen Roovers <jer@gentoo.org> libecap-0.0.2.ebuild:
+  Marked ~hppa (bug #277883).
+
+  23 Jul 2009; Raúl Porcel <armin76@gentoo.org> libecap-0.0.2.ebuild:
+  Add ~alpha/~arm/~ia64 wrt #277883
+
+  17 Jul 2009; Ferris McCormick <fmccor@gentoo.org> libecap-0.0.2.ebuild:
+  Add ~sparc for testing at request of Ivan Mironov and mmess, bug #277883.
+
+*libecap-0.0.2 (16 Jul 2009)
+
+  16 Jul 2009; Alin Năstac <mrness@gentoo.org> +files/libecap-limits.patch,
+  +metadata.xml, +libecap-0.0.2.ebuild:
+  Initial import from bug 277883, thanks to Ivan Mironov
+  <mironov.ivan@gmail.com>.

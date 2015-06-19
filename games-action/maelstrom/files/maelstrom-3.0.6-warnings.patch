@@ -1,0 +1,20 @@
+--- Maelstrom-netd.c.orig	2014-03-18 01:00:28.408099526 -0400
++++ Maelstrom-netd.c	2014-03-18 01:01:29.892142782 -0400
+@@ -1,7 +1,9 @@
+ 
+ /* Here we go... */
+ 
++#include <stdlib.h>
+ #include <stdio.h>
++#include <time.h>
+ #include <string.h>
+ #include <signal.h>
+ #include <errno.h>
+@@ -9,6 +11,7 @@
+ #include <sys/time.h>
+ #include <sys/socket.h>
+ #include <netinet/in.h>
++#include <arpa/inet.h>
+ #include <netdb.h>
+ #include <unistd.h>
+ 

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=x11-libs/libXdamage x11-libs/libXcomposite x11-libs/libXfixes x11-libs/libXrender
+DESCRIPTION=Tool for set real compositing for windows through window's id, process' pid etc.
+EAPI=4
+HOMEPAGE=https://gitorious.org/x11-tools/set_opacity
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libXdamage x11-libs/libXcomposite x11-libs/libXfixes x11-libs/libXrender
+SLOT=0
+SRC_URI=https://gitorious.org/x11-tools/set_opacity/archive-tarball/1.0 -> set_opacity-1.0.tar.gz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=9099ef76414623dc504270fc98c7ec65

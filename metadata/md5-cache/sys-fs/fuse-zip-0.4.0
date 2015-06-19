@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=>=dev-libs/libzip-0.11.2:= >=sys-fs/fuse-2.7:=
+DESCRIPTION=FUSE file system to navigate, extract, create and modify ZIP archives
+EAPI=5
+HOMEPAGE=http://code.google.com/p/fuse-zip/
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-3
+RDEPEND=>=dev-libs/libzip-0.11.2:= >=sys-fs/fuse-2.7:=
+RESTRICT=test
+SLOT=0
+SRC_URI=http://fuse-zip.googlecode.com/files/fuse-zip-0.4.0.tar.gz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=c524bfca40cff204abe3ef6ff9bb0eb0

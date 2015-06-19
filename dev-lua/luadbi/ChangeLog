@@ -1,0 +1,103 @@
+# ChangeLog for dev-lua/luadbi
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lua/luadbi/ChangeLog,v 1.26 2014/12/28 15:37:07 titanofold Exp $
+
+  28 Dec 2014; Aaron W. Swenson <titanofold@gentoo.org> luadbi-0.5-r5.ebuild:
+  Rename virtual/postgresql to dev-db/postgresql
+
+  03 Nov 2014; Aaron W. Swenson <titanofold@gentoo.org> luadbi-0.5-r5.ebuild:
+  Update PostgreSQL dependencies and/or checks to virtual/postgresql.
+
+  18 Mar 2014; Manuel Rüger <mrueg@gentoo.org> -files/0.5-postgres-path.patch,
+  -luadbi-0.5-r3.ebuild:
+  Cleanup old. Fixes bug #500252.
+
+  09 Mar 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> luadbi-0.5-r5.ebuild:
+  x86 stable wrt bug #503278
+
+  07 Mar 2014; Pacho Ramos <pacho@gentoo.org> luadbi-0.5-r5.ebuild:
+  amd64 stable, bug #503278
+
+*luadbi-0.5-r5 (21 Jan 2014)
+
+  21 Jan 2014; Manuel Rüger <mrueg@gentoo.org> +luadbi-0.5-r5.ebuild,
+  -luadbi-0.5-r2.ebuild, -luadbi-0.5-r4.ebuild:
+  Enable sqlite per default. Fixes bug #498486. Cleanup old.
+
+  18 Jan 2014; Pacho Ramos <pacho@gentoo.org> luadbi-0.5-r3.ebuild:
+  amd64 stable, bug #488410
+
+*luadbi-0.5-r4 (13 Jan 2014)
+
+  13 Jan 2014; Manuel Rüger <mrueg@gentoo.org> +luadbi-0.5-r4.ebuild:
+  Add fix for postgres' server include path by Alexander Sulfrian. Fixes bug
+  #497698.
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> luadbi-0.5-r3.ebuild:
+  Stable for x86, wrt bug #488410
+
+  23 Oct 2013; Markus Meier <maekke@gentoo.org> luadbi-0.5-r3.ebuild:
+  add ~arm, bug #488410
+
+  08 Aug 2013; Markus Meier <maekke@gentoo.org> luadbi-0.5-r2.ebuild:
+  add ~arm, bug #476264
+
+*luadbi-0.5-r3 (29 Jul 2013)
+
+  29 Jul 2013; Manuel Rüger <mrueg@gentoo.org> +luadbi-0.5-r3.ebuild:
+  Fixes bug #475942. Ebuild patch by Alexander Tsoy. Minor improvements by me
+
+  22 Jul 2013; Manuel Rüger <mrueg@gentoo.org> metadata.xml:
+  Taking up maintainership
+
+  26 Feb 2013; Michael Palimaka <kensington@gentoo.org>
+  -files/0.5-Makefile.patch, -luadbi-0.5-r1.ebuild:
+  Remove old.
+
+  26 Feb 2013; Agostino Sarubbo <ago@gentoo.org> luadbi-0.5-r2.ebuild:
+  Stable for x86, wrt bug #436648
+
+  26 Feb 2013; Agostino Sarubbo <ago@gentoo.org> luadbi-0.5-r2.ebuild:
+  Stable for amd64, wrt bug #436648
+
+*luadbi-0.5-r2 (25 Feb 2013)
+
+  25 Feb 2013; Sergey Popov <pinkbyte@gentoo.org> +files/0.5-r2-Makefile.patch,
+  +luadbi-0.5-r2.ebuild:
+  Revision bump: EAPI 5, fix target dependencies in Makefile patch, respect
+  CFLAGS, wrt bug #436652
+
+  31 Dec 2012; Dirkjan Ochtman <djc@gentoo.org> metadata.xml:
+  Remove myself as a maintainer.
+
+  31 Dec 2012; Dirkjan Ochtman <djc@gentoo.org> luadbi-0.5-r1.ebuild:
+  Use correct compiler, obey LDFLAGS (bug 436650, bug 436654, thanks to
+  gentoo@rueg.eu).
+
+  21 Oct 2012; Markus Meier <maekke@gentoo.org> luadbi-0.5-r1.ebuild:
+  x86 stable, bug #388797
+
+  30 Sep 2012; Dirkjan Ochtman <djc@gentoo.org> luadbi-0.5-r1.ebuild:
+  Upgrade to EAPI=4, for REQUIRED_USE (bug 427928, thanks to
+  gentoo@quintero.com).
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> luadbi-0.5-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  01 Mar 2012; Dirkjan Ochtman <djc@gentoo.org> luadbi-0.5-r1.ebuild:
+  Depend on virtual/mysql instead of dev-db/mysql (bug 392395).
+
+  01 Mar 2012; Dirkjan Ochtman <djc@gentoo.org> -luadbi-0.5.ebuild:
+  Remove old version.
+
+*luadbi-0.5-r1 (02 May 2011)
+
+  02 May 2011; Dirkjan Ochtman <djc@gentoo.org>
+  +files/0.5-postgres-path.patch, +luadbi-0.5-r1.ebuild:
+  Fix path to postgres header (bug 364141).
+
+*luadbi-0.5 (08 Apr 2011)
+
+  08 Apr 2011; Dirkjan Ochtman <djc@gentoo.org> +files/0.5-Makefile.patch,
+  +luadbi-0.5.ebuild, +metadata.xml:
+  Initial version of luadbi, bug 352379.

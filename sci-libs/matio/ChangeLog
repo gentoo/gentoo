@@ -1,0 +1,74 @@
+# ChangeLog for sci-libs/matio
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/matio/ChangeLog,v 1.8 2015/02/02 14:49:00 jlec Exp $
+
+  02 Feb 2015; Justin Lecher <jlec@gentoo.org> matio-1.5.1.ebuild,
+  matio-1.5.2.ebuild, metadata.xml:
+  Fix license to BSD-2, #536294
+
+*matio-1.5.2 (08 Aug 2013)
+
+  08 Aug 2013; Sébastien Fabbro <bicatali@gentoo.org> +matio-1.5.2.ebuild,
+  -matio-1.5.0.ebuild:
+  Version bump
+
+  22 Mar 2013; Andrey Grozin <grozin@gentoo.org> matio-1.5.1.ebuild:
+  Fixed docs installation
+
+*matio-1.5.1 (20 Mar 2013)
+
+  20 Mar 2013; Sébastien Fabbro <bicatali@gentoo.org> +matio-1.5.1.ebuild:
+  Version bump
+
+  22 Sep 2012; Kacper Kowalik <xarthisius@gentoo.org>
+  -files/matio-1.3.4-autotools.patch, -matio-1.3.4.ebuild:
+  Drop old, fixes bug #435928 by Ben Longbons <b.r.longbons@gmail.com>
+
+  03 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> matio-1.5.0.ebuild:
+  keyword amd64-linux x86-linux
+
+*matio-1.5.0 (24 Apr 2012)
+
+  24 Apr 2012; Sébastien Fabbro <bicatali@gentoo.org> +matio-1.5.0.ebuild,
+  +files/matio-1.5.0-asneeded.patch, metadata.xml:
+  Version bump
+
+  05 Apr 2012; Andrey Grozin <grozin@gentoo.org> +matio-1.3.4.ebuild,
+  +files/matio-1.3.4-autotools.patch, +metadata.xml:
+  Import from science overlay
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> matio-1.3.4.ebuild:
+  Added fortran-2.eclass support
+
+*matio-1.3.4 (10 Aug 2010)
+
+  10 Aug 2010; Sébastien Fabbro <bicatali@gentoo.org> -matio-1.3.3.ebuild,
+  -files/matio-1.3.3-makefile.patch, +matio-1.3.4.ebuild,
+  +files/matio-1.3.4-autotools.patch:
+  Version bump. Ebuild modernisation. Disabling doc generation (bug #330237)
+
+*matio-1.3.3 (22 Jan 2009)
+
+  22 Jan 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  +sci-libs/matio/files/matio-1.3.3-makefile.patch,
+  sci-astronomy/scamp/metadata.xml, sci-libs/matio/metadata.xml,
+  sci-mathematics/gap/metadata.xml:
+  Version bump
+
+*matio-1.3.1 (20 Sep 2006)
+
+  20 Sep 2006; Andrey Grozin <A.G.Grozin@inp.nsk.su>
+  +matio-1.3.1.ebuild, -matio-1.3.0.ebuild, -files/matio-1.1.4.patch:
+  version bump, now at sourceforge
+
+*matio-1.3.0 (28 August 2006)
+
+  28 August 2006; Andrey Grozin <A.G.Grozin@inp.nsk.su>
+  +matio-1.3.0.ebuild, -matio-1.1.4.ebuild:
+  version bump
+
+*matio-1.1.4 (16 June 2006)
+
+  16 June 2006; Andrey Grozin <A.G.Grozin@inp.nsk.su>
+  +metadata.xml, +matio-1.1.4.ebuild, +files/matio-1.1.4.patch:
+  Initial import.

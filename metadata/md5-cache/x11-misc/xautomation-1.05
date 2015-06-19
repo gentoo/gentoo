@@ -1,0 +1,11 @@
+DEFINED_PHASES=prepare
+DEPEND=media-libs/libpng x11-libs/libX11 x11-libs/libXtst x11-proto/inputproto x11-proto/xextproto x11-proto/xproto
+DESCRIPTION=Control X from command line and find things on screen
+EAPI=4
+HOMEPAGE=http://hoopajoo.net/projects/xautomation.html
+KEYWORDS=amd64 ~arm ppc x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libpng x11-libs/libX11 x11-libs/libXtst
+SLOT=0
+SRC_URI=http://hoopajoo.net/static/projects/xautomation-1.05.tar.gz
+_md5_=b3e5b06fc8c1cd8d8093cb0df3d3305f

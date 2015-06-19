@@ -1,0 +1,116 @@
+# ChangeLog for x11-themes/geramik
+# Copyright 2002-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/geramik/ChangeLog,v 1.4 2007/02/21 22:47:26 jokey Exp $
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  20 Sep 2006; Danny van Dyk <kugelfang@gentoo.org> geramik-0.27-r1.ebuild:
+  Marked stable on amd64 wrt bug #148328.
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> geramik-0.27-r1.ebuild:
+  Mark 0.27-r1 stable on alpha
+
+*geramik-0.27-r1 (02 Aug 2005)
+
+  02 Aug 2005; Leonardo Boshell <leonardop@gentoo.org> geramik-0.27-r1.ebuild:
+  Moving from x11-themes/gtk-engines-geramik. Don't inherit from
+  gtk-engines2.eclass. Fixed dependencies. Stable on x86.
+
+  31 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  gtk-engines-geramik-0.27.ebuild:
+  Stable on sparc
+
+*gtk-engines-geramik-0.27 (03 Jul 2004)
+
+  03 Jul 2004; <pyrania@gentoo.org> :
+  Version bump. Closing bug #54074.
+
+  28 Jun 2004; Aron Griffis <agriffis@gentoo.org>
+  gtk-engines-geramik-0.24-r3.ebuild, gtk-engines-geramik-0.25.ebuild,
+  gtk-engines-geramik-0.26.ebuild:
+  sync IUSE
+
+  13 Mar 2004; Stephen P. Becker <geoman@gentoo.org>
+  gtk-engines-geramik-0.26.ebuild:
+  Added ~mips keyword.
+
+  09 Mar 2004; Daniel Ahlberg <aliz@gentoo.org>
+  gtk-engines-geramik-0.26.ebuild:
+  Adding amd64 keyword. Closing #44137.
+
+  06 Feb 2004; Aron Griffis <agriffis@gentoo.org>
+  gtk-engines-geramik-0.26.ebuild:
+  stable on alpha
+
+  31 Aug 2003; Mike Gardiner <obz@gentoo.org> gtk-engines-geramik-0.25.ebuild:
+  Marked stable on x86
+
+*gtk-engines-geramik-0.26 (31 Aug 2003)
+
+  31 Aug 2003; Mike Gardiner <obz@gentoo.org> gtk-engines-geramik-0.26.ebuild:
+  New version
+
+*gtk-engines-geramik-0.25 (22 Jul 2003)
+
+  22 Jul 2003; Brad Laue <brad@gentoo.org> gtk-engines-geramik-0.24-r3.ebuild,
+  gtk-engines-geramik-0.25.ebuild:
+  0.24-r3 stable on x86, add 0.25
+
+  09 Jul 2003; Alastair Tse <liquidx@gentoo.org>
+  gtk-engines-geramik-0.24-r3.ebuild:
+  added pkgconfig dep
+
+*gtk-engines-geramik-0.24-r3 (19 Jun 2003)
+
+  26 Jun 2003; foser <foser@gentoo.org> gtk-engines-geramik-0.24-r3.ebuild :
+  Reenabled needed patch (#23458)
+
+  19 Jun 2003; Alastair Tse <liquidx@gentoo.org>
+  gtk-engines-geramik-0.24-r3.ebuild:
+  porting gtk theme engine to new eclass format
+
+*gtk-engines-geramik-0.24 (02 June 2003)
+
+  02 June 2003; Brad Laue brad@gentoo.org> gtk-engines-geramik-0.24* :
+  Mark stable
+
+*gtk-engines-geramik-0.24 (02 May 2003)
+
+  02 May 2003; foser <foser@gentoo.org> gtk-engines-geramik-0.24* :
+  Version bump (#19312)
+
+*gtk-engines-geramik-0.18 (31 Jan 2003)
+
+  31 Jan 2003; Tobias Eichert <viz@gentoo.org> 
+  gtk-engines-geramik-0.18-r1.ebuild,
+  gtk-engines-geramik-0.18-r2.ebuild :
+  
+  Version bump.
+
+  TODO:
+  Create only one ebuild for gtk1/gtk2 support in
+  combination with gtk-engines.eclass. Ask the author
+  for --enable-gtk(gtk2) resp. --disable-gtk(gtk2)
+  options.
+
+*gtk-engines-geramik-0.17 (14 Jan 2003)
+
+  14 Jan 2003; L. Boshell <leonardop@gentoo.org> : New version, as
+  reported by Jeremy Johnson on bug #11636.
+  
+*gtk-engines-geramik-0.08 (28 Nov 2002)
+
+  02 May 2003; foser <foser@gentoo.org> gtk-enigenes-geramik-0.08* :
+  Added KEYWORDS (!)
+
+  28 Nov 2002; L. Boshell <leonardop@gentoo.org> : New version. Created
+  two revisions of this package, since the same tarball provides GTK-1 and
+  GTK-2 versions of the engine. Thanks to Jeremy Johnson for his
+  contribution on bug #11318.
+  
+*gtk-engines-geramik-0.03 (16 Nov 2002)
+
+  16 Nov 2002; L. Boshell <leonardop@gentoo.org> ChangeLog,
+  gtk-engines-geramik-0.03.ebuild : Initial import. Thanks to Paul de
+  Vrieze for his work, contributed on bug #10765.

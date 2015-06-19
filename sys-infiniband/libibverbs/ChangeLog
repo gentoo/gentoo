@@ -1,0 +1,41 @@
+# ChangeLog for sys-infiniband/libibverbs
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-infiniband/libibverbs/ChangeLog,v 1.9 2014/08/20 10:44:40 ago Exp $
+
+  20 Aug 2014; Agostino Sarubbo <ago@gentoo.org> libibverbs-1.1.7.ebuild:
+  Stable for x86, wrt bug #510208
+
+  20 Aug 2014; Agostino Sarubbo <ago@gentoo.org> libibverbs-1.1.7.ebuild:
+  Stable for amd64, wrt bug #510208
+
+  16 Apr 2014; Alexey Shvetsov <alexxy@gentoo.org> libibverbs-1.1.7.ebuild:
+  [sys-infiniband/libibverbs] Fix build, its not a snap
+
+*libibverbs-1.1.7 (16 Apr 2014)
+
+  16 Apr 2014; Alexey Shvetsov <alexxy@gentoo.org> +libibverbs-1.1.7.ebuild,
+  -libibverbs-1.1.4-r1.ebuild:
+  Update ofed stack to 3.12-rc1
+
+  13 Oct 2012; Alexey Shvetsov <alexxy@gentoo.org> libibverbs-1.1.6.ebuild:
+  [sys-infiniband] Update OFED
+
+*libibverbs-1.1.6 (12 Oct 2012)
+
+  12 Oct 2012; Alexey Shvetsov <alexxy@gentoo.org> +libibverbs-1.1.6.ebuild:
+  [sys-infiniband] OFED 3.5 rc2 update
+
+*libibverbs-1.1.4-r1 (18 Apr 2012)
+
+  18 Apr 2012; Alexey Shvetsov <alexxy@gentoo.org> +libibverbs-1.1.4-r1.ebuild,
+  -libibverbs-1.1.4.ebuild:
+  [sys-infiniband/libibverbs] Version bump to OFED 1.5.4.1
+
+  02 Jul 2011; Alexey Shvetsov <alexxy@gentoo.org> libibverbs-1.1.4.ebuild:
+  Add ~amd64-linux keywrod
+
+*libibverbs-1.1.4 (30 Jun 2011)
+
+  30 Jun 2011; Alexey Shvetsov <alexxy@gentoo.org> +libibverbs-1.1.4.ebuild,
+  +metadata.xml:
+  Initial import to tree

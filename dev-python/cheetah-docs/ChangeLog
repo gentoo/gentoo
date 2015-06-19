@@ -1,0 +1,66 @@
+# ChangeLog for dev-python/cheetah-docs
+# Copyright 2002-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/cheetah-docs/ChangeLog,v 1.15 2015/06/09 15:05:14 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  21 Mar 2015; Justin Lecher <jlec@gentoo.org>
+  cheetah-docs-0.9.16_alpha1.ebuild, metadata.xml:
+  Use ecvs_clean; bump EAPI; modernize ebuild style
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  cheetah-docs-0.9.16_alpha1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  10 May 2013; Patrick Lauer <patrick@gentoo.org>
+  cheetah-docs-0.9.16_alpha1.ebuild:
+  Adding RDEPEND to make repoman happy
+
+  28 Nov 2011; Markos Chandras <hwoarang@gentoo.org>
+  cheetah-docs-0.9.16_alpha1.ebuild:
+  Fix LICENSE. Patch by Arfrever
+
+  19 Feb 2007; nixnut <nixnut@gentoo.org> cheetah-docs-0.9.16_alpha1.ebuild:
+  Stable on ppc wrt bug 167554
+
+  06 Jan 2007; Tiziano Müller <dev-zero@gentoo.org>
+  -cheetah-docs-0.9.15_alpha1.ebuild:
+  Dropped old version.
+
+  06 Jan 2007; Bryan Østergaard <kloeri@gentoo.org>
+  cheetah-docs-0.9.16_alpha1.ebuild:
+  Stable on x86.
+
+  06 Jan 2007; Tiziano Müller <dev-zero@gentoo.org>
+  cheetah-docs-0.9.16_alpha1.ebuild:
+  Some cleanups. Fixed bug #139878.
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  cheetah-docs-0.9.16_alpha1.ebuild:
+  add ~ia64
+
+  11 Aug 2005; Luis Medinas <metalgod@gentoo.org>
+  cheetah-docs-0.9.16_alpha1.ebuild:
+  Added ~amd64 keywords.
+
+*cheetah-docs-0.9.16_alpha1 (12 Feb 2005)
+
+  12 Feb 2005; Bryan Østergaard <kloeri@gentoo.org>
+  +cheetah-docs-0.9.16_alpha1.ebuild:
+  Version bump.
+
+*cheetah-docs-0.9.15_alpha1 (18 Apr 2004)
+
+  18 Apr 2004; David Holm <dholm@gentoo.org>
+  cheetah-docs-0.9.15_alpha1.ebuild:
+  Added to ~ppc.
+
+  18 Jan 2004; Alastair Tse <liquidx@gentoo.org> :
+  moved dev-python/Cheetah-docs to dev-python/cheetah-docs. also fixed
+  installation paths
+
+*Cheetah-docs-0.9.15_alpha1 (30 Jan 2003)
+
+  30 Jan 2003; Arcady Genkin <agenkin@gentoo.org> :
+  Initial version of the ebuild.

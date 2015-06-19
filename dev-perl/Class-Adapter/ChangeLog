@@ -1,0 +1,49 @@
+# ChangeLog for dev-perl/Class-Adapter
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Class-Adapter/ChangeLog,v 1.8 2014/04/30 15:00:23 zlogene Exp $
+
+  30 Apr 2014; Mikle Kolyada <zlogene@gentoo.org> -Class-Adapter-1.80.0.ebuild:
+  Drop old.
+
+*Class-Adapter-1.80.0-r1 (10 Sep 2013)
+
+  10 Sep 2013; Ian Delaney <idella4@gentoo.org> +Class-Adapter-1.80.0-r1.ebuild:
+  revbump -> EAPI 5
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  30 Jul 2011; Torsten Veller <tove@gentoo.org> -Class-Adapter-1.07.ebuild:
+  Cleanup
+
+*Class-Adapter-1.80.0 (24 Mar 2011)
+
+  24 Mar 2011; Torsten Veller <tove@gentoo.org> +Class-Adapter-1.80.0.ebuild:
+  Version bump
+
+  11 Jun 2010; Torsten Veller <tove@gentoo.org> -Class-Adapter-1.06.ebuild:
+  Cleanup
+
+*Class-Adapter-1.07 (13 Apr 2010)
+
+  13 Apr 2010; Torsten Veller <tove@gentoo.org> +Class-Adapter-1.07.ebuild:
+  Version bump
+
+  15 Feb 2010; Torsten Veller <tove@gentoo.org> +Class-Adapter-1.06.ebuild,
+  +metadata.xml:
+  Import to gentoo from perl-experimental
+
+*Class-Adapter-1.06 (24 Nov 2009)
+
+  24 Nov 2009; Kent Fredric <kentfredric@gmail.com>
+  +Class-Adapter-1.06.ebuild:
+  Bumped:
+
+  - Allow class methods to be passed through
+
+  24 Nov 2009; Kent Fredric <kentfredric@gmail.com>
+  Class-Adapter-1.05.ebuild:
+  EAPI=2
+
+  28 May 2009; Torsten Veller <tove@gentoo.org> Class-Adapter-1.05.ebuild:
+  Add ~amd64

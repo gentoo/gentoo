@@ -1,0 +1,24 @@
+commit a72baecd4dc7b01c0785b481460dde0fbab9a90a
+Author: Jan Gerber <j@xiph.org>
+Date:   Fri Nov 23 20:21:54 2012 +0100
+
+    only depend on libswresample for local branch
+    
+    libav does not have libswresample so its not in ubuntu.
+
+diff --git a/SConstruct b/SConstruct
+index 90520c3..01d234a 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -152,10 +152,10 @@ if not env.GetOption('clean'):
+       "libavcodec >= 52.30.0",
+       "libpostproc",
+       "libswscale",
+-      "libswresample",
+       "libavutil",
+   ]
+   if os.path.exists("./ffmpeg"):
++    FFMPEG_LIBS.append('libswresample')
+     pkg_path = list(set(map(os.path.dirname, glob('./ffmpeg/*/*.pc'))))
+     pkg_path.append(os.environ.get('PKG_CONFIG_PATH', ''))
+     os.environ['PKG_CONFIG_PATH'] = ':'.join(pkg_path)

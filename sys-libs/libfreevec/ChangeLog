@@ -1,0 +1,33 @@
+# ChangeLog for sys-libs/libfreevec
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/libfreevec/ChangeLog,v 1.6 2008/08/28 10:44:34 lu_zero Exp $
+
+*libfreevec-1.0.4 (28 Aug 2008)
+
+  28 Aug 2008; Luca Barbato <lu_zero@gentoo.org> -libfreevec-0.8.ebuild,
+  -libfreevec-0.8-r1.ebuild, +libfreevec-1.0.4.ebuild:
+  New version and cleanup
+
+  19 Jun 2008; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  libfreevec-0.8.ebuild, libfreevec-0.8-r1.ebuild:
+  No runtime dependencies, so set empty RDEPEND (bug #221565)
+
+  04 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  libfreevec-0.8-r1.ebuild:
+  Remove spurious depends.
+
+  04 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  libfreevec-0.8-r1.ebuild:
+  Fix broken autotools handling.
+
+*libfreevec-0.8-r1 (05 Oct 2005)
+
+  05 Oct 2005; Luca Barbato <lu_zero@gentoo.org> +libfreevec-0.8-r1.ebuild:
+  Removed strcpy and memmove, enable by default the build (HAVE_ALTIVEC_H).
+
+*libfreevec-0.8 (29 Sep 2005)
+
+  29 Sep 2005; Luca Barbato <lu_zero@gentoo.org> +metadata.xml,
+  +libfreevec-0.8.ebuild:
+  Initial release, please beware of the known issues
+

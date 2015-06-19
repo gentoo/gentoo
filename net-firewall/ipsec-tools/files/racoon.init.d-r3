@@ -1,0 +1,57 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	before netmount
+	use net
+}
+
+checkconfig() {
+	if [ ! -e ${SETKEY_CONF} ] ; then
+		eerror "You need to configure setkey before starting racoon."
+		return 1
+	fi
+	if [ ! -e ${RACOON_CONF} ] ; then
+		eerror "You need a configuration file to start racoon."
+		return 1
+	fi
+	if [ ! -z ${RACOON_PSK_FILE} ] ; then
+		if [ ! -f ${RACOON_PSK_FILE} ] ; then
+			eerror "PSK file not found as specified."
+			eerror "Set RACOON_PSK_FILE in /etc/conf.d/racoon."
+			return 1
+		fi
+		case "`ls -Lldn ${RACOON_PSK_FILE}`" in
+			-r--------*)
+				;;
+			*)
+				eerror "Your defined PSK file should be mode 400 for security!"
+				return 1
+				;;
+		esac
+	fi
+}
+
+command=/usr/sbin/racoon
+command_args="-f ${RACOON_CONF} ${RACOON_OPTS}"
+pidfile=/var/run/racoon.pid
+start_stop_daemon_args="--wait ${RACOON_WAIT}"
+
+start_pre() {
+	checkconfig || return 1
+	einfo "Loading ipsec policies from ${SETKEY_CONF}."
+	/usr/sbin/setkey ${SETKEY_OPTS} -f ${SETKEY_CONF}
+	if [ $? -eq 1 ] ; then
+		eerror "Error while loading ipsec policies"
+	fi
+}
+
+stop_post() {
+	if [ -n "${RACOON_RESET_TABLES}" ]; then
+		ebegin "Flushing policy entries"
+		/usr/sbin/setkey -F
+		/usr/sbin/setkey -FP
+		eend $?
+	fi
+}

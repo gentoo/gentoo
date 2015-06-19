@@ -1,0 +1,55 @@
+# ChangeLog for sci-mathematics/unuran
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/unuran/ChangeLog,v 1.11 2012/07/06 23:47:30 bicatali Exp $
+
+  06 Jul 2012; Sébastien Fabbro <bicatali@gentoo.org> unuran-1.8.1.ebuild:
+  fixed examples installation directory, bug #424942
+
+  06 Jul 2012; Justin Lecher <jlec@gentoo.org> unuran-1.8.1.ebuild:
+  Korrekt typo in keywords amd64 -> amd64-linux
+
+  06 Jul 2012; Jeff Horelick <jdhore@gentoo.org> unuran-1.8.1.ebuild:
+  marked x86 per bug 424739
+
+  05 Jul 2012; Agostino Sarubbo <ago@gentoo.org> unuran-1.8.1.ebuild:
+  Stable for amd64, wrt bug #424739
+
+  05 Jul 2012; Justin Lecher <jlec@gentoo.org> unuran-1.8.1.ebuild:
+  Fix out of source buildproblem
+
+  04 Jul 2012; Justin Lecher <jlec@gentoo.org> unuran-1.8.1.ebuild,
+  metadata.xml:
+  Move to autotool-utils.eclass
+
+  26 Jun 2012; Sebastien Fabbro <fabbros@gentoo.org> -unuran-1.8.0.ebuild,
+  unuran-1.8.1.ebuild:
+  keyword amd64-linux and x86-linux. removed old
+
+*unuran-1.8.1 (03 May 2011)
+
+  03 May 2011; Sébastien Fabbro <bicatali@gentoo.org> +unuran-1.8.1.ebuild:
+  Version bump
+
+  22 Dec 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  files/unuran-1.8.0-nogsl.patch:
+  Make sure it links with all gsl libraries when enabled
+
+  18 Dec 2010; Sébastien Fabbro <bicatali@gentoo.org> unuran-1.8.0.ebuild:
+  Fixed typo, thanks Helmut Jarausch bug #348995
+
+  17 Dec 2010; Sébastien Fabbro <bicatali@gentoo.org> +unuran-1.8.0.ebuild,
+  +files/unuran-1.8.0-nogsl.patch, +metadata.xml:
+  Moved to the main tree
+
+*unuran-1.8.0 (01 Nov 2010)
+
+  01 Nov 2010; Sébastien Fabbro <bicatali@gentoo.org> -unuran-1.7.1.ebuild,
+  -files/unuran-1.7.1-nogsl.patch, +unuran-1.8.0.ebuild,
+  +files/unuran-1.8.0-nogsl.patch, metadata.xml:
+  bump
+
+*unuran-1.7.1 (16 Oct 2010)
+
+  16 Oct 2010; Sébastien Fabbro <bicatali@gentoo.org> +unuran-1.7.1.ebuild,
+  +files/unuran-1.7.1-nogsl.patch, +metadata.xml:
+  Initial import

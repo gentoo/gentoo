@@ -1,0 +1,12 @@
+# ChangeLog for app-benchmarks/libc-bench
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/libc-bench/ChangeLog,v 1.2 2014/04/03 20:58:19 vapier Exp $
+
+  03 Apr 2014; Mike Frysinger <vapier@gentoo.org> libc-bench-20110206.ebuild:
+  Update HOMEPAGE and fix CC/CPPFLAGS handling.
+
+*libc-bench-20110206 (21 Jun 2013)
+
+  21 Jun 2013; Anthony G. Basile <blueness@gentoo.org>
+  +libc-bench-20110206.ebuild, +files/respect-flags.patch, +metadata.xml:
+  Initial commit

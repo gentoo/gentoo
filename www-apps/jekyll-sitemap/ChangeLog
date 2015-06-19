@@ -1,0 +1,49 @@
+# ChangeLog for www-apps/jekyll-sitemap
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/jekyll-sitemap/ChangeLog,v 1.9 2015/03/15 14:49:30 mrueg Exp $
+
+*jekyll-sitemap-0.8.1 (15 Mar 2015)
+
+  15 Mar 2015; Manuel Rüger <mrueg@gentoo.org> +jekyll-sitemap-0.8.1.ebuild,
+  -jekyll-sitemap-0.7.0.ebuild, -jekyll-sitemap-0.8.0.ebuild:
+  Version bump. Remove old.
+
+*jekyll-sitemap-0.8.0 (04 Feb 2015)
+
+  04 Feb 2015; Manuel Rüger <mrueg@gentoo.org> +jekyll-sitemap-0.8.0.ebuild:
+  Version bump.
+
+*jekyll-sitemap-0.7.0 (08 Dec 2014)
+
+  08 Dec 2014; Manuel Rüger <mrueg@gentoo.org> +jekyll-sitemap-0.7.0.ebuild,
+  -jekyll-sitemap-0.6.3.ebuild:
+  Version bump. Cleanup old.
+
+  21 Nov 2014; Manuel Rüger <mrueg@gentoo.org> jekyll-sitemap-0.6.3.ebuild:
+  Add ruby21 target. Fixes bug #524842
+
+*jekyll-sitemap-0.6.3 (13 Nov 2014)
+
+  13 Nov 2014; Manuel Rüger <mrueg@gentoo.org> +jekyll-sitemap-0.6.3.ebuild,
+  -jekyll-sitemap-0.6.1.ebuild:
+  Version bump. Cleanup old.
+
+  03 Nov 2014; Manuel Rüger <mrueg@gentoo.org> -jekyll-sitemap-0.6.0.ebuild:
+  Cleanup old.
+
+*jekyll-sitemap-0.6.1 (21 Oct 2014)
+
+  21 Oct 2014; Manuel Rüger <mrueg@gentoo.org> +jekyll-sitemap-0.6.1.ebuild:
+  Version bump.
+
+*jekyll-sitemap-0.6.0 (08 Sep 2014)
+
+  08 Sep 2014; Manuel Rüger <mrueg@gentoo.org> +jekyll-sitemap-0.6.0.ebuild,
+  -jekyll-sitemap-0.5.1.ebuild:
+  Version bump. Cleanup old.
+
+*jekyll-sitemap-0.5.1 (27 Aug 2014)
+
+  27 Aug 2014; Manuel Rüger <mrueg@gentoo.org> +jekyll-sitemap-0.5.1.ebuild,
+  +metadata.xml:
+  Initial version.

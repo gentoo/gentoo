@@ -1,0 +1,33 @@
+# ChangeLog for net-misc/rancid
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/rancid/ChangeLog,v 1.8 2015/03/25 16:50:52 jlec Exp $
+
+  25 Mar 2015; Justin Lecher <jlec@gentoo.org> rancid-2.3.8.ebuild:
+  Fix tcl/tk slotting; bump to EAPI=5
+
+  18 Sep 2013; Chris Reffett <creffett@gentoo.org> metadata.xml:
+  Update proxy maintainer's email at his request.
+
+  17 Jun 2013; Sergey Popov <pinkbyte@gentoo.org> rancid-2.3.8.ebuild:
+  Add blocker dependency for app-arch/par as a workaround for bug #455838
+
+  17 Jun 2013; Sergey Popov <pinkbyte@gentoo.org> rancid-2.3.8.ebuild:
+  Bump EAPI to 5, make cvs USE-flag default per upstream, add ~x86 keyword
+
+  03 Mar 2013; Pacho Ramos <pacho@gentoo.org> rancid-2.3.8.ebuild:
+  DISABLE_AUTOFORMATTING needs to be used to prevent README.gentoo file from
+  being really hard to read
+
+  07 Feb 2013; Sergey Popov <pinkbyte@gentoo.org> rancid-2.3.8.ebuild:
+  Respect CFLAGS wrt bug #455840, fix conditions on nonexistent 'svn' USE flag
+  - use 'subversion' instead
+
+  23 Jan 2013; Michael Weber <xmw@gentoo.org> metadata.xml:
+  fix herd
+
+*rancid-2.3.8 (22 Jan 2013)
+
+  22 Jan 2013; Michael Weber <xmw@gentoo.org> +rancid-2.3.8.ebuild,
+  +files/rancid-2.3.8-buildsystem.patch, +files/rancid-2.3.8-config.patch,
+  +files/rancid-2.3.8-mailprefix.patch, +metadata.xml:
+  Initial import, thanks to all contributors on bug 151846.

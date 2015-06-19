@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare setup test
+DEPEND=boost? ( >=dev-libs/boost-1.35.0-r5 )
+DESCRIPTION=C++ STL library
+EAPI=2
+HOMEPAGE=http://stlport.sourceforge.net/
+IUSE=boost debug static static-libs threads
+KEYWORDS=amd64 ~hppa ppc ppc64 sparc x86
+LICENSE=boehm-gc HPND
+RDEPEND=boost? ( >=dev-libs/boost-1.35.0-r5 )
+SLOT=0
+SRC_URI=mirror://sourceforge/stlport/STLport-5.2.1.tar.bz2 http://dev.gentoo.org/~xarthisius/distfiles/STLport-patches-5.2.1-2.tbz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=002efcbb4a016e4f1320a820521f793e

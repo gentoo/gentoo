@@ -1,0 +1,30 @@
+From d692f7ce6e18fa65e04be397627ae4eceab63f2d Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Sat, 13 Jun 2015 14:16:03 -0400
+Subject: [PATCH] build: path.js should not be in both nodist_js_DATA and
+ dist_js_DATA
+
+Causes a parallel install failure
+
+https://bugzilla.gnome.org/show_bug.cgi?id=750334
+---
+ src/Makefile-js.am | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/Makefile-js.am b/src/Makefile-js.am
+index 7e1ef60..97bbd93 100644
+--- a/src/Makefile-js.am
++++ b/src/Makefile-js.am
+@@ -28,8 +28,7 @@ dist_js_DATA = \
+     trackerUtils.js \
+     utils.js \
+     view.js \
+-    windowMode.js \
+-    path.js
++    windowMode.js
+ 
+ BUILT_SOURCES += \
+     path.js \
+-- 
+2.4.3
+

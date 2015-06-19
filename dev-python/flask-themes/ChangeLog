@@ -1,0 +1,44 @@
+# ChangeLog for dev-python/flask-themes
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/flask-themes/ChangeLog,v 1.10 2015/03/08 23:48:10 pacho Exp $
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> flask-themes-0.1.3-r1.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> flask-themes-0.1.3-r1.ebuild:
+  amd64 stable, bug 540290
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  flask-themes-0.1.3-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  30 May 2014; Ian Delaney <idella4@gentoo.org> flask-themes-0.1.3-r1.ebuild:
+  add py3 support
+
+  06 May 2014; Ian Delaney <idella4@gentoo.org> flask-themes-0.1.3-r1.ebuild:
+  drop py2.6 add pypy support
+
+  12 Sep 2013; Michał Górny <mgorny@gentoo.org> flask-themes-0.1.3-r1.ebuild:
+  Remove dep on virtual/python-json. JSON is now built-in in all supported
+  implementations.
+
+  17 Jun 2013; Patrick Lauer <patrick@gentoo.org> flask-themes-0.1.3-r1.ebuild:
+  Fix python targets as flask was downrated
+
+*flask-themes-0.1.3-r1 (10 Jun 2013)
+
+  10 Jun 2013; Ian Delaney <idella4@gentoo.org> +files/fixtests.patch,
+  +flask-themes-0.1.3-r1.ebuild, -flask-themes-0.1.3.ebuild:
+  revbump, migrate -> distutils-r1, rm old, patch to fix tests
+
+*flask-themes-0.1.3 (08 Sep 2011)
+
+  08 Sep 2011; Rafael G. Martins <rafaelmartins@gentoo.org>
+  -flask-themes-0.1.2.ebuild, +flask-themes-0.1.3.ebuild:
+  Version bump. Thanks to Johan Bergström (bug #381995)
+
+*flask-themes-0.1.2 (14 Dec 2010)
+
+  14 Dec 2010; Rafael G. Martins <rafaelmartins@gentoo.org>
+  +flask-themes-0.1.2.ebuild, +metadata.xml:
+  Initial version.

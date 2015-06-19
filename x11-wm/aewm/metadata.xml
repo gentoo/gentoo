@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer><email>jer@gentoo.org</email></maintainer>
+	<longdescription>
+	aewm is a minimalist window manager for X11. It has no nifty features, 
+	but is light on resources and extremely simple in appearance. It should 
+	eventually make a good reference implementation of the ICCCM. A few 
+	separate programs are included to handle running programs, switching 
+	between windows, etc.
+	</longdescription>	
+</pkgmetadata>

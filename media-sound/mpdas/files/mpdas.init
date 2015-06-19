@@ -1,0 +1,22 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/mpdas/files/mpdas.init,v 1.1 2014/03/22 16:59:06 angelos Exp $
+
+depend() {
+	use net mpd
+}
+
+start() {
+	ebegin "Starting mpdas"
+	start-stop-daemon --background --start --exec /usr/bin/mpdas \
+		--make-pidfile --pidfile /run/mpdas.pid
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping mpdas"
+	start-stop-daemon --stop --exec /usr/bin/mpdas \
+		--pidfile /run/mpdas.pid
+	eend $?
+}

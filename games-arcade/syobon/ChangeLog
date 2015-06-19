@@ -1,0 +1,29 @@
+# ChangeLog for games-arcade/syobon
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/syobon/ChangeLog,v 1.7 2015/01/05 19:12:41 tupone Exp $
+
+  05 Jan 2015; Tupone Alfredo <tupone@gentoo.org> syobon-1.0.1.ebuild:
+  EAPI 5
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> syobon-1.0.1.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> syobon-1.0.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  19 Jul 2011; Markus Meier <maekke@gentoo.org> syobon-1.0.1.ebuild:
+  x86 stable, bug #375333
+
+  16 Jul 2011; Markos Chandras <hwoarang@gentoo.org> syobon-1.0.1.ebuild:
+  Stable on amd64 wrt bug #375333
+
+  02 May 2011; Michael Sterrett <mr_bones_@gentoo.org> syobon-1.0.1.ebuild:
+  tidy; add use deps
+
+*syobon-1.0.1 (25 Apr 2011)
+
+  25 Apr 2011; Christian Birchinger <joker@gentoo.org> +syobon-1.0.1.ebuild,
+  +metadata.xml:
+  Initial release
+

@@ -1,0 +1,20 @@
+This should normally patch Makefile.am and use autotools.eclass to re-run
+autoreconf. However, this does not work out of the box and pulling out the big
+artillery to fix a simple typo which will be gone in the next release wasn't
+worth the trouble.
+
+See https://bugs.gentoo.org/542604.
+
+Denis Dupeyron <calchan@gentoo.org>
+
+--- icons/128x128/Makefile.in.orig	2015-04-20 21:16:04.376497095 -0600
++++ icons/128x128/Makefile.in	2015-04-20 21:16:23.423138219 -0600
+@@ -337,7 +337,7 @@
+ top_build_prefix = @top_build_prefix@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+-iconsdir = $(datadir)/icons/hicolor/48x48/apps
++iconsdir = $(datadir)/icons/hicolor/128x128/apps
+ icons_DATA = ristretto.png
+ EXTRA_DIST = $(icons_DATA)
+ all: all-am

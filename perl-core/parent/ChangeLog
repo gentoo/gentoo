@@ -1,0 +1,109 @@
+# ChangeLog for perl-core/parent
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/perl-core/parent/ChangeLog,v 1.26 2015/06/13 10:19:08 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  -parent-0.225.0-r1.ebuild:
+  Remove old
+
+*parent-0.225.0-r1 (26 Jul 2014)
+*parent-0.228-r1 (26 Jul 2014)
+
+  26 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +parent-0.225.0-r1.ebuild, +parent-0.228-r1.ebuild, -parent-0.225.0.ebuild,
+  -parent-0.228.ebuild:
+  EAPI bump
+
+  16 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org> -parent-0.224.ebuild,
+  -parent-0.226.ebuild, -parent-0.227.ebuild:
+  Remove old
+
+  17 Jan 2014; Mike Frysinger <vapier@gentoo.org> parent-0.225.0.ebuild:
+  Mark sh stable.
+
+*parent-0.228 (28 Oct 2013)
+
+  28 Oct 2013; Patrick Lauer <patrick@gentoo.org> +parent-0.228.ebuild:
+  Bump
+
+*parent-0.227 (05 Sep 2013)
+
+  05 Sep 2013; Patrick Lauer <patrick@gentoo.org> +parent-0.227.ebuild:
+  Bump
+
+*parent-0.226 (14 Aug 2013)
+
+  14 Aug 2013; Patrick Lauer <patrick@gentoo.org> +parent-0.226.ebuild:
+  Bump
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> parent-0.225.0.ebuild:
+  Stable for ppc, wrt bug #458146
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> parent-0.225.0.ebuild:
+  Stable for x86, wrt bug #458146
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> parent-0.225.0.ebuild:
+  Stable for amd64, wrt bug #458146
+
+  18 Nov 2012; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Drop duplication of myself as a maintainer where there is a herd.
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  01 Apr 2012; Raúl Porcel <armin76@gentoo.org> parent-0.224.ebuild,
+  parent-0.225.0.ebuild:
+  Add ~alpha/~ia64/~s390/~sh/~sparc wrt #403413
+
+  19 Feb 2012; Tobias Klausmann <klausman@gentoo.org> parent-0.224.ebuild:
+  Keyworded on alpha, bug #389001
+
+  07 Nov 2011; Fabian Groffen <grobian@gentoo.org> parent-0.225.0.ebuild:
+  Added Prefix keywords, bug #389001
+
+  06 Nov 2011; Markus Meier <maekke@gentoo.org> parent-0.225.0.ebuild:
+  add ~arm, bug #389001
+
+  31 Oct 2011; Jeroen Roovers <jer@gentoo.org> parent-0.224.ebuild,
+  parent-0.225.0.ebuild:
+  Marked ~hppa (bug #389001).
+
+*parent-0.225.0 (09 Mar 2011)
+
+  09 Mar 2011; Torsten Veller <tove@gentoo.org> +parent-0.225.0.ebuild:
+  Version bump
+
+  17 Jan 2011; Torsten Veller <tove@gentoo.org> -parent-0.223.ebuild:
+  Cleanup
+
+*parent-0.224 (15 Nov 2010)
+
+  15 Nov 2010; Torsten Veller <tove@gentoo.org> +parent-0.224.ebuild:
+  Version bump
+
+  17 Jan 2010; Torsten Veller <tove@gentoo.org> -parent-0.221.ebuild,
+  -parent-0.222.ebuild:
+  Cleanup
+
+  27 Oct 2009; Mounir Lamouri <volkmar@gentoo.org> parent-0.223.ebuild:
+  Keywording for ppc.
+
+*parent-0.223 (24 Sep 2009)
+
+  24 Sep 2009; Torsten Veller <tove@gentoo.org> +parent-0.223.ebuild:
+  Version bump
+
+*parent-0.222 (30 Aug 2009)
+
+  30 Aug 2009; Torsten Veller <tove@gentoo.org> +parent-0.222.ebuild:
+  Version bump
+
+  10 Aug 2009; Torsten Veller <tove@gentoo.org> +parent-0.221.ebuild,
+  +metadata.xml:
+  Move from dev-perl to perl-core
+
+*parent-0.221 (23 Jun 2009)
+
+  23 Jun 2009; Robin H. Johnson <robbat2@gentoo.org> +parent-0.221.ebuild,
+  +metadata.xml:
+  Initial commit. Ebuild by Robin H. Johnson <robbat2@gentoo.org>.

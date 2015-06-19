@@ -1,0 +1,46 @@
+# ChangeLog for app-xemacs/cc-mode
+# Copyright 2002-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/cc-mode/ChangeLog,v 1.14 2014/08/10 18:44:51 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> cc-mode-1.45.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  19 Mar 2008; Hans de Graaff <graaff@gentoo.org> metadata.xml:
+  A herd should not be listed as maintainer
+
+  21 Oct 2007; Hans de Graaff <graaff@gentoo.org> -cc-mode-1.32.ebuild:
+  Remove old version
+
+  03 Jun 2007; Hans de Graaff <graaff@gentoo.org> cc-mode-1.45.ebuild:
+  Stable on amd64, ppc, ppc64, sparc, x86 as per #175560
+
+  29 May 2007; Raúl Porcel <armin76@gentoo.org> cc-mode-1.45.ebuild:
+  alpha stable wrt #175560
+
+*cc-mode-1.45 (11 Nov 2006)
+
+  11 Nov 2006; Hans de Graaff <graaff@gentoo.org> +metadata.xml,
+  -cc-mode-1.31.ebuild, +cc-mode-1.45.ebuild:
+  Version bump; remove old version; add metadata.xml.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> cc-mode-1.32.ebuild:
+  Stable on ppc.
+
+  09 Aug 2004; Tom Gall <tgall@gentoo.org> cc-mode-1.32.ebuild:
+  stable on ppc64, bug #57174
+
+  02 Oct 2003; Aron Griffis <agriffis@gentoo.org> cc-mode-1.32.ebuild:
+  Stable on alpha
+
+*cc-mode-1.32 (22 Feb 2003)
+
+  22 Feb 2003;  <rendhalver@gentoo.org> cc-mode-1.31.ebuild cc-mode-1.32.ebuild files/digest-cc-mode-1.32 :
+  Add ~alpha to KEYWORDS
+
+  22 Feb 2003; Rendhalver <rendhalver@gentoo.org> :
+  new stable ebuild
+
+*cc-mode-1.31 (16 Dec 2002)
+
+  16 Dec 2002; Rendhalver [Peter Brown] <rendhalver@gentoo.org> :
+  Initial import.

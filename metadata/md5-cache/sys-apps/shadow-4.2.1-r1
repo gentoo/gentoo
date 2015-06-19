@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst preinst prepare
+DEPEND=acl? ( sys-apps/acl ) audit? ( sys-process/audit ) cracklib? ( >=sys-libs/cracklib-2.7-r3 ) pam? ( virtual/pam ) skey? ( sys-auth/skey ) selinux? ( >=sys-libs/libselinux-1.28 sys-libs/libsemanage ) nls? ( virtual/libintl ) xattr? ( sys-apps/attr ) app-arch/xz-utils nls? ( sys-devel/gettext ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Utilities to deal with user accounts
+EAPI=4
+HOMEPAGE=http://shadow.pld.org.pl/ http://pkg-shadow.alioth.debian.org/
+IUSE=acl audit cracklib nls pam selinux skey xattr linguas_cs linguas_da linguas_de linguas_es linguas_fi linguas_fr linguas_hu linguas_id linguas_it linguas_ja linguas_ko linguas_pl linguas_pt_BR linguas_ru linguas_sv linguas_tr linguas_zh_CN linguas_zh_TW
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=BSD GPL-2
+RDEPEND=acl? ( sys-apps/acl ) audit? ( sys-process/audit ) cracklib? ( >=sys-libs/cracklib-2.7-r3 ) pam? ( virtual/pam ) skey? ( sys-auth/skey ) selinux? ( >=sys-libs/libselinux-1.28 sys-libs/libsemanage ) nls? ( virtual/libintl ) xattr? ( sys-apps/attr ) pam? ( >=sys-auth/pambase-20150213 )
+SLOT=0
+SRC_URI=http://pkg-shadow.alioth.debian.org/releases/shadow-4.2.1.tar.xz
+_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	pam	aa1ebb3ab720ea04dbbdd6eaaf9554ed	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=44a3e17b28452ea0dc3353d17ff981e8

@@ -1,0 +1,36 @@
+From 947b1fe6c67b2399edd436c74408cb354c381e4a Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Tue, 31 Dec 2013 13:35:05 -0500
+Subject: [PATCH] fix build when quota is disabled
+
+Building e2fsprogs-libs with quota disabled fails:
+
+making all in lib/quota
+make[2]: Entering directory '.../lib/quota'
+make[2]: *** No rule to make target '.../lib/ext2fs/ext2_fs.h', needed by 'mkquota.o'.  Stop.
+make[2]: *** Waiting for unfinished jobs....
+make[2]: Leaving directory '.../lib/quota'
+Makefile:380: recipe for target 'all-libs-recursive' failed
+make[1]: *** [all-libs-recursive] Error 1
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ Makefile.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index f327d19..544ed02 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -13,7 +13,7 @@ INSTALL = @INSTALL@
+ @DEBUGFS_CMT@DEBUGFS_DIR= debugfs
+ @UUID_CMT@UUID_LIB_SUBDIR= lib/uuid
+ @BLKID_CMT@BLKID_LIB_SUBDIR= lib/blkid
+-QUOTA_LIB_SUBDIR= lib/quota
++@QUOTA_CMT@QUOTA_LIB_SUBDIR= lib/quota
+ 
+ LIB_SUBDIRS=lib/et lib/ss lib/e2p $(UUID_LIB_SUBDIR) lib/ext2fs $(BLKID_LIB_SUBDIR) $(QUOTA_LIB_SUBDIR) intl
+ PROG_SUBDIRS=e2fsck $(DEBUGFS_DIR) misc $(RESIZE_DIR) tests/progs po
+-- 
+1.8.4.3
+

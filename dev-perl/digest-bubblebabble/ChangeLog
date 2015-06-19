@@ -1,0 +1,99 @@
+# ChangeLog for dev-perl/digest-bubblebabble
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/digest-bubblebabble/ChangeLog,v 1.25 2014/02/09 08:31:08 zlogene Exp $
+
+  09 Feb 2014; Mikle Kolyada <zlogene@gentoo.org>
+  -digest-bubblebabble-0.20.0.ebuild, digest-bubblebabble-0.20.0-r1.ebuild:
+  alpha/amd64/hppa/ia64/ppc64/sparc/x86 stable wrt bug #495536; Drop old.
+
+*digest-bubblebabble-0.20.0-r1 (14 Sep 2013)
+
+  14 Sep 2013; Ian Delaney <idella4@gentoo.org>
+  +digest-bubblebabble-0.20.0-r1.ebuild, digest-bubblebabble-0.20.0.ebuild:
+  revbump -> EAPI 5
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  18 Feb 2012; Torsten Veller <tove@gentoo.org>
+  -digest-bubblebabble-0.01.ebuild:
+  Cleanup
+
+  12 Feb 2012; Tony Vroon <chainsaw@gentoo.org>
+  digest-bubblebabble-0.20.0.ebuild:
+  Marked stable on PPC64 as requested by Paweł Hajdan, Jr. in bug #392785.
+  Compile tested on a PowerMac7,3 (64UL) with GCC 4.5.3.
+
+  17 Dec 2011; Raúl Porcel <armin76@gentoo.org>
+  digest-bubblebabble-0.20.0.ebuild:
+  alpha/ia64/sparc stable wrt #392785
+
+  13 Dec 2011; Agostino Sarubbo <ago@gentoo.org>
+  digest-bubblebabble-0.20.0.ebuild:
+  Stable for AMD64, wrt bug #392785
+
+  13 Dec 2011; Jeroen Roovers <jer@gentoo.org>
+  digest-bubblebabble-0.20.0.ebuild:
+  Stable for HPPA (bug #392785).
+
+  11 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  digest-bubblebabble-0.20.0.ebuild:
+  x86 stable wrt bug #392785
+
+*digest-bubblebabble-0.20.0 (24 Mar 2011)
+
+  24 Mar 2011; Torsten Veller <tove@gentoo.org>
+  +digest-bubblebabble-0.20.0.ebuild:
+  Version bump
+
+  15 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  digest-bubblebabble-0.01.ebuild:
+  Ebuild maintenance
+
+  06 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  digest-bubblebabble-0.01.ebuild:
+  Adding perl dep; fixed header; fixed DEPEND
+
+  25 Nov 2005; Tom Gall <tgall@gentoo.org> 
+  digest-bubblebabble-0.01.ebuild:
+  stable on ppc64
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org>
+  digest-bubblebabble-0.01.ebuild:
+  Mark 0.01 stable on ia64
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  digest-bubblebabble-0.01.ebuild:
+  add ~ia64
+
+  29 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  digest-bubblebabble-0.01.ebuild:
+  Cleaning for mirror syntax
+
+  22 Apr 2005; Simon Stelling <blubb@gentoo.org>
+  digest-bubblebabble-0.01.ebuild:
+  stable on amd64
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  25 Dec 2004; Yuta SATOH <nigoro@gentoo.org> digest-bubblebabble-0.01.ebuild:
+  added ~ppc64
+
+  30 May 2004; Bryan Østergaard <kloeri@gentoo.org>
+  digest-bubblebabble-0.01.ebuild:
+  Stable on alpha.
+
+  25 Feb 2004; Joshua Kinard <kumba@gentoo.org>
+  digest-bubblebabble-0.01.ebuild:
+  Added ~mips to KEYWORDS to satisfy repoman deps.
+
+  27 Oct 2003; Brad House <brad_mssw@gentoo.org>
+  digest-bubblebabble-0.01.ebuild:
+  add ~amd64 flag
+
+*digest-bubblebabble-0.01 (23 Jun 2003)
+
+  23 Jun 2003; Michael Cummings <mcummings@gentoo.org>
+  digest-bubblebabble-0.01.ebuild:
+  dep for net-ssh

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201504-04">
+  <title>Xen: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Xen, the worst of which
+    can allow remote attackers to cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">xen</product>
+  <announced>April 11, 2015</announced>
+  <revised>April 11, 2015: 1</revised>
+  <bug>478280</bug>
+  <bug>482138</bug>
+  <bug>512294</bug>
+  <bug>519800</bug>
+  <bug>530182</bug>
+  <bug>530980</bug>
+  <bug>532030</bug>
+  <bug>536220</bug>
+  <bug>542266</bug>
+  <bug>543304</bug>
+  <bug>545144</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-emulation/xen" auto="yes" arch="*">
+      <unaffected range="ge">4.4.2-r1</unaffected>
+      <unaffected range="rge">4.2.5-r8</unaffected>
+      <vulnerable range="lt">4.4.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Xen is a bare-metal hypervisor.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Xen.  Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker could possibly cause a Denial of Service condition or
+      obtain sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Xen 4.4 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/xen-4.4.2-r1"
+    </code>
+    
+    <p>All Xen 4.2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/xen-4.2.5-r8"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2212">CVE-2013-2212</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-3495">CVE-2013-3495</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3967">CVE-2014-3967</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3968">CVE-2014-3968</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5146">CVE-2014-5146</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-5149">CVE-2014-5149</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8594">CVE-2014-8594</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8595">CVE-2014-8595</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8866">CVE-2014-8866</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8867">CVE-2014-8867</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9030">CVE-2014-9030</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9065">CVE-2014-9065</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9066">CVE-2014-9066</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0361">CVE-2015-0361</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2044">CVE-2015-2044</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2045">CVE-2015-2045</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2152">CVE-2015-2152</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2751">CVE-2015-2751</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2752">CVE-2015-2752</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2756">CVE-2015-2756</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 01 Feb 2015 02:14:06 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 11 Apr 2015 20:08:49 +0000">
+    BlueKnight
+  </metadata>
+</glsa>

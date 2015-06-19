@@ -1,0 +1,25 @@
+# ChangeLog for sci-mathematics/prover9
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/prover9/ChangeLog,v 1.6 2014/01/08 15:59:39 jlec Exp $
+
+  08 Jan 2014; Justin Lecher <jlec@gentoo.org> prover9-2009.11a.ebuild:
+  Fix breakage due to dropping make target, #497530; Respect CC
+
+  06 Jan 2014; Justin Lecher <jlec@gentoo.org> prover9-2009.11a.ebuild,
+  metadata.xml:
+  Punt base.eclass; bump to EAPI=5; drop unnecessary (R)DEPEND, dies and dodir
+
+  24 May 2013; Mark Wright <gienah@gentoo.org> metadata.xml:
+  fix bug 466776 - typo in email address
+
+  30 Jan 2012; Mark Wright <gienah@gentoo.org> metadata.xml:
+  Note I am the maintainer in metadata.xml.
+
+  08 Jan 2012; Mark Wright <gienah@gentoo.org> prover9-2009.11a.ebuild:
+  Compress the mirrored patch, thanks to xarthisius for reviewing
+
+*prover9-2009.11a (08 Jan 2012)
+
+  08 Jan 2012; Mark Wright <gienah@gentoo.org>
+  +files/LADR-2009-11A-manpages.patch, +prover9-2009.11a.ebuild, +metadata.xml:
+  Add prover9 mace4 ebuild, thanks Thomas Veith, fixes #49205.

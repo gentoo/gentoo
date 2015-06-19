@@ -1,0 +1,43 @@
+# ChangeLog for games-rpg/drascula
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/drascula/ChangeLog,v 1.10 2014/08/28 18:34:51 mr_bones_ Exp $
+
+  28 Aug 2014; Michael Sterrett <mr_bones_@gentoo.org> -drascula-1.0-r1.ebuild:
+  old
+
+  10 Aug 2014; Agostino Sarubbo <ago@gentoo.org> drascula-1.0-r2.ebuild:
+  Stable for x86, wrt bug #518062
+
+  28 Jul 2014; Chema Alonso <nimiux@gentoo.org> drascula-1.0-r2.ebuild:
+  Stable for amd64 wrt bug #518062
+
+*drascula-1.0-r2 (02 Feb 2013)
+
+  02 Feb 2013; Julian Ospald <hasufell@gentoo.org> +drascula-1.0-r2.ebuild:
+  version bump
+
+  14 Mar 2011; Alfredo Tupone <tupone@gentoo.org> drascula-1.0-r1.ebuild,
+  metadata.xml:
+  Rename audio USE flag to sound. Bug #357661 by ulm@gentoo.org
+
+  17 Dec 2009; Pacho Ramos <pacho@gentoo.org> drascula-1.0-r1.ebuild:
+  stable amd64, bug 288888
+
+  26 Nov 2009; Christian Faulhammer <fauli@gentoo.org>
+  drascula-1.0-r1.ebuild:
+  stable x86, bug 288888
+
+*drascula-1.0-r1 (14 Jul 2009)
+
+  14 Jul 2009; Michael Sterrett <mr_bones_@gentoo.org> -drascula-1.0.ebuild,
+  +drascula-1.0-r1.ebuild:
+  newer files from upstream
+
+  04 Oct 2008; Jeremy Olexa <darkside@gentoo.org> drascula-1.0.ebuild:
+  add ~amd64, bug #239219
+
+*drascula-1.0 (16 Sep 2008)
+
+  16 Sep 2008; Michael Sterrett <mr_bones_@gentoo.org> +metadata.xml,
+  +drascula-1.0.ebuild:
+  initial commit - modified ebuild submitted by Anton Romanov via bug #237276

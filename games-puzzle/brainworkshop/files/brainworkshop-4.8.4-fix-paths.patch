@@ -1,0 +1,15 @@
+--- a/brainworkshop.pyw	2010-10-15 19:06:16.529006906 +0200
++++ b/brainworkshop.pyw	2010-10-15 19:08:17.095632136 +0200
+@@ -35,8 +35,10 @@
+ NOVBO = True
+ VSYNC = False
+ DEBUG = False
+-FOLDER_RES = 'res'
+-FOLDER_DATA = 'data'
++FOLDER_RES = '@GENTOO_DATADIR@/brainworkshop'
++FOLDER_DATA = os.path.expanduser('~/.brainworkshop')
++if not os.path.isdir(FOLDER_DATA):
++	os.mkdir(FOLDER_DATA)
+ CONFIGFILE = 'config.ini'
+ STATS_BINARY = 'logfile.dat'
+ USER = 'default'

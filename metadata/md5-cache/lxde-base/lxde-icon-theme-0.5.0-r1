@@ -1,0 +1,12 @@
+DEFINED_PHASES=postinst postrm preinst
+DEPEND=x11-libs/gtk+:2 virtual/pkgconfig sys-devel/gettext !<lxde-base/lxde-common-0.5.0 >=sys-apps/sed-4
+DESCRIPTION=nuoveXT2 iconset
+EAPI=5
+HOMEPAGE=http://lxde.sf.net/
+KEYWORDS=~alpha amd64 arm ~arm64 ppc x86 ~arm-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=x11-libs/gtk+:2
+SLOT=0
+SRC_URI=mirror://sourceforge/lxde/LXDE%20Icon%20Theme/lxde-icon-theme-0.5.0/lxde-icon-theme-0.5.0.tar.bz2
+_eclasses_=gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=a0f1a8134c760e96e9bb11f603ee0073

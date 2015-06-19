@@ -1,0 +1,7 @@
+# Copyright 1999-2014 Gentoo Foundation                                                                                                                                                                                                      
+# Distributed under the terms of the GNU General Public License v2                                                                                                                                                                           
+# $Header: /var/cvsroot/gentoo-x86/profiles/default/linux/sparc/13.0/package.use.stable.mask,v 1.1 2014/04/17 02:35:41 patrick Exp $
+
+# Patrick Lauer <patrick@gentoo.org> (17 Apr 2014)
+# Mask dbus-python[test] until #494132 maybe gets fixed
+=dev-python/dbus-python-1.2.0 test

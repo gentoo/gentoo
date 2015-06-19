@@ -1,0 +1,30 @@
+# http://bugs.debian.org/225780
+diff -Naurp pth.orig/pth_sched.c pth/pth_sched.c
+--- pth.orig/pth_sched.c	2009-07-16 23:16:52.000000000 +0000
++++ pth/pth_sched.c	2009-07-16 23:20:51.000000000 +0000
+@@ -297,8 +297,15 @@ intern void *pth_scheduler(void *dummy)
+         /*
+          * Check for stack overflow
+          */
++#ifndef __ia64__
+         if (pth_current->stackguard != NULL) {
+             if (*pth_current->stackguard != 0xDEAD) {
++#else
++	      /* On ia64 the stack grows down but the bottom part is used for register
++	       * backing store which grows up. So we check for a meet in the middle
++	       */
++		if (pth_current->mctx.uc.uc_mcontext.sc_gr[12] <= pth_current->mctx.uc.uc_mcontext.sc_ar_bsp) {
++#endif
+                 pth_debug3("pth_scheduler: stack overflow detected for thread 0x%lx (\"%s\")",
+                            (unsigned long)pth_current, pth_current->name);
+                 /*
+@@ -324,7 +331,9 @@ intern void *pth_scheduler(void *dummy)
+                 pth_current->state = PTH_STATE_DEAD;
+                 kill(getpid(), SIGSEGV);
+             }
++#ifndef __ia64__
+         }
++#endif
+ 
+         /*
+          * If previous thread is now marked as dead, kick it out

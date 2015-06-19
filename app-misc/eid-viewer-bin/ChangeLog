@@ -1,0 +1,21 @@
+# ChangeLog for app-misc/eid-viewer-bin
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/eid-viewer-bin/ChangeLog,v 1.3 2014/08/10 18:03:21 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  eid-viewer-bin-4.0.7_p184.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*eid-viewer-bin-4.0.7_p184 (09 Jul 2014)
+
+  09 Jul 2014; Sven Vermeulen <swift@gentoo.org>
+  +eid-viewer-bin-4.0.7_p184.ebuild, -eid-viewer-bin-4.0.4_p146.ebuild:
+  Fix bug #515614 - Bump eid-viewer-bin, old version no longer available, thanks
+  to Vincent Hardy for bump and Bastiaan Wakkie for reporting
+
+*eid-viewer-bin-4.0.4_p146 (30 May 2014)
+
+  30 May 2014; Sven Vermeulen <swift@gentoo.org>
+  +eid-viewer-bin-4.0.4_p146.ebuild, +metadata.xml:
+  Adding Belgian eID viewer software (java binary edition) to tree, thanks to
+  Vincent Hardy (bug #372187)

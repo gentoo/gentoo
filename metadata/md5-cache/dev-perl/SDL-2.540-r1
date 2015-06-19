@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=dev-perl/Alien-SDL-1.434 dev-perl/Capture-Tiny dev-perl/File-ShareDir dev-perl/Test-Most dev-perl/Tie-Simple media-libs/libpng:0 media-libs/libsdl media-libs/sdl-gfx media-libs/sdl-image media-libs/sdl-mixer media-libs/sdl-pango media-libs/sdl-ttf media-libs/smpeg media-libs/tiff:0 virtual/glu virtual/jpeg:0 virtual/opengl virtual/perl-ExtUtils-CBuilder >=dev-perl/Module-Build-0.400.0 virtual/perl-Scalar-List-Utils virtual/perl-Test-Simple dev-lang/perl:=[-build(-)]
+DESCRIPTION=Simple DirectMedia Layer (SDL) bindings for perl
+EAPI=5
+HOMEPAGE=http://sdl.perl.org/ http://search.cpan.org/dist/SDL/ http://github.com/PerlGameDev/SDL
+KEYWORDS=amd64 hppa x86
+LICENSE=GPL-2 OFL-1.1
+RDEPEND=>=dev-perl/Alien-SDL-1.434 dev-perl/Capture-Tiny dev-perl/File-ShareDir dev-perl/Test-Most dev-perl/Tie-Simple media-libs/libpng:0 media-libs/libsdl media-libs/sdl-gfx media-libs/sdl-image media-libs/sdl-mixer media-libs/sdl-pango media-libs/sdl-ttf media-libs/smpeg media-libs/tiff:0 virtual/glu virtual/jpeg:0 virtual/opengl virtual/perl-ExtUtils-CBuilder >=dev-perl/Module-Build-0.400.0 virtual/perl-Scalar-List-Utils virtual/perl-Test-Simple dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/J/JT/JTPALMER/SDL-2.540.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=50e885ed155d8b48dd95cfe4a46adfca

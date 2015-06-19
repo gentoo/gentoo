@@ -1,0 +1,14 @@
+# Copyright 1999-2012 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/desc/openmpi_fabrics.desc,v 1.1 2012/04/18 20:26:12 alexxy Exp $
+
+# This file contains descriptions of OPENMPI_FABRICS USE_EXPAND flags.
+
+# Keep it sorted.
+
+dapl - Direct Access Provider Library
+ofed - OFED RDMA stack (InfiniBand and iWARP)
+knem - High-Performance Intra-Node MPI Communication
+open-mx - Myrinet Express over Generic Ethernet Hardware
+psm - QLogic InfiniPath HCA driver (psm based)
+sctp - Stream Control Transmission Protocol

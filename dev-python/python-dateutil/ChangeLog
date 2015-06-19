@@ -1,0 +1,321 @@
+# ChangeLog for dev-python/python-dateutil
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-dateutil/ChangeLog,v 1.81 2015/06/07 15:39:26 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  07 Jun 2015; Markus Meier <maekke@gentoo.org> python-dateutil-2.2.ebuild:
+  arm stable, bug #540290
+
+  02 Jun 2015; Jack Morgan <jmorgan@gentoo.org> python-dateutil-2.2.ebuild:
+  sparc stable wrt bug #540290
+
+*python-dateutil-2.4.2-r1 (15 May 2015)
+
+  15 May 2015; Justin Lecher <jlec@gentoo.org>
+  +files/python-dateutil-2.4.2-timelex.patch, +python-dateutil-2.4.2-r1.ebuild:
+  Import patch from fedora
+
+  14 Apr 2015; Agostino Sarubbo <ago@gentoo.org> python-dateutil-2.2.ebuild:
+  Stable for ia64, wrt bug #540290
+
+  13 Apr 2015; Agostino Sarubbo <ago@gentoo.org> python-dateutil-2.2.ebuild:
+  Stable for alpha, wrt bug #540290
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> python-dateutil-2.1-r1.ebuild,
+  python-dateutil-2.2.ebuild:
+  Drop old Python implementations
+
+*python-dateutil-2.4.2 (03 Apr 2015)
+
+  03 Apr 2015; Justin Lecher <jlec@gentoo.org> +python-dateutil-2.4.2.ebuild,
+  metadata.xml:
+  Version Bump
+
+*python-dateutil-2.4.1-r1 (30 Mar 2015)
+
+  30 Mar 2015; Ian Delaney <idella4@gentoo.org>
+  +python-dateutil-2.4.1-r1.ebuild, -python-dateutil-2.4.1.ebuild:
+  revbump; upstream added missing testsuite to already released 2.4.1, rm the
+  2.4.1.ebuild to avoid confusion over new hash values and the renamed file @
+  pypi
+
+*python-dateutil-2.4.1 (25 Mar 2015)
+
+  25 Mar 2015; Ian Delaney <idella4@gentoo.org> +python-dateutil-2.4.1.ebuild,
+  -python-dateutil-2.3.ebuild:
+  bump; rm one old
+
+  21 Mar 2015; Jeroen Roovers <jer@gentoo.org> python-dateutil-2.2.ebuild:
+  Stable for HPPA (bug #540290).
+
+  10 Mar 2015; Mike Frysinger <vapier@gentoo.org> python-dateutil-2.4.0.ebuild:
+  Add arm64/m68k/s390/sh love.
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> python-dateutil-2.2.ebuild:
+  x86 stable, bug 540290
+
+  07 Mar 2015; Pacho Ramos <pacho@gentoo.org> python-dateutil-2.2.ebuild:
+  ppc stable, bug 540290
+
+  07 Mar 2015; Pacho Ramos <pacho@gentoo.org> python-dateutil-2.2.ebuild:
+  ppc64 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> python-dateutil-2.2.ebuild:
+  amd64 stable, bug 540290
+
+*python-dateutil-2.4.0 (05 Jan 2015)
+
+  05 Jan 2015; Tim Harder <radhermit@gentoo.org> +python-dateutil-2.4.0.ebuild:
+  Version bump.
+
+*python-dateutil-2.3 (07 Dec 2014)
+
+  07 Dec 2014; Tim Harder <radhermit@gentoo.org> +python-dateutil-2.3.ebuild:
+  Version bump.
+
+  26 Oct 2014; Tim Harder <radhermit@gentoo.org> python-dateutil-2.2.ebuild:
+  Add pypi page to HOMEPAGE.
+
+  30 Sep 2014; Ian Delaney <idella4@gentoo.org> -python-dateutil-1.5.ebuild,
+  -python-dateutil-2.1.ebuild, python-dateutil-2.2.ebuild:
+  remove old obsoleted py2 only version & version inheriting old eclass; 2.2,
+  clean old impls
+
+  27 Sep 2014; Mike Gilbert <floppym@gentoo.org> python-dateutil-2.1-r1.ebuild:
+  Add python3.4 to version 2.1.
+
+  16 Apr 2014; Ian Delaney <idella4@gentoo.org> python-dateutil-2.2.ebuild:
+  add py3.4 support
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> python-dateutil-2.1-r1.ebuild,
+  python-dateutil-2.2.ebuild:
+  Add support for the new PyPy slotting.
+
+*python-dateutil-2.2 (06 Feb 2014)
+
+  06 Feb 2014; Sébastien Fabbro <bicatali@gentoo.org>
+  +python-dateutil-2.2.ebuild, metadata.xml:
+  Version bump
+
+  23 Dec 2013; Agostino Sarubbo <ago@gentoo.org> python-dateutil-2.1-r1.ebuild:
+  Stable for sparc, wrt bug #469994
+
+  24 Nov 2013; Markos Chandras <hwoarang@gentoo.org>
+  python-dateutil-2.1-r1.ebuild:
+  Add ~mips
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> python-dateutil-2.1-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  14 Jul 2013; Agostino Sarubbo <ago@gentoo.org> python-dateutil-2.1-r1.ebuild:
+  Stable for alpha, wrt bug #469994
+
+  24 May 2013; Agostino Sarubbo <ago@gentoo.org> python-dateutil-2.1-r1.ebuild:
+  Stable for ppc64, wrt bug #469994
+
+  22 May 2013; Agostino Sarubbo <ago@gentoo.org> python-dateutil-2.1-r1.ebuild:
+  Stable for ia64, wrt bug #469994
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> python-dateutil-2.1-r1.ebuild:
+  Stable for arm, wrt bug #469994
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> python-dateutil-2.1-r1.ebuild:
+  Stable for ppc, wrt bug #469994
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> python-dateutil-2.1-r1.ebuild:
+  Stable for x86, wrt bug #469994
+
+  19 May 2013; Agostino Sarubbo <ago@gentoo.org> python-dateutil-2.1-r1.ebuild:
+  Stable for amd64, wrt bug #469994
+
+  17 May 2013; Jeroen Roovers <jer@gentoo.org> python-dateutil-2.1-r1.ebuild:
+  Stable for HPPA (bug #469994).
+
+  07 Mar 2013; Ian Delaney <idella4@gentoo.org> python-dateutil-2.1-r1.ebuild:
+  pypy support tested and added
+
+  05 Feb 2013; Benda Xu <heroxbd@gentoo.org> python-dateutil-2.1-r1.ebuild:
+  keyword ~arm
+
+*python-dateutil-2.1-r1 (01 Jan 2013)
+
+  01 Jan 2013; Michał Górny <mgorny@gentoo.org> +python-dateutil-2.1-r1.ebuild:
+  Migrate to distutils-r1.
+
+  17 Dec 2012; Agostino Sarubbo <ago@gentoo.org> python-dateutil-2.1.ebuild:
+  Stable for ia64, wrt bug #426466
+
+  07 Oct 2012; nixnut <nixnut@gentoo.org> python-dateutil-2.1.ebuild:
+  ppc stable #426466
+
+  14 Jul 2012; Johannes Huber <johu@gentoo.org> python-dateutil-2.1.ebuild:
+  Stable for x86, wrt bug #426466
+
+  14 Jul 2012; Agostino Sarubbo <ago@gentoo.org> python-dateutil-2.1.ebuild:
+  Stable for amd64, wrt bug #426466
+
+  04 Apr 2012; Mike Gilbert <floppym@gentoo.org>
+  +files/python-dateutil-2.1-open-utf-8.patch, python-dateutil-2.1.ebuild:
+  Fix UnicodeDecodeError in setup.py. Bug 410725.
+
+  01 Apr 2012; Mike Gilbert <floppym@gentoo.org> python-dateutil-2.1.ebuild:
+  Update HOMEPAGE.
+
+  01 Apr 2012; Mike Gilbert <floppym@gentoo.org> -python-dateutil-2.0.ebuild:
+  Remove.
+
+*python-dateutil-2.1 (01 Apr 2012)
+
+  01 Apr 2012; Mike Gilbert <floppym@gentoo.org> +python-dateutil-2.1.ebuild:
+  Version bump. This version supports both python 2 and 3.
+
+  19 Jan 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  python-dateutil-2.0.ebuild:
+  Fixed PYTHON_DEPEND
+
+*python-dateutil-2.0 (19 Jan 2012)
+
+  19 Jan 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  +python-dateutil-2.0.ebuild:
+  Version bump (python3 only)
+
+  26 Nov 2011; Markos Chandras <hwoarang@gentoo.org> python-dateutil-1.5.ebuild:
+  Ignore failures of tests with Jython. Update DESCRIPTION and LICENSE. Use
+  SLOT="python-2". Add "examples" USE flag. Use sed instead of a patch. Patch by
+  Arfrever.
+
+  07 Jun 2011; Naohiro Aota <naota@gentoo.org> python-dateutil-1.5.ebuild:
+  Add ~x86-fbsd keyword
+
+  23 Oct 2010; Samuli Suominen <ssuominen@gentoo.org>
+  python-dateutil-1.5.ebuild:
+  Keyword ~ppc64 wrt #341699
+
+  30 May 2010; Raúl Porcel <armin76@gentoo.org> python-dateutil-1.5.ebuild:
+  ia64/x86 stable wrt #318195
+
+  17 May 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  python-dateutil-1.5.ebuild:
+  amd64 stable (tested by rullzer) (bug #318195).
+
+  10 May 2010; nixnut <nixnut@gentoo.org> python-dateutil-1.5.ebuild:
+  ppc stable #318195
+
+*python-dateutil-1.5 (02 Apr 2010)
+
+  02 Apr 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +python-dateutil-1.5.ebuild:
+  Version bump.
+
+  08 Feb 2010; Peter Volkov <pva@gentoo.org>
+  python-dateutil-1.4.1-r1.ebuild:
+  Add inherit eutils for epatch.
+
+  17 Jan 2010; Raúl Porcel <armin76@gentoo.org>
+  python-dateutil-1.4.1-r1.ebuild:
+  ia64 stable wrt #297713
+
+  07 Jan 2010; Joseph Jezak <josejx@gentoo.org>
+  python-dateutil-1.4.1-r1.ebuild:
+  Marked ppc stable for bug #297713.
+
+  03 Jan 2010; Markus Meier <maekke@gentoo.org>
+  python-dateutil-1.4.1-r1.ebuild:
+  x86 stable, bug #297713
+
+  24 Dec 2009; Pacho Ramos <pacho@gentoo.org>
+  python-dateutil-1.4.1-r1.ebuild:
+  amd64 stable, bug 297713
+
+  20 Dec 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  python-dateutil-1.4.1-r1.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+  11 Oct 2009; Fabian Groffen <grobian@gentoo.org>
+  python-dateutil-1.4.1-r1.ebuild:
+  Merge from Prefix
+
+  04 Sep 2009; Patrick Lauer <patrick@gentoo.org>
+  -python-dateutil-1.3.ebuild:
+  Remove old
+
+*python-dateutil-1.4.1-r1 (20 Jan 2009)
+
+  20 Jan 2009; Jesus Rivero <neurogeek@gentoo.org>
+  -python-dateutil-1.4.1.ebuild, +python-dateutil-1.4.1-r1.ebuild:
+  Fixed DEPEND typo, Added setuptools to DEPEND. Removed old version
+
+*python-dateutil-1.4.1 (14 Jan 2009)
+
+  14 Jan 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/python-dateutil-1.4.1-locale.patch, +python-dateutil-1.4.1.ebuild:
+  Version bump. Use timezone from sys-libs/timezone-data now
+
+  18 Jun 2008; Santiago M. Mola <coldwind@gentoo.org>
+  python-dateutil-1.1.ebuild, python-dateutil-1.2.ebuild,
+  python-dateutil-1.3.ebuild:
+  Set up PYTHON_MODNAME, fixes bug #227267.
+
+  12 Mar 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Marien Zwart (marienz, #107204) from metadata.xml.
+
+  14 Jan 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  python-dateutil-1.2.ebuild:
+  ppc. stable
+
+*python-dateutil-1.3 (31 Dec 2007)
+
+  31 Dec 2007; Tiziano Müller <dev-zero@gentoo.org>
+  python-dateutil-1.2.ebuild, +python-dateutil-1.3.ebuild:
+  Version bump (bug #203827). Fixed tests.
+
+  16 Dec 2007; Samuli Suominen <drac@gentoo.org> python-dateutil-1.2.ebuild:
+  amd64 stable
+
+*python-dateutil-1.2 (27 Jun 2007)
+
+  27 Jun 2007; Lukasz Strzygowski <lucass@gentoo.org>
+  +python-dateutil-1.2.ebuild:
+  Version bump.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  15 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  python-dateutil-1.1.ebuild:
+  Stable on ia64.
+
+  19 Aug 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  python-dateutil-1.1.ebuild:
+  ppc stable
+
+  27 Jul 2006; Alastair Tse <liquidx@gentoo.org>
+  -python-dateutil-1.0.ebuild, python-dateutil-1.1.ebuild:
+  stable bump for x86
+
+  01 Apr 2006; Aron Griffis <agriffis@gentoo.org>
+  python-dateutil-1.1.ebuild:
+  Mark 1.1 ~ia64
+
+  24 Dec 2005; Tobias Scherbaum <dertobi123@gentoo.org>
+  python-dateutil-1.1.ebuild:
+  Added to ~ppc, #114776
+
+*python-dateutil-1.1 (22 Dec 2005)
+
+  22 Dec 2005; Marien Zwart <marienz@gentoo.org>
+  +python-dateutil-1.1.ebuild:
+  Version bump (bug #116410).
+
+  10 Dec 2005; Luis Medinas <metalgod@gentoo.org>
+  python-dateutil-1.0.ebuild:
+  Added ~amd64 keyword. Bug #114776.
+
+*python-dateutil-1.0 (24 Nov 2005)
+
+  24 Nov 2005; Marien Zwart <marienz@gentoo.org> +metadata.xml,
+  +python-dateutil-1.0.ebuild:
+  new ebuild, based on the ebuild from Jeff Kowalczyk <jtk@yahoo.com> (bug
+  #64398)

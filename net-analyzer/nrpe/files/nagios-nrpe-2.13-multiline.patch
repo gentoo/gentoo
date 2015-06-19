@@ -1,0 +1,200 @@
+diff --git a/include/common.h b/include/common.h
+index 202dec4..86f8e32 100755
+--- a/include/common.h
++++ b/include/common.h
+@@ -41,7 +41,7 @@
+ #define DEFAULT_SOCKET_TIMEOUT	10	/* timeout after 10 seconds */
+ #define DEFAULT_CONNECTION_TIMEOUT 300	/* timeout if daemon is waiting for connection more than this time */
+ 
+-#define MAX_INPUT_BUFFER	2048	/* max size of most buffers we use */
++#define MAX_INPUT_BUFFER	16384	/* max size of most buffers we use */
+ #define MAX_FILENAME_LENGTH     256
+ 
+ #define MAX_HOST_ADDRESS_LENGTH	256	/* max size of a host address */
+@@ -55,12 +55,14 @@
+ 
+ #define QUERY_PACKET		1		/* id code for a packet containing a query */
+ #define	RESPONSE_PACKET		2		/* id code for a packet containing a response */
++#define    RESPONSE_PACKET_WITH_MORE   3   /* id code for a packet containing a response, with more data to follow */
+ 
+ #define NRPE_PACKET_VERSION_3   3               /* packet version identifier */
+ #define NRPE_PACKET_VERSION_2   2               
+ #define NRPE_PACKET_VERSION_1	1		/* older packet version identifiers (no longer supported) */
+ 
+ #define MAX_PACKETBUFFER_LENGTH	1024		/* max amount of data we'll send in one query/response */
++											/* WARNING - do not change this as older clients/servers will not work */
+ 
+ typedef struct packet_struct{
+ 	int16_t   packet_version;
+diff --git a/src/check_nrpe.c b/src/check_nrpe.c
+index 0adced1..ff4b920 100755
+--- a/src/check_nrpe.c
++++ b/src/check_nrpe.c
+@@ -221,6 +221,11 @@ int main(int argc, char **argv){
+ 			return STATE_UNKNOWN;
+ 		        }
+ 
++		/* Altinity patch: Allow multiple packets to be received */
++		/* Indentation not corrected to allow simpler patching */
++		/* START MULTI_PACKET LOOP */
++		do {
++
+ 		/* wait for the response packet */
+ 		bytes_to_recv=sizeof(receive_packet);
+ 		if(use_ssl==FALSE)
+@@ -233,31 +238,24 @@ int main(int argc, char **argv){
+ 		/* reset timeout */
+ 		alarm(0);
+ 
+-		/* close the connection */
+-#ifdef HAVE_SSL
+-		if(use_ssl==TRUE){
+-			SSL_shutdown(ssl);
+-			SSL_free(ssl);
+-			SSL_CTX_free(ctx);
+-	                }
+-#endif
+-		graceful_close(sd,1000);
+-
+ 		/* recv() error */
+ 		if(rc<0){
+ 			printf("CHECK_NRPE: Error receiving data from daemon.\n");
++			graceful_close(sd,1000);
+ 			return STATE_UNKNOWN;
+ 		        }
+ 
+ 		/* server disconnected */
+ 		else if(rc==0){
+ 			printf("CHECK_NRPE: Received 0 bytes from daemon.  Check the remote server logs for error messages.\n");
++			graceful_close(sd,1000);
+ 			return STATE_UNKNOWN;
+ 		        }
+ 
+ 		/* receive underflow */
+ 		else if(bytes_to_recv<sizeof(receive_packet)){
+ 			printf("CHECK_NRPE: Receive underflow - only %d bytes received (%d expected).\n",bytes_to_recv,sizeof(receive_packet));
++			graceful_close(sd,1000);
+ 			return STATE_UNKNOWN;
+ 		        }
+ 
+@@ -271,21 +269,21 @@ int main(int argc, char **argv){
+ 		calculated_crc32=calculate_crc32((char *)&receive_packet,sizeof(receive_packet));
+ 		if(packet_crc32!=calculated_crc32){
+ 			printf("CHECK_NRPE: Response packet had invalid CRC32.\n");
+-			close(sd);
++			graceful_close(sd,1000);
+ 			return STATE_UNKNOWN;
+                         }
+ 	
+ 		/* check packet version */
+ 		if(ntohs(receive_packet.packet_version)!=NRPE_PACKET_VERSION_2){
+ 			printf("CHECK_NRPE: Invalid packet version received from server.\n");
+-			close(sd);
++			graceful_close(sd,1000);
+ 			return STATE_UNKNOWN;
+ 			}
+ 
+ 		/* check packet type */
+-		if(ntohs(receive_packet.packet_type)!=RESPONSE_PACKET){
++		if(ntohs(receive_packet.packet_type)!=RESPONSE_PACKET && ntohs(receive_packet.packet_type)!=RESPONSE_PACKET_WITH_MORE){
+ 			printf("CHECK_NRPE: Invalid packet type received from server.\n");
+-			close(sd);
++			graceful_close(sd,1000);
+ 			return STATE_UNKNOWN;
+ 			}
+ 
+@@ -297,8 +295,18 @@ int main(int argc, char **argv){
+ 		if(!strcmp(receive_packet.buffer,""))
+ 			printf("CHECK_NRPE: No output returned from daemon.\n");
+ 		else
+-			printf("%s\n",receive_packet.buffer);
+-	        }
++			printf("%s",receive_packet.buffer);
++
++		} while (ntohs(receive_packet.packet_type)==RESPONSE_PACKET_WITH_MORE);
++		/* END MULTI_PACKET LOOP */
++
++		/* Finish output with newline */
++		printf("\n");
++
++		/* close the connection */
++		graceful_close(sd,1000);
++
++	}
+ 
+ 	/* reset the alarm */
+ 	else
+@@ -434,6 +442,14 @@ int graceful_close(int sd, int timeout){
+         struct timeval tv;
+         char buf[1000];
+ 
++#ifdef HAVE_SSL
++		if(use_ssl==TRUE){
++			SSL_shutdown(ssl);
++			SSL_free(ssl);
++			SSL_CTX_free(ctx);
++		}
++#endif
++
+ 	/* send FIN packet */
+         shutdown(sd,SHUT_WR);  
+         for(;;){
+diff --git a/src/nrpe.c b/src/nrpe.c
+index f2b0164..dfa8262 100755
+--- a/src/nrpe.c
++++ b/src/nrpe.c
+@@ -972,6 +972,8 @@ void handle_connection(int sock){
+ 	char processed_command[MAX_INPUT_BUFFER];
+ 	int result=STATE_OK;
+ 	int early_timeout=FALSE;
++	int bytes_copied=0;
++	char *pbuffer=&buffer[0];
+ 	int rc;
+ 	int x;
+ #ifdef DEBUG
+@@ -1188,6 +1190,14 @@ void handle_connection(int sock){
+ 	if(buffer[strlen(buffer)-1]=='\n')
+ 		buffer[strlen(buffer)-1]='\x0';
+ 
++	/* Altinity patch to allow multi packet responses */
++	/* Loop not indented to allow easier patching */
++	/* START MULTI_PACKET LOOP */
++	do {
++
++		if(debug==TRUE)
++			syslog(LOG_DEBUG,"Sending response - bytes left: %d", strlen(pbuffer));
++
+ 	/* clear the response packet buffer */
+ 	bzero(&send_packet,sizeof(send_packet));
+ 
+@@ -1196,11 +1206,17 @@ void handle_connection(int sock){
+ 
+ 	/* initialize response packet data */
+ 	send_packet.packet_version=(int16_t)htons(NRPE_PACKET_VERSION_2);
+-	send_packet.packet_type=(int16_t)htons(RESPONSE_PACKET);
+ 	send_packet.result_code=(int16_t)htons(result);
+-	strncpy(&send_packet.buffer[0],buffer,MAX_PACKETBUFFER_LENGTH);
++	strncpy(&send_packet.buffer[0],pbuffer,MAX_PACKETBUFFER_LENGTH);
+ 	send_packet.buffer[MAX_PACKETBUFFER_LENGTH-1]='\x0';
+-	
++
++	bytes_copied = strlen(&send_packet.buffer[0]);
++	pbuffer = pbuffer+bytes_copied;
++	if(strlen(pbuffer)>0)
++		send_packet.packet_type=(int16_t)htons(RESPONSE_PACKET_WITH_MORE);
++	else
++		send_packet.packet_type=(int16_t)htons(RESPONSE_PACKET);
++
+ 	/* calculate the crc 32 value of the packet */
+ 	send_packet.crc32_value=(u_int32_t)0L;
+ 	calculated_crc32=calculate_crc32((char *)&send_packet,sizeof(send_packet));
+@@ -1219,6 +1235,9 @@ void handle_connection(int sock){
+ 		SSL_write(ssl,&send_packet,bytes_to_send);
+ #endif
+ 
++	} while (strlen(pbuffer) > 0);
++	/* END MULTI_PACKET LOOP */
++
+ #ifdef HAVE_SSL
+ 	if(ssl){
+ 		SSL_shutdown(ssl);

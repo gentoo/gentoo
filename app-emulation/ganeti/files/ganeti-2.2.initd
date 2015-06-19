@@ -1,0 +1,113 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/ganeti/files/ganeti-2.2.initd,v 1.1 2014/03/03 23:59:44 chutzpah Exp $
+
+depend() {
+    need localmount logger
+    after bootmisc
+	use net
+}
+
+DAEMON_UTIL="/usr/lib/ganeti/daemon-util"
+
+check_config() {
+    if ! $DAEMON_UTIL check-config ; then
+        eend 0 "Incomplete configuration, will not run."
+    fi
+}
+
+check_exitcode() {
+    RC=${1}
+    if errmsg=$(${DAEMON_UTIL} check-exitcode ${RC}) ; then
+        eend 0 "${errmsg}"
+    else
+        eend 1 "${errmsg}"
+    fi
+}
+
+start_action() {
+    # called as start_action daemon-name
+    local daemon="${1}"
+    ebegin "Starting ${daemon}"
+    ${DAEMON_UTIL} start "${@}"
+    check_exitcode ${?}
+}
+
+stop_action() {
+    # called as stop_action daemon-name
+    local daemon="${1}"
+    ebegin "Stopping ${daemon}"
+    ${DAEMON_UTIL} stop "${@}"
+    check_exitcode ${?}
+}
+
+maybe_do() {
+    requested="${1}"; shift
+    action="${1}"; shift
+    target="${1}"
+    if [ -z "${requested}" -o "${requested}" = "${target}" ] ; then
+        ${action} "${@}"
+    fi
+}
+
+get_master_node() {
+    MASTER_NODE="$(gnt-cluster getmaster)"
+    NODE_HOSTNAME="$(hostname -f)"
+    if [ "$MASTER_NODE" == "$NODE_HOSTNAME" ] ; then
+        MASTER=1
+    else
+        MASTER=0
+    fi
+}
+
+start_all() {
+    check_config
+    get_master_node
+    for i in $($DAEMON_UTIL list-start-daemons); do \
+        GANETI_START_OPTS="${GANETI_OPTS}"
+        case "${i}" in
+            ganeti-masterd)
+                GANETI_OPTS="${GANETI_START_OPTS} ${GANETI_MASTERD_OPTS}"
+                ;;
+            ganeti-rapid)
+                GANETI_OPTS="${GANETI_START_OPTS} ${GANETI_RAPI_OPTS}"
+                ;;
+            ganeti-noded)
+                GANETI_OPTS="${GANETI_START_OPTS} ${GANETI_NODED_OPTS}"
+                ;;
+            ganeti-confd)
+                GANETI_OPTS="${GANETI_START_OPTS} ${GANETI_CONFD_OPTS}"
+                ;;
+        esac
+        # Don't start if not master
+        if [ $MASTER = 0 -a $i = "ganeti-masterd" ] ; then
+            continue
+        elif [ $MASTER = 0 -a $i = "ganeti-rapi" ] ; then
+            continue
+        else
+            maybe_do "${1}" start_action ${i} ${GANETI_OPTS}
+        fi
+    done
+}
+
+stop_all() {
+    get_master_node
+    for i in $($DAEMON_UTIL list-stop-daemons) ; do \
+        if [ $MASTER = 0 -a $i = "ganeti-masterd" ] ; then
+            continue
+        elif [ $MASTER = 0 -a $i = "ganeti-rapi" ] ; then
+            continue
+        else
+            maybe_do "${1}" stop_action ${i} ${GANETI_OPTS}
+        fi
+    done
+}
+
+start() {
+    start_all
+}
+
+stop() {
+    stop_all
+}

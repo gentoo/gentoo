@@ -1,0 +1,68 @@
+# ChangeLog for games-action/xblast
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/xblast/ChangeLog,v 1.17 2015/01/02 11:13:01 tupone Exp $
+
+  02 Jan 2015; Tupone Alfredo <tupone@gentoo.org> xblast-2.10.4.ebuild:
+  EAPI 4
+
+  15 Apr 2009; Tristan Heaven <nyhm@gentoo.org> xblast-2.10.4.ebuild:
+  Run eautoreconf, bug #255857
+
+  27 Jul 2008; nixnut <nixnut@gentoo.org> xblast-2.10.4.ebuild:
+  Stable on ppc wrt bug 232771
+
+  24 Jul 2008; Raúl Porcel <armin76@gentoo.org> xblast-2.10.4.ebuild:
+  x86 stable wrt #232771
+
+  24 Jul 2008; Santiago M. Mola <coldwind@gentoo.org> xblast-2.10.4.ebuild:
+  amd64 stable wrt bug #232771
+
+*xblast-2.10.4 (28 Oct 2007)
+
+  28 Oct 2007; Tupone Alfredo <tupone@gentoo.org> +xblast-2.10.4.ebuild:
+  bump to 2.10.4
+
+  01 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org> xblast-2.10.2.ebuild:
+  Removing old virtual/x11 dependency.
+
+  28 Jan 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  xblast-2.10.0.ebuild, xblast-2.10.2.ebuild:
+  Add modular X dependencies.
+
+  23 Aug 2005; Chris Gianelloni <wolf31o2@gentoo.org> xblast-2.10.2.ebuild:
+  cp -dpR -> cp -pPR for bug #103487.
+
+  23 Aug 2005; Chris Gianelloni <wolf31o2@gentoo.org> xblast-2.10.2.ebuild:
+  cp -a -> cp -dpR for bug #103487.
+
+  31 May 2005; Marcus D. Hanwell <marcus@gentoo.org> xblast-2.10.2.ebuild:
+  Stable on amd64.
+
+*xblast-2.10.2 (28 Apr 2005)
+
+  28 Apr 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +xblast-2.10.2.ebuild:
+  version bump - ebuild submitted by David Ranvig via bug #90409
+
+*xblast-2.10.0 (02 Feb 2005)
+
+  02 Feb 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/2.10.0-makefile.patch, +xblast-2.10.0.ebuild:
+  version bump
+
+  21 Dec 2004; Joseph Jezak <josejx@gentoo.org> xblast-2.9.22.ebuild:
+  Marked ppc stable.
+
+  12 Nov 2004; Chris Gianelloni <wolf31o2@gentoo.org> xblast-2.9.22.ebuild:
+  Added ~amd64 KEYWORDS and closing bug #70833.
+
+  18 Oct 2004; David Holm <dholm@gentoo.org> xblast-2.9.22.ebuild:
+  Added to ~ppc.
+
+*xblast-2.9.22 (22 Sep 2004)
+
+  22 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org> +metadata.xml,
+  +xblast-2.9.22.ebuild:
+  initial commit - ebuild based on the one provided by David Ranvig via bug
+  #54459
+

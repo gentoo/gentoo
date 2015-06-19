@@ -1,0 +1,211 @@
+# ChangeLog for virtual/perl-Text-Balanced
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/perl-Text-Balanced/ChangeLog,v 1.47 2015/06/12 22:36:42 dilfridge Exp $
+
+*perl-Text-Balanced-2.30.0 (12 Jun 2015)
+*perl-Text-Balanced-2.20.0-r6 (12 Jun 2015)
+
+  12 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-Text-Balanced-2.20.0-r5.ebuild, +perl-Text-Balanced-2.20.0-r6.ebuild,
+  +perl-Text-Balanced-2.30.0.ebuild:
+  Add Perl 5.22 version, remove Perl 5.18 as provider
+
+*perl-Text-Balanced-2.20.0-r5 (08 Nov 2014)
+
+  08 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-Text-Balanced-2.20.0-r4.ebuild, +perl-Text-Balanced-2.20.0-r5.ebuild:
+  Remove Perl 5.16 as provider
+
+*perl-Text-Balanced-2.20.0-r4 (13 Jul 2014)
+
+  13 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-Text-Balanced-2.20.0-r2.ebuild, -perl-Text-Balanced-2.20.0-r3.ebuild,
+  +perl-Text-Balanced-2.20.0-r4.ebuild:
+  Improve dependencies; remove old
+
+  09 Jun 2014; Mike Frysinger <vapier@gentoo.org>
+  perl-Text-Balanced-2.20.0-r2.ebuild, perl-Text-Balanced-2.20.0-r3.ebuild:
+  Add arm64 love.
+
+  05 Sep 2013; Patrick Lauer <patrick@gentoo.org>
+  perl-Text-Balanced-2.20.0-r3.ebuild:
+  Restore keywords
+
+*perl-Text-Balanced-2.20.0-r3 (14 Aug 2013)
+
+  14 Aug 2013; Patrick Lauer <patrick@gentoo.org>
+  +perl-Text-Balanced-2.20.0-r3.ebuild:
+  Import from perl-experimental overlay
+
+  01 Sep 2012; Fabian Groffen <grobian@gentoo.org>
+  perl-Text-Balanced-2.20.0-r2.ebuild:
+  Marked ~ppc-aix, bug #432288
+
+  06 Aug 2012; Alexis Ballier <aballier@gentoo.org>
+  perl-Text-Balanced-2.20.0-r2.ebuild:
+  keyword ~amd64-fbsd
+
+*perl-Text-Balanced-2.20.0-r2 (21 May 2012)
+
+  21 May 2012; Torsten Veller <tove@gentoo.org>
+  -perl-Text-Balanced-2.20.0-r1.ebuild, +perl-Text-Balanced-2.20.0-r2.ebuild:
+  Add perl-5.16 as provider
+
+  28 Jun 2011; Torsten Veller <tove@gentoo.org>
+  perl-Text-Balanced-2.20.0-r1.ebuild:
+  Add perl-5.12.4 virtual
+
+*perl-Text-Balanced-2.20.0-r1 (18 Jun 2011)
+
+  18 Jun 2011; Torsten Veller <tove@gentoo.org>
+  -perl-Text-Balanced-2.20.0.ebuild, +perl-Text-Balanced-2.20.0-r1.ebuild:
+  Add perl-5.14 as provider
+
+*perl-Text-Balanced-2.20.0 (19 May 2011)
+
+  19 May 2011; Torsten Veller <tove@gentoo.org>
+  -perl-Text-Balanced-2.02.ebuild, +perl-Text-Balanced-2.20.0.ebuild:
+  Add perl-5.14.0 as provider. Change version scheme
+
+  22 Jan 2011; Torsten Veller <tove@gentoo.org> perl-Text-Balanced-2.02.ebuild:
+  Add perl-5.12.3 as provider
+
+  17 Jan 2011; Torsten Veller <tove@gentoo.org>
+  -perl-Text-Balanced-2.0.0.ebuild:
+  Cleanup
+
+  22 Oct 2010; Samuli Suominen <ssuominen@gentoo.org>
+  perl-Text-Balanced-2.02.ebuild:
+  ppc64 stable wrt #333421
+
+  22 Oct 2010; Jeroen Roovers <jer@gentoo.org>
+  perl-Text-Balanced-2.02.ebuild:
+  Stable for HPPA (bug #333421).
+
+  12 Sep 2010; Raúl Porcel <armin76@gentoo.org>
+  perl-Text-Balanced-2.02.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc stable wrt #333421
+
+  07 Sep 2010; Torsten Veller <tove@gentoo.org>
+  perl-Text-Balanced-2.02.ebuild:
+  Add perl-5.12.2 as provider
+
+  23 Aug 2010; Markus Meier <maekke@gentoo.org>
+  perl-Text-Balanced-2.02.ebuild:
+  arm stable, bug #333421
+
+  20 Aug 2010; Christian Faulhammer <fauli@gentoo.org>
+  perl-Text-Balanced-2.02.ebuild:
+  stable x86, bug 333421
+
+  19 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  perl-Text-Balanced-2.02.ebuild:
+  Stable on amd64 wrt bug #333421
+
+  14 Jul 2010; Torsten Veller <tove@gentoo.org>
+  perl-Text-Balanced-2.02.ebuild:
+  Add perl-5.12 as provider
+
+  21 Jan 2010; Torsten Veller <tove@gentoo.org>
+  perl-Text-Balanced-2.0.0.ebuild:
+  mips -> ~mips
+
+  07 Jan 2010; Torsten Veller <tove@gentoo.org>
+  perl-Text-Balanced-2.0.0.ebuild, perl-Text-Balanced-2.02.ebuild:
+  Set empty HOMEPAGE and LICENSE
+
+  15 Dec 2009; Jonathan Callen <abcd@gentoo.org>
+  perl-Text-Balanced-2.0.0.ebuild, perl-Text-Balanced-2.02.ebuild:
+  QA: Add prefix keywords
+
+  25 Aug 2009; Torsten Veller <tove@gentoo.org>
+  perl-Text-Balanced-2.0.0.ebuild:
+  Add support for perl-5.10.1
+
+*perl-Text-Balanced-2.02 (02 Aug 2009)
+
+  02 Aug 2009; Torsten Veller <tove@gentoo.org>
+  +perl-Text-Balanced-2.02.ebuild:
+  Version bump
+
+  12 May 2009; Alexis Ballier <aballier@gentoo.org>
+  perl-Text-Balanced-2.0.0.ebuild:
+  keyword ~x86-fbsd
+
+  13 Mar 2009; Torsten Veller <tove@gentoo.org>
+  -perl-Text-Balanced-1.95.ebuild, -perl-Text-Balanced-1.98.ebuild:
+  Cleanup
+
+  31 Mar 2008; Jeroen Roovers <jer@gentoo.org>
+  perl-Text-Balanced-2.0.0.ebuild:
+  Stable for HPPA too.
+
+  15 Oct 2007; Markus Rothe <corsair@gentoo.org>
+  perl-Text-Balanced-2.0.0.ebuild:
+  Stable on ppc64
+
+  04 Jul 2007; Raúl Porcel <armin76@gentoo.org>
+  perl-Text-Balanced-2.0.0.ebuild:
+  alpha/ia64/x86 stable
+
+  11 May 2007; Joshua Kinard <kumba@gentoo.org>
+  perl-Text-Balanced-2.0.0.ebuild:
+  Stable on mips.
+
+  07 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  perl-Text-Balanced-2.0.0.ebuild:
+  ppc stable
+
+  17 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  perl-Text-Balanced-2.0.0.ebuild:
+  Stable on sparc
+
+  15 Apr 2007; Markus Rothe <corsair@gentoo.org>
+  perl-Text-Balanced-1.98.ebuild:
+  Stable on ppc64
+
+  09 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  perl-Text-Balanced-2.0.0.ebuild:
+  Marking stable amd64
+
+  04 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  perl-Text-Balanced-1.98.ebuild:
+  Stable on sparc
+
+  04 Mar 2007; Andrej Kacian <ticho@gentoo.org>
+  perl-Text-Balanced-1.98.ebuild:
+  Stable on x86, bug #169153.
+
+  26 Feb 2007; Michael Cummings <mcummings@gentoo.org>
+  perl-Text-Balanced-2.0.0.ebuild:
+  Updating keywords to match perl-core/Text-Balanced
+
+  12 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  perl-Text-Balanced-2.0.0.ebuild:
+  Fixing keywords for now - thanks mr. b
+
+*perl-Text-Balanced-2.0.0 (02 Jan 2007)
+
+  02 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  +perl-Text-Balanced-2.0.0.ebuild:
+  Version bump
+
+  26 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  perl-Text-Balanced-1.95.ebuild:
+  Updating dep
+
+*perl-Text-Balanced-1.98 (16 Oct 2006)
+
+  16 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  perl-Text-Balanced-1.95.ebuild, +perl-Text-Balanced-1.98.ebuild:
+  Updating virtuals; updating keywords to match with the real targets
+
+  13 Feb 2006; Michael Cummings <mcummings@gentoo.org>
+  perl-Text-Balanced-1.95.ebuild:
+  Updated RDEPS
+
+*perl-Text-Balanced-1.95 (07 Feb 2006)
+
+  07 Feb 2006; Michael Cummings <mcummings@gentoo.org> +metadata.xml,
+  +perl-Text-Balanced-1.95.ebuild:
+  New virtual for perl-core/Text-Balanced

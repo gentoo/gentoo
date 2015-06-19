@@ -1,0 +1,44 @@
+# ChangeLog for games-arcade/xjump
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/xjump/ChangeLog,v 1.12 2014/08/10 21:23:14 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> xjump-2.7.5.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  11 Nov 2013; Michael Sterrett <mr_bones_@gentoo.org> xjump-2.7.5.ebuild:
+  EAPI=5; update to latest debian patchball
+
+  01 Oct 2010; Tupone Alfredo <tupone@gentoo.org> xjump-2.7.5.ebuild,
+  +files/xjump-2.7.5-ldflags.patch:
+  Respect LDFLAGS. Bug #337332 by flameeyes@gentoo.org
+
+  24 Apr 2007; Timothy Redaelli <drizzt@gentoo.org> xjump-2.7.5.ebuild:
+  Add ~x86-fbsd keyword.
+  Thanks to Nathan Smith for reporting wrt bug #175779
+
+  01 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org> xjump-2.7.5.ebuild:
+  Removing old virtual/x11 dependency.
+
+  09 Oct 2006; Simon Stelling <blubb@gentoo.org> xjump-2.7.5.ebuild:
+  stable on amd64
+
+  03 Feb 2006; Michael Sterrett <mr_bones_@gentoo.org> xjump-2.7.5.ebuild:
+  work around problem with passing wildcards into epatch (bug #121418)
+
+  13 Jan 2006; Stefan Schweizer <genstef@gentoo.org> xjump-2.7.5.ebuild:
+  Add modular depends
+
+  17 Dec 2005; Luis Medinas <metalgod@gentoo.org> xjump-2.7.5.ebuild:
+  Added ~amd64 keyword. Closes bug #115373.
+
+  23 Aug 2005; Chris Gianelloni <wolf31o2@gentoo.org> xjump-2.7.5.ebuild:
+  Add inherit eutils.
+
+  03 May 2005; David Holm <dholm@gentoo.org> xjump-2.7.5.ebuild:
+  Added to ~ppc.
+
+*xjump-2.7.5 (28 Mar 2005)
+
+  28 Mar 2005; Michael Sterrett <mr_bones_@gentoo.org> +metadata.xml,
+  +xjump-2.7.5.ebuild:
+  initial commit (bug #55745)

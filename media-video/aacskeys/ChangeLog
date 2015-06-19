@@ -1,0 +1,53 @@
+# ChangeLog for media-video/aacskeys
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/aacskeys/ChangeLog,v 1.12 2014/03/19 06:05:34 beandog Exp $
+
+*aacskeys-0.4.0e (19 Mar 2014)
+
+  19 Mar 2014; Steve Dibb <beandog@gentoo.org> +aacskeys-0.4.0e.ebuild:
+  Version bump, bug 504976
+
+*aacskeys-0.4.0c-r2 (19 Mar 2014)
+
+  19 Mar 2014; Steve Dibb <beandog@gentoo.org> -aacskeys-0.4.0c-r1.ebuild,
+  +aacskeys-0.4.0c-r2.ebuild:
+  Doing a stable revision bump, fixing emake which was broken by adding
+  java-pkg-2 eclass.
+
+  21 Feb 2014; Steve Dibb <beandog@gentoo.org> aacskeys-0.4.0c-r1.ebuild:
+  Cleanup ebuild; update license, bug 446216
+
+  30 Jun 2013; Tom Wijsman <TomWij@gentoo.org> -aacskeys-0.4.0c.ebuild:
+  Remove sun-jdk and sun-jre-bin from reverse dependencies. For security bug
+  #473830 reported by Agostino Sarubbo.
+
+  02 Dec 2011; Alexis Ballier <aballier@gentoo.org> aacskeys-0.4.0c-r1.ebuild:
+  works fine with icedtea7, depend on jdk >= 1.6
+
+  08 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  aacskeys-0.4.0c-r1.ebuild:
+  x86 stable wrt security bug #379297
+
+  13 Sep 2011; Steve Dibb <beandog@gentoo.org> aacskeys-0.4.0c.ebuild,
+  aacskeys-0.4.0c-r1.ebuild:
+  Require openssl without bindist, bug 346797
+
+  24 Aug 2011; Tony Vroon <chainsaw@gentoo.org> aacskeys-0.4.0c-r1.ebuild:
+  Marked stable on AMD64 based on arch testing by Ian "idella4" Delaney in bug
+  #380401 filed by Chí-Thanh Christopher Nguyễn.
+
+*aacskeys-0.4.0c-r1 (09 Jun 2011)
+
+  09 Jun 2011; Steve Dibb <beandog@gentoo.org> +aacskeys-0.4.0c-r1.ebuild:
+  Build with virtual/jdk, bug 337260
+
+  01 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  aacskeys-0.4.0c.ebuild:
+  keyworded ~arch for x86, bug 323211
+
+*aacskeys-0.4.0c (17 Feb 2010)
+
+  17 Feb 2010; Steve Dibb <beandog@gentoo.org> +aacskeys-0.4.0c.ebuild,
+  +files/aacskeys-0.4.0c-aacskeys-makefile.patch,
+  +files/aacskeys-0.4.0c-libaacskeys-makefile.patch, +metadata.xml:
+  Initial commit

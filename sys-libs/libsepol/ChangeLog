@@ -1,0 +1,336 @@
+# ChangeLog for sys-libs/libsepol
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/libsepol/ChangeLog,v 1.76 2015/06/09 15:34:29 swift Exp $
+
+*libsepol-9999 (09 Jun 2015)
+
+  09 Jun 2015; Sven Vermeulen <swift@gentoo.org> +libsepol-9999.ebuild:
+  Adding libsepol-9999 to better support upstream integrations
+
+  10 May 2015; Jason Zaman <perfinion@gentoo.org> libsepol-2.4.ebuild:
+  stabilize selinux 2.4 userland
+
+  18 Apr 2015; Jason Zaman <perfinion@gentoo.org> -libsepol-2.4_rc6.ebuild,
+  -libsepol-2.4_rc7.ebuild:
+  Drop old RCs
+
+*libsepol-2.4 (04 Feb 2015)
+
+  04 Feb 2015; Jason Zaman <perfinion@gentoo.org> +libsepol-2.4.ebuild:
+  Version bump
+
+*libsepol-2.4_rc7 (06 Dec 2014)
+
+  06 Dec 2014; Jason Zaman <perfinion@gentoo.org> +libsepol-2.4_rc7.ebuild,
+  -libsepol-2.4_rc2.ebuild, -libsepol-2.4_rc5.ebuild:
+  version bump and ebuild clean up, drop old RC
+
+*libsepol-2.4_rc6 (14 Nov 2014)
+
+  14 Nov 2014; Sven Vermeulen <swift@gentoo.org> +libsepol-2.4_rc6.ebuild:
+  Bump to rc6
+
+*libsepol-2.4_rc5 (29 Oct 2014)
+
+  29 Oct 2014; Sven Vermeulen <swift@gentoo.org> +libsepol-2.4_rc5.ebuild,
+  -libsepol-2.4_rc4.ebuild:
+  Bump to 2.4_rc5
+
+*libsepol-2.4_rc4 (07 Oct 2014)
+
+  07 Oct 2014; Sven Vermeulen <swift@gentoo.org> +libsepol-2.4_rc4.ebuild:
+  Bump to 2.4-rc4
+
+*libsepol-2.4_rc2 (21 Sep 2014)
+
+  21 Sep 2014; Sven Vermeulen <swift@gentoo.org> +libsepol-2.4_rc2.ebuild,
+  libsepol-2.3.ebuild:
+  Noved to github; also add in masked 2.4 series
+
+  05 Aug 2014; Sven Vermeulen <swift@gentoo.org> -libsepol-2.1.9-r3.ebuild:
+  Remove old ebuilds
+
+  30 Jul 2014; Sven Vermeulen <swift@gentoo.org> libsepol-2.3.ebuild:
+  Fix bug #514194 - Stabilization of SELinux userspace 2.3
+
+  10 May 2014; Sven Vermeulen <swift@gentoo.org> -libsepol-2.1.9-r1.ebuild,
+  -libsepol-2.1.9-r2.ebuild, -libsepol-2.3_rc1.ebuild,
+  -files/libsepol-2.1.4-fix_role_fix_callback.patch:
+  Spring cleanup
+
+*libsepol-2.3 (09 May 2014)
+
+  09 May 2014; Sven Vermeulen <swift@gentoo.org> +libsepol-2.3.ebuild:
+  Bump for 2.3 release
+
+*libsepol-2.3_rc1 (28 Apr 2014)
+
+  28 Apr 2014; Sven Vermeulen <swift@gentoo.org> +libsepol-2.3_rc1.ebuild:
+  2.3-rc1 release
+
+  20 Jan 2014; Sven Vermeulen <swift@gentoo.org> -libsepol-2.1.8.ebuild,
+  -libsepol-2.1.8-r1.ebuild, libsepol-2.2.ebuild:
+  Stabilize for x86 and amd64
+
+  23 Dec 2013; Sven Vermeulen <swift@gentoo.org> -libsepol-2.1.8.ebuild,
+  -libsepol-2.1.8-r1.ebuild:
+  Cleanup old versions
+
+*libsepol-2.2 (04 Nov 2013)
+
+  04 Nov 2013; Sven Vermeulen <swift@gentoo.org> +libsepol-2.2.ebuild:
+  New libsepol release
+
+  04 Nov 2013; Sven Vermeulen <swift@gentoo.org> libsepol-2.1.9-r3.ebuild:
+  Stabilize
+
+*libsepol-2.1.9-r3 (23 Aug 2013)
+
+  23 Aug 2013; Sven Vermeulen <swift@gentoo.org> +libsepol-2.1.9-r3.ebuild:
+  Fix bug #481782 - Put right library paths in libsepol.pc file to get proper
+  pkg-config --libs output
+
+*libsepol-2.1.9-r2 (15 Aug 2013)
+
+  15 Aug 2013; Sven Vermeulen <swift@gentoo.org> +libsepol-2.1.9-r2.ebuild:
+  Improving multilib for libsepol
+
+  07 Jul 2013; Sven Vermeulen <swift@gentoo.org> -libsepol-2.1.4-r1.ebuild:
+  Summar cleaning
+
+  16 Jun 2013; Sven Vermeulen <swift@gentoo.org> libsepol-2.1.9-r1.ebuild:
+  Stabilization
+
+*libsepol-2.1.9-r1 (25 Apr 2013)
+
+  25 Apr 2013; Sven Vermeulen <swift@gentoo.org> +libsepol-2.1.9-r1.ebuild:
+  New upstream release
+
+  30 Dec 2012; Sven Vermeulen libsepol-2.1.8-r1.ebuild:
+  Stabilize
+
+*libsepol-2.1.8-r1 (09 Dec 2012)
+
+  09 Dec 2012; <swift@gentoo.org> +libsepol-2.1.8-r1.ebuild:
+  Adding proper RANLIB support, see bug #444374
+
+  17 Nov 2012; <swift@gentoo.org> libsepol-2.1.8.ebuild:
+  Stabilization
+
+  13 Oct 2012; <swift@gentoo.org> libsepol-2.1.8.ebuild:
+  Supporting user-provided patches using epatch_user
+
+*libsepol-2.1.8 (09 Oct 2012)
+
+  09 Oct 2012; <swift@gentoo.org> +libsepol-2.1.8.ebuild:
+  Introducing upstream release
+
+  03 Oct 2012; Mike Frysinger <vapier@gentoo.org> libsepol-2.1.4-r1.ebuild:
+  Update to EAPI=4.
+
+  13 May 2012; <swift@gentoo.org> -libsepol-2.1.0.ebuild:
+  Removing obsoleted ebuild
+
+  29 Apr 2012; <swift@gentoo.org> libsepol-2.1.4-r1.ebuild:
+  Stabilization
+
+*libsepol-2.1.4-r1 (31 Mar 2012)
+
+  31 Mar 2012; <swift@gentoo.org> +libsepol-2.1.4-r1.ebuild,
+  +files/libsepol-2.1.4-fix_role_fix_callback.patch:
+  Bump to version 2.1.4
+
+  12 Nov 2011; <swift@gentoo.org> -libsepol-2.0.41.ebuild,
+  -libsepol-2.0.42.ebuild:
+  removing deprecated ebuilds
+
+  23 Oct 2011; <swift@gentoo.org> libsepol-2.1.0.ebuild:
+  Stabilization (tracker #384231)
+
+  12 Aug 2011; Anthony G. Basile <blueness@gentoo.org> -libsepol-2.0.32.ebuild,
+  -files/libsepol-2.0.32-expand_rule.diff, -libsepol-2.0.37.ebuild:
+  Removed deprecated versions
+
+*libsepol-2.1.0 (03 Aug 2011)
+
+  03 Aug 2011; Anthony G. Basile <blueness@gentoo.org> +libsepol-2.1.0.ebuild:
+  Bump to 20110727 SELinux userspace release
+
+*libsepol-2.0.42 (15 Jul 2011)
+
+  15 Jul 2011; Anthony G. Basile <blueness@gentoo.org> +libsepol-2.0.42.ebuild:
+  Bump to 2.0.42 - proxy for SwifT
+
+  28 May 2011; Anthony G. Basile <blueness@gentoo.org> libsepol-2.0.32.ebuild,
+  libsepol-2.0.37.ebuild:
+  Make RDEPEND explicit
+
+  28 May 2011; Anthony G. Basile <blueness@gentoo.org> libsepol-2.0.41.ebuild:
+  Stable amd64 x86
+
+  13 Feb 2011; Anthony G. Basile <blueness@gentoo.org> metadata.xml:
+  Updated metadata.xml to reflect new selinux herd.
+
+  05 Feb 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  libsepol-2.0.41.ebuild:
+  Respect AR and CC.
+
+*libsepol-2.0.41 (05 Feb 2011)
+
+  05 Feb 2011; Anthony G. Basile <blueness@gentoo.org>
+  +libsepol-2.0.41.ebuild:
+  New upstream release.
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> libsepol-2.0.32.ebuild,
+  libsepol-2.0.37.ebuild:
+  Remove virtual/libc
+
+*libsepol-2.0.37 (02 Aug 2009)
+
+  02 Aug 2009; Chris PeBenito <pebenito@gentoo.org> +libsepol-2.0.37.ebuild:
+  New upstream release.
+
+  18 Jul 2009; Chris PeBenito <pebenito@gentoo.org>
+  -files/libsepol-1.12.2.diff, -libsepol-1.16.11.ebuild,
+  libsepol-2.0.32.ebuild:
+  Mark stable. Remove old ebuilds.
+
+*libsepol-2.0.32 (03 Oct 2008)
+
+  03 Oct 2008; Chris PeBenito <pebenito@gentoo.org>
+  +files/libsepol-2.0.32-expand_rule.diff, +libsepol-2.0.32.ebuild:
+  Initial commit of 2.0 libsepol.
+
+  10 Sep 2008; Chris PeBenito <pebenito@gentoo.org> libsepol-1.16.11.ebuild:
+  Tests cannot be run in the ebuild, they are supposed to be ran on the full
+  SELinux userland repo.
+
+  13 May 2008; Chris PeBenito <pebenito@gentoo.org> -libsepol-1.10.ebuild,
+  -libsepol-1.12-r1.ebuild, -libsepol-1.16.3.ebuild,
+  -libsepol-1.16.6.ebuild, libsepol-1.16.11.ebuild:
+  Mark 1.16.11 stable, clear old ebuilds.
+
+*libsepol-1.16.11 (07 Feb 2008)
+
+  07 Feb 2008; Chris PeBenito <pebenito@gentoo.org>
+  -libsepol-1.16.10.ebuild, +libsepol-1.16.11.ebuild:
+  sys-libs/libsepol: upstream bugfix release.
+
+*libsepol-1.16.10 (29 Jan 2008)
+
+  29 Jan 2008; Chris PeBenito <pebenito@gentoo.org>
+  +libsepol-1.16.10.ebuild:
+  New upstream bugfix release.
+
+*libsepol-1.16.6 (18 Oct 2007)
+
+  18 Oct 2007; Chris PeBenito <pebenito@gentoo.org> +libsepol-1.16.6.ebuild:
+  New upstream release.
+
+  04 Jun 2007; Chris PeBenito <pebenito@gentoo.org> libsepol-1.16.3.ebuild:
+  Mark stable.
+
+*libsepol-1.16.3 (10 May 2007)
+
+  10 May 2007; Chris PeBenito <pebenito@gentoo.org> +libsepol-1.16.3.ebuild:
+  New stable bugfix release.
+
+  17 Apr 2007; Chris PeBenito <pebenito@gentoo.org> libsepol-1.16.2.ebuild:
+  This was a critical bug fix for SELinux policy linking, mark stable.
+
+*libsepol-1.16.2 (04 Apr 2007)
+
+  04 Apr 2007; Chris PeBenito <pebenito@gentoo.org> +libsepol-1.16.2.ebuild:
+  Add bugfix release to fix boolean mapping problem.
+
+  25 Mar 2007; Chris PeBenito <pebenito@gentoo.org> libsepol-1.16.0.ebuild:
+  Mark stable.
+
+*libsepol-1.16.0 (15 Feb 2007)
+
+  15 Feb 2007; Chris PeBenito <pebenito@gentoo.org> +libsepol-1.16.0.ebuild:
+  New upstream release.
+
+  09 Oct 2006; Chris PeBenito <pebenito@gentoo.org> libsepol-1.12.28.ebuild:
+  Stable to make repoman happy.
+
+*libsepol-1.12.28 (05 Oct 2006)
+
+  05 Oct 2006; Chris PeBenito <pebenito@gentoo.org>
+  +libsepol-1.12.28.ebuild:
+  Add SVN snapshot.
+
+  31 Jul 2006; Chris PeBenito <pebenito@gentoo.org> libsepol-1.12-r1.ebuild:
+  Mark stable, long overdue.
+
+*libsepol-1.12-r1 (27 Mar 2006)
+
+  27 Mar 2006; Chris PeBenito <pebenito@gentoo.org>
+  +files/libsepol-1.12.2.diff, -libsepol-1.12.ebuild,
+  +libsepol-1.12-r1.ebuild:
+  Uptream bugfix patch, including a fix for big endian machines. Users of big
+  endian systems should remerge checkpolicy as it statically links against
+  libsepol.
+
+*libsepol-1.12 (18 Mar 2006)
+
+  18 Mar 2006; Chris PeBenito <pebenito@gentoo.org> +libsepol-1.12.ebuild:
+  New upstream release.
+
+  22 Feb 2006; Stephen Bennett <spb@gentoo.org> libsepol-1.10.ebuild:
+  Alpha stable
+
+  19 Feb 2006; Joshua Kinard <kumba@gentoo.org> libsepol-1.10.ebuild:
+  Marked stable on mips.
+
+  17 Jan 2006; Chris PeBenito <pebenito@gentoo.org> libsepol-1.10.ebuild:
+  Mark stable, x86, amd64, ppc, sparc.
+
+  14 Jan 2006; Stephen Bennett <spb@gentoo.org> libsepol-1.10.ebuild:
+  Added ~alpha
+
+*libsepol-1.10 (09 Dec 2005)
+
+  09 Dec 2005; Chris PeBenito <pebenito@gentoo.org> -libsepol-1.4.ebuild,
+  +libsepol-1.10.ebuild:
+  New upstream release.
+
+  09 Sep 2005; Chris PeBenito <pebenito@gentoo.org> libsepol-1.6.ebuild:
+  Mark stable.
+
+*libsepol-1.6 (25 Jun 2005)
+
+  25 Jun 2005; Chris PeBenito <pebenito@gentoo.org> +libsepol-1.6.ebuild:
+  New upstream release.
+
+  10 May 2005; Stephen Bennett <spb@gentoo.org> libsepol-1.4.ebuild:
+  mips stable
+
+  01 May 2005; Stephen Bennett <spb@gentoo.org> libsepol-1.4.ebuild:
+  Added ~mips.
+
+  01 May 2005; Chris PeBenito <pebenito@gentoo.org> libsepol-1.4.ebuild:
+  Mark stable.
+
+*libsepol-1.4 (13 Mar 2005)
+
+  13 Mar 2005; Chris PeBenito <pebenito@gentoo.org> +libsepol-1.4.ebuild:
+  New upstream release.
+
+  07 Jan 2005; Chris PeBenito <pebenito@gentoo.org> libsepol-1.0.ebuild,
+  libsepol-1.2.ebuild:
+  Mark 1.2 stable.  Change glibc dep to libc virtual.
+
+  15 Nov 2004; Chris PeBenito <pebenito@gentoo.org> libsepol-1.2.ebuild:
+  Fix non mls compile.
+
+*libsepol-1.2 (14 Nov 2004)
+
+  14 Nov 2004; Chris PeBenito <pebenito@gentoo.org> +libsepol-1.2.ebuild:
+  New upstream release.
+
+*libsepol-1.0 (07 Sep 2004)
+
+  07 Sep 2004; Chris PeBenito <pebenito@gentoo.org> +metadata.xml,
+  +libsepol-1.0.ebuild:
+  Initial commit.

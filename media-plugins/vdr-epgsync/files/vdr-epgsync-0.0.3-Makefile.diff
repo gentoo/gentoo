@@ -1,0 +1,11 @@
+diff -Naur epgsync-0.0.3.orig/Makefile epgsync-0.0.3/Makefile
+--- epgsync-0.0.3.orig/Makefile 2009-02-23 22:15:57.000000000 +0100
++++ epgsync-0.0.3/Makefile      2009-02-23 22:16:15.000000000 +0100
+@@ -34,7 +34,7 @@
+ APIVERSION = $(shell sed -ne '/define APIVERSION/s/^.*"\(.*\)".*$$/\1/p' $(VDRDIR)/config.h)
+
+ ### Test whether VDR has locale support
+-VDRLOCALE = $(shell grep '^LOCALEDIR' $(VDRDIR)/Makefile)
++VDRLOCALE = $(shell grep '^LOCDIR' $(VDRDIR)/Make.config)
+
+ ### The name of the distribution archive:

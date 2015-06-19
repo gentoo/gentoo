@@ -1,0 +1,55 @@
+# ChangeLog for dev-python/simples3
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/simples3/ChangeLog,v 1.6 2015/04/08 08:05:15 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> simples3-1.0.ebuild:
+  Drop old Python implementations
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> simples3-1.0.ebuild:
+  Add support for the new PyPy slotting.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> simples3-1.0.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  13 Jan 2013; Michał Górny <mgorny@gentoo.org> simples3-1.0.ebuild:
+  Migrate to distutils-r1. Improve homepage. Proxied for Johan Bergström.
+
+*simples3-1.0 (01 Dec 2011)
+
+  01 Dec 2011; Dirkjan Ochtman <djc@gentoo.org> +simples3-1.0.ebuild,
+  +metadata.xml:
+  Initial commit in portage tree.
+
+  06 Sep 2010; Johan Bergström (jbergstroem) <bugs@bergstroem.nu>
+  -simples3-1.0_alpha.ebuild, +simples3-1.0.ebuild:
+  Version bump
+
+  13 Aug 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  simples3-1.0_alpha.ebuild:
+  Switch to pypi mirror list, drop empty (R)DEPEND
+
+  20 Jul 2010; Johan Bergström (jbergstroem) <bugs@bergstroem.nu>
+  -simples3-0.5.ebuild, +simples3-1.0_alpha.ebuild:
+  Version bump, adapt to new python ebuild style
+
+  12 Jul 2009; Johan Bergström (jbergstroem) <bugs@bergstroem.nu>
+  -simples3-0.4.ebuild, +simples3-0.5.ebuild:
+  Version bump
+
+  16 Jun 2009; Johan Bergström (jbergstroem) <bugs@bergstroem.nu>
+  -simples3-0.3-r2.ebuild, +simples3-0.4.ebuild:
+  Version bump: simples3 0.4
+
+  14 Jun 2009; Johan Bergström (jbergstroem) <bugs@bergstroem.nu>
+  -simples3-0.2.ebuild, +simples3-0.3-r2.ebuild:
+  New version: 0.3-r2
+
+  13 May 2009; Christian Ruppert <idl0r@gentoo.org> simples3-0.2.ebuild:
+  RDEPEND fixed.
+
+  12 May 2009; Johan Bergström (jbergstroem) <bugs@bergstroem.nu>
+  +simples3-0.2.ebuild, +metadata.xml:
+  Ebuild for bug 267146

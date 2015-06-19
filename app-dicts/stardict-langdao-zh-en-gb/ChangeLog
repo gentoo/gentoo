@@ -1,0 +1,44 @@
+# ChangeLog for app-dicts/stardict-langdao-zh-en-gb
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/stardict-langdao-zh-en-gb/ChangeLog,v 1.11 2015/04/06 00:26:18 dlan Exp $
+
+  06 Apr 2015; Yixun Lan <dlan@gentoo.org>
+  stardict-langdao-zh-en-gb-2.4.2.ebuild:
+  keyword arm, tested on cortex-a9 hardware
+
+  03 Jan 2014; Naohiro Aota <naota@gentoo.org>
+  stardict-langdao-zh-en-gb-2.4.2.ebuild:
+  Fix reversed language's from and to #259659
+
+  23 Jan 2009; Peter Volkov <pva@gentoo.org>
+  stardict-langdao-zh-en-gb-2.4.2.ebuild:
+  Drop stardict dependency as it's provided by stardict.eclass.
+
+  01 Feb 2007; Simon Stelling <blubb@gentoo.org>
+  stardict-langdao-zh-en-gb-2.4.2.ebuild:
+  add ~amd64
+
+  19 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  stardict-langdao-zh-en-gb-2.4.2.ebuild:
+  Stable on sparc
+
+  02 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  stardict-langdao-zh-en-gb-2.4.2.ebuild:
+  To ~sparc
+
+  04 Jan 2005; Michael Kohl <citizen428@gentoo.org>
+  stardict-langdao-zh-en-gb-2.4.2.ebuild:
+  Marked stable on x86.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  03 Sep 2004; David Holm <dholm@gentoo.org>
+  stardict-langdao-zh-en-gb-2.4.2.ebuild:
+  Added to ~ppc.
+
+*stardict-langdao-en-zh-gb-2.4.2 (25 Aug 2004)
+
+  25 Aug 2004; Michael Kohl <citizen428@gentoo.org> +metadata.xml,
+  +stardict-langdao-zh-en-gb-2.4.2.ebuild:
+  Initial import. Submitted by Jackey Yang <043936y@acadiau.ca> in Bug #61322

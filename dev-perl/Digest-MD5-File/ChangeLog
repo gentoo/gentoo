@@ -1,0 +1,38 @@
+# ChangeLog for dev-perl/Digest-MD5-File
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Digest-MD5-File/ChangeLog,v 1.7 2014/08/26 18:57:39 axs Exp $
+
+*Digest-MD5-File-0.80.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Digest-MD5-File-0.80.0-r1.ebuild, -Digest-MD5-File-0.80.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  02 Sep 2012; Torsten Veller <tove@gentoo.org> -Digest-MD5-File-0.70.0.ebuild:
+  Cleanup
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+*Digest-MD5-File-0.80.0 (09 Apr 2012)
+
+  09 Apr 2012; Torsten Veller <tove@gentoo.org> +Digest-MD5-File-0.80.0.ebuild:
+  Version bump
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Digest-MD5-File-0.07.ebuild:
+  Cleanup
+
+*Digest-MD5-File-0.70.0 (31 Aug 2011)
+
+  31 Aug 2011; Torsten Veller <tove@gentoo.org> +Digest-MD5-File-0.70.0.ebuild:
+  Change version scheme
+
+  31 May 2010; Torsten Veller <tove@gentoo.org>
+  +Digest-MD5-File-0.07.ebuild, +metadata.xml:
+  Import from perl-experimental for Net-Amazon-S3 (#322121)
+
+*Digest-MD5-File-0.07 (06 Oct 2009)
+
+  06 Oct 2009; Michele Beltrame <m@cattlegrid.info>
+  +Digest-MD5-File-0.07.ebuild:
+  Initial import

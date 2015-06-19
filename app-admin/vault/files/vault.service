@@ -1,0 +1,17 @@
+[Unit]
+Description=vault server
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=vault
+Environment=VAULT_SERVER_OPTS="-config=/etc/vault.d"
+ExecStart=/usr/bin/vault server $VAULT_SERVER_OPTS
+CapabilityBoundingSet=CAP_IPC_LOCK
+Capabilities=CAP_IPC_LOCK=eip
+SecureBits=keep-caps
+Restart=on-failure
+SuccessExitStatus=2
+
+[Install]
+WantedBy=default.target

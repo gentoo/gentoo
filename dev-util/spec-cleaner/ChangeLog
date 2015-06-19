@@ -1,0 +1,86 @@
+# ChangeLog for dev-util/spec-cleaner
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/spec-cleaner/ChangeLog,v 1.15 2015/06/10 10:53:27 scarabeus Exp $
+
+*spec-cleaner-0.7.1 (10 Jun 2015)
+
+  10 Jun 2015; Tomáš Chvátal <scarabeus@gentoo.org>
+  -spec-cleaner-0.6.9.ebuild, +spec-cleaner-0.7.1.ebuild:
+  Version bump to 0.7.1. Drop older releases.
+
+*spec-cleaner-0.6.9 (16 Apr 2015)
+
+  16 Apr 2015; Tomáš Chvátal <scarabeus@gentoo.org> +spec-cleaner-0.6.9.ebuild,
+  -spec-cleaner-0.6.8.ebuild:
+  Version bump to 0.6.9. Various bugfixes all around.
+
+*spec-cleaner-0.6.8 (13 Apr 2015)
+
+  13 Apr 2015; Tomáš Chvátal <scarabeus@gentoo.org>
+  -spec-cleaner-0.6.5.ebuild, +spec-cleaner-0.6.8.ebuild,
+  spec-cleaner-9999.ebuild:
+  Version bump to latest release, drop older, remove py3.3
+
+*spec-cleaner-0.6.5 (09 Feb 2015)
+
+  09 Feb 2015; Tomáš Chvátal <scarabeus@gentoo.org> +spec-cleaner-0.6.5.ebuild,
+  -spec-cleaner-0.6.1.ebuild:
+  Version bump to 0.6.5 remove older.
+
+  28 Nov 2014; Pacho Ramos <pacho@gentoo.org> spec-cleaner-0.6.1.ebuild,
+  spec-cleaner-9999.ebuild:
+  Support python 3.4
+
+*spec-cleaner-0.6.1 (13 Aug 2014)
+
+  13 Aug 2014; Tomáš Chvátal <scarabeus@gentoo.org> +spec-cleaner-0.6.1.ebuild,
+  -spec-cleaner-0.6.0.ebuild:
+  Version bump to 0.6.1 which has working executable.
+
+  13 Aug 2014; Tomáš Chvátal <scarabeus@gentoo.org> spec-cleaner-0.6.0.ebuild,
+  spec-cleaner-9999.ebuild:
+  Remove test deps from rdepend.
+
+*spec-cleaner-0.6.0 (13 Aug 2014)
+
+  13 Aug 2014; Tomáš Chvátal <scarabeus@gentoo.org> +spec-cleaner-0.6.0.ebuild,
+  -spec-cleaner-0.5.8.ebuild, spec-cleaner-9999.ebuild:
+  Version bump to 0.6.0 release.
+
+  13 Aug 2014; Tomáš Chvátal <scarabeus@gentoo.org> spec-cleaner-9999.ebuild:
+  Update build system to use distutils approach.
+
+*spec-cleaner-0.5.8 (23 Jun 2014)
+
+  23 Jun 2014; Tomáš Chvátal <scarabeus@gentoo.org> +spec-cleaner-0.5.8.ebuild,
+  -spec-cleaner-0.5.7.ebuild:
+  Version bump to latest, drop older.
+
+*spec-cleaner-0.5.7 (23 Jun 2014)
+
+  23 Jun 2014; Tomáš Chvátal <scarabeus@gentoo.org> +spec-cleaner-0.5.7.ebuild,
+  -spec-cleaner-0.5.6.ebuild:
+  Version bump to 0.5.7, remove older.
+
+*spec-cleaner-0.5.6 (10 May 2014)
+
+  10 May 2014; Tomáš Chvátal <scarabeus@gentoo.org> +spec-cleaner-0.5.6.ebuild,
+  -spec-cleaner-0.5.3.ebuild:
+  Version bump to latest release. Remove older.
+
+*spec-cleaner-0.5.3 (13 Jan 2014)
+
+  13 Jan 2014; Tomáš Chvátal <scarabeus@gentoo.org> +spec-cleaner-0.5.3.ebuild,
+  -spec-cleaner-0.5.1.ebuild:
+  Version bump to 0.5.3, drop older.
+
+  03 Dec 2013; Tomáš Chvátal <scarabeus@gentoo.org> spec-cleaner-0.5.1.ebuild,
+  spec-cleaner-9999.ebuild:
+  Fixup trailing withespace.
+
+*spec-cleaner-0.5.1 (03 Dec 2013)
+*spec-cleaner-9999 (03 Dec 2013)
+
+  03 Dec 2013; Tomáš Chvátal <scarabeus@gentoo.org> +metadata.xml,
+  +spec-cleaner-0.5.1.ebuild, +spec-cleaner-9999.ebuild:
+  Initial commit. Package used to cleanup spec files formatting.

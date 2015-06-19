@@ -1,0 +1,9 @@
+# ChangeLog for sys-block/sas3ircu
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-block/sas3ircu/ChangeLog,v 1.1 2014/06/27 08:02:37 robbat2 Exp $
+
+*sas3ircu-5 (27 Jun 2014)
+
+  27 Jun 2014; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +sas3ircu-5.ebuild:
+  Initial commit, quick ebuild by myself.

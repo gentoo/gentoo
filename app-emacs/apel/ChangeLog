@@ -1,0 +1,208 @@
+# ChangeLog for app-emacs/apel
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/apel/ChangeLog,v 1.62 2015/04/18 21:16:34 ulm Exp $
+
+  18 Apr 2015; Ulrich Müller <ulm@gentoo.org> -apel-10.8.ebuild:
+  Remove old.
+
+  18 Apr 2015; Pacho Ramos <pacho@gentoo.org> apel-10.8-r1.ebuild:
+  ppc64 stable wrt bug #505424
+
+  02 Mar 2015; Agostino Sarubbo <ago@gentoo.org> apel-10.8-r1.ebuild:
+  Stable for ppc, wrt bug #505424
+
+  28 Oct 2014; Ulrich Müller <ulm@gentoo.org> apel-10.8-r1.ebuild:
+  Fix application of patches.
+
+  29 Aug 2014; Ulrich Müller <ulm@gentoo.org> apel-10.8-r1.ebuild:
+  Replace einstall by emake. Remove unnecessary die statements.
+
+  20 Aug 2014; Raúl Porcel <armin76@gentoo.org> apel-10.8-r1.ebuild:
+  ia64 stable wrt #505424
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> apel-10.8-r1.ebuild,
+  apel-10.8.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  18 Jul 2014; Tobias Klausmann <klausman@gentoo.org> apel-10.8-r1.ebuild:
+  Stable on alpha, bug #505424
+
+  23 Mar 2014; Agostino Sarubbo <ago@gentoo.org> apel-10.8-r1.ebuild:
+  Stable for sparc, wrt bug #501480
+
+  12 Mar 2014; Chema Alonso <nimiux@gentoo.org> apel-10.8-r1.ebuild:
+  Stable for amd64 wrt bug #501480
+
+  09 Mar 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> apel-10.8-r1.ebuild:
+  x86 stable wrt bug #501480
+
+  18 Feb 2014; Jeroen Roovers <jer@gentoo.org> apel-10.8-r1.ebuild:
+  Stable for HPPA (bug #501480).
+
+  15 Jan 2014; Mark Wright <gienah@gentoo.org> apel-10.8-r1.ebuild:
+  Apply fixes for bug 495042 suggested by TomWij (thanks): one src_prepare,
+  correct FILESDIR mispelling, use ELISP_PATCHES.
+
+*apel-10.8-r1 (03 Oct 2013)
+
+  03 Oct 2013; Mark Wright <gienah@gentoo.org> +apel-10.8-r1.ebuild,
+  +files/apel-10.8-010_ikazuhiro.patch,
+  +files/apel-10.8-020_Prevent-fontset-error.patch,
+  +files/apel-10.8-040_make-temp-file-for-Emacs-24.3.50.patch:
+  Add patches, the changes are noted in the ChangeLog diffs included in the
+  patches. Which include fixes for emacs 24, apel is a dep of elscreen, part of
+  fix for bug 425258.
+
+  10 May 2011; Naohiro Aota <naota@gentoo.org> apel-10.8.ebuild:
+  Add ~x86-fbsd keyword
+
+  25 Mar 2011; Christian Faulhammer <fauli@gentoo.org> -apel-10.7-r1.ebuild:
+  clean up
+
+  23 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> apel-10.8.ebuild:
+  ppc64 stable wrt #354623
+
+  01 Mar 2011; Jeroen Roovers <jer@gentoo.org> apel-10.8.ebuild:
+  Stable for HPPA (bug #354623).
+
+  28 Feb 2011; Brent Baude <ranger@gentoo.org> apel-10.8.ebuild:
+  stable ppc, bug 354623
+
+  13 Feb 2011; Raúl Porcel <armin76@gentoo.org> apel-10.8.ebuild:
+  alpha/ia64/sparc stable wrt #354623
+
+  13 Feb 2011; Christian Faulhammer <fauli@gentoo.org> apel-10.8.ebuild:
+  stable x86, bug 354623
+
+  13 Feb 2011; Markos Chandras <hwoarang@gentoo.org> apel-10.8.ebuild:
+  Stable on amd64 wrt bug #354623
+
+*apel-10.8 (12 Dec 2010)
+
+  12 Dec 2010; Christian Faulhammer <fauli@gentoo.org> +apel-10.8.ebuild:
+  version bump
+
+  27 Sep 2010; Michael Weber <xmw@gentoo.org> apel-10.7-r1.ebuild:
+  Added ~arm keyword
+
+  23 May 2010; Ulrich Mueller <ulm@gentoo.org> -apel-10.7.ebuild:
+  Remove old.
+
+  23 May 2010; Pacho Ramos <pacho@gentoo.org> apel-10.7-r1.ebuild:
+  stable amd64, bug 307573
+
+  09 Apr 2010; Jeroen Roovers <jer@gentoo.org> apel-10.7-r1.ebuild:
+  Stable for HPPA (bug #307573).
+
+  23 Mar 2010; Brent Baude <ranger@gentoo.org> apel-10.7-r1.ebuild:
+  stable ppc, bug 307573
+
+  13 Mar 2010; Brent Baude <ranger@gentoo.org> apel-10.7-r1.ebuild:
+  stable ppc64, bug 307573
+
+  04 Mar 2010; Raúl Porcel <armin76@gentoo.org> apel-10.7-r1.ebuild:
+  alpha/ia64/sparc stable wrt #307573
+
+  03 Mar 2010; Christian Faulhammer <fauli@gentoo.org> apel-10.7-r1.ebuild:
+  stable x86, bug 307573
+
+*apel-10.7-r1 (30 Jan 2010)
+
+  30 Jan 2010; Ulrich Mueller <ulm@gentoo.org> +apel-10.7-r1.ebuild:
+  Add prefix keywords, change EAPI to 3.
+
+  06 Jun 2009; Ulrich Mueller <ulm@gentoo.org> apel-10.7.ebuild:
+  Fix elog message, bug 272893.
+
+  03 Jul 2007; Christian Faulhammer <opfer@gentoo.org> apel-10.7.ebuild:
+  removed virtual/emacs from DEPEND; changed location of IUSE; removed
+  pkg_postrm()
+
+  19 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
+  -files/APEL-CFG.patch, -apel-10.6.ebuild:
+  clean up
+
+  19 Apr 2007; Bryan Østergaard <kloeri@gentoo.org> apel-10.7.ebuild:
+  Stable on Alpha, bug 173556.
+
+  18 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org> apel-10.7.ebuild:
+  Stable on sparc wrt #173556
+
+  11 Apr 2007; Jeroen Roovers <jer@gentoo.org> apel-10.7.ebuild:
+  Stable for HPPA (bug #173556).
+
+  09 Apr 2007; Raúl Porcel <armin76@gentoo.org> apel-10.7.ebuild:
+  ia64 stable wrt bug 173556
+
+  08 Apr 2007; Markus Rothe <corsair@gentoo.org> apel-10.7.ebuild:
+  Stable on ppc64; bug #173556
+
+  06 Apr 2007; Christian Faulhammer <opfer@gentoo.org> apel-10.7.ebuild:
+  stable amd64, bug 173556
+
+  06 Apr 2007; nixnut <nixnut@gentoo.org> apel-10.7.ebuild:
+  Stable on ppc wrt bug 173556
+
+  06 Apr 2007; Christian Faulhammer <opfer@gentoo.org> apel-10.7.ebuild:
+  stable x86
+
+  30 Mar 2007; Fabian Groffen <grobian@gentoo.org> apel-10.6.ebuild,
+  apel-10.7.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  07 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  files/50apel-gentoo.el:
+  add load path correctly, fixes bug 169588, reported by Ulrich Mueller
+  <ulm@kph.uni-mainz.de>
+
+*apel-10.7 (14 Feb 2007)
+
+  14 Feb 2007; Christian Faulhammer <opfer@gentoo.org> +apel-10.7.ebuild:
+  version bump
+
+  28 Jan 2007; Marius Mauch <genone@gentoo.org> apel-10.6.ebuild:
+  Replacing einfo with elog
+
+  04 Dec 2006; Christian Faulhammer <opfer@gentoo.org> -apel-10.3.ebuild,
+  -apel-10.4.ebuild:
+  clean up old versions
+
+  13 Oct 2004; <agriffis@gentoo.org> apel-10.6.ebuild:
+  add ia64
+
+  08 Aug 2004; Tom Gall <tgall@gentoo.org> apel-10.6.ebuild:
+  stable on ppc64, bug #57676
+
+  30 Jul 2004; MATSUU Takuto <matsuu@gentoo.org> apel-10.6.ebuild:
+  Added to ~amd64.
+
+  19 Jul 2004; Mamoru KOMACHI <usata@gentoo.org> apel-10.6.ebuild:
+  Added to macos
+
+  04 May 2004; Guy Martin <gmsoft@gentoo.org> apel-10.6.ebuild:
+  Marked stable on hppa.
+
+*apel-10.6 (12 Jul 2003)
+
+  13 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> apel-10.6.ebuild:
+  Marked stable on sparc and ppc
+
+  29 Jul 2003; Mamoru KOMACHI <usata@gentoo.org> apel-10.6.ebuild:
+  Marked x86 and alpha stable.
+
+  12 Jul 2003; Mamoru KOMACHI <usata@gentoo.org> apel-10.6.ebuild:
+  New version, added ~sparc, ~ppc and ~alpha to KEYWORDS.
+  Changed HOMEPAGE to point at correct URI.
+
+*apel-10.4 (31 Oct 2002)
+
+  31 Oct 2002; Matthew Kennedy <mkennedy@gentoo.org> ChangeLog,
+  apel-10.4.ebuild, files/50apel-gentoo.el,
+  files/digest-apel-10.4, APEL-CFG.patch :
+
+  Initial import.
+
+*apel-10.3 (13 Feb 2003)
+
+  29 Jun 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.

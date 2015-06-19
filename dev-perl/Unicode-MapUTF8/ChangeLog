@@ -1,0 +1,113 @@
+# ChangeLog for dev-perl/Unicode-MapUTF8
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Unicode-MapUTF8/ChangeLog,v 1.28 2015/06/13 22:10:07 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  Unicode-MapUTF8-1.110.0-r1.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+*Unicode-MapUTF8-1.110.0-r1 (23 Aug 2014)
+
+  23 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Unicode-MapUTF8-1.110.0-r1.ebuild, -Unicode-MapUTF8-1.110.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Unicode-MapUTF8-1.11.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> Unicode-MapUTF8-1.110.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*Unicode-MapUTF8-1.110.0 (28 Aug 2011)
+
+  28 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +Unicode-MapUTF8-1.110.0.ebuild:
+  Change version scheme
+
+  22 Nov 2008; Torsten Veller <tove@gentoo.org> Unicode-MapUTF8-1.11.ebuild:
+  Remove Module-Build from RDEPEND
+
+  18 Nov 2008; Torsten Veller <tove@gentoo.org> Unicode-MapUTF8-1.11.ebuild:
+  New virtuals: module-build
+
+  02 Jul 2008; Brent Baude <ranger@gentoo.org> Unicode-MapUTF8-1.11.ebuild:
+  stable ppc, bug 229403
+
+  25 Jun 2008; Markus Rothe <corsair@gentoo.org>
+  Unicode-MapUTF8-1.11.ebuild:
+  Stable on ppc64; bug #229403
+
+  27 Dec 2007; Andrej Kacian <ticho@gentoo.org> Unicode-MapUTF8-1.11.ebuild:
+  Stable on x86.
+
+  21 Mar 2007; Michael Cummings <mcummings@gentoo.org>
+  Unicode-MapUTF8-1.11.ebuild:
+  Keywording ~mips, tested on swarm, bug 125189
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  Unicode-MapUTF8-1.11.ebuild:
+  Stable on Alpha.
+
+  18 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Unicode-MapUTF8-1.11.ebuild:
+  Marking amd64 stable
+
+  06 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Unicode-MapUTF8-1.11.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  11 Jul 2006; Christian Hartmann <ian@gentoo.org>
+  Unicode-MapUTF8-1.11.ebuild:
+  Forcing newer version of dev-perl/module-build - bug #139980
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org>
+  Unicode-MapUTF8-1.11.ebuild:
+  Mark 1.11 stable on ia64
+
+  05 Jul 2006; Christian Hartmann <ian@gentoo.org>
+  Unicode-MapUTF8-1.11.ebuild:
+  Fixed RDEPEND wrt bug #134781
+
+  01 Jul 2006; Michael Cummings <mcummings@gentoo.org>
+  Unicode-MapUTF8-1.11.ebuild:
+  Keywording ~amd64
+
+  27 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  Unicode-MapUTF8-1.11.ebuild:
+  Stable on hppa
+
+  12 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  Unicode-MapUTF8-1.11.ebuild:
+  Marking sparc stable
+
+  20 Apr 2006; Thomas Cort <tcort@gentoo.org> Unicode-MapUTF8-1.11.ebuild:
+  Added ~alpha keyword wrt Bug #125189.
+
+  13 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  Unicode-MapUTF8-1.11.ebuild:
+  Keyworded ~hppa wrt #125189
+
+  11 Mar 2006; <nixnut@gentoo.org> Unicode-MapUTF8-1.11.ebuild:
+  Added ~ppc. Bug #125189
+
+  10 Mar 2006; Aron Griffis <agriffis@gentoo.org>
+  Unicode-MapUTF8-1.11.ebuild:
+  Mark 1.11 ~ia64
+
+  08 Mar 2006; Markus Rothe <corsair@gentoo.org>
+  Unicode-MapUTF8-1.11.ebuild:
+  Added ~ppc64; bug #125189
+
+  06 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  Unicode-MapUTF8-1.11.ebuild:
+  Keyworded ~sparc wrt #125189
+
+*Unicode-MapUTF8-1.11 (05 Mar 2006)
+
+  05 Mar 2006; Michael Cummings <mcummings@gentoo.org> +metadata.xml,
+  +Unicode-MapUTF8-1.11.ebuild:
+  Bug 19303, ebuild provided by satya, cleaned up for proper license, src mirror

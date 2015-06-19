@@ -1,0 +1,47 @@
+# ChangeLog for dev-perl/Path-Tiny
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Path-Tiny/ChangeLog,v 1.11 2015/03/21 06:01:59 jer Exp $
+
+  21 Mar 2015; Jeroen Roovers <jer@gentoo.org> Path-Tiny-0.61.0.ebuild:
+  Marked ~hppa (bug #543630).
+
+*Path-Tiny-0.61.0 (21 Feb 2015)
+
+  21 Feb 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  -Path-Tiny-0.5.0.ebuild, +Path-Tiny-0.61.0.ebuild:
+  Version bump; remove old
+
+  04 Dec 2014; Mikle Kolyada <zlogene@gentoo.org> Path-Tiny-0.44.0.ebuild:
+  Add ~ppc keyword wrt bug #531274
+
+  30 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -Path-Tiny-0.3.0.ebuild, -Path-Tiny-0.12.0.ebuild:
+  Remove old
+
+*Path-Tiny-0.44.0 (31 Oct 2013)
+
+  31 Oct 2013; Mikle Kolyada <zlogene@gentoo.org> +Path-Tiny-0.44.0.ebuild:
+  version bump wrt bug #489904
+
+  09 Sep 2013; Sergey Popov <pinkbyte@gentoo.org> Path-Tiny-0.12.0.ebuild:
+  Add ~arm keyword, wrt bug #449762
+
+  16 Apr 2013; Vicente Olivert Riera <vincent@gentoo.org>
+  Path-Tiny-0.5.0.ebuild:
+  Adding ~ppc keyword for dev-perl/PDL and his dependences, wrt bug #449762
+
+*Path-Tiny-0.12.0 (21 Feb 2013)
+
+  21 Feb 2013; Torsten Veller <tove@gentoo.org> +Path-Tiny-0.12.0.ebuild:
+  Version bump
+
+*Path-Tiny-0.5.0 (10 Feb 2013)
+
+  10 Feb 2013; Torsten Veller <tove@gentoo.org> +Path-Tiny-0.5.0.ebuild:
+  Version bump
+
+*Path-Tiny-0.3.0 (03 Feb 2013)
+
+  03 Feb 2013; Torsten Veller <tove@gentoo.org> +Path-Tiny-0.3.0.ebuild,
+  +metadata.xml:
+  Initial commit for MooseX-Getopt

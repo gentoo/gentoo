@@ -1,0 +1,10 @@
+[Unit]
+Description=Samba AD server
+After=network.target winbindd.service
+Conflicts=nmbd.service smbd.service
+
+[Service]
+ExecStart=/usr/sbin/samba --interactive 
+
+[Install]
+WantedBy=multi-user.target

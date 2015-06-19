@@ -1,0 +1,36 @@
+# ChangeLog for www-apache/mod_umask
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_umask/ChangeLog,v 1.9 2014/08/10 20:18:16 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> mod_umask-0.1.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  27 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop apache herd as discussed in http://www.gossamer-
+  threads.com/lists/gentoo/dev/262834
+
+  31 Jan 2008; Benedikt Böhm <hollow@gentoo.org> files/47_mod_umask.conf,
+  metadata.xml:
+  update metadata; cleanup
+
+  15 Jan 2007; Luca Longinotti <chtekk@gentoo.org> metadata.xml,
+  mod_umask-0.1.0.ebuild:
+  Cleanup.
+
+  06 Jun 2006; Benedikt Böhm <hollow@gentoo.org> files/47_mod_umask.conf:
+  fix #114929
+
+  10 Dec 2005; Simon Stelling <blubb@gentoo.org> mod_umask-0.1.0.ebuild:
+  stable on amd64
+
+  18 Sep 2005; Michael Stewart <vericgar@gentoo.org> mod_umask-0.1.0.ebuild:
+  Stable on x86
+
+  08 Apr 2005; Christian Parpart <trapni@gentoo.org> mod_umask-0.1.0.ebuild:
+  adding ~amd64 to keywords
+
+*mod_umask-0.1.0 (10 Jan 2005)
+
+  10 Jan 2005; Benedikt Boehm <hollow@gentoo.org> +metadata.xml,
+  +files/47_mod_umask.conf, +mod_umask-0.1.0.ebuild:
+  Apache herd package refresh (New ebuild)

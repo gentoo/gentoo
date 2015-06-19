@@ -1,0 +1,29 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/mediatomb/files/mediatomb-0.12.1.initd,v 1.1 2012/10/02 03:32:15 vapier Exp $
+
+depend() {
+	need net
+	# In order to properly support this (need vs use), we would have to
+	# parse ${MEDIATOMB_CONFIG} and see if mysql is enabled and if it is
+	# pointing to the local system.  #368409
+	use mysql
+}
+
+start() {
+	ebegin "Starting MediaTomb"
+	start-stop-daemon --start --quiet --exec /usr/bin/mediatomb \
+		--pidfile ${MEDIATOMB_PIDFILE} -- --daemon \
+		--pidfile ${MEDIATOMB_PIDFILE} --user ${MEDIATOMB_USER} \
+		--group ${MEDIATOMB_GROUP} --logfile ${MEDIATOMB_LOGFILE} \
+		--config ${MEDIATOMB_CONFIG} --port ${MEDIATOMB_PORT} \
+		${MEDIATOMB_OPTIONS}
+	eend $?
+}
+
+stop () {
+	ebegin "Stopping MediaTomb"
+	start-stop-daemon --stop --retry 10 --quiet --pidfile ${MEDIATOMB_PIDFILE}
+	eend $?
+}

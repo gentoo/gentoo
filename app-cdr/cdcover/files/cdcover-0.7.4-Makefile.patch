@@ -1,0 +1,13 @@
+--- Makefile
++++ Makefile
+@@ -9,8 +9,8 @@
+ IMAGES=./share/images
+ TEMPLATES=./share/templates
+ 
+-DOCFILES=BUGS COPYING INSTALL README VERSION
+-IMAGEFILES=autonum.gif cddb.gif exit.gif gv.gif logo.gif nocddb.gif ps.gif
++DOCFILES=README VERSION
++IMAGEFILES=application-exit.gif cddb.gif document-print-preview.gif document-save.gif logo.gif nocddb.gif renumber.gif
+ TEMPLATEFILES=CD-Classic.pst CD-Modern.pst CD-Tracktime.pst CD-TwoColumns.pst DVD-Classic.pst
+ 
+ INSTALL=install -D

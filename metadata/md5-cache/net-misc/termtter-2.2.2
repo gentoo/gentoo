@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=test? ( ruby_targets_ruby19? ( dev-ruby/json[ruby_targets_ruby19] dev-ruby/highline[ruby_targets_ruby19] dev-ruby/termcolor[ruby_targets_ruby19] dev-ruby/rubytter[ruby_targets_ruby19] dev-ruby/notify[ruby_targets_ruby19] dev-ruby/activerecord[ruby_targets_ruby19] dev-ruby/builder[ruby_targets_ruby19] ) ) ruby_targets_ruby19? ( doc? ( dev-ruby/rdoc[ruby_targets_ruby19] ) test? ( dev-ruby/haml[ruby_targets_ruby19] dev-ruby/git[ruby_targets_ruby19] dev-ruby/rspec[ruby_targets_ruby19] dev-ruby/jeweler[ruby_targets_ruby19] ) ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_ruby19? ( doc? ( dev-ruby/rake[ruby_targets_ruby19] ) ) ruby_targets_ruby19? ( virtual/rubygems[ruby_targets_ruby19] ) test? ( ruby_targets_ruby19? ( virtual/rubygems[ruby_targets_ruby19] ) )
+DESCRIPTION=Termtter is a terminal based Twitter client
+EAPI=5
+HOMEPAGE=https://github.com/termtter/termtter
+IUSE=test elibc_FreeBSD ruby_targets_ruby19 doc test
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=ruby_targets_ruby19? ( dev-ruby/json[ruby_targets_ruby19] dev-ruby/highline[ruby_targets_ruby19] dev-ruby/termcolor[ruby_targets_ruby19] dev-ruby/rubytter[ruby_targets_ruby19] dev-ruby/notify[ruby_targets_ruby19] dev-ruby/activerecord[ruby_targets_ruby19] dev-ruby/builder[ruby_targets_ruby19] ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_ruby19? ( virtual/rubygems[ruby_targets_ruby19] )
+REQUIRED_USE=|| ( ruby_targets_ruby19 )
+SLOT=0
+SRC_URI=mirror://rubygems/termtter-2.2.2.gem
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	java-utils-2	6627198e505d021534cb20f89279c509	multilib	62927b3db3a589b0806255f3a002d5d3	ruby-fakegem	d4f8591e9b20b106327e9d143eb13da5	ruby-ng	a23e4bd47d827c96336af5ad0fe254cf	ruby-utils	a74e21a353442acf697b6c82e7df6df8	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=5575e128d8525b3b5a58a8ec5c38e14c

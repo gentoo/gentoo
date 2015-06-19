@@ -1,0 +1,17 @@
+# ChangeLog for dev-games/hlsdk
+# Copyright 2000-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-games/hlsdk/ChangeLog,v 1.7 2015/03/31 00:52:54 mr_bones_ Exp $
+
+  31 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> hlsdk-2.3.ebuild:
+  EAPI=5
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  19 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org> hlsdk-2.3.ebuild:
+  Adding IUSE.
+
+*hlsdk-2.3 (08 Jul 2003)
+
+  08 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me.

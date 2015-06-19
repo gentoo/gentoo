@@ -1,0 +1,46 @@
+http://savannah.gnu.org/bugs/?40371
+http://git.savannah.gnu.org/cgit/make.git/commit/?id=9d58570c
+
+From 9d58570c77240fed53d1f88217877f8e778f4bb2 Mon Sep 17 00:00:00 2001
+From: Paul Smith <psmith@gnu.org>
+Date: Sat, 26 Oct 2013 04:10:17 +0000
+Subject: * makeint.h (STOP_SET): [SV 40371] Cast to unsigned char.
+
+* tests/scripts/misc/utf8: Test variable names with characters >127.
+Fix suggested by Robert Bogomip <bob.bogo@milohedge.com>
+---
+diff --git a/makeint.h b/makeint.h
+index 77f51e0..c591427 100644
+--- a/makeint.h
++++ b/makeint.h
+@@ -415,7 +415,7 @@ extern int unixy_shell;
+ # define MAP_VMSCOMMA   0x0000
+ #endif
+ 
+-#define STOP_SET(_v,_m) ANY_SET (stopchar_map[(int)(_v)],(_m))
++#define STOP_SET(_v,_m) ANY_SET (stopchar_map[(unsigned char)(_v)],(_m))
+ 
+ #if defined(HAVE_SYS_RESOURCE_H) && defined(HAVE_GETRLIMIT) && defined(HAVE_SETRLIMIT)
+ # define SET_STACK_SIZE
+diff --git a/tests/scripts/misc/utf8 b/tests/scripts/misc/utf8
+new file mode 100644
+index 0000000..2adcd07
+--- a/dev/null
++++ b/tests/scripts/misc/utf8
+@@ -0,0 +1,14 @@
++#                                                                    -*-perl-*-
++$description = "Test utf8 handling.";
++
++$details = "";
++
++# Variable names containing UTF8 characters
++run_make_test("
++\xe2\x96\xaa := hello
++\$(info \$(\xe2\x96\xaa))
++all:
++",
++              '', "hello\n#MAKE#: Nothing to be done for 'all'.");
++
++1;
+--
+cgit v0.9.0.2

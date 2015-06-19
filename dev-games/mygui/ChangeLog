@@ -1,0 +1,59 @@
+# ChangeLog for dev-games/mygui
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-games/mygui/ChangeLog,v 1.14 2015/06/07 08:27:24 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  20 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/mygui-3.2.0-FHS.patch, -files/mygui-3.2.0-build.patch,
+  -files/mygui-3.2.0-underlinking.patch, -mygui-3.2.0-r1.ebuild:
+  old
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org> mygui-3.2.2.ebuild:
+  Stable for x86, wrt bug #545890
+
+  08 Apr 2015; Agostino Sarubbo <ago@gentoo.org> mygui-3.2.2.ebuild:
+  Stable for amd64, wrt bug #545890
+
+  26 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/mygui-3.2.1-FHS.patch, -mygui-3.2.1.ebuild:
+  old
+
+*mygui-3.2.2 (14 Mar 2015)
+
+  14 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/mygui-3.2.2-FHS.patch, +files/mygui-3.2.2-build.patch,
+  +files/mygui-3.2.2-underlinking.patch, +mygui-3.2.2.ebuild:
+  version bump
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+*mygui-3.2.1 (24 Aug 2014)
+
+  24 Aug 2014; Julian Ospald <hasufell@gentoo.org> +mygui-3.2.1.ebuild,
+  +files/mygui-3.2.1-FHS.patch, metadata.xml:
+  version bump
+
+  08 Mar 2014; Julian Ospald <hasufell@gentoo.org> mygui-3.2.0-r1.ebuild:
+  add subslot dep for dev-games/ogre
+
+  10 Dec 2013; Julian Ospald <hasufell@gentoo.org> mygui-3.2.0-r1.ebuild:
+  bump eapi, use system version of FindFreetype.cmake
+
+  13 Jan 2013; Agostino Sarubbo <ago@gentoo.org> mygui-3.2.0-r1.ebuild:
+  Stable for x86, wrt bug #449772
+
+  05 Jan 2013; Agostino Sarubbo <ago@gentoo.org> mygui-3.2.0-r1.ebuild:
+  Stable for amd64, wrt bug #449772
+
+  31 Oct 2012; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  update metadata.xml
+
+*mygui-3.2.0-r1 (31 Oct 2012)
+
+  31 Oct 2012; Julian Ospald <hasufell@gentoo.org> +mygui-3.2.0-r1.ebuild,
+  +files/mygui-3.2.0-FHS.patch, +files/mygui-3.2.0-build.patch,
+  +files/mygui-3.2.0-underlinking.patch, +metadata.xml:
+  initial import wrt #261895

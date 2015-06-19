@@ -1,0 +1,99 @@
+# ChangeLog for x11-plugins/wmfire
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmfire/ChangeLog,v 1.27 2014/08/10 20:06:09 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> wmfire-1.2.4-r2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  07 Apr 2014; Samuli Suominen <ssuominen@gentoo.org> -wmfire-1.2.3.ebuild,
+  -wmfire-1.2.4-r1.ebuild:
+  old
+
+  29 Jul 2012; Raúl Porcel <armin76@gentoo.org> wmfire-1.2.3.ebuild,
+  wmfire-1.2.4-r1.ebuild, wmfire-1.2.4-r2.ebuild:
+  Drop sparc keywords
+
+  03 Jul 2012; Brent Baude <ranger@gentoo.org> wmfire-1.2.4-r2.ebuild:
+  Marking wmfire-1.2.4-r2 ppc for bug 422401
+
+  26 Jun 2012; Jeff Horelick <jdhore@gentoo.org> wmfire-1.2.4-r2.ebuild:
+  marked x86 per bug 422401
+
+  22 Jun 2012; Agostino Sarubbo <ago@gentoo.org> wmfire-1.2.4-r2.ebuild:
+  Stable for amd64, wrt bug #422401
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> wmfire-1.2.3.ebuild,
+  wmfire-1.2.4-r1.ebuild, wmfire-1.2.4-r2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*wmfire-1.2.4-r2 (27 Feb 2012)
+
+  27 Feb 2012; Bernard Cafarelli <voyageur@gentoo.org> -wmfire-1.2.4.ebuild,
+  +wmfire-1.2.4-r2.ebuild, +files/wmfire-1.2.4-lastprocessor_SMP.patch:
+  Fix display for SMP systems, report and patch by wbk in bug #404323
+
+  26 Dec 2011; Markus Meier <maekke@gentoo.org> wmfire-1.2.4-r1.ebuild:
+  x86 stable, bug #394081
+
+  16 Dec 2011; Agostino Sarubbo <ago@gentoo.org> wmfire-1.2.4-r1.ebuild:
+  Stable for AMD64, wrt bug #394081
+
+  28 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> wmfire-1.2.3.ebuild,
+  wmfire-1.2.4.ebuild, wmfire-1.2.4-r1.ebuild:
+  Fix slot-deps on gnome libs
+
+*wmfire-1.2.4-r1 (28 Jun 2010)
+
+  28 Jun 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  +wmfire-1.2.4-r1.ebuild, +files/wmfire-1.2.4-no_display.patch,
+  metadata.xml:
+  Fix support with gtk+ >= 2.18, bug #304087
+
+*wmfire-1.2.4 (15 Mar 2010)
+
+  15 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> +wmfire-1.2.4.ebuild:
+  Version bump wrt #309651 by "hitachi".
+
+  04 Jun 2009; Tiago Cunha <tcunha@gentoo.org> wmfire-1.2.3.ebuild:
+  stable sparc, bug 215651
+
+  28 Jun 2008; Markus Meier <maekke@gentoo.org> wmfire-1.2.3.ebuild:
+  x86 stable, bug #229563
+
+  26 Jun 2008; nixnut <nixnut@gentoo.org> wmfire-1.2.3.ebuild:
+  Stable on ppc wrt bug 229563
+
+  25 Feb 2008; Samuli Suominen <drac@gentoo.org> wmfire-1.2.3.ebuild:
+  USE flag session for libSM and libICE, amd64 stable.
+
+*wmfire-1.2.3 (12 Jan 2008)
+
+  12 Jan 2008; Samuli Suominen <drac@gentoo.org>
+  +files/wmfire-1.2.3-stringh.patch, +wmfire-1.2.3.ebuild:
+  Version bump wrt #203120, thanks to Denilson for reporting.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  wmfire-0.0.3.9_pre4.ebuild:
+  Drop virtual/x11 references.
+
+  06 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  24 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  wmfire-0.0.3.9_pre4.ebuild:
+  Fixed DEPEND for modular X.
+
+  10 Nov 2004; Michele Noberasco <s4t4n@gentoo.org> wmfire-0.0.3.9_pre4.ebuild:
+  Removed COPYING and INSTALL from dodoc.
+
+  23 Nov 2004; Jason Wever <weeve@gentoo.org> wmfire-0.0.3.9_pre4.ebuild:
+  Added ~sparc keyword.
+
+*wmfire-0.0.3.9_pre4 (4-Aug-2002)
+
+  24 Oct 2002; Nick Hadaway <raker@gentoo.org>
+  wmfire-0.0.3.9_pre4.ebuild, files/digest-wmfire-0.0.3.9_pre4 :
+  Initial add of ebuild to portage
+
+  4 Aug 2002; Matthew Schlegel <nitehawk-gentoo@1ststep.net> :
+  First version of the package.

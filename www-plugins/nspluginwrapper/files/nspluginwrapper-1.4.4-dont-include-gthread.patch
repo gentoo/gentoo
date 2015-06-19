@@ -1,0 +1,12 @@
+diff --git a/src/npw-player.c b/src/npw-player.c
+index a99b8f7..217b5ba 100644
+--- a/src/npw-player.c
++++ b/src/npw-player.c
+@@ -25,7 +25,6 @@
+ #include <unistd.h>
+ #include <glib.h>
+ #include <glib/gstdio.h>
+-#include <glib/gthread.h>
+ #include <gtk/gtk.h>
+ #include <gdk/gdkx.h>
+ #include <gdk/gdkkeysyms.h>

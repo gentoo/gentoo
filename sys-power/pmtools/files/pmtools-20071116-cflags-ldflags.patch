@@ -1,0 +1,38 @@
+--- acpidump/Makefile.orig
++++ acpidump/Makefile
+@@ -1,11 +1,11 @@
+ PROG= acpidump
+ SRCS=	acpidump.c
+ KERNEL_INCLUDE := ../include
+-CFLAGS += -Wall -Wstrict-prototypes -Wdeclaration-after-statement -Os -s -D_LINUX -DDEFINE_ALTERNATE_TYPES -I$(KERNEL_INCLUDE) 
++CFLAGS += -Wall -Wstrict-prototypes -Wdeclaration-after-statement -D_LINUX -DDEFINE_ALTERNATE_TYPES -I$(KERNEL_INCLUDE) 
+ 
+ all: acpidump
+ $(PROG) : $(SRCS)
+-	$(CC) $(CFLAGS) $(SRCS) -o $(PROG)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(SRCS) -o $(PROG)
+ 
+ CLEANFILES= $(PROG)
+ 
+--- acpixtract/Makefile.orig
++++ acpixtract/Makefile
+@@ -6,7 +6,7 @@
+ all: $(PROG)
+ 
+ $(PROG) : $(SRCS)
+-	$(CC) $(CFLAGS) $(SRCS) -o $(PROG)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(SRCS) -o $(PROG)
+ 
+ CLEANFILES= $(PROG)
+ 
+--- madt/Makefile.orig
++++ madt/Makefile
+@@ -3,7 +3,7 @@
+ 
+ all: madt
+ $(PROG) : $(SRCS)
+-	$(CC) $(CFLAGS) $(SRCS) -o $(PROG)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(SRCS) -o $(PROG)
+ 
+ test: madt
+ 	./madt < example.APIC.dat

@@ -1,0 +1,150 @@
+# ChangeLog for sys-fs/nilfs-utils
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/nilfs-utils/ChangeLog,v 1.31 2014/03/19 16:15:29 ago Exp $
+
+  19 Mar 2014; Agostino Sarubbo <ago@gentoo.org> nilfs-utils-2.1.5-r1.ebuild:
+  Stable for alpha, wrt bug #444486
+
+  14 Mar 2014; Agostino Sarubbo <ago@gentoo.org> nilfs-utils-2.1.5-r1.ebuild:
+  Stable for ppc64, wrt bug #444486
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> nilfs-utils-2.1.5-r1.ebuild:
+  Stable for ppc, wrt bug #444486
+
+  04 Mar 2014; Naohiro Aota <naota@gentoo.org> -nilfs-utils-2.1.0-r1.ebuild,
+  -nilfs-utils-2.1.0.ebuild, -nilfs-utils-2.1.1.ebuild,
+  -nilfs-utils-2.1.3.ebuild, -nilfs-utils-2.1.4.ebuild,
+  -nilfs-utils-2.1.5.ebuild:
+  Drop old versions
+
+*nilfs-utils-2.1.6 (04 Mar 2014)
+
+  04 Mar 2014; Naohiro Aota <naota@gentoo.org> +nilfs-utils-2.1.6.ebuild:
+  version bump wrt #500774
+
+  01 Mar 2014; Pacho Ramos <pacho@gentoo.org> nilfs-utils-2.1.5-r1.ebuild:
+  amd64 stable, bug #444486
+
+  23 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  nilfs-utils-2.1.5-r1.ebuild:
+  x86 stable wrt bug #444486
+
+  09 Feb 2014; Jeroen Roovers <jer@gentoo.org> nilfs-utils-2.1.5-r1.ebuild:
+  Stable for HPPA (bug #444486).
+
+*nilfs-utils-2.1.5-r1 (14 Oct 2013)
+
+  14 Oct 2013; Naohiro Aota <naota@gentoo.org> +nilfs-utils-2.1.5-r1.ebuild:
+  Build against libmount. #487920
+
+*nilfs-utils-2.1.5 (15 May 2013)
+
+  15 May 2013; Naohiro Aota <naota@gentoo.org> +nilfs-utils-2.1.5.ebuild,
+  -nilfs-utils-2.0.18.ebuild, -nilfs-utils-2.0.21.ebuild,
+  -nilfs-utils-2.0.23.ebuild:
+  version bump wrt #469804
+
+  03 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #22900
+
+*nilfs-utils-2.1.4 (12 Jul 2012)
+
+  12 Jul 2012; Naohiro Aota <naota@gentoo.org> +nilfs-utils-2.1.4.ebuild:
+  Version bump to 2.1.4. #425642
+
+*nilfs-utils-2.1.3 (29 Jun 2012)
+
+  29 Jun 2012; Naohiro Aota <naota@gentoo.org> +nilfs-utils-2.1.3.ebuild:
+  Version bump. #423901
+
+*nilfs-utils-2.1.1 (16 May 2012)
+
+  16 May 2012; Naohiro Aota <naota@gentoo.org> +nilfs-utils-2.1.1.ebuild:
+  Version bumped. #408501
+
+*nilfs-utils-2.1.0-r1 (16 May 2012)
+
+  16 May 2012; Naohiro Aota <naota@gentoo.org> +nilfs-utils-2.1.0-r1.ebuild:
+  Move /usr/lib/* to /lib #398079
+
+  27 Mar 2012; Naohiro Aota <naota@gentoo.org> nilfs-utils-2.1.0.ebuild:
+  Don't strictly depend on POSIX_MQUEUE. Just check and warn for it. #396159
+
+  19 Mar 2012; Naohiro Aota <naota@gentoo.org> nilfs-utils-2.1.0.ebuild:
+  Check POSIX_MQUEUE kernel config. #396159
+
+  22 Feb 2012; Jeroen Roovers <jer@gentoo.org> nilfs-utils-2.1.0.ebuild:
+  Marked ~hppa (bug #276410).
+
+*nilfs-utils-2.0.23 (28 Nov 2011)
+
+  28 Nov 2011; Naohiro Aota <naota@gentoo.org> +nilfs-utils-2.0.23.ebuild:
+  Version bumped. #377129
+
+*nilfs-utils-2.1.0 (25 Nov 2011)
+
+  25 Nov 2011; Naohiro Aota <naota@gentoo.org> +nilfs-utils-2.1.0.ebuild:
+  Version bump. Bug #379069
+
+  30 Jan 2011; MATSUU Takuto <matsuu@gentoo.org> -nilfs-utils-2.0.14.ebuild,
+  -nilfs-utils-2.0.16.ebuild, -nilfs-utils-2.0.17.ebuild,
+  +nilfs-utils-2.0.21.ebuild:
+  Version bumped. Added statc-libs USE flag. Fixed LICENSE. Removed old
+  versions.
+
+*nilfs-utils-2.0.21 (30 Jan 2011)
+
+  30 Jan 2011; MATSUU Takuto <matsuu@gentoo.org> -nilfs-utils-2.0.14.ebuild,
+  -nilfs-utils-2.0.16.ebuild, -nilfs-utils-2.0.17.ebuild,
+  +nilfs-utils-2.0.20.ebuild, +nilfs-utils-2.0.21.ebuild:
+  Version bumped. Removed old versions.
+
+*nilfs-utils-2.0.18 (10 Apr 2010)
+
+  10 Apr 2010; MATSUU Takuto <matsuu@gentoo.org> +nilfs-utils-2.0.18.ebuild:
+  Version bumped.
+
+*nilfs-utils-2.0.17 (14 Mar 2010)
+
+  14 Mar 2010; MATSUU Takuto <matsuu@gentoo.org> +nilfs-utils-2.0.17.ebuild:
+  Version bumped.
+
+*nilfs-utils-2.0.16 (13 Mar 2010)
+
+  13 Mar 2010; MATSUU Takuto <matsuu@gentoo.org>
+  -files/nilfs-utils-2.0.12-gentoo.patch, +nilfs-utils-2.0.16.ebuild:
+  Version bumped.
+
+  27 Dec 2009; Joseph Jezak <josejx@gentoo.org> nilfs-utils-2.0.14.ebuild:
+  Marked ~ppc/~ppc64 for bug #276410.
+
+  19 Sep 2009; Robin H. Johnson <robbat2@gentoo.org>
+  nilfs-utils-2.0.14.ebuild:
+  Adding ~arm support. Tested on mv78100.arm.dev.gentoo.org thanks to
+  Marvell.
+
+  25 Jul 2009; MATSUU Takuto <matsuu@gentoo.org> -nilfs-utils-2.0.12.ebuild,
+  -nilfs-utils-2.0.13.ebuild:
+  Removed old versions.
+
+*nilfs-utils-2.0.14 (20 Jul 2009)
+
+  20 Jul 2009; MATSUU Takuto <matsuu@gentoo.org> +nilfs-utils-2.0.14.ebuild,
+  +files/nilfs-utils-2.0.14-gentoo.patch:
+  Version bumped.
+
+  12 Jul 2009; Tobias Klausmann <klausman@gentoo.org>
+  nilfs-utils-2.0.12.ebuild:
+  Keyworded on alpha, bug #276410
+
+*nilfs-utils-2.0.13 (24 Jun 2009)
+
+  24 Jun 2009; MATSUU Takuto <matsuu@gentoo.org> +nilfs-utils-2.0.13.ebuild:
+  Version bumped.
+
+*nilfs-utils-2.0.12 (17 Apr 2009)
+
+  17 Apr 2009; MATSUU Takuto <matsuu@gentoo.org>
+  +files/nilfs-utils-2.0.12-gentoo.patch, +metadata.xml,
+  +nilfs-utils-2.0.12.ebuild:
+  Initial import.

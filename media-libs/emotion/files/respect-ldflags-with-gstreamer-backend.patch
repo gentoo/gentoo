@@ -1,0 +1,22 @@
+From 78870f848cc8c9440d35e84646a110a86404d3e9 Mon Sep 17 00:00:00 2001
+From: Tom Hacohen <tom@stosb.com>
+Date: Wed, 03 Apr 2013 16:44:57 +0000
+Subject: Fixed LDFLAGS usage when using the gstreamer backend.
+
+Reported by Tommy[D] on IRC.
+---
+diff --git a/configure.ac b/configure.ac
+index 0986b8a..324ea57 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -284,7 +284,7 @@ if test "x${enable_gstreamer}" = "xyes" ; then
+       AC_CHECK_LIB([gstinterfaces-0.10],
+          [gst_x_overlay_set_window_handle],
+          [AC_DEFINE([HAVE_X_OVERLAY_SET], [1], [Use gst_x_overlay_set_window_handle instead of old deprecated gst_x_overlay_set_xwindow_id])])
+-      LDFLAGS=$sava_LDFLAGS
++      LDFLAGS=$save_LDFLAGS
+    fi
+ fi
+ 
+--
+cgit v0.9.1

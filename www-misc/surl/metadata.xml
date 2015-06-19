@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>wired@gentoo.org</email>
+		<name>Alex Alexander</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="launchpad">surl</remote-id>
+	</upstream>
+</pkgmetadata>

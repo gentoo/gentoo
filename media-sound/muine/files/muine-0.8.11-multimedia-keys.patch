@@ -1,0 +1,26 @@
+From d4dd66d73885db1b2aea2a267197413559bed5bc Mon Sep 17 00:00:00 2001
+From: Priit Laes <plaes@plaes.org>
+Date: Wed, 16 Sep 2009 21:30:06 +0000
+Subject: Fix multimedia key support for >=Gnome-2.22
+
+---
+diff --git a/src/GnomeMMKeys.cs b/src/GnomeMMKeys.cs
+index dd99718..af5419a 100644
+--- a/src/GnomeMMKeys.cs
++++ b/src/GnomeMMKeys.cs
+@@ -37,11 +37,11 @@ namespace Muine
+     public class GnomeMMKeys : IDisposable
+     {
+         private const string BusName = "org.gnome.SettingsDaemon";
+-        private const string ObjectPath = "/org/gnome/SettingsDaemon";
++        private const string ObjectPath = "/org/gnome/SettingsDaemon/MediaKeys";
+         
+         private delegate void MediaPlayerKeyPressedHandler(string application, string key);
+         
+-        [Interface("org.gnome.SettingsDaemon")]
++        [Interface("org.gnome.SettingsDaemon.MediaKeys")]
+         private interface ISettingsDaemon
+         {
+             void GrabMediaPlayerKeys(string application, uint time);
+--
+cgit v0.8.3.1

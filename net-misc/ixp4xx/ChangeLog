@@ -1,0 +1,8 @@
+# ChangeLog for net-misc/ixp4xx
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ixp4xx/ChangeLog,v 1.2 2006/02/16 19:13:49 swegener Exp $
+
+*ixp4xx-2.1 (07 Dec 2005)
+
+  07 Dec 2005; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Yuri Vasilevski.

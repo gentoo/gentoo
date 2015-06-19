@@ -1,0 +1,130 @@
+# ChangeLog for app-misc/symlinks
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/symlinks/ChangeLog,v 1.36 2012/03/28 12:20:50 jlec Exp $
+
+*symlinks-1.4-r2 (28 Mar 2012)
+
+  28 Mar 2012; Justin Lecher <jlec@gentoo.org> -symlinks-1.4-r1.ebuild,
+  +symlinks-1.4-r2.ebuild:
+  append-lfs-flags uses CPPFLAGS so we need to use those
+
+*symlinks-1.4-r1 (28 Mar 2012)
+
+  28 Mar 2012; Justin Lecher <jlec@gentoo.org> +symlinks-1.4-r1.ebuild:
+  Add lfs flags in order to handle largefiles, #409927; drop optimization flag
+  from upstream
+
+  27 Mar 2011; Jeremy Olexa <darkside@gentoo.org> -symlinks-1.2-r2.ebuild:
+  remove old ebuilds
+
+  02 Mar 2011; Brent Baude <ranger@gentoo.org> symlinks-1.4.ebuild:
+  stable ppc64, bug 350698
+
+  29 Jan 2011; Raúl Porcel <armin76@gentoo.org> symlinks-1.4.ebuild:
+  alpha/ia64 stable wrt #350698
+
+  24 Jan 2011; Jeroen Roovers <jer@gentoo.org> symlinks-1.4.ebuild:
+  Stable for SPARC (bug #350698).
+
+  24 Jan 2011; Jeroen Roovers <jer@gentoo.org> symlinks-1.4.ebuild:
+  Stable for HPPA (bug #350698).
+
+  11 Jan 2011; Markus Meier <maekke@gentoo.org> symlinks-1.4.ebuild:
+  x86 stable, bug #350698
+
+  07 Jan 2011; Brent Baude <ranger@gentoo.org> symlinks-1.4.ebuild:
+  Marking symlinks-1.4 ppc for bug 350698
+
+  05 Jan 2011; Markos Chandras <hwoarang@gentoo.org> symlinks-1.4.ebuild:
+  Stable on amd64 wrt bug #350698
+
+  05 Jan 2011; Justin Lecher <jlec@gentoo.org> symlinks-1.2-r2.ebuild,
+  symlinks-1.4.ebuild:
+  Some Clean up
+
+*symlinks-1.4 (20 Oct 2010)
+
+  20 Oct 2010; Jeroen Roovers <jer@gentoo.org> +symlinks-1.4.ebuild:
+  Version bump.
+
+  19 May 2010; Robert Piasek <dagger@gentoo.org> symlinks-1.2-r2.ebuild:
+  corrected alphabetic order of keywords
+
+  19 May 2010; Robert Piasek <dagger@gentoo.org> symlinks-1.2-r2.ebuild:
+  Added ~arm keyword
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing taviso from metadata.xml as per #202471.
+
+  16 Dec 2007; Samuli Suominen <drac@gentoo.org> symlinks-1.2-r2.ebuild:
+  amd64 stable wrt #201837
+
+  12 Dec 2007; Jeroen Roovers <jer@gentoo.org> symlinks-1.2-r2.ebuild:
+  Stable for HPPA (bug #201837).
+
+  12 Dec 2007; Markus Rothe <corsair@gentoo.org> symlinks-1.2-r2.ebuild:
+  Stable on ppc64; bug #201837
+
+  11 Dec 2007; nixnut <nixnut@gentoo.org> symlinks-1.2-r2.ebuild:
+  Stable on ppc wrt bug 201837
+
+  11 Dec 2007; <pva@gentoo.org>
+  +files/symlinks-1.2-fix-implicit-declaration.patch,
+  symlinks-1.2-r2.ebuild:
+  Fixed QA warning about implicit declarations, bug #201837. Thank Thomas A.
+  (Arch Tester) <gentoofan23 AT gmail.com> for report and fix.
+
+  10 Dec 2007; Raúl Porcel <armin76@gentoo.org> symlinks-1.2-r2.ebuild:
+  alpha/ia64/sparc stable wrt #201837
+
+  10 Dec 2007; Dawid Węgliński <cla@gentoo.org> symlinks-1.2-r2.ebuild:
+  Stable on x86 (bug #201837)
+
+*symlinks-1.2-r2 (04 Oct 2007)
+
+  04 Oct 2007; <pva@gentoo.org> -symlinks-1.2-r1.ebuild,
+  +symlinks-1.2-r2.ebuild:
+  Now really fix bug #193245, removed previous ebuild.
+
+*symlinks-1.2-r1 (29 Sep 2007)
+
+  29 Sep 2007; <pva@gentoo.org> +symlinks-1.2-r1.ebuild:
+  Use tc-getCC compiler, fixes bug #193245, reported by Chris Slycord
+  <cslycord AT gmail.com>
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  symlinks-1.2.ebuild:
+  Masked symlinks-1.2.ebuild stable for ppc
+
+  22 Sep 2004; Michael Hanselmann <hansmi@gentoo.org> symlinks-1.2.ebuild:
+  Added to ~ppc, bug 63719.
+
+  09 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org> symlinks-1.2.ebuild:
+  Stable on sparc wrt #63439
+
+  02 Sep 2004; Tom Gall <tgall@gentoo.org> symlinks-1.2.ebuild:
+  stable on ppc64, bug #62327
+
+  09 Aug 2004; <agriffis@gentoo.org> symlinks-1.2.ebuild:
+  stable on amd64 and ia64
+
+  29 Oct 2003; Tavis Ormandy <taviso@gentoo.org> symlinks-1.2.ebuild:
+  patching should be in src_unpack()
+
+  08 Sep 2003; Tavis Ormandy <taviso@gentoo.org> symlinks-1.2.ebuild:
+  stable on x86 and alpha
+
+*symlinks-1.2 (18 Jun 2003)
+
+  18 Jun 2003; Tavis Ormandy <taviso@gentoo.org> symlinks-1.2.ebuild:
+  minor tweaks
+
+  24 May 2003; Tavis Ormandy <taviso@gentoo.org> :
+  initial import.
+

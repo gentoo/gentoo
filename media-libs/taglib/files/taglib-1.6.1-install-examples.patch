@@ -1,0 +1,16 @@
+diff -purN taglib-1.6.1.orig/examples/CMakeLists.txt taglib-1.6.1/examples/CMakeLists.txt
+--- taglib-1.6.1.orig/examples/CMakeLists.txt	2009-09-09 14:16:38.000000000 -0400
++++ taglib-1.6.1/examples/CMakeLists.txt	2009-12-14 18:47:33.405385063 -0500
+@@ -45,6 +45,12 @@ ADD_EXECUTABLE(strip-id3v1 strip-id3v1.c
+ 
+ TARGET_LINK_LIBRARIES(strip-id3v1  tag )
+ 
++INSTALL(TARGETS
++	tagreader tagreader_c tagwriter framelist strip-id3v1
++	LIBRARY DESTINATION ${LIB_INSTALL_DIR}
++	RUNTIME DESTINATION ${BIN_INSTALL_DIR}
++	ARCHIVE DESTINATION ${LIB_INSTALL_DIR}
++)
+ 
+ endif(BUILD_EXAMPLES)
+ 

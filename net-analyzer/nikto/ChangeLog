@@ -1,0 +1,143 @@
+# ChangeLog for net-analyzer/nikto
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nikto/ChangeLog,v 1.35 2015/03/21 14:37:40 jlec Exp $
+
+  21 Mar 2015; Justin Lecher <jlec@gentoo.org> -nikto-2.03.ebuild, metadata.xml,
+  nikto-2.1.5.ebuild:
+  drop old; fix SLOT operators
+
+  19 Dec 2014; Andreas K. Huettel <dilfridge@gentoo.org> metadata.xml:
+  Drop to maintainer-needed
+
+  09 Nov 2014; Patrick Lauer <patrick@gentoo.org> nikto-1.36.ebuild,
+  nikto-2.1.5.ebuild:
+  Whitespace and quoting
+
+  09 Nov 2014; Patrice Clement <monsieurp@gentoo.org> nikto-2.1.5.ebuild:
+  Removing LW2.pm from modules list. See #521884.
+
+  30 Aug 2014;  <patrice@gentoo.org> nikto-2.1.5.ebuild:
+  some clean up due to EAPI=5 bump
+
+  30 Aug 2014;  <patrice@gentoo.org> nikto-2.1.5.ebuild:
+  #489240: version bump to 2.1.5 + EAPI bump to 5
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> nikto-1.36.ebuild,
+  nikto-2.03.ebuild, nikto-2.1.4.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  24 Oct 2013; Mikle Kolyada <zlogene@gentoo.org> nikto-1.36.ebuild,
+  nikto-2.03.ebuild, nikto-2.1.4.ebuild:
+  updated HOMEPAGE wrt bug #489238
+
+  20 Sep 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+*nikto-2.1.4 (01 Aug 2011)
+
+  01 Aug 2011; Patrick Lauer <patrick@gentoo.org> +nikto-2.1.4.ebuild:
+  Bump, fixes #292312. Thanks to everyone who worked on it
+
+  26 May 2010; Jonathan Callen <abcd@gentoo.org> nikto-2.03.ebuild:
+  Bump to EAPI=3, add prefix keywords, cleanup QA issues
+
+*nikto-2.03 (20 Mar 2009)
+
+  20 Mar 2009; Tobias Scherbaum <dertobi123@gentoo.org> -nikto-1.31.ebuild,
+  -nikto-1.32.ebuild, -nikto-1.34.ebuild, -nikto-1.34-r1.ebuild,
+  -nikto-1.34-r2.ebuild, -nikto-1.35.ebuild, -nikto-2.01.ebuild,
+  +nikto-2.03.ebuild:
+  Version bump (#208165), Cleanup
+
+*nikto-2.01 (28 Dec 2007)
+
+  28 Dec 2007; Tobias Scherbaum <dertobi123@gentoo.org> +nikto-2.01.ebuild:
+  Version bump as per #199020, thanks to Frank Breedijk and Anton Bolshakov
+
+  20 Oct 2007; Christian Hartmann <ian@gentoo.org> nikto-1.36.ebuild:
+  Fixed bug #193916
+
+  16 Jul 2007; Michael Cummings <mcummings@gentoo.org> nikto-1.36.ebuild:
+  sparc stable
+
+  09 Jul 2007; Raúl Porcel <armin76@gentoo.org> nikto-1.36.ebuild:
+  x86 stable
+
+  22 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org> nikto-1.35.ebuild:
+  Stable on sparc
+
+  20 Mar 2007; Raúl Porcel <armin76@gentoo.org> nikto-1.35.ebuild:
+  x86 stable
+
+*nikto-1.36 (26 Feb 2007)
+
+  26 Feb 2007; Michael Cummings <mcummings@gentoo.org> +nikto-1.36.ebuild:
+  Bug 166960, version bump. Thanks Chaze
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  13 Aug 2005; Luis Medinas <metalgod@gentoo.org> nikto-1.35.ebuild:
+  Added ~amd64 Keywords. Closes bug #102302.
+
+*nikto-1.35 (30 May 2005)
+
+  30 May 2005; Michael Cummings <mcummings@gentoo.org> +nikto-1.35.ebuild:
+  Version bump to 1.35
+
+*nikto-1.34-r2 (14 May 2005)
+
+  14 May 2005; Michael Cummings <mcummings@gentoo.org>
+  +nikto-1.34-r2.ebuild:
+  Forgot to get the digest of the man added. Also bumped since the man page is
+  a functional addition.
+
+  14 May 2005; Michael Cummings <mcummings@gentoo.org> nikto-1.34-r1.ebuild:
+  bug 84048, thanks to Michael Boman <michael.boman@gmail.com> for the
+  updates. Adds man page for nikto.
+
+*nikto-1.34-r1 (13 Mar 2005)
+
+  13 Mar 2005; Michael Cummings <mcummings@gentoo.org>
+  +nikto-1.34-r1.ebuild:
+  Bug 70465: Andreas Kobara <abusch@gmx.net> points out that nikto no longer
+  as an external dependancy on libwhisker, and in fact provides its own
+  variation now. -r1 ebuild drops this dependancy. Thanks Andreas!
+
+  19 Nov 2004; Jason Wever <weeve@gentoo.org> nikto-1.32.ebuild:
+  Stable on sparc.
+
+*nikto-1.34 (29 Oct 2004)
+
+  29 Oct 2004; Eldad Zack <eldad@gentoo.org> nikto-1.32.ebuild,
+  +nikto-1.34.ebuild:
+  Version bump. SRC_URI fixes. Closes #66340.
+
+  04 Sep 2004; Thomas Matthijs <axxo@gentoo.org> nikto-1.32.ebuild:
+  fix depend syntax 58347
+
+  09 Jul 2004; Eldad Zack <eldad@gentoo.org> nikto-1.31.ebuild,
+  nikto-1.32.ebuild:
+  Added missing ssl to IUSE
+
+*nikto-1.32 (29 Mar 2004)
+
+  29 Mar 2004; Michael Cummings <mcummings@gentoo.org> nikto-1.32.ebuild:
+  version bump
+
+  21 Mar 2004; Michael Boman <mboman@gentoo.org> nikto-1.31.ebuild:
+  QA: Unnecessary definition of S removed. Adding categories to dependencies.
+  See bug 45110 for details.
+
+  14 Mar 2004; Michael Cummings <mcummings@gentoo.org> nikto-1.31.ebuild:
+  swapping depend and rdepend, closing bug 44515
+
+  27 Feb 2004; Michael Cummings <mcummings@gentoo.org> nikto-1.31.ebuild:
+  unmasking after 144 days masked
+
+*nikto-1.31 (06 Oct 2003)
+
+  06 Oct 2003; Michael Cummings <mcummings@gentoo.org> metadata.xml,
+  nikto-1.31.ebuild:
+  Bug 12116; original ebuild submitted by Marlon Jabbur <mjabbur@terra.com.br>;
+  edited to meet requirements of new/current version of nikto.

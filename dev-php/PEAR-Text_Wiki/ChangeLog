@@ -1,0 +1,218 @@
+# ChangeLog for dev-php/PEAR-Text_Wiki
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Text_Wiki/ChangeLog,v 1.54 2015/06/07 09:36:58 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  20 Apr 2015; Brian Evans <grknight@gentoo.org> -PEAR-Text_Wiki-1.2.0.ebuild:
+  Drop old
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org> PEAR-Text_Wiki-1.2.2.ebuild:
+  Stable for alpha/amd64/ia64/ppc/ppc64/sparc/x86, wrt bug #546664
+
+  18 Apr 2015; Jeroen Roovers <jer@gentoo.org> PEAR-Text_Wiki-1.2.2.ebuild:
+  Stable for HPPA (bug #546664).
+
+*PEAR-Text_Wiki-1.2.2 (16 Jan 2015)
+
+  16 Jan 2015; Brian Evans <grknight@gentoo.org> +PEAR-Text_Wiki-1.2.2.ebuild,
+  -PEAR-Text_Wiki-1.2.1.ebuild:
+  Version bump
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  PEAR-Text_Wiki-1.2.0.ebuild, PEAR-Text_Wiki-1.2.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*PEAR-Text_Wiki-1.2.1 (26 Mar 2011)
+
+  26 Mar 2011; <olemarkus@gentoo.org> +PEAR-Text_Wiki-1.2.1.ebuild:
+  Version bump. Bug #360005. Thanks to Denny
+
+  06 Dec 2007; Markus Ullmann <jokey@gentoo.org>
+  -PEAR-Text_Wiki-1.0.3.ebuild, PEAR-Text_Wiki-1.2.0.ebuild:
+  LICENSE fix from project overlay
+
+  02 Dec 2007; Jakub Moc <jakub@gentoo.org>
+  PEAR-Text_Wiki-1.2.0.ebuild:
+  Fix LICENSE
+
+  22 Oct 2007; Raúl Porcel <armin76@gentoo.org>
+  PEAR-Text_Wiki-1.2.0.ebuild:
+  alpha/ia64/sparc stable wrt #192247
+
+  28 Sep 2007; Christoph Mende <angelos@gentoo.org>
+  PEAR-Text_Wiki-1.2.0.ebuild:
+  Stable on amd64 wrt bug #192247
+
+  26 Sep 2007; Brent Baude <ranger@gentoo.org> PEAR-Text_Wiki-1.2.0.ebuild:
+  Marking PEAR-Text_Wiki-1.2.0 ppc64 stable for bug 192247
+
+  25 Sep 2007; Lars Weiler <pylon@gentoo.org> PEAR-Text_Wiki-1.2.0.ebuild:
+  stable ppc, bug #192247
+
+  21 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  PEAR-Text_Wiki-1.2.0.ebuild:
+  x86 stable, bug 192247
+
+  16 Sep 2007; Jeroen Roovers <jer@gentoo.org> PEAR-Text_Wiki-1.2.0.ebuild:
+  Stable for HPPA (bug #192247).
+
+  15 Aug 2007; Jakub Moc <jakub@gentoo.org> +metadata.xml,
+  +PEAR-Text_Wiki-1.2.0.ebuild:
+  Version bump, Bug 158633
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  15 Jul 2006; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove lanius from metadata.xml as he's retired.
+
+  21 May 2006; Luca Longinotti <chtekk@gentoo.org>
+  -PEAR-Text_Wiki-0.20.1.ebuild, -PEAR-Text_Wiki-1.0.0.ebuild:
+  Remove old-style PHP packages.
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-PEAR-Text_Wiki-0.20.1, files/digest-PEAR-Text_Wiki-1.0.0,
+  files/digest-PEAR-Text_Wiki-1.0.3, Manifest:
+  Fixing SHA256 digest, pass four
+
+  18 Mar 2006; Jeroen Roovers <jer@gentoo.org> PEAR-Text_Wiki-1.0.3.ebuild:
+  Stable on hppa (bug #119722).
+
+*PEAR-Text_Wiki-1.1.0 (02 Mar 2006)
+
+  02 Mar 2006; Sebastian Bergmann <sebastian@gentoo.org>
+  +PEAR-Text_Wiki-1.1.0.ebuild:
+  Version bump.
+
+  17 Feb 2006; Aron Griffis <agriffis@gentoo.org>
+  PEAR-Text_Wiki-1.0.3.ebuild:
+  Mark 1.0.3 stable on alpha/ia64. #119722
+
+  28 Jan 2006; Jeroen Roovers <jer@gentoo.org> PEAR-Text_Wiki-1.0.3.ebuild:
+  Marked ~hppa (bug #119722).
+
+  27 Jan 2006; Michael Hanselmann <hansmi@gentoo.org>
+  PEAR-Text_Wiki-1.0.3.ebuild:
+  Stable on ppc.
+
+  23 Jan 2006; Bryan Østergaard <kloeri@gentoo.org
+  PEAR-Text_Wiki-1.0.3.ebuild:
+  ~ia64 keyword, bug 119722.
+
+  22 Jan 2006; Simon Stelling <blubb@gentoo.org>
+  PEAR-Text_Wiki-1.0.3.ebuild:
+  stable on amd64 wrt bug 119722
+
+  22 Jan 2006; Jason Wever <weeve@gentoo.org> PEAR-Text_Wiki-1.0.3.ebuild:
+  Stable on SPARC wrt bug #119722.
+
+  22 Jan 2006; Mark Loeser <halcy0n@gentoo.org> PEAR-Text_Wiki-1.0.3.ebuild:
+  Stable on x86; bug #119722
+
+  21 Jan 2006; Markus Rothe <corsair@gentoo.org>
+  PEAR-Text_Wiki-1.0.3.ebuild:
+  Stable on ppc64; bug #119722
+
+  22 Nov 2005; Markus Rothe <corsair@gentoo.org>
+  PEAR-Text_Wiki-1.0.3.ebuild:
+  Added ~ppc64 keyword; bug #105385
+
+  21 Nov 2005; Joseph Jezak <josejx@gentoo.org> PEAR-Text_Wiki-1.0.3.ebuild:
+  Marked ~ppc for bug #105385.
+
+*PEAR-Text_Wiki-1.0.3 (10 Nov 2005)
+
+  10 Nov 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  -PEAR-Text_Wiki-1.0.1.ebuild, +PEAR-Text_Wiki-1.0.3.ebuild:
+  Version bump.
+
+  24 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-Text_Wiki-1.0.1.ebuild:
+  Add ~amd64.
+
+*PEAR-Text_Wiki-1.0.1 (09 Oct 2005)
+
+  09 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  -PEAR-Text_Wiki-1.0.0-r1.ebuild, +PEAR-Text_Wiki-1.0.1.ebuild:
+  Version bump.
+
+  19 Sep 2005; Jason Wever <weeve@gentoo.org>
+  PEAR-Text_Wiki-1.0.0-r1.ebuild:
+  Added ~sparc keyword.
+
+*PEAR-Text_Wiki-1.0.0-r1 (08 Sep 2005)
+
+  08 Sep 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  +PEAR-Text_Wiki-1.0.0-r1.ebuild:
+  Use new PEAR eclass.
+
+*PEAR-Text_Wiki-1.0.0 (04 Aug 2005)
+
+  04 Aug 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  -PEAR-Text_Wiki-0.8.2.ebuild, +PEAR-Text_Wiki-1.0.0.ebuild:
+  Version bump, remove old version.
+
+  06 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  PEAR-Text_Wiki-0.20.1.ebuild:
+  Stable on sparc
+
+  07 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  PEAR-Text_Wiki-0.20.1.ebuild:
+  Stable on ppc.
+
+  06 Apr 2005; Markus Rothe <corsair@gentoo.org> PEAR-Text_Wiki-0.20.1.ebuild:
+  Stable on ppc64
+
+  27 Mar 2005; Bryan Østergaard <kloeri@gentoo.org>
+  PEAR-Text_Wiki-0.20.1.ebuild:
+  Stable on alpha.
+
+  12 Mar 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-Text_Wiki-0.20.1.ebuild:
+  Stable on x86 and amd64, see bug 84525.
+
+  09 Mar 2005; Markus Rothe <corsair@gentoo.org> PEAR-Text_Wiki-0.20.1.ebuild:
+  Added ~ppc64 to KEYWORDS; bug #84525
+
+  09 Mar 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-Text_Wiki-0.20.1.ebuild:
+  This package was previously bundled with www-apps/horde-pear. Mark unstable
+  for ARCHes that www-apps/horde-pear-r2 is marked stable for.
+
+  29 Nov 2004; Simon Stelling <blubb@gentoo.org>
+  PEAR-Text_Wiki-0.20.1.ebuild:
+  added ~amd64
+
+  23 Oct 2004; Jason Wever <weeve@gentoo.org> PEAR-Text_Wiki-0.8.2.ebuild:
+  Stable on sparc.
+
+  03 Aug 2004; <agriffis@gentoo.org> PEAR-Text_Wiki-0.20.1.ebuild,
+  PEAR-Text_Wiki-0.8.2.ebuild:
+  add ia64 keywords #56295
+
+*PEAR-Text_Wiki-0.20.1 (30 Jul 2004)
+
+  30 Jul 2004; Tal Peer <coredumb@gentoo.org> +PEAR-Text_Wiki-0.20.1.ebuild:
+  Version bump
+
+  09 Jul 2004; Jason Wever <weeve@gentoo.org> PEAR-Text_Wiki-0.8.2.ebuild:
+  Added ~sparc keyword.
+
+  06 Jul 2004; Michael Hanselmann <hansmi@gentoo.org>
+  PEAR-Text_Wiki-0.8.2.ebuild:
+  Unstable on ppc.
+
+  04 Jul 2004; Robin H. Johnson <robbat2@gentoo.org>
+  PEAR-Text_Wiki-0.8.2.ebuild:
+  stable on x86.
+
+  17 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> PEAR-Text_Wiki-0.8.2.ebuild:
+  Added IUSE=
+
+*PEAR-Text_Wiki-0.8.2 (29 Feb 2004)
+
+  29 Feb 2004; Heinrich Wendel <lanius@gentoo.org>
+  PEAR-Text_Wiki-0.8.2.ebuild, metadata.xml:
+  initial import

@@ -1,0 +1,30 @@
+# ChangeLog for games-strategy/xbattleai
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/xbattleai/ChangeLog,v 1.6 2015/03/28 07:08:56 mr_bones_ Exp $
+
+  28 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  xbattleai-1.2.2-r1.ebuild:
+  EAPI=5; update HOMEPAGE (bug #514884)
+
+  25 Mar 2015; Justin Lecher <jlec@gentoo.org> xbattleai-1.2.2-r1.ebuild:
+  Fix tcl/tk slotting
+
+  25 Oct 2009; Markus Meier <maekke@gentoo.org> xbattleai-1.2.2-r1.ebuild:
+  amd64/x86 stable, bug #288891
+
+*xbattleai-1.2.2-r1 (12 Nov 2006)
+
+  12 Nov 2006; Tristan Heaven <nyhm@gentoo.org>
+  +files/xbattleai-1.2.2-sandbox.patch, -xbattleai-1.2.2.ebuild,
+  +xbattleai-1.2.2-r1.ebuild:
+  Install missing files, bug #154812
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-xbattleai-1.2.2, Manifest:
+  Fixing SHA256 digest, pass four
+
+*xbattleai-1.2.2 (22 Mar 2006)
+
+  22 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org> +metadata.xml,
+  +xbattleai-1.2.2.ebuild:
+  Initial import.  Ebuild by Mark Miller <mark@mirell.org>.  Closing bug #72886.

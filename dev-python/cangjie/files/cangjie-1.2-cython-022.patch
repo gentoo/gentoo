@@ -1,0 +1,25 @@
+diff --git a/Makefile.am b/Makefile.am
+index 6762b97..c0cc699 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -47,19 +47,19 @@ pkgpyexecdir = $(pyexecdir)/cangjie
+ 
+ src/cangjie/_core.c: src/cangjie/_core.pyx src/cangjie/_core.pxd
+ 	$(MKDIR_P) src/cangjie
+-	$(CYTHON) -3 --verbose -o $@ $(srcdir)/src/cangjie/_core.pyx
++	$(CYTHON) -3 --verbose -o $@ -I $(srcdir)/src/cangjie $(srcdir)/src/cangjie/_core.pyx
+ 
+ src/cangjie/errors.c: src/cangjie/errors.pyx src/cangjie/_core.pxd
+ 	$(MKDIR_P) src/cangjie
+-	$(CYTHON) -3 --verbose -o $@ $(srcdir)/src/cangjie/errors.pyx
++	$(CYTHON) -3 --verbose -o $@ -I $(srcdir)/src/cangjie $(srcdir)/src/cangjie/errors.pyx
+ 
+ src/cangjie/filters.c: src/cangjie/filters.pyx src/cangjie/_core.pxd
+ 	$(MKDIR_P) src/cangjie
+-	$(CYTHON) -3 --verbose -o $@ $(srcdir)/src/cangjie/filters.pyx
++	$(CYTHON) -3 --verbose -o $@ -I $(srcdir)/src/cangjie $(srcdir)/src/cangjie/filters.pyx
+ 
+ src/cangjie/versions.c: src/cangjie/versions.pyx src/cangjie/_core.pxd
+ 	$(MKDIR_P) src/cangjie
+-	$(CYTHON) -3 --verbose -o $@ $(srcdir)/src/cangjie/versions.pyx
++	$(CYTHON) -3 --verbose -o $@ -I $(srcdir)/src/cangjie $(srcdir)/src/cangjie/versions.pyx

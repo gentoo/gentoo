@@ -1,0 +1,379 @@
+# ChangeLog for app-backup/dar
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-backup/dar/ChangeLog,v 1.59 2015/06/09 09:02:37 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+*dar-2.4.17 (08 Feb 2015)
+
+  08 Feb 2015; Richard Freeman <rich0@gentoo.org> +dar-2.4.17.ebuild:
+  bump - 516094
+
+*dar-2.4.13 (26 Apr 2014)
+
+  26 Apr 2014; Richard Freeman <rich0@gentoo.org> +dar-2.4.13.ebuild:
+  bump - 508688
+
+  01 Mar 2014; Michał Górny <mgorny@gentoo.org> dar-2.4.10.ebuild,
+  dar-2.4.11.ebuild, dar-2.4.12.ebuild, dar-2.4.2.ebuild, dar-2.4.9.ebuild:
+  Update libgcrypt dep to use slot :0.
+
+*dar-2.4.12 (24 Jan 2014)
+
+  24 Jan 2014; Richard Freeman <rich0@gentoo.org> +dar-2.4.12.ebuild:
+  bump - 499108
+
+*dar-2.4.11 (12 Nov 2013)
+
+  12 Nov 2013; Richard Freeman <rich0@gentoo.org> +dar-2.4.11.ebuild:
+  bump
+
+  15 Apr 2013; Richard Freeman <rich0@gentoo.org> dar-2.4.10.ebuild:
+  Add slot operator deps for latest version.
+
+*dar-2.4.10 (11 Mar 2013)
+
+  11 Mar 2013; Richard Freeman <rich0@gentoo.org> +dar-2.4.10.ebuild:
+  bump - thanks to Joost Roeleveld for discovering/testing
+
+  09 Mar 2013; Agostino Sarubbo <ago@gentoo.org> dar-2.4.9.ebuild:
+  Stable for sparc, wrt bug #460176
+
+  09 Mar 2013; Agostino Sarubbo <ago@gentoo.org> dar-2.4.9.ebuild:
+  Stable for x86, wrt bug #460176
+
+  09 Mar 2013; Agostino Sarubbo <ago@gentoo.org> dar-2.4.9.ebuild:
+  Stable for ppc, wrt bug #460176
+
+  03 Mar 2013; Richard Freeman <rich0@gentoo.org> dar-2.4.9.ebuild:
+  amd64 stable
+
+*dar-2.4.9 (03 Feb 2013)
+
+  03 Feb 2013; Richard Freeman <rich0@gentoo.org> +dar-2.4.9.ebuild:
+  Bump, and correct static support - 411733 and 372761.
+
+  03 Feb 2013; Richard Freeman <rich0@gentoo.org> metadata.xml:
+  Taking over maintenance.
+
+  03 Feb 2013; Pacho Ramos <pacho@gentoo.org> -dar-2.3.11.ebuild,
+  -dar-2.3.9.ebuild, -dar-2.4.0.ebuild, -files/dar-2.4.0-gcc.patch,
+  metadata.xml:
+  Cleanup due #22900
+
+  08 Feb 2012; Fabian Groffen <grobian@gentoo.org> dar-2.4.2.ebuild:
+  Fixed for Prefix, marked ~amd64-linux, thanks Massimo Burcheri in bug #399809
+
+*dar-2.4.2 (04 Dec 2011)
+
+  04 Dec 2011; MATSUU Takuto <matsuu@gentoo.org> +dar-2.4.2.ebuild:
+  Version bumped, bug #387501.
+
+*dar-2.4.0 (07 Jun 2011)
+
+  07 Jun 2011; MATSUU Takuto <matsuu@gentoo.org> dar-2.3.11.ebuild,
+  +dar-2.4.0.ebuild, +files/dar-2.4.0-gcc.patch, metadata.xml:
+  Version bumped. Fixed static-libs handling. Added lzo and gcrypt USE flags.
+
+*dar-2.3.11 (11 May 2011)
+
+  11 May 2011; MATSUU Takuto <matsuu@gentoo.org> +dar-2.3.11.ebuild:
+  Version bumped, bug #297429 and #3199845. Added static and static-libs USE
+  flags, bug #273337.
+
+*dar-2.3.9 (22 May 2009)
+
+  22 May 2009; MATSUU Takuto <matsuu@gentoo.org> +dar-2.3.9.ebuild:
+  Version bumped.
+
+  01 Jan 2009; MATSUU Takuto <matsuu@gentoo.org> -dar-2.3.3.ebuild,
+  -dar-2.3.7-r1.ebuild:
+  Removed old versions.
+
+  08 Nov 2008; Raúl Porcel <armin76@gentoo.org> dar-2.3.8.ebuild:
+  sparc stable wrt #243078
+
+  25 Oct 2008; nixnut <nixnut@gentoo.org> dar-2.3.8.ebuild:
+  Stable on ppc wrt bug 243078
+
+  23 Oct 2008; Markus Meier <maekke@gentoo.org> dar-2.3.8.ebuild:
+  amd64/x86 stable, bug #243078
+
+  01 Aug 2008; nixnut <nixnut@gentoo.org> dar-2.3.7-r1.ebuild:
+  Stable on ppc wrt bug 225839
+
+  23 Jul 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  05 Jul 2008; Richard Freeman <rich0@gentoo.org> dar-2.3.7-r1.ebuild:
+  amd64 stable - 225839
+
+*dar-2.3.8 (20 Jun 2008)
+
+  20 Jun 2008; MATSUU Takuto <matsuu@gentoo.org> -dar-2.3.7.ebuild,
+  +dar-2.3.8.ebuild:
+  Version bumped.
+
+  17 Jun 2008; Christian Faulhammer <opfer@gentoo.org> dar-2.3.7-r1.ebuild:
+  stable x86, bug 225839
+
+  16 Jun 2008; Friedrich Oslage <bluebird@gentoo.org> dar-2.3.7-r1.ebuild:
+  stable on sparc, bug #225839
+
+*dar-2.3.7-r1 (17 May 2008)
+
+  17 May 2008; MATSUU Takuto <matsuu@gentoo.org> -dar-2.2.6.ebuild,
+  -dar-2.3.4.ebuild, -dar-2.3.5.ebuild, -dar-2.3.6.ebuild,
+  +dar-2.3.7-r1.ebuild:
+  Fixed dependency, bug #221639.
+
+*dar-2.3.7 (07 Mar 2008)
+
+  07 Mar 2008; MATSUU Takuto <matsuu@gentoo.org> +dar-2.3.7.ebuild:
+  Version bumped.
+
+*dar-2.3.6 (15 Oct 2007)
+
+  15 Oct 2007; <matsuu@gentoo.org> +dar-2.3.6.ebuild:
+  Version bumped, bug #195319.
+
+*dar-2.3.5 (12 Sep 2007)
+
+  12 Sep 2007; MATSUU Takuto <matsuu@gentoo.org> +dar-2.3.5.ebuild:
+  Version bumped, bug #192336.
+
+*dar-2.3.4 (12 Jul 2007)
+
+  12 Jul 2007; MATSUU Takuto <matsuu@gentoo.org> -dar-2.3.2-r1.ebuild,
+  +dar-2.3.4.ebuild:
+  Version bumped.
+  Removed old version.
+
+  24 May 2007; Lars Weiler <pylon@gentoo.org> dar-2.3.3.ebuild:
+  Stable on ppc; bug #170894.
+
+  23 May 2007; Christian Faulhammer <opfer@gentoo.org> dar-2.3.3.ebuild:
+  x86/amd64 stable, bug 170894
+
+  22 May 2007; Gustavo Zacarias <gustavoz@gentoo.org> dar-2.3.3.ebuild:
+  Stable on sparc wrt #170894
+
+  13 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add herd
+
+*dar-2.3.3 (26 Feb 2007)
+
+  26 Feb 2007; MATSUU Takuto <matsuu@gentoo.org> +dar-2.3.3.ebuild:
+  Version bumped.
+
+*dar-2.3.2-r1 (16 Feb 2007)
+
+  16 Feb 2007; MATSUU Takuto <matsuu@gentoo.org> -dar-2.3.2.ebuild,
+  +dar-2.3.2-r1.ebuild:
+  Fixed to work with app-backup/kdar-3*.
+
+*dar-2.3.2 (03 Nov 2006)
+
+  03 Nov 2006; MATSUU Takuto <matsuu@gentoo.org> dar-2.2.6.ebuild,
+  dar-2.3.1.ebuild, +dar-2.3.2.ebuild:
+  Version bumped.
+  Added pkg_setup, bug #147764.
+
+  15 Sep 2006; MATSUU Takuto <matsuu@gentoo.org> dar-2.3.1.ebuild:
+  Removed examples USE flag, #143116.
+
+*dar-2.3.1 (05 Aug 2006)
+
+  05 Aug 2006; MATSUU Takuto <matsuu@gentoo.org> -dar-2.3.0.ebuild,
+  +dar-2.3.1.ebuild:
+  Version bumped, Bug 139161.
+  Slotted for kdar, Bug 130062.
+  Removed old versions.
+
+  26 Apr 2006; Gustavo Zacarias <gustavoz@gentoo.org> dar-2.2.6.ebuild:
+  Stable on sparc
+
+  16 Apr 2006; Michael Hanselmann <hansmi@gentoo.org> dar-2.2.6.ebuild:
+  Stable on ppc.
+
+  14 Apr 2006; MATSUU Takuto <matsuu@gentoo.org> dar-2.2.6.ebuild:
+  Mark stable on x86 and amd64.
+
+*dar-2.3.0 (14 Apr 2006)
+
+  14 Apr 2006; MATSUU Takuto <matsuu@gentoo.org> +dar-2.3.0.ebuild:
+  Version bumped, Bug 124255.
+  Removed stati USE flag.
+
+*dar-2.2.6 (11 Feb 2006)
+
+  11 Feb 2006; MATSUU Takuto <matsuu@gentoo.org> +dar-2.2.6.ebuild:
+  Version bumped.
+  Added some USE flags.
+  Clean up ebuild.
+
+*dar-2.2.5 (24 Dec 2005)
+
+  24 Dec 2005; MATSUU Takuto <matsuu@gentoo.org> +dar-2.2.5.ebuild:
+  Version bumped, Bug 115466.
+
+*dar-2.2.4 (26 Nov 2005)
+
+  26 Nov 2005; MATSUU Takuto <matsuu@gentoo.org> +dar-2.2.4.ebuild:
+  Version bumped, Bug 113282
+
+*dar-2.2.3 (15 Oct 2005)
+
+  15 Oct 2005; MATSUU Takuto <matsuu@gentoo.org> +dar-2.2.3.ebuild:
+  Version bumped. Bug 108972.
+
+  03 Sep 2005; MATSUU Takuto <matsuu@gentoo.org> dar-2.2.2.ebuild:
+  filter-flags -fomit-frame-pointer. Bug 103741.
+
+  15 Aug 2005; MATSUU Takuto <matsuu@gentoo.org> dar-2.2.2.ebuild:
+  Fixed acl USE flag problem, Bug 102438.
+
+  01 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> dar-2.2.2.ebuild:
+  Stable on sparc wrt #100683
+
+  30 Jul 2005; Tobias Scherbaum <dertobi123@gentoo.org> dar-2.2.2.ebuild:
+  ppc stable, #100683
+
+  28 Jul 2005; Simon Stelling <blubb@gentoo.org> dar-2.2.2.ebuild:
+  stable on amd64
+
+  25 Jul 2005; MATSUU Takuto <matsuu@gentoo.org> dar-2.2.2.ebuild:
+  Stable on x86.
+
+  04 Jul 2005; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +dar-2.1.5-r1.ebuild, +dar-2.1.6.ebuild, +dar-2.2.0.ebuild,
+  +dar-2.2.1.ebuild, +dar-2.2.2.ebuild:
+  Moved from app-arch/dar to app-backup/dar.
+
+*dar-2.2.2 (12 May 2005)
+
+  12 May 2005; MATSUU Takuto <matsuu@gentoo.org> +dar-2.2.2.ebuild:
+  Version bumped.
+
+  29 Apr 2005; MATSUU Takuto <matsuu@gentoo.org> dar-2.1.5-r1.ebuild,
+  dar-2.1.6.ebuild, dar-2.2.0.ebuild, dar-2.2.1.ebuild:
+  Added '>=sys-devel/autoconf-2.59' to DEPEND, Bug 90620.
+
+  23 Mar 2005; MATSUU Takuto <matsuu@gentoo.org> -dar-2.1.5.ebuild,
+  dar-2.1.6.ebuild, dar-2.2.1.ebuild:
+  Marked 2.1.6 as stable.
+  Added sys-devel/gettext to DEPEND.
+  Removed old versions.
+
+*dar-2.2.1 (05 Mar 2005)
+
+  05 Mar 2005; MATSUU Takuto <matsuu@gentoo.org> +dar-2.2.1.ebuild:
+  Version bumped. Added some USE flags. Bug 82796
+
+  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> dar-2.1.5-r1.ebuild,
+  dar-2.1.5.ebuild, dar-2.1.6.ebuild, dar-2.2.0.ebuild:
+  Fix dep mess made by epkgmove
+
+  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> dar-2.1.5.ebuild:
+  Dependency update: sys-apps/at -> sys-process/at.
+
+  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> dar-2.2.0.ebuild:
+  Dependency update: sys-apps/at -> sys-process/at.
+
+  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> dar-2.1.6.ebuild:
+  Dependency update: sys-apps/at -> sys-process/at.
+
+  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> dar-2.1.5-r1.ebuild:
+  Dependency update: sys-apps/at -> sys-process/at.
+
+*dar-2.2.0 (01 Feb 2005)
+
+  01 Feb 2005; MATSUU Takuto <matsuu@gentoo.org> +dar-2.2.0.ebuild:
+  Version bumped. Bug 80136
+
+*dar-2.1.6 (30 Jan 2005)
+
+  30 Jan 2005; MATSUU Takuto <matsuu@gentoo.org> dar-2.1.5-r1.ebuild,
+  +dar-2.1.6.ebuild:
+  Version bumped.
+
+*dar-2.1.5-r1 (30 Dec 2004)
+
+  30 Dec 2004; MATSUU Takuto <matsuu@gentoo.org> +dar-2.1.5-r1.ebuild:
+  Fixed compile problem. Bug 75047.
+
+  08 Oct 2004; MATSUU Takuto <matsuu@gentoo.org> -dar-2.1.2-r1.ebuild,
+  -dar-2.1.3.ebuild, -dar-2.1.4.ebuild, dar-2.1.5.ebuild:
+  Marked as stable.
+  Removed old versions.
+
+*dar-2.1.5 (19 Sep 2004)
+
+  19 Sep 2004; MATSUU Takuto <matsuu@gentoo.org> +dar-2.1.5.ebuild:
+  Version bumped. Bugs #64533.
+
+*dar-2.1.4 (19 Jul 2004)
+
+  19 Jul 2004; <matsuu@gentoo.org> +dar-2.1.4.ebuild:
+  Version bumped.
+
+  15 Jul 2004; Travis Tilley <lv@gentoo.org> dar-2.1.3.ebuild:
+  add -fno-unit-at-a-time if using gcc 3.4. fixes bug 51838
+
+*dar-2.1.3 (29 Jun 2004)
+
+  29 Jun 2004; MATSUU Takuto <matsuu@gentoo.org> +dar-2.1.3.ebuild:
+  Version bumped.
+  Added filter-flags. Bugs #55243.
+  Fixed amd64 build issue.
+
+*dar-2.1.2-r1 (23 Apr 2004)
+
+  23 Apr 2004; MATSUU Takuto <matsuu@gentoo.org> -dar-2.1.0-r1.ebuild,
+  dar-2.1.2-r1.ebuild:
+  Added --disable-upx. Bug 46745.
+
+  14 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> dar-2.1.0-r1.ebuild:
+  Inherit flag-o-matic for replace-flags.
+
+*dar-2.1.2 (02 Apr 2004)
+
+  02 Apr 2004; MATSUU Takuto <matsuu@gentoo.org> dar-2.1.0.ebuild,
+  dar-2.1.2.ebuild:
+  Version bumped. Bug#46428.
+
+  21 Feb 2004; <matsuu@gentoo.org> dar-2.1.0.ebuild:
+  Removed dar-2.1.0.ebuild.
+
+*dar-2.1.0-r1 (14 Feb 2004)
+
+  14 Feb 2004; MATSUU Takuto <matsuu@gentoo.org> dar-2.1.0-r1.ebuild:
+  Added replace-flags -O[3-9] -O2.
+
+*dar-2.0.4-r1 (11 Feb 2004)
+*dar-2.1.0 (11 Feb 2004)
+
+  11 Feb 2004; MATSUU Takuto <matsuu@gentoo.org> dar-2.0.0.ebuild,
+  dar-2.0.4-r1.ebuild, dar-2.0.4.ebuild, dar-2.1.0.ebuild:
+  Version bumped.
+  Added acl to IUSE.
+  Removed old versions.
+
+*dar-2.0.4 (30 Jan 2004)
+
+  30 Jan 2004; MATSUU Takuto <matsuu@gentoo.org> dar-2.0.4.ebuild:
+  Version bumped.
+
+  04 Jan 2004; Chuck Short <zul@gentoo.org> dar-2.0.0.ebuild:
+  Added large file support so it doesnt bail on 2GB files.
+  Closes #36404.
+
+*dar-2.0.0 (06 Nov 2003)
+
+  08 Nov 2003; MATSUU Takuto <matsuu@gentoo.org> dar-2.0.0.ebuild:
+  Add ~sparc and ~ppc to KEYWORDS.
+  Add sys-apps/bzip2 to DEPEND.
+
+  06 Nov 2003; MATSUU Takuto <matsuu@gentoo.org> dar-2.0.0.ebuild:
+  Initial import. bugs #9785.

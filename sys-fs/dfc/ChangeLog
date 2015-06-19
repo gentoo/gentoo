@@ -1,0 +1,27 @@
+# ChangeLog for sys-fs/dfc
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/dfc/ChangeLog,v 1.5 2015/05/08 07:22:40 dlan Exp $
+
+*dfc-3.0.5-r1 (08 May 2015)
+
+  08 May 2015; Yixun Lan <dlan@gentoo.org> -dfc-3.0.5.ebuild,
+  +dfc-3.0.5-r1.ebuild:
+  fix missing sys-devel/gettext in DEPEND, bug 547682, thanks Nikoli
+
+*dfc-3.0.5 (23 Apr 2015)
+
+  23 Apr 2015; Yixun Lan <dlan@gentoo.org> -dfc-3.0.0.ebuild,
+  +dfc-3.0.5.ebuild, metadata.xml:
+  version bump & drop old, bug 530458, add myself as maintainer
+
+  21 Apr 2015; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due to #398377
+
+  29 Dec 2013; Markus Meier <maekke@gentoo.org> dfc-3.0.0.ebuild:
+  add ~arm, bug #491722
+
+*dfc-3.0.0 (01 Jun 2012)
+
+  01 Jun 2012; Corentin Chary <iksaif@gentoo.org> +dfc-3.0.0.ebuild,
+  +metadata.xml:
+  New ebuild for dfc. Original ebuild from Laurent Bachelier.

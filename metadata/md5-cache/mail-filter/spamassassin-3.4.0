@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare test unpack
+DEPEND=>=dev-lang/perl-5.8.8-r8 virtual/perl-MIME-Base64 >=virtual/perl-Pod-Parser-1.510.0-r2 virtual/perl-Storable virtual/perl-Time-HiRes >=dev-perl/HTML-Parser-3.43 >=dev-perl/Mail-DKIM-0.37 >=dev-perl/Net-DNS-0.53 dev-perl/Digest-SHA1 dev-perl/libwww-perl >=virtual/perl-Archive-Tar-1.23 app-crypt/gnupg >=virtual/perl-IO-Zlib-1.04 >=dev-util/re2c-0.12.0 dev-perl/Mail-SPF >=dev-perl/NetAddr-IP-4.0.1 dev-perl/Geo-IP dev-perl/Encode-Detect dev-perl/Net-Patricia ssl? ( dev-perl/IO-Socket-SSL dev-libs/openssl ) berkdb? ( virtual/perl-DB_File ) ldap? ( dev-perl/perl-ldap ) mysql? ( dev-perl/DBI dev-perl/DBD-mysql ) postgres? ( dev-perl/DBI dev-perl/DBD-Pg ) sqlite? ( dev-perl/DBI dev-perl/DBD-SQLite ) ipv6? ( || ( dev-perl/IO-Socket-INET6 virtual/perl-IO-Socket-IP ) ) dev-lang/perl:=[-build(-)] virtual/pkgconfig
+DESCRIPTION=SpamAssassin is an extensible email filter which is used to identify spam
+EAPI=5
+HOMEPAGE=http://spamassassin.apache.org/
+IUSE=+berkdb qmail ssl doc ldap mysql postgres sqlite ipv6
+KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos
+LICENSE=Apache-2.0 GPL-2
+RDEPEND=>=dev-lang/perl-5.8.8-r8 virtual/perl-MIME-Base64 >=virtual/perl-Pod-Parser-1.510.0-r2 virtual/perl-Storable virtual/perl-Time-HiRes >=dev-perl/HTML-Parser-3.43 >=dev-perl/Mail-DKIM-0.37 >=dev-perl/Net-DNS-0.53 dev-perl/Digest-SHA1 dev-perl/libwww-perl >=virtual/perl-Archive-Tar-1.23 app-crypt/gnupg >=virtual/perl-IO-Zlib-1.04 >=dev-util/re2c-0.12.0 dev-perl/Mail-SPF >=dev-perl/NetAddr-IP-4.0.1 dev-perl/Geo-IP dev-perl/Encode-Detect dev-perl/Net-Patricia ssl? ( dev-perl/IO-Socket-SSL dev-libs/openssl ) berkdb? ( virtual/perl-DB_File ) ldap? ( dev-perl/perl-ldap ) mysql? ( dev-perl/DBI dev-perl/DBD-mysql ) postgres? ( dev-perl/DBI dev-perl/DBD-Pg ) sqlite? ( dev-perl/DBI dev-perl/DBD-SQLite ) ipv6? ( || ( dev-perl/IO-Socket-INET6 virtual/perl-IO-Socket-IP ) ) dev-lang/perl:=[-build(-)]
+REQUIRED_USE=|| ( berkdb mysql postgres sqlite )
+SLOT=0
+SRC_URI=mirror://apache/spamassassin/source/Mail-SpamAssassin-3.4.0.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	readme.gentoo	106edea5533517715013de909a333abd	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=b8485243b818474feb00addba17ce070

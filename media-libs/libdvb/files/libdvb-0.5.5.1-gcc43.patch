@@ -1,0 +1,20 @@
+--- libdvb-0.5.5.1.orig/sample_progs/cam_menu.hh    2008-01-28 10:23:53.000000000 +0100
++++ libdvb-0.5.5.1/sample_progs/cam_menu.hh         2008-01-28 10:22:55.000000000 +0100
+@@ -2,6 +2,7 @@
+  * cam_menu.hh
+  *
+  */
++#include <cstring>
+ #include <sys/types.h>
+ #include <sys/socket.h>
+
+--- libdvb-0.5.5.1.orig/libdvbmpeg/ringbuffy.c	2007-03-16 17:53:31.000000000 +0100
++++ libdvb-0.5.5.1/libdvbmpeg/ringbuffy.c	2007-03-16 17:54:10.000000000 +0100
+@@ -19,6 +19,7 @@
+ */
+ 
+ #include "ringbuffy.h"
++#include <string.h>
+ 
+ int ring_init (ringbuffy *rbuf, int size)
+ {

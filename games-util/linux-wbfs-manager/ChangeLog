@@ -1,0 +1,51 @@
+# ChangeLog for games-util/linux-wbfs-manager
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-util/linux-wbfs-manager/ChangeLog,v 1.10 2015/03/12 18:36:37 mr_bones_ Exp $
+
+  12 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -linux-wbfs-manager-0.1.11.ebuild:
+  old
+
+  25 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  linux-wbfs-manager-0.1.12.ebuild:
+  Stable for x86, wrt bug #540248
+
+  19 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  linux-wbfs-manager-0.1.12.ebuild:
+  Stable for amd64, wrt bug #540248
+
+*linux-wbfs-manager-0.1.12 (17 Feb 2013)
+
+  17 Feb 2013; Julian Ospald <hasufell@gentoo.org>
+  +linux-wbfs-manager-0.1.12.ebuild, linux-wbfs-manager-9999.ebuild:
+  version bump wrt #399421, update live-ebuild
+
+  23 Jan 2010; Brent Baude <ranger@gentoo.org>
+  linux-wbfs-manager-0.1.11.ebuild:
+  keyworded ~arch for ppc, bug 296690
+
+  29 Dec 2009; Markus Meier <maekke@gentoo.org>
+  linux-wbfs-manager-0.1.11.ebuild:
+  amd64/x86 stable, bug #296690
+
+  11 Nov 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  linux-wbfs-manager-0.1.11.ebuild:
+  sync with live ebuild
+
+*linux-wbfs-manager-9999 (11 Nov 2009)
+
+  11 Nov 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +linux-wbfs-manager-9999.ebuild:
+  add live svn ebuild submitted by Jan Vansteenkiste via bug #284903
+
+*linux-wbfs-manager-0.1.11 (05 Sep 2009)
+
+  05 Sep 2009; Mike Frysinger <vapier@gentoo.org>
+  +linux-wbfs-manager-0.1.11.ebuild:
+  Version bump.
+
+*linux-wbfs-manager-0.1.10 (01 Sep 2009)
+
+  01 Sep 2009; Mike Frysinger <vapier@gentoo.org>
+  +linux-wbfs-manager-0.1.10.ebuild, +metadata.xml:
+  Initial version by me.

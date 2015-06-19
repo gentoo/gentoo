@@ -1,0 +1,38 @@
+# ChangeLog for games-rpg/freedink-data
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/freedink-data/ChangeLog,v 1.8 2015/03/12 19:34:38 mr_bones_ Exp $
+
+  12 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -freedink-data-1.08.20121209.ebuild:
+  old
+
+  10 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  freedink-data-1.08.20140901.ebuild:
+  Stable for x86, wrt bug #539386
+
+  09 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  freedink-data-1.08.20140901.ebuild:
+  Stable for amd64, wrt bug #539386
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+*freedink-data-1.08.20140901 (12 Nov 2014)
+
+  12 Nov 2014; Julian Ospald <hasufell@gentoo.org>
+  +freedink-data-1.08.20140901.ebuild:
+  version bump
+
+  28 Aug 2013; Agostino Sarubbo <ago@gentoo.org>
+  freedink-data-1.08.20121209.ebuild:
+  Stable for x86, wrt bug #480800
+
+  13 Aug 2013; Agostino Sarubbo <ago@gentoo.org>
+  freedink-data-1.08.20121209.ebuild:
+  Stable for amd64, wrt bug #480800
+
+*freedink-data-1.08.20121209 (11 Jul 2013)
+
+  11 Jul 2013; Julian Ospald <hasufell@gentoo.org>
+  +freedink-data-1.08.20121209.ebuild, +metadata.xml:
+  initial import wrt #238220

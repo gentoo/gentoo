@@ -1,0 +1,11 @@
+--- configure.ac.old	2012-11-15 09:35:24.682199511 +0100
++++ configure.ac	2012-11-15 09:36:02.367839076 +0100
+@@ -2,7 +2,7 @@
+ AC_PREREQ([2.63])
+ AC_INIT([ClanBomber], [2.1.1], [rsl@members.fsf.org])
+ #AM_INIT_AUTOMAKE([-Wall -Werror foreign])#foreign is for NEWS COPYING ETC
+-AM_INIT_AUTOMAKE([dist-lzma -Wall -Werror])
++AM_INIT_AUTOMAKE([-Wall])
+ 
+ 
+ #CXXFLAGS="-O6 -g3"

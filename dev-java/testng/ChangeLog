@@ -1,0 +1,30 @@
+# ChangeLog for dev-java/testng
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/testng/ChangeLog,v 1.4 2014/08/10 20:25:44 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> testng-6.8-r2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*testng-6.8-r2 (25 Nov 2013)
+
+  25 Nov 2013; Johann Schmitz <ercpe@gentoo.org> +testng-6.8-r2.ebuild,
+  -testng-6.8-r1.ebuild:
+  Added ~x86 to testng and added the missing dependency to app-arch/zip
+
+*testng-6.8-r1 (24 Oct 2013)
+
+  24 Oct 2013; Tom Wijsman <TomWij@gentoo.org> +testng-6.8-r1.ebuild,
+  -testng-6.8.ebuild:
+  Revision bump, changed snakeyaml dependency to use SLOT 1.9.
+
+*testng-6.8 (12 Oct 2013)
+
+  12 Oct 2013; Tom Wijsman <TomWij@gentoo.org> +files/build-tests.xml,
+  +files/testng-6.8-build-tests.xml,
+  +files/testng-6.8-remove-ivy-retrieve.patch,
+  +files/testng-6.8-remove-jar-bundling.patch, +metadata.xml,
+  +testng-6.8.ebuild:
+  New ebuild for dev-java/testng, testing framework introducing some new
+  functionalities that make it more powerful and easier to use; merged work from
+  dmol and Pariksheet Nanda from bug #146226 as well as with the ebuild by ercpe
+  from lh-overlay, fixes bug #146226 and bug #373561.

@@ -1,0 +1,88 @@
+# ChangeLog for sys-apps/darwin-miscutils
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/darwin-miscutils/ChangeLog,v 1.10 2012/08/04 09:39:29 grobian Exp $
+
+*darwin-miscutils-10 (04 Aug 2012)
+
+  04 Aug 2012; Fabian Groffen <grobian@gentoo.org> +darwin-miscutils-10.ebuild:
+  Version bump to versions from 10.8 + devtools and md from 10.7.4.  This ebuild
+  no longer provides alias, but adds md for 10.8 users.
+
+*darwin-miscutils-9 (03 Sep 2011)
+
+  03 Sep 2011; Fabian Groffen <grobian@gentoo.org> +darwin-miscutils-9.ebuild:
+  Bump to Lion version 10.7
+
+  26 Jun 2011; Fabian Groffen <grobian@gentoo.org> darwin-miscutils-8.ebuild:
+  (Try to) resolve naming conflict on OSX Lion, bug #372751
+
+*darwin-miscutils-8 (02 Apr 2011)
+
+  02 Apr 2011; Fabian Groffen <grobian@gentoo.org> +darwin-miscutils-8.ebuild:
+  Bump to Snow Leopard version 10.6.3
+
+  05 Mar 2010; Fabian Groffen <grobian@gentoo.org>
+  darwin-miscutils-4-r1.ebuild, darwin-miscutils-5-r1.ebuild,
+  darwin-miscutils-6-r1.ebuild, darwin-miscutils-7.ebuild:
+  Convert to EAPI=3
+
+  05 Sep 2009; Fabian Groffen <grobian@gentoo.org>
+  darwin-miscutils-7.ebuild:
+  Fix bug #283752 by using Apple's own dirty tricks
+
+*darwin-miscutils-7 (04 Sep 2009)
+
+  04 Sep 2009; Fabian Groffen <grobian@gentoo.org>
+  darwin-miscutils-4-r1.ebuild, darwin-miscutils-5-r1.ebuild,
+  darwin-miscutils-6-r1.ebuild, +darwin-miscutils-7.ebuild:
+  Bump to Snow Lepard versions, drop installation of 'su', as it isn't of
+  much use without setuid. Closes bug #283519
+
+*darwin-miscutils-6-r1 (24 Jun 2009)
+
+  24 Jun 2009; Fabian Groffen <grobian@gentoo.org>
+  -darwin-miscutils-6.ebuild, +darwin-miscutils-6-r1.ebuild,
+  +files/darwin-miscutils-6-w64.patch:
+  Bump, fix Bus Error on 64-bits arches.
+
+*darwin-miscutils-6 (19 Jun 2008)
+
+  19 Jun 2008; Fabian Groffen <grobian@gentoo.org>
+  +darwin-miscutils-6.ebuild:
+  Version bump based on the sources of OSX 10.5.3
+
+*darwin-miscutils-5-r1 (02 Feb 2008)
+*darwin-miscutils-4-r1 (02 Feb 2008)
+
+  02 Feb 2008; Fabian Groffen <grobian@gentoo.org>
+  -darwin-miscutils-4.ebuild, +darwin-miscutils-4-r1.ebuild,
+  -darwin-miscutils-5.ebuild, +darwin-miscutils-5-r1.ebuild:
+  No longer install rpcgen, since this tool is tightly associated to the OS it
+  runs on. In short, the Leopard version breaks on Tiger and vice versa.
+
+*darwin-miscutils-4 (14 Oct 2007)
+
+  14 Oct 2007; Fabian Groffen <grobian@gentoo.org>
+  -darwin-miscutils-3.ebuild, +darwin-miscutils-4.ebuild:
+  Add some tools of developer_cmds, to have rpcgen and unifdef
+
+*darwin-miscutils-3 (17 Aug 2007)
+
+  17 Aug 2007; Elias Pipping <pipping@gentoo.org>
+  -darwin-miscutils-2.ebuild, +darwin-miscutils-3.ebuild:
+  update to use latest version of shell_cmds, update header, fix typo
+
+*darwin-miscutils-2 (15 Dec 2006)
+
+  15 Dec 2006; Fabian Groffen <grobian@gentoo.org>
+  +darwin-miscutils-2.ebuild, -darwin-miscutils-18.ebuild:
+  New version with extra utilities from shell_cmds: alias apply getopt
+  hostname jot kill killall lastcomm renice script shlock su time w
+  whereis.  Changed version scheme to be Gentoo specific, as this package
+  is a selection of programs missing in coreutils. findutils, etc.
+
+  9 Nov 2006; Fabian Groffen <grobian@gentoo.org> :
+
+  Initial import of darwin-miscutils, a package with the tools found in
+  Darwin: cal, calendar, leave, lock, units.
+  

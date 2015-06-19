@@ -1,0 +1,120 @@
+# ChangeLog for media-sound/sooperlooper
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/sooperlooper/ChangeLog,v 1.22 2012/09/07 22:26:07 radhermit Exp $
+
+  07 Sep 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> sooperlooper-1.6.17.ebuild,
+  sooperlooper-1.6.18.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  24 Oct 2011; Tim Harder <radhermit@gentoo.org>
+  -files/sooperlooper-1.6.10-asneeded.patch, -sooperlooper-1.6.13_p2.ebuild,
+  -files/sooperlooper-1.6.13_p2-const.patch, -sooperlooper-1.6.14.ebuild:
+  Remove old.
+
+*sooperlooper-1.6.18 (24 Oct 2011)
+
+  24 Oct 2011; Tim Harder <radhermit@gentoo.org> +sooperlooper-1.6.18.ebuild:
+  Version bump.
+
+*sooperlooper-1.6.17 (09 Jun 2011)
+
+  09 Jun 2011; Tim Harder <radhermit@gentoo.org> +sooperlooper-1.6.17.ebuild:
+  Version bump. Update to EAPI 4 and make sure CXXFLAGS are respected
+  everywhere.
+
+*sooperlooper-1.6.14 (08 Jan 2010)
+
+  08 Jan 2010; Patrick Lauer <patrick@gentoo.org>
+  +sooperlooper-1.6.14.ebuild:
+  Bump for #299814
+
+*sooperlooper-1.6.13_p2 (19 Jul 2009)
+
+  19 Jul 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +sooperlooper-1.6.13_p2.ebuild:
+  Version bump.
+
+*sooperlooper-1.6.10 (02 Sep 2008)
+
+  02 Sep 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/sooperlooper-1.6.10-asneeded.patch, +sooperlooper-1.6.10.ebuild:
+  version bump
+
+*sooperlooper-1.6.5 (11 Jul 2008)
+
+  11 Jul 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/sooperlooper-1.6.5-asneeded.patch,
+  +files/sooperlooper-1.6.5-cxxflags.patch,
+  +files/sooperlooper-1.6.5-rubberband12.patch, +sooperlooper-1.6.5.ebuild:
+  version bump, port to rubberband 1.2 api, dont ignore cxxflags, fix build
+  with asneeded, use wx 2.8
+
+  15 May 2008; Markus Rothe <corsair@gentoo.org> sooperlooper-1.6.3.ebuild:
+  Added ~ppc; bug #215033
+
+*sooperlooper-1.6.3 (28 Apr 2008)
+
+  28 Apr 2008; Samuli Suominen <drac@gentoo.org>
+  -files/sooperlooper-1.6.2-asneeded.patch,
+  -files/sooperlooper-1.6.2-gcc43.patch, -sooperlooper-1.6.2.ebuild,
+  +sooperlooper-1.6.3.ebuild:
+  Version bump to patch free version, upstream applied both -Wl,--as-needed
+  and GCC 4.3 fix.
+
+  28 Apr 2008; Samuli Suominen <drac@gentoo.org>
+  +files/sooperlooper-1.6.2-gcc43.patch, sooperlooper-1.6.2.ebuild:
+  GCC 4.3 fix wrt #219542, thanks to Peter Alfredsen.
+
+*sooperlooper-1.6.2 (27 Mar 2008)
+
+  27 Mar 2008; Samuli Suominen <drac@gentoo.org>
+  +files/sooperlooper-1.6.2-asneeded.patch, +sooperlooper-1.6.2.ebuild:
+  Version bump wrt #212570, thanks to Arne Babenhauserheide for reporting.
+  Upstream seems to have 1.6.3 also available, but they forgot to upload
+  source package.
+
+  27 Jul 2007; Alexis Ballier <aballier@gentoo.org>
+  +files/sooperlooper-1.1.0-asneeded.patch, sooperlooper-1.1.0.ebuild:
+  fix build with asneeded, bug #186817
+
+  27 Jul 2007; Samuli Suominen <drac@gentoo.org> sooperlooper-1.1.0.ebuild:
+  Stop using upstream optimization flags and respect users. Install bundled
+  documentation. Move epatch from src_compile to src_unpack.
+
+  14 May 2007; Ryan Hill <dirtyepic@gentoo.org> -sooperlooper-1.0.8c.ebuild:
+  Remove old.
+
+  07 May 2007; Ryan Hill <dirtyepic@gentoo.org>
+  +files/sooperlooper-1.1.0-amd64.patch, sooperlooper-1.0.8c.ebuild,
+  sooperlooper-1.1.0.ebuild:
+  Add patch for build failure on amd64 (bug #176751).
+
+*sooperlooper-1.1.0 (30 Apr 2007)
+
+  30 Apr 2007; Ryan Hill <dirtyepic@gentoo.org> -sooperlooper-1.0.3.ebuild,
+  sooperlooper-1.0.8c.ebuild, +sooperlooper-1.1.0.ebuild:
+  Version bump. Fix wxwidgets usage to work with upcoming changes. Remove
+  ancient versions.
+
+*sooperlooper-1.0.8c (28 Jan 2007)
+
+  28 Jan 2007; Ryan Hill <dirtyepic@gentoo.org> +sooperlooper-1.0.8c.ebuild:
+  Version bump and fix wxwidgets usage.
+
+  16 Feb 2006; Diego Pettenò <flameeyes@gentoo.org>
+  sooperlooper-1.0.3.ebuild:
+  Shorten description.
+
+  25 Jul 2005; David Holm <dholm@gentoo.org> sooperlooper-1.0.3.ebuild:
+  Added to ~ppc.
+
+*sooperlooper-1.0.3 (03 May 2005)
+
+  03 May 2005; Frank van de Pol <fvdpol@gentoo.org>
+  +sooperlooper-1.0.3.ebuild:
+  New ebuild for Sooperlooper. Submitted by Gerald Berger <gerry.berger@aon.at>
+  Closes bug#89422.
+

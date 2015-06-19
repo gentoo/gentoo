@@ -1,0 +1,43 @@
+# ChangeLog for games-action/hotline-miami
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/hotline-miami/ChangeLog,v 1.9 2015/06/01 22:05:45 mr_bones_ Exp $
+
+  01 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  hotline-miami-1.0.9a_p20140221.ebuild:
+  clean up app-emulation/emul-linux which has been removed
+
+  10 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  hotline-miami-1.0.9a_p20140221.ebuild:
+  Stable for x86, wrt bug #539526
+
+  10 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  hotline-miami-1.0.9a_p20140221.ebuild:
+  Stable for amd64, wrt bug #539526
+
+  27 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -hotline-miami-1.0.9a.ebuild:
+  old
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+  25 Jun 2014; Michał Górny <mgorny@gentoo.org>
+  hotline-miami-1.0.9a_p20140221.ebuild:
+  Clean up (-)abi_x86_32 deps.
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> hotline-miami-1.0.9a.ebuild,
+  hotline-miami-1.0.9a_p20140221.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+*hotline-miami-1.0.9a_p20140221 (12 Mar 2014)
+
+  12 Mar 2014; Julian Ospald <hasufell@gentoo.org>
+  +hotline-miami-1.0.9a_p20140221.ebuild:
+  update
+
+*hotline-miami-1.0.9a (24 Nov 2013)
+
+  24 Nov 2013; Julian Ospald <hasufell@gentoo.org>
+  +hotline-miami-1.0.9a.ebuild, +metadata.xml:
+  initial import

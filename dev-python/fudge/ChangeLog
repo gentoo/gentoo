@@ -1,0 +1,90 @@
+# ChangeLog for dev-python/fudge
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/fudge/ChangeLog,v 1.19 2015/06/16 07:11:29 idella4 Exp $
+
+*fudge-1.1.0 (16 Jun 2015)
+
+  16 Jun 2015; Ian Delaney <idella4@gentoo.org> +fudge-1.1.0.ebuild:
+  bump, tidy
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> fudge-0.9.6-r1.ebuild:
+  Drop old Python implementations
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> fudge-1.0.3-r2.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> fudge-1.0.3-r2.ebuild:
+  amd64 stable, bug 540290
+
+  16 Feb 2015; Pacho Ramos <pacho@gentoo.org> fudge-0.9.6-r1.ebuild:
+  amd64/x86 stable, bug #530324
+
+  26 Jan 2015; Manuel Rüger <mrueg@gentoo.org> -fudge-0.9.6.ebuild:
+  Remove old.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> fudge-0.9.6.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  28 Jun 2014; Ian Delaney <idella4@gentoo.org> fudge-1.0.3-r2.ebuild:
+  drop py2.6 py3.2 pypy2_0 add py3.4, add missing dep, patch submitted by fau,
+  fixes bug #515166
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> fudge-0.9.6-r1.ebuild,
+  fudge-1.0.3-r2.ebuild:
+  Add support for the new PyPy slotting.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> fudge-0.9.6-r1.ebuild,
+  fudge-1.0.3-r2.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*fudge-0.9.6-r1 (01 Sep 2013)
+
+  01 Sep 2013; Michał Górny <mgorny@gentoo.org> +fudge-0.9.6-r1.ebuild,
+  fudge-1.0.3-r2.ebuild:
+  Backport the distutils-r1 conversion, as required by dev-python/fabric.
+
+*fudge-1.0.3-r2 (01 Sep 2013)
+
+  01 Sep 2013; Michał Górny <mgorny@gentoo.org> +fudge-1.0.3-r2.ebuild,
+  -fudge-1.0.3-r1.ebuild:
+  Fix the distutils-r1 ebuild.
+
+*fudge-0.9.6 (07 Jun 2013)
+
+  07 Jun 2013; Ian Delaney <idella4@gentoo.org> +fudge-0.9.6.ebuild:
+  re-add fudge-0.9.6, req'd dep of fabric
+
+*fudge-1.0.3-r1 (07 Jun 2013)
+
+  07 Jun 2013; Ian Delaney <idella4@gentoo.org> +fudge-1.0.3-r1.ebuild,
+  -fudge-0.9.6.ebuild, -fudge-1.0.3.ebuild:
+  revbump; migrate -> distutils-r1, remove old
+
+*fudge-0.9.6 (16 May 2012)
+
+  16 May 2012; Mike Gilbert <floppym@gentoo.org> +fudge-0.9.6.ebuild:
+  Add old version needed for dev-python/fabric test suite.
+
+*fudge-1.0.3 (22 Mar 2011)
+
+  22 Mar 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -fudge-1.0.2.ebuild, +fudge-1.0.3.ebuild:
+  Version bump.
+
+*fudge-1.0.2 (27 Feb 2011)
+
+  27 Feb 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -fudge-1.0.1.ebuild, +fudge-1.0.2.ebuild:
+  Version bump.
+
+*fudge-1.0.1 (20 Feb 2011)
+
+  20 Feb 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -fudge-1.0.0.ebuild, +fudge-1.0.1.ebuild:
+  Version bump.
+
+*fudge-1.0.0 (19 Feb 2011)
+
+  19 Feb 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +fudge-1.0.0.ebuild, +metadata.xml:
+  Initial addition. Ebuild written by me.

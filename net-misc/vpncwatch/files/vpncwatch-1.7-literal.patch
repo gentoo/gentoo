@@ -1,0 +1,11 @@
+--- net.c	2008-02-04 09:28:51.000000000 +0100
++++ net.c.new	2009-02-08 17:13:31.188241104 +0100
+@@ -53,7 +53,7 @@
+     /* get the server address */
+     if (inet_pton(AF_INET, chkhost, &(chksock.sin_addr.s_addr)) <= 0) {
+         if ((host = gethostbyname(chkhost)) == NULL) {
+-            syslog(LOG_ERR, hstrerror(h_errno));
++            syslog(LOG_ERR, "%s", hstrerror(h_errno));
+             return 0;
+         }
+ 

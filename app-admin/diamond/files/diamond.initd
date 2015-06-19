@@ -1,0 +1,20 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/diamond/files/diamond.initd,v 1.1 2015/03/01 23:09:12 grobian Exp $
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --exec /usr/bin/diamond --pidfile /run/${SVCNAME}.pid -- -c /etc/diamond/${SVCNAME}.conf ${DIAMOND_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --pidfile /run/${SVCNAME}.pid --name diamond
+	eend $?
+}

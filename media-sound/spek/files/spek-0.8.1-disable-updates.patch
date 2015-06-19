@@ -1,0 +1,11 @@
+--- spek-0.8.1/src/spek-preferences.cc
++++ spek-0.8.1/src/spek-preferences.cc
+@@ -62,7 +62,7 @@
+ 
+ bool SpekPreferences::get_check_update()
+ {
+-    bool result = true;
++    bool result = false;
+     this->config->Read(wxT("/update/check"), &result);
+     return result;
+ }

@@ -1,0 +1,52 @@
+# ChangeLog for media-gfx/drqueue
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/drqueue/ChangeLog,v 1.9 2015/03/14 05:18:50 idella4 Exp $
+
+  14 Mar 2015; Ian Delaney <idella4@gentoo.org> -drqueue-0.64.3-r1.ebuild,
+  -drqueue-0.64.4.ebuild:
+  removed old
+
+*drqueue-0.64.4-r1 (14 Mar 2015)
+
+  14 Mar 2015; Ian Delaney <idella4@gentoo.org> +drqueue-0.64.4-r1.ebuild,
+  drqueue-9999.ebuild:
+  revbump; conversion -> distutils-r1 wrt bug #541328
+
+*drqueue-0.64.4 (29 Oct 2012)
+
+  29 Oct 2012; Sebastian Pipping <sping@gentoo.org> +drqueue-0.64.4.ebuild,
+  +files/drqueue-0.64.4-fpic.patch, +files/drqueue-0.64.4-git.patch:
+  Bump to 0.64.4
+
+  01 Jun 2012; Zac Medico <zmedico@gentoo.org> drqueue-0.64.3-r1.ebuild,
+  drqueue-9999.ebuild:
+  inherit user for enewgroup and enewuser
+
+  20 Sep 2011; Michał Górny <mgorny@gentoo.org> drqueue-9999.ebuild:
+  Migrate to git-2, update EGIT_REPO_URI.
+
+  28 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> drqueue-0.64.3-r1.ebuild,
+  drqueue-9999.ebuild:
+  Use SLOT dependencies for x11-libs/gtk+.
+
+  04 Mar 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  drqueue-0.64.3-r1.ebuild, drqueue-9999.ebuild:
+  Set SUPPORT_PYTHON_ABIS (bug #313487).
+
+  06 Feb 2010; Sebastian Pipping <sping@gentoo.org>
+  drqueue-0.64.3-r1.ebuild, drqueue-9999.ebuild:
+  Remove drqman leftovers for USE=-X (bug #302939)
+
+*drqueue-9999 (29 Jan 2010)
+*drqueue-0.64.3-r1 (29 Jan 2010)
+
+  29 Jan 2010; Sebastian Pipping <sping@gentoo.org>
+  +drqueue-0.64.3-r1.ebuild, +files/drqueue-0.64.3-compile-flags.patch,
+  +files/drqueue-0.64.3-etc-confd-drqmd,
+  +files/drqueue-0.64.3-etc-confd-drqsd,
+  +files/drqueue-0.64.3-etc-envd-02drqueue,
+  +files/drqueue-0.64.3-etc-initd-drqmd,
+  +files/drqueue-0.64.3-etc-initd-drqsd,
+  +files/drqueue-0.64.3-sconstruct.patch, +drqueue-9999.ebuild,
+  +metadata.xml:
+  New package (fixes bug #69553)

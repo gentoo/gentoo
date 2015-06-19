@@ -1,0 +1,44 @@
+diff -Naur scim-pinyin-0.5.91.orig/src/scim_phrase.cpp scim-pinyin-0.5.91/src/scim_phrase.cpp
+--- scim-pinyin-0.5.91.orig/src/scim_phrase.cpp	2005-01-06 22:30:58.000000000 +0900
++++ scim-pinyin-0.5.91/src/scim_phrase.cpp	2008-06-21 13:16:32.000000000 +0900
+@@ -27,6 +27,7 @@
+ 
+ #define SCIM_PHRASE_MAX_RELATION 1000
+ 
++#include <cstring>
+ #include <scim.h>
+ #include "scim_pinyin_private.h"
+ #include "scim_phrase.h"
+diff -Naur scim-pinyin-0.5.91.orig/src/scim_pinyin.cpp scim-pinyin-0.5.91/src/scim_pinyin.cpp
+--- scim-pinyin-0.5.91.orig/src/scim_pinyin.cpp	2005-08-08 15:11:16.000000000 +0900
++++ scim-pinyin-0.5.91/src/scim_pinyin.cpp	2008-06-21 13:16:30.000000000 +0900
+@@ -28,6 +28,7 @@
+ #define Uses_SCIM_CONFIG_PATH
+ #define Uses_SCIM_LOOKUP_TABLE
+ 
++#include <cstring>
+ #include <scim.h>
+ #include "scim_pinyin.h"
+ 
+diff -Naur scim-pinyin-0.5.91.orig/src/scim_pinyin_phrase.cpp scim-pinyin-0.5.91/src/scim_pinyin_phrase.cpp
+--- scim-pinyin-0.5.91.orig/src/scim_pinyin_phrase.cpp	2005-08-06 21:06:49.000000000 +0900
++++ scim-pinyin-0.5.91/src/scim_pinyin_phrase.cpp	2008-06-21 13:21:13.000000000 +0900
+@@ -26,6 +26,7 @@
+ #define Uses_SCIM_CONFIG_PATH
+ #define Uses_SCIM_LOOKUP_TABLE
+ 
++#include <cstring>
+ #include <scim.h>
+ #include "scim_pinyin_private.h"
+ #include "scim_phrase.h"
+diff -Naur scim-pinyin-0.5.91.orig/src/scim_special_table.cpp scim-pinyin-0.5.91/src/scim_special_table.cpp
+--- scim-pinyin-0.5.91.orig/src/scim_special_table.cpp	2005-01-06 22:31:02.000000000 +0900
++++ scim-pinyin-0.5.91/src/scim_special_table.cpp	2008-06-21 13:25:25.000000000 +0900
+@@ -20,6 +20,7 @@
+ #define Uses_STL_IOMANIP
+ #define Uscs_C_STRING
+ 
++#include <cstring>
+ #include <time.h>
+ #include <scim.h>
+ #include "scim_pinyin_private.h"

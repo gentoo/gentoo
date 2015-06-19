@@ -1,0 +1,41 @@
+# ChangeLog for dev-ruby/rev
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rev/ChangeLog,v 1.10 2015/05/30 05:29:53 graaff Exp $
+
+  30 May 2015; Hans de Graaff <graaff@gentoo.org> rev-0.3.2-r1.ebuild:
+  Stop building documentation since it is no longer compatible with new rdoc
+  versions.
+
+  25 Mar 2015; Hans de Graaff <graaff@gentoo.org> rev-0.3.2-r1.ebuild:
+  Document ruby22 status.
+
+  06 Aug 2014; Manuel Rüger <mrueg@gentoo.org> rev-0.3.2-r1.ebuild:
+  Add ruby21 target.
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> rev-0.3.2-r1.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  24 Apr 2014; Manuel Rüger <mrueg@gentoo.org> rev-0.3.2-r1.ebuild:
+  Remove ruby18 support.
+
+*rev-0.3.2-r1 (11 Nov 2013)
+
+  11 Nov 2013; Manuel Rüger <mrueg@gentoo.org> +rev-0.3.2-r1.ebuild,
+  -rev-0.3.2.ebuild:
+  Add ruby20 target. Cleanup old.
+
+  28 Mar 2013; Alex Legler <a3li@gentoo.org> rev-0.3.2.ebuild:
+  Fix HOMEPAGE, bug 463552
+
+  13 Jan 2012; Hans de Graaff <graaff@gentoo.org> rev-0.3.2.ebuild:
+  Add ruby19.
+
+  26 Dec 2010; Hans de Graaff <graaff@gentoo.org> rev-0.3.2.ebuild:
+  Keyword ~x86-macos.
+
+*rev-0.3.2 (24 Oct 2010)
+
+  24 Oct 2010; Hans de Graaff <graaff@gentoo.org> +rev-0.3.2.ebuild,
+  +metadata.xml:
+  Initial import. Miscompiles with --no-undefined so people won't be able to
+  install the gem directly.

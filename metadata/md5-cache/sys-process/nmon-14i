@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=sys-libs/ncurses virtual/pkgconfig
+DESCRIPTION=Nigel's performance MONitor for CPU, memory, network, disks, etc...
+EAPI=5
+HOMEPAGE=http://nmon.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=sys-libs/ncurses
+SLOT=0
+SRC_URI=mirror://sourceforge/nmon/lmon14i.c
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=b3a18cb2c8de38f6dea6fe104f5a9f56

@@ -1,0 +1,36 @@
+# ChangeLog for media-sound/skype-call-recorder
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/skype-call-recorder/ChangeLog,v 1.7 2013/11/26 09:13:45 slyfox Exp $
+
+  26 Nov 2013; Sergei Trofimovich <slyfox@gentoo.org>
+  skype-call-recorder-0.8.ebuild:
+  Restored patch application.
+
+  26 Nov 2013; Sergei Trofimovich <slyfox@gentoo.org>
+  skype-call-recorder-0.8.ebuild:
+  Workaround underlinking (disabled as-needed, added missing libraries), bug
+  #482744 by Guy.
+
+  08 Sep 2013; Maciej Mrozowski <reavertm@gentoo.org>
+  skype-call-recorder-0.8.ebuild:
+  Remove USE dep on qt-gui[dbus], bug 484178.
+
+  10 Jul 2013; Patrick Lauer <patrick@gentoo.org>
+  skype-call-recorder-0.8.ebuild:
+  Fixing qtgui deps for qt-4.8.5
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org>
+  skype-call-recorder-0.8.ebuild:
+  Move Qt dependencies to the new category
+
+  04 Dec 2012; Maciej Mrozowski <reavertm@gentoo.org>
+  skype-call-recorder-0.8.ebuild:
+  Add IUSE default (-) on recently removed qt-static USE flag from skype, bug
+  445922
+
+*skype-call-recorder-0.8 (23 Jul 2011)
+
+  23 Jul 2011; Maciej Mrozowski <reavertm@gentoo.org>
+  +skype-call-recorder-0.8.ebuild, +files/skype-call-recorder-0.8-cmake.patch,
+  +metadata.xml:
+  Add new package, ebuild by myself with some ideas from bug 233523

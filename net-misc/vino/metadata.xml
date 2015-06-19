@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>gnome</herd>
+<use>
+	<flag name="libsecret">Enable app-crypt/libsecret support to store
+	login credentials.</flag>
+	<flag name="telepathy">Enable desktop sharing through a telepathy client</flag>
+</use>
+</pkgmetadata>

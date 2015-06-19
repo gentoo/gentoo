@@ -1,0 +1,314 @@
+# ChangeLog for x11-terms/eterm
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/eterm/ChangeLog,v 1.77 2015/01/28 22:23:57 mgorny Exp $
+
+  28 Jan 2015; Michał Górny <mgorny@gentoo.org> eterm-0.9.5.ebuild,
+  eterm-0.9.6.ebuild, eterm-9999.ebuild:
+  Switch to CPU_FLAGS_X86.
+
+  05 Nov 2012; Mike Frysinger <vapier@gentoo.org>
+  +files/eterm-0.9.6-asm-gnu-stack.patch, eterm-0.9.6.ebuild:
+  Fix executable stacks in mmx code #440618 by brian h.
+
+  23 Aug 2012; Christoph Junghans <ottxor@gentoo.org> eterm-0.9.6.ebuild,
+  eterm-9999.ebuild, metadata.xml:
+  added prefix support (bug #388791)
+
+*eterm-0.9.6 (23 Feb 2012)
+
+  23 Feb 2012; Mike Frysinger <vapier@gentoo.org> +eterm-0.9.6.ebuild,
+  eterm-9999.ebuild:
+  Version bump and clean up library install #403105 by David.
+
+  16 Aug 2009; Steve Arnold <nerdboy@gentoo.org> eterm-0.9.5.ebuild,
+  eterm-9999.ebuild:
+  Added dependency for default font (fixes bug #279928).  Required for
+  default Eterm theme.
+
+  11 May 2009; Mike Frysinger <vapier@gentoo.org> eterm-0.9.5.ebuild,
+  eterm-9999.ebuild:
+  Update live svn usage by James Rowe #268550 by Alejandro Muñiz.
+
+  08 Mar 2009; Thomas Anderson <gentoofan23@gentoo.org> eterm-0.9.5.ebuild,
+  eterm-9999.ebuild:
+  Transition to EAPI 2 usedeps
+
+  24 Jan 2009; Alexis Ballier <aballier@gentoo.org> eterm-0.9.5.ebuild:
+  there is no stable keyword for bsd...
+
+  10 Jan 2009; Mike Frysinger <vapier@gentoo.org> eterm-0.9.5.ebuild,
+  eterm-9999.ebuild:
+  Convert cvs->svn urls #253948 by DEMAINE Benoît-Pierre.
+
+  05 Dec 2008; Raúl Porcel <armin76@gentoo.org> eterm-0.9.5.ebuild:
+  alpha/arm/ia64/sh/sparc stable wrt #249332
+
+  03 Dec 2008; Jeroen Roovers <jer@gentoo.org> eterm-0.9.5.ebuild:
+  Stable for HPPA (bug #249332).
+
+  02 Dec 2008; Brent Baude <ranger@gentoo.org> eterm-0.9.5.ebuild:
+  stable ppc64, bug 249332
+
+  02 Dec 2008; Mike Frysinger <vapier@gentoo.org> eterm-0.9.4-r1.ebuild,
+  eterm-0.9.5.ebuild, eterm-9999.ebuild:
+  Drop USE=etwin #249334.
+
+  30 Nov 2008; Tobias Scherbaum <dertobi123@gentoo.org> eterm-0.9.5.ebuild:
+  ppc stable, bug #249332
+
+  30 Nov 2008; Markus Meier <maekke@gentoo.org> eterm-0.9.5.ebuild:
+  amd64/x86 stable, bug #249332
+
+  21 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+*eterm-0.9.5 (13 Jun 2008)
+
+  13 Jun 2008; Mike Frysinger <vapier@gentoo.org> -eterm-0.9.4.ebuild,
+  +eterm-0.9.5.ebuild:
+  Version bump.
+
+  04 Jun 2008; Diego Pettenò <flameeyes@gentoo.org> eterm-0.9.4.ebuild,
+  eterm-0.9.4-r1.ebuild, eterm-9999.ebuild:
+  Use eautoreconf, not the bootstrap script.
+
+  28 Apr 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  eterm-0.9.4-r1.ebuild:
+  ppc stable, bug #216833
+
+  27 Apr 2008; Jeroen Roovers <jer@gentoo.org> eterm-0.9.4-r1.ebuild:
+  Stable for HPPA (bug #216833).
+
+  27 Apr 2008; Raúl Porcel <armin76@gentoo.org> eterm-0.9.4-r1.ebuild:
+  alpha/ia64/sparc stable wrt #216833
+
+  27 Apr 2008; Markus Rothe <corsair@gentoo.org> eterm-0.9.4-r1.ebuild:
+  Stable on ppc64; bug #216833
+
+  26 Apr 2008; Markus Meier <maekke@gentoo.org> eterm-0.9.4-r1.ebuild:
+  amd64/x86 stable, security bug #216833
+
+*eterm-0.9.4-r1 (16 Apr 2008)
+
+  16 Apr 2008; Mike Frysinger <vapier@gentoo.org>
+  +files/eterm-0.9.4-no-default-DISPLAY.patch, +eterm-0.9.4-r1.ebuild:
+  Add fix for DISPLAY security issue #216833.
+
+  08 Apr 2008; Mike Frysinger <vapier@gentoo.org> eterm-0.9.4.ebuild,
+  eterm-9999.ebuild:
+  Unify ebuilds and add USE=X check for imlib2 #210653 by Thomas Anderson.
+
+  31 Mar 2008; <ricmm@gentoo.org> eterm-0.9.3-r4.ebuild, eterm-0.9.4.ebuild:
+  Drop to ~mips due to unstable deps
+
+  06 Aug 2007; Roy Marples <uberlord@gentoo.org> eterm-0.9.3-r4.ebuild,
+  eterm-0.9.4.ebuild:
+  Keyworded #x86-fbsd, #187914 thanks to Jason Smathers
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  eterm-0.9.3-r4.ebuild, eterm-0.9.4.ebuild, eterm-9999.ebuild:
+  Drop virtual/x11 references.
+
+  24 Jun 2007; Piotr Jaroszyński <peper@gentoo.org> eterm-9999.ebuild:
+  (QA) Don't use KEYWORDS="-*". bug #160519.
+
+  20 Jun 2007; Raúl Porcel <armin76@gentoo.org> eterm-0.9.4.ebuild:
+  alpha stable wrt #167034
+
+  27 May 2007; Joshua Kinard <kumba@gentoo.org> eterm-0.9.4.ebuild:
+  Stable on mips.
+
+  20 Feb 2007; Simon Stelling <blubb@gentoo.org> eterm-0.9.4.ebuild:
+  stable on amd64; bug 167034
+
+  18 Feb 2007; Jason Wever <weeve@gentoo.org> eterm-0.9.4.ebuild:
+  Stable on SPARC WRT bug #167034.
+
+  18 Feb 2007; nixnut <nixnut@gentoo.org> eterm-0.9.4.ebuild:
+  Stable on ppc wrt bug 167034
+
+  16 Feb 2007; Jeroen Roovers <jer@gentoo.org> eterm-0.9.4.ebuild:
+  Stable for HPPA (bug #167034).
+
+  16 Feb 2007; Markus Rothe <corsair@gentoo.org> eterm-0.9.4.ebuild:
+  Stable on ppc64; bug #167034
+
+  16 Feb 2007; Christian Faulhammer <opfer@gentoo.org> eterm-0.9.4.ebuild:
+  stable x86; bug 167034
+
+  19 Jan 2007; Mike Frysinger <vapier@gentoo.org> eterm-0.9.3-r4.ebuild,
+  eterm-0.9.4.ebuild, eterm-9999.ebuild:
+  Dont install terminfo file anymore; let ncurses handle it #146616 by Bob
+  Thomas.
+
+  23 Oct 2006; Simon Stelling <blubb@gentoo.org> eterm-0.9.4.ebuild:
+  make usage of sse2 optimizations optional on amd64
+
+  14 Oct 2006; Mike Frysinger <vapier@gentoo.org> eterm-0.9.3-r4.ebuild,
+  eterm-0.9.4.ebuild:
+  Add support by James Rowe for USE=minimal #150946.
+
+*eterm-0.9.4 (04 Sep 2006)
+
+  04 Sep 2006; Mike Frysinger <vapier@gentoo.org> +eterm-0.9.4.ebuild:
+  Version bump #146196 by ScytheMan.
+
+  09 Jul 2006; Joshua Kinard <kumba@gentoo.org> eterm-0.9.3-r4.ebuild:
+  Marked stable on mips.
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-eterm-0.9.2-r6, files/digest-eterm-0.9.3-r4,
+  files/digest-eterm-9999, Manifest:
+  Fixing SHA256 digest, pass four
+
+  14 May 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/eterm-0.9.3-gcc4.patch, eterm-0.9.3-r4.ebuild:
+  Fix building with gcc-4 by Aaron Walker #92485.
+
+*eterm-0.9.3-r4 (11 May 2005)
+
+  11 May 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/eterm-0.9.3-deadkeys.patch, +eterm-0.9.3-r4.ebuild:
+  Grab fix from upstream cvs to fix deadkey usages #91878 by Tobias Vogel.
+
+  06 May 2005; Sven Wegener <swegener@gentoo.org> eterm-0.9.2-r6.ebuild:
+  Removed * postfix from <, <=, >= and > dependencies.
+
+*eterm-0.9.3-r3 (26 Apr 2005)
+
+  26 Apr 2005; Mike Frysinger <vapier@gentoo.org>
+  files/eterm-0.9.3-pixmap-colmod.patch, -eterm-0.9.3-r2.ebuild,
+  +eterm-0.9.3-r3.ebuild:
+  Properly fix weird blue tinting with a diff upstream patch by Tres 
+  Melton #90547.
+
+*eterm-0.9.3-r2 (20 Apr 2005)
+
+  20 Apr 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/eterm-0.9.3-CARD64.patch, +eterm-0.9.3-r2.ebuild:
+  Fix window manager hints on 64bit systems by Tres #76324 by Maik Stubbe.
+
+*eterm-0.9.3-r1 (19 Apr 2005)
+
+  19 Apr 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/eterm-0.9.3-pixmap-colmod.patch, +eterm-0.9.3-r1.ebuild:
+  Add patch from upstream to fix weird blue tinting.
+
+*eterm-9999 (18 Apr 2005)
+
+  18 Apr 2005; Mike Frysinger <vapier@gentoo.org> +eterm-9999.ebuild:
+  Add a cvs ebuild.
+
+*eterm-0.9.3 (28 Dec 2004)
+
+  28 Dec 2004; Mike Frysinger <vapier@gentoo.org> +eterm-0.9.3.ebuild:
+  Version bump.
+
+*eterm-0.9.2-r6 (22 Sep 2004)
+
+  22 Sep 2004; Mike Frysinger <vapier@gentoo.org> +files/0.9.2-tiling.patch,
+  +eterm-0.9.2-r6.ebuild:
+  Take patch from cvs to fix tiling bugs.
+
+  28 Jun 2004; Aron Griffis <agriffis@gentoo.org> eterm-0.9.2-r5.ebuild:
+  add sed-4 dep
+
+*eterm-0.9.2-r5 (13 Aug 2003)
+
+  26 Feb 2004; Mike Frysinger <vapier@gentoo.org> :
+  Add escreen USE variable to fix crashes #42961.
+
+  02 Jan 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Make it compile on amd64.
+
+  06 Sep 2003; Mike Frysinger <vapier@gentoo.org> :
+  Add missing IUSE and add DEPEND for etwin if user wants twin support #28086.
+
+  13 Aug 2003; Mike Frysinger <vapier@gentoo.org> :
+  Add patch to support ansi 16 colors ... already been added upstream #26547.
+
+*eterm-0.9.2-r4 (20 Mar 2003)
+
+  09 Apr 2003; Todd Sunderlin <todd@gentoo.org> eterm-0.9.2-r4.ebuild:
+  Marked stable for sparc.
+
+  20 Mar 2003; Seemant Kulleen <seemant@gentoo.org> eterm-0.9.1-r5.ebuild,
+  eterm-0.9.1-r5.ebuild, eterm-0.9.2-r1.ebuild, eterm-0.9.2-r1.ebuild,
+  eterm-0.9.2-r2.ebuild, eterm-0.9.2-r2.ebuild, eterm-0.9.2-r4.ebuild,
+  eterm-0.9.2.ebuild, eterm-0.9.2.ebuild:
+  get rid of the pic nonsense
+
+  24 Jan 2003; Jason Wever <weeve@gentoo.org> eterm-0.9.2-r3.ebuild :
+  Added ~sparc to keywords.
+
+*eterm-0.9.2-r4 (24 Jan 2003)
+
+  15 Feb 2003; Jugnmin Seo <seo@gentoo.org eterm-0.9.2-r4.ebuild,
+  files/digest-eterm-0.9.2-r4 :
+  remove these files as the xim option is now default in
+  eterm-0.9.2
+
+  24 Jan 2003; Jungmin Seo <seo@gentoo.org> eterm-0.9.2-r4.ebuild,
+  ChangeLog, digest-eterm-0.9.2-r4 :
+  Added 'cjk' USE flag, based on -r3
+
+*eterm-0.9.2-r3 (22 Nov 2002)
+
+  22 Nov 2002; Mike Frysinger <vapier@gentoo.org> :
+  Added support for --enable-mmx since we have binutils-2.13.x now
+
+*eterm-0.9.2-r2 (11 Nov 2002)
+
+  11 Nov 2002; Mike Frysinger <vapier@gentoo.org> :
+  Added --with-backspace=auto to fix some problems with sending ^H.
+
+*eterm-0.9.2-r1 (10 Nov 2002)
+
+  10 Nov 2002; Mike Frysinger <vapier@gentoo.org> :
+  Added a few more default options and support for pic from USE.
+
+*eterm-0.9.2 (02 Nov 2002)
+
+  03 Nov 2002; Mike Frysinger <vapier@gentoo.org> :
+  Removed glass theme from SRC_URI.  if people want the theme they can
+  install it themselves.  its not version tagged, so version bumping
+  is a pain.
+
+  02 Nov 2002; Brandon Low <lostlogic@gentoo.org> eterm-0.9.2.ebuild:
+  New version from eterm.org, about time, check out the Eterm -U and -Z
+  options some neet screen interoperability.
+
+*eterm-0.9.1-r5 (18 Jun 2002)
+
+  03 Feb 2003; Jungmin Seo <seo@gentoo.org> eterm-0.9.1-r5.ebuild:
+  added 'cjk' use flag
+
+  18 Jun 2002; Michael Nazaroff <naz@gentoo.org> eterm-0.9.1-r5.ebuild:
+  #4051 eterm needs imlib other wise it will not compile, I'm not sure why
+  there is --with-imlib option in ./configure, other then now in the cvs
+  version that option does work, maybe they where added it in the future?
+  Thanx to the guys on #e for helping me out on this :o).
+
+*eterm-0.9.1-r4 (18 Jun 2002)
+
+  18 Jun 2002; Seemant Kulleen <seemant@gentoo.org> eterm-0.9.1-r4.ebuild
+  files/digest-eterm-0.9.1-r4 :
+
+  snoogans@qwest.net (robert jorgenson) in bug #3749 suggested addng a
+  configure flag to allow the delete key to, well, delete.
+
+*eterm-0.9.1-r3 (27 Mar 2002)
+
+  27 Mar 2002; Seemant Kulleen <seemant@gentoo.org> eterm-0.9.1-r3.ebuild :
+
+  man page/LFH fixes submitted by Matthew Kennedy.
+
+*eterm-0.9.1-r2 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

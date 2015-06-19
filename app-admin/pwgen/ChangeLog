@@ -1,0 +1,262 @@
+# ChangeLog for app-admin/pwgen
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/pwgen/ChangeLog,v 1.78 2015/06/09 08:44:04 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  23 Apr 2015; Justin Lecher <jlec@gentoo.org> metadata.xml, pwgen-2.07.ebuild:
+  Add local USE description
+
+  01 Dec 2014; Justin Lecher <jlec@gentoo.org> -pwgen-2.06-r1.ebuild:
+  Drop old vulnerable versions, #488300
+
+  01 Dec 2014; Agostino Sarubbo <ago@gentoo.org> pwgen-2.07.ebuild:
+  Stable for sparc, wrt bug #488300
+
+  13 Nov 2014; Tobias Klausmann <klausman@gentoo.org> pwgen-2.07.ebuild:
+  Stable on alpha, bug 488300
+
+  11 Nov 2014; Agostino Sarubbo <ago@gentoo.org> pwgen-2.07.ebuild:
+  Stable for ia64, wrt bug #488300
+
+  10 Nov 2014; Agostino Sarubbo <ago@gentoo.org> pwgen-2.07.ebuild:
+  Stable for ppc64, wrt bug #488300
+
+  10 Nov 2014; Agostino Sarubbo <ago@gentoo.org> pwgen-2.07.ebuild:
+  Stable for ppc, wrt bug #488300
+
+  08 Nov 2014; Agostino Sarubbo <ago@gentoo.org> pwgen-2.07.ebuild:
+  Stable for x86, wrt bug #488300
+
+  08 Nov 2014; Agostino Sarubbo <ago@gentoo.org> pwgen-2.07.ebuild:
+  Stable for amd64, wrt bug #488300
+
+  06 Nov 2014; Jeroen Roovers <jer@gentoo.org> pwgen-2.07.ebuild:
+  Stable for HPPA (bug #488300).
+
+*pwgen-2.07 (05 Nov 2014)
+
+  05 Nov 2014; Jeroen Roovers <jer@gentoo.org> -pwgen-2.06-r2.ebuild,
+  +pwgen-2.07.ebuild:
+  Version bump.
+
+*pwgen-2.06-r2 (04 Apr 2013)
+
+  04 Apr 2013; Justin Lecher <jlec@gentoo.org> -pwgen-2.04.ebuild,
+  -pwgen-2.05.ebuild, -pwgen-2.06.ebuild, +pwgen-2.06-r2.ebuild, metadata.xml:
+  Add to autotools-utils.eclass; eautoreconf for sane prefix header detection;
+  drop old
+
+  14 Oct 2012; Alexis Ballier <aballier@gentoo.org> pwgen-2.06-r1.ebuild:
+  keyword ~amd64-fbsd
+
+  19 Aug 2012; Raúl Porcel <armin76@gentoo.org> pwgen-2.06-r1.ebuild:
+  alpha/sparc stable wrt #421565
+
+  08 Jul 2012; Akinori Hattori <hattya@gentoo.org> pwgen-2.06-r1.ebuild:
+  ia64 stable wrt bug #421565
+
+  03 Jul 2012; Brent Baude <ranger@gentoo.org> pwgen-2.06-r1.ebuild:
+  Marking pwgen-2.06-r1 ppc for bug 421565
+
+  29 Jun 2012; Jeroen Roovers <jer@gentoo.org> pwgen-2.06-r1.ebuild:
+  Remove empty DEPEND.
+
+  29 Jun 2012; Jeroen Roovers <jer@gentoo.org> pwgen-2.06-r1.ebuild:
+  Stable for HPPA (bug #421565).
+
+  22 Jun 2012; Brent Baude <ranger@gentoo.org> pwgen-2.06-r1.ebuild:
+  Marking pwgen-2.06-r1 ppc64 for bug 421565
+
+  17 Jun 2012; Jeff Horelick <jdhore@gentoo.org> pwgen-2.06-r1.ebuild:
+  marked x86 per bug 421565
+
+  17 Jun 2012; Agostino Sarubbo <ago@gentoo.org> pwgen-2.06-r1.ebuild:
+  Stable for amd64, wrt bug #421565
+
+  18 Aug 2011; Fabian Groffen <grobian@gentoo.org> pwgen-2.06-r1.ebuild:
+  Marked ~x64-macos
+
+  06 Feb 2011; Mart Raudsepp <leio@gentoo.org> pwgen-2.04.ebuild:
+  Drop to ~mips
+
+  02 Feb 2010; Justin Lecher <jlec@gentoo.org> pwgen-2.06-r1.ebuild:
+  Prefix keywords added, as requested in bug 303161
+
+*pwgen-2.06-r1 (31 Dec 2009)
+
+  31 Dec 2009; Justin Lecher <jlec@gentoo.org>
+  +pwgen-2.06-r1.ebuild, +files/2.06-special-char.patch,
+  +pwgen-2.06-r1.ebuild:
+  EAPI="3", ready for PREFIX whitelist, using emake,
+  fix for 202277, thanks Andreas Sundstrom for the fix
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> pwgen-2.04.ebuild,
+  pwgen-2.05.ebuild, pwgen-2.06.ebuild:
+  Remove virtual/libc
+
+  13 Sep 2008; <solar@gentoo.org> pwgen-2.06.ebuild:
+  - make cross compile aware and keyword for ~arm
+
+  05 Feb 2008; Markus Rothe <corsair@gentoo.org> pwgen-2.06.ebuild:
+  Stable on ppc64
+
+  17 Jan 2008; Jeroen Roovers <jer@gentoo.org> pwgen-2.06.ebuild:
+  Stable for HPPA too.
+
+  14 Jan 2008; Tobias Scherbaum <dertobi123@gentoo.org> pwgen-2.06.ebuild:
+  ppc. stable
+
+  28 Dec 2007; Richard Freeman <rich0@gentoo.org> pwgen-2.06.ebuild:
+  amd64 stable
+
+  17 Dec 2007; Raúl Porcel <armin76@gentoo.org> pwgen-2.06.ebuild:
+  alpha/ia64/sparc/x86 stable
+
+*pwgen-2.06 (06 Nov 2007)
+
+  06 Nov 2007; Chris Gianelloni <wolf31o2@gentoo.org> +pwgen-2.06.ebuild:
+  Version bump. Thanks to Raúl Porcel <armin76@gentoo.org> for pointing it
+  out. Closing bug #197222.
+
+  28 Apr 2007; Torsten Veller <tove@gentoo.org> pwgen-2.04.ebuild,
+  pwgen-2.05.ebuild:
+  Use newinitd
+
+*pwgen-2.05 (13 Apr 2007)
+
+  13 Apr 2007; Chris Gianelloni <wolf31o2@gentoo.org> +pwgen-2.05.ebuild:
+  Version bump and closing bug #172282.
+
+  27 Nov 2006; Timothy Redaelli <drizzt@gentoo.org> pwgen-2.04.ebuild:
+  Added ~x86-fbsd keyword.
+
+  08 Oct 2006; Fabian Groffen <grobian@gentoo.org> pwgen-2.04.ebuild:
+  Dropped ~ppc-macos, see you in prefix.
+
+  05 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org> files/pwgen.rc:
+  Removing the escapes in the init script. Thanks to Tim Yamin
+  <plasmaroo@gentoo.org> for pointing it out.
+
+  03 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -files/pwgen-2.03-addl_pw_chars.patch, -pwgen-2.03-r1.ebuild:
+  Cleaning up older versions.
+
+  06 Oct 2005; Michael Hanselmann <hansmi@gentoo.org> pwgen-2.04.ebuild:
+  Stable on hppa.
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> pwgen-2.04.ebuild:
+  Mark 2.04 stable on ia64
+
+  14 Sep 2005; Aaron Walker <ka0ttic@gentoo.org> pwgen-2.04.ebuild:
+  Stable on mips for bug #105690.
+
+  13 Sep 2005; Markus Rothe <corsair@gentoo.org> pwgen-2.04.ebuild:
+  Stable on ppc64 (bug #105690)
+
+  12 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org> pwgen-2.04.ebuild:
+  Stable on sparc wrt #105690
+
+  12 Sep 2005; Fabian Groffen <grobian@gentoo.org> pwgen-2.04.ebuild:
+  Marked stable on ppc-macos (bug #105690)
+
+  12 Sep 2005; Joseph Jezak <josejx@gentoo.org> pwgen-2.04.ebuild:
+  Marked ppc stable for bug #105690.
+
+  12 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org> pwgen-2.04.ebuild:
+  Marked stable on x86 and closing bug #105690.
+
+  12 Sep 2005; <dang@gentoo.org> pwgen-2.04.ebuild:
+  Marked stable on amd64
+
+  12 Sep 2005; Fernando J. Pereda <ferdy@gentoo.org> pwgen-2.04.ebuild:
+  stable on alpha wrt bug #105690
+
+  05 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org> -pwgen-2.01.ebuild,
+  pwgen-2.03-r1.ebuild, pwgen-2.04.ebuild:
+  Added ia64 to KEYWORDS.  Blame plasmaroo.
+
+*pwgen-2.04 (15 Jun 2005)
+
+  15 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org> +pwgen-2.04.ebuild:
+  Version bumped to 2.04 and closing bug #96182.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  24 Jun 2004; Alexander Plank <alexander@gentoo.org> pwgen-2.03-r1.ebuild:
+  Add macos keyword to pwgen
+
+  17 Jun 2004; Chris Gianelloni <wolf31o2@gentoo.org> metadata.xml,
+  +files/pwgen.rc, pwgen-2.01.ebuild, pwgen-2.03-r1.ebuild,
+  -pwgen-2.03.ebuild:
+  Taking ownership for livecd herd (previously unmaintained) and adding init
+  script if USE=livecd.
+
+  06 Jun 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
+  pwgen-2.01.ebuild, pwgen-2.03-r1.ebuild, pwgen-2.03.ebuild:
+  QA - IUSE fix
+
+  09 May 2004; Ilya A. Volynets-Evenbach <iluxa@gentoo.org>
+  pwgen-2.03-r1.ebuild:
+  mark pwgen-2.03-r1 stable on mips
+
+  04 May 2004; Bryan Østergaard <kloeri@gentoo.org> pwgen-2.01.ebuild,
+  pwgen-2.03-r1.ebuild, pwgen-2.03.ebuild:
+  Stable on alpha.
+
+  25 Apr 2004; Aron Griffis <agriffis@gentoo.org> pwgen-2.01.ebuild,
+  pwgen-2.03-r1.ebuild, pwgen-2.03.ebuild:
+  Add die following econf for bug 48950
+
+  07 Mar 2004; Tom Gall <tgall@gentoo.org> pwgen-2.03-r1.ebuild:
+  stable on ppc64
+
+  06 Mar 2004; Ilya A. Volynets-Evenbakh <ilya@total-knowledge.com>
+  pwgen-2.03-r1.ebuild:
+  mark as ~mips
+
+  04 Jan 2004; Jason Wever <weeve@gentoo.org> pwgen-2.01.ebuild,
+  pwgen-2.03-r1.ebuild, pwgen-2.03.ebuild:
+  Marked 2.0.3-r1 stable on sparc and updated copyright dates on all ebuilds.
+
+  13 Dec 2003; Guy Martin <gmsoft@gentoo.org> pwgen-2.03-r1.ebuild:
+  Marked stable on hppa.
+
+*pwgen-2.03-r1 (21 Sep 2003)
+
+  21 Sep 2003; Seemant Kulleen <seemant@gentoo.org> pwgen-2.03-r1.ebuild:
+  patch to revert pwgen's behaviour to its predecesor's -- now, non
+  alpha-numeric characters will not be forbidden with the --secure option.
+  thanks to: Gontran Zepeda <gontran@gontran.net> in bug #28727
+
+  07 Aug 2003; Tavis Ormandy <taviso@gentoo.org> pwgen-2.03.ebuild:
+  alpha keyword
+
+*pwgen-2.03 (25 May 2003)
+
+  02 Jul 2003; Guy Martin <gmsoft@gentoo.org> pwgen-2.03.ebuild :
+  Marked stable on hppa.
+
+  25 May 2003; Martin Holzer <mholzer@gentoo.org> pwgen-2.03.ebuild:
+  Version bumped.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*pwgen-2.01 (1 Feb 2002)
+
+  28 Mar 2003; Guy Martin <gmsoft@gentoo.org> pwgen-2.01.ebuild :
+  Added hppa to KEYWORDS.
+
+  29 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> pwgen-2.01.ebuild
+
+  Added ppc to KEYWORDS. Added RDEPEND.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

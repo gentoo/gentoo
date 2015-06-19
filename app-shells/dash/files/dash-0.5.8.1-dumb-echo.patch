@@ -1,0 +1,54 @@
+http://bugs.gentoo.org/337329
+http://bugs.gentoo.org/527848
+
+there's no requirement for `echo` to support escape sequences. bash, by default,
+does not, while dash always does.  POSIX permits either behavior:
+http://pubs.opengroup.org/onlinepubs/9699919799/utilities/echo.html
+
+however, since the behavior is not portable, no one should be relying on echo
+having any specific behavior.  they should use `printf` when they want an escape
+sequence.  it also makes dash smaller & faster to disable this logic entirely.
+
+--- a/src/bltin/printf.c
++++ b/src/bltin/printf.c
+@@ -439,34 +444,12 @@
+ int
+ echocmd(int argc, char **argv)
+ {
+-	int nonl = 0;
+-	struct output *outs = out1;
+-
+-	if (!*++argv)
+-		goto end;
+-	if (equal(*argv, "-n")) {
+-		nonl = ~nonl;
+-		if (!*++argv)
+-			goto end;
++	int i;
++	for (i = 1; i < argc; ++i) {
++		outstr(argv[i], out1);
++		if (i < argc - 1)
++			outc(' ', out1);
+ 	}
+-
+-	do {
+-		int c;
+-
+-		nonl += conv_escape_str(*argv);
+-		outstr(stackblock(), outs);
+-		if (nonl > 0)
+-			break;
+-
+-		c = ' ';
+-		if (!*++argv) {
+-end:
+-			if (nonl) {
+-				break;
+-			}
+-			c = '\n';
+-		}
+-		outc(c, outs);
+-	} while (*argv);
++	outc('\n', out1);
+ 	return 0;
+ }

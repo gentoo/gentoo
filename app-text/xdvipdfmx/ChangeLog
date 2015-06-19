@@ -1,0 +1,271 @@
+# ChangeLog for app-text/xdvipdfmx
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/xdvipdfmx/ChangeLog,v 1.72 2014/08/10 18:37:16 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  xdvipdfmx-0.7.8_p20120701.ebuild, xdvipdfmx-0.7.9_p20130530.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*xdvipdfmx-0.7.9_p20130530 (25 Jun 2013)
+
+  25 Jun 2013; Alexis Ballier <aballier@gentoo.org>
+  +xdvipdfmx-0.7.9_p20130530.ebuild:
+  version bump
+
+  25 Jun 2013; Alexis Ballier <aballier@gentoo.org> -xdvipdfmx-0.4.ebuild,
+  -xdvipdfmx-0.7.8_p20100722.ebuild, -xdvipdfmx-0.7.8_p20110705.ebuild,
+  -files/xdvipdfmx-0.4-ft2-internals.patch:
+  remove old
+
+  25 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  xdvipdfmx-0.7.8_p20120701.ebuild:
+  Stable for sh, wrt bug #449298
+
+  22 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  xdvipdfmx-0.7.8_p20120701.ebuild:
+  Stable for s390, wrt bug #449298
+
+  21 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  xdvipdfmx-0.7.8_p20120701.ebuild:
+  Stable for sparc, wrt bug #449298
+
+  21 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  xdvipdfmx-0.7.8_p20120701.ebuild:
+  Stable for arm, wrt bug #449298
+
+  20 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  xdvipdfmx-0.7.8_p20120701.ebuild:
+  Stable for alpha, wrt bug #449298
+
+  19 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  xdvipdfmx-0.7.8_p20120701.ebuild:
+  Stable for ia64, wrt bug #449298
+
+  18 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  xdvipdfmx-0.7.8_p20120701.ebuild:
+  Stable for ppc64, wrt bug #449298
+
+  18 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  xdvipdfmx-0.7.8_p20120701.ebuild:
+  Stable for ppc, wrt bug #449298
+
+  18 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  xdvipdfmx-0.7.8_p20120701.ebuild:
+  Stable for x86, wrt bug #449298
+
+  18 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  xdvipdfmx-0.7.8_p20120701.ebuild:
+  Stable for amd64, wrt bug #449298
+
+  17 Apr 2013; Jeroen Roovers <jer@gentoo.org>
+  xdvipdfmx-0.7.8_p20120701.ebuild:
+  Stable for HPPA (bug #449298).
+
+  07 Dec 2012; Agostino Sarubbo <ago@gentoo.org>
+  xdvipdfmx-0.7.8_p20110705.ebuild:
+  Stable for ppc64, wrt bug #414965
+
+  17 Sep 2012; Christoph Junghans <ottxor@gentoo.org>
+  xdvipdfmx-0.7.8_p20120701.ebuild:
+  added prefix support (bug #435264)
+
+  22 Aug 2012; Michael Weber <xmw@gentoo.org> xdvipdfmx-0.7.8_p20110705.ebuild:
+  ppc stable (bug 414965).
+
+*xdvipdfmx-0.7.8_p20120701 (26 Jul 2012)
+
+  26 Jul 2012; Alexis Ballier <aballier@gentoo.org>
+  +xdvipdfmx-0.7.8_p20120701.ebuild:
+  Bump to TeX Live 2012 version.
+
+  17 Jun 2012; Raúl Porcel <armin76@gentoo.org>
+  xdvipdfmx-0.7.8_p20110705.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #414431
+
+  21 May 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  xdvipdfmx-0.7.8_p20110705.ebuild:
+  x86 stable wrt bug #414965
+
+  16 May 2012; Jeroen Roovers <jer@gentoo.org>
+  xdvipdfmx-0.7.8_p20110705.ebuild:
+  Stable for HPPA (bug #414965).
+
+  13 May 2012; Markus Meier <maekke@gentoo.org>
+  xdvipdfmx-0.7.8_p20110705.ebuild:
+  arm stable, bug #414965
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org>
+  xdvipdfmx-0.7.8_p20110705.ebuild:
+  keyword ~amd64-fbsd
+
+  07 May 2012; Agostino Sarubbo <ago@gentoo.org>
+  xdvipdfmx-0.7.8_p20110705.ebuild:
+  Stable for amd64, wrt bug #414965
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  xdvipdfmx-0.7.8_p20100722.ebuild, xdvipdfmx-0.7.8_p20110705.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  04 Oct 2011; Jeroen Roovers <jer@gentoo.org>
+  xdvipdfmx-0.7.8_p20100722.ebuild:
+  Stable for HPPA (bug #355085).
+
+  18 Sep 2011; Raúl Porcel <armin76@gentoo.org>
+  xdvipdfmx-0.7.8_p20100722.ebuild:
+  alpha/ia64/sparc stable wrt #355085
+
+  14 Aug 2011; Markus Meier <maekke@gentoo.org>
+  xdvipdfmx-0.7.8_p20100722.ebuild:
+  arm stable, bug #355085
+
+  12 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  xdvipdfmx-0.7.8_p20100722.ebuild:
+  ppc/ppc64 stable wrt #355085
+
+  12 Aug 2011; Thomas Kahle <tomka@gentoo.org>
+  xdvipdfmx-0.7.8_p20100722.ebuild:
+  x86 stable per bug 355085
+
+  09 Aug 2011; Markos Chandras <hwoarang@gentoo.org>
+  xdvipdfmx-0.7.8_p20100722.ebuild:
+  Stable on amd64 wrt bug #355085
+
+  07 Aug 2011; Raúl Porcel <armin76@gentoo.org>
+  xdvipdfmx-0.7.8_p20110705.ebuild:
+  Add ~arm/~ia64/~s390/~sh/~sparc wrt #376611
+
+*xdvipdfmx-0.7.8_p20110705 (27 Jul 2011)
+
+  27 Jul 2011; Alexis Ballier <aballier@gentoo.org>
+  +xdvipdfmx-0.7.8_p20110705.ebuild:
+  bump to xdvipdfmx from TeX Live 2011, rdepend on dvipdfmx for dvipdfmx.cfg,
+  bug #222869
+
+  11 Jul 2011; Alexis Ballier <aballier@gentoo.org>
+  xdvipdfmx-0.7.8_p20100722.ebuild:
+  keyword ~x86-fbsd
+
+  13 Jun 2011; Matt Turner <mattst88@gentoo.org>
+  xdvipdfmx-0.7.8_p20100722.ebuild:
+  Added ~mips, bug 342513
+
+  27 Feb 2011; Raúl Porcel <armin76@gentoo.org>
+  xdvipdfmx-0.7.8_p20100722.ebuild:
+  Add ~alpha/~ia64/~s390/~sh/~sparc wrt #342513
+
+  20 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  xdvipdfmx-0.7.8_p20100722.ebuild:
+  Marked ~ppc/~ppc64 wrt #342513
+
+  01 Nov 2010; Markus Meier <maekke@gentoo.org>
+  xdvipdfmx-0.7.8_p20100722.ebuild:
+  add ~arm, bug #342513
+
+  25 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  xdvipdfmx-0.7.8_p20100722.ebuild:
+  add ~x86, bug 342513
+
+  25 Oct 2010; Jeroen Roovers <jer@gentoo.org>
+  xdvipdfmx-0.7.8_p20100722.ebuild:
+  Marked ~hppa (bug #342513).
+
+*xdvipdfmx-0.7.8_p20100722 (24 Oct 2010)
+
+  24 Oct 2010; Alexis Ballier <aballier@gentoo.org>
+  +xdvipdfmx-0.7.8_p20100722.ebuild:
+  Bump it to the TeX Live 2010 version so that we can remove it from
+  texlive-core
+
+  12 Jun 2010; Alexis Ballier <aballier@gentoo.org> xdvipdfmx-0.4.ebuild:
+  fix description, by Nick Bowler <nbowler@draconx.ca>, bug #304049
+
+  20 Mar 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Removing joslwah as a maintainer since he was retired.
+
+  04 Sep 2008; Christian Faulhammer <opfer@gentoo.org>
+  -xdvipdfmx-0.3.ebuild:
+  clean up
+
+  12 May 2008; nixnut <nixnut@gentoo.org> xdvipdfmx-0.4.ebuild:
+  Stable on ppc wrt bug 220651
+
+  16 Apr 2008; Peter Volkov <pva@gentoo.org> xdvipdfmx-0.4.ebuild:
+  amd64 stable, bug #215735.
+
+  08 Apr 2008; Raúl Porcel <armin76@gentoo.org> xdvipdfmx-0.4.ebuild:
+  alpha/ia64/sparc stable wrt #215735
+
+  01 Apr 2008; Christian Faulhammer <opfer@gentoo.org> xdvipdfmx-0.4.ebuild:
+  stable x86, bug 215735
+
+  10 Feb 2008; Alexis Ballier <aballier@gentoo.org> xdvipdfmx-0.4.ebuild:
+  keyword ~x86-fbsd
+
+  19 Dec 2007; Jeroen Roovers <jer@gentoo.org> xdvipdfmx-0.4.ebuild:
+  Stable for HPPA too. Fixed installing COPYING.
+
+  01 Dec 2007; Markus Rothe <corsair@gentoo.org> xdvipdfmx-0.4.ebuild:
+  Stable on ppc64
+
+  19 Nov 2007; Ferris McCormick <fmccor@gentoo.org> xdvipdfmx-0.4.ebuild:
+  Sparc stable.  30 days w/o any bugs, needed for xetex (bug #185358).
+
+  25 Oct 2007; Raúl Porcel <armin76@gentoo.org> xdvipdfmx-0.4.ebuild:
+  Add ~alpha/~ia64 wrt #195815
+
+*xdvipdfmx-0.4 (15 Oct 2007)
+
+  15 Oct 2007; Alexis Ballier <aballier@gentoo.org>
+  +files/xdvipdfmx-0.4-ft2-internals.patch, +xdvipdfmx-0.4.ebuild:
+  version bump, plus backport a patch from upstream to avoid segfaults with
+  recents freetype-2, bug #185358
+
+  20 May 2007; Christian Faulhammer <opfer@gentoo.org> xdvipdfmx-0.3.ebuild:
+  stable amd64, bug 176895
+
+  06 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  xdvipdfmx-0.3.ebuild:
+  ppc stable, bug #176895
+
+  03 May 2007; Raúl Porcel <armin76@gentoo.org> xdvipdfmx-0.3.ebuild:
+  ia64 + x86 stable wrt bug 176895
+
+  03 May 2007; Jeroen Roovers <jer@gentoo.org> xdvipdfmx-0.3.ebuild:
+  Stable for HPPA (bug #176895).
+
+  03 May 2007; Ferris McCormick <fmccor@gentoo.org> xdvipdfmx-0.3.ebuild:
+  Sparc stable --- Bug #176895 --- Has been working for over 6 months.
+
+  03 May 2007; Joshua <joslwah@gentoo.org> xdvipdfmx-0.3.ebuild:
+  ppc64 stable
+
+  26 Mar 2007; Raúl Porcel <armin76@gentoo.org> xdvipdfmx-0.3.ebuild:
+  Add ~ia64 wrt bug 153132
+
+  12 Mar 2007; Alexandre Buisse <nattfodd@gentoo.org> metadata.xml:
+  Replaced text-markup by tex as maintaining herd (text-markup split).
+
+  28 Jan 2007; Joshua <joslwah@gentoo.org> xdvipdfmx-0.3.ebuild:
+  Added dependency on tetex.  Thanks Ron MacNeil.  (Bug 164085)
+
+  26 Nov 2006; Steve Dibb <beandog@gentoo.org> xdvipdfmx-0.3.ebuild:
+  Update homepage
+
+  06 Nov 2006; Ferris McCormick <fmccor@gentoo.org> xdvipdfmx-0.3.ebuild:
+  Add ~amd64 keyword --- Bug #153132
+
+  31 Oct 2006; Christian Faulhammer <opfer@gentoo.org> xdvipdfmx-0.3.ebuild::
+  marked ~x86 as requested in bug #153132
+
+  30 Oct 2006; Jeroen Roovers <jer@gentoo.org> xdvipdfmx-0.3.ebuild:
+  Marked ~hppa (bug #153132).
+
+  30 Oct 2006; nixnut <nixnut@gentoo.org> xdvipdfmx-0.3.ebuild:
+  Added ~ppc keyword wrt bug 153132
+
+  28 Oct 2006; Ferris McCormick <fmccor@gentoo.org> xdvipdfmx-0.3.ebuild:
+  Add ~sparc keyword (Bug #153132).
+
+  18 Oct 2006; Joslwah <joslwah@gentoo.org> ChangeLog:
+  Initial creation of ebuild, to support XeTeX.

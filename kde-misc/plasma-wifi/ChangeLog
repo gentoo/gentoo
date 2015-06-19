@@ -1,0 +1,12 @@
+# ChangeLog for kde-misc/plasma-wifi
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/plasma-wifi/ChangeLog,v 1.2 2014/08/05 16:31:41 mrueg Exp $
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> plasma-wifi-0.5-r1.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+*plasma-wifi-0.5-r1 (21 Jun 2013)
+
+  21 Jun 2013; Chris Reffett <creffett@gentoo.org> +metadata.xml,
+  +plasma-wifi-0.5-r1.ebuild:
+  Add to tree from kde overlay

@@ -1,0 +1,73 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/transmission/files/transmission-daemon.initd.9,v 1.1 2013/09/07 12:10:01 ssuominen Exp $
+
+extra_started_commands="reload"
+description="Transmission is a fast, easy and free bittorrent client"
+description_start="Start transmission-daemon server and web interface"
+description_stop="Stop transmission-daemon server and web interface"
+description_reload="Reload transmission-daemon settings"
+
+rundir=${rundir:-/var/run/transmission}
+pidfile=${pidfile:-${rundir}/transmission.pid}
+config_dir=${config_dir:-/var/lib/transmission/config}
+download_dir=${download_dir:-/var/lib/transmission/downloads}
+logfile=${logfile:-/var/log/transmission/transmission.log}
+runas_user=${runas_user:-transmission:transmission}
+
+SSD_OPTIONS=""
+
+depend() {
+	need net
+}
+
+check_config() {
+	if [ ! -d "${rundir}" ]; then
+		mkdir "${rundir}"
+		if [ -n "${runas_user}" ]; then
+			chown -R ${runas_user} "${rundir}"
+		fi
+	fi
+
+	# In case no config directory option passed use default
+	if ! $(echo ${TRANSMISSION_OPTIONS} | grep -q -e '\B-g' -e '\B--config-dir'); then
+		TRANSMISSION_OPTIONS="${TRANSMISSION_OPTIONS} --config-dir ${config_dir}"
+		# put download dir location on first run (and take it from config later)
+		if [ ! -f ${config_dir}/settings.json ]; then
+			TRANSMISSION_OPTIONS="${TRANSMISSION_OPTIONS} --download-dir ${download_dir}"
+		fi
+	fi
+
+	if [ -n "${runas_user}" ]; then
+		if [ -f /etc/init.d/sysfs ]; then
+			SSD_OPTIONS="${SSD_OPTIONS} --user ${runas_user}"
+		else
+			SSD_OPTIONS="${SSD_OPTIONS} --chuid ${runas_user}"
+		fi
+	fi
+}
+
+start() {
+	check_config
+
+	ebegin "Starting transmission daemon"
+	start-stop-daemon --start --quiet --pidfile ${pidfile} ${SSD_OPTIONS} \
+		--exec /usr/bin/transmission-daemon -- --pid-file ${pidfile} \
+		$(test ${logfile} != "syslog" && echo --logfile ${logfile}) \
+		${TRANSMISSION_OPTIONS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping transmission daemon"
+	start-stop-daemon --stop --quiet --retry TERM/45/QUIT/15 --pidfile ${pidfile}
+	eend $?
+}
+
+reload() {
+	ebegin "Reloading transmission configuration"
+	start-stop-daemon --signal HUP --pidfile ${pidfile}
+	eend $?
+}
+

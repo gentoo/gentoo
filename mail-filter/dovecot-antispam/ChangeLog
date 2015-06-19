@@ -1,0 +1,150 @@
+# ChangeLog for mail-filter/dovecot-antispam
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/dovecot-antispam/ChangeLog,v 1.31 2014/10/01 16:28:19 radhermit Exp $
+
+  01 Oct 2014; Tim Harder <radhermit@gentoo.org>
+  dovecot-antispam-2.0_pre20130429.ebuild:
+  Keyword ~arm for bug #523938.
+
+  18 Feb 2014; Tim Harder <radhermit@gentoo.org>
+  -dovecot-antispam-2.0_pre20120226.ebuild:
+  Remove old.
+
+  17 May 2013; Tim Harder <radhermit@gentoo.org>
+  dovecot-antispam-2.0_pre20120226.ebuild,
+  dovecot-antispam-2.0_pre20130429.ebuild:
+  Update required dovecot versions.
+
+  16 May 2013; Tim Harder <radhermit@gentoo.org>
+  dovecot-antispam-2.0_pre20130429.ebuild:
+  Make elog messages only show on new installs.
+
+*dovecot-antispam-2.0_pre20130429 (16 May 2013)
+
+  16 May 2013; Tim Harder <radhermit@gentoo.org>
+  +dovecot-antispam-2.0_pre20130429.ebuild:
+  Version bump (fixes bug #470078).
+
+  18 Dec 2012; Tim Harder <radhermit@gentoo.org> -dovecot-antispam-1.3.ebuild,
+  -dovecot-antispam-2.0_pre20101222.ebuild, metadata.xml:
+  Remove old.
+
+  03 Mar 2012; Tim Harder <radhermit@gentoo.org>
+  dovecot-antispam-2.0_pre20101222.ebuild:
+  Restrict to working versions.
+
+*dovecot-antispam-2.0_pre20120226 (03 Mar 2012)
+
+  03 Mar 2012; Tim Harder <radhermit@gentoo.org>
+  +dovecot-antispam-2.0_pre20120226.ebuild:
+  Version bump to support >=dovecot-2.1.0 (fixes bug #406785).
+
+*dovecot-antispam-2.0_pre20101222 (24 Oct 2011)
+
+  24 Oct 2011; Tim Harder <radhermit@gentoo.org>
+  +dovecot-antispam-2.0_pre20101222.ebuild, metadata.xml:
+  Version bump to dovecot-2 compatible snapshot (fixes bug #358599). Add myself
+  as maintainer.
+
+  14 May 2011; Eray Aslan <eras@gentoo.org> metadata.xml:
+  assign to maintainer-needed
+
+  14 May 2011; Benedikt Böhm <hollow@gentoo.org> metadata.xml:
+  assign to net-mail herd
+
+  15 Oct 2010; Jeremy Olexa <darkside@gentoo.org>
+  -files/dovecot-antispam-dovecot1.2-compilefix.patch,
+  -dovecot-antispam-1.1.ebuild, -dovecot-antispam-1.2.ebuild:
+  remove old versions
+
+  28 Sep 2010; Patrick Lauer <patrick@gentoo.org>
+  dovecot-antispam-1.2.ebuild, dovecot-antispam-1.3.ebuild:
+  Fixing deps to only build against dovecot-1
+
+*dovecot-antispam-1.3 (29 May 2010)
+
+  29 May 2010; Benedikt Böhm <hollow@gentoo.org>
+  +dovecot-antispam-1.3.ebuild:
+  version bump wrt #320651
+
+  11 Mar 2010; Tristan Heaven <nyhm@gentoo.org> dovecot-antispam-1.2.ebuild:
+  inherit eutils for epatch
+
+  04 Mar 2010; Benedikt Böhm <hollow@gentoo.org>
+  dovecot-antispam-1.2.ebuild, metadata.xml:
+  add spool2dir use flag wrt #295566
+
+*dovecot-antispam-1.2 (12 Sep 2009)
+
+  12 Sep 2009; Patrick Lauer <patrick@gentoo.org>
+  +files/dovecot-antispam-dovecot1.2-compilefix.patch,
+  +dovecot-antispam-1.2.ebuild:
+  Bump to 1.2. Fixes compilation issues with dovecot-1.2. Thanks to Oliver
+  Sucker and Dennis Schridde for the patch. Closes #276111
+
+  12 Sep 2009; Patrick Lauer <patrick@gentoo.org>
+  dovecot-antispam-1.1.ebuild:
+  Fixing dep, doesn't build with dovecot 1.2 at the moment. Patches coming
+
+  26 Jul 2009; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd> tag
+
+  24 Mar 2009; Benedikt Böhm <hollow@gentoo.org>
+  -dovecot-antispam-20080829.ebuild:
+  remove old ebuild wrt #258885
+
+  14 Jan 2009; Benedikt Böhm <hollow@gentoo.org>
+  dovecot-antispam-1.1.ebuild, dovecot-antispam-20080829.ebuild:
+  fix default USE wrt #254749
+
+*dovecot-antispam-1.1 (18 Nov 2008)
+
+  18 Nov 2008; Benedikt Böhm <hollow@gentoo.org>
+  +dovecot-antispam-1.1.ebuild, -dovecot-antispam-20071019.ebuild,
+  -dovecot-antispam-20080227.ebuild, -dovecot-antispam-20080424.ebuild,
+  -dovecot-antispam-20080601.ebuild:
+  version bump wrt #246436
+
+*dovecot-antispam-20080829 (29 Aug 2008)
+
+  29 Aug 2008; Benedikt Böhm <hollow@gentoo.org>
+  +dovecot-antispam-20080829.ebuild:
+  version bump wrt #235587
+
+  23 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+*dovecot-antispam-20080601 (01 Jun 2008)
+
+  01 Jun 2008; Benedikt Böhm <hollow@gentoo.org>
+  +dovecot-antispam-20080601.ebuild:
+  version bump, fixes #212594
+
+*dovecot-antispam-20080424 (24 Apr 2008)
+
+  24 Apr 2008; Benedikt Böhm <hollow@gentoo.org>
+  +dovecot-antispam-20080424.ebuild:
+  version bump
+
+  27 Feb 2008; Benedikt Böhm <hollow@gentoo.org> metadata.xml:
+  fix metadata, no-herd is redundant
+
+*dovecot-antispam-20080227 (27 Feb 2008)
+
+  27 Feb 2008; Benedikt Böhm <hollow@gentoo.org>
+  dovecot-antispam-20071019.ebuild, +dovecot-antispam-20080227.ebuild:
+  version bump; fix #205862
+
+  13 Feb 2008; Christian Faulhammer <opfer@gentoo.org> metadata.xml:
+  add no-herd
+
+  21 Oct 2007; Benedikt Böhm <hollow@gentoo.org>
+  dovecot-antispam-20071019.ebuild:
+  fix moduledir
+
+*dovecot-antispam-20071019 (21 Oct 2007)
+
+  21 Oct 2007; Benedikt Böhm <hollow@gentoo.org> +metadata.xml,
+  +dovecot-antispam-20071019.ebuild:
+  initial ebuild
+

@@ -1,0 +1,456 @@
+# ChangeLog for dev-libs/libassuan
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libassuan/ChangeLog,v 1.125 2015/05/14 15:09:53 k_f Exp $
+
+*libassuan-2.2.1 (14 May 2015)
+
+  14 May 2015; Kristian Fiskerstrand <k_f@gentoo.org> +libassuan-2.2.1.ebuild:
+  Version bump
+
+*libassuan-2.2.0 (17 Dec 2014)
+
+  17 Dec 2014; Tim Harder <radhermit@gentoo.org> +libassuan-2.2.0.ebuild:
+  Version bump.
+
+*libassuan-2.1.3 (04 Dec 2014)
+
+  04 Dec 2014; Tim Harder <radhermit@gentoo.org> +libassuan-2.1.3.ebuild:
+  Version bump.
+
+  14 Nov 2014; Fabian Groffen <grobian@gentoo.org> libassuan-2.1.2.ebuild:
+  Fix building shared libary on Solaris
+
+*libassuan-2.1.2 (08 Oct 2014)
+
+  08 Oct 2014; Alon Bar-Lev <alonbl@gentoo.org> +libassuan-2.1.2.ebuild,
+  -libassuan-2.0.3.ebuild, -libassuan-2.1.0.ebuild:
+  Version bump, bug#524740, cleanup
+
+  05 Feb 2014; Mike Frysinger <vapier@gentoo.org> libassuan-2.0.3.ebuild,
+  libassuan-2.1.0.ebuild, libassuan-2.1.1.ebuild:
+  Mark s390/sh stable.
+
+  20 Jan 2014; Mike Frysinger <vapier@gentoo.org> libassuan-2.1.1.ebuild:
+  Add arm64 love.
+
+  18 Jan 2014; Agostino Sarubbo <ago@gentoo.org> libassuan-2.1.1.ebuild:
+  Stable for alpha, wrt bug #492032
+
+  15 Jan 2014; Agostino Sarubbo <ago@gentoo.org> libassuan-2.1.1.ebuild:
+  Stable for ia64, wrt bug #492032
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> libassuan-2.1.1.ebuild:
+  Stable for x86, wrt bug #492032
+
+  23 Dec 2013; Markus Meier <maekke@gentoo.org> libassuan-2.1.1.ebuild:
+  arm stable, bug #492032
+
+  23 Dec 2013; Agostino Sarubbo <ago@gentoo.org> libassuan-2.1.1.ebuild:
+  Stable for sparc, wrt bug #492032
+
+  22 Dec 2013; Pacho Ramos <pacho@gentoo.org> libassuan-2.1.1.ebuild:
+  amd64 stable, bug #492032
+
+  22 Dec 2013; Agostino Sarubbo <ago@gentoo.org> libassuan-2.1.1.ebuild:
+  Stable for ppc64, wrt bug #492032
+
+  21 Dec 2013; Agostino Sarubbo <ago@gentoo.org> libassuan-2.1.1.ebuild:
+  Stable for ppc, wrt bug #492032
+
+  05 Dec 2013; Michael Haubenwallner <haubi@gentoo.org> libassuan-2.1.1.ebuild:
+  add ~ppc-aix keyword
+
+  30 Nov 2013; Jeroen Roovers <jer@gentoo.org> libassuan-2.1.1.ebuild:
+  Stable for HPPA (bug #492032).
+
+  30 Jun 2013; Agostino Sarubbo <ago@gentoo.org> libassuan-2.1.0.ebuild:
+  Stable for s390, wrt bug #471410
+
+*libassuan-2.1.1 (30 Jun 2013)
+
+  30 Jun 2013; Tim Harder <radhermit@gentoo.org> +libassuan-2.1.1.ebuild:
+  Version bump.
+
+  29 Jun 2013; Agostino Sarubbo <ago@gentoo.org> libassuan-2.1.0.ebuild:
+  Stable for sparc, wrt bug #471410
+
+  26 Jun 2013; Agostino Sarubbo <ago@gentoo.org> libassuan-2.1.0.ebuild:
+  Stable for ia64, wrt bug #471410
+
+  26 Jun 2013; Agostino Sarubbo <ago@gentoo.org> libassuan-2.1.0.ebuild:
+  Stable for alpha, wrt bug #471410
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> libassuan-2.1.0.ebuild:
+  Stable for amd64, wrt bug #471410
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> libassuan-2.1.0.ebuild:
+  Stable for x86, wrt bug #471410
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> libassuan-2.1.0.ebuild:
+  Stable for ppc64, wrt bug #471410
+
+  24 Jun 2013; Agostino Sarubbo <ago@gentoo.org> libassuan-2.1.0.ebuild:
+  Stable for ppc, wrt bug #471410
+
+  09 Jun 2013; Agostino Sarubbo <ago@gentoo.org> libassuan-2.1.0.ebuild:
+  Stable for sh, wrt bug #471410
+
+  09 Jun 2013; Markus Meier <maekke@gentoo.org> libassuan-2.1.0.ebuild:
+  arm stable, bug #471410
+
+  03 Jun 2013; Jeroen Roovers <jer@gentoo.org> libassuan-2.1.0.ebuild:
+  Stable for HPPA (bug #471410).
+
+*libassuan-2.1.0 (06 Mar 2013)
+
+  06 Mar 2013; Alon Bar-Lev <alonbl@gentoo.org> +libassuan-2.1.0.ebuild:
+  Version bump, per bug#460336
+
+  19 Feb 2013; Zac Medico <zmedico@gentoo.org> libassuan-2.0.3.ebuild:
+  Add ~arm-linux keyword.
+
+  23 Dec 2012; Fabian Groffen <grobian@gentoo.org> libassuan-2.0.3.ebuild:
+  Marked ~sparc64-solaris
+
+  08 Sep 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+  05 Sep 2012; Tim Harder <radhermit@gentoo.org> -libassuan-2.0.1.ebuild,
+  -libassuan-2.0.2.ebuild:
+  Remove old.
+
+  26 Aug 2012; Raúl Porcel <armin76@gentoo.org> libassuan-2.0.3.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #418747
+
+  21 Aug 2012; Christoph Junghans <ottxor@gentoo.org> libassuan-2.0.3.ebuild:
+  added prefix keywords
+
+  06 Aug 2012; Anthony G. Basile <blueness@gentoo.org> libassuan-2.0.3.ebuild:
+  Stable ppc ppc64, bug #418747
+
+  05 Aug 2012; Markus Meier <maekke@gentoo.org> libassuan-2.0.3.ebuild:
+  arm stable, bug #418747
+
+  03 Aug 2012; Markos Chandras <hwoarang@gentoo.org> libassuan-2.0.3.ebuild:
+  Stable on amd64 wrt bug #418747
+
+  01 Aug 2012; Jeroen Roovers <jer@gentoo.org> libassuan-2.0.3.ebuild:
+  Stable for HPPA (bug #418747).
+
+  01 Aug 2012; Jeff Horelick <jdhore@gentoo.org> libassuan-2.0.3.ebuild:
+  marked x86 per bug 418747
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org> libassuan-2.0.3.ebuild:
+  keyword ~amd64-fbsd
+
+*libassuan-2.0.3 (26 Dec 2011)
+
+  26 Dec 2011; Tim Harder <radhermit@gentoo.org> +libassuan-2.0.3.ebuild:
+  Version bump.
+
+  10 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> libassuan-2.0.2.ebuild:
+  Remove libassuan.la in favour of libassuan-config --cflags and --libs wrt
+  #385849 by "albecasa"
+
+*libassuan-2.0.2 (04 Jul 2011)
+
+  04 Jul 2011; Robin H. Johnson <robbat2@gentoo.org> +libassuan-2.0.2.ebuild:
+  Version bump.
+
+  14 May 2011; Raúl Porcel <armin76@gentoo.org> libassuan-2.0.1.ebuild:
+  ia64/s390/sh/sparc stable wrt #355265
+
+  09 May 2011; Markus Meier <maekke@gentoo.org> libassuan-2.0.1.ebuild:
+  arm stable, bug #355265
+
+  23 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> libassuan-2.0.1.ebuild:
+  ppc/ppc64 stable wrt #355265
+
+  12 Mar 2011; Tobias Klausmann <klausman@gentoo.org> libassuan-2.0.1.ebuild:
+  Stable on alpha, bug #355265
+
+  11 Mar 2011; Thomas Kahle <tomka@gentoo.org> libassuan-2.0.1.ebuild:
+  x86 stable per bug 355265
+
+  08 Mar 2011; Jeroen Roovers <jer@gentoo.org> libassuan-2.0.1.ebuild:
+  Stable for HPPA (bug #355265).
+
+  19 Feb 2011; Markos Chandras <hwoarang@gentoo.org> libassuan-2.0.1.ebuild:
+  Stable on amd64 wrt bug #355265
+
+*libassuan-2.0.1 (12 Jan 2011)
+
+  12 Jan 2011; Dane Smith <c1pher@gentoo.org> +libassuan-2.0.1.ebuild:
+  Version bump. Thanks Sebastian Pipping bug 351442.
+
+  12 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org> libassuan-1.0.5.ebuild,
+  libassuan-2.0.0.ebuild:
+  Fix HOMEPAGE. Thanks to Sebastian Pipping in bug #351440.
+
+  30 Aug 2010; Raúl Porcel <armin76@gentoo.org> libassuan-2.0.0.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #320037
+
+  21 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  libassuan-2.0.0.ebuild:
+  ppc64 stable wrt #320037
+
+  19 Jul 2010; Markus Meier <maekke@gentoo.org> libassuan-2.0.0.ebuild:
+  arm stable, bug #320037
+
+  06 Jul 2010; Jeroen Roovers <jer@gentoo.org> libassuan-2.0.0.ebuild:
+  Stable for HPPA (bug #320037).
+
+  27 Jun 2010; Christian Faulhammer <fauli@gentoo.org>
+  libassuan-2.0.0.ebuild:
+  stable x86, bug 320037
+
+  26 May 2010; Markos Chandras <hwoarang@gentoo.org> libassuan-2.0.0.ebuild:
+  Stable on amd64 wrt bug #320037
+
+  24 May 2010; <nixnut@gentoo.org> libassuan-2.0.0.ebuild:
+  ppc stable #320037
+
+  19 May 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  libassuan-2.0.0.ebuild:
+  Add "static-libs" USE flag (bug #316065).
+
+*libassuan-2.0.0 (11 Jan 2010)
+
+  11 Jan 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +libassuan-2.0.0.ebuild:
+  Version bump.
+
+  03 Apr 2009; Tiago Cunha <tcunha@gentoo.org> libassuan-1.0.5.ebuild:
+  stable amd64, bug 263875
+
+  02 Apr 2009; Raúl Porcel <armin76@gentoo.org> libassuan-1.0.5.ebuild:
+  alpha/arm/ia64/s390/sh/sparc/x86 stable wrt #263875
+
+  27 Mar 2009; Jeroen Roovers <jer@gentoo.org> libassuan-1.0.5.ebuild:
+  Stable for HPPA (bug #263875).
+
+  26 Mar 2009; Brent Baude <ranger@gentoo.org> libassuan-1.0.5.ebuild:
+  Marking libassuan-1.0.5 ppc64 and ppc for bug 263875
+
+  04 Nov 2008; Daniel Black <dragonheart@gentoo.org>
+  -libassuan-1.0.2-r1.ebuild:
+  purge
+
+*libassuan-1.0.5 (30 Aug 2008)
+
+  30 Aug 2008; Daniel Black <dragonheart@gentoo.org>
+  +files/libassuan-1.0.5-qa.patch, libassuan-1.0.2-r1.ebuild,
+  libassuan-1.0.4.ebuild, +libassuan-1.0.5.ebuild:
+  version bump - bug #231611 thanks Arfrever Frehtes Taifersar Arahesis
+
+  13 Feb 2008; Alon Bar-Lev <alonbl@gentoo.org> -libassuan-0.6.10.ebuild:
+  Cleanup
+
+  08 Feb 2008; Santiago M. Mola <coldwind@gentoo.org>
+  libassuan-1.0.4.ebuild:
+  amd64 stable wrt bug #206683, thanks to Thomas A.
+
+  21 Jan 2008; Jeroen Roovers <jer@gentoo.org> libassuan-1.0.4.ebuild:
+  Stable for HPPA (bug #206683).
+
+  20 Jan 2008; Raúl Porcel <armin76@gentoo.org> libassuan-1.0.4.ebuild:
+  alpha/ia64/sparc/x86 stable wrt #206683
+
+  20 Jan 2008; nixnut <nixnut@gentoo.org> libassuan-1.0.4.ebuild:
+  Stable on ppc wrt bug 206683
+
+  20 Jan 2008; Brent Baude <ranger@gentoo.org> libassuan-1.0.4.ebuild:
+  Marking libassuan-1.0.4 ppc64 for bug 206683
+
+  02 Jan 2008; Alon Bar-Lev <alonbl@gentoo.org> libassuan-0.6.10.ebuild,
+  libassuan-1.0.2-r1.ebuild, libassuan-1.0.4.ebuild:
+  Fix home page, bug#204078, thanks to Arfrever Frehtes Taifersar Arahesis
+
+*libassuan-1.0.4 (12 Dec 2007)
+
+  12 Dec 2007; Alon Bar-Lev <alonbl@gentoo.org> +libassuan-1.0.4.ebuild:
+  Version bump
+
+  10 Nov 2007; Alon Bar-Lev <alonbl@gentoo.org> -libassuan-0.6.9.ebuild,
+  -libassuan-0.9.2.ebuild, -libassuan-0.9.3.ebuild, -libassuan-1.0.0.ebuild,
+  -libassuan-1.0.1.ebuild, -libassuan-1.0.2.ebuild:
+  Cleanup
+
+  09 Oct 2007; Christoph Mende <angelos@gentoo.org>
+  libassuan-1.0.2-r1.ebuild:
+  Stable on amd64 wrt bug #194113
+
+  05 Oct 2007; Tom Gall <tgall@gentoo.org> libassuan-1.0.2-r1.ebuild:
+  stable on ppc64
+
+  02 Oct 2007; Raúl Porcel <armin76@gentoo.org> libassuan-1.0.2-r1.ebuild:
+  alpha/ia64 stable wrt #194113
+
+  30 Sep 2007; Markus Meier <maekke@gentoo.org> libassuan-1.0.2-r1.ebuild:
+  x86 stable, bug #194113
+
+  29 Sep 2007; Lars Weiler <pylon@gentoo.org> libassuan-1.0.2-r1.ebuild:
+  stable ppc, bug #194113
+
+  29 Sep 2007; Jeroen Roovers <jer@gentoo.org> libassuan-1.0.2-r1.ebuild:
+  Stable for HPPA (bug #194113).
+
+  28 Sep 2007; Ferris McCormick <fmccor@gentoo.org>
+  libassuan-1.0.2-r1.ebuild:
+  Sparc stable --- Bug #194113 --- all tests pass.
+
+*libassuan-1.0.2-r1 (20 Jul 2007)
+
+  20 Jul 2007; Alon Bar-Lev <alonbl@gentoo.org> +libassuan-1.0.2-r1.ebuild:
+  Make archive PIC
+
+  06 Jul 2007; Alon Bar-Lev <alonbl@gentoo.org> libassuan-1.0.2.ebuild:
+  ebuild cleanups
+
+  06 Jul 2007; Alon Bar-Lev <alonbl@gentoo.org> libassuan-1.0.2.ebuild:
+  License update
+
+*libassuan-1.0.2 (06 Jul 2007)
+
+  06 Jul 2007; Alon Bar-Lev <alonbl@gentoo.org> +libassuan-1.0.2.ebuild:
+  Version bump
+
+*libassuan-1.0.1 (02 Dec 2006)
+
+  02 Dec 2006; Alon Bar-Lev <alonbl@gentoo.org> +libassuan-1.0.1.ebuild:
+  Version bump
+
+*libassuan-1.0.0 (01 Nov 2006)
+
+  01 Nov 2006; Alon Bar-Lev <alonbl@gentoo.org> +libassuan-1.0.0.ebuild:
+  Version bump
+
+  30 Oct 2006; Alon Bar-Lev <alonbl@gentoo.org> ChangeLog:
+  More dependencies fixes
+
+*libassuan-0.9.3 (29 Oct 2006)
+
+  29 Oct 2006; Alon Bar-Lev <alonbl@gentoo.org> +libassuan-0.9.3.ebuild:
+  Version bump, closes bug#153159
+
+*libassuan-0.9.2 (05 Oct 2006)
+
+  05 Oct 2006; Robin H. Johnson <robbat2@gentoo.org>
+  +libassuan-0.9.2.ebuild:
+  Bump version ready for gnupg-1.9.22.
+
+  01 Oct 2006; Fabian Groffen <grobian@gentoo.org> libassuan-0.6.10.ebuild:
+  Marked ~ppc-macos
+
+  22 Jul 2006; <psi29a@gentoo.org> libassuan-0.6.10.ebuild:
+  stable on mips
+
+  01 Jun 2006; Thomas Cort <tcort@gentoo.org> libassuan-0.6.10.ebuild:
+  Stable on alpha wrt Bug #132343.
+
+  30 May 2006; Joseph Jezak <josejx@gentoo.org> libassuan-0.6.10.ebuild:
+  Marked ppc stable for bug #132343.
+
+  29 May 2006; Jason Wever <weeve@gentoo.org> libassuan-0.6.10.ebuild:
+  Stable on SPARC wrt bug #132343.
+
+  26 May 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  libassuan-0.6.10.ebuild:
+  Stable on amd64 wrt bug #132343
+
+  25 May 2006; Chris Gianelloni <wolf31o2@gentoo.org> ChangeLog:
+  Stable on x86 wrt bug #132343
+
+  25 May 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  libassuan-0.6.10.ebuild:
+  Stable on x86 wrt bug #132343
+
+  17 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  libassuan-0.6.10.ebuild:
+  Add ~x86-fbsd keyword.
+
+  16 May 2006; Markus Rothe <corsair@gentoo.org> libassuan-0.6.10.ebuild:
+  Stable on ppc64; bug #132343
+
+  11 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  libassuan-0.6.10.ebuild:
+  Add elibtoolize.
+
+  21 Mar 2006; Aron Griffis <agriffis@gentoo.org> libassuan-0.6.10.ebuild:
+  Mark 0.6.10 stable on ia64
+
+  29 Sep 2005; Marcelo Goes <vanquirius@gentoo.org> libassuan-0.6.9.ebuild,
+  libassuan-0.6.10.ebuild:
+  Do not dodoc INSTALL.
+
+  19 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  libassuan-0.6.9.ebuild:
+  Stable on sparc
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org> libassuan-0.6.9.ebuild:
+  Mark 0.6.9 stable on alpha
+
+*libassuan-0.6.10 (06 Aug 2005)
+
+  06 Aug 2005; Daniel Black <dragonheart@gentoo.org> libassuan-0.6.9.ebuild,
+  +libassuan-0.6.10.ebuild:
+  version bump and transition to mirror://gnupg. x86 stable on 0.6.9
+
+*libassuan-0.6.9-r1 (06 Aug 2005)
+
+  06 Aug 2005; Daniel Black <dragonheart@gentoo.org>  libassuan-0.6.9-r1.ebuild files/digest-libassuan-0.6.9-r1
+  # INSERT ENTRY HERE
+
+  31 Jul 2005; Aaron Walker <ka0ttic@gentoo.org> libassuan-0.6.9.ebuild:
+  Added ~mips for bug 76381.
+
+  22 Apr 2005; Simon Stelling <blubb@gentoo.org> libassuan-0.6.9.ebuild:
+  stable on amd64
+
+  31 Mar 2005; Aron Griffis <agriffis@gentoo.org> libassuan-0.6.9.ebuild:
+  stable on ia64
+
+  06 Feb 2005; Markus Rothe <corsair@gentoo.org> libassuan-0.6.9.ebuild:
+  Stable on ppc64
+
+  03 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org> libassuan-0.6.9.ebuild:
+  Keyworded ~sparc wrt #76381
+
+*libassuan-0.6.9 (02 Jan 2005)
+
+  02 Jan 2005; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
+  +libassuan-0.6.9.ebuild:
+  version bump
+
+  20 Dec 2004; Markus Rothe <corsair@gentoo.org> libassuan-0.6.6.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  29 Aug 2004; David Holm <dholm@gentoo.org> libassuan-0.6.6.ebuild:
+  Added to ~ppc.
+
+*libassuan-0.6.6 (14 Aug 2004)
+
+  14 Aug 2004; Mike Frysinger <vapier@gentoo.org> +libassuan-0.6.6.ebuild:
+  Version bump #59067 by Colin Tinker.  Thanks to pfeifer too.
+
+  14 Jul 2004; Danny van Dyk <kugelfang@gentoo.org> libassuan-0.6.5.ebuild:
+  Marked ~amd64.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libassuan-0.6.2.ebuild, libassuan-0.6.4.ebuild, libassuan-0.6.5.ebuild:
+  virtual/glibc -> virtual/libc
+
+*libassuan-0.6.5 (05 May 2004)
+
+  05 May 2004; Tavis Ormandy <taviso@gentoo.org> libassuan-0.6.5.ebuild:
+  bump
+
+*libassuan-0.6.4 (28 Feb 2004)
+
+  28 Feb 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bumpage.
+
+*libassuan-0.6.2 (06 Jan 2004)
+
+  06 Jan 2004; Tavis Ormandy <taviso@gentoo.org> libassuan-0.6.2.ebuild:
+  Initial import

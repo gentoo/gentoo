@@ -1,0 +1,208 @@
+# ChangeLog for sci-physics/clhep
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-physics/clhep/ChangeLog,v 1.48 2015/03/04 04:32:17 amadio Exp $
+
+*clhep-2.2.0.5 (04 Mar 2015)
+
+  04 Mar 2015; <amadio@gentoo.org> +clhep-2.2.0.5.ebuild:
+  version bump
+
+*clhep-2.2.0.1 (30 Jun 2014)
+
+  30 Jun 2014; Sébastien Fabbro <bicatali@gentoo.org> +clhep-2.2.0.1.ebuild:
+  Version bump
+
+*clhep-2.1.4.2 (28 May 2014)
+
+  28 May 2014; Sébastien Fabbro <bicatali@gentoo.org> +clhep-2.1.4.2.ebuild:
+  Version bump
+
+*clhep-2.1.4.1 (25 Nov 2013)
+
+  25 Nov 2013; Sébastien Fabbro <bicatali@gentoo.org> +clhep-2.1.4.1.ebuild:
+  Version bump, thanks Oliver Freyermuth
+
+*clhep-2.1.3.1 (30 Nov 2012)
+
+  30 Nov 2012; Sébastien Fabbro <bicatali@gentoo.org> +clhep-2.1.3.1.ebuild,
+  -clhep-2.1.2.3.ebuild, clhep-2.1.2.4.ebuild:
+  Version bump. Fixed parallel doc building (bug #437482) and doc installation
+  directory
+
+  14 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/clhep-2.1.2.4-lsb-whitespace.patch, clhep-2.1.2.4.ebuild:
+  Fix when lsb_release is installed by stripping whitespaces, bug #430656
+
+*clhep-2.1.2.4 (07 Aug 2012)
+
+  07 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> +clhep-2.1.2.4.ebuild,
+  +files/clhep-2.1.2.4-libdir.patch, -clhep-2.1.1.0.ebuild,
+  -clhep-2.1.2.0.ebuild, -clhep-2.1.2.2.ebuild,
+  -files/clhep-2.1.2.2-automake-1.12.patch, clhep-2.1.0.1.ebuild, metadata.xml:
+  Version bump, fixed older version for automake-1.9, bug #428006
+
+*clhep-2.1.2.3 (28 Jun 2012)
+
+  28 Jun 2012; Sébastien Fabbro <bicatali@gentoo.org> +clhep-2.1.2.3.ebuild,
+  +files/clhep-2.1.2.3-libdir.patch:
+  Version bump. Switch to cmake build, added patch to respect libdir
+
+  26 Jun 2012; Justin Lecher <jlec@gentoo.org> clhep-2.1.2.2.ebuild,
+  +files/clhep-2.1.2.2-automake-1.12.patch, metadata.xml:
+  Add fix for automake-1.12, #423559; move to autotools-utils
+
+  06 Jun 2012; Benda Xu <heroxbd@gentoo.org> clhep-2.1.2.2.ebuild:
+  keyword ~x86-linux and ~amd64-linux
+
+*clhep-2.1.2.2 (02 Mar 2012)
+
+  02 Mar 2012; Sébastien Fabbro <bicatali@gentoo.org> +clhep-2.1.2.2.ebuild:
+  Version bump
+
+*clhep-2.1.2.0 (29 Dec 2011)
+
+  29 Dec 2011; Sébastien Fabbro <bicatali@gentoo.org> +clhep-2.1.2.0.ebuild:
+  Version bump
+
+*clhep-2.1.1.0 (06 Aug 2011)
+
+  06 Aug 2011; Sébastien Fabbro <bicatali@gentoo.org> +clhep-2.1.1.0.ebuild:
+  Version bump
+
+  28 Jun 2011; Brent Baude <ranger@gentoo.org> clhep-2.1.0.1.ebuild:
+  Marking clhep-2.1.0.1 ppc for bug 354009
+
+  18 Feb 2011; Jeroen Roovers <jer@gentoo.org> clhep-2.1.0.1.ebuild:
+  Stable for HPPA (bug #354009).
+
+  13 Feb 2011; Raúl Porcel <armin76@gentoo.org> clhep-2.0.4.6.ebuild,
+  clhep-2.1.0.1.ebuild:
+  Drop sparc keywords
+
+  10 Feb 2011; Markos Chandras <hwoarang@gentoo.org> clhep-2.1.0.1.ebuild:
+  Stable on amd64 wrt bug #354009
+
+  09 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> clhep-2.1.0.1.ebuild:
+  x86 stable wrt bug #354009
+
+  18 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  -files/clhep-2.0.4.5-gcc4.3.patch, -clhep-2.0.4.7.ebuild:
+  Drop old.
+
+*clhep-2.1.0.1 (20 Nov 2010)
+
+  20 Nov 2010; Sébastien Fabbro <bicatali@gentoo.org> -clhep-2.1.0.0.ebuild,
+  +clhep-2.1.0.1.ebuild:
+  Version bump
+
+*clhep-2.1.0.0 (12 Aug 2010)
+
+  12 Aug 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  -clhep-2.0.4.5.ebuild, +clhep-2.1.0.0.ebuild:
+  Version bump
+
+  18 Jul 2010; <nixnut@gentoo.org> clhep-2.0.4.6.ebuild:
+  ppc stable #318457
+
+*clhep-2.0.4.7 (13 Jul 2010)
+
+  13 Jul 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  +clhep-2.0.4.7.ebuild:
+  Bump
+
+  25 May 2010; Pacho Ramos <pacho@gentoo.org> clhep-2.0.4.6.ebuild:
+  stable amd64, bug 318457
+
+  24 May 2010; Raúl Porcel <armin76@gentoo.org> clhep-2.0.4.6.ebuild:
+  sparc stable wrt #318457
+
+  12 May 2010; Jeroen Roovers <jer@gentoo.org> clhep-2.0.4.6.ebuild:
+  Stable for HPPA (bug #318457).
+
+  10 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> clhep-2.0.4.6.ebuild:
+  x86 stable wrt bug #318457
+
+*clhep-2.0.4.6 (23 Mar 2010)
+
+  23 Mar 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  -clhep-2.0.4.2.ebuild, -clhep-2.0.4.3.ebuild, +clhep-2.0.4.6.ebuild:
+  Version bump
+
+  31 Jan 2010; Raúl Porcel <armin76@gentoo.org> clhep-2.0.4.5.ebuild:
+  sparc stable wrt #301491
+
+  23 Jan 2010; Brent Baude <ranger@gentoo.org> clhep-2.0.4.5.ebuild:
+  stable ppc, bug 301491
+
+  22 Jan 2010; Jeroen Roovers <jer@gentoo.org> clhep-2.0.4.5.ebuild:
+  Stable for HPPA (bug #301491).
+
+  21 Jan 2010; Christian Faulhammer <fauli@gentoo.org> clhep-2.0.4.5.ebuild:
+  stable x86, bug 301491
+
+  20 Jan 2010; <hwoarang@gentoo.org> clhep-2.0.4.5.ebuild:
+  Stable on amd64 wrt bug #301491
+
+  19 Jan 2010; Sébastien Fabbro <bicatali@gentoo.org> clhep-2.0.4.5.ebuild,
+  +files/clhep-2.0.4.5-gcc4.3.patch:
+  Added patch for tests and gcc 4.3, and a fix for random parallel build
+  failures, thanks Xarthisius for his work , bug #301491
+
+*clhep-2.0.4.5 (13 Dec 2009)
+
+  13 Dec 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  +clhep-2.0.4.5.ebuild:
+  Version bump and cosmetic fix (bug #296661)
+
+  07 Dec 2009; Jeroen Roovers <jer@gentoo.org> clhep-2.0.4.3.ebuild:
+  Stable for HPPA (bug #294442).
+
+*clhep-2.0.4.3 (09 Sep 2009)
+
+  09 Sep 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  +clhep-2.0.4.3.ebuild:
+  Version bump
+
+  05 May 2009; Christian Faulhammer <fauli@gentoo.org> clhep-2.0.4.2.ebuild:
+  stable x86, bug 245875
+
+  17 Apr 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  -clhep-2.0.4.0.ebuild:
+  Removed old version
+
+  22 Mar 2009; Jeremy Olexa <darkside@gentoo.org> clhep-2.0.4.2.ebuild
+  amd64 stable, bug 245875
+
+  03 Mar 2009; Ferris McCormick <fmccor@gentoo.org> clhep-2.0.4.2.ebuild:
+  Sparc stable, part of Bug #245875.
+
+  06 Feb 2009; Brent Baude <ranger@gentoo.org> clhep-2.0.4.2.ebuild:
+  Marking clhep-2.0.4.2 ~ppc for bug 196282
+
+*clhep-2.0.4.2 (09 Dec 2008)
+
+  09 Dec 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  -files/clhep-2.0.3.3-gcc43.patch, -clhep-2.0.3.3.ebuild,
+  +clhep-2.0.4.2.ebuild:
+  Version bump
+
+*clhep-2.0.4.0 (22 Aug 2008)
+
+  22 Aug 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  +clhep-2.0.4.0.ebuild:
+  Version bump
+
+  06 Aug 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56.
+
+  15 Jul 2008; Ferris McCormick <fmccor@gentoo.org> clhep-2.0.3.3.ebuild:
+  Add ~sparc for testing, dependency required for Bug #230716.
+
+  06 Jul 2008; Jeroen Roovers <jer@gentoo.org> clhep-2.0.3.3.ebuild:
+  Marked ~hppa (bug #230716).
+
+*clhep-2.0.3.3 (06 Jun 2008)
+
+  06 Jun 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/clhep-2.0.3.3-gcc43.patch, +metadata.xml, +clhep-2.0.3.3.ebuild:
+  Initial import, closing bug #98233

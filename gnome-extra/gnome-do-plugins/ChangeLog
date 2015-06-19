@@ -1,0 +1,146 @@
+# ChangeLog for gnome-extra/gnome-do-plugins
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-do-plugins/ChangeLog,v 1.25 2014/11/22 18:05:49 pacho Exp $
+
+*gnome-do-plugins-0.8.5 (22 Nov 2014)
+
+  22 Nov 2014; Pacho Ramos <pacho@gentoo.org> +gnome-do-plugins-0.8.5.ebuild,
+  -files/gnome-do-plugins-0.8.2-mono26.patch,
+  -files/gnome-do-plugins-0.8.2-mono28.patch, -gnome-do-plugins-0.8.4.ebuild:
+  Version bump, drop old
+
+  13 May 2012; Agostino Sarubbo <ago@gentoo.org>
+  -gnome-do-plugins-0.8.2-r1.ebuild, -gnome-do-plugins-0.8.3.ebuild:
+  Remove old
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  gnome-do-plugins-0.8.2-r1.ebuild, gnome-do-plugins-0.8.3.ebuild,
+  gnome-do-plugins-0.8.4.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  29 Jan 2012; Hans de Graaff <graaff@gentoo.org> metadata.xml:
+  Drop maintainership.
+
+*gnome-do-plugins-0.8.4 (09 Oct 2011)
+
+  09 Oct 2011; Hans de Graaff <graaff@gentoo.org>
+  +gnome-do-plugins-0.8.4.ebuild:
+  Version bump.
+
+*gnome-do-plugins-0.8.3 (09 Feb 2011)
+
+  09 Feb 2011; Hans de Graaff <graaff@gentoo.org>
+  +gnome-do-plugins-0.8.3.ebuild:
+  Version bump. The evolution plugin is no longer available.
+
+  29 Nov 2010; Hans de Graaff <graaff@gentoo.org>
+  gnome-do-plugins-0.8.2-r1.ebuild,
+  +files/gnome-do-plugins-0.8.2-mono28.patch:
+  Add various patches to fix compilation with Mono 2.8, fixing bug 340785.
+
+  16 Oct 2010; Hans de Graaff <graaff@gentoo.org>
+  -gnome-do-plugins-0.8.2.ebuild:
+  Remove old version.
+
+*gnome-do-plugins-0.8.2-r1 (02 Apr 2010)
+
+  02 Apr 2010; Hans de Graaff <graaff@gentoo.org>
+  +gnome-do-plugins-0.8.2-r1.ebuild,
+  +files/gnome-do-plugins-0.8.2-mono26.patch:
+  Fix compatibility with Mono 2.6. Fixes bug 310371.
+
+  29 Aug 2009; Hans de Graaff <graaff@gentoo.org>
+  gnome-do-plugins-0.8.2.ebuild:
+  Drop monodevelop dependency since this version of gnome-do-plugins no
+  longer needs mdtool to build. Thanks for Alexey Vladykin in #282610 for
+  reporting.
+
+  29 Aug 2009; Hans de Graaff <graaff@gentoo.org>
+  -files/gnome-do-plugins-0.6.0.1-disable-evo-flickr.patch,
+  -gnome-do-plugins-0.8.1.3.ebuild, -gnome-do-plugins-0.8.1.3-r1.ebuild,
+  -gnome-do-plugins-0.8.1.3-r2.ebuild,
+  -files/gnome-do-plugins-0.8.1.3-fix-for-twitpocolypse.patch,
+  -files/gnome-do-plugins-0.8.1.3-update-twitter-api.patch,
+  -files/do-plugins-optional-ext-dep.patch:
+  Remove old versions.
+
+  27 Jul 2009; Hans de Graaff <graaff@gentoo.org> metadata.xml:
+  Add missing herd tag, fixes #279219.
+
+*gnome-do-plugins-0.8.2 (27 Jun 2009)
+
+  27 Jun 2009; Hans de Graaff <graaff@gentoo.org>
+  +gnome-do-plugins-0.8.2.ebuild:
+  Version bump. Switch to EAPI=2 to be able to use more default phases. Use
+  new --enable switches instead of sed to turn on or off certain dependencies.
+  Fix installation bug when building without Banshee.
+
+*gnome-do-plugins-0.8.1.3-r2 (21 Jun 2009)
+
+  21 Jun 2009; Hans de Graaff <graaff@gentoo.org>
+  +gnome-do-plugins-0.8.1.3-r2.ebuild,
+  +files/gnome-do-plugins-0.8.1.3-fix-for-twitpocolypse.patch:
+  Fix Microblogging plugin for Twitter ID rollover, taken from upstream bzr.
+
+*gnome-do-plugins-0.8.1.3-r1 (31 May 2009)
+
+  31 May 2009; Hans de Graaff <graaff@gentoo.org>
+  metadata.xml, +gnome-do-plugins-0.8.1.3-r1.ebuild,
+  +files/gnome-do-plugins-0.8.1.3-update-twitter-api.patch:
+  Fix usage of Twitter API. Remove unused amarok USE flag.
+
+  31 May 2009; Hans de Graaff <graaff@gentoo.org>
+  -gnome-do-plugins-0.4.0.ebuild, -gnome-do-plugins-0.8.0.ebuild:
+  Remove old versions.
+
+*gnome-do-plugins-0.8.1.3 (17 Mar 2009)
+
+  17 Mar 2009; Hans de Graaff <graaff@gentoo.org>
+  +gnome-do-plugins-0.8.1.3.ebuild:
+  Version bump to go with the gnome-do 0.8.1.3 release.
+
+  17 Mar 2009; Hans de Graaff <graaff@gentoo.org>
+  -gnome-do-plugins-0.6.0.1.ebuild:
+  Remove intermediate version that had some issues due to the online plugin
+  system.
+
+*gnome-do-plugins-0.8.0 (01 Feb 2009)
+
+  01 Feb 2009; Hans de Graaff <graaff@gentoo.org>
+  +gnome-do-plugins-0.8.0.ebuild:
+  Version bump. Thanks to the different people on bug #256048 for providing
+  initial ebuilds, patches, and feedback.
+
+*gnome-do-plugins-0.6.0.1 (13 Dec 2008)
+
+  13 Dec 2008; Hans de Graaff <graaff@gentoo.org>
+  +files/gnome-do-plugins-0.6.0.1-disable-evo-flickr.patch,
+  +gnome-do-plugins-0.6.0.1.ebuild:
+  Version bump for plugins compatible with gnome-do 0.6. Thanks to ikelos for
+  providing a good starting point. The flickr plugin is not supported because
+  flickr-sharp is not available at this moment in Gentoo. The evolution plugin
+  still has problems and has been disabled because of this.
+
+  28 Jul 2008; Arun Raghavan <ford_prefect@gentoo.org> metadata.xml:
+  Add local USE flags to metadata.xml
+
+  26 Apr 2008; Hans de Graaff <graaff@gentoo.org>
+  -gnome-do-plugins-0.3.0.ebuild:
+  Remove older version.
+
+*gnome-do-plugins-0.4.0 (22 Mar 2008)
+
+  22 Mar 2008; Hans de Graaff <graaff@gentoo.org>
+  +gnome-do-plugins-0.4.0.ebuild:
+  Version bump. Thanks for Arun Raghavan for all the work in #214079
+
+  04 Mar 2008; Hans de Graaff <graaff@gentoo.org>
+  gnome-do-plugins-0.3.0.ebuild:
+  Fix SRC_URI and include mono eclass, fixing #212248.
+
+*gnome-do-plugins-0.3.0 (03 Mar 2008)
+
+  03 Mar 2008; Hans de Graaff <graaff@gentoo.org>
+  +files/do-plugins-optional-ext-dep.patch, +metadata.xml,
+  +gnome-do-plugins-0.3.0.ebuild:
+  Initial import, thanks to Arun Raghavan in #207396.

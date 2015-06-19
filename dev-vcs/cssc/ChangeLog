@@ -1,0 +1,149 @@
+# ChangeLog for dev-vcs/cssc
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/cssc/ChangeLog,v 1.25 2014/10/10 14:31:51 jer Exp $
+
+  10 Oct 2014; Jeroen Roovers <jer@gentoo.org> -cssc-1.3.0-r1.ebuild,
+  -files/cssc-1.3.0-gets.patch:
+  Old.
+
+  10 Oct 2014; Agostino Sarubbo <ago@gentoo.org> cssc-1.4.0.ebuild:
+  Stable for x86, wrt bug #524320
+
+  09 Oct 2014; Agostino Sarubbo <ago@gentoo.org> cssc-1.4.0.ebuild:
+  Stable for amd64, wrt bug #524320
+
+*cssc-1.4.0 (11 Jul 2014)
+
+  11 Jul 2014; Jeroen Roovers <jer@gentoo.org> +cssc-1.4.0.ebuild,
+  +files/cssc-1.4.0-config.patch, +files/cssc-1.4.0-m4.patch,
+  +files/cssc-1.4.0-test-large.patch, metadata.xml:
+  Version bump.
+
+  09 Jan 2013; Jeroen Roovers <jer@gentoo.org> -cssc-1.3.0.ebuild:
+  Old.
+
+  21 Nov 2012; Agostino Sarubbo <ago@gentoo.org> cssc-1.3.0-r1.ebuild:
+  Stable for x86, wrt bug #441320
+
+  21 Nov 2012; Jeroen Roovers <jer@gentoo.org> cssc-1.3.0.ebuild,
+  cssc-1.3.0-r1.ebuild:
+  Reinstate quoting, as it apparently fails.
+
+  21 Nov 2012; Jeroen Roovers <jer@gentoo.org> cssc-1.3.0-r1.ebuild:
+  Revert superfluous quoting.
+
+  20 Nov 2012; Sergey Popov <pinkbyte@gentoo.org> cssc-1.3.0-r1.ebuild:
+  Add quotes to protect value in S variable, stable on amd64 wrt bug #441320
+
+  28 Sep 2012; Jeroen Roovers <jer@gentoo.org> cssc-1.3.0-r1.ebuild,
+  +files/cssc-1.3.0-gets.patch:
+  Fix building against sys-libs/glibc-2.16 (bug #436510).
+
+  12 Sep 2012; Jeroen Roovers <jer@gentoo.org> cssc-1.3.0-r1.ebuild:
+  Use P^^ instead of hard-coded upstream package name.
+
+*cssc-1.3.0-r1 (12 Sep 2012)
+
+  12 Sep 2012; Jeroen Roovers <jer@gentoo.org> +cssc-1.3.0-r1.ebuild,
+  +files/cssc-1.3.0-gcc47.patch:
+  Fix building with GCC 4.7 (bug #422571).
+
+  19 May 2011; Jeroen Roovers <jer@gentoo.org> -cssc-1.2.0.ebuild:
+  DEL
+
+  11 May 2011; Christoph Mende <angelos@gentoo.org> cssc-1.3.0.ebuild:
+  Stable on amd64 wrt bug #363021
+
+  11 May 2011; Thomas Kahle <tomka@gentoo.org> cssc-1.3.0.ebuild:
+  x86 stable per bug 363021
+
+  04 May 2011; Jeroen Roovers <jer@gentoo.org> cssc-1.3.0.ebuild:
+  Run tests only when UID != 0 (bug #363113).
+
+  11 Apr 2011; Jeroen Roovers <jer@gentoo.org> -cssc-1.0.1.ebuild:
+  Officially remove the old (bug #312089).
+
+  08 Jan 2011; Jeroen Roovers <jer@gentoo.org> +cssc-1.2.0.ebuild:
+  Oops, should not have removed that.
+
+  08 Jan 2011; Jeroen Roovers <jer@gentoo.org> -cssc-1.2.0.ebuild,
+  cssc-1.3.0.ebuild:
+  Do not use valgrind even if installed (bug #351010).
+
+*cssc-1.3.0 (07 Nov 2010)
+
+  07 Nov 2010; Jeroen Roovers <jer@gentoo.org> cssc-1.0.1.ebuild,
+  cssc-1.2.0.ebuild, +cssc-1.3.0.ebuild:
+  Version bump. Do not set DEPEND.
+
+  07 Jun 2010; Christoph Mende <angelos@gentoo.org> cssc-1.2.0.ebuild:
+  amd64 stable (bug #305659)
+
+  30 Mar 2010; Jeroen Roovers <jer@gentoo.org> cssc-1.2.0.ebuild:
+  Update HOMEPAGE.
+
+  08 Mar 2010; Fabian Groffen <grobian@gentoo.org> +cssc-1.0.1.ebuild:
+  Restore cssc-1.0.1, it's the only version that compiles for *-macos (and
+  seems to have an official release).
+
+  26 Feb 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> cssc-1.2.0.ebuild:
+  x86 stable wrt bug #305659
+
+  26 Feb 2010; Tomáš Chvátal <scarabeus@gentoo.org> cssc-1.2.0.ebuild:
+  QA: add missing dies where they are supposed to be. So bug #305659 can
+  proceed.
+
+  17 Feb 2010; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Maintain.
+
+  03 Feb 2010; Fabian Groffen <grobian@gentoo.org> cssc-1.0.1.ebuild:
+  Marked ~x86-macos and ~ppc-macos, 1.2.0 is masked due to compilation
+  failures.
+
+  31 Jan 2010; Jeroen Roovers <jer@gentoo.org> cssc-1.2.0.ebuild:
+  Fix LICENSE.
+
+  15 Jan 2010; Christian Faulhammer <fauli@gentoo.org> cssc-1.2.0.ebuild:
+  Transfer Prefix keywords
+
+*cssc-1.2.0 (11 Jan 2010)
+
+  11 Jan 2010; Jeroen Roovers <jer@gentoo.org> +cssc-1.2.0.ebuild:
+  Version bump (bug #300564).
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> cssc-1.0.1.ebuild:
+  Remove virtual/libc
+
+  18 Apr 2008; Markus Meier <maekke@gentoo.org> -cssc-0.15_alpha0.ebuild,
+  cssc-1.0.1.ebuild:
+  x86 stable and drop old, bug #217302
+
+  15 Jan 2008; Mark Loeser <halcy0n@gentoo.org> cssc-1.0.1.ebuild:
+  Add in RESTRICT=test for bug #85901
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*cssc-1.0.1 (14 Aug 2005)
+
+  14 Aug 2005; Daniel Black <dragonheart@gentoo.org> +cssc-1.0.1.ebuild:
+  version bump
+
+  05 Sep 2004; Daniel Ahlberg <aliz@gentoo.org> cssc-0.15_alpha0.ebuild:
+  Added amd64 keyword, closing #58829.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  cssc-0.15_alpha0.ebuild:
+  virtual/glibc -> virtual/libc
+
+*cssc-0.15_alpha0 (09 Feb 2003)
+
+  09 Feb 2003; Bruce A. Locke <blocke@shivan.org> cssc-0.15_alpha0.ebuild:
+  Initial version.  Ebuild originally submitted by:
+  Gilles G <gilles_gros@yahoo.com>

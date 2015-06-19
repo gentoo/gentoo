@@ -1,0 +1,17 @@
+--- qmHandle.orig	2003-08-04 22:54:29.000000000 -0700
++++ qmHandle	2003-08-04 22:55:58.000000000 -0700
+@@ -26,8 +26,12 @@
+ #my ($startqmail) = '/usr/local/bin/svc -u /service/qmail-send';
+ 
+ # While this is if you have a Debian GNU/Linux with its qmail package
+-my ($stopqmail) = '/etc/init.d/qmail stop';
+-my ($startqmail) = '/etc/init.d/qmail start';
++#my ($stopqmail) = '/etc/init.d/qmail stop';
++#my ($startqmail) = '/etc/init.d/qmail start';
++
++# Gentoo makes life easier:
++my ($stopqmail) = '/var/qmail/bin/qmail-control stop';
++my ($startqmail) = '/var/qmail/bin/qmail-control start';
+ 
+ # If you don't have scripts, leave $stopqmail blank (the process will
+ # be hunted and killed by qmHandle):

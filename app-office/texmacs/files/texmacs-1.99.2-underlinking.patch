@@ -1,0 +1,16 @@
+ src/makefile.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/makefile.in b/src/makefile.in
+index f5666c2..b9a10d6 100644
+--- a/src/makefile.in
++++ b/src/makefile.in
+@@ -399,7 +399,7 @@ TEXMACS_objects := $(strip $(call uses,system kernel data graphics\
+ 
+ link_options:=-L$(tmsrc)/lib $(LDRT) -lm $(LDPATH) $(LDGUI) $(LDICONV) \
+    $(LDGUILE) $(LDAXEL) $(LDCAIRO) $(LDIMLIB2) $(LDSQLITE3) $(LDFREETYPE) \
+-   $(LDDL) $(LDSPARKLE)
++   $(LDDL) $(LDSPARKLE) -lz
+ 
+ $(tmsrc)/bin/texmacs.bin: Objects/texmacs-$(link).bin
+ 	$(CP) $^ $@

@@ -1,0 +1,85 @@
+# ChangeLog for dev-embedded/mspdebug
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/mspdebug/ChangeLog,v 1.19 2015/06/09 13:22:21 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  19 Jan 2015; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Drop myself from metadata.
+
+*mspdebug-0.22 (21 Jul 2013)
+
+  21 Jul 2013; Tim Harder <radhermit@gentoo.org> +mspdebug-0.22.ebuild:
+  Version bump.
+
+  04 Jan 2013; Tim Harder <radhermit@gentoo.org>
+  files/mspdebug-0.21-glibc-2.17.patch:
+  Use correct header.
+
+  03 Jan 2013; Tim Harder <radhermit@gentoo.org> mspdebug-0.21.ebuild,
+  +files/mspdebug-0.21-glibc-2.17.patch:
+  Fix build with glibc-2.17 (bug #449284).
+
+  23 Dec 2012; Tim Harder <radhermit@gentoo.org> mspdebug-0.20.ebuild,
+  mspdebug-0.21.ebuild:
+  Remove EPREFIX usage.
+
+  13 Dec 2012; Tim Harder <radhermit@gentoo.org> -mspdebug-0.18.ebuild,
+  -mspdebug-0.19.ebuild:
+  Remove old.
+
+*mspdebug-0.21 (26 Nov 2012)
+
+  26 Nov 2012; Tim Harder <radhermit@gentoo.org> +mspdebug-0.21.ebuild:
+  Version bump.
+
+*mspdebug-0.20 (20 Aug 2012)
+
+  20 Aug 2012; Tim Harder <radhermit@gentoo.org> +mspdebug-0.20.ebuild:
+  Version bump.
+
+  13 Mar 2012; Tim Harder <radhermit@gentoo.org> -mspdebug-0.17.ebuild:
+  Remove old.
+
+*mspdebug-0.19 (13 Mar 2012)
+
+  13 Mar 2012; Tim Harder <radhermit@gentoo.org> +mspdebug-0.19.ebuild:
+  Version bump.
+
+  09 Nov 2011; Tim Harder <radhermit@gentoo.org> -mspdebug-0.15.ebuild,
+  -mspdebug-0.16.ebuild:
+  Remove old.
+
+*mspdebug-0.18 (09 Nov 2011)
+
+  09 Nov 2011; Tim Harder <radhermit@gentoo.org> +mspdebug-0.18.ebuild:
+  Version bump.
+
+*mspdebug-0.17 (26 Aug 2011)
+
+  26 Aug 2011; Tim Harder <radhermit@gentoo.org> +mspdebug-0.17.ebuild:
+  Version bump.
+
+*mspdebug-0.16 (14 Jun 2011)
+
+  14 Jun 2011; Tim Harder <radhermit@gentoo.org> -mspdebug-0.14.ebuild,
+  +mspdebug-0.16.ebuild:
+  Version bump and remove old.
+
+*mspdebug-0.15 (19 Apr 2011)
+
+  19 Apr 2011; Tim Harder <radhermit@gentoo.org> -mspdebug-0.13.ebuild,
+  +mspdebug-0.15.ebuild:
+  Version bump and remove old.
+
+*mspdebug-0.14 (18 Feb 2011)
+
+  18 Feb 2011; Tim Harder <radhermit@gentoo.org> +mspdebug-0.14.ebuild:
+  Version bump. Update to EAPI 4.
+
+*mspdebug-0.13 (26 Nov 2010)
+
+  26 Nov 2010; Tim Harder <radhermit@gentoo.org> +mspdebug-0.13.ebuild,
+  +metadata.xml:
+  Initial import.

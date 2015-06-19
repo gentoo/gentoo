@@ -1,0 +1,40 @@
+# ChangeLog for games-puzzle/greedy
+# Copyright 2002-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/greedy/ChangeLog,v 1.10 2014/11/06 00:46:52 mr_bones_ Exp $
+
+  06 Nov 2014; Michael Sterrett <mr_bones_@gentoo.org> greedy-0.2.0-r1.ebuild:
+  EAPI=5; build with ncurses[tinfo] (bug #528390)
+
+  31 May 2009; Brent Baude <ranger@gentoo.org> greedy-0.2.0-r1.ebuild:
+  Marking greedy-0.2.0-r1 ~ppc64 for bug 269147
+
+  06 Dec 2008; Tristan Heaven <nyhm@gentoo.org> greedy-0.2.0-r1.ebuild:
+  Respect CC and LDFLAGS, bug #244098
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  29 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  greedy-0.2.0-r1.ebuild:
+  Fixed binaries being pre-stripped. Thanks to Tristan Heaven
+  <tristanheaven@gmail.com> for the patch. Closing bug #137715.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*greedy-0.2.0-r1 (27 Aug 2003)
+
+  27 Aug 2003; Michael Sterrett <msterret@gentoo.org> greedy-0.2.0-r1.ebuild:
+  inherit games; use CFLAGS; error messages
+
+*greedy-0.2.0 (22 May 2002)
+
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> greedy-0.2.0.ebuild :
+  Added KEYWORDS, SLOT.
+
+   5 May 2002; Mike Jones <ashmodai@gentoo.org> ChangeLog, greedy-0.2.0.ebuild
+   Added initial ChangeLog which should be updated whenever the package is
+   updated in any way. This changelog is targetted to users. This means that the
+   comments should well explained and written in clean English. The details about
+   writing correct changelogs are explained in the skel.ChangeLog file which you
+   can find in the root directory of the portage repository.

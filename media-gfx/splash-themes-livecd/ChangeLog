@@ -1,0 +1,141 @@
+# ChangeLog for media-gfx/splash-themes-livecd
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/splash-themes-livecd/ChangeLog,v 1.25 2013/09/28 09:29:23 pinkbyte Exp $
+
+  28 Sep 2013; Sergey Popov <pinkbyte@gentoo.org>
+  splash-themes-livecd-2004.3.ebuild, splash-themes-livecd-2005.0.ebuild,
+  splash-themes-livecd-2005.1.ebuild, splash-themes-livecd-2006.0.ebuild,
+  splash-themes-livecd-2006.1.ebuild, splash-themes-livecd-2007.0.ebuild,
+  splash-themes-livecd-2007.0-r1.ebuild:
+  Drop to ~ppc, wrt bug #486254
+
+  20 Jan 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due retirement, bug #35242
+
+  16 Dec 2012; Ulrich Müller <ulm@gentoo.org>
+  splash-themes-livecd-2005.0.ebuild, splash-themes-livecd-2005.1.ebuild,
+  splash-themes-livecd-2006.0.ebuild, splash-themes-livecd-2006.1.ebuild,
+  splash-themes-livecd-2007.0.ebuild, splash-themes-livecd-2007.0-r1.ebuild,
+  splash-themes-livecd-2007.0-r2.ebuild:
+  Fix LICENSE, bug 445834.
+
+  29 May 2009; Christian Faulhammer <fauli@gentoo.org>
+  splash-themes-livecd-2007.0-r2.ebuild:
+  stable x86
+
+  29 May 2009; Steve Dibb <beandog@gentoo.org>
+  splash-themes-livecd-2007.0-r2.ebuild:
+  amd64 stable
+
+  24 Mar 2009; Michał Januszewski <spock@gentoo.org>
+  splash-themes-livecd-2007.0-r2.ebuild:
+  Switch to EAPI 2 and require splashutils to be installed with the 'png'
+  USE flag.
+
+  14 Sep 2008; Michał Januszewski <spock@gentoo.org>
+  splash-themes-livecd-2004.3.ebuild, splash-themes-livecd-2005.0.ebuild,
+  splash-themes-livecd-2005.1.ebuild, splash-themes-livecd-2006.0.ebuild,
+  splash-themes-livecd-2006.1.ebuild, splash-themes-livecd-2007.0.ebuild,
+  splash-themes-livecd-2007.0-r1.ebuild:
+  Fix quoting in all ebuilds.
+
+*splash-themes-livecd-2007.0-r2 (14 Sep 2008)
+
+  14 Sep 2008; Michał Januszewski <spock@gentoo.org> metadata.xml,
+  +splash-themes-livecd-2007.0-r2.ebuild:
+  Compatibility fixes for recent versions of splashutils and baselayout-2
+  (bug #218724). Add myself as the maintainer of the package.
+
+  07 Nov 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  splash-themes-livecd-2006.0.ebuild, splash-themes-livecd-2006.1.ebuild,
+  splash-themes-livecd-2007.0.ebuild, splash-themes-livecd-2007.0-r1.ebuild:
+  Fixed the licenses for bug #198049.
+
+*splash-themes-livecd-2007.0-r1 (14 Sep 2007)
+
+  14 Sep 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/splash-themes-livecd-2007.0-rounding.patch,
+  +splash-themes-livecd-2007.0-r1.ebuild:
+  Added a patch from Michal Januszewski <spock@gentoo.org> to fix an icon
+  cycling issue. This closes bug #182065.
+
+  15 Aug 2007; Matthias Schwarzott <zzam@gentoo.org>
+  splash-themes-livecd-2005.0.ebuild, splash-themes-livecd-2005.1.ebuild,
+  splash-themes-livecd-2006.0.ebuild, splash-themes-livecd-2006.1.ebuild,
+  splash-themes-livecd-2007.0.ebuild:
+  Fixed splash-themes livecd to work with baselayout2 by using
+  /etc/init.d/functions.sh instead of /sbin/functions.sh, bug #177626.
+
+  08 May 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  splash-themes-livecd-2007.0.ebuild:
+  Added eutils for bug #177562.
+
+*splash-themes-livecd-2007.0 (07 May 2007)
+
+  07 May 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  +splash-themes-livecd-2007.0.ebuild:
+  Adding new 2007.0 version for the release.
+
+  15 Feb 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  splash-themes-livecd-2004.3.ebuild, splash-themes-livecd-2005.0.ebuild,
+  splash-themes-livecd-2005.1.ebuild, splash-themes-livecd-2006.0.ebuild,
+  splash-themes-livecd-2006.1.ebuild:
+  Added RESTRICT='binchecks strip' for bug #166987.
+
+*splash-themes-livecd-2006.1 (01 Sep 2006)
+
+  01 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +splash-themes-livecd-2006.1.ebuild:
+  Version bump to the theme from the 2006.1 release.
+
+*splash-themes-livecd-2006.0 (16 Mar 2006)
+
+  16 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +splash-themes-livecd-2006.0.ebuild:
+  Added 2006.0 splash theme. I am committing this straight to stable since it
+  was used by these architectures for the release and is known to work
+  properly. Plus, it really should have been added before the release, and I
+  simply forgot about it.
+
+  08 Feb 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  splash-themes-livecd-2005.1.ebuild:
+  Added sed from blackace and closing bug #121559.
+
+  23 Jul 2005; Lars Weiler <pylon@gentoo.org>
+  splash-themes-livecd-2005.1.ebuild:
+  Stable on ppc.
+
+*splash-themes-livecd-2005.1 (10 Jul 2005)
+
+  10 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  +splash-themes-livecd-2005.1.ebuild:
+  Added 2005.1 theme.
+
+  02 May 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  splash-themes-livecd-2004.3.ebuild, splash-themes-livecd-2005.0.ebuild:
+  Changing description and closing bug #90987.
+
+  14 Apr 2005; Lars Weiler <pylon@gentoo.org>
+  splash-themes-livecd-2005.0.ebuild:
+  It's working on ppc now, but still testing until newer splashutils with a
+  tiny bugfix will be released.
+
+*splash-themes-livecd-2005.0 (28 Mar 2005)
+
+  28 Mar 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  +splash-themes-livecd-2005.0.ebuild:
+  Added 2005.0 splash theme.
+
+  20 Oct 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  splash-themes-livecd-2004.3.ebuild:
+  Marking stable on x86 and amd64.
+
+  12 Oct 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  splash-themes-livecd-2004.3.ebuild:
+  It helps to commit the right version.
+
+*splash-themes-livecd-2004.3 (12 Oct 2004)
+
+  12 Oct 2004; Chris Gianelloni <wolf31o2@gentoo.org> +metadata.xml,
+  +splash-themes-livecd-2004.3.ebuild:
+  Initial import.

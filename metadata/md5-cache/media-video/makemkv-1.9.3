@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=sys-libs/glibc[multilib?] dev-libs/expat dev-libs/openssl:0 sys-libs/zlib qt4? ( virtual/opengl dev-qt/qtcore:4 dev-qt/qtdbus:4 dev-qt/qtgui:4 ) !libav? ( >=media-video/ffmpeg-1.0.0:0= ) libav? ( >=media-video/libav-0.8.9:0= ) >=sys-apps/sed-4
+DESCRIPTION=Tool for ripping and streaming Blu-ray, HD-DVD and DVD discs
+EAPI=5
+HOMEPAGE=http://www.makemkv.com/
+IUSE=libav multilib qt4
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1 MPL-1.1 MakeMKV-EULA openssl
+RDEPEND=sys-libs/glibc[multilib?] dev-libs/expat dev-libs/openssl:0 sys-libs/zlib qt4? ( virtual/opengl dev-qt/qtcore:4 dev-qt/qtdbus:4 dev-qt/qtgui:4 ) !libav? ( >=media-video/ffmpeg-1.0.0:0= ) libav? ( >=media-video/libav-0.8.9:0= )
+SLOT=0
+SRC_URI=http://www.makemkv.com/download/makemkv-oss-1.9.3.tar.gz http://www.makemkv.com/download/makemkv-bin-1.9.3.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=505feed4a855d47663226994d53d8dde

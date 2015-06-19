@@ -1,0 +1,28 @@
+# ChangeLog for dev-python/whirlpool
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/whirlpool/ChangeLog,v 1.6 2015/06/07 16:31:45 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  04 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> whirlpool-0.3-r1.ebuild:
+  Clean up obsolete dependencies on virtual/python-argparse and virtual/python-
+  unittest2 (those packages were only required for <=python-2.6).
+
+  02 Jul 2014; Mike Gilbert <floppym@gentoo.org> whirlpool-0.3-r1.ebuild:
+  Depend on setuptools.
+
+*whirlpool-0.3-r1 (04 Jun 2013)
+
+  04 Jun 2013; Justin Lecher <jlec@gentoo.org> -whirlpool-0.3.ebuild,
+  +whirlpool-0.3-r1.ebuild:
+  Install data files into /usr/share/PN
+
+*whirlpool-0.3 (03 Jun 2013)
+
+  03 Jun 2013; Justin Lecher <jlec@gentoo.org> +whirlpool-0.3.ebuild,
+  +files/tests.py, +metadata.xml:
+  New addition

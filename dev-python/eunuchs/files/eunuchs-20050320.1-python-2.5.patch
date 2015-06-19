@@ -1,0 +1,11 @@
+--- lib/eunuchs/sendmsg.c
++++ lib/eunuchs/sendmsg.c
+@@ -101,7 +101,7 @@
+ 	real_controllen += CMSG_SPACE(sizeof *info);
+       } else {
+ 	char *data;
+-	int len;
++	Py_ssize_t len;
+ 
+ 	if (PyString_AsStringAndSize(rest, &data, &len))
+ 	  return NULL; // TODO leaks

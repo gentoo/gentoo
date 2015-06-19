@@ -1,0 +1,333 @@
+# ChangeLog for www-plugins/lightspark
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-plugins/lightspark/ChangeLog,v 1.56 2015/03/26 15:46:58 chithanh Exp $
+
+*lightspark-0.7.2_p20150318 (26 Mar 2015)
+
+  26 Mar 2015; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +lightspark-0.7.2_p20150318.ebuild:
+  New snapshot.
+
+  11 Jan 2014; Michał Górny <mgorny@gentoo.org> lightspark-0.7.2-r1.ebuild:
+  Depend on llvm < 3.4, since 3.4 does not work.
+
+  23 Nov 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/lightspark-0.7.2-ffmpeg20.patch, lightspark-0.7.2-r1.ebuild:
+  Add ffmpeg-2 support, bug #492336.
+
+*lightspark-0.7.2-r1 (04 Oct 2013)
+
+  04 Oct 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/lightspark-0.7.2-llvm33.patch, +lightspark-0.7.2-r1.ebuild:
+  Drop obsolete elog message, bug #476478. Add patch from Fedora for llvm-3.3
+  compatibility, bug #479548.
+
+*lightspark-0.7.2 (19 Mar 2013)
+
+  19 Mar 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +lightspark-0.7.2.ebuild, -files/lightspark-0.5.7-llvm-3.1_0001.patch,
+  -files/lightspark-0.6.0.1-gcc-4.5_0000.patch,
+  -files/lightspark-0.6.0.1-gcc-4.5_0001.patch,
+  -files/lightspark-0.6.0.1-gcc-4.5_0002.patch,
+  -files/lightspark-0.6.0.1-gcc-4.5_0003.patch,
+  -files/lightspark-0.6.0.1-gcc-4.5_0004.patch,
+  -files/lightspark-0.6.0.1-gcc-4.5_0005.patch,
+  -files/lightspark-0.6.0.1-gcc-4.5_0006.patch,
+  -files/lightspark-0.7.0-libxmlpp-gles.patch,
+  -files/lightspark-0.7.0-llvm-3.2.patch, -lightspark-0.6.0.1.ebuild,
+  -lightspark-0.7.0.ebuild, lightspark-0.7.1.ebuild:
+  Version bump, restrict llvm version due to upstream #1157158.
+
+*lightspark-0.7.1 (04 Mar 2013)
+
+  04 Mar 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +lightspark-0.7.1.ebuild:
+  Version bump.
+
+  22 Dec 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/lightspark-0.7.0-llvm-3.2.patch, lightspark-0.7.0.ebuild:
+  Fix building against llvm-3.2, bug #447962.
+
+  15 Dec 2012; Julian Ospald <hasufell@gentoo.org> lightspark-0.7.0.ebuild:
+  error out on unsupported gcc version wrt #441564
+
+  04 Dec 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/lightspark-0.6.0.1-gcc-4.5_0001.patch:
+  Restore patch that was accidentally dropped, bug #445740.
+
+  18 Nov 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/lightspark-0.7.0-libxmlpp-gles.patch, lightspark-0.7.0.ebuild:
+  Add workaround for gles failure, bug #440148.
+
+*lightspark-0.7.0 (29 Oct 2012)
+
+  29 Oct 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +lightspark-0.7.0.ebuild, -files/lightspark-0.5.7-llvm-3.1_0000.patch,
+  -files/lightspark-0.5.7-llvm-3.1_0002.patch,
+  -files/lightspark-0.6.0.1-gcc-4.5_0001.patch, -lightspark-0.5.7.ebuild:
+  Version bump. Drop old.
+
+  14 Aug 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  lightspark-0.6.0.1.ebuild:
+  Drop dependency on >=gcc-4.4, bug #431374.
+
+*lightspark-0.6.0.1 (11 Jun 2012)
+
+  11 Jun 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/lightspark-0.6.0.1-gcc-4.5_0000.patch,
+  +files/lightspark-0.6.0.1-gcc-4.5_0001.patch,
+  +files/lightspark-0.6.0.1-gcc-4.5_0002.patch,
+  +files/lightspark-0.6.0.1-gcc-4.5_0003.patch,
+  +files/lightspark-0.6.0.1-gcc-4.5_0004.patch,
+  +files/lightspark-0.6.0.1-gcc-4.5_0005.patch,
+  +files/lightspark-0.6.0.1-gcc-4.5_0006.patch, +lightspark-0.6.0.1.ebuild,
+  metadata.xml:
+  Version bump.
+
+  03 Jun 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/lightspark-0.5.7-llvm-3.1_0000.patch,
+  +files/lightspark-0.5.7-llvm-3.1_0001.patch,
+  +files/lightspark-0.5.7-llvm-3.1_0002.patch, lightspark-0.5.7.ebuild:
+  Fix building with llvm-3.1, reported by maksbotan.
+
+*lightspark-0.5.7 (18 May 2012)
+
+  18 May 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +lightspark-0.5.7.ebuild, -lightspark-0.5.6.ebuild:
+  Version bump.
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> lightspark-0.5.6.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*lightspark-0.5.6 (12 Apr 2012)
+
+  12 Apr 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +lightspark-0.5.6.ebuild, -lightspark-0.5.4.1-r1.ebuild:
+  Version bump.
+
+  14 Mar 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  lightspark-0.5.4.1-r1.ebuild:
+  Remove xulrunner dependency, bug #407565.
+
+*lightspark-0.5.4.1-r1 (29 Feb 2012)
+
+  29 Feb 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -lightspark-0.5.4.1.ebuild, +lightspark-0.5.4.1-r1.ebuild:
+  Don't make pulseaudio default plugin when only sdl is built, bug #406197.
+
+*lightspark-0.5.4.1 (23 Feb 2012)
+
+  23 Feb 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -lightspark-0.5.4.ebuild, +lightspark-0.5.4.1.ebuild:
+  Version bump.
+
+*lightspark-0.5.4 (30 Jan 2012)
+
+  30 Jan 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -lightspark-0.5.0.ebuild, -lightspark-0.5.2.1.ebuild,
+  +lightspark-0.5.4.ebuild:
+  Version bump, bug #393055.
+
+*lightspark-0.5.2.1 (31 Oct 2011)
+
+  31 Oct 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +lightspark-0.5.2.1.ebuild:
+  Version bump. Succumb to new upstream download URI scheme. Update
+  dependencies regarding llvm and xulrunner.
+
+  30 Jul 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  lightspark-0.5.0.ebuild:
+  Drop non-functional openal support, bug #377005.
+
+*lightspark-0.5.0 (27 Jul 2011)
+
+  27 Jul 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -lightspark-0.4.8.1.ebuild,
+  -files/lightspark-0.4.8.1-allow-disabling-pulseaudio.patch,
+  +lightspark-0.5.0.ebuild, metadata.xml:
+  Version bump, bug #375727. Allow enabling of individual audio backends, bug
+  #342763.
+
+  16 Jul 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  lightspark-0.4.8.1.ebuild, -files/lightspark-0.4.8.1-cmakelists.patch:
+  Drop obsolete patch that caused build failure, bug #375363.
+
+*lightspark-0.4.8.1 (15 Jun 2011)
+
+  15 Jun 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -files/lightspark-0.4.6.1-cmakelists.patch, -lightspark-0.4.7.1.ebuild,
+  -files/lightspark-0.4.7.1-allow-disabling-pulseaudio.patch,
+  +lightspark-0.4.8.1.ebuild,
+  +files/lightspark-0.4.8.1-allow-disabling-pulseaudio.patch,
+  +files/lightspark-0.4.8.1-cmakelists.patch:
+  Version bump, bug #371757.
+
+  18 May 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  lightspark-0.4.7.1.ebuild:
+  Fix oversight in patch name, bug #367617.
+
+*lightspark-0.4.7.1 (16 May 2011)
+
+  16 May 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -files/lightspark-0.4.5-allow-disabling-pulseaudio.patch,
+  -lightspark-0.4.6.1.ebuild, +lightspark-0.4.7.1.ebuild,
+  +files/lightspark-0.4.7.1-allow-disabling-pulseaudio.patch:
+  Version bump, bug #367237
+
+  20 Apr 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -files/lightspark-0.4.5.1-cmakelists.patch, -lightspark-0.4.5.2.ebuild:
+  Remove old.
+
+  26 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  lightspark-0.4.5.2.ebuild, lightspark-0.4.6.1.ebuild:
+  Depend on virtual/ffmpeg instead of media-video/ffmpeg.
+
+*lightspark-0.4.6.1 (20 Mar 2011)
+
+  20 Mar 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +lightspark-0.4.6.1.ebuild, +files/lightspark-0.4.6.1-cmakelists.patch:
+  Version bump, bug #359291
+
+*lightspark-0.4.5.2 (13 Feb 2011)
+
+  13 Feb 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -lightspark-0.4.5.1.ebuild, +lightspark-0.4.5.2.ebuild:
+  Version bump, bug #354385. Adjust HOMEPAGE.
+
+  23 Dec 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  lightspark-0.4.5.1.ebuild:
+  Add missing boost dependency, bug #349397
+
+*lightspark-0.4.5.1 (21 Dec 2010)
+
+  21 Dec 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -files/lightspark-0.4.4.3-cmakelists.patch, -lightspark-0.4.5.ebuild,
+  +lightspark-0.4.5.1.ebuild,
+  -files/lightspark-0.4.5-llvm-2.8-gcc-4.5.patch,
+  +files/lightspark-0.4.5.1-cmakelists.patch:
+  Version bump, bug #349093
+
+  12 Dec 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  lightspark-0.4.5.ebuild, +files/lightspark-0.4.5-llvm-2.8-gcc-4.5.patch:
+  Work around llvm-2.8 issue with gcc-4.5, bug #348552
+
+*lightspark-0.4.5 (12 Dec 2010)
+
+  12 Dec 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -lightspark-0.4.4.3.ebuild, +lightspark-0.4.5.ebuild,
+  +files/lightspark-0.4.5-allow-disabling-pulseaudio.patch:
+  Version bump, bug #346841. Now builds against llvm-2.8, bug #340437.
+
+*lightspark-0.4.4.3 (18 Oct 2010)
+
+  18 Oct 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -lightspark-0.4.4.2.ebuild, -files/lightspark-0.4.4.2-cmakelists.patch,
+  +lightspark-0.4.4.3.ebuild, +files/lightspark-0.4.4.3-cmakelists.patch:
+  Version bump, bug #340066. Require LLVM 2.7 during build, bug #340437.
+
+  14 Sep 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  lightspark-0.4.4.2.ebuild:
+  Remove reference to non-existing patch, bug #337339.
+
+*lightspark-0.4.4.2 (14 Sep 2010)
+
+  14 Sep 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -lightspark-0.4.4.1.ebuild, +lightspark-0.4.4.2.ebuild,
+  +files/lightspark-0.4.4.2-cmakelists.patch,
+  -files/lightspark-0.4.4-cmakelists.patch:
+  Version bump, bug #337069
+
+*lightspark-0.4.4.1 (03 Sep 2010)
+
+  03 Sep 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -lightspark-0.4.4.ebuild, +lightspark-0.4.4.1.ebuild:
+  Version bump, bug #335755.
+
+*lightspark-0.4.4 (29 Aug 2010)
+
+  29 Aug 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -lightspark-0.4.3.ebuild, -files/lightspark-0.4.3-cmakelists.patch,
+  +lightspark-0.4.4.ebuild, +files/lightspark-0.4.4-cmakelists.patch:
+  Version bump.
+
+  13 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  lightspark-0.4.3.ebuild, +files/lightspark-0.4.3-cmakelists.patch:
+  Add patch to respect LDFLAGS. Bug #332115. Thanks to Diego E. 'Flameeyes'
+  Pettenò <flameeyes@gentoo.org> for reporting
+
+*lightspark-0.4.3 (12 Aug 2010)
+
+  12 Aug 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -lightspark-0.4.2.2.ebuild,
+  -files/lightspark-0.4.2.2-fix-disabled-plugin.diff,
+  +lightspark-0.4.3.ebuild:
+  Version bump, fixes bug #331757. Remove old
+
+*lightspark-0.4.2.2 (31 Jul 2010)
+
+  31 Jul 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -lightspark-0.4.2.ebuild, +lightspark-0.4.2.2.ebuild,
+  +files/lightspark-0.4.2.2-fix-disabled-plugin.diff:
+  Version bump, fixes bug #330177
+
+  25 Jul 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  lightspark-0.4.2.ebuild:
+  Add missing dependency on pulseaudio, bug #329649
+
+*lightspark-0.4.2 (20 Jul 2010)
+
+  20 Jul 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -lightspark-0.4.1.ebuild, -files/lightspark-0.4.1-debug-defines.patch,
+  -lightspark-0.4.2_rc2.ebuild, +lightspark-0.4.2.ebuild,
+  -files/lightspark-0.4.2-ndebug.patch:
+  Version bump. Remove old.
+
+  17 Jul 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  lightspark-0.4.1.ebuild, lightspark-0.4.2_rc2.ebuild:
+  adjust libpcre dependency, declare mycmakeargs local
+
+  17 Jul 2010; Maciej Mrozowski <reavertm@gentoo.org>
+  lightspark-0.4.1.ebuild, lightspark-0.4.2_rc2.ebuild:
+  mycmakeargs is bash array
+
+*lightspark-0.4.2_rc2 (05 Jul 2010)
+
+  05 Jul 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +lightspark-0.4.2_rc2.ebuild, +files/lightspark-0.4.2-ndebug.patch:
+  Add release candidate.
+
+*lightspark-0.4.1 (07 Jun 2010)
+
+  07 Jun 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -files/lightspark-0.3.3-llvm-datatypes.patch, -lightspark-0.3.9.ebuild,
+  +lightspark-0.4.1.ebuild, +files/lightspark-0.4.1-debug-defines.patch:
+  Version bump. Drop old buildfix, add different one.
+
+*lightspark-0.3.9 (25 May 2010)
+
+  25 May 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -lightspark-0.3.5.ebuild, +lightspark-0.3.9.ebuild:
+  Version bump.
+
+  20 May 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  lightspark-0.3.5.ebuild:
+  depend on media-fonts/liberation-fonts
+
+*lightspark-0.3.5 (20 May 2010)
+
+  20 May 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -lightspark-0.3.3-r1.ebuild, +lightspark-0.3.5.ebuild:
+  Version bump.
+
+*lightspark-0.3.3-r1 (19 May 2010)
+
+  19 May 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -lightspark-0.3.3.ebuild, +lightspark-0.3.3-r1.ebuild:
+  Fix permissions of installed binary
+
+*lightspark-0.3.3 (19 May 2010)
+
+  19 May 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +lightspark-0.3.3.ebuild, +files/lightspark-0.3.3-llvm-datatypes.patch,
+  +metadata.xml:
+  Initial commit, ideas taken from voyageur's live ebuild

@@ -1,0 +1,20 @@
+diff --git a/src/setup.py b/src/setup.py
+--- a/src/setup.py
++++ b/src/setup.py
+@@ -81,6 +81,7 @@
+ import distutils.command.install_lib
+ import distutils.command.install_scripts
+ import distutils.command.build_scripts
++from distutils.util import convert_path
+ 
+ _install = distutils.command.install.install
+ _install_data = distutils.command.install_data.install_data
+@@ -303,7 +304,7 @@
+         else:
+             create_version_script = self.do_nothing
+ 
+-        inputs = self.get_inputs()
++        inputs = [os.path.join(self.build_dir, os.path.basename(convert_path(script))) for script in self.get_inputs()]
+         bat_scripts = [x for x in inputs if x[-4:] == '.bat']
+         non_bat_scripts = [x for x in inputs if x[-4:] != '.bat']
+ 

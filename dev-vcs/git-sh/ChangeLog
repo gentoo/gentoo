@@ -1,0 +1,42 @@
+# ChangeLog for dev-vcs/git-sh
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git-sh/ChangeLog,v 1.6 2013/03/11 16:46:34 jlec Exp $
+
+*git-sh-1.3 (11 Mar 2013)
+
+  11 Mar 2013; Justin Lecher <jlec@gentoo.org> git-sh-1.1.ebuild,
+  +git-sh-1.3.ebuild, metadata.xml:
+  Version Bump; make use of vcs-snapshot.eclass
+
+  13 Sep 2011; Justin Lecher <jlec@gentoo.org> git-sh-1.1.ebuild, metadata.xml:
+  Taken over maintainer ship, moved to EAPI=4
+
+  13 Sep 2011; Pacho Ramos <pacho@gentoo.org> -git-sh-1.0-r1.ebuild,
+  metadata.xml:
+  Drop maintainer due retirement, bug #278944; remove old.
+
+*git-sh-1.1 (27 Mar 2011)
+
+  27 Mar 2011; Dominik Kapusta <ayoy@gentoo.org> +git-sh-1.1.ebuild:
+  Version bump (bug #347553).
+
+  17 Mar 2010; Sebastian Pipping <sping@gentoo.org> git-sh-1.0-r1.ebuild:
+  Propagate move of dev-util/git to dev-vcs/git
+
+  07 Mar 2010; Dominik Kapusta <ayoy@gentoo.org> +git-sh-1.0-r1.ebuild,
+  +metadata.xml:
+  Moving from dev-util to dev-vcs
+
+*git-sh-1.0-r1 (29 Nov 2009)
+
+  29 Nov 2009; Dominik Kapusta <ayoy@gentoo.org> -git-sh-1.0.ebuild,
+  +git-sh-1.0-r1.ebuild:
+  Remove git bash completion script, as it's delivered with git itself
+
+*git-sh-1.0 (28 Nov 2009)
+
+  28 Nov 2009; Dominik Kapusta <ayoy@gentoo.org> +git-sh-1.0.ebuild,
+  +metadata.xml:
+  Initial commit for git-sh (bug #294667). Thanks to Gaston Jorguera
+  (gjorguera@gmail.com) for the initial ebuild.
+

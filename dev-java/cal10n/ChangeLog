@@ -1,0 +1,12 @@
+# ChangeLog for dev-java/cal10n
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/cal10n/ChangeLog,v 1.1 2014/01/13 18:03:51 ercpe Exp $
+
+*cal10n-0.8.1 (13 Jan 2014)
+
+  13 Jan 2014; Johann Schmitz <ercpe@gentoo.org> +cal10n-0.8.1.ebuild,
+  +metadata.xml:
+  New ebuild for cal10n (dep of slf4j-ext):  Compiler Assisted Localization,
+  abbreviated as CAL10N (pronounced as "calion") is a java library for writing
+  localized (internationalized) messages using resource bundles you are already
+  familiar with, but with much greater comfort.

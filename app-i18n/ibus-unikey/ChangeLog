@@ -1,0 +1,50 @@
+# ChangeLog for app-i18n/ibus-unikey
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus-unikey/ChangeLog,v 1.9 2012/05/03 19:24:33 jdhore Exp $
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> ibus-unikey-0.6.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  09 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> -ibus-unikey-0.5.ebuild,
+  -ibus-unikey-0.5.1.ebuild, -ibus-unikey-0.5.1-r1.ebuild,
+  -ibus-unikey-0.6.0.ebuild, -files/ibus-unikey-ibus-1.4.patch:
+  old
+
+*ibus-unikey-0.6.1 (06 Mar 2012)
+
+  06 Mar 2012; Naohiro Aota <naota@gentoo.org> +ibus-unikey-0.6.1.ebuild:
+  Version bumped. #40683
+
+  06 Mar 2012; Naohiro Aota <naota@gentoo.org> ibus-unikey-0.6.0.ebuild:
+  Add missing dependency dev-util/intltool and sys-devel/gettext #406863
+
+*ibus-unikey-0.6.0 (17 Nov 2011)
+
+  17 Nov 2011; Naohiro Aota <naota@gentoo.org> +ibus-unikey-0.6.0.ebuild,
+  metadata.xml:
+  Version bump. Bug #388775
+
+*ibus-unikey-0.5.1-r1 (28 May 2011)
+*ibus-unikey-0.5.1 (28 May 2011)
+
+  28 May 2011; MATSUU Takuto <matsuu@gentoo.org> -ibus-unikey-0.3.ebuild,
+  -ibus-unikey-0.4.ebuild, ibus-unikey-0.5.ebuild, +ibus-unikey-0.5.1.ebuild,
+  +ibus-unikey-0.5.1-r1.ebuild, +files/ibus-unikey-ibus-1.4.patch:
+  Version bumped, bug #353798. Support ibus-1.4.
+
+*ibus-unikey-0.5 (15 Jun 2010)
+
+  15 Jun 2010; MATSUU Takuto <matsuu@gentoo.org> +ibus-unikey-0.5.ebuild:
+  Version bumped.
+
+*ibus-unikey-0.4 (14 Apr 2010)
+
+  14 Apr 2010; MATSUU Takuto <matsuu@gentoo.org> +ibus-unikey-0.4.ebuild:
+  Version bumped, bug #315133.
+
+*ibus-unikey-0.3 (15 Dec 2009)
+
+  15 Dec 2009; MATSUU Takuto <matsuu@gentoo.org> +ibus-unikey-0.3.ebuild,
+  +metadata.xml:
+  Initial import, bug #296447.
+

@@ -1,0 +1,58 @@
+--- localepurge.orig	2012-12-02 19:56:18.000000000 +0100
++++ localepurge	2012-12-02 20:00:38.000000000 +0100
+@@ -1,14 +1,14 @@
+-#!/bin/bash
++#!@GENTOO_PORTAGE_EPREFIX@/bin/bash
+ 
+ # Deleting all locale files on system
+ # *not* listed in /etc/locale.nopurge
+ 
+ set -e
+ 
+-LOCALEDIRS="/usr/share/locale /usr/local/share/locale /usr/kde/?.?/share/locale /opt/sun-jdk-*/jre/lib/locale /opt/sun-jre-bin-*/lib/locale /usr/lib/locale /usr/share/binutils-data/*/*/locale /usr/share/gcc-data/*/*/locale"
+-MANPAGEDIRS="/usr/share/man /usr/man /usr/local/share/man /usr/kde/?.?/share/man /usr/kde/?.?/man /opt/sun-jdk-*/man /opt/sun-jre-bin-*/man"
+-LOCALELIST="/var/cache/localepurge/localelist"
+-CONFIGFILE="/etc/locale.nopurge"
++LOCALEDIRS="@GENTOO_PORTAGE_EPREFIX@/usr/share/locale @GENTOO_PORTAGE_EPREFIX@/usr/local/share/locale @GENTOO_PORTAGE_EPREFIX@/usr/kde/?.?/share/locale @GENTOO_PORTAGE_EPREFIX@/opt/sun-jdk-*/jre/lib/locale @GENTOO_PORTAGE_EPREFIX@/opt/sun-jre-bin-*/lib/locale @GENTOO_PORTAGE_EPREFIX@/usr/lib/locale @GENTOO_PORTAGE_EPREFIX@/usr/share/binutils-data/*/*/locale @GENTOO_PORTAGE_EPREFIX@/usr/share/gcc-data/*/*/locale"
++MANPAGEDIRS="@GENTOO_PORTAGE_EPREFIX@/usr/share/man @GENTOO_PORTAGE_EPREFIX@/usr/man @GENTOO_PORTAGE_EPREFIX@/usr/local/share/man @GENTOO_PORTAGE_EPREFIX@/usr/kde/?.?/share/man @GENTOO_PORTAGE_EPREFIX@/usr/kde/?.?/man @GENTOO_PORTAGE_EPREFIX@/opt/sun-jdk-*/man @GENTOO_PORTAGE_EPREFIX@/opt/sun-jre-bin-*/man"
++LOCALELIST="@GENTOO_PORTAGE_EPREFIX@/var/cache/localepurge/localelist"
++CONFIGFILE="@GENTOO_PORTAGE_EPREFIX@/etc/locale.nopurge"
+ VERSION="0.5.4"
+ 
+ LOCALETOTAL=0
+@@ -23,7 +23,7 @@
+ BRACKET=$'\e[34;01m'
+ BOLD=$'\e[1m'
+ 
+-ACTION="/bin/rm -vf"
++ACTION="@GENTOO_PORTAGE_EPREFIX@/bin/rm -vf"
+ 
+ eerror () {
+     echo -e " ${BAD}*${NORMAL} $*" 2> /dev/stderr
+@@ -43,7 +43,7 @@
+ print() {
+     for x in $@; do
+         if [ "${x}" = "" ]; then return 0
+-        else /bin/echo $x
++        else @GENTOO_PORTAGE_EPREFIX@/bin/echo $x
+         fi
+     done
+ }
+@@ -184,7 +184,7 @@
+             einfo "localepurge: processing locale files in ${LOCALEDIR} ..."
+         fi
+ 
+-        for LOCALE in `/bin/ls ${LOCALEDIR}`; do
++        for LOCALE in `@GENTOO_PORTAGE_EPREFIX@/bin/ls ${LOCALEDIR}`; do
+             if echo "${PURGELIST}" | grep -xq ${LOCALE}; then
+                 if [ -d ${LOCALEDIR}/${LOCALE}/LC_MESSAGES ]; then
+                     if [ "${LIST}" = "enabled" ]; then 
+@@ -216,7 +216,7 @@
+             einfo "localepurge: processing man pages in ${MANPAGEDIR} ..."
+         fi
+ 
+-        for LOCALE in `/bin/ls ${MANPAGEDIR} | grep -v ^man[1-9]`; do
++        for LOCALE in `@GENTOO_PORTAGE_EPREFIX@/bin/ls ${MANPAGEDIR} | grep -v ^man[1-9]`; do
+             if echo "${PURGELIST}" | grep -xq ${LOCALE}; then
+                 if [ -d ${MANPAGEDIR}/${LOCALE} ]; then
+                     if [ "${LIST}" = "enabled" ]; then

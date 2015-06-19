@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 net-misc/connman x11-libs/libxkbcommon
+DESCRIPTION=Qt GUI for Connman with system tray icon
+EAPI=5
+HOMEPAGE=https://github.com/andrew-bibb/cmst
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 net-misc/connman x11-libs/libxkbcommon
+SLOT=0
+SRC_URI=https://github.com/andrew-bibb/cmst/archive/cmst-2015.03.01.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	qmake-utils	55ebcc6f3269308d226969c26704e343	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=e02182aae0d729741888cd8689b41691

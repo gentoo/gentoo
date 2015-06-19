@@ -1,0 +1,10 @@
+# ChangeLog for dev-db/spatialite-tools
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/spatialite-tools/ChangeLog,v 1.1 2012/05/25 17:45:05 scarabeus Exp $
+
+*spatialite-tools-3.1.0 (25 May 2012)
+
+  25 May 2012; Tomáš Chvátal <scarabeus@gentoo.org> +metadata.xml,
+  +spatialite-tools-3.1.0.ebuild:
+  Add ebuild with basic tools to control spatialite. Fixes bug#284913.
+

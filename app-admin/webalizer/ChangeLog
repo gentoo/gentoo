@@ -1,0 +1,424 @@
+# ChangeLog for app-admin/webalizer
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/webalizer/ChangeLog,v 1.105 2015/03/20 19:15:47 blueness Exp $
+
+  20 Mar 2015; Anthony G. Basile <blueness@gentoo.org>
+  -files/webalizer-2.21.02-gcc-4.4.patch, -webalizer-2.21.02.ebuild,
+  webalizer-2.23.08.ebuild:
+  Add xtender patch, bug #499976.
+
+  30 Jun 2014; Anthony G. Basile <blueness@gentoo.org> webalizer-2.21.02.ebuild,
+  webalizer-2.23.05.ebuild, webalizer-2.23.08.ebuild:
+  Remove ancient confutils, bug #515184
+
+*webalizer-2.23.08 (01 Feb 2014)
+
+  01 Feb 2014; Anthony G. Basile <blueness@gentoo.org>
+  +webalizer-2.23.08.ebuild:
+  Version bump, bug 499976
+
+  20 Jul 2013; Jeroen Roovers <jer@gentoo.org> webalizer-2.23.05.ebuild:
+  Spelling.
+
+  13 Jan 2013; Anthony G. Basile <blueness@gentoo.org> metadata.xml:
+  Adopting this
+
+  13 Jan 2013; Anthony G. Basile <blueness@gentoo.org> webalizer-2.21.02.ebuild:
+  Drop all keywords but stable sparc
+
+  13 Jan 2013; Agostino Sarubbo <ago@gentoo.org> webalizer-2.23.05.ebuild:
+  Stable for x86, wrt bug #445226
+
+  30 Dec 2012; Agostino Sarubbo <ago@gentoo.org> webalizer-2.23.05.ebuild:
+  Stable for alpha, wrt bug #445226
+
+  27 Dec 2012; Jeroen Roovers <jer@gentoo.org> webalizer-2.23.05.ebuild:
+  Stable for HPPA (bug #445226).
+
+  23 Dec 2012; Agostino Sarubbo <ago@gentoo.org> webalizer-2.23.05.ebuild:
+  Stable for ppc64, wrt bug #445226
+
+  22 Dec 2012; Agostino Sarubbo <ago@gentoo.org> webalizer-2.23.05.ebuild:
+  Stable for ppc, wrt bug #445226
+
+  19 Dec 2012; Agostino Sarubbo <ago@gentoo.org> webalizer-2.23.05.ebuild:
+  Stable for amd64, wrt bug #445226
+
+  18 Dec 2012; Anthony G. Basile <blueness@gentoo.org> webalizer-2.23.05.ebuild:
+  Add pkg_postinst() message about upgrading to XTENDED, bug #445226, comment #4
+
+  29 Nov 2012; Anthony G. Basile <blueness@gentoo.org>
+  -files/geolizer-2.01.10_p20070115-strip.patch, -files/webalizer-db4.2.patch,
+  -files/webalizer-storage-size.patch, -webalizer-2.01.10-r15.ebuild,
+  -webalizer-2.01.10-r16.ebuild, -webalizer-2.01.10-r17.ebuild,
+  webalizer-2.21.02.ebuild, webalizer-2.23.05.ebuild:
+  Remove very old versions, fix home page
+
+*webalizer-2.23.05 (29 Nov 2012)
+
+  29 Nov 2012; Anthony G. Basile <blueness@gentoo.org>
+  +webalizer-2.23.05.ebuild:
+  Version bump, bug #385291
+
+  28 Oct 2012; Sven Wegener <swegener@gentoo.org> webalizer-2.21.02.ebuild:
+  Add support for on-the-fly bzip2 decompression.
+
+  03 Sep 2012; Anthony G. Basile <blueness@gentoo.org>
+  webalizer-2.21.02.ebuild:
+  Keyword ~arm, bug #389541
+
+  25 Mar 2012; Brent Baude <ranger@gentoo.org> webalizer-2.21.02.ebuild:
+  Marking webalizer-2.21.02 ppc64 for bug 287931
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org> webalizer-2.21.02.ebuild:
+  sparc/x86 stable wrt #287931
+
+  06 Mar 2012; Brent Baude <ranger@gentoo.org> webalizer-2.21.02.ebuild:
+  Marking webalizer-2.21.02 ppc for bug 287931
+
+  17 Feb 2012; Tobias Klausmann <klausman@gentoo.org> webalizer-2.21.02.ebuild:
+  Stable on alpha, bug #287931
+
+  09 Feb 2012; Jeroen Roovers <jer@gentoo.org> webalizer-2.21.02.ebuild:
+  Stable for HPPA (bug #287931).
+
+  04 Feb 2012; Agostino Sarubbo <ago@gentoo.org> webalizer-2.21.02.ebuild:
+  Stable for amd64, wrt bug #287931
+
+  28 Oct 2010; Sebastian Pipping <sping@gentoo.org>
+  webalizer-2.01.10-r15.ebuild, webalizer-2.01.10-r16.ebuild,
+  webalizer-2.01.10-r17.ebuild,
+  +files/geolizer-2.01.10_p20070115-strip.patch:
+  Fix pre-stripping files with USE=geoip (bug #331035)
+
+  28 Oct 2010; Sebastian Pipping <sping@gentoo.org>
+  webalizer-2.01.10-r15.ebuild, webalizer-2.01.10-r16.ebuild,
+  webalizer-2.01.10-r17.ebuild, webalizer-2.21.02.ebuild:
+  Replace built_with_use by use dependency, explicitly assign RDEPEND
+
+  28 Oct 2010; Sebastian Pipping <sping@gentoo.org>
+  webalizer-2.01.10-r15.ebuild, webalizer-2.01.10-r16.ebuild,
+  webalizer-2.01.10-r17.ebuild:
+  Move to EAPI 2 with src_prepare() and src_configure() (bug #331027)
+
+  23 May 2010; Sebastian Pipping <sping@gentoo.org>
+  webalizer-2.21.02.ebuild, +files/webalizer-2.21.02-gcc-4.4.patch:
+  Integrate GCC 4.4 patch for bug #321053
+
+*webalizer-2.21.02 (10 Mar 2010)
+
+  10 Mar 2010; Sebastian Pipping <sping@gentoo.org>
+  +webalizer-2.21.02.ebuild:
+  Bump to 2.21.02 (bug #231859)
+  geolizer and webalizer xtended now have dedicated packages
+
+  10 Mar 2010; Sebastian Pipping <sping@gentoo.org>
+  webalizer-2.01.10-r15.ebuild, webalizer-2.01.10-r16.ebuild,
+  webalizer-2.01.10-r17.ebuild:
+  Fix SRC_URI
+
+  03 Jan 2010; Sebastian Pipping <sping@gentoo.org>
+  webalizer-2.01.10-r17.ebuild:
+  Fix case with USE="xtended geoip" that I broke with r17 before
+
+*webalizer-2.01.10-r17 (03 Jan 2010)
+
+  03 Jan 2010; Sebastian Pipping <sping@gentoo.org>
+  +webalizer-2.01.10-r17.ebuild:
+  Remove --{en,dis}able-geoip from configure call as a fix to bug #228137
+
+  26 Dec 2009; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove smithj from metadata (#95385)
+
+  12 Oct 2009; Mark Loeser <halcy0n@gentoo.org>
+  webalizer-2.01.10-r15.ebuild:
+  QA fixes; unquoted variables
+
+  17 Jul 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  27 Feb 2008; Benedikt Böhm <hollow@gentoo.org>
+  files/webalizer-db4.2.patch, files/webalizer-storage-size.patch:
+  fix #211604
+
+*webalizer-2.01.10-r16 (23 Feb 2008)
+
+  23 Feb 2008; Benedikt Böhm <hollow@gentoo.org> files/apache.webalizer,
+  -files/webalizer-readability.patch, +files/webalizer-storage-size.patch,
+  metadata.xml, -webalizer-2.01.10-r12.ebuild,
+  -webalizer-2.01.10-r13.ebuild, -webalizer-2.01.10-r14.ebuild,
+  +webalizer-2.01.10-r16.ebuild:
+  ebuild cleanup wrt #208584; fixes #156785, #200855 and maybe #184732; bumps
+  geolizer and xtended to current versions
+
+  10 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  webalizer-2.01.10-r15.ebuild:
+  Stable on sparc wrt #174950
+
+  09 Jul 2007; Jeroen Roovers <jer@gentoo.org> webalizer-2.01.10-r15.ebuild:
+  Stable for HPPA (bug #174950).
+
+  08 Jul 2007; Raúl Porcel <armin76@gentoo.org>
+  webalizer-2.01.10-r15.ebuild:
+  alpha stable wrt #174950
+
+  08 Jul 2007; Christoph Mende <angelos@gentoo.org>
+  webalizer-2.01.10-r15.ebuild:
+  Stable on amd64 wrt bug #174950
+
+  08 Jul 2007; Christian Faulhammer <opfer@gentoo.org>
+  webalizer-2.01.10-r15.ebuild:
+  stable x86, bug 174950
+
+  08 Jul 2007; Markus Rothe <corsair@gentoo.org>
+  webalizer-2.01.10-r15.ebuild:
+  Stable on ppc64; bug #174950
+
+  07 Jul 2007; Lars Weiler <pylon@gentoo.org> webalizer-2.01.10-r15.ebuild:
+  Stable on ppc; bug #174950.
+
+*webalizer-2.01.10-r15 (19 Apr 2007)
+
+  19 Apr 2007; Hanno Boeck <hanno@gentoo.org> +webalizer-2.01.10-r15.ebuild:
+  Bump patchlevel.
+
+  20 Oct 2006; Renat Lumpau <rl03@gentoo.org> webalizer-2.01.10-r14.ebuild:
+  Always need db. Bug #151901.
+
+*webalizer-2.01.10-r14 (04 Oct 2006)
+
+  04 Oct 2006; Renat Lumpau <rl03@gentoo.org> +webalizer-2.01.10-r14.ebuild:
+  Fix bug #146237, bug #146193.
+
+  09 Jul 2006; Renat Lumpau <rl03@gentoo.org> webalizer-2.01.10-r12.ebuild,
+  webalizer-2.01.10-r13.ebuild:
+  einfo->elog
+
+  01 Jul 2006; Renat Lumpau <rl03@gentoo.org> webalizer-2.01.10-r13.ebuild:
+  Fix sys-libs/db stuff, bug #135766.
+
+  24 Apr 2006; Renat Lumpau <rl03@gentoo.org>
+  -files/2.01.10/apache.webalizer, -files/2.01.10/reconfig,
+  +files/apache.webalizer, -files/output.c.patch,
+  -webalizer-2.01.10-r4.ebuild, -webalizer-2.01.10-r5.ebuild,
+  webalizer-2.01.10-r12.ebuild, webalizer-2.01.10-r13.ebuild:
+  Removed old versions; housekeeping
+
+  21 Apr 2006; Thomas Cort <tcort@gentoo.org> webalizer-2.01.10-r12.ebuild:
+  Stable on alpha wrt Bug #106621.
+
+  08 Apr 2006; Simon Stelling <blubb@gentoo.org>
+  webalizer-2.01.10-r12.ebuild:
+  stable on amd64
+
+  10 Mar 2006; Michael Hanselmann <hansmi@gentoo.org>
+  webalizer-2.01.10-r12.ebuild:
+  Stable on ppc.
+
+*webalizer-2.01.10-r13 (08 Mar 2006)
+
+  08 Mar 2006; <smithj@gentoo.org> +webalizer-2.01.10-r13.ebuild:
+  #121816: make the useragent field larger
+
+  27 Feb 2006; Jeroen Roovers <jer@gentoo.org> webalizer-2.01.10-r12.ebuild:
+  Stable on hppa (bug #106621).
+
+  24 Feb 2006; Markus Rothe <corsair@gentoo.org>
+  webalizer-2.01.10-r12.ebuild:
+  Stable on ppc64; bug #106621
+
+  23 Feb 2006; <smithj@gentoo.org> ChangeLog:
+  bugzy #106621: x86 stable
+
+  23 Feb 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  webalizer-2.01.10-r12.ebuild:
+  Stable on sparc wrt #106621
+
+  23 Feb 2006; Renat Lumpau <rl03@gentoo.org> -files/2.01.10/webalizer.conf,
+  -files/webalizer-search.patch, webalizer-2.01.10-r4.ebuild,
+  webalizer-2.01.10-r5.ebuild, webalizer-2.01.10-r12.ebuild:
+  Moved a few large files to mirrors wrt bug #123634.
+
+  22 Feb 2006; Renat Lumpau <rl03@gentoo.org>
+  -files/webalizer-db4-with-geoip.patch, -files/webalizer-db4.patch,
+  -webalizer-2.01.10-r8.ebuild, -webalizer-2.01.10-r10.ebuild,
+  -webalizer-2.01.10-r11.ebuild, webalizer-2.01.10-r12.ebuild:
+  Removed crufty versions
+
+  19 Jan 2006; Renat Lumpau <rl03@gentoo.org> webalizer-2.01.10-r12.ebuild:
+  Fixed SLOT
+
+  08 Jan 2006; Renat Lumpau <rl03@gentoo.org> webalizer-2.01.10-r12.ebuild:
+  Fixes for bug #118313.
+
+*webalizer-2.01.10-r12 (08 Jan 2006)
+
+  08 Jan 2006; Renat Lumpau <rl03@gentoo.org> +files/webalizer-db4.2.patch,
+  +files/webalizer-search.patch, +webalizer-2.01.10-r12.ebuild:
+  Include patches from bug #98977, bug #101065, bug #107477, bug #105933, bug
+  #103428.
+
+  06 Jan 2006; Renat Lumpau <rl03@gentoo.org>
+  files/2.01.10/apache.webalizer:
+  Fixed sample Apache config
+
+*webalizer-2.01.10-r11 (06 Jan 2006)
+
+  06 Jan 2006; Renat Lumpau <rl03@gentoo.org> files/2.01.10/reconfig,
+  files/2.01.10/webalizer.conf, +webalizer-2.01.10-r11.ebuild:
+  Revbump for bug #106621.
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  webalizer-2.01.10-r5.ebuild:
+  Mark 2.01.10-r5 stable on alpha
+
+  09 Aug 2005; Jonathan Smith <smithj@gentoo.org> metadata.xml:
+  finally adding myself as primary maintainer...
+
+*webalizer-2.01.10-r10 (09 Jul 2005)
+
+  09 Jul 2005; Jonathan Smith <smithj@gentoo.org>
+  +files/webalizer-db4-with-geoip.patch, +files/webalizer-language-list.txt,
+  +files/webalizer-readability.patch, -webalizer-2.01.10-r9.ebuild,
+  +webalizer-2.01.10-r10.ebuild:
+  really discusting small hack to get non-english natural language suppor for
+  #48449; fixed patching problem with USE=geoip for #98304; update to the
+  output.c (now -readability patch for #78182
+
+  07 Jul 2005; Renat Lumpau <rl03@gentoo.org>
+  files/2.01.10/apache.webalizer, files/2.01.10/reconfig,
+  files/2.01.10/webalizer.conf, webalizer-2.01.10-r9.ebuild:
+  Fix config files (#67551)
+
+*webalizer-2.01.10-r9 (07 Jul 2005)
+
+  07 Jul 2005; Jonathan Smith <smithj@gentoo.org>
+  +files/webalizer-db4.patch, -webalizer-2.01.10-r6.ebuild,
+  -webalizer-2.01.10-r7.ebuild, +webalizer-2.01.10-r9.ebuild:
+  fixed db1 problem for #65399, fixed gb-without-png-support problem for #65163
+
+*webalizer-2.01.10-r8 (16 Apr 2005)
+
+  16 Apr 2005; Elfyn McBratney <beu@gentoo.org>
+  +webalizer-2.01.10-r8.ebuild:
+  Rev bump (missed one path change).
+
+*webalizer-2.01.10-r7 (01 Mar 2005)
+
+  01 Mar 2005; Elfyn McBratney <beu@gentoo.org>
+  +webalizer-2.01.10-r7.ebuild:
+  Rev bump.  Updates to use the new apache paths.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  02 Sep 2004; Travis Tilley <lv@gentoo.org> webalizer-2.01.10-r4.ebuild:
+  stable on amd64
+
+*webalizer-2.01.10-r6 (27 Aug 2004)
+
+  27 Aug 2004; Renat Lumpau <rl03@gentoo.org> +files/2.01.10/reconfig,
+  +webalizer-2.01.10-r6.ebuild:
+  -r6 uses webapp.eclass to create directories with right permissions. Closes
+  #61399.
+
+  17 Jul 2004; Tom Gall <tgall@gentoo.org> webalizer-2.01.10-r5.ebuild:
+  stable on ppc64, bug #55677
+
+  09 Jul 2004; Christian Andreetta <satya@gentoo.org>
+  webalizer-2.01.10-r4.ebuild, webalizer-2.01.10-r5.ebuild:
+  Copyright update; geoip library fix
+
+  07 Jul 2004; Anders Rune Jensen <arj@gentoo.org> webalizer-2.01.10-r5.ebuild,
+  webalizer-2.01.10-r5.ebuild:
+  Pretty printer patch from Ondrej Novy <onovy@nomi.cz>.
+	
+  29 Jun 2004; Aron Griffis <agriffis@gentoo.org> webalizer-2.01.10-r4.ebuild,
+  webalizer-2.01.10-r5.ebuild:
+  sync IUSE (+apache2)
+
+  01 Jun 2004; Aron Griffis <agriffis@gentoo.org> webalizer-2.01.10-r4.ebuild,
+  webalizer-2.01.10-r5.ebuild:
+  Fix use invocation
+
+  24 May 2004; Bryan Østergaard <kloeri@gentoo.org>
+  webalizer-2.01.10-r5.ebuild:
+  Keyworded ~alpha, requested in bug #51550.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> webalizer-2.01.10-r5.ebuild:
+  Add inherit eutils
+
+*webalizer-2.01.10-r5 (23 Apr 2004)
+
+  23 Apr 2004; Stuart Herbert <stuart@gentoo.org> webalizer-2.01.10-r5.ebuild:
+  Added geoip support; thanks to Christian A. <chr@die.unipd.it>; see bug #44748
+
+  01 Feb 2004; Jon Portnoy <avenj@gentoo.org> webalizer-2.01.10-r4.ebuild :
+  AMD64 keywords.
+
+  11 Jan 2004; Martin Holzer <mholzer@gentoo.org> webalizer-2.01.10-r4.ebuild:
+  Displays info about apache1 only if IUSE is not set
+
+  05 Jan 2004; <gustavoz@gentoo.org> webalizer-2.01.10-r4.ebuild:
+  marked stable for hppa
+
+  24 Nov 2003; Martin Holzer <mholzer@gentoo.org> webalizer-2.01.10-r4.ebuild:
+  adding some little notes to update apache.conf
+
+*webalizer-2.01.10-r4 (02 Nov 2003)
+
+  02 Nov 2003; Michael Imhof <tantive@gentoo.org> files/2.01.10/apache.webalizer,
+  files/2.01.10/webalizer.conf, webalizer-2.01.10-r4.ebuild:
+  Changed the ebuild to comply with apache2. A simple emerge webalizer;
+  webalizer is all you need to get it running now.
+
+  14 Jul 2003; Martin Holzer <mholzer@gentoo.org> webalizer-2.01.10-r3.ebuild:
+  Fixed Category in einfo. Closes #24427.
+
+  28 Jul 2003; <paul@gentoo.org> webalizer-2.01.10-r3.ebuild:
+  Fix webalizer to build against the correct db headers
+
+*webalizer-2.01.10-r3 (22 Jun 2003)
+
+  22 Jun 2003; Donny Davies <woodchip@gentoo.org> webalizer-2.01.10-r3.ebuild:
+  Close #15752; make it install properly for Apache2.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*webalizer-2.01.10-r2 (3 May 2002)
+
+  14 Nov 2002; Mike Frysinger <vapier@gentoo.org> :
+  Replaced hardcoding of /home/httpd/htdocs with a grep of /etc/apache/conf/apache.conf
+
+  06 Aug 2002; Mark Guertin <gerk@gentoo.org> :
+  Added ppc to keywords
+
+  26 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> webalizer-2.01.10-r2.ebuild :
+  Changed DESCRIPTION to something descriptive ;) Added RDEPEND
+  
+  3 May 2002; Donny Davies <woodchip@gentoo.org> :
+  Add LICENSE, SLOT, $Headers.
+
+*webalizer-2.01.10-r1 (24 Apr 2002)
+
+  24 Apr 2002; Donny Davies <woodchip@gentoo.org> :
+  Added --enable-dns to ./configure, added small sed patch and sys-libs/db1
+  to the dependencies to facilitate this.
+
+*webalizer-2.01.10 (19 Apr 2002)
+
+  18 Apr 2002; Donny Davies <woodchip@gentoo.org> :
+  This version fixes a security bug.
+
+*webalizer-2.01.06-r2 (18 Apr 2002)
+
+  18 Apr 2002; Donny Davies <woodchip@gentoo.org> :
+  Updated to match the new apache layout.  Add missing zlib dependency and correct
+  the libpng dependency.  Add a pkg_config for easy apache.conf auto-update.  Fix
+  the report output directory by moving it's creation into pkg_postinst.  Tweaked
+  the config file.
+
+*webalizer-2.01.06-r1 (12 Apr 2002)
+
+  12 Apr 2002; Seemant Kulleen <seemant@gentoo.org> webalizer-2.01.06-r1.ebuild:
+  Compile against newest libpng

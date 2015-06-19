@@ -1,0 +1,10 @@
+# ChangeLog for dev-embedded/sgpp-lite-arm-linux-bin
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/sgpp-lite-arm-linux-bin/ChangeLog,v 1.1 2010/12/02 15:15:56 vapier Exp $
+
+*sgpp-lite-arm-linux-bin-2010.09.50 (02 Dec 2010)
+
+  02 Dec 2010; Mike Frysinger <vapier@gentoo.org>
+  +sgpp-lite-arm-linux-bin-2010.09.50.ebuild, +metadata.xml:
+  Initial package by me.
+

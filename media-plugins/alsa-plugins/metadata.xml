@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>alsa</herd>
+<maintainer>
+<email>alsa-bugs@gentoo.org</email>
+</maintainer>
+<upstream>
+<remote-id type="cpe">cpe:/a:alsa-project:alsa-plugins</remote-id>
+</upstream>
+</pkgmetadata>

@@ -1,0 +1,99 @@
+# ChangeLog for dev-ml/fieldslib
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/fieldslib/ChangeLog,v 1.20 2014/11/28 17:44:43 aballier Exp $
+
+  28 Nov 2014; Alexis Ballier <aballier@gentoo.org> fieldslib-109.20.03.ebuild:
+  update deps for ocaml 4.02
+
+*fieldslib-109.20.03 (13 Feb 2014)
+
+  13 Feb 2014; Alexis Ballier <aballier@gentoo.org>
+  +fieldslib-109.20.03.ebuild:
+  version bump
+
+*fieldslib-109.20.02 (19 Jan 2014)
+
+  19 Jan 2014; Alexis Ballier <aballier@gentoo.org>
+  +fieldslib-109.20.02.ebuild:
+  version bump
+
+  19 Aug 2013; Alexis Ballier <aballier@gentoo.org>
+  -fieldslib-109.08.00.ebuild, -fieldslib-109.11.00.ebuild:
+  remove old
+
+*fieldslib-109.20.00 (24 May 2013)
+
+  24 May 2013; Alexis Ballier <aballier@gentoo.org>
+  +fieldslib-109.20.00.ebuild:
+  version bump
+
+*fieldslib-109.11.00 (06 Mar 2013)
+
+  06 Mar 2013; Alexis Ballier <aballier@gentoo.org>
+  +fieldslib-109.11.00.ebuild:
+  version bump
+
+
+  02 Mar 2013; Alexis Ballier <aballier@gentoo.org>
+  -fieldslib-108.00.01.ebuild, -fieldslib-108.07.01.ebuild,
+  -fieldslib-109.07.00.ebuild:
+  remove old
+
+*fieldslib-109.08.00 (08 Feb 2013)
+
+  08 Feb 2013; Alexis Ballier <aballier@gentoo.org>
+  +fieldslib-109.08.00.ebuild:
+  version bump
+
+*fieldslib-109.07.00 (07 Feb 2013)
+
+  07 Feb 2013; Alexis Ballier <aballier@gentoo.org>
+  +fieldslib-109.07.00.ebuild:
+  version bump, eapi 5, add subslots and := deps
+
+  17 Oct 2012; Alexis Ballier <aballier@gentoo.org> fieldslib-108.07.01.ebuild:
+  Mirror the distfile, upstream one fails to fetch, bug #438610 by Nick Bowler
+
+*fieldslib-108.07.01 (08 Oct 2012)
+
+  08 Oct 2012; Alexis Ballier <aballier@gentoo.org>
+  +fieldslib-108.07.01.ebuild:
+  version bump
+
+  07 Aug 2012; Alexis Ballier <aballier@gentoo.org> -fieldslib-0.1.2.ebuild:
+  remove old
+
+  09 Jul 2012; Ulrich Müller <ulm@gentoo.org> fieldslib-0.1.2.ebuild,
+  fieldslib-108.00.01.ebuild:
+  Update LICENSE, bug 425140.
+
+*fieldslib-108.00.01 (30 Jun 2012)
+
+  30 Jun 2012; Alexis Ballier <aballier@gentoo.org>
+  +fieldslib-108.00.01.ebuild:
+  version bump
+
+  27 Mar 2012; Alexis Ballier <aballier@gentoo.org> fieldslib-0.1.2.ebuild:
+  convert to oasis.eclass
+
+  06 Jul 2011; Alexis Ballier <aballier@gentoo.org> -fieldslib-0.1.1.ebuild:
+  remove old
+
+*fieldslib-0.1.2 (25 Jun 2011)
+
+  25 Jun 2011; Alexis Ballier <aballier@gentoo.org> +fieldslib-0.1.2.ebuild:
+  version bump, by Vladimir Ivanov, bug #361167
+
+  24 Jan 2011; Alexis Ballier <aballier@gentoo.org> -fieldslib-0.1.0.ebuild:
+  remove old
+
+*fieldslib-0.1.1 (20 Jan 2011)
+
+  20 Jan 2011; Alexis Ballier <aballier@gentoo.org> +fieldslib-0.1.1.ebuild:
+  version bump
+
+*fieldslib-0.1.0 (27 Oct 2009)
+
+  27 Oct 2009; Alexis Ballier <aballier@gentoo.org> +fieldslib-0.1.0.ebuild,
+  +metadata.xml:
+  initial import, ebuild by me

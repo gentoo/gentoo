@@ -1,0 +1,37 @@
+diff -u -r openntpd-5.7p1-orig/ntpd.8 openntpd-5.7p1/ntpd.8
+--- openntpd-5.7p1-orig/ntpd.8	2015-01-09 16:22:41.451768526 -0800
++++ openntpd-5.7p1/ntpd.8	2015-01-09 16:23:23.840778527 -0800
+@@ -118,7 +118,7 @@
+ typically
+ .Xr ntpd.conf 5 ,
+ and its initial clock drift from
+-.Pa /var/db/ntpd.drift .
++.Pa /var/lib/openntpd/ntpd.drift .
+ Clock drift is periodically written to the drift file thereafter.
+ .Pp
+ When
+@@ -129,10 +129,10 @@
+ signal, it writes its peer and sensor status to
+ .Xr syslog 3 .
+ .Sh FILES
+-.Bl -tag -width "/var/db/ntpd.driftXXX" -compact
++.Bl -tag -width "/var/lib/openntpd/ntpd.driftXXX" -compact
+ .It Pa /etc/ntpd.conf
+ Default configuration file.
+-.It Pa /var/db/ntpd.drift
++.It Pa /var/lib/openntpd/ntpd.drift
+ Drift file.
+ .It Pa /run/ntpd.sock
+ Socket file for communication with
+diff -u -r openntpd-5.7p1-orig/ntpd.h openntpd-5.7p1/ntpd.h
+--- openntpd-5.7p1-orig/ntpd.h	2015-01-09 16:22:41.452768549 -0800
++++ openntpd-5.7p1/ntpd.h	2015-01-09 16:23:55.100523371 -0800
+@@ -48,7 +48,7 @@
+ #ifndef	LOCALSTATEDIR
+ #define	LOCALSTATEDIR	"/var"
+ #endif
+-#define	DRIFTFILE	LOCALSTATEDIR "/db/ntpd.drift"
++#define	DRIFTFILE	LOCALSTATEDIR "/openntpd/ntpd.drift"
+ #define	CTLSOCKET	"/run/ntpd.sock"
+ 
+ #if defined(SO_SETFIB)

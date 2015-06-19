@@ -1,0 +1,200 @@
+# ChangeLog for games-action/supertuxkart
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/supertuxkart/ChangeLog,v 1.47 2015/06/13 06:29:32 mr_bones_ Exp $
+
+  13 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  files/supertuxkart-0.8.1-cmake.patch:
+  fix patch for bug #551260
+
+  05 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/supertuxkart-0.8.1-cmake.patch,
+  files/supertuxkart-0.8.1-desktopfile.patch,
+  files/supertuxkart-0.8.1-gentoo.patch,
+  files/supertuxkart-0.8.1-icon-dest.patch,
+  files/supertuxkart-0.8.1-irrlicht.patch, files/supertuxkart-0.8.1-jpeg9.patch,
+  files/supertuxkart-0.8.1-mesa-10.x.patch, supertuxkart-0.8.1.ebuild:
+  add patch to work with newer cmake (bug #551260)
+
+  01 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  supertuxkart-0.8.1.ebuild:
+  add slot to virtual/jpeg
+
+  25 Sep 2014; Alfredo Tupone <tupone@gentoo.org> supertuxkart-0.8.1.ebuild,
+  +files/supertuxkart-0.8.1-jpeg9.patch:
+  Fix build with media-libs/jpeg-9 Bug #520726 by flameeyes@gentoo.org
+
+  29 Apr 2014; Julian Ospald <hasufell@gentoo.org> supertuxkart-0.8.1.ebuild,
+  +files/supertuxkart-0.8.1-mesa-10.x.patch:
+  fix build with mesa-10.x wrt #504104
+
+  18 Mar 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/supertuxkart-0.8-desktopfile.patch,
+  -files/supertuxkart-0.8-fribidi.patch, -files/supertuxkart-0.8-gentoo.patch,
+  -files/supertuxkart-0.8-irrlicht.patch, -supertuxkart-0.8.ebuild:
+  old
+
+  09 Mar 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  supertuxkart-0.8.1.ebuild:
+  x86 stable wrt bug #492872
+
+  07 Mar 2014; Pacho Ramos <pacho@gentoo.org> supertuxkart-0.8.1.ebuild:
+  amd64 stable, bug #492872
+
+  11 Feb 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  supertuxkart-0.8.1.ebuild:
+  add back some missed patches
+
+*supertuxkart-0.8.1 (26 Nov 2013)
+
+  26 Nov 2013; Julian Ospald <hasufell@gentoo.org> +supertuxkart-0.8.1.ebuild,
+  +files/supertuxkart-0.8.1-desktopfile.patch,
+  +files/supertuxkart-0.8.1-gentoo.patch,
+  +files/supertuxkart-0.8.1-icon-dest.patch,
+  +files/supertuxkart-0.8.1-irrlicht.patch, metadata.xml:
+  version bump wrt #492596
+
+  07 Feb 2013; Ulrich Müller <ulm@gentoo.org> supertuxkart-0.8.ebuild:
+  Move Creative Commons licenses to shorter names.
+
+  30 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/supertuxkart-0.7-build.patch, -files/supertuxkart-0.7-underlink.patch,
+  -supertuxkart-0.7.ebuild:
+  old
+
+  24 Jan 2013; Agostino Sarubbo <ago@gentoo.org> supertuxkart-0.8.ebuild:
+  Stable for x86, wrt bug #453386
+
+  24 Jan 2013; Chema Alonso <nimiux@gentoo.org> supertuxkart-0.8.ebuild:
+  Marked stable for amd64 wrt bug #453386
+
+  13 Dec 2012; Julian Ospald <hasufell@gentoo.org> supertuxkart-0.8.ebuild,
+  +files/supertuxkart-0.8-desktopfile.patch:
+  fix desktop file, remove duplicate
+
+  13 Dec 2012; Michael Sterrett <mr_bones_@gentoo.org> supertuxkart-0.8.ebuild:
+  fix desktop entry
+
+  13 Dec 2012; Michael Sterrett <mr_bones_@gentoo.org> supertuxkart-0.8.ebuild:
+  fix use debug logic (bug #447060)
+
+  13 Dec 2012; Sergey Popov <pinkbyte@gentoo.org> supertuxkart-0.8.ebuild:
+  Remove CCPL-Sampling+ from LICENSE, wrt bug #447094. Thanks to Andrius
+  Štikonas for discovering this issue
+
+*supertuxkart-0.8 (12 Dec 2012)
+
+  12 Dec 2012; Julian Ospald <hasufell@gentoo.org> +supertuxkart-0.8.ebuild,
+  +files/supertuxkart-0.8-fribidi.patch, +files/supertuxkart-0.8-gentoo.patch,
+  +files/supertuxkart-0.8-irrlicht.patch:
+  version bump wrt #376855
+
+  07 Dec 2012; Julian Ospald <hasufell@gentoo.org> supertuxkart-0.7.ebuild:
+  prepare deps for irrlicht-1.8 import, fix as-is license to ZLIB
+
+  30 Jul 2011; Michael Sterrett <mr_bones_@gentoo.org> supertuxkart-0.7.ebuild:
+  add dev-libs/fribidi to RDEPEND (bug #375569)
+
+  22 Jun 2011; Tupone Alfredo <tupone@gentoo.org> supertuxkart-0.7.ebuild,
+  +files/supertuxkart-0.7-underlink.patch:
+  Fix underlink. Bug #371823 by Diego Elio Pettenò
+
+  15 Apr 2011; Christoph Mende <angelos@gentoo.org> supertuxkart-0.7.ebuild:
+  Stable on amd64 wrt bug #363129
+
+  12 Apr 2011; Thomas Kahle <tomka@gentoo.org> supertuxkart-0.7.ebuild:
+  x86 stable per bug 363129
+
+  11 Apr 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  supertuxkart-0.7.ebuild:
+  avoid killing the user's -O setting in CFLAGS (bug #363141)
+
+*supertuxkart-0.7 (10 Mar 2011)
+
+  10 Mar 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  +supertuxkart-0.7.ebuild, +files/supertuxkart-0.7-build.patch:
+  version bump (bug #349899)
+
+  03 Nov 2010; Alfredo Tupone <tupone@gentoo.org> supertuxkart-0.6.2.ebuild,
+  +files/supertuxkart-0.6.2-ovflfix.patch:
+  Fix overflow. Bug #339107 by flameeyes@gentoo.org
+
+  16 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  supertuxkart-0.6.2.ebuild:
+  virtual/glut -> media-libs/glut
+
+  14 Jul 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  supertuxkart-0.6.2.ebuild:
+  Block dependency on the enet version.
+
+  14 Jul 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  supertuxkart-0.6.2.ebuild:
+  fix install with newer autotools (bug #328021)
+
+  03 Jan 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  supertuxkart-0.6.2.ebuild:
+  add USE=nls support (bug #299446)
+
+  25 Oct 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  supertuxkart-0.6.2.ebuild:
+  build with -as-needed with patch from upstream SVN (bug #283490)
+
+  25 Oct 2009; Markus Meier <maekke@gentoo.org> supertuxkart-0.6.2.ebuild:
+  amd64/x86 stable, bug #288638
+
+  02 Sep 2009; Tristan Heaven <nyhm@gentoo.org> supertuxkart-0.6.2.ebuild:
+  Don't install .svn directories
+
+*supertuxkart-0.6.2 (02 Sep 2009)
+
+  02 Sep 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +supertuxkart-0.6.2.ebuild:
+  version bump (bug #283432)
+
+  31 May 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  supertuxkart-0.6.1a.ebuild:
+  libsdl needs USE=joystick (bug #271992)
+
+  19 Apr 2009; Markus Meier <maekke@gentoo.org> supertuxkart-0.6.1a:
+  amd64/x86 stable, bug #266695
+
+*supertuxkart-0.6.1a (02 Mar 2009)
+
+  02 Mar 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +supertuxkart-0.6.1a.ebuild:
+  version bump
+
+*supertuxkart-0.4 (10 Mar 2008)
+
+  10 Mar 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  +supertuxkart-0.4.ebuild:
+  version bump
+
+*supertuxkart-0.3 (22 Jul 2007)
+
+  22 Jul 2007; Tristan Heaven <nyhm@gentoo.org> +supertuxkart-0.3.ebuild:
+  Version bump
+
+  14 Mar 2007; Tristan Heaven <nyhm@gentoo.org> supertuxkart-0.2.ebuild:
+  Install menu entry, bug #159766
+
+  07 Feb 2007; Tristan Heaven <nyhm@gentoo.org> supertuxkart-0.2.ebuild:
+  Use mirror://berlios
+
+  27 Nov 2006; <blubb@gentoo.org> supertuxkart-0.2.ebuild:
+  stable on amd64
+
+  25 Oct 2006; Tristan Heaven <nyhm@gentoo.org> supertuxkart-0.2.ebuild:
+  Fix SRC_URI, bug #152773
+
+  29 Sep 2006; <malc@gentoo.org> supertuxkart-0.2.ebuild:
+  ~amd64 - bug #149512
+
+  29 Sep 2006; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  supertuxkart-0.2.ebuild:
+  mark ~ppc thanks to Albert Zeyer (Bug #149519)
+
+*supertuxkart-0.2 (28 Sep 2006)
+
+  28 Sep 2006; Michael Sterrett <mr_bones_@gentoo.org> +metadata.xml,
+  +supertuxkart-0.2.ebuild:
+  initial commit - ebuild submitted by Mikel Olasagasti via bug #75416

@@ -1,0 +1,50 @@
+# ChangeLog for games-puzzle/skoosh
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/skoosh/ChangeLog,v 1.14 2014/12/06 19:01:56 pacho Exp $
+
+  06 Dec 2014; Pacho Ramos <pacho@gentoo.org> -skoosh-2.5.0.ebuild:
+  Drop old
+
+  05 Dec 2014; Agostino Sarubbo <ago@gentoo.org> skoosh-2.5.0-r1.ebuild:
+  Stable for x86, wrt bug #530020
+
+  03 Dec 2014; Agostino Sarubbo <ago@gentoo.org> skoosh-2.5.0-r1.ebuild:
+  Stable for ppc, wrt bug #530020
+
+  26 Nov 2014; Agostino Sarubbo <ago@gentoo.org> skoosh-2.5.0-r1.ebuild:
+  Stable for amd64, wrt bug #530020
+
+*skoosh-2.5.0-r1 (21 Nov 2014)
+
+  21 Nov 2014; Pacho Ramos <pacho@gentoo.org> +files/skoosh-2.5.0-desktop.patch,
+  +skoosh-2.5.0-r1.ebuild:
+  Add missing dependency on libgnome-keyring (#514816 by Patrick Lauer), fix
+  .desktop file.
+
+  06 Feb 2012; Michael Sterrett <mr_bones_@gentoo.org> skoosh-2.5.0.ebuild:
+  add app-text/rarian dep for building
+
+  05 Oct 2006; Tristan Heaven <nyhm@gentoo.org> skoosh-2.5.0.ebuild:
+  Fix gettext dependency
+
+  31 Oct 2005; Michael Sterrett <mr_bones_@gentoo.org> skoosh-2.5.0.ebuild:
+  tidy
+
+  29 Dec 2004; Joseph Jezak <josejx@gentoo.org> skoosh-2.5.0.ebuild:
+  Marked ppc stable.
+
+  11 Nov 2004; Chris Gianelloni <wolf31o2@gentoo.org> skoosh-2.5.0.ebuild:
+  Added ~amd64 KEYWORD and closing bug #69758.
+
+  05 Nov 2004; Joseph Jezak <josejx@gentoo.org> skoosh-2.5.0.ebuild:
+  Added ~ppc.
+
+*skoosh-2.5.0 (25 Jul 2004)
+
+  25 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org> +skoosh-2.5.0.ebuild:
+  version bump - ebuild from Holly Bostick via bug #57375
+
+*skoosh-2.0.8 (07 Mar 2004)
+
+  07 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> skoosh-2.0.8.ebuild:
+  initial commit; ebuild submitted by Robert Morris via bug #43927

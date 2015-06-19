@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=virtual/perl-Data-Dumper virtual/perl-Scalar-List-Utils dev-perl/Module-Build test? ( virtual/perl-Test-Simple dev-perl/Test-Pod dev-perl/Test-Pod-Coverage ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=Support for creating standard "inside-out" classes
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/Class-Std/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Data-Dumper virtual/perl-Scalar-List-Utils dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/D/DC/DCONWAY/Class-Std-0.011.tar.gz http://dev.gentoo.org/~tove/distfiles/dev-perl/Class-Std/Class-Std-0.11.0-patch.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=b9e53a9e4e660989a6ad80e34115c09d

@@ -1,0 +1,13 @@
+--- a/common/lib/modules/fglrx/build_mod/kcl_ioctl.c	2012-05-26 19:11:03.402987821 +0200
++++ b/common/lib/modules/fglrx/build_mod/kcl_ioctl.c	2012-05-26 19:13:00.273986422 +0200
+@@ -217,6 +217,10 @@
+  *  \param size [in] Number of bytes to allocate
+  *  \return Pointer to allocated memory
+  */
++#ifndef CONFIG_X86_X32
++DEFINE_PER_CPU(unsigned long, old_rsp);
++#endif
++
+ void* ATI_API_CALL KCL_IOCTL_AllocUserSpace32(long size)
+ {
+     void __user *ret = COMPAT_ALLOC_USER_SPACE(size);

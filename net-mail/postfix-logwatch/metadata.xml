@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>mjo@gentoo.org</email>
+  </maintainer>
+  <use>
+    <flag name="logwatch">
+    Install filters for use with <pkg>sys-apps/logwatch</pkg>.
+  </flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">logreporters</remote-id>
+  </upstream>
+</pkgmetadata>

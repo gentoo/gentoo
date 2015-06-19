@@ -1,0 +1,317 @@
+# ChangeLog for mail-mta/netqmail
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/netqmail/ChangeLog,v 1.77 2014/12/22 01:02:03 patrick Exp $
+
+  22 Dec 2014; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Remove unneeded useflag from metadata.xml
+
+  21 Dec 2014; Michał Górny <mgorny@gentoo.org> -files/99qmail,
+  -files/conf-common, -files/conf-pop3d, -files/conf-qmqpd, -files/conf-qmtpd,
+  -files/conf-send, -files/conf-smtpd, -files/dot-qmail, -files/mailer.conf,
+  -files/mkservercert, -files/qmail-config-system, -files/qmail-genrsacert.sh,
+  -files/run-qmail-pop3d, -files/run-qmail-pop3d-log, -files/run-qmail-qmqpd,
+  -files/run-qmail-qmqpd-log, -files/run-qmail-qmtpd,
+  -files/run-qmail-qmtpd-log, -files/run-qmail-send, -files/run-qmail-send-log,
+  -files/run-qmail-smtpd, -files/run-qmail-smtpd-log, -files/servercert.cnf,
+  -files/tcp.pop3.sample, -files/tcp.qmqp.sample, -files/tcp.qmtp.sample,
+  -files/tcp.smtp.sample, -files/tcprules.d-Makefile.qmail,
+  -netqmail-1.05-r4.ebuild, -netqmail-1.05-r8.ebuild:
+  Remove 1.05* due to serious QA violations, bug #533182.
+
+  09 Jun 2013; Agostino Sarubbo <ago@gentoo.org> netqmail-1.06-r2.ebuild:
+  Stable for sh, wrt bug #372967
+
+  09 Jun 2013; Agostino Sarubbo <ago@gentoo.org> netqmail-1.06-r2.ebuild:
+  Stable for s390, wrt bug #372967
+
+  09 Jun 2013; Agostino Sarubbo <ago@gentoo.org> netqmail-1.06-r2.ebuild:
+  Stable for ppc64, wrt bug #372967
+
+  09 Jun 2013; Agostino Sarubbo <ago@gentoo.org> netqmail-1.06-r2.ebuild:
+  Stable for sparc, wrt bug #372967
+
+  09 Jun 2013; Agostino Sarubbo <ago@gentoo.org> netqmail-1.06-r2.ebuild:
+  Stable for ppc, wrt bug #372967
+
+  09 Jun 2013; Agostino Sarubbo <ago@gentoo.org> netqmail-1.06-r2.ebuild:
+  Stable for ia64, wrt bug #372967
+
+  09 Jun 2013; Agostino Sarubbo <ago@gentoo.org> netqmail-1.06-r2.ebuild:
+  Stable for alpha, wrt bug #372967
+
+  04 Jun 2013; Agostino Sarubbo <ago@gentoo.org> netqmail-1.06-r2.ebuild:
+  Stable for x86, wrt bug #372967
+
+  04 Jun 2013; Agostino Sarubbo <ago@gentoo.org> netqmail-1.06-r2.ebuild:
+  Stable for amd64, wrt bug #372967
+
+  02 Jun 2013; Markus Meier <maekke@gentoo.org> netqmail-1.06-r2.ebuild:
+  arm stable, bug #372967
+
+  28 May 2013; Jeroen Roovers <jer@gentoo.org> netqmail-1.06-r2.ebuild:
+  Stable for HPPA (bug #372967).
+
+  27 May 2013; Robin H. Johnson <robbat2@gentoo.org>
+  +files/1.06-fbsd-utmpx.patch, netqmail-1.06-r2.ebuild:
+  Bug #437386: FreeBSD netqmail support.
+
+*netqmail-1.06-r2 (27 May 2013)
+
+  27 May 2013; Robin H. Johnson <robbat2@gentoo.org>
+  +files/genqmail-20080406-ldflags.patch, +netqmail-1.06-r2.ebuild,
+  files/conf-common, files/conf-qmqpd, files/conf-qmtpd, files/conf-smtpd,
+  files/servercert.cnf, netqmail-1.06-r1.ebuild:
+  Fix security bug #372967. Also fixes bugs #335077, #331901, #370611, #403893,
+  #404225.
+
+*netqmail-1.06-r1 (15 Apr 2013)
+
+  15 Apr 2013; Robin H. Johnson <robbat2@gentoo.org> +netqmail-1.06-r1.ebuild:
+  Bug #323517: lists.g.o has DNSSEC now, so qmail servers will fail to send to
+  it. Tested with all combinations of USE flags.
+
+  06 Nov 2012; Eray Aslan <eras@gentoo.org> netqmail-1.05-r4.ebuild,
+  netqmail-1.05-r8.ebuild, netqmail-1.06.ebuild:
+  mail-mta/nbsmtp is no longer in the tree - remove from DEPEND
+
+  04 Jun 2012; Zac Medico <zmedico@gentoo.org> netqmail-1.05-r4.ebuild,
+  netqmail-1.05-r8.ebuild, netqmail-1.06.ebuild:
+  inherit user for enewgroup and enewuser
+
+  12 Feb 2012; Mike Frysinger <vapier@gentoo.org> netqmail-1.05-r4.ebuild,
+  netqmail-1.05-r8.ebuild, netqmail-1.06.ebuild:
+  Drop env-update call that the PM does for us #402339.
+
+  16 Mar 2011; Eray Aslan <eras@gentoo.org> netqmail-1.05-r4.ebuild,
+  netqmail-1.05-r8.ebuild, netqmail-1.06.ebuild:
+  change to new style virtual/mda
+
+  07 Feb 2011; Thilo Bangert <bangert@gentoo.org> netqmail-1.05-r4.ebuild,
+  netqmail-1.05-r8.ebuild, netqmail-1.06.ebuild:
+  sys-process/daemontools -> virtual/daemontools (#353211)
+
+  13 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> netqmail-1.06.ebuild:
+  ppc/ppc64 stable wrt #333915
+
+  27 Nov 2010; Raúl Porcel <armin76@gentoo.org> netqmail-1.06.ebuild:
+  ia64/s390/sh/sparc stable wrt #333915
+
+  24 Oct 2010; Tobias Klausmann <klausman@gentoo.org> netqmail-1.06.ebuild:
+  Stable on alpha, bug #333915
+
+  19 Oct 2010; Mart Raudsepp <leio@gentoo.org> netqmail-1.05-r4.ebuild:
+  Drop to ~mips
+
+  25 Sep 2010; Markus Meier <maekke@gentoo.org> netqmail-1.06.ebuild:
+  arm stable, bug #333915
+
+  24 Aug 2010; Markos Chandras <hwoarang@gentoo.org> netqmail-1.06.ebuild:
+  Stable on amd64 wrt bug #333915
+
+  23 Aug 2010; Jeroen Roovers <jer@gentoo.org> netqmail-1.06.ebuild:
+  Stable for HPPA (bug #333915).
+
+  22 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> netqmail-1.06.ebuild:
+  x86 stable wrt bug #333915
+
+  15 Jul 2009; Mike Frysinger <vapier@gentoo.org> netqmail-1.05-r4.ebuild,
+  netqmail-1.05-r8.ebuild:
+  Drop bindnow-flags #226969 by Diego E. Pettenò.
+
+  02 Jan 2009; Benedikt Böhm <hollow@gentoo.org>
+  +files/1.06-readwrite.patch, netqmail-1.06.ebuild:
+  fix #248229
+
+  23 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+*netqmail-1.06 (06 Apr 2008)
+
+  06 Apr 2008; Benedikt Böhm <hollow@gentoo.org> +files/1.06-exit.patch,
+  metadata.xml, +netqmail-1.06.ebuild:
+  version bump; conversion to qmail.eclass; fixes #123897, #137207
+
+  27 Feb 2008; Tupone Alfredo <tupone@gentoo.org> files/tcp.qmtp.sample,
+  files/tcp.smtp.sample:
+  Fix tcp.smtp & tcp.qmtp instruction for qmail-scanner. Bug #211672 by Martin
+  Mokrejs
+
+  31 Jan 2008; Michael Hanselmann <hansmi@gentoo.org> metadata.xml:
+  Remove myself as maintainer.
+
+  03 Dec 2007; Robin H. Johnson <robbat2@gentoo.org>
+  netqmail-1.05-r4.ebuild, netqmail-1.05-r8.ebuild:
+  DJB has relicensed qmail to the public domain, see
+  http://cr.yp.to/qmail/dist.html
+
+  30 Jun 2007; Raúl Porcel <armin76@gentoo.org> netqmail-1.05-r8.ebuild:
+  alpha stable wrt #169591
+
+  19 May 2007; Daniel Gryniewicz <dang@gentoo.org> netqmail-1.05-r8.ebuild:
+  Marked stable on amd64 for bug #169591
+
+  12 May 2007; Markus Rothe <corsair@gentoo.org> netqmail-1.05-r8.ebuild:
+  Stable on ppc64; bug #169591
+
+  08 May 2007; Raúl Porcel <armin76@gentoo.org> netqmail-1.05-r8.ebuild:
+  ia64 stable wrt #169591
+
+  07 May 2007; Michael Hanselmann <hansmi@gentoo.org>
+  netqmail-1.05-r8.ebuild:
+  Stable on hppa, ppc, sparc, x86. Fixes problem with OpenSSL 0.9.8e.
+
+*netqmail-1.05-r8 (27 Apr 2007)
+
+  27 Apr 2007; Michael Hanselmann <hansmi@gentoo.org>
+  -files/1.05-r7-sslfix.diff, -netqmail-1.05-r7.ebuild,
+  +netqmail-1.05-r8.ebuild:
+  Bump SMTP-AUTH/TLS composite patch to 20070417. This makes my own patch
+  obsolete.
+
+  10 Apr 2007; Michael Hanselmann <hansmi@gentoo.org>
+  netqmail-1.05-r7.ebuild:
+  Don't set -DTLS.
+
+  10 Apr 2007; Michael Hanselmann <hansmi@gentoo.org>
+  netqmail-1.05-r4.ebuild, netqmail-1.05-r7.ebuild:
+  Fix bug 173884 by using doenvd.
+
+  06 Apr 2007; Michael Hanselmann <hansmi@gentoo.org>
+  netqmail-1.05-r7.ebuild:
+  Apply 1.05-r7-sslfix.diff only when SSL is enabled.
+
+*netqmail-1.05-r7 (06 Apr 2007)
+
+  05 Apr 2007; Michael Hanselmann <hansmi@gentoo.org>
+  +files/1.05-r7-sslfix.diff, -netqmail-1.05-r6.ebuild,
+  +netqmail-1.05-r7.ebuild:
+  Try to fix bug 169591 by adding a patch.
+
+*netqmail-1.05-r6 (04 Apr 2007)
+
+  04 Apr 2007; Michael Hanselmann <hansmi@gentoo.org>
+  -netqmail-1.05-r5.ebuild, +netqmail-1.05-r6.ebuild:
+  SSL patch version bump to 20070321.
+
+  18 Mar 2007; Marius Mauch <genone@gentoo.org> netqmail-1.05-r4.ebuild,
+  netqmail-1.05-r5.ebuild:
+  Replacing einfo with elog
+
+  17 Feb 2007; Michael Hanselmann <hansmi@gentoo.org>
+  netqmail-1.05-r4.ebuild, netqmail-1.05-r5.ebuild:
+  Remove incorrect usage of ${ROOT}, fixes bug 167285.
+
+*netqmail-1.05-r5 (11 Feb 2007)
+
+  11 Feb 2007; Michael Hanselmann <hansmi@gentoo.org>
+  +netqmail-1.05-r5.ebuild:
+  Fix Bug #165981 by using sed voodoo to patch conf-{cc,ld}.
+
+  15 Jan 2007; Michael Hanselmann <hansmi@gentoo.org>
+  netqmail-1.05-r4.ebuild:
+  Stable on mips. See bug #155137.
+
+  12 Dec 2006; Bryan Østergaard <kloeri@gentoo.org>
+  netqmail-1.05-r4.ebuild:
+  Stable on Alpha + ia64, bug 155137.
+
+  23 Nov 2006; <blubb@gentoo.org> netqmail-1.05-r4.ebuild:
+  stable on amd64
+
+  21 Oct 2006; Michael Hanselmann <hansmi@gentoo.org>
+  netqmail-1.05-r4.ebuild:
+  Stable on hppa, ppc64, sparc.
+
+  19 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  netqmail-1.05-r4.ebuild:
+  Add ~ia64 keyword, bug 145528.
+
+  29 Sep 2006; Thomas Cort <tcort@gentoo.org> netqmail-1.05-r4.ebuild:
+  Added ~alpha keyword wrt Bug #145528.
+
+  10 Sep 2006; Michael Hanselmann <hansmi@gentoo.org>
+  netqmail-1.05-r4.ebuild:
+  Added to ~mips. See bug #145528.
+
+  01 Sep 2006; Rene Nussbaumer <killerfox@gentoo.org>
+  netqmail-1.05-r4.ebuild:
+  Added to ~hppa. See bug #145528.
+
+  31 Aug 2006; Thomas Cort <tcort@gentoo.org> netqmail-1.05-r4.ebuild:
+  Added ~amd64 keyword wrt Bug #145528.
+
+  30 Aug 2006; Markus Rothe <corsair@gentoo.org> netqmail-1.05-r4.ebuild:
+  Added ~ppc64
+
+  10 Aug 2006; Michael Hanselmann <hansmi@gentoo.org>
+  netqmail-1.05-r4.ebuild:
+  Fixed QMAIL_PATCH_DIR implementation, reported by Pedro Venda.
+
+  01 Jul 2006; Michael Hanselmann <hansmi@gentoo.org>
+  +files/tcprules.d-Makefile.qmail, netqmail-1.05-r4.ebuild:
+  Add Makefile.qmail. Stable on ppc, x86.
+
+  17 Jun 2006; Michael Hanselmann <hansmi@gentoo.org>
+  -netqmail-1.05-r3.ebuild, netqmail-1.05-r4.ebuild:
+  Remove unneeded restrictions, bug #136445. Removed old version.
+
+*netqmail-1.05-r4 (17 Jun 2006)
+
+  17 Jun 2006; Michael Hanselmann <hansmi@gentoo.org>
+  -netqmail-1.05-r2.ebuild, +netqmail-1.05-r4.ebuild:
+  Added support for noauthcram USE flag, bug #137015.
+
+*netqmail-1.05-r3 (11 Jun 2006)
+
+  11 Jun 2006; Michael Hanselmann <hansmi@gentoo.org> +files/mailer.conf,
+  +netqmail-1.05-r3.ebuild:
+  Added support for mailwrapper.
+
+  30 May 2006; Michael Hanselmann <hansmi@gentoo.org>
+  -netqmail-1.05-r1.ebuild:
+  Remove old version.
+
+  06 May 2006; Michael Hanselmann <hansmi@gentoo.org>
+  files/qmail-genrsacert.sh:
+  Ignore output of renice command.
+
+*netqmail-1.05-r2 (06 May 2006)
+
+  06 May 2006; Michael Hanselmann <hansmi@gentoo.org>
+  +netqmail-1.05-r2.ebuild:
+  Added support for qmail-spp.
+
+  28 Apr 2006; Michael Hanselmann <hansmi@gentoo.org> -netqmail-1.05.ebuild:
+  Remove old ebuild.
+
+  27 Apr 2006; Michael Hanselmann <hansmi@gentoo.org>
+  netqmail-1.05-r1.ebuild:
+  Fix configuration instruction as pointed out in bug 131160.
+
+*netqmail-1.05-r1 (27 Apr 2006)
+
+  27 Apr 2006; Michael Hanselmann <hansmi@gentoo.org>
+  +netqmail-1.05-r1.ebuild:
+  Fix TLS support.
+
+  01 Mar 2006; Michael Hanselmann <hansmi@gentoo.org> netqmail-1.05.ebuild:
+  Added to ~sparc.
+
+  13 Feb 2006; Michael Hanselmann <hansmi@gentoo.org> netqmail-1.05.ebuild:
+  Added to ~x86. Tested by Frank Schmitt.
+
+*netqmail-1.05 (12 Feb 2006)
+
+  12 Feb 2006; Michael Hanselmann <hansmi@gentoo.org> +files/99qmail,
+  +files/conf-common, +files/conf-pop3d, +files/conf-qmqpd,
+  +files/conf-qmtpd, +files/conf-send, +files/conf-smtpd, +files/dot-qmail,
+  +files/mkservercert, +files/qmail-config-system,
+  +files/qmail-genrsacert.sh, +files/run-qmail-pop3d,
+  +files/run-qmail-pop3d-log, +files/run-qmail-qmqpd,
+  +files/run-qmail-qmqpd-log, +files/run-qmail-qmtpd,
+  +files/run-qmail-qmtpd-log, +files/run-qmail-send,
+  +files/run-qmail-send-log, +files/run-qmail-smtpd,
+  +files/run-qmail-smtpd-log, +files/servercert.cnf, +files/tcp.pop3.sample,
+  +files/tcp.qmqp.sample, +files/tcp.qmtp.sample, +files/tcp.smtp.sample,
+  +metadata.xml, +netqmail-1.05.ebuild:
+  New ebuild, partially based on the qmail ebuild.

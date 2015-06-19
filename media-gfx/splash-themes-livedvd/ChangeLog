@@ -1,0 +1,29 @@
+# ChangeLog for media-gfx/splash-themes-livedvd
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/splash-themes-livedvd/ChangeLog,v 1.6 2014/01/02 18:15:14 tampakrap Exp $
+
+  02 Jan 2014; Theo Chatzimichos <tampakrap@gentoo.org> metadata.xml:
+  Remove myself as proxy-committer, add proxy-maintainers instead
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+*splash-themes-livedvd-12.0-r1 (12 Mar 2013)
+
+  12 Mar 2013; Alon Bar-Lev <alonbl@gentoo.org>
+  +splash-themes-livedvd-12.0-r1.ebuild, -splash-themes-livedvd-12.0.ebuild:
+  Rev bump for bug#447632
+
+  03 Feb 2013; Alon Bar-Lev <alonbl@gentoo.org>
+  splash-themes-livedvd-12.0.ebuild:
+  Mark scripts executable, bug#447632
+
+  16 Dec 2012; Ulrich Müller <ulm@gentoo.org>
+  splash-themes-livedvd-12.0.ebuild:
+  Fix LICENSE, see README file, bug 445836.
+
+*splash-themes-livedvd-12.0 (01 Mar 2012)
+
+  01 Mar 2012; Theo Chatzimichos <tampakrap@gentoo.org> +metadata.xml,
+  +splash-themes-livedvd-12.0.ebuild:
+  Initial commit, ebuild based on splash-themes-{gentoo,livecd}

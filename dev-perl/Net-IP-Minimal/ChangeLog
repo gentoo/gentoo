@@ -1,0 +1,9 @@
+# ChangeLog for dev-perl/Net-IP-Minimal
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-IP-Minimal/ChangeLog,v 1.1 2014/12/12 22:07:35 dilfridge Exp $
+
+*Net-IP-Minimal-0.60.0 (12 Dec 2014)
+
+  12 Dec 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Net-IP-Minimal-0.60.0.ebuild, +metadata.xml:
+  New package, imported from Perl overlay, bug 311009

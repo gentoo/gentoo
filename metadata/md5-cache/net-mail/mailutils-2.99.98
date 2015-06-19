@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm prepare setup
+DEPEND=!mail-client/nmh !mail-filter/libsieve !mail-client/mailx !mail-client/nail sys-libs/ncurses sys-libs/readline || ( dev-libs/libltdl:0 <sys-devel/libtool-2.4.3-r2:2 ) virtual/mta berkdb? ( sys-libs/db ) bidi? ( dev-libs/fribidi ) gdbm? ( sys-libs/gdbm ) guile? ( dev-scheme/guile ) kerberos? ( virtual/krb5 ) ldap? ( net-nds/openldap ) mysql? ( virtual/mysql ) nls? ( sys-devel/gettext ) pam? ( virtual/pam ) postgres? ( dev-db/postgresql ) sasl? ( virtual/gsasl ) ssl? ( net-libs/gnutls ) tcpd? ( sys-apps/tcp-wrappers ) tokyocabinet? ( dev-db/tokyocabinet ) virtual/pkgconfig python? ( =dev-lang/python-2* )
+DESCRIPTION=A useful collection of mail servers, clients, and filters
+EAPI=5
+HOMEPAGE=http://www.gnu.org/software/mailutils/mailutils.html
+IUSE=berkdb bidi +clients gdbm sasl guile ipv6 kerberos ldap mysql nls pam postgres python servers ssl static-libs +threads tcpd tokyocabinet
+KEYWORDS=amd64 arm64 ~hppa ~ppc x86 ~ppc-macos ~x64-macos ~x86-macos
+LICENSE=GPL-2 LGPL-2.1
+RDEPEND=!mail-client/nmh !mail-filter/libsieve !mail-client/mailx !mail-client/nail sys-libs/ncurses sys-libs/readline || ( dev-libs/libltdl:0 <sys-devel/libtool-2.4.3-r2:2 ) virtual/mta berkdb? ( sys-libs/db ) bidi? ( dev-libs/fribidi ) gdbm? ( sys-libs/gdbm ) guile? ( dev-scheme/guile ) kerberos? ( virtual/krb5 ) ldap? ( net-nds/openldap ) mysql? ( virtual/mysql ) nls? ( sys-devel/gettext ) pam? ( virtual/pam ) postgres? ( dev-db/postgresql ) sasl? ( virtual/gsasl ) ssl? ( net-libs/gnutls ) tcpd? ( sys-apps/tcp-wrappers ) tokyocabinet? ( dev-db/tokyocabinet ) python? ( =dev-lang/python-2* )
+SLOT=0
+SRC_URI=mirror://gnu-alpha/mailutils/mailutils-2.99.98.tar.xz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=22243c016cb713005c54d7f833737acd

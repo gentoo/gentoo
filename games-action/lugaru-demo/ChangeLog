@@ -1,0 +1,74 @@
+# ChangeLog for games-action/lugaru-demo
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/lugaru-demo/ChangeLog,v 1.19 2015/06/01 22:05:45 mr_bones_ Exp $
+
+  01 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org> lugaru-demo-1.0c.ebuild:
+  clean up app-emulation/emul-linux which has been removed
+
+  19 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org> -lugaru-demo-1.0b.ebuild:
+  old
+
+  01 Feb 2015; Mikle Kolyada <zlogene@gentoo.org> lugaru-demo-1.0c.ebuild:
+  x86 stable wrt bug #537030
+
+  31 Jan 2015; Agostino Sarubbo <ago@gentoo.org> lugaru-demo-1.0c.ebuild:
+  Stable for amd64, wrt bug #537030
+
+  25 Jun 2014; Michał Górny <mgorny@gentoo.org> lugaru-demo-1.0c.ebuild:
+  Update multilib dependencies to use the lowest known EAPI 5 or multilib
+  versions.
+
+  25 Jun 2014; Michał Górny <mgorny@gentoo.org> lugaru-demo-1.0c.ebuild:
+  Support multilib dependencies aside to emul-linux-x86.
+
+  26 Apr 2014; Ulrich Müller <ulm@gentoo.org> lugaru-demo-1.0b.ebuild,
+  lugaru-demo-1.0c.ebuild:
+  Fix LICENSE, bug 505610.
+
+  16 Dec 2012; Tupone Alfredo <tupone@gentoo.org> lugaru-demo-1.0c.ebuild:
+  Use QA_PREBUILT. Bug #426794 by Diego Elio Pettenò
+  EAPI 4
+
+*lugaru-demo-1.0c (21 May 2010)
+
+  21 May 2010; Mike Frysinger <vapier@gentoo.org> +lugaru-demo-1.0c.ebuild:
+  Version bump #319607 by A.C.Heron.
+
+  25 Oct 2009; Markus Meier <maekke@gentoo.org> lugaru-demo-1.0b.ebuild:
+  amd64/x86 stable, bug #288827
+
+*lugaru-demo-1.0b (24 Aug 2009)
+
+  24 Aug 2009; Tristan Heaven <nyhm@gentoo.org> +lugaru-demo-1.0b.ebuild:
+  Version bump, bug #282401
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org> lugaru-demo-1.0.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+  28 Sep 2006; Tristan Heaven <nyhm@gentoo.org> lugaru-demo-1.0.ebuild:
+  Prevent collision-protect error (portage bug)
+
+  02 Sep 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  lugaru-demo-1.0.ebuild:
+  clean up QA issues
+
+  11 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  lugaru-demo-1.0.ebuild:
+  Marking stable on amd64/x86.
+
+  10 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  lugaru-demo-1.0.ebuild:
+  Added modular X dependencies.
+
+  21 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  lugaru-demo-1.0.ebuild:
+  Added addition dir variable to games_make_wrapper for bug #109793.
+
+  10 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  lugaru-demo-1.0.ebuild:
+  Added emul-linux-x86-sdl to RDEPEND for amd64.
+
+*lugaru-demo-1.0 (05 Sep 2005)
+
+  05 Sep 2005; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Anton Romanov #104295.

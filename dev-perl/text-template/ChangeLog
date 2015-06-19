@@ -1,0 +1,119 @@
+# ChangeLog for dev-perl/text-template
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/text-template/ChangeLog,v 1.32 2014/10/19 17:46:14 zlogene Exp $
+
+  19 Oct 2014; Mikle Kolyada <zlogene@gentoo.org> -text-template-1.450.0.ebuild:
+  Drop old.
+
+*text-template-1.460.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +text-template-1.460.0-r1.ebuild, -text-template-1.460.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  27 Dec 2013; Mikle Kolyada <zlogene@gentoo.org> text-template-1.460.0.ebuild:
+  alpha stable wrt bug #495556
+
+  27 Dec 2013; Mikle Kolyada <zlogene@gentoo.org> text-template-1.460.0.ebuild:
+  ppc stable wrt bug #495556
+
+  27 Dec 2013; Mikle Kolyada <zlogene@gentoo.org> text-template-1.460.0.ebuild:
+  x86 stable wrt bug #495556
+
+  27 Dec 2013; Mikle Kolyada <zlogene@gentoo.org> text-template-1.460.0.ebuild:
+  amd64 stable wrt bug #495556
+
+  27 Dec 2013; Jeroen Roovers <jer@gentoo.org> text-template-1.460.0.ebuild:
+  Stable for HPPA (bug #495556).
+
+*text-template-1.460.0 (17 Aug 2013)
+
+  17 Aug 2013; Patrick Lauer <patrick@gentoo.org> +text-template-1.460.0.ebuild:
+  Bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  31 Mar 2012; Torsten Veller <tove@gentoo.org> -text-template-1.44.ebuild:
+  Cleanup
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org> text-template-1.44.ebuild,
+  text-template-1.450.0.ebuild:
+  alpha stable and drop ia64/sparc wrt #400315
+
+  09 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  text-template-1.450.0.ebuild:
+  x86 stable wrt bug #400315
+
+  28 Feb 2012; Brent Baude <ranger@gentoo.org> text-template-1.450.0.ebuild:
+  Marking text-template-1.450.0 ppc for bug 400315
+
+  24 Feb 2012; Jeroen Roovers <jer@gentoo.org> text-template-1.450.0.ebuild:
+  Stable for HPPA (bug #400315).
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org> text-template-1.450.0.ebuild:
+  Stable for amd64, wrt bug #400315
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -text-template-1.45.ebuild:
+  Cleanup
+
+*text-template-1.450.0 (01 Sep 2011)
+
+  01 Sep 2011; Torsten Veller <tove@gentoo.org> +text-template-1.450.0.ebuild:
+  Change version scheme
+
+  29 Oct 2010; Fabian Groffen <grobian@gentoo.org>
+  text-template-1.45.ebuild:
+  Marked ~ppc-macos
+
+*text-template-1.45 (08 Sep 2008)
+
+  08 Sep 2008; Torsten Veller <tove@gentoo.org> +text-template-1.45.ebuild:
+  Version bump
+
+  19 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  text-template-1.44.ebuild:
+  Version bump, thanks seemant
+
+  06 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  text-template-1.44.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  29 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  text-template-1.44.ebuild:
+  Stable on hppa
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> ChangeLog:
+  Mark 1.44 stable on ia64
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> text-template-1.44.ebuild:
+  add ~ia64
+
+  01 May 2005; Michael Hanselmann <hansmi@gentoo.org>
+  text-template-1.44.ebuild:
+  Stable on ppc.
+
+  22 Apr 2005; Simon Stelling <blubb@gentoo.org> text-template-1.44.ebuild:
+  stable on amd64
+
+  28 Mar 2005; Michael Cummings <mcummings@gentoo.org>
+  text-template-1.44.ebuild:
+  Mirror syntax
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  30 May 2004; Bryan Østergaard <kloeri@gentoo.org> text-template-1.44.ebuild:
+  Stable on alpha.
+
+  30 Dec 2003; Michael Cummings,,, <mcummings@gentoo.org>
+  text-template-1.44.ebuild:
+  Tested on sparc and x86, pod tests were good
+
+*text-template-1.44 (29 Jul 2003)
+
+  29 Jul 2003; Michael Cummings <mcummings@gentoo.org>
+  text-template-1.44.ebuild:
+  bug 24857 for request tracker, Celestial Wizard
+  <gentoo@dev.celestialwizard.org>

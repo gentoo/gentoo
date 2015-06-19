@@ -1,0 +1,39 @@
+# ChangeLog for dev-python/pydb
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pydb/ChangeLog,v 1.9 2015/06/09 16:02:59 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  01 Feb 2015; Manuel Rüger <mrueg@gentoo.org> -pydb-1.26.ebuild:
+  Remove old.
+
+  27 Dec 2011; Maxim Koltsov <maksbotan@gentoo.org> pydb-1.26-r1.ebuild:
+  Simplify PYTHON_DEPEND. Don't install *.pyc and *.pyo files. Use
+  python_src_install(). Call python_mod_optimize() and python_mod_cleanup().
+  Patch by Arfrever.
+
+*pydb-1.26-r1 (24 Dec 2011)
+
+  24 Dec 2011; Maxim Koltsov <maksbotan@gentoo.org> +pydb-1.26-r1.ebuild:
+  Pythonize ebuild, add support for multiple python ABIs
+
+  24 Dec 2011; Andrey Grozin <grozin@gentoo.org> pydb-1.26.ebuild:
+  Bug #379193 fixed, thanks to Ulrich Müller <ulm@gentoo.org>
+
+  04 Sep 2009; Patrick Lauer <patrick@gentoo.org> -pydb-1.25.ebuild:
+  Remove old
+
+  18 Apr 2009; Patrick Lauer <patrick@gentoo.org> pydb-1.26:
+  Adding ~amd64 keyword
+
+*pydb-1.26 (14 Apr 2009)
+
+  14 Apr 2009; Andrey Grozin <grozin@gentoo.org> +pydb-1.26.ebuild:
+  Version bump
+
+*pydb-1.25 (15 Mar 2009)
+
+  15 Mar 2009; Andrey Grozin <grozin@gentoo.org> +metadata.xml,
+  +pydb-1.25.ebuild:
+  Initial import

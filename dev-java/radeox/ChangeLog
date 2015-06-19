@@ -1,0 +1,57 @@
+# ChangeLog for dev-java/radeox
+# Copyright 2000-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/radeox/ChangeLog,v 1.17 2007/08/03 16:48:29 betelgeuse Exp $
+
+  03 Aug 2007; Petteri Räty <betelgeuse@gentoo.org>
+  -radeox-1.0_beta2.ebuild:
+  Remove generation 1 ebuild.
+
+  22 Jul 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  radeox-1.0_beta2-r1.ebuild:
+  Marked stable on amd64 as per bug 184240.
+
+  06 Jul 2007; Lars Weiler <pylon@gentoo.org> radeox-1.0_beta2-r1.ebuild:
+  Stable on ppc; bug #184240.
+
+  05 Jul 2007; Christian Faulhammer <opfer@gentoo.org>
+  radeox-1.0_beta2-r1.ebuild:
+  stable x86, bug 184240
+
+  04 Jul 2007; Petteri Räty <betelgeuse@gentoo.org>
+  radeox-1.0_beta2-r1.ebuild:
+  Use JAVA_PKG_IUSE and delete bundled classes in src_unpack.
+
+*radeox-1.0_beta2-r1 (12 Jan 2007)
+
+  12 Jan 2007; Petteri Räty <betelgeuse@gentoo.org>
+  +radeox-1.0_beta2-r1.ebuild:
+  Migrated to generation 2 and added the source use flag.
+
+  12 Jan 2007; Petteri Räty <betelgeuse@gentoo.org>
+  radeox-1.0_beta2.ebuild:
+  Relaxed dev-java/commons-logging to match 1.1* too.
+
+  28 Dec 2005; Joshua Nichols <nichoj@gentoo.org> radeox-1.0_beta2.ebuild:
+  Fixed picocontainer dependency.
+
+  04 May 2005; Jan Brinkmann <luckyduck@gentoo.org> radeox-1.0_beta2.ebuild:
+  stable on amd64, ppc and x86
+
+  29 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> radeox-1.0_beta2.ebuild:
+  moved from dev-java/oro to dev-java/jakarta-oro dependency. see #71337.
+  introduced support for the jikes useflag
+
+  22 Oct 2004; Dylan Carlson <absinthe@gentoo.org> radeox-1.0_beta2.ebuild:
+  Keywords ~amd64.
+
+  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> radeox-1.0_beta2.ebuild:
+  use java-pkg_dohtml instead of dohtml to also install the package-list in
+  case of api docs: #50740
+
+  04 May 2004; David Holm <dholm@gentoo.org> radeox-1.0_beta2.ebuild:
+  Added to ~ppc.
+
+*radeox-1.0_beta2 (03 May 2004)
+
+  03 May 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  radeox-1.0_beta2.ebuild: Initial import. Ebuild submitted by myself.

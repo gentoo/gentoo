@@ -1,0 +1,6 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for selecting an appropriate Ada compiler
+KEYWORDS=amd64 ppc x86
+RDEPEND=|| ( >=dev-lang/gnat-gcc-4.3 >=dev-lang/gnat-gpl-4.1 )
+SLOT=2005
+_md5_=179a2453c0314160a67de2cf424e3ef9

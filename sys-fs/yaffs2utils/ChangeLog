@@ -1,0 +1,11 @@
+# ChangeLog for sys-fs/yaffs2utils
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/yaffs2utils/ChangeLog,v 1.1 2014/12/31 02:32:37 vapier Exp $
+
+*yaffs2utils-0.2.9 (31 Dec 2014)
+
+  31 Dec 2014; Mike Frysinger <vapier@gentoo.org>
+  +files/yaffs2utils-0.2.9-build.patch,
+  +files/yaffs2utils-0.2.9-unyaffs2-pointer.patch, +metadata.xml,
+  +yaffs2utils-0.2.9.ebuild:
+  New ebuild by Alex Deymo from Chromium OS.

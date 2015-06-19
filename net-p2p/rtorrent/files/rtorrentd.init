@@ -1,0 +1,33 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/rtorrent/files/rtorrentd.init,v 1.8 2011/11/07 15:46:30 darkside Exp $
+
+depend() {
+	use net ypbind nis
+	after slapd mysqld postgresql
+}
+
+start() {
+	PWHOME="$(getent passwd $USER | awk -F: '{ print $6 }')"
+
+	ebegin "Starting rtorrent"
+	env TERM="xterm" \
+		start-stop-daemon \
+			--start \
+			--make-pidfile \
+			--pidfile /var/run/rtorrentd.pid \
+			--background \
+			--user $USER \
+			--env HOME="${PWHOME:-/home/$USER}" \
+			--name rtorrent \
+			--exec /usr/bin/screen -- -D -m -S rtorrentd /usr/bin/rtorrent
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping rtorrent"
+	start-stop-daemon --stop --signal 15 \
+			--pidfile /var/run/rtorrentd.pid
+	eend $?
+}

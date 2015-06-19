@@ -1,0 +1,78 @@
+# ChangeLog for java-virtuals/jmx
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/java-virtuals/jmx/ChangeLog,v 1.19 2014/08/02 19:05:57 sera Exp $
+
+*jmx-1.0-r4 (02 Aug 2014)
+
+  02 Aug 2014; Ralph Sennhauser <sera@gentoo.org> -jmx-1.0-r1.ebuild,
+  +jmx-1.0-r4.ebuild:
+  Bump to add jre8
+  Remove old
+
+  04 Oct 2012; Ralph Sennhauser <sera@gentoo.org> jmx-1.0-r1.ebuild,
+  jmx-1.0-r3.ebuild:
+  Change license to public-domain. #426800
+
+  07 Jun 2012; Brent Baude <ranger@gentoo.org> jmx-1.0-r3.ebuild:
+  Marking jmx-1.0-r3 ppc for bug 419001
+
+  05 Jun 2012; Brent Baude <ranger@gentoo.org> jmx-1.0-r3.ebuild:
+  Marking jmx-1.0-r3 ppc64 for bug 419001
+
+  04 Jun 2012; Johannes Huber <johu@gentoo.org> jmx-1.0-r3.ebuild:
+  Stable for x86, wrt bug #419001
+
+  03 Jun 2012; Agostino Sarubbo <ago@gentoo.org> jmx-1.0-r3.ebuild:
+  Stable for amd64, wrt bug #419001
+
+*jmx-1.0-r3 (13 Jan 2012)
+
+  13 Jan 2012; Ralph Sennhauser <sera@gentoo.org> -jmx-1.0.ebuild,
+  -jmx-1.0-r2.ebuild, +jmx-1.0-r3.ebuild:
+  Don't depend on JDK if all that's needed is a JRE.
+  Remove old.
+
+  01 Jan 2012; Ralph Sennhauser <sera@gentoo.org> jmx-1.0.ebuild,
+  jmx-1.0-r1.ebuild, jmx-1.0-r2.ebuild:
+  Drop ia64 support #345433
+
+*jmx-1.0-r2 (11 Sep 2011)
+
+  11 Sep 2011; Serkan Kaba <serkan@gentoo.org> +jmx-1.0-r2.ebuild:
+  Bump to add jre7
+
+  16 Dec 2009; Christian Faulhammer <fauli@gentoo.org> jmx-1.0.ebuild,
+  jmx-1.0-r1.ebuild:
+  QA: transfer Prefix keywords
+
+  19 Jul 2009; nixnut <nixnut@gentoo.org> jmx-1.0-r1.ebuild:
+  ppc stable #275188
+
+  05 Jul 2009; Markus Meier <maekke@gentoo.org> jmx-1.0-r1.ebuild:
+  amd64 stable, bug #275188
+
+  04 Jul 2009; Brent Baude <ranger@gentoo.org> jmx-1.0-r1.ebuild:
+  Marking jmx-1.0-r1 ppc64 for bug 275188
+
+  01 Jul 2009; Christian Faulhammer <fauli@gentoo.org> jmx-1.0-r1.ebuild:
+  stable x86, bug 275188
+
+*jmx-1.0-r1 (23 May 2009)
+
+  23 May 2009; Alistair Bush <ali_bush@gentoo.org> +jmx-1.0-r1.ebuild:
+  Bump to support features available in java-config-2.1.8
+
+  26 Jun 2008; nixnut <nixnut@gentoo.org> jmx-1.0.ebuild:
+  Stable on ppc wrt bug 228827
+
+  24 Jun 2008; Christian Faulhammer <opfer@gentoo.org> jmx-1.0.ebuild:
+  stable x86, bug 228827
+
+  23 Jun 2008; Kenneth Prugh <ken69267@gentoo.org> jmx-1.0.ebuild:
+  amd64 stable, bug #228827
+
+*jmx-1.0 (28 Apr 2008)
+
+  28 Apr 2008; Petteri Räty <betelgeuse@gentoo.org> +jmx-1.0.ebuild:
+  Initial addition of the jmx virtual.
+

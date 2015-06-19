@@ -1,0 +1,50 @@
+# ChangeLog for media-video/chaplin
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/chaplin/ChangeLog,v 1.12 2011/11/21 21:06:11 radhermit Exp $
+
+  21 Nov 2011; Tim Harder <radhermit@gentoo.org> chaplin-1.10-r1.ebuild,
+  files/chaplin-1.10-asneeded.patch:
+  Update to EAPI 4, add rdep on mjpegtools, add optional rdep on graphicsmagick
+  (bug #314329), and respect LDFLAGS, CFLAGS, and CC (bug #335538).
+
+  19 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  chaplin-1.10-r1.ebuild, +files/chaplin-1.10-asneeded.patch:
+  Fix building with -Wl,--as-needed wrt #247871.
+
+  12 Feb 2007; Simon Stelling <blubb@gentoo.org> chaplin-1.10-r1.ebuild:
+  stable on amd64; bug 165375
+
+  10 Feb 2007; nixnut <nixnut@gentoo.org> chaplin-1.10-r1.ebuild:
+  Stable on ppc wrt bug 165375
+
+  06 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  chaplin-1.10-r1.ebuild:
+  stable x86; bug #165375
+
+  30 Aug 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +files/chaplin-1.10-libdvdread-0.9.6.patch, chaplin-1.10-r1.ebuild:
+  Added patch to work with libdvdread-0.9.6, requested in Bug #138525. General
+  ebuild cleanup.
+
+*chaplin-1.10-r1 (21 Aug 2006)
+
+  21 Aug 2006; Steve Dibb <beandog@gentoo.org> -chaplin-1.10.ebuild,
+  +chaplin-1.10-r1.ebuild:
+  Update USE flags to vcd
+
+  28 Jul 2005; David Holm <dholm@gentoo.org> chaplin-1.10.ebuild:
+  Added to ~ppc.
+
+  30 Nov 2004; Sven Wegener <swegener@gentoo.org> chaplin-1.10.ebuild:
+  Fixed invalid atoms in *DEPEND.
+
+  06 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  chaplin-1.10.ebuild:
+  Added to ~amd64.
+
+*chaplin-1.10 (06 Oct 2004)
+
+  06 Oct 2004; Christian Parpart <trapni@gentoo.org>:
+  Initial import. Ebuild submitted (#64507) 
+  by henning <henning@wh9.tu-dresden.de>.
+  Adapted to meet gentoo policies.

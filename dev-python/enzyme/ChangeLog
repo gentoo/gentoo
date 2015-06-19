@@ -1,0 +1,37 @@
+# ChangeLog for dev-python/enzyme
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/enzyme/ChangeLog,v 1.8 2015/06/07 13:16:47 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> -enzyme-0.2.ebuild,
+  enzyme-0.4.1.ebuild, enzyme-9999.ebuild, metadata.xml:
+  Add pypi to remote-id in metadata.xml; drop old
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> enzyme-0.2.ebuild:
+  Drop old Python implementations
+
+  27 Nov 2014; Pacho Ramos <pacho@gentoo.org> enzyme-0.4.1.ebuild,
+  enzyme-9999.ebuild:
+  Support python 3.4
+
+*enzyme-0.4.1 (07 Dec 2013)
+
+  07 Dec 2013; Tom Wijsman <TomWij@gentoo.org> +enzyme-0.4.1.ebuild,
+  enzyme-9999.ebuild:
+  Version bump to 0.4.1 and updated live ebuild; fixes bug #493458, proxied
+  commit for Nikoli.
+
+  13 Oct 2013; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  Updated Nikoli's e-mail address for easier automatic assignment.
+
+  10 May 2013; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Fix herd name typo.
+
+*enzyme-9999 (24 Apr 2013)
+*enzyme-0.2 (24 Apr 2013)
+
+  24 Apr 2013; Maxim Koltsov <maksbotan@gentoo.org> +enzyme-0.2.ebuild,
+  +enzyme-9999.ebuild, +metadata.xml:
+  Add dev-python/enzyme, bug #449652. Thanks to Nikoli.

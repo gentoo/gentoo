@@ -1,0 +1,10 @@
+--- cl.c.old	2006-09-12 17:13:02.000000000 -0400
++++ cl.c	2006-09-12 17:13:34.000000000 -0400
+@@ -658,6 +658,7 @@
+       fclose(fp);
+       if ( ! stat( filename, &buf ) )
+ 	{
++	  char *ctime(), *t;
+ 	  sprintf( date, "%s", ctime(&buf.st_mtime) );
+ 	  t = date;
+ 	  while ( *t )

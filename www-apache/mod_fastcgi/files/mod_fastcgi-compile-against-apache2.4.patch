@@ -1,0 +1,137 @@
+Index: libapache-mod-fastcgi/fcgi.h
+===================================================================
+--- libapache-mod-fastcgi.orig/fcgi.h	2012-03-07 14:29:04.005720240 +0100
++++ libapache-mod-fastcgi/fcgi.h	2012-03-07 14:29:07.830566657 +0100
+@@ -34,6 +34,10 @@
+ #define APACHE2
+ #endif
+ 
++#ifdef AP_DECLARE_MODULE
++#define APACHE24
++#endif
++
+ #ifdef APACHE2
+ 
+ #include <sys/stat.h>
+@@ -57,10 +61,16 @@
+ #define XtOffsetOf APR_OFFSETOF
+ #define ap_select select
+ 
++#ifdef APACHE24
++#define unixd_config ap_unixd_config
++#endif
++
++#ifdef APACHE2
+ #define ap_user_id        unixd_config.user_id
+ #define ap_group_id       unixd_config.group_id
+ #define ap_user_name      unixd_config.user_name
+ #define ap_suexec_enabled unixd_config.suexec_enabled
++#endif
+ 
+ #ifndef S_ISDIR
+ #define S_ISDIR(m)      (((m)&(S_IFMT)) == (S_IFDIR))
+@@ -365,42 +375,42 @@
+ #ifdef APACHE2
+ 
+ #ifdef WIN32
+-#define FCGI_LOG_EMERG          __FILE__,__LINE__,APLOG_EMERG,APR_FROM_OS_ERROR(GetLastError())
+-#define FCGI_LOG_ALERT          __FILE__,__LINE__,APLOG_ALERT,APR_FROM_OS_ERROR(GetLastError())
+-#define FCGI_LOG_CRIT           __FILE__,__LINE__,APLOG_CRIT,APR_FROM_OS_ERROR(GetLastError())
+-#define FCGI_LOG_ERR            __FILE__,__LINE__,APLOG_ERR,APR_FROM_OS_ERROR(GetLastError())
+-#define FCGI_LOG_WARN           __FILE__,__LINE__,APLOG_WARNING,APR_FROM_OS_ERROR(GetLastError())
+-#define FCGI_LOG_NOTICE         __FILE__,__LINE__,APLOG_NOTICE,APR_FROM_OS_ERROR(GetLastError())
+-#define FCGI_LOG_INFO           __FILE__,__LINE__,APLOG_INFO,APR_FROM_OS_ERROR(GetLastError())
+-#define FCGI_LOG_DEBUG          __FILE__,__LINE__,APLOG_DEBUG,APR_FROM_OS_ERROR(GetLastError())
++#define FCGI_LOG_EMERG          APLOG_MARK,APLOG_EMERG,APR_FROM_OS_ERROR(GetLastError())
++#define FCGI_LOG_ALERT          APLOG_MARK,APLOG_ALERT,APR_FROM_OS_ERROR(GetLastError())
++#define FCGI_LOG_CRIT           APLOG_MARK,APLOG_CRIT,APR_FROM_OS_ERROR(GetLastError())
++#define FCGI_LOG_ERR            APLOG_MARK,APLOG_ERR,APR_FROM_OS_ERROR(GetLastError())
++#define FCGI_LOG_WARN           APLOG_MARK,APLOG_WARNING,APR_FROM_OS_ERROR(GetLastError())
++#define FCGI_LOG_NOTICE         APLOG_MARK,APLOG_NOTICE,APR_FROM_OS_ERROR(GetLastError())
++#define FCGI_LOG_INFO           APLOG_MARK,APLOG_INFO,APR_FROM_OS_ERROR(GetLastError())
++#define FCGI_LOG_DEBUG          APLOG_MARK,APLOG_DEBUG,APR_FROM_OS_ERROR(GetLastError())
+ #else /* !WIN32 */
+-#define FCGI_LOG_EMERG          __FILE__,__LINE__,APLOG_EMERG,APR_FROM_OS_ERROR(errno)
+-#define FCGI_LOG_ALERT          __FILE__,__LINE__,APLOG_ALERT,APR_FROM_OS_ERROR(errno)
+-#define FCGI_LOG_CRIT           __FILE__,__LINE__,APLOG_CRIT,APR_FROM_OS_ERROR(errno)
+-#define FCGI_LOG_ERR            __FILE__,__LINE__,APLOG_ERR,APR_FROM_OS_ERROR(errno)
+-#define FCGI_LOG_WARN           __FILE__,__LINE__,APLOG_WARNING,APR_FROM_OS_ERROR(errno)
+-#define FCGI_LOG_NOTICE         __FILE__,__LINE__,APLOG_NOTICE,APR_FROM_OS_ERROR(errno)
+-#define FCGI_LOG_INFO           __FILE__,__LINE__,APLOG_INFO,APR_FROM_OS_ERROR(errno)
+-#define FCGI_LOG_DEBUG          __FILE__,__LINE__,APLOG_DEBUG,APR_FROM_OS_ERROR(errno)
+-#endif
+-
+-#define FCGI_LOG_EMERG_ERRNO    __FILE__,__LINE__,APLOG_EMERG,APR_FROM_OS_ERROR(errno)
+-#define FCGI_LOG_ALERT_ERRNO    __FILE__,__LINE__,APLOG_ALERT,APR_FROM_OS_ERROR(errno)
+-#define FCGI_LOG_CRIT_ERRNO     __FILE__,__LINE__,APLOG_CRIT,APR_FROM_OS_ERROR(errno)
+-#define FCGI_LOG_ERR_ERRNO      __FILE__,__LINE__,APLOG_ERR,APR_FROM_OS_ERROR(errno)
+-#define FCGI_LOG_WARN_ERRNO     __FILE__,__LINE__,APLOG_WARNING,APR_FROM_OS_ERROR(errno)
+-#define FCGI_LOG_NOTICE_ERRNO   __FILE__,__LINE__,APLOG_NOTICE,APR_FROM_OS_ERROR(errno)
+-#define FCGI_LOG_INFO_ERRNO     __FILE__,__LINE__,APLOG_INFO,APR_FROM_OS_ERROR(errno)
+-#define FCGI_LOG_DEBUG_ERRNO    __FILE__,__LINE__,APLOG_DEBUG,APR_FROM_OS_ERROR(errno)
+-
+-#define FCGI_LOG_EMERG_NOERRNO    __FILE__,__LINE__,APLOG_EMERG,0
+-#define FCGI_LOG_ALERT_NOERRNO    __FILE__,__LINE__,APLOG_ALERT,0
+-#define FCGI_LOG_CRIT_NOERRNO     __FILE__,__LINE__,APLOG_CRIT,0
+-#define FCGI_LOG_ERR_NOERRNO      __FILE__,__LINE__,APLOG_ERR,0
+-#define FCGI_LOG_WARN_NOERRNO     __FILE__,__LINE__,APLOG_WARNING,0
+-#define FCGI_LOG_NOTICE_NOERRNO   __FILE__,__LINE__,APLOG_NOTICE,0
+-#define FCGI_LOG_INFO_NOERRNO     __FILE__,__LINE__,APLOG_INFO,0
+-#define FCGI_LOG_DEBUG_NOERRNO    __FILE__,__LINE__,APLOG_DEBUG,0
++#define FCGI_LOG_EMERG          APLOG_MARK,APLOG_EMERG,APR_FROM_OS_ERROR(errno)
++#define FCGI_LOG_ALERT          APLOG_MARK,APLOG_ALERT,APR_FROM_OS_ERROR(errno)
++#define FCGI_LOG_CRIT           APLOG_MARK,APLOG_CRIT,APR_FROM_OS_ERROR(errno)
++#define FCGI_LOG_ERR            APLOG_MARK,APLOG_ERR,APR_FROM_OS_ERROR(errno)
++#define FCGI_LOG_WARN           APLOG_MARK,APLOG_WARNING,APR_FROM_OS_ERROR(errno)
++#define FCGI_LOG_NOTICE         APLOG_MARK,APLOG_NOTICE,APR_FROM_OS_ERROR(errno)
++#define FCGI_LOG_INFO           APLOG_MARK,APLOG_INFO,APR_FROM_OS_ERROR(errno)
++#define FCGI_LOG_DEBUG          APLOG_MARK,APLOG_DEBUG,APR_FROM_OS_ERROR(errno)
++#endif
++
++#define FCGI_LOG_EMERG_ERRNO    APLOG_MARK,APLOG_EMERG,APR_FROM_OS_ERROR(errno)
++#define FCGI_LOG_ALERT_ERRNO    APLOG_MARK,APLOG_ALERT,APR_FROM_OS_ERROR(errno)
++#define FCGI_LOG_CRIT_ERRNO     APLOG_MARK,APLOG_CRIT,APR_FROM_OS_ERROR(errno)
++#define FCGI_LOG_ERR_ERRNO      APLOG_MARK,APLOG_ERR,APR_FROM_OS_ERROR(errno)
++#define FCGI_LOG_WARN_ERRNO     APLOG_MARK,APLOG_WARNING,APR_FROM_OS_ERROR(errno)
++#define FCGI_LOG_NOTICE_ERRNO   APLOG_MARK,APLOG_NOTICE,APR_FROM_OS_ERROR(errno)
++#define FCGI_LOG_INFO_ERRNO     APLOG_MARK,APLOG_INFO,APR_FROM_OS_ERROR(errno)
++#define FCGI_LOG_DEBUG_ERRNO    APLOG_MARK,APLOG_DEBUG,APR_FROM_OS_ERROR(errno)
++
++#define FCGI_LOG_EMERG_NOERRNO    APLOG_MARK,APLOG_EMERG,0
++#define FCGI_LOG_ALERT_NOERRNO    APLOG_MARK,APLOG_ALERT,0
++#define FCGI_LOG_CRIT_NOERRNO     APLOG_MARK,APLOG_CRIT,0
++#define FCGI_LOG_ERR_NOERRNO      APLOG_MARK,APLOG_ERR,0
++#define FCGI_LOG_WARN_NOERRNO     APLOG_MARK,APLOG_WARNING,0
++#define FCGI_LOG_NOTICE_NOERRNO   APLOG_MARK,APLOG_NOTICE,0
++#define FCGI_LOG_INFO_NOERRNO     APLOG_MARK,APLOG_INFO,0
++#define FCGI_LOG_DEBUG_NOERRNO    APLOG_MARK,APLOG_DEBUG,0
+ 
+ #else /* !APACHE2 */
+ 
+Index: libapache-mod-fastcgi/mod_fastcgi.c
+===================================================================
+--- libapache-mod-fastcgi.orig/mod_fastcgi.c	2012-03-07 14:29:04.017047773 +0100
++++ libapache-mod-fastcgi/mod_fastcgi.c	2012-03-07 14:29:07.841272721 +0100
+@@ -97,6 +97,10 @@
+ } while (0)
+ #endif
+ 
++#ifdef APACHE24
++module AP_MODULE_DECLARE_DATA fastcgi_module;
++#endif
++
+ /*
+  * Global variables
+  */
+@@ -3014,7 +3018,11 @@
+     ap_hook_fixups(fixups, NULL, NULL, APR_HOOK_MIDDLE); 
+ }
+ 
++#ifdef APACHE24
++AP_DECLARE_MODULE(fastcgi) =
++#else
+ module AP_MODULE_DECLARE_DATA fastcgi_module =
++#endif
+ {
+     STANDARD20_MODULE_STUFF,
+     fcgi_config_create_dir_config,  /* per-directory config creator */

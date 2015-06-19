@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>common-lisp</herd>
+	<herd>java</herd>
+	<longdescription>
+		Armed Bear Common Lisp (ABCL) is an implementation of ANSI Common
+		Lisp that runs in a Java virtual machine.
+	</longdescription>
+	<use>
+	<flag name='clisp'>Build Armed Bear Common Lisp using GNU CLISP</flag>
+	<flag name='cmucl'>Build Armed Bear Common Lisp using CMU Common Lisp</flag>
+	<flag name='jad'>Enable support for disassembling compiled code using JAD</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,10 @@
+--- usr/iscsid.c	2010-10-10 23:06:37.000000000 +0200
++++ usr/iscsid.c	2010-10-10 23:07:55.000000000 +0200
+@@ -31,6 +31,7 @@
+ #include <sys/utsname.h>
+ #include <sys/types.h>
+ #include <sys/wait.h>
++#include <sys/stat.h>
+ 
+ #include "iscsid.h"
+ #include "mgmt_ipc.h"

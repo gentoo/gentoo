@@ -1,0 +1,44 @@
+# ChangeLog for dev-python/django-picklefield
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/django-picklefield/ChangeLog,v 1.10 2015/06/07 13:08:18 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> django-picklefield-0.3.0.ebuild,
+  django-picklefield-0.3.1.ebuild:
+  Drop old Python implementations
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> django-picklefield-0.3.1.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> django-picklefield-0.3.1.ebuild:
+  amd64 stable, bug 540290
+
+  24 Nov 2014; Pacho Ramos <pacho@gentoo.org> django-picklefield-0.3.1.ebuild:
+  Support python 3.4
+
+  30 Mar 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer as talked with him (#398377)
+
+*django-picklefield-0.3.1 (06 Dec 2013)
+
+  06 Dec 2013; Patrick Lauer <patrick@gentoo.org>
+  +django-picklefield-0.3.1.ebuild:
+  Bump
+
+  24 May 2013; Ian Delaney <idella4@gentoo.org>
+  -django-picklefield-0.2.1.ebuild, django-picklefield-0.3.0.ebuild:
+  update ebuild, drop old
+
+*django-picklefield-0.3.0 (08 Jan 2013)
+
+  08 Jan 2013; Corentin Chary <iksaif@gentoo.org>
+  +django-picklefield-0.3.0.ebuild:
+  Add 0.3.0 and move to distutils-r1
+
+*django-picklefield-0.2.1 (30 May 2012)
+
+  30 May 2012; Corentin Chary <iksaif@gentoo.org>
+  +django-picklefield-0.2.1.ebuild, +metadata.xml:
+  New ebuild for django-picklefield.

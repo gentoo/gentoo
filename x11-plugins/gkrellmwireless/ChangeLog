@@ -1,0 +1,127 @@
+# ChangeLog for x11-plugins/gkrellmwireless
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellmwireless/ChangeLog,v 1.22 2013/06/01 11:36:49 pacho Exp $
+
+  01 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #144305
+
+  13 Dec 2011; Agostino Sarubbo <ago@gentoo.org>
+  gkrellmwireless-2.0.3-r1.ebuild:
+  Stable for AMD64, wrt bug #392819
+
+  11 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gkrellmwireless-2.0.3-r1.ebuild:
+  x86 stable wrt bug #392819
+
+*gkrellmwireless-2.0.3-r1 (25 Jan 2011)
+
+  25 Jan 2011; Jim Ramsay <lack@gentoo.org> +gkrellmwireless-2.0.3-r1.ebuild:
+  Applied user patch to fix LDFLAGS and CFLAGS issue (Bug #334453)
+
+  12 Mar 2010; Sebastian Pipping <sping@gentoo.org>
+  gkrellmwireless-2.0.3.ebuild:
+  Fix HOMEPAGE (bug #305855)
+
+  12 Mar 2007; Jim Ramsay <lack@gentoo.org> gkrellmwireless-2.0.3.ebuild:
+  Updated to use new gkrellm-plugin eclass
+
+  08 Mar 2007; Jim Ramsay <lack@gentoo.org> gkrellmwireless-2.0.3.ebuild:
+  Ensure gkrellm is installed with USE='X'
+
+  21 Feb 2007; Jim Ramsay <lack@gentoo.org> +metadata.xml,
+  -gkrellmwireless-0.2.2.ebuild, -gkrellmwireless-2.0.2.ebuild:
+  Cleaning up old versions for gkrellm-1.2 removal
+
+  03 Oct 2006; Simon Stelling <blubb@gentoo.org>
+  gkrellmwireless-2.0.3.ebuild:
+  stable on amd64
+
+  10 Jul 2005; <brix@gentoo.org> gkrellmwireless-0.2.2.ebuild,
+  gkrellmwireless-2.0.2.ebuild:
+  Keyworded ~sparc under seal of approval from the sparc high council (due to
+  wireless-tools dep, bug #26955).
+
+  27 Apr 2005; Herbie Hopkins <herbs@gentoo.org>
+  gkrellmwireless-2.0.3.ebuild:
+  multilib fixes
+
+  01 Apr 2005; Homer Parker <hparker@gentoo.org> gkrellmwireless-2.0.3.ebuild:
+  Added ~amd64 closing bug 86864
+
+  15 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> gkrellmwireless-2.0.3.ebuild:
+  Stable on x86.
+
+*gkrellmwireless-2.0.3 (31 Jan 2004)
+
+  31 Jan 2004; Martin Holzer <mholzer@gentoo.org>
+  gkrellmwireless-2.0.3.ebuild:
+  Version bumped. Closes 38337
+
+  21 Jan 2004; Sven Blumenstein <bazik@gentoo.org>
+  gkrellmwireless-2.0.2.ebuild:
+  Stable on sparc.
+
+*gkrellmwireless-0.2.2 (23 Mar 2003)
+
+  23 Mar 2003; Martin Holzer <mholzer@gentoo.org>
+  gkrellmwireless-0.2.2.ebuild, gkrellmwireless-2.0.0.ebuild,
+  gkrellmwireless-2.0.1.ebuild, gkrellmwireless-2.0.2.ebuild:
+  --help
+
+*gkrellmwireless-2.0.2 (23 Mar 2003)
+
+  23 Mar 2003; Martin Holzer <mholzer@gentoo.org>
+  gkrellmwireless-0.2.2.ebuild, gkrellmwireless-2.0.0.ebuild,
+  gkrellmwireless-2.0.1.ebuild, gkrellmwireless-2.0.2.ebuild:
+  Moved from net-wireless to x11-plugins
+
+*gklrellmwireless-2.0.1 (14 Dec 2002)
+
+  14 Dec 2002; Seemant Kulleen <seemant@gentoo.org>
+  gkrellmwireless-2.0.1.ebuild files/digest-gkrellmwireless-2.0.1 :
+
+  Version bump.
+
+*gkrellmwireless-2.0.0 (16 Oct 2002) 
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  11 Dec 2002; Seemant Kulleen <seemant@gentoo.org>
+  gkrellmwireless-2.0.0.ebuild : 
+
+  Moved to stable x86.  Tom Prado among others have been testing since
+  release.
+
+  03 Dec 2002; Seemant Kulleen <seemant@gentoo.org>
+  gkrellmwireless-2.0.0.ebuild :
+
+  Changed to DEPEND on =gkrellm-2*. Thanks to chadh@gentoo.org in bug #11550
+
+  31 Oct 2002; Hannes Mehnert <hannes@gentoo.org>:
+  moved to net-wireless
+
+  16 Oct 2002; Spider <spider@gentoo.org> gkrellmwireless-2.0.0.ebuild :
+  Added a wireless monitor for gkrellm2 , using  ~arch 
+  
+*gkrelmmwireless-0.2.2 (14 Apr 2002)
+
+  11 Sep 2002; Owen Stampflee <owen@gentoo.org> :
+  Added PPC to KEYWORDS.
+
+  29 Aug 2002; Seemant Kulleen <seemant@gentoo.org> * :
+
+  Relocated to x11-plugins
+
+  14 Apr 2002; Seemant Kulleen <seemant@gentoo.org> gkrellmwireless-0.2.2.ebuild :
+
+  Version bump.
+
+*gkrellmwireless-0.2.1 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

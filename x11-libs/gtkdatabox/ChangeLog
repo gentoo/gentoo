@@ -1,0 +1,52 @@
+# ChangeLog for x11-libs/gtkdatabox
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtkdatabox/ChangeLog,v 1.13 2015/06/09 13:33:34 xmw Exp $
+
+  09 Jun 2015; Michael Weber <xmw@gentoo.org> gtkdatabox-0.9.2.0.ebuild:
+  Drop wrong dependency on glade:3 (bug 551288).
+
+  29 Jun 2013; Agostino Sarubbo <ago@gentoo.org> gtkdatabox-0.9.2.0.ebuild:
+  Stable for x86, wrt bug #474832
+
+  29 Jun 2013; Agostino Sarubbo <ago@gentoo.org> gtkdatabox-0.9.2.0.ebuild:
+  Stable for amd64, wrt bug #474832
+
+  27 Jun 2013; Michael Weber <xmw@gentoo.org> metadata.xml:
+  Add sci-electronics and myself as maint.
+
+  16 Feb 2013; Pacho Ramos <pacho@gentoo.org> -gtkdatabox-0.9.1.1.ebuild,
+  -gtkdatabox-0.9.1.3.ebuild, metadata.xml:
+  Cleanup due bug #96436
+
+*gtkdatabox-0.9.2.0 (09 Feb 2013)
+
+  09 Feb 2013; Jeroen Roovers <jer@gentoo.org> +gtkdatabox-0.9.2.0.ebuild:
+  Version bump (bug #383465).
+
+*gtkdatabox-0.9.1.3 (02 Oct 2011)
+
+  02 Oct 2011; Peter Volkov <pva@gentoo.org> +gtkdatabox-0.9.1.3.ebuild:
+  Version bump.
+
+  06 Aug 2011; Peter Volkov <pva@gentoo.org> metadata.xml:
+  Took maintaining.
+
+  19 Jul 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop to maintainer-needed due retirement, bug #266794
+
+  16 Dec 2010; Pacho Ramos <pacho@gentoo.org> gtkdatabox-0.9.1.1.ebuild:
+  Remove -D.*DISABLE_DEPRECATED cflags (bug #323923 by Konstantin Likhomanov
+  and others) and install examples properly (bug #99318).
+
+  18 Sep 2009; Torsten Veller <tove@gentoo.org> gtkdatabox-0.9.1.1.ebuild:
+  || "..." -> || die "..."
+
+  27 Jun 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  gtkdatabox-0.9.1.1.ebuild:
+  Works on ~x86 so keyword.
+
+*gtkdatabox-0.9.1.1 (26 Jun 2009)
+
+  26 Jun 2009; Romain Perier <mrpouet@gentoo.org>
+  +gtkdatabox-0.9.1.1.ebuild, +metadata.xml:
+  New ebuild, import from scarabeus's overlay

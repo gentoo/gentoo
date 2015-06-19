@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=~app-pda/libopensync-0.22 dev-libs/glib:2 dev-libs/libxml2 virtual/pkgconfig
+DESCRIPTION=OpenSync File Plugin
+EAPI=3
+HOMEPAGE=http://www.opensync.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=~app-pda/libopensync-0.22 dev-libs/glib:2 dev-libs/libxml2
+SLOT=0
+SRC_URI=http://www.opensync.org/download/releases/0.22/libopensync-plugin-file-0.22.tar.bz2
+_md5_=61342e7eb8efe45e9af49b07dd8bd145

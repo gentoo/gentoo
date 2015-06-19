@@ -1,0 +1,11 @@
+diff -uNr wmcdplay.old/Imakefile wmcdplay/Imakefile
+--- wmcdplay.old/Imakefile	Sat Sep  5 10:11:26 1998
++++ wmcdplay/Imakefile	Mon Nov 16 18:27:37 1998
+@@ -1,5 +1,7 @@
+ DEPLIBS = $(DEPXLIB) 
+ 
++CC = c++
++
+ LOCAL_LIBRARIES = $(XPMLIB) $(XLIB)
+ 
+ SRCS = wmcdplay.cc

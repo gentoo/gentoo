@@ -1,0 +1,54 @@
+# ChangeLog for x11-themes/gtk-engines-aurora
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/gtk-engines-aurora/ChangeLog,v 1.12 2012/06/03 08:54:54 ssuominen Exp $
+
+  03 Jun 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -gtk-engines-aurora-1.4.ebuild:
+  old
+
+  03 Jun 2012; Samuli Suominen <ssuominen@gentoo.org>
+  gtk-engines-aurora-1.5.1.ebuild,
+  +files/gtk-engines-aurora-1.5.1-glib-2.31.patch:
+  Fix building with dev-libs/glib >= 2.31 wrt #419393 by Pacho Ramos. Remove
+  useless libtool archive from GTK+ 2.x engine directory.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> gtk-engines-aurora-1.4.ebuild,
+  gtk-engines-aurora-1.5.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  02 Mar 2011; Kevin McCarthy <signals@gentoo.org>
+  gtk-engines-aurora-1.4.ebuild:
+  Slotted gtk+ depend and EAPI=2 bump to support it.
+
+  06 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  gtk-engines-aurora-1.5.1.ebuild:
+  Transfer Prefix keywords
+
+  27 May 2009; Christian Faulhammer <fauli@gentoo.org>
+  gtk-engines-aurora-1.5.1.ebuild:
+  stable x86, bug 270826
+
+  24 May 2009; Thomas Anderson <gentoofan23@gentoo.org>
+  gtk-engines-aurora-1.5.1.ebuild:
+  stable amd64, bug 270826
+
+*gtk-engines-aurora-1.5.1 (28 Apr 2009)
+
+  28 Apr 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +gtk-engines-aurora-1.5.1.ebuild:
+  Version bump.
+
+  18 Jul 2008; Christian Faulhammer <opfer@gentoo.org>
+  gtk-engines-aurora-1.4.ebuild:
+  stable x86, bug 231181
+
+  11 Jul 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  gtk-engines-aurora-1.4.ebuild:
+  stable amd64, bug 231181
+
+*gtk-engines-aurora-1.4 (14 May 2008)
+
+  14 May 2008; Samuli Suominen <ssuominen@gentoo.org>
+  +gtk-engines-aurora-1.4.ebuild:
+  Initial commit wrt #213577, thanks to Angelo Arrifano and Josh Saddler.
+

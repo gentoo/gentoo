@@ -1,0 +1,231 @@
+# ChangeLog for dev-libs/wayland
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/wayland/ChangeLog,v 1.61 2015/03/14 13:35:23 maekke Exp $
+
+  14 Mar 2015; Markus Meier <maekke@gentoo.org> wayland-1.6.1.ebuild:
+  arm stable, bug #530652
+
+  06 Mar 2015; Jeroen Roovers <jer@gentoo.org> wayland-1.6.1.ebuild:
+  Stable for HPPA (bug #530652).
+
+  24 Feb 2015; Agostino Sarubbo <ago@gentoo.org> wayland-1.6.1.ebuild:
+  Stable for alpha, wrt bug #530652
+
+  23 Feb 2015; Agostino Sarubbo <ago@gentoo.org> wayland-1.6.1.ebuild:
+  Stable for sparc, wrt bug #530652
+
+  22 Feb 2015; Matt Turner <mattst88@gentoo.org> wayland-1.7.0.ebuild:
+  Add missing dependencies for USE=doc, bug 540966.
+
+  22 Feb 2015; Agostino Sarubbo <ago@gentoo.org> wayland-1.6.1.ebuild:
+  Stable for ia64, wrt bug #530652
+
+*wayland-1.7.0 (21 Feb 2015)
+
+  21 Feb 2015; Matt Turner <mattst88@gentoo.org> +wayland-1.7.0.ebuild:
+  Version bump to 1.7.0, bug 540786.
+
+  21 Feb 2015; Matt Turner <mattst88@gentoo.org> wayland-1.6.1.ebuild:
+  Added ~mips, bug 403015.
+
+  21 Feb 2015; Agostino Sarubbo <ago@gentoo.org> wayland-1.6.1.ebuild:
+  Stable for ppc64, wrt bug #530652
+
+  20 Feb 2015; Agostino Sarubbo <ago@gentoo.org> wayland-1.6.1.ebuild:
+  Stable for ppc, wrt bug #530652
+
+  19 Feb 2015; Agostino Sarubbo <ago@gentoo.org> wayland-1.6.1.ebuild:
+  Stable for x86, wrt bug #530652
+
+  18 Feb 2015; Agostino Sarubbo <ago@gentoo.org> wayland-1.6.1.ebuild:
+  Stable for amd64, wrt bug #530652
+
+*wayland-1.6.1 (09 Feb 2015)
+
+  09 Feb 2015; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +wayland-1.6.1.ebuild, wayland-1.3.0.ebuild:
+  Version bump. Shut up repoman warning.
+
+*wayland-1.6.0 (26 Sep 2014)
+
+  26 Sep 2014; Matt Turner <mattst88@gentoo.org> +wayland-1.6.0.ebuild:
+  Version bump to 1.6.0.
+
+  13 Aug 2014; Raúl Porcel <armin76@gentoo.org> wayland-1.4.0.ebuild,
+  wayland-1.5.0.ebuild:
+  Add ~m68k/~s390/~sh/~sparc wrt #403015
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> wayland-1.2.1-r1.ebuild,
+  wayland-1.3.0.ebuild, wayland-1.4.0.ebuild, wayland-1.5.0.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+  08 Jun 2014; Agostino Sarubbo <ago@gentoo.org> wayland-1.4.0.ebuild:
+  Stable for arm, wrt bug #500368
+
+*wayland-1.5.0 (21 May 2014)
+
+  21 May 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +wayland-1.5.0.ebuild:
+  Version bump.
+
+  28 Apr 2014; Michał Górny <mgorny@gentoo.org> wayland-1.3.0.ebuild,
+  wayland-1.4.0.ebuild:
+  Replace multilib_build_binaries with multilib_is_native_abi. The two are
+  equivalent now, and the team has decided to use the old name as being less
+  confusing.
+
+  20 Apr 2014; Agostino Sarubbo <ago@gentoo.org> wayland-1.4.0.ebuild:
+  Stable for amd64, wrt bug #500368
+
+  18 Apr 2014; Agostino Sarubbo <ago@gentoo.org> wayland-1.4.0.ebuild:
+  Stable for alpha, wrt bug #500368
+
+  17 Apr 2014; Agostino Sarubbo <ago@gentoo.org> wayland-1.4.0.ebuild:
+  Stable for ia64, wrt bug #500368
+
+  16 Apr 2014; Agostino Sarubbo <ago@gentoo.org> wayland-1.4.0.ebuild:
+  Stable for ppc64, wrt bug #500368
+
+  08 Apr 2014; Agostino Sarubbo <ago@gentoo.org> wayland-1.4.0.ebuild:
+  Stable for ppc, wrt bug #500368
+
+  06 Apr 2014; Agostino Sarubbo <ago@gentoo.org> wayland-1.4.0.ebuild:
+  Stable for x86, wrt bug #500368
+
+  28 Mar 2014; Jeroen Roovers <jer@gentoo.org> wayland-1.4.0.ebuild:
+  Stable for HPPA (bug #500368).
+
+  27 Mar 2014; Agostino Sarubbo <ago@gentoo.org> wayland-1.4.0.ebuild:
+  Stable for amd64, wrt bug #500368
+
+  26 Jan 2014; Matt Turner <mattst88@gentoo.org> wayland-1.4.0.ebuild:
+  Added ~alpha, bug 403015.
+
+*wayland-1.4.0 (24 Jan 2014)
+
+  24 Jan 2014; Matt Turner <mattst88@gentoo.org> +wayland-1.4.0.ebuild:
+  Version bump to 1.4.0.
+
+*wayland-1.3.0 (31 Dec 2013)
+
+  31 Dec 2013; Matt Turner <mattst88@gentoo.org> +wayland-1.3.0.ebuild:
+  Version bump to 1.3.0, bug 494900.
+
+  31 Dec 2013; Matt Turner <mattst88@gentoo.org> wayland-1.2.1-r1.ebuild:
+  Add missing MULTILIB_USEDEP to dependencies.
+
+  08 Oct 2013; Agostino Sarubbo <ago@gentoo.org> wayland-1.2.1.ebuild:
+  Stable for x86, wrt bug #475480
+
+  06 Oct 2013; Agostino Sarubbo <ago@gentoo.org> wayland-1.2.1.ebuild:
+  Stable for ia64, wrt bug #475480
+
+  05 Oct 2013; Markus Meier <maekke@gentoo.org> wayland-1.2.1.ebuild:
+  arm stable, bug #475480
+
+  04 Oct 2013; Agostino Sarubbo <ago@gentoo.org> wayland-1.2.1.ebuild:
+  Stable for ppc64, wrt bug #475480
+
+  03 Oct 2013; Agostino Sarubbo <ago@gentoo.org> wayland-1.2.1.ebuild:
+  Stable for ppc, wrt bug #475480
+
+  02 Oct 2013; Jeroen Roovers <jer@gentoo.org> wayland-1.2.1.ebuild:
+  Stable for HPPA (bug #475480).
+
+  29 Sep 2013; Agostino Sarubbo <ago@gentoo.org> wayland-1.2.1.ebuild:
+  Stable for amd64, wrt bug #475480
+
+*wayland-1.2.1-r1 (21 Sep 2013)
+
+  21 Sep 2013; Michał Górny <mgorny@gentoo.org> +wayland-1.2.1-r1.ebuild:
+  Convert to multilib.
+
+*wayland-1.2.1 (25 Aug 2013)
+
+  25 Aug 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +wayland-1.2.1.ebuild:
+  Version bump, bug #480868.
+
+  17 Jul 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  wayland-1.2.0.ebuild:
+  Fix test failure and add missing pkgconfig dependency, bug #476934 by Nikoli.
+
+*wayland-1.2.0 (13 Jul 2013)
+
+  13 Jul 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +wayland-1.2.0.ebuild:
+  Version bump.
+
+  16 May 2013; Matt Turner <mattst88@gentoo.org> wayland-0.95.0.ebuild,
+  wayland-1.0.6.ebuild, wayland-1.1.0.ebuild:
+  Remove CC-BY-SA-3.0 from LICENSE.
+
+  06 May 2013; Matt Turner <mattst88@gentoo.org> -wayland-1.0.4.ebuild:
+  Remove old.
+
+*wayland-1.0.6 (21 Apr 2013)
+*wayland-1.1.0 (21 Apr 2013)
+
+  21 Apr 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +wayland-1.0.6.ebuild, +wayland-1.1.0.ebuild:
+  Version bumps.
+
+  19 Feb 2013; Matt Turner <mattst88@gentoo.org> wayland-1.0.4.ebuild:
+  Explicitly disable documentation.
+
+  17 Feb 2013; Matt Turner <mattst88@gentoo.org> wayland-1.0.4.ebuild:
+  Remove doc USE flag, bug 455586.
+
+  11 Feb 2013; Matt Turner <mattst88@gentoo.org> wayland-1.0.4.ebuild:
+  Define XDG_RUNTIME_DIR for tests, bug 456054.
+
+  07 Feb 2013; Ulrich Müller <ulm@gentoo.org> wayland-0.95.0.ebuild,
+  wayland-1.0.4.ebuild:
+  Move Creative Commons licenses to shorter names.
+
+*wayland-1.0.4 (05 Feb 2013)
+
+  05 Feb 2013; Matt Turner <mattst88@gentoo.org> +wayland-1.0.4.ebuild,
+  -wayland-1.0.3.ebuild:
+  Version bump to 1.0.4, bug 454764.
+
+  21 Jan 2013; Matt Turner <mattst88@gentoo.org> -wayland-0.85.0.ebuild:
+  Drop old.
+
+  21 Jan 2013; Matt Turner <mattst88@gentoo.org> wayland-1.0.3.ebuild:
+  Add doc USE flag, bug 442468.
+
+*wayland-1.0.3 (21 Jan 2013)
+
+  21 Jan 2013; Matt Turner <mattst88@gentoo.org> +wayland-1.0.3.ebuild:
+  Version bump to 1.0.3, bug 445494.
+
+  19 Dec 2012; Agostino Sarubbo <ago@gentoo.org> wayland-0.95.0.ebuild:
+  Add ~ia64, wrt bug #403015
+
+  10 Dec 2012; Agostino Sarubbo <ago@gentoo.org> wayland-0.95.0.ebuild:
+  Add ~ppc, wrt bug #403015
+
+*wayland-0.95.0 (10 Aug 2012)
+
+  10 Aug 2012; Matt Turner <mattst88@gentoo.org> +wayland-0.95.0.ebuild:
+  Version bump.
+
+  14 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> wayland-0.85.0.ebuild:
+  Use virtual/libffi instead of dev-libs/libffi.
+
+  09 Mar 2012; Brent Baude <ranger@gentoo.org> wayland-0.85.0.ebuild:
+  Marking wayland-0.85.0 ~ppc64 for bug 403015
+
+  02 Mar 2012; Markus Meier <maekke@gentoo.org> wayland-0.85.0.ebuild:
+  add ~arm, bug #403015
+
+  12 Feb 2012; Jeroen Roovers <jer@gentoo.org> wayland-0.85.0.ebuild:
+  Marked ~hppa (bug #403015).
+
+*wayland-0.85.0 (10 Feb 2012)
+
+  10 Feb 2012; Matt Turner <mattst88@gentoo.org> +wayland-0.85.0.ebuild,
+  +metadata.xml:
+  First version of wayland in portage.

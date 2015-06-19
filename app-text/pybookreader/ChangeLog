@@ -1,0 +1,26 @@
+# ChangeLog for app-text/pybookreader
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/pybookreader/ChangeLog,v 1.6 2015/06/09 12:36:18 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  23 Sep 2014; Dirkjan Ochtman <djc@gentoo.org> metadata.xml:
+  Remove python, not a python library
+
+  25 Feb 2012; Patrick Lauer <patrick@gentoo.org> pybookreader-0.5.0.ebuild:
+  Restricting python
+
+  28 Mar 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pybookreader-0.5.0.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+  07 Feb 2010; Peter Volkov <pva@gentoo.org> pybookreader-0.5.0.ebuild:
+  Cleanup: indentation, HOMEPAGE should be static.
+
+*pybookreader-0.5.0 (19 Jul 2009)
+
+  19 Jul 2009; Andrey Grozin <grozin@gentoo.org> +pybookreader-0.5.0.ebuild,
+  +metadata.xml:
+  Initial import.
+  Initially this package was requested in bug #102086.

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+	<email>azamat.hackimov@gmail.com</email>
+	<name>Azamat Hackimov</name>
+</maintainer>
+<herd>perl</herd>
+<herd>proxy-maintainers</herd>
+<upstream>
+<remote-id type="cpan">Term-Shell</remote-id>
+<remote-id type="cpan-module">Term::Shell</remote-id>
+<remote-id type="cpan-module">Term::Shell::OnScopeLeave</remote-id>
+	</upstream>
+</pkgmetadata>

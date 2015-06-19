@@ -1,0 +1,19 @@
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/mailgraph/files/mailgraph.confd-new,v 1.1 2007/04/01 19:30:00 ticho Exp $
+
+# Location of logfile that all (!) mail software (MTA, spamfilter etc.) logs to.
+# mailgraph defaults to /var/log/syslog if unspecified
+MG_LOGFILE="/var/log/messages"
+
+# Required daemon settings
+MG_DAEMON_UID="mgraph"
+MG_DAEMON_GID="adm"
+MG_DAEMON_UMASK="0022"
+MG_DAEMON_LOG="/var/log/mailgraph/mailgraph.log"
+MG_DAEMON_PID="/var/run/mailgraph/mailgraph.pid"
+MG_DAEMON_RRD="/var/lib/mailgraph"
+
+# Specify any extra options here.
+# If MG_LOGFILE is in metalog format, add "-t metalog" to MG_DAEMON_OPTS
+MG_DAEMON_OPTS="--ignore-localhost"

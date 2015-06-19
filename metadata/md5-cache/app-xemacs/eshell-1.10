@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install unpack
+DESCRIPTION=Command shell implemented entirely in Emacs Lisp
+HOMEPAGE=http://xemacs.org/
+KEYWORDS=alpha amd64 ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=app-xemacs/xemacs-base app-xemacs/xemacs-eterm app-editors/xemacs
+SLOT=0
+SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/eshell-1.10-pkg.tar.gz
+_eclasses_=xemacs-packages	29b865270cd0de904945912d5041f1cc
+_md5_=42ec926dddb599bfaabaf44cdd206c1b

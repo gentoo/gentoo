@@ -1,0 +1,95 @@
+# ChangeLog for app-vim/genindent
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/genindent/ChangeLog,v 1.29 2013/06/12 22:02:54 radhermit Exp $
+
+  12 Jun 2013; Tim Harder <radhermit@gentoo.org> genindent-1.1.ebuild:
+  Change LICENSE to vim (bug #473080 by Andrius Štikonas).
+
+  12 Jun 2013; Tim Harder <radhermit@gentoo.org> -genindent-1.0.ebuild:
+  Remove old.
+
+  07 Dec 2012; Ulrich Müller <ulm@gentoo.org> genindent-1.0.ebuild,
+  genindent-1.1.ebuild:
+  Fix LICENSE, bug 445808.
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org> genindent-1.1.ebuild:
+  ia64/sparc stable wrt #396851
+
+  03 Mar 2012; Brent Baude <ranger@gentoo.org> genindent-1.1.ebuild:
+  Marking genindent-1.1 ppc64 for bug 396851
+
+  02 Mar 2012; Tobias Klausmann <klausman@gentoo.org> genindent-1.1.ebuild:
+  Stable on alpha, bug #396851
+
+  28 Feb 2012; Brent Baude <ranger@gentoo.org> genindent-1.1.ebuild:
+  Marking genindent-1.1 ppc for bug 396851
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> genindent-1.1.ebuild:
+  x86 stable wrt bug #396851
+
+  08 Feb 2012; Markus Meier <maekke@gentoo.org> genindent-1.1.ebuild:
+  arm stable, bug #396851
+
+  07 Feb 2012; Jeroen Roovers <jer@gentoo.org> genindent-1.1.ebuild:
+  Stable for HPPA (bug #396851).
+
+  03 Feb 2012; Agostino Sarubbo <ago@gentoo.org> genindent-1.1.ebuild:
+  Stable for amd64, wrt bug #396851
+
+*genindent-1.1 (14 Nov 2010)
+
+  14 Nov 2010; Tim Harder <radhermit@gentoo.org> +genindent-1.1.ebuild:
+  Version bump.
+
+  07 Oct 2010; Mart Raudsepp <leio@gentoo.org> genindent-1.0.ebuild:
+  Drop to ~mips
+
+  17 Dec 2009; Christian Faulhammer <fauli@gentoo.org> genindent-1.0.ebuild:
+  QA: add prefix keywords
+
+  04 Jul 2009; Raúl Porcel <armin76@gentoo.org> genindent-1.0.ebuild:
+  arm stable
+
+  04 Apr 2009; Raúl Porcel <armin76@gentoo.org> genindent-1.0.ebuild:
+  Add ~arm
+
+  07 Dec 2006; Diego Pettenò <flameeyes@gentoo.org> genindent-1.0.ebuild:
+  Add ~x86-fbsd keyword as per bug #156873. Thanks to Mark Kowarsky
+  (mark_alec) for reporting.
+
+  22 Oct 2006; Jeroen Roovers <jer@gentoo.org> genindent-1.0.ebuild:
+  Stable for HPPA.
+
+  07 Apr 2006; Bryan Østergaard <kloeri@gentoo.org metadata.xml:
+  Remove ciaranm from metadata.xml.
+
+  19 May 2005; Rene Nussbaumer <killerfox@gentoo.org> genindent-1.0.ebuild:
+  Added ~hppa
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> genindent-1.0.ebuild:
+  Stable on ppc.
+
+  06 Apr 2005; Markus Rothe <corsair@gentoo.org> genindent-1.0.ebuild:
+  Stable on ppc64
+
+  18 Feb 2005; Tom Martin <slarti@gentoo.org> genindent-1.0.ebuild:
+  amd64 stable.
+
+  13 Feb 2005; Markus Rothe <corsair@gentoo.org> genindent-1.0.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  07 Dec 2004; Tom Martin <slarti@gentoo.org> genindent-1.0.ebuild:
+  Marked ~amd64.
+
+  14 Oct 2004; David Holm <dholm@gentoo.org> genindent-1.0.ebuild:
+  Added to ~ppc.
+
+  07 Oct 2004; Ciaran McCreesh <ciaranm@gentoo.org> genindent-1.0.ebuild:
+  x86, sparc, mips stable
+
+*genindent-1.0 (09 Sep 2004)
+
+  09 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> +metadata.xml,
+  +genindent-1.0.ebuild:
+  New package. Needed as a dep for some other new app-vim things.
+

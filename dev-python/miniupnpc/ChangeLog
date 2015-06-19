@@ -1,0 +1,74 @@
+# ChangeLog for dev-python/miniupnpc
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/miniupnpc/ChangeLog,v 1.18 2015/04/08 08:05:17 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> miniupnpc-1.8.ebuild:
+  Drop old Python implementations
+
+  26 Jan 2015; Manuel Rüger <mrueg@gentoo.org> -miniupnpc-1.6.20120509.ebuild,
+  -miniupnpc-1.6.ebuild, -miniupnpc-1.7-r1.ebuild:
+  Remove old.
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> miniupnpc-1.8.ebuild:
+  Add support for the new PyPy slotting.
+
+  13 Oct 2013; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  Updated Nikoli's e-mail address for easier automatic assignment.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> miniupnpc-1.7-r1.ebuild,
+  miniupnpc-1.8.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  07 Aug 2013; Michał Górny <mgorny@gentoo.org> miniupnpc-1.8.ebuild:
+  Enable pypy2.0.
+
+  22 Jul 2013; Michał Górny <mgorny@gentoo.org> -miniupnpc-1.7.ebuild:
+  Drop the old version using long-deprecated python-distutils-ng.eclass.
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  16 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #96436
+
+*miniupnpc-1.8 (11 Feb 2013)
+
+  11 Feb 2013; Michał Górny <mgorny@gentoo.org> +miniupnpc-1.8.ebuild:
+  Version bump.
+
+  17 Dec 2012; Michał Górny <mgorny@gentoo.org> miniupnpc-1.7-r1.ebuild:
+  Bump to EAPI=5 to make Paludis happy, bug #447524.
+
+  22 Nov 2012; Ian Delaney <idella4@gentoo.org> miniupnpc-1.7-r1.ebuild:
+  pypy compatibility added
+
+  16 Oct 2012; Michał Górny <mgorny@gentoo.org> miniupnpc-1.7-r1.ebuild:
+  Re-keyword ~ppc, ~ppc64 for python-exec being keyworded.
+
+*miniupnpc-1.7-r1 (15 Oct 2012)
+
+  15 Oct 2012; Michał Górny <mgorny@gentoo.org> +miniupnpc-1.7-r1.ebuild:
+  Revision bump to distutils-r1.
+
+*miniupnpc-1.7 (11 Jul 2012)
+
+  11 Jul 2012; Michał Górny <mgorny@gentoo.org> +miniupnpc-1.7.ebuild:
+  Version bump. Use python-distutils-ng.
+
+*miniupnpc-1.6.20120509 (24 May 2012)
+
+  24 May 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +miniupnpc-1.6.20120509.ebuild:
+  Version bump with ~ppc/~ppc64 keywording. Require at least Python 2.6 and
+  restrict Python 2.5 to declare it unsupported.
+
+  21 Feb 2012; Patrick Lauer <patrick@gentoo.org> miniupnpc-1.6.ebuild:
+  Restricting jython
+
+*miniupnpc-1.6 (09 Aug 2011)
+
+  09 Aug 2011; Michał Górny <mgorny@gentoo.org> +miniupnpc-1.6.ebuild,
+  +files/0001-Link-Python-module-against-the-shared-library.patch,
+  +metadata.xml:
+  Split the Python module in net-libs/miniupnpc into separate
+  dev-python/miniupnpc; link the Python module against shared libminiupnpc.

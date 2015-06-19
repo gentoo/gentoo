@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare pretend test
+DEPEND=>=media-gfx/exiv2-0.14 media-libs/lcms:2 media-libs/libpng >=media-libs/libraw-0.13.4 >=media-libs/openexr-1.2.2-r2 >=media-libs/tiff-3.8.2-r2 sci-libs/fftw:3.0[threads] sci-libs/gsl virtual/jpeg dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtsql:4 dev-qt/qtwebkit:4 sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Luminance HDR is a graphical user interface that provides a workflow for HDR imaging
+EAPI=4
+HOMEPAGE=http://qtpfsgui.sourceforge.net
+IUSE=cpu_flags_x86_sse2 linguas_cs linguas_de linguas_es linguas_fi linguas_fr linguas_hi linguas_hu linguas_id linguas_it linguas_pl linguas_ro linguas_ru linguas_sk linguas_tr linguas_zh openmp
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=>=media-gfx/exiv2-0.14 media-libs/lcms:2 media-libs/libpng >=media-libs/libraw-0.13.4 >=media-libs/openexr-1.2.2-r2 >=media-libs/tiff-3.8.2-r2 sci-libs/fftw:3.0[threads] sci-libs/gsl virtual/jpeg dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtsql:4 dev-qt/qtwebkit:4
+SLOT=0
+SRC_URI=mirror://sourceforge/qtpfsgui/luminance-hdr-2.3.0.tar.bz2
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=5e5fc6fec1e9851a110768b86a3aaa8c

@@ -1,0 +1,40 @@
+From 12880888a2857f73cc87b9bdf5505fed0cbc6bbe Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Wed, 3 Aug 2011 20:53:22 +0200
+Subject: [PATCH 2/2] Disable documentation
+
+---
+ configure.ac |   17 +++--------------
+ 1 files changed, 3 insertions(+), 14 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 1c564c5..260602d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -269,20 +269,9 @@ echo
+ 
+ # Check for doxygen, so we can decide if we add it to the "doc" 
+ # make target.
+-AC_PATH_PROG([DOXYGEN],[doxygen])
+-AC_ARG_VAR(DOXYGEN,
+-           [Location of the 'doxygen' program; if found we can generate documentation for the C code])
+-AM_CONDITIONAL(HAVE_DOXYGEN, [ test "x$DOXYGEN" != "x" ])
+-
+-# Check for dot, the tool that makes the nice little caller graphs for the
+-# doxygen documentation.
+-AC_PATH_PROG([GRAPHVIZ],[dot])
+-AC_ARG_VAR(GRAPHVIZ,
+-           [Location of the 'dot' program from the graphviz suite; if found we can generate caller graphs for the documentation of the C code])
+-AM_CONDITIONAL(HAVE_GRAPHVIZ, [ test "x$GRAPHVIZ" != "x" ])
+-if test x$HAVE_DOT = "xfalse"; then
+-   AC_MSG_WARN([*** dot from the graphviz package not found, inheritance diagrams will not be generated in code documentation])
+-fi
++AM_CONDITIONAL(HAVE_DOXYGEN, [ false ])
++
++AM_CONDITIONAL(HAVE_GRAPHVIZ, [ false ])
+ 
+ #################################################
+ # Generate Makefile
+-- 
+1.7.6
+

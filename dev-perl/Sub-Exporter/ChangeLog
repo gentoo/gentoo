@@ -1,0 +1,170 @@
+# ChangeLog for dev-perl/Sub-Exporter
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Sub-Exporter/ChangeLog,v 1.47 2015/01/16 13:38:10 zlogene Exp $
+
+  16 Jan 2015; Mikle Kolyada <zlogene@gentoo.org> Sub-Exporter-0.987.0.ebuild:
+  Stable for all wrt bug #535226
+
+  13 Jan 2015; Jeroen Roovers <jer@gentoo.org> Sub-Exporter-0.987.0.ebuild:
+  Stable for HPPA (bug #535226).
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> Sub-Exporter-0.987.0.ebuild:
+  Stable for amd64, wrt bug #535226
+
+*Sub-Exporter-0.987.0 (16 Mar 2014)
+
+  16 Mar 2014; Mikle Kolyada <zlogene@gentoo.org> +Sub-Exporter-0.987.0.ebuild,
+  -Sub-Exporter-0.984.0.ebuild, -Sub-Exporter-0.985.0.ebuild,
+  Sub-Exporter-0.986.0.ebuild:
+  Version bump. Drop old
+
+  16 Mar 2014; Mikle Kolyada <zlogene@gentoo.org> Sub-Exporter-0.986.0.ebuild:
+  ppc64 stable wrt bug #495474
+
+  16 Mar 2014; Mikle Kolyada <zlogene@gentoo.org> Sub-Exporter-0.986.0.ebuild:
+  alpha stable wrt bug #495474
+
+  12 Mar 2014; Agostino Sarubbo <ago@gentoo.org> Sub-Exporter-0.986.0.ebuild:
+  Stable for sparc, wrt bug #495474
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> Sub-Exporter-0.986.0.ebuild:
+  Stable for ppc, wrt bug #495474
+
+  04 Mar 2014; Agostino Sarubbo <ago@gentoo.org> Sub-Exporter-0.986.0.ebuild:
+  Stable for x86, wrt bug #495474
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> Sub-Exporter-0.986.0.ebuild:
+  amd64 stable, bug #495474
+
+  22 Feb 2014; Markus Meier <maekke@gentoo.org> Sub-Exporter-0.986.0.ebuild:
+  arm stable, bug #495474
+
+  20 Feb 2014; Akinori Hattori <hattya@gentoo.org> Sub-Exporter-0.986.0.ebuild:
+  ia64 stable wrt bug #495474
+
+  18 Feb 2014; Jeroen Roovers <jer@gentoo.org> Sub-Exporter-0.986.0.ebuild:
+  Stable for HPPA (bug #495474).
+
+  01 Feb 2014; Mike Frysinger <vapier@gentoo.org> Sub-Exporter-0.984.0.ebuild,
+  Sub-Exporter-0.985.0.ebuild, Sub-Exporter-0.986.0.ebuild:
+  Add arm64/m68k love.
+
+*Sub-Exporter-0.986.0 (25 Aug 2013)
+
+  25 Aug 2013; Patrick Lauer <patrick@gentoo.org> +Sub-Exporter-0.986.0.ebuild:
+  Bump
+
+  08 Jul 2013; Vicente Olivert Riera <vincent@gentoo.org>
+  Sub-Exporter-0.985.0.ebuild:
+  ppc64 stable. bug #449576
+
+*Sub-Exporter-0.985.0 (21 Feb 2013)
+
+  21 Feb 2013; Torsten Veller <tove@gentoo.org> +Sub-Exporter-0.985.0.ebuild:
+  Version bump
+
+  28 Jan 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  Sub-Exporter-0.984.0.ebuild:
+  Keyworded amd64-linux and x86-linux
+
+  06 Jan 2013; Torsten Veller <tove@gentoo.org> -Sub-Exporter-0.982.0.ebuild:
+  Cleanup
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org> Sub-Exporter-0.984.0.ebuild:
+  Add ~ppc64, wrt bug #403413
+
+  02 Oct 2012; Anthony G. Basile <blueness@gentoo.org>
+  Sub-Exporter-0.984.0.ebuild:
+  stable ppc, bug #429006
+
+  13 Sep 2012; Agostino Sarubbo <ago@gentoo.org> Sub-Exporter-0.984.0.ebuild:
+  Stable for amd64, wrt bug #429006
+
+  13 Sep 2012; Agostino Sarubbo <ago@gentoo.org> Sub-Exporter-0.984.0.ebuild:
+  Stable for amd64, wrt bug #429006
+
+  12 Sep 2012; Johannes Huber <johu@gentoo.org> Sub-Exporter-0.984.0.ebuild:
+  Stable for x86, wrt bug #429006
+
+  09 Sep 2012; Raúl Porcel <armin76@gentoo.org> Sub-Exporter-0.984.0.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #418803
+
+  01 Sep 2012; Fabian Groffen <grobian@gentoo.org> Sub-Exporter-0.984.0.ebuild:
+  Marked ~ppc-aix, bug #432288
+
+  05 Aug 2012; Markus Meier <maekke@gentoo.org> Sub-Exporter-0.984.0.ebuild:
+  arm stable, bug #418803
+
+  02 Aug 2012; Jeroen Roovers <jer@gentoo.org> Sub-Exporter-0.984.0.ebuild:
+  Stable for HPPA (bug #418803).
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+*Sub-Exporter-0.984.0 (07 Jun 2012)
+
+  07 Jun 2012; Torsten Veller <tove@gentoo.org> +Sub-Exporter-0.984.0.ebuild:
+  Version bump
+
+  01 Apr 2012; Raúl Porcel <armin76@gentoo.org> Sub-Exporter-0.982.0.ebuild:
+  Add ia64/~s390/~sh/~sparc wrt #403413
+
+  19 Feb 2012; Tobias Klausmann <klausman@gentoo.org>
+  Sub-Exporter-0.982.0.ebuild:
+  Keyworded on alpha, bug #389001
+
+  14 Feb 2012; Alexis Ballier <aballier@gentoo.org>
+  Sub-Exporter-0.982.0.ebuild:
+  keyword ~x86-fbsd
+
+  07 Nov 2011; Fabian Groffen <grobian@gentoo.org> Sub-Exporter-0.982.0.ebuild:
+  Added Prefix keywords, bug #389001
+
+  06 Nov 2011; Markus Meier <maekke@gentoo.org> Sub-Exporter-0.982.0.ebuild:
+  add ~arm, bug #389001
+
+  31 Oct 2011; Jeroen Roovers <jer@gentoo.org> Sub-Exporter-0.982.0.ebuild:
+  Marked ~hppa (bug #389001).
+
+  24 Sep 2011; Fabian Groffen <grobian@gentoo.org> Sub-Exporter-0.982.0.ebuild:
+  Marked ~x64-macos
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Sub-Exporter-0.982.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> Sub-Exporter-0.982.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*Sub-Exporter-0.982.0 (28 Aug 2011)
+
+  28 Aug 2011; Torsten Veller <tove@gentoo.org> +Sub-Exporter-0.982.0.ebuild:
+  Change version scheme
+
+  15 Nov 2010; Fabian Groffen <grobian@gentoo.org>
+  Sub-Exporter-0.982.ebuild:
+  Marked ~ppc-macos and ~x86-solaris, bug #345435
+
+  27 Jun 2010; <nixnut@gentoo.org> Sub-Exporter-0.982.ebuild:
+  ppc stable #323529
+
+  02 Dec 2009; Torsten Veller <tove@gentoo.org> Sub-Exporter-0.982.ebuild:
+  Stable on amd64 and x86 (#293622)
+
+  26 Oct 2009; Mounir Lamouri <volkmar@gentoo.org>
+  Sub-Exporter-0.982.ebuild:
+  Keywording for ppc, bug 283244
+
+  02 May 2009; Torsten Veller <tove@gentoo.org> -Sub-Exporter-0.981.ebuild:
+  Cleanup
+
+*Sub-Exporter-0.982 (16 Jan 2009)
+
+  16 Jan 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +Sub-Exporter-0.982.ebuild:
+  Version bump via perl-bump experimental tool.
+
+*Sub-Exporter-0.981 (14 Jan 2009)
+
+  14 Jan 2009; Torsten Veller <tove@gentoo.org> +metadata.xml,
+  +Sub-Exporter-0.981.ebuild:
+  Initial commit. From the perl overlay

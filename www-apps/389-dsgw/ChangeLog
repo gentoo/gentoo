@@ -1,0 +1,45 @@
+# ChangeLog for www-apps/389-dsgw
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/389-dsgw/ChangeLog,v 1.9 2015/06/13 17:18:02 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  389-dsgw-1.1.10.ebuild:
+  The CGI module is no longer part of core Perl and has been moved to dev-perl
+
+  22 Jun 2014; Fabio Erculiani <lxnay@gentoo.org> metadata.xml:
+  reset to maintainer-needed@
+
+  04 Mar 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  389-dsgw-1.1.10.ebuild:
+  Add subslot dependency on dev-libs/icu
+
+*389-dsgw-1.1.10 (14 Mar 2013)
+
+  14 Mar 2013; Fabio Erculiani <lxnay@gentoo.org> +389-dsgw-1.1.10.ebuild,
+  -389-dsgw-1.1.7.ebuild:
+  version bump, fixes #461522
+
+  14 Mar 2013; Fabio Erculiani <lxnay@gentoo.org> -389-dsgw-1.1.5.ebuild,
+  -389-dsgw-1.1.6.ebuild:
+  drop older versions
+
+  27 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop apache herd as discussed in http://www.gossamer-
+  threads.com/lists/gentoo/dev/262834
+
+*389-dsgw-1.1.7 (14 Aug 2011)
+
+  14 Aug 2011; Fabio Erculiani <lxnay@gentoo.org> +389-dsgw-1.1.7.ebuild:
+  version bump
+
+*389-dsgw-1.1.6 (11 Jan 2011)
+
+  11 Jan 2011; Fabio Erculiani <lxnay@gentoo.org> +389-dsgw-1.1.6.ebuild:
+  version bump
+
+*389-dsgw-1.1.5 (11 Jul 2010)
+
+  11 Jul 2010; Fabio Erculiani <lxnay@gentoo.org> +389-dsgw-1.1.5.ebuild,
+  +metadata.xml:
+  new ebuild, part of 389 Directory Server (http://port389.org), closes bug
+  #309581

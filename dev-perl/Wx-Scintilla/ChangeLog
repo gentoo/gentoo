@@ -1,0 +1,55 @@
+# ChangeLog for dev-perl/Wx-Scintilla
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Wx-Scintilla/ChangeLog,v 1.12 2015/06/13 22:43:59 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  Wx-Scintilla-0.390.0-r1.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+*Wx-Scintilla-0.390.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Wx-Scintilla-0.390.0-r1.ebuild, -Wx-Scintilla-0.390.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  21 Feb 2013; Ulrich Müller <ulm@gentoo.org> Wx-Scintilla-0.390.0.ebuild:
+  Update LICENSE, the Scintilla license is a duplicate of the HPND.
+
+  06 Jan 2013; Torsten Veller <tove@gentoo.org> -Wx-Scintilla-0.380.100.ebuild:
+  Cleanup
+
+*Wx-Scintilla-0.390.0 (24 Sep 2012)
+
+  24 Sep 2012; Torsten Veller <tove@gentoo.org> +Wx-Scintilla-0.390.0.ebuild:
+  Version bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  21 Apr 2012; Torsten Veller <tove@gentoo.org> -Wx-Scintilla-0.360.0.ebuild,
+  -Wx-Scintilla-0.380.0.ebuild:
+  Cleanup
+
+*Wx-Scintilla-0.380.100 (29 Mar 2012)
+
+  29 Mar 2012; Torsten Veller <tove@gentoo.org> +Wx-Scintilla-0.380.100.ebuild:
+  Version bump
+
+*Wx-Scintilla-0.380.0 (13 Mar 2012)
+
+  13 Mar 2012; Torsten Veller <tove@gentoo.org> +Wx-Scintilla-0.380.0.ebuild:
+  Version bump
+
+  18 Feb 2012; Torsten Veller <tove@gentoo.org> -Wx-Scintilla-0.340.0.ebuild:
+  Cleanup
+
+*Wx-Scintilla-0.360.0 (25 Dec 2011)
+
+  25 Dec 2011; Torsten Veller <tove@gentoo.org> +Wx-Scintilla-0.360.0.ebuild:
+  Version bump
+
+*Wx-Scintilla-0.340.0 (02 Dec 2011)
+
+  02 Dec 2011; Torsten Veller <tove@gentoo.org> +Wx-Scintilla-0.340.0.ebuild,
+  +metadata.xml:
+  Initial commit for padre (#391849)

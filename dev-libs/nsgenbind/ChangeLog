@@ -1,0 +1,33 @@
+# ChangeLog for dev-libs/nsgenbind
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/nsgenbind/ChangeLog,v 1.5 2015/06/09 22:05:40 xmw Exp $
+
+*nsgenbind-0.1.2-r1 (09 Jun 2015)
+
+  09 Jun 2015; Michael Weber <xmw@gentoo.org> +nsgenbind-0.1.2-r1.ebuild,
+  -nsgenbind-0.1.2.ebuild:
+  Revbump for multilib fix.
+
+*nsgenbind-0.1.2 (22 Mar 2015)
+
+  22 Mar 2015; Michael Weber <xmw@gentoo.org>
+  +files/nsgenbind-0.1.2-glibc2.20.patch, +nsgenbind-0.1.2.ebuild,
+  -files/nsgenbind-0.0.1-bison-2.6.patch, -nsgenbind-0.0.1.ebuild:
+  Version bump (bug 543846).
+
+*nsgenbind-0.1.1 (15 Nov 2014)
+
+  15 Nov 2014; Michael Weber <xmw@gentoo.org>
+  +files/nsgenbind-0.1.1-glibc2.20.patch, +nsgenbind-0.1.1.ebuild:
+  Version bump, buildsystem bump, glibc-2.20 issue, respect USE-flags (thanks
+  mgorny, bug 513598)
+
+  23 Jun 2013; Michael Weber <xmw@gentoo.org> nsgenbind-0.0.1.ebuild:
+  Migrate to netsurf.eclass
+
+*nsgenbind-0.0.1 (18 Jun 2013)
+
+  18 Jun 2013; Michael Weber <xmw@gentoo.org>
+  +files/nsgenbind-0.0.1-bison-2.6.patch, +metadata.xml,
+  +nsgenbind-0.0.1.ebuild:
+  Version bump (bug 470720), multilib build, preparations for netsurf eclass.

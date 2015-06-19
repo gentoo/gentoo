@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=dev-libs/glib:2 x11-libs/gtk+:2
+DESCRIPTION=GTK+ network popup message client. Compatible with the jpop protocol
+EAPI=5
+HOMEPAGE=http://www.draxil.uklinux.net/hip/index.pl?page=cpop
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/glib:2 x11-libs/gtk+:2
+SLOT=0
+SRC_URI=mirror://gentoo/cpop-0.0.4.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=932da65e1835a7979ce3f4d6da4cf4f2

@@ -1,0 +1,26 @@
+# ChangeLog for dev-libs/libmacaroons
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libmacaroons/ChangeLog,v 1.5 2015/05/29 02:08:27 patrick Exp $
+
+*libmacaroons-0.3.0 (29 May 2015)
+
+  29 May 2015; Patrick Lauer <patrick@gentoo.org> +libmacaroons-0.3.0.ebuild:
+  Bump
+
+*libmacaroons-0.2.0-r1 (15 Jan 2015)
+
+  15 Jan 2015; Patrick Lauer <patrick@gentoo.org> +libmacaroons-0.2.0-r1.ebuild,
+  -libmacaroons-0.2.0.ebuild:
+  Disable broken tests, fix python handling #536552
+
+  13 Jan 2015; Patrick Lauer <patrick@gentoo.org> libmacaroons-0.2.0.ebuild:
+  Fix parallel test failure
+
+  23 Nov 2014; Patrick Lauer <patrick@gentoo.org> libmacaroons-0.2.0.ebuild:
+  Add python bindings and test phase
+
+*libmacaroons-0.2.0 (23 Nov 2014)
+
+  23 Nov 2014; Patrick Lauer <patrick@gentoo.org> +libmacaroons-0.2.0.ebuild,
+  +metadata.xml:
+  Initial import, ebuild by me

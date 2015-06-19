@@ -1,0 +1,310 @@
+# ChangeLog for dev-java/commons-logging
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-logging/ChangeLog,v 1.73 2015/04/22 21:50:06 monsieurp Exp $
+
+*commons-logging-1.2 (22 Apr 2015)
+
+  22 Apr 2015; Patrice Clement <monsieurp@gentoo.org>
+  +commons-logging-1.2.ebuild, +files/commons-logging-1.2-gentoo.patch,
+  +files/commons-logging-1.2-servletapi.patch, commons-logging-1.1.1.ebuild:
+  Version bump courtesy of Andreas Sturmlechner
+  <andreas.sturmlechner@gmail.com>. Fix bug 496036.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  commons-logging-1.1.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  01 Jan 2012; Ralph Sennhauser <sera@gentoo.org> commons-logging-1.1.1.ebuild:
+  Drop ia64 support #345433
+
+  19 Dec 2011; Ralph Sennhauser <sera@gentoo.org> commons-logging-1.1.1.ebuild:
+  Fix homepage wrt #202445.
+
+  03 May 2011; Fabian Groffen <grobian@gentoo.org>
+  commons-logging-1.1.1.ebuild:
+  Marked ~x64-freebsd
+
+  16 Jul 2010; Fabian Groffen <grobian@gentoo.org>
+  commons-logging-1.1.1.ebuild:
+  Marked ~x64-macos
+
+  15 Jan 2010; Jonathan Callen <abcd@gentoo.org>
+  commons-logging-1.1.1.ebuild:
+  Add prefix keywords
+
+  24 Sep 2009; Petteri Räty <betelgeuse@gentoo.org>
+  commons-logging-1.1.1.ebuild:
+  Move test dependencies out of RDEPEND. Fixes bug #286318.
+
+  25 Mar 2008; Petteri Räty <betelgeuse@gentoo.org>
+  -commons-logging-1.1-r5.ebuild, -commons-logging-1.1-r6.ebuild:
+  Delete old ebuilds.
+
+  16 Mar 2008; Kenneth Prugh <ken69267@gentoo.org>
+  commons-logging-1.1.1.ebuild:
+  amd64 stable, bug #212641
+
+  11 Mar 2008; Brent Baude <ranger@gentoo.org> commons-logging-1.1.1.ebuild:
+  stable ppc64, bug 212641
+
+  08 Mar 2008; Markus Meier <maekke@gentoo.org>
+  commons-logging-1.1.1.ebuild:
+  x86 stable, bug #212641
+
+  08 Mar 2008; Krzysiek Pawlik <nelchael@gentoo.org>
+  commons-logging-1.1.1.ebuild:
+  Stable on ppc, see bug #212641.
+
+  05 Mar 2008; Petteri Räty <betelgeuse@gentoo.org>
+  commons-logging-1.1.1.ebuild:
+  Add src_test support.
+
+  06 Feb 2008; Vlastimil Babka <caster@gentoo.org>
+  -commons-logging-1.1-r2.ebuild, -commons-logging-1.1-r3.ebuild,
+  -commons-logging-1.1-r4.ebuild:
+  Cleanup.
+
+*commons-logging-1.1.1 (06 Feb 2008)
+
+  06 Feb 2008; Miroslav Šulc <fordfrog@gentoo.org>
+  +files/commons-logging-1.1.1-gentoo.patch,
+  +files/commons-logging-1.1.1-manifest,
+  +files/commons-logging-1.1.1-servletapi.patch,
+  +commons-logging-1.1.1.ebuild:
+  Version bump
+
+*commons-logging-1.1-r6 (30 Jan 2008)
+*commons-logging-1.1-r5 (30 Jan 2008)
+
+  30 Jan 2008; Vlastimil Babka <caster@gentoo.org>
+  +commons-logging-1.1-r5.ebuild, +commons-logging-1.1-r6.ebuild:
+  Fix missing jdk14logger (bug #208098), a regression of fix for bug #200918.
+  The -r5 is based on current stable -r2 and straight stabled because -r2 got
+  broken after its stabling and without revbump. The -r6 is based on -r4 and
+  has also EAPI=1 slot deps and few other style tweaks.
+
+*commons-logging-1.1-r4 (14 Jan 2008)
+
+  14 Jan 2008; Jean-Noël Rivasseau <elvanor@gentoo.org>
+  +files/commons-logging-1.1-manifest, +commons-logging-1.1-r4.ebuild:
+  Uses java-osgi to create an OSGi compliant jar.
+
+  12 Jan 2008; Vlastimil Babka <caster@gentoo.org>
+  commons-logging-1.1-r3.ebuild:
+  Fix emerging with USE=servletapi, bug #205453.
+
+*commons-logging-1.1-r3 (11 Jan 2008)
+
+  11 Jan 2008; William L. Thomson Jr. <wltjr@gentoo.org>
+  +commons-logging-1.1-r3.ebuild:
+  Switched to java-virtual/servlet-api
+
+  15 Dec 2007; Petteri Räty <betelgeuse@gentoo.org>
+  commons-logging-1.1-r2.ebuild:
+  Call java-ant_ignore-system-classes to fix bug #200918.
+
+  12 Nov 2007; Christian Faulhammer <opfer@gentoo.org>
+  commons-logging-1.1-r2.ebuild:
+  filter jikes and ecj-3.2, add some quotes around variables
+
+  07 Apr 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  -commons-logging-1.0.4-r1.ebuild, -commons-logging-1.0.4-r2.ebuild,
+  commons-logging-1.1-r2.ebuild:
+  Stable on amd64, bug #171643. Brought forward ~ia64 keyword, and removed
+  older versions.
+
+  24 Mar 2007; nixnut <nixnut@gentoo.org> commons-logging-1.1-r2.ebuild:
+  Stable on ppc wrt bug 171643
+
+  24 Mar 2007; Markus Rothe <corsair@gentoo.org>
+  commons-logging-1.1-r2.ebuild:
+  Stable on ppc64; bug #171643
+
+  22 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  commons-logging-1.1-r2.ebuild:
+  stable x86, bug 171643
+
+  13 Feb 2007; Petteri Räty <betelgeuse@gentoo.org>
+  commons-logging-1.1-r2.ebuild:
+  Ebuild cleanup and correct LICENSE to Apache-2.0
+
+  10 Jan 2007; Petteri Räty <betelgeuse@gentoo.org>
+  commons-logging-1.1-r2.ebuild:
+  Fixed javadocs to install using java-pkg_dojavadoc.
+
+  07 Dec 2006; Diego Pettenò <flameeyes@gentoo.org>
+  commons-logging-1.1-r2.ebuild:
+  Add ~x86-fbsd keyword.
+
+  26 Oct 2006; Vlastimil Babka <caster@gentoo.org>
+  commons-logging-1.1-r2.ebuild:
+  Make javadoc actually work with USE=doc
+
+  25 Oct 2006; Joshua Nichols <nichoj@gentoo.org>
+  +files/commons-logging-1.1-gentoo.patch:
+  Forgot to include other patch...
+
+  25 Oct 2006; Joshua Nichols <nichoj@gentoo.org>
+  +files/commons-logging-1.1-servletapi.patch:
+  Forgot to include patch.
+
+*commons-logging-1.1-r2 (25 Oct 2006)
+
+  25 Oct 2006; Joshua Nichols <nichoj@gentoo.org>
+  +commons-logging-1.1-r2.ebuild:
+  Version bump. Now has use flags for all possible logger backends.
+
+  17 Oct 2006; Joshua Nichols <nichoj@gentoo.org>
+  commons-logging-1.0.4-r2.ebuild:
+  Keyworded ~ia64.
+
+  05 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  commons-logging-1.0.4-r1.ebuild, commons-logging-1.0.4-r2.ebuild:
+  Dropping sparc keywords, see #96229
+
+  22 Jul 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  commons-logging-1.0.4-r2.ebuild:
+  ant_src_unpack -> src_unpack
+
+*commons-logging-1.0.4-r2 (20 Jul 2006)
+
+  20 Jul 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  +commons-logging-1.0.4-r2.ebuild:
+  Migrated to Generation 2.
+
+  25 Dec 2005; Petteri Räty <betelgeuse@gentoo.org>
+  commons-logging-1.0.4-r1.ebuild:
+  Does not try to install usersguide.html any more because no such file exists
+  in the upstream release.
+
+  11 Aug 2005; Petteri Räty <betelgeuse@gentoo.org>
+  commons-logging-1.0.4-r1.ebuild:
+  The source use flag was broken. Fixes bug #102085.
+
+  09 Jul 2005; Thomas Matthijs <axxo@gentoo.org>
+  -commons-logging-1.0.4.ebuild, commons-logging-1.0.4-r1.ebuild:
+  fix deps, some cleanups
+
+  08 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  commons-logging-1.0.4-r1.ebuild:
+  Stable on sparc
+
+  05 Jun 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  commons-logging-1.0.4-r1.ebuild:
+  Introduced support for the source useflag. Marked 1.0.4-r1 stable on amd64,
+  ppc and x86. Cosmetic changes.
+
+  18 May 2005; Markus Rothe <corsair@gentoo.org>
+  commons-logging-1.0.4-r1.ebuild:
+  Stable on ppc64
+
+  26 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  commons-logging-1.0.4-r1.ebuild:
+  Keyworded ~sparc wrt #84992
+
+  13 Mar 2005; Markus Rothe <corsair@gentoo.org>
+  commons-logging-1.0.4-r1.ebuild:
+  Added ~ppc64 to KEYWORDS; bug #84992
+
+*commons-logging-1.0.4-r1 (12 Mar 2005)
+
+  12 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  +commons-logging-1.0.4-r1.ebuild:
+  package doesnt make use of binary dependencies any longer. fixes #75856
+
+  26 Jan 2005; Markus Rothe <corsair@gentoo.org> commons-logging-1.0.4.ebuild:
+  Stable on ppc64
+
+  23 Dec 2004; Thomas Matthijs <axxo@gentoo.org>
+  commons-logging-1.0.4.ebuild:
+  apply patch from #75430
+
+  18 Dec 2004; Markus Rothe <corsair@gentoo.org> commons-logging-1.0.4.ebuild:
+  added ~ppc64 to KEYWORDS
+
+  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org>
+  commons-logging-1.0.4.ebuild:
+  use java-pkg_dohtml instead of dohtml to also install the package-list in
+  case of api docs: #50740
+
+  10 Sep 2004; Thomas Matthijs <axxo@gentoo.org> commons-logging-1.0.4.ebuild:
+  changed dependenciess to ant-core
+
+  23 Aug 2004; Chris Aniszczyk <zx@gentoo.org>
+  -commons-logging-1.0.3-r1.ebuild, commons-logging-1.0.4.ebuild:
+  Marking stable on x86 & cleanup
+
+  31 Jul 2004; Thomas Matthijs <axxo@gentoo.org>
+  commons-logging-1.0.3-r1.ebuild, commons-logging-1.0.4.ebuild:
+  move avalon-logkit -> avalon-logkit-bin
+
+  30 Jul 2004; Thomas Matthijs <axxo@gentoo.org>
+  commons-logging-1.0.3-r1.ebuild, commons-logging-1.0.4.ebuild:
+  move dev-java/avalon-logkit dev-java/avalon-logkit-bin
+
+  19 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  commons-logging-1.0.3-r1.ebuild, commons-logging-1.0.4.ebuild:
+  don't use deprecated ? : dep syntax
+
+*commons-logging-1.0.4 (16 Jul 2004)
+
+  16 Jul 2004; Thomas Matthijs <axxo@gentoo.org>
+  +commons-logging-1.0.4.ebuild:
+  Version Bump
+
+  15 Jul 2004; Thomas Matthijs <axxo@gentoo.org>
+  commons-logging-1.0.3-r1.ebuild:
+  the junit tests depends on a 1.4 jdk
+
+  23 Mar 2004; Chris Aniszczyk <zx@gentoo.org>
+  commons-logging-1.0.3-r1.ebuild:
+  Fixed so it will ant will die gracefully.
+
+  20 Mar 2004; Chris Aniszczyk <zx@gentoo.org> commons-logging-1.0.3.ebuild:
+  Clean up and fixes. Not using jakarta-commons.elcass anymore
+
+*commons-logging-1.0.3-r1 (17 Mar 2004)
+
+  19 Jan 2004; Adrian Almenar <strider@gentoo.org>
+  commons-logging-1.0.3.ebuild:
+  Added amd64 keyword. Stable on sparc, ppc. Removed old version.
+
+*commons-logging-1.0.3 (22 Apr 2003)
+
+  26 Apr 2003; Adrian Almenar <strider@gentoo.org> commons-logging-1.0.3.ebuild:
+  Updated SRC_URI so this ebuild uses apache mirrors.
+
+  22 Apr 2003; Dylan Carlson <absinthe@gentoo.org>
+  commons-logging-1.0.3.ebuild:
+  Version bump.
+
+*commons-logging-1.0.2-r2 (22 Mar 2003)
+
+  06 Apr 2003; Dylan Carlson <absinthe@gentoo.org>
+  commons-logging-1.0.2-r2.ebuild:
+  x86 ppc sparc moved to stable.
+
+  22 Mar 2003; Dylan Carlson <absinthe@gentoo.org>
+  commons-logging-1.0.2-r2.ebuild:
+  Changed to add 'doc' USE flag and jakarta-commons eclass.
+
+*commons-logging-1.0.2-r1 (06 Nov 2002)
+
+  08 Dec 2002; Adrian Almenar <strider@gentoo.org> commons-logging-1.0.2-r1.ebuild:
+  Fixed DEPEND from virtual/jdk-1.4 to virtual/jdk-1.3.
+
+  24 Nov 2002; Adrian Almenar <strider@gentoo.org>
+  Releasing it, since it has been tested a lot and works very well.
+
+  06 Nov 2002; Adrian Almenar <strider@gentoo.org> commons-logging-1.0.2-r1.ebuild:
+  Fixed some extra tabs. 
+
+  06 Nov 2002; Adrian Almenar <strider@gentoo.org> commons-logging-1.0.2-r1.ebuild files/digest-commons-logging-1.0.2-r1:
+  Changed DEPEND, this ebuild now depends on log4j and jdk-1.4, cause it
+  abstract all logging api located on both products. Changed DESCRIPTION for a
+  better understanding of what this is.
+
+*commons-logging-1.0.2 (06 Nov 2002)
+
+  06 Nov 2002; Adrian Almenar <strider@gentoo.org> ChangeLog commons-logging-1.0.2.ebuild files/digest-commons-logging-1.0.2 :
+  Initial import.

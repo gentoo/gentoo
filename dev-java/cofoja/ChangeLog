@@ -1,0 +1,10 @@
+# ChangeLog for dev-java/cofoja
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/cofoja/ChangeLog,v 1.1 2013/11/24 14:55:18 ercpe Exp $
+
+*cofoja-1.1_p150 (24 Nov 2013)
+
+  24 Nov 2013; Johann Schmitz <ercpe@gentoo.org> +cofoja-1.1_p150.ebuild,
+  +metadata.xml:
+  Added ebuild for cofoja, a framework for contract based classes. Dependency of
+  picard (#491816)

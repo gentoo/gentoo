@@ -1,0 +1,23 @@
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-process/audit/files/auditd-conf.d-2.1.3,v 1.1 2011/09/11 02:58:55 robbat2 Exp $
+
+# Configuration options for auditd
+# -f for foreground mode
+# There are some other options as well, but you'll have to look in the source
+# code to find them as they aren't ready for use yet.
+EXTRAOPTIONS=''
+
+# Audit rules file to run after starting auditd
+RULEFILE_STARTUP=/etc/audit/audit.rules
+
+# Audit rules file to run before and after stopping auditd
+RULEFILE_STOP_PRE=/etc/audit/audit.rules.stop.pre
+RULEFILE_STOP_POST=/etc/audit/audit.rules.stop.post
+
+# If you want to enforce a certain locale for auditd, 
+# uncomment one of the next lines:
+#AUDITD_LANG=none
+AUDITD_LANG=C
+#AUDITD_LANG=en_US
+#AUDITD_LANG=en_US.UTF-8

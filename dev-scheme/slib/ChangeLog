@@ -1,0 +1,253 @@
+# ChangeLog for dev-scheme/slib
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-scheme/slib/ChangeLog,v 1.52 2013/02/02 12:32:16 pacho Exp $
+
+  02 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup up due #154183
+
+  09 Apr 2012; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Add newline.
+
+  14 Nov 2010; Justin Lecher <jlec@gentoo.org> slib-3.2.2.ebuild:
+  Imported prefix changes
+
+  06 Jan 2010; Brent Baude <ranger@gentoo.org> slib-3.2.2.ebuild:
+  Marking slib-3.2.2 ~ppc64 for bug 288172
+
+*slib-3.2.2 (31 Aug 2009)
+
+  31 Aug 2009; Marijn Schouten <hkBst@gentoo.org> +slib-3.2.2.ebuild:
+  bump
+
+  17 Nov 2008; Panagiotis Christopoulos <pchrist@gentoo.org>
+  slib-3.2.1.ebuild:
+  fix wrong installation of man files, bug 246857, reported by flameeyes,
+  solution insired by Dmitry Dzhus <dima at sphinx.net.ru> patch
+
+  06 Jul 2008; Marijn Schouten <hkBst@gentoo.org> slib-3.1.5-r1.ebuild,
+  slib-3.2.1.ebuild:
+  remove some code I was using to debug
+
+  04 Jul 2008; Marijn Schouten <hkBst@gentoo.org> -files/Makefile.patch:
+  remove patch and get new upstream tarball to fix Manifest
+
+  04 Jul 2008; Marijn Schouten <hkBst@gentoo.org> -slib-3.1.1-r1.ebuild,
+  -slib-3.1.4-r2.ebuild, -slib-3.1.4-r3.ebuild, -slib-3.1.4-r4.ebuild,
+  -slib-3.1.5.ebuild:
+  cleanup old stuff
+
+  04 Jul 2008; Marijn Schouten <hkBst@gentoo.org> slib-3.1.5-r1.ebuild:
+  also work around bug 217735 for stable
+
+*slib-3.2.1 (04 Jul 2008)
+
+  04 Jul 2008; Marijn Schouten <hkBst@gentoo.org> slib-3.1.5-r1.ebuild,
+  +slib-3.2.1.ebuild:
+  bump
+
+  19 Feb 2008; Christoph Mende <angelos@gentoo.org> slib-3.1.5-r1.ebuild:
+  Stable on amd64, bug #210467
+
+  18 Feb 2008; Raúl Porcel <armin76@gentoo.org> slib-3.1.5-r1.ebuild:
+  alpha/ia64/sparc stable wrt #210467
+
+  17 Feb 2008; nixnut <nixnut@gentoo.org> slib-3.1.5-r1.ebuild:
+  Stable on ppc wrt bug 210467
+
+  17 Feb 2008; Christian Faulhammer <opfer@gentoo.org> slib-3.1.5-r1.ebuild:
+  stable x86, bug 210467
+
+  20 Feb 2008; Marijn Schouten <hkBst@gentoo.org> -slib-2.4.2.ebuild,
+  -slib-2.4.3.ebuild, -slib-2.4.6.ebuild, -slib-3.1.1.ebuild:
+  remove old stuff
+
+  17 Feb 2008; Marijn Schouten <hkBst@gentoo.org> slib-3.1.5-r1.ebuild:
+  restrict tests
+
+*slib-3.1.5-r1 (21 Jan 2008)
+
+  21 Jan 2008; Marijn Schouten <hkBst@gentoo.org> +slib-3.1.5-r1.ebuild:
+  make slib work with guile again, run tests if scm is installed (still fail)
+  thanks to Olivier Huber <oli.huber@gmail.com> bug 206695
+
+*slib-3.1.5 (18 Jan 2008)
+
+  18 Jan 2008; Marijn Schouten <hkBst@gentoo.org> +slib-3.1.5.ebuild:
+  bump
+
+*slib-3.1.4-r4 (07 Sep 2007)
+
+  07 Sep 2007; Marijn Schouten <hkBst@gentoo.org> +slib-3.1.4-r4.ebuild:
+  slight change to build process, fixes bug 189649
+
+  07 Jun 2007; Marijn Schouten <hkBst@gentoo.org> slib-3.1.4-r3.ebuild:
+  fix slib gambit support
+
+*slib-3.1.4-r3 (06 Jun 2007)
+
+  06 Jun 2007; Marijn Schouten <hkBst@gentoo.org> +files/Makefile.patch,
+  +slib-3.1.4-r3.ebuild:
+  switch to using slib's own makefile; add slib support for six implementations
+
+  29 May 2007; Marijn Schouten <hkBst@gentoo.org> slib-3.1.4-r2.ebuild:
+  add bash magic to increase extensibility
+
+  29 May 2007; Marijn Schouten <hkBst@gentoo.org> slib-3.1.4-r2.ebuild:
+  prepare for supporting several implementation + misc fixes
+
+  04 Apr 2007; Chris Gianelloni <wolf31o2@gentoo.org> slib-3.1.1-r1.ebuild:
+  Stable on alpha wrt bug #167706.
+
+  02 Apr 2007; Raúl Porcel <armin76@gentoo.org> slib-3.1.1-r1.ebuild:
+  ia64 stable wrt bug 161781
+
+  28 Mar 2007; Christian Faulhammer <opfer@gentoo.org> ChangeLog:
+  stable x86, security bug 167706
+
+  18 Mar 2007; Steve Dibb <beandog@gentoo.org> slib-3.1.1-r1.ebuild:
+  amd64 stable, bug 161781
+
+  18 Mar 2007; Christian Faulhammer <opfer@gentoo.org> slib-3.1.1-r1.ebuild:
+  stable x86, bug 161781
+
+  16 Mar 2007; nixnut <nixnut@gentoo.org> slib-3.1.1-r1.ebuild:
+  Stable on ppc wrt bug 161781
+
+  16 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org> slib-3.1.1-r1.ebuild:
+  Stable on sparc wrt #161781
+
+  04 Mar 2007; Marijn Schouten <hkBst@gentoo.org> slib-3.1.1-r1.ebuild:
+  have guile registration not try when ROOT != /
+
+  04 Feb 2007; nixnut <nixnut@gentoo.org> slib-3.1.1.ebuild:
+  Stable on ppc wrt bug 161781
+
+  02 Feb 2007; Marijn Schouten <hkBst@gentoo.org> -slib-3.1.4-r1.ebuild:
+  remove redundant ebuild
+
+  02 Feb 2007; Seemant Kulleen <seemant@gentoo.org> slib-3.1.1-r1.ebuild:
+  remove the restricted dependency on guile-1.6, this was just because of
+  gnucash, whose problem has been solved
+
+*slib-3.1.4-r2 (28 Jan 2007)
+
+  28 Jan 2007; Marijn Schouten <hkBst@gentoo.org> -slib-3.1.4.ebuild,
+  +slib-3.1.4-r2.ebuild:
+  prepare 3.1.4-r2 for scm
+
+*slib-3.1.1-r1 (24 Jan 2007)
+
+  24 Jan 2007; Marijn Schouten <hkBst@gentoo.org> +slib-3.1.1-r1.ebuild:
+  backport 3.1.4-r1 to 3.1.1-r1
+
+*slib-3.1.4-r1 (24 Jan 2007)
+
+  24 Jan 2007; Marijn Schouten <hkBst@gentoo.org> +slib-3.1.4-r1.ebuild:
+  revision bump 3.1.4 for moving its install destination around. Make install
+  work with ROOT
+
+  22 Jan 2007; Marijn Schouten <hkBst@gentoo.org> slib-3.1.4.ebuild:
+  put slib in /usr/share/ instead of /usr/lib/
+
+  19 Jan 2007; Marijn Schouten <hkBst@gentoo.org> slib-3.1.1.ebuild:
+  depend slib-3.1.1 on guile-1.6.7
+
+  17 Jan 2007; Marijn Schouten <hkBst@gentoo.org> slib-3.1.4.ebuild:
+  some small fixes for 3.1.4
+
+  16 Jan 2007; Christian Faulhammer <opfer@gentoo.org> slib-3.1.4.ebuild:
+  keyworded ~x86, bug #162243
+
+  16 Jan 2007; Christian Faulhammer <opfer@gentoo.org> slib-3.1.1.ebuild:
+  stable x86, bugs #161781 and #162243
+
+  16 Jan 2007; Marijn Schouten <hkBst@gentoo.org> slib-2.4.6.ebuild:
+  depend slib-2.4.6 only on guile-1.6.7
+
+  15 Jan 2007; Marijn Schouten <hkBst@gentoo.org> slib-3.1.4.ebuild:
+  fixed depend to guile-1.6.8
+
+  15 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org> slib-3.1.1.ebuild:
+  Stable on sparc wrt #161781
+
+  15 Jan 2007; Steve Dibb <beandog@gentoo.org> slib-3.1.1.ebuild:
+  amd64 stable, bug 161781
+
+  12 Jan 2007; Marijn Schouten hkBst@gentoo.org slib-3.1.4.ebuild:
+  add guile to rdepend
+
+*slib-3.1.4 (12 Jan 2007)
+
+  12 Jan 2007; Marijn Schouten hkBst@gentoo.org +slib-3.1.4.ebuild:
+  Added 3.1.4 ebuild
+
+  10 Jan 2007; Piotr Jaroszyński <peper@gentoo.org> slib-2.4.2.ebuild,
+  slib-2.4.3.ebuild, slib-2.4.6.ebuild, slib-3.1.1.ebuild:
+  Dependency update: dev-util/guile -> dev-scheme/guile.
+
+  10 Jan 2007; <marijn@gentoo.org> +metadata.xml, +slib-2.4.2.ebuild,
+  +slib-2.4.3.ebuild, +slib-2.4.6.ebuild, +slib-3.1.1.ebuild:
+  Moved from dev-libs/slib to dev-scheme/slib.
+
+  18 Dec 2006; Charlie Shepherd <masterdriverz@gentoo.org>
+  slib-2.4.2.ebuild, slib-2.4.3.ebuild, slib-2.4.6.ebuild,
+  slib-3.1.1.ebuild:
+  Fix SRC_URI; bug 150849
+
+  02 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org> slib-2.4.6.ebuild:
+  Stable on sparc wrt #88251
+
+  28 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org> slib-2.4.6.ebuild:
+  Stable on x86 wrt bug #88251.
+
+  28 Jul 2006; Tobias Scherbaum <dertobi123@gentoo.org> slib-2.4.2.ebuild,
+  slib-2.4.3.ebuild, slib-2.4.6.ebuild, slib-3.1.1.ebuild:
+  2.4.6 ppc stable, restrict tests
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> slib-2.4.6.ebuild:
+  Mark 2.4.6 stable on ia64
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> slib-2.4.6.ebuild,
+  slib-3.1.1.ebuild:
+  add ~ia64
+
+*slib-3.1.1 (21 Feb 2004)
+
+  21 Feb 2004; Jason Wever <weeve@gentoo.org> slib-3.1.1.ebuild:
+  Marked slib-3.1.1 masked on x86.  see bug #41983 for more info.
+
+  16 Feb 2004; Jason Wever <weeve@gentoo.org> :
+  Version bump, resolves bug #40727.
+
+  09 Feb 2004; Dylan Carlson <absinthe@gentoo.org> slib-2.4.6.ebuild:
+  added amd64 keyword.
+
+  09 Jan 2004; Aron Griffis <agriffis@gentoo.org> slib-2.4.3.ebuild,
+  slib-2.4.6.ebuild:
+  stable on alpha
+
+*slib-2.4.6 (07 Sep 2003)
+
+  07 Sep 2003; Jason Wever <weeve@gentoo.org> slib-2.4.6.ebuild:
+  Version bump.  Fixes bug #26482.
+
+  24 Jul 2003; Tavis Ormandy <taviso@gentoo.org> slib-2.4.3.ebuild:
+  marking ~alpha
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*slib-2.4.3 (16 Mar 2002)
+
+  25 Mar 2003; Jason Wever <weeve@gentoo.org> slib-2.4.3.ebuild:
+  Updated ebuild and digest to reflect new version as the old one is no longer
+  available for download.
+
+*slib-2.4.2 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

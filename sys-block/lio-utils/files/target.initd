@@ -1,0 +1,137 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-block/lio-utils/files/target.initd,v 1.1 2012/04/16 21:09:32 alexxy Exp $
+
+description="Linux-iSCSI.org target"
+
+depend() {
+	after modules
+	use net
+}
+
+MODNAME="target_core_mod"
+
+TCM_CFS_DIR="/sys/kernel/config/target/core"
+LIO_CFS_DIR="/sys/kernel/config/target/iscsi"
+TCM_NODE="/usr/sbin/tcm_node"
+LIO_NODE="/usr/sbin/lio_node"
+TCM_FABRIC="/usr/sbin/tcm_fabric"
+CONFIGFS_SCRIPT_DIR="/etc/target"
+TCM_CONFIGFS_SCRIPT="/etc/target/tcm_start.sh"
+LIO_CONFIGFS_SCRIPT="/etc/target/lio_start.sh"
+TCM_CORE_MODULE="target_core_mod"
+TCM_CORE_IO_MODULES="target_core_iblock target_core_file target_core_pscsi"
+FABRICS_MODULES="tcm_fc tcm_loop ib_srpt"
+LIO_MODULE="iscsi_target_mod"
+
+checkconfig() {
+	if ! modinfo ${TCM_CORE_MODULE} > /dev/null 2>&1 ; then
+		eerror "Target Core modules not found!"
+		return 1
+	elif ! modinfo ${LIO_MODULE} > /dev/null 2>&1 ; then
+		eerror "Linux iSCSI modules not found!"
+		return 1
+	elif [ ! -f ${TCM_CONFIGFS_SCRIPT} ]; then
+		eerror "${TCM_CONFIGFS_SCRIPT} does not exist. run targetcli to configure your target!"
+		return 1
+	elif [ ! -f ${LIO_CONFIGFS_SCRIPT} ]; then
+		eerror "${LIO_CONFIGFS_SCRIPT} does not exist. run targetcli to configure your target!"
+		return 1
+	fi
+}
+
+fabrics_start() {
+	ebegin "Starting Targets: "
+	for module in ${FABRICS_MODULES}; do
+		if modinfo $module > /dev/null 2>&1 ; then
+			ebegin "Loading ${module}"
+			modprobe ${module}
+			eend $?
+		fi
+	done
+	for cfgscript in ${CONFIGFS_SCRIPT_DIR}/*.sh; do
+		if [ ! -f ${cfgscript} ]; then
+			continue
+		fi
+		# target core is handled in tcm_start
+		if [ ${cfgscript} == ${TCM_CONFIGFS_SCRIPT} ]; then
+			continue
+		fi
+		# iscsi-target fabric module is handled in lio_target_start
+		if [ ${cfgscript} == ${LIO_CONFIGFS_SCRIPT} ]; then
+			continue
+		fi
+		ebegin "Calling ConfigFS script $cfgscript: "
+		sh ${cfgscript} > /dev/null 2>&1
+		eend $?
+	done
+	eend $?
+}
+
+lio_target_start() {
+	ebegin "Loading iSCSI target modules: ${LIO_MODULE}"
+	modprobe ${LIO_MODULE}
+	eend $?
+	ebegin "Configuring iSCSI target iscsi_target_mod"
+	sh ${LIO_CONFIGFS_SCRIPT} > /dev/null 2>&1
+	eend $?
+}
+
+tcm_start() {
+	ebegin "Loading Target Core modules : ${TCM_CORE_MODULE}"
+	modprobe ${TCM_CORE_MODULE}
+	eend $?
+	ebegin "Loading Target Core backend modules: "
+	for module in ${TCM_CORE_IO_MODULES} ; do
+		ebegin "${module}"
+		modprobe ${module}
+		eend $?
+	done
+	eend $?
+	ebegin "Calling ConfigFS script $TCM_CONFIGFS_SCRIPT for target_core_mod"
+	sh ${TCM_CONFIGFS_SCRIPT} > /dev/null 2>&1
+	eend $?
+}
+
+lio_target_stop() {
+	ebegin "Unload Linux-iSCSI.org Fabric module"
+	${LIO_NODE} --unload
+	eend $?
+}
+
+fabrics_stop() {
+	ebegin "Unloading misc fabric modules: "
+	${TCM_FABRIC} --unloadall
+	eend $?
+}
+
+tcm_stop() {
+	ebegin "Unloading Target Core modules: "
+	$TCM_NODE --unload
+	eend $?
+}
+
+start() {
+	checkconfig
+	tcm_start
+	lio_target_start
+	fabrics_start
+}
+
+stop() {
+	lio_target_stop
+	fabrics_stop
+	tcm_stop
+}
+
+status() {
+	if [[ -d ${TCM_CFS_DIR} && -d ${LIO_CFS_DIR} ]]; then
+		einfo "Target core mode status"
+		${TCM_NODE} --listhbas
+		einfo "Linux iSCSI status"
+		${LIO_NODE} --listendpoints
+	else
+		einfo "Target not started (yet)"
+	fi
+}

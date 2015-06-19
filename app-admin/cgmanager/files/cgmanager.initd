@@ -1,0 +1,28 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/cgmanager/files/cgmanager.initd,v 1.2 2015/02/16 11:02:06 hwoarang Exp $
+
+DAEMON=/usr/sbin/cgmanager
+PIDFILE=/run/cgmanager.pid
+NESTED=yes
+OPTIONS=
+
+depend() {
+	after cgproxy
+}
+
+start() {
+	ebegin "Starting cgmanager server"
+
+	start-stop-daemon --start --pidfile ${PIDFILE} --exec ${DAEMON} \
+		-- --daemon -m name=systemd ${OPTIONS}
+
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping cgproxy server"
+	start-stop-daemon --stop --quiet -R TERM/45 -p ${PIDFILE}
+	eend $?
+}

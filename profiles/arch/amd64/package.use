@@ -1,0 +1,17 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/amd64/package.use,v 1.5 2015/05/03 05:15:22 yngwin Exp $
+
+# Ben de Groot <yngwin@gentoo.org> (03 May 2015)
+# Enable luajit (for OSC) by default
+media-video/mpv lua luajit
+
+# Michał Górny <mgorny@gentoo.org> (28 Jun 2014)
+# Packages that should be multilib by default.
+media-gfx/nvidia-cg-toolkit abi_x86_32
+x11-drivers/ati-drivers abi_x86_32
+x11-drivers/nvidia-drivers abi_x86_32
+
+# Doug Goldstein <cardoe@gentoo.org> (29 Oct 2012)
+# Enable the native arch as the default qemu target
+app-emulation/qemu qemu_softmmu_targets_x86_64

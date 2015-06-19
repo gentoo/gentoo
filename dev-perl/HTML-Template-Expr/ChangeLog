@@ -1,0 +1,123 @@
+# ChangeLog for dev-perl/HTML-Template-Expr
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-Template-Expr/ChangeLog,v 1.28 2014/08/23 22:24:07 axs Exp $
+
+*HTML-Template-Expr-0.70.0-r1 (23 Aug 2014)
+
+  23 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +HTML-Template-Expr-0.70.0-r1.ebuild, -HTML-Template-Expr-0.70.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  27 Aug 2012; Raúl Porcel <armin76@gentoo.org>
+  HTML-Template-Expr-0.70.0.ebuild:
+  Drop ia64/sparc keywords
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  -HTML-Template-Expr-0.07.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org>
+  HTML-Template-Expr-0.70.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*HTML-Template-Expr-0.70.0 (30 Aug 2011)
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +HTML-Template-Expr-0.70.0.ebuild:
+  Change version scheme
+
+  01 May 2009; Torsten Veller <tove@gentoo.org>
+  -HTML-Template-Expr-0.05.ebuild:
+  Cleanup
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org>
+  HTML-Template-Expr-0.07.ebuild:
+  Stable on x86, bug #169152.
+
+  10 Dec 2006; Yuval Yaari <yuval@gentoo.org>
+  HTML-Template-Expr-0.05.ebuild, HTML-Template-Expr-0.07.ebuild:
+  Changed perl-core/Text-Balanced to virtual/perl-Text-Balanced (bug #157686)
+
+  09 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  -HTML-Template-Expr-0.04.ebuild, HTML-Template-Expr-0.05.ebuild,
+  HTML-Template-Expr-0.07.ebuild:
+  Marking amd64, sparc stable; cleaning up old ebuilds
+
+  07 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  HTML-Template-Expr-0.07.ebuild:
+  marking amd64 stable
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  HTML-Template-Expr-0.04.ebuild, HTML-Template-Expr-0.05.ebuild,
+  HTML-Template-Expr-0.07.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org>
+  HTML-Template-Expr-0.07.ebuild:
+  Mark 0.07 stable on ia64
+
+  04 Jul 2006; Christian Hartmann <ian@gentoo.org>
+  HTML-Template-Expr-0.04.ebuild, HTML-Template-Expr-0.05.ebuild,
+  HTML-Template-Expr-0.07.ebuild:
+  Fixed RDEPEND wrt bug #134781
+
+  12 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  HTML-Template-Expr-0.07.ebuild:
+  Marking sparc stable
+
+*HTML-Template-Expr-0.07 (26 Apr 2006)
+
+  26 Apr 2006; <mcumming@gentoo.org> +HTML-Template-Expr-0.07.ebuild:
+  Version bump
+
+  30 Mar 2006; Aron Griffis <agriffis@gentoo.org>
+  HTML-Template-Expr-0.05.ebuild:
+  Mark 0.05 ~ia64
+
+  26 Mar 2006; Michael Cummings <mcummings@gentoo.org>
+  HTML-Template-Expr-0.05.ebuild:
+  Marking stable sparc and x86
+
+  13 Feb 2006; Michael Cummings <mcummings@gentoo.org>
+  HTML-Template-Expr-0.04.ebuild, HTML-Template-Expr-0.05.ebuild:
+  Virtuals for perl-core
+
+*HTML-Template-Expr-0.05 (13 Jan 2006)
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  +HTML-Template-Expr-0.05.ebuild:
+  Version bump upstream
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  HTML-Template-Expr-0.04.ebuild:
+  dev-perl/Text-Balanced => perl-core/Text-Balanced migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  HTML-Template-Expr-0.04.ebuild:
+  dev-perl/Test-Simple => perl-core/Test-Simple migration
+
+  26 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  HTML-Template-Expr-0.04.ebuild:
+  Stable on sparc
+
+  25 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  HTML-Template-Expr-0.04.ebuild:
+  Cleaning
+
+  09 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  HTML-Template-Expr-0.04.ebuild:
+  ~sparc added
+
+  30 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  HTML-Template-Expr-0.04.ebuild:
+  added ~amd64 to KEYWORDS. fixes #79729
+
+*HTML-Template-Expr-0.04 (27 Mar 2004)
+
+  27 Mar 2004; Michael Cummings <mcummings@gentoo.org>
+  HTML-Template-Expr-0.04.ebuild, metadata.xml:
+  dep for bricolage, bug 21549

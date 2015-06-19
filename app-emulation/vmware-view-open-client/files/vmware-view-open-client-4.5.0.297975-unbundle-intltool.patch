@@ -1,0 +1,35 @@
+Use system's intltool.
+
+Fixes build failure: https://bugs.gentoo.org/show_bug.cgi?id=425604
+(automake fails to regenerate missing files)
+
+Patches by Kvicadlo.
+diff --git a/configure.ac b/configure.ac
+index d127fad..b9005c5 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -549,9 +549,6 @@ doc/changelog.Debian
+ doc/vmware-view.1
+ doc/vmware-view-tunnel.1
+ fix-toolchain-paths.sh
+-intltool-update
+-intltool-merge
+-intltool-extract
+ po/Makefile.in
+ vmware-view.desktop.in
+ ])
+diff --git a/Makefile.inc b/Makefile.inc
+index 41dfe8f..c440f01 100644
+--- a/Makefile.inc
++++ b/Makefile.inc
+@@ -243,10 +243,6 @@ testUrl_LDADD += $(GLIB_LIBS)
+ testUrl_LDADD += $(ICU_LIBS)
+ testUrl_LDADD += $(TUNNEL_FRAMEWORKS)
+
+-dist_noinst_DATA += intltool-extract.in
+-dist_noinst_DATA += intltool-merge.in
+-dist_noinst_DATA += intltool-update.in
+-
+ desktop_in_files += vmware-view.desktop.in
+
+ dist_noinst_DATA += INSTALL

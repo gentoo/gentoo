@@ -1,0 +1,41 @@
+# ChangeLog for sci-geosciences/gebabbel
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/gebabbel/ChangeLog,v 1.9 2014/01/06 15:34:02 jlec Exp $
+
+  06 Jan 2014; Justin Lecher <jlec@gentoo.org> gebabbel-0.4.ebuild,
+  metadata.xml:
+  Punt base.eclass
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> gebabbel-0.4.ebuild:
+  Move Qt dependencies to the new category
+
+  01 Aug 2012; Justin Lecher <jlec@gentoo.org> gebabbel-0.4.ebuild,
+  metadata.xml:
+  Respect CFLAGS, #429356; use eclass functions, install CREDITS
+
+*gebabbel-0.4 (16 Jun 2011)
+
+  16 Jun 2011; Tomáš Chvátal <scarabeus@gentoo.org> -gebabbel-0.3.ebuild,
+  -files/gebabbel-0.3-fix.diff, +gebabbel-0.4.ebuild:
+  Version bump gebabel to its latest release. Punt older.
+
+  06 May 2010; Samuli Suominen <ssuominen@gentoo.org> gebabbel-0.3.ebuild,
+  +files/gebabbel-0.3-gcc45.patch:
+  Fix building with GCC 4.5+ wrt #318579 by Kacper Kowalik.
+
+  30 Sep 2009; Dominik Kapusta <ayoy@gentoo.org> gebabbel-0.3.ebuild:
+  Removed obsolete QT_BUILT_WITH_USE and the dependency on Qt metapackage,
+  switched to EAPI=2 and fixed to make repoman happy
+
+  27 Jul 2008; Carsten Lohrke <carlo@gentoo.org> gebabbel-0.3.ebuild:
+  Fix broken split Qt 4.4 dependencies, cf. bug 217161 comment 11.
+
+  08 Jul 2008; Thomas Anderson <gentoofan23@gentoo.org> gebabbel-0.3.ebuild:
+  Migrate to split qt4 dependencies. Keyworded ~amd64, fix quoting and remove
+  spurious die statement
+
+*gebabbel-0.3 (06 Sep 2007)
+
+  06 Sep 2007; Hanno Boeck <hanno@gentoo.org> +files/gebabbel-0.3-fix.diff,
+  +metadata.xml, +gebabbel-0.3.ebuild:
+  Initial commit of gebabbel, frontend for gpsbabel.

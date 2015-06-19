@@ -1,0 +1,11 @@
+--- src/Dialogs.vala
++++ src/Dialogs.vala
+@@ -31,7 +31,7 @@
+ 
+ public bool confirm_warn_developer_changed(int number) {
+     Gtk.MessageDialog dialog = new Gtk.MessageDialog.with_markup(AppWindow.get_instance(),
+-        Gtk.DialogFlags.MODAL, Gtk.MessageType.WARNING, Gtk.ButtonsType.NONE,
++        Gtk.DialogFlags.MODAL, Gtk.MessageType.WARNING, Gtk.ButtonsType.NONE, "%s",
+         "<span weight=\"bold\" size=\"larger\">%s</span>".printf(ngettext("Switching developers will undo all changes you have made to this photo in Shotwell",
+         "Switching developers will undo all changes you have made to these photos in Shotwell", number)));
+ 

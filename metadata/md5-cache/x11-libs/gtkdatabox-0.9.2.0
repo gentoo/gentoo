@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=glade? ( gnome-base/libglade ) x11-libs/cairo x11-libs/gtk+:2 x11-libs/pango
+DESCRIPTION=Gtk+ Widgets for live display of large amounts of fluctuating numerical data
+EAPI=4
+HOMEPAGE=http://sourceforge.net/projects/gtkdatabox/
+IUSE=doc examples +glade static-libs test
+KEYWORDS=amd64 x86
+LICENSE=LGPL-2.1
+RDEPEND=glade? ( gnome-base/libglade ) x11-libs/cairo x11-libs/gtk+:2 x11-libs/pango
+SLOT=0
+SRC_URI=mirror://sourceforge/gtkdatabox/gtkdatabox-0.9.2.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=b52d5f9e546c91428c5afa1b322e055b

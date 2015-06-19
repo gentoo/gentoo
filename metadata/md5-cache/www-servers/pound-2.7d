@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst
+DEPEND=dev-libs/libpcre dev-libs/openssl
+DESCRIPTION=A http/https reverse-proxy and load-balancer
+EAPI=5
+HOMEPAGE=http://www.apsis.ch/pound/
+KEYWORDS=~alpha ~amd64 ~hppa ~mips ~ppc ~sparc ~x86
+LICENSE=GPL-3
+RDEPEND=dev-libs/libpcre dev-libs/openssl
+SLOT=0
+SRC_URI=http://www.apsis.ch/pound/Pound-2.7d.tgz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=d19bf0a9060dde69e5299f26e3038d52

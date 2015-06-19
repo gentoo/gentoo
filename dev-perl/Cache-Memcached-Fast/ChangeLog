@@ -1,0 +1,79 @@
+# ChangeLog for dev-perl/Cache-Memcached-Fast
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Cache-Memcached-Fast/ChangeLog,v 1.15 2014/12/03 00:31:37 dilfridge Exp $
+
+*Cache-Memcached-Fast-0.230.0 (03 Dec 2014)
+
+  03 Dec 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Cache-Memcached-Fast-0.230.0.ebuild:
+  Version bump
+
+  10 Oct 2014; Mikle Kolyada <zlogene@gentoo.org>
+  -Cache-Memcached-Fast-0.190.0.ebuild:
+  Drop old.
+
+*Cache-Memcached-Fast-0.210.0-r1 (21 Aug 2014)
+
+  21 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Cache-Memcached-Fast-0.210.0-r1.ebuild, -Cache-Memcached-Fast-0.210.0.ebuild:
+  bump EAPI to 5 to help support dev-lang/perl upgrades
+
+*Cache-Memcached-Fast-0.210.0 (16 Aug 2013)
+
+  16 Aug 2013; Patrick Lauer <patrick@gentoo.org>
+  +Cache-Memcached-Fast-0.210.0.ebuild:
+  Bump
+
+  08 Jan 2013; Torsten Veller <tove@gentoo.org>
+  -Cache-Memcached-Fast-0.170.0.ebuild:
+  Cleanup
+
+*Cache-Memcached-Fast-0.190.0 (28 Jun 2012)
+
+  28 Jun 2012; Torsten Veller <tove@gentoo.org>
+  +Cache-Memcached-Fast-0.190.0.ebuild:
+  Version bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  -Cache-Memcached-Fast-0.16.ebuild, -Cache-Memcached-Fast-0.17.ebuild:
+  Cleanup
+
+*Cache-Memcached-Fast-0.170.0 (01 Sep 2011)
+
+  01 Sep 2011; Torsten Veller <tove@gentoo.org>
+  +Cache-Memcached-Fast-0.170.0.ebuild:
+  Change version scheme
+
+  07 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  Cache-Memcached-Fast-0.17.ebuild:
+  Use -j1 for build (bug #299972).
+
+  11 Nov 2009; Christian Ruppert <idl0r@gentoo.org>
+  -files/Cache-Memcached-Fast-0.14-tests-fix.patch:
+  Remove obsolete patch.
+
+*Cache-Memcached-Fast-0.17 (10 Nov 2009)
+
+  10 Nov 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +Cache-Memcached-Fast-0.17.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  07 Sep 2009; Torsten Veller <tove@gentoo.org>
+  -Cache-Memcached-Fast-0.14.ebuild:
+  Cleanup
+
+*Cache-Memcached-Fast-0.16 (21 Jun 2009)
+
+  21 Jun 2009; Torsten Veller <tove@gentoo.org>
+  +Cache-Memcached-Fast-0.16.ebuild:
+  Version bump
+
+*Cache-Memcached-Fast-0.14 (15 Jun 2009)
+
+  15 Jun 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +Cache-Memcached-Fast-0.14.ebuild,
+  +files/Cache-Memcached-Fast-0.14-tests-fix.patch, +metadata.xml:
+  Initial commit. Ebuild by Robin H. Johnson <robbat2@gentoo.org>.

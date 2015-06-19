@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>qt</herd>
+  <herd>desktop-misc</herd>
+  <maintainer>
+    <email>ssuominen@gentoo.org</email>
+    <name>Samuli Suominen</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="sourceforge">qtnotifydaemon</remote-id>
+  </upstream>
+</pkgmetadata>

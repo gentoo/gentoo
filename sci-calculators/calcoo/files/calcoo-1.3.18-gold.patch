@@ -1,0 +1,16 @@
+ src/Makefile.am |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index b14dc1e..d713b51 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -36,7 +36,7 @@ output.c \
+ texts.h
+ 
+ INCLUDES = @GTK_CFLAGS@
+-LDADD = @GTK_LIBS@
++LDADD = @GTK_LIBS@ -lm
+ CLEANFILES  = *~
+ DISTCLEANFILES  = .deps/*.P
+ 

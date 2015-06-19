@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>java</herd>
+
+<longdescription lang="en">
+	Spice JNDIKit: JNDI Kit is a toolkit designed to help with the
+	construction of JNDI providers. The toolkit also provides users
+	with ready made memory-based and RMI-based contexts.
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,242 @@
+# ChangeLog for app-text/htmltidy
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/htmltidy/ChangeLog,v 1.63 2013/07/21 10:05:38 pacho Exp $
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/sgml-herd-has-no-maintainers-
+  again-td259655.html
+
+  29 May 2012; Alexis Ballier <aballier@gentoo.org>
+  htmltidy-20090325-r1.ebuild:
+  keyword ~amd64-fbsd
+
+  07 Mar 2012; Jeremy Olexa <darkside@gentoo.org> htmltidy-20090325-r1.ebuild:
+  add ~x64-macos, bug 395011
+
+  16 Sep 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -htmltidy-20090325.ebuild, htmltidy-20090325-r1.ebuild:
+  Update the ebuild to eapi4, add static-libs useflag, punt libtool archive.
+
+  01 Dec 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -files/03-html2db-null.patch, -files/04-htmltidy-docbook.patch,
+  -files/05-htmltidy-docbook.patch:
+  Forgot to remove useless patches now.
+
+  01 Dec 2010; Diego E. Pettenò <flameeyes@gentoo.org> -htmltidy-4.8.6.ebuild,
+  -htmltidy-5.10.26-r2.ebuild:
+  Remove versions with vad autotools handling.
+
+  17 Nov 2010; Sebastian Pipping <sping@gentoo.org>
+  -files/03-htmltidy-docbook.patch:
+  Remove unused patch (bug #344411)
+
+*htmltidy-20090325-r1 (30 Mar 2010)
+
+  30 Mar 2010; Alex Alexander <wired@gentoo.org>
+  +htmltidy-20090325-r1.ebuild:
+  fixed bug #293743, added a few missing "die"s
+
+  02 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  htmltidy-20090325.ebuild:
+  Transfer Prefix keywords
+
+  31 Oct 2009; Brent Baude <ranger@gentoo.org> htmltidy-20090325.ebuild:
+  Marking htmltidy-20090325 ppc64 for bug 286918
+
+  26 Oct 2009; Raúl Porcel <armin76@gentoo.org> htmltidy-20090325.ebuild:
+  ia64/s390/sh/sparc stable wrt #286918
+
+  24 Oct 2009; nixnut <nixnut@gentoo.org> htmltidy-20090325.ebuild:
+  ppc stable #286918
+
+  21 Oct 2009; Markus Meier <maekke@gentoo.org> htmltidy-20090325.ebuild:
+  x86 stable, bug #286918
+
+  21 Oct 2009; Jeroen Roovers <jer@gentoo.org> htmltidy-20090325.ebuild:
+  Stable for HPPA (bug #286918).
+
+  21 Oct 2009; Markus Meier <maekke@gentoo.org> htmltidy-20090325.ebuild:
+  arm stable, bug #286918
+
+  04 Oct 2009; Tobias Klausmann <klausman@gentoo.org>
+  htmltidy-20090325.ebuild:
+  Stable on alpha, bug #286918
+
+  01 Oct 2009; Steve Dibb <beandog@gentoo.org> htmltidy-20090325.ebuild:
+  amd64 stable, bug 286918
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> htmltidy-4.8.6.ebuild:
+  Remove virtual/libc
+
+*htmltidy-20090325 (22 Jul 2009)
+
+  22 Jul 2009; Robert Buchholz <rbu@gentoo.org>
+  +files/htmltidy-20090325-tidyrc.patch, htmltidy-4.8.6.ebuild,
+  htmltidy-5.10.26-r2.ebuild, +htmltidy-20090325.ebuild:
+  Version bump to latest CVS sources. Remove xml use flag and html2db as it was
+  never integrated upstream and does not compile due to usage of internal tidy
+  API. Enable /etc/tidyrc and ~/.tidyrc config paths and build autotools
+  properly, closes bugs 154834, 219450, 226437 and 278604.
+
+  30 May 2007; Raúl Porcel <armin76@gentoo.org> htmltidy-5.10.26-r2.ebuild:
+  alpha stable wrt #155327
+
+  12 Apr 2007; Fabian Groffen <grobian@gentoo.org> htmltidy-4.8.6.ebuild,
+  htmltidy-5.10.26-r2.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  12 Mar 2007; Leonardo Boshell <leonardop@gentoo.org> metadata.xml,
+  -htmltidy-3.10.29.ebuild, -htmltidy-5.10.26-r1.ebuild:
+  Replacing text-markup herd with the new sgml herd. Pruning old ebuilds.
+
+  10 Mar 2007; Alexander H. Færøy <eroyf@gentoo.org>
+  htmltidy-5.10.26-r2.ebuild:
+  Stable on MIPS.
+
+  04 Feb 2007; Steve Dibb <beandog@gentoo.org> htmltidy-5.10.26-r2.ebuild:
+  amd64 stable, bug 155327
+
+  31 Jan 2007; Markus Rothe <corsair@gentoo.org> htmltidy-5.10.26-r2.ebuild:
+  Stable on ppc64; bug #155327
+
+  29 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  htmltidy-5.10.26-r2.ebuild:
+  Stable on sparc wrt #155327
+
+  27 Jan 2007; Jeroen Roovers <jer@gentoo.org> htmltidy-5.10.26-r2.ebuild:
+  Stable for HPPA (bug #155327).
+
+  27 Jan 2007; Joseph Jezak <josejx@gentoo.org> htmltidy-5.10.26-r2.ebuild:
+  Marked ppc stable for bug #155327.
+
+  27 Jan 2007; Raúl Porcel <armin76@gentoo.org> htmltidy-5.10.26-r2.ebuild:
+  x86 stable wrt bug 155327
+
+*htmltidy-5.10.26-r2 (23 Sep 2006)
+
+  23 Sep 2006; Alexandre Buisse <nattfodd@gentoo.org> htmltidy-4.8.6.ebuild,
+  +htmltidy-5.10.26-r2.ebuild:
+  Corrected autotools usage (bug #148759).
+
+  30 Jul 2006; <psi29a@gentoo.org> htmltidy-4.8.6.ebuild:
+  stable on mips
+
+*htmltidy-5.10.26-r1 (08 May 2006)
+
+  08 May 2006; Martin Ehmsen <ehmsen@gentoo.org> -htmltidy-5.10.26.ebuild,
+  +htmltidy-5.10.26-r1.ebuild:
+  Added man page and quickref doc, bug #132429.
+
+  22 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  htmltidy-5.10.26.ebuild:
+  Add ~x86-fbsd keyword.
+
+*htmltidy-5.10.26 (13 Feb 2006)
+
+  13 Feb 2006; Martin Ehmsen <ehmsen@gentoo.org>
+  +files/htmltidy-5.10.26-strip-O2-flag.patch,
+  +files/05-htmltidy-docbook.patch, +htmltidy-5.10.26.ebuild:
+  Version bump thanks to Jesse Adelman <jesse@boldandbusted.com>, bug #106142.
+
+  07 Nov 2004; Markus Rothe <corsair@gentoo.org> htmltidy-4.8.6.ebuild:
+  Stable on ppc64; bug #60442
+
+  03 Nov 2004; Bret Curtis <psi29a@gentoo.org> htmltidy-4.8.6.ebuild:
+  added to ~mips for testing
+
+  11 Oct 2004; Tom Martin <slarti@gentoo.org> htmltidy-4.8.6.ebuild:
+  Stable on amd64.
+
+  11 Oct 2004; Guy Martin <gmsoft@gentoo.org> htmltidy-4.8.6.ebuild:
+  Marked stable on hppa.
+
+  04 Oct 2004; Gustavo Zacarias <gustavoz@gentoo.org> htmltidy-4.8.6.ebuild:
+  Stable on sparc
+
+  03 Oct 2004; Mamoru KOMACHI <usata@gentoo.org>
+  -files/htmltidy-dbpatch.diff, -htmltidy-0.8.4.ebuild,
+  -htmltidy-2.7.18-r1.ebuild, -htmltidy-2.7.18-r2.ebuild,
+  htmltidy-4.8.6.ebuild:
+  Removed old ebuilds. Marked 4.8.6 stable on x86, alpha, ppc and ppc-macos.
+
+  28 Sep 2004; Tom Gall <tgall@gentoo.org> htmltidy-4.8.6.ebuild:
+  added ~ppc64, bug #64229
+
+  13 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> htmltidy-2.7.18-r2.ebuild,
+  htmltidy-3.10.29.ebuild, htmltidy-4.8.6.ebuild:
+  Changed to use dated tarball. This closes bug #63805.
+
+*htmltidy-4.8.6 (18 Aug 2004)
+
+  18 Aug 2004; Mamoru KOMACHI <usata@gentoo.org>
+  +files/04-htmltidy-docbook.patch, +htmltidy-4.8.6.ebuild:
+  Version bumped. This closes bug #57509.
+
+  24 Jul 2004; Mamoru KOMACHI <usata@gentoo.org> htmltidy-3.10.29.ebuild:
+  Added to macos. This closes bug #58076
+
+  28 Feb 2004; Mamoru KOMACHI <usata@gentoo.org> htmltidy-3.10.29.ebuild:
+  Added WANT_AUTO{MAKE,CONF} to fix configure error, closing bug #42796
+
+  21 Feb 2004; Mamoru KOMACHI <usata@gentoo.org> htmltidy-3.10.29.ebuild:
+  Added WANT_AUTOMAKE=1.5 and WANT_AUTOCONF=2.5 to make sure it updates
+  Makefile correctly, closing bug #42020
+
+  20 Jan 2004; Jon Portnoy <avenj@gentoo.org> htmltidy-3.10.29.ebuild :
+  AMD64 keywords.
+
+  09 Jan 2004; Aron Griffis <agriffis@gentoo.org> htmltidy-3.10.29.ebuild:
+  stable on alpha
+
+  07 Jan 2004; Ciaran McCreesh <ciaranm@gentoo.org> htmltidy-3.10.29.ebuild:
+  Stable on sparc
+
+*htmltidy-2.7.18-r2 (20 Dec 2003)
+
+  20 Dec 2003; Mike Gardiner <obz@gentoo.org> htmltidy-2.7.18-r2.ebuild:
+  New revision with docs, see bug #34775
+
+  16 Dec 2003; Mike Gardiner <obz@gentoo.org> htmltidy-3.10.29.ebuild:
+  Marked 3.10.29 stable for x86
+
+*htmltidy-3.10.29 (08 Nov 2003)
+
+  08 Nov 2003; Mike Gardiner <obz@gentoo.org> htmltidy-2.7.18.ebuild,
+  htmltidy-3.10.29.ebuild, files/03-html2db-null.patch,
+  files/03-htmltidy-docbook.patch:
+  New version, 3.10.29, includes XML and html2db support if USE=xml. Version
+  2.7.18 has been removed in favour of 2.7.18-r1. Closes bug #32836
+
+  18 Jun 2003; Seemant Kulleen <seemant@gentoo.org>
+  files/htmltidy-dbpatch.diff:
+  htmltidy patch fix by: Matthew Gatto <mg2300@albany.edu> in bug #22210
+  reported by: keanu <keanu@keanu.be>
+
+  29 May 2003; Aron Griffis <agriffis@gentoo.org> htmltidy-2.7.18-r1.ebuild:
+  Mark stable on alpha.  Remove deprecated sgml USE flag.
+
+*htmltidy-2.7.18-r1 (03 Jan 2003)
+
+  01 Feb 2003; Jason Shoemaker <kutsuya@gentoo.org> : Fixed broken source link.
+  Resolves #7151.
+
+  03 Jan 2003; Matthew Turk <satai@gentoo.org> : Added dbpatch to convert HTML
+  to either Docbook/XML or Docbook/SGML. Thanks to Ferdy <ferdy@ferdyx.org> 
+  for the patch.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*htmltidy-2.7.18 (25 Jul 2002)
+
+  25 July 2002; Sascha Schwabbauer <cybersystem@gentoo.org> ChangeLog : 
+  Updated to the newest version, 2.7.18.
+
+
+*htmltidy-0.8.4 (01 Feb 2002)
+
+  01 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog : Added initial ChangeLog
+  which should be updated whenever the package is updated in any way. This 
+  changelog is targetted to users. This means that the comments should well 
+  explained and written in clean English. The details about writing correct 
+  changelogs are explained in the skel.ChangeLog file which you can find in 
+  the root directory of the portage repository.

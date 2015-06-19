@@ -1,0 +1,36 @@
+From a4aad807d5cc6842043e12897cfac3a516825c0f Mon Sep 17 00:00:00 2001
+From: Rui Matos <tiagomatos@gmail.com>
+Date: Sun, 17 May 2015 00:50:56 +0200
+Subject: [PATCH] x11: Fix touchpad detection
+
+Commit 79849ef1d5fff9acd310cd68d59df0c7cf2cb28f had a typo in the
+device property format check. This property is formated in 8-bit
+items, not 32-bit.
+
+This went unnoticed till now because some touchpads were still being
+detected as such due to a second check below:
+
+      else if (strstr (name, "touchpad") != NULL)
+        source = CLUTTER_TOUCHPAD_DEVICE;
+
+https://bugzilla.gnome.org/show_bug.cgi?id=749482
+---
+ clutter/x11/clutter-device-manager-xi2.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/clutter/x11/clutter-device-manager-xi2.c b/clutter/x11/clutter-device-manager-xi2.c
+index 17c491e..1b101c4 100644
+--- a/clutter/x11/clutter-device-manager-xi2.c
++++ b/clutter/x11/clutter-device-manager-xi2.c
+@@ -242,7 +242,7 @@ is_touchpad_device (ClutterBackendX11 *backend_x11,
+   /* We don't care about the data */
+   XFree (data);
+ 
+-  if (rc != Success || type != XA_INTEGER || format != 32 || nitems != 1)
++  if (rc != Success || type != XA_INTEGER || format != 8 || nitems != 1)
+     return FALSE;
+ 
+   return TRUE;
+-- 
+2.4.3
+

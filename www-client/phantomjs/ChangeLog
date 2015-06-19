@@ -1,0 +1,91 @@
+# ChangeLog for www-client/phantomjs
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-client/phantomjs/ChangeLog,v 1.21 2015/05/31 06:15:53 graaff Exp $
+
+  31 May 2015; Hans de Graaff <graaff@gentoo.org> phantomjs-2.0.0.ebuild:
+  Add dependency on ruby interpreter via the new ruby-single.eclass, fixing bug
+  522744.
+
+  18 Mar 2015; Hans de Graaff <graaff@gentoo.org> phantomjs-2.0.0.ebuild,
+  +files/phantomjs-python3-udis86-itab.patch:
+  Fix building fix python 3 selected. Thanks for Benjamin Southall for the
+  patch in bug 543534.
+
+*phantomjs-2.0.0 (15 Mar 2015)
+
+  15 Mar 2015; Hans de Graaff <graaff@gentoo.org> +phantomjs-2.0.0.ebuild:
+  Version bump.
+
+  09 Mar 2015; Pacho Ramos <pacho@gentoo.org> phantomjs-1.9.8.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> phantomjs-1.9.8.ebuild:
+  amd64 stable, bug 540290
+
+  09 Feb 2015; Pacho Ramos <pacho@gentoo.org> -phantomjs-1.3.0.ebuild,
+  -phantomjs-1.4.1.ebuild, -phantomjs-1.9.7.ebuild:
+  Drop old
+
+*phantomjs-1.9.8 (29 Oct 2014)
+
+  29 Oct 2014; Hans de Graaff <graaff@gentoo.org> phantomjs-1.9.7.ebuild,
+  +phantomjs-1.9.8.ebuild:
+  Non-maintainer version bump to address POODLE mitigation. Phantomjs now uses
+  TLSv1 by default instead of SSLv3.
+
+  28 Jul 2014; Mike Frysinger <vapier@gentoo.org> metadata.xml:
+  Drop myself as maintainer.
+
+  04 Mar 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  phantomjs-1.9.7.ebuild:
+  Add subslot dependency on dev-libs/icu
+
+  13 Feb 2014; Jason A. Donenfeld <zx2c4@gentoo.org> metadata.xml:
+  I do not maintain this package any longer.
+
+*phantomjs-1.9.7 (13 Feb 2014)
+
+  13 Feb 2014; Jason A. Donenfeld <zx2c4@gentoo.org> +phantomjs-1.9.7.ebuild,
+  -phantomjs-1.9.0.ebuild:
+  Version bump.
+
+  25 Sep 2013; Tim Harder <radhermit@gentoo.org> phantomjs-1.9.0.ebuild:
+  Add unzip build dep (bug #485970).
+
+  29 Apr 2013; Mike Frysinger <vapier@gentoo.org> phantomjs-1.9.0.ebuild:
+  Clean up random problems (but does not fix them all -- see #409991).
+
+  25 Apr 2013; Jason A. Donenfeld <zx2c4@gentoo.org> phantomjs-1.9.0.ebuild:
+  Respect CFLAGS.
+
+  25 Apr 2013; Jason A. Donenfeld <zx2c4@gentoo.org> phantomjs-1.9.0.ebuild:
+  Needs icu.
+
+*phantomjs-1.9.0 (25 Apr 2013)
+
+  25 Apr 2013; Jason A. Donenfeld <zx2c4@gentoo.org> +phantomjs-1.9.0.ebuild,
+  metadata.xml:
+  Bumping verison to 1.9.0. We're relying on the internal static build of qt
+  now, since they've patched themselves too far away from upstream.
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> phantomjs-1.3.0.ebuild,
+  phantomjs-1.4.1.ebuild:
+  Move Qt dependencies to the new category
+
+  19 Jul 2012; Michael Palimaka <kensington@gentoo.org> phantomjs-1.3.0.ebuild,
+  phantomjs-1.4.1.ebuild:
+  Add missing slot dependencies on Qt.
+
+*phantomjs-1.4.1 (17 Jan 2012)
+
+  17 Jan 2012; Mike Frysinger <vapier@gentoo.org> +phantomjs-1.4.1.ebuild:
+  Version bump.
+
+  01 Dec 2011; Mike Frysinger <vapier@gentoo.org> phantomjs-1.3.0.ebuild:
+  Install examples with USE=examples as pointed out by Tim Harder.
+
+*phantomjs-1.3.0 (27 Nov 2011)
+
+  27 Nov 2011; Mike Frysinger <vapier@gentoo.org> +phantomjs-1.3.0.ebuild,
+  +metadata.xml:
+  Initial ebuild by me.

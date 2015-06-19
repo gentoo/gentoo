@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>games</herd>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>maddin081591@gmail.com</email>
+		<name>Martin-Kevin Neumann</name>
+		<description>Proxy maintainer, CC him on bugs</description>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/minetest/minetest_game/issues</bugs-to>
+		<remote-id type="github">minetest/minetest_game</remote-id>
+	</upstream>
+</pkgmetadata>

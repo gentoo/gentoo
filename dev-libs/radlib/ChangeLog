@@ -1,0 +1,30 @@
+# ChangeLog for dev-libs/radlib
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/radlib/ChangeLog,v 1.6 2015/06/09 14:49:57 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  28 Dec 2014; Aaron W. Swenson <titanofold@gentoo.org>
+  radlib-2.12.0-r1.ebuild:
+  Rename virtual/postgresql to dev-db/postgresql
+
+  03 Nov 2014; Aaron W. Swenson <titanofold@gentoo.org>
+  radlib-2.12.0-r1.ebuild:
+  Update PostgreSQL dependencies and/or checks to virtual/postgresql.
+
+  30 Jul 2014; Brian Evans <grknight@gentoo.org> radlib-2.12.0-r1.ebuild:
+  Non-maintainer commit.  Update to virtual/mysql for bug 508798
+
+*radlib-2.12.0-r1 (20 Feb 2013)
+
+  20 Feb 2013; Diego E. Pettenò <flameeyes@gentoo.org>
+  +files/radlib-2.12.0-build.patch, +radlib-2.12.0-r1.ebuild,
+  -radlib-2.12.0.ebuild:
+  Fix build.
+
+*radlib-2.12.0 (19 Feb 2013)
+
+  19 Feb 2013; Diego E. Pettenò <flameeyes@gentoo.org> +radlib-2.12.0.ebuild,
+  +metadata.xml:
+  Initial import of radlib needed for wview.

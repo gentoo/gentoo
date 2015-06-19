@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install setup
+DEPEND=>=dev-lang/mono-2.0 virtual/pkgconfig
+DESCRIPTION=.NET build tool
+EAPI=5
+HOMEPAGE=http://nant.sourceforge.net/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-lang/mono-2.0
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~pacho/nant/nant-0.93_pre20130131.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	mono-env	59ca1177366cc9e14521d3501e9bb281	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=21c7c961c1e5b293e69efab9b24bf38f

@@ -1,0 +1,35 @@
+From 5c9b4a85213e5f63d716655b6c61a7efce07223c Mon Sep 17 00:00:00 2001
+From: Kai-Uwe Behrmann <ku.b@gmx.de>
+Date: Sun, 17 Feb 2013 20:27:04 +0100
+Subject: [PATCH] * [oyX1]: use more internal XRandR information
+
+---
+ src/include_private/oyranos_monitor_internal_x11.h |    4 ++++
+ 1 files changed, 4 insertions(+), 0 deletions(-)
+
+diff --git a/src/include_private/oyranos_monitor_internal_x11.h b/src/include_private/oyranos_monitor_internal_x11.h
+index c41aa3a..363b759 100644
+--- a/src/include_private/oyranos_monitor_internal_x11.h
++++ b/src/include_private/oyranos_monitor_internal_x11.h
+@@ -60,6 +60,8 @@ typedef struct {
+   RROutput             output;         /**< XRandR output */
+   XRROutputInfo      * output_info;    /**< XRandR output info */
+   int                  active_outputs; /**< outputs with crtc and gamma size */
++  int                  rr_version;     /**< XRandR version */
++  int                  rr_screen;      /**< nth XRandR output */
+ # endif
+   char               * system_port;    /**< the operating systems port name */
+   oyBlob_s           * edid;           /**< edid for the device */
+@@ -95,6 +97,8 @@ RROutput     oyX1Monitor_xrrOutput_    ( oyX1Monitor_s       * disp );
+ XRROutputInfo *
+              oyX1Monitor_xrrOutputInfo_( oyX1Monitor_s       * disp );
+ int          oyX1Monitor_activeOutputs_( oyX1Monitor_s       * disp );
++int          oyX1Monitor_rrVersion_    ( oyX1Monitor_s       * disp );
++int          oyX1Monitor_rrScreen_     ( oyX1Monitor_s       * disp );
+ # endif
+ 
+ int          oyX1MonitorProfileSetup ( const char        * display_name,
+-- 
+1.5.6.5
+
+

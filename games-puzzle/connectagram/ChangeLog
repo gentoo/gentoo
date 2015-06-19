@@ -1,0 +1,73 @@
+# ChangeLog for games-puzzle/connectagram
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/connectagram/ChangeLog,v 1.14 2015/06/12 11:05:30 ago Exp $
+
+  12 Jun 2015; Agostino Sarubbo <ago@gentoo.org> connectagram-1.0.1-r1.ebuild:
+  Stable for amd64, wrt bug #551812
+
+  27 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  connectagram-1.0.1-r1.ebuild:
+  EAPI=5
+
+  19 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -connectagram-1.1.2.ebuild, -files/connectagram-1.1.2-gentoo.patch:
+  old
+
+*connectagram-1.2.1 (08 Feb 2015)
+
+  08 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  +connectagram-1.2.1.ebuild, +files/connectagram-1.2.1-gentoo.patch,
+  files/connectagram-1.1.2-gentoo.patch:
+  version bump
+
+  29 Aug 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  -connectagram-1.1.1.ebuild, -files/connectagram-1.1.1-gentoo.patch:
+  old
+
+*connectagram-1.1.2 (26 Aug 2014)
+
+  26 Aug 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  +connectagram-1.1.2.ebuild, +files/connectagram-1.1.2-gentoo.patch:
+  version bump
+
+  25 Aug 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  -connectagram-1.1.0.ebuild, -files/connectagram-1.1.0-gentoo.patch:
+  old
+
+*connectagram-1.1.1 (05 Feb 2014)
+
+  05 Feb 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  +connectagram-1.1.1.ebuild, +files/connectagram-1.1.1-gentoo.patch,
+  files/connectagram-1.1.0-gentoo.patch:
+  version bump (bug #500200)
+
+*connectagram-1.1.0 (11 Mar 2013)
+
+  11 Mar 2013; Julian Ospald <hasufell@gentoo.org> +connectagram-1.1.0.ebuild,
+  +files/connectagram-1.1.0-gentoo.patch:
+  version bump wrt #461390
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org>
+  connectagram-1.0.1-r1.ebuild:
+  Move Qt dependencies to the new category
+
+  02 Apr 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  connectagram-1.0.1-r1.ebuild:
+  migrate to qt4-r2 with patch from Michael (kensington) (bug #410377)
+
+  27 Feb 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  connectagram-1.0.1-r1.ebuild:
+  x86 stable wrt bug #304785
+
+*connectagram-1.0.1-r1 (13 Jan 2010)
+
+  13 Jan 2010; Samuli Suominen <ssuominen@gentoo.org>
+  connectagram-1.0.1.ebuild, +connectagram-1.0.1-r1.ebuild:
+  Install missing words file wrt #300792, thanks to Johannes Rauh for
+  reporting.
+
+*connectagram-1.0.1 (06 Jan 2010)
+
+  06 Jan 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +connectagram-1.0.1.ebuild:
+  Initial commit.

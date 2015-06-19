@@ -1,0 +1,45 @@
+#!/sbin/runscript
+# Copyright 1999-2010 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-nds/389-ds-base/files/389-ds-snmp.initd,v 1.1 2010/07/07 14:31:36 lxnay Exp $
+
+PIDFILE="/var/run/ldap-agent.pid"
+CONFIGFILE="/etc/dirsrv/config/ldap-agent.conf"
+
+# instance support in progress
+
+depend() {
+	need net
+	use logger snmpd
+}
+
+start() {
+	ebegin "Starting 389 Directory Server ldap-snmp agent"
+	start-stop-daemon --start --quiet -b \
+		--pidfile ${PIDFILE} --exec /usr/sbin/ldap-agent -- ${CONFIGFILE}
+	eend ${?}
+	if [ "${?}" != "0" ]; then
+		local entries=/etc/dirsrv/slapd-*
+		if [ -n "${entries}" ]; then
+			ewarn "Please make sure that ${CONFIGFILE} contains at least"
+			ewarn "one of the following entries:"
+			for entry in ${entries}; do
+				entry=$(basename ${entry})
+				ewarn "server ${entry}"
+			done
+		fi
+	fi
+}
+
+stop() {
+	ebegin "Stopping 389 Directory Server ldap-snmp agent"
+	start-stop-daemon --stop --quiet --pidfile ${PIDFILE}
+	eend ${?}
+	
+}
+
+restart() {
+	svc_stop
+	sleep 2
+	svc_start
+}

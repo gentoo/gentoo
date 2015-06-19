@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>net-mail</herd>
+<longdescription>A program for Milter supported mail servers that implements antispam, antivirus and other customizable filtering on email messages</longdescription>
+<use>
+	<flag name='poll'>Use poll instead of select</flag>
+</use>
+</pkgmetadata>

@@ -1,0 +1,63 @@
+Index: m17n-lib-1.6.2/src/Makefile.am
+===================================================================
+--- m17n-lib-1.6.2.orig/src/Makefile.am
++++ m17n-lib-1.6.2/src/Makefile.am
+@@ -53,7 +53,7 @@ libm17n_la_SOURCES = \
+ 	language.h language.c \
+ 	mlocale.h locale.c \
+ 	m17n.h m17n.c
+-libm17n_la_LIBADD = ${top_builddir}/src/libm17n-core.la -ldl
++libm17n_la_LIBADD = libm17n-core.la -ldl
+ libm17n_la_LDFLAGS = -export-dynamic ${VINFO}
+ 
+ FLT_SOURCES = \
+@@ -61,7 +61,7 @@ FLT_SOURCES = \
+ 	m17n-flt.h m17n-flt.c
+ 
+ libm17n_flt_la_SOURCES = ${FLT_SOURCES}
+-libm17n_flt_la_LIBADD = ${top_builddir}/src/libm17n-core.la
++libm17n_flt_la_LIBADD = libm17n-core.la
+ libm17n_flt_la_LDFLAGS = -export-dynamic ${VINFO}
+ 
+ GUI_SOURCES = \
+@@ -80,7 +80,7 @@ OPTIONAL_LD_FLAGS = \
+ 	@FONTCONFIG_LD_FLAGS@
+ 
+ libm17n_gui_la_SOURCES = ${GUI_SOURCES}
+-libm17n_gui_la_LIBADD = ${OPTIONAL_LD_FLAGS} ${top_builddir}/src/libm17n-core.la ${top_builddir}/src/libm17n.la ${top_builddir}/src/libm17n-flt.la
++libm17n_gui_la_LIBADD = ${OPTIONAL_LD_FLAGS} libm17n-core.la libm17n.la libm17n-flt.la
+ libm17n_gui_la_LDFLAGS = -export-dynamic ${VINFO}
+ 
+ if WITH_GUI
+@@ -90,11 +90,11 @@ module_LTLIBRARIES = libm17n-X.la libm17
+ X_LD_FLAGS = ${X_PRE_LIBS} ${X_LIBS} @X11_LD_FLAGS@ ${X_EXTRA_LIBS}
+ 
+ libm17n_X_la_SOURCES = m17n-X.h m17n-X.c
+-libm17n_X_la_LIBADD = ${X_LD_FLAGS} @XFT2_LD_FLAGS@ @FONTCONFIG_LD_FLAGS@ ${top_builddir}/src/libm17n-core.la ${top_builddir}/src/libm17n.la ${top_builddir}/src/libm17n-flt.la ${top_builddir}/src/libm17n-gui.la
++libm17n_X_la_LIBADD = ${X_LD_FLAGS} @XFT2_LD_FLAGS@ @FONTCONFIG_LD_FLAGS@ libm17n-core.la libm17n.la libm17n-flt.la libm17n-gui.la
+ libm17n_X_la_LDFLAGS = -avoid-version -module
+ 
+ libm17n_gd_la_SOURCES = m17n-gd.c
+-libm17n_gd_la_LIBADD = @GD_LD_FLAGS@ @FREETYPE_LD_FLAGS@ ${top_builddir}/src/libm17n-core.la ${top_builddir}/src/libm17n.la ${top_builddir}/src/libm17n-flt.la ${top_builddir}/src/libm17n-gui.la
++libm17n_gd_la_LIBADD = @GD_LD_FLAGS@ @FREETYPE_LD_FLAGS@ libm17n-core.la libm17n.la libm17n-flt.la libm17n-gui.la
+ libm17n_gd_la_LDFLAGS = -avoid-version -module
+ 
+ endif
+@@ -121,14 +121,14 @@ if MAINTAINER_MODE
+ noinst_PROGRAMS = linkcore linkshell linkgui
+ 
+ linkcore_SOURCES = linkcore.c
+-linkcore_LDADD = ${top_builddir}/src/libm17n-core.la
++linkcore_LDADD = libm17n-core.la
+ linkcore_LDFLAGS = -static
+ 
+ linkshell_SOURCES = linkshell.c
+-linkshell_LDADD = ${top_builddir}/src/libm17n.la
++linkshell_LDADD = libm17n.la
+ linkshell_LDFLAGS = -static
+ 
+ linkgui_SOURCES = linkgui.c
+-linkgui_LDADD = ${top_builddir}/src/libm17n-gui.la
++linkgui_LDADD = libm17n-gui.la
+ linkgui_LDFLAGS = -static
+ endif

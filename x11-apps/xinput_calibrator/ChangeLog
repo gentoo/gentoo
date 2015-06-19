@@ -1,0 +1,29 @@
+# ChangeLog for x11-apps/xinput_calibrator
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-apps/xinput_calibrator/ChangeLog,v 1.6 2013/10/18 21:30:18 vapier Exp $
+
+  18 Oct 2013; Mike Frysinger <vapier@gentoo.org>
+  xinput_calibrator-0.7.5.ebuild:
+  Add arm love.
+
+  23 Apr 2012; Michał Górny <mgorny@gentoo.org>
+  xinput_calibrator-0.7.5.ebuild:
+  Use mirror:// in SRC_URI.
+
+  26 Mar 2011; Christian Faulhammer <fauli@gentoo.org>
+  xinput_calibrator-0.7.5.ebuild:
+  stable x86, bug 359059
+
+  21 Mar 2011; Markos Chandras <hwoarang@gentoo.org>
+  xinput_calibrator-0.7.5.ebuild:
+  Stable on amd64 wrt bug #359059
+
+  10 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org> metadata.xml:
+  Yay, just me must pick the only metadata with local useflag in x11-apps to
+  base off... Remove useless local useflag desc.
+
+*xinput_calibrator-0.7.5 (10 Mar 2011)
+
+  10 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  +xinput_calibrator-0.7.5.ebuild, +metadata.xml:
+  Initial commit. Fixes bug #338816. Ebuild written by me.

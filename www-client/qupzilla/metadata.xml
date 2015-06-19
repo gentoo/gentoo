@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>qt</herd>
+  <use>
+    <flag name="nonblockdialogs">Enable fancy non-blocking JavaScript dialogs
+      shown inside the page, not blocking the application window. When closing
+      browser windows with open dialogs, this can crash the application.
+    </flag>
+  </use>
+  <upstream>
+    <remote-id type="github">QupZilla/qupzilla-plugins</remote-id>
+  </upstream>
+</pkgmetadata>

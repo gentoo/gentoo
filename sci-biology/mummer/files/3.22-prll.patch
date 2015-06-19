@@ -1,0 +1,56 @@
+diff --git a/Makefile b/Makefile
+index 4db4977..bbd00ed 100644
+--- a/Makefile
++++ b/Makefile
+@@ -114,15 +114,15 @@ install: all
+ 
+ 
+ kurtz:
+-	cd $(KURTZ_SRC_DIR); $(MAKE) mummer
++	$(MAKE) -C $(KURTZ_SRC_DIR) mummer
+ 
+ 
+ scripts:
+-	cd $(SCRIPT_DIR); $(MAKE) all
++	$(MAKE) -C $(SCRIPT_DIR) all
+ 
+ 
+ tigr:
+-	cd $(TIGR_SRC_DIR); $(MAKE) all
++	$(MAKE) -C $(TIGR_SRC_DIR) all
+ 
+ 
+ uninstall: clean
+diff --git a/src/kurtz/Makefile b/src/kurtz/Makefile
+index 85dfc16..5bff793 100644
+--- a/src/kurtz/Makefile
++++ b/src/kurtz/Makefile
+@@ -1,7 +1,7 @@
+ all:
+-	cd libbasedir; $(MAKE) all
+-	cd streesrc; $(MAKE) all
+-	cd mm3src; $(MAKE) all
++	$(MAKE) -C libbasedir all
++	$(MAKE) -C streesrc all
++	$(MAKE) -C mm3src all
+ 
+ clean:
+ 	rm -f *~
+@@ -10,11 +10,11 @@ clean:
+ 	cd mm3src; $(MAKE) clean
+ 
+ mummer:
+-	cd libbasedir; $(MAKE) libbase.a
+-	cd streesrc; $(MAKE) libstree.a
+-	cd mm3src; $(MAKE) mummer
++	$(MAKE) -C libbasedir libbase.a
++	$(MAKE) -C streesrc libstree.a
++	$(MAKE) -C mm3src mummer
+ 
+ splintall:
+-	cd libbasedir; ${MAKE} splintall
+-	cd streesrc; ${MAKE} splintall
+-	cd mm3src; ${MAKE} splintall
++	$(MAKE) -C libbasedir splintall
++	$(MAKE) -C streesrc splintall
++	$(MAKE) -C mm3src splintall

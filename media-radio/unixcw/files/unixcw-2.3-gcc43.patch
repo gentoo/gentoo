@@ -1,0 +1,22 @@
+diff -u src/xcwcp.orig/receiver.cc src/xcwcp/receiver.cc
+--- src/xcwcp.orig/receiver.cc	2010-08-30 19:35:45.000000000 +0200
++++ src/xcwcp/receiver.cc	2010-08-30 19:36:05.000000000 +0200
+@@ -19,6 +19,7 @@
+ 
+ #include "../config.h"
+ 
++#include <cstdio>
+ #include <cstdlib>
+ #include <cerrno>
+ #include <string>
+diff -u src/xcwcp.orig/sender.cc src/xcwcp/sender.cc
+--- src/xcwcp.orig/sender.cc	2010-08-30 19:35:45.000000000 +0200
++++ src/xcwcp/sender.cc	2010-08-30 19:36:22.000000000 +0200
+@@ -19,6 +19,7 @@
+ 
+ #include "../config.h"
+ 
++#include <cstdio>
+ #include <cstdlib>
+ #include <string>
+ #include <deque>

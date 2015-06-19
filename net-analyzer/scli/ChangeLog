@@ -1,0 +1,89 @@
+# ChangeLog for net-analyzer/scli
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/scli/ChangeLog,v 1.22 2014/11/06 01:08:43 jer Exp $
+
+  06 Nov 2014; Jeroen Roovers <jer@gentoo.org> scli-0.4.0-r1.ebuild,
+  +files/scli-0.4.0-configure.patch, -files/scli-0.4.0-tinfo.patch:
+  Fix building against =net-libs/gnet-2.0.8-r2 (bug #528378).
+
+  16 Jul 2014; Jeroen Roovers <jer@gentoo.org> -scli-0.4.0.ebuild,
+  scli-0.4.0-r1.ebuild, +files/scli-0.4.0-tinfo.patch:
+  EAPI bump. Fix building against sys-libs/ncurses[tinfo]. New HOMEPAGE. Remove
+  AR hack now that we run eautoreconf. Remove USE=debug as nothing uses
+  HAVE_DMALLOC_H anyway.
+
+  20 Nov 2012; Agostino Sarubbo <ago@gentoo.org> scli-0.4.0-r1.ebuild:
+  Stable for x86, wrt bug #441432
+
+  10 Nov 2012; Sergey Popov <pinkbyte@gentoo.org> scli-0.4.0-r1.ebuild:
+  Add ~amd64-linux keyword
+
+  10 Nov 2012; Sergey Popov <pinkbyte@gentoo.org> scli-0.4.0-r1.ebuild:
+  Stable on amd64, bug #441432
+
+  24 Sep 2012; Jeroen Roovers <jer@gentoo.org> -scli-0.2.12.ebuild,
+  -files/scli-0.2.12-fix-configure.diff, -files/scli-0.2.12-gentoo.diff:
+  Old.
+
+  24 Sep 2012; Andreas Schuerch <nativemad@gentoo.org> scli-0.4.0.ebuild:
+  x86 stable, see bug 409541
+
+*scli-0.4.0-r1 (24 Sep 2012)
+
+  24 Sep 2012; Jeroen Roovers <jer@gentoo.org> +scli-0.4.0-r1.ebuild:
+  Use append-cppflags not append-flags. Use $AR instead of harcoded ar by
+  Vicente Olivert Riera (bug #436008).
+
+  23 Sep 2012; Agostino Sarubbo <ago@gentoo.org> scli-0.4.0.ebuild:
+  Stable for amd64, wrt bug #409541
+
+  23 Sep 2012; Kacper Kowalik <xarthisius@gentoo.org> scli-0.2.12.ebuild,
+  scli-0.4.0.ebuild:
+  ppc keywords dropped wrt #409541
+
+  25 Jun 2011; Raúl Porcel <armin76@gentoo.org> scli-0.2.12.ebuild:
+  Drop sparc keywords
+
+  05 Jun 2011; Kacper Kowalik <xarthisius@gentoo.org> scli-0.4.0.ebuild:
+  Marked ~ppc wrt #369595
+
+*scli-0.4.0 (01 Jun 2011)
+
+  01 Jun 2011; Jeroen Roovers <jer@gentoo.org> +scli-0.4.0.ebuild:
+  Version bump.
+
+  26 Jan 2008; <pva@gentoo.org> scli-0.2.12.ebuild:
+  Moved autotools stuff to src_unpack, bug #207466, thank Diego Pettenò
+  <flameeyes AT gentoo.org> for report. Marked ~amd64.
+
+  31 Oct 2006; Markus Ullmann <jokey@gentoo.org> scli-0.2.12.ebuild:
+  Fixing automake stuff wrt bug #153256
+
+  02 Oct 2006; Donnie Berkholz <dberkholz@gentoo.org>; scli-0.2.12.ebuild:
+  Keyword ~ppc.
+
+  14 Aug 2006; Daniel Black <dragonheart@gentoo.org> scli-0.2.12.ebuild:
+  WANT_AUTOCONF changed to 2.5 as per QA bug #143429
+
+  09 Oct 2005; <mkay@gentoo.org> scli-0.2.12.ebuild:
+  Fixing dependencies (bug #108118). Also - changing autoreconf to autoconf,
+  which is enought for our patches
+
+  19 Apr 2005; Aaron Walker <ka0ttic@gentoo.org> scli-0.2.12.ebuild:
+  Marked stable on x86.
+
+  12 Apr 2005; Jason Wever <weeve@gentoo.org> scli-0.2.12.ebuild:
+  Added ~sparc keyword.
+
+  28 Jan 2005; Aaron Walker <ka0ttic@gentoo.org>
+  files/scli-0.2.12-fix-configure.diff:
+  Removed acconfig.h patch-out from fix-configure patch; seems to be causing
+  some funky weirdness.
+
+*scli-0.2.12 (28 Jan 2005)
+
+  28 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> +metadata.xml,
+  +files/scli-0.2.12-fix-configure.diff, +files/scli-0.2.12-gentoo.diff,
+  +scli-0.2.12.ebuild:
+  Initial commit for bug 71389. Ebuild submitted by Gudleik Rasch
+  <gudleik@rastamatra.org>.

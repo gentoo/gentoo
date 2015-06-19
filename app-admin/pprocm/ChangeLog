@@ -1,0 +1,58 @@
+# ChangeLog for app-admin/pprocm
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/pprocm/ChangeLog,v 1.14 2014/12/19 19:07:45 dilfridge Exp $
+
+  19 Dec 2014; Andreas K. Huettel <dilfridge@gentoo.org> metadata.xml:
+  Drop to maintainer-needed
+
+  10 Aug 2014; Patrick Lauer <patrick@gentoo.org> pprocm-1.0-r1.ebuild:
+  Fix description for more repoman happy
+
+  17 Dec 2013; Mikle Kolyada <zlogene@gentoo.org> pprocm-1.0-r1.ebuild:
+  Add missing RDEPEND on dev-perl/IO-Pipely wrt bug #490132
+
+  20 Sep 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+  29 Jul 2012; Raúl Porcel <armin76@gentoo.org> pprocm-1.0-r1.ebuild:
+  Drop sparc keywords
+
+  26 Nov 2007; Christoph Mende <angelos@gentoo.org> pprocm-1.0-r1.ebuild:
+  Stable on amd64 wrt bug #200411
+
+  16 Jul 2007; Michael Cummings <mcummings@gentoo.org> pprocm-1.0-r1.ebuild:
+  Marking sparc stable
+
+  13 Jul 2007; Raúl Porcel <armin76@gentoo.org> pprocm-1.0-r1.ebuild:
+  x86 stable
+
+*pprocm-1.0-r1 (11 Jun 2007)
+
+  11 Jun 2007; Michael Cummings <mcummings@gentoo.org> -pprocm-1.0.ebuild,
+  +pprocm-1.0-r1.ebuild:
+  Updated digest size, easier to bump rather than risk mirrors not picking up
+  the change
+
+  08 Jun 2007; Andrej Kacian <ticho@gentoo.org> pprocm-0.9_beta2.ebuild:
+  Stable on x86, bug #181153.
+
+*pprocm-1.0 (06 Jun 2007)
+
+  06 Jun 2007; Michael Cummings <mcummings@gentoo.org> +pprocm-1.0.ebuild:
+  Version bump
+
+  06 Jun 2007; Michael Cummings <mcummings@gentoo.org>
+  pprocm-0.9_beta2.ebuild:
+  Marking amd64 stable
+
+*pprocm-0.9_beta2 (12 Feb 2007)
+
+  12 Feb 2007; Michael Cummings <mcummings@gentoo.org>
+  +pprocm-0.9_beta2.ebuild:
+  Version bump
+
+*pprocm-0.9_beta1 (25 Jan 2007)
+
+  25 Jan 2007; Michael Cummings <mcummings@gentoo.org> +metadata.xml,
+  +pprocm-0.9_beta1.ebuild:
+  Bug 162831

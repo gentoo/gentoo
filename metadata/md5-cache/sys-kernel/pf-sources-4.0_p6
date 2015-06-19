@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare pretend setup test unpack
+DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
+DESCRIPTION=Linux kernel fork with new features, including the -ck patchset (BFS), BFQ, TuxOnIce and UKSM
+EAPI=5
+HOMEPAGE=http://pf.natalenko.name/
+IUSE=symlink build
+KEYWORDS=-* ~amd64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2 freedist
+RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )
+RESTRICT=binchecks strip
+SLOT=4.0_p6
+SRC_URI=mirror://kernel/linux/kernel/v4.x/linux-4.0.tar.xz http://pf.natalenko.name/sources/4.0/patch-4.0-pf6.xz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	kernel-2	4da0de8e87de8d48f4576790a3034be2	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	da352ea9da8eb9bf158d56cca65d6c82	python-utils-r1	096f8247eae93026af13ab88cf4305cd	readme.gentoo	106edea5533517715013de909a333abd	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=a341d5a6ea23cb47bd9fe59064776ba7

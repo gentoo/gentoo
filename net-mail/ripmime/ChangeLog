@@ -1,0 +1,161 @@
+# ChangeLog for net-mail/ripmime
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/ripmime/ChangeLog,v 1.40 2012/12/21 13:15:17 eras Exp $
+
+  21 Dec 2012; Eray Aslan <eras@gentoo.org> ripmime-1.4.0.10.ebuild:
+  Add libripmime.so.1 symlink - bug #447274
+
+  27 Jun 2011; Eray Aslan <eras@gentoo.org> -ripmime-1.4.0.6.ebuild,
+  -ripmime-1.4.0.9-r2.ebuild:
+  Remove old
+
+  25 Jun 2011; Raúl Porcel <armin76@gentoo.org> ripmime-1.4.0.10.ebuild:
+  sparc stable wrt #370255
+
+  22 Jun 2011; Brent Baude <ranger@gentoo.org> ripmime-1.4.0.10.ebuild:
+  Marking ripmime-1.4.0.10 ppc for bug 370255
+
+  14 Jun 2011; Markus Meier <maekke@gentoo.org> ripmime-1.4.0.10.ebuild:
+  x86 stable, bug #370255
+
+  07 Jun 2011; Markos Chandras <hwoarang@gentoo.org> ripmime-1.4.0.10.ebuild:
+  Stable on amd64 wrt bug #370255
+
+*ripmime-1.4.0.10 (19 Apr 2011)
+
+  19 Apr 2011; Tim Harder <radhermit@gentoo.org> +ripmime-1.4.0.10.ebuild:
+  Version bump.
+
+*ripmime-1.4.0.9-r2 (17 Apr 2011)
+
+  17 Apr 2011; Tim Harder <radhermit@gentoo.org> -ripmime-1.4.0.9-r1.ebuild,
+  +ripmime-1.4.0.9-r2.ebuild:
+  Revision bump to add symlink (bug #348497), bump to EAPI 4, and remove old.
+
+*ripmime-1.4.0.9-r1 (07 Nov 2010)
+
+  07 Nov 2010; Tim Harder <radhermit@gentoo.org> -ripmime-1.4.0.9.ebuild,
+  +ripmime-1.4.0.9-r1.ebuild, +files/ripmime-1.4.0.9-buffer-overflow.patch,
+  +files/ripmime-1.4.0.9-makefile.patch:
+  Revision bump and remove old. Update to EAPI 3, respect LDFLAGS (bug
+  #334593 by Diego Pettenò), fix buffer overflow (bug #340149 by Diego
+  Pettenò), add static-libs USE flag, fix parallel build, and use ebuild
+  helper functions for installing. Thanks to Kevin Pyle for ebuild updates
+  and patches.
+
+*ripmime-1.4.0.9 (22 May 2009)
+
+  22 May 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  +ripmime-1.4.0.9.ebuild:
+  Version bump (#270856) and install libripmime/headers (#197400)
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  06 Jan 2007; Fernando J. Pereda <ferdy@gentoo.org>
+  -ripmime-1.4.0.5.ebuild:
+  QA: Clean unused versions.
+
+  24 Sep 2006; <blubb@gentoo.org> ripmime-1.4.0.6.ebuild:
+  stable on amd64
+
+  24 May 2006; Michael Hanselmann <hansmi@gentoo.org>
+  ripmime-1.4.0.6.ebuild:
+  Stable on ppc.
+
+  21 Apr 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  ripmime-1.4.0.6.ebuild:
+  Stable on sparc
+
+  17 Apr 2006; <ticho@gentoo.org> ripmime-1.4.0.6.ebuild:
+  Stable on x86.
+
+*ripmime-1.4.0.6 (18 Mar 2006)
+
+  18 Mar 2006; <ticho@gentoo.org> -ripmime-1.3.2.3.ebuild,
+  -ripmime-1.4.0.0.ebuild, -ripmime-1.4.0.3.ebuild, +ripmime-1.4.0.6.ebuild:
+  Version bump. Bug #126531, by Davide Rebeccani <cubo at
+  filibusta.crema.unimi.it>. Pruned old ebuilds.
+
+  12 Jul 2005; Simon Stelling <blubb@gentoo.org> ripmime-1.4.0.5.ebuild:
+  stable on amd64
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  ripmime-1.4.0.5.ebuild:
+  Stable on ppc.
+
+  02 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  ripmime-1.4.0.5.ebuild:
+  Stable on sparc
+
+  01 Jun 2005; Andrej Kacian <ticho@gentoo.org> ripmime-1.4.0.5.ebuild:
+  Stable on x86.
+
+*ripmime-1.4.0.5 (20 Apr 2005)
+
+  20 Apr 2005; Andrej Kacian <ticho@gentoo.org> +ripmime-1.4.0.5.ebuild:
+  Version bump. Closes bug #89632, reported by Marek Wiecek
+  <marek.wiecek@gmail.com>.
+
+  22 Mar 2005; <blubb@gentoo.org> ripmime-1.4.0.3.ebuild:
+  added ~amd64
+
+  29 Jan 2005; Aaron Kulbe <superlag@gentoo.org> ripmime-1.4.0.3.ebuild:
+  Forgot to keyword 1.4.0.3
+
+*ripmime-1.4.0.3 (29 Jan 2005)
+
+  29 Jan 2005; Aaron Kulbe <superlag@gentoo.org> +ripmime-1.4.0.3.ebuild:
+  Version bump to 1.4.0.3, that is.
+
+*ripmime-1.4.0.3 (29 Jan 2005)
+
+  29 Jan 2005; Aaron Kulbe <superlag@gentoo.org> +ripmime-1.4.0.3.ebuild:
+  ripmime-1.4.0.3.ebuild
+
+  20 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org> ripmime-1.4.0.0.ebuild:
+  Stable on sparc wrt #64037
+
+  20 Sep 2004; <SeJo@gentoo.org> ripmime-1.4.0.0.ebuild:
+  stable on ppc gsla bug: 64037
+
+*ripmime-1.4.0.0 (20 Sep 2004)
+
+  20 Sep 2004; Mike Frysinger <vapier@gentoo.org> +ripmime-1.4.0.0.ebuild:
+  Version bump for security #64037.
+
+*ripmime-1.3.2.3 (13 Aug 2004)
+
+  13 Aug 2004; Mike Frysinger <vapier@gentoo.org> +ripmime-1.3.2.3.ebuild:
+  Version bump for #59341.
+
+*ripmime-1.3.1.2 (22 Jul 2004)
+
+  22 Jul 2004; Mike Frysinger <vapier@gentoo.org> +ripmime-1.3.1.2.ebuild:
+  Version bump and use system $CFLAGS.
+
+  17 Jul 2004; David Holm <dholm@gentoo.org> ripmime-1.3.0.5.ebuild:
+  Added to ~ppc.
+
+*ripmime-1.3.0.5 (06 Feb 2004)
+
+  06 Feb 2004; Greg Fitzgerald <gregf@gentoo.org> ripmime-1.3.0.5.ebuild:
+  Version Bump.
+
+*ripmime-1.3.0.4 (20 Jul 2003)
+
+  20 Jul 2003; Greg Fitzgerald <gregf@gentoo.org> ripmime-1.3.0.4.ebuild:
+  Version Bump
+
+*ripmime-1.3.0.3 (29 Jun 2003)
+  
+ 29 Jun 2003; J.Alberto S.L. <bass@gentoo.org> ripmime-1.3.0.3.ebuild:
+ New version
+  
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+
+*ripmime-1.2.16.16 (10 Jul 2002)
+ 
+  10 Jul 2002; J.Alberto S.L. <bass@gentoo.org> ripmime-1.2.16.16.ebuild:
+  First relase.

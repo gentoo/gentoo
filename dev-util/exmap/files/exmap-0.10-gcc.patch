@@ -1,0 +1,68 @@
+diff -ru exmap-0.10/work/exmap-0.10/jutil/jutil.cpp exm/work/exmap-0.10/jutil/jutil.cpp
+--- jutil/jutil.cpp	2006-09-28 18:52:25.000000000 +0200
++++ jutil/jutil.cpp	2010-02-15 15:35:43.000000000 +0100
+@@ -3,6 +3,7 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <unistd.h>
++#include <cstring>
+ #include <limits.h>
+ #include <dirent.h>
+ 
+diff -ru exmap-0.10/work/exmap-0.10/jutil/jutil.hpp exm/work/exmap-0.10/jutil/jutil.hpp
+--- jutil/jutil.hpp	2006-09-28 18:52:25.000000000 +0200
++++ jutil/jutil.hpp	2010-02-15 15:40:02.000000000 +0100
+@@ -3,6 +3,7 @@
+ 
+ #include <iostream>
+ #include <string>
++#include <cstdlib>
+ #include <list>
+ #include <map>
+ 
+diff -ru exmap-0.10/work/exmap-0.10/src/exmtool.cpp exm/work/exmap-0.10/src/exmtool.cpp
+--- src/exmtool.cpp	2006-09-28 18:52:25.000000000 +0200
++++ src/exmtool.cpp	2010-02-15 15:34:04.000000000 +0100
+@@ -5,6 +5,7 @@
+ 
+ #include <sstream>
+ #include <iostream>
++#include <cstring>
+ #include <vector>
+ 
+ using namespace std;
+@@ -19,9 +18,9 @@
+ 
+ struct command
+ {
+-    char *command;
++    const char *command;
+     Handler handler;
+-    char *usage;
++    const char *usage;
+ } cmd_handles[] = {
+     { "procs",
+       do_procs,
+
+diff -ru exmap-0.10/work/exmap-0.10/src/Elf.cpp norg/work/exmap-0.10/src/Elf.cpp
+--- src/Elf.cpp	2006-09-28 18:52:25.000000000 +0200
++++ src/Elf.cpp	2010-02-15 16:55:37.000000000 +0100
+@@ -4,6 +4,7 @@
+ #include "Elf.hpp"
+ 
+ #include <sstream>
++#include <cstring>
+ #include <unistd.h> // getpagesize()
+ 
+ using namespace std;
+
+diff -ru exmap-0.10/jutil/TestRunner.cpp.orig exmap-0.10/jutil/TestRunner.cpp
+--- jutil/TestRunner.cpp.orig	2010-02-15 22:00:03.000000000 +0100
++++ jutil/TestRunner.cpp	2010-02-15 22:00:19.000000000 +0100
+@@ -1,5 +1,6 @@
+ #include "TestRunner.hpp"
+ #include "Pcre.hpp"
++#include <cstdio>
+ 
+ using namespace std;
+ 

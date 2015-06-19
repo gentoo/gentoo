@@ -1,0 +1,11 @@
+--- src/Makefile.old	2011-06-22 06:09:53.195025702 +0200
++++ src/Makefile	2011-06-22 06:10:54.774927134 +0200
+@@ -43,7 +43,7 @@
+ # Definir -D_JLIB_DEBUG para debug con JLib. Ponerlo también en el Makefile de JLib.
+ # Define -D_JLIB_DEBUG for JLib debug mode. Put it also in JLib's Makefile.
+ CXXFLAGS+=-fno-strict-aliasing -I. -I../JLib `$(SDL_CONFIG) --cflags` -Wall -Wshadow
+-LDLIBS=-L. -lSDL_image -lSDL_ttf -lSDL_mixer `$(SDL_CONFIG) --libs`
++LDLIBS=-L. -lSDL_image -lSDL_ttf -lSDL_mixer `$(SDL_CONFIG) --libs` -lm -lz
+ 
+ 
+ JLib: 

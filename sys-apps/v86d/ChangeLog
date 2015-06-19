@@ -1,0 +1,156 @@
+# ChangeLog for sys-apps/v86d
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/v86d/ChangeLog,v 1.37 2014/08/10 20:25:31 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> v86d-0.1.10.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  20 Jan 2013; Pacho Ramos <pacho@gentoo.org>
+  -files/v86d-0.1.8-concurrent-make.patch, -files/v86d-0.1.9-prot_write.patch,
+  -v86d-0.1.3-r1.ebuild, -v86d-0.1.9.ebuild, metadata.xml:
+  Cleanup due retirement, bug #35242
+
+  28 Apr 2012; Fabio Erculiani <lxnay@gentoo.org> v86d-0.1.10.ebuild:
+  do not die in pkg_setup for build related matters
+
+  27 Feb 2011; Christian Faulhammer <fauli@gentoo.org> v86d-0.1.10.ebuild:
+  stable x86, security bug 356557
+
+  27 Feb 2011; Markos Chandras <hwoarang@gentoo.org> v86d-0.1.10.ebuild:
+  Stable on amd64 wrt bug #356557
+
+*v86d-0.1.10 (26 Feb 2011)
+
+  26 Feb 2011; Michał Januszewski <spock@gentoo.org> +v86d-0.1.10.ebuild:
+  Version bump.
+
+  28 Nov 2010; Michał Januszewski <spock@gentoo.org> v86d-0.1.9.ebuild:
+  Disable stack protector (bug #346397).
+
+  05 Nov 2008; Markus Meier <maekke@gentoo.org> v86d-0.1.9.ebuild:
+  amd64/x86 stable, bug #234859
+
+  03 Nov 2008; Michał Januszewski <spock@gentoo.org>
+  +files/v86d-0.1.9-prot_write.patch, v86d-0.1.9.ebuild:
+  Add a fix for bug #245254.
+
+  18 Oct 2008; Michał Januszewski <spock@gentoo.org> -v86d-0.1.5.2.ebuild,
+  -v86d-0.1.6.ebuild, -v86d-0.1.7.ebuild, -v86d-0.1.8.ebuild:
+  Remove old ebuilds.
+
+  04 Oct 2008; Michał Januszewski <spock@gentoo.org> v86d-0.1.9.ebuild:
+  Remove unused inherits, use emake instead of make.
+
+*v86d-0.1.9 (04 Oct 2008)
+
+  04 Oct 2008; Michał Januszewski <spock@gentoo.org> +v86d-0.1.9.ebuild:
+  Version bump.
+
+  27 Sep 2008; Michał Januszewski <spock@gentoo.org> v86d-0.1.3-r1.ebuild:
+  Fix concurrent build in the current stable version of v86d.
+
+  27 Sep 2008; Michał Januszewski <spock@gentoo.org>
+  +files/v86d-0.1.8-concurrent-make.patch, v86d-0.1.8.ebuild:
+  Fix concurrent build of v86d (bugs #238506, #238714).
+
+*v86d-0.1.8 (21 Sep 2008)
+
+  21 Sep 2008; Michał Januszewski <spock@gentoo.org> +v86d-0.1.8.ebuild:
+  Version bump.
+
+*v86d-0.1.7 (14 Sep 2008)
+
+  14 Sep 2008; Michał Januszewski <spock@gentoo.org> +v86d-0.1.7.ebuild:
+  Version bump.
+
+  09 Sep 2008; Michał Januszewski <spock@gentoo.org> -v86d-0.1.5.ebuild,
+  -v86d-0.1.5.1.ebuild:
+  Remove old ebuilds.
+
+  23 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+*v86d-0.1.6 (26 Jul 2008)
+
+  26 Jul 2008; Michał Januszewski <spock@gentoo.org> +v86d-0.1.6.ebuild:
+  Version bump.
+
+  16 Jul 2008; Michał Januszewski <spock@gentoo.org> -v86d-0.1.3.ebuild,
+  -v86d-0.1.4.ebuild:
+  Remove old ebuilds.
+
+*v86d-0.1.5.2 (16 Jul 2008)
+
+  16 Jul 2008; Michał Januszewski <spock@gentoo.org> +v86d-0.1.5.2.ebuild:
+  Version bump.
+
+*v86d-0.1.5.1 (15 Jul 2008)
+
+  15 Jul 2008; Michał Januszewski <spock@gentoo.org> +v86d-0.1.5.1.ebuild:
+  Fix compilation with -x86emu and klibc-1.5.12 (bug #231839).
+
+  31 May 2008; Michał Januszewski <spock@gentoo.org> v86d-0.1.5.ebuild:
+  Fix bug #224243.
+
+  23 May 2008; Markus Meier <maekke@gentoo.org> v86d-0.1.3-r1.ebuild:
+  amd64/x86 stable, bug #223089
+
+*v86d-0.1.5 (01 May 2008)
+
+  01 May 2008; Michał Januszewski <spock@gentoo.org> +v86d-0.1.5.ebuild:
+  Version bump.
+
+*v86d-0.1.4 (20 Apr 2008)
+
+  20 Apr 2008; Michał Januszewski <spock@gentoo.org> +v86d-0.1.4.ebuild:
+  Version bump.
+
+  28 Dec 2007; Michał Januszewski <spock@gentoo.org> -v86d-0.1.1.ebuild,
+  -v86d-0.1.2.ebuild:
+  Remove old ebuilds.
+
+*v86d-0.1.3-r1 (28 Dec 2007)
+
+  28 Dec 2007; Michał Januszewski <spock@gentoo.org> +v86d-0.1.3-r1.ebuild:
+  Add the 'x86emu' USE flag to make it possible to fix problems similar to the
+  ones described in #196848.
+
+  05 Dec 2007; Christoph Mende <angelos@gentoo.org> v86d-0.1.3.ebuild:
+  Stable on amd64 wrt bug #200994
+
+  04 Dec 2007; Christian Faulhammer <opfer@gentoo.org> v86d-0.1.3.ebuild:
+  stable x86, bug 200994
+
+*v86d-0.1.3 (03 Dec 2007)
+
+  03 Dec 2007; Michał Januszewski <spock@gentoo.org> +v86d-0.1.3.ebuild:
+  Version bump. Bugfix release -- fixes broken handling of cards which store
+  the VBE Info Block in the Video ROM.
+
+  04 Nov 2007; Michał Januszewski <spock@gentoo.org> -v86d-0.1_rc4.ebuild,
+  -v86d-0.1_rc5.ebuild:
+  Remove old ebuilds.
+
+*v86d-0.1.2 (04 Nov 2007)
+
+  04 Nov 2007; Michał Januszewski <spock@gentoo.org> +v86d-0.1.2.ebuild:
+  Version bump.
+
+*v86d-0.1.1 (22 Oct 2007)
+
+  22 Oct 2007; Michał Januszewski <spock@gentoo.org> +v86d-0.1.1.ebuild:
+  Version bump.
+
+*v86d-0.1_rc5 (07 Aug 2007)
+
+  07 Aug 2007; Michał Januszewski <spock@gentoo.org> +v86d-0.1_rc5.ebuild:
+  Version bump.
+
+  05 Aug 2007; Michał Januszewski <spock@gentoo.org> v86d-0.1_rc4.ebuild:
+  Remove the dependency on sys-libs/lrmi.
+
+*v86d-0.1_rc4 (26 Jul 2007)
+
+  26 Jul 2007; Michał Januszewski <spock@gentoo.org> +metadata.xml,
+  +v86d-0.1_rc4.ebuild:
+  Initial commit.

@@ -1,0 +1,27 @@
+# ChangeLog for net-p2p/microdc2
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/microdc2/ChangeLog,v 1.5 2010/03/06 16:23:01 ssuominen Exp $
+
+*microdc2-0.15.6-r2 (06 Mar 2010)
+
+  06 Mar 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +microdc2-0.15.6-r2.ebuild:
+  Import Debian patchset. This will link against system libbz2 wrt #298100
+  and rename manpage wrt #295843.
+
+*microdc2-0.15.6-r1 (08 Nov 2009)
+
+  08 Nov 2009; Raúl Porcel <armin76@gentoo.org> -microdc2-0.15.6.ebuild,
+  +microdc2-0.15.6-r1.ebuild:
+  Revision bump with patches from bug 162828 and bug 241010, thanks to all
+  who contributed
+
+  21 Nov 2007; Raúl Porcel <armin76@gentoo.org> microdc2-0.15.6.ebuild:
+  Add missing DEPEND, bug #197170
+
+*microdc2-0.15.6 (16 Jan 2007)
+
+  16 Jan 2007; Raúl Porcel <armin76@gentoo.org> +metadata.xml,
+  +microdc2-0.15.6.ebuild:
+  New ebuild, bug 162291
+

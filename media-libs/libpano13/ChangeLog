@@ -1,0 +1,168 @@
+# ChangeLog for media-libs/libpano13
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libpano13/ChangeLog,v 1.37 2014/12/22 10:08:25 pinkbyte Exp $
+
+  22 Dec 2014; Sergey Popov <pinkbyte@gentoo.org> libpano13-2.9.19.ebuild:
+  Stable on amd64 and x86, wrt bug #528330
+
+*libpano13-2.9.19 (05 Jun 2014)
+
+  05 Jun 2014; Markus Meier <maekke@gentoo.org> -libpano13-2.9.19_beta1.ebuild,
+  -libpano13-2.9.19_rc1.ebuild, +libpano13-2.9.19.ebuild:
+  version bump to libpano13-2.9.19 final
+
+*libpano13-2.9.19_rc1 (27 Apr 2014)
+
+  27 Apr 2014; Markus Meier <maekke@gentoo.org> +libpano13-2.9.19_rc1.ebuild:
+  version bump
+
+*libpano13-2.9.19_beta1 (12 Jan 2014)
+
+  12 Jan 2014; Markus Meier <maekke@gentoo.org> +libpano13-2.9.19_beta1.ebuild:
+  version bump
+
+  11 Jul 2012; Tim Harder <radhermit@gentoo.org> -libpano13-2.9.14.ebuild,
+  -libpano13-2.9.17.ebuild, -files/libpano13-2.9.17-libpng-1.5.patch:
+  Remove old.
+
+  17 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org> libpano13-2.9.18.ebuild:
+  ppc stable wrt #379089
+
+  15 Sep 2011; Andreas Schuerch <nativemad@gentoo.org> libpano13-2.9.18.ebuild:
+  x86 stable, thanks JD, bug 379089.
+
+  18 Aug 2011; Tony Vroon <chainsaw@gentoo.org> libpano13-2.9.18.ebuild:
+  Marked stable based on arch testing by Agostino "ago" Sarubbo in bug #379089.
+
+  24 Jun 2011; Brent Baude <ranger@gentoo.org> libpano13-2.9.17.ebuild:
+  Marking libpano13-2.9.17 ppc for bug 347633
+
+  21 Jun 2011; Markus Meier <maekke@gentoo.org> libpano13-2.9.18.ebuild:
+  fix underlinking, bug #367487
+
+*libpano13-2.9.18 (04 May 2011)
+
+  04 May 2011; Tim Harder <radhermit@gentoo.org> +libpano13-2.9.18.ebuild:
+  version bump
+
+  22 Feb 2011; Mike Frysinger <vapier@gentoo.org> libpano13-2.9.17.ebuild,
+  +files/libpano13-2.9.17-libpng-1.5.patch:
+  Add fix from upstream tracker for building with libpng-1.5.
+
+  05 Dec 2010; Markos Chandras <hwoarang@gentoo.org> libpano13-2.9.17.ebuild:
+  Stable on amd64 wrt bug #347633
+
+  05 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  libpano13-2.9.17.ebuild:
+  x86 stable wrt bug #347633
+
+  08 Nov 2010; Markus Meier <maekke@gentoo.org> libpano13-2.9.14.ebuild,
+  libpano13-2.9.17.ebuild:
+  change jpeg dep to virtual/jpeg
+
+*libpano13-2.9.17 (21 Sep 2010)
+
+  21 Sep 2010; Markus Meier <maekke@gentoo.org>
+  -libpano13-2.9.15_beta3.ebuild, -libpano13-2.9.17_beta1.ebuild,
+  -libpano13-2.9.17_beta1-r1.ebuild, -libpano13-2.9.17_beta2.ebuild,
+  -libpano13-2.9.17_rc1.ebuild, +libpano13-2.9.17.ebuild:
+  version bump to final 2.9.17 version, remove pre-releases
+
+*libpano13-2.9.17_rc1 (04 Sep 2010)
+
+  04 Sep 2010; Markus Meier <maekke@gentoo.org>
+  +libpano13-2.9.17_rc1.ebuild:
+  version bump
+
+*libpano13-2.9.17_beta2 (19 May 2010)
+
+  19 May 2010; Markus Meier <maekke@gentoo.org>
+  +libpano13-2.9.17_beta2.ebuild:
+  version bump
+
+*libpano13-2.9.17_beta1-r1 (14 Feb 2010)
+
+  14 Feb 2010; Markus Meier <maekke@gentoo.org>
+  +libpano13-2.9.17_beta1-r1.ebuild:
+  add static-libs USE-flag
+
+*libpano13-2.9.17_beta1 (03 Feb 2010)
+
+  03 Feb 2010; Markus Meier <maekke@gentoo.org>
+  +libpano13-2.9.17_beta1.ebuild:
+  version bump
+
+  15 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  libpano13-2.9.14.ebuild, libpano13-2.9.15_beta3.ebuild:
+  Transfer Prefix keywords
+
+  25 Oct 2009; Markus Meier <maekke@gentoo.org> ChangeLog:
+  update manifest wrt bug #290512
+
+  25 Oct 2009; Markus Meier <maekke@gentoo.org> -libpano13-2.9.12.ebuild:
+  old
+
+  25 Oct 2009; Markus Meier <maekke@gentoo.org> libpano13-2.9.14.ebuild:
+  amd64/x86 stable, bug #284686
+
+  24 Oct 2009; nixnut <nixnut@gentoo.org> libpano13-2.9.14.ebuild:
+  ppc stable #284686
+
+*libpano13-2.9.15_beta3 (11 Oct 2009)
+
+  11 Oct 2009; Markus Meier <maekke@gentoo.org>
+  +libpano13-2.9.15_beta3.ebuild:
+  version bump
+
+*libpano13-2.9.14 (29 May 2009)
+
+  29 May 2009; Markus Meier <maekke@gentoo.org>
+  -libpano13-2.9.14_beta1.ebuild, -libpano13-2.9.14_beta2.ebuild,
+  -libpano13-2.9.14_rc1.ebuild, +libpano13-2.9.14.ebuild:
+  version bump to final 2.9.14 release, remove beta/rc
+
+  11 May 2009; Markus Meier <maekke@gentoo.org> libpano13-2.9.14_rc1.ebuild:
+  fix building with USE=java, bug #269131
+
+*libpano13-2.9.14_rc1 (03 May 2009)
+
+  03 May 2009; Markus Meier <maekke@gentoo.org>
+  +libpano13-2.9.14_rc1.ebuild:
+  version bump
+
+  20 Apr 2009; Markus Meier <maekke@gentoo.org> libpano13-2.9.12,
+  libpano13-2.9.14_beta1, libpano13-2.9.14_beta2:
+  remove media-libs/libpano12 references (removed from the tree)
+
+*libpano13-2.9.14_beta2 (07 Mar 2009)
+
+  07 Mar 2009; Markus Meier <maekke@gentoo.org>
+  +libpano13-2.9.14_beta2.ebuild:
+  version bump
+
+*libpano13-2.9.14_beta1 (27 Feb 2009)
+
+  27 Feb 2009; Markus Meier <maekke@gentoo.org>
+  +libpano13-2.9.14_beta1.ebuild:
+  version bump
+
+  23 Jan 2009; Brent Baude <ranger@gentoo.org> ChangeLog:
+  stable ppc, bug 246827
+
+  13 Jan 2009; Brent Baude <ranger@gentoo.org> libpano13-2.9.12.ebuild:
+  stable ppc, bug 246827
+
+  02 Dec 2008; <chainsaw@gentoo.org> libpano13-2.9.12.ebuild:
+  Add ~ppc keyword based on PowerBook6,7 testing by Christian "papillon81"
+  Schmitt <chrschmitt@gmail.com>. Dependency for media-gfx/hugin, bug
+  #234909.
+
+  22 Nov 2008; Markus Meier <maekke@gentoo.org> libpano13-2.9.12.ebuild:
+  amd64/x86 stable, bug #246827
+
+*libpano13-2.9.12 (16 Aug 2008)
+
+  16 Aug 2008; Markus Meier <maekke@gentoo.org> +metadata.xml,
+  +libpano13-2.9.12.ebuild:
+  initial import of libpano13
+

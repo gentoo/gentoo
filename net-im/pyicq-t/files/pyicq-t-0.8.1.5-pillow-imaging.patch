@@ -1,0 +1,36 @@
+diff -Naur pyicqt-0.8.1.5/src/contact.py pyicqt-0.8.1.5-1/src/contact.py
+--- pyicqt-0.8.1.5/src/contact.py	2009-08-24 14:37:59.000000000 +0200
++++ pyicqt-0.8.1.5-1/src/contact.py	2013-09-11 22:19:01.320467367 +0200
+@@ -13,7 +13,7 @@
+ import globals
+ import base64
+ if not config.disableAvatars:
+-	import Image
++	import PIL.Image as Image
+ import StringIO
+ 
+ 
+diff -Naur pyicqt-0.8.1.5/src/imgmanip.py pyicqt-0.8.1.5-1/src/imgmanip.py
+--- pyicqt-0.8.1.5/src/imgmanip.py	2009-08-24 14:37:59.000000000 +0200
++++ pyicqt-0.8.1.5-1/src/imgmanip.py	2013-09-11 22:19:25.257168117 +0200
+@@ -5,7 +5,7 @@
+ 
+ if not config.disableAvatars:
+ 	try:
+-		import Image
++		import PIL.Image as Image
+ 		import StringIO
+ 
+ 		def convertToPNG(imageData):
+diff -Naur pyicqt-0.8.1.5/tools/infodump.py pyicqt-0.8.1.5-1/tools/infodump.py
+--- pyicqt-0.8.1.5/tools/infodump.py	2009-08-24 14:37:59.000000000 +0200
++++ pyicqt-0.8.1.5-1/tools/infodump.py	2013-09-11 22:18:34.084807860 +0200
+@@ -41,7 +41,7 @@
+ 	print "Nevow Version: Unknown or Not Installed"
+ 
+ try:
+-	from Image import VERSION
++	from PIL.Image import VERSION
+ 	print "Python Imaging Library (PIL) Version: " + VERSION
+ except:
+ 	print "Python Imaging Library (PIL) Version: Unknown or Not Installed"

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		zlib-enum is a stop-gap package to provide enumeratees for
+		zlib compression/decompression.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">maltem/zlib-enum</remote-id>
+	</upstream>
+</pkgmetadata>

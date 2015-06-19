@@ -1,0 +1,22 @@
+--- squeezeslave-1.1_p350/src/slimaudio/slimaudio_decoder_vorbis.c
++++ squeezeslave-1.1_p350/src/slimaudio/slimaudio_decoder_vorbis.c
+@@ -27,7 +27,7 @@
+ #define OV_EXCLUDE_STATIC_CALLBACKS
+ 
+ #ifdef TREMOR_DECODER
+-#include <vorbis/ivorbisfile.h>
++#include <tremor/ivorbisfile.h>
+ #else
+ #include <vorbis/vorbisfile.h>
+ #endif /* TREMOR_DECODER */
+--- squeezeslave-1.1_p350/src/slimaudio/slimaudio.h
++++ squeezeslave-1.1_p350/src/slimaudio/slimaudio.h
+@@ -36,7 +36,7 @@
+ #define OV_EXCLUDE_STATIC_CALLBACKS
+ 
+ #ifdef TREMOR_DECODER
+-#include <vorbis/ivorbisfile.h>
++#include <tremor/ivorbisfile.h>
+ #else
+ #include <vorbis/vorbisfile.h>
+ #endif /* TREMOR_DECODER */

@@ -1,0 +1,76 @@
+# ChangeLog for dev-python/pyao
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyao/ChangeLog,v 1.21 2014/12/31 11:19:52 idella4 Exp $
+
+*pyao-0.82-r3 (31 Dec 2014)
+
+  31 Dec 2014; Ian Delaney <idella4@gentoo.org> +pyao-0.82-r3.ebuild:
+  revbump; conversion -> distutils-r1
+
+  21 Feb 2012; Patrick Lauer <patrick@gentoo.org> pyao-0.82-r2.ebuild:
+  Restricting jython
+
+  01 Aug 2010; Raúl Porcel <armin76@gentoo.org> pyao-0.82-r2.ebuild:
+  ia64 stable wrt #325403
+
+  13 Jul 2010; Christian Faulhammer <fauli@gentoo.org> pyao-0.82-r2.ebuild:
+  stable x86, bug 325403
+
+  26 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> pyao-0.82-r2.ebuild:
+  amd64 stable wrt #325403
+
+  25 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pyao-0.82-r2.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+*pyao-0.82-r2 (24 Jun 2010)
+
+  24 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> +pyao-0.82-r2.ebuild,
+  +files/pyao-0.82-new_api.patch:
+  Fix building with libao >= 1.0.0 wrt #314627 by Juergen Rose.
+
+*pyao-0.82-r1 (23 Apr 2009)
+
+  23 Apr 2009; Patrick Lauer <patrick@gentoo.org>
+  +files/pyao-fix-deallocation.patch, +pyao-0.82-r1.ebuild:
+  Small fix for >=python-2.5. Thanks to gilhad for the patch. Fixes #257550
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  26 Sep 2006; Simon Stelling <blubb@gentoo.org> pyao-0.82.ebuild:
+  stable on amd64
+
+  29 Aug 2006; Luis Medinas <metalgod@gentoo.org> pyao-0.82.ebuild:
+  Re add ~amd64 keyword. Bug #141193.
+
+  12 Jul 2006; Aron Griffis <agriffis@gentoo.org> pyao-0.82.ebuild:
+  Mark 0.82 stable on ia64
+
+  01 Apr 2006; Aron Griffis <agriffis@gentoo.org> pyao-0.82.ebuild:
+  Mark 0.82 ~ia64
+
+  04 Mar 2006; Stefan Briesenick <sbriesen@gentoo.org> pyao-0.82.ebuild:
+  removed 'examples' use flag, install examples unconditionally.
+
+  03 Mar 2006; Stefan Briesenick <sbriesen@gentoo.org> pyao-0.82.ebuild:
+  added 'examples' USE flag.
+
+  06 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> pyao-0.82.ebuild:
+  -amd64 -sparc
+
+  14 Aug 2003; Lars Weiler <pylon@gentoo.org> pyao-0.82.ebuild:
+  Added keyword ~ppc
+
+*pyao-0.82 (05 Aug 2003)
+
+  05 Aug 2003; Alastair Tse <liquidx@gentoo.org> pyao-0.82.ebuild:
+  version bump
+
+*pyao-0.81 (02 Mar 2003)
+
+  25 Mar 2003; Alastair Tse <liquidx@gentoo.org> pyao-0.81.ebuild:
+  stable bump
+
+  02 Mar 2003; Alastair Tse <liquidx@gentoo.org> pyao-0.81.ebuild files/digest-pyao-0.81 :
+  Initial Ebuild. Thanks to mike wakerly <mikew@wakerly.com>. Resolves #15979.

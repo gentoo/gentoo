@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=>=media-libs/jbigkit-2.0-r1 >=net-print/cups-1.4
+DESCRIPTION=A cups filter for Kodak ESP printers
+EAPI=5
+HOMEPAGE=http://cupsdriverkodak.sf.net/
+KEYWORDS=~x86
+LICENSE=GPL-2
+RDEPEND=>=media-libs/jbigkit-2.0-r1 >=net-print/cups-1.4
+SLOT=0
+SRC_URI=mirror://sourceforge/cupsdriverkodak/files/c2esp26.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=7e1ae869299f61beac2852ba57baca19

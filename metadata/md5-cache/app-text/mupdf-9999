@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare unpack
+DEPEND=dev-libs/openssl[static-libs?] media-libs/freetype:2[static-libs?] media-libs/jbig2dec[static-libs?] media-libs/openjpeg:2[static-libs?] net-misc/curl[static-libs?] virtual/jpeg[static-libs?] X? ( x11-libs/libX11[static-libs?] x11-libs/libXext[static-libs?] ) virtual/pkgconfig static-libs? ( dev-libs/openssl[static-libs?] media-libs/freetype:2[static-libs?] media-libs/jbig2dec[static-libs?] media-libs/openjpeg:2[static-libs?] net-misc/curl[static-libs?] virtual/jpeg[static-libs?] X? ( x11-libs/libX11[static-libs?] x11-libs/libXext[static-libs?] ) ) static? ( app-arch/bzip2[static-libs] x11-libs/libXau[static-libs] x11-libs/libXdmcp[static-libs] x11-libs/libxcb[static-libs] ) dev-vcs/git
+DESCRIPTION=a lightweight PDF viewer and toolkit written in portable C
+EAPI=5
+HOMEPAGE=http://mupdf.com/
+IUSE=X vanilla curl openssl static static-libs
+LICENSE=AGPL-3
+RDEPEND=dev-libs/openssl[static-libs?] media-libs/freetype:2[static-libs?] media-libs/jbig2dec[static-libs?] media-libs/openjpeg:2[static-libs?] net-misc/curl[static-libs?] virtual/jpeg[static-libs?] X? ( x11-libs/libX11[static-libs?] x11-libs/libXext[static-libs?] )
+SLOT=0/1.7
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	git-2	e28f0d8a9b321431b1e699782851b827	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=938f0742b86076af7df9237754acd674

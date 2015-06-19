@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=gif? ( >media-libs/giflib-4.2 ) jpeg? ( virtual/jpeg ) png? ( media-libs/libpng:0 media-libs/netpbm ) tiff? ( media-libs/tiff:0 ) truetype? ( media-libs/freetype:2 x11-libs/pango ) X? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXScrnSaver x11-libs/libXt ) truetype? ( virtual/pkgconfig ) X? ( x11-proto/scrnsaverproto x11-proto/xproto )
+DESCRIPTION=Render images of the earth into the X root window
+EAPI=4
+HOMEPAGE=http://xplanet.sourceforge.net/
+IUSE=gif jpeg png tiff truetype X
+KEYWORDS=~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=gif? ( >media-libs/giflib-4.2 ) jpeg? ( virtual/jpeg ) png? ( media-libs/libpng:0 media-libs/netpbm ) tiff? ( media-libs/tiff:0 ) truetype? ( media-libs/freetype:2 x11-libs/pango ) X? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXScrnSaver x11-libs/libXt )
+SLOT=0
+SRC_URI=mirror://sourceforge/xplanet/xplanet-1.3.0.tar.gz
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=77af605b0bad36475b8a53702b305332

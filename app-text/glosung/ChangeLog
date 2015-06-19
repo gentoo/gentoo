@@ -1,0 +1,92 @@
+# ChangeLog for app-text/glosung
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/glosung/ChangeLog,v 1.19 2015/06/09 12:23:12 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  19 Apr 2015; Chris Reffett <creffett@gentoo.org>
+  +files/glosung-3.6.2-scons-2.3.2-respectflags.patch, glosung-3.6.2-r1.ebuild:
+  Fix build with newer scons wrt bug 544130
+
+  31 Jan 2013; Chris Reffett <creffett@gentoo.org> -glosung-2.1.3.ebuild,
+  -glosung-3.2.2.ebuild, -glosung-3.4.2.ebuild, -glosung-3.5.2.ebuild:
+  Remove old versions.
+
+  30 Jan 2013; Agostino Sarubbo <ago@gentoo.org> glosung-3.6.2-r1.ebuild:
+  Stable for x86, wrt bug #315419
+
+  29 Jan 2013; Agostino Sarubbo <ago@gentoo.org> glosung-3.6.2-r1.ebuild:
+  Stable for amd64, wrt bug #315419
+
+*glosung-3.6.2-r1 (29 Jan 2013)
+
+  29 Jan 2013; Chris Reffett <creffett@gentoo.org>
+  +files/glosung-3.6.2-scons-respectflags.patch, +glosung-3.6.2-r1.ebuild,
+  -glosung-3.6.2.ebuild:
+  Revision bump, add patch to allow SCons to use environment CC, CFLAGS, and
+  LDFLAGS, remove auto-set CFLAGS such as -g.
+
+*glosung-3.6.2 (21 Jan 2013)
+
+  21 Jan 2013; Chris Reffett <creffett@gentoo.org>
+  +files/glosung-3.6.2-glib-includes.patch, +files/glosung.desktop,
+  +glosung-3.6.2.ebuild:
+  Version bump. Add patch to fix build with modern glib, ship a .desktop file
+  due to non-UTF-8 validation errors in the built in .desktop file. Fix
+  dependencies.
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> glosung-2.1.3.ebuild,
+  glosung-3.2.2.ebuild, glosung-3.4.2.ebuild, glosung-3.5.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  27 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> glosung-2.1.3.ebuild,
+  glosung-3.2.2.ebuild, glosung-3.4.2.ebuild, glosung-3.5.2.ebuild:
+  Fix slot-dep on gtk+
+
+*glosung-3.5.2 (16 May 2010)
+
+  16 May 2010; Steve Dibb <beandog@gentoo.org> +glosung-3.5.2.ebuild:
+  Version bump
+
+*glosung-3.4.2 (24 Jul 2009)
+*glosung-3.4.1 (24 Jul 2009)
+
+  24 Jul 2009; Steve Dibb <beandog@gentoo.org> +glosung-3.4.1.ebuild,
+  +glosung-3.4.2.ebuild:
+  Version bumps
+
+  26 Jun 2008; Steve Dibb <beandog@gentoo.org> glosung-2.1.3.ebuild,
+  glosung-3.2.1.ebuild, glosung-3.2.2.ebuild:
+  Cleanup ebuilds
+
+  05 May 2008; Samuli Suominen <drac@gentoo.org> glosung-3.2.2.ebuild:
+  Remove scons, pkgconfig and intltool from runtime deps.
+
+*glosung-3.2.2 (19 Feb 2008)
+
+  19 Feb 2008; Steve Dibb <beandog@gentoo.org> +glosung-3.2.2.ebuild:
+  Version bump, bug 158162
+
+*glosung-3.2.1 (05 Jan 2008)
+
+  05 Jan 2008; Steve Dibb <beandog@gentoo.org> metadata.xml,
+  +glosung-3.2.1.ebuild:
+  Assume maintainership, version bump, bug 158162
+
+  19 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove squinky86 from metadata.xml due to retirement.
+
+  28 Jun 2006; Joshua Jackson <tsunam@gentoo.org> glosung-2.1.3.ebuild:
+  Stable x86; bug #138291
+
+  28 Jun 2006; Jon Hood <squinky86@gentoo.org> glosung-2.1.3.ebuild:
+  Stable on amd64, allow compiling with newer libraries.
+
+*glosung-2.1.3 (27 Apr 2006)
+
+  27 Apr 2006; Jon Hood <squinky86@gentoo.org> +metadata.xml,
+  +glosung-2.1.3.ebuild:
+  Initial commit. This is a gnome2 program for displaying words from the
+  Bible, different random ones every day. Thanks to Eicke Godehardt
+  <eicke_godehardt@web.de> for this package.

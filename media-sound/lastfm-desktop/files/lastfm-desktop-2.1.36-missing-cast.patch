@@ -1,0 +1,25 @@
+From 192b979c57aa0b9a2df4f11ad4851ce4fbf5d38b Mon Sep 17 00:00:00 2001
+From: Spiek <spiek@ymail.com>
+Date: Fri, 27 Dec 2013 13:27:11 +0100
+Subject: [PATCH] Fix missing Cast
+
+---
+ app/client/Services/RadioService/RadioService.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/app/client/Services/RadioService/RadioService.cpp b/app/client/Services/RadioService/RadioService.cpp
+index 05f22c8..10094b6 100644
+--- a/app/client/Services/RadioService/RadioService.cpp
++++ b/app/client/Services/RadioService/RadioService.cpp
+@@ -307,7 +307,7 @@
+ void
+ RadioService::onPhononStateChanged( Phonon::State newstate, Phonon::State oldstate )
+ {
+-    qDebug() << oldstate << " -> " << newstate;
++    qDebug() << (int)oldstate << " -> " << (int)newstate;
+     if (m_mediaObject == 0) {
+         qDebug() << "m_mediaObject is null!";
+         return;
+-- 
+1.8.5.5
+

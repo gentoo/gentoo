@@ -1,0 +1,153 @@
+# ChangeLog for dev-util/diffball
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/diffball/ChangeLog,v 1.45 2013/06/17 01:00:32 rafaelmartins Exp $
+
+  17 Jun 2013; Rafael G. Martins <rafaelmartins@gentoo.org> metadata.xml:
+  Taking maintainership
+
+  16 Jun 2013; Pacho Ramos <pacho@gentoo.org> -diffball-1.0.ebuild,
+  metadata.xml:
+  Cleanup due #122207
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> diffball-1.0.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  01 Feb 2012; Brent Baude <ranger@gentoo.org> diffball-1.0.1.ebuild:
+  Marking diffball-1.0.1 ppc for bug 400349
+
+  29 Jan 2012; Raúl Porcel <armin76@gentoo.org> diffball-1.0.1.ebuild:
+  alpha/ia64 stable wrt #400349
+
+  28 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> diffball-1.0.1.ebuild:
+  x86 stable wrt bug #400349
+
+  25 Jan 2012; Markos Chandras <hwoarang@gentoo.org> diffball-1.0.1.ebuild:
+  Stable on amd64 wrt bug #400349
+
+  02 Aug 2011; Rafael G. Martins <rafaelmartins@gentoo.org>
+  diffball-1.0.1.ebuild:
+  added dev-util/pkgconfig to DEPEND. ${PN}-${PV} == ${P}
+
+*diffball-1.0.1 (02 Aug 2011)
+
+  02 Aug 2011; Brian Harring <ferringb@gentoo.org> +diffball-1.0.1.ebuild:
+  Add diffball 1.0.1 with xz support
+
+  25 Jul 2011; Naohiro Aota <naota@gentoo.org> diffball-1.0.ebuild:
+  Add keyword ~x86-fbsd
+
+  24 Jul 2011; Brian Harring <ferringb@gentoo.org> diffball-1.0.ebuild:
+  update the homepage/file url to it's new googlecode location.
+
+  19 Oct 2010; Mart Raudsepp <leio@gentoo.org> diffball-1.0.ebuild:
+  Drop to ~mips
+
+  15 Jan 2010; Christian Faulhammer <fauli@gentoo.org> diffball-1.0.ebuild:
+  Transfer Prefix keywords
+
+  13 Oct 2008; Zac Medico <zmedico@gentoo.org> diffball-0.6.5.ebuild,
+  diffball-0.7.1.ebuild, diffball-1.0.ebuild:
+  Bug #218657 - Update SRC_URI to use mirror://berlios/.
+
+  27 Jan 2008; Fabian Groffen <grobian@gentoo.org> diffball-0.6.5.ebuild,
+  diffball-0.7.1.ebuild, diffball-1.0.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  13 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org> diffball-1.0.ebuild:
+  ppc. stable
+
+  12 Mar 2007; Raúl Porcel <armin76@gentoo.org> diffball-1.0.ebuild:
+  x86 stable
+
+  30 Jan 2007; Steve Dibb <beandog@gentoo.org> diffball-0.7.1.ebuild,
+  diffball-1.0.ebuild:
+  amd64 stable, bug 161706, remove nostrip from restrict
+
+  21 Jan 2007; Alexander H. Færøy <eroyf@gentoo.org> diffball-1.0.ebuild:
+  Stable on MIPS.
+
+  12 Jan 2007; Alexander H. Færøy <eroyf@gentoo.org> diffball-1.0.ebuild:
+  Stable on Alpha.
+
+  15 Oct 2006; Aron Griffis <agriffis@gentoo.org> diffball-1.0.ebuild:
+  Mark 1.0 stable on ia64
+
+  10 Oct 2006; Bryan Østergaard <kloeri@gentoo.org> diffball-0.7.1.ebuild:
+  Stable on ia64.
+
+  16 Aug 2006; Thomas Cort <tcort@gentoo.org> diffball-0.7.1.ebuild:
+  Stable on alpha wrt Bug #141390.
+
+  09 Aug 2006; Fabian Groffen <grobian@gentoo.org> diffball-0.7.1.ebuild:
+  Marked ppc-macos stable (bug #141390)
+
+  06 Aug 2006; Torsten Veller <tove@gentoo.org> diffball-0.7.1.ebuild:
+  Stable on x86 (#141390)
+
+  23 Jul 2006; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  diffball-0.7.1.ebuild:
+  stable on ppc (Bug #141390)
+
+*diffball-1.0 (27 Jun 2006)
+
+  27 Jun 2006; Zac Medico <zmedico@gentoo.org> +diffball-1.0.ebuild:
+  1.0 version bump for bug #138030.
+
+*diffball-0.7.1 (05 Nov 2005)
+
+  05 Nov 2005; <ferring@gentoo.org> +diffball-0.7.1.ebuild, -diffball-0.6.2.ebuild:
+  Version 0.7.1; actual lib interface, and bit of extension of cfile subsystem
+  Yoinking version 0.6.2 also, since it's a bit old.
+
+  30 May 2005; Lina Pezzella <j4rg0n@gentoo.org> diffball-0.6.2.ebuild,
+  diffball-0.6.5.ebuild:
+  Stable ppc-macos
+
+  17 Apr 2005; Brian Harring <ferringb@getnoo.org>; diffball-0.6.5.ebuild: 
+  pushing keywording from 0.6.2 forward to 0.6.5.
+
+*diffball-0.6.5 (13 Apr 2005)
+
+  13 Apr 2005; Brian Harring <ferringb@gentoo.org>; diffball-0.6.5.ebuild:
+  Version bump, bug fixes with the addition of the ability to collapse multiple 
+  patches down to a single patch.
+
+  06 Apr 2005; Joseph Jezak <josejx@gentoo.org> diffball-0.6.2.ebuild:
+  Marked ppc stable.
+
+  07 Apr 2005; Brian Harring <ferringb@gentoo.org> -diffball-0.6.ebuild:
+  Yanked 0.6 due to potential segfault issue, same keywording is on 0.6.2 which 
+  is same code, plus the fix.
+
+  07 Apr 2005; Brian Harring <ferringb@gentoo.org> diffball-0.6.2.ebuild:
+  Bumped up for maintenance release fixing a few segfaults.
+
+  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> diffball-0.6.ebuild:
+  stable on ia64
+
+  31 Mar 2005; Lina Pezzella <j4rg0n@gentoo.org> diffball-0.6.ebuild:
+  Testing ppc-macos
+
+  28 Mar 2005; Brian Harring <ferringb@gentoo.org> -diffball-0.6_pre2.ebuild, diffball-0.6.ebuild:
+  Yanked _pre2, transfered the alpha keywording to 0.6, and stabled 0.6 for x86.
+
+  09 Mar 2005; Brian Harring <ferringb@gentoo.org> diffball-0.6.ebuild, -diffball-0.4_pre4:
+  Version bump, and cleansing.
+
+  31 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  17 Sep 2004; Brian Harring <ferringb@gentoo.org> -diffball-0.6_pre1.ebuild:
+  removed 0.6_pre1, added 0.6_pre2.
+
+  29 Aug 2004; Brian Harring <ferringb@gentoo.org> :
+  Added diffball-0.6_pre1.
+
+  03 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> diffball-0.4_pre4.ebuild:
+  Stable on alpha.
+
+*diffball-0.4_pre4 (15 Nov 2003)
+
+  15 Nov 2003; Seemant Kulleen <seemant@gentoo.org> diffball-0.4_pre4.ebuild:
+  new package for a binary diff'er -- written and submitted by Brian Harring
+  <bdharring@wisc.edu> (ferringb in #gentoo-dev) in bug #29731

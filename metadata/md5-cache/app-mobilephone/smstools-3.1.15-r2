@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare setup
+DEPEND=virtual/pkgconfig
+DESCRIPTION=Send and receive short messages through GSM modems
+EAPI=5
+HOMEPAGE=http://smstools3.kekekasvi.com/
+IUSE=stats
+KEYWORDS=~x86 ~amd64 ~ppc
+LICENSE=GPL-2
+RDEPEND=sys-process/procps stats? ( >=dev-libs/mm-1.4.0 )
+SLOT=0
+SRC_URI=http://smstools3.kekekasvi.com/packages/smstools3-3.1.15.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=b6cc392f5b928dd4a93d0388d1ec073b

@@ -1,0 +1,68 @@
+diff -ru audicle-1.0.0.7.orig//lang/chuck-1.2.1.3/src/chuck_vm.cpp audicle-1.0.0.7/lang/chuck-1.2.1.3/src/chuck_vm.cpp
+--- audicle-1.0.0.7.orig//lang/chuck-1.2.1.3/src/chuck_vm.cpp	2012-03-17 10:23:39.000000000 +0100
++++ audicle-1.0.0.7/lang/chuck-1.2.1.3/src/chuck_vm.cpp	2012-03-17 10:27:23.000000000 +0100
+@@ -48,6 +48,7 @@
+ #else
+   #include <unistd.h>
+   #include <pthread.h>
++  #include <algorithm>
+ #endif
+ 
+ 
+Only in audicle-1.0.0.7/lang/chuck-1.2.1.3/src: chuck_vm.cpp.orig
+Only in audicle-1.0.0.7/lang/chuck-1.2.1.3/src: rtaudio.cpp.orig
+Only in audicle-1.0.0.7/lang/chuck-1.2.1.3/src: rtaudio.cpp.rej
+Only in audicle-1.0.0.7/lang/chuck-1.2.1.3/src: ugen_stk.cpp.orig
+Only in audicle-1.0.0.7/lang/chuck-1.2.1.3/src: ugen_stk.cpp.rej
+Only in audicle-1.0.0.7/lang/chuck-1.2.1.3/src: ugen_xxx.cpp.orig
+Only in audicle-1.0.0.7/lang/chuck-1.2.1.3/src: ugen_xxx.cpp.rej
+diff -ru audicle-1.0.0.7.orig//lang/chuck-1.2.1.3/src/util_hid.cpp audicle-1.0.0.7/lang/chuck-1.2.1.3/src/util_hid.cpp
+--- audicle-1.0.0.7.orig//lang/chuck-1.2.1.3/src/util_hid.cpp	2012-03-17 10:23:39.000000000 +0100
++++ audicle-1.0.0.7/lang/chuck-1.2.1.3/src/util_hid.cpp	2012-03-17 10:27:23.000000000 +0100
+@@ -38,6 +38,7 @@
+ #include <limits.h>
+ #include <vector>
+ #include <map>
++#include <climits>
+ 
+ using namespace std;
+ 
+Only in audicle-1.0.0.7/lang/chuck-1.2.1.3/src: util_hid.cpp.orig
+diff -ru audicle-1.0.0.7.orig//lang/chuck-1.2.1.3/src/util_opsc.cpp audicle-1.0.0.7/lang/chuck-1.2.1.3/src/util_opsc.cpp
+--- audicle-1.0.0.7.orig//lang/chuck-1.2.1.3/src/util_opsc.cpp	2012-03-17 10:23:39.000000000 +0100
++++ audicle-1.0.0.7/lang/chuck-1.2.1.3/src/util_opsc.cpp	2012-03-17 10:27:23.000000000 +0100
+@@ -57,6 +57,7 @@
+ #include <netinet/tcp.h>
+ #include <arpa/inet.h>
+ #include <netdb.h>
++#include <algorithm>
+ #endif
+ 
+ #if defined(__MACOSX_CORE__)
+Only in audicle-1.0.0.7/lang/chuck-1.2.1.3/src: util_opsc.cpp.orig
+diff -ru audicle-1.0.0.7.orig//lang/chuck-1.2.1.3/src/util_string.h audicle-1.0.0.7/lang/chuck-1.2.1.3/src/util_string.h
+--- audicle-1.0.0.7.orig//lang/chuck-1.2.1.3/src/util_string.h	2012-03-17 10:23:39.000000000 +0100
++++ audicle-1.0.0.7/lang/chuck-1.2.1.3/src/util_string.h	2012-03-17 10:27:23.000000000 +0100
+@@ -36,6 +36,7 @@
+ #include "chuck_def.h"
+ #include <string>
+ #include <vector>
++#include <cstdio>
+ 
+ 
+ // itoa
+diff -ru audicle-1.0.0.7.orig//src/audicle_def.h audicle-1.0.0.7/src/audicle_def.h
+--- audicle-1.0.0.7.orig//src/audicle_def.h	2012-03-17 10:23:39.000000000 +0100
++++ audicle-1.0.0.7/src/audicle_def.h	2012-03-17 10:28:40.000000000 +0100
+@@ -39,8 +39,9 @@
+ 
+ #include "chuck_def.h"
+ 
+-#include <stdio.h>
+-#include <math.h>
++#include <cstdio>
++#include <cmath>
++#include <algorithm>
+ #include <assert.h>
+ #ifndef __PLATFORM_WIN32__
+   #include <unistd.h>

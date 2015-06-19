@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst prepare
+DEPEND=virtual/pkgconfig
+DESCRIPTION=Tools for bcachefs
+EAPI=5
+HOMEPAGE=http://bcache.evilpiepirate.org/
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~jlec/distfiles/bcache-tools-0_pre20130627.tar.xz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	udev	da001465a2e939c93f7ae16947ce3438
+_md5_=d3072079361c632f802933bb59fa1528

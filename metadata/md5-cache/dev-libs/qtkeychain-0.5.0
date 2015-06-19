@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=qt5? ( dev-qt/qtcore:5 dev-qt/qtdbus:5 ) qt4? ( dev-qt/qtcore:4 dev-qt/qtdbus:4 ) qt5? ( dev-qt/linguist-tools:5 ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Qt API for storing passwords securely
+EAPI=5
+HOMEPAGE=https://github.com/frankosterfeld/qtkeychain
+IUSE=+qt4 qt5
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=qt5? ( dev-qt/qtcore:5 dev-qt/qtdbus:5 ) qt4? ( dev-qt/qtcore:4 dev-qt/qtdbus:4 )
+REQUIRED_USE=|| ( qt4 qt5 )
+SLOT=0
+SRC_URI=https://github.com/frankosterfeld/qtkeychain/archive/v0.5.0.tar.gz -> qtkeychain-0.5.0.tar.gz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=c020f58f0bd190fcce2c67ec4efe9fea

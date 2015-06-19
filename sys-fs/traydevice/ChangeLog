@@ -1,0 +1,58 @@
+# ChangeLog for sys-fs/traydevice
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/traydevice/ChangeLog,v 1.15 2015/04/08 18:27:24 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> traydevice-1.6.2-r1.ebuild:
+  Drop old Python implementations
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> traydevice-1.6.2-r1.ebuild:
+  Stable for amd64, wrt bug #474310
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> traydevice-1.6.2-r1.ebuild:
+  Stable for x86, wrt bug #474310
+
+  11 May 2013; Samuli Suominen <ssuominen@gentoo.org>
+  traydevice-1.6.2-r1.ebuild:
+  Punt duplicate documentation files. Use DISTUTILS_SINGLE_IMPL=1.
+
+*traydevice-1.6.2-r1 (11 May 2013)
+
+  11 May 2013; Mike Gilbert <floppym@gentoo.org> +traydevice-1.6.2-r1.ebuild:
+  Convert to distutils-r1.
+
+  11 May 2013; Mike Gilbert <floppym@gentoo.org> traydevice-1.6.2.ebuild:
+  Restrict python2.5.
+
+  11 May 2013; Samuli Suominen <ssuominen@gentoo.org> traydevice-1.6.2.ebuild:
+  Pull in sys-fs/udisks:2 instead of :0
+
+*traydevice-1.6.2 (11 May 2013)
+
+  11 May 2013; Markos Chandras <hwoarang@gentoo.org> +traydevice-1.6.2.ebuild:
+  Version bump
+
+  27 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> traydevice-1.5.ebuild,
+  traydevice-1.5.2.ebuild:
+  Pin to SLOT="0" of sys-fs/udisks.
+
+  01 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  traydevice-1.5.2.ebuild:
+  x86 stable wrt bug #349578
+
+  26 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> traydevice-1.5.2.ebuild:
+  amd64 stable wrt #349578
+
+*traydevice-1.5.2 (30 Sep 2010)
+
+  30 Sep 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +traydevice-1.5.2.ebuild:
+  Version bump.
+
+  30 Sep 2010; Samuli Suominen <ssuominen@gentoo.org> traydevice-1.5.ebuild:
+  amd64/x86 stable
+
+*traydevice-1.5 (21 Aug 2010)
+
+  21 Aug 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +traydevice-1.5.ebuild:
+  Initial commit.

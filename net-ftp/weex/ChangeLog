@@ -1,0 +1,64 @@
+# ChangeLog for net-ftp/weex
+# Copyright 2000-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/weex/ChangeLog,v 1.15 2014/12/16 10:32:28 pacho Exp $
+
+  16 Dec 2014; Pacho Ramos <pacho@gentoo.org> weex-2.6.1.5-r1.ebuild:
+  Disable nls support until we find a fix for preventing sandbox violations
+  (#532502 by Toralf Förster)
+
+  30 Aug 2014; Michał Górny <mgorny@gentoo.org> weex-2.6.1.5-r1.ebuild:
+  Replace einstall with emake install, bug #521586.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> weex-2.6.1.5-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #473480
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*weex-2.6.1.5-r1 (04 Oct 2005)
+
+  04 Oct 2005; Patrick Kursawe <phosphan@gentoo.org>
+  +files/formatstring.patch, -weex-2.6.1.5.ebuild, +weex-2.6.1.5-r1.ebuild:
+  Security fix, see bug #107849
+
+  26 Jul 2005; David Holm <dholm@gentoo.org> weex-2.6.1.5.ebuild:
+  Added to ~ppc.
+
+  17 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org> weex-2.6.1.5.ebuild:
+  fix inherit for bug #71472; tidy
+
+  25 Sep 2004; Tom Martin <slarti@gentoo.org> weex-2.6.1.5.ebuild:
+  Stable on amd64.
+
+  18 Aug 2004; Patrick Kursawe <phosphan@gentoo.org> weex-2.6.1.5.ebuild:
+  Applying patch unconditionally now.
+
+  09 Aug 2004; Tom Martin <slarti@gentoo.org> weex-2.6.1.5.ebuild:
+  Added va_list patch to allow compilation on amd64, patch courtesy of Kugelfang
+  <kugelfang@gentoo.org>. Marked ~amd64.
+
+*weex-2.6.1.5 (22 Mar 2004)
+
+  22 Mar 2004; Patrick Kursawe <phosphan@gentoo.org> weex-2.6.1.5.ebuild,
+  weex-3.0.0_pre20030508.ebuild:
+  Latest stable version from sourceforge.
+
+  22 Mar 2004; Patrick Kursawe <phosphan@gentoo.org>
+  weex-3.0.0_pre20030508.ebuild:
+  The sourceforge weex project finally released some files, and a developer
+  asked to use 2.6.1.5 instead of the old 3.x snapshot which is known to have
+  problems.
+
+  24 Jun 2003; Patrick Kursawe <phosphan@gentoo.org>
+  weex-3.0.0_pre20030508.ebuild:
+  stable for x86
+
+*weex-3.0.0_pre20030508 (08 May 2003)
+
+  08 May 2003; Patrick Kursawe <phosphan@gentoo.org>
+  weex-3.0.0_pre20030508.ebuild:
+  Initial import. Orphaned project, but I don't know a replacement and find it
+  useful.

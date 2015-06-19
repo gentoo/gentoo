@@ -1,0 +1,30 @@
+# ChangeLog for dev-haskell/chell
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/chell/ChangeLog,v 1.7 2015/02/15 18:53:06 slyfox Exp $
+
+  15 Feb 2015; Sergei Trofimovich <slyfox@gentoo.org> chell-0.4.0.1.ebuild:
+  ~sparc keyworded
+
+  15 Feb 2015; Sergei Trofimovich <slyfox@gentoo.org> chell-0.4.0.1.ebuild:
+  keyword on ~alpha/~ia64/~ppc/~ppc64 (bug #538486)
+
+*chell-0.4.0.1 (29 Jan 2015)
+
+  29 Jan 2015; Alexander Vershilov <qnikst@gentoo.org> +chell-0.4.0.1.ebuild,
+  -chell-0.4.ebuild, -files/chell-0.4-ghc-7.10.patch:
+  dev-haskell/chell: update
+
+  02 Jan 2015; Mark Wright <gienah@gentoo.org> +files/chell-0.4-ghc-7.10.patch,
+  chell-0.4.ebuild:
+  Patch chell-0.4 for ghc 7.10
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> chell-0.4.ebuild:
+  Drop trailing '.' from description.
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+*chell-0.4 (02 Jul 2014)
+
+  02 Jul 2014; Mark Wright <gienah@gentoo.org> +chell-0.4.ebuild, +metadata.xml:
+  Bump chell to 0.4

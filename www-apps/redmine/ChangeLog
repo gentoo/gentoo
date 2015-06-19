@@ -1,0 +1,257 @@
+# ChangeLog for www-apps/redmine
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/redmine/ChangeLog,v 1.46 2015/03/14 00:08:00 mrueg Exp $
+
+  14 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -redmine-2.4.5.ebuild:
+  Remove old.
+
+  03 Nov 2014; Peter Volkov <pva@gentoo.org> metadata.xml:
+  Drop Ilya Tumaykin from maintainers per his request.
+
+  06 Aug 2014; Manuel Rüger <mrueg@gentoo.org> redmine-2.4.6.ebuild:
+  NMU: Remove .travis.yml, too.
+
+*redmine-2.4.6 (05 Aug 2014)
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> +redmine-2.4.6.ebuild:
+  NMU. Version bump. See bug #491758. Add ruby20 support. Fixes bug #484484.
+
+  03 Jun 2014; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Remove unneeded useflag description from metadata.xml
+
+  01 Jun 2014; Peter Volkov <pva@gentoo.org> -redmine-2.2.4.ebuild,
+  -redmine-2.3.2.ebuild, -redmine-2.3.4.ebuild, +redmine-2.4.5.ebuild:
+  Version bump #491758. openid is now not optional, fixes security bug #507052.
+  Drop vulnerable.
+
+*redmine-2.4.5 (01 Jun 2014)
+
+  01 Jun 2014; Peter Volkov <pva@gentoo.org> +redmine-2.4.5.ebuild:
+  Version bump #491758. openid is now not optional, fixes security bug #507052.
+
+*redmine-2.3.4 (10 Jan 2014)
+
+  10 Jan 2014; Peter Volkov <pva@gentoo.org> +redmine-2.3.4.ebuild:
+  Version bump. Fixed bad log file permissions problem reported by Jan Matějka
+  in bug #480980.
+
+  08 Jan 2014; Mike Frysinger <vapier@gentoo.org> redmine-2.2.4.ebuild,
+  redmine-2.3.2.ebuild:
+  Inherit the user eclass for enewuser/etc...
+
+*redmine-2.3.2 (02 Sep 2013)
+
+  02 Sep 2013; Peter Volkov <pva@gentoo.org>
+  -files/redmine-1.4.1-bundler.patch, -redmine-1.4.7.ebuild,
+  +redmine-2.3.2.ebuild, files/redmine-2.initd, -files/redmine.initd:
+  Version bump, bug #463449, thank Coacher for report. Drop old.
+
+  14 Aug 2013; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Fix e-mail address.
+
+  14 May 2013; Peter Volkov <pva@gentoo.org> metadata.xml:
+  Added Ilya Tumaykin to metadata.xml per e-mail request.
+
+  13 May 2013; Peter Volkov <pva@gentoo.org> files/redmine-2.initd,
+  files/redmine.initd:
+  Use /run instead of /var/run, suggested by Coacher in bug #444936
+
+*redmine-2.2.4 (11 May 2013)
+*redmine-1.4.7 (11 May 2013)
+
+  11 May 2013; Peter Volkov <pva@gentoo.org> -redmine-1.3.2.ebuild,
+  -redmine-1.3.3.ebuild, -redmine-1.4.1.ebuild, -redmine-1.4.3.ebuild,
+  -redmine-1.4.5.ebuild, +redmine-1.4.7.ebuild, -redmine-2.1.5.ebuild,
+  -redmine-2.2.0.ebuild, +redmine-2.2.4.ebuild, files/redmine-2.initd,
+  -files/redmine-rubytree-r8214.patch, metadata.xml:
+  Version bump (thank Coacher): fixes incorrect dependencies reported in bug
+  #451078, stop creating /var/run/redmine (create it in init script) #444936.
+  Drop ldap authentification in case ldap was disabled, bug #413779 wrt Chris
+  Murtagh and Diego Augusto Molina. Fixes trace in case openid is disabled.
+  Fixes multiple security vulnerabilities, #418925 thank Manuel Rüger for
+  report. Added fastercsv dependency reported in bug #453966. Drop old and
+  vulnerable versions.
+
+*redmine-2.2.0 (07 Jan 2013)
+*redmine-2.1.5 (07 Jan 2013)
+*redmine-1.4.5 (07 Jan 2013)
+
+  07 Jan 2013; MATSUU Takuto <matsuu@gentoo.org> +redmine-1.4.5.ebuild,
+  +redmine-2.1.5.ebuild, +redmine-2.2.0.ebuild, +files/redmine-2.initd:
+  Version bumped, bug #418925.
+
+  16 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> redmine-1.3.2.ebuild,
+  redmine-1.3.3.ebuild, redmine-1.4.1.ebuild, redmine-1.4.3.ebuild:
+  Update after Ruby packages move.
+
+*redmine-1.4.3 (07 Jun 2012)
+
+  07 Jun 2012; MATSUU Takuto <matsuu@gentoo.org> +redmine-1.4.3.ebuild:
+  Version bumped.
+
+*redmine-1.4.1 (25 Apr 2012)
+*redmine-1.3.3 (25 Apr 2012)
+
+  25 Apr 2012; MATSUU Takuto <matsuu@gentoo.org> -redmine-1.3.0.ebuild,
+  -redmine-1.3.1.ebuild, +redmine-1.3.3.ebuild, +redmine-1.4.1.ebuild,
+  +files/redmine-1.4.1-bundler.patch:
+  Version bumped. Removed old versions.
+
+*redmine-1.3.2 (12 Mar 2012)
+
+  12 Mar 2012; MATSUU Takuto <matsuu@gentoo.org> +redmine-1.3.2.ebuild,
+  files/redmine.initd:
+  Version bumped. Fixed directory owners and permissions, bug #406605.
+
+*redmine-1.3.1 (26 Feb 2012)
+
+  26 Feb 2012; MATSUU Takuto <matsuu@gentoo.org>
+  +files/redmine-rubytree-r8214.patch, -redmine-1.1.3.ebuild,
+  -redmine-1.2.3.ebuild, +redmine-1.3.1.ebuild:
+  Version bumped, bug #404245. Added einfo about sqlite3, bug #401087. Removed
+  rubytree, bug #399503. Removed old versions.
+
+  11 Jan 2012; MATSUU Takuto <matsuu@gentoo.org> -redmine-1.2.1-r1.ebuild,
+  -redmine-1.2.2.ebuild, redmine-1.3.0.ebuild:
+  Removed email.yml information, bug #395279. Removed old versions.
+
+*redmine-1.3.0 (12 Dec 2011)
+*redmine-1.2.3 (12 Dec 2011)
+
+  12 Dec 2011; MATSUU Takuto <matsuu@gentoo.org> +redmine-1.2.3.ebuild,
+  +redmine-1.3.0.ebuild:
+  Version bumped.
+
+  09 Dec 2011; Diego E. Pettenò <flameeyes@gentoo.org> redmine-1.1.3.ebuild,
+  redmine-1.2.1-r1.ebuild, redmine-1.2.2.ebuild:
+  QA: make dependencies behave as they are intended, which also means fixing
+  breakage after coderay 0.9.7 was removed. Also drop the mysql/postgres/sqlite3
+  USE flags that are vastly unbound and that should not be checked for in
+  pkg_setup.
+
+*redmine-1.2.2 (14 Nov 2011)
+
+  14 Nov 2011; MATSUU Takuto <matsuu@gentoo.org> +redmine-1.2.2.ebuild:
+  Version bumped. Fixed dependency, bug #384929.
+
+*redmine-1.2.1-r1 (29 Sep 2011)
+
+  29 Sep 2011; MATSUU Takuto <matsuu@gentoo.org> -redmine-1.1.2.ebuild,
+  -redmine-1.2.0.ebuild, -redmine-1.2.1.ebuild, +redmine-1.2.1-r1.ebuild,
+  files/redmine.initd:
+  Fixed dependency. Fixed initd files. Removed old versions.
+
+*redmine-1.2.1 (27 Jul 2011)
+
+  27 Jul 2011; MATSUU Takuto <matsuu@gentoo.org> +redmine-1.2.1.ebuild:
+  Version bumped. Fixed dependency, bug #374485. Added EPREFIX.
+
+*redmine-1.2.0 (04 Jun 2011)
+
+  04 Jun 2011; MATSUU Takuto <matsuu@gentoo.org> +redmine-1.2.0.ebuild:
+  Version bumped. Removed SCM USE flags.
+
+*redmine-1.1.3 (12 May 2011)
+
+  12 May 2011; MATSUU Takuto <matsuu@gentoo.org> +redmine-1.1.3.ebuild:
+  Version bumped.
+
+  24 Apr 2011; MATSUU Takuto <matsuu@gentoo.org> -redmine-1.0.5.ebuild,
+  -redmine-1.1.0.ebuild, -redmine-1.1.1.ebuild, redmine-1.1.2.ebuild:
+  Added dev-ruby/rake to dependency, bug #359195. Removed old versions.
+
+*redmine-1.1.2 (08 Mar 2011)
+
+  08 Mar 2011; MATSUU Takuto <matsuu@gentoo.org> +redmine-1.1.2.ebuild:
+  Version bumped. Fixed dependency, bug #353742.
+
+*redmine-1.1.1 (30 Jan 2011)
+
+  30 Jan 2011; MATSUU Takuto <matsuu@gentoo.org> +redmine-1.1.1.ebuild:
+  Version bumped.
+
+  24 Jan 2011; MATSUU Takuto <matsuu@gentoo.org> -redmine-0.9.6.ebuild,
+  -redmine-1.0.2.ebuild, -redmine-1.0.3.ebuild, -redmine-1.0.4.ebuild,
+  redmine-1.0.5.ebuild, redmine-1.1.0.ebuild:
+  Removed dev-ruby/rails from RDEPEND, bug #352511. Fixed elog message bug
+  #352588. Removed old versions.
+
+*redmine-1.1.0 (17 Jan 2011)
+
+  17 Jan 2011; MATSUU Takuto <matsuu@gentoo.org> +redmine-1.1.0.ebuild:
+  Version bumped, bug #351892.
+
+*redmine-1.0.5 (25 Dec 2010)
+
+  25 Dec 2010; MATSUU Takuto <matsuu@gentoo.org> +redmine-1.0.5.ebuild,
+  files/redmine.initd:
+  Version bumped.
+
+*redmine-1.0.4 (13 Dec 2010)
+
+  13 Dec 2010; MATSUU Takuto <matsuu@gentoo.org> +redmine-1.0.4.ebuild:
+  Version bumped, bug #347650.
+
+*redmine-1.0.3 (04 Nov 2010)
+
+  04 Nov 2010; MATSUU Takuto <matsuu@gentoo.org> +redmine-1.0.3.ebuild:
+  Version bumped.
+
+*redmine-1.0.2 (02 Oct 2010)
+
+  02 Oct 2010; MATSUU Takuto <matsuu@gentoo.org> +redmine-1.0.2.ebuild:
+  Version bumped.
+
+  10 Jul 2010; MATSUU Takuto <matsuu@gentoo.org> redmine-0.9.6.ebuild:
+  Fixed dependency.
+
+*redmine-0.9.6 (08 Jul 2010)
+
+  08 Jul 2010; MATSUU Takuto <matsuu@gentoo.org> -redmine-0.9.2.ebuild,
+  -redmine-0.9.3.ebuild, -redmine-0.9.4.ebuild, -redmine-0.9.5.ebuild,
+  +redmine-0.9.6.ebuild:
+  Version bumped. Removed old versions.
+
+*redmine-0.9.5 (07 Jul 2010)
+
+  07 Jul 2010; MATSUU Takuto <matsuu@gentoo.org> +redmine-0.9.5.ebuild:
+  Version bumped. Convert to ruby-ng.
+
+  22 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  redmine-0.9.2.ebuild, redmine-0.9.3.ebuild, redmine-0.9.4.ebuild:
+  dev-util/subversion renamed to dev-vcs/subversion.
+
+  19 Jun 2010; Jonathan Callen <abcd@gentoo.org> redmine-0.9.2.ebuild,
+  redmine-0.9.3.ebuild, redmine-0.9.4.ebuild:
+  Moving dev-util/cvs* to dev-vcs/cvs*
+
+*redmine-0.9.4-r1 (08 May 2010)
+
+  08 May 2010; MATSUU Takuto <matsuu@gentoo.org> +redmine-0.9.4-r1.ebuild:
+  Added fastcgi USE flag, bug #318089.
+
+*redmine-0.9.4 (07 May 2010)
+
+  07 May 2010; MATSUU Takuto <matsuu@gentoo.org> +redmine-0.9.4.ebuild,
+  metadata.xml:
+  Version bumped.
+
+  17 Mar 2010; Sebastian Pipping <sping@gentoo.org> redmine-0.9.2.ebuild,
+  redmine-0.9.3.ebuild, metadata.xml:
+  Propagate move of dev-util/git to dev-vcs/git
+
+  14 Mar 2010; Lennart Kolmodin <kolmodin@gentoo.org> redmine-0.9.2.ebuild,
+  redmine-0.9.3.ebuild, metadata.xml:
+  Change references to dev-util/darcs to dev-vcs/darcs due to the move.
+
+*redmine-0.9.3 (04 Mar 2010)
+
+  04 Mar 2010; MATSUU Takuto <matsuu@gentoo.org> +redmine-0.9.3.ebuild:
+  Version bumped.
+
+*redmine-0.9.2 (10 Feb 2010)
+
+  10 Feb 2010; MATSUU Takuto <matsuu@gentoo.org>
+  +files/10_redmine_vhost.conf, +redmine-0.9.2.ebuild, +files/redmine.confd,
+  +files/redmine.initd, +metadata.xml:
+  Initial import, bug #260575.

@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=app-arch/unzip media-libs/libpng sys-libs/zlib
+DESCRIPTION=Extract closed captioning subtitles from video to SRT
+EAPI=5
+HOMEPAGE=http://ccextractor.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://sourceforge/ccextractor/ccextractor.src.0.69.zip
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=95ed496ed7dad464f352c9d58c5679f0

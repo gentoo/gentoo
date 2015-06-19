@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>perl</herd>
+  <upstream>
+    <remote-id type="cpan">Gtk2-Ex-Simple-List</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::Simple::List</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::Simple::TiedCommon</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::Simple::TiedList</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::Simple::TiedRow</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-perl/ImageSize >=dev-perl/Date-Calc-5.0 >=dev-perl/File-MMagic-1.17 >=dev-perl/MIME-Types-1.005 dev-perl/regexp-common >=dev-perl/Perl6-Junction-1.10 dev-perl/Email-Valid dev-perl/Module-Build dev-lang/perl:=[-build(-)]
+DESCRIPTION=Validates user input (usually from an HTML form) based on input profile
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/Data-FormValidator/
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/ImageSize >=dev-perl/Date-Calc-5.0 >=dev-perl/File-MMagic-1.17 >=dev-perl/MIME-Types-1.005 dev-perl/regexp-common >=dev-perl/Perl6-Junction-1.10 dev-perl/Email-Valid dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/M/MA/MARKSTOS/Data-FormValidator-4.81.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=16d87bbdce7f23f6573a66eb1edfb4bc

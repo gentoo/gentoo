@@ -1,0 +1,67 @@
+# ChangeLog for app-mobilephone/dfu-util
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-mobilephone/dfu-util/ChangeLog,v 1.10 2014/04/09 07:11:30 tomwij Exp $
+
+  09 Apr 2014; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  [QA] Dissolve the mobile-phone herd to maintainer-needed because it is empty
+  and nobody joined it after multiple recruitment mails.
+
+*dfu-util-0.7 (22 Aug 2013)
+
+  22 Aug 2013; Chris Reffett <creffett@gentoo.org> +dfu-util-0.7.ebuild,
+  -dfu-util-0.1.ebuild, -dfu-util-0.4.ebuild, -dfu-util-0.5.ebuild,
+  dfu-util-9999.ebuild:
+  Version bump wrt 417525. EAPI bump. Sync live version.
+
+  07 Oct 2012; Diego E. Pettenò <flameeyes@gentoo.org> dfu-util-0.4.ebuild,
+  dfu-util-0.5.ebuild, dfu-util-9999.ebuild:
+  Add missing dependency over pkgconfig. Closes bug #380667.
+
+*dfu-util-0.5 (02 Nov 2011)
+
+  02 Nov 2011; Mike Frysinger <vapier@gentoo.org> +dfu-util-0.5.ebuild:
+  Version bump.
+
+  21 Sep 2011; Michał Górny <mgorny@gentoo.org> dfu-util-9999.ebuild:
+  Migrate to git-2.
+
+*dfu-util-0.4 (07 Aug 2011)
+
+  07 Aug 2011; Mike Frysinger <vapier@gentoo.org> +dfu-util-0.4.ebuild:
+  Version bump.
+
+  07 Aug 2011; Mike Frysinger <vapier@gentoo.org> dfu-util-9999.ebuild:
+  Upstream has converted to libusb-1.
+
+*dfu-util-0.1 (05 Jun 2010)
+
+  05 Jun 2010; Mike Frysinger <vapier@gentoo.org> dfu-util-0.1.ebuild:
+  Version bump.
+
+  01 Dec 2009; Mike Frysinger <vapier@gentoo.org>
+  openmoko-dfu-util-5484.ebuild:
+  Stabilize for amd64/x86.
+
+  17 Oct 2009; Mike Frysinger <vapier@gentoo.org>
+  openmoko-dfu-util-5484.ebuild, openmoko-dfu-util-9999.ebuild:
+  Switch to virtual/libusb:0.
+
+*openmoko-dfu-util-5484 (19 Aug 2009)
+
+  19 Aug 2009; Mike Frysinger <vapier@gentoo.org>
+  +openmoko-dfu-util-5484.ebuild, openmoko-dfu-util-9999.ebuild:
+  Now that svn has settled, make a snapshot release.
+
+  20 Jun 2009; Alin Năstac <mrness@gentoo.org>
+  openmoko-dfu-util-9999.ebuild:
+  Migrate to EAPI 2. Update libusb dependency atom (#270039).
+
+  28 Nov 2008; Peter Volkov <pva@gentoo.org> openmoko-dfu-util-9999.ebuild:
+  Install manual page.
+
+*openmoko-dfu-util-9999 (06 Sep 2008)
+
+  06 Sep 2008; Mike Frysinger <vapier@gentoo.org> +metadata.xml,
+  +openmoko-dfu-util-9999.ebuild:
+  Initial ebuild by mikael lammentausta, Florian Steinel, and Bastien
+  Lacoste #201920.

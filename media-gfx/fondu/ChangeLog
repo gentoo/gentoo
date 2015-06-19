@@ -1,0 +1,64 @@
+# ChangeLog for media-gfx/fondu
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/fondu/ChangeLog,v 1.15 2015/05/23 01:17:58 mrueg Exp $
+
+  23 May 2015; Manuel Rüger <mrueg@gentoo.org> -fondu-20040925.ebuild,
+  -fondu-20060102.ebuild:
+  Remove old.
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> fondu-20060102-r1.ebuild:
+  Stable for ppc, wrt bug #495700
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> fondu-20060102-r1.ebuild:
+  amd64 stable, bug #495700
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  fondu-20060102-r1.ebuild:
+  x86 stable wrt bug #495700
+
+  21 Oct 2013; Fabian Groffen <grobian@gentoo.org> fondu-20060102-r1.ebuild:
+  Marked ~x64-macos, bug #486818
+
+*fondu-20060102-r1 (21 Jul 2013)
+
+  21 Jul 2013; Christoph Junghans <ottxor@gentoo.org> +fondu-20060102-r1.ebuild:
+   install executables in /usr, prefix support (bug #476142)
+
+  26 Jun 2010; <nixnut@gentoo.org> fondu-20060102.ebuild:
+  ppc stable #317247
+
+  24 May 2010; Pacho Ramos <pacho@gentoo.org> fondu-20060102.ebuild:
+  stable amd64, bug 317247
+
+  10 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  fondu-20060102.ebuild:
+  x86 stable wrt bug #317247
+
+*fondu-20060102 (09 Oct 2009)
+
+  09 Oct 2009; Peter Volkov <pva@gentoo.org> +fondu-20060102.ebuild,
+  +files/fondu-20060102-build-fix.patch:
+  Version bump. Respect CFLAGS, LDFLAGS, bug #240796, thank Diego E.
+  'Flameeyes' Pettenò for report. ~amd64 keyworded.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  05 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> fondu-20040925.ebuild:
+  Marked as stable.
+
+*fondu-20040925 (10 Oct 2004)
+
+  10 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> fondu-20040527.ebuild,
+  +fondu-20040925.ebuild:
+  Version bumped.
+
+  06 Jul 2004; David Holm <dholm@gentoo.org> fondu-20040527.ebuild:
+  Added to ~ppc.
+
+*fondu-20040527 (05 Jul 2004)
+
+  05 Jul 2004; Mamoru KOMACHI <usata@gentoo.org> +metadata.xml,
+  +fondu-20040527.ebuild:
+  Initial import. Ebuild submitted by Jose Sia Jr. <jsia@id.iit.edu>,
+  closing bug #24732

@@ -1,0 +1,22 @@
+# ChangeLog for dev-python/flask-principal
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/flask-principal/ChangeLog,v 1.5 2015/01/16 03:45:45 patrick Exp $
+
+  16 Jan 2015; Patrick Lauer <patrick@gentoo.org> flask-principal-0.4.0.ebuild:
+  Stable on amd64 and x86 for 527558
+
+  02 Aug 2014; Ian Delaney <idella4@gentoo.org> flask-principal-0.4.0.ebuild:
+  tidy
+
+  15 Jun 2014; Ian Delaney <idella4@gentoo.org> flask-principal-0.4.0.ebuild:
+  add py3 pypy support
+
+  16 Sep 2013; Maxim Koltsov <maksbotan@gentoo.org>
+  flask-principal-0.4.0.ebuild:
+  Fix DESCRIPTION to the real one.
+
+*flask-principal-0.4.0 (10 Sep 2013)
+
+  10 Sep 2013; Patrick Lauer <patrick@gentoo.org> +flask-principal-0.4.0.ebuild,
+  +metadata.xml:
+  Initial import, ebuild by me

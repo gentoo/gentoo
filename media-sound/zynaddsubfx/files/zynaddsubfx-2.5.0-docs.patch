@@ -1,0 +1,14 @@
+Index: zynaddsubfx-2.5.0/CMakeLists.txt
+===================================================================
+--- zynaddsubfx-2.5.0.orig/CMakeLists.txt
++++ zynaddsubfx-2.5.0/CMakeLists.txt
+@@ -27,9 +27,6 @@ include(CTestConfig.cmake)
+ #Currently the only directory that uses cmake
+ add_subdirectory(src)
+ 
+-install(FILES AUTHORS.txt COPYING FAQ.txt HISTORY.txt README.adoc
+-	DESTINATION share/doc/zynaddsubfx
+-	)
+ install(FILES zynaddsubfx-jack.desktop zynaddsubfx-alsa.desktop
+     DESTINATION share/applications)
+ install(FILES zynaddsubfx.svg

@@ -1,0 +1,42 @@
+# ChangeLog for sci-mathematics/xmds
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/xmds/ChangeLog,v 1.10 2011/06/13 05:49:52 tomka Exp $
+
+  13 Jun 2011; Thomas Kahle <tomka@gentoo.org> metadata.xml:
+  Taking over maintainership
+
+  24 Dec 2009; Michał Januszewski <spock@gentoo.org> xmds-1.6.6.ebuild:
+  Fix bug #297336.
+
+  19 Oct 2008; Markus Meier <maekke@gentoo.org> xmds-1.6.6.ebuild:
+  amd64/x86 stable, bug #242600
+
+*xmds-1.6.6 (10 Sep 2008)
+
+  10 Sep 2008; Michał Januszewski <spock@gentoo.org> +xmds-1.6.6.ebuild:
+  Version bump.
+
+  09 Sep 2008; Michał Januszewski <spock@gentoo.org> -xmds-1.6.4.ebuild:
+  Remove an old ebuild.
+
+  08 Sep 2008; Markus Meier <maekke@gentoo.org> xmds-1.6.5.ebuild:
+  amd64/x86 stable, bug #237002
+
+  29 Jun 2008; Michał Januszewski <spock@gentoo.org>
+  +files/xmds-1.6.5-gcc43.patch, xmds-1.6.5.ebuild:
+  Fix bug #229691.
+
+  15 Mar 2008; Michał Januszewski <spock@gentoo.org> xmds-1.6.5.ebuild:
+  Fix installation of docs and examples.
+
+*xmds-1.6.5 (15 Mar 2008)
+
+  15 Mar 2008; Michał Januszewski <spock@gentoo.org> +xmds-1.6.5.ebuild:
+  Version bump.
+
+*xmds-1.6.4 (20 Jan 2008)
+
+  20 Jan 2008; Michał Januszewski <spock@gentoo.org> +metadata.xml,
+  +xmds-1.6.4.ebuild:
+  Initial commit.
+

@@ -1,0 +1,47 @@
+# ChangeLog for games-puzzle/braincurses
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/braincurses/ChangeLog,v 1.11 2015/02/13 20:13:31 tupone Exp $
+
+  13 Feb 2015; Tupone Alfredo <tupone@gentoo.org> braincurses-0.5b.ebuild:
+  EAPI 5
+
+  14 Jan 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  braincurses-0.5b.ebuild:
+  fix buffer overflow (bug #301033)
+
+  09 Feb 2009; Alfredo Tupone <tupone@gentoo.org>
+  +files/braincurses-0.5b-as-needed.patch, braincurses-0.5b.ebuild:
+  Fix --as-needed bug #247420 by flameeyes@gentoo.org.
+  Patch from Kevin Pyle
+
+  01 May 2008; Tristan Heaven <nyhm@gentoo.org>
+  +files/braincurses-0.5b-gcc43.patch, braincurses-0.5b.ebuild:
+  Fix building with gcc-4.3
+
+  15 Aug 2006; Thomas Cort <tcort@gentoo.org> braincurses-0.5b.ebuild:
+  Stable on amd64 wrt Bug #143961
+
+  21 May 2006; Markus Rothe <corsair@gentoo.org> braincurses-0.5b.ebuild:
+  Stable on ppc64
+
+  24 Aug 2005; Homer Parker <hparker@gentoo.org> braincurses-0.5b.ebuild:
+  Marked ~amd64.
+
+  10 Jun 2005; David Holm <dholm@gentoo.org> braincurses-0.5b.ebuild:
+  Added to ~ppc.
+
+*braincurses-0.5b (24 May 2005)
+
+  24 May 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +braincurses-0.5b.ebuild:
+  version bump
+
+  30 Dec 2004; Yuta SATOH <nigoro@gentoo.org> braincurses-0.5a.ebuild:
+  added ~ppc64
+
+*braincurses-0.5a (02 Dec 2004)
+
+  02 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org> +metadata.xml,
+  +braincurses-0.5a.ebuild:
+  initial commit - ebuild from Adrian Fruehwirth via bug #72938
+

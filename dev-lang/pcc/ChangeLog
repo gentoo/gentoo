@@ -1,0 +1,78 @@
+# ChangeLog for dev-lang/pcc
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/pcc/ChangeLog,v 1.16 2015/05/23 15:41:46 mrueg Exp $
+
+  23 May 2015; Manuel Rüger <mrueg@gentoo.org> -pcc-1.0.0.ebuild,
+  -pcc-1.0.1_pre20121112.ebuild, -pcc-1.0.1_pre20131013.ebuild:
+  Remove old.
+
+*pcc-9999 (13 May 2015)
+
+  13 May 2015; Patrick Lauer <patrick@gentoo.org> +pcc-9999.ebuild:
+  Add live ebuild #549204
+
+  09 Mar 2015; Patrick Lauer <patrick@gentoo.org> pcc-1.1.0-r1.ebuild:
+  Fix ebuild paths
+
+*pcc-1.1.0-r1 (09 Mar 2015)
+
+  09 Mar 2015; Patrick Lauer <patrick@gentoo.org>
+  +files/pcc-1.1.0-multiarch.patch, +pcc-1.1.0-r1.ebuild, -pcc-1.1.0.ebuild:
+  Fix multiarch logic #542606
+
+*pcc-1.1.0 (29 Dec 2014)
+
+  29 Dec 2014; Patrick Lauer <patrick@gentoo.org> +pcc-1.1.0.ebuild:
+  Bump #533754
+
+*pcc-1.0.1_pre20131013 (13 Oct 2013)
+
+  13 Oct 2013; Patrick Lauer <patrick@gentoo.org> +pcc-1.0.1_pre20131013.ebuild:
+  Bump
+
+  12 Oct 2013; Patrick Lauer <patrick@gentoo.org> pcc-1.0.1_pre20121112.ebuild:
+  Minor cleanups
+
+  13 Nov 2012; Patrick Lauer <patrick@gentoo.org> -pcc-1.0.0_pre100604.ebuild,
+  -pcc-1.0.0_pre100830.ebuild, -pcc-1.0.0_pre101124.ebuild,
+  -pcc-1.0.0_pre20110116.ebuild:
+  Clean out old
+
+*pcc-1.0.1_pre20121112 (12 Nov 2012)
+
+  12 Nov 2012; Patrick Lauer <patrick@gentoo.org> +pcc-1.0.1_pre20121112.ebuild:
+  Bump, works a lot better now
+
+  11 Jun 2012; Richard Yao <ryao@gentoo.org> pcc-1.0.0.ebuild:
+  keyword ~amd64-fbsd
+
+  25 Apr 2012; Justin Lecher <jlec@gentoo.org> pcc-1.0.0_pre100604.ebuild:
+  Drop unnessecary die
+
+*pcc-1.0.0 (04 Apr 2011)
+
+  04 Apr 2011; Patrick Lauer <patrick@gentoo.org> +pcc-1.0.0.ebuild:
+  Bump
+
+*pcc-1.0.0_pre20110116 (16 Jan 2011)
+
+  16 Jan 2011; Patrick Lauer <patrick@gentoo.org>
+  +pcc-1.0.0_pre20110116.ebuild:
+  Bump
+
+*pcc-1.0.0_pre101124 (24 Nov 2010)
+
+  24 Nov 2010; Patrick Lauer <patrick@gentoo.org> +pcc-1.0.0_pre101124.ebuild:
+  Bump
+
+*pcc-1.0.0_pre100830 (30 Aug 2010)
+
+  30 Aug 2010; Patrick Lauer <patrick@gentoo.org>
+  pcc-1.0.0_pre100604.ebuild, +pcc-1.0.0_pre100830.ebuild:
+  Bump, fixing stripping #335274
+
+*pcc-1.0.0_pre100604 (04 Jun 2010)
+
+  04 Jun 2010; Patrick Lauer <patrick@gentoo.org>
+  +pcc-1.0.0_pre100604.ebuild, +metadata.xml:
+  Initial commit of pcc compiler, ebuild by me

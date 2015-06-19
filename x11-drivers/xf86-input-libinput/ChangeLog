@@ -1,0 +1,26 @@
+# ChangeLog for x11-drivers/xf86-input-libinput
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-input-libinput/ChangeLog,v 1.5 2015/03/17 18:29:29 chithanh Exp $
+
+*xf86-input-libinput-0.8.0 (17 Mar 2015)
+
+  17 Mar 2015; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-input-libinput-0.8.0.ebuild:
+  Version bump.
+
+  28 Feb 2015; Markus Meier <maekke@gentoo.org>
+  xf86-input-libinput-0.6.0.ebuild:
+  add ~arm, bug #538828
+
+  23 Feb 2015; Pacho Ramos <pacho@gentoo.org> xf86-input-libinput-0.6.0.ebuild:
+  ppc/ppc64/x86 keyword, bug #538828
+
+  05 Feb 2015; Jeroen Roovers <jer@gentoo.org>
+  xf86-input-libinput-0.6.0.ebuild:
+  Marked ~hppa (bug #538828).
+
+*xf86-input-libinput-0.6.0 (04 Feb 2015)
+
+  04 Feb 2015; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> +metadata.xml,
+  +xf86-input-libinput-0.6.0.ebuild:
+  Initial commit for bug #532566.

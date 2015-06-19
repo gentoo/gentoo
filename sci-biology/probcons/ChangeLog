@@ -1,0 +1,65 @@
+# ChangeLog for sci-biology/probcons
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/probcons/ChangeLog,v 1.15 2015/03/29 14:58:53 jlec Exp $
+
+  29 Mar 2015; Justin Lecher <jlec@gentoo.org> -files/1.10-fix-cxxflags.patch,
+  -probcons-1.10.ebuild, -probcons-1.12.ebuild, metadata.xml,
+  probcons-1.12-r1.ebuild:
+  Drop old
+
+  13 Jun 2011; Justin Lecher <jlec@gentoo.org> probcons-1.12-r1.ebuild,
+  +files/probcons-1.12-gcc-4.6.patch:
+  Make it gcc46 resistant, #370471
+
+  16 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  probcons-1.12-r1.ebuild:
+  Stable on amd64 wrt bug #328427
+
+  16 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  probcons-1.12-r1.ebuild:
+  stable x86, bug 328427
+
+  17 Jun 2010; Justin Lecher <jlec@gentoo.org> probcons-1.10.ebuild,
+  probcons-1.12.ebuild, probcons-1.12-r1.ebuild:
+  Blocking sci-geosciences/gmt to resolve bug 248333
+
+*probcons-1.12-r1 (15 Jun 2010)
+
+  15 Jun 2010; Justin Lecher <jlec@gentoo.org> +probcons-1.12-r1.ebuild,
+  files/probcons-1.12-cxxflags.patch:
+  QA and keyworded for linux prefix
+
+  16 Aug 2009; Donnie Berkholz <dberkholz@gentoo.org>; probcons-1.12.ebuild:
+  Keyword ~amd64.
+
+  15 Apr 2008; Donnie Berkholz <dberkholz@gentoo.org>; +files/gcc-4.3.patch,
+  probcons-1.12.ebuild:
+  Fix build with gcc 4.3.
+
+  07 Oct 2007; Donnie Berkholz <dberkholz@gentoo.org>; probcons-1.12.ebuild:
+  Add needed quotes; don't specify the default for DESTTREE; add die messages.
+
+*probcons-1.12 (06 Oct 2007)
+
+  06 Oct 2007; Markus Dittrich <markusle@gentoo.org> +files/probcons-1.12-cxxflags.patch, +probcons-1.12.ebuild:
+  New version (fixes bug #191874).
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  01 Oct 2006; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  Remove myself as maintainer so it goes to all of the sci-biology team.
+
+  09 Jul 2006; Donnie Berkholz <dberkholz@gentoo.org>; probcons-1.10.ebuild:
+  x86 stable.
+
+  07 Jul 2006; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  Update to my new email address.
+
+*probcons-1.10 (21 Feb 2006)
+
+  21 Feb 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  +files/1.10-fix-cxxflags.patch, +metadata.xml, +probcons-1.10.ebuild:
+  New multiple sequence alignment package. Probably the best global aligner,
+  although it runs slower. Takes 5-10 times longer than clustalw, but about
+  half as long as t-coffee.

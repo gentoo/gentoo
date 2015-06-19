@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The net-proxy category contains network proxy software.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie net-proxy enthält verschiedene Netzwerk-Proxies.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría net-proxy contiene proxies de red.
+	</longdescription>
+	<longdescription lang="ja">
+		net-proxyカテゴリーにはネットワーク・プロキシの
+		ソフトウェアが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De net-proxy categorie bevat verschillende netwerkproxy's.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm net-proxy chứa các phần mềm proxy mạng.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria net-proxy contiene software proxy come squid e privoxy.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria net-proxy contém softwares de proxy de rede.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria net-proxy zawiera oprogramowanie związane z serwerami proxy.
+	</longdescription>
+</catmetadata>
+

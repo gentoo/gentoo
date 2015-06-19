@@ -1,0 +1,78 @@
+# ChangeLog for net-analyzer/cryptcat
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/cryptcat/ChangeLog,v 1.27 2015/01/26 10:14:05 ago Exp $
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> cryptcat-1.2.1-r2.ebuild:
+  Stable for x86, wrt bug #535524
+
+  17 Jan 2015; Agostino Sarubbo <ago@gentoo.org> cryptcat-1.2.1-r2.ebuild:
+  Stable for ppc, wrt bug #535524
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> cryptcat-1.2.1-r2.ebuild:
+  Stable for amd64, wrt bug #535524
+
+  06 Jan 2015; Jeroen Roovers <jer@gentoo.org> cryptcat-1.2.1-r2.ebuild:
+  Update HOMEPAGE.
+
+*cryptcat-1.2.1-r2 (10 Jul 2014)
+
+  10 Jul 2014; Jeroen Roovers <jer@gentoo.org> +cryptcat-1.2.1-r2.ebuild,
+  files/cryptcat-1.2.1-build.patch, +files/cryptcat-1.2.1-misc.patch:
+  EAPI bump. Convert sed scripts etcetera to patch. Catch a few more missing
+  includes.
+
+  29 Jul 2012; Jeroen Roovers <jer@gentoo.org> -cryptcat-1.2.1.ebuild:
+  Old.
+
+  29 Jul 2012; Raúl Porcel <armin76@gentoo.org> cryptcat-1.2.1.ebuild,
+  cryptcat-1.2.1-r1.ebuild:
+  Drop sparc keywords
+
+  14 Jun 2012; Jeff Horelick <jdhore@gentoo.org> cryptcat-1.2.1-r1.ebuild:
+  marked x86 per bug 419207
+
+  07 Jun 2012; Brent Baude <ranger@gentoo.org> cryptcat-1.2.1-r1.ebuild:
+  Marking cryptcat-1.2.1-r1 ppc for bug 419207
+
+  04 Jun 2012; Agostino Sarubbo <ago@gentoo.org> cryptcat-1.2.1-r1.ebuild:
+  Stable for amd64, wrt bug #419207
+
+  16 Apr 2012; Brent Baude <ranger@gentoo.org> cryptcat-1.2.1.ebuild:
+  Marking cryptcat-1.2.1 ppc for bug 409523
+
+*cryptcat-1.2.1-r1 (12 Apr 2012)
+
+  12 Apr 2012; Jeroen Roovers <jer@gentoo.org> +cryptcat-1.2.1-r1.ebuild:
+  Respect CC, CXX by Agostino Sarubbo (bug #411075).
+
+  06 Apr 2012; Agostino Sarubbo <ago@gentoo.org> cryptcat-1.2.1.ebuild:
+  Stable for amd64, wrt bug #409523
+
+  16 Jan 2010; Jonathan Callen <abcd@gentoo.org> cryptcat-1.2.1.ebuild:
+  Add prefix keywords
+
+  02 Jun 2007; Markus Ullmann <jokey@gentoo.org>
+  -cryptcat-0.20031202.ebuild, cryptcat-1.2.1.ebuild:
+  quotes and cleanup
+
+  20 Mar 2007; Raúl Porcel <armin76@gentoo.org> cryptcat-1.2.1.ebuild:
+  x86 stable
+
+*cryptcat-1.2.1 (19 Aug 2006)
+
+  19 Aug 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/cryptcat-1.2.1-build.patch, +cryptcat-1.2.1.ebuild:
+  Version bump #144063 by Jon Hood.
+
+  09 Sep 2005; Marcelo Goes <vanquirius@gentoo.org>
+  cryptcat-20031202.ebuild:
+  ChangeLog is actually Changelog. Fixed so that it gets installed properly.
+
+  11 Jul 2004; Eldad Zack <eldad@gentoo.org> metadata.xml,
+  cryptcat-20031202.ebuild:
+  Updated SRC_URI to use debian mirrors, marked x86 stable.
+
+*cryptcat-0.20031202 (13 Feb 2004)
+
+  13 Feb 2004; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Daniel Fullmer #41182.

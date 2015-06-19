@@ -1,0 +1,63 @@
+# ChangeLog for dev-java/appframework
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/appframework/ChangeLog,v 1.10 2015/01/06 20:27:03 zlogene Exp $
+
+  06 Jan 2015; Mikle Kolyada <zlogene@gentoo.org> -appframework-1.03-r2.ebuild,
+  appframework-1.03-r3.ebuild:
+  amd64/x86 stable wrt bug #525010; Drop old.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  appframework-1.03-r2.ebuild, appframework-1.03-r3.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*appframework-1.03-r3 (01 Apr 2014)
+
+  01 Apr 2014; Tom Wijsman <TomWij@gentoo.org> +appframework-1.03-r3.ebuild:
+  Revision bump. EAPI 5.
+
+  19 Oct 2011; Miroslav Šulc <fordfrog@gentoo.org> -appframework-1.03.ebuild,
+  -appframework-1.03-r1.ebuild:
+  Removed old versions
+
+  09 Oct 2011; Markus Meier <maekke@gentoo.org> appframework-1.03-r2.ebuild:
+  x86 stable, bug #382695
+
+  16 Sep 2011; Tony Vroon <chainsaw@gentoo.org> appframework-1.03-r2.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo & Ian
+  "idella4" Delaney in bug #382695 filed by Vlastimil "Caster" Babka in bug
+  #382695.
+
+*appframework-1.03-r2 (09 Sep 2011)
+
+  09 Sep 2011; Vlastimil Babka <caster@gentoo.org>
+  +appframework-1.03-r2.ebuild:
+  Switch JNLP dep once again, bug #382351.
+
+*appframework-1.03-r1 (08 Sep 2011)
+
+  08 Sep 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +appframework-1.03-r1.ebuild:
+  Switched JNLP dependency from dev-java/jnlp-bin to dev-java/netx, bug #377967
+
+  14 Aug 2009; Markus Meier <maekke@gentoo.org> appframework-1.03.ebuild:
+  amd64/x86 stable, bug #280658
+
+*appframework-1.03 (06 Jul 2009)
+
+  06 Jul 2009; <alistair@gentoo.org> +metadata.xml,
+  +appframework-1.03.ebuild:
+  Move to tree and keyword ~x86.
+
+  21 May 2009; Alistair Bush <ali_bush@gentoo.org> appframework-1.03.ebuild:
+  Fix javadoc install
+
+  03 Sep 2008; Miroslav Šulc <fordfrog@gentoo.org>
+  appframework-1.03.ebuild:
+  Fixed installation of the jar
+
+  16 Jun 2008; Serkan Kaba <serkan@gentoo.org> appframework-1.03.ebuild:
+  Fix tests and javadoc. Add src_test()
+
+  08 Jan 2008; <alistair@gentoo.org> +metadata.xml,
+  +appframework-1.03.ebuild:
+  Adding appframework

@@ -1,0 +1,13 @@
+--- lib/Stow.pm.in
++++ lib/Stow.pm.in
+@@ -1734,8 +1734,8 @@ sub read_a_link {
+     }
+     elsif (-l $path) {
+         debug(4, "  read_a_link($path): real link");
+-        return readlink $path
+-            or error("Could not read link: $path");
++        my $target = readlink $path or error("Could not read link: $path ($!)");
++        return $target;
+     }
+     internal_error("read_a_link() passed a non link path: $path\n");
+ }

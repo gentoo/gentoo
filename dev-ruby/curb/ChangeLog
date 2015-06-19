@@ -1,0 +1,50 @@
+# ChangeLog for dev-ruby/curb
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/curb/ChangeLog,v 1.11 2015/06/07 17:34:52 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*curb-0.8.8 (11 Apr 2015)
+
+  11 Apr 2015; Hans de Graaff <graaff@gentoo.org> +curb-0.8.8.ebuild:
+  Version bump.
+
+  31 Jan 2015; Hans de Graaff <graaff@gentoo.org> curb-0.8.6.ebuild:
+  Add ruby22.
+
+  31 Jan 2015; Hans de Graaff <graaff@gentoo.org> -curb-0.8.4.ebuild,
+  -curb-0.8.5.ebuild:
+  Cleanup.
+
+*curb-0.8.6 (23 Jul 2014)
+
+  23 Jul 2014; Hans de Graaff <graaff@gentoo.org> +curb-0.8.6.ebuild:
+  Version bump. Add ruby21. Avoid network tests, fixing bug 454830.
+
+*curb-0.8.5 (04 Oct 2013)
+
+  04 Oct 2013; Hans de Graaff <graaff@gentoo.org> +curb-0.8.5.ebuild:
+  Version bump.
+
+  04 Sep 2013; Manuel Rüger <mrueg@gentoo.org> -curb-0.8.3.ebuild:
+  Cleanup old.
+
+*curb-0.8.4 (14 Jul 2013)
+
+  14 Jul 2013; Hans de Graaff <graaff@gentoo.org> +curb-0.8.4.ebuild:
+  Version bump.
+
+  14 Jul 2013; Hans de Graaff <graaff@gentoo.org> -curb-0.8.1.ebuild:
+  Cleanup.
+
+*curb-0.8.3 (16 Dec 2012)
+
+  16 Dec 2012; Hans de Graaff <graaff@gentoo.org> +curb-0.8.3.ebuild:
+  Version bump.
+
+*curb-0.8.1 (29 Sep 2012)
+
+  29 Sep 2012; Diego E. Pettenò <flameeyes@gentoo.org> +curb-0.8.1.ebuild,
+  +metadata.xml:
+  Initial import of curb.

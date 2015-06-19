@@ -1,0 +1,39 @@
+# ChangeLog for dev-perl/RRD-Simple
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/RRD-Simple/ChangeLog,v 1.8 2015/06/13 22:40:54 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  RRD-Simple-1.440.0-r1.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+*RRD-Simple-1.440.0-r1 (21 Aug 2014)
+
+  21 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +RRD-Simple-1.440.0-r1.ebuild, -RRD-Simple-1.440.0.ebuild:
+  bump EAPI to 5 to help with dev-lang/perl upgrades
+
+  27 Nov 2013; Tony Vroon <chainsaw@gentoo.org> RRD-Simple-1.440.0.ebuild:
+  Be stricter about our rrdtool run-time dependency; as pointed out by Ben in
+  bug #489196 we cannot cope with RRDs.pm being absent. That means building
+  rrdtool with USE="perl".
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  01 Mar 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Add missing cpan remote-id tags in metadata.xml (#406287)
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -RRD-Simple-1.44.ebuild:
+  Cleanup
+
+*RRD-Simple-1.440.0 (29 Aug 2011)
+
+  29 Aug 2011; Torsten Veller <tove@gentoo.org> +RRD-Simple-1.440.0.ebuild:
+  Change version scheme
+
+*RRD-Simple-1.44 (10 Dec 2010)
+
+  10 Dec 2010; Tony Vroon <chainsaw@gentoo.org> +RRD-Simple-1.44.ebuild,
+  +metadata.xml:
+  Initial commit, ebuild by g-cpan with some minor touchups. For the LINX
+  engineering team.

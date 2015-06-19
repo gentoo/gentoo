@@ -1,0 +1,23 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Purpose License v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/neard/files/neard.rc,v 1.1 2013/06/21 19:39:06 vapier Exp $
+
+name="NFC daemon"
+
+command="/usr/libexec/nfc/neard"
+command_args="${NEARD_OPTS}"
+
+start_stop_daemon_args="--exec /usr/libexec/nfc/neard"
+
+depend() {
+	need dbus
+}
+
+start_pre() {
+	if [ -e /proc/modules ] ; then
+		if ! grep -qs NFC_RAW /proc/net/protocols ; then
+			modprobe -q nfc
+		fi
+	fi
+}

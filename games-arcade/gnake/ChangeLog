@@ -1,0 +1,35 @@
+# ChangeLog for games-arcade/gnake
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/gnake/ChangeLog,v 1.9 2014/11/19 06:12:36 mr_bones_ Exp $
+
+  19 Nov 2014; Michael Sterrett <mr_bones_@gentoo.org> gnake-0.94b.ebuild:
+  build with ncurses[tinfo] (bug #529750)
+
+  24 Dec 2009; Mounir Lamouri <volkmar@gentoo.org> gnake-0.94b.ebuild:
+  Stable on ppc, fix bug 289156
+
+  29 Oct 2009; Markus Meier <maekke@gentoo.org> gnake-0.94b.ebuild:
+  amd64/x86 stable, bug #289156
+
+  19 Mar 2008; Tristan Heaven <nyhm@gentoo.org> gnake-0.94b.ebuild:
+  Add ~amd64 keyword
+
+  16 Feb 2008; Tristan Heaven <nyhm@gentoo.org> gnake-0.94b.ebuild:
+  Respect LDFLAGS
+
+  24 Apr 2007; Timothy Redaelli <drizzt@gentoo.org> gnake-0.94b.ebuild:
+  Add ~x86-fbsd keyword.
+  Thanks to Nathan Smith for reporting wrt bug #175779
+
+  08 Apr 2007; Joseph Jezak <josejx@gentoo.org> gnake-0.94b.ebuild:
+  Marked ~ppc for bug #173426.
+
+  08 Feb 2007; Chris Gianelloni <wolf31o2@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*gnake-0.94b (05 Jan 2006)
+
+  05 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org> +metadata.xml,
+  +gnake-0.94b.ebuild:
+  Initial import. Ebuild by Adrian Fruehwirth <adrian.fruehwirth@gmx.at>.
+  Closing bug #107178.

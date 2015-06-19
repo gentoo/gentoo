@@ -1,0 +1,28 @@
+diff --git a/src/Makefile b/src/Makefile
+index 1d1631b..4fa3af9 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -131,17 +131,17 @@ DEMOS =
+ all: 	$(PROGS)
+ 
+ main:              $(OBJ) main.o
+-	           $(CC) $(CFLAGS) -o $@ -L$(SQUIDDIR) $@.o  $(LIBS)
++	           $(CC) $(CFLAGS) $(LDFLAGS) -o $@ -L$(SQUIDDIR) $@.o  $(LIBS)
+ cfgbuild:          $(OBJ) cfgbuild.o
+-	           $(CC) $(CFLAGS) -o $@ -L$(SQUIDDIR) $@.o $(OBJ) $(LIBS)
++	           $(CC) $(CFLAGS) $(LDFLAGS) -o $@ -L$(SQUIDDIR) $@.o $(OBJ) $(LIBS)
+ eqrna:             $(OBJ) eqrna.o
+-	           $(CC) $(CFLAGS) -o $@ -L$(SQUIDDIR) $@.o $(OBJ) $(LIBS)
++	           $(CC) $(CFLAGS) $(LDFLAGS) -o $@ -L$(SQUIDDIR) $@.o $(OBJ) $(LIBS)
+ eqrna_sample:      $(OBJ) eqrna_sample.o
+-	           $(CC) $(CFLAGS) -o $@ -L$(SQUIDDIR) $@.o $(OBJ) $(LIBS)
++	           $(CC) $(CFLAGS) $(LDFLAGS) -o $@ -L$(SQUIDDIR) $@.o $(OBJ) $(LIBS)
+ shuffle:           $(OBJ) shuffle.o
+-	           $(CC) $(CFLAGS) -o $@ -L$(SQUIDDIR) $@.o $(OBJ) $(LIBS)
++	           $(CC) $(CFLAGS) $(LDFLAGS) -o $@ -L$(SQUIDDIR) $@.o $(OBJ) $(LIBS)
+ rnamat_main:       $(OBJ2) rnamat_main.o
+-	           $(CC) $(CFLAGS) -o $@ -L$(SQUIDDIR02) $@.o $(OBJ2) $(LIBS)
++	           $(CC) $(CFLAGS) $(LDFLAGS) -o $@ -L$(SQUIDDIR02) $@.o $(OBJ2) $(LIBS)
+ 
+ main.o:            ../src/main.c
+ 	           $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	

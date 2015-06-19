@@ -1,0 +1,20 @@
+# ChangeLog for app-doc/clsync-docs
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-doc/clsync-docs/ChangeLog,v 1.4 2015/06/05 12:09:41 jlec Exp $
+
+  05 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  25 May 2015; Andrew Savchenko <bircoph@gentoo.org> -clsync-docs-0.4.ebuild:
+  Remove old.
+
+*clsync-docs-0.4.1 (25 May 2015)
+
+  25 May 2015; Andrew Savchenko <bircoph@gentoo.org> +clsync-docs-0.4.1.ebuild:
+  Version bump. Move all docs into clsync-docs.
+
+*clsync-docs-0.4 (11 Feb 2015)
+
+  11 Feb 2015; Andrew Savchenko <bircoph@gentoo.org> +clsync-docs-0.4.ebuild,
+  +metadata.xml:
+  Initial version ported from bircoph overlay.

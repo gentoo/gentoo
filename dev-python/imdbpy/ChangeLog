@@ -1,0 +1,118 @@
+# ChangeLog for dev-python/imdbpy
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/imdbpy/ChangeLog,v 1.26 2015/04/08 08:05:24 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> imdbpy-4.9-r1.ebuild,
+  imdbpy-5.0.ebuild:
+  Drop old Python implementations
+
+  05 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -imdbpy-4.8.2.ebuild,
+  -imdbpy-4.9.ebuild:
+  Remove old.
+
+  28 Dec 2014; Mike Gilbert <floppym@gentoo.org> imdbpy-4.9-r1.ebuild,
+  imdbpy-5.0.ebuild:
+  Drop DISTUTILS_GLOBAL_OPTIONS.
+
+*imdbpy-5.0 (09 May 2014)
+
+  09 May 2014; Patrick Lauer <patrick@gentoo.org> +imdbpy-5.0.ebuild:
+  Bump
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> imdbpy-4.9-r1.ebuild:
+  Add support for the new PyPy slotting.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> imdbpy-4.9-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*imdbpy-4.9-r1 (23 Jun 2013)
+
+  23 Jun 2013; Ian Delaney <idella4@gentoo.org> +imdbpy-4.9-r1.ebuild:
+  revbump; migrate -> distutils-r1
+
+*imdbpy-4.9 (04 Nov 2012)
+
+  04 Nov 2012; Ian Delaney <idella4@gentoo.org> +imdbpy-4.9.ebuild,
+  -imdbpy-4.7-r1.ebuild, -imdbpy-4.7.ebuild:
+  bumped to imdbpy-4.9, dropped imdbpy-4.7
+
+  13 Jul 2012; Mike Gilbert <floppym@gentoo.org> imdbpy-4.7-r1.ebuild,
+  imdbpy-4.8.2.ebuild:
+  Update DISTUTILS_GLOBAL_OPTIONS to match EAPI 4 logic in distutils.eclass as
+  suggested by Arfrever.
+
+*imdbpy-4.8.2 (19 Apr 2012)
+
+  19 Apr 2012; Patrick Lauer <patrick@gentoo.org> +imdbpy-4.8.2.ebuild:
+  Bump
+
+  22 Feb 2012; Patrick Lauer <patrick@gentoo.org> imdbpy-4.7-r1.ebuild,
+  imdbpy-4.7.ebuild:
+  Restricting jython too
+
+  22 Feb 2012; Patrick Lauer <patrick@gentoo.org> imdbpy-4.7-r1.ebuild,
+  imdbpy-4.7.ebuild:
+  Restricting pypy
+
+  14 Dec 2011; Mike Gilbert <floppym@gentoo.org> imdbpy-4.7.ebuild:
+  Fix stable ebuild as well.
+
+*imdbpy-4.7-r1 (14 Dec 2011)
+
+  14 Dec 2011; Mike Gilbert <floppym@gentoo.org> +imdbpy-4.7-r1.ebuild:
+  Bump EAPI to 4. Don't install icons as docs. Thanks to Ian Delaney for doing
+  the research.
+
+  12 Mar 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -imdbpy-4.6.ebuild:
+  Delete.
+
+  12 Mar 2011; Thomas Kahle <tomka@gentoo.org> imdbpy-4.7.ebuild:
+  x86 stable per bug 356439
+
+  27 Feb 2011; Markos Chandras <hwoarang@gentoo.org> imdbpy-4.7.ebuild:
+  Stable on amd64 wrt bug #356439
+
+*imdbpy-4.7 (26 Jan 2011)
+
+  26 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +imdbpy-4.7.ebuild:
+  Version bump.
+
+  26 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -files/4.5.1-no-docs.patch, -imdbpy-4.5.1.ebuild:
+  Delete.
+
+  01 Aug 2010; Markos Chandras <hwoarang@gentoo.org> imdbpy-4.6.ebuild:
+  Stable on amd64 wrt bug #323745
+
+  26 Jul 2010; Christian Faulhammer <fauli@gentoo.org> imdbpy-4.6.ebuild:
+  stable x86, bug 323745
+
+*imdbpy-4.6 (21 Jun 2010)
+
+  21 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +imdbpy-4.6.ebuild, +files/imdbpy-4.6-data_location.patch:
+  Version bump.
+
+  07 Jun 2010; Dirkjan Ochtman <djc@gentoo.org> +files/4.5.1-no-docs.patch,
+  imdbpy-4.5.1.ebuild:
+  Prevent installation of files in /usr/share/doc directly (bug 315983).
+
+*imdbpy-4.5.1 (01 Mar 2010)
+
+  01 Mar 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +imdbpy-4.5.1.ebuild:
+  Version bump.
+
+*imdbpy-4.4 (09 Jan 2010)
+
+  09 Jan 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +imdbpy-4.4.ebuild:
+  Version bump.
+
+*imdbpy-4.3 (21 Nov 2009)
+
+  21 Nov 2009; Doug Goldstein <cardoe@gentoo.org> +imdbpy-4.3.ebuild,
+  +metadata.xml:
+  add initial version to the tree. bug #109719

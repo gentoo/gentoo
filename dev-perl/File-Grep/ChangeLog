@@ -1,0 +1,24 @@
+# ChangeLog for dev-perl/File-Grep
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/File-Grep/ChangeLog,v 1.5 2014/08/26 15:12:47 axs Exp $
+
+*File-Grep-0.020.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +File-Grep-0.020.0-r1.ebuild, -File-Grep-0.020.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  18 Nov 2012; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Drop duplication of myself as a maintainer where there is a herd.
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  16 Apr 2012; Michael Sterrett <mr_bones_@gentoo.org> File-Grep-0.020.0.ebuild:
+  fix header
+
+*File-Grep-0.020.0 (16 Apr 2012)
+
+  16 Apr 2012; Robin H. Johnson <robbat2@gentoo.org> +File-Grep-0.020.0.ebuild,
+  +metadata.xml:
+  Initial commit.

@@ -1,0 +1,64 @@
+Backport of
+From ce720038ed40e4c4554e0d8c0e4e003834ed1652 Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heirecka@exherbo.org>
+Date: Fri, 29 Nov 2013 20:53:46 +0100
+Subject: [PATCH] Allow specifying a suffix of the libdir
+To allow installing to lib32/64 e.g.
+
+
+diff -ruN LibRaw-0.16.0-Beta1.orig/CMakeLists.txt LibRaw-0.16.0-Beta1/CMakeLists.txt
+--- LibRaw-0.16.0-Beta1.orig/CMakeLists.txt	2013-12-23 14:36:05.569116564 +0100
++++ LibRaw-0.16.0-Beta1/CMakeLists.txt	2013-12-23 14:39:37.716121606 +0100
+@@ -95,6 +95,8 @@
+ # ==================================================================================================
+ # General definitions rules
+ 
++SET(LIB_SUFFIX "" CACHE STRING "Define suffix of lib directory name (32/64)" )
++
+ # To prevent warnings from M$ compiler
+ IF(WIN32 AND MSVC)
+     ADD_DEFINITIONS(-D_CRT_SECURE_NO_WARNINGS)
+@@ -560,10 +562,10 @@
+ # Configure and install data file for packaging.
+ IF(NOT WIN32)
+     CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/cmake/data/libraw.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/libraw.pc @ONLY)
+-    INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/libraw.pc DESTINATION lib/pkgconfig)
++    INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/libraw.pc DESTINATION lib${LIB_SUFFIX}/pkgconfig)
+ 
+     CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/cmake/data/libraw_r.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/libraw_r.pc @ONLY)
+-    INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/libraw_r.pc DESTINATION lib/pkgconfig)
++    INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/libraw_r.pc DESTINATION lib${LIB_SUFFIX}/pkgconfig)
+ 
+     CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/cmake/data/libraw.lsm.cmake ${CMAKE_CURRENT_BINARY_DIR}/libraw.lsm)
+ ENDIF()
+@@ -584,14 +586,14 @@
+ # Install Shared binary files.
+ INSTALL(TARGETS raw
+         RUNTIME DESTINATION bin
+-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+-        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++        LIBRARY DESTINATION lib${LIB_SUFFIX}
++        ARCHIVE DESTINATION lib${LIB_SUFFIX}
+        )
+ 
+ INSTALL(TARGETS raw_r
+         RUNTIME DESTINATION bin
+-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+-        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++        LIBRARY DESTINATION lib${LIB_SUFFIX}
++        ARCHIVE DESTINATION lib${LIB_SUFFIX}
+        )
+ 
+ # Install find cmake script to the system for client applications.
+@@ -633,8 +635,9 @@
+ 
+     INSTALL(TARGETS ${_target}
+             RUNTIME DESTINATION bin
+-            LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+-            ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
++            LIBRARY DESTINATION lib${LIB_SUFFIX}
++            ARCHIVE DESTINATION lib${LIB_SUFFIX}
++    )
+ 
+ ENDMACRO(LIBRAW_BUILD_SAMPLES)
+ 

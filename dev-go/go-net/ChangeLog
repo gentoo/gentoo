@@ -1,0 +1,33 @@
+# ChangeLog for dev-go/go-net
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-go/go-net/ChangeLog,v 1.7 2015/06/09 06:52:46 zmedico Exp $
+
+  09 Jun 2015; Zac Medico <zmedico@gentoo.org> go-net-1.4.2_p20150604.ebuild:
+  Disable TestNonPrivilegedPing for 1.4.2_p20150604.
+
+*go-net-1.4.2_p20150604 (08 Jun 2015)
+
+  08 Jun 2015; Zac Medico <zmedico@gentoo.org> +go-net-1.4.2_p20150604.ebuild,
+  go-net-9999.ebuild:
+  Add 1.4.2_p20150604 snapshot with timestamp preservation for bug 551486.
+
+  24 May 2015; Zac Medico <zmedico@gentoo.org> go-net-1.4.2_p20150520.ebuild,
+  go-net-9999.ebuild:
+  Disable broken tests.
+
+  21 May 2015; Zac Medico <zmedico@gentoo.org> go-net-1.4.2_p20150520.ebuild:
+  Remove unused git-r3 inherit.
+
+*go-net-1.4.2_p20150520 (21 May 2015)
+
+  21 May 2015; Zac Medico <zmedico@gentoo.org> +go-net-1.4.2_p20150520.ebuild:
+  Add 1.4.2_p20150520 snapshot.
+
+  21 May 2015; Zac Medico <zmedico@gentoo.org> go-net-9999.ebuild:
+  Add src_test.
+
+*go-net-9999 (18 May 2015)
+
+  18 May 2015; Zac Medico <zmedico@gentoo.org> +go-net-9999.ebuild,
+  +metadata.xml:
+  Add go-net.

@@ -1,0 +1,113 @@
+# ChangeLog for x11-misc/numlockx
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/numlockx/ChangeLog,v 1.37 2013/06/11 18:59:25 maekke Exp $
+
+  11 Jun 2013; Markus Meier <maekke@gentoo.org> numlockx-1.2.ebuild:
+  add ~arm, bug #445470
+
+  14 May 2013; Jeroen Roovers <jer@gentoo.org> numlockx-1.2.ebuild:
+  Fix building with automake-1.13 (bug #469824 by Billy DeVincentis).
+
+  16 May 2012; Samuli Suominen <ssuominen@gentoo.org> numlockx-1.2.ebuild:
+  Change license from EDB to MIT wrt #416179 by "df"
+
+  15 May 2012; Samuli Suominen <ssuominen@gentoo.org> numlockx-1.2.ebuild:
+  Update HOMEPAGE wrt #416159 by "df"
+
+  15 May 2012; Samuli Suominen <ssuominen@gentoo.org> -numlockx-1.1.ebuild:
+  old
+
+  28 Dec 2010; Brent Baude <ranger@gentoo.org> numlockx-1.2.ebuild:
+  stable ppc64, bug 339726
+
+  14 Oct 2010; Brent Baude <ranger@gentoo.org> numlockx-1.2.ebuild:
+  stable ppc, bug 339726
+
+  12 Oct 2010; Raúl Porcel <armin76@gentoo.org> numlockx-1.2.ebuild:
+  alpha/sparc stable wrt #339726
+
+  10 Oct 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> numlockx-1.2.ebuild:
+  x86 stable wrt bug #339726
+
+  06 Oct 2010; Markos Chandras <hwoarang@gentoo.org> numlockx-1.2.ebuild:
+  Stable on amd64 wrt bug #339726
+
+*numlockx-1.2 (28 May 2010)
+
+  28 May 2010; Markos Chandras <hwoarang@gentoo.org> +numlockx-1.2.ebuild:
+  Version bump. Fixes bug #312585
+
+  07 Jun 2007; Raúl Porcel <armin76@gentoo.org> numlockx-1.1.ebuild:
+  alpha stable wrt #180462, thanks to Tobias Klausmann for testing
+
+  02 Jun 2007; Raúl Porcel <armin76@gentoo.org> numlockx-1.1.ebuild:
+  x86 stable wrt #180462
+
+  01 Jun 2007; nixnut <nixnut@gentoo.org> numlockx-1.1.ebuild:
+  Stable on ppc wrt bug 180462
+
+  31 May 2007; Christoph Mende <angelos@gentoo.org> numlockx-1.1.ebuild:
+  Stable on amd64 wrt bug 180462
+
+  31 May 2007; Tom Gall <tgall@gentoo.org> numlockx-1.1.ebuild:
+  stable on ppc64
+
+  31 May 2007; Gustavo Zacarias <gustavoz@gentoo.org> numlockx-1.1.ebuild:
+  Stable on sparc wrt #180462
+
+  31 May 2007; Samuli Suominen <drac@gentoo.org> numlockx-1.1.ebuild:
+  Cleanup.
+
+*numlockx-1.1 (10 Apr 2007)
+
+  10 Apr 2007; Krzysiek Pawlik <nelchael@gentoo.org> +numlockx-1.1.ebuild:
+  Version bump, see bug #172891.
+
+  06 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  13 Dec 2005; Doug Goldstein <cardoe@gentoo.org> numlockx-1.0.ebuild:
+  adding modular X depends
+
+  01 Nov 2005; Krzysiek Pawlik <nelchael@gentoo.org> numlockx-1.0.ebuild:
+  Fixed dodoc not to install COPYING and/or INSTALL.
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> numlockx-1.0.ebuild:
+  Mark 1.0 stable on alpha
+
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> numlockx-1.0.ebuild:
+  Stable on ppc.
+
+  14 Jun 2005; Jonathan Smith <smithj@gentoo.org> numlockx-1.0.ebuild:
+  fixed homepage and src_uri for #89353
+
+  08 Jun 2005; Daniel Goller <morfic@gentoo.org> numlockx-1.0.ebuild:
+  Add ~ppc keyword, because it works, and we should have it.
+
+  16 May 2005; Seemant Kulleen <seemant@gentoo.org> numlockx-1.0.ebuild:
+  use econf, and install into /usr/bin not /usr/X11R6. The second bit fixes
+  bug #90801 by TGL <degrenier@easyconnect.fr>
+
+  27 Aug 2004; Tom Gall <tgall@gentoo.org> numlockx-1.0.ebuild:
+  stable on ppc64, bug #59380
+
+  01 Jun 2004; Brandon Hale <tseng@gentoo.org> numlockx-1.0.ebuild:
+  Add IUSE=
+
+  11 Apr 2004; Markus Nigbur <pyrania@gentoo.org> numlockx-1.0.ebuild:
+  Ebuild fixup.
+
+  03 Feb 2004; <augustus@gentoo.org> numlockx-1.0.ebuild:
+  Added keyword ~amd64.  Bug # 40145.
+
+  03 Nov 2003; Abhishek Amit <abhishek@gentoo.org> metadata.xml:
+  Added metadata.xml
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*numlockx-1.0 (12 Jul 2002)
+
+  12 Jul 2002; Arcady Genkin <agenkin@thpoon.com> numlockx-1.0.ebuild:
+
+  First version, thanks to Jacob Perkins <jap1@ionet.net> and
+  Johannes Findeisen <you@hanez.org>.

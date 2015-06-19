@@ -1,0 +1,19 @@
+# ChangeLog for dev-python/doublex
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/doublex/ChangeLog,v 1.4 2015/06/07 19:26:12 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add bitbucket to remote-id in metadata.xml
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  28 Nov 2014; Pacho Ramos <pacho@gentoo.org> doublex-1.8.1.ebuild:
+  Support python 3.4
+
+*doublex-1.8.1 (11 Oct 2014)
+*doublex-1.7 (11 Oct 2014)
+
+  11 Oct 2014; Alex Brandt <alunduil@gentoo.org> +doublex-1.7.ebuild,
+  +doublex-1.8.1.ebuild, +metadata.xml:
+  add ebuild written by me

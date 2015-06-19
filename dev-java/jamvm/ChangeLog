@@ -1,0 +1,227 @@
+# ChangeLog for dev-java/jamvm
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jamvm/ChangeLog,v 1.54 2015/06/09 13:40:26 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> jamvm-1.5.4-r2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  17 Jun 2014; Manuel Rüger <mrueg@gentoo.org> -files/jamvm-1.5.4-r1.env,
+  -jamvm-1.5.4-r1.ebuild:
+  NM: Cleanup superseeded ebuilds.
+
+  07 Dec 2012; Agostino Sarubbo <ago@gentoo.org> jamvm-1.5.4-r2.ebuild:
+  Stable for ppc, wrt bug #425624
+
+  12 Jul 2012; Agostino Sarubbo <ago@gentoo.org> jamvm-1.5.4-r2.ebuild:
+  Stable for amd64, wrt bug #425624
+
+  12 Jul 2012; Jeff Horelick <jdhore@gentoo.org> jamvm-1.5.4-r2.ebuild:
+  marked x86 per bug 425624
+
+*jamvm-1.5.4-r2 (14 May 2012)
+
+  14 May 2012; Ralph Sennhauser <sera@gentoo.org> +jamvm-1.5.4-r2.ebuild,
+  +files/jamvm-1.5.4-r2.env:
+  Only provide JRE. #371461
+
+  28 Sep 2011; Samuli Suominen <ssuominen@gentoo.org> metadata.xml:
+  USE="libffi" is now global USE flag.
+
+  08 Jul 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +files/classes-location.patch:
+  Restore patch that is still needed.
+
+  06 Jul 2010; Vlastimil Babka <caster@gentoo.org> -jamvm-1.4.2.ebuild,
+  -jamvm-1.5.0-r3.ebuild, -files/jamvm-1.5.0.env, -jamvm-1.5.4.ebuild,
+  -files/classes-location.patch, -files/jamvm.env:
+  Cleanup.
+
+  05 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> jamvm-1.4.2.ebuild:
+  Drop ppc64 wrt #168736, Comment #17
+
+  24 May 2010; Pacho Ramos <pacho@gentoo.org> jamvm-1.5.4-r1.ebuild:
+  stable amd64, bug 317411
+
+  12 May 2010; Joseph Jezak <josejx@gentoo.org> jamvm-1.5.4-r1.ebuild:
+  Marked ppc stable for bug #317411.
+
+  10 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  jamvm-1.5.4-r1.ebuild:
+  x86 stable wrt bug #317411
+
+*jamvm-1.5.4-r1 (27 Mar 2010)
+
+  27 Mar 2010; Vlastimil Babka <caster@gentoo.org> +jamvm-1.5.4-r1.ebuild,
+  +files/jamvm-1.5.4-r1.env:
+  Revbump to switch to gnu-classpath-0.98, move the install to
+  /usr/lib/jamvm, apply stuff (compatibility symlinks) from java-overlay.
+
+*jamvm-1.5.4 (27 Mar 2010)
+
+  27 Mar 2010; Alistair Bush <ali_bush@gentoo.org> +jamvm-1.5.4.ebuild:
+  Version Bump.
+
+  19 Jul 2009; nixnut <nixnut@gentoo.org> jamvm-1.5.0-r3.ebuild:
+  ppc stable #272674
+
+  11 Jun 2009; Markus Meier <maekke@gentoo.org> jamvm-1.5.0-r3.ebuild:
+  amd64 stable, bug #272674
+
+  10 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  jamvm-1.5.0-r3.ebuild:
+  stable x86, bug 272674
+
+*jamvm-1.5.0-r3 (04 Jun 2009)
+
+  04 Jun 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +jamvm-1.5.0-r3.ebuild:
+  Convert to virtual/libffi wrt #272051
+
+  07 Mar 2009; Petteri Räty <betelgeuse@gentoo.org> jamvm-1.5.0-r2.ebuild:
+  Migrate to EAPI 2.
+
+  17 May 2008; nixnut <nixnut@gentoo.org> jamvm-1.5.0-r2.ebuild:
+  Stable on ppc wrt bug 216689
+
+  13 Apr 2008; Petteri Räty <betelgeuse@gentoo.org> -jamvm-1.4.5.ebuild,
+  -jamvm-1.5.0.ebuild, -jamvm-1.5.0-r1.ebuild:
+  Remove old versions/revisions.
+
+  09 Apr 2008; Markus Meier <maekke@gentoo.org> jamvm-1.5.0-r2.ebuild:
+  amd64/x86 stable, bug #216689
+
+  20 Mar 2008; Petteri Räty <betelgeuse@gentoo.org> jamvm-1.5.0-r2.ebuild:
+  Always needs libffi support on amd64. Fixes bug #213882.
+
+*jamvm-1.5.0-r2 (04 Mar 2008)
+
+  04 Mar 2008; Petteri Räty <betelgeuse@gentoo.org> +jamvm-1.5.0-r2.ebuild:
+  Revision bump to wrap all the tools provided by gnu-classpath.
+
+*jamvm-1.5.0-r1 (03 Mar 2008)
+
+  03 Mar 2008; Petteri Räty <betelgeuse@gentoo.org> files/jamvm-1.5.0.env,
+  +jamvm-1.5.0-r1.ebuild:
+  Add vm file changes required to integrate with our eclasses. PDEPEND on
+  dev-java/ant-eclipse-ecj so that eant works.
+
+  03 Mar 2008; Petteri Räty <betelgeuse@gentoo.org> -jamvm-1.4.4-r1.ebuild:
+  Delete old version.
+
+*jamvm-1.5.0 (03 Mar 2008)
+
+  03 Mar 2008; Petteri Räty <betelgeuse@gentoo.org> +files/jamvm-1.5.0.env,
+  +files/classes-location.patch, +jamvm-1.5.0.ebuild:
+  Version bump. Fixes bug #181896 and part of fixing bug #163724.
+
+*jamvm-1.4.5 (28 Feb 2007)
+
+  28 Feb 2007; Petteri Räty <betelgeuse@gentoo.org> +jamvm-1.4.5.ebuild:
+  Version bump. This version makes using dev-util/libffi optional via the ffi
+  use flag. Fixes bug #158754.
+
+  01 Dec 2006; Petteri Räty <betelgeuse@gentoo.org> files/jamvm.env:
+  Changed PROVIDES_TYPE from "JDK" to "JDK JRE"
+
+  19 Nov 2006; Petteri Räty <betelgeuse@gentoo.org> jamvm-1.4.4.ebuild:
+  Fixed gnu-classpath dependency atom to only match the 0.92 slot.
+
+  19 Nov 2006; Joshua Nichols <nichoj@gentoo.org> jamvm-1.4.4.ebuild:
+  Added PDEPEND to make sure javac (ecj) and javadoc (gjdoc) work properly.
+
+*jamvm-1.4.4 (19 Nov 2006)
+
+  19 Nov 2006; Joshua Nichols <nichoj@gentoo.org> +files/jamvm.env,
+  +jamvm-1.4.4.ebuild:
+  Version bump, bug #134909. It is now recognized by java-config for using as
+  a VM. Removed ppc64 keyword until dev-libs/libffi can be keyworded.
+
+  11 Jun 2006; Markus Rothe <corsair@gentoo.org> jamvm-1.4.2.ebuild:
+  Stable on ppc64; bug #105973
+
+  12 May 2006; Petteri Räty <betelgeuse@gentoo.org> -jamvm-1.3.0.ebuild,
+  -jamvm-1.4.1.ebuild:
+  Removed old versions.
+
+  12 May 2006; Petteri Räty <betelgeuse@gentoo.org> jamvm-1.4.2.ebuild:
+  Marked stable on x86.
+
+  01 May 2006; Markus Rothe <corsair@gentoo.org> jamvm-1.4.2.ebuild:
+  Added ~ppc64
+
+  02 Apr 2006; Petteri Räty <betelgeuse@gentoo.org> metadata.xml:
+  Added java as the herd.
+
+*jamvm-1.4.2 (02 Apr 2006)
+
+  02 Apr 2006; Petteri Räty <betelgeuse@gentoo.org> +jamvm-1.4.2.ebuild:
+  Version bump. Fixes bug #124959.
+
+  02 Apr 2006; Petteri Räty <betelgeuse@gentoo.org> -jamvm-1.3.1.ebuild,
+  -jamvm-1.3.3.ebuild:
+  Removed old versions.
+
+  04 Feb 2006; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  jamvm-1.3.3.ebuild:
+  mark -ppc since it can't build (see bug #111523)
+
+  04 Feb 2006; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  jamvm-1.4.1.ebuild:
+  mark ~ppc (Bug #116297)
+
+*jamvm-1.4.1 (21 Dec 2005)
+
+  21 Dec 2005; Petteri Räty <betelgeuse@gentoo.org> +jamvm-1.4.1.ebuild:
+  Version bump. Fixes bug #105893.
+
+*jamvm-1.3.3 (02 Nov 2005)
+
+  02 Nov 2005; Thomas Matthijs <axxo@gentoo.org> +jamvm-1.3.3.ebuild:
+  version bump
+
+*jamvm-1.3.1 (17 Jun 2005)
+
+  17 Jun 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  -files/1.2.2-classpath-fix.diff, -jamvm-1.2.3.ebuild, -jamvm-1.2.4.ebuild,
+  -jamvm-1.2.5.ebuild, jamvm-1.3.0.ebuild, +jamvm-1.3.1.ebuild:
+  New upstream version, some generall cleanup. Fixes #96333. Marked 1.3.0
+  stable on x86.
+
+  04 Jun 2005; Joseph Jezak <josejx@gentoo.org> jamvm-1.3.0.ebuild:
+  Marked ~ppc for bug #95007.
+
+  09 Apr 2005; Karl Trygve Kalleberg <karltk@gentoo.org> jamvm-1.2.4.ebuild,
+  jamvm-1.2.5.ebuild, jamvm-1.3.0.ebuild:
+  Added filter on -fomit-frame-pointer, which, apart from being a totally
+  useless 'speed optimization', also makes jamvm crash. Fixes #85313.
+
+*jamvm-1.3.0 (01 Apr 2005)
+
+  01 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> +jamvm-1.3.0.ebuild:
+  new upstream version, fixes #87529
+
+*jamvm-1.2.5 (02 Mar 2005)
+
+  02 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> +jamvm-1.2.5.ebuild:
+  new upstream release, fixes #83855
+
+*jamvm-1.2.4 (24 Jan 2005)
+
+  24 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> -jamvm-1.2.2.ebuild,
+  jamvm-1.2.3.ebuild, +jamvm-1.2.4.ebuild:
+  marked 1.2.3 stable on x86, removed old version. added new version, 1.2.4
+  which fixes #79310.
+
+*jamvm-1.2.3 (07 Jan 2005)
+
+  07 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> +jamvm-1.2.3.ebuild:
+  new version released. fixes bug #77035.
+
+*jamvm-1.2.2 (23 Dec 2004)
+
+  23 Dec 2004; Karl Trygve Kalleberg <karltk@gentoo.org> jamvm-1.2.2.ebuild:
+  Initial import. Ebuild submitted by Robert Schuster <theBohemian@gmx.net>. 
+  Fixes #56571.

@@ -1,0 +1,387 @@
+# ChangeLog for net-analyzer/arping
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/arping/ChangeLog,v 1.103 2015/04/25 12:10:38 jer Exp $
+
+*arping-2.15-r2 (25 Apr 2015)
+
+  25 Apr 2015; Jeroen Roovers <jer@gentoo.org> -arping-2.15-r1.ebuild,
+  +arping-2.15-r2.ebuild, +files/arping-2.15-setgroups.patch:
+  Fix includes for setgroups.
+
+*arping-2.15-r1 (25 Apr 2015)
+
+  25 Apr 2015; Mike Frysinger <vapier@gentoo.org> +arping-2.15-r1.ebuild:
+  Stop renaming to arping2, but block iputils[arping] instead.
+
+  14 Apr 2015; Jeroen Roovers <jer@gentoo.org> -arping-2.14.ebuild:
+  Old.
+
+  14 Apr 2015; Agostino Sarubbo <ago@gentoo.org> arping-2.15.ebuild:
+  Stable for ia64, wrt bug #543196
+
+  13 Apr 2015; Agostino Sarubbo <ago@gentoo.org> arping-2.15.ebuild:
+  Stable for alpha, wrt bug #543196
+
+  02 Apr 2015; Markus Meier <maekke@gentoo.org> arping-2.15.ebuild:
+  arm stable, bug #543196
+
+  01 Apr 2015; Agostino Sarubbo <ago@gentoo.org> arping-2.15.ebuild:
+  Stable for sparc, wrt bug #543196
+
+  31 Mar 2015; Agostino Sarubbo <ago@gentoo.org> arping-2.15.ebuild:
+  Stable for ppc64, wrt bug #543196
+
+  28 Mar 2015; Agostino Sarubbo <ago@gentoo.org> arping-2.15.ebuild:
+  Stable for ppc, wrt bug #543196
+
+  25 Mar 2015; Agostino Sarubbo <ago@gentoo.org> arping-2.15.ebuild:
+  Stable for x86, wrt bug #543196
+
+  24 Mar 2015; Agostino Sarubbo <ago@gentoo.org> arping-2.15.ebuild:
+  Stable for amd64, wrt bug #543196
+
+  19 Mar 2015; Jeroen Roovers <jer@gentoo.org> arping-2.15.ebuild:
+  Stable for HPPA (bug #543196).
+
+  13 Mar 2015; Jeroen Roovers <jer@gentoo.org> -arping-2.13.ebuild:
+  Old.
+
+  28 Feb 2015; Agostino Sarubbo <ago@gentoo.org> arping-2.14.ebuild:
+  Stable for ia64, wrt bug #535522
+
+  27 Feb 2015; Agostino Sarubbo <ago@gentoo.org> arping-2.14.ebuild:
+  Stable for sparc, wrt bug #535522
+
+  24 Feb 2015; Agostino Sarubbo <ago@gentoo.org> arping-2.14.ebuild:
+  Stable for alpha, wrt bug #535522
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> arping-2.14.ebuild:
+  Stable for x86, wrt bug #535522
+
+  18 Jan 2015; Agostino Sarubbo <ago@gentoo.org> arping-2.14.ebuild:
+  Stable for ppc64, wrt bug #535522
+
+  17 Jan 2015; Agostino Sarubbo <ago@gentoo.org> arping-2.14.ebuild:
+  Stable for ppc, wrt bug #535522
+
+*arping-2.15 (13 Jan 2015)
+
+  13 Jan 2015; Jeroen Roovers <jer@gentoo.org> +arping-2.15.ebuild:
+  Version bump.
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> arping-2.14.ebuild:
+  Stable for amd64, wrt bug #535522
+
+  08 Jan 2015; Jeroen Roovers <jer@gentoo.org> arping-2.14.ebuild:
+  Stable for HPPA (bug #535522).
+
+  08 Jan 2015; Markus Meier <maekke@gentoo.org> arping-2.14.ebuild:
+  arm stable, bug #535522
+
+*arping-2.14 (30 Jun 2014)
+
+  30 Jun 2014; Jeroen Roovers <jer@gentoo.org> +arping-2.14.ebuild:
+  Version bump.
+
+  01 Mar 2013; Jeroen Roovers <jer@gentoo.org> -arping-2.12.ebuild:
+  Old.
+
+  01 Mar 2013; Agostino Sarubbo <ago@gentoo.org> arping-2.13.ebuild:
+  Stable for sh, wrt bug #457412
+
+  21 Feb 2013; Agostino Sarubbo <ago@gentoo.org> arping-2.13.ebuild:
+  Stable for ia64, wrt bug #457412
+
+  20 Feb 2013; Agostino Sarubbo <ago@gentoo.org> arping-2.13.ebuild:
+  Stable for s390, wrt bug #457412
+
+  17 Feb 2013; Jeroen Roovers <jer@gentoo.org> arping-2.13.ebuild:
+  Stable for HPPA (bug #457412).
+
+  15 Feb 2013; Agostino Sarubbo <ago@gentoo.org> arping-2.13.ebuild:
+  Stable for alpha, wrt bug #457412
+
+  15 Feb 2013; Agostino Sarubbo <ago@gentoo.org> arping-2.13.ebuild:
+  Stable for sparc, wrt bug #457412
+
+  15 Feb 2013; Agostino Sarubbo <ago@gentoo.org> arping-2.13.ebuild:
+  Stable for arm, wrt bug #457412
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> arping-2.13.ebuild:
+  Stable for ppc, wrt bug #457412
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> arping-2.13.ebuild:
+  Stable for ppc64, wrt bug #457412
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> arping-2.13.ebuild:
+  Stable for x86, wrt bug #457412
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> arping-2.13.ebuild:
+  Stable for amd64, wrt bug #457412
+
+*arping-2.13 (03 Jan 2013)
+
+  03 Jan 2013; Tim Harder <radhermit@gentoo.org> +arping-2.13.ebuild:
+  Version bump.
+
+  07 Oct 2012; Jeroen Roovers <jer@gentoo.org> -arping-2.11.ebuild:
+  Old.
+
+  20 Sep 2012; Anthony G. Basile <blueness@gentoo.org> arping-2.12.ebuild:
+  Stable ppc64, bug #433321
+
+  18 Sep 2012; Jeroen Roovers <jer@gentoo.org> arping-2.12.ebuild:
+  Stable for HPPA (bug #433321).
+
+  15 Sep 2012; Raúl Porcel <armin76@gentoo.org> arping-2.12.ebuild:
+  alpha/ia64/s390/sh/sparc/x86 stable wrt #433321
+
+  08 Sep 2012; Agostino Sarubbo <ago@gentoo.org> arping-2.12.ebuild:
+  Stable for amd64, wrt bug #433321
+
+  30 Aug 2012; Anthony G. Basile <blueness@gentoo.org> arping-2.12.ebuild:
+  Stable arm, bug #433321
+
+  30 Aug 2012; Anthony G. Basile <blueness@gentoo.org> arping-2.12.ebuild:
+  Stable ppc, bug #433321
+
+  29 Jul 2012; Jeroen Roovers <jer@gentoo.org> -arping-2.06.ebuild,
+  -arping-2.09-r1.ebuild:
+  Old.
+
+  29 Jul 2012; Raúl Porcel <armin76@gentoo.org> arping-2.11.ebuild,
+  arping-2.12.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #419203
+
+  24 Jul 2012; Anthony G. Basile <blueness@gentoo.org> arping-2.12.ebuild:
+  Keyword ~mips
+
+*arping-2.12 (11 Jul 2012)
+
+  11 Jul 2012; Tim Harder <radhermit@gentoo.org> +arping-2.12.ebuild:
+  Version bump.
+
+  13 Jun 2012; Jeff Horelick <jdhore@gentoo.org> arping-2.11.ebuild:
+  marked x86 per bug 419203
+
+  07 Jun 2012; Brent Baude <ranger@gentoo.org> arping-2.11.ebuild:
+  Marking arping-2.11 ppc for bug 419203
+
+  07 Jun 2012; Jeroen Roovers <jer@gentoo.org> arping-2.11.ebuild:
+  Stable for HPPA (bug #419203).
+
+  07 Jun 2012; Jeroen Roovers <jer@gentoo.org> arping-2.11.ebuild:
+  Remove unnecessary src_test().
+
+  06 Jun 2012; Markus Meier <maekke@gentoo.org> arping-2.11.ebuild:
+  arm stable, bug #419203
+
+  05 Jun 2012; Brent Baude <ranger@gentoo.org> arping-2.11.ebuild:
+  Marking arping-2.11 ppc64 for bug 419203
+
+  04 Jun 2012; Agostino Sarubbo <ago@gentoo.org> arping-2.11.ebuild:
+  Stable for amd64, wrt bug #419203
+
+  29 Feb 2012; Tim Harder <radhermit@gentoo.org> -arping-2.10.ebuild:
+  Remove old.
+
+*arping-2.11 (29 Feb 2012)
+
+  29 Feb 2012; Tim Harder <radhermit@gentoo.org> +arping-2.11.ebuild:
+  Version bump.
+
+  27 Feb 2012; Tim Harder <radhermit@gentoo.org> -arping-2.05.ebuild,
+  -arping-2.08.ebuild, -arping-2.08-r1.ebuild:
+  Remove old.
+
+*arping-2.10 (27 Feb 2012)
+
+  27 Feb 2012; Tim Harder <radhermit@gentoo.org> +arping-2.10.ebuild:
+  Version bump.
+
+*arping-2.09-r1 (15 Sep 2010)
+
+  15 Sep 2010; Jeroen Roovers <jer@gentoo.org> -arping-2.09.ebuild,
+  +arping-2.09-r1.ebuild:
+  Install as arping2{,.8} thanks to Marcin Mirosław (bug #337258) and
+  comment clearly why.
+
+*arping-2.09 (14 Sep 2010)
+
+  14 Sep 2010; Jeroen Roovers <jer@gentoo.org> +arping-2.09.ebuild:
+  Version bump thanks to Marcin Mirosław (bug #337130).
+
+  12 Apr 2010; Alexis Ballier <aballier@gentoo.org> arping-2.08-r1.ebuild:
+  keyword ~x86-fbsd thanks to Johan Hattne
+  <johan.hattne@utsouthwestern.edu>, bug #306673
+
+  01 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  arping-2.08-r1.ebuild:
+  Transfer Prefix keywords
+
+  10 Dec 2009; Jeroen Roovers <jer@gentoo.org> arping-2.08-r1.ebuild:
+  Add yet more sed scripts (bug #257864).
+
+*arping-2.08-r1 (10 Dec 2009)
+
+  10 Dec 2009; Jeroen Roovers <jer@gentoo.org> +arping-2.08-r1.ebuild:
+  Fix executable name in man page and example script, and fix example script
+  name (bug #257864). Use PN instead of hardcoding package name.
+
+*arping-2.08 (28 Sep 2008)
+
+  28 Sep 2008; Cédric Krier <cedk@gentoo.org> +arping-2.08.ebuild:
+  Version bump
+
+  07 Jul 2008; Markus Ullmann <jokey@gentoo.org> arping-2.06.ebuild:
+  Stable on arm for bug #229841
+
+  01 Jul 2008; Jeroen Roovers <jer@gentoo.org> arping-2.06.ebuild:
+  Stable for HPPA (bug #229841).
+
+  30 Jun 2008; Brent Baude <ranger@gentoo.org> arping-2.06.ebuild:
+  stable ppc64, bug 229841
+
+  30 Jun 2008; Raúl Porcel <armin76@gentoo.org> arping-2.06.ebuild:
+  x86 stable, add ~ia64
+
+  30 Jun 2008; Kenneth Prugh <ken69267@gentoo.org> arping-2.06.ebuild:
+  amd64 stable, bug #229841
+
+  30 Jun 2008; Friedrich Oslage <bluebird@gentoo.org> arping-2.06.ebuild:
+  Stable on sparc, bug #229841
+
+  30 Jun 2008; nixnut <nixnut@gentoo.org> arping-2.06.ebuild:
+  Stable on ppc wrt bug 229841
+
+*arping-2.06 (22 May 2008)
+
+  22 May 2008; Mike Frysinger <vapier@gentoo.org> +arping-2.06.ebuild:
+  Version bump.
+
+  06 Sep 2007; Markus Ullmann <jokey@gentoo.org>
+  -files/1.06-libnet-1.0.patch, -arping-1.06-r1.ebuild:
+  Cleanup
+
+  30 Apr 2007; Cedric Krier <cedk@gentoo.org> arping-2.05.ebuild:
+  Fix HOMEPAGE and add script for bug #175591
+
+  18 Feb 2007; Markus Rothe <corsair@gentoo.org> arping-2.05.ebuild:
+  Added ~ppc64
+
+  15 Feb 2006; Markus Ullmann <jokey@gentoo.org> arping-1.06-r1.ebuild:
+  Removing virtual/libpcap wrt bug #117898
+
+  05 Sep 2005; Marcelo Goes <vanquirius@gentoo.org> -arping-2.04.ebuild:
+  Removing old ebuild.
+
+  09 May 2005; Lars Weiler <pylon@gentoo.org> arping-2.05.ebuild:
+  Stable on ppc.
+
+  25 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org> arping-2.05.ebuild:
+  Stable on sparc
+
+  24 Apr 2005; Marcelo Goes <vanquirius@gentoo.org> -arping-2.01.ebuild,
+  arping-2.05.ebuild:
+  Stable on x86.
+
+  08 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> arping-2.04.ebuild:
+  Stable on ppc.
+
+  07 Apr 2005; Simon Stelling <blubb@gentoo.org> arping-2.04.ebuild:
+  stable on amd64
+
+  14 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org> arping-2.04.ebuild:
+  Stable on sparc
+
+*arping-2.05 (12 Feb 2005)
+
+  12 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> arping-2.04.ebuild,
+  +arping-2.05.ebuild:
+  Version bump for bug 81809. 2.04 stable on x86.
+
+  29 Jan 2005; Daniel Black <dragonheart@gentoo.org> arping-1.06-r1.ebuild,
+  arping-2.01.ebuild, arping-2.04.ebuild:
+  changed net-libs/libpcap depend to virtual/libcap
+
+*arping-2.04 (09 Jan 2005)
+
+  09 Jan 2005; Daniel Black <dragonheart@gentoo.org> +arping-2.04.ebuild:
+  version bump as per bug #74894 thanks to Vanquirius <marcelogoes@gmail.com>
+
+  09 Jul 2004; Eldad Zack <eldad@gentoo.org> arping-2.01.ebuild:
+  marked x86 stable.
+
+  08 Jul 2004; Eldad Zack <eldad@gentoo.org> arping-1.06-r1.ebuild:
+  Added missing IUSE.
+
+  19 Jun 2004; Jason Wever <weeve@gentoo.org> arping-2.01.ebuild:
+  Stable on sparc.
+
+  14 Nov 2003; Brad House <brad_mssw@gentoo.org> arping-2.01.ebuild:
+  mark stable amd64
+
+*arping-2.01 (21 Aug 2003)
+
+  21 Aug 2003; Mike Frysinger <vapier@gentoo.org> :
+  libnet-1.1.x version of arping.  SLOT to 2 and make binary 'arping2' #27023.
+  This way we dont kill iputils arping.
+
+*arping-1.06-r1 (21 Aug 2003)
+
+  21 Aug 2003; Mike Frysinger <vapier@gentoo.org> :
+  Patch to compile against SLOT-ed libnet-1.0.x #17772.
+  Also set SLOT to 1 and make binary 'arping1' #27023.
+  This way we dont kill iputils arping.
+
+*arping-1.06 (07 Mar 2003)
+
+  07 Mar 2003; Martin Holzer <mholzer@gentoo.org> arping-1.06.ebuild
+  files/digest-arping-1.06 ChangeLog :
+  Version bumped
+
+*arping-1.05 (09 Jan 2003)
+
+  07 Mar 2003; Martin Holzer <mholzer@gentoo.org> arping-1.05.ebuild :
+  Fixed Depend to libnet-1.0.*. Closes #17017.
+
+  04 Feb 2003; Jon Nall <nall@gentoo.org> arping-1.05.ebuild :
+  added ~ppc
+
+  09 Jan 2003; Martin Holzer <mholzer@gentoo.org> arping-1.05.ebuild
+  files/digest-arping-1.05 ChangeLog :
+  Version bumped. Closes #13551
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*arping-1.04 (18 Jun 2002)
+
+  07 Mar 2003; Martin Holzer <mholzer@gentoo.org> arping-1.04.ebuild :
+  Fixed Depend to libnet-1.0.*. Closes #17017.
+  
+  09 Sep 2002; Matthew Kennedy <mkennedy@gentoo.org>
+  arping-1.04.ebuild, ChangeLog :
+
+  Arping depends on libnet-1.0.2a-r1, not libnet-1.1.x. Lintoo
+  cleanup.
+
+  18 Jul 2002; Kyle Manna <nitro@gentoo.org> :
+
+  Added KEYWORDS.
+
+  28 Jun 2002; Thilo Bangert <bangert@gentoo.org> :
+  moved to net-analyzer - added SLOT=0 - updated HOMEPAGE and SRC_URI
+  version bump
+
+  18 Mar 2002; Daniel Robbins <drobbins@gentoo.org> : added net-libs/libnet
+  dependency; no rev bump.  Closes bug #1211
+
+*arping-1.03 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

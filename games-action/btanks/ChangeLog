@@ -1,0 +1,133 @@
+# ChangeLog for games-action/btanks
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/btanks/ChangeLog,v 1.30 2015/06/01 22:11:30 mr_bones_ Exp $
+
+  01 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org> btanks-0.9.8083.ebuild:
+  add slot to dev-lang/lua dep
+
+  06 Feb 2015; Agostino Sarubbo <ago@gentoo.org> btanks-0.9.8083.ebuild:
+  Stable for amd64, wrt bug #538990
+
+  05 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org> btanks-0.9.8083.ebuild:
+  EAPI=5
+
+  31 Dec 2014; Tupone Alfredo <tupone@gentoo.org> btanks-0.9.8083.ebuild:
+  Migration to EAPI 4
+
+  08 Oct 2012; Tupone Alfredo <tupone@gentoo.org> btanks-0.9.8083.ebuild,
+  +files/btanks-0.9.8083-gcc47.patch:
+  Build with gcc-4.7. Bug #423613 by Diego
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> btanks-0.9.8083.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  20 Apr 2011; Tupone Alfredo <tupone@gentoo.org> btanks-0.9.8083.ebuild,
+  +files/btanks-0.9.8083-gcc46.patch:
+  Build with gcc-4.6 Bug #362829 by Diego Elio Pettenò
+
+  14 Oct 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  btanks-0.9.8083.ebuild:
+  use scons-utils
+
+  27 Feb 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  btanks-0.9.8083.ebuild:
+  x86 stable wrt bug #304095
+
+*btanks-0.9.8083 (09 Jan 2010)
+
+  09 Jan 2010; Tupone Alfredo <tupone@gentoo.org> +btanks-0.9.8083.ebuild,
+  +files/btanks-0.9.8083-scons-blows.patch:
+  Version bump to 0.9.8083 Bug #300053 by Arseny Solokha
+
+  23 May 2009; Tristan Heaven <nyhm@gentoo.org> btanks-0.8.7686.ebuild,
+  files/btanks-0.8.7686-scons-blows.patch:
+  Use system sdl-gfx instead of the bundled version, bug #252526
+
+  19 May 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  btanks-0.8.7686.ebuild:
+  add more use deps for libsdl (bug #270081)
+
+  14 Apr 2009; Raúl Porcel <armin76@gentoo.org> btanks-0.8.7686.ebuild:
+  x86 stable wrt #263975
+
+  31 Mar 2009; Jeremy Olexa <darkside@gentoo.org> btanks-0.8.7686.ebuild:
+  amd64 stable, bug 263975
+
+  23 Jan 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  files/btanks-0.8.7686-scons-blows.patch, btanks-0.8.7686.ebuild:
+  EAPI=2; add use-based deps; allow parallel build; re-roll patch to avoid
+  passing CFLAGS to the c++ compiler; fixed some compile warnings; work around
+  namespace collision for bug #237980
+
+  10 Nov 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  btanks-0.8.7686.ebuild:
+  Openal support went away awhile ago (bug #246105)
+
+*btanks-0.8.7686 (12 Sep 2008)
+
+  12 Sep 2008; Tristan Heaven <nyhm@gentoo.org>
+  +files/btanks-0.8.7686-scons-blows.patch, +btanks-0.8.7686.ebuild:
+  Version bump
+
+*btanks-0.8.7479 (04 Aug 2008)
+
+  04 Aug 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/btanks-0.8.7479-build.patch,
+  +files/btanks-0.8.7479-scons-blows.patch, +btanks-0.8.7479.ebuild:
+  version bump - ebuild submitted by Aleksandr Yakimov via bug #233461
+
+  20 Apr 2008; Mike Frysinger <vapier@gentoo.org>
+  +files/btanks-0.7.5800-gcc43.patch, btanks-0.7.5800.ebuild:
+  Fix from Debian for building with gcc-4.3 #217944 by Peter Alfredsen.
+
+  28 Mar 2008; Markus Meier <maekke@gentoo.org> btanks-0.7.5800.ebuild:
+  x86 stable, bug #214429
+
+  28 Mar 2008; Santiago M. Mola <coldwind@gentoo.org>
+  btanks-0.7.5800.ebuild:
+  amd64 stable wrt bug #214429
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org> btanks-0.6.5069.ebuild,
+  btanks-0.7.5800.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+  17 Jan 2008; Tupone Alfredo <tupone@gentoo.org> btanks-0.5.4740-r1.ebuild,
+  btanks-0.6.5069.ebuild, btanks-0.7.5800.ebuild:
+  Fix pkg-config dep. Bug #206253 by bugs@dev.gentooexperimental.org
+
+*btanks-0.7.5800 (27 Dec 2007)
+
+  27 Dec 2007; Tupone Alfredo <tupone@gentoo.org>
+  +files/btanks-0.7.5800-scons-blows.patch, +btanks-0.7.5800.ebuild:
+  Version bump to 0.7.5800 Bug #203138 by St.MPA3b
+
+  29 Nov 2007; Christian Faulhammer <opfer@gentoo.org>
+  btanks-0.6.5069.ebuild:
+  stable x86, bug 200612
+
+  28 Nov 2007; Samuli Suominen <drac@gentoo.org> btanks-0.6.5069.ebuild:
+  amd64 stable wrt #200612
+
+*btanks-0.6.5069 (05 Oct 2007)
+
+  05 Oct 2007; Tupone Alfredo <tupone@gentoo.org>
+  +files/btanks-0.6.5069-scons-blows.patch, +btanks-0.6.5069.ebuild:
+  Version bump to 0.6.5069
+
+  28 Aug 2007; Michael Sterrett <mr_bones_@gentoo.org>
+  btanks-0.5.4740-r1.ebuild:
+  fix install name (bug #190544)
+
+*btanks-0.5.4740-r1 (24 Aug 2007)
+
+  24 Aug 2007; Mike Frysinger <vapier@gentoo.org>
+  +files/btanks-0.5.4740-scons-blows.patch, +btanks-0.5.4740-r1.ebuild:
+  Make sure user build env settings are respected and make sure rpath gets set
+  properly in the binary (thus no need for a wrapper script) #190065 by
+  Torsten Kaiser.
+
+*btanks-0.5.4740 (20 Aug 2007)
+
+  20 Aug 2007; Tupone Alfredo <tupone@gentoo.org> +metadata.xml,
+  +btanks-0.5.4740.ebuild:
+  New ebuild requested via bug #172772 by Maks Polunin

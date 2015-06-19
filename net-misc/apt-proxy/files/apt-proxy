@@ -1,0 +1,17 @@
+# default: off
+# description: this is a proxy for debian packages.  
+# $Header: /var/cvsroot/gentoo-x86/net-misc/apt-proxy/files/apt-proxy,v 1.2 2004/07/18 04:06:59 dragonheart Exp $
+
+service apt-proxy
+{
+	type		= UNLISTED
+	port            = 9999
+	protocol	= tcp
+	socket_type     = stream
+	only_from	= 0.0.0.0
+	wait            = no
+	user            = apt-proxy
+	server		= /usr/sbin/apt-proxy
+	server_args	= /var/log/apt-proxy.log
+	disable         = yes
+}

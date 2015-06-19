@@ -1,0 +1,47 @@
+From 38702bf0f4aaafdddde51393106eeaf720c1fc63 Mon Sep 17 00:00:00 2001
+From: Manuel Lauss <manuel.lauss@googlemail.com>
+Date: Fri, 13 Jan 2012 11:59:55 -0500
+Subject: [PATCH] serial: use cfgetispeed helpers
+
+Rather than poking c_ispeed directly, use the cfgetispeed helper.  This
+is part of POSIX, and we already use cfsetispeed, so there shouldn't be
+any portability issues here.
+
+Signed-off-by: Manuel Lauss <manuel.lauss@googlemail.com>
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ serial.c |    9 +--------
+ 1 files changed, 1 insertions(+), 8 deletions(-)
+
+diff --git a/serial.c b/serial.c
+index c1464dd..8eb03ce 100644
+--- a/serial.c
++++ b/serial.c
+@@ -594,13 +594,8 @@ void gpsd_close(struct gps_device_t *session)
+ 	 * them the first time.  Economical, and avoids tripping over an
+ 	 * obscure Linux 2.6 kernel bug that disables threaded
+ 	 * ioctl(TIOCMWAIT) on a device after tcsetattr() is called.
+-         *
+-         * Unfortunately the termios struct doesn't have c_ispeed/c_ospeed
+-         * on all architectures. Its missing on sparc, mips/mispel and hurd-i386 at least.
+ 	 */
+-#if defined(_HAVE_STRUCT_TERMIOS_C_ISPEED)
+-	if (session->ttyset_old.c_ispeed != session->ttyset.c_ispeed || (session->ttyset_old.c_cflag & CSTOPB) != (session->ttyset.c_cflag & CSTOPB)) {
+-#endif
++	if (cfgetispeed(&session->ttyset_old) != cfgetispeed(&session->ttyset) || (session->ttyset_old.c_cflag & CSTOPB) != (session->ttyset.c_cflag & CSTOPB)) {
+ 	    /*@ ignore @*/
+ 	    (void)cfsetispeed(&session->ttyset_old,
+ 			      (speed_t) session->gpsdata.dev.baudrate);
+@@ -609,9 +604,7 @@ void gpsd_close(struct gps_device_t *session)
+ 	    /*@ end @*/
+ 	    (void)tcsetattr(session->gpsdata.gps_fd, TCSANOW,
+ 			    &session->ttyset_old);
+-#if defined(_HAVE_STRUCT_TERMIOS_C_ISPEED)
+ 	}
+-#endif
+ 	gpsd_report(LOG_SPIN, "close(%d) in gpsd_close(%s)\n",
+ 		    session->gpsdata.gps_fd, session->gpsdata.dev.path);
+ 	(void)close(session->gpsdata.gps_fd);
+-- 
+1.7.8.3
+

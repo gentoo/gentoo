@@ -1,0 +1,22 @@
+# ChangeLog for media-sound/pasystray
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/pasystray/ChangeLog,v 1.4 2014/10/12 17:28:06 pacho Exp $
+
+  12 Oct 2014; Pacho Ramos <pacho@gentoo.org>
+  -files/pasystray-0.1.2-desktop-file-validate.patch, -pasystray-0.1.2.ebuild,
+  pasystray-0.2.1.ebuild:
+  Support pulseaudio[zeroconf] too, drop old
+
+*pasystray-0.2.1 (06 Sep 2012)
+
+  06 Sep 2012; Samuli Suominen <ssuominen@gentoo.org> +pasystray-0.2.1.ebuild:
+  Version bump wrt #433968 by Oliver Freyermuth
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> pasystray-0.1.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*pasystray-0.1.2 (30 Mar 2012)
+
+  30 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> +pasystray-0.1.2.ebuild,
+  +files/pasystray-0.1.2-desktop-file-validate.patch:
+  Initial commit wrt #406965 by Henning Schild

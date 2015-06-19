@@ -1,0 +1,22 @@
+#!/sbin/runscript
+# Copyright 1999-2007 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-nds/rpcbind/files/rpcbind.initd,v 1.1 2007/12/29 09:13:55 vapier Exp $
+
+depend() {
+	use net
+	before inetd xinetd
+	provide portmap
+}
+
+start() {
+	ebegin "Starting rpcbind"
+	start-stop-daemon --start --quiet --exec /sbin/rpcbind -- ${RPCBIND_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping rpcbind"
+	start-stop-daemon --stop --quiet --exec /sbin/rpcbind
+	eend $?
+}

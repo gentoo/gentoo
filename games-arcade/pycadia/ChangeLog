@@ -1,0 +1,46 @@
+# ChangeLog for games-arcade/pycadia
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/pycadia/ChangeLog,v 1.14 2015/02/06 13:44:24 ago Exp $
+
+  06 Feb 2015; Agostino Sarubbo <ago@gentoo.org> pycadia-0.5.1.ebuild:
+  Stable for amd64, wrt bug #539006
+
+  05 Jan 2015; Tupone Alfredo <tupone@gentoo.org> pycadia-0.5.1.ebuild:
+  EAPI 5 - Use python2
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> pycadia-0.5.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  19 Oct 2011; Michael Sterrett <mr_bones_@gentoo.org> pycadia-0.5.1.ebuild:
+  EAPI=2; add desktop file support
+
+  19 Jan 2009; Michael Sterrett <mr_bones_@gentoo.org> pycadia-0.5.1.ebuild:
+  EAPI=1; ditch built_with_use
+
+  24 Apr 2007; Timothy Redaelli <drizzt@gentoo.org> pycadia-0.5.1.ebuild:
+  Add ~x86-fbsd keyword.
+  Thanks to Nathan Smith for reporting wrt bug #175779
+
+  12 Mar 2007; Marius Mauch <genone@gentoo.org> pycadia-0.5.1.ebuild:
+  Replacing einfo with eerror
+
+  13 Apr 2006; Chris Gianelloni <wolf31o2@gentoo.org> pycadia-0.5.1.ebuild:
+  Moved games_pkg_setup to the beginning of pkg_setup.
+
+  06 Jan 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  pycadia-0.5.1.ebuild:
+  Adding wrapper check for dropped USE flags (bug #103056)
+
+  05 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org> pycadia-0.5.1.ebuild:
+  check for gnome use flag in pygtk (bug #101464)
+
+  08 Nov 2004; Joseph Jezak <josejx@gentoo.org> pycadia-0.5.1.ebuild:
+  Marked ppc stable.
+
+  30 Jun 2004; David Holm <dholm@gentoo.org> pycadia-0.5.1.ebuild:
+  Added to ~ppc.
+
+*pycadia-0.5.1 (13 Nov 2003)
+
+  13 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> pycadia-0.5.1.ebuild:
+  initial commit; ebuild supplied by flash3001 via bug 32869

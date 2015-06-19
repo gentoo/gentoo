@@ -1,0 +1,32 @@
+# ChangeLog for virtual/ada
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/ada/ChangeLog,v 1.8 2014/08/10 20:11:16 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> ada-2005.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  11 Jan 2010; Ulrich Mueller <ulm@gentoo.org> ada-1995.ebuild,
+  ada-2005.ebuild:
+  Set empty HOMEPAGE and LICENSE.
+
+  15 May 2009; Markus Meier <maekke@gentoo.org> ada-1995.ebuild,
+  ada-2005.ebuild:
+  amd64 stable, bug #267442
+
+  29 Apr 2009; Mounir Lamouri <volkmar@gentoo.org> ada-1995.ebuild,
+  ada-2005.ebuild:
+  Stable on ppc, bug 267442.
+
+  29 Apr 2009; Christian Faulhammer <fauli@gentoo.org> ada-1995.ebuild,
+  ada-2005.ebuild:
+  stable x86, bug 267442
+
+  15 Apr 2008; <portage-cvs@gentoo.org> ada-2005.ebuild:
+  modified to include added gnat-gcc-4.3
+
+*ada-2005 (26 Dec 2007)
+*ada-1995 (26 Dec 2007)
+
+  26 Dec 2007; George Shapovalov <george@gentoo.org> +metadata.xml,
+  +ada-1995.ebuild, +ada-2005.ebuild:
+  new virtual, to track Ada standard versions

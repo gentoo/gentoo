@@ -1,0 +1,130 @@
+# ChangeLog for net-irc/bip
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/bip/ChangeLog,v 1.27 2014/11/19 09:57:55 polynomial-c Exp $
+
+  19 Nov 2014; Lars Wendler <polynomial-c@gentoo.org> metadata.xml:
+  Moved package to maintainer-needed.
+
+  29 Jan 2012; Alex Legler <a3li@gentoo.org> -bip-0.8.8.ebuild:
+  removing vulnerable version
+
+  29 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> bip-0.8.8-r1.ebuild:
+  x86 stable wrt bug #400599
+
+  27 Jan 2012; Agostino Sarubbo <ago@gentoo.org> bip-0.8.8-r1.ebuild:
+  Stable for AMD64, wrt security bug #400599
+
+*bip-0.8.8-r1 (27 Jan 2012)
+
+  27 Jan 2012; Alex Legler <a3li@gentoo.org> -bip-0.8.5-r1.ebuild,
+  +bip-0.8.8-r1.ebuild, -files/bip-CVE-2010-3071.patch,
+  +files/bip-CVE-2012-0806.patch, -files/bip-configure.patch:
+  Revbump for security bug 400599, fixing CVE-2012-0806. Depend on yacc and
+  flex, bug 397405. Remove unneeded vulnerable version.
+
+  25 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> bip-0.8.8.ebuild:
+  x86 stable wrt bug #388285
+
+  24 Oct 2011; Markos Chandras <hwoarang@gentoo.org> bip-0.8.8.ebuild:
+  Stable on amd64 wrt bug #388285
+
+*bip-0.8.8 (17 Sep 2011)
+
+  17 Sep 2011; Alex Legler <a3li@gentoo.org> +bip-0.8.8.ebuild,
+  +files/bip-0.8.8-configure.patch:
+  Version bump. Change HOMEPAGE and SRC_URI to new upstream. Use new configure
+  patch, applied in upstream git.
+
+  11 Sep 2010; Alex Legler <a3li@gentoo.org> -bip-0.8.4.ebuild,
+  -bip-0.8.5.ebuild:
+  Removing old and vulnerable versions.
+
+  10 Sep 2010; Markos Chandras <hwoarang@gentoo.org> bip-0.8.5-r1.ebuild:
+  Stable on amd64 wrt bug #336321
+
+  10 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> bip-0.8.5-r1.ebuild:
+  x86 stable wrt security bug #336321
+
+*bip-0.8.5-r1 (09 Sep 2010)
+
+  09 Sep 2010; Alex Legler <a3li@gentoo.org> +bip-0.8.5-r1.ebuild,
+  +files/bip-CVE-2010-3071.patch:
+  Revbump to fix CVE-2010-3071 (remote DoS), bug 336321.
+
+  07 Aug 2010; Alex Legler <a3li@gentoo.org> bip-0.8.5.ebuild,
+  +files/bip-configure.patch:
+  Add a proper fix to respect user CFLAGS, thanks to flameeyes.
+
+*bip-0.8.5 (07 Aug 2010)
+
+  07 Aug 2010; Alex Legler <a3li@gentoo.org> +bip-0.8.5.ebuild,
+  +files/bip-freenode.patch, metadata.xml:
+  Version bump, adding support for freenode mute lists (+q).
+
+  30 Jul 2010; Markos Chandras <hwoarang@gentoo.org> bip-0.8.4.ebuild:
+  Stable on amd64 wrt bug #330121
+
+  28 Jul 2010; Christian Faulhammer <fauli@gentoo.org> bip-0.8.4.ebuild:
+  stable x86, bug 330121
+
+  27 Jul 2010; Alex Legler <a3li@gentoo.org> bip-0.8.4.ebuild:
+  Remove unneeded autotools inherit
+
+  08 May 2010; Alex Legler <a3li@gentoo.org> -bip-0.8.2.ebuild,
+  -files/bip-configure-oidentd.patch:
+  Remove old version and cleanup files/
+
+*bip-0.8.4 (05 Jan 2010)
+
+  05 Jan 2010; Alex Legler <a3li@gentoo.org> -bip-0.8.1.ebuild,
+  +bip-0.8.4.ebuild, metadata.xml:
+  Version bump, add 'noctcp' option to disable automatic CTCP VERSION
+  replies. Remove old version
+
+*bip-0.8.2 (27 Aug 2009)
+
+  27 Aug 2009; Alex Legler <a3li@gentoo.org> -bip-0.8.0.ebuild,
+  bip-0.8.1.ebuild, -files/bip-0.8.1-configure-oidentd.patch,
+  +bip-0.8.2.ebuild, +files/bip-configure-oidentd.patch:
+  Version bump, renaming patch, removing old version.
+
+*bip-0.8.1 (31 Jul 2009)
+
+  31 Jul 2009; Alex Legler <a3li@gentoo.org> -bip-0.7.4-r1.ebuild,
+  -bip-0.8.0_rc1.ebuild, +bip-0.8.1.ebuild,
+  +files/bip-0.8.1-configure-oidentd.patch:
+  Version bump, removing old versions, fix configure (thanks to flameeyes)
+
+*bip-0.8.0 (23 Mar 2009)
+
+  23 Mar 2009; Alex Legler <a3li@gentoo.org> +bip-0.8.0.ebuild:
+  Version bump. Fixing oidentd and ssl USE flags.
+
+  23 Mar 2009; Alex Legler <a3li@gentoo.org> metadata.xml:
+  Taking over maintenance.
+
+*bip-0.8.0_rc1 (24 Feb 2009)
+
+  24 Feb 2009; Feed your head <alip@gentoo.org> metadata.xml,
+  +bip-0.8.0_rc1.ebuild:
+  Version bump. Add oidentd support. Thanks to Sebastian Mair
+
+*bip-0.7.4-r1 (10 Oct 2008)
+
+  10 Oct 2008; Ali Polatel <hawking@gentoo.org> -bip-0.7.4.ebuild,
+  +bip-0.7.4-r1.ebuild:
+  Revbump. Respect {C,CXX,LD}FLAGS, bug 241030. Install docs properly.
+  Drop old.
+
+*bip-0.7.4 (31 Aug 2008)
+
+  31 Aug 2008; Ali Polatel <hawking@gentoo.org> -bip-0.6.1.ebuild,
+  +bip-0.7.4.ebuild:
+  Version bump. Keyword ~amd64. Drop old.
+
+*bip-0.6.1 (20 Nov 2007)
+
+  20 Nov 2007; Ali Polatel <hawking@gentoo.org> +metadata.xml,
+  +bip-0.6.1.ebuild:
+  initial ebuild, imported from sunrise
+

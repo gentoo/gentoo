@@ -1,0 +1,39 @@
+# ChangeLog for dev-python/path-py
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/path-py/ChangeLog,v 1.8 2015/06/07 14:38:44 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*path-py-7.3 (20 Apr 2015)
+
+  20 Apr 2015; Ian Delaney <idella4@gentoo.org> +path-py-7.3.ebuild,
+  -path-py-7.0.ebuild:
+  bump one rm one
+
+*path-py-7.2 (08 Feb 2015)
+
+  08 Feb 2015; Ian Delaney <idella4@gentoo.org> +path-py-7.2.ebuild:
+  bump
+
+  11 Dec 2014; Mike Gilbert <floppym@gentoo.org> -path-py-6.0.ebuild,
+  path-py-7.0.ebuild:
+  Depend on app-arch/unzip.
+
+  18 Nov 2014; Justin Lecher <jlec@gentoo.org> path-py-7.0.ebuild,
+  metadata.xml:
+  Add more content to HOMEPAGE
+
+  22 Oct 2014; Ian Delaney <idella4@gentoo.org> path-py-7.0.ebuild:
+  remove premature addition of doc build
+
+*path-py-7.0 (21 Oct 2014)
+
+  21 Oct 2014; Ian Delaney <idella4@gentoo.org> +path-py-7.0.ebuild:
+  bump
+
+*path-py-6.0 (27 Sep 2014)
+
+  27 Sep 2014; Mike Gilbert <floppym@gentoo.org> +metadata.xml,
+  +path-py-6.0.ebuild:
+  New package, dependency of net-misc/flexget.

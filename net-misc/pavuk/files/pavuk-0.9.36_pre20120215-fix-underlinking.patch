@@ -1,0 +1,10 @@
+--- configure.in~	2011-03-02 10:44:45.000000000 +0800
++++ configure.in	2012-02-23 09:55:28.073709216 +0800
+@@ -1749,6 +1749,7 @@
+ 
+     if test -n "$GTK_LIBS" ; then
+       if test -n "$GTK_LIBS"; then
++        AX_ADD_OPTION([LIBS], [$X_LIBS])
+         AX_ADD_OPTION([LIBS], [$GTK_LIBS])
+         AX_ADD_OPTION([CPPFLAGS], [$GTK_CFLAGS])
+         AC_DEFINE_UNQUOTED(GTK_FACE, [$GTK_VERSION], [with GTK+ GUI])

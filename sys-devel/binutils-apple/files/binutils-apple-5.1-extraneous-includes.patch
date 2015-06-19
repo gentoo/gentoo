@@ -1,0 +1,31 @@
+Remove extraneous includes that contain clang language extensions on Mac OS X
+10.10 (xpc/base.h - __has_extension).
+
+--- ./cctools-855/as/messages.c.orig	2015-01-12 18:49:02.000000000 +0100
++++ ./cctools-855/as/messages.c	2015-01-12 18:49:06.000000000 +0100
+@@ -23,11 +23,6 @@
+ #include <string.h>
+ #include <mach/mach.h>
+ #include <mach/mach_init.h>
+-#if defined(__OPENSTEP__) || defined(__GONZO_BUNSEN_BEAKER__)
+-#include <servers/netname.h>
+-#else
+-#include <servers/bootstrap.h>
+-#endif
+ #include "as.h"
+ #include "input-scrub.h"
+ #include "messages.h"
+--- ./cctools-855/misc/libtool.c.orig	2015-01-12 18:48:29.000000000 +0100
++++ ./cctools-855/misc/libtool.c	2015-01-12 18:48:40.000000000 +0100
+@@ -53,11 +53,6 @@
+ #endif /* LTO_SUPPORT */
+ 
+ #include <mach/mach_init.h>
+-#if defined(__OPENSTEP__) || defined(__GONZO_BUNSEN_BEAKER__)
+-#include <servers/netname.h>
+-#else
+-#include <servers/bootstrap.h>
+-#endif
+ 
+ /*
+  * This is used internally to build the table of contents.

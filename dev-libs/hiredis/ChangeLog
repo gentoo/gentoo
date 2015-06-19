@@ -1,0 +1,82 @@
+# ChangeLog for dev-libs/hiredis
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/hiredis/ChangeLog,v 1.22 2015/06/15 06:58:52 mgorny Exp $
+
+*hiredis-0.13.1 (15 Jun 2015)
+
+  15 Jun 2015; Michał Górny <mgorny@gentoo.org>
+  +files/hiredis-0.13.1-disable-network-tests.patch, +hiredis-0.13.1.ebuild:
+  Version bump with some fixes. Install a pkg-config file. Run tests against a
+  isolated redis instance.
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  03 Apr 2015; Markus Meier <maekke@gentoo.org> hiredis-0.11.0-r1.ebuild:
+  arm stable, bug #543234
+
+  18 Oct 2014; Agostino Sarubbo <ago@gentoo.org> hiredis-0.11.0-r1.ebuild:
+  Stable for sparc, wrt bug #524154
+
+  18 Oct 2014; Agostino Sarubbo <ago@gentoo.org> hiredis-0.11.0-r1.ebuild:
+  Stable for ia64, wrt bug #524154
+
+  17 Oct 2014; Agostino Sarubbo <ago@gentoo.org> hiredis-0.11.0-r1.ebuild:
+  Stable for ppc64, wrt bug #524154
+
+  05 Oct 2014; Agostino Sarubbo <ago@gentoo.org> hiredis-0.11.0-r1.ebuild:
+  Stable for ppc, wrt bug #524154
+
+  05 Oct 2014; Agostino Sarubbo <ago@gentoo.org> hiredis-0.11.0-r1.ebuild:
+  Stable for alpha, wrt bug #524154
+
+  01 Oct 2014; Agostino Sarubbo <ago@gentoo.org> hiredis-0.11.0-r1.ebuild:
+  Stable for x86, wrt bug #524154
+
+  01 Oct 2014; Agostino Sarubbo <ago@gentoo.org> hiredis-0.11.0-r1.ebuild:
+  Stable for amd64, wrt bug #524154
+
+  30 Sep 2014; Jeroen Roovers <jer@gentoo.org> hiredis-0.11.0-r1.ebuild:
+  Stable for HPPA (bug #524154).
+
+  04 Aug 2014; Tobias Klausmann <klausman@gentoo.org> hiredis-0.11.0-r1.ebuild:
+  Keyworded on alpha, bug 489676
+
+*hiredis-0.11.0-r1 (16 Jun 2014)
+
+  16 Jun 2014; Mike Frysinger <vapier@gentoo.org> +hiredis-0.11.0-r1.ebuild:
+  Drop USE=debug as it only controls -g flags.  Add USE=static-libs support.
+  Fix AR/CPPFLAGS handling.
+
+  16 Jun 2014; Mike Frysinger <vapier@gentoo.org> hiredis-0.11.0.ebuild:
+  Add arm love #511026.
+
+  14 Mar 2014; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Remove <description> tag that is not a description of <maintainer> (use
+  <longdescription> for that) and that is identical to the current DESCRIPTION.
+
+  04 Mar 2014; Naohiro Aota <naota@gentoo.org> hiredis-0.11.0.ebuild:
+  Add ~x86-fbsd
+
+  03 Mar 2014; Jeroen Roovers <jer@gentoo.org> hiredis-0.11.0.ebuild:
+  Marked ~hppa (bug #489736).
+
+  03 Mar 2014; Fabian Groffen <grobian@gentoo.org> hiredis-0.11.0.ebuild:
+  Marked and fixed for ~x64-solaris
+
+  07 Aug 2013; <neurogeek@gentoo.org> hiredis-0.11.0.ebuild:
+  Added multilib support. Closes bug #479484. Thanks to Emery Hemingway for the
+  heads up and patch
+
+  05 Feb 2013; <neurogeek@gentoo.org>
+  files/hiredis-0.11.0-disable-network-tests.patch:
+  Disabled failing test case. Closes bug #455452
+
+  01 Feb 2013; <neurogeek@gentoo.org> ChangeLog:
+  Forcing signing
+
+*hiredis-0.11.0 (01 Feb 2013)
+
+  01 Feb 2013; <neurogeek@gentoo.org> +hiredis-0.11.0.ebuild,
+  +files/hiredis-0.11.0-disable-network-tests.patch, +metadata.xml:
+  Initial commit

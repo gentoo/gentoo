@@ -1,0 +1,40 @@
+Description: Build fix for apache 2.4
+ Fix for API changes in apache 2.4.
+Author: Ivo De Decker <ivo.dedecker@ugent.be>
+Forwarded: http://sourceforge.net/mailarchive/forum.php?thread_name=20120518111425.GA9186%40ugent.be&forum_name=modauthtkt-users
+Last-Update: 2012-05-17
+
+--- libapache2-mod-auth-tkt-2.1.0.orig/src/mod_auth_tkt.c
++++ libapache2-mod-auth-tkt-2.1.0/src/mod_auth_tkt.c
+@@ -6,6 +6,7 @@
+ #include "http_config.h"
+ #include "http_log.h"
+ #include "http_core.h"
++#include "http_request.h"
+ #include "http_protocol.h"
+ #include "util_md5.h"
+ #include "sha2.h"
+@@ -798,7 +799,11 @@ ticket_digest(request_rec *r, auth_tkt *
+   unsigned char *buf2 = apr_palloc(r->pool, sconf->digest_sz + strlen(secret));
+   int len = 0;
+   char *digest = NULL;
++#if AP_MODULE_MAGIC_AT_LEAST(20111130,0) 
++  char *remote_ip = conf->ignore_ip > 0 ? "0.0.0.0" : r->connection->client_ip;
++#else
+   char *remote_ip = conf->ignore_ip > 0 ? "0.0.0.0" : r->connection->remote_ip;
++#endif
+   unsigned long ip;
+   struct in_addr ia;
+   char *d;
+@@ -1575,7 +1580,11 @@ static void
+ auth_tkt_register_hooks (apr_pool_t *p)
+ {
+   ap_hook_post_config(auth_tkt_version, NULL, NULL, APR_HOOK_MIDDLE);
++#if AP_MODULE_MAGIC_AT_LEAST(20080403,1) 
++  ap_hook_check_authn(auth_tkt_check, NULL, NULL, APR_HOOK_FIRST, AP_AUTH_INTERNAL_PER_CONF);
++#else
+   ap_hook_check_user_id(auth_tkt_check, NULL, NULL, APR_HOOK_FIRST);
++#endif
+ }
+ 
+ /* Declare and populate the main module data structure */

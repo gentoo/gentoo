@@ -1,0 +1,28 @@
+# ChangeLog for media-gfx/swftools
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/swftools/ChangeLog,v 1.44 2013/12/01 21:29:35 pacho Exp $
+
+  01 Dec 2013; Pacho Ramos <pacho@gentoo.org> swftools-0.9.2.ebuild:
+  Add missing dependency on poppler, bug #492998 by Martin Bays
+
+  26 Oct 2013; Pacho Ramos <pacho@gentoo.org>
+  +files/swftools-0.9.2_giflib.patch, swftools-0.9.2.ebuild:
+  Fix build with latest giflib, bug #488992 by Boris Vingradov and fix by László
+  Szalma.
+
+  03 Mar 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Add to proxy-maintainers herd
+
+  22 May 2012; Pacho Ramos <pacho@gentoo.org>
+  files/swftools-0.9.2_general.patch, swftools-0.9.2.ebuild:
+  Fix compilation due some pdf parts still not skipped, bug #416071 by Rodrigo
+  Severo and fix by László Szalma.
+
+*swftools-0.9.2 (15 Apr 2012)
+
+  15 Apr 2012; Pacho Ramos <pacho@gentoo.org>
+  +files/swftools-0.9.2_general.patch, +files/swftools-0.9.2_nopdf.patch,
+  +metadata.xml, +swftools-0.9.2.ebuild:
+  Reintroduce media-gfx/swftools as people demanded it, upstream released a new
+  version and now is proxy maintained. Thanks a lot to László Szalma (bug
+  #411265).

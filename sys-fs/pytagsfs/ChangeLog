@@ -1,0 +1,32 @@
+# ChangeLog for sys-fs/pytagsfs
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/pytagsfs/ChangeLog,v 1.7 2014/09/18 16:16:24 sping Exp $
+
+  18 Sep 2014; Sebastian Pipping <sping@gentoo.org> pytagsfs-0.9.2.ebuild,
+  pytagsfs-0.9.2_rc2.ebuild:
+  sys-fs/pytagsfs: Fix homepage URL
+
+  26 Feb 2012; Patrick Lauer <patrick@gentoo.org> pytagsfs-0.9.2.ebuild,
+  pytagsfs-0.9.2_rc2.ebuild:
+  Restricting pypy and jython
+
+  06 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pytagsfs-0.9.2_rc2.ebuild, pytagsfs-0.9.2.ebuild:
+  Use PYTHON_DEPEND instead of NEED_PYTHON. Simplify src_test().
+
+  14 Apr 2010; Sebastian Pipping <sping@gentoo.org> pytagsfs-0.9.2.ebuild:
+  Fix tests (bug #314137)
+
+*pytagsfs-0.9.2 (30 Dec 2009)
+
+  30 Dec 2009; Sebastian Pipping <sping@gentoo.org> +pytagsfs-0.9.2.ebuild:
+  Trivial-bump to 0.9.2
+
+  20 Dec 2009; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Fix metadata: maintainer-wanted herd does not exist
+
+*pytagsfs-0.9.2_rc2 (20 Dec 2009)
+
+  20 Dec 2009; Sebastian Pipping <sping@gentoo.org>
+  +pytagsfs-0.9.2_rc2.ebuild, +metadata.xml:
+  Initial ebuild, review by Arfrever (bug 220081)

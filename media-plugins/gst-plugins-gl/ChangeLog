@@ -1,0 +1,65 @@
+# ChangeLog for media-plugins/gst-plugins-gl
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-gl/ChangeLog,v 1.14 2014/12/19 09:21:42 pacho Exp $
+
+  19 Dec 2014; Pacho Ramos <pacho@gentoo.org>
+  +files/gst-plugins-gl-0.10.3-jpeg-check.patch, -gst-plugins-gl-0.10.2.ebuild,
+  -gst-plugins-gl-0.10.3.ebuild, gst-plugins-gl-0.10.3-r1.ebuild:
+  Fix -ljpeg linking (#515014 by Patrick Lauer and Toralf Förster), drop old
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-gl-0.10.3-r1.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-gl-0.10.3-r1.ebuild:
+  Stable for amd64, wrt bug #512912
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> gst-plugins-gl-0.10.3-r1.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+*gst-plugins-gl-0.10.3-r1 (10 Jun 2014)
+
+  10 Jun 2014; Michał Górny <mgorny@gentoo.org>
+  +gst-plugins-gl-0.10.3-r1.ebuild:
+  Enable multilib support, bug #493176.
+
+  11 Oct 2013; Agostino Sarubbo <ago@gentoo.org> gst-plugins-gl-0.10.3.ebuild:
+  Stable for x86, wrt bug #480908
+
+  10 Oct 2013; Agostino Sarubbo <ago@gentoo.org> gst-plugins-gl-0.10.3.ebuild:
+  Stable for amd64, wrt bug #480908
+
+  01 Sep 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  gst-plugins-gl-0.10.2.ebuild, gst-plugins-gl-0.10.3.ebuild:
+  Add missing libSM to DEPEND, bug #481094.
+
+  06 Apr 2013; Alexandre Rostovtsev <tetromino@gentoo.org>
+  gst-plugins-gl-0.10.3.ebuild:
+  Fix libpng dependency, thanks to Samuli Suominen.
+
+*gst-plugins-gl-0.10.3 (23 Jan 2013)
+
+  23 Jan 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  gst-plugins-gl-0.10.2.ebuild, +gst-plugins-gl-0.10.3.ebuild, metadata.xml:
+  Version bump.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> gst-plugins-gl-0.10.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*gst-plugins-gl-0.10.2 (02 Nov 2010)
+
+  02 Nov 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +gst-plugins-gl-0.10.2.ebuild:
+  Version bump.
+
+  10 May 2010; Samuli Suominen <ssuominen@gentoo.org>
+  gst-plugins-gl-0.10.1.ebuild, +files/gst-plugins-gl-0.10.1-libpng14.patch:
+  Fix building with libpng14 wrt #319159 by Xavier Parizet.
+
+*gst-plugins-gl-0.10.1 (30 Oct 2009)
+
+  30 Oct 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +gst-plugins-gl-0.10.1.ebuild:
+  Initial commit wrt #291166.

@@ -1,0 +1,95 @@
+# ChangeLog for games-arcade/gnome-robots
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/gnome-robots/ChangeLog,v 1.22 2015/06/09 15:10:04 eva Exp $
+
+*gnome-robots-3.16.1 (09 Jun 2015)
+
+  09 Jun 2015; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-robots-3.12.3.ebuild, +gnome-robots-3.16.1.ebuild:
+  Version bump for Gnome 3.16. Clean up old revision.
+
+  15 Mar 2015; Pacho Ramos <pacho@gentoo.org> gnome-robots-3.14.2.ebuild:
+  x86 stable, bug 534012
+
+  14 Mar 2015; Pacho Ramos <pacho@gentoo.org> gnome-robots-3.14.2.ebuild:
+  amd64 stable, bug 534012
+
+*gnome-robots-3.14.2 (22 Dec 2014)
+
+  22 Dec 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-robots-3.10.2.ebuild, +gnome-robots-3.14.2.ebuild:
+  Version bump for Gnome 3.14. Clean up old revision.
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org> gnome-robots-3.12.3.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org> gnome-robots-3.12.3.ebuild:
+  Stable for amd64, wrt bug #512912
+
+*gnome-robots-3.12.3 (26 Jun 2014)
+
+  26 Jun 2014; Pacho Ramos <pacho@gentoo.org> +gnome-robots-3.12.3.ebuild,
+  -gnome-robots-3.12.1.ebuild, -gnome-robots-3.12.2.ebuild:
+  Version bump, drop old
+
+*gnome-robots-3.12.2 (31 May 2014)
+
+  31 May 2014; Pacho Ramos <pacho@gentoo.org> +gnome-robots-3.12.2.ebuild:
+  Version bump
+
+*gnome-robots-3.12.1 (27 Apr 2014)
+
+  27 Apr 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  +gnome-robots-3.12.1.ebuild:
+  Version bump for Gnome 3.12.
+
+  26 Apr 2014; Pacho Ramos <pacho@gentoo.org> -gnome-robots-3.10.0.ebuild,
+  -gnome-robots-3.8.2.ebuild:
+  drop old
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> gnome-robots-3.10.2.ebuild:
+  x86 stable, bug 499954
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> gnome-robots-3.10.2.ebuild:
+  amd64 stable, bug 499954
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> gnome-robots-3.10.2.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> gnome-robots-3.10.2.ebuild:
+  arch stable, bug 888
+
+*gnome-robots-3.10.2 (06 Feb 2014)
+
+  06 Feb 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  +gnome-robots-3.10.2.ebuild:
+  Version bump.
+
+*gnome-robots-3.10.0 (24 Dec 2013)
+
+  24 Dec 2013; Pacho Ramos <pacho@gentoo.org> +gnome-robots-3.10.0.ebuild,
+  -gnome-robots-3.8.1.ebuild:
+  Version bump for Gnome 3.10, drop old
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> gnome-robots-3.8.2.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> gnome-robots-3.8.2.ebuild:
+  amd64 stable, bug #478252
+
+*gnome-robots-3.8.2 (17 Nov 2013)
+
+  17 Nov 2013; Pacho Ramos <pacho@gentoo.org> +gnome-robots-3.8.2.ebuild:
+  Version bump
+
+  06 Nov 2013; Pacho Ramos <pacho@gentoo.org> gnome-robots-3.8.1.ebuild:
+  x86 keyword, bug #476710
+
+  31 Aug 2013; Sergey Popov <pinkbyte@gentoo.org> gnome-robots-3.8.1.ebuild:
+  Add ~arm keyword, wrt bug #476710
+
+*gnome-robots-3.8.1 (30 Jun 2013)
+
+  30 Jun 2013; Pacho Ramos <pacho@gentoo.org> +gnome-robots-3.8.1.ebuild,
+  +metadata.xml:
+  Add game splitted from gnome-games by upstream

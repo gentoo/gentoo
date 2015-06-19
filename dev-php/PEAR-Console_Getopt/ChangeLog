@@ -1,0 +1,92 @@
+# ChangeLog for dev-php/PEAR-Console_Getopt
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Console_Getopt/ChangeLog,v 1.40 2015/05/05 13:24:11 grknight Exp $
+
+*PEAR-Console_Getopt-1.4.0 (05 May 2015)
+
+  05 May 2015; Brian Evans <grknight@gentoo.org>
+  +PEAR-Console_Getopt-1.4.0.ebuild:
+  Version bump; New version changed license to BSD-2
+
+  26 Jan 2014; Ole Markus With <olemarkus@gentoo.org>
+  PEAR-Console_Getopt-1.3.1.ebuild:
+  Removing stable keyword for sh/s390
+
+  09 Jun 2012; Matti Bickel <mabi@gentoo.org>
+  -PEAR-Console_Getopt-1.2.3-r1.ebuild, -PEAR-Console_Getopt-1.2.3.ebuild:
+  remove old
+
+  09 Feb 2012; Jeroen Roovers <jer@gentoo.org>
+  PEAR-Console_Getopt-1.3.1.ebuild:
+  Stable for HPPA (bug #399297).
+
+  01 Feb 2012; Samuli Suominen <ssuominen@gentoo.org>
+  PEAR-Console_Getopt-1.3.1.ebuild:
+  ppc/ppc64 stable wrt #399297
+
+  29 Jan 2012; Raúl Porcel <armin76@gentoo.org>
+  PEAR-Console_Getopt-1.3.1.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable
+
+  28 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  PEAR-Console_Getopt-1.3.1.ebuild:
+  x86 stable wrt bug #399297
+
+  19 Jan 2012; Agostino Sarubbo <ago@gentoo.org>
+  PEAR-Console_Getopt-1.3.1.ebuild:
+  Stable for amd64, wrt bug #399297
+
+*PEAR-Console_Getopt-1.3.1 (14 Mar 2011)
+
+  14 Mar 2011; <olemarkus@gentoo.org> +PEAR-Console_Getopt-1.3.1.ebuild:
+  Version bump. Bug #358757. Thanks to Denny
+
+  10 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  PEAR-Console_Getopt-1.2.3-r1.ebuild:
+  ppc stable wrt #294256, #349318, #350908
+
+  06 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  PEAR-Console_Getopt-1.2.3-r1.ebuild:
+  stable for ppc64 wrt #340807
+
+  05 Nov 2010; Jeroen Roovers <jer@gentoo.org>
+  PEAR-Console_Getopt-1.2.3-r1.ebuild:
+  Stable for HPPA (bug #336869).
+
+  20 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  PEAR-Console_Getopt-1.2.3-r1.ebuild:
+  Stable on amd64 wrt bug #336869
+
+  14 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  PEAR-Console_Getopt-1.2.3-r1.ebuild:
+  x86 stable, bug 336869
+
+  01 Oct 2010; Brent Baude <ranger@gentoo.org>
+  PEAR-Console_Getopt-1.2.3.ebuild:
+  Marking PEAR-Console_Getopt-1.2.3 ppc64 for bug 311633
+
+  18 Jul 2010; <nixnut@gentoo.org> PEAR-Console_Getopt-1.2.3.ebuild:
+  ppc stable #311633
+
+*PEAR-Console_Getopt-1.2.3-r1 (11 Jun 2010)
+
+  11 Jun 2010; <mabi@gentoo.org> +PEAR-Console_Getopt-1.2.3-r1.ebuild:
+  EAPI=2, update for php-5.3
+
+  09 May 2010; Raúl Porcel <armin76@gentoo.org>
+  PEAR-Console_Getopt-1.2.3.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #311633
+
+  15 Apr 2010; Markus Meier <maekke@gentoo.org>
+  PEAR-Console_Getopt-1.2.3.ebuild:
+  amd64 stable, bug #311633
+
+  12 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  PEAR-Console_Getopt-1.2.3.ebuild:
+  x86 stable wrt bug #311633
+
+*PEAR-Console_Getopt-1.2.3 (23 Sep 2009)
+
+  23 Sep 2009; Steve Dibb <beandog@gentoo.org>
+  +PEAR-Console_Getopt-1.2.3.ebuild, +metadata.xml:
+  Initial commit; new split ebuilds for PEAR base install

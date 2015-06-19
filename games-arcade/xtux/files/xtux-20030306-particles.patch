@@ -1,0 +1,30 @@
+diff -u -r xtux.old/src/client/particle.c xtux/src/client/particle.c
+--- xtux.old/src/client/particle.c	2008-09-02 20:34:24.000000000 +0200
++++ xtux/src/client/particle.c	2008-09-02 20:35:40.000000000 +0200
+@@ -340,11 +340,11 @@
+ 	ptl->pos[i].y = src_y;
+ 	d = dir + 128;
+ 	d += i%SHARD_ANGLE - SHARD_ANGLE/2;
+-	ptl->vel[i].x = sin_lookup[dir + 64 + rand()%64] * SHARD_EXP_VEL;
+-	ptl->vel[i].y = -cos_lookup[dir + 64 + rand()%64] * SHARD_EXP_VEL;
++	ptl->vel[i].x = sin_lookup[(dir + 64 + rand()%64) % DEGREES] * SHARD_EXP_VEL;
++	ptl->vel[i].y = -cos_lookup[(dir + 64 + rand()%64) % DEGREES] * SHARD_EXP_VEL;
+ 	vel = SHARD_MIN_VEL + (SHARD_MAX_VEL*rand()/(RAND_MAX+SHARD_MIN_VEL));
+-	ptl->vel[i].x += vel * sin_lookup[d] * 10;
+-	ptl->vel[i].y += vel * -cos_lookup[d] * 10;
++	ptl->vel[i].x += vel * sin_lookup[d % DEGREES] * 10;
++	ptl->vel[i].y += vel * -cos_lookup[d % DEGREES] * 10;
+     }
+ 
+     ptl = particles_new(color2, PTL_TOP, num_sh2);
+@@ -357,8 +357,8 @@
+ 	ptl->vel[i].x = sin_lookup[rand()%256] * SHARD_EXP_VEL;
+ 	ptl->vel[i].y = -cos_lookup[rand()%256] * SHARD_EXP_VEL;
+ 	vel = SHARD_MIN_VEL + (SHARD_MAX_VEL*rand()/(RAND_MAX+SHARD_MIN_VEL));
+-	ptl->vel[i].x += vel * sin_lookup[d] * 20;
+-	ptl->vel[i].y += vel * -cos_lookup[d] * 20;
++	ptl->vel[i].x += vel * sin_lookup[d % DEGREES] * 20;
++	ptl->vel[i].y += vel * -cos_lookup[d % DEGREES] * 20;
+     }
+ 
+     /* "Extra" particles (ie bullet holes) */

@@ -1,0 +1,44 @@
+diff -ur sys/fs/tmpfs.orig/tmpfs_vnops.c sys/fs/tmpfs/tmpfs_vnops.c
+--- sys/fs/tmpfs.orig/tmpfs_vnops.c	2008-06-22 12:17:48 -0300
++++ sys/fs/tmpfs/tmpfs_vnops.c	2008-06-28 12:05:10 -0300
+@@ -1459,6 +1459,30 @@
+ 	return (0);
+ }
+ 
++
++/* --------------------------------------------------------------------- */
++/* This does absolutely nothing */
++#ifdef GENTOO_LIVECD
++static int
++tmpfs_whiteout(struct vop_whiteout_args *ap)
++{
++	switch (ap->a_flags) {
++	case LOOKUP:
++		return (0);
++		break;
++	case CREATE:
++		return(EOPNOTSUPP);
++		break;
++	case DELETE:
++		return (0);
++		break;
++	default:
++		return(EOPNOTSUPP);
++	}
++	return(0);
++}
++#endif
++
+ /* --------------------------------------------------------------------- */
+ 
+ /*
+@@ -1484,6 +1508,9 @@
+ 	.vop_mkdir =			tmpfs_mkdir,
+ 	.vop_rmdir =			tmpfs_rmdir,
+ 	.vop_symlink =			tmpfs_symlink,
++#ifdef GENTOO_LIVECD
++	.vop_whiteout =			tmpfs_whiteout,
++#endif
+ 	.vop_readdir =			tmpfs_readdir,
+ 	.vop_readlink =			tmpfs_readlink,
+ 	.vop_inactive =			tmpfs_inactive,

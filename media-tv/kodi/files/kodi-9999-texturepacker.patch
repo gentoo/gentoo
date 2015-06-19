@@ -1,0 +1,17 @@
+--- tools/depends/native/TexturePacker/Makefile.old	2015-03-17 22:29:18.880029509 +0100
++++ tools/depends/native/TexturePacker/Makefile	2015-03-17 22:29:41.459671679 +0100
+@@ -9,14 +9,10 @@
+ 
+ ifeq ($(NATIVEPLATFORM),)
+   PLATFORM = native
+-  EXTRA_CONFIGURE = --enable-static
+ else
+   PLATFORM = $(NATIVEPLATFORM)
+ endif
+ 
+-ifeq ($(NATIVE_OS), linux)
+-  EXTRA_CONFIGURE = --enable-static
+-endif
+ ifeq ($(NATIVE_OS), android)
+   EXTRA_CONFIGURE = --enable-static
+ endif

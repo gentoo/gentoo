@@ -1,0 +1,12 @@
+diff -ur mp3-0.10.1.orig/data.c mp3-0.10.1/data.c
+--- mp3-0.10.1.orig/data.c	2006-05-16 20:31:09.000000000 +0300
++++ mp3-0.10.1/data.c	2009-08-11 12:22:35.000000000 +0300
+@@ -420,7 +420,7 @@
+   description=strdup(Description);
+   if(Include) {
+     do {
+-      char *s=index(Include,'/');
++      char *s=const_cast<char*> (index(Include,'/'));
+       int l=s ? s-Include : strlen(Include);
+       if(l) {
+         char **s=(char **)realloc(include,(incCount+2)*sizeof(char *));

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install setup
+DEPEND=doc? ( app-doc/doxygen[dot] )
+DESCRIPTION=Open Field Operation and Manipulation - CFD Simulation Toolbox
+EAPI=5
+HOMEPAGE=http://www.openfoam.org
+IUSE=doc examples opendx src paraview
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=!=sci-libs/openfoam-bin-2.3* !=sci-libs/openfoam-kernel-2.3* !=sci-libs/openfoam-meta-2.3* !=sci-libs/openfoam-solvers-2.3* !=sci-libs/openfoam-utilities-2.3* !=sci-libs/openfoam-wmake-2.3* sci-libs/parmetis sci-libs/parmgridgen sci-libs/scotch virtual/mpi opendx? ( sci-visualization/opendx ) paraview? ( ~sci-visualization/paraview-4.1.0[development] )
+SLOT=2.2
+SRC_URI=http://downloads.sourceforge.net/foam/OpenFOAM-2.3.1.tgz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=0274e4302ddf71797acd572d6e4d5077

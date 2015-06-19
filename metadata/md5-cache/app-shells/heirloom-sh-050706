@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Heirloom Bourne Shell, derived from OpenSolaris code SVR4/SVID3
+HOMEPAGE=http://heirloom.sourceforge.net/sh.html
+KEYWORDS=~amd64 ~x86
+LICENSE=CDDL
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/heirloom/heirloom-sh-050706.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=29c57383bae35cb1d73f15c41d0d70c2

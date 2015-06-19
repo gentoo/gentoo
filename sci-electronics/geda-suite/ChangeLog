@@ -1,0 +1,41 @@
+# ChangeLog for sci-electronics/geda-suite
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/geda-suite/ChangeLog,v 1.9 2015/04/26 19:58:48 mrueg Exp $
+
+  26 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -geda-suite-20050820.ebuild:
+  Remove old.
+
+  15 Jul 2011; Denis Dupeyron <calchan@gentoo.org> geda-suite-20050820.ebuild,
+  geda-suite-20110427.ebuild:
+  Changed dependency on sci-electronics/ng-spice-rework to
+  sci-electronics/ngspice due to move.
+
+*geda-suite-20110427 (30 Apr 2011)
+
+  30 Apr 2011; Thomas Beierlein <tomjbe@gentoo.org>
+  +geda-suite-20110427.ebuild:
+  Adapted to actual gEDA tools suite
+
+  23 Mar 2008; Denis Dupeyron <calchan@gentoo.org>
+  geda-suite-20050820.ebuild:
+  Fixed dependencies, thanks to Michael Sterrett.
+
+  24 Mar 2007; Denis Dupeyron <calchan@gentoo.org> ChangeLog:
+  Fixed ChangeLog, see bug #171962.
+
+  08 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  geda-suite-20050820.ebuild:
+  corrected DEPEND on sci-electronics/gnucap due to missing keywords, bug 165948
+
+  02 Jul 2006; Denis Dupeyron <calchan@gentoo.org> metadata.xml:
+  Adjusted metadata, see bug #138062.
+
+  13 Mar 2006; Scott Stoddard <deltacow@gentoo.org>
+  geda-suite-20050820.ebuild:
+  Added ~amd64 closing bug 115614.
+
+*geda-suite-20050820 (14 Nov 2005)
+
+  14 Nov 2005; <plasmaroo@gentoo.org> +geda-suite-20050820.ebuild:
+  Initial commit (#107929). This removes all non-core dependencies of the gEDA
+  suite from the 'geda' package into this metapackage.

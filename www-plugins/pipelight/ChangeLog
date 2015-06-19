@@ -1,0 +1,40 @@
+# ChangeLog for www-plugins/pipelight
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-plugins/pipelight/ChangeLog,v 1.8 2015/01/01 20:52:14 ryao Exp $
+
+*pipelight-0.2.8 (01 Jan 2015)
+
+  01 Jan 2015; Richard Yao <ryao@gentoo.org> +pipelight-0.2.8.ebuild:
+  Version bump www-plugins/pipelight to 0.2.8
+
+*pipelight-0.2.7.3 (09 Aug 2014)
+
+  09 Aug 2014; Richard Yao <ryao@gentoo.org> +pipelight-0.2.7.3.ebuild,
+  pipelight-9999.ebuild:
+  Commit www-plugins/pipelight-0.2.7.3 as first tagged ebuild. Initially
+  keyworded only on ~amd64. ~x86 will follow after testing.
+
+  09 Aug 2014; Richard Yao <ryao@gentoo.org> pipelight-9999.ebuild:
+  Fix issue where builds fail on systems that lack /usr/lib64/mozilla/plugins,
+  thanks Michael. Bug #481596 comment 47; Also, add einfo about video group
+  membership
+
+  04 Aug 2014; Richard Yao <ryao@gentoo.org> pipelight-9999.ebuild:
+  Fix mistake that used $DESTDIR instead of $ED. Thanks Michael. Bug #481596
+  Comment #46
+
+  02 Aug 2014; Richard Yao <ryao@gentoo.org> pipelight-9999.ebuild:
+  Change sed command in response to build failure report from HyperJapan on the
+  foonetic IRC network
+
+  31 Jul 2014; Richard Yao <ryao@gentoo.org> pipelight-9999.ebuild:
+  Provide link to upstream user agent tutorial
+
+  31 Jul 2014; Richard Yao <ryao@gentoo.org> pipelight-9999.ebuild:
+  Remove dependency on x11-apps/mesa-progs
+
+*pipelight-9999 (31 Jul 2014)
+
+  31 Jul 2014; Richard Yao <ryao@gentoo.org> +metadata.xml,
+  +pipelight-9999.ebuild:
+  New package www-plugins/pipelight, bug #481596

@@ -1,0 +1,11 @@
+--- Makefile.old	2010-10-05 10:34:57.000000000 +0200
++++ Makefile	2010-10-05 10:35:28.000000000 +0200
+@@ -20,7 +20,7 @@
+ 
+ $(NAME) : $(OBJS)
+ 	cd data; $(MAKE)
+-	$(CC) $(CFLAGS) $(OBJS) data/libdata.a `sdl-config --libs` -lm -lpng \
++	$(CC) $(LDFLAGS) $(CFLAGS) $(OBJS) data/libdata.a `sdl-config --libs` -lm -lpng \
+ 	-ljpeg -lz -lvorbisfile -lvorbis -logg -o $(NAME)
+ 
+ w32icon.o : data/icons/tuxpuck.ico

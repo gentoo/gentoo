@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>java</herd>
+	<longdescription>
+		This package facilitates parsing/handling of command line parameters
+		with an aim at adding consistency across various applications.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">jcmdline</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,11 @@
+# ChangeLog for dev-tex/rail
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/rail/ChangeLog,v 1.1 2012/01/08 12:40:00 gienah Exp $
+
+*rail-1.2_p1 (08 Jan 2012)
+
+  08 Jan 2012; Mark Wright <gienah@gentoo.org> +metadata.xml,
+  +rail-1.2_p1.ebuild:
+  Add dev-tex/rail from sunrise overlay, change to EAPI="4", required by sci-
+  mathematics/isabelle
+

@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install postinst unpack
+DESCRIPTION=loads the microcode for Elite3D framebuffers to use X
+HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
+KEYWORDS=-* sparc
+LICENSE=GPL-1
+RDEPEND=sys-apps/util-linux
+SLOT=0
+SRC_URI=mirror://gentoo/afbinit-1.0.1.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=9dd1dfa44b0cee4de938e9b5728ef98e

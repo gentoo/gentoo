@@ -1,0 +1,33 @@
+# ChangeLog for net-libs/libkfbapi
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libkfbapi/ChangeLog,v 1.8 2013/12/11 20:31:30 ago Exp $
+
+  11 Dec 2013; Agostino Sarubbo <ago@gentoo.org> libkfbapi-1.0.ebuild:
+  Stable for ppc64, wrt bug #484884
+
+  10 Dec 2013; Agostino Sarubbo <ago@gentoo.org> libkfbapi-1.0.ebuild:
+  Stable for ppc, wrt bug #484884
+
+  09 Dec 2013; Agostino Sarubbo <ago@gentoo.org> libkfbapi-1.0.ebuild:
+  Stable for x86, wrt bug #484884
+
+  08 Dec 2013; Agostino Sarubbo <ago@gentoo.org> libkfbapi-1.0.ebuild:
+  Stable for amd64, wrt bug #484884
+
+  24 Aug 2013; Markus Meier <maekke@gentoo.org> libkfbapi-1.0.ebuild:
+  add ~arm, bug #481088
+
+  14 Aug 2013; Agostino Sarubbo <ago@gentoo.org> libkfbapi-1.0.ebuild:
+  Add ~ppc/~ppc64 wrt to bug #481088
+
+*libkfbapi-1.0 (26 Jun 2013)
+
+  26 Jun 2013; Johannes Huber <johu@gentoo.org> +libkfbapi-1.0.ebuild,
+  -libkfbapi-1.0_p20130209.ebuild:
+  Version bump. First proper release. Remove snapshot.
+
+*libkfbapi-1.0_p20130209 (11 Feb 2013)
+
+  11 Feb 2013; Chris Reffett <creffett@gentoo.org>
+  +libkfbapi-1.0_p20130209.ebuild, +metadata.xml:
+  New package, dependency of latest akonadi-facebook snapshot

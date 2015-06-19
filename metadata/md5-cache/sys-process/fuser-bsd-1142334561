@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=sys-freebsd/freebsd-mk-defs virtual/pmake
+DESCRIPTION=fuser(1) utility for *BSD
+EAPI=2
+HOMEPAGE=http://mbsd.msk.ru/stas/fuser.html
+KEYWORDS=~sparc-fbsd ~x86-fbsd
+LICENSE=BSD
+RDEPEND=virtual/libc !sys-process/psmisc
+SLOT=0
+SRC_URI=http://mbsd.msk.ru/dist/fuser-1142334561.tar.bz2 mirror://gentoo/fuser-bsd-patches-1.tar.bz2
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	bsdmk	a5323161d86b178920afb5e31a9e5d3f	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	portability	a45c088f246ef5091e029f6285d7ce42	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=ca1c1e4d3b2d844d41500a9811581a9e

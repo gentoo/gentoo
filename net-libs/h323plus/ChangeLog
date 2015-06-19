@@ -1,0 +1,35 @@
+# ChangeLog for net-libs/h323plus
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/h323plus/ChangeLog,v 1.7 2014/07/27 16:04:33 zerochaos Exp $
+
+  27 Jul 2014; Rick Farina <zerochaos@gentoo.org> h323plus-1.25.0-r1.ebuild:
+  adding ~arm
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> h323plus-1.25.0-r1.ebuild,
+  metadata.xml:
+  Rename "audio" USE flag to "sound", bug 357661.
+
+  27 Oct 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Voip herd is removed: http://article.gmane.org/gmane.linux.gentoo.devel/88434
+
+*h323plus-1.25.0-r1 (06 Mar 2013)
+
+  06 Mar 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +h323plus-1.25.0-r1.ebuild, -h323plus-1.25.0.ebuild:
+  Fix openh323 makefile patching, drop hppa keyword due to ptlib.
+
+  06 Mar 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  h323plus-1.25.0.ebuild:
+  Fix dependency on ptlib, bug #460458.
+
+  05 Mar 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/h323plus-1.25.0-ptlib-2.10.10.patch, h323plus-1.25.0.ebuild:
+  Add patch for ptlib-2.10.10 compatibility.
+
+*h323plus-1.25.0 (22 Feb 2013)
+
+  22 Feb 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/h323plus-1.25.0-ptrace-debugoptionlist.patch,
+  +files/h323plus-1.25.0-ptrace-param.patch, +h323plus-1.25.0.ebuild,
+  +metadata.xml:
+  Initial commit, bug #290106.

@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/show_bug.cgi?id=519006
+
+diff -Nuar lensfun-0.2.8.orig/include/lensfun/lensfun.h.in lensfun-0.2.8/include/lensfun/lensfun.h.in
+--- lensfun-0.2.8.orig/include/lensfun/lensfun.h.in     2013-01-27 17:32:37.000000000 +0100
++++ lensfun-0.2.8/include/lensfun/lensfun.h.in  2014-08-05 08:14:20.096691200 +0200
+@@ -62,7 +62,7 @@
+ #   ifdef CONF_SYMBOL_VISIBILITY
+ #       if defined PLATFORM_WINDOWS
+ #           define LF_EXPORT    __declspec(dllexport)
+-#       elif defined CONF_COMPILER_GCC
++#       elif defined CONF_COMPILER_GCC || __clang__
+ #           define LF_EXPORT    __attribute__((visibility("default")))
+ #       else
+ #           error "I don't know how to change symbol visibility for your compiler"

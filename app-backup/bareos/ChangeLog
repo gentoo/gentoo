@@ -1,0 +1,105 @@
+# ChangeLog for app-backup/bareos
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-backup/bareos/ChangeLog,v 1.21 2015/06/07 07:22:45 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  05 May 2015; Marc Schiffbauer <mschiff@gentoo.org> ChangeLog:
+  fix signature
+
+*bareos-13.2.4-r1 (05 May 2015)
+
+  05 May 2015; Marc Schiffbauer <mschiff@gentoo.org> bareos-12.4.5-r1.ebuild,
+  -bareos-13.2.3-r1.ebuild, -bareos-13.2.4.ebuild, +bareos-13.2.4-r1.ebuild,
+  bareos-14.2.1.ebuild:
+  Rename USE sqlite3 to sqlite, revbump 13.2.4. Fixes #548648.
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> bareos-12.4.5-r1.ebuild,
+  bareos-13.2.3-r1.ebuild, bareos-13.2.4.ebuild, bareos-14.2.1.ebuild:
+  Remove old Python implementations
+
+  10 Mar 2015; Marc Schiffbauer <mschiff@gentoo.org> bareos-12.4.5-r1.ebuild,
+  bareos-13.2.3-r1.ebuild, bareos-13.2.4.ebuild, bareos-14.2.1.ebuild:
+  use :0 slot for gmp and readline depends
+
+  10 Mar 2015; Marc Schiffbauer <mschiff@gentoo.org> bareos-12.4.5-r1.ebuild,
+  bareos-13.2.3-r1.ebuild, bareos-13.2.4.ebuild, bareos-14.2.1.ebuild:
+  fix openssl dependency slot
+
+  10 Mar 2015; Marc Schiffbauer <mschiff@gentoo.org> bareos-12.4.5-r1.ebuild,
+  bareos-13.2.3-r1.ebuild, bareos-13.2.4.ebuild, bareos-14.2.1.ebuild:
+  fixed slotted dependencies
+
+  28 Dec 2014; Aaron W. Swenson <titanofold@gentoo.org>
+  bareos-12.4.5-r1.ebuild, bareos-13.2.3-r1.ebuild, bareos-13.2.4.ebuild,
+  bareos-14.2.1.ebuild:
+  Rename virtual/postgresql to dev-db/postgresql
+
+*bareos-14.2.1 (19 Nov 2014)
+*bareos-13.2.4 (19 Nov 2014)
+
+  19 Nov 2014; Marc Schiffbauer <mschiff@gentoo.org> -bareos-13.2.2.ebuild,
+  -bareos-13.2.3.ebuild, +bareos-13.2.4.ebuild, +bareos-14.2.1.ebuild,
+  metadata.xml:
+  Bumped stable (13.2.4), added beta ebuild (14.2.1), removed old version.
+  Fixes #528800.
+
+  03 Nov 2014; Aaron W. Swenson <titanofold@gentoo.org>
+  bareos-12.4.5-r1.ebuild, bareos-13.2.2.ebuild, bareos-13.2.3.ebuild,
+  bareos-13.2.3-r1.ebuild:
+  Update PostgreSQL dependencies and/or checks to virtual/postgresql.
+
+*bareos-13.2.3-r1 (16 Sep 2014)
+
+  16 Sep 2014; Marc Schiffbauer <mschiff@gentoo.org> +bareos-13.2.3-r1.ebuild,
+  metadata.xml:
+  Add new faslz USE flag and revbump with fastlz support. Fixes #522620.
+
+  20 May 2014; Marc Schiffbauer <mschiff@gentoo.org> files/bareos-fd.initd:
+  Do not set owner for pid direrctory in bareos-fd init script
+
+*bareos-13.2.3 (04 May 2014)
+
+  04 May 2014; Marc Schiffbauer <mschiff@gentoo.org> +bareos-13.2.3.ebuild:
+  Bump version.
+
+  04 May 2014; Marc Schiffbauer <mschiff@gentoo.org> files/bareos-dir.initd,
+  files/bareos-fd.initd, files/bareos-sd.initd:
+  Fix pid path in init scripts
+
+  04 May 2014; Marc Schiffbauer <mschiff@gentoo.org> bareos-13.2.2.ebuild,
+  files/bareos-dir.initd, files/bareos-fd.initd, files/bareos-sd.initd:
+  Change location of pidfiles from /run to /run/bareos for better non-root
+  support
+
+  07 Mar 2014; Marc Schiffbauer <mschiff@gentoo.org> bareos-13.2.2.ebuild:
+  Remove examples USE flag.
+
+  14 Dec 2013; Marc Schiffbauer <mschiff@gentoo.org> bareos-12.4.5-r1.ebuild,
+  bareos-13.2.2.ebuild:
+  add mirror restriction due to unclear copyright situation
+
+*bareos-13.2.2 (03 Dec 2013)
+
+  03 Dec 2013; Marc Schiffbauer <mschiff@gentoo.org> +bareos-13.2.2.ebuild:
+  Add new version. Fix console compilation error.
+
+*bareos-12.4.5-r1 (12 Nov 2013)
+
+  12 Nov 2013; Marc Schiffbauer <mschiff@gentoo.org> -bareos-12.4.5.ebuild,
+  +bareos-12.4.5-r1.ebuild, files/bareos-dir.initd, files/bareos-fd.initd,
+  files/bareos-sd.initd:
+  revbump: drop superfluous 'need net' from init scripts. See #439092
+
+  30 Oct 2013; Marc Schiffbauer <mschiff@gentoo.org> bareos-12.4.5.ebuild:
+  Fix configure for USE=-sqlite3.
+
+*bareos-12.4.5 (21 Oct 2013)
+
+  21 Oct 2013; Marc Schiffbauer <mschiff@gentoo.org> +bareos-12.4.5.ebuild,
+  +files/bareos-12.4.5-Makefile.patch, +files/bareos-12.4.5-bat-ldflags.patch,
+  +files/bareos-dir.confd, +files/bareos-dir.initd, +files/bareos-fd.confd,
+  +files/bareos-fd.initd, +files/bareos-sd.confd, +files/bareos-sd.initd,
+  +metadata.xml:
+  Initial commit of bareos.

@@ -1,0 +1,51 @@
+# ChangeLog for dev-perl/Class-Base
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Class-Base/ChangeLog,v 1.12 2014/08/26 15:03:38 axs Exp $
+
+*Class-Base-0.50.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Class-Base-0.50.0-r1.ebuild, -Class-Base-0.50.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  18 Nov 2012; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Drop duplication of myself as a maintainer where there is a herd.
+
+  02 Sep 2012; Torsten Veller <tove@gentoo.org> -Class-Base-0.40.0.ebuild:
+  Cleanup
+
+  01 Sep 2012; Fabian Groffen <grobian@gentoo.org> Class-Base-0.50.0.ebuild:
+  Marked ~ppc-aix, bug #432288
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+*Class-Base-0.50.0 (19 May 2012)
+
+  19 May 2012; Torsten Veller <tove@gentoo.org> +Class-Base-0.50.0.ebuild:
+  Version bump
+
+  21 Apr 2012; Torsten Veller <tove@gentoo.org> -Class-Base-0.30.0.ebuild:
+  Cleanup
+
+*Class-Base-0.40.0 (07 Feb 2012)
+
+  07 Feb 2012; Torsten Veller <tove@gentoo.org> +Class-Base-0.40.0.ebuild:
+  Version bump
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Class-Base-0.03.ebuild:
+  Cleanup
+
+*Class-Base-0.30.0 (01 Sep 2011)
+
+  01 Sep 2011; Torsten Veller <tove@gentoo.org> +Class-Base-0.30.0.ebuild:
+  Change version scheme
+
+  24 Apr 2011; Fabian Groffen <grobian@gentoo.org> Class-Base-0.03.ebuild:
+  Marked ~x86-solaris, bug #296509
+
+*Class-Base-0.03 (23 Jun 2009)
+
+  23 Jun 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +Class-Base-0.03.ebuild, +metadata.xml:
+  Initial commit. Ebuild by Robin H. Johnson <robbat2@gentoo.org>.

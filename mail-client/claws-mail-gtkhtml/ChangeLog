@@ -1,0 +1,432 @@
+# ChangeLog for mail-client/claws-mail-gtkhtml
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-client/claws-mail-gtkhtml/ChangeLog,v 1.96 2014/08/10 21:17:14 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  claws-mail-gtkhtml-0.34.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  08 May 2013; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-gtkhtml-0.34.ebuild:
+  prepare plugin for mail-client/claws-mail-3.9.1
+
+  04 Jan 2013; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-gtkhtml-0.33.ebuild:
+  clean up
+
+  03 Jan 2013; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-gtkhtml-0.34.ebuild:
+  reintroduce deletion of .a and .la files
+
+*claws-mail-gtkhtml-0.34 (20 Nov 2012)
+
+  20 Nov 2012; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-gtkhtml-0.34.ebuild:
+  version bump
+
+  20 Nov 2012; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-gtkhtml-0.32.ebuild:
+  clean up
+
+*claws-mail-gtkhtml-0.33 (30 Jun 2012)
+
+  30 Jun 2012; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-gtkhtml-0.33.ebuild:
+  version bump
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  claws-mail-gtkhtml-0.32.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  11 Apr 2012; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-gtkhtml-0.30.ebuild, -claws-mail-gtkhtml-0.31.ebuild:
+  clean up
+
+  04 Mar 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #206112
+
+*claws-mail-gtkhtml-0.32 (26 Dec 2011)
+
+  26 Dec 2011; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-gtkhtml-0.32.ebuild:
+  version bump for bug 395381 by Justin
+
+*claws-mail-gtkhtml-0.31 (30 Aug 2011)
+
+  30 Aug 2011; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-gtkhtml-0.31.ebuild:
+  version bump
+
+  31 Jul 2011; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-gtkhtml-0.29.ebuild:
+  clean up
+
+*claws-mail-gtkhtml-0.30 (10 Apr 2011)
+
+  10 Apr 2011; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-gtkhtml-0.30.ebuild:
+  version bump
+
+  22 Mar 2011; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-gtkhtml-0.27.ebuild, -claws-mail-gtkhtml-0.28.ebuild:
+  clean up
+
+  30 Dec 2010; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-gtkhtml-0.27.ebuild:
+  Drop stable keywords again
+
+  28 Dec 2010; Brent Baude <ranger@gentoo.org>
+  claws-mail-gtkhtml-0.27.ebuild:
+  Marking claws-mail-gtkhtml-0.27 ppc64 stable for bug 331395
+
+*claws-mail-gtkhtml-0.29 (06 Dec 2010)
+
+  06 Dec 2010; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-gtkhtml-0.29.ebuild:
+  version bump
+
+  23 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-gtkhtml-0.27.ebuild, claws-mail-gtkhtml-0.28.ebuild:
+  add a die after emake and don't install NEWS file (no contents)
+
+*claws-mail-gtkhtml-0.28 (22 Nov 2010)
+
+  22 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-gtkhtml-0.28.ebuild:
+  version bump
+
+  15 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-gtkhtml-0.26.ebuild, claws-mail-gtkhtml-0.27.ebuild:
+  drop all stable keywords and clean up, due to bug 221925 (bundled
+  libraries)
+
+  07 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  claws-mail-gtkhtml-0.27.ebuild:
+  Stable on amd64 wrt bug #331395
+
+  06 Aug 2010; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-gtkhtml-0.27.ebuild:
+  stable x86, bug 331395
+
+  20 Jun 2010; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-gtkhtml-0.24.ebuild, -claws-mail-gtkhtml-0.25.ebuild:
+  clean up
+
+*claws-mail-gtkhtml-0.27 (12 Jun 2010)
+
+  12 Jun 2010; Christian Faulhammer <fauli@gentoo.org> +claws-mail-gtkhtml-0.27.ebuild:
+  version bump, bug 319161
+
+  11 May 2010; Brent Baude <ranger@gentoo.org>
+  claws-mail-gtkhtml-0.26.ebuild:
+  Marking claws-mail-gtkhtml-0.26 ppc64 for bug 304353
+
+  18 Apr 2010; <nixnut@gentoo.org> claws-mail-gtkhtml-0.26.ebuild:
+  ppc stable #304353
+
+  11 Mar 2010; Markus Meier <maekke@gentoo.org>
+  claws-mail-gtkhtml-0.26.ebuild:
+  amd64 stable, bug #304353
+
+  11 Feb 2010; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-gtkhtml-0.26.ebuild:
+  stable x86, bug 304353
+
+*claws-mail-gtkhtml-0.26 (08 Jan 2010)
+
+  08 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-gtkhtml-0.26.ebuild:
+  version bump
+
+*claws-mail-gtkhtml-0.25 (18 Oct 2009)
+
+  18 Oct 2009; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-gtkhtml-0.25.ebuild:
+  version bump, bug 289070
+
+  22 Sep 2009; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-gtkhtml-0.22.ebuild, -claws-mail-gtkhtml-0.23.ebuild:
+  clean up
+
+  06 Sep 2009; Brent Baude <ranger@gentoo.org>
+  claws-mail-gtkhtml-0.24.ebuild:
+  Marking claws-mail-gtkhtml-0.24 ppc64 stable for bug 278682
+
+  01 Aug 2009; Jeremy Olexa <darkside@gentoo.org>
+  claws-mail-gtkhtml-0.24.ebuild:
+  amd64 stable, bug 278682
+
+  27 Jul 2009; nixnut <nixnut@gentoo.org> claws-mail-gtkhtml-0.24.ebuild:
+  ppc stable #278682
+
+  24 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-gtkhtml-0.24.ebuild:
+  stable x86, bug 278682
+
+  06 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-gtkhtml-0.24.ebuild:
+  fix Claws version number
+
+*claws-mail-gtkhtml-0.24 (06 Jul 2009)
+
+  06 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-gtkhtml-0.24.ebuild:
+  version bump
+
+  02 Jul 2009; Markus Meier <maekke@gentoo.org>
+  claws-mail-gtkhtml-0.23.ebuild:
+  amd64 stable, bug #273294
+
+  09 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-gtkhtml-0.23.ebuild:
+  stable x86, bug 273294
+
+*claws-mail-gtkhtml-0.23 (29 Apr 2009)
+
+  29 Apr 2009; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-gtkhtml-0.23.ebuild:
+  version bump, bug 266782 by microbiolog AT gmail.com
+
+  29 Mar 2009; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-gtkhtml-0.21.ebuild:
+  clean up
+
+  14 Mar 2009; nixnut <nixnut@gentoo.org> claws-mail-gtkhtml-0.22.ebuild:
+  ppc stable #256165
+
+  08 Mar 2009; Tobias Klausmann <klausman@gentoo.org>
+  claws-mail-gtkhtml-0.22.ebuild:
+  Keyworded on alpha, bug #256165
+
+  25 Jan 2009; Markus Meier <maekke@gentoo.org>
+  claws-mail-gtkhtml-0.22.ebuild:
+  amd64/x86 stable, bug #256165
+
+  25 Jan 2009; Brent Baude <ranger@gentoo.org>
+  claws-mail-gtkhtml-0.22.ebuild:
+  Marking claws-mail-gtkhtml-0.22 ppc64 for bug 256165
+
+  22 Dec 2008; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-gtkhtml-0.22.ebuild:
+  raise version on mail-client/claws-mail dependency
+
+*claws-mail-gtkhtml-0.22 (22 Dec 2008)
+
+  22 Dec 2008; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-gtkhtml-0.22.ebuild:
+  version bump
+
+  08 Dec 2008; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-gtkhtml-0.19.ebuild:
+  clean up
+
+  02 Dec 2008; Brent Baude <ranger@gentoo.org>
+  claws-mail-gtkhtml-0.21.ebuild:
+  Marking claws-mail-gtkhtml-0.21 ppc64 for bug 248760
+
+  29 Nov 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  claws-mail-gtkhtml-0.21.ebuild:
+  ppc stable, bug #248760
+
+  28 Nov 2008; Markus Meier <maekke@gentoo.org>
+  claws-mail-gtkhtml-0.21.ebuild:
+  amd64/x86 stable, bug #248760
+
+  28 Nov 2008; Christian Faulhammer <fauli@gentoo.org> metadata.xml:
+  Change my email address
+
+  25 Nov 2008; Christian Faulhammer <opfer@gentoo.org>
+  -claws-mail-gtkhtml-0.18.ebuild:
+  clean up
+
+*claws-mail-gtkhtml-0.21 (16 Oct 2008)
+
+  16 Oct 2008; Christian Faulhammer <opfer@gentoo.org>
+  +claws-mail-gtkhtml-0.21.ebuild:
+  version bump for bug 239927
+
+  08 Aug 2008; Markus Rothe <corsair@gentoo.org>
+  claws-mail-gtkhtml-0.19.ebuild:
+  Stable on ppc64; bug #233817
+
+  08 Aug 2008; nixnut <nixnut@gentoo.org> claws-mail-gtkhtml-0.19.ebuild:
+  Stable on ppc wrt bug 233817
+
+  04 Aug 2008; Markus Meier <maekke@gentoo.org>
+  claws-mail-gtkhtml-0.19.ebuild:
+  amd64/x86 stable, bug #233817
+
+*claws-mail-gtkhtml-0.19 (30 Jun 2008)
+
+  30 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  +claws-mail-gtkhtml-0.19.ebuild:
+  version bump
+
+  23 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  claws-mail-gtkhtml-0.18.ebuild:
+  remove dependency on gtkhtml as a bundled and modified version is available
+
+  23 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  -claws-mail-gtkhtml-0.15.2.ebuild, -claws-mail-gtkhtml-0.16.ebuild,
+  -claws-mail-gtkhtml-0.17.ebuild, -claws-mail-gtkhtml-0.17.1.ebuild,
+  -claws-mail-gtkhtml-0.17.2.ebuild:
+  clean up
+
+  21 Jun 2008; Markus Rothe <corsair@gentoo.org>
+  claws-mail-gtkhtml-0.18.ebuild:
+  Stable on ppc64; bug #222167
+
+  21 Jun 2008; Christian Faulhammer <opfer@gentoo.org> metadata.xml:
+  correct email address of Ken
+
+  14 Jun 2008; Kenneth Prugh <ken69267@gentoo.org>
+  claws-mail-gtkhtml-0.18.ebuild:
+  amd64 stable, bug #222167
+
+  14 Jun 2008; nixnut <nixnut@gentoo.org> claws-mail-gtkhtml-0.18.ebuild:
+  Stable on ppc wrt bug 222167
+
+  11 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  claws-mail-gtkhtml-0.18.ebuild:
+  stable x86, bug 222167
+
+  11 Jun 2008; Christian Faulhammer <opfer@gentoo.org> metadata.xml:
+  Changing maintainers
+
+  30 May 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Andrej Kacian (Ticho) from metadata.xml (as per #59986).
+
+  29 May 2008; Mark Loeser <halcy0n@gentoo.org>
+  claws-mail-gtkhtml-0.15.2.ebuild, claws-mail-gtkhtml-0.16.ebuild,
+  claws-mail-gtkhtml-0.17.ebuild, claws-mail-gtkhtml-0.17.1.ebuild,
+  claws-mail-gtkhtml-0.17.2.ebuild:
+  Fix RDEPEND on pkgconfig; bug #217278
+
+  15 May 2008; Christian Faulhammer <opfer@gentoo.org>
+  claws-mail-gtkhtml-0.18.ebuild:
+  disable accessibility for bundled gtkhtml, see bug 221925
+
+  12 May 2008; Christian Faulhammer <opfer@gentoo.org>
+  claws-mail-gtkhtml-0.18.ebuild:
+  move pkgconfig from RDEPEND to DPEND only
+
+*claws-mail-gtkhtml-0.18 (12 May 2008)
+
+  12 May 2008; Christian Faulhammer <opfer@gentoo.org>
+  +claws-mail-gtkhtml-0.18.ebuild:
+  version bump for bug 215711
+
+*claws-mail-gtkhtml-0.17.2 (23 Feb 2008)
+
+  23 Feb 2008; Andrej Kacian <ticho@gentoo.org>
+  +claws-mail-gtkhtml-0.17.2.ebuild:
+  Version bump.
+
+*claws-mail-gtkhtml-0.17.1 (13 Feb 2008)
+
+  13 Feb 2008; Andrej Kacian <ticho@gentoo.org>
+  claws-mail-gtkhtml-0.15.2.ebuild, claws-mail-gtkhtml-0.16.ebuild,
+  claws-mail-gtkhtml-0.17.ebuild, +claws-mail-gtkhtml-0.17.1.ebuild:
+  Version bump. Depend on pkgconfig (bug #205864).
+
+*claws-mail-gtkhtml-0.17 (28 Dec 2007)
+
+  28 Dec 2007; Andrej Kacian <ticho@gentoo.org>
+  +claws-mail-gtkhtml-0.17.ebuild:
+  Version bump. Bug #202634 by Joe <joacher at gmx.de>.
+
+*claws-mail-gtkhtml-0.16 (29 Nov 2007)
+
+  29 Nov 2007; Andrej Kacian <ticho@gentoo.org>
+  -claws-mail-gtkhtml-0.13.ebuild, -claws-mail-gtkhtml-0.14.ebuild,
+  -claws-mail-gtkhtml-0.14.1.ebuild, -claws-mail-gtkhtml-0.14.2.ebuild,
+  -claws-mail-gtkhtml-0.15.ebuild, -claws-mail-gtkhtml-0.15.1.ebuild,
+  claws-mail-gtkhtml-0.15.2.ebuild, +claws-mail-gtkhtml-0.16.ebuild:
+  Version bump, ebuild cleanup.
+
+  17 Sep 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  claws-mail-gtkhtml-0.15.2.ebuild:
+  ppc stable, bug #190104
+
+  16 Sep 2007; Christoph Mende <angelos@gentoo.org>
+  claws-mail-gtkhtml-0.15.2.ebuild:
+  Stable on amd64 wrt security bug #190104
+
+  13 Sep 2007; Markus Rothe <corsair@gentoo.org>
+  claws-mail-gtkhtml-0.15.2.ebuild:
+  Stable on ppc64; bug #190104
+
+  13 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  claws-mail-gtkhtml-0.15.2.ebuild:
+  x86 stable, security bug 190104
+
+*claws-mail-gtkhtml-0.15.2 (03 Sep 2007)
+
+  03 Sep 2007; Andrej Kacian <ticho@gentoo.org>
+  +claws-mail-gtkhtml-0.15.2.ebuild:
+  Version bump.
+
+*claws-mail-gtkhtml-0.15.1 (07 Jul 2007)
+
+  07 Jul 2007; <ticho@gentoo.org> +claws-mail-gtkhtml-0.15.1.ebuild:
+  Version bump.
+
+  03 May 2007; Steve Dibb <beandog@gentoo.org>
+  claws-mail-gtkhtml-0.15.ebuild:
+  amd64 stable, bug 176805
+
+  03 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  claws-mail-gtkhtml-0.15.ebuild:
+  ppc stable, bug #176805
+
+  03 May 2007; Raúl Porcel <armin76@gentoo.org>
+  claws-mail-gtkhtml-0.15.ebuild:
+  x86 stable wrt #176805
+
+  02 May 2007; Markus Rothe <corsair@gentoo.org>
+  claws-mail-gtkhtml-0.15.ebuild:
+  Stable on ppc64; bug #176805
+
+*claws-mail-gtkhtml-0.15 (16 Apr 2007)
+
+  16 Apr 2007; Andrej Kacian <ticho@gentoo.org>
+  +claws-mail-gtkhtml-0.15.ebuild:
+  Version bump.
+
+*claws-mail-gtkhtml-0.14.2 (27 Feb 2007)
+
+  27 Feb 2007; Andrej Kacian <ticho@gentoo.org>
+  +claws-mail-gtkhtml-0.14.2.ebuild:
+  Version bump.
+
+  31 Jan 2007; Markus Rothe <corsair@gentoo.org>
+  claws-mail-gtkhtml-0.13.ebuild:
+  Stable on ppc64; bug #163611
+
+  25 Jan 2007; Christian Faulhammer <opfer@gentoo.org>
+  claws-mail-gtkhtml-0.13.ebuild:
+  stable x86; bug #163611
+
+  16 Jan 2007; Andrej Kacian <ticho@gentoo.org>
+  claws-mail-gtkhtml-0.13.ebuild, claws-mail-gtkhtml-0.14.ebuild,
+  claws-mail-gtkhtml-0.14.1.ebuild:
+  Add net-misc/curl as a dependency. Suggested by Fred Morcos <fred.morcos at
+  gmail.com> in bug #162407.
+
+*claws-mail-gtkhtml-0.14.1 (15 Jan 2007)
+
+  15 Jan 2007; Andrej Kacian <ticho@gentoo.org>
+  +claws-mail-gtkhtml-0.14.1.ebuild:
+  Version bump.
+
+*claws-mail-gtkhtml-0.14 (09 Jan 2007)
+
+  09 Jan 2007; Andrej Kacian <ticho@gentoo.org>
+  +claws-mail-gtkhtml-0.14.ebuild:
+  Version bump.
+
+*claws-mail-gtkhtml-0.13 (19 Dec 2006)
+
+  19 Dec 2006; Andrej Kacian <ticho@gentoo.org> +metadata.xml,
+  +claws-mail-gtkhtml-0.13.ebuild:
+  This is the new name of mail-client/sylpheed-claws-gtkhtml.

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare setup unpack
+DEPEND=ssl? ( dev-libs/openssl ) hesiod? ( net-dns/hesiod ) kerberos? ( virtual/krb5 ) usb? ( !dev-libs/libusb ) userland_GNU? ( sys-apps/mtree ) >=dev-libs/expat-2.0.1 !sys-freebsd/freebsd-headers >=sys-devel/flex-2.5.31-r2 =sys-freebsd/freebsd-sources-8.2* !bootstrap? ( app-arch/bzip2 ) =sys-freebsd/freebsd-mk-defs-8.2* virtual/pmake virtual/pmake
+DESCRIPTION=FreeBSD's base system libraries
+EAPI=2
+HOMEPAGE=http://www.freebsd.org/
+IUSE=atm bluetooth ssl hesiod ipv6 kerberos usb netware build bootstrap crosscompile_opts_headers-only profile
+KEYWORDS=~sparc-fbsd ~x86-fbsd
+LICENSE=BSD
+RDEPEND=ssl? ( dev-libs/openssl ) hesiod? ( net-dns/hesiod ) kerberos? ( virtual/krb5 ) usb? ( !dev-libs/libusb ) userland_GNU? ( sys-apps/mtree ) >=dev-libs/expat-2.0.1 !sys-freebsd/freebsd-headers
+SLOT=0
+SRC_URI=mirror://gentoo/freebsd-lib-8.2.tar.bz2 mirror://gentoo/freebsd-contrib-8.2.tar.bz2 mirror://gentoo/freebsd-crypto-8.2.tar.bz2 mirror://gentoo/freebsd-libexec-8.2.tar.bz2 mirror://gentoo/freebsd-etc-8.2.tar.bz2 mirror://gentoo/freebsd-include-8.2.tar.bz2 mirror://gentoo/freebsd-usbin-8.2.tar.bz2 mirror://gentoo/freebsd-gnu-8.2.tar.bz2 build? ( mirror://gentoo/freebsd-sys-8.2.tar.bz2 )
+_eclasses_=bsdmk	a5323161d86b178920afb5e31a9e5d3f	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	freebsd	35f498d509155233569460a87c40fdda	multilib	62927b3db3a589b0806255f3a002d5d3	portability	a45c088f246ef5091e029f6285d7ce42	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=a6e8d041902491b02ff9b49383fc9ef6

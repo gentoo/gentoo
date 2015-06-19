@@ -1,0 +1,15 @@
+# ChangeLog for dev-perl/Config-JSON
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Config-JSON/ChangeLog,v 1.2 2015/04/05 22:45:34 dilfridge Exp $
+
+*Config-JSON-1.520.200 (05 Apr 2015)
+
+  05 Apr 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Config-JSON-1.520.200.ebuild:
+  Version bump
+
+*Config-JSON-1.510.0 (09 Dec 2014)
+
+  09 Dec 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Config-JSON-1.510.0.ebuild, +metadata.xml:
+  New package, imported from perl overlay, bug 311007

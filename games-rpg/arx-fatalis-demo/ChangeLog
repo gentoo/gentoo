@@ -1,0 +1,21 @@
+# ChangeLog for games-rpg/arx-fatalis-demo
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/arx-fatalis-demo/ChangeLog,v 1.5 2013/03/17 15:45:13 hwoarang Exp $
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  30 Jan 2013; Agostino Sarubbo <ago@gentoo.org> arx-fatalis-demo-0.ebuild:
+  Stable for x86, wrt bug #428222
+
+  11 Aug 2012; Agostino Sarubbo <ago@gentoo.org> arx-fatalis-demo-0.ebuild:
+  Stable for amd64, wrt bug #428222
+
+  30 Jun 2012; Julian Ospald <hasufell@gentoo.org> arx-fatalis-demo-0.ebuild:
+  fix installation for custom PORTAGE_TMPDIR
+
+*arx-fatalis-demo-0 (29 Jun 2012)
+
+  29 Jun 2012; Julian Ospald <hasufell@gentoo.org> +arx-fatalis-demo-0.ebuild,
+  +metadata.xml:
+  initial import

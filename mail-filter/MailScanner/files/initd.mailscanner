@@ -1,0 +1,48 @@
+#!/sbin/runscript
+
+opts="${opts} reload"
+
+depend() {
+	need net mta
+	use logger dns
+}
+
+start() {
+	ebegin "Starting MailScanner"
+	#/usr/sbin/check_MailScanner >/dev/null
+	start-stop-daemon --start --pidfile /var/run/${SVCNAME}.pid \
+		--exec /usr/sbin/MailScanner -- /etc/MailScanner/MailScanner.conf ${OPT} > /var/run/${SVCNAME}.pid
+        eend $?
+
+	RETVAL=$?
+	[ ${RETVAL} -eq 0 ] && touch /var/lock/subsys/MailScanner
+	[ ${RETVAL} -eq 0 ] && rm -f /var/lock/subsys/MailScanner.off
+	eend ${RETVAL}
+}
+
+stop() {
+	ebegin "Stopping MailScanner"
+	start-stop-daemon --stop --quiet --pidfile /var/run/${SVCNAME}.pid
+	RETVAL=$?
+	[ ${RETVAL} -eq 0 ] && rm -f /var/lock/subsys/MailScanner
+	[ ${RETVAL} -eq 0 ] && touch /var/lock/subsys/MailScanner.off
+	eend ${RETVAL}
+}
+
+reload() {
+	ebegin "Reloading MailScanner workers:"
+	pid=`pidof -x MailScanner`
+	if [ -n "$pid" ] ;
+	then
+		/bin/kill -HUP $pid
+		eend $?
+	else 
+		eend 1
+	fi
+}
+
+restart() {
+	svc_stop
+	sleep ${RESTART_DELAY}
+	svc_start
+}

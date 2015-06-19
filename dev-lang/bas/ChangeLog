@@ -1,0 +1,36 @@
+# ChangeLog for dev-lang/bas
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/bas/ChangeLog,v 1.7 2014/06/26 14:05:01 kensington Exp $
+
+  26 Jun 2014; Michael Palimaka <kensington@gentoo.org> -bas-2.2.ebuild,
+  -bas-2.3.ebuild, -files/bas-2.1-configure.patch,
+  -files/bas-2.3-configure.patch:
+  Remove old.
+
+*bas-2.4 (26 Aug 2013)
+
+  26 Aug 2013; Patrick Lauer <patrick@gentoo.org> +bas-2.4.ebuild:
+  Bump
+
+*bas-2.3 (30 Jan 2013)
+
+  30 Jan 2013; Patrick Lauer <patrick@gentoo.org> +bas-2.3.ebuild,
+  +files/bas-2.3-configure.patch:
+  Bump
+
+  15 Dec 2011; Pacho Ramos <pacho@gentoo.org> -bas-2.1.ebuild, metadata.xml:
+  Drop maintainer due retirement, bug #353461; drop old.
+
+*bas-2.2 (19 Apr 2011)
+
+  19 Apr 2011; Kevin McCarthy <signals@gentoo.org> +bas-2.2.ebuild:
+  Version bump.
+
+  21 Feb 2011; Kevin McCarthy <signals@gentoo.org> metadata.xml:
+  Take direct maintainership and remove proxy maintainers.
+
+*bas-2.1 (02 Feb 2011)
+
+  02 Feb 2011; Samuli Suominen <ssuominen@gentoo.org> +bas-2.1.ebuild,
+  +files/bas-2.1-configure.patch, +files/bas-2.1-makefile.patch:
+  Initial commit wrt #353356 by Kevin McCarthy.

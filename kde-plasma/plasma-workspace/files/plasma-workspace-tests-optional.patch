@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt	2015-01-21 00:23:54.096323752 +0100
++++ b/CMakeLists.txt	2015-01-21 00:24:36.304654204 +0100
+@@ -7,7 +7,7 @@
+ set(QT_MIN_VERSION "5.4.0")
+ set(KF5_MIN_VERSION "5.8.0")
+ set(INSTALL_SDDM_THEME TRUE)
+-find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Widgets Quick QuickWidgets Concurrent Test Script Network)
++find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Widgets Quick QuickWidgets Concurrent Script Network)
+ find_package(ECM 1.8.0 REQUIRED NO_MODULE)
+ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
+ 

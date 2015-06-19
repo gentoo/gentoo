@@ -1,0 +1,37 @@
+# ChangeLog for dev-ml/typehashlib
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/typehashlib/ChangeLog,v 1.6 2014/11/28 17:50:56 aballier Exp $
+
+  28 Nov 2014; Alexis Ballier <aballier@gentoo.org>
+  typehashlib-109.15.02.ebuild:
+  update deps for ocaml 4.02
+
+  19 Aug 2013; Alexis Ballier <aballier@gentoo.org>
+  -typehashlib-109.11.00.ebuild, -typehashlib-109.14.00.ebuild,
+  -typehashlib-109.15.00.ebuild:
+  remove old
+
+*typehashlib-109.15.02 (24 May 2013)
+
+  24 May 2013; Alexis Ballier <aballier@gentoo.org>
+  +typehashlib-109.15.02.ebuild:
+  version bump
+
+*typehashlib-109.15.00 (11 Apr 2013)
+
+  11 Apr 2013; Alexis Ballier <aballier@gentoo.org>
+  +typehashlib-109.15.00.ebuild:
+  version bump
+
+*typehashlib-109.14.00 (24 Mar 2013)
+
+  24 Mar 2013; Alexis Ballier <aballier@gentoo.org>
+  +typehashlib-109.14.00.ebuild:
+  version bump
+
+*typehashlib-109.11.00 (06 Mar 2013)
+
+  06 Mar 2013; Alexis Ballier <aballier@gentoo.org>
+  +typehashlib-109.11.00.ebuild, +metadata.xml:
+  initial import, ebuild by me
+

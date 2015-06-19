@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>ml</herd>
+	<longdescription lang="en">
+Ocamldap is an implementation of the Light Weight Directory Access Protocol,
+and a set of useful tools built around it. It includes high level libraries
+for creating ldap clients and ldap servers. It also includes many of the
+auxiliary tools needed for building intelligent solutions, and interoperating
+with other directories. These include, an rfc2252 schema parser, and an schema
+checker, an ldif parser and printer, a search filter parser (but no printer 
+yet), and a rudimentary ldap url parser. While including things already done 
+elsewhere is fun, ocamldap adds something as well. So it implements a concept 
+which tries to provide a basic unit of abstraction for managing directory data,
+called a service. A service is a bit like a stored search filter that you give
+a name. So you can ask ocamldap if an object satisfies its conditions, but 
+unlike a search filter you can also ask ocamldap to MAKE an object satisfy its
+conditions. This can be really useful in distributed managment applications.
+Needless to say, more on this in the Documentation section.
+	</longdescription>
+</pkgmetadata>

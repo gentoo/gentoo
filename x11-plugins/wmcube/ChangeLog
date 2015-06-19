@@ -1,0 +1,37 @@
+# ChangeLog for x11-plugins/wmcube
+# Copyright 2002-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmcube/ChangeLog,v 1.14 2010/09/20 09:17:18 s4t4n Exp $
+
+  20 Sep 2010; Michele Noberasco <s4t4n@gentoo.org>; wmcube-0.98.ebuild:
+  Honour Gentoo LDFLAGS, see bug #337893.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; wmcube-0.98.ebuild:
+  Drop virtual/x11 references.
+
+  06 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  24 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> wmcube-0.98.ebuild:
+  Fixed DEPEND for modular X.
+
+  23 Nov 2004; Jason Wever <weeve@gentoo.org> wmcube-0.98.ebuild:
+  Added ~sparc keyword.
+
+  02 Sep 2004; Tom Gall <tgall@gentoo.org> wmcube-0.98.ebuild:
+  stable on ppc64, bug #62253
+
+  28 Jun 2004; Aron Griffis <agriffis@gentoo.org> wmcube-0.98.ebuild:
+  glibc -> libc
+
+  13 Mar 2004; Stephen P. Becker <geoman@gentoo.org> wmcube-0.98.ebuild:
+  Added ~mips keyword.
+
+*wmcube-0.98 (24 Oct 2002)
+
+  03 Feb 2003; Nick Hadaway <raker@gentoo.org> wmcube-0.98.ebuild :
+  Updated the HOMEPAGE and SRC_URI as the authors request.
+
+  24 Oct 2002; Nick Hadaway <raker@gentoo.org> wmcube-0.98.ebuild,
+  files/digest-wmcube-0.98 :
+  Initial ebuild submitted by steingrd@ifi.uio.no (Steingrim Dovland)
+  on bug #5446.

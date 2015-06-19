@@ -1,0 +1,31 @@
+From 648ae5dbd90e062f3432f809a846d50d994b86d4 Mon Sep 17 00:00:00 2001
+From: qdii <qdii@reblochon.be>
+Date: Fri, 02 Nov 2012 13:49:03 +0000
+Subject: Function _exit was referenced in the code, but <unistd.h> was not included, causing compilation to fail.
+
+---
+diff --git a/test/idiscover.cc b/test/idiscover.cc
+index 4b1e90c..8a5a3fb 100644
+--- a/test/idiscover.cc
++++ b/test/idiscover.cc
+@@ -2,6 +2,7 @@
+ #include <stdexcept>
+ #include <iterator>
+ #include <algorithm>
++#include <unistd.h>
+ using namespace std;
+ #include <opkele/exception.h>
+ #include <opkele/discovery.h>
+diff --git a/test/test.cc b/test/test.cc
+index 2143ac0..770e0c6 100644
+--- a/test/test.cc
++++ b/test/test.cc
+@@ -1,5 +1,6 @@
+ #include <iostream>
+ #include <stdexcept>
++#include <unistd.h>
+ using namespace std;
+ #include <opkele/exception.h>
+ #include <opkele/util.h>
+--
+cgit v0.9-30-gcd78

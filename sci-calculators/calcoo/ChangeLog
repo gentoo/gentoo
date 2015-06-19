@@ -1,0 +1,102 @@
+# ChangeLog for sci-calculators/calcoo
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-calculators/calcoo/ChangeLog,v 1.21 2012/08/04 21:08:01 bicatali Exp $
+
+  04 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> -calcoo-1.3.16.ebuild,
+  calcoo-1.3.18.ebuild, metadata.xml:
+  keyword amd64-linux, x86-linux, removed old
+
+  21 May 2012; Samuli Suominen <ssuominen@gentoo.org> calcoo-1.3.18.ebuild:
+  inherit eutils for make_desktop_entry
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> calcoo-1.3.16.ebuild,
+  calcoo-1.3.18.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  26 Apr 2012; Justin Lecher <jlec@gentoo.org> calcoo-1.3.18.ebuild,
+  +files/calcoo-1.3.18-gold.patch, metadata.xml:
+  Move to EAPI=4, added fix gold linker
+
+  02 Mar 2011; Justin Lecher <jlec@gentoo.org> calcoo-1.3.16.ebuild,
+  calcoo-1.3.18.ebuild:
+  Correct Slots for gtk 3 introduction to tree
+
+  07 May 2008; Markus Meier <maekke@gentoo.org> calcoo-1.3.18.ebuild:
+  amd64/x86 stable, bug #220601
+
+  06 May 2008; Ferris McCormick <fmccor@gentoo.org> calcoo-1.3.18.ebuild:
+  Sparc stable --- Bug #220601 --- looks good to me.
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org> calcoo-1.3.18.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+  08 Jan 2008; Markus Dittrich <markusle@gentoo.org> calcoo-1.3.16.ebuild,
+  calcoo-1.3.18.ebuild:
+  Added missing pkgconfig dependency (fixes bug #204799).
+
+*calcoo-1.3.18 (15 Sep 2007)
+
+  15 Sep 2007; Samuli Suominen <drac@gentoo.org> +calcoo-1.3.18.ebuild:
+  Version bump for bug 191886, thanks to Arfrever Frehtes Taifersar Arahesis
+  for reporting.
+
+  28 Jul 2007; Christoph Mende <angelos@gentoo.org> calcoo-1.3.16.ebuild:
+  Stable on amd64 wrt bug #186561
+
+*calcoo-1.3.17 (28 Jul 2007)
+
+  28 Jul 2007; Samuli Suominen <drac@gentoo.org> +calcoo-1.3.17.ebuild:
+  Version bump for bug 186482.
+
+  26 Jul 2007; Raúl Porcel <armin76@gentoo.org> calcoo-1.3.16.ebuild:
+  x86 stable
+
+  26 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org> calcoo-1.3.16.ebuild:
+  Stable on sparc
+
+  25 Jul 2007; Samuli Suominen <drac@gentoo.org> calcoo-1.3.16.ebuild:
+  Fix invalid depend, requires GTK+-2.0 instead of GTK+-1.2.
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org> files/digest-calcoo-1.3.15,
+  files/digest-calcoo-1.3.16, Manifest:
+  Fixing SHA256 digest, pass four
+
+*calcoo-1.3.16 (10 Apr 2006)
+
+  10 Apr 2006; Marcus D. Hanwell <cryos@gentoo.org> +calcoo-1.3.16.ebuild:
+  Version bump.
+
+  08 Dec 2005; Marcus D. Hanwell <cryos@gentoo.org> calcoo-1.3.15.ebuild:
+  Stable on amd64.
+
+*calcoo-1.3.15 (24 Dec 2004)
+
+  24 Dec 2004; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +calcoo-1.3.15.ebuild:
+  Moved from app-sci/calcoo to sci-calculators/calcoo.
+
+  13 Dec 2004; Jason Wever <weeve@gentoo.org> calcoo-1.3.15.ebuild:
+  Stable on sparc.
+
+  31 Oct 2004; Tom Martin <slarti@gentoo.org> calcoo-1.3.15.ebuild:
+  Marked ~amd64 for bug 69353.
+
+*calcoo-1.3.15 (08 Aug 2003)
+
+  08 Aug 2003; George Shapovalov <george@gentoo.org> calcoo-1.3.15.ebuild :
+  new version (#26011), added some docs
+  thanks to Anthony Lander <anthony.lander@sympatico.ca> for notification
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*calcoo-1.3.13 (01 Nov 2002)
+
+  01 Nov 2002; George Shapovalov <george@gentoo.org> calcoo-1.3.13.ebuild :
+  
+  first commit
+  Calcoo is a good scientific calculator, supports RPN
+  and algebraic modes.
+  ebuild submitted by Ryzhyk Eugeney <rzheka@users.sourceforge.net>

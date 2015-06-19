@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=net-wireless/rtl-sdr
+DESCRIPTION=simple Mode S decoder for RTLSDR devices
+EAPI=5
+HOMEPAGE=https://github.com/antirez/dump1090
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=net-wireless/rtl-sdr
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~zerochaos/distfiles/dump1090-0.0_p20140919.tar.xz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=9792af1bda09f3a86a5a186a8624d767

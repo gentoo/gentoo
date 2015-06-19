@@ -1,0 +1,34 @@
+# ChangeLog for dev-dotnet/dbus-sharp-glib
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/dbus-sharp-glib/ChangeLog,v 1.8 2015/06/06 09:53:20 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> dbus-sharp-glib-0.5.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  23 Apr 2012; Michał Górny <mgorny@gentoo.org> dbus-sharp-glib-0.5.0.ebuild:
+  Use mirror://github.
+
+  10 Nov 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  dbus-sharp-glib-0.5.0.ebuild:
+  ppc stable wrt #389181
+
+  09 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  dbus-sharp-glib-0.5.0.ebuild:
+  Marked ~ppc wrt #360269
+
+  30 Jun 2011; Christoph Mende <angelos@gentoo.org>
+  dbus-sharp-glib-0.5.0.ebuild:
+  Stable on amd64 wrt bug #371163
+
+  21 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  dbus-sharp-glib-0.5.0.ebuild:
+  x86 stable wrt bug #371163
+
+*dbus-sharp-glib-0.5.0 (12 Mar 2011)
+
+  12 Mar 2011; <angelos@gentoo.org> +dbus-sharp-glib-0.5.0.ebuild,
+  +metadata.xml:
+  Initial import

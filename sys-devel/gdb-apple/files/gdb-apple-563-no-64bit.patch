@@ -1,0 +1,19 @@
+* Fabian Groffen <grobian@gentoo.org>
+  On Gentoo, when the user doesn't have a 64-bits capable CPU, we
+  compile GCC without multi-lib support.  Hence, 64-bits defines are not
+  available so we better not use them if we don't have __ppc64__
+  defined.
+
+--- gdb/macosx/macosx-nat-dyld.c
++++ gdb/macosx/macosx-nat-dyld.c
+@@ -619,8 +619,10 @@
+          structures.  */
+       if (header.cputype == CPU_TYPE_POWERPC || header.cputype == CPU_TYPE_I386)
+         osabi_seen_in_attached_dyld = GDB_OSABI_DARWIN;
++#if defined(__ppc64__)
+       if (header.cputype == CPU_TYPE_POWERPC64 || header.cputype == GDB_CPU_TYPE_X86_64)
+         osabi_seen_in_attached_dyld = GDB_OSABI_DARWIN64;
++#endif
+     }
+ 
+   /* Once we know the address at which dyld was loaded, we can try to

@@ -1,0 +1,302 @@
+# ChangeLog for net-analyzer/fping
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/fping/ChangeLog,v 1.77 2014/11/02 20:20:05 jer Exp $
+
+  02 Nov 2014; Jeroen Roovers <jer@gentoo.org> -fping-2.4_beta2_p161-r1.ebuild,
+  -fping-3.9.ebuild:
+  Old.
+
+  02 Nov 2014; Agostino Sarubbo <ago@gentoo.org> fping-2.4_beta2_p161-r2.ebuild,
+  fping-3.10.ebuild:
+  Stable for alpha, wrt bug #523210
+
+  29 Oct 2014; Agostino Sarubbo <ago@gentoo.org> fping-2.4_beta2_p161-r2.ebuild,
+  fping-3.10.ebuild:
+  Stable for sparc, wrt bug #523210
+
+  28 Oct 2014; Agostino Sarubbo <ago@gentoo.org> fping-2.4_beta2_p161-r2.ebuild,
+  fping-3.10.ebuild:
+  Stable for ia64, wrt bug #523210
+
+  27 Oct 2014; Agostino Sarubbo <ago@gentoo.org> fping-2.4_beta2_p161-r2.ebuild,
+  fping-3.10.ebuild:
+  Stable for ppc64, wrt bug #523210
+
+  18 Oct 2014; Agostino Sarubbo <ago@gentoo.org> fping-2.4_beta2_p161-r2.ebuild:
+  really stable for amd64 now
+
+  18 Oct 2014; Agostino Sarubbo <ago@gentoo.org> fping-2.4_beta2_p161-r2.ebuild,
+  fping-3.10.ebuild:
+  Stable for ppc, wrt bug #523210
+
+  10 Oct 2014; Agostino Sarubbo <ago@gentoo.org> fping-2.4_beta2_p161-r2.ebuild,
+  fping-3.10.ebuild:
+  Stable for x86, wrt bug #523210
+
+  09 Oct 2014; Agostino Sarubbo <ago@gentoo.org> fping-3.10.ebuild:
+  Stable for amd64, wrt bug #523210
+
+  19 Sep 2014; Jeroen Roovers <jer@gentoo.org> fping-2.4_beta2_p161-r2.ebuild,
+  -fping-3.0.ebuild, fping-3.10.ebuild:
+  Stable for HPPA (bug #523210).
+
+  19 Sep 2014; Agostino Sarubbo <ago@gentoo.org> fping-3.9.ebuild:
+  Stable for ppc64, wrt bug #507966
+
+  14 Jul 2014; Patrick Lauer <patrick@gentoo.org>
+  fping-2.4_beta2_p161-r2.ebuild:
+  Reorder fperms calls to avoid failure with USE=-ipv6 #517070
+
+  13 Jul 2014; Agostino Sarubbo <ago@gentoo.org> fping-3.9.ebuild:
+  Stable for ppc, wrt bug #507966
+
+*fping-2.4_beta2_p161-r2 (11 Jul 2014)
+
+  11 Jul 2014; Jeroen Roovers <jer@gentoo.org> +fping-2.4_beta2_p161-r1.ebuild,
+  +fping-2.4_beta2_p161-r2.ebuild, +files/fping-2.4_beta2_p161-err.h.patch,
+  +files/fping-2.4_beta2_p161-min-time.patch:
+  Restore 2.4_beta2_p161-r1 as net-analyzer/zabbix still requires it. Fix a
+  missing include and do an EAPI bump in -r2.
+
+  11 Jul 2014; Jeroen Roovers <jer@gentoo.org> -fping-2.4_beta2_p161-r1.ebuild,
+  -fping-3.1.ebuild, -fping-3.2.ebuild, -fping-3.4.ebuild, -fping-3.5.ebuild,
+  -fping-3.6.ebuild, -fping-3.8.ebuild,
+  -files/fping-2.4_beta2_p161-min-time.patch:
+  Old.
+
+  27 Jun 2014; Chema Alonso <nimiux@gentoo.org> fping-3.9.ebuild:
+  Stable for amd64 wrt bug #507966
+
+  14 Jun 2014; Raúl Porcel <armin76@gentoo.org> fping-3.9.ebuild:
+  alpha/ia64/sparc stable wrt #507966
+
+  14 Jun 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> fping-3.9.ebuild:
+  x86 stable wrt bug #507966
+
+  06 May 2014; Jeroen Roovers <jer@gentoo.org> fping-3.9.ebuild:
+  Stable for HPPA (bug #507966).
+
+*fping-3.10 (06 May 2014)
+
+  06 May 2014; Jeroen Roovers <jer@gentoo.org> +fping-3.10.ebuild:
+  Version bump.
+
+*fping-3.9 (09 Mar 2014)
+
+  09 Mar 2014; Tim Harder <radhermit@gentoo.org> +fping-3.9.ebuild:
+  Version bump.
+
+*fping-3.8 (10 Nov 2013)
+
+  10 Nov 2013; Tim Harder <radhermit@gentoo.org> +fping-3.8.ebuild:
+  Version bump.
+
+*fping-3.6 (22 Oct 2013)
+
+  22 Oct 2013; Jeroen Roovers <jer@gentoo.org> +fping-3.6.ebuild:
+  Version bump.
+
+*fping-3.5 (23 May 2013)
+
+  23 May 2013; Tim Harder <radhermit@gentoo.org> +fping-3.5.ebuild:
+  Version bump.
+
+  06 Sep 2012; Anthony G. Basile <blueness@gentoo.org> fping-3.4.ebuild:
+  Keyword ~arm
+
+*fping-3.4 (05 Sep 2012)
+
+  05 Sep 2012; Jeroen Roovers <jer@gentoo.org> -fping-3.3.ebuild,
+  +fping-3.4.ebuild:
+  Version bump, fixes bug #433139.
+
+*fping-3.3 (20 Aug 2012)
+
+  20 Aug 2012; Tim Harder <radhermit@gentoo.org> +fping-3.3.ebuild:
+  Version bump. Add suid use flag.
+
+  29 May 2012; Tim Harder <radhermit@gentoo.org>
+  +fping-2.4_beta2_p161-r1.ebuild, +files/fping-2.4_beta2_p161-min-time.patch:
+  Re-add fping-2.4 for net-analyzer/zabbix.
+
+  29 May 2012; Tim Harder <radhermit@gentoo.org>
+  -fping-2.4_beta2_p161-r1.ebuild, -files/fping-2.4_beta2_p161-min-time.patch,
+  -fping-3.1_rc1.ebuild:
+  Remove old.
+
+*fping-3.2 (29 May 2012)
+
+  29 May 2012; Tim Harder <radhermit@gentoo.org> +fping-3.2.ebuild:
+  Version bump. Use append-cppflags for preprocessor flags.
+
+*fping-3.1 (03 May 2012)
+
+  03 May 2012; Jeroen Roovers <jer@gentoo.org> +fping-3.1.ebuild:
+  Version bump.
+
+  01 Apr 2012; Raúl Porcel <armin76@gentoo.org> fping-3.0.ebuild:
+  alpha/ia64/sparc stable wrt #407153
+
+  24 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> fping-3.0.ebuild:
+  x86 stable wrt bug #407153
+
+  13 Mar 2012; Jeroen Roovers <jer@gentoo.org> fping-3.0.ebuild:
+  Stable for HPPA (bug #407153).
+
+  09 Mar 2012; Brent Baude <ranger@gentoo.org> fping-3.0.ebuild:
+  Marking fping-3.0 ppc64 for bug 407153
+
+  08 Mar 2012; Markos Chandras <hwoarang@gentoo.org> fping-3.0.ebuild:
+  Stable on amd64 wrt bug #407153
+
+  07 Mar 2012; Brent Baude <ranger@gentoo.org> fping-3.0.ebuild:
+  Marking fping-3.0 ppc for bug 407153
+
+  07 Mar 2012; Jeroen Roovers <jer@gentoo.org> fping-3.1_rc1.ebuild:
+  Fix file paths in src_install(). Use some EAPI 4 defaults.
+
+*fping-3.1_rc1 (06 Mar 2012)
+
+  06 Mar 2012; Jeroen Roovers <jer@gentoo.org> +fping-3.1_rc1.ebuild:
+  Version bump.
+
+*fping-3.0 (05 Jan 2012)
+
+  05 Jan 2012; Tim Harder <radhermit@gentoo.org> +fping-3.0.ebuild:
+  Version bump. Bump to EAPI 4 and use new upstream.
+
+  08 Aug 2011; Jeroen Roovers <jer@gentoo.org> fping-2.4_beta2_p161-r1.ebuild:
+  Fix HOMEPAGE thanks to kahrl (bug #378365).
+
+  13 Jun 2011; Jeroen Roovers <jer@gentoo.org> -fping-2.4_beta2-r2.ebuild,
+  -fping-2.4_beta2_p161.ebuild:
+  [ This space left intentionally blank. ]
+
+  12 Jun 2011; Raúl Porcel <armin76@gentoo.org>
+  fping-2.4_beta2_p161-r1.ebuild:
+  alpha/ia64/sparc stable wrt #367905
+
+  08 Jun 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  fping-2.4_beta2_p161-r1.ebuild:
+  ppc/ppc64 stable wrt #367905
+
+  02 Jun 2011; Jeroen Roovers <jer@gentoo.org> fping-2.4_beta2_p161-r1.ebuild:
+  Stable for HPPA (bug #367905).
+
+  31 May 2011; Markus Meier <maekke@gentoo.org> fping-2.4_beta2_p161-r1.ebuild:
+  x86 stable, bug #367905
+
+  23 May 2011; Markos Chandras <hwoarang@gentoo.org>
+  fping-2.4_beta2_p161-r1.ebuild:
+  Stable on amd64 wrt bug #367905
+
+*fping-2.4_beta2_p161-r1 (25 Aug 2010)
+
+  25 Aug 2010; Jeroen Roovers <jer@gentoo.org>
+  +fping-2.4_beta2_p161-r1.ebuild,
+  +files/fping-2.4_beta2_p161-min-time.patch:
+  Fix -Q60 minimum ping response time bug by Alex Ghoth.
+
+*fping-2.4_beta2_p161 (12 Jul 2010)
+
+  12 Jul 2010; Jeroen Roovers <jer@gentoo.org> +fping-2.4_beta2_p161.ebuild:
+  Version bump of sorts using Debian patches. Add USE=ipv6 thanks to Bruno
+  Redondi (bug #319413).
+
+  03 Jun 2010; Jeroen Roovers <jer@gentoo.org> fping-2.4_beta2-r2.ebuild:
+  Fix SRC_URI thanks to Jeff Sweeney (bug #321715).
+
+  01 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  fping-2.4_beta2-r2.ebuild:
+  Transfer Prefix keywords
+
+  08 Feb 2009; Peter Volkov <pva@gentoo.org> -fping-2.4_beta2-r1.ebuild:
+  Remove old.
+
+  04 Feb 2009; Raúl Porcel <armin76@gentoo.org> fping-2.4_beta2-r2.ebuild:
+  ia64 stable wrt #254632
+
+  23 Jan 2009; Ferris McCormick <fmccor@gentoo.org>
+  fping-2.4_beta2-r2.ebuild:
+  Sparc stable, Bug #254632.
+
+  23 Jan 2009; Brent Baude <ranger@gentoo.org> fping-2.4_beta2-r2.ebuild:
+  stable ppc64, bug 254632
+
+  18 Jan 2009; Markus Meier <maekke@gentoo.org> fping-2.4_beta2-r2.ebuild:
+  amd64/x86 stable, bug #254632
+
+  18 Jan 2009; Tobias Klausmann <klausman@gentoo.org>
+  fping-2.4_beta2-r2.ebuild:
+  Stable on alpha, bug #254632
+
+  17 Jan 2009; nixnut <nixnut@gentoo.org> fping-2.4_beta2-r2.ebuild:
+  ppc stable #254632
+
+  12 Jan 2009; Guy Martin <gmsoft@gentoo.org> fping-2.4_beta2-r2.ebuild:
+  hppa stable, #254632
+
+*fping-2.4_beta2-r2 (24 Oct 2008)
+
+  24 Oct 2008; Peter Volkov <pva@gentoo.org> +fping-2.4_beta2-r2.ebuild:
+  Added suid bin on fping binary, required by many monitoring tools
+  (nagious, zabbix), bug #241930, thank Rolf Wathne and Dawid Węgliński
+  for report.
+
+  06 Sep 2007; Markus Ullmann <jokey@gentoo.org> -fping-2.4_beta2.ebuild:
+  Cleanup
+
+  20 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  20 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  fping-2.4_beta2-r1.ebuild:
+  Add ~x86-fbsd keyword as per bug #141142.
+
+  05 Mar 2006; Markus Ullmann <jokey@gentoo.org> fping-2.4_beta2.ebuild,
+  fping-2.4_beta2-r1.ebuild:
+  COPYING cleanup
+
+  05 Aug 2004; Alexander Plank <alexander@gentoo.org> fping-2.4_beta2.ebuild:
+  add macos keyword
+  31 Jul 2004; Tom Gall <tgall@gentoo.org> fping-2.4_beta2-r1.ebuild:
+  stable on ppc64, bug #57454
+
+  09 Jul 2004; Eldad Zack <eldad@gentoo.org> fping-2.4_beta2-r1.ebuild:
+  added missing IUSE
+
+  17 Feb 2004; Aron Griffis <agriffis@gentoo.org> fping-2.4_beta2-r1.ebuild:
+  stable on alpha and ia64
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*fping-2.4_beta2-r1 (23 Jul 2002)
+
+  15 Jan 2004; Guy Martin <gmsoft@gentoo.org> fping-2.4_beta2-r1.ebuild :
+  Marked stable on hppa.
+
+  Added ppc to KEYWORDS.
+
+  28 Jun 2002; Thilo Bangert <bangert@gentoo.org> :
+  moved to net-analyzer
+
+  
+  23 Jul 2002; phoen][x <phoenix@gentoo.org> :
+  Version bump - the ipv6 fping didnt work.
+  Closes bug #5347.
+
+*fping-2.4_beta2 (2 Jun 2002)
+
+  2 Jun 2002; Martin Schlemmer <azarah@gentoo.org> :
+  Version bump; move to /usr/sbin.
+
+
+*fping-2.2_beta1 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

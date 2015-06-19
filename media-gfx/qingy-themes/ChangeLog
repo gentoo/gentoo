@@ -1,0 +1,32 @@
+# ChangeLog for media-gfx/qingy-themes
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/qingy-themes/ChangeLog,v 1.8 2013/02/02 12:05:12 pacho Exp $
+
+  02 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup up due #48914
+
+  25 Nov 2009; Markus Meier <maekke@gentoo.org>
+  qingy-themes-20050816.ebuild:
+  amd64 stable, bug #286646
+
+  08 Nov 2009; nixnut <nixnut@gentoo.org> qingy-themes-20050816.ebuild:
+  ppc stable #286646
+
+  06 Oct 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  qingy-themes-20050816.ebuild:
+  Added ~ppc, bug #194517
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  11 May 2006; Michele Noberasco <s4t4n@gentoo.org> qingy-themes-20050816.ebuild:
+  Added ~amd64 keyword. Fixes bug #130177.
+
+  24 Aug 2005; Michele Noberasco <s4t4n@gentoo.org> qingy-themes-20050816.ebuild:
+  Change chown line to root:0 instead of root:root, closing #103563.
+  Stable for x86.
+
+*qingy-themes-20050816 (16 Aug 2005)
+
+  16 Aug 2005; Michele Noberasco <s4t4n@gentoo.org> qingy-themes-20050816.ebuild:
+  Initial commit, closes bug #97663, submitted by Maxwell Grender-Jones.

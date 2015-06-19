@@ -1,0 +1,24 @@
+# ChangeLog for net-misc/openssh-blacklist
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/openssh-blacklist/ChangeLog,v 1.5 2010/12/04 12:50:29 phajdan.jr Exp $
+
+  04 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  openssh-blacklist-0.4.1.ebuild:
+  x86 stable wrt bug #347225
+
+  01 Dec 2010; Dawid Węgliński <cla@gentoo.org>
+  openssh-blacklist-0.4.1.ebuild:
+  Stable for amd64 (bug #347225)
+
+  30 Nov 2010; Jeroen Roovers <jer@gentoo.org> openssh-blacklist-0.4.1.ebuild:
+  Stable for HPPA (bug #347225).
+
+  15 Jul 2008; Jeroen Roovers <jer@gentoo.org>
+  openssh-blacklist-0.4.1.ebuild:
+  Marked ~hppa too.
+
+*openssh-blacklist-0.4.1 (31 May 2008)
+
+  31 May 2008; Mike Frysinger <vapier@gentoo.org> +files/blacklist-encode.c,
+  +metadata.xml, +openssh-blacklist-0.4.1.ebuild:
+  Initial import #221759.

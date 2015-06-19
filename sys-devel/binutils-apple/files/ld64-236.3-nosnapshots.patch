@@ -1,0 +1,644 @@
+Allow to disable snapshot support because of missing Block API on OS X < 10.6.
+
+--- ld64-236.3/src/ld/ld.cpp.orig	2015-01-16 14:49:49.000000000 -0800
++++ ld64-236.3/src/ld/ld.cpp	2015-01-16 14:50:42.000000000 -0800
+@@ -1072,11 +1072,13 @@
+ // implement assert() function to print out a backtrace before aborting
+ void __assert_rtn(const char* func, const char* file, int line, const char* failedexpr)
+ {
++#ifdef SUPPORT_SNAPSHOTS
+     Snapshot *snapshot = Snapshot::globalSnapshot;
+     
+     snapshot->setSnapshotMode(Snapshot::SNAPSHOT_DEBUG);
+     snapshot->createSnapshot();
+ 	snapshot->recordAssertionMessage("Assertion failed: (%s), function %s, file %s, line %d.\n", failedexpr, func, file, line);
++#endif
+ 
+ 	void* callStack[128];
+ 	int depth = ::backtrace(callStack, 128);
+@@ -1094,9 +1096,13 @@
+ 		}
+ 		long offset = (uintptr_t)callStack[i] - (uintptr_t)info.dli_saddr;
+ 		fprintf(stderr, "%d  %p  %s + %ld\n", i, callStack[i], symboName, offset);
++#ifdef SUPPORT_SNAPSHOTS
+ 		snapshot->recordAssertionMessage("%d  %p  %s + %ld\n", i, callStack[i], symboName, offset);
++#endif
+ 	}
++#ifdef SUPPORT_SNAPSHOTS
+     fprintf(stderr, "A linker snapshot was created at:\n\t%s\n", snapshot->rootDir());
++#endif
+ 	fprintf(stderr, "ld: Assertion failed: (%s), function %s, file %s, line %d.\n", failedexpr, func, file, line);
+ 	exit(1);
+ }
+--- ld64-236.3/src/ld/Options.cpp.orig	2015-01-16 14:49:49.000000000 -0800
++++ ld64-236.3/src/ld/Options.cpp	2015-01-16 14:50:42.000000000 -0800
+@@ -182,7 +182,11 @@
+ 	  fGenerateDtraceDOF(true), fAllowBranchIslands(true),
+ 	  fDebugInfoStripping(kDebugInfoMinimal), fTraceOutputFile(NULL), 
+ 	  fMacVersionMin(ld::macVersionUnset), fIOSVersionMin(ld::iOSVersionUnset), 
+-	  fSaveTempFiles(false), fSnapshotRequested(false), fPipelineFifo(NULL), 
++	  fSaveTempFiles(false),
++#ifdef SUPPORT_SNAPSHOTS
++	  fSnapshotRequested(false),
++#endif
++	  fPipelineFifo(NULL), 
+ 	  fDependencyInfoPath(NULL), fDependencyFileDescriptor(-1)
+ {
+ 	this->checkForClassic(argc, argv);
+@@ -577,7 +581,9 @@
+ 					}
+ 					break;
+ 			}
++#ifdef SUPPORT_SNAPSHOTS
+ 			fLinkSnapshot.recordArch(fArchitectureName);
++#endif
+ 			// only use compressed LINKEDIT for:
+ 			//			Mac OS X 10.6 or later
+ 			//			iOS 3.1 or later
+@@ -1822,8 +1828,10 @@
+ //
+ void Options::parse(int argc, const char* argv[])
+ {
++#ifdef SUPPORT_SNAPSHOTS
+     // Store the original args in the link snapshot.
+     fLinkSnapshot.recordRawArgs(argc, argv);
++#endif
+     
+ 	// pass one builds search list from -L and -F options
+ 	this->buildSearchPaths(argc, argv);
+@@ -1836,17 +1844,21 @@
+ 		const char* arg = argv[i];
+ 
+ 		if ( arg[0] == '-' ) {
++#ifdef SUPPORT_SNAPSHOTS
+             // by default, copy one arg to the snapshot link command, and do no file copying
+             int snapshotArgIndex = i;
+             int snapshotArgCount = -1; // -1 means compute count based on change in index
+             int snapshotFileArgIndex = -1; // -1 means no data file parameter to arg
++#endif
+ 
+ 			// Since we don't care about the files passed, just the option names, we do this here.
+ 			if (fPrintOptions)
+ 				fprintf (stderr, "[Logging ld64 options]\t%s\n", arg);
+ 
+ 			if ( (arg[1] == 'L') || (arg[1] == 'F') ) {
++#ifdef SUPPORT_SNAPSHOTS
+                 snapshotArgCount = 0; // stripped out of link snapshot
++#endif
+ 				if (arg[2] == '\0')
+ 					++i;
+ 				// previously handled by buildSearchPaths()
+@@ -1893,12 +1905,16 @@
+ 				fOutputKind = kKextBundle;
+ 			}
+ 			else if ( strcmp(arg, "-o") == 0 ) {
+-                snapshotArgCount = 0;
+ 				fOutputFile = argv[++i];
++#ifdef SUPPORT_SNAPSHOTS
++                snapshotArgCount = 0;
+                 fLinkSnapshot.setSnapshotName(fOutputFile);
++#endif
+ 			}
+ 			else if ( strncmp(arg, "-lazy-l", 7) == 0 ) {
++#ifdef SUPPORT_SNAPSHOTS
+                 snapshotArgCount = 0;
++#endif
+ 				FileInfo info = findLibrary(&arg[7], true);
+ 				info.options.fLazyLoad = true;
+ 				info.ordinal = ld::File::Ordinal::makeArgOrdinal((uint16_t)i);
+@@ -1906,13 +1922,17 @@
+ 				fUsingLazyDylibLinking = true;
+ 			}
+ 			else if ( strcmp(arg, "-lto_library") == 0 ) {
++#ifdef SUPPORT_SNAPSHOTS
+                 snapshotFileArgIndex = 1;
++#endif
+ 				fOverridePathlibLTO = argv[++i];
+ 				if ( fOverridePathlibLTO == NULL )
+ 					throw "missing argument to -lto_library";
+ 			}
+ 			else if ( (arg[1] == 'l') && (strncmp(arg,"-lazy_",6) !=0) ) {
++#ifdef SUPPORT_SNAPSHOTS
+                 snapshotArgCount = 0;
++#endif
+ 				FileInfo info = findLibrary(&arg[2]);
+ 				info.ordinal = ld::File::Ordinal::makeArgOrdinal((uint16_t)i);
+ 				addLibrary(info);
+@@ -1920,8 +1940,10 @@
+ 			// This causes a dylib to be weakly bound at
+ 			// link time.  This corresponds to weak_import.
+ 			else if ( strncmp(arg, "-weak-l", 7) == 0 ) {
++#ifdef SUPPORT_SNAPSHOTS
+                 // SNAPSHOT FIXME: what should we do for link snapshots? (ignore for now)
+                 snapshotArgCount = 0;
++#endif
+ 				FileInfo info = findLibrary(&arg[7]);
+ 				info.options.fWeakImport = true;
+ 				info.ordinal = ld::File::Ordinal::makeArgOrdinal((uint16_t)i);
+@@ -1979,12 +2001,16 @@
+ 			else if ( strcmp(arg, "-sectorder") == 0 ) {
+ 				 if ( (argv[i+1]==NULL) || (argv[i+2]==NULL) || (argv[i+3]==NULL) )
+ 					throw "-sectorder missing <segment> <section> <file-path>";
++#ifdef SUPPORT_SNAPSHOTS
+                 snapshotFileArgIndex = 3;
++#endif
+ 				parseSectionOrderFile(argv[i+1], argv[i+2], argv[i+3]);
+ 				i += 3;
+ 			}
+ 			else if ( strcmp(arg, "-order_file") == 0 ) {
++#ifdef SUPPORT_SNAPSHOTS
+                 snapshotFileArgIndex = 1;
++#endif
+ 				parseOrderFile(argv[++i], false);
+ 			}
+ 			else if ( strcmp(arg, "-order_file_statistics") == 0 ) {
+@@ -1995,7 +2021,9 @@
+ 			else if ( (strcmp(arg, "-sectcreate") == 0) || (strcmp(arg, "-segcreate") == 0) ) {
+ 				 if ( (argv[i+1]==NULL) || (argv[i+2]==NULL) || (argv[i+3]==NULL) )
+ 					throw "-sectcreate missing <segment> <section> <file-path>";
++#ifdef SUPPORT_SNAPSHOTS
+                 snapshotFileArgIndex = 3;
++#endif
+ 				addSection(argv[i+1], argv[i+2], argv[i+3]);
+ 				i += 3;
+ 			}
+@@ -2024,7 +2052,9 @@
+ 			}
+ 			// Same as -@ from the FSF linker.
+ 			else if ( strcmp(arg, "-filelist") == 0 ) {
++#ifdef SUPPORT_SNAPSHOTS
+                  snapshotArgCount = 0;
++#endif
+ 				 const char* path = argv[++i];
+ 				 if ( (path == NULL) || (path[0] == '-') )
+ 					throw "-filelist missing <path>";
+@@ -2051,7 +2081,9 @@
+ 				}
+ 			}
+ 			else if ( strcmp(arg, "-interposable_list") == 0 ) {
++#ifdef SUPPORT_SNAPSHOTS
+                 snapshotFileArgIndex = 1;
++#endif
+ 				fInterposeMode = kInterposeSome;
+ 				loadExportFile(argv[++i], "-interposable_list", fInterposeList);
+ 			}
+@@ -2060,14 +2092,18 @@
+ 				fInterposeMode = kInterposeNone;
+ 			}
+ 			else if ( strcmp(arg, "-exported_symbols_list") == 0 ) {
++#ifdef SUPPORT_SNAPSHOTS
+                 snapshotFileArgIndex = 1;
++#endif
+ 				if ( fExportMode == kDontExportSome )
+ 					throw "can't use -exported_symbols_list and -unexported_symbols_list";
+ 				fExportMode = kExportSome;
+ 				loadExportFile(argv[++i], "-exported_symbols_list", fExportSymbols);
+ 			}
+ 			else if ( strcmp(arg, "-unexported_symbols_list") == 0 ) {
++#ifdef SUPPORT_SNAPSHOTS
+                 snapshotFileArgIndex = 1;
++#endif
+ 				if ( fExportMode == kExportSome )
+ 					throw "can't use -unexported_symbols_list and -exported_symbols_list";
+ 				fExportMode = kDontExportSome;
+@@ -2086,14 +2122,18 @@
+ 				fDontExportSymbols.insert(argv[++i]);
+ 			}
+ 			else if ( strcmp(arg, "-non_global_symbols_no_strip_list") == 0 ) {
++#ifdef SUPPORT_SNAPSHOTS
+                 snapshotFileArgIndex = 1;
++#endif
+ 				if ( fLocalSymbolHandling == kLocalSymbolsSelectiveExclude )
+ 					throw "can't use -non_global_symbols_no_strip_list and -non_global_symbols_strip_list";
+ 				fLocalSymbolHandling = kLocalSymbolsSelectiveInclude;
+ 				loadExportFile(argv[++i], "-non_global_symbols_no_strip_list", fLocalSymbolsIncluded);
+ 			}
+ 			else if ( strcmp(arg, "-non_global_symbols_strip_list") == 0 ) {
++#ifdef SUPPORT_SNAPSHOTS
+                 snapshotFileArgIndex = 1;
++#endif
+ 				if ( fLocalSymbolHandling == kLocalSymbolsSelectiveInclude )
+ 					throw "can't use -non_global_symbols_no_strip_list and -non_global_symbols_strip_list";
+ 				fLocalSymbolHandling = kLocalSymbolsSelectiveExclude;
+@@ -2109,16 +2149,20 @@
+ 			}
+ 			// Similar to -weak-l but uses the absolute path name to the library.
+ 			else if ( strcmp(arg, "-weak_library") == 0 ) {
++#ifdef SUPPORT_SNAPSHOTS
+                 // SNAPSHOT FIXME: what should we do for link snapshots? (ignore for now)
+                 snapshotArgCount = 0;
++#endif
+ 				FileInfo info = findFile(argv[++i]);
+ 				info.options.fWeakImport = true;
+ 				info.ordinal = ld::File::Ordinal::makeArgOrdinal((uint16_t)i);
+ 				addLibrary(info);
+ 			}
+ 			else if ( strcmp(arg, "-lazy_library") == 0 ) {
++#ifdef SUPPORT_SNAPSHOTS
+                 // SNAPSHOT FIXME: what should we do for link snapshots? (ignore for now)
+                 snapshotArgCount = 0;
++#endif
+ 				FileInfo info = findFile(argv[++i]);
+ 				info.options.fLazyLoad = true;
+ 				info.ordinal = ld::File::Ordinal::makeArgOrdinal((uint16_t)i);
+@@ -2126,22 +2170,28 @@
+ 				fUsingLazyDylibLinking = true;
+ 			}
+ 			else if ( strcmp(arg, "-framework") == 0 ) {
++#ifdef SUPPORT_SNAPSHOTS
+                 snapshotArgCount = 0;
++#endif
+ 				FileInfo info = findFramework(argv[++i]);
+ 				info.ordinal = ld::File::Ordinal::makeArgOrdinal((uint16_t)i);
+ 				addLibrary(info);
+ 			}
+ 			else if ( strcmp(arg, "-weak_framework") == 0 ) {
++#ifdef SUPPORT_SNAPSHOTS
+                 // SNAPSHOT FIXME: what should we do for link snapshots? (ignore for now)
+                 snapshotArgCount = 0;
++#endif
+ 				FileInfo info = findFramework(argv[++i]);
+ 				info.options.fWeakImport = true;
+ 				info.ordinal = ld::File::Ordinal::makeArgOrdinal((uint16_t)i);
+ 				addLibrary(info);
+ 			}
+ 			else if ( strcmp(arg, "-lazy_framework") == 0 ) {
++#ifdef SUPPORT_SNAPSHOTS
+                 // SNAPSHOT FIXME: what should we do for link snapshots? (ignore for now)
+                 snapshotArgCount = 0;
++#endif
+ 				FileInfo info = findFramework(argv[++i]);
+ 				info.options.fLazyLoad = true;
+ 				info.ordinal = ld::File::Ordinal::makeArgOrdinal((uint16_t)i);
+@@ -2219,8 +2269,10 @@
+ 			// This should probably be deprecated when we respect -L and -F
+ 			// when searching for libraries.
+ 			else if ( strcmp(arg, "-dylib_file") == 0 ) {
++#ifdef SUPPORT_SNAPSHOTS
+                 // ignore for snapshot because a stub dylib will be created in the snapshot
+                  snapshotArgCount = 0;
++#endif
+ 				 addDylibOverride(argv[++i]);
+ 			}
+ 			// What to expand @executable_path to if found in dependent dylibs
+@@ -2277,7 +2329,9 @@
+ 			}
+ 			// ??? Deprecate when we get rid of basing at build time.
+ 			else if ( strcmp(arg, "-seg_addr_table") == 0 ) {
++#ifdef SUPPORT_SNAPSHOTS
+                 snapshotFileArgIndex = 1;
++#endif
+ 				const char* name = argv[++i];
+ 				if ( name == NULL )
+ 					throw "-seg_addr_table missing argument";
+@@ -2341,7 +2395,9 @@
+ 				i += 2;
+ 			}
+ 			else if ( strcmp(arg, "-bundle_loader") == 0 ) {
++#ifdef SUPPORT_SNAPSHOTS
+                 snapshotFileArgIndex = 1;
++#endif
+ 				fBundleLoader = argv[++i];
+ 				if ( (fBundleLoader == NULL) || (fBundleLoader[0] == '-') )
+ 					throw "-bundle_loader missing <path>";
+@@ -2573,7 +2629,9 @@
+ 				// previously handled by buildSearchPaths()
+ 			}
+ 			else if ( strcmp(arg, "-syslibroot") == 0 ) {
++#ifdef SUPPORT_SNAPSHOTS
+                 snapshotArgCount = 0;
++#endif
+ 				++i;
+ 				// previously handled by buildSearchPaths()
+ 			}
+@@ -2584,7 +2642,9 @@
+ 				fUUIDMode = kUUIDRandom;
+ 			}
+ 			else if ( strcmp(arg, "-dtrace") == 0 ) {
++#ifdef SUPPORT_SNAPSHOTS
+                 snapshotFileArgIndex = 1;
++#endif
+ 				const char* name = argv[++i];
+ 				if ( name == NULL )
+ 					throw "-dtrace missing argument";
+@@ -2607,7 +2667,9 @@
+ 				fAliases.push_back(pair);
+ 			}
+ 			else if ( strcmp(arg, "-alias_list") == 0 ) {
++#ifdef SUPPORT_SNAPSHOTS
+                 snapshotFileArgIndex = 1;
++#endif
+ 				parseAliasFile(argv[++i]);
+ 			}
+ 			else if ( strcmp(arg, "-save-temps") == 0 ) {
+@@ -2638,48 +2700,60 @@
+ 				fDisablePositionIndependentExecutable = true;
+ 			}
+ 			else if ( strncmp(arg, "-reexport-l", 11) == 0 ) {
++#ifdef SUPPORT_SNAPSHOTS
+                 // SNAPSHOT FIXME: what should we do for link snapshots? (ignore for now)
+                 snapshotArgCount = 0;
++#endif
+ 				FileInfo info = findLibrary(&arg[11], true);
+ 				info.options.fReExport = true;
+ 				info.ordinal = ld::File::Ordinal::makeArgOrdinal((uint16_t)i);
+ 				addLibrary(info);
+ 			}
+ 			else if ( strcmp(arg, "-reexport_library") == 0 ) {
++#ifdef SUPPORT_SNAPSHOTS
+                 // SNAPSHOT FIXME: what should we do for link snapshots? (ignore for now)
+                 snapshotArgCount = 0;
++#endif
+ 				FileInfo info = findFile(argv[++i]);
+ 				info.options.fReExport = true;
+ 				info.ordinal = ld::File::Ordinal::makeArgOrdinal((uint16_t)i);
+ 				addLibrary(info);
+ 			}
+ 			else if ( strcmp(arg, "-reexport_framework") == 0 ) {
++#ifdef SUPPORT_SNAPSHOTS
+                 // SNAPSHOT FIXME: what should we do for link snapshots? (ignore for now)
+                 snapshotArgCount = 0;
++#endif
+ 				FileInfo info = findFramework(argv[++i]);
+ 				info.options.fReExport = true;
+ 				info.ordinal = ld::File::Ordinal::makeArgOrdinal((uint16_t)i);
+ 				addLibrary(info);
+ 			}
+ 			else if ( strncmp(arg, "-upward-l", 9) == 0 ) {
++#ifdef SUPPORT_SNAPSHOTS
+                 // SNAPSHOT FIXME: what should we do for link snapshots? (ignore for now)
+                 snapshotArgCount = 0;
++#endif
+ 				FileInfo info = findLibrary(&arg[9], true);
+ 				info.options.fUpward = true;
+ 				info.ordinal = ld::File::Ordinal::makeArgOrdinal((uint16_t)i);
+ 				addLibrary(info);
+ 			}
+ 			else if ( strcmp(arg, "-upward_library") == 0 ) {
++#ifdef SUPPORT_SNAPSHOTS
+                 // SNAPSHOT FIXME: what should we do for link snapshots? (ignore for now)
+                 snapshotArgCount = 0;
++#endif
+ 				FileInfo info = findFile(argv[++i]);
+ 				info.options.fUpward = true;
+ 				info.ordinal = ld::File::Ordinal::makeArgOrdinal((uint16_t)i);
+ 				addLibrary(info);
+ 			}
+ 			else if ( strcmp(arg, "-upward_framework") == 0 ) {
++#ifdef SUPPORT_SNAPSHOTS
+                 // SNAPSHOT FIXME: what should we do for link snapshots? (ignore for now)
+                 snapshotArgCount = 0;
++#endif
+ 				FileInfo info = findFramework(argv[++i]);
+ 				info.options.fUpward = true;
+ 				info.ordinal = ld::File::Ordinal::makeArgOrdinal((uint16_t)i);
+@@ -2733,7 +2807,9 @@
+ 				fMarkDeadStrippableDylib = true;
+ 			}
+ 			else if ( strcmp(arg, "-exported_symbols_order") == 0 ) {
++#ifdef SUPPORT_SNAPSHOTS
+                 snapshotFileArgIndex = 1;
++#endif
+ 				loadSymbolOrderFile(argv[++i], fExportSymbolsOrder);
+ 			}
+ 			else if ( strcmp(arg, "-no_compact_linkedit") == 0 ) {
+@@ -2825,11 +2901,15 @@
+ 				fObjcCategoryMerging = false;
+ 			}
+ 			else if ( strcmp(arg, "-force_symbols_weak_list") == 0 ) {
++#ifdef SUPPORT_SNAPSHOTS
+                 snapshotFileArgIndex = 1;
++#endif
+ 				loadExportFile(argv[++i], "-force_symbols_weak_list", fForceWeakSymbols);
+ 			}
+ 			else if ( strcmp(arg, "-force_symbols_not_weak_list") == 0 ) {
++#ifdef SUPPORT_SNAPSHOTS
+                 snapshotFileArgIndex = 1;
++#endif
+ 				loadExportFile(argv[++i], "-force_symbols_not_weak_list", fForceNotWeakSymbols);
+ 			}
+ 			else if ( strcmp(arg, "-force_symbol_weak") == 0 ) {
+@@ -2845,7 +2925,9 @@
+ 				fForceNotWeakSymbols.insert(symbol);
+ 			}
+ 			else if ( strcmp(arg, "-reexported_symbols_list") == 0 ) {
++#ifdef SUPPORT_SNAPSHOTS
+                 snapshotFileArgIndex = 1;
++#endif
+ 				if ( fExportMode == kExportSome )
+ 					throw "can't use -exported_symbols_list and -reexported_symbols_list";
+ 				loadExportFile(argv[++i], "-reexported_symbols_list", fReExportSymbols);
+@@ -2861,6 +2943,7 @@
+ 			else if ( strcmp(arg, "-page_align_data_atoms") == 0 ) {
+ 				fPageAlignDataAtoms = true;
+ 			} 
++#ifdef SUPPORT_SNAPSHOTS
+ 			else if (strcmp(arg, "-debug_snapshot") == 0) {
+                 fLinkSnapshot.setSnapshotMode(Snapshot::SNAPSHOT_DEBUG);
+                 fSnapshotRequested = true;
+@@ -2873,6 +2956,7 @@
+ 				fLinkSnapshot.setSnapshotPath(path);
+ 				fSnapshotRequested = true;
+             }
++#endif
+ 			else if ( strcmp(arg, "-new_main") == 0 ) {
+ 				fEntryPointLoadCommandForceOn = true;
+ 			}
+@@ -2914,7 +2998,9 @@
+ 				fExportDynamic = true;
+ 			}
+ 			else if ( strcmp(arg, "-force_symbols_coalesce_list") == 0 ) {
++#ifdef SUPPORT_SNAPSHOTS
+                 snapshotFileArgIndex = 1;
++#endif
+ 				loadExportFile(argv[++i], "-force_symbols_coalesce_list", fForceCoalesceSymbols);
+ 			}
+ 			else if ( strcmp(arg, "-add_linker_option") == 0 ) {
+@@ -2984,10 +3070,12 @@
+ 				throwf("unknown option: %s", arg);
+ 			}
+             
++#ifdef SUPPORT_SNAPSHOTS
+             if (snapshotArgCount == -1)
+                 snapshotArgCount = i-snapshotArgIndex+1;
+             if (snapshotArgCount > 0)
+                 fLinkSnapshot.addSnapshotLinkArg(snapshotArgIndex, snapshotArgCount, snapshotFileArgIndex);
++#endif
+ 		}
+ 		else {
+ 			FileInfo info = findFile(arg);
+@@ -3006,8 +3096,10 @@
+ 		addLibrary(info);
+ 	}
+     
++#ifdef SUPPORT_SNAPSHOTS
+     if (fSnapshotRequested)
+         fLinkSnapshot.createSnapshot();
++#endif
+ }
+ 
+ 
+@@ -3270,6 +3362,7 @@
+ 	if ( customDyldPath != NULL ) 
+ 		fDyldInstallPath = customDyldPath;
+     
++#ifdef SUPPORT_SNAPSHOTS
+     const char* debugArchivePath = getenv("LD_DEBUG_SNAPSHOT");
+     if (debugArchivePath != NULL) {
+         fLinkSnapshot.setSnapshotMode(Snapshot::SNAPSHOT_DEBUG);
+@@ -3277,6 +3370,7 @@
+             fLinkSnapshot.setSnapshotPath(debugArchivePath);
+         fSnapshotRequested = true;
+     }
++#endif
+ 
+     const char* pipeFdString = getenv("LD_PIPELINE_FIFO");
+     if (pipeFdString != NULL) {
+@@ -4133,7 +4227,9 @@
+ 			if ( strcmp(&lastSlash[1], subUmbrella) == 0 ) {
+ 				info.options.fReExport = true;
+ 				found = true;
++#ifdef SUPPORT_SNAPSHOTS
+                 fLinkSnapshot.recordSubUmbrella(info.path);
++#endif
+ 				break;
+ 			}
+ 		}
+@@ -4156,7 +4252,9 @@
+ 			if ( strncmp(&lastSlash[1], subLibrary, dot-lastSlash-1) == 0 ) {
+ 				info.options.fReExport = true;
+ 				found = true;
++#ifdef SUPPORT_SNAPSHOTS
+                 fLinkSnapshot.recordSubLibrary(info.path);
++#endif
+ 				break;
+ 			}
+ 		}
+--- ld64-236.3/src/ld/Options.h.orig	2015-01-16 14:49:49.000000000 -0800
++++ ld64-236.3/src/ld/Options.h	2015-01-16 14:50:42.000000000 -0800
+@@ -48,7 +48,9 @@
+ extern void throwf (const char* format, ...) __attribute__ ((noreturn,format(printf, 1, 2)));
+ extern void warning(const char* format, ...) __attribute__((format(printf, 1, 2)));
+ 
++#ifdef SUPPORT_SNAPSHOTS
+ class Snapshot;
++#endif
+ 
+ class LibraryOptions
+ {
+@@ -362,7 +364,9 @@
+ 	bool						forceWeakNonWildCard(const char* symbolName) const;
+ 	bool						forceNotWeakNonWildcard(const char* symbolName) const;
+ 	bool						forceCoalesce(const char* symbolName) const;
++#ifdef SUPPORT_SNAPSHOTS
+     Snapshot&                   snapshot() const { return fLinkSnapshot; }
++#endif
+ 	bool						errorBecauseOfWarnings() const;
+ 	bool						needsThreadLoadCommand() const { return fNeedsThreadLoadCommand; }
+ 	bool						needsEntryPointLoadCommand() const { return fEntryPointLoadCommand; }
+@@ -640,8 +644,10 @@
+ 	std::vector< std::vector<const char*> > fLinkerOptions;
+ 	std::vector<SectionRename>			fSectionRenames;
+ 	bool								fSaveTempFiles;
++#ifdef SUPPORT_SNAPSHOTS
+     mutable Snapshot					fLinkSnapshot;
+     bool								fSnapshotRequested;
++#endif
+     const char*							fPipelineFifo;
+ 	const char*							fDependencyInfoPath;
+ 	mutable int							fDependencyFileDescriptor;
+--- ld64-236.3/src/ld/Snapshot.cpp.orig	2015-01-16 14:51:58.000000000 -0800
++++ ld64-236.3/src/ld/Snapshot.cpp	2015-01-16 14:50:42.000000000 -0800
+@@ -6,6 +6,9 @@
+ //  Copyright (c) 2011 Apple Inc. All rights reserved.
+ //
+ 
++#include "Snapshot.h"
++
++#ifdef SUPPORT_SNAPSHOTS
+ #include <string.h>
+ #include <unistd.h>
+ #include <stdio.h>
+@@ -17,7 +20,6 @@
+ #include <time.h>
+ #include <Block.h>
+ 
+-#include "Snapshot.h"
+ #include "Options.h"
+ 
+ #include "compile_stubs.h"
+@@ -538,3 +538,5 @@
+         }    
+     }
+ }
++
++#endif /* SUPPORT_SNAPSHOT */
+--- ld64-236.3/src/ld/Snapshot.h.orig	2015-01-23 07:59:55.000000000 +0100
++++ ld64-236.3/src/ld/Snapshot.h	2015-01-23 07:58:14.000000000 +0100
+@@ -8,6 +8,8 @@
+ 
+ #ifndef ld64_Snapshot_h
+ #define ld64_Snapshot_h
++
++#ifdef SUPPORT_SNAPSHOTS
+ #include <stdint.h>
+ #include <string.h>
+ #include <map>
+@@ -151,3 +153,5 @@
+ };
+ 
+ #endif
++
++#endif
+--- ld64-236.3/src/ld/InputFiles.cpp.orig	2015-01-16 14:54:33.000000000 -0800
++++ ld64-236.3/src/ld/InputFiles.cpp	2015-01-16 14:55:37.000000000 -0800
+@@ -1101,7 +1101,9 @@
+ 			case ld::File::Reloc:
+ 			{
+ 				ld::relocatable::File* reloc = (ld::relocatable::File*)file;
++#ifdef SUPPORT_SNAPSHOTS
+ 				_options.snapshot().recordObjectFile(reloc->path());
++#endif
+ 				if ( _options.dumpDependencyInfo() )
+ 					_options.dumpDependency(Options::depObjectFile, reloc->path());
+ 			}
+@@ -1201,7 +1203,9 @@
+                 if ( dylibFile->justInTimeforEachAtom(name, handler) ) {
+                     // we found a definition in this dylib
+                     // done, unless it is a weak definition in which case we keep searching
++#ifdef SUPPORT_SNAPSHOTS
+                     _options.snapshot().recordDylibSymbol(dylibFile, name);
++#endif
+                     if ( !dylibFile->hasWeakExternals() || !dylibFile->hasWeakDefinition(name)) {
+                         return true;
+                     }
+@@ -1215,7 +1219,9 @@
+                     if ( archiveFile->justInTimeDataOnlyforEachAtom(name, handler) ) {
+                         if ( _options.traceArchives() ) 
+                             logArchive(archiveFile);
++#ifdef SUPPORT_SNAPSHOTS
+                         _options.snapshot().recordArchive(archiveFile->path());
++#endif
+                         // found data definition in static library, done
+                        return true;
+                     }
+@@ -1224,7 +1230,9 @@
+                     if ( archiveFile->justInTimeforEachAtom(name, handler) ) {
+                         if ( _options.traceArchives() ) 
+                             logArchive(archiveFile);
++#ifdef SUPPORT_SNAPSHOTS
+                         _options.snapshot().recordArchive(archiveFile->path());
++#endif
+                         // found definition in static library, done
+                         return true;
+                     }
+@@ -1251,7 +1259,9 @@
+ 				if ( dylibFile->justInTimeforEachAtom(name, handler) ) {
+ 					// we found a definition in this dylib
+ 					// done, unless it is a weak definition in which case we keep searching
++#ifdef SUPPORT_SNAPSHOTS
+                     _options.snapshot().recordDylibSymbol(dylibFile, name);
++#endif
+ 					if ( !dylibFile->hasWeakExternals() || !dylibFile->hasWeakDefinition(name)) {
+ 						return true;
+                     }

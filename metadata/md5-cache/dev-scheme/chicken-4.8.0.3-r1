@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=sys-apps/texinfo emacs? ( virtual/emacs )
+DESCRIPTION=Chicken is a Scheme interpreter and native Scheme to C compiler
+EAPI=3
+HOMEPAGE=http://www.call-cc.org/
+IUSE=emacs parallel-build doc
+KEYWORDS=alpha amd64 ppc ppc64 x86
+LICENSE=BSD
+RDEPEND=emacs? ( virtual/emacs app-emacs/scheme-complete )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://code.call-cc.org/releases/4.8.0/chicken-4.8.0.3.tar.gz mirror://gentoo/chicken-4.8.0.3-cve-updates.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=6d4f832623e5e17fca6b2cf85d5c5b7e

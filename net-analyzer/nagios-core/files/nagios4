@@ -1,0 +1,52 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nagios-core/files/nagios4,v 1.1 2014/11/22 21:29:34 mjo Exp $
+
+extra_commands="checkconfig"
+extra_started_commands="reload"
+
+nagios_config="/etc/nagios/nagios.cfg"
+nagios_cmdfile="/var/nagios/rw/nagios.cmd"
+
+command="/usr/sbin/nagios"
+command_args="-d ${nagios_config}"
+pidfile="/var/nagios/nagios.lock"
+start_stop_daemon_args="-e HOME=/var/nagios/home"
+
+depend(){
+	need net
+	use dns logger firewall
+	after mysql postgresql
+}
+
+reload(){
+	checkconfig || return 1
+	ebegin "Reloading configuration"
+	start-stop-daemon --signal HUP --pidfile ${pidfile}
+	eend $?
+}
+
+checkconfig(){
+	ebegin "Verifying config files"
+
+	# Silent Check
+	/usr/sbin/nagios -v ${nagios_config} > /dev/null 2>&1 && return 0
+
+	# Now we know there's problem - run again and display errors
+	/usr/sbin/nagios -v ${nagios_config}
+	eend $? "Configuration Error. Please fix your config file."
+}
+
+start_pre() {
+	checkconfig || return 1
+
+	touch /var/nagios/nagios.log /var/nagios/status.sav
+	chown nagios:nagios /var/nagios/nagios.log /var/nagios/status.sav
+	rm -f ${nagios_cmdfile}
+}
+
+stop_post() {
+	rm -f /var/nagios/status.log /var/nagios/nagios.tmp ${pidfile} \
+		${nagios_cmdfile}
+}

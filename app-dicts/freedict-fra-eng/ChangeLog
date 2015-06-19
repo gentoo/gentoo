@@ -1,0 +1,23 @@
+# ChangeLog for app-dicts/freedict-fra-eng
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/freedict-fra-eng/ChangeLog,v 1.7 2014/01/05 11:15:14 pacho Exp $
+
+  05 Jan 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/app-dicts-herd-is-empty-
+  td271273.html
+
+  18 Oct 2009; Mark Loeser <halcy0n@gentoo.org> freedict-fra-eng-1.0.ebuild:
+  QA fixes; IUSE is not defined
+
+  18 Mar 2009; <ricmm@gentoo.org> freedict-fra-eng-1.0.ebuild:
+  Drop down to ~mips due to unstable deps
+
+  30 Jul 2004; Anders Rune Jensen <arj@gentoo.org> +metadata.xml:
+  QA - IUSE fix and {add missing,correct} metatata.xml.
+
+*freedict-fra-eng-1.0 (17 Mar 2003)
+
+  17 Mar 2003; Seemant Kulleen <seemant@gentoo.org>
+  freedict-fra-eng-1.0.ebuild:
+  new dictionary for french to english translations, submitted by Alexis Muller
+  <Alexis.Muller@lifl.fr> in bug #17445

@@ -1,0 +1,31 @@
+From 403f38da35ab04d3997f61db3c98134fe02910d3 Mon Sep 17 00:00:00 2001
+From: pallav-fdsi <pallav@fielddiagnostics.com>
+Date: Sun, 19 Oct 2014 20:49:21 -0400
+Subject: [PATCH] BUG: invalid import checking in gbq (GH8587)
+
+---
+ pandas/io/gbq.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pandas/io/gbq.py b/pandas/io/gbq.py
+index abb743d..20c1e9f 100644
+--- a/pandas/io/gbq.py
++++ b/pandas/io/gbq.py
+@@ -43,7 +43,7 @@
+             _GOOGLE_API_CLIENT_INSTALLED=True
+             _GOOGLE_API_CLIENT_VERSION = pkg_resources.get_distribution('google-api-python-client').version
+ 
+-            if LooseVersion(_GOOGLE_API_CLIENT_VERSION >= '1.2.0'):
++            if LooseVersion(_GOOGLE_API_CLIENT_VERSION) >= '1.2.0':
+                 _GOOGLE_API_CLIENT_VALID_VERSION = True
+ 
+         except ImportError:
+@@ -56,7 +56,7 @@
+ 
+             _GOOGLE_FLAGS_VERSION = pkg_resources.get_distribution('python-gflags').version
+ 
+-            if LooseVersion(_GOOGLE_FLAGS_VERSION >= '2.0.0'):
++            if LooseVersion(_GOOGLE_FLAGS_VERSION) >= '2.0':
+                 _GOOGLE_FLAGS_VALID_VERSION = True
+ 
+         except ImportError:

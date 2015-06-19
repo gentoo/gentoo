@@ -1,0 +1,45 @@
+# ChangeLog for kde-misc/stock-quote
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/stock-quote/ChangeLog,v 1.11 2014/04/24 15:58:27 johu Exp $
+
+  24 Apr 2014; Johannes Huber <johu@gentoo.org> -stock-quote-2.1-r1.ebuild,
+  stock-quote-2.1-r2.ebuild:
+  amd64/x86 stable, remove old.
+
+*stock-quote-2.1-r2 (21 Mar 2014)
+
+  21 Mar 2014; Johannes Huber <johu@gentoo.org> +stock-quote-2.1-r2.ebuild,
+  stock-quote-2.1-r1.ebuild:
+  Revision bump to EAPI 5.
+
+  14 Nov 2012; Johannes Huber <johu@gentoo.org> -stock-quote-2.1.ebuild:
+  Remove old.
+
+  14 Nov 2012; Johannes Huber <johu@gentoo.org> stock-quote-2.1-r1.ebuild:
+  Stable for x86, wrt bug #441342
+
+  06 Nov 2012; Agostino Sarubbo <ago@gentoo.org> stock-quote-2.1-r1.ebuild:
+  Stable for amd64, wrt bug #441342
+
+  25 Aug 2012; Chris Reffett <creffett@gentoo.org> stock-quote-2.1-r1.ebuild:
+  Actually bump to EAPI 4 this time.
+
+*stock-quote-2.1-r1 (25 Aug 2012)
+
+  25 Aug 2012; Chris Reffett <creffett@gentoo.org> +stock-quote-2.1-r1.ebuild:
+  Revision bump, bump to EAPI 4 and fix .desktop validation errors
+
+  31 Jan 2011; Theo Chatzimichos <tampakrap@gentoo.org> stock-quote-2.1.ebuild:
+  EAPI3
+
+  03 Nov 2010; Markus Meier <maekke@gentoo.org> stock-quote-2.1.ebuild:
+  x86 stable, bug #342617
+
+  25 Oct 2010; Markos Chandras <hwoarang@gentoo.org> stock-quote-2.1.ebuild:
+  Stable on amd64 wrt bug #342617
+
+*stock-quote-2.1 (13 Feb 2010)
+
+  13 Feb 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +stock-quote-2.1.ebuild:
+  Initial commit.

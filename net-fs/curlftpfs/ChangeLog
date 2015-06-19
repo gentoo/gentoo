@@ -1,0 +1,143 @@
+# ChangeLog for net-fs/curlftpfs
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-fs/curlftpfs/ChangeLog,v 1.34 2015/03/28 23:13:17 mrueg Exp $
+
+  28 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -curlftpfs-0.9.2-r1.ebuild,
+  -curlftpfs-0.9.2-r2.ebuild:
+  Remove old.
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> curlftpfs-0.9.2-r3.ebuild:
+  Stable for x86, wrt bug #495842
+
+  07 Jan 2014; Chema Alonso <nimiux@gentoo.org> curlftpfs-0.9.2-r3.ebuild:
+  Stable for amd64 wrt bug #495842
+
+  29 Dec 2013; Markus Meier <maekke@gentoo.org> curlftpfs-0.9.2-r3.ebuild:
+  arm stable, bug #495842
+
+  25 Jul 2013; Sergei Trofimovich <slyfox@gentoo.org>
+  files/curlftpfs-0.9.2-fix-escaping.patch:
+  Fixed outdated comment in patch.
+
+*curlftpfs-0.9.2-r3 (25 Jul 2013)
+
+  25 Jul 2013; Sergei Trofimovich <slyfox@gentoo.org>
+  +curlftpfs-0.9.2-r3.ebuild, +files/curlftpfs-0.9.2-fix-escaping.patch:
+  Fixed pathname escaping when passed to libcurl (bug #458110 by Jaakko
+  Perttilä). Fix heavily based on patch by jomat <jomat@copete.de>.
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> curlftpfs-0.9.2-r1.ebuild:
+  Stable for amd64, wrt bug #472040
+
+  07 Jun 2013; Sergei Trofimovich <slyfox@gentoo.org> curlftpfs-0.9.2-r2.ebuild:
+  Added 'epatch_user' to ease experiments with unofficial fixes (like in bug
+  #458110 by Jaakko Perttilä).
+
+*curlftpfs-0.9.2-r2 (06 Jun 2013)
+
+  06 Jun 2013; Sergei Trofimovich <slyfox@gentoo.org>
+  +curlftpfs-0.9.2-r2.ebuild, +files/curlftpfs-0.9.2-memleak-nocache.patch,
+  +files/curlftpfs-0.9.2-memleak.patch, metadata.xml:
+  Added myself as a maintainer. Plugged known memory leaks fixed in debian and
+  fedora.
+
+  06 Jun 2013; Sergei Trofimovich <slyfox@gentoo.org> curlftpfs-0.9.2-r1.ebuild:
+  Fixed build failure against automake-1.13.1 (obsoleted AM_CONFIG_HEADER, bug
+  #469818 by Eugene Shalygin).
+
+  06 Jun 2013; Sergei Trofimovich <slyfox@gentoo.org> curlftpfs-0.9.2-r1.ebuild:
+  Added missing 'virtual/pkgconfig' depend (bug #355855 by dE and  cyberbat).
+
+  12 Feb 2013; Agostino Sarubbo <ago@gentoo.org> curlftpfs-0.9.2-r1.ebuild:
+  Stable for arm, wrt bug #258460
+
+  13 Jan 2013; Rick Farina <zerochaos@gentoo.org> curlftpfs-0.9.2-r1.ebuild:
+  adding arm keyword
+
+  29 Nov 2010; Christian Faulhammer <fauli@gentoo.org> metadata.xml:
+  drop maintainership
+
+  22 May 2010; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove genstef from metadata.xml (#66339)
+
+  08 Apr 2010; Christian Faulhammer <fauli@gentoo.org>
+  -curlftpfs-0.9.2.ebuild:
+  clean up
+
+  08 Apr 2010; Christian Faulhammer <fauli@gentoo.org>
+  curlftpfs-0.9.2-r1.ebuild:
+  stable x86
+
+  01 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  curlftpfs-0.9.2-r1.ebuild, +files/curlftpfs-0.9.2-darwin.patch:
+  Port Prefix patch and keywords over
+
+*curlftpfs-0.9.2-r1 (10 Dec 2009)
+
+  10 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  +curlftpfs-0.9.2-r1.ebuild, +files/curlftpfs-0.9.2-64bit_filesize.patch:
+  fix net write problems on 64bit architectures. Patch found by Semen
+  Maryasin <marsoft AT ya DOT ru> and reported in bug 294960
+
+  07 Mar 2009; Christian Faulhammer <fauli@gentoo.org>
+  -curlftpfs-0.9.1.ebuild:
+  clean up
+
+  07 Mar 2009; Christian Faulhammer <fauli@gentoo.org>
+  curlftpfs-0.9.2.ebuild:
+  stable x86, bug 258460
+
+  06 Mar 2009; Christian Faulhammer <fauli@gentoo.org>
+  curlftpfs-0.9.2.ebuild:
+  disable tests for bug 258460, set RDEPEND explicitely
+
+  10 Jan 2009; Christian Faulhammer <fauli@gentoo.org> metadata.xml:
+  add myself as maintainer
+
+*curlftpfs-0.9.2 (10 Jan 2009)
+
+  10 Jan 2009; Christian Faulhammer <fauli@gentoo.org>
+  +curlftpfs-0.9.2.ebuild:
+  version bump, fixes bug 223239 and 245465
+
+  24 Jun 2008; Santiago M. Mola <coldwind@gentoo.org>
+  curlftpfs-0.9.1.ebuild:
+  amd64 stable wrt bug #227737.
+
+  18 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  curlftpfs-0.9.1.ebuild:
+  stable x86, bug 227737
+
+  21 Jan 2008; Stefan Schweizer <genstef@gentoo.org> curlftpfs-0.9.1.ebuild:
+  fix depend because it crashes with old curl, bug 203230
+
+*curlftpfs-0.9.1 (08 Apr 2007)
+
+  08 Apr 2007; Stefan Schweizer <genstef@gentoo.org> -curlftpfs-0.9.ebuild,
+  +curlftpfs-0.9.1.ebuild:
+  Version bump thanks to Krzysztof Kozlowski
+  <krzysztof.kozlowski@kozik.net.pl> in bug 173732
+
+  11 Feb 2007; <genstef@gentoo.org> curlftpfs-0.9.ebuild:
+  Fix to depend on a curl version that works more reliable thanks to Krzysztof
+  Kozlowski <krzysztof.kozlowski@kozik.net.pl> in bug 163331
+
+*curlftpfs-0.9 (10 Nov 2006)
+
+  10 Nov 2006; Stefan Schweizer <genstef@gentoo.org> -files/fuse-2.6.diff,
+  -curlftpfs-0.8.ebuild, +curlftpfs-0.9.ebuild:
+  Version bump thanks to Krzysztof Kozlowski
+  <krzysztof.kozlowski@kozik.net.pl> in bug 154689
+
+  02 Oct 2006; Stefan Schweizer <genstef@gentoo.org> +files/fuse-2.6.diff,
+  curlftpfs-0.8.ebuild:
+  Add patch to compile with new fuse thanks to Elias Probst
+  <elias.probst@gmx.de> in bug 149003
+
+  30 Aug 2006; <blubb@gentoo.org> curlftpfs-0.8.ebuild:
+  marked ~amd64
+
+*curlftpfs-0.8 (27 May 2006)
+
+  27 May 2006; Stefan Schweizer <genstef@gentoo.org> +metadata.xml, +curlftpfs-0.8.ebuild:
+  New ebuild, a good ftpfs for fuse

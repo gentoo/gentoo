@@ -1,0 +1,29 @@
+From 2dbcc7408ff1104b84a982a5cde77ef11bc0dd93 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Wed, 4 Mar 2015 23:07:36 +0000
+Subject: [PATCH] Use the real cglib, not the repackaged version
+
+---
+ .../java/com/fasterxml/jackson/databind/interop/TestHibernate.java  | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/test/java/com/fasterxml/jackson/databind/interop/TestHibernate.java b/src/test/java/com/fasterxml/jackson/databind/interop/TestHibernate.java
+index 48dc573..b7d89b6 100644
+--- a/src/test/java/com/fasterxml/jackson/databind/interop/TestHibernate.java
++++ b/src/test/java/com/fasterxml/jackson/databind/interop/TestHibernate.java
+@@ -3,9 +3,9 @@ package com.fasterxml.jackson.databind.interop;
+ import java.lang.reflect.Method;
+ import java.util.*;
+ 
+-import org.hibernate.repackage.cglib.proxy.Enhancer;
+-import org.hibernate.repackage.cglib.proxy.MethodInterceptor;
+-import org.hibernate.repackage.cglib.proxy.MethodProxy;
++import net.sf.cglib.proxy.Enhancer;
++import net.sf.cglib.proxy.MethodInterceptor;
++import net.sf.cglib.proxy.MethodProxy;
+ 
+ import com.fasterxml.jackson.databind.*;
+ 
+-- 
+2.0.4
+

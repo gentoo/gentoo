@@ -1,0 +1,78 @@
+# ChangeLog for x11-plugins/wmcalc
+# Copyright 2002-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmcalc/ChangeLog,v 1.22 2015/01/13 12:41:19 voyageur Exp $
+
+*wmcalc-0.5 (13 Jan 2015)
+
+  13 Jan 2015; Bernard Cafarelli <voyageur@gentoo.org> +wmcalc-0.5.ebuild:
+  Version bump with new homepage, ebuild cleanup
+
+  15 Feb 2012; Bernard Cafarelli <voyageur@gentoo.org> wmcalc-0.4.ebuild:
+  Update HOMEPAGE and SRC_URI, thanks Lorenz in bug #394607
+
+  15 Sep 2010; Michele Noberasco <s4t4n@gentoo.org> wmcalc-0.4.ebuild:
+  Honour Gentoo LDFLAGS, see bug #337434.
+
+  25 Nov 2008; Tiago Cunha <tcunha@gentoo.org> wmcalc-0.4.ebuild:
+  stable sparc, bug 215651
+
+  06 Jan 2008; Samuli Suominen <drac@gentoo.org>
+  -files/wmcalc-0.4-Makefile.patch, wmcalc-0.4.ebuild:
+  Fix include path wrt #204553 and rewrite ebuild.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; wmcalc-0.4.ebuild:
+  Drop virtual/x11 references.
+
+  25 Oct 2006; Michele Noberasco <s4t4n@gentoo.org> wmcalc-0.4.ebuild:
+  Fixed modular X dependancies. Closes bug #150644.
+
+  24 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> wmcalc-0.4.ebuild:
+  Fixed DEPEND for modular X.
+
+  10 Nov 2005; Michele Noberasco <s4t4n@gentoo.org> wmcalc-0.4.ebuild:
+  Removed COPYING from dodoc.
+
+  23 Nov 2004; Jason Wever <weeve@gentoo.org> wmcalc-0.4.ebuild:
+  Added ~sparc keyword.
+
+  12 Nov 2004; Michele Noberasco <s4t4n@gentoo.org> wmcalc-0.4.ebuild:
+  Changed HOMEPAGE to www.dockapps.org as the original one no longer
+  exists. Changed SRC_URI to point to the gentoo mirrors...
+  wmcalc-0.4.ebuild:
+  Removed older ebuild.
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> wmcalc-0.4.ebuild:
+  Stable on amd64.
+
+  04 Sep 2004; Michele Noberasco <s4t4n@gentoo.org> wmcalc-0.4.ebuild:
+  Stable for x86.
+
+  02 Sep 2004; Tom Gall <tgall@gentoo.org> wmcalc-0.4.ebuild:
+  stable on ppc64, bug #62250
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> wmcalc-0.4.ebuild:
+  Masked wmcalc-0.4.ebuild stable for ppc
+
+*wmcalc-0.4 (15 Aug 2004)
+
+  15 Aug 2004; Michele Noberasco <s4t4n@gentoo.org> wmcalc-0.4.ebuild,
+  files/wmcalc-0.4-Makefile.patch:
+  Version bump. Add patch to honour Gentoo CFLAGS. Update HOMEPAGE
+  and SRC_URI. Closes #60366.
+
+  13 Apr 2004; Don Seiler <rizzo@gentoo.org>; wmcalc-0.3.ebuild:
+  Changed dependency to virtual/x11 to work with x11-base/xorg-x11
+
+  19 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> wmcalc-0.3.ebuild:
+  Inherit eutils.
+
+  21 Jan 2004; Brandon Hale <tseng@gentoo.org> wmcalc-0.3.ebuild:
+  Fixing some seriously sloppy behavior in the ebuild, see bug 38885.
+
+*wmcalc-0.3 (24 Oct 2002)
+
+  24 Oct 2002; Nick Hadaway <raker@gentoo.org> wmcalc-0.3.ebuild,
+  files/digest-wmcalc-0.3, wmcalc-0.3-gentoo.diff, wmcalc.man :
+  Initial ebuild.  Extra special thanks to tom@wickidpisa.com (Tom
+  Philbrick) for the start of the ebuild and some patches for 
+  config file generation.

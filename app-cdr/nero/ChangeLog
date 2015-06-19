@@ -1,0 +1,232 @@
+# ChangeLog for app-cdr/nero
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/nero/ChangeLog,v 1.53 2012/06/26 11:34:53 ssuominen Exp $
+
+  26 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> nero-4.0.0.0b.ebuild:
+  Install desktop entry for neroexpress wrt #409035. Use linux-info.eclass
+  instead of linux-mod.eclass for CONFIG_CHECK wrt #423457.
+
+  02 Dec 2011; Samuli Suominen <ssuominen@gentoo.org> nero-4.0.0.0b.ebuild:
+  Remove usage of check_license (eutils.eclass) in favour of ACCEPT_LICENSE
+  support in PM.
+
+  02 Dec 2011; Samuli Suominen <ssuominen@gentoo.org> -nero-3.5.3.1.ebuild:
+  old
+
+*nero-4.0.0.0b (07 Aug 2011)
+
+  07 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org> -nero-4.0.0.0-r1.ebuild,
+  +nero-4.0.0.0b.ebuild:
+  Version bump wrt #349594 by Martin Mokrejš <mmokrejs@fold.natur.cuni.cz>,
+  fix QA warning wrt #311025 by Doktor Notor <notordoktor@gmail.com>. Drop old
+
+*nero-4.0.0.0-r1 (23 Mar 2010)
+
+  23 Mar 2010; Steve Dibb <beandog@gentoo.org> -nero-4.0.0.0.ebuild,
+  +nero-4.0.0.0-r1.ebuild:
+  Install neroexpress, bug 293543
+
+  13 Nov 2009; Patrick Lauer <patrick@gentoo.org> nero-4.0.0.0.ebuild:
+  Fixing deps, closes #293124
+
+  23 Sep 2009; Samuli Suominen <ssuominen@gentoo.org> nero-4.0.0.0.ebuild:
+  Execute nero --perform-post-installation in pkg_postinst wrt #285803,
+  thanks to churchmice <firefoxelectric at gmail.com>.
+
+*nero-4.0.0.0 (18 Sep 2009)
+
+  18 Sep 2009; Patrick Lauer <patrick@gentoo.org> +nero-4.0.0.0.ebuild:
+  Bump to 4.0, fixes #285504
+
+  31 Aug 2009; Mike Auty <ikelos@gentoo.org> nero-3.5.2.3.ebuild,
+  nero-3.5.3.1.ebuild:
+  Making CONFIG_CHECK warn rather than die, see bug 283320.
+
+*nero-3.5.3.1 (17 Aug 2009)
+
+  17 Aug 2009; Patrick Lauer <patrick@gentoo.org> +nero-3.5.3.1.ebuild:
+  Bump to 3.5.3.1, fixes #278053
+
+  21 May 2009; Samuli Suominen <ssuominen@gentoo.org> nero-3.5.2.3.ebuild:
+  Use check_license for EULA.
+
+  08 May 2009; Samuli Suominen <ssuominen@gentoo.org> nero-3.5.2.3.ebuild:
+  Inherit linux-mod and add config check for CHR_DEV_SG wrt #242234, thanks
+  to Pacho Ramos.
+
+*nero-3.5.2.3 (26 Apr 2009)
+
+  26 Apr 2009; Patrick Lauer <patrick@gentoo.org> +nero-3.5.2.3.ebuild:
+  Bump to 3.5.3.2, fixes #262609
+
+  10 Mar 2009; Steve Dibb <beandog@gentoo.org> nero-3.5.1.0.ebuild,
+  nero-3.5.2.0.ebuild:
+  Add pango[X] rdep, bug 238512
+
+*nero-3.5.2.0 (12 Dec 2008)
+
+  12 Dec 2008; Steve Dibb <beandog@gentoo.org> +nero-3.5.2.0.ebuild:
+  Version bump, bug 249164
+
+*nero-3.5.1.0 (06 Jun 2008)
+
+  06 Jun 2008; Samuli Suominen <ssuominen@gentoo.org> +nero-3.5.1.0.ebuild:
+  Version bump for bug 224471.
+
+*nero-3.5.0.1 (13 May 2008)
+
+  13 May 2008; Samuli Suominen <ssuominen@gentoo.org> +nero-3.5.0.1.ebuild:
+  Version bump, closing bugs 214877 and 211026.
+
+*nero-3.1.1.0 (18 Feb 2008)
+
+  18 Feb 2008; Robert Buchholz <rbu@gentoo.org> +nero-3.1.1.0.ebuild:
+  Non-maintainer version bump (bug #210395)
+
+*nero-3.0.2.1 (16 Dec 2007)
+
+  16 Dec 2007; Samuli Suominen <ssuominen@gentoo.org> +nero-3.0.2.1.ebuild:
+  Version bump wrt #198429, requested by armin76.
+
+  12 Aug 2007; Samuli Suominen <ssuominen@gentoo.org> nero-3.0.1.3.ebuild:
+  Readd AMD64 hack to make burning work again.
+
+*nero-3.0.1.3 (11 Aug 2007)
+
+  11 Aug 2007; Samuli Suominen <ssuominen@gentoo.org> +nero-3.0.1.3.ebuild:
+  Version bump.
+
+  06 Jul 2007; Samuli Suominen <ssuominen@gentoo.org> metadata.xml:
+  Removed myself from metadata.xml due to lack of interest
+
+  01 Jul 2007; Wolfram Schlich <wschlich@gentoo.org> metadata.xml:
+  Removed myself from metadata.xml due to lack of interest
+
+  30 Jun 2007; Samuli Suominen <ssuominen@gentoo.org> -files/nero.desktop,
+  -nero-2.1.0.3.ebuild, nero-3.0.0.0.ebuild:
+  Keyword for ~amd64 after testing from AMD64 Arch Testers Jonas
+  Pedersen and Kenneth Prugh. Authorized by KingTaco.
+
+  30 Jun 2007; Samuli Suominen <ssuominen@gentoo.org> nero-3.0.0.0.ebuild:
+  Add more QA_ variables for x86_64.
+
+  30 Jun 2007; Samuli Suominen <ssuominen@gentoo.org> nero-2.1.0.3.ebuild:
+  Removed stable x86 keyword from unfetchable nero-2.1.0.3 ebuild, authorized
+  by armin76.
+
+  30 Jun 2007; Samuli Suominen <ssuominen@gentoo.org> nero-3.0.0.0.ebuild:
+  Stick some QA_ variables to keep installing quiet.
+
+*nero-3.0.0.0 (29 Jun 2007)
+
+  29 Jun 2007; Samuli Suominen <ssuominen@gentoo.org> -nero-2.1.0.1.ebuild,
+  -nero-2.1.0.2.ebuild, +nero-3.0.0.0.ebuild:
+  Version bump for bug 172717.
+
+  16 Apr 2007; Raúl Porcel <armin76@gentoo.org> nero-2.1.0.3.ebuild:
+  x86 stable, since older versions are 404
+
+  12 Feb 2007; Wolfram Schlich <wschlich@gentoo.org> nero-2.1.0.2.ebuild,
+  nero-2.1.0.3.ebuild:
+  fix SRC_URI due to vanished download servers
+
+  24 Jan 2007; Marius Mauch <genone@gentoo.org> nero-2.1.0.1.ebuild,
+  nero-2.1.0.2.ebuild, nero-2.1.0.3.ebuild:
+  Replacing einfo with elog
+
+  19 Jan 2007; Andrej Kacian <ticho@gentoo.org> nero-2.1.0.2.ebuild:
+  Stable on x86, bug #162603.
+
+*nero-2.1.0.3 (18 Jan 2007)
+
+  18 Jan 2007; Wolfram Schlich <wschlich@gentoo.org> +nero-2.1.0.3.ebuild:
+  version bump
+
+*nero-2.1.0.2 (29 Sep 2006)
+
+  29 Sep 2006; Wolfram Schlich <wschlich@gentoo.org> +nero-2.1.0.2.ebuild:
+  version bump
+
+  24 Aug 2006; Wolfram Schlich <wschlich@gentoo.org> -nero-2.0.0.3b.ebuild,
+  -nero-2.0.0.3b-r2.ebuild, -nero-2.0.0.4.ebuild, -nero-2.0.0.5.ebuild,
+  -nero-2.1.0.0.ebuild, nero-2.1.0.1.ebuild:
+  remove old versions, fix (g)libc dep
+
+*nero-2.1.0.1 (01 Jul 2006)
+
+  01 Jul 2006; Wolfram Schlich <wschlich@gentoo.org> +nero-2.1.0.1.ebuild:
+  version bump
+
+*nero-2.1.0.0 (19 Jun 2006)
+
+  19 Jun 2006; Wolfram Schlich <wschlich@gentoo.org> +nero-2.1.0.0.ebuild:
+  version bump
+
+*nero-2.0.0.5 (10 Feb 2006)
+
+  10 Feb 2006; Wolfram Schlich <wschlich@gentoo.org> +nero-2.0.0.5.ebuild:
+  version bump
+
+*nero-2.0.0.4 (23 Jan 2006)
+
+  23 Jan 2006; Wolfram Schlich <wschlich@gentoo.org> +nero-2.0.0.4.ebuild:
+  version bump (closes #116373), add modular X support (closes #115987), fix
+  deps (closes #113716)
+
+  26 Dec 2005; Luca Barbato <lu_zero@gentoo.org> nero-2.0.0.3b.ebuild,
+  nero-2.0.0.3b-r2.ebuild:
+  oggvorbis Cleanup
+
+*nero-2.0.0.3b-r2 (27 Nov 2005)
+
+  27 Nov 2005; Wolfram Schlich <wschlich@gentoo.org>
+  -nero-2.0.0.3b-r1.ebuild, +nero-2.0.0.3b-r2.ebuild:
+  fix broken lib installation
+
+  26 Nov 2005; Wolfram Schlich <wschlich@gentoo.org> -nero-2.0.0.2.ebuild:
+  remove outdated version (SRC_URI no longer valid)
+
+*nero-2.0.0.3b-r1 (26 Nov 2005)
+
+  26 Nov 2005; Wolfram Schlich <wschlich@gentoo.org>
+  +nero-2.0.0.3b-r1.ebuild:
+  add multilib support (bug #110867)
+
+  22 Sep 2005; Wolfram Schlich <wschlich@gentoo.org>
+  -nero-2.0.0.0_p6.ebuild:
+  remove outdated version
+
+  22 Sep 2005; Wolfram Schlich <wschlich@gentoo.org> nero-2.0.0.2.ebuild,
+  nero-2.0.0.3b.ebuild:
+  fix gtk+ RDEPEND
+
+*nero-2.0.0.3b (22 Sep 2005)
+
+  22 Sep 2005; Wolfram Schlich <wschlich@gentoo.org> nero-2.0.0.2.ebuild,
+  +nero-2.0.0.3b.ebuild:
+  mark 2.0.0.2 stable on x86, add 2.0.0.3b archmasked
+
+  28 Aug 2005; Luis Medinas <metalgod@gentoo.org> nero-2.0.0.2.ebuild:
+  Fix build for AMD64. Closes bug #103626.
+
+*nero-2.0.0.2 (18 Aug 2005)
+
+  18 Aug 2005; Wolfram Schlich <wschlich@gentoo.org> +nero-2.0.0.2.ebuild:
+  version bump
+
+  25 Mar 2005; Wolfram Schlich <wschlich@gentoo.org> nero-2.0.0.0_p6.ebuild:
+  fix desktop entry file name
+
+  25 Mar 2005; Wolfram Schlich <wschlich@gentoo.org> +files/nero.desktop,
+  nero-2.0.0.0_p6.ebuild:
+  add desktop entry
+
+  25 Mar 2005; Wolfram Schlich <wschlich@gentoo.org> nero-2.0.0.0_p6.ebuild:
+  add mp3, oggvorbis and shorten USE flags
+
+*nero-2.0.0.0_p6 (25 Mar 2005)
+
+  25 Mar 2005; Wolfram Schlich <wschlich@gentoo.org> +metadata.xml,
+  +nero-2.0.0.0_p6.ebuild:
+  initial import
+

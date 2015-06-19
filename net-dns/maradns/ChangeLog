@@ -1,0 +1,285 @@
+# ChangeLog for net-dns/maradns
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dns/maradns/ChangeLog,v 1.64 2015/04/18 06:24:24 mr_bones_ Exp $
+
+  18 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org> -maradns-1.4.14.ebuild:
+  old
+
+  28 Feb 2014; Sergey Popov <pinkbyte@gentoo.org> -maradns-1.4.12.ebuild,
+  -maradns-2.0.06.ebuild, -files/maradns-2.0.06-build.patch,
+  -files/maradns-2.0.06-groff.patch:
+  Security cleanup, wrt bug #501686
+
+  28 Feb 2014; Sergey Popov <pinkbyte@gentoo.org> maradns-1.4.14.ebuild,
+  maradns-2.0.09.ebuild:
+  Stable on amd64 and x86, wrt bug #501686
+
+  28 Feb 2014; Mikle Kolyada <zlogene@gentoo.org> maradns-1.4.14.ebuild,
+  maradns-2.0.09.ebuild:
+  ppc stable wrt bug #501686
+
+  28 Feb 2014; Mikle Kolyada <zlogene@gentoo.org> maradns-1.4.14.ebuild:
+  Added eutils for calling epatch_user
+
+*maradns-2.0.09 (26 Feb 2014)
+*maradns-1.4.14 (26 Feb 2014)
+
+  26 Feb 2014; Sergey Popov <pinkbyte@gentoo.org> +maradns-1.4.14.ebuild,
+  +maradns-2.0.09.ebuild, +files/maradns-2.0.09-build.patch:
+  Version bump, wrt bug #501686
+
+  18 Aug 2013; Agostino Sarubbo <ago@gentoo.org> maradns-2.0.06.ebuild:
+  Stable for x86, wrt bug #480068
+
+  10 Aug 2013; Agostino Sarubbo <ago@gentoo.org> maradns-2.0.06.ebuild:
+  Stable for ppc, wrt bug #480068
+
+  07 Aug 2013; Agostino Sarubbo <ago@gentoo.org> maradns-2.0.06.ebuild:
+  Stable for amd64, wrt bug #480068
+
+  14 Feb 2013; Michał Górny <mgorny@gentoo.org> +files/maradns.service.in,
+  maradns-2.0.06.ebuild:
+  Include a systemd unit file.
+
+  03 Feb 2013; Pacho Ramos <pacho@gentoo.org> -maradns-1.4.09.ebuild,
+  -maradns-1.4.11.ebuild, metadata.xml:
+  Cleanup due #22900
+
+  11 Jul 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +files/maradns-2.0.06-build.patch, maradns-2.0.06.ebuild:
+  Use a patch to fix build makefiles, as the sed was not good enough. This
+  actually fixes both sides of bug #413989 (build failure with --as-needed and
+  missing failure to make).
+
+  14 Jun 2012; Zac Medico <zmedico@gentoo.org> maradns-1.4.09.ebuild,
+  maradns-1.4.11.ebuild, maradns-1.4.12.ebuild, maradns-2.0.06.ebuild:
+  inherit user for enewgroup and enewuser
+
+  27 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> maradns-1.4.12.ebuild:
+  x86 stable wrt bug #408883
+
+  25 Mar 2012; Brent Baude <ranger@gentoo.org> maradns-1.4.12.ebuild:
+  Marking maradns-1.4.12 ppc for bug 408883
+
+  23 Mar 2012; Agostino Sarubbo <ago@gentoo.org> maradns-1.4.12.ebuild:
+  Stable for amd64, wrt bug #408883
+
+*maradns-1.4.12 (22 Mar 2012)
+
+  22 Mar 2012; MATSUU Takuto <matsuu@gentoo.org> +maradns-1.4.12.ebuild:
+  Version bumped, bug #408883.
+
+*maradns-2.0.06 (12 Mar 2012)
+*maradns-1.4.11 (12 Mar 2012)
+
+  12 Mar 2012; Joshua Kinard <kumba@gentoo.org> -maradns-1.4.06.ebuild,
+  +maradns-1.4.11.ebuild, +maradns-2.0.06.ebuild,
+  +files/maradns-2.0.06-askmara-tcp.patch,
+  +files/maradns-2.0.06-duende-man.patch, +files/maradns-2.0.06-groff.patch,
+  +files/deadwood, +files/maradns2, +files/zoneserver2, files/maradns.rc6,
+  files/zoneserver.rc6:
+  Remove 1.4.06, and add 1.4.11. Also add 2.0.06 in, as well as several patches
+  from Debian and newer init scripts.
+
+  01 Feb 2012; Brent Baude <ranger@gentoo.org> maradns-1.4.09.ebuild:
+  Marking maradns-1.4.09 ppc for bug 397431
+
+  14 Jan 2012; Raúl Porcel <armin76@gentoo.org> maradns-1.4.06.ebuild,
+  maradns-1.4.09.ebuild:
+  Drop sparc keywords
+
+  08 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> maradns-1.4.09.ebuild:
+  x86 stable wrt bug #397431
+
+  06 Jan 2012; Agostino Sarubbo <ago@gentoo.org> maradns-1.4.09.ebuild:
+  Stable for AMD64, wrt security bug #397431
+
+*maradns-1.4.09 (05 Jan 2012)
+
+  05 Jan 2012; MATSUU Takuto <matsuu@gentoo.org> -maradns-1.4.03.ebuild,
+  -maradns-1.4.05.ebuild, maradns-1.4.06.ebuild, +maradns-1.4.09.ebuild:
+  Version bumped, bug #397431. Fixed LICENSE. Removed old versions.
+
+  12 Feb 2011; Raúl Porcel <armin76@gentoo.org> maradns-1.4.06.ebuild:
+  sparc stable wrt #352569
+
+  10 Feb 2011; Markos Chandras <hwoarang@gentoo.org> maradns-1.4.06.ebuild:
+  Stable on amd64 wrt bug #352569
+
+  30 Jan 2011; Christian Faulhammer <fauli@gentoo.org>
+  maradns-1.4.06.ebuild:
+  stable x86, security bug 352569
+
+  30 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> maradns-1.4.06.ebuild:
+  ppc stable wrt #352569
+
+*maradns-1.4.06 (30 Jan 2011)
+
+  30 Jan 2011; MATSUU Takuto <matsuu@gentoo.org> +maradns-1.4.06.ebuild,
+  -maradns-2.0.01.ebuild:
+  Version bumped. Removed 2.0.01 for security, bug #352569.
+
+*maradns-2.0.01 (24 Jan 2011)
+*maradns-1.4.05 (24 Jan 2011)
+
+  24 Jan 2011; MATSUU Takuto <matsuu@gentoo.org> -maradns-1.2.12.10.ebuild,
+  -maradns-1.3.07.09-r1.ebuild, +maradns-1.4.05.ebuild, +maradns-2.0.01.ebuild:
+  Version bumped, bug #352569. Removed old versions.
+
+  11 Aug 2010; Joseph Jezak <josejx@gentoo.org> maradns-1.4.03.ebuild:
+  Marked ppc stable for bug #329947.
+
+  07 Aug 2010; Raúl Porcel <armin76@gentoo.org> maradns-1.4.03.ebuild:
+  sparc stable wrt #329947
+
+  01 Aug 2010; Markos Chandras <hwoarang@gentoo.org> maradns-1.4.03.ebuild:
+  Respect LDFLAGS. amd64 stable wrt bug #329947
+
+  01 Aug 2010; Christian Faulhammer <fauli@gentoo.org>
+  maradns-1.4.03.ebuild:
+  stable x86, security bug 329947
+
+*maradns-1.4.03 (29 Jul 2010)
+
+  29 Jul 2010; MATSUU Takuto <matsuu@gentoo.org> -maradns-1.2.12.09.ebuild,
+  -maradns-1.3.07.08.ebuild, -maradns-1.3.07.09.ebuild,
+  +maradns-1.4.03.ebuild, files/maradns.rc6:
+  Version bumped, bug #307917, #329947. Fixed init.d handling, bug #217790.
+  Fixed CFLAGS issue, bug #240884. Removed old versions.
+
+  11 Apr 2010; <nixnut@gentoo.org> maradns-1.2.12.10.ebuild:
+  ppc stable #270908
+
+  05 Apr 2010; Raúl Porcel <armin76@gentoo.org> maradns-1.2.12.10.ebuild:
+  sparc stable wrt #270908
+
+  19 Mar 2010; Pacho Ramos <pacho@gentoo.org> maradns-1.2.12.10.ebuild:
+  amd64 stable, bug 270908
+
+  16 Mar 2010; Christian Faulhammer <fauli@gentoo.org>
+  maradns-1.2.12.10.ebuild:
+  stable x86, bug 270908
+
+*maradns-1.3.07.09-r1 (28 Dec 2008)
+
+  28 Dec 2008; MATSUU Takuto <matsuu@gentoo.org> metadata.xml,
+  +maradns-1.3.07.09-r1.ebuild:
+  Added authonly to IUSE, bug #252376. Added enewgroup maradns.
+
+*maradns-1.3.07.09 (15 Sep 2008)
+*maradns-1.2.12.10 (15 Sep 2008)
+
+  15 Sep 2008; MATSUU Takuto <matsuu@gentoo.org> -maradns-1.2.12.04.ebuild,
+  -maradns-1.2.12.05.ebuild, -maradns-1.2.12.06.ebuild,
+  +maradns-1.2.12.10.ebuild, +maradns-1.3.07.09.ebuild:
+  Version bumped, bug #237609. Removed old versions.
+
+  16 Jan 2008; Peter Weller <welp@gentoo.org> maradns-1.2.12.09.ebuild:
+  Stable on amd64; bug 204351
+
+  06 Jan 2008; Raúl Porcel <armin76@gentoo.org> maradns-1.2.12.09.ebuild:
+  sparc stable wrt security #204351
+
+  06 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  maradns-1.2.12.09.ebuild:
+  stable x86, security bug 204351
+
+  06 Jan 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  maradns-1.2.12.09.ebuild:
+  ppc stable, bug #204351
+
+*maradns-1.3.07.08 (06 Jan 2008)
+*maradns-1.2.12.09 (06 Jan 2008)
+
+  06 Jan 2008; MATSUU Takuto <matsuu@gentoo.org> files/maradns.rc6,
+  files/zoneserver.rc6, +maradns-1.2.12.09.ebuild,
+  +maradns-1.3.07.08.ebuild:
+  Version bumped. bug #204351.
+  Fixed init.d/*, bug #192328.
+
+  09 Jun 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  maradns-1.2.12.06.ebuild:
+  ppc stable, bug #181128
+
+  07 Jun 2007; Christoph Mende <angelos@gentoo.org>
+  maradns-1.2.12.06.ebuild:
+  Stable on amd64 wrt security bug 181128
+
+  07 Jun 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  maradns-1.2.12.06.ebuild:
+  Stable on sparc wrt security #181128
+
+  07 Jun 2007; Christian Faulhammer <opfer@gentoo.org>
+  maradns-1.2.12.06.ebuild:
+  stable x86, security bug 181128
+
+*maradns-1.2.12.06 (06 Jun 2007)
+
+  06 Jun 2007; MATSUU Takuto <matsuu@gentoo.org> +maradns-1.2.12.06.ebuild:
+  Version bumped, bug #181128.
+
+  07 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
+  maradns-1.2.12.04.ebuild:
+  stable amd64, bug 168034
+
+  06 Apr 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  maradns-1.2.12.04.ebuild:
+  ppc stable, bug #168034
+
+  12 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  maradns-1.2.12.04.ebuild:
+  Stable on sparc wrt #168034
+
+  23 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  maradns-1.2.12.04.ebuild:
+  stable x86; bug 168034
+
+*maradns-1.2.12.05 (22 Feb 2007)
+
+  22 Feb 2007; MATSUU Takuto <matsuu@gentoo.org> -maradns-1.2.03.3.ebuild,
+  -maradns-1.2.07.8.ebuild, +maradns-1.2.12.05.ebuild:
+  Version bumped, bug #168034.
+
+*maradns-1.2.12.04 (03 Dec 2006)
+
+  03 Dec 2006; MATSUU Takuto <matsuu@gentoo.org> files/maradns.rc6,
+  files/zoneserver.rc6, +maradns-1.2.12.04.ebuild:
+  Version bumped. Support syslog, bug #156564.
+
+*maradns-1.2.07.8 (13 Aug 2006)
+
+  13 Aug 2006; MATSUU Takuto <matsuu@gentoo.org> -maradns-1.0.27.ebuild,
+  -maradns-1.0.32.ebuild, maradns-1.2.03.3.ebuild, +maradns-1.2.07.8.ebuild:
+  Version bumped, bug 143443.
+  Removed old versions.
+  Fixed LICENSE.
+
+*maradns-1.2.03.3 (25 Feb 2006)
+
+  25 Feb 2006; MATSUU Takuto <matsuu@gentoo.org> +files/zoneserver.rc6,
+  +maradns-1.2.03.3.ebuild:
+  Version bumped, Bug 117107
+
+*maradns-1.0.32 (27 Aug 2005)
+
+  27 Aug 2005; MATSUU Takuto <matsuu@gentoo.org> maradns-1.0.27.ebuild,
+  +maradns-1.0.32.ebuild:
+  Version bumped. QA #103421.
+
+*maradns-1.0.27 (05 May 2005)
+
+  05 May 2005; MATSUU Takuto <matsuu@gentoo.org> +maradns-1.0.27.ebuild:
+  Version bump. this release fixes Unspecified Random Number Generator
+  Vulnerability, Bug 91422.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  maradns-1.0.23.ebuild:
+  virtual/glibc -> virtual/libc
+
+  23 Jun 2004; David Holm <dholm@gentoo.org> maradns-1.0.23.ebuild:
+  Added to ~ppc.
+
+*maradns-1.0.23 (23 Jun 2004)
+
+  23 Jun 2004; <matsuu@gentoo.org> +maradns-1.0.23.ebuild:
+  Initial import. Bug #54559.

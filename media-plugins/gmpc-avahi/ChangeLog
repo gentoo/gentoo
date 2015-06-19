@@ -1,0 +1,131 @@
+# ChangeLog for media-plugins/gmpc-avahi
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/gmpc-avahi/ChangeLog,v 1.32 2012/08/21 16:40:47 angelos Exp $
+
+  21 Aug 2012; Christoph Mende <angelos@gentoo.org> -gmpc-avahi-0.20.0.ebuild:
+  Remove old
+
+  21 Aug 2012; Michael Weber <xmw@gentoo.org> gmpc-avahi-11.8.16.ebuild:
+  ppc stable (381219)
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> gmpc-avahi-0.20.0.ebuild,
+  gmpc-avahi-11.8.16.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  09 Oct 2011; Markus Meier <maekke@gentoo.org> gmpc-avahi-11.8.16.ebuild:
+  x86 stable, bug #381219
+
+  25 Sep 2011; Tony Vroon <chainsaw@gentoo.org> gmpc-avahi-11.8.16.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo &
+  Elijah "Armageddon" El Lazkani in bug #381219.
+
+*gmpc-avahi-11.8.16 (20 Aug 2011)
+
+  20 Aug 2011; Christoph Mende <angelos@gentoo.org> +gmpc-avahi-11.8.16.ebuild:
+  Version bump
+
+  19 Mar 2011; Christoph Mende <angelos@gentoo.org> gmpc-avahi-0.20.0.ebuild:
+  Remove .la file
+
+  13 Mar 2011; <angelos@gentoo.org> -gmpc-avahi-0.18.0.ebuild,
+  -gmpc-avahi-0.19.0.ebuild:
+  Removed old
+
+  20 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gmpc-avahi-0.20.0.ebuild:
+  x86 stable wrt bug #325621
+
+  20 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  gmpc-avahi-0.20.0.ebuild:
+  ppc stable wrt #325621
+
+  17 Feb 2011; Markos Chandras <hwoarang@gentoo.org> gmpc-avahi-0.20.0.ebuild:
+  Stable on amd64 wrt bug #325621
+
+*gmpc-avahi-0.20.0 (24 May 2010)
+
+  24 May 2010; Christoph Mende <angelos@gentoo.org>
+  +gmpc-avahi-0.20.0.ebuild:
+  Version bump
+
+*gmpc-avahi-0.19.0 (27 Sep 2009)
+
+  27 Sep 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +gmpc-avahi-0.19.0.ebuild:
+  Version bump.
+
+  09 Aug 2009; nixnut <nixnut@gentoo.org> gmpc-avahi-0.18.0.ebuild:
+  ppc stable #272334
+
+  10 Jun 2009; Samuli Suominen <ssuominen@gentoo.org>
+  gmpc-avahi-0.18.0.ebuild:
+  amd64 stable wrt #272334
+
+  09 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  gmpc-avahi-0.18.0.ebuild:
+  stable x86, bug 272334
+
+  20 Mar 2009; Brent Baude <ranger@gentoo.org> gmpc-avahi-0.17.0.ebuild:
+  Marking gmpc-avahi-0.17.0 ppc stable for bug 259793
+
+  20 Mar 2009; Raúl Porcel <armin76@gentoo.org> gmpc-avahi-0.17.0.ebuild:
+  x86 stable wrt #259793
+
+*gmpc-avahi-0.18.0 (12 Mar 2009)
+
+  12 Mar 2009; Christoph Mende <angelos@gentoo.org>
+  +gmpc-avahi-0.18.0.ebuild:
+  Version bump
+
+  27 Feb 2009; Tiago Cunha <tcunha@gentoo.org> gmpc-avahi-0.17.0.ebuild:
+  stable amd64, bug 259793
+
+  24 Jan 2009; nixnut <nixnut@gentoo.org> gmpc-avahi-0.16.0.ebuild:
+  ppc stable #251332
+
+  04 Jan 2009; Christoph Mende <angelos@gentoo.org>
+  -gmpc-avahi-0.15.5.0.ebuild:
+  Removed old
+
+  26 Dec 2008; Christoph Mende <angelos@gentoo.org>
+  gmpc-avahi-0.17.0.ebuild:
+  Removed unneeded multilib hack
+
+*gmpc-avahi-0.17.0 (26 Dec 2008)
+
+  26 Dec 2008; Christoph Mende <angelos@gentoo.org>
+  +gmpc-avahi-0.17.0.ebuild:
+  Version bump
+
+  20 Dec 2008; nixnut <nixnut@gentoo.org> gmpc-avahi-0.16.0.ebuild:
+  ~ppc wrt bug 251332
+
+  17 Dec 2008; Markus Meier <maekke@gentoo.org> gmpc-avahi-0.16.0.ebuild:
+  amd64/x86 stable, bug #251332
+
+  24 Sep 2008; Christoph Mende <angelos@gentoo.org>
+  gmpc-avahi-0.16.0.ebuild:
+  Fix multilib paths
+
+*gmpc-avahi-0.16.0 (24 Sep 2008)
+
+  24 Sep 2008; Christoph Mende <angelos@gentoo.org>
+  +gmpc-avahi-0.16.0.ebuild:
+  Version bump
+
+  03 Mar 2008; <cla@gentoo.org> gmpc-avahi-0.15.5.0.ebuild:
+  Stable on x86 (bug #212077)
+
+  02 Mar 2008; Christoph Mende <angelos@gentoo.org>
+  gmpc-avahi-0.15.5.0.ebuild:
+  Stable on amd64, bug #212077
+
+  30 Jan 2008; Dawid Węgliński <cla@gentoo.org>
+  gmpc-avahi-0.15.5.0.ebuild:
+  Add ~x86 keyword (bug #207687)
+
+*gmpc-avahi-0.15.5.0 (27 Jan 2008)
+
+  27 Jan 2008; Christoph Mende <angelos@gentoo.org>
+  +gmpc-avahi-0.15.5.0.ebuild:
+  Initial import

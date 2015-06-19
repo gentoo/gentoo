@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>god@politeia.in</email>
+		<name>Denis M.</name>
+		<description>Maintainer, assign bugs to him</description>
+	</maintainer>
+	<maintainer>
+		<email>mrueg@gentoo.org</email>
+		<name>Manuel Rüger</name>
+		<description>Proxy-Maintainer, CC him on bugs</description>
+	</maintainer>
+</pkgmetadata>
+

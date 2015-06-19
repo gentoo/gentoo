@@ -1,0 +1,237 @@
+# ChangeLog for sci-libs/acml
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/acml/ChangeLog,v 1.50 2015/03/31 20:09:31 ulm Exp $
+
+  31 Mar 2015; Ulrich Müller <ulm@gentoo.org> acml-4.1.0-r2.ebuild:
+  Update dependency after package move of eselect modules to app-eselect.
+
+*acml-4.1.0-r2 (20 Feb 2015)
+
+  20 Feb 2015; Justin Lecher <jlec@gentoo.org> +acml-4.1.0-r2.ebuild,
+  -acml-3.6.1-r1.ebuild, -acml-4.0.1.ebuild, -acml-4.1.0-r1.ebuild:
+  Drop old; move to EAPI=5, fixes #478598
+
+  15 Feb 2015; Mike Frysinger <vapier@gentoo.org> acml-4.1.0-r1.ebuild:
+  Switch to matching versions as the SLOT in older versions is changing #528196.
+
+  10 Feb 2015; Justin Lecher <jlec@gentoo.org> acml-4.1.0-r1.ebuild,
+  metadata.xml:
+  Revert last change
+
+  10 Feb 2015; Patrick Lauer <patrick@gentoo.org> acml-4.1.0-r1.ebuild:
+  Fix gcc slot to match toolchain changes
+
+  16 Oct 2012; Justin Lecher <jlec@gentoo.org> -acml-3.6.0-r1.ebuild,
+  acml-3.6.1-r1.ebuild, acml-4.0.1.ebuild, acml-4.1.0-r1.ebuild, metadata.xml:
+  Remove virtual/fortran and always call fortran-2_pkg_setup as intend by the
+  updated fortran-2.eclass
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> acml-3.6.0-r1.ebuild,
+  acml-3.6.1-r1.ebuild, acml-4.0.1.ebuild, acml-4.1.0-r1.ebuild:
+  Add dependency on virtual/fortran
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> acml-3.6.0-r1.ebuild,
+  acml-3.6.1-r1.ebuild, acml-4.0.1.ebuild, acml-4.1.0-r1.ebuild:
+  Added fortran-2.eclass support
+
+  17 Dec 2010; Justin Lecher <jlec@gentoo.org> acml-3.6.0-r1.ebuild,
+  acml-3.6.1-r1.ebuild, acml-4.0.1.ebuild, acml-4.1.0-r1.ebuild:
+  Fix for fortran.eclass removal
+
+  16 Dec 2010; Justin Lecher <jlec@gentoo.org> acml-3.6.0-r1.ebuild,
+  acml-3.6.1-r1.ebuild, acml-4.0.1.ebuild, acml-4.1.0-r1.ebuild:
+  Removal of fortran.eclass, #348851
+
+  07 Jul 2009; Diego E. Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Use elog for fetch error.
+
+  17 Oct 2008; Markus Meier <maekke@gentoo.org> metadata.xml:
+  openmp USE-flag is global now
+
+  07 Aug 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56.
+
+  23 Jun 2008; Sébastien Fabbro <bicatali@gentoo.org> acml-4.1.0-r1.ebuild:
+  Added gfortran fetch for x86, now available on amd website
+
+  27 May 2008; Sébastien Fabbro <bicatali@gentoo.org> -acml-4.1.0.ebuild,
+  acml-4.1.0-r1.ebuild:
+  Fixed a bad link in the eselect profiles
+
+*acml-4.1.0-r1 (06 May 2008)
+
+  06 May 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  +acml-4.1.0-r1.ebuild:
+  Various fixes for x86 (bug #220321), re-added a default environment file
+  according to use flags, pkgconfig recreated with proper libraries instead
+  of always acml_mv
+
+*acml-4.1.0 (30 Apr 2008)
+
+  30 Apr 2008; Sébastien Fabbro <bicatali@gentoo.org> +acml-4.1.0.ebuild:
+  Version bump. Added gfortran flag to make downloading explicit,
+  robustified dependencies and much cleaning.
+
+  22 Apr 2008; Sébastien Fabbro <bicatali@gentoo.org> acml-3.6.0-r1.ebuild,
+  acml-3.6.1-r1.ebuild, acml-4.0.1.ebuild:
+  Re-organized dependencies for pkg-config (bug #217278).
+
+  31 Mar 2008; Sébastien Fabbro <bicatali@gentoo.org> files/blas.pc.in,
+  files/lapack.pc.in, acml-3.6.0-r1.ebuild, acml-3.6.1-r1.ebuild,
+  acml-4.0.1.ebuild:
+  Forced -Wl,--no-as-needed in the pkg-config files. Now blas and lapack
+  pkg-config point to the static acml directory instead of the dynamic
+  libblas and liblapack
+
+  08 Jan 2008; Sébastien Fabbro <bicatali@gentoo.org> files/blas.pc.in,
+  files/lapack.pc.in, acml-3.6.0-r1.ebuild, acml-3.6.1-r1.ebuild,
+  -acml-4.0.0.ebuild, acml-4.0.1.ebuild:
+  Re-arrange pkgconfig files, removed old version.
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing kugelfang from metadata.xml as per #46972.
+
+  19 Dec 2007; Sébastien Fabbro <bicatali@gentoo.org> acml-3.6.0-r1.ebuild,
+  acml-3.6.1-r1.ebuild:
+  Fix also older versions for g2c/gfortran libs
+
+  19 Dec 2007; Sébastien Fabbro <bicatali@gentoo.org> acml-4.0.1.ebuild:
+  Fixed directory for acml and forced dynamic linking with gfortran when
+  selected, since it will fail without
+
+*acml-4.0.1 (19 Dec 2007)
+
+  19 Dec 2007; Sébastien Fabbro <bicatali@gentoo.org> files/blas.pc.in,
+  files/lapack.pc.in, +acml-4.0.1.ebuild:
+  Version bump + fixed pkg-config files
+
+  21 Nov 2007; Sébastien Fabbro <bicatali@gentoo.org> acml-3.6.0-r1.ebuild,
+  acml-3.6.1-r1.ebuild, acml-4.0.0.ebuild:
+  Removed PROVIDE, now lapack is new style virtual
+
+  18 Oct 2007; Sébastien Fabbro <bicatali@gentoo.org> acml-3.6.0-r1.ebuild,
+  acml-3.6.1-r1.ebuild, acml-4.0.0.ebuild:
+  Re-added temporarily PROVIDE=virtual/lapack
+
+  11 Oct 2007; Sébastien Fabbro <bicatali@gentoo.org> acml-3.6.0-r1.ebuild,
+  acml-3.6.1-r1.ebuild, acml-4.0.0.ebuild:
+  fixed lib->get_libdir for eselect bug workaround
+
+  09 Oct 2007; Sébastien Fabbro <bicatali@gentoo.org> -files/c-ACML.blas,
+  -files/eselect.blas, -files/eselect.blas-mp, -files/eselect.cblas,
+  -files/eselect.cblas-mp, -files/eselect.lapack, -files/eselect.lapack-mp,
+  -files/f77-ACML.blas, -files/f77-ACML.lapack, -acml-3.0.0.ebuild,
+  -acml-3.1.0-r1.ebuild, -acml-3.6.0.ebuild, acml-3.6.0-r1.ebuild,
+  -acml-3.6.1.ebuild, acml-3.6.1-r1.ebuild, acml-4.0.0.ebuild:
+  Removed old versions. Work around eselect bug #189942.
+
+*acml-4.0.0 (08 Oct 2007)
+*acml-3.6.1-r1 (08 Oct 2007)
+*acml-3.6.0-r1 (08 Oct 2007)
+
+  08 Oct 2007; Sébastien Fabbro <bicatali@gentoo.org> +files/blas.pc.in,
+  +files/lapack.pc.in, +acml-3.6.0-r1.ebuild, +acml-3.6.1-r1.ebuild,
+  +acml-4.0.0.ebuild:
+  Version bump. Fixed openmp profiles for acml-3.6.0-r1 and acml-3.6.1-r1.
+  Added a bunch of tests, now supports new virtual style. Remove any cblas
+  reference since API is not compatible.
+
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org> acml-3.0.0.ebuild,
+  acml-3.1.0-r1.ebuild, acml-3.6.0.ebuild, acml-3.6.1.ebuild:
+  (QA) RESTRICT clean up.
+
+*acml-3.6.1 (01 Jun 2007)
+*acml-3.6.0 (01 Jun 2007)
+
+  01 Jun 2007; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/eselect.blas-mp, +files/eselect.cblas-mp, +files/eselect.lapack-mp,
+  +acml-3.6.0.ebuild, +acml-3.6.1.ebuild:
+  Version bump. Reorganized the ebuild to take into account new systems. 
+  acml-3.6.0 is for g77 and ifc compilers, acml-3.6.1 for the gfortran
+  compiler. Added a multi-processor profile, only used with the ifc case, but
+  soon with gfortran-4.2. Fix bug #141127, thanks to Adam
+  <ediap@et.put.poznan.pl>, Sun Bing <subi.the.dream.walker@gmail.com> and
+  others in the bug.
+
+  22 Feb 2007; Jeff Gardner <je_fro@gentoo.org> ChangeLog:
+  Really changing the manifest this time...
+
+  22 Feb 2007; Jeff Gardner <je_fro@gentoo.org> files/digest-acml-3.0.0,
+  Manifest:
+  Updating acml-3.0.0 digest.
+
+  08 Jan 2007; Danny van Dyk <kugelfang@gentoo.org> -acml-2.5.0.ebuild,
+  -acml-2.7.0.ebuild, -acml-3.1.0.ebuild:
+  Removed obsolete versions.
+
+  01 Nov 2006; Donnie Berkholz <dberkholz@gentoo.org>; ChangeLog:
+  Update for my nick change spyderous -> dberkholz.
+
+  27 Aug 2006; Donnie Berkholz <dberkholz@gentoo.org>; files/eselect.cblas:
+  (#141127) acml.h isn't compatible with cblas.h, so don't symlink it as if it
+  were.
+
+  25 Aug 2006; Donnie Berkholz <dberkholz@gentoo.org>; +files/eselect.blas,
+  +files/eselect.cblas, +files/eselect.lapack:
+  Add eselect symlink maps, reported by Markus Dittrich.
+
+  17 Aug 2006; Donnie Berkholz <dberkholz@gentoo.org>; acml-3.1.0-r1.ebuild:
+  Change einfo uses that should get read to elog.
+
+  15 Aug 2006; Danny van Dyk <kugelfang@gentoo.org> acml-3.0.0.ebuild:
+  Marking stable on amd64 and x86.
+
+*acml-3.1.0-r1 (03 Jul 2006)
+
+  03 Jul 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  +acml-3.1.0-r1.ebuild:
+  Bumps to switch to new eselect modules.
+
+  15 May 2006; Donnie Berkholz <dberkholz@gentoo.org>; acml-2.5.0.ebuild:
+  Update homepage to match the others. Some programs cache the first one they
+  find, so they get the oldest homepage.
+
+  10 May 2006; Danny van Dyk <kugelfang@gentoo.org> acml-2.5.0.ebuild,
+  acml-2.7.0.ebuild, acml-3.0.0.ebuild, acml-3.1.0.ebuild:
+  Fixed bug #128084: Symlinking acml.h to /usr/include/
+
+*acml-3.1.0 (10 May 2006)
+
+  10 May 2006; Danny van Dyk <kugelfang@gentoo.org> acml-3.0.0.ebuild,
+  +acml-3.1.0.ebuild:
+  Marked acml-3.0.0 stable on amd64. Added version 3.1.0.
+
+*acml-3.0.0 (16 Nov 2005)
+
+  16 Nov 2005; Danny van Dyk <kugelfang@gentoo.org> acml-2.7.0.ebuild,
+  +acml-3.0.0.ebuild:
+  Bumped to version 3.0.0. Changed dependencies for testing versions to at
+  least current app-admin/eselect.
+
+*acml-2.7.0 (31 Aug 2005)
+
+  31 Aug 2005; Danny van Dyk <kugelfang@gentoo.org> -acml-2.1.0.ebuild,
+  acml-2.5.0.ebuild, +acml-2.7.0.ebuild:
+  Removed version 2.1.0. Marked stable version 2.5.0. Bumped to version 2.7.0.
+
+*acml-2.5.0 (03 Apr 2005)
+
+  03 Apr 2005; Danny van Dyk <kugelfang@gentoo.org> +acml-2.5.0.ebuild:
+  Version bump to acml-2.5.0.
+
+*acml-2.1.0 (28 Dec 2004)
+
+  28 Dec 2004; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +files/c-ACML.blas, +files/f77-ACML.blas, +files/f77-ACML.lapack,
+  +acml-2.1.0.ebuild:
+  Moved from app-sci/acml to sci-libs/acml.
+
+  15 Dec 2004; Danny van Dyk <kugelfang@gentoo.org> :
+  Fixed missing digest entry for acml-32bit-2-1-0.tgz. (BUG #72945)
+
+*acml-2.1.0 (22 Sep 2004)
+
+  22 Sep 2004; Danny van Dyk <kugelfang@gentoo.org> +metadata.xml,
+  +files/c-ACML.blas, +files/f77-ACML.blas, +files/f77-ACML.lapack,
+  +acml-2.1.0.ebuild:
+  Initial Import.

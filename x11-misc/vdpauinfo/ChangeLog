@@ -1,0 +1,45 @@
+# ChangeLog for x11-misc/vdpauinfo
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/vdpauinfo/ChangeLog,v 1.10 2015/02/16 16:25:18 ago Exp $
+
+  16 Feb 2015; Agostino Sarubbo <ago@gentoo.org> vdpauinfo-0.9-r1.ebuild:
+  Stable for amd64, wrt bug #539770
+
+  16 Feb 2015; Andreas Schuerch <nativemad@gentoo.org> vdpauinfo-0.9-r1.ebuild:
+  x86 stable, see bug 539770
+
+*vdpauinfo-0.9-r1 (09 Jan 2015)
+
+  09 Jan 2015; Tim Harder <radhermit@gentoo.org> -vdpauinfo-0.9.ebuild,
+  +vdpauinfo-0.9-r1.ebuild:
+  Fix x11-libs/libvdpau dep (bug #534090).
+
+*vdpauinfo-0.9 (30 Dec 2014)
+
+  30 Dec 2014; William Hubbs <williamh@gentoo.org> +vdpauinfo-0.9.ebuild:
+  version bump approved by ssuominen
+
+*vdpauinfo-0.1 (25 Oct 2013)
+
+  25 Oct 2013; Doug Goldstein <cardoe@gentoo.org> +vdpauinfo-0.1.ebuild:
+  Version bump
+
+  21 Nov 2012; Tomáš Chvátal <scarabeus@gentoo.org> vdpauinfo-0.0.6.ebuild:
+  Stable on amd64 and x86, I need this to test my vdpau stuff on stable.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> vdpauinfo-0.0.6.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  22 Mar 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Fixed herd.
+
+  02 Feb 2010; Doug Goldstein <cardoe@gentoo.org> vdpauinfo-0.0.6.ebuild:
+  fix missing dDEPEND on pkgconfig as noticed by Nikoli <nikoli@pochta.ru>.
+  Fixes bug #303154
+
+*vdpauinfo-0.0.6 (22 Oct 2009)
+
+  22 Oct 2009; Doug Goldstein <cardoe@gentoo.org> +vdpauinfo-0.0.6.ebuild,
+  +metadata.xml:
+  initial version of VDPAU info gathering application

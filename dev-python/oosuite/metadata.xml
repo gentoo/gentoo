@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sci-mathematics</herd>
+<longdescription lang='en'>
+  The OpenOpt suite of Python packages contains the following modules:
+  * openopt: universal numerical optimization package with
+    several solvers (e.g. ralg) and connections to tens of other,
+    graphical output of convergence. 
+  * FuncDesigner: tool to rapidly build functions over
+    variables/arrays and get their dense/sparse derivatives via
+    automatic differentiation, integration (with specifiable accuracy by
+    interalg), interpolation, uncertainty analysis and interval
+    analysis, eigenvalue analysis, solve systems of linear/nonlinear/ODE
+    equations and numerical optimization problems coded in FuncDesigner
+    by OpenOpt. 
+  * DerApproximator: tool to get (or check user-supplied) derivatives
+    via finite-difference approximation 
+  * SpaceFuncs: tool for 2D, 3D, N-dimensional geometric modeling with
+    possibilities of parametrized calculations, numerical optimization
+    and solving systems of geometrical equations.
+</longdescription>
+</pkgmetadata>

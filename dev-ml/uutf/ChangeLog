@@ -1,0 +1,26 @@
+# ChangeLog for dev-ml/uutf
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/uutf/ChangeLog,v 1.5 2015/04/02 08:34:38 aballier Exp $
+
+  02 Apr 2015; Alexis Ballier <aballier@gentoo.org> uutf-0.9.4.ebuild:
+  add missing cmdliner dep for tests, by Andreas Schürch, bug #527318
+
+  02 Apr 2015; Alexis Ballier <aballier@gentoo.org> -uutf-0.9.3.ebuild:
+  remove old
+
+  26 Jan 2015; Alexis Ballier <aballier@gentoo.org> uutf-0.9.4.ebuild:
+  fix tests with upstream help
+
+*uutf-0.9.4 (26 Jan 2015)
+
+  26 Jan 2015; Alexis Ballier <aballier@gentoo.org> +uutf-0.9.4.ebuild,
+  metadata.xml:
+  version bump
+
+*uutf-0.9.3 (29 Oct 2014)
+
+  29 Oct 2014; Alexis Ballier <aballier@gentoo.org> +uutf-0.9.3.ebuild,
+  +metadata.xml:
+  initial import, ebuild by Guillaume Horel in bug #527294 with a few
+  modifications by me
+

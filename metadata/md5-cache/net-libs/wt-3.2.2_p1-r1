@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test
+DEPEND=>=dev-libs/boost-1.36 graphicsmagick? ( media-gfx/graphicsmagick ) pdf? ( media-libs/libharu ) postgres? ( dev-db/postgresql ) sqlite? ( dev-db/sqlite:3 ) fcgi? ( dev-libs/fcgi virtual/httpd-fastcgi ) server? ( ssl? ( dev-libs/openssl ) zlib? ( sys-libs/zlib ) ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=C++ library for developing interactive web applications
+EAPI=3
+HOMEPAGE=http://webtoolkit.eu/
+IUSE=doc +extjs fcgi graphicsmagick pdf postgres resources +server ssl +sqlite test zlib
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/boost-1.36 graphicsmagick? ( media-gfx/graphicsmagick ) pdf? ( media-libs/libharu ) postgres? ( dev-db/postgresql ) sqlite? ( dev-db/sqlite:3 ) fcgi? ( dev-libs/fcgi virtual/httpd-fastcgi ) server? ( ssl? ( dev-libs/openssl ) zlib? ( sys-libs/zlib ) )
+SLOT=0
+SRC_URI=mirror://sourceforge/witty/wt/3.2.2/wt-3.2.2-p1.tar.gz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=fcb616c8d997a5fdda8b90ca44ebda93

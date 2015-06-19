@@ -1,0 +1,27 @@
+# HG changeset patch
+# User Benjamin Peterson <benjamin@python.org>
+# Date 1426865725 18000
+# Node ID c996ed1dc0064f45e691f1664d06001ae07fff00
+# Parent  7638872a6c760448ed8648d692c8eb702a29c361
+# Parent  24dc6a6f7384712152dd1e881c115fb4805be9ea
+Merged in mrossini/six (pull request #55)
+
+_winreg is added to the moves module under windows only
+
+diff --git a/six.py b/six.py
+--- a/six.py
++++ b/six.py
+@@ -298,8 +298,12 @@
+     MovedModule("urllib_robotparser", "robotparser", "urllib.robotparser"),
+     MovedModule("xmlrpc_client", "xmlrpclib", "xmlrpc.client"),
+     MovedModule("xmlrpc_server", "SimpleXMLRPCServer", "xmlrpc.server"),
+-    MovedModule("winreg", "_winreg"),
+ ]
++#Add windows specific modules if needed
++if sys.platform in ('win32', 'cygwin'):
++    _moved_attributes += [
++        MovedModule("winreg", "_winreg"),
++    ]
+ for attr in _moved_attributes:
+     setattr(_MovedItems, attr.name, attr)
+     if isinstance(attr, MovedModule):

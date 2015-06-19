@@ -1,0 +1,45 @@
+# ChangeLog for sys-fs/dmg2img
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/dmg2img/ChangeLog,v 1.8 2013/09/05 08:34:59 radhermit Exp $
+
+*dmg2img-1.6.5 (05 Sep 2013)
+
+  05 Sep 2013; Tim Harder <radhermit@gentoo.org> +dmg2img-1.6.5.ebuild:
+  Version bump, install binaries into /usr/bin instead of /usr/sbin (bug
+  #482234).
+
+*dmg2img-1.6.4 (28 Aug 2012)
+
+  28 Aug 2012; Tim Harder <radhermit@gentoo.org> +dmg2img-1.6.4.ebuild:
+  Version bump. Update to EAPI 4.
+
+*dmg2img-1.6.2 (13 Sep 2010)
+
+  13 Sep 2010; Joseph Jezak <josejx@gentoo.org> +dmg2img-1.6.2.ebuild:
+  Fixed bug #308165 by adding manual page. Added latest version, bug
+  #322551.
+
+*dmg2img-1.6.1 (07 Mar 2010)
+
+  07 Mar 2010; Joseph Jezak <josejx@gentoo.org> +dmg2img-1.6.1.ebuild,
+  metadata.xml:
+  Bumped to latest version for bug #291943.
+
+  07 Sep 2009; Ryan Hill <dirtyepic@gentoo.org> dmg2img-1.6.ebuild:
+  Move distfile to Gentoo mirrors.
+
+*dmg2img-1.6 (24 May 2009)
+
+  24 May 2009; Samuli Suominen <ssuominen@gentoo.org> -dmg2img-1.3.ebuild,
+  +dmg2img-1.6.ebuild:
+  Version bump and remove invalid ebuild.
+
+  15 May 2009; Christian Faulhammer <fauli@gentoo.org> dmg2img-1.3.ebuild:
+  keyworded ~arch for x86, bug 266436
+
+*dmg2img-1.3 (29 Nov 2008)
+
+  29 Nov 2008; Joseph Jezak <josejx@gentoo.org> +metadata.xml,
+  +dmg2img-1.3.ebuild:
+  Added dmg2img to the tree.
+

@@ -1,0 +1,185 @@
+--- boggle/boggle/bog.c
++++ boggle/boggle/bog.c
+@@ -336,7 +336,7 @@
+ 	}
+ 
+ 	while (1) {
+-		if (getline(buf) == NULL) {
++		if (get_line(buf) == NULL) {
+ 			if (feof(stdin))
+ 				clearerr(stdin);
+ 			break;
+--- boggle/boggle/extern.h
++++ boggle/boggle/extern.h
+@@ -43,7 +43,7 @@
+ long	 dictseek(FILE *, long, int);
+ void	 findword(void);
+ void	 flushin(FILE *);
+-char	*getline(char *);
++char	*get_line(char *);
+ void	 getword(char *);
+ int	 help(void);
+ int	 inputch(void);
+--- boggle/boggle/mach.c
++++ boggle/boggle/mach.c
+@@ -168,7 +168,7 @@
+  * - doesn't accept words longer than MAXWORDLEN or containing caps
+  */
+ char *
+-getline(q)
++get_line(q)
+ 	char *q;
+ {
+ 	int ch, done;
+--- cribbage/cribbage.h
++++ cribbage/cribbage.h
+@@ -77,7 +77,7 @@
+ int	 fifteens(const CARD [], int);
+ void	 game(void);
+ void	 gamescore(void);
+-char	*getline(void);
++char	*get_line(void);
+ int	 getuchar(void);
+ int	 incard(CARD *);
+ int	 infrom(const CARD [], int, const char *);
+--- cribbage/crib.c
++++ cribbage/crib.c
+@@ -221,7 +221,7 @@
+ 			if (!rflag) {			/* player cuts deck */
+ 				msg(quiet ? "Cut for crib? " :
+ 			    "Cut to see whose crib it is -- low card wins? ");
+-				getline();
++				get_line();
+ 			}
+ 			i = (rand() >> 4) % CARDS;	/* random cut */
+ 			do {	/* comp cuts deck */
+@@ -397,7 +397,7 @@
+ 		if (!rflag) {	/* random cut */
+ 			msg(quiet ? "Cut the deck? " :
+ 		    "How many cards down do you wish to cut the deck? ");
+-			getline();
++			get_line();
+ 		}
+ 		i = (rand() >> 4) % (CARDS - pos);
+ 		turnover = deck[i + pos];
+--- cribbage/io.c
++++ cribbage/io.c
+@@ -245,7 +245,7 @@
+ 
+ 	retval = FALSE;
+ 	rnk = sut = EMPTY;
+-	if (!(line = getline()))
++	if (!(line = get_line()))
+ 		goto gotit;
+ 	p = p1 = line;
+ 	while (*p1 != ' ' && *p1 != '\0')
+@@ -346,7 +346,7 @@
+ 
+ 	for (sum = 0;;) {
+ 		msg(prompt);
+-		if (!(p = getline()) || *p == '\0') {
++		if (!(p = get_line()) || *p == '\0') {
+ 			msg(quiet ? "Not a number" :
+ 			    "That doesn't look like a number");
+ 			continue;
+@@ -528,12 +528,12 @@
+ }
+ 
+ /*
+- * getline:
++ * get_line:
+  *      Reads the next line up to '\n' or EOF.  Multiple spaces are
+  *	compressed to one space; a space is inserted before a ','
+  */
+ char *
+-getline()
++get_line()
+ {
+ 	char *sp;
+ 	int c, oy, ox;
+--- gomoku/bdisp.c
++++ gomoku/bdisp.c
+@@ -241,7 +241,7 @@
+ }
+ 
+ int
+-getline(buf, size)
++get_line(buf, size)
+ 	char *buf;
+ 	int size;
+ {
+--- gomoku/gomoku.h
++++ gomoku/gomoku.h
+@@ -263,7 +263,7 @@
+ 
+ void	bdinit(struct spotstr *);
+ void	init_overlap(void);
+-int	getline(char *, int);
++int	get_line(char *, int);
+ void	ask(const char *);
+ void	dislog(const char *);
+ void	bdump(FILE *);
+--- gomoku/main.c
++++ gomoku/main.c
+@@ -155,7 +155,7 @@
+ 		if (inputfp == NULL && test == 0) {
+ 			for (;;) {
+ 				ask("black or white? ");
+-				getline(buf, sizeof(buf));
++				get_line(buf, sizeof(buf));
+ 				if (buf[0] == 'b' || buf[0] == 'B') {
+ 					color = BLACK;
+ 					break;
+@@ -172,7 +172,7 @@
+ 		}
+ 	} else {
+ 		setbuf(stdout, 0);
+-		getline(buf, sizeof(buf));
++		get_line(buf, sizeof(buf));
+ 		if (strcmp(buf, "black") == 0)
+ 			color = BLACK;
+ 		else if (strcmp(buf, "white") == 0)
+@@ -244,7 +244,7 @@
+ 		getinput:
+ 			if (interactive)
+ 				ask("move? ");
+-			if (!getline(buf, sizeof(buf))) {
++			if (!get_line(buf, sizeof(buf))) {
+ 				curmove = RESIGN;
+ 				break;
+ 			}
+@@ -256,7 +256,7 @@
+ 					FILE *fp;
+ 
+ 					ask("save file name? ");
+-					(void)getline(buf, sizeof(buf));
++					(void)get_line(buf, sizeof(buf));
+ 					if ((fp = fopen(buf, "w")) == NULL) {
+ 						glog("cannot create save file");
+ 						goto getinput;
+@@ -309,14 +309,14 @@
+ 		if (i != RESIGN) {
+ 		replay:
+ 			ask("replay? ");
+-			if (getline(buf, sizeof(buf)) &&
++			if (get_line(buf, sizeof(buf)) &&
+ 			    (buf[0] == 'y' || buf[0] == 'Y'))
+ 				goto again;
+ 			if (strcmp(buf, "save") == 0) {
+ 				FILE *fp;
+ 
+ 				ask("save file name? ");
+-				(void)getline(buf, sizeof(buf));
++				(void)get_line(buf, sizeof(buf));
+ 				if ((fp = fopen(buf, "w")) == NULL) {
+ 					glog("cannot create save file");
+ 					goto replay;
+@@ -367,7 +367,7 @@
+ 		quit();
+ top:
+ 	ask("cmd? ");
+-	if (!getline(fmtbuf, sizeof(fmtbuf)))
++	if (!get_line(fmtbuf, sizeof(fmtbuf)))
+ 		quit();
+ 	switch (*fmtbuf) {
+ 	case '\0':

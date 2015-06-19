@@ -1,0 +1,1219 @@
+# ChangeLog for app-i18n/uim
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/uim/ChangeLog,v 1.273 2015/02/15 11:56:22 pacho Exp $
+
+  15 Feb 2015; Pacho Ramos <pacho@gentoo.org> +files/50uim-gentoo.el:
+  Restore file dropped by error
+
+  13 Nov 2014; Pacho Ramos <pacho@gentoo.org> -files/50uim-gentoo.el,
+  -files/uim-1.7.3-glib-2.32.patch, -files/uim-1.7.3-linguas.patch,
+  -files/uim-1.8.0-glib2.32.patch, -uim-1.7.3-r1.ebuild, -uim-1.7.3.ebuild,
+  -uim-1.8.0-r1.ebuild, -uim-1.8.0.ebuild, -uim-1.8.2-r1.ebuild,
+  -uim-1.8.2.ebuild, -uim-1.8.3-r1.ebuild, -uim-1.8.3.ebuild,
+  -uim-1.8.4-r1.ebuild, -uim-1.8.4.ebuild, -uim-1.8.6.ebuild:
+  Drop old (#508854)
+
+  22 Jun 2014; Agostino Sarubbo <ago@gentoo.org> uim-1.8.6-r1.ebuild:
+  Stable for ppc64, wrt bug #510672
+
+  22 Jun 2014; Agostino Sarubbo <ago@gentoo.org> uim-1.8.6-r1.ebuild:
+  Stable for ppc, wrt bug #510672
+
+  16 Jun 2014; Chema Alonso <nimiux@gentoo.org> uim-1.8.6-r1.ebuild:
+  Stable for amd64 wrt bug #510672
+
+  14 Jun 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> uim-1.8.6-r1.ebuild:
+  x86 stable wrt bug #510672
+
+  21 May 2014; Jeroen Roovers <jer@gentoo.org> uim-1.8.6-r1.ebuild:
+  Stable for HPPA (bug #510672).
+
+*uim-1.8.6-r1 (18 May 2014)
+
+  18 May 2014; Pacho Ramos <pacho@gentoo.org> +uim-1.8.6-r1.ebuild:
+  Drop support for old gnome-panel (#508854)
+
+  14 Apr 2014; Jeroen Roovers <jer@gentoo.org> uim-1.8.6.ebuild:
+  Stable for HPPA (bug #507004).
+
+*uim-1.8.6 (04 Mar 2014)
+
+  04 Mar 2014; Naohiro Aota <naota@gentoo.org> +uim-1.8.6.ebuild:
+  version bump and ebuild clean up by miflab@gmail.com #501938
+
+  29 Jan 2014; Naohiro Aota <naota@gentoo.org> metadata.xml,
+  uim-1.7.3-r1.ebuild, uim-1.7.3.ebuild, uim-1.8.0-r1.ebuild, uim-1.8.0.ebuild,
+  uim-1.8.2-r1.ebuild, uim-1.8.2.ebuild, uim-1.8.3-r1.ebuild, uim-1.8.3.ebuild,
+  uim-1.8.4-r1.ebuild, uim-1.8.4.ebuild:
+  Drop prime support. #464286
+
+  07 Sep 2013; Pacho Ramos <pacho@gentoo.org> uim-1.7.3-r1.ebuild,
+  uim-1.7.3.ebuild, uim-1.8.0-r1.ebuild, uim-1.8.0.ebuild, uim-1.8.2-r1.ebuild,
+  uim-1.8.2.ebuild, uim-1.8.3-r1.ebuild, uim-1.8.3.ebuild, uim-1.8.4-r1.ebuild,
+  uim-1.8.4.ebuild:
+  Use query-immodules from eclass to inherit fixes and changes from there
+
+*uim-1.8.2-r1 (06 Apr 2013)
+*uim-1.8.4-r1 (06 Apr 2013)
+*uim-1.8.0-r1 (06 Apr 2013)
+*uim-1.7.3-r1 (06 Apr 2013)
+*uim-1.8.3-r1 (06 Apr 2013)
+
+  06 Apr 2013; Naohiro Aota <naota@gentoo.org> +files/uim-1.7.3-linguas.patch,
+  +uim-1.7.3-r1.ebuild, +uim-1.8.0-r1.ebuild, +uim-1.8.2-r1.ebuild,
+  +uim-1.8.3-r1.ebuild, +uim-1.8.4-r1.ebuild:
+  Honor LINGUAS setting. #402891
+
+  06 Apr 2013; Naohiro Aota <naota@gentoo.org> -files/uim-1.5.4-gcc43.patch,
+  -files/uim-1.5.4-gentoo.patch, -files/uim-1.6.0-linker.patch,
+  -files/uim-1.6.1-canna.patch, -files/uim-1.6.1-libnotify-0.7.patch,
+  -files/uim-1.7.1-qt4.patch, -uim-1.4.2.ebuild, -uim-1.5.7.ebuild,
+  -uim-1.6.1.ebuild, -uim-1.7.1-r1.ebuild, -uim-1.7.1.ebuild, uim-1.8.4.ebuild:
+  Drop old versions
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> uim-1.5.7.ebuild,
+  uim-1.6.1.ebuild, uim-1.7.1-r1.ebuild, uim-1.7.1.ebuild, uim-1.7.3.ebuild,
+  uim-1.8.0.ebuild, uim-1.8.2.ebuild, uim-1.8.3.ebuild, uim-1.8.4.ebuild:
+  Move Qt dependencies to the new category
+
+*uim-1.8.4 (15 Jan 2013)
+
+  15 Jan 2013; Naohiro Aota <naota@gentoo.org> +uim-1.8.4.ebuild:
+  bumped. #451762
+
+*uim-1.8.3 (16 Nov 2012)
+
+  16 Nov 2012; Patrick Lauer <patrick@gentoo.org> +uim-1.8.3.ebuild:
+  Bump
+
+*uim-1.8.2 (29 Aug 2012)
+
+  29 Aug 2012; Naohiro Aota <naota@gentoo.org> +uim-1.8.2.ebuild:
+  Version bump. #432664
+
+  03 Aug 2012; Markos Chandras <hwoarang@gentoo.org> uim-1.8.0.ebuild:
+  Stable on amd64 wrt bug #428042
+
+  01 Aug 2012; Jeroen Roovers <jer@gentoo.org> uim-1.8.0.ebuild:
+  Stable for HPPA (bug #428042).
+
+  30 Jul 2012; Anthony G. Basile <blueness@gentoo.org> uim-1.8.0.ebuild:
+  Stable ppc, bug #428042
+
+  30 Jul 2012; Anthony G. Basile <blueness@gentoo.org> uim-1.8.0.ebuild:
+  Stable ppc64, bug #428042
+
+  27 Jul 2012; Jeff Horelick <jdhore@gentoo.org> uim-1.8.0.ebuild:
+  marked x86 per bug 428042
+
+  18 Jul 2012; Naohiro Aota <naota@gentoo.org> uim-1.8.0.ebuild:
+  Drop misplaced doc dir. #426976
+
+  07 Jun 2012; Brent Baude <ranger@gentoo.org> uim-1.7.3.ebuild:
+  Marking uim-1.7.3 ppc for bug 413483
+
+  05 Jun 2012; Brent Baude <ranger@gentoo.org> uim-1.7.3.ebuild:
+  Marking uim-1.7.3 ppc64 for bug 413483
+
+  30 May 2012; Jeroen Roovers <jer@gentoo.org> uim-1.7.3.ebuild:
+  Stable for HPPA (bug #413483).
+
+  29 May 2012; Naohiro Aota <naota@gentoo.org> uim-1.7.3.ebuild:
+  Update Makefile.in.in. #417553
+
+  21 May 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> uim-1.7.3.ebuild:
+  x86 stable wrt bug #413483
+
+  14 May 2012; Agostino Sarubbo <ago@gentoo.org> uim-1.7.3.ebuild:
+  Stable for amd64, wrt bug #413483
+
+  13 May 2012; Naohiro Aota <naota@gentoo.org> +files/uim-1.7.3-glib-2.32.patch,
+  uim-1.7.3.ebuild:
+  Use atomic gtk-query-immodules #413525; Add patch to fix build error with
+  >=glib-2.32
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> uim-1.5.7.ebuild,
+  uim-1.6.1.ebuild, uim-1.7.1.ebuild, uim-1.7.1-r1.ebuild, uim-1.7.3.ebuild,
+  uim-1.8.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  19 Apr 2012; Pacho Ramos <pacho@gentoo.org> +files/uim-1.8.0-glib2.32.patch,
+  uim-1.8.0.ebuild:
+  Fix glib-2.32 building, bug #412071 by Looze Vladimir.
+
+*uim-1.8.0 (12 Apr 2012)
+
+  12 Apr 2012; Naohiro Aota <naota@gentoo.org> +uim-1.8.0.ebuild:
+  Version bump. #411589
+
+*uim-1.7.3 (08 Mar 2012)
+
+  08 Mar 2012; Naohiro Aota <naota@gentoo.org> +uim-1.7.3.ebuild:
+  Version bump #401143
+
+  07 Mar 2012; Naohiro Aota <naota@gentoo.org> uim-1.7.1-r1.ebuild:
+  Add missing dependency dev-util/intltool. #407247 Patch-By: Piotr Szymaniak
+
+*uim-1.7.1-r1 (21 Dec 2011)
+
+  21 Dec 2011; MATSUU Takuto <matsuu@gentoo.org> -uim-1.7.0.ebuild,
+  +uim-1.7.1-r1.ebuild, +files/uim-1.7.1-qt4.patch:
+  Added $(use_enable qt4 qt4-qt3support), bug #282922. Added REQUIRED_USE, bug
+  #383389. Removed old version.
+
+  28 Sep 2011; Samuli Suominen <ssuominen@gentoo.org> uim-1.6.1.ebuild,
+  uim-1.7.0.ebuild, uim-1.7.1.ebuild, metadata.xml:
+  Rename local USE="ffi" to global USE="libffi".
+
+  19 Sep 2011; Naohiro Aota <naota@gentoo.org> uim-1.7.0.ebuild,
+  uim-1.7.1.ebuild:
+  Change to respect LDFLAGS
+
+  28 Aug 2011; Naohiro Aota <naota@gentoo.org> uim-1.6.1.ebuild,
+  +files/uim-1.6.1-canna.patch, uim-1.7.0.ebuild:
+  Add a patch to deal with canna character API change. bug #353949
+
+*uim-1.7.1 (29 Jul 2011)
+
+  29 Jul 2011; MATSUU Takuto <matsuu@gentoo.org> +uim-1.7.1.ebuild:
+  Version bumped.
+
+*uim-1.7.0 (23 May 2011)
+
+  23 May 2011; MATSUU Takuto <matsuu@gentoo.org> +uim-1.7.0.ebuild,
+  files/xinput-uim, metadata.xml:
+  Version bumped. Added gtk3 local USE flag. Fixed bug #366889.
+
+  29 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> uim-1.5.7.ebuild:
+  Apply -1.6.1-libnotify-0.7.patch also for current stable.
+
+  27 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> uim-1.4.2.ebuild,
+  uim-1.5.7.ebuild, uim-1.5.7-r1.ebuild:
+  Fix slot-dep on gtk+
+
+  13 Feb 2011; Raúl Porcel <armin76@gentoo.org> uim-1.4.2.ebuild,
+  uim-1.5.7.ebuild, uim-1.5.7-r1.ebuild, uim-1.6.0-r2.ebuild, uim-1.6.1.ebuild:
+  Drop alpha/sparc keywords
+
+  05 Feb 2011; Samuli Suominen <ssuominen@gentoo.org> uim-1.6.1.ebuild,
+  +files/uim-1.6.1-libnotify-0.7.patch:
+  Fix building with x11-libs/libnotify >= 0.7.
+
+*uim-1.6.1 (08 Jan 2011)
+
+  08 Jan 2011; MATSUU Takuto <matsuu@gentoo.org> -uim-1.6.0-r1.ebuild,
+  +uim-1.6.1.ebuild, +files/xinput-uim:
+  Version bumped. Support imsettings. Removed old version.
+
+*uim-1.6.0-r2 (05 Jan 2011)
+
+  05 Jan 2011; MATSUU Takuto <matsuu@gentoo.org> -uim-1.5.6-r1.ebuild,
+  -uim-1.5.6-r4.ebuild, -files/uim-1.5.6-toplevel-delete-event.patch,
+  -uim-1.6.0.ebuild, +uim-1.6.0-r2.ebuild, +files/uim-1.6.0-gettext.patch,
+  +files/uim-1.6.0-linker.patch, +files/uim-1.6.0-xcompose.patch,
+  -files/uim-disable-notify.diff:
+  Fixed Qt4 issue, bug #349859. Fixed gtk issue, bug #350207. These patches are
+  submitted by Muneyuki Noguchi. Respect CXX and LDFLAGS, bug #349689. Removed
+  old versions.
+
+  26 Dec 2010; Jeroen Roovers <jer@gentoo.org> uim-1.6.0.ebuild,
+  uim-1.6.0-r1.ebuild:
+  Marked ~hppa (bug #335075).
+
+*uim-1.6.0-r1 (25 Nov 2010)
+
+  25 Nov 2010; MATSUU Takuto <matsuu@gentoo.org> +uim-1.6.0-r1.ebuild,
+  +files/uim-1.6.0-sandbox-violation.patch:
+  Fixed sandbox violation. The patch is submitted by Muneyuki Noguchi, bug
+  #345217.
+
+*uim-1.6.0 (08 Nov 2010)
+
+  08 Nov 2010; MATSUU Takuto <matsuu@gentoo.org> +uim-1.6.0.ebuild,
+  +files/uim-1.6.0-gentoo.patch, metadata.xml:
+  Version bumped,bug #335075. Added !dev-scheme/sigscheme, bug #330975.
+
+  23 Oct 2010; Markos Chandras <hwoarang@gentoo.org> uim-1.5.7-r1.ebuild,
+  +files/uim-1.5.7-qt4.7.patch:
+  Patch to build against Qt-4.7. Thanks to Muneyuki
+  Noguchi<nogu.dev@gmail.com>. Bug #331133
+
+  10 Jul 2010; Raúl Porcel <armin76@gentoo.org> uim-1.5.7.ebuild:
+  alpha/sparc stable wrt #298221
+
+  22 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> +uim-1.4.2.ebuild:
+  Restore =uim-1.4.2 for app-i18n/scim-uim.
+
+*uim-1.5.7-r1 (04 Feb 2010)
+
+  04 Feb 2010; MATSUU Takuto <matsuu@gentoo.org> +uim-1.5.7-r1.ebuild,
+  +files/uim-1.5.7-kde4-applet.patch, +files/uim-1.5.7-kde4.patch:
+  Fixed kde4 issue, https://bugs.freedesktop.org/show_bug.cgi?id=24728
+
+  19 Jan 2010; Jeroen Roovers <jer@gentoo.org> uim-1.5.7.ebuild:
+  Stable for HPPA (bug #298221).
+
+  09 Jan 2010; Christian Faulhammer <fauli@gentoo.org> uim-1.5.7.ebuild:
+  stable x86, bug 298221
+
+  05 Jan 2010; <hwoarang@gentoo.org> uim-1.5.7.ebuild:
+  Stable on amd64 wrt bug #298221
+
+  04 Jan 2010; Ben de Groot <yngwin@gentoo.org> uim-1.4.2.ebuild,
+  uim-1.5.6-r1.ebuild, uim-1.5.6-r4.ebuild, uim-1.5.7.ebuild:
+  Drop qt3 support, bug 283429
+
+  31 Dec 2009; Michael Sterrett <mr_bones_@gentoo.org> +uim-1.4.2.ebuild:
+  resurrect uim-1.4.2.ebuild which is still in use
+
+  31 Dec 2009; Brent Baude <ranger@gentoo.org> uim-1.5.7.ebuild:
+  Marking uim-1.5.7 ppc64 for bug 298221
+
+  28 Dec 2009; nixnut <nixnut@gentoo.org> uim-1.5.7.ebuild:
+  ppc stable #298221
+
+  24 Dec 2009; MATSUU Takuto <matsuu@gentoo.org> -uim-1.4.2.ebuild,
+  uim-1.5.7.ebuild:
+  Added ~sparc. Removed old version.
+
+  27 Nov 2009; MATSUU Takuto <matsuu@gentoo.org> uim-1.5.6-r1.ebuild,
+  -uim-1.5.6-r3.ebuild, uim-1.5.6-r4.ebuild, uim-1.5.7.ebuild:
+  Fixed dependency.
+
+*uim-1.5.7 (23 Nov 2009)
+
+  23 Nov 2009; MATSUU Takuto <matsuu@gentoo.org> -files/50uim-el-gentoo.el,
+  -uim-1.4.1.ebuild, -files/uim-1.5.5-applet.patch, -uim-1.5.6-r2.ebuild,
+  +uim-1.5.7.ebuild:
+  Version bumped, bug #294120. Removed old versions. Drop ~sparc because
+  >=kde-base/kdelibs-4 has no sparc KEYWORDS.
+
+*uim-1.5.6-r4 (20 Nov 2009)
+
+  20 Nov 2009; MATSUU Takuto <matsuu@gentoo.org> +uim-1.5.6-r4.ebuild,
+  +files/uim-1.5.6-toplevel-delete-event.patch:
+  Added patch for crash issue, bug #287687.
+
+  25 Oct 2009; Samuli Suominen <ssuominen@gentoo.org> uim-1.4.1.ebuild,
+  uim-1.4.2.ebuild, uim-1.5.6-r1.ebuild, uim-1.5.6-r2.ebuild,
+  uim-1.5.6-r3.ebuild:
+  Remove KDE3 support.
+
+  11 Oct 2009; Raúl Porcel <armin76@gentoo.org> uim-1.5.6-r1.ebuild:
+  sparc stable wrt #268190
+
+  27 Sep 2009; Brent Baude <ranger@gentoo.org> uim-1.5.6-r1.ebuild:
+  Marking uim-1.5.6-r1 ppc64 for bug 268190
+
+*uim-1.5.6-r3 (17 Sep 2009)
+
+  17 Sep 2009; MATSUU Takuto <matsuu@gentoo.org> -uim-1.5.5-r1.ebuild,
+  -uim-1.5.6.ebuild, +uim-1.5.6-r3.ebuild:
+  Fixed qt3 and qt4 USE flags issue, bug #257266.
+
+*uim-1.5.6-r2 (16 Sep 2009)
+
+  16 Sep 2009; MATSUU Takuto <matsuu@gentoo.org> +uim-1.5.6-r2.ebuild,
+  +files/uim-disable-notify.diff:
+  backport from trunk for build issue, bug #284815.
+
+  15 Sep 2009; Jeroen Roovers <jer@gentoo.org> uim-1.5.6-r1.ebuild:
+  Stable for HPPA (bug #268190).
+
+  05 Sep 2009; Markus Meier <maekke@gentoo.org> uim-1.5.6-r1.ebuild:
+  amd64 stable, bug #268190
+
+  29 Aug 2009; nixnut <nixnut@gentoo.org> uim-1.5.6-r1.ebuild:
+  ppc stable #268190
+
+  25 Aug 2009; Tobias Klausmann <klausman@gentoo.org> uim-1.5.6-r1.ebuild:
+  Stable on alpha, bug #268190
+
+  25 Aug 2009; Christian Faulhammer <fauli@gentoo.org> uim-1.5.6-r1.ebuild:
+  stable x86, bug 268190
+
+*uim-1.5.6-r1 (28 Jun 2009)
+
+  28 Jun 2009; MATSUU Takuto <matsuu@gentoo.org> +uim-1.5.6-r1.ebuild:
+  Fixed libedit related issue, bug #275420.
+
+*uim-1.5.6 (25 Jun 2009)
+
+  25 Jun 2009; MATSUU Takuto <matsuu@gentoo.org> -uim-1.5.4-r2.ebuild,
+  -uim-1.5.5.ebuild, +uim-1.5.6.ebuild:
+  Version bumped. Removed old versions.
+
+  24 Jun 2009; Jeroen Roovers <jer@gentoo.org> uim-1.5.4-r2.ebuild,
+  uim-1.5.5.ebuild:
+  Marked ~hppa (bug #27524).
+
+  24 Jun 2009; Jeroen Roovers <jer@gentoo.org> uim-1.5.5-r1.ebuild:
+  Marked ~hppa (bug #27524).
+
+  24 Jun 2009; Jeroen Roovers <jer@gentoo.org> uim-1.4.2.ebuild:
+  Stable for HPPA (bug #216759).
+
+*uim-1.5.5-r1 (24 May 2009)
+
+  24 May 2009; MATSUU Takuto <matsuu@gentoo.org> +uim-1.5.5-r1.ebuild,
+  +files/uim-1.5.5-applet.patch:
+  Fixed #270112.
+
+*uim-1.5.5 (22 Jan 2009)
+
+  22 Jan 2009; MATSUU Takuto <matsuu@gentoo.org> +uim-1.5.5.ebuild:
+  Version bumped.
+
+  07 Jan 2009; MATSUU Takuto <matsuu@gentoo.org> -uim-1.5.3.ebuild,
+  -uim-1.5.4.ebuild, -uim-1.5.4-r1.ebuild, uim-1.5.4-r2.ebuild:
+  Changed truetype USE flag to xft, bug #253910. Fixed inherit. Removed old
+  versions.
+
+*uim-1.5.4-r2 (09 Dec 2008)
+
+  09 Dec 2008; MATSUU Takuto <matsuu@gentoo.org>
+  +files/uim-1.5.4-gcc43.patch, +files/uim-1.5.4-zhTW.patch,
+  +uim-1.5.4-r2.ebuild:
+  Added LINGUAS="zh_TW". Fixed gcc-4.3 issue, bug #216759.
+
+*uim-1.5.4-r1 (29 Oct 2008)
+
+  29 Oct 2008; MATSUU Takuto <matsuu@gentoo.org>
+  +files/uim-1.5.4-gentoo.patch, +uim-1.5.4-r1.ebuild:
+  Fixed qt4 issue, bug #244841. Added libnotify USE flag. cleanup.
+
+*uim-1.5.4 (28 Oct 2008)
+
+  28 Oct 2008; MATSUU Takuto <matsuu@gentoo.org> -uim-1.5.2-r1.ebuild,
+  uim-1.5.3.ebuild, +uim-1.5.4.ebuild:
+  Version bumped. Removed built_with_use.
+
+*uim-1.5.3 (07 Sep 2008)
+
+  07 Sep 2008; MATSUU Takuto <matsuu@gentoo.org> +uim-1.5.3.ebuild:
+  Version bumped.
+
+  06 Sep 2008; MATSUU Takuto <matsuu@gentoo.org> uim-1.4.2.ebuild,
+  uim-1.5.2-r1.ebuild:
+  Use elisp-complie instead of elisp-comp, bug #235932.
+
+*uim-1.5.2-r1 (09 Aug 2008)
+
+  09 Aug 2008; MATSUU Takuto <matsuu@gentoo.org> -uim-1.5.1.ebuild,
+  -uim-1.5.2.ebuild, +uim-1.5.2-r1.ebuild:
+  Fixed to work with qt4 USE flag, bug #233872.
+
+*uim-1.5.2 (04 Aug 2008)
+
+  04 Aug 2008; MATSUU Takuto <matsuu@gentoo.org> +uim-1.5.2.ebuild:
+  Version bumped.
+
+  31 Jul 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56.
+
+  27 Jul 2008; Carsten Lohrke <carlo@gentoo.org> uim-1.4.1.ebuild,
+  uim-1.4.2.ebuild, uim-1.5.1.ebuild:
+  QA: Get rid of deprecated qt_min_version().
+
+  27 Jul 2008; Carsten Lohrke <carlo@gentoo.org> uim-1.5.1.ebuild:
+  Fix broken split Qt 4.4 dependencies, cf. bug 217161 comment 11.
+
+  22 May 2008; MATSUU Takuto <matsuu@gentoo.org> uim-1.5.1.ebuild:
+  Added -j1 to emake install, bug #222677. Added elibtoolize.
+
+*uim-1.5.1 (18 May 2008)
+
+  18 May 2008; MATSUU Takuto <matsuu@gentoo.org> -uim-1.5.0_beta2.ebuild,
+  +uim-1.5.1.ebuild:
+  Version bumped.
+
+  06 May 2008; Brent Baude <ranger@gentoo.org> uim-1.4.2.ebuild:
+  stable ppc64, bug 216759
+
+  05 May 2008; Raúl Porcel <armin76@gentoo.org> uim-1.4.2.ebuild:
+  alpha stable wrt #216759
+
+  04 May 2008; Markus Meier <maekke@gentoo.org> uim-1.4.2.ebuild:
+  amd64/x86 stable, bug #216759
+
+  04 May 2008; nixnut <nixnut@gentoo.org> uim-1.4.2.ebuild:
+  Stable on ppc wrt bug 216759
+
+*uim-1.5.0_beta2 (01 May 2008)
+
+  01 May 2008; MATSUU Takuto <matsuu@gentoo.org> uim-1.4.1.ebuild,
+  -uim-1.4.1-r1.ebuild, uim-1.4.2.ebuild, +uim-1.5.0_beta2.ebuild:
+  Version bumped.
+  Fixed kde-base/kdelibs dependency, bug #213423.
+
+*uim-1.4.2 (24 Feb 2008)
+
+  24 Feb 2008; MATSUU Takuto <matsuu@gentoo.org> +uim-1.4.2.ebuild:
+  Version bumped.
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing usata from metadata.xml as per #22931.
+
+*uim-1.4.1-r1 (14 Oct 2007)
+
+  14 Oct 2007; <matsuu@gentoo.org> +files/50uim-gentoo.el,
+  +uim-1.4.1-r1.ebuild:
+  Fixed emacs support, bug #194804.
+
+  10 Aug 2007; MATSUU Takuto <matsuu@gentoo.org> -files/uim-1.2.1-nls.patch,
+  -files/uim-1.4.0-gentoo.patch, -uim-1.2.1.ebuild, -uim-1.3.1.ebuild,
+  -uim-1.4.0.ebuild, uim-1.4.1.ebuild:
+  Fixed HOMEPAGE and SRC_URI.
+  Removed old versions.
+
+  10 Aug 2007; Raúl Porcel <armin76@gentoo.org> uim-1.4.1.ebuild:
+  alpha stable wrt #184462
+
+  24 Jul 2007; Steve Dibb <beandog@gentoo.org> uim-1.4.1.ebuild:
+  amd64 stable, bug 184462
+
+  22 Jul 2007; Denis Dupeyron <calchan@gentoo.org> uim-1.2.1.ebuild,
+  uim-1.3.1.ebuild, uim-1.4.0.ebuild, uim-1.4.1.ebuild:
+  Drop virtual/x11 dependency.
+
+  18 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org> uim-1.4.1.ebuild:
+  Stable on sparc wrt #184462
+
+  18 Jul 2007; Jeroen Roovers <jer@gentoo.org> uim-1.4.1.ebuild:
+  Stable for HPPA (bug #184462).
+
+  12 Jul 2007; Raúl Porcel <armin76@gentoo.org> uim-1.4.1.ebuild:
+  Re-add ~alpha and x86 stable
+
+  07 Jul 2007; Lars Weiler <pylon@gentoo.org> uim-1.4.1.ebuild:
+  Stable on ppc; bug #184462.
+
+  07 Jul 2007; Markus Rothe <corsair@gentoo.org> uim-1.4.1.ebuild:
+  Stable on ppc64; bug #184462
+
+  03 Apr 2007; MATSUU Takuto <matsuu@gentoo.org> uim-1.4.0.ebuild,
+  uim-1.4.1.ebuild:
+  Added flag-o-matic, bug #173172.
+
+*uim-1.4.1 (25 Mar 2007)
+
+  25 Mar 2007; MATSUU Takuto <matsuu@gentoo.org> +uim-1.4.1.ebuild:
+  Version bumped.
+  Added some fonts to RDEPEND.
+
+  18 Feb 2007; MATSUU Takuto <matsuu@gentoo.org> -uim-0.5.0.1.ebuild:
+  Remove old version.
+
+  04 Feb 2007; Steve Dibb <beandog@gentoo.org> uim-1.2.1.ebuild:
+  amd64 stable, bug 156872
+
+*uim-1.4.0 (01 Feb 2007)
+
+  01 Feb 2007; MATSUU Takuto <matsuu@gentoo.org> +files/uim-1.2.1-nls.patch,
+  +files/uim-1.4.0-gentoo.patch, uim-1.2.1.ebuild, -uim-1.3.0.ebuild,
+  uim-1.3.1.ebuild, +uim-1.4.0.ebuild:
+  Version bumped.
+  Fixed USE="-nls" issue, bug #162502.
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> uim-0.5.0.1.ebuild,
+  uim-1.2.1.ebuild, uim-1.3.0.ebuild, uim-1.3.1.ebuild:
+  Convert to use elog.
+
+  04 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> -uim-1.2.0.ebuild:
+  Remove 1.2.0 to remove false positive on broken autotools handling (it was
+  broken, now it's not beside for amd64).
+
+*uim-1.3.1 (22 Dec 2006)
+
+  22 Dec 2006; MATSUU Takuto <matsuu@gentoo.org> +uim-1.3.1.ebuild:
+  Version bumped.
+
+  16 Dec 2006; Matti Bickel <mabi@gentoo.org> uim-1.2.1.ebuild:
+  ppc stable (bug #156872)
+
+*uim-1.3.0 (16 Dec 2006)
+
+  16 Dec 2006; MATSUU Takuto <matsuu@gentoo.org> +uim-1.3.0.ebuild:
+  Version bumped.
+
+  14 Dec 2006; MATSUU Takuto <matsuu@gentoo.org> uim-1.2.1.ebuild:
+  Fixed messages. bug #157285.
+
+  06 Dec 2006; Bryan Østergaard <kloeri@gentoo.org> uim-1.2.1.ebuild:
+  Stable on Alpha.
+
+  05 Dec 2006; Jeroen Roovers <jer@gentoo.org> uim-1.2.1.ebuild:
+  Stable for HPPA (bug #156872).
+
+  04 Dec 2006; Markus Rothe <corsair@gentoo.org> uim-1.2.1.ebuild:
+  Stable on ppc64; bug #156872
+
+  04 Dec 2006; Christian Faulhammer <opfer@gentoo.org> uim-1.2.1.ebuild:
+  stable x86, bug #156872
+
+  04 Dec 2006; Jason Wever <weeve@gentoo.org> uim-1.2.1.ebuild:
+  Stable on SPARC wrt bug #156872 .
+
+  05 Nov 2006; Bryan Østergaard <kloeri@gentoo.org> uim-1.2.1.ebuild:
+  Add ~alpha keyword.
+
+  31 Oct 2006; Jason Wever <weeve@gentoo.org> uim-1.2.1.ebuild:
+  Added ~sparc keyword wrt bug #152265.
+
+  23 Oct 2006; Markus Rothe <corsair@gentoo.org> uim-1.2.1.ebuild:
+  Added ~ppc64; bug #152265
+
+  07 Oct 2006; MATSUU Takuto <matsuu@gentoo.org> uim-1.2.1.ebuild:
+  Added app-i18n/anthy-ss to DEPEND.
+
+  05 Oct 2006; MATSUU Takuto <matsuu@gentoo.org> uim-1.2.1.ebuild:
+  Added "append-flags -DQT_THREAD_SUPPORT".
+
+  30 Sep 2006; MATSUU Takuto <matsuu@gentoo.org> uim-1.2.1.ebuild:
+  Fixed fails to build with USE="gtk -canna -anthy", Bug 149132.
+
+*uim-1.2.1 (24 Sep 2006)
+
+  24 Sep 2006; MATSUU Takuto <matsuu@gentoo.org> +uim-1.2.1.ebuild:
+  Version bumped.
+  Added anthy, eb, gnome, libedit and prime USE flag.
+  Removed ~alpha, ~hppa, ~ppc64 and ~sparc because dev-libs/eb doesn't have them.
+
+*uim-1.2.0 (05 Aug 2006)
+
+  05 Aug 2006; Mamoru KOMACHI <usata@gentoo.org> +uim-1.2.0.ebuild:
+  Version bumped.
+
+  09 Jul 2006; Diego Pettenò <flameeyes@gentoo.org> uim-0.5.0.1.ebuild,
+  uim-1.0.1.ebuild, uim-1.1.1.ebuild:
+  Pinpoint virtual/x11 version to less than 7.
+
+*uim-1.1.1 (07 Jul 2006)
+
+  07 Jul 2006; Mamoru KOMACHI <usata@gentoo.org> -uim-1.0.0.ebuild,
+  -uim-1.1.0.ebuild, +uim-1.1.1.ebuild:
+  Version bumped.
+
+  24 Jun 2006; Doug Goldstein <cardoe@gentoo.org> uim-0.5.0.1.ebuild,
+  uim-1.0.0.ebuild, uim-1.0.1.ebuild, uim-1.1.0.ebuild:
+  USE flag qt->qt3/qt4 change
+
+*uim-1.1.0 (17 Jun 2006)
+
+  17 Jun 2006; Mamoru KOMACHI <usata@gentoo.org> +uim-1.1.0.ebuild:
+  Version bumped.
+
+  29 Mar 2006; Akinori Hattori <hattya@gentoo.org> uim-0.5.0.1.ebuild,
+  uim-1.0.0.ebuild, uim-1.0.1.ebuild:
+  remove app-i18n/uim-{fep,kdehelper,qt} and app-emacs/uim-fep block from *DEPEND
+
+*uim-1.0.1 (10 Feb 2006)
+
+  10 Feb 2006; Alastair Tse <liquidx@gentoo.org> -uim-0.3.4.2.ebuild,
+  -uim-0.4.7.1-r2.ebuild, -uim-0.4.8.ebuild, -uim-0.4.9.1.ebuild,
+  uim-0.5.0.1.ebuild, -uim-1.0.0_beta.ebuild, uim-1.0.0.ebuild,
+  +uim-1.0.1.ebuild:
+  modular-x-ified, version bump.
+
+*uim-1.0.0 (23 Dec 2005)
+
+  23 Dec 2005; Mamoru KOMACHI <usata@gentoo.org> +uim-1.0.0.ebuild:
+  Version bumped.
+
+*uim-1.0.0_beta (17 Dec 2005)
+
+  17 Dec 2005; Mamoru KOMACHI <usata@gentoo.org> +files/50uim-el-gentoo.el,
+  -uim-0.4.5.1.ebuild, +uim-1.0.0_beta.ebuild:
+  Version bumped.
+
+  01 Oct 2005; Mark Loeser <halcy0n@gentoo.org> uim-0.5.0.1.ebuild:
+  Stable on x86; bug #107748
+
+  01 Oct 2005; Michael Hanselmann <hansmi@gentoo.org> uim-0.5.0.1.ebuild:
+  Stable on hppa, ppc. See bug #107748.
+
+  01 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org> uim-0.5.0.1.ebuild:
+  Stable on sparc wrt #107748
+
+  01 Oct 2005; Markus Rothe <corsair@gentoo.org> uim-0.5.0.1.ebuild:
+  Stable on ppc64 (bug #107748)
+
+  01 Oct 2005; Jose Luis Rivero <yoswink@gentoo.org> uim-0.5.0.1.ebuild:
+  Stable on alpha wrt security bug #107748
+
+  01 Oct 2005; Mamoru KOMACHI <usata@gentoo.org> uim-0.4.9.1.ebuild,
+  uim-0.5.0.1.ebuild:
+  Marked 0.4.9.1 stable for bug #107748. Fixed build error when libedit
+  is installed; bug #107747.
+
+  01 Oct 2005; Simon Stelling <blubb@gentoo.org> uim-0.5.0.1.ebuild:
+  stable on amd64 wrt bug 107748
+
+  30 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org> uim-0.4.8.ebuild:
+  Stable on sparc
+
+*uim-0.5.0.1 (29 Sep 2005)
+*uim-0.4.9.1 (29 Sep 2005)
+
+  29 Sep 2005; Mamoru KOMACHI <usata@gentoo.org> +uim-0.4.9.1.ebuild,
+  +uim-0.5.0.1.ebuild:
+  Version bumped.
+
+  28 Sep 2005; MATSUU Takuto <matsuu@gentoo.org> uim-0.4.8.ebuild:
+  Stable on x86 and amd64.
+
+  23 Sep 2005; MATSUU Takuto <matsuu@gentoo.org> uim-0.4.7.1-r2.ebuild:
+  Stable on amd64.
+
+  27 Aug 2005; Guy Martin <gmsoft@gentoo.org> uim-0.4.7.1-r2.ebuild:
+  Stable on hppa.
+
+  19 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> uim-0.4.7.1-r2.ebuild:
+  Stable on ppc.
+
+  16 Aug 2005; Simon Stelling <blubb@gentoo.org> uim-0.4.8.ebuild:
+  moving has_multilib_profile out of global scope
+
+*uim-0.4.8 (08 Aug 2005)
+
+  08 Aug 2005; Mamoru KOMACHI <usata@gentoo.org> -uim-0.4.8_alpha1.ebuild,
+  -uim-0.4.8_beta1.ebuild, +uim-0.4.8.ebuild:
+  Version bumped.
+
+  08 Aug 2005; Markus Rothe <corsair@gentoo.org> uim-0.4.7.1-r2.ebuild:
+  Stable on ppc64
+
+*uim-0.4.8_beta1 (04 Aug 2005)
+
+  04 Aug 2005; Mamoru KOMACHI <usata@gentoo.org>
+  -files/uim-0.4.6-gtk2_4-gentoo.diff, -files/uim-0.4.6-nls.diff,
+  -uim-0.4.6-r2.ebuild, +uim-0.4.8_beta1.ebuild:
+  Version bumped.
+
+  03 Aug 2005; Bryan Østergaard <kloeri@gentoo.org> uim-0.4.7.1-r2.ebuild:
+  Stable on alpha.
+
+  01 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> uim-0.4.7.1-r2.ebuild:
+  Stable on sparc
+
+  31 Jul 2005; Tobias Scherbaum <dertobi123@gentoo.org> uim-0.4.7.ebuild:
+  ppc stable
+
+  31 Jul 2005; Mamoru KOMACHI <usata@gentoo.org> uim-0.4.6-r2.ebuild,
+  uim-0.4.7.ebuild, -uim-0.4.7.1-r1.ebuild, uim-0.4.7.1-r2.ebuild,
+  uim-0.4.8_alpha1.ebuild:
+  Added qt_min_version; bug #100235.
+
+*uim-0.4.8_alpha1 (28 Jul 2005)
+*uim-0.4.7.1-r2 (28 Jul 2005)
+
+  28 Jul 2005; Mamoru KOMACHI <usata@gentoo.org> -uim-0.4.7.1.ebuild,
+  +uim-0.4.7.1-r2.ebuild, +uim-0.4.8_alpha1.ebuild:
+  Version bumped. Fixed obsolete prime.scm problem with uim-0.4.7.1.
+
+  24 Jul 2005; Markus Rothe <corsair@gentoo.org> uim-0.4.7.ebuild:
+  Stable on ppc64
+
+  22 Jul 2005; Mamoru KOMACHI <usata@gentoo.org> uim-0.4.6-r2.ebuild,
+  uim-0.4.7.ebuild:
+  Prevent uim from creating /share/uim when you do not have app-i18n/prime;
+  bug #99824.
+
+*uim-0.4.7.1-r1 (21 Jul 2005)
+
+  21 Jul 2005; Mamoru KOMACHI <usata@gentoo.org> +uim-0.4.7.1-r1.ebuild:
+  Fixed qt immodule.
+
+  18 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org> uim-0.4.7.ebuild:
+  Stable on sparc
+
+*uim-0.4.7.1 (18 Jul 2005)
+
+  18 Jul 2005; Mamoru KOMACHI <usata@gentoo.org> uim-0.4.6-r2.ebuild,
+  -uim-0.4.7_beta1.ebuild, uim-0.4.7.ebuild, +uim-0.4.7.1.ebuild:
+  Version bumped.
+
+*uim-0.4.7 (26 Jun 2005)
+
+  26 Jun 2005; Mamoru KOMACHI <usata@gentoo.org> +uim-0.4.7.ebuild:
+  Version bumped.
+
+*uim-0.4.7_beta1 (20 Jun 2005)
+
+  20 Jun 2005; Mamoru KOMACHI <usata@gentoo.org> -uim-0.4.6.ebuild,
+  -uim-0.4.6-r1.ebuild, +uim-0.4.7_beta1.ebuild:
+  Added beta release.
+
+  18 Jun 2005; Mamoru KOMACHI <usata@gentoo.org> +files/uim-0.4.6-nls.diff,
+  uim-0.4.6-r2.ebuild:
+  Fixed bug #95021 and bug #95023. Thanks to Yusuke Ubukata
+  <ubukata@keim.cs.gunma-u.ac.jp>.
+
+  18 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> uim-0.4.6-r2.ebuild:
+  Stable on ppc.
+
+  06 Jun 2005; Markus Rothe <corsair@gentoo.org> uim-0.4.6-r2.ebuild:
+  Stable on ppc64
+
+  31 May 2005; Gustavo Zacarias <gustavoz@gentoo.org> uim-0.4.6-r2.ebuild:
+  Stable on sparc
+
+*uim-0.4.6-r2 (30 May 2005)
+
+  30 May 2005; Mamoru KOMACHI <usata@gentoo.org>
+  +files/uim-0.4.6-gtk2_4-gentoo.diff, +uim-0.4.6-r2.ebuild:
+  Fixed --with-gtk2 option (uim-pref-gtk was not properly built)
+
+  30 May 2005; Gustavo Zacarias <gustavoz@gentoo.org> uim-0.4.6-r1.ebuild:
+  Stable on sparc
+
+  29 May 2005; Mamoru KOMACHI <usata@gentoo.org> uim-0.4.6-r1.ebuild:
+  Stable on x86.
+
+  02 May 2005; MATSUU Takuto <matsuu@gentoo.org> uim-0.4.6-r1.ebuild:
+  Fixed bug #91121, use the correct GTK2_CONF_DIR on multilib systems.
+
+*uim-0.4.6-r1 (30 Mar 2005)
+
+  30 Mar 2005; Mamoru KOMACHI <usata@gentoo.org> -uim-0.4.5.ebuild,
+  +uim-0.4.6-r1.ebuild:
+  Updated prime.scm.
+
+  27 Feb 2005; Bryan Østergaard <kloeri@gentoo.org> uim-0.4.5.1.ebuild:
+  Stable on alpha, bug 82678.
+
+*uim-0.4.6 (27 Feb 2005)
+
+  27 Feb 2005; Mamoru KOMACHI <usata@gentoo.org> +uim-0.4.6.ebuild,
+  -uim-0.4.6_beta2.ebuild:
+  Version bumped.
+
+  24 Feb 2005; Karol Wojtaszek <sekretarz@gentoo.org> uim-0.4.5.1.ebuild:
+  Stable on amd64, bug #82678
+
+  24 Feb 2005; <SeJo@gentoo.org> uim-0.4.5.1.ebuild:
+  stable on ppc glsa: #82678
+
+  21 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org> uim-0.4.5.1.ebuild:
+  Stable on sparc wrt #82678
+
+  20 Feb 2005; Markus Rothe <corsair@gentoo.org> uim-0.4.5.1.ebuild:
+  Stable on ppc64; bug #82678
+
+*uim-0.4.6_beta2 (20 Feb 2005)
+
+  20 Feb 2005; Mamoru KOMACHI <usata@gentoo.org> -uim-0.4.2.1.ebuild,
+  -uim-0.4.6_alpha1.ebuild, +uim-0.4.6_beta2.ebuild:
+  Version bumped. Removed old versions.
+
+*uim-0.4.5.1 (20 Feb 2005)
+
+  20 Feb 2005; Mamoru KOMACHI <usata@gentoo.org> -uim-0.4.5-r1.ebuild,
+  +uim-0.4.5.1.ebuild:
+  Version bumped. This contains a security fix for uim-prime; see
+  http://lists.freedesktop.org/archives/uim/2005-February/000996.html
+
+*uim-0.4.6_alpha1 (12 Feb 2005)
+
+  12 Feb 2005; Mamoru KOMACHI <usata@gentoo.org> +uim-0.4.6_alpha1.ebuild:
+  Added alpha release of uim-0.4.6.
+
+  12 Jan 2005; Guy Martin <gmsoft@gentoo.org> uim-0.4.5-r1.ebuild:
+  Stable on hppa.
+
+  04 Jan 2005; Mamoru KOMACHI <usata@gentoo.org> uim-0.4.5-r1.ebuild:
+  Fixed config file path.
+
+  03 Jan 2005; MATSUU Takuto <matsuu@gentoo.org> uim-0.4.5.ebuild:
+  Marked as stable on amd64 and sparc.
+
+*uim-0.4.5-r1 (14 Dec 2004)
+
+  14 Dec 2004; Mamoru KOMACHI <usata@gentoo.org> -uim-0.4.3.ebuild,
+  +uim-0.4.5-r1.ebuild:
+  Added svn snapshot.
+
+  09 Dec 2004; Mamoru KOMACHI <usata@gentoo.org> uim-0.4.5.ebuild:
+  Stable on x86, alpha and ppc.
+
+*uim-0.4.5 (21 Oct 2004)
+
+  21 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> +uim-0.4.5.ebuild,
+  -uim-0.4.5_beta1.ebuild:
+  Version bumped.
+
+*uim-0.4.5_beta1 (15 Oct 2004)
+
+  15 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> -uim-0.4.4.2.ebuild,
+  +uim-0.4.5_beta1.ebuild:
+  Version bumped.
+
+*uim-0.4.4.2 (11 Oct 2004)
+
+  11 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> -uim-0.4.4.1.ebuild,
+  +uim-0.4.4.2.ebuild:
+  Version bumped.
+
+*uim-0.4.4.1 (10 Oct 2004)
+
+  10 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> +uim-0.4.4.1.ebuild,
+  -uim-0.4.4.ebuild:
+  0.4.4 build fails if uim is not present in system.
+
+*uim-0.4.4 (10 Oct 2004)
+
+  10 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> +uim-0.4.4.ebuild:
+  Version bumped.
+
+  03 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> uim-0.4.3.ebuild:
+  Stable on x86, ppc and alpha.
+
+*uim-0.4.3 (04 Sep 2004)
+
+  04 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> +uim-0.4.3.ebuild:
+  Version bumped.
+
+  30 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> uim-0.4.2.1.ebuild:
+  Stable on x86, alpha and ppc.
+
+  15 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> -uim-0.3.8.ebuild,
+  -uim-0.3.9-r1.ebuild, uim-0.4.1.ebuild:
+  Marked 0.4.1 stable on ppc. Removed old versions.
+
+  14 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> +uim-pinyin-big5-gentoo.diff,
+  uim-0.4.1.ebuild, uim-0.4.2.1.ebuild:
+  Force uim-default as default. Fixed bug #58656.
+
+  04 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> uim-0.3.9-r1.ebuild,
+  uim-0.4.1.ebuild:
+  Stable on x86 and alpha.
+
+*uim-0.4.2.1 (31 Jul 2004)
+
+  31 Jul 2004; MATSUU Takuto <matsuu@gentoo.org> +uim-0.4.2.1.ebuild:
+  Version bumped.
+
+  18 Jul 2004; Tom Gall <tgall@gentoo.org> uim-0.4.1.ebuild:
+  stable on ppc64, bug #57120
+
+*uim-0.4.1 (11 Jul 2004)
+
+  11 Jul 2004; Mamoru KOMACHI <usata@gentoo.org> -uim-0.4.0.ebuild,
+  +uim-0.4.1.ebuild:
+  Version bumped.
+
+  10 Jul 2004; Mamoru KOMACHI <usata@gentoo.org> uim-0.4.0.ebuild:
+  Block app-i18n/uim-fep since uim-0.4.0 includes uim-fep
+
+*uim-0.4.0 (09 Jul 2004)
+
+  09 Jul 2004; Mamoru KOMACHI <usata@gentoo.org> -uim-0.3.9-r2.ebuild,
+  +uim-0.4.0.ebuild:
+  Version bumped.
+
+*uim-0.3.9-r2 (16 Jun 2004)
+
+  16 Jun 2004; Mamoru KOMACHI <usata@gentoo.org> -uim-0.3.6.ebuild,
+  +uim-0.3.9-r2.ebuild:
+  Added m17n-lib IUSE flag. Removed old version.
+
+  15 Jun 2004; <matsuu@gentoo.org> uim-0.3.9-r1.ebuild:
+  Added ~sparc to KEYWORDS.
+
+*uim-0.3.9-r1 (15 Jun 2004)
+
+  15 Jun 2004; MATSUU Takuto <matsuu@gentoo.org> +uim-0.3.9-r1.ebuild:
+  Added X to IUSE.
+  Fixed xim compile problem.
+
+*uim-0.3.9 (14 Jun 2004)
+
+  14 Jun 2004; Mamoru KOMACHI <usata@gentoo.org> +uim-0.3.9.ebuild:
+  Version bumped.
+
+  14 Jun 2004; MATSUU Takuto <matsuu@gentoo.org> uim-0.3.8.ebuild:
+  Added ~amd64 to KEYWORDS.
+
+  05 Jun 2004; Mamoru KOMACHI <usata@gentoo.org> uim-0.3.4.2.ebuild,
+  uim-0.3.8.ebuild:
+  Resurrected 0.3.4.2 as >=uim-0.3.5 freezes in some KDE env.
+  Marked 0.3.8 stable.
+
+*uim-0.3.8 (18 May 2004)
+
+  18 May 2004; Mamoru KOMACHI <usata@gentoo.org> uim-0.3.3.ebuild,
+  uim-0.3.4.2.ebuild, uim-0.3.6.ebuild, uim-0.3.8.ebuild:
+  Version bumped. Removed old ebuilds and marked 0.3.6 stable.
+
+*uim-0.3.6 (06 May 2004)
+
+  06 May 2004; Mamoru KOMACHI <usata@gentoo.org> uim-0.3.5.ebuild,
+  uim-0.3.6.ebuild, files/uim-0.3.5-engines.diff:
+  Version bumped. Removed unstable 0.3.5 from CVS
+
+  02 May 2004; Mamoru KOMACHI <usata@gentoo.org> uim-0.3.5.ebuild:
+  Applied a patch to fix IM switch. Also, uim-0.3.5 requires
+  >=app-i18n/prime-0.8
+
+*uim-0.3.5 (02 May 2004)
+
+  02 May 2004; Mamoru KOMACHI <usata@gentoo.org> uim-0.3.5.ebuild:
+  Version bumped.
+
+  07 Apr 2004; David Holm <dholm@gentoo.org> uim-0.3.4.2.ebuild:
+  Added to ~ppc.
+
+*uim-0.3.4.2 (07 Apr 2004)
+
+  07 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> uim-0.3.2.ebuild,
+  uim-0.3.3.ebuild, uim-0.3.4.2.ebuild:
+  Version bumped. Fix for uim-anthy. Added flag-o-matic.
+
+*uim-0.3.4.1 (07 Apr 2004)
+
+  07 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> uim-0.2.4.ebuild,
+  uim-0.2.8.ebuild, uim-0.3.3.ebuild, uim-0.3.4.1.ebuild:
+  Version bumped. Marked 0.3.3 stable on x86 and alpha. Removed old ebuilds.
+
+  01 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> uim-0.3.2.ebuild:
+  Stable on x86 and alpha
+
+*uim-0.3.3 (22 Mar 2004)
+
+  22 Mar 2004; Mamoru KOMACHI <usata@gentoo.org> uim-0.3.3.ebuild:
+  Removed unnecessary gtk24 patch for uim-0.3.3
+
+  22 Mar 2004; Mamoru KOMACHI <usata@gentoo.org> uim-0.3.3.ebuild,
+  files/uim-gtk-query-immodules-gentoo.diff:
+  Version bumped. Fixed gtk-query-immodules patch.
+
+  21 Mar 2004; Mamoru KOMACHI <usata@gentoo.org> uim-0.2.4.ebuild,
+  uim-0.2.8.ebuild, uim-0.3.0.1.ebuild, uim-0.3.1.ebuild, uim-0.3.2.ebuild,
+  files/uim-gtk-query-immodules-gentoo.diff:
+  Force gtk+-2.2 for <=app-i18n/uim-0.3.1 and added a patch to fix compile on
+  >=x11-libs/gtk+-2.4 for uim-0.3.2. See bug #45086
+
+*uim-0.3.2 (08 Mar 2004)
+
+  15 Mar 2004; Mamoru KOMACHI <usata@gentoo.org> uim-0.2.4.ebuild,
+  uim-0.2.8.ebuild, uim-0.3.0.1.ebuild, uim-0.3.1.ebuild, uim-0.3.2.ebuild:
+  Updated HOMEPAGE.
+
+  08 Mar 2004; Mamoru KOMACHI <usata@gentoo.org> uim-0.3.2.ebuild:
+  Version bumped. Important bug fix for uim-skk.
+
+*uim-0.3.1 (29 Feb 2004)
+
+  29 Feb 2004; Mamoru KOMACHI <usata@gentoo.org> uim-0.3.1.ebuild:
+  Version bumped, closing bug #43263
+
+*uim-0.3.0.1 (23 Feb 2004)
+
+  23 Feb 2004; Mamoru KOMACHI <usata@gentoo.org> uim-0.3.0.1.ebuild:
+  Version bumped. Closing bug #42504
+
+  18 Feb 2004; Mamoru KOMACHI <usata@gentoo.org> uim-0.2.5.2.ebuild,
+  uim-0.2.8.ebuild:
+  Marked stable on x86 and alpha. Removed 0.2.5.2 because of annoying
+  uim-skk bug.
+
+  06 Feb 2004; Mamoru KOMACHI <usata@gentoo.org> uim-0.2.5.2.ebuild:
+  Marked as stable
+
+*uim-0.2.8 (04 Feb 2004)
+
+  04 Feb 2004; Mamoru KOMACHI <usata@gentoo.org> uim-0.2.8.ebuild:
+  Version bumped
+
+*uim-0.2.7 (27 Jan 2004)
+
+  27 Jan 2004; Mamoru KOMACHI <usata@gentoo.org> uim-0.2.7.ebuild,
+  uim-0.2.5.2.ebuild, uim-0.2.4.ebuild, uim-0.1.3.ebuild:
+  Version bumped. Blocks app-i18n/uim-svn.
+
+  25 Jan 2004; Mamoru KOMACHI <usata@gentoo.org> uim-0.2.5.2.ebuild:
+  Added a notice for using uim-prime as it needs >=dev-libs/suikyo-1.3.0
+
+*uim-0.2.5.2 (25 Jan 2004)
+
+  25 Jan 2004; Mamoru KOMACHI <usata@gentoo.org> uim-0.2.5.2.ebuild:
+  Version bumped, closing bug #39196. Cleaned out old ebuilds.
+
+*uim-0.2.4 (11 Jan 2004)
+
+  11 Jan 2004; Mamoru KOMACHI <usata@gentoo.org> uim-0.2.4.ebuild:
+  Version bumped. XIM fix is solved by the upstream.
+
+*uim-0.2.3.1 (06 Jan 2004)
+
+  06 Jan 2004; Mamoru KOMACHI <usata@gentoo.org> uim-0.2.3.1.ebuild,
+  uim-0.2.3.1-xim-gentoo.diff:
+  Version bumped, closing bug #37315
+
+*uim-0.2.2 (31 Dec 2003)
+
+  31 Dec 2003; Mamoru KOMACHI <usata@gentoo.org> uim-0.2.2.ebuild:
+  Version bumped, closing bug #36854
+
+*uim-0.2.1 (22 Dec 2003)
+
+  22 Dec 2003; Mamoru KOMACHI <usata@gentoo.org> uim-0.1.6.ebuild,
+  uim-0.1.7.ebuild, uim-0.2.0.ebuild, uim-0.2.1.ebuild,
+  files/uim-gtk-query-immodules-gentoo.diff:
+  Version bumped. Marked previous versions stable
+
+*uim-0.2.0 (08 Dec 2003)
+
+  08 Dec 2003; Mamoru KOMACHI <usata@gentoo.org> uim-0.2.0.ebuild:
+  Version bumped
+
+*uim-0.1.7 (01 Dec 2003)
+
+  01 Dec 2003; Mamoru KOMACHI <usata@gentoo.org> uim-0.1.5.ebuild,
+  uim-0.1.6.ebuild, uim-0.1.7.ebuild:
+  Version bumped. Marked 0.1.6 as stable.
+
+*uim-0.1.6 (23 Nov 2003)
+
+  23 Nov 2003; Mamoru KOMACHI <usata@gentoo.org> uim-0.1.6.ebuild:
+  Version bumped
+
+  18 Nov 2003; Mamoru KOMACHI <usata@gentoo.org> uim-0.0.7.ebuild,
+  uim-0.1.1.ebuild, uim-0.1.2.ebuild, uim-0.1.3.ebuild, uim-0.1.4.1.ebuild,
+  uim-0.1.5.ebuild:
+  Cleaned out old ebuilds. Marked 0.1.5 stable on x86 and alpha, 0.1.3
+  on ppc and sparc.
+
+*uim-0.1.5 (10 Nov 2003)
+
+  10 Nov 2003; Mamoru KOMACHI <usata@gentoo.org> uim-0.1.5.ebuild:
+  Version bumped
+
+*uim-0.1.4.1 (03 Nov 2003)
+
+  03 Nov 2003; Mamoru KOMACHI <usata@gentoo.org> uim-0.1.4.1.ebuild:
+  Version bumped
+
+  26 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> uim-0.0.2.1.ebuild,
+  uim-0.0.3.ebuild, uim-0.0.4.ebuild, uim-0.0.5.1.ebuild, uim-0.0.6.ebuild,
+  uim-0.0.8.ebuild, uim-0.0.9.ebuild, uim-0.1.0.ebuild:
+  Removed old versions
+
+*uim-0.1.3 (26 Oct 2003)
+
+  10 Nov 2003; Mamoru KOMACHI <usata@gentoo.org> uim-0.1.3.ebuild:
+  Marked stable for x86 and alpha
+
+  26 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> uim-0.1.3.ebuild:
+  Version bumped
+
+*uim-0.1.2 (15 Oct 2003)
+
+  03 Nov 2003; Mamoru KOMACHI <usata@gentoo.org> uim-0.1.2.ebuild:
+  Marked as stable on x86 and alpha.
+
+  23 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> uim-0.1.2.ebuild:
+  Added ~alpha and ~ppc keywords.
+
+  15 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> uim-0.1.2.ebuild,
+  uim-0.0.9.ebuild:
+  Version bumped. Marked 0.0.9 as stable for x86.
+
+*uim-0.1.1 (11 Oct 2003)
+
+  23 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> uim-0.1.1.ebuild:
+  Marked stable on x86.
+
+  11 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> uim-0.1.1.ebuild:
+  Version bumped
+
+*uim-0.1.0 (09 Oct 2003)
+
+  09 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> uim-0.1.0.ebuild:
+  Version bumped
+
+*uim-0.0.9 (05 Oct 2003)
+
+  05 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> uim-0.0.9.ebuild:
+  Version bumped. The problem that uim-helper-server and uim-xim
+  suck CPU was fixed (this problem exists only in uim-0.0.8).
+
+  05 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> uim-0.0.2.1.ebuild,
+  uim-0.0.3.ebuild, uim-0.0.4.ebuild, uim-0.0.5.1.ebuild, uim-0.0.7.ebuild,
+  uim-0.0.8.ebuild:
+  Fixed typo (The second DEPEND should be RDEPEND)
+
+*uim-0.0.8 (29 Sep 2003)
+
+  29 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> uim-0.0.8.ebuild:
+  Version bumped
+
+*uim-0.0.7 (19 Sep 2003)
+
+  05 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> uim-0.0.7.ebuild:
+  Marked stable for x86
+
+  19 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> uim-0.0.7.ebuild:
+  Version bumped.
+
+*uim-0.0.6 (14 Sep 2003)
+
+  27 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> uim-0.0.6.ebuild:
+  Marked as stable on x86
+
+  18 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> uim-0.0.6.ebuild:
+  Added debug IUSE flag
+
+  14 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> metadata.xml,
+  uim-0.0.6.ebuild:
+  Version bumped.
+
+*uim-0.0.5.1 (11 Sep 2003)
+
+  11 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> uim-0.0.2.1.ebuild,
+  uim-0.0.5.1.ebuild, uim-2013.ebuild, uim-2018.ebuild, uim-2023.ebuild:
+  Version bumped.  Removed old versions because they block newer ones.
+
+*uim-0.0.4 (08 Sep 2003)
+
+  19 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> uim-0.0.4.ebuild:
+  Marked as stable.
+
+  08 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> uim-0.0.4.ebuild:
+  Version bumped.
+
+*uim-0.0.3 (05 Sep 2003)
+
+  05 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> uim-0.0.2.1.ebuild,
+  uim-0.0.3.ebuild:
+  Version bumped. Removed unused canna USE flag (uim-canna have never
+  worked, anyway). Fixed gtk USE flag (it hadn't worked since uim-2018).
+
+*uim-0.0.2.1 (01 Sep 2003)
+
+  01 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> uim-0.0.2.1.ebuild:
+  Version bump.  Automatically generates /etc/gtk-2.0/gtk.immodules.
+
+*uim-2023 (26 Aug 2003)
+
+  08 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> uim-2018.ebuild,
+  uim-2023.ebuild:
+  Marked as stable on x86
+
+  26 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> uim-2023.ebuild:
+  Version bump
+
+*uim-2018 (20 Aug 2003)
+
+  20 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> uim-2013.ebuild,
+  uim-2018.ebuild:
+  Version bump.  Ebuild submitted by MATSUU Takuto <matsuu@gentoo.org>
+  to GentooJP BugTrack
+
+*uim-2013 (17 Aug 2003)
+
+  26 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> uim-2013.ebuild:
+  Marked as stable
+
+  17 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> uim-2013.ebuild:
+  Initial import

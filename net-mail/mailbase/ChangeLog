@@ -1,0 +1,314 @@
+# ChangeLog for net-mail/mailbase
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/mailbase/ChangeLog,v 1.93 2014/01/18 04:15:22 vapier Exp $
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> mailbase-1.1.ebuild:
+  Add arm64 love.
+
+  08 Jan 2014; Mike Frysinger <vapier@gentoo.org> mailbase-1.ebuild:
+  Inherit the user eclass for enewuser/etc...
+
+  24 Feb 2013; Agostino Sarubbo <ago@gentoo.org> mailbase-1.1.ebuild:
+  Stable for sh, wrt bug #452366
+
+  20 Feb 2013; Agostino Sarubbo <ago@gentoo.org> mailbase-1.1.ebuild:
+  Stable for s390, wrt bug #452366
+
+  20 Feb 2013; Eray Aslan <eras@gentoo.org> -mailbase-0.00-r6.ebuild,
+  mailbase-1.1.ebuild:
+  Remove old
+
+  19 Feb 2013; Eray Aslan <eras@gentoo.org> mailbase-1.1.ebuild:
+  Remove spurious / from elog output - bug #458120
+
+  22 Jan 2013; Agostino Sarubbo <ago@gentoo.org> mailbase-1.1.ebuild:
+  Stable for x86, wrt bug #452366
+
+  21 Jan 2013; Agostino Sarubbo <ago@gentoo.org> mailbase-1.1.ebuild:
+  Stable for sparc, wrt bug #452366
+
+  21 Jan 2013; Agostino Sarubbo <ago@gentoo.org> mailbase-1.1.ebuild:
+  Stable for ia64, wrt bug #452366
+
+  20 Jan 2013; Agostino Sarubbo <ago@gentoo.org> mailbase-1.1.ebuild:
+  Stable for arm, wrt bug #452366
+
+  20 Jan 2013; Agostino Sarubbo <ago@gentoo.org> mailbase-1.1.ebuild:
+  Stable for alpha, wrt bug #452366
+
+  18 Jan 2013; Jeroen Roovers <jer@gentoo.org> mailbase-1.1.ebuild:
+  Stable for HPPA (bug #452366).
+
+  16 Jan 2013; Agostino Sarubbo <ago@gentoo.org> mailbase-1.1.ebuild:
+  Stable for ppc64, wrt bug #452366
+
+  16 Jan 2013; Agostino Sarubbo <ago@gentoo.org> mailbase-1.1.ebuild:
+  Stable for ppc, wrt bug #452366
+
+  16 Jan 2013; Agostino Sarubbo <ago@gentoo.org> mailbase-1.1.ebuild:
+  Stable for amd64, wrt bug #452366
+
+*mailbase-1.1 (12 Oct 2012)
+
+  12 Oct 2012; Eray Aslan <eras@gentoo.org> +mailbase-1.1.ebuild:
+  Make /var/spool/mail/ directory setgid and sticky - bugs #424431 #426962
+  #438062 and various others
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> mailbase-1.ebuild:
+  keyword ~amd64-fbsd
+
+  06 Feb 2011; Mart Raudsepp <leio@gentoo.org> mailbase-0.00-r6.ebuild,
+  mailbase-1.ebuild:
+  Drop to ~mips
+
+  14 Nov 2007; Mike Frysinger <vapier@gentoo.org> mailbase-1.ebuild:
+  Move mail user/group and postmaster user here from baselayout.
+
+  17 Jun 2007; Fernando J. Pereda <ferdy@gentoo.org> mailbase-1.ebuild:
+  Don't mix ewarn and echo as per bug #182348
+
+  08 Feb 2007; Fabian Groffen <grobian@gentoo.org> mailbase-0.00-r6.ebuild,
+  mailbase-1.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  06 Jan 2007; Timothy Redaelli <drizzt@gentoo.org> mailbase-1.ebuild:
+  Added stat for BSD wrt bug #153869, acknowledged by Fernando J. Pereda
+
+  06 Jan 2007; Fernando J. Pereda <ferdy@gentoo.org>
+  -mailbase-0.00-r4.ebuild, -mailbase-0.00-r5.ebuild,
+  -mailbase-0.00-r7.ebuild, -mailbase-0.00-r8.ebuild,
+  -mailbase-0.00-r9.ebuild:
+  QA: Clean unused versions.
+
+  17 Oct 2006; Roy Marples <uberlord@gentoo.org> mailbase-1.ebuild:
+  Added ~sparc-fbsd keyword.
+
+  03 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> mailbase-1.ebuild:
+  Add ~x86-fbsd keyword.
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> mailbase-1.ebuild:
+  stable on ia64
+
+  19 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> mailbase-1.ebuild:
+  Stable on ppc.
+
+  09 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> mailbase-1.ebuild:
+  Stable on mips.
+
+  09 Aug 2005; Diego Pettenò <flameeyes@gentoo.org> mailbase-1.ebuild:
+  Stable on amd64.
+
+  08 Aug 2005; Markus Rothe <corsair@gentoo.org> mailbase-1.ebuild:
+  Stable on ppc64
+
+  03 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> mailbase-1.ebuild:
+  Stable on sparc
+
+  03 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org> mailbase-1.ebuild:
+  stable on x86 and alpha
+
+  29 Jul 2005; MATSUU Takuto <matsuu@gentoo.org> mailbase-0.00-r9.ebuild:
+  stable on sh.
+
+  28 Jun 2005; Joshua Kinard <kumba@gentoo.org> mailbase-0.00-r9.ebuild:
+  Marked stable on mips.
+
+  18 Jun 2005; Chris Bainbridge <chrb@gentoo.org> Manifest:
+  Fix broken manifest.
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> mailbase-0.00-r9.ebuild:
+  Stable on ppc.
+
+  12 Jun 2005; Olivier Crête <tester@gentoo.org> mailbase-0.00-r9.ebuild:
+  Stable on amd64
+
+  08 Jun 2005; Fernando J. Pereda <ferdy@gentoo.org> mailbase-1.ebuild:
+  remove the pam.d files check
+
+  06 Jun 2005; Markus Rothe <corsair@gentoo.org> mailbase-0.00-r9.ebuild:
+  Stable on ppc64
+
+  31 May 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  mailbase-0.00-r9.ebuild:
+  Stable on hppa.
+
+  31 May 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  mailbase-0.00-r9.ebuild:
+  Stable on alpha
+
+  30 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  mailbase-0.00-r9.ebuild:
+  Stable on sparc
+
+  30 May 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  mailbase-0.00-r9.ebuild:
+  Stable on x86
+
+  22 May 2005; Fernando J. Pereda <ferdy@gentoo.org> mailbase-1.ebuild:
+  bit of cleanup
+
+  29 Apr 2005; Fernando J. Pereda <ferdy@gentoo.org> mailbase-1.ebuild:
+  make it respect USE pam, wrt #90870. Reported by: Nuno Alexandre
+  <ikaro@fluxbox.org>
+
+*mailbase-0.00-r9 (11 Apr 2005)
+
+  11 Apr 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +mailbase-0.00-r9.ebuild:
+  Replace pkg_postinst code with an ewarn if user changed /var/spool/mail
+  perms. wrt 88177
+
+  06 Apr 2005; Markus Rothe <corsair@gentoo.org> mailbase-0.00-r8.ebuild:
+  Stable on ppc64
+
+  06 Mar 2005; Bryan Østergaard <kloeri@gentoo.org>
+  mailbase-0.00-r8.ebuild:
+  Stable on alpha, bug 83797.
+
+  23 Feb 2005; Marcus D. Hanwell <cryos@gentoo.org> mailbase-0.00-r8.ebuild:
+  Stable on amd64, bug 82404.
+
+  19 Feb 2005; Michael Hanselmann <hansmi@gentoo.org>
+  mailbase-0.00-r8.ebuild:
+  Stable on hppa.
+
+  19 Feb 2005; Michael Hanselmann <hansmi@gentoo.org>
+  mailbase-0.00-r8.ebuild:
+  Stable on ppc.
+
+  18 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org> mailbase-0.00-r8.ebuild:
+  Stable on sparc wrt #82404
+
+  17 Feb 2005; Olivier Crête <tester@gentoo.org> mailbase-0.00-r8.ebuild:
+  Marking stable on x86 for security bug #82404
+
+  14 Feb 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  mailbase-0.00-r8.ebuild:
+  Use symlinks instead of regular files
+
+  11 Feb 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  mailbase-0.00-r8.ebuild:
+  Make it respect USE=pam. Fixes #81614. Thanks to SpanKY <vapier@gentoo.org>
+
+*mailbase-0.00-r8 (11 Feb 2005)
+
+  11 Feb 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +mailbase-0.00-r8.ebuild:
+  Handle instalation of pam.d files with newins instead of copying
+
+  10 Feb 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  mailbase-0.00-r7.ebuild:
+  Use  instead of accessing /
+
+*mailbase-0.00-r7 (10 Feb 2005)
+
+  10 Feb 2005; Fernando J. Pereda <ferdy@gentoo.org> +files/common-pamd,
+  +mailbase-0.00-r7.ebuild:
+  Version bump. Related to #79240. Reported by Wolfram Schlich
+  <wschlich@gentoo.org>
+
+  18 Jan 2005; Joshua Kinard <kumba@gentoo.org> mailbase-0.00-r6.ebuild:
+  Marked stable on mips.
+
+  16 Jan 2005; Guy Martin <gmsoft@gentoo.org> mailbase-0.00-r6.ebuild:
+  Stable on hppa.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  17 Dec 2004; Gustavo Zacarias <gustavoz@gentoo.org> mailbase-0.00-r6.ebuild:
+  Stable on sparc
+
+  16 Dec 2004; Dylan Carlson <absinthe@gentoo.org> mailbase-0.00-r6.ebuild:
+  Stable on amd64.
+
+  16 Dec 2004; Andrej Kacian <ticho@gentoo.org> mailbase-0.00-r6.ebuild:
+  Stable on x86.
+
+  23 Jul 2004; Mamoru KOMACHI <usata@gentoo.org> mailbase-0.00-r6.ebuild:
+  Added to macos.
+
+  07 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> mailbase-0.00-r6.ebuild:
+  Stable on alpha.
+
+  01 Apr 2004; <randy@gentoo.org> mailbase-0.00-r6.ebuild:
+  Adding s390 keywords
+
+  14 Mar 2004; Tom Gall <tgall@gentoo.org> mailbase-0.00-r6.ebuild:
+  stable on ppc64
+
+  28 Jan 2004; Aron Griffis <agriffis@gentoo.org> mailbase-0.00-r5.ebuild:
+  stable on alpha and ia64
+
+  20 Jan 2004; Martin Holzer <mholzer@gentoo.org> mailbase-0.00-r5.ebuild,
+  mailbase-0.00-r6.ebuild:
+  fowner syntax. closes 38034
+
+  25 Dec 2003; Robin H. Johnson <robbat2@gentoo.org> mailbase-0.00-r4.ebuild:
+  change to keepdir as per bug #35308
+
+  14 Dec 2003; <spider@gentoo.org> mailbase-0.00-r4.ebuild,
+  mailbase-0.00-r5.ebuild, mailbase-0.00-r6.ebuild:
+  QA: fixing chown user.group to user:group, bug #35127
+
+  09 Dec 2003; Lars Weiler <pylon@gentoo.org> mailbase-0.00-r5.ebuild:
+  Masked stable on ppc
+
+*mailbase-0.00-r6 (06 Aug 2003)
+
+  08 Aug 2003; Jan Seidel <tuxus@gentoo.org> mailbase-0.00-r6.ebuild :
+  Added ~mips to keywords.
+
+  06 Aug 2003; Daniel Ahlberg <aliz@gentoo.org> mailbase-0.00-r6.ebuild :
+  Both #8029 and #16749 says 0775 for /var/spool/mail.
+
+  15 Jul 2003; Christian Birchinger <joker@gentoo.org>
+  mailbase-0.00-r5.ebuild:
+  Added sparc stable keyword
+
+  20 Feb 2003; Zach Welch <zwelch@gentoo.org> :
+  Added arm to keywords.
+
+  12 Feb 2003; Guy Martin <gmsoft@gentoo.org> :
+  Added hppa to keywords.
+
+  25 Dec 2002; Martin Schlemmer <azarah@gentoo.org> mailbase-0.00-r5.ebuild :
+  Always set the ownership and permissions in pkg_postinst(), closing bug #8029.
+  Cleanup the build a bit by using keepdir, fowners and fperms.
+
+*mailbase-0.00-r5 (18 Dec 2002)
+
+  08 Aug 2003; Jan Seidel <tuxus@gentoo.org> mailbase-0.00-r5.ebuild :
+  Added mips to keywords.
+
+  18 Dec 2002; Nick Hadaway <raker@gentoo.org> mailbase-0.00-r5.ebuild :
+  Changed /var/spool/mail permissions to 1777
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*mailbase-0.00-r4 (27 Jun 2002)
+
+  18 Apr 2003; Jan Seidel <tuxus@gentoo.org> mailbase-0.00-r4.ebuild :
+  Added mips to keywords.
+
+  27 Jun 2002; Phil Bordelon <sunflare@gentoo.org> mailbase-0.00-r4.ebuild :
+
+  Added a .keep in /var/spool/mail so it doesn't get removed when mailbase is
+  unmerged from an upgrade.  Also cleaned up the ebuild to match the current
+  format.  The original Author of the script was Jerry Alexandratos <jerry@gentoo.org>.
+
+*mailbase-0.00-r3 (12 May 2002)
+
+  12 May 2002; Martin Schlemmer <azarah@gentoo.org> mailbase-0.00-r3.ebuild :
+
+  Change ownership on /var/spool/mail to root.mail.
+
+*mailbase-0.00-r1 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

@@ -1,0 +1,30 @@
+--- a/common/lib/r_assoc.c
++++ b/common/lib/r_assoc.c
+@@ -57,6 +57,7 @@
+ static char *RCSSTRING="$Id: ssldump-0.9-includes.patch,v 1.1 2014/07/17 15:54:58 jer Exp $";
+ 
+ #include <r_common.h>
++#include <string.h> /* memcpy() memcmp() */
+ #include "r_assoc.h"
+ 
+ typedef struct r_assoc_el_ {
+--- a/common/lib/r_bitfield.c
++++ b/common/lib/r_bitfield.c
+@@ -11,6 +11,7 @@
+ static char *RCSSTRING="$Id: ssldump-0.9-includes.patch,v 1.1 2014/07/17 15:54:58 jer Exp $";
+ 
+ #include <r_common.h>
++#include <string.h> /* memcpy() memset() */
+ #include "r_bitfield.h"
+ 
+ int r_bitfield_create(setp,size)
+--- a/common/lib/r_data.c
++++ b/common/lib/r_data.c
+@@ -47,6 +47,7 @@
+ static char *RCSSTRING="$Id: ssldump-0.9-includes.patch,v 1.1 2014/07/17 15:54:58 jer Exp $";
+ 
+ #include <r_common.h>
++#include <string.h> /* memcmp() memcpy() memset() */
+ #include <r_data.h>
+ 
+ int r_data_create(dp,d,l)

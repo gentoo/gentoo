@@ -1,0 +1,83 @@
+# ChangeLog for dev-php/pecl-gearman
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/pecl-gearman/ChangeLog,v 1.12 2015/05/29 08:55:50 idella4 Exp $
+
+  29 May 2015; Ian Delaney <idella4@gentoo.org> pecl-gearman-1.0.2-r1.ebuild:
+  add support for PHP 5.6, fixes bug #550258
+
+  03 Oct 2014; Brian Evans <grknight@gentoo.org> -pecl-gearman-1.0.2.ebuild:
+  Drop old
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  pecl-gearman-1.0.2-r1.ebuild, pecl-gearman-1.0.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*pecl-gearman-1.0.2-r1 (28 Jul 2013)
+
+  28 Jul 2013; Ole Markus With <olemarkus@gentoo.org>
+  +pecl-gearman-1.0.2-r1.ebuild:
+  Revbump. Removing php 5.3 support, adding 5.5 support
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  23 Aug 2012; Ole Markus With <olemarkus@gentoo.org>
+  -pecl-gearman-0.8.0.ebuild, -pecl-gearman-1.0.1-r1.ebuild,
+  -pecl-gearman-1.0.1.ebuild:
+  Removing old ebuilds
+
+  24 Jun 2012; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Update metadata, helps my own bug templating script.
+
+*pecl-gearman-1.0.2 (06 Mar 2012)
+
+  06 Mar 2012; Ole Markus With <olemarkus@gentoo.org>
+  +pecl-gearman-1.0.2.ebuild:
+  Version bump
+
+*pecl-gearman-1.0.1-r1 (03 Mar 2012)
+
+  03 Mar 2012; Ole Markus With <olemarkus@gentoo.org>
+  +pecl-gearman-1.0.1-r1.ebuild:
+  Version bump supporting php 5.4
+
+*pecl-gearman-1.0.1 (10 Feb 2012)
+
+  10 Feb 2012; Matti Bickel <mabi@gentoo.org> +pecl-gearman-1.0.1.ebuild,
+  -pecl-gearman-0.7.0-r1.ebuild:
+  version bump
+
+*pecl-gearman-0.8.0 (18 May 2011)
+
+  18 May 2011; <olemarkus@gentoo.org> +pecl-gearman-0.8.0.ebuild:
+  Version bump
+
+*pecl-gearman-0.7.0-r1 (08 Oct 2010)
+
+  08 Oct 2010; <olemarkus@gentoo.org> +pecl-gearman-0.7.0-r1.ebuild:
+  Added version supporting minor version slotting
+
+  26 Sep 2010; <olemarkus@gentoo.org> pecl-gearman-0.7.0.ebuild:
+  Added ~x86 keyword
+
+  06 Sep 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -pecl-gearman-0.6.0.ebuild:
+  Remove obsolete version.
+
+*pecl-gearman-0.7.0 (10 Mar 2010)
+
+  10 Mar 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  +pecl-gearman-0.7.0.ebuild:
+  Version bump. Proxy commit for Pavel Stratil.
+
+  27 Feb 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  pecl-gearman-0.6.0.ebuild:
+  Update the dep to restrict new gearman. Per bug #306547. Thx to Matthew
+  Schultz
+
+*pecl-gearman-0.6.0 (23 Dec 2009)
+
+  23 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +pecl-gearman-0.6.0.ebuild, +metadata.xml:
+  Initial imprort of PHP support for gearman. Thanks to Pavel Stratil once
+  again for the ebuil.

@@ -1,0 +1,17 @@
+# ChangeLog for net-analyzer/pathload
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/pathload/ChangeLog,v 1.3 2014/07/16 17:59:33 jer Exp $
+
+  16 Jul 2014; Jeroen Roovers <jer@gentoo.org> pathload-1.3.2.ebuild:
+  Move sources to dev space.
+
+  16 Jul 2014; Jeroen Roovers <jer@gentoo.org> pathload-1.3.2.ebuild,
+  +files/pathload-1.3.2-make.patch:
+  EAPI bump. Fix parallel make. Update HOMEPAGE/SRC_URI. Install docs.
+
+*pathload-1.3.2 (23 May 2007)
+
+  23 May 2007; Markus Ullmann <jokey@gentoo.org> +metadata.xml,
+  +pathload-1.3.2.ebuild:
+  Initial import for bug #125884
+

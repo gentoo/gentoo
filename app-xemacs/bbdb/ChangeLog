@@ -1,0 +1,64 @@
+# ChangeLog for app-xemacs/bbdb
+# Copyright 2002-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/bbdb/ChangeLog,v 1.21 2009/02/19 23:51:54 fauli Exp $
+
+  19 Feb 2009; Christian Faulhammer <fauli@gentoo.org> -bbdb-1.29.ebuild:
+  clean up
+
+  12 May 2008; Markus Rothe <corsair@gentoo.org> bbdb-1.32.ebuild:
+  Stable on ppc64
+
+  05 May 2008; Raúl Porcel <armin76@gentoo.org> bbdb-1.32.ebuild:
+  alpha/sparc stable wrt #219332
+
+  02 May 2008; Christian Faulhammer <opfer@gentoo.org> bbdb-1.32.ebuild:
+  stable x86, bug 219332
+
+  30 Apr 2008; nixnut <nixnut@gentoo.org> bbdb-1.32.ebuild:
+  Stable on ppc wrt bug 219332
+
+  26 Apr 2008; Hans de Graaff <graaff@gentoo.org> bbdb-1.32.ebuild:
+  Mark stable on amd64 , bug #219332
+
+  19 Mar 2008; Hans de Graaff <graaff@gentoo.org> metadata.xml:
+  A herd should not be listed as maintainer
+
+  21 Oct 2007; Hans de Graaff <graaff@gentoo.org> -bbdb-1.21.ebuild:
+  Remove old version
+
+  03 Jun 2007; Hans de Graaff <graaff@gentoo.org> bbdb-1.29.ebuild:
+  Stable on amd64, ppc, ppc64, sparc, x86 as per #175560
+
+  29 May 2007; Raúl Porcel <armin76@gentoo.org> bbdb-1.29.ebuild:
+  alpha stable wrt #175560
+
+  05 May 2007; Hans de Graaff <graaff@gentoo.org> bbdb-1.21.ebuild:
+  Use RDEPEND instead of DEPEND
+
+*bbdb-1.32 (05 May 2007)
+
+  05 May 2007; Hans de Graaff <graaff@gentoo.org> +bbdb-1.32.ebuild:
+  Version bump: to upstream 2.35
+
+*bbdb-1.29 (12 Nov 2006)
+
+  12 Nov 2006; Hans de Graaff <graaff@gentoo.org> +metadata.xml,
+  +bbdb-1.29.ebuild:
+  Version bump; add metadata.
+
+  29 Sep 2005; Joseph Jezak <josejx@gentoo.org> bbdb-1.21.ebuild:
+  Marked ppc stable.
+
+  09 Aug 2004; Tom Gall <tgall@gentoo.org> bbdb-1.21.ebuild:
+  stable on ppc64, bug #57174
+
+  02 Oct 2003; Aron Griffis <agriffis@gentoo.org> bbdb-1.21.ebuild:
+  Stable on alpha
+
+*bbdb-1.21 (16 Dec 2002)
+
+  22 Feb 2003;  <rendhalver@gentoo.org> bbdb-1.21.ebuild :
+  Add ~alpha to KEYWORDS
+
+  16 Dec 2002; Rendhalver [Peter Brown] <rendhalver@gentoo.org> :
+  Initial import.

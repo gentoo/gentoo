@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <herd>sci</herd>
+  <longdescription lang="en">
+    The Enthought Tool Suite BlockCanvas project provides a visual
+    environment for creating simulation experiments, where function
+    and data are separated. Thus, you can define your simulation
+    algorithm by visually connecting function blocks into a data flow
+    network, and then run it with various data sets (known as
+    "contexts"); likewise, you can use the same context in a different
+    functional simulation.
+  </longdescription>
+</pkgmetadata>

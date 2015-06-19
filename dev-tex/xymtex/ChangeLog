@@ -1,0 +1,36 @@
+# ChangeLog for dev-tex/xymtex
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/xymtex/ChangeLog,v 1.9 2015/04/23 00:15:16 mrueg Exp $
+
+  23 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -xymtex-5.00.ebuild:
+  Remove old.
+
+  11 Sep 2012; Andreas K. Huettel <dilfridge@gentoo.org> metadata.xml:
+  Drop maintainership
+
+  02 Jun 2012; Johannes Huber <johu@gentoo.org> xymtex-5.00a.ebuild:
+  Stable for x86, wrt bug #418935
+
+  02 Jun 2012; Agostino Sarubbo <ago@gentoo.org> xymtex-5.00a.ebuild:
+  Stable for amd64, wrt bug #418935
+
+*xymtex-5.00a (05 Jan 2012)
+
+  05 Jan 2012; Andreas K. Huettel <dilfridge@gentoo.org> +xymtex-5.00a.ebuild:
+  Version bump
+
+  27 Oct 2010; Markos Chandras <hwoarang@gentoo.org> xymtex-5.00.ebuild:
+  Stable on amd64 wrt bug #342667
+
+  26 Oct 2010; Christian Faulhammer <fauli@gentoo.org> xymtex-5.00.ebuild:
+  stable x86, bug 342667
+
+  02 Oct 2010; Andreas K. Huettel <dilfridge@gentoo.org> Manifest:
+  Upstream did some last-minute fixes in the tarball...
+
+*xymtex-5.00 (30 Sep 2010)
+
+  30 Sep 2010; Andreas K. Huettel <dilfridge@gentoo.org>
+  +xymtex-5.00.ebuild, +metadata.xml:
+  New package, fixes bug 310559. Thanks to ZyX <kp-pav@yandex.ru> for the
+  original ebuild.

@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=app-arch/unzip x11-misc/makedepend
+DESCRIPTION=Extract files from Amiga adf disk images
+HOMEPAGE=http://perso.club-internet.fr/lclevy/adflib/adflib.html
+KEYWORDS=hppa ppc x86 ~x86-interix ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://perso.club-internet.fr/lclevy/adflib/adflib.zip
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=80460378faf7d3257a67e93f80f1cb96

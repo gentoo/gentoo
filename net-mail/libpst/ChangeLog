@@ -1,0 +1,216 @@
+# ChangeLog for net-mail/libpst
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/libpst/ChangeLog,v 1.50 2015/06/18 04:45:15 patrick Exp $
+
+*libpst-0.6.64 (18 Jun 2015)
+
+  18 Jun 2015; Patrick Lauer <patrick@gentoo.org> +libpst-0.6.64.ebuild:
+  Bump
+
+  04 Mar 2014; Agostino Sarubbo <ago@gentoo.org> libpst-0.6.63.ebuild:
+  Stable for x86, wrt bug #502890
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> libpst-0.6.63.ebuild:
+  amd64 stable, bug #502890
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> libpst-0.6.61.ebuild:
+  Stable for x86, wrt bug #495862
+
+*libpst-0.6.63 (14 Jan 2014)
+
+  14 Jan 2014; Patrick Lauer <patrick@gentoo.org> +libpst-0.6.63.ebuild:
+  Bump
+
+  12 Jan 2014; Pacho Ramos <pacho@gentoo.org> libpst-0.6.61.ebuild:
+  amd64 stable, bug #495862
+
+*libpst-0.6.61 (10 Aug 2013)
+
+  10 Aug 2013; Patrick Lauer <patrick@gentoo.org> +libpst-0.6.61.ebuild:
+  Bump
+
+*libpst-0.6.60 (21 Jun 2013)
+
+  21 Jun 2013; Patrick Lauer <patrick@gentoo.org> +libpst-0.6.60.ebuild:
+  Bump
+
+*libpst-0.6.59 (23 May 2013)
+
+  23 May 2013; Patrick Lauer <patrick@gentoo.org> +libpst-0.6.59.ebuild:
+  Bump
+
+  26 Mar 2013; Agostino Sarubbo <ago@gentoo.org> libpst-0.6.58.ebuild:
+  Stable for x86, wrt bug #463120
+
+  26 Mar 2013; Agostino Sarubbo <ago@gentoo.org> libpst-0.6.58.ebuild:
+  Stable for amd64, wrt bug #463120
+
+*libpst-0.6.58 (29 Jan 2013)
+
+  29 Jan 2013; Patrick Lauer <patrick@gentoo.org> +libpst-0.6.58.ebuild:
+  Bump
+
+  25 Nov 2012; Tim Harder <radhermit@gentoo.org> -libpst-0.6.54-r1.ebuild:
+  Remove old.
+
+  20 Nov 2012; Agostino Sarubbo <ago@gentoo.org> libpst-0.6.55.ebuild:
+  Stable for x86, wrt bug #441460
+
+  20 Nov 2012; Sergey Popov <pinkbyte@gentoo.org> libpst-0.6.55.ebuild:
+  amd64 stable wrt bug #441460
+
+  28 Aug 2012; Tim Harder <radhermit@gentoo.org> -libpst-0.5.2.ebuild,
+  -files/libpst-0.5.2-gentoo.diff:
+  Remove old.
+
+*libpst-0.6.55 (27 Aug 2012)
+
+  27 Aug 2012; Patrick Lauer <patrick@gentoo.org> +libpst-0.6.55.ebuild:
+  Bump
+
+  28 Jun 2012; Agostino Sarubbo <ago@gentoo.org> libpst-0.6.54-r1.ebuild:
+  Stable for amd64, wrt bug #420885
+
+  28 Jun 2012; Jeff Horelick <jdhore@gentoo.org> libpst-0.6.54-r1.ebuild:
+  marked x86 per bug 420885
+
+  27 Jun 2012; Tim Harder <radhermit@gentoo.org> libpst-0.6.54-r1.ebuild:
+  Die on sed failures.
+
+  27 Jun 2012; Tim Harder <radhermit@gentoo.org> libpst-0.6.54-r1.ebuild:
+  Don't install duplicate docs and forcibly remove all la files with
+  prune_libtool_files.
+
+  27 Jun 2012; Tim Harder <radhermit@gentoo.org> libpst-0.6.54-r1.ebuild:
+  Use eautoreconf instead of eautomake and revert prune_libtool_files usage
+  until it properly removes useless python la files.
+
+  27 Jun 2012; Tim Harder <radhermit@gentoo.org> -libpst-0.6.52.ebuild,
+  -libpst-0.6.53.ebuild, -libpst-0.6.54.ebuild:
+  Remove old.
+
+  27 Jun 2012; Tim Harder <radhermit@gentoo.org> libpst-0.6.54-r1.ebuild:
+  Use prune_libtool_files.
+
+*libpst-0.6.54-r1 (29 Jan 2012)
+
+  29 Jan 2012; Mike Gilbert <floppym@gentoo.org> +libpst-0.6.54-r1.ebuild,
+  libpst-0.6.52.ebuild, libpst-0.6.53.ebuild, libpst-0.6.54.ebuild:
+  Prepare for PYTHON_ABI-versioned Boost Python libraries in Boost 1.48. Patch
+  by Arfrever.
+
+*libpst-0.6.54 (01 Jan 2012)
+
+  01 Jan 2012; Tim Harder <radhermit@gentoo.org> +libpst-0.6.54.ebuild:
+  Version bump.
+
+*libpst-0.6.53 (05 Aug 2011)
+
+  05 Aug 2011; Tim Harder <radhermit@gentoo.org>
+  -files/libpst-0.4.1-gentoo.diff, -files/libpst-0.5.1-gentoo.diff,
+  -libpst-0.6.37.ebuild, -libpst-0.6.38.ebuild, -libpst-0.6.41.ebuild,
+  -files/libpst-0.6.41-asneeded.patch, +libpst-0.6.53.ebuild,
+  +files/libpst-0.6.53-pkgconfig-static.patch:
+  Version bump and remove old.
+
+*libpst-0.6.52 (28 May 2011)
+
+  28 May 2011; Tim Harder <radhermit@gentoo.org> +libpst-0.6.52.ebuild,
+  +files/libpst-0.6.52-no-static-python-lib.patch:
+  Version bump. Update to EAPI 4, add doc and static-libs USE flags, and don't
+  install the static python library and libtool archive file (bug #298881 by
+  Diego Elio Pettenò and Kacper Kowalik).
+
+  21 Dec 2009; Samuli Suominen <ssuominen@gentoo.org> libpst-0.6.41.ebuild,
+  +files/libpst-0.6.41-asneeded.patch:
+  Fix building with -Wl,--as-needed wrt #277145 by Kacper Kowalik.
+
+  27 Oct 2009; Mounir Lamouri <volkmar@gentoo.org> libpst-0.6.41.ebuild:
+  Keywording for ppc, bug 271000
+
+  05 Oct 2009; Raúl Porcel <armin76@gentoo.org> libpst-0.6.41.ebuild:
+  Add ~ia64/~sparc wrt #271000
+
+  25 Sep 2009; Brent Baude <ranger@gentoo.org> libpst-0.6.41.ebuild:
+  Marking libpst-0.6.41 ~ppc64 for bug 271000
+
+*libpst-0.6.41 (01 Sep 2009)
+
+  01 Sep 2009; Patrick Lauer <patrick@gentoo.org> +libpst-0.6.41.ebuild,
+  metadata.xml:
+  Bump to 0.6.41, many nice cleanups by RB. Finally enables python again.
+  Closes #282726
+
+  22 Jun 2009; Patrick Lauer <patrick@gentoo.org> -libpst-0.3.4.ebuild,
+  -libpst-0.4.1-r1.ebuild, -libpst-0.5.1.ebuild, -libpst-0.5.3.ebuild:
+  Remove old
+
+*libpst-0.6.38 (22 Jun 2009)
+
+  22 Jun 2009; Patrick Lauer <patrick@gentoo.org> +libpst-0.6.38.ebuild:
+  Bump to 0.6.38, python bits disabled for now. Fixes #274187.
+
+  15 Jun 2009; Jeroen Roovers <jer@gentoo.org> libpst-0.6.37.ebuild:
+  Marked ~hppa (bug #271002).
+
+  11 Jun 2009; Tobias Klausmann <klausman@gentoo.org> libpst-0.6.37.ebuild:
+  Keyworded on alpha, bug #271000
+
+*libpst-0.6.37 (31 May 2009)
+
+  31 May 2009; Patrick Lauer <patrick@gentoo.org> +libpst-0.6.37.ebuild:
+  Bump to 0.6.37. Thanks to Gilles Dartiguelongue for the modifications.
+  Closes #272008
+
+  31 May 2009; Brent Baude <ranger@gentoo.org> libpst-0.5.3.ebuild:
+  Marking libpst-0.5.3 ~ppc64 for bug 271000
+
+*libpst-0.5.3 (18 Apr 2009)
+
+  18 Apr 2009; Patrick Lauer <patrick@gentoo.org> +libpst-0.5.3.ebuild:
+  Bump to 0.5.3
+
+  02 Apr 2009; Caleb Tennis <caleb@gentoo.org> libpst-0.5.2.ebuild:
+  x86/amd64 stable
+
+*libpst-0.5.2 (23 Sep 2007)
+
+  23 Sep 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  +files/libpst-0.5.2-gentoo.diff, +libpst-0.5.2.ebuild:
+  Version bump to 0.5.2.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  13 Sep 2005; Luis Medinas <metalgod@gentoo.org> libpst-0.5.1.ebuild:
+  Added ~amd64 keywords. Closes bug #105828.
+
+  18 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> libpst-0.5.1.ebuild:
+  Marked stable on x86.
+
+*libpst-0.5.1 (16 Dec 2004)
+
+  16 Dec 2004; Aaron Walker <ka0ttic@gentoo.org>
+  +files/libpst-0.5.1-gentoo.diff, +libpst-0.5.1.ebuild:
+  Version bump ; new upstream maintainer (w/ a working homepage too!). Closes
+  bug 74556.
+
+*libpst-0.4.1-r1 (15 Dec 2004)
+
+  15 Dec 2004; Aaron Walker <ka0ttic@gentoo.org>
+  files/libpst-0.4.1-gentoo.diff, +libpst-0.4.1-r1.ebuild,
+  -libpst-0.4.1.ebuild:
+  Fixed typo in patch that caused libpst.h to be installed in /usr/inclue.
+
+*libpst-0.4.1 (04 Dec 2004)
+
+  04 Dec 2004; Aaron Walker <ka0ttic@gentoo.org> metadata.xml,
+  +files/libpst-0.4.1-gentoo.diff, +libpst-0.4.1.ebuild:
+  Version bump which closes bug 73302; updated metadata.xml to reflect
+  forensics herd.
+
+*libpst-0.3.4 (05 Mar 2004)
+
+  05 Mar 2004; Patrick Kursawe <phosphan@gentoo.org> libpst-0.3.4.ebuild,
+  metadata.xml:
+  Initial import

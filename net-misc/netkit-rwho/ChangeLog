@@ -1,0 +1,124 @@
+# ChangeLog for net-misc/netkit-rwho
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/netkit-rwho/ChangeLog,v 1.31 2015/05/25 09:58:42 vapier Exp $
+
+  25 May 2015; Mike Frysinger <vapier@gentoo.org>
+  +files/netkit-rwho-0.17-printf.patch, netkit-rwho-0.17-r4.ebuild:
+  Fix by Andrew Miller to use printf instead of echo -n #529974 by Diego Elio
+  Pettenò.
+
+  18 Jul 2014; Jeroen Roovers <jer@gentoo.org> -netkit-rwho-0.17-r3.ebuild,
+  netkit-rwho-0.17-r4.ebuild:
+  EAPI bump. Clean up and repackage patches.
+
+  06 Feb 2012; Brent Baude <ranger@gentoo.org> netkit-rwho-0.17-r4.ebuild:
+  Marking netkit-rwho-0.17-r4 ppc for bug 393691
+
+  05 Feb 2012; Raúl Porcel <armin76@gentoo.org> netkit-rwho-0.17-r4.ebuild:
+  alpha/s390/sh/sparc stable wrt #393691
+
+  15 Dec 2011; Agostino Sarubbo <ago@gentoo.org> netkit-rwho-0.17-r4.ebuild:
+  Stable for AMD64, wrt bug #393691
+
+  14 Dec 2011; Markus Meier <maekke@gentoo.org> netkit-rwho-0.17-r4.ebuild:
+  arm stable, bug #393691
+
+  14 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  netkit-rwho-0.17-r4.ebuild:
+  x86 stable wrt bug #393691
+
+  18 Oct 2010; Mart Raudsepp <leio@gentoo.org> netkit-rwho-0.17-r3.ebuild:
+  Drop to ~mips
+
+*netkit-rwho-0.17-r4 (15 Sep 2010)
+
+  15 Sep 2010; Jeroen Roovers <jer@gentoo.org> +netkit-rwho-0.17-r4.ebuild:
+  Respect LDFLAGS (bug #337404), CC. Die when appropriate. Remove useless
+  (R)DEPEND.
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org>
+  netkit-rwho-0.17-r3.ebuild:
+  Remove virtual/libc
+
+  16 Aug 2008; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove strerror from metadata.xml (#89719)
+
+*netkit-rwho-0.17-r3 (20 Jul 2007)
+
+  20 Jul 2007; <pva@gentoo.org> files/netkit-rwho-0.17-rc,
+  -netkit-rwho-0.17-r1.ebuild, -netkit-rwho-0.17-r2.ebuild,
+  +netkit-rwho-0.17-r3.ebuild:
+  Fixed bug #174236. ebuild bumped to propagate fixed init.d script to our
+  users. Thank Rod Butler <rbrbrb2004 AT yahoo.com> for report and Uberlord
+  for the fix.
+
+  20 Jun 2007; Raúl Porcel <armin76@gentoo.org> netkit-rwho-0.17-r2.ebuild:
+  alpha stable wrt #168158
+
+  24 Apr 2007; Bryan Østergaard <kloeri@gentoo.org>
+  netkit-rwho-0.17-r2.ebuild:
+  Stable on Mips, bug 168158.
+
+  06 Apr 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  netkit-rwho-0.17-r2.ebuild:
+  ppc stable, bug #168158
+
+  26 Mar 2007; Alec Warner <antarus@gentoo.org> netkit-rwho-0.17-r1.ebuild,
+  netkit-rwho-0.17-r2.ebuild:
+  Remove dependency on portage: ref bug 162516
+
+  17 Mar 2007; Steve Dibb <beandog@gentoo.org> netkit-rwho-0.17-r2.ebuild:
+  amd64 stable, bug 168158
+
+  01 Mar 2007; Jason Wever <weeve@gentoo.org> netkit-rwho-0.17-r2.ebuild:
+  Stable on SPARC wrt bug #168158.
+
+  24 Feb 2007; Raúl Porcel <armin76@gentoo.org> netkit-rwho-0.17-r2.ebuild:
+  x86 stable wrt bug 168158
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  21 Feb 2006; Marcelo Goes <vanquirius@gentoo.org>
+  -files/netkit-rwho-0.17-debian.patch, -files/netkit-rwho-0.17-gentoo.diff,
+  -files/netkit-rwho-0.17-tiny-packet-dos.patch, netkit-rwho-0.17-r1.ebuild,
+  netkit-rwho-0.17-r2.ebuild:
+  Move patches to mirrors, fixes large files bug 123634 reported by Mark
+  Loeser <halcy0n at gentoo dot org>.
+
+*netkit-rwho-0.17-r2 (07 Dec 2005)
+
+  07 Dec 2005; Benjamin Smee <strerror@gentoo.org>
+  +files/netkit-rwho-0.17-confd, +files/netkit-rwho-0.17-cron,
+  +files/netkit-rwho-0.17-debian.patch, files/netkit-rwho-0.17-rc,
+  +metadata.xml, +netkit-rwho-0.17-r2.ebuild:
+  added new conf, initd and patch as per bug #114694 - Thanks to Philippe Troin
+
+*netkit-rwho-0.17-r1 (05 Feb 2005)
+
+  05 Feb 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/netkit-rwho-0.17-tiny-packet-dos.patch,
+  +netkit-rwho-0.17-r1.ebuild, -netkit-rwho-0.17.ebuild:
+  Add patch to fix DoS #78371.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> netkit-rwho-0.17.ebuild:
+  change virtual/glibc to virtual/libc, add IUSE
+
+  07 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> netkit-rwho-0.17.ebuild:
+  Stable on alpha.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> netkit-rwho-0.17.ebuild:
+  Add inherit eutils
+
+  16 Apr 2004; Michael McCabe <randy@gentoo.org> netkit-rwho-0.17.ebuild:
+  adding s390 keywords
+
+*netkit-rwho-0.17 (22 May 2003)
+
+  22 May 2003; Martin Holzer <mholzer@gentoo.org> netkit-rwho-0.17.ebuild,
+  files/netkit-rwho-0.17-gentoo.diff, files/netkit-rwho-0.17-rc:
+  Initial Version. Ebuild submitted by Remi Broemeling
+  <remibrom@icqmail.com> in #4498.

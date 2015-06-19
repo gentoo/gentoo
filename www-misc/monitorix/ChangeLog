@@ -1,0 +1,52 @@
+# ChangeLog for www-misc/monitorix
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-misc/monitorix/ChangeLog,v 1.10 2015/06/13 17:22:50 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  monitorix-3.5.1.ebuild:
+  The CGI module is no longer part of core Perl and has been moved to dev-perl
+
+  06 Apr 2015; Maciej Mrozowski <reavertm@gentoo.org> metadata.xml,
+  monitorix-3.5.1.ebuild:
+  Remove evms USE flag. evms was superseded by lvm2.
+
+  01 Apr 2015; Andreas K. Huettel <dilfridge@gentoo.org> monitorix-3.5.1.ebuild:
+  Fix dependencies: pkgmove of Config-General
+
+  14 Nov 2014; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  Maintainer needed.
+
+*monitorix-3.5.1 (23 May 2014)
+
+  23 May 2014; Tom Wijsman <TomWij@gentoo.org> +files/monitorix-3.5.1.init,
+  +monitorix-3.5.1.ebuild, -files/monitorix-3.0.0.init,
+  -monitorix-3.0.0-r1.ebuild, -monitorix-3.1.0.ebuild, -monitorix-3.2.1.ebuild,
+  metadata.xml:
+  Version bump to 3.5.1, removed old, added systemd unit support. Fixed security
+  bug #493434 (CVE-2013-7071); reported by Ago, based on a contribution by
+  Wojciech Myrda (vojcek).
+
+  08 Jan 2014; Mike Frysinger <vapier@gentoo.org> monitorix-3.0.0-r1.ebuild,
+  monitorix-3.1.0.ebuild, monitorix-3.2.1.ebuild:
+  Inherit the user eclass for enewuser/etc...
+
+*monitorix-3.1.0 (24 Apr 2013)
+
+  24 Apr 2013; Tom Wijsman <TomWij@gentoo.org> +monitorix-3.1.0.ebuild:
+  Version bump to 3.1.0, thanks to Maff for reporting this on IRC.
+
+*monitorix-3.0.0-r1 (13 Mar 2013)
+
+  13 Mar 2013; Tom Wijsman <TomWij@gentoo.org> +monitorix-3.0.0-r1.ebuild,
+  -monitorix-3.0.0.ebuild:
+  Revision bump to make the graphs work by introducing a monitorix user and
+  group and writing them to /var/lib/monitorix/imgs, since /usr/share should not
+  be writable a symlink is used; thanks to anYc, Hawk777, hasufell and Maff in
+  #gentoo-sunrise.
+
+*monitorix-3.0.0 (13 Mar 2013)
+
+  13 Mar 2013; Tom Wijsman <TomWij@gentoo.org> +files/monitorix-3.0.0.init,
+  +metadata.xml, +monitorix-3.0.0.ebuild:
+  New ebuild. Thanks to mren for reporting, thanks to Matthew Connelly for
+  contributing an ebuild and an init script. Fixes bug #281087 and bug #417009.

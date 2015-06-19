@@ -1,0 +1,10 @@
+# ChangeLog for sys-cluster/ampi
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/ampi/ChangeLog,v 1.1 2014/06/16 21:14:19 jauhien Exp $
+
+*ampi-0_pre20140616 (16 Jun 2014)
+
+  16 Jun 2014; Jauhien Piatlicki <jauhien@gentoo.org>
+  +ampi-0_pre20140616.ebuild, +metadata.xml:
+  initial import to the tree, nedeed for MPI support in sci-libs/adolc, see bug
+  #511456

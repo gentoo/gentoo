@@ -1,0 +1,147 @@
+# ChangeLog for dev-java/xstream
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xstream/ChangeLog,v 1.37 2015/06/14 09:23:33 chewi Exp $
+
+  14 Jun 2015; James Le Cuirot <chewi@gentoo.org> xstream-1.3.1-r3.ebuild:
+  Mark ppc and ppc64 stable in accordance with ALLARCHES policy. Stop the tests
+  exiting successfully on failure but also RESTRICT them because they blow up
+  spectacularly on every VM I have tried.
+
+  13 Jun 2015; Patrice Clement <monsieurp@gentoo.org> -xstream-1.3.1-r1.ebuild,
+  -xstream-1.3.1-r2.ebuild:
+  Drop old.
+
+*xstream-1.3.1-r3 (13 Jun 2015)
+
+  13 Jun 2015; Patrice Clement <monsieurp@gentoo.org> +xstream-1.3.1-r3.ebuild:
+  Reworked EAPI 5 bump. Add back ppc+ppc64. Mark stable for x86+amd64 (signed
+  off by ago).
+
+  13 Jun 2015; Agostino Sarubbo <ago@gentoo.org> xstream-1.3.1-r2.ebuild:
+  Stable for x86, wrt bug #551524
+
+  13 Jun 2015; Agostino Sarubbo <ago@gentoo.org> xstream-1.3.1-r2.ebuild:
+  Stable for amd64, wrt bug #551524
+
+*xstream-1.3.1-r2 (14 Apr 2015)
+
+  14 Apr 2015; Patrice Clement <monsieurp@gentoo.org> +xstream-1.3.1-r2.ebuild:
+  SLOT and EAPI bump wrt bug 546288. Drop ppc and ppc64 keywords.
+
+  19 Oct 2014; Patrick Lauer <patrick@gentoo.org> xstream-1.3.1-r1.ebuild:
+  Move test dependencies to DEPEND only
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> xstream-1.3.1-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  24 Apr 2010; Fabian Groffen <grobian@gentoo.org> xstream-1.3.1-r1.ebuild:
+  Marked ~sparc-solaris ~x86-solaris, bug #314093
+
+  22 Jan 2010; Vlastimil Babka <caster@gentoo.org> -xstream-1.2-r1.ebuild,
+  -files/xstream-1.2-javadoc-fix.patch, xstream-1.3.1-r1.ebuild:
+  Add missing test deps on ant-junit and ant-trax, remove old.
+
+  20 Jan 2010; Brent Baude <ranger@gentoo.org> xstream-1.3.1-r1.ebuild:
+  Marking xstream-1.3.1-r1 ppc64 for bug 287619
+
+  07 Jan 2010; Brent Baude <ranger@gentoo.org> xstream-1.3.1-r1.ebuild:
+  Marking xstream-1.3.1-r1 ppc for bug 287619
+
+  03 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  xstream-1.3.1-r1.ebuild:
+  Transfer Prefix keywords
+
+  17 Nov 2009; Vlastimil Babka <caster@gentoo.org> -xstream-1.2.ebuild,
+  xstream-1.2-r1.ebuild, -xstream-1.2-r2.ebuild, -xstream-1.2-r3.ebuild,
+  -xstream-1.3.1.ebuild:
+  Remove unneeded versions, leave 1.2-r1 at only ppc keyword so that
+  sun-based 1.4 java can be removed.
+
+  15 Oct 2009; Markus Meier <maekke@gentoo.org> xstream-1.3.1-r1.ebuild:
+  amd64/x86 stable, bug #287619
+
+*xstream-1.3.1-r1 (17 Aug 2009)
+
+  17 Aug 2009; Jean-Noël Rivasseau <elvanor@gentoo.org>
+  +xstream-1.3.1-r1.ebuild:
+  Removed java5 USE flag (#267046), bumped cglib dependency to 2.2.
+
+  20 Apr 2009; Markus Meier <maekke@gentoo.org> xstream-1.3.1:
+  add ~amd64, bug #258616
+
+  20 Mar 2009; Joseph Jezak <josejx@gentoo.org> xstream-1.3.1.ebuild:
+  Marked ~ppc/~ppc64 for bug #258616.
+
+*xstream-1.3.1 (11 Feb 2009)
+
+  11 Feb 2009; Petteri Räty <betelgeuse@gentoo.org> +xstream-1.3.1.ebuild:
+  Version bump. Fixes bug #257517. Thanks to Mike Weissman <mike@weisso.com>
+  for the work.
+
+*xstream-1.2-r3 (05 Oct 2008)
+
+  05 Oct 2008; Serkan Kaba <serkan@gentoo.org> +xstream-1.2-r3.ebuild:
+  Migrate to stax-api virtual.
+
+*xstream-1.2-r2 (18 Jul 2008)
+
+  18 Jul 2008; Petteri Räty <betelgeuse@gentoo.org> +xstream-1.2-r2.ebuild:
+  jmock-1.0 and commons-lang-2.1 are only needed by src_test which is now
+  enabled
+
+  27 Apr 2008; Markus Meier <maekke@gentoo.org> xstream-1.2-r1.ebuild:
+  amd64 stable, bug #211286
+
+  30 Mar 2008; Markus Rothe <corsair@gentoo.org> xstream-1.2-r1.ebuild:
+  Added ~ppc64
+
+  08 Mar 2008; Krzysiek Pawlik <nelchael@gentoo.org> xstream-1.2-r1.ebuild:
+  Stable on ppc, see bug #211286.
+
+  24 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  xstream-1.2-r1.ebuild:
+  stable x86, bug 211286
+
+  08 Jan 2008; <alistair@gentoo.org> +files/xstream-1.2-javadoc-fix.patch,
+  xstream-1.2-r1.ebuild:
+  Actually fixed building javadocs on jdk-1.4
+
+*xstream-1.2-r1 (16 Nov 2007)
+
+  16 Nov 2007; <alistair@gentoo.org> +xstream-1.2-r1.ebuild:
+  Bumping to fix doc install.
+
+  13 Nov 2007; Christian Faulhammer <opfer@gentoo.org> xstream-1.2.ebuild:
+  filtered jikes
+
+  04 Nov 2007; Christian Faulhammer <opfer@gentoo.org> xstream-1.2.ebuild:
+  stable x86, bug 197861
+
+  26 Aug 2007; Petteri Räty <betelgeuse@gentoo.org> xstream-1.2.ebuild:
+  Relax commons-lang dependency to match 2.3
+
+  11 Jul 2007; Petteri Räty <betelgeuse@gentoo.org> xstream-1.2.ebuild:
+  Add src_test as RESTRICT=test until the needed deps are keyworded.
+
+  26 May 2007; Krzysiek Pawlik <nelchael@gentoo.org> xstream-1.2.ebuild:
+  Add ~ppc.
+
+  15 Apr 2007; Petteri Räty <betelgeuse@gentoo.org> xstream-1.2.ebuild:
+  Add java-ant-2 to inherit to make JAVA_PKG_STRICT happy.
+
+  22 Dec 2006; Petteri Räty <betelgeuse@gentoo.org> xstream-1.2.ebuild:
+  Relaxed jmock dependency to allow 1.1.0 too and fixed the java5 use flag
+  handling as 2.0.31 can handle it properly automatically.
+
+  03 Oct 2006; Vlastimil Babka <caster@gentoo.org> xstream-1.2.ebuild:
+  Fixed javadoc target name and raised version of joda-time dependency to
+  >=1.2. Thanks to <bme@visi.com> in bug #149917 for reporting.
+
+  28 Sep 2006; Vlastimil Babka <caster@gentoo.org> xstream-1.2.ebuild:
+  Added missing xml-commons-external dependency.
+
+*xstream-1.2 (23 Sep 2006)
+
+  23 Sep 2006; Joshua Nichols <nichoj@gentoo.org> +metadata.xml,
+  +xstream-1.2.ebuild:
+  Initial commit. Bug #92756

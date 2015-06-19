@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=dev-lang/perl:=[-build(-)]
+DESCRIPTION=Linux::Smaps - a Perl interface to /proc/PID/smaps
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/Linux-Smaps/
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/O/OP/OPI/Linux-Smaps-0.12.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=70cb5dbdc50ac5b5657d0965bd328609

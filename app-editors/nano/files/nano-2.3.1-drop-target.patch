@@ -1,0 +1,30 @@
+From 0708d921211fa0f89288690593c406a682b2c826 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Tue, 14 Jun 2011 16:00:52 -0400
+Subject: [PATCH] drop --target as it makes no sense
+
+Since nano doesn't produce code, the --target option to configure
+doesn't make sense.  So only support --{build,host} since those are
+what we need in order to cross-compile.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ configure.ac |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index c590737..3eb61c2 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -22,7 +22,7 @@
+ 
+ AC_INIT([GNU nano], [2.3.1], [nano-devel@gnu.org], [nano])
+ AC_CONFIG_SRCDIR([src/nano.c])
+-AC_CANONICAL_TARGET([])
++AC_CANONICAL_HOST
+ AM_INIT_AUTOMAKE
+ AC_CONFIG_HEADERS([config.h])
+ 
+-- 
+1.7.9.7
+

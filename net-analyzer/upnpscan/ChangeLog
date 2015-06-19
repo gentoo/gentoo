@@ -1,0 +1,73 @@
+# ChangeLog for net-analyzer/upnpscan
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/upnpscan/ChangeLog,v 1.17 2014/07/18 03:21:42 jer Exp $
+
+  18 Jul 2014; Jeroen Roovers <jer@gentoo.org> -upnpscan-0.4-r2.ebuild,
+  upnpscan-0.4-r3.ebuild:
+  EAPI bump.
+
+  30 Jan 2013; Agostino Sarubbo <ago@gentoo.org> upnpscan-0.4-r3.ebuild:
+  Stable for x86, wrt bug #454018
+
+  30 Jan 2013; Agostino Sarubbo <ago@gentoo.org> upnpscan-0.4-r3.ebuild:
+  Stable for amd64, wrt bug #454018
+
+  09 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> upnpscan-0.4-r3.ebuild:
+  Remove unneeded 'eutils' eclass from inherit
+
+*upnpscan-0.4-r3 (09 Oct 2012)
+
+  09 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> +upnpscan-0.4-r3.ebuild:
+  Revision bump: EAPI 4, using autotools-utils eclass, remove unneeded
+  src_install function
+
+  22 Nov 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #82110
+
+  03 Nov 2010; Markus Meier <maekke@gentoo.org> upnpscan-0.4-r2.ebuild:
+  x86 stable, bug #343333
+
+  01 Nov 2010; Jeroen Roovers <jer@gentoo.org> upnpscan-0.4-r2.ebuild,
+  files/upnpscan-0.4-cflags.patch, +files/upnpscan-0.4-r2-cflags.patch:
+  Readd the old patch or we introduce more QA issues to -r0.
+
+*upnpscan-0.4-r2 (01 Nov 2010)
+
+  01 Nov 2010; Jeroen Roovers <jer@gentoo.org> -upnpscan-0.4-r1.ebuild,
+  +upnpscan-0.4-r2.ebuild, files/upnpscan-0.4-cflags.patch:
+  Clean up patch (remove LIBTOOL dep and unset CFLAGS in configure.in,
+  extend it (Makefile.am) so we can simply use emake install without trying
+  to install empty/non-existent files, and do not set CFLAGS again
+  (src/Makefile.am). Bug #343333.
+
+  30 Oct 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  upnpscan-0.4-r1.ebuild:
+  QA: fix phases for EAPI=2.
+
+*upnpscan-0.4-r1 (22 Oct 2010)
+
+  22 Oct 2010; Jeroen Roovers <jer@gentoo.org> +upnpscan-0.4-r1.ebuild:
+  Fix building with grep 2.7 (bug #342085).
+
+  22 Oct 2010; Jeroen Roovers <jer@gentoo.org> upnpscan-0.4.ebuild:
+  Update HOMEPAGE. Remove empty DEPEND.
+
+  15 Jan 2009; Jeroen Roovers <jer@gentoo.org>
+  +files/upnpscan-0.4-cflags.patch, upnpscan-0.4.ebuild:
+  Respect CFLAGS (bug #240868).
+
+  23 Dec 2006; Piotr Jaroszyński <peper@gentoo.org> upnpscan-0.4.ebuild:
+  Add ~amd64 wrt bug #156251.
+
+  21 Apr 2006; Marcelo Goes <vanquirius@gentoo.org> upnpscan-0.4.ebuild:
+  Mark 0.4 x86 stable.
+
+  10 Dec 2005; Marcelo Goes <vanquirius@gentoo.org> metadata.xml:
+  Add longdescription to metadata.xml.
+
+*upnpscan-0.4 (10 Dec 2005)
+
+  10 Dec 2005; Marcelo Goes <vanquirius@gentoo.org> +metadata.xml,
+  +upnpscan-0.4.ebuild:
+  Initial commit. Fixes bug 98046. Thanks to Michael Zanetta <grimmlin at
+  pentoo dot ch>.

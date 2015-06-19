@@ -1,0 +1,8 @@
+# ChangeLog for the default/linux/arm64 profile directory
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/default/linux/arm64/ChangeLog,v 1.1 2014/03/19 22:13:22 dilfridge Exp $
+
+  19 Mar 2014; Andreas K. Huettel <dilfridge@gentoo.org> 13.0/desktop/eapi,
+  13.0/developer/eapi, +eapi:
+  Add ChangeLog, increase EAPI to 5
+

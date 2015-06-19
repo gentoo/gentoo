@@ -1,0 +1,16 @@
+--- blitz/CMakeLists.txt
++++ blitz/CMakeLists.txt
+@@ -31,12 +31,8 @@
+ 
+ if(HAVE_MMX)
+     if(NOT APPLE AND NOT WIN32)
++	enable_language(ASM)
+         set( blitz_LIB_SRCS ${blitz_LIB_SRCS} asm_scale.S )
+-        add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/asm_scale.o
+-            COMMAND gcc -c ${CMAKE_CURRENT_SOURCE_DIR}/asm_scale.S
+-            DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/asm_scale.S )
+-        set( blitz_LIB_EXTRA_SRCS ${CMAKE_CURRENT_BINARY_DIR}/asm_scale.o )
+-        set(HAVE_EXTERNAL_ASM TRUE)
+     endif(NOT APPLE AND NOT WIN32)
+ endif(HAVE_MMX)
+ configure_file (config-processor.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-processor.h )

@@ -1,0 +1,82 @@
+# ChangeLog for sci-biology/amos
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/amos/ChangeLog,v 1.20 2015/04/08 18:20:42 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> amos-3.1.0-r1.ebuild:
+  Drop old Python implementations
+
+*amos-3.1.0-r1 (29 Dec 2013)
+
+  29 Dec 2013; Justin Lecher <jlec@gentoo.org> +amos-3.1.0-r1.ebuild,
+  +files/amos-3.1.0-goBambus2.py-indent-and-cleanup.patch:
+  Fix python support
+
+  19 Mar 2013; Justin Lecher <jlec@gentoo.org> amos-3.1.0.ebuild, metadata.xml:
+  Change USE name from qt to qt4, #462218
+
+  11 Mar 2013; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Drop Andrey as maintainer so that bugs get assigned to sci-biology directly
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> amos-3.1.0.ebuild:
+  Move Qt dependencies to the new category
+
+  08 Jul 2012; Justin Lecher <jlec@gentoo.org> -amos-2.0.8-r1.ebuild,
+  -files/amos-2.0.8-gcc44.patch, -amos-3.0.0.ebuild, -amos-3.0.1.ebuild,
+  amos-3.1.0.ebuild, +files/amos-3.1.0-gcc-4.7.patch:
+  Add fix for gcc-4.7, #425264; cleaned old
+
+  05 Oct 2011; Justin Lecher <jlec@gentoo.org> amos-3.1.0.ebuild, metadata.xml:
+  Another simplification
+
+  01 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> amos-3.1.0.ebuild:
+  x86 stable wrt bug #384343
+
+  25 Sep 2011; Tony Vroon <chainsaw@gentoo.org> amos-3.1.0.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo &
+  Elijah "Armageddon" El Lazkani in bug #384343.
+
+*amos-3.1.0 (12 Aug 2011)
+*amos-3.0.1 (12 Aug 2011)
+
+  12 Aug 2011; Andrey Kislyuk <weaver@gentoo.org> +amos-3.0.1.ebuild,
+  +amos-3.1.0.ebuild:
+  Version bump
+
+  28 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> amos-3.0.0.ebuild:
+  x86 stable wrt bug #368287
+
+  23 May 2011; Markos Chandras <hwoarang@gentoo.org> amos-3.0.0.ebuild:
+  Stable on amd64 wrt bug #368287
+
+*amos-3.0.0 (03 Feb 2011)
+
+  03 Feb 2011; Andrey Kislyuk <weaver@gentoo.org> +amos-3.0.0.ebuild:
+  Version bump
+
+  11 Feb 2010; Andrey Kislyuk <weaver@gentoo.org> -amos-2.0.8.ebuild:
+  Drop old ebuild
+
+*amos-2.0.8-r1 (11 Feb 2010)
+
+  11 Feb 2010; Andrey Kislyuk <weaver@gentoo.org> +amos-2.0.8-r1.ebuild:
+  Remove qt3 dependency per bug 304467
+
+  30 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> amos-2.0.8.ebuild,
+  +files/amos-2.0.8-gcc44.patch:
+  Fix building with GCC 4.4 and GLIBC 2.10+ wrt #279572.
+
+  15 Mar 2009; Markus Meier <maekke@gentoo.org> amos-2.0.8.ebuild:
+  amd64/x86 stable, bug #261786
+
+*amos-2.0.8 (26 Aug 2008)
+
+  26 Aug 2008; weaver <weaver@gentoo.org> +amos-2.0.8.ebuild:
+  Bump to 2.0.8, drop patch
+
+  17 Jun 2008; weaver <weaver@gentoo.org> ChangeLog:
+  Bump to 2.0.7 and add gcc-4.3 patch, bug 227597, thanks to Marek Miller
+
+*amos-2.0.5 (26 May 2008)
+
+  26 May 2008; weaver <weaver@gentoo.org> +metadata.xml, +amos-2.0.5.ebuild:
+  Initial commit. New package from sunrise, bug 175293

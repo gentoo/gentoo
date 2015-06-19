@@ -1,0 +1,47 @@
+# ChangeLog for dev-lisp/abcl
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/abcl/ChangeLog,v 1.11 2015/05/23 15:14:30 pacho Exp $
+
+  23 May 2015; Pacho Ramos <pacho@gentoo.org> abcl-0.20.0.ebuild:
+  x86 stable wrt bug #511170
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> abcl-0.0.9-r1.ebuild,
+  abcl-0.20.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  11 Jul 2014; Patrick Lauer <patrick@gentoo.org> abcl-0.20.0.ebuild:
+  Stable on amd64 #511170
+
+*abcl-0.20.0 (29 May 2010)
+
+  29 May 2010; Tomas Touceda <chiiph@gentoo.org> +abcl-0.20.0.ebuild:
+  Version bump to 0.20.0
+
+  28 Jul 2008; Panagiotis Christopoulos <pchrist@gentoo.org> metadata.xml:
+  Update metadata.xml to include USE flag descriptions. Entries taken from
+  profiles/use.local.desc
+
+  24 Mar 2008; Petteri Räty <betelgeuse@gentoo.org> -abcl-0.0.9.ebuild:
+  Delete generation 1 ebuild.
+
+  13 Feb 2008; Petteri Räty <betelgeuse@gentoo.org> metadata.xml,
+  abcl-0.0.9-r1.ebuild:
+  Shorten description and add java herd besides common-lisp to metadata.xml.
+
+*abcl-0.0.9-r1 (13 Feb 2008)
+
+  13 Feb 2008; Petteri Räty <betelgeuse@gentoo.org> +abcl-0.0.9-r1.ebuild:
+  Migrate to generation 2 java eclasses.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  01 May 2006; Matthew Kennedy <mkennedy@gentoo.org>
+  files/digest-abcl-0.0.9, Manifest:
+  Fix digests.
+
+*abcl-0.0.9 (11 Jan 2006)
+
+  11 Jan 2006; Matthew Kennedy <mkennedy@gentoo.org> +metadata.xml,
+  +abcl-0.0.9.ebuild:
+  Initial port.  Ebuild contributed by Matthew Kennedy <mkennedy@gentoo.org>.

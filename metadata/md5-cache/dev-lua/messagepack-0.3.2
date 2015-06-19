@@ -1,0 +1,13 @@
+DEFINED_PHASES=install
+DEPEND=luajit? ( dev-lang/luajit:2 ) !luajit? ( dev-lang/lua:= ) virtual/pkgconfig
+DESCRIPTION=A pure Lua implementation of the MessagePack serialization format
+EAPI=5
+HOMEPAGE=http://fperrad.github.io/lua-MessagePack/
+IUSE=+luajit
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=luajit? ( dev-lang/luajit:2 ) !luajit? ( dev-lang/lua:= )
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~yngwin/distfiles/lua-messagepack-0.3.2.tar.xz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=cdce9400dc32a2463db03d5065a51937

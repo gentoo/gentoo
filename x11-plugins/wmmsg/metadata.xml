@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>desktop-dock</herd>
+<longdescription>
+wmmsg is a dockapp that informs you of new events, such as incoming chat 
+messages, by displaying related icons and arrival times. A notification 
+program, wmmsg_notify, is included to send events to the dockapp. This can be 
+called from messaging clients, or any other useful location.
+</longdescription>
+</pkgmetadata>

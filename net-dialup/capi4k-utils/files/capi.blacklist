@@ -1,0 +1,30 @@
+# /etc/hotplug/blacklist.d/capi
+
+# CAPI USB is handled via /etc/hotplug/usb/capi.usermap
+fcusb
+fcusb2
+fxusb
+fxusb_CZ
+fcdslusb
+bfusb
+
+# CAPI modules are loaded via /etc/init.d/capi
+b1isa
+b1pci
+b1pcmcia
+c4
+t1isa
+t1pci
+fcpci
+fcclassic
+fcdsl
+fcdsl2
+fcdslsl
+
+# mISDN modules (experimental)
+avmfritz
+hfcpci
+hfcsusb
+hfcmulti
+sedlfax
+w6692pci

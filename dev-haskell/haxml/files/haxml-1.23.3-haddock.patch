@@ -1,0 +1,12 @@
+--- HaXml-1.23.3-orig/src/Text/XML/HaXml/Schema/HaskellTypeModel.hs	2012-06-19 01:31:18.000000000 +1000
++++ HaXml-1.23.3/src/Text/XML/HaXml/Schema/HaskellTypeModel.hs	2012-06-19 01:49:23.784392420 +1000
+@@ -77,8 +77,8 @@
+                  -- rests with the input doc, not with the caller of the parser.
+                | ElementsAttrsAbstract {-typename-}XName
+                                        {-subtypes-}[(XName,Maybe XName)]
+-                                --  ^ [(type name, module where declared later)]
+                                        Comment
++                                --  ^ [(type name, module where declared later)]
+ 
+                  -- becomes function
+                  --    elementE :: Parser T

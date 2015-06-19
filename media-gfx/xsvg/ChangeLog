@@ -1,0 +1,86 @@
+# ChangeLog for media-gfx/xsvg
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/xsvg/ChangeLog,v 1.25 2009/08/16 10:05:58 maekke Exp $
+
+  16 Aug 2009; Markus Meier <maekke@gentoo.org> xsvg-0.2.1.ebuild:
+  migrate to EAPI=2
+
+  25 Jun 2008; Markus Meier <maekke@gentoo.org> xsvg-0.2.1.ebuild:
+  x11-libs/cairo must be built with USE="X", bug #225223
+
+  20 Jun 2008; Ferris McCormick <fmccor@gentoo.org> xsvg-0.2.1.ebuild:
+  Add ~sparc for testing at user request (Guido Winkelmann), Bug #228579.
+
+  09 Jun 2008; Samuli Suominen <drac@gentoo.org> metadata.xml:
+  Reassigning to graphics herd.
+
+  12 Mar 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Peter Johanson (latexer, #206688) from metadata.xml.
+
+  27 Feb 2008; Jeroen Roovers <jer@gentoo.org> xsvg-0.2.1.ebuild:
+  Stable for HPPA too.
+
+  26 Feb 2008; Samuli Suominen <drac@gentoo.org> xsvg-0.2.1.ebuild:
+  amd64 stable, been using it a half year.
+
+  01 Sep 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing twp from metadata due to his retirement (see #190561 for reference).
+
+  16 Mar 2007; nixnut <nixnut@gentoo.org> xsvg-0.2.1.ebuild:
+  Stable on ppc wrt bug 134328
+
+  12 Mar 2007; Raúl Porcel <armin76@gentoo.org> xsvg-0.2.1.ebuild:
+  x86 stable wrt bug 134328
+
+  12 Mar 2007; Samuli Suominen <drac@gentoo.org> xsvg-0.2.1.ebuild:
+  dodoc AUTHORS ChangeLog NEWS README
+
+  12 Mar 2007; Samuli Suominen <drac@gentoo.org>
+  +files/xsvg-0.2.1-asneeded.patch, metadata.xml, xsvg-0.2.1.ebuild:
+  Fix undefined references with asneeded.
+
+  12 Mar 2007; Samuli Suominen <drac@gentoo.org> -xsvg-0.2.0.ebuild,
+  xsvg-0.2.1.ebuild:
+  Change HOMEPAGE and stop using virtual/x11.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  11 Feb 2006; Joshua Baergen <joshuabaergen@gentoo.org> xsvg-0.1.2.ebuild,
+  xsvg-0.2.0.ebuild, xsvg-0.2.1.ebuild:
+  Add modular X dependencies (bug #121021, Moshe Kaminsky).
+
+  10 Sep 2005; Saleem Abdulrasool <compnerd@gentoo.org> +xsvg-0.2.1.ebuild:
+  Version bump for xsvg for new version of cairo and libsvg-cairo.  Resolves bug
+  #102883
+
+*xsvg-0.2.1 (10 Sep 2005)
+
+  28 Aug 2005; Luis Medinas <metalgod@gentoo.org> xsvg-0.2.0.ebuild:
+  Added ~amd64 keywords. Closes bug #103802.
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> xsvg-0.1.2.ebuild:
+  Stable on ppc.
+
+*xsvg-0.2.0 (24 Feb 2005)
+
+  24 Feb 2005; Peter Johanson <latexer@gentoo.org> metadata.xml,
+  +xsvg-0.2.0.ebuild:
+  Bump, and add myself as a maintainer.
+
+  04 Jun 2004; David Holm <dholm@gentoo.org> xsvg-0.1.2.ebuild:
+  Added to ~ppc.
+
+  13 May 2004; <twp@gentoo.org> xsvg-0.1.2.ebuild:
+  Use default src_compile at mr_bones_' suggestion.
+
+  09 May 2004; <twp@gentoo.org> xsvg-0.1.2.ebuild:
+  Stable on x86.
+
+  26 Mar 2004; Tom Payne <twp@gentoo.org> xsvg-0.1.2.ebuild :
+  Correct SRC_URI.
+
+*xsvg-0.1.2 (18 Mar 2004)
+
+  18 Mar 2004; Tom Payne <twp@gentoo.org> xsvg-0.1.2.ebuild :
+  Initial commit.

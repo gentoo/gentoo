@@ -1,0 +1,273 @@
+# ChangeLog for media-libs/plotutils
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/plotutils/ChangeLog,v 1.73 2014/08/05 11:47:31 armin76 Exp $
+
+  05 Aug 2014; Raúl Porcel <armin76@gentoo.org> plotutils-2.6-r1.ebuild:
+  Add ~s390/~sparc wrt #468582
+
+  19 Jun 2014; Tobias Klausmann <klausman@gentoo.org> plotutils-2.6-r1.ebuild:
+  Keyworded on alpha, bug #468582
+
+  11 Feb 2014; Akinori Hattori <hattya@gentoo.org> plotutils-2.6-r1.ebuild:
+  keyword ~ia64 wrt bug #468582
+
+  12 Jul 2013; Vicente Olivert Riera <vincent@gentoo.org>
+  plotutils-2.6-r1.ebuild:
+  ppc, ppc64 keywords added, bug #468582
+
+  19 May 2013; Alexis Ballier <aballier@gentoo.org> plotutils-2.6-r1.ebuild:
+  keyword ~amd64-fbsd, bug #465136
+
+  10 May 2013; Markus Meier <maekke@gentoo.org> plotutils-2.6-r1.ebuild:
+  add ~arm, bug #468582
+
+  07 May 2013; Naohiro Aota <naota@gentoo.org> plotutils-2.6-r1.ebuild:
+  Add ~x86-fbsd wrt bug #468582
+
+  05 May 2013; Jeroen Roovers <jer@gentoo.org> plotutils-2.6-r1.ebuild:
+  Marked ~hppa (bug #468582).
+
+  04 May 2013; Justin Lecher <jlec@gentoo.org> plotutils-2.6.ebuild:
+  Add missing blocker
+
+*plotutils-2.6-r1 (04 May 2013)
+
+  04 May 2013; Justin Lecher <jlec@gentoo.org> +plotutils-2.6-r1.ebuild,
+  +files/plotutils-2.6-libxmi.patch, metadata.xml:
+  Unbundle media-libs/libxmi, #399741
+
+  03 May 2013; Andreas K. Huettel <dilfridge@gentoo.org> plotutils-2.6.ebuild:
+  Fix automake-1.13 compatibility, bug 467784
+
+  20 Feb 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  plotutils-2.6.ebuild:
+  Keyword ~arm
+
+  22 Aug 2012; Christoph Junghans <ottxor@gentoo.org> plotutils-2.6.ebuild:
+  added prefix keywords
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org> plotutils-2.6.ebuild:
+  keyword ~amd64-fbsd
+
+  31 Oct 2011; Samuli Suominen <ssuominen@gentoo.org>
+  -plotutils-2.4.1-r4.ebuild, -files/plotutils-2.4.1-correct_test.patch,
+  -files/plotutils-2.4.1-gentoo.patch, -files/plotutils-2.4.1-rangecheck.patch,
+  -plotutils-2.5.ebuild, -plotutils-2.5.1.ebuild,
+  -files/plotutils-2.5.1-fix-tests.patch,
+  -files/plotutils-2.5-rangecheck.patch:
+  old
+
+  23 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> plotutils-2.6.ebuild:
+  ppc/ppc64 stable wrt #353433
+
+  20 Feb 2011; Mike Frysinger <vapier@gentoo.org> plotutils-2.6.ebuild,
+  +files/plotutils-2.6-libpng-1.5.patch:
+  Fix building with libpng-1.5.
+
+  13 Feb 2011; Raúl Porcel <armin76@gentoo.org> plotutils-2.6.ebuild:
+  alpha/ia64/s390/sparc stable wrt #353433
+
+  10 Feb 2011; Markos Chandras <hwoarang@gentoo.org> plotutils-2.6.ebuild:
+  Stable on amd64 wrt bug #353433
+
+  09 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> plotutils-2.6.ebuild:
+  x86 stable wrt bug #353433
+
+  02 Feb 2011; Jeroen Roovers <jer@gentoo.org> plotutils-2.6.ebuild:
+  Stable for HPPA (bug #353433).
+
+*plotutils-2.6 (26 Oct 2010)
+
+  26 Oct 2010; Tim Harder <radhermit@gentoo.org> +plotutils-2.6.ebuild,
+  +files/plotutils-2.6-makefile.patch:
+  Version bump for bug #300559. Update info about extra fonts (bug #256086
+  by Martin Mokrejš), bump to EAPI=3, add png and static-libs USE flags,
+  set RDEPEND=, apply patch to fix sandbox issues, remove old CFLAGS
+  replacement, and use emake rather than einstall.
+
+  07 Jan 2009; Brent Baude <ranger@gentoo.org> plotutils-2.5.1.ebuild:
+  stable ppc64, bug 245690
+
+  05 Jan 2009; Jeroen Roovers <jer@gentoo.org> plotutils-2.5.1.ebuild:
+  Stable for HPPA (bug #245690).
+
+  26 Dec 2008; Raúl Porcel <armin76@gentoo.org> plotutils-2.5.1.ebuild:
+  ia64/s390 stable wrt #245690
+
+  25 Dec 2008; Tobias Klausmann <klausman@gentoo.org>
+  plotutils-2.5.1.ebuild:
+  Stable on alpha, bug #245690
+
+  20 Dec 2008; Markus Meier <maekke@gentoo.org> plotutils-2.5.1.ebuild:
+  amd64/x86 stable, bug #245690
+
+  20 Dec 2008; nixnut <nixnut@gentoo.org> plotutils-2.5.1.ebuild:
+  Stable on ppc wrt bug 245690
+
+  19 Dec 2008; Ferris McCormick <fmccor@gentoo.org> plotutils-2.5.1.ebuild:
+  Sparc stable, Bug #245690.
+
+  17 Nov 2008; Diego E. Pettenò <flameeyes@gentoo.org>
+  files/plotutils-2.4.1-correct_test.patch:
+  Fix patch with absolute paths.
+
+*plotutils-2.5.1 (15 Nov 2008)
+
+  15 Nov 2008; Santiago M. Mola <coldwind@gentoo.org>
+  +files/plotutils-2.5.1-fix-tests.patch,
+  +files/plotutils-2.5.1-rangecheck.patch, +plotutils-2.5.1.ebuild:
+  Bump to 2.5.1 (bug #238818) and fix test suite (bug #220251).
+
+  15 Oct 2008; Alexis Ballier <aballier@gentoo.org> plotutils-2.5.ebuild:
+  keyword ~x86-fbsd
+
+*plotutils-2.5 (05 Apr 2008)
+
+  05 Apr 2008; Stefan Schweizer <genstef@gentoo.org>
+  +files/plotutils-2.5-rangecheck.patch, -plotutils-2.4.1-r2.ebuild,
+  -plotutils-2.4.1-r3.ebuild, +plotutils-2.5.ebuild:
+  Version bump thnks to Hanno Meyer-Thurow <h.mth@web.de> in bug 213188
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  plotutils-2.4.1-r2.ebuild, plotutils-2.4.1-r3.ebuild,
+  plotutils-2.4.1-r4.ebuild:
+  Drop virtual/x11 references.
+
+  14 Jun 2007; Jose Luis Rivero <yoswink@gentoo.org>
+  plotutils-2.4.1-r4.ebuild:
+  Stable on alpha wrt bug #115242
+
+  30 Apr 2007; Marius Mauch <genone@gentoo.org> plotutils-2.4.1-r2.ebuild,
+  plotutils-2.4.1-r3.ebuild, plotutils-2.4.1-r4.ebuild:
+  Replacing einfo with elog
+
+  07 Apr 2007; Fabian Groffen <grobian@gentoo.org>
+  plotutils-2.4.1-r3.ebuild, plotutils-2.4.1-r4.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  07 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
+  plotutils-2.4.1-r2.ebuild, plotutils-2.4.1-r3.ebuild,
+  plotutils-2.4.1-r4.ebuild:
+  SRC_URI changed to mirror://, fixes bug 163186
+
+  02 Apr 2007; Raúl Porcel <armin76@gentoo.org> plotutils-2.4.1-r4.ebuild:
+  ia64 stable wrt bug 115242
+
+  23 Mar 2007; Markus Rothe <corsair@gentoo.org> plotutils-2.4.1-r4.ebuild:
+  Stable on ppc64; bug #115242
+
+  18 Mar 2007; Steve Dibb <beandog@gentoo.org> plotutils-2.4.1-r4.ebuild:
+  amd64 stable, bug 115242
+
+  16 Mar 2007; nixnut <nixnut@gentoo.org> plotutils-2.4.1-r4.ebuild:
+  Stable on ppc wrt bug 115242
+
+  13 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  plotutils-2.4.1-r4.ebuild:
+  Stable on sparc wrt #115242
+
+  13 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  +files/plotutils-2.4.1-correct_test.patch, plotutils-2.4.1-r4.ebuild:
+  fix test failures and added some quotes; stable x86, bug 115242
+
+  05 Feb 2007; Jeroen Roovers <jer@gentoo.org> plotutils-2.4.1-r4.ebuild:
+  Stable for HPPA (inkscape).
+
+  27 Aug 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  plotutils-2.4.1-r2.ebuild:
+  modX deps from plotutils-2.4.1-r3
+
+*plotutils-2.4.1-r4 (25 May 2006)
+
+  25 May 2006; Cory Visi <visi@gentoo.org> +plotutils-2.4.1-r4.ebuild:
+  Fixed syntax of replace-cpu-flags according to Bug 115242
+
+  13 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  plotutils-2.4.1-r3.ebuild:
+  Add modular X dependencies.
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  plotutils-2.4.1-r3.ebuild:
+  Stable on ppc.
+
+  02 Feb 2005; Lina Pezzella <j4rg0n@gentoo.org> plotutils-2.4.1-r3.ebuild:
+  Stable ppc-macos
+
+  31 Dec 2004; Lina Pezzella <j4rg0n@gentoo.org> plotutils-2.4.1-r3.ebuild:
+  Unstable ppc-macos.
+
+  23 Nov 2004; Bryan Østergaard <kloeri@gentoo.org>
+  plotutils-2.4.1-r3.ebuild:
+  Stable on alpha.
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org>
+  plotutils-2.4.1-r3.ebuild:
+  Stable on amd64.
+
+  05 Oct 2004; Jason Wever <weeve@gentoo.org> plotutils-2.4.1-r3.ebuild:
+  Stable on sparc.
+
+  24 Aug 2004; Heinrich Wendel <lanius@gentoo.org> plotutils-2.4.1-r3.ebuild:
+  stable on x86
+
+  31 Jul 2004; Tom Gall <tgall@gentoo.org> plotutils-2.4.1-r3:
+  stable on ppc64, bug #57147
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> plotutils-2.4.1-r2.ebuild,
+  plotutils-2.4.1-r3.ebuild:
+  Add inherit eutils
+
+*plotutils-2.4.1-r3 (26 Apr 2004)
+
+  26 Apr 2004; Heinrich Wendel <lanius@gentoo.org> plotutils-2.4.1-r3.ebuild,
+  files/plotutils-2.4.1-rangecheck.patch:
+  bug #47688
+
+  06 Apr 2004; Aron Griffis <agriffis@gentoo.org> plotutils-2.4.1-r2.ebuild:
+  Stable on ia64
+
+  02 Mar 2004; Heinrich Wendel <lanius@gentoo.org> plotutils-2.4.1-r2.ebuild:
+  use epatch
+
+  09 Feb 2004; <augustus@gentoo.org> plotutils-2.4.1-r2.ebuild:
+  Added elibtoolize to src_compile and ~amd64 to keywords.
+
+  06 Feb 2004; Aron Griffis <agriffis@gentoo.org> plotutils-2.4.1-r2.ebuild:
+  stable on alpha
+
+  15 Jul 2003; Heinrich Wendel <lanius@gentoo.org>
+  files/plotutils-2.4.1-gentoo.patch:
+  gcc 3.3 compile fix (bug #23605)
+
+*plotutils-2.4.1-r2 (16 Jun 2002)
+
+  05 Feb 2003; Seemant Kulleen <seemant@gentoo.org>
+  plotutils-2.4.1-r2.ebuild :
+
+  Filtered out k6, k6-2, and k6-3 flags to replace them with a generic
+  i586 flag.  Closes bug report #14488 by Jani-Matti H?tinen
+  <jannu.hatinen@mbnet.fi>
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  7 Sep 2002; Owen Stampflee <owen@gentoo.org> :
+  Added PPC to KEYWORDS.
+
+  16 Jun  2002; Brandon Low <lostlogic@gentoo.org> plotutils-2.4.1-r2.ebuild :
+
+  gcc-3.1 compile fix thanks to Johannes <guj@hrz.tu-chemnitz.de>
+
+*plotutils-2.4.1-r1 (12 Apr 2002)
+
+  12 Apr 2002; Seemant Kulleen <seemant@gentoo.org> plotutils-2.4.1-r1.ebuild :
+
+  Compile against newest libpng
+
+*plotutils-2.4.1 (11 Feb 2002)
+
+  11 Feb 2002; T.Neidt <tod@gentoo.org> ChangeLog :
+ 
+  Initial commit.  Extra X fonts are included in the plotutils package.
+  The ebuild does not install these fonts currently.  If you wish to
+  install these fonts manually, see /usr/share/doc/${PF}/Install.fonts
+  after merging.

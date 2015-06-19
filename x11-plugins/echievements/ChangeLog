@@ -1,0 +1,27 @@
+# ChangeLog for x11-plugins/echievements
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/echievements/ChangeLog,v 1.5 2014/02/16 14:02:52 tommy Exp $
+
+  16 Feb 2014; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  echievements-2.ebuild:
+  Switch to dev-libs/efl
+
+  29 Dec 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  echievements-2.ebuild:
+  Add missing eet dependency
+
+  21 Dec 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  echievements-2.ebuild:
+  Fix license, add missing etrophy dependency
+
+*echievements-2 (21 Dec 2012)
+
+  21 Dec 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -echievements-1.ebuild, +echievements-2.ebuild:
+  Version bump, drop old
+
+*echievements-1 (21 Dec 2012)
+
+  21 Dec 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +echievements-1.ebuild, +metadata.xml:
+  Initial commit

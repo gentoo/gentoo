@@ -1,0 +1,10 @@
+# ChangeLog for gnustep-libs/performance
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnustep-libs/performance/ChangeLog,v 1.1 2014/01/29 23:56:43 voyageur Exp $
+
+*performance-0.4.0 (29 Jan 2014)
+
+  29 Jan 2014; Bernard Cafarelli <voyageur@gentoo.org>
+  +performance-0.4.0.ebuild, +metadata.xml:
+  Initial commit, ebuild by adr in bug #480622
+

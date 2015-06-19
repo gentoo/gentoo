@@ -1,0 +1,12 @@
+# ChangeLog for app-dicts/sword-kjv
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/sword-kjv/ChangeLog,v 1.2 2014/01/05 23:29:36 creffett Exp $
+
+  05 Jan 2014; Chris Reffett <creffett@gentoo.org> sword-kjv-2.3.ebuild:
+  EAPI bump
+
+*sword-kjv-2.3 (27 Feb 2008)
+
+  27 Feb 2008; Steve Dibb <beandog@gentoo.org> +metadata.xml,
+  +sword-kjv-2.3.ebuild:
+  Initial commit

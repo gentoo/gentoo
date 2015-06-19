@@ -1,0 +1,16 @@
+ configure.ac |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 6020fbf..65dd770 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1021,7 +1021,7 @@ if test x"$with_blas" != "xno" -a -n "$with_blas"; then
+ 	LDFLAGS_SAVE=${LDFLAGS};
+ 	CPPFLAGS_SAVE=${CPPFLAGS};
+ 	LDFLAGS="-L${maloc_lib_path} ${blas_lib}";
+-	AC_CHECK_LIB(${blas_name},dscal,
++	AC_CHECK_LIB(m,dscal,
+ 		[blas_found="yes"],
+ 		[blas_found=""],
+ 		[${blas_lib} ${socket_lib} ${nsl_lib} ${math_lib}])

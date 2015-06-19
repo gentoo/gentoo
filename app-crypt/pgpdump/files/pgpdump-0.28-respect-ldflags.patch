@@ -1,0 +1,42 @@
+From 087f54f29dd679a9c6eb5cce075d9f4c6ccbc57f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Manuel=20R=C3=BCger?= <mrueg@rueg.eu>
+Date: Sun, 11 Aug 2013 00:42:06 +0200
+Subject: [PATCH] Respect LDFLAGS, minor other improvements
+
+---
+ Makefile.in | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index a0269a3..d174393 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -3,7 +3,8 @@ exec_prefix = @exec_prefix@
+ bindir = @bindir@
+ mandir = @mandir@
+ LIBS = @LIBS@
+-CFLAGS  = @CFLAGS@ -O -Wall
++CC = @CC@
++CFLAGS  = @CFLAGS@ -Wall
+ LDFLAGS = @LDFLAGS@
+ VERSION = `git tag | tail -1 | sed -e 's/v//'`
+ 
+@@ -22,13 +23,13 @@ MAN  = pgpdump.1
+ CNF = config.h config.status config.cache config.log
+ MKF = Makefile
+ 
+-.c.o:
++%.o : %.c
+ 	$(CC) -c $(CFLAGS) $<
+ 
+ all: $(PROG)
+ 
+ $(PROG): $(OBJS)
+-	$(CC) $(CFLAGS) -o $(PROG) $(OBJS) $(LIBS) $(LDFLAGS)
++	$(CC) $(LDFLAGS) -o $(PROG) $(OBJS) $(LIBS)
+ 
+ clean:
+ 	$(RM) $(OBJS) $(PROG)
+-- 
+1.8.1.6
+

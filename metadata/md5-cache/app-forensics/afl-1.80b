@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=sys-devel/gcc:* sys-devel/clang
+DESCRIPTION=american fuzzy lop - compile-time instrumentation fuzzer
+EAPI=5
+HOMEPAGE=http://lcamtuf.coredump.cx/afl/
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=sys-devel/gcc:* sys-devel/clang
+SLOT=0
+SRC_URI=http://lcamtuf.coredump.cx/afl/releases//afl-1.80b.tgz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=e75c78dd4e25bab377cc56e37ca18ffe

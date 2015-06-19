@@ -1,0 +1,9 @@
+# Copyright 1999-2012 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License, v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/default/bsd/fbsd/x86/9.2/make.defaults,v 1.1 2013/08/09 14:12:40 aballier Exp $
+
+CHOST="i486-gentoo-freebsd9.2"
+
+# Diego Pettenò <flameeyes@gentoo.org> (2 Dec 2006)
+# Turn this on by default as we don't have Java 1.4 and 1.5 at all
+USE="java6"

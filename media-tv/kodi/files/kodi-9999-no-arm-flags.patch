@@ -1,0 +1,16 @@
+http://bugs.gentoo.org/400617
+
+do not force any particular ABI or FPU or SIMD compiler flags for arm
+targets.  let the toolchain and user CFLAGS control that.
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -571,7 +571,7 @@
+ elif test "$target_platform" = "target_raspberry_pi"; then
+   ARCH="arm"
+   use_arch="arm"
+-elif test "$use_arch" = "arm"; then
++elif false; then
+   CFLAGS="$CFLAGS -mno-apcs-stack-check"
+   CXXFLAGS="$CXXFLAGS -mno-apcs-stack-check"
+   FFMPEG_EXTRACFLAGS=""

@@ -1,0 +1,50 @@
+diff -r c13f4b11061e tests/keytrans
+--- a/tests/keytrans	Sun Feb 16 19:24:08 2014 +0100
++++ b/tests/keytrans	Sun Feb 16 19:27:42 2014 +0100
+@@ -131,9 +131,9 @@
+ cat >"$TEMPDIR"/expectedout <<EOF
+ pub:u:1024:1:$KEYID:$timestamp:::u:::scSC:
+ uid:u::::$timestamp::E90EC72E68C6C2A0751DADC70F54F60D27B88C3D::monkeymonkey:
+-sig:!::1:$KEYID:$timestamp::::monkeymonkey:13x:
++sig:!::1:$KEYID:$timestamp::::monkeymonkey:13x:::::8:
+ uid:u::::$timestamp::8200BD0425CC70C7D698DF3FE412044EAAB83F94::testtest:
+-sig:!::1:$KEYID:$timestamp::::monkeymonkey:13x:
++sig:!::1:$KEYID:$timestamp::::monkeymonkey:13x:::::8:
+ EOF
+ 
+ diff -u "$TEMPDIR"/expectedout <(gpg --check-sigs --with-colons | grep -v ^tru)
+@@ -159,10 +159,10 @@
+ cat >"$TEMPDIR"/expectedout <<EOF
+ pub:u:1024:1:$KEYID:$timestamp:::u:::scSC:
+ uid:u::::$timestamp::E90EC72E68C6C2A0751DADC70F54F60D27B88C3D::monkeymonkey:
+-sig:!::1:$KEYID:$timestamp::::monkeymonkey:13x:
++sig:!::1:$KEYID:$timestamp::::monkeymonkey:13x:::::8:
+ uid:r::::::8200BD0425CC70C7D698DF3FE412044EAAB83F94::testtest:
+-sig:!::1:$KEYID:$timestamp::::monkeymonkey:13x:
+-rev:!::1:$KEYID:$revtime::::monkeymonkey:30x:
++sig:!::1:$KEYID:$timestamp::::monkeymonkey:13x:::::8:
++rev:!::1:$KEYID:$revtime::::monkeymonkey:30x:::::8:
+ EOF
+ 
+ 
+@@ -190,15 +190,15 @@
+ cat >"$TEMPDIR"/expectedout <<EOF
+ pub:u:1024:1:$KEYID:$timestamp:::u:::scSC:
+ uid:u::::$timestamp::E90EC72E68C6C2A0751DADC70F54F60D27B88C3D::monkeymonkey:
+-sig:!::1:$KEYID:$timestamp::::monkeymonkey:13x:
++sig:!::1:$KEYID:$timestamp::::monkeymonkey:13x:::::8:
+ uid:r::::::8200BD0425CC70C7D698DF3FE412044EAAB83F94::testtest:
+-sig:!::1:$KEYID:$timestamp::::monkeymonkey:13x:
+-rev:!::1:$KEYID:$revtime::::monkeymonkey:30x:
++sig:!::1:$KEYID:$timestamp::::monkeymonkey:13x:::::8:
++rev:!::1:$KEYID:$revtime::::monkeymonkey:30x:::::8:
+ uid:u::::$timestamp::EDDC32D783E7F4C7B6982D9AE5DC4A61000648BA::baz:
+-sig:!::1:$KEYID:$timestamp::::monkeymonkey:13x:
++sig:!::1:$KEYID:$timestamp::::monkeymonkey:13x:::::8:
+ pub:-:1024:1:$NEWKEYID:$(($timestamp + 1)):::-:::caCA:
+ uid:-::::$(($timestamp + 1))::A0D708F51CC257DEFC01AEDE1E0A5F329DFD8F16::fubar:
+-sig:!::1:$NEWKEYID:$(($timestamp + 1))::::fubar:13x:
++sig:!::1:$NEWKEYID:$(($timestamp + 1))::::fubar:13x:::::8:
+ EOF
+ 
+ echo "test: diff expected gpg list output"

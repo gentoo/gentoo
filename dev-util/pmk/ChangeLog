@@ -1,0 +1,61 @@
+# ChangeLog for dev-util/pmk
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/pmk/ChangeLog,v 1.14 2010/09/12 14:37:45 pacho Exp $
+
+  12 Sep 2010; Pacho Ramos <pacho@gentoo.org> pmk-0.10.4.ebuild:
+  Make this respect LDFLAGS, bug #334987 (by Flameeyes).
+
+  21 Feb 2010; Jonathan Callen <abcd@gentoo.org> pmk-0.10.4.ebuild:
+  Transfer prefix keywords, bump EAPI
+
+*pmk-0.10.4 (25 Sep 2008)
+
+  25 Sep 2008; Ali Polatel <hawking@gentoo.org> metadata.xml,
+  -pmk-0.8.ebuild, -pmk-0.8.1.ebuild, -pmk-0.8.1-r1.ebuild,
+  -pmk-0.10.0.ebuild, -pmk-0.10.1.ebuild, +pmk-0.10.4.ebuild:
+  Version bump. Drop old. Keyword ~amd64. Add myself to metadata.xml.
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing dholm from metadata.xml as per #24623. Assigning to maintainer-needed.
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+*pmk-0.10.1 (15 Mar 2007)
+
+  15 Mar 2007; <dholm@gentoo.org> +pmk-0.10.1.ebuild:
+  Version bumped and added fix from James Rowe (jnrowe (at) ukfsn (dot) org).
+  Closes bug #170983.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*pmk-0.10.0 (09 Dec 2006)
+
+  09 Dec 2006; Timothy Redaelli <drizzt@gentoo.org> +pmk-0.10.0.ebuild:
+  Version bump, removed executable stack.
+
+*pmk-0.8.1-r1 (08 Dec 2006)
+
+  08 Dec 2006; Charlie Shepherd <masterdriverz@gentoo.org>
+  pmk-0.8.1-r1.ebuild, files/digest-pmk-0.8.1-r1:
+  Provide a default pmk.conf, thanks to Aaron Walker; bug 103460
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> pmk-0.8.1.ebuild,
+  pmk-0.8.ebuild:
+  virtual/glibc -> virtual/libc
+
+  16 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> pmk-0.8.1.ebuild,
+  pmk-0.8.ebuild:
+  correct license (bug #48027)
+
+*pmk-0.8.1 (16 Mar 2004)
+
+  16 Mar 2004; David Holm <dholm@gentoo.org> pmk-0.8.1.ebuild:
+  Version bump.
+
+*pmk-0.8 (15 Mar 2004)
+
+  15 Mar 2004; David Holm <dholm@gentoo.org> metadata.xml, pmk-0.8.ebuild:
+  Initial import.
+

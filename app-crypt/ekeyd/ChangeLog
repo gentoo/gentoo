@@ -1,0 +1,212 @@
+# ChangeLog for app-crypt/ekeyd
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/ekeyd/ChangeLog,v 1.35 2015/02/11 03:38:09 patrick Exp $
+
+  11 Feb 2015; Patrick Lauer <patrick@gentoo.org> ekeyd-1.1.5.ebuild:
+  Whitespace
+
+*ekeyd-1.1.5 (30 Aug 2014)
+
+  30 Aug 2014; Kristian Fiskerstrand <k_f@gentoo.org> +ekeyd-1.1.5.ebuild,
+  +files/90-ekeyd.rules, +files/ekeyd-1.1.5-const_char_usage.patch,
+  +files/ekeyd-1.1.5-enoent.patch, +files/ekeyd-1.1.5-misc.patch,
+  +files/ekeyd-1.1.5-path-fixes.patch, +files/ekeyd-1.1.5-remove-werror.patch,
+  +files/ekeyd-1.1.5-udev-rule.patch, +files/ekeyd.service:
+  Version bump: Bringing in 1.1.5 from overlay
+
+  30 Aug 2014; Kristian Fiskerstrand <k_f@gentoo.org> metadata.xml:
+  Adding myself as maintainer for this maintainer-needed package
+
+  30 Jul 2014; Samuli Suominen <ssuominen@gentoo.org> ekeyd-1.1.4-r2.ebuild:
+  Use shorter get_udevdir() instead of the longer deprecated udev_get_udevdir()
+  version.
+
+  11 Dec 2012; Samuli Suominen <ssuominen@gentoo.org> ekeyd-1.1.4-r2.ebuild:
+  Use virtual/udev and udev.eclass
+
+  23 Nov 2012; Ulrich Müller <ulm@gentoo.org> ekeyd-1.1.4-r2.ebuild:
+  Fix LICENSE, MIT/Expat license according to COPYING in tarball. Whitespace.
+
+  12 Jul 2012; Ian Stakenvicius <axs@gentoo.org> ekeyd-1.1.4-r2.ebuild:
+  added GPL-2 to LICENSE per bug 425890
+
+  08 Jul 2012; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Re-assign to maintainer-needed.
+
+  31 May 2012; Zac Medico <zmedico@gentoo.org> ekeyd-1.1.4-r2.ebuild:
+  inherit eutils for epatch
+
+*ekeyd-1.1.4-r2 (01 Nov 2011)
+
+  01 Nov 2011; Diego E. Pettenò <flameeyes@gentoo.org> +ekeyd-1.1.4-r2.ebuild,
+  -ekeyd-1.1.4-r1.ebuild, files/ekeyd-1.1.4-gentoo.patch:
+  Patch the udev rules to not use the deprecated BUS match (bug #388821).
+
+*ekeyd-1.1.4-r1 (20 Oct 2011)
+
+  20 Oct 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  -files/ekeyd-1.1.1-earlyboot.patch, -ekeyd-1.1.3-r4.ebuild,
+  -files/ekeyd-1.1.3-format.patch, -files/ekeyd-1.1.3-libusb_compat.patch,
+  -files/ekeyd-1.1.3-slashes.patch, -ekeyd-1.1.4.ebuild,
+  +ekeyd-1.1.4-r1.ebuild, +files/ekey-egd-linux.conf.2,
+  +files/ekey-egd-linux.init.2, +files/ekey-ulusbd.conf.2,
+  +files/ekey-ulusbd.init.2, +files/ekeyd.init.2, -files/ekey-egd-linux.conf,
+  -files/ekey-egd-linux.init, -files/ekey-ulusbd.conf, -files/ekey-ulusbd.init,
+  -files/ekeyd.init:
+  Remove old 1.1.3 ebuild; revbump 1.1.4 to use new init scripts that are
+  OpenRC-specific, and thus much shorter. The WATERMARK option has been dropped
+  from ekey-egd-linux, as it should be set in sysctl.conf instead.
+
+*ekeyd-1.1.4 (05 Sep 2011)
+
+  05 Sep 2011; Diego E. Pettenò <flameeyes@gentoo.org> +ekeyd-1.1.4.ebuild,
+  +files/ekeyd-1.1.4-gentoo.patch:
+  Bump to version 1.1.4; the patches have been collapsed into one, big gentoo
+  patch for now.
+
+  08 Apr 2011; Diego E. Pettenò <flameeyes@gentoo.org> ekeyd-1.1.3-r4.ebuild:
+  Fix DEPEND value.
+
+*ekeyd-1.1.3-r4 (08 Apr 2011)
+
+  08 Apr 2011; Diego E. Pettenò <flameeyes@gentoo.org> -ekeyd-1.1.3-r2.ebuild,
+  -ekeyd-1.1.3-r3.ebuild, +ekeyd-1.1.3-r4.ebuild,
+  +files/ekeyd-1.1.3-format.patch, +files/ekey-egd-linux.conf,
+  +files/ekey-egd-linux.init, files/ekeyd.init, metadata.xml:
+  Merge ekey-egd-linux daemon (and init script) within ekeyd, and suggest using
+  it for heavy-loaded machines; the ekeyd init script provides entropy if (and
+  only if) it is not set to provide EGD sockets; add a warning about using the
+  userland USB access method; fix the only warning that was still present
+  (false positive on format strings).
+
+*ekeyd-1.1.3-r3 (01 Apr 2011)
+
+  01 Apr 2011; Diego E. Pettenò <flameeyes@gentoo.org> +ekeyd-1.1.3-r3.ebuild,
+  metadata.xml:
+  Add a munin USE flag to install the munin plugin to graph the ekeyd
+  statistical data.
+
+  27 Mar 2011; Diego E. Pettenò <flameeyes@gentoo.org> ekeyd-1.1.3-r2.ebuild:
+  Fix think in log output.
+
+*ekeyd-1.1.3-r2 (27 Mar 2011)
+
+  27 Mar 2011; Diego E. Pettenò <flameeyes@gentoo.org> -ekeyd-1.1.3-r1.ebuild,
+  +ekeyd-1.1.3-r2.ebuild, +files/ekeyd-1.1.3-slashes.patch:
+  Revision bump: fix udev rules for keys with slashes in serial numbers (bug
+  #349503, huge thanks to Daniel Weigert for the help and the patience);
+  install udev rules to /lib/udev/rules.d (or lib64); fix rules for
+  non-symlinked lib64; use the same name for both rule files.
+
+  06 Nov 2010; Rafael G. Martins <rafaelmartins@gentoo.org>
+  ekeyd-1.1.3-r1.ebuild:
+  Fixed luasocket dependency.
+
+  23 Oct 2010; Diego E. Pettenò <flameeyes@gentoo.org> -ekeyd-1.1.3.ebuild,
+  ekeyd-1.1.3-r1.ebuild:
+  Remove old; add note regarding app-crypt/ekey-egd-linux; fix CC not being
+  used.
+
+*ekeyd-1.1.3-r1 (29 Sep 2010)
+
+  29 Sep 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +ekeyd-1.1.3-r1.ebuild, +files/ekeyd-1.1.3-libusb_compat.patch,
+  metadata.xml:
+  Add patch to that worksaround a libusb-compat bug and allows using the
+  virtual with ekeyd-ulusbd.
+
+*ekeyd-1.1.3 (24 Sep 2010)
+
+  24 Sep 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -ekeyd-1.1.1-r1.ebuild, -ekeyd-1.1.2.ebuild, +ekeyd-1.1.3.ebuild:
+  Version bump, add ChangeLog to the list of installed doc files. Cleanup
+  old versions.
+
+*ekeyd-1.1.2 (25 Aug 2010)
+
+  25 Aug 2010; Diego E. Pettenò <flameeyes@gentoo.org> +ekeyd-1.1.2.ebuild:
+  Version bump.
+
+*ekeyd-1.1.1-r1 (07 Aug 2010)
+
+  07 Aug 2010; Diego E. Pettenò <flameeyes@gentoo.org> -ekeyd-1.1.1.ebuild,
+  +ekeyd-1.1.1-r1.ebuild, +files/ekeyd-1.1.1-earlyboot.patch:
+  Revision bump, add a patch to use /dev for sockets and pid files, inspired
+  by mdadm, so that it works even if the rule is started early when / is yet
+  to be pivoted or mounted r/w.
+
+  24 Nov 2009; Robin H. Johnson <robbat2@gentoo.org> ekeyd-1.1.1.ebuild:
+  Diego reports that while it compiles against libusb-compat, it does not
+  seem to work presently. Change depend for now until I have hardware access
+  to fix it properly.
+
+*ekeyd-1.1.1 (17 Nov 2009)
+
+  17 Nov 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  -ekeyd-1.0.6-r1.ebuild, -ekeyd-1.0.7.ebuild, -ekeyd-1.1.0.ebuild,
+  +ekeyd-1.1.1.ebuild:
+  Version bump, remove older versions (would be stabled only when upstream
+  stops releasing new ones for a while).
+
+  16 Nov 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  ekeyd-1.0.6-r1.ebuild, ekeyd-1.0.7.ebuild, ekeyd-1.1.0.ebuild:
+  Make the linux-info check non fatal since the code builds anyway.
+
+  11 Nov 2009; Robin H. Johnson <robbat2@gentoo.org> ekeyd-1.0.6-r1.ebuild,
+  ekeyd-1.0.7.ebuild, ekeyd-1.1.0.ebuild:
+  Compiles fine against libusb-compat, changing to virtual/libusb:0.
+
+*ekeyd-1.1.0 (09 Nov 2009)
+
+  09 Nov 2009; Diego E. Pettenò <flameeyes@gentoo.org> +ekeyd-1.1.0.ebuild:
+  Version bump.
+
+*ekeyd-1.0.7 (15 Oct 2009)
+
+  15 Oct 2009; Diego E. Pettenò <flameeyes@gentoo.org> +ekeyd-1.0.7.ebuild:
+  Version bump.
+
+  09 Oct 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  ekeyd-1.0.6-r1.ebuild:
+  Remove pointless keepdir.
+
+*ekeyd-1.0.6-r1 (04 Oct 2009)
+
+  04 Oct 2009; Diego E. Pettenò <flameeyes@gentoo.org> -ekeyd-1.0.6.ebuild,
+  +ekeyd-1.0.6-r1.ebuild, files/ekey-ulusbd.init, files/ekeyd.init:
+  Revision bump to fix the init scripts, require localmount to be completed
+  before starting or ekeyd will not start. Also drop udev dependency on the
+  ekey-ulusbd init script since it's limited to non-Linux systems.
+
+*ekeyd-1.0.6 (29 Sep 2009)
+
+  29 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  -ekeyd-1.0.5-r2.ebuild, +ekeyd-1.0.6.ebuild:
+  Version bump.
+
+*ekeyd-1.0.5-r2 (29 Sep 2009)
+
+  29 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  -ekeyd-1.0.5-r1.ebuild, +ekeyd-1.0.5-r2.ebuild, files/ekey-ulusbd.conf,
+  files/ekey-ulusbd.init:
+  New revision, thanks to the comments from Rob Kendrick (upstream); the
+  init script now uses lsusb, and is only installed for non-Linux systems,
+  while the correct udev rules are installed on Linux. Add a check for the
+  CDC driver, and also add warnings about both the userland USB and CDC
+  options.
+
+*ekeyd-1.0.5-r1 (28 Sep 2009)
+
+  28 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org> -ekeyd-1.0.5.ebuild,
+  +ekeyd-1.0.5-r1.ebuild, +files/ekey-ulusbd.conf, +files/ekey-ulusbd.init,
+  files/ekeyd.init:
+  Bump already, add init script for the userland USB daemon, and move the
+  two daemon executables in /usr/libexec.
+
+*ekeyd-1.0.5 (28 Sep 2009)
+
+  28 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org> +ekeyd-1.0.5.ebuild,
+  +files/ekeyd.init, +metadata.xml:
+  Initial import of the EntropyKey daemon; this is still a work-in-progress
+  ebuild, as it lacks an init script for the USB userland driver, and checks
+  for Linux kernel options for CDC modem support.

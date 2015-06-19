@@ -1,0 +1,23 @@
+#!/sbin/runscript
+#
+# bcfgd - bcfg configuration daemon
+#
+# 
+
+depend () {
+	need net
+}
+
+start () {
+	ebegin "Starting bcfg2-server"
+	start-stop-daemon --start --quiet --pidfile /var/run/bcfg2-server.pid \
+		--exec /usr/sbin/bcfg2-server -- -D /var/run/bcfg2-server.pid
+	eend $? "Failed to start bcfg2-server"
+}
+
+stop () {
+	ebegin "Stopping bcfg2-server"
+	start-stop-daemon --stop --quiet --pidfile /var/run/bcfg2-server.pid \
+		--signal INT
+	eend $? "Failed to stop bcfg2-server"
+}

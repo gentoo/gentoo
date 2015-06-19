@@ -1,0 +1,64 @@
+# ChangeLog for games-strategy/majesty-demo
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/majesty-demo/ChangeLog,v 1.17 2015/06/01 20:43:04 mr_bones_ Exp $
+
+  01 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  majesty-demo-1.0.0.ebuild:
+  clean up app-emulation/emul-linux which has been removed
+
+  27 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  majesty-demo-1.0.0.ebuild:
+  EAPI=5; switch to LGP version of demo
+
+  13 Oct 2014; Michał Górny <mgorny@gentoo.org> majesty-demo-1.0.0.ebuild:
+  Support multilib providers for deps.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> majesty-demo-1.0.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  07 May 2014; Ulrich Müller <ulm@gentoo.org> majesty-demo-1.0.0.ebuild:
+  Fix LICENSE, add mirror and bindist restrictions, bug 505770.
+
+  24 Dec 2012; Tupone Alfredo <tupone@gentoo.org> majesty-demo-1.0.0.ebuild:
+  Use QA_PREBUILT. Bug #429504 by Diego Elio Pettenò
+
+  08 Feb 2012; Mike Frysinger <vapier@gentoo.org> majesty-demo-1.0.0.ebuild:
+  Move to new unpacker eclass for unpack_makeself.
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org> ChangeLog:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+  19 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  majesty-demo-1.0.0.ebuild:
+  Adding strip to RESTRICT for bug #137819.
+
+  11 Sep 2006; Daniel Gryniewicz <dang@gentoo.org>
+  majesty-demo-1.0.0.ebuild:
+  Marked stable on amd64 for bug #146886
+
+  09 Sep 2006; <ticho@gentoo.org> majesty-demo-1.0.0.ebuild:
+  Stable on x86, bug #146886.
+
+  09 Sep 2006; <nixnut@gentoo.org> majesty-demo-1.0.0.ebuild:
+  Stable on ppc wrt bug 146886
+
+  22 May 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  majesty-demo-1.0.0.ebuild:
+  Demo->(Demo) for bug #133836.
+
+  20 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  majesty-demo-1.0.0.ebuild:
+  Added modular X dependencies.
+
+  21 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  majesty-demo-1.0.0.ebuild:
+  Added addition dir variable to games_make_wrapper for bug #109793.
+
+  09 May 2005; David Holm <dholm@gentoo.org> majesty-demo-1.0.0.ebuild:
+  Added to ~ppc.
+
+*majesty-demo-1.0.0 (22 Feb 2005)
+
+  22 Feb 2005; Chris Gianelloni <wolf31o2@gentoo.org> +metadata.xml,
+  +majesty-demo-1.0.0.ebuild:
+  Initial import.  Ebuild by me.  Closes bug #70914.

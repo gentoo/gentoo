@@ -1,0 +1,27 @@
+# ChangeLog for app-i18n/man-pages-zh_CN
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/man-pages-zh_CN/ChangeLog,v 1.7 2015/03/21 10:15:55 jlec Exp $
+
+  21 Mar 2015; Justin Lecher <jlec@gentoo.org> man-pages-zh_CN-1.5.ebuild,
+  metadata.xml:
+  Use ecvs_clean and modernize ebuild style; use EAPI=5
+
+  30 Jan 2014; Mike Frysinger <vapier@gentoo.org> man-pages-zh_CN-1.5.ebuild:
+  Add arm64 love.
+
+  19 Oct 2010; Mart Raudsepp <leio@gentoo.org> man-pages-zh_CN-1.5.ebuild:
+  Drop to ~mips
+
+  05 Apr 2010; Jonathan Callen <abcd@gentoo.org> man-pages-zh_CN-1.5.ebuild:
+  Bump to EAPI=3, add prefix keywords
+
+  13 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*man-pages-zh_CN-1.5 (01 Sep 2005)
+
+  01 Sep 2005; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me.

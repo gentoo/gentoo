@@ -1,0 +1,18 @@
+# ChangeLog for app-crypt/loop-aes-losetup
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/loop-aes-losetup/ChangeLog,v 1.4 2013/07/04 12:16:52 ago Exp $
+
+  04 Jul 2013; Agostino Sarubbo <ago@gentoo.org> loop-aes-losetup-2.21.ebuild:
+  Stable for x86, wrt bug #469382
+
+  26 Jun 2013; Agostino Sarubbo <ago@gentoo.org> loop-aes-losetup-2.21.ebuild:
+  Stable for arm, wrt bug #469382
+
+  13 Jun 2013; Chema Alonso <nimiux@gentoo.org> loop-aes-losetup-2.21.ebuild:
+  Stable for amd64 wrt bug #469382
+
+*loop-aes-losetup-2.21 (11 Jan 2013)
+
+  11 Jan 2013; Alon Bar-Lev <alonbl@gentoo.org> +loop-aes-losetup-2.21.ebuild,
+  +metadata.xml:
+  Initial add

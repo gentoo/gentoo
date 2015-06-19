@@ -1,0 +1,192 @@
+# ChangeLog for dev-java/commons-cli
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-cli/ChangeLog,v 1.49 2014/08/10 20:09:49 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> commons-cli-1.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  08 Jan 2014; Tom Wijsman <TomWij@gentoo.org> commons-cli-1.2.ebuild:
+  Fixed up Copyright year.
+
+  30 Nov 2011; Fabian Groffen <grobian@gentoo.org> commons-cli-1.2.ebuild:
+  Marked ~x64-macos
+
+  15 Jan 2010; Jonathan Callen <abcd@gentoo.org> commons-cli-1.2.ebuild:
+  Add prefix keywords
+
+  08 Oct 2009; Vlastimil Babka <caster@gentoo.org>
+  -commons-cli-1.0-r5.ebuild, -files/commons-cli-1.0-build.xml.patch,
+  -files/commons-cli-1.0-gentoo.diff, -commons-cli-1.1.ebuild:
+  Remove old.
+
+  06 Sep 2009; Brent Baude <ranger@gentoo.org> commons-cli-1.2.ebuild:
+  Marking commons-cli-1.2 ppc64 for bug 279014
+
+  02 Aug 2009; nixnut <nixnut@gentoo.org> commons-cli-1.2.ebuild:
+  ppc stable #279014
+
+  01 Aug 2009; Markus Meier <maekke@gentoo.org> commons-cli-1.2.ebuild:
+  amd64/x86 stable, bug #279014
+
+  19 Apr 2009; Jean-Noël Rivasseau <elvanor@gentoo.org>
+  files/build-1.2.xml, commons-cli-1.2.ebuild:
+  Make tests pass.
+
+*commons-cli-1.2 (27 Mar 2009)
+
+  27 Mar 2009; Jean-Noël Rivasseau <elvanor@gentoo.org>
+  +files/build-1.2.xml, commons-cli-1.0-r5.ebuild, +commons-cli-1.2.ebuild:
+  Bump to 1.2 (upstream now uses Maven, Ant buildfile generated from Maven).
+
+  27 Oct 2008; Brent Baude <ranger@gentoo.org> commons-cli-1.1.ebuild:
+  stable ppc64, bug 242960
+
+  25 Oct 2008; nixnut <nixnut@gentoo.org> commons-cli-1.1.ebuild:
+  Stable on ppc wrt bug 242960
+
+  23 Oct 2008; Markus Meier <maekke@gentoo.org> commons-cli-1.1.ebuild:
+  amd64/x86 stable, bug #242960
+
+  23 May 2008; Petteri Räty <betelgeuse@gentoo.org> commons-cli-1.1.ebuild:
+  Add junit blocker for bug 215659.
+
+*commons-cli-1.1 (31 Mar 2008)
+
+  31 Mar 2008; Petteri Räty <betelgeuse@gentoo.org>
+  +commons-cli-1.1.ebuild:
+  Version bump. Fixes bug #215609.
+
+  03 Aug 2007; Petteri Räty <betelgeuse@gentoo.org>
+  commons-cli-1.0-r5.ebuild:
+  Remove orred dependency on ant-tasks as split ant is now stable.
+
+  06 Apr 2007; Petteri Räty <betelgeuse@gentoo.org>
+  -commons-cli-1.0-r4.ebuild:
+  Remove generation 1 ebuild.
+
+  06 Apr 2007; Petteri Räty <betelgeuse@gentoo.org>
+  commons-cli-1.0-r5.ebuild:
+  Mark stable on amd64 wrt bug #171978.
+
+  06 Apr 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  commons-cli-1.0-r5.ebuild:
+  ppc stable, bug #171978
+
+  26 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  commons-cli-1.0-r5.ebuild:
+  stable x86, bug 171978
+
+  24 Mar 2007; Markus Rothe <corsair@gentoo.org> commons-cli-1.0-r5.ebuild:
+  Stable on ppc64; bug #171978
+
+  23 Mar 2007; Petteri Räty <betelgeuse@gentoo.org>
+  commons-cli-1.0-r5.ebuild:
+  Allow both ant-junit or ant-tasks to provide the junit task to allow this to
+  be marked stable.
+
+  06 Feb 2007; Petteri Räty <betelgeuse@gentoo.org>
+  commons-cli-1.0-r5.ebuild:
+  Use split-ant for the test use flag.
+
+  25 Jan 2007; Vlastimil Babka <caster@gentoo.org>
+  +files/commons-cli-1.0-build.xml.patch, commons-cli-1.0-r5.ebuild:
+  Ebuild cleanup - less build.xml patching, testing moved to src_test - no
+  junit useflag.
+
+  07 Dec 2006; Diego Pettenò <flameeyes@gentoo.org>
+  commons-cli-1.0-r5.ebuild:
+  Add ~x86-fbsd keyword.
+
+  05 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  commons-cli-1.0-r4.ebuild, commons-cli-1.0-r5.ebuild:
+  Dropping sparc keywords, see #96229
+
+  22 Jul 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  commons-cli-1.0-r5.ebuild:
+  ant_src_unpack -> src_unpack
+
+  20 Jul 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  commons-cli-1.0-r5.ebuild:
+  Fixed src_unpack().
+
+*commons-cli-1.0-r5 (20 Jul 2006)
+
+  20 Jul 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  +commons-cli-1.0-r5.ebuild:
+  Migrated to Generation 2.
+
+  21 Sep 2005; Petteri Räty <betelgeuse@gentoo.org>
+  commons-cli-1.0-r4.ebuild:
+  ant-tasks are only needed with USE="junit". Fixes bug #106743.
+
+  05 Jun 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  commons-cli-1.0-r4.ebuild:
+  Introduced support for the source useflag. Cosmetic changes.
+
+  06 Feb 2005; Markus Rothe <corsair@gentoo.org> commons-cli-1.0-r4.ebuild:
+  Stable on ppc64
+
+  04 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> commons-cli-1.0-r4.ebuild:
+  junit dependency is now optional, controlled by the junit useflag. fixes
+  #75661.
+
+  18 Dec 2004; Markus Rothe <corsair@gentoo.org> commons-cli-1.0-r4.ebuild:
+  added ~ppc64 to KEYWORDS
+
+  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> commons-cli-1.0-r4.ebuild:
+  use java-pkg_dohtml instead of dohtml to also install the package-list in
+  case of api docs: #50740
+
+  19 Aug 2004; Travis Tilley <lv@gentoo.org> commons-cli-1.0-r4.ebuild:
+  stable on amd64
+
+  18 May 2004; Chris Aniszczyk <zx@gentoo.org>
+  files/commons-cli-1.0-gentoo.diff:
+  Fixed patch to allow unit testing to pass. Closes #51099
+  Thanks to Keith Burch <codemaestro@adelphia.net> for the patch.
+
+*commons-cli-1.0-r4 (13 May 2004)
+
+  13 May 2004; Chris Aniszczyk <zx@gentoo.org>
+  files/commons-cli-1.0-gentoo.diff, +commons-cli-1.0-r4.ebuild:
+  Fixed ebuild so that we don't use jakarta-commons.eclass, Closes #50304
+
+  13 May 2004; Daniel Ahlberg <aliz@gentoo.org> commons-cli-1.0-r3.ebuild:
+  Added amd64 keyword.
+
+*commons-cli-1.0-r3 (05 May 2004)
+
+  05 May 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  commons-cli-1.0-r2.ebuild: Set SLOT=1.
+
+*commons-cli-1.0-r2 (17 Mar 2003)
+
+  26 Apr 2003; Adrian Almenar <strider@gentoo.org> commons-cli-1.0-r2.ebuild:
+  Updated SRC_URI so this ebuild uses apache mirrors.
+
+  06 Apr 2003; Dylan Carlson <absinthe@gentoo.org> commons-cli-1.0-r2.ebuild:
+  moved to stable.  added keywords ppc sparc.
+
+  18 Mar 2003; Dylan Carlson <absinthe@gentoo.org> commons-cli-1.0-r2.ebuild:
+  java-commons eclass and functions were renamed to jakarta-commons.
+
+  17 Mar 2003; Dylan Carlson <absinthe@gentoo.org> commons-cli-1.0-r2.ebuild:
+  Changes to utilize new 'java-commons' eclass initiated by Lim Swee Tat
+  <st_lim@stlim.net> in bug # 17350.  Fixed up the eclass and added 'makedoc'
+  target to java-commons_src_compile() for the 'doc' use flag, and updated the
+  ebuild accordingly.
+  
+  If you want the API documentation installed, add 'doc' to your USE flags, or
+  run:   'USE="doc" emerge foo.ebuild'
+
+*commons-cli-1.0-r1 (16 Mar 2003)
+
+  16 Mar 2003; root <root@gentoo.org> commons-cli-1.0-r1.ebuild,
+  files/commons-cli-1.0-gentoo.diff:
+  patch to fix jar name; closes bug # 17260 (thanks Michael Grubb).
+
+*commons-cli-1.0 (16 Mar 2003)
+
+  16 Mar 2003; Dylan Carlson <absinthe@gentoo.org> commons-cli-1.0.ebuild:
+  Initial import. Jakarta Commons CLI provides a simple and easy-to-use API for
+  working with commandline arguments and options in Java.

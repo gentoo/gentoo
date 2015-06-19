@@ -1,0 +1,86 @@
+# ChangeLog for sci-mathematics/polymake
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/polymake/ChangeLog,v 1.16 2015/03/13 15:10:36 tomka Exp $
+
+*polymake-2.14-r1 (13 Mar 2015)
+
+  13 Mar 2015; Thomas Kahle <tomka@gentoo.org> +polymake-2.14-r1.ebuild,
+  metadata.xml:
+  Various improvements, thanks Benjamin Lorenz.
+
+*polymake-2.14 (05 Mar 2015)
+
+  05 Mar 2015; Thomas Kahle <tomka@gentoo.org> +polymake-2.14.ebuild:
+  Bump to 2.14
+
+  03 Mar 2015; Thomas Kahle <tomka@gentoo.org> +files/polymake_gcc49.patch,
+  polymake-2.13.ebuild:
+  Fix gcc-4.9 compatibility (bug 541238)
+
+  27 Jun 2014; Thomas Kahle <tomka@gentoo.org>
+  -files/polymake-2.11-drop-jreality.patch, -files/polymake-2.12-soname.patch,
+  -polymake-2.12.ebuild:
+  Remove old
+
+*polymake-2.13 (26 Jun 2014)
+
+  26 Jun 2014; Thomas Kahle <tomka@gentoo.org> +polymake-2.13.ebuild:
+  bump to 2.13
+
+  14 Sep 2013; Thomas Kahle <tomka@gentoo.org> -files/2.10-drop-jreality.patch,
+  -files/2.10-soname.patch, -polymake-2.10.ebuild, -polymake-2.11.ebuild:
+  remove old
+
+  03 Jun 2012; Thomas Kahle <tomka@gentoo.org> polymake-2.12.ebuild:
+  Fix libpolymake.so.0 symlink
+
+*polymake-2.12 (20 Apr 2012)
+
+  20 Apr 2012; Thomas Kahle <tomka@gentoo.org>
+  +files/polymake-2.12-soname.patch, +polymake-2.12.ebuild:
+  Bump to 2.12
+
+  26 Dec 2011; Thomas Kahle <tomka@gentoo.org> polymake-2.11.ebuild,
+  files/polymake-2.11-drop-jreality.patch:
+  Fix drop-jreality-patch and libexecdir, thanks Benjamin Lorenz
+
+*polymake-2.11 (25 Dec 2011)
+
+  25 Dec 2011; Thomas Kahle <tomka@gentoo.org>
+  -files/2.9.9-drop-jreality.patch, -polymake-2.9.9-r1.ebuild,
+  +polymake-2.11.ebuild, +files/polymake-2.11-drop-jreality.patch,
+  -files/2.9.9-gentoo-binutils.patch:
+  bump to 2.11, remove 2.9
+
+*polymake-2.10 (20 Aug 2011)
+
+  20 Aug 2011; Thomas Kahle <tomka@gentoo.org> +files/2.10-drop-jreality.patch,
+  +files/2.10-soname.patch, -polymake-2.9.9.ebuild, +polymake-2.10.ebuild:
+  bump to 2.10, fixes bug 364961
+
+  02 Mar 2011; Justin Lecher <jlec@gentoo.org> polymake-2.9.9.ebuild,
+  polymake-2.9.9-r1.ebuild:
+  Correct Slots for gtk 3 introduction to tree
+
+*polymake-2.9.9-r1 (26 Dec 2010)
+
+  26 Dec 2010; Thomas Kahle <tomka@gentoo.org>
+  +files/2.9.9-drop-jreality.patch, +polymake-2.9.9-r1.ebuild:
+  Updated ebuild without jReality (see bug 346073)
+
+  17 Nov 2010; Thomas Kahle <tomka@gentoo.org> polymake-2.9.9.ebuild:
+  Missing || die on configure. Thx maekke.
+
+*polymake-2.9.9 (16 Nov 2010)
+
+  16 Nov 2010; Thomas Kahle <tomka@gentoo.org>
+  +files/2.9.9-gentoo-binutils.patch, -polymake-2.9.8.ebuild,
+  +polymake-2.9.9.ebuild:
+  bump to 2.9.9, remove 2.9.8. Fixes a build failure that Luigi Malago
+  found.
+
+*polymake-2.9.8 (03 Nov 2010)
+
+  03 Nov 2010; Thomas Kahle <tomka@gentoo.org> +polymake-2.9.8.ebuild,
+  +metadata.xml:
+  initial import, fixes bug 207033

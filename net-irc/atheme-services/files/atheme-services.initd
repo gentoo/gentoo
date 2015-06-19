@@ -1,0 +1,37 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/atheme-services/files/atheme-services.initd,v 1.4 2011/12/17 04:12:05 binki Exp $
+
+extra_started_commands="reload"
+
+depend() {
+	need net
+	use ircd
+	provide irc-services
+}
+
+start() {
+	ATHEME_SERVICES_RUNDIR=/var/run/atheme
+	if ! [ -d "${ATHEME_SERVICES_RUNDIR}" ]; then
+	    ebegin "Creating \`${ATHEME_SERVICES_RUNDIR}'"
+	    install -o atheme-services -d "${ATHEME_SERVICES_RUNDIR}"
+	    eend $?
+	fi
+
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --pidfile=/var/run/atheme/atheme.pid --user atheme-services --exec /usr/bin/atheme-services
+	eend $?
+}
+
+reload() {
+	ebegin "Reloading ${SVCNAME}"
+	start-stop-daemon --signal HUP --pidfile /var/run/atheme/atheme.pid
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --quiet --pidfile /var/run/atheme/atheme.pid
+	eend $?
+}

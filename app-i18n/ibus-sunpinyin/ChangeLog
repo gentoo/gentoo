@@ -1,0 +1,47 @@
+# ChangeLog for app-i18n/ibus-sunpinyin
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus-sunpinyin/ChangeLog,v 1.12 2014/12/27 11:09:05 mgorny Exp $
+
+*ibus-sunpinyin-2.0.4_pre20130108-r2 (27 Dec 2014)
+
+  27 Dec 2014; Michał Górny <mgorny@gentoo.org>
+  +ibus-sunpinyin-2.0.4_pre20130108-r2.ebuild:
+  Convert to python-single-r1.
+
+  03 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #333419
+
+*ibus-sunpinyin-2.0.4_pre20130108-r1 (31 Jan 2013)
+
+  31 Jan 2013; Ben de Groot <yngwin@gentoo.org>
+  +ibus-sunpinyin-2.0.4_pre20130108-r1.ebuild,
+  -ibus-sunpinyin-2.0.4_pre20130108.ebuild:
+  Use libexec to fix multilib-strict, bug #454758
+
+*ibus-sunpinyin-2.0.4_pre20130108 (30 Jan 2013)
+
+  30 Jan 2013; Ben de Groot <yngwin@gentoo.org>
+  +ibus-sunpinyin-2.0.4_pre20130108.ebuild:
+  Version bump to newest sunpinyin snapshot.
+
+*ibus-sunpinyin-2.0.3-r2 (30 Jan 2013)
+
+  30 Jan 2013; Ben de Groot <yngwin@gentoo.org> +ibus-sunpinyin-2.0.3-r2.ebuild,
+  -ibus-sunpinyin-2.0.3-r1.ebuild:
+  Make sure this depends on correct sunpinyin version. Migrate to eapi5.
+
+  17 Apr 2011; Mu Qiao <qiaomuf@gentoo.org> -ibus-sunpinyin-2.0.3.ebuild,
+  ibus-sunpinyin-2.0.3-r1.ebuild:
+  Fix bug #363759, remove old version
+
+*ibus-sunpinyin-2.0.3-r1 (26 Feb 2011)
+
+  26 Feb 2011; Mu Qiao <qiaomuf@gentoo.org> +ibus-sunpinyin-2.0.3-r1.ebuild,
+  +files/ibus-sunpinyin-2.0.3-force-switch.patch:
+  Include upstream patch.
+
+*ibus-sunpinyin-2.0.3 (20 Feb 2011)
+
+  20 Feb 2011; Mu Qiao <qiaomuf@gentoo.org> +ibus-sunpinyin-2.0.3.ebuild,
+  +metadata.xml:
+  New ebuild for ibus-sunpinyin.

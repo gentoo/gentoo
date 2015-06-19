@@ -1,0 +1,62 @@
+# ChangeLog for dev-libs/liblist
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/liblist/ChangeLog,v 1.13 2015/05/05 19:26:51 mrueg Exp $
+
+  05 May 2015; Manuel Rüger <mrueg@gentoo.org> -liblist-2.3.1.ebuild:
+  Remove old.
+
+*liblist-2.4 (01 Jul 2011)
+
+  01 Jul 2011; Nathan Phillip Brink <binki@gentoo.org> +liblist-2.4.ebuild:
+  Bump to liblist-2.4, fixing bug #362067 and moving to autotools-util and
+  EAPI=4.
+
+  01 Jul 2011; Nathan Phillip Brink <binki@gentoo.org> metadata.xml:
+  Set myself (binki) as maintainer.
+
+  11 Mar 2011; Thomas Kahle <tomka@gentoo.org> liblist-2.3.1-r1.ebuild:
+  x86 stable per bug 355773
+
+  20 Oct 2010; Jeremy Olexa <darkside@gentoo.org> liblist-2.3.1-r1.ebuild:
+  Fix doc location for Gentoo Prefix, bug 340683 by Nathan Phillip Brink
+
+  08 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  liblist-2.3.1-r1.ebuild:
+  Stable on amd64 wrt bug #338778
+
+  29 Sep 2010; Steve Arnold <nerdboy@gentoo.org> -liblist-2.1.ebuild,
+  -liblist-2.1-r1.ebuild, -files/liblist-2.1-sharedlib.patch:
+  This time I'm *really* removing the old versions...
+
+  29 Sep 2010; Steve Arnold <nerdboy@gentoo.org> liblist-2.3.1-r1.ebuild:
+  Added upstream patch and cleaned up docdir confusion. Also removed old 
+  versions.
+
+*liblist-2.3.1-r1 (13 Aug 2010)
+
+  13 Aug 2010; Steve Arnold <nerdboy@gentoo.org> +liblist-2.3.1-r1.ebuild:
+  Updated to EAPI=3 (eprefix) and tested on ubuntu-amd64 (closes bug #332531).
+
+*liblist-2.3.1 (19 Jun 2010)
+
+  19 Jun 2010; Steve Arnold <nerdboy@gentoo.org> +liblist-2.3.1.ebuild:
+  Updated to new 'binki-version' who is now the upstream maintainer (yay).
+
+  03 Jan 2010; Steve Arnold <nerdboy@gentoo.org> liblist-2.1-r1.ebuild,
+  files/liblist-2.1-sharedlib.patch:
+  Updated patch and converted to EAPI2.
+
+*liblist-2.1-r1 (05 Dec 2009)
+
+  05 Dec 2009; Steve Arnold <nerdboy@gentoo.org> +liblist-2.1-r1.ebuild,
+  +files/liblist-2.1-sharedlib.patch:
+  Lemony-fresh rev-bump, now with shared library support. Closes bug #294788.
+  Manifest issue also fixed (closes bug #294785).
+
+*liblist-2.1 (20 Apr 2009)
+
+  20 Apr 2009; Steve Arnold <nerdboy@gentoo.org> +metadata.xml,
+  +liblist-2.1.ebuild:
+  New ebuild for a generic list library, a required dependency for ferret.
+  Updated source code hosted by me (no upstream URL anymore).  Comes with
+  a nice technical paper and example routines.

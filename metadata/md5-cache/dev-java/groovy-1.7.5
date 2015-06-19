@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install preinst prepare setup test
+DEPEND=>=virtual/jdk-1.5 dev-java/ant-ivy:2 doc? ( dev-java/qdox ) test? ( dev-java/jmock dev-java/xmlunit dev-db/hsqldb dev-java/commons-logging dev-java/ant-junit dev-java/ant-trax ) >=dev-java/asm-3.2 >=dev-java/ant-core-1.8.0 >=dev-java/junit-4.6 dev-java/antlr:0 dev-java/xstream dev-java/jline dev-java/commons-cli dev-java/jansi dev-java/servletapi:2.4 >=dev-java/bsf-2.4 java-virtuals/jmx >=dev-java/java-config-2.2.0 source? ( app-arch/zip ) >=dev-java/ant-core-1.8.2 dev-java/ant-antlr >=dev-java/javatoolkit-0.3.0-r2
+DESCRIPTION=Groovy is a high-level dynamic language for the JVM
+EAPI=3
+HOMEPAGE=http://groovy.codehaus.org/
+IUSE=test elibc_FreeBSD doc source elibc_FreeBSD
+KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=codehaus-groovy
+RDEPEND=>=virtual/jre-1.5 !<dev-java/groovy-1.6.3 >=dev-java/asm-3.2 >=dev-java/ant-core-1.8.0 >=dev-java/junit-4.6 dev-java/antlr:0 dev-java/xstream dev-java/jline dev-java/commons-cli dev-java/jansi dev-java/servletapi:2.4 >=dev-java/bsf-2.4 java-virtuals/jmx >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://dist.groovy.codehaus.org/distributions/groovy-src-1.7.5.zip
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	java-ant-2	1091461b8b02f54fabcfbf159164ff15	java-pkg-2	1889f7787714c5f7e3b5bb1c2be07c1f	java-utils-2	6627198e505d021534cb20f89279c509	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=ac7639c30ece46ea01c5a7204a18076a

@@ -1,0 +1,31 @@
+#!/sbin/runscript
+# Copyright 1999-2007 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+	use mpd
+}
+
+checkconfig() {
+	if ! [ -f /etc/scmpc.conf ]; then
+		eerror "Configuration file /etc/scmpc.conf does not exist."
+		return 1
+	fi
+  
+	return 0
+}
+
+start () {
+	checkconfig || return 1
+   
+	ebegin "Starting scmpc"
+	start-stop-daemon --start --exec /usr/bin/scmpc
+	eend $?
+}
+
+stop () {
+	ebegin "Stopping scmpc"
+	start-stop-daemon --stop --exec /usr/bin/scmpc || eerror "scmpc is not running"
+	eend $?
+}

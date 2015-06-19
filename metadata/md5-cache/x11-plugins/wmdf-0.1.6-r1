@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXt x11-libs/libXpm x11-proto/xextproto
+DESCRIPTION=An app to monitor disk space on partitions
+HOMEPAGE=http://dockapps.windowmaker.org/file.php/id/175
+KEYWORDS=amd64 ppc ppc64 sparc x86 ~x86-linux
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXt x11-libs/libXpm
+SLOT=0
+SRC_URI=http://dockapps.windowmaker.org/download.php/id/359/wmdf-0.1.6.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=ea0b4bb20c73fc2046046476bb51589b

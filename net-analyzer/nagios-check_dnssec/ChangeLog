@@ -1,0 +1,24 @@
+# ChangeLog for net-analyzer/nagios-check_dnssec
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nagios-check_dnssec/ChangeLog,v 1.5 2014/08/10 20:58:40 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  nagios-check_dnssec-0.1_p28.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  26 Jan 2014; Chris Reffett <creffett@gentoo.org> metadata.xml:
+  Update maintainers (add ahamilto as maintainer, me as proxy, proxy-maint herd
+  too)
+
+  19 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  nagios-check_dnssec-0.1_p28.ebuild:
+  Use default functions for configure and install.
+
+  19 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Re-assign to sysadmin herd.
+
+*nagios-check_dnssec-0.1_p28 (20 Mar 2012)
+
+  20 Mar 2012; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +nagios-check_dnssec-0.1_p28.ebuild:
+  Initial commit. Ebuild by Robin H. Johnson <robbat2@gentoo.org>.

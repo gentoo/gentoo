@@ -1,0 +1,632 @@
+# ChangeLog for net-analyzer/ettercap
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ettercap/ChangeLog,v 1.166 2015/03/31 14:22:43 ago Exp $
+
+  31 Mar 2015; Agostino Sarubbo <ago@gentoo.org> -ettercap-0.8.0-r1.ebuild,
+  -ettercap-0.8.1-r1.ebuild, -ettercap-0.8.1.ebuild:
+  Remove old
+
+  30 Mar 2015; Agostino Sarubbo <ago@gentoo.org> ettercap-0.8.2.ebuild:
+  Stable for alpha, wrt bug #532764
+
+  30 Mar 2015; Agostino Sarubbo <ago@gentoo.org> ettercap-0.8.2.ebuild:
+  Stable for sparc, wrt bug #532764
+
+  26 Mar 2015; Agostino Sarubbo <ago@gentoo.org> ettercap-0.8.2.ebuild:
+  Stable for ppc64, wrt bug #532764
+
+  26 Mar 2015; Agostino Sarubbo <ago@gentoo.org> ettercap-0.8.2.ebuild:
+  Stable for ppc, wrt bug #532764
+
+  24 Mar 2015; Markus Meier <maekke@gentoo.org> ettercap-0.8.2.ebuild:
+  arm stable, bug #532764
+
+  18 Mar 2015; Agostino Sarubbo <ago@gentoo.org> ettercap-0.8.2.ebuild:
+  Stable for amd64, wrt bug #532764
+
+  17 Mar 2015; Andreas Schuerch <nativemad@gentoo.org> ettercap-0.8.2.ebuild:
+  x86 stable, see bug 532764
+
+*ettercap-0.8.2 (14 Mar 2015)
+
+  14 Mar 2015; Agostino Sarubbo <ago@gentoo.org> +ettercap-0.8.2.ebuild:
+  Version bump to 0.8.2
+
+  17 Dec 2014; Jeroen Roovers <jer@gentoo.org> ettercap-0.8.1-r1.ebuild:
+  Restore mysteriously dropped keywords.
+
+  05 Nov 2014; Mike Frysinger <vapier@gentoo.org> ettercap-0.8.0-r1.ebuild,
+  ettercap-0.8.1-r1.ebuild, ettercap-0.8.1.ebuild, ettercap-9999.ebuild:
+  Drop libtool dep as the source only checks for -ldl now #528294 by Pacho
+  Ramos.
+
+  03 Nov 2014; Rick Farina <zerochaos@gentoo.org> ettercap-0.8.1-r1.ebuild,
+  ettercap-9999.ebuild:
+  various fixes for building docs and making the ebuild maintenance easier
+
+  02 Nov 2014; Rick Farina <zerochaos@gentoo.org> ettercap-0.8.1-r1.ebuild:
+  adding misc maintainer note to ebuild, super bad form but otherwise it will be
+  forgotten
+
+*ettercap-0.8.1-r1 (02 Nov 2014)
+
+  02 Nov 2014; Rick Farina <zerochaos@gentoo.org> +ettercap-0.8.1-r1.ebuild:
+  fix for optional pdf dep, bug #527646, disable building of pdfs that don't
+  even get installed
+
+*ettercap-0.8.1 (18 Oct 2014)
+
+  18 Oct 2014; Agostino Sarubbo <ago@gentoo.org> +ettercap-0.8.1.ebuild:
+  Version bump to 0.8.1 wrt bug #525580
+
+  23 Feb 2014; Agostino Sarubbo <ago@gentoo.org> ettercap-0.8.0-r1.ebuild:
+  Fix compilation on ppc, thanks to upstream author Gianfranco Costamagna, wrt
+  to bug #502226 by Paul Osmialowski
+
+  23 Feb 2014; Agostino Sarubbo <ago@gentoo.org> ettercap-9999.ebuild:
+  Sync the last edit with the 9999
+
+  20 Feb 2014; Agostino Sarubbo <ago@gentoo.org> -ettercap-0.7.5.3.ebuild,
+  -ettercap-0.7.6.ebuild, -ettercap-0.8.0.ebuild:
+  Remove old
+
+  20 Feb 2014; Agostino Sarubbo <ago@gentoo.org> ettercap-0.8.0-r1.ebuild:
+  Stable for arm, wrt bug #487128
+
+  20 Feb 2014; Agostino Sarubbo <ago@gentoo.org> ettercap-0.8.0-r1.ebuild:
+  Stable for x86, wrt bug #487128
+
+  20 Feb 2014; Agostino Sarubbo <ago@gentoo.org> ettercap-0.8.0-r1.ebuild:
+  Stable for sparc, wrt bug #487128
+
+  20 Feb 2014; Agostino Sarubbo <ago@gentoo.org> ettercap-0.8.0-r1.ebuild:
+  Stable for ppc, wrt bug #487128
+
+  20 Feb 2014; Agostino Sarubbo <ago@gentoo.org> ettercap-0.8.0-r1.ebuild:
+  Stable for alpha, wrt bug #487128
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> ettercap-0.8.0-r1.ebuild:
+  Stable for ppc64, wrt bug #487128
+
+  27 Nov 2013; Markus Meier <maekke@gentoo.org> ettercap-0.8.0.ebuild:
+  arm stable, bug #487128
+
+  29 Oct 2013; Tony Vroon <chainsaw@gentoo.org> ettercap-0.8.0-r1.ebuild:
+  Marked stable on AMD64 based on arch testing by Elijah "Armageddon" El
+  Lazkani in bug #487128.
+
+*ettercap-0.8.0-r1 (25 Oct 2013)
+
+  25 Oct 2013; Agostino Sarubbo <ago@gentoo.org> +ettercap-0.8.0-r1.ebuild:
+  Force SSL to on because the entire package, now is based on it; wrt to bug
+  #489226
+
+  21 Sep 2013; Agostino Sarubbo <ago@gentoo.org> ettercap-0.8.0.ebuild,
+  ettercap-9999.ebuild:
+  The sed for the remote_browser stuff is not needed anymore, see https://github
+  .com/Ettercap/ettercap/commit/c00b9ceb2d9e6e9322f961d588278bfff528a400 by
+  Gianfranco Costamagna <costamagnagianfranco@yahoo.it>
+
+*ettercap-0.8.0 (20 Sep 2013)
+
+  20 Sep 2013; Agostino Sarubbo <ago@gentoo.org> +ettercap-0.8.0.ebuild:
+  Version bump to 0.8.0
+
+  26 Aug 2013; Jeroen Roovers <jer@gentoo.org> ettercap-0.7.5.3.ebuild,
+  ettercap-0.7.6.ebuild, ettercap-9999.ebuild:
+  Drop HPPA keywording (bug #475232).
+
+  03 Aug 2013; Agostino Sarubbo <ago@gentoo.org> ettercap-0.7.6.ebuild:
+  Stable for sparc, wrt bug #475078
+
+  07 Jul 2013; Agostino Sarubbo <ago@gentoo.org> ettercap-0.7.6.ebuild:
+  Stable for x86, wrt bug #475078
+
+  06 Jul 2013; Agostino Sarubbo <ago@gentoo.org> ettercap-0.7.6.ebuild:
+  Stable for alpha, wrt bug #475078
+
+  30 Jun 2013; Agostino Sarubbo <ago@gentoo.org> ettercap-0.7.6.ebuild:
+  Stable for arm, wrt bug #475078
+
+  29 Jun 2013; Agostino Sarubbo <ago@gentoo.org> ettercap-0.7.6.ebuild:
+  Stable for ppc64, wrt bug #475078
+
+  29 Jun 2013; Agostino Sarubbo <ago@gentoo.org> ettercap-0.7.6.ebuild:
+  Stable for ppc, wrt bug #475078
+
+  28 Jun 2013; Agostino Sarubbo <ago@gentoo.org> ettercap-0.7.6.ebuild:
+  Stable for amd64, wrt bug #475078
+
+  23 Apr 2013; Agostino Sarubbo <ago@gentoo.org> ettercap-9999.ebuild:
+  Temporary fix for this commit: https://github.com/Ettercap/ettercap/commit/f79
+  ee719cd736901d2bd1b5d896ec890343d9b0b
+
+*ettercap-0.7.6 (27 Mar 2013)
+
+  27 Mar 2013; Agostino Sarubbo <ago@gentoo.org> +ettercap-0.7.6.ebuild,
+  ettercap-0.7.5.3.ebuild, ettercap-9999.ebuild:
+  version bump to 0.7.6
+
+  09 Mar 2013; Agostino Sarubbo <ago@gentoo.org> -ettercap-0.7.5.2.ebuild,
+  ettercap-0.7.5.3.ebuild, ettercap-9999.ebuild:
+  Eapi5, remove old
+
+*ettercap-0.7.5.3 (01 Feb 2013)
+
+  01 Feb 2013; Agostino Sarubbo <ago@gentoo.org> +ettercap-0.7.5.3.ebuild:
+  Version bump to 0.7.5.3, committing intentionally with stable keywords because
+  the change is trivial
+
+  29 Jan 2013; Agostino Sarubbo <ago@gentoo.org> -ettercap-0.7.5.1.ebuild,
+  -ettercap-0.7.5.ebuild, -ettercap-0.7.5_p20130103.ebuild:
+  Remove old
+
+  29 Jan 2013; Agostino Sarubbo <ago@gentoo.org> ettercap-0.7.5.2.ebuild:
+  Stable for arm, wrt bug #451198
+
+  29 Jan 2013; Agostino Sarubbo <ago@gentoo.org> ettercap-0.7.5.2.ebuild:
+  Stable for sparc, wrt bug #451198
+
+  29 Jan 2013; Agostino Sarubbo <ago@gentoo.org> ettercap-0.7.5.2.ebuild:
+  Stable for alpha, wrt bug #451198
+
+  29 Jan 2013; Jeroen Roovers <jer@gentoo.org> ettercap-0.7.5.2.ebuild:
+  Stable for HPPA (bug #451198).
+
+  29 Jan 2013; Agostino Sarubbo <ago@gentoo.org> ettercap-0.7.5.2.ebuild:
+  Stable for ppc64, wrt bug #451198
+
+  29 Jan 2013; Agostino Sarubbo <ago@gentoo.org> ettercap-0.7.5.2.ebuild:
+  Stable for ppc, wrt bug #451198
+
+  29 Jan 2013; Agostino Sarubbo <ago@gentoo.org> ettercap-0.7.5.2.ebuild:
+  Stable for x86, wrt bug #451198
+
+  29 Jan 2013; Agostino Sarubbo <ago@gentoo.org> ettercap-0.7.5.2.ebuild:
+  Stable for amd64, wrt bug #451198
+
+*ettercap-0.7.5.2 (29 Jan 2013)
+
+  29 Jan 2013; Agostino Sarubbo <ago@gentoo.org> +ettercap-0.7.5.2.ebuild:
+  Version bump to 0.7.5.2
+
+  08 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  ettercap-0.7.5_p20130103.ebuild:
+  override INSTALL_SYSCONFDIR to install properly in a prefix environment
+
+  08 Jan 2013; Rick Farina <zerochaos@gentoo.org> ettercap-0.7.5.1.ebuild,
+  ettercap-0.7.5.ebuild, ettercap-9999.ebuild:
+  override INSTALL_SYSCONFDIR to install properly in a prefix environment
+
+*ettercap-0.7.5.1 (06 Jan 2013)
+
+  06 Jan 2013; Agostino Sarubbo <ago@gentoo.org> +ettercap-0.7.5.1.ebuild:
+  Version bump to 0.7.5.1
+
+*ettercap-0.7.5_p20130103 (03 Jan 2013)
+
+  03 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  +ettercap-0.7.5_p20130103.ebuild, -ettercap-0.7.5_p20121216.ebuild:
+  Automated addition of the new snapshot.
+
+*ettercap-0.7.5_p20121216 (16 Dec 2012)
+
+  16 Dec 2012; Agostino Sarubbo <ago@gentoo.org>
+  +ettercap-0.7.5_p20121216.ebuild, -ettercap-0.7.5_p20121103.ebuild:
+  Automated addition of the new snapshot.
+
+*ettercap-9999 (16 Dec 2012)
+
+  16 Dec 2012; Rick Farina <zerochaos@gentoo.org> +ettercap-9999.ebuild:
+  it suits me to have a live version of this ebuild for testing, hope others
+  like it too
+
+*ettercap-0.7.5_p20121103 (03 Nov 2012)
+
+  03 Nov 2012; Agostino Sarubbo <ago@gentoo.org>
+  +ettercap-0.7.5_p20121103.ebuild, -ettercap-0.7.5_p20121020.ebuild:
+  Automated addition of the new snapshot.
+
+*ettercap-0.7.5_p20121020 (20 Oct 2012)
+
+  20 Oct 2012; Agostino Sarubbo <ago@gentoo.org>
+  +ettercap-0.7.5_p20121020.ebuild, -ettercap-0.7.5_p20121015.ebuild:
+  Automated addition of the new snapshot.
+
+*ettercap-0.7.5_p20121015 (15 Oct 2012)
+
+  15 Oct 2012; Agostino Sarubbo <ago@gentoo.org>
+  +ettercap-0.7.5_p20121015.ebuild, -ettercap-0.7.5_pre20121006.ebuild:
+  Add new snapshot, remove pre*
+
+  15 Oct 2012; Agostino Sarubbo <ago@gentoo.org> -ettercap-0.7.3-r4.ebuild,
+  -ettercap-0.7.4.1-r1.ebuild, -files/ettercap-0.7.3-64bit-casting.patch,
+  -files/ettercap-0.7.3-as-needed.patch, -files/ettercap-0.7.3-autotools.patch,
+  -files/ettercap-0.7.3-open_missing_mode.patch,
+  -files/ettercap-0.7.4-autotools.patch, -files/ettercap-0.7.4-flags.patch,
+  -files/ettercap-0.7.4-use-g-idle.patch:
+  Remove old
+
+  13 Oct 2012; Agostino Sarubbo <ago@gentoo.org> ettercap-0.7.5.ebuild:
+  +plugins
+
+  13 Oct 2012; Raúl Porcel <armin76@gentoo.org> ettercap-0.7.5.ebuild:
+  alpha/arm/sparc stable wrt #340897
+
+  12 Oct 2012; Jeroen Roovers <jer@gentoo.org> ettercap-0.7.5.ebuild:
+  Stable for HPPA (bug #340897).
+
+  11 Oct 2012; Anthony G. Basile <blueness@gentoo.org> ettercap-0.7.5.ebuild:
+  stable ppc ppc64, bug #340897
+
+  11 Oct 2012; Agostino Sarubbo <ago@gentoo.org> ettercap-0.7.5.ebuild:
+  Stable for AMD64, wrt bug #340897
+
+  11 Oct 2012; Andreas Schuerch <nativemad@gentoo.org> ettercap-0.7.5.ebuild:
+  x86 stable, see bug 340897
+
+*ettercap-0.7.5 (10 Oct 2012)
+
+  10 Oct 2012; Agostino Sarubbo <ago@gentoo.org> +ettercap-0.7.5.ebuild:
+  version bump to 0.7.5
+
+*ettercap-0.7.5_pre20121006 (06 Oct 2012)
+
+  06 Oct 2012; Agostino Sarubbo <ago@gentoo.org>
+  +ettercap-0.7.5_pre20121006.ebuild, -ettercap-0.7.5_pre20120928.ebuild:
+  New snapshot
+
+  05 Oct 2012; Agostino Sarubbo <ago@gentoo.org>
+  ettercap-0.7.5_pre20120928.ebuild:
+  Add app-text/ghostscript-gpl as a DEPEND
+
+*ettercap-0.7.5_pre20120928 (28 Sep 2012)
+
+  28 Sep 2012; Agostino Sarubbo <ago@gentoo.org>
+  +ettercap-0.7.5_pre20120928.ebuild, -ettercap-0.7.5_pre20120903.ebuild:
+  Add new snapshot
+
+  03 Sep 2012; Agostino Sarubbo <ago@gentoo.org> -ettercap-0.7.4.ebuild:
+  Remove old
+
+*ettercap-0.7.5_pre20120903 (03 Sep 2012)
+
+  03 Sep 2012; Agostino Sarubbo <ago@gentoo.org>
+  +ettercap-0.7.5_pre20120903.ebuild, metadata.xml:
+  Add pre release for the 0.7.5 series; ebuild completely rewritten, now the
+  buildsystem is based on cmake.
+
+  24 Aug 2012; Agostino Sarubbo <ago@gentoo.org> metadata.xml:
+  Add myself as maintainer
+
+*ettercap-0.7.4.1-r1 (20 Aug 2012)
+
+  20 Aug 2012; Agostino Sarubbo <ago@gentoo.org> +ettercap-0.7.4.1-r1.ebuild,
+  -ettercap-0.7.4.1.ebuild:
+  QA: make the last changes visible for all
+
+  19 Aug 2012; Rick Farina <zerochaos@gentoo.org>
+  +files/ettercap-0.7.4-use-g-idle.patch, ettercap-0.7.4.1.ebuild, metadata.xml:
+  bugfix from b.g.o #346423
+
+  21 May 2012; Mike Frysinger <vapier@gentoo.org> ettercap-0.7.3-r4.ebuild:
+  Inherit eutils for epatch.
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> ettercap-0.7.4.ebuild,
+  ettercap-0.7.4.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*ettercap-0.7.4.1 (04 Feb 2012)
+
+  04 Feb 2012; Tim Harder <radhermit@gentoo.org> +ettercap-0.7.4.1.ebuild:
+  Version bump.
+
+  09 Dec 2011; Tim Harder <radhermit@gentoo.org>
+  files/ettercap-0.7.4-autotools.patch:
+  Use DESTDIR to remove la files from the correct location.
+
+*ettercap-0.7.4 (06 Dec 2011)
+
+  06 Dec 2011; Tim Harder <radhermit@gentoo.org> +ettercap-0.7.4.ebuild,
+  +files/ettercap-0.7.4-autotools.patch, +files/ettercap-0.7.4-flags.patch:
+  Version bump. Update to EAPI 4 and add pcre use flag.
+
+  28 Mar 2011; Tim Harder <radhermit@gentoo.org> -ettercap-0.7.3-r2.ebuild,
+  -ettercap-0.7.3-r3.ebuild, ettercap-0.7.3-r4.ebuild:
+  Remove old, update to EAPI 2, and use slot dep for gtk+.
+
+  25 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  ettercap-0.7.3-r4.ebuild:
+  ppc64 stable wrt #347593
+
+  05 Jan 2011; Markos Chandras <hwoarang@gentoo.org> ettercap-0.7.3-r4.ebuild:
+  Stable on amd64 wrt bug #347593
+
+  18 Dec 2010; Raúl Porcel <armin76@gentoo.org> ettercap-0.7.3-r4.ebuild:
+  alpha/arm/sparc stable wrt #347593
+
+  07 Dec 2010; Jeroen Roovers <jer@gentoo.org> ettercap-0.7.3-r4.ebuild:
+  Stable for HPPA (bug #347593).
+
+  07 Dec 2010; Jeroen Roovers <jer@gentoo.org> ettercap-0.7.3-r4.ebuild:
+  Stable for PPC (bug #347593).
+
+  07 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  ettercap-0.7.3-r4.ebuild:
+  x86 stable wrt bug #347593
+
+  01 Dec 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  ettercap-0.7.3-r4.ebuild, +files/ettercap-0.7.3-autotools.patch:
+  Fix build with libtool 2.4 by patching up the build system to work with
+  automake 1.11; dependency tracking is broken though, so make sure to
+  hard-disable it (we don't need it anyway). Also make it more obvious that
+  libtool is a _runtime_ dependency for this package.
+
+*ettercap-0.7.3-r4 (17 Oct 2009)
+
+  17 Oct 2009; Markos Chandras <hwoarang@gentoo.org>
+  +ettercap-0.7.3-r4.ebuild, +files/ettercap-0.7.3-64bit-casting.patch:
+  Revision bump which fixes segmentation fault on 64bit arches ( bug #288348
+  ).
+  Thanks to Timothy Redaelli <timothy@redaelli.eu> for the patch
+
+  27 Sep 2009; Brent Baude <ranger@gentoo.org> ettercap-0.7.3-r3.ebuild:
+  Marking ettercap-0.7.3-r3 ppc64 for bug 277296
+
+  26 Aug 2009; Raúl Porcel <armin76@gentoo.org> ettercap-0.7.3-r3.ebuild:
+  arm/sparc stable wrt #277296
+
+  26 Aug 2009; Tobias Klausmann <klausman@gentoo.org>
+  ettercap-0.7.3-r3.ebuild:
+  Stable on alpha, bug #277296
+
+  09 Aug 2009; nixnut <nixnut@gentoo.org> ettercap-0.7.3-r3.ebuild:
+  ppc stable #277296
+
+  21 Jul 2009; <chainsaw@gentoo.org> ettercap-0.7.3-r3.ebuild:
+  Marked stable on AMD64 as requested by Peter Volkov <pva@gentoo.org> in
+  bug #277296. Tested on a Core2 Duo with a Marvell "Sky2" 88E8055 NIC.
+
+  15 Jul 2009; Jeroen Roovers <jer@gentoo.org> ettercap-0.7.3-r3.ebuild:
+  Stable for HPPA (bug #277296).
+
+  15 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  ettercap-0.7.3-r3.ebuild:
+  stable x86, bug 277296
+
+  05 Jun 2009; Peter Volkov <pva@gentoo.org> ettercap-0.7.3-r3.ebuild:
+  Fixed build issue with new libtool, bug #272681, thank Diego Stamigni and
+  Diego E. 'Flameeyes' Pettenò for the fix.
+
+  01 Jun 2009; Peter Volkov <pva@gentoo.org> ettercap-0.7.3-r3.ebuild:
+  Fixed -Werror related build failure, bug #260840, thank Alexandre NEY for
+  report.
+
+*ettercap-0.7.3-r3 (01 Mar 2009)
+
+  01 Mar 2009; Patrick Lauer <patrick@gentoo.org>
+  +files/ettercap-0.7.3-open_missing_mode.patch, +ettercap-0.7.3-r3.ebuild:
+  Fix for gcc 4.3.3 / fortify_sources. Patch by Jonathan-Christofer Demay.
+
+  06 Sep 2007; Markus Ullmann <jokey@gentoo.org> -ettercap-0.7.3.ebuild:
+  Cleanup
+
+  31 May 2007; Raúl Porcel <armin76@gentoo.org> ettercap-0.7.3-r2.ebuild:
+  alpha stable wrt #164922
+
+  18 Feb 2007; Markus Rothe <corsair@gentoo.org> ettercap-0.7.3-r2.ebuild:
+  Added ~ppc64
+
+  10 Feb 2007; Simon Stelling <blubb@gentoo.org> ettercap-0.7.3-r2.ebuild:
+  stable on amd64; bug 164922
+
+  04 Feb 2007; Jeroen Roovers <jer@gentoo.org> ettercap-0.7.3-r2.ebuild:
+  Stable for HPPA (bug #164922).
+
+  03 Feb 2007; nixnut <nixnut@gentoo.org> ettercap-0.7.3-r2.ebuild:
+  Stable on ppc wrt bug 164922
+
+  02 Feb 2007; Raúl Porcel <armin76@gentoo.org> ettercap-0.7.3-r2.ebuild:
+  x86 stable wrt bug 164922
+
+  02 Feb 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  ettercap-0.7.3-r2.ebuild:
+  Stable on sparc wrt #164922
+
+*ettercap-0.7.3-r2 (01 Feb 2007)
+
+  01 Feb 2007; Markus Ullmann <jokey@gentoo.org> -ettercap-0.7.3-r1.ebuild,
+  +ettercap-0.7.3-r2.ebuild:
+  no sed dep needed here
+
+*ettercap-0.7.3-r1 (09 Dec 2006)
+
+  09 Dec 2006; Timothy Redaelli <drizzt@gentoo.org>
+  +files/ettercap-0.7.3-as-needed.patch, +ettercap-0.7.3-r1.ebuild:
+  Revision bump: Added Mike Auty patch to fix as-needed wrt bug #128675
+
+  25 Oct 2006; Timothy Redaelli <drizzt@gentoo.org> ettercap-0.7.3.ebuild:
+  Added ~x86-fbsd keyword.
+
+  15 Feb 2006; Markus Ullmann <jokey@gentoo.org> ettercap-0.7.3.ebuild:
+  Removing virtual/libpcap wrt bug #117898
+
+  19 Sep 2005; Marcelo Goes <vanquirius@gentoo.org> ettercap-0.7.3.ebuild:
+  Cosmetic fixes.
+
+  11 Jun 2005; Daniel Black <dragonheart@gentoo.org> ettercap-0.7.3.ebuild
+  -ettercap-0.7.0.ebuild, -ettercap-0.7.1.ebuild, -ettercap-0.7.2.ebuild:
+  x86 stable. libnet dependancy bumped to libnet-1.1.2.1-r1 due to pic issues
+  with 1.1.2.1
+  old version cleanout
+
+  10 Jun 2005; Rene Nussbaumer <killerfox@gentoo.org> ettercap-0.7.3.ebuild:
+  Stable on hppa. bug #94474
+
+  10 Jun 2005; Aron Griffis <agriffis@gentoo.org> ettercap-0.7.3.ebuild:
+  stable on alpha #94474
+
+  10 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> ettercap-0.7.3.ebuild:
+  Stable on sparc wrt #94474
+
+  10 Jun 2005; Luca Barbato <lu_zero@gentoo.org> ettercap-0.7.3.ebuild:
+  Marked ppc
+
+*ettercap-0.7.3 (07 Jun 2005)
+
+  07 Jun 2005; Daniel Black <dragonheart@gentoo.org> +ettercap-0.7.3.ebuild:
+  Version bump for security bug #94474. Needs hardened verification
+
+  29 Jan 2005; Daniel Black <dragonheart@gentoo.org> ettercap-0.7.0.ebuild,
+  ettercap-0.7.1.ebuild, ettercap-0.7.2.ebuild:
+  changed net-libs/libpcap depend to virtual/libcap
+
+*ettercap-0.7.2 (08 Jan 2005)
+
+  08 Jan 2005; Daniel Black <dragonheart@gentoo.org> -ettercap-0.6.11.ebuild,
+  +ettercap-0.7.2.ebuild:
+  version bump as per bug #75741
+
+  19 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> ettercap-0.7.0.ebuild:
+  Stable on alpha.
+
+*ettercap-0.7.1 (21 Nov 2004)
+
+  21 Nov 2004; Eldad Zack <eldad@gentoo.org> +ettercap-0.7.1.ebuild:
+  Version bump. Added ~amd64 after testing on amd64.g.o. Closes #64797.
+
+  11 Nov 2004; Bryan Østergaard <kloeri@gentoo.org> ettercap-0.7.0.ebuild:
+  ~alpha keyword.
+
+  04 Nov 2004; Eldad Zack <eldad@gentoo.org> ettercap-0.7.0.ebuild:
+  Problem compiling with heavy optimizations: using strip-flags. Closes #63030.
+
+  09 Oct 2004; Guy Martin <gmsoft@gentoo.org> ettercap-0.7.0.ebuild:
+  Marked stable on hppa.
+
+  12 Sep 2004; Jason Wever <weeve@gentoo.org> ettercap-0.7.0.ebuild:
+  Stable on sparc.
+
+  15 Aug 2004; Jason Wever <weeve@gentoo.org> ettercap-0.7.0.ebuild:
+  Bringin' back the ~sparc keyword.  Aww yeah.
+
+  13 Aug 2004; Eldad Zack <eldad@gentoo.org> ettercap-0.7.0.ebuild:
+  Re-fix -ssl issue
+
+  05 Aug 2004; Jon Hood <squinky86@gentoo.org> ettercap-0.7.0.ebuild:
+  Stable on x86. Include fix from Alberto <alor@antifork.org>, #59003.
+
+  06 Jul 2004; Eldad Zack <eldad@gentoo.org> ettercap-0.7.0.ebuild:
+  Fixed typo: changed use_enable gtk2 -> gtk.
+
+*ettercap-0.7.0 (06 Jul 2004)
+
+  06 Jul 2004; Eldad Zack <eldad@gentoo.org> +ettercap-0.7.0.ebuild:
+  Version bump.
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> ettercap-0.6.11.ebuild,
+  ettercap-0.7.0_pre1.ebuild, ettercap-0.7.0_pre2.ebuild,
+  ettercap-0.7.0_rc1.ebuild:
+  change virtual/glibc to virtual/libc
+
+*ettercap-0.7.0_rc1 (29 Jun 2004)
+
+  29 Jun 2004; Eldad Zack <eldad@gentoo.org> +ettercap-0.7.0_rc1.ebuild:
+  Version bump. Closes #54021
+
+*ettercap-0.7.0_pre2 (22 May 2004)
+
+  22 May 2004; Jon Hood <squinky86@gentoo.org> +ettercap-0.7.0_pre2.ebuild:
+  version bump, closes #51305
+
+  29 Apr 2004; Jason Wever <weeve@gentoo.org> ettercap-0.6.11.ebuild:
+  Stable on sparc.
+
+  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> ettercap-0.6.10-r1.ebuild:
+  Add die following econf for bug 48950
+
+*ettercap-0.7.0_pre1 (26 Apr 2004)
+
+  26 Apr 2004; Jon Hood <squinky86@gentoo.org> ettercap-0.7.0_pre1.ebuild,
+  files/digest-ettercap-0.7.0_pre1, metadata.xml:
+  version bump thanks to Alberto Ornaghi (#47963)
+  added missing metadata.xml file
+  0.6.11 stable on x86
+  debug option (#48149)
+
+  25 Feb 2004; Daniel Ahlberg <aliz@gentoo.org> ettercap-0.6.11.ebuild:
+  Adding amd64 keyword. Closing #42798.
+
+  05 Jan 2004; Jason Wever <weeve@gentoo.org> ettercap-0.6.10-r1.ebuild:
+  Marked stable on sparc.
+
+  13 Dec 2003; Lars Weiler <pylon@gentoo.org> ettercap-0.6.11.ebuild:
+  Masked stable on ppc
+
+*ettercap-0.6.11 (23 Jul 2003)
+
+  11 Jan 2003; Guy Martin <gmsoft@gentoo.org> ettercap-0.6.11.ebuild :
+  Marked stable on hppa.
+
+  23 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump.
+
+*ettercap-0.6.10-r1 (12 Jun 2003)
+
+  12 Jun 2003; Alastair Tse <liquidx@gentoo.org> ettercap-0.6.10-r1.ebuild:
+  disabled gtk check (#22642) and fixed ettercap DATADIR to point to /etc
+  (#22649)
+
+  08 Jun 2003; Alastair Tse <liquidx@gentoo.org> ettercap-0.6.10.ebuild:
+  added warning about needing to regenerate your SSL certificate
+
+*ettercap-0.6.10 (08 Jun 2003)
+
+  08 Jun 2003; Alastair Tse <liquidx@gentoo.org> ettercap-0.6.10.ebuild:
+  version bump. gtk interface is purposely not enabled.
+
+*ettercap-0.6.9 (28 Feb 2003)
+
+  28 FEb 2003; Martin Holzer <mholzer@gentoo.org> ettercap-0.6.9.ebuild
+  files/digest-ettercap-0.6.9 ChangeLog :
+  Version bump. Submitted in #16269.
+  
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*ettercap-0.6.7 (23 Jul 2002)
+
+  15 Feb 2003; Mark Guertin <gerk@gentoo.org> ettercap-0.6.7.ebuild :
+  set ~ppc in keywords
+
+  15 Dec 2002; Bjoern Brauel <bjb@gentoo.org> ettercap-0.6.7.ebuild :
+  Add alpha to KEYWORDS
+
+  23 Jul 2002; Seemant Kulleen <seemant@gentoo.org> ettercap-0.6.7.ebuild
+  files/digest-ettercap-0.6.7 :
+
+  Version bump, thanks to: kevin@aptbasilicata.it (maurizio) in bug #5383.
+
+*ettercap-0.6.6.6-r1 (24 Jun 2002)
+
+  24 Jun 2002; Phil Bordelon <sunflare@gentoo.org> ettercap-0.6.6.6-r1.ebuild :
+
+  Added a SLOT and the LICENSE.
+
+*ettercap-0.6.6.6 (20 Jun 2002)
+
+  20 Jun 2002; Phil Bordelon <sunflare@gentoo.org> ettercap-0.6.6.6.ebuild :
+
+  Version bump.
+
+*ettercap-0.6.5 (27 Apr 2002)
+
+  27 Apr 2002; Bruce A. Locke <blocke@shivan.org> ettercap-0.6.5.ebuild :
+
+  Bump up to 0.6.5
+
+*ettercap-0.6.4 (14 Feb 2002)
+
+  13 Feb 2002; F.Meyndert <m0rpheus@gentoo.org> ettercap-0.6.4.ebuild :
+
+  Added new version for ettercap and removed all older versions. The new
+  version 0.6.4 fix a remote root compromise in version 0.6.3 and earlier.

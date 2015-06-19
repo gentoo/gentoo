@@ -1,0 +1,14 @@
+http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgme.git;a=commitdiff;h=43f38db1afe9830b888076adeec1eec21f32335c
+
+--- tests/gpg/t-encrypt-sign.c
++++ tests/gpg/t-encrypt-sign.c
+@@ -60,7 +60,8 @@
+ 	       result->signatures->pubkey_algo);
+       exit (1);
+     }
+-  if (result->signatures->hash_algo != GPGME_MD_SHA1)
++  if (result->signatures->hash_algo != GPGME_MD_SHA1
++      && result->signatures->hash_algo != GPGME_MD_RMD160)
+     {
+       fprintf (stderr, "Wrong hash algorithm reported: %i\n",
+ 	       result->signatures->hash_algo);

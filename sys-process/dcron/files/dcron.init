@@ -1,0 +1,24 @@
+#!/sbin/runscript
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-process/dcron/files/dcron.init,v 1.3 2009/05/12 20:59:20 bangert Exp $
+
+depend() {
+	use logger clock hostname
+	provide cron
+}
+
+start() {
+	ebegin "Starting dcron"
+	/usr/sbin/crond ${DCRON_OPTS} >> ${DCRON_LOG:=/var/log/cron.log} 2>&1
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping dcron"
+	start-stop-daemon --stop --quiet \
+		--pidfile /var/run/cron.pid --exec /usr/sbin/crond
+	local ret=$?
+	rm -f /var/run/cron.pid
+	eend ${ret}
+}

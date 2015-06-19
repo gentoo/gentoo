@@ -1,0 +1,26 @@
+# ChangeLog for dev-java/zeus-jscl
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/zeus-jscl/ChangeLog,v 1.5 2015/06/09 14:07:00 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  24 May 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #199047
+
+  18 Feb 2013; Justin Lecher <jlec@gentoo.org> zeus-jscl-1.08.ebuild,
+  zeus-jscl-1.64.ebuild, metadata.xml:
+  Fix typo in dodoc function, #454982
+
+*zeus-jscl-1.64 (17 Nov 2009)
+*zeus-jscl-1.08 (17 Nov 2009)
+
+  17 Nov 2009; Andrey Kislyuk <weaver@gentoo.org> +zeus-jscl-1.08.ebuild,
+  -zeus-jscl-1.60.ebuild, +zeus-jscl-1.64.ebuild:
+  Version bump and add old version for compatibility with sci-biology/mauve
+
+*zeus-jscl-1.60 (04 Apr 2009)
+
+  04 Apr 2009; Andrey Kislyuk <weaver@gentoo.org> +metadata.xml,
+  +zeus-jscl-1.60.ebuild:
+  New package, bug 260501, ebuild written by Ralph Sennhauser and me

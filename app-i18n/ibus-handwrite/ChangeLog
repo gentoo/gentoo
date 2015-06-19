@@ -1,0 +1,24 @@
+# ChangeLog for app-i18n/ibus-handwrite
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus-handwrite/ChangeLog,v 1.5 2015/04/08 07:30:36 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> ibus-handwrite-2.1.4-r1.ebuild:
+  Remove old Python implementations
+
+*ibus-handwrite-2.1.4-r1 (21 Feb 2014)
+
+  21 Feb 2014; Yixun Lan <dlan@gentoo.org> +ibus-handwrite-2.1.4-r1.ebuild,
+  +files/ibus-handwrite-link.patch:
+  fix under link bug #501954
+
+  01 Sep 2013; Agostino Sarubbo <ago@gentoo.org> ibus-handwrite-2.1.4.ebuild:
+  Stable for x86, wrt bug #480822
+
+  01 Sep 2013; Agostino Sarubbo <ago@gentoo.org> ibus-handwrite-2.1.4.ebuild:
+  Stable for amd64, wrt bug #480822
+
+*ibus-handwrite-2.1.4 (04 May 2013)
+
+  04 May 2013; Naohiro Aota <naota@gentoo.org> +ibus-handwrite-2.1.4.ebuild,
+  +metadata.xml:
+  New package app-i18n/ibus-handwrite.

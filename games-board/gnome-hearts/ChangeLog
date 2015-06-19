@@ -1,0 +1,54 @@
+# ChangeLog for games-board/gnome-hearts
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-board/gnome-hearts/ChangeLog,v 1.12 2014/12/30 12:11:37 pacho Exp $
+
+  30 Dec 2014; Pacho Ramos <pacho@gentoo.org>
+  -files/gnome-hearts-0.3-python.patch, -gnome-hearts-0.3.1.ebuild,
+  -gnome-hearts-0.3.ebuild:
+  Drop old
+
+  19 Dec 2014; Pacho Ramos <pacho@gentoo.org> gnome-hearts-0.3.1-r1.ebuild:
+  amd64 stable, bug 529964
+
+  18 Dec 2014; Pacho Ramos <pacho@gentoo.org> gnome-hearts-0.3.1-r1.ebuild:
+  x86 stable, bug 529964
+
+  16 Nov 2014; Michał Górny <mgorny@gentoo.org> gnome-hearts-0.3.1-r1.ebuild:
+  Add missing PYTHON_DEPS & PYTHON_REQUIRED_USE.
+
+*gnome-hearts-0.3.1-r1 (16 Nov 2014)
+
+  16 Nov 2014; Michał Górny <mgorny@gentoo.org> +gnome-hearts-0.3.1-r1.ebuild,
+  metadata.xml:
+  Convert to python-single-r1. Clean up.
+
+*gnome-hearts-0.3.1 (29 Oct 2014)
+
+  29 Oct 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  +gnome-hearts-0.3.1.ebuild:
+  version bump
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> gnome-hearts-0.3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  22 May 2010; Pacho Ramos <pacho@gentoo.org> gnome-hearts-0.3.ebuild:
+  stable amd64, bug 304635
+
+  30 Apr 2010; Tupone Alfredo <tupone@gentoo.org> gnome-hearts-0.3.ebuild:
+  Force python2 fixing bug #312237 by arfrever@gentoo.org
+
+  16 Mar 2010; Christian Faulhammer <fauli@gentoo.org>
+  gnome-hearts-0.3.ebuild:
+  stable x86, bug 304635
+
+  15 Mar 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  gnome-hearts-0.3.ebuild:
+  work around broken make check
+
+*gnome-hearts-0.3 (12 Jan 2010)
+
+  12 Jan 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +gnome-hearts-0.3.ebuild, +files/gnome-hearts-0.3-python.patch,
+  +metadata.xml:
+  initial commit - ebuild work from Luca Marturana and Samuli Suominen via
+  bug #155104

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst postrm prepare
+DEPEND=media-libs/id3lib =dev-lang/python-2*
+DESCRIPTION=Module for manipulating ID3 tags in Python
+EAPI=3
+HOMEPAGE=http://pyid3lib.sourceforge.net/
+KEYWORDS=amd64 ia64 ppc ppc64 sparc x86
+LICENSE=LGPL-2.1
+RDEPEND=media-libs/id3lib =dev-lang/python-2*
+SLOT=0
+SRC_URI=mirror://sourceforge/pyid3lib/pyid3lib-0.5.1.tar.bz2
+_eclasses_=distutils	92e738ea29389cb3f34778d7a349ac71	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=90a316048a7a05415e5d32d486a88830

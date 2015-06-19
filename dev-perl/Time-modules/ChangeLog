@@ -1,0 +1,155 @@
+# ChangeLog for dev-perl/Time-modules
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Time-modules/ChangeLog,v 1.38 2015/03/13 17:35:59 monsieurp Exp $
+
+*Time-modules-2013.91.200 (13 Mar 2015)
+
+  13 Mar 2015; Patrice Clement <monsieurp@gentoo.org>
+  +Time-modules-2013.91.200.ebuild:
+  Version bump.
+
+*Time-modules-2011.51.700-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Time-modules-2011.51.700-r1.ebuild, -Time-modules-2011.51.700.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  02 Feb 2013; Ulrich Müller <ulm@gentoo.org> Time-modules-2011.51.700.ebuild:
+  Fix LICENSE, bug 453004.
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  31 Mar 2012; Torsten Veller <tove@gentoo.org> -Time-modules-2006.0814.ebuild:
+  Cleanup
+
+  02 Mar 2012; Brent Baude <ranger@gentoo.org> Time-modules-2011.51.700.ebuild:
+  Marking Time-modules-2011.51.700 ppc64 for bug 396957
+
+  12 Feb 2012; Raúl Porcel <armin76@gentoo.org> Time-modules-2006.0814.ebuild,
+  Time-modules-2011.51.700.ebuild:
+  Drop alpha/ia64/sparc, x86 stable wrt #396957
+
+  06 Feb 2012; Brent Baude <ranger@gentoo.org> Time-modules-2011.51.700.ebuild:
+  Marking Time-modules-2011.51.700 ppc for bug 396957
+
+  03 Feb 2012; Agostino Sarubbo <ago@gentoo.org>
+  Time-modules-2011.51.700.ebuild:
+  Stable for amd64, wrt bug #396957
+
+  29 Jul 2011; Torsten Veller <tove@gentoo.org>
+  -Time-modules-2011.50.500.ebuild:
+  Cleanup
+
+*Time-modules-2011.51.700 (19 May 2011)
+
+  19 May 2011; Torsten Veller <tove@gentoo.org>
+  +Time-modules-2011.51.700.ebuild:
+  Version bump
+
+*Time-modules-2011.50.500 (12 May 2011)
+
+  12 May 2011; Torsten Veller <tove@gentoo.org>
+  +Time-modules-2011.50.500.ebuild:
+  Version bump
+
+  06 Feb 2010; Torsten Veller <tove@gentoo.org>
+  Time-modules-2006.0814.ebuild:
+  Fix LICENSE (#301969). Maintenance
+
+  13 Jan 2010; Torsten Veller <tove@gentoo.org>
+  Time-modules-2006.0814.ebuild:
+  Fix SRC_URI
+
+  10 Sep 2008; Torsten Veller <tove@gentoo.org>
+  -Time-modules-2003.1126.ebuild:
+  Cleanup
+
+  10 Sep 2008; Torsten Veller <tove@gentoo.org>
+  Time-modules-2006.0814.ebuild:
+  Remove mymake="/usr"
+
+  14 Jul 2007; Raúl Porcel <armin76@gentoo.org>
+  Time-modules-2006.0814.ebuild:
+  alpha stable
+
+  16 Apr 2007; Markus Rothe <corsair@gentoo.org>
+  Time-modules-2006.0814.ebuild:
+  Stable on ppc64
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org>
+  Time-modules-2006.0814.ebuild:
+  Stable on x86, bug #169152.
+
+  21 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  Time-modules-2006.0814.ebuild:
+  ppc stable
+
+  20 Oct 2006; Aron Griffis <agriffis@gentoo.org>
+  Time-modules-2006.0814.ebuild:
+  Mark 2006.0814 stable on ia64
+
+  15 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  -Time-modules-2003.0211.ebuild, Time-modules-2006.0814.ebuild:
+  Marking amd64, sparc stable; cleaning up ebuilds
+
+*Time-modules-2006.0814 (20 Aug 2006)
+
+  20 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Time-modules-2003.0211.ebuild, Time-modules-2003.1126.ebuild,
+  +Time-modules-2006.0814.ebuild:
+  Version bump
+
+  06 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Time-modules-2003.0211.ebuild, Time-modules-2003.1126.ebuild:
+  Adding perl dep; fixed header; fixed DEPEND
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  Time-modules-2003.1126.ebuild:
+  Mark 2003.1126 stable on ia64
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  Time-modules-2003.1126.ebuild:
+  add ~ia64
+
+  01 May 2005; Tom Martin <slarti@gentoo.org> Time-modules-2003.1126.ebuild:
+  Stable on amd64.
+
+  30 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
+  Time-modules-2003.1126.ebuild:
+  Stable on alpha.
+
+  29 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  Time-modules-2003.0211.ebuild, Time-modules-2003.1126.ebuild:
+  Cleaning for mirror syntax
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  23 Dec 2004; Yuta SATOH <nigoro@gentoo.org> Time-modules-2003.1126.ebuild:
+  added ~ppc64
+
+*Time-modules-2003.1126 (10 Jun 2004)
+
+  10 Jun 2004; Michael Cummings <mcummings@gentoo.org>
+  Time-modules-2003.1126.ebuild:
+  new version on cpan
+
+  26 May 2004; Bryan Østergaard <kloeri@gentoo.org>
+  Time-modules-2003.0211.ebuild:
+  Stable on alpha.
+
+*Time-modules-2003.0211 (08 Jun 2003)
+
+  08 Jun 2003; <rac@gentoo.org> Time-modules-2002.1001.ebuild,
+  Time-modules-2003.0211.ebuild:
+  Version bump, add IUSE, fix header
+
+*Time-modules-2002.1001 (21 Dec 2002)
+
+  22 Dec 2002; Michael Cummings <mcummings@gentoo.org>
+  Time-modules-2002.1001.ebuild:
+
+  Initial import.  Ebuild submitted by bnelson@itministry.org (Brian
+  Nelson) bug 10108 - future dep

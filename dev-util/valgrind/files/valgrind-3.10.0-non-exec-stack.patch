@@ -1,0 +1,148 @@
+diff -Naur valgrind-3.10.0.orig/coregrind/Makefile.am valgrind-3.10.0/coregrind/Makefile.am
+--- valgrind-3.10.0.orig/coregrind/Makefile.am	2014-09-08 08:28:30.000000000 -0400
++++ valgrind-3.10.0/coregrind/Makefile.am	2014-09-12 20:54:25.720389938 -0400
+@@ -333,18 +333,6 @@
+ 	m_demangle/demangle.c \
+ 	m_demangle/dyn-string.c \
+ 	m_demangle/safe-ctype.c \
+-	m_dispatch/dispatch-x86-linux.S \
+-	m_dispatch/dispatch-amd64-linux.S \
+-	m_dispatch/dispatch-ppc32-linux.S \
+-	m_dispatch/dispatch-ppc64be-linux.S \
+-	m_dispatch/dispatch-ppc64le-linux.S \
+-	m_dispatch/dispatch-arm-linux.S \
+-	m_dispatch/dispatch-arm64-linux.S \
+-	m_dispatch/dispatch-s390x-linux.S \
+-	m_dispatch/dispatch-mips32-linux.S \
+-	m_dispatch/dispatch-mips64-linux.S \
+-	m_dispatch/dispatch-x86-darwin.S \
+-	m_dispatch/dispatch-amd64-darwin.S \
+ 	m_gdbserver/inferiors.c \
+ 	m_gdbserver/m_gdbserver.c \
+ 	m_gdbserver/regcache.c \
+@@ -368,8 +356,6 @@
+ 	m_initimg/initimg-pathscan.c \
+ 	m_mach/mach_basics.c \
+ 	m_mach/mach_msg.c \
+-	m_mach/mach_traps-x86-darwin.S \
+-	m_mach/mach_traps-amd64-darwin.S \
+ 	m_replacemalloc/replacemalloc_core.c \
+ 	m_scheduler/scheduler.c \
+ 	m_scheduler/sema.c \
+@@ -386,18 +372,6 @@
+ 	m_sigframe/sigframe-mips64-linux.c \
+ 	m_sigframe/sigframe-x86-darwin.c \
+ 	m_sigframe/sigframe-amd64-darwin.c \
+-	m_syswrap/syscall-x86-linux.S \
+-	m_syswrap/syscall-amd64-linux.S \
+-	m_syswrap/syscall-ppc32-linux.S \
+-	m_syswrap/syscall-ppc64be-linux.S \
+-	m_syswrap/syscall-ppc64le-linux.S \
+-	m_syswrap/syscall-arm-linux.S \
+-	m_syswrap/syscall-arm64-linux.S \
+-	m_syswrap/syscall-s390x-linux.S \
+-	m_syswrap/syscall-mips32-linux.S \
+-	m_syswrap/syscall-mips64-linux.S \
+-	m_syswrap/syscall-x86-darwin.S \
+-	m_syswrap/syscall-amd64-darwin.S \
+ 	m_syswrap/syswrap-main.c \
+ 	m_syswrap/syswrap-generic.c \
+ 	m_syswrap/syswrap-linux.c \
+@@ -420,6 +394,29 @@
+ 	m_ume/main.c \
+ 	m_ume/script.c
+ 
++COREGRIND_SOURCES_COMMON += \
++	m_dispatch/dispatch-@VGCONF_ARCH_PRI@-@VGCONF_OS@.S \
++	m_syswrap/syscall-@VGCONF_ARCH_PRI@-@VGCONF_OS@.S
++
++if VGCONF_HAVE_PLATFORM_SEC
++COREGRIND_SOURCES_COMMON += \
++	m_dispatch/dispatch-@VGCONF_ARCH_SEC@-@VGCONF_OS@.S \
++	m_syswrap/syscall-@VGCONF_ARCH_SEC@-@VGCONF_OS@.S
++endif
++
++if VGCONF_OS_IS_DARWIN
++COREGRIND_SOURCES_COMMON += \
++	m_dispatch/dispatch-@VGCONF_ARCH_PRI@-darwin.S \
++	m_syswrap/syscall-@VGCONF_ARCH_PRI@-darwin.S \
++	m_mach/mach_traps-@VGCONF_ARCH_PRI@-darwin.S
++if VGCONF_HAVE_PLATFORM_SEC
++COREGRIND_SOURCES_COMMON += \
++	m_dispatch/dispatch-@VGCONF_ARCH_SEC@-darwin.S \
++	m_syswrap/syscall-@VGCONF_ARCH_SEC@-darwin.S \
++	m_mach/mach_traps-@VGCONF_ARCH_SEC@-darwin.S
++endif
++endif
++
+ libcoregrind_@VGCONF_ARCH_PRI@_@VGCONF_OS@_a_SOURCES = \
+     $(COREGRIND_SOURCES_COMMON)
+ nodist_libcoregrind_@VGCONF_ARCH_PRI@_@VGCONF_OS@_a_SOURCES = \
+diff -Naur valgrind-3.10.0.orig/coregrind/m_dispatch/dispatch-amd64-linux.S valgrind-3.10.0/coregrind/m_dispatch/dispatch-amd64-linux.S
+--- valgrind-3.10.0.orig/coregrind/m_dispatch/dispatch-amd64-linux.S	2014-09-08 08:28:46.000000000 -0400
++++ valgrind-3.10.0/coregrind/m_dispatch/dispatch-amd64-linux.S	2014-09-12 20:49:14.681385751 -0400
+@@ -249,11 +249,11 @@
+ 
+ .size VG_(disp_run_translations), .-VG_(disp_run_translations)
+ 
++#endif // defined(VGP_amd64_linux)
++
+ /* Let the linker know we don't need an executable stack */
+ .section .note.GNU-stack,"",@progbits
+ 
+-#endif // defined(VGP_amd64_linux)
+-
+ /*--------------------------------------------------------------------*/
+ /*--- end                                                          ---*/
+ /*--------------------------------------------------------------------*/
+diff -Naur valgrind-3.10.0.orig/coregrind/m_dispatch/dispatch-x86-linux.S valgrind-3.10.0/coregrind/m_dispatch/dispatch-x86-linux.S
+--- valgrind-3.10.0.orig/coregrind/m_dispatch/dispatch-x86-linux.S	2014-09-08 08:28:46.000000000 -0400
++++ valgrind-3.10.0/coregrind/m_dispatch/dispatch-x86-linux.S	2014-09-12 20:49:14.681385751 -0400
+@@ -240,11 +240,11 @@
+ 
+ .size VG_(disp_run_translations), .-VG_(disp_run_translations)
+ 
++#endif // defined(VGP_x86_linux)
++
+ /* Let the linker know we don't need an executable stack */
+ .section .note.GNU-stack,"",@progbits
+ 
+-#endif // defined(VGP_x86_linux)
+-
+ /*--------------------------------------------------------------------*/
+ /*--- end                                                          ---*/
+ /*--------------------------------------------------------------------*/
+diff -Naur valgrind-3.10.0.orig/coregrind/m_syswrap/syscall-amd64-linux.S valgrind-3.10.0/coregrind/m_syswrap/syscall-amd64-linux.S
+--- valgrind-3.10.0.orig/coregrind/m_syswrap/syscall-amd64-linux.S	2014-09-08 08:28:45.000000000 -0400
++++ valgrind-3.10.0/coregrind/m_syswrap/syscall-amd64-linux.S	2014-09-12 20:49:14.681385751 -0400
+@@ -205,11 +205,11 @@
+ ML_(blksys_finished):	.quad 5b
+ .previous
+ 
++#endif // defined(VGP_amd64_linux)
++
+ /* Let the linker know we don't need an executable stack */
+ .section .note.GNU-stack,"",@progbits
+ 
+-#endif // defined(VGP_amd64_linux)
+-
+ /*--------------------------------------------------------------------*/
+ /*--- end                                                          ---*/
+ /*--------------------------------------------------------------------*/
+diff -Naur valgrind-3.10.0.orig/coregrind/m_syswrap/syscall-x86-linux.S valgrind-3.10.0/coregrind/m_syswrap/syscall-x86-linux.S
+--- valgrind-3.10.0.orig/coregrind/m_syswrap/syscall-x86-linux.S	2014-09-08 08:28:45.000000000 -0400
++++ valgrind-3.10.0/coregrind/m_syswrap/syscall-x86-linux.S	2014-09-12 20:49:14.681385751 -0400
+@@ -165,11 +165,11 @@
+ ML_(blksys_finished):	.long 5b
+ .previous
+ 	
++#endif // defined(VGP_x86_linux)
++
+ /* Let the linker know we don't need an executable stack */
+ .section .note.GNU-stack,"",@progbits
+ 
+-#endif // defined(VGP_x86_linux)
+-
+ /*--------------------------------------------------------------------*/
+ /*--- end                                                          ---*/
+ /*--------------------------------------------------------------------*/

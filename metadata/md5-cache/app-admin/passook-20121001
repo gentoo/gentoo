@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Password generator capable of generating pronounceable and/or secure passwords
+EAPI=4
+HOMEPAGE=http://mackers.com/misc/scripts/passook/
+KEYWORDS=amd64 hppa ppc ppc64 x86 ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=GPL-3+
+RDEPEND=dev-lang/perl sys-apps/miscfiles
+SLOT=0
+SRC_URI=mirror://gentoo/passook-20121001.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	prefix	21058c21ca48453d771df15500873ede	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=a75cfd476f5bb4bdaedd91d9e2f80a3e

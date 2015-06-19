@@ -1,0 +1,60 @@
+# ChangeLog for app-mobilephone/vmoconv
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-mobilephone/vmoconv/ChangeLog,v 1.13 2014/08/10 18:13:24 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> vmoconv-1.0-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  09 Apr 2014; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  [QA] Dissolve the mobile-phone herd to maintainer-needed because it is empty
+  and nobody joined it after multiple recruitment mails.
+
+  21 Aug 2013; Chris Reffett <creffett@gentoo.org> -vmoconv-1.0.ebuild,
+  vmoconv-1.0-r1.ebuild:
+  Fix bug 467588. EAPI bump. Remove old.
+
+  21 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> vmoconv-1.0-r1.ebuild:
+  x86 stable wrt bug #393971
+
+  18 Dec 2011; Agostino Sarubbo <ago@gentoo.org> vmoconv-1.0-r1.ebuild:
+  Stable for AMD64, wrt bug #393971
+
+  20 Mar 2009; Joseph Jezak <josejx@gentoo.org> vmoconv-1.0-r1.ebuild:
+  Marked ~ppc for bug #261095.
+
+*vmoconv-1.0-r1 (03 Mar 2009)
+
+  03 Mar 2009; Alin Năstac <mrness@gentoo.org>
+  +files/vmoconv-1.0-external-libgsm.patch, +files/vmoconv-1.0-flags.patch,
+  +vmoconv-1.0-r1.ebuild:
+  Use system libgsm instead copy included in the tarball (#252886). Remove
+  forced -g from (C|LD)FLAGS.
+
+  05 Oct 2008; Diego Pettenò <flameeyes@gentoo.org>
+  files/vmoconv-1.0-glibc28.patch:
+  Extend patch to actually build with glibc 2.8. Closes bug #239611.
+
+  20 Jun 2008; Alin Năstac <mrness@gentoo.org>
+  +files/vmoconv-1.0-glibc28.patch, vmoconv-1.0.ebuild:
+  Fix broken build on boxes with glibc-2.8 (#227153).
+
+  30 May 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Andrej Kacian (Ticho) from metadata.xml (as per #59986).
+
+  18 Aug 2007; Alin Năstac <mrness@gentoo.org> vmoconv-1.0.ebuild:
+  Add ~amd64 keyword.
+
+  10 Oct 2005; Alin Nastac <mrness@gentoo.org> vmoconv-1.0.ebuild:
+  Remove INSTALL and COPYING from docs.
+
+  14 May 2005; Alin Nastac <mrness@gentoo.org> metadata.xml:
+  Moved from app-misc/vmoconv to app-mobilephone/vmoconv.
+
+  07 Feb 2005; Andrej Kacian <ticho@gentoo.org> vmoconv-1.0.ebuild:
+  Stable on x86.
+
+*vmoconv-1.0 (08 Jan 2005)
+
+  08 Jan 2005; Andrej Kacian <ticho@gentoo.org> +metadata.xml,
+  +vmoconv-1.0.ebuild:
+  Initial import.

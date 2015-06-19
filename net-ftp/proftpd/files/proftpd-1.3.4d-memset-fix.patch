@@ -1,0 +1,37 @@
+From dfab55028b4282a8e8769e108518405a93cf3d87 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Thu, 12 Sep 2013 22:58:35 +0300
+Subject: [PATCH] contrib/mod_sftp_pam.c: fix size argument for memset
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Pass something string size related insteal of 'sizeof(void*)'
+(which might overflow).
+
+Found by gcc 4.8:
+> mod_sftp_pam.c:327:36: warning: argument to ‘sizeof’ in ‘memset’
+> call is the same expression as the destination; did you mean to
+> provide an explicit length? [-Wsizeof-pointer-memaccess]
+
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ contrib/mod_sftp_pam.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/contrib/mod_sftp_pam.c b/contrib/mod_sftp_pam.c
+index 0a9de72..ba8f1c5 100644
+--- a/contrib/mod_sftp_pam.c
++++ b/contrib/mod_sftp_pam.c
+@@ -324,7 +324,7 @@ static int sftppam_driver_open(sftp_kbdint_driver_t *driver, const char *user) {
+     exit(1);
+   }
+ 
+-  memset(sftppam_user, '\0', sizeof(sftppam_user));
++  memset(sftppam_user, '\0', sftppam_userlen);
+   sstrncpy(sftppam_user, user, sftppam_userlen);
+ 
+   c = find_config(main_server->conf, CONF_PARAM, "SFTPPAMOptions", FALSE);
+-- 
+1.8.3.2
+

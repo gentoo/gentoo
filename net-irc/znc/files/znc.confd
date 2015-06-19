@@ -1,0 +1,7 @@
+# /etc/conf.d/znc
+
+# Location of the znc configuration folder
+ZNC_CONF="/var/lib/znc"
+
+# User to run znc as
+ZNC_USER="znc"

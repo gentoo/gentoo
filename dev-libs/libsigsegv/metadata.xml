@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>common-lisp</herd>
+<longdescription>
+This is a library for handling page faults in user mode. A page fault occurs
+when a program tries to access to a region of memory that is currently not
+available. Catching and handling a page fault is a useful technique for
+implementing:
+
+  - pageable virtual memory,
+  - memory-mapped access to persistent databases,
+  - generational garbage collectors,
+  - stack overflow handlers,
+  - distributed shared memory,
+</longdescription>
+</pkgmetadata>
+

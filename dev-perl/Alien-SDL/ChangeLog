@@ -1,0 +1,119 @@
+# ChangeLog for dev-perl/Alien-SDL
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Alien-SDL/ChangeLog,v 1.30 2015/06/13 19:22:44 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  Alien-SDL-1.440.0.ebuild, Alien-SDL-1.444.0.ebuild, Alien-SDL-1.446.0.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+*Alien-SDL-1.446.0 (12 Apr 2015)
+
+  12 Apr 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Alien-SDL-1.446.0.ebuild:
+  Version bump
+
+  08 Feb 2015; Vladimir Smirnov <civil@gentoo.org>
+  +files/Alien-SDL-1.444.0-fix-build-option.patch, Alien-SDL-1.444.0.ebuild:
+  Add patch from debian to fix package's build system
+
+  27 Sep 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  Alien-SDL-1.440.0.ebuild, Alien-SDL-1.444.0.ebuild:
+  Add Archive::Extract as dependency, bug 523598
+
+  03 Sep 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  -Alien-SDL-1.436.0-r1.ebuild:
+  old
+
+  28 Aug 2014; Mikle Kolyada <zlogene@gentoo.org> Alien-SDL-1.440.0.ebuild:
+  x86 stable wrt bug #518432
+
+  25 Aug 2014; Manuel Rüger <mrueg@gentoo.org> Alien-SDL-1.440.0.ebuild:
+  Mark amd64 stable. Bug #518432.
+
+  25 Aug 2014; Jeroen Roovers <jer@gentoo.org> Alien-SDL-1.440.0.ebuild:
+  Stable for HPPA (bug #518432).
+
+*Alien-SDL-1.436.0-r1 (24 Aug 2014)
+
+  24 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Alien-SDL-1.436.0-r1.ebuild, -Alien-SDL-1.436.0.ebuild:
+  bumped current stable ebuild(s) EAPI to 5; committed directly to stable as no
+  other changes present and revbump helps stable systems to keep from dieing on
+  perl-5.18 upgrade
+
+  30 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> Alien-SDL-1.440.0.ebuild,
+  Alien-SDL-1.444.0.ebuild:
+  Respect CC, thanks to Jer (bug #518576)
+
+*Alien-SDL-1.444.0 (29 Jul 2014)
+
+  29 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> +Alien-SDL-1.444.0.ebuild,
+  Alien-SDL-1.440.0.ebuild:
+  Version bump
+
+*Alien-SDL-1.440.0 (16 Aug 2013)
+
+  16 Aug 2013; Patrick Lauer <patrick@gentoo.org> +Alien-SDL-1.440.0.ebuild:
+  Bump
+
+  08 Jan 2013; Torsten Veller <tove@gentoo.org> -Alien-SDL-1.430.ebuild,
+  -Alien-SDL-1.434.ebuild:
+  Cleanup
+
+  04 Dec 2012;  <ago@gentoo.org> Alien-SDL-1.436.0.ebuild:
+  Stable for x86, wrt bug #439118
+
+  01 Nov 2012; Jeroen Roovers <jer@gentoo.org> Alien-SDL-1.436.0.ebuild:
+  Stable for HPPA (bug #439118).
+
+  24 Oct 2012; <ago@gentoo.org> Alien-SDL-1.436.0.ebuild:
+  Stable for amd64, wrt bug #439118
+
+*Alien-SDL-1.436.0 (06 Aug 2012)
+
+  06 Aug 2012; Torsten Veller <tove@gentoo.org> +Alien-SDL-1.436.0.ebuild:
+  Version bump
+
+  09 Jul 2012; Jeroen Roovers <jer@gentoo.org> Alien-SDL-1.434.ebuild:
+  Stable for HPPA (bug #424533).
+
+  03 Jul 2012; Agostino Sarubbo <ago@gentoo.org> Alien-SDL-1.434.ebuild:
+  Stable for amd64, wrt bug #424533
+
+  03 Jul 2012; Jeff Horelick <jdhore@gentoo.org> Alien-SDL-1.434.ebuild:
+  marked x86 per bug 424533
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  02 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> metadata.xml:
+  Leave the maintaining for games and perl. I can still contribute here if
+  required later.
+
+*Alien-SDL-1.434 (02 Jun 2012)
+
+  02 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> +Alien-SDL-1.434.ebuild:
+  Version bump.
+
+  14 Apr 2012; Markus Meier <maekke@gentoo.org> Alien-SDL-1.430.ebuild:
+  x86 stable, bug #408579
+
+  20 Mar 2012; Jeroen Roovers <jer@gentoo.org> Alien-SDL-1.430.ebuild:
+  Stable for HPPA (bug #408579).
+
+  20 Mar 2012; Agostino Sarubbo <ago@gentoo.org> Alien-SDL-1.430.ebuild:
+  Stable for amd64, wrt bug #408581
+
+  01 Mar 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Add missing cpan remote-id tags in metadata.xml (#406287)
+
+  08 Feb 2012; Jeroen Roovers <jer@gentoo.org> Alien-SDL-1.430.ebuild:
+  Marked ~hppa (bug #399649).
+
+  21 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> metadata.xml:
+  Since games is in dev-perl/SDL metadata.xml, it should be here too.
+
+*Alien-SDL-1.430 (21 Jan 2012)
+
+  21 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> +Alien-SDL-1.430.ebuild:
+  Initial commit (as part of #356535 by Satoshi Hayazaki)

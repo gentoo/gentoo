@@ -1,0 +1,413 @@
+# ChangeLog for games-strategy/warzone2100
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/warzone2100/ChangeLog,v 1.91 2015/03/26 17:41:40 mr_bones_ Exp $
+
+  26 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/warzone2100-3.1.0-pkgconf.patch, -warzone2100-3.1.0.ebuild:
+  old
+
+  25 Mar 2015; Agostino Sarubbo <ago@gentoo.org> warzone2100-3.1.2.ebuild:
+  Stable for x86, wrt bug #542594
+
+  09 Mar 2015; Agostino Sarubbo <ago@gentoo.org> warzone2100-3.1.2.ebuild:
+  Stable for amd64, wrt bug #542594
+
+*warzone2100-3.1.2 (06 Feb 2015)
+
+  06 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/warzone2100-3.1.2-openGL.patch, +files/warzone2100-3.1.2-pkgconf.patch,
+  +warzone2100-3.1.2.ebuild, -files/warzone2100-3.1.1-openGL.patch,
+  -files/warzone2100-3.1.1-pkgconf.patch, -warzone2100-3.1.1.ebuild:
+  version bump; clean old
+
+  29 Oct 2014; Alfredo Tupone <tupone@gentoo.org> warzone2100-3.1.1.ebuild,
+  +files/warzone2100-3.1.1-openGL.patch:
+  Fix Bug #523876 by Lars Wendler (Polynomial-C)
+
+  10 Aug 2014; Michael Sterrett <mr_bones_@gentoo.org> warzone2100-3.1.1.ebuild:
+  tidy deps (bug #519486(
+
+  12 Apr 2014; Michael Sterrett <mr_bones_@gentoo.org> metadata.xml:
+  add upsteam longdescription (bug #507442)
+
+  18 Mar 2014; Michael Sterrett <mr_bones_@gentoo.org> warzone2100-3.1.1.ebuild:
+  add elog for working around bug #504924
+
+*warzone2100-3.1.1 (05 Feb 2014)
+
+  05 Feb 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/warzone2100-3.1.1-pkgconf.patch, +warzone2100-3.1.1.ebuild:
+  version bump (bug #500228)
+
+  07 Nov 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/warzone2100-2.3.9-pkgconf.patch, -warzone2100-2.3.9.ebuild:
+  old
+
+  29 Aug 2013; Michael Sterrett <mr_bones_@gentoo.org> warzone2100-3.1.0.ebuild:
+  respect AR (bug #477608)
+
+  27 Jul 2013; Agostino Sarubbo <ago@gentoo.org> warzone2100-3.1.0.ebuild:
+  Stable for x86, wrt bug #477424
+
+  21 Jul 2013; Agostino Sarubbo <ago@gentoo.org> warzone2100-3.1.0.ebuild:
+  Stable for amd64, wrt bug #477424
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> warzone2100-3.1.0.ebuild:
+  Move Qt dependencies to the new category
+
+*warzone2100-3.1.0 (10 Feb 2013)
+
+  10 Feb 2013; Julian Ospald <hasufell@gentoo.org> +warzone2100-3.1.0.ebuild,
+  +files/warzone2100-3.1.0-pkgconf.patch, metadata.xml:
+  version bump wrt #454124
+
+  07 Feb 2013; Ulrich Müller <ulm@gentoo.org> warzone2100-2.3.9.ebuild:
+  Move Creative Commons licenses to shorter names.
+
+  20 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  -warzone2100-2.3.8.ebuild:
+  old
+
+  29 Jul 2012; Julian Ospald <hasufell@gentoo.org> warzone2100-2.3.9.ebuild,
+  +files/warzone2100-2.3.9-pkgconf.patch:
+  fix build with pkgconf wrt #428494
+
+  20 Jun 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  warzone2100-2.3.9.ebuild:
+  work around autopoint build issue with patch from Julian Ospald (bug #421511)
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> warzone2100-2.3.8.ebuild,
+  warzone2100-2.3.9.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  04 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  warzone2100-2.3.9.ebuild:
+  x86 stable wrt bug #395447
+
+  22 Dec 2011; Agostino Sarubbo <ago@gentoo.org> warzone2100-2.3.9.ebuild:
+  Stable for AMD64, wrt bug #395447
+
+  16 Nov 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  warzone2100-2.3.9.ebuild:
+  needs bison to build (bug #390689)
+
+*warzone2100-2.3.9 (27 Oct 2011)
+
+  27 Oct 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  -warzone2100-2.3.7.ebuild, +warzone2100-2.3.9.ebuild:
+  version bump; drop ppc to ~
+
+  08 Aug 2011; Markos Chandras <hwoarang@gentoo.org> warzone2100-2.3.8.ebuild:
+  Stable on amd64 wrt bug #375377
+
+  08 Aug 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  warzone2100-2.3.8.ebuild:
+  x86 stable wrt bug #375377
+
+  24 May 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  warzone2100-2.3.8.ebuild:
+  make sure motif isn't used (bug #368571)
+
+*warzone2100-2.3.8 (22 May 2011)
+
+  22 May 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  +warzone2100-2.3.8.ebuild:
+  version bump
+
+  18 Mar 2011; Thomas Kahle <tomka@gentoo.org> warzone2100-2.3.7.ebuild:
+  x86 stable per bug 356483
+
+  05 Mar 2011; Brent Baude <ranger@gentoo.org> warzone2100-2.3.7.ebuild:
+  stable ppc, bug 356483
+
+  27 Feb 2011; Markos Chandras <hwoarang@gentoo.org> warzone2100-2.3.7.ebuild:
+  Stable on amd64 wrt bug #356483
+
+*warzone2100-2.3.7 (23 Jan 2011)
+
+  23 Jan 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  +warzone2100-2.3.7.ebuild:
+  version bump
+
+  11 Jan 2011; Brent Baude <ranger@gentoo.org> warzone2100-2.3.6.ebuild:
+  Marking warzone2100-2.3.6 ppc for bug 350429
+
+  05 Jan 2011; Thomas Kahle <tomka@gentoo.org> warzone2100-2.3.6.ebuild:
+  x86 stable per bug 350429
+
+  04 Jan 2011; Markos Chandras <hwoarang@gentoo.org> warzone2100-2.3.6.ebuild:
+  Stable on amd64 wrt bug #350429
+
+*warzone2100-2.3.6 (29 Nov 2010)
+
+  29 Nov 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +warzone2100-2.3.6.ebuild:
+  version bump
+
+  03 Nov 2010; Markus Meier <maekke@gentoo.org> warzone2100-2.3.5.ebuild:
+  x86 stable, bug #343101
+
+  31 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  warzone2100-2.3.5.ebuild:
+  Stable on amd64 wrt bug #343101
+
+  15 Oct 2010; Brent Baude <ranger@gentoo.org> warzone2100-2.3.4.ebuild:
+  stable ppc, bug 337318
+
+*warzone2100-2.3.5 (28 Sep 2010)
+
+  28 Sep 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +warzone2100-2.3.5.ebuild:
+  version bump
+
+  20 Sep 2010; Markos Chandras <hwoarang@gentoo.org>
+  warzone2100-2.3.4.ebuild:
+  Stable on amd64 wrt bug #337318
+
+  17 Sep 2010; Christian Faulhammer <fauli@gentoo.org>
+  warzone2100-2.3.4.ebuild:
+  stable x86, bug 337318
+
+*warzone2100-2.3.4 (15 Aug 2010)
+
+  15 Aug 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +warzone2100-2.3.4.ebuild:
+  version bump
+
+  12 Aug 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  warzone2100-2.3.3.ebuild:
+  uncouple the video version from the game release (bug #330801)
+
+  02 Aug 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +warzone2100-2.3.3.ebuild:
+  version bump
+
+*warzone2100-2.3.3 (02 Aug 2010)
+
+  02 Aug 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +warzone2100-2.3.3.ebuild:
+  version bump
+
+*warzone2100-2.3.2 (28 Jul 2010)
+
+  28 Jul 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +warzone2100-2.3.2.ebuild:
+  version bump
+
+  23 Jul 2010; Peter Volkov <pva@gentoo.org> warzone2100-2.3.1.ebuild:
+  amd64 stable, bug 328277
+
+  17 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  warzone2100-2.3.1.ebuild:
+  stable x86, bug 328277
+
+  21 Jun 2010; Markus Meier <maekke@gentoo.org> warzone2100-2.3.0.ebuild:
+  amd64/x86 stable, bug #322435
+
+*warzone2100-2.3.1 (14 Jun 2010)
+
+  14 Jun 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +warzone2100-2.3.1.ebuild:
+  version bump
+
+  28 Apr 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  warzone2100-2.3.0.ebuild:
+  use the higher quality videos (bug #317283)
+
+*warzone2100-2.3.0 (25 Apr 2010)
+
+  25 Apr 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +warzone2100-2.3.0.ebuild:
+  version bump
+
+  23 Jan 2010; Brent Baude <ranger@gentoo.org> warzone2100-2.2.4.ebuild:
+  stable ppc, bug 296688
+
+  29 Dec 2009; Markus Meier <maekke@gentoo.org> warzone2100-2.2.4.ebuild:
+  x86 stable, bug #296688
+
+  28 Dec 2009; Richard Freeman <rich0@gentoo.org> warzone2100-2.2.4.ebuild:
+  amd64 stable - 296688
+
+*warzone2100-2.2.4 (12 Oct 2009)
+
+  12 Oct 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +warzone2100-2.2.4.ebuild:
+  version bump
+
+*warzone2100-2.2.3 (14 Sep 2009)
+
+  14 Sep 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +warzone2100-2.2.3.ebuild:
+  version bump
+
+*warzone2100-2.2.2 (26 Aug 2009)
+
+  26 Aug 2009; Tristan Heaven <nyhm@gentoo.org> +warzone2100-2.2.2.ebuild:
+  Version bump
+
+  16 Jul 2009; Tristan Heaven <nyhm@gentoo.org> warzone2100-2.2.1.ebuild:
+  Depend on dev-games/physfs with zip enabled, bug #277288
+
+*warzone2100-2.2.1 (01 Jul 2009)
+
+  01 Jul 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +warzone2100-2.2.1.ebuild:
+  version bump
+
+  07 Jun 2009; Tristan Heaven <nyhm@gentoo.org> warzone2100-2.2.0.ebuild:
+  Don't build with -Werror, bug #273023
+
+*warzone2100-2.2.0 (03 Jun 2009)
+
+  03 Jun 2009; Tristan Heaven <nyhm@gentoo.org> +warzone2100-2.2.0.ebuild:
+  Version bump, bug #272230
+
+*warzone2100-2.1.3 (10 Apr 2009)
+
+  10 Apr 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +warzone2100-2.1.3.ebuild:
+  version bump
+
+*warzone2100-2.1.2 (07 Mar 2009)
+
+  07 Mar 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +warzone2100-2.1.2.ebuild:
+  version bump
+
+  21 Jan 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  warzone2100-2.1.1.ebuild:
+  EAPI=2; add use-based dep for libsdl
+
+*warzone2100-2.1.1 (21 Jan 2009)
+
+  21 Jan 2009; Tristan Heaven <nyhm@gentoo.org> +warzone2100-2.1.1.ebuild:
+  Version bump
+
+*warzone2100-2.1.0 (22 Dec 2008)
+
+  22 Dec 2008; Tristan Heaven <nyhm@gentoo.org> +warzone2100-2.1.0.ebuild:
+  Version bump
+
+*warzone2100-2.1_rc2 (01 Dec 2008)
+
+  01 Dec 2008; Tristan Heaven <nyhm@gentoo.org> +warzone2100-2.1_rc2.ebuild:
+  Version bump
+
+*warzone2100-2.1_rc1 (11 Nov 2008)
+
+  11 Nov 2008; Tristan Heaven <nyhm@gentoo.org> +warzone2100-2.1_rc1.ebuild:
+  Version bump
+
+*warzone2100-2.1_beta5 (05 Oct 2008)
+
+  05 Oct 2008; Tristan Heaven <nyhm@gentoo.org>
+  +warzone2100-2.1_beta5.ebuild:
+  Version bump
+
+*warzone2100-2.1_beta4 (09 Aug 2008)
+
+  09 Aug 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/warzone2100-2.1_beta2-encoding.patch,
+  -warzone2100-2.1_beta2.ebuild, +warzone2100-2.1_beta4.ebuild:
+  version bump
+
+  26 Mar 2008; Tristan Heaven <nyhm@gentoo.org>
+  warzone2100-2.1_beta2.ebuild:
+  Add pkgconfig dependency
+
+*warzone2100-2.1_beta2 (21 Mar 2008)
+
+  21 Mar 2008; Tristan Heaven <nyhm@gentoo.org>
+  +files/warzone2100-2.1_beta2-encoding.patch,
+  +warzone2100-2.1_beta2.ebuild:
+  Version bump, bug #211892
+
+*warzone2100-2.0.10 (30 Dec 2007)
+
+  30 Dec 2007; Tristan Heaven <nyhm@gentoo.org> +warzone2100-2.0.10.ebuild:
+  Version bump
+
+*warzone2100-2.0.9 (04 Dec 2007)
+
+  04 Dec 2007; Tristan Heaven <nyhm@gentoo.org> +warzone2100-2.0.9.ebuild:
+  Version bump
+
+*warzone2100-2.0.7-r1 (01 Jul 2007)
+
+  01 Jul 2007; Tristan Heaven <nyhm@gentoo.org>
+  +files/warzone2100-2.0.7-hotfix1.patch, +warzone2100-2.0.7-r1.ebuild:
+  Patch from Dennis Schridde, bug #183810
+
+*warzone2100-2.0.7 (24 Jun 2007)
+
+  24 Jun 2007; Tristan Heaven <nyhm@gentoo.org> +warzone2100-2.0.7.ebuild:
+  Version bump, bug #182967
+
+*warzone2100-2.0.6 (06 Apr 2007)
+
+  06 Apr 2007; Tristan Heaven <nyhm@gentoo.org>
+  +files/warzone2100-2.0.6-buffer-overflow.patch, +warzone2100-2.0.6.ebuild:
+  Version bump with security patch, bug #173518
+
+  14 Jan 2007; Joseph Jezak <josejx@gentoo.org> warzone2100-2.0.5.ebuild:
+  Marked ~ppc for bug #161017.
+
+*warzone2100-2.0.5 (25 Dec 2006)
+
+  25 Dec 2006; Tristan Heaven <nyhm@gentoo.org> +warzone2100-2.0.5.ebuild:
+  Version bump, bug #159046
+
+  26 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  warzone2100-2.0.4.ebuild:
+  Changing HOMEPAGE (again) and closing bug #148539.
+
+*warzone2100-2.0.4 (27 Aug 2006)
+
+  27 Aug 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  +warzone2100-2.0.4.ebuild:
+  version bump - bug #144511 (Ebuild submitted by Tristan Heaven)
+
+  11 Aug 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  warzone2100-2.0.3.ebuild:
+  Changed HOMEPAGE and closing bug #143505.
+
+  22 Jul 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  warzone2100-2.0.3.ebuild:
+  Make changes requested from upstream
+
+  20 Jul 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/0.2.2-clparse.c.patch, -files/warzone2100-0.2.2-headers.patch,
+  -warzone2100-0.2.2.ebuild, warzone2100-2.0.3.ebuild:
+  clean out old broken version; dekeyword for amd64 (bug #141210, bug #112388)
+
+*warzone2100-2.0.3 (19 Jul 2006)
+
+  19 Jul 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/warzone2100-2.0.3-16bpp.patch, +warzone2100-2.0.3.ebuild:
+  version bump - upstream patch and ebuild submitted by Tristan Heaven via bug
+  #140419
+
+  25 May 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  warzone2100-0.2.2.ebuild:
+  Fixed HOMEPAGE and closing bug #134226.
+
+  11 May 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  warzone2100-0.2.2.ebuild:
+  Fixed dependencies to work with all of the versions of openal/freealut in
+  portage. Closing bug #132818.
+
+  15 Nov 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/warzone2100-0.2.2-headers.patch, warzone2100-0.2.2.ebuild:
+  fix compile with USE=-mp3.  Patch from Harald van Dijk via bug #112483
+
+  12 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  warzone2100-0.2.2.ebuild:
+  Cleaning up sed line.
+
+*warzone2100-0.2.2 (12 Oct 2005)
+
+  12 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/0.2.2-clparse.c.patch, +metadata.xml, +warzone2100-0.2.2.ebuild:
+  Initial import. Original ebuild by <denisdupeyron@msn.com>. Patch submitted
+  by Fabien Zouaoui <fabien@zouaoui.org>. Closing bug #96249.

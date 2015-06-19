@@ -1,0 +1,87 @@
+# ChangeLog for dev-lang/jimtcl
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/jimtcl/ChangeLog,v 1.20 2015/06/09 18:31:03 maekke Exp $
+
+  09 Jun 2015; Markus Meier <maekke@gentoo.org> jimtcl-0.76.ebuild:
+  arm stable, bug #535104
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  27 May 2015; Agostino Sarubbo <ago@gentoo.org> jimtcl-0.76.ebuild:
+  Stable for x86, wrt bug #535104
+
+  21 May 2015; Agostino Sarubbo <ago@gentoo.org> jimtcl-0.76.ebuild:
+  Stable for amd64, wrt bug #535104
+
+*jimtcl-0.76 (22 Feb 2015)
+
+  22 Feb 2015; Markos Chandras <hwoarang@gentoo.org> +jimtcl-0.76.ebuild:
+  version bump
+
+*jimtcl-0.75-r1 (14 Aug 2014)
+
+  14 Aug 2014; Mike Frysinger <vapier@gentoo.org>
+  +files/jimtcl-0.75-bootstrap.patch, +jimtcl-0.75-r1.ebuild,
+  jimtcl-9999.ebuild:
+  Rewrite ebuild to fix many errors & merge the live/release versions.
+
+  10 Jun 2014; Mike Frysinger <vapier@gentoo.org> jimtcl-0.73.ebuild,
+  jimtcl-0.74-r1.ebuild, jimtcl-0.75.ebuild:
+  Add arm64/m68k/s390/sh love.
+
+  09 May 2014; Markos Chandras <hwoarang@gentoo.org> jimtcl-0.75.ebuild:
+  Add ~mips
+
+*jimtcl-0.75 (09 May 2014)
+
+  09 May 2014; Markos Chandras <hwoarang@gentoo.org> +jimtcl-0.75.ebuild:
+  Version bump
+
+*jimtcl-0.74-r1 (17 Sep 2013)
+
+  17 Sep 2013; Markos Chandras <hwoarang@gentoo.org> +jimtcl-0.74-r1.ebuild,
+  -jimtcl-0.74.ebuild, jimtcl-9999.ebuild:
+  Fix shared library symlink. Bug #485064
+
+  28 Aug 2013; Agostino Sarubbo <ago@gentoo.org> jimtcl-0.73.ebuild:
+  Stable for x86, wrt bug #479834
+
+  24 Aug 2013; Markus Meier <maekke@gentoo.org> jimtcl-0.73.ebuild:
+  arm stable, bug #479834
+
+  17 Aug 2013; Agostino Sarubbo <ago@gentoo.org> jimtcl-0.73.ebuild:
+  Stable for amd64, wrt bug #479834
+
+  04 Aug 2013; Markus Meier <maekke@gentoo.org> jimtcl-0.73.ebuild:
+  add ~arm, bug #474626
+
+*jimtcl-0.73 (17 Aug 2012)
+
+  17 Aug 2012; Markos Chandras <hwoarang@gentoo.org> +jimtcl-0.73.ebuild,
+  jimtcl-9999.ebuild:
+  Version bump. Bug #417465
+
+  05 May 2012; Markos Chandras <hwoarang@gentoo.org>
+  jimtcl-0.70_pre20110317.ebuild, jimtcl-9999.ebuild:
+  Fix build with static-libs thanks to Peter Stuge <peter@stuge.se>. Bug #411413
+
+  30 Dec 2011; Markos Chandras <hwoarang@gentoo.org> jimtcl-9999.ebuild:
+  Drop --with-jim-ext configuration option. Bug #394649. Thanks to Alexander
+  Stein <alexander.stein@informatik.tu-chemnitz.de>
+
+  04 Aug 2011; Sergei Trofimovich <slyfox@gentoo.org> jimtcl-9999.ebuild,
+  -files/jimtcl-9999-more-autobits.patch:
+  With help of Steve Bennett patch gone upstream.
+
+  14 Jul 2011; Sergei Trofimovich <slyfox@gentoo.org> jimtcl-9999.ebuild,
+  +files/jimtcl-9999-more-autobits.patch:
+  Unbreak live ebuild (spell EGIT_REPO_URI properly).
+
+*jimtcl-9999 (17 Mar 2011)
+*jimtcl-0.70_pre20110317 (17 Mar 2011)
+
+  17 Mar 2011; Markos Chandras <hwoarang@gentoo.org>
+  +jimtcl-0.70_pre20110317.ebuild, +jimtcl-9999.ebuild, +metadata.xml:
+  Initial commit of jimtcl package. Required for newer openocd packages. Thanks
+  to Peter Stuge <peter@stuge.se> for the initial ebuild. Bug #346473

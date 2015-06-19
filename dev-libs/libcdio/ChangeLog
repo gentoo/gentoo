@@ -1,0 +1,638 @@
+# ChangeLog for dev-libs/libcdio
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libcdio/ChangeLog,v 1.168 2015/03/03 06:27:37 dlan Exp $
+
+  02 Mar 2015; Yixun Lan <dlan@gentoo.org> libcdio-0.93.ebuild:
+  add arm64 support, tested on A53 board
+
+*libcdio-0.93 (29 Jan 2015)
+
+  29 Jan 2015; Lars Wendler <polynomial-c@gentoo.org> +libcdio-0.93.ebuild:
+  Version bump (bug #524356).
+
+  14 Jul 2014; Samuli Suominen <ssuominen@gentoo.org> -libcdio-0.90-r1.ebuild:
+  old
+
+  14 Jul 2014; Samuli Suominen <ssuominen@gentoo.org> libcdio-0.92.ebuild:
+  ppc64 stable wrt #506816
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> libcdio-0.90-r1.ebuild,
+  libcdio-0.92.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+  17 May 2014; Agostino Sarubbo <ago@gentoo.org> libcdio-0.92.ebuild:
+  Stable for alpha, wrt bug #506816
+
+  14 May 2014; Agostino Sarubbo <ago@gentoo.org> libcdio-0.92.ebuild:
+  Stable for sparc, wrt bug #506816
+
+  13 May 2014; Agostino Sarubbo <ago@gentoo.org> libcdio-0.92.ebuild:
+  Stable for ia64, wrt bug #506816
+
+  10 May 2014; Agostino Sarubbo <ago@gentoo.org> libcdio-0.92.ebuild:
+  Stable for ppc, wrt bug #506816
+
+  04 May 2014; Agostino Sarubbo <ago@gentoo.org> libcdio-0.92.ebuild:
+  Stable for x86, wrt bug #506816
+
+  23 Apr 2014; Chema Alonso <nimiux@gentoo.org> libcdio-0.92.ebuild:
+  Stable for amd64 wrt bug #506816
+
+  18 Apr 2014; Markus Meier <maekke@gentoo.org> libcdio-0.92.ebuild:
+  arm stable, bug #506816
+
+  05 Apr 2014; Jeroen Roovers <jer@gentoo.org> libcdio-0.92.ebuild:
+  Stable for HPPA (bug #506816).
+
+  28 Jan 2014; Samuli Suominen <ssuominen@gentoo.org> -libcdio-0.83.ebuild,
+  -libcdio-0.90.ebuild:
+  old
+
+  28 Jan 2014; Agostino Sarubbo <ago@gentoo.org> libcdio-0.90-r1.ebuild:
+  Stable for ppc64, wrt bug #497246
+
+  28 Jan 2014; Agostino Sarubbo <ago@gentoo.org> libcdio-0.90-r1.ebuild:
+  Stable for alpha, wrt bug #497246
+
+  28 Jan 2014; Agostino Sarubbo <ago@gentoo.org> libcdio-0.90-r1.ebuild:
+  Stable for ia64, wrt bug #497246
+
+  28 Jan 2014; Samuli Suominen <ssuominen@gentoo.org> libcdio-0.92.ebuild:
+  Call elibtoolize to prevent -L/usr/lib ending up in the final linker line
+  because it's breaking cross-compiling wrt #499510 by James Le Cuirot
+
+  23 Jan 2014; Samuli Suominen <ssuominen@gentoo.org> libcdio-0.92.ebuild:
+  Use SLOT="0/15" because SONAME changed in 0.92
+
+*libcdio-0.92 (21 Jan 2014)
+
+  21 Jan 2014; Samuli Suominen <ssuominen@gentoo.org> +libcdio-0.92.ebuild:
+  Version bump wrt #494452 by Lars Wendler
+
+  19 Jan 2014; Pacho Ramos <pacho@gentoo.org> libcdio-0.90-r1.ebuild:
+  amd64 stable, bug 497246
+
+  15 Jan 2014; Agostino Sarubbo <ago@gentoo.org> libcdio-0.90-r1.ebuild:
+  Stable for x86, wrt bug #497246
+
+  15 Jan 2014; Agostino Sarubbo <ago@gentoo.org> libcdio-0.90-r1.ebuild:
+  Stable for sparc, wrt bug #497246
+
+  15 Jan 2014; Agostino Sarubbo <ago@gentoo.org> libcdio-0.90-r1.ebuild:
+  Stable for ppc, wrt bug #497246
+
+  11 Jan 2014; Markus Meier <maekke@gentoo.org> libcdio-0.90-r1.ebuild:
+  arm stable, bug #497246
+
+  07 Jan 2014; Jeroen Roovers <jer@gentoo.org> libcdio-0.90-r1.ebuild:
+  Stable for HPPA (bug #497246).
+
+  09 Nov 2013; Justin Lecher <jlec@gentoo.org> libcdio-0.90-r1.ebuild,
+  metadata.xml:
+  Fix compilation with ncurses[tinfo], #484352 & #468476
+
+  22 Oct 2013; Anthony G. Basile <blueness@gentoo.org> libcdio-0.83.ebuild,
+  libcdio-0.90-r1.ebuild, libcdio-0.90.ebuild:
+  Keyword ~mips
+
+  13 Oct 2013; Michał Górny <mgorny@gentoo.org> libcdio-0.90-r1.ebuild:
+  Explicitly call einstalldocs in multilib_src_install_all() to accomodate bug
+  #483304.
+
+*libcdio-0.90-r1 (10 Aug 2013)
+
+  10 Aug 2013; Alexis Ballier <aballier@gentoo.org> +libcdio-0.90-r1.ebuild:
+  Convert to multilib and stack it for medialibs r11. Improve its deps: cddb is
+  only needed for the binaries and hence not with minimal useflag on. libintl
+  is not needed, only libiconv.
+
+  06 Mar 2013; Samuli Suominen <ssuominen@gentoo.org> libcdio-0.83.ebuild:
+  Block dev-libs/libcdio-paranoia wrt #460476 by Ben Kohler
+
+  06 Mar 2013; Samuli Suominen <ssuominen@gentoo.org>
+  -files/libcdio-0.80-automagic-cddb.patch, -libcdio-0.82.ebuild:
+  old
+
+  15 Jan 2013; Samuli Suominen <ssuominen@gentoo.org> metadata.xml:
+  Use sound herd to match with cdparanoia (and libcdio-paranoia)
+
+*libcdio-0.90 (15 Jan 2013)
+
+  15 Jan 2013; Samuli Suominen <ssuominen@gentoo.org> +libcdio-0.90.ebuild:
+  Version bump wrt #444266. Thanks to Lars Wendler for reporting.
+
+  16 Jun 2012; Fabian Groffen <grobian@gentoo.org> libcdio-0.83.ebuild:
+  Added Prefix keywords
+
+  15 May 2012; Alexis Ballier <aballier@gentoo.org> libcdio-0.83.ebuild:
+  keyword ~amd64-fbsd
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> libcdio-0.82.ebuild,
+  libcdio-0.83.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org> libcdio-0.83.ebuild:
+  alpha/ia64/sh/sparc stable wrt #404649
+
+  25 Mar 2012; Tim Harder <radhermit@gentoo.org> libcdio-0.83.ebuild:
+  Only add ncurses dep when the minimal use flag is disabled (bug #409589).
+
+  08 Mar 2012; Brent Baude <ranger@gentoo.org> libcdio-0.83.ebuild:
+  Marking libcdio-0.83 ppc64 for bug 404649
+
+  06 Mar 2012; Brent Baude <ranger@gentoo.org> libcdio-0.83.ebuild:
+  Marking libcdio-0.83 ppc for bug 404649
+
+  05 Mar 2012; Markus Meier <maekke@gentoo.org> libcdio-0.83.ebuild:
+  arm stable, bug #404649
+
+  24 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> libcdio-0.83.ebuild:
+  x86 stable wrt bug #404649
+
+  21 Feb 2012; Jeroen Roovers <jer@gentoo.org> libcdio-0.83.ebuild:
+  Stable for HPPA (bug #404649).
+
+  21 Feb 2012; Agostino Sarubbo <ago@gentoo.org> libcdio-0.83.ebuild:
+  Stable for amd64, wrt bug #404649
+
+  21 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> libcdio-0.83.ebuild:
+  Missing sys-libs/ncurses depend (as used by cdda-player from this package)
+  wrt #404649
+
+  28 Nov 2011; Tim Harder <radhermit@gentoo.org> libcdio-0.83.ebuild:
+  Fix autotools-utils usage (bug #392175).
+
+  26 Nov 2011; Tim Harder <radhermit@gentoo.org> libcdio-0.83.ebuild:
+  Build in the source tree.
+
+  03 Nov 2011; Tim Harder <radhermit@gentoo.org> -libcdio-0.80.ebuild,
+  -libcdio-0.80-r1.ebuild, -files/libcdio-0.80-fbsd.patch,
+  -files/libcdio-0.80-fix-pkgconfig.patch, -files/libcdio-0.80-minimal.patch:
+  Remove old.
+
+*libcdio-0.83 (03 Nov 2011)
+
+  03 Nov 2011; Tim Harder <radhermit@gentoo.org> +libcdio-0.83.ebuild:
+  Version bump. Update to EAPI 4.
+
+  09 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> libcdio-0.82.ebuild:
+  ppc/ppc64 stable wrt #369505
+
+  05 Jun 2011; Jeroen Roovers <jer@gentoo.org> libcdio-0.82.ebuild:
+  Stable for HPPA (bug #369505).
+
+  05 Jun 2011; Raúl Porcel <armin76@gentoo.org> libcdio-0.82.ebuild:
+  alpha/ia64/sh/sparc stable wrt #369505
+
+  02 Jun 2011; Markus Meier <maekke@gentoo.org> libcdio-0.82.ebuild:
+  amd64/arm/x86 stable, bug #369505
+
+  05 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org> libcdio-0.82.ebuild:
+  Use static-libs useflag. Punt .la files.
+
+  03 Feb 2010; Tomáš Chvátal <scarabeus@gentoo.org> libcdio-0.82.ebuild:
+  Fix automagic cddb again. And it looks this time it is in upstream repo.
+
+  27 Oct 2009; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Give up maintainership.
+
+*libcdio-0.82 (27 Oct 2009)
+
+  27 Oct 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +libcdio-0.82.ebuild:
+  Version bump finally (0.81 failed to build).
+
+*libcdio-0.80-r1 (28 Aug 2009)
+
+  28 Aug 2009; Peter Volkov <pva@gentoo.org> +libcdio-0.80-r1.ebuild,
+  +files/libcdio-0.80-automagic-cddb.patch:
+  Fixed automagic dependency on libcddb, bug #272788.
+
+  27 Nov 2008; Jeroen Roovers <jer@gentoo.org> libcdio-0.80.ebuild:
+  Stable for HPPA (bug #245252).
+
+  26 Nov 2008; Brent Baude <ranger@gentoo.org> libcdio-0.80.ebuild:
+  stable ppc64, bug 245252
+
+  16 Nov 2008; Tobias Klausmann <klausman@gentoo.org> libcdio-0.80.ebuild:
+  Stable on alpha, bug #245252
+
+  08 Nov 2008; Raúl Porcel <armin76@gentoo.org> libcdio-0.80.ebuild:
+  arm/ia64/sh/sparc stable wrt #245252
+
+  08 Nov 2008; nixnut <nixnut@gentoo.org> libcdio-0.80.ebuild:
+  Stable on ppc wrt bug 245252
+
+  05 Nov 2008; Markus Meier <maekke@gentoo.org> libcdio-0.80.ebuild:
+  amd64/x86 stable, bug #245252
+
+  31 Aug 2008; Diego Pettenò <flameeyes@gentoo.org> libcdio-0.80.ebuild:
+  Fix linking of libiconv where needed.
+
+  16 Jul 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/libcdio-0.80-fbsd.patch, libcdio-0.80.ebuild:
+  backport a patch from upstream fo fix build on fbsd, bug #227809, see also
+  http://cvs.savannah.gnu.org/viewvc/libcdio/libcdio/lib/driver/FreeBSD/free
+  bsd.h?r1=1.9&r2=1.10&sortby=date and http://savannah.gnu.org/bugs/?23228
+
+  21 Jun 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +files/libcdio-0.80-fix-pkgconfig.patch, libcdio-0.80.ebuild:
+  Fix pkg-config installation for once. Closes bug #228185.
+
+  14 Jun 2008; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Force manifest regen (Attic/ issue).
+
+  14 Jun 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +files/libcdio-0.78.2-bug203777.patch, +libcdio-0.78.2-r3.ebuild:
+  Restore ebuild I removed by mistake. Sorry Mike (only your arches are
+  involved).
+
+  14 Jun 2008; Diego Pettenò <flameeyes@gentoo.org>
+  -files/libcdio-0.77-nocxx.patch, -files/libcdio-0.78.2-bug203777.patch,
+  -files/libcdio-0.79-gcc-4.3-include.patch, -libcdio-0.73.ebuild,
+  -libcdio-0.78.2.ebuild, -libcdio-0.78.2-r3.ebuild,
+  -libcdio-0.79-r1.ebuild, libcdio-0.80.ebuild:
+  Remove old versions and old patches. The 4.3 fix is no more needed in 0.80
+  either.
+
+  14 Jun 2008; Diego Pettenò <flameeyes@gentoo.org> libcdio-0.80.ebuild:
+  Disable testdefault build during src_compile phase (fixed upstream too);
+  remove test restriction as they should pass now.
+
+  13 Jun 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +files/libcdio-0.80-minimal.patch, libcdio-0.80.ebuild:
+  Fix building with minimal USE flag enabled. Remove C++ bindings pkg-config
+  datafiles when cxx USE flag is disabled (fixed upstream).
+
+*libcdio-0.80 (13 Jun 2008)
+
+  13 Jun 2008; Diego Pettenò <flameeyes@gentoo.org> +libcdio-0.80.ebuild:
+  Finally the libcdio version bump. This also fixes building of examples
+  that was unneeded. Rename nocxx USE flag in cxx and enable it by default
+  through EAPI=1.
+
+  20 Apr 2008; Ryan Hill <dirtyepic@gentoo.org>
+  +files/libcdio-0.79-gcc-4.3-include.patch, libcdio-0.79-r1.ebuild:
+  Add patch for GCC 4.3, bug #204436.
+
+  15 Jan 2008; Robert Buchholz <rbu@gentoo.org> libcdio-0.78.2-r4.ebuild:
+  amd64 stable (bug #203777)
+
+  14 Jan 2008; Jeroen Roovers <jer@gentoo.org> libcdio-0.78.2-r4.ebuild:
+  Stable for HPPA (bug #203777).
+
+  14 Jan 2008; Raúl Porcel <armin76@gentoo.org> libcdio-0.78.2-r4.ebuild:
+  alpha/ia64 stable wrt security #203777
+
+  14 Jan 2008; Ferris McCormick <fmccor@gentoo.org>
+  libcdio-0.78.2-r4.ebuild:
+  Sparc stable, security Bug #203777.
+
+  13 Jan 2008; Markus Meier <maekke@gentoo.org> libcdio-0.78.2-r4.ebuild:
+  x86 stable, security bug #203777
+
+  13 Jan 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  libcdio-0.78.2-r4.ebuild:
+  ppc stable, bug #203777
+
+  13 Jan 2008; Brent Baude <ranger@gentoo.org> libcdio-0.78.2-r4.ebuild:
+  Marking libcdio-0.78.2-r4 ppc64 for bug 203777
+
+*libcdio-0.79-r1 (13 Jan 2008)
+*libcdio-0.78.2-r4 (13 Jan 2008)
+
+  13 Jan 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +files/libcdio-0.78.2-bug203777-ter.patch, +libcdio-0.78.2-r4.ebuild,
+  -libcdio-0.79.ebuild, +libcdio-0.79-r1.ebuild:
+  Fix (again) the patch for bug #203777.
+
+*libcdio-0.78.2-r3 (04 Jan 2008)
+
+  04 Jan 2008; Diego Pettenò <flameeyes@gentoo.org>
+  files/libcdio-0.78.2-bug203777.patch, -libcdio-0.78.2-r2.ebuild,
+  +libcdio-0.78.2-r3.ebuild:
+  Fix patch for bug #203777 for an off by one. Straight-to-stable commit.
+
+  01 Jan 2008; Brent Baude <ranger@gentoo.org> libcdio-0.78.2-r2.ebuild:
+  Marking libcdio-0.78.2-r2 ppc64 for bug 203777
+
+  01 Jan 2008; Raúl Porcel <armin76@gentoo.org> libcdio-0.78.2-r2.ebuild:
+  alpha/ia64/sparc stable wrt security #203777
+
+*libcdio-0.79 (01 Jan 2008)
+
+  01 Jan 2008; Diego Pettenò <flameeyes@gentoo.org> -libcdio-0.77.ebuild,
+  +libcdio-0.79.ebuild:
+  Version bump (somehow 0.79 was skipped), and remove 0.77.
+
+  01 Jan 2008; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Take maintainership as I end up looking after it anyway, and add
+  documentation for the minimal USE flag.
+
+  31 Dec 2007; Peter Weller <welp@gentoo.org> libcdio-0.78.2-r2.ebuild:
+  Stable on amd64
+
+  31 Dec 2007; Brent Baude <ranger@gentoo.org> libcdio-0.78.2-r2.ebuild:
+  Marking libcdio-0.78.2-r2 ppc for bug 203777
+
+  31 Dec 2007; Jeroen Roovers <jer@gentoo.org> libcdio-0.78.2-r2.ebuild:
+  Stable for HPPA and x86 (bug #203777).
+
+  31 Dec 2007; Jeroen Roovers <jer@gentoo.org> libcdio-0.78.2.ebuild:
+  Stable for HPPA too.
+
+*libcdio-0.78.2-r2 (30 Dec 2007)
+
+  30 Dec 2007; Diego Pettenò <flameeyes@gentoo.org>
+  +files/libcdio-0.78.2-bug203777.patch, -libcdio-0.78.2-r1.ebuild,
+  +libcdio-0.78.2-r2.ebuild:
+  Version bump adding patch for bug #203777. Remove old version.
+
+  19 Nov 2007; Alexis Ballier <aballier@gentoo.org>
+  +files/libcdio-0.78.2-gcc-4.3-includes.patch, libcdio-0.78.2-r1.ebuild:
+  add fix to build with gcc 4.3, thanks to Ryan Hill <dirtyepic@gentoo.org>,
+  bug #199613
+
+*libcdio-0.78.2-r1 (16 Nov 2007)
+
+  16 Nov 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +libcdio-0.78.2-r1.ebuild:
+  Do not install pkg-config and header file for not installed lib due to
+  USE=minimal.
+
+  25 Aug 2007; Steve Dibb <beandog@gentoo.org> libcdio-0.78.2.ebuild:
+  amd64 stable
+
+  26 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org> libcdio-0.78.2.ebuild:
+  Stable on sparc
+
+  24 Jul 2007; Raúl Porcel <armin76@gentoo.org> libcdio-0.78.2.ebuild:
+  alpha/ia64 stable
+
+  22 Jul 2007; Tony Vroon <chainsaw@gentoo.org> libcdio-0.78.2.ebuild:
+  Mark stable on PPC, PPC64 & X86. Tested on PowerBook 5,9; PowerMac 7,2 &
+  Pentium M respectively.
+
+  03 Dec 2006; Matthias Schwarzott <zzam@gentoo.org> libcdio-0.77.ebuild,
+  libcdio-0.78.2.ebuild:
+  Added notice about revdep-rebuild as requested by Axel Dyks
+  <XL@XLsigned.net> in Bug #138658.
+
+  17 Nov 2006; Diego Pettenò <flameeyes@gentoo.org> libcdio-0.78.2.ebuild:
+  Add ~sparc-fbsd keyword.
+
+*libcdio-0.78.2 (01 Nov 2006)
+
+  01 Nov 2006; Diego Pettenò <flameeyes@gentoo.org> -libcdio-0.78.1.ebuild,
+  +libcdio-0.78.2.ebuild:
+  Update to 0.78.2 that fixes the version.h header.
+
+  31 Oct 2006; Alexis Ballier <aballier@gentoo.org> libcdio-0.77.ebuild:
+  Fixing automake version, bug #153437
+
+*libcdio-0.78.1 (28 Oct 2006)
+
+  28 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> libcdio-0.77.ebuild,
+  +libcdio-0.78.1.ebuild:
+  Version bump. Add autotool versioned dependencies on older version.
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org> libcdio-0.77.ebuild:
+  Stable on Alpha.
+
+  09 Aug 2006; Thomas Cort <tcort@gentoo.org> libcdio-0.77.ebuild:
+  Stable on amd64 wrt Bug #136890.
+
+  08 Aug 2006; beandog libcdio-0.77.ebuild:
+  Inherit eutils
+
+  27 Jun 2006; Guy Martin <gmsoft@gentoo.org> libcdio-0.77.ebuild:
+  Stable on hppa.
+
+  22 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org> libcdio-0.77.ebuild:
+  Stable on x86 wrt bug #136890.
+
+  16 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org> libcdio-0.77.ebuild:
+  Stable on sparc wrt #136890
+
+  16 Jun 2006; Emanuele Giaquinta <exg@gentoo.org> libcdio-0.77.ebuild:
+  Stable on ppc; bug #136890
+
+  16 Jun 2006; Markus Rothe <corsair@gentoo.org> libcdio-0.77.ebuild:
+  Stable on ppc64; bug #136890
+
+  26 May 2006; Diego Pettenò <flameeyes@gentoo.org> -libcdio-0.70.ebuild:
+  Drop another old version.
+
+  26 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -files/libcdio-0.75-freebsd.patch, -files/libcdio-0.76-dragonfly.patch,
+  -files/libcdio-0.76-nrg-crash.patch, -libcdio-0.64.ebuild,
+  -libcdio-0.69.ebuild, -libcdio-0.74.ebuild, -libcdio-0.75.ebuild,
+  -libcdio-0.75-r1.ebuild, -libcdio-0.76.ebuild, -libcdio-0.76-r1.ebuild:
+  Drop old versions.
+
+  26 May 2006; Diego Pettenò <flameeyes@gentoo.org> libcdio-0.77.ebuild:
+  Don't force -j1, works fine with parallel make now.
+
+  03 May 2006; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Update metadata to list media-video@gentoo.org as maintainer.
+
+  17 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> libcdio-0.77.ebuild:
+  Disable tests as it's broken in this release.
+
+  30 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> libcdio-0.76-r1.ebuild,
+  libcdio-0.77.ebuild:
+  Add ~x86-fbsd keywords.
+
+  30 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/libcdio-0.77-nocxx.patch, libcdio-0.77.ebuild:
+  Add patch to disable C++ bindings and nocxx useflag.
+
+*libcdio-0.77 (18 Mar 2006)
+
+  18 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> libcdio-0.64.ebuild,
+  +libcdio-0.77.ebuild:
+  Version bump, this version does not require libpopt, but it builds C++
+  bindings.
+
+  02 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  files/libcdio-0.76-dragonfly.patch, libcdio-0.76-r1.ebuild:
+  Make patch change configure without running autotools. Make gettext and
+  libintl optional with nls useflag.
+
+  21 Feb 2006; Diego Pettenò <flameeyes@gentoo.org> libcdio-0.76-r1.ebuild:
+  virtual/libintl is an hard dep.
+
+*libcdio-0.76-r1 (12 Feb 2006)
+
+  12 Feb 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/libcdio-0.76-dragonfly.patch, +files/libcdio-0.76-nrg-crash.patch,
+  +libcdio-0.76-r1.ebuild:
+  Add patches to fix a crash within nrg driver and to support DragonFly BSD if
+  that will ever be needed.
+
+  21 Oct 2005; MATSUU Takuto <matsuu@gentoo.org> libcdio-0.76.ebuild:
+  Fixed libcddb dependency.
+
+  04 Oct 2005; Hardave Riar <hardave@gentoo.org> libcdio-0.73.ebuild:
+  Keyworded ~mips.
+
+*libcdio-0.76 (24 Sep 2005)
+
+  24 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> +libcdio-0.76.ebuild:
+  New upstream version. Dropped freebsd patch, no more needed.
+
+*libcdio-0.75-r1 (23 Jul 2005)
+
+  23 Jul 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/libcdio-0.75-freebsd.patch, +libcdio-0.75-r1.ebuild:
+  Added patch to make ejection work on FreeBSD.
+
+*libcdio-0.75 (20 Jul 2005)
+
+  20 Jul 2005; Diego Pettenò <flameeyes@gentoo.org> +libcdio-0.75.ebuild:
+  New upstream version.
+
+  02 Jul 2005; Bryan Østergaard <kloeri@gentoo.org> libcdio-0.73.ebuild:
+  Stable on alpha.
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> libcdio-0.73.ebuild:
+  Stable on ppc.
+
+  06 Jun 2005; Markus Rothe <corsair@gentoo.org> libcdio-0.73.ebuild:
+  Stable on ppc64
+
+  30 May 2005; Stefan Knoblich <stkn@gentoo.org> libcdio-0.74.ebuild:
+  Added missing backslash in src_compile.
+
+  30 May 2005; Diego Pettenò <flameeyes@gentoo.org> libcdio-0.74.ebuild:
+  Doesn't build cd-paranoia if minimal flag is specified; change name of
+  cd-paranoia to libcdio-paranoia to avoid conflicts with
+  media-sound/cdparanoia.
+
+  27 May 2005; Jason Wever <weeve@gentoo.org> libcdio-0.73.ebuild:
+  Stable on SPARC.
+
+  26 May 2005; Jan Brinkmann <luckyduck@gentoo.org> libcdio-0.73.ebuild:
+  0.73 stable on amd64 and x86
+
+*libcdio-0.74 (26 May 2005)
+
+  26 May 2005; Jan Brinkmann <luckyduck@gentoo.org> +libcdio-0.74.ebuild:
+  new upstream version, fixes #94068
+
+  22 May 2005; Jason Wever <weeve@gentoo.org> libcdio-0.70.ebuild:
+  Stable on SPARC.
+
+  02 May 2005; Jan Brinkmann <luckyduck@gentoo.org> libcdio-0.70.ebuild:
+  stable on x86
+
+  19 Apr 2005; Diego Pettenò <flameeyes@gentoo.org> libcdio-0.70.ebuild:
+  0.70 stable on amd64.
+
+*libcdio-0.73 (19 Apr 2005)
+
+  19 Apr 2005; Diego Pettenò <flameeyes@gentoo.org> +libcdio-0.73.ebuild:
+  Added recent upstream version, won't break binary compatibility with 
+  0.70 ebuild. This version features a minimal useflag which can be used 
+  to disable building of command-line utilities (and so removes the 
+  dependency on popt).
+
+  08 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> libcdio-0.69.ebuild:
+  Stable on ppc.
+
+  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> libcdio-0.70.ebuild:
+  stable on ia64
+
+  01 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> libcdio-0.69.ebuild,
+  libcdio-0.70.ebuild:
+  pkgconfig not any longer in RDEPEND, fixes #87400
+
+  07 Feb 2005; Markus Rothe <corsair@gentoo.org> libcdio-0.70.ebuild:
+  Stable on ppc64
+
+  29 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> libcdio-0.70.ebuild:
+  removed circular dependency, see bug #70445
+
+  11 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> libcdio-0.69.ebuild:
+  Stable on alpha.
+
+  04 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libcdio-0.70.ebuild:
+  QA: Keep libiso9660.so.0 around until the user deletes it.
+
+  30 Nov 2004; Sven Wegener <swegener@gentoo.org> metadata.xml:
+  Fixed herd in metadata.xml.
+
+  29 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  -libcdio-0.66.ebuild, -libcdio-0.68.ebuild, libcdio-0.70.ebuild:
+  Clearing out old versions.
+
+*libcdio-0.70 (12 Nov 2004)
+
+  12 Nov 2004; Chris White <chriswhite@gentoo.org> +libcdio-0.70.ebuild:
+  Bumped to version 0.70 as per bug #70445.
+
+  10 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org> metadata.xml:
+  Stable amd64, sparc, x86.
+
+  24 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> libcdio-0.69.ebuild:
+  Added ~alpha back to KEYWORDS as it looks like it was accidently dropped from
+  KEYWORDS during a bump... if that is not the case, sorry, but there was no
+  note to the effect in the ChangeLog. This is needed for libcddb.
+
+  23 Sep 2004; Tom Gall <tgall@gentoo.org> libcdio-0.69.ebuild:
+  added ~ppc64
+
+  15 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> libcdio-0.64.ebuild,
+  libcdio-0.69.ebuild:
+  .64 stable sparc.  .69 ~sparc.
+
+*libcdio-0.69 (27 Jun 2004)
+
+  27 Jun 2004; Martin Holzer <mholzer@gentoo.org> libcdio-0.64.ebuild,
+  libcdio-0.66.ebuild, libcdio-0.68.ebuild, libcdio-0.69.ebuild:
+  Version bumped.
+
+  21 Jun 2004; Patrick Kursawe <phosphan@gentoo.org> libcdio-0.62.ebuild,
+  libcdio-0.63.ebuild:
+  Cleanup
+
+*libcdio-0.68 (21 Jun 2004)
+
+  21 Jun 2004; Patrick Kursawe <phosphan@gentoo.org> libcdio-0.64.ebuild,
+  libcdio-0.68.ebuild:
+  Replaced emake by make, einstall by make install, added DEPEND, added proper
+  libcddb support.
+
+*libcdio-0.66 (24 Feb 2004)
+
+  24 Feb 2004; Patrick Kursawe <phosphan@gentoo.org> libcdio-0.66.ebuild:
+  Version bump
+
+  17 Feb 2004; Aron Griffis <agriffis@gentoo.org> libcdio-0.64.ebuild:
+  stable on alpha and ia64
+
+  17 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org> :
+  manifest fix
+
+  16 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org> libcdio-0.64.ebuild:
+  set ppc in keywords
+
+  26 Dec 2003; Martin Holzer <mholzer@gentoo.org> libcdio-0.64.ebuild:
+  x86 stable
+
+*libcdio-0.64 (21 Oct 2003)
+
+  21 Oct 2003; Martin Holzer <mholzer@gentoo.org> libcdio-0.64.ebuild:
+  Version bumped.
+
+*libcdio-0.63 (11 Oct 2003)
+
+  11 Oct 2003; Martin Holzer <mholzer@gentoo.org> libcdio-0.63.ebuild:
+  Version bumped.
+
+*libcdio-0.62 (02 Aug 2003)
+
+  02 Aug 2003; Tal Peer <coredumb@gentoo.org> libcdio-0.62.ebuild :
+  Initial import, closes bug #20261.

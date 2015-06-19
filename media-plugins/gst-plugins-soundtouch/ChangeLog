@@ -1,0 +1,166 @@
+# ChangeLog for media-plugins/gst-plugins-soundtouch
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-soundtouch/ChangeLog,v 1.31 2015/03/15 13:40:27 pacho Exp $
+
+  15 Mar 2015; Pacho Ramos <pacho@gentoo.org>
+  gst-plugins-soundtouch-1.4.5.ebuild:
+  x86 stable, bug 534012
+
+  14 Mar 2015; Pacho Ramos <pacho@gentoo.org>
+  gst-plugins-soundtouch-1.4.5.ebuild:
+  amd64 stable, bug 534012
+
+*gst-plugins-soundtouch-1.4.5 (03 Feb 2015)
+
+  03 Feb 2015; Pacho Ramos <pacho@gentoo.org>
+  +gst-plugins-soundtouch-1.4.5.ebuild, -gst-plugins-soundtouch-0.10.23.ebuild,
+  -gst-plugins-soundtouch-1.2.3.ebuild, -gst-plugins-soundtouch-1.2.4.ebuild:
+  Version bump, drop old
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-soundtouch-0.10.23-r1.ebuild,
+  gst-plugins-soundtouch-1.2.4-r1.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-soundtouch-0.10.23-r1.ebuild,
+  gst-plugins-soundtouch-1.2.4-r1.ebuild:
+  Stable for amd64, wrt bug #512912
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org>
+  gst-plugins-soundtouch-0.10.23-r1.ebuild,
+  gst-plugins-soundtouch-1.2.4-r1.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+*gst-plugins-soundtouch-1.2.4-r1 (10 Jun 2014)
+*gst-plugins-soundtouch-0.10.23-r1 (10 Jun 2014)
+
+  10 Jun 2014; Michał Górny <mgorny@gentoo.org>
+  +gst-plugins-soundtouch-0.10.23-r1.ebuild,
+  +gst-plugins-soundtouch-1.2.4-r1.ebuild:
+  Enable multilib support, bug #493176.
+
+*gst-plugins-soundtouch-1.2.4 (31 May 2014)
+
+  31 May 2014; Pacho Ramos <pacho@gentoo.org>
+  +gst-plugins-soundtouch-1.2.4.ebuild, -gst-plugins-soundtouch-1.0.10.ebuild,
+  -gst-plugins-soundtouch-1.2.0.ebuild:
+  Version bump, drop old
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org>
+  gst-plugins-soundtouch-1.2.3.ebuild:
+  x86 stable, bug 499954
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org>
+  gst-plugins-soundtouch-1.2.3.ebuild:
+  amd64 stable, bug 499954
+
+*gst-plugins-soundtouch-1.2.3 (01 Mar 2014)
+
+  01 Mar 2014; <leio@gentoo.org> -gst-plugins-soundtouch-1.0.5.ebuild,
+  -gst-plugins-soundtouch-1.0.6.ebuild, -gst-plugins-soundtouch-1.0.7.ebuild,
+  -gst-plugins-soundtouch-1.0.8.ebuild, +gst-plugins-soundtouch-1.2.3.ebuild:
+  Version bump. Fixes inverted condition in pitch setcaps. Allows pipeline to
+  end properly and not leak with bpmdetect. Remove old
+
+  11 Oct 2013; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-soundtouch-1.0.10.ebuild:
+  Stable for x86, wrt bug #480908
+
+  10 Oct 2013; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-soundtouch-1.0.10.ebuild:
+  Stable for amd64, wrt bug #480908
+
+*gst-plugins-soundtouch-1.2.0 (29 Sep 2013)
+
+  29 Sep 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  +gst-plugins-soundtouch-1.2.0.ebuild:
+  Version bump.
+
+*gst-plugins-soundtouch-1.0.10 (01 Sep 2013)
+
+  01 Sep 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  +gst-plugins-soundtouch-1.0.10.ebuild:
+  Version bump.
+
+*gst-plugins-soundtouch-1.0.8 (26 Aug 2013)
+
+  26 Aug 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  +gst-plugins-soundtouch-1.0.8.ebuild:
+  Version bump.
+
+*gst-plugins-soundtouch-1.0.7 (30 Jun 2013)
+
+  30 Jun 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  +gst-plugins-soundtouch-1.0.7.ebuild:
+  Version bump.
+
+*gst-plugins-soundtouch-1.0.6 (01 Apr 2013)
+
+  01 Apr 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  +gst-plugins-soundtouch-1.0.6.ebuild:
+  Version bump.
+
+  05 Mar 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  -gst-plugins-soundtouch-0.10.22.ebuild, -gst-plugins-soundtouch-1.0.3.ebuild:
+  Clean up old revisions.
+
+  21 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-soundtouch-1.0.5.ebuild:
+  Stable for x86, wrt bug #458188
+
+  21 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-soundtouch-1.0.5.ebuild:
+  Stable for amd64, wrt bug #458188
+
+  01 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-soundtouch-0.10.23.ebuild:
+  Stable for x86, wrt bug #454906
+
+  01 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-soundtouch-0.10.23.ebuild:
+  Stable for amd64, wrt bug #454906
+
+*gst-plugins-soundtouch-1.0.5 (22 Jan 2013)
+
+  22 Jan 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  +gst-plugins-soundtouch-1.0.5.ebuild:
+  Version bump.
+
+*gst-plugins-soundtouch-1.0.3 (05 Dec 2012)
+
+  05 Dec 2012; Gilles Dartiguelongue <eva@gentoo.org>
+  +gst-plugins-soundtouch-1.0.3.ebuild:
+  Version bump.
+
+*gst-plugins-soundtouch-0.10.23 (02 Dec 2012)
+
+  02 Dec 2012; Gilles Dartiguelongue <eva@gentoo.org>
+  +gst-plugins-soundtouch-0.10.23.ebuild:
+  Version bump.
+
+  02 Dec 2012; Gilles Dartiguelongue <eva@gentoo.org>
+  gst-plugins-soundtouch-0.10.22.ebuild:
+  EAPI bump, gstreamer slot pinning.
+
+  24 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gst-plugins-soundtouch-0.10.22.ebuild:
+  x86 stable wrt bug #407957
+
+  13 Mar 2012; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-soundtouch-0.10.22.ebuild:
+  Stable for amd64, wrt bug #407957
+
+  21 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gst-plugins-soundtouch-0.10.22.ebuild:
+  Keyworded ~x86 wrt bug #284036.
+
+*gst-plugins-soundtouch-0.10.22 (13 Oct 2011)
+
+  13 Oct 2011; Mart Raudsepp <leio@gentoo.org>
+  +gst-plugins-soundtouch-0.10.22.ebuild, +metadata.xml:
+  Add the soundtouch plugin from gst-plugins-bad for BPM (beats-per-minute)
+  detection and pitch controller element. The bpmdetect element is particularly
+  needed by media-sound/banshee for its automatic beats-per-minute detection
+  feature. Bug 284036

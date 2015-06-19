@@ -1,0 +1,12 @@
+diff -ru audicle-1.0.0.7.orig//src/audicle_font.cpp audicle-1.0.0.7/src/audicle_font.cpp
+--- audicle-1.0.0.7.orig//src/audicle_font.cpp	2012-03-17 10:23:39.000000000 +0100
++++ audicle-1.0.0.7/src/audicle_font.cpp	2012-03-17 10:49:24.000000000 +0100
+@@ -215,7 +215,7 @@
+ protected :
+     FTFont * m_font;
+ public: 
+-    AudicleFTGLFont( char * name ) { 
++    AudicleFTGLFont( const char * name ) { 
+         
+         glEnable ( GL_TEXTURE_2D );
+         

@@ -1,0 +1,360 @@
+# ChangeLog for app-text/xmlto
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/xmlto/ChangeLog,v 1.103 2015/04/08 04:53:47 vapier Exp $
+
+  08 Apr 2015; Mike Frysinger <vapier@gentoo.org> xmlto-0.0.26.ebuild:
+  Mark arm64/m68k/s390/sh stable.
+
+  28 Feb 2015; Manuel Rüger <mrueg@gentoo.org> -xmlto-0.0.25.ebuild:
+  Remove old.
+
+  28 Feb 2015; Agostino Sarubbo <ago@gentoo.org> xmlto-0.0.26.ebuild:
+  Stable for ia64, wrt bug #534918
+
+  27 Feb 2015; Agostino Sarubbo <ago@gentoo.org> xmlto-0.0.26.ebuild:
+  Stable for sparc, wrt bug #534918
+
+  24 Feb 2015; Agostino Sarubbo <ago@gentoo.org> xmlto-0.0.26.ebuild:
+  Stable for alpha, wrt bug #534918
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> xmlto-0.0.26.ebuild:
+  Stable for x86, wrt bug #534918
+
+  18 Jan 2015; Agostino Sarubbo <ago@gentoo.org> xmlto-0.0.26.ebuild:
+  Stable for ppc64, wrt bug #534918
+
+  17 Jan 2015; Markus Meier <maekke@gentoo.org> xmlto-0.0.26.ebuild:
+  arm stable, bug #534918
+
+  17 Jan 2015; Agostino Sarubbo <ago@gentoo.org> xmlto-0.0.26.ebuild:
+  Stable for ppc, wrt bug #534918
+
+  13 Jan 2015; Jeroen Roovers <jer@gentoo.org> xmlto-0.0.26.ebuild:
+  Stable for HPPA (bug #534918).
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> xmlto-0.0.26.ebuild:
+  Stable for amd64, wrt bug #534918
+
+  21 Jun 2014; Samuli Suominen <ssuominen@gentoo.org>
+  -files/xmlto-0.0.24-parallelmake.patch, -xmlto-0.0.24-r1.ebuild:
+  old
+
+*xmlto-0.0.26 (21 Jun 2014)
+
+  21 Jun 2014; Samuli Suominen <ssuominen@gentoo.org> +xmlto-0.0.26.ebuild:
+  Version bump; fixing the --noextensions parameter which is required for
+  disabling fop java extensions as per
+  http://forums.gentoo.org/viewtopic-p-7571834.html
+
+  19 Mar 2014; Agostino Sarubbo <ago@gentoo.org> xmlto-0.0.25.ebuild:
+  Stable for alpha, wrt bug #502630
+
+  12 Mar 2014; Agostino Sarubbo <ago@gentoo.org> xmlto-0.0.25.ebuild:
+  Stable for sparc, wrt bug #502630
+
+  08 Mar 2014; Markus Meier <maekke@gentoo.org> xmlto-0.0.25.ebuild:
+  arm stable, bug #502630
+
+  06 Mar 2014; Agostino Sarubbo <ago@gentoo.org> xmlto-0.0.25.ebuild:
+  Stable for ppc64, wrt bug #502630
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> xmlto-0.0.25.ebuild:
+  Stable for ppc, wrt bug #502630
+
+  04 Mar 2014; Agostino Sarubbo <ago@gentoo.org> xmlto-0.0.25.ebuild:
+  Stable for x86, wrt bug #502630
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> xmlto-0.0.25.ebuild:
+  amd64 stable, bug #502630
+
+  02 Mar 2014; Akinori Hattori <hattya@gentoo.org> xmlto-0.0.25.ebuild:
+  ia64 stable wrt bug #502630
+
+  01 Mar 2014; Jeroen Roovers <jer@gentoo.org> xmlto-0.0.25.ebuild:
+  Stable for HPPA (bug #502630).
+
+  07 Feb 2014; Mike Frysinger <vapier@gentoo.org> xmlto-0.0.25.ebuild:
+  Force configure to always detect bash as /bin/bash.  Drop unused flex dep and
+  implicit system grep dep.
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> xmlto-0.0.24-r1.ebuild,
+  xmlto-0.0.25.ebuild:
+  Add arm64 love.
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/sgml-herd-has-no-maintainers-
+  again-td259655.html
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> xmlto-0.0.25.ebuild:
+  keyword ~amd64-fbsd
+
+*xmlto-0.0.25 (12 Jan 2012)
+
+  12 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> +xmlto-0.0.25.ebuild:
+  Version bump.
+
+  12 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> -xmlto-0.0.22.ebuild,
+  -files/xmlto-0.0.22-parallelmake.patch, -xmlto-0.0.23.ebuild,
+  -xmlto-0.0.24.ebuild:
+  old
+
+  12 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> xmlto-0.0.24-r1.ebuild:
+  ppc64 stable wrt #388273
+
+  07 Nov 2011; Brent Baude <ranger@gentoo.org> xmlto-0.0.24-r1.ebuild:
+  Marking xmlto-0.0.24-r1 ppc for bug 388273
+
+  05 Nov 2011; Raúl Porcel <armin76@gentoo.org> xmlto-0.0.24-r1.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc stable wrt #388273
+
+  29 Oct 2011; Jeroen Roovers <jer@gentoo.org> xmlto-0.0.24-r1.ebuild:
+  Stable for HPPA (bug #388273).
+
+  25 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> xmlto-0.0.24-r1.ebuild:
+  x86 stable wrt bug #388273
+
+  24 Oct 2011; Markos Chandras <hwoarang@gentoo.org> xmlto-0.0.24-r1.ebuild:
+  Stable on amd64 wrt bug #388273
+
+*xmlto-0.0.24-r1 (19 Aug 2011)
+
+  19 Aug 2011; Mike Frysinger <vapier@gentoo.org> +xmlto-0.0.24-r1.ebuild,
+  +files/xmlto-0.0.24-parallelmake.patch:
+  Use portable fix for parallel make, include man pages in the dist to avoid
+  CBUILD vs CHOST issues, and drop autotool regeneration to speed things up.
+
+*xmlto-0.0.24 (30 Jul 2011)
+
+  30 Jul 2011; Patrick Lauer <patrick@gentoo.org> +xmlto-0.0.24.ebuild:
+  Bump for #375641
+
+  10 Jul 2011; Mark Loeser <halcy0n@gentoo.org> xmlto-0.0.23.ebuild:
+  Stable for ppc/ppc64; bug #361033
+
+  16 Apr 2011; Raúl Porcel <armin76@gentoo.org> xmlto-0.0.23.ebuild:
+  alpha/ia64/m68k/s390/sh/x86 stable wrt #361033
+
+  10 Apr 2011; Markus Meier <maekke@gentoo.org> xmlto-0.0.23.ebuild:
+  arm stable, bug #361033
+
+  04 Apr 2011; Jeroen Roovers <jer@gentoo.org> xmlto-0.0.23.ebuild:
+  Stable for HPPA SPARC (bug #361033).
+
+  29 Mar 2011; Christoph Mende <angelos@gentoo.org> xmlto-0.0.23.ebuild:
+  Stable on amd64 wrt bug #361033
+
+  20 Feb 2010; Jonathan Callen <abcd@gentoo.org> xmlto-0.0.23.ebuild:
+  Transfer prefix keywords, bump EAPI
+
+*xmlto-0.0.23 (21 Dec 2009)
+
+  21 Dec 2009; Mike Frysinger <vapier@gentoo.org> +xmlto-0.0.23.ebuild:
+  Version bump.
+
+  21 Dec 2009; Mike Frysinger <vapier@gentoo.org> xmlto-0.0.22.ebuild:
+  Fix by Naohiro Aota for building on BSDs systems #292896.
+
+  26 Sep 2009; Brent Baude <ranger@gentoo.org> xmlto-0.0.22.ebuild:
+  Marking xmlto-0.0.22 ppc64 for bug 276677
+
+  09 Aug 2009; nixnut <nixnut@gentoo.org> xmlto-0.0.22.ebuild:
+  ppc stable #276677
+
+  22 Jul 2009; Raúl Porcel <armin76@gentoo.org> xmlto-0.0.22.ebuild:
+  arm/ia64/m68k/s390/sh/sparc stable wrt #276677
+
+  18 Jul 2009; Tiago Cunha <tcunha@gentoo.org> xmlto-0.0.22.ebuild:
+  stable sparc, bug 276677
+
+  12 Jul 2009; Tobias Klausmann <klausman@gentoo.org> xmlto-0.0.22.ebuild:
+  Stable on alpha, bug #276677
+
+  11 Jul 2009; <chainsaw@gentoo.org> xmlto-0.0.22.ebuild:
+  Marked stable on AMD64 for bug #276677; tested on a dual Opteron 2354.
+
+  08 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> xmlto-0.0.22.ebuild:
+  xmlto needs sys-apps/which wrt #277092
+
+  08 Jul 2009; Christian Faulhammer <fauli@gentoo.org> xmlto-0.0.22.ebuild:
+  stable x86, bug 276677
+
+  08 Jul 2009; Jeroen Roovers <jer@gentoo.org> xmlto-0.0.22.ebuild:
+  Stable for HPPA (bug #276677).
+
+  10 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org> xmlto-0.0.22.ebuild,
+  +files/xmlto-0.0.22-parallelmake.patch:
+  Add fix for parallel build, closes bug #273143.
+
+  22 May 2009; Samuli Suominen <ssuominen@gentoo.org>
+  files/xmlto-0.0.22-format_fo_passivetex_check.patch:
+  Change path to texmf-site in patch.
+
+  22 May 2009; Samuli Suominen <ssuominen@gentoo.org> xmlto-0.0.18.ebuild,
+  -xmlto-0.0.21.ebuild, xmlto-0.0.22.ebuild:
+  Remove usage of -j1 wrt #235998. List sys-devel/flex as depend wrt
+  #221373.
+
+*xmlto-0.0.22 (22 May 2009)
+
+  22 May 2009; Samuli Suominen <ssuominen@gentoo.org> +xmlto-0.0.22.ebuild,
+  +files/xmlto-0.0.22-format_fo_passivetex_check.patch:
+  Version bump.
+
+*xmlto-0.0.21 (22 Sep 2008)
+
+  22 Sep 2008; Diego Pettenò <flameeyes@gentoo.org> +xmlto-0.0.21.ebuild:
+  Version bump.
+
+  26 Apr 2008; <ricmm@gentoo.org> xmlto-0.0.18.ebuild:
+  Drop to ~mips due to unstable deps
+
+  23 Jan 2008; Doug Klima <cardoe@gentoo.org> xmlto-0.0.18.ebuild:
+  sys-apps/coreutils-6.10-r1 and higher now provides /bin/mktemp
+
+  16 Nov 2007; Michael Sterrett <mr_bones_@gentoo.org> xmlto-0.0.18.ebuild:
+  remove reference to really old sys-apps/debianutils
+
+  21 Aug 2007; Leonardo Boshell <leonardop@gentoo.org> xmlto-0.0.18.ebuild:
+  Added mktemp dependency (bug #170147).
+
+  12 Jul 2007; Roy Marples <uberlord@gentoo.org> xmlto-0.0.18.ebuild:
+  Keyworded ~sparc-fbsd, #182763
+
+  13 Mar 2007; Leonardo Boshell <leonardop@gentoo.org>
+  -files/xmlto-head-fix.patch, metadata.xml, -xmlto-0.0.17.ebuild:
+  Replacing text-markup herd with the new sgml herd. Pruning old ebuild.
+
+  05 Sep 2006; Joshua Kinard <kumba@gentoo.org> xmlto-0.0.18.ebuild:
+  Marked stable on mips.
+
+  24 May 2006; Diego Pettenò <flameeyes@gentoo.org> xmlto-0.0.18.ebuild:
+  Add alternative dependency on app-misc/getopt for non-Linux platforms. Add
+  ~x86-fbsd keyword.
+
+  16 Mar 2006; Martin Ehmsen <ehmsen@gentoo.org> xmlto-0.0.17.ebuild,
+  xmlto-0.0.18.ebuild:
+  Removed RDEPEND="${DEPEND}", found by QA script.
+
+  05 Jan 2006; Alexandre Buisse <nattfodd@gentoo.org> xmlto-0.0.17.ebuild,
+  xmlto-0.0.18.ebuild:
+  Don't install INSTALL generic file (bug #117477).
+
+  08 Jul 2005; Leonardo Boshell <leonardop@gentoo.org> xmlto-0.0.18.ebuild,
+  xmlto-0.0.17.ebuild:
+  Declare RDEPEND explicitly. Modified docbook-xml-dtd dependency to use
+  '~' syntax. Added sys-apps/util-linux dependency, resolves bug #98287.
+
+  25 Jun 2005; Danny van Dyk <kugelfang@gentoo.org> xmlto-0.0.18.ebuild:
+  Marked s390.
+
+  25 Jun 2005; John Mylchreest <johnm@gentoo.org> xmlto-0.0.18.ebuild:
+  adding ~s390
+
+  08 Apr 2005; Markus Rothe <corsair@gentoo.org> xmlto-0.0.18.ebuild:
+  Stable on ppc64
+
+  01 Apr 2005; <blubb@gentoo.org> xmlto-0.0.18.ebuild:
+  stable on amd64
+
+  28 Mar 2005; Guy Martin <gmsoft@gentoo.org> xmlto-0.0.18.ebuild:
+  Stable on hppa.
+
+  27 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> xmlto-0.0.18.ebuild:
+  Stable on alpha.
+
+  14 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org> xmlto-0.0.18.ebuild:
+  Stable on sparc
+
+  10 Feb 2005; Mamoru KOMACHI <usata@gentoo.org> xmlto-0.0.18.ebuild:
+  Stable on x86 and ppc.
+
+  02 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  13 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> xmlto-0.0.15.ebuild,
+  xmlto-0.0.17.ebuild, xmlto-0.0.18.ebuild:
+  Force app-text/docbook-xml-dtd-4.2 series. Thanks to Simone Gotti
+  <simone.gotti@email.it>, closing bug #67163.
+
+*xmlto-0.0.18 (15 Sep 2004)
+
+  15 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> +xmlto-0.0.18.ebuild:
+  Version bumped; bug #63624.
+
+  07 Sep 2004; Tom Gall <tgall@gentoo.org> xmlto-0.0.17.ebuild:
+  stable on ppc64
+
+  13 May 2004; Stephen P. Becker <geoman@gentoo.org> xmlto-0.0.17.ebuild:
+  Stable on mips.
+
+  13 May 2004; Bryan Østergaard <kloeri@gentoo.org> xmlto-0.0.17.ebuild:
+  Stable on alpha.
+
+  15 Mar 2004; Stephen P. Becker <geoman@gentoo.org> xmlto-0.0.17.ebuild:
+  Added ~mips keyword.
+
+  07 Mar 2004; Jon Portnoy <avenj@gentoo.org> xmlto-0.0.17.ebuild :
+  Stable on AMD64 to make repoman happy.
+
+  07 Feb 2004; Lars Weiler <pylon@gentoo.org> xmlto-0.0.17.ebuild:
+  stable on ppc
+
+  01 Feb 2004; Jon Portnoy <avenj@gentoo.org> xmlto-0.0.17.ebuild :
+  AMD64 keywords.
+
+  14 Jan 2004; <gustavoz@gentoo.org> xmlto-0.0.15.ebuild:
+  stable on hppa
+
+  13 Jan 2004; <gustavoz@gentoo.org> xmlto-0.0.15.ebuild:
+  added sparc keyword
+
+*xmlto-0.0.17 (11 Jan 2004)
+
+  11 Jan 2004; Mike Gardiner <obz@gentoo.org> xmlto-0.0.15.ebuild,
+  xmlto-0.0.17.ebuild, files/xmlto-0.0.15-head-fix.patch,
+  files/xmlto-head-fix.patch:
+  New version
+
+  11 Jan 2004; Mike Gardiner <obz@gentoo.org> xmlto-0.0.15.ebuild:
+  Stylesheets dependency back in, we need it versioned so we get the manpages,
+  or else we get things like bug #37797
+
+  04 Jan 2004; Mike Gardiner <obz@gentoo.org> xmlto-0.0.15.ebuild:
+  Changed dependency on xsl-stylesheets to be on xml-dtd-4.2, which is what
+  really depends on xsl-stylesheets. Thanks to <bugs@veller.net> on bug #37078
+
+  03 Jan 2004; <agriffis@gentoo.org> xmlto-0.0.15.ebuild:
+  Stable on alpha and ia64
+
+  31 Dec 2003; Mike Gardiner <obz@gentoo.org> xmlto-0.0.15.ebuild:
+  Marked stable on x86
+
+  22 Nov 2003; Jason Wever <weeve@gentoo.org> xmlto-0.0.15.ebuild:
+  Added ~sparc keyword.
+
+  17 Nov 2003; Mike Gardiner <obz@gentoo.org> xmlto-0.0.15.ebuild:
+  Added MAKEOPTS restriction to -j1 as the build isnt parrallel safe, thanks to
+  <agriffis@gentoo.org>, on bug #33151
+
+  26 Oct 2003; Mike Gardiner <obz@gentoo.org> xmlto-0.0.15.ebuild:
+  Updated dependency on xsl-stylesheets to 1.62.0-r1 to ensure that the manpages
+  are included
+
+  24 Oct 2003; Mike Gardiner <obz@gentoo.org> xmlto-0.0.15.ebuild,
+  files/xmlto-0.0.15-head-fix.patch:
+  Added head-fix.patch to use head -n <num> instead of the obsoleted head -<num>
+  syntax.
+
+  24 Oct 2003; Mike Gardiner <obz@gentoo.org> xmlto-0.0.15.ebuild:
+  Sharpened up the docbook-xsl-stylesheets dependency to 1.62.0
+
+  23 Oct 2003; Mike Gardiner <obz@gentoo.org> xmlto-0.0.15.ebuild:
+  Added docbook-xsl-stylesheets dependency
+
+*xmlto-0.0.15 (22 Oct 2003)
+
+  22 Oct 2003; Mike Gardiner <obz@gentoo.org> metadata.xml,
+  xmlto-0.0.15.ebuild:
+  First version of xmlto. This version does not currently support tetex output
+  to pdf/ps/dvi as we need a working passivetex/xmltex implementation before we
+  can do that. Tex/pdf support is planned for the first revision of this package

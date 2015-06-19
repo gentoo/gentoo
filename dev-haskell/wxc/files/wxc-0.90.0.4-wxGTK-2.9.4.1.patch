@@ -1,0 +1,11 @@
+--- wxc-0.90.0.4-orig/src/cpp/eljpen.cpp	2012-07-03 20:12:17.000000000 +1000
++++ wxc-0.90.0.4/src/cpp/eljpen.cpp	2012-08-18 11:37:00.625281748 +1000
+@@ -156,7 +156,7 @@
+ EWXWEXPORT(void,wxPen_GetStipple)(void* self,wxBitmap* _ref)
+ {
+ #if defined(__WXGTK__)
+-    *_ref = NULL;
++    *_ref = wxBitmap();
+ #else
+     *_ref = *(((wxPen*)self)->GetStipple());
+ #endif

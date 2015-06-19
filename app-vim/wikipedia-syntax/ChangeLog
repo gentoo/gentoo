@@ -1,0 +1,97 @@
+# ChangeLog for app-vim/wikipedia-syntax
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/wikipedia-syntax/ChangeLog,v 1.22 2013/02/07 21:48:33 ulm Exp $
+
+  07 Feb 2013; Ulrich Müller <ulm@gentoo.org>
+  wikipedia-syntax-20101113.ebuild:
+  Move Creative Commons licenses to shorter names.
+
+  04 Dec 2012; Tim Harder <radhermit@gentoo.org>
+  wikipedia-syntax-20101113.ebuild:
+  Fix LICENSE (bug #444978 by ulm).
+
+  04 Mar 2012; Tim Harder <radhermit@gentoo.org>
+  -wikipedia-syntax-20050212.ebuild, -wikipedia-syntax-20071103.ebuild:
+  Remove old.
+
+  03 Mar 2012; Brent Baude <ranger@gentoo.org>
+  wikipedia-syntax-20101113.ebuild:
+  Marking wikipedia-syntax-20101113 ppc64 for bug 393721
+
+  01 Feb 2012; Brent Baude <ranger@gentoo.org>
+  wikipedia-syntax-20101113.ebuild:
+  Marking wikipedia-syntax-20101113 ppc for bug 393721
+
+  14 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  wikipedia-syntax-20101113.ebuild:
+  x86 stable wrt bug #393721
+
+  12 Dec 2011; Agostino Sarubbo <ago@gentoo.org>
+  wikipedia-syntax-20101113.ebuild:
+  Stable for AMD64, wrt bug #393721
+
+  11 Dec 2011; Raúl Porcel <armin76@gentoo.org>
+  wikipedia-syntax-20050212.ebuild, wikipedia-syntax-20071103.ebuild,
+  wikipedia-syntax-20101113.ebuild:
+  Drop alpha/arm/ia64/s390/sh/sparc keywords
+
+*wikipedia-syntax-20101113 (14 Nov 2010)
+
+  14 Nov 2010; Tim Harder <radhermit@gentoo.org>
+  +wikipedia-syntax-20101113.ebuild:
+  Version bump.
+
+  07 Oct 2010; Mart Raudsepp <leio@gentoo.org>
+  wikipedia-syntax-20050212.ebuild:
+  Drop to ~mips
+
+*wikipedia-syntax-20071103 (28 Jul 2010)
+
+  28 Jul 2010; Jim Ramsay <lack@gentoo.org>
+  +wikipedia-syntax-20071103.ebuild:
+  Version bump (Bug #254267)
+
+  20 Aug 2006; <malc@gentoo.org> wikipedia-syntax-20050212.ebuild:
+  Stable on amd64
+
+  07 Apr 2006; Bryan Østergaard <kloeri@gentoo.org metadata.xml:
+  Remove ciaranm from metadata.xml.
+
+  21 Jan 2006; Lars Weiler <pylon@gentoo.org>
+  wikipedia-syntax-20050212.ebuild:
+  Stable on ppc.
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  wikipedia-syntax-20050212.ebuild:
+  Mark 20050212 stable on alpha
+
+  12 Jun 2005; David Holm <dholm@gentoo.org>
+  wikipedia-syntax-20050212.ebuild:
+  Added to ~ppc.
+
+  06 Apr 2005; Markus Rothe <corsair@gentoo.org>
+  wikipedia-syntax-20050212.ebuild:
+  Stable on ppc64
+
+  31 Mar 2005; Aron Griffis <agriffis@gentoo.org>
+  wikipedia-syntax-20050212.ebuild:
+  stable on ia64
+
+  06 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org>
+  wikipedia-syntax-20050212.ebuild:
+  x86 sparc mips stable
+
+  18 Feb 2005; Tom Martin <slarti@gentoo.org>
+  wikipedia-syntax-20050212.ebuild:
+  Marked ~amd64.
+
+  13 Feb 2005; Markus Rothe <corsair@gentoo.org>
+  wikipedia-syntax-20050212.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+*wikipedia-syntax-20050212 (12 Feb 2005)
+
+  12 Feb 2005; Ciaran McCreesh <ciaranm@gentoo.org> +metadata.xml,
+  +wikipedia-syntax-20050212.ebuild:
+  New package.
+

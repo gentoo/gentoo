@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst postrm unpack
+DEPEND=!<dev-texlive/texlive-fontsextra-2007-r1 app-arch/unzip virtual/latex-base >=sys-apps/texinfo-4.2-r5
+DESCRIPTION=Metafont font used in Austrian schools for hand writing
+HOMEPAGE=http://www.ctan.org/tex-archive/fonts/oesch/
+IUSE=examples
+KEYWORDS=~amd64 ~x86-fbsd
+LICENSE=freedist
+RDEPEND=!<dev-texlive/texlive-fontsextra-2007-r1 virtual/latex-base
+SLOT=0
+SRC_URI=mirror://gentoo/oesch-20080712.zip
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	latex-package	d023314500e725be8c78a868e4771dbb	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=fe95d71ec9509a2d55a619ff9feb63f9

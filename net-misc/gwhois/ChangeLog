@@ -1,0 +1,252 @@
+# ChangeLog for net-misc/gwhois
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/gwhois/ChangeLog,v 1.59 2015/06/13 09:39:03 mrueg Exp $
+
+  13 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -gwhois-20100728.ebuild:
+  Remove old.
+
+  14 Oct 2012; Raúl Porcel <armin76@gentoo.org> gwhois-20120626.ebuild:
+  alpha/sparc/x86 stable wrt #433335
+
+  11 Oct 2012; Anthony G. Basile <blueness@gentoo.org> gwhois-20120626.ebuild:
+  stable ppc ppc64, bug #433335
+
+  09 Oct 2012; Jeroen Roovers <jer@gentoo.org> gwhois-20120626.ebuild:
+  Stable for HPPA (bug #433335).
+
+  09 Oct 2012; Agostino Sarubbo <ago@gentoo.org> gwhois-20120626.ebuild:
+  Stable for amd64, wrt bug #433335
+
+*gwhois-20120626 (09 Jul 2012)
+
+  09 Jul 2012; Wolfram Schlich <wschlich@gentoo.org> +gwhois-20120626.ebuild:
+  version bump
+
+  01 Aug 2011; Wolfram Schlich <wschlich@gentoo.org>
+  -gwhois-20080716.ebuild:
+  removed outdated version
+
+  15 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> gwhois-20100728.ebuild:
+  ppc/ppc64 stable wrt #356495
+
+  19 Jun 2011; Raúl Porcel <armin76@gentoo.org> gwhois-20100728.ebuild:
+  sparc stable wrt #356495
+
+  01 Jun 2011; Tobias Klausmann <klausman@gentoo.org> gwhois-20100728.ebuild:
+  Stable on alpha, bug #356495
+
+  28 May 2011; Markos Chandras <hwoarang@gentoo.org> gwhois-20100728.ebuild:
+  Stable on amd64 wrt bug #356495
+
+  24 May 2011; Jeroen Roovers <jer@gentoo.org> gwhois-20100728.ebuild:
+  Stable for HPPA (bug #356495).
+
+  20 May 2011; Thomas Kahle <tomka@gentoo.org> gwhois-20100728.ebuild:
+  x86 stable per bug 356495
+
+*gwhois-20100728 (10 Sep 2010)
+
+  10 Sep 2010; Wolfram Schlich <wschlich@gentoo.org>
+  -gwhois-20100515.ebuild, +gwhois-20100728.ebuild:
+  version bump, removed old version
+
+*gwhois-20100515 (17 May 2010)
+
+  17 May 2010; Wolfram Schlich <wschlich@gentoo.org>
+  -gwhois-20090717.ebuild, +gwhois-20100515.ebuild:
+  version bump, removed old version
+
+*gwhois-20090717 (17 Jul 2009)
+
+  17 Jul 2009; Wolfram Schlich <wschlich@gentoo.org>
+  -gwhois-20081227.ebuild, +gwhois-20090717.ebuild:
+  version bump fixing bug #276750, removed old version
+
+  19 Jun 2009; Brent Baude <ranger@gentoo.org> gwhois-20081227.ebuild:
+  keyworded ~arch for ppc64, bug 272588
+
+*gwhois-20081227 (16 Feb 2009)
+
+  16 Feb 2009; Wolfram Schlich <wschlich@gentoo.org>
+  -gwhois-20071030.ebuild, +gwhois-20081227.ebuild:
+  version bump, removed old version
+
+  24 Aug 2008; Tobias Klausmann <klausman@gentoo.org>
+  gwhois-20080716.ebuild:
+  Stable on alpha, bug #235279
+
+  22 Aug 2008; nixnut <nixnut@gentoo.org> gwhois-20080716.ebuild:
+  Stable on ppc wrt bug 235279
+
+  21 Aug 2008; Friedrich Oslage <bluebird@gentoo.org>
+  gwhois-20080716.ebuild:
+  Stable on sparc, bug #235279
+
+  21 Aug 2008; Jeroen Roovers <jer@gentoo.org> gwhois-20080716.ebuild:
+  Stable for HPPA (bug #235279).
+
+  20 Aug 2008; Dawid Węgliński <cla@gentoo.org> gwhois-20080716.ebuild:
+  Stable on x86 (bug #235279)
+
+  19 Jul 2008; Wolfram Schlich <wschlich@gentoo.org>
+  -gwhois-20080626.ebuild:
+  removed old version
+
+*gwhois-20080716 (17 Jul 2008)
+
+  17 Jul 2008; Wolfram Schlich <wschlich@gentoo.org>
+  +gwhois-20080716.ebuild:
+  version bump
+
+*gwhois-20080626 (27 Jun 2008)
+
+  27 Jun 2008; Wolfram Schlich <wschlich@gentoo.org>
+  -gwhois-20061002.ebuild, -gwhois-20080219_p1.ebuild,
+  +gwhois-20080626.ebuild:
+  version bump, removed old versions
+
+  27 Mar 2008; Jeroen Roovers <jer@gentoo.org> gwhois-20071030.ebuild:
+  Stable for HPPA (bug #214728).
+
+  26 Mar 2008; Brent Baude <ranger@gentoo.org> gwhois-20071030.ebuild:
+  stable ppc, bug 214728
+
+  13 Mar 2008; Santiago M. Mola <coldwind@gentoo.org>
+  gwhois-20071030.ebuild:
+  amd64 stable
+
+*gwhois-20080219_p1 (22 Feb 2008)
+
+  22 Feb 2008; Wolfram Schlich <wschlich@gentoo.org>
+  -gwhois-20080219.ebuild, +gwhois-20080219_p1.ebuild:
+  version bump, removed version with broken upstream tarball
+
+*gwhois-20080219 (19 Feb 2008)
+
+  19 Feb 2008; Wolfram Schlich <wschlich@gentoo.org>
+  -gwhois-20070822.ebuild, -gwhois-20070905.ebuild, -gwhois-20070926.ebuild,
+  +gwhois-20080219.ebuild:
+  version bump, removed old versions
+
+  09 Feb 2008; Raúl Porcel <armin76@gentoo.org> gwhois-20071030.ebuild:
+  alpha/sparc/x86 stable
+
+  23 Jan 2008; Raúl Porcel <armin76@gentoo.org> gwhois-20070926.ebuild:
+  alpha/sparc/x86 stable
+
+*gwhois-20071030 (06 Jan 2008)
+
+  06 Jan 2008; Wolfram Schlich <wschlich@gentoo.org>
+  +gwhois-20071030.ebuild:
+  version bump
+
+*gwhois-20070926 (05 Dec 2007)
+
+  05 Dec 2007; Wolfram Schlich <wschlich@gentoo.org>
+  +gwhois-20070926.ebuild:
+  version bump
+
+*gwhois-20070905 (06 Sep 2007)
+
+  06 Sep 2007; Wolfram Schlich <wschlich@gentoo.org>
+  +gwhois-20070905.ebuild:
+  version bump
+
+  23 Aug 2007; Wolfram Schlich <wschlich@gentoo.org>
+  -gwhois-20050115.ebuild, -gwhois-20050925.ebuild, -gwhois-20060419.ebuild,
+  -gwhois-20061113.ebuild, -gwhois-20070112.ebuild, -gwhois-20070218.ebuild,
+  -gwhois-20070403.ebuild:
+  removed old versions
+
+*gwhois-20070822 (23 Aug 2007)
+
+  23 Aug 2007; Wolfram Schlich <wschlich@gentoo.org>
+  +gwhois-20070822.ebuild:
+  version bump
+
+*gwhois-20070403 (16 Apr 2007)
+
+  16 Apr 2007; Wolfram Schlich <wschlich@gentoo.org>
+  +gwhois-20070403.ebuild:
+  version bump wrt bug #173707
+
+*gwhois-20070112 (13 Jan 2007)
+
+  13 Jan 2007; Wolfram Schlich <wschlich@gentoo.org>
+  +gwhois-20070112.ebuild:
+  version bump
+
+*gwhois-20061113 (15 Nov 2006)
+
+  15 Nov 2006; Wolfram Schlich <wschlich@gentoo.org>
+  +gwhois-20061113.ebuild:
+  version bump
+
+  14 Nov 2006; Steve Dibb <beandog@gentoo.org> gwhois-20061002.ebuild:
+  amd64 stable, bug 155010
+
+  14 Nov 2006; Jeroen Roovers <jer@gentoo.org> gwhois-20061002.ebuild:
+  Stable for HPPA (bug #155010).
+
+  13 Nov 2006; Joseph Jezak <josejx@gentoo.org> gwhois-20061002.ebuild:
+  Marked ppc stable for bug #155010.
+
+  13 Nov 2006; Andrej Kacian <ticho@gentoo.org> gwhois-20061002.ebuild:
+  Stable on x86, bug #155010.
+
+  13 Nov 2006; Alexander H. Færøy <eroyf@gentoo.org>
+  gwhois-20061002.ebuild:
+  Stable on Alpha. Bug 155010
+
+  13 Nov 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  gwhois-20061002.ebuild:
+  Stable on sparc wrt #155010
+
+*gwhois-20061002 (09 Oct 2006)
+
+  09 Oct 2006; Wolfram Schlich <wschlich@gentoo.org>
+  +gwhois-20061002.ebuild:
+  version bump
+
+  05 Aug 2006; Chris White <chriswhite@gentoo.org> metadata.xml:
+  metadata.xml translation by Yoshino-san in bug #135906
+
+*gwhois-20060419 (19 May 2006)
+
+  19 May 2006; Wolfram Schlich <wschlich@gentoo.org>
+  +gwhois-20060419.ebuild:
+  version bump
+
+  29 Sep 2005; Jose Luis Rivero <yoswink@gentoo.org> gwhois-20050115.ebuild:
+  Stable on alpha due to #93820
+
+  28 Sep 2005; Simon Stelling <blubb@gentoo.org> gwhois-20050115.ebuild:
+  stable on amd64
+
+*gwhois-20050925 (26 Sep 2005)
+
+  26 Sep 2005; Wolfram Schlich <wschlich@gentoo.org>
+  +gwhois-20050925.ebuild:
+  version bump
+
+  24 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  gwhois-20050115.ebuild:
+  Stable on ppc.
+
+  22 Sep 2005; Wolfram Schlich <wschlich@gentoo.org> gwhois-20050115.ebuild:
+  cleanup, mark stable on x86
+
+  15 Mar 2005; Seemant Kulleen <seemant@gentoo.org> gwhois-20050115.ebuild:
+  Dependency update: net-www/lynx -> www-client/lynx.
+
+  17 Jan 2005; Wolfram Schlich <wschlich@gentoo.org> gwhois-20050115.ebuild:
+  fix installation of xinetd example config
+
+  16 Jan 2005; Wolfram Schlich <wschlich@gentoo.org> gwhois-20050115.ebuild:
+  add more KEYWORDS
+
+*gwhois-20050115 (16 Jan 2005)
+
+  16 Jan 2005; Wolfram Schlich <wschlich@gentoo.org> +metadata.xml,
+  +files/gwhois.xinetd, +gwhois-20050115.ebuild:
+  initial import

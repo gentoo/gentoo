@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test
+DEPEND=dev-lang/perl:= >=dev-libs/boost-1.42:= sys-fs/e2fsprogs sys-process/audit sys-process/lsof sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Toolset to accelerate the boot process and application startup
+EAPI=5
+HOMEPAGE=http://e4rat.sourceforge.net/
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RDEPEND=dev-lang/perl:= >=dev-libs/boost-1.42:= sys-fs/e2fsprogs sys-process/audit sys-process/lsof
+SLOT=0
+SRC_URI=mirror://sourceforge/e4rat/e4rat_0.2.3_src.tar.gz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	readme.gentoo	106edea5533517715013de909a333abd	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=8991de1955663d620ab185fb8f3280d7

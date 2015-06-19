@@ -1,0 +1,18 @@
+1) We'd suggest you to install following packages
+   sys-block/parted		to manage disk partions
+   sys-fs/btrfs-progs	to use btrfs filesytem
+   sys-fs/cryptsetup		to use encrypted devices with dm-crypt
+
+2) To start several daemons of one specific type, create your own scripts
+   cd /etc/init.d
+   for dmn in mds.a mon.a osd.0 osd.1 osd.2; do
+     ln -s ceph ceph-${dmn};
+     rc-update add ceph-${dmn} default;
+   done
+
+3) If you spread ceph daemons over several different machines,
+ We'd highly recommend you to start ntp-client to keep the system time sync.
+ Try to choose one of following ntp client to install and add into runlevel.
+   net-misc/ntp
+   net-misc/openntpd
+   net-misc/chrony

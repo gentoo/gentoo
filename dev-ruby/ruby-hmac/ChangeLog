@@ -1,0 +1,44 @@
+# ChangeLog for dev-ruby/ruby-hmac
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-hmac/ChangeLog,v 1.11 2015/03/25 16:59:01 graaff Exp $
+
+  25 Mar 2015; Hans de Graaff <graaff@gentoo.org> ruby-hmac-0.4.0-r1.ebuild:
+  Add ruby22.
+
+  03 Nov 2014; Manuel Rüger <mrueg@gentoo.org> ruby-hmac-0.4.0-r1.ebuild:
+  Drop jruby.
+
+  06 Aug 2014; Manuel Rüger <mrueg@gentoo.org> ruby-hmac-0.4.0-r1.ebuild:
+  Add ruby21 target.
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> ruby-hmac-0.4.0-r1.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  24 Apr 2014; Manuel Rüger <mrueg@gentoo.org> ruby-hmac-0.4.0-r1.ebuild:
+  Remove ruby18 support.
+
+  11 Nov 2013; Manuel Rüger <mrueg@gentoo.org> -ruby-hmac-0.4.0.ebuild:
+  Cleanup old.
+
+*ruby-hmac-0.4.0-r1 (30 Oct 2013)
+
+  30 Oct 2013; Manuel Rüger <mrueg@gentoo.org> +ruby-hmac-0.4.0-r1.ebuild:
+  Add ruby20 target.
+
+  16 Sep 2012; Hans de Graaff <graaff@gentoo.org> ruby-hmac-0.4.0.ebuild:
+  Convert to EAPI=4; add all ruby targets.
+
+  22 May 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -ruby-hmac-0.3.2.ebuild, ruby-hmac-0.4.0.ebuild:
+  Cleanup old versions, use new syntax.
+
+*ruby-hmac-0.4.0 (22 Feb 2010)
+
+  22 Feb 2010; Hans de Graaff <graaff@gentoo.org> +ruby-hmac-0.4.0.ebuild:
+  Version bump. Convert to ruby-fakegem.
+
+*ruby-hmac-0.3.2 (16 May 2009)
+
+  16 May 2009; Hans de Graaff <graaff@gentoo.org> +metadata.xml,
+  +ruby-hmac-0.3.2.ebuild:
+  Initial import. Dependency for dev-ruby/oauth.

@@ -1,0 +1,411 @@
+# ChangeLog for dev-perl/Apache-Test
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Apache-Test/ChangeLog,v 1.102 2015/04/30 20:32:47 dilfridge Exp $
+
+*Apache-Test-1.390.0 (30 Apr 2015)
+
+  30 Apr 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Apache-Test-1.390.0.ebuild:
+  Version bump
+
+  19 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  Apache-Test-1.380.0-r1.ebuild:
+  Replace perl-module_pkg_setup with perl_set_version
+
+*Apache-Test-1.380.0-r1 (24 Aug 2014)
+
+  24 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Apache-Test-1.380.0-r1.ebuild, -Apache-Test-1.380.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  08 Jan 2013; Torsten Veller <tove@gentoo.org> -Apache-Test-1.360.0.ebuild,
+  -Apache-Test-1.370.0.ebuild:
+  Cleanup
+
+  27 Dec 2012; Raúl Porcel <armin76@gentoo.org> Apache-Test-1.380.0.ebuild:
+  alpha/sparc stable wrt #441208
+
+  13 Dec 2012; Agostino Sarubbo <ago@gentoo.org> Apache-Test-1.380.0.ebuild:
+  Stable for ia64, wrt bug #441208
+
+  08 Dec 2012; Jeroen Roovers <jer@gentoo.org> Apache-Test-1.380.0.ebuild:
+  Stable for HPPA (bug #441208).
+
+  06 Dec 2012; Agostino Sarubbo <ago@gentoo.org> Apache-Test-1.380.0.ebuild:
+  Stable for ppc64, wrt bug #441208
+
+  06 Dec 2012; Agostino Sarubbo <ago@gentoo.org> Apache-Test-1.380.0.ebuild:
+  Stable for ppc, wrt bug #441208
+
+  06 Dec 2012; <ago@gentoo.org> Apache-Test-1.380.0.ebuild:
+  Stable for x86, wrt bug #441208
+
+  06 Dec 2012; <ago@gentoo.org> Apache-Test-1.380.0.ebuild:
+  Stable for amd64, wrt bug #441208
+
+*Apache-Test-1.380.0 (08 Sep 2012)
+
+  08 Sep 2012; Torsten Veller <tove@gentoo.org> +Apache-Test-1.380.0.ebuild:
+  Version bump
+
+  02 Sep 2012; Raúl Porcel <armin76@gentoo.org> Apache-Test-1.370.0.ebuild:
+  alpha/ia64/sparc stable wrt #418783
+
+  11 Aug 2012; Markus Meier <maekke@gentoo.org> Apache-Test-1.370.0.ebuild:
+  x86 stable, bug #418783
+
+  09 Aug 2012; Brent Baude <ranger@gentoo.org> Apache-Test-1.370.0.ebuild:
+  Marking Apache-Test-1.370.0 ppc for bug 418783
+
+  07 Aug 2012; Brent Baude <ranger@gentoo.org> Apache-Test-1.370.0.ebuild:
+  Marking Apache-Test-1.370.0 ppc64 for bug 418783
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> Apache-Test-1.370.0.ebuild:
+  Stable for amd64, wrt bug #418783
+
+  02 Aug 2012; Jeroen Roovers <jer@gentoo.org> Apache-Test-1.370.0.ebuild:
+  Stable for HPPA (bug #418783).
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  31 Mar 2012; Torsten Veller <tove@gentoo.org> -Apache-Test-1.29.ebuild:
+  Cleanup
+
+  19 Mar 2012; Raúl Porcel <armin76@gentoo.org> Apache-Test-1.360.0.ebuild:
+  ia64/sparc stable wrt #400033
+
+  08 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  Apache-Test-1.360.0.ebuild:
+  x86 stable wrt bug #400033
+
+  02 Mar 2012; Brent Baude <ranger@gentoo.org> Apache-Test-1.360.0.ebuild:
+  Marking Apache-Test-1.360.0 ppc64 for bug 400033
+
+  27 Feb 2012; Brent Baude <ranger@gentoo.org> Apache-Test-1.360.0.ebuild:
+  Marking Apache-Test-1.360.0 ppc for bug 400033
+
+  27 Feb 2012; Jeroen Roovers <jer@gentoo.org> Apache-Test-1.360.0.ebuild:
+  Stable for HPPA (bug #400033).
+
+  25 Feb 2012; Tobias Klausmann <klausman@gentoo.org>
+  Apache-Test-1.360.0.ebuild:
+  Stable on alpha, bug #400033
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org> Apache-Test-1.360.0.ebuild:
+  Stable for amd64, wrt bug #400033
+
+*Apache-Test-1.370.0 (31 Jan 2012)
+
+  31 Jan 2012; Torsten Veller <tove@gentoo.org> +Apache-Test-1.370.0.ebuild:
+  Version bump
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Apache-Test-1.360.ebuild:
+  Cleanup
+
+*Apache-Test-1.360.0 (01 Sep 2011)
+
+  01 Sep 2011; Torsten Veller <tove@gentoo.org> +Apache-Test-1.360.0.ebuild:
+  Change version scheme
+
+  03 Apr 2011; Torsten Veller <tove@gentoo.org> -Apache-Test-1.33.ebuild,
+  -Apache-Test-1.340.ebuild, -Apache-Test-1.350.ebuild:
+  Cleanup
+
+*Apache-Test-1.360 (04 Feb 2011)
+
+  04 Feb 2011; Torsten Veller <tove@gentoo.org> +Apache-Test-1.360.ebuild:
+  Version bump
+
+*Apache-Test-1.350 (23 Jan 2011)
+
+  23 Jan 2011; Torsten Veller <tove@gentoo.org> +Apache-Test-1.350.ebuild:
+  Version bump
+
+*Apache-Test-1.340 (18 Jan 2011)
+
+  18 Jan 2011; Torsten Veller <tove@gentoo.org> +Apache-Test-1.340.ebuild:
+  Version bump
+
+  14 Jan 2011; Torsten Veller <tove@gentoo.org> -Apache-Test-1.30.ebuild,
+  -Apache-Test-1.31.ebuild, -Apache-Test-1.32.ebuild:
+  Cleanup
+
+*Apache-Test-1.33 (21 Sep 2010)
+
+  21 Sep 2010; Torsten Veller <tove@gentoo.org> +Apache-Test-1.33.ebuild:
+  Version bump
+
+*Apache-Test-1.32 (17 Apr 2010)
+
+  17 Apr 2010; Torsten Veller <tove@gentoo.org> +Apache-Test-1.32.ebuild:
+  Version bump
+
+*Apache-Test-1.31 (05 Mar 2010)
+
+  05 Mar 2010; Torsten Veller <tove@gentoo.org> +Apache-Test-1.31.ebuild:
+  Version bump
+
+  10 Dec 2009; Torsten Veller <tove@gentoo.org> Apache-Test-1.30.ebuild,
+  metadata.xml:
+  Fix HOMEPAGE (#295603), LICENSE. Change longdescription
+
+  26 May 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  Apache-Test-1.29.ebuild, Apache-Test-1.30.ebuild:
+  Add pkg_setup().
+
+  28 May 2008; Guy Martin <gmsoft@gentoo.org> Apache-Test-1.29.ebuild,
+  Apache-Test-1.30.ebuild:
+  Added hppa and ~hppa keywords.
+
+*Apache-Test-1.30 (19 May 2008)
+
+  19 May 2008; Yuval Yaari <yuval@gentoo.org> +Apache-Test-1.30.ebuild:
+  Version bump (bug #222681)
+
+  13 May 2008; Jeroen Roovers <jer@gentoo.org> Apache-Test-1.29.ebuild:
+  Marked ~hppa (LuckyLuke).
+
+  02 Feb 2008; Benedikt Böhm <hollow@gentoo.org> Apache-Test-1.29.ebuild:
+  use depend.apache eclass wrt #208033
+
+  29 Jul 2007; Christian Heim <phreak@gentoo.org> Apache-Test-1.29.ebuild:
+  Fixing the DEPEND/RDEPEND for the move of net-www/apache to
+  www-servers/apache (#78622).
+
+  08 Jul 2007; Michael Cummings <mcummings@gentoo.org>
+  -Apache-Test-1.23.ebuild, -Apache-Test-1.26.ebuild,
+  -Apache-Test-1.28.ebuild:
+  Cleaning up
+
+  05 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  Apache-Test-1.29.ebuild:
+  ppc stable
+
+  15 Apr 2007; Markus Rothe <corsair@gentoo.org> Apache-Test-1.29.ebuild:
+  Stable on ppc64
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org> Apache-Test-1.29.ebuild:
+  Stable on x86, bug #169152.
+
+  22 Jan 2007; Bryan Østergaard <kloeri@gentoo.org>
+  Apache-Test-1.29.ebuild:
+  Stable on Alpha + IA64.
+
+  19 Jan 2007; Markus Rothe <corsair@gentoo.org> Apache-Test-1.28.ebuild:
+  Stable on ppc64; bug #162244
+
+  17 Jan 2007; Christian Faulhammer <opfer@gentoo.org>
+  Apache-Test-1.28.ebuild:
+  stable x86, bug #162244
+
+  14 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  Apache-Test-1.23.ebuild, Apache-Test-1.26.ebuild, Apache-Test-1.28.ebuild:
+  Ebuild maintenance
+
+  07 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  Apache-Test-1.29.ebuild:
+  Marking sparc stable
+
+  07 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  -Apache-Test-1.15.ebuild, -Apache-Test-1.22.ebuild,
+  Apache-Test-1.29.ebuild:
+  Marking amd64 stable
+
+*Apache-Test-1.29 (03 Dec 2006)
+
+  03 Dec 2006; Michael Cummings <mcummings@gentoo.org>
+  +Apache-Test-1.29.ebuild:
+  Version bump
+
+  23 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  Apache-Test-1.28.ebuild:
+  Removing block on mod_perl-2 from Apache-Test-1.28 - mod_perl-2 comes with
+  1.27, so this version does supercede it
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  Apache-Test-1.28.ebuild:
+  Stable on Alpha.
+
+  15 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  Apache-Test-1.28.ebuild:
+  Stable on ia64.
+
+  16 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  Apache-Test-1.28.ebuild:
+  ppc stable
+
+  05 Sep 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  Apache-Test-1.28.ebuild:
+  Stable on sparc
+
+  02 Sep 2006; Michael Cummings <mcummings@gentoo.org>
+  Apache-Test-1.28.ebuild:
+  Marking amd64 stable
+
+  27 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Apache-Test-1.26.ebuild:
+  Marking amd64 stable
+
+  04 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Apache-Test-1.15.ebuild, Apache-Test-1.22.ebuild, Apache-Test-1.23.ebuild,
+  Apache-Test-1.26.ebuild, Apache-Test-1.28.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  03 Jul 2006; Christian Hartmann <ian@gentoo.org> Apache-Test-1.26.ebuild,
+  Apache-Test-1.28.ebuild:
+  Fixed RDEPEND wrt bug #134781
+
+  03 Jul 2006; Christian Hartmann <ian@gentoo.org> Apache-Test-1.15.ebuild,
+  Apache-Test-1.22.ebuild, Apache-Test-1.23.ebuild, Apache-Test-1.26.ebuild,
+  Apache-Test-1.28.ebuild:
+  Fixed RDEPEND wrt bug #134781; fixed header
+
+  07 May 2006; Markus Rothe <corsair@gentoo.org> Apache-Test-1.26.ebuild:
+  Stable on ppc64
+
+  28 Mar 2006; Aron Griffis <agriffis@gentoo.org> Apache-Test-1.26.ebuild:
+  Mark 1.26 stable on ia64
+
+  22 Mar 2006; Michael Cummings <mcummings@gentoo.org>
+  Apache-Test-1.26.ebuild:
+  Marking stable x86
+
+*Apache-Test-1.28 (22 Mar 2006)
+
+  22 Mar 2006; Michael Cummings <mcummings@gentoo.org>
+  -Apache-Test-1.03.ebuild, +Apache-Test-1.28.ebuild:
+  Removing old ebuild
+
+  03 Dec 2005; Chris White <chriswhite@gentoo.org> -Apache-Test-1.27.ebuild:
+  1.27 doesn't belong.
+
+  19 Sep 2005; Marcus D. Hanwell <cryos@gentoo.org> Apache-Test-1.23.ebuild:
+  Stable on amd64.
+
+  08 Sep 2005; Aron Griffis <agriffis@gentoo.org> Apache-Test-1.23.ebuild:
+  Mark 1.23 stable on alpha
+
+  23 Aug 2005; Aron Griffis <agriffis@gentoo.org> Apache-Test-1.23.ebuild:
+  stable on ia64
+
+  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  Apache-Test-1.23.ebuild:
+  Stable on ppc.
+
+  08 Aug 2005; Markus Rothe <corsair@gentoo.org> Apache-Test-1.23.ebuild:
+  Stable on ppc64
+
+*Apache-Test-1.22 (29 Jul 2005)
+
+  29 Jul 2005; Michael Cummings <mcummings@gentoo.org>
+  +Apache-Test-1.22.ebuild:
+  Removed 1.22 by mistake - terribly sorry ppc64 folks
+
+  28 Jul 2005; Michael Cummings <mcummings@gentoo.org>
+  Apache-Test-1.26.ebuild:
+  Adding a block against mod-perl-2. Here's the gist: mod-perl-2.0.1 comes with
+  its own version of Apache-Test. It installs to a different place, and is
+  largely incompatible with the standalone version of Apache-Test. However,
+  Apache-Test has value outside of the Mod-Perl-2 arena, so it is being retained
+  as a separate ebuild.
+
+*Apache-Test-1.26 (28 Jul 2005)
+
+  28 Jul 2005; Michael Cummings <mcummings@gentoo.org> metadata.xml,
+  -Apache-Test-1.22.ebuild, Apache-Test-1.23.ebuild, +Apache-Test-1.26.ebuild:
+  Version bump; unmasking 1.23 for sparc and x86, no bugs in 30+ days
+
+  29 May 2005; Markus Rothe <corsair@gentoo.org> Apache-Test-1.22.ebuild:
+  Stable on ppc64
+
+*Apache-Test-1.23 (09 May 2005)
+
+  09 May 2005; Elfyn McBratney <beu@gentoo.org> +Apache-Test-1.23.ebuild:
+  Version bump.
+
+  24 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -Apache-Test-1.07.ebuild, -Apache-Test-1.11.ebuild,
+  -Apache-Test-1.15.ebuild, -Apache-Test-1.21.ebuild:
+  cleanup
+
+*Apache-Test-1.22 (24 Apr 2005)
+
+  24 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  +Apache-Test-1.22.ebuild:
+  Version bump upstream. Read
+  http://search.cpan.org/~geoff/Apache-Test-1.22/Changes
+
+  19 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  Apache-Test-1.15.ebuild:
+  Stable on ppc.
+
+  11 Apr 2005; Markus Rothe <corsair@gentoo.org> Apache-Test-1.21.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  01 Apr 2005; Simon Stelling <blubb@gentoo.org> Apache-Test-1.15.ebuild:
+  stable on amd64
+
+  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> Apache-Test-1.15.ebuild:
+  stable on ia64
+
+*Apache-Test-1.21 (23 Mar 2005)
+
+  23 Mar 2005; Michael Cummings <mcummings@gentoo.org>
+  +Apache-Test-1.21.ebuild:
+  New version on cpan
+
+  08 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org> Apache-Test-1.15.ebuild:
+  Stable on sparc
+
+  22 Jan 2005; Bryan Østergaard <kloeri@gentoo.org>
+  Apache-Test-1.15.ebuild:
+  Stable on alpha.
+
+  21 Jan 2005; Michael Cummings <mcummings@gentoo.org>
+  Apache-Test-1.15.ebuild:
+  Unmasking for x86
+
+*Apache-Test-1.15 (28 Oct 2004)
+
+  28 Oct 2004; Michael Cummings <mcummings@gentoo.org>
+  +Apache-Test-1.15.ebuild:
+  New version on cpan
+
+  25 Jun 2004; Danny van Dyk <kugelfang@gentoo.org> Apache-Test-1.07.ebuild:
+  Marked stable on amd64.
+
+*Apache-Test-1.11 (05 Jun 2004)
+
+  05 Jun 2004; Michael Cummings <mcummings@gentoo.org>
+  Apache-Test-1.11.ebuild:
+  new version
+
+  07 May 2004; Gustavo Zacarias <gustavoz@gentoo.org> Apache-Test-1.07.ebuild:
+  Stable on sparc
+
+  16 Apr 2004; Michael Cummings <mcummings@gentoo.org>
+  Apache-Test-1.07.ebuild:
+  Syntax fix for newdepend, bug 29064
+
+  18 Feb 2004; Aron Griffis <agriffis@gentoo.org> Apache-Test-1.07.ebuild:
+  stable on alpha and ia64
+
+  15 Feb 2004; Michael Cummings,,, <mcummings@gentoo.org>
+  Apache-Test-1.07.ebuild:
+  Unmasking for x86
+
+  18 Jan 2004; <tuxus@gentoo.org> Apache-Test-1.03.ebuild:
+  Added ~mips to KEYWORDS.
+
+*Apache-Test-1.07 (22 Dec 2003)
+
+  22 Dec 2003; <rac@gentoo.org> Apache-Test-1.07.ebuild:
+  upstream bump
+
+*Apache-Test-1.03 (20 Jun 2003)
+
+  20 Jun 2003; Michael Cummings <mcummings@gentoo.org>
+  Apache-Test-1.03.ebuild:
+  Apache test is actually to fill other deps, including the new libapreq

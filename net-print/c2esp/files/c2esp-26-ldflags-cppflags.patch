@@ -1,0 +1,33 @@
+diff -Naur a/Makefile b/Makefile
+--- a/Makefile	2012-09-06 00:18:06.000000000 +0100
++++ b/Makefile	2013-08-01 19:56:01.884969274 +0100
+@@ -234,16 +234,16 @@
+ 	@echo 
+ 
+ c2esp: c2esp.o c2espcommon.o $(LIBJBG85)
+-	$(CC) $(CFLAGS) -o $@ c2esp.o c2espcommon.o $(LIBCUPSDRIVER) $(LIBCUPSIMAGE) $(LIBJBG85)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ c2esp.o c2espcommon.o $(LIBCUPSDRIVER) $(LIBCUPSIMAGE) $(LIBJBG85)
+ 
+ c2espC: c2espC.o c2espcommon.o 
+-	$(CC) $(CFLAGS) -o $@ c2espC.o c2espcommon.o $(LIBCUPSDRIVER) $(LIBCUPSIMAGE) -lz
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ c2espC.o c2espcommon.o $(LIBCUPSDRIVER) $(LIBCUPSIMAGE) -lz
+ 
+ command2esp: command2esp.o c2espcommon.o
+-	$(CC) $(CFLAGS) -o $@ command2esp.o  c2espcommon.o $(LIBCUPSDRIVER)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ command2esp.o  c2espcommon.o $(LIBCUPSDRIVER)
+ 
+ myopldecode: myopldecode.o $(LIBJBG)
+-	$(CC) $(CFLAGS) -o $@ $@.o $(LIBJBG) -lz
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $@.o $(LIBJBG) -lz
+ 
+ #
+ # Installation rules
+@@ -403,3 +403,8 @@
+ command2esp.o: c2espcommon.h
+ c2espcommon.o: c2espcommon.h
+ 
++# Respect CPPFLAGS.
++.SUFFIXES: .c .o
++.c.o:
++	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o '$@' '$<'
++

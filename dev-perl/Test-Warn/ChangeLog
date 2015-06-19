@@ -1,0 +1,213 @@
+# ChangeLog for dev-perl/Test-Warn
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-Warn/ChangeLog,v 1.58 2015/02/25 14:38:20 monsieurp Exp $
+
+*Test-Warn-0.300.0 (25 Feb 2015)
+
+  25 Feb 2015; Patrice Clement <monsieurp@gentoo.org> +Test-Warn-0.300.0.ebuild:
+  Version bump.
+
+*Test-Warn-0.240.0-r1 (20 Aug 2014)
+
+  20 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Test-Warn-0.240.0-r1.ebuild, -Test-Warn-0.240.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  09 Jun 2014; Mike Frysinger <vapier@gentoo.org> Test-Warn-0.240.0.ebuild:
+  Add arm64 love.
+
+  06 Jan 2013; Torsten Veller <tove@gentoo.org> -Test-Warn-0.21.ebuild,
+  -Test-Warn-0.230.0.ebuild:
+  Cleanup
+
+  27 Dec 2012; Raúl Porcel <armin76@gentoo.org> Test-Warn-0.240.0.ebuild:
+  alpha/s390/sh/sparc stable wrt #441256
+
+  13 Dec 2012; Agostino Sarubbo <ago@gentoo.org> Test-Warn-0.240.0.ebuild:
+  Stable for ia64, wrt bug #441256
+
+  11 Dec 2012; Agostino Sarubbo <ago@gentoo.org> Test-Warn-0.240.0.ebuild:
+  Stable for ppc64, wrt bug #441248
+
+  09 Dec 2012; Markus Meier <maekke@gentoo.org> Test-Warn-0.240.0.ebuild:
+  arm stable, bug #441256
+
+  08 Dec 2012; Jeroen Roovers <jer@gentoo.org> Test-Warn-0.240.0.ebuild:
+  Stable for HPPA (bug #441256).
+
+  06 Dec 2012; Agostino Sarubbo <ago@gentoo.org> Test-Warn-0.240.0.ebuild:
+  Stable for ppc, wrt bug #441256
+
+  06 Dec 2012; <ago@gentoo.org> Test-Warn-0.240.0.ebuild:
+  Stable for x86, wrt bug #441256
+
+  06 Dec 2012; <ago@gentoo.org> Test-Warn-0.240.0.ebuild:
+  Stable for amd64, wrt bug #441256
+
+  22 Sep 2012; Anthony G. Basile <blueness@gentoo.org>
+  Test-Warn-0.240.0.ebuild:
+  keyword ~ppc64, bug #384677
+
+  08 Aug 2012; Naohiro Aota <naota@gentoo.org> Test-Warn-0.240.0.ebuild:
+  Add ~x86-fbsd wrt bug #428248
+
+  06 Aug 2012; Alexis Ballier <aballier@gentoo.org> Test-Warn-0.240.0.ebuild:
+  keyword ~amd64-fbsd
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  17 Jun 2012; Raúl Porcel <armin76@gentoo.org> Test-Warn-0.230.0.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #412985
+
+*Test-Warn-0.240.0 (07 Jun 2012)
+
+  07 Jun 2012; Torsten Veller <tove@gentoo.org> +Test-Warn-0.240.0.ebuild:
+  Version bump. It should work with Carp 1.17 from perl-5.12.4.
+
+  25 Apr 2012; Markus Meier <maekke@gentoo.org> Test-Warn-0.230.0.ebuild:
+  arm stable, bug #412985
+
+  14 Apr 2012; Markus Meier <maekke@gentoo.org> Test-Warn-0.230.0.ebuild:
+  x86 stable, bug #408579
+
+  20 Mar 2012; Jeroen Roovers <jer@gentoo.org> Test-Warn-0.230.0.ebuild:
+  Stable for HPPA (bug #408579).
+
+  20 Mar 2012; Agostino Sarubbo <ago@gentoo.org> Test-Warn-0.230.0.ebuild:
+  Stable for amd64, wrt bug #408581
+
+  18 Nov 2011; Fabian Groffen <grobian@gentoo.org> Test-Warn-0.230.0.ebuild:
+  Marked ~x86-solaris
+
+  11 Oct 2011; Matt Turner <mattst88@gentoo.org> Test-Warn-0.230.0.ebuild:
+  Added ~mips, bug 384677
+
+  10 Oct 2011; Jeroen Roovers <jer@gentoo.org> Test-Warn-0.230.0.ebuild:
+  Marked ~hppa (bug #384677).
+
+  09 Oct 2011; Raúl Porcel <armin76@gentoo.org> Test-Warn-0.21.ebuild,
+  Test-Warn-0.230.0.ebuild:
+  Add ~alpha/~arm/~ia64/~s390/~sh wrt #384677
+
+  29 Jul 2011; Torsten Veller <tove@gentoo.org> -Test-Warn-0.22.ebuild:
+  Cleanup
+
+*Test-Warn-0.230.0 (26 Feb 2011)
+
+  26 Feb 2011; Torsten Veller <tove@gentoo.org> +Test-Warn-0.230.0.ebuild:
+  Version bump
+
+  20 Oct 2010; Torsten Veller <tove@gentoo.org> -Test-Warn-0.11.ebuild:
+  Cleanup
+
+*Test-Warn-0.22 (10 Sep 2010)
+
+  10 Sep 2010; Torsten Veller <tove@gentoo.org> +Test-Warn-0.22.ebuild:
+  Version bump
+
+  27 Jun 2010; <nixnut@gentoo.org> Test-Warn-0.21.ebuild:
+  ppc stable #323529
+
+  08 May 2010; Raúl Porcel <armin76@gentoo.org> Test-Warn-0.21.ebuild:
+  sparc stable wrt #314467
+
+  17 Apr 2010; Torsten Veller <tove@gentoo.org> Test-Warn-0.21.ebuild:
+  Stable on amd64, x86 (#314467)
+
+  14 Jan 2010; Fabian Groffen <grobian@gentoo.org> Test-Warn-0.21.ebuild:
+  Transfer Prefix keywords
+
+  12 Sep 2009; Raúl Porcel <armin76@gentoo.org> Test-Warn-0.11.ebuild,
+  Test-Warn-0.21.ebuild:
+  Drop ia64 keyword
+
+*Test-Warn-0.21 (30 Aug 2009)
+
+  30 Aug 2009; Torsten Veller <tove@gentoo.org> +Test-Warn-0.21.ebuild:
+  Version bump
+
+  02 May 2009; Torsten Veller <tove@gentoo.org> -Test-Warn-0.10.ebuild:
+  Cleanup
+
+  17 Feb 2009; Raúl Porcel <armin76@gentoo.org> Test-Warn-0.11.ebuild:
+  ia64 stable wrt #259065
+
+  16 Feb 2009; Brent Baude <ranger@gentoo.org> Test-Warn-0.11.ebuild:
+  stable ppc, bug 259065
+
+  15 Feb 2009; Tiago Cunha <tcunha@gentoo.org> Test-Warn-0.11.ebuild:
+  stable sparc, bug 259065
+
+  15 Feb 2009; Markus Meier <maekke@gentoo.org> Test-Warn-0.11.ebuild:
+  amd64/x86 stable, bug #259065
+
+  18 Jul 2008; Torsten Veller <tove@gentoo.org> -Test-Warn-0.08.ebuild,
+  -Test-Warn-0.09.ebuild:
+  Cleaning
+
+*Test-Warn-0.11 (18 Jul 2008)
+
+  18 Jul 2008; Torsten Veller <tove@gentoo.org> +Test-Warn-0.11.ebuild:
+  Version bump
+
+  10 Nov 2007; Samuli Suominen <drac@gentoo.org> Test-Warn-0.10.ebuild:
+  amd64 stable
+
+  09 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  Test-Warn-0.10.ebuild:
+  Stable on ppc.
+
+  14 Jul 2007; Raúl Porcel <armin76@gentoo.org> Test-Warn-0.10.ebuild:
+  ia64/x86 stable
+
+  21 Jun 2007; Michael Cummings <mcummings@gentoo.org>
+  Test-Warn-0.10.ebuild:
+  Marking sparc stable
+
+*Test-Warn-0.10 (12 May 2007)
+
+  12 May 2007; Michael Cummings <mcummings@gentoo.org>
+  +Test-Warn-0.10.ebuild:
+  Version bump
+
+*Test-Warn-0.09 (06 Apr 2007)
+
+  06 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  +Test-Warn-0.09.ebuild:
+  Version bump
+
+  19 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  Test-Warn-0.08.ebuild:
+  Ebuild maintenance
+
+  18 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Test-Warn-0.08.ebuild:
+  Marking amd64 stable
+
+  16 Jul 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  Test-Warn-0.08.ebuild:
+  ppc stable
+
+  13 Jul 2006; Aron Griffis <agriffis@gentoo.org> Test-Warn-0.08.ebuild:
+  Mark 0.08 stable on ia64
+
+  12 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  Test-Warn-0.08.ebuild:
+  Marking sparc stable
+
+  05 Apr 2006; <mcumming@gentoo.org> Test-Warn-0.08.ebuild:
+  Marking ~amd64, tested on pitr
+
+  30 Mar 2006; Aron Griffis <agriffis@gentoo.org> Test-Warn-0.08.ebuild:
+  Mark 0.08 ~ia64
+
+  19 Mar 2006; <nixnut@gentoo.org> Test-Warn-0.08.ebuild:
+  Added ~ppc. Bug #126745
+
+*Test-Warn-0.08 (19 Mar 2006)
+
+  19 Mar 2006; Michael Cummings <mcummings@gentoo.org> +metadata.xml,
+  +Test-Warn-0.08.ebuild:
+  Testing dep for WWW-Mechanize

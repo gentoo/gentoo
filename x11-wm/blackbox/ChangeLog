@@ -1,0 +1,291 @@
+# ChangeLog for x11-wm/blackbox
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/blackbox/ChangeLog,v 1.73 2015/03/20 09:00:01 jlec Exp $
+
+  20 Mar 2015; Justin Lecher <jlec@gentoo.org> files/blackbox.desktop:
+  Fix desktop file
+
+*blackbox-0.70.1-r1 (01 Mar 2014)
+
+  01 Mar 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  +blackbox-0.70.1-r1.ebuild, +files/blackbox-0.70.1-no-LDFLAGS-pc.patch:
+  Fixed LDFLAGS leak to pkgconfig file.
+
+  19 Oct 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due desktop-wm removal
+
+  15 May 2013; Patrick Lauer <patrick@gentoo.org> blackbox-0.70.1.ebuild:
+  Automake 1.13 fix
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> blackbox-0.70.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  16 Apr 2011; Ulrich Mueller <ulm@gentoo.org> blackbox-0.70.1.ebuild:
+  Don't PROVIDE virtual/blackbox, bug 358825.
+
+  12 Dec 2010; Kacper Kowalik <xarthisius@gentoo.org> blackbox-0.70.1.ebuild:
+  Fix building with >=x11-libs/libX11-1.4.0 wrt #348556 by Patrick Lauer
+  <patrick@gentoo.org>
+
+  02 Jun 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  blackbox-0.70.1.ebuild, +files/blackbox-0.70.1-asneeded.patch:
+  Enabling shared libs, fixing as-needed issues wrt bug 248549. Thanks Diego
+  for the report.
+
+  22 Feb 2010; Raúl Porcel <armin76@gentoo.org> blackbox-0.70.1.ebuild:
+  arm stable
+
+  24 Jan 2010; Raúl Porcel <armin76@gentoo.org> blackbox-0.70.1.ebuild:
+  Add ~arm
+
+  05 May 2009; Christian Faulhammer <fauli@gentoo.org> metadata.xml,
+  blackbox-0.70.1.ebuild:
+  fix a typo and don't install LICENSE file
+
+  05 May 2009; Christian Faulhammer <fauli@gentoo.org>
+  -blackbox-0.70.0.ebuild:
+  clean up
+
+  22 Sep 2008; David Shakaryan <omp@gentoo.org> metadata.xml:
+  Change herd from commonbox to desktop-wm.
+
+  24 Apr 2008; David Shakaryan <omp@gentoo.org>
+  +files/blackbox-0.70.1-gcc-4.3.patch, blackbox-0.70.1.ebuild:
+  Compile with GCC 4.3; patch from Fedora. (bug #217978)
+
+  22 Jul 2007; David Shakaryan <omp@gentoo.org> blackbox-0.70.0.ebuild:
+  Remove virtual/x11 from dependencies.
+
+  14 Jun 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  blackbox-0.70.1.ebuild:
+  ppc stable, bug #181843
+
+  14 Jun 2007; Jeroen Roovers <jer@gentoo.org> blackbox-0.70.1.ebuild:
+  Stable for HPPA (bug #181843).
+
+  14 Jun 2007; Christoph Mende <angelos@gentoo.org> blackbox-0.70.1.ebuild:
+  Stable on amd64 wrt bug 181843
+
+  13 Jun 2007; Raúl Porcel <armin76@gentoo.org> blackbox-0.70.1.ebuild:
+  alpha/ia64/x86 stable wrt #181843
+
+  13 Jun 2007; Markus Rothe <corsair@gentoo.org> blackbox-0.70.1.ebuild:
+  Stable on ppc64; bug #181843
+
+  13 Jun 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  blackbox-0.70.1.ebuild:
+  Stable on sparc wrt #181843
+
+*blackbox-0.70.1 (02 May 2007)
+
+  02 May 2007; David Shakaryan <omp@gentoo.org> +blackbox-0.70.1.ebuild:
+  New version along with ebuild cleanup. (bug #114804)
+
+  07 Dec 2006; Diego Pettenò <flameeyes@gentoo.org> blackbox-0.70.0.ebuild:
+  Add ~x86-fbsd keyword as per bug #156873. Thanks to Mark Kowarsky
+  (mark_alec) for reporting.
+
+  29 Oct 2006; David Shakaryan <omp@gentoo.org>
+  -files/blackbox-0.65.0-gcc34.patch,
+  -files/blackbox-0.65.0-mousewheel_focus-workspace.patch,
+  -files/blackbox-gcc.patch, -files/disable_rootcommand.patch,
+  -blackbox-0.65.0-r3.ebuild, -blackbox-0.65.0-r4.ebuild:
+  Remove older versions.
+
+  10 Apr 2006; <pyrania@gentoo.org> blackbox-0.70.0.ebuild:
+  LICENCE change. See bug #123375.
+
+  30 Jan 2006; Robin H. Johnson <robbat2@gentoo.org> blackbox-0.70.0.ebuild:
+  Fix modular-X deps.
+
+  06 Jun 2005; Markus Rothe <corsair@gentoo.org> blackbox-0.70.0.ebuild:
+  Stable on ppc64
+
+  08 May 2005; Herbie Hopkins <herbs@gentoo.org> blackbox-0.70.0.ebuild:
+  Stable on amd64.
+
+  01 May 2005; Michael Hanselmann <hansmi@gentoo.org>
+  blackbox-0.70.0.ebuild:
+  Stable on ppc.
+
+  01 May 2005; Guy Martin <gmsoft@gentoo.org> blackbox-0.70.0.ebuild:
+  Stable on hppa.
+
+  30 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> blackbox-0.70.0.ebuild:
+  Stable on ia64.
+
+  30 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> blackbox-0.70.0.ebuild:
+  Stable on alpha.
+
+  26 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  blackbox-0.70.0.ebuild:
+  Stable on sparc
+
+  23 Apr 2005; Aaron Walker <ka0ttic@gentoo.org> blackbox-0.70.0.ebuild:
+  Marked stable on x86.
+
+*blackbox-0.70.0 (10 Mar 2005)
+
+  10 Mar 2005; Aaron Walker <ka0ttic@gentoo.org> -files/blackbox,
+  +files/blackbox.desktop, +blackbox-0.70.0.ebuild:
+  Version bump for bug 84399. New ebuild rewritten and no longer uses
+  commonbox.eclass.
+
+  06 Feb 2005; Markus Rothe <corsair@gentoo.org> blackbox-0.65.0-r4.ebuild:
+  Stable on ppc64
+
+*blackbox-0.65.0-r4 (31 Dec 2004)
+
+  31 Dec 2004; Markus Rothe <corsair@gentoo.org>
+  +files/blackbox-0.65.0-gcc34.patch, +blackbox-0.65.0-r4.ebuild:
+  Added gcc34 patch from bug #64747 and marked new revision as ~ppc64
+
+  06 May 2004; Brandon Hale <tseng@gentoo.org> blackbox-0.65.0-r3.ebuild:
+  Remove explicit S= and remove NLS from IUSE.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> blackbox-0.65.0-r3.ebuild:
+  Add inherit eutils
+
+  17 Feb 2004; Aron Griffis <agriffis@gentoo.org> blackbox-0.65.0-r3.ebuild:
+  stable on alpha and ia64
+
+  17 Feb 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  blackbox-0.65.0-r3.ebuild:
+  stable on hppa
+
+  26 Dec 2003; Jason Wever <weeve@gentoo.org> blackbox-0.65.0-r3.ebuild:
+  Marked stable on sparc.
+
+  19 Dec 2003; Brandon Hale <tseng@gentoo.org> blackbox-0.65.0-r3.ebuild:
+  Fixing lisense (as-is).
+
+  14 Dec 2003; Lars Weiler <pylon@gentoo.org> blackbox-0.65.0-r3.ebuild:
+  Masked stable on ppc
+
+*blackbox-0.65.0-r3 (07 Dec 2003)
+
+  07 Dec 2003; Brandon Hale <tseng@gentoo.org> blackbox-0.62.1-r3.ebuild,
+  blackbox-0.65.0-r2.ebuild, blackbox-0.65.0-r3.ebuild,
+  files/disable_rootcommand.patch:
+  Disabling RootCommand in styles, a glaring security hole, and imo less than
+  useful.
+
+  11 Nov 2003; Brandon Hale <tseng@gentoo.org> blackbox-0.65.0-r2.ebuild:
+  Disabling NLS until it becomes slightly less than horribly broken upstream.
+
+  11 Oct 2003; Joel Hill <hillster@gentoo.org> blackbox-0.65.0-r2.ebuild:
+  typo, closes #30890
+
+*blackbox-0.65.0-r2 (09 Oct 2003)
+
+  09 Oct 2003; Brandon Hale <tseng@gentoo.org> blackbox-0.65.0-r1.ebuild,
+  blackbox-0.65.0-r2.ebuild, blackbox-0.65.0.ebuild, files/blackbox-gcc.patch:
+  Cleanup and fix for gcc 3.3, closes #29633
+
+  26 Sep 2003; Martin Holzer <mholzer@gentoo.org> blackbox-0.65.0-r1.ebuild:
+  added more docs. Closes #29560.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+
+*blackbox-0.65.0-r1 (26 Oct 2002)
+
+  5 Nov 2002; Matt Keadle <mkeadle@gentoo.org> blackbox-0.65.0-r1
+  Added some ewarn statements allerting users to the mousewheel patch.
+
+  26 Oct 2002; Matt Keadle <mkeadle@gentoo.org> blackbox-0.65.0-r1
+  files/digest-blackbox-0.65.0-r1
+
+  Added mouse wheel patch. You can either change window focus or change
+  workspaces with this one and you can use the configuration menu to set
+  it or reverse the scroll direction. Window shading included.
+
+  Patch created by Michael Langley (ownx).
+
+*blackbox-0.65.0 (19 Sep 2002)
+
+  19 Sep 2002; Spider <spider@gentoo.org> blackbox-0.65.0.ebuild : bump version
+  this is it, the final one
+
+*blackbox-0.65.0_beta7 (05 Sep 2002)
+  05 Sep 2002; Spider <spider@gentoo.org> blackbox-0.65.0_beta7.ebuild :
+  version bump, sorry for the delay
+
+*blackbox-0.65.0_beta5 (09 aug 2002)
+  09 Aug 2002 ; Spider <spider@gentoo.org> blackbox-0.65.0_beta5.ebuild :
+  version bump
+
+*blackbox-0.65.0_beta3-r1 (18 Jul 2002)
+    18 Jul 2002; Spider <spider@gentoo.org> blackbox-0.65.0_beta3-r1.ebuild :
+    and the eclass version
+
+
+*blackbox-0.65.0_beta3 (18 Jul 2002)
+  18 Jul 2002; Spider <spider@gentoo.org> blackbox-0.65.0_beta3.ebuild :
+  new version
+  repomaned
+
+*blackbox-0.62.1-r3 (14 Jul 2002)
+
+  24 Jul 2002; Mark Guertin <gerk@gentoo.org> :
+  Added ppc to keywords
+
+  14 Jul 2002; Seemant Kulleen <seemant@gentoo.org>
+  blackbox-0.62.1-r3.ebuild files/digest-blackbox-0.62.1-r3 :
+
+  eclassed.
+
+*blackbox-0.65.0_alpha8 (17 Jun 2002)
+  17 Jun 2002; Spider <spider@gentoo.org> blackbox-0.65.0_alpha8.ebuild:
+  new version. forgot to add this about a week ago ;)
+
+*blackbox-0.65.0_alpha7 (02 Jun 2002)
+  02 May 2002; Spider <spider@gentoo.org> blackbox-0.65.0_alpha7.ebuild:
+   bump said the alpha and version updated
+
+
+*blackbox-0.65.0_alpha6 (22 May 2002)
+  22 May 2002; Spider <spider@gentoo.org> blackbox-0.65.0_alpha6.ebuild:
+  latest, greatest, better than ever, and compiles on gcc 3.x
+
+
+*blackbox-0.65.0_alpha4 (19 May 2002)
+  19 May 2002; Spider <spider@gentoo.org> blackbox-0.65.0_alpha4.ebuild:
+  just a version bump
+
+*blackbox-0.65.0_alpha2-r1 (27 Apr 2002)
+  27 Apr 2002; Spider <spider@gentoo.org> blackbox-0.65.0_alpha2-r1.ebuild:
+  fix $P Mangling to use MY_P and be nice to portage
+
+*blackbox-0.65.0_alpha2 (26 Apr 2002)
+  26 Apr 2002; Spider <spider@gentoo.org> blackbox-0.65.0_alpha2.ebuild:
+  New alpha, removed unnecessary info/comments
+  lintool check and remove bad space/blankspace
+  new homepage, mangling P due to package names
+
+*blackbox-0.62.1-r2 (15 Mar 2002)
+
+  15 Mar 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog :
+  Made this package provide virtual/blackbox to allow for blackbox applications
+  to run with fluxbox (which is compatible with blackbox).
+
+*blackbox-0.62.1-r1 (14 Feb 2002)
+
+  14 Feb 2002; Dan Armak <danarmak@gentoo.org> ChangeLog :
+  Added /etc/X11/Sessions/blackbox, which adds blackbox to the auto-updated session
+  list in kdm and gdm.
+
+*blackbox-0.62.1 (2 Feb 2002)
+
+  2 Feb 2002; Leo Lipelis <aeoo@gentoo.org> ChangeLog :
+
+  Blackbox ebuild update.
+
+*blackbox-0.61.1-r1 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>netmon</herd>
+  <herd>perl</herd>
+  <longdescription>Look up country by IP Address</longdescription>
+  <upstream>
+    <remote-id type="cpan">Geo-IP</remote-id>
+    <remote-id type="cpan-module">Geo::IP</remote-id>
+    <remote-id type="cpan-module">Geo::IP::Record</remote-id>
+    <remote-id type="cpan-module">Geo::Mirror</remote-id>
+  </upstream>
+</pkgmetadata>

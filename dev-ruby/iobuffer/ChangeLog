@@ -1,0 +1,70 @@
+# ChangeLog for dev-ruby/iobuffer
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/iobuffer/ChangeLog,v 1.17 2015/06/07 18:02:41 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  22 Mar 2015; Hans de Graaff <graaff@gentoo.org> iobuffer-1.1.2-r3.ebuild:
+  Add ruby22.
+
+  01 May 2014; Hans de Graaff <graaff@gentoo.org> iobuffer-1.1.2-r3.ebuild:
+  Add ruby21. Remove ruby18.
+
+  03 Nov 2013; Manuel Rüger <mrueg@gentoo.org> -iobuffer-1.1.2-r2.ebuild:
+  Cleanup old.
+
+*iobuffer-1.1.2-r3 (29 Oct 2013)
+
+  29 Oct 2013; Manuel Rüger <mrueg@gentoo.org> +iobuffer-1.1.2-r3.ebuild:
+  Add ruby20 target.
+
+  20 Aug 2012; Hans de Graaff <graaff@gentoo.org> -iobuffer-1.0.0.ebuild,
+  -iobuffer-1.1.2-r1.ebuild:
+  Cleanup.
+
+  14 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> iobuffer-1.1.2-r2.ebuild:
+  Port to rspec helper for testing. Drop bundler dependency.
+
+  17 Apr 2012; Hans de Graaff <graaff@gentoo.org> iobuffer-1.1.2-r2.ebuild:
+  Support prefix.
+
+  17 Apr 2012; Hans de Graaff <graaff@gentoo.org> iobuffer-1.1.2-r2.ebuild:
+  Add missing die for all commands where failure indicates a change or problem
+  that needs to be addressed.
+
+*iobuffer-1.1.2-r2 (17 Apr 2012)
+
+  17 Apr 2012; MATSUU Takuto <matsuu@gentoo.org> -iobuffer-1.1.2.ebuild,
+  +iobuffer-1.1.2-r2.ebuild:
+  Fixed src_test issue. Clean up.
+
+*iobuffer-1.1.2-r1 (14 Mar 2012)
+
+  14 Mar 2012; MATSUU Takuto <matsuu@gentoo.org> +iobuffer-1.1.2-r1.ebuild:
+  Fixed HOMEPAGE. Fixed SRC_URI. Added test.
+
+*iobuffer-1.1.2 (14 Mar 2012)
+
+  14 Mar 2012; MATSUU Takuto <matsuu@gentoo.org> +iobuffer-1.1.2.ebuild:
+  Version bumped. Clean up.
+
+  13 Jan 2012; Hans de Graaff <graaff@gentoo.org> iobuffer-1.0.0.ebuild:
+  Add ruby19.
+
+  13 Jan 2012; Hans de Graaff <graaff@gentoo.org> -iobuffer-0.1.3-r1.ebuild:
+  Remove old version.
+
+*iobuffer-1.0.0 (02 Jan 2011)
+
+  02 Jan 2011; Hans de Graaff <graaff@gentoo.org> +iobuffer-1.0.0.ebuild:
+  Version bump.
+
+  26 Dec 2010; Hans de Graaff <graaff@gentoo.org> iobuffer-0.1.3-r1.ebuild:
+  Keyword ~x86-macos.
+
+*iobuffer-0.1.3-r1 (24 Oct 2010)
+
+  24 Oct 2010; Hans de Graaff <graaff@gentoo.org> +iobuffer-0.1.3-r1.ebuild,
+  +metadata.xml:
+  Initial import, dependency of dev-ruby/rev.

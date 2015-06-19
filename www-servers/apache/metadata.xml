@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>polynomial-c@gentoo.org</email>
+		<name>Lars Wendler</name>
+	</maintainer>
+	<longdescription>
+		The Apache HTTP Server Project is an effort to develop and maintain an
+		open-source HTTP server for modern operating systems. The goal of this
+		project is to provide a secure, efficient and extensible server that
+		provides HTTP services in sync with the current HTTP standards.
+	</longdescription>
+	<use>
+		<flag name='alpn'>Enable support for Application-Layer Protocol Negotiation (ALPN) in TLS.  Needed by HTTP/2.0.</flag>
+		<flag name='suexec'>Install suexec with apache</flag>
+		<flag name='static'>Link in apache2 modules statically rather then plugins</flag>
+		<flag name='apache2_modules_access_compat'>Group authorizations based on host (name or IP address). Available as a compatibility module with previous versions.</flag>
+		<flag name='apache2_modules_authn_core'>Provides core authentication capabilities common to all authentication providers (functionality provided by authn_alias in previous versions).</flag>
+		<flag name='apache2_modules_authz_core'>Provides core authorization capabilities to various authorization/authorization modules, such as authn_file and authz_user.</flag>
+		<flag name='apache2_modules_authz_dbd'>Provides authorization capabilities via SQL database so that authenticated users can be allowed or denied access to portions of the web site by group membership.</flag>
+		<flag name='apache2_modules_cache_disk'>Disk based storage module for the HTTP caching filter (similar to mem_cache in previous versions).</flag>
+		<flag name='apache2_modules_lbmethod_byrequests'>Request counting load balancer scheduler algorithm for proxy_balancer.</flag>
+		<flag name='apache2_modules_lbmethod_bytraffic'>Weighted traffic counting load balancer scheduler algorithm for proxy_balancer.</flag>
+		<flag name='apache2_modules_lbmethod_bybusyness'>Pending request counting load balancer scheduler algorithm for proxy_balancer.</flag>
+		<flag name='apache2_modules_lbmethod_heartbeat'>Heartbeat traffic counting load balancer scheduler algorithm for proxy_balancer.</flag>
+		<flag name='apache2_modules_macro'>Macros for the Apache config file.</flag>
+		<flag name='apache2_modules_slotmem_shm'>Slot-based shared memory provider.</flag>
+		<flag name='apache2_modules_socache_shmcb'>A shared object cache provider using a high-performance cyclic buffer inside a shared memory segment.</flag>
+		<flag name='apache2_modules_unixd'>Basic (required) security for Unix-family platforms.</flag>
+		<flag name='apache2_modules_proxy_fcgi'>FCGI support module for mod_proxy.</flag>
+		<flag name='apache2_modules_proxy_wstunnel'>Provides support for the tunnelling of web socket connections to a backend websockets server.</flag>
+		<flag name='apache2_modules_ratelimit'>Ratelimit module for transfer rate management</flag>
+		<flag name='apache2_modules_remoteip'>Remotip module for logging</flag>
+	</use>
+</pkgmetadata>

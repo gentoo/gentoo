@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>qt</herd>
+	<herd>video</herd>
+	<maintainer>
+		<email>hwoarang@gentoo.org</email>
+		<name>Markos Chandras</name>
+	</maintainer>
+	<use>
+		<flag name="download">Enable support for downloading YouTube videos</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">flaviotordini/minitube</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,158 @@
+# ChangeLog for app-admin/apg
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/apg/ChangeLog,v 1.40 2015/04/14 23:30:06 mrueg Exp $
+
+  14 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -apg-2.3.0b-r4.ebuild:
+  Remove old.
+
+  02 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #328951
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  07 Dec 2012; Ulrich Müller <ulm@gentoo.org> apg-2.3.0b-r4.ebuild,
+  apg-2.3.0b-r5.ebuild:
+  Fix LICENSE, 3-clause BSD license according to COPYING file in tarball and
+  headers of source files. Bug 444316.
+
+  23 Sep 2012; Anthony G. Basile <blueness@gentoo.org> apg-2.3.0b-r5.ebuild:
+  keyword ~ppc64, bug #379651
+
+  27 May 2012; Matt Turner <mattst88@gentoo.org> apg-2.3.0b-r5.ebuild:
+  Added ~alpha, bug 379651.
+
+  25 May 2011; Brent Baude <ranger@gentoo.org> apg-2.3.0b-r5.ebuild:
+  Marking apg-2.3.0b-r5 ppc for bug 356969
+
+  25 Apr 2011; Raúl Porcel <armin76@gentoo.org> apg-2.3.0b-r4.ebuild,
+  apg-2.3.0b-r5.ebuild:
+  Drop sparc keywords
+
+  07 Apr 2011; Jeroen Roovers <jer@gentoo.org> apg-2.3.0b-r5.ebuild:
+  Stable for HPPA (bug #356969).
+
+  30 Mar 2011; Dane Smith <c1pher@gentoo.org> apg-2.3.0b-r5.ebuild,
+  metadata.xml:
+  Adopted package. Thanks to Dustin Polke
+  (gentoobugsie.20.dsurawicz@spamgourmet.com) for voulenteering to proxy
+  maintain this.
+  Cleaned up ebuild.
+
+  21 Mar 2011; Christoph Mende <angelos@gentoo.org> apg-2.3.0b-r5.ebuild:
+  Stable on amd64 wrt bug #356969
+
+  19 Mar 2011; Thomas Kahle <tomka@gentoo.org> apg-2.3.0b-r5.ebuild:
+  x86 stable per bug 356969
+
+  30 Dec 2010; Jeroen Roovers <jer@gentoo.org> apg-2.3.0b-r4.ebuild:
+  Stable for SPARC (bug #290799).
+
+*apg-2.3.0b-r5 (30 Dec 2010)
+
+  30 Dec 2010; Jeroen Roovers <jer@gentoo.org> +apg-2.3.0b-r5.ebuild:
+  Respect LDFLAGS (bug #335097). Set RDEPEND.
+
+  15 Jan 2010; Jonathan Callen <abcd@gentoo.org> apg-2.3.0b-r4.ebuild:
+  Add prefix keywords
+
+  02 Mar 2008; Sven Wegener <swegener@gentoo.org> apg-2.3.0b-r4.ebuild:
+  Force own CFLAGS and CC.
+
+*apg-2.3.0b-r4 (09 Mar 2007)
+
+  09 Mar 2007; Konstantin V. Arkhipov <voxus@gentoo.org>
+  files/apg-2.3.0b-crypt_password.patch, -apg-2.3.0b-r3.ebuild,
+  +apg-2.3.0b-r4.ebuild:
+  Cosmetic fix from wrt bug #155526.
+
+*apg-2.3.0b-r3 (08 Mar 2007)
+
+  08 Mar 2007; Konstantin V. Arkhipov <voxus@gentoo.org>
+  +files/apg-2.3.0b-crypt_password.patch, +apg-2.3.0b-r3.ebuild:
+  Finally closing bug #155526.
+
+  17 Dec 2006; Konstantin V. Arkhipov <voxus@gentoo.org>
+  apg-2.3.0b-r2.ebuild:
+  Closing bug #157653.
+
+  17 Nov 2006; nixnut <nixnut@gentoo.org> apg-2.3.0b-r2.ebuild:
+  Stable on ppc wrt bug 146094
+
+  09 Nov 2006; Jeroen Roovers <jer@gentoo.org> apg-2.3.0b-r2.ebuild:
+  Stable for HPPA (bug #146094).
+
+  26 Oct 2006; Joshua Jackson <tsunam@gentoo.org> apg-2.3.0b-r2.ebuild:
+  Stable x86; bug #146094
+
+  25 Oct 2006; Konstantin V. Arkhipov <voxus@gentoo.org>
+  apg-2.3.0b-r2.ebuild:
+  Goes stable on amd64 wrt bug #146094.
+
+*apg-2.3.0b-r2 (26 Mar 2006)
+
+  26 Mar 2006; Konstantin Arkhipov <voxus@gentoo.org> +apg-2.3.0b-r2.ebuild,
+  +files/apg-glibc-2.4.patch:
+  Closing bug #126995.
+
+  03 Aug 2005; Konstantin Arkhipov <voxus@gentoo.org> -apg-2.3.0b.ebuild:
+  Cleanup.
+
+  05 Jul 2005; Rene Nussbaumer <killerfox@gentoo.org> apg-2.3.0b-r1.ebuild:
+  Stable on hppa.
+
+  03 Jul 2005; Michael Hanselmann <hansmi@gentoo.org> apg-2.3.0b-r1.ebuild:
+  Stable on ppc.
+
+  01 Jul 2005; Konstantin Arkhipov <voxus@gentoo.org> apg-2.3.0b-r1.ebuild:
+  Stable on amd64 and x86.
+
+*apg-2.3.0b-r1 (30 Dec 2004)
+
+  30 Dec 2004; Seemant Kulleen <seemant@gentoo.org>
+  +files/apg-2.3.0b-cracklib.patch, -apg-2.1.0.ebuild, -apg-2.2.3.ebuild,
+  +apg-2.3.0b-r1.ebuild, apg-2.3.0b.ebuild:
+  move 2.3.0b to stable x86, remove crufty versions, and add -r1 which has
+  support for cracklib, thanks to: Conway S. Smith <beolach@comcast.net> in
+  bug #67564
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> apg-2.3.0b.ebuild:
+  Masked apg-2.3.0b.ebuild stable for ppc
+
+  30 Jun 2004; Guy Martin <gmsoft@gentoo.org> apg-2.3.0b.ebuild:
+  Marked stable on hppa.
+
+  29 Feb 2004; Jason Wever <weeve@gentoo.org> apg-2.3.0b.ebuild:
+  ~sparc, it's what's for dinner.
+
+  08 Feb 2004; Dylan Carlson <absinthe@gentoo.org> apg-2.3.0b.ebuild:
+  added amd64 keyword.
+
+  04 Dec 2003; Ciaran McCreesh <ciaranm@gentoo.org> apg-2.2.3.ebuild:
+  Moved to ~sparc, thanks to squash
+
+*apg-2.3.0b (16 Nov 2003)
+
+  16 Nov 2003; Troy Dack <tad@gentoo.org> apg-2.3.0b.ebuild:
+  Added src_unpack() function to fix permission problem that existed when
+  FEATURES="userpriv" was set. Closes bug #33527.
+
+*apg-2.2.3 (12 Nov 2003)
+
+  12 Nov 2003; Troy Dack <tad@gentoo.org> apg-2.2.3.ebuild, apg-2.3.0b.ebuild:
+  Latest development release. Closes Bug #33261. Thanks Sven Wegener
+  <sven.wegener@stealer.net> for subnmitting the ebuild.
+
+*apg-2.2.3 (12 Nov 2003)
+
+  12 Nov 2003; Troy Dack <tad@gentoo.org> apg-2.2.3.ebuild:
+  Version bump, 2.2.3 is the stable release. Thanks to Sven Wegener
+  <sven.wegener@stealer.net> for the ebuild. Closes Bug #33260.
+
+*apg-2.1.0 (02 Mar 2003)
+
+  28 Mar 2003; Pieter Van den Abeele <pvdabeel@gentoo.org> apg-2.1.0.ebuild:
+  absolutely stable on ppc. reflected that in keywording
+
+  02 Mar 2003; Troy Dack <tad@gentoo.org> apg-2.1.0.ebuild:
+  Initial import. Ebuild submitted by Robert Hennig <rob@geekmind.org>

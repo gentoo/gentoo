@@ -1,0 +1,26 @@
+Our libtool needs bash to work properly.
+Patch unbreaks build when /bin/sh points to dash:
+
+    Entering subdirectory liblber
+    /bin/sh ../../libtool  --mode=compile x86_64-pc-linux-gnu-gcc -O0 -D_GNU_SOURCE -I../../include -I../../include   -I/usr/include/db4.8 -DLDAP_CONNECTIONLESS   -DLBER_LIBRARY -c assert.c
+    ../../build/mkversion -v "2.4.28" liblber.la > version.c
+    /bin/sh ../../libtool  --mode=compile x86_64-pc-linux-gnu-gcc -O0 -D_GNU_SOURCE -I../../include -I../../include   -I/usr/include/db4.8 -DLDAP_CONNECTIONLESS   -DLBER_LIBRARY -c decode.c
+    eval: 1: base_compile+= x86_64-pc-linux-gnu-gcc: not found
+    eval: 1: base_compile+= -O0: not found
+    eval: 1: base_compile+= -D_GNU_SOURCE: not found
+    eval: 1: base_compile+= x86_64-pc-linux-gnu-gcc: not found
+    ...
+    make[2]: *** [decode.lo] Error 1
+diff --git a/build/top.mk b/build/top.mk
+index 6fea488..ea324e3 100644
+--- a/build/top.mk
++++ b/build/top.mk
+@@ -20,7 +20,7 @@ VERSION= @VERSION@
+ RELEASEDATE= @OPENLDAP_RELEASE_DATE@
+ 
+ @SET_MAKE@
+-SHELL = /bin/sh
++SHELL = @SHELL@
+ 
+ top_builddir = @top_builddir@
+ 

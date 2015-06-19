@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>kde</herd>
+  <herd>sound</herd>
+  <use>
+    <flag name='acoustid'>Enable support for acoustic fingerprinting plugin using
+      (<pkg>media-libs/chromaprint</pkg>)</flag>
+	<flag name="phonon">Enable sound support via <pkg>media-libs/phonon</pkg> or <pkg>dev-qt/qtphonon</pkg></flag>
+  </use>
+  <upstream>
+    <bugs-to>http://sourceforge.net/tracker/?group_id=70849</bugs-to>
+    <remote-id type="sourceforge">kid3</remote-id>
+  </upstream>
+</pkgmetadata>

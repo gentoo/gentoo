@@ -1,0 +1,28 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/zabbix/files/2.0/init.d/zabbix-proxy,v 1.2 2013/07/19 04:27:55 mattm Exp $
+
+pid_file="/var/run/zabbix/zabbix_proxy.pid"
+
+depend() {
+	need net
+	provide zabbix-proxy
+}
+
+start_pre() {
+	checkpath -d -m 0775 -o zabbix:zabbix /var/run/zabbix
+}
+
+start() {
+	ebegin "Starting Zabbix proxy"
+	start-stop-daemon --start --pidfile ${pid_file} \
+		--user zabbix --group zabbix --exec /usr/sbin/zabbix_proxy -- -c /etc/zabbix/zabbix_proxy.conf
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping Zabbix proxy"
+	start-stop-daemon  --stop --pidfile ${pid_file}
+	eend $?
+}

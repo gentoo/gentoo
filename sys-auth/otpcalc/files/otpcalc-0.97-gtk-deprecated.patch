@@ -1,0 +1,261 @@
+Do not use deprecated GTK symbols.
+Use accessor functions for GTK struct members.
+
+--- otpCalc-0.97-orig/callbacks.c
++++ otpCalc-0.97/callbacks.c
+@@ -65,14 +65,16 @@
+ 
+ 	bu_about_close = gtk_button_new_with_label("Close");
+ 
+-	gtk_container_add(GTK_CONTAINER(GTK_DIALOG(di_about)->vbox),
++	gtk_container_add(GTK_CONTAINER(gtk_dialog_get_content_area(
++						GTK_DIALOG(di_about))),
+ 			  la_about);
+-	gtk_container_add(GTK_CONTAINER(GTK_DIALOG(di_about)->action_area),
++	gtk_container_add(GTK_CONTAINER(gtk_dialog_get_action_area(
++						GTK_DIALOG(di_about))),
+ 			  bu_about_close);
+ 
+-	gtk_signal_connect_object(GTK_OBJECT(bu_about_close), "clicked",
+-				  GTK_SIGNAL_FUNC(gtk_widget_destroy),
+-				  (gpointer)di_about);
++	g_signal_connect_swapped(G_OBJECT(bu_about_close), "clicked",
++				 G_CALLBACK(gtk_widget_destroy),
++				 (gpointer)di_about);
+ 
+ 	gtk_widget_show_all(di_about);
+ 
+@@ -176,10 +178,11 @@
+ 	);
+ 	gtk_misc_set_padding(GTK_MISC(la_netwarn), 10, 10);
+ 	gtk_label_set_line_wrap(GTK_LABEL(la_netwarn), TRUE);
+-	gtk_container_add(GTK_CONTAINER(GTK_DIALOG(di_netwarn)->vbox),
++	gtk_container_add(GTK_CONTAINER(gtk_dialog_get_content_area(
++						GTK_DIALOG(di_netwarn))),
+ 			  la_netwarn);
+ 
+-	aa_netwarn = GTK_DIALOG(di_netwarn)->action_area;
++	aa_netwarn = gtk_dialog_get_action_area(GTK_DIALOG(di_netwarn));
+ 
+ 	bu_netwarn_ok = gtk_button_new_with_label("Yes");
+ 	gtk_container_add(GTK_CONTAINER(aa_netwarn), bu_netwarn_ok);
+@@ -187,12 +190,12 @@
+ 	bu_netwarn_canc = gtk_button_new_with_label("No");
+ 	gtk_container_add(GTK_CONTAINER(aa_netwarn), bu_netwarn_canc);
+ 
+-	gtk_signal_connect_object(GTK_OBJECT(bu_netwarn_ok), "clicked",
+-				  GTK_SIGNAL_FUNC(gtk_widget_destroy),
+-				  (gpointer)di_netwarn);
++	g_signal_connect_swapped(G_OBJECT(bu_netwarn_ok), "clicked",
++				 G_CALLBACK(gtk_widget_destroy),
++				 (gpointer)di_netwarn);
+ 
+-	gtk_signal_connect_object(GTK_OBJECT(bu_netwarn_canc), "clicked",
+-				  GTK_SIGNAL_FUNC(gtk_main_quit), NULL);
++	g_signal_connect_swapped(G_OBJECT(bu_netwarn_canc), "clicked",
++				 G_CALLBACK(gtk_main_quit), NULL);
+ 
+ 	gtk_widget_show_all(di_netwarn);
+ 
+@@ -207,13 +210,13 @@
+ 	unsigned short parsed;
+ 
+ 
+-	if (selection->length < 1) 
++	if (gtk_selection_data_get_length(selection) < 1)
+ 		return;
+ 
+ 	set = g_malloc(sizeof(struct tokens));
+-	set->seed = g_malloc(selection->length);
++	set->seed = g_malloc(gtk_selection_data_get_length(selection));
+ 
+-	parsed = parse(selection->data, set);
++	parsed = parse(gtk_selection_data_get_data(selection), set);
+ 
+ 	g_free(set->seed);
+ 	g_free(set);
+@@ -221,7 +224,8 @@
+ 	if (!parsed)
+ 		return;
+ 
+-	gtk_entry_set_text(GTK_ENTRY(te_challenge), selection->data);
++	gtk_entry_set_text(GTK_ENTRY(te_challenge),
++			   gtk_selection_data_get_data(selection));
+ 
+ }
+ 
+--- otpCalc-0.97-orig/gui.c
++++ otpCalc-0.97/gui.c
+@@ -51,17 +51,17 @@
+ 	/* Setup the main window... */
+ 	wi_top = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+ 	gtk_window_set_title(GTK_WINDOW(wi_top), "otpCalc");
+-	gtk_window_set_policy(GTK_WINDOW(wi_top), FALSE, FALSE, TRUE);
++	gtk_window_set_resizable(GTK_WINDOW(wi_top), FALSE);
+ 	gtk_window_set_wmclass(GTK_WINDOW(wi_top), "otpCalc", "Calc");
+ 
+-	gtk_signal_connect(GTK_OBJECT(wi_top), "delete_event",
+-			   GTK_SIGNAL_FUNC(gtk_main_quit), NULL);
++	g_signal_connect(G_OBJECT(wi_top), "delete_event",
++			 G_CALLBACK(gtk_main_quit), NULL);
+ 
+-	gtk_signal_connect(GTK_OBJECT(wi_top), "focus_in_event",
+-			   GTK_SIGNAL_FUNC(focus), NULL);
++	g_signal_connect(G_OBJECT(wi_top), "focus_in_event",
++			 G_CALLBACK(focus), NULL);
+ 
+-	gtk_signal_connect(GTK_OBJECT(wi_top), "selection_received",
+-			   GTK_SIGNAL_FUNC(selector), NULL);
++	g_signal_connect(G_OBJECT(wi_top), "selection_received",
++			 G_CALLBACK(selector), NULL);
+ 	/* Done. */
+ 
+ 
+@@ -82,9 +82,9 @@
+ 	/* Setup the file menu... */
+ 	me_file = gtk_menu_new();
+ 	mi_file_quit = gtk_menu_item_new_with_label("Quit");
+-	gtk_menu_append(GTK_MENU(me_file), mi_file_quit);
+-	gtk_signal_connect_object(GTK_OBJECT(mi_file_quit), "activate",
+-				  GTK_SIGNAL_FUNC(gtk_main_quit), NULL);
++	gtk_menu_shell_append(GTK_MENU_SHELL(me_file), mi_file_quit);
++	g_signal_connect_swapped(G_OBJECT(mi_file_quit), "activate",
++				 G_CALLBACK(gtk_main_quit), NULL);
+ 
+ 	gtk_widget_add_accelerator(mi_file_quit, "activate", accel_group, 0x071,
+ 				   GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
+@@ -97,40 +97,45 @@
+ 	me_sett = gtk_menu_new();
+ 
+ 	mi_sett_sha1 = gtk_radio_menu_item_new_with_label(hashes, "sha1");
+-	gtk_menu_append(GTK_MENU(me_sett), mi_sett_sha1);
+-	gtk_signal_connect_object(GTK_OBJECT(mi_sett_sha1), "activate",
+-				  GTK_SIGNAL_FUNC(sethash), (void *)SHA1);
+-	hashes = gtk_radio_menu_item_group(GTK_RADIO_MENU_ITEM(mi_sett_sha1));
++	gtk_menu_shell_append(GTK_MENU_SHELL(me_sett), mi_sett_sha1);
++	g_signal_connect_swapped(G_OBJECT(mi_sett_sha1), "activate",
++				 G_CALLBACK(sethash), (void *)SHA1);
++	hashes = gtk_radio_menu_item_get_group(
++		GTK_RADIO_MENU_ITEM(mi_sett_sha1));
+ 	gtk_widget_show(mi_sett_sha1);
+ 
+ 	mi_sett_rmd160 = gtk_radio_menu_item_new_with_label(hashes, "rmd160");
+-	gtk_menu_append(GTK_MENU(me_sett), mi_sett_rmd160);
+-	gtk_signal_connect_object(GTK_OBJECT(mi_sett_rmd160), "activate",
+-				  GTK_SIGNAL_FUNC(sethash), (void *)RMD160);
+-	hashes = gtk_radio_menu_item_group(GTK_RADIO_MENU_ITEM(mi_sett_rmd160));
++	gtk_menu_shell_append(GTK_MENU_SHELL(me_sett), mi_sett_rmd160);
++	g_signal_connect_swapped(G_OBJECT(mi_sett_rmd160), "activate",
++				 G_CALLBACK(sethash), (void *)RMD160);
++	hashes = gtk_radio_menu_item_get_group(
++		GTK_RADIO_MENU_ITEM(mi_sett_rmd160));
+ 	gtk_widget_show(mi_sett_rmd160);
+ 
+ 	mi_sett_md5 = gtk_radio_menu_item_new_with_label(hashes, "md5");
+-	gtk_menu_append(GTK_MENU(me_sett), mi_sett_md5);
+-	gtk_signal_connect_object(GTK_OBJECT(mi_sett_md5), "activate",
+-				  GTK_SIGNAL_FUNC(sethash), (void *)MD5);
+-	hashes = gtk_radio_menu_item_group(GTK_RADIO_MENU_ITEM(mi_sett_md5));
++	gtk_menu_shell_append(GTK_MENU_SHELL(me_sett), mi_sett_md5);
++	g_signal_connect_swapped(G_OBJECT(mi_sett_md5), "activate",
++				 G_CALLBACK(sethash), (void *)MD5);
++	hashes = gtk_radio_menu_item_get_group(
++		GTK_RADIO_MENU_ITEM(mi_sett_md5));
+ 	gtk_widget_show(mi_sett_md5);
+ 
+ 	gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mi_sett_md5), TRUE);
+ 
+ 	mi_sett_md4 = gtk_radio_menu_item_new_with_label(hashes, "md4");
+-	gtk_menu_append(GTK_MENU(me_sett), mi_sett_md4);
+-	gtk_signal_connect_object(GTK_OBJECT(mi_sett_md4), "activate",
+-				  GTK_SIGNAL_FUNC(sethash), (void *)MD4);
+-	hashes = gtk_radio_menu_item_group(GTK_RADIO_MENU_ITEM(mi_sett_md4));
++	gtk_menu_shell_append(GTK_MENU_SHELL(me_sett), mi_sett_md4);
++	g_signal_connect_swapped(G_OBJECT(mi_sett_md4), "activate",
++				 G_CALLBACK(sethash), (void *)MD4);
++	hashes = gtk_radio_menu_item_get_group(
++		GTK_RADIO_MENU_ITEM(mi_sett_md4));
+ 	gtk_widget_show(mi_sett_md4);
+ 
+ 	mi_sett_skey = gtk_radio_menu_item_new_with_label(hashes, "s/key");
+-	gtk_menu_append(GTK_MENU(me_sett), mi_sett_skey);
+-	gtk_signal_connect_object(GTK_OBJECT(mi_sett_skey), "activate",
+-				  GTK_SIGNAL_FUNC(sethash), (void *)SKEY);
+-	hashes = gtk_radio_menu_item_group(GTK_RADIO_MENU_ITEM(mi_sett_skey));
++	gtk_menu_shell_append(GTK_MENU_SHELL(me_sett), mi_sett_skey);
++	g_signal_connect_swapped(G_OBJECT(mi_sett_skey), "activate",
++				 G_CALLBACK(sethash), (void *)SKEY);
++	hashes = gtk_radio_menu_item_get_group(
++		GTK_RADIO_MENU_ITEM(mi_sett_skey));
+ 	gtk_widget_show(mi_sett_skey);
+ 	/* Done. */
+ 
+@@ -138,9 +143,9 @@
+ 	/* Setup the help menu... */
+ 	me_help = gtk_menu_new();
+ 	mi_help_about = gtk_menu_item_new_with_label("About...");
+-	gtk_menu_append(GTK_MENU(me_help), mi_help_about);
+-	gtk_signal_connect_object(GTK_OBJECT(mi_help_about), "activate",
+-				  GTK_SIGNAL_FUNC(about), NULL);
++	gtk_menu_shell_append(GTK_MENU_SHELL(me_help), mi_help_about);
++	g_signal_connect_swapped(G_OBJECT(mi_help_about), "activate",
++				 G_CALLBACK(about), NULL);
+ 	gtk_widget_show(mi_help_about);
+ 	/* Done. */
+ 
+@@ -156,18 +161,18 @@
+ 	mi_file = gtk_menu_item_new_with_label("File");
+ 	gtk_widget_show(mi_file);
+ 	gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi_file), me_file);
+-	gtk_menu_bar_append(GTK_MENU_BAR(mb_top), mi_file);
++	gtk_menu_shell_append(GTK_MENU_SHELL(mb_top), mi_file);
+ 
+ 	mi_sett = gtk_menu_item_new_with_label("Settings");
+ 	gtk_widget_show(mi_sett);
+ 	gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi_sett), me_sett);
+-	gtk_menu_bar_append(GTK_MENU_BAR(mb_top), mi_sett);
++	gtk_menu_shell_append(GTK_MENU_SHELL(mb_top), mi_sett);
+ 
+ 	mi_help = gtk_menu_item_new_with_label("Help");
+ 	gtk_widget_show(mi_help);
+ 	gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi_help), me_help);
+-	gtk_menu_bar_append(GTK_MENU_BAR(mb_top), mi_help);
+-	gtk_menu_item_right_justify(GTK_MENU_ITEM(mi_help));
++	gtk_menu_shell_append(GTK_MENU_SHELL(mb_top), mi_help);
++	gtk_menu_item_set_right_justified(GTK_MENU_ITEM(mi_help), TRUE);
+ 	/* Done. */
+ 
+ 
+@@ -208,8 +213,8 @@
+ 			 (GtkAttachOptions)(0), 5, 0);
+ 	gtk_widget_show(bu_calc);
+ 
+-	gtk_signal_connect_object(GTK_OBJECT(bu_calc), "clicked",
+-				  GTK_SIGNAL_FUNC(calculate), NULL);
++	g_signal_connect_swapped(G_OBJECT(bu_calc), "clicked",
++				 G_CALLBACK(calculate), NULL);
+ 	/* Done. */
+ 
+ 
+@@ -221,8 +226,8 @@
+ 	gtk_entry_set_visibility(GTK_ENTRY(te_passwd), FALSE);
+ 	gtk_widget_show(te_passwd);
+ 
+-	gtk_signal_connect(GTK_OBJECT(te_passwd), "activate",
+-			   GTK_SIGNAL_FUNC(click), bu_calc);
++	g_signal_connect(G_OBJECT(te_passwd), "activate",
++			 G_CALLBACK(click), bu_calc);
+ 	/* Done. */
+ 
+ 
+@@ -234,8 +239,8 @@
+ 			 (GtkAttachOptions)(0), 5, 0);
+ 	gtk_widget_show(bu_clear);
+ 
+-	gtk_signal_connect(GTK_OBJECT(bu_clear), "clicked",
+-			   GTK_SIGNAL_FUNC(clear), NULL);
++	g_signal_connect(G_OBJECT(bu_clear), "clicked",
++			 G_CALLBACK(clear), NULL);
+ 	/* Done. */
+ 
+ 

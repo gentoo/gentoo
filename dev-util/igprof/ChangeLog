@@ -1,0 +1,9 @@
+# ChangeLog for dev-util/igprof
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/igprof/ChangeLog,v 1.1 2014/01/08 12:13:50 maksbotan Exp $
+
+*igprof-5.9.11 (08 Jan 2014)
+
+  08 Jan 2014; Maxim Koltsov <maksbotan@gentoo.org> +igprof-5.9.11.ebuild,
+  +metadata.xml:
+  Add dev-util/igprof, thanks to 0xd34df00d

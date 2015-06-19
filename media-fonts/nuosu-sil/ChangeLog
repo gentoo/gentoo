@@ -1,0 +1,9 @@
+# ChangeLog for media-fonts/nuosu-sil
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/nuosu-sil/ChangeLog,v 1.1 2015/03/07 04:24:48 yngwin Exp $
+
+*nuosu-sil-2.1.1 (07 Mar 2015)
+
+  07 Mar 2015; Ben de Groot <yngwin@gentoo.org> +metadata.xml,
+  +nuosu-sil-2.1.1.ebuild:
+  Initial commit. Ebuild provided by Nikoli in bug #294941.

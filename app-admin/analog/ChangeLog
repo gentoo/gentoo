@@ -1,0 +1,234 @@
+# ChangeLog for app-admin/analog
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/analog/ChangeLog,v 1.69 2012/03/04 10:27:52 pacho Exp $
+
+  04 Mar 2012; Pacho Ramos <pacho@gentoo.org>
+  +files/analog-6.0-undefined-macro.patch, analog-6.0-r4.ebuild:
+  Fix compilation, bug #398617 by Marcin Kowalski.
+
+  15 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> -analog-6.0-r3.ebuild,
+  analog-6.0-r4.ebuild:
+  ppc/ppc64 stable wrt #362807. Drop old.
+
+  29 May 2011; Raúl Porcel <armin76@gentoo.org> analog-6.0-r4.ebuild:
+  alpha/sparc stable wrt #362807
+
+  20 May 2011; Markus Meier <maekke@gentoo.org> analog-6.0-r4.ebuild:
+  arm stable, bug #362807
+
+  09 May 2011; Thomas Kahle <tomka@gentoo.org> analog-6.0-r4.ebuild:
+  x86 stable per bug 362807
+
+  15 Apr 2011; Christoph Mende <angelos@gentoo.org> analog-6.0-r4.ebuild:
+  Stable on amd64 wrt bug #362807
+
+  11 Apr 2011; Jeroen Roovers <jer@gentoo.org> analog-6.0-r4.ebuild:
+  Stable for HPPA (bug #362807).
+
+  10 Apr 2011; Christoph Mende <angelos@gentoo.org> analog-6.0-r4.ebuild:
+  Bump to EAPI4 for dodoc run emake in src to respect MAKEOPTS
+
+  25 Feb 2011; Kevin McCarthy <signals@gentoo.org> analog-6.0-r3.ebuild,
+  analog-6.0-r4.ebuild:
+  Removed depends on media-libs/jpeg and media-libs/libpng since they 
+  are not called directly by analog.
+
+*analog-6.0-r4 (18 Sep 2010)
+
+  18 Sep 2010; Jeroen Roovers <jer@gentoo.org> files/analog-5.1-gentoo.diff,
+  -analog-6.0.ebuild, -analog-6.0-r2.ebuild, +analog-6.0-r4.ebuild,
+  files/analog-6.0-bzip2.patch:
+  Remove old. Clean up patches. Respect LDFLAGS (bug #335809).
+
+  22 Jan 2010; Samuli Suominen <ssuominen@gentoo.org> analog-6.0-r3.ebuild:
+  Require SLOT="0" of media-libs/jpeg for headers.
+
+  08 Dec 2009; Tiago Cunha <tcunha@gentoo.org> analog-6.0-r3.ebuild:
+  stable sparc, bug 281585
+
+  04 Oct 2009; Markus Meier <maekke@gentoo.org> analog-6.0-r3.ebuild:
+  arm stable, bug #281585
+
+  06 Sep 2009; Markus Meier <maekke@gentoo.org> analog-6.0-r3.ebuild:
+  amd64/x86 stable, bug #281585
+
+  31 Aug 2009; Brent Baude <ranger@gentoo.org> analog-6.0-r3.ebuild:
+  Marking analog-6.0-r3 ppc64 for bug 281585
+
+  29 Aug 2009; nixnut <nixnut@gentoo.org> analog-6.0-r3.ebuild:
+  ppc stable #281585
+
+  29 Aug 2009; Tobias Klausmann <klausman@gentoo.org> analog-6.0-r3.ebuild:
+  Stable on alpha, bug #281585
+
+  26 Aug 2009; Jeroen Roovers <jer@gentoo.org> analog-6.0-r3.ebuild:
+  Stable for HPPA (bug #281585).
+
+  15 Aug 2009; Hans de Graaff <graaff@gentoo.org> analog-6.0-r3.ebuild:
+  Use src_prepare, explicit DEPEND.
+
+  15 Aug 2009; Hans de Graaff <graaff@gentoo.org> -analog-5.32.ebuild:
+  Remove old version.
+
+  20 Dec 2008; Tobias Klausmann <klausman@gentoo.org> analog-6.0-r2.ebuild:
+  Stable on alpha, bug #249140
+
+  18 Dec 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  analog-6.0-r2.ebuild:
+  ppc stable, bug #249140
+
+  17 Dec 2008; Markus Meier <maekke@gentoo.org> analog-6.0-r2.ebuild:
+  amd64/x86 stable, bug #249140
+
+  16 Dec 2008; Brent Baude <ranger@gentoo.org> analog-6.0-r2.ebuild:
+  Marking analog-6.0-r2 ppc64 for bug 249140
+
+  16 Dec 2008; Jeroen Roovers <jer@gentoo.org> -analog-6.0-r1.ebuild,
+  analog-6.0-r2.ebuild:
+  Stable for HPPA, remove old EAPI=2 ebuild (bug #249140).
+
+  16 Dec 2008; Ferris McCormick <fmccor@gentoo.org> analog-6.0-r2.ebuild:
+  Sparc stable, Security Bug #249140.
+
+  15 Dec 2008; Jeroen Roovers <jer@gentoo.org> files/analog-6.0-bzip2.patch,
+  analog-6.0-r2.ebuild, analog-6.0-r3.ebuild:
+  Fix ${S}. Do not build bzip2/ or link to it (still bug #249140).
+
+*analog-6.0-r3 (15 Dec 2008)
+*analog-6.0-r2 (15 Dec 2008)
+
+  15 Dec 2008; Jeroen Roovers <jer@gentoo.org>
+  +files/analog-6.0-bzip2.patch, +analog-6.0-r2.ebuild,
+  +analog-6.0-r3.ebuild:
+  Use system bzip2 library (bug #249140). Get CC and CFLAGS from
+  environment. Bump both EAPI=0 and EAPI=2 ebuilds.
+
+  09 Nov 2008; nixnut <nixnut@gentoo.org> analog-6.0.ebuild:
+  Stable on ppc/ppc64 wrt bug 238859
+
+  05 Oct 2008; Raúl Porcel <armin76@gentoo.org> analog-6.0.ebuild:
+  alpha/arm stable wrt #238859
+
+  29 Sep 2008; Jeroen Roovers <jer@gentoo.org> analog-6.0.ebuild:
+  Stable for HPPA (bug #238859).
+
+  28 Sep 2008; Markus Meier <maekke@gentoo.org> analog-6.0.ebuild:
+  x86 stable, bug #238859
+
+  28 Sep 2008; Thomas Anderson <gentoofan23@gentoo.org> analog-6.0.ebuild:
+  stable amd64, bug 238859
+
+  27 Sep 2008; Ferris McCormick <fmccor@gentoo.org> analog-6.0.ebuild:
+  Sparc stable --- Bug #238859 --- been around almost 3 years now.
+
+*analog-6.0-r1 (27 Sep 2008)
+
+  27 Sep 2008; Petteri Räty <betelgeuse@gentoo.org> +analog-6.0-r1.ebuild:
+  Use EAPI 2 use dependencies instead of built_with_use.
+
+  21 Feb 2007; <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  21 Dec 2005; Marcelo Goes <vanquirius@gentoo.org> analog-5.32.ebuild,
+  analog-6.0.ebuild:
+  Add check if libgd is built with png support for bug 115706. Thanks to Simon
+  Matthews <simon+bugzilla at matthews-family dot org dot uk>.
+
+  29 Jul 2005; Marcelo Goes <vanquirius@gentoo.org> analog-6.0.ebuild:
+  New license is GPL-2, as stated in Licence.txt. Fixes bug 99807. Thanks to
+  Ryan Grange <ryangrange@cox.net>.
+
+  23 Feb 2005; Michael Sterrett <mr_bones_@gentoo.org> analog-5.32.ebuild,
+  analog-6.0.ebuild:
+  use built_with_use (bug #83044); tidy
+
+*analog-6.0 (31 Dec 2004)
+
+  31 Dec 2004; Chris White <chriswhite@gentoo.org> +analog-6.0.ebuild:
+  Did a version bump to the latest 6.0 version.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  17 Jul 2004; Tom Gall <tgall@gentoo.org> analog-5.32.ebuild:
+  stable on ppc64, bug #55678
+
+  24 May 2004; Bryan Østergaard <kloeri@gentoo.org> analog-5.32.ebuild:
+  Stable on alpha.
+
+  17 May 2004; Bryan Østergaard <kloeri@gentoo.org> analog-5.32.ebuild:
+  Add ~alpha.
+
+  21 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> analog-5.24.ebuild,
+  analog-5.31.ebuild:
+  clean older versions of the ebuild
+
+  20 Apr 2004; Daniel Black <dragonheart@gentoo.org> analog-5.32.ebuild,
+  metadata.xml:
+  QA - removed sed runtime dependancy - thanks Spider <spider@gentoo.org> bug
+  #44817. ppc stable too.
+
+  14 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> analog-5.32.ebuild:
+  Marked stable on amd64, added IUSE=.
+
+  29 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> analog-5.31.ebuild:
+  don't set S to default; inherit eutils for epatch
+
+  06 Feb 2004; Daniel Ahlberg <aliz@gentoo.org> analog-5.32.ebuild:
+  Exits if libgd has been compiled without jpeg support. Closing #35684.
+
+  10 Dec 2003; Jason Wever <weeve@gentoo.org> analog-5.31.ebuild,
+  analog-5.32.ebuild:
+  Marked stable on sparc.
+
+  30 Jun 2003; Daniel Ahlberg <aliz@gentoo.org> analog-5.32.ebuild :
+  Updated dependencies to a libgd version that forces jpeg support in it.
+
+*analog-5.32 (06 Apr 2003)
+
+  17 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Add -DHAVE_ZLIB to the Makefile ... after we require zlib in the DEPEND,
+  might as well use the damn thing ;)
+
+  06 Apr 2003; Donny Davies <woodchip@gentoo.org> analog-5.32.ebuild:
+  Bump, #18610.
+
+*analog-5.31 (29 Jan 2003)
+
+  28 Mar 2003; Pieter Van den Abeele <pvdabeel@gentoo.org> : Moved to stable ppc
+
+  29 Jan 2003; Donny Davies <woodchip@gentoo.org> : New testing release.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*analog-5.24 (27 Jun 2002)
+
+  28 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> analog-5.24.ebuild :
+  Added media-libs/jpeg to dependencies as its required to build analog.
+
+  29 Jul 2002; Calum Selkrik <cselkirk@gentoo.org> analog-5.24.ebuild :
+  Added ppc to KEYWORDS. Added RDEPEND.
+
+  27 Jun 2002; Thilo Bangert <bangert@gentoo.org> :  
+  version bump - this release fixes a security bug in anlgform.pl (not enabled
+  by default).
+
+*analog-5.22-r1 (3 May 2002)
+
+  3 May 2002; Donny Davies <woodchip@gentoo.org> :
+  Added LICENSE, SLOT.
+
+*analog-5.22 (2 Apr 2002)
+
+  2 Apr 2002; Ferry Meyndert <m0rpheus@gentoo.org> analog-5.21.ebuild :
+  Removed 5.21. All versions too prior 5.22 have a css bug.
+
+*analog-5.21 (24 Feb 2002)
+
+  24 Feb 2002; Donny Davies <woodchip@gentoo.org> analog-5.21.ebuild :
+  Update to latest release.
+
+*analog-5.1 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  Added initial ChangeLog.

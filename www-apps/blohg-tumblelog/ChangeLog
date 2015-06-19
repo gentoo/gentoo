@@ -1,0 +1,10 @@
+# ChangeLog for www-apps/blohg-tumblelog
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/blohg-tumblelog/ChangeLog,v 1.1 2014/06/12 03:07:40 rafaelmartins Exp $
+
+*blohg-tumblelog-9999 (12 Jun 2014)
+*blohg-tumblelog-0.2 (12 Jun 2014)
+
+  12 Jun 2014; Rafael G. Martins <rafaelmartins@gentoo.org>
+  +blohg-tumblelog-0.2.ebuild, +blohg-tumblelog-9999.ebuild, +metadata.xml:
+  initial commit

@@ -1,0 +1,13 @@
+--- gnusim8085-1.3.7/src/Makefile.am.orig
++++ gnusim8085-1.3.7/src/Makefile.am
+@@ -11,9 +11,7 @@
+ 
+ gnusim8085_CFLAGS =\
+ 	 -DPACKAGE_DOC_DIR=\"$(docdir)\"\
+-	 -Wall\
+-	 -O1\
+-	 -g
++	 -Wall
+ 
+ if WIN32
+ gnusim8085_CFLAGS += \

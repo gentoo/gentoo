@@ -1,0 +1,68 @@
+# ChangeLog for media-plugins/vdr-remoteosd
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-remoteosd/ChangeLog,v 1.12 2015/02/20 13:39:53 hd_brummy Exp $
+
+  20 Feb 2015; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-remoteosd-1.0.0.ebuild:
+  better Description
+
+  31 Aug 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-remoteosd-0.1.1.ebuild:
+  cleanup old
+
+  02 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-remoteosd-0.0.2.ebuild, -files/vdr-remoteosd-0.0.2-readconfig.diff,
+  -vdr-remoteosd-0.1.0.ebuild, vdr-remoteosd-1.0.0.ebuild:
+  cleanup; stable amd64 x86, wrt bug 495772
+
+*vdr-remoteosd-1.0.0 (08 Jun 2013)
+
+  08 Jun 2013; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-remoteosd-1.0.0.ebuild:
+  bump
+
+  06 May 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-remoteosd-0.1.1.ebuild:
+  eapi=4; vdr-plugin-2.eclass
+
+  07 Feb 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-remoteosd-0.1.1.ebuild:
+  stable amd64 x86, bug 400395
+
+
+*vdr-remoteosd-0.1.1 (21 Sep 2011)
+
+  21 Sep 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-remoteosd-0.1.1.ebuild:
+  bump
+
+  22 Dec 2010; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-remoteosd-0.0.1.ebuild, -files/vdr-remoteosd-0.0.1-include.patch,
+  vdr-remoteosd-0.0.2.ebuild, vdr-remoteosd-0.1.0.ebuild:
+  fixed wrong include path, some minor ebuild fixes
+
+*vdr-remoteosd-0.1.0 (08 Oct 2009)
+
+  08 Oct 2009; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-remoteosd-0.0.1.ebuild, vdr-remoteosd-0.0.2.ebuild,
+  +vdr-remoteosd-0.1.0.ebuild:
+  Version bumped.
+
+  30 Oct 2008; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-remoteosd-0.0.2.ebuild:
+  Mark stable on x86.
+
+*vdr-remoteosd-0.0.2 (07 Oct 2007)
+
+  07 Oct 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/vdr-remoteosd-0.0.2-readconfig.diff, +vdr-remoteosd-0.0.2.ebuild:
+  Version bumped.
+
+*vdr-remoteosd-0.0.1 (27 Sep 2006)
+
+  27 Sep 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/vdr-remoteosd-0.0.1-include.patch, +metadata.xml,
+  +vdr-remoteosd-0.0.1.ebuild:
+  initial ebuild; thx to Mentox at
+  http://www.vdr-portal.de/board/thread.php?postid=498072
+

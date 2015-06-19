@@ -1,0 +1,233 @@
+# ChangeLog for app-benchmarks/iozone
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/iozone/ChangeLog,v 1.51 2015/03/28 23:20:40 mrueg Exp $
+
+  28 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -iozone-3.242.ebuild,
+  -iozone-3.338.ebuild:
+  Remove old.
+
+*iozone-3.408 (03 Jul 2012)
+
+  03 Jul 2012; Patrick Lauer <patrick@gentoo.org> +iozone-3.408.ebuild:
+  Bump for #424363
+
+  16 Apr 2012; Brent Baude <ranger@gentoo.org> iozone-3.397.ebuild:
+  Marking iozone-3.397 ppc for bug 399919
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org> iozone-3.397.ebuild:
+  ia64/sparc stable wrt #399919
+
+  08 Mar 2012; Brent Baude <ranger@gentoo.org> iozone-3.397.ebuild:
+  Marking iozone-3.397 ppc64 for bug 399919
+
+  08 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> iozone-3.397.ebuild:
+  x86 stable wrt bug #399919
+
+  29 Feb 2012; Markus Meier <maekke@gentoo.org> iozone-3.397.ebuild:
+  arm stable, bug #399919
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org> iozone-3.397.ebuild:
+  Stable for amd64, wrt bug #399919
+
+*iozone-3.397 (22 Jul 2011)
+
+  22 Jul 2011; Patrick Lauer <patrick@gentoo.org> -iozone-3.321.ebuild,
+  -iozone-3.331.ebuild, +iozone-3.397.ebuild:
+  Bump for #349283, remove old
+
+*iozone-3.338 (26 Feb 2010)
+
+  26 Feb 2010; Patrick Lauer <patrick@gentoo.org> +iozone-3.338.ebuild:
+  Bump
+
+*iozone-3.331 (02 Feb 2010)
+
+  02 Feb 2010; Daniel Black <dragonheart@gentoo.org> +iozone-3.331.ebuild:
+  version bump
+
+  13 Sep 2009; Patrick Lauer <patrick@gentoo.org> iozone-3.242.ebuild,
+  iozone-3.321.ebuild:
+  Removing virtual/libc deps
+
+  12 Sep 2009; Víctor Ostorga <vostorga@gentoo.org>
+  -files/iozone-3.226-ppc64.patch:
+  Cleaning out unused patch
+
+  30 Apr 2009; Patrick Lauer <patrick@gentoo.org> -iozone-3.315.ebuild:
+  Remove old
+
+*iozone-3.321 (08 Mar 2009)
+
+  08 Mar 2009; Patrick Lauer <patrick@gentoo.org> +iozone-3.321.ebuild:
+  Bump to 3.321
+
+  08 Jan 2009; Patrick Lauer <patrick@gentoo.org> -iozone-3.308.ebuild,
+  -iozone-3.311.ebuild:
+  Removing old
+
+*iozone-3.315 (23 Nov 2008)
+
+  23 Nov 2008; Patrick Lauer <patrick@gentoo.org> metadata.xml,
+  +iozone-3.315.ebuild:
+  Letting benchmark herd take over maintenance. Bumping to .315
+
+*iozone-3.311 (03 Nov 2008)
+
+  03 Nov 2008; Daniel Black <dragonheart@gentoo.org> -iozone-3.281.ebuild,
+  -iozone-3.291.ebuild, +iozone-3.308.ebuild, +iozone-3.311.ebuild:
+  version bump as per bug #241866 thanks Craig and Justin
+
+*iozone-3.308 (31 Aug 2008)
+
+  31 Aug 2008; Daniel Black <dragonheart@gentoo.org> +iozone-3.308.ebuild:
+  version bump
+
+*iozone-3.291 (03 May 2008)
+
+  03 May 2008; Daniel Black <dragonheart@gentoo.org>
+  -iozone-3.226-r1.ebuild, -iozone-3.279.ebuild, +iozone-3.291.ebuild:
+  version bump and cleanout
+
+*iozone-3.281 (15 Feb 2007)
+
+  15 Feb 2007; Daniel Black <dragonheart@gentoo.org> iozone-3.226-r1.ebuild,
+  iozone-3.242.ebuild, -iozone-3.263.ebuild, -iozone-3.267.ebuild,
+  iozone-3.279.ebuild, +iozone-3.281.ebuild:
+  no more prep all as per bug #140699 + version bump + cleanout
+
+*iozone-3.279 (16 Dec 2006)
+
+  16 Dec 2006; Daniel Black <dragonheart@gentoo.org> +iozone-3.279.ebuild:
+  version bump
+
+*iozone-3.267 (06 Nov 2006)
+
+  06 Nov 2006; Daniel Black <dragonheart@gentoo.org> -iozone-3.247.ebuild,
+  -iozone-3.248.ebuild, -iozone-3.254.ebuild, +iozone-3.267.ebuild:
+  version bump/version cleanout
+
+*iozone-3.263 (11 Jul 2006)
+
+  11 Jul 2006; Daniel Black <dragonheart@gentoo.org> +iozone-3.263.ebuild:
+  version bump
+
+  26 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org> iozone-3.242.ebuild:
+  Stable on sparc
+
+  25 Nov 2005; Tom Gall <tgall@gentoo.org> iozone-3.242.ebuild:
+  stable on ppc64
+
+*iozone-3.254 (13 Nov 2005)
+
+  13 Nov 2005; Daniel Black <dragonheart@gentoo.org> +iozone-3.254.ebuild:
+  version bump
+
+*iozone-3.248 (04 Sep 2005)
+
+  04 Sep 2005; Daniel Black <dragonheart@gentoo.org> +iozone-3.248.ebuild:
+  version bump
+
+  23 Aug 2005; Aron Griffis <agriffis@gentoo.org> iozone-3.242.ebuild:
+  stable on ia64
+
+  07 Aug 2005; Simon Stelling <blubb@gentoo.org> iozone-3.242.ebuild:
+  stable on amd64
+
+  31 Jul 2005; Tobias Scherbaum <dertobi123@gentoo.org> iozone-3.242.ebuild:
+  ppc stable
+
+*iozone-3.247 (30 Jul 2005)
+
+  30 Jul 2005; Daniel Black <dragonheart@gentoo.org> iozone-3.242.ebuild,
+  +iozone-3.247.ebuild:
+  version bump. +3.242 x86 stable
+
+*iozone-3.242 (25 Jun 2005)
+
+  25 Jun 2005; Daniel Black <dragonheart@gentoo.org> +iozone-3.242.ebuild:
+  version bump
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> iozone-3.226-r1.ebuild:
+  stable on amd64
+
+  31 Mar 2005; Aron Griffis <agriffis@gentoo.org> iozone-3.226-r1.ebuild:
+  stable on ia64
+
+  20 Feb 2005; Aron Griffis <agriffis@gentoo.org> iozone-3.226-r1.ebuild:
+  add ~ia64
+
+  09 Jan 2005; Daniel Black <dragonheart@gentoo.org> -files/3.221-gcc.patch,
+  -iozone-3.221-r1.ebuild, -iozone-3.221.ebuild, iozone-3.226-r1.ebuild,
+  -iozone-3.226.ebuild:
+  x86 and ppc stable. Removed old versions
+
+*iozone-3.226-r1 (09 Jan 2005)
+
+  09 Jan 2005; Markus Rothe <corsair@gentoo.org>
+  +files/iozone-3.226-ppc64.patch, +iozone-3.226-r1.ebuild:
+  Added ppc64 make rule patch
+
+*iozone-3.226 (25 Nov 2004)
+
+  25 Nov 2004; Daniel Black <dragonheart@gentoo.org> -iozone-3.222.ebuild,
+  +iozone-3.226.ebuild:
+  version bump as per bug #72154. Thanks to Daniel Webert
+  <rockoo@rockoo.homelinux.org>
+
+*iozone-3.222 (28 Oct 2004)
+
+  28 Oct 2004; Daniel Black <dragonheart@gentoo.org> -iozone-3.217.ebuild,
+  -iozone-3.218.ebuild, iozone-3.221-r1.ebuild, iozone-3.221.ebuild,
+  +iozone-3.222.ebuild:
+  removed old version. x86 stable for 3.221-r1. Version bump to 3.222. Fixed bug
+  #68977 thanks to SpanKY
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  iozone-3.217.ebuild, iozone-3.218.ebuild, iozone-3.221.ebuild:
+  Masked iozone-3.221.ebuild stable for ppc
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  iozone-3.217.ebuild, iozone-3.218.ebuild:
+  Masked iozone-3.218.ebuild stable for ppc
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  iozone-3.217.ebuild:
+  Masked iozone-3.217.ebuild stable for ppc
+
+*iozone-3.221-r1 (12 Sep 2004)
+
+  12 Sep 2004; Daniel Black <dragonheart@gentoo.org> +files/3.221-gcc.patch,
+  +iozone-3.221-r1.ebuild, iozone-3.221.ebuild:
+  x86 stable. Revision bump adds patch to (hopefully) fix bug #59793. Thanks to
+  Alex Rostovtsev <tetromino@gmail.com> for characterizing the problem
+
+  07 Sep 2004; <blubb@gentoo.org> iozone-3.221.ebuild:
+  added ~amd64 keyword
+
+*iozone-3.221 (21 Jul 2004)
+
+  21 Jul 2004; Daniel Black <dragonheart@gentoo.org> +iozone-3.221.ebuild:
+  version bump as per bug #57729. Thanks to rockoo@rockoo.homelinux.org
+
+  18 Jul 2004; Daniel Black <dragonheart@gentoo.org> iozone-3.218.ebuild:
+  x86 stable
+
+  22 Jun 2004; Gustavo Zacarias <gustavoz@gentoo.org> iozone-3.218.ebuild:
+  Keyworded ~sparc wrt #53521
+
+  15 Jun 2004; Daniel Black <dragonheart@gentoo.org> iozone-3.217.ebuild:
+  x86 stable
+
+*iozone-3.218 (13 Jun 2004)
+
+  13 Jun 2004; Daniel Black <dragonheart@gentoo.org> +iozone-3.218.ebuild:
+  version bump notified by Daniel Webert <daniel_webert@web.de> in bug #53521
+
+  13 May 2004; David Holm <dholm@gentoo.org> iozone-3.217.ebuild:
+  Added to ~ppc.
+
+*iozone-3.217 (13 May 2004)
+
+  13 May 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
+  +iozone-3.217.ebuild:
+  Inital import by Jesse Becker <jbecker@speakeasy.net> in bug #50804

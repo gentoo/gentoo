@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>java</herd>
+
+	<longdescription lang="en">
+		FontBox is a Java font library used to obtain low level information
+		from font files.
+	</longdescription>
+	<longdescription lang="fi">
+		FontBox on Java-kirjasto alhaisen tason tiedon noutamiseen fontti-
+		tiedostoista.
+	</longdescription>
+</pkgmetadata>

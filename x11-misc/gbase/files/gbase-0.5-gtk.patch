@@ -1,0 +1,26 @@
+diff -ur gbase-0.5.orig/Makefile gbase-0.5/Makefile
+--- gbase-0.5.orig/Makefile	1999-10-28 00:23:51.000000000 +0300
++++ gbase-0.5/Makefile	2008-01-16 14:24:55.000000000 +0200
+@@ -1,15 +1,15 @@
+-CC = gcc
+-CCFLAGS = `gtk-config --cflags`
+-LDFLAGS = `gtk-config --libs`
++CC ?= gcc
++CFLAGS += `pkg-config --cflags gtk+-2.0`
++LIBS = `pkg-config --libs gtk+-2.0`
+ 
+ gbase:	gbase.o
+-	$(CC) gbase.o $(LDFLAGS) -o gbase
++	$(CC) $(LDFLAGS) gbase.o $(LIBS) -o gbase
+ 
+ clean:
+ 	rm -f gbase gbase.o gbase.c~
+ 
+ # Make object files:
+ %.o:
+-	$(CC) $(CCFLAGS) -c $*.c
++	$(CC) $(CFLAGS) -c $*.c
+ 
+-gbase.o: gbase.c
+\ No newline at end of file
++gbase.o: gbase.c

@@ -1,0 +1,23 @@
+Don't barf on handled signals inside of scripts.  Makes for nicer output.
+
+patch by Martin Schlemmer <azarah@gentoo.org>
+
+--- jobs.c
++++ jobs.c
+@@ -2893,11 +2893,11 @@
+ 		}
+ 	      else if (IS_FOREGROUND (job))
+ 		{
+-#if !defined (DONT_REPORT_SIGPIPE)
+-		  if (termsig && WIFSIGNALED (s) && termsig != SIGINT)
+-#else
+-		  if (termsig && WIFSIGNALED (s) && termsig != SIGINT && termsig != SIGPIPE)
+-#endif
++		  if (termsig && WIFSIGNALED (s) && termsig != SIGINT &&
++#if defined (DONT_REPORT_SIGPIPE)
++		  termsig != SIGPIPE &&
++#endif
++		  signal_is_trapped (termsig) == 0)
+ 		    {
+ 		      fprintf (stderr, "%s", j_strsignal (termsig));
+ 

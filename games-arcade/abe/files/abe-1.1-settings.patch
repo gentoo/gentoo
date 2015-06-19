@@ -1,0 +1,12 @@
+diff -Naur --exclude '*.swp' abe-1.1/src/Menu.c abe-1.1.new/src/Menu.c
+--- abe-1.1/src/Menu.c	2005-03-05 08:20:04.000000000 -0800
++++ abe-1.1.new/src/Menu.c	2006-04-02 15:04:37.000000000 -0700
+@@ -116,7 +116,7 @@
+   if(n == SOUND_ENABLED || n == MUSIC_ENABLED)
+     return sound_loaded;
+   else
+-    return 0;
++    return 1;
+ }
+ 
+ void

@@ -1,0 +1,158 @@
+# ChangeLog for net-misc/netstat-nat
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/netstat-nat/ChangeLog,v 1.41 2014/07/18 19:58:26 jer Exp $
+
+  18 Jul 2014; Jeroen Roovers <jer@gentoo.org> -netstat-nat-1.4.9.ebuild,
+  netstat-nat-1.4.10.ebuild, files/netstat-nat-1.4.10-install.patch,
+  metadata.xml:
+  EAPI bump. Clean up patch. Remove short <longdescription>.
+
+  21 May 2012; Kacper Kowalik <xarthisius@gentoo.org> netstat-nat-1.4.9.ebuild:
+  Add missing inheritance of eutils.eclass
+
+  15 Apr 2012; Benda XU <heroxbd@gentoo.org> netstat-nat-1.4.10.ebuild:
+  add ~arm keyword
+
+  18 Sep 2010; Raúl Porcel <armin76@gentoo.org> netstat-nat-1.4.10.ebuild:
+  sparc stable wrt #318533
+
+  26 Jun 2010; <nixnut@gentoo.org> netstat-nat-1.4.10.ebuild:
+  ppc stable #318533
+
+  20 Jun 2010; Markus Meier <maekke@gentoo.org> netstat-nat-1.4.10.ebuild:
+  x86 stable, bug #318533
+
+  26 May 2010; Pacho Ramos <pacho@gentoo.org> netstat-nat-1.4.10.ebuild:
+  stable amd64, bug 318533
+
+  11 May 2010; Jeroen Roovers <jer@gentoo.org> netstat-nat-1.4.9.ebuild,
+  netstat-nat-1.4.10.ebuild, +files/netstat-nat-1.4.10-install.patch:
+  Do not install NEWS twice, thanks to cilly for reporting (bug #318533).
+
+*netstat-nat-1.4.10 (26 Jan 2010)
+
+  26 Jan 2010; Jeroen Roovers <jer@gentoo.org> -netstat-nat-1.4.7.ebuild,
+  -netstat-nat-1.4.8.ebuild, +netstat-nat-1.4.10.ebuild:
+  Remove old. Version bump thanks to Dmitry Karasik (bug #302219).
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> netstat-nat-1.4.7.ebuild:
+  Remove virtual/libc
+
+  28 Feb 2008; Ferris McCormick <fmccor@gentoo.org>
+  netstat-nat-1.4.9.ebuild:
+  Sparc stable --- Bug #210973 --- Thanks to gustavoz for verifying.
+
+  26 Feb 2008; nixnut <nixnut@gentoo.org> netstat-nat-1.4.9.ebuild:
+  Stable on ppc wrt bug 210973
+
+  25 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  netstat-nat-1.4.9.ebuild:
+  stable x86/amd64, bug 210973
+
+  31 Jan 2008; nixnut <nixnut@gentoo.org> netstat-nat-1.4.8.ebuild:
+  Stable on ppc wrt bug 196790
+
+*netstat-nat-1.4.9 (30 Jan 2008)
+
+  30 Jan 2008; <pva@gentoo.org> -netstat-nat-1.4.5.ebuild,
+  netstat-nat-1.4.7.ebuild, +netstat-nat-1.4.9.ebuild:
+  Version bump, bug 207290, thank Raúl Porcel <armin76@gentoo.org> for
+  report. Remove old. Quotation fixes.
+
+  27 Jan 2008; Christoph Mende <angelos@gentoo.org>
+  netstat-nat-1.4.8.ebuild:
+  Stable on amd64, bug #196790
+
+  25 Jan 2008; Raúl Porcel <armin76@gentoo.org> netstat-nat-1.4.8.ebuild:
+  sparc/x86 stable
+
+*netstat-nat-1.4.8 (28 Oct 2007)
+
+  28 Oct 2007; Markus Ullmann <jokey@gentoo.org> +netstat-nat-1.4.8.ebuild:
+  Version bump for bug #196790
+
+  04 Feb 2007; Steve Dibb <beandog@gentoo.org> netstat-nat-1.4.7.ebuild:
+  amd64 stable, bug 156473
+
+  04 Feb 2007; nixnut <nixnut@gentoo.org> netstat-nat-1.4.7.ebuild:
+  Stable on ppc wrt bug 156473
+
+  22 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  netstat-nat-1.4.7.ebuild:
+  Stable on sparc wrt #156473
+
+  22 Jan 2007; Christian Faulhammer <opfer@gentoo.org>
+  netstat-nat-1.4.7.ebuild:
+  stable x86, bug #156473
+
+*netstat-nat-1.4.7 (10 Oct 2006)
+
+  10 Oct 2006; Markus Ullmann <jokey@gentoo.org> -netstat-nat-1.4.4.ebuild,
+  -netstat-nat-1.4.6.ebuild, +netstat-nat-1.4.7.ebuild:
+  Version bump and cleanup wrt bug #147487
+
+  14 Jun 2006; Jon Hood <squinky86@gentoo.org> netstat-nat-1.4.6.ebuild:
+  Add ~amd64, #114306. Thanks to Amit Kotlovski <krallkrall@gmail.com> for
+  testing.
+
+  30 Sep 2005; Christian Birchinger <joker@gentoo.org>
+  netstat-nat-1.4.5.ebuild:
+  Added sparc stable keyword
+
+*netstat-nat-1.4.6 (25 Sep 2005)
+
+  25 Sep 2005; Daniel Black <dragonheart@gentoo.org>
+  netstat-nat-1.4.5.ebuild, +netstat-nat-1.4.6.ebuild:
+  version bump - bug #107136. 1.4.5 x86 stable - bug #107137. thanks rockoo
+
+*netstat-nat-1.4.5 (29 Apr 2005)
+
+  29 Apr 2005; Marcelo Goes <vanquirius@gentoo.org> -netstat-nat-1.4.3.ebuild,
+  +netstat-nat-1.4.5.ebuild:
+  Version bump, remove old version.
+
+  25 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> netstat-nat-1.4.4.ebuild:
+  Marked stable on x86.
+
+  30 Jan 2005; Jason Wever <weeve@gentoo.org> netstat-nat-1.4.4.ebuild:
+  Stable on sparc wrt bug #74775.
+
+*netstat-nat-1.4.4 (25 Jan 2005)
+
+  25 Jan 2005; Daniel Black <dragonheart@gentoo.org>
+  +netstat-nat-1.4.4.ebuild, +metadata.xml:
+  version bump prompted by bug #74775. Thanks to  Matthew Sutton 
+  <msutton@circletgsc.org>. ~ppc keyword added.
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> netstat-nat-1.3.1.ebuild,
+  netstat-nat-1.4.2.ebuild, netstat-nat-1.4.3.ebuild:
+  change virtual/glibc to virtual/libc, add IUSE
+
+  16 Apr 2004; Jason Wever <weeve@gentoo.org> netstat-nat-1.4.3.ebuild:
+  Added ~sparc keyword.
+
+  23 Mar 2004; Martin Holzer <mholzer@gentoo.org> netstat-nat-1.3.1.ebuild,
+  netstat-nat-1.4.2.ebuild, netstat-nat-1.4.3.ebuild:
+  fixing depend qa issue. see 45343.
+
+*netstat-nat-1.4.3 (08 Oct 2003)
+
+  08 Oct 2003; Martin Holzer <mholzer@gentoo.org> netstat-nat-1.4.3.ebuild:
+  Version bumped.
+
+*netstat-nat-1.4.2 (04 Aug 2003)
+
+  04 Aug 2003; Martin Holzer <mholzer@gentoo.org> netstat-nat-1.4.2.ebuild:
+  Version bumped.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*netstat-nat-1.3.1 (14 Aug 2002)
+
+  14 Aug 2002; Maik Schreiber <blizzy@gentoo.org> : New version.
+  Closes bug #6392.
+
+*netstat-nat-1.3 (04 Aug 2002)
+
+  04 Aug 2002; Maik Schreiber <blizzy@gentoo.org> : Initial import.
+  ebuild was written by me (blizzy).

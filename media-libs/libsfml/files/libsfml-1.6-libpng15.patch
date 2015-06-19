@@ -1,0 +1,20 @@
+--- src/SFML/Graphics/ImageLoader.cpp
++++ src/SFML/Graphics/ImageLoader.cpp
+@@ -44,7 +44,7 @@
+     void PngErrorHandler(png_structp Png, png_const_charp Message)
+     {
+         std::cerr << "Failed to write PNG image. Reason : " << Message << std::endl;
+-        longjmp(Png->jmpbuf, 1);
++        longjmp(png_jmpbuf(Png), 1);
+     }
+ }
+ 
+@@ -289,7 +289,7 @@
+     }
+ 
+     // For proper error handling...
+-    if (setjmp(Png->jmpbuf))
++    if (setjmp(png_jmpbuf(Png)))
+     {
+         png_destroy_write_struct(&Png, &PngInfo);
+         return false;

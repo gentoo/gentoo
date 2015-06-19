@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=media-sound/wmsound-data x11-libs/libproplist x11-wm/windowmaker x11-misc/gccmakedep x11-misc/imake
+DESCRIPTION=An sound server for the WindowMaker desktop
+EAPI=4
+HOMEPAGE=http://windowmaker.org/
+KEYWORDS=~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=media-sound/wmsound-data x11-libs/libproplist x11-wm/windowmaker
+SLOT=0
+SRC_URI=mirror://gentoo/wmsound-0.9.5.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=43e932b5e9fb471fb2849dcbb95b9f9b

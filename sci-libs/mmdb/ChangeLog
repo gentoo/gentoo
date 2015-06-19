@@ -1,0 +1,138 @@
+# ChangeLog for sci-libs/mmdb
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/mmdb/ChangeLog,v 1.31 2015/04/07 14:42:35 jlec Exp $
+
+*mmdb-1.25.5-r1 (12 Nov 2014)
+
+  12 Nov 2014; Justin Lecher <jlec@gentoo.org> +mmdb-1.25.5-r1.ebuild,
+  +files/mmdb-1.25.5-include-path.patch:
+  Fix broken pc includedir path
+
+*mmdb-2.0.1 (23 Sep 2014)
+*mmdb-1.25.5 (23 Sep 2014)
+
+  23 Sep 2014; Justin Lecher <jlec@gentoo.org> +mmdb-1.25.5.ebuild,
+  +mmdb-2.0.1.ebuild, metadata.xml:
+  Version Bump
+
+  06 Dec 2012; Justin Lecher <jlec@gentoo.org> -files/1.21-allignment.patch,
+  -files/1.23.2.2-pkg-config.patch, -files/1.23.2-allignment.patch,
+  -mmdb-1.21-r4.ebuild, -mmdb-1.23.2-r1.ebuild, -mmdb-1.23.2.2.ebuild:
+  Drop old
+
+  06 Dec 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> mmdb-1.24.ebuild:
+  x86 stable wrt bug #445102
+
+  03 Dec 2012; Justin Lecher <jlec@gentoo.org> mmdb-1.24.ebuild:
+  Handle static-libs, #445620
+
+  02 Dec 2012; Agostino Sarubbo <ago@gentoo.org> mmdb-1.24.ebuild:
+  Stable for amd64, wrt bug #445102
+
+  21 May 2012; Brent Baude <ranger@gentoo.org> mmdb-1.24.ebuild:
+  Marking mmdb-1.24 ppc for bug 413815
+
+  21 Nov 2011; Justin Lecher <jlec@gentoo.org> mmdb-1.24.ebuild:
+  keyworded for ~x86-macos ~x64-macos, tested by Johan Hattne #390123
+
+*mmdb-1.24 (05 Nov 2011)
+
+  05 Nov 2011; Justin Lecher <jlec@gentoo.org> +mmdb-1.24.ebuild:
+  Version Bump
+
+  01 Aug 2011; Markus Meier <maekke@gentoo.org> mmdb-1.23.2.2.ebuild:
+  x86 stable, bug #375909
+
+  24 Jul 2011; Markos Chandras <hwoarang@gentoo.org> mmdb-1.23.2.2.ebuild:
+  Stable on amd64 wrt bug #375909
+
+  16 Jul 2011; Justin Lecher <jlec@gentoo.org> mmdb-1.21-r4.ebuild,
+  mmdb-1.23.2-r1.ebuild, mmdb-1.23.2.2.ebuild:
+  Update to new upstream location
+
+  01 Jul 2011; Justin Lecher <jlec@gentoo.org>
+  +files/1.23.2.2-pkg-config.patch, mmdb-1.23.2.2.ebuild:
+  Correction for pkg-config file
+
+*mmdb-1.23.2.2 (29 Jun 2011)
+
+  29 Jun 2011; Justin Lecher <jlec@gentoo.org> +mmdb-1.23.2.2.ebuild:
+  Version Bump
+
+  28 Jun 2011; Brent Baude <ranger@gentoo.org> mmdb-1.21-r4.ebuild:
+  Marking mmdb-1.21-r4 ppc for bug 352065
+
+  26 Jun 2011; Justin Lecher <jlec@gentoo.org> mmdb-1.21-r4.ebuild,
+  mmdb-1.23.2-r1.ebuild:
+  Corrected quoting, bumped EAPI
+
+*mmdb-1.23.2-r1 (04 Mar 2011)
+*mmdb-1.21-r4 (04 Mar 2011)
+
+  04 Mar 2011; Justin Lecher <jlec@gentoo.org> -mmdb-1.21-r3.ebuild,
+  +mmdb-1.21-r4.ebuild, -mmdb-1.23.2.ebuild, +mmdb-1.23.2-r1.ebuild:
+  Needed fixes in mmdb.pc to export includes correctly
+
+*mmdb-1.23.2 (03 Mar 2011)
+
+  03 Mar 2011; Justin Lecher <jlec@gentoo.org> +files/1.23.2-allignment.patch,
+  -mmdb-1.21.ebuild, +mmdb-1.23.2.ebuild:
+  Version Bump
+
+  15 Jul 2010; Markus Meier <maekke@gentoo.org> mmdb-1.21-r3.ebuild:
+  x86 stable, bug #326031
+
+  14 Jul 2010; Markos Chandras <hwoarang@gentoo.org> mmdb-1.21-r3.ebuild:
+  Stable on amd64 wrt bug #326031
+
+  01 Jul 2010; Justin Lecher <jlec@gentoo.org> -mmdb-1.21-r2.ebuild,
+  +mmdb-1.21-r3.ebuild:
+  Fixed pc file
+
+*mmdb-1.21-r3 (01 Jul 2010)
+
+  01 Jul 2010; Justin Lecher <jlec@gentoo.org> -mmdb-1.21-r2.ebuild,
+  +mmdb-1.21-r3.ebuild:
+  Fix pc file
+
+*mmdb-1.21-r2 (01 Jul 2010)
+
+  01 Jul 2010; Justin Lecher <jlec@gentoo.org> -mmdb-1.21-r1.ebuild,
+  +mmdb-1.21-r2.ebuild:
+  Fix pkg-config file
+
+  01 Jul 2010; Justin Lecher <jlec@gentoo.org> files/1.21-allignment.patch:
+  Fixed allignment.patch
+
+*mmdb-1.21-r1 (30 Jun 2010)
+
+  30 Jun 2010; Justin Lecher <jlec@gentoo.org> +files/1.21-allignment.patch,
+  +mmdb-1.21-r1.ebuild:
+  Fixed broken allignment, #315387
+
+  28 Jun 2010; Christoph Mende <angelos@gentoo.org> mmdb-1.21.ebuild:
+  Stable on amd64 wrt bug #326031
+
+  03 May 2010; Justin Lecher <jlec@gentoo.org> mmdb-1.21.ebuild:
+  removed blocker on sci-biology/ncbi-tools++
+
+  28 Mar 2010; Justin Lecher <jlec@gentoo.org> mmdb-1.21.ebuild:
+  Keyworded for ~x86-linux ~amd64-linux
+
+*mmdb-1.21 (02 Feb 2010)
+
+  02 Feb 2010; Justin Lecher (jlec) <jlec@gentoo.org> mmdb-1.0.8.3.ebuild,
+  +mmdb-1.21.ebuild:
+  Version bump
+  blocking sci-biology/ncbi-tools++ due to bug 300690
+
+  06 Feb 2008; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  Change herd to sci-chemistry from sci.
+
+*mmdb-1.0.8.3 (21 Dec 2007)
+
+  21 Dec 2007; Donnie Berkholz <dberkholz@gentoo.org>; +metadata.xml,
+  +mmdb-1.0.8.3.ebuild:
+  New package that's a dependency of Coot: The Coordinate Library is designed
+  to assist CCP4 developers in working with coordinate files.
+

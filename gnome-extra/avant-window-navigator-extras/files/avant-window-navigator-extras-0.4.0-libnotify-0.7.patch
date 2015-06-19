@@ -1,0 +1,11 @@
+--- applets/maintained/notification-daemon/daemon.c
++++ applets/maintained/notification-daemon/daemon.c
+@@ -1487,7 +1487,7 @@
+   if (fork() == 0)
+   {
+     notify_init("notify-send");
+-    notify = notify_notification_new(summary, body, icon_str, NULL);
++    notify = notify_notification_new(summary, body, icon_str);
+     notify_notification_set_category(notify, type);
+     notify_notification_set_urgency(notify, urgency);
+     notify_notification_set_timeout(notify, expire_timeout);

@@ -1,0 +1,39 @@
+# ChangeLog for dev-ml/camlidl
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/camlidl/ChangeLog,v 1.9 2015/05/31 00:11:49 mrueg Exp $
+
+  31 May 2015; Manuel Rüger <mrueg@gentoo.org> -camlidl-1.05.ebuild:
+  Remove old.
+
+  15 Jan 2014; Sébastien Fabbro <bicatali@gentoo.org> camlidl-1.05-r1.ebuild:
+  Prefixified and keyworded amd64-linux, x86-linux
+
+*camlidl-1.05-r1 (27 Aug 2013)
+
+  27 Aug 2013; Alexis Ballier <aballier@gentoo.org> +camlidl-1.05-r1.ebuild,
+  +files/META.camlidl:
+  Install a META file, bug #482016 by Matthew Maurer. EAPI5, define subslot and
+  add := dep on ocaml
+
+  25 Feb 2010; Zac Medico <zmedico@gentoo.org> camlidl-1.05.ebuild:
+  Bug #306677 - Fix invalid conditional USE dep.
+
+  28 Sep 2009; Petteri Räty <betelgeuse@gentoo.org> camlidl-1.05.ebuild:
+  Migrate to EAPI 2 in order to nuke built_with_use.
+
+  15 Apr 2009; Alexis Ballier <aballier@gentoo.org> +files/includes.patch,
+  +files/tests.patch, camlidl-1.05.ebuild:
+  Fix tests build and implicit declarations of functions for bug #263305
+
+  03 Jan 2008; Alexis Ballier <aballier@gentoo.org> camlidl-1.05.ebuild:
+  ocamlopt is required here, there is no option to disable it
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*camlidl-1.05 (25 Sep 2004)
+
+  25 Sep 2004; Matthieu Sozeau <mattam@gentoo.org> +metadata.xml,
+  +camlidl-1.05.ebuild:
+  New package for building stub code from C/C++ libraries, submitted by Bardur
+  Arantsson <gentoo@scientician.net>. Fixes bug #65138.

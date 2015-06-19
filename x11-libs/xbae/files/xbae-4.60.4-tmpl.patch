@@ -1,0 +1,11 @@
+--- Xbae.tmpl.orig	2007-04-03 14:45:54.548519000 +0100
++++ Xbae.tmpl	2007-04-03 14:46:12.053613000 +0100
+@@ -13,7 +13,7 @@
+ 
+ #define DoNormalLib		YES
+ #define DoSharedLib		YES
+-#define DoDebugLib		YES
++#define DoDebugLib		NO
+ 
+ #include <Library.tmpl>
+ 

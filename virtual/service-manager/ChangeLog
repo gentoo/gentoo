@@ -1,0 +1,25 @@
+# ChangeLog for virtual/service-manager
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/service-manager/ChangeLog,v 1.6 2014/01/18 18:52:07 vapier Exp $
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> service-manager-0.ebuild:
+  Add arm64 love.
+
+  29 Jul 2013; Fabian Groffen <grobian@gentoo.org> service-manager-0.ebuild:
+  Fix deps for Prefix, add Prefix keywords
+
+  27 Jul 2013; William Hubbs <williamh@gentoo.org> service-manager-0.ebuild:
+  Only list OpenRc once in the dependencies for this virtual since it is the
+  first choice regardless of which kernel you are using.
+
+  19 Jul 2013; William Hubbs <williamh@gentoo.org> service-manager-0.ebuild:
+  fix dependencies
+
+  18 Jul 2013; William Hubbs <williamh@gentoo.org> service-manager-0.ebuild:
+  typo fix
+
+*service-manager-0 (18 Jul 2013)
+
+  18 Jul 2013; William Hubbs <williamh@gentoo.org> +service-manager-0.ebuild,
+  +metadata.xml:
+  add virtual/service-manager for bug #409385

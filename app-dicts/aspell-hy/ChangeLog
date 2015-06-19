@@ -1,0 +1,35 @@
+# ChangeLog for app-dicts/aspell-hy
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/aspell-hy/ChangeLog,v 1.9 2014/01/05 11:04:00 pacho Exp $
+
+  05 Jan 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/app-dicts-herd-is-empty-
+  td271273.html
+
+  17 May 2012; Alexis Ballier <aballier@gentoo.org> aspell-hy-0.10.0.ebuild:
+  keyword ~amd64-fbsd
+
+  23 Mar 2010; Brent Baude <ranger@gentoo.org> aspell-hy-0.10.0.ebuild:
+  Marking aspell-hy-0.10.0 ~ppc for bug 305845
+
+  21 Mar 2010; Brent Baude <ranger@gentoo.org> aspell-hy-0.10.0.ebuild:
+  Marking aspell-hy-0.10.0 ~ppc64 for bug 305845
+
+  07 Mar 2010; Raúl Porcel <armin76@gentoo.org> aspell-hy-0.10.0.ebuild:
+  Add ~alpha/~arm/~ia64/~m68k/~sparc wrt #305845
+
+  04 Mar 2010; Jeroen Roovers <jer@gentoo.org> aspell-hy-0.10.0.ebuild:
+  Marked ~hppa (bug #305845).
+
+  18 Oct 2009; Mark Loeser <halcy0n@gentoo.org> aspell-hy-0.10.0.ebuild:
+  QA fixes; IUSE is not defined
+
+  03 Nov 2007; Roy Marples <uberlord@gentoo.org> aspell-hy-0.10.0.ebuild:
+  Keyworded ~sparc-fbsd and ~x86-fbsd
+
+*aspell-hy-0.10.0 (02 Sep 2007)
+
+  02 Sep 2007; Wulf C. Krueger <philantrop@gentoo.org> +metadata.xml,
+  +aspell-hy-0.10.0.ebuild:
+  Added an Armenian dictionary as per bug 186228. Thanks to Karl Hakimian for
+  providing the ebuild!

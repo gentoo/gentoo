@@ -1,0 +1,9 @@
+DEFINED_PHASES=install
+DESCRIPTION=The Noia icon theme
+HOMEPAGE=http://www.kde-look.org/content/show.php?content=3883
+KEYWORDS=amd64 ppc sparc x86 ~x86-fbsd
+LICENSE=LGPL-2.1
+RESTRICT=binchecks strip
+SLOT=0
+SRC_URI=mirror://debian/pool/main/k/kde-icons-noia/kde-icons-noia_1.0.orig.tar.gz
+_md5_=c60ba3a0c7bcc4b28e848c8eca534296

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test
+DEPEND=static-analyzer? ( dev-lang/perl )
+DESCRIPTION=C language family frontend for LLVM
+EAPI=4
+HOMEPAGE=http://clang.llvm.org/
+IUSE=debug kernel_FreeBSD multitarget +static-analyzer test
+KEYWORDS=~amd64 ~arm ~x86 ~amd64-fbsd ~x64-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos
+LICENSE=UoI-NCSA
+RDEPEND=~sys-devel/llvm-3.1[debug=,multitarget=]
+SLOT=0
+SRC_URI=http://llvm.org/releases/3.1/llvm-3.1.src.tar.gz http://llvm.org/releases/3.1/compiler-rt-3.1.src.tar.gz http://llvm.org/releases/3.1/clang-3.1.src.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=8ed79f144f50fe57e49197f0617a8e19

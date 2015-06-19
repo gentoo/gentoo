@@ -1,0 +1,36 @@
+# ChangeLog for x11-misc/basqet
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/basqet/ChangeLog,v 1.6 2013/03/02 23:47:25 hwoarang Exp $
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> basqet-0.1.4.ebuild,
+  basqet-0.2.0.ebuild:
+  Move Qt dependencies to the new category
+
+*basqet-0.2.0 (08 May 2012)
+
+  08 May 2012; Michael Palimaka <kensington@gentoo.org> +basqet-0.2.0.ebuild,
+  +files/basqet-0.2.0-desktop.patch:
+  Version bump.
+
+*basqet-0.1.4 (20 Jan 2011)
+
+  20 Jan 2011; Dror Levin <spatz@gentoo.org> -basqet-0.1.2.ebuild,
+  -basqet-0.1.3.ebuild, +basqet-0.1.4.ebuild:
+  Version bump, bug 331637. Migrated to qt4-r2 eclass and to EAPI 3. Drop old.
+
+*basqet-0.1.3 (16 Jan 2010)
+
+  16 Jan 2010; Dror Levin <spatz@gentoo.org> -basqet-0.1.0.ebuild,
+  +basqet-0.1.3.ebuild:
+  Version bump, bug 301198. Remove old.
+
+*basqet-0.1.2 (14 Nov 2009)
+
+  14 Nov 2009; Alex Alexander <wired@gentoo.org> +basqet-0.1.2.ebuild:
+  version bump, bug #293149
+
+*basqet-0.1.0 (04 Nov 2009)
+
+  04 Nov 2009; Ben de Groot <yngwin@gentoo.org> +basqet-0.1.0.ebuild,
+  +metadata.xml:
+  Initial import. Ebuild by me.

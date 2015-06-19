@@ -1,0 +1,35 @@
+From 973446912684a07204a8b9d40fe23a98f0235a97 Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Tue, 30 Sep 2014 09:24:58 -0400
+Subject: [PATCH] cinnamon-settings: append /usr/sbin to PATH before calling
+ lspci
+
+Some distros, e.g. Gentoo, install lspci in /usr/sbin
+---
+ files/usr/lib/cinnamon-settings/modules/cs_info.py | 5 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/files/usr/lib/cinnamon-settings/modules/cs_info.py b/files/usr/lib/cinnamon-settings/modules/cs_info.py
+index aa5e4da..d50be27 100644
+--- a/files/usr/lib/cinnamon-settings/modules/cs_info.py
++++ b/files/usr/lib/cinnamon-settings/modules/cs_info.py
+@@ -31,6 +31,8 @@ def getProcessOut(command):
+ def getGraphicsInfos():
+     cards = {}
+     count = 0
++    envpath = os.environ["PATH"]
++    os.environ["PATH"] = envpath + ":/usr/local/sbin:/usr/sbin:/sbin"
+     for card in getProcessOut(("lspci")):
+         if not "VGA" in card:
+             continue
+@@ -43,6 +45,7 @@ def getGraphicsInfos():
+         if cardName:
+             cards[count] = (cardName)
+             count += 1
++    os.environ["PATH"] = envpath
+     return cards
+ 
+ def getDiskSize():
+-- 
+2.1.1
+

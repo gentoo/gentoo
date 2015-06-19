@@ -1,0 +1,50 @@
+# ChangeLog for www-servers/pathod
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-servers/pathod/ChangeLog,v 1.10 2015/06/01 04:03:42 patrick Exp $
+
+*pathod-0.12.0 (01 Jun 2015)
+
+  01 Jun 2015; Patrick Lauer <patrick@gentoo.org> +pathod-0.12.0.ebuild:
+  Bump
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> pathod-0.10.ebuild:
+  Drop old Python implementations
+
+*pathod-0.11.1 (22 Nov 2014)
+
+  22 Nov 2014; Tim Harder <radhermit@gentoo.org> +pathod-0.11.1.ebuild:
+  Version bump.
+
+  08 Oct 2014; Tim Harder <radhermit@gentoo.org> -pathod-0.9.ebuild,
+  -pathod-0.9.1.ebuild, -pathod-0.9.2.ebuild,
+  -files/pathod-0.9.2-skip-cert-test.patch:
+  Remove old.
+
+*pathod-0.10 (30 Jan 2014)
+
+  30 Jan 2014; Tim Harder <radhermit@gentoo.org> +pathod-0.10.ebuild:
+  Version bump.
+
+*pathod-0.9.2 (22 Nov 2013)
+
+  22 Nov 2013; Tim Harder <radhermit@gentoo.org> +pathod-0.9.2.ebuild,
+  +files/pathod-0.9.2-skip-cert-test.patch:
+  Version bump.
+
+  23 Jun 2013; Tim Harder <radhermit@gentoo.org> pathod-0.9.ebuild,
+  pathod-0.9.1.ebuild:
+  Update HOMEPAGE.
+
+  17 Jun 2013; Tim Harder <radhermit@gentoo.org> pathod-0.9.1.ebuild:
+  Fix netlib dep version.
+
+*pathod-0.9.1 (17 Jun 2013)
+
+  17 Jun 2013; Tim Harder <radhermit@gentoo.org> +pathod-0.9.1.ebuild:
+  Version bump.
+
+*pathod-0.9 (16 May 2013)
+
+  16 May 2013; Tim Harder <radhermit@gentoo.org> +pathod-0.9.ebuild,
+  +metadata.xml:
+  Initial import.

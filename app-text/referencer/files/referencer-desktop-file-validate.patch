@@ -1,0 +1,10 @@
+--- a/data/referencer.desktop.in.in	2012-10-31 17:27:17.609179000 +0100
++++ b/data/referencer.desktop.in.in	2012-10-31 17:47:22.059903251 +0100
+@@ -6,6 +6,6 @@
+ Icon=referencer
+ Terminal=false
+ Type=Application
+-Categories=GNOME;Application;Office;
++Categories=GTK;GNOME;Office;
+ StartupNotify=true
+ MimeType=application/x-referencer;

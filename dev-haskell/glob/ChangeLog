@@ -1,0 +1,25 @@
+# ChangeLog for dev-haskell/glob
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/glob/ChangeLog,v 1.5 2015/04/02 10:48:09 gienah Exp $
+
+  02 Apr 2015; Mark Wright <gienah@gentoo.org> glob-0.7.5.ebuild:
+  Loosen filepath dep in glob 0.7.5
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+*glob-0.7.5 (02 Jul 2014)
+
+  02 Jul 2014; Mark Wright <gienah@gentoo.org> +glob-0.7.5.ebuild:
+  Bump glob to 0.7.5
+
+*glob-0.7.3 (11 Dec 2013)
+
+  11 Dec 2013; Mark Wright <gienah@gentoo.org> +glob-0.7.3.ebuild:
+  Bump glob to 0.7.3
+
+*glob-0.7.2 (25 Aug 2013)
+
+  25 Aug 2013; Alexander Vershilov <qnikst@gentoo.org> +glob-0.7.2.ebuild,
+  +metadata.xml:
+  dev-haskell/glob: layout 0.7.2

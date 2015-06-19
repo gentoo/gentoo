@@ -1,0 +1,13 @@
+diff --git a/Makefile.am b/Makefile.am
+index 4e70251..8b8702f 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -59,7 +59,7 @@ MAINTAINERCLEANDIRS = \
+ 
+ 
+ test:
+-	python test/runtests.py
++	$(GENTOOPY) test/runtests.py
+ .PHONY: test
+ 
+ doc:

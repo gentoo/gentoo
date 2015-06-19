@@ -1,0 +1,54 @@
+# ChangeLog for dev-util/bam
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/bam/ChangeLog,v 1.13 2015/01/26 10:51:10 pacho Exp $
+
+  26 Jan 2015; Pacho Ramos <pacho@gentoo.org> -bam-0.4.0.ebuild:
+  drop old
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> bam-0.4.0-r1.ebuild:
+  Stable for x86, wrt bug #534724
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> bam-0.4.0-r1.ebuild:
+  Stable for amd64, wrt bug #534724
+
+*bam-0.4.0-r1 (25 Dec 2014)
+
+  25 Dec 2014; Michał Górny <mgorny@gentoo.org> +bam-0.4.0-r1.ebuild:
+  Convert to python-any-r1.
+
+  22 Jul 2012; Pacho Ramos <pacho@gentoo.org> bam-0.4.0.ebuild,
+  files/0.4.0/Makefile:
+  Fix underlinking, bug #410175 by Alec Meyers.
+
+  16 Jun 2012; Pacho Ramos <pacho@gentoo.org> -bam-0.2.0.ebuild, metadata.xml:
+  Drop maintainer as he is not able to maintain this anymore, drop old.
+
+  21 May 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> bam-0.4.0.ebuild:
+  x86 stable wrt bug #412577
+
+  05 May 2012; Markos Chandras <hwoarang@gentoo.org> bam-0.4.0.ebuild:
+  Stable on amd64 wrt bug #412577
+
+  30 Mar 2012; Jeroen Roovers <jer@gentoo.org> bam-0.4.0.ebuild:
+  Respect CC.
+
+*bam-0.4.0 (27 Mar 2012)
+
+  27 Mar 2012; Tupone Alfredo <tupone@gentoo.org> +files/0.4.0/Makefile,
+  -bam-0.3.2.ebuild, +bam-0.4.0.ebuild, +files/0.4.0/bam-0.4.0-test.py.patch:
+  Version bump to 0.4.0 Bug #357865 by Agostino Sarubbo
+  Improve pyhton related code. Bug #324371 Arfrever Frehtes Taifersar Arahesis
+
+  04 Apr 2010; Markos Chandras <hwoarang@gentoo.org> bam-0.2.0.ebuild:
+  ~amd64 added wrt bug #311593
+
+*bam-0.3.2 (24 Mar 2010)
+
+  24 Mar 2010; Mounir Lamouri <volkmar@gentoo.org> +bam-0.3.2.ebuild:
+  Version bump to 0.3.2 (masked)
+
+*bam-0.2.0 (24 Mar 2010)
+
+  24 Mar 2010; Mounir Lamouri <volkmar@gentoo.org> +bam-0.2.0.ebuild,
+  +metadata.xml:
+  Initial commit. Package required for teeworlds, bug 206287

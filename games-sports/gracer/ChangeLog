@@ -1,0 +1,80 @@
+# ChangeLog for games-sports/gracer
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-sports/gracer/ChangeLog,v 1.24 2015/03/26 18:25:07 mr_bones_ Exp $
+
+  26 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> gracer-0.1.5.ebuild:
+  EAPI=5
+
+  25 Mar 2015; Justin Lecher <jlec@gentoo.org> gracer-0.1.5.ebuild:
+  Fix tcl/tk slotting
+
+  14 Sep 2011; Tupone Alfredo <tupone@gentoo.org> gracer-0.1.5.ebuild,
+  +files/gracer-0.1.5-png15.patch:
+  Build with media-libs/libpng-1.5 Bug #380447 by Diego Elio Pettenò
+
+  26 Feb 2011; Kevin McCarthy <signals@gentoo.org> gracer-0.1.5.ebuild:
+  Updated depends from media-libs/jpeg to virtual/jpeg
+
+  16 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org> gracer-0.1.5.ebuild:
+  virtual/glut -> media-libs/glut
+
+  10 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> gracer-0.1.5.ebuild,
+  +files/gracer-0.1.5-libpng14.patch:
+  Fix building with libpng14 wrt #308885 by Locke Shinseiko.
+
+  11 Feb 2009; Alfredo Tupone <tupone@gentoo.org>
+  +files/gracer-0.1.5-as-needed.patch, gracer-0.1.5.ebuild:
+  Fix --as-needed bug #247473 by flameeyes@gentoo.org
+
+  19 Jan 2008; Michael Sterrett <mr_bones_@gentoo.org> gracer-0.1.5.ebuild:
+  deps actually are hard (bug #206415)
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  27 Sep 2006; Simon Stelling <blubb@gentoo.org> gracer-0.1.5.ebuild:
+  stable on amd64
+
+  23 May 2006; <Tupone@gentoo.org> +files/gracer-0.1.5-gcc41.patch,
+  gracer-0.1.5.ebuild:
+  Fix for gcc-4.1
+
+  29 Jan 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  gracer-0.1.5.ebuild:
+  Add modular X dependencies.
+
+  11 Jan 2006; Michael Sterrett <mr_bones_@gentoo.org> gracer-0.1.5.ebuild:
+  tidy
+
+  26 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org> gracer-0.1.5.ebuild:
+  Making games last on inherit line.
+
+  01 May 2005; Michael Hanselmann <hansmi@gentoo.org> gracer-0.1.5.ebuild:
+  Stable on ppc.
+
+  15 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> gracer-0.1.5.ebuild:
+  Stable on sparc
+
+  05 Nov 2004; Joseph Jezak <josejx@gentoo.org> +files/gracer-gcc-3.4.patch,
+  gracer-0.1.5.ebuild:
+  Added ~ppc and gcc 3.4 fixes.
+
+  28 Jun 2004; Jason Eric Huebel <jhuebel@gentoo.org> gracer-0.1.5.ebuild:
+  gnuconfig_update, ~amd64
+
+  12 Apr 2004; Jason Wever <weeve@gentoo.org> gracer-0.1.5.ebuild:
+  Added ~sparc keyword.
+
+  23 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> gracer-0.1.5.ebuild:
+  don't rdepend on sed
+
+  12 Dec 2003; Michael Sterrett <mr_bones_@gentoo.org> gracer-0.1.5.ebuild:
+  more error checking/messages
+
+  29 Jul 2003; Michael Sterrett <msterret@gentoo.org> gracer-0.1.5.ebuild:
+  depend on sed >=4
+
+*gracer-0.1.5 (30 Jul 2003)
+
+  30 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me.

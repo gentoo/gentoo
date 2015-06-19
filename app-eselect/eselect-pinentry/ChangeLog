@@ -1,0 +1,113 @@
+# ChangeLog for app-eselect/eselect-pinentry
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-eselect/eselect-pinentry/ChangeLog,v 1.1 2015/03/31 16:54:08 ulm Exp $
+
+  31 Mar 2015; Ulrich Müller <ulm@gentoo.org> +eselect-pinentry-0.3.ebuild,
+  +eselect-pinentry-0.4.ebuild, +files/eselect-pinentry-0.3,
+  +files/pinentry.eselect-0.4, +metadata.xml:
+  Move package from app-admin to app-eselect category.
+
+  20 Jan 2014; Mike Frysinger <vapier@gentoo.org> eselect-pinentry-0.4.ebuild:
+  Add arm64 love.
+
+  05 Dec 2013; Michael Haubenwallner <haubi@gentoo.org>
+  eselect-pinentry-0.4.ebuild:
+  add ~ppc-aix keyword
+
+  07 Jul 2013; Agostino Sarubbo <ago@gentoo.org> eselect-pinentry-0.4.ebuild:
+  Stable for x86, wrt bug #470286
+
+  30 Jun 2013; Agostino Sarubbo <ago@gentoo.org> eselect-pinentry-0.4.ebuild:
+  Stable for s390, wrt bug #470286
+
+  29 Jun 2013; Agostino Sarubbo <ago@gentoo.org> eselect-pinentry-0.4.ebuild:
+  Stable for ppc64, wrt bug #470286
+
+  29 Jun 2013; Agostino Sarubbo <ago@gentoo.org> eselect-pinentry-0.4.ebuild:
+  Stable for ppc, wrt bug #470286
+
+  29 Jun 2013; Agostino Sarubbo <ago@gentoo.org> eselect-pinentry-0.4.ebuild:
+  Stable for sparc, wrt bug #470286
+
+  26 Jun 2013; Agostino Sarubbo <ago@gentoo.org> eselect-pinentry-0.4.ebuild:
+  Stable for ia64, wrt bug #470286
+
+  26 Jun 2013; Agostino Sarubbo <ago@gentoo.org> eselect-pinentry-0.4.ebuild:
+  Stable for alpha, wrt bug #470286
+
+  09 Jun 2013; Agostino Sarubbo <ago@gentoo.org> eselect-pinentry-0.4.ebuild:
+  Stable for sh, wrt bug #470286
+
+  09 Jun 2013; Markus Meier <maekke@gentoo.org> eselect-pinentry-0.4.ebuild:
+  arm stable, bug #470286
+
+  04 Jun 2013; Chema Alonso <nimiux@gentoo.org> eselect-pinentry-0.4.ebuild:
+  Stable for amd64 wrt bug #470286
+
+  03 Jun 2013; Jeroen Roovers <jer@gentoo.org> eselect-pinentry-0.4.ebuild:
+  Stable for HPPA (bug #470286).
+
+  19 Feb 2013; Zac Medico <zmedico@gentoo.org> eselect-pinentry-0.4.ebuild:
+  Add ~arm-linux keyword.
+
+*eselect-pinentry-0.4 (14 Jan 2013)
+
+  14 Jan 2013; Samuli Suominen <ssuominen@gentoo.org>
+  +files/pinentry.eselect-0.4, +eselect-pinentry-0.4.ebuild:
+  Version bump to use shared code from eselect-lib-bin-symlink by mgorny.
+
+  28 Nov 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Add to crypto herd.
+
+  25 Nov 2012; Sven Wegener <swegener@gentoo.org> metadata.xml:
+  Move to maintainer-needed.
+
+  14 Sep 2012; Samuli Suominen <ssuominen@gentoo.org> metadata.xml:
+  Copy metadata.xml from app-crypt/pinentry since you can't maintain one
+  without another.
+
+  09 Sep 2012; Raúl Porcel <armin76@gentoo.org> eselect-pinentry-0.3.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #421593
+
+  17 Aug 2012; Anthony G. Basile <blueness@gentoo.org>
+  eselect-pinentry-0.3.ebuild:
+  Stable ppc ppc64, bug #421593
+
+  03 Jul 2012; Jeroen Roovers <jer@gentoo.org> eselect-pinentry-0.3.ebuild:
+  Stable for HPPA (bug #421593).
+
+  25 Jun 2012; Markus Meier <maekke@gentoo.org> eselect-pinentry-0.3.ebuild:
+  arm stable, bug #421593
+
+  19 Jun 2012; Agostino Sarubbo <ago@gentoo.org> eselect-pinentry-0.3.ebuild:
+  Stable for amd64, wrt bug #421593
+
+  17 Jun 2012; Jeff Horelick <jdhore@gentoo.org> eselect-pinentry-0.3.ebuild:
+  marked x86 per bug 421593
+
+  17 Jun 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -eselect-pinentry-0.1.ebuild, -eselect-pinentry-0.2.ebuild,
+  -files/eselect-pinentry-0.1, -files/eselect-pinentry-0.2:
+  old
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org>
+  eselect-pinentry-0.3.ebuild:
+  keyword ~amd64-fbsd
+
+*eselect-pinentry-0.3 (21 Oct 2010)
+
+  21 Oct 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +files/eselect-pinentry-0.3, +eselect-pinentry-0.3.ebuild:
+  Use EROOT instead of ROOT for prefix support.
+
+*eselect-pinentry-0.2 (30 Sep 2010)
+
+  30 Sep 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +files/eselect-pinentry-0.2, +eselect-pinentry-0.2.ebuild:
+  If no targets are found, remove the symlink and exit.
+
+*eselect-pinentry-0.1 (30 Sep 2010)
+
+  30 Sep 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +files/eselect-pinentry-0.1, +eselect-pinentry-0.1.ebuild:
+  Initial commit wrt #338691 by Michał Górny.

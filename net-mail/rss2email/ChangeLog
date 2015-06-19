@@ -1,0 +1,65 @@
+# ChangeLog for net-mail/rss2email
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/rss2email/ChangeLog,v 1.13 2014/10/15 17:30:09 radhermit Exp $
+
+  15 Oct 2014; Tim Harder <radhermit@gentoo.org> -rss2email-2.65.ebuild,
+  -rss2email-2.69.ebuild, -rss2email-2.69-r1.ebuild, -rss2email-2.70.ebuild,
+  -files/rss2email-2.65-X-rss-feed.patch,
+  -files/rss2email-2.65-r2e-chmod.patch:
+  Remove old.
+
+  24 May 2011; Markus Meier <maekke@gentoo.org> rss2email-2.71.ebuild:
+  x86 stable, bug #365465
+
+  01 May 2011; Markos Chandras <hwoarang@gentoo.org> rss2email-2.71.ebuild:
+  Stable on amd64 wrt bug #365465
+
+  05 Apr 2011; Ulrich Mueller <ulm@gentoo.org> rss2email-2.65.ebuild:
+  Depend on dev-lang/python because virtual/python will go away, bug 358849.
+
+  16 Mar 2011; Sebastian Pipping <sping@gentoo.org> metadata.xml:
+  Remove rbu as a maintainer so he is not bothered by bugs opened against
+  rss2email
+
+*rss2email-2.71 (16 Mar 2011)
+
+  16 Mar 2011; Sebastian Pipping <sping@gentoo.org> +rss2email-2.71.ebuild:
+  Bump to 2.71
+
+*rss2email-2.70 (25 Dec 2010)
+
+  25 Dec 2010; Sebastian Pipping <sping@gentoo.org> +rss2email-2.70.ebuild:
+  Bump to 2.70
+
+  18 Dec 2010; Sebastian Pipping <sping@gentoo.org> rss2email-2.65.ebuild,
+  rss2email-2.69.ebuild, rss2email-2.69-r1.ebuild:
+  Update homepage link as requested from upstream
+
+*rss2email-2.69-r1 (28 Nov 2010)
+
+  28 Nov 2010; <sping@gentoo.org> +rss2email-2.69-r1.ebuild:
+  Follow Arfrever's advice of calling python2, not python (bug #315339)
+
+  25 Nov 2010; Sebastian Pipping <sping@gentoo.org> rss2email-2.69.ebuild:
+  Require dev-util/patchutils-0.3.0 (stable), not 0.3.1 (testing)
+
+*rss2email-2.69 (25 Nov 2010)
+
+  25 Nov 2010; Sebastian Pipping <sping@gentoo.org> +rss2email-2.69.ebuild,
+  +files/rss2email-2.69-config-location.patch, metadata.xml:
+  Bump to 2.69, add support for several Python ABIs, move code and config out
+  of /usr/share, add myself as maintainer
+
+  26 Jul 2009; Robert Buchholz <rbu@gentoo.org> rss2email-2.65.ebuild:
+  Include sample config on regular runs
+
+*rss2email-2.65 (26 Jul 2009)
+
+  26 Jul 2009; Robert Buchholz <rbu@gentoo.org>
+  +files/rss2email-2.65-X-rss-feed.patch,
+  +files/rss2email-2.65-r2e-chmod.patch, +metadata.xml,
+  +rss2email-2.65.ebuild:
+  rss2email, new package. Thanks to the work of Fabian Groffen (grobian) in
+  bug 105175 as well as Joey Hess and David Watson of Debian.
+  Also added a patch to include the feed url in the header.
+

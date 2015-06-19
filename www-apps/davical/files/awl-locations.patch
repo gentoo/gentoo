@@ -1,0 +1,93 @@
+diff --git a/dba/create-database.sh b/dba/create-database.sh
+index b1dd1fa..d25f9d9 100755
+--- a/dba/create-database.sh
++++ b/dba/create-database.sh
+@@ -10,22 +10,29 @@ DBADIR="`dirname \"$0\"`"
+ 
+ INSTALL_NOTE_FN="`mktemp -t tmp.XXXXXXXXXX`"
+ 
+-testawldir() {
+-  [ -f "${1}/dba/awl-tables.sql" ]
+-}
+ 
+-#
+-# Attempt to locate the AWL directory
+-AWLDIR="${DBADIR}/../../awl"
+-if ! testawldir "${AWLDIR}"; then
+-  AWLDIR="/usr/share/awl"
+-  if ! testawldir "${AWLDIR}"; then
+-    AWLDIR="/usr/local/share/awl"
+-    if ! testawldir "${AWLDIR}"; then
+-      echo "Unable to find AWL libraries"
+-      exit 1
++# Candidate locations of the AWL directory
++awldirs="${DBADIR}/../../awl
++/usr/share/awl
++/usr/share/php/awl
++/usr/local/share/awl"
++
++# Disable globbing and use newline as seperator
++set -f; IFS='
++'
++for d in $awldirs ; do
++    if [ -f "${d}/dba/awl-tables.sql" ] ; then
++	AWLDIR="${d}"
++	break
+     fi
+-  fi
++done
++
++# Renable file globbing and reset seperator 
++set +f; unset IFS
++
++if [ -z "${AWLDIR}" ] ; then
++    echo "Unable to find AWL libraries"
++    exit 1
+ fi
+ 
+ export AWL_DBAUSER=davical_dba
+diff --git a/scripts/po/rebuild-translations.sh b/scripts/po/rebuild-translations.sh
+index 7191615..809fa8c 100755
+--- a/scripts/po/rebuild-translations.sh
++++ b/scripts/po/rebuild-translations.sh
+@@ -10,17 +10,30 @@
+ PODIR="po"
+ LOCALEDIR="locale"
+ APPLICATION="davical"
+-AWL_LOCATION="../awl"
+-
+-if [ ! -d "${AWL_LOCATION}" ]; then
+-  AWL_LOCATION="`find .. -type d -name 'awl-*.*'`"
+-  if [ ! -d "${AWL_LOCATION}" ]; then
+-    AWL_LOCATION=/usr/share/awl
+-    if [ ! -d "${AWL_LOCATION}" ]; then
+-      echo "I can't find a location for the AWL libraries and I need those strings too"
+-      exit 1
++
++awldirs="../awl
++`find .. -type d -name 'awl-*.*'`
++/usr/share/awl
++/usr/share/php/awl
++/usr/local/share/awl"
++
++# Disable globbing and use newline as seperator
++set -f; IFS='
++'
++
++for d in $awldirs ; do
++    if [ -d "${d}" ] ; then
++	AWL_LOCATION="${d}"
++	break
+     fi
+-  fi
++done
++
++# Renable file globbing and reset seperator 
++set +f; unset IFS
++
++if [ -z "${AWL_LOCATION}" ] ; then
++    echo "I can't find a location for the AWL libraries and I need those strings too"
++    exit 1
+ fi
+ 
+ egrep -l '(i18n|translate)' htdocs/*.php inc/*.php inc/ui/*.php > ${PODIR}/pofilelist.tmp1

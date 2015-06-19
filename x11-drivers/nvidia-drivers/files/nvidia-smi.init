@@ -1,0 +1,25 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/nvidia-drivers/files/nvidia-smi.init,v 1.2 2013/05/09 16:32:00 jer Exp $
+
+pidfile="/run/nvidia-smi.pid"
+
+depend() {
+    after modules
+}
+
+start() {
+	ebegin "Starting NVIDIA System Management Interface"
+	rm -f ${pidfile}
+	start-stop-daemon --start --quiet --pidfile ${pidfile} \
+		--make-pidfile --background --exec /opt/bin/nvidia-smi -- \
+		-q -l 300
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping NVIDIA System Management Interface"
+	start-stop-daemon --stop --quiet --pidfile ${pidfile}
+	eend $?
+}

@@ -1,0 +1,113 @@
+# ChangeLog for dev-embedded/tigcc
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/tigcc/ChangeLog,v 1.25 2014/12/25 10:49:18 pinkbyte Exp $
+
+*tigcc-0.96_beta8-r1 (25 Dec 2014)
+
+  25 Dec 2014; Sergey Popov <pinkbyte@gentoo.org> -tigcc-0.96_beta8.ebuild,
+  +tigcc-0.96_beta8-r1.ebuild:
+  Revision bump: respect AR, CC and RANLIB, wrt bug #243866. Bump EAPI and fix
+  some QA issues, wrt bug #438218. Acked by Mikle Kolyada. Drop old revision
+
+  28 Feb 2013; Michael Sterrett <mr_bones_@gentoo.org> -files/a68k-fix.patch,
+  -tigcc-0.95_p3.ebuild:
+  old
+
+*tigcc-0.96_beta8 (30 Apr 2012)
+
+  30 Apr 2012; Mike Frysinger <vapier@gentoo.org> +tigcc-0.96_beta8.ebuild:
+  Version bump #412487 by Pacho Ramos.
+
+  30 Apr 2012; Mike Frysinger <vapier@gentoo.org> -tigcc-0.95-r2.ebuild,
+  -tigcc-0.96_beta2.ebuild, tigcc-0.95_p3.ebuild, tigcc-0.96_beta7.ebuild:
+  Drop old versions and stabilize newer ones as current stable fails to build
+  #83676 #151569.
+
+  06 Feb 2012; Mike Frysinger <vapier@gentoo.org> tigcc-0.95-r2.ebuild,
+  tigcc-0.95_p3.ebuild, tigcc-0.96_beta2.ebuild, tigcc-0.96_beta7.ebuild:
+  Drop unused pkg-postinst func (its a typo, and we don't run env-update in
+  pkg_* anyways).
+
+  31 Jul 2011; Matt Turner <mattst88@gentoo.org> tigcc-0.95-r2.ebuild,
+  tigcc-0.95_p3.ebuild, tigcc-0.96_beta2.ebuild, tigcc-0.96_beta7.ebuild:
+  Move bison from RDEPEND to DEPEND, bug 221587.
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> tigcc-0.95-r2.ebuild,
+  tigcc-0.95_p3.ebuild, tigcc-0.96_beta7.ebuild:
+  Remove virtual/libc
+
+  05 Jan 2008; Denis Dupeyron <calchan@gentoo.org> tigcc-0.96_beta7.ebuild:
+  Fixed bug #204379. Many QA cleanups.
+
+  21 Feb 2007; Denis Dupeyron <calchan@gentoo.org>
+  files/digest-tigcc-0.95-r2, files/digest-tigcc-0.95_p3,
+  files/digest-tigcc-0.96_beta2, Manifest:
+  Transition to Manifest2.
+
+  13 Nov 2006; Sven Wegener <swegener@gentoo.org> tigcc-0.96_beta7.ebuild:
+  Fix mirror:// SRC_URI.
+
+*tigcc-0.96_beta7 (04 Nov 2006)
+
+  04 Nov 2006; Daniel Black <dragonheart@gentoo.org>
+  +tigcc-0.96_beta7.ebuild, -tigcc-0.96_beta8.ebuild:
+  wrong version name on file - should have been tigcc-0.96_beta7 before.
+  Thanks helch
+
+*tigcc-0.96_beta8 (04 Nov 2006)
+
+  04 Nov 2006; Daniel Black <dragonheart@gentoo.org>
+  +tigcc-0.96_beta8.ebuild:
+  version bump as per bug #82335 thanks to Christian Helbling for the ebuild
+
+  19 Mar 2006; Mark Loeser <halcy0n@gentoo.org> tigcc-0.96_beta2.ebuild:
+  Add DEPEND on app-arch/unzip
+
+  16 Dec 2005; Diego Pettenò <flameeyes@gentoo.org>
+  tigcc-0.96_beta2.ebuild:
+  Remove --with-gnu-ld option, bug #108386.
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> tigcc-0.95-r2.ebuild:
+  Stable on ppc.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> tigcc-0.95-r2.ebuild:
+  stable on amd64
+
+*tigcc-0.96_beta2 (28 Feb 2005)
+
+  28 Feb 2005; Daniel Black <dragonheart@gentoo.org> +tigcc-0.96_beta2.ebuild:
+  Version bump as per bug #82335. Many thanks to Robert Führicht
+  <the_master_of_disaster@gmx.at>
+
+  17 Feb 2005; Robin H. Johnson <robbat2@gentoo.org> tigcc-0.95-r2.ebuild,
+  tigcc-0.95_p3.ebuild:
+  Bug #69831: Ensure unzip is in DEPEND.
+
+*tigcc-0.95_p3 (04 Dec 2004)
+
+  04 Dec 2004; Daniel Black <dragonheart@gentoo.org> tigcc-0.95-r2.ebuild,
+  -tigcc-0.95_beta19-r1.ebuild, +tigcc-0.95_p3.ebuild:
+  version bump as per bug #73169. Thanks Robert Führicht
+  <the_master_of_disaster@gmx.at> for the notification.
+
+*tigcc-0.95-r2 (01 Nov 2004)
+
+  01 Nov 2004; Daniel Black <dragonheart@gentoo.org> +tigcc-0.95-r2.ebuild:
+  version bump
+
+  18 Oct 2004; David Holm <dholm@gentoo.org> tigcc-0.95_beta19-r1.ebuild:
+  Added to ~ppc.
+
+  29 Sep 2004; Simon Stelling <blubb@gentoo.org>
+  tigcc-0.95_beta19-r1.ebuild:
+  added ~amd64
+
+*tigcc-0.95_beta19-r1 (25 Sep 2004)
+
+  25 Sep 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
+  +tigcc-0.95_beta19-r1.ebuild, +files/a68k-fix.patch:
+  Initial import as per bug #51162. Ebuild by Robert Führicht
+  <the_master_of_disaster@gmx.at>

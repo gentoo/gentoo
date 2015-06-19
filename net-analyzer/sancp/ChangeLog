@@ -1,0 +1,76 @@
+# ChangeLog for net-analyzer/sancp
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/sancp/ChangeLog,v 1.17 2014/07/16 22:35:10 jer Exp $
+
+  16 Jul 2014; Jeroen Roovers <jer@gentoo.org> sancp-1.6.1-r4.ebuild,
+  metadata.xml:
+  EAPI bump. Remove short <longdescription>.
+
+  21 Nov 2012; Jeroen Roovers <jer@gentoo.org> files/sancp.confd:
+  Whitespace.
+
+*sancp-1.6.1-r4 (21 Nov 2012)
+
+  21 Nov 2012; Jeroen Roovers <jer@gentoo.org> -sancp-1.6.1-r3.ebuild,
+  +sancp-1.6.1-r4.ebuild, files/sancp.confd:
+  Add copyright info to conf.d script. Add GPL-2 to LICENSE (bug #425992). Move
+  tc-export to src_prepare(). Fix DESCRIPTION. Remove pointless elog message.
+
+  12 Jun 2012; Zac Medico <zmedico@gentoo.org> sancp-1.6.1-r3.ebuild:
+  inherit user for enewgroup and enewuser
+
+*sancp-1.6.1-r3 (15 Sep 2010)
+
+  15 Sep 2010; Jeroen Roovers <jer@gentoo.org> -sancp-1.6.1-r2.ebuild,
+  +sancp-1.6.1-r3.ebuild, files/sancp-1.6.1-compiler.patch:
+  Respect LDFLAGS (bug #337024), CC.
+
+  15 Jan 2009; Jeroen Roovers <jer@gentoo.org>
+  +files/sancp-1.6.1-compiler.patch, sancp-1.6.1-r2.ebuild:
+  Use toolchain. Use dobin. Do not strip (bug #251984).
+
+  04 Aug 2008; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Describe local USE flags for GLEP 56.
+
+  06 Sep 2007; Markus Ullmann <jokey@gentoo.org> -sancp-1.6.1-r1.ebuild:
+  Cleanup
+
+  20 May 2007; Christian Faulhammer <opfer@gentoo.org>
+  sancp-1.6.1-r2.ebuild:
+  added ~amd64, bug 176679
+
+  01 May 2007; Marius Mauch <genone@gentoo.org> sancp-1.6.1-r1.ebuild,
+  sancp-1.6.1-r2.ebuild:
+  Replacing einfo with elog
+
+*sancp-1.6.1-r2 (27 Jul 2006)
+
+  27 Jul 2006; Marcelo Goes <vanquirius@gentoo.org> -sancp-1.6.1.ebuild,
+  +sancp-1.6.1-r2.ebuild:
+  Add two patches from upstream, fixing compile issues on amd64 and 100% CPU
+  utilization bug. Fixes bug 138337, thanks to Clemente Aguiar <caguiar at
+  madeiratecnopolo dot pt>.
+
+*sancp-1.6.1-r1 (20 Feb 2006)
+
+  20 Feb 2006; Marcelo Goes <vanquirius@gentoo.org> +sancp-1.6.1-r1.ebuild:
+  Add a couple of patches from upstream for bug 123521. Thanks to Clemente
+  Aguiar <caguiar at madeiratecnopolo dot pt>.
+
+  15 Feb 2006; Markus Ullmann <jokey@gentoo.org> sancp-1.6.1.ebuild:
+  Removing virtual/libpcap wrt bug #117898
+
+  10 Oct 2005; Benjamin Smee <strerror@gentoo.org> files/sancp.rc1:
+  fix for sancp.rc1
+
+  10 Oct 2005; Benjamin Smee <strerror@gentoo.org> files/sancp.rc1:
+  fixed typo in sancp.rc1
+
+  10 Oct 2005; Benjamin Smee <strerror@gentoo.org> +files/sguil_sancp.conf:
+  Added sguil_sancp.conf
+
+*sancp-1.6.1 (08 Oct 2005)
+
+  08 Oct 2005; Benjamin Smee <strerror@gentoo.org> +files/sancp.confd,
+  +files/sancp.rc1, +metadata.xml, +sancp-1.6.1.ebuild:
+  Initial import. Thanks to soulse for base ebuild

@@ -1,0 +1,15 @@
+KDE4_INCLUDES also contains Qt includes required by KDE.
+See FindKDE4Internal.cmake for more details.
+
+Fixes Gentoo bug #510500.
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -55,7 +55,7 @@
+ )
+ 
+ INCLUDE_DIRECTORIES(
+-    ${KDE4_INCLUDE_DIR}
++    ${KDE4_INCLUDES}
+     ${QT_INCLUDE_DIR}
+     ${Boost_INCLUDE_DIRS}
+     ${CMAKE_CURRENT_BINARY_DIR}/src

@@ -1,0 +1,3937 @@
+# ChangeLog for eclass directory
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog-2013,v 1.1 2014/01/01 15:54:35 dilfridge Exp $
+
+  31 Dec 2013; Michał Górny <mgorny@gentoo.org> multilib-build.eclass:
+  Improve documentation on multilib_is_native_abi & multilib_build_binaries to
+  make it clear which one to use. Requested and reviewed by okias.
+
+  30 Dec 2013; Ryan Hill <dirtyepic@gentoo.org> wxwidgets.eclass:
+  Add 3.0 support.
+
+  30 Dec 2013; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  For 4.8+ C++ is always enabled. We should eventually drop the cxx USE flag,
+  but who knows what that would break.
+
+  29 Dec 2013; Andreas K. Huettel <dilfridge@gentoo.org> perl-app.eclass:
+  Do not use subslots on dev-lang/perl in perl apps (as opposed to modules)
+
+  29 Dec 2013; Andreas K. Huettel <dilfridge@gentoo.org> perl-module.eclass:
+  Use subslot dependencies on dev-lang/perl if possible, bug 479298
+
+  29 Dec 2013; Michał Górny <mgorny@gentoo.org> python-r1.eclass:
+  Update doc link to point to the docs on Wiki.
+
+  28 Dec 2013; Michał Górny <mgorny@gentoo.org> eutils.eclass:
+  Fix eclassdoc for einstalldocs.
+
+  28 Dec 2013; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  Missed one.
+
+  28 Dec 2013; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  Use version ranges instead of case statements in gcc_do_filter_flags().
+
+  28 Dec 2013; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  Add tc_version_is_between() helper.
+
+  28 Dec 2013; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  Reintroduce texinfo patch to unbreak older versions (bug #496224).
+
+  28 Dec 2013; Robin H. Johnson <robbat2@gentoo.org> flag-o-matic.eclass:
+  Spelling fixes.
+
+  27 Dec 2013; Julian Ospald <hasufell@gentoo.org> multilib-minimal.eclass:
+  add debug print function wrt #493214
+
+  27 Dec 2013; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  Initial EAPI support (bug #474358).
+
+  27 Dec 2013; Robin H. Johnson <robbat2@gentoo.org> flag-o-matic.eclass:
+  Per discussion with Flameeyes, make -l and -L always valid, and only warn
+  about other arguments to append-libs. Also document expected arguments to
+  append-libs.
+
+  27 Dec 2013; Robin H. Johnson <robbat2@gentoo.org> flag-o-matic.eclass:
+  There are usages in the tree of "append-libs $(pkg-config ...)"; if
+  pkg-config returns something other than a library, append-libs can end up
+  inserting -l-L/usr/lib64 or other weirdness. We need to check for these and
+  warn about them.
+
+  27 Dec 2013; Michał Górny <mgorny@gentoo.org> eutils.eclass:
+  Document einstalldocs.
+
+  26 Dec 2013; Hans de Graaff <graaff@gentoo.org> ruby-ng.eclass:
+  Add support for the ruby21 target.
+
+  24 Dec 2013; Andreas K. Huettel <dilfridge@gentoo.org> cmake-utils.eclass:
+  Add another pathological use flag function, useno (inversion of use)
+
+  23 Dec 2013; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  Rename gtk USE flag to awt. Remove lto USE flag. Minor cleanup.
+
+  21 Dec 2013; Davide Pesavento <pesa@gentoo.org> qt4-r2.eclass:
+  Use eqmake4() from qmake-utils.eclass
+
+  21 Dec 2013; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  Reorder by phase and group functions together with the phase that uses them.
+  No functional changes.
+
+  19 Dec 2013; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  Inline gcc-compiler-configure() into gcc_do_configure(). Clean up, sort and
+  group options.
+
+  16 Dec 2013; Sven Vermeulen <swift@gentoo.org> selinux-policy-2.eclass:
+  Added HTTPS URL to EGIT_REPO_URI to allow live ebuilds to fetch data if
+  firewall prohibits git
+
+  06 Dec 2013; Jonathan Callen <jcallen@gentoo.org> multiprocessing.eclass:
+  Fix multiprocessing.eclass for non-Linux hosts
+
+  05 Dec 2013; Anthony G. Basile <blueness@gentoo.org> libtool.eclass:
+  Remove warning for uclibc if patching fails, bug #492640
+
+  04 Dec 2013; Pawel Hajdan jr <phajdan.jr@gentoo.org> chromium.eclass:
+  Check SECCOMP_FILTER kernel config option for Chromium sandbox, bug #490550
+  by ago.
+
+  03 Dec 2013; Mike Gilbert <floppym@gentoo.org> distutils-r1.eclass:
+  Remove pointless distutils-r1_python_test function.
+
+  02 Dec 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Override bdist_egg->build_dir via pydistutils.cfg rather than extra command.
+  Fixes bug #489842.
+
+  02 Dec 2013; Sergey Popov <pinkbyte@gentoo.org> +qmake-utils.eclass:
+  Add qmake-utils eclass from Qt overlay
+
+  01 Dec 2013; Robin H. Johnson <robbat2@gentoo.org> linux-mod.eclass:
+  Always ensure MODULES_OPTIONAL_USE is in IUSE.
+
+  01 Dec 2013; Robin H. Johnson <robbat2@gentoo.org> linux-mod.eclass:
+  MODULES_OPTIONAL_USE makes it possible to optionally use linux-mod without
+  introducing dependencies on virtual/linux-sources or virtual/modutils where
+  unwanted.
+
+  30 Nov 2013; Mike Gilbert <floppym@gentoo.org> python-r1.eclass,
+  python-single-r1.eclass:
+  Depend on dev-lang/python-exec:0 if _PYTHON_WANT_PYTHON_EXEC2 is 0, bug
+  489646.
+
+  26 Nov 2013; Matti Bickel <mabi@gentoo.org> php-pear-r1.eclass:
+  export pkg_setup and default PHP_PEAR_CHANNEL to ${FILESDIR}/channel.xml (all
+  current packages set this value)
+
+  26 Nov 2013; Matti Bickel <mabi@gentoo.org> php-pear-r1.eclass:
+  Merge pkg_setup from php-pear-lib-r1.eclass and generify so that php-pear-r1
+  can handle everything php-pear-lib-r1 can.
+
+  25 Nov 2013; Steve Arnold <nerdboy@gentoo.org> gnatbuild.eclass:
+  Symlink fix should be good back to 4.4 (see bug #363839).
+
+  25 Nov 2013; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  Prevent comparison failures due to -frecord-gcc-switches (bug #490738).
+
+  25 Nov 2013; Steve Arnold <nerdboy@gentoo.org> gnatbuild.eclass:
+  Updates for handling texinfo breakage/version stuff (see bug #483192).
+
+  24 Nov 2013; Michał Górny <mgorny@gentoo.org> autotools-multilib.eclass:
+  Support in-source builds.
+
+  24 Nov 2013; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Respect BUILD_DIR in in-source builds when set earlier.
+
+  24 Nov 2013; Michał Górny <mgorny@gentoo.org> autotools-multilib.eclass:
+  Reuse multilib-minimal to reduce code duplication and allow easier function
+  overrides.
+
+  22 Nov 2013; Michael Haubenwallner <haubi@gentoo.org> libtool.eclass:
+  elibtoolize(): Besides ltmain.sh, explicitly locate configure to apply
+  patches rather than guessing based on where ltmain.sh was found.
+
+  20 Nov 2013; Michał Górny <mgorny@gentoo.org> cmake-multilib.eclass:
+  Run multilib header wrapping only when multiple ABIs are enabled, bug
+  #491752. Other eclasses do that already.
+
+  20 Nov 2013; Sergei Trofimovich <slyfox@gentoo.org> haskell-cabal.eclass:
+  Added 'replace-hcflags()'. Filters HCFLAGS.
+
+  20 Nov 2013; Steve Arnold <nerdboy@gentoo.org> gnatbuild.eclass:
+  Updated to strip graphite flags (all arches) and enable the openmp USE 
+  flag (mostly for disabling on arm). Tested on x86 and amd64 (full arm 
+  changes not yet incorporated).
+
+  18 Nov 2013; Tom Wijsman <TomWij@gentoo.org> kernel-2.eclass:
+  Reimplemented K_EXP_GENPATCHES_LIST patch matching by switching the LHS with
+  the RHS and doing much more proper matching (50 works, *_BFQ-* works,
+  etc...); spotted by aCOSwt on the forums, my earlier tests apparently didn't
+  check this properly.
+
+  16 Nov 2013; Ryan Hill <dirtyepic@gentoo.org> wxwidgets.eclass:
+  Cleanup.
+
+  16 Nov 2013; Ryan Hill <dirtyepic@gentoo.org> wxwidgets.eclass:
+  Drop wxwidgets_pkg_setup and check_wxuse.
+
+  16 Nov 2013; Ryan Hill <dirtyepic@gentoo.org> wxwidgets.eclass:
+  Drop support for 2.6.
+
+  15 Nov 2013; Michał Górny <mgorny@gentoo.org> git-r3.eclass:
+  Use shallow clones for local repos. Bug #491260.
+
+  11 Nov 2013; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Sync with qt overlay. Changes should affect only live ebuilds.
+
+  11 Nov 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Read all shebangs before moving files to avoid breaking symlinks that are
+  going to be scanned.
+
+  09 Nov 2013; Hans de Graaff <graaff@gentoo.org> ruby-fakegem.eclass:
+  Add a yard recipe for creating documentation.
+
+  09 Nov 2013; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  Revert previous and instead include the build log and some other info. Don't
+  pollute the build dir.
+
+  09 Nov 2013; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  Rename config.log tarball in the hope that people will stop attaching it to
+  build failures.
+
+  07 Nov 2013; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  Temporarily build with -j1 on sparc due to random ICEs encountered by
+  multiple people (bug #457062).
+
+  05 Nov 2013; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  Update for libmudflap removal.
+
+  04 Nov 2013; Mike Gilbert <floppym@gentoo.org> mercurial.eclass:
+  Initialize cert_opt to an empty array instead of an empty string. Reported by
+  Kristian Fiskerstrand.
+
+  04 Nov 2013; Ulrich Müller <ulm@gentoo.org> elisp-common.eclass:
+  Don't create site-gentoo.el in postrm phase.
+
+  03 Nov 2013; Michał Górny <mgorny@gentoo.org> tests/python-utils-r1.sh:
+  Fix python-utils-r1 tests to accomodate versions in PYTHON_PKG_DEP.
+
+  02 Nov 2013; Tom Wijsman <TomWij@gentoo.org> kernel-2.eclass:
+  Trivial change to support patches with pre-defined patch levels.
+
+  02 Nov 2013; Ryan Hill <dirtyepic@gentoo.org> flag-o-matic.eclass:
+  Add -fno-builtin* to ALLOWED_FLAGS - requested by Justin Vrooman.
+
+  02 Nov 2013; Ryan Hill <dirtyepic@gentoo.org> tests/flag-o-matic.sh:
+  Account for leading whitespace in append-cflags tests.
+
+  30 Oct 2013; Michał Górny <mgorny@gentoo.org> git-r3.eclass:
+  Fix parallel checkout race conditions, bug #489280.
+
+  30 Oct 2013; Michał Górny <mgorny@gentoo.org> python-r1.eclass,
+  python-single-r1.eclass, python-utils-r1.eclass:
+  Switch the eclasses to use dev-lang/python-exec.
+
+  27 Oct 2013; Michał Górny <mgorny@gentoo.org> git-r3.eclass:
+  Create a fake ".git" directory inside the checkout to satisfy git rev-parse
+  uses in build systems. Bug #489100.
+
+  27 Oct 2013; Michał Górny <mgorny@gentoo.org> git-r3.eclass:
+  Strip sub-slot from local repo IDs.
+
+  27 Oct 2013; Michał Górny <mgorny@gentoo.org> python-utils-r1.eclass:
+  Remove deprecated functions.
+
+  27 Oct 2013; Michał Górny <mgorny@gentoo.org> flag-o-matic.eclass:
+  Consider -frecord-gcc-switches a safe flag and do not strip it with
+  strip-flags.
+
+  26 Oct 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Fix distutils-r1_python_install to strip --install-scripts= rather than
+  passing "install" twice to override it. Fixes compatibility with
+  dev-python/paver.
+
+  26 Oct 2013; Michał Górny <mgorny@gentoo.org> git-r3.eclass:
+  Fix handling relative submodule paths.
+
+  22 Oct 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Fix failing to pass default install arguments when user passes an additional
+  command. Reported by radhermit.
+
+  22 Oct 2013; Michał Górny <mgorny@gentoo.org> python-any-r1.eclass,
+  python-r1.eclass, python-single-r1.eclass:
+  Introduce a "common" python_setup function to set up Python for use in outer
+  scope.
+
+  22 Oct 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Support installing Python scripts with custom --install-scripts argument. Bug
+  #487788.
+
+  22 Oct 2013; Michał Górny <mgorny@gentoo.org> systemd.eclass:
+  Add systemd_enable_ntpunit wrt bug #458132.
+
+  20 Oct 2013; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Updates from qt overlay: drop USE="c++0x" from 4.8.5 and later versions; warn
+  on downgrade instead of dying.
+
+  20 Oct 2013; Julian Ospald <hasufell@gentoo.org> multilib-minimal.eclass:
+  make doc installation part of default multilib_src_install_all() wrt #483304
+
+  17 Oct 2013; Christoph Junghans <ottxor@gentoo.org> subversion.eclass:
+  added prefix support (bug #485534)
+
+  15 Oct 2013; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  Remove .la files for libasan and libtsan. They reference non-existent
+  libstdc++.la when fixlafiles is disabled/unsupported, and -fsanitize doesn't
+  work with -static anyways. (bug #487550)
+
+  14 Oct 2013; Michał Górny <mgorny@gentoo.org> git-r3.eclass:
+  Fix over-use of ||die.
+
+  14 Oct 2013; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Add qtbearer to nolibx11_pkgs
+
+  14 Oct 2013; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Switch to git-r3.eclass
+
+  14 Oct 2013; Michał Górny <mgorny@gentoo.org> git-r3.eclass:
+  Add missing "die" calls as reported by Nikoli.
+
+  13 Oct 2013; Michał Górny <mgorny@gentoo.org> git-r3.eclass:
+  Respect EVCS_OFFLINE in git-r3_fetch.
+
+  12 Oct 2013; Jeroen Roovers <jer@gentoo.org> nvidia-driver.eclass:
+  Use readme.gentoo.eclass (bug #457594).
+
+  12 Oct 2013; Michał Górny <mgorny@gentoo.org> python-any-r1.eclass:
+  Do not look up Python for binary package install.
+
+  10 Oct 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Do not alter HOME and TMPDIR when single impl is being used. This may
+  work-around bug #487260.
+
+  09 Oct 2013; Michał Górny <mgorny@gentoo.org> python-utils-r1.eclass:
+  Fix pypy dependency.
+
+  09 Oct 2013; Michał Górny <mgorny@gentoo.org> python-utils-r1.eclass:
+  Bump dependencies on Python interpreters to require newest stable versions.
+  Bug #463532.
+
+  09 Oct 2013; Michał Górny <mgorny@gentoo.org> git-r3.eclass:
+  Skip submodules that have update=none specified in config. Fixes bug #487262.
+
+  08 Oct 2013; Michał Górny <mgorny@gentoo.org> git-2.eclass, git-r3.eclass:
+  Fix git-r3 -> git-2 dependency leak, as noted in bug #487026.
+
+  08 Oct 2013; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Remove deprecated autotools-utils_autoreconf.
+
+  07 Oct 2013; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-plugin-2.eclass:
+  small modification on output from function dev_check
+
+  06 Oct 2013; Vlastimil Babka <caster@gentoo.org> java-utils-2.eclass:
+  Convert comments for eclass manpages. Heavily based on work from ercpe, bug
+  #476946.
+
+  05 Oct 2013; Michał Górny <mgorny@gentoo.org> -git.eclass:
+  Remove lastrited git.eclass.
+
+  05 Oct 2013; Michał Górny <mgorny@gentoo.org> git-r3.eclass:
+  Add missing git DEPEND wrt bug #487026.
+
+  05 Oct 2013; Vlastimil Babka <caster@gentoo.org> java-ant-2.eclass:
+  Convert comments for eclass manpages. Heavily based on work from ercpe, bug
+  #476946.
+
+  05 Oct 2013; Vlastimil Babka <caster@gentoo.org> ant-tasks.eclass:
+  Convert comments for eclass manpages. Almost completely based on work from
+  'mren <bugs@rennings.net>' in bug #210723 and ercpe from bug #476946.
+
+  04 Oct 2013; Alexandre Rostovtsev <tetromino@gentoo.org> vala.eclass:
+  Prepare for vala-0.22
+
+  04 Oct 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  enlightenment.eclass:
+  No stable keywords for mips
+
+  01 Oct 2013; Michał Górny <mgorny@gentoo.org> multilib-build.eclass:
+  Clean up the splitting code wrt suggestions from Ulrich Mueller.
+
+  01 Oct 2013; Michał Górny <mgorny@gentoo.org> multilib-build.eclass:
+  Split ABIs without altering IFS, to work-around bug in Paludis, bug #486592.
+
+  30 Sep 2013; Michał Górny <mgorny@gentoo.org> multilib-build.eclass:
+  Fix duplicate flags in MULTILIB_USEDEP. Thanks for the report and the patch
+  to Ulrich Mueller.
+
+  30 Sep 2013; Christoph Junghans <ottxor@gentoo.org>
+  toolchain-binutils.eclass:
+  add prefix support
+
+  29 Sep 2013; Christoph Junghans <ottxor@gentoo.org> intel-sdp.eclass:
+  EAPI bump, ccache support
+
+  29 Sep 2013; Gilles Dartiguelongue <eva@gentoo.org> gst-plugins10.eclass:
+  Add support for gstreamer 1.2 release series.
+
+  29 Sep 2013; Michał Górny <mgorny@gentoo.org> python-distutils-ng.eclass:
+  Last rite python-distutils-ng.
+
+  29 Sep 2013; Pacho Ramos <pacho@gentoo.org> gnome2.eclass:
+  Use einstalldocs (#484876)
+
+  28 Sep 2013; Mike Gilbert <floppym@gentoo.org> distutils-r1.eclass:
+  Truncate .pydistutils.cfg in case we call distutils-r1_python_compile more
+  than once.
+
+  28 Sep 2013; Christoph Junghans <ottxor@gentoo.org> cvs.eclass:
+  added prefix support
+
+  27 Sep 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Use pydistutils.cfg to set build-dirs instead of passing commands explicitly.
+  This should reduce the amount of implicit behavior.
+
+  27 Sep 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Make HOME per-implementation.
+
+  27 Sep 2013; Michał Górny <mgorny@gentoo.org> git-r3.eclass:
+  Always fetch all branches when doing non-shallow fetch.
+
+  26 Sep 2013; Michał Górny <mgorny@gentoo.org> git-r3.eclass:
+  Fix parsing EGIT_REPO_URI. Bug #486080.
+
+  26 Sep 2013; Michał Górny <mgorny@gentoo.org> git-r3.eclass:
+  Update doc on EGIT_NONSHALLOW.
+
+  26 Sep 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Wrap symlinks installed to PYTHON_SCRIPTDIR as well.
+
+  26 Sep 2013; Michał Górny <mgorny@gentoo.org> python-r1.eclass,
+  python-single-r1.eclass, python-utils-r1.eclass:
+  Fix EAPI=4 on python-exec:2 since that is what pkgcore will require (the only
+  EAPI=4 consumer right now).
+
+  25 Sep 2013; Christoph Junghans <ottxor@gentoo.org> texlive-module.eclass:
+  Require EAPI>=2, add prefix support
+
+  25 Sep 2013; Michał Górny <mgorny@gentoo.org> git-r3.eclass:
+  Support EGIT_REPO_URI being an array. This is needed for tests.
+
+  25 Sep 2013; Michał Górny <mgorny@gentoo.org> git-r3.eclass:
+  Update git URI stripping for gnome.org.
+
+  24 Sep 2013; Michał Górny <mgorny@gentoo.org> python-any-r1.eclass:
+  Introduce python_gen_any_dep to generate any-of dependencies matching
+  python_check_deps() code.
+
+  24 Sep 2013; Maxim Koltsov <maksbotan@gentoo.org> leechcraft.eclass:
+  Correct official mirror url in SRC_URI.
+
+  21 Sep 2013; Christoph Junghans <ottxor@gentoo.org> alternatives.eclass:
+  added prefix support
+
+  19 Sep 2013; Christoph Junghans <ottxor@gentoo.org> distutils-r1.eclass:
+  Fixed prefix qa
+
+  19 Sep 2013; Michał Górny <mgorny@gentoo.org> git-r3.eclass:
+  Strip trailing slashes from repo URI when determining local copy directory.
+
+  19 Sep 2013; Michał Górny <mgorny@gentoo.org> git-r3.eclass:
+  Do not even create shallow repository when EGIT_NONSHALLOW is set. Otherwise,
+  the eclass tries to unshallow it and that breaks broken git servers like
+  Google Code.
+
+  18 Sep 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Fix accepting arguments in distutils_install_for_testing.
+
+  18 Sep 2013; Michał Górny <mgorny@gentoo.org> python.eclass:
+  Add a note not to add new Python versions to python.eclass.
+
+  18 Sep 2013; Sergey Popov <pinkbyte@gentoo.org> leechcraft.eclass:
+  Add official mirror to LeechCraft SRC_URI, thanks to 0xd34df00d
+
+  18 Sep 2013; Michał Górny <mgorny@gentoo.org> multibuild.eclass:
+  Fix coreutils dep to be build-time.
+
+  17 Sep 2013; Michał Górny <mgorny@gentoo.org> python-utils-r1.eclass:
+  Fix missing variable replacement in _python_ln_rel.
+
+  17 Sep 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Use einstalldocs.
+
+  17 Sep 2013; Michał Górny <mgorny@gentoo.org> python-utils-r1.eclass:
+  Rename variables in _python_ln_rel to make it less confusing.
+
+  17 Sep 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass,
+  python-r1.eclass, python-single-r1.eclass, python-utils-r1.eclass:
+  Support python-exec:2.
+
+  17 Sep 2013; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  multilib-build.eclass:
+  Add eclass doc for multilib_build_binaries
+
+  17 Sep 2013; Michał Górny <mgorny@gentoo.org> python-utils-r1.eclass,
+  tests/python-utils-r1.sh:
+  Introduce PYTHON_SCRIPTDIR for python-exec:2 script location.
+
+  17 Sep 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass,
+  python-r1.eclass, python-utils-r1.eclass:
+  Clean up Python script install/wrapping functions.
+
+  17 Sep 2013; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  multilib-build.eclass:
+  Add multilib_build_binaries function to multilib-build eclass
+
+  16 Sep 2013; Michał Górny <mgorny@gentoo.org> python-utils-r1.eclass:
+  Deprecate python_get_PYTHON and python_get_EPYTHON.
+
+  15 Sep 2013; Pacho Ramos <pacho@gentoo.org> gnome2-utils.eclass:
+  Support gtk+-2.24.20 query immodules (#476100)
+
+  14 Sep 2013; Michał Górny <mgorny@gentoo.org> eutils.eclass:
+  Support EAPIs < 4 in einstalldocs properly.
+
+  13 Sep 2013; Michał Górny <mgorny@gentoo.org> git-r3.eclass:
+  Fail early on unreachable URLs. If ls-remote fails due to server being
+  unreachable, there is no point in attempting to fetch.
+
+  13 Sep 2013; Michał Górny <mgorny@gentoo.org> git-r3.eclass:
+  Do not leak EGIT_NONSHALLOW over loop iterations. Failing URL may cause
+  non-shallow attempt to be made. When attempting next URL in the list, we
+  should try shallow again.
+
+  13 Sep 2013; Michał Górny <mgorny@gentoo.org> eutils.eclass:
+  Commit the version of einstalldocs() Council agreed upon.
+
+  12 Sep 2013; Michał Górny <mgorny@gentoo.org> python-r1.eclass,
+  python-single-r1.eclass:
+  Depend on SLOT 0 of python-exec, for future compatibility.
+
+  12 Sep 2013; Michał Górny <mgorny@gentoo.org> systemd.eclass:
+  Introduce systemd_install_serviced() to install foo.service.d/00gentoo.conf
+  files.
+
+  11 Sep 2013; Michał Górny <mgorny@gentoo.org> systemd.eclass:
+  Change @USAGE style.
+
+  11 Sep 2013; Michał Górny <mgorny@gentoo.org> systemd.eclass:
+  Deprecate systemd_to_myeconfargs(). It's redundant and unnecessarily
+  confusing.
+
+  11 Sep 2013; Michał Górny <mgorny@gentoo.org> systemd.eclass:
+  Use subshells instead of "local INSDESTTREE" for doins/newins since that
+  confuses people less.
+
+  10 Sep 2013; Michał Górny <mgorny@gentoo.org> multibuild.eclass:
+  Add new enough coreutils dep wrt bug #484454.
+
+  09 Sep 2013; Michał Górny <mgorny@gentoo.org> git-r3.eclass:
+  Introduce smart switching between "git fetch" and "git fetch --depth 1" to
+  save bandwidth.
+
+  08 Sep 2013; Michał Górny <mgorny@gentoo.org> git-2.eclass:
+  Inherit git-r3 unconditionally to avoid metadata variancy. The eclass is
+  properly namespaced, does not touch variables in global scope and exports
+  only src_unpack() that git-2 overrides anyway.
+
+  08 Sep 2013; Michał Górny <mgorny@gentoo.org> python-utils-r1.eclass:
+  Fix PYTHON_SITEDIR for Jython.
+
+  08 Sep 2013; Michał Górny <mgorny@gentoo.org> python-utils-r1.eclass:
+  Do not export PYTHON_INCLUDEDIR on Jython, since it does not install headers.
+
+  06 Sep 2013; Ian Stakenvicius <axs@gentoo.org> cmake-multilib.eclass:
+  added multilib_*_wrappers calls to cmake-multilib.eclass
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> git-r3.eclass:
+  Do not pass --depth when updating a branch, it trrigers issues in git.
+  Instead, use it for the first fetch only.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> git-2.eclass:
+  Support using git-r3 backend in git-2.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> +git-r3.eclass:
+  Introduce the new git eclass.
+
+  05 Sep 2013; Tom Wijsman <TomWij@gentoo.org> kernel-2.eclass:
+  Added support for experimental genpatches.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> python-utils-r1.eclass:
+  Disable Python 2.5, 3.1 and PyPy 1.9 in the eclass.
+
+  04 Sep 2013; Ulrich Müller <ulm@gentoo.org> elisp-common.eclass:
+  Add proper @CODE tags in comments.
+
+  03 Sep 2013; Gilles Dartiguelongue <eva@gentoo.org> gnome2-utils.eclass,
+  gnome2.eclass:
+  Add gdk-pixbuf cache handling functions.
+
+  31 Aug 2013; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  enlightenment.eclass:
+  Add git support for live packages using enlightenment.eclass
+
+  28 Aug 2013; Michał Górny <mgorny@gentoo.org> python-utils-r1.eclass:
+  Introduce python_is_python3() to replace the common checks.
+
+  28 Aug 2013; Tom Wijsman <TomWij@gentoo.org> ant-tasks.eclass:
+  Made ant-tasks.eclass support newer versions of the 1.9 branch.
+
+  28 Aug 2013; Ian Stakenvicius <axs@gentoo.org> mozconfig-3.eclass:
+  pegged virtual/jpeg at slot 0 in mozconfig-3.eclass
+
+  27 Aug 2013; Michał Górny <mgorny@gentoo.org> python-r1.eclass:
+  Enable EAPI=4 on python-r1.
+
+  27 Aug 2013; Tim Harder <radhermit@gentoo.org> java-utils-2.eclass:
+  Don't add subslots to JAVA_PKG_NAME (bug #482270 by chutzpah).
+
+  26 Aug 2013; <anarchy@gentoo.org> mozcoreconf-2.eclass:
+  Fix bug #415805, unset MOZCONFIG
+
+  25 Aug 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Mark _copy-egg-info as internal.
+
+  25 Aug 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Copy bundled egg-info files for reuse in python_compile(). This solves issues
+  that caused some of the files not to be installed in broken packages.
+
+  25 Aug 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Namespace, clean up and describe _disable_ez_setup.
+
+  25 Aug 2013; Gilles Dartiguelongue <eva@gentoo.org> gnome-games.eclass:
+  Fix indentation and trailing whitespaces.
+
+  21 Aug 2013; Michael Palimaka <kensington@gentoo.org> kde4-meta.eclass:
+  Improve automagic dependency reduction, fixing bug #481996.
+
+  16 Aug 2013; Benda Xu <heroxbd@gentoo.org> wxwidgets.eclass:
+  Prefix support for wxwidgets, bug #481093
+
+  15 Aug 2013; Michael Palimaka <kensington@gentoo.org> kde4-base.eclass,
+  kde4-meta.eclass:
+  Fixes for KDE 4.11 and other small improvements.
+
+  15 Aug 2013; Michael Palimaka <kensington@gentoo.org> kde4-base.eclass,
+  kde4-meta.eclass:
+  Remove dependencies and actions that are now handled in individual ebuilds.
+
+  15 Aug 2013; Michael Palimaka <kensington@gentoo.org> kde4-base.eclass,
+  kde4-functions.eclass, kde4-meta.eclass:
+  Remove old, unused code.
+
+  15 Aug 2013; Michael Palimaka <kensington@gentoo.org> kde4-base.eclass,
+  kde4-functions.eclass:
+  Remove EAPI 3 support.
+
+  15 Aug 2013; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  alpha not only needs -Wl,--norelax for 4.6 to build itself, but also for it
+  to build other versions. So let's just always enable it (bug #481006).
+
+  13 Aug 2013; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Filter -fgraphite-identity on gcc 4.7 (bug 417105).
+
+  13 Aug 2013; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Remove workarounds for very old and unsupported gcc-3 versions. Warn if
+  trying to use gcc < 4.4 and USE=c++0x.
+
+  11 Aug 2013; Justin Lecher <jlec@gentoo.org> cuda.eclass:
+  Add compatibility to latest cuda compiler; respect LDFLAGS
+
+  11 Aug 2013; Mike Gilbert <floppym@gentoo.org> chromium.eclass:
+  Don't call EXPORT_FUNCTONS if CHROMIUM_EXPORT_PHASES is set to 'no'.
+
+  10 Aug 2013; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  Clean up gcc_do_filter_flags a bit more. Drop ppc64 workaround for 3.2/3.3
+  as neither is keyworded. Also stop replacing -march=i686 with x86-64 (?!) for
+  those versions.
+
+  10 Aug 2013; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  Append -Wl,--no-relax to LDFLAGS on alpha for 4.6 (bug #454426 again).
+
+  08 Aug 2013; Michał Górny <mgorny@gentoo.org> +twisted-r1.eclass:
+  Introduce a twisted-r1.eclass to join the python-r1 suite and replace
+  twisted.eclass.
+
+  08 Aug 2013; Michał Górny <mgorny@gentoo.org> multilib-build.eclass:
+  Allow wrapping headers that are installed only for some of the ABIs.
+
+  07 Aug 2013; Mike Gilbert <floppym@gentoo.org> python-r1.eclass,
+  python-single-r1.eclass:
+  Mention that PYTHON_REQ_USE should be set before calling inherit.
+
+  04 Aug 2013; Michał Górny <mgorny@gentoo.org> python-r1.eclass:
+  Drop the old PYTHON_COMPAT hack for python-exec.
+
+  03 Aug 2013; Patrick Lauer <patrick@gentoo.org> distutils.eclass:
+  Migrate twisted deps in distutils eclass
+
+  02 Aug 2013; Ulrich Müller <ulm@gentoo.org> elisp-common.eclass:
+  Sync from Emacs overlay: Make elisp-emacs-version() more robust.
+
+  02 Aug 2013; Michał Górny <mgorny@gentoo.org> git.eclass:
+  Mark git.eclass @DEAD.
+
+  01 Aug 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Shout QA warnings when _all() phases do not call the default impls.
+  Bug #478804.
+
+  01 Aug 2013; Michał Górny <mgorny@gentoo.org> python-any-r1.eclass:
+  python-any-r1: bail out on invalid PYTHON_COMPAT. Bug #478442.
+
+  31 Jul 2013; Julian Ospald <hasufell@gentoo.org> kernel-2.eclass:
+  reword security-deblob-thing acked by keytoaster
+
+  31 Jul 2013; Matt Turner <mattst88@gentoo.org> perl-module.eclass:
+  Allow using >=dev-lang/perl-5.16 without 'build' in IUSE.
+
+  30 Jul 2013; Michał Górny <mgorny@gentoo.org> xorg-2.eclass:
+  Update the emul-linux blocker to support abi_x86_32 flag on emul-linux.
+
+  30 Jul 2013; Matt Turner <mattst88@gentoo.org> multilib-build.eclass:
+  Add MIPS support to multilib-build.eclass.
+
+  29 Jul 2013; Sergei Trofimovich <slyfox@gentoo.org> haskell-cabal.eclass:
+  ask user to run haskell-updater for old packages (like in bug
+  http://bugs.gentoo.org/474840)
+
+  29 Jul 2013; Justin Lecher <jlec@gentoo.org> fortran-2.eclass:
+  Fortran-2.eclass: enhance support for binary packages, #477070
+
+  29 Jul 2013; Justin Lecher <jlec@gentoo.org> intel-sdp.eclass:
+  Intel-sdp.eclass: Allow single package downloads, custom suffix, full
+  specified rpm target location
+
+  27 Jul 2013; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Rewrite sed expression in qt_nolibx11() to work on both 4.8.4 and 4.8.5.
+  Fixes bug 478018.
+
+  27 Jul 2013; Pacho Ramos <pacho@gentoo.org> go-mono.eclass:
+  Don't block mono-3
+
+  27 Jul 2013; Michał Górny <mgorny@gentoo.org> python.eclass,
+  python-distutils-ng.eclass, python-utils-r1.eclass:
+  Switch eclasses to use virtual/pypy (and therefore support pypy-bin).
+
+  27 Jul 2013; Michał Górny <mgorny@gentoo.org> python-any-r1.eclass:
+  Use PYTHON_PKG_DEP for generating deps.
+
+  27 Jul 2013; Michał Górny <mgorny@gentoo.org> systemd.eclass:
+  Introduce systemd_is_booted() to allow ebuilds to warn consistently for
+  things that require systemd. Bug #478342.
+
+  27 Jul 2013; Michał Górny <mgorny@gentoo.org> subversion.eclass:
+  Export working copy information after the update rather than in
+  pkg_preinst(). This makes it possible for ebuild to reference e.g.
+  ESVN_WC_REVISION properly. Bug #282486.
+
+  25 Jul 2013; Peter Volkov <pva@gentoo.org> font.eclass:
+  Droped media-libs/fontconfig dependency, bug 446012.
+
+  25 Jul 2013; Michał Górny <mgorny@gentoo.org> vcs-snapshot.eclass:
+  Add some debug.
+
+  24 Jul 2013; Tomáš Chvátal <scarabeus@gentoo.org> cmake-utils.eclass:
+  Fix function desc to match reality.
+
+  24 Jul 2013; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  Add back LICENSE (bug #477836).
+
+  23 Jul 2013; Johannes Huber <johu@gentoo.org> kde4-base.eclass:
+  Handle dev-qt/desinger split from dev-qt/gui, see bug #477934.
+
+  23 Jul 2013; Michał Górny <mgorny@gentoo.org> bash-completion-r1.eclass:
+  Fix typo.
+
+  22 Jul 2013; Fabian Groffen <grobian@gentoo.org> bash-completion-r1.eclass:
+  Another attempt at fixing bash-completion for Prefix, bug #477692#c9
+
+  22 Jul 2013; Samuli Suominen <ssuominen@gentoo.org>
+  bash-completion-r1.eclass:
+  Remove use of EPREFIX wrt #477692 to avoid collision with Portage helpers
+
+  21 Jul 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Replace local+export with "local -x".
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> db.eclass, db-use.eclass:
+  Cleanup due #231248
+
+  19 Jul 2013; Justin Lecher <jlec@gentoo.org> intel-sdp.eclass:
+  Support different tarball extentions
+
+  18 Jul 2013; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  libffi installation was fixed in 4.8.
+
+  18 Jul 2013; Justin Lecher <jlec@gentoo.org> fortran-2.eclass:
+  Wrap lines at 80 char
+
+  15 Jul 2013; Samuli Suominen <ssuominen@gentoo.org>
+  bash-completion-r1.eclass:
+  Support pkg-config and the new upstream completions directory structure wrt
+  #472938 and introduce new get_bashhelpersdir function to obtain the
+  helpersdir="" value.
+
+  15 Jul 2013; Samuli Suominen <ssuominen@gentoo.org> kernel-2.eclass:
+  Deprecate media-sound/alsa-headers by letting sys-kernel/linux-headers
+  install the required sound/ headers wrt #468712#c6
+
+  14 Jul 2013; Julian Ospald <hasufell@gentoo.org> cmake-utils.eclass:
+  add CMAKE_WARN_UNUSED_CLI
+
+  11 Jul 2013; Ulrich Müller <ulm@gentoo.org> bzr.eclass:
+  New variable EBZR_UNPACK_DIR.
+
+  11 Jul 2013; Michał Górny <mgorny@gentoo.org> python-utils-r1.eclass:
+  Add a safety check for using python_optimize() in pkg_*.
+
+  11 Jul 2013; Michał Górny <mgorny@gentoo.org> python-utils-r1.eclass:
+  Fix typo in compileall call.
+
+  11 Jul 2013; Michał Górny <mgorny@gentoo.org> multilib-build.eclass:
+  Add multilib_is_native_abi helper.
+
+  10 Jul 2013; Robin H. Johnson <robbat2@gentoo.org> db.eclass:
+  Additional change to run tests successfully on newer versions of db
+
+  09 Jul 2013; Mike Gilbert <floppym@gentoo.org> distutils-r1.eclass:
+  Stub-out ez_setup.py and distribute_setup.py to prevent packages from
+  downloading their own copy of setuptools.
+
+  06 Jul 2013; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Update SRC_URI. Drop support for EAPI 3.
+
+  05 Jul 2013; Tom Wijsman <TomWij@gentoo.org> ant-tasks.eclass:
+  Update ant-tasks for 1.9.1 version bump, needs 1.5 as minimal JDK / JRE version.
+
+  03 Jul 2013; Michael Palimaka <kensington@gentoo.org> kde4-functions.eclass:
+  Deprecate EAPI 3.
+
+  02 Jul 2013; Michael Palimaka <kensington@gentoo.org> cmake-utils.eclass:
+  Correct src_prepare description.
+
+  30 Jun 2013; Pacho Ramos <pacho@gentoo.org> +gnome-games.eclass:
+  Add eclass to be used by all now splitted gnome-games
+
+  29 Jun 2013; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Respect arguments when checking for test targets. This becomes helpful if one
+  of the arguments is -C.
+
+  28 Jun 2013; Michał Górny <mgorny@gentoo.org> autotools-multilib.eclass,
+  multilib-minimal.eclass:
+  Disable trying (and failing) to wrap headers when multilib is disabled, bug
+  #474920.
+
+  28 Jun 2013; Michał Górny <mgorny@gentoo.org> multilib-build.eclass:
+  Fix redundant slashes in header-wrapping include paths, bug #475046. Thanks
+  to Arfrever for the patch.
+
+  23 Jun 2013; Michael Weber <xmw@gentoo.org> +netsurf.eclass:
+  Add netsurf.eclass
+
+  23 Jun 2013; Hans de Graaff <graaff@gentoo.org> ruby-ng.eclass:
+  Add support for ruby20.
+
+  22 Jun 2013; Justin Lecher <jlec@gentoo.org> cuda.eclass:
+  Add debug print
+
+  21 Jun 2013; Michał Górny <mgorny@gentoo.org> multibuild.eclass:
+  Enable EAPI 4 per bug #474000.
+
+  18 Jun 2013; Christoph Junghans <ottxor@gentoo.org> cvs.eclass:
+  fixed use of proxy variables
+
+  17 Jun 2013; Pacho Ramos <pacho@gentoo.org> multilib-minimal.eclass:
+  Allow eapi4 (#473610)
+
+  17 Jun 2013; Tim Harder <radhermit@gentoo.org> vim-plugin.eclass:
+  Update default VIM_PLUGIN_VIM_VERSION to 7.3.
+
+  16 Jun 2013; Pacho Ramos <pacho@gentoo.org> mono-env.eclass:
+  Set a default SRC_URI
+
+  13 Jun 2013; Michał Górny <mgorny@gentoo.org> bash-completion-r1.eclass:
+  Introduce get_bashcompdir(), wrt bug #469858.
+
+  11 Jun 2013; Tim Harder <radhermit@gentoo.org> vim.eclass:
+  Remove old VIMRUNTIME warning.
+
+  09 Jun 2013; Tim Harder <radhermit@gentoo.org> vim.eclass:
+  Replace backticks with $(...).
+
+  09 Jun 2013; Tim Harder <radhermit@gentoo.org> vim.eclass:
+  Remove old runtime and netrw snapshot unpacking support.
+
+  09 Jun 2013; Luca Barbato <lu_zero@gentoo.org> font.eclass:
+  Do not require fontconfig at runtime, it isn't necessary for many purposes,
+  thanks to Nikoli for the original patch
+
+  07 Jun 2013; Mike Gilbert <floppym@gentoo.org> autotools-utils.eclass:
+  Convert econfargs from an ECLASS-VARIABLE to a function-specifc VARIABLE for
+  autotools-utils_src_configure.
+
+  07 Jun 2013; Mike Gilbert <floppym@gentoo.org> python-utils-r1.eclass:
+  Improve docs for PYTHON and EPYTHON.
+
+  03 Jun 2013; Davide Pesavento <pesa@gentoo.org> qt4-r2.eclass:
+  Add support for EQMAKE4_EXCLUDE.
+
+  01 Jun 2013; Robin H. Johnson <robbat2@gentoo.org> php-ext-source-r2.eclass:
+  Fix REQUIRED_USE with PHP_EXT_OPTIONAL_USE set. Fixes REQUIRED_USE
+  unsatisfied constraints triggered by "USE=-php PHP_TARGETS= emerge
+  media-libs/ming".
+
+  01 Jun 2013; Hans de Graaff <graaff@gentoo.org> ruby-fakegem.eclass:
+  Quote DISTDIR.
+
+  01 Jun 2013; Tim Harder <radhermit@gentoo.org> vim-plugin.eclass:
+  Remove unnecessary blank IUSE.
+
+  01 Jun 2013; Tim Harder <radhermit@gentoo.org> vim-plugin.eclass:
+  Don't set SRC_URI for live ebuilds.
+
+  31 May 2013; Michał Górny <mgorny@gentoo.org> multilib-build.eclass,
+  python-utils-r1.eclass:
+  Remove here-doc write failure handlers due to bug #471926.
+
+  31 May 2013; Michał Górny <mgorny@gentoo.org> python-utils-r1.eclass:
+  Use cat rather than echo for heredoc output :).
+
+  30 May 2013; Tim Harder <radhermit@gentoo.org> vim.eclass:
+  Add PYTHON_REQUIRED_USE for python-single-r1.
+
+  28 May 2013; <anarchy@gentoo.org> mozextension.eclass, nsplugins.eclass:
+  Ensure plugins/extensions are in correct place for >=firefox{-bin}-21.0
+
+  26 May 2013; Pacho Ramos <pacho@gentoo.org> gnome2.eclass:
+  Pass --enable-compile-warnings=minimum as we don't want -Werror* flags, bug
+  #471336
+
+  24 May 2013; Pacho Ramos <pacho@gentoo.org> +mono-env.eclass:
+  Add mono-env.eclass to start a migration to simpler dotnet related eclasses,
+  http://www.gossamer-threads.com/lists/gentoo/dev/270881
+
+  24 May 2013; Pacho Ramos <pacho@gentoo.org> readme.gentoo.eclass:
+  Reword sentences a bit
+
+  24 May 2013; Michał Górny <mgorny@gentoo.org> multibuild.eclass:
+  Fix the race condition in locking code by using $BASHPID instead of $$.
+
+  23 May 2013; Michał Górny <mgorny@gentoo.org> multibuild.eclass:
+  Use portable locking code from Fabian Groffen. Bug #466554.
+
+  22 May 2013; Michał Górny <mgorny@gentoo.org> eutils.eclass:
+  Fix the libtool check, bug #470938.
+
+  21 May 2013; Michał Górny <mgorny@gentoo.org> eutils.eclass:
+  Replace the .la sanity check by one used in libtool itself. Fixes removing
+  qmake-generated .la files, bug #470206.
+
+  21 May 2013; Mike Gilbert <floppym@gentoo.org> distutils-r1.eclass,
+  python-r1.eclass, python-single-r1.eclass:
+  Set PYTHON_REQUIRED_USE, and add it to REQUIRED_USE in distutils-r1.
+
+  18 May 2013; Pacho Ramos <pacho@gentoo.org> readme.gentoo.eclass:
+  Add a note informing people a file is being installed for future reference,
+  http://www.mail-archive.com/gentoo-dev@lists.gentoo.org/msg58207.html
+
+  17 May 2013; Tomáš Chvátal <scarabeus@gentoo.org> -php-ext-pecl-r1.eclass,
+  -php-ext-source-r1.eclass, -tla.eclass:
+  Remove eclasses marked as dead for quite some time.
+
+  17 May 2013; Tomáš Chvátal <scarabeus@gentoo.org> office-ext.eclass:
+  Mark eclass as dead to be removed in 30 days.
+
+  17 May 2013; Jeff Horelick <jdhore@gentoo.org> nsplugins.eclass:
+  Support new plugins directory on Firefox >= 21.0 (bug #469932)
+
+  17 May 2013; Tim Harder <radhermit@gentoo.org> vim.eclass:
+  Remove unused src_unpack function.
+
+  17 May 2013; Tim Harder <radhermit@gentoo.org> vim.eclass:
+  Migrate from supporting cvs to mercurial for live builds.
+
+  16 May 2013; Jeroen Roovers <jer@gentoo.org> nvidia-driver.eclass:
+  Check for lspci before use.
+
+  15 May 2013; Michał Górny <mgorny@gentoo.org> eutils.eclass:
+  prune_libtool_files: do not remove .la files which are not libtool files.
+  Fixes bug #468380.
+
+  15 May 2013; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  Explicitly disable lto in 4.5 to stop configure from helpfully re-enabling it
+  when libelf is present.
+
+  15 May 2013; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  Rename test USE flag to regression-test.
+
+  15 May 2013; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  Add lto USE flag for all versions that support it. Drop LTO support for 4.5.
+
+  14 May 2013; Michał Górny <mgorny@gentoo.org> autotools-multilib.eclass,
+  multilib-build.eclass:
+  Enable EAPI=4 on multilib eclasses.
+
+  11 May 2013; Sergei Trofimovich <slyfox@gentoo.org> ghc-package.eclass,
+  haskell-cabal.eclass:
+  Added 'ghc-supports-smp' and 'ghc-supports-dynamic-by-default' helpers. Added
+  hint for users to run 'haskell-updater' if configure phase failed.
+
+  11 May 2013; Alexis Ballier <aballier@gentoo.org> libtool.eclass:
+  use find to get file permissions instead of chmod --reference which is not
+  portable, bug #468952
+
+  10 May 2013; Michał Górny <mgorny@gentoo.org> python-any-r1.eclass,
+  python-r1.eclass, python-single-r1.eclass, python-utils-r1.eclass:
+  Consistently create ${EPYTHON} subdir for Python wrappers. Fixes conflict
+  between Python & vala wrappers, bug #469312.
+
+  09 May 2013; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  Drop support for graphite in 4.4/4.5 due to incompatibilities with newer ppl
+  versions. Update graphite dependencies for 4.8 based on upstream
+  recommendations. Also fixes some (harmless) configure flags getting applied
+  to incorrect versions.
+
+  08 May 2013; Sergey Popov <pinkbyte@gentoo.org> leechcraft.eclass:
+  Restict supported EAPIs(due to pkg_pretend), some logic cleanup
+
+  08 May 2013; Tim Harder <radhermit@gentoo.org> vim.eclass:
+  Fix dangling gvim manpage symlinks (bug #455480, patch by Arfrever).
+
+  08 May 2013; Tim Harder <radhermit@gentoo.org> vim.eclass:
+  Fix build with sys-libs/ncurses[tinfo] (bug #457564, patch by Ben Longbons).
+
+  05 May 2013; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Support complete EAPI src_test().
+
+  04 May 2013; Julian Ospald <hasufell@gentoo.org> multilib-minimal.eclass:
+  improve handling of DOCS variable wrt #468092
+
+  03 May 2013; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Support disabling .la pruning completely.
+
+  01 May 2013; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Inline src_test and allow passing arguments.
+
+  30 Apr 2013; Sergey Popov <pinkbyte@gentoo.org> leechcraft.eclass:
+  Leechcraft changed license since 0.5.95
+
+  30 Apr 2013; Michal Gorny <mgorny@gentoo.org> distutils-r1.eclass,
+  python-utils-r1.eclass:
+  Use bash built-ins rather than external tools.
+
+  30 Apr 2013; Michal Gorny <mgorny@gentoo.org> python-any-r1.eclass:
+  Support declaring python_check_deps() in ebuilds, to check Python impl for
+  proper deps.
+
+  30 Apr 2013; Michal Gorny <mgorny@gentoo.org> python-any-r1.eclass:
+  Report no matching impl properly.
+
+  30 Apr 2013; Michal Gorny <mgorny@gentoo.org> python-any-r1.eclass:
+  Improve consistency in Python version checks and wrapper setup.
+
+  29 Apr 2013; Tom Wijsman <TomWij@gentoo.org> kernel-2.eclass:
+  Corrected UNIPATCH_DOCS functionality, this went unnoticed since
+  dodoc can be called without arguments in Portage. Thanks to the
+  Paludis user Alexandros Diamantidis in bug #467916 for reporting.
+
+  28 Apr 2013; Alexandre Rostovtsev <tetromino@gentoo.org> autotools.eclass:
+  Reverting autotools.eclass commit that broke eautoreconf (bug #467772), acked
+  by multiple people in #gentoo-dev.
+
+  28 Apr 2013; Zac Medico <zmedico@gentoo.org> apache-2.eclass,
+  haskell-cabal.eclass, mercurial.eclass, perl-module.eclass,
+  php-common-r1.eclass, qt4-build.eclass, selinux-policy-2.eclass,
+  subversion.eclass:
+  Bug #467646 - Refer to /etc/portage/make.conf, not /etc/make.conf.
+
+  24 Apr 2013; Tim Harder <radhermit@gentoo.org> vim.eclass:
+  Remove old, conditional src_configure call in src_compile.
+
+  24 Apr 2013; Tim Harder <radhermit@gentoo.org> vim.eclass:
+  Migrate from python-r1 to python-single-r1.
+
+  21 Apr 2013; Tim Harder <radhermit@gentoo.org> vim.eclass:
+  Use python-r1 in EAPI 5 (patch by mgorny, bug #458794).
+
+  21 Apr 2013; Tim Harder <radhermit@gentoo.org> vim.eclass:
+  Remove pre-EAPI 2 code blocks (patch by mgorny, bug #458794).
+
+  21 Apr 2013; Tim Harder <radhermit@gentoo.org> vim.eclass:
+  Disable python.eclass inherit in vim-core (patch by mgorny, bug #458794).
+
+  21 Apr 2013; Tim Harder <radhermit@gentoo.org> vim.eclass:
+  Move EAPI check earlier (patch by mgorny, bug #458794).
+
+  20 Apr 2013; Ralph Sennhauser <sera@gentoo.org> java-ant-2.eclass:
+  Raise ant-core dep to version 1.8.2. #466558
+
+  18 Apr 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Fix python_*_all() phases with DISTUTILS_SINGLE_IMPL.
+
+  17 Apr 2013; Tom Wijsman <TomWij@gentoo.org> kernel-2.eclass:
+  Reverted .tmp_gas_check patch, see bug #336732.
+
+  17 Apr 2013; Ralph Sennhauser <sera@gentoo.org> java-utils-2.eclass:
+  Request package specific emerge --info in death hook.
+
+  17 Apr 2013; Tom Wijsman <TomWij@gentoo.org> kernel-2.eclass:
+  Added a warning after the variables that modifying other variables in
+  the eclass is not supported, there is a chance that we will not fix
+  resulting bugs. Fixes bug #421721.
+  Clarify the default DESCRIPTION and make it not use versions, a
+  directory with ebuilds that inherit this eclass may contain multiple
+  versions and we also don't want to give the impression that a new
+  directory needs to made if that's not the case. Fixes bug #445110.
+  Clarified which patch depths are used in the normal output and error
+  output when applying patches. Fixes bug #436402.
+  Made sure .tmp_gas_check is created inside the temp folder, it
+  accidentally created temp.tmp_gas_check instead. Fixes bug #336732.
+  Make UNIPATCH_DOCS work again, install 0000_README document when
+  using genpatches. Fixes bug #301478.
+
+  14 Apr 2013; Ole Markus With <olemarkus@gentoo.org> php-ext-source-r2.eclass:
+  Remove support for EAPI 2 and 3 for php-ext-source-r2. Use REQUIRED_USE for
+  target depends
+
+  14 Apr 2013; Mike Gilbert <floppym@gentoo.org> python-utils-r1.eclass:
+  Remove carriage-return from shebang before validating it, bug 465790 by
+  ikelos.
+
+  13 Apr 2013; Mike Gilbert <floppym@gentoo.org> systemd.eclass:
+  Replace basename usage with a shell parameter replacement.
+
+  13 Apr 2013; Michał Górny <mgorny@gentoo.org> systemd.eclass:
+  Use pkg-config to query systemd directories.
+
+  13 Apr 2013; Michael Weber <xmw@gentoo.org> cmake-multilib.eclass:
+  Pass ${@} in phase functions. Approved by author on dev-ml.
+
+  13 Apr 2013; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-plugin-2.eclass:
+  spell fix
+
+  13 Apr 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Unmask the egg_info block for further testing. Feel free to comment it out if
+  you can reproduce the earlier issues.
+
+  10 Apr 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Move the egg_info code into a more realistic location for future testing.
+
+  10 Apr 2013; Jeroen Roovers <jer@gentoo.org> nvidia-driver.eclass:
+  Update documentation URL.
+
+  10 Apr 2013; Jeroen Roovers <jer@gentoo.org> nvidia-driver.eclass:
+  Remove duplicate PCI ID.
+
+  10 Apr 2013; Jeroen Roovers <jer@gentoo.org> unpacker.eclass:
+  Add support for 1.6.0-nv2 (bug #465340).
+
+  10 Apr 2013; Jory A. Pratt <anarchy@gentoo.org> mozconfig-3.eclass:
+  Disable debug symbols unless debug is enabled.
+
+  10 Apr 2013; Magnus Granberg <zorry@gentoo.org> pax-utils.eclass:
+  Make PT default pax marking and change ewarn to elog
+
+  08 Apr 2013; Ole Markus With <olemarkus@gentoo.org> php-ext-source-r2.eclass:
+  Fix for installing ini files in the tree. Bug 464900
+
+  08 Apr 2013; Patrick Lauer <patrick@gentoo.org> toolchain.eclass:
+  Fix for gcc info page installation #464008
+
+  07 Apr 2013; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Remove wrong sed on QT_INSTALL_{LIBS,PLUGINS}. See bug 304971 comments 16-18.
+
+  07 Apr 2013; Michael Palimaka <kensington@gentoo.org> kde4-meta.eclass:
+  Guard against multiple inheritance. Make KMCOMPILEONLY sed case-insensitive
+  to avoid file collisions in the future.
+
+  07 Apr 2013; Michael Palimaka <kensington@gentoo.org> kde4-functions.eclass,
+  kde4-meta-pkg.eclass:
+  Guard against multiple inheritance.
+
+  07 Apr 2013; Michael Palimaka <kensington@gentoo.org> kde4-base.eclass:
+  Guard against multiple inheritance. Fix fetching for KDE SC 4.11
+  pre-releases. Drop old QT_MINIMAL logic. Add a set of base dependencies for
+  kde-workspace packages to work around bugs like #444438 and #464614.
+
+  07 Apr 2013; Michael Palimaka <kensington@gentoo.org> cmake-utils.eclass:
+  Guard against multiple inheritance. Improve cross-compilation support by
+  always using the correct pkg-config.
+
+  07 Apr 2013; Michał Górny <mgorny@gentoo.org> python-any-r1.eclass,
+  python-r1.eclass, python-single-r1.eclass, python-utils-r1.eclass:
+  Create temporary symlinks for executables and pkg-config files, and add them
+  to $PATH and $PKG_CONFIG_PATH respectively. This makes it easier for broken
+  build systems to find Python, and gives us the possibility of dropping
+  python-wrapper.
+
+  07 Apr 2013; Michał Górny <mgorny@gentoo.org> autotools-multilib.eclass,
+  multilib-build.eclass, multilib-minimal.eclass:
+  Move header wrapping to multilib-build. Use the new code in
+  autotools-multilib and multilib-minimal.
+
+  05 Apr 2013; Mike Gilbert <floppym@gentoo.org> mozextension.eclass,
+  mozlinguas.eclass:
+  Fix eclass docs.
+
+  05 Apr 2013; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Fix eclassdoc.
+
+  05 Apr 2013; Ben de Groot <yngwin@gentoo.org> font.eclass:
+  RDEPEND=$DEPEND to fix bug #446012
+
+  05 Apr 2013; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  Work around bootstrap comparison failures on ancient systems (bug #411333).
+
+  01 Apr 2013; Michał Górny <mgorny@gentoo.org> autotools-multilib.eclass:
+  Fix path handling in header wrapping code.
+
+  01 Apr 2013; Michał Górny <mgorny@gentoo.org> autotools-multilib.eclass:
+  Support wrapping headers for multilib.
+
+  01 Apr 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass,
+  multibuild.eclass:
+  Introduce multibuild_merge_root, as an universal interim-install merging
+  function.
+
+  01 Apr 2013; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Support setting mode of prune_libtool_files through
+  AUTOTOOLS_PRUNE_LIBTOOL_FILES.
+
+  30 Mar 2013; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-plugin-2.eclass:
+  fixed missing VDRVERSION up from >=vdr-1.7.34
+
+  30 Mar 2013; Mike Gilbert <floppym@gentoo.org> python-r1.eclass:
+  Add note about quoting patterns for python_gen_usedep.
+
+  29 Mar 2013; Pacho Ramos <pacho@gentoo.org> vala.eclass:
+  Update VALA_MAX_API_VERSION
+
+  29 Mar 2013; Tomáš Chvátal <scarabeus@gentoo.org> office-ext-r1.eclass:
+  Allow specification of directory where the extensions are. Also allow one
+  package providing multiple oxts correctly. Wrt bug#463536.
+
+  28 Mar 2013; Michał Górny <mgorny@gentoo.org> python-utils-r1.eclass:
+  Support obtaining CFLAGS and LIBS for the Python implementation (similarly to
+  pkg-config or python-config).
+
+  26 Mar 2013; Tomáš Chvátal <scarabeus@gentoo.org> obs-service.eclass:
+  Fix hardcoded libexec suse path in scripts.
+
+  25 Mar 2013; Jory A. Pratt <anarchy@gentoo.org> mozcoreconf-2.eclass:
+  Fix a typo for svg support in older versions, bug #462994
+
+  24 Mar 2013; Jory A. Pratt <anarchy@gentoo.org> mozconfig-3.eclass mozcoreconf-2.eclass:
+  Cleanup of obsolete options, address bug #446662,460592
+
+  23 Mar 2013; Julian Ospald <hasufell@gentoo.org> unpacker.eclass:
+  add unpack_zip function to unpacker.eclass wrt #462612
+
+  23 Mar 2013; Tomáš Chvátal <scarabeus@gentoo.org> office-ext-r1.eclass:
+  Do not use-default here as we enable it by profile variable.
+
+  23 Mar 2013; Tomáš Chvátal <scarabeus@gentoo.org> office-ext-r1.eclass:
+  Fix stupid copy&paste.
+
+  23 Mar 2013; Tomáš Chvátal <scarabeus@gentoo.org> +office-ext-r1.eclass:
+  Add next version of office-ext eclass. This time we can directly deploy
+  libreoffice exts, but ooo crashes so keep backcompat over crashy uno
+  interface for them (it is oo bug and they should fix it).
+
+  20 Mar 2013; Michał Górny <mgorny@gentoo.org> python-r1.eclass:
+  Introduce an ability to override PYTHON_COMPAT for testing.
+
+  20 Mar 2013; Michał Górny <mgorny@gentoo.org> python-r1.eclass:
+  Reuse multibuild.eclass in python_export_best.
+
+  20 Mar 2013; Tom Wijsman <TomWij@gentoo.org> kernel-2.eclass:
+  Use UID 0 instead of 'root' to assign permissions to super user, bug #315807.
+
+  20 Mar 2013; Tom Wijsman <TomWij@gentoo.org> kernel-2.eclass:
+  Added sys-devel/bc as a RDEPEND as per bug #461848.
+
+  19 Mar 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Pass --build-platlib and --build-purelib separately to distutils. This allows
+  to change them to different locations if necessary (bug #455332).
+
+  18 Mar 2013; Michał Górny <mgorny@gentoo.org> systemd.eclass:
+  Update the maintainer to systemd@.
+
+  18 Mar 2013; Michal Hrusecky <miska@gentoo.org> obs-service.eclass:
+  Change default path for obs services (bug#446074)
+
+  16 Mar 2013; Robin H. Johnson <robbat2@gentoo.org> mysql.eclass,
+  mysql-autotools.eclass:
+  Bug #461026: use append-cppflags for preprocessor flags.
+
+  16 Mar 2013; Ulrich Müller <ulm@gentoo.org> elisp.eclass,
+  elisp-common.eclass:
+  Sync eclasses from Emacs overlay.
+  elisp-common.eclass: Functions elisp-compile, elisp-make-autoload-file,
+  elisp-install, and elisp-site-file-install now die on failure.
+  elisp.eclass: Remove die commands that are no longer necessary because the
+  called functions die themselves. Call readme.gentoo_create_doc and
+  readme.gentoo_print_elog from readme.gentoo.eclass if these functions exist.
+
+  16 Mar 2013; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  Add cloog/isl support for gcc 4.8 (bug # 434816, patch by Kacper Kowalik).
+
+  15 Mar 2013; Christoph Junghans <ottxor@gentoo.org> mercurial.eclass:
+  default to EHG_QUIET="OFF" (bug #461858)
+
+  13 Mar 2013; Mike Gilbert <floppym@gentoo.org> distutils-r1.eclass:
+  Reverse order of $add_args and $@ in esetup.py. Remove duplicate build
+  command from distutils-r1_python_compile.
+
+  13 Mar 2013; Justin Lecher <jlec@gentoo.org> fortran-2.eclass:
+  Fix fortran-2.eclass for bash-3.2 compatibility, #461544
+
+  10 Mar 2013; Michał Górny <mgorny@gentoo.org> multibuild.eclass:
+  Make the log output redirection much simpler. Fix bash-3.2 compatibility.
+
+  10 Mar 2013; Michał Górny <mgorny@gentoo.org> multibuild.eclass:
+  Fix compatibility with bash-4.1 -- it does not support negative array
+  subscripts.
+
+  10 Mar 2013; Michał Górny <mgorny@gentoo.org> multibuild.eclass:
+  multibuild_copy_sources: fix outputting variant name.
+
+  10 Mar 2013; Christoph Junghans <ottxor@gentoo.org> vim.eclass:
+  add sys-apps/gawk dep
+
+  09 Mar 2013; Robin H. Johnson <robbat2@gentoo.org> mysql-autotools.eclass:
+  Bug #401733: nested configure scripts in MySQL generate unrecognized options
+  false positives when toplevel configure passes downwards.
+
+  09 Mar 2013; Tom Wijsman <TomWij@gentoo.org> kernel-2.eclass:
+  Kernel sources and (gen)patches now use xz instead of bz2. Bug #421721.
+
+  09 Mar 2013; Julian Ospald <hasufell@gentoo.org> +multilib-minimal.eclass:
+  add multilib-minimal.eclass
+
+  09 Mar 2013; Maxim Koltsov <maksbotan@gentoo.org> leechcraft.eclass:
+  Fix leechcraft.eclass to support new category, bug #460958.
+
+  09 Mar 2013; Michał Górny <mgorny@gentoo.org> eutils.eclass:
+  Disable epunt_cxx warning since epunt_cxx is broken nowadays.
+
+  09 Mar 2013; Michał Górny <mgorny@gentoo.org> eutils.eclass:
+  Fix epunt_cxx not to subshell.
+
+  09 Mar 2013; Michał Górny <mgorny@gentoo.org> python-r1.eclass:
+  Clean up redundant USE flag check calls, replace them with a single call in
+  _python_obtain_impls().
+
+  09 Mar 2013; Michał Górny <mgorny@gentoo.org> multilib-build.eclass:
+  Introduce multilib_copy_sources.
+
+  09 Mar 2013; Michał Górny <mgorny@gentoo.org> python-r1.eclass:
+  Use multibuild_copy_sources for python_copy_sources.
+
+  09 Mar 2013; Michał Górny <mgorny@gentoo.org> multibuild.eclass:
+  Introduce multibuild_copy_sources as a generic source duplicating function.
+
+  09 Mar 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Use doins instead of dodoc to install examples, due to PMS limitations. Bug
+  #460516.
+
+  09 Mar 2013; Sven Vermeulen <swift@gentoo.org> selinux-policy-2.eclass:
+  Do not load unconfined module with strict policy
+
+  08 Mar 2013; Hanno Boeck <hanno@gentoo.org> apache-2.eclass:
+  Remove re-setting of permissions every time apache gets reinstalled. See bug
+  #398899.
+
+  07 Mar 2013; Tim Harder <radhermit@gentoo.org> python.eclass:
+  Add 2.7-jython.
+
+  07 Mar 2013; Tim Harder <radhermit@gentoo.org> python-utils-r1.eclass:
+  Add jython2_7.
+
+  05 Mar 2013; Michael Pagano <mpagano@gentoo.org> kernel-2.eclass:
+  Force python 2* for USE=deblob as deblob script does not yet support python3.
+  Thanks to Arfrever. See bug #458032
+
+  05 Mar 2013; Davide Pesavento <pesa@gentoo.org> qt4-r2.eclass:
+  eqmake4: override also QMAKE_LINK_C, used by packages with
+  "CONFIG+=use_c_linker". Fixes bug #460420.
+
+  05 Mar 2013; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-plugin-2.eclass:
+  vdr-plugin-2.eclass, adapted to the new plugin makefile handling; cleanup for
+  unusede function 'delete_orphan_plugindb_file'; more unneeded source cleanup
+
+  04 Mar 2013; Michał Górny <mgorny@gentoo.org> multilib-build.eclass:
+  Introduce multilib_for_best_impl().
+
+  04 Mar 2013; Michał Górny <mgorny@gentoo.org> multilib-build.eclass:
+  Convert to use multibuild.eclass.
+
+  04 Mar 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Use multilib_for_best_variant() for the *_all() phases.
+
+  04 Mar 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass,
+  python-r1.eclass:
+  Introduce python_parallel_foreach_impl() and reuse it in distutils-r1.
+
+  04 Mar 2013; Michał Górny <mgorny@gentoo.org> python-r1.eclass:
+  Use multibuild.eclass in python-r1.
+
+  04 Mar 2013; Michał Górny <mgorny@gentoo.org> multibuild.eclass:
+  Add multibuild_for_best_variant.
+
+  04 Mar 2013; Michał Górny <mgorny@gentoo.org> multibuild.eclass:
+  Print only the "public" part of commands.
+
+  04 Mar 2013; Michał Górny <mgorny@gentoo.org> multibuild.eclass,
+  python-r1.eclass:
+  Move run_in_build_dir() to multibuild.eclass.
+
+  04 Mar 2013; Michał Górny <mgorny@gentoo.org> +multibuild.eclass:
+  Introduce multibuild.eclass to handle building multiple variants of the same
+  package in a common manner.
+
+  04 Mar 2013; Robin H. Johnson <robbat2@gentoo.org> mysql-cmake.eclass:
+  MySQL 5.6 needs to NOT have -fno-implicit-templates, also support
+  epatch_user.
+
+  03 Mar 2013; Pacho Ramos <pacho@gentoo.org> readme.gentoo.eclass:
+  Change formatting tool as discussed with Ulrich Müller in bug #460050,
+  thanks a lot to him for his help.
+
+  03 Mar 2013; Davide Pesavento <pesa@gentoo.org> autotools-utils.eclass,
+  kde4-base.eclass, qt4-build.eclass:
+  Qt category move.
+
+  02 Mar 2013; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Remove blockers: portage is perfectly capable of handling our deps correctly
+  by itself nowadays.
+
+  02 Mar 2013; Michał Górny <mgorny@gentoo.org> multilib-build.eclass:
+  Improve the no-multilib fallback to respect ${ABI} set by multilib-portage.
+
+  02 Mar 2013; Michał Górny <mgorny@gentoo.org> python.eclass:
+  Remove deprecation warnings wrt bug #452160. The code will not be removed
+  anymore since the eclass will be deprecated at some point.
+
+  02 Mar 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Run *_all() phases in best-impl sources, in an in-source build.
+
+  02 Mar 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Override build locations and set PYTHONPATH in in-source builds, to increase
+  compatibility with out-of-source builds.
+
+  02 Mar 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  In-source builds: append "build/" subdir to the BUILD_DIR variable. It can be
+  used alike in out-of-source builds now.
+
+  27 Feb 2013; Michał Górny <mgorny@gentoo.org> multilib-build.eclass:
+  Enable x32 ABI support.
+
+  27 Feb 2013; Michał Górny <mgorny@gentoo.org> autotools-multilib.eclass:
+  Export src_prepare() explicitly rather than implicitly through inherits.
+
+  27 Feb 2013; Michał Górny <mgorny@gentoo.org> autotools-multilib.eclass:
+  Update description.
+
+  27 Feb 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass,
+  multilib-build.eclass, python-r1.eclass:
+  Revert the log teeing changes as they cause unexpected kind of breakage.
+
+  26 Feb 2013; Michał Górny <mgorny@gentoo.org> multilib-build.eclass:
+  Run header checksumming function only if /usr/include exists (IOW: silence
+  the warning).
+
+  26 Feb 2013; Michał Górny <mgorny@gentoo.org> multilib-build.eclass:
+  Enable writing split build logs.
+
+  26 Feb 2013; Michał Górny <mgorny@gentoo.org> eutils.eclass:
+  prune_libtool_files: support running without pkg-config installed, using sed
+  fallback.
+
+  26 Feb 2013; Michał Górny <mgorny@gentoo.org> python-r1.eclass:
+  Re-enable split logs, now directly handled by python*_foreach_impl().
+
+  26 Feb 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Re-use python_parallel_foreach_impl() in distutils-r1.
+
+  26 Feb 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass,
+  python-r1.eclass:
+  Introduce the parallel variant of python_foreach_impl().
+
+  26 Feb 2013; Michał Górny <mgorny@gentoo.org> python-r1.eclass:
+  Make python_foreach_impl() non-fatal, expect explicit die inside or outside.
+
+  25 Feb 2013; Michał Górny <mgorny@gentoo.org> xorg-2.eclass:
+  Bump the emul-linux-x86 blocker to match the new release.
+
+  24 Feb 2013; Pacho Ramos <pacho@gentoo.org> emul-linux-x86.eclass:
+  Allow headers installation, bug #458784
+
+  24 Feb 2013; Michał Górny <mgorny@gentoo.org> xorg-2.eclass:
+  Introduce multilib support for xlibs.
+
+  24 Feb 2013; Pacho Ramos <pacho@gentoo.org> emul-linux-x86.eclass:
+  Drop versionator eclass as it's not needed for a long time, also fixes bug
+  #458728 that was caused by quoting IUSE. Thanks a lot to mgorny for doing the
+  work.
+
+  24 Feb 2013; Hans de Graaff <graaff@gentoo.org> ruby-fakegem.eclass:
+  Also set the RUBY_FAKEGEM_DOCDIR default for the rake recipe. This fixes a
+  regression manifested by bug 458506.
+
+  22 Feb 2013; Michał Górny <mgorny@gentoo.org> autotools-multilib.eclass:
+  Fix passing arguments to phases.
+
+  21 Feb 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Support EXAMPLES to install examples in a consistent manner.
+
+  18 Feb 2013; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-plugin.eclass:
+  vdr-plugin.eclass, add eerror to get .eclass depricated
+
+  14 Feb 2013; Justin Lecher <jlec@gentoo.org> intel-sdp.eclass:
+  Make it possible to bypass license check from ebuilds
+
+  14 Feb 2013; Justin Lecher <jlec@gentoo.org> intel-sdp.eclass:
+  Drop KEYWORDS from eclass, #342185
+
+  12 Feb 2013; Michael Haubenwallner <haubi@gentoo.org>
+  ELT-patches/aixrtl/1.5.0-cmds-c:
+  Fix typo: extra apostrophe being shell syntax error.
+
+  11 Feb 2013; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass,
+  distutils-r1.eclass:
+  Support DOCS=() to disable installing documentation.
+
+  10 Feb 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Temporarily disable egg_info since it causes problems with installing
+  scripts.
+
+  10 Feb 2013; Michał Górny <mgorny@gentoo.org> +cmake-multilib.eclass:
+  Introduce cmake-utils wrapper eclass for multilib.
+
+  10 Feb 2013; Michał Górny <mgorny@gentoo.org> autotools-multilib.eclass,
+  multilib-build.eclass:
+  Move header checking function into multilib-build for wider reuse.
+
+  10 Feb 2013; Michał Górny <mgorny@gentoo.org> eutils.eclass:
+  QA-warn if epunt_cxx does not find any checks to punt.
+
+  10 Feb 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Introduce a function to install package for running tests, solving all the
+  issues with PyPy, setuptools and namespaces.
+
+  10 Feb 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Override egg-info write location in out-of-source builds.
+
+  10 Feb 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Error out if "tests" package is installed. This is a common mistake and a
+  source of file collisions.
+
+  08 Feb 2013; Michał Górny <mgorny@gentoo.org> vcs-snapshot.eclass:
+  Document the src_unpack() function. Requested in bug #456160.
+
+  08 Feb 2013; Michael Palimaka <kensington@gentoo.org> cmake-utils.eclass:
+  Bump CMake minimum version to latest stable.
+
+  08 Feb 2013; Patrick Lauer <patrick@gentoo.org> distutils.eclass:
+  Fixing confusing message in distutils.eclass
+
+  07 Feb 2013; Michael Palimaka <kensington@gentoo.org> cmake-utils.eclass:
+  Export src_prepare. Improve support for dev-util/ninja wrt bug #439608. Add
+  support for CMAKE_DISABLE_FIND_PACKAGE wrt bug #453746.
+
+  07 Feb 2013; Alexey Shvetsov <alexxy@gentoo.org> kde4-base.eclass,
+  kde4-functions.eclass, kde4-meta.eclass, kde4-meta-pkg.eclass:
+  Version bump KDE SC 4.10.0
+
+  04 Feb 2013; Pacho Ramos <pacho@gentoo.org> readme.gentoo.eclass:
+  Add a variable to stop autoformatting when not desired, use '-e' option for
+  echo in the autoformatting way to let people control it with sequences
+  recognized by it (see man echo), fix it to work ok with prebuilt packages
+  (#455030 by Brian Harring, Zac Medico and Fabio Erculiani)
+
+  04 Feb 2013; Michał Górny <mgorny@gentoo.org> python-utils-r1.eclass:
+  Introduce python_get_library_path() to obtain the path to the Python library.
+  Required by dev-python/shiboken.
+
+  04 Feb 2013; Michał Górny <mgorny@gentoo.org> python-utils-r1.eclass:
+  Introduce python_newscript(), to install scripts with renaming. Requested in
+  bug #454640.
+
+  01 Feb 2013; Michał Górny <mgorny@gentoo.org> autotools-multilib.eclass,
+  +multilib-build.eclass:
+  Introduce a common multilib-build eclass to help building packages for
+  multilib, and use the new ABI_X86 flags in it.
+
+  31 Jan 2013; Gilles Dartiguelongue <eva@gentoo.org> gst-plugins10.eclass:
+  Allow build of multiple plugins in different directories. Make variables more
+  easily override-able.
+
+  31 Jan 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  xorg-2.eclass:
+  Add EAPI 5 sub-slot dependency on x11-base/xorg-server for packages which
+  require rebuilding when the server is upgraded.
+
+  31 Jan 2013; Tomáš Chvátal <scarabeus@gentoo.org> obs-service.eclass:
+  Additional files also must be versioned as they change between versions.
+
+  30 Jan 2013; Michał Górny <mgorny@gentoo.org> python-r1.eclass,
+  python-single-r1.eclass:
+  Use (-) USE-defaults to reduce issues from removing flags.
+
+  29 Jan 2013; Michał Górny <mgorny@gentoo.org> python-utils-r1.eclass:
+  Disable pypy1.8 globally.
+
+  27 Jan 2013; Tim Harder <radhermit@gentoo.org> vim-plugin.eclass:
+  Remove all hidden files in the main tarball dir.
+
+  27 Jan 2013; Michał Górny <mgorny@gentoo.org> python-r1.eclass:
+  Fix output redirections in run_in_build_dir().
+
+  27 Jan 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Support using distutils-r1 along with python-single-r1.
+
+  27 Jan 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Support making dependency and phase function enforcement optional.
+
+  27 Jan 2013; Michał Górny <mgorny@gentoo.org> python-r1.eclass:
+  Introduce run_in_build_dir() function as used by GNOME ebuilds.
+
+  27 Jan 2013; Michał Górny <mgorny@gentoo.org> python-utils-r1.eclass:
+  Introduce python_doheader(), to install headers specific to a Python
+  implementation.
+
+  27 Jan 2013; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-plugin-2.eclass:
+  reverted last changes
+
+  27 Jan 2013; Tim Harder <radhermit@gentoo.org> vim-plugin.eclass:
+  Remove files before installing docs.
+
+  27 Jan 2013; Tim Harder <radhermit@gentoo.org> vim-plugin.eclass:
+  Also remove stray makefiles.
+
+  27 Jan 2013; Tim Harder <radhermit@gentoo.org> vim-plugin.eclass:
+  Remove unwanted files that may exist.
+
+  27 Jan 2013; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-plugin-2.eclass:
+  some fixes, install new makefilehandling; thx to zoolock@irc gentoo.vdr
+
+  26 Jan 2013; Sven Vermeulen <swift@gentoo.org> selinux-policy-2.eclass:
+  Supporting removal of SELinux modules
+
+  26 Jan 2013; Michał Górny <mgorny@gentoo.org> autotools-multilib.eclass:
+  Set USE defaults to make sure IUSE_IMPLICIT does not fool us.
+
+  26 Jan 2013; Michał Górny <mgorny@gentoo.org> autotools-multilib.eclass:
+  Require EAPI=5 to make sure everything works predictably.
+
+  26 Jan 2013; Michał Górny <mgorny@gentoo.org> autotools-multilib.eclass:
+  Support running commands in parallel and use it to run configure scripts.
+
+  26 Jan 2013; Michał Górny <mgorny@gentoo.org> autotools-multilib.eclass:
+  Introduce MULTILIB_USEDEP to enforce correct dependencies.
+
+  25 Jan 2013; Michael Haubenwallner <haubi@gentoo.org>
+  +ELT-patches/aixrtl/1.5.0-cmds-c, +ELT-patches/aixrtl/1.5.0-cmds-cxx,
+  +ELT-patches/aixrtl/1.5.0-expsym-c, +ELT-patches/aixrtl/1.5.0-expsym-cxx,
+  +ELT-patches/aixrtl/1.5.0-noundef-c, +ELT-patches/aixrtl/1.5.0-noundef-cxx,
+  +ELT-patches/aixrtl/1.5.0-soname, +ELT-patches/aixrtl/1.5.0-usertl-c,
+  +ELT-patches/aixrtl/1.5.0-usertl-cxx, +ELT-patches/aixrtl/2.2.0-cmds-c,
+  +ELT-patches/aixrtl/2.2.0-cmds-cxx, +ELT-patches/aixrtl/2.2.0-expsym-c,
+  +ELT-patches/aixrtl/2.2.0-expsym-cxx, +ELT-patches/aixrtl/2.2.0-noundef-c,
+  +ELT-patches/aixrtl/2.2.0-noundef-cxx, +ELT-patches/aixrtl/2.2.0-usertl-cxx,
+  +ELT-patches/aixrtl/2.4.0-expsym-c, +ELT-patches/aixrtl/2.4.0-expsym-cxx,
+  -ELT-patches/aixrtl/1.4d-cmds-c, -ELT-patches/aixrtl/1.4d-cmds-cxx,
+  -ELT-patches/aixrtl/1.4d-sonamespec, -ELT-patches/aixrtl/1.4d-use-rtl-c,
+  -ELT-patches/aixrtl/1.4d-use-rtl-cxx, -ELT-patches/aixrtl/1.5-sonamespec,
+  -ELT-patches/aixrtl/2.1b-cmds-c, -ELT-patches/aixrtl/2.1b-cmds-cxx,
+  -ELT-patches/aixrtl/2.1b-use-rtl-cxx, ELT-patches/aixrtl/1.5.22-cmds-c,
+  ELT-patches/aixrtl/1.5.22-cmds-cxx, ELT-patches/aixrtl/2.2.8-cmds-c,
+  ELT-patches/aixrtl/2.2.8-cmds-cxx:
+  Recreate from scratch: Drop need for ld-wrapper with --soname support, is
+  unavailable during bootstrap. Ignore libtool before 1.5.0.
+
+  24 Jan 2013; Pacho Ramos <pacho@gentoo.org> readme.gentoo.eclass:
+  Include FORCE_PRINT_ELOG variable to for printing of messages when desired.
+  Thanks to Tomáš Chvátal for his suggestions.
+
+  24 Jan 2013; Tim Harder <radhermit@gentoo.org> vim-plugin.eclass:
+  Only display vim plugin help elog messages for new installs.
+
+  23 Jan 2013; Justin Lecher <jlec@gentoo.org> intel-sdp.eclass:
+  Add dummy dir to avoid sandbox violations when emerging with
+  FEATURES=-userpriv, #437512
+
+  23 Jan 2013; Justin Lecher <jlec@gentoo.org> intel-sdp.eclass:
+  Add support for license server, #447262
+
+  21 Jan 2013; Michał Górny <mgorny@gentoo.org> python-any-r1.eclass,
+  python-r1.eclass, python-single-r1.eclass, python-utils-r1.eclass:
+  Check PYTHON_COMPAT for validity, and support disabling implementations in
+  the eclass.
+
+  21 Jan 2013; Michał Górny <mgorny@gentoo.org> multilib.eclass:
+  Set PKG_CONFIG_{LIBDIR,PATH} for multilib builds. Approved by vapier in bug
+  #453206.
+
+  20 Jan 2013; Michał Górny <mgorny@gentoo.org> autotools-multilib.eclass:
+  Enable EAPI=5.
+
+  20 Jan 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Do not redirect stderr of pushd&popd. Thanks to vapier for catching that.
+
+  20 Jan 2013; Pacho Ramos <pacho@gentoo.org> +readme.gentoo.eclass:
+  Finally commit readme.gentoo.eclass to create a README.gentoo doc file
+  recording tips shown via elog messages first time the package is merged.
+
+  18 Jan 2013; Justin Lecher <jlec@gentoo.org> intel-sdp.eclass:
+  No EPREFIX with helper functions
+
+  16 Jan 2013; Jory A. Pratt <anarchy@gentoo.org> mozconfig-3.eclass:
+  Remove webrtc block as it is supported on all archs now.
+
+  16 Jan 2013; Gilles Dartiguelongue <eva@gentoo.org> gnome2.eclass:
+  Drop deprecated SCROLLKEEPER_UPDATE and switch to in_iuse.
+
+  16 Jan 2013; Gilles Dartiguelongue <eva@gentoo.org> gnome2.eclass,
+  gst-plugins10.eclass:
+  Update eclass documentation to be correclty parsed, bug #452204.
+
+  16 Jan 2013; Ralph Sennhauser <sera@gentoo.org> java-utils-2.eclass:
+  Be graceful if no system vm is set if trying to determine build vm from
+  handle.
+
+  16 Jan 2013; Michał Górny <mgorny@gentoo.org> mozcoreconf-2.eclass:
+  Migrate Mozilla packages to python-any-r1 for build-time Python dep.
+
+  16 Jan 2013; Jory A. Pratt <anarchy@gentoo.org> mozcoreconf-2.eclass:
+  Fix sqlite dep so pysqlite can go away.
+
+  16 Jan 2013; Zac Medico <zmedico@gentoo.org> linux-info.eclass:
+  Fix localRESULT typo in linux_chkconfig_builtin.
+
+  15 Jan 2013; Jeroen Roovers <jer@gentoo.org> ChangeLog:
+  DECRIPTION -> DESCRIPTION (bug #451654 by Christopher Schwan).
+
+  15 Jan 2013; Justin Lecher <jlec@gentoo.org> git.eclass:
+  @THANKS is no keywords
+
+  15 Jan 2013; Justin Lecher <jlec@gentoo.org> distutils-r1.eclass:
+  Fix typo
+
+  15 Jan 2013; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  Drop go support for 4.6 - broken by newer glibc versions and upstream
+  recommends it not be used.
+
+  13 Jan 2013; Gilles Dartiguelongue <eva@gentoo.org> gnome2.eclass:
+  Allow ebuild override of eclass generated econf.
+
+  12 Jan 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Provide best implementation's build dir in python_*_all() as BUILD_DIR to
+  make use of esetup.py easier.
+
+  12 Jan 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Pass arguments to setup.py in an predictable order, especially do not prepend
+  commands before user options.
+
+  12 Jan 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Support specifying directories in DOCS.
+
+  12 Jan 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Do not call dummy phases unnecessarily.
+
+  12 Jan 2013; Justin Lecher <jlec@gentoo.org> flag-o-matic.eclass:
+  Don't check for twice, but check for redirect support, #445244; thanks Andrey
+  Hippo for the patch
+
+  11 Jan 2013; Justin Lecher <jlec@gentoo.org> +cuda.eclass:
+  Add new eclass
+
+  11 Jan 2013; Mike Gilbert <floppym@gentoo.org> distutils-r1.eclass:
+  Close the lock file explicitly instead of relying on the subshell created by
+  the pipe to tee in distutils-r1_run_phase.
+
+  10 Jan 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Use locks to avoid race conditions when merging (bug #449760). Use tar
+  instead of cp on FreeBSD due to bug when copying broken symlinks (bug
+  #447370).
+
+  09 Jan 2013; Ian Stakenvicius <axs@gentoo.org> git-2.eclass:
+  added documentation for an undocumented override variable
+
+  08 Jan 2013; Michał Górny <mgorny@gentoo.org> python-single-r1.eclass:
+  Fix the PYTHON_SINGLE_TARGET validity check.
+
+  08 Jan 2013; Michał Górny <mgorny@gentoo.org> python-r1.eclass,
+  python-single-r1.eclass:
+  Manually check PYTHON_TARGETS and PYTHON_SINGLE_TARGET for validity rather
+  than using REQUIRED_USE. Fixes bug #447808.
+
+  06 Jan 2013; Sergei Trofimovich <slyfox@gentoo.org> ghc-package.eclass,
+  haskell-cabal.eclass:
+  Added 'ghc-supports-threaded-runtime' function. Removed implicit RDEPEND on
+  'ghc'.
+
+  05 Jan 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Support overriding job-count for parallel build.
+
+  05 Jan 2013; Michał Górny <mgorny@gentoo.org> python-utils-r1.eclass:
+  Support converting files with python2 and python3 shebangs.
+
+  05 Jan 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Always write split logs, even in non-parallel builds.
+
+  05 Jan 2013; Zac Medico <zmedico@gentoo.org> autotools.eclass:
+  Avoid unsafe nested multijob_finish_one in eautoreconf for bug #426512.
+
+  04 Jan 2013; Ulrich Müller <ulm@gentoo.org> elisp.eclass,
+  elisp-common.eclass:
+  Sync eclasses from Emacs overlay.
+  elisp-common.eclass: Remove last remnants of backwards compatibility code
+  from elisp-site-regen which was introduced at 2007-12-01. Distinguish between
+  "version too low" and "could not determine version" in elisp_pkg_setup.
+  elisp.eclass: Return 2 as exit status of elisp-need-emacs if the comparison
+  could not be done, e.g., if emacs could not be executed.
+
+  04 Jan 2013; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-plugin-2.eclass:
+  fixed typo, thx to Martin Dummer on irc #vdr-gentoo
+
+  04 Jan 2013; Mike Gilbert <floppym@gentoo.org> distutils-r1.eclass:
+  addpredict /usr/lib/portage/pym in distutils-r1_src_install.
+
+  04 Jan 2013; Mike Gilbert <floppym@gentoo.org> python-r1.eclass:
+  Don't tell the user to set USE_PYTHON when a package does not support
+  python2.7 or python3.2.
+
+  03 Jan 2013; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-plugin-2.eclass:
+  fixed mistake for emake:-all emake:-install between old and new plugin
+  makefile structur, vdr-plugin-2.eclass
+
+  03 Jan 2013; Alon Bar-Lev <alonbl@gentoo.org> ssl-cert.eclass:
+  Support mandatory enrollment and custom USE flag, bug#319529.
+
+  03 Jan 2013; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Remove more dead code, spotted by Arfrever.
+
+  02 Jan 2013; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass,
+  python-any-r1.eclass, python-r1.eclass, python-single-r1.eclass,
+  python-utils-r1.eclass:
+  Remove myself from explicit maintainers, it is enough to assign the bugs to
+  Python team.
+
+  31 Dec 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-plugin-2.eclass:
+  Do not use {C,CXX}FLAGS from pkg-config vdr.pc >=media-video/vdr-1.7.34;we do
+  not have the chance to overwrite it with *.eclass
+
+  31 Dec 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-plugin-2.eclass:
+  vdr-plugin-2.eclass, typo
+
+  31 Dec 2012; Michał Górny <mgorny@gentoo.org> python-r1.eclass:
+  Add a function to generate dep-strings conditional to Python implementations.
+
+  31 Dec 2012; Michał Górny <mgorny@gentoo.org> systemd.eclass:
+  Add function to get user unit directory, as requested in bug #449304.
+
+  31 Dec 2012; Michał Górny <mgorny@gentoo.org> systemd.eclass:
+  Add function to update systemd journal catalog database.
+
+  31 Dec 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-plugin-2.eclass:
+  vdr-plugin-2.eclass; better detection of new Makefile handling, fixed some
+  mistakes in inherited append-*flags
+
+  31 Dec 2012; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Remove dead code.
+
+  30 Dec 2012; Michał Górny <mgorny@gentoo.org> python-utils-r1.eclass:
+  Fix installing scripts & modules for Prefix, bug #448786.
+
+  29 Dec 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-plugin-2.eclass:
+  some adaption for new makefile handling, >=vdr-1.7.34
+
+  27 Dec 2012; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Pass --build-scripts path to setup.py (when out-of-source builds are used).
+
+  27 Dec 2012; Michał Górny <mgorny@gentoo.org> python-utils-r1.eclass:
+  Introduce functions to get the includedir for Python.
+
+  27 Dec 2012; Michał Górny <mgorny@gentoo.org> python-r1.eclass:
+  Introduce python_gen_usedep() and python_gen_flags() to make writing complex
+  dependencies easier.
+
+  26 Dec 2012; Christoph Junghans <ottxor@gentoo.org> mercurial.eclass:
+  added EHG_BOOTSTRAP (bug #340153), EHG_REVISION defaults to 'defaults (bug
+  #380947), set web.cacerts (bug #431220), use auth when pulling (bug #432364)
+
+  24 Dec 2012; Zac Medico <zmedico@gentoo.org> python-any-r1.eclass:
+  Fix python-any-r1_pkg_setup fallback logic.
+
+  22 Dec 2012; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Tweak sed expression to match against Qt 4.8.4 too. Thanks to Tomasz
+  Mloduchowski <q@qdot.me> for spotting the regression.
+
+  20 Dec 2012; Michał Górny <mgorny@gentoo.org> python-single-r1.eclass:
+  Introduce python_fix_shebang(), to fix shebangs in installed Python scripts
+  recursively.
+
+  20 Dec 2012; Michał Górny <mgorny@gentoo.org> python-any-r1.eclass,
+  python-r1.eclass, python-single-r1.eclass, python-utils-r1.eclass:
+  Commonize the code for obtaining the Python interpreter dependency string.
+
+  20 Dec 2012; Justin Lecher <jlec@gentoo.org> flag-o-matic.eclass:
+  Add fix for nen gnu compiler which use -x as command line arg internally,
+  #445244
+
+  20 Dec 2012; Mike Gilbert <floppym@gentoo.org> python.eclass:
+  Remove pypy version mapping table from wrapper scripts. We can add it back if
+  pypy is ever ported to py3k and we are still using this eclass.
+
+  20 Dec 2012; Mike Gilbert <floppym@gentoo.org> python.eclass:
+  Add pypy version mapping for 2.0 => 2.7.
+
+  20 Dec 2012; Mike Gilbert <floppym@gentoo.org> python.eclass:
+  Add 2.7-pypy-2.0.
+
+  20 Dec 2012; Mike Gilbert <floppym@gentoo.org> python-utils-r1.eclass:
+  Add pypy2_0.
+
+  19 Dec 2012; Michał Górny <mgorny@gentoo.org> python-r1.eclass:
+  Re-enable python-r1 -> python-single-r1 dep prevention.
+
+  17 Dec 2012; Michał Górny <mgorny@gentoo.org> python-r1.eclass,
+  python-single-r1.eclass:
+  Require EAPI=5 in both python-r1 eclasses due to bug #447524.
+
+  16 Dec 2012; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass,
+  python-r1.eclass:
+  Remove outdated comments and checks.
+
+  16 Dec 2012; Michał Górny <mgorny@gentoo.org> python-r1.eclass:
+  Temporarily disable PYTHON_SINGLE_TARGET safety check because of issues with
+  paludis, bug #447524.
+
+  16 Dec 2012; Gilles Dartiguelongue <eva@gentoo.org> gnome2.eclass:
+  Pass --disable-schemas-compile from gsettings.m4 in gnome2_src_configure.
+
+  15 Dec 2012; Michał Górny <mgorny@gentoo.org> python-utils-r1.eclass:
+  Fix the relative linking algo to handle /// in path.
+
+  14 Dec 2012; Michał Górny <mgorny@gentoo.org> python-r1.eclass:
+  Prevent python-r1 packages from depending on python-single-r1 packages.
+
+  14 Dec 2012; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Support directories in DOCS, in EAPI 4+.
+
+  13 Dec 2012; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Add (temporary) fix for sandbox failures when compiling Python modules. Bug
+  #447126.
+
+  10 Dec 2012; Lars Wendler <polynomial-c@gentoo.org> mozcoreconf-2.eclass:
+  Added changes to mozcoreconf-2.eclass on request by Anarchy.
+
+  09 Dec 2012; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Fix python-exec symlink generation for Prefix. Thanks to Fabian Groffen for
+  help.
+
+  09 Dec 2012; Ian Stakenvicius <axs@gentoo.org> mozcoreconf-2.eclass,
+  mozconfig-3.eclass:
+  updated mozilla eclasses to match mozilla-overlay
+
+  08 Dec 2012; Michael Palimaka <kensington@gentoo.org> cmake-utils.eclass:
+  Respect ASMFLAGS, wrt bug #432480. Permit ebuilds to define 'myctestargs'.
+
+  07 Dec 2012; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Use separate TMPDIR for each Python implementation.
+
+  07 Dec 2012; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Report running implementation-common sub-phases verbosely.
+
+  07 Dec 2012; Michał Górny <mgorny@gentoo.org> python-any-r1.eclass:
+  Respect user preferences in python-any-r1 (EPYTHON, eselect-python).
+
+  07 Dec 2012; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Write split build logs for easier debugging.
+
+  07 Dec 2012; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Use multiprocessing post-fork wait mode to avoid early output when all jobs
+  are running.
+
+  07 Dec 2012; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Do not die when sub-phases return non-true value. This is inconsistent with
+  normal phase behavior and not really useful since phase functions are
+  supposed to die on their own.
+
+  07 Dec 2012; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Pass the best Python implementation info to the implementation-common phase
+  functions.
+
+  06 Dec 2012; Tomáš Chvátal <scarabeus@gentoo.org> waf-utils.eclass:
+  Introduce NO_WAF_LIBDIR to allow building packages that fails when libdir is
+  set.
+
+  06 Dec 2012; Tomáš Chvátal <scarabeus@gentoo.org> waf-utils.eclass:
+  Sort this eapi case stuff.
+
+  05 Dec 2012; Justin Lecher <jlec@gentoo.org> intel-sdp.eclass:
+  Add EAPI=5 support; add check for presents of license; handle docs, examples
+  and man page in a more sane way;sort functions and document eclass for
+  man-pages; Drop Sebastion as maintainer
+
+  03 Dec 2012; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass,
+  cmake-utils.eclass:
+  Improve the compatibility code thanks to Arfrever.
+
+  03 Dec 2012; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass,
+  cmake-utils.eclass:
+  Fix respecting AUTOTOOLS_BUILD_DIR and CMAKE_BUILD_DIR. Acked by scarabeus.
+
+  02 Dec 2012; Gilles Dartiguelongue <eva@gentoo.org> gst-plugins-bad.eclass,
+  gst-plugins-base.eclass, gst-plugins-good.eclass, gst-plugins-ugly.eclass,
+  gst-plugins10.eclass:
+  Commit new gstreamer eclasses as reviewed on gentoo-dev mailing list with a
+  few more fixes, most notably EAPI=1 support fixes. For a more detailed
+  changelog, please see gnome overlay git log.
+
+  02 Dec 2012; Pacho Ramos <pacho@gentoo.org> vala.eclass:
+  making vala_src_prepare() into a no-op in the
+  common situation where vala is in IUSE and USE=-vala as discussed with the
+  team via mail. Thanks a lot to Alexandre Rostovtsev for the work.
+
+  02 Dec 2012; Pacho Ramos <pacho@gentoo.org> gnome2.eclass:
+  Always pass --disable-gtk-doc for eapi >= 5 as we don't want docs to get
+  rebuilt as discussed with gnome team. Thanks a lot to Gilles for working on
+  this.
+
+  01 Dec 2012; Michał Górny <mgorny@gentoo.org> autotools-multilib.eclass,
+  autotools-utils.eclass, cmake-utils.eclass:
+  Use a common BUILD_DIR variable. Acked by scarabeus.
+
+  01 Dec 2012; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Support parallel builds using multiprocessing eclass.
+
+  01 Dec 2012; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Create the wrapper symlinks directly in _distutils-r1_rename_scripts rather
+  than postponing it to distutils-r1_install_all.
+
+  01 Dec 2012; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Use intermediate-root install.
+
+  01 Dec 2012; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Make distutils-r1_rename_scripts private. Rename all matching executables
+  recursively in given path(s) rather than using hardcoded path list.
+
+  01 Dec 2012; Michał Górny <mgorny@gentoo.org> +python-any-r1.eclass,
+  python-r1.eclass, python-single-r1.eclass:
+  Introduce python-any-r1, to handle packages satisfied by any Python
+  implementation installed (e.g. strictly build-time dependent).
+
+  30 Nov 2012; Michał Górny <mgorny@gentoo.org> python-single-r1.eclass:
+  Add missing REQUIRED_USE constraints to enforce PYTHON_SINGLE_TARGET being in
+  PYTHON_TARGETS.
+
+  30 Nov 2012; Michał Górny <mgorny@gentoo.org> python-utils-r1.eclass:
+  Support all EAPIs.
+
+  30 Nov 2012; Michał Górny <mgorny@gentoo.org> python-r1.eclass,
+  python-single-r1.eclass, python-utils-r1.eclass:
+  Make python-single-r1 stand-alone, and blocking python-r1.
+
+  29 Nov 2012; Julian Ospald <hasufell@gentoo.org> waf-utils.eclass:
+  add verbosity to waf-utils.eclass wrt #444562
+
+  28 Nov 2012; Justin Lecher <jlec@gentoo.org> fortran-2.eclass:
+  * Reduce potential clash of function names in global scope
+  * Use more manpage tags
+  * resort phase functions to the end
+  * require at least arguments for _fortran_compile_test()
+  * log compile tests
+
+  28 Nov 2012; Justin Lecher <jlec@gentoo.org> fortran-2.eclass:
+  Use man page tags
+
+  27 Nov 2012; Jeroen Roovers <jer@gentoo.org> nvidia-driver.eclass:
+  Remove ebeep because newer nvidia-drivers have EAPI=4.
+
+  27 Nov 2012; Ulrich Müller <ulm@gentoo.org> scsh.eclass:
+  Drop default LICENSE assignment.
+
+  27 Nov 2012; Alexandre Rostovtsev <tetromino@gentoo.org> gnome2.eclass:
+  Handle DOCS when it is an exported array, i.e. "declare -ax" (bug #444740,
+  thanks to Arfrever).
+
+  26 Nov 2012; Alexandre Rostovtsev <tetromino@gentoo.org> gnome2.eclass:
+  Typo, probably caused by strange font in pms.pdf (bug #444740, thanks to
+  Alphat-PC).
+
+  26 Nov 2012; Michał Górny <mgorny@gentoo.org> python-utils-r1.eclass:
+  Add python_optimize() to compile Python modules.
+
+  26 Nov 2012; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass,
+  python-single-r1.eclass:
+  Run EXPORT_FUNCTIONS even if re-inheriting, to preserve the expected phase
+  overrides.
+
+  26 Nov 2012; Michał Górny <mgorny@gentoo.org> python-r1.eclass,
+  python-single-r1.eclass:
+  Override incompatible functions in python-single-r1 directly, instead of
+  adding checks to python-r1.
+
+  25 Nov 2012; Pacho Ramos <pacho@gentoo.org> emul-linux-x86.eclass:
+  Really install only libs, not everything included in .so* (#442910 by SpanKY,
+  Samuli Suominen and Jim Faulkner).
+
+  24 Nov 2012; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass,
+  python.eclass, python-r1.eclass, python-single-r1.eclass,
+  python-utils-r1.eclass:
+  Fix EAPI checks, add double- and colliding include guards.
+
+  24 Nov 2012; Michał Górny <mgorny@gentoo.org> +python-single-r1.eclass:
+  Introduce python-single-r1 to handle Python packages not supporting multiple
+  implementations.
+
+  24 Nov 2012; Michał Górny <mgorny@gentoo.org> python-r1.eclass,
+  +python-utils-r1.eclass:
+  Move common Python functions to python-utils-r1.
+
+  24 Nov 2012; Pacho Ramos <pacho@gentoo.org> gnome2.eclass:
+  Handle documentation as 'default' for eapi5 and newer (as discussed via
+  mail), bug #373131
+
+  21 Nov 2012; Michał Górny <mgorny@gentoo.org> systemd.eclass:
+  systemd_do*: use local variable scope instead of subshelling.
+
+  21 Nov 2012; Michał Górny <mgorny@gentoo.org> python-r1.eclass:
+  Introduce python_domodule() to install Python modules.
+
+  21 Nov 2012; Michał Górny <mgorny@gentoo.org> python-r1.eclass:
+  Introduce python_doscript() to install Python scripts.
+
+  19 Nov 2012; Michał Górny <mgorny@gentoo.org> python-r1.eclass:
+  Introduce a check for USE_PYTHON & PYTHON_TARGETS compatibility.
+
+  19 Nov 2012; Sergei Trofimovich <slyfox@gentoo.org> haskell-cabal.eclass:
+  Added new helper function 'cabal_chdeps' and and debug variable
+  'CABAL_DEBUG_LOOSENING' for it.
+
+  17 Nov 2012; Mike Gilbert <floppym@gentoo.org> enlightenment.eclass:
+  Remove the minimum restriction from PYTHON_DEPEND; any version of python from
+  the last several years will do the job.
+
+  17 Nov 2012; Pacho Ramos <pacho@gentoo.org> gnome2.eclass:
+  Rely on prune_libtool_files for eapis >= 5 as discussed with the team via
+  mail.
+
+  17 Nov 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  enlightenment.eclass:
+  Raise python dependency to at least 2.5, fixes the breakage caused by
+  silently dropped support for python-2.4 in python eclass
+
+  16 Nov 2012; Sergei Trofimovich <slyfox@gentoo.org> ghc-package.eclass,
+  haskell-cabal.eclass:
+  Restore dynamic linking of Cabal's ./setup and add building of shared
+  libraries for ghc-7.7+.
+
+  15 Nov 2012; Tomáš Chvátal <scarabeus@gentoo.org> obs-service.eclass:
+  Depend on suse-build as most services require it.
+
+  15 Nov 2012; Tomáš Chvátal <scarabeus@gentoo.org> obs-service.eclass:
+  Darn copy pasto overlook.
+
+  15 Nov 2012; Tomáš Chvátal <scarabeus@gentoo.org> obs-service.eclass:
+  Use src_uri arrows to allow versioning sanely.
+
+  12 Nov 2012; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Update from qt overlay: respect AR (bug #440262); drop support for EAPI=2;
+  switch to prune_libtool_files(); various cleanups.
+
+  08 Nov 2012; Davide Pesavento <pesa@gentoo.org> qt4-r2.eclass:
+  Partial sync with qt overlay. Apart from cosmetic changes, we now explicitly
+  define QMAKE_{AR,RANLIB,OBJCOPY} in eqmake4(), thus fixing bug 440266.
+
+  07 Nov 2012; Pacho Ramos <pacho@gentoo.org> gnome2.eclass:
+  Pass --disable-schemas-install when possible as discussed with the team via
+  mail.
+
+  07 Nov 2012; Pacho Ramos <pacho@gentoo.org> gnome2.eclass:
+  Pass --disable-silent-rules when possible (not needed for eapi5), bug #429308
+
+  05 Nov 2012; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Fix enabling byte-compiling.
+
+  04 Nov 2012; Michał Górny <mgorny@gentoo.org> python-r1.eclass:
+  Always require PYTHON_COMPAT. Add an exception for python-exec which is a
+  special case.
+
+  01 Nov 2012; Robin H. Johnson <robbat2@gentoo.org> mysql-autotools.eclass,
+  mysql-cmake.eclass, mysql-v2.eclass:
+  Bring in MySQL overlay eclass changes for tcmalloc, jemalloc, systemtap,
+  readline gplv3 and pbxt static build.
+
+  01 Nov 2012; Michał Górny <mgorny@gentoo.org> python-r1.eclass:
+  Minor documentation improvements.
+
+  01 Nov 2012; Michał Górny <mgorny@gentoo.org> python-r1.eclass:
+  Mark _python_ln_rel as @INTERNAL.
+
+  01 Nov 2012; Robin H. Johnson <robbat2@gentoo.org> mysql.eclass,
+  mysql-v2.eclass:
+  Bug #392361: Fix mysql_install_db cases to work between all versions &
+  variations of MySQL. Also add in checks for tmpdir/log-bin/relay-log
+  directories that must exist otherwise the install_db will fail.
+
+  01 Nov 2012; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Export PYTHONPATH for phases in out-of-source builds.
+
+  01 Nov 2012; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Explicitly set library build dir in out-of-source builds.
+
+  01 Nov 2012; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Update homepage.
+
+  31 Oct 2012; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Enable byte-compilation of Python modules only locally for
+  distutils-r1_python_install(). Thanks to Enlik for reminding me of it.
+
+  31 Oct 2012; Michał Górny <mgorny@gentoo.org> python-r1.eclass:
+  Fix the shebang correcting function to patch shebang only. Thanks to Enlik
+  for the patch.
+
+  31 Oct 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  gst-plugins10.eclass:
+  Use versionator to slot gst-1.0 plugins.
+
+  30 Oct 2012; Michał Górny <mgorny@gentoo.org> systemd.eclass:
+  Add systemd_with_utildir() as well.
+
+  30 Oct 2012; Michał Górny <mgorny@gentoo.org> systemd.eclass:
+  Introduce systemd_get_utildir() wrt bug #440320.
+
+  30 Oct 2012; Michał Górny <mgorny@gentoo.org> systemd.eclass:
+  Replace "echo -n" with "echo", bash removes trailing newline in subshells
+  anyway.
+
+  30 Oct 2012; Michał Górny <mgorny@gentoo.org> python-distutils-ng.eclass:
+  Fix Prefix support, wrt bug #423323.
+
+  29 Oct 2012; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Support and use out-of-source builds by default.
+
+  29 Oct 2012; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Introduce an esetup.py wrapper function and mydistutilsargs=() for it.
+
+  29 Oct 2012; Michał Górny <mgorny@gentoo.org> python-r1.eclass:
+  Enable python3.3 support.
+
+  29 Oct 2012; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Remove redundant "cd ${BUILD_DIR}" calls.
+
+  29 Oct 2012; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass,
+  python-r1.eclass:
+  Move python-exec dependency to python-r1. That eclass now provides means to
+  create versioned scripts as well.
+
+  29 Oct 2012; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Use find instead of hard-coded executable locations list when linking the
+  wrapper.
+
+  29 Oct 2012; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Use new python-r1 functions.
+
+  29 Oct 2012; Michał Górny <mgorny@gentoo.org> python-r1.eclass:
+  Introduce python_replicate_script(), to create copies of a Python script for
+  all installed implementations.
+
+  29 Oct 2012; Michał Górny <mgorny@gentoo.org> python-r1.eclass:
+  Introduce python_export_best() to obtain variables for the most preferred
+  Python implementation enabled.
+
+  29 Oct 2012; Michał Górny <mgorny@gentoo.org> python-r1.eclass:
+  Add getters for common Python variables.
+
+  29 Oct 2012; Michał Górny <mgorny@gentoo.org> python-r1.eclass:
+  Add support for obtaining Python site-packages directory.
+
+  28 Oct 2012; Pacho Ramos <pacho@gentoo.org> emul-linux-x86.eclass:
+  Do not hardcode lib32, bug #429726 by SpanKY.
+
+  28 Oct 2012; Pacho Ramos <pacho@gentoo.org> emul-linux-x86.eclass:
+  Set QA_PREBUILT as all installed files are precompiled.
+
+  27 Oct 2012; Alexandre Rostovtsev <tetromino@gentoo.org> gnome2-utils.eclass:
+  Avoid sedding configure.ac in gnome2_disable_deprecation_warning to prevent
+  accidental triggering of maintainer mode in some packages (bug #439602).
+
+  27 Oct 2012; Mike Gilbert <floppym@gentoo.org> python-r1.eclass:
+  Remove duplicate documentation for BUILD_DIR, PYTHON, and EPYTHON. This
+  breaks eclass-manpages.
+
+  26 Oct 2012; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass,
+  python-r1.eclass:
+  Do not enter BUILD_DIR in python_foreach_impl(), do that in distutils-r1
+  instead.
+
+  25 Oct 2012; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Add games/bin to lookup paths for rename_scripts().
+
+  25 Oct 2012; Michał Górny <mgorny@gentoo.org> python-r1.eclass:
+  Add a note about array brace expansion.
+
+  25 Oct 2012; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass,
+  python-r1.eclass:
+  Introduce python_export() to set Python-relevant variables, and document them
+  better.
+
+  25 Oct 2012; Tomáš Chvátal <scarabeus@gentoo.org> cmake-utils.eclass:
+  Include fix for bug#439268.
+
+  24 Oct 2012; Ulrich Müller <ulm@gentoo.org> vim.eclass:
+  Update dependency after package move from x11-libs/openmotif to
+  x11-libs/motif.
+
+  24 Oct 2012; Tomáš Chvátal <scarabeus@gentoo.org> myspell-r2.eclass:
+  Add some boring debug prints and error+die when hunspell folder is symlink.
+  Should fix bug#438792.
+
+  23 Oct 2012; Michał Górny <mgorny@gentoo.org> eutils.eclass:
+  prune_libtool_files(): fix variable reuse. Thanks to radhermit for the patch.
+
+  23 Oct 2012; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass,
+  python-r1.eclass:
+  Improve documentation and a few minor fixes.
+
+  23 Oct 2012; Gilles Dartiguelongue <eva@gentoo.org> gnome2-utils.eclass,
+  gnome2.eclass:
+  Add gnome2_disable_deprecation_warning to gnome2-utils.eclass
+
+  23 Oct 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  gst-plugins-base.eclass:
+  Punt plugin .la files for 0.10.36 and EAPI4
+
+  23 Oct 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  gst-plugins-good.eclass:
+  Update for gst-plugins-good-0.10.31: use .xz tarballs, punt .la files.
+
+  22 Oct 2012; Michael Pagano <mpagano@gentoo.org> linux-info.eclass:
+  Update for new location of version.h. Thanks to Magnus Helmersson. Bug
+  #438876
+
+  22 Oct 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  enlightenment.eclass:
+  Enable verbose output
+
+  21 Oct 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  gst-plugins-base.eclass:
+  Switch to xz tarballs in EAPI4.
+
+  19 Oct 2012; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Call no-op default phases for each implementation (meaningless but more
+  correct).
+
+  19 Oct 2012; Patrick Lauer <patrick@gentoo.org> check-reqs.eclass:
+  Fixing units
+
+  19 Oct 2012; Patrick Lauer <patrick@gentoo.org> check-reqs.eclass:
+  Fixing units
+
+  19 Oct 2012; Patrick Lauer <patrick@gentoo.org> check-reqs.eclass:
+  Fixing binpkg behaviour
+
+  17 Oct 2012; Michael Palimaka <kensington@gentoo.org> cmake-utils.eclass:
+  Respect AR and RANLIB, wrt bug #436070.
+
+  16 Oct 2012; Justin Lecher <jlec@gentoo.org> fortran-2.eclass:
+  Unset FC and F77 if no fortran support is wanted
+
+  16 Oct 2012; Justin Lecher <jlec@gentoo.org> fortran-2.eclass:
+  Add enhanced DEP support in fortran-2.eclass to easy the usage. Only inherit
+  fortran-2 is need for general use. For a USE dependency on fortran the new
+  FORTRAN_NEEDED=USE variable was introduced
+
+  16 Oct 2012; Ben de Groot <yngwin@gentoo.org> -qt4.eclass:
+  Removing qt4.eclass as announced on Sep 13
+
+  15 Oct 2012; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass,
+  python-r1.eclass:
+  Enable EAPI 5 support.
+
+  15 Oct 2012; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Fix missing wrapper symlinks when first supported Python implementation is
+  disabled.
+
+  14 Oct 2012; Alexey Shvetsov <alexxy@gentoo.org> openib.eclass:
+  Add compat-rdma
+
+  14 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> leechcraft.eclass:
+  Add compiler version checking for LeechCraft
+
+  14 Oct 2012; Michał Górny <mgorny@gentoo.org> +distutils-r1.eclass:
+  Introduce distutils-r1, a new (and simpler) eclass for Python packages using
+  distutils build system.
+
+  14 Oct 2012; Michał Górny <mgorny@gentoo.org> +python-r1.eclass:
+  Introduce python-r1, a new (and simpler) eclass for Python-related packages.
+
+  13 Oct 2012; Johannes Huber <johu@gentoo.org> kde4-meta-pkg.eclass:
+  Change LICENSE to 'metapackage' for kde meta packages, bug #438278.
+
+  12 Oct 2012; Alexey Shvetsov <alexxy@gentoo.org> openib.eclass:
+  Fix typo
+
+  12 Oct 2012; Alexey Shvetsov <alexxy@gentoo.org> openib.eclass:
+  [ofed] finalyze 3.5
+
+  12 Oct 2012; Alexey Shvetsov <alexxy@gentoo.org> openib.eclass:
+  [openib] Update ofed versions
+
+  11 Oct 2012; Michał Górny <mgorny@gentoo.org> eutils.eclass:
+  prune_libtool_files(): add --modules option to remove modules (plugins) as
+  well.
+
+  11 Oct 2012; Michał Górny <mgorny@gentoo.org> eutils.eclass:
+  prune_libtool_files(): fix removing symlinked .la files.
+
+  08 Oct 2012; Michał Górny <mgorny@gentoo.org> +autotools-multilib.eclass:
+  Introduce autotools-multilib, to simplify building multilib packages with
+  autotools-utils.
+
+  07 Oct 2012; Justin Lecher <jlec@gentoo.org> fortran-2.eclass:
+  Revert virtual/fortran depends again, because not only USE=fortran controlls
+  fortran needs
+
+  07 Oct 2012; Justin Lecher <jlec@gentoo.org> fortran-2.eclass:
+  Depend on virtual/fortran eclass wise but in an USE=fortran sensitive way,
+  #435250
+
+  07 Oct 2012; Justin Lecher <jlec@gentoo.org> fortran-2.eclass:
+  Revert last change to not break packages with optional fortran support
+
+  07 Oct 2012; Michał Górny <mgorny@gentoo.org> boost-utils.eclass:
+  Fix stupid mistake in boost-utils_get_best_slot().
+
+  07 Oct 2012; Justin Lecher <jlec@gentoo.org> fortran-2.eclass:
+  Depend on virtual/fortran eclass wise, #435250
+
+  07 Oct 2012; Justin Lecher <jlec@gentoo.org> fortran-2.eclass:
+  Give some information on selected fortran compilers
+
+  03 Oct 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  virtualx.eclass:
+  Unbreak EAPI=2 and 3 users of virtualx.eclass, bug #406353
+
+  02 Oct 2012; Tomáš Chvátal <scarabeus@gentoo.org> obs-download.eclass:
+  More update the doc
+
+  02 Oct 2012; Tomáš Chvátal <scarabeus@gentoo.org> obs-service.eclass:
+  Always use openSUSE:Tools as project to get updates. Remove obs_package
+  declaration as it is equal to pn.
+
+  02 Oct 2012; Tomáš Chvátal <scarabeus@gentoo.org> obs-download.eclass:
+  Change the documentation a bit and take OBS_PACKAGE from PN if not set.
+
+  02 Oct 2012; Michael Palimaka <kensington@gentoo.org> cmake-utils.eclass,
+  virtualx.eclass:
+  Make VIRTUALX_COMMAND nonfatal so that Xvfb is always killed. Return status
+  at the end of CMake test phase. This fixes bug #406353.
+
+  02 Oct 2012; Mike Gilbert <floppym@gentoo.org> python.eclass:
+  Add 3.3 as a supported python abi for testing.
+
+  29 Sep 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  virtualx.eclass:
+  Increase Xfvb resolution to address gimp test failure, bug #414853.
+
+  29 Sep 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-plugin-2.eclass:
+  added helper function to remove i18n.h includes, if media-plugins/vdr-* are
+  still use the obsoleted i18n handling and unsupported to gettext handling
+
+  28 Sep 2012; Ulrich Müller <ulm@gentoo.org> eutils.eclass:
+  Test for the EAPI explicitly, because it isn't guaranteed that package
+  managers implement usex as a shell function.
+
+  28 Sep 2012; Ian Stakenvicius <axs@gentoo.org> toolchain-funcs.eclass:
+  reverted fatal error from unset KV and made it a warning only shown when
+  checking for 'kern' arch, so that the portage environment call of tc-arch
+  will not fail anymore, bug 436450
+
+  27 Sep 2012; Mike Gilbert <floppym@gentoo.org> python.eclass:
+  Remove a silly EAPI conditional.
+
+  27 Sep 2012; Ian Stakenvicius <axs@gentoo.org> toolchain-funcs.eclass:
+  Fixed tc-ninja_magic_to_arch() to also use KV_FULL and fail if no kernel
+  version specified, bug 432390
+
+  08 Oct 2012; Robin H. Johnson <robbat2@gentoo.org> db.eclass:
+  Fix typo in src_test runner: makeopts_jobs not makeopts_job.
+
+  27 Sep 2012; Ian Stakenvicius <axs@gentoo.org> eutils.eclass:
+  Made 'usex' declaration conditional on lack of PM or EAPI5+ support
+
+  27 Sep 2012; Ian Stakenvicius <axs@gentoo.org> fortran-2.eclass,
+  selinux-policy-2.eclass, vdr-plugin-2.eclass, xorg-2.eclass,
+  autotools-utils.eclass, base.eclass, bash-completion-r1.eclass,
+  boost-utils.eclass, check-reqs.eclass, cmake-utils.eclass, emboss.eclass,
+  emul-linux-x86.eclass, enlightenment.eclass, fox.eclass, games.eclass,
+  games-ggz.eclass, git.eclass, gnome2-utils.eclass, gnome2.eclass,
+  gst-plugins-bad.eclass, gtk-sharp-module.eclass, haskell-cabal.eclass,
+  kde4-functions.eclass, leechcraft.eclass, mozlinguas.eclass, mysql.eclass,
+  mysql-v2.eclass, obs-service.eclass, office-ext.eclass, perl-module.eclass,
+  php-ext-source-r2.eclass, python-distutils-ng.eclass, qt4-build.eclass,
+  qt4-r2.eclass, ruby-ng.eclass, scons-utils.eclass, systemd.eclass,
+  vcs-snapshot.eclass, vdr-plugin.eclass, virtuoso.eclass, waf-utils.eclass,
+  xfconf.eclass:
+  naive bump of all EAPI-specific checks in eclasses to permit EAPI=5 where
+  EAPI=4 was previously allowed
+
+  27 Sep 2012; Mike Gilbert <floppym@gentoo.org> python.eclass:
+  Allow usage of EAPI 5.
+
+  27 Sep 2012; Alexandre Rostovtsev <tetromino@gentoo.org> clutter.eclass:
+  Default clutter license is LGPL-2.1 or later.
+
+  26 Sep 2012; Julian Ospald <hasufell@gentoo.org> python-distutils-ng.eclass:
+  add PYTHON_USE wrt #426768
+
+  20 Sep 2012; Tomáš Chvátal <scarabeus@gentoo.org> autotools.eclass:
+  Be more strict about eautoreconfig on aclocal.m4. Fixes bug#424763 and
+  bug#420631.
+
+  20 Sep 2012; Justin Lecher <jlec@gentoo.org> intel-sdp.eclass:
+  Keyword for *-linux prefix
+
+  20 Sep 2012; Michael Palimaka <kensington@gentoo.org> cmake-utils.eclass:
+  Add support for the ninja build system wrt bug #430608. Improve prefix
+  support wrt bug #434086.
+
+  20 Sep 2012; Alexandre Rostovtsev <tetromino@gentoo.org> vala.eclass:
+  VALA_{MIN,MAX}_API_VERSION are not unset by default.
+
+  19 Sep 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-plugin-2.eclass,
+  vdr-plugin.eclass:
+  using now append-lfs-flags for large files
+
+  19 Sep 2012; Michał Górny <mgorny@gentoo.org> +boost-utils.eclass:
+  Introduce boost-utils eclass, to support linking against arbitrary boost
+  version.
+
+  18 Sep 2012; Ulrich Müller <ulm@gentoo.org> bzr.eclass:
+  Use lightweight checkout instead of export if EBZR_WORKDIR_CHECKOUT is set;
+  bug 434746. Remove old cleanup code.
+
+  18 Sep 2012; Tim Harder <radhermit@gentoo.org> vim.eclass:
+  Use has_version instead of built_with_use.
+
+  17 Sep 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-plugin-2.eclass:
+  better LINGUAS detection, vdr-plugin-2.eclass
+
+  16 Sep 2012; Ulrich Müller <ulm@gentoo.org> tla.eclass:
+  Mark as DEAD for removal.
+
+  16 Sep 2012; Justin Lecher <jlec@gentoo.org> intel-sdp.eclass:
+  Add old license jingle until we have fixed the license situation generally
+
+  16 Sep 2012; Justin Lecher <jlec@gentoo.org> intel-sdp.eclass:
+  Added new intel-sdp.eclass
+
+  15 Sep 2012; Zac Medico <zmedico@gentoo.org> cannadic.eclass,
+  cmake-utils.eclass, confutils.eclass, embassy.eclass, eutils.eclass,
+  games.eclass, gnatbuild.eclass, gnuconfig.eclass, libtool.eclass,
+  linux-mod.eclass, nsplugins.eclass, perl-module.eclass, qmail.eclass,
+  toolchain-funcs.eclass:
+  Remove redundant DESCRIPTION variable settings.
+
+  14 Sep 2012; Mark Wright <gienah@gentoo.org> ghc-package.eclass:
+  ghc-pkg --global-conf parameter is renamed to --global-package-db in ghc
+  7.6.1
+
+  12 Sep 2012; Jory A. Pratt <anarchy@gentoo.org> mozconfig-3.eclass:
+  Disable crashreporter on all source builds, bug #433962.
+
+  12 Sep 2012; Alexandre Rostovtsev <tetromino@gentoo.org> vala.eclass:
+  Small stylistic fix.
+
+  12 Sep 2012; Alexandre Rostovtsev <tetromino@gentoo.org> vala.eclass:
+  Typo: s/VALA_API_VERSION/version/
+
+  12 Sep 2012; Alexandre Rostovtsev <tetromino@gentoo.org> +vala.eclass:
+  New eclass.
+
+  11 Sep 2012; Tim Harder <radhermit@gentoo.org> vim.eclass:
+  Allow vim to be built against ruby-1.9.
+
+  11 Sep 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> chromium.eclass:
+  Remove deprecated chromium_check_kernel_config.
+
+  10 Sep 2012; Brian Harring <ferringb@gentoo.org> mysql.eclass,
+  mysql-v2.eclass:
+  Remove usage of strip_duplicate_slashes function.
+
+  It's outside of PMS, and is exposed by misbehaviour on portages part.
+
+  09 Sep 2012; Ulrich Müller <ulm@gentoo.org> cvs.eclass:
+  Rename ESCM_OFFLINE to EVCS_OFFLINE. Drop ESCM_VERSION. Fixes bug 410465.
+
+  08 Sep 2012; <swift@gentoo.org> selinux-policy-2.eclass:
+  Support live policy builds
+
+  06 Sep 2012; Michael Palimaka <kensington@gentoo.org> qt4-build.eclass:
+  Improve respect for *FLAGS. Fixes part of bug #427782.
+
+  04 Sep 2012; Johannes Huber <johu@gentoo.org> kde4-meta.eclass:
+  Dont try to extract cmake/modules for kdegames > 4.9.0. Its removed from
+  top-level directory by upstream, fixes bug #431924.
+
+  01 Sep 2012; Vadim Kuznetsov vadimk@gentoo.org -vmware.eclass,
+  -vmware-mod.eclass:
+  removed vmware and vmware-mod elsasses
+
+  01 Sep 2012; Ulrich Müller <ulm@gentoo.org> elisp-common.eclass:
+  Suppress warning message in elisp-site-regen for initial installation.
+
+  30 Aug 2012; Michael Pagano <mpagano@gentoo.org> linux-mod.eclass:
+  Minor typo fix to documentation line. Bug #419469
+
+  29 Aug 2012; Michał Górny <mgorny@gentoo.org> eutils.eclass:
+  prune_libtool_files: run pkg-config code only if necessary.
+
+  28 Aug 2012; Michael Pagano <mpagano@gentoo.org> linux-mod.eclass:
+  Remove deprecated and unrecommended parameter -r from depmod
+
+  27 Aug 2012; Michał Górny <mgorny@gentoo.org> systemd.eclass:
+  Drop blockers for ancient systemd versions.
+
+  27 Aug 2012; Michał Górny <mgorny@gentoo.org> systemd.eclass:
+  tmpfiles.d: ensure .conf suffix when installing.
+
+  27 Aug 2012; Michał Górny <mgorny@gentoo.org> systemd.eclass:
+  Add systemd_newtmpfilesd().
+
+  22 Aug 2012; Christoph Junghans <ottxor@gentoo.org> unpacker.eclass:
+  added support for cpio archives
+
+  19 Aug 2012; Johannes Huber <johu@gentoo.org> kde4-base.eclass,
+  kde4-functions.eclass, kde4-meta.eclass:
+  Remove obsolete koffice handling. Simplify Qt minimal requirement. Remove
+  duplicated entry for unstable KDE SC releases in SRC_URI calculation. Arrange
+  docs example for KDE_LINGUAS alphabetically.
+
+  19 Aug 2012; Johannes Huber <johu@gentoo.org> -tetex-3.eclass, -tetex.eclass:
+  Remove obsolete. Announced on 2012/07/18.
+
+  17 Aug 2012; Ulrich Müller <ulm@gentoo.org> elisp.eclass:
+  Remove unnecessary assignment of IUSE variable.
+
+  17 Aug 2012; Tomáš Chvátal <scarabeus@gentoo.org> obs-download.eclass,
+  obs-service.eclass:
+  Suse eclasses are under suse herd.
+
+  16 Aug 2012; Mike Gilbert <floppym@gentoo.org> python.eclass:
+  Hide the python.eclass unmerge noise behind PORTAGE_VERBOSE.
+
+  16 Aug 2012; Patrick Lauer <patrick@gentoo.org> python.eclas:
+  Fix noisy output on unmerge #423741
+
+  15 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> ruby-fakegem.eclass:
+  Make sure not to test for use doc if it's not there.
+
+  14 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> ruby-fakegem.eclass:
+  Add support for documentation recipes as well, and implement an rdoc recipe.
+
+  14 Aug 2012; Tomáš Chvátal <scarabeus@gentoo.org> xorg-2.eclass:
+  Fix disable-dependency-tracking passing. Fixes bug#372239.
+
+  13 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> ruby-fakegem.eclass,
+  ruby-ng.eclass:
+  Add support for cucumber as a test recipe. This allows abstracting some of
+  the work needed to skip it over on JRuby.
+
+  13 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> ruby-ng.eclass:
+  Add a cucumber wrapper similar to the rspec one we have already.
+
+  13 Aug 2012; Matti Bickel <mabi@gentoo.org> fox.eclass:
+  Add updated info statement about fox17.pc re bug #426718
+
+  05 Aug 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-plugin-2.eclass:
+  fix for wrong detected *.pot file in po dir
+
+  03 Aug 2012; Tim Harder <radhermit@gentoo.org> vim-plugin.eclass:
+  Add alternative location for vim plugin tarball archives.
+
+  02 Aug 2012; Johannes Huber <johu@gentoo.org> kde4-meta.eclass:
+  Fix tarball extract for old kdepim, bug #429428.
+
+  01 Aug 2012; Johannes Huber <johu@gentoo.org> kde4-base.eclass,
+  kde4-functions.eclass, kde4-meta.eclass:
+  Make .xz compression as default for SRC_URI calculation. Add KDE prefix to
+  BUILD_TYPE. No #DONOTCOMPILE if add_subdirectory has a variable parameter
+  ("${...").
+
+  29 Jul 2012; Akinori Hattori <hattya@gentoo.org> subversion.eclass:
+  add support for file:// URI scheme wrt bug #416649
+
+  29 Jul 2012; Akinori Hattori <hattya@gentoo.org> subversion.eclass:
+  replace built_with_use by USE deps wrt bug #242100
+
+  29 Jul 2012; Akinori Hattori <hattya@gentoo.org> subversion.eclass:
+  remove obsolete workaround (ESVN_DISABLE_DEPENDENCIES)
+
+  29 Jul 2012; Akinori Hattori <hattya@gentoo.org> subversion.eclass:
+  remove DESCRIPTION variable wrt bug #428304
+
+  28 Jul 2012; Julian Ospald <hasufell@gentoo.org> games.eclass:
+  omg, we checked the dirs in ${S} instead of ${D} which accidentially
+  worked for some ebuilds (EAPI-4 related fix)
+
+  05 Aug 2012; Justin Lecher <jlec@gentoo.org> pam.eclass:
+  Add magic needed for app-portage/eclass-manpages to pam.eclass, changes
+  approved by author
+
+  26 Jul 2012; Fabian Groffen <grobian@gentoo.org>
+  +ELT-patches/sol2-ltmain/2.4.2, libtool.eclass:
+  elt-patches: add Solaris no de-deplication patch to fix built C++ objects
+  from aborting when an exception is thrown
+
+  26 Jul 2012; <swift@gentoo.org> selinux-policy-2.eclass:
+  Use warnings for SELinux failures, not errors, since the failure is not fatal
+  for a system
+
+  26 Jul 2012; Ben de Groot <yngwin@gentoo.org> l10n.eclass:
+  Remove ambiguous wording
+
+  24 Jul 2012; Fabian Groffen <grobian@gentoo.org> autotools.eclass:
+  _elibtoolize: properly set LIBTOOLIZE in case glibtoolize exists in the
+  system
+
+  23 Jul 2012; Ralph Sennhauser <sera@gentoo.org> java-vm-2.eclass:
+  Add C to flags pass to pax-mark to ensure a header is created. Thanks to
+  blueness. #427642
+
+  23 Jul 2012; Tomáš Chvátal <scarabeus@gentoo.org> myspell-r2.eclass:
+  More licenses removal
+
+  23 Jul 2012; Ben de Groot <yngwin@gentoo.org> qt4-r2.eclass:
+  Add array variables for DOCS and HTML_DOCS in qt4-r2.eclass
+
+  23 Jul 2012; Ben de Groot <yngwin@gentoo.org> +l10n.eclass:
+  Initial commit of l10n.eclass
+
+  23 Jul 2012; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  mysql.eclass, mysql-v2.eclass:
+  Sync mysql and mysql-v2 eclasses from the mysql overlay.
+  Simplify ncurses dependency and update inherit to use git-2 eclass.
+
+  21 Jul 2012; Ralph Sennhauser <sera@gentoo.org> java-pkg-2.eclass:
+  Convert documentation to eclass-manpages.
+
+  19 Jul 2012; Tomáš Chvátal <scarabeus@gentoo.org> mozlinguas.eclass:
+  Fix eclassdoc.
+
+  18 Jul 2012; Johannes Huber <johu@gentoo.org> tetex-3.eclass, tetex.eclass:
+  Marking as DEAD for removal.
+
+  18 Jul 2012; Ralph Sennhauser <sera@gentoo.org> java-virtuals-2.eclass:
+  Convert to eclass-manpages.
+
+  18 Jul 2012; Ralph Sennhauser <sera@gentoo.org> java-vm-2.eclass:
+  Add ROOT support, patch by vapier. #416341
+
+  18 Jul 2012; Ulrich Müller <ulm@gentoo.org> bzr.eclass:
+  Don't assign useless values to DESCRIPTION and HOMEPAGE variables.
+
+  17 Jul 2012; Mike Gilbert <floppym@gentoo.org> chromium.eclass:
+  Remove -v option from rm command.
+
+  10 Jul 2012; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Stop inheriting base.eclass
+
+  09 Jul 2012; Mike Gilbert <floppym@gentoo.org> base.eclass:
+  Remove false statement from eclass description.
+
+  08 Jul 2012; Sergei Trofimovich <slyfox@gentoo.org> haskell-cabal.eclass:
+  Allow wildcards in CABAL_CORE_LIB_GHC_PV. Guard against breakage of
+  ghc-shipped libraries.
+
+  08 Jul 2012; Diego E. Pettenò <flameeyes@gentoo.org> ruby-ng.eclass:
+  Add a function to wrap around testrb-2 as well.
+
+  05 Jul 2012; Diego E. Pettenò <flameeyes@gentoo.org> ruby-fakegem.eclass,
+  ruby-ng.eclass:
+  Add support for running rspec while respecting some common variables
+  (TEST_VERBOSE and NOCOLOR) in ruby-ng; then use this with a new variable in
+  ruby-fakegem.
+
+  05 Jul 2012; Ralph Sennhauser <sera@gentoo.org> java-utils-2.eclass:
+  Remove java-pkg_ensure-gcj and java-pkg_ensure-test. #261562 #278965
+
+  01 Jul 2012; Matti Bickel <mabi@gentoo.org> php-pear-lib-r1.eclass:
+  Remove requirement for depend.php.eclass. Since our switch to /usr/share/php
+  only it is no longer needed.
+
+  01 Jul 2012; Vadim Kuznetsov vadimk@gentoo.org vmware.eclass,
+  vmware-mod.eclass:
+  Makred vmware.eclass and vmware-mod.eclass dead.
+
+  30 Jun 2012; Tomáš Chvátal <scarabeus@gentoo.org> myspell-r2.eclass:
+  Remove also lower case licenses.
+
+  27 Jun 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-plugin-2.eclass:
+  fixed eapi block; bug 423657
+
+  26 Jun 2012; Robin H. Johnson <robbat2@gentoo.org> linux-info.eclass:
+  You must ensure at least one of the version setup functions gets called in
+  linux-info.eclass before you can use the config functions.
+
+  24 Jun 2012; Michael Pagano <mpagano@gentoo.org> kernel-2.eclass:
+  Add dev-lang/perl to kernel-2.eclass RDEPEND. Bug #421483
+
+  22 Jun 2012; Ian Stakenvicius <axs@gentoo.org> user.eclass:
+  esethome: silently exit if home dir already up to date, improve messaging
+
+  22 Jun 2012; Ian Stakenvicius <axs@gentoo.org> user.eclass:
+  esethome: eerror and not die when home dir cannot be updated, due to for
+  instance user being in use
+
+  22 Jun 2012; Ian Stakenvicius <axs@gentoo.org> user.eclass:
+  fixed esethome, directory must exist befure user record can be updated
+
+  22 Jun 2012; Bernard Cafarelli <voyageur@gentoo.org> gnustep-base.eclass:
+  Stable gnustep-base does not have USE=libobjc2, thanks ago
+
+  22 Jun 2012; Michael Palimaka <kensington@gentoo.org> kde4-base.eclass:
+  Sync from kde overlay: Enable tests for live ebuilds, add support for virtual
+  dbus during src_test, update tarball extension for unstable releases.
+
+  21 Jun 2012; Naohiro Aota <naota@gentoo.org> gnome2-utils.eclass:
+  Add new function gnome2_query_immodules_gtk{2,3} to update immodules cache.
+  #413529
+
+  20 Jun 2012; Michał Górny <mgorny@gentoo.org> eutils.eclass:
+  prune_libtool_files(): report .a removal only if it exists, and explain the
+  reasoning for it.
+
+  20 Jun 2012; Tomáš Chvátal <scarabeus@gentoo.org> gst-plugins-bad.eclass:
+  Fix building with newer eapis wrt bug#385841. Noticed by triggered rebuild to
+  -ocr.
+
+  19 Jun 2012; Bernard Cafarelli <voyageur@gentoo.org> gnustep-base.eclass:
+  Revert to built_with_use for correct libobjc detection and EAPI 0 ebuilds
+  support
+
+  18 Jun 2012; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Update from qt overlay: drop USE=c++0x from qt-webkit, stop adding USE=qpa to
+  4.8.3 and later, dead code removal and other minor cleanups.
+
+  18 Jun 2012; Ian Stakenvicius <axs@gentoo.org> user.eclass:
+  added 'esethome' to user.eclass
+
+  18 Jun 2012; Fabian Groffen <grobian@gentoo.org> flag-o-matic.eclass:
+  Allow header and library paths flags in setup-allowed-flags(), bug #414641
+
+  17 Jun 2012; Tomáš Chvátal <scarabeus@gentoo.org> myspell-r2.eclass:
+  Remove licenses prior copying docs.
+
+  14 Jun 2012; Julian Ospald <hasufell@gentoo.org> eutils.eclass:
+  small enhancement to examples of doicon
+
+  13 Jun 2012; Tomáš Chvátal <scarabeus@gentoo.org> myspell-r2.eclass:
+  Make the oxt unpacking really work.
+
+  13 Jun 2012; Tomáš Chvátal <scarabeus@gentoo.org> myspell-r2.eclass:
+  Handle dodoc correctly to not die if no documents are found.
+
+  12 Jun 2012; Ralph Sennhauser <sera@gentoo.org> java-vm-2.eclass:
+  Convert docs to eclass-manpages.
+
+  11 Jun 2012; Ralph Sennhauser <sera@gentoo.org> java-vm-2.eclass:
+  Add app-admin/eselect-java as preferred provider of eselect java-vm.
+
+  11 Jun 2012; Michał Górny <mgorny@gentoo.org> vcs-snapshot.eclass:
+  Unpack tarballs in directory matching their name rather than ${P}. This
+  allows the eclass to handle multiple tarballs in one ebuild, and non-snapshot
+  tarballs should work fine too.
+
+  11 Jun 2012; Michał Górny <mgorny@gentoo.org> xorg-2.eclass:
+  Replace remove_libtool_files with prune_libtool_files.
+
+  11 Jun 2012; Tomáš Chvátal <scarabeus@gentoo.org> xorg-2.eclass:
+  Fix not assigned variable. IE bug#416673.
+
+  10 Jun 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-plugin-2.eclass:
+  fix for strip-linguas en
+
+  10 Jun 2012; Mike Gilbert <floppym@gentoo.org> python-distutils-ng.eclass:
+  Remove pypy1_7 from default PYTHON_COMPAT due to removal from tree. Add
+  pypy1_9.
+
+  10 Jun 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-plugin-2.eclass:
+  fixed missing chost tag; fixed append-cppflags warning; added Variable to
+  keep the i18n.o object
+
+  10 Jun 2012; Akinori Hattori <hattya@gentoo.org> subversion.eclass:
+  reorder public functions
+
+  10 Jun 2012; Akinori Hattori <hattya@gentoo.org> subversion.eclass:
+  fixes bug #416743.
+
+  10 Jun 2012; Akinori Hattori <hattya@gentoo.org> subversion.eclass:
+  update @MAINTAINER and minor cleanup.
+
+  09 Jun 2012; Julian Ospald <hasufell@gentoo.org> games.eclass:
+  fix for games.eclass wrt bug #336626 #c21
+
+  09 Jun 2012; Marien Zwart <marienz@gentoo.org> python.eclass:
+  Add pypy-1.9 to the list of supported python ABIs.
+
+  07 Jun 2012; Zac Medico <zmedico@gentoo.org> kde4-base.eclass,
+  mysql-autotools.eclass, mysql-cmake.eclass:
+  inherit flag-o-matic for append-flags
+
+  07 Jun 2012; Michał Górny <mgorny@gentoo.org> vcs-snapshot.eclass:
+  Extract to ${WORKDIR}/${P} rather than ${S}.
+
+  07 Jun 2012; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Specify SLOT in blocker atoms, to avoid blocking Qt5 packages.
+
+  06 Jun 2012; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Reuse eautoreconf, deprecate autotools-utils_autoreconf.
+
+  06 Jun 2012; Michał Górny <mgorny@gentoo.org> autotools.eclass:
+  Support other GNOME-related tools in eautoreconf: gtk-doc, gnome-doc &
+  glib-gettext.
+
+  06 Jun 2012; Michael Pagano <mpagano@gentoo.org> kernel-2.eclass:
+  Move ppc/powerpc fix to after we apply linux patches
+
+  06 Jun 2012; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Start using prune_libtool_files() from eutils, deprecate
+  remove_libtool_files().
+
+  06 Jun 2012; Michał Górny <mgorny@gentoo.org> eutils.eclass:
+  Introduce prune_libtool_files() for .la file removal. Based on one used
+  by autotools-utils.
+
+  05 Jun 2012; Fabian Groffen <grobian@gentoo.org> autotools.eclass:
+  Avoid type -P output for glibtoolize, bug #419641
+
+  05 Jun 2012; Julian Ospald <hasufell@gentoo.org> eutils.eclass:
+  enhanced functionality of doicon/newicon in eutils.eclass
+
+  05 Jun 2012; Pacho Ramos <pacho@gentoo.org> stardict.eclass:
+  Allow more providers for stardict, bug #413093 by tot-to and qt team.
+
+  05 Jun 2012; Ryan Hill <dirtyepic@gentoo.org> flag-o-matic.eclass:
+  Update Intel/AMD instruction sets for 4.7.
+
+  05 Jun 2012; Ryan Hill <dirtyepic@gentoo.org> flag-o-matic.eclass:
+  Add -mfloat-abi=* to ALLOWED_FLAGS (bug #419615 by Hector Martin).
+
+  04 Jun 2012; Ralph Sennhauser <sera@gentoo.org> java-pkg-2.eclass:
+  No longer call java-pkg_ensure-test in java-pkg-2_pkg_setup as this is
+  handled by all package managers. #278965
+
+  02 Jun 2012; Zac Medico <zmedico@gentoo.org> common-lisp-common-2.eclass,
+  java-ant-2.eclass, common-lisp-common-3.eclass, common-lisp-common.eclass,
+  db.eclass, depend.php.eclass, freedict.eclass, gnat.eclass,
+  gst-plugins-bad.eclass, gst-plugins-base.eclass, kde4-base.eclass,
+  mysql.eclass, mysql-autotools.eclass, mysql-cmake.eclass, nsplugins.eclass,
+  php-ext-source-r2.eclass, ruby-ng.eclass, scsh.eclass:
+  inherit multilib for get_libdir
+
+  01 Jun 2012; Ralph Sennhauser <sera@gentoo.org> ant-tasks.eclass:
+  Don't assinging RDEPEND to DEPEND and vise versa. JRE in DEPEND confuses VM
+  switching code.
+
+  30 May 2012; Sergei Trofimovich <slyfox@gentoo.org> darcs.eclass:
+  Use 'darcs get --lazy' instead of 'darcs get --partial' (gone in darcs-2.8).
+
+  30 May 2012; Ralph Sennhauser <sera@gentoo.org> ant-tasks.eclass:
+  Set prefix for ant-1.8.4
+
+  30 May 2012; Justin Lecher <jlec@gentoo.org> flag-o-matic.eclass:
+  Sort ldflags handling functions to logic place
+
+  30 May 2012; Sergei Trofimovich <slyfox@gentoo.org> games.eclass:
+  Allow EAPI=4.
+
+  30 May 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> chromium.eclass:
+  Introduce chromium_suid_sandbox_check_kernel_config, deprecate
+  chromium_check_kernel_config.
+
+  29 May 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> gnustep-2.eclass,
+  gnustep-base.eclass:
+  Apply gnustep eclass changes wrt
+  http://archives.gentoo.org/gentoo-dev/msg_eee22ea47f4d15e2fa2932583aa92db7.xm
+  l
+
+  28 May 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> eutils.eclass:
+  Simplify preserve_old_lib ewarn messages, wrt
+  http://archives.gentoo.org/gentoo-dev/msg_bf159af028ffeeb83c679d6a0eaa73e5.xm
+  l . gentoolkit-0.3.0.5 fixing problems blocking this change is now stable on
+  all archs (bug #411479).
+
+  28 May 2012; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Remove invalid use check, these should be fixed by now.
+
+  28 May 2012; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Fail whenever unable to change directory, wrt #391927.
+
+  28 May 2012; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  autotools.eclass no longer supports re-inheriting so we need to override
+  AUTOTOOLS_AUTO_DEPEND for good...
+
+  26 May 2012; <swift@gentoo.org> selinux-policy-2.eclass:
+  Introducing support for user-provided policies, fix loading logic to retry
+  with all modules (bug #414599, #414017)
+
+  26 May 2012; Michał Górny <mgorny@gentoo.org> python-distutils-ng.eclass:
+  Fix double hashbang in installed scripts. Patch by Krzysztof Pawlik, modified
+  by me.
+
+  25 May 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-plugin-2.eclass:
+  fixed install for locales if only LINGUAS=en
+
+  25 May 2012; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Re-enable rpath on prefix wrt bug 417169.
+
+  24 May 2012; Mike Gilbert <floppym@gentoo.org> python-distutils-ng.eclass:
+  Remove obsolete pkg_pretend function.
+
+  23 May 2012; Mike Gilbert <floppym@gentoo.org> chromium.eclass:
+  Don't elog about icons if the user has installed them. Bug 416773 by pacho.
+
+  23 May 2012; Diego E. Pettenò <flameeyes@gentoo.org> apache-2.eclass:
+  Avoid using 'make' for installing; use 'mkdir -p' for creating the
+  directories to solve parallel install issues (Apache's script is not safe,
+  but we expect a working mkdir -p). Tested on a 32-way system.
+
+  22 May 2012; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Call eaclocal unconditionally; _elibtoolize no longer does that.
+
+  22 May 2012; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Update SRC_URI for Qt 4.8.1 and later.
+
+  21 May 2012; Krzysztof Pawlik <nelchael@gentoo.org>
+  python-distutils-ng.eclass:
+  Add information about automatic run of python-distutils-ng_redoscript.
+
+  21 May 2012; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Fix to match autotools.eclass API changes.
+
+  21 May 2012; Krzysztof Pawlik <nelchael@gentoo.org>
+  python-distutils-ng.eclass:
+  Document PYTHON_DISABLE_SCRIPT_REDOS.
+
+  21 May 2012; Krzysztof Pawlik <nelchael@gentoo.org>
+  python-distutils-ng.eclass:
+  Fix #! line for installed scripts and install them for enabled
+  implementations, see bug #416131.
+
+  20 May 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-plugin-2.eclass:
+  strip-linguas check added
+
+  20 May 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-plugin-2.eclass:
+  some debug infos for wrong use of vdr-plugin-2.eclass
+
+  20 May 2012; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Try to avoid sandbox violation when running qhelpgenerator, bug 415517.
+
+  19 May 2012; Ulrich Müller <ulm@gentoo.org> xemacs-elisp-common.eclass:
+  Fix name space collision with elisp-common.eclass, bug 406053.
+
+  19 May 2012; Davide Pesavento <pesa@gentoo.org> qt4.eclass:
+  qt4.eclass is dead.
+
+  14 May 2012; Krzysztof Pawlik <nelchael@gentoo.org>
+  python-distutils-ng.eclass:
+  Block older versions of sys-apps/portage that don't have improved
+  COLLISION_IGNORE handling, see bug #410691.
+
+  11 May 2012; Tomáš Chvátal <scarabeus@gentoo.org> nsplugins.eclass:
+  Actually check if the plugin file exist before creating symlink. Avoids
+  broken symlinks.
+
+  10 May 2012; Tomáš Chvátal <scarabeus@gentoo.org> office-ext.eclass:
+  Ignore licenses, user accept them by portage.
+
+  10 May 2012; Alexandre Rostovtsev <tetromino@gentoo.org> waf-utils.eclass:
+  Depend on python and block python[-threads] for bug #409427.
+
+  09 May 2012; Tomáš Chvátal <scarabeus@gentoo.org> office-ext.eclass:
+  Update the default unpack to detect cases when oxt is packed elsewhere.
+
+  09 May 2012; Matt Turner <mattst88@gentoo.org> xorg-2.eclass:
+  Fix xorg-2's git:// EGIT_REPO_URI.
+
+  09 May 2012; Tomáš Chvátal <scarabeus@gentoo.org> office-ext.eclass:
+  Add the src_unpack phase for office-ext eclass.
+
+  09 May 2012; Pacho Ramos <pacho@gentoo.org> gnome2.eclass:
+  Don't call gtk-doc configure option when not available
+
+  08 May 2012; Andreas K. Huettel <dilfridge@gentoo.org> kde4-base.eclass,
+  kde4-functions.eclass, kde4-meta.eclass, kde4-meta-pkg.eclass:
+  Sync kde4-*.eclass from kde overlay: add x11-libs/qt-dbus to kde
+  dependencies, eqawarn on ${mycmakeargs} as string, properly treat case of
+  undefined LINGUAS (bug 372457)
+
+  08 May 2012; Andreas K. Huettel <dilfridge@gentoo.org> cmake-utils.eclass:
+  Update cmake-utils.eclass from kde overlay: make builds verbose by default,
+  fix usage of PREFIX (bug 358059)
+
+  07 May 2012; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Stop stripping upstream CFLAGS from g++.conf for Qt 4.8 and later (see bug
+  352778 comment #6).
+
+  06 May 2012; Fabian Groffen <grobian@gentoo.org>
+  +ELT-patches/sol2-conf/2.4.2, libtool.eclass:
+  Add ELT patch for Solaris x64 libtool problem where the linker is set to
+  'ld_sol2'
+
+  06 May 2012; Mike Gilbert <floppym@gentoo.org> python-distutils-ng.eclass:
+  Silence eclass-to-manpage warnings.
+
+  05 May 2012; Mike Gilbert <floppym@gentoo.org> python-distutils-ng.eclass:
+  Eliminate another duplicate slash.
+
+  05 May 2012; Mike Gilbert <floppym@gentoo.org> python-distutils-ng.eclass:
+  Simplify ${D%/}/ to ${D}; PMS says ${D} always has a trailing slash, and it
+  works without a trailing slash anyway.
+
+  04 May 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  xorg-2.eclass:
+  Raise util-macros dependency.
+
+  04 May 2012; Krzysztof Pawlik <nelchael@gentoo.org>
+  python-distutils-ng.eclass:
+  Let distutils compile python modules, see bug #413957.
+
+  03 May 2012; Mike Gilbert <floppym@gentoo.org> python-distutils-ng.eclass:
+  Declare local S in _python-distutils-ng_run_for_impl.
+
+  02 May 2012; Mike Gilbert <floppym@gentoo.org> python-distutils-ng.eclass:
+  Fix bytecode generation with Python 3, bug 413771. Patch by James Rowe.
+
+  02 May 2012; Gilles Dartiguelongue <eva@gentoo.org> gnome2-utils.eclass,
+  gnome2.eclass:
+  Rewrite scrollkeeper support as proposed in bug #301311.
+
+  02 May 2012; Jeff Horelick <jdhore@gentoo.org> clutter.eclass,
+  gkrellm-plugin.eclass, gnome-python-common.eclass, go-mono.eclass,
+  gpe.eclass, gst-plugins-bad.eclass, gst-plugins-base.eclass,
+  gst-plugins-good.eclass, gst-plugins-ugly.eclass, gtk-sharp-module.eclass,
+  kde4-base.eclass, ruby-ng-gnome2.eclass, mozcoreconf-2.eclass, xorg-2.eclass,
+  rox.eclass, vim.eclass, x-modular.eclass:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  02 May 2012; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  30 Apr 2012; Krzysztof Pawlik <nelchael@gentoo.org>
+  python-distutils-ng.eclass:
+  Remove die from eclass, simply warn if user has collision-protect enabled.
+
+  30 Apr 2012; Krzysztof Pawlik <nelchael@gentoo.org>
+  python-distutils-ng.eclass:
+  Correctly chdir to ${S}, see bug #411563.
+
+  29 Apr 2012; Diego E. Pettenò <flameeyes@gentoo.org> sgml-catalog.eclass:
+  Fix infinite look if the catalog is corrupted.
+
+  29 Apr 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-plugin-2.eclass:
+  typo, added missing [ ] for test
+
+  29 Apr 2012; Joerg Bornkessel <hd_brummy@gentoo.org> +vdr-plugin-2.eclass:
+  vdr-plugin-2.eclass added; include major fixes for obselet i18n handling,
+  Linguas support
+
+  27 Apr 2012; Ulrich Müller <ulm@gentoo.org> elisp-common.eclass:
+  Sync from Emacs overlay: Require GNU Emacs in elisp-need-emacs().
+
+  25 Apr 2012; Fabian Groffen <grobian@gentoo.org> qt4-build.eclass:
+  fix_includes: create relative symlinks for header directories, such that
+  further additions by ebuilds in src_install don't fail
+
+  24 Apr 2012; Tomáš Chvátal <scarabeus@gentoo.org> myspell-r2.eclass:
+  Oops didn't commit the dir supporting version. This replaces plain doins with
+  proper newins command.
+
+  24 Apr 2012; Tomáš Chvátal <scarabeus@gentoo.org> +myspell-r2.eclass:
+  Add myspell-r2.eclass which is just eclassdoced myspell.eclass with removed
+  no-longer required stuff.
+
+  23 Apr 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-plugin.eclass:
+  reverted last changes in plugin_has_gettext function
+
+  20 Apr 2012; Patrick Lauer <patrick@gentoo.org> depend.apache.eclass:
+  Typo
+
+  20 Apr 2012; Patrick Lauer <patrick@gentoo.org> depend.apache.eclass:
+  Extending depend.apache.eclass for apache 2.4
+
+  19 Apr 2012; Davide Pesavento <pesa@gentoo.org> qt4-r2.eclass:
+  Overhaul *FLAGS handling in eqmake4() to fix bug 361303. Thanks to Michael
+  (kensington) for the patch.
+
+  19 Apr 2012; Andreas K. Huettel <dilfridge@gentoo.org> kde4-meta.eclass:
+  No ewarns even if tar misses some files on unpack, as that is so common it's
+  pretty much useless.
+
+  19 Apr 2012; Sergei Trofimovich <slyfox@gentoo.org> haskell-cabal.eclass:
+  Added CABAL_FEATURES=test-suite by Alexander Vershilov. It enables building
+  of test suites introduced in Cabal-1.8
+
+  19 Apr 2012; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Add appropriate blockers for qt-bearer.
+
+  18 Apr 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-plugin.eclass:
+  removed unneeded path install for /usr/local/share; fix i18n install bug,
+  start with vdr-1.7.27 bug 411945, thanks to Marc Perrudin for this workaround
+
+  16 Apr 2012; Tomáš Chvátal <scarabeus@gentoo.org> cmake-utils.eclass:
+  Whitespace cmake dep. Add build_rules to CMAKE_BUILD_DIR rather than to T as
+  they might vary for multiple abi builds. Create the CMAKE_BUILD_DIR right
+  away when determined.
+
+  16 Apr 2012; Samuli Suominen <ssuominen@gentoo.org> waf-utils.eclass:
+  Unbreak waf-utils.eclass by restoring --jobs= argument wrt #412159
+
+  15 Apr 2012; Mike Frysinger <vapier@gentoo.org> db.eclass perl-module.eclass
+  waf-utils.eclass:
+  Use new makeopts_jobs helper from eutils.eclass.
+
+  14 Apr 2012; Sergei Trofimovich <slyfox@gentoo.org> haskell-cabal.eclass:
+  move 'dev-haskell/cabal' santy check out from 'pkg_*' to 'src_*' function to
+  allow binary installation. Reported by tamiko.
+
+  14 Apr 2012; Sergei Trofimovich <slyfox@gentoo.org> haskell-cabal.eclass:
+  fix -dynamic './setup configure' failures against newer libffi (bug #411789
+  by Leonid Podolny)
+
+  09 Apr 2012; Sergei Trofimovich <slyfox@gentoo.org> ghc-package.eclass,
+  haskell-cabal.eclass:
+  Remove outdated bits for <ghc-6.10 and <cabal-1.8. Switch from 'eerror' to
+  'eqawarn' as suggested by Paweł Hajdan, Jr.
+  (http://www.gossamer-threads.com/lists/gentoo/dev/251259). Install empty
+  '.conf' files for binaries to help 'haskell-updater' pick binaries built with
+  onder haskell toolchain on ghc upgrade.
+
+  08 Apr 2012; Alexandre Rostovtsev <tetromino@gentoo.org> gnome2-utils.eclass:
+  Punt stale icon-theme.cache files and empty icon theme directories after
+  theme uninstallation (bug #410495, thanks to Maxim Kammerer for reporting).
+
+  07 Apr 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-plugin.eclass:
+  vdr-vdrmanager added for gettext handling
+
+  07 Apr 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-plugin.eclass:
+  some plugins gives false positive results on gettext handling, add this
+  plugins here
+
+  04 Apr 2012; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Update from qt overlay, fixes #407523.
+
+  04 Apr 2012; Johannes Huber <johu@gentoo.org> kde4-base.eclass,
+  kde4-meta.eclass:
+  Use .xz also for 4.8.x with x>1.
+
+  03 Apr 2012; Krzysztof Pawlik <nelchael@gentoo.org>
+  python-distutils-ng.eclass:
+  Add function that makes it easier to properly install Python scripts that get
+  installed automatically by distutils.
+
+  03 Apr 2012; Krzysztof Pawlik <nelchael@gentoo.org> mercurial.eclass:
+  Rename ESCM_OFFLINE to EVCS_OFFLINE, see bug #410469.
+
+  03 Apr 2012; Krzysztof Pawlik <nelchael@gentoo.org>
+  python-distutils-ng.eclass:
+  Add detection of collision-protect in FEATURES.
+
+  03 Apr 2012; Pacho Ramos <pacho@gentoo.org> git-2.eclass:
+  Reorder git-2.eclass maintainers to get bugs assigned to most active
+  maintainer.
+
+  02 Apr 2012; Pacho Ramos <pacho@gentoo.org> eutils.eclass:
+  Use einfo instead of ewarn as discussed in
+  http://archives.gentoo.org/gentoo-dev/msg_512b5e4049617666f6637618bd62857a.xm
+  l
+
+  02 Apr 2012; Sergei Trofimovich <slyfox@gentoo.org> darcs.eclass:
+  Switch from ESCM_OFFLINE var to EVCS_OFFLINE (bug #410467 by Ulrich Müller).
+  Don't skip _darcs/ when checkout to $WORKDIR. Add 'rsync' to DEPENDS.
+
+  01 Apr 2012; Mike Gilbert <floppym@gentoo.org> subversion.eclass:
+  ESCM_OFFLINE -> EVCS_OFFLINE. Bug 410471.
+
+  30 Mar 2012; Krzysztof Pawlik <nelchael@gentoo.org>
+  python-distutils-ng.eclass:
+  Fix two small issues, spotted by Sławomir Nizio
+  <slawomir.nizio@sabayon.org>.
+
+  29 Mar 2012; Patrick Lauer <patrick@gentoo.org> apache-2.eclass:
+  Sanitizing directory permissions #398899
+
+  29 Mar 2012; Marien Zwart <marienz@gentoo.org> python.eclass:
+  Add more versions of pypy to the hardcoded mapping in python.eclass.
+
+  28 Mar 2012; Marien Zwart <marienz@gentoo.org> python-distutils-ng.eclass:
+  Try to unbreak dependency generation.
+
+  26 Mar 2012; Krzysztof Pawlik <nelchael@gentoo.org>
+  python-distutils-ng.eclass:
+  _python-distutils-ng_generate_depend was used only in one place, inline it.
+
+  26 Mar 2012; Krzysztof Pawlik <nelchael@gentoo.org>
+  python-distutils-ng.eclass:
+  Avoid ${impl::-3} parameter expansion, this is not supported by older bash
+  and caused issues with cache generation.
+
+  26 Mar 2012; Krzysztof Pawlik <nelchael@gentoo.org>
+  python-distutils-ng.eclass:
+  Small fixes: use +=, cleanup used variables, white space.
+
+  26 Mar 2012; Krzysztof Pawlik <nelchael@gentoo.org>
+  python-distutils-ng.eclass:
+  Include only valid values in REQUIRED_USE.
+
+  26 Mar 2012; Justin Lecher <jlec@gentoo.org> python-distutils-ng.eclass:
+  Add missing space to new python.eclass
+
+  25 Mar 2012; Krzysztof Pawlik <nelchael@gentoo.org>
+  +python-distutils-ng.eclass:
+  Add python-distutils-ng.eclass: new eclass for installing Python, distutils
+  based packages.
+
+  25 Mar 2012; Gilles Dartiguelongue <eva@gentoo.org>
+  gnome-python-common.eclass:
+  Replace old py-compile trick by the one from python eclass.
+
+  24 Mar 2012; Andreas K. Huettel <dilfridge@gentoo.org> kde4-meta.eclass:
+  Make opengl dependency soft in kde-workspace (except kwin)
+
+  23 Mar 2012; Mike Gilbert <floppym@gentoo.org> chromium.eclass:
+  Set IUSE=custom-cflags in the eclass so we can reference it in the die hook.
+
+  23 Mar 2012; Mike Gilbert <floppym@gentoo.org> sgml-catalog.eclass:
+  Convert SGML_TOINSTALL to a bash array. Add some documentation.
+
+  23 Mar 2012; Mike Gilbert <floppym@gentoo.org> sgml-catalog.eclass:
+  PMS says that postrm runs before postinst, so remove workaround in
+  sgml-catalog_pkg_postrm. Fix order of arguments in einfo message.
+
+  22 Mar 2012; Alexis Ballier <aballier@gentoo.org> texlive-module.eclass:
+  Drop support for pre-2010 TeX Live versions
+
+  22 Mar 2012; Michał Górny <mgorny@gentoo.org> xorg-2.eclass:
+  Use autotools-utils to reconfigure.
+
+  22 Mar 2012; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  All ebuilds need a version number so drop special case for master. Update
+  comments.
+
+  21 Mar 2012; Diego E. Pettenò <flameeyes@gentoo.org> autotools.eclass:
+  Go back to use a variable rather than an array for _LATEST_AUTOMAKE, use
+  versionator eclass to go back to the full version instead, so that it's clear
+  what's going on and other developers don't misread the code. It's only
+  perfect for EAPI >= 0 but it's not broken on EAPI=0 anyway.
+
+  20 Mar 2012; Mike Gilbert <floppym@gentoo.org> python.eclass:
+  Define _python_implementation() earlier.
+  Update handling of dependencies.
+  Patch by Arfrever. Backported from Progress Overlay.
+  http://code.google.com/p/gentoo-progress/source/detail?r=1705
+
+  19 Mar 2012; Michał Górny <mgorny@gentoo.org> vcs-snapshot.eclass:
+  Fix old eclass name in die-message.
+
+  19 Mar 2012; Michał Górny <mgorny@gentoo.org> +vcs-snapshot.eclass:
+  Introduce vcs-snapshot eclass to simplify working with github, bitbucket
+  and similar snapshots.
+
+  18 Mar 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-plugin.eclass:
+  move eerror to ewarn, make the gettext warning less importend
+
+  17 Mar 2012; Michael Pagano <mpagano@gentoo.org> kernel-2.eclass:
+  Fix eclass for rc kernels, and fix testing tarball download location. bug
+  #407869
+
+  15 Mar 2012; Patrick Lauer <patrick@gentoo.org> distutils.eclass:
+  Fixing #407495
+
+  14 Mar 2012; Mike Gilbert <floppym@gentoo.org> chromium.eclass:
+  Improve warning about debug (-g) flags in chromium_pkg_die.
+
+  14 Mar 2012; Mike Gilbert <floppym@gentoo.org> +chromium.eclass:
+  New eclass.
+
+  13 Mar 2012; Ralph Sennhauser <sera@gentoo.org> java-utils-2.eclass:
+  Add JAVA_PKG_WANT_BUILD_VM to allow limiting build VM by VM handle. The main
+  aim is to allow respecting the system VM, if possible, for a subset of VMs
+  provided by the jdk virtuals.
+  Thanks to Vlastimil Babka <caster@gentoo.org> for contributing the variable
+  name and review.
+
+  10 Mar 2012; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  Rev. 1.527 fixed 4.7 without me noticing. Add comments about the format of
+  gcc/BASE-VER to prevent future confusion.
+
+  10 Mar 2012; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  Revert PRERELEASE setting for live ebuilds. It seems 4.7 treats BASE-VER
+  differently than earlier versions. This fixes them, but breaks 4.7 again.
+
+  10 Mar 2012; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  We need micro versions on live ebuilds in order for tc_version_is_at_least()
+  to work properly.
+
+  10 Mar 2012; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  Tweak live ebuild bits.
+
+  10 Mar 2012; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  Fix unpacking of live git ebuilds.
+
+  09 Mar 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-plugin.eclass:
+  readded vdr-plugin_pkg_config dummy function
+
+  09 Mar 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-plugin.eclass:
+  removed vdr-plugin_pkg_config function, unused, changed on 2008 to eselect
+  vdrplugin handling
+
+  09 Mar 2012; Sergei Trofimovich <slyfox@gentoo.org> haskell-cabal.eclass:
+  Drop haddock from DEPENDS when USE=doc haddock. haddock-2.9.2+ can be used
+  right in the ebuild phase to build it's docs.
+
+  08 Mar 2012; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Die earlier on unsupported EAPI.
+
+  07 Mar 2012; Mike Gilbert <floppym@gentoo.org> python.eclass:
+  Fix default src_test implementation in EAPI 4. Patch by pesa.
+
+  06 Mar 2012; Andreas K. Huettel <dilfridge@gentoo.org> kde4-base.eclass,
+  kde4-meta.eclass:
+  Update from kde overlay
+
+  05 Mar 2012; Patrick Lauer <patrick@gentoo.org> apache-2.eclass:
+  Don't set eapi in eclass, #405911
+
+  03 Mar 2012; Vlastimil Babka <caster@gentoo.org> ant-tasks.eclass:
+  Add support for ANT_TASK_DISABLE_VM_DEPS variable - when enabled, the jdk/jre
+  deps are not added by eclass.
+
+  03 Mar 2012; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  Prevent bundled libffi from being installed with gcj or gccgo (bug #354903 by
+  Xake).  Drop old libffi-related code.
+
+  01 Mar 2012; Naohiro Aota <naota@gentoo.org> eutils.eclass:
+  Consider patch alias, #404447
+
+  01 Mar 2012; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Cleanup qt_mkspecs_dir().
+
+  01 Mar 2012; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Fold standard_configure_options() into qt4-build_src_configure().
+
+  01 Mar 2012; Ulrich Müller <ulm@gentoo.org> eutils.eclass:
+  Cdrom functions split out to dedicated cdrom.eclass.
+
+  28 Feb 2012; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Add qt-openvg blocker.
+
+  27 Feb 2012; Mike Gilbert <floppym@gentoo.org> python.eclass:
+  Add a safety check to catch issues like bug 405299 earlier. Adapted from
+  Progress overlay.
+
+  26 Feb 2012; Pacho Ramos <pacho@gentoo.org> tla.eclass:
+  Convert to eshopts_{push,pop}, bug 328871 by Spanky.
+
+  26 Feb 2012; Pacho Ramos <pacho@gentoo.org> eutils.eclass:
+  Use correct menu categories for app-* as discussed in gentoo-dev.
+
+  25 Feb 2012; Michal Hrusecky <miska@gentoo.org> obs-service.eclass:
+  Improved obs-service eclass to fix paths to suse-build automatically
+
+  25 Feb 2012; Robin H. Johnson <robbat2@gentoo.org> linux-mod.eclass:
+  Bug #404193: Depend on virtual/modutils instead of
+  sys-apps/module-init-tools.
+
+  23 Feb 2012; Alex Legler <a3li@gentoo.org> ruby-ng.eclass:
+  Improve no-matching-ruby-target-error message wording wrt bug 405373.
+
+  21 Feb 2012; Justin Lecher <jlec@gentoo.org> subversion.eclass:
+  Respect ESVN_USER, ESVN_PASSWORD and ESVN_OPTIONS on repo update, #401737
+
+  20 Feb 2012; Bernard Cafarelli <voyageur@gentoo.org> gnustep-base.eclass:
+  Use WORKDIR instead of T for temporary GNUstep.conf, fixes bug #389859
+
+  20 Feb 2012; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  Require dev-libs/ppl-0.11 now that it's stable (bug #396569). Drop cloog-ppl
+  include path workaround as we've required 0.15.0 for a while now.
+
+  20 Feb 2012; Robin H. Johnson <robbat2@gentoo.org> autotools.eclass:
+  Remove my WANT_AUTOMAKE=none overloading in eautomake and instead introduce
+  AT_NOEACLOCAL, AT_NOEAUTOCONF, AT_NOEAUTOMAKE that work the same as
+  AT_NOELIBTOOLIZE. Should fix bug #404555.
+
+  15 Feb 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-plugin.eclass:
+  move media-tv to virtual/linuxtv-dvb-headers, bug #403929
+
+  13 Feb 2012; Zac Medico <zmedico@gentoo.org> python.eclass:
+  Enable PyPy 1.8 support. Merged from the progress overlay:
+  http://code.google.com/p/gentoo-progress/source/detail?r=1785
+
+  13 Feb 2012; Davide Pesavento <pesa@gentoo.org> qt4-r2.eclass:
+  Minor code style cleanup and quoting fixes.
+
+  13 Feb 2012; Davide Pesavento <pesa@gentoo.org> qt4-r2.eclass:
+  Finally remove ${S} fallback, it was deprecated 3 months ago.
+
+  13 Feb 2012; Davide Pesavento <pesa@gentoo.org> qt4-r2.eclass:
+  eqmake4: make CONFIG manipulation more robust by using gsub in the awk
+  script. Fixes bug #372719.
+
+  12 Feb 2012; Matti Bickel <mabi@gentoo.org> php-lib-r1.eclass:
+  always install stuff into /usr/share/php
+
+  12 Feb 2012; Matti Bickel <mabi@gentoo.org> fox.eclass:
+  fix eclass to also support building apps with fox:1.7
+
+  12 Feb 2012; Magnus Granberg <zorry@gentoo.org> toolchain.eclass:
+  PaX mark cc1 and cc1plus for bug 301299
+
+  12 Feb 2012; Robin H. Johnson <robbat2@gentoo.org> autotools.eclass:
+  Provide a way to run eautoreconf without automake by using
+  WANT_AUTOMAKE=none.
+
+  11 Feb 2012; Christian Ruppert <idl0r@gentoo.org> vdr-plugin.eclass:
+  Remove vdr_add_local_patch() and use epatch_user() from eutils instead. Issue
+  a error in case the old variable to pass user patches is still used. Also the
+  example has been removed as it was actually a common ebuild example, nothing
+  specific. Update descriptions.
+
+  11 Feb 2012; Ulrich Müller <ulm@gentoo.org> elisp-common.eclass:
+  Delete declaration of unused variable.
+
+  10 Feb 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> python.eclass:
+  Revert previous commit to python eclass, breaks any ebuild using
+  PYTHON_DEPEND=2.4 without any need or prior warning
+
+  10 Feb 2012; Patrick Lauer <patrick@gentoo.org> python.eclass:
+  Removing python 2.4 support from python eclass
+
+  09 Feb 2012; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Make src_test() a noop for qt-multimedia (bug #332299).
+
+  09 Feb 2012; Markos Chandras <hwoarang@gentoo.org> qt4-build.eclass:
+  Drop buggy code as discussed on qt@gentoo.org on 2012/02/02
+
+  09 Feb 2012; Bernard Cafarelli <voyageur@gentoo.org> gnustep-base.eclass:
+  Use check on configuration file instead of has_version for EAPI0 ebuilds
+
+  08 Feb 2012; Bernard Cafarelli <voyageur@gentoo.org> gnustep-base.eclass:
+  Force clang when using experimental libobjc2 support
+
+  07 Feb 2012; Lars Wendler <polynomial-c@gentoo.org> mozlinguas.eclass:
+  Whitespace fix
+
+  07 Feb 2012; Lars Wendler <polynomial-c@gentoo.org> mozlinguas.eclass:
+  Fixed eclass for usage with seamonkey (which has langpacks in beta releases).
+
+  07 Feb 2012; Sergei Trofimovich <slyfox@gentoo.org> haskell-cabal.eclass:
+  Added support for CABAL_EXTRA_BUILD_FLAGS and HCFLAGS magic variables.
+
+  06 Feb 2012; Nirbheek Chauhan <nirbheek@gentoo.org> mozconfig-3.eclass:
+  Depend on an icon theme, fixes bug 341697
+
+  05 Feb 2012; Mike Gilbert <floppym@gentoo.org> mercurial.eclass:
+  Don't die if hg pull exits with status 1.
+
+  04 Feb 2012; Nirbheek Chauhan <nirbheek@gentoo.org> +mozlinguas.eclass:
+  Add mozlinguas.eclass to handle language packs for mozilla products
+
+  04 Feb 2012; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Fix typo in recursive autoreconf.
+
+  02 Feb 2012; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Use checksums to determine whether files need autoreconf. Fixes bug #399641.
+
+  02 Feb 2012; Mike Gilbert <floppym@gentoo.org> subversion.eclass:
+  Introduce ESVN_UMASK variable to override default umask. Patch by Arfrever.
+
+  31 Jan 2012; Markos Chandras <hwoarang@gentoo.org> qt4-build.eclass:
+  Initial EAPI4 support in qt4-build eclass
+
+  31 Jan 2012; Ulrich Müller <ulm@gentoo.org> eutils.eclass:
+  Use ${P}-${PR} instead of ${PF} in epatch_user.
+
+  30 Jan 2012; Mike Gilbert <floppym@gentoo.org> python.eclass:
+  Avoid inheriting eutils from python.eclass.
+
+  30 Jan 2012; Mike Gilbert <floppym@gentoo.org> python.eclass:
+  Detect needless usage of python_convert_shebangs(). Patch by Arfrever.
+
+  30 Jan 2012; Justin Lecher <jlec@gentoo.org> autotools-utils.eclass:
+  Call glib-gettextize with --force in autotools-utils.eclass
+
+  21 Jan 2012; Andreas K. Huettel <dilfridge@gentoo.org> cmake-utils.eclass:
+  Dont force CMAKE_BUILD_WITH_INSTALL_RPATH in APPLE prefix on request from
+  prefix guys, bug 398437
+
+  21 Jan 2012; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Force autoreconf on user patches only.
+
+  21 Jan 2012; Mike Gilbert <floppym@gentoo.org> python.eclass:
+  Copy python_clean_py-compile_files from Progress overlay. Thanks Arfrever.
+  Bug 396586.
+
+  20 Jan 2012; Sergei Trofimovich <slyfox@gentoo.org> haskell-cabal.eclass:
+  Added stdout echoing of most executed phase commands. Added stub for
+  CABAL_USE_HSCOLOUR feature to ease ebuild syncing from haskell overlay.
+
+  19 Jan 2012; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Add AM_CONFIG_HEADER check (for pixman autoreconf).
+
+  19 Jan 2012; Michał Górny <mgorny@gentoo.org> git-2.eclass:
+  Strip .git from storedir; wrt bug #386845.
+
+  19 Jan 2012; Matti Bickel <mabi@gentoo.org> php-pear-lib-r1.eclass:
+  Removed superflous call to has_php from php-pear-lib-r1
+
+  19 Jan 2012; Matti Bickel <mabi@gentoo.org> php-ext-source-r2.eclass:
+  Added addpredict to src_configure phase because of bug #385403
+
+  18 Jan 2012; Matti Bickel <mabi@gentoo.org> php-pear-r1.eclass:
+  Remove dependency on long gone dev-php/PEAR-PEAR-1.8.1
+
+  17 Jan 2012; Magnus Granberg <zorry@gentoo.org> toolchain.eclass:
+  Add HARD_CFLAGS to ALL_CXXFLAGS for hardened gcc 4.7
+
+  17 Jan 2012; Johannes Huber <johu@gentoo.org> kde4-base.eclass:
+  Drop kdeenablefinal build feature. Fix source uri calc for KDE SC 4.7.97 aka
+  4.8 RC2 caused by screwed up version number scheme by upstream.
+
+  16 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> xfconf.eclass:
+  Raise xfce4-dev-tools DEPEND to 4.9.1 for LT_INIT and LT_PREREQ support.
+
+  15 Jan 2012; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Quiet grep output.
+
+  15 Jan 2012; Christian Ruppert <idl0r@gentoo.org> vdr-plugin.eclass:
+  Add maintainer, description tags etc.
+
+  15 Jan 2012; Christian Ruppert <idl0r@gentoo.org> vdr-plugin.eclass:
+  Add EAPI 4 support
+
+  15 Jan 2012; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Improve the --docdir configure grep.
+
+  15 Jan 2012; Ulrich Müller <ulm@gentoo.org> cdrom.eclass:
+  New variable CDROM_DISABLE_PROPERTIES. Set PROPERTIES only if this is unset.
+
+  15 Jan 2012; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Pass --docdir to configure only when supported.
+
+  14 Jan 2012; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Use path_exists() to ensure any file exists in docdir.
+
+  14 Jan 2012; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Replace the docdir-directory error with a warning.
+
+  14 Jan 2012; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Pass --force to eautopoint and few other pre-autoreconf funcs.
+
+  14 Jan 2012; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Autoreconfigure packages when user patches need it.
+
+  14 Jan 2012; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Disallow eautomake from calling eautoreconf unnecessarily.
+
+  14 Jan 2012; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Pass --docdir to configure, and install docs from it; wrt bug #350423.
+
+  14 Jan 2012; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Support installing default docs, similarly to EAPI4; wrt bug #397659.
+
+  13 Jan 2012; Matti Bickel <mabi@gentoo.org> php-ext-source-r2.eclass:
+  Uncomment DEPEND for php-ext-source-r2.eclass, but w/o the SELFDEPEND that
+  breaks pecl ebuilds (bug #398553)
+
+  13 Jan 2012; Ulrich Müller <ulm@gentoo.org> +cdrom.eclass:
+  New cdrom.eclass, split out CD-ROM functions from eutils.eclass.
+
+  13 Jan 2012; Ralph Sennhauser <sera@gentoo.org> java-virtuals-2.eclass:
+  Set S="${WORKDIR}" for java-virtuals as EAPI-4 doesn't permit the
+  S-to-WORKDIR fallback anymore.
+
+  09 Jan 2012; Justin Lecher <jlec@gentoo.org> autotools-utils.eclass:
+  Correct typo in autotools-utils.eclass: @DEFAULT-UNSET -> @DEFAULT_UNSET
+
+  07 Jan 2012; Michał Górny <mgorny@gentoo.org> systemd.eclass:
+  Install systemd units to /usr/lib.
+
+  06 Jan 2012; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  mysql.eclass, mysql-autotools.eclass, mysql-cmake.eclass, mysql-v2.eclass,
+  mysql_fx.eclass:
+  [mysql eclasses] Added prefix support for eclasses - fixes bug 348788 and bug
+  388125.
+  Bumped required EAPI to 3 due to the prefix support.
+  Fix -userpriv detection - fixes bug 312809.
+
+  05 Jan 2012; Michał Górny <mgorny@gentoo.org> systemd.eclass:
+  Fix use of dosym with directory destination.
+
+  05 Jan 2012; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Add AUTOTOOLS_AUTORECONF for bug #392073.
+
+  03 Jan 2012; Nirbheek Chauhan <nirbheek@gentoo.org>
+  gnome-python-common.eclass:
+  New automake uses $(SHELL) py-compile, which fails if py-compile is a symlink
+  to /bin/true. Make it an executable empty file instead.
+
+  03 Jan 2012; Justin Lecher <jlec@gentoo.org> eutils.eclass:
+  Convert make_desktop_entry() comment block to be eclass-manpages conform,
+  #397451
+
+  01 Jan 2012; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Pass -importdir to configure only for qt >= 4.7 (bug #396685).
+
+  01 Jan 2012; Mike Gilbert <floppym@gentoo.org> distutils.eclass,
+  python.eclass:
+  Avoid including python.eclass more than once.
+
+  31 Dec 2011; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Respect {C,CXX,LD}FLAGS during config.tests (bug #336618).
+
+  30 Dec 2011; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Make the output of qt4-build_src_unpack() more readable.
+
+  28 Dec 2011; Stratos Psomadakis <psomas@gentoo.org> kernel-2.eclass:
+  Fix URIs for longterm kernels
+
+  28 Dec 2011; Ryan Hill <dirtyepic@gentoo.org> flag-o-matic.eclass:
+  Clean up setup-allowed-flags().
+
+  28 Dec 2011; Ryan Hill <dirtyepic@gentoo.org> flag-o-matic.eclass:
+  Remove UNSTABLE_FLAGS. Keyword status should not determine what flags are
+  used. Move -Os to allowed flags as it's been stable since 4.0ish and drop -O0
+  because it breaks things a lot.
+
+  27 Dec 2011; Jesus Rivero <neurogeek@gentoo.org> subversion.eclass:
+  Handle UUID mismatch by deleting working copy and checking out it again.
+  Patch by Arfrever.
+
+  27 Dec 2011; Christian Faulhammer <fauli@gentoo.org> rox-0install.eclass,
+  apache-2.eclass, common-lisp-common-2.eclass, gnustep-2.eclass,
+  java-ant-2.eclass, java-pkg-2.eclass, java-pkg-opt-2.eclass,
+  java-utils-2.eclass, java-virtuals-2.eclass, common-lisp-common-3.eclass,
+  tetex-3.eclass, ant-tasks.eclass, apache-module.eclass, bsdmk.eclass,
+  common-lisp.eclass, common-lisp-common.eclass, darcs.eclass, db.eclass,
+  db-use.eclass, embassy.eclass, emul-linux-x86.eclass, enlightenment.eclass,
+  font-ebdftopcf.eclass, fox.eclass, freebsd.eclass, games.eclass,
+  games-mods.eclass, gnat.eclass, gnatbuild.eclass, gnome-python-common.eclass,
+  gst-plugins-bad.eclass, gst-plugins-base.eclass, gst-plugins-good.eclass,
+  gst-plugins10.eclass, horde.eclass, java-mvn-src.eclass, java-osgi.eclass,
+  java-pkg-simple.eclass, mercurial.eclass, mozextension.eclass,
+  myspell.eclass, mysql_fx.eclass, nsplugins.eclass, pam.eclass,
+  perl-app.eclass, php-common-r1.eclass, php-ezc.eclass, portability.eclass,
+  rox.eclass, rpm.eclass, savedconfig.eclass, scsh.eclass, sgml-catalog.eclass,
+  stardict.eclass, sword-module.eclass, tetex.eclass, tla.eclass,
+  vdr-plugin.eclass, versionator.eclass, vim-doc.eclass, vim-plugin.eclass,
+  vim-spell.eclass, vmware.eclass, vmware-mod.eclass, webapp.eclass,
+  wxwidgets.eclass, x-modular.eclass, xemacs-elisp.eclass,
+  xemacs-elisp-common.eclass, xemacs-packages.eclass, xfconf.eclass,
+  zproduct.eclass:
+  Update copyright years in headers
+
+  27 Dec 2011; Robin H. Johnson <robbat2@gentoo.org> mysql-cmake.eclass,
+  mysql-v2.eclass:
+  Bug #396089: Avoid automagic systemtap/dtrace in MySQL 5.5.
+
+  27 Dec 2011; Mike Gilbert <floppym@gentoo.org> twisted.eclass:
+  Only call doman on manpages in twisted_src_install. Credit to Arfrever.
+
+  27 Dec 2011; Mike Gilbert <floppym@gentoo.org> twisted.eclass:
+  Use twistedmatrix.com/Releases in SRC_URI; tmrc.mit.edu does not have
+  tarballs past 10.2.
+
+  26 Dec 2011; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Misc cleanups, add a few missing "|| die", fix description of some functions.
+
+  25 Dec 2011; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Delete obsolete sed on fvisibility.test, it's no longer needed in all
+  versions of Qt currently available in the tree.
+
+  22 Dec 2011; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Add a note on AT_NOELIBTOOLIZE=yes in src_prepare(). Fixes #395649.
+
+  21 Dec 2011; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Disable rpath for Qt 4.8 and later (bug #380415). Thanks to dilfridge for
+  testing.
+
+  21 Dec 2011; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Remove obsolete workaround.
+
+  18 Dec 2011; Robin H. Johnson <robbat2@gentoo.org> python.eclass:
+  Bug #390691: Be careful about cp call to coreutils with --no-preserve option
+  that might not be available until later in an upgrade.
+
+  18 Dec 2011; Diego E. Pettenò <flameeyes@gentoo.org> ruby-ng.eclass:
+  Reorder setting of REQUIRED_USE to stay near IUSE setting; also use
+  ruby_get_use_targets to set IUSE.
+
+  18 Dec 2011; Andreas K. Huettel <dilfridge@gentoo.org> kde4-base.eclass,
+  kde4-functions.eclass, kde4-meta.eclass:
+  Re-sync kde4 eclasses with kde overlay: remove libkworkspace target hacks
+  (requires libkworkspace rebuild), force qt-4.7.4 for kde-4.8, properly treat
+  kde-4.[789] version numbers, warn if the handbook useflag is added manually
+
+  17 Dec 2011; Maciej Mrozowski <reavertm@gentoo.org> eutils.eclass:
+  Revert old eshopts_{pop,push} implementations until new ones pass unit tests.
+  Bug 395025.
+
+  16 Dec 2011; Jonathan Callen <abcd@gentoo.org> qt4-build.eclass:
+  Set importdir to be /usr/$(get_libdir)/qt4/imports instead of the
+  non-FHS-compliant /usr/imports
+
+  16 Dec 2011; Maxim Koltsov <maksbotan@gentoo.org> leechcraft.eclass:
+  Add app-arch/xz-utils dependency to leechcraft.eclass
+
+  15 Dec 2011; Maxim Koltsov <maksbotan@gentoo.org> leechcraft.eclass:
+  Update leechcraft eclass to new filename suffix
+
+  14 Dec 2011; Alexandre Rostovtsev <tetromino@gentoo.org> gnome2-utils.eclass,
+  gnome2.eclass:
+  Do not use gnome2_schemas_update --uninstall; --uninstall has no effect since
+  glib-2.25.11, and has been removed in 2.31.x (bug #394501, thanks to
+  Marc-Antoine Perennou for reporting).
+
+  14 Dec 2011; Sergei Trofimovich <slyfox@gentoo.org> multilib.eclass:
+  Added -m32 to CFLAGS_sparc32. Allows to build sparc64-* multilib toolchain
+  without additional tuning.
+
+  14 Dec 2011; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Drop base.eclass inherit and thus src_unpack() export.
+
+  13 Dec 2011; Ralph Sennhauser <sera@gentoo.org> java-utils-2.eclass:
+  No longer require JDK for installing java binpkg. #206024
+
+  10 Dec 2011; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Handle sparc64-* in arch configuration.
+
+  08 Dec 2011; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Update HOMEPAGE (bug #388133).
+
+  07 Dec 2011; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  Disappear disappeared devs.
+
+  05 Dec 2011; Mike Gilbert <floppym@gentoo.org> java-vm-2.eclass:
+  Add semicolon to fix ferringb's last change.
+
+  04 Dec 2011; Brian Harring <ferringb@gentoo.org> java-vm-2.eclass:
+  Fix IFS=: bleeding out from java-vm_sandbox-predict invocations.
+
+  03 Dec 2011; Ulrich Mueller <ulm@gentoo.org> elisp.eclass,
+  elisp-common.eclass:
+  Sync eclasses from Emacs overlay (revision 1759).
+  elisp.eclass: Allow for user patches. New variable ELISP_REMOVE.
+  elisp-common.eclass: Replace echo by ebegin/eend for proper logging.
+
+  02 Dec 2011; Brian Harring <ferringb@gentoo.org> eutils.eclass:
+  Fix eqawarn to match portage's return code; this fixes sporadic failures
+  in alternate managers for packages like freetype that bleed the
+  return code through.
+
+  27 Nov 2011; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Revert making pushd/popd fatal due to humongous breakage. Add a warning
+  message instead.
+
+  27 Nov 2011; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Denote that autotools-utils must not be mixed with econf/emake.
+
+  26 Nov 2011; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Remove implicit IUSE=debug deprecation warning.
+
+  26 Nov 2011; Michał Górny <mgorny@gentoo.org> autotools-utils.eclass:
+  Add failure handling for pushd/popd calls.
+
+  24 Nov 2011; Ralph Sennhauser <sera@gentoo.org> java-vm-2.eclass:
+  set_java_env(): Substitute @SLOT@ in vm env files
+  java-vm_check-nsplugin(): Fix handling of IUSE defaults
+
+  24 Nov 2011; Maciej Mrozowski <reavertm@gentoo.org> virtuoso.eclass:
+  Dependency on <gawk-4 moved to virtuoso-server-6.1.{2,3}.
+
+  21 Nov 2011; Jory A. Pratt <anarchy@gentoo.org> nsplugins.eclass:
+  Assign to mozilla herd, add share_plugins_dir function for mozilla
+  applications.
+
+  21 Nov 2011; Jory A. Pratt <anarchy@gentoo.org> mozconfig-3.eclass:
+  Fix handling of crashreporter use.
+
+  21 Nov 2011; Ralph Sennhauser <sera@gentoo.org> java-vm-2.eclass:
+  Move handling of PaX marking JVM executables to eclass.
+
+  21 Nov 2011; Ryan Hill <dirtyepic@gentoo.org> toolchain.eclass:
+  Fix live ebuilds.
+
+  19 Nov 2011; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Add dependency on dev-util/pkgconfig (#385835 and #387783).
+
+  19 Nov 2011; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Remove support for Qt 4.5, add blockers for qt-declarative, small cleanup.
+
+  19 Nov 2011; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Make qt_assistant_cleanup() a no-op for Qt 4.7.4 and later (bug #386709).
+
+  18 Nov 2011; Michał Górny <mgorny@gentoo.org> scons-utils.eclass:
+  Add DESTDIR-like variable to the example.
+
+  18 Nov 2011; Bernard Cafarelli <voyageur@gentoo.org> gnustep-base.eclass:
+  Set VARTEXFONTS for doc generation, fix sandbox access violation on
+  /var/cache/fonts
+
+  17 Nov 2011; Tiziano Müller <dev-zero@gentoo.org> mysql-v2.eclass:
+  Fixed misplaced quotes in mysql-v2 eclass causing 'emerge --config mysql' to
+  fail (bug #388673).
+
+  15 Nov 2011; Vlastimil Babka <caster@gentoo.org> java-vm-2.eclass:
+  Drop the repetitive elogs about revdep rebuild control files for binary
+  JVM's.
+
+  14 Nov 2011; Nirbheek Chauhan <nirbheek@gentoo.org> mozconfig-3.eclass:
+  Remove obsolete xorg-x11 dep from mozconfig-3
+
+  14 Nov 2011; Alexandre Rostovtsev <tetromino@gentoo.org> gnome2-utils.eclass,
+  gnome2.eclass:
+  Add gnome2_environment_reset() to reset env variables that often cause build
+  or test failures (most recently bug #380639). The XDG_* resetting code had
+  been tested in the gnome overlay for months with good results.
+
+  12 Nov 2011; Davide Pesavento <pesa@gentoo.org> qt4-r2.eclass:
+  Restore ${S} fallback, but with a deprecation notice saying that it will be
+  removed in 30 days.
+
+  12 Nov 2011; Davide Pesavento <pesa@gentoo.org> qt4-build.eclass:
+  Set qt@g.o as maintainer, minor cleanups (quoting, whitespace, etc.)
+
+  12 Nov 2011; Davide Pesavento <pesa@gentoo.org> qt4-r2.eclass:
+  Remove ${S} fallback from src_unpack, set qt@g.o as maintainer, remove
+  unnecessary quoting.
+
+  12 Nov 2011; Ralph Sennhauser <sera@gentoo.org> java-vm-2.eclass:
+  Add java-vm_sandbox-predict for installing a sandbox control file along with
+  any JVM that needs it. Bug 388937#c1
+
+  11 Nov 2011; Ryan Hill <dirtyepic@gentoo.org> flag-o-matic.eclass:
+  Test that appended flags are valid. This allows people to add flags that were
+  unsupported in earlier releases without needing to do version checking.
+
+  10 Nov 2011; Pacho Ramos <pacho@gentoo.org> gtk-sharp-module.eclass:
+  gnome-desktop-sharp stuff need gnome-desktop:2, bug #389181 by Kacper
+  Kowalik.
+
+  10 Nov 2011; Naohiro Aota <naota@gentoo.org>
+  ELT-patches/fbsd-conf/00broken-libglade:
+  Add patch applied detection comment
+
+  08 Nov 2011; Bernard Cafarelli <voyageur@gentoo.org> gnustep-base.eclass:
+  Fix sandbox access violation on /root/GNUstep, bug #383665
+
+  08 Nov 2011; Michael Pagano <mpagano@gentoo.org> kernel-2.eclass:
+  Modify to support new location of 2.6 kernels on kernel.org and mirrors
+
+  04 Nov 2011; Naohiro Aota <naota@gentoo.org> mysql.eclass, user.eclass:
+  Change possible mis-used ${action} to ${db}
+
+  03 Nov 2011; Andreas K. Huettel <dilfridge@gentoo.org> +ChangeLog:
+  Created ChangeLog
+

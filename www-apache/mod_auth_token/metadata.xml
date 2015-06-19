@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>pavel.stratil-jun@fenix.cz</email>
+    <description>Proxied co-maintainer assign bugs to him</description>
+  </maintainer>
+  <maintainer>
+    <email>flameeyes@gentoo.org</email>
+  </maintainer>
+  <upstream>
+    <remote-id type="google-code">mod-auth-token</remote-id>
+  </upstream>
+</pkgmetadata>

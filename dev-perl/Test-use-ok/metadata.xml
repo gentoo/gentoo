@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>perl</herd>
+  <upstream>
+    <remote-id type="cpan">Test-use-ok</remote-id>
+    <remote-id type="cpan-module">Test::use::ok</remote-id>
+    <remote-id type="cpan-module">ok</remote-id>
+  </upstream>
+</pkgmetadata>

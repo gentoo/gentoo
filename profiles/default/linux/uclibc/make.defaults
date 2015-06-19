@@ -1,0 +1,13 @@
+# Copyright 1999-2014 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/default/linux/uclibc/make.defaults,v 1.1 2014/08/16 20:43:28 blueness Exp $
+
+PORTAGE_LIBC="uClibc"
+ELIBC=uclibc
+
+FEATURES="sandbox sfperms strict"
+
+USE="nptl unicode xattr -berkdb"
+BOOTSTRAP_USE="${BOOTSTRAP_USE} nptl -berkdb"
+
+SYMLINK_LIB="no"

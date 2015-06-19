@@ -1,0 +1,202 @@
+# ChangeLog for sci-biology/primer3
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/primer3/ChangeLog,v 1.46 2015/04/22 06:51:36 jlec Exp $
+
+  22 Apr 2015; Justin Lecher <jlec@gentoo.org> -primer3-2.3.1.ebuild:
+  Drop old
+
+  21 Apr 2015; Pacho Ramos <pacho@gentoo.org> primer3-2.3.5.ebuild:
+  ppc stable wrt bug #544908
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org> primer3-2.3.5.ebuild:
+  Stable for x86, wrt bug #544908
+
+  08 Apr 2015; Agostino Sarubbo <ago@gentoo.org> primer3-2.3.5.ebuild:
+  Stable for amd64, wrt bug #544908
+
+*primer3-2.3.6 (29 Mar 2015)
+
+  29 Mar 2015; Justin Lecher <jlec@gentoo.org> +primer3-2.3.6.ebuild,
+  -primer3-2.3.4.ebuild:
+  Version Bump; drop old
+
+*primer3-2.3.5 (14 Feb 2013)
+
+  14 Feb 2013; Justin Lecher <jlec@gentoo.org> +primer3-2.3.5.ebuild:
+  Version Bump
+
+  17 Dec 2012; Justin Lecher <jlec@gentoo.org> -primer3-2.2.3.ebuild,
+  -primer3-2.3.0.ebuild:
+  Drop old
+
+  16 Dec 2012; Agostino Sarubbo <ago@gentoo.org> primer3-2.3.1.ebuild:
+  Stable for ppc, wrt bug #446992
+
+  16 Dec 2012; Agostino Sarubbo <ago@gentoo.org> primer3-2.3.1.ebuild:
+  Stable for x86, wrt bug #446992
+
+  12 Dec 2012; Agostino Sarubbo <ago@gentoo.org> primer3-2.3.1.ebuild:
+  Stable for amd64, wrt bug #446992
+
+  12 Dec 2012; Justin Lecher <jlec@gentoo.org>
+  files/primer3-2.3.4-buildsystem.patch:
+  Fix buildsystem patch to respect RANLIB, #447026
+
+  12 Dec 2012; Justin Lecher <jlec@gentoo.org> primer3-2.3.1.ebuild,
+  primer3-2.3.4.ebuild, metadata.xml:
+  Fix test
+
+*primer3-2.3.4 (12 Dec 2012)
+
+  12 Dec 2012; Justin Lecher <jlec@gentoo.org> -primer3-1.1.4-r2.ebuild,
+  +primer3-2.3.4.ebuild, +files/primer3-2.3.4-buildsystem.patch:
+  Version Bump, #446982; cleaned old
+
+*primer3-2.3.1 (19 Jul 2012)
+
+  19 Jul 2012; Justin Lecher <jlec@gentoo.org> primer3-2.3.0.ebuild,
+  +primer3-2.3.1.ebuild:
+  Version Bump
+
+  07 Mar 2012; Brent Baude <ranger@gentoo.org> primer3-2.3.0.ebuild:
+  Marking primer3-2.3.0 ppc for bug 402053
+
+*primer3-2.3.0 (28 Feb 2012)
+
+  28 Feb 2012; Andrey Kislyuk <weaver@gentoo.org> -primer3-1.1.4.ebuild,
+  +primer3-2.3.0.ebuild:
+  Version bump, remove old
+
+  03 Dec 2011; Markos Chandras <hwoarang@gentoo.org> primer3-2.2.3.ebuild:
+  convert test statement to if;fi block because || die does not work on a
+  subshell
+
+  02 Dec 2011; Markos Chandras <hwoarang@gentoo.org> primer3-2.2.3.ebuild:
+  add missing sed. stable on amd64. bug #391531
+
+  28 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> primer3-2.2.3.ebuild:
+  x86 stable wrt bug #391531
+
+  23 Nov 2011; Justin Lecher <jlec@gentoo.org> -primer3-1.0.0.ebuild,
+  primer3-1.1.4.ebuild, primer3-1.1.4-r2.ebuild, primer3-2.2.3.ebuild:
+  Dropped old, respect LDFLAGS, don't mix CFLAGS and CXXFLAGS, move KEYWORDS
+  and fixes from ver-1 to 2
+
+  09 Mar 2011; Justin Lecher <jlec@gentoo.org> +primer3-1.0.0.ebuild:
+  Reanimate last stable version for ppc/ppc64
+
+*primer3-2.2.3 (03 Feb 2011)
+
+  03 Feb 2011; Andrey Kislyuk <weaver@gentoo.org> -primer3-1.0.0.ebuild,
+  +primer3-2.2.3.ebuild:
+  Version bump, drop old
+
+*primer3-1.1.4-r2 (31 Aug 2010)
+
+  31 Aug 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  -primer3-1.1.4-r1.ebuild, +primer3-1.1.4-r2.ebuild,
+  +files/primer3-1.1.4-ldflags.patch:
+  Respect CC and LDFLAGS wrt bug 335225. Thanks to Diego for the report.
+
+*primer3-1.1.4-r1 (07 Mar 2010)
+
+  07 Mar 2010; Justin Lecher (jlec) <jlec@gentoo.org>
+  +primer3-1.1.4-r1.ebuild:
+  Moved to EAPI=3 for PREFIX support, imported prefix patches from overlay,
+  keyworded as in overlay
+
+  01 Sep 2009; Olivier Fisette <ribosome@gentoo.org> primer3-1.1.4.ebuild:
+  Stabilised on x86 and amd64.
+
+  24 Mar 2009; Olivier Fisette <ribosome@gentoo.org> metadata.xml:
+  Giving up maintainership of this package.
+
+  13 Sep 2008; Olivier Fisette <ribosome@gentoo.org> -primer3-1.0.1.ebuild,
+  -primer3-1.1.1.ebuild:
+  Pruned old versions, fixing bug #237441.
+
+*primer3-1.1.4 (26 Aug 2008)
+
+  26 Aug 2008; Olivier Fisette <ribosome@gentoo.org> +primer3-1.1.4.ebuild:
+  New upstream version.
+
+*primer3-1.1.1 (28 Jun 2007)
+
+  28 Jun 2007; Olivier Fisette <ribosome@gentoo.org> +primer3-1.1.1.ebuild:
+  New upstream version.
+
+  28 Jun 2007; Olivier Fisette <ribosome@gentoo.org> primer3-1.0.0.ebuild,
+  primer3-1.0.1.ebuild:
+  Updated home page URL.
+
+*primer3-1.0.1 (02 Feb 2007)
+
+  02 Feb 2007; Olivier Fisette <ribosome@gentoo.org> +primer3-1.0.1.ebuild:
+  New upstream version.
+
+  06 Jan 2007; Danny van Dyk <kugelfang@gentoo.org> -primer3-1.0b.ebuild:
+  QA: Removed unused versions.
+
+*primer3-1.0b (03 Nov 2006)
+
+  03 Nov 2006; Olivier Fisette <ribosome@gentoo.org> +primer3-1.0b.ebuild:
+  New upstream version.
+
+  02 Nov 2006; Fabian Groffen <grobian@gentoo.org> primer3-1.0.0.ebuild:
+  Dropped ppc-macos, see you in prefix.
+
+  18 Aug 2006; Jason Wever <weeve@gentoo.org> primer3-1.0.0.ebuild:
+  Added ~sparc keyword wrt bug #144241.
+
+  11 Oct 2005; Luis Medinas <metalgod@gentoo.org> primer3-1.0.0.ebuild:
+  Marked Stable on amd64.
+
+  04 Sep 2005; Simon Stelling <blubb@gentoo.org> primer3-1.0.0.ebuild:
+  added ~amd64 keyword
+
+  19 Jun 2005; Markus Rothe <corsair@gentoo.org> primer3-1.0.0.ebuild:
+  Stable on ppc64
+
+  02 May 2005; Omkhar Arasaratnam <omkhar@gentoo.org> primer3-1.0.0.ebuild:
+  Added ~ppc64
+
+  02 May 2005; Michael Hanselmann <hansmi@gentoo.org> primer3-1.0.0.ebuild:
+  Stable on ppc.
+
+  30 Jan 2005; Olivier Fisette <ribosome@gentoo.org> primer3-1.0.0.ebuild:
+  Ebuild cleanup.
+
+  14 Jan 2005; Lina Pezzella <j4rg0n@gentoo.org> primer3-1.0.0.ebuild:
+  Stable ppc-macos.
+
+  26 Dec 2004; Lina Pezzella <j4rg0n@gentoo.org> primer-3-1.0.0.ebuild:
+  Keyworded ~ppc-macos.
+  Modified Makefile to dynamically link on ppc-macos.
+
+*primer3-1.0.0 (23 Dec 2004)
+
+  23 Dec 2004; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +primer3-1.0.0.ebuild:
+  Moved from app-sci/primer3 to sci-biology/primer3.
+
+  31 Oct 2004; Olivier Fisette <ribosome@gentoo.org> -primer3-0.9.ebuild,
+  primer3-1.0.0.ebuild:
+  Removed old version. Added 1.0 to x86. Fixed regression test.
+
+*primer3-1.0.0 (10 Aug 2004)
+
+  10 Aug 2004; Olivier Fisette <ribosome@gentoo.org>
+  primer3-0.9.ebuild:
+  Added to x86.
+  primer3-1.0.0.ebuild:
+  Updated package. Added regression test support.
+
+  24 Jun 2004; David Holm <dholm@gentoo.org> primer3-0.9.ebuild:
+  Added to ~ppc.
+
+*primer3-0.9 (23 Jun 2004)
+
+  23 Jun 2004; Olivier Fisette <ribosome@gentoo.org>
+  primer3-0.9.ebuild, metadata.xml :
+  Initial import.  Ebuild submitted by Olivier Fisette <ribosome@gentoo.org>.
+  Reference: Gentoo Bugzilla, bug #54036

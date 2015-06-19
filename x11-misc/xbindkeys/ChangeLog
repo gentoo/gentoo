@@ -1,0 +1,262 @@
+# ChangeLog for x11-misc/xbindkeys
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xbindkeys/ChangeLog,v 1.69 2015/01/02 19:18:57 jer Exp $
+
+  02 Jan 2015; Jeroen Roovers <jer@gentoo.org> -xbindkeys-1.8.4.ebuild,
+  -xbindkeys-1.8.5.ebuild:
+  Old.
+
+  02 Jan 2015; Agostino Sarubbo <ago@gentoo.org> xbindkeys-1.8.6.ebuild:
+  Stable for sparc, wrt bug #530444
+
+  01 Jan 2015; Agostino Sarubbo <ago@gentoo.org> xbindkeys-1.8.6.ebuild:
+  Stable for ppc64, wrt bug #530444
+
+  31 Dec 2014; Agostino Sarubbo <ago@gentoo.org> xbindkeys-1.8.6.ebuild:
+  Stable for ppc, wrt bug #530444
+
+  26 Dec 2014; Agostino Sarubbo <ago@gentoo.org> xbindkeys-1.8.6.ebuild:
+  Stable for x86, wrt bug #530444
+
+  22 Dec 2014; Chema Alonso <nimiux@gentoo.org> xbindkeys-1.8.6.ebuild:
+  Stable for amd64 wrt bug #530444
+
+*xbindkeys-1.8.6 (04 Jan 2014)
+
+  04 Jan 2014; Tim Harder <radhermit@gentoo.org> +xbindkeys-1.8.6.ebuild:
+  Version bump.
+
+  08 Sep 2013; Michael Weber <xmw@gentoo.org> xbindkeys-1.8.5.ebuild:
+  Add ~arm keyword
+
+*xbindkeys-1.8.5 (23 Mar 2011)
+
+  23 Mar 2011; Jeroen Roovers <jer@gentoo.org> -xbindkeys-1.7.3.ebuild,
+  -xbindkeys-1.8.0.ebuild, -xbindkeys-1.8.3.ebuild, +xbindkeys-1.8.5.ebuild:
+  Version bump by Hans-Peter Deifel (bug #360155).
+
+  15 Mar 2011; Jonathan Callen <abcd@gentoo.org> xbindkeys-1.8.4.ebuild:
+  Add prefix keywords, clean up ebuild a bit (upstream switched to autotools --
+  no need for BINDIR, etc.)
+
+  02 Jan 2011; Michael Weber <xmw@gentoo.org> xbindkeys-1.8.4.ebuild:
+  sparc stable (bug 348251)
+
+  25 Dec 2010; Christian Faulhammer <fauli@gentoo.org>
+  xbindkeys-1.8.4.ebuild:
+  stable x86, bug 348251
+
+  22 Dec 2010; Jeroen Roovers <jer@gentoo.org> xbindkeys-1.8.4.ebuild:
+  Stable for PPC (bug #348251).
+
+  21 Dec 2010; Markos Chandras <hwoarang@gentoo.org> xbindkeys-1.8.4.ebuild:
+  Stable on amd64 wrt bug #348251
+
+  19 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> xbindkeys-1.8.4.ebuild:
+  ppc64 stable wrt #348251
+
+  09 Dec 2010; Jeroen Roovers <jer@gentoo.org> xbindkeys-1.8.4.ebuild:
+  Use emake in src_install, by ssuominen.
+
+*xbindkeys-1.8.4 (09 Dec 2010)
+
+  09 Dec 2010; Jeroen Roovers <jer@gentoo.org> +xbindkeys-1.8.4.ebuild:
+  Version bump by ashtophet (bug #348251).
+
+  08 Feb 2010; Jeroen Roovers <jer@gentoo.org> xbindkeys-1.7.3.ebuild,
+  xbindkeys-1.8.0.ebuild, xbindkeys-1.8.3.ebuild:
+  Drop built_with_use.
+
+*xbindkeys-1.8.3 (08 Feb 2010)
+
+  08 Feb 2010; Jeroen Roovers <jer@gentoo.org> +xbindkeys-1.8.3.ebuild:
+  Version bump thanks to Tim Harder (bug #246035).
+
+  06 Aug 2007; Roy Marples <uberlord@gentoo.org> xbindkeys-1.8.0.ebuild:
+  Keyworded ~x86-fbsd, #141142 thanks to Robert Annessi
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  xbindkeys-1.7.3.ebuild, xbindkeys-1.8.0.ebuild:
+  Drop virtual/x11 references.
+
+  14 Mar 2007; Przemysław Maciąg <troll@gentoo.org>
+  xbindkeys-1.7.3.ebuild, xbindkeys-1.8.0.ebuild:
+  Add check for compilation with guile-1.8 (see #163650). Thx to
+  degrenier@easyconnect.fr
+
+  18 Feb 2007; Fabian Groffen <grobian@gentoo.org> xbindkeys-1.7.3.ebuild,
+  xbindkeys-1.8.0.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+*xbindkeys-1.8.0 (09 Feb 2007)
+
+  09 Feb 2007; Krzysiek Pawlik <nelchael@gentoo.org>
+  +xbindkeys-1.8.0.ebuild:
+  Version bump, bug #166036.
+
+  10 Jan 2007; Piotr Jaroszyński <peper@gentoo.org> Manifest:
+  Fix Manifest.
+
+  10 Jan 2007; <marijn@gentoo.org> xbindkeys-1.7.3.ebuild:
+  Dependency update: dev-util/guile -> dev-scheme/guile.
+
+  14 Oct 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  -xbindkeys-1.7.2-r1.ebuild:
+  Remove old version.
+
+  19 Sep 2006; Doug Goldstein <cardoe@gentoo.org> xbindkeys-1.7.2-r1.ebuild,
+  xbindkeys-1.7.3.ebuild:
+  tcltk -> tk USE flag change as per bug #17808
+
+  08 Sep 2006; Daniel Gryniewicz <dang@gentoo.org> xbindkeys-1.7.3.ebuild:
+  Marked stable on amd64 for bug #145368
+
+  03 Sep 2006; Markus Rothe <corsair@gentoo.org> xbindkeys-1.7.3.ebuild:
+  Stable on ppc64; bug #145368
+
+  30 Aug 2006; Michael Hanselmann <hansmi@gentoo.org>
+  xbindkeys-1.7.3.ebuild:
+  Stable on ppc.
+
+  30 Aug 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  xbindkeys-1.7.3.ebuild:
+  Stable on sparc
+
+  30 Aug 2006; Joshua Jackson <tsunam@gentoo.org> xbindkeys-1.7.3.ebuild:
+  Stable x86; bug #145368
+
+*xbindkeys-1.7.3 (29 Jul 2006)
+
+  29 Jul 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  +xbindkeys-1.7.3.ebuild:
+  Version bump, see bug #141922.
+
+  13 Jul 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  -xbindkeys-1.7.2.ebuild:
+  Remove old version.
+
+  11 Jun 2006; Simon Stelling <blubb@gentoo.org> xbindkeys-1.7.2-r1.ebuild:
+  stable on amd64
+
+  07 Jun 2006; Markus Rothe <corsair@gentoo.org> xbindkeys-1.7.2-r1.ebuild:
+  Stable on ppc64; bug #135822
+
+  07 Jun 2006; Jason Wever <weeve@gentoo.org> xbindkeys-1.7.2-r1.ebuild:
+  Stable on SPARC wrt bug #135822.
+
+  06 Jun 2006; Emanuele Giaquinta <exg@gentoo.org>
+  xbindkeys-1.7.2-r1.ebuild:
+  Stable on ppc; bug #135822
+
+  06 Jun 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  xbindkeys-1.7.2-r1.ebuild:
+  Stable on x86.
+
+*xbindkeys-1.7.2-r1 (18 Dec 2005)
+
+  18 Dec 2005; Krzysiek Pawlik <nelchael@gentoo.org>
+  -xbindkeys-1.7.1.ebuild, +xbindkeys-1.7.2-r1.ebuild:
+  Modular X dependencies (bug #115644), removed old ebuild.
+
+  21 Oct 2005; Simon Stelling <blubb@gentoo.org> xbindkeys-1.7.2.ebuild:
+  stable on amd64
+
+  03 Oct 2005; Markus Rothe <corsair@gentoo.org> xbindkeys-1.7.2.ebuild:
+  Stable on ppc64
+
+  02 Oct 2005; Michael Hanselmann <hansmi@gentoo.org>
+  xbindkeys-1.7.2.ebuild:
+  Stable on ppc.
+
+  29 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  xbindkeys-1.7.2.ebuild:
+  Stable on sparc wrt #106935
+
+  25 Sep 2005; Krzysiek Pawlik <nelchael@gentoo.org> xbindkeys-1.7.2.ebuild:
+  Stable on x86
+
+  17 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  28 Aug 2005; Fabian Groffen <grobian@gentoo.org> xbindkeys-1.7.2.ebuild:
+  Marking ~ppc-macos (bug #83240)
+
+  04 Aug 2005; Markus Rothe <corsair@gentoo.org> xbindkeys-1.7.2.ebuild:
+  Added ~ppc64
+
+*xbindkeys-1.7.2 (30 Jun 2005)
+
+  30 Jun 2005; Jonathan Smith <smithj@gentoo.org> -xbindkeys-1.7.0.ebuild,
+  +xbindkeys-1.7.2.ebuild:
+  #97542: version bump
+
+  25 Jun 2005; Olivier Crête <tester@gentoo.org> xbindkeys-1.7.1.ebuild:
+  Stable on amd64
+
+  23 Oct 2004; Jason Wever <weeve@gentoo.org> xbindkeys-1.7.1.ebuild:
+  Stable on sparc.
+
+  01 Oct 2004; <pyrania@gentoo.org> xbindkeys-1.7.1.ebuild:
+  Marked stable on x86.
+
+  12 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  -xbindkeys-1.5.5.ebuild, -xbindkeys-1.6.4.ebuild:
+  clean older ebuilds
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  xbindkeys-1.7.0.ebuild, xbindkeys-1.7.1.ebuild:
+  Masked xbindkeys-1.7.1.ebuild stable for ppc
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  xbindkeys-1.7.0.ebuild:
+  Masked xbindkeys-1.7.0.ebuild stable for ppc
+
+*xbindkeys-1.7.1 (03 Jul 2004)
+
+  03 Jul 2004; <pyrania@gentoo.org> +xbindkeys-1.7.1.ebuild:
+  Version bump. Closing bug #53472.
+
+  30 Apr 2004; Gustavo Zacarias <gustavoz@gentoo.org> xbindkeys-1.7.0.ebuild:
+  Stable on sparc
+
+  15 Apr 2004; Jason Wever <weeve@gentoo.org> xbindkeys-1.7.0.ebuild:
+  Added ~sparc to keywords and changed the x11-base/xfree dep to virtual/x11.
+
+  15 Apr 2004; <augustus@gentoo.org> xbindkeys-1.7.0.ebuild:
+  Added ~amd64 keyword.
+
+  11 Apr 2004; Markus Nigbur <pyrania@gentoo.org> xbindkeys-1.7.0.ebuild:
+  Marked stable on x86.
+
+  23 Mar 2004; Matthieu Sozeau <mattam@gentoo.org> xbindkeys-1.7.0.ebuild:
+  Mark testing on ppc, works right for me :)
+
+*xbindkeys-1.7.0 (04 Jan 2004)
+
+  04 Jan 2004; Ian Leitch <port001@gentoo.org> xbindkeys-1.5.5.ebuild,
+  xbindkeys-1.6.4.ebuild, xbindkeys-1.7.0.ebuild:
+  Add dev-lang/tk to DEPEND for 1.5.5 and 1.6.4, added 1.7.0 - #36748
+
+  03 Nov 2003; Abhishek Amit <abhishek@gentoo.org> metadata.xml:
+  Added metadata.xml
+
+*xbindkeys-1.6.4 (03 Oct 2003)
+
+  03 Oct 2003; Greg Fitzgerald <gregf@gentoo.org> xbindkeys-1.6.4.ebuild:
+  Version Bump
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*xbindkeys-1.5.5.ebuild (09 July 2002)
+
+  09 Jul 2002; phoen][x <phoenix@gentoo.org> ChangeLog, xbindkeys-1.5.5.ebuild,
+  files/digest-xbindkeys-1.5.5 :
+
+  Initial cvs commit. Ebuild contributed by Niklas Höglund < niklas.hoglund@telia.com>.
+  Thanks for the contribution.
+
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

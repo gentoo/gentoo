@@ -1,0 +1,44 @@
+# ChangeLog for net-nntp/ubh
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-nntp/ubh/ChangeLog,v 1.10 2012/03/25 16:48:20 armin76 Exp $
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org> ubh-2.5.ebuild:
+  Drop sparc keywords
+
+  14 Jul 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Assigning net-nntp/ubh to m-needed, as esammer retired (#36978).
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  13 Feb 2006; Michael Cummings <mcummings@gentoo.org> ubh-2.5.ebuild:
+  Virtuals for perl-core
+
+  30 Dec 2005; <mcumming@gentoo.org> ubh-2.5.ebuild:
+  Migrating libnet to perl-core
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> ubh-2.5.ebuild:
+  dev-perl/MIME-Base64 => perl-core/MIME-Base64 migration
+
+  16 May 2005; Sven Wegener <swegener@gentoo.org> ubh-2.5.ebuild:
+  Added error checking to src_install.
+
+*ubh-2.5 (17 Jan 2005)
+
+  17 Jan 2005; Sven Wegener <swegener@gentoo.org> +metadata.xml,
+  +ubh-2.5.ebuild:
+  Moved from net-news/ubh to net-nntp/ubh.
+
+  19 Jun 2004; Sven Wegener <swegener@gentoo.org> ubh-2.5.ebuild:
+  Added IUSE=""
+
+*ubh-2.5 (17 Jan 2004)
+
+  17 Jan 2004; Eric Sammer <esammer@gentoo.org> ubh-2.5.ebuild:
+  Initial checkin of net-news/ubh submitted by Eamon Caddigan
+  <ecaddiga@uiuc.edu>. Added with minor modifications. Closes bug 34198.
+  Thanks to Eamon Caddigan!
+

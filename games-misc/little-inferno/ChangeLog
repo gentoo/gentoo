@@ -1,0 +1,27 @@
+# ChangeLog for games-misc/little-inferno
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/little-inferno/ChangeLog,v 1.6 2015/06/01 21:34:24 mr_bones_ Exp $
+
+  01 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  little-inferno-20130509.ebuild:
+  clean up app-emulation/emul-linux which has been removed
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+  15 Oct 2014; Pacho Ramos <pacho@gentoo.org> little-inferno-20130509.ebuild:
+  Support multilib providers for deps. Bump to EAPI=5.
+
+  18 Aug 2013; Julian Ospald <hasufell@gentoo.org>
+  little-inferno-20130509.ebuild:
+  stable amd64, x86 wrt #480810
+
+  16 Jul 2013; Julian Ospald <hasufell@gentoo.org>
+  little-inferno-20130509.ebuild:
+  make splitdebug restriction depend on bundled-libs
+
+*little-inferno-20130509 (16 Jul 2013)
+
+  16 Jul 2013; Julian Ospald <hasufell@gentoo.org>
+  +little-inferno-20130509.ebuild, +metadata.xml:
+  initial import

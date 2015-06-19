@@ -1,0 +1,11 @@
+# ChangeLog for sci-libs/Rtree
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/Rtree/ChangeLog,v 1.2 2015/06/04 11:00:39 jlec Exp $
+
+  04 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+*Rtree-0.8.2 (20 Feb 2015)
+
+  20 Feb 2015; Sławek Lis <slis@gentoo.org> +Rtree-0.8.2.ebuild, +metadata.xml:
+  Added Rtree package

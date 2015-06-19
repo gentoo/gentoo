@@ -1,0 +1,114 @@
+# ChangeLog for dev-python/pyclimate
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyclimate/ChangeLog,v 1.28 2015/02/23 14:46:43 idella4 Exp $
+
+*pyclimate-1.2.2-r2 (23 Feb 2015)
+
+  23 Feb 2015; Ian Delaney <idella4@gentoo.org> +pyclimate-1.2.2-r2.ebuild,
+  metadata.xml, pyclimate-1.2.2-r1.ebuild:
+  revbump; convert -> distutils-r1, add python herd, agreement with jlec
+
+  07 Oct 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, #24135.
+
+  23 Feb 2012; Patrick Lauer <patrick@gentoo.org> pyclimate-1.2.2-r1.ebuild:
+  Restricting pypy and jython
+
+  23 Dec 2011; Justin Lecher <jlec@gentoo.org> pyclimate-1.2.2-r1.ebuild:
+  Don't run dodoc on directories, #367665
+
+  16 Apr 2011; Raúl Porcel <armin76@gentoo.org> pyclimate-1.2.2-r1.ebuild:
+  Drop alpha/ia64/sparc
+
+  24 Oct 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -pyclimate-1.2.2.ebuild:
+  Delete.
+
+  24 Oct 2010; Tobias Klausmann <klausman@gentoo.org>
+  pyclimate-1.2.2-r1.ebuild:
+  Stable on alpha, bug #337153
+
+  29 Sep 2010; Brent Baude <ranger@gentoo.org> pyclimate-1.2.2-r1.ebuild:
+  Marking pyclimate-1.2.2-r1 ppc for bug 337153
+
+  20 Sep 2010; Markos Chandras <hwoarang@gentoo.org>
+  pyclimate-1.2.2-r1.ebuild:
+  Stable on amd64 wrt bug #337153
+
+  15 Sep 2010; Christian Faulhammer <fauli@gentoo.org>
+  pyclimate-1.2.2-r1.ebuild:
+  stable x86, bug 337153
+
+  13 Sep 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pyclimate-1.2.2-r1.ebuild:
+  Update EAPI.
+
+*pyclimate-1.2.2-r1 (15 Apr 2010)
+
+  15 Apr 2010; Justin Lecher <jlec@gentoo.org> +pyclimate-1.2.2-r1.ebuild:
+  Moved to new Python ABI stuff, #315459
+
+  26 Nov 2009; Markus Meier <maekke@gentoo.org> pyclimate-1.2.2.ebuild:
+  amd64 stable, bug #289682
+
+  14 Nov 2009; Raúl Porcel <armin76@gentoo.org> pyclimate-1.2.2.ebuild:
+  x86 stable wrt #289682
+
+  08 Nov 2009; nixnut <nixnut@gentoo.org> pyclimate-1.2.2.ebuild:
+  ppc stable #289682
+
+  08 Nov 2009; Tobias Klausmann <klausman@gentoo.org>
+  pyclimate-1.2.2.ebuild:
+  Stable on alpha, bug #289682
+
+*pyclimate-1.2.2 (17 Jan 2009)
+
+  17 Jan 2009; Patrick Lauer <patrick@gentoo.org> +pyclimate-1.2.2.ebuild:
+  Bump to 1.2.2. Fixes #255246. Modified ebuild by Juan Aguado
+  <juantxorena@gmail.com>
+
+  05 Mar 2007; Marius Mauch <genone@gentoo.org> pyclimate-1.2.1-r1.ebuild:
+  Replacing einfo with elog
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  19 Nov 2005; Chris White <chriswhite@gentoo.org> metadata.xml:
+  Added japanese metadata.xml translation thanks to Yoshino-san.
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> pyclimate-1.2.1-r1.ebuild:
+  add ~ia64
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  24 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> pyclimate-1.2.1-r1.ebuild,
+  pyclimate-1.2.1.ebuild:
+  Correct S.
+
+  24 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> pyclimate-1.2.1-r1.ebuild:
+  Fix SRC_URI typo.
+
+  20 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> pyclimate-1.2.1-r1.ebuild,
+  pyclimate-1.2.1.ebuild:
+  ScientificPython is now scientificpython - adjust dependencies accordingly.
+
+*pyclimate-1.2.1-r1 (21 Jun 2004)
+
+  21 Jun 2004; Bryan Østergaard <kloeri@gentoo.org>
+  +pyclimate-1.2.1-r1.ebuild, +pyclimate-1.2.1.ebuild:
+  Moved from dev-python/PyClimate.
+
+*PyClimate-1.2.1-r1 (31 May 2004)
+
+  31 May 2004; Steve Arnold <nerdboy@gentoo.org> PyClimate-1.2.1-r1.ebuild:
+  updated to use distutils and install the test script and data
+
+*PyClimate-1.2.1 (31 May 2004)
+
+  31 May 2004; Steve Arnold <nerdboy@gentoo.org> PyClimate-1.2.1.ebuild,
+  metadata.xml:
+  new ebuild for climate analysis stuff in python

@@ -1,0 +1,87 @@
+# ChangeLog for x11-misc/bbdate
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/bbdate/ChangeLog,v 1.26 2013/10/19 15:01:56 pacho Exp $
+
+  19 Oct 2013; Pacho Ramos <pacho@gentoo.org> -bbdate-0.2.4.ebuild,
+  metadata.xml:
+  Cleanup due desktop-wm removal
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org> bbdate-0.2.4-r1.ebuild:
+  Stable for sparc, wrt bug #392841
+
+  01 Dec 2012; Anthony G. Basile <blueness@gentoo.org> bbdate-0.2.4-r1.ebuild:
+  stable ppc, thanks peratu, bug #392841
+
+  28 Nov 2012; Agostino Sarubbo <ago@gentoo.org> bbdate-0.2.4-r1.ebuild:
+  Stable for amd64, wrt bug #392841
+
+  26 Nov 2012; Mike Gilbert <floppym@gentoo.org> bbdate-0.2.4-r1.ebuild:
+  Remove references to helvitica font. Thanks to jer for the idea. Bug 395353.
+
+  25 Nov 2012; Kacper Kowalik <xarthisius@gentoo.org> bbdate-0.2.4-r1.ebuild,
+  bbdate-0.2.4.ebuild:
+  Add missing dependency on helvetica font wrt #395353 by Agostino Sarubbo
+  <ago@gentoo.org>. Thanks to James Cloos <cloos@jhcloos.com> for providing
+  solution
+
+  11 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> bbdate-0.2.4-r1.ebuild:
+  x86 stable wrt bug #392841
+
+  16 Apr 2011; Ulrich Mueller <ulm@gentoo.org> bbdate-0.2.4.ebuild,
+  bbdate-0.2.4-r1.ebuild:
+  Remove bogus dependency on virtual/blackbox, bug 358825.
+
+  22 Sep 2008; David Shakaryan <omp@gentoo.org> metadata.xml:
+  Change herd from commonbox to desktop-wm.
+
+*bbdate-0.2.4-r1 (17 Sep 2008)
+
+  17 Sep 2008; Santiago M. Mola <coldwind@gentoo.org>
+  +files/bbdate-0.2.4-as-needed.patch, -bbdate-0.2.3.ebuild,
+  bbdate-0.2.4.ebuild, +bbdate-0.2.4-r1.ebuild:
+  Fix linking with --as-needed, fix HOMEPAGE and SRC_URI, quotes, add ~amd64
+  keyword and remove old.
+
+  19 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove ka0ttic from metadata.xml due to retirement.
+
+  19 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> ChangeLog:
+  Remove ka0ttic from metadata.xml due to retirement.
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  07 Dec 2006; Diego Pettenò <flameeyes@gentoo.org> bbdate-0.2.4.ebuild:
+  Add ~x86-fbsd keyword as per bug #156873. Thanks to Mark Kowarsky
+  (mark_alec) for reporting.
+
+  18 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> metadata.xml,
+  bbdate-0.2.3.ebuild, bbdate-0.2.4.ebuild:
+  Install example bbtoolsrc file in /usr/share/doc/${PF} since a lot of bb*
+  tools provide it; fixes file collision on /usr/share/bbtools/bbtoolsrc.in.
+
+  06 Jun 2004; Jason Wever <weeve@gentoo.org> bbdate-0.2.4.ebuild:
+  Stable on sparc.
+
+  06 May 2004; Brandon Hale <tseng@gentoo.org> bbdate-0.2.4.ebuild:
+  Stable on x86
+
+  14 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> bbdate-0.2.3.ebuild,
+  bbdate-0.2.4.ebuild:
+  Removed S=, added IUSE=
+
+  30 Oct 2003; Brandon Hale <tseng@gentoo.org> metadata.xml:
+  Added metadata.xml
+
+*bbdate-0.2.4 (19 Jun 2003)
+
+  19 Jun 2003; mkeadle <mkeadle@gentoo.org> bbdate-0.2.4.ebuild:
+  bump to latest upstream stable
+
+*bbdate-0.2.3 (12 Dec 2002)
+  
+  12 Dec 2002; Matt Keadle <mkeadle@gentoo.org> bbdate-0.2.3.ebuild
+  files/digest-bbdate-0.2.3
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. 

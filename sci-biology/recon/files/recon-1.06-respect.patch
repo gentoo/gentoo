@@ -1,0 +1,24 @@
+ src/Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/Makefile b/src/Makefile
+index 36ef59b..e45a0f2 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -13,14 +13,14 @@ MANDIR  = $(HOME)/man
+ #SRCDIR = .
+ 
+ ## your compiler
+-CC = gcc
++CC ?= gcc
+ #CC = cc    # for SGI Origin200 compiler#
+ 
+ ## any special compiler flags you want
+ #  -pedantic clashes with -DMEMDEBUG??
+ #
+ #CFLAGS = -g -Wall -pedantic
+-CFLAGS = -O
++CFLAGS ?= -O
+ #CFLAGS = -g
+ #CFLAGS = -TARG:exc_max -64 -Ofast=ip27   #specific SGI Origin200  compiler#
+ 

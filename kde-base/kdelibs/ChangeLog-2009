@@ -1,0 +1,3086 @@
+# ChangeLog for kde-base/kdelibs
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdelibs/ChangeLog-2009,v 1.1 2012/01/02 15:46:43 dilfridge Exp $
+
+  26 Dec 2009; Peter Volkov <pva@gentoo.org> kdelibs-3.5.10-r6.ebuild:
+  virtual/ghostscript->app-text/ghostscript-gpl: ghostscript-gpl is the only
+  implementation left in the tree.
+
+  23 Dec 2009; Fabian Groffen <grobian@gentoo.org> kdelibs-4.3.4.ebuild:
+  Don't use ED in an EAPI that does not declare it, same for EROOT (though
+  kde4-base eclass sets it sneakily)
+
+  22 Dec 2009; Jonathan Callen <abcd@gentoo.org>
+  +files/kdelibs-4.3.1-kdeui_util_kkeyserver_mac.patch,
+  +files/kdelibs-4.3.1-macos-kinit-fork.patch,
+  +files/kdelibs-4.3.1-macos-unbundle.patch,
+  +files/kdelibs-4.3.1-module-suffix.patch,
+  +files/kdelibs-4.3.2-solaris-fileunix.patch,
+  +files/kdelibs-4.3.2-solaris-getgrouplist.patch,
+  +files/kdelibs-4.3.2-solaris-ksyscoca.patch,
+  +files/kdelibs-4.3.3-klauncher_kdeinit.patch,
+  +files/kdelibs-4.3.3-klauncher_kioslave.patch,
+  +files/kdelibs-4.3.3-klauncher_mac.patch, kdelibs-4.3.4.ebuild:
+  Pull in changes from overlay and patches for prefix support
+
+  11 Dec 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -kdelibs-4.3.3-r2.ebuild:
+  Drop no-longer required ebuild.
+
+  10 Dec 2009; Jonathan Callen <abcd@gentoo.org>
+  -files/kdelibs-4.3.1-crash-on-konqueror-tabs.patch,
+  -files/kdelibs-4.3.1-dom-docimpl-crash.patch,
+  -files/kdelibs-4.3.1-fix-crash-on-konqueror-tabs.patch:
+  Drop old patches
+
+  10 Dec 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -kdelibs-4.3.1-r1.ebuild, -kdelibs-4.3.1-r2.ebuild:
+  Drop KDE SC-4.3.1.
+
+  10 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  kdelibs-4.3.3-r1.ebuild:
+  x86 stable, bug 292455
+
+  04 Dec 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  kdelibs-4.3.1-r1.ebuild, kdelibs-4.3.1-r2.ebuild, kdelibs-4.3.3-r1.ebuild,
+  kdelibs-4.3.3-r2.ebuild, kdelibs-4.3.4.ebuild:
+  Depend on correct phonon version.
+
+  02 Dec 2009; Tomáš Chvátal <scarabeus@gentoo.org> kdelibs-4.3.4.ebuild:
+  Fix elog information. Per bug #288502.
+
+  02 Dec 2009; Jonathan Callen <abcd@gentoo.org> kdelibs-4.3.4.ebuild:
+  khelpcenter is now optional again, force the dep when USE=handbook
+
+*kdelibs-4.3.4 (01 Dec 2009)
+
+  01 Dec 2009; Alex Alexander <wired@gentoo.org> +kdelibs-4.3.4.ebuild:
+  Version bump
+
+  30 Nov 2009; Joseph Jezak <josejx@gentoo.org> kdelibs-4.3.3-r1.ebuild:
+  Marked ppc/ppc64 stable for bug #292455.
+
+*kdelibs-4.3.3-r2 (29 Nov 2009)
+
+  29 Nov 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +kdelibs-4.3.3-r2.ebuild:
+  Dummy revision bump for app-arch/xz-utils.
+
+  29 Nov 2009; Raúl Porcel <armin76@gentoo.org> kdelibs-4.3.3-r1.ebuild:
+  Add ~sparc
+
+  29 Nov 2009; Samuli Suominen <ssuominen@gentoo.org>
+  kdelibs-4.3.3-r1.ebuild:
+  amd64 stable wrt #292455
+
+*kdelibs-4.3.3-r1 (28 Nov 2009)
+
+  28 Nov 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -kdelibs-4.3.3.ebuild, +kdelibs-4.3.3-r1.ebuild,
+  +files/kdelibs-4.3.3-plasma-pixmap-cache.patch:
+  Revision bump. Apply the plasma-pixmap-cache fix.
+
+  20 Nov 2009; Jonathan Callen <abcd@gentoo.org> kdelibs-3.5.10-r6.ebuild:
+  Switch to EAPI=2 to add a USE dep
+
+  11 Nov 2009; Samuli Suominen <ssuominen@gentoo.org>
+  kdelibs-3.5.10-r6.ebuild:
+  Remove USE arts (deprecated).
+
+  09 Nov 2009; Jonathan Callen <abcd@gentoo.org>
+  -files/kdelibs-4.3.2-fix-deadlock-in-KLocale.patch,
+  -files/kdelibs-4.3.2-fix-plasma-crash.patch,
+  -files/dist/09_disable_debug_messages_if_not_explicitly_enabled.patch,
+  -files/4.2.4-CVE-2009-1687.patch,
+  -files/4.2.4-fixPopupForPlasmaboard.patch,
+  -files/kdelibs-4.2-fixx11h.h.patch, -files/4.2.4-CVE-2009-1690.patch,
+  -files/4.2.4-CVE-2009-1698.patch, -files/4.2.4-CVE-2009-1725.patch:
+  Drop unneeded patches
+
+  09 Nov 2009; Jonathan Callen <abcd@gentoo.org>
+  -files/kdelibs-3.5.8-kinit-CVE-2008-1671.patch, -kdelibs-3.5.9-r4.ebuild,
+  -files/kdelibs-3.5.9-bug_203433_khtml.patch,
+  -files/kdelibs-3.5.9-bug_219970_khtml.patch,
+  -files/kdelibs-3.5.9-cursor.patch:
+  Drop KDE 3.5.9
+
+  08 Nov 2009; Alexey Shvetsov <alexxy@gentoo.org> -kdelibs-4.3.2-r3.ebuild:
+  Drop KDE 4.3.2
+
+  08 Nov 2009; Alexey Shvetsov <alexxy@gentoo.org> -kdelibs-4.2.4-r4.ebuild:
+  Drop KDE 4.2.4
+
+  06 Nov 2009; Samuli Suominen <ssuominen@gentoo.org> kdelibs-4.3.3.ebuild,
+  +files/kdelibs-4.3.3-glibc-2.11.patch:
+  Fix building with GLIBC 2.11+ wrt #292072, thanks to Manfred Knick for
+  reporting.
+
+*kdelibs-4.3.3 (02 Nov 2009)
+
+  02 Nov 2009; Alex Alexander <wired@gentoo.org> +kdelibs-4.3.3.ebuild:
+  Version bump
+
+*kdelibs-4.3.2-r3 (20 Oct 2009)
+
+  20 Oct 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -kdelibs-4.3.2-r2.ebuild, +kdelibs-4.3.2-r3.ebuild,
+  +files/kdelibs-4.3.2-fix-plasma-crash.patch:
+  Revision bump. Apply patch that fixes mine plasma crash.
+
+  18 Oct 2009; Markus Meier <maekke@gentoo.org> kdelibs-4.3.1-r2.ebuild:
+  x86 stable
+
+  18 Oct 2009; Markus Meier <maekke@gentoo.org> kdelibs-4.3.1-r1.ebuild:
+  x86 stable, bug #287697
+
+  16 Oct 2009; Samuli Suominen <ssuominen@gentoo.org>
+  kdelibs-4.3.1-r2.ebuild:
+  amd64 stable wrt #287697
+
+*kdelibs-4.3.2-r2 (14 Oct 2009)
+*kdelibs-4.3.1-r2 (14 Oct 2009)
+
+  14 Oct 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  +kdelibs-4.3.1-r2.ebuild,
+  +files/kdelibs-4.3.1-crash-on-konqueror-tabs.patch,
+  -kdelibs-4.3.2-r1.ebuild, +kdelibs-4.3.2-r2.ebuild:
+  Version bump. Remove old. Per bug #288793. Moved from overlay. Thx to
+  reavertm.
+
+  12 Oct 2009; Jonathan Callen <abcd@gentoo.org> -kdelibs-3.5.9.ebuild,
+  -kdelibs-3.5.9-r1.ebuild, -kdelibs-3.5.9-r2.ebuild,
+  -kdelibs-3.5.9-r3.ebuild, -kdelibs-3.5.10-r1.ebuild,
+  -kdelibs-3.5.10-r2.ebuild, -kdelibs-3.5.10-r3.ebuild,
+  -kdelibs-3.5.10-r4.ebuild, -kdelibs-3.5.10-r5.ebuild:
+  Clean out cruft
+
+  10 Oct 2009; Samuli Suominen <ssuominen@gentoo.org>
+  kdelibs-4.3.1-r1.ebuild:
+  amd64 stable wrt #287697
+
+*kdelibs-4.3.2-r1 (09 Oct 2009)
+*kdelibs-4.3.1-r1 (09 Oct 2009)
+
+  09 Oct 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -kdelibs-4.3.1.ebuild, +kdelibs-4.3.1-r1.ebuild,
+  +files/kdelibs-4.3.1-dom-docimpl-crash.patch,
+  +files/kdelibs-4.3.1-fix-crash-on-konqueror-tabs.patch,
+  -kdelibs-4.3.2.ebuild, +kdelibs-4.3.2-r1.ebuild,
+  +files/kdelibs-4.3.2-fix-deadlock-in-KLocale.patch:
+  Revision bump to backport patches. Move from kde-testing.
+
+  08 Oct 2009; Alexey Shvetsov <alexxy@gentoo.org> -kdelibs-4.3.0.ebuild:
+  Drop KDE 4.3.0
+
+*kdelibs-4.3.2 (06 Oct 2009)
+
+  06 Oct 2009; Alexey Shvetsov <alexxy@gentoo.org> +kdelibs-4.3.2.ebuild:
+  Version bump
+
+  19 Sep 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -files/dist/20_use_dejavu_as_default_font.patch, kdelibs-4.2.4-r4.ebuild,
+  kdelibs-4.3.0.ebuild, kdelibs-4.3.1.ebuild:
+  Remove dep on the dejavu fonts.
+
+  07 Sep 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  kdelibs-4.3.1.ebuild:
+  Synced ebuild from the kde-testing overlay - thanks to Maciej Mrozowski
+  (reavertm).
+  [kde-base/kdelibs] Fixed bug 283700 (shared-mime-info version).
+
+  01 Sep 2009; Alex Alexander <wired@gentoo.org>
+  +files/dist/01_gentoo_set_xdg_menu_prefix.patch,
+  +files/dist/02_gentoo_append_xdg_config_dirs.patch:
+  added missing patches
+
+*kdelibs-4.3.1 (01 Sep 2009)
+
+  01 Sep 2009; Theo Chatzimichos <tampakrap@gentoo.org>
+  +kdelibs-4.3.1.ebuild:
+  Version bump
+
+  13 Aug 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  kdelibs-4.2.4-r4.ebuild, kdelibs-4.3.0.ebuild:
+  Depend on correct version of shared-mime-info. Per bug #281285.
+
+*kdelibs-4.3.0 (04 Aug 2009)
+
+  04 Aug 2009; Alex Alexander <wired@gentoo.org> +kdelibs-4.3.0.ebuild:
+  Version bump
+
+  01 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
+  kdelibs-4.2.4-r4.ebuild:
+  Remove USE depend for media-libs/alsa-lib[midi].
+
+  30 Jul 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  kdelibs-4.2.4-r4.ebuild:
+  Rdepend on gnupg. Per bug #275545
+
+*kdelibs-4.2.4-r4 (30 Jul 2009)
+
+  30 Jul 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -kdelibs-4.2.4-r3.ebuild, +kdelibs-4.2.4-r4.ebuild,
+  +files/4.2.4-CVE-2009-1687.patch, +files/4.2.4-CVE-2009-1698.patch,
+  +files/4.2.4-CVE-2009-1725.patch:
+  Revision bump. Apply security fixes per bugs #279027 and #279187.
+
+  12 Jul 2009; Raúl Porcel <armin76@gentoo.org> kdelibs-3.5.10-r6.ebuild:
+  alpha/ia64/sparc stable wrt #271889
+
+  08 Jul 2009; Alexey Shvetsov <alexxy@gentoo.org> kdelibs-3.5.10-r6.ebuild:
+  Add ~mips keywords
+
+  06 Jul 2009; Brent Baude <ranger@gentoo.org> kdelibs-3.5.10-r6.ebuild:
+  Marking kdelibs-3.5.10-r6 ppc64 stable for bug 271889
+
+*kdelibs-4.2.4-r3 (20 Jun 2009)
+
+  20 Jun 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -kdelibs-4.2.4-r2.ebuild, +kdelibs-4.2.4-r3.ebuild,
+  files/4.2.4-CVE-2009-1690.patch:
+  Update patch for bug #274566.
+
+  18 Jun 2009; Jeroen Roovers <jer@gentoo.org> kdelibs-3.5.10-r6.ebuild:
+  Stable for HPPA (bug #271889).
+
+*kdelibs-4.2.4-r2 (17 Jun 2009)
+
+  17 Jun 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -kdelibs-4.2.4-r1.ebuild, +kdelibs-4.2.4-r2.ebuild,
+  +files/4.2.4-CVE-2009-1690.patch:
+  Revision bump. Apply security patch from upstream. Per bug #274566. Remove
+  affected stuff.
+
+  14 Jun 2009; Alexey Shvetsov <alexxy@gentoo.org>
+  -files/4.2-glibc-2.9.patch, -files/4.2-glibc-2.10.patch,
+  -files/kdelibs-4.2.3-halbattery_backport_fix.patch,
+  -files/kdelibs-4.2-fix_kio_http_401.patch,
+  -files/kdelibs-4.2.2-kickoff-focus.patch:
+  Clean unneeded patches
+
+  14 Jun 2009; Alexey Shvetsov <alexxy@gentoo.org> -kdelibs-4.2.3.ebuild:
+  Drop KDE 4.2.3
+
+*kdelibs-4.2.4-r1 (11 Jun 2009)
+
+  11 Jun 2009; Tomas Chvatal <scarabeus@gentoo.org>
+  +files/4.2.4-fixPopupForPlasmaboard.patch, -kdelibs-4.2.4.ebuild,
+  +kdelibs-4.2.4-r1.ebuild:
+  Apply upstream patch for plasmaboard. Requested by mail.
+
+  06 Jun 2009; Markus Meier <maekke@gentoo.org> kdelibs-3.5.10-r6.ebuild:
+  amd64/x86 stable, bug #271889
+
+  05 Jun 2009; Tomáš Chvátal <scarabeus@gentoo.org> kdelibs-4.2.4.ebuild:
+  Add back x11h patch for 4.2.4. Wrongly removed.
+
+  04 Jun 2009; Alexey Shvetsov <alexxy@gentoo.org> kdelibs-4.2.4.ebuild:
+  Fix accidently added keywords
+
+*kdelibs-4.2.4 (04 Jun 2009)
+
+  04 Jun 2009; Alexey Shvetsov <alexxy@gentoo.org> +kdelibs-4.2.4.ebuild:
+  Version bump
+
+  03 Jun 2009; Alexey Shvetsov <alexxy@gentoo.org> -kdelibs-4.2.2.ebuild,
+  -kdelibs-4.2.2-r1.ebuild:
+  Drop KDE 4.2.2
+
+  03 Jun 2009; Brent Baude <ranger@gentoo.org> kdelibs-3.5.10-r5.ebuild:
+  Marking kdelibs-3.5.10-r5 ppc64 stable for bug 271889
+
+  31 May 2009; nixnut <nixnut@gentoo.org> kdelibs-3.5.10-r5.ebuild:
+  ppc stable #271889
+
+*kdelibs-3.5.10-r6 (30 May 2009)
+
+  30 May 2009; Theo Chatzimichos <tampakrap@gentoo.org>
+  -files/4.1.3-cmake-config.patch, +kdelibs-3.5.10-r6.ebuild,
+  files/kdelibs-3.5.10-kde4-apps.patch, +files/kdelibs-3.5.10-khtml.patch,
+  +files/kdelibs-3.5.10-kjs-gcc44.patch:
+  Revision bump:
+  add patch for kjs when compiled with gcc-4.4, thanks to Robert Forster,
+  bug 270926
+  remove symlink that causes doxygen to hang, bug 264767
+  add patch for khtml, bug 243476
+  restored (updated with kdeprefix) patch to handle kde4 apps in kde3 menu,
+  removed kdeglobals as it completely screws kde3 session when kde4 is
+  installed in /usr, by reavertm
+
+  29 May 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  kdelibs-3.5.9.ebuild, kdelibs-3.5.9-r1.ebuild, kdelibs-3.5.9-r2.ebuild,
+  kdelibs-3.5.9-r3.ebuild, kdelibs-3.5.9-r4.ebuild,
+  kdelibs-3.5.10-r1.ebuild, kdelibs-3.5.10-r2.ebuild,
+  kdelibs-3.5.10-r3.ebuild, kdelibs-3.5.10-r4.ebuild,
+  kdelibs-3.5.10-r5.ebuild, kdelibs-4.2.2.ebuild, kdelibs-4.2.2-r1.ebuild,
+  kdelibs-4.2.3.ebuild:
+  Replace kernel-conditional dependency on sys-apps/acl with virtual/acl.
+
+  27 May 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  +files/4.2-glibc-2.9.patch, -files/kdelibs-4.0.2-X11-optional.patch,
+  -files/4.2.0-kcatalog.patch, -files/kdelibs-4.0.2-alsa-optional.patch,
+  -files/4.2.0-kio_copy.patch, -files/kdelibs-4.0.3-CVS-2008-1670.patch,
+  -files/4.2.0-klauncher.patch, +files/4.2-glibc-2.10.patch,
+  -files/kdelibs-4.1.1-cmake-modules.patch, -files/4.2.0-kded.patch,
+  -files/kdelibs-4.1.3-gcc4.1.patch, -files/4.2.0-kio_http.patch,
+  -files/kdelibs-4.2.1-kcatalog.patch, -files/4.2.0-klauncher_konsole.patch,
+  -files/kdelibs-4.2.1-kdialog.patch, -files/4.2.0-kode_crash.patch,
+  -files/kdelibs-4.2.1-qt4.5.patch, kdelibs-4.2.3.ebuild,
+  -files/FindXine.cmake, -files/e-tempdir.patch:
+  Cleanup. Add patches for glibc issues. Per bugs #271404 and #270276.
+
+  26 May 2009; Tomas Chvatal <scarabeus@gentoo.org> metadata.xml:
+  Remove unused local flag. Thanks to mr_bones_
+
+  26 May 2009; Theo Chatzimichos <tampakrap@gentoo.org>
+  kdelibs-3.5.10-r5.ebuild, +files/kdelibs-3.5-perl.xml.patch:
+  Fix perl highlight syntax, bug 247817
+
+  21 May 2009; Peter Alfredsen <loki_val@gentoo.org>
+  kdelibs-3.5.10-r5.ebuild, +files/kdelibs-3.5.10-glibc-2.10.patch:
+  Fix glibc-2.10 compilation ( Bug 270404 )
+
+*kdelibs-3.5.10-r5 (15 May 2009)
+
+  15 May 2009; Tomas Chvatal <scarabeus@gentoo.org>
+  +kdelibs-3.5.10-r5.ebuild, +files/kdelibs-3.5.10-kde4-apps.patch:
+  Move in last kdelibs:3.5 fixes from kde-crazy overlay. Now it should help
+  kde4 and kde3 apps mixage and fix issues with libraries.
+
+*kdelibs-3.5.10-r4 (12 May 2009)
+
+  12 May 2009; Theo Chatzimichos <tampakrap@gentoo.org>
+  +kdelibs-3.5.10-r4.ebuild:
+  Revision bump, environment fix for kde misc apps to open correctly inside
+  kde4 session
+
+*kdelibs-3.5.10-r3 (08 May 2009)
+
+  08 May 2009; Tomas Chvatal <scarabeus@gentoo.org>
+  +kdelibs-3.5.10-r3.ebuild:
+  Artifical bump to avoid blocks in kde-env.
+
+  07 May 2009; Alexey Shvetsov <alexxy@gentoo.org> kdelibs-4.2.3.ebuild,
+  +files/kdelibs-4.2.3-halbattery_backport_fix.patch:
+  Add halbattary patch b.k.o bug 187600
+
+  07 May 2009; Tomas Chvatal <scarabeus@gentoo.org> kdelibs-4.2.3.ebuild,
+  -files/sanbox-error.patch:
+  Silly me. I forgot the patch is only for 4.3 series.
+
+  07 May 2009; Tomas Chvatal <scarabeus@gentoo.org> kdelibs-4.2.3.ebuild,
+  +files/sanbox-error.patch:
+  Fix the sandbox issue in printer-applet. Thanks to ABCD for this one.
+
+*kdelibs-4.2.3 (06 May 2009)
+
+  06 May 2009; Tomas Chvatal <scarabeus@gentoo.org> +kdelibs-4.2.3.ebuild:
+  Version bump
+
+  21 Apr 2009; Tomas Chvatal <scarabeus@gentoo.org> kdelibs-3.5.10-r1,
+  kdelibs-3.5.10-r2:
+  Remove block for kde-env. Obsolete. We will do some magic in kde4 with
+  this.
+
+  17 Apr 2009; Alexey Shvetsov <alexxy@gentoo.org> ChangeLog:
+  Restore ~hppa keywords
+
+  16 Apr 2009; Alexey Shvetsov <alexxy@gentoo.org> -kdelibs-4.2.1.ebuild,
+  -kdelibs-4.2.1-r1.ebuild, -kdelibs-4.2.1-r2.ebuild,
+  -kdelibs-4.2.1-r3.ebuild:
+  Drop KDE 4.2.1
+
+*kdelibs-4.2.2-r1 (14 Apr 2009)
+
+  14 Apr 2009; Tomas Chvatal <scarabeus@gentoo.org>
+  +kdelibs-4.2.2-r1.ebuild:
+  Revbump due to impatient users broke their stuff with unfinished ebuilds.
+
+  12 Apr 2009; Tomas Chvatal <scarabeus@gentoo.org> kdelibs-4.2.2.ebuild:
+  Remove the suposed fix for latex issue. Per bug #265915.
+
+  12 Apr 2009; Tomas Chvatal <scarabeus@gentoo.org> kdelibs-4.2.2.ebuild:
+  Add dep on xdg-utils with correct XDG_DATADIR support.
+
+*kdelibs-4.2.2 (11 Apr 2009)
+
+  11 Apr 2009; Alexey Shvetsov <alexxy@gentoo.org> +kdelibs-4.2.2.ebuild:
+  Add KDE 4.2.2
+
+  11 Apr 2009; Raúl Porcel <armin76@gentoo.org> kdelibs-4.2.1-r3.ebuild:
+  Add ~alpha/~ia64 wrt #260777
+
+  11 Apr 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  kdelibs-4.2.1-r3.ebuild:
+  Adding missing dep on syslibs/libutempter - fixes bug 207714.
+
+  26 Mar 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  kdelibs-4.2.1-r3.ebuild:
+  To make webkit optional we'll need some help from upstream. We're going to
+  drop the xorg dep entirely.
+
+*kdelibs-4.2.1-r3 (23 Mar 2009)
+
+  23 Mar 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +files/kdelibs-4.2.1-kdialog.patch, +kdelibs-4.2.1-r3.ebuild:
+  Added ${FILESDIR}/${P}-kdialog.patch and bumped to kdelibs-4.2.1-r3 which
+  should hopefully fix for good upstream bug 186038 and Gentoo bug 261367.
+  This last patch addresses the title issue in system settings. Added the
+  >=xorg-server-1.5.3 dep on plasma use as a first step to remove the hard
+  dep from the kde4-base.eclass to allow KDE-4.2.1 to run on arches that
+  don't have xorg-1.5 yet.
+
+  21 Mar 2009; Jeroen Roovers <jer@gentoo.org> kdelibs-4.2.1-r2.ebuild:
+  Marked ~hppa (bug #260777).
+
+  15 Mar 2009; Tomas Chvatal <scarabeus@gentoo.org> kdelibs-4.2.1-r2.ebuild:
+  Automatic-merge: merge updates for 4.2.1 from kde-testing.
+
+  11 Mar 2009; Tomas Chvatal <scarabeus@gentoo.org>
+  files/kdelibs-4.2.1-kcatalog.patch:
+  Update the patch so it actualy apply.
+
+*kdelibs-4.2.1-r2 (11 Mar 2009)
+
+  11 Mar 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +files/kdelibs-4.2.1-kcatalog.patch, +kdelibs-4.2.1-r2.ebuild:
+  Added ${FILESDIR}/${P}-kcatalog.patch and bumped to kdelibs-4.2.1-r2 to
+  fix remaining issues on upstream bug 186038 and Gentoo bug 261367 related
+  to gwenview.
+
+*kdelibs-4.2.1-r1 (10 Mar 2009)
+
+  10 Mar 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +files/kdelibs-4.2.1-qt4.5.patch, +kdelibs-4.2.1-r1.ebuild:
+  Applied upstream revision 934640 that fixes upstream bug 186038 and Gentoo
+  bug 261367.
+
+  08 Mar 2009; Tomas Chvatal <scarabeus@gentoo.org> kdelibs-4.2.1.ebuild:
+  Kdelibs:4.* needs allways webkit.
+
+  08 Mar 2009; Alexey Shvetsov <alexxy@gentoo.org> -kdelibs-4.2.0-r2.ebuild,
+  -kdelibs-4.2.0-r3.ebuild:
+  Drop KDE 4.2.0
+
+  08 Mar 2009; Alexey Shvetsov <alexxy@gentoo.org> -kdelibs-4.2.0-r2.ebuild,
+  -kdelibs-4.2.0-r3.ebuild:
+  Drop KDE 4.2.0
+
+*kdelibs-4.2.1 (04 Mar 2009)
+
+  04 Mar 2009; Alexey Shvetsov <alexxy@gentoo.org> +kdelibs-4.2.1.ebuild:
+  Bump KDE 4.2.1
+
+  28 Feb 2009; Markus Meier <maekke@gentoo.org> metadata.xml:
+  semantic-desktop is a global USE-flag
+
+*kdelibs-4.2.0-r3 (17 Feb 2009)
+
+  17 Feb 2009; Tomas Chvatal <scarabeus@gentoo.org>
+  +files/dist/09_disable_debug_messages_if_not_explicitly_enabled.patch,
+  +files/dist/20_use_dejavu_as_default_font.patch,
+  +files/dist/23_solid_no_double_build.patch, +kdelibs-4.2.0-r3.ebuild:
+  Add few patches making user experience better. Revision bump.
+
+  17 Feb 2009; Alexey Shvetsov <alexxy@gentoo.org> -kdelibs-4.1.4.ebuild:
+  Drop KDE 4.1.4
+
+  12 Feb 2009; Alexey Shvetsov <alexxy@gentoo.org> -kdelibs-3.5.8-r4.ebuild:
+  Drop stalled kde 3.5.[45678] ebuilds
+
+  12 Feb 2009; Alexey Shvetsov <alexxy@gentoo.org>
+  +files/4.2.0-kcatalog.patch, kdelibs-4.2.0-r2.ebuild:
+  Add kcatalog.patch; fix bug #258660
+
+*kdelibs-4.2.0-r2 (09 Feb 2009)
+
+  09 Feb 2009; Tomas Chvatal <scarabeus@gentoo.org>
+  +files/4.2.0-kio_http.patch, -kdelibs-4.2.0.ebuild,
+  -kdelibs-4.2.0-r1.ebuild, +kdelibs-4.2.0-r2.ebuild:
+  Add new patch for the http delays. Remove old cruft.
+
+  06 Feb 2009; Theo Chatzimichos <tampakrap@gentoo.org>
+  kdelibs-4.1.4.ebuild:
+  fix permissions, fperm instead of chmod
+
+  05 Feb 2009; Tomas Chvatal <scarabeus@gentoo.org>
+  +files/4.2.0-kode_crash.patch, kdelibs-4.2.0-r1.ebuild:
+  Add patch fixing kode crashes. Per bug #257535
+
+  03 Feb 2009; Tomas Chvatal <scarabeus@gentoo.org> kdelibs-4.2.0.ebuild,
+  kdelibs-4.2.0-r1.ebuild:
+  Block also <kdelibs-3.5.10
+
+  01 Feb 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  kdelibs-4.2.0-r1.ebuild:
+  Restored ~ppc and ~ppc64 keywords to KDE-4.2.0
+
+  01 Feb 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  kdelibs-4.2.0.ebuild:
+  Restored ~ppc and ~ppc64 keywords to KDE-4.2.0
+
+  31 Jan 2009; Tomas Chvatal <scarabeus@gentoo.org> kdelibs-4.1.4.ebuild,
+  kdelibs-4.2.0.ebuild, kdelibs-4.2.0-r1.ebuild:
+  Move blocker for qt-phonon from eclass to kdelibs. Yngwin requested :]
+
+*kdelibs-4.2.0-r1 (31 Jan 2009)
+
+  31 Jan 2009; Tomas Chvatal <scarabeus@gentoo.org> +files/4.2.0-kded.patch,
+  +files/4.2.0-kio_copy.patch, +files/4.2.0-klauncher.patch,
+  +files/4.2.0-klauncher_konsole.patch, +kdelibs-4.2.0-r1.ebuild:
+  Add upstream patches. Revbump.
+
+*kdelibs-4.2.0 (27 Jan 2009)
+
+  27 Jan 2009; Alexey Shvetsov <alexxy@gentoo.org> +kdelibs-4.2.0.ebuild:
+  Bump KDE-4.2.0
+
+  14 Jan 2009; Alexey Shvetsov <alexxy@gentoo.org> -kdelibs-4.1.2.ebuild,
+  -kdelibs-4.1.2-r1.ebuild, -kdelibs-4.1.3.ebuild, -kdelibs-4.1.3-r1.ebuild:
+  Drop KDE 4.1.2 and 4.1.3
+
+*kdelibs-4.1.4 (13 Jan 2009)
+
+  13 Jan 2009; Alexey Shvetsov <alexxy@gentoo.org> +kdelibs-4.1.4.ebuild:
+  Bump to 4.1.4
+
+  11 Dec 2008; Tomas Chvatal <scarabeus@gentoo.org>
+  +files/kdelibs-4.1.3-gcc4.1.patch, kdelibs-4.1.3-r1.ebuild:
+  Fix bug #246568
+
+  15 Nov 2008; Mike Frysinger <vapier@gentoo.org> kdelibs-4.1.3.ebuild,
+  kdelibs-4.1.3-r1.ebuild:
+  Add ppc/ppc64 love #244306.
+
+  15 Nov 2008; Mike Frysinger <vapier@gentoo.org> kdelibs-4.1.3.ebuild,
+  kdelibs-4.1.3-r1.ebuild:
+  Add ppc/ppc64 love #244306.
+
+*kdelibs-4.1.3-r1 (11 Nov 2008)
+
+  11 Nov 2008; Timo Gurr <tgurr@gentoo.org> +kdelibs-4.1.3-r1.ebuild:
+  Revbump fixing bug #246352.
+
+*kdelibs-4.1.3 (08 Nov 2008)
+
+  08 Nov 2008; Tomas Chvatal <scarabeus@gentoo.org>
+  +files/4.1.3-cmake-config.patch, +kdelibs-4.1.3.ebuild:
+  Version bump.
+
+  21 Oct 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  -kdelibs-4.0.4.ebuild, -kdelibs-4.0.5.ebuild:
+  Removing KDE-4.0.X packages now that 4.1.2 was put in the tree.
+
+*kdelibs-3.5.10-r2 (12 Oct 2008)
+
+  12 Oct 2008; Marcus D. Hanwell <cryos@gentoo.org> -kdelibs-3.5.10.ebuild,
+  +kdelibs-3.5.10-r2.ebuild:
+  Moving kdeglobals to kdelibs for non-KDE users using KDE apps.
+
+*kdelibs-3.5.10-r1 (07 Oct 2008)
+
+  07 Oct 2008; Marcus D. Hanwell <cryos@gentoo.org>
+  +kdelibs-3.5.10-r1.ebuild:
+  Removed KDEDIRS from the env file, it is not needed any longer.
+
+*kdelibs-4.1.2-r1 (07 Oct 2008)
+
+  07 Oct 2008; Marcus D. Hanwell <cryos@gentoo.org>
+  +kdelibs-4.1.2-r1.ebuild:
+  Improvements to the env files and minimised what is installed for
+  -kdeprefix.
+
+  02 Oct 2008; Tobias Heinlein <keytoaster@gentoo.org>
+  +files/kdelibs-4.1.1-cmake-modules.patch:
+  Added patch from the kde-testing overlay.
+
+*kdelibs-4.1.2 (02 Oct 2008)
+
+  02 Oct 2008; Tobias Heinlein <keytoaster@gentoo.org>
+  +kdelibs-4.1.2.ebuild:
+  Added kdelibs-4.1.2 from the kde-testing overlay.
+
+  15 Sep 2008; Carsten Lohrke <carlo@gentoo.org> kdelibs-3.5.10.ebuild:
+  Remove the kdebindings-meta blocker, which went more or less accidentally in
+  there.
+
+*kdelibs-3.5.10 (13 Sep 2008)
+
+  13 Sep 2008; Carsten Lohrke <carlo@gentoo.org> +kdelibs-3.5.10.ebuild:
+  Version bump.
+
+  27 Jul 2008; Carsten Lohrke <carlo@gentoo.org> kdelibs-3.5.8-r4.ebuild:
+  QA: Get rid of deprecated qt_min_version().
+
+  08 Jun 2008; Tobias Heinlein <keytoaster@gentoo.org>
+  +kdelibs-3.5.8-r4.ebuild:
+  Adding 3.5.8-r4 back since kde-base/pykde-3.5.5-r2 and others still need
+  it.
+
+  07 Jun 2008; Tobias Heinlein <keytoaster@gentoo.org> ChangeLog:
+  Removed old versions.
+
+  07 Jun 2008; Tobias Heinlein <keytoaster@gentoo.org>
+  -kdelibs-3.5.8-r3.ebuild, -kdelibs-3.5.8-r4.ebuild, -kdelibs-4.0.2.ebuild,
+  -kdelibs-4.0.3-r1.ebuild:
+  Removed old versions.
+
+*kdelibs-4.0.5 (05 Jun 2008)
+
+  05 Jun 2008; Tobias Heinlein <keytoaster@gentoo.org>
+  +kdelibs-4.0.5.ebuild:
+  Added the KDE 4.0.5 version of kdelibs.
+
+  29 May 2008; Bo Ørsted Andresen <zlin@gentoo.org> kdelibs-4.0.4.ebuild:
+  KDE4_BUILT_WITH_USE_CHECK is now always an array. Bug #216863.
+
+  18 May 2008; Markus Meier <maekke@gentoo.org> kdelibs-3.5.9-r4.ebuild:
+  amd64/x86 stable, bug #221063
+
+*kdelibs-4.0.4 (15 May 2008)
+
+  15 May 2008; Ingmar Vanhassel <ingmar@gentoo.org> +kdelibs-4.0.4.ebuild:
+  Added KDE 4.0.4 version of kdelibs. Thanks to Jorge Manuel B. S. Vicetto.
+
+  12 May 2008; Jeroen Roovers <jer@gentoo.org> kdelibs-3.5.9-r4.ebuild:
+  Stable for HPPA (bug #221063).
+
+  12 May 2008; Brent Baude <ranger@gentoo.org> kdelibs-3.5.9-r4.ebuild:
+  Marking kdelibs-3.5.9-r4 for bug 221063
+
+  12 May 2008; Raúl Porcel <armin76@gentoo.org> kdelibs-3.5.9-r4.ebuild:
+  alpha/ia64/sparc stable wrt #221063
+
+  11 May 2008; Markus Rothe <corsair@gentoo.org> kdelibs-3.5.9-r4.ebuild:
+  Stable on ppc64; bug #221063
+
+*kdelibs-3.5.9-r4 (05 May 2008)
+
+  05 May 2008; Tobias Heinlein <keytoaster@gentoo.org>
+  +files/kdelibs-3.5.9-bug_219970_khtml.patch, +kdelibs-3.5.9-r4.ebuild:
+  Adding patch to fix khtml crashes, bug #219970
+
+*kdelibs-4.0.3-r1 (28 Apr 2008)
+
+  28 Apr 2008; Ingmar Vanhassel <ingmar@gentoo.org>
+  +files/kdelibs-4.0.3-CVS-2008-1670.patch, -kdelibs-4.0.3.ebuild,
+  +kdelibs-4.0.3-r1.ebuild:
+  Fix security bug 218848, CVS-2008-1670.
+
+*kdelibs-3.5.9-r3 (28 Apr 2008)
+
+  28 Apr 2008; Ingmar Vanhassel <ingmar@gentoo.org>
+  +kdelibs-3.5.9-r3.ebuild:
+  Same for ~arch.
+
+*kdelibs-3.5.8-r4 (28 Apr 2008)
+
+  28 Apr 2008; Jeroen Roovers <jer@gentoo.org>
+  +files/kdelibs-3.5.8-kinit-CVE-2008-1671.patch, +kdelibs-3.5.8-r4.ebuild:
+  Straight to stable (bug #218933).
+
+*kdelibs-3.5.9-r2 (14 Apr 2008)
+
+  14 Apr 2008; Wulf C. Krueger <philantrop@gentoo.org>
+  +files/kdelibs-3.5.9-bug_203433_khtml.patch, +kdelibs-3.5.9-r2.ebuild:
+  Added an upstream patch to fix bug 203433 to fix some konqueror crashes.
+  Re-added Lubos Lunak's Xinerama patch as kindly provided by Vladimir Brik
+  on bug 211469.
+
+*kdelibs-4.0.3 (03 Apr 2008)
+
+  03 Apr 2008; Wulf C. Krueger <philantrop@gentoo.org>
+  +kdelibs-4.0.3.ebuild:
+  Version bump to KDE 4.0.3. This is still not intended for mainstream so DO
+  NOT KEYWORD IT without talking to the KDE herd first.
+
+*kdelibs-3.5.9-r1 (28 Mar 2008)
+
+  28 Mar 2008; Wulf C. Krueger <philantrop@gentoo.org>
+  +files/kdelibs-3.5.9-cursor.patch, +kdelibs-3.5.9-r1.ebuild:
+  Added an upstream patch to fix bug 212749 (incorrect cursor position after
+  pasting).
+
+  20 Mar 2008; Ingmar Vanhassel <ingmar@gentoo.org>
+  -files/kdelibs-4.0.1-X11-optional.patch,
+  -files/kdelibs-4.0.1-alsa-optional.patch, -kdelibs-4.0.1-r1.ebuild:
+  Old.
+
+  20 Mar 2008; Ingmar Vanhassel <ingmar@gentoo.org>
+  -files/kdelibs-4.0.1-X11-optional.patch,
+  -files/kdelibs-4.0.1-alsa-optional.patch, -kdelibs-4.0.1-r1.ebuild:
+  Old.
+
+  20 Mar 2008; Ingmar Vanhassel <ingmar@gentoo.org>
+  -files/kdelibs-4.0.1-X11-optional.patch,
+  -files/kdelibs-4.0.1-alsa-optional.patch, -kdelibs-4.0.1-r1.ebuild:
+  Old.
+
+*kdelibs-4.0.2 (10 Mar 2008)
+
+  10 Mar 2008; Wulf C. Krueger <philantrop@gentoo.org>
+  +files/kdelibs-4.0.2-X11-optional.patch,
+  +files/kdelibs-4.0.2-alsa-optional.patch, +kdelibs-4.0.2.ebuild:
+  Version bump to KDE 4.0.2
+
+  07 Mar 2008; Ryan Hill <dirtyepic@gentoo.org> kdelibs-3.5.9.ebuild:
+  Keyword ~mips.
+
+  05 Mar 2008; Jeroen Roovers <jer@gentoo.org> kdelibs-4.0.1-r1.ebuild:
+  Marked ~hppa.
+
+  27 Feb 2008; Ingmar Vanhassel <ingmar@gentoo.org>
+  -files/kdelibs-3.5.5-CVE-2007-0537.patch,
+  -files/kdelibs-3.5.5-kate-cstyle-indenter-fix.diff,
+  -files/kdelibs-3.5.5-kdeprint-cupsd-timeout-fix.patch,
+  -files/kdelibs-3.5.5-khtml.patch, -files/kdelibs-3.5.5-noarts.patch,
+  -files/kdelibs-3.5.5-noarts-2.patch,
+  -files/kdelibs-3.5.5-vulnerability-20070305.diff,
+  -files/kdelibs-3.5.6-khtml-kde-bug-140768.patch,
+  -files/kdelibs-3.5.6-kjs-xss.diff, -files/kdelibs-3.5.6-utf8-fix.diff,
+  -files/konqueror-3.5.7-185603-spoofing.diff,
+  -files/kdelibs-3.5.7-html-style.patch,
+  -files/kdelibs-3.5.7-kcookiejar.diff,
+  -files/kdelibs-4.0.0-X11-optional.patch,
+  -files/kdelibs-4.0.0-alsa-optional.patch,
+  -files/kdelibs-4.0.0-flac-1.1.3.patch,
+  -files/CVE-2007-1564-kdelibs-3.5.6.diff:
+  Clean up FILESDIR.
+
+  27 Feb 2008; Ingmar Vanhassel <ingmar@gentoo.org> kdelibs-3.5.9.ebuild:
+  Use a SLOT dependency.
+
+  21 Feb 2008; Ingmar Vanhassel <ingmar@gentoo.org> kdelibs-3.5.9.ebuild:
+  Don't depend on kde-base/{konqueror,kdebase}, unfixes bug 136087.
+
+*kdelibs-3.5.9 (20 Feb 2008)
+
+  20 Feb 2008; Wulf C. Krueger <philantrop@gentoo.org>
+  +kdelibs-3.5.9.ebuild:
+  Version bump to KDE 3.5.9.
+
+  18 Feb 2008; Ingmar Vanhassel <ingmar@gentoo.org> kdelibs-3.5.8-r3.ebuild:
+  Don't use bindnow-flags. Bug 210583.
+
+  18 Feb 2008; Ingmar Vanhassel <ingmar@gentoo.org>
+  -kdelibs-3.5.5-r10.ebuild, -kdelibs-3.5.6-r7.ebuild,
+  -kdelibs-3.5.6-r8.ebuild, -kdelibs-3.5.6-r9.ebuild,
+  -kdelibs-3.5.6-r10.ebuild, -kdelibs-3.5.7.ebuild,
+  -kdelibs-3.5.7-r1.ebuild, -kdelibs-3.5.7-r2.ebuild,
+  -kdelibs-3.5.7-r3.ebuild, -kdelibs-3.5.8.ebuild, -kdelibs-3.5.8-r1.ebuild,
+  -kdelibs-3.5.8-r2.ebuild, -kdelibs-4.0.0.ebuild, -kdelibs-4.0.0-r1.ebuild,
+  -kdelibs-4.0.1.ebuild:
+  Spring cleaning.
+
+*kdelibs-4.0.1-r1 (15 Feb 2008)
+
+  15 Feb 2008; Bo Ørsted Andresen <zlin@gentoo.org> +files/FindXine.cmake,
+  +kdelibs-4.0.1-r1.ebuild:
+  Some external applications need FindXine.cmake. Therefore upstream moved it
+  to kdelibs in trunk. Doing the same for :kde-4 (bug #209701).
+
+*kdelibs-4.0.1 (06 Feb 2008)
+
+  06 Feb 2008; Wulf C. Krueger <philantrop@gentoo.org>
+  +files/kdelibs-4.0.1-X11-optional.patch,
+  +files/kdelibs-4.0.1-alsa-optional.patch, files/e-tempdir.patch,
+  +kdelibs-4.0.1.ebuild:
+  Version bump to KDE 4.0.1.
+
+  31 Jan 2008; Brent Baude <ranger@gentoo.org> kdelibs-3.5.8-r3.ebuild:
+  Marking kdelibs-3.5.8-r3 ppc for bug 207634
+
+  30 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  kdelibs-3.5.8-r3.ebuild:
+  stable x86, bug 207634
+
+  29 Jan 2008; Brent Baude <ranger@gentoo.org> kdelibs-3.5.8-r3.ebuild:
+  Marking kdelibs-3.5.8-r3 ppc64 for bug 207634
+
+  29 Jan 2008; Raúl Porcel <armin76@gentoo.org> kdelibs-3.5.8-r3.ebuild:
+  alpha/ia64/sparc stable wrt #207634
+
+  28 Jan 2008; Wulf C. Krueger <philantrop@gentoo.org> ChangeLog:
+  Marked stable on amd64 as per bug 207634.
+
+  28 Jan 2008; Wulf C. Krueger <philantrop@gentoo.org>
+  kdelibs-3.5.8-r3.ebuild:
+  Marked stable on amd64 as per bug 207634.
+
+  28 Jan 2008; Jeroen Roovers <jer@gentoo.org> kdelibs-3.5.8-r3.ebuild:
+  Stable for HPPA (bug #207634).
+
+*kdelibs-4.0.0-r1 (27 Jan 2008)
+
+  27 Jan 2008; Bo Ørsted Andresen <zlin@gentoo.org>
+  +files/kdelibs-4.0.0-flac-1.1.3.patch, +kdelibs-4.0.0-r1.ebuild:
+  Patch FindFlac.cmake. This is needed for kdemultimedia-kioslaves when built
+  with USE="encode flac" and using flac > 1.1.2 (which is all there is in the
+  tree).
+
+  18 Jan 2008; Ingmar Vanhassel <ingmar@gentoo.org> kdelibs-4.0.0.ebuild:
+  Revert my previous commit.
+
+  18 Jan 2008; Ingmar Vanhassel <ingmar@gentoo.org> kdelibs-4.0.0.ebuild:
+  Added a post-dependency on kde-base/kdebase-data, which provides the icons
+  for kdialog and others.
+
+  18 Jan 2008; Ingmar Vanhassel <ingmar@gentoo.org> kdelibs-4.0.0.ebuild:
+  Removed stale FIXME.
+
+  18 Jan 2008; Wulf C. Krueger <philantrop@gentoo.org>
+  +files/kdelibs-4.0.0-X11-optional.patch,
+  +files/kdelibs-4.0.0-alsa-optional.patch, +files/e-tempdir.patch,
+  +kdelibs-4.0.0.ebuild:
+  Added patches.
+
+*kdelibs-4.0.0 (17 Jan 2008)
+
+  17 Jan 2008; Wulf C. Krueger <philantrop@gentoo.org>
+  +kdelibs-4.0.0.ebuild:
+  Added KDE 4.0.0's kdelibs.
+
+*kdelibs-3.5.8-r3 (11 Jan 2008)
+
+  11 Jan 2008; Timo Gurr <tgurr@gentoo.org> +kdelibs-3.5.8-r3.ebuild:
+  Add kdelibs-3.5.8-r3.ebuild, fixes regression caused by the flash
+  compatibility patch, see bug #205070. Thanks Markos Chandras for reporting.
+
+*kdelibs-3.5.8-r2 (29 Dec 2007)
+
+  29 Dec 2007; Timo Gurr <tgurr@gentoo.org> +kdelibs-3.5.8-r2.ebuild:
+  Add kdelibs-3.5.8-r2.ebuild, adding upstream patch to support newer flash
+  version.
+
+  11 Nov 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  kdelibs-3.5.7-r3.ebuild, kdelibs-3.5.8-r1.ebuild:
+  Added patches kindly provided by KingTaco to solve licence incompatibility
+  issues as per bug 198762.
+
+*kdelibs-3.5.8-r1 (03 Nov 2007)
+
+  03 Nov 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  +kdelibs-3.5.8-r1.ebuild:
+  Added several upstream patches:
+  - Un-break editable controls like zoom selectors.
+  - BSD patch that should fix startup problems.
+  - Incorrect username shortening in konqueror.
+  - Miscellaneous post-3.5.8 fixes.
+
+*kdelibs-3.5.8 (19 Oct 2007)
+
+  19 Oct 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  +kdelibs-3.5.8.ebuild:
+  Bump to KDE 3.5.8.
+
+  26 Sep 2007; Raúl Porcel <armin76@gentoo.org> kdelibs-3.5.7-r3.ebuild:
+  sparc stable wrt security #185603
+
+  23 Sep 2007; Stuart Longland <redhatter@gentoo.org>
+  kdelibs-3.5.7-r2.ebuild:
+  Tested and working on MIPS: ~mips added. Newer ebuilds have been released
+  since testing -- I'll keyword these once they've been tested.
+
+  17 Sep 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  kdelibs-3.5.7-r3.ebuild:
+  ppc stable, bug #185603
+
+  14 Sep 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  kdelibs-3.5.7-r3.ebuild:
+  Marked stable on amd64 as per bug 185603.
+
+  14 Sep 2007; Jeroen Roovers <jer@gentoo.org> kdelibs-3.5.7-r3.ebuild:
+  Stable for HPPA (bug #185603).
+
+  13 Sep 2007; Raúl Porcel <armin76@gentoo.org> kdelibs-3.5.7-r3.ebuild:
+  alpha/ia64/x86 stable wrt security #185603
+
+  13 Sep 2007; Markus Rothe <corsair@gentoo.org> kdelibs-3.5.7-r3.ebuild:
+  Stable on ppc64; bug #185603
+
+*kdelibs-3.5.7-r3 (12 Sep 2007)
+
+  12 Sep 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  +files/konqueror-3.5.7-185603-spoofing.diff,
+  +files/kdelibs-3.5.7-kcookiejar.diff, -kdelibs-3.5.5-r4.ebuild,
+  +kdelibs-3.5.7-r3.ebuild:
+  Added two security patches for konqueror. Fixes bug 185603. Removed obsolete
+  version.
+
+  30 Aug 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  kdelibs-3.5.5-r10.ebuild:
+  Missed another references to hspell when removing the dependency on it.
+
+  30 Aug 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  kdelibs-3.5.5-r10.ebuild:
+  Dropped the obsolete dependency on hspell as per bug 177707.
+
+  15 Aug 2007; Jeroen Roovers <jer@gentoo.org> kdelibs-3.5.7-r2.ebuild:
+  Stable for HPPA (bug #176297).
+
+  11 Aug 2007; Raúl Porcel <armin76@gentoo.org> kdelibs-3.5.7-r2.ebuild:
+  x86 stable wrt #185823
+
+  10 Aug 2007; Christoph Mende <angelos@gentoo.org> kdelibs-3.5.7-r2.ebuild:
+  Stable on amd64 wrt bug #176297
+
+  09 Aug 2007; Markus Rothe <corsair@gentoo.org> kdelibs-3.5.7-r2.ebuild:
+  Stable on ppc64; bug #176297
+
+  08 Aug 2007; Raúl Porcel <armin76@gentoo.org> kdelibs-3.5.7-r2.ebuild:
+  alpha/ia64 stable wrt #176297
+
+  07 Aug 2007; Joseph Jezak <josejx@gentoo.org> kdelibs-3.5.7-r2.ebuild:
+  Marked ppc stable.
+
+  07 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  kdelibs-3.5.7-r2.ebuild:
+  Stable on sparc wrt #176297
+
+  02 Aug 2007; Carsten Lohrke <carlo@gentoo.org> kdelibs-3.5.7-r2.ebuild:
+  Raise needed Portage version, because of bug #180045.
+
+*kdelibs-3.5.7-r2 (26 Jul 2007)
+*kdelibs-3.5.6-r10 (26 Jul 2007)
+
+  26 Jul 2007; Carsten Lohrke <carlo@gentoo.org> +kdelibs-3.5.6-r10.ebuild,
+  +kdelibs-3.5.7-r2.ebuild:
+  Remove sudo patch, bug #178758.
+
+  25 Jul 2007; Carsten Lohrke <carlo@gentoo.org> kdelibs-3.5.6-r9.ebuild:
+  Use updated patch set.
+
+*kdelibs-3.5.7-r1 (25 Jul 2007)
+
+  25 Jul 2007; Carsten Lohrke <carlo@gentoo.org> +kdelibs-3.5.7-r1.ebuild:
+  Fix a problem with colon in path name, multiple kio issues, a crash fix and
+  a minor mem leak closed. Kate cursor and code folding as well as a KHTML
+  rendering fix. KDE bugs 94693, 111760, 130104, 139578, 145428, 146105 among
+  others.
+
+  22 Jul 2007; Denis Dupeyron <calchan@gentoo.org> kdelibs-3.5.5-r4.ebuild,
+  kdelibs-3.5.5-r10.ebuild:
+  Drop virtual/x11 dependency.
+
+  07 Jul 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  kdelibs-3.5.6-r7.ebuild, kdelibs-3.5.6-r8.ebuild, kdelibs-3.5.6-r9.ebuild,
+  kdelibs-3.5.7.ebuild:
+  Make sure the target for the revdep-rebuild stuff exists. Fixes bug 184441.
+
+  25 Jun 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  kdelibs-3.5.5-r4.ebuild, kdelibs-3.5.5-r10.ebuild,
+  kdelibs-3.5.6-r7.ebuild, kdelibs-3.5.6-r8.ebuild, kdelibs-3.5.6-r9.ebuild,
+  kdelibs-3.5.7.ebuild:
+  All ebuilds are now replacing -O3 with -O2 because of printing-related
+  failures (cf. bug 148180).
+
+  18 Jun 2007; Wulf C. Krueger <philantrop@gentoo.org> kdelibs-3.5.7.ebuild:
+  Raise dependency on libpcre to >=dev-libs/libpcre-6.6. Fixes bug 182438.
+
+  03 Jun 2007; Joshua Kinard <kumba@gentoo.org> kdelibs-3.5.6-r9.ebuild:
+  Marked unstable on mips.
+
+  03 Jun 2007; Joshua Kinard <kumba@gentoo.org> kdelibs-3.5.5-r10.ebuild:
+  Stable on mips, per #152818.
+
+  01 Jun 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  +files/kdelibs-3.5.7-html-style.patch, kdelibs-3.5.7.ebuild:
+  Added a patch for using Gmail with konqueror, fixes bug 179152.
+
+*kdelibs-3.5.7 (22 May 2007)
+
+  22 May 2007; Carsten Lohrke <carlo@gentoo.org> +kdelibs-3.5.7.ebuild:
+  Version bump.
+
+*kdelibs-3.5.6-r9 (17 May 2007)
+
+  17 May 2007; Carsten Lohrke <carlo@gentoo.org>
+  +files/kdelibs-3.5.6-utf8-fix.diff, +kdelibs-3.5.6-r9.ebuild:
+  Aftermath of the Qt UTF-8 decoder fix.
+
+  16 May 2007; Raúl Porcel <armin76@gentoo.org> kdelibs-3.5.6-r8.ebuild:
+  Add ~alpha wrt #147568
+
+  12 May 2007; Markus Rothe <corsair@gentoo.org> kdelibs-3.5.6-r8.ebuild:
+  Added ~ppc64; bug #147568
+
+  08 May 2007; Carsten Lohrke <carlo@gentoo.org> kdelibs-3.5.5-r10.ebuild:
+  Restore kdelibs-3.5.5-r10.
+
+  07 May 2007; Stefan Schweizer <genstef@gentoo.org>
+  kdelibs-3.5.5-r10.ebuild, kdelibs-3.5.6-r7.ebuild,
+  kdelibs-3.5.6-r8.ebuild:
+  Remove hpell depend thanks to alonbl in bug 177546
+
+  05 May 2007; Carsten Lohrke <carlo@gentoo.org> ChangeLog:
+  Restore ChangeLog.
+
+  05 May 2007; Carsten Lohrke <carlo@gentoo.org> ChangeLog:
+  Restore ChangeLog
+
+*kdelibs-3.5.6-r8 (05 May 2007)
+
+  05 May 2007; Carsten Lohrke <carlo@gentoo.org> +kdelibs-3.5.6-r8.ebuild:
+  Raise minimal needed Aspell version. Depend on recent Portage due to bug
+  #176765. Ebuild cleanup.
+
+  29 Apr 2007; Carsten Lohrke <carlo@gentoo.org> kdelibs-3.5.6-r7.ebuild:
+  Remove XDG_CONFIG_DIRS again, bug #164034. Workaround only, though...
+
+  28 Apr 2007; Carsten Lohrke <carlo@gentoo.org> -kdelibs-3.5.5-r5.ebuild,
+  -kdelibs-3.5.5-r7.ebuild, -kdelibs-3.5.5-r8.ebuild,
+  -kdelibs-3.5.5-r9.ebuild, -kdelibs-3.5.6-r1.ebuild,
+  -kdelibs-3.5.6-r2.ebuild, -kdelibs-3.5.6-r3.ebuild,
+  -kdelibs-3.5.6-r4.ebuild, -kdelibs-3.5.6-r5.ebuild,
+  -kdelibs-3.5.6-r6.ebuild:
+  Clean up.
+
+*kdelibs-3.5.6-r7 (27 Apr 2007)
+
+  27 Apr 2007; Carsten Lohrke <carlo@gentoo.org> +kdelibs-3.5.6-r7.ebuild:
+  Revert the Kate patch changes from the previous revision, bug #176190. Make
+  OpenSSL and zeroconf/avahi dependencies mandatory, bug #172972 and bug
+  #175984.
+
+*kdelibs-3.5.6-r6 (25 Apr 2007)
+
+  25 Apr 2007; Carsten Lohrke <carlo@gentoo.org> +kdelibs-3.5.6-r6.ebuild:
+  KJS and Kate fixes from branch, KDE bug #130896, fix bug #135818 (again),
+  bug #153533 and bug #155751.
+
+  09 Apr 2007; Marcus D. Hanwell <cryos@gentoo.org>
+  kdelibs-3.5.5-r10.ebuild:
+  Stable on amd64, bug 172527.
+
+  05 Apr 2007; Jose Luis Rivero <yoswink@gentoo.org>
+  kdelibs-3.5.5-r10.ebuild:
+  Stable on alpha wrt security #172527
+
+  04 Apr 2007; Carsten Lohrke <carlo@gentoo.org> kdelibs-3.5.5-r10.ebuild,
+  kdelibs-3.5.6-r5.ebuild:
+  Care for bug #148180.
+
+  03 Apr 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  kdelibs-3.5.5-r10.ebuild:
+  ppc stable, bug #172527
+
+  03 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  kdelibs-3.5.5-r10.ebuild:
+  Stable on sparc wrt security #172527
+
+  02 Apr 2007; Markus Rothe <corsair@gentoo.org> kdelibs-3.5.5-r10.ebuild:
+  Stable on ppc64; bug #172527
+
+  01 Apr 2007; Jeroen Roovers <jer@gentoo.org> kdelibs-3.5.5-r10.ebuild:
+  Stable for HPPA (bug #172527).
+
+  01 Apr 2007; Carsten Lohrke <carlo@gentoo.org> kdelibs-3.5.6-r5.ebuild:
+  Fix bug #172959.
+
+*kdelibs-3.5.6-r5 (31 Mar 2007)
+
+  31 Mar 2007; Carsten Lohrke <carlo@gentoo.org> +kdelibs-3.5.6-r5.ebuild:
+  Fix bug 172527, the KDE bugs 103741, 126812, 133937, 134101, 141253, 141392,
+  141621, 142050, 142202 and address some other issues.
+
+  31 Mar 2007; Raúl Porcel <armin76@gentoo.org> kdelibs-3.5.5-r10.ebuild:
+  ia64 + x86 stable wrt security bug 172527
+
+*kdelibs-3.5.5-r10 (31 Mar 2007)
+
+  31 Mar 2007; Carsten Lohrke <carlo@gentoo.org>
+  +files/CVE-2007-1564-kdelibs-3.5.6.diff, +kdelibs-3.5.5-r10.ebuild:
+  Fix for bug #172527.
+
+*kdelibs-3.5.6-r4 (30 Mar 2007)
+
+  30 Mar 2007; Caleb Tennis <caleb@gentoo.org>
+  +files/kdelibs-3.5.6-kjs-xss.diff, +kdelibs-3.5.6-r4.ebuild:
+  Adding a XSS fix patch from kde-packager
+
+  22 Mar 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  kdelibs-3.5.5-r9.ebuild:
+  Stable on alpha/ia64/ppc wrt bug #169529.
+
+  07 Mar 2007; Jeroen Roovers <jer@gentoo.org> kdelibs-3.5.5-r9.ebuild:
+  Stable for HPPA (bug #169529).
+
+  07 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  kdelibs-3.5.5-r9.ebuild:
+  Stable on sparc wrt security #169529
+
+  06 Mar 2007; Markus Rothe <corsair@gentoo.org> kdelibs-3.5.5-r9.ebuild:
+  Stable on ppc64; bug #169529
+
+  06 Mar 2007; Marcus D. Hanwell <cryos@gentoo.org> kdelibs-3.5.5-r9.ebuild:
+  Stable on amd64, bug 169529.
+
+  06 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  kdelibs-3.5.5-r9.ebuild:
+  stable x86; security bug 169526
+
+*kdelibs-3.5.6-r3 (05 Mar 2007)
+*kdelibs-3.5.5-r9 (05 Mar 2007)
+
+  05 Mar 2007; Ioannis Aslanidis <deathwing00@gentoo.org>
+  +files/kdelibs-3.5.5-vulnerability-20070305.diff,
+  +kdelibs-3.5.5-r9.ebuild, +kdelibs-3.5.6-r3.ebuild:
+  Fixes konqueror dos via javascript read of ftp iframe.
+
+  14 Feb 2007; Bryan Østergaard <kloeri@gentoo.org>
+  kdelibs-3.5.5-r8.ebuild:
+  Stable on IA64, bug 165606.
+
+  12 Feb 2007; Jeroen Roovers <jer@gentoo.org> kdelibs-3.5.5-r8.ebuild:
+  Stable for HPPA (bug #165606).
+
+  09 Feb 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  kdelibs-3.5.5-r8.ebuild:
+  Stable on alpha/amd64 wrt bug #165606.
+
+  08 Feb 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  kdelibs-3.5.5-r8.ebuild:
+  Stable on ppc wrt bug #165606.
+
+  07 Feb 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  kdelibs-3.5.5-r8.ebuild:
+  Stable on sparc wrt security #165606
+
+  06 Feb 2007; Raúl Porcel <armin76@gentoo.org> kdelibs-3.5.5-r8.ebuild:
+  x86 stable wrt security bug 165606
+
+  06 Feb 2007; Markus Rothe <corsair@gentoo.org> kdelibs-3.5.5-r8.ebuild:
+  Stable on ppc64; bug #165606
+
+*kdelibs-3.5.5-r8 (06 Feb 2007)
+
+  06 Feb 2007; Diego Pettenò <flameeyes@gentoo.org>
+  +files/kdelibs-3.5.5-CVE-2007-0537.patch, +kdelibs-3.5.5-r8.ebuild:
+  Add patch to fix security bug #165606.
+
+  05 Feb 2007; Diego Pettenò <flameeyes@gentoo.org>
+  -files/kdelibs-3.5.0-bindnow.patch,
+  -files/kdelibs-3.5.0-kicker-crash.patch,
+  -files/kdelibs-3.5.2-kssl-3des.patch,
+  -files/kdelibs-3.5.2-xorg7-rgbtxt.patch,
+  -files/kdelibs-3.5.3-konqcrash.patch, -files/kdelibs-3.5-lua.patch:
+  Remove unneeded patches.
+
+  04 Feb 2007; Jeroen Roovers <jer@gentoo.org> kdelibs-3.5.6-r2.ebuild:
+  Marked ~hppa (bug #foo).
+
+  04 Feb 2007; Diego Pettenò <flameeyes@gentoo.org>
+  -kdelibs-3.5.2-r6.ebuild:
+  Remove old versions.
+
+  03 Feb 2007; Jeroen Roovers <jer@gentoo.org> kdelibs-3.5.6-r1.ebuild:
+  Marked ~hppa.
+
+  03 Feb 2007; Alexander H. Færøy <eroyf@gentoo.org>
+  kdelibs-3.5.5-r4.ebuild:
+  Stable on MIPS; bug #164176
+
+*kdelibs-3.5.6-r2 (02 Feb 2007)
+
+  02 Feb 2007; Diego Pettenò <flameeyes@gentoo.org>
+  +files/kdelibs-3.5.6-khtml-kde-bug-140768.patch, +kdelibs-3.5.6-r2.ebuild:
+  Add patch to fix KDE Bug 140768 as requested by upstream.
+
+  01 Feb 2007; Markus Rothe <corsair@gentoo.org> kdelibs-3.5.5-r7.ebuild:
+  Stable on ppc64; bug #164079
+
+  31 Jan 2007; Joseph Jezak <josejx@gentoo.org> kdelibs-3.5.5-r7.ebuild:
+  Marked ppc stable for bug #164079.
+
+  30 Jan 2007; Jeroen Roovers <jer@gentoo.org> kdelibs-3.5.5-r7.ebuild:
+  Stable for HPPA (bug #164079).
+
+  29 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  kdelibs-3.5.5-r7.ebuild:
+  Stable on sparc wrt #164079
+
+  29 Jan 2007; Christian Faulhammer <opfer@gentoo.org>
+  kdelibs-3.5.5-r7.ebuild:
+  stable x86; bug #164079
+
+  28 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  -files/kdelibs-3.4.3-inttypes.patch, -files/post-3.4.3-kdelibs-kjs.diff,
+  -files/kde3-dcopidlng.patch, -files/kdelibs-3.4.1-configure.patch,
+  -kdelibs-3.5.5-r6.ebuild, -kdelibs-3.5.6.ebuild:
+  Remove old versions and a bunch of files that are orphaned for quite a while
+  now.
+
+*kdelibs-3.5.6-r1 (28 Jan 2007)
+
+  28 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  +kdelibs-3.5.6-r1.ebuild:
+  Fix KDE environment variables not to export XDG_CONFIG_DIRS to non-KDE
+  serssions. Thanks to Christoph Brill for reporting and Pacho Ramos for
+  finding the problem again. See bug #164034.
+
+  24 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  files/digest-kdelibs-3.5.6, Manifest:
+  Regen digest.
+
+  21 Jan 2007; Jeroen Roovers <jer@gentoo.org> kdelibs-3.5.5-r7.ebuild:
+  Marked ~hppa (bug #152818).
+
+  19 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> kdelibs-3.5.6.ebuild:
+  Set XDG_DATA_DIRS and XDG_CONFIG_DIRS variables in env.d directly; this way
+  KDE applications will show up in GNOME menu. Closes bug #95867 and bug
+  #139697. Thanks to Pacho Ramos for the help.
+
+  19 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  kdelibs-3.5.2-r6.ebuild, kdelibs-3.5.5-r4.ebuild, kdelibs-3.5.5-r5.ebuild,
+  kdelibs-3.5.5-r6.ebuild, kdelibs-3.5.5-r7.ebuild, kdelibs-3.5.6.ebuild:
+  Error out gracefully when the midi useflag on experimental alsa-lib is unset.
+
+  18 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> kdelibs-3.5.6.ebuild:
+  Don't depend on arts 3.5.6, as 3.5.5 is just the same.
+
+*kdelibs-3.5.6 (16 Jan 2007)
+
+  16 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> +kdelibs-3.5.6.ebuild:
+  Bump to 3.5.6 (prerelease).
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  kdelibs-3.5.2-r6.ebuild:
+  Convert to use elog.
+
+  18 Dec 2006; Jason Wever <weeve@gentoo.org> kdelibs-3.5.5-r7.ebuild:
+  Added ~sparc keyword wrt bug #152818.
+
+  11 Dec 2006; <kloeri@gentoo.org> kdelibs-3.5.5-r4.ebuild:
+  Stable on ia64.
+
+  06 Dec 2006; <kloeri@gentoo.org> kdelibs-3.5.5-r4.ebuild:
+  Stable on Alpha.
+
+  01 Dec 2006; Diego Pettenò <flameeyes@gentoo.org>
+  kdelibs-3.5.2-r6.ebuild, kdelibs-3.5.5-r4.ebuild, kdelibs-3.5.5-r5.ebuild,
+  kdelibs-3.5.5-r6.ebuild, kdelibs-3.5.5-r7.ebuild:
+  Make support for hidden visibility explicit.
+
+  26 Nov 2006; Markus Rothe <corsair@gentoo.org> kdelibs-3.5.5-r5.ebuild:
+  Stable on ppc64
+
+  25 Nov 2006; Bryan Østergaard <kloeri@gentoo.org>
+  kdelibs-3.5.5-r5.ebuild, kdelibs-3.5.5-r7.ebuild:
+  Add ~ia64 keyword.
+
+  24 Nov 2006; Markus Rothe <corsair@gentoo.org> kdelibs-3.5.5-r6.ebuild,
+  kdelibs-3.5.5-r7.ebuild:
+  Added ~ppc64; bug #155505
+
+  24 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  kdelibs-3.5.5-r7.ebuild:
+  Fix typo in patch line, thanks Jakub.
+
+*kdelibs-3.5.5-r7 (24 Nov 2006)
+
+  24 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/kdelibs-3.5.5-seli-xinerama.patch, +kdelibs-3.5.5-r7.ebuild:
+  Add a patch to improve xinerama support, by Lubos Lunak.
+
+  23 Nov 2006; Guy Martin <gmsoft@gentoo.org> kdelibs-3.5.5-r5.ebuild:
+  Stable on hppa.
+
+  22 Nov 2006; Joseph Jezak <josejx@gentoo.org> kdelibs-3.5.5-r6.ebuild:
+  Marked ~ppc for bug #155505.
+
+  19 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  kdelibs-3.5.2-r6.ebuild, kdelibs-3.5.5-r4.ebuild, kdelibs-3.5.5-r5.ebuild,
+  kdelibs-3.5.5-r6.ebuild:
+  Block the correct package.
+
+  19 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  kdelibs-3.5.5-r6.ebuild:
+  Fix enable/disable conditions for dnssd. Thanks to Nathan Caldwell in bug
+  #155615.
+
+  18 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  kdelibs-3.5.2-r6.ebuild, kdelibs-3.5.5-r4.ebuild, kdelibs-3.5.5-r5.ebuild:
+  Remove wrong reference to avahi useflag from older versions. Thanks Jakub.
+
+  18 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -kdelibs-3.5.3-r4.ebuild, -kdelibs-3.5.4-r3.ebuild,
+  -kdelibs-3.5.4-r4.ebuild, -kdelibs-3.5.5.ebuild:
+  Remove old versions.
+
+  18 Nov 2006; Christian Faulhammer <opfer@gentoo.org>
+  kdelibs-3.5.5-r6.ebuild:
+  keyworded ~x86, bug #155505
+
+  18 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  kdelibs-3.5.5-r6.ebuild:
+  Remove the libkdnssd libraries when kdnssd-avahi is supposed to provide
+  them. Add ~x86-fbsd keyword.
+
+*kdelibs-3.5.5-r6 (17 Nov 2006)
+
+  17 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  kdelibs-3.5.2-r6.ebuild, kdelibs-3.5.5-r4.ebuild, kdelibs-3.5.5-r5.ebuild,
+  +kdelibs-3.5.5-r6.ebuild:
+  Add new version, that with avahi useflag use kde-misc/kdnssd-avahi rather
+  tha building the internal kdnssd support. Thanks to Nathan Caldwell in bug
+  #118178.
+
+  16 Nov 2006; Joseph Jezak <josejx@gentoo.org> kdelibs-3.5.5-r4.ebuild:
+  Marked ppc stable for bug #147570.
+
+  14 Nov 2006; Caleb Tennis <caleb@gentoo.org> kdelibs-3.5.5-r5.ebuild:
+  change libxslt dep per bug #135536
+
+  14 Nov 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  kdelibs-3.5.5-r5.ebuild:
+  Stable on sparc wrt #147570
+
+  13 Nov 2006; Danny van Dyk <kugelfang@gentoo.org> kdelibs-3.5.5-r5.ebuild:
+  Marked stable on amd64 wrt bug #147570.
+
+  13 Nov 2006; Christian Faulhammer <opfer@gentoo.org>
+  kdelibs-3.5.5-r5.ebuild:
+  "Stable x86, bug #147570"
+
+  27 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  kdelibs-3.5.4-r4.ebuild, kdelibs-3.5.5-r5.ebuild:
+  Back to ~sparc wrt #152818
+
+  27 Oct 2006; Markus Rothe <corsair@gentoo.org> kdelibs-3.5.4-r4.ebuild,
+  kdelibs-3.5.5-r5.ebuild:
+  Added ~ppc64; bug #152818
+
+  27 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  kdelibs-3.5.4-r4.ebuild, kdelibs-3.5.5-r5.ebuild:
+  Re-add ~x86-fbsd keywording.
+
+  27 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  kdelibs-3.5.4-r4.ebuild, kdelibs-3.5.5-r5.ebuild:
+  Re-add ~amd64 keywording.
+
+*kdelibs-3.5.5-r5 (25 Oct 2006)
+*kdelibs-3.5.5-r4 (25 Oct 2006)
+*kdelibs-3.5.4-r4 (25 Oct 2006)
+*kdelibs-3.5.4-r3 (25 Oct 2006)
+
+  25 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -kdelibs-3.5.4-r1.ebuild, -kdelibs-3.5.4-r2.ebuild,
+  +kdelibs-3.5.4-r3.ebuild, +kdelibs-3.5.4-r4.ebuild,
+  -kdelibs-3.5.5-r1.ebuild, -kdelibs-3.5.5-r2.ebuild,
+  -kdelibs-3.5.5-r3.ebuild, +kdelibs-3.5.5-r4.ebuild,
+  +kdelibs-3.5.5-r5.ebuild:
+  Version bump to fix the KSpell2 debacle, bug #152417. Keywording on 3.5.4-r4
+  and 3.5.5-r5 was limited to the arches having hspell-1.0 available.
+
+  19 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  kdelibs-3.5.5-r3.ebuild:
+  Fix typo sendmail->sendfile. Thanks to Samuele Kaplun for letting me know.
+
+*kdelibs-3.5.5-r3 (19 Oct 2006)
+
+  19 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/kdelibs-3.5.5-noarts.patch, +files/kdelibs-3.5.5-noarts-2.patch,
+  +kdelibs-3.5.5-r3.ebuild:
+  Add patches to allow KNotify to work with arts disabled (see upstream bug
+  #99246), closes bug #79029. Enable mitshm, and sendfile on Linux, closes bug
+  #148299.
+
+  17 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  kdelibs-3.5.5-r2.ebuild:
+  Fix use_with noutempter.
+
+  17 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  kdelibs-3.5.5-r2.ebuild:
+  Change noutempter useflag to utempter, as most setups will simply not care
+  about it at all; Change ewarns and einfos to elog so that they can be of
+  some usefulness.
+
+*kdelibs-3.5.5-r2 (16 Oct 2006)
+
+  16 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/kdelibs-3.5.5-khtml.patch, +kdelibs-3.5.5-r2.ebuild:
+  Add patch from upstream to fix khtml rendering.
+
+*kdelibs-3.5.5-r1 (15 Oct 2006)
+
+  15 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/kdelibs-3.5.5-kdeprint-cupsd-timeout-fix.patch,
+  +kdelibs-3.5.5-r1.ebuild:
+  Add patch to fix timeouts on cups connection. THanks to Jochen Trumpf for
+  reporting in bug #151261.
+
+  11 Oct 2006; Ioannis Aslanidis <deathwing00@gentoo.org>
+  +files/kdelibs-3.5.5-kate-cstyle-indenter-fix.diff, kdelibs-3.5.5.ebuild:
+  Added a patch that fixes a nasty regression in the cstyle identifier of kate.
+
+  07 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  files/digest-kdelibs-3.5.5, Manifest:
+  Regenerate digest.
+
+  05 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  files/digest-kdelibs-3.5.5, Manifest:
+  Regenerate digest.
+
+  03 Oct 2006; Carsten Lohrke <carlo@gentoo.org> kdelibs-3.5.4-r2.ebuild,
+  kdelibs-3.5.5.ebuild:
+  Disable tests.
+
+*kdelibs-3.5.5 (03 Oct 2006)
+
+  03 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> +kdelibs-3.5.5.ebuild:
+  Bump to 3.5.5 (pre-release).
+
+  20 Sep 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/kdelibs-3.5-lua.patch, kdelibs-3.5.4-r2.ebuild:
+  Cleanup econf call, fix missing quotes, add lua useflag (and patch to
+  disable lua altogether) to fix bug #120388.
+
+*kdelibs-3.5.4-r2 (19 Sep 2006)
+
+  19 Sep 2006; Carsten Lohrke <carlo@gentoo.org> +kdelibs-3.5.4-r2.ebuild:
+  Fixes for the KDE bugs #113057, #121528, #131596, #133677, #123941, #131369
+  among others. Changed env handling.
+
+  18 Sep 2006; Carsten Lohrke <carlo@gentoo.org> kdelibs-3.5.2-r6.ebuild,
+  kdelibs-3.5.3-r4.ebuild, kdelibs-3.5.4-r1.ebuild:
+  Move kde-base/kde-env dependency here.
+
+  18 Sep 2006; Carsten Lohrke <carlo@gentoo.org> -kdelibs-3.5.3.ebuild,
+  -kdelibs-3.5.3-r1.ebuild, -kdelibs-3.5.3-r2.ebuild,
+  -kdelibs-3.5.3-r3.ebuild, -kdelibs-3.5.4.ebuild:
+  Clean up.
+
+  17 Sep 2006; Carsten Lohrke <carlo@gentoo.org> -kdelibs-3.4.3-r1.ebuild:
+  Drop KDE 3.4.
+
+  09 Sep 2006; Carsten Lohrke <carlo@gentoo.org> kdelibs-3.5.4-r1.ebuild:
+  Do not depend on virtual/utempter, as only libutempter is supported, #143395.
+
+  07 Sep 2006; Carsten Lohrke <carlo@gentoo.org> kdelibs-3.5.4-r1.ebuild:
+  Do not build with hspell, as long as it isn't supported by all architectures.
+
+  07 Sep 2006; Carsten Lohrke <carlo@gentoo.org> kdelibs-3.5.4-r1.ebuild:
+  Revert previous commit.
+
+  04 Sep 2006; Stefan Schweizer <genstef@gentoo.org>
+  kdelibs-3.5.4-r1.ebuild:
+  allow to build with hspell support again thanks to Alon Bar-Lev
+  <alon.barlev@gmail.com> in bug 146317
+
+  03 Sep 2006; Bryan Østergaard <kloeri@gentoo.org>
+  kdelibs-3.5.2-r6.ebuild:
+  Stable on ia64.
+
+  23 Aug 2006; Carsten Lohrke <carlo@gentoo.org> kdelibs-3.5.4-r1.ebuild:
+  Do always install the environment file.
+
+  23 Aug 2006; Carsten Lohrke <carlo@gentoo.org> kdelibs-3.5.4-r1.ebuild:
+  Fixed a typo.
+
+*kdelibs-3.5.4-r1 (23 Aug 2006)
+
+  23 Aug 2006; Carsten Lohrke <carlo@gentoo.org> +kdelibs-3.5.4-r1.ebuild:
+  Fixed legacyssl patch, thanks to Rick Harris. Fixes from the 3.5 branch for
+  the KDE bugs #90462, #126482, #126593, #132098 among others. Thanks to
+  Martin von Gagern for the libutempter patch.
+
+  25 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -files/kdelibs-3.3.2-anchor-fix.patch,
+  -files/kdelibs-3.3.2-aspell-dir.patch,
+  -files/post-3.3.2-kdelibs-kate.diff, -files/kdelibs-3.3.2-ppc64.patch,
+  -kdelibs-3.3.2-r10.ebuild:
+  Drop 3.3 versions.
+
+*kdelibs-3.5.4 (25 Jul 2006)
+
+  25 Jul 2006; Diego Pettenò <flameeyes@gentoo.org> +kdelibs-3.5.4.ebuild:
+  Bump to 3.5.4 (pre-release).
+
+*kdelibs-3.5.3-r4 (20 Jul 2006)
+
+  20 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/kdelibs-3.5.3-konqcrash.patch, +kdelibs-3.5.3-r4.ebuild:
+  Add patch to fix Konqueror crash. Patch from Dirk Mueller <mueller@kde.org>,
+  thanks to Hanno Boeck for reporting. See bug #141173.
+
+  16 Jul 2006; <psi29a@gentoo.org> kdelibs-3.5.2-r6.ebuild:
+  marked as stable
+
+  09 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  kdelibs-3.5.2-r6.ebuild, kdelibs-3.5.3.ebuild, kdelibs-3.5.3-r1.ebuild,
+  kdelibs-3.5.3-r2.ebuild, kdelibs-3.5.3-r3.ebuild:
+  Pinpoint virtual/x11 version to less than 7.
+
+  03 Jul 2006; Caleb Tennis <caleb@gentoo.org> kdelibs-3.5.2-r6.ebuild,
+  kdelibs-3.5.3-r3.ebuild:
+  Add iceauth as a dep, as it is required by the dcopserver
+
+*kdelibs-3.5.3-r3 (22 Jun 2006)
+
+  22 Jun 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +kdelibs-3.5.3-r3.ebuild:
+  Add new version without the kate patch that adds more crashes than it might
+  resolve.
+
+  15 Jun 2006; Carsten Lohrke <carlo@gentoo.org> kdelibs-3.5.3-r2.ebuild:
+  Revised patch set, missed to include cups 1.2 patches.
+
+*kdelibs-3.5.3-r2 (14 Jun 2006)
+
+  14 Jun 2006; Carsten Lohrke <carlo@gentoo.org> +kdelibs-3.5.3-r2.ebuild:
+  Missing return value checks. Use init script to restart cupsd. A couple of
+  fixes from the KDE 3.5 branch.
+
+*kdelibs-3.5.3-r1 (09 Jun 2006)
+
+  09 Jun 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +kdelibs-3.5.3-r1.ebuild:
+  Add new revision of kdelibs without utempter dependency, disabling utempter
+  entirely as kdelibs has its own better code to handle that.
+
+  05 Jun 2006; Diego Pettenò <flameeyes@gentoo.org> kdelibs-3.5.3.ebuild:
+  Apply all the KUbuntu patches for cups 1.2 but the first. Note to self:
+  check not to skip one patch when trying if they apply.
+
+  03 Jun 2006; Guy Martin <gmsoft@gentoo.org> kdelibs-3.5.2-r6.ebuild:
+  Stable on hppa.
+
+  02 Jun 2006; Diego Pettenò <flameeyes@gentoo.org> kdelibs-3.5.3.ebuild:
+  Remove the --no-as-needed filtering, the problem is not in kdelibs, but in
+  binutils.
+
+*kdelibs-3.5.3 (01 Jun 2006)
+
+  01 Jun 2006; Diego Pettenò <flameeyes@gentoo.org> +kdelibs-3.5.3.ebuild:
+  Version bump to avoid blocking more the monolithic ebuilds development. Add
+  fam useflag so that inotify can be used instead (on Linux). Don't use
+  --as-needed for first install for now.
+
+  01 Jun 2006; Thomas Cort <tcort@gentoo.org> kdelibs-3.5.2-r6.ebuild:
+  Stable on alpha wrt Bug #132213.
+
+  30 May 2006; Joseph Jezak <josejx@gentoo.org> kdelibs-3.5.2-r6.ebuild:
+  Marked ppc stable for bug #132213.
+
+  29 May 2006; Jason Wever <weeve@gentoo.org> kdelibs-3.5.2-r6.ebuild:
+  Stable on SPARC wrt bug #132213.
+
+  29 May 2006; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Drop old versions.
+
+  28 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -files/post-3.3.2-kdelibs-htmlframes2.patch,
+  -files/kdelibs-3.4.1-kntlm.patch,
+  -files/kdelibs-3.4.1-ktoolbar-crash.patch,
+  -files/kdelibs-3.4.2-gmail-fix.patch,
+  -files/kdelibs-3.5.2-kate-fixes.diff,
+  -files/kdelibs-3.5.2-kate-fixes-2.diff,
+  -files/kdelibs-3.5.2-kio-errror-handling.diff,
+  -files/kdelibs-3.5.2-kio-fixes.diff, -files/kdelibs-3.5.2-misc-fixes.diff,
+  -files/kdelibs-3.5.2-misc-fixes-2.diff,
+  -files/kdelibs-3.5.2-misc-fixes-3.diff, -kdelibs-3.4.1-r1.ebuild,
+  -kdelibs-3.4.1-r2.ebuild, -kdelibs-3.4.2.ebuild, -kdelibs-3.4.2-r1.ebuild,
+  -kdelibs-3.4.3.ebuild, -kdelibs-3.5.2-r2.ebuild, -kdelibs-3.5.2-r3.ebuild,
+  -kdelibs-3.5.2-r4.ebuild, -kdelibs-3.5.2-r5.ebuild:
+  Remove old versions.
+
+  26 May 2006; Markus Rothe <corsair@gentoo.org> kdelibs-3.5.2-r6.ebuild:
+  Stable on ppc64 - again
+
+  26 May 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  kdelibs-3.5.2-r6.ebuild:
+  Stable on amd64 wrt bug #132213
+
+  26 May 2006; Markus Rothe <corsair@gentoo.org> kdelibs-3.5.2-r6.ebuild:
+  Stable on ppc64
+
+  25 May 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  kdelibs-3.5.2-r6.ebuild:
+  Stable on x86 wrt bug #132213
+
+  25 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  kdelibs-3.5.2-r6.ebuild:
+  Fix regressions introduced in -r6 aligning it with -r5 changes.
+
+*kdelibs-3.5.2-r6 (25 May 2006)
+
+  25 May 2006; Carsten Lohrke <carlo@gentoo.org> +kdelibs-3.5.2-r6.ebuild:
+  A memleak and crash conditions (including bug #133394) fixed.
+
+  14 May 2006; <psi29a@gentoo.org> kdelibs-3.5.2-r5.ebuild:
+  added to ~mips for testing
+
+*kdelibs-3.5.2-r5 (12 May 2006)
+
+  12 May 2006; Caleb Tennis <caleb@gentoo.org>
+  +files/kdelibs-3.5.2-misc-fixes-3.diff, +kdelibs-3.5.2-r5.ebuild:
+  Another round of misc fixes, supercedes misc-fixes-2 (from Carlo)
+
+  08 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  kdelibs-3.5.2-r4.ebuild:
+  Add patchset from KUbuntu when using CUPS 1.2.
+
+  08 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  kdelibs-3.5.2-r4.ebuild:
+  Add patchset from KUbuntu when using CUPS 1.2.
+
+  06 May 2006; Carsten Lohrke <carlo@gentoo.org> kdelibs-3.5.2-r4.ebuild:
+  Added aspell-en as dependency to work around bug 131512.
+
+  01 May 2006; Carsten Lohrke <carlo@gentoo.org>
+  +files/kdelibs-3.5.2-kssl-3des.patch, kdelibs-3.5.2-r4.ebuild:
+  Optional support for deprecated ssl ciphers.
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-kdelibs-3.3.2-r10, files/digest-kdelibs-3.4.1-r1,
+  files/digest-kdelibs-3.4.1-r2, files/digest-kdelibs-3.4.2,
+  files/digest-kdelibs-3.4.2-r1, files/digest-kdelibs-3.4.3,
+  files/digest-kdelibs-3.4.3-r1, files/digest-kdelibs-3.5.2-r2,
+  files/digest-kdelibs-3.5.2-r3, files/digest-kdelibs-3.5.2-r4, Manifest:
+  Fixing SHA256 digest, pass four
+
+*kdelibs-3.5.2-r4 (21 Apr 2006)
+
+  21 Apr 2006; Carsten Lohrke <carlo@gentoo.org>
+  +files/kdelibs-3.5.2-misc-fixes-2.diff, +kdelibs-3.5.2-r4.ebuild:
+  Fix two crashes and bug #120858.
+
+*kdelibs-3.5.2-r3 (17 Apr 2006)
+
+  17 Apr 2006; Carsten Lohrke <carlo@gentoo.org>
+  +files/kdelibs-3.5.2-kate-fixes-2.diff,
+  +files/kdelibs-3.5.2-kio-fixes.diff, +files/kdelibs-3.5.2-misc-fixes.diff,
+  +kdelibs-3.5.2-r3.ebuild:
+  Updated patch set, fixing various issues.
+
+  06 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -files/kdelibs-3.5.1-kurllabel.patch, -kdelibs-3.5.0.ebuild,
+  -kdelibs-3.5.0-r1.ebuild, -kdelibs-3.5.0-r2.ebuild, -kdelibs-3.5.1.ebuild,
+  -kdelibs-3.5.1-r1.ebuild, -kdelibs-3.5.2.ebuild:
+  Cleanup old 3.5.x versions.
+
+*kdelibs-3.5.2-r2 (05 Apr 2006)
+
+  05 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -kdelibs-3.5.2-r1.ebuild, +kdelibs-3.5.2-r2.ebuild:
+  Re-apply fixes for modular X setups, libxslt dependency and ~x86-fbsd keyword.
+
+*kdelibs-3.5.2-r1 (03 Apr 2006)
+
+  03 Apr 2006; Carsten Lohrke <carlo@gentoo.org>
+  +files/kdelibs-3.5.2-kate-fixes.diff,
+  +files/kdelibs-3.5.2-kio-errror-handling.diff, +kdelibs-3.5.2-r1.ebuild:
+  Fix bug #128519 and apply some Kate updates.
+
+  01 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> kdelibs-3.5.2.ebuild:
+  Update ~x86-fbsd keyword.
+
+  31 Mar 2006; Caleb Tennis <caleb@gentoo.org> kdelibs-3.4.3.ebuild,
+  kdelibs-3.4.3-r1.ebuild, kdelibs-3.5.0-r1.ebuild, kdelibs-3.5.0-r2.ebuild,
+  kdelibs-3.5.1.ebuild, kdelibs-3.5.1-r1.ebuild, kdelibs-3.5.2.ebuild:
+  dump dep to libxslt 1.1.15 to fix XPath errors
+
+  29 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> kdelibs-3.5.2.ebuild:
+  Remove configure to force autotools rebuild. Closes bug #127932.
+
+  24 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  kdelibs-3.5.1-r1.ebuild:
+  Backport to 3.5.1-r1 the xorg7 fix.
+
+  24 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/kdelibs-3.5.2-xorg7-rgbtxt.patch, kdelibs-3.5.2.ebuild:
+  Fix on X.Org 7.0 by creating and passing a --with-rgbfile parameter with the
+  path to the rgb.txt file on modular setup.
+
+*kdelibs-3.5.2 (22 Mar 2006)
+
+  22 Mar 2006; Dan Armak <danarmak@gentoo.org> +kdelibs-3.5.2.ebuild:
+  KDE 3.5.2. Not yet released upstream, and so package.masked for now.
+
+  02 Mar 2006; Aron Griffis <agriffis@gentoo.org> kdelibs-3.4.3-r1.ebuild:
+  Mark 3.4.3-r1 stable on ia64
+
+*kdelibs-3.5.1-r1 (04 Feb 2006)
+
+  04 Feb 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/kdelibs-3.5.1-kurllabel.patch, +kdelibs-3.5.1-r1.ebuild:
+  Add patch to restore previous behavior with kurllabel as per bug #121571
+  (upstream bug #120291).
+
+  01 Feb 2006; Carsten Lohrke <carlo@gentoo.org> kdelibs-3.5.1.ebuild:
+  Correct SRC_URI.
+
+*kdelibs-3.5.1 (23 Jan 2006)
+
+  23 Jan 2006; Dan Armak <danarmak@gentoo.org> +kdelibs-3.5.1.ebuild:
+  Version 3.5.1. Not yet released upstream, so package.masked for now.
+
+*kdelibs-3.5.1 (23 Jan 2006)
+
+  23 Jan 2006; Dan Armak <danarmak@gentoo.org> +kdelibs-3.5.1.ebuild:
+  Version 3.5.1. Not yet released upstream, so package.masked for now.
+
+  20 Jan 2006; Marcus D. Hanwell <cryos@gentoo.org> kdelibs-3.4.3-r1.ebuild:
+  Stable on amd64, bug 118550.
+
+  20 Jan 2006; Carsten Lohrke <carlo@gentoo.org> kdelibs-3.4.3-r1.ebuild:
+  stable on sparc
+
+*kdelibs-3.5.0-r2 (20 Jan 2006)
+*kdelibs-3.4.3-r1 (20 Jan 2006)
+
+  20 Jan 2006; Carsten Lohrke <carlo@gentoo.org>
+  +files/post-3.4.3-kdelibs-kjs.diff, +kdelibs-3.4.3-r1.ebuild,
+  +kdelibs-3.5.0-r2.ebuild:
+  kjs heap based buffer overflow, #118550
+
+  15 Dec 2005; Brent Baude <ranger@gentoo.org> kdelibs-3.4.3.ebuild:
+  Remarking 3.4.3 ppc64 stable
+
+*kdelibs-3.5.0-r1 (14 Dec 2005)
+
+  14 Dec 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/kdelibs-3.5.0-kicker-crash.patch, +kdelibs-3.5.0-r1.ebuild:
+  Add patch to fix kicker's crashes, hopefully fixing bug #114141. Patch from
+  upstream committed by aseigo.
+
+  14 Dec 2005; Brent Baude <ranger@gentoo.org> kdelibs-3.4.3.ebuild:
+  marking kde-3.4.3 ~ppc64
+
+  10 Dec 2005; Bryan Østergaard <kloeri@gentoo.org kdelibs-3.4.3.ebuild:
+  Stable on alpha, bug 112842.
+
+  10 Dec 2005; Chris White <chriswhite@gentoo.org> kdelibs-3.4.3.ebuild:
+  Marked x86 stable for bug #112842.
+
+  09 Dec 2005; Diego Pettenò <flameeyes@gentoo.org> kdelibs-3.5.0.ebuild:
+  Disabled hspell as the required version is not in portage right now. See bug
+  #114161. Re-add hspell support after bug #77751 is closed.
+
+  09 Dec 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/kdelibs-3.5.0-bindnow.patch, kdelibs-3.5.0.ebuild:
+  Add support for non-lazy-bindings non setuid executables. See bug #113937.
+
+  06 Dec 2005; Joseph Jezak <josejx@gentoo.org> kdelibs-3.4.3.ebuild:
+  Marked ppc stable for bug #112842.
+
+  01 Dec 2005; Diego Pettenò <flameeyes@gentoo.org> kdelibs-3.5.0.ebuild:
+  Require acl only on Linux kernel, as acl support works on FreeBSD, without
+  sys-apps/acl that's Linux specific.
+
+  27 Nov 2005; Guy Martin <gmsoft@gentoo.org> kdelibs-3.4.3.ebuild:
+  Stable on hppa.
+
+  26 Nov 2005; Dan Armak <danarmak@gentoo.org> kdelibs-3.5.0.ebuild:
+  Upstream (unreleased) tarball updated, updating digests.
+
+  24 Nov 2005; Marcus D. Hanwell <cryos@gentoo.org> kdelibs-3.4.3.ebuild:
+  Stable on amd64, bug 112842.
+
+  24 Nov 2005; Markus Rothe <corsair@gentoo.org> kdelibs-3.4.3.ebuild:
+  Stable on ppc64
+
+*kdelibs-3.5.0 (22 Nov 2005)
+
+  22 Nov 2005; Dan Armak <danarmak@gentoo.org> +kdelibs-3.5.0.ebuild:
+  Ebuilds for KDE 3.5.0 final. It is not yet released, and is package.masked.
+
+  21 Nov 2005; Gustavo Zacarias <gustavoz@gentoo.org> kdelibs-3.4.3.ebuild:
+  Stable on sparc wrt #112842
+
+*kdelibs-3.5.0_rc1 (12 Nov 2005)
+
+  12 Nov 2005; Dan Armak <danarmak@gentoo.org> +kdelibs-3.5.0_rc1.ebuild:
+  Ebuild for new version 3.5.0_rc1.
+
+*kdelibs-3.5.0_rc1 (12 Nov 2005)
+
+  12 Nov 2005; Dan Armak <danarmak@gentoo.org> +kdelibs-3.5.0_rc1.ebuild:
+  Ebuild for new version 3.5.0_rc1. This is package.masked since it's a
+  prerelease.
+
+  18 Oct 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/kdelibs-3.4.3-inttypes.patch, kdelibs-3.4.3.ebuild:
+  Fixed compilation problem with missing inttypes.h.
+
+  17 Oct 2005; Douglas Russell <puggy@gentoo.org>
+  +files/kdelibs-3.5.0_beta2-kwallet-stdint.patch,
+  kdelibs-3.5.0_beta2.ebuild:
+  Fix for big endian of 3.5 beta2
+
+  14 Oct 2005; Dan Armak <danarmak@gentoo.org> kdelibs-3.5.0_beta2.ebuild:
+  Removed patches applied upstream for this version.
+
+*kdelibs-3.5.0_beta2 (14 Oct 2005)
+
+  14 Oct 2005; Dan Armak <danarmak@gentoo.org> +kdelibs-3.5.0_beta2.ebuild:
+  New version.
+
+*kdelibs-3.4.3 (13 Oct 2005)
+
+  13 Oct 2005; Dan Armak <danarmak@gentoo.org> +kdelibs-3.4.3.ebuild:
+  New version.
+
+*kdelibs-3.4.3 (12 Oct 2005)
+
+  12 Oct 2005; Gregorio Guidi <greg_g@gentoo.org> +kdelibs-3.4.3.ebuild:
+  New version. Add workaround for collision with kdeadmin (#100968).
+
+  06 Oct 2005; Hardave Riar <hardave@gentoo.org> kdelibs-3.4.2-r1.ebuild:
+  Keyworded ~mips.
+
+  29 Sep 2005; Hardave Riar <hardave@gentoo.org> kdelibs-3.4.1-r2.ebuild:
+  Adding back dropped ~mips keyword.
+
+*kdelibs-3.5_beta1-r1 (26 Sep 2005)
+
+  26 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/kioslave-pumount-devname.patch, -kdelibs-3.5_beta1.ebuild,
+  +kdelibs-3.5_beta1-r1.ebuild:
+  Added patch to be able to run pumount successfully, so to unbreak handling
+  of unmount action for users.
+
+*kdelibs-3.5_beta1 (21 Sep 2005)
+
+  21 Sep 2005; Gregorio Guidi <greg_g@gentoo.org>
+  +files/kdelibs-3.5_beta1-configure-acl.patch, +kdelibs-3.5_beta1.ebuild:
+  New version. Add support for ACLs.
+
+*kdelibs-3.4.2-r1 (17 Sep 2005)
+
+  17 Sep 2005; Caleb Tennis <caleb@gentoo.org> +kdelibs-3.4.2-r1.ebuild,
+  kdelibs-3.5_alpha1.ebuild:
+  I'm promoting the change over to --disable-fast-malloc. Since we provide a
+  good glibc, this fast-malloc really isn't needed. Also, I have experienced
+  lots of spurious crashes with KDE applications with glibc-2.3.4.20041108 and
+  higher (with multithreaded applications), and using glibc's malloc instead
+  of KDE's implementation fixed it.
+
+  11 Sep 2005; Aron Griffis <agriffis@gentoo.org> kdelibs-3.4.1-r1.ebuild:
+  Mark 3.4.1-r1 stable on alpha
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> kdelibs-3.4.1-r1.ebuild:
+  stable on ia64
+
+*kdelibs-3.5_alpha1 (24 Aug 2005)
+
+  24 Aug 2005; Gregorio Guidi <greg_g@gentoo.org>
+  +files/kdelibs-3.5_alpha1-crash.patch, +kdelibs-3.5_alpha1.ebuild:
+  KDE 3.5 prerelease.
+
+*kdelibs-3.4.2 (28 Jul 2005)
+
+  28 Jul 2005; Gregorio Guidi <greg_g@gentoo.org>
+  +files/kdelibs-3.4.2-gmail-fix.patch, +kdelibs-3.4.2.ebuild:
+  New version. Add fix for Gmail (#100267).
+
+  25 Jul 2005; Guy Martin <gmsoft@gentoo.org> kdelibs-3.4.1-r1.ebuild,
+  kdelibs-3.4.1-r2.ebuild:
+  Stable on hppa.
+
+  25 Jul 2005; Caleb Tennis <caleb@gentoo.org> kdelibs-3.2.3-r7.ebuild,
+  kdelibs-3.2.3-r9.ebuild, kdelibs-3.3.2-r9.ebuild,
+  kdelibs-3.3.2-r10.ebuild, kdelibs-3.4.0-r2.ebuild,
+  kdelibs-3.4.1-r1.ebuild, kdelibs-3.4.1-r2.ebuild:
+  Remove set-qtdir statements and change qt deps to use qt_min_version per bug
+  #100235
+
+  22 Jul 2005; Bryan Østergaard <kloeri@gentoo.org>
+  kdelibs-3.3.2-r10.ebuild:
+  Stable on ia64, bug 98735.
+
+  22 Jul 2005; Bryan Østergaard <kloeri@gentoo.org>
+  kdelibs-3.3.2-r10.ebuild:
+  Stable on alpha, bug 98735.
+
+  20 Jul 2005; Herbie Hopkins <herbs@gentoo.org> kdelibs-3.3.2-r10.ebuild:
+  Stable on amd64 wrt bug #98735.
+
+  20 Jul 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  kdelibs-3.3.2-r10.ebuild:
+  Stable on hppa. bug #98735
+
+  20 Jul 2005; Hardave Riar <hardave@gentoo.org> kdelibs-3.3.2-r10.ebuild:
+  Stable on mips, bug #98735
+
+  20 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  kdelibs-3.3.2-r10.ebuild:
+  Stable on sparc wrt #98735
+
+  19 Jul 2005; Tobias Scherbaum <dertobi123@gentoo.org>
+  kdelibs-3.3.2-r10.ebuild:
+  ppc stable, #98735
+
+  19 Jul 2005; Markus Rothe <corsair@gentoo.org> kdelibs-3.3.2-r10.ebuild:
+  Stable on ppc64 (bug #98735)
+
+*kdelibs-3.3.2-r10 (18 Jul 2005)
+
+  18 Jul 2005; Carsten Lohrke <carlo@gentoo.org>
+  +files/post-3.3.2-kdelibs-kate.diff, +kdelibs-3.3.2-r10.ebuild:
+  backup file permission leak in kate, #98735
+
+  14 Jul 2005; Hardave Riar <hardave@gentoo.org> kdelibs-3.4.1-r1.ebuild:
+  Keyworded ~mips
+
+*kdelibs-3.4.1-r2 (10 Jul 2005)
+
+  10 Jul 2005; Carsten Lohrke <carlo@gentoo.org>
+  +files/kdelibs-3.4.1-kntlm.patch,
+  +files/kdelibs-3.4.1-ktoolbar-crash.patch, +kdelibs-3.4.1-r2.ebuild:
+  fix ntlm authentication, #98285 and konqueror crashes
+
+  08 Jul 2005; Dan Armak <danarmak@gentoo.org>
+  -files/post-3.2.3-kdelibs-dcop.patch,
+  -files/post-3.2.3-kdelibs-dcopserver.patch,
+  -files/post-3.2.3-kdelibs-htmlframes2.patch,
+  -files/post-3.2.3-kdelibs-kcookiejar.patch,
+  -files/post-3.2.3-kdelibs-kio.diff,
+  -files/post-3.2.3-kdelibs-kioslave.patch,
+  -files/post-3.2.3-kdelibs-kstandarddirs.patch,
+  -files/post-3.3.2-kdelibs-dcop.patch,
+  -files/post-3.3.2-kdelibs-idn-2.patch,
+  -files/post-3.3.2-kdelibs-kimgio-2.diff,
+  -files/post-3.3.2-kdelibs-kio.diff,
+  -files/post-3.3.2-kdelibs-kioslave.patch,
+  -files/post-3.4.0-kdelibs-kimgio-2.diff, kdelibs-3.2.3-r7.ebuild,
+  kdelibs-3.2.3-r9.ebuild, kdelibs-3.3.2-r9.ebuild, kdelibs-3.4.0-r2.ebuild,
+  kdelibs-3.4.1-r1.ebuild:
+  Removed from files/ all patches that exist on ftp.kde.org, and pointed the
+  ebuilds there.
+
+  08 Jul 2005; Jason Wever <weeve@gentoo.org> kdelibs-3.4.1-r1.ebuild:
+  Stable on SPARC.
+
+  04 Jul 2005; Bryan Østergaard <kloeri@gentoo.org>
+  kdelibs-3.4.1-r1.ebuild:
+  Add ~alpha keyword.
+
+  01 Jul 2005; Hardave Riar <hardave@gentoo.org> kdelibs-3.3.2-r9.ebuild:
+  Stable on mips
+
+  01 Jul 2005; Markus Rothe <corsair@gentoo.org> kdelibs-3.4.1-r1.ebuild:
+  Stable on ppc64 (bug #97544)
+
+  08 Jun 2005; Diego Pettenò <flameeyes@gentoo.org>
+  kdelibs-3.4.1-r1.ebuild:
+  Use virtual/utempter instead of sys-apps/utempter else Gentoo/FreeBSD fails
+  to get dependencies.
+
+*kdelibs-3.4.1-r1 (07 Jun 2005)
+
+  07 Jun 2005; Gregorio Guidi <greg_g@gentoo.org>
+  +files/kdelibs-3.4.1-configure.patch, +kdelibs-3.4.1-r1.ebuild:
+  Add patch to properly respect USE flags (#81966). Fix #82220. Better support
+  for amd64 multilib (#94872).
+
+  28 May 2005; Markus Rothe <corsair@gentoo.org> kdelibs-3.4.1.ebuild:
+  switched from -fno-gcse to -mminimal-toc, to let this compile on ppc64
+
+  25 May 2005; Dan Armak <danarmak@gentoo.org> +kdelibs-3.4.1.ebuild:
+  Ebuilds for KDE 3.4.1. These are package.masked until 3.4.1 is actually
+  released. You can't get the tarballs yet.
+
+*kdelibs-3.4.1 (25 May 2005)
+
+  25 May 2005; Dan Armak <danarmak@gentoo.org> +kdelibs-3.4.1.ebuild:
+  Ebuilds for KDE 3.4.1. These are package.masked until 3.4.1 is actually
+  released. You can't get the tarballs yet.
+
+  09 May 2005; Aron Griffis <agriffis@gentoo.org> kdelibs-3.4.0-r2.ebuild:
+  add ~ia64
+
+  06 May 2005; Jason Wever <weeve@gentoo.org> kdelibs-3.3.2-r9.ebuild:
+  Stable on SPARC wrt bug #88862.
+
+  05 May 2005; Michael Hanselmann <hansmi@gentoo.org>
+  kdelibs-3.3.2-r9.ebuild:
+  Stable on hppa.
+
+  05 May 2005; Bryan Østergaard <kloeri@gentoo.org>
+  kdelibs-3.3.2-r9.ebuild:
+  Stable on alpha + ia64, bug 88862.
+
+  04 May 2005; Jan Brinkmann <luckyduck@gentoo.org> kdelibs-3.3.2-r9.ebuild:
+  stable on amd64 wrt #88862
+
+  04 May 2005; Michael Hanselmann <hansmi@gentoo.org>
+  kdelibs-3.3.2-r9.ebuild:
+  Stable on ppc.
+
+  04 May 2005; Markus Rothe <corsair@gentoo.org> kdelibs-3.4.0-r2.ebuild:
+  Readded ppc64 patch and readded append-flags -fno-gcse for ppc64 only -
+  those were lost within the last revision bump
+
+  04 May 2005; Markus Rothe <corsair@gentoo.org> kdelibs-3.3.2-r9.ebuild:
+  Stable on ppc64; bug #88862
+
+*kdelibs-3.4.0-r2 (03 May 2005)
+*kdelibs-3.3.2-r9 (03 May 2005)
+
+  03 May 2005; Carsten Lohrke <carlo@gentoo.org>
+  +files/post-3.3.2-kdelibs-kimgio-2.diff,
+  +files/post-3.4.0-kdelibs-kimgio-2.diff, +kdelibs-3.3.2-r9.ebuild,
+  +kdelibs-3.4.0-r2.ebuild:
+  new patch, fixing a bug in the previous one, kdelibs-3.2 not affected
+
+  27 Apr 2005; Markus Rothe <corsair@gentoo.org> kdelibs-3.4.0-r1.ebuild:
+  Added ~ppc64 to KEYWORDS and fix bug #85593.
+
+  22 Apr 2005; Markus Rothe <corsair@gentoo.org> kdelibs-3.3.2-r8.ebuild:
+  Stable on ppc64
+
+  22 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
+  kdelibs-3.2.3-r9.ebuild, kdelibs-3.3.2-r8.ebuild:
+  Stable on alpha + ia64, bug 88862.
+
+  21 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  kdelibs-3.2.3-r9.ebuild, kdelibs-3.3.2-r8.ebuild:
+  Stable on sparc wrt #88862
+
+  21 Apr 2005; Lars Weiler <pylon@gentoo.org> kdelibs-3.2.3-r9.ebuild,
+  kdelibs-3.3.2-r8.ebuild:
+  Stable on ppc; bug #88862.
+
+  21 Apr 2005; Marcus D. Hanwell <cryos@gentoo.org> kdelibs-3.2.3-r9.ebuild,
+  kdelibs-3.3.2-r8.ebuild:
+  Stable on amd64, bug 88862.
+
+*kdelibs-3.4.0-r1 (20 Apr 2005)
+*kdelibs-3.3.2-r8 (20 Apr 2005)
+*kdelibs-3.2.3-r9 (20 Apr 2005)
+
+  20 Apr 2005; Carsten Lohrke <carlo@gentoo.org>
+  +files/post-3.2.3-kdelibs-idn.patch,
+  +files/post-3.2.3-kdelibs-kimgio.diff,
+  +files/post-3.3.2-kdelibs-idn-2.patch,
+  +files/post-3.3.2-kdelibs-kimgio.diff,
+  +files/post-3.4.0-kdelibs-kimgio.diff, +kdelibs-3.2.3-r9.ebuild,
+  +kdelibs-3.3.2-r8.ebuild, +kdelibs-3.4.0-r1.ebuild:
+  PCX Image Buffer Overflow Vulnerability, #88862
+
+  21 Mar 2005; Guy Martin <gmsoft@gentoo.org> kdelibs-3.2.3-r7.ebuild:
+  Stable on hppa.
+
+  19 Mar 2005; Bryan Østergaard <kloeri@gentoo.org>
+  kdelibs-3.2.3-r8.ebuild, kdelibs-3.3.2-r7.ebuild:
+  Stable on alpha, bug 83814.
+
+  18 Mar 2005; Daniel Goller <morfic@gentoo.org> kdelibs-3.4.0.ebuild:
+  Added to ~ppc
+
+  17 Mar 2005; Jason Wever <weeve@gentoo.org> kdelibs-3.2.3-r8.ebuild,
+  kdelibs-3.3.2-r7.ebuild:
+  Stable on SPARC wrt security bug #83814.
+
+  17 Mar 2005; Hardave Riar <hardave@gentoo.org> kdelibs-3.3.2-r7.ebuild:
+  Stable on mips, bug #83814.
+
+  16 Mar 2005; Marcus D. Hanwell <cryos@gentoo.org> kdelibs-3.2.3-r8.ebuild:
+  Marked stable on amd64, bug 83814, and fixed for 2005.0 profile symlink.
+
+  16 Mar 2005; Michael Hanselmann <hansmi@gentoo.org>
+  kdelibs-3.2.3-r8.ebuild, kdelibs-3.3.2-r7.ebuild:
+  Stable on ppc.
+
+  16 Mar 2005; Markus Rothe <corsair@gentoo.org> kdelibs-3.3.2-r7.ebuild:
+  Stable on ppc64; bug #83814
+
+  16 Mar 2005; Marcus D. Hanwell <cryos@gentoo.org> kdelibs-3.3.2-r7.ebuild:
+  Marked stable on amd64, bug 83814.
+
+*kdelibs-3.3.2-r7 (16 Mar 2005)
+
+  16 Mar 2005; Carsten Lohrke <carlo@gentoo.org>
+  +files/post-3.2.3-kdelibs-dcop.patch, +files/post-3.3.2-kdelibs-dcop.patch,
+  +kdelibs-3.2.3-r8.ebuild, +kdelibs-3.3.2-r7.ebuild:
+  local DCOP DoS, #83814
+
+  15 Mar 2005; Guy Martin <gmsoft@gentoo.org> kdelibs-3.3.2-r5.ebuild:
+  Stable on hppa
+
+  15 Mar 2005; Carsten Lohrke <carlo@gentoo.org> kdelibs-3.3.2-r6.ebuild:
+  -arch to avoid useless recompilation
+
+  15 Mar 2005; Gregorio Guidi <greg_g@gentoo.org>
+  +files/kdelibs-3.4.0-imagemap.patch, kdelibs-3.4.0.ebuild:
+  Add patch for bug #82017.
+
+  14 Mar 2005; Gregorio Guidi <greg_g@gentoo.org>
+  +files/kdelibs-3.4.0-form-freeze.patch, kdelibs-3.4.0.ebuild:
+  Add patch for bug #84500 (freezing in web forms).
+
+  14 Mar 2005; Hardave Riar <hardave@gentoo.org> kdelibs-3.3.2-r5.ebuild:
+  Stable on mips, bug #81652.
+
+*kdelibs-3.3.2-r6 (14 Mar 2005)
+
+  14 Mar 2005; Markus Rothe <corsair@gentoo.org>
+  +files/kdelibs-3.3.2-ppc64.patch, +kdelibs-3.3.2-r6.ebuild:
+  Added patch which fixes a weird key problem on ppc64. Revision bump which is
+  stable on ppc64 only. Bug #63529
+
+  13 Mar 2005; Marcus D. Hanwell <cryos@gentoo.org> kdelibs-3.4.0.ebuild:
+  Marked ~amd64, keywording KDE split ebuilds, bug 80944.
+
+  13 Mar 2005; Dan Armak <danarmak@gentoo.org> kdelibs-3.4.0.ebuild:
+  KDE 3.4.0 ebuilds. Note that the tarballs won't be officially released for a
+  few more days.
+
+  05 Mar 2005; Jason Wever <weeve@gentoo.org> kdelibs-3.2.3-r7.ebuild,
+  kdelibs-3.3.2-r5.ebuild:
+  Stable on sparc wrt security bug #81652.
+
+  05 Mar 2005; Marcus D. Hanwell <cryos@gentoo.org> kdelibs-3.2.3-r7.ebuild,
+  kdelibs-3.3.2-r5.ebuild:
+  Marked stable on amd64, bug 81652.
+
+  05 Mar 2005; Bryan Østergaard <kloeri@gentoo.org>
+  kdelibs-3.2.3-r7.ebuild, kdelibs-3.3.2-r5.ebuild:
+  Stable on alpha, bug 81652.
+
+  04 Mar 2005; Markus Rothe <corsair@gentoo.org> kdelibs-3.3.2-r5.ebuild:
+  Stable on ppc64; bug #81652
+
+  04 Mar 2005; Michael Hanselmann <hansmi@gentoo.org>
+  kdelibs-3.2.3-r7.ebuild, kdelibs-3.3.2-r5.ebuild:
+  Stable on ppc.
+
+*kdelibs-3.2.3-r7 (04 Mar 2005)
+
+  04 Mar 2005; Carsten Lohrke <carlo@gentoo.org> files/kde3-dcopidlng.patch,
+  +kdelibs-3.2.3-r7.ebuild, +kdelibs-3.3.2-r5.ebuild:
+  patch wasn't correct
+
+  03 Mar 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  kdelibs-3.3.2-r4.ebuild:
+  Marking stable on ppc64, per bug #81652.
+
+  03 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> kdelibs-3.2.3-r6.ebuild,
+  kdelibs-3.3.2-r4.ebuild:
+  Stable on sparc wrt #81652
+
+  02 Mar 2005; Michael Hanselmann <hansmi@gentoo.org>
+  kdelibs-3.2.3-r6.ebuild, kdelibs-3.3.2-r4.ebuild:
+  Stable on ppc.
+
+  02 Mar 2005; Bryan Østergaard <kloeri@gentoo.org>
+  kdelibs-3.2.3-r6.ebuild, kdelibs-3.3.2-r4.ebuild:
+  Stable on alpha, bug 81652.
+
+  02 Mar 2005; Marcus D. Hanwell <cryos@gentoo.org> kdelibs-3.2.3-r6.ebuild,
+  kdelibs-3.3.2-r4.ebuild:
+  Marked stable on amd64, bug 81652.
+
+*kdelibs-3.3.2-r4 (02 Mar 2005)
+
+  02 Mar 2005; Carsten Lohrke <carlo@gentoo.org> +files/kde3-dcopidlng.patch,
+  +kdelibs-3.2.3-r6.ebuild, +kdelibs-3.3.2-r4.ebuild:
+  insecure temporary file creation, #81652
+
+*kdelibs-3.4.0_rc1-r1 (27 Feb 2005)
+
+  27 Feb 2005; Gregorio Guidi <greg_g@gentoo.org>
+  +kdelibs-3.4.0_rc1-r1.ebuild, -kdelibs-3.4.0_rc1.ebuild:
+  Add support for zeroconf. Cleanup.
+
+  27 Feb 2005; Dan Armak <danarmak@gentoo.org> :
+  Ebuild for 3.4.0 RC1.
+
+  26 Feb 2005; Simone Gotti <motaboy@gentoo.org> kdelibs-3.4.0_rc1.ebuild:
+  Add configure's options to really enable/disable tiff, jpeg2k(jasper) and
+  openexr support compilation.
+
+*kdelibs-3.4.0_rc1 (26 Feb 2005)
+
+  26 Feb 2005; Dan Armak <danarmak@gentoo.org>
+  +files/kdelibs-3.4.0_beta2-export-kio-symbols.diff,
+  +kdelibs-3.4.0_rc1.ebuild:
+  kdelibs 3.4.0_rc1. Note that this is still not released (i.e. no tarballs
+  are available to the general public).
+
+  21 Feb 2005; Hardave Riar <hardave@gentoo.org> kdelibs-3.3.2-r2.ebuild:
+  Stable on mips.
+
+  15 Feb 2005; Jason Wever <weeve@gentoo.org> kdelibs-3.4.0_beta2.ebuild:
+  Added ~sparc keyword.
+
+  08 Feb 2005; Gregorio Guidi <greg_g@gentoo.org>
+  -files/kdelibs-3.2.2-su.cpp.diff,
+  -files/post-3.2.2-kdelibs-kapplication.patch,
+  -files/post-3.2.2-kdelibs-ktelnetservice.patch,
+  -files/qt-3.3-printfix.patch, -kdelibs-3.2.0.ebuild,
+  -kdelibs-3.2.2-r1.ebuild, -kdelibs-3.3.0.ebuild:
+  Remove old ebuilds.
+
+*kdelibs-3.3.2-r3 (07 Feb 2005)
+
+  07 Feb 2005; Gregorio Guidi <greg_g@gentoo.org>
+  +files/kdelibs-3.3.2-anchor-fix.patch,
+  +files/kdelibs-3.3.2-aspell-dir.patch, +kdelibs-3.3.2-r3.ebuild:
+  Remove KDEDIR from the environment (#33079). Add optional dependency on
+  aspell/ispell. Add patch for aspell dictionary support (#67748). Add patch to
+  fix konqueror anchor bug (#77127).
+
+*kdelibs-3.4.0_beta2 (05 Feb 2005)
+
+  05 Feb 2005; Dan Armak <danarmak@gentoo.org> +kdelibs-3.4.0_beta2.ebuild:
+  Ebuild for 3.4.0_beta2. Note that beta2 has NOT been released as of this
+  date. This ebuild is for inside testing by the KDE team, and is of course
+  package.masked.
+
+  02 Feb 2005; Heinrich Wendel <lanius@gentoo.org> kdelibs-3.4.0_beta1.ebuild:
+  mark ~amd64
+
+  23 Jan 2005; Markus Rothe <corsair@gentoo.org> kdelibs-3.3.2-r2.ebuild:
+  Stable on ppc64; bug #78619
+
+  23 Jan 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  kdelibs-3.4.0_beta1.ebuild:
+  Added some extra logic to create correct symlink for multilib.
+
+  19 Jan 2005; Marcus Hanwell <cryos@gentoo.org> kdelibs-3.3.2-r2.ebuild:
+  Added some extra logic to create correct symlink for multilib.
+
+  18 Jan 2005; Gregorio Guidi <greg_g@gentoo.org> kdelibs-3.4.0_beta1.ebuild:
+  Added optional support for spellcheckers.
+
+*kdelibs-3.4.0_beta1 (14 Jan 2005)
+
+  14 Jan 2005; Gregorio Guidi <greg_g@gentoo.org>
+  +files/reference-list-rev-1.3.diff, +kdelibs-3.4.0_beta1.ebuild:
+  Introducing kde-3.4.0_beta1. Removed dependency on openldap: code moved to
+  kdebase. Added optional support for jpeg2000 and for openexr file format.
+  Dependencies cleanup. Remove the file that sets KDEDIR in /etc/env.d, since it
+  is obsoleted.
+
+  03 Jan 2005; Guy Martin <gmsoft@gentoo.org> kdelibs-3.3.2-r2.ebuild:
+  Stable on hppa.
+
+  03 Jan 2005; Guy Martin <gmsoft@gentoo.org> kdelibs-3.3.2-r2.ebuild:
+  Stable on hppa.
+
+*kdelibs-3.3.2-r2 (03 Jan 2005)
+
+  03 Jan 2005; Caleb Tennis <caleb@gentoo.org>
+  +files/post-3.2.3-kdelibs-kioslave.patch,
+  +files/post-3.3.2-kdelibs-kioslave.patch, -kdelibs-3.2.3-r4.ebuild,
+  +kdelibs-3.2.3-r5.ebuild, -kdelibs-3.3.2-r1.ebuild,
+  +kdelibs-3.3.2-r2.ebuild:
+  Add a patch for security bug #73759
+
+  29 Dec 2004; Bryan Østergaard <kloeri@gentoo.org>
+  kdelibs-3.3.2-r1.ebuild:
+  Stable on alpha, bug 72750.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  28 Dec 2004; Dylan Carlson <absinthe@gentoo.org> kdelibs-3.3.2-r1.ebuild:
+  Stable on amd64.
+
+  27 Dec 2004; Caleb Tennis <caleb@gentoo.org> kdelibs-3.3.2-r1.ebuild:
+  x86 stable
+
+  18 Dec 2004; Markus Rothe <corsair@gentoo.org> kdelibs-3.3.1-r2.ebuild:
+  Stable on ppc64
+
+  13 Dec 2004; Caleb Tennis <caleb@gentoo.org> -kdelibs-3.2.3-r2.ebuild,
+  -kdelibs-3.2.3-r3.ebuild, -kdelibs-3.3.1-r1.ebuild, -kdelibs-3.3.1.ebuild,
+  -kdelibs-3.3.2.ebuild:
+  Remove older revisions
+
+*kdelibs-3.2.3-r4 (13 Dec 2004)
+
+  13 Dec 2004; Caleb Tennis <caleb@gentoo.org>
+  +files/post-3.2.3-kdelibs-htmlframes2.patch,
+  +files/post-3.3.1-kdelibs-htmlframes2.patch,
+  +files/post-3.3.2-kdelibs-htmlframes2.patch, +kdelibs-3.2.3-r4.ebuild,
+  +kdelibs-3.3.1-r2.ebuild, +kdelibs-3.3.2-r1.ebuild:
+  Rev bump for security bug fix #73869
+
+*kdelibs-3.3.1-r1 (09 Dec 2004)
+
+  09 Dec 2004; Caleb Tennis <caleb@gentoo.org>
+  +files/post-3.2.3-kdelibs-khtml.diff, +files/post-3.2.3-kdelibs-kio.diff,
+  +files/post-3.3.1-kdelibs-khtml.diff, +files/post-3.3.1-kdelibs-kio.diff,
+  +kdelibs-3.2.3-r3.ebuild, +kdelibs-3.3.1-r1.ebuild:
+  Add patches (with new ebuild rev) for security bug #72804
+
+*kdelibs-3.3.2 (08 Dec 2004)
+
+  08 Dec 2004; Caleb Tennis <caleb@gentoo.org> +kdelibs-3.3.2.ebuild:
+  Version bump
+
+  06 Dec 2004; Jason Huebel <jhuebel@gentoo.org> kdelibs-3.3.1.ebuild:
+  stable on amd64
+
+  02 Dec 2004; Carsten Lohrke <carlo@gentoo.org> kdelibs-3.3.0.ebuild,
+  kdelibs-3.3.1.ebuild:
+  block kde-misc/kgamma
+
+  27 Nov 2004; Philip Walls <malverian@gentoo.org> kdelibs-3.3.1.ebuild:
+  Migrate to virtual/fam
+
+  17 Nov 2004; Bryan Østergaard <kloeri@gentoo.org> kdelibs-3.3.1.ebuild:
+  Stable on alpha.
+
+  08 Nov 2004; Joseph Jezak <josejx@gentoo.org> kdelibs-3.3.1.ebuild:
+  Marked ppc stable.
+
+  04 Nov 2004; Jason Wever <weeve@gentoo.org> kdelibs-3.3.1.ebuild:
+  Stable on sparc wrt security bug #69936.
+
+  03 Nov 2004; Bryan Østergaard <kloeri@gentoo.org> kdelibs-3.3.1.ebuild:
+  ~alpha keyword.
+
+  03 Nov 2004; Caleb Tennis <caleb@gentoo.org> kdelibs-3.3.1.ebuild:
+  x86 stable
+
+*kdelibs-3.3.1 (12 Oct 2004)
+
+  12 Oct 2004; Caleb Tennis <caleb@gentoo.org> +kdelibs-3.3.1.ebuild:
+  Version bump
+
+  04 Oct 2004; Guy Martin <gmsoft@gentoo.org> kdelibs-3.3.0.ebuild:
+  Stable on hppa.
+
+  19 Sep 2004; Caleb Tennis <caleb@gentoo.org> kdelibs-3.3.0.ebuild:
+  Add kerberos support (Bug #52994)
+
+  19 Sep 2004; Malcolm Lashley <malc@gentoo.org> kdelibs-3.3.0.ebuild:
+  Stable on amd64
+
+  14 Sep 2004; Jason Wever <weeve@gentoo.org> kdelibs-3.3.0.ebuild:
+  Stable on sparc.
+
+  09 Sep 2004; Caleb Tennis <caleb@gentoo.org> -kdelibs-3.2.1.ebuild,
+  -kdelibs-3.2.2.ebuild, -kdelibs-3.2.3-r1.ebuild, -kdelibs-3.2.3.ebuild:
+  Remove stale versions, mark 3.3.0 x86 stable
+
+  30 Aug 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  kdelibs-3.1.5-r1.ebuild, kdelibs-3.2.1.ebuild, kdelibs-3.2.2.ebuild,
+  kdelibs-3.2.3.ebuild, kdelibs-3.3.0.ebuild:
+  Masked kdelibs-3.3.0.ebuild stable for ppc
+
+  30 Aug 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  kdelibs-3.1.5-r1.ebuild, kdelibs-3.2.1.ebuild, kdelibs-3.2.2.ebuild,
+  kdelibs-3.2.3.ebuild:
+  Masked kdelibs-3.2.3.ebuild stable for ppc
+
+  30 Aug 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  kdelibs-3.1.5-r1.ebuild, kdelibs-3.2.1.ebuild, kdelibs-3.2.2.ebuild:
+  Masked kdelibs-3.2.2.ebuild stable for ppc
+
+  30 Aug 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  kdelibs-3.1.5-r1.ebuild, kdelibs-3.2.1.ebuild:
+  Masked kdelibs-3.2.1.ebuild stable for ppc
+
+  30 Aug 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  kdelibs-3.1.5-r1.ebuild:
+  Masked kdelibs-3.1.5-r1.ebuild stable for ppc
+
+  23 Aug 2004; psi29a <psi29a@gentoo.org> kdelibs-3.3.0.ebuild:
+  Added to ~mips
+
+*kdelibs-3.2.3-r2 (23 Aug 2004)
+
+  23 Aug 2004; Caleb Tennis <caleb@gentoo.org> kdelibs-3.2.3-r2.ebuild,
+  files/post-3.2.3-kdelibs-kcookiejar.patch:
+  Version bump to pull in revised kcookiejar patch (Bug #61389)
+
+  22 Aug 2004; Tom Gall <tgall@gentoo.org> kdelibs-3.3.0.ebuild:
+  stable on ppc64, bug #58179
+
+*kdelibs-3.3.0 (19 Aug 2004)
+
+  19 Aug 2004; Caleb Tennis <caleb@gentoo.org> kdelibs-3.3.0.ebuild,
+  kdelibs-3.3.0_beta2.ebuild:
+  3.3.0 final
+
+*kdelibs-3.3.0_rc2 (10 Aug 2004)
+
+  10 Aug 2004; Caleb Tennis <caleb@gentoo.org> kdelibs-3.3.0_rc1.ebuild,
+  kdelibs-3.3.0_rc2.ebuild:
+  add _rc2, remove _rc1
+
+*kdelibs-3.3.0_rc1 (06 Aug 2004)
+
+  06 Aug 2004; Caleb Tennis <caleb@gentoo.org> kdelibs-3.3.0_rc1.ebuild:
+  New _rc1, minor dep differences from _beta2.
+
+*kdelibs-3.2.3-r1 (06 Aug 2004)
+
+  06 Aug 2004; Caleb Tennis <caleb@gentoo.org> kdelibs-3.2.3-r1.ebuild,
+  kdelibs-3.3.0_beta1.ebuild, files/post-3.2.3-kdelibs-dcopserver.patch,
+  files/post-3.2.3-kdelibs-htmlframes.patch,
+  files/post-3.2.3-kdelibs-kcookiejar.patch,
+  files/post-3.2.3-kdelibs-kstandarddirs.patch:
+  Add a new _rc1.
+  Remove the _beta1.
+  Add a 3.2.3-r1 which incorporates some security fixes.
+
+  26 Jul 2004; Caleb Tennis <caleb@gentoo.org> kdelibs-3.3.0_beta2.ebuild:
+  add dep to libidn. Maybe this can be use flagged later, but it's such a small
+  library that for now I'm just going to put it in and see what happens.
+
+*kdelibs-3.3.0_beta2 (23 Jul 2004)
+
+  23 Jul 2004; Caleb Tennis <caleb@gentoo.org> +kdelibs-3.3.0_beta2.ebuild:
+  new beta
+
+*kdelibs-3.3.0_beta1 (08 Jul 2004)
+
+  08 Jul 2004; Caleb Tennis <caleb@gentoo.org> -kdelibs-3.3.0_alpha1.ebuild,
+  +kdelibs-3.3.0_beta1.ebuild:
+  New beta, remove alpha
+
+  07 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> kdelibs-3.2.2-r1.ebuild:
+  Stable on alpha.
+
+*kdelibs-3.2.3 (10 Jun 2004)
+
+  10 Jun 2004; Caleb Tennis <caleb@gentoo.org> +kdelibs-3.2.3.ebuild:
+  Version bump
+
+  03 Jun 2004; Aron Griffis <agriffis@gentoo.org> kdelibs-3.2.0.ebuild:
+  Fix use invocation
+
+  01 Jun 2004; Travis Tilley <lv@gentoo.org> kdelibs-3.2.2-r1.ebuild:
+  stable on amd64
+
+*kdelibs-3.3.0_alpha1 (25 May 2004)
+
+  25 May 2004; Caleb Tennis <caleb@gentoo.org> +kdelibs-3.3.0_alpha1.ebuild:
+  3.3alpha1 - hardmasked
+
+  23 May 2004; Daniel Ostrow <dostrow@forbes.com> kdelibs-3.2.2-r1.ebuild:
+  Stable on ppc.
+
+  15 May 2004; Jason Wever <weeve@gentoo.org> kdelibs-3.2.2.ebuild:
+  Stable on sparc.
+
+*kdelibs-3.1.5-r1 (17 May 2004)
+*kdelibs-3.2.2-r1 (17 May 2004)
+
+  17 May 2004; Caleb Tennis <caleb@gentoo.org> kdelibs-3.1.5-r1.ebuild,
+  kdelibs-3.1.5.ebuild, kdelibs-3.2.2-r1.ebuild,
+  files/post-3.1.5-kdelibs-kapplication.patch,
+  files/post-3.1.5-kdelibs-ktelnetservice.patch,
+  files/post-3.2.2-kdelibs-kapplication.patch,
+  files/post-3.2.2-kdelibs-ktelnetservice.patch:
+  Add two patches for KDE security update, 3.2.2 and 3.1.5
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> kdelibs-3.1.5.ebuild,
+  kdelibs-3.2.0.ebuild, kdelibs-3.2.2.ebuild:
+  Add inherit eutils
+
+  24 Apr 2004; Bret Curtis <psi29a@gentoo.org> kdelibs-3.2.2.ebuild:
+  Added to ~mips
+
+  21 Apr 2004; Caleb Tennis <caleb@gentoo.org> files/kdelibs-3.2.2-su.cpp.diff:
+  Fix the patch
+
+  20 Apr 2004; Caleb Tennis <caleb@gentoo.org>
+  -files/kdelibs-3.0.5b-http.patch, -files/kdelibs-3.0.5b-khtml.patch,
+  -files/kdelibs-3.0.5b-libxml2-2.5.2.diff, -kdelibs-3.0.5b-r1.ebuild:
+  Remove old version
+
+  20 Apr 2004; Caleb Tennis <caleb@gentoo.org>
+  +files/kdelibs-3.2.2-su.cpp.diff:
+  Add a patch which fixes kcmshell root password asking
+
+*kdelibs-3.2.2 (19 Apr 2004)
+
+  19 Apr 2004; Caleb Tennis <caleb@gentoo.org> +kdelibs-3.2.2.ebuild:
+  Version bump
+
+  17 Apr 2004; Travis Tilley <lv@gentoo.org> kdelibs-3.2.1.ebuild:
+  marked stable on amd64
+
+  01 Apr 2004; Travis Tilley <lv@gentoo.org> kdelibs-3.2.1.ebuild:
+  added lib64 symlink on amd64
+
+  16 Mar 2004; Caleb Tennis <caleb@gentoo.org> kdelibs-3.0.5b-r1.ebuild:
+  Change to virtual/alsa
+
+  15 Mar 2004; Jason Wever <weeve@gentoo.org> kdelibs-3.2.1.ebuild:
+  Marked stable on sparc.
+
+  15 Mar 2004; Jason Wever <weeve@gentoo.org> kdelibs-3.2.1.ebuild:
+  Marked stable on sparc.
+
+  12 Mar 2004; Caleb Tennis <caleb@gentoo.org> kdelibs-3.1.4.ebuild,
+  kdelibs-3.2.1.ebuild, files/kdelibs-3.1.4-alsafix.diff,
+  files/kdelibs-3.1.4-kjs-alphaev6-gcc3-workaround.patch:
+  x86 stable and version cleanup
+
+*kdelibs-3.2.1 (09 Mar 2004)
+
+  09 Mar 2004; Caleb Tennis <caleb@gentoo.org> kdelibs-3.2.1.ebuild:
+  Version bump
+
+  03 Mar 2004; <agriffis@gentoo.org> kdelibs-3.2.0.ebuild:
+  stable on alpha and ia64
+
+  28 Feb 2004; Jason Wever <weeve@gentoo.org> kdelibs-3.1.5.ebuild:
+  Marked stable on sparc.
+
+  15 Feb 2004; Jason Wever <weeve@gentoo.org> kdelibs-3.2.0.ebuild:
+  Marked stable on sparc.
+
+  10 Feb 2004; Caleb Tennis <caleb@gentoo.org> kdelibs-3.2.0.ebuild:
+  x86 stable
+
+  10 Feb 2004; Lars Weiler <pylon@gentoo.org> kdelibs-3.2.0.ebuild:
+  Stable on ppc.
+
+  10 Feb 2004; Caleb Tennis <caleb@gentoo.org> kdelibs-3.2.0.ebuild,
+  files/qt-3.3-printfix.patch:
+  Add a patch to fix printing problems with Qt 3.3
+
+  05 Feb 2004; Luca Barbato <lu_zero@gentoo.org> kdelibs-3.2.0.ebuild:
+  Marked ~ppc
+
+  05 Feb 2004; Caleb Tennis <caleb@gentoo.org> kdelibs-3.2.0.ebuild,
+  files/animated-gif-fix.patch:
+  Fix animated gif problems.
+
+*kdelibs-3.2.0 (02 Feb 2004)
+
+  02 Feb 2004; Caleb Tennis <caleb@gentoo.org> kdelibs-3.2.0.ebuild,
+  kdelibs-3.2.0_rc1.ebuild:
+  New version, remove _rc
+
+  29 Jan 2004; Aron Griffis <agriffis@gentoo.org> kdelibs-3.1.5.ebuild:
+  stable on alpha and ia64
+
+  18 Jan 2004; Caleb Tennis <caleb@gentoo.org> kdelibs-3.0.4-r1.ebuild,
+  kdelibs-3.1.2-r1.ebuild, kdelibs-3.2.0_beta1.ebuild,
+  kdelibs-3.2.0_beta2.ebuild, files/kdelibs-3.1.2-http.patch,
+  files/kdelibs-3.1.2-khtml.patch,
+  files/kdelibs-3.1.2-kjs-alphaev6-gcc3-workaround.patch:
+  New version, removing older versions
+
+  16 Jan 2004; Martin Guy <gmsoft@gentoo.org> kdelibs-3.1.5.ebuild:
+  Marked stable on hppa.
+
+*kdelibs-3.1.5 (14 Jan 2004)
+
+  14 Jan 2004; Caleb Tennis <caleb@gentoo.org> kdelibs-3.1.5.ebuild,
+  files/kdelibs-3.1.5-kjs-alphaev6-gcc3-workaround.patch:
+  New version
+
+  13 Jan 2004; Aron Griffis <agriffis@gentoo.org> kdelibs-3.1.4.ebuild:
+  stable on alpha
+
+  10 Jan 2004; Aron Griffis <agriffis@gentoo.org> kdelibs-3.1.4.ebuild:
+  require autoconf-2.58 now that it's marked stable on all arches where
+  kdelibs-3.1.4 is marked stable
+
+  08 Jan 2004; Caleb Tennis <caleb@gentoo.org> kdelibs-3.1.4.ebuild:
+  Hopefully this will stop so many bugs from being reported
+  until autoconf becomes stable.
+
+  04 Jan 2004; Jason Wever <weeve@gentoo.org> kdelibs-3.2.0_beta2.ebuild:
+  Added ~sparc keyword.
+
+  03 Jan 2004; Caleb Tennis <caleb@gentoo.org> kdelibs-3.1.4.ebuild,
+  files/kdelibs-3.1.4-alsafix.diff:
+  Make it compile with alsa 1.0
+
+  03 Jan 2004; Caleb Tennis <caleb@gentoo.org> kdelibs-3.1.4.ebuild,
+  kdelibs-3.2.0_beta2.ebuild:
+  make alsa dep <= 0.9.8
+
+  27 Dec 2003; Caleb Tennis <caleb@gentoo.org> kdelibs-3.1.4.ebuild,
+  kdelibs-3.2.0_beta2.ebuild:
+  minor dep cleanups
+
+  24 Dec 2003; Caleb Tennis <caleb@gentoo.org> kdelibs-3.1.4.ebuild,
+  kdelibs-3.2.0_beta2.ebuild:
+  Make alsa dependency < version 1.0.0 as kdelibs doesn't support it yet
+
+  24 Dec 2003; Caleb Tennis <caleb@gentoo.org> kdelibs-3.2.0_beta2.ebuild:
+  minor cleanups
+
+  09 Dec 2003; Heinrich Wendel <lanius@gentoo.org> kdelibs-3.0.4-r1.ebuild,
+  kdelibs-3.0.5b-r1.ebuild, kdelibs-3.1.2-r1.ebuild, kdelibs-3.1.4.ebuild,
+  kdelibs-3.2.0_beta1.ebuild, kdelibs-3.2.0_beta2.ebuild:
+  changed app-text/ghostscript to virtual/ghostscript
+
+*kdelibs-3.2.0_beta2 (01 Dec 2003)
+
+  07 Dec 2003; foser <foser@gentoo.org> kdelibs-*.ebuild :
+  Fix fam-oss dep to fam, due to move
+
+  01 Dec 2003; Caleb Tennis <caleb@gentoo.org> kdelibs-3.2.0_alpha2.ebuild,
+  kdelibs-3.2.0_beta2.ebuild:
+  New beta version, remove old alpha version
+
+  20 Nov 2003; Luca Barbato <lu_zero@gentoo.org> kdelibs-3.1.4.ebuild:
+  Marked ppc
+
+  08 Nov 2003; Caleb Tennis <caleb@gentoo.org> kdelibs-3.2.0_beta1.ebuild:
+  Add back in kdelibs apidocs compilation is the user has the doc flag set.
+
+*kdelibs-3.2.0_beta1 (01 Nov 2003)
+
+  01 Nov 2003; Caleb Tennis <caleb@gentoo.org> kdelibs-3.2.0_beta1.ebuild:
+  New beta version
+
+  13 Oct 2003; Paul de Vrieze <pauldv@gentoo.org> kdelibs-3.2.0_alpha2.ebuild:
+  Change alsa_driver dependency to depend on virtual/alsa
+
+  04 Oct 2003; Brad House <brad_mssw@gentoo.org> kdelibs-3.1.4.ebuild:
+  add ~amd64 flag
+
+  30 Sep 2003; Luca Barbato <lu_zero@gentoo.org> files/kdelibs-3.1.2-*:
+  recovered the patches needed by kdelibs-3.1.2-r1
+
+  27 Sep 2003; Caleb Tennis <caleb@gentoo.org> kdelibs-2.2.2a-r2.ebuild,
+  kdelibs-2.2.2a-r2.ebuild, kdelibs-3.0.5b.ebuild, kdelibs-3.0.5b.ebuild,
+  kdelibs-3.1.1a.ebuild, kdelibs-3.1.1a.ebuild, kdelibs-3.1.2.ebuild,
+  kdelibs-3.1.2.ebuild, kdelibs-3.1.3-r1.ebuild, kdelibs-3.1.3-r1.ebuild,
+  kdelibs-3.1.3.ebuild, kdelibs-3.1.3.ebuild,
+  files/kdelibs-2.2.2a-crosside.diff, files/kdelibs-2.2.2a-gentoo.diff,
+  files/kdelibs-3.1.2-http.patch, files/kdelibs-3.1.2-khtml.patch:
+  removing stale versions
+
+  26 Sep 2003; Jason Wever <weeve@gentoo.org> kdelibs-3.1.4.ebuild:
+  Added sparc keyword.
+
+*kdelibs-3.2.0_alpha2 (25 Sep 2003)
+
+  25 Sep 2003; Caleb Tennis <caleb@gentoo.org> kdelibs-3.2.0_alpha1.ebuild,
+  kdelibs-3.2.0_alpha1.ebuild, kdelibs-3.2.0_alpha2.ebuild:
+  new alpha version
+
+  25 Sep 2003; root <root@gentoo.org> kdelibs-3.1.4.ebuild:
+  marking x86 stable
+
+  16 Sep 2003; Jason Wever <weeve@gentoo.org> kdelibs-3.1.3.ebuild:
+  Marked stable for sparc.
+
+*kdelibs-3.1.4 (19 Sep 2003)
+
+  19 Sep 2003; Caleb Tennis <caleb@gentoo.org> kdelibs-3.1.4.ebuild:
+  make dependency on virtual/alsa
+
+*kdelibs-3.2.0_alpha1 (12 Sep 2003)
+
+  12 Sep 2003; Jason Wever <weeve@gentoo.org> kdelibs-3.2.0_alpha1.ebuild:
+  Marking as unusable as not all dependecies are met and hasn't been tested yet.
+
+  07 Sep 2003; Caleb Tennis <caleb@gentoo.org> kdelibs-3.1.3-r1.ebuild:
+  x86 stable
+
+*kdelibs-3.1.3-r1 (05 Aug 2003)
+
+  05 Aug 2003; Paul de Vrieze <pauldv@gentoo.org> kdelibs-3.1.3-r1.ebuild,
+  files/kdelibs-3.1.3-render_root.patch:
+  Fix the horizontal scrollbar issue with khtml-3.1.3
+
+*kdelibs-3.0.5b-r1 (20 Jul 2003)
+*kdelibs-3.1.2-r1 (20 Jul 2003)
+
+  20 Jul 2003; Caleb Tennis <caleb@gentoo.org: kdelibs-3.1.2-r1.ebuild, kdelibs-3.0.5b-r1.ebuild:
+  Adding two security patches.
+
+*kdelibs-3.1.3 (20 Jul 2003)
+
+  30 Jul 2003; Caleb Tennis <caleb@gentoo.org>: kdelibs-3.1.3.ebuild:
+  Add a dep that Qt version != 3.2.0, or kde bombs out.
+  Also remove an old portage version dep.
+
+  20 Jul 2003; Caleb Tennis <caleb@gentoo.org>: kdelibs-3.1.3.ebuild:
+  New version
+
+  21 Jun 2003; Caleb Tennis <caleb@gentoo.org>:
+  Removed old ebuilds: 2.2.2a-r1, 3.0.5a-r1, 3.1, 3.1-r2, 3.1-r3, 3.1.1, 3.1.1-r1
+    and assorted patch/diff files that go along with them.
+
+  16 Jun 2003; Will Woods <wwoods@gentoo.org> kdelibs-3.1.2.ebuild:
+  Marked stable for alpha
+
+  20 May 2003; Jason Wever <weeve@gentoo.org> kdelibs-3.1.2.ebuild:
+  Changed ~sparc keyword to sparc.
+
+*kdelibs-3.1.2 (19 May 2003)
+
+  19 May 2003; Dan Armak <danarmak@gentoo.org> kdelibs-3.1.2.ebuild:
+  New version of KDE.
+
+  16 Mai 2003; Lars Weiler <pylon@gentoo.org> kdelibs-3.1.1a.ebuild:
+  Set ppc in KEYWORDS
+
+  27 Apr 2003; Dan Armak <danarmak@gentoo.org> kdelibs-2.2.2a-r1.ebuild,
+  kdelibs-2.2.2a-r2.ebuild, kdelibs-3.0.4-r1.ebuild, kdelibs-3.0.5a-r1.ebuild,
+  kdelibs-3.0.5b.ebuild, kdelibs-3.1-r2.ebuild, kdelibs-3.1-r3.ebuild,
+  kdelibs-3.1.1-r1.ebuild, kdelibs-3.1.1.ebuild, kdelibs-3.1.1a.ebuild,
+  kdelibs-3.1.ebuild:
+  Adapt for changes in kde eclasses: don't inherit kde.org, and don't call
+  newdepend /c.
+
+  28 Apr 2003; Lars Weiler <pylon@gentoo.org> kdelibs-3.1.1-r1.ebuild:
+  Set ppc in KEYWORDS
+
+*kdelibs-2.2.2a-r2 (11 Apr 2003)
+
+  11 Apr 2003; Hannes Mehnert <hannes@gentoo.org> kdelibs-2.2.2a-r2.ebuild:
+  security fix
+
+*kdelibs-3.1.1a (08 Apr 2003)
+
+  08 Apr 2003; Hannes Mehnert <hannes@gentoo.org> kdelibs-3.1.1a.ebuild:
+  The same security fixes for kde 3.1.1.
+
+*kdelibs-3.0.5b (08 Apr 2003)
+
+  08 Apr 2003; Hannes Mehnert <hannes@gentoo.org> kdelibs-3.0.5b.ebuild,
+  files/kdelibs-3.0.5b-libxml2-2.5.2.diff:
+
+  A security patch release fixing a kghostview vulnerability. See GLSA.
+  Also includes misc other fixes.
+
+  27 Mar 2003; Dan Armak <danarmak@gentoo.org> all 3.x ebuilds:
+
+  Added explicit dep on sys-devel/gettext, since it will soon be removed
+  from the sysem profiles and apps will have to depend on it directly.
+
+  21 Mar 2003; Hannes Mehnert <hannes@gentoo.org> kdelibs-3.1.ebuild,
+  kdelibs-3.1-r2.ebuild, kdelibs-3.1-r3.ebuild, kdelibs-3.1.1.ebuild,
+  kdelibs-3.1.1-r1.ebuild:
+  added media-libs/libart_lgpl to DEPEND, thanks to Matt Rogers
+  <mattrogers@sbcglobal.net> (bug #17052)
+
+*kdelibs-3.1.1-r1 (20 Mar 2003)
+
+  31 Mar 2003; Jason Wever <weeve@gentoo.org> kdelibs-3.1.1-r1.ebuild:
+  Changed ~sparc keyword to sparc.
+
+  20 Mar 2003; Dan Armak <danarmak@gentoo.org> kdelibs-3.1.1-r1.ebuild:
+
+  Add patch that fixes kde bug #55571 (https authentication through proxy).
+
+  14 Mar 2003; Dan Armak <danarmak@gentoo.org> kdelibs-3.0.5a-r1.ebuild:
+
+  Add fix for #16329 to this version as well. Added the other part of the fix
+  to arts-1.0.5a. No new revisions.
+
+  14 Mar 2003; Dan Armak <danarmak@gentoo.org> kdelibs-3.1-r3.ebuild:
+
+  Actually add the fix for #16329, as described two entries below. I guess I
+  somehow forgot it before. Sorry...
+
+*kdelibs-3.1.1 (14 Mar 2003)
+
+  19 Mar 2003; Jason Wever <weeve@gentoo.org> kdelibs-3.1.1.ebuild:
+  Changed ~sparc keyword to sparc.
+
+  14 Mar 2003; Hannes Mehnert <hannes@gentoo.org> kdelibs-3.1.1.ebuild,
+  files/kdelibs-3.1.1-kjs-alphaev6-gcc3-workaround.patch,
+  files/kdelibs-3.1.1-zip.diff:
+  version bump
+
+*kdelibs-3.1-r3 (11 Mar 2003)
+
+  16 Mar 2003; Mark Guertin <gerk@gentoo.org> kdelibs-3.1-r2.ebuild,
+  kdelibs-3.1-r3.ebuild:
+  set ppc in keywords
+
+  10 Mar 2003; Dan Armak <danarmak@gentoo.org>
+  Fix bug #16329: make arts work without kdelibs installed. Goes together
+  with new revision arts-1.1.0-r1.
+
+  08 Mar 2003; Jason Wever <weeve@gentoo.org> kdelibs-3.0.5a-r1.ebuild,kdelibs-3.1-r2.ebuild:
+  Changed ~sparc keywords to sparc.
+
+  28 Feb 2003; Hannes Mehnert <hannes@gentoo.org> kdelibs-3.1-r2.ebuild:
+  added fix for >=libxml2-2.5.2. closes bug #15245
+
+  15 Feb 2003; Jason Wever <weeve@gentoo.org> kdelibs-3.1-r2.ebuild:
+  Added ~sparc keyword.
+
+  15 Feb 2003; Jason Wever <weeve@gentoo.org> kdelibs-3.1.ebuild
+  Changed ~sparc keyword to sparc.
+
+  28 Feb 2003; Will Woods <wwoods@gentoo.org> kdelibs-3.1-r2.ebuild:
+  Added workaround for gcc3 optimization bug on alpha, removed
+  -mieee flag (old attempt to fix this bug), and added ~alpha keyword.
+
+  13 Feb 2003; Dan Armak <danarmak@gentoo.org> kdelibs-3.1-r1.ebuild:
+
+  Remove the change Hannes made below, it was just an emergency fix.
+  The proper fix, if you have a kde 3.1+3.0.x system, is to emerge
+  kdelibs-3.0.5a-r2 and kdebase-3.0.5aq-r1 if you are emerging kdelibs-3.1-r1
+  and kdebase-3.1-r1 (but don't get the new 3.0.5a's if for some reason you
+  aren't getting the new 3.1's !)
+  Or for a quick fix to avoid all that compiling, edit /etc/env.d65kdelibs-3.0.*
+  and remove the KDEDIRS= line, run env-update and restart kdm.
+
+  13 Feb 2003; Hannes Mehnert <hannes@gentoo.org> kdelibs-3.1-r2.ebuild:
+  added KDEDIRS=${PREFIX} again to fix bug #15593
+
+  12 Feb 2003; Hannes Mehnert <hannes@gentoo.org> kdelibs-2.2.2-r4.ebuild,
+  kdelibs-2.2.2a.ebuild, kdelibs-3.0.2-r1.ebuild, kdelibs-3.0.3.ebuild,
+  kdelibs-3.0.3-r1.ebuild, kdelibs-3.0.4.ebuild, kdelibs-3.1_rc6.ebuild,
+  kdelibs-3.1-r1.ebuild: removed unneeded ebuilds
+
+  05 Feb 2003; Hannes Mehnert <hannes@gentoo.org> kdelibs-3.1-r2.ebuild:
+  removing $KDEDIR/share/doc/HTML/en/kdelibs-apidocs (is provided by
+  app-doc/kdelibs-apidocs), fixes bug #15102
+
+*kdelibs-3.1-r2 (04 Feb 2003)
+
+  04 Feb 2003; Hannes Mehnert <hannes@gentoo.org> kdelibs-3.1-r2.ebuild:
+  should fix bug #14759 and bug #14780.
+
+  01 Feb 2003; Jack Morgan <jmorgan@gentoo.org> kdelibs-3.1.ebuild:
+  added ~sparc to keywords
+
+  30 Jan 2003; Dan Armak <danarmak@gentoo.org> ChangeLog  :
+
+  Change ebuilds to use kde_src_unpack() instead of base_src_unpack(). This
+  does not affect in any way the compiled output, or any ebuild not suffering
+  rfom the 'languageChange undeclared' bug, which it fixes.
+
+*kdelibs-3.1-r1, kdelibs-3.0.5a-r1 (28 Jan 2003)
+
+  28 Jan 2003; Dan Armak <danarmak@gentoo.org> ChangeLog :
+
+  New revisions to fix bug #7179. This part of the fix removes KDEDIRS
+  settings from kdelibs' env.d files. This is a bug/fix almost noone cares
+  about, so no need to upgrade unless you know what this is. Masked at first
+  for initial testing.
+
+*kdelibs-2.2.2a-r1 (17 Jan 2003)
+
+  24 Feb 2003;  <root@gentoo.org> kdelibs-2.2.2a-r1.ebuild :
+  Fix bug #11732, #14432, #15635: enforce singlethreaded make (-j1).
+
+  17 Jan 2003; Hannes Mehnert <hannes@gentoo.org> kdelibs-2.2.2a-r1.ebuild:
+  new version, fixes #12520
+
+  14 Jan 2003; Hannes Mehnert <hannes@gentoo.org> kdelibs-3.1.ebuild:
+  fixes for kde-3.1 (removed unneeded patches)
+
+  08 Jan 2003; Mark Guertin <gerk@gentoo.org> kdelibs-3.1_rc6.ebuild:
+  added ~ppc to keywords
+
+  06 Jan 2003; Hannes Mehnert <hannes@gentoo.org> *.ebuild:
+  fixed alsa dependency, added media-sound/alsa-driver if alsa is in use.
+  this fixes bug #11996, thanks to fghellar@yahoo.de (Felipe Ghellar)
+
+*kdelibs-3.1_rc6 (05 Jan 2003)
+
+  05 Jan 2003; Hannes Mehnert <hannes@gentoo.org> kdelibs-3.1_rc6.ebuild:
+  version bump
+
+  04 Jan 2003; Hannes Mehnert <hannes@gentoo.org> kdelibs-3.0.5a.ebuild:
+  included patch to have no crash if compiled with debug and clicking on
+  "Home" button in konqueror. no need to version bump cause most users
+  don't compile with debug and most users don't use the "Home" button.
+
+*kdelibs-3.0.5a (21 Dec 2002)
+
+  06 Jan 2003; Jason Wever <weeve@gentoo.org> kdelibs-3.0.5a.ebuild:
+  Added ~sparc keyword
+
+  21 Dec 2002; Hannes Mehnert <hannes@gentoo.org> kdelibs-3.0.5a.ebuild:
+  version bump
+
+  08 Dec 2002; Jack Morgan <jmorgan@gentoo.org> kdelibs-3.1_rc5.ebuild :
+  Added sparc keyword
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+
+  05 Dec 2002; Dan Armak <danarmak@gentoo.org> kdelibs-2.2.2-r4.ebuild  :
+
+  Ditto for this older ebuild.
+
+  04 Dec 2002; Olivier Reisch <doctomoe@gentoo.org kdelibs-3.1.ebuild:
+  Added ppc keyword
+
+  04 Dec 2002; Dan Armak <danarmak@gentoo.org> kdelibs-2.2.2a.ebuild  :
+
+  Remove obsoltee ld.so dep. Fix #11541.
+
+  03 Dec 2002; Hannes Mehnert <hannes@gentoo.org> kdelibs-3.1.ebuild:
+  added patch to compile with USE=-ssl
+
+  02 Dec 2002; Hannes Mehnert <hannes@gentoo.org> kdelibs-3.1.ebuild:
+  added two patches for big endian (from kde-packagers list)
+
+  30 Nov 2002; Dan Armak <danarmak@gentoo.org> ChangeLog  :
+
+  Return libxml2, libxslt deps to >= since the latest ebuilds now work
+  again. The ebuilds of the broken versions have been deleted.
+
+  21 Nov 2002; Hannes Mehnert <hannes@gentoo.org> kdelibs-3.0.4-r1.ebuild:
+  fixed dependencies to =libxml2-2.4.24 and =libxslt-1.0.20 (newer libs are
+  broken for kde).
+
+*kdelibs-3.0.4-r1 (14 Nov 2002)
+
+  14 Nov 2002; Hannes Mehnert <hannes@gentoo.org> kdelibs-3.0.4-r1.ebuild:
+  this fixes security bug #10707, thanks to n2uro@aol.com (Samuel Greenfeld)
+  for submission
+
+  13 Nov 2002; Hannes Mehnert <hannes@gentoo.org> kdelibs-3.1_rc2.ebuild,
+  kde-3.1_rc3.ebuild: fixed dependencies, they depend on libxml2-2.4.24,
+  because 2.4.26 is broken (bug #10281). Thanks to suka_at@yahoo.de (suka)
+  for submission.
+
+*kdelibs-3.1_rc3 (12 Nov 2002)
+
+  12 Nov 2002; Hannes Mehnert <hannes@gentoo.org> ChangeLog:
+  kde-3.1_rc3
+
+*kdelibs-3.1_rc2 (04 Nov 2002)
+
+  04 Nov 2002; Hannes Mehnert <hannes@gentoo.org> ChangeLog:
+  kde-3.1_rc2
+
+*kdelibs-3.0.4 (09 Oct 2002)
+
+  09 Oct 2002; Dan Armak <danarmak@gentoo.org> ChangeLog  :
+
+  KDE 3.0.4, the latest bugfix release.
+
+*kdelibs-2.2.2a (11 Sep 2002)
+
+  11 Sep 2002; Dan Armak <danarmak@gentoo.org> ChangeLog  :
+
+  The same secutiry fix that became 3.0.3a, for 2.2.2
+
+*kdelibs-3.0.3a (10 Sep 2002)
+
+  10 Sep 2002; Dan Armak <danarmak@gentoo.org> ChangeLog  :
+
+  A bugfix and security patch release. Fixes the cross side scripting
+  vulnerability in khtml. Note: there are no 3.0.3a versions of other packages,
+  only of kdelibs!
+
+*kdelibs-3.0.3-r1 (04 Sep 2002)
+
+  04 Sep 2002; Dan Armak <danarmak@gentoo.org> ChangeLog  :
+
+  Fix bug #7359: add /share/config to CONFIG_PROTECT in our env.d file. After
+  everyone upgrades, the setting in make.globals can go away. Because of this,
+  an RDEPEND on >=sys-apps/portage-2.0.36 has been added.
+
+*kdelibs-3.0.3 (19 Aug 2002)
+
+  19 Aug 2002; Dan Armak <danarmak@gentoo.org> ChangeLog  :
+
+  New bugfix release. Enjoy!
+
+  02 Aug 2002; Dan Armak <danarmak@gentoo.org> ChangeLog  :
+
+  Narrow down arts dependencies: don't allow usage of a more recent version
+  of arts than the one released with this kdelibs.
+
+*kdelibs-3.0.2-r1 (16 Jul 2002)
+
+  01 Aug 2002; Mark Guertin <gerk@gentoo.org> kde-3.0.2.ebuild :
+  Added ppc to keywords
+
+  16 Jul 2002; Dan Armak <danarmak@gentoo.org> ChangeLog  :
+
+  New version that works well with the latest eclass updates and is fully
+  forward compatible with the kde 3.1_alpha1 ebuilds now in testing. Also
+  removes the trick where kde style plugins were installed into the qt
+  plugin dir (it raises issues with mutliple kde versions being installed;
+  you can enable the faeture manually via qtconfig).
+
+*kdelibs-3.0.2 (03 Jul 2002)
+
+  01 Aug 2002; Mark Guertin <gerk@gentoo.org> kde-3.0.2.ebuild :
+  Added ppc to keywords
+
+  03 Jul 2002; Dan Armak <danarmak@gentoo.org> ChangeLog  :
+
+  New stability release.
+
+*kdelibs-3.0.1.20020604 (4 Jun 2002)
+
+  4 Jun 2002; Dan Armak <danarmak@gentoo.org> Changelog :
+
+  This is a snapshot of the KDE CVS's KDE_3_0_x branch from June 6th.
+  This branch contains only bugfixes to the 3.0 release (the 3.0.1 release
+  was also of this kind).
+
+  26 May 2002; Dan Armak <danarmak@gentoo.org> Changelog :
+
+  Cleanup deps.
+
+*kdelibs-3.0.1 (24 May 2002)
+
+  24 May 2002; Dan Armak <danarmak@gentoo.org> Changelog :
+
+  Bugfix release (KDE 3.0.1).
+
+*kdelibs-3.0-r2 (11 May 2002)
+
+  11 May 2002; Dan Armak <danarmak@gentoo.org> Changelog :
+
+  Make ${KDEDIR}/lib/kde3/plugins (where all style plugins live) a symlink to
+  /usr/qt/3/plugins. That way qt-only apps can use kde styles with the default qtconfig
+  setup. Closes bug #2118, too.
+
+  2 May 2002; Dan Armak <danarmak@gentoo.org> changelog:
+
+  Add ghostscript dep (needed for printing to pdf).
+
+  6 Apr 2002; Dan Armak <danarmak@gentoo.org> changelog:
+
+  Change cups dep to >=1.1.14.
+
+*kdelibs-3.0-r1 (5 Apr 2002)
+
+  5 Apr 2002; Dan Armak <danarmak@gentoo.org> Changelog :
+
+  Add --with-fast-malloc=full configure option for a considerable speed improvement.
+
+*kdelibs-3.0 (4 Apr 2002)
+
+  4 Apr 2002; Dan Armak <danarmak@gentoo.org> Changelog :
+
+  KDE 3.0 ebuilds. Based on the well-tested kde3pre ebuild set.
+  kdelibs-2.2.2-r4: added SLOT=2.
+
+*kdelibs-2.2.2-r4 (24 Mar 2002)
+
+  24 Mar 2002; Dan Armak <danarmak@gentoo.org> changelog:
+
+  Split the env.d file into two, so that when both ked2 and kde3 are installed,
+  the KDEDIR of kde3 gets exported (was the other way around till now).
+
+  21 Mar 2002; Seemant Kulleen <seemant@gentoo.org> kdelibs-2.2.2-r3.ebuild :
+
+  HTML documentation is now done with dohtml instead of dodoc, so it will not
+  get gzipped any longer.  This change is small as compared to the size of this
+  package so the revision level for the ebuild was not bumped up.
+
+*kdelibs-2.2.2-r3 (22 Feb 2002)
+
+  1 Feb 2002; Dan Armak <danarmak@gentoo.org> ChangeLog :
+
+  Added KDEDIRS export to env.d file - will come in handy when several KDEs are
+  installed side-by-side. If you're not into that kind of thing, you don't care
+  about it and needn't upgrade.
+
+  Added support for customizing kde install locations. You probably don't need it,
+  in which case you don't want to hear about it. Note: untested support for now,
+  but doesn't break anything else.
+
+*kdelibs-2.2.2-r2 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

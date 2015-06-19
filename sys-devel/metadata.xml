@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The sys-devel category contains various core system development tools
+		and libraries.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría sys-devel contiene paquetes esenciales para el desarrollo
+		de software.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie sys-devel enthält essentielle Entwicklungswerkzeuge und
+		Bibliotheken.
+	</longdescription>
+	<longdescription lang="ja">
+		sys-develカテゴリにはコアシステム開発ツールとライブラリが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De sys-devel categorie bevat essentiele ontwikkelgereedschappen en
+		bibliotheken.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm sys-devel chứa các phần mềm và thư viện phát triển hệ thống cốt lõi.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria sys-devel contiene gli strumenti e le librerie essenziali per lo sviluppo del software e la compilazione del sistema.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria sys-devel contém várias ferramentas e bibliotecas
+		de desenvolvimento essenciais para o sistema.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria sys-devel zawiera programy i biblioteki służące do rozwijania
+		systemu.
+	</longdescription>
+</catmetadata>
+

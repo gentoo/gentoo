@@ -1,0 +1,242 @@
+# ChangeLog for media-libs/libzen
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libzen/ChangeLog,v 1.63 2015/05/18 20:44:43 radhermit Exp $
+
+  18 May 2015; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove myself as maintainer.
+
+*libzen-0.4.31 (12 Apr 2015)
+
+  12 Apr 2015; Tim Harder <radhermit@gentoo.org> +libzen-0.4.31.ebuild:
+  Version bump.
+
+  08 Jan 2015; Tim Harder <radhermit@gentoo.org> libzen-0.4.30.ebuild:
+  Stabilize for amd64/x86 (bug #535468).
+
+  11 Dec 2014; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Add myself as the maintainer.
+
+*libzen-0.4.30 (25 Nov 2014)
+
+  25 Nov 2014; Tim Harder <radhermit@gentoo.org> +libzen-0.4.30.ebuild:
+  Version bump.
+
+  14 Sep 2013; Agostino Sarubbo <ago@gentoo.org> libzen-0.4.29.ebuild:
+  Stable for x86, wrt bug #482624
+
+  31 Aug 2013; Agostino Sarubbo <ago@gentoo.org> libzen-0.4.29.ebuild:
+  Stable for amd64, wrt bug #482624
+
+  01 Jun 2013; Tim Harder <radhermit@gentoo.org> libzen-0.4.29.ebuild:
+  Die on sed failure.
+
+*libzen-0.4.29 (01 Jun 2013)
+
+  01 Jun 2013; Tim Harder <radhermit@gentoo.org> +libzen-0.4.29.ebuild:
+  Version bump.
+
+  22 Dec 2012; Tim Harder <radhermit@gentoo.org> -libzen-0.4.27.ebuild:
+  Remove old.
+
+  22 Dec 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+  16 Dec 2012; Agostino Sarubbo <ago@gentoo.org> libzen-0.4.28.ebuild:
+  Stable for x86, wrt bug #441380
+
+  08 Dec 2012; <ago@gentoo.org> libzen-0.4.28.ebuild:
+  Stable for amd64, wrt bug #441380
+
+  04 Dec 2012; Tim Harder <radhermit@gentoo.org> libzen-0.4.27.ebuild,
+  libzen-0.4.28.ebuild:
+  Fix LICENSE (bug #445868 by ulm).
+
+*libzen-0.4.28 (09 Aug 2012)
+
+  09 Aug 2012; Tim Harder <radhermit@gentoo.org> +libzen-0.4.28.ebuild:
+  Version bump.
+
+  04 Aug 2012; Tim Harder <radhermit@gentoo.org>
+  -files/libzen-0.4.21-no-tinyxml.patch, -libzen-0.4.26.ebuild:
+  Remove old.
+
+  04 Aug 2012; Agostino Sarubbo <ago@gentoo.org> libzen-0.4.27.ebuild:
+  Stable for amd64, wrt bug #427592
+
+  23 Jul 2012; Jeff Horelick <jdhore@gentoo.org> libzen-0.4.27.ebuild:
+  marked x86 per bug 427592
+
+  18 Jun 2012; Tim Harder <radhermit@gentoo.org> -libzen-0.4.23.ebuild:
+  Remove old.
+
+  18 Jun 2012; Jeff Horelick <jdhore@gentoo.org> libzen-0.4.26.ebuild:
+  marked x86 per bug 419103
+
+  15 Jun 2012; Agostino Sarubbo <ago@gentoo.org> libzen-0.4.26.ebuild:
+  Stable for amd64, wrt bug #420725
+
+  15 Jun 2012; Tim Harder <radhermit@gentoo.org> libzen-0.4.26.ebuild,
+  libzen-0.4.27.ebuild:
+  Drop unneeded zlib dep.
+
+  15 Jun 2012; Tim Harder <radhermit@gentoo.org> libzen-0.4.27.ebuild:
+  Add pkgconfig build dep for prune_libtool_files.
+
+  15 Jun 2012; Tim Harder <radhermit@gentoo.org> libzen-0.4.27.ebuild:
+  Use prune_libtool_files to remove unnecessary libtool files.
+
+*libzen-0.4.27 (31 May 2012)
+
+  31 May 2012; Tim Harder <radhermit@gentoo.org> +libzen-0.4.27.ebuild:
+  Version bump.
+
+  10 May 2012; Tim Harder <radhermit@gentoo.org> -libzen-0.4.25.ebuild:
+  Remove old.
+
+*libzen-0.4.26 (10 Apr 2012)
+
+  10 Apr 2012; Tim Harder <radhermit@gentoo.org> +libzen-0.4.26.ebuild:
+  Version bump.
+
+  07 Apr 2012; Tim Harder <radhermit@gentoo.org> -libzen-0.4.22.ebuild,
+  -libzen-0.4.24.ebuild:
+  Remove old.
+
+  07 Apr 2012; Markus Meier <maekke@gentoo.org> libzen-0.4.23.ebuild:
+  x86 stable, bug #394617
+
+*libzen-0.4.25 (16 Mar 2012)
+
+  16 Mar 2012; Tim Harder <radhermit@gentoo.org> +libzen-0.4.25.ebuild:
+  Version bump.
+
+  05 Feb 2012; Tim Harder <radhermit@gentoo.org> libzen-0.4.23.ebuild,
+  libzen-0.4.24.ebuild:
+  Revert to autotools eclass to fix broken reconfigure deps (bug #402219).
+
+  05 Feb 2012; Tim Harder <radhermit@gentoo.org> libzen-0.4.23.ebuild:
+  Use autoreconf from autotools-utils eclass for old version too.
+
+  05 Feb 2012; Tim Harder <radhermit@gentoo.org> libzen-0.4.24.ebuild:
+  Use autoreconf from autotools-utils eclass (fixes bug #402219).
+
+*libzen-0.4.24 (04 Feb 2012)
+
+  04 Feb 2012; Tim Harder <radhermit@gentoo.org> +libzen-0.4.24.ebuild:
+  Version bump.
+
+  15 Dec 2011; Agostino Sarubbo <ago@gentoo.org> libzen-0.4.23.ebuild:
+  Stable for AMD64, wrt bug #394617
+
+  07 Dec 2011; Tim Harder <radhermit@gentoo.org> libzen-0.4.23.ebuild:
+  Build in the source tree (fixes bug #393095).
+
+  28 Nov 2011; Tim Harder <radhermit@gentoo.org> libzen-0.4.23.ebuild:
+  Add local scope for myeconfargs.
+
+  28 Nov 2011; Tim Harder <radhermit@gentoo.org> libzen-0.4.23.ebuild:
+  Fix autotools-utils usage (bug #392155).
+
+  27 Nov 2011; Tim Harder <radhermit@gentoo.org> libzen-0.4.23.ebuild:
+  Build in the source tree.
+
+  13 Nov 2011; Tim Harder <radhermit@gentoo.org> -libzen-0.4.20.ebuild,
+  -files/libzen-0.4.20-gcc46.patch, -libzen-0.4.21-r1.ebuild:
+  Remove old.
+
+  13 Nov 2011; Markus Meier <maekke@gentoo.org> libzen-0.4.22.ebuild:
+  x86 stable, bug #388619
+
+*libzen-0.4.23 (12 Nov 2011)
+
+  12 Nov 2011; Tim Harder <radhermit@gentoo.org> +libzen-0.4.23.ebuild:
+  Version bump.
+
+  28 Oct 2011; Tony Vroon <chainsaw@gentoo.org> libzen-0.4.22.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo & Ian
+  "idella4" Delaney in bug #388619.
+
+*libzen-0.4.22 (26 Sep 2011)
+
+  26 Sep 2011; Tim Harder <radhermit@gentoo.org> +libzen-0.4.22.ebuild:
+  Version bump.
+
+  16 Sep 2011; Tim Harder <radhermit@gentoo.org> -libzen-0.4.21.ebuild:
+  Remove old.
+
+*libzen-0.4.21-r1 (15 Sep 2011)
+
+  15 Sep 2011; Tim Harder <radhermit@gentoo.org> +libzen-0.4.21-r1.ebuild,
+  +files/libzen-0.4.21-no-tinyxml.patch:
+  Revision bump. Remove bundled tinyxml library (fixes #383123).
+
+  17 Aug 2011; Tim Harder <radhermit@gentoo.org> libzen-0.4.21.ebuild:
+  Remove unused eutils eclass
+
+*libzen-0.4.21 (17 Aug 2011)
+
+  17 Aug 2011; Tim Harder <radhermit@gentoo.org> +libzen-0.4.21.ebuild:
+  Version bump
+
+  21 Jul 2011; Tim Harder <radhermit@gentoo.org> -libzen-0.4.16.ebuild,
+  -libzen-0.4.17.ebuild, -libzen-0.4.18.ebuild, -libzen-0.4.19.ebuild:
+  Remove old.
+
+  21 Jul 2011; Markus Meier <maekke@gentoo.org> libzen-0.4.20.ebuild:
+  amd64/x86 stable, bug #375515
+
+  18 Jul 2011; Tim Harder <radhermit@gentoo.org> libzen-0.4.20.ebuild:
+  Drop debug use flag.
+
+*libzen-0.4.20 (17 Jun 2011)
+
+  17 Jun 2011; Tim Harder <radhermit@gentoo.org> +libzen-0.4.20.ebuild,
+  +files/libzen-0.4.20-gcc46.patch:
+  Version bump. Apply fix for gcc-4.6 (bug #362841, patch by Alphat-PC).
+
+*libzen-0.4.19 (24 Mar 2011)
+
+  24 Mar 2011; Tim Harder <radhermit@gentoo.org> +libzen-0.4.19.ebuild:
+  Version bump.
+
+  24 Mar 2011; Thomas Kahle <tomka@gentoo.org> libzen-0.4.17.ebuild:
+  x86 stable per bug 357575
+
+  20 Mar 2011; Tim Harder <radhermit@gentoo.org> libzen-0.4.18.ebuild:
+  Use in-source build (fixes bug #359357 by Qin Jue Hang).
+
+  04 Mar 2011; Tim Harder <radhermit@gentoo.org> libzen-0.4.18.ebuild:
+  Don't force -O2 by default.
+
+*libzen-0.4.18 (04 Mar 2011)
+
+  04 Mar 2011; Tim Harder <radhermit@gentoo.org> +libzen-0.4.18.ebuild:
+  Version bump. Use EAPI 4 and autotools-utils eclass.
+
+  31 Jan 2011; Christian Faulhammer <fauli@gentoo.org> libzen-0.4.16.ebuild:
+  stable x86, bug 347037
+
+*libzen-0.4.17 (30 Dec 2010)
+
+  30 Dec 2010; Tim Harder <radhermit@gentoo.org> +libzen-0.4.17.ebuild:
+  Version bump.
+
+  02 Dec 2010; Markos Chandras <hwoarang@gentoo.org> libzen-0.4.16.ebuild:
+  Stable on amd64 wrt bug #347037
+
+*libzen-0.4.16 (28 Oct 2010)
+
+  28 Oct 2010; Tim Harder <radhermit@gentoo.org> -libzen-0.4.15.ebuild,
+  +libzen-0.4.16.ebuild:
+  Version bump and remove old. Update DESCRIPTION, remove old wxwidgets
+  support, and use emake instead of einstall.
+
+  30 Jun 2010; Christian Faulhammer <fauli@gentoo.org> libzen-0.4.15.ebuild:
+  keyworded ~arch for x86, bug 324205
+
+*libzen-0.4.15 (03 Jun 2010)
+
+  03 Jun 2010; Steve Dibb <beandog@gentoo.org> +libzen-0.4.15.ebuild,
+  +metadata.xml:
+  Initial commit, bug 309927; Thanks to Lucian Muresan and Nikoli for
+  ebuilds

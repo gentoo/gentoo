@@ -1,0 +1,56 @@
+# ChangeLog for dev-python/etsproxy
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/etsproxy/ChangeLog,v 1.13 2015/03/08 23:46:57 pacho Exp $
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> etsproxy-0.1.2-r1.ebuild:
+  x86 stable, bug 540290
+
+  07 Mar 2015; Pacho Ramos <pacho@gentoo.org> etsproxy-0.1.2-r1.ebuild:
+  ppc stable, bug 540290
+
+  07 Mar 2015; Pacho Ramos <pacho@gentoo.org> etsproxy-0.1.2-r1.ebuild:
+  ppc64 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> etsproxy-0.1.2-r1.ebuild:
+  amd64 stable, bug 540290
+
+  09 Feb 2015; Anthony G. Basile <blueness@gentoo.org> etsproxy-0.1.2-r1.ebuild:
+  Keyword ~ppc64, bug #465920.
+
+*etsproxy-0.1.2-r1 (25 Aug 2013)
+
+  25 Aug 2013; Mike Gilbert <floppym@gentoo.org> +etsproxy-0.1.2-r1.ebuild,
+  -etsproxy-0.1.2.ebuild:
+  Convert to distutils-r1.
+
+  14 May 2013; Ian Delaney <idella4@gentoo.org> -etsproxy-0.1.0-r1.ebuild,
+  -etsproxy-0.1.1.ebuild:
+  drop old
+
+  24 Apr 2013; Agostino Sarubbo <ago@gentoo.org> etsproxy-0.1.2.ebuild:
+  Add ~ppc, wrt bug #465948
+
+*etsproxy-0.1.2 (02 Apr 2013)
+
+  02 Apr 2013; Patrick Lauer <patrick@gentoo.org> +etsproxy-0.1.2.ebuild:
+  Bump
+
+  06 Dec 2012; Sébastien Fabbro <bicatali@gentoo.org> etsproxy-0.1.1.ebuild:
+  Keyword amd64-linux and x86-linux
+
+*etsproxy-0.1.1 (17 Jan 2012)
+
+  17 Jan 2012; Sébastien Fabbro <bicatali@gentoo.org> +etsproxy-0.1.1.ebuild:
+  Version bump
+
+*etsproxy-0.1.0-r1 (05 Aug 2011)
+
+  05 Aug 2011; Sébastien Fabbro <bicatali@gentoo.org> -etsproxy-0.1.0.ebuild,
+  +etsproxy-0.1.0-r1.ebuild:
+  Blocking all older ets packages
+
+*etsproxy-0.1.0 (04 Aug 2011)
+
+  04 Aug 2011; Sébastien Fabbro <bicatali@gentoo.org> +etsproxy-0.1.0.ebuild,
+  +metadata.xml:
+  Initial import

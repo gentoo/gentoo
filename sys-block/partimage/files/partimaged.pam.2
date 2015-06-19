@@ -1,0 +1,7 @@
+# PAM config file for Partimaged
+
+auth		required	pam_listfile.so onerr=fail item=user sense=allow file=/etc/partimaged/partimagedusers
+auth		optional	pam_warn.so
+auth		include		system-auth
+account		include		system-auth
+session		include		system-auth

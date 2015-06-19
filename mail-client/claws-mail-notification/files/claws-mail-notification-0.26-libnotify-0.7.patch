@@ -1,0 +1,50 @@
+--- src/notification_popup.c
++++ src/notification_popup.c
+@@ -339,7 +339,16 @@
+     break;
+   }
+ 
++#ifdef NOTIFY_CHECK_VERSION
++#if NOTIFY_CHECK_VERSION (0, 7, 0)
++  ppopup->notification = notify_notification_new(summary, utf8_str, NULL);
++#else
+   ppopup->notification = notify_notification_new(summary, utf8_str, NULL, NULL);
++#endif
++#else
++  ppopup->notification = notify_notification_new(summary, utf8_str, NULL, NULL);
++#endif
++
+   g_free(utf8_str);
+   if(ppopup->notification == NULL) {
+     debug_print("Notification Plugin: Failed to create a new "
+--- src/notification_trayicon.c
++++ src/notification_trayicon.c
+@@ -61,6 +61,10 @@
+ #ifdef HAVE_LIBNOTIFY
+ #include <libnotify/notify.h>
+ 
++#ifndef NOTIFY_CHECK_VERSION
++#define NOTIFY_CHECK_VERSION(x,y,z) 0
++#endif
++
+ typedef struct {
+   gint count;
+   gint num_mail;
+@@ -601,8 +605,17 @@
+   summary  = notification_trayicon_popup_assemble_summary();
+   utf8_str = notification_trayicon_popup_assemble_body(msginfo);
+ 
++#if NOTIFY_CHECK_VERSION (0, 7, 0)
++  popup.notification = notify_notification_new(summary, utf8_str, NULL);
++#else
+   popup.notification = notify_notification_new(summary, utf8_str, NULL, NULL);
++#endif
++
++#if NOTIFY_CHECK_VERSION (0, 7, 0)
++  /* notify_notification_attach_to_status_icon function was removed */
++#else
+   notify_notification_attach_to_status_icon(popup.notification, trayicon);
++#endif
+ 
+   g_free(summary);
+   g_free(utf8_str);

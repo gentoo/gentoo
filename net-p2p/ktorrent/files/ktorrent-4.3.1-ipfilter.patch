@@ -1,0 +1,72 @@
+From 3dfcbeb9765e99f9b99951134b17268eb7a617d2 Mon Sep 17 00:00:00 2001
+From: Joris Guisson <joris.guisson@gmail.com>
+Date: Thu, 1 Aug 2013 13:19:29 +0200
+Subject: [PATCH] Backport ipfilter extraction fixes from master branch to 4.3
+ branch
+
+BUG: 315239
+---
+ ChangeLog                                  |  3 +++
+ plugins/ipfilter/downloadandconvertjob.cpp | 22 +++++-----------------
+ 2 files changed, 8 insertions(+), 17 deletions(-)
+
+diff --git a/ChangeLog b/ChangeLog
+index c5ae9da..42c48ff 100644
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -1,3 +1,6 @@
++Changes in 4.3.2:
++- Backport ipfilter extraction fixes from master branch (315239)
++
+ Changes in 4.3.1:
+ - Fix new custom groups not appearing in add to group submenu (307230)
+ - Fix crash when right clicking on some locations in the GroupView due to 0 pointer (307160)
+diff --git a/plugins/ipfilter/downloadandconvertjob.cpp b/plugins/ipfilter/downloadandconvertjob.cpp
+index d3092ac..4080c2a 100644
+--- a/plugins/ipfilter/downloadandconvertjob.cpp
++++ b/plugins/ipfilter/downloadandconvertjob.cpp
+@@ -114,12 +114,13 @@ namespace kt
+ 		
+ 		//now determine if it's ZIP or TXT file
+ 		KMimeType::Ptr ptr = KMimeType::findByPath(temp);
++        Out(SYS_IPF|LOG_NOTICE) << "Mimetype: " << ptr->name() << endl;
+ 		if (ptr->name() == "application/zip")
+ 		{
+ 			active_job = KIO::file_move(temp,QString(kt::DataDir() + QLatin1String("level1.zip")),-1,KIO::HideProgressInfo|KIO::Overwrite);
+ 			connect(active_job,SIGNAL(result(KJob*)),this,SLOT(extract(KJob*)));
+ 		}
+-		else if (ptr->name() == "application/x-gzip" || ptr->name() == "application/x-bzip")
++		else if (ptr->name() == "application/x-gzip" || ptr->name() == "application/x-bzip" || ptr->name() == "application/gzip")
+ 		{
+ 			active_job = new bt::DecompressFileJob(temp,QString(kt::DataDir() + "level1.txt"));
+ 			connect(active_job,SIGNAL(result(KJob*)),this,SLOT(convert(KJob*)));
+@@ -174,23 +175,10 @@ namespace kt
+ 		}
+ 		
+ 		QString destination = kt::DataDir() + "level1.txt";
+-		if (zip->directory()->entries().contains("splist.txt"))
++        QStringList entries = zip->directory()->entries();
++		if (entries.count() >= 1)
+ 		{
+-			active_job = new bt::ExtractFileJob(zip,"splist.txt",destination);
+-			connect(active_job,SIGNAL(result(KJob*)),this,SLOT(convert(KJob*)));
+-			unzip = true;
+-			active_job->start();
+-		}
+-		else if (zip->directory()->entries().contains("level1.txt"))
+-		{
+-			active_job = new bt::ExtractFileJob(zip,"level1.txt",destination);
+-			connect(active_job,SIGNAL(result(KJob*)),this,SLOT(convert(KJob*)));
+-			unzip = true;
+-			active_job->start();
+-		}
+-		else if (zip->directory()->entries().contains("ipfilter.dat"))
+-		{
+-			active_job = new bt::ExtractFileJob(zip,"ipfilter.dat",destination);
++			active_job = new bt::ExtractFileJob(zip,entries.front(),destination);
+ 			connect(active_job,SIGNAL(result(KJob*)),this,SLOT(convert(KJob*)));
+ 			unzip = true;
+ 			active_job->start();
+-- 
+1.8.3.2
+

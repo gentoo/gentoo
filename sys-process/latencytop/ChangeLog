@@ -1,0 +1,53 @@
+# ChangeLog for sys-process/latencytop
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-process/latencytop/ChangeLog,v 1.12 2015/04/14 20:29:38 mrueg Exp $
+
+  14 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -latencytop-0.4.ebuild:
+  Remove old.
+
+  17 Nov 2012; Mike Frysinger <vapier@gentoo.org>
+  files/latencytop-0.5-03-clean-up-build-system.patch:
+  Skip png install for USE=-gtk #443538 by Ivan S. Titov.
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> latencytop-0.4.ebuild,
+  latencytop-0.5.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  04 Apr 2012; Jeff Horelick <jdhore@gentoo.org> latencytop-0.5.ebuild:
+  marked x86 per bug 409407
+
+  24 Mar 2012; Agostino Sarubbo <ago@gentoo.org> latencytop-0.5.ebuild:
+  Stable for amd64, wrt bug #409407
+
+  29 Dec 2009; Mike Frysinger <vapier@gentoo.org> latencytop-0.5.ebuild:
+  Fix building when USE=-gtk #297461 by Andrei Slavoiu.
+
+*latencytop-0.5 (18 Dec 2009)
+
+  18 Dec 2009; Mike Frysinger <vapier@gentoo.org> +latencytop-0.5.ebuild,
+  +files/latencytop-0.5-01-mkdir-usr-sbin-as-well.patch,
+  +files/latencytop-0.5-03-clean-up-build-system.patch,
+  +files/latencytop-0.5-fsync-fix-implicit-decl.patch:
+  Version bump #297161 by Xake.
+
+  12 May 2008; Markus Meier <maekke@gentoo.org> latencytop-0.4.ebuild:
+  amd64/x86 stable, bug #218167
+
+  23 Apr 2008; Doug Goldstein <cardoe@gentoo.org> latencytop-0.4.ebuild:
+  add latencytop.block and man page
+
+*latencytop-0.4 (23 Apr 2008)
+
+  23 Apr 2008; Doug Goldstein <cardoe@gentoo.org> -latencytop-0.3.ebuild,
+  +latencytop-0.4.ebuild:
+  version bump
+
+*latencytop-0.3 (24 Jan 2008)
+
+  24 Jan 2008; Mike Frysinger <vapier@gentoo.org> +latencytop-0.3.ebuild:
+  Version bump.
+
+*latencytop-0.1 (19 Jan 2008)
+
+  19 Jan 2008; Mike Frysinger <vapier@gentoo.org> +latencytop-0.1.ebuild:
+  Initial ebuild by me.

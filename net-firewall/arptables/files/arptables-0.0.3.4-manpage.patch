@@ -1,0 +1,12 @@
+diff -urNad arptables-0.0.3.3~/arptables.8 arptables-0.0.3.3/arptables.8
+--- arptables-0.0.3.3~/arptables.8	2007-08-19 15:04:51.000000000 +0200
++++ arptables-0.0.3.3/arptables.8	2008-05-08 18:56:35.000000000 +0200
+@@ -22,7 +22,7 @@
+ .\"
+ .\"
+ .SH NAME
+-arptables (v.0.0.3-3) \- ARP table administration
++arptables \- ARP table administration
+ .SH SYNOPSIS
+ .BR "arptables " [ "-t table" ] " -" [ AD ] " chain rule-specification " [ options ]
+ .br

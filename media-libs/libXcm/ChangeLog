@@ -1,0 +1,90 @@
+# ChangeLog for media-libs/libXcm
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libXcm/ChangeLog,v 1.22 2014/12/09 05:45:56 zlogene Exp $
+
+  09 Dec 2014; Mikle Kolyada <zlogene@gentoo.org> libXcm-0.5.2-r1.ebuild:
+  x86 stable wrt bug #472532
+
+  27 Aug 2014; Agostino Sarubbo <ago@gentoo.org> libXcm-0.5.2-r1.ebuild:
+  Stable for ppc, wrt bug #472532
+
+  25 Aug 2014; Michael Weber <xmw@gentoo.org> libXcm-0.5.2-r1.ebuild,
+  libXcm-0.5.3.ebuild, libXcm-9999.ebuild:
+  Drop USE=doc (bug 472532).
+
+*libXcm-9999 (30 Jul 2014)
+
+  30 Jul 2014; Michael Weber <xmw@gentoo.org> +libXcm-9999.ebuild:
+  Add live ebuild (bug 503798)
+
+*libXcm-0.5.3 (30 Jul 2014)
+
+  30 Jul 2014; Michael Weber <xmw@gentoo.org> +libXcm-0.5.3.ebuild,
+  -files/libXcm-0.5.0-buildsystem.patch:
+  Version bump (bug 503798)
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> libXcm-0.5.2-r1.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+  07 Mar 2014; Pacho Ramos <pacho@gentoo.org> libXcm-0.5.2-r1.ebuild:
+  amd64 stable, bug 472532
+
+  19 Jan 2014; Pacho Ramos <pacho@gentoo.org> libXcm-0.5.2-r1.ebuild:
+  amd64 stable, bug 472532
+
+  24 Jun 2013; Michael Weber <xmw@gentoo.org> -libXcm-0.5.1.ebuild,
+  -libXcm-0.5.2.ebuild, libXcm-0.5.2-r1.ebuild:
+  fix doxygen dependency (bug 461778, thanks Matthew Dawson), drop old.
+
+  13 Jun 2013; Michael Weber <xmw@gentoo.org> libXcm-0.5.2-r1.ebuild:
+  Add ~ppc keyword as dep of llpp
+
+*libXcm-0.5.2-r1 (22 Apr 2013)
+
+  22 Apr 2013; Michael Weber <xmw@gentoo.org> +libXcm-0.5.2-r1.ebuild:
+  multi abi version
+
+  04 Feb 2013; Michael Weber <xmw@gentoo.org> libXcm-0.5.2.ebuild:
+  Fix html generation for USE=doc (bug 448426)
+
+*libXcm-0.5.2 (09 Jan 2013)
+
+  09 Jan 2013; Michael Weber <xmw@gentoo.org> +libXcm-0.5.2.ebuild:
+  Version bump (thanks euscan)
+
+  05 Jul 2012; Michael Weber <xmw@gentoo.org> -libXcm-0.5.0.ebuild:
+  Drop old
+
+*libXcm-0.5.1 (30 Jun 2012)
+
+  30 Jun 2012; Michael Weber <xmw@gentoo.org> +libXcm-0.5.1.ebuild,
+  -files/libXcm-0.4.2-buildsystem.patch, -libXcm-0.4.2.ebuild,
+  -libXcm-0.5.0-r1.ebuild:
+  Version bump (thanks euscan), upstream accepted buildsystem patch, drop old
+
+  19 Jun 2012; Diego E. Pettenò <flameeyes@gentoo.org> libXcm-0.5.0-r1.ebuild:
+  Fix typo.
+
+*libXcm-0.5.0-r1 (10 Mar 2012)
+
+  10 Mar 2012; Michael Weber <xmw@gentoo.org> +libXcm-0.5.0-r1.ebuild,
+  +files/libXcm-0.5.0-buildsystem.patch:
+  Revbump to restore X use flag.
+
+  09 Mar 2012; Michael Weber <xmw@gentoo.org> libXcm-0.5.0.ebuild:
+  Work around upstream bug, [-X] does not work.
+
+*libXcm-0.5.0 (09 Mar 2012)
+
+  09 Mar 2012; Michael Weber <xmw@gentoo.org> +libXcm-0.5.0.ebuild:
+  Version bump (thanks Andreas Sturmlechner, bug 407485)
+
+  06 Feb 2012; Michael Weber <xmw@gentoo.org> libXcm-0.4.2.ebuild:
+  Adding ~x86
+
+*libXcm-0.4.2 (05 Feb 2012)
+
+  05 Feb 2012; Michael Weber <xmw@gentoo.org> +libXcm-0.4.2.ebuild,
+  +files/libXcm-0.4.2-buildsystem.patch, +metadata.xml:
+  Initial import

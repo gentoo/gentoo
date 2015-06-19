@@ -1,0 +1,14 @@
+# ChangeLog for dev-java/headius-options
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/headius-options/ChangeLog,v 1.2 2015/06/06 18:39:25 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*headius-options-1.1 (03 May 2014)
+
+  03 May 2014; Tom Wijsman <TomWij@gentoo.org>
+  +files/headius-options-1.1-build.xml, +headius-options-1.1.ebuild,
+  +metadata.xml:
+  New package for dev-java/headius-options, a small library for managing sets of
+  JVM properties; dependency of newer dev-java/jruby version(s).

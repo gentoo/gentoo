@@ -1,0 +1,170 @@
+# ChangeLog for app-text/namazu
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/namazu/ChangeLog,v 1.44 2013/08/03 06:48:17 hattya Exp $
+
+  03 Aug 2013; Akinori Hattori <hattya@gentoo.org> namazu-2.0.21.ebuild,
+  namazu-2.0.22_p1.ebuild:
+  remove unnecessary die for elisp-common functions
+
+  03 Aug 2013; Akinori Hattori <hattya@gentoo.org> namazu-2.0.21.ebuild:
+  update to EAPI 5
+
+*namazu-2.0.22_p1 (01 Mar 2013)
+
+  01 Mar 2013; Naohiro Aota <naota@gentoo.org> +namazu-2.0.22_p1.ebuild:
+  Add pre released ebuild
+
+  14 Jul 2012; Akinori Hattori <hattya@gentoo.org> metadata.xml:
+  format metadata.xml
+
+  14 Jul 2012; Akinori Hattori <hattya@gentoo.org> -namazu-2.0.19-r1.ebuild,
+  -namazu-2.0.19.ebuild, -namazu-2.0.20.ebuild:
+  remove old ebuild
+
+  09 Jun 2012; Raúl Porcel <armin76@gentoo.org> namazu-2.0.19.ebuild,
+  namazu-2.0.19-r1.ebuild, namazu-2.0.20.ebuild, namazu-2.0.21.ebuild:
+  Drop sparc keywords
+
+  01 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> namazu-2.0.21.ebuild:
+  x86 stable wrt bug #391259
+
+  28 Nov 2011; Tony Vroon <chainsaw@gentoo.org> -namazu-2.0.18.ebuild,
+  namazu-2.0.21.ebuild, metadata.xml:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo &
+  Elijah "Armageddon" El Lazkani in security bug #391259. Removed 2.0.18 with
+  problematic dependencies so the arch teams can commit without --force. Remove
+  now-unused kakasi USE-flag.
+
+*namazu-2.0.21 (30 Oct 2011)
+
+  30 Oct 2011; Naohiro Aota <naota@gentoo.org> +namazu-2.0.21.ebuild,
+  +files/namazu-2.0.21-search.patch:
+  Version bump.
+
+  12 Aug 2010; Markus Meier <maekke@gentoo.org> namazu-2.0.20.ebuild:
+  amd64 stable, bug #306051
+
+*namazu-2.0.20 (24 Sep 2009)
+
+  24 Sep 2009; MATSUU Takuto <matsuu@gentoo.org> +namazu-2.0.20.ebuild:
+  Version bumped.
+
+*namazu-2.0.19-r1 (18 Mar 2009)
+
+  18 Mar 2009; MATSUU Takuto <matsuu@gentoo.org> +namazu-2.0.19-r1.ebuild:
+  Fixed tk USE flag issue, bug #262662.
+
+*namazu-2.0.19 (12 Mar 2009)
+
+  12 Mar 2009; MATSUU Takuto <matsuu@gentoo.org>
+  +files/namazu-2.0.19-gentoo.patch, +namazu-2.0.19.ebuild:
+  Version bumped. Replaced chasen, cjk, and kakasi USE flags to linguas_ja.
+
+  19 Jan 2009; Tiago Cunha <tcunha@gentoo.org> namazu-2.0.18.ebuild:
+  keyworded ~arch for sparc
+
+  06 Sep 2008; MATSUU Takuto <matsuu@gentoo.org> namazu-2.0.18.ebuild:
+  Use elisp-complie instead of elisp-comp, bug #235919.
+
+  02 Aug 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56.
+
+  01 Aug 2008; Akinori Hattori <hattya@gentoo.org> namazu-2.0.18.ebuild:
+  remove lisp/browse-url-for-emacs-19.28.el in src_compile.
+
+  01 Aug 2008; Akinori Hattori <hattya@gentoo.org> -namazu-2.0.16.ebuild,
+  -namazu-2.0.17.ebuild, -namazu-2.0.17-r1.ebuild:
+  cleaned out old ebuild(s).
+
+  26 Mar 2008; Markus Rothe <corsair@gentoo.org> namazu-2.0.18.ebuild:
+  Stable on ppc64; bug #214266
+
+  25 Mar 2008; Christian Faulhammer <opfer@gentoo.org> namazu-2.0.18.ebuild:
+  stable x86, security bug 214266
+
+*namazu-2.0.18 (24 Mar 2008)
+
+  24 Mar 2008; MATSUU Takuto <matsuu@gentoo.org> +namazu-2.0.18.ebuild:
+  Version bumped, bug #214266.
+
+*namazu-2.0.17-r1 (14 Jan 2008)
+
+  14 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  +files/50namazu-gentoo.el, +namazu-2.0.17-r1.ebuild:
+  add proper GNU Emacs support, fixes bug 194734
+
+  03 Oct 2007; Tom Gall <tgall@gentoo.org> namazu-2.0.17.ebuild:
+  stable on ppc64
+
+  25 Aug 2007; Akinori Hattori <hattya@gentoo.org> namazu-2.0.17.ebuild:
+  stable on x86.
+
+*namazu-2.0.17 (12 May 2007)
+
+  12 May 2007; Akinori Hattori <hattya@gentoo.org> +namazu-2.0.17.ebuild:
+  new upstream release. fixes bug #177765.
+
+  13 Dec 2006; Akinori Hattori <hattya@gentoo.org> -namazu-2.0.14.ebuild,
+  namazu-2.0.16.ebuild:
+  fixes bug #17808.
+
+  16 Aug 2006; Markus Rothe <corsair@gentoo.org> namazu-2.0.16.ebuild:
+  Stable on ppc64
+
+  14 Jul 2006; Akinori Hattori <hattya@gentoo.org> namazu-2.0.16.ebuild:
+  stable on x86.
+
+  14 Jul 2006; Akinori Hattori <hattya@gentoo.org> namazu-2.0.14.ebuild,
+  namazu-2.0.16.ebuild:
+  fixes bug #140343. and use emake for install.
+
+*namazu-2.0.16 (28 Apr 2006)
+
+  28 Apr 2006; Akinori Hattori <hattya@gentoo.org> +namazu-2.0.16.ebuild:
+  new upstream release.
+
+  04 Dec 2005; Tom Gall <tgall@gentoo.org> namazu-2.0.14.ebuild:
+  stable on ppc64
+
+  01 May 2005; Tom Martin <slarti@gentoo.org> namazu-2.0.14.ebuild:
+  Marked ~amd64.
+
+  15 Mar 2005; Seemant Kulleen <seemant@gentoo.org> namazu-2.0.14.ebuild:
+  Dependency update: net-www/lynx -> www-client/lynx.
+
+  28 Feb 2005; <dams@gentoo.org> namazu-2.0.14.ebuild:
+  added ~ppc (bug #83185)
+
+*namazu-2.0.14 (16 Dec 2004)
+
+  16 Dec 2004; Masatomo Nakano <nakano@gentoo.org> -namazu-2.0.12.ebuild,
+  -namazu-2.0.13.ebuild, +namazu-2.0.14.ebuild:
+  Fixed Cross-Site Scripting Vulnerability. (#74612)
+
+  07 Dec 2004; Akinori Hattori <hattya@gentoo.org> namazu-2.0.13.ebuild:
+  fixes bug #73330
+
+  04 Nov 2004; Tom Gall <tgall@gentoo.org> namazu-2.0.13.ebuild:
+  added ~ppc64, #69729
+
+  07 Sep 2004; Akinori Hattori <hattya@gentoo.org> namazu-2.0.13.ebuild:
+  stable on x86.
+
+  06 Aug 2004; Akinori Hattori <hattya@gentoo.org> namazu-2.0.13.ebuild:
+  fixes bug #58452.
+
+*namazu-2.0.13 (25 Jul 2004)
+
+  25 Jul 2004; Akinori Hattori <hattya@gentoo.org> +metadata.xml,
+  +namazu-2.0.13.ebuild:
+  version bump. fixes bug #53993.
+
+  12 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> namazu-2.0.12.ebuild:
+  Don't assign default to S; header fix
+
+*namazu-2.0.12 (21 Jun 2003)
+
+  21 Jun 2003; YAMAKURA Makoto <yakina@gentoo.org> namazu-2.0.12.ebuild,
+  ChangeLog,Manifest,files/digest-namazu-2.0.12:
+
+  Initial import. Ebuild submitted by naoto @ GentooJP

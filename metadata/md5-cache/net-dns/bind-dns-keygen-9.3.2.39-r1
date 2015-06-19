@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=>=app-arch/rpm2targz-9.0.0.3g
+DESCRIPTION=A simple BIND key generator
+HOMEPAGE=http://fedora.redhat.com/projects/config-tools/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=public-domain
+SLOT=0
+SRC_URI=mirror://gentoo/bind-9.3.2-39.fc6.src.rpm
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	rpm	b94b54b44f14d6bee3e966c8f5c86fba	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=bdac2d5245ead53db859b2bcecf49c29

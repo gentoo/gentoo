@@ -1,0 +1,22 @@
+Index: libgwydgets/gwy3dview.c
+===================================================================
+--- libgwydgets/gwy3dview.c	(revision 13961)
++++ libgwydgets/gwy3dview.c	(working copy)
+@@ -48,7 +48,6 @@
+ #include <GL/glext.h>
+ #endif
+ #endif
+-#endif
+ 
+ #ifndef GL_BGRA
+ #ifdef GL_BGRA_EXT
+@@ -57,6 +56,7 @@
+ #error FIXME: GL_BGRA is not available, should work around it.
+ #endif
+ #endif
++#endif
+ 
+ #include <libgwyddion/gwymacros.h>
+ #include <libgwyddion/gwymath.h>
+
+

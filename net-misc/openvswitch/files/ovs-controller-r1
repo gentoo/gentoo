@@ -1,0 +1,23 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/openvswitch/files/ovs-controller-r1,v 1.1 2013/04/08 19:37:58 dev-zero Exp $
+
+description="Open vSwitch OpenFlow controller"
+
+command="/usr/bin/ovs-controller"
+command_args="
+    --pidfile
+    --detach
+    --monitor
+    ${OPTIONS} ${METHODS}"
+pidfile="/var/run/openvswitch/ovs-controller.pid"
+
+depend() {
+    need net
+    use logger
+}
+
+start_pre() {
+	checkpath -d "/var/run/openvswitch" -m 0750
+}

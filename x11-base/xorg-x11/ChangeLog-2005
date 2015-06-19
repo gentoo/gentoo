@@ -1,0 +1,2635 @@
+# ChangeLog for x11-base/xorg-x11
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-base/xorg-x11/ChangeLog-2005,v 1.1 2012/01/01 22:08:11 dilfridge Exp $
+
+  26 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -xorg-x11-7.0.0_rc3.ebuild, -xorg-x11-7.0.0_rc3-r1.ebuild,
+  -xorg-x11-7.0.0_rc4.ebuild:
+  Clean out old versions.
+
+*xorg-x11-7.0 (23 Dec 2005)
+
+  23 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xorg-x11-7.0.ebuild:
+  7.0 is here!
+
+  21 Dec 2005; Doug Goldstein <cardoe@gentoo.org> xorg-x11-7.0.0_rc4.ebuild:
+  adding ~ppc
+
+  20 Dec 2005; Stephen P. Becker <geoman@gentoo.org>
+  xorg-x11-7.0.0_rc4.ebuild:
+  added ~mips keyword, bug
+
+  19 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  xorg-x11-7.0.0_rc4.ebuild:
+  Dropped ~mips and ~ppc since this depends on xorg-docs now.
+
+  19 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  xorg-x11-7.0.0_rc4.ebuild:
+  Added the xorg-docs package to metabuild.
+
+*xorg-x11-7.0.0_rc4 (18 Dec 2005)
+
+  18 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xorg-x11-7.0.0_rc4.ebuild:
+  Bump for 7.0RC4.
+
+  16 Dec 2005; Stephen P. Becker <geoman@gentoo.org>
+  xorg-x11-7.0.0_rc3-r1.ebuild:
+  added ~mips keyword
+
+  14 Dec 2005; Herbie Hopkins <herbs@gentoo.org>
+  xorg-x11-7.0.0_rc3-r1.ebuild:
+  Marked ~amd64 wrt bug #115539.
+
+  14 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  xorg-x11-6.8.2-r4.ebuild, xorg-x11-6.8.2-r6.ebuild,
+  xorg-x11-6.8.99.15-r4.ebuild:
+  ttmkfdir was moved from x11-misc to x11-apps.
+
+  14 Dec 2005; Doug Goldstein <cardoe@gentoo.org>
+  xorg-x11-7.0.0_rc3-r1.ebuild:
+  Adding ~ppc
+
+  14 Dec 2005; Ferris McCormick <fmccor@gentoo.org>
+  xorg-x11-7.0.0_rc3-r1.ebuild:
+  Add ~sparc keyword --- Bug 115539.
+
+  14 Dec 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  -xorg-x11-7.0.0_rc1.ebuild, -xorg-x11-7.0.0_rc2.ebuild,
+  -xorg-x11-7.0.0_rc2-r1.ebuild:
+  Drop old versions.
+
+*xorg-x11-7.0.0_rc3-r1 (14 Dec 2005)
+
+  14 Dec 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xorg-x11-7.0.0_rc3-r1.ebuild:
+  Added mesa-progs to deps, which provides glxinfo and glxgears. Drop all
+  non-x86 keywords because of this.
+
+  14 Dec 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-7.0.0_rc3.ebuild:
+  ~ppc at cardoe's request.
+
+  10 Dec 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r4.ebuild, xorg-x11-6.8.2-r6.ebuild,
+  xorg-x11-6.8.99.15-r4.ebuild:
+  Remove blocker on virtual/x11. The new setup changes how it works. Reported
+  by halcy0n.
+
+  09 Dec 2005; Seemant Kulleen <seemant@gentoo.org>
+  xorg-x11-6.8.2-r4.ebuild, xorg-x11-6.8.2-r6.ebuild,
+  xorg-x11-6.8.99.15-r4.ebuild:
+  moved synaptics from x11-misc to x11-drivers
+
+  08 Dec 2005; Tom Gall <tgall@gentoo.org> xorg-x11-6.8.2-r6.ebuild:
+  stable on ppc64
+
+  07 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  xorg-x11-7.0.0_rc3.ebuild:
+  Update font deps for RC3.
+
+*xorg-x11-7.0.0_rc3 (05 Dec 2005)
+
+  05 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xorg-x11-7.0.0_rc3.ebuild:
+  Bump for 7.0RC3.  Note that fonts are not yet updated since some extra work
+  has to be done on their paths.  This metabuild now also filters RgbPath as
+  that caused some major breakage on my system.
+
+  29 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  xorg-x11-7.0.0_rc2-r1.ebuild:
+  Added note about bug #112924 for the ModulePath removal decision.
+
+*xorg-x11-7.0.0_rc2-r1 (29 Nov 2005)
+
+  29 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xorg-x11-7.0.0_rc2-r1.ebuild:
+  Revision bump that adds:
+  
+  - /usr/X11R6 -> /usr symlink for apps not yet updated
+  - removal of ModulePath lines from xorg.conf since this path has changed from
+  previous versions and these lines aren't really needed
+
+  23 Nov 2005; <dang@gentoo.org> xorg-x11-6.8.2-r6.ebuild:
+  Marked stable on amd64
+
+  23 Nov 2005; Chris White <chriswhite@gentoo.org> xorg-x11-6.8.2-r6.ebuild:
+  x86 stable for bug #113307.
+
+  20 Nov 2005; Markus Rothe <corsair@gentoo.org>
+  xorg-x11-6.8.99.15-r4.ebuild:
+  Added ~ppc64 keyword
+
+  16 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  xorg-x11-7.0.0_rc1.ebuild, xorg-x11-7.0.0_rc2.ebuild:
+  Changed xorg-x11 blocker for clarity.
+
+*xorg-x11-7.0.0_rc2 (11 Nov 2005)
+
+  11 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xorg-x11-7.0.0_rc2.ebuild:
+  Bump for 7.0RC2.
+
+  10 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  xorg-x11-7.0.0_rc1.ebuild:
+  Add eutils inherit.  Thanks to Ferris McCormick in bug #111976.
+
+  09 Nov 2005; Stephen P. Becker <geoman@gentoo.org>
+  xorg-x11-7.0.0_rc1.ebuild:
+  added ~mips keyword
+
+  06 Nov 2005; <dang@gentoo.org> xorg-x11-7.0.0_rc1.ebuild:
+  Marked ~amd64
+
+  05 Nov 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-7.0.0_rc1.ebuild:
+  Add a pkg_postinst(), so we can have a bunch of einfo help.
+
+  03 Nov 2005; Ferris McCormick <fmccor@gentoo.org>
+  xorg-x11-7.0.0_rc1.ebuild:
+  Add ~sparc keyword (facilitate X-modular testing).
+
+  02 Nov 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-7.0.0_rc1.ebuild:
+  Add xrandr to apps, also pulling in libXrandr.
+
+  02 Nov 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-7.0.0_rc1.ebuild:
+  (#111298) Add libXScrnSaver to deps, because it's again incredibly common.
+
+  02 Nov 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-7.0.0_rc1.ebuild:
+  Remove xinerama USE flag and make it mandatory. A large number of
+  applications have mandatory xinerama, so having the library optional makes
+  things unnecessarily complex.
+
+*xorg-x11-7.0.0_rc1 (02 Nov 2005)
+
+  02 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xorg-x11-7.0.0_rc1.ebuild:
+  Add metabuild for modular X.
+
+  19 Oct 2005; Stephen P. Becker <geoman@gentoo.org>
+  xorg-x11-6.8.99.15-r4.ebuild:
+  -mips to ~mips
+
+  12 Oct 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -xorg-x11-6.8.2-r5.ebuild, -xorg-x11-6.8.99.15-r2.ebuild,
+  -xorg-x11-6.8.99.15-r3.ebuild:
+  Drop old revisions.
+
+  12 Oct 2005; Joshua Baergen <joshuabaergen@gentoo.org> ChangeLog:
+  Add a patch for a missing NULL-check in the radeon driver.
+  https://bugs.freedesktop.org/show_bug.cgi?id=4001
+
+*xorg-x11-6.8.99.15-r3 (03 Oct 2005)
+
+  03 Oct 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xorg-x11-6.8.99.15-r3.ebuild:
+  Added fix for OO/wine transparencies as well as update to mmx code from bug
+  #96053, closing that bug.  Thanks to bartron for both patches.
+  
+  Also added patch from bug #104318 to fix colour swapping on big-endian
+  systems.  Thanks to Stephen Becker for that.
+
+*xorg-x11-6.8.2-r6 (03 Oct 2005)
+
+  03 Oct 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xorg-x11-6.8.2-r6.ebuild:
+  Added fix for OO/wine transparencies as well as update to mmx code from bug
+  #96053, closing that bug.  Thanks to bartron for both patches.
+
+  21 Sep 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r4.ebuild, xorg-x11-6.8.2-r5.ebuild:
+  Add message on where to look for logs when a migration fails.
+
+  20 Sep 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  xorg-x11-6.8.2-r5.ebuild:
+  Added gcc4 compile fix for fbmmx.c .  Closes bug #106305.
+
+  20 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  xorg-x11-6.8.2-r4.ebuild, xorg-x11-6.8.2-r5.ebuild,
+  xorg-x11-6.8.99.15-r2.ebuild:
+  Make util-linux conditional to GNU userland, added note for FBSD.
+
+*xorg-x11-6.8.2-r5 (20 Sep 2005)
+
+  20 Sep 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xorg-x11-6.8.2-r5.ebuild:
+  New revision.  Includes sparc-specific fixes from bugs #61940 and #79467.
+
+  19 Sep 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r4.ebuild, xorg-x11-6.8.99.15-r2.ebuild:
+  (#106311) Wrap unpacking of eurofonts in ! use minimal, since downloading is.
+
+*xorg-x11-6.8.99.15-r2 (17 Sep 2005)
+
+  17 Sep 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -xorg-x11-6.8.99.15-r1.ebuild, +xorg-x11-6.8.99.15-r2.ebuild:
+  Fixed security update as per bug #105859.
+
+  17 Sep 2005; Joshua Baergen <joshuabaergen@gentoo.org> ChangeLog:
+  Fixed credits for patch and such.
+
+*xorg-x11-6.8.2-r4 (17 Sep 2005)
+
+  17 Sep 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -xorg-x11-6.8.2-r3.ebuild, +xorg-x11-6.8.2-r4.ebuild:
+  Fixed previous security update as it did not match upstream's patch.  Much
+  thanks to Alexander Brüning for providing and testing the new patch and
+  Peter Hyman for spotting the source of the problem.  Closes bug #105859.
+
+  13 Sep 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  xorg-x11-6.8.99.15-r1.ebuild:
+  Added xdm stop fix to file set.
+
+  13 Sep 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -xorg-x11-6.8.99.14.ebuild, -xorg-x11-6.8.99.15.ebuild:
+  Clean out old/insecure versions.
+
+*xorg-x11-6.8.99.15-r1 (13 Sep 2005)
+
+  13 Sep 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xorg-x11-6.8.99.15-r1.ebuild:
+  Security update with patch from bug #105688.
+
+  12 Sep 2005; Seemant Kulleen <seemant@gentoo.org>
+  -xorg-x11-6.8.2-r1.ebuild, -xorg-x11-6.8.2-r2.ebuild:
+  remove insecure versions
+
+*xorg-x11-6.8.2-r3 (12 Sep 2005)
+
+  12 Sep 2005; Seemant Kulleen <seemant@gentoo.org>
+  +xorg-x11-6.8.2-r3.ebuild:
+  Fix for bug #105688 -- buffer overflow in pixmap memory allocation. Also,
+  fixed xdm initscript (bug #104657).
+
+  10 Sep 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r2.ebuild, xorg-x11-6.8.99.15.ebuild:
+  (#105532) Add groff build-time dependency.
+
+  25 Aug 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  xorg-x11-6.8.2-r1.ebuild, xorg-x11-6.8.2-r2.ebuild,
+  xorg-x11-6.8.99.14.ebuild:
+  Changed cp -a to cp -pPR for the rest of the ebuilds. (BSD compatibility)
+
+  24 Aug 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  xorg-x11-6.8.99.15.ebuild:
+  Changed cp -a to cp -pPR for BSD compatibility.
+
+  23 Aug 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r1.ebuild, xorg-x11-6.8.2-r2.ebuild,
+  xorg-x11-6.8.99.14.ebuild, xorg-x11-6.8.99.15.ebuild:
+  (#103421) Don't feed enewuser a false login shell; it figures out a correct
+  one.
+
+  17 Aug 2005; Mike Frysinger <vapier@gentoo.org> xorg-x11-6.8.2-r1.ebuild,
+  xorg-x11-6.8.2-r2.ebuild, xorg-x11-6.8.99.14.ebuild,
+  xorg-x11-6.8.99.15.ebuild:
+  Add xterm back to DEPEND for uclibc systems #102402 by Yuri Vasilevski and
+  remove ugly arch-wrappings of 3dfx in DEPEND.
+
+  29 Jul 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r2.ebuild, xorg-x11-6.8.99.15.ebuild:
+  (#100392) Stick -j1 after the emake compilation calls.
+
+  26 Jul 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r2.ebuild, xorg-x11-6.8.99.15.ebuild:
+  Add MAKE="make" on debug build for BSD.
+
+  22 Jul 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r2.ebuild:
+  Fileset 0.7. (#99534) Check the right return value on ttmkfdir in the ebuild
+  and in the xfs init script. Otherwise, mkfontscale overwrites the
+  fonts.alias files and breaks encodings including CP1251. Thanks to Alexander
+  Glyzov <isee@inbox.ru>.
+
+  21 Jul 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  -xorg-x11-6.8.99.13.ebuild:
+  Pull old snapshot.
+
+  21 Jul 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.99.15.ebuild:
+  Remove dlloader USE flag. dlloader is now the default upstream and we'll no
+  longer support elfloader. Binary drivers are already broken for other
+  reasons.
+
+  20 Jul 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.99.15.ebuild:
+  Patchset 0.1.2. Add 9500_all_6.8.99.15-dlloader-in-host-def-CVS-HEAD.patch
+  to fix problems with redefining MakeDllModules in host.def.
+
+  20 Jul 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.99.15.ebuild:
+  (#61940) No need for sparc to be stuck on the old keyboard driver anymore.
+
+*xorg-x11-6.8.99.15 (20 Jul 2005)
+
+  20 Jul 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xorg-x11-6.8.99.15.ebuild:
+  New snapshot. Pull mmx, sse and 3dnow USE flags. They're pointless, since what
+  they do is cause Mesa to support them, but Mesa already does runtime checks.
+  (#99534) Fix up return-code check on ttmkfdir, so we don't overwrite its files
+  with mkfontscale. mkfontscale cannot correctly generate CP1251 encodings,
+  among probable others. (#61940) Also, on sparc we can start using the kbd
+  driver like everyone else.
+
+  18 Jul 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  -xorg-x11-6.8.99.5.ebuild, -xorg-x11-6.8.99.8.ebuild:
+  Pull old development snapshots.
+
+  18 Jul 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r1.ebuild, xorg-x11-6.8.2-r2.ebuild,
+  xorg-x11-6.8.99.5.ebuild, xorg-x11-6.8.99.8.ebuild,
+  xorg-x11-6.8.99.13.ebuild, xorg-x11-6.8.99.14.ebuild:
+  Stop polluting /etc/profile.d/ with xprint stuff. Install it as a sample in
+  the doc directory instead.
+
+  11 Jul 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r2.ebuild, xorg-x11-6.8.99.14.ebuild:
+  When I say I don't want Xprint, don't give me Xprint anyway. Turn off
+  BuildXprintClients in addition to BuildXprint for USE="-xprint."
+
+  11 Jul 2005; Aron Griffis <agriffis@gentoo.org> xorg-x11-6.8.2-r2.ebuild:
+  stable on alpha ia64
+
+  10 Jul 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r2.ebuild, xorg-x11-6.8.99.14.ebuild:
+  Clarify no-stripping message.
+
+  08 Jul 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r2.ebuild, xorg-x11-6.8.99.14.ebuild:
+  Fileset 0.6 for 6.8.2-r2, fileset 0.2 for 6.8.99.14. (#83680) Add a change
+  that's mostly useful on LiveCD's: Adding 'nox' to the boot prompt will cause
+  the xdm init script to skip starting a login manager. This will allow
+  selection between X and CLI-only on X-enabled LiveCD's, as well as serving a
+  rescue function for broken X installations.
+
+  08 Jul 2005; Ferris McCormick <fmccor@gentoo.org>
+  xorg-x11-6.8.2-r2.ebuild:
+  Stable for sparc.  This version runs fine.
+
+  07 Jul 2005; Stephen P. Becker <geoman@gentoo.org>
+  xorg-x11-6.8.2-r2.ebuild:
+  stable on mips
+
+  07 Jul 2005; Herbie Hopkins <herbs@gentoo.org> xorg-x11-6.8.2-r2.ebuild:
+  Stable on amd64.
+
+  07 Jul 2005; Guy Martin <gmsoft@gentoo.org> xorg-x11-6.8.2-r2.ebuild:
+  Stable on hppa.
+
+  07 Jul 2005; Markus Rothe <corsair@gentoo.org> xorg-x11-6.8.2-r2.ebuild:
+  Stable on ppc64
+
+  07 Jul 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r2.ebuild:
+  Stable on x86.
+
+  05 Jul 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r2.ebuild:
+  Patchset 0.1.9. Add 4155_all_6.8.99.14-xdm-ipv6-without-kernel-ipv6.patch:
+  (fd.o #2901) This patch fixes several problems arising if xdm is compiled
+  with IPv6 support, but the (linux) kernel does not support IPv6.
+
+*xorg-x11-6.8.99.14 (05 Jul 2005)
+
+  05 Jul 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xorg-x11-6.8.99.14.ebuild:
+  New snapshot.
+
+  03 Jul 2005; Stephen P. Becker <geoman@gentoo.org>
+  xorg-x11-6.8.99.8.ebuild, xorg-x11-6.8.99.13.ebuild:
+  these versions seriously break displaying of icons in gtk and qt apps with
+  the newport driver, so changing keywords to -mips
+
+  30 Jun 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r2.ebuild:
+  Patchset 0.1.8. Add 9925_all_6.8.2-fix-mtrr-endless-loop.patch: (#fd.o 2750)
+  Prevent mtrr_remove_offending from ending up in an endless loop if the
+  offending region refuses to be removed.
+
+  30 Jun 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r2.ebuild:
+  Patchset 0.1.7. Add 9185_all_6.8.2-fix-cursor-memleak.patch: (#31982, fd.o
+  #1043) Xcursor animated themes cause memory leak.
+
+  29 Jun 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r1.ebuild, xorg-x11-6.8.2-r2.ebuild,
+  xorg-x11-6.8.99.5.ebuild, xorg-x11-6.8.99.8.ebuild,
+  xorg-x11-6.8.99.13.ebuild:
+  Use the correct USE flag for enewuser() etc.
+
+  29 Jun 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r2.ebuild, xorg-x11-6.8.99.13.ebuild:
+  Fileset 0.5 for 6.8.2-r2, fileset 0.2 for 6.8.99.13. (#80225) Remove
+  Gentoo-specific code from Xsetup_0 and start installing upstream version
+  instead.
+
+  28 Jun 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r2.ebuild, xorg-x11-6.8.99.13.ebuild:
+  (#77626) Add USE=nocxx to avoid ttmkfdir dependency and use. Substitute
+  mkfontscale instead, which reportedly is worse on CJK stuff. Patch from
+  Peter S. Mazinger <ps.m@gmx.net>.
+
+  28 Jun 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r2.ebuild, xorg-x11-6.8.99.13.ebuild:
+  (#93339) Set up USE=minimal drivers for sparc.
+
+  28 Jun 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r1.ebuild, xorg-x11-6.8.2-r2.ebuild,
+  xorg-x11-6.8.99.5.ebuild, xorg-x11-6.8.99.8.ebuild,
+  xorg-x11-6.8.99.13.ebuild:
+  (#94964) Use enewuser()/enewgroup() for xfs, so default /etc/passwd etc isn't
+  so huge.
+
+*xorg-x11-6.8.99.13 (27 Jun 2005)
+
+  27 Jun 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xorg-x11-6.8.99.13.ebuild:
+  New snapshot.
+
+  11 Jun 2005; Ferris McCormick <fmccor@gentoo.org>
+  xorg-x11-6.8.2-r2.ebuild:
+  Add ~sparc keyword.  This version runs fine for me (and does not
+  create the symbolic link loop for fonts in /usr/share/fonts).
+
+  01 Jun 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r2.ebuild, xorg-x11-6.8.99.8.ebuild:
+  Update TODO.
+
+  01 Jun 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r2.ebuild, xorg-x11-6.8.99.8.ebuild:
+  Remove miscellaneous commented-out symlinking and directory creation.
+
+  01 Jun 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r2.ebuild, xorg-x11-6.8.99.8.ebuild:
+  Remove commented-out migrate_usr_x11r6_lib().
+
+  01 Jun 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r2.ebuild, xorg-x11-6.8.99.8.ebuild:
+  Remove all migration methods besides rsync.
+
+  01 Jun 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r2.ebuild, xorg-x11-6.8.99.8.ebuild:
+  Remove a ton of commented-out migration code.
+
+  01 Jun 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r1.ebuild, xorg-x11-6.8.2-r2.ebuild,
+  xorg-x11-6.8.99.5.ebuild, xorg-x11-6.8.99.8.ebuild:
+  Use '-lt' instead of '-le' for sse tests, so we don't do them on gcc-3.4.4.
+
+  30 May 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r2.ebuild, xorg-x11-6.8.99.8.ebuild:
+  Fileset 0.4 for 6.8.2-r2, fileset 0.2 for 6.8.99.8. (#93920) Don't specify
+  full path to pam modules in /etc/pam.d/ files. It breaks lib64-using
+  systems.
+
+  28 May 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r1.ebuild, xorg-x11-6.8.99.5.ebuild:
+  Propogate sse changes to the rest.
+
+  28 May 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.99.8.ebuild:
+  (#90672) Add die for combo of USE="sdk -dlloader," pending a fix.
+
+  27 May 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  -xorg-x11-6.8.99.3.ebuild:
+  Pull old snapshot.
+
+  27 May 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r2.ebuild, xorg-x11-6.8.99.8.ebuild:
+  Have sse flag mangling only apply on gcc <3.4.4.
+
+  25 May 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.99.8.ebuild:
+  Patchset 0.1.3. (#93864, #90672#c18) Add missing comma. This fixes a parse
+  error in ATIDRIScreenInit in atidri.c.
+
+  24 May 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.99.8.ebuild:
+  (#93856) Remove duplicated statement that checked for invalid USE combos.
+
+  24 May 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r2.ebuild, xorg-x11-6.8.99.8.ebuild:
+  Patchset 0.1.6 for 6.8.2-r2, patchset 0.1.2 for 6.8.99.8. (#89852) Update
+  5901_all_4.2.99.3-acecad-debug-v2.patch so it's compatible with BSD.
+
+  24 May 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r2.ebuild, xorg-x11-6.8.99.8.ebuild:
+  (#89852) Ebuild changes for Gentoo/FreeBSD. Set MAKE, use wheel group
+  instead of root, exclude 0700_all_4.2.0-sessreg-highuid.patch on OpenBSD and
+  FreeBSD; the patch allows for high UIDs in a non-portable way. A suitably
+  motivated person could fix it.
+
+  24 May 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r2.ebuild:
+  Backports from 6.8.99.x, continued: Depend on opengl-update-2.2 for fixed
+  --use-old.
+
+  24 May 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r2.ebuild:
+  Backports from 6.8.99.x. 1) Fix find syntax. 2) Stop setting BuildLinuxDocText.
+
+  24 May 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.99.8.ebuild:
+  Add einfo on the binary driver breakage.
+
+*xorg-x11-6.8.99.8 (24 May 2005)
+
+  24 May 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xorg-x11-6.8.99.8.ebuild:
+  New snapshot. This one breaks some binary drivers; see
+  https://bugs.freedesktop.org/show_bug.cgi?id=3066.
+
+  24 May 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r2.ebuild, xorg-x11-6.8.99.5.ebuild:
+  Patchset 0.1.5 for 6.8.2-r2, patchset 0.1.3 for 6.8.99.5. (#87361) Pull
+  5140_all_6.8.0-radeon-swsusp.patch, which seems to add a redundant
+  RadeonSetFBLocation() compared with CVS, where the bug it was supposed to
+  fix is fixed.
+
+  24 May 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r2.ebuild, xorg-x11-6.8.99.5.ebuild:
+  Fileset 0.3 for 6.8.2-r2, fileset 0.2 for 6.8.99.5. (#24399) Stop *DM from
+  throwing errors on shutdown. (#91470) Don't force fc-cache in xfs init
+  script.
+
+  24 May 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r2.ebuild, xorg-x11-6.8.99.5.ebuild:
+  Patchset 0.1.4 for 6.8.2-r2, patchset 0.1.2 for 6.8.99.5. (#85153, fd.o
+  #1958, fd.o #1951) Add 1050_all_6.8.2-xft-releasefile-crash.patch: libXft
+  dies when passing FT_Face objects directly to Xft.
+
+  24 May 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.99.5.ebuild:
+  (#93034) There's a new FontEncDir that we also need to change to fit our FHS
+  compatibility.
+
+  24 May 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r2.ebuild, xorg-x11-6.8.99.5.ebuild:
+  (#89235) Use has_hardened instead of hardened USE flag, because it checks
+  the active toolchain. Also looks like part of the last commit was missed
+  from 6.8.99.5.
+
+  24 May 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r2.ebuild, xorg-x11-6.8.99.5.ebuild:
+  (#77949) The doc and minimal USE flags don't work together. Add a warning to
+  this effect.
+
+  22 May 2005; Aron Griffis <agriffis@gentoo.org> xorg-x11-6.8.99.5.ebuild:
+  add ~alpha
+
+  18 May 2005; Stephen P. Becker <geoman@gentoo.org>
+  xorg-x11-6.8.99.5.ebuild:
+  added ~mips keyword
+
+  17 May 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  -xorg-x11-6.8.0-r5.ebuild:
+  Drop old version. Everyone's been stabled on 6.8.2-r1 since early April.
+  Also, dropping this should allow us to unconditionally use the new /usr
+  prefix for all other apps instead of some sort of x11-prefix.eclass
+  (#90789).
+
+  17 May 2005; Stephen P. Becker <geoman@gentoo.org>
+  xorg-x11-6.8.99.3.ebuild:
+  added ~mips keyword
+
+  12 May 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.99.5.ebuild:
+  Remove big warning about /usr/lib move, because everything in portage does
+  it now.
+
+  12 May 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.99.5.ebuild:
+  Add a note about Radeon tiling breaking direct rendering in snapshots.
+
+  12 May 2005; Donnie Berkholz <dberkholz@gentoo.org>; :
+  Make ChangeLog more human-readable by replacing PATCH_VER and FILES_VER with
+  patchset and fileset.
+
+*xorg-x11-6.8.99.5 (03 May 2005)
+
+  03 May 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xorg-x11-6.8.99.5.ebuild:
+  New snapshot. Fix find syntax, as we fixed the xfs init script a while ago.
+  Pull BuildLinuxDocText from USE=doc, because it's only useful for sgml
+  building. (#63548, fd.o #3182) Add
+  9020_all_6.8.99.5-fix-dmx-doc-build.patch: fix USE="dmx doc" build. (#fd.o
+  3192) Add 9030_all_6.8.99.5-theatre200_reg.h-doesnt-exist.patch:
+  RageTheatre200 support added in 6.8.99.4 broke the SDK install.
+
+  02 May 2005; Stephen P. Becker <geoman@gentoo.org>
+  xorg-x11-6.8.2-r2.ebuild:
+  added ~mips keyword
+
+  29 Apr 2005; Markus Rothe <corsair@gentoo.org> xorg-x11-6.8.2-r2.ebuild,
+  xorg-x11-6.8.99.3.ebuild:
+  Added ~ppc64 to 6.8.2-r2; Added -ppc64 to 6.8.99.3: won't start..
+
+  27 Apr 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  xorg-x11-6.8.99.3.ebuild:
+  Updated dependency to opengl-update-2.2.0 so we can use 'opengl-update
+  --use-old' again.
+
+  21 Apr 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r2.ebuild, xorg-x11-6.8.99.3.ebuild:
+  Explicitly turn off dlloader with USE=-dlloader. Relevant on >=6.8.99.*, but
+  I'm trying to keep these two in parallel so I'm applying it to both. Caught
+  by sekretarz.
+
+  20 Apr 2005; Ferris McCormick <fmccor@gentoo.org>
+  xorg-x11-6.8.99.3.ebuild:
+  Add ~sparc keyword.  Builds, installs, and runs "out of the box".
+
+  20 Apr 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  xorg-x11-6.8.2-r2.ebuild, xorg-x11-6.8.99.3.ebuild:
+  Marked ~amd64.
+
+  20 Apr 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r2.ebuild, xorg-x11-6.8.99.3.ebuild:
+  Better fix for the last issue.
+
+  20 Apr 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r2.ebuild, xorg-x11-6.8.99.3.ebuild:
+  (#89743) Remove /usr/share/fonts/fonts symlink if it exists. Circular
+  symlink causes major font slowdowns and seems to be some sort of migration
+  artifact.
+
+*xorg-x11-6.8.99.3 (19 Apr 2005)
+
+  19 Apr 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xorg-x11-6.8.99.3.ebuild:
+  Part of a series of development snapshots of CVS HEAD. Pull a ton of patches
+  that were committed upstream:
+  0440_all_6.8.0-support-cymotion-master-and-ibm-space-saver-keyboards.patch,
+  0485_all_6.8.0-afb-cfb-dlloader-fixes.patch,
+  0487_all_6.8.2-add-relocation-type-10-to-elfloader.patch,
+  2000_all_6.8.0-fb-convert-rgb-to-bgr-when-needed.patch,
+  5135_all_6.8.1-r128-ppc-vgaaccess.patch,
+  5160_all_6.8.1-benh-radeon-ppc-fixes-v2.patch,
+  5170_all_6.8.1.904-radeon-add-bioshotkeys-option.patch,
+  5180_all_6.8.2-back-out-extra-radeonsetfblocation.patch,
+  5190_all_6.8.2-radeon-render-byteswap.patch,
+  5200_all_6.8.0-newport-accel-v4.patch,
+  9355_all_6.7.99.2-xorgconfig-fontdir-fixes-v2.patch,
+  9370_all_6.8.1.904-fix-duplicate-cfb-symbols-v2.patch,
+  9375_all_6.8.1.904-fix-duplicate-mfb-symbols.patch,
+  9930_all_6.8.0-xpm-secfix-CAN-2005-0605.patch. Update some patches to
+  reflect changes, such as 9360_all_6.7.99.2-ppc64-support-updates-v3.patch.
+  Also drop 9180_all_4.3.0-xcursorgen-check-malloc-return.patch, which just
+  caused a different kind of error. Drop the patched-in evdev driver (patches
+  9000-9003), because upstream now supplies its own, different evdev driver.
+  (#67578) Drop 0350_all_4.2.0-vt7.patch, which has poor rationale and doesn't
+  work very well.
+
+  15 Apr 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  xorg-x11-6.8.2-r2.ebuild:
+  multilib and some sparc64 cleanup.
+
+  15 Apr 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  -files/xpm-secfix-thomas.diff, -xorg-x11-6.8.0-r3.ebuild:
+  Everyone seems to have newer stable versions, so pull this and its 55K patch.
+
+  15 Apr 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r1.ebuild, xorg-x11-6.8.2-r2.ebuild:
+  (#89182) Don't always call the build Gentoo Linux, since we can build for
+  other OS's.
+
+*xorg-x11-6.8.2-r2 (14 Apr 2005)
+
+  14 Apr 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xorg-x11-6.8.2-r2.ebuild:
+  New revision, with a bunch of updates. Patchset 0.1.3. (#85363, fd.o #1765)
+  Add 0487_all_6.8.2-add-relocation-type-10-to-elfloader.patch: Add another
+  relocation type to the ELF loader. (#82039) Add
+  5137_all_6.8.2-fix-r128-undefined-write-depth.patch: Fix direct rendering on
+  R128 because of undefined WRITE_DEPTH. (#82705) Add
+  9003_all_6.8.2-lnx-evdev-keyboard-dont-grab.patch: Don't grab the keyboard,
+  so combo keyboard/mice work. (#80685) Add 9913_all_6.8.2-cfbgc-gcc4.patch,
+  9914_all_6.8.2-mmx-gcc4.patch and 9915_all_6.8.2-radeon-gcc4.patch: GCC4
+  compile fixes. (fd.o #2750) Add 9920_all_6.8.2-fix-write-combining.patch:
+  Fix case where a smaller write-combining region blocks write-combining
+  setting of the whole frame buffer. Fix bug in wc setting code when regions
+  are first splitted and setting of write-combining then fails. (#82735) Fix
+  find(1) syntax in xfs init script. (#86890) Install release notes. (#82791)
+  Add s3 and vesa drivers on alpha. (#81728) ebegin() use shouldn't contain
+  trailing periods.
+
+  09 Apr 2005; Tom Gall <tgall@gentoo.org> xorg-x11-6.8.2-r1.ebuild:
+  add mga on ppc64, it works!
+
+  06 Apr 2005; Guy Martin <gmsoft@gentoo.org> xorg-x11-6.8.2-r1.ebuild:
+  Fixed build with USE=-xv on hppa.
+
+  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> xorg-x11-6.8.2-r1.ebuild:
+  stable on ia64
+
+  21 Mar 2005; Guy Martin <gmsoft@gentoo.org> xorg-x11-6.8.2-r1.ebuild:
+  Stable on hppa.
+
+  13 Mar 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r1.ebuild:
+  Stable x86. Sorry about the two upgrades in a few days thing, but the first
+  was a security bug so there was some time pressure involved. I figured it's
+  better to stable this sooner so we can save a compile for people who don't
+  sync every day.
+
+  12 Mar 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  -xorg-x11-6.7.0-r3.ebuild, -xorg-x11-6.8.0-r4.ebuild,
+  -xorg-x11-6.8.2.ebuild:
+  (#83598) Remove vulnerable versions except xorg-x11-6.8.0-r3, which is
+  forced to stay until arm, hppa, ia64 stable xorg-x11-6.8.2-r1.
+
+  11 Mar 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r1.ebuild:
+  Stop manually setting HasLinuxInput, as it broke BSD and was only needed for
+  2.2 kernels. So, 2.2 kernels are no longer supported.
+
+  11 Mar 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r1.ebuild:
+  No need to add acecad to ExtraXInputDrivers, it's already in XInputDrivers.
+
+  10 Mar 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r5.ebuild:
+  (#83598) Stable x86. 6.8.2-r1 may be stabled soon but it's pending
+  >=freetype-2.1.8, which I need to discuss with the maintainers, and this
+  can't wait.
+
+  10 Mar 2005; Ferris McCormick <fmccor@gentoo.org> xorg-x11-6.8.2-r1.ebuild:
+  Stable for sparc, closing Bug 83598 --- security patch for XPM.
+
+  10 Mar 2005; Ferris McCormick <fmccor@gentoo.org> xorg-x11-6.8.2-r1.ebuild:
+  Stable for sparc, Bug 83598.
+
+  10 Mar 2005; Danny van Dyk <kugelfang@gentoo.org>
+  xorg-x11-6.8.2-r1.ebuild:
+  Marked stable on amd64.
+
+  09 Mar 2005; Stephen P. Becker <geoman@gentoo.org>
+  xorg-x11-6.8.2-r1.ebuild:
+  stable on mips - bug 83598
+
+  08 Mar 2005; Bryan Østergaard <kloeri@gentoo.org>
+  xorg-x11-6.8.2-r1.ebuild:
+  Stable on alpha, bug 83598.
+
+  06 Mar 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2-r1.ebuild, xorg-x11-6.8.2.ebuild:
+  Make freetype dep versions in DEPEND and RDEPEND match. Reported by Park
+  Ji-In <mithrandir@tisphie.net>.
+
+  06 Mar 2005; Danny van Dyk <kugelfang@gentoo.org>
+  xorg-x11-6.8.0-r5.ebuild:
+  Marked stable on amd64; Security BUG #83598.
+
+  06 Mar 2005; Markus Rothe <corsair@gentoo.org> xorg-x11-6.8.2-r1.ebuild:
+  Stable on ppc64; bug #83598
+
+  06 Mar 2005; Michael Hanselmann <hansmi@gentoo.org>
+  xorg-x11-6.8.2-r1.ebuild:
+  Stable on ppc.
+
+*xorg-x11-6.8.0-r5 (05 Mar 2005)
+
+  05 Mar 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xorg-x11-6.8.0-r5.ebuild, +xorg-x11-6.8.2-r1.ebuild:
+  (#83598, fd.o #1920) Fix more overflows in libXpm.
+
+  02 Mar 2005; Luca Barbato <lu_zero@gentoo.org> xorg-x11-6.8.2.ebuild:
+  Different switch_opengl_implem logic, should fix bug #83645
+
+  26 Feb 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  -xorg-x11-6.8.1.901-r1.ebuild:
+  Pull development version.
+
+  25 Feb 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  xorg-x11-6.8.2.ebuild:
+  dosyms should've been ln -s in postinst's migration code.
+
+  20 Feb 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2.ebuild:
+  Fix hardcoded lib instead of $(get_libdir) in xprint_init_install(), thanks
+  to Daniel Ostrow <dostrow@gentoo.org>.
+
+  19 Feb 2005; Markus Rothe <corsair@gentoo.org> xorg-x11-6.8.2.ebuild:
+  Stable on ppc64
+
+  17 Feb 2005; Michael Hanselmann <hansmi@gentoo.org> xorg-x11-6.8.2.ebuild:
+  Stable on ppc.
+
+  14 Feb 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  xorg-x11-6.8.2.ebuild:
+  Unfubar libdir symlinks made by migration.
+
+  13 Feb 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2.ebuild:
+  (#81851) Clarify local cursor settings info.
+
+  13 Feb 2005; Bryan Østergaard <kloeri@gentoo.org> xorg-x11-6.8.2.ebuild:
+  ~alpha keyword.
+
+  11 Feb 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2.ebuild:
+  Install glxext.h, glxmd.h and glxproto.h to /usr/lib/opengl. Stop symlinking
+  glext.h manually because we depend on new enough opengl-update now.
+
+  11 Feb 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  xorg-x11-6.8.2.ebuild:
+  Moved fix_libtool_libdir_paths after the opengl .las get moved to their
+  final locations.
+
+  11 Feb 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  -xorg-x11-6.8.1.902-r1.ebuild, -xorg-x11-6.8.1.902.ebuild,
+  -xorg-x11-6.8.1.903.ebuild, -xorg-x11-6.8.1.904.ebuild:
+  Pull old versions. Still waiting for 6.8.2 to be ~alpha so 6.8.1.901-r1 can
+  be pulled.
+
+  11 Feb 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.2.ebuild:
+  Update opengl-update dependency to >=2.1.1 -- lower versions were broken in
+  various ways.
+
+*xorg-x11-6.8.2 (11 Feb 2005)
+
+  11 Feb 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xorg-x11-6.8.2.ebuild:
+  Here 'tis. Add 5180_all_6.8.2-back-out-extra-radeonsetfblocation.patch --
+  Somehow when applying fd.o #1220 and fd.o #1912, things got mixed up. An
+  extra call to RadeonSetFBLocation() was added to RADEONAdjustFrame(). Back
+  this out. Michel Daenzer says: As I said before: it's unnecessary writes to
+  GPU memory controller registers. In the best case, there's an unnecessary
+  slight delay maybe; in the worst case, the GPU might wedge. (#81283, fd.o
+  #2164) Add 5190_all_6.8.2-radeon-render-byteswap.patch -- Forgot to return
+  TRUE at the end of RADEONSetupRenderByteswap() so some render-accelerated
+  stuff was screwed up. (#76807) Break up xbox patch into two patches and
+  update it: 9990_x86_6.8.0-nvxbox-20050107.patch and
+  9991_x86_6.8.1.904-xbox-pci-20050207.patch. (#81459) Fix up libtool archives
+  for multilib; stop installing libMesaGLU.so symlink; Stop having
+  /usr/X11R6/lib in libtool archives because /usr/X11R6 is just a symlink now.
+
+  10 Feb 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  xorg-x11-6.8.1.904.ebuild:
+  Don't install libMesaGLU.so.  Fix 'libdir' in .la files.
+
+  09 Feb 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild, xorg-x11-6.8.1.904.ebuild:
+  (#81431) We should only be removing libGL.*, but unfortunately the dot
+  matched any character so we needed libGL\.* instead. Note that this has been
+  around since xfree-4.3.0.
+
+  08 Feb 2005; David Holm <dholm@gentoo.org> xorg-x11-6.8.1.904.ebuild:
+  Added to ~ppc.
+
+  07 Feb 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.1.904.ebuild:
+  Patchset 0.1.3. Add
+  9250_all_6.8.1.904-respect-xfree86configtools-setting.patch -- respect
+  whether configuration tools are desired. Also some other USE=minimal
+  enhancements: Stop building unneeded static libraries, the DPS libraries,
+  the config tools and xf8* (unneeded for these drivers). The install size is
+  now 22MB.
+
+  05 Feb 2005; Marcus D. Hanwell <cryos@gentoo.org> xorg-x11-6.8.0-r4.ebuild:
+  Marked stable on amd64.
+
+  05 Feb 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.1.903.ebuild, xorg-x11-6.8.1.904.ebuild:
+  (#80740) Block <=app-emulation/emul-linux-x86-xlibs-1.2-r3 at eradicator's
+  request until problem with lib32 is fixed, which should be in 1.2-r4.
+
+  04 Feb 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.1.904.ebuild:
+  Fileset 0.2. Remove PATH and ROOTPATH from /etc/env.d/10xorg, as
+  everything's in /usr/bin now. Also remove LIBGL_DRIVERS_PATH. I was told
+  this was necessary if they weren't in /usr/X11R6/lib/modules/dri, but really
+  it seems it's only if they aren't in the compile-time UsrLibDir.
+
+  04 Feb 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild:
+  Patchset 0.2.11.3. (#79497, #80736) Add
+  9380_all_6.8.1.904-fix-duplicate-cfb-symbols-v2.patch. xorgcfg / X
+  -configure produce a bunch of unresolved cfb symbols. This can also break
+  the build in some cases. (#78147, #80736) Add
+  9385_all_6.8.1.904-fix-duplicate-mfb-symbols.patch. Build can break because
+  of duplicate mfb symbols.
+
+  04 Feb 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.1.904.ebuild:
+  Patchset 0.1.2. (#79497) Update
+  9370_all_6.8.1.904-fix-duplicate-cfb-symbols-v2.patch. Use more correct
+  version committed to HEAD rather than from our Bugzilla. (#78147, #80736)
+  Add 9375_all_6.8.1.904-fix-duplicate-mfb-symbols.patch. Build can break
+  because of duplicate mfb symbols.
+
+  04 Feb 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.1.904.ebuild:
+  pkg_preinst(): Add checks for more symlinks: /usr/bin/X11,
+  /usr/include/GL/GL and /usr/include/X11/X11. Reported by Ferris McCormick
+  <fmccor@gentoo.org>.
+
+  04 Feb 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.1.904.ebuild:
+  Symlink '../share/man /usr/X11R6/man' doesn't really make sense anymore --
+  results in a /usr/man symlink, which is just weird.
+
+  04 Feb 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.1.904.ebuild:
+  There aren't cases when a symlink '../include ${ROOT}/usr/X11R6/include'
+  would be useful anymore. Reported by Ferris McCormick <fmccor@gentoo.org>.
+
+  04 Feb 2005; Stephen P. Becker <geoman@gentoo.org>
+  xorg-x11-6.8.1.904.ebuild:
+  added ~mips keyword
+
+  03 Feb 2005; Marcus D. Hanwell <cryos@gentoo.org> xorg-x11-6.8.1.904.ebuild:
+  Marked ~amd64.
+
+  03 Feb 2005; Ferris McCormick <fmccor@gentoo.org> xorg-x11-6.8.1.904.ebuild:
+  Add ~sparc keyword.  This release is working well for me (hardened and patched
+  for sunffb+xaa and for sunleo, as described at Bug 79467).
+
+  03 Feb 2005; Markus Rothe <corsair@gentoo.org> xorg-x11-6.8.1.904.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+*xorg-x11-6.8.1.904 (03 Feb 2005)
+
+  03 Feb 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xorg-x11-6.8.1.904.ebuild:
+  6.8.2 RC4. Hopefully the last one. (#79497) Fixes duplicate cfb* symbols on
+  `X -configure` and xorgcfg. (#79033, fd.o #2000) Add BIOSHotkeys option to
+  radeon driver, which allows people to enable hotkeys that the driver
+  disables by default -- from CVS HEAD.
+
+  02 Feb 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.1.903.ebuild:
+  Remove /usr/include/GL and /usr/include/X11 symlinks if needed, so migration
+  works properly. /usr/include/GL was particularly annoying, since the X build
+  created it, so set LinkGLToUsrInclude to NO. This should be turned into a
+  source patch that prevents the link if $(SYSTEMUSRINCDIR) = $(INCDIR) and
+  sent upstream. Also add ukr to G_FONTDIRS if USE=nls. Problems reported by
+  Daniel Ostrow <dostrow@gentoo.org> and Ferris McCormick <fmccor@gentoo.org>.
+
+  02 Feb 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.1.903.ebuild:
+  Change die() to ewarn() if a directory exists in both font locations in
+  remove_font_dirs(). The migration should catch that problem, so there's no
+  need to die. Also append cyrillic to G_FONTDIRS if USE=nls, so its fonts.*
+  files get cleaned. Reported by Andres Järv <andresjarv@gmail.com>.
+
+  02 Feb 2005; Markus Rothe <corsair@gentoo.org> xorg-x11-6.8.1.903.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  01 Feb 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.1.903.ebuild:
+  Check whether $G_FONTDIR is a directory in remove_font_dirs(), not just
+  whether it exists. fonts.cache-1 can apparently exist in /usr/share/fonts/
+  sometimes. Reported by Roman Gaufman <hackeron@gmail.com>.
+
+*xorg-x11-6.8.1.903 (01 Feb 2005)
+
+  01 Feb 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xorg-x11-6.8.1.903.ebuild:
+  6.8.2 RC3. As a bonus, also migrates everything out of /usr/X11R6 and turns
+  it into a symlink to /usr. It uses rsync by default, although you can test
+  the probably-broken tar or known-broken mv if you'd like.
+
+  30 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.7.0-r3.ebuild:
+  (#80131) Update some URLs for patchsets.
+
+  29 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.1.902-r1.ebuild:
+  Rename patch() to do_patch() so it doesn't overlap with the patch utility
+  and cause some fun infinite recursion. Thanks much to vapier for helping out
+  with this, because I never would've figured it out.
+
+  25 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.1.902-r1.ebuild, xorg-x11-6.8.1.902.ebuild:
+  (#47598) Stop installing libMesaGL -- it's a remnant from years ago and
+  shouldn't be used. Any app using it is broken.
+
+  25 Jan 2005; Ferris McCormick <fmccor@gentoo.org> xorg-x11-6.8.1.902.ebuild:
+  Add ~sparc keyword for testing --- builds and runs for me.  Track for sparc
+  at Bug 79467.
+
+  24 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.1.902-r1.ebuild:
+  Update TODO.
+
+  24 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.1.902-r1.ebuild:
+  libGLU symlink was only done on ! use opengl, which seems as if it's reversed.
+
+  24 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.1.902-r1.ebuild:
+  Functionalize src_install(). Rename a number of poorly named functions that
+  e.g., have setup_ in the name but happen in src_install().
+
+  24 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.1.902-r1.ebuild:
+  Functionalize pkg_preinst(), pkg_postinst(), pkg_postrm().
+
+  24 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.1.902-r1.ebuild:
+  Functionalize pkg_setup(), src_unpack(), src_compile().
+
+  24 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.1.902.ebuild:
+  Drop unnecessary, unused cruft and update TODO.
+
+*xorg-x11-6.8.1.902-r1 (24 Jan 2005)
+
+  24 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xorg-x11-6.8.1.902-r1.ebuild:
+  Add -* so we get CVS history of gradual changes instead of changing 500
+  lines in a revision bump all at once.
+
+  23 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.1.902.ebuild:
+  Pull a bunch of implied Mesa optimizations.
+
+  22 Jan 2005; Markus Rothe <corsair@gentoo.org> xorg-x11-6.8.1.902.ebuild:
+  removed ppc64 specific functions pkg_prerm() and relink_dlloader_files() as
+  they are no longer needed
+
+  21 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild, xorg-x11-6.8.1.901-r1.ebuild,
+  xorg-x11-6.8.1.902.ebuild:
+  (#79019) SSE, MMX, 3DNOW! were getting turned off for x86 people because of
+  the amd64 changes.
+
+  21 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild, xorg-x11-6.8.1.901-r1.ebuild,
+  xorg-x11-6.8.1.902.ebuild:
+  Install OpenGL stuff to /usr/libdir/opengl/$PN/lib, not
+  /usr/libdir/opengl/$PN/libdir. Again thanks to eradicator for the libdir
+  advice.
+
+  21 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild, xorg-x11-6.8.1.901-r1.ebuild,
+  xorg-x11-6.8.1.902.ebuild:
+  Need to apply last change in lib as well as libdir.
+
+  21 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild, xorg-x11-6.8.1.901-r1.ebuild,
+  xorg-x11-6.8.1.902.ebuild:
+  eradicator discovered that some really bothersome packages leave dotfiles in
+  /usr/X11R6/lib, which breaks the migration because rmdir won't run.
+
+  21 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.7.0-r3.ebuild, xorg-x11-6.8.0-r3.ebuild,
+  xorg-x11-6.8.0-r4.ebuild, xorg-x11-6.8.1.901-r1.ebuild,
+  xorg-x11-6.8.1.902.ebuild:
+  Remove xfree blocker, since xfree's no longer in the tree.
+
+  21 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild:
+  (#78930) Update tarball location.
+
+  21 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild, xorg-x11-6.8.1.901-r1.ebuild,
+  xorg-x11-6.8.1.902.ebuild:
+  Drop blocker on app-text/dgs, which no longer exists in the tree. Apparently
+  this breaks things for some people, although I'm unable to reproduce it.
+
+  21 Jan 2005; Stephen P. Becker <geoman@gentoo.org>
+  xorg-x11-6.8.0-r4.ebuild:
+  stable on mips
+
+  21 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild, xorg-x11-6.8.1.901-r1.ebuild,
+  xorg-x11-6.8.1.902.ebuild:
+  Add a match for lib to RgbPath fixing so libdir != lib cases work.
+
+  20 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild:
+  Unleash upon the x86 masses.
+
+  20 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild, xorg-x11-6.8.1.902.ebuild:
+  (#76985) Add pointer to docs.
+
+  20 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild:
+  Patchset 0.2.11.2. Backport fixes from 6.8.1.902 for #76356, #38549, fd.o
+  #1895 and #38549. See its ChangeLog entry for more details on them.
+  Fileset 0.7. Backport fix for #76356, again from 6.8.1.902.
+
+  20 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.1.902.ebuild:
+  Fileset 0.3. The fix for #76356 was incorrect.
+
+  20 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild, xorg-x11-6.8.1.901-r1.ebuild,
+  xorg-x11-6.8.1.902.ebuild:
+  (#77979) Force SSE, MMX, 3DNOW! on amd64.
+
+  20 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r3.ebuild, xorg-x11-6.8.0-r4.ebuild,
+  xorg-x11-6.8.1.901-r1.ebuild, xorg-x11-6.8.1.902.ebuild:
+  (#67729) Libtool archives need to be installed from FILES_DIR/lib, not
+  $(get_libdir).
+
+  20 Jan 2005; Ferris McCormick <fmccor@gentoo.org> xorg-x11-6.8.0-r4.ebuild:
+  Stable for sparc, closes tracking bug 63994.
+
+  19 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.1.902.ebuild:
+  Patchset 0.1.2. (fd.o #1895, #38549) Add
+  2000_all_6.8.0-fb-convert-rgb-to-bgr-when-needed.patch: DIX didn't always
+  convert RGB to BGR. (#38549) Bump 5200_all_6.8.0-newport-accel-v4.patch: The
+  color problem was actually because of fd.o #1895. Fileset 0.2. (#76356)
+  Add "redundant" LDPATH=/usr/lib to /etc/env.d/10xorg because nomachine
+  provides a duplicate libX11 with changes that break pretty much everything,
+  and we need to trump it.
+
+  19 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  -xorg-x11-6.7.0-r2.ebuild, -xorg-x11-6.8.0-r1.ebuild:
+  (#71642) Drop vulnerable versions -- everyone's keyworded safely for a newer
+  6.7.0 or 6.8.0.
+
+  19 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r3.ebuild:
+  (#77589, #71642) keyword ia64, spanky-approved.
+
+  19 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  -xorg-x11-6.8.1.901.ebuild:
+  Pull "old" version.
+
+  19 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild:
+  Backport (#76537) migration fixes and (#76074) xprint fixes from 6.8.1.*.
+
+  17 Jan 2005; Danny van Dyk <kugelfang@gentoo.org>
+  xorg-x11-6.8.1.902.ebuild:
+  Marked ~amd64. seemant tested.
+
+  15 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.1.901-r1.ebuild, xorg-x11-6.8.1.902.ebuild:
+  (#78074) DO NOT use '-d' in test because it's true on symlinks to dirs too.
+
+  15 Jan 2005; Markus Rothe <corsair@gentoo.org> xorg-x11-6.8.1.902.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  14 Jan 2005; Stephen P. Becker <geoman@gentoo.org>
+  xorg-x11-6.8.1.901-r1.ebuild, xorg-x11-6.8.1.901.ebuild,
+  xorg-x11-6.8.1.902.ebuild:
+  added ~mips keyword
+
+  14 Jan 2005; Luca Barbato <lu_zero@gentoo.org> xorg-x11-6.8.1.902.ebuild:
+  Marked ~ppc
+
+*xorg-x11-6.8.1.902 (13 Jan 2005)
+
+  13 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xorg-x11-6.8.1.902.ebuild:
+  6.8.2 RC2. I expect most archs will work roughly the same with this as with
+  6.8.2 RC1, but I'll let them do their own testing to confirm or deny. (fd.o
+  #2144) Update BenH's patch to fix some issues with miscalculation of MCLK
+  and SCLK values from his old patch.
+
+  13 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.1.901-r1.ebuild:
+  Keyword ~x86 ~sparc ~ppc64 ~ppc ~amd64 ~alpha, like 6.8.1.901 is. No
+  arch-dependent source-code changes. The migration particularly needs to be
+  tested on amd64, but I've had multiple success reports.
+
+*xorg-x11-6.8.1.901-r1 (12 Jan 2005)
+
+  12 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xorg-x11-6.8.1.901-r1.ebuild:
+  Patchset 0.3.4. (#70712) Add 9865_all_add-nodeadkeys-to-gb.patch. Enable
+  deadkeys for gb keymap. They got lost sometime between XFree86 4.3.0 and
+  X.Org 6.8.0. (#76537, probably others) Also, do some work on the migration
+  function that should fix things up for amd64 users and anyone else with a
+  libdir != lib. (#76074) Install xprint scripts correctly, thanks to Stefan
+  Briesenick <sbriesen@gmx.de>.
+
+  12 Jan 2005; Stephen P. Becker <geoman@gentoo.org>
+  xorg-x11-6.8.0-r4.ebuild:
+  forgot newport in 6.8.0-r4, added
+
+  11 Jan 2005; Stephen P. Becker <geoman@gentoo.org>
+  xorg-x11-6.7.0-r3.ebuild, xorg-x11-6.8.0-r3.ebuild,
+  xorg-x11-6.8.0-r4.ebuild, xorg-x11-6.8.1.901.ebuild:
+  various stabilizations on mips for bug 77588, also restrict drivers to
+  newport and fbdev on mips
+
+  11 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  xorg-x11-6.8.0-r3.ebuild, xorg-x11-6.8.0-r4.ebuild,
+  xorg-x11-6.8.1.901.ebuild:
+  Only do amd64 libdir overriding on older profiles.
+
+  10 Jan 2005; Aron Griffis <agriffis@gentoo.org> xorg-x11-6.8.1.901.ebuild:
+  add ~alpha
+
+  07 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild, xorg-x11-6.8.1.901.ebuild:
+  (#76936) USE=opengl and USE=xv are mutually interdependent -- not only one way.
+
+  05 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild, xorg-x11-6.8.1.901.ebuild:
+  Strip -momit-leaf-frame-pointer on sparc, since -fomit-frame-pointer is also
+  stripped.
+
+  04 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild, xorg-x11-6.8.1.901.ebuild:
+  Add -momit-leaf-frame-pointer to ALLOWED_FLAGS. Read the gcc man page for
+  why this is cool.
+
+  04 Jan 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild, xorg-x11-6.8.1.901.ebuild:
+  For USE=minimal, add BuildLBX NO.
+
+  02 Jan 2005; Marcus Hanwell <cryos@gentoo.org> xorg-x11-6.8.1.901.ebuild:
+  Marked ~amd64.
+
+  28 Dec 2004; Tom Martin <slarti@gentoo.org> xorg-x11-6.8.0-r4.ebuild:
+  Marked ~amd64.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  24 Dec 2004; David Holm <dholm@gentoo.org> xorg-x11-6.8.1.901.ebuild:
+  Added to ~ppc.
+
+  24 Dec 2004; Markus Rothe <corsair@gentoo.org> xorg-x11-6.8.0-r4.ebuild,
+  xorg-x11-6.8.1.901.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  23 Dec 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild:
+  Patchset 0.2.11.1. (fd.o #2114, #66223) Add
+  9370_all_6.7.0-ppc64-linux26-headers-v2.patch. See when it was added to
+  6.8.1.901 for a further description.
+
+  23 Dec 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.7.0-r2.ebuild, xorg-x11-6.7.0-r3.ebuild,
+  xorg-x11-6.8.0-r1.ebuild, xorg-x11-6.8.0-r3.ebuild,
+  xorg-x11-6.8.0-r4.ebuild, xorg-x11-6.8.1.901.ebuild:
+  (#75034, #75329) Fix kernel_is() calls, various problems with subshells and
+  tests. Thanks to splite for some of the fixes.
+
+  22 Dec 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.1.901.ebuild:
+  Update freetype dep to >=media-libs/freetype-2.1.8 from
+  >=media-libs/freetype-2.1.4, so we don't use stale libs. X also has an
+  internal freetype, and 2.1.8 is where it's at in 6.8.
+
+  22 Dec 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.1.901.ebuild:
+  Patchset 0.3.3. (#75174) 9370_all_6.7.0-ppc64-linux26-headers-v2.patch was
+  in a generic PPC section when it needed to apply only for PPC64.
+
+  20 Dec 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r3.ebuild, xorg-x11-6.8.0-r4.ebuild,
+  xorg-x11-6.8.1.901.ebuild:
+  (#75067) SSE3 is also broken on gcc 3.4, so append -mno-sse3.
+
+  19 Dec 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.1.901.ebuild:
+  Patchset 0.3.2. (#66223) Add 9370_all_6.7.0-ppc64-linux26-headers.patch.
+  Architectures with arch-specific eieio() routines require this. PPC64 is one
+  example, with >=linux-headers-2.6.
+
+  19 Dec 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.1.901.ebuild:
+  Patchset 0.3.1. This should help out PPC users on Radeon and Rage128.
+  
+  (fd.o #2064) Add 5160_all_6.8.1-benh-radeon-ppc-fixes.patch, with tons of
+  changes:
+  
+  1. This patch adds the "VGAAccess" option (defaults to NO on PPC and YES on
+  others) that disables all legacy VGA stuffs in the driver, since they are
+  causing various issues on non-x86 machines.
+  
+  2. This patch makes sure CRTC2_OFFSET_CNTL is cleared. None of the options in
+  this register should be enabled with our current driver, and some firmwares
+  setup a tiled display, which we _must_ disable for now. Without this, the
+  second screen is completely scrambled on some PowerMacs.
+  
+  3. This patch fix the routine that probes for PLL values in absence of a
+  BIOS ROM. The measure is more precise, done several times to avoid
+  "gliches" caused by scheduling latencies, plus the patch fixes actual
+  bugs in the previous iteration of the code. It also add calculation of
+  the mclk and sclk values for proper display bandwidth calculation and
+  adds proper min/max PLL values for r420 type cards.
+  
+  4. The display bandwidth calculation code has a small bug when looking at
+  the memory controller setup on r300 chips. Hui from ATI confirmed that
+  this was the right fix.
+  
+  5. When using MergedFB, the driver would call RADEONInitPLLRegisters for the
+  first head even when UseBiosDividers was set to TRUE, which was incorrect.
+  This patch fixes it by moving the test of UseBiosDividers into
+  RADEONInitPLLRegisters which simplifies the code in the caller and is more
+  logical.
+  
+  6. The dual head setup was recently re-broken (after having been fixed a while
+  ago) with SURFACE_CNTL beeing written with the wrong value from the second
+  head. The problem is that usually, only the first head had a correct value
+  in there, and the driver would regular mixup which register setup was used to
+  restore that value. This patch fixes it once for all by making sure the
+  second head does carry the proper value too.
+  
+  7. The second digital output of the radeon chip doesn't like when the P2PLL
+  is set with an odd post-divider value. This makes sure we never chose
+  a "wrong" value when calculating the P2PLL setting on a non-CRT screen.
+  
+  8. On some cards where no BIOS provided output mapping infos is available, the
+  driver would get the DDC flipped between the two outputs of the card. This
+  typically happen on recent Mac cards. This adds an option to force the
+  driver to reverse what it thinks is the primary display DDC and the
+  secondary display DDC. Ultimately, we'll have to do a better job of
+  recognizing those Mac cards though.
+  
+  9. RadeonValidateFPModes() has a bug where it could try to dereference
+  a NULL pointer in some cases when linking in modes. This fixes it.
+  
+  10. This patch adds an option for probing the PLL value at server init time
+  for LVDS panels and re-using it later (by setting UseBiosDividers). It's
+  useful on machines without an X86 BIOS image providing the proper set of
+  divider values for the LVDS, as the value calculated by
+  RADEONInitPLLRegisters() tend not to be suitable for some LVDS panels.
+  It also changes a bit the way the panel infos are extracted, the previous
+  code didn't quite work for me, and after discussing with Hui, I decided
+  to move the detection earlier in the discovery process and to do it slightly
+  differently.
+  
+  (fd.o #2089) Add 5135_all_6.8.1-r128-ppc-vgaaccess.patch. This patch adds the
+  "VGAAccess" option (defaults to NO on PPC and YES on others) that disables
+  all legacy VGA stuffs in the driver, since they are causing various issues on
+  non-x86 machines.
+
+*xorg-x11-6.8.1.901 (18 Dec 2004)
+
+  18 Dec 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xorg-x11-6.8.1.901.ebuild:
+  Add 6.8.2 release candidate 1.
+
+  14 Dec 2004; Ferris McCormick <fmccor@gentoo.org> xorg-x11-6.8.0-r4.ebuild:
+  Add ~sparc keyword in anticipation of impending unmasking.  So far,
+  tests stable for sparc.
+
+  13 Dec 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild:
+  Patchset 0.2.11. (fd.o #1934, #47922) Add the highly demanded fix for DPMS
+  problems: 9830_all_6.8.0-fix-random-dpms-blanks.patch. Fix
+  0455_all_6.8.0-prevent-keyboard-hardware-repeat-v2.patch with new code from
+  upstream (fd.o #1651 comment #9). Add three sparc patches: (#fd.o #1114,
+  #61063) 0485_all_6.8.0-afb-cfb-dlloader-fixes.patch, which allows sunffb+cfb
+  to work with dlloader; (fd.o #2072, #61063)
+  0490_all_6.8.0-sparc-dlloader-cflags.patch, which defines
+  LargePositionIndependentCflags when Mesa is built for the dlloader; and
+  (fd.o #2073, #61063) 0495_all_6.8.0-sunffb-imake.patch, which prevents the
+  incompatible CFLAGS combination of '-mcpu=ultrasparc -mv8' because Xorg
+  wrongly tries to not build a 64-bit version when it shouldn't be doing this.
+  Also, fix the ebuild to work with new sparc patches and to respect that
+  dlloader+sdk has worked for quite a while.
+
+  12 Dec 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild:
+  Fix up kernel_is() calls, thanks to Georgi Georgiev <chutz@gg3.net>.
+
+  10 Dec 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild:
+  Change munging of config file RgbPath to match where it's currently
+  installed, and use get_libdir() for it.
+
+  10 Dec 2004; Guy Martin <gmsoft@gentoo.org> xorg-x11-6.8.0-r3.ebuild:
+  Stable on hppa.
+
+  06 Dec 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.7.0-r2.ebuild, xorg-x11-6.7.0-r3.ebuild,
+  xorg-x11-6.8.0-r1.ebuild, xorg-x11-6.8.0-r3.ebuild:
+  Move from custom is_kernel() in x11.eclass to kernel_is() in
+  linux-info.eclass. It's not maintained by us, and that's a plus in itself.
+
+  06 Dec 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild:
+  Move from custom is_kernel() in x11.eclass to kernel_is() in
+  linux-info.eclass. It's not maintained by us, and that's a plus in itself.
+
+  06 Dec 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild:
+  Try pulling get_number_of_jobs(), on suggestion of Michael Sterrett
+  <mr_bones_@gentoo.org>. The only reason I'd guess it might be there is
+  related to comment #5 on bug #13565.
+
+  06 Dec 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild:
+  Remove duplication in library stripping. Thanks to Georgi Georgiev
+  <chutz@gg3.net>.
+
+  06 Dec 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild:
+  Remove double definition of HOSTCONF. Thanks to Georgi Georgiev
+  <chutz@gg3.net>.
+
+  06 Dec 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild:
+  Change LibDir to /usr/libdir/X11 instead of /usr/libdir. Remove some related
+  hacks, and fix paths of relevant things. Suggested by Georgi Georgiev
+  <chutz@gg3.net>.
+
+  06 Dec 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild:
+  Switch around comments for UsrLibDir and LibDir.
+
+  06 Dec 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild:
+  Fix an xkb symlink that was hardcoded lib rather than using get_libdir().
+  Reported by Georgi Georgiev <chutz@gg3.net>.
+
+  06 Dec 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild:
+  Add another sed match to fix xorg.conf.example.
+
+  06 Dec 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild:
+  Add >=x11-misc/ttmkfdir-3.0.9-r2 to RDEPEND. It slipped out of RDEPEND in
+  the dependency cleanup a while back. Thanks to Georgi Georgiev
+  <chutz@gg3.net> for catching this.
+
+  04 Dec 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild:
+  Patchset 0.2.10. Add 0450_all_6.8.0-set-default-xkbmodel-to-pc105.patch. In
+  the old 'keyboard' driver, pc105 was the default. Restore the new 'kbd'
+  driver to the same. This is from upstream CVS. It may fix some bugs relating
+  to certain keys not working. Add
+  0455_all_6.8.0-prevent-keyboard-hardware-repeat.patch. (fd.o #1651) Filter
+  out autorepeat scancodes from the keyboard, because X does this already.
+  This is from upstream CVS. Add
+  6200_all_6.8.0-fix-glxquerycontextinfo-libgl-segfault.patch. (fd.o #1672)
+  Ian Romanick: the request structure for this case is never allocated, so we
+  write through an uninitialized pointer if glx version > 1.2. This is from
+  upstream CVS. Move 9930_all_6.8.1-xpm-secfix-CAN-2004-0914.patch from
+  xpm-secfix-thomas.diff in FILESDIR. Add
+  9930_all_6.8.1-xpm-secfix-CAN-2004-0914.patch. (fd.o #1924, #71842) The new
+  sanity checks prevent using file names that start with a "/" which along
+  with other checks wouldn't let you use libXpm to write files that aren't in
+  or beneath the process's current working directory. This breaks GIMP's xpm
+  plugin, among other things. Add 9945_all_6.8.1-xmodmap-overflows.patch.
+  (fd.o #1818) Fix overflow in xmodmap. A less user-visible change is the
+  switch from PatchChangelog to the DESCRIPTIONS file, which aims to describe
+  the reason for every patch being applied. It's far from complete, but it's
+  something.
+
+  04 Dec 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  -xorg-x11-6.8.0-r2.ebuild:
+  Remove stale, vulnerable version.
+
+  23 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.7.0-r2.ebuild, xorg-x11-6.7.0-r3.ebuild,
+  xorg-x11-6.8.0-r1.ebuild, xorg-x11-6.8.0-r2.ebuild,
+  xorg-x11-6.8.0-r3.ebuild, xorg-x11-6.8.0-r4.ebuild:
+  Update homepage (#72274).
+
+  23 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild:
+  Work around portage bug with parentheses in PROVIDE.
+
+  22 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild:
+  Stop requiring the BREAKME variable. This should be to a point where it's
+  working reasonably well.
+
+  22 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild:
+  Fix problem where one could end up with '/usr/lib/fonts' font paths in
+  xorg.conf.example by adding a new sed match. This happens because we changed
+  from /usr/X11R6/libdir to /usr/libdir.
+
+  22 Nov 2004; Tom Gall <tgall@gentoo.org>;
+  xorg-x11-6.7.0-r3.ebuild:
+  stable on ppc64
+
+  21 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild:
+  Fix broken SRC_URI.
+
+  21 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild:
+  Only provide virtual/glu and virtual/opengl if USE=opengl. Also don't create
+  GLU symlinks when USE=-opengl, since GLU isn't built.
+
+  21 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild:
+  Don't hide things behind USE=minimal that are already behind other USE
+  flags, so we can combine minimal with various other things.
+
+  21 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild:
+  For USE=minimal, remove all unnecessary fonts. This saves ~5.5MB.
+  Unfortunately, this is a temporary hack -- we should really patch
+  xc/fonts/bdf/misc/Imakefile to never build them in the first place. Also
+  only add CID to G_FONTDIRS for USE=cjk, so other people don't have a symlink
+  pointing to nothing.
+
+  20 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild:
+  Patchset 0.2.9. Add 1110_all_6.8.0-force-build-font-utils-if-needed.patch.
+  USE=minimal will now start successfully, because enough fonts are built.
+  When BuildClients is off and BuildFonts is on, mkfontscale and mkfontdir
+  aren't built. But mkfontscale is used during the build process and mkfontdir
+  is needed later, so we should build them anyway if UseInstalled isn't on.
+  This fixes the USE=minimal build. Also, build the RGB database and xinit for
+  a couple of non-essential but nearly always desired things. We require
+  bdftopcf too. Also add xauth so startx works nicely. Problems still remain
+  with switching back to the console using the ctrl-alt-Fn sequence, probably
+  because of us not doing something with xkb. Don't worry about changing
+  definition of i386Drivers because we don't use it anymore in USE=minimal.
+  Only add i810 for amd64, rather than for everyone. GLU depends on GL being
+  built, so fix that. XF86Rush similarly depends on XV.
+
+  20 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild:
+  Commit it properly this time.
+
+  20 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild:
+  Revert last commit, it had too much in it.
+
+  20 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild:
+  Reduce USE=minimal x86 drivers to: vmware vesa vga dummy fbdev v4l.
+
+  19 Nov 2004; Tom Gall <tgall@gentoo.org> xorg-x11-6.8.0-r3.ebuild:
+  revert to ~ppc64, needs work
+
+  18 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild:
+  For USE=minimal, drop cursor sets other than core and handhelds.
+
+  18 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild:
+  Add a backwards-compat symlink for /usr/X11R6/libdir/X11/config (#71654).
+
+  18 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild:
+  For USE=uclibc, stop building glxgears and glxinfo. But build GLU library
+  again.
+
+  17 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>; :
+  Update credits on xpm-secfix-thomas.diff.
+
+  17 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r4.ebuild:
+  Patchset 0.2.8. Update Newport acceleration patch to
+  5200_all_6.8.0-newport-accel-v3.patch (#38549). This fixes a red/blue swap
+  for applications using RENDER acceleration such as gnome-terminal, gvim and
+  xchat2.
+
+*xorg-x11-6.8.0-r4 (17 Nov 2004)
+
+  17 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xorg-x11-6.8.0-r4.ebuild:
+  Add xpm-secfix-thomas.diff. This is a continuation of the hard-masked 6.8.0-r2.
+
+  17 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r3.ebuild:
+  Remove ppc64-specific relinking for dlloader issues, because it's fixed in
+  6.8. Requested by Markus Rothe <corsair@gentoo.org>.
+
+*xorg-x11-6.8.0-r3 (17 Nov 2004)
+
+  17 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  +files/xpm-secfix-thomas.diff, +xorg-x11-6.7.0-r3.ebuild,
+  +xorg-x11-6.8.0-r3.ebuild:
+  Security update: Add xpm-secfix-thomas.diff to fix many issues, including:
+  integer issues resulting in infinite loops and buffer overflows; a one-byte
+  buffer overflow; stack-based overflows with sprintf() and string functions;
+  replaces popen() with s_popen(); path traversal issues; buffer underruns;
+  and memory leaks (missing free(), found by Egbert Eich). Patch by Thomas
+  Biege and Matthiew Herrb. Petr Mladek identified the initial vulnerabilities
+  and provided a patch that was later expanded on. Jacques A. Vidrine aided in
+  the code audit and patch review. This issue is identified as CAN-2004-0914.
+
+  16 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Patchset 0.2.7. Update Newport acceleration patch to
+  5200_all_6.8.0-newport-accel-v2.patch. This fixes an error "structure has no
+  member named `PUToScreenTextureDstFormats'," which should start with CPU,
+  not PU. It also moves the autoloading of the xaa module around (#38549).
+  Newport acceleration patch is by Dominik Behr, with mods by Adam Jackson.
+  Drop 0155_all_4.3.0-Xi-Xinitthreads-locking-bug.patch. It was fixed in an
+  alternate way in the release, and this was causing problems with totem and
+  kaffeine (#64929, #59746, maybe #60131). Add
+  6100_all_6.8.0-xnest-uninitialized-GetWindowPixmap.patch (#70431). Alexander
+  Gottwald says on fd.o #1404: "pScreen->GetWindowPixmap is never initialized
+  in Xnest startup and contains random data. After some server resets it
+  crashes with segfault because pScreen->GetWindowPixmap is called but is not
+  a valid function. A quick fix was to set the complete ScreenRec structure to
+  null after allocating it in dix/main.c (AddScreen)."
+
+  15 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r1.ebuild, xorg-x11-6.8.0-r2.ebuild:
+  Bug number for no-sse2 is 57602, not 56702. Thanks cyfred.
+
+  15 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  In backward_compat_setup(), add a symlink for the keysym database, XKeysymDB
+  (#70927). Also fix a hard-coded lib rather than get_libdir.
+
+  04 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Add 'minimal' USE flag. It turns off the build of most clients and all
+  fonts, as well as a number of drivers I guessed would be mostly unused by
+  people wanting this functionality (video drivers turned off only for x86).
+  It also stops installing the man pages and docs, as well as Xvfb and Xnest.
+  Finally, it doesn't install Gentoo custom cursors. On a minimal test build
+  with USE="-3dfx +3dnow -bitmap-fonts -cjk -debug -dlloader -dmx -doc
+  -font-server -hardened -insecure-drivers -ipv6 +minimal +mmx -nls -opengl
+  -pam -sdk +sse -static -truetype-fonts -type1-fonts -xprint -xv", the total
+  installation was 28M.
+
+  04 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Increase functionalization to the point that the primary functions are
+  actually readable.
+
+  04 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Reorganize functions, so primary ebuild functions are at the top and
+  sub-functions are below them. This gives us a big-picture view to start,
+  followed by all the nitty gritty.
+
+  03 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Add some einfo about the /usr/X11R6/libdir -> /usr/libdir move.
+
+  03 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Add a sed to change RgbPath to the new location in config files. Reported by
+  agaffney. Symptoms include things like "can't load color "Black"" or
+  "Couldn't open RGB_DB."
+
+  03 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Add some more debugging CFLAGS to ALLOWED_FLAGS.
+
+  03 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Rework gcc-version-dependent things to remove redundant calls to
+  gcc-*-version(). Also, only strip -Os for <gcc-3.2.2 (#12775).
+
+  03 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Change SRC_URI order so the mirror://gentoo stuff is at the bottom. It
+  should be searching them beforehand anyway.
+
+  03 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  When removing stale GL stuff, only remove libGL.*, not libGL*. The latter
+  catches libGLU* and others.
+
+  03 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Missed another spot with a bad xkb symlink.
+
+  03 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Fix a bug in the xkb symlink.
+
+  03 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Add some checking features to migrate_usr_x11r6_lib() so we don't redo
+  things that were already done. Also, migrate xkb stuff properly.
+
+  03 Nov 2004; Markus Rothe <corsair@gentoo.org> xorg-x11-6.8.0-r1.ebuild:
+  Marked ~ppc64; bug #67403
+
+  03 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Wrap font-server USE around things affecting /etc/X11/fs/config.
+
+  03 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Combine the dri USE flag into the opengl USE flag, since there's no way to
+  control just the build of the 3D drivers at present.
+
+  03 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Patchset 0.2.6. Add 9990_x86_6.8.0-xbox-20041024.patch for the Xbox's
+  nvidia driver (#68726). Add 1100_all_6.8.0-build-all-lucida-fonts.patch
+  (#68414). The 75dpi and 100dpi fonts weren't being built. This is from
+  upstream CVS. Add 5200_all_6.8.0-newport-accel.patch (#38549). Hopefully
+  will go upstream. This adds acceleration for Newport video cards (mostly
+  MIPS users). Add 5160_all_6.8.0-radeon-fix-monitor-detection.patch (#67845,
+  fd.o #1559). This fixes issues with dual-monitor setups not being detected
+  properly. Add
+  0440_all_6.8.0-support-cymotion-master-and-ibm-space-saver-keyboards.patch
+  (#63767). This adds support for the Cherry CyMotion Master XPress and the
+  IBM Space Saver keyboards. It's from upstream CVS. Fileset 0.6. Add
+  xprint.init, a Gentoo-style init-script wrapper for the RH-style init script
+  provided by xorg, and install it on USE=xprint (#68316). In addition, fix
+  the function for migration from /usr/X11R6/libdir to /usr/libdir,
+  migrate_usr_x11r6_lib(). It now works properly even when .keep files are
+  left behind and when /usr/libdir/X11 is a symlink.
+
+  02 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Try to fix ${ROOT} support -- it's assumed to be a chroot. To aid this, also
+  make all symlinks relative.
+
+  02 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Add a symlink "../../../lib/xkb /usr/X11R6/lib/X11/xkb" so libxklavier and
+  other things looking for that location continue to work.
+
+  01 Nov 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Add blocker on app-text/dgs, since they install the same libs. Need to
+  confirm compilation of its deps, however.
+
+  29 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Sync opengl-update deps in DEPEND and RDEPEND.
+
+  29 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Add migrate_usr_x11r6_lib() to aid migration from /usr/X11R6/libdir to
+  /usr/libdir. Thanks to jstubbs for an idea. Also move update_config_files()
+  to a more appropriate place.
+
+  28 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  USE=xv wrongly requires USE=opengl, but this is a bug in the source
+  (#67996). Forcing them to be used together until upstream fixes it.
+
+  28 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  /usr/libdir, not /usr/libdir/X11.
+
+  28 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Modify opengl-update dep, the token wasn't quite matching the proper versions.
+
+  28 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Change glx USE to opengl.
+
+  28 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Update opengl-update dep to >=2* for /usr/lib move.
+
+  24 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  Fix herd case.
+
+  21 Oct 2004; Aron Griffis <agriffis@gentoo.org> xorg-x11-6.8.0-r1.ebuild:
+  stable on alpha and ia64
+
+  20 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Fileset 0.5. Update /etc/env.d/10xorg to reflect shift from
+  /usr/X11R6/{lib,lib64} to parallel in /usr/lib.
+
+  20 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Patchset 0.2.5. Add 6000_all_6.8.0-libgl-double-free.patch to stop a libGL
+  segfault when /dev/dri/card* is not readable for a user (fd.o #1501).
+
+  20 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Change xfs USE to font-server to stop duplication with xfs filesystem.
+
+  20 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.7.0-r2.ebuild, xorg-x11-6.8.0-r1.ebuild,
+  xorg-x11-6.8.0-r2.ebuild:
+  Update inherit to toolchain-funcs instead of gcc and x11 instead of xfree.
+  Update license syntax so I can commit.
+
+  19 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  USE=dri requires USE=glx.
+
+  19 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Coding style rework. Move logic operators to beginnings of lines rather than
+  ends; Keep 'then' on same line as 'if', same for 'for' and 'do'; indent ';;'
+  of case statements one tab past the current switch.
+
+  19 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Tons of code cleanups, again thanks to mr_bones_. There are a few more left in
+  the TODO list.
+
+  19 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Add die messages. Also try emake -C instead of moving into a dir, make, then
+  moving out.
+
+  19 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Move some variables to locals. Note that all of this cleanup is thanks to
+  mr_bones.
+
+  19 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Change negative uses to bash style instead of portage-specific one.
+
+  18 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Replace all commands in backticks `` with commands in $().
+
+  18 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r1.ebuild, xorg-x11-6.8.0-r2.ebuild:
+  Combine two consecutive instances of "use ! bitmap-fonts."
+
+  18 Oct 2004; Stephen P. Becker <geoman@gentoo.org>
+  xorg-x11-6.8.0-r1.ebuild:
+  stable on mips wrt bug 67326
+
+  18 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Commit initial changes for moving /usr/X11R6/lib to /usr/lib.
+
+  17 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r1.ebuild, xorg-x11-6.8.0-r2.ebuild:
+  Fix problem for lib64 get_libdir users that resulted in *.la files not being
+  installed (#67729).
+
+  14 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.7.0-r2.ebuild, xorg-x11-6.8.0-r1.ebuild,
+  xorg-x11-6.8.0-r2.ebuild:
+  Update ebuild to reflect that gcc-getCC no longer exports CC.
+
+  13 Oct 2004; Travis Tilley <lv@gentoo.org> xorg-x11-6.8.0-r1.ebuild:
+  stable on amd64
+
+  13 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r1.ebuild, xorg-x11-6.8.0-r2.ebuild:
+  Bad logic on BuildXprintLib. It should've been defined only when the rest of
+  xprint WASN'T built, because when xprint is built, it's turned on
+  automatically (#67400).
+
+  13 Oct 2004; Guy Martin <gmsoft@gentoo.org> xorg-x11-6.8.0-r1.ebuild:
+  Stable on hppa.
+
+  12 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r1.ebuild:
+  x86. This should be ready to stable on other archs too. See bug #67326.
+
+  12 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Fix keywords: remove everything except ~x86, since this is still hard-masked,
+  in development and only tested on x86.
+
+  12 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r1.ebuild:
+  Patchset 0.2.2.1. Add 9940_all_6.8.0-libX11-stack-overflow.patch to fix a
+  non-exploitable problem (fd.0 #1459). Add 5140_all_6.8.0-radeon-swsusp.patch
+  to fix software suspend on Radeons (fd.o #1220). Fileset 0.4. Add
+  /usr/X11R6/lib64 to LDPATH in /etc/env.d/10xorg, so things work for
+  architectures that install to there.
+
+  12 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Patchset 0.2.4. Add 9940_all_6.8.0-libX11-stack-overflow.patch to fix a
+  non-exploitable problem (fd.0 #1459). Add 5140_all_6.8.0-radeon-swsusp.patch
+  to fix software suspend on Radeons (fd.o #1220). Fileset 0.4. Add
+  /usr/X11R6/lib64 to LDPATH in /etc/env.d/10xorg, so things work for
+  architectures that install to there.
+
+  11 Oct 2004; Mike Frysinger <vapier@gentoo.org>;
+  xorg-x11-6.7.0-r2.ebuild, xorg-x11-6.8.0-r1.ebuild, xorg-x11-6.8.0-r2.ebuild:
+  remove baselayout DEPEND
+
+  11 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Patchset 0.2.3. Add 9910_all_use-nonow-ldflag-for-hardenedgccspecs.patch. In
+  combination with HardenedGccSpecs YES, this will fix up a lot of the
+  unresolved symbol problems with dlloader (#64618). Patch is by Adam Jackson
+  <ajax@nwnk.net> with some mods by solar, applied to vanilla 6.8.0 by swtaylor
+  and to ours by me. Pull 9970_all_dlloader-imake-fix.patch. Its functionality
+  was pulled into patch 9910. Also bump to fileset 0.3.
+
+  11 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r1.ebuild:
+  Patchset 0.2.2. Update 9001_all_4.3.0-lnx-evdev-keyboard-v2.patch to restore
+  case insensitivity of Option "Protocol" "Standard" for keyboard by Alan
+  Swanson <swanson@ukfsn.org> (#63568). Fileset 0.3. Fix xfs lockup so it's
+  usable again (#61737). Also, fix xdm init script for empty DISPLAYMANAGER in
+  /etc/rc.conf (#65586).
+
+  11 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Add HardenedGccSpecs if USE="hardened dlloader" (#64618). A patchset is
+  forthcoming.
+
+  11 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Add comment on what DMX actually is.
+
+  11 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Do libGLU* stuff all in the same place.
+
+  11 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Add three new USE flags: truetype-fonts, type1-fonts and xv. The fonts ones
+  enable building of that type of font, and xv enables the XVideo library and
+  extension.
+
+  11 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Allow FEATURES=nostrip to prevent stripping, and add ${CHOST}-strip support
+  from solar (#66531).
+
+  11 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Add uclibc support by making build a little more minimal with USE=uclibc,
+  thanks to iggy.
+
+  11 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Add dri and glx USE flags. dri builds direct rendering support into drivers.
+  glx builds the GLX library and extension. The dri flag is a subset of the glx
+  flag.
+
+  11 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Fix up dependency list, thanks to iggy.
+
+  11 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r2.ebuild:
+  Make font server optional with xfs USE flag.
+
+*xorg-x11-6.8.0-r2 (11 Oct 2004)
+
+  11 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xorg-x11-6.8.0-r2.ebuild:
+  Add in-progress ebuild. It's broken, don't waste your time trying it yet.
+
+  11 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r1.ebuild:
+  Remove bogus sgmltools-lite dependency.
+
+  11 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r1.ebuild:
+  Disallow USE="dmx doc" (#63548).
+
+  11 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r1.ebuild:
+  Build libXp even when USE=-xprint, at ajax's suggestion. RH does the same.
+  USE=-xprint now disables the Xprt server and clients. This means we can remove
+  xprint from make.defaults.
+
+  11 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r1.ebuild:
+  Remove erroneous comment that seems to be enabling SDK.
+
+  11 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r1.ebuild:
+  Fix best_version call so PAM is enabled.
+
+  10 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r1.ebuild:
+  Fix new installs with USE=debug. X tries to use makeg, which doesn't exist on
+  the system yet -- use the one within the source instead (#63759).
+
+  29 Sep 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  -xorg-x11-6.7.0-r1.ebuild, -xorg-x11-6.8.0.ebuild:
+  Pull vulnerable versions (#64152).
+
+  25 Sep 2004; Ferris McCormick <fmccor@gentoo.org> xorg-x11-6.8.0-r1.ebuild:
+  Stable for sparc, clearing Bug 64152 on sparc. See also Bug 63994.
+
+  22 Sep 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  -xorg-x11-6.7.99.902.ebuild, -xorg-x11-6.7.99.903.ebuild,
+  -xorg-x11-6.7.99.904.ebuild:
+  Drop 6.7.99.x builds.
+
+  22 Sep 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.7.0-r2.ebuild:
+  x86 (#64152).
+
+  22 Sep 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.8.0-r1.ebuild:
+  Patchset 0.2.1. Add
+  0430_all_6.8.0-sparc-add-mach64-to-devel-dri-drivers.patch (#63994). This plus
+  other ebuild modifications from that bug should enable sparc guys to use
+  6.8.0-r1. Ebuild mods include adding hardened flag for sparc to append
+  -fno-PIE and -fno-pie as well as change the assembler command. Also build the
+  deprecated keyboard driver for sparc on kernels != 2.6 and a weird hack to
+  stop a sparc32-SMP compiler bug (#56593).
+
+  18 Sep 2004; Guy Martin <gmsoft@gentoo.org> xorg-x11-6.7.0-r2.ebuild,
+  xorg-x11-6.8.0-r1.ebuild:
+  Removed build of unneeded drivers. 6.7.0-r2 Stable on hppa.
+
+  18 Sep 2004; Bryan Østergaard <kloeri@gentoo.org>
+  xorg-x11-6.8.0-r1.ebuild:
+  Add ~alpha to keywords.
+
+  18 Sep 2004; Stephen P. Becker <geoman@gentoo.org> xorg-x11-6.7.0-r2.ebuild,
+  xorg-x11-6.8.0-r1.ebuild:
+  6.7.0-r2 stable, 6.8.0-r1 testing on mips - bug 64152
+
+  17 Sep 2004; Ferris McCormick <fmccor@gentoo.org> xorg-x11-6.7.0-r2.ebuild:
+  Add ~sparc keyword, partially addressing bug 64152.  Testing needed before
+  stable for sparc is appropriate.
+
+  17 Sep 2004; Travis Tilley <lv@gentoo.org> xorg-x11-6.7.0-r2.ebuild:
+  stable on amd64
+
+  17 Sep 2004; Bryan Østergaard <kloeri@gentoo.org>
+  xorg-x11-6.7.0-r2.ebuild:
+  Stable on alpha, bug 64152.
+
+  17 Sep 2004; <SeJo@gentoo.org> xorg-x11-6.8.0-r1.ebuild:
+  unstable ppc bug:64152
+
+  17 Sep 2004; <SeJo@gentoo.org> xorg-x11-6.7.0-r2.ebuild:
+  stable ppc bug:64152
+
+*xorg-x11-6.8.0-r1 (16 Sep 2004)
+
+  16 Sep 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xorg-x11-6.8.0-r1.ebuild:
+  Patchset 0.2. Security release. Add
+  9925_all_6.7.0-libXpm-CAN-2004-0687-CAN-2004-0688.patch to fix stack and
+  integer overflows in libXpm (Chris Evans, Alan Coopersmith, Matthiew Herrb)
+  (#64152).
+
+  15 Sep 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.7.0-r2.ebuild:
+  Patchset 1.3. Security release. Add
+  9925_all_6.7.0-libXpm-CAN-2004-0687-CAN-2004-0688.patch to fix stack and
+  integer overflows in libXpm (Chris Evans, Alan Coopersmith, Matthiew Herrb)
+  (#64152). Also add 5170_all_6.7.0-xvideo-allocation.patch (#64092, fd.o #474),
+  which made it into 6.8.0. 5170 should fix those annoying xvideo memory
+  problems.
+
+  15 Sep 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.8.0.ebuild:
+  Fix SRC_URI inconsistency issues (#64117).
+
+  14 Sep 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.8.0.ebuild:
+  Fileset 0.2. Support any future display managers (#23957) and update MANPATH
+  (#63645).
+
+  14 Sep 2004; Stephen P. Becker <geoman@gentoo.org> xorg-x11-6.8.0.ebuild:
+  Added -mtune to ALLOWED_FLAGS for mips.
+
+  12 Sep 2004; Daniel Goller <morfic@gentoo.org> xorg-x11-6.8.0.ebuild:
+   ppend -mno-sse2 with gcc3.4 for bug #57602 
+
+  09 Sep 2004; Seemant Kulleen <seemant@gentoo.org> xorg-x11-6.8.0.ebuild:
+  check XF86Config-4, and also fix the if condition
+
+  09 Sep 2004; Seemant Kulleen <seemant@gentoo.org> xorg-x11-6.8.0.ebuild:
+  adjust the regex to fix bug #63425 by Don Seiler <rizzo@gentoo.org>
+
+  09 Sep 2004; Seemant Kulleen <seemant@gentoo.org> xorg-x11-6.8.0.ebuild:
+  keyboard->kbd in XF86Config as well as xorg.conf
+
+  08 Sep 2004; Seemant Kulleen <seemant@gentoo.org> xorg-x11-6.8.0.ebuild:
+  For users with cascading profiles, the bitmap-fonts and xprint USE flags will
+  not show up yet. So echo a message out
+
+  08 Sep 2004; Seemant Kulleen <seemant@gentoo.org> xorg-x11-6.8.0.ebuild:
+  fix logic in cjk/nls
+
+*xorg-x11-6.8.0 (09 Sep 2004)
+
+  09 Sep 2004; Andrew Bevitt <cyfred@gentoo.org>; +xorg-x11-6.8.0.ebuild:
+  Xorg release 6.8.0
+
+  07 Sep 2004; Travis Tilley <lv@gentoo.org> xorg-x11-6.7.99.904.ebuild:
+  create lib symlink in /usr/$(get_libdir)/opengl/xorg-x11/ if $(get_libdir) !=
+  lib. fixes bug 62990
+
+  06 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> xorg-x11-6.7.0-r1.ebuild,
+  xorg-x11-6.7.0-r2.ebuild, xorg-x11-6.7.99.902.ebuild,
+  xorg-x11-6.7.99.903.ebuild, xorg-x11-6.7.99.904.ebuild:
+  Switch to use epause and ebeep, bug #62950
+
+  04 Sep 2004; Seemant Kulleen <seemant@gentoo.org>
+  xorg-x11-6.7.99.904.ebuild:
+  ok, ready to me unmasked. This is the Swegener-Rocks Release for Gentoo. The
+  not-enough-xv-memory should go away with mplayer with this. Additionally, this
+  closes bug #60470 from Spanky.
+
+  03 Sep 2004; Seemant Kulleen <seemant@gentoo.org>
+  xorg-x11-6.7.99.904.ebuild:
+  ok this is still -*'d -- please don't file bugs about segfaults and fonts
+  errors. Those are known issues and we're working on them.
+
+*xorg-x11-6.7.99.904 (02 Sep 2004)
+
+  02 Sep 2004; Seemant Kulleen <seemant@gentoo.org>
+  +xorg-x11-6.7.99.904.ebuild:
+  copy ebuild over, for coming version bump
+
+  31 Aug 2004; Travis Tilley <lv@gentoo.org> xorg-x11-6.7.99.903.ebuild:
+  I've added an override for amd64 that will use lib64 as the lib directory even
+  when CONF_LIBDIR isnt lib64. This should allow for bug 62110 to be fixed
+  (locales broken for 32bit apps).
+
+  30 Aug 2004; Seemant Kulleen <seemant@gentoo.org>
+  xorg-x11-6.7.99.903.ebuild:
+  add patch for dlloader fix from ajax in the fd.o bugzilla
+
+  29 Aug 2004; Travis Tilley <lv@gentoo.org> xorg-x11-6.7.99.903.ebuild:
+  made xorg-x11-6.7.99.903 CONF_LIBDIR aware for installing to lib64 instead of
+  lib
+
+*xorg-x11-6.7.99.903 (28 Aug 2004)
+
+  28 Aug 2004; Seemant Kulleen <seemant@gentoo.org>
+  +xorg-x11-6.7.99.903.ebuild:
+  version bump to latest snapshot.  ppc should work with this
+
+  28 Aug 2004; Travis Tilley <lv@gentoo.org> xorg-x11-6.7.99.902.ebuild:
+  added a host.def define (StaticNeedsPicForShared) for amd64 that fixes the
+  problem with building gdm or kdebase PIE
+
+  25 Aug 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.7.99.902.ebuild:
+  Delete encodings that make ttmkfdir segfault: large/cns11643-1.enc
+  large/cns11643-2.enc large/cns11643-3.enc suneu-greek.enc (#60470).
+
+  25 Aug 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.7.99.902.ebuild:
+  Add some more debugging support. Add '-gstabs+ -gstabs -ggdb' to
+  ALLOWED_FLAGS. Also, cause USE=debug to prevent stripping of binaries and
+  libraries.
+
+  22 Aug 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.7.0-r1.ebuild, xorg-x11-6.7.0-r2.ebuild,
+  xorg-x11-6.7.99.2.ebuild, xorg-x11-6.7.99.902.ebuild:
+  replace-cpu-flags had args in the wrong order, resulting in p3's being
+  compiled with p4 badness (#60597).
+
+  21 Aug 2004; Seemant Kulleen <seemant@gentoo.org>
+  xorg-x11-6.7.99.902.ebuild:
+  OK, this is the real ebuild. I'm calling this the
+  Latexer-isnt-made-from-rubber release. Test away, and look for xcompmgr in
+  x11-misc
+
+*xorg-x11-6.7.99.902 (21 Aug 2004)
+
+  21 Aug 2004; Seemant Kulleen <seemant@gentoo.org>
+  +xorg-x11-6.7.99.902.ebuild:
+  Version bump to rc2, but this is an identical ebuild to 99.2 just so we can
+  easily make diffs of the changes. Real ebuild to follow momentarily
+
+  20 Aug 2004; Seemant Kulleen <seemant@gentoo.org> xorg-x11-6.7.99.2.ebuild:
+  fix sed properly, thanks to ciaranm and swegener
+
+  14 Aug 2004; Seemant Kulleen <seemant@gentoo.org> xorg-x11-6.7.99.2.ebuild:
+  nothing separate to unpack for USE=doc, since we're using one tarball
+
+  13 Aug 2004; Brandon Hale <tseng@gentoo.org> xorg-x11-6.7.99.2.ebuild:
+  Minor adjustment to einfo for USE=dlloader, rework sed to replace keyboard
+  with kbd driver, move that bit into setup_config_files and clean up that
+  function a bit.
+
+*xorg-x11-6.7.99.2 (13 Aug 2004)
+
+  13 Aug 2004; Seemant Kulleen <seemant@gentoo.org> +xorg-x11-6.7.99.2.ebuild:
+  New snapshot: FOR TESTING ONLY.  I'm calling this the "Use Ajax for
+  everything" release in portage.
+
+  02 Aug 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.7.0-r1.ebuild, xorg-x11-6.7.0-r2.ebuild:
+  fc-cache -f breaks the font eclass, according to foser.
+
+  02 Aug 2004; Donnie Berkholz <dberkholz@gentoo.org>; :
+  Note that the last commit was fileset 0.3.
+
+  02 Aug 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.7.0-r1.ebuild, xorg-x11-6.7.0-r2.ebuild:
+  Fix font setup (#53753). Previously we trashed fonts.scale for all scalable
+  fonts, even though we only regenerated it for TrueType fonts. ttmkfdir can't
+  regenerate fonts.scale for Type1 or OpenType fonts, so we start using
+  mkfontscale for that. We trashed any other fonts.scale files that happened to
+  be around, such as Speedo/CID. We stop doing that. Also fixed the regexps in
+  the ebuild and the xfs init script to use ttmkfdir for TrueType only and
+  mkfontscale for Type1 and OpenType. Change INFODIR to INFOPATH also (#54275).
+  Also update Gentoo copyright and licensing info in files tarball to be
+  consistent with everything else.
+
+  28 Jul 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.7.0-r1.ebuild, xorg-x11-6.7.0-r2.ebuild:
+  Add more info on pam-X circular dep (#54378, #35468).
+
+  26 Jul 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.7.0-r1.ebuild, xorg-x11-6.7.0-r2.ebuild:
+  Add ${ROOT} to absolute path references that need it.
+
+  24 Jul 2004; Stephen P. Becker <geoman@gentoo.org> xorg-x11-6.7.0-r1.ebuild,
+  xorg-x11-6.7.0-r2.ebuild:
+  -r1 stable, -r2 testing on mips
+
+  20 Jul 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.7.0-r2.ebuild:
+  Remove commented-out 'HasMotif YES' #define (#57271). Part of what patch 9385
+  was intended to fix was actually committed post-6.7.0, so it wasn't here to
+  start with. If anyone requests motif support, we'll look into some sort of
+  conditional enabling, probably similar to pam's, to avoid circular
+  dependencies.
+
+  19 Jul 2004; Martin Schlemmer <azarah@gentoo.org> xorg-x11-6.7.0-r2.ebuild:
+  Enabling Motif by default is is bogus, as XFree86/XOrg-X11 have never been
+  built against Motif, and 9385_all_6.7.0-motif-allow-fhs-and-default-off.patch
+  do not enable/disable it, but just addsome more bits _if_ and _only_if_ its
+  enabled in host.def, which it never was ...
+  
+    http://bugs.gentoo.org/show_bug.cgi?id=57271#c21
+
+  17 Jul 2004; David Holm <dholm@gentoo.org> xorg-x11-6.7.0-r2.ebuild:
+  Added to ~ppc.
+
+  17 Jul 2004; Andrew Bevitt <cyfred@gentoo.org>; xorg-x11-6.7.0-r2.ebuild:
+  Adding ~amd64 keyword, tested and inline for opengl-update commits
+
+  16 Jul 2004; Tom Gall <tgall@gentoo.org> xorg-x11-6.7.0-r2.ebuild:
+  stable on ppc64 baby!
+
+  16 Jul 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.7.0-r1.ebuild, xorg-x11-6.7.0-r2.ebuild:
+  Update TODOs.
+
+*xorg-x11-6.7.0-r2 (16 Jul 2004)
+
+  16 Jul 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xorg-x11-6.7.0-r2.ebuild:
+  Patchset 1.2. Add
+  9395_all_6.7.0-savage-disable-xrandr-for-shadowfb-rotate.patch, given to Tim
+  Roberts by anonymous user, posted to devel@xfree86.org mailing list. Without
+  this patch, an attempt to use Xrandr with shadowFB-based rotation will result
+  in an unusable display. Add
+  9390_all_6.7.0-add-french-belgian-azerty-ppc-keyboard.patch, which adds a
+  keymap new in G4/G5 macs (#49155). Add
+  9385_all_6.7.0-motif-allow-fhs-and-default-off.patch, which looks outside of
+  /usr/X11R6 for motif and defaults it to OFF on Linux and BSD. Add
+  9375_all_6.7.0-radeon-resume-from-S3-suspend.patch (#48095), which allows the
+  ACPI S3 suspend state to work for at least some Radeons. Add
+  9000_all_4.3.0-lnx-evdev-core.patch, 9001_all_4.3.0-lnx-evdev-keyboard.patch
+  and 9002_all_6.7.0-lnx-evdev-mouse.patch from xfree-4.3.0-r7 to add event
+  interface device support (#29953, #56159). Add
+  9010_all_4.3.0-logitech-ps2-plusplus.patch from xfree-4.3.0-r7 to add support
+  for the PS/2++ protocol used by some of the newer Logitech mice (#29953,
+  #56159). Add 9365_all_6.7.0-fix-render-cplastbit-def.patch to correct the
+  definition of CPLastBit to account for ComponentAlpha, which may fix behavior
+  of the server's SetPictureToDefaults. Add
+  9370_all_6.7.0-install-xrender-pkgconfig-file.patch to install xrender.pc in a
+  cleaner way than former manual hack. OTHER CHANGES: Install glext.h to
+  /usr/lib/opengl/xorg-x11 like the other GL includes (#54984) and set up a
+  symlink manually to avoid an opengl-update circular dependency. Pull out the
+  external drop-in driver code entirely to clean up the ebuild. Enable the i810
+  driver on x86_64 (RH #126687). Set HasMotif to YES in the ebuild to counteract
+  9385_all_6.7.0-motif-allow-fhs-and-default-off.patch.
+
+  16 Jul 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.7.0-r1.ebuild:
+  USE flag pie renamed to dlloader. Remove USE flag hardened, because it did
+  nothing.
+
+  16 Jul 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.7.0-r1.ebuild:
+  Build dlloader things for ppc64 and relink them properly (#56248).
+
+  10 Jul 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.7.0-r1.ebuild:
+  Bump opengl-update requirement from >=1.7 to >=1.7.2 to make sure people don't
+  get caught up.
+
+  10 Jul 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.7.0-r1.ebuild:
+  x86
+
+  06 Jul 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.7.0-r1.ebuild:
+  Allow pie+sdk builds, now that we added patch for it.
+
+  06 Jul 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.7.0-r1.ebuild:
+  Patchset 1.1.1. Move ppc64 patch over from its formerly bad placement as a
+  separate file into the patchball as
+  9360_all_6.7.0-ppc64-support-updates.patch. Add
+  4152_all_4.3.0-allow-xdm-server-quotes.patch from xfree-4.3.0-r7 (#38232).
+  This allows quoted expressions in /etc/X11/xdm/Xservers to be used properly.
+  Add 0425_all_6.7.0-sun-type6-keyboard.patch from xfree-4.3.0-r7 (#21120),
+  ported by reporter. Add 9855_all_6.7.0-fix-SDK-pie-build.patch to fix a module
+  naming problem on pie builds, which resulted in the SDK install breaking
+  (#50562). Add 9355_all_6.7.0-xorgconfig-fontdir-fixes.patch, which stops the
+  tool from adding /usr/X11R6 font paths when fonts are installed elsewhere
+  (#54132). Also update TODO and add a little more warning for the auto-PAM
+  stuff. This should be ready to go stable on x86 if nothing huge comes up.
+
+  05 Jul 2004; Donnie Berkholz <dberkholz@gentoo.org>; -xorg-x11-6.7.0.ebuild:
+  Pull old version, vulnerable to security hole.
+
+  05 Jul 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.7.0-r1.ebuild:
+  Update TODO to more realistically reflect time to stable for x86.
+
+  30 Jun 2004; Aron Griffis <agriffis@gentoo.org> xorg-x11-6.7.0-r1.ebuild:
+  stable on ia64 #53226
+
+  24 Jun 2004; Aron Griffis <agriffis@gentoo.org> xorg-x11-6.7.0-r1.ebuild,
+  xorg-x11-6.7.0.ebuild:
+  QA - fix use invocation
+
+  23 Jun 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.7.0-r1.ebuild, xorg-x11-6.7.0.ebuild:
+  Update TODOs.
+
+  21 Jun 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.7.0-r1.ebuild:
+  Forgot to stop building xterm, somehow (#54051).
+
+  19 Jun 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.7.0-r1.ebuild:
+  Move how font directories are defined into a host.def setting.
+
+  16 Jun 2004; Luca Barbato <lu_zero@gentoo.org> xorg-x11-6.7.0-r1.ebuild:
+  Marked ppc for security reason, see Bug #53226
+
+  16 Jun 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Digest fix, looks like tgall forgot FEATURES=cvs
+
+  16 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  xorg-x11-6.7.0-r1.ebuild:
+  Added ~amd64.
+
+  15 Jun 2004; David Holm <dholm@gentoo.org> xorg-x11-6.7.0-r1.ebuild:
+  Added to ~ppc.
+
+  14 Jun 2004; Tom Gall <tgall@gentoo.org> xorg-x11-6.7.0-r1.ebuild:
+  ~ppc64 initial x support #53763
+
+  14 Jun 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.7.0-r1.ebuild:
+  Major refactoring of code. No end-user difference, so no bump.
+
+  14 Jun 2004; Ferris McCormick <fmccor@gentoo.org> xorg-x11-6.7.0-r1.ebuild:
+  Marked stable for sparc (Bug 53226).
+
+  13 Jun 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  xorg-x11-6.7.0-r1.ebuild:
+  Workaround for #50562 -- disallow pie+sdk build.
+
+  13 Jun 2004; Stephen P. Becker <geoman@gentoo.org> xorg-x11-6.7.0-r1.ebuild:
+  Added ~mips keyword -- bug 53226
+
+  12 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> xorg-x11-6.7.0-r1.ebuild:
+  ~alpha keyword, bug #53226.
+
+  11 Jun 2004; Ferris McCormick <fmccor@gentoo.org> xorg-x11-6.7.0-r1.ebuild:
+  Add ~sparc keyword. (Bug 53226)
+
+*xorg-x11-6.7.0-r1 (11 Jun 2004)
+
+  11 Jun 2004; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xorg-x11-6.7.0-r1.ebuild:
+  Patchset 1.1. Add 9920_all_6.7.0-xdm-open-chooserfd-CAN-2004-0419.patch to
+  stop xdm from ignoring its "DisplayManager.requestPort" setting. xdm opens its
+  "chooserFd" TCP socket on all network interfaces without this patch (xf86
+  #1376). Update 9840_all_4.3.0-SDK-add-missing-includes-for-gatos-v2.patch for
+  new gatos -- another include needed (battousai@gentoo.org). Update
+  0120_all_4.3.99-parallel-make-v2.patch to remove a patched-in .rej and some
+  patched-in .orig's (#49455). Update 0126_all_4.2.99.3-startx-v2.patch to
+  remove pointless dependency on xvt (#49455). Big chunk of backports from CVS:
+  9305_all_6.7.0-chips-segfault-on-mode-switch-and-video-overlay.patch to fix a
+  segfault on video mode switching when pScrn->currentMode does not contain a
+  valid mode. Also fix video overlays for double scan modes; Add
+  9310_all_6.7.0-config-cf-cleanup.patch to clean up xorg.cf by factoring out
+  many common defines. Make the fbdev driver only build on Linux (fbdevhw is
+  just stubs on other OSes). Add AFB to AMD64 build, and include
+  XF86OSCardDrivers. I continue adding things that aren't supported under Gentoo
+  (BSD-related, or other archs) because I want to pre-emptively have work done
+  for any ports. Also, it makes other backports easier. (fd.o #448, 449); Add
+  9315_all_6.7.0-fb-render-fixes.patch to fix problems in render fb
+  implementation found by rendercheck; Add
+  9320_all_6.7.0-getconfig-xorg-name.patch to fix problem with getconfig where
+  file '/usr/X11R6/lib/X11/getconfig/xorg.cfg' has bad signature (Change "Xorg
+  Project" to "Xorg Foundation" to match getconfig script) (fd.o #678); Add
+  9325_all_6.7.0-improve-xdm-auth-1-cookie.patch to improve 'uniqueness' of
+  authorization cookie sent by client for XDM-AUTHORIZATION-1. Old 'uniqueness'
+  consisted of the PID of the client, a time stamp (in seconds) and a number
+  obtained by starting to count down from 0xffff. When a client did an
+  XOpenDisplay() then execv'ed a child and did XOpenDisplay() again within the
+  same second, the cookie was identical to the previous one (as the PID did not
+  change but the static 'count down' variable was reinitialized) and thus
+  refused by the server; Add 9330_all_6.7.0-link-with-pam-on-pam-builds.patch to
+  link with PamLibraries if building with PAM support; Add
+  9335_all_6.7.0-modular-imake-build.patch to fix build glitches when building
+  modules independently using Imake; Add
+  9340_all_6.7.0-remove-xmu-dep-on-xaw-header.patch to remove Xaw header
+  dependency from Xmu library build (fd.o #634); Add
+  9345_all_6.7.0-unlock-xauthority-on-sigpipe.patch to make xauth unlock
+  .Xauthority on SIGPIPE (fd.o #550); Add
+  9350_all_6.7.0-xrender-xorgconfig-xdmcp-msgs.patch to muffle compiler warnings
+  in lib/Xrender/Xrender.c, fix an option name in a log message of
+  programs/Xserver/hw/xfree86/common/xf86Configure.c and improve debugging
+  messages in programs/xdm/xdmcp.c.
+
+  03 Jun 2004; Donnie Berkholz <dberkholz@gentoo.org>; :
+  Add credit for netwinder.org ARM patch.
+
+  03 Jun 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Patchset 1.0. This patchset should get xorg-x11-6.7.0 ready to go stable on
+  all archs that have tested it. Many of them have already stabled it, so I'm
+  holding some non-crucial patches out for 6.7.0-r1.
+  
+  -Add 9210_all_XFree86-4.3.0-arm32-compiler.h.patch (#52707) from
+  netwinder.org. This fixes compiles for the ARM architecture. Patch from PhilB,
+  according to netwinder's RPM spec file.
+  -Add 9215_all_xorg-x11-6.7.0-char-bit-and-ia64-asm-page.patch to remove a
+  compiler-intrinsic define since it dies on makedepend otherwise (fd.o #601),
+  and fix the IA64 build (broken because it includes kernel header asm/page.h,
+  which doesn't work with -ansi) (fd.o #605).
+  -Add 9220_all_xorg-x11-6.7.0-install-vera-italic.patch to install VeraIt.ttf.
+  It was getting left out. Patch from xorg CVS by Eric Anholt.
+  -Add 9225_all_xorg-x11-6.7.0-install-xfree86-lst.patch (fd.o #531) to install
+  xfree86.lst. This should fix some XKB problems.
+  -Add 9230_all_xorg-x11-6.7.0-try-tcp-without-local-and-fix-ipv6-xdmauth-
+  segfault.patch to make XOpenDisplay try tcp connection if local fails (fd.o
+  #546), and fix Xlib segfaults with IPv6 if compiled with HASXDMAUTH (NetBSD
+  #25098).
+  -Add 9235_all_xorg-x11-6.7.0-libxf86config-monitor-freq-fix.patch from RH.
+  This prevents writing out the HorizSync/VertRefresh lines commented out, which
+  forces all default X config files written out by this library to rely on DDC.
+  Poor assumption that DDC is always available. Patch by Mike Harris.
+  -Add 9240_all_xorgconfig-naming-xkb-font-path-fixes.patch to do a few things:
+    - Clean up server name changes from TM branch
+    - Set default XKB rules file name correctly
+    - Use default font path from Imake configuration for the default font path
+      in generated xorg.conf files.
+    - Use path variables from Imake configuration for paths to files, in case
+      vendor has configured them to install somewhere other than the defaults.
+    Patch from xorg CVS by Alan Coopersmith.
+
+  03 Jun 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Fix typo in xrender.pc generation, includ to include.
+
+  02 Jun 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Fix generation of xrender.pc so version is resolved (#52843).
+
+  03 Jun 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> xorg-x11-6.7.0.ebuild:
+  Masked stable on ppc
+
+  02 Jun 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Work around upgrade problem where people have Option "XkbRules" "xfree86" in
+  their config file.
+
+  01 Jun 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Prevent -fomit-frame-pointer and k6 flags from being used together (#49310).
+
+  29 May 2004; Ferris McCormick <fmccor@gentoo.org> xorg-x11-6.7.0.ebuild:
+  Marked stable for sparc.
+
+  29 May 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Force opengl-update to change to xorg-x11 if xfree is currently selected, else
+  default to old behavior.
+
+  28 May 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Patchset 0.7. Add 9860_all_xorg-xkb_winkeys.patch to fix broken windows keys
+  (#48307).
+
+  12 May 2004; Alexander Gabert <pappy@gentoo.org> xorg-x11-6.7.0.ebuild:
+  removed hardened-gcc checks
+
+  05 May 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Remove our custom SharedLibraryLoadFlags as a workaround until #49038 (fd.o
+  #600) is fixed.
+
+  25 Apr 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Update so gcc-3.4 is respected (#48933).
+
+  21 Apr 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Add a couple of missing definitions for USE=sse -- HasSSESupport and
+  MesaUseSSE, from eikke on Freenode.
+
+  19 Apr 2004; Aron Griffis <agriffis@gentoo.org> xorg-x11-6.7.0.ebuild:
+  Add ~alpha and ~ia64
+
+  19 Apr 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Patchset 0.6. Add 9200_all_6.7.0-fix-zh-cn-utf8-crashes.patch, which fixes
+  crashes when using core fonts in the zh_CN.UTF-8 locale. See fd.o bug #368.
+
+  19 Apr 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Add them to IUSE.
+
+  19 Apr 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Don't autodetect MMX/SSE/3DNOW, it breaks cross-compilation.
+
+  19 Apr 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Don't remove fonts.* or encodings.dir in dirs not provided by this package
+  (#30698).
+
+  18 Apr 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Add more backwards compatibility things -- symlinks for all former font, doc
+  and man dirs as well as autogeneration of new config files. Fix generation of
+  xrender.pc.
+
+  18 Apr 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Add explicit xfree to blockers.
+
+  18 Apr 2004; Travis Tilley <lv@gentoo.org> xorg-x11-6.7.0.ebuild:
+  marking stable on amd64 with the full realisation that the normal time period
+  for waiting to mark things stable has yet to be met. A security vulnerability,
+  outlined in bug 48107, forced me to mark the new xine-lib stable on amd64,
+  where it will not compile with any unmasked version of xfree due to -fPIC
+  errors (see bugs 48261, 44274, and 40646). Xorg-x11 is the only truly stable
+  and fully functional option on amd64! Xfree 4.3.0, in general, is simply not
+  amd64-friendly. Please CC me for any bugs relating to xorg-x11.
+
+  14 Apr 2004; Stephen P. Becker <geoman@gentoo.org> xorg-x11-6.7.0.ebuild:
+  Added ~mips keyword.
+
+  12 Apr 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  ~hppa at gmsoft's request.
+
+  12 Apr 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Patchset 0.5. Add 9500_all_6.7.0-hppa-fixes.patch so it builds on HPPA. Add
+  HPPA fixes to 5900_all_6.7.0-acecad-v2.patch. Thanks to Guy Martin
+  <gmsoft@gentoo.org> for these.
+
+  12 Apr 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Patchset 0.4. Add 9300_all_4.3.0-ncurses-xf86cfg-bool-conflict.patch to avoid
+  conflict of bool between ncurses-5.4 and xf86cfg (#43491).
+
+  11 Apr 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Add some arch-specific CFLAGS mangling.
+
+  11 Apr 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Added -g to ALLOWED_FLAGS at request of ajax on Freenode #xorg.
+
+  10 Apr 2004; Jason Wever <weeve@gentoo.org> xorg-x11-6.7.0.ebuild:
+  Added ~sparc keyword.
+
+  10 Apr 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Add sys-apps/util-linux to DEPEND, reported by IceD^ in Freenode #gentoo.
+
+  09 Apr 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Patchset 0.3. Add 9110_all_xorg-6.7.0-pci-domains.patch to close #43630. This
+  makes 2.6 kernels, sparc and X work together.
+
+  09 Apr 2004; Luca Barbato <lu_zero@gentoo.org> xorg-x11-6.7.0.ebuild:
+  Marked ~ppc
+
+  08 Apr 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Drop extra quote in OptimizedCplusplusDebugFlags.
+
+  08 Apr 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Add patchset to XVendorString. It could come in handy.
+
+  08 Apr 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Change XVendorString to be compatible with upstream so people can strstr for
+  The X.Org Foundation.
+
+  08 Apr 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Add GccAliasingArgs to the optimized CFLAGS and CXXFLAGS setup, so we get
+  -fno-strict-aliasing. This avoids broken code, pending a patch from Luca to
+  fix.
+
+  08 Apr 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Remove xterm from DEPEND, it's still in PDEPEND. I accidentally copied instead
+  of pasted earlier.
+
+  07 Apr 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Drop BuildLinuxDocText. It caused a bunch of docs to NOT be installed on
+  USE=doc.
+
+  07 Apr 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Use gcc-getCC instead of manual hack.
+
+  07 Apr 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Patchset 0.2. Added 9400_all_4.3.0-mkcfm-FHS-install.patch to fix hard-coded
+  path. Rework 9113_all_4.3.0-xterm-make-optional.patch to apply to xorg.cf
+  instead of xfree86.cf and rename it
+  9113_all_6.7.0-xterm-make-optional-v2.patch (#47100).
+
+  07 Apr 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Add x11-terms/xterm to PDEPEND.
+
+  07 Apr 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Change blocker on xfree to blocker on other virtual/x11.
+
+  07 Apr 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Fileset 0.2. Fix libGL.la path -- #47100.
+
+  07 Apr 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Drop references to xterm since we're going external now.
+
+  07 Apr 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Change homepage to wiki.
+
+  07 Apr 2004; Donnie Berkholz <dberkholz@gentoo.org>; xorg-x11-6.7.0.ebuild:
+  Change a couple of XF86Config references to xorg.conf.
+
+  07 Apr 2004; Donnie Berkholz <dberkholz@gentoo.org>; :
+  Looks like repoman doesn't auto-add Manifests.
+
+*xorg-x11-6.7.0 (07 Apr 2004)
+
+  07 Apr 2004; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml,
+  xorg-x11-6.7.0.ebuild:
+  Initial commit.
+

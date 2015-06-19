@@ -1,0 +1,107 @@
+# ChangeLog for app-crypt/rainbowcrack
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/rainbowcrack/ChangeLog,v 1.24 2013/05/27 10:38:43 ssuominen Exp $
+
+  27 May 2013; Samuli Suominen <ssuominen@gentoo.org>
+  -rainbowcrack-1.2-r1.ebuild, -rainbowcrack-1.2-r2.ebuild,
+  -files/rainbowcrack-1.2+gcc-4.3.patch,
+  -files/rainbowcrack-1.2-asneeded.patch,
+  -files/rainbowcrack-1.2-makefile.patch,
+  -files/rainbowcrack-1.2-makefile-asneeded.patch,
+  -files/rainbowcrack-1.2-openssl-1.patch, -files/rainbowcrack-1.2-share.patch,
+  -files/rainbowcrack-1.2-types.patch:
+  old
+
+  27 May 2013; Samuli Suominen <ssuominen@gentoo.org> rainbowcrack-1.5.ebuild:
+  amd64/x86 stable (as a prereq for removing unfetchable 1.2-r* from tree)
+
+  27 May 2013; Samuli Suominen <ssuominen@gentoo.org> rainbowcrack-1.5.ebuild:
+  Fix LICENSE from "as-is" to "all-rights-reserved" and RESTRICT "bindist" wrt
+  #444426#c4 by Ulrich Müller
+
+  24 Sep 2012; Mike Frysinger <vapier@gentoo.org> rainbowcrack-1.2-r1.ebuild,
+  rainbowcrack-1.2-r2.ebuild, rainbowcrack-1.5.ebuild:
+  QA_DT_HASH (old/deprecated) -> QA_FLAGS_IGNORED (new hotness).
+
+*rainbowcrack-1.5 (08 Sep 2011)
+
+  08 Sep 2011; Samuli Suominen <ssuominen@gentoo.org> +rainbowcrack-1.5.ebuild:
+  Version bump wrt #312497 by "hitachi"
+
+  01 Sep 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  rainbowcrack-1.2-r1.ebuild:
+  Also to old revision.
+
+  01 Sep 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  rainbowcrack-1.2-r2.ebuild:
+  Fix SRC_URI (bug #381161, thanks to Corentin Chary).
+
+  20 Jul 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #34534
+
+*rainbowcrack-1.2-r2 (13 Oct 2010)
+
+  13 Oct 2010; Dane Smith <c1pher@gentoo.org> +rainbowcrack-1.2-r2.ebuild,
+  +files/rainbowcrack-1.2-makefile-asneeded.patch:
+  Revision bump for rainbowcrack. Addresses lack of LDFLAGS respect wrt bug
+  #331877.
+
+  11 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  rainbowcrack-1.2-r1.ebuild, +files/rainbowcrack-1.2-openssl-1.patch:
+  Fix building with OpenSSL >= 1.0.0 wrt #327373 by Diego E. Pettenò.
+
+  29 Mar 2009; Patrick Lauer <patrick@gentoo.org>
+  rainbowcrack-1.2-r1.ebuild:
+  Fixing HOMEPAGE and SRC_URI
+
+  03 Jan 2009; Christoph Mende <angelos@gentoo.org>
+  +files/rainbowcrack-1.2-asneeded.patch, rainbowcrack-1.2-r1.ebuild:
+  QA: Fixed compilation with forced --as-needed (bug 246871)
+
+  14 Dec 2008; Diego E. Pettenò <flameeyes@gentoo.org>
+  +files/rainbowcrack-1.2+gcc-4.3.patch, rainbowcrack-1.2-r1.ebuild:
+  Add patch to build with GCC 4.3, thanks to Bert Karwatzki in bug #250623.
+
+  20 Jun 2008; Daniel Black <dragonheart@gentoo.org>
+  +files/rainbowcrack-1.2-types.patch, rainbowcrack-1.2-r1.ebuild:
+  gcc-4.3.1 fix as per bug #227051. thanks Evil Compile Person
+
+  21 Feb 2008; Robin H. Johnson <robbat2@gentoo.org>
+  rainbowcrack-1.2-r1.ebuild:
+  Add note that this package has ix86 ASM, and fix quoting on a filename with
+  a hash.
+
+  11 Nov 2007; Alon Bar-Lev <alonbl@gentoo.org> -rainbowcrack-1.2.ebuild:
+  Cleanup
+
+  11 Nov 2007; Samuli Suominen <drac@gentoo.org> rainbowcrack-1.2-r1.ebuild:
+  amd64 stable wrt #198673
+
+  11 Nov 2007; Dawid Węgliński <cla@gentoo.org> ChangeLog:
+  Stable on x86 (bug #198673)
+
+*rainbowcrack-1.2-r1 (01 Nov 2006)
+
+  01 Nov 2006; Alon Bar-Lev <alonbl@gentoo.org>
+  +files/rainbowcrack-1.2-share.patch, +rainbowcrack-1.2-r1.ebuild:
+  Fixed charset.txt issue, thanks to Roger Ward, closes bug#153487
+
+  29 Jul 2005; Daniel Black <dragonheart@gentoo.org>
+  rainbowcrack-1.2.ebuild:
+  removed die from epatch || die.
+
+  20 May 2005; Jan Brinkmann <luckyduck@gentoo.org> rainbowcrack-1.2.ebuild:
+  stable on amd64
+
+  22 Feb 2005; Simon Stelling <blubb@gentoo.org> rainbowcrack-1.2.ebuild:
+  added ~amd64
+
+  17 Feb 2005; Robin H. Johnson <robbat2@gentoo.org>
+  rainbowcrack-1.2.ebuild:
+  Bug #69831: Ensure unzip is in DEPEND.
+
+*rainbowcrack-1.2 (01 Jan 2005)
+
+  01 Jan 2005; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
+  +rainbowcrack-1.2.ebuild:
+  initial submission as per bug #75278. Ebuild thanks to halitosis@phreaker.net

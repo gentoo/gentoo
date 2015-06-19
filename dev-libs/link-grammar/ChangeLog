@@ -1,0 +1,294 @@
+# ChangeLog for dev-libs/link-grammar
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/link-grammar/ChangeLog,v 1.75 2014/04/26 06:59:31 pacho Exp $
+
+  26 Apr 2014; Pacho Ramos <pacho@gentoo.org> -link-grammar-4.7.8.ebuild,
+  -link-grammar-4.8.0.ebuild:
+  drop old
+
+  28 Mar 2014; Jeroen Roovers <jer@gentoo.org> link-grammar-4.8.6.ebuild:
+  Stable for HPPA (bug #499954).
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> link-grammar-4.8.6.ebuild:
+  x86 stable, bug 499954
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> link-grammar-4.8.6.ebuild:
+  amd64 stable, bug 499954
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> link-grammar-4.8.6.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> link-grammar-4.8.6.ebuild:
+  arch stable, bug 888
+
+*link-grammar-4.8.6 (09 Feb 2014)
+
+  09 Feb 2014; Pacho Ramos <pacho@gentoo.org> +link-grammar-4.8.6.ebuild,
+  -link-grammar-4.7.13.ebuild:
+  Version bump, drop old
+
+  22 Dec 2013; Jeroen Roovers <jer@gentoo.org> link-grammar-4.8.0.ebuild:
+  Stable for HPPA (bug #478252).
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> link-grammar-4.8.0.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> link-grammar-4.8.0.ebuild:
+  amd64 stable, bug #478252
+
+*link-grammar-4.8.0 (26 Oct 2013)
+
+  26 Oct 2013; Pacho Ramos <pacho@gentoo.org> +link-grammar-4.8.0.ebuild,
+  -link-grammar-4.7.12.ebuild:
+  Version bump, drop old
+
+*link-grammar-4.7.13 (18 Jun 2013)
+
+  18 Jun 2013; Pacho Ramos <pacho@gentoo.org> +link-grammar-4.7.13.ebuild:
+  Version bump
+
+*link-grammar-4.7.12 (28 May 2013)
+
+  28 May 2013; Pacho Ramos <pacho@gentoo.org> +link-grammar-4.7.12.ebuild,
+  -link-grammar-4.7.6.ebuild:
+  Version bump, drop old
+
+  01 Apr 2013; Agostino Sarubbo <ago@gentoo.org> link-grammar-4.7.8.ebuild:
+  Stable for sparc, wrt bug #458984
+
+  01 Apr 2013; Agostino Sarubbo <ago@gentoo.org> link-grammar-4.7.8.ebuild:
+  Stable for alpha, wrt bug #458984
+
+  29 Mar 2013; Agostino Sarubbo <ago@gentoo.org> link-grammar-4.7.8.ebuild:
+  Stable for ia64, wrt bug #458984
+
+  27 Mar 2013; Agostino Sarubbo <ago@gentoo.org> link-grammar-4.7.8.ebuild:
+  Stable for ppc64, wrt bug #458984
+
+  26 Mar 2013; Agostino Sarubbo <ago@gentoo.org> link-grammar-4.7.8.ebuild:
+  Stable for ppc, wrt bug #458984
+
+  26 Mar 2013; Jeroen Roovers <jer@gentoo.org> link-grammar-4.7.8.ebuild:
+  Stable for HPPA (bug #458984).
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> link-grammar-4.7.8.ebuild:
+  Stable for x86, wrt bug #458984
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> link-grammar-4.7.8.ebuild:
+  Stable for amd64, wrt bug #458984
+
+  06 Mar 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  -files/link-grammar-4.2.4-tokenize.patch, -link-grammar-4.7.4.ebuild:
+  Clean up old revision.
+
+  30 Nov 2012; Ulrich Müller <ulm@gentoo.org> link-grammar-4.7.4.ebuild,
+  link-grammar-4.7.6.ebuild, link-grammar-4.7.8.ebuild:
+  Fix LICENSE, 3-clause BSD license according to README and LICENSE files,
+  bug 445258.
+
+  28 Oct 2012; Raúl Porcel <armin76@gentoo.org> link-grammar-4.7.6.ebuild:
+  ia64/sparc stable wrt #427544
+
+*link-grammar-4.7.8 (19 Oct 2012)
+
+  19 Oct 2012; Pacho Ramos <pacho@gentoo.org> +link-grammar-4.7.8.ebuild:
+  Version bump, add missing depend on ant-core (#438266 by Ferenc Erki).
+
+  16 Oct 2012; Anthony G. Basile <blueness@gentoo.org>
+  link-grammar-4.7.6.ebuild:
+  stable ppc, bug #427544
+
+  15 Oct 2012; Matt Turner <mattst88@gentoo.org> link-grammar-4.7.6.ebuild:
+  Stable on alpha, bug 427544.
+
+  07 Oct 2012; Anthony G. Basile <blueness@gentoo.org>
+  link-grammar-4.7.6.ebuild:
+  stable ppc64, bug #427544
+
+  04 Oct 2012; Agostino Sarubbo <ago@gentoo.org> link-grammar-4.7.6.ebuild:
+  Stable for amd64, wrt bug #427544
+
+  03 Oct 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  link-grammar-4.7.6.ebuild:
+  x86 stable wrt bug #427544
+
+  02 Oct 2012; Jeroen Roovers <jer@gentoo.org> link-grammar-4.7.6.ebuild:
+  Stable for HPPA (bug #427544).
+
+  05 Aug 2012; Anthony G. Basile <blueness@gentoo.org>
+  link-grammar-4.7.6.ebuild:
+  Keyword ~arm
+
+*link-grammar-4.7.6 (28 Apr 2012)
+
+  28 Apr 2012; Pacho Ramos <pacho@gentoo.org> +link-grammar-4.7.6.ebuild,
+  -link-grammar-4.7.5.ebuild:
+  Version bump, remove broken version.
+
+*link-grammar-4.7.5 (19 Apr 2012)
+
+  19 Apr 2012; Pacho Ramos <pacho@gentoo.org> +link-grammar-4.7.5.ebuild,
+  -link-grammar-4.2.4-r1.ebuild, -link-grammar-4.7.2.ebuild:
+  Version bump, remove old.
+
+  16 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  link-grammar-4.7.4.ebuild:
+  ppc/ppc64 stable wrt #385699
+
+  04 Oct 2011; Jeroen Roovers <jer@gentoo.org> link-grammar-4.7.4.ebuild:
+  Stable for HPPA (bug #372349).
+
+  24 Jul 2011; Raúl Porcel <armin76@gentoo.org> link-grammar-4.7.4.ebuild:
+  alpha/ia64/sparc stable wrt #372349
+
+  16 Jul 2011; Markus Meier <maekke@gentoo.org> link-grammar-4.7.4.ebuild:
+  x86 stable, bug #372349
+
+  01 Jul 2011; Markos Chandras <hwoarang@gentoo.org> link-grammar-4.7.4.ebuild:
+  Stable on amd64 wrt bug #372349
+
+  22 Mar 2011; Brent Baude <ranger@gentoo.org> link-grammar-4.7.2.ebuild:
+  Marking link-grammar-4.7.2 ppc stable for bug 353436
+
+  21 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  link-grammar-4.7.2.ebuild:
+  ppc64 stable wrt #353436
+
+  12 Mar 2011; Raúl Porcel <armin76@gentoo.org> link-grammar-4.7.2.ebuild:
+  alpha/ia64/sparc stable wrt #353436
+
+  07 Mar 2011; Jeroen Roovers <jer@gentoo.org> link-grammar-4.7.2.ebuild:
+  Stable for HPPA (bug #353436).
+
+*link-grammar-4.7.4 (26 Feb 2011)
+
+  26 Feb 2011; Pacho Ramos <pacho@gentoo.org> link-grammar-4.7.2.ebuild,
+  +link-grammar-4.7.4.ebuild:
+  Version bump. Also fix building without hunspell support (bug #356455 by
+  Faustus).
+
+  24 Feb 2011; Thomas Kahle <tomka@gentoo.org> link-grammar-4.7.2.ebuild:
+  x86 stable per bug 353436
+
+  23 Feb 2011; Markos Chandras <hwoarang@gentoo.org> link-grammar-4.7.2.ebuild:
+  Stable on amd64 wrt bug #353436
+
+*link-grammar-4.7.2 (04 Feb 2011)
+
+  04 Feb 2011; Pacho Ramos <pacho@gentoo.org> +link-grammar-4.7.2.ebuild,
+  metadata.xml:
+  Version bump, thanks a lot to Tim Harder for his help in bug #340217. Move to
+  gnome-office.
+
+  23 Mar 2010; Pacho Ramos <pacho@gentoo.org> link-grammar-4.2.4-r1.ebuild:
+  Fix HOMEPAGE, thanks to John Keeping for noticing in bug 310873. Also make
+  DESCRIPTION shorter to make repoman happy.
+
+  14 Dec 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  -link-grammar-4.2.2.ebuild, -link-grammar-4.2.4.ebuild,
+  link-grammar-4.2.4-r1.ebuild:
+  Stick -j1 with emake, fix bug #250125.
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing joem from metadata.xml as per #69387.
+
+  14 Nov 2007; Steve Dibb <beandog@gentoo.org> link-grammar-4.2.4-r1.ebuild:
+  amd64 stable, bug 196803
+
+  06 Nov 2007; Raúl Porcel <armin76@gentoo.org>
+  link-grammar-4.2.4-r1.ebuild:
+  alpha/ia64/x86 stable wrt #196803
+
+  06 Nov 2007; Markus Rothe <corsair@gentoo.org>
+  link-grammar-4.2.4-r1.ebuild:
+  Stable on ppc64
+
+  05 Nov 2007; Jeroen Roovers <jer@gentoo.org> link-grammar-4.2.4-r1.ebuild:
+  Stable for SPARC (bug #196803).
+
+  05 Nov 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  link-grammar-4.2.4-r1.ebuild:
+  ppc stable, bug #196803
+
+  05 Nov 2007; Jeroen Roovers <jer@gentoo.org> link-grammar-4.2.4-r1.ebuild:
+  Stable for HPPA.
+
+  04 Nov 2007; Gilles Dartiguelongue <eva@gentoo.org>
+  link-grammar-4.2.4-r1.ebuild:
+  fix typo
+
+  04 Nov 2007; Gilles Dartiguelongue <eva@gentoo.org>
+  link-grammar-4.2.2.ebuild, link-grammar-4.2.4.ebuild:
+  fix repoman warnings
+
+*link-grammar-4.2.4-r1 (04 Nov 2007)
+
+  04 Nov 2007; Gilles Dartiguelongue <eva@gentoo.org>
+  +files/link-grammar-4.2.4-tokenize.patch, +link-grammar-4.2.4-r1.ebuild:
+  fix bug #196803
+
+*link-grammar-4.2.4 (15 Aug 2007)
+
+  15 Aug 2007; Gilles Dartiguelongue <eva@gentoo.org>
+  -link-grammar-4.1.3.ebuild, +link-grammar-4.2.4.ebuild:
+  Revbump to 4.2.4
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  15 Oct 2006; Aron Griffis <agriffis@gentoo.org> link-grammar-4.2.2.ebuild:
+  Mark 4.2.2 stable on ia64. #144120
+
+  06 Sep 2006; Thomas Cort <tcort@gentoo.org> link-grammar-4.2.2.ebuild:
+  Stable on alpha wrt Bug #144120.
+
+  21 Aug 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  link-grammar-4.2.2.ebuild:
+  Stable on amd64 and x86 wrt bug #144120.
+
+  19 Aug 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  link-grammar-4.2.2.ebuild:
+  ppc stable, bug #144120
+
+  17 Aug 2006; Jeroen Roovers <jer@gentoo.org> link-grammar-4.2.2.ebuild:
+  Stable for HPPA (bug #144120).
+
+  16 Aug 2006; Markus Rothe <corsair@gentoo.org> link-grammar-4.2.2.ebuild:
+  Stable on ppc64; bug #144120
+
+  03 Aug 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  link-grammar-4.2.2.ebuild:
+  Stable on sparc
+
+*link-grammar-4.2.2 (17 May 2006)
+
+  17 May 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  +link-grammar-4.2.2.ebuild:
+  Revbump for abiword-plugins-2.4.4
+
+  19 Mar 2006; Fernando J. Pereda <ferdy@gentoo.org>
+  link-grammar-4.1.3.ebuild:
+  Add ~alpha wrt bug #111826. Tested by Thomas Cort <tcort@cs.ubishops.ca>
+
+  22 Feb 2006; Aron Griffis <agriffis@gentoo.org> link-grammar-4.1.3.ebuild:
+  Mark 4.1.3 ~ia64
+
+  02 Nov 2005; Herbie Hopkins <herbs@gentoo.org> link-grammar-4.1.3.ebuild:
+  Marked ~amd64 wrt bug #110858.
+
+  31 Oct 2005; Brent Baude <ranger@gentoo.org> link-grammar-4.1.3.ebuild:
+  marking link-grammar-4.1.3 ~ppc64 in support of bug 110858
+
+  31 Oct 2005; Jason Wever <weeve@gentoo.org> link-grammar-4.1.3.ebuild:
+  Added ~sparc keyword wrt bug #110858.
+
+  30 Oct 2005; Luca Barbato <lu_zero@gentoo.org> link-grammar-4.1.3.ebuild:
+  Marked ~ppc
+
+*link-grammar-4.1.3 (29 Oct 2005)
+
+  29 Oct 2005; Joe McCann <joem@gentoo.org> +link-grammar-4.1.3.ebuild:
+  First release into the tree. The Link Grammar Parser is a syntactic parser
+  of English, based on link grammar, an original theory of English syntax. The
+  system is written in generic C code, and runs on any platform with a C
+  compiler.

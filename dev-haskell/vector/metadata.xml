@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		
+		An efficient implementation of Int-indexed arrays (both mutable
+		and immutable), with a powerful loop optimisation framework .
+		
+		It is structured as follows:
+		
+		[&quot;Data.Vector&quot;] Boxed vectors of arbitrary types.
+		
+		[&quot;Data.Vector.Unboxed&quot;] Unboxed vectors with an adaptive
+		representation based on data type families.
+		
+		[&quot;Data.Vector.Storable&quot;] Unboxed vectors of &#39;Storable&#39; types.
+		
+		[&quot;Data.Vector.Primitive&quot;] Unboxed vectors of primitive types as
+		defined by the @primitive@ package. &quot;Data.Vector.Unboxed&quot; is more
+		flexible at no performance cost.
+		
+		[&quot;Data.Vector.Generic&quot;] Generic interface to the vector types.
+		
+		Each module has a @Safe@ version with is marked as @Trustworthy@
+		(see &lt;http://hackage.haskell.org/trac/ghc/wiki/SafeHaskell&gt;).
+		
+		There is also a (draft) tutorial on common uses of vector.
+		
+		* &lt;http://haskell.org/haskellwiki/Numeric_Haskell:_A_Vector_Tutorial&gt;
+		
+		Please use the project trac to submit bug reports and feature
+		requests.
+		
+		* &lt;http://trac.haskell.org/vector&gt;
+		
+		Changes in version 0.9
+		
+		* &#39;MonadPlus&#39; instance for boxed vectors
+		
+		* Export more @construct@ and @constructN@ from @Safe@ modules
+		
+		* Require @primitive-0.4.0.1@
+		
+		Changes in version 0.8
+		
+		* New functions: @constructN@, @constructrN@
+		
+		* Support for GHC 7.2 array copying primitives
+		
+		* New fixity for @(!)@
+		
+		* Safe Haskell support (contributed by David Terei)
+		
+		* &#39;Functor&#39;, &#39;Monad&#39;, &#39;Applicative&#39;, &#39;Alternative&#39;, &#39;Foldable&#39; and
+		&#39;Traversable&#39; instances for boxed vectors
+		(/WARNING: they tend to be slow and are only provided for completeness/)
+		
+		* &#39;Show&#39; instances for immutable vectors follow containers conventions
+		
+		* &#39;Read&#39; instances for all immutable vector types
+		
+		* Performance improvements
+		
+	</longdescription>
+	<use>
+		<flag name="boundschecks">Enable bounds checking</flag>
+		<flag name="internalchecks">Enable internal consistency checks at the cost of a
+                significant performance penalty</flag>
+		<flag name="unsafechecks">Enable bounds checking in unsafe operations at the cost of a
+                significant performance penalty</flag>
+	</use>
+</pkgmetadata>

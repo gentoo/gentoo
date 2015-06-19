@@ -1,0 +1,39 @@
+# ChangeLog for app-text/dvibook
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/dvibook/ChangeLog,v 1.11 2014/08/06 07:09:33 patrick Exp $
+
+  06 Aug 2014; Patrick Lauer <patrick@gentoo.org> dvibook-20001129.ebuild:
+  Make description more repoman-happy
+
+  22 Jul 2007; David Shakaryan <omp@gentoo.org> dvibook-20001129.ebuild:
+  Remove virtual/x11 from dependencies.
+
+  12 Mar 2007; Alexandre Buisse <nattfodd@gentoo.org> metadata.xml:
+  Replaced text-markup by tex as maintaining herd (text-markup split).
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  11 Feb 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  dvibook-20001129.ebuild:
+  rman is in app-text, not x11-misc! (Ulrich Mueller)
+
+  11 Feb 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  dvibook-20001129.ebuild:
+  Add modular X dependencies (bug #122123, Ulrich Mueller).
+
+  22 Dec 2005; Mark Loeser <halcy0n@gentoo.org> dvibook-20001129.ebuild:
+  Stable on x86; bug #106911
+
+  27 Oct 2005; Luis Medinas <metalgod@gentoo.org> dvibook-20001129.ebuild:
+  Added ~amd64 keyword. Closes bug #110413.
+
+  05 Sep 2004; David Holm <dholm@gentoo.org> dvibook-20001129.ebuild:
+  Added to ~ppc.
+
+*dvibook-20001129 (02 Sep 2004)
+
+  02 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> +metadata.xml,
+  +files/dvibook-20001129.patch, +dvibook-20001129.ebuild:
+  Initial import. Ebuild submitted by Ulrich Mueller <ulm@kph.uni-mainz.de>,
+  closing bug #56468.

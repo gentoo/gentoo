@@ -1,0 +1,28 @@
+From 29ed1dee800341e8fcde739d0561ecc9d14e7f10 Mon Sep 17 00:00:00 2001
+From: Carlos Soriano <carlos.soriano89@gmail.com>
+Date: Fri, 22 Aug 2014 19:18:30 +0200
+Subject: nautilus-list-view: Avoid unreadable names
+
+Currently if the view is resized, the column name is resized as well
+given that use ellipsization allowing the column to become unreadable.
+To avoid that, use width-chars property to set a desired width, but at
+the same time allowing the user to resize without limits the name column
+if desired.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=732004
+
+diff --git a/src/nautilus-list-view.c b/src/nautilus-list-view.c
+index 8711af6..b361734 100644
+--- a/src/nautilus-list-view.c
++++ b/src/nautilus-list-view.c
+@@ -2066,6 +2066,7 @@ create_and_set_up_tree_view (NautilusListView *view)
+ 			g_object_set (cell,
+ 				      "ellipsize", PANGO_ELLIPSIZE_END,
+ 				      "single-paragraph-mode", TRUE,
++				      "width-chars", 30,
+ 				      "xpad", 5,
+ 				      NULL);
+ 
+-- 
+cgit v0.10.1
+
