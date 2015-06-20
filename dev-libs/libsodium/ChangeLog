@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/libsodium
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libsodium/ChangeLog,v 1.30 2015/06/06 19:18:42 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libsodium/ChangeLog,v 1.31 2015/06/20 05:34:05 jer Exp $
+
+  20 Jun 2015; Jeroen Roovers <jer@gentoo.org> libsodium-1.0.2.ebuild:
+  Stable for PPC64 (bug #552254).
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

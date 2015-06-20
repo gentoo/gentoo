@@ -1,6 +1,9 @@
 # ChangeLog for app-arch/p7zip
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/p7zip/ChangeLog,v 1.173 2015/06/18 04:50:55 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/p7zip/ChangeLog,v 1.174 2015/06/20 05:31:21 jer Exp $
+
+  20 Jun 2015; Jeroen Roovers <jer@gentoo.org> p7zip-9.20.1-r5.ebuild:
+  Stable for PPC64 (bug #536012).
 
   18 Jun 2015; Jeroen Roovers <jer@gentoo.org> p7zip-9.20.1-r5.ebuild:
   Stable for HPPA (bug #536012).

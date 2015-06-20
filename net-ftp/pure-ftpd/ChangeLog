@@ -1,6 +1,9 @@
 # ChangeLog for net-ftp/pure-ftpd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/pure-ftpd/ChangeLog,v 1.160 2015/06/16 15:17:57 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/pure-ftpd/ChangeLog,v 1.161 2015/06/20 05:41:37 jer Exp $
+
+  20 Jun 2015; Jeroen Roovers <jer@gentoo.org> pure-ftpd-1.0.40.ebuild:
+  Stable for HPPA PPC64 (bug #552254).
 
   16 Jun 2015; Agostino Sarubbo <ago@gentoo.org> pure-ftpd-1.0.40.ebuild:
   Stable for x86, wrt bug #552254
