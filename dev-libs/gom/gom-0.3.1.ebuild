@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/gom/gom-0.3.1.ebuild,v 1.1 2015/05/14 21:38:31 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/gom/gom-0.3.1.ebuild,v 1.2 2015/06/20 20:46:29 pacho Exp $
 
 EAPI="5"
 GCONF_DEBUG="yes"
@@ -14,7 +14,7 @@ LICENSE="LGPL-2+"
 SLOT="0"
 
 IUSE="+introspection test"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 
 RDEPEND="
 	>=dev-db/sqlite-3.7:3
