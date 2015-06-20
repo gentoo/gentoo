@@ -1,6 +1,12 @@
 # ChangeLog for dev-python/ipdb
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/ipdb/ChangeLog,v 1.14 2015/04/08 08:04:52 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/ipdb/ChangeLog,v 1.15 2015/06/20 15:41:03 mrueg Exp $
+
+*ipdb-0.8.1 (20 Jun 2015)
+
+  20 Jun 2015; Manuel Rüger <mrueg@gentoo.org> +ipdb-0.8.1.ebuild,
+  -ipdb-0.7-r1.ebuild:
+  Version bump. Remove old.
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> ipdb-0.7-r1.ebuild,
   ipdb-0.8.ebuild:

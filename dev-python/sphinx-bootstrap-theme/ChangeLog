@@ -1,6 +1,12 @@
 # ChangeLog for dev-python/sphinx-bootstrap-theme
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/sphinx-bootstrap-theme/ChangeLog,v 1.8 2015/03/07 08:28:09 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/sphinx-bootstrap-theme/ChangeLog,v 1.9 2015/06/20 15:37:00 mrueg Exp $
+
+*sphinx-bootstrap-theme-0.4.6 (20 Jun 2015)
+
+  20 Jun 2015; Manuel Rüger <mrueg@gentoo.org>
+  +sphinx-bootstrap-theme-0.4.6.ebuild:
+  Version bump.
 
   07 Mar 2015; Pacho Ramos <pacho@gentoo.org>
   sphinx-bootstrap-theme-0.4.5.ebuild:

@@ -4,5 +4,6 @@
   <herd>python</herd>
   <upstream>
     <remote-id type="pypi">selenium</remote-id>
+    <remote-id type="github">SeleniumHQ/selenium</remote-id>
   </upstream>
 </pkgmetadata>
