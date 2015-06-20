@@ -12,4 +12,4 @@ RESTRICT=mirror bindist strip
 SLOT=0
 SRC_URI=http://download.skype.com/linux/skype-4.3.0.37.tar.bz2
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	pax-utils	dfe060cb70d89757fde5c1ff8405e950	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=4d8cb588acefb601cc45187d5218a7c5
+_md5_=fb7e8eabef925eecc26e548e2565f6ae

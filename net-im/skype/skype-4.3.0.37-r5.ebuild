@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/skype/skype-4.3.0.37-r5.ebuild,v 1.4 2015/06/14 18:42:25 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/skype/skype-4.3.0.37-r5.ebuild,v 1.5 2015/06/20 08:17:08 amynka Exp $
 
 EAPI=5
 
@@ -104,10 +104,6 @@ pkg_postinst() {
 	# http://bugs.gentoo.org/360815
 	elog "For webcam support, see \"LD_PRELOAD\" section of \"README.lib\" document provided by"
 	elog "media-libs/libv4l package and \"README\" document of this package."
-	if use amd64; then
-		elog "You can't install app-emulation/emul-linux-x86-medialibs package for the 32bit"
-		elog "libraries from the media-libs/libv4l package."
-	fi
 
 	if ! use pulseaudio && ! use apulse; then
 		ewarn "ALSA support was removed from Skype"
