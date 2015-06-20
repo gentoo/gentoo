@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/webapp-config/webapp-config-9999.ebuild,v 1.12 2015/04/25 16:08:03 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/webapp-config/webapp-config-9999.ebuild,v 1.13 2015/06/19 23:11:06 twitch153 Exp $
 
 EAPI="5"
 
@@ -58,7 +58,7 @@ python_install_all() {
 }
 
 python_test() {
-	PYTHONPATH="." "${PYTHON}" WebappConfig/tests/dtest.py \
+	PYTHONPATH="." "${PYTHON}" WebappConfig/tests/external.py \
 		|| die "Testing failed with ${EPYTHON}"
 }
 
