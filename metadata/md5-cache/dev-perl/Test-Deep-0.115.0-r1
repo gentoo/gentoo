@@ -10,4 +10,4 @@ RDEPEND=>=virtual/perl-Scalar-List-Utils-1.90.0 virtual/perl-Test-Simple dev-lan
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RJ/RJBS/Test-Deep-0.115.tar.gz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
-_md5_=3f529dc0df8ed48e82419c01d94b4182
+_md5_=28757efb47bc84bc8ce5af5a396f919c

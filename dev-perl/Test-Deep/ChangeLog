@@ -1,6 +1,15 @@
 # ChangeLog for dev-perl/Test-Deep
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-Deep/ChangeLog,v 1.75 2015/06/13 11:27:16 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-Deep/ChangeLog,v 1.76 2015/06/20 00:15:42 dilfridge Exp $
+
+*Test-Deep-0.115.0-r1 (20 Jun 2015)
+*Test-Deep-0.110.0-r2 (20 Jun 2015)
+
+  20 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Test-Deep-0.110.0-r2.ebuild, +Test-Deep-0.115.0-r1.ebuild,
+  -Test-Deep-0.110.0-r1.ebuild, -Test-Deep-0.115.0.ebuild:
+  Identical revbumps to help portage with dependency resolution during Perl 5.22
+  update
 
   13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
   Test-Deep-0.110.0-r1.ebuild, Test-Deep-0.115.0.ebuild:
