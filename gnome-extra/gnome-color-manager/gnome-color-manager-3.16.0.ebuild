@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-color-manager/gnome-color-manager-3.16.0.ebuild,v 1.1 2015/06/09 16:12:58 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-color-manager/gnome-color-manager-3.16.0.ebuild,v 1.2 2015/06/20 19:20:05 pacho Exp $
 
 EAPI="5"
 GCONF_DEBUG="no"
@@ -12,7 +12,7 @@ HOMEPAGE="https://git.gnome.org/browse/gnome-color-manager"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="packagekit raw"
 
 # Need gtk+-3.3.8 for https://bugzilla.gnome.org/show_bug.cgi?id=673331

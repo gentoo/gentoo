@@ -1,6 +1,9 @@
 # ChangeLog for media-sound/sound-juicer
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/sound-juicer/ChangeLog,v 1.243 2015/06/09 16:35:45 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/sound-juicer/ChangeLog,v 1.244 2015/06/20 19:20:44 pacho Exp $
+
+  20 Jun 2015; Pacho Ramos <pacho@gentoo.org> sound-juicer-3.16.1.ebuild:
+  sparc keyword, bug #523924
 
 *sound-juicer-3.16.1 (09 Jun 2015)
 

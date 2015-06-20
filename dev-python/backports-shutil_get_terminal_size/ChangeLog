@@ -1,0 +1,9 @@
+# ChangeLog for dev-python/backports-shutil_get_terminal_size
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/backports-shutil_get_terminal_size/ChangeLog,v 1.1 2015/06/20 18:37:09 jlec Exp $
+
+*backports-shutil_get_terminal_size-1.0.0 (20 Jun 2015)
+
+  20 Jun 2015; Justin Lecher <jlec@gentoo.org>
+  +backports-shutil_get_terminal_size-1.0.0.ebuild, +metadata.xml:
+  New package, ebuild written by me
