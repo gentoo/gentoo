@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/libvirt-1.2.15-r1.ebuild,v 1.1 2015/05/24 21:05:42 tamiko Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/libvirt-1.2.15-r1.ebuild,v 1.2 2015/06/20 18:26:49 zlogene Exp $
 
 EAPI=5
 
@@ -28,7 +28,7 @@ else
 	SRC_URI+=" ${BACKPORTS:+
 		http://dev.gentoo.org/~cardoe/distfiles/${P}-${BACKPORTS}.tar.xz
 		http://dev.gentoo.org/~tamiko/distfiles/${P}-${BACKPORTS}.tar.xz}"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 	SLOT="0/${PV}"
 fi
 S="${WORKDIR}/${P%_rc*}"
