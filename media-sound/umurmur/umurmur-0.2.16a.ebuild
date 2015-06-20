@@ -1,46 +1,52 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/umurmur/umurmur-0.2.14.ebuild,v 1.5 2015/04/09 15:47:56 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/umurmur/umurmur-0.2.16a.ebuild,v 1.1 2015/06/20 16:42:05 polynomial-c Exp $
 
 EAPI=5
 
-inherit systemd eutils readme.gentoo user
+inherit autotools systemd eutils readme.gentoo user
 
 DESCRIPTION="Minimalistic Murmur (Mumble server)"
-HOMEPAGE="http://code.google.com/p/umurmur/"
-SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
+HOMEPAGE="http://code.google.com/p/umurmur/ https://github.com/umurmur/umurmur"
+SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
-IUSE="polarssl"
+KEYWORDS="~amd64 ~arm ~x86"
+IUSE="gnutls polarssl shm"
 
-DEPEND="<dev-libs/protobuf-c-1.0.0
+DEPEND=">=dev-libs/protobuf-c-1.0.0_rc2
 	dev-libs/libconfig
+	gnutls? ( >=net-libs/gnutls-3.0.0 )
 	polarssl? ( >=net-libs/polarssl-1.0.0 )
-	!polarssl? ( dev-libs/openssl:0 )"
+	!gnutls? ( !polarssl? ( dev-libs/openssl:0 ) )"
 
 RDEPEND="${DEPEND}"
 
 DOC_CONTENTS="
 	A configuration file has been installed at /etc/umurmur.conf - you may
 	want to review it. See also\n
-	http://code.google.com/p/umurmur/wiki/Configuring02x
-"
+	https://github.com/umurmur/umurmur/wiki/Configuration "
 
 pkg_setup() {
 	enewgroup murmur
 	enewuser murmur "" "" "" murmur
 }
 
+src_prepare() {
+	eautoreconf
+}
+
 src_configure() {
 	local myconf
 
-	# build uses polarssl by default, but instead, make it use openssl
-	# unless polarssl is desired.
-	use !polarssl && myconf="${myconf} --with-ssl=openssl"
+	if use polarssl && use gnutls; then
+		ewarn "Both gnutls and polarssl requested, defaulting to polarssl."
+	fi
 
-	econf ${myconf}
+	econf \
+		--with-ssl=$(usev polarssl || usev gnutls || echo openssl) \
+		$(use_enable shm shmapi)
 }
 
 src_install() {
