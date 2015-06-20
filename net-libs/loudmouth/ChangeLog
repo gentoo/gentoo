@@ -1,6 +1,9 @@
 # ChangeLog for net-libs/loudmouth
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/loudmouth/ChangeLog,v 1.111 2013/05/15 22:42:18 ssuominen Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/loudmouth/ChangeLog,v 1.112 2015/06/20 11:22:34 pacho Exp $
+
+  20 Jun 2015; Pacho Ramos <pacho@gentoo.org> loudmouth-1.4.3-r2.ebuild:
+  Bump eapi
 
   15 May 2013; Samuli Suominen <ssuominen@gentoo.org>
   loudmouth-1.4.3-r2.ebuild:
@@ -447,4 +450,3 @@
   16 Jul 2003; Don Seiler <rizzo@gentoo.org>; loudmouth-0.11.ebuild:
   Thanks to Justin Mecham <justin@aspect.net> for initially submitting this
   ebuild.
-

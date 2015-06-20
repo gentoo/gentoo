@@ -1,6 +1,11 @@
 # ChangeLog for sys-apps/hdparm
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/hdparm/ChangeLog,v 1.251 2015/06/17 19:39:15 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/hdparm/ChangeLog,v 1.252 2015/06/20 10:52:55 polynomial-c Exp $
+
+*hdparm-9.48 (20 Jun 2015)
+
+  20 Jun 2015; Lars Wendler <polynomial-c@gentoo.org> +hdparm-9.48.ebuild:
+  Version bump.
 
   17 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> hdparm-9.45.ebuild:
   ia64 stable wrt bug #528772

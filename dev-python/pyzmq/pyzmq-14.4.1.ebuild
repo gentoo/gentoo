@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyzmq/pyzmq-14.4.1.ebuild,v 1.12 2015/06/19 07:51:32 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyzmq/pyzmq-14.4.1.ebuild,v 1.13 2015/06/20 10:33:39 perfinion Exp $
 
 EAPI=5
 
@@ -21,7 +21,7 @@ IUSE="doc examples green test"
 REQUIRED_USE="test? ( green )"
 
 PY2_USEDEP=$(python_gen_usedep python2_7)
-RDEPEND=">=net-libs/zeromq-2.1.9
+RDEPEND=">=net-libs/zeromq-2.1.9:=
 	dev-python/py[${PYTHON_USEDEP}]
 	dev-python/cffi:=[${PYTHON_USEDEP}]
 	green? ( dev-python/gevent[${PY2_USEDEP}] )"

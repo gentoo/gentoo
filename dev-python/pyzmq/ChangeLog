@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/pyzmq
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyzmq/ChangeLog,v 1.77 2015/06/19 07:51:32 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyzmq/ChangeLog,v 1.78 2015/06/20 10:33:39 perfinion Exp $
+
+  20 Jun 2015; Jason Zaman <perfinion@gentoo.org> pyzmq-14.4.1.ebuild:
+  backport subslot dep on net-libs/zeromq
 
 *pyzmq-14.7.0 (19 Jun 2015)
 
