@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare setup
+DEPEND=>=dev-libs/dbus-glib-0.100:= >=dev-libs/glib-2.40:2= sys-libs/zlib:= x11-libs/libX11:= acl? ( sys-apps/acl:= >=virtual/udev-200 ) pam? ( virtual/pam ) policykit? ( >=sys-auth/polkit-0.110 ) dev-libs/libxslt virtual/pkgconfig doc? ( app-text/xmlto ) test? ( app-text/docbook-xml-dtd:4.1.2 app-text/xmlto )
+DESCRIPTION=Framework for defining and tracking users, login sessions and seats
+EAPI=5
+HOMEPAGE=http://github.com/ConsoleKit2/ConsoleKit2 http://www.freedesktop.org/wiki/Software/ConsoleKit
+IUSE=acl debug doc kernel_linux pam policykit selinux test
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/dbus-glib-0.100:= >=dev-libs/glib-2.40:2= sys-libs/zlib:= x11-libs/libX11:= acl? ( sys-apps/acl:= >=virtual/udev-200 ) pam? ( virtual/pam ) policykit? ( >=sys-auth/polkit-0.110 ) kernel_linux? ( sys-apps/coreutils[acl?] ) selinux? ( sec-policy/selinux-consolekit )
+SLOT=0
+SRC_URI=http://github.com/ConsoleKit2/ConsoleKit2/releases/download/0.9.4/ConsoleKit2-0.9.4.tar.bz2 mirror://debian/pool/main/c/consolekit/consolekit_0.4.6-4.debian.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	pam	aa1ebb3ab720ea04dbbdd6eaaf9554ed	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=249f3898bf3d73eda7261bfaf6d1b18d
