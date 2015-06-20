@@ -1,6 +1,13 @@
 # ChangeLog for profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default/bsd/ChangeLog,v 1.175 2015/04/05 14:49:29 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/default/bsd/ChangeLog,v 1.176 2015/06/20 21:55:22 chewi Exp $
+
+  20 Jun 2015; James Le Cuirot <chewi@gentoo.org>
+  fbsd/amd64/10.1/make.defaults, fbsd/amd64/9.1/make.defaults,
+  fbsd/amd64/9.2/make.defaults, fbsd/package.use.mask, fbsd/use.force,
+  fbsd/x86/10.1/make.defaults, fbsd/x86/9.1/make.defaults,
+  fbsd/x86/9.2/make.defaults:
+  Remove some unused Java-related flags.
 
   05 Apr 2015; Michał Górny <mgorny@gentoo.org>
   +fbsd/amd64/9.1/clang/deprecated, +fbsd/amd64/9.1/deprecated,

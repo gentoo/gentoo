@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default/bsd/fbsd/package.use.mask,v 1.39 2014/07/07 01:44:52 naota Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/default/bsd/fbsd/package.use.mask,v 1.40 2015/06/20 21:55:23 chewi Exp $
 
 # As per UberLord's requests
 sys-apps/openrc pam
@@ -69,10 +69,6 @@ app-emulation/wine capi
 # Naohiro Aota <naota@gentoo.org> (24 Nov 2011)
 # Masked because kerberos is masked
 net-dns/bind gssapi
-
-# Naohiro Aota <naota@gentoo.org> (13 Dec 2011)
-# Masked because sun-j2me-bin does not support BSD
-dev-java/proguard j2me
 
 # Naohiro Aota <naota@gentoo.org> (20 Feb 2012)
 # Ian Stakenvicius <axs@gentoo.org> (30 Apr 2014)

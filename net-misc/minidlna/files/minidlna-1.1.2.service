@@ -1,6 +1,6 @@
 [Unit]
-Description=MiniDLNA is a DLNA/UPnP-AV server software
-After=syslog.target local-fs.target network.target
+Description=MiniDLNA server
+After=network.target
 
 [Service]
 User=minidlna

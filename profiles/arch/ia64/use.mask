@@ -144,9 +144,6 @@ qdbm
 # need to get dev-java/ant marked stable stable
 # before unmasking (16 Oct 2006 nichoj)
 java
-java6
-java-internal
-java-external
 freetts
 # need to keyword openjms-bin, sun-jms
 jms
@@ -154,8 +151,6 @@ jms
 jmx
 # need to keyword sun-javamail-bin, sun-javamail
 javamail
-# depends on ibm-jdk-bin which isn't available for ia64
-mpe-sdk
 # needs java
 pdfannotextractor
 
