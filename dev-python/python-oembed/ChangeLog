@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/python-oembed
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/python-oembed/ChangeLog,v 1.4 2015/06/03 21:24:20 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-oembed/ChangeLog,v 1.5 2015/06/20 14:43:19 mrueg Exp $
+
+*python-oembed-0.2.2 (20 Jun 2015)
+
+  20 Jun 2015; Manuel Rüger <mrueg@gentoo.org> +python-oembed-0.2.2.ebuild:
+  Version bump.
 
   03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add pypi to remote-id in metadata.xml

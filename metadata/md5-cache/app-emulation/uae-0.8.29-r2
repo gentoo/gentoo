@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst prepare
-DEPEND=sdl? ( media-libs/libsdl media-libs/sdl-gfx x11-libs/gtk+:2 alsa? ( media-libs/alsa-lib ) ) !sdl? ( x11-libs/libXext x11-libs/gtk+:2 ) alsa? ( media-libs/alsa-lib ) scsi? ( app-cdr/cdrtools )
+DEPEND=sdl? ( media-libs/libsdl media-libs/sdl-gfx x11-libs/gtk+:2 alsa? ( media-libs/alsa-lib ) ) !sdl? ( x11-libs/libXext x11-libs/gtk+:2 ) alsa? ( media-libs/alsa-lib ) scsi? ( app-cdr/cdrtools ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=The Umiquious Amiga Emulator
 EAPI=5
 HOMEPAGE=http://www.amigaemulator.org/
@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=sdl? ( media-libs/libsdl media-libs/sdl-gfx x11-libs/gtk+:2 alsa? ( media-libs/alsa-lib ) ) !sdl? ( x11-libs/libXext x11-libs/gtk+:2 ) alsa? ( media-libs/alsa-lib ) scsi? ( app-cdr/cdrtools )
 SLOT=0
 SRC_URI=ftp://ftp.amigaemulator.org/pub/uae/sources/develop/uae-0.8.29.tar.bz2
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=7ab032e7cd2feba8aa2683e5630cba5f
+_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=f544e22e17228a512b8b03b5982c43f1

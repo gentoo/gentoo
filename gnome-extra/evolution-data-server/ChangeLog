@@ -1,6 +1,16 @@
 # ChangeLog for gnome-extra/evolution-data-server
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/evolution-data-server/ChangeLog,v 1.416 2015/06/19 16:36:31 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/evolution-data-server/ChangeLog,v 1.418 2015/06/20 14:43:28 pacho Exp $
+
+  20 Jun 2015; Pacho Ramos <pacho@gentoo.org>
+  -evolution-data-server-3.16.3.ebuild:
+  Drop version that can break your config files
+
+  20 Jun 2015; Pacho Ramos <pacho@gentoo.org>
+  evolution-data-server-3.16.4_pre20150619.ebuild:
+  This version needs dev-util/gtk-doc to provide gtk-doc.make because tarball is
+  the one from upstream git instead of one made after manually running distcheck
+  (#552624)
 
 *evolution-data-server-3.16.4_pre20150619 (19 Jun 2015)
 

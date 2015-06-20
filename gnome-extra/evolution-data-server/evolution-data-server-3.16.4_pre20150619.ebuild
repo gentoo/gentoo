@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/evolution-data-server/evolution-data-server-3.16.4_pre20150619.ebuild,v 1.1 2015/06/19 16:36:31 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/evolution-data-server/evolution-data-server-3.16.4_pre20150619.ebuild,v 1.2 2015/06/20 14:38:27 pacho Exp $
 
 EAPI="5"
 GCONF_DEBUG="no"
@@ -64,7 +64,14 @@ DEPEND="${RDEPEND}
 	>=sys-devel/gettext-0.17
 	virtual/pkgconfig
 	vala? ( $(vala_depend) )
+
+	dev-util/gtk-doc
 "
+
+# FIXME: This version needs dev-util/gtk-doc to provide gtk-doc.make
+# Next one should be a proper tarball created after distcheck run and, then
+# shouldn't require that DEPEND.
+
 # eautoreconf needs:
 #	>=gnome-base/gnome-common-2
 
