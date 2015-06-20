@@ -1,6 +1,13 @@
 # ChangeLog for dev-java/icedtea
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/icedtea/ChangeLog,v 1.136 2015/05/23 23:05:43 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/icedtea/ChangeLog,v 1.137 2015/06/20 13:45:07 chewi Exp $
+
+  20 Jun 2015; James Le Cuirot <chewi@gentoo.org> icedtea-6.1.13.7.ebuild,
+  icedtea-7.2.5.5.ebuild:
+  Remove redundant --with-ecj-jar code as javac from gcj-jdk always takes
+  precedence. Remove redundant bootstrap_impossible code as this is no longer
+  relevant. Remove references to the old VM handles as the dependencies will
+  ensure that the new ones are always present anyway.
 
   23 May 2015; James Le Cuirot <chewi@gentoo.org> icedtea-7.2.5.5.ebuild:
   ~arm keyword but only for 7. We're phasing 6 out so I don't think we'll bother
