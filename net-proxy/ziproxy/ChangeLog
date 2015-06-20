@@ -1,6 +1,12 @@
 # ChangeLog for net-proxy/ziproxy
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/ziproxy/ChangeLog,v 1.33 2015/01/07 14:05:47 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/ziproxy/ChangeLog,v 1.34 2015/06/20 10:18:15 pacho Exp $
+
+*ziproxy-3.3.1 (20 Jun 2015)
+
+  20 Jun 2015; Pacho Ramos <pacho@gentoo.org> +files/ziproxy.initd-r1,
+  +ziproxy-3.3.1.ebuild, -ziproxy-3.3.0.ebuild:
+  Version bump, drop old, fix init.d script (#517560 by slick)
 
   07 Jan 2015; Pacho Ramos <pacho@gentoo.org> -ziproxy-3.1.3.ebuild,
   metadata.xml:

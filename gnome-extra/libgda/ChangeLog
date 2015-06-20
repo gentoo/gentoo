@@ -1,6 +1,15 @@
 # ChangeLog for gnome-extra/libgda
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/libgda/ChangeLog,v 1.231 2015/04/18 08:08:07 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/libgda/ChangeLog,v 1.232 2015/06/20 09:59:11 pacho Exp $
+
+*libgda-5.2.4 (20 Jun 2015)
+
+  20 Jun 2015; Pacho Ramos <pacho@gentoo.org>
+  +files/libgda-5.2.4-format-security.patch, +files/libgda-5.2.4-jre18.patch,
+  +libgda-5.2.4.ebuild:
+  Version bump, fix java detection (#450004 by Juergen Rose and Tom Wijsman
+  (TomWij)), enable vala (#507022 by Markus Moll), fix compilation with format-
+  security (#517610 by Agostino Sarubbo)
 
   18 Apr 2015; Pacho Ramos <pacho@gentoo.org> libgda-5.2.2.ebuild:
   yelp-tools needed at build time (#514320)

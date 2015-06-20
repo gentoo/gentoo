@@ -1,30 +1,30 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/ziproxy/ziproxy-3.3.0.ebuild,v 1.1 2013/01/08 16:19:56 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/ziproxy/ziproxy-3.3.1.ebuild,v 1.1 2015/06/20 10:18:15 pacho Exp $
 
-EAPI=4
+EAPI=5
 inherit user
 
 DESCRIPTION="A forwarding, non-caching, compressing web proxy server"
 HOMEPAGE="http://ziproxy.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="jpeg2k sasl xinetd"
 
-DEPEND="
+RDEPEND="
 	media-libs/giflib
-	media-libs/libpng
+	media-libs/libpng:0=
 	virtual/jpeg
 	sys-libs/zlib
 	jpeg2k? ( media-libs/jasper )
 	sasl? ( dev-libs/cyrus-sasl )
-"
-RDEPEND="
-	${DEPEND}
 	xinetd? ( virtual/inetd )
+"
+DEPEND="${RDEPEND}
+	app-arch/xz-utils
 "
 
 pkg_setup() {
@@ -62,7 +62,7 @@ src_install() {
 
 	dobin src/tools/ziproxy_genhtml_stats.sh
 
-	newinitd "${FILESDIR}"/${PN}.initd ${PN}
+	newinitd "${FILESDIR}"/${PN}.initd-r1 ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 
 	dodoc ChangeLog CREDITS README README.tools
