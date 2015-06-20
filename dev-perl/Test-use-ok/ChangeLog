@@ -1,6 +1,12 @@
 # ChangeLog for dev-perl/Test-use-ok
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-use-ok/ChangeLog,v 1.13 2014/08/22 20:23:27 axs Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-use-ok/ChangeLog,v 1.14 2015/06/20 20:12:38 dilfridge Exp $
+
+*Test-use-ok-0.160.0 (20 Jun 2015)
+
+  20 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Test-use-ok-0.160.0.ebuild:
+  Add dummy 0.160.0 version
 
 *Test-use-ok-0.110.0-r1 (22 Aug 2014)
 

@@ -2,6 +2,6 @@ DEFINED_PHASES=-
 DESCRIPTION=Virtual for Test-Simple
 EAPI=5
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~x86-interix ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
-RDEPEND=|| ( =dev-lang/perl-5.22* ~perl-core/Test-Simple-1.1.14 ) !<perl-core/Test-Simple-1.1.14 !>perl-core/Test-Simple-1.1.14-r999 !dev-perl/Test-Tester !dev-perl/Test-use-ok
+RDEPEND=|| ( =dev-lang/perl-5.22* ~perl-core/Test-Simple-1.1.14 ) !<perl-core/Test-Simple-1.1.14 !>perl-core/Test-Simple-1.1.14-r999 !<dev-perl/Test-Tester-0.114.0 !<dev-perl/Test-use-ok-0.160.0
 SLOT=0
-_md5_=b983c871b0bca34f33228378c62f909b
+_md5_=fc89c81081d80ee01fdfcb3f0998c055

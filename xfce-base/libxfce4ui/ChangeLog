@@ -1,6 +1,18 @@
 # ChangeLog for xfce-base/libxfce4ui
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-base/libxfce4ui/ChangeLog,v 1.57 2015/05/11 17:55:22 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-base/libxfce4ui/ChangeLog,v 1.60 2015/06/20 20:02:05 mgorny Exp $
+
+  20 Jun 2015; Michał Górny <mgorny@gentoo.org> libxfce4ui-4.12.1-r2.ebuild:
+  Fix gtk-doc install location
+
+  20 Jun 2015; Michał Górny <mgorny@gentoo.org> libxfce4ui-4.12.1-r1.ebuild:
+  Restore USE=glade in the older ebuild, removal was accidental.
+
+*libxfce4ui-4.12.1-r2 (20 Jun 2015)
+
+  20 Jun 2015; Michał Górny <mgorny@gentoo.org> +libxfce4ui-4.12.1-r2.ebuild,
+  -libxfce4ui-4.12.1.ebuild, libxfce4ui-4.12.1-r1.ebuild:
+  Drop USE=glade as it uses deprecated glade:3, bug #551296.
 
 *libxfce4ui-4.12.1-r1 (11 May 2015)
 

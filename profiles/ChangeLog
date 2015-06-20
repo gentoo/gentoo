@@ -1,10 +1,19 @@
 # ChangeLog for profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10138 2015/06/19 18:51:16 grknight Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10141 2015/06/20 20:09:31 dilfridge Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  20 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org> package.mask:
+  Add a dummy Test-use-ok to the Perl 5.22 package mask
+
+  20 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org> package.mask:
+  Add a dummy Test-Tester to the Perl 5.22 package mask
+
+  20 Jun 2015; Ulrich Müller <ulm@gentoo.org> license_groups:
+  Remove unused sun-bcla-java-vm license from EULA group.
 
   19 Jun 2015; <grknight@gentoo.org> package.mask:
   The Cyphertite backup service is closing as of August 18th, 2015.

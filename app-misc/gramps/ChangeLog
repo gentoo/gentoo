@@ -1,6 +1,12 @@
 # ChangeLog for app-misc/gramps
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/gramps/ChangeLog,v 1.172 2015/06/09 11:43:58 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/gramps/ChangeLog,v 1.173 2015/06/20 19:53:04 jmbsvicetto Exp $
+
+*gramps-3.4.9 (20 Jun 2015)
+
+  20 Jun 2015; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +gramps-3.4.9.ebuild:
+  Add 3.4.9 release.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml
