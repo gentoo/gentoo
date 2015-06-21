@@ -1,6 +1,14 @@
 # ChangeLog for mail-client/mailx-support
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/mailx-support/ChangeLog,v 1.26 2015/06/12 22:05:53 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/mailx-support/ChangeLog,v 1.28 2015/06/21 17:12:26 blueness Exp $
+
+  21 Jun 2015; Anthony G. Basile <blueness@gentoo.org>
+  mailx-support-20060102-r2.ebuild:
+  Stable for arm.  Bug #552724.
+
+  21 Jun 2015; Anthony G. Basile <blueness@gentoo.org>
+  mailx-support-20060102-r2.ebuild:
+  Stable for ppc and ppc64.  Bug #552724.
 
 *mailx-support-20060102-r2 (12 Jun 2015)
 

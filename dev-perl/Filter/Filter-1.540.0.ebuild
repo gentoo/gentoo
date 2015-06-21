@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Filter/Filter-1.540.0.ebuild,v 1.1 2015/06/21 16:18:36 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Filter/Filter-1.540.0.ebuild,v 1.2 2015/06/21 17:19:51 dilfridge Exp $
 
 EAPI=5
 
@@ -18,4 +18,4 @@ DEPEND="
 	virtual/perl-ExtUtils-MakeMaker
 "
 
-SRC_TEST="do parallel"
+SRC_TEST="do"
