@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/help2man
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/help2man/ChangeLog,v 1.133 2015/06/18 08:00:09 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/help2man/ChangeLog,v 1.134 2015/06/21 06:24:00 zlogene Exp $
+
+  21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> help2man-1.46.6.ebuild:
+  amd64 stable wrt bug #552450
 
 *help2man-1.47.1 (18 Jun 2015)
 
