@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use.mask,v 1.689 2015/06/19 12:33:20 johu Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use.mask,v 1.690 2015/06/21 15:28:16 floppym Exp $
 
 # This file requires >=portage-2.1.1
 # New entries go on top.
@@ -269,12 +269,6 @@ sys-infiniband/ofed ofed_drivers_ehca
 <media-libs/libcaca-0.99_beta19 ruby
 =dev-vcs/subversion-1.7* ruby
 media-sound/podcatcher bittorrent
-
-# Michał Górny <mgorny@gentoo.org> (27 Feb 2014)
-# Very experimental with unstable kernel- and userspace API.
-# Lacks proper policy support that makes it very unsecure.
-# Suitable only for testing.
-sys-apps/systemd kdbus
 
 # Mike Frysinger <vapier@gentoo.org> (03 Feb 2014)
 # Upstream says to not use this for now.

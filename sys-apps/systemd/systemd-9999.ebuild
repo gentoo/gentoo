@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/systemd-9999.ebuild,v 1.172 2015/06/14 00:19:49 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/systemd-9999.ebuild,v 1.173 2015/06/21 15:29:53 floppym Exp $
 
 EAPI=5
 
@@ -26,7 +26,7 @@ HOMEPAGE="http://www.freedesktop.org/wiki/Software/systemd"
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
 IUSE="acl apparmor audit cryptsetup curl elfutils gcrypt gnuefi http
-	idn importd kdbus +kmod +lz4 lzma nat pam policykit python
+	idn importd +kdbus +kmod +lz4 lzma nat pam policykit python
 	qrcode +seccomp selinux ssl sysv-utils terminal test vanilla xkb"
 REQUIRED_USE="importd? ( curl gcrypt lzma )"
 

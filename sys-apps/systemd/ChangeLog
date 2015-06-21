@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/systemd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/ChangeLog,v 1.378 2015/06/14 00:19:49 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/ChangeLog,v 1.379 2015/06/21 15:29:53 floppym Exp $
+
+  21 Jun 2015; Mike Gilbert <floppym@gentoo.org> systemd-9999.ebuild:
+  Enable kdbus by default.
 
   14 Jun 2015; Mike Gilbert <floppym@gentoo.org> +files/compile-unifont.py,
   systemd-220-r2.ebuild, systemd-9999.ebuild:

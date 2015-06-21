@@ -1,6 +1,12 @@
 # ChangeLog for dev-util/mdds
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/mdds/ChangeLog,v 1.48 2015/05/27 10:58:48 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/mdds/ChangeLog,v 1.49 2015/06/21 15:23:46 dilfridge Exp $
+
+*mdds-0.12.1 (21 Jun 2015)
+
+  21 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org> +mdds-0.12.1.ebuild,
+  mdds-9999.ebuild:
+  Version bump; fix homepage
 
   27 May 2015; Agostino Sarubbo <ago@gentoo.org> mdds-0.12.0.ebuild:
   Stable for x86, wrt bug #547900
