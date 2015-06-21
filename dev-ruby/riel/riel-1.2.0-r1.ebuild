@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/riel/riel-1.2.0-r1.ebuild,v 1.5 2015/06/21 07:57:54 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/riel/riel-1.2.0-r1.ebuild,v 1.6 2015/06/21 09:35:09 zlogene Exp $
 
 EAPI=5
 USE_RUBY="ruby19 ruby20"
@@ -18,7 +18,7 @@ SRC_URI="https://github.com/jpace/riel/archive/v${PV}.tar.gz -> ${PN}-git-${PV}.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 hppa ~ppc ~sparc ~x86"
+KEYWORDS="amd64 hppa ~ppc ~sparc x86"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/rainbow-1.1.4 dev-ruby/logue"

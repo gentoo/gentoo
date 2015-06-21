@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/openrc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/openrc/ChangeLog,v 1.351 2015/06/20 04:40:26 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/openrc/ChangeLog,v 1.352 2015/06/21 09:49:11 zlogene Exp $
+
+  21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> openrc-0.16.4.ebuild:
+  arm stable wrt bug #551508
 
   20 Jun 2015; Jeroen Roovers <jer@gentoo.org> openrc-0.16.4.ebuild:
   Stable for PPC64 (bug #551508).

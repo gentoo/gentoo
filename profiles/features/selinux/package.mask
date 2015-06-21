@@ -1,2 +1,7 @@
-# $Header: /var/cvsroot/gentoo-x86/profiles/features/selinux/package.mask,v 1.55 2014/10/30 17:52:16 swift Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/features/selinux/package.mask,v 1.56 2015/06/21 10:15:16 perfinion Exp $
+
+# Jason Zaman <perfinion@gentoo.org> (21 Jun 2015)
+# SystemD has no support in the SELinux policy at the moment.
+# Please see: https://wiki.gentoo.org/wiki/SELinux/FAQ#Can_I_use_SELinux_with_SystemD.3F
+sys-apps/systemd
 

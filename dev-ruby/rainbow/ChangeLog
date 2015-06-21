@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/rainbow
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rainbow/ChangeLog,v 1.19 2015/06/21 07:56:35 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rainbow/ChangeLog,v 1.20 2015/06/21 09:33:17 zlogene Exp $
+
+  21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> rainbow-2.0.0.ebuild:
+  x86 stable wrt bug #550514
 
   21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> rainbow-2.0.0.ebuild:
   amd64 stable wrt bug #550514

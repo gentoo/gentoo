@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rainbow/rainbow-2.0.0.ebuild,v 1.6 2015/06/21 07:56:35 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rainbow/rainbow-2.0.0.ebuild,v 1.7 2015/06/21 09:33:17 zlogene Exp $
 
 EAPI=5
 USE_RUBY="ruby19 ruby20"
@@ -19,5 +19,5 @@ SRC_URI="https://github.com/sickill/rainbow/archive/v${PV}.tar.gz -> ${PN}-git-$
 
 LICENSE="MIT"
 SLOT="2"
-KEYWORDS="amd64 hppa ~ppc ~sparc ~x86"
+KEYWORDS="amd64 hppa ~ppc ~sparc x86"
 IUSE=""
