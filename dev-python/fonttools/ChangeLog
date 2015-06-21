@@ -1,6 +1,12 @@
 # ChangeLog for dev-python/fonttools
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/fonttools/ChangeLog,v 1.39 2015/06/09 15:17:25 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/fonttools/ChangeLog,v 1.40 2015/06/21 08:50:20 jlec Exp $
+
+*fonttools-2.5 (21 Jun 2015)
+
+  21 Jun 2015; Justin Lecher <jlec@gentoo.org> +fonttools-2.5.ebuild,
+  fonttools-2.4.ebuild:
+  Version Bump, bug #552606
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

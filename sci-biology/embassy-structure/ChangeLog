@@ -1,6 +1,10 @@
 # ChangeLog for sci-biology/embassy-structure
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/embassy-structure/ChangeLog,v 1.24 2015/03/28 17:57:40 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/embassy-structure/ChangeLog,v 1.25 2015/06/21 09:15:24 jlec Exp $
+
+  21 Jun 2015; Justin Lecher <jlec@gentoo.org>
+  files/embassy-structure-0.1.650_fix-build-system.patch:
+  Update buildsystem for latest plplot, bug #552492
 
   28 Mar 2015; Justin Lecher <jlec@gentoo.org>
   -embassy-structure-0.1.0-r4.ebuild, embassy-structure-0.1.650.ebuild:

@@ -5,4 +5,7 @@
 		<email>jlec@gentoo.org</email>
 		<name>Justin Lecher</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="pypi">backports.shutil_get_terminal_size</remote-id>
+	</upstream>
 </pkgmetadata>

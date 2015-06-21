@@ -1,6 +1,10 @@
 # ChangeLog for x11-libs/vte
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/vte/ChangeLog,v 1.412 2015/06/09 09:42:54 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/vte/ChangeLog,v 1.413 2015/06/21 09:01:06 jer Exp $
+
+  21 Jun 2015; Jeroen Roovers <jer@gentoo.org> vte-0.28.2-r207.ebuild,
+  vte-0.36.4.ebuild:
+  Stable for PPC64 (bug #551814).
 
 *vte-0.40.2 (09 Jun 2015)
 

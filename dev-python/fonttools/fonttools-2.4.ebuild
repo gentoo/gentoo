@@ -1,8 +1,9 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/fonttools/fonttools-2.4.ebuild,v 1.7 2015/04/19 09:37:27 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/fonttools/fonttools-2.4.ebuild,v 1.8 2015/06/21 08:50:20 jlec Exp $
 
 EAPI=5
+
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="xml(+)"
 
@@ -20,9 +21,8 @@ IUSE=""
 DEPEND=">=dev-python/numpy-1.0.2[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
 
-DOCS=( README.txt Doc/{changes.txt,install.txt} )
-
 python_install_all() {
-	dohtml Doc/documentation.html || die "dohtml failed"
+	DOCS=( README.txt Doc/{changes.txt,install.txt} )
+	HTML_DOCS=( Doc/documentation.html )
 	distutils-r1_python_install_all
 }

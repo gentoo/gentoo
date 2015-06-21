@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Class-C3/Class-C3-0.280.0.ebuild,v 1.4 2015/05/27 21:10:18 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Class-C3/Class-C3-0.280.0.ebuild,v 1.6 2015/06/21 08:37:31 zlogene Exp $
 
 EAPI=5
 
@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="A pragma to use the C3 method resolution order algortihm"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
 
 RDEPEND="

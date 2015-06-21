@@ -1,6 +1,10 @@
 # ChangeLog for sys-power/acpid
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/acpid/ChangeLog,v 1.122 2015/06/09 07:15:30 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-power/acpid/ChangeLog,v 1.123 2015/06/21 09:17:52 jer Exp $
+
+  21 Jun 2015; Jeroen Roovers <jer@gentoo.org> acpid-2.0.20.ebuild,
+  acpid-2.0.21.ebuild, acpid-2.0.22.ebuild, acpid-2.0.23.ebuild:
+  Drop unneeded -ppc.
 
   09 Jun 2015; Agostino Sarubbo <ago@gentoo.org> acpid-2.0.23.ebuild:
   Stable for x86, wrt bug #530846

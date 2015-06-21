@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/gssdp/gssdp-0.14.11.ebuild,v 1.4 2015/03/15 13:30:14 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/gssdp/gssdp-0.14.11.ebuild,v 1.5 2015/06/21 08:51:51 jer Exp $
 
 EAPI="5"
 GCONF_DEBUG="no"
@@ -14,7 +14,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/GUPnP"
 
 LICENSE="LGPL-2"
 SLOT="0/3"
-KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~ppc ppc64 ~sparc x86 ~x86-fbsd"
 IUSE="+introspection +gtk"
 
 RDEPEND="

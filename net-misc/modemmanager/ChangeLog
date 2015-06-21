@@ -1,6 +1,9 @@
 # ChangeLog for net-misc/modemmanager
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/modemmanager/ChangeLog,v 1.88 2015/04/27 10:05:30 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/modemmanager/ChangeLog,v 1.89 2015/06/21 08:57:31 jer Exp $
+
+  21 Jun 2015; Jeroen Roovers <jer@gentoo.org> modemmanager-1.4.8.ebuild:
+  Stable for PPC64 (bug #551814).
 
 *modemmanager-1.4.8 (27 Apr 2015)
 

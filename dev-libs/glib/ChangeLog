@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/glib
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/glib/ChangeLog,v 1.650 2015/06/08 22:45:27 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/glib/ChangeLog,v 1.651 2015/06/21 08:42:11 jer Exp $
+
+  21 Jun 2015; Jeroen Roovers <jer@gentoo.org> glib-1.2.10-r6.ebuild:
+  Stable for PPC64 (bug #551814).
 
 *glib-2.44.1 (08 Jun 2015)
 

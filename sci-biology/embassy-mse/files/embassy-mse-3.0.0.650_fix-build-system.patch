@@ -1,6 +1,27 @@
---- MSE-3.0.0.650/configure.ac
-+++ MSE-3.0.0.650/configure.ac
-@@ -635,33 +635,6 @@
+ ckit/Makefile.am       |  2 +-
+ configure.ac           | 67 +++++++++++---------------------------------------
+ emboss_acd/Makefile.am |  2 +-
+ src/Makefile.am        |  6 ++---
+ 4 files changed, 18 insertions(+), 59 deletions(-)
+
+diff --git a/ckit/Makefile.am b/ckit/Makefile.am
+index f87b131..a670d2b 100644
+--- a/ckit/Makefile.am
++++ b/ckit/Makefile.am
+@@ -2,7 +2,7 @@
+ 
+ lib_LTLIBRARIES = libckit.la
+ 
+-AM_CPPFLAGS = -I../h
++AM_CPPFLAGS = -I$(top_srcdir)/h
+ 
+ CKITSRC = datafiles.c next.c seqentry.c strings.c gcg.c pir.c \
+ seqspec.c ttyinterface.c nextseqentry.c \
+diff --git a/configure.ac b/configure.ac
+index a20d488..eb208bf 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -635,33 +635,6 @@ AS_CASE([${host_os}],
  
  
  
@@ -34,7 +55,7 @@
  dnl FIXME: This does no longer seem required with Autoconf 2.67?
  dnl Intel MacOSX 10.6 puts X11 in a non-standard place
  dnl AS_IF([test "x${with_x}" != "xno"],
-@@ -737,21 +710,6 @@
+@@ -737,21 +710,6 @@ AX_LIB_POSTGRESQL
  
  
  
@@ -56,19 +77,21 @@
  dnl Test if --enable-localforce given
  locallink="no"
  embprefix="/usr/local"
-@@ -874,6 +832,11 @@
+@@ -874,6 +832,13 @@ AC_ARG_ENABLE([systemlibs],
  AM_CONDITIONAL([ESYSTEMLIBS], [test "x${enable_systemlibs}" = "xyes"])
  
  
 +AS_IF([test "x${enable_systemlibs}" = "xyes"],
 +[
 +dnl using system libraries
-+  PKG_CHECK_MODULES([PLPLOT], [plplotd])
++  PKG_CHECK_MODULES([PLPLOT], [plplotd],
++  [],[PKG_CHECK_MODULES([PLPLOT], [plplot])]
++  )
 +])
  
  
  # Enable the purify tool: --enable-purify, sets CC and LIBTOOL
-@@ -1000,17 +963,13 @@
+@@ -1000,17 +965,13 @@ AS_IF([test "x${enable_savestats}" = "xyes"],
  
  
  
@@ -93,9 +116,20 @@
  
  
  
---- MSE-3.0.0.650/src/Makefile.am
-+++ MSE-3.0.0.650/src/Makefile.am
-@@ -18,9 +18,7 @@
+diff --git a/emboss_acd/Makefile.am b/emboss_acd/Makefile.am
+index e1c1878..e253c95 100644
+--- a/emboss_acd/Makefile.am
++++ b/emboss_acd/Makefile.am
+@@ -1,3 +1,3 @@
+ 
+-pkgdata_DATA = *.acd
++pkgdata_DATA = $(srcdir)/*.acd
+ pkgdatadir=$(prefix)/share/EMBOSS/acd
+diff --git a/src/Makefile.am b/src/Makefile.am
+index b44632a..84e89b5 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -18,9 +18,7 @@ AM_CPPFLAGS = -I../h \
  	-I../../../ajax/ensembl -I../../../ajax/ajaxdb \
  	-I../../../ajax/acd -I../../../plplot
  else
@@ -106,28 +140,10 @@
  endif
  
  if ISSHARED
-@@ -60,5 +58,5 @@
+@@ -60,5 +58,5 @@ LDADD = ../ckit/libckit.la \
  	$(XLIB)
  else
  LDADD = ../ckit/libckit.la -L${embprefix}/lib -lnucleus -lacd -lajaxdb \
 -	-lensembl -lajaxg -lajax -lepcre $(NLADD) -leplplot $(XLIB)
 +	-lensembl -lajaxg -lajax $(NLADD) $(NCURSES_LIBS) $(XLIB)
  endif
---- MSE-3.0.0.650/ckit/Makefile.am
-+++ MSE-3.0.0.650/ckit/Makefile.am
-@@ -2,7 +2,7 @@
- 
- lib_LTLIBRARIES = libckit.la
- 
--AM_CPPFLAGS = -I../h
-+AM_CPPFLAGS = -I$(top_srcdir)/h
- 
- CKITSRC = datafiles.c next.c seqentry.c strings.c gcg.c pir.c \
- seqspec.c ttyinterface.c nextseqentry.c \
---- MSE-3.0.0.650/emboss_acd/Makefile.am
-+++ MSE-3.0.0.650/emboss_acd/Makefile.am
-@@ -1,3 +1,3 @@
- 
--pkgdata_DATA = *.acd
-+pkgdata_DATA = $(srcdir)/*.acd
- pkgdatadir=$(prefix)/share/EMBOSS/acd

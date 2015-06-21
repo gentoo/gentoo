@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/libgee
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgee/ChangeLog,v 1.109 2015/06/07 10:30:16 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgee/ChangeLog,v 1.110 2015/06/21 08:44:08 jer Exp $
+
+  21 Jun 2015; Jeroen Roovers <jer@gentoo.org> libgee-0.18.0.ebuild:
+  Stable for PPC64 (bug #551814).
 
   07 Jun 2015; Markus Meier <maekke@gentoo.org> libgee-0.16.1.ebuild:
   arm stable, bug #534012

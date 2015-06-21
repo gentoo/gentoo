@@ -1,6 +1,10 @@
 # ChangeLog for dev-util/gtk-builder-convert
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/gtk-builder-convert/ChangeLog,v 1.86 2015/06/07 10:33:12 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/gtk-builder-convert/ChangeLog,v 1.87 2015/06/21 08:44:45 jer Exp $
+
+  21 Jun 2015; Jeroen Roovers <jer@gentoo.org>
+  gtk-builder-convert-2.24.28.ebuild:
+  Stable for PPC64 (bug #551814).
 
   07 Jun 2015; Markus Meier <maekke@gentoo.org>
   gtk-builder-convert-2.24.27.ebuild:

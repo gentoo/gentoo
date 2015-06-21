@@ -1,6 +1,10 @@
 # ChangeLog for sci-biology/embassy-iprscan
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/embassy-iprscan/ChangeLog,v 1.9 2015/03/28 18:01:54 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/embassy-iprscan/ChangeLog,v 1.10 2015/06/21 09:07:32 jlec Exp $
+
+  21 Jun 2015; Justin Lecher <jlec@gentoo.org>
+  files/embassy-iprscan-4.3.1.650_fix-build-system.patch:
+  Update buildsystem for latest plplot, bug #552492
 
   28 Mar 2015; Justin Lecher <jlec@gentoo.org> -embassy-iprscan-4.3.1-r1.ebuild,
   embassy-iprscan-4.3.1.650.ebuild:

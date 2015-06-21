@@ -1,6 +1,10 @@
 # ChangeLog for sci-biology/embassy-esim4
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/embassy-esim4/ChangeLog,v 1.33 2015/03/28 18:01:21 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/embassy-esim4/ChangeLog,v 1.34 2015/06/21 09:01:36 jlec Exp $
+
+  21 Jun 2015; Justin Lecher <jlec@gentoo.org>
+  files/embassy-esim4-1.0.0.650_fix-build-system.patch:
+  Update buildsystem for latest plplot, bug #552492
 
   28 Mar 2015; Justin Lecher <jlec@gentoo.org> -embassy-esim4-1.0.0-r6.ebuild,
   embassy-esim4-1.0.0.650.ebuild:

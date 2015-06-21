@@ -1,6 +1,10 @@
 # ChangeLog for x11-libs/gtk+
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtk+/ChangeLog,v 1.783 2015/06/08 22:17:37 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtk+/ChangeLog,v 1.784 2015/06/21 09:00:38 jer Exp $
+
+  21 Jun 2015; Jeroen Roovers <jer@gentoo.org> gtk+-1.2.10-r13.ebuild,
+  gtk+-2.24.28-r1.ebuild, gtk+-3.14.13.ebuild:
+  Stable for PPC64 (bug #551814).
 
   08 Jun 2015; Gilles Dartiguelongue <eva@gentoo.org>
   -files/gtk+-3.12.2-builtin-icon.patch:

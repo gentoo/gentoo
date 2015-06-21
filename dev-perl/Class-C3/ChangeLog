@@ -1,6 +1,12 @@
 # ChangeLog for dev-perl/Class-C3
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Class-C3/ChangeLog,v 1.40 2015/05/27 21:10:18 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Class-C3/ChangeLog,v 1.42 2015/06/21 08:37:31 zlogene Exp $
+
+  21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> Class-C3-0.280.0.ebuild:
+  Add ~ppc keyword wrt bug #548282
+
+  21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> Class-C3-0.280.0.ebuild:
+  Add ~ia64 keyword wrt bug #548282
 
   27 May 2015; Mikle Kolyada <zlogene@gentoo.org> Class-C3-0.280.0.ebuild:
   Add ~sparc keyword wrt bug #548282

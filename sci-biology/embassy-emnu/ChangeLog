@@ -1,6 +1,10 @@
 # ChangeLog for sci-biology/embassy-emnu
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/embassy-emnu/ChangeLog,v 1.34 2015/03/28 18:00:22 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/embassy-emnu/ChangeLog,v 1.35 2015/06/21 08:56:06 jlec Exp $
+
+  21 Jun 2015; Justin Lecher <jlec@gentoo.org>
+  files/embassy-emnu-1.05.650_fix-build-system.patch:
+  Update buildsystem for latest plplot, bug #552492
 
   28 Mar 2015; Justin Lecher <jlec@gentoo.org> -embassy-emnu-1.05-r6.ebuild,
   embassy-emnu-1.05.650.ebuild:

@@ -1,6 +1,12 @@
---- CLUSTALOMEGA-1.1.0/configure.ac
-+++ CLUSTALOMEGA-1.1.0/configure.ac
-@@ -635,33 +635,6 @@
+ configure.ac    | 49 +++++++------------------------------------------
+ src/Makefile.am |  6 ++----
+ 2 files changed, 9 insertions(+), 46 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index f12ed19..b143922 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -635,33 +635,6 @@ AS_CASE([${host_os}],
  
  
  
@@ -34,7 +40,7 @@
  dnl FIXME: This does no longer seem required with Autoconf 2.67?
  dnl Intel MacOSX 10.6 puts X11 in a non-standard place
  dnl AS_IF([test "x${with_x}" != "xno"],
-@@ -737,21 +710,6 @@
+@@ -737,21 +710,6 @@ AX_LIB_POSTGRESQL
  
  
  
@@ -56,21 +62,25 @@
  dnl Test if --enable-localforce given
  locallink="no"
  embprefix="/usr/local"
-@@ -874,6 +832,11 @@
+@@ -874,6 +832,13 @@ AC_ARG_ENABLE([systemlibs],
  AM_CONDITIONAL([ESYSTEMLIBS], [test "x${enable_systemlibs}" = "xyes"])
  
  
 +AS_IF([test "x${enable_systemlibs}" = "xyes"],
 +[
 +dnl using system libraries
-+  PKG_CHECK_MODULES([PLPLOT], [plplotd])
++  PKG_CHECK_MODULES([PLPLOT], [plplotd],
++  [],[PKG_CHECK_MODULES([PLPLOT], [plplot])]
++  )
 +])
  
  
  # Enable the purify tool: --enable-purify, sets CC and LIBTOOL
---- CLUSTALOMEGA-1.1.0/src/Makefile.am
-+++ CLUSTALOMEGA-1.1.0/src/Makefile.am
-@@ -17,9 +17,7 @@
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 9135679..c201149 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -17,9 +17,7 @@ AM_CPPFLAGS = -I../../../nucleus -I../../../ajax/pcre \
  	-I../../../ajax/ensembl -I../../../ajax/ajaxdb \
  	-I../../../ajax/acd -I../../../plplot
  else
@@ -81,7 +91,7 @@
  endif
  
  if ISSHARED
-@@ -62,5 +60,5 @@
+@@ -62,5 +60,5 @@ LDADD = ../../../nucleus/libnucleus.la ../../../ajax/acd/libacd.la \
  	$(XLIB)
  else
  LDADD = -L${embprefix}/lib -lnucleus -lacd -lajaxdb -lensembl -lajaxg \

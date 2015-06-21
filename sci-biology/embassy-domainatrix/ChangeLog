@@ -1,6 +1,10 @@
 # ChangeLog for sci-biology/embassy-domainatrix
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/embassy-domainatrix/ChangeLog,v 1.34 2015/03/28 17:57:09 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/embassy-domainatrix/ChangeLog,v 1.35 2015/06/21 08:46:54 jlec Exp $
+
+  21 Jun 2015; Justin Lecher <jlec@gentoo.org>
+  files/embassy-domainatrix-0.1.650_fix-build-system.patch:
+  Update buildsystem for latest plplot, bug #552492
 
   28 Mar 2015; Justin Lecher <jlec@gentoo.org>
   -embassy-domainatrix-0.1.0-r4.ebuild, embassy-domainatrix-0.1.650.ebuild:

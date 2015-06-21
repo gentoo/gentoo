@@ -1,6 +1,14 @@
 # ChangeLog for dev-python/jsmin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/jsmin/ChangeLog,v 1.9 2015/06/07 19:30:18 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/jsmin/ChangeLog,v 1.11 2015/06/21 08:52:05 idella4 Exp $
+
+  21 Jun 2015; Ian Delaney <idella4@gentoo.org> -jsmin-2.0.3.ebuild:
+  rm old
+
+*jsmin-2.1.1 (21 Jun 2015)
+
+  21 Jun 2015; Ian Delaney <idella4@gentoo.org> +jsmin-2.1.1.ebuild:
+  bump
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add bitbucket to remote-id in metadata.xml

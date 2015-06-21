@@ -1,6 +1,10 @@
 # ChangeLog for sci-biology/embassy-signature
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/embassy-signature/ChangeLog,v 1.24 2015/03/29 08:44:28 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/embassy-signature/ChangeLog,v 1.25 2015/06/21 09:13:51 jlec Exp $
+
+  21 Jun 2015; Justin Lecher <jlec@gentoo.org>
+  files/embassy-signature-0.1.650_fix-build-system.patch:
+  Update buildsystem for latest plplot, bug #552492
 
   29 Mar 2015; Justin Lecher <jlec@gentoo.org>
   -embassy-signature-0.1.0-r4.ebuild:

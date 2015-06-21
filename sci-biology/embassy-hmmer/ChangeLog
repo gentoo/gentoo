@@ -1,6 +1,10 @@
 # ChangeLog for sci-biology/embassy-hmmer
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/embassy-hmmer/ChangeLog,v 1.35 2015/03/28 18:02:43 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/embassy-hmmer/ChangeLog,v 1.36 2015/06/21 09:05:41 jlec Exp $
+
+  21 Jun 2015; Justin Lecher <jlec@gentoo.org>
+  files/embassy-hmmer-2.3.2.650_fix-build-system.patch:
+  Update buildsystem for latest plplot, bug #552492
 
   28 Mar 2015; Justin Lecher <jlec@gentoo.org> -embassy-hmmer-2.3.2-r3.ebuild,
   embassy-hmmer-2.3.2.650.ebuild:

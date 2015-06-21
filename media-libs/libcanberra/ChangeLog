@@ -1,6 +1,9 @@
 # ChangeLog for media-libs/libcanberra
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libcanberra/ChangeLog,v 1.123 2015/05/25 19:17:30 tetromino Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libcanberra/ChangeLog,v 1.124 2015/06/21 08:49:22 jer Exp $
+
+  21 Jun 2015; Jeroen Roovers <jer@gentoo.org> libcanberra-0.30-r5.ebuild:
+  Stable for PPC64 (bug #551814).
 
 *libcanberra-0.30-r5 (25 May 2015)
 

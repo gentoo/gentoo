@@ -1,6 +1,11 @@
 # ChangeLog for net-im/openfire
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/openfire/ChangeLog,v 1.68 2015/06/01 10:51:13 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/openfire/ChangeLog,v 1.69 2015/06/21 09:09:26 slyfox Exp $
+
+*openfire-3.10.1 (21 Jun 2015)
+
+  21 Jun 2015; Sergei Trofimovich <slyfox@gentoo.org> +openfire-3.10.1.ebuild:
+  Version bump, bug #552672 by Thomas Stein. Fixes various server deadlocks.
 
   01 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -files/buildxml-ant.patch,
   -files/openfire-3.8.0-buildxml.patch, -openfire-3.9.2-r1.ebuild,
