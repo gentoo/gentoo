@@ -1,6 +1,9 @@
 # ChangeLog for x11-misc/alacarte
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/alacarte/ChangeLog,v 1.129 2015/06/07 14:20:05 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/alacarte/ChangeLog,v 1.130 2015/06/21 14:04:46 zlogene Exp $
+
+  21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> alacarte-3.11.91.ebuild:
+  amd64 stable wrt bug #551814
 
 *alacarte-3.11.91 (07 Jun 2015)
 

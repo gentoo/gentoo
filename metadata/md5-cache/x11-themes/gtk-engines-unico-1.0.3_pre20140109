@@ -4,10 +4,10 @@ DESCRIPTION=The Unico GTK+ 3.x theming engine
 EAPI=5
 HOMEPAGE=https://launchpad.net/unico
 IUSE=abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
-KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+KEYWORDS=amd64 ~ppc ~ppc64 ~x86
 LICENSE=LGPL-2.1+
 RDEPEND=>=dev-libs/glib-2.26:2[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] >=x11-libs/cairo-1.10[glib,abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] >=x11-libs/gtk+-3.5.2:3[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?]
 SLOT=0
 SRC_URI=https://launchpad.net/ubuntu/+archive/primary/+files/unico_1.0.3+14.04.20140109.orig.tar.gz
 _eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	autotools-multilib	037c4046d25f29e78dd44dccabd5d66b	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multilib-build	0983c7893df461213a05f791cc7dea6d	multilib-minimal	13dd976916c35a1e2c8d170e840c7018	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=c5dff1e20b7fbb56f86ee4d0a719ab20
+_md5_=058ffc4bdbed349618f1f76ab1dbf66b

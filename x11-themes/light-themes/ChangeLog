@@ -1,6 +1,10 @@
 # ChangeLog for x11-themes/light-themes
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/light-themes/ChangeLog,v 1.29 2015/04/27 21:38:00 sping Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/light-themes/ChangeLog,v 1.30 2015/06/21 14:09:45 zlogene Exp $
+
+  21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org>
+  light-themes-15.04_p20150410.ebuild:
+  amd64 stable wrt bug #551814
 
 *light-themes-15.04_p20150410 (27 Apr 2015)
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/gtk-engines-unico/gtk-engines-unico-1.0.3_pre20140109.ebuild,v 1.1 2015/03/18 14:13:14 tetromino Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/gtk-engines-unico/gtk-engines-unico-1.0.3_pre20140109.ebuild,v 1.2 2015/06/21 14:08:50 zlogene Exp $
 
 EAPI=5
 
@@ -19,7 +19,7 @@ SRC_URI="https://launchpad.net/ubuntu/+archive/primary/+files/${MY_P}.orig.tar.g
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
 RDEPEND=">=dev-libs/glib-2.26:2[${MULTILIB_USEDEP}]

@@ -1,6 +1,12 @@
 # ChangeLog for app-misc/cw
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/cw/ChangeLog,v 1.34 2015/06/09 11:38:12 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/cw/ChangeLog,v 1.35 2015/06/21 14:09:44 jlec Exp $
+
+*cw-1.0.16-r3 (21 Jun 2015)
+
+  21 Jun 2015; Justin Lecher <jlec@gentoo.org> +cw-1.0.16-r3.ebuild,
+  +files/1.0.16-format-security.patch:
+  Add patch for format-security; bump to EAPI=5
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

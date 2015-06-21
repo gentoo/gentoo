@@ -1,6 +1,9 @@
 # ChangeLog for net-misc/vinagre
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/vinagre/ChangeLog,v 1.117 2015/06/09 10:32:26 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/vinagre/ChangeLog,v 1.118 2015/06/21 13:54:28 zlogene Exp $
+
+  21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> vinagre-3.14.3-r1.ebuild:
+  amd64 stable wrt bug #551814
 
 *vinagre-3.16.1 (09 Jun 2015)
 

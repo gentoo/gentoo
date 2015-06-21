@@ -1,6 +1,13 @@
 # ChangeLog for app-misc/cdargs
-# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/cdargs/ChangeLog,v 1.20 2011/01/05 14:53:03 jlec Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/cdargs/ChangeLog,v 1.21 2015/06/21 13:57:11 jlec Exp $
+
+*cdargs-1.35-r2 (21 Jun 2015)
+
+  21 Jun 2015; Justin Lecher <jlec@gentoo.org> +cdargs-1.35-r2.ebuild,
+  +files/cdargs-1.35-format_security.patch, +files/cdargs-1.35-tinfo.patch:
+  Import fedora patch for format-security, bug #521078; make it compile with
+  ncurses[tinfo]
 
   05 Jan 2011; Justin Lecher <jlec@gentoo.org> cdargs-1.35-r1.ebuild:
   Corrected HOMEPAGE, #350561, thanks Martin Walch digging that out
@@ -79,4 +86,3 @@
   07 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> +metadata.xml,
   +cdargs-1.31.ebuild:
   Initial commit - bug 76736. Thanks to Stefan Kamphausen.
-

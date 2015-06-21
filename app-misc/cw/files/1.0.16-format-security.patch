@@ -1,0 +1,16 @@
+ src/cw.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/cw.c b/src/cw.c
+index d7b4875..3ec1ac1 100644
+--- a/src/cw.c
++++ b/src/cw.c
+@@ -643,7 +643,7 @@ void sighandler(signed int sig){
+  else if(sig==SIGUSR1)ext=1;
+  else if(sig==SIGALRM)ext=2;
+  else if(sig==SIGPIPE||sig==SIGINT){
+-  fprintf(stderr,pal2[16]);
++  fprintf(stderr,"%s", pal2[16]);
+   fflush(stderr);
+   cwexit(0,0);
+  }

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libdmapsharing/libdmapsharing-2.9.31.ebuild,v 1.1 2015/06/07 13:53:26 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libdmapsharing/libdmapsharing-2.9.31.ebuild,v 1.2 2015/06/21 13:45:02 zlogene Exp $
 
 EAPI=5
 GCONF_DEBUG="no"
@@ -13,7 +13,7 @@ SRC_URI="http://www.flyn.org/projects/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="3.0/2"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+introspection test"
 
 # Vala/libgee/gtk+:2 is only used when maintainer-mode is enabled

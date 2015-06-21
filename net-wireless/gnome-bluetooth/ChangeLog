@@ -1,6 +1,9 @@
 # ChangeLog for net-wireless/gnome-bluetooth
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/gnome-bluetooth/ChangeLog,v 1.149 2015/06/09 14:56:23 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/gnome-bluetooth/ChangeLog,v 1.150 2015/06/21 13:55:37 zlogene Exp $
+
+  21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> gnome-bluetooth-3.14.1.ebuild:
+  amd64 stable wrt bug #551814
 
 *gnome-bluetooth-3.16.1 (09 Jun 2015)
 

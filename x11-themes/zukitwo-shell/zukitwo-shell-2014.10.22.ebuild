@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/zukitwo-shell/zukitwo-shell-2014.10.22.ebuild,v 1.1 2015/05/26 01:23:59 tetromino Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/zukitwo-shell/zukitwo-shell-2014.10.22.ebuild,v 1.2 2015/06/21 14:10:16 zlogene Exp $
 
 EAPI=5
 
@@ -13,7 +13,7 @@ SRC_URI="http://www.hartwork.org/public/${MY_P}.zip"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 RDEPEND="

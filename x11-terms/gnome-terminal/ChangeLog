@@ -1,6 +1,9 @@
 # ChangeLog for x11-terms/gnome-terminal
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/gnome-terminal/ChangeLog,v 1.300 2015/06/09 09:43:38 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/gnome-terminal/ChangeLog,v 1.301 2015/06/21 14:06:43 zlogene Exp $
+
+  21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> gnome-terminal-3.14.3.ebuild:
+  amd64 stable wrt bug #551814
 
 *gnome-terminal-3.16.2-r2 (09 Jun 2015)
 

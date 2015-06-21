@@ -1,6 +1,9 @@
 # ChangeLog for x11-themes/zukitwo
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/zukitwo/ChangeLog,v 1.26 2015/04/27 23:10:08 sping Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/zukitwo/ChangeLog,v 1.27 2015/06/21 14:10:46 zlogene Exp $
+
+  21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> zukitwo-2014.10.22.ebuild:
+  amd64 stable wrt bug #551814
 
 *zukitwo-2014.10.22 (27 Apr 2015)
 

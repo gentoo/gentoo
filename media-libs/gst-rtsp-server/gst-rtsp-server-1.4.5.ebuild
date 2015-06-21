@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/gst-rtsp-server/gst-rtsp-server-1.4.5.ebuild,v 1.1 2015/05/02 10:52:24 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/gst-rtsp-server/gst-rtsp-server-1.4.5.ebuild,v 1.2 2015/06/21 14:12:02 zlogene Exp $
 
 EAPI=5
 
@@ -10,7 +10,7 @@ DESCRIPTION="A GStreamer based RTSP server"
 HOMEPAGE="http://people.freedesktop.org/~wtay/"
 
 LICENSE="LGPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="examples +introspection static-libs test"
 
 # FIXME: check should depend on USE=test but check is losy

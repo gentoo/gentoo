@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/vinagre/vinagre-3.14.3-r1.ebuild,v 1.1 2015/05/16 12:16:25 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/vinagre/vinagre-3.14.3-r1.ebuild,v 1.2 2015/06/21 13:54:28 zlogene Exp $
 
 EAPI="5"
 GCONF_DEBUG="no"
@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Vinagre"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="rdp +ssh spice +telepathy zeroconf"
 
 # cairo used in vinagre-tab

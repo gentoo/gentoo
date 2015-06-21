@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/gparted/gparted-0.22.0.ebuild,v 1.2 2015/06/04 19:05:44 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-block/gparted/gparted-0.22.0.ebuild,v 1.3 2015/06/21 13:56:12 zlogene Exp $
 
 EAPI="5"
 GCONF_DEBUG="no"
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2+ FDL-1.2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~x86"
 IUSE="btrfs dmraid f2fs fat hfs jfs kde mdadm ntfs policykit reiserfs reiser4 xfs"
 
 # FIXME: add gpart support

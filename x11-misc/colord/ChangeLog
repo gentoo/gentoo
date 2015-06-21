@@ -1,6 +1,9 @@
 # ChangeLog for x11-misc/colord
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/colord/ChangeLog,v 1.100 2015/06/07 14:24:09 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/colord/ChangeLog,v 1.101 2015/06/21 14:05:17 zlogene Exp $
+
+  21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> colord-1.2.10.ebuild:
+  amd64 stable wrt bug #551814
 
 *colord-1.2.10 (07 Jun 2015)
 

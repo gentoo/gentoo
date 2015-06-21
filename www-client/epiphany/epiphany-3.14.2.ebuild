@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/epiphany/epiphany-3.14.2.ebuild,v 1.2 2015/05/01 13:49:42 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/epiphany/epiphany-3.14.2.ebuild,v 1.3 2015/06/21 13:57:31 zlogene Exp $
 
 EAPI="5"
 GCONF_DEBUG="yes"
@@ -15,7 +15,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Web"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="+jit +nss test"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 COMMON_DEPEND="
 	>=app-crypt/gcr-3.5.5
