@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/nettle
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/nettle/ChangeLog,v 1.130 2015/06/11 14:17:58 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/nettle/ChangeLog,v 1.131 2015/06/21 20:19:16 zlogene Exp $
+
+  21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> nettle-2.7.1-r4.ebuild:
+  alpha stable wrt bug #540892
 
   11 Jun 2015; Agostino Sarubbo <ago@gentoo.org> nettle-2.7.1-r4.ebuild:
   Stable for ppc, wrt bug #540892

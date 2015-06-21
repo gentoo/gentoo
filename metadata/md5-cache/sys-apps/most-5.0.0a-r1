@@ -3,10 +3,10 @@ DEPEND=>=sys-libs/slang-2.1.3
 DESCRIPTION=Paging program that displays, one windowful at a time, the contents of a file
 EAPI=5
 HOMEPAGE=ftp://space.mit.edu/pub/davis/most
-KEYWORDS=~alpha amd64 arm ~mips ppc sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+KEYWORDS=alpha amd64 arm ~mips ppc sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
 LICENSE=GPL-2
 RDEPEND=>=sys-libs/slang-2.1.3
 SLOT=0
 SRC_URI=ftp://space.mit.edu/pub/davis/most/most-5.0.0a.tar.bz2
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=c5b16e71b698052753a444c0e3501922
+_md5_=a7799af2db33107ec6d8efef22d2e84c

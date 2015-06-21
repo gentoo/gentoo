@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-45.0.2431.0.ebuild,v 1.1 2015/06/17 18:47:11 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-45.0.2431.0.ebuild,v 1.2 2015/06/21 20:07:47 floppym Exp $
 
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )
@@ -16,10 +16,10 @@ DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="http://chromium.org/"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz"
 
-LICENSE="BSD"
+LICENSE="BSD hotwording? ( no-source-code )"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="cups gnome gnome-keyring hidpi kerberos neon pic +proprietary-codecs pulseaudio selinux +tcmalloc"
+IUSE="cups gnome gnome-keyring hidpi hotwording kerberos neon pic +proprietary-codecs pulseaudio selinux +tcmalloc"
 RESTRICT="proprietary-codecs? ( bindist )"
 
 # Native Client binaries are compiled with different set of flags, bug #452066.
@@ -358,6 +358,7 @@ src_configure() {
 		$(gyp_use gnome-keyring use_gnome_keyring)
 		$(gyp_use gnome-keyring linux_link_gnome_keyring)
 		$(gyp_use hidpi enable_hidpi)
+		$(gyp_use hotwording enable_hotwording)
 		$(gyp_use kerberos)
 		$(gyp_use pulseaudio)
 		$(gyp_use tcmalloc use_allocator tcmalloc none)"

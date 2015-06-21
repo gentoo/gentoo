@@ -1,6 +1,12 @@
 # ChangeLog for dev-perl/GraphViz
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/GraphViz/ChangeLog,v 1.28 2015/06/13 19:19:27 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/GraphViz/ChangeLog,v 1.29 2015/06/21 20:31:08 dilfridge Exp $
+
+*GraphViz-2.180.0 (21 Jun 2015)
+
+  21 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +GraphViz-2.180.0.ebuild, -GraphViz-2.40.0-r1.ebuild:
+  Version bump
 
   13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
   GraphViz-2.140.0.ebuild:
