@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile install postinst postrm preinst prepare setup
-DEPEND=sys-devel/gcc[gcj] || ( app-eselect/eselect-java >=app-eselect/eselect-ecj-0.6 ) app-arch/unzip !dev-java/eclipse-ecj:3.5[gcj] >=dev-java/java-config-2.2.0
+DEPEND=sys-devel/gcc:*[gcj] app-eselect/eselect-java app-arch/unzip !dev-java/eclipse-ecj:3.5[gcj] >=dev-java/java-config-2.2.0
 DESCRIPTION=A subset of Eclipse Compiler for Java compiled by gcj, serving as javac in gcj-jdk
 EAPI=5
 HOMEPAGE=http://www.eclipse.org/
 IUSE=+native elibc_FreeBSD
 KEYWORDS=~amd64 ~ia64 ~ppc ~ppc64 ~x86
 LICENSE=EPL-1.0
-RDEPEND=sys-devel/gcc[gcj] || ( app-eselect/eselect-java >=app-eselect/eselect-ecj-0.6 ) >=dev-java/java-config-2.2.0
+RDEPEND=sys-devel/gcc:*[gcj] app-eselect/eselect-java >=dev-java/java-config-2.2.0
 SLOT=3.5
 SRC_URI=http://download.eclipse.org/eclipse/downloads/drops/R-3.5.2-201002111343/ecjsrc-3.5.2.zip
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	java-pkg-2	1889f7787714c5f7e3b5bb1c2be07c1f	java-utils-2	6627198e505d021534cb20f89279c509	multilib	62927b3db3a589b0806255f3a002d5d3	prefix	21058c21ca48453d771df15500873ede	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=d3ded586ce85069ff58c318de8ae2de7
+_md5_=2de0b07d6b26a78e6435b3bb8df38a97

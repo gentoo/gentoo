@@ -1,6 +1,11 @@
 # ChangeLog for dev-java/eclipse-ecj
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/eclipse-ecj/ChangeLog,v 1.105 2015/05/17 20:10:13 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/eclipse-ecj/ChangeLog,v 1.106 2015/06/20 23:27:56 chewi Exp $
+
+  20 Jun 2015; James Le Cuirot <chewi@gentoo.org> eclipse-ecj-3.7.1.ebuild,
+  eclipse-ecj-3.7.2-r1.ebuild, eclipse-ecj-4.2.1.ebuild,
+  eclipse-ecj-4.4.1.ebuild, eclipse-ecj-4.4.2-r1.ebuild:
+  Remove or'd dependency on eselect-ecj.
 
   17 May 2015; Pacho Ramos <pacho@gentoo.org> eclipse-ecj-3.7.2-r1.ebuild:
   ppc64 stable wrt bug #503890

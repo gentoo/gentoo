@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install postinst postrm preinst prepare setup
-DEPEND=|| ( app-eselect/eselect-java app-eselect/eselect-ecj ) || ( virtual/jdk:1.7 virtual/jdk:1.6 ) app-arch/unzip userland_GNU? ( sys-apps/findutils ) >=dev-java/java-config-2.2.0
+DEPEND=app-eselect/eselect-java || ( virtual/jdk:1.7 virtual/jdk:1.6 ) app-arch/unzip userland_GNU? ( sys-apps/findutils ) >=dev-java/java-config-2.2.0
 DESCRIPTION=Eclipse Compiler for Java
 EAPI=4
 HOMEPAGE=http://www.eclipse.org/
@@ -7,8 +7,8 @@ IUSE=+ant userland_GNU elibc_FreeBSD
 KEYWORDS=amd64 ppc ppc64 x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris
 LICENSE=EPL-1.0
 PDEPEND=ant? ( ~dev-java/ant-eclipse-ecj-3.7.2 )
-RDEPEND=|| ( app-eselect/eselect-java app-eselect/eselect-ecj ) >=virtual/jre-1.4 >=dev-java/java-config-2.2.0
+RDEPEND=app-eselect/eselect-java >=virtual/jre-1.4 >=dev-java/java-config-2.2.0
 SLOT=3.7
 SRC_URI=http://download.eclipse.org/eclipse/downloads/drops/R-3.7.2-201202080800/ecjsrc-3.7.2.jar
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	java-pkg-2	1889f7787714c5f7e3b5bb1c2be07c1f	java-utils-2	6627198e505d021534cb20f89279c509	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=885ca84c69b7fa88e16070a39e257a79
+_md5_=58c9cc70eb760bc755ba4f39d22367e7

@@ -1,6 +1,11 @@
 # ChangeLog for dev-java/ecj-gcj
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/ecj-gcj/ChangeLog,v 1.10 2015/03/31 18:49:02 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/ecj-gcj/ChangeLog,v 1.11 2015/06/20 23:17:10 chewi Exp $
+
+  20 Jun 2015; James Le Cuirot <chewi@gentoo.org> ecj-gcj-3.5.2-r3.ebuild,
+  ecj-gcj-3.6-r1.ebuild, ecj-gcj-4.2.1-r2.ebuild, ecj-gcj-4.4.2.ebuild:
+  Remove or'd dependency on eselect-ecj and fix repoman warning about gcc SLOT
+  in earlier versions.
 
   31 Mar 2015; Ulrich Müller <ulm@gentoo.org> ecj-gcj-3.5.2-r3.ebuild,
   ecj-gcj-3.6-r1.ebuild, ecj-gcj-4.2.1-r2.ebuild, ecj-gcj-4.4.2.ebuild:

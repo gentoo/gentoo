@@ -1,6 +1,6 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-vfs/commons-vfs-2.0-r1.ebuild,v 1.1 2013/07/10 11:43:12 tomwij Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-vfs/commons-vfs-2.0-r1.ebuild,v 1.2 2015/06/20 22:58:23 monsieurp Exp $
 
 EAPI="5"
 
@@ -16,21 +16,21 @@ LICENSE="Apache-2.0"
 SLOT="2"
 KEYWORDS="~amd64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 
-COMMON_DEP="
+CDEPEND="
 	dev-java/ant-core:0
 	dev-java/commons-collections:0
 	dev-java/commons-logging:0
-	>=dev-java/commons-net-3.2:0
+	dev-java/commons-net:0
 	dev-java/commons-httpclient:3
 	dev-java/jackrabbit-webdav:0
 	dev-java/jsch:0
 	"
 
-RDEPEND=">=virtual/jre-1.5
-	${COMMON_DEP}"
+RDEPEND=">=virtual/jre-1.6
+	${CDEPEND}"
 
-DEPEND=">=virtual/jdk-1.5
-	${COMMON_DEP}"
+DEPEND=">=virtual/jdk-1.6
+	${CDEPEND}"
 
 S="${WORKDIR}/${P}/core"
 

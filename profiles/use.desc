@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.desc,v 1.525 2015/05/31 13:14:24 perfinion Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.desc,v 1.526 2015/06/20 23:04:05 chewi Exp $
 
 # Keep them sorted
 
@@ -156,7 +156,6 @@ iwmmxt - Add support for optimizations for ARM iwMMXt instructions
 jabber - Enable jabber IM protocol support
 jack - Add support for the JACK Audio Connection Kit
 java - Add support for Java
-java6 - Use Java 1.6 to build package with || ( reduced deps, 1.6 features, source/target 1.6 )
 javascript - Enable javascript support
 jbig - Enable jbig-kit support for tiff, Hylafax, ImageMagick, etc
 jingle - Enable voice calls for jabber
