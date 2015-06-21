@@ -1,6 +1,11 @@
 # ChangeLog for app-text/poppler
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/poppler/ChangeLog,v 1.462 2015/06/01 19:54:32 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/poppler/ChangeLog,v 1.463 2015/06/21 11:59:02 johu Exp $
+
+  21 Jun 2015; Johannes Huber <johu@gentoo.org> -poppler-0.33.0.ebuild,
+  poppler-0.33.0-r1.ebuild, poppler-9999.ebuild:
+  Replace nonfatal usage with live version check, bug #551158. Sync live. Remove
+  old.
 
   01 Jun 2015; Fabian Groffen <grobian@gentoo.org> poppler-0.33.0-r1.ebuild:
   Fix compilation with Clang

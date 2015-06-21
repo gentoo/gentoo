@@ -1,6 +1,13 @@
 # ChangeLog for sci-libs/metis
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/metis/ChangeLog,v 1.45 2015/04/07 14:42:19 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/metis/ChangeLog,v 1.47 2015/06/21 11:42:40 jlec Exp $
+
+  21 Jun 2015; Justin Lecher <jlec@gentoo.org> -files/metis-4.0.1-gcc44.patch,
+  -files/metis-5.0_pre2-autotools.patch:
+  Clean old patches
+
+  21 Jun 2015; Justin Lecher <jlec@gentoo.org> -metis-4.0.1-r1.ebuild:
+  Clean old
 
   31 Mar 2015; Agostino Sarubbo <ago@gentoo.org> metis-4.0.3.ebuild:
   Stable for ppc64, wrt bug #534644

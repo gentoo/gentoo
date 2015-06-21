@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/poppler/poppler-0.33.0-r1.ebuild,v 1.4 2015/06/01 19:54:32 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/poppler/poppler-0.33.0-r1.ebuild,v 1.5 2015/06/21 11:59:02 johu Exp $
 
 EAPI=5
 
@@ -113,10 +113,10 @@ src_configure() {
 src_install() {
 	cmake-utils_src_install
 
-	if use cairo && use doc; then
+	# live version doesn't provide html documentation
+	if use cairo && use doc && [[ ${PV} != 9999 ]]; then
 		# For now install gtk-doc there
 		insinto /usr/share/gtk-doc/html/poppler
-		# nonfatal, because live version doesn't provide html documentation.
-		nonfatal doins -r "${S}"/glib/reference/html/*
+		doins -r "${S}"/glib/reference/html/*
 	fi
 }

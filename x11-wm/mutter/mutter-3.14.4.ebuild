@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/mutter/mutter-3.14.4.ebuild,v 1.1 2015/03/28 09:21:51 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/mutter/mutter-3.14.4.ebuild,v 1.2 2015/06/21 12:09:05 zlogene Exp $
 
 EAPI="5"
 GCONF_DEBUG="yes"
@@ -13,7 +13,7 @@ HOMEPAGE="http://git.gnome.org/browse/mutter/"
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="+introspection +kms test wayland"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 # libXi-1.7.4 or newer needed per:
 # https://bugzilla.gnome.org/show_bug.cgi?id=738944

@@ -1,6 +1,10 @@
 # ChangeLog for gnome-base/gnome-settings-daemon
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-settings-daemon/ChangeLog,v 1.157 2015/06/09 14:21:45 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-settings-daemon/ChangeLog,v 1.158 2015/06/21 12:07:22 zlogene Exp $
+
+  21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org>
+  gnome-settings-daemon-3.14.4.ebuild:
+  amd64 stable wrt bug #551814
 
 *gnome-settings-daemon-3.16.2-r1 (09 Jun 2015)
 

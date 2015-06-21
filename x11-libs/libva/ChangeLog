@@ -1,6 +1,11 @@
 # ChangeLog for x11-libs/libva
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libva/ChangeLog,v 1.68 2015/03/22 09:01:57 rhill Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libva/ChangeLog,v 1.69 2015/06/21 12:22:34 pacho Exp $
+
+  21 Jun 2015; Pacho Ramos <pacho@gentoo.org>
+  +files/libva-1.5.1-wayland-automagic.patch, libva-1.5.1.ebuild:
+  Fix automagic dependency on wayland (#529388 by Oleg, Cecil Curry Manuel Rüger
+  and others)
 
   22 Mar 2015; Ryan Hill <rhill@gentoo.org> libva-1.5.1.ebuild:
   Add nouveau to VIDEO_CARDS (bug #543982).

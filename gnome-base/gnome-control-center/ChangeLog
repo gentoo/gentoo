@@ -1,6 +1,10 @@
 # ChangeLog for gnome-base/gnome-control-center
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-control-center/ChangeLog,v 1.167 2015/06/09 15:41:36 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-control-center/ChangeLog,v 1.168 2015/06/21 12:05:32 zlogene Exp $
+
+  21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org>
+  gnome-control-center-3.14.5.ebuild:
+  amd64 stable wrt bug #551814
 
 *gnome-control-center-3.16.2 (09 Jun 2015)
 

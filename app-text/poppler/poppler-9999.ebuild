@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/poppler/poppler-9999.ebuild,v 1.9 2015/05/29 13:00:45 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/poppler/poppler-9999.ebuild,v 1.10 2015/06/21 11:59:02 johu Exp $
 
 EAPI=5
 
@@ -66,6 +66,16 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.33.0-openjpeg2.patch"
 )
 
+src_prepare() {
+	cmake-utils_src_prepare
+
+	# Clang doesn't grok this flag, the configure nicely tests that, but
+	# cmake just uses it, so remove it if we use clang
+	if [[ ${CC} == clang ]] ; then
+		sed -i -e 's/-fno-check-new//' cmake/modules/PopplerMacros.cmake || die
+	fi
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_GTK_TESTS=OFF
@@ -103,10 +113,10 @@ src_configure() {
 src_install() {
 	cmake-utils_src_install
 
-	if use cairo && use doc; then
+	# live version doesn't provide html documentation
+	if use cairo && use doc && [[ ${PV} != 9999 ]]; then
 		# For now install gtk-doc there
 		insinto /usr/share/gtk-doc/html/poppler
-		# nonfatal, because live version doesn't provide html documentation.
-		nonfatal doins -r "${S}"/glib/reference/html/*
+		doins -r "${S}"/glib/reference/html/*
 	fi
 }
