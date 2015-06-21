@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/totem/totem-3.14.3.ebuild,v 1.1 2015/05/08 16:18:26 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/totem/totem-3.14.3.ebuild,v 1.2 2015/06/21 13:22:10 zlogene Exp $
 
 EAPI="5"
 GCONF_DEBUG="yes"
@@ -22,7 +22,7 @@ REQUIRED_USE="
 	zeitgeist? ( introspection )
 "
 
-KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 
 # TODO:
 # Cone (VLC) plugin needs someone with the right setup to test it

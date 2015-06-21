@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-directory-thumbnailer/gnome-directory-thumbnailer-0.1.6.ebuild,v 1.1 2015/06/09 16:14:54 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-directory-thumbnailer/gnome-directory-thumbnailer-0.1.6.ebuild,v 1.2 2015/06/21 12:57:49 zlogene Exp $
 
 EAPI="5"
 GCONF_DEBUG="no"
@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/GnomeDirectoryThumbnailer"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 IUSE=""
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
 	>=dev-libs/glib-2.35:2

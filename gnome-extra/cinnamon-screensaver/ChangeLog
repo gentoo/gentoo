@@ -1,6 +1,10 @@
 # ChangeLog for gnome-extra/cinnamon-screensaver
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/cinnamon-screensaver/ChangeLog,v 1.14 2015/06/14 01:56:46 tetromino Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/cinnamon-screensaver/ChangeLog,v 1.15 2015/06/21 12:55:31 zlogene Exp $
+
+  21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org>
+  cinnamon-screensaver-2.4.2.ebuild:
+  amd64 stable wrt bug #551814
 
 *cinnamon-screensaver-2.6.3 (13 Jun 2015)
 

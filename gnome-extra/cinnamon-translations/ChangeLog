@@ -1,6 +1,10 @@
 # ChangeLog for gnome-extra/cinnamon-translations
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/cinnamon-translations/ChangeLog,v 1.13 2015/06/14 01:51:48 tetromino Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/cinnamon-translations/ChangeLog,v 1.14 2015/06/21 12:56:02 zlogene Exp $
+
+  21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org>
+  cinnamon-translations-2.4.4.ebuild:
+  amd64 stable wrt bug #551814
 
 *cinnamon-translations-2.6.1 (13 Jun 2015)
 

@@ -1,6 +1,11 @@
 # ChangeLog for sci-chemistry/gromacs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/gromacs/ChangeLog,v 1.157 2015/03/08 00:02:01 ottxor Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/gromacs/ChangeLog,v 1.158 2015/06/21 13:00:24 ottxor Exp $
+
+*gromacs-5.0.5 (21 Jun 2015)
+
+  21 Jun 2015; Christoph Junghans <ottxor@gentoo.org> +gromacs-5.0.5.ebuild:
+  version bump
 
   08 Mar 2015; Christoph Junghans <ottxor@gentoo.org> -gromacs-4.6.5.ebuild,
   -gromacs-4.6.7.ebuild, metadata.xml:

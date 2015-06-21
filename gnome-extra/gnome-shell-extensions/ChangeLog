@@ -1,6 +1,10 @@
 # ChangeLog for gnome-extra/gnome-shell-extensions
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-shell-extensions/ChangeLog,v 1.31 2015/06/09 16:18:16 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-shell-extensions/ChangeLog,v 1.32 2015/06/21 12:59:03 zlogene Exp $
+
+  21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org>
+  gnome-shell-extensions-3.14.4.ebuild:
+  amd64 stable wrt bug #551814
 
 *gnome-shell-extensions-3.16.1 (09 Jun 2015)
 

@@ -1,6 +1,9 @@
 # ChangeLog for media-gfx/colorhug-client
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/colorhug-client/ChangeLog,v 1.27 2015/06/07 12:07:42 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/colorhug-client/ChangeLog,v 1.28 2015/06/21 13:03:49 zlogene Exp $
+
+  21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> colorhug-client-0.2.7.ebuild:
+  amd64 stable wrt bug #551814
 
 *colorhug-client-0.2.7 (07 Jun 2015)
 

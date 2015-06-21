@@ -1,6 +1,9 @@
 # ChangeLog for media-gfx/eog-plugins
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/eog-plugins/ChangeLog,v 1.28 2015/06/09 16:27:15 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/eog-plugins/ChangeLog,v 1.29 2015/06/21 13:04:29 zlogene Exp $
+
+  21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> eog-plugins-3.14.2.ebuild:
+  amd64 stable wrt bug #551814
 
 *eog-plugins-3.16.0 (09 Jun 2015)
 
