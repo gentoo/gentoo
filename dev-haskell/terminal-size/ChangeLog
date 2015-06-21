@@ -1,0 +1,9 @@
+# ChangeLog for dev-haskell/terminal-size
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/terminal-size/ChangeLog,v 1.1 2015/06/21 18:54:41 slyfox Exp $
+
+*terminal-size-0.3.2 (21 Jun 2015)
+
+  21 Jun 2015; Sergei Trofimovich <slyfox@gentoo.org> +metadata.xml,
+  +terminal-size-0.3.2.ebuild:
+  Get terminal window height and width, a depend for dev-vcs/git-annex.

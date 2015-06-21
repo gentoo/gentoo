@@ -1,6 +1,12 @@
 # ChangeLog for dev-perl/Gearman-Server
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Gearman-Server/ChangeLog,v 1.10 2014/08/26 17:25:27 axs Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Gearman-Server/ChangeLog,v 1.11 2015/06/21 19:06:57 dilfridge Exp $
+
+*Gearman-Server-1.120.0 (21 Jun 2015)
+
+  21 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Gearman-Server-1.120.0.ebuild:
+  Version bump
 
 *Gearman-Server-1.110.0-r1 (26 Aug 2014)
 

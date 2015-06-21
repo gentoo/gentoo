@@ -1,6 +1,13 @@
 # ChangeLog for sys-apps/yum
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/yum/ChangeLog,v 1.21 2015/04/08 18:27:33 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/yum/ChangeLog,v 1.22 2015/06/21 18:54:16 sping Exp $
+
+*yum-3.4.3_p20130218-r1 (21 Jun 2015)
+
+  21 Jun 2015; Sebastian Pipping <sping@gentoo.org>
+  +yum-3.4.3_p20130218-r1.ebuild:
+  Pull in dev-python/pyliblzma to fix "Error: xz compression not available";
+  dropping ~ppc ~ppc64, ticket to re-keyword in a second
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> yum-3.4.3_p20130218.ebuild:
   Drop old Python implementations

@@ -20,6 +20,7 @@
 		<flag name="assistant">Enable git-annex assistant and watch command</flag>
 		<flag name="android">Building for Android</flag>
 		<flag name="androidsplice">Get TH splices for Android.</flag>
+		<flag name="asciiprogress">Use ascii-progress library (experimental)</flag>
 		<flag name="cryptohash">Enable use of cryptohash for checksumming</flag>
 		<flag name="dns">Enable the haskell DNS library for DNS lookup</flag>
 		<flag name="desktop-notify">Enable desktop environment notifications</flag>

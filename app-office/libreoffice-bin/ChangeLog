@@ -1,6 +1,10 @@
 # ChangeLog for app-office/libreoffice-bin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice-bin/ChangeLog,v 1.187 2015/06/04 19:00:44 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice-bin/ChangeLog,v 1.188 2015/06/21 19:11:25 dilfridge Exp $
+
+  21 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  libreoffice-bin-4.4.3.2.ebuild:
+  Fix liborcus version
 
   04 Jun 2015; Michael Palimaka <kensington@gentoo.org>
   libreoffice-bin-4.4.3.2.ebuild:

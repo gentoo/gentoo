@@ -1,6 +1,12 @@
 # ChangeLog for dev-perl/Fuse
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Fuse/ChangeLog,v 1.22 2014/09/03 18:20:19 zlogene Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Fuse/ChangeLog,v 1.23 2015/06/21 18:59:02 dilfridge Exp $
+
+*Fuse-0.16.1 (21 Jun 2015)
+
+  21 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org> +Fuse-0.16.1.ebuild,
+  -Fuse-0.160.1.ebuild:
+  Dots in version number, i.e. no normalization
 
   03 Sep 2014; Mikle Kolyada <zlogene@gentoo.org> -Fuse-0.140.0.ebuild,
   -Fuse-0.150.0.ebuild, -Fuse-0.160.0.ebuild:

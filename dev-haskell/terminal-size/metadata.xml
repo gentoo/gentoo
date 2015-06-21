@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		Get terminal window height and width without ncurses dependency
+		
+		Only tested to work on GNU/Linux systems
+	</longdescription>
+</pkgmetadata>
