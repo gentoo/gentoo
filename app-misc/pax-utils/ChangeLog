@@ -1,6 +1,9 @@
 # ChangeLog for app-misc/pax-utils
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/pax-utils/ChangeLog,v 1.180 2015/06/02 05:21:01 jmorgan Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/pax-utils/ChangeLog,v 1.181 2015/06/21 16:13:29 zlogene Exp $
+
+  21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> pax-utils-1.0.3.ebuild:
+  alpha stable wrt bug #550300
 
   02 Jun 2015; Jack Morgan <jmorgan@gentoo.org> pax-utils-1.0.3.ebuild:
   sparc stable wrt bug #550300

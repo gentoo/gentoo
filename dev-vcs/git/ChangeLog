@@ -1,6 +1,9 @@
 # ChangeLog for dev-vcs/git
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git/ChangeLog,v 1.338 2015/06/17 12:50:34 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git/ChangeLog,v 1.339 2015/06/21 16:06:59 zlogene Exp $
+
+  21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> git-2.3.6.ebuild:
+  alpha stable wrt bug #548350
 
 *git-2.4.4 (17 Jun 2015)
 

@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/pv
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/pv/ChangeLog,v 1.115 2015/05/27 13:39:36 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/pv/ChangeLog,v 1.116 2015/06/21 15:57:51 zlogene Exp $
+
+  21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> pv-1.6.0.ebuild:
+  alpha stable wrt bug #546518
 
   27 May 2015; Mikle Kolyada <zlogene@gentoo.org> pv-1.6.0.ebuild:
   arm stable wrt bug #546518

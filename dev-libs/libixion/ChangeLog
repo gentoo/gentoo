@@ -1,6 +1,11 @@
 # ChangeLog for dev-libs/libixion
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libixion/ChangeLog,v 1.22 2015/05/27 10:58:51 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libixion/ChangeLog,v 1.23 2015/06/21 15:35:49 dilfridge Exp $
+
+  21 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +files/libixion-0.9.1-python-optional.patch, +files/libixion-0.9.1-typo.patch,
+  libixion-0.9.1.ebuild, libixion-9999.ebuild:
+  Version bump; make python support optional
 
   27 May 2015; Agostino Sarubbo <ago@gentoo.org> libixion-0.9.0.ebuild:
   Stable for x86, wrt bug #547900
