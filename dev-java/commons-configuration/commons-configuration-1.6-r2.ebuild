@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-configuration/commons-configuration-1.6-r2.ebuild,v 1.1 2015/06/20 22:14:04 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-configuration/commons-configuration-1.6-r2.ebuild,v 1.2 2015/06/21 01:39:04 patrick Exp $
 
 EAPI=5
 
@@ -44,7 +44,6 @@ java_prepare() {
 	# Tweak build classpath and don't automatically run tests
 	epatch "${FILESDIR}/${P}-gentoo.patch"
 }
-
 
 EANT_GENTOO_CLASSPATH="
 	commons-beanutils-1.7

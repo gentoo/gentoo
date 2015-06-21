@@ -1,6 +1,9 @@
 # ChangeLog for sys-libs/libcap-ng
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/libcap-ng/ChangeLog,v 1.80 2015/06/04 11:07:36 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/libcap-ng/ChangeLog,v 1.81 2015/06/21 01:56:48 patrick Exp $
+
+  21 Jun 2015; Patrick Lauer <patrick@gentoo.org> libcap-ng-0.7.7.ebuild:
+  Whitespace
 
   04 Jun 2015; Anthony G. Basile <blueness@gentoo.org> libcap-ng-0.7.7.ebuild:
   Fix configuration for python3.  Bug #551088.

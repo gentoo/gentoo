@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/commons-configuration
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-configuration/ChangeLog,v 1.14 2015/06/20 22:14:04 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-configuration/ChangeLog,v 1.15 2015/06/21 01:39:04 patrick Exp $
+
+  21 Jun 2015; Patrick Lauer <patrick@gentoo.org>
+  commons-configuration-1.6-r2.ebuild:
+  Whitespace
 
 *commons-configuration-1.6-r2 (20 Jun 2015)
 
