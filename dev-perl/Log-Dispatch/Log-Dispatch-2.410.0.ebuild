@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Log-Dispatch/Log-Dispatch-2.410.0.ebuild,v 1.1 2015/04/06 19:51:55 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Log-Dispatch/Log-Dispatch-2.410.0.ebuild,v 1.2 2015/06/21 07:26:05 zlogene Exp $
 
 EAPI=5
 

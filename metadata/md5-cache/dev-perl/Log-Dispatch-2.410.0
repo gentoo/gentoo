@@ -9,4 +9,4 @@ RDEPEND=dev-perl/Params-Validate dev-perl/Class-Load dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DR/DROLSKY/Log-Dispatch-2.41.tar.gz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
-_md5_=ec4ff02b2213986d82f9b509344d4195
+_md5_=36f75a4b41b7e270a6afac1ef15a80fd

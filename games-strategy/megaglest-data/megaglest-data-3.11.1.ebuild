@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/megaglest-data/megaglest-data-3.11.1.ebuild,v 1.2 2015/06/12 11:05:40 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/megaglest-data/megaglest-data-3.11.1.ebuild,v 1.3 2015/06/21 06:53:10 zlogene Exp $
 
 EAPI=5
 inherit cmake-utils games
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/MegaGlest/megaglest-data/releases/download/${PV}/meg
 
 LICENSE="CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc"
 
 DOCS=( docs/AUTHORS.data.txt docs/CHANGELOG.txt docs/README.txt )

@@ -4,11 +4,11 @@ DESCRIPTION=Open Source mobile telephony (GSM/UMTS) daemon
 EAPI=5
 HOMEPAGE=http://ofono.org/
 IUSE=+atmodem bluetooth +cdmamodem +datafiles doc dundee examples +isimodem +phonesim +provision +qmimodem threads tools +udev
-KEYWORDS=~amd64 ~arm ~hppa ~ppc64 ~x86
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86
 LICENSE=GPL-2
 RDEPEND=>=sys-apps/dbus-1.4 >=dev-libs/glib-2.28 net-misc/mobile-broadband-provider-info bluetooth? ( >=net-wireless/bluez-4.99 ) udev? ( virtual/udev ) examples? ( dev-python/dbus-python ) tools? ( virtual/libusb:1 )
 REQUIRED_USE=dundee? ( bluetooth )
 SLOT=0
 SRC_URI=mirror://kernel/linux/network/ofono/ofono-1.16.tar.xz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=bb6cda7411b5e77414fee9f8e8e081ac
+_md5_=ace9ddea7204825bd90c1b246f12c437
