@@ -1,10 +1,10 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/iprutils/iprutils-2.4.8.ebuild,v 1.1 2015/06/20 07:02:02 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/iprutils/iprutils-2.4.8-r1.ebuild,v 1.1 2015/06/21 18:03:30 jer Exp $
 
 EAPI=5
 
-inherit autotools eutils toolchain-funcs
+inherit autotools bash-completion-r1 eutils toolchain-funcs
 
 DESCRIPTION="IBM's tools for support of the ipr SCSI controller"
 SRC_URI="mirror://sourceforge/iprdd/${P}.tar.gz"
@@ -15,14 +15,18 @@ LICENSE="IBM"
 KEYWORDS="~ppc ~ppc64"
 IUSE="static-libs"
 
-DEPEND="
+IPRUTILS_DEPEND="
 	>=sys-libs/ncurses-5.4-r5
 	>=sys-apps/pciutils-2.1.11-r1
-	virtual/udev
 "
 RDEPEND="
-	${DEPEND}
+	${IPRUTILS_DEPEND}
 	virtual/logger
+	virtual/udev
+"
+DEPEND="
+	${IPRUTILS_DEPEND}
+	virtual/pkgconfig
 "
 
 src_prepare() {
@@ -36,7 +40,8 @@ src_configure() {
 }
 
 src_install () {
-	default
+	emake DESTDIR="${D}" \
+		bashcompdir=$(get_bashcompdir) install
 
 	newinitd "${FILESDIR}"/iprinit-r1 iprinit
 	newinitd "${FILESDIR}"/iprupdate-r1 iprupdate
