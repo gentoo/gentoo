@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16631 2015/06/20 20:09:31 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16632 2015/06/20 23:36:11 chewi Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -29,6 +29,11 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# James Le Cuirot <chewi@gentoo.org> (20 Jun 2015)
+# Now part of eselect-java. Its continued presence has complicated
+# dependencies and created bugs such as #505352. Removal in 30 days.
+app-eselect/eselect-ecj
 
 # Brian Evans <grknight@gentoo.org> (19 Jun 2015)
 # The Cyphertite backup service is closing as of August 18th, 2015.

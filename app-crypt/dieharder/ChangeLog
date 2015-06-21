@@ -1,6 +1,13 @@
 # ChangeLog for app-crypt/dieharder
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/dieharder/ChangeLog,v 1.3 2013/06/02 10:54:59 pacho Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/dieharder/ChangeLog,v 1.4 2015/06/21 00:10:51 alonbl Exp $
+
+*dieharder-3.31.1-r1 (21 Jun 2015)
+
+  21 Jun 2015; Alon Bar-Lev <alonbl@gentoo.org> +dieharder-3.31.1-r1.ebuild,
+  +files/dieharder-3.31.1-build.patch:
+  Minimum build fixup for newer glibc, bug#531268, ugly build, unmaintained
+  package
 
   02 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
   Cleanup due bug #328951
