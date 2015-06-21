@@ -1,6 +1,10 @@
 # ChangeLog for xfce-extra/xfce4-power-manager
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-power-manager/ChangeLog,v 1.95 2015/06/21 08:20:29 perfinion Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-power-manager/ChangeLog,v 1.96 2015/06/21 10:51:32 perfinion Exp $
+
+  21 Jun 2015; Jason Zaman <perfinion@gentoo.org>
+  xfce4-power-manager-1.5.2.ebuild:
+  add pm-utils to deps
 
 *xfce4-power-manager-1.5.2 (21 Jun 2015)
 

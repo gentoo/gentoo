@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/geoclue/geoclue-2.2.0.ebuild,v 1.1 2015/05/03 22:10:16 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/geoclue/geoclue-2.2.0.ebuild,v 1.2 2015/06/21 10:38:50 zlogene Exp $
 
 EAPI="5"
 GCONF_DEBUG="no"
@@ -14,7 +14,7 @@ SRC_URI="http://www.freedesktop.org/software/${PN}/releases/${MY_PV}/${P}.tar.xz
 
 LICENSE="LGPL-2"
 SLOT="2.0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
 IUSE="+modemmanager"
 
 RDEPEND="

@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/gom
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/gom/ChangeLog,v 1.10 2015/06/20 20:46:29 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/gom/ChangeLog,v 1.11 2015/06/21 10:49:23 zlogene Exp $
+
+  21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> gom-0.3.1.ebuild:
+  amd64 stable wrt bug #551814
 
   20 Jun 2015; Pacho Ramos <pacho@gentoo.org> gom-0.3.1.ebuild:
   sparc keyword, bug #521972

@@ -1,6 +1,10 @@
 # ChangeLog for sys-fs/eudev
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/eudev/ChangeLog,v 1.163 2015/06/20 11:34:24 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/eudev/ChangeLog,v 1.164 2015/06/21 11:30:32 blueness Exp $
+
+  21 Jun 2015; Anthony G. Basile <blueness@gentoo.org> eudev-3.0.ebuild,
+  eudev-3.1.2.ebuild:
+  Propagate sparc keyword foward.
 
 *eudev-3.1.2 (20 Jun 2015)
 

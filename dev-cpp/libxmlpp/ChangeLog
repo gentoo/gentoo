@@ -1,6 +1,9 @@
 # ChangeLog for dev-cpp/libxmlpp
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/libxmlpp/ChangeLog,v 1.136 2015/06/08 18:17:57 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/libxmlpp/ChangeLog,v 1.137 2015/06/21 10:47:17 zlogene Exp $
+
+  21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> libxmlpp-2.38.1.ebuild:
+  amd64 stable wrt bug #551814
 
   08 Jun 2015; Pacho Ramos <pacho@gentoo.org> libxmlpp-2.36.0.ebuild:
   Move to testing for arches that don't need it stable

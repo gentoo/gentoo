@@ -1,6 +1,10 @@
 # ChangeLog for dev-util/gtk-update-icon-cache
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/gtk-update-icon-cache/ChangeLog,v 1.4 2015/06/21 08:46:35 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/gtk-update-icon-cache/ChangeLog,v 1.5 2015/06/21 10:59:47 zlogene Exp $
+
+  21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org>
+  gtk-update-icon-cache-3.14.13.ebuild:
+  amd64 stable wrt bug #551814
 
   21 Jun 2015; Jeroen Roovers <jer@gentoo.org>
   gtk-update-icon-cache-3.14.13.ebuild:
@@ -24,4 +28,3 @@
   +metadata.xml:
   Move Gilles's splitted gtk+ icon cache update tool from the overlay; allows
   gtk+:3 to be installed without gtk+:2. See bug #528810
-

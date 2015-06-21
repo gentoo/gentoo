@@ -1,6 +1,14 @@
 # ChangeLog for dev-java/commons-collections
-# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-collections/ChangeLog,v 1.59 2011/12/31 13:25:22 sera Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-collections/ChangeLog,v 1.60 2015/06/21 11:19:31 monsieurp Exp $
+
+*commons-collections-3.2.1-r1 (21 Jun 2015)
+
+  21 Jun 2015; Patrice Clement <monsieurp@gentoo.org>
+  +commons-collections-3.2.1-r1.ebuild,
+  +files/commons-collections-3.2.1-Java-8.patch:
+  Add patch to allow commons-collections to compile nicely with JDK >= 1.8
+  courtesy of Constantine E. Kozlov <tempor.demonius@gmail.com>. Fix bug 508056.
 
   31 Dec 2011; Ralph Sennhauser <sera@gentoo.org>
   commons-collections-3.2.1.ebuild:
@@ -236,4 +244,3 @@
   31 Oct 2002; Karl Trygve Kalleberg <karltk@gentoo.org> commons-collections-2.0.ebuild files/digest-commons-collections-2.0 :
   Initial import.  Ebuild submitted by Adrian Almenar
   <aalmenar@conectium.com>.
-

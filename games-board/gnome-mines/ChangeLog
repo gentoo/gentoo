@@ -1,6 +1,9 @@
 # ChangeLog for games-board/gnome-mines
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-board/gnome-mines/ChangeLog,v 1.22 2015/06/09 15:13:25 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-board/gnome-mines/ChangeLog,v 1.23 2015/06/21 11:00:39 zlogene Exp $
+
+  21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> gnome-mines-3.14.2.ebuild:
+  amd64 stable wrt bug #551814
 
 *gnome-mines-3.16.1 (09 Jun 2015)
 

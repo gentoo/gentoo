@@ -1,6 +1,9 @@
 # ChangeLog for app-backup/rdiff-backup
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/rdiff-backup/ChangeLog,v 1.66 2015/05/30 10:53:03 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-backup/rdiff-backup/ChangeLog,v 1.67 2015/06/21 10:42:48 maekke Exp $
+
+  21 Jun 2015; Markus Meier <maekke@gentoo.org> rdiff-backup-1.3.3-r1.ebuild:
+  arm stable, bug #550260
 
   30 May 2015; Jeroen Roovers <jer@gentoo.org> rdiff-backup-1.3.3-r1.ebuild:
   Stable for PPC64 (bug #550260).

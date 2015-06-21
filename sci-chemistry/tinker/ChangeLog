@@ -1,6 +1,14 @@
 # ChangeLog for sci-chemistry/tinker
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/tinker/ChangeLog,v 1.33 2012/10/19 10:30:49 jlec Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/tinker/ChangeLog,v 1.34 2015/06/21 10:42:07 jlec Exp $
+
+*tinker-7.1.2 (21 Jun 2015)
+
+  21 Jun 2015; Justin Lecher <jlec@gentoo.org> +files/7.1.2-openmp.patch,
+  +files/tinker-7.1.2-build.patch, +tinker-7.1.2.ebuild, -tinker-5.1.09.ebuild,
+  -tinker-6.ebuild:
+  Version Bump, bug #390165, bug #521292; drop old, obsolets bug #478596, bug
+  #552712
 
   19 Oct 2012; Justin Lecher <jlec@gentoo.org> tinker-5.1.09.ebuild,
   tinker-6.ebuild, metadata.xml:
@@ -146,4 +154,3 @@
   +tinker-4.2.ebuild:
   (#35945) New molecular mechanics package. Heavily modified ebuild based on
   that of Jeremy Warren <jwarren@cheesefoam.dyndns.org>.
-

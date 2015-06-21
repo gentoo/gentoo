@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/totem-pl-parser
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/totem-pl-parser/ChangeLog,v 1.158 2015/05/10 18:35:05 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/totem-pl-parser/ChangeLog,v 1.159 2015/06/21 10:55:01 zlogene Exp $
+
+  21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> totem-pl-parser-3.10.5.ebuild:
+  amd64 stable wrt bug #551814
 
   10 May 2015; Jeroen Roovers <jer@gentoo.org> metadata.xml:
   media-libs/quvi => media-libs/libquvi

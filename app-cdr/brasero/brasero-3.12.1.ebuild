@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/brasero/brasero-3.12.1.ebuild,v 1.1 2015/05/01 16:26:10 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/brasero/brasero-3.12.1.ebuild,v 1.2 2015/06/21 10:31:47 zlogene Exp $
 
 EAPI="5"
 GCONF_DEBUG="no"
@@ -14,7 +14,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Brasero"
 LICENSE="GPL-2+ CC-BY-SA-3.0"
 SLOT="0/3.1" # subslot is 3.suffix of libbrasero-burn3
 IUSE="+css +introspection +libburn mp3 nautilus packagekit playlist test tracker"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.29.14:2

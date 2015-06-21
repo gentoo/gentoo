@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/pkginfo
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pkginfo/ChangeLog,v 1.13 2015/06/03 20:47:28 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pkginfo/ChangeLog,v 1.14 2015/06/21 10:42:42 maekke Exp $
+
+  21 Jun 2015; Markus Meier <maekke@gentoo.org> pkginfo-1.2.1.ebuild:
+  add ~arm, bug #549148
 
   03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add pypi to remote-id in metadata.xml

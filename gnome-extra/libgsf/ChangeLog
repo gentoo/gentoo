@@ -1,6 +1,9 @@
 # ChangeLog for gnome-extra/libgsf
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/libgsf/ChangeLog,v 1.255 2015/06/21 08:48:45 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/libgsf/ChangeLog,v 1.256 2015/06/21 10:43:50 zlogene Exp $
+
+  21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> libgsf-1.14.33.ebuild:
+  amd64 stable wrt bug #551814
 
   21 Jun 2015; Jeroen Roovers <jer@gentoo.org> libgsf-1.14.33.ebuild:
   Stable for PPC64 (bug #551814).

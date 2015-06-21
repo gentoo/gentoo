@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=kde-apps/kdialog:4 kde-base/pykde4:4[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/setuptools[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DESCRIPTION=A wheel type command interface for KDE, heavily inspired by Kommando
+EAPI=5
+HOMEPAGE=http://bitbucket.org/ArneBab/pyrad https://pypi.python.org/pypi/pyRadKDE
+IUSE=python_targets_python2_7
+KEYWORDS=~amd64
+LICENSE=GPL-3
+RDEPEND=kde-apps/kdialog:4 kde-base/pykde4:4[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=mirror://pypi/p/pyRadKDE/pyRadKDE-0.7.1.tar.gz
+_eclasses_=distutils-r1	c01d5c4af34f4a37a51fc9638299c222	eutils	9fb270e417e0e83d64ca52586c4a79de	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-r1	6d3a3cb5705b9fff1aeb7cfa4e3336fe	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=be77795c3a6f334d0f0fbbfa1548018b

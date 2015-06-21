@@ -1,6 +1,9 @@
 # ChangeLog for app-doc/gnucash-docs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/gnucash-docs/ChangeLog,v 1.38 2015/06/09 09:45:46 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-doc/gnucash-docs/ChangeLog,v 1.39 2015/06/21 10:37:38 zlogene Exp $
+
+  21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> gnucash-docs-2.6.6.ebuild:
+  amd64 stable wrt bug #551814
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

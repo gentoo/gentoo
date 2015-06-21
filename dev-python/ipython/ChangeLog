@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/ipython
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/ipython/ChangeLog,v 1.172 2015/06/02 08:01:03 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/ipython/ChangeLog,v 1.173 2015/06/21 10:42:13 maekke Exp $
+
+  21 Jun 2015; Markus Meier <maekke@gentoo.org> ipython-3.1.0.ebuild:
+  add ~arm, bug #541628
 
   02 Jun 2015; Justin Lecher <jlec@gentoo.org> ipython-3.1.0.ebuild:
   Fix Version of pyzmq in deps; thanks Marius Brehler for the work

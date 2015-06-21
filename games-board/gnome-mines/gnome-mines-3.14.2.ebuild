@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-board/gnome-mines/gnome-mines-3.14.2.ebuild,v 1.1 2015/04/12 22:13:04 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-board/gnome-mines/gnome-mines-3.14.2.ebuild,v 1.2 2015/06/21 11:00:39 zlogene Exp $
 
 EAPI="5"
 GCONF_DEBUG="no"
@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Mines"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE=""
 
 COMMON_DEPEND="

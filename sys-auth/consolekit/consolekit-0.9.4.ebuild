@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/consolekit/consolekit-0.9.4.ebuild,v 1.1 2015/06/20 12:19:19 perfinion Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/consolekit/consolekit-0.9.4.ebuild,v 1.2 2015/06/21 10:53:11 perfinion Exp $
 
 EAPI=5
 inherit eutils linux-info pam
@@ -18,8 +18,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux"
 IUSE="acl debug doc kernel_linux pam policykit selinux test"
 
-COMMON_DEPEND=">=dev-libs/dbus-glib-0.100:=
-	>=dev-libs/glib-2.40:2=
+COMMON_DEPEND=">=dev-libs/glib-2.40:2=
 	sys-libs/zlib:=
 	x11-libs/libX11:=
 	acl? (
@@ -30,7 +29,8 @@ COMMON_DEPEND=">=dev-libs/dbus-glib-0.100:=
 	policykit? ( >=sys-auth/polkit-0.110 )"
 RDEPEND="${COMMON_DEPEND}
 	kernel_linux? ( sys-apps/coreutils[acl?] )
-	selinux? ( sec-policy/selinux-consolekit )"
+	selinux? ( sec-policy/selinux-consolekit )
+	sys-power/pm-utils"
 DEPEND="${COMMON_DEPEND}
 	dev-libs/libxslt
 	virtual/pkgconfig

@@ -1,0 +1,17 @@
+ make/Makefile | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/make/Makefile b/make/Makefile
+index 61d5037..9be384a 100644
+--- a/make/Makefile
++++ b/make/Makefile
+@@ -719,8 +719,7 @@ EXEFILES = alchemy.x \
+ %.x: %.o libtinker.a
+ 	${F77} ${LINKFLAGS} -o $@ $^ ${LIBS}; strip $@
+ 
+-all:
+-	${EXEFILES}
++all: ${EXEFILES}
+ 
+ install:
+ 	rename

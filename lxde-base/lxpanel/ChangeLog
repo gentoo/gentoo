@@ -1,6 +1,9 @@
 # ChangeLog for lxde-base/lxpanel
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/lxde-base/lxpanel/ChangeLog,v 1.68 2015/06/11 14:22:24 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/lxde-base/lxpanel/ChangeLog,v 1.69 2015/06/21 10:41:20 maekke Exp $
+
+  21 Jun 2015; Markus Meier <maekke@gentoo.org> lxpanel-0.7.0-r1.ebuild:
+  arm stable, bug #550024
 
   11 Jun 2015; Agostino Sarubbo <ago@gentoo.org> lxpanel-0.7.0-r1.ebuild:
   Stable for ppc, wrt bug #550024

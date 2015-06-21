@@ -1,6 +1,10 @@
 # ChangeLog for dev-ruby/right_http_connection
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/right_http_connection/ChangeLog,v 1.24 2015/06/07 19:26:07 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/right_http_connection/ChangeLog,v 1.25 2015/06/21 10:50:05 maekke Exp $
+
+  21 Jun 2015; Markus Meier <maekke@gentoo.org>
+  right_http_connection-1.5.0.ebuild:
+  add ~arm, bug #550510
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

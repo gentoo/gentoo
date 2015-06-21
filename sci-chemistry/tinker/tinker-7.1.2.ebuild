@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/tinker/tinker-6.ebuild,v 1.6 2012/10/19 10:30:49 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/tinker/tinker-7.1.2.ebuild,v 1.1 2015/06/21 10:42:07 jlec Exp $
 
-EAPI=2
+EAPI=5
 
 inherit eutils flag-o-matic fortran-2 java-pkg-opt-2 toolchain-funcs
 
@@ -25,7 +25,7 @@ RDEPEND="
 
 RESTRICT="mirror"
 
-S="${WORKDIR}"/${PN}${PV}/source
+S="${WORKDIR}"/${PN}/source
 
 pkg_setup() {
 	fortran-2_pkg_setup
@@ -36,6 +36,7 @@ pkg_setup() {
 src_prepare() {
 	sed 's:strip:true:g' -i ../make/Makefile
 	[[ $(tc-getFC) =~ "ifort" ]] || epatch "${FILESDIR}"/${PV}-openmp.patch
+	cd .. && epatch "${FILESDIR}"/${P}-build.patch
 }
 
 src_compile() {
@@ -55,7 +56,7 @@ src_compile() {
 		_omplib="-liomp5"
 	fi
 
-	_fftwlib="$(pkg-config --libs fftw3 fftw3_threads)"
+	_fftwlib="$($(tc-getPKG_CONFIG) --libs fftw3 fftw3_threads)"
 
 	emake \
 		-f ../make/Makefile \
@@ -66,18 +67,18 @@ src_compile() {
 		LINKFLAGS="${LDFLAGS} -Wl,-rpath ${javalib}" \
 		INCLUDEDIR="$(java-pkg_get-jni-cflags) -I${EPREFIX}/usr/include" \
 		LIBS="-lmaloc -L${javalib} -ljvm ${_omplib} ${_fftwlib}" \
-		all || die
+		all
 
 	mkdir "${S}"/../bin || die
 
 	emake \
 		-f ../make/Makefile \
 		BINDIR="${S}"/../bin \
-		rename || die
+		rename
 }
 
 src_test() {
-	cd "${WORKDIR}"/${PN}${PV}/test/
+	cd "${WORKDIR}"/${PN}/test/
 	for test in *.run; do
 		einfo "Testing ${test} ..."
 		bash ${test} || die
@@ -85,19 +86,19 @@ src_test() {
 }
 
 src_install() {
-	dobin "${WORKDIR}"/${PN}${PV}/perl/mdavg "${WORKDIR}"/${PN}${PV}/bin/* || die
+	dobin "${WORKDIR}"/${PN}/perl/mdavg "${WORKDIR}"/${PN}/bin/*
 
 	insinto /usr/share/${PN}/
-	doins -r "${WORKDIR}"/${PN}${PV}/params || die
+	doins -r "${WORKDIR}"/${PN}/params
 
 	dodoc \
-		"${WORKDIR}"/${PN}${PV}/doc/{*.txt,announce/release-*,*.pdf,0README} || die
+		"${WORKDIR}"/${PN}/doc/{*.txt,*.pdf,0README}
 
 	if use examples; then
 		insinto /usr/share/${P}
-		doins -r "${WORKDIR}"/${PN}${PV}/example || die
+		doins -r "${WORKDIR}"/${PN}/example
 
-		doins -r "${WORKDIR}"/${PN}${PV}/test || die
+		doins -r "${WORKDIR}"/${PN}/test
 	fi
 
 }

@@ -1,6 +1,9 @@
 # ChangeLog for dev-cpp/gstreamermm
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/gstreamermm/ChangeLog,v 1.37 2015/05/01 16:49:58 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/gstreamermm/ChangeLog,v 1.38 2015/06/21 10:46:05 zlogene Exp $
+
+  21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> gstreamermm-1.4.3.ebuild:
+  amd64 stable wrt bug #551814
 
 *gstreamermm-1.4.3 (01 May 2015)
 

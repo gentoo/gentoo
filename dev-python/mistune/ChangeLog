@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/mistune
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/mistune/ChangeLog,v 1.5 2015/06/17 11:18:43 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/mistune/ChangeLog,v 1.6 2015/06/21 10:40:50 maekke Exp $
+
+  21 Jun 2015; Markus Meier <maekke@gentoo.org> mistune-0.5.1.ebuild:
+  add ~arm, bug #541628
 
 *mistune-0.6 (17 Jun 2015)
 

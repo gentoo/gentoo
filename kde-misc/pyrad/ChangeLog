@@ -1,6 +1,11 @@
 # ChangeLog for kde-misc/pyrad
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/pyrad/ChangeLog,v 1.8 2014/10/25 20:07:18 mrueg Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/pyrad/ChangeLog,v 1.9 2015/06/21 11:11:41 johu Exp $
+
+*pyrad-0.7.1 (21 Jun 2015)
+
+  21 Jun 2015; Johannes Huber <johu@gentoo.org> +pyrad-0.7.1.ebuild:
+  Version bump by Arne Babenhauserheide <arne_bab@web.de>, bug #544550.
 
   25 Oct 2014; Manuel Rüger <mrueg@gentoo.org> -pyrad-0.6.2.ebuild:
   Cleanup old.

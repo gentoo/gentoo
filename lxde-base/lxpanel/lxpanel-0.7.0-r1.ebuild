@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/lxde-base/lxpanel/lxpanel-0.7.0-r1.ebuild,v 1.6 2015/06/11 14:22:24 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/lxde-base/lxpanel/lxpanel-0.7.0-r1.ebuild,v 1.7 2015/06/21 10:41:20 maekke Exp $
 
 EAPI="4"
 
@@ -13,7 +13,7 @@ HOMEPAGE="http://lxde.org/"
 SRC_URI="mirror://sourceforge/lxde/LXPanel%20%28desktop%20panel%29/LXPanel%20${MAJOR_VER}.x/${P}.tar.xz"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ppc x86 ~x86-interix ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm ~arm64 ppc x86 ~x86-interix ~amd64-linux ~arm-linux ~x86-linux"
 SLOT="0"
 IUSE="+alsa wifi"
 RESTRICT="test"  # bug 249598

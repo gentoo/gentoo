@@ -4,11 +4,11 @@ DESCRIPTION=Miscellaneous convenience, extension and workaround code for Python
 EAPI=5
 HOMEPAGE=https://fedorahosted.org/python-slip/
 IUSE=dbus selinux python_targets_python2_7 python_targets_python3_3 python_targets_python3_4
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=GPL-2+
 RDEPEND=dbus? ( dev-python/dbus-python[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] dev-python/pygobject:3[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] dev-python/six[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] sys-auth/polkit ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[xml] ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3[xml] ) python_targets_python3_4? ( dev-lang/python:3.4[xml] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 )
 SLOT=0
 SRC_URI=https://fedorahosted.org/released/python-slip/python-slip-0.6.1.tar.bz2
 _eclasses_=distutils-r1	c01d5c4af34f4a37a51fc9638299c222	eutils	9fb270e417e0e83d64ca52586c4a79de	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-r1	6d3a3cb5705b9fff1aeb7cfa4e3336fe	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=fda22a26d6388694d7cb70c006af4d75
+_md5_=c99a45e931a9a07615b4e5300b256e1b

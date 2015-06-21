@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/libgusb
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgusb/ChangeLog,v 1.50 2015/06/07 12:33:10 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgusb/ChangeLog,v 1.51 2015/06/21 10:51:34 zlogene Exp $
+
+  21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> libgusb-0.2.5.ebuild:
+  amd64 stable wrt bug #551814
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

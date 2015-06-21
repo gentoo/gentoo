@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/pylibacl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pylibacl/ChangeLog,v 1.41 2015/06/09 16:20:18 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pylibacl/ChangeLog,v 1.42 2015/06/21 10:42:18 maekke Exp $
+
+  21 Jun 2015; Markus Meier <maekke@gentoo.org> pylibacl-0.5.0-r1.ebuild:
+  arm stable, bug #550260
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml
