@@ -1,6 +1,9 @@
 # ChangeLog for sys-power/powernowd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/powernowd/ChangeLog,v 1.30 2015/04/20 03:53:22 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-power/powernowd/ChangeLog,v 1.31 2015/06/21 07:52:01 jer Exp $
+
+  21 Jun 2015; Jeroen Roovers <jer@gentoo.org> powernowd-1.00-r3.ebuild:
+  Stable for PPC64 too.
 
   20 Apr 2015; Jeroen Roovers <jer@gentoo.org> -powernowd-1.00-r2.ebuild:
   Old.

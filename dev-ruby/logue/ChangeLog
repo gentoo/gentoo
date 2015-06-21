@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/logue
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/logue/ChangeLog,v 1.21 2015/06/08 05:03:31 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/logue/ChangeLog,v 1.22 2015/06/21 07:56:57 zlogene Exp $
+
+  21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> logue-1.0.2-r1.ebuild:
+  amd64 stable wrt bug #550514
 
   08 Jun 2015; Jeroen Roovers <jer@gentoo.org> logue-1.0.2-r1.ebuild:
   Stable for HPPA (bug #550514).
