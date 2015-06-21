@@ -1,6 +1,12 @@
 # ChangeLog for app-shells/zsh
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/zsh/ChangeLog,v 1.250 2015/01/04 01:34:42 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-shells/zsh/ChangeLog,v 1.251 2015/06/21 05:07:22 radhermit Exp $
+
+*zsh-5.0.8 (21 Jun 2015)
+
+  21 Jun 2015; Tim Harder <radhermit@gentoo.org> +zsh-5.0.8.ebuild,
+  zsh-9999.ebuild:
+  Version bump, install header files (bug #538684).
 
   04 Jan 2015; Tim Harder <radhermit@gentoo.org> zsh-9999.ebuild:
   Update documentation URL (bug #534472).
