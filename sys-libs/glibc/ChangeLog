@@ -1,6 +1,10 @@
 # ChangeLog for sys-libs/glibc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/ChangeLog,v 1.1059 2015/05/31 12:43:47 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/ChangeLog,v 1.1060 2015/06/22 04:51:20 vapier Exp $
+
+  22 Jun 2015; Mike Frysinger <vapier@gentoo.org> glibc-2.21.ebuild,
+  glibc-9999.ebuild:
+  Update min gcc version to match the source INSTALL requirements.
 
   31 May 2015; Mikle Kolyada <zlogene@gentoo.org> glibc-2.20-r1.ebuild,
   glibc-2.20.ebuild:

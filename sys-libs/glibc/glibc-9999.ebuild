@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/glibc-9999.ebuild,v 1.29 2015/05/27 13:55:42 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/glibc-9999.ebuild,v 1.30 2015/06/22 04:51:20 vapier Exp $
 
 EAPI="4"
 
@@ -76,13 +76,13 @@ RDEPEND="!sys-kernel/ps3-sources
 if [[ ${CATEGORY} == cross-* ]] ; then
 	DEPEND+=" !crosscompile_opts_headers-only? (
 		>=${CATEGORY}/binutils-2.24
-		>=${CATEGORY}/gcc-4.4
+		>=${CATEGORY}/gcc-4.6
 	)"
 	[[ ${CATEGORY} == *-linux* ]] && DEPEND+=" ${CATEGORY}/linux-headers"
 else
 	DEPEND+="
 		>=sys-devel/binutils-2.24
-		>=sys-devel/gcc-4.4
+		>=sys-devel/gcc-4.6
 		virtual/os-headers"
 	RDEPEND+=" vanilla? ( !sys-libs/timezone-data )"
 	PDEPEND+=" !vanilla? ( sys-libs/timezone-data )"
