@@ -1,6 +1,12 @@
 # ChangeLog for dev-python/xlrd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/xlrd/ChangeLog,v 1.30 2015/06/07 16:35:08 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/xlrd/ChangeLog,v 1.31 2015/06/22 12:56:52 jlec Exp $
+
+*xlrd-0.9.3-r1 (22 Jun 2015)
+
+  22 Jun 2015; Justin Lecher <jlec@gentoo.org> +files/xlrd-0.9.3-column.patch,
+  +xlrd-0.9.3-r1.ebuild:
+  Fix reading of LO/OO stored files
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

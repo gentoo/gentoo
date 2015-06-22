@@ -1,6 +1,10 @@
 # ChangeLog for sci-visualization/gri
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-visualization/gri/ChangeLog,v 1.12 2013/01/28 08:38:57 jlec Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-visualization/gri/ChangeLog,v 1.13 2015/06/22 12:56:09 jlec Exp $
+
+  22 Jun 2015; Justin Lecher <jlec@gentoo.org>
+  +files/gri-2.12.23-texinfo5.patch, gri-2.12.23.ebuild:
+  Backport patch for texinfo5, bug #513566
 
   28 Jan 2013; Justin Lecher <jlec@gentoo.org> gri-2.12.23.ebuild,
   metadata.xml:

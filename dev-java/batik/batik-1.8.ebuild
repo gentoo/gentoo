@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/batik/batik-1.8.ebuild,v 1.6 2015/06/22 08:23:58 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/batik/batik-1.8.ebuild,v 1.7 2015/06/22 14:03:37 monsieurp Exp $
 
 EAPI=5
 JAVA_PKG_IUSE="doc"
@@ -66,23 +66,32 @@ src_compile() {
 	eant jars all-jar $(use_doc)
 	cd contrib/rasterizertask || die
 	eant -Dgentoo.classpath="$(java-pkg_getjar ant-core ant.jar):../../classes" jar $(use_doc)
+
+	cd "${S}"/"${P}/lib" || die
+
+	# batik-all-1.8.jar is a all-in-one jar that contains all other jars. 
+	# We don't want to package it.
+	rm -v ${PN}-all-${PV}.jar
 }
 
 src_install() {
-	cd ${P}
-	# Unversion all jars in ${P}.
-	for jar in *.jar; do
-		newj="${jar%-*}.jar"
-		java-pkg_newjar ${jar} ${newj}
-		dosym ${newj} /usr/share/${PN}-${SLOT}/lib/lib/${jar}
-	done
+	batik_unversion_jars() {
+		for jar in batik-*.jar; do
+			newj="${jar%-*}.jar"
+			java-pkg_newjar ${jar} ${newj}
+		done
+	}
 
-	# needed because batik expects this layout:
-	# batik.jar lib/*.jar
-	# there are hardcoded classpaths in the manifest :(
-	dodir /usr/share/${PN}-${SLOT}/lib/lib/
+	# First unversion jars in ${P}/lib
+	cd "${S}"/"${P}"/lib || die
+	batik_unversion_jars
 
-	cd "${S}"
+	# Then, only those in ${P}
+	cd "${S}"/"${P}" || die
+	batik_unversion_jars
+
+	# Proceed with documentation installation
+	cd "${S}" || die
 	dodoc README CHANGES
 	use doc && java-pkg_dojavadoc ${P}/docs/javadoc
 

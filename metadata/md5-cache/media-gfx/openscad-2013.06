@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=media-gfx/opencsg sci-mathematics/cgal dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 dev-cpp/eigen:2 dev-libs/gmp dev-libs/mpfr dev-libs/boost:= sys-libs/glibc
 SLOT=0
 SRC_URI=https://openscad.googlecode.com/files/openscad-2013.06.src.tar.gz
-_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	qmake-utils	55ebcc6f3269308d226969c26704e343	qt4-r2	7199e3db5b5908325487d379c6f67cf0	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	qmake-utils	8557b23f27697843c242ff27aaa99448	qt4-r2	7199e3db5b5908325487d379c6f67cf0	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=8bc5c656e24235537a4146ea7bc019dc

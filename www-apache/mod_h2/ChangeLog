@@ -1,6 +1,11 @@
 # ChangeLog for www-apache/mod_h2
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_h2/ChangeLog,v 1.8 2015/06/17 17:49:23 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_h2/ChangeLog,v 1.9 2015/06/22 13:23:36 vapier Exp $
+
+*mod_h2-0.7.2 (22 Jun 2015)
+
+  22 Jun 2015; Mike Frysinger <vapier@gentoo.org> +mod_h2-0.7.2.ebuild:
+  Version bump.
 
 *mod_h2-0.7.0 (17 Jun 2015)
 

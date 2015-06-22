@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/qmake-utils.eclass,v 1.10 2015/06/16 17:47:24 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/qmake-utils.eclass,v 1.11 2015/06/22 14:18:19 pesa Exp $
 
 # @ECLASS: qmake-utils.eclass
 # @MAINTAINER:
@@ -25,7 +25,7 @@ inherit eutils multilib toolchain-funcs
 qt4_get_bindir() {
 	has "${EAPI:-0}" 0 1 2 && use !prefix && EPREFIX=
 
-	local qtbindir=${EPREFIX}/usr/$(get_libdir)/qt4/bin
+	local qtbindir=${EPREFIX}$(qt4_get_libdir)/bin
 	if [[ -d ${qtbindir} ]]; then
 		echo ${qtbindir}
 	else
@@ -39,6 +39,14 @@ qt4_get_bindir() {
 # Does not take EPREFIX into account.
 qt4_get_headerdir() {
 	echo /usr/include/qt4
+}
+
+# @FUNCTION: qt4_get_libdir
+# @DESCRIPTION:
+# Echoes the directory where Qt4 libraries are installed.
+# Does not take EPREFIX into account.
+qt4_get_libdir() {
+	echo /usr/$(get_libdir)/qt4
 }
 
 # @FUNCTION: qt4_get_mkspecsdir
@@ -55,7 +63,7 @@ qt4_get_mkspecsdir() {
 qt5_get_bindir() {
 	has "${EAPI:-0}" 0 1 2 && use !prefix && EPREFIX=
 
-	echo ${EPREFIX}/usr/$(get_libdir)/qt5/bin
+	echo ${EPREFIX}$(qt5_get_libdir)/qt5/bin
 }
 
 # @FUNCTION: qt5_get_headerdir
@@ -66,12 +74,20 @@ qt5_get_headerdir() {
 	echo /usr/include/qt5
 }
 
+# @FUNCTION: qt5_get_libdir
+# @DESCRIPTION:
+# Echoes the directory where Qt5 libraries are installed.
+# Does not take EPREFIX into account.
+qt5_get_libdir() {
+	echo /usr/$(get_libdir)
+}
+
 # @FUNCTION: qt5_get_mkspecsdir
 # @DESCRIPTION:
 # Echoes the directory where Qt5 mkspecs are installed.
 # Does not take EPREFIX into account.
 qt5_get_mkspecsdir() {
-	echo /usr/$(get_libdir)/qt5/mkspecs
+	echo $(qt5_get_libdir)/qt5/mkspecs
 }
 
 # @FUNCTION: qmake-utils_find_pro_file
@@ -233,9 +249,9 @@ eqmake4() {
 		QMAKE_LFLAGS="${LDFLAGS}" \
 		QMAKE_LFLAGS_RELEASE= \
 		QMAKE_LFLAGS_DEBUG= \
-		QMAKE_LIBDIR_QT="${EPREFIX}"/usr/$(get_libdir)/qt4 \
-		QMAKE_LIBDIR_X11="${EPREFIX}"/usr/$(get_libdir) \
-		QMAKE_LIBDIR_OPENGL="${EPREFIX}"/usr/$(get_libdir) \
+		QMAKE_LIBDIR_QT="${EPREFIX}$(qt4_get_libdir)" \
+		QMAKE_LIBDIR_X11="${EPREFIX}/usr/$(get_libdir)" \
+		QMAKE_LIBDIR_OPENGL="${EPREFIX}/usr/$(get_libdir)" \
 		"${qmake_args[@]}"
 
 	if ! eend $? ; then

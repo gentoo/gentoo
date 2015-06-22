@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=app-crypt/qca:2[openssl,qt4(+)] sys-auth/libfprint sys-auth/polkit-qt[qt4(+)] sys-libs/pam x11-libs/libfakekey dev-qt/qtcore:4 !sys-auth/thinkfinger
 SLOT=0
 SRC_URI=http://ullrich-online.cc/nview/Appliance/fingerprint/download/fingerprint-gui-1.05.tar.gz
-_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	qmake-utils	55ebcc6f3269308d226969c26704e343	qt4-r2	7199e3db5b5908325487d379c6f67cf0	toolchain-funcs	42408102d713fbad60ca21349865edb4	udev	da001465a2e939c93f7ae16947ce3438
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	qmake-utils	8557b23f27697843c242ff27aaa99448	qt4-r2	7199e3db5b5908325487d379c6f67cf0	toolchain-funcs	42408102d713fbad60ca21349865edb4	udev	da001465a2e939c93f7ae16947ce3438
 _md5_=be7a33cd4c14dc7d4d2913a260b5456f

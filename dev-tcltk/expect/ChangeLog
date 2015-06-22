@@ -1,6 +1,13 @@
 # ChangeLog for dev-tcltk/expect
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/expect/ChangeLog,v 1.95 2015/06/09 17:45:36 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/expect/ChangeLog,v 1.97 2015/06/22 13:39:53 jlec Exp $
+
+  22 Jun 2015; Justin Lecher <jlec@gentoo.org> expect-5.45.ebuild:
+  Bump to EAPI=5
+
+  22 Jun 2015; Justin Lecher <jlec@gentoo.org>
+  +files/expect-5.45-format-security.patch, expect-5.45.ebuild:
+  Add fix for format-security, bug #520588
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

@@ -1,6 +1,11 @@
 # ChangeLog for dev-java/batik
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/batik/ChangeLog,v 1.80 2015/06/22 12:03:55 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/batik/ChangeLog,v 1.81 2015/06/22 14:03:37 monsieurp Exp $
+
+  22 Jun 2015; Patrice Clement <monsieurp@gentoo.org> batik-1.7-r3.ebuild,
+  batik-1.8.ebuild:
+  Rework jars installation logic. Symlinking to lib/lib isn't necessary in this
+  version so let's do away with it. Fix bug 552830.
 
 *batik-1.7-r3 (22 Jun 2015)
 

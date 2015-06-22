@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-visualization/gri/gri-2.12.23.ebuild,v 1.7 2013/01/28 08:38:57 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-visualization/gri/gri-2.12.23.ebuild,v 1.8 2015/06/22 12:56:09 jlec Exp $
 
-EAPI=4
+EAPI=5
 
 inherit eutils elisp-common
 
@@ -28,7 +28,8 @@ SITEFILE="50gri-gentoo.el"
 src_prepare() {
 	epatch \
 		"${FILESDIR}"/${PN}-2.12.18-postscript.patch \
-		"${FILESDIR}"/${P}-perl-5.16.patch
+		"${FILESDIR}"/${P}-perl-5.16.patch \
+		"${FILESDIR}"/${P}-texinfo5.patch
 	# Makefile.am contains a call to the missing script that triggers gentoo qa
 	sed -i -e 's|${SHELL} ../missing --run tex|tex|g' \
 		doc/Makefile.in || die

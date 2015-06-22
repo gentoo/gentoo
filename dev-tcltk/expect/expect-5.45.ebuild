@@ -1,8 +1,8 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/expect/expect-5.45.ebuild,v 1.7 2015/03/20 10:22:30 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/expect/expect-5.45.ebuild,v 1.9 2015/06/22 13:39:53 jlec Exp $
 
-EAPI="3"
+EAPI=5
 
 inherit autotools eutils
 
@@ -30,16 +30,19 @@ src_prepare() {
 		-e 's/^SCRIPT_LIST[[:space:]]*=/_&/' \
 		-e 's/^SCRIPTS[[:space:]]*=/_&/' \
 		-e 's/^SCRIPTS_MANPAGES[[:space:]]*=/_&/' \
-		Makefile.in
+		Makefile.in || die
 
 	epatch "${FILESDIR}"/${PN}-5.45-gfbsd.patch
 	epatch "${FILESDIR}"/${PN}-5.44.1.15-ldflags.patch
 	epatch "${FILESDIR}"/${PN}-5.45-headers.patch #337943
+	epatch "${FILESDIR}"/${PN}-5.45-format-security.patch
 	sed -i 's:ifdef HAVE_SYS_WAIT_H:ifndef NO_SYS_WAIT_H:' *.c
 
 	# fix install_name on darwin
 	[[ ${CHOST} == *-darwin* ]] && \
 		epatch "${FILESDIR}"/${P}-darwin-install_name.patch
+
+	mv configure.{in,ac} || die
 
 	eautoconf
 }
@@ -59,25 +62,23 @@ src_test() {
 	# we need dejagnu to do tests ... but dejagnu needs
 	# expect ... so don't do tests unless we have dejagnu
 	type -p runtest || return 0
-	emake test || die
+	emake test
 }
 
 expect_make_var() {
 	touch pkgIndex.tcl-hand
 	printf 'all:;echo $('$1')\ninclude Makefile' | emake --no-print-directory -s -f -
-	rm -f pkgIndex.tcl-hand
+	rm -f pkgIndex.tcl-hand || die
 }
 
 src_install() {
-	emake install DESTDIR="${D}" || die
-	dodoc ChangeLog FAQ HISTORY NEWS README
+	default
 
 	if use doc ; then
 		docinto examples
 		dodoc \
 			example/README \
 			$(printf 'example/%s ' $(expect_make_var _SCRIPTS)) \
-			$(printf 'example/%s.man ' $(expect_make_var _SCRIPTS_MANPAGES)) \
-			|| die
+			$(printf 'example/%s.man ' $(expect_make_var _SCRIPTS_MANPAGES))
 	fi
 }
