@@ -1,6 +1,11 @@
 # ChangeLog for dev-util/cmake
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/cmake/ChangeLog,v 1.314 2015/06/16 12:22:37 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/cmake/ChangeLog,v 1.315 2015/06/22 21:15:01 johu Exp $
+
+  22 Jun 2015; Johannes Huber <johu@gentoo.org>
+  +files/cmake-3.2.3-musl-missing-include.patch, cmake-3.2.3.ebuild:
+  Add upstream patch to fix build on musl profiles, spotted by Felix Janda
+  <felix.janda@posteo.de>, bug #552708.
 
   16 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> cmake-3.2.2.ebuild:
   x86 stable wrt bug #545870

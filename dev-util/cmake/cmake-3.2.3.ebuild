@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/cmake/cmake-3.2.3.ebuild,v 1.2 2015/06/12 05:24:01 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/cmake/cmake-3.2.3.ebuild,v 1.3 2015/06/22 21:15:01 johu Exp $
 
 EAPI=5
 
@@ -58,6 +58,9 @@ PATCHES=(
 	# respect python eclasses
 	"${FILESDIR}"/${PN}-2.8.10.2-FindPythonLibs.patch
 	"${FILESDIR}"/${PN}-3.1.0-FindPythonInterp.patch
+
+	# upstream backports
+	"${FILESDIR}"/${PN}-3.2.3-musl-missing-include.patch
 )
 
 cmake_src_bootstrap() {

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/dolphin/dolphin-9999.ebuild,v 1.29 2015/06/10 23:00:19 twitch153 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/dolphin/dolphin-9999.ebuild,v 1.30 2015/06/22 21:08:35 twitch153 Exp $
 
 EAPI=5
 
@@ -11,7 +11,7 @@ inherit cmake-utils eutils pax-utils toolchain-funcs versionator wxwidgets games
 if [[ ${PV} == 9999* ]]
 then
 	EGIT_REPO_URI="https://github.com/dolphin-emu/dolphin"
-	inherit git-2
+	inherit git-r3
 	KEYWORDS=""
 else
 	SRC_URI="http://${PN}-emu.googlecode.com/files/${P}-src.zip"
