@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pbr/pbr-1.2.0.ebuild,v 1.1 2015/06/22 10:03:03 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pbr/pbr-1.2.0.ebuild,v 1.2 2015/06/22 17:19:57 prometheanfire Exp $
 
 EAPI=5
 
@@ -31,8 +31,7 @@ DEPEND="
 		>=dev-python/testrepository-0.0.18[${PYTHON_USEDEP}]
 		>=dev-python/testresources-0.2.4[${PYTHON_USEDEP}]
 		>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
-		>=dev-python/testtools-0.9.36[${PYTHON_USEDEP}]
-		!~dev-python/testtools-1.2.0[${PYTHON_USEDEP}]
+		>=dev-python/testtools-1.4.0[${PYTHON_USEDEP}]
 		dev-python/virtualenv[${PYTHON_USEDEP}]
 	)"
 RDEPEND="dev-python/pip[${PYTHON_USEDEP}]"
