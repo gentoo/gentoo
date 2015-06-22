@@ -1,6 +1,9 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1676 2015/06/19 14:11:24 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1677 2015/06/22 08:39:36 mrueg Exp $
+
+  22 Jun 2015; Manuel Rüger <mrueg@gentoo.org> git-r3.eclass:
+  Fix typo.
 
   19 Jun 2015; James Le Cuirot <chewi@gentoo.org> java-utils-2.eclass:
   Allow EANT_GENTOO_CLASSPATH_EXTRA to work when EANT_GENTOO_CLASSPATH is

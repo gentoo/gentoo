@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/ptpython
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/ptpython/ChangeLog,v 1.8 2015/06/07 15:20:36 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/ptpython/ChangeLog,v 1.9 2015/06/22 09:52:26 jlec Exp $
+
+*ptpython-0.15 (22 Jun 2015)
+
+  22 Jun 2015; Justin Lecher <jlec@gentoo.org> +ptpython-0.15.ebuild:
+  Version Bump
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

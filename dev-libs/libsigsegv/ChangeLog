@@ -1,6 +1,10 @@
 # ChangeLog for dev-libs/libsigsegv
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libsigsegv/ChangeLog,v 1.55 2015/05/30 06:40:27 jmorgan Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libsigsegv/ChangeLog,v 1.56 2015/06/22 11:37:00 mrueg Exp $
+
+  22 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -libsigsegv-2.8.ebuild,
+  -libsigsegv-2.9.ebuild:
+  Remove old.
 
   30 May 2015; Jack Morgan <jmorgan@gentoo.org> libsigsegv-2.10.ebuild:
   ppc stable wrt bug #511170

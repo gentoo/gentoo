@@ -1,13 +1,13 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/git-r3.eclass,v 1.48 2015/02/04 09:44:24 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/git-r3.eclass,v 1.49 2015/06/22 08:39:36 mrueg Exp $
 
 # @ECLASS: git-r3.eclass
 # @MAINTAINER:
 # Michał Górny <mgorny@gentoo.org>
 # @BLURB: Eclass for fetching and unpacking git repositories.
 # @DESCRIPTION:
-# Third generation eclass for easing maitenance of live ebuilds using
+# Third generation eclass for easing maintenance of live ebuilds using
 # git as remote repository.
 
 case "${EAPI:-0}" in

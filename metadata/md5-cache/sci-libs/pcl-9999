@@ -8,5 +8,5 @@ LICENSE=BSD
 RDEPEND=>=sci-libs/flann-1.7.1 dev-libs/boost:=[threads] dev-cpp/eigen:3 opengl? ( virtual/opengl media-libs/freeglut ) openni? ( dev-libs/OpenNI ) openni2? ( dev-libs/OpenNI2 ) pcap? ( net-libs/libpcap ) png? ( media-libs/libpng:0= ) qhull? ( media-libs/qhull ) qt4? ( dev-qt/qtgui:4 ) usb? ( virtual/libusb:1 ) vtk? ( >=sci-libs/vtk-5.6[imaging,rendering,qt4?] ) cuda? ( >=dev-util/nvidia-cuda-toolkit-4 )
 REQUIRED_USE=openni? ( usb ) openni2? ( usb ) tutorials? ( doc )
 SLOT=0
-_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	git-r3	3a2bd0ae504c33a50061885480f3def3	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	git-r3	ab80045e5d080584334f33013f4df21d	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=a9b956d0fb4d140fbacc82063c491a83

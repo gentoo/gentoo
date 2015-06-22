@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/cyrus-sasl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/cyrus-sasl/ChangeLog,v 1.319 2015/06/06 10:09:52 perfinion Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/cyrus-sasl/ChangeLog,v 1.320 2015/06/22 11:42:13 mrueg Exp $
+
+  22 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -cyrus-sasl-2.1.23-r7.ebuild:
+  Remove old.
 
   06 Jun 2015; Jason Zaman <perfinion@gentoo.org> cyrus-sasl-2.1.26-r9.ebuild:
   RDEP on selinux policy, bug 543568

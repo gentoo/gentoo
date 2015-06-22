@@ -1,10 +1,16 @@
 # ChangeLog for profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10145 2015/06/21 10:17:27 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10147 2015/06/22 10:41:14 grobian Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  22 Jun 2015; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Extend Exim 4.86 RC mask
+
+  22 Jun 2015; Patrice Clement <monsieurp@gentoo.org> package.mask:
+  Mask dev-java/mockmaker.
 
   21 Jun 2015; Ulrich Müller <ulm@gentoo.org> license_groups:
   Move wxWinLL-3.1 from OSI-APPROVED to MISC-FREE; it was erroneously added to

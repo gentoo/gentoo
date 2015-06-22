@@ -1,6 +1,10 @@
 # ChangeLog for dev-libs/libnfc
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libnfc/ChangeLog,v 1.13 2013/09/26 02:58:50 mrueg Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libnfc/ChangeLog,v 1.14 2015/06/22 11:35:45 mrueg Exp $
+
+  22 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -libnfc-1.2.1.ebuild,
+  -libnfc-1.3.4.ebuild:
+  Remove old.
 
 *libnfc-1.7.0-r1 (26 Sep 2013)
 

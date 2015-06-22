@@ -8,5 +8,5 @@ LICENSE=GPL-2+ LGPL-2.1+
 PDEPEND=>=net-wireless/bladerf-firmware-1.8.0 >=net-wireless/bladerf-fpga-0.1.2
 RDEPEND=>=dev-libs/libusb-1.0.16 tecla? ( dev-libs/libtecla )
 SLOT=0/9999
-_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	git-r3	3a2bd0ae504c33a50061885480f3def3	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	udev	da001465a2e939c93f7ae16947ce3438
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	git-r3	ab80045e5d080584334f33013f4df21d	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	udev	da001465a2e939c93f7ae16947ce3438
 _md5_=76452052162aed29c0dede48c1599770

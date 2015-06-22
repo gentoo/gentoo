@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16632 2015/06/20 23:36:11 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16634 2015/06/22 10:41:14 grobian Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -29,6 +29,11 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Patrice Clement <monsieurp@gentoo.org> (22 Jun 2015)
+# No update from upstream since 2002. This package might cause problems with
+# new JDKs. Removal in 30 days.
+dev-java/mockmaker
 
 # James Le Cuirot <chewi@gentoo.org> (20 Jun 2015)
 # Now part of eselect-java. Its continued presence has complicated
@@ -141,6 +146,7 @@ dev-lang/php:7.0
 # Release candidates for 4.86, feel free to test
 =mail-mta/exim-4.86_rc1
 =mail-mta/exim-4.86_rc2
+=mail-mta/exim-4.86_rc3
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (04 Jun 2015)
 # Perl 5.22 version bump in progress. Mask until everything is finishehd.

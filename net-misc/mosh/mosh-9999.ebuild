@@ -1,10 +1,10 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/mosh/mosh-9999.ebuild,v 1.14 2013/07/20 13:08:23 xmw Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/mosh/mosh-9999.ebuild,v 1.15 2015/06/22 07:45:48 mrueg Exp $
 
 EAPI=5
 
-inherit autotools bash-completion-r1 git-2
+inherit autotools git-r3
 
 DESCRIPTION="Mobile shell that supports roaming and intelligent local echo"
 HOMEPAGE="http://mosh.mit.edu"
@@ -33,7 +33,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--disable-completion \
+		--enable-completion \
 		$(use_enable client) \
 		$(use_enable server) \
 		$(use_enable examples) \
@@ -53,7 +53,4 @@ src_install() {
 		newbin ${myprog} ${PN}-$(basename ${myprog})
 		elog "${myprog} installed as ${PN}-$(basename ${myprog})"
 	done
-
-	# bug 477384
-	dobashcomp conf/bash_completion.d/mosh
 }

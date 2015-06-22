@@ -1,6 +1,12 @@
 # ChangeLog for dev-python/pyasn1
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyasn1/ChangeLog,v 1.79 2015/04/08 08:05:12 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyasn1/ChangeLog,v 1.80 2015/06/22 09:41:16 jlec Exp $
+
+*pyasn1-0.1.8 (22 Jun 2015)
+
+  22 Jun 2015; Justin Lecher <jlec@gentoo.org> +pyasn1-0.1.8.ebuild,
+  -pyasn1-0.1.6.ebuild:
+  Version Bump
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> pyasn1-0.1.6.ebuild,
   pyasn1-0.1.7.ebuild:

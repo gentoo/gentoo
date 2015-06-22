@@ -1,6 +1,12 @@
 # ChangeLog for net-irc/quassel
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/quassel/ChangeLog,v 1.205 2015/06/04 19:05:10 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/quassel/ChangeLog,v 1.207 2015/06/22 11:37:07 zlogene Exp $
+
+  22 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> quassel-0.12.2.ebuild:
+  x86 stable wrt bug #547884
+
+  22 Jun 2015; Agostino Sarubbo <ago@gentoo.org> quassel-0.12.2.ebuild:
+  Stable for amd64, wrt bug #547884
 
   04 Jun 2015; Michael Palimaka <kensington@gentoo.org>
   quassel-0.10.0-r1.ebuild, quassel-0.11.1.ebuild, quassel-0.12.2.ebuild,

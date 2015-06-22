@@ -1,6 +1,11 @@
 # ChangeLog for sys-fs/aufs4
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/aufs4/ChangeLog,v 1.6 2015/06/08 05:58:35 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/aufs4/ChangeLog,v 1.7 2015/06/22 08:07:15 jlec Exp $
+
+*aufs4-0_pre20150622 (22 Jun 2015)
+
+  22 Jun 2015; Justin Lecher <jlec@gentoo.org> +aufs4-0_pre20150622.ebuild:
+  Bump to latest aufs release
 
 *aufs4-0_pre20150608 (08 Jun 2015)
 

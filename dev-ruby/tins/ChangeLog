@@ -1,6 +1,11 @@
 # ChangeLog for dev-ruby/tins
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/tins/ChangeLog,v 1.50 2015/06/07 20:02:45 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/tins/ChangeLog,v 1.51 2015/06/22 09:38:02 mrueg Exp $
+
+*tins-1.5.4 (22 Jun 2015)
+
+  22 Jun 2015; Manuel Rüger <mrueg@gentoo.org> +tins-1.5.4.ebuild:
+  Version bump.
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

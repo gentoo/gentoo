@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pandas/pandas-0.16.2.ebuild,v 1.1 2015/06/15 20:07:45 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pandas/pandas-0.16.2.ebuild,v 1.2 2015/06/22 08:48:47 jlec Exp $
 
 EAPI=5
 
@@ -69,8 +69,8 @@ RDEPEND="${CDEPEND}
 		dev-python/xlrd[$(python_gen_usedep 'python2_7')]
 		dev-python/xlwt[$(python_gen_usedep 'python2_7')]
 		|| (
-			>=dev-python/openpyxl-1.6.1[${PYTHON_USEDEP}]
 			dev-python/xlsxwriter[${PYTHON_USEDEP}]
+			>=dev-python/openpyxl-1.6.1[${PYTHON_USEDEP}]
 		)
 	)
 	html? (

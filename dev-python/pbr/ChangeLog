@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/pbr
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pbr/ChangeLog,v 1.42 2015/06/09 22:11:37 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pbr/ChangeLog,v 1.43 2015/06/22 10:03:03 jlec Exp $
+
+*pbr-1.2.0 (22 Jun 2015)
+
+  22 Jun 2015; Justin Lecher <jlec@gentoo.org> +pbr-1.2.0.ebuild:
+  Version Bump
 
 *pbr-1.1.1 (09 Jun 2015)
 

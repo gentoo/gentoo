@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/markups
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/markups/ChangeLog,v 1.15 2015/06/03 20:19:33 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/markups/ChangeLog,v 1.16 2015/06/22 10:04:15 jlec Exp $
+
+*markups-0.6.3 (22 Jun 2015)
+
+  22 Jun 2015; Justin Lecher <jlec@gentoo.org> +markups-0.6.3.ebuild:
+  Version Bump
 
   03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add pypi to remote-id in metadata.xml

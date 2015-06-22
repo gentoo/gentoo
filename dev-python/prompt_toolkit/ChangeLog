@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/prompt_toolkit
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/prompt_toolkit/ChangeLog,v 1.8 2015/06/07 15:18:45 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/prompt_toolkit/ChangeLog,v 1.9 2015/06/22 09:51:39 jlec Exp $
+
+*prompt_toolkit-0.41 (22 Jun 2015)
+
+  22 Jun 2015; Justin Lecher <jlec@gentoo.org> +prompt_toolkit-0.41.ebuild:
+  Version Bump
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

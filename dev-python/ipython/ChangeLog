@@ -1,6 +1,16 @@
 # ChangeLog for dev-python/ipython
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/ipython/ChangeLog,v 1.173 2015/06/21 10:42:13 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/ipython/ChangeLog,v 1.174 2015/06/22 09:45:52 jlec Exp $
+
+*ipython-3.2.0 (22 Jun 2015)
+*ipython-2.2.0-r1 (22 Jun 2015)
+
+  22 Jun 2015; Justin Lecher <jlec@gentoo.org>
+  +files/ipython-2.2.0-login-backport.patch, +ipython-2.2.0-r1.ebuild,
+  +ipython-3.2.0.ebuild, -ipython-2.4.1.ebuild, -ipython-3.0.0.ebuild,
+  -ipython-3.1.0.ebuild:
+  Backport vulnerability fix, bug #552816; drop vulnerable versions; create
+  mathjax symlink USE dependent, bug #481726
 
   21 Jun 2015; Markus Meier <maekke@gentoo.org> ipython-3.1.0.ebuild:
   add ~arm, bug #541628

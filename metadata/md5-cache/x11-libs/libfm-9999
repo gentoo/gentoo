@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.18:2 gtk? ( >=x11-libs/gtk+-2.16:2 ) >=lxde-base/menu-cache-0.3.2:= x11-libs/libfm-extra !lxde-base/lxshortcut x11-misc/shared-mime-info automount? ( udisks? ( gnome-base/gvfs[udev,udisks] ) !udisks? ( gnome-base/gvfs[udev] ) ) exif? ( media-libs/libexif )
 REQUIRED_USE=udisks? ( automount ) doc? ( gtk )
 SLOT=0/4.3.0
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	git-r3	3a2bd0ae504c33a50061885480f3def3	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	vala	09bc7da1a93142c9eb90786e6f6b39d2
+_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	git-r3	ab80045e5d080584334f33013f4df21d	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	vala	09bc7da1a93142c9eb90786e6f6b39d2
 _md5_=b477be2f62d3b9e2dd57b7059685e5ed
