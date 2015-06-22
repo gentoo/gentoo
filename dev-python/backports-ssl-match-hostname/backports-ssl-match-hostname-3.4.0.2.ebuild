@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/backports-ssl-match-hostname/backports-ssl-match-hostname-3.4.0.2.ebuild,v 1.12 2015/04/08 08:05:26 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/backports-ssl-match-hostname/backports-ssl-match-hostname-3.4.0.2.ebuild,v 1.13 2015/06/22 07:30:06 jlec Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 pypy )
@@ -24,9 +24,10 @@ RDEPEND="dev-python/backports[${PYTHON_USEDEP}]"
 
 S=${WORKDIR}/${MY_P}
 
-src_prepare() {
+python_prepare_all() {
 	# prevent unnecessary docs from being installed in site-packages
 	mv src/backports/ssl_match_hostname/{LICENSE,README}.txt "${S}" || die
+	distutils-r1_python_prepare_all
 }
 
 python_install_all() {
@@ -38,5 +39,5 @@ python_install() {
 	distutils-r1_python_install
 
 	# main namespace provided by dev-python/backports
-	rm "${D}$(python_get_sitedir)"/backports/__init__.py* || die
+	rm "${ED}$(python_get_sitedir)"/backports/__init__.py* || die
 }

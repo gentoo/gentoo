@@ -5,5 +5,6 @@
 	<herd>python</herd>
 	<upstream>
 		<remote-id type="sourceforge">fonttools</remote-id>
+		<remote-id type="github">behdad/fonttools</remote-id>
 	</upstream>
 </pkgmetadata>

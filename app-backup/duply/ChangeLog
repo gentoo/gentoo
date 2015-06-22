@@ -1,6 +1,11 @@
 # ChangeLog for app-backup/duply
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/duply/ChangeLog,v 1.11 2015/06/09 09:03:15 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-backup/duply/ChangeLog,v 1.12 2015/06/22 07:22:52 jlec Exp $
+
+*duply-1.9.2 (22 Jun 2015)
+
+  22 Jun 2015; Justin Lecher <jlec@gentoo.org> +duply-1.9.2.ebuild:
+  Version Bump
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

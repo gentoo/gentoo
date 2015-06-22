@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/backports-shutil_get_terminal_size/backports-shutil_get_terminal_size-1.0.0.ebuild,v 1.1 2015/06/20 18:37:09 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/backports-shutil_get_terminal_size/backports-shutil_get_terminal_size-1.0.0-r1.ebuild,v 1.1 2015/06/22 07:25:50 jlec Exp $
 
 EAPI=5
 
@@ -20,4 +20,14 @@ LICENSE="MIT"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
-S="${WORKDIR}"/${MY_P}
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/backports[${PYTHON_USEDEP}]"
+
+S=${WORKDIR}/${MY_P}
+
+python_install() {
+	distutils-r1_python_install
+
+	# main namespace provided by dev-python/backports
+	rm "${ED}$(python_get_sitedir)"/backports/__init__.py* || die
+}

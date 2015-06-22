@@ -5,5 +5,6 @@
 	<upstream>
 		<remote-id type="google-code">pycolumnize</remote-id>
 		<remote-id type="pypi">columnize</remote-id>
+		<remote-id type="github">rocky/pycolumnize</remote-id>
 	</upstream>
 </pkgmetadata>
