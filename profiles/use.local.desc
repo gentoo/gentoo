@@ -6686,6 +6686,7 @@ sci-mathematics/polymake:lrs - Enable sci-libs/lrslib interface for convex hull 
 sci-mathematics/polymake:ppl - Enable dev-libs/ppl interface for convex hull computations.
 sci-mathematics/polymake:singular - Enable the interface to sci-mathematics/singular for ideal related computations.
 sci-mathematics/rstudio:server - Build and install the RStudio server
+sci-mathematics/rw:executable - Build the 'rw' program.
 sci-mathematics/singular:boost - Compile against external boost headers (dev-libs/boost)
 sci-mathematics/spass:isabelle - Add integration support for the Isabelle/HOL theorem prover.
 sci-mathematics/unuran:prng - Use sci-mathematics/prng library

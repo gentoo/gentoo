@@ -1,6 +1,17 @@
 # ChangeLog for app-misc/task
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/task/ChangeLog,v 1.54 2015/06/11 15:08:04 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/task/ChangeLog,v 1.56 2015/06/22 15:42:26 radhermit Exp $
+
+  22 Jun 2015; Tim Harder <radhermit@gentoo.org> -task-2.1.2.ebuild,
+  -task-2.2.0.ebuild, -task-2.3.0.ebuild, -task-2.3.0-r1.ebuild,
+  -task-2.4.0.ebuild, -task-2.4.1.ebuild,
+  -files/task-1.9.4-lua-automagic.patch, -files/task-2.0.0_beta4-rcdir.patch,
+  -files/task-2.3.0-gnutls-automagic.patch,
+  -files/task-2.3.0-issue-1473-rcdir-fix.patch:
+  Remove old.
+
+  22 Jun 2015; Tim Harder <radhermit@gentoo.org> task-2.4.4.ebuild:
+  Stabilize for amd64 and x86.
 
   11 Jun 2015; Agostino Sarubbo <ago@gentoo.org> task-2.3.0-r1.ebuild:
   Stable for amd64, wrt bug #534880

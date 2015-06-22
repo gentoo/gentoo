@@ -1,6 +1,12 @@
-# ChangeLog for kde-base/kwalletd
+# ChangeLog for kde-apps/kwalletd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-apps/kwalletd/ChangeLog,v 1.1 2015/06/04 18:44:42 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-apps/kwalletd/ChangeLog,v 1.2 2015/06/22 14:55:08 johu Exp $
+
+*kwalletd-4.14.3-r2 (22 Jun 2015)
+
+  22 Jun 2015; Johannes Huber <johu@gentoo.org>
+  +files/kwalletd-4.14.3-fix-random-open.patch, +kwalletd-4.14.3-r2.ebuild:
+  Revision bump adds upstream patch, bug #540790.
 
   18 Feb 2015; Johannes Huber <johu@gentoo.org> -kwalletd-4.14.3.ebuild:
   Remove old, bug #496768

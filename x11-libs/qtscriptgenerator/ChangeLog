@@ -1,6 +1,10 @@
 # ChangeLog for x11-libs/qtscriptgenerator
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/qtscriptgenerator/ChangeLog,v 1.31 2014/12/31 13:43:43 kensington Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/qtscriptgenerator/ChangeLog,v 1.32 2015/06/22 14:33:49 pesa Exp $
+
+  22 Jun 2015; Davide Pesavento <pesa@gentoo.org>
+  qtscriptgenerator-0.2.0.ebuild:
+  Switch to qmake-utils.eclass
 
   31 Dec 2014; Michael Palimaka <kensington@gentoo.org>
   qtscriptgenerator-0.2.0.ebuild:

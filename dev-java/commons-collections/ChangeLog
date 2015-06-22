@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/commons-collections
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-collections/ChangeLog,v 1.60 2015/06/21 11:19:31 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-collections/ChangeLog,v 1.61 2015/06/22 15:13:48 monsieurp Exp $
+
+  22 Jun 2015; Patrice Clement <monsieurp@gentoo.org>
+  commons-collections-3.2.1-r1.ebuild:
+  Add ant-junit to CDEPENDs to clear QA warning.
 
 *commons-collections-3.2.1-r1 (21 Jun 2015)
 

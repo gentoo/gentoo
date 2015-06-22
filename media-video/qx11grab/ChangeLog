@@ -1,6 +1,11 @@
 # ChangeLog for media-video/qx11grab
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/qx11grab/ChangeLog,v 1.44 2015/02/27 22:24:32 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/qx11grab/ChangeLog,v 1.45 2015/06/22 15:30:23 pesa Exp $
+
+*qx11grab-0.4.12 (22 Jun 2015)
+
+  22 Jun 2015; Davide Pesavento <pesa@gentoo.org> +qx11grab-0.4.12.ebuild:
+  Version bump.
 
   27 Feb 2015; Michał Górny <mgorny@gentoo.org> qx11grab-0.4.10-r1.ebuild:
   Use USE=libav to control ffmpeg/libav linking. Patch provided by Nikoli in

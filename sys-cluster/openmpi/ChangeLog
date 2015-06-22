@@ -1,6 +1,11 @@
 # ChangeLog for sys-cluster/openmpi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/openmpi/ChangeLog,v 1.135 2015/05/12 22:49:12 jsbronder Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/openmpi/ChangeLog,v 1.136 2015/06/22 15:32:40 jsbronder Exp $
+
+*openmpi-1.8.6 (22 Jun 2015)
+
+  22 Jun 2015; Justin Bronder <jsbronder@gentoo.org> +openmpi-1.8.6.ebuild:
+  bump
 
 *openmpi-1.8.5 (12 May 2015)
 

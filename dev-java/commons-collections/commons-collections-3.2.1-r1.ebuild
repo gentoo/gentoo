@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-collections/commons-collections-3.2.1-r1.ebuild,v 1.1 2015/06/21 11:19:31 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-collections/commons-collections-3.2.1-r1.ebuild,v 1.2 2015/06/22 15:13:48 monsieurp Exp $
 EAPI=5
 
 JAVA_PKG_IUSE="doc source test"
@@ -19,6 +19,7 @@ IUSE="test-framework"
 CDEPEND="
 	test-framework? (
 		dev-java/junit:0
+		dev-java/ant-junit:0
 	)
 	"
 DEPEND=">=virtual/jdk-1.6

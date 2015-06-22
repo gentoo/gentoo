@@ -1,13 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/qtscriptgenerator/qtscriptgenerator-0.2.0.ebuild,v 1.9 2014/12/31 13:43:43 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/qtscriptgenerator/qtscriptgenerator-0.2.0.ebuild,v 1.10 2015/06/22 14:33:49 pesa Exp $
 
 EAPI=4
 
-MY_PN="${PN}-src"
-MY_P="${MY_PN}-${PV}"
+inherit eutils qmake-utils
 
-inherit eutils multilib qt4-r2
+MY_P=${PN}-src-${PV}
 
 DESCRIPTION="Tool for generating Qt bindings for Qt Script"
 HOMEPAGE="http://code.google.com/p/qtscriptgenerator/"
@@ -19,8 +18,9 @@ KEYWORDS="amd64 ~arm ppc ~ppc64 x86"
 IUSE="debug kde"
 
 DEPEND="
+	dev-qt/designer:4
 	dev-qt/qtcore:4
-	|| ( ( >=dev-qt/qtgui-4.8.5:4 dev-qt/designer:4 ) <dev-qt/qtgui-4.8.5:4 )
+	dev-qt/qtgui:4
 	dev-qt/qtopengl:4
 	!kde? ( || (
 		dev-qt/qtphonon:4
@@ -35,9 +35,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PLUGINS="core gui network opengl sql svg uitools webkit xml xmlpatterns"
-
-S="${WORKDIR}/${MY_P}"
+S=${WORKDIR}/${MY_P}
 
 src_prepare() {
 	# remove phonon
@@ -45,28 +43,27 @@ src_prepare() {
 	sed -i "/qtscript_phonon/d" qtbindings/qtbindings.pro || die "sed failed"
 
 	use arm && epatch "${FILESDIR}"/${P}-arm.patch
-
-	qt4-r2_src_prepare
 }
 
 src_configure() {
-	cd "${S}"/generator
+	cd "${S}"/generator || die
 	eqmake4 generator.pro
-	cd "${S}"/qtbindings
+
+	cd "${S}"/qtbindings || die
 	eqmake4 qtbindings.pro
 }
 
 src_compile() {
-	cd "${S}"/generator
+	cd "${S}"/generator || die
 	emake
-	./generator --include-paths="/usr/include/qt4/" || die "running generator failed"
+	./generator --include-paths="$(qt4_get_headerdir)" || die
 
-	cd "${S}"/qtbindings
+	cd "${S}"/qtbindings || die
 	emake
 }
 
 src_install() {
-	insinto /usr/$(get_libdir)/qt4/plugins/script/
+	insinto "$(qt4_get_libdir)"/plugins/script
 	insopts -m0755
-	doins -r "${S}"/plugins/script/*
+	doins "${S}"/plugins/script/*
 }
