@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-base/xfconf/xfconf-4.12.0.ebuild,v 1.2 2015/05/01 12:51:57 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-base/xfconf/xfconf-4.12.0-r1.ebuild,v 1.1 2015/06/22 05:56:55 mgorny Exp $
 
 EAPI=5
 inherit xfconf
@@ -17,7 +17,10 @@ IUSE="debug perl"
 RDEPEND=">=dev-libs/dbus-glib-0.98
 	>=dev-libs/glib-2.30
 	>=xfce-base/libxfce4util-4.10
-	perl? ( dev-perl/glib-perl )"
+	perl? (
+		dev-lang/perl:=[-build(-)]
+		dev-perl/glib-perl
+	)"
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	virtual/pkgconfig
@@ -25,7 +28,7 @@ DEPEND="${RDEPEND}
 	perl? (
 		dev-perl/ExtUtils-Depends
 		dev-perl/extutils-pkgconfig
-		)"
+	)"
 
 pkg_setup() {
 	XFCONF=(
@@ -33,7 +36,6 @@ pkg_setup() {
 		$(xfconf_use_debug)
 		$(use_enable debug checks)
 		--with-perl-options=INSTALLDIRS=vendor
-		--with-html-dir="${EPREFIX}"/usr/share/doc/${PF}/html
 		)
 
 	[[ ${CHOST} == *-darwin* ]] && XFCONF+=( --disable-visibility ) #366857

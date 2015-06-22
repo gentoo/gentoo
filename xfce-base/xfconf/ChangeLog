@@ -1,6 +1,12 @@
 # ChangeLog for xfce-base/xfconf
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-base/xfconf/ChangeLog,v 1.79 2015/05/01 12:51:57 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-base/xfconf/ChangeLog,v 1.80 2015/06/22 05:56:55 mgorny Exp $
+
+*xfconf-4.12.0-r1 (22 Jun 2015)
+
+  22 Jun 2015; Michał Górny <mgorny@gentoo.org> +xfconf-4.12.0-r1.ebuild,
+  -xfconf-4.12.0.ebuild:
+  Add proper perl dep, bug #552790. Fix gtk-doc install path.
 
   01 May 2015; Andreas K. Huettel <dilfridge@gentoo.org> xfconf-4.10.0.ebuild,
   xfconf-4.12.0.ebuild:
