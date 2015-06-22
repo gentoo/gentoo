@@ -6495,7 +6495,6 @@ sci-libs/cgnslib:legacy - Enable or disable building legacy code (3.0 compatible
 sci-libs/chemkit:applications - Build also applications not only the libraries
 sci-libs/cholmod:cuda - Use nvidia cuda toolkit for speeding up computations
 sci-libs/cholmod:metis - Enable the Partition module to cholmod using sci-libs/metis
-sci-libs/cholmod:supernodal - Enable the Supernodal module (needs virtual/lapack)
 sci-libs/coinor-bonmin:glpk - Undocumented USE
 sci-libs/coinor-clp:glpk - Enable GNU Linear Programming Kit sci-mathematics/glpk support
 sci-libs/coinor-clp:metis - Enable partitioning with sci-libs/metis

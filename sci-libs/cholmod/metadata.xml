@@ -9,6 +9,5 @@
   <use>
     <flag name="cuda">Use nvidia cuda toolkit for speeding up computations</flag>
     <flag name="metis">Enable the Partition module to cholmod using <pkg>sci-libs/metis</pkg></flag>
-    <flag name="supernodal">Enable the Supernodal module (needs <pkg>virtual/lapack</pkg>)</flag>
   </use>
 </pkgmetadata>
