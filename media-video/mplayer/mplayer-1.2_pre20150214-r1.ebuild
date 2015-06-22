@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer/mplayer-1.2_pre20150214-r1.ebuild,v 1.1 2015/06/13 11:08:02 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer/mplayer-1.2_pre20150214-r1.ebuild,v 1.2 2015/06/22 19:02:59 pacho Exp $
 
 EAPI=5
 
@@ -60,7 +60,7 @@ RDEPEND+="
 	sys-libs/ncurses
 	app-arch/bzip2
 	sys-libs/zlib
-	>=media-video/ffmpeg-2.0:0
+	>=media-video/ffmpeg-2.0:0=
 	a52? ( media-libs/a52dec )
 	aalib? ( media-libs/aalib )
 	alsa? ( media-libs/alsa-lib )

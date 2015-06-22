@@ -1,6 +1,9 @@
 # ChangeLog for dev-util/ninja
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/ninja/ChangeLog,v 1.41 2015/04/08 17:54:03 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/ninja/ChangeLog,v 1.42 2015/06/22 19:11:12 pacho Exp $
+
+  22 Jun 2015; Pacho Ramos <pacho@gentoo.org> ninja-1.5.3.ebuild:
+  ppc keyword, bug #552806
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> ninja-1.4.0.ebuild,
   ninja-1.5.1.ebuild, ninja-1.5.3.ebuild:

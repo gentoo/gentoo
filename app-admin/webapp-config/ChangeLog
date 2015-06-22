@@ -1,6 +1,9 @@
 # ChangeLog for app-admin/webapp-config
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/webapp-config/ChangeLog,v 1.133 2015/06/21 20:14:50 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/webapp-config/ChangeLog,v 1.134 2015/06/22 19:24:29 twitch153 Exp $
+
+  22 Jun 2015; Devan Franchini <twitch153@gentoo.org> webapp-config-9999.ebuild:
+  Updates to git-r3 eclass
 
   21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> webapp-config-1.53-r2.ebuild:
   alpha stable wrt bug #530260
