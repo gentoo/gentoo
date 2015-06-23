@@ -1,6 +1,10 @@
 # ChangeLog for dev-python/psycopg
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/psycopg/ChangeLog,v 1.206 2015/06/18 06:54:06 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/psycopg/ChangeLog,v 1.207 2015/06/23 09:35:03 mrueg Exp $
+
+  23 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -psycopg-1.1.21.ebuild,
+  -psycopg-2.5.1.ebuild, -psycopg-2.5.2.ebuild:
+  Remove old.
 
 *psycopg-2.6.1 (18 Jun 2015)
 

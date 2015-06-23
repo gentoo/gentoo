@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/pycryptopp
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pycryptopp/ChangeLog,v 1.10 2015/04/08 08:05:09 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pycryptopp/ChangeLog,v 1.11 2015/06/23 09:36:19 mrueg Exp $
+
+  23 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -pycryptopp-0.5.29.ebuild:
+  Remove old.
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> pycryptopp-0.6.0.ebuild:
   Drop old Python implementations

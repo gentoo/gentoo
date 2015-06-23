@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/paste
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/paste/ChangeLog,v 1.31 2015/06/17 07:31:59 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/paste/ChangeLog,v 1.32 2015/06/23 09:33:09 mrueg Exp $
+
+  23 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -paste-1.7.5.1.ebuild:
+  Remove old.
 
   17 Jun 2015; Agostino Sarubbo <ago@gentoo.org> paste-2.0.2.ebuild:
   Stable for x86, wrt bug #405821

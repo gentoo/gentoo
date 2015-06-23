@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/mecab-python
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/mecab-python/ChangeLog,v 1.28 2015/05/15 06:59:09 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/mecab-python/ChangeLog,v 1.29 2015/06/23 09:31:59 mrueg Exp $
+
+  23 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -mecab-python-0.98.ebuild:
+  Remove old.
 
   15 May 2015; Pacho Ramos <pacho@gentoo.org> mecab-python-0.996.ebuild:
   amd64 stable, bug #530964

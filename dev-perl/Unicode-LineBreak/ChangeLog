@@ -1,6 +1,12 @@
 # ChangeLog for dev-perl/Unicode-LineBreak
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Unicode-LineBreak/ChangeLog,v 1.5 2014/07/01 00:06:07 mrueg Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Unicode-LineBreak/ChangeLog,v 1.6 2015/06/23 09:55:46 mrueg Exp $
+
+*Unicode-LineBreak-2015.60.0 (23 Jun 2015)
+
+  23 Jun 2015; Manuel Rüger <mrueg@gentoo.org>
+  +Unicode-LineBreak-2015.60.0.ebuild:
+  Version bump.
 
 *Unicode-LineBreak-2014.60.0 (01 Jul 2014)
 

@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/python-gudev
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/python-gudev/ChangeLog,v 1.15 2015/06/16 12:30:45 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-gudev/ChangeLog,v 1.16 2015/06/23 09:42:42 mrueg Exp $
+
+  23 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -python-gudev-147.2.ebuild:
+  Remove old.
 
   16 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> python-gudev-147.2-r1.ebuild:
   amd64/x86 stable wrt bug #529446

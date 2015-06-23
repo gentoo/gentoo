@@ -1,6 +1,12 @@
 # ChangeLog for net-firewall/firewalld
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/firewalld/ChangeLog,v 1.19 2015/05/27 11:15:52 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/firewalld/ChangeLog,v 1.20 2015/06/23 09:32:25 tamiko Exp $
+
+*firewalld-0.3.14.2 (23 Jun 2015)
+
+  23 Jun 2015; Matthias Maier <tamiko@gentoo.org> +firewalld-0.3.14.2.ebuild,
+  -firewalld-0.2.12.ebuild, -firewalld-0.2.9-r1.ebuild:
+  cleanup; version bump, thanks to Denis Schridde, bug #552832
 
   27 May 2015; Agostino Sarubbo <ago@gentoo.org> firewalld-0.3.10.ebuild:
   Stable for x86, wrt bug #549270
