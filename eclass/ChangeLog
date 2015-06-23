@@ -1,6 +1,12 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1678 2015/06/22 14:18:19 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1679 2015/06/23 18:59:43 williamh Exp $
+
+  23 Jun 2015; William Hubbs <williamh@gentoo.org> golang-vcs.eclass:
+  The GOPATH environment variable is now passed directly to the
+  commands that need it.
+  The correct directory of source files is copied to the correct
+  location under ${S}.
 
   22 Jun 2015; Davide Pesavento <pesa@gentoo.org> qmake-utils.eclass:
   Introduce qt{4,5}_get_libdir().

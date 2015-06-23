@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/golang-vcs.eclass,v 1.2 2015/06/18 15:19:04 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/golang-vcs.eclass,v 1.3 2015/06/23 18:59:43 williamh Exp $
 
 # @ECLASS: golang-vcs.eclass
 # @MAINTAINER:
@@ -50,7 +50,7 @@ DEPEND=">=dev-lang/go-1.4.2"
 #
 # Example:
 # @CODE
-# EGO_PN="github.com/user/repository/package"
+# EGO_PN="github.com/user/repository/..."
 # EGO_SRC="github.com/user/repository"
 # @CODE
 
@@ -79,7 +79,7 @@ DEPEND=">=dev-lang/go-1.4.2"
 # @FUNCTION: _golang-vcs_env_setup
 # @INTERNAL
 # @DESCRIPTION:
-# Create EGO_STORE_DIR if necessary and set GOPATH.
+# Create EGO_STORE_DIR if necessary.
 _golang-vcs_env_setup() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -96,7 +96,6 @@ _golang-vcs_env_setup() {
 	fi
 
 	addwrite "${EGO_STORE_DIR}"
-	export GOPATH="${EGO_STORE_DIR}"
 
 	[[ -n ${EVCS_UMASK} ]] && eumask_pop
 	mkdir -p "${WORKDIR}/${P}/src" ||
@@ -118,32 +117,26 @@ _golang-vcs_fetch() {
 	[[ -z ${EGO_PN} ]] &&
 		die "${ECLASS}: EGO_PN is not set"
 
-	if [[ -n ${EVCS_OFFLINE} ]]; then
-		export GOPATH="${WORKDIR}/${P}:${GOPATH}"
-		return 0
+	if [[ -z ${EVCS_OFFLINE} ]]; then
+		[[ -n ${EVCS_UMASK} ]] && eumask_push ${EVCS_UMASK}
+
+		set -- env GOPATH="${EGO_STORE_DIR}" go get -d -t -u -v -x "${EGO_PN}"
+		echo "$@"
+		"$@" || die
+		# The above dies if you pass repositories in EGO_PN instead of
+		# packages, e.g. golang.org/x/tools instead of golang.org/x/tools/cmd/vet.
+		# This is being discussed in the following upstream issue:
+		# https://github.com/golang/go/issues/11090
+
+		[[ -n ${EVCS_UMASK} ]] && eumask_pop
 	fi
-
-	[[ -n ${EVCS_UMASK} ]] && eumask_push ${EVCS_UMASK}
-
-	set -- go get -d -t -u -v -x "${EGO_PN}"
+	set -- mkdir -p "${WORKDIR}/${P}/src/${EGO_SRC%/*}"
 	echo "$@"
-	"$@" || die
-	# The above dies if you pass repositories in EGO_PN instead of
-	# packages, e.g. golang.org/x/tools instead of golang.org/x/tools/cmd/vet.
-	# This is being discussed in the following upstream issue:
-	# https://github.com/golang/go/issues/11090
-	# I am hoping this will be fixed so "go get -d" is successful if
-	# downloading the top level repository is successful.
-
-	[[ -n ${EVCS_UMASK} ]] && eumask_pop
-	export GOPATH="${WORKDIR}/${P}:${EGO_STORE_DIR}"
-	set -- mkdir -p "${WORKDIR}/${P}/src/${EGO_SRC}"
+	"$@" || die "Unable to create ${WORKDIR}/${P}/src"
+	set -- cp -r	"${EGO_STORE_DIR}/src/${EGO_SRC}" \
+		"${WORKDIR}/${P}/src/${EGO_SRC%/*}"
 	echo "$@"
-	"$@" || die "Unable to create ${WORKDIR}/${P}/src/${EGO_SRC}"
-	set -- cp -r "${EGO_STORE_DIR}/src/${EGO_SRC}/*" \
-		"${WORKDIR}/${P}/src/${EGO_SRC}"
-	echo "$@"
-	$@ || die "Unable to copy sources to ${WORKDIR}/${P}"
+	"$@" || die "Unable to copy sources to ${WORKDIR}/${P}"
 	return 0
 }
 
