@@ -1,6 +1,13 @@
 # ChangeLog for dev-python/libvirt-python
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/libvirt-python/ChangeLog,v 1.39 2015/06/20 18:27:14 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/libvirt-python/ChangeLog,v 1.41 2015/06/23 11:02:04 tamiko Exp $
+
+  23 Jun 2015; Matthias Maier <tamiko@gentoo.org> -libvirt-python-1.2.10.ebuild,
+  -libvirt-python-1.2.12.ebuild, -libvirt-python-1.2.14.ebuild:
+  cleanup
+
+  23 Jun 2015; Agostino Sarubbo <ago@gentoo.org> libvirt-python-1.2.15.ebuild:
+  Stable for x86, wrt bug #552272
 
   20 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> libvirt-python-1.2.15.ebuild:
   amd64 stable wrt bug #552272

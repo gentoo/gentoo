@@ -1,6 +1,16 @@
 # ChangeLog for app-emulation/libvirt
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/ChangeLog,v 1.430 2015/06/20 18:26:49 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/ChangeLog,v 1.432 2015/06/23 10:42:51 tamiko Exp $
+
+  23 Jun 2015; Matthias Maier <tamiko@gentoo.org>
+  -files/libvirt-1.2.9-fix-firewalld-configuration.patch,
+  -files/libvirtd.init-r13, -files/virtlockd.init, -libvirt-1.2.10-r4.ebuild,
+  -libvirt-1.2.10-r6.ebuild, -libvirt-1.2.12-r2.ebuild, -libvirt-1.2.12.ebuild,
+  -libvirt-1.2.14-r2.ebuild, -libvirt-1.2.14-r3.ebuild:
+  cleanup
+
+  23 Jun 2015; Agostino Sarubbo <ago@gentoo.org> libvirt-1.2.15-r1.ebuild:
+  Stable for x86, wrt bug #552272
 
   20 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> libvirt-1.2.10-r6.ebuild,
   libvirt-1.2.12-r2.ebuild, libvirt-1.2.14-r2.ebuild, libvirt-1.2.14-r3.ebuild,
