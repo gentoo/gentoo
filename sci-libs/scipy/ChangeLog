@@ -1,6 +1,14 @@
 # ChangeLog for sci-libs/scipy
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/scipy/ChangeLog,v 1.129 2015/05/13 06:56:26 jmorgan Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/scipy/ChangeLog,v 1.130 2015/06/23 06:21:12 jlec Exp $
+
+  23 Jun 2015; Justin Lecher <jlec@gentoo.org>
+  -files/scipy-0.12.0-cephes-missing-include.patch,
+  -files/scipy-0.12.0-gerqf.patch,
+  -files/scipy-0.14.0-cython-0.22-backport.patch,
+  -files/scipy-0.14.0-lsqr-backport.patch, -scipy-0.14.0-r1.ebuild,
+  -scipy-0.15.0.ebuild:
+  Clean old
 
   13 May 2015; Jack Morgan <jmorgan@gentoo.org> scipy-0.15.1.ebuild:
   ppc64 stable wrt bug #545936

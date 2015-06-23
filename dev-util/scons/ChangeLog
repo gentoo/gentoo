@@ -1,6 +1,11 @@
 # ChangeLog for dev-util/scons
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/scons/ChangeLog,v 1.157 2015/04/08 17:54:03 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/scons/ChangeLog,v 1.158 2015/06/23 06:19:58 patrick Exp $
+
+*scons-2.3.5 (23 Jun 2015)
+
+  23 Jun 2015; Patrick Lauer <patrick@gentoo.org> +scons-2.3.5.ebuild:
+  Bump
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> scons-2.3.0.ebuild,
   scons-2.3.1-r1.ebuild, scons-2.3.1.ebuild:

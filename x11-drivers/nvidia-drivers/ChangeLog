@@ -1,6 +1,9 @@
 # ChangeLog for x11-drivers/nvidia-drivers
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/nvidia-drivers/ChangeLog,v 1.625 2015/06/18 04:48:48 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/nvidia-drivers/ChangeLog,v 1.626 2015/06/23 06:09:05 jer Exp $
+
+  23 Jun 2015; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-352.21.ebuild:
+  Raise kernel compatibility to <4.2.
 
 *nvidia-drivers-352.21 (18 Jun 2015)
 
