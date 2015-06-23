@@ -1,6 +1,9 @@
 # ChangeLog for net-analyzer/linkchecker
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/linkchecker/ChangeLog,v 1.102 2015/06/04 11:57:25 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/linkchecker/ChangeLog,v 1.103 2015/06/23 09:01:10 ago Exp $
+
+  23 Jun 2015; Agostino Sarubbo <ago@gentoo.org> linkchecker-9.3-r1.ebuild:
+  Stable for amd64, wrt bug #552822
 
   04 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add pypi to remote-id in metadata.xml

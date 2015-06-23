@@ -1,6 +1,10 @@
 # ChangeLog for dev-python/apsw
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/apsw/ChangeLog,v 1.77 2015/06/06 19:57:14 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/apsw/ChangeLog,v 1.78 2015/06/23 09:27:19 mrueg Exp $
+
+  23 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -apsw-3.7.13.1.ebuild,
+  -apsw-3.8.5_p1.ebuild:
+  Remove old.
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

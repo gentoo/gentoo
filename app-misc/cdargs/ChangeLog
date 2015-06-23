@@ -1,6 +1,9 @@
 # ChangeLog for app-misc/cdargs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/cdargs/ChangeLog,v 1.22 2015/06/22 11:41:52 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/cdargs/ChangeLog,v 1.23 2015/06/23 09:01:34 ago Exp $
+
+  23 Jun 2015; Agostino Sarubbo <ago@gentoo.org> cdargs-1.35-r2.ebuild:
+  Stable for amd64, wrt bug #552752
 
   22 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> cdargs-1.35-r2.ebuild:
   x86 stable wrt bug #552752

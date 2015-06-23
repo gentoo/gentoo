@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/pyfltk
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyfltk/ChangeLog,v 1.43 2015/06/09 16:11:01 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyfltk/ChangeLog,v 1.44 2015/06/23 09:25:03 mrueg Exp $
+
+  23 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -pyfltk-1.3.0.ebuild:
+  Remove old.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

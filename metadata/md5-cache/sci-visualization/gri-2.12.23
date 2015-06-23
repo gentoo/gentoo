@@ -3,11 +3,11 @@ DEPEND=>=sci-libs/netcdf-4 virtual/latex-base || ( media-gfx/imagemagick[png] me
 DESCRIPTION=Language for scientific graphics programming
 EAPI=5
 HOMEPAGE=http://gri.sourceforge.net/
-IUSE=doc emacs examples
+IUSE=doc emacs examples hdf5
 KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=>=sci-libs/netcdf-4 virtual/latex-base || ( media-gfx/imagemagick[png] media-gfx/graphicsmagick[png,imagemagick] ) app-text/ghostscript-gpl emacs? ( virtual/emacs )
 SLOT=0
 SRC_URI=mirror://sourceforge/gri/gri-2.12.23.tar.gz
 _eclasses_=elisp-common	9a16929c1a6aec7e1c903289983e114c	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=1c43fffbab8c61d33cca192ea6690c56
+_md5_=8a989e7ba57a89c7eaaf08c07221910a

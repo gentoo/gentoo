@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-radio/xlog/xlog-2.0.13.ebuild,v 1.1 2015/05/02 06:54:36 tomjbe Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-radio/xlog/xlog-2.0.13.ebuild,v 1.2 2015/06/23 09:01:04 ago Exp $
 
 EAPI=4
 
@@ -13,7 +13,7 @@ SRC_URI="http://download.savannah.gnu.org/releases/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 RDEPEND="media-libs/hamlib

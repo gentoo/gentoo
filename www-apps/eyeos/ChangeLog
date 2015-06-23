@@ -1,6 +1,9 @@
 # ChangeLog for www-apps/eyeos
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/eyeos/ChangeLog,v 1.13 2012/07/05 17:09:15 voyageur Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/eyeos/ChangeLog,v 1.14 2015/06/23 09:17:43 voyageur Exp $
+
+  23 Jun 2015; Bernard Cafarelli <voyageur@gentoo.org> eyeos-2.5.ebuild:
+  Remove deprecated depend.php, bug #552864
 
   19 Jun 2012; Bernard Cafarelli <voyageur@gentoo.org> -eyeos-2.4.ebuild,
   -eyeos-2.4.1.ebuild:

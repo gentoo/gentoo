@@ -1,6 +1,9 @@
 # ChangeLog for sci-visualization/gri
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-visualization/gri/ChangeLog,v 1.13 2015/06/22 12:56:09 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-visualization/gri/ChangeLog,v 1.14 2015/06/23 09:06:46 jlec Exp $
+
+  23 Jun 2015; Justin Lecher <jlec@gentoo.org> gri-2.12.23.ebuild:
+  Add missing USE=hdf5, bug #552912
 
   22 Jun 2015; Justin Lecher <jlec@gentoo.org>
   +files/gri-2.12.23-texinfo5.patch, gri-2.12.23.ebuild:

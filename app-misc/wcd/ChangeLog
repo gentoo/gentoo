@@ -1,6 +1,9 @@
 # ChangeLog for app-misc/wcd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/wcd/ChangeLog,v 1.32 2015/05/27 16:46:05 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/wcd/ChangeLog,v 1.33 2015/06/23 09:01:19 ago Exp $
+
+  23 Jun 2015; Agostino Sarubbo <ago@gentoo.org> wcd-5.2.7.ebuild:
+  Stable for amd64, wrt bug #552810
 
   27 May 2015; Justin Lecher <jlec@gentoo.org> -files/wcd-5.2.4-gentoo.patch:
   Drop old patches

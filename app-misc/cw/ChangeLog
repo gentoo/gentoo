@@ -1,6 +1,12 @@
 # ChangeLog for app-misc/cw
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/cw/ChangeLog,v 1.36 2015/06/22 11:43:24 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/cw/ChangeLog,v 1.38 2015/06/23 09:08:07 jlec Exp $
+
+  23 Jun 2015; Justin Lecher <jlec@gentoo.org> -cw-1.0.16-r2.ebuild:
+  Cleaned old
+
+  23 Jun 2015; Agostino Sarubbo <ago@gentoo.org> cw-1.0.16-r3.ebuild:
+  Stable for amd64, wrt bug #552758
 
   22 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> cw-1.0.16-r3.ebuild:
   x86 stable wrt bug #552758

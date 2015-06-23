@@ -1,6 +1,10 @@
 # ChangeLog for dev-python/codetools
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/codetools/ChangeLog,v 1.19 2015/03/08 23:42:05 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/codetools/ChangeLog,v 1.20 2015/06/23 09:29:45 mrueg Exp $
+
+  23 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -codetools-4.1.0-r1.ebuild,
+  -codetools-4.1.0.ebuild, -files/codetools-4.0.0-test.patch:
+  Remove old.
 
   08 Mar 2015; Pacho Ramos <pacho@gentoo.org> codetools-4.2.0.ebuild:
   x86 stable, bug 540290

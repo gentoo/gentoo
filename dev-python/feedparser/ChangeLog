@@ -1,6 +1,10 @@
 # ChangeLog for dev-python/feedparser
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/feedparser/ChangeLog,v 1.64 2015/06/02 05:10:35 jmorgan Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/feedparser/ChangeLog,v 1.65 2015/06/23 09:24:24 mrueg Exp $
+
+  23 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -feedparser-5.1.3-r1.ebuild,
+  -feedparser-5.1.3.ebuild:
+  Remove old.
 
   02 Jun 2015; Jack Morgan <jmorgan@gentoo.org> feedparser-5.1.3-r2.ebuild:
   sparc stable wrt bug #540290

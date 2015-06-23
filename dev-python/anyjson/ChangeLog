@@ -1,6 +1,10 @@
 # ChangeLog for dev-python/anyjson
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/anyjson/ChangeLog,v 1.17 2015/06/07 19:17:07 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/anyjson/ChangeLog,v 1.18 2015/06/23 09:26:29 mrueg Exp $
+
+  23 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -anyjson-0.2.4.ebuild,
+  -anyjson-0.3.3.ebuild:
+  Remove old.
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add bitbucket to remote-id in metadata.xml

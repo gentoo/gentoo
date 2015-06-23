@@ -1,9 +1,9 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/eyeos/eyeos-2.5.ebuild,v 1.1 2011/05/23 08:36:57 voyageur Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/eyeos/eyeos-2.5.ebuild,v 1.2 2015/06/23 09:17:43 voyageur Exp $
 
-EAPI="4"
-inherit depend.php webapp eutils
+EAPI=5
+inherit webapp eutils
 
 DESCRIPTION="AJAX web-based desktop environment"
 HOMEPAGE="http://www.eyeos.org"
@@ -14,11 +14,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
-need_httpd_cgi
-need_php_httpd
-
-# http://wiki.eyeos.org/EyeOS_Requirements
-RDEPEND="dev-lang/php[curl,crypt,gd,json,mysql,mysqli,pdo,sharedmem,sqlite]"
+RDEPEND="dev-lang/php[curl,crypt,gd,json,mysql,mysqli,pdo,sharedmem,sqlite]
+	virtual/httpd-php"
 
 S=${WORKDIR}
 
