@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/objenesis/objenesis-1.3.ebuild,v 1.2 2014/08/10 20:21:56 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/objenesis/objenesis-1.3.ebuild,v 1.4 2015/06/23 15:25:25 ago Exp $
 
 EAPI=5
 
@@ -14,7 +14,7 @@ SRC_URI="http://${PN}.googlecode.com/files/${P}-bin.zip"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND=">=virtual/jre-1.5"

@@ -1,6 +1,14 @@
 # ChangeLog for dev-java/httpcomponents-core
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/httpcomponents-core/ChangeLog,v 1.4 2015/06/19 16:42:19 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/httpcomponents-core/ChangeLog,v 1.6 2015/06/23 15:25:18 ago Exp $
+
+  23 Jun 2015; Agostino Sarubbo <ago@gentoo.org>
+  httpcomponents-core-4.4.1.ebuild:
+  Stable for x86, wrt bug #520200
+
+  23 Jun 2015; Agostino Sarubbo <ago@gentoo.org>
+  httpcomponents-core-4.4.1.ebuild:
+  Stable for amd64, wrt bug #520200
 
 *httpcomponents-core-4.4.1 (19 Jun 2015)
 
