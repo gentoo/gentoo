@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/ca-certificates/ca-certificates-20141019.3.19.ebuild,v 1.2 2015/06/14 17:45:23 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/ca-certificates/ca-certificates-20141019.3.19.ebuild,v 1.3 2015/06/23 17:09:44 vapier Exp $
 
 # The Debian ca-certificates package merely takes the CA database as it exists
 # in the nss package and repackages it for use by openssl.
@@ -68,10 +68,10 @@ if ${PRECOMPILED} ; then
 		kernel_AIX? ( app-arch/deb2targz )
 		!<sys-apps/portage-2.1.10.41"
 fi
-# openssl: we run `c_rehash`
+# openssl: we run `c_rehash`; newer version for alt-cert-paths #552540
 # debianutils: we run `run-parts`
 RDEPEND="${DEPEND}
-	dev-libs/openssl
+	>=dev-libs/openssl-1.0.1o
 	sys-apps/debianutils"
 
 if ! ${PRECOMPILED}; then

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/youtube-dl/youtube-dl-2015.06.15.ebuild,v 1.1 2015/06/15 04:18:04 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/youtube-dl/youtube-dl-2015.06.15-r1.ebuild,v 1.1 2015/06/23 17:25:29 jer Exp $
 
 EAPI=5
 
@@ -42,13 +42,28 @@ src_prepare() {
 			pornhub
 		)
 		# do single line imports
-		sed -i -e $( printf '/%s/d;' ${xxx[@]} ) youtube_dl/extractor/__init__.py || die
-		# do multiple line imports
-		sed -i -e $( printf '/%s/,/)/d;' ${mxxx[@]} ) youtube_dl/extractor/__init__.py || die
+		sed -i \
+			-e $( printf '/%s/d;' ${xxx[@]} ) \
+			youtube_dl/extractor/__init__.py \
+			|| die
 
-		rm $( printf 'youtube_dl/extractor/%s.py ' ${xxx[@]} ) \
+		# do multiple line imports
+		sed -i \
+			-e $( printf '/%s/,/)/d;' ${mxxx[@]} ) \
+			youtube_dl/extractor/__init__.py \
+			|| die
+
+		sed -i \
+			-e $( printf '/%s/d;' ${mxxx[@]} ) \
+			youtube_dl/extractor/generic.py \
+			youtube_dl/extractor/tumblr.py \
+			|| die
+
+		rm \
+			$( printf 'youtube_dl/extractor/%s.py ' ${xxx[@]} ) \
 			$( printf 'youtube_dl/extractor/%s.py ' ${mxxx[@]} ) \
-			test/test_age_restriction.py || die
+			test/test_age_restriction.py \
+			|| die
 	fi
 
 	epatch_user

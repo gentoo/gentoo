@@ -1,6 +1,11 @@
 # ChangeLog for sys-kernel/linux-headers
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/linux-headers/ChangeLog,v 1.439 2015/04/21 18:41:13 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/linux-headers/ChangeLog,v 1.440 2015/06/23 16:55:47 vapier Exp $
+
+*linux-headers-4.1 (23 Jun 2015)
+
+  23 Jun 2015; Mike Frysinger <vapier@gentoo.org> +linux-headers-4.1.ebuild:
+  Version bump.
 
   21 Apr 2015; Mike Frysinger <vapier@gentoo.org> linux-headers-4.0.ebuild:
   Fix mips asm/siginfo.h and add test to prevent it in the future.
