@@ -1,12 +1,12 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/phodav/phodav-2.0-r1.ebuild,v 1.1 2015/06/08 22:01:37 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/phodav/phodav-2.0-r1.ebuild,v 1.2 2015/06/23 11:52:00 eva Exp $
 
 EAPI="5"
 GCONF_DEBUG="no"
 GNOME2_LA_PUNT="yes"
 
-inherit gnome2 systemd udev
+inherit autotools gnome2 systemd udev
 
 DESCRIPTION="WebDav server implementation using libsoup"
 HOMEPAGE="https://wiki.gnome.org/phodav"
@@ -32,9 +32,6 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	# Make doc parallel installable
 	cd "${S}"/doc/reference
-	sed -e "s/\(DOC_MODULE.*=\).*/\1${PN}-${SLOT}/" \
-		-e "s/\(DOC_MAIN_SGML_FILE.*=\).*/\1${PN}-docs-${SLOT}.sgml/" \
-		-i Makefile.am Makefile.in || die
 	sed -e "s/\(<book.*name=\"\)${PN}/\1${PN}-${SLOT}/" \
 		-i html/${PN}.devhelp2 || die
 	mv ${PN}-docs{,-${SLOT}}.sgml || die
@@ -42,6 +39,10 @@ src_prepare() {
 	mv ${PN}-sections{,-${SLOT}}.txt || die
 	mv html/${PN}{,-${SLOT}}.devhelp2
 	cd "${S}"
+
+	# Fix locale slottability, from master
+	epatch "${FILESDIR}"/${P}-slot.patch
+	eautoreconf
 
 	gnome2_src_prepare
 }

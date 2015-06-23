@@ -1,0 +1,39 @@
+From 65b410ddd9b6a797eb54c865e6365365604bc847 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@gmail.com>
+Date: Tue, 24 Feb 2015 22:41:39 +0100
+Subject: [PATCH] Add version prefix to gettext and doc directories
+
+---
+ configure.ac              | 2 +-
+ doc/reference/Makefile.am | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 0fe907e..d87524e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -55,7 +55,7 @@ gl_WARN_ADD([-Wno-sign-compare])
+ gl_WARN_ADD([-Wno-unused-parameter])
+ gl_WARN_ADD([-Wno-missing-field-initializers])
+ 
+-GETTEXT_PACKAGE=phodav
++GETTEXT_PACKAGE=phodav-2.0
+ AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, ["$GETTEXT_PACKAGE"], [Define to the Gettext package name])
+ AC_SUBST(GETTEXT_PACKAGE)
+ IT_PROG_INTLTOOL([0.40.0])
+diff --git a/doc/reference/Makefile.am b/doc/reference/Makefile.am
+index dfad455..c89ab35 100644
+--- a/doc/reference/Makefile.am
++++ b/doc/reference/Makefile.am
+@@ -1,7 +1,7 @@
+ NULL =
+ AUTOMAKE_OPTIONS = 1.6
+ 
+-DOC_MODULE = phodav
++DOC_MODULE = phodav-2.0
+ DOC_MAIN_SGML_FILE = $(DOC_MODULE)-docs.sgml
+ DOC_SOURCE_DIR = $(top_srcdir)/libphodav
+ 
+-- 
+2.4.3
+

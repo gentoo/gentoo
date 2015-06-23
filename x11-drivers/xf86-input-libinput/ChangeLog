@@ -1,6 +1,12 @@
 # ChangeLog for x11-drivers/xf86-input-libinput
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-input-libinput/ChangeLog,v 1.5 2015/03/17 18:29:29 chithanh Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-input-libinput/ChangeLog,v 1.6 2015/06/23 12:18:37 eva Exp $
+
+*xf86-input-libinput-0.11.0 (23 Jun 2015)
+
+  23 Jun 2015; Gilles Dartiguelongue <eva@gentoo.org>
+  +xf86-input-libinput-0.11.0.ebuild:
+  Version bump, bug #551926.
 
 *xf86-input-libinput-0.8.0 (17 Mar 2015)
 

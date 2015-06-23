@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test unpack
+DEPEND=>=dev-libs/libinput-0.14.0:0= !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 x86-interix? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) ppc-aix? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) x86-winnt? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) virtual/pkgconfig x11-proto/inputproto x11-proto/kbproto x11-proto/xproto x11-base/xorg-server[xorg]
+DESCRIPTION=X.org input driver based on libinput
+EAPI=5
+HOMEPAGE=http://xorg.freedesktop.org/
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86
+LICENSE=MIT
+RDEPEND=>=dev-libs/libinput-0.14.0:0= x11-base/xorg-server:= x11-base/xorg-server[xorg]
+SLOT=0
+SRC_URI=http://xorg.freedesktop.org/releases/individual/driver/xf86-input-libinput-0.11.0.tar.bz2
+_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	xorg-2	50dd640df6d0554c259daa81531ed3ee
+_md5_=1f657f2f4f5b85e18a0efecdec90bd9e
