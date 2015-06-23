@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nagios-plugins/nagios-plugins-2.0.3-r1.ebuild,v 1.3 2014/12/29 02:32:31 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nagios-plugins/nagios-plugins-2.0.3-r2.ebuild,v 1.1 2015/06/23 00:15:33 mjo Exp $
 
 EAPI=5
 
@@ -27,8 +27,8 @@ IUSE="ipv6 ldap mysql nagios-dns nagios-ping nagios-game postgres samba snmp ssh
 REAL_DEPEND="dev-lang/perl
 	ldap? ( net-nds/openldap )
 	mysql? ( virtual/mysql )
-	postgres? ( dev-db/postgresql )
-	ssl? ( dev-libs/openssl )"
+	postgres? ( dev-db/postgresql:* )
+	ssl? ( dev-libs/openssl:0 )"
 
 DEPEND="${REAL_DEPEND}
 	nagios-dns? ( net-dns/bind-tools )
@@ -39,7 +39,9 @@ DEPEND="${REAL_DEPEND}
 	snmp? ( dev-perl/Net-SNMP
 			net-analyzer/net-snmp[-minimal] )"
 
-RDEPEND="${DEPEND}"
+# Basically everything collides with nagios-plugins.
+RDEPEND="${DEPEND}
+	!net-analyzer/monitoring-plugins"
 
 # At least one test is interactive.
 RESTRICT="test"
@@ -88,8 +90,8 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	elog "This ebuild has a number of USE flags that determine what Nagios"
-	elog "is able to monitor. Depending on what you want to monitor, some"
+	elog "This ebuild has a number of USE flags that determine what you"
+	elog "are able to monitor. Depending on what you want to monitor, some"
 	elog "or all of these USE flags need to be set."
 	elog
 	elog "The plugins are installed in ${ROOT}usr/$(get_libdir)/nagios/plugins"

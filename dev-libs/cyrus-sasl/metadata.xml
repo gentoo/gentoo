@@ -6,8 +6,6 @@
   <flag name='authdaemond'>Add Courier-IMAP authdaemond unix socket
     support (<pkg>net-mail/courier-imap</pkg>, <pkg>mail-mta/courier</pkg>)
     </flag>
-  <flag name='ntlm_unsupported_patch'>Add NTLM <pkg>net-fs/samba</pkg>
-    NOT supported patch</flag>
   <flag name='openldap'>Add ldap support for saslauthd</flag>
   <flag name='ldapdb'>Enable ldapdb plugin</flag>
   <flag name='sample'>Enable sample client and server</flag>

@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/cyrus-sasl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/cyrus-sasl/ChangeLog,v 1.320 2015/06/22 11:42:13 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/cyrus-sasl/ChangeLog,v 1.321 2015/06/23 00:26:44 patrick Exp $
+
+  23 Jun 2015; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Remove unneeded useflag description from metadata.xml
 
   22 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -cyrus-sasl-2.1.23-r7.ebuild:
   Remove old.

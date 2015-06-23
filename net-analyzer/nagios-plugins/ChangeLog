@@ -1,6 +1,12 @@
 # ChangeLog for net-analyzer/nagios-plugins
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nagios-plugins/ChangeLog,v 1.174 2015/05/17 00:29:26 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nagios-plugins/ChangeLog,v 1.175 2015/06/23 00:15:33 mjo Exp $
+
+*nagios-plugins-2.0.3-r2 (23 Jun 2015)
+
+  23 Jun 2015; Michael Orlitzky <mjo@gentoo.org>
+  +nagios-plugins-2.0.3-r2.ebuild:
+  Revbump to fix two repoman warnings and block monitoring-plugins.
 
   17 May 2015; Patrick Lauer <patrick@gentoo.org> metadata.xml:
   Remove unneeded useflag description from metadata.xml
