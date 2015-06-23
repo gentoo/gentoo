@@ -1,6 +1,10 @@
 # ChangeLog for www-client/chromium
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/ChangeLog,v 1.1256 2015/06/21 20:07:47 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/ChangeLog,v 1.1257 2015/06/23 01:41:28 floppym Exp $
+
+  23 Jun 2015; Mike Gilbert <floppym@gentoo.org>
+  +files/chromium-hotwording-2403.patch, chromium-44.0.2403.30.ebuild:
+  Backport hotwording flag.
 
   21 Jun 2015; Mike Gilbert <floppym@gentoo.org> chromium-45.0.2431.0.ebuild,
   metadata.xml:
