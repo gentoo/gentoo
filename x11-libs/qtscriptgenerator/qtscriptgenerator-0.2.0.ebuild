@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/qtscriptgenerator/qtscriptgenerator-0.2.0.ebuild,v 1.10 2015/06/22 14:33:49 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/qtscriptgenerator/qtscriptgenerator-0.2.0.ebuild,v 1.11 2015/06/23 13:54:15 pesa Exp $
 
 EAPI=4
 
@@ -20,7 +20,7 @@ IUSE="debug kde"
 DEPEND="
 	dev-qt/designer:4
 	dev-qt/qtcore:4
-	dev-qt/qtgui:4
+	dev-qt/qtgui:4[accessibility]
 	dev-qt/qtopengl:4
 	!kde? ( || (
 		dev-qt/qtphonon:4
@@ -29,7 +29,7 @@ DEPEND="
 	kde? ( media-libs/phonon[qt4] )
 	dev-qt/qtscript:4
 	dev-qt/qtsql:4
-	dev-qt/qtsvg:4
+	dev-qt/qtsvg:4[accessibility]
 	dev-qt/qtwebkit:4
 	dev-qt/qtxmlpatterns:4
 "
