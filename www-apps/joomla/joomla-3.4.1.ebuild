@@ -1,33 +1,30 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/joomla/joomla-3.4.0_alpha.ebuild,v 1.1 2014/12/12 16:21:42 dlan Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/joomla/joomla-3.4.1.ebuild,v 1.1 2015/06/23 07:18:37 dlan Exp $
 
 EAPI=5
-inherit webapp depend.php versionator
+inherit webapp versionator
 
 MY_PV=$(replace_version_separator '_' '-')
 
 DESCRIPTION="Joomla is a powerful Open Source Content Management System"
 HOMEPAGE="http://www.joomla.org/"
-SRC_URI="https://github.com/joomla/joomla-cms/releases/download/${MY_PV}/Joomla_${MY_PV}-Alpha-Full_Package.tar.bz2"
+SRC_URI="https://github.com/joomla/joomla-cms/releases/download/${MY_PV}/Joomla_${MY_PV}-Stable-Full_Package.tar.bz2"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 
-need_httpd_cgi
-need_php_httpd
-
 S="${WORKDIR}"
+need_httpd_cgi
 
 DEPEND="${DEPEND}
 	app-arch/unzip"
 RDEPEND=">=dev-lang/php-5.3.10[json,zlib,xml]
+	virtual/httpd-php
 	 || ( dev-lang/php[mysql] dev-lang/php[postgres] )"
 
 src_install () {
 	webapp_src_preinst
-
-	dodoc installation/CHANGELOG installation/INSTALL README.txt
 
 	touch configuration.php
 	insinto "${MY_HTDOCSDIR}"

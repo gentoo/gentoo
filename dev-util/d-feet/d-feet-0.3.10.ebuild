@@ -1,19 +1,19 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/d-feet/d-feet-0.3.8.ebuild,v 1.6 2014/05/02 08:41:56 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/d-feet/d-feet-0.3.10.ebuild,v 1.1 2015/06/23 06:38:42 tetromino Exp $
 
 EAPI="5"
 GCONF_DEBUG="no"
 PYTHON_COMPAT=( python2_7 )
 
-inherit gnome2 python-single-r1
+inherit gnome2 python-single-r1 virtualx
 
 DESCRIPTION="D-Feet is a powerful D-Bus debugger"
 HOMEPAGE="https://wiki.gnome.org/Apps/DFeet"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -29,7 +29,6 @@ DEPEND="
 	${PYTHON_DEPS}
 	app-text/yelp-tools
 	>=dev-util/intltool-0.40.0
-	test? ( dev-python/pep8 )
 "
 
 src_prepare() {
@@ -39,10 +38,21 @@ src_prepare() {
 	sed -e '/^UPDATE_DESKTOP/s:=.*:=true:' \
 		-i data/Makefile.am data/Makefile.in || die
 
+	# disable pep8 - checking python whitespace style is not useful for us
+	sed -e 's/pep8 /# pep8 /' \
+		-i src/tests/Makefile.am src/tests/Makefile.in || die
+
 	gnome2_src_prepare
 }
 
 src_configure() {
+	# disable pep8 - checking python code style is not useful downstream
+	# (especially when that style check fails!)
 	gnome2_src_configure \
-		$(use_enable test tests)
+		$(use_enable test tests) \
+		PEP8=$(type -P true)
+}
+
+src_test() {
+	Xemake check
 }

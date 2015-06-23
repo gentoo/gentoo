@@ -1,6 +1,13 @@
 # ChangeLog for www-apps/joomla
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/joomla/ChangeLog,v 1.64 2014/12/12 16:21:42 dlan Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/joomla/ChangeLog,v 1.65 2015/06/23 07:18:37 dlan Exp $
+
+*joomla-3.4.1 (23 Jun 2015)
+
+  23 Jun 2015; Yixun Lan <dlan@gentoo.org> -joomla-3.3.3.ebuild,
+  -joomla-3.3.6.ebuild, -joomla-3.4.0_alpha.ebuild, +joomla-3.4.1.ebuild:
+  version bump, fix deprecated depend.php issue, bug 552868, thanks Harold
+  Naparst
 
 *joomla-3.4.0_alpha (12 Dec 2014)
 

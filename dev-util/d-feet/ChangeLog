@@ -1,6 +1,12 @@
 # ChangeLog for dev-util/d-feet
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/d-feet/ChangeLog,v 1.36 2014/07/23 15:15:50 ago Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/d-feet/ChangeLog,v 1.38 2015/06/23 06:41:28 tetromino Exp $
+
+*d-feet-0.3.10 (23 Jun 2015)
+
+  23 Jun 2015; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -d-feet-0.3.8.ebuild, +d-feet-0.3.10.ebuild:
+  Version bump, drop old
 
   23 Jul 2014; Agostino Sarubbo <ago@gentoo.org> d-feet-0.3.9.ebuild:
   Stable for x86, wrt bug #512012

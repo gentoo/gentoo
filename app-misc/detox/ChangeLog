@@ -1,6 +1,13 @@
 # ChangeLog for app-misc/detox
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/detox/ChangeLog,v 1.34 2015/06/09 11:38:49 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/detox/ChangeLog,v 1.35 2015/06/23 07:11:07 jlec Exp $
+
+*detox-1.2.0-r3 (23 Jun 2015)
+
+  23 Jun 2015; Justin Lecher <jlec@gentoo.org> +detox-1.2.0-r3.ebuild,
+  +files/detox-1.2.0-format-security.patch:
+  Make build format-security save, bug #521084; bump to EAPI=5; drop base.eclass
+  usage
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml
