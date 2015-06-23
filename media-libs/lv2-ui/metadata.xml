@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>proaudio</herd>
-<longdescription lang="en">
+	<herd>proaudio</herd>
+	<longdescription lang="en">
 	This extension defines an interface that can be used in LV2 plugins and hosts to create UIs for plugins. The UIs are similar to plugins and reside in shared object files in an LV2 bundle.
 </longdescription>
 </pkgmetadata>

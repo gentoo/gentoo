@@ -1,6 +1,12 @@
 # ChangeLog for media-libs/lv2-ui
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/lv2-ui/ChangeLog,v 1.4 2015/01/03 15:00:17 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/lv2-ui/ChangeLog,v 1.5 2015/06/23 07:51:09 jlec Exp $
+
+*lv2-ui-2.4-r1 (23 Jun 2015)
+
+  23 Jun 2015; Justin Lecher <jlec@gentoo.org> +lv2-ui-2.4-r1.ebuild,
+  -lv2-ui-2.4.ebuild, metadata.xml:
+  Bump EAPI to 5
 
   03 Jan 2015; Michał Górny <mgorny@gentoo.org> lv2-ui-2.4.ebuild:
   Add missing ${PYTHON_DEPS}.

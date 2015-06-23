@@ -1,8 +1,8 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/lv2-ui/lv2-ui-2.4.ebuild,v 1.4 2015/01/03 15:00:17 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/lv2-ui/lv2-ui-2.4-r1.ebuild,v 1.1 2015/06/23 07:51:09 jlec Exp $
 
-EAPI=3
+EAPI=5
 
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 PYTHON_REQ_USE='threads'
