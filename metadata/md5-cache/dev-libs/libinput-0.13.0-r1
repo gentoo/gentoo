@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install
-DEPEND=>=dev-libs/libevdev-0.4 >=sys-libs/mtdev-1.1 virtual/libudev virtual/pkgconfig
+DEPEND=>=dev-libs/libevdev-0.4 >=sys-libs/mtdev-1.1 virtual/libudev virtual/pkgconfig virtual/pkgconfig
 DESCRIPTION=Library to handle input devices in Wayland
 EAPI=5
 HOMEPAGE=http://www.freedesktop.org/wiki/Software/libinput/
@@ -9,5 +9,5 @@ RDEPEND=>=dev-libs/libevdev-0.4 >=sys-libs/mtdev-1.1 virtual/libudev
 RESTRICT=test
 SLOT=0/10
 SRC_URI=http://www.freedesktop.org/software/libinput/libinput-0.13.0.tar.xz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=982cb0e1b6d298aa4a8f7820e0b788ac
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	udev	da001465a2e939c93f7ae16947ce3438
+_md5_=ca7f70d524b4856eb8c1b62cabe3cf12

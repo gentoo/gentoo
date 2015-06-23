@@ -1,10 +1,10 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libinput/libinput-0.13.0.ebuild,v 1.1 2015/03/24 12:12:38 chithanh Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libinput/libinput-0.13.0-r1.ebuild,v 1.1 2015/06/23 01:27:23 tetromino Exp $
 
 EAPI="5"
 
-inherit eutils
+inherit eutils udev
 
 DESCRIPTION="Library to handle input devices in Wayland"
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/libinput/"
@@ -39,7 +39,8 @@ src_configure() {
 	econf \
 		--disable-documentation \
 		--disable-event-gui \
-		--disable-tests
+		--disable-tests \
+		--with-udev-dir="$(get_udevdir)"
 }
 
 src_install() {

@@ -1,6 +1,14 @@
 # ChangeLog for dev-libs/libinput
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libinput/ChangeLog,v 1.17 2015/06/07 10:30:48 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libinput/ChangeLog,v 1.18 2015/06/23 01:27:23 tetromino Exp $
+
+*libinput-0.13.0-r1 (23 Jun 2015)
+
+  23 Jun 2015; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -libinput-0.8.0.ebuild, -libinput-0.12.0.ebuild, -libinput-0.13.0.ebuild,
+  +libinput-0.13.0-r1.ebuild:
+  Fix udev directory (bug #552784, thanks to Bertrand Jacquin and Mike
+  Gilbert). Punt some old ebuilds.
 
   07 Jun 2015; Markus Meier <maekke@gentoo.org> libinput-0.7.0.ebuild:
   arm stable, bug #534012
