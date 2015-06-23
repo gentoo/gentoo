@@ -1,6 +1,15 @@
 # ChangeLog for dev-ruby/sass
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/sass/ChangeLog,v 1.78 2015/06/19 04:57:16 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/sass/ChangeLog,v 1.80 2015/06/23 05:12:27 graaff Exp $
+
+  23 Jun 2015; Hans de Graaff <graaff@gentoo.org> -sass-3.4.12.ebuild,
+  -sass-3.4.13.ebuild:
+  Cleanup.
+
+*sass-3.4.15 (23 Jun 2015)
+
+  23 Jun 2015; Hans de Graaff <graaff@gentoo.org> +sass-3.4.15.ebuild:
+  Version bump. Add slot dependency for listen matching the vendored version.
 
   19 Jun 2015; Hans de Graaff <graaff@gentoo.org> sass-3.4.14.ebuild:
   Add ruby22.
