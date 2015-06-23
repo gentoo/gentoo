@@ -1,14 +1,13 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/dogpile-cache/dogpile-cache-0.5.1.ebuild,v 1.1 2013/10/22 04:35:03 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/dogpile-cache/dogpile-cache-0.5.1.ebuild,v 1.2 2015/06/23 04:11:27 prometheanfire Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1
 
-DESCRIPTION="The Oslo configuration API supports parsing command line arguments
-and ini style configuration files"
+DESCRIPTION="API built on a lock allowing access to expiring values while a single thread generates a new value."
 HOMEPAGE="https://bitbucket.org/zzzeek/dogpile.cache"
 SRC_URI="mirror://pypi/${PN:0:1}/dogpile.cache/dogpile.cache-${PV}.tar.gz"
 S="${WORKDIR}/dogpile.cache-${PV}"

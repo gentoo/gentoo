@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/dogpile-cache
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/dogpile-cache/ChangeLog,v 1.10 2015/06/07 19:25:38 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/dogpile-cache/ChangeLog,v 1.11 2015/06/23 04:11:27 prometheanfire Exp $
+
+  23 Jun 2015; Matthew Thode <prometheanfire@gentoo.org>
+  dogpile-cache-0.5.1.ebuild, dogpile-cache-0.5.2.ebuild,
+  dogpile-cache-0.5.4.ebuild:
+  fixing the description for bug 552804
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add bitbucket to remote-id in metadata.xml
