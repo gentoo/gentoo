@@ -1,6 +1,9 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1679 2015/06/23 18:59:43 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1680 2015/06/24 06:32:12 jlec Exp $
+
+  24 Jun 2015; Justin Lecher <jlec@gentoo.org> waf-utils.eclass:
+  Drop base.eclass usage
 
   23 Jun 2015; William Hubbs <williamh@gentoo.org> golang-vcs.eclass:
   The GOPATH environment variable is now passed directly to the

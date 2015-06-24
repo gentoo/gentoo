@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install prepare setup unpack
+DEFINED_PHASES=compile configure install setup
 DEPEND=plugins? ( x11-libs/gtk+:2 media-libs/libsndfile ) plugins? ( virtual/pkgconfig ) doc? ( app-doc/doxygen dev-python/rdflib ) dev-lang/python !dev-lang/python[-threads]
 DESCRIPTION=LV2 is a simple but extensible successor of LADSPA
 EAPI=4
@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=plugins? ( x11-libs/gtk+:2 media-libs/libsndfile ) dev-python/lxml[python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),python_single_target_python3_3(+)?,python_single_target_python3_4(+)?,python_single_target_python2_7(+)?] dev-python/pygments[python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),python_single_target_python3_3(+)?,python_single_target_python3_4(+)?,python_single_target_python2_7(+)?] dev-python/rdflib[python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),python_single_target_python3_3(+)?,python_single_target_python3_4(+)?,python_single_target_python2_7(+)?] !<media-libs/slv2-0.4.2 !media-libs/lv2core !media-libs/lv2-ui
 SLOT=0
 SRC_URI=http://lv2plug.in/spec/lv2-1.10.0.tar.bz2
-_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-single-r1	7a178335dbd6ea7f50ed4e3e1c13c1e4	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	waf-utils	b5ddb40c4095c9a1a3f6fd49d32fd922
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-single-r1	7a178335dbd6ea7f50ed4e3e1c13c1e4	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	waf-utils	f8e7e7df15097b4ca1d9945c2653b783
 _md5_=f73f34e32c75e2b5bfb64070ddc917e0

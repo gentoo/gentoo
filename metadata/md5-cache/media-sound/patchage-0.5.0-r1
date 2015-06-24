@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install prepare setup unpack
+DEFINED_PHASES=compile configure install prepare setup
 DEPEND=>=media-libs/raul-0.7.0 >=x11-libs/flowcanvas-0.7.1 >=dev-cpp/gtkmm-2.11.12:2.4 >=dev-cpp/glibmm-2.14:2 >=dev-cpp/libglademm-2.6.0:2.4 dev-cpp/libgnomecanvasmm:2.6 >=media-sound/jack-audio-connection-kit-0.107 alsa? ( media-libs/alsa-lib ) lash? ( dev-libs/dbus-glib ) || ( >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) dev-libs/boost virtual/pkgconfig dev-lang/python !dev-lang/python[-threads]
 DESCRIPTION=Modular patch bay for audio and MIDI systems
 EAPI=5
@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=media-libs/raul-0.7.0 >=x11-libs/flowcanvas-0.7.1 >=dev-cpp/gtkmm-2.11.12:2.4 >=dev-cpp/glibmm-2.14:2 >=dev-cpp/libglademm-2.6.0:2.4 dev-cpp/libgnomecanvasmm:2.6 >=media-sound/jack-audio-connection-kit-0.107 alsa? ( media-libs/alsa-lib ) lash? ( dev-libs/dbus-glib )
 SLOT=0
 SRC_URI=http://download.drobilla.net/patchage-0.5.0.tar.bz2
-_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-any-r1	da352ea9da8eb9bf158d56cca65d6c82	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	waf-utils	b5ddb40c4095c9a1a3f6fd49d32fd922
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-any-r1	da352ea9da8eb9bf158d56cca65d6c82	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	waf-utils	f8e7e7df15097b4ca1d9945c2653b783
 _md5_=fcaa0795bb988b01e9cd02a40b85c189

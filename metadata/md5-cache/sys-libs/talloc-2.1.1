@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install prepare setup test unpack
+DEFINED_PHASES=compile configure install prepare setup test
 DEPEND=python? ( >=dev-lang/python-2.7.5-r2:2.7[threads] >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] ) !!<sys-libs/talloc-2.0.5 abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20140508-r1 !app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] ) sys-devel/gettext dev-libs/libxslt >=dev-lang/python-2.7.5-r2:2.7[threads] >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] dev-lang/python !dev-lang/python[-threads]
 DESCRIPTION=Samba talloc library
 EAPI=5
@@ -10,5 +10,5 @@ RDEPEND=python? ( >=dev-lang/python-2.7.5-r2:2.7[threads] >=dev-lang/python-exec
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=http://samba.org/ftp/talloc/talloc-2.1.1.tar.gz
-_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multilib-build	0983c7893df461213a05f791cc7dea6d	multilib-minimal	13dd976916c35a1e2c8d170e840c7018	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-single-r1	7a178335dbd6ea7f50ed4e3e1c13c1e4	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	waf-utils	b5ddb40c4095c9a1a3f6fd49d32fd922
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multilib-build	0983c7893df461213a05f791cc7dea6d	multilib-minimal	13dd976916c35a1e2c8d170e840c7018	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-single-r1	7a178335dbd6ea7f50ed4e3e1c13c1e4	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	waf-utils	f8e7e7df15097b4ca1d9945c2653b783
 _md5_=c5e375a75f95c065f8a7f4af7ae458fb

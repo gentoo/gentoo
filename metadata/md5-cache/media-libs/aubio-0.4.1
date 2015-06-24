@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install prepare test unpack
+DEFINED_PHASES=compile configure install prepare test
 DEPEND=ffmpeg? ( virtual/ffmpeg ) fftw? ( sci-libs/fftw:3.0 ) jack? ( media-sound/jack-audio-connection-kit ) libsamplerate? ( media-libs/libsamplerate ) python? ( dev-python/numpy[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) sndfile? ( media-libs/libsndfile ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] virtual/pkgconfig app-text/txt2man doc? ( app-doc/doxygen ) dev-lang/python !dev-lang/python[-threads]
 DESCRIPTION=Library for audio labelling
 EAPI=5
@@ -10,5 +10,5 @@ RDEPEND=ffmpeg? ( virtual/ffmpeg ) fftw? ( sci-libs/fftw:3.0 ) jack? ( media-sou
 REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=http://aubio.org//pub/aubio-0.4.1.tar.bz2
-_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	distutils-r1	c01d5c4af34f4a37a51fc9638299c222	eutils	9fb270e417e0e83d64ca52586c4a79de	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-r1	6d3a3cb5705b9fff1aeb7cfa4e3336fe	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	waf-utils	b5ddb40c4095c9a1a3f6fd49d32fd922
+_eclasses_=distutils-r1	c01d5c4af34f4a37a51fc9638299c222	eutils	9fb270e417e0e83d64ca52586c4a79de	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-r1	6d3a3cb5705b9fff1aeb7cfa4e3336fe	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	waf-utils	f8e7e7df15097b4ca1d9945c2653b783
 _md5_=3fbff172b220937edde1dbe1815796ef
