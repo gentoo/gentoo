@@ -1,6 +1,11 @@
 # ChangeLog for dev-lang/icc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/icc/ChangeLog,v 1.106 2015/04/07 14:09:06 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/icc/ChangeLog,v 1.107 2015/06/24 09:39:49 jlec Exp $
+
+*icc-15.0.3.187 (24 Jun 2015)
+
+  24 Jun 2015; Justin Lecher <jlec@gentoo.org> +icc-15.0.3.187.ebuild:
+  Version Bump, bug #552296
 
 *icc-15.0.2.164 (12 Feb 2015)
 

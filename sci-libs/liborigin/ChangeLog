@@ -1,6 +1,10 @@
 # ChangeLog for sci-libs/liborigin
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/liborigin/ChangeLog,v 1.33 2015/04/07 14:41:52 jlec Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/liborigin/ChangeLog,v 1.34 2015/06/24 10:19:59 jlec Exp $
+
+  24 Jun 2015; Justin Lecher <jlec@gentoo.org> -liborigin-20110323.ebuild,
+  liborigin-20110829.ebuild:
+  Drop old; Bump EAPI
 
   02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> liborigin-20100903.ebuild,
   liborigin-20110323.ebuild, liborigin-20110829.ebuild:

@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst postrm pretend setup unpack
+DEPEND=app-arch/rpm2targz
+DESCRIPTION=Intel Integrated Performance Primitive library for multimedia and data processing
+EAPI=5
+HOMEPAGE=http://software.intel.com/en-us/articles/intel-ipp/
+IUSE=examples multilib
+KEYWORDS=-* ~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=Intel-SDP
+RDEPEND=>=dev-libs/intel-common-15
+RESTRICT=mirror
+SLOT=0
+SRC_URI=http://registrationcenter-download.intel.com/irc_nas/7538/parallel_studio_xe_2015_update3.tgz
+_eclasses_=check-reqs	a7f404bfb16e0a996700c5d3ac4edad3	eutils	9fb270e417e0e83d64ca52586c4a79de	intel-sdp	314a59879813cc2370b220540316f78a	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=95b21bd526cde317699b77d827cacfba

@@ -1,0 +1,71 @@
+# /etc/conf.d/libvirtd
+
+# Startup dependency
+# libvirtd typically requires all networks to be up and settled which
+# is what rc_need="net" provides. However if you only use specific networks
+# for libvirtd, you may override this. Or if you only use libvirtd locally.
+rc_need="net"
+
+# LIBVIRTD_OPTS
+#   You may want to add '--listen' to have libvirtd listen for tcp/ip
+#   connections if you want to use libvirt for remote control. Please
+#   consult 'libvirtd --help' for more options.
+#LIBVIRTD_OPTS="--listen"
+
+# LIBVIRTD_KVM_SHUTDOWN
+#   controls the behavior for kvm guests on daemon shutdown
+#
+# Valid options:
+# * shutdown
+#   - Sends an ACPI shutdown (think when you tap the power button on your
+#     machine and it begins a graceful shutdown). If your VM ignores this,
+#     it will have the power yanked out from under it in
+#     LIBVIRTD_KVM_SHUTDOWN_MAXWAIT seconds.
+# * managedsave
+#   - Performs a state save external to the VM. qemu-kvm will stop stop the
+#     CPU and save off all state to a separate file. When the machine is
+#     started again, it will resume like nothing ever happened. This is
+#     guarenteed to always successfully stop your machine and restart it.
+#     However it may take some time to finish.
+# * none
+#   - No attempts will be made to stop any VMs. If you are restarting your
+#     machine the qemu-kvm process will be simply killed, which may result
+#     in your VMs having disk corruption.
+LIBVIRTD_KVM_SHUTDOWN="managedsave"
+
+# LIBVIRTD_KVM_SHUTDOWN_MAXWAIT
+#   timeout in seconds until stopping libvirtd and "pulling the plug" on
+#   the remaining VM's still in a running state
+LIBVIRTD_KVM_SHUTDOWN_MAXWAIT="500"
+
+# LIBVIRTD_KVM_RESTART
+#   controls the behavior for kvm guests on daemon restart
+#
+# Valid options:
+# * <empty>
+#   - apply the same policy on daemon restart as defined by
+#     LIBVIRTD_KVM_SHUTDOWN for the shutdown
+# * shutdown
+# * managedsave
+# * none
+#   - as defined for LIBVIRTD_KVM_SHUTDOWN
+LIBVIRTD_KVM_RESTART=""
+
+# LIBVIRTD_KVM_NET_SHUTDOWN
+#   If libvirtd created networks for you (e.g. NATed networks) then this
+#   init script will shut them down for you if this is set to 'yes'.
+#   Otherwise, the networks will be left running once libvirt is shutdown.
+#   For this option to be useful you must have enabled the 'virt-network'
+#   USE flag and have had libvirt create a NATed network for you. Valid
+#   values: 'yes' or 'no'
+LIBVIRTD_KVM_NET_SHUTDOWN="yes"
+
+# LIBVIRTD_KVM_NET_RESTART
+# Valid options:
+# * <empty>
+#   - apply the same policy on daemon restart as defined by
+#     LIBVIRTD_KVM_NET_SHUTDOWN for the shutdown
+# * yes
+# * no
+#   - as defined for LIBVIRTD_KVM_NET_SHUTDOWN
+LIBVIRTD_KVM_NET_RESTART=""

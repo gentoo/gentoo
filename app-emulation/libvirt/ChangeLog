@@ -1,6 +1,13 @@
 # ChangeLog for app-emulation/libvirt
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/ChangeLog,v 1.432 2015/06/23 10:42:51 tamiko Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/ChangeLog,v 1.433 2015/06/24 09:48:26 tamiko Exp $
+
+*libvirt-1.2.16-r1 (24 Jun 2015)
+
+  24 Jun 2015; Matthias Maier <tamiko@gentoo.org> +files/libvirtd.confd-r5,
+  +files/libvirtd.init-r15, +libvirt-1.2.16-r1.ebuild, -libvirt-1.2.16.ebuild,
+  files/libvirtd.init-r14:
+  provide a configuration option for domains and network on restart, bug #551854
 
   23 Jun 2015; Matthias Maier <tamiko@gentoo.org>
   -files/libvirt-1.2.9-fix-firewalld-configuration.patch,
