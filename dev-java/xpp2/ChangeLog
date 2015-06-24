@@ -1,6 +1,12 @@
 # ChangeLog for dev-java/xpp2
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xpp2/ChangeLog,v 1.30 2013/06/27 21:40:45 aballier Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xpp2/ChangeLog,v 1.31 2015/06/23 23:12:46 chewi Exp $
+
+*xpp2-2.1.10-r2 (23 Jun 2015)
+
+  23 Jun 2015; James Le Cuirot <chewi@gentoo.org> +xpp2-2.1.10-r2.ebuild:
+  EAPI bump and general rewrite in the new style. Tests added but they sadly
+  fail. I wish we could kill this but it's in a string of ancient dependencies.
 
   27 Jun 2013; Alexis Ballier <aballier@gentoo.org> xpp2-2.1.10-r1.ebuild:
   keyword ~amd64-fbsd
