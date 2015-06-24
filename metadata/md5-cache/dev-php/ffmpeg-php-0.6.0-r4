@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=libav? ( media-video/libav:0= ) !libav? ( media-video/ffmpeg:0= ) dev-lang/php:*[gd] !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-devel/m4-1.4.3 >=sys-devel/libtool-1.5.18 php_targets_php5-6? ( dev-lang/php:5.6 ) php_targets_php5-5? ( dev-lang/php:5.5 ) php_targets_php5-4? ( dev-lang/php:5.4 )
+DESCRIPTION=PHP extension that provides access to movie info
+EAPI=5
+HOMEPAGE=http://sourceforge.net/projects/ffmpeg-php/
+IUSE=libav php_targets_php5-6 php_targets_php5-5 php_targets_php5-4
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=libav? ( media-video/libav:0= ) !libav? ( media-video/ffmpeg:0= ) dev-lang/php:*[gd] php_targets_php5-6? ( dev-lang/php:5.6 ) php_targets_php5-5? ( dev-lang/php:5.5 ) php_targets_php5-4? ( dev-lang/php:5.4 )
+REQUIRED_USE=|| ( php_targets_php5-6 php_targets_php5-5 php_targets_php5-4 )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/ffmpeg-php/ffmpeg-php-0.6.0.tbz2
+_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	php-ext-source-r2	b4d5827d04ab9f22f094e1ecab1df639	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=585ab4a40c7cdd93fd3cc73ece4dc5d7

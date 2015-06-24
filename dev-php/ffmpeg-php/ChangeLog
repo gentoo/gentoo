@@ -1,6 +1,13 @@
 # ChangeLog for dev-php/ffmpeg-php
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/ffmpeg-php/ChangeLog,v 1.18 2015/06/09 15:00:39 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php/ffmpeg-php/ChangeLog,v 1.19 2015/06/24 01:02:47 grknight Exp $
+
+*ffmpeg-php-0.6.0-r4 (24 Jun 2015)
+
+  24 Jun 2015; Brian Evans <grknight@gentoo.org> +ffmpeg-php-0.6.0-r4.ebuild,
+  +files/ffmpeg-php-0.6.0-libav10.patch, ffmpeg-php-0.6.0-r3.ebuild:
+  Fix build failures wrt bug 545700 ; Revbump to include the libav IUSE so we
+  can rebuilt against libav/ffmpeg subslots
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml
