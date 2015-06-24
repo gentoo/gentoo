@@ -1,6 +1,9 @@
 # ChangeLog for app-antivirus/clamav
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-antivirus/clamav/ChangeLog,v 1.506 2015/06/09 08:48:19 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-antivirus/clamav/ChangeLog,v 1.507 2015/06/24 07:58:50 ago Exp $
+
+  24 Jun 2015; Agostino Sarubbo <ago@gentoo.org> clamav-0.98.7.ebuild:
+  Stable for ppc, wrt bug #548066
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

@@ -1,6 +1,12 @@
 # ChangeLog for dev-python/pyproj
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyproj/ChangeLog,v 1.12 2015/01/04 22:46:41 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyproj/ChangeLog,v 1.13 2015/06/24 07:44:40 idella4 Exp $
+
+*pyproj-1.9.4 (24 Jun 2015)
+
+  24 Jun 2015; Ian Delaney <idella4@gentoo.org> +pyproj-1.9.4.ebuild:
+   bump; New HOMEPAGE & SRC_URI due to shift of repo location of development,
+  add test phase, closes Bug 552174
 
 *pyproj-1.9.3-r1 (04 Jan 2015)
 

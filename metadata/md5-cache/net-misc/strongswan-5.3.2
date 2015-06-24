@@ -4,10 +4,10 @@ DESCRIPTION=IPsec-based VPN solution focused on security and ease of use, suppor
 EAPI=5
 HOMEPAGE=http://www.strongswan.org/
 IUSE=+caps curl +constraints debug dhcp eap farp gcrypt +gmp ldap mysql networkmanager +non-root +openssl sqlite pam pkcs11 +strongswan_plugins_led +strongswan_plugins_lookip +strongswan_plugins_systime-fix +strongswan_plugins_unity +strongswan_plugins_vici strongswan_plugins_blowfish strongswan_plugins_ccm strongswan_plugins_ctr strongswan_plugins_gcm strongswan_plugins_ha strongswan_plugins_ipseckey strongswan_plugins_ntru strongswan_plugins_padlock strongswan_plugins_rdrand strongswan_plugins_unbound strongswan_plugins_whitelist
-KEYWORDS=amd64 arm ~ppc ~ppc64 x86
+KEYWORDS=amd64 arm ppc ~ppc64 x86
 LICENSE=GPL-2 RSA DES
 RDEPEND=!net-misc/openswan gmp? ( >=dev-libs/gmp-4.1.5 ) gcrypt? ( dev-libs/libgcrypt:0 ) caps? ( sys-libs/libcap ) curl? ( net-misc/curl ) ldap? ( net-nds/openldap ) openssl? ( >=dev-libs/openssl-0.9.8[-bindist] ) mysql? ( virtual/mysql ) sqlite? ( >=dev-db/sqlite-3.3.1 ) networkmanager? ( net-misc/networkmanager ) pam? ( sys-libs/pam ) strongswan_plugins_unbound? ( net-dns/unbound ) virtual/logger sys-apps/iproute2 !net-misc/libreswan
 SLOT=0
 SRC_URI=http://download.strongswan.org/strongswan-5.3.2.tar.bz2
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=82df77367347aacb1952903f8220ee38
+_md5_=b1b1119f755ec178b89db2375e8fbc4c

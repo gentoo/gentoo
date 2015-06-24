@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/ipython
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/ipython/ChangeLog,v 1.175 2015/06/23 15:18:43 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/ipython/ChangeLog,v 1.176 2015/06/24 08:04:59 ago Exp $
+
+  24 Jun 2015; Agostino Sarubbo <ago@gentoo.org> ipython-2.2.0-r1.ebuild:
+  Stable for ppc, wrt bug #552816
 
   23 Jun 2015; Agostino Sarubbo <ago@gentoo.org> ipython-2.2.0-r1.ebuild:
   Stable for amd64, wrt bug #552816

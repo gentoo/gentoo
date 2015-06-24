@@ -1,6 +1,9 @@
 # ChangeLog for sys-block/nbd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/nbd/ChangeLog,v 1.100 2015/06/11 19:10:41 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-block/nbd/ChangeLog,v 1.101 2015/06/24 08:01:01 ago Exp $
+
+  24 Jun 2015; Agostino Sarubbo <ago@gentoo.org> nbd-3.11.ebuild:
+  Stable for ppc, wrt bug #550996
 
   11 Jun 2015; Markus Meier <maekke@gentoo.org> nbd-3.11.ebuild:
   arm stable, bug #550996

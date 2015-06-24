@@ -1,6 +1,9 @@
 # ChangeLog for net-libs/libpcap
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libpcap/ChangeLog,v 1.224 2015/06/22 04:53:18 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libpcap/ChangeLog,v 1.225 2015/06/24 08:04:26 ago Exp $
+
+  24 Jun 2015; Agostino Sarubbo <ago@gentoo.org> libpcap-1.7.3.ebuild:
+  Stable for ppc, wrt bug #552632
 
   22 Jun 2015; Jeroen Roovers <jer@gentoo.org> libpcap-1.7.3.ebuild:
   Stable for PPC64 (bug #552632).
