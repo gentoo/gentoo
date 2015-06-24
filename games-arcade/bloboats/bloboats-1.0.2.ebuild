@@ -1,8 +1,8 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/bloboats/bloboats-1.0.2.ebuild,v 1.6 2015/01/03 15:02:41 tupone Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/bloboats/bloboats-1.0.2.ebuild,v 1.7 2015/06/24 05:11:41 mr_bones_ Exp $
 
-EAPI=4
+EAPI=5
 inherit eutils games
 
 DESCRIPTION="arcade-like boat racing game combining platform jumpers and elastomania / x-moto like games"
@@ -14,10 +14,12 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-DEPEND="media-libs/libsdl[video]
+DEPEND="media-libs/libsdl[opengl,video]
 	media-libs/sdl-mixer[vorbis]
 	media-libs/sdl-image[png]
 	media-libs/sdl-net
+	virtual/opengl
+	virtual/glu
 	media-libs/libvorbis"
 REDEPEND="${DEPEND}"
 
@@ -31,8 +33,7 @@ src_prepare() {
 		-e "/CXXFLAGS_DEFAULT/s:-O2:${CXXFLAGS} \$(LDFLAGS):" \
 		-e "/^CXX[ _]/d" \
 		-e '/STRIP/d' \
-		Makefile \
-		|| die
+		Makefile || die
 }
 
 src_install() {
