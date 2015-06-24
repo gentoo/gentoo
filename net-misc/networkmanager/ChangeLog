@@ -1,6 +1,9 @@
 # ChangeLog for net-misc/networkmanager
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/networkmanager/ChangeLog,v 1.240 2015/06/04 09:34:21 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/networkmanager/ChangeLog,v 1.241 2015/06/24 09:00:50 ago Exp $
+
+  24 Jun 2015; Agostino Sarubbo <ago@gentoo.org> networkmanager-1.0.2.ebuild:
+  Stable for ppc, wrt bug #545980
 
   04 Jun 2015; Pacho Ramos <pacho@gentoo.org> networkmanager-1.0.2-r1.ebuild:
   Move to stable as previous one is broken for dhcpcd users

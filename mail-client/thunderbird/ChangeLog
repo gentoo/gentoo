@@ -1,6 +1,9 @@
 # ChangeLog for mail-client/thunderbird
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/thunderbird/ChangeLog,v 1.336 2015/06/19 05:25:59 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/thunderbird/ChangeLog,v 1.337 2015/06/24 09:00:34 ago Exp $
+
+  24 Jun 2015; Agostino Sarubbo <ago@gentoo.org> thunderbird-31.7.0.ebuild:
+  Stable for ppc, wrt bug #549356
 
   19 Jun 2015; Patrick Lauer <patrick@gentoo.org> thunderbird-38.0.1-r1.ebuild:
   Whitespace

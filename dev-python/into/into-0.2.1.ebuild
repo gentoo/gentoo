@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/into/into-0.2.1.ebuild,v 1.1 2015/03/01 14:24:41 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/into/into-0.2.1.ebuild,v 1.2 2015/06/24 08:39:20 idella4 Exp $
 
 EAPI=5
 
@@ -21,5 +21,6 @@ RDEPEND="dev-python/datashape[${PYTHON_USEDEP}]
 		>=dev-python/pandas-0.15[${PYTHON_USEDEP}]
 		dev-python/toolz[${PYTHON_USEDEP}]
 		dev-python/multipledispatch[${PYTHON_USEDEP}]
-		dev-python/networkx[${PYTHON_USEDEP}]"
+		dev-python/networkx[${PYTHON_USEDEP}]
+		!media-libs/urt" # Bug #552448
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
