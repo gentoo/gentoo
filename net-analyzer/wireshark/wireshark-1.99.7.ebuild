@@ -1,9 +1,9 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/wireshark/wireshark-1.99.7.ebuild,v 1.1 2015/06/19 12:39:14 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/wireshark/wireshark-1.99.7.ebuild,v 1.2 2015/06/24 05:31:48 jer Exp $
 
 EAPI=5
-inherit autotools eutils fcaps multilib qmake-utils qt4-r2 user
+inherit autotools eutils fcaps flag-o-matic multilib qmake-utils qt4-r2 user
 
 DESCRIPTION="A network protocol analyzer formerly known as ethereal"
 HOMEPAGE="http://www.wireshark.org/"
@@ -130,7 +130,11 @@ src_configure() {
 	fi
 
 	use qt4 && export QT_MIN_VERSION=4.6.0
-	use qt5 && export QT_MIN_VERSION=5.3.0
+
+	if use qt5;then
+		export QT_MIN_VERSION=5.3.0
+		append-cxxflags -fPIC -DPIC
+	fi
 
 	# Hack around inability to disable doxygen/fop doc generation
 	use doc || export ac_cv_prog_HAVE_DOXYGEN=false

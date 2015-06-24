@@ -1,6 +1,9 @@
 # ChangeLog for dev-util/aruba
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/aruba/ChangeLog,v 1.57 2015/05/31 10:53:31 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/aruba/ChangeLog,v 1.58 2015/06/24 05:37:37 graaff Exp $
+
+  24 Jun 2015; Hans de Graaff <graaff@gentoo.org> aruba-0.6.2.ebuild:
+  Add ruby22.
 
   31 May 2015; Markus Meier <maekke@gentoo.org> aruba-0.5.4-r1.ebuild:
   arm stable, bug #542574
