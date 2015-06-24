@@ -1,6 +1,6 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/osgi-enterprise-api/osgi-enterprise-api-5.0.0.ebuild,v 1.2 2013/07/16 12:06:33 tomwij Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/osgi-enterprise-api/osgi-enterprise-api-5.0.0.ebuild,v 1.3 2015/06/24 17:53:14 monsieurp Exp $
 
 EAPI="5"
 
@@ -14,7 +14,7 @@ HOMEPAGE="http://www.osgi.org/Main/HomePage"
 
 LICENSE="Apache-2.0 OSGi-Specification-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RESTRICT="bindist fetch"
 
