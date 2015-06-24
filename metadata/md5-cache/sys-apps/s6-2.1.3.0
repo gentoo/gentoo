@@ -4,10 +4,10 @@ DESCRIPTION=skarnet.org's small and secure supervision software suite
 EAPI=5
 HOMEPAGE=http://www.skarnet.org/software/s6/
 IUSE=static
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=ISC
 RDEPEND=!static? ( >=dev-lang/execline-2.1.1.0 >=dev-libs/skalibs-2.3.2.0 )
 SLOT=0
 SRC_URI=http://www.skarnet.org/software/s6/s6-2.1.3.0.tar.gz
 _eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=59c8abad6edd54847397472bb0cc6efa
+_md5_=9bbfd49dbfce28ac2cfcd7fbef480a14

@@ -1,6 +1,9 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1682 2015/06/24 13:36:03 grknight Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1683 2015/06/24 15:38:33 williamh Exp $
+
+  24 Jun 2015; William Hubbs <williamh@gentoo.org> +golang-build.eclass:
+  Add an eclass for building Go software
 
   24 Jun 2015; <grknight@gentoo.org> depend.php.eclass:
   depend.php.eclass is deprecated and is set to be removed 30 days after bug
