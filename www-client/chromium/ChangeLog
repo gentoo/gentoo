@@ -1,6 +1,11 @@
 # ChangeLog for www-client/chromium
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/ChangeLog,v 1.1257 2015/06/23 01:41:28 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/ChangeLog,v 1.1258 2015/06/23 23:54:01 floppym Exp $
+
+*chromium-43.0.2357.130 (23 Jun 2015)
+
+  23 Jun 2015; Mike Gilbert <floppym@gentoo.org> +chromium-43.0.2357.130.ebuild:
+  Bump. Add hotwording use flag.
 
   23 Jun 2015; Mike Gilbert <floppym@gentoo.org>
   +files/chromium-hotwording-2403.patch, chromium-44.0.2403.30.ebuild:
