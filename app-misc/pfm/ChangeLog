@@ -1,6 +1,9 @@
 # ChangeLog for app-misc/pfm
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/pfm/ChangeLog,v 1.5 2015/06/09 11:49:29 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/pfm/ChangeLog,v 1.6 2015/06/24 14:25:54 monsieurp Exp $
+
+  24 Jun 2015; Patrice Clement <monsieurp@gentoo.org> pfm-2.12.3.ebuild:
+  Stable for x86+amd64 via ALLARCHES.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

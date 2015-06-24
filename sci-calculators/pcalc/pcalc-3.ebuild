@@ -1,13 +1,13 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-calculators/pcalc/pcalc-3.ebuild,v 1.1 2014/12/30 23:28:42 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-calculators/pcalc/pcalc-3.ebuild,v 1.2 2015/06/24 13:39:08 vapier Exp $
 
 EAPI=4
 
 inherit toolchain-funcs
 
 DESCRIPTION="the programmers calculator"
-HOMEPAGE="http://pcalc.sourceforge.net/"
+HOMEPAGE="https://github.com/vapier/pcalc"
 SRC_URI="mirror://sourceforge/pcalc/${P}.tar.xz"
 
 LICENSE="GPL-2"

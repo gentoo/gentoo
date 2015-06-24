@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=dev-libs/icu:= nls? ( sys-devel/gettext )
+DESCRIPTION=A front-end for the diff program that operates at the word level instead of the line level
+EAPI=5
+HOMEPAGE=http://os.ghalkes.nl/dwdiff.html
+IUSE=nls
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-3
+RDEPEND=dev-libs/icu:= sys-apps/diffutils
+SLOT=0
+SRC_URI=http://os.ghalkes.nl/dist/dwdiff-2.1.0.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=ae8f427140622bda0c073b3f7d1e3f65

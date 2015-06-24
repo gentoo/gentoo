@@ -1,7 +1,8 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/depend.php.eclass,v 1.35 2015/06/18 14:22:59 grknight Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/depend.php.eclass,v 1.36 2015/06/24 13:36:03 grknight Exp $
 
+# @DEAD
 # @ECLASS: depend.php.eclass
 # @MAINTAINER:
 # Gentoo PHP team <php-bugs@gentoo.org>
@@ -14,6 +15,7 @@
 # This eclass provides functions that allow ebuilds to depend on php5 and check
 # for specific PHP features, SAPIs etc. Also provides dodoc-php wrapper to install
 # documentation for PHP packages to php-specific location.
+# This eclass is deprecated and is set to be removed 30 days after bug 552836 is resolved
 
 inherit eutils multilib
 

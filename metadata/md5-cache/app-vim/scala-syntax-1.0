@@ -3,10 +3,10 @@ DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 DESCRIPTION=vim plugin: Scala syntax highlighting, filetype and indent settings
 EAPI=5
 HOMEPAGE=http://www.scala-lang.org/
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=BSD
 RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 SLOT=0
 SRC_URI=http://dev.gentoo.org/~monsieurp/packages/scala-syntax-1.0.tar.gz
 _eclasses_=vim-doc	1c18baeec98cec3287524cbf2fee2bd2	vim-plugin	286547e90fbbc4c841eee80cd73e646c
-_md5_=5ccc5e10cd696fa1222357942325ad78
+_md5_=0c2179e541f27adbe2e90b0a1bfa6a98

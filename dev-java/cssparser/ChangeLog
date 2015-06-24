@@ -1,6 +1,18 @@
 # ChangeLog for dev-java/cssparser
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/cssparser/ChangeLog,v 1.7 2015/06/09 13:33:05 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/cssparser/ChangeLog,v 1.10 2015/06/24 14:20:20 monsieurp Exp $
+
+  24 Jun 2015; Patrice Clement <monsieurp@gentoo.org> -cssparser-0.9.14.ebuild,
+  -cssparser-0.9.15.ebuild:
+  Remove old.
+
+  24 Jun 2015; Patrice Clement <monsieurp@gentoo.org> cssparser-0.9.16.ebuild:
+  Stable for amd64+x86 via ALLARCHES.
+
+*cssparser-0.9.16 (24 Jun 2015)
+
+  24 Jun 2015; Patrice Clement <monsieurp@gentoo.org> +cssparser-0.9.16.ebuild:
+  Version bump.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml
