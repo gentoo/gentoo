@@ -1,6 +1,9 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1680 2015/06/24 06:32:12 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1681 2015/06/24 13:22:02 grknight Exp $
+
+  24 Jun 2015; <grknight@gentoo.org> php-lib-r1.eclass:
+  Remove depend.php and dodoc-php in favor of just dodoc
 
   24 Jun 2015; Justin Lecher <jlec@gentoo.org> waf-utils.eclass:
   Drop base.eclass usage
