@@ -1,6 +1,13 @@
 # ChangeLog for www-apps/baikal
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/baikal/ChangeLog,v 1.3 2014/06/06 18:37:10 grobian Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/baikal/ChangeLog,v 1.5 2015/06/24 16:51:03 grobian Exp $
+
+  24 Jun 2015; Fabian Groffen <grobian@gentoo.org> baikal-0.2.4.ebuild,
+  baikal-0.2.7.ebuild:
+  Drop deprecated depend.php eclass, bug #552844
+
+  24 Jun 2015; Fabian Groffen <grobian@gentoo.org> baikal-0.2.7.ebuild:
+  Adjust php USE-flag dependencies by Sebastian in bug #521848
 
 *baikal-0.2.7 (06 Jun 2014)
 

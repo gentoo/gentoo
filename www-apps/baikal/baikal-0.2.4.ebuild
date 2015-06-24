@@ -1,10 +1,10 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/baikal/baikal-0.2.4.ebuild,v 1.2 2013/04/20 15:23:34 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/baikal/baikal-0.2.4.ebuild,v 1.3 2015/06/24 16:51:03 grobian Exp $
 
 EAPI="5"
 
-inherit depend.php webapp
+inherit webapp
 
 DESCRIPTION="Lightweight CalDAV+CardDAV server"
 HOMEPAGE="http://baikal-server.com/"
@@ -20,15 +20,12 @@ RDEPEND=">=dev-lang/php-5.3[pdo,xml,mysql?,sqlite?]
 	sqlite? ( dev-db/sqlite )
 	virtual/httpd-php"
 
-need_php5
-need_httpd
-
 S=${WORKDIR}/${PN}-regular
 
 src_install() {
 	webapp_src_preinst
 
-	dodoc-php *.md  || die "dodoc failed"
+	dodoc *.md  || die "dodoc failed"
 
 	einfo "Installing web files"
 	insinto "${MY_HTDOCSDIR}"

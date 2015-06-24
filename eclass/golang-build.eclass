@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/golang-build.eclass,v 1.1 2015/06/24 15:38:33 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/golang-build.eclass,v 1.2 2015/06/24 17:04:53 williamh Exp $
 
 # @ECLASS: golang-build.eclass
 # @MAINTAINER:
@@ -43,7 +43,7 @@ STRIP_MASK="*.a"
 # @DESCRIPTION:
 # Make sure EGO_PN has a value.
 _golang-build_setup() {
-	[ -z "${EGO_PN}" ] &&
+	[[ -z "${EGO_PN}" ]] &&
 		die "${ECLASS}.eclass: EGO_PN is not set"
 	return 0
 }

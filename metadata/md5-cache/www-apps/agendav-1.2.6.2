@@ -1,13 +1,13 @@
 DEFINED_PHASES=install postinst prerm setup
-DEPEND==dev-lang/php-5* || ( virtual/httpd-basic virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15
+DEPEND=>=app-admin/webapp-config-1.50.15
 DESCRIPTION=multilanguage CalDAV web client
 EAPI=5
 HOMEPAGE=http://agendav.org/
 IUSE=vhosts
 KEYWORDS=~amd64
 LICENSE=BSD LGPL-3+ LGPL-2.1+ GPL-3+
-RDEPEND=>=dev-lang/php-5.3[curl,unicode] virtual/httpd-php || ( >=virtual/mysql-5.1 >=dev-db/postgresql-8.1 ) =dev-lang/php-5* >=app-admin/webapp-config-1.50.15
+RDEPEND=>=dev-lang/php-5.3[curl,unicode] virtual/httpd-php || ( >=virtual/mysql-5.1 >=dev-db/postgresql-8.1 ) >=app-admin/webapp-config-1.50.15
 SLOT=1.2.6.2
 SRC_URI=https://github.com/adobo/agendav/tarball/1.2.6.2 -> agendav-1.2.6.2.tar.gz
-_eclasses_=depend.php	4400a239a11e94cd350b6b6f27d203e8	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	webapp	6621f8b5df9f14800054a5953065efeb
-_md5_=f39db098ada57c72eadd02e18c1b43ee
+_eclasses_=webapp	6621f8b5df9f14800054a5953065efeb
+_md5_=cdeed426f6201612aef30dcf74d12673
