@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16634 2015/06/22 10:41:14 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16635 2015/06/24 20:24:14 pacho Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -29,6 +29,15 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Pacho Ramos <pacho@gentoo.org> (24 Jun 2015)
+# Replaced by app-admin/system-config-printer, to migrate
+# simply run:
+# emerge -C system-config-printer-common system-config-printer-gnome
+# emerge -1 system-config-printer
+# Removal in a month (#553128).
+app-admin/system-config-printer-common
+app-admin/system-config-printer-gnome
 
 # Patrice Clement <monsieurp@gentoo.org> (22 Jun 2015)
 # No update from upstream since 2002. This package might cause problems with

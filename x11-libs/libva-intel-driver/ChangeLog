@@ -1,6 +1,11 @@
 # ChangeLog for x11-libs/libva-intel-driver
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libva-intel-driver/ChangeLog,v 1.40 2015/03/20 13:23:30 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libva-intel-driver/ChangeLog,v 1.41 2015/06/24 19:48:30 pacho Exp $
+
+  24 Jun 2015; Pacho Ramos <pacho@gentoo.org>
+  +files/libva-intel-driver-1.5.1-wayland-automagic.patch,
+  libva-intel-driver-1.5.1.ebuild:
+  Fix automagic wayland depend (#529388)
 
 *libva-intel-driver-1.5.1 (20 Mar 2015)
 

@@ -1,6 +1,12 @@
 # ChangeLog for media-video/motion
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/motion/ChangeLog,v 1.46 2014/12/28 16:00:19 titanofold Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/motion/ChangeLog,v 1.47 2015/06/24 20:08:42 pacho Exp $
+
+*motion-3.2.12-r3 (24 Jun 2015)
+
+  24 Jun 2015; Pacho Ramos <pacho@gentoo.org> +motion-3.2.12-r3.ebuild:
+  Use new ffmpeg/libav USEs style, autoreconf is needed after applying the
+  patches (#552224 by Marcin Jurkowski), use readme.gentoo.eclass.
 
   28 Dec 2014; Aaron W. Swenson <titanofold@gentoo.org>
   motion-3.2.12-r2.ebuild:

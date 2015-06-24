@@ -1,6 +1,9 @@
 # ChangeLog for app-misc/tracker
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/ChangeLog,v 1.188 2015/06/21 10:41:21 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/ChangeLog,v 1.189 2015/06/24 20:21:44 pacho Exp $
+
+  24 Jun 2015; Pacho Ramos <pacho@gentoo.org> tracker-1.4.0.ebuild:
+  Use newstyle libav/ffmpeg USEs
 
   21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> tracker-1.2.6.ebuild:
   amd64 stable wrt bug #551814

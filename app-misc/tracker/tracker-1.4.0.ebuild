@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/tracker-1.4.0.ebuild,v 1.1 2015/06/09 10:41:22 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/tracker-1.4.0.ebuild,v 1.2 2015/06/24 20:21:44 pacho Exp $
 
 EAPI="5"
 GCONF_DEBUG="no"
@@ -16,7 +16,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Tracker"
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0/100"
 IUSE="cue eds elibc_glibc exif ffmpeg firefox-bookmarks flac gif gsf
-gstreamer gtk iptc +iso +jpeg +miner-fs mp3 nautilus networkmanager
+gstreamer gtk iptc +iso +jpeg libav +miner-fs mp3 nautilus networkmanager
 pdf playlist rss stemmer test thunderbird +tiff upnp-av upower +vorbis +xml xmp xps"
 
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
@@ -53,7 +53,10 @@ RDEPEND="
 		<gnome-extra/evolution-data-server-3.5.3 )
 	elibc_glibc? ( >=sys-libs/glibc-2.12 )
 	exif? ( >=media-libs/libexif-0.6 )
-	ffmpeg? ( >=virtual/ffmpeg-9 )
+	ffmpeg? (
+		libav? ( media-video/libav:= )
+		!libav? ( media-video/ffmpeg:0= )
+	)
 	firefox-bookmarks? ( || (
 		>=www-client/firefox-4.0
 		>=www-client/firefox-bin-4.0 ) )
