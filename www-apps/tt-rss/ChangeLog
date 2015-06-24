@@ -1,6 +1,12 @@
 # ChangeLog for www-apps/tt-rss
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/tt-rss/ChangeLog,v 1.38 2015/03/23 13:01:06 tomka Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/tt-rss/ChangeLog,v 1.39 2015/06/24 11:07:30 tomka Exp $
+
+*tt-rss-20150624 (24 Jun 2015)
+
+  24 Jun 2015; Thomas Kahle <tomka@gentoo.org> +tt-rss-20150624.ebuild,
+  -tt-rss-1.15.3.ebuild, tt-rss-20150304.ebuild:
+  Remove depend.php (552872), bump, clean up
 
   23 Mar 2015; Thomas Kahle <tomka@gentoo.org> tt-rss-20150304.ebuild:
   Call webapp pkg_postinst again (bug 543626)

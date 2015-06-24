@@ -1,6 +1,9 @@
 # ChangeLog for net-misc/mosh
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/mosh/ChangeLog,v 1.48 2015/06/22 07:45:48 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/mosh/ChangeLog,v 1.49 2015/06/24 10:31:21 mrueg Exp $
+
+  24 Jun 2015; Manuel Rüger <mrueg@gentoo.org> mosh-9999.ebuild:
+  Upstream reverted the bash-completion fix.
 
   22 Jun 2015; Manuel Rüger <mrueg@gentoo.org> mosh-9999.ebuild:
   Migrate to git-r3, upstream respects bash-completion dir.

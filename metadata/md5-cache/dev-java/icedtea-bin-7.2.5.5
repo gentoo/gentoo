@@ -4,7 +4,7 @@ DESCRIPTION=A Gentoo-made binary build of the IcedTea JDK
 EAPI=5
 HOMEPAGE=http://icedtea.classpath.org
 IUSE=+X +alsa cjk +cups doc examples nsplugin pulseaudio selinux source webstart
-KEYWORDS=-* amd64 ~arm ~ppc x86
+KEYWORDS=-* amd64 ~arm ppc x86
 LICENSE=GPL-2-with-linking-exception
 PDEPEND=webstart? ( dev-java/icedtea-web:0[icedtea7] ) nsplugin? ( dev-java/icedtea-web:0[icedtea7,nsplugin] ) pulseaudio? ( dev-java/icedtea-sound )
 RDEPEND=>=media-libs/giflib-4.1.6-r1 >=media-libs/lcms-2.6:2 media-libs/libpng:0/16 >=sys-devel/gcc-4.8.4 >=sys-libs/glibc-2.20 >=sys-libs/zlib-1.2.3-r1 virtual/jpeg:62 X? ( >=net-print/cups-2.0 >=dev-libs/atk-2.12 >=dev-libs/glib-2.40:2 >=media-libs/fontconfig-2.11:1.0 >=media-libs/freetype-2.5.3:2 >=x11-libs/cairo-1.12 x11-libs/gdk-pixbuf:2 >=x11-libs/gtk+-2.24:2 >=x11-libs/libX11-1.6 >=x11-libs/libXext-1.3 >=x11-libs/libXi-1.7 >=x11-libs/libXrender-0.9.4 >=x11-libs/libXtst-1.2 >=x11-libs/pango-1.36 media-fonts/dejavu cjk? ( media-fonts/arphicfonts media-fonts/baekmuk-fonts media-fonts/lklug media-fonts/lohit-fonts media-fonts/sazanami ) ) alsa? ( >=media-libs/alsa-lib-1.0 ) cups? ( >=net-print/cups-2.0 ) selinux? ( sec-policy/selinux-java ) >=gnome-base/gsettings-desktop-schemas-3.12.2 >=dev-java/java-config-2.2.0 app-eselect/eselect-java
@@ -13,4 +13,4 @@ RESTRICT=strip
 SLOT=7
 SRC_URI=doc? ( http://dev.gentoo.org/~chewi/distfiles/icedtea-bin-doc-7.2.5.5.tar.xz ) source? ( http://dev.gentoo.org/~chewi/distfiles/icedtea-bin-src-7.2.5.5.tar.xz ) amd64? ( http://dev.gentoo.org/~chewi/distfiles/icedtea-bin-core-7.2.5.5-amd64.tar.xz examples? ( http://dev.gentoo.org/~chewi/distfiles/icedtea-bin-examples-7.2.5.5-amd64.tar.xz ) ) arm? ( http://dev.gentoo.org/~chewi/distfiles/icedtea-bin-core-7.2.5.5-arm.tar.xz examples? ( http://dev.gentoo.org/~chewi/distfiles/icedtea-bin-examples-7.2.5.5-arm.tar.xz ) ) ppc? ( http://dev.gentoo.org/~chewi/distfiles/icedtea-bin-core-7.2.5.5-ppc.tar.xz examples? ( http://dev.gentoo.org/~chewi/distfiles/icedtea-bin-examples-7.2.5.5-ppc.tar.xz ) ) x86? ( http://dev.gentoo.org/~chewi/distfiles/icedtea-bin-core-7.2.5.5-x86.tar.xz examples? ( http://dev.gentoo.org/~chewi/distfiles/icedtea-bin-examples-7.2.5.5-x86.tar.xz ) )
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	java-vm-2	caa0212cf1c60716fd4b3ab09268be3e	multilib	62927b3db3a589b0806255f3a002d5d3	pax-utils	dfe060cb70d89757fde5c1ff8405e950	prefix	21058c21ca48453d771df15500873ede	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=e939c804e90b3b5b59d278109f9586e3
+_md5_=d2ea76af3d7a850906ec4b289768bb00

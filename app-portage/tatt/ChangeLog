@@ -1,6 +1,12 @@
 # ChangeLog for app-portage/tatt
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/tatt/ChangeLog,v 1.12 2015/06/06 15:46:30 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/tatt/ChangeLog,v 1.13 2015/06/24 11:15:22 tomka Exp $
+
+*tatt-0.3 (24 Jun 2015)
+
+  24 Jun 2015; Thomas Kahle <tomka@gentoo.org> +tatt-0.3.ebuild,
+  -tatt-0.2.ebuild, tatt-9999.ebuild:
+  bump to 0.3, python-3 supported (hopefully)
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> tatt-0.2.ebuild,
   tatt-9999.ebuild:

@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/icedtea-sound
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/icedtea-sound/ChangeLog,v 1.5 2015/06/13 11:43:52 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/icedtea-sound/ChangeLog,v 1.6 2015/06/24 10:55:31 ago Exp $
+
+  24 Jun 2015; Agostino Sarubbo <ago@gentoo.org> icedtea-sound-1.0.1.ebuild:
+  Stable for ppc, wrt bug #537940
 
   13 Jun 2015; Agostino Sarubbo <ago@gentoo.org> icedtea-sound-1.0.1.ebuild:
   Stable for amd64, wrt bug #537940

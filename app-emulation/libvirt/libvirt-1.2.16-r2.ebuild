@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/libvirt-1.2.16-r1.ebuild,v 1.1 2015/06/24 09:48:26 tamiko Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/libvirt-1.2.16-r2.ebuild,v 1.1 2015/06/24 11:07:37 tamiko Exp $
 
 EAPI=5
 
@@ -227,7 +227,9 @@ src_prepare() {
 		) >.git-module-status
 	fi
 
-	epatch "${FILESDIR}"/${PN}-1.2.9-do_not_use_sysconf.patch
+	epatch \
+		"${FILESDIR}"/${PN}-1.2.9-do_not_use_sysconf.patch \
+		"${FILESDIR}"/${P}-fix_paths_in_libvirt-guests_sh.patch
 
 	[[ -n ${BACKPORTS} ]] && \
 		EPATCH_FORCE=yes EPATCH_SUFFIX="patch" \

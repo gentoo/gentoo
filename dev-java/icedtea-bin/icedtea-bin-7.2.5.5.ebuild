@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/icedtea-bin/icedtea-bin-7.2.5.5.ebuild,v 1.5 2015/06/13 11:43:46 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/icedtea-bin/icedtea-bin-7.2.5.5.ebuild,v 1.6 2015/06/24 10:55:27 ago Exp $
 
 EAPI="5"
 
@@ -24,7 +24,7 @@ done
 
 LICENSE="GPL-2-with-linking-exception"
 SLOT="7"
-KEYWORDS="-* amd64 ~arm ~ppc x86"
+KEYWORDS="-* amd64 ~arm ppc x86"
 
 IUSE="+X +alsa cjk +cups doc examples nsplugin pulseaudio selinux source webstart"
 REQUIRED_USE="nsplugin? ( X )"

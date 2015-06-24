@@ -1,6 +1,9 @@
 # ChangeLog for media-fonts/lklug
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/lklug/ChangeLog,v 1.10 2015/06/20 13:00:30 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/lklug/ChangeLog,v 1.11 2015/06/24 10:55:46 ago Exp $
+
+  24 Jun 2015; Agostino Sarubbo <ago@gentoo.org> lklug-0.6.ebuild:
+  Stable for ppc, wrt bug #537940
 
   20 Jun 2015; James Le Cuirot <chewi@gentoo.org> -lklug-0.5.4.ebuild,
   lklug-0.6.ebuild:
