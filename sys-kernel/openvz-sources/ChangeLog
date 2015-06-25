@@ -1,6 +1,13 @@
 # ChangeLog for sys-kernel/openvz-sources
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/openvz-sources/ChangeLog,v 1.245 2015/06/10 06:58:59 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/openvz-sources/ChangeLog,v 1.246 2015/06/25 12:45:32 maksbotan Exp $
+
+*openvz-sources-2.6.32.108.5 (25 Jun 2015)
+
+  25 Jun 2015; Maxim Koltsov <maksbotan@gentoo.org>
+  +openvz-sources-2.6.32.108.5.ebuild, -openvz-sources-2.6.32.108.2.ebuild:
+  Add 2.6.32.108.5 that fixes security issues
+  (https://bugzilla.openvz.org/show_bug.cgi?id=3256).
 
   10 Jun 2015; Patrick Lauer <patrick@gentoo.org> metadata.xml:
   Remove unneeded useflag description from metadata.xml
