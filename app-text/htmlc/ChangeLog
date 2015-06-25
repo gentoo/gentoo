@@ -1,6 +1,10 @@
 # ChangeLog for app-text/htmlc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/htmlc/ChangeLog,v 1.10 2015/06/18 08:45:33 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/htmlc/ChangeLog,v 1.11 2015/06/25 08:03:44 aballier Exp $
+
+  25 Jun 2015; Alexis Ballier <aballier@gentoo.org> files/werror.patch:
+  Patch Makefile and not Makefile.in otherwise this triggers a rebuild of
+  Makefile that needs htmlc to be installed first, bug #553172
 
   18 Jun 2015; Alexis Ballier <aballier@gentoo.org> htmlc-2.60.0.ebuild,
   +files/werror.patch:
