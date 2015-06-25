@@ -1,6 +1,6 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/easymock-classextension/easymock-classextension-3.2-r1.ebuild,v 1.2 2015/04/02 18:05:57 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/easymock-classextension/easymock-classextension-3.2-r1.ebuild,v 1.4 2015/06/25 15:09:50 ago Exp $
 
 EAPI="5"
 
@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge/easymock/EasyMock%20Class%20Extension/${PV}/${MY_P
 
 LICENSE="|| ( MIT Apache-2.0 )"
 SLOT="3.2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 CDEPEND="dev-java/easymock:${SLOT}"

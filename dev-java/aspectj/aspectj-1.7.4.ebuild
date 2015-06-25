@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/aspectj/aspectj-1.7.4.ebuild,v 1.2 2014/11/01 07:19:12 ercpe Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/aspectj/aspectj-1.7.4.ebuild,v 1.4 2015/06/25 15:09:42 ago Exp $
 
 EAPI="5"
 JAVA_PKG_IUSE="doc source"
@@ -13,7 +13,7 @@ SRC_URI="http://www.eclipse.org/downloads/download.php?file=/tools/${PN}/${P}-sr
 
 LICENSE="EPL-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 CDEPEND="dev-java/asm:4
 	dev-java/commons-logging:0"

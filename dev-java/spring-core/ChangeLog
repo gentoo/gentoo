@@ -1,6 +1,12 @@
 # ChangeLog for dev-java/spring-core
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/spring-core/ChangeLog,v 1.2 2015/06/25 09:41:10 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/spring-core/ChangeLog,v 1.4 2015/06/25 15:09:38 ago Exp $
+
+  25 Jun 2015; Agostino Sarubbo <ago@gentoo.org> spring-core-3.2.4.ebuild:
+  Stable for x86, wrt bug #553210
+
+  25 Jun 2015; Agostino Sarubbo <ago@gentoo.org> spring-core-3.2.4.ebuild:
+  Stable for amd64, wrt bug #553210
 
   25 Jun 2015; Patrice Clement <monsieurp@gentoo.org> spring-core-3.2.4.ebuild:
   Rearrange test dependencies. Remove a broken test.
