@@ -1,0 +1,41 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-process/atop/files/atopacct.rc,v 1.1 2015/06/25 21:13:42 polynomial-c Exp $
+
+description="Resource-specific view of processes"
+command="/usr/sbin/atopacctd"
+lockfile="/var/lock/subsys/atopacctd"
+
+start_pre() {
+	# Check if process accounting already in use via psacct
+        for PACCTFILE in /var/account/pacct /var/log/pacct ; do
+                if [ -f "${PACCTFILE}" ] ; then
+                        BEFORSIZE=$(stat -c %s "${PACCTFILE}")
+                        AFTERSIZE=$(stat -c %s "${PACCTFILE}")
+
+                        # verify if accounting file grows, so is in use
+                        if [ ${BEFORSIZE} -lt ${AFTERSIZE} ] ; then
+				ewarn "Process accounting already used by psacct!"
+				return 1
+			fi
+		fi
+	done
+
+	checkpath -d -q ${lockfile%/*} || return 1
+}
+
+start() {
+	ebegin "Starting atopacctd"
+	start-stop-daemon --start --exec ${command}
+	touch ${lockfile}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping atopacctd"
+	start-stop-daemon --stop --exec ${command}
+	rm ${lockfile}
+	eend $?
+}
+

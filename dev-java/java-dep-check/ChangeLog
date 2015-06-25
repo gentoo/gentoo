@@ -1,6 +1,12 @@
 # ChangeLog for dev-java/java-dep-check
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/java-dep-check/ChangeLog,v 1.8 2014/06/17 11:09:55 mrueg Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/java-dep-check/ChangeLog,v 1.9 2015/06/25 22:30:37 chewi Exp $
+
+*java-dep-check-0.3-r1 (25 Jun 2015)
+
+  25 Jun 2015; James Le Cuirot <chewi@gentoo.org> +java-dep-check-0.3-r1.ebuild,
+  -files/Main-0.2.java, -files/Main.java:
+  EAPI bump and rewrite using java-pkg-simple.
 
   17 Jun 2014; Manuel Rüger <mrueg@gentoo.org> -java-dep-check-0.1.ebuild,
   -java-dep-check-0.2.ebuild:

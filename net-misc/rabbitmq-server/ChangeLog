@@ -1,6 +1,11 @@
 # ChangeLog for net-misc/rabbitmq-server
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/rabbitmq-server/ChangeLog,v 1.50 2015/04/30 10:38:43 ultrabug Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/rabbitmq-server/ChangeLog,v 1.51 2015/06/25 21:51:29 zmedico Exp $
+
+*rabbitmq-server-3.5.3 (25 Jun 2015)
+
+  25 Jun 2015; Zac Medico <zmedico@gentoo.org> +rabbitmq-server-3.5.3.ebuild:
+  version bump (ebuild identical to 3.5.1)
 
 *rabbitmq-server-3.5.1 (30 Apr 2015)
 

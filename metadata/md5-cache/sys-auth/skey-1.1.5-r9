@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=dev-lang/perl app-arch/xz-utils
+DESCRIPTION=Linux Port of OpenBSD Single-key Password System
+EAPI=5
+HOMEPAGE=http://www.openbsd.org/faq/faq8.html#SKey
+IUSE=static-libs
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=BSD MIT RSA BEER-WARE
+RDEPEND=dev-lang/perl sys-libs/cracklib
+SLOT=0
+SRC_URI=mirror://gentoo/skey-1.1.5.tar.bz2 http://dev.gentoo.org/~ulm/distfiles/skey-1.1.5-patches-3.tar.xz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=8916871676ceb09c37b2c6358cddcb78
