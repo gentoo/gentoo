@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/mms-agent/mms-agent-3.3.0.183_p1.ebuild,v 1.1 2015/05/12 09:47:50 ultrabug Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/mms-agent/mms-agent-3.5.0.197_p1.ebuild,v 1.1 2015/06/25 11:10:48 ultrabug Exp $
 
 EAPI=5
 
