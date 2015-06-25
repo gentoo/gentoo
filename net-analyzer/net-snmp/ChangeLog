@@ -1,6 +1,9 @@
 # ChangeLog for net-analyzer/net-snmp
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/net-snmp/ChangeLog,v 1.309 2015/04/20 16:01:43 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/net-snmp/ChangeLog,v 1.310 2015/06/25 06:03:37 jer Exp $
+
+  25 Jun 2015; Jeroen Roovers <jer@gentoo.org> net-snmp-5.7.3.ebuild:
+  Depend on dev-lang/perl:=.
 
 *net-snmp-5.7.3 (20 Apr 2015)
 

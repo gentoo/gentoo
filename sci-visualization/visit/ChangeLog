@@ -1,6 +1,10 @@
 # ChangeLog for sci-visualization/visit
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-visualization/visit/ChangeLog,v 1.4 2015/06/25 04:26:41 slis Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-visualization/visit/ChangeLog,v 1.5 2015/06/25 06:14:26 slis Exp $
+
+  25 Jun 2015;  <slis@gentoo.org> +files/visit-2.9.0-cmakelist.patch,
+  visit-2.9.0.ebuild:
+  Installing header files (#552374)
 
   25 Jun 2015;  <slis@gentoo.org> visit-2.7.3.ebuild, visit-2.8.2.ebuild,
   visit-2.9.0.ebuild:

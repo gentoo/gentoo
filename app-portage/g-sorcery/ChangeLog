@@ -1,6 +1,9 @@
 # ChangeLog for app-portage/g-sorcery
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/g-sorcery/ChangeLog,v 1.14 2015/06/06 07:46:50 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/g-sorcery/ChangeLog,v 1.15 2015/06/25 05:32:27 jer Exp $
+
+  25 Jun 2015; Jeroen Roovers <jer@gentoo.org> g-sorcery-0.2.ebuild:
+  Mark ~hppa (bug #552330).
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml
