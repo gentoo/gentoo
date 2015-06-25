@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/quassel/quassel-9999.ebuild,v 1.85 2015/06/25 18:21:51 johu Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/quassel/quassel-0.12.2-r1.ebuild,v 1.1 2015/06/25 18:21:51 johu Exp $
 
 EAPI=5
 
@@ -14,7 +14,7 @@ HOMEPAGE="http://quassel-irc.org/"
 [[ "${PV}" == "9999" ]] || SRC_URI="http://quassel-irc.org/pub/${P}.tar.bz2"
 
 LICENSE="GPL-3"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~sparc-solaris"
 SLOT="0"
 IUSE="ayatana crypt dbus debug kde monolithic phonon postgres qt5 +server +ssl syslog webkit X"
 
@@ -97,7 +97,7 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS ChangeLog README )
 
-PATCHES=( "${FILESDIR}/${PN}-0.12.2-qt55.patch" )
+PATCHES=( "${FILESDIR}/${P}-qt55.patch" )
 
 REQUIRED_USE="
 	|| ( X server monolithic )
