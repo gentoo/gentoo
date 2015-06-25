@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/ipmitool/ipmitool-1.8.14-r1.ebuild,v 1.2 2015/06/11 15:07:59 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/ipmitool/ipmitool-1.8.14-r1.ebuild,v 1.3 2015/06/25 05:11:05 jer Exp $
 
 EAPI=4
 inherit eutils
@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
 #IUSE="freeipmi openipmi status"
 IUSE="openipmi static"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ia64 ~ppc ~x86"
+KEYWORDS="amd64 hppa ~ia64 ~ppc ~x86"
 LICENSE="BSD"
 
 RDEPEND="dev-libs/openssl"
