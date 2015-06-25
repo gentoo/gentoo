@@ -3,7 +3,7 @@ DEPEND=app-arch/xz-utils >=sys-libs/ncurses-5.2-r5 debug? ( sdl? ( media-libs/li
 DESCRIPTION=GNU GRUB boot loader
 EAPI=5
 HOMEPAGE=http://www.gnu.org/software/grub/
-IUSE=debug device-mapper doc efiemu +fonts mount +multislot nls static sdl test +themes truetype libzfs grub_platforms_emu grub_platforms_qemu-mips grub_platforms_loongson grub_platforms_ieee1275 grub_platforms_coreboot grub_platforms_multiboot grub_platforms_efi-32 grub_platforms_pc grub_platforms_qemu grub_platforms_xen grub_platforms_efi-64
+IUSE=debug device-mapper doc efiemu +fonts mount +multislot nls static sdl test +themes truetype libzfs grub_platforms_coreboot grub_platforms_efi-32 grub_platforms_efi-64 grub_platforms_emu grub_platforms_ieee1275 grub_platforms_loongson grub_platforms_multiboot grub_platforms_qemu grub_platforms_qemu-mips grub_platforms_pc grub_platforms_uboot grub_platforms_xen
 LICENSE=GPL-3 fonts? ( GPL-2-with-font-exception ) themes? ( BitstreamVera )
 RDEPEND=app-arch/xz-utils >=sys-libs/ncurses-5.2-r5 debug? ( sdl? ( media-libs/libsdl ) ) device-mapper? ( >=sys-fs/lvm2-2.02.45 ) libzfs? ( sys-fs/zfs ) mount? ( sys-fs/fuse ) truetype? ( media-libs/freetype:2= ) ppc? ( sys-apps/ibm-powerpc-utils sys-apps/powerpc-utils ) ppc64? ( sys-apps/ibm-powerpc-utils sys-apps/powerpc-utils ) kernel_linux? ( grub_platforms_efi-32? ( sys-boot/efibootmgr ) grub_platforms_efi-64? ( sys-boot/efibootmgr ) ) !multislot? ( !sys-boot/grub:0 ) nls? ( sys-devel/gettext )
 REQUIRED_USE=grub_platforms_coreboot? ( fonts ) grub_platforms_qemu? ( fonts ) grub_platforms_ieee1275? ( fonts ) grub_platforms_loongson? ( fonts )
@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=2
 SRC_URI=fonts? ( mirror://gnu/unifont/unifont-7.0.06/unifont-7.0.06.pcf.gz ) themes? ( mirror://sourceforge/dejavu/dejavu-sans-ttf-2.34.zip )
 _eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	bash-completion-r1	c8399c7c7ecbcf7ed6e5bd3abb3d4af3	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	git-r3	ab80045e5d080584334f33013f4df21d	libtool	52d0e17251d04645ffaa61bfdd858944	mount-boot	02dd3bb4c5f025fef0fc3ade0f27c217	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	pax-utils	dfe060cb70d89757fde5c1ff8405e950	python-any-r1	da352ea9da8eb9bf158d56cca65d6c82	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=6a230ce2f1ddb46943c1f65d22ab145b
+_md5_=be1a3978ae0e554f28b85b84dfa698e4

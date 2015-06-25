@@ -1,10 +1,13 @@
 # ChangeLog for profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10148 2015/06/24 20:24:13 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10149 2015/06/25 00:12:54 floppym Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  25 Jun 2015; Mike Gilbert <floppym@gentoo.org> desc/grub_platforms.desc:
+  Add uboot platform.
 
   24 Jun 2015; Pacho Ramos <pacho@gentoo.org> package.mask:
   Mask old splitted system-config-printer versions for removal

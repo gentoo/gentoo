@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation.
+# Copyright 1999-2015 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/desc/grub_platforms.desc,v 1.6 2014/06/06 12:47:38 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/desc/grub_platforms.desc,v 1.7 2015/06/25 00:12:54 floppym Exp $
 
 # This file contains descriptions of GRUB_PLATFORMS USE_EXPAND flags.
 
@@ -17,5 +17,6 @@ multiboot - Multiboot platform support
 pc - PC platform support
 qemu - QEMU platform support
 qemu-mips - QEMU MIPS platform support
+uboot - U-Boot platform support
 yeeloong - YEEELONG MIPS platform support
 xen - XEN (pvgrub2) platform support

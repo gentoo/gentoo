@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/layman/layman-9999.ebuild,v 1.42 2015/04/25 13:57:49 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/layman/layman-9999.ebuild,v 1.43 2015/06/25 00:24:51 floppym Exp $
 
 EAPI="5"
 
@@ -57,6 +57,7 @@ pkg_setup() {
 }
 
 python_prepare_all()  {
+	python_setup
 	esetup.py setup_plugins
 	distutils-r1_python_prepare_all
 	eprefixify etc/layman.cfg layman/config.py

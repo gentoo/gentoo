@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/grub/grub-2.02_beta2-r7.ebuild,v 1.11 2015/04/08 20:32:47 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/grub/grub-2.02_beta2-r7.ebuild,v 1.12 2015/06/25 00:12:06 floppym Exp $
 
 EAPI=5
 
@@ -47,18 +47,7 @@ LICENSE="GPL-3 fonts? ( GPL-2-with-font-exception ) themes? ( BitstreamVera )"
 SLOT="2"
 IUSE="debug device-mapper doc efiemu +fonts mount +multislot nls static sdl test +themes truetype libzfs"
 
-GRUB_ALL_PLATFORMS=(
-	# everywhere:
-	emu
-	# mips only:
-	qemu-mips loongson
-	# amd64, x86, ppc, ppc64:
-	ieee1275
-	# amd64, x86:
-	coreboot multiboot efi-32 pc qemu xen
-	# amd64, ia64:
-	efi-64
-)
+GRUB_ALL_PLATFORMS=( coreboot efi-32 efi-64 emu ieee1275 loongson multiboot qemu qemu-mips pc uboot xen )
 IUSE+=" ${GRUB_ALL_PLATFORMS[@]/#/grub_platforms_}"
 
 REQUIRED_USE="
@@ -245,11 +234,10 @@ src_configure() {
 	use static && HOST_LDFLAGS+=" -static"
 
 	tc-ld-disable-gold #439082 #466536 #526348
-	export TARGET_LDFLAGS+=" ${LDFLAGS}"
+	export TARGET_LDFLAGS="${TARGET_LDFLAGS} ${LDFLAGS}"
 	unset LDFLAGS
 
-	tc-export CC NM OBJCOPY STRIP
-	export TARGET_CC=${TARGET_CC:-${CC}}
+	tc-export CC NM OBJCOPY RANLIB STRIP
 	tc-export BUILD_CC # Bug 485592
 
 	# Portage will take care of cleaning up GRUB_PLATFORMS
