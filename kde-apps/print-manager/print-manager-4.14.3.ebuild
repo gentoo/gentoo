@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-apps/print-manager/print-manager-4.14.3.ebuild,v 1.1 2015/06/04 18:44:43 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-apps/print-manager/print-manager-4.14.3.ebuild,v 1.2 2015/06/25 15:59:38 johu Exp $
 
 EAPI=5
 
@@ -17,8 +17,7 @@ RDEPEND="${DEPEND}
 	!kde-base/printer-applet:4
 	!kde-base/system-config-printer-kde:4
 	!kde-misc/print-manager
-	gtk? ( || ( app-admin/system-config-printer-gnome
-			app-admin/system-config-printer ) )
+	gtk? ( app-admin/system-config-printer )
 "
 
 pkg_postinst(){
