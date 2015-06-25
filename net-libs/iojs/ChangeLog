@@ -1,6 +1,12 @@
 # ChangeLog for net-libs/iojs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/iojs/ChangeLog,v 1.21 2015/06/15 11:53:24 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/iojs/ChangeLog,v 1.22 2015/06/25 18:44:42 mgorny Exp $
+
+*iojs-2.3.1 (25 Jun 2015)
+
+  25 Jun 2015; Michał Górny <mgorny@gentoo.org> +iojs-2.3.1.ebuild:
+  Version bump with upstream fix for bug #552232. https://github.com/gentoo
+  /gentoo-portage-rsync-mirror/pull/153 by jbergstroem.
 
 *iojs-2.3.0 (15 Jun 2015)
 

@@ -1,6 +1,9 @@
 # ChangeLog for dev-go/go-net
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-go/go-net/ChangeLog,v 1.7 2015/06/09 06:52:46 zmedico Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-go/go-net/ChangeLog,v 1.8 2015/06/25 19:24:07 williamh Exp $
+
+  25 Jun 2015; William Hubbs <williamh@gentoo.org> go-net-9999.ebuild:
+  Convert live ebuild to the new eclasses
 
   09 Jun 2015; Zac Medico <zmedico@gentoo.org> go-net-1.4.2_p20150604.ebuild:
   Disable TestNonPrivilegedPing for 1.4.2_p20150604.
