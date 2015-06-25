@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-visualization/visit/visit-2.8.2.ebuild,v 1.2 2015/04/02 18:33:35 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-visualization/visit/visit-2.8.2.ebuild,v 1.3 2015/06/25 04:26:41 slis Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
@@ -24,7 +24,7 @@ RDEPEND="
 	hdf5? ( sci-libs/hdf5 )
 	netcdf? ( sci-libs/netcdf )
 	silo? ( sci-libs/silo )
-	>=sci-libs/vtk-6.0.0[imaging,mpi?,python,rendering,${PYTHON_USEDEP}]
+	>=sci-libs/vtk-6.0.0[imaging,mpi?,python,rendering,qt4,${PYTHON_USEDEP}]
 	sys-libs/zlib"
 DEPEND="${RDEPEND}"
 
@@ -36,6 +36,15 @@ PATCHES=(
 	"${FILESDIR}/${P}-vtklibs.patch"
 	"${FILESDIR}/${P}-dont_symlink_visit_dir.patch"
 )
+
+src_prepare() {
+	for p in ${PATCHES[@]} ; do
+		epatch "${p}"
+	done
+	if use mpi ; then
+		epatch "${FILESDIR}/${P}-vtkmpi.patch"
+	fi
+}
 
 src_configure() {
 	local mycmakeargs=(
