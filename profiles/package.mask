@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16635 2015/06/24 20:24:14 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16636 2015/06/25 06:52:23 mr_bones_ Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -29,6 +29,12 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Michael Sterrett <mr_bones_@gentoo.org> (25 Jun 2015)
+# Upstream seems dead; no release since 2006
+# lots of bugs: #252719, #315255, #314459, #159630, #376589, #420783, #540928
+# Masked for removal on 20150725
+games-fps/tremulous
 
 # Pacho Ramos <pacho@gentoo.org> (24 Jun 2015)
 # Replaced by app-admin/system-config-printer, to migrate

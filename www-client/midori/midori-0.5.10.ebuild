@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/midori/midori-0.5.10.ebuild,v 1.1 2015/06/24 20:48:23 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/midori/midori-0.5.10.ebuild,v 1.2 2015/06/25 06:55:19 polynomial-c Exp $
 
 EAPI=5
 
@@ -77,6 +77,7 @@ src_unpack() {
 }
 
 src_prepare() {
+	epatch "${FILESDIR}/${P}-fix-webkit2-build-breakage.patch"
 	vala_src_prepare
 	sed -i -e '/install/s:COPYING:HACKING TODO TRANSLATE:' CMakeLists.txt || die
 }

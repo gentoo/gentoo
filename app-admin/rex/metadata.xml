@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>erkiferenc@gmail.com</email>
+		<name>Ferenc Erki</name>
+	</maintainer>
 	<maintainer>
 		<email>patrick@gentoo.org</email>
 		<name>Patrick Lauer</name>

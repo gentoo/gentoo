@@ -11,4 +11,4 @@ REQUIRED_USE=granite? ( !deprecated ) introspection? ( deprecated ) webkit2? ( !
 SLOT=0
 SRC_URI=http://www.midori-browser.org/downloads/midori_0.5.10_all_.tar.bz2
 _eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	flag-o-matic	c9602887773166fe300444712fc7ff98	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	pax-utils	dfe060cb70d89757fde5c1ff8405e950	python-any-r1	da352ea9da8eb9bf158d56cca65d6c82	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	vala	09bc7da1a93142c9eb90786e6f6b39d2
-_md5_=243f091c6c272ffba79f723e4476fe00
+_md5_=d4247591bc0118f83569b6790aa3db8b
