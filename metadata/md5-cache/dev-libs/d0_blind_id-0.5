@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=dev-libs/gmp virtual/pkgconfig
+DEPEND=dev-libs/gmp:0 virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Blind-ID library for user identification using RSA blind signatures
-EAPI=4
+EAPI=5
 HOMEPAGE=http://git.xonotic.org/?p=xonotic/d0_blind_id.git;a=summary
 IUSE=static-libs
 KEYWORDS=amd64 x86
 LICENSE=BSD
-RDEPEND=dev-libs/gmp
+RDEPEND=dev-libs/gmp:0
 SLOT=0
 SRC_URI=mirror://github/divVerent/d0_blind_id/d0_blind_id-0.5.tar.gz
 _eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=56e585b68edbbdf614f0ca099855361f
+_md5_=d757b668fefb8a10bbee569181ab77c4

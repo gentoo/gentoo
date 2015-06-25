@@ -1,6 +1,11 @@
 # ChangeLog for gnome-base/gnome-control-center
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-control-center/ChangeLog,v 1.168 2015/06/21 12:05:32 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-control-center/ChangeLog,v 1.169 2015/06/25 02:44:53 tetromino Exp $
+
+  25 Jun 2015; Alexandre Rostovtsev <tetromino@gentoo.org>
+  gnome-control-center-3.14.2-r1.ebuild:
+  Allow system-config-printer dep in old ebuild (bug #553198, thanks to Patrick
+  Lauer).
 
   21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org>
   gnome-control-center-3.14.5.ebuild:

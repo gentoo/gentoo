@@ -1,8 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/d0_blind_id/d0_blind_id-0.5.ebuild,v 1.5 2012/05/04 18:35:54 jdhore Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/d0_blind_id/d0_blind_id-0.5.ebuild,v 1.6 2015/06/25 03:25:18 mr_bones_ Exp $
 
-EAPI=4
+EAPI=5
+AUTOTOOLS_AUTORECONF=1
 inherit autotools-utils
 
 DESCRIPTION="Blind-ID library for user identification using RSA blind signatures"
@@ -14,24 +15,26 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="static-libs"
 
-RDEPEND="dev-libs/gmp"
+RDEPEND="dev-libs/gmp:0"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 DOCS=( d0_blind_id.txt )
 
-AUTOTOOLS_IN_SOURCE_BUILD=1
+src_prepare() {
+	# fix out-of-source build
+	sed -i \
+		-e 's, d0_rijndael.c, "$srcdir/d0_rijndael.c",' \
+		configure.ac || die
+
+	autotools-utils_src_prepare
+}
 
 src_configure() {
 	local myeconfargs=(
 		--enable-rijndael
 		--without-openssl
 		--without-tommath
-		$(use_enable static-libs static)
 	)
 	autotools-utils_src_configure
-}
-
-src_install() {
-	autotools-utils_src_install
 }
