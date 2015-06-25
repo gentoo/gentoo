@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-perl/HTML-Parser virtual/perl-Carp virtual/perl-ExtUtils-MakeMaker test? ( dev-perl/CGI ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=Populates HTML Forms with data
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/HTML-FillInForm/
+IUSE=test
+KEYWORDS=~amd64 ~arm ~ppc ~x86 ~x86-fbsd
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/HTML-Parser virtual/perl-Carp dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/M/MA/MARKSTOS/HTML-FillInForm-2.21.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=73dc3181257dc3e7cc42916c1fa58dde
