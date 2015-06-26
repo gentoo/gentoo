@@ -1,6 +1,11 @@
 # ChangeLog for www-servers/tornado
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/tornado/ChangeLog,v 1.77 2015/06/07 09:08:31 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/tornado/ChangeLog,v 1.78 2015/06/26 12:49:52 jlec Exp $
+
+*tornado-4.2 (26 Jun 2015)
+
+  26 Jun 2015; Justin Lecher <jlec@gentoo.org> +tornado-4.2.ebuild:
+  Version Bump
 
   07 Jun 2015; Markus Meier <maekke@gentoo.org> tornado-4.1.0.ebuild,
   tornado-4.1.0-r1.ebuild, tornado-4.2.0_beta1.ebuild:

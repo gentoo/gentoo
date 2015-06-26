@@ -1,6 +1,11 @@
 # ChangeLog for dev-java/xmlunit
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xmlunit/ChangeLog,v 1.23 2015/06/09 14:06:27 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xmlunit/ChangeLog,v 1.24 2015/06/26 12:31:35 monsieurp Exp $
+
+*xmlunit-1.6 (26 Jun 2015)
+
+  26 Jun 2015; Patrice Clement <monsieurp@gentoo.org> +xmlunit-1.6.ebuild:
+  Version bump. Fix bug 403851.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

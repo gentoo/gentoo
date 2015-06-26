@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/opengl alsa? ( media-libs/alsa-lib[alisp] ) gtk? ( x11-libs/gtk+:2 ) openal? ( media-libs/openal ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=Cross-platform windowing and multimedia library for Python
+EAPI=5
+HOMEPAGE=http://www.pyglet.org/
+IUSE=alsa examples gtk +openal python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 test
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=BSD
+RDEPEND=virtual/opengl alsa? ( media-libs/alsa-lib[alisp] ) gtk? ( x11-libs/gtk+:2 ) openal? ( media-libs/openal ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://pypi/p/pyglet/pyglet-1.2.3.tar.gz http://pyglet.googlecode.com/files/pyglet-1.2.3.tar.gz
+_eclasses_=distutils-r1	c01d5c4af34f4a37a51fc9638299c222	eutils	9fb270e417e0e83d64ca52586c4a79de	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-r1	6d3a3cb5705b9fff1aeb7cfa4e3336fe	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	virtualx	73cfc129b4b9ba23aed1abb10c825d86
+_md5_=70601961167e55573a8b4ed1d5c280c2

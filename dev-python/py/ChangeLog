@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/py
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/py/ChangeLog,v 1.196 2015/06/26 01:22:50 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/py/ChangeLog,v 1.197 2015/06/26 12:42:33 jlec Exp $
+
+*py-1.4.30 (26 Jun 2015)
+
+  26 Jun 2015; Justin Lecher <jlec@gentoo.org> +py-1.4.30.ebuild:
+  Version Bump
 
 *py-1.4.29 (26 Jun 2015)
 
