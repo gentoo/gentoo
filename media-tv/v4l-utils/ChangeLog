@@ -1,6 +1,9 @@
 # ChangeLog for media-tv/v4l-utils
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/v4l-utils/ChangeLog,v 1.44 2014/12/03 08:45:47 aballier Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-tv/v4l-utils/ChangeLog,v 1.45 2015/06/26 14:29:14 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> v4l-utils-1.6.2.ebuild:
+  Stable for amd64, wrt bug #552014
 
   03 Dec 2014; Alexis Ballier <aballier@gentoo.org> v4l-utils-1.6.2.ebuild:
   pass --without-jpeg as this only applies to the lib, bug #531458

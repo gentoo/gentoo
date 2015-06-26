@@ -4,7 +4,7 @@ DESCRIPTION=Intelligent Input Bus for Linux / Unix OS
 EAPI=5
 HOMEPAGE=http://code.google.com/p/ibus/
 IUSE=deprecated gconf gtk +gtk3 +introspection nls +python test vala wayland +X python_targets_python2_7 test
-KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+KEYWORDS=~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
 LICENSE=LGPL-2.1
 RDEPEND=>=dev-libs/glib-2.26:2 gnome-base/librsvg:2 sys-apps/dbus[X?] app-text/iso-codes >=gnome-base/dconf-0.13.4 x11-libs/libnotify gconf? ( >=gnome-base/gconf-2.12:2 ) gtk? ( x11-libs/gtk+:2 ) gtk3? ( x11-libs/gtk+:3 ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] ) X? ( x11-libs/libX11 x11-libs/gtk+:2 ) introspection? ( >=dev-libs/gobject-introspection-0.6.8 ) nls? ( virtual/libintl ) wayland? ( dev-libs/wayland ) x11-apps/setxkbmap python? ( dev-python/pyxdg deprecated? ( >=dev-python/dbus-python-0.83 dev-python/pygobject:2 dev-python/pygtk:2 ) gtk3? ( dev-python/pygobject:3 x11-libs/gdk-pixbuf:2[introspection] x11-libs/pango[introspection] x11-libs/gtk+:3[introspection] ) )
 REQUIRED_USE=|| ( gtk gtk3 X ) deprecated? ( python ) vala? ( introspection ) python? ( python_targets_python2_7 || ( deprecated ( gtk3 introspection ) ) )
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/ibus/ibus/releases/download/1.5.10/ibus-1.5.10.tar.gz
 _eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	bash-completion-r1	c8399c7c7ecbcf7ed6e5bd3abb3d4af3	eutils	9fb270e417e0e83d64ca52586c4a79de	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	7a178335dbd6ea7f50ed4e3e1c13c1e4	python-utils-r1	096f8247eae93026af13ab88cf4305cd	readme.gentoo	106edea5533517715013de909a333abd	toolchain-funcs	42408102d713fbad60ca21349865edb4	vala	09bc7da1a93142c9eb90786e6f6b39d2	virtualx	73cfc129b4b9ba23aed1abb10c825d86
-_md5_=f810ff210f7797ef8c61eb142246b987
+_md5_=72ff1cc1ab828c3308a6d0c94084c46b

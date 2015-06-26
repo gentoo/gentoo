@@ -1,6 +1,12 @@
 # ChangeLog for sys-libs/db
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/db/ChangeLog,v 1.376 2015/05/29 06:31:25 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/db/ChangeLog,v 1.377 2015/06/26 13:40:34 polynomial-c Exp $
+
+*db-6.1.26 (26 Jun 2015)
+
+  26 Jun 2015; Lars Wendler <polynomial-c@gentoo.org> -db-6.1.19.ebuild,
+  +db-6.1.26.ebuild:
+  Version bump. Removed old.
 
 *db-6.1.23 (29 May 2015)
 

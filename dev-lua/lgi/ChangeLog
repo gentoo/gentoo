@@ -1,6 +1,9 @@
 # ChangeLog for dev-lua/lgi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lua/lgi/ChangeLog,v 1.11 2015/06/11 01:10:11 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lua/lgi/ChangeLog,v 1.12 2015/06/26 14:28:54 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> lgi-0.9.0.ebuild:
+  Stable for amd64, wrt bug #551996
 
 *lgi-0.9.0 (11 Jun 2015)
 

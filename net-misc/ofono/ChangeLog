@@ -1,6 +1,9 @@
 # ChangeLog for net-misc/ofono
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/ofono/ChangeLog,v 1.66 2015/06/21 07:16:51 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ofono/ChangeLog,v 1.67 2015/06/26 14:28:49 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> ofono-1.16.ebuild:
+  Stable for amd64, wrt bug #552008
 
   21 Jun 2015; Pacho Ramos <pacho@gentoo.org> ofono-1.16.ebuild:
   ppc/sparc keyword, bug #543354

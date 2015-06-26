@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/motion/motion-3.2.12-r3.ebuild,v 1.1 2015/06/24 20:08:42 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/motion/motion-3.2.12-r3.ebuild,v 1.2 2015/06/26 14:28:22 ago Exp $
 
 EAPI=5
 inherit autotools eutils readme.gentoo user
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ppc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ppc ~x86"
 IUSE="ffmpeg libav mysql postgres +v4l"
 
 RDEPEND="

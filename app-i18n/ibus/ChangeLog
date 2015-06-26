@@ -1,6 +1,9 @@
 # ChangeLog for app-i18n/ibus
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus/ChangeLog,v 1.159 2015/06/07 07:58:02 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus/ChangeLog,v 1.160 2015/06/26 14:28:44 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> ibus-1.5.10.ebuild:
+  Stable for amd64, wrt bug #551062
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

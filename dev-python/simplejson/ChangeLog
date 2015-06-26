@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/simplejson
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/simplejson/ChangeLog,v 1.152 2015/06/14 07:53:43 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/simplejson/ChangeLog,v 1.153 2015/06/26 14:29:55 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> simplejson-3.7.2.ebuild:
+  Stable for amd64, wrt bug #552062
 
   14 Jun 2015; Ian Delaney <idella4@gentoo.org> -simplejson-3.6.5.ebuild,
   -simplejson-3.7.1.ebuild:

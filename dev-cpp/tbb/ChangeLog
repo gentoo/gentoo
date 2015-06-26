@@ -1,6 +1,9 @@
 # ChangeLog for dev-cpp/tbb
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/tbb/ChangeLog,v 1.53 2015/06/15 17:08:07 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/tbb/ChangeLog,v 1.54 2015/06/26 14:29:39 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> tbb-4.3.20141023.ebuild:
+  Stable for amd64, wrt bug #552218
 
 *tbb-4.3.20150611 (15 Jun 2015)
 

@@ -1,6 +1,9 @@
 # ChangeLog for games-puzzle/enigma
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/enigma/ChangeLog,v 1.60 2015/05/15 22:19:15 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/enigma/ChangeLog,v 1.61 2015/06/26 14:29:50 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> enigma-1.21-r1.ebuild:
+  Stable for amd64, wrt bug #552154
 
 *enigma-1.21-r1 (15 May 2015)
 

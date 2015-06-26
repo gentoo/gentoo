@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/httpcomponents-client
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/httpcomponents-client/ChangeLog,v 1.6 2015/06/26 07:56:43 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/httpcomponents-client/ChangeLog,v 1.7 2015/06/26 14:01:11 monsieurp Exp $
+
+  26 Jun 2015; Patrice Clement <monsieurp@gentoo.org> metadata.xml:
+  Remove unused USE flag in metadata.xml and clear QA warning.
 
   26 Jun 2015; Patrice Clement <monsieurp@gentoo.org>
   -httpcomponents-client-4.3.1-r1.ebuild:

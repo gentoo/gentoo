@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libv4l/libv4l-1.6.2.ebuild,v 1.1 2014/11/25 17:48:26 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libv4l/libv4l-1.6.2.ebuild,v 1.2 2015/06/26 14:29:10 ago Exp $
 
 EAPI=5
 inherit eutils linux-info multilib-minimal
@@ -13,7 +13,7 @@ SRC_URI="http://linuxtv.org/downloads/v4l-utils/${MY_P}.tar.bz2"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="jpeg"
 
 # The libraries only link to -ljpeg, therefore multilib depend only for virtual/jpeg.
