@@ -4742,7 +4742,6 @@ net-analyzer/icinga-web:pnp - Enables pnp4nagios integration
 net-analyzer/icinga2:classicui - Adds support for the old interface
 net-analyzer/icinga2:nano-syntax - Adds support for syntax used in the nano editor
 net-analyzer/icinga2:plugins - Adds support for nagios plugins
-net-analyzer/linkchecker:login - login form submission
 net-analyzer/linkchecker:sqlite - Mozilla Bookmark parsing
 net-analyzer/metasploit:development - Install dependencies needed for metasploit and exploit development
 net-analyzer/metasploit:lorcon - Enable lorcon for raw packet injection

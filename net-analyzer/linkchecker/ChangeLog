@@ -1,6 +1,10 @@
 # ChangeLog for net-analyzer/linkchecker
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/linkchecker/ChangeLog,v 1.104 2015/06/26 09:03:42 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/linkchecker/ChangeLog,v 1.105 2015/06/26 09:31:28 jlec Exp $
+
+  26 Jun 2015; Justin Lecher <jlec@gentoo.org> -linkchecker-9.2.ebuild,
+  metadata.xml:
+  Cleaned old; obsoletes bug #508314 and bug #521336
 
   26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> linkchecker-9.3-r1.ebuild:
   Stable for x86, wrt bug #552822
