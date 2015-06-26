@@ -5,7 +5,7 @@ EAPI=5
 HOMEPAGE=https://github.com/icing/mod_h2
 IUSE=ssl
 LICENSE=Apache-2.0
-RDEPEND=>=net-libs/nghttp2-1.0 ssl? ( www-servers/apache[alpn] ) || ( www-servers/apache[apache2_mpms_worker] www-servers/apache[apache2_mpms_event] www-servers/apache[threads,-apache2_mpms_prefork,-apache2_mpms_peruser] ) =www-servers/apache-2.4*
+RDEPEND=>=net-libs/nghttp2-1.0 ssl? ( www-servers/apache[alpn] ) =www-servers/apache-2.4*
 SLOT=0
 _eclasses_=apache-module	5c4c90da2d68c2dc8391666824f1293c	depend.apache	1a38534d3f755d1ab1d92ce120bd7dbd	git-2	e28f0d8a9b321431b1e699782851b827	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=ee8380bdc8f19d0280f2c5ca83b2652b
+_md5_=cb84de9cd0011c048e26c0c226bcae13

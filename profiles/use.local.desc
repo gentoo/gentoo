@@ -883,6 +883,7 @@ app-misc/gourmet:web - >app-misc/gourmet-0.16 Enable support for the web import 
 app-misc/gramps:reports - All external software that is needed for graphical reports will be installed
 app-misc/gramps:webkit - Use Webkit-based rendering for geographical data view.
 app-misc/graphlcd-base:g15 - Add support for app-misc/g15daemon driver (e.g. Logitech G15 Keybord)
+app-misc/irtrans-irserver:mono - Enable mono support
 app-misc/lcd-stuff:mpd - Add support for display of mpd controlled music (media-libs/libmpd)
 app-misc/lcd4linux:mpd - Add support for display of mpd controlled music (media-libs/libmpd)
 app-misc/lcdproc:ftdi - Enable support for FTDI connections in some selected LCD_DEVICES (currently hd44780)

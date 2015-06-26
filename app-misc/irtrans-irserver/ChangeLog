@@ -1,6 +1,13 @@
 # ChangeLog for app-misc/irtrans-irserver
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/irtrans-irserver/ChangeLog,v 1.10 2013/03/17 15:02:53 hwoarang Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/irtrans-irserver/ChangeLog,v 1.11 2015/06/26 02:28:23 idella4 Exp $
+
+*irtrans-irserver-6.09.04 (26 Jun 2015)
+
+  26 Jun 2015; Ian Delaney <idella4@gentoo.org>
+  +irtrans-irserver-6.09.04.ebuild, metadata.xml:
+  bump; ebuild submitted by proxy maintainer via bug #360945, EAPI advanced to 5
+  with minor tidies to match, new IUSE flag 'mono' added to metadata.xml
 
   17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
   Add proxy-maintainers to metadata.xml

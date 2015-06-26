@@ -1,9 +1,9 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/liblzw/liblzw-0.1.2.ebuild,v 1.5 2008/12/07 12:02:55 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/liblzw/liblzw-0.1.2.ebuild,v 1.6 2015/06/26 01:38:59 vapier Exp $
 
 DESCRIPTION="small C library for reading LZW compressed files (.Z)"
-HOMEPAGE="http://freestdf.sourceforge.net/liblzw.php"
+HOMEPAGE="https://github.com/vapier/liblzw"
 SRC_URI="mirror://sourceforge/freestdf/${P}.tar.bz2"
 
 LICENSE="public-domain"

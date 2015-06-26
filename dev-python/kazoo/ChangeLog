@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/kazoo
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/kazoo/ChangeLog,v 1.9 2015/06/23 06:30:08 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/kazoo/ChangeLog,v 1.10 2015/06/26 01:53:09 radhermit Exp $
+
+  26 Jun 2015; Tim Harder <radhermit@gentoo.org> kazoo-2.2.1.ebuild:
+  Drop app-arch/unzip dep.
 
 *kazoo-2.2.1 (23 Jun 2015)
 

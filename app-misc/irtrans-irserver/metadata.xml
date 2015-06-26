@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>proxy-maintainers</herd>
-<maintainer>
-<email>mario.fetka@gmail.com</email>
-<name>Mario Fetka</name>
-<description>Proxied maintainer</description>
-</maintainer>
-
-<maintainer>
-<email>hd_brummy@gentoo.org</email>
-<name>Joerg Bornkessel</name>
-<description>Proxying maintainer</description>
-</maintainer>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>mario.fetka@gmail.com</email>
+		<name>Mario Fetka</name>
+		<description>Proxied maintainer</description>
+	</maintainer>
+	<maintainer>
+		<email>hd_brummy@gentoo.org</email>
+		<name>Joerg Bornkessel</name>
+		<description>Proxying maintainer</description>
+		</maintainer>
+	<use>
+		<flag name='mono'>Enable mono support</flag>
+	</use>
 </pkgmetadata>
 
