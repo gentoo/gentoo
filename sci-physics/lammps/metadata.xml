@@ -23,5 +23,6 @@
   <herd>sci-physics</herd>
   <maintainer>
     <email>nicolasbock@gentoo.org</email>
+	<name>Nicolas Bock</name>
   </maintainer>
 </pkgmetadata>
