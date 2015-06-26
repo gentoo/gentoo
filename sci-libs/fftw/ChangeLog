@@ -1,6 +1,10 @@
 # ChangeLog for sci-libs/fftw
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/fftw/ChangeLog,v 1.172 2015/02/28 14:13:56 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/fftw/ChangeLog,v 1.173 2015/06/26 14:43:16 radhermit Exp $
+
+  26 Jun 2015; Tim Harder <radhermit@gentoo.org> fftw-2.1.5-r8.ebuild,
+  fftw-3.3.4.ebuild:
+  Fix LICENSE, it's actually GPL-2 or later.
 
   28 Feb 2015; Justin Lecher <jlec@gentoo.org> -fftw-3.3.3-r2.ebuild:
   Drop old

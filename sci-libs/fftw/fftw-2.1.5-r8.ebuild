@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/fftw/fftw-2.1.5-r8.ebuild,v 1.18 2014/08/28 15:44:22 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/fftw/fftw-2.1.5-r8.ebuild,v 1.19 2015/06/26 14:43:16 radhermit Exp $
 
 EAPI=4
 
@@ -16,7 +16,7 @@ DEPEND="mpi? ( virtual/mpi )"
 RDEPEND="${DEPEND}"
 
 SLOT="2.1"
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 IUSE="doc float fortran mpi openmp threads static-libs"
 
 KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
