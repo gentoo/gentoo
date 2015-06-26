@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/pdfrw
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pdfrw/ChangeLog,v 1.9 2015/04/08 08:05:14 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pdfrw/ChangeLog,v 1.10 2015/06/26 03:57:08 patrick Exp $
+
+*pdfrw-0.2 (26 Jun 2015)
+
+  26 Jun 2015; Patrick Lauer <patrick@gentoo.org> +pdfrw-0.2.ebuild:
+  Bump
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> pdfrw-0.1.ebuild:
   Drop old Python implementations

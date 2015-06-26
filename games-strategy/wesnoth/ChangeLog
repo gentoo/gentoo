@@ -1,6 +1,11 @@
 # ChangeLog for games-strategy/wesnoth
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/wesnoth/ChangeLog,v 1.248 2015/05/13 16:08:08 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/wesnoth/ChangeLog,v 1.249 2015/06/26 04:06:28 mr_bones_ Exp $
+
+*wesnoth-1.12.4 (26 Jun 2015)
+
+  26 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org> +wesnoth-1.12.4.ebuild:
+  version bump
 
   13 May 2015; Michael Sterrett <mr_bones_@gentoo.org> wesnoth-1.12.2.ebuild:
   add slot dep for lua
