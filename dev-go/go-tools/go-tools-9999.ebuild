@@ -1,21 +1,58 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-go/go-tools/go-tools-9999.ebuild,v 1.8 2015/06/26 14:30:05 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-go/go-tools/go-tools-9999.ebuild,v 1.9 2015/06/26 19:24:29 williamh Exp $
 
 EAPI=5
-inherit golang-build golang-vcs
-EGO_PN=golang.org/x/tools/...
-EGO_SRC=golang.org/x/tools
-ICON_URI="http://golang.org/favicon.ico -> go-favicon.ico"
+EGO_PN="golang.org/x/tools/..."
+EGO_SRC="golang.org/x/tools"
+
+if [[ ${PV} = *9999* ]]; then
+	inherit golang-vcs
+else
+	EGIT_COMMIT="ac303766f5f240c1796eeea3dc9bf34f1261aa35"
+	ARCHIVE_URI="https://github.com/golang/tools/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64"
+fi
+inherit golang-build
 
 DESCRIPTION="Go Tools"
-HOMEPAGE="https://godoc.org/x/tools"
-SRC_URI="${ICON_URI}"
+HOMEPAGE="https://godoc.org/golang.org/x/tools"
+SRC_URI="${ARCHIVE_URI}
+	http://golang.org/favicon.ico -> go-favicon.ico"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 DEPEND="dev-go/go-net"
 RDEPEND=""
+
+if [[ ${PV} != *9999* ]]; then
+src_unpack() {
+	local f
+
+	for f in ${A}
+	do
+		case "${f}" in
+			*.tar|*.tar.gz|*.tar.bz2|*.tar.xz)
+				local destdir=${WORKDIR}/${P}/src/${EGO_SRC}
+
+				debug-print "${FUNCNAME}: unpacking ${f} to ${destdir}"
+
+				# XXX: check whether the directory structure inside is
+				# fine? i.e. if the tarball has actually a parent dir.
+				mkdir -p "${destdir}" || die
+				tar -C "${destdir}" -x --strip-components 1 \
+					-f "${DISTDIR}/${f}" || die
+				;;
+			*)
+				debug-print "${FUNCNAME}: falling back to unpack for ${f}"
+
+				# fall back to the default method
+				unpack "${f}"
+				;;
+		esac
+	done
+}
+fi
 
 src_prepare() {
 	# disable broken tests
