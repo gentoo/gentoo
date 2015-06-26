@@ -1,6 +1,11 @@
 # ChangeLog for dev-perl/Guard
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Guard/ChangeLog,v 1.6 2014/08/26 14:50:00 axs Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Guard/ChangeLog,v 1.7 2015/06/26 21:44:11 dilfridge Exp $
+
+*Guard-1.23.0 (26 Jun 2015)
+
+  26 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org> +Guard-1.23.0.ebuild:
+  Version bump, fixes bug 553226
 
 *Guard-1.22.0-r1 (26 Aug 2014)
 

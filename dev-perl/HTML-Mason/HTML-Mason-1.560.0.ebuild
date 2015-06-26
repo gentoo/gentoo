@@ -1,37 +1,42 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-Mason/HTML-Mason-1.510.0.ebuild,v 1.6 2015/06/13 22:50:35 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-Mason/HTML-Mason-1.560.0.ebuild,v 1.1 2015/06/26 21:40:57 dilfridge Exp $
 
 EAPI=5
 
-MODULE_AUTHOR=JSWARTZ
-MODULE_VERSION=1.51
+MODULE_AUTHOR=DROLSKY
+MODULE_VERSION=1.56
 inherit depend.apache perl-module
 
 DESCRIPTION="A HTML development and delivery Perl Module"
 HOMEPAGE="http://www.masonhq.com/ ${HOMEPAGE}"
 
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="modperl test"
 
-RDEPEND="!modperl? ( dev-perl/CGI )
+RDEPEND="
+	!modperl? ( >=dev-perl/CGI-2.460.0 )
 	modperl? (
 		www-apache/libapreq2
 		>=www-apache/mod_perl-2
 	)
-	>=dev-perl/Params-Validate-0.7
-	>=dev-perl/Class-Container-0.08
-	>=dev-perl/Exception-Class-1.15
-	dev-perl/HTML-Parser
-	virtual/perl-Scalar-List-Utils
+	>=dev-perl/Cache-Cache-1
+	>=dev-perl/Class-Container-0.70.0
+	>=dev-perl/Exception-Class-1.150.0
 	virtual/perl-File-Spec
-	>=dev-perl/Cache-Cache-1.01
-	dev-perl/Log-Any"
-
+	dev-perl/HTML-Parser
+	>=dev-perl/Log-Any-0.80.0
+	>=dev-perl/Params-Validate-0.70.0
+	virtual/perl-Scalar-List-Utils
+"
 DEPEND="${RDEPEND}
-	dev-perl/Module-Build
-	test? ( dev-perl/Test-Deep )"
+	virtual/perl-ExtUtils-MakeMaker
+	test? (
+		>=virtual/perl-Test-Simple-0.880.0
+		dev-perl/Test-Deep
+	)
+"
 
 want_apache2 modperl
 

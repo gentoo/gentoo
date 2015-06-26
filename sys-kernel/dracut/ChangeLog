@@ -1,6 +1,26 @@
 # ChangeLog for sys-kernel/dracut
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/dracut/ChangeLog,v 1.195 2015/06/07 16:39:50 aidecoe Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/dracut/ChangeLog,v 1.196 2015/06/26 22:27:52 aidecoe Exp $
+
+*dracut-043 (26 Jun 2015)
+
+  26 Jun 2015; Amadeusz Żołnowski <aidecoe@gentoo.org> +dracut-043.ebuild:
+  Version bump. Rels bug #553270. This revision is 100% pure upstream, no
+  Gentoo patches. (-:
+
+  NEWS
+  ~~~~
+  - fixed dmsetup shutdown
+  - new kernel command line option "rd.live.overlay.thin"
+  - dmsquash: Add squashfs support to rd.live.fsimg
+  - lvm: add support for LVM system id
+  - split up the systemd dracut module
+  - support for creating a UEFI boot executable via argument "--uefi"
+  - network: split out kernel-network-modules, now in 90kernel-network-modules
+  - support for ethernet point-to-point connections configured via DHCP
+  - kernel-modules: install all HID drivers
+  - dracut.pc pkg-config file
+  - mount /dev, /dev/shm and /run noexec
 
   07 Jun 2015; Amadeusz Żołnowski <aidecoe@gentoo.org> -dracut-041-r2.ebuild,
   +dracut-041-r3.ebuild,

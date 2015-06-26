@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/openafs-legacy/openafs-legacy-0.1.ebuild,v 1.7 2015/06/19 07:34:59 np-hardass Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/openafs-legacy/openafs-legacy-0.1.ebuild,v 1.8 2015/06/26 22:29:00 np-hardass Exp $
 
 EAPI=5
 
@@ -15,6 +15,8 @@ IUSE=""
 DEPEND="sys-apps/baselayout"
 RDEPEND="${DEPEND}"
 PDEPEND="net-fs/openafs"
+
+S="${WORKDIR}"
 
 # As a guide for these links, acinclude.m4 from the openafs package was
 # used.  A README file exists as well, but at the time of writing, the
