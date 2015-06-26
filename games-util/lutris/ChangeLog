@@ -1,6 +1,9 @@
 # ChangeLog for games-util/lutris
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-util/lutris/ChangeLog,v 1.20 2015/06/21 06:57:47 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-util/lutris/ChangeLog,v 1.21 2015/06/26 16:05:42 mr_bones_ Exp $
+
+  26 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org> -lutris-0.3.6.2.ebuild:
+  old
 
   21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> lutris-0.3.6.3.ebuild:
   x86 stable wrt bug #551858

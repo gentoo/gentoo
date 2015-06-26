@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-rpg/wasteland2/wasteland2-1.3.0.7.ebuild,v 1.2 2015/06/14 17:12:48 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/wasteland2/wasteland2-1.9.0.13.ebuild,v 1.1 2015/06/26 15:44:34 hasufell Exp $
 
 EAPI=5
 
@@ -19,7 +19,6 @@ RESTRICT="bindist fetch mirror"
 QA_PREBUILT="${GAMES_PREFIX_OPT}/${PN}/*"
 
 RDEPEND="
-	virtual/opengl
 	>=dev-libs/atk-2.12.0-r1[abi_x86_32(-)]
 	>=dev-libs/glib-2.40.0-r1:2[abi_x86_32(-)]
 	>=media-libs/fontconfig-2.10.92:1.0[abi_x86_32(-)]
@@ -33,6 +32,7 @@ RDEPEND="
 	>=x11-libs/libXext-1.3.2[abi_x86_32(-)]
 	>=x11-libs/libXrandr-1.4.2[abi_x86_32(-)]
 	>=virtual/glu-9.0-r1[abi_x86_32(-)]
+	virtual/opengl
 "
 
 S="${WORKDIR}/Wasteland 2"
@@ -58,7 +58,7 @@ src_install() {
 
 	# over 20GB of data
 	dodir "${dir}"
-	mv game/WL2_Data "${D%%/}${dir}"/ || die
+	mv game/WL2_Data "${D%/}${dir}"/ || die
 	exeinto "${dir}"
 	doexe game/WL2
 
