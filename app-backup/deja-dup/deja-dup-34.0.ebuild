@@ -1,13 +1,13 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/deja-dup/deja-dup-34.0.ebuild,v 1.1 2015/04/13 07:07:13 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-backup/deja-dup/deja-dup-34.0.ebuild,v 1.2 2015/06/26 17:36:57 jlec Exp $
 
 EAPI=5
 
 GNOME2_LA_PUNT="yes"
 
-VALA_MIN_API_VERSION="0.20"
-VALA_MAX_API_VERSION="0.24"
+VALA_MIN_API_VERSION="0.24"
+VALA_MAX_API_VERSION="0.26"
 
 inherit cmake-utils eutils gnome2 vala
 

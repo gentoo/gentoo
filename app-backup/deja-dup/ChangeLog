@@ -1,6 +1,9 @@
 # ChangeLog for app-backup/deja-dup
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/deja-dup/ChangeLog,v 1.58 2015/06/09 09:02:57 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-backup/deja-dup/ChangeLog,v 1.59 2015/06/26 17:36:57 jlec Exp $
+
+  26 Jun 2015; Justin Lecher <jlec@gentoo.org> deja-dup-34.0.ebuild:
+  Raise min vala version, bug #553346
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

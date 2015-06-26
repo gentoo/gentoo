@@ -1,6 +1,10 @@
 # ChangeLog for net-mail/cyrus-imapd
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/cyrus-imapd/ChangeLog,v 1.215 2014/12/28 16:31:47 titanofold Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/cyrus-imapd/ChangeLog,v 1.216 2015/06/26 17:33:50 grknight Exp $
+
+  26 Jun 2015; Brian Evans <grknight@gentoo.org> cyrus-imapd-2.4.17-r1.ebuild:
+  Non-maintainer commit: Fix mysql_config references for build failures wrt bug
+  525102
 
   28 Dec 2014; Aaron W. Swenson <titanofold@gentoo.org>
   cyrus-imapd-2.4.16.ebuild, cyrus-imapd-2.4.17.ebuild,

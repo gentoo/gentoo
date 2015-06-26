@@ -1,6 +1,12 @@
 # ChangeLog for mail-client/geary
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/geary/ChangeLog,v 1.34 2015/04/18 07:28:01 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/geary/ChangeLog,v 1.35 2015/06/26 18:14:43 pacho Exp $
+
+*geary-0.10.0 (26 Jun 2015)
+
+  26 Jun 2015; Pacho Ramos <pacho@gentoo.org> +geary-0.10.0.ebuild,
+  -geary-0.8.2.ebuild, metadata.xml:
+  Version bump and take care of orphan package (#533414)
 
   18 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org> -geary-0.7.2-r1.ebuild:
   old
