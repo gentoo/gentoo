@@ -1,6 +1,9 @@
 # ChangeLog for kde-frameworks/kauth
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-frameworks/kauth/ChangeLog,v 1.15 2015/06/15 18:35:11 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-frameworks/kauth/ChangeLog,v 1.16 2015/06/26 20:06:32 johu Exp $
+
+  26 Jun 2015; Johannes Huber <johu@gentoo.org> -kauth-5.10.0.ebuild:
+  Remove KDE Frameworks 5.10.0
 
 *kauth-5.11.0 (15 Jun 2015)
 

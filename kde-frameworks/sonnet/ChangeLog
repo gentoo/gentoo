@@ -1,6 +1,9 @@
 # ChangeLog for kde-frameworks/sonnet
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-frameworks/sonnet/ChangeLog,v 1.16 2015/06/15 18:35:12 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-frameworks/sonnet/ChangeLog,v 1.17 2015/06/26 20:06:31 johu Exp $
+
+  26 Jun 2015; Johannes Huber <johu@gentoo.org> -sonnet-5.10.0.ebuild:
+  Remove KDE Frameworks 5.10.0
 
 *sonnet-5.11.0 (15 Jun 2015)
 
