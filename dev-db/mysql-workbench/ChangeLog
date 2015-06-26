@@ -1,6 +1,9 @@
 # ChangeLog for dev-db/mysql-workbench
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql-workbench/ChangeLog,v 1.117 2015/06/19 06:07:54 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql-workbench/ChangeLog,v 1.118 2015/06/26 12:15:02 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> mysql-workbench-6.3.3.ebuild:
+  Stable for amd64, wrt bug #552438
 
 *mysql-workbench-6.3.4 (19 Jun 2015)
 

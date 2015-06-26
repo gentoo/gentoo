@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/greybird/greybird-1.5.3.ebuild,v 1.1 2015/04/27 23:23:31 sping Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/greybird/greybird-1.5.3.ebuild,v 1.2 2015/06/26 12:15:18 ago Exp $
 
 EAPI=5
 
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/shimmerproject/${MY_PN}/archive/v${PV}.tar.gz -> ${P
 # README says "dual-licensed as GPLv2 or later and CC-BY-SA 3.0 or later"
 LICENSE="CC-BY-SA-3.0 GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
 IUSE="ayatana gnome"
 
 RDEPEND=">=x11-themes/gtk-engines-murrine-0.90"

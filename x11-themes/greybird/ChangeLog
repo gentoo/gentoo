@@ -1,6 +1,9 @@
 # ChangeLog for x11-themes/greybird
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/greybird/ChangeLog,v 1.39 2015/04/27 23:23:31 sping Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/greybird/ChangeLog,v 1.40 2015/06/26 12:15:18 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> greybird-1.5.3.ebuild:
+  Stable for amd64, wrt bug #553084
 
 *greybird-1.5.3 (27 Apr 2015)
 

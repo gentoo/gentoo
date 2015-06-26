@@ -1,6 +1,9 @@
 # ChangeLog for net-analyzer/sarg
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/sarg/ChangeLog,v 1.90 2015/02/17 10:21:38 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/sarg/ChangeLog,v 1.91 2015/06/26 12:15:28 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> sarg-2.3.10.ebuild:
+  Stable for amd64, wrt bug #553278
 
 *sarg-2.3.10 (17 Feb 2015)
 

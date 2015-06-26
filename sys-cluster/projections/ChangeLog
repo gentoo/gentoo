@@ -1,6 +1,9 @@
 # ChangeLog for sys-cluster/projections
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/projections/ChangeLog,v 1.1 2013/12/13 20:13:12 nicolasbock Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/projections/ChangeLog,v 1.2 2015/06/26 12:04:56 nicolasbock Exp $
+
+  26 Jun 2015; Nicolas Bock <nicolasbock@gentoo.org> metadata.xml:
+  Updated metadata.xml
 
 *projections-6.2.1 (13 Dec 2013)
 

@@ -1,6 +1,10 @@
 # ChangeLog for dev-python/oauth2client
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/oauth2client/ChangeLog,v 1.11 2015/06/15 18:59:01 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/oauth2client/ChangeLog,v 1.12 2015/06/26 11:37:35 jlec Exp $
+
+  26 Jun 2015; Justin Lecher <jlec@gentoo.org> -oauth2client-1.4.2.ebuild,
+  oauth2client-1.4.11.ebuild, oauth2client-1.4.6.ebuild:
+  Correct version in dependencies, bug #553320; drop old
 
   15 Jun 2015; Justin Lecher <jlec@gentoo.org> oauth2client-1.4.11.ebuild,
   oauth2client-1.4.2.ebuild:

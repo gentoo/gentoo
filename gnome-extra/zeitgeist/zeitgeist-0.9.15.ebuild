@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/zeitgeist/zeitgeist-0.9.15.ebuild,v 1.2 2015/04/02 18:46:11 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/zeitgeist/zeitgeist-0.9.15.ebuild,v 1.3 2015/06/26 12:14:01 ago Exp $
 
 EAPI=5
 AUTOTOOLS_AUTORECONF=true
@@ -18,7 +18,7 @@ SRC_URI="http://launchpad.net/zeitgeist/${DIR_PV}/${PV}/+download/${P}.tar.xz
 
 LICENSE="LGPL-2+ LGPL-3+ GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+datahub downloads-monitor extensions +fts icu introspection nls plugins sql-debug telepathy"
 
 REQUIRED_USE="

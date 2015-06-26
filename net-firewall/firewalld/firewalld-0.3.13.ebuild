@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/firewalld/firewalld-0.3.13.ebuild,v 1.1 2015/05/25 20:58:45 tamiko Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/firewalld/firewalld-0.3.13.ebuild,v 1.2 2015/06/26 12:15:08 ago Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
@@ -15,7 +15,7 @@ SRC_URI="https://fedorahosted.org/released/firewalld/${P}.tar.bz2
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="gui"
 
 RDEPEND="${PYTHON_DEPS}

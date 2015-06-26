@@ -4,5 +4,6 @@
 	<herd>sci</herd>
 	<maintainer>
 		<email>nicolasbock@gentoo.org</email>
+		<name>Nicolas Bock</name>
 	</maintainer>
 </pkgmetadata>

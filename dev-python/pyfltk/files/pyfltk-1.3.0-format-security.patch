@@ -1,0 +1,74 @@
+ python/fltk_wrap.cpp | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/python/fltk_wrap.cpp b/python/fltk_wrap.cpp
+index 9c16f59..ad42e89 100644
+--- a/python/fltk_wrap.cpp
++++ b/python/fltk_wrap.cpp
+@@ -5238,13 +5238,13 @@ PyObject *Fl_get_font_sizes_tmp(PyObject *self, PyObject *args)
+ 
+   const char *fl_vararg_input(const char *label, const char *deflt = 0) {
+     const char* result = 0;
+-    result = fl_input(label, deflt);
++    result = fl_input("%s", deflt, label);
+     return result;
+   };
+ 
+   const char *fl_vararg_password(const char *label, const char *deflt = 0) {
+     const char* result = 0;
+-    result = fl_password(label, deflt);
++    result = fl_password("%s", deflt, label);
+     return result;
+   };
+ 
+@@ -5282,20 +5282,20 @@ PyObject *Fl_get_font_sizes_tmp(PyObject *self, PyObject *args)
+ 
+   void fl_mt_message(const char* text) {
+     Py_BEGIN_ALLOW_THREADS;
+-    fl_message(text);
++    fl_message("%s", text);
+     Py_END_ALLOW_THREADS;
+   };
+ 
+   void fl_mt_alert(const char* text) {
+     Py_BEGIN_ALLOW_THREADS;
+-    fl_alert(text);
++    fl_alert("%s", text);
+     Py_END_ALLOW_THREADS;
+   };
+ 
+   int fl_mt_ask(const char* text) {
+     int status = 0;
+     Py_BEGIN_ALLOW_THREADS;
+-    status = fl_ask(text);
++    status = fl_ask("%s", text);
+     Py_END_ALLOW_THREADS;
+     return status;
+   };
+@@ -5303,7 +5303,7 @@ PyObject *Fl_get_font_sizes_tmp(PyObject *self, PyObject *args)
+   int fl_mt_choice(const char *q,const char *b0,const char *b1,const char *b2) {
+     int status = 0;
+     Py_BEGIN_ALLOW_THREADS;
+-    status = fl_choice(q, b0, b1, b2);
++    status = fl_choice("%s", b0, b1, b2, q);
+     Py_END_ALLOW_THREADS;
+     return status;
+   };
+@@ -5311,7 +5311,7 @@ PyObject *Fl_get_font_sizes_tmp(PyObject *self, PyObject *args)
+   const char *fl_mt_input(const char *label, const char *deflt = 0) {
+     const char* result = 0;
+     Py_BEGIN_ALLOW_THREADS;
+-    result = fl_input(label, deflt);
++    result = fl_input("%s", deflt, label);
+     Py_END_ALLOW_THREADS;
+     return result;
+   };
+@@ -5319,7 +5319,7 @@ PyObject *Fl_get_font_sizes_tmp(PyObject *self, PyObject *args)
+   const char *fl_mt_password(const char *label, const char *deflt = 0) {
+     const char* result = 0;
+     Py_BEGIN_ALLOW_THREADS;
+-    result = fl_password(label, deflt);
++    result = fl_password("%s", deflt, label);
+     Py_END_ALLOW_THREADS;
+     return result;
+   };

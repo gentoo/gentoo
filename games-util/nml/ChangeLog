@@ -1,6 +1,9 @@
 # ChangeLog for games-util/nml
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-util/nml/ChangeLog,v 1.35 2015/05/19 22:12:57 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-util/nml/ChangeLog,v 1.36 2015/06/26 12:14:46 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> nml-0.4.1.ebuild:
+  Stable for amd64, wrt bug #553264
 
   19 May 2015; Michael Sterrett <mr_bones_@gentoo.org> nml-0.4.0.ebuild,
   nml-0.4.1.ebuild:
