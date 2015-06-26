@@ -1,6 +1,13 @@
 # ChangeLog for dev-libs/granite
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/granite/ChangeLog,v 1.9 2015/06/09 14:17:07 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/granite/ChangeLog,v 1.10 2015/06/26 17:03:00 pacho Exp $
+
+*granite-0.3.0 (26 Jun 2015)
+
+  26 Jun 2015; Pacho Ramos <pacho@gentoo.org>
+  +files/granite-0.3.0-build-fix.patch, +files/granite-0.3.0-build-fix2.patch,
+  +files/granite-0.3.0-build-fix3.patch, +granite-0.3.0.ebuild:
+  Versio bump (buildable with current vala)
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

@@ -1,6 +1,10 @@
 # ChangeLog for games-board/goatee-gtk
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-board/goatee-gtk/ChangeLog,v 1.5 2015/05/09 05:33:21 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-board/goatee-gtk/ChangeLog,v 1.6 2015/06/26 17:06:26 mr_bones_ Exp $
+
+  26 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -goatee-gtk-0.2.0-r1.ebuild:
+  old
 
 *goatee-gtk-0.3.0 (09 May 2015)
 
