@@ -1,6 +1,11 @@
 # ChangeLog for dev-ruby/actionview
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/actionview/ChangeLog,v 1.24 2015/06/16 21:58:27 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/actionview/ChangeLog,v 1.25 2015/06/26 06:26:14 graaff Exp $
+
+*actionview-4.1.12 (26 Jun 2015)
+
+  26 Jun 2015; Hans de Graaff <graaff@gentoo.org> +actionview-4.1.12.ebuild:
+  Version bump.
 
 *actionview-4.2.2 (16 Jun 2015)
 

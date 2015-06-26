@@ -1,6 +1,9 @@
 # ChangeLog for sys-auth/skey
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/skey/ChangeLog,v 1.28 2015/06/25 21:40:09 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/skey/ChangeLog,v 1.29 2015/06/26 06:27:19 ulm Exp $
+
+  26 Jun 2015; Ulrich Müller <ulm@gentoo.org> skey-1.1.5-r9.ebuild:
+  Specify perl-Time-Local runtime dependency for skeyprune.
 
 *skey-1.1.5-r9 (25 Jun 2015)
 

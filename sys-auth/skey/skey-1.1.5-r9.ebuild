@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/skey/skey-1.1.5-r9.ebuild,v 1.1 2015/06/25 21:40:09 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/skey/skey-1.1.5-r9.ebuild,v 1.2 2015/06/26 06:27:19 ulm Exp $
 
 EAPI=5
 
@@ -19,6 +19,7 @@ IUSE="static-libs"
 DEPEND="dev-lang/perl
 	app-arch/xz-utils"
 RDEPEND="dev-lang/perl
+	virtual/perl-Time-Local
 	sys-libs/cracklib"
 
 src_prepare() {
