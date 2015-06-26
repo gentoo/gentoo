@@ -1,6 +1,9 @@
 # ChangeLog for app-misc/detox
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/detox/ChangeLog,v 1.36 2015/06/23 09:01:14 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/detox/ChangeLog,v 1.37 2015/06/26 09:03:06 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> detox-1.2.0-r3.ebuild:
+  Stable for x86, wrt bug #552902
 
   23 Jun 2015; Agostino Sarubbo <ago@gentoo.org> detox-1.2.0-r3.ebuild:
   Stable for amd64, wrt bug #552902

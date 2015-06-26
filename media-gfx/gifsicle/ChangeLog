@@ -1,6 +1,9 @@
 # ChangeLog for media-gfx/gifsicle
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/gifsicle/ChangeLog,v 1.55 2015/06/11 15:04:18 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/gifsicle/ChangeLog,v 1.56 2015/06/26 08:47:16 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> gifsicle-1.86.ebuild:
+  Stable for x86, wrt bug #535442
 
   11 Jun 2015; Agostino Sarubbo <ago@gentoo.org> gifsicle-1.86.ebuild:
   Stable for amd64, wrt bug #535442

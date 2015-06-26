@@ -1,6 +1,9 @@
 # ChangeLog for media-tv/shoutcast2vdr
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/shoutcast2vdr/ChangeLog,v 1.5 2015/06/11 15:07:19 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/shoutcast2vdr/ChangeLog,v 1.6 2015/06/26 08:52:30 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> shoutcast2vdr-0.0.8-r1.ebuild:
+  Stable for x86, wrt bug #535508
 
   11 Jun 2015; Agostino Sarubbo <ago@gentoo.org> shoutcast2vdr-0.0.8-r1.ebuild:
   Stable for amd64, wrt bug #535508

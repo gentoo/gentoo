@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nntp/nzbget/nzbget-14.1.ebuild,v 1.2 2015/06/11 15:03:58 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-nntp/nzbget/nzbget-14.1.ebuild,v 1.3 2015/06/26 08:55:16 ago Exp $
 
 EAPI=5
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="debug gnutls ncurses parcheck ssl zlib"
 
 RDEPEND="dev-libs/libxml2

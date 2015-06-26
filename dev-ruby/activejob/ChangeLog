@@ -1,6 +1,11 @@
 # ChangeLog for dev-ruby/activejob
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/activejob/ChangeLog,v 1.7 2015/06/16 21:58:12 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/activejob/ChangeLog,v 1.8 2015/06/26 08:32:10 graaff Exp $
+
+*activejob-4.2.3 (26 Jun 2015)
+
+  26 Jun 2015; Hans de Graaff <graaff@gentoo.org> +activejob-4.2.3.ebuild:
+  Version bump.
 
 *activejob-4.2.2 (16 Jun 2015)
 

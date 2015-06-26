@@ -1,6 +1,9 @@
 # ChangeLog for net-im/telepathy-logger
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/telepathy-logger/ChangeLog,v 1.71 2015/06/21 13:23:24 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/telepathy-logger/ChangeLog,v 1.72 2015/06/26 09:23:20 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> telepathy-logger-0.8.2.ebuild:
+  Stable for x86, wrt bug #551814
 
   21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> telepathy-logger-0.8.2.ebuild:
   amd64 stable wrt bug #551814

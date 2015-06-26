@@ -3,10 +3,10 @@ DEPEND=>=net-libs/neon-0.24.7 >=sys-fs/fuse-2.5 dev-libs/glib:2
 DESCRIPTION=WebDAV filesystem with special features for accessing subversion repositories
 EAPI=5
 HOMEPAGE=http://noedler.de/projekte/wdfs/
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-2
 RDEPEND=>=net-libs/neon-0.24.7 >=sys-fs/fuse-2.5 dev-libs/glib:2
 SLOT=0
 SRC_URI=http://noedler.de/projekte/wdfs/wdfs-1.4.2.tar.gz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=8e45ff7957da06b5b946136c3c84c6c7
+_md5_=a65009285cb7d286792cd1c08cfba48c

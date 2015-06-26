@@ -1,6 +1,9 @@
 # ChangeLog for dev-util/gtk-doc-am
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/gtk-doc-am/ChangeLog,v 1.124 2015/06/21 10:58:07 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/gtk-doc-am/ChangeLog,v 1.125 2015/06/26 09:21:41 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> gtk-doc-am-1.24.ebuild:
+  Stable for x86, wrt bug #551814
 
   21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> gtk-doc-am-1.24.ebuild:
   amd64 stable wrt bug #551814

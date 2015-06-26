@@ -1,6 +1,9 @@
 # ChangeLog for media-gfx/simple-scan
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/simple-scan/ChangeLog,v 1.54 2015/06/21 13:08:29 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/simple-scan/ChangeLog,v 1.55 2015/06/26 09:22:50 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> simple-scan-3.14.3.ebuild:
+  Stable for x86, wrt bug #551814
 
   21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> simple-scan-3.14.3.ebuild:
   amd64 stable wrt bug #551814

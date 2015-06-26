@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/conspy/conspy-1.10.ebuild,v 1.2 2015/06/11 15:07:49 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/conspy/conspy-1.10.ebuild,v 1.3 2015/06/26 08:56:08 ago Exp $
 
 EAPI=5
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}-1/${P}.tar.gz"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="sys-libs/ncurses"

@@ -1,6 +1,9 @@
 # ChangeLog for dev-haskell/opengl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/opengl/ChangeLog,v 1.21 2015/06/11 15:07:34 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/opengl/ChangeLog,v 1.22 2015/06/26 08:44:28 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> opengl-2.9.2.0.ebuild:
+  Stable for x86, wrt bug #534998
 
   11 Jun 2015; Agostino Sarubbo <ago@gentoo.org> opengl-2.9.2.0.ebuild:
   Stable for amd64, wrt bug #534998

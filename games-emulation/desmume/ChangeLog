@@ -1,6 +1,9 @@
 # ChangeLog for games-emulation/desmume
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/desmume/ChangeLog,v 1.22 2015/06/10 13:59:51 nimiux Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/desmume/ChangeLog,v 1.23 2015/06/26 08:33:34 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> desmume-0.9.10.ebuild:
+  Stable for x86, wrt bug #502504
 
   10 Jun 2015; Chema Alonso <nimiux@gentoo.org> desmume-0.9.10.ebuild:
   Stable for amd64 wrt 502504
@@ -113,4 +116,3 @@
 
   15 Jan 2007; Hanno Boeck <hanno@gentoo.org> +desmume-0.5.0.ebuild:
   Initial commit, thanks to Francisco Santofimia in #159060.
-

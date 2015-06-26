@@ -1,6 +1,9 @@
 # ChangeLog for dev-cpp/pangomm
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/pangomm/ChangeLog,v 1.83 2015/06/21 10:47:58 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/pangomm/ChangeLog,v 1.84 2015/06/26 09:21:12 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> pangomm-2.36.0.ebuild:
+  Stable for x86, wrt bug #551814
 
   21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> pangomm-2.36.0.ebuild:
   amd64 stable wrt bug #551814

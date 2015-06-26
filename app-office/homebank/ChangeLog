@@ -1,6 +1,9 @@
 # ChangeLog for app-office/homebank
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/homebank/ChangeLog,v 1.42 2015/06/10 13:09:11 nimiux Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/homebank/ChangeLog,v 1.43 2015/06/26 08:33:53 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> homebank-4.6.3.ebuild:
+  Stable for x86, wrt bug #515064
 
   10 Jun 2015; Chema Alonso <nimiux@gentoo.org> homebank-4.6.3.ebuild:
   Stable for amd64 wrt 515064

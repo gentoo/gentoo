@@ -1,6 +1,10 @@
 # ChangeLog for x11-themes/gtk-engines-unico
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/gtk-engines-unico/ChangeLog,v 1.19 2015/06/21 14:08:50 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/gtk-engines-unico/ChangeLog,v 1.20 2015/06/26 09:24:34 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org>
+  gtk-engines-unico-1.0.3_pre20140109.ebuild:
+  Stable for x86, wrt bug #551814
 
   21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org>
   gtk-engines-unico-1.0.3_pre20140109.ebuild:

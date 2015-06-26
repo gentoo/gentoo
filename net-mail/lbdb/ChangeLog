@@ -1,6 +1,9 @@
 # ChangeLog for net-mail/lbdb
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/lbdb/ChangeLog,v 1.63 2015/06/11 15:08:09 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/lbdb/ChangeLog,v 1.64 2015/06/26 08:54:17 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> lbdb-0.39.ebuild:
+  Stable for x86, wrt bug #535586
 
   11 Jun 2015; Agostino Sarubbo <ago@gentoo.org> lbdb-0.39.ebuild:
   Stable for amd64, wrt bug #535586

@@ -1,6 +1,10 @@
 # ChangeLog for gnome-extra/nautilus-tracker-tags
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/nautilus-tracker-tags/ChangeLog,v 1.41 2015/06/21 10:40:57 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/nautilus-tracker-tags/ChangeLog,v 1.42 2015/06/26 09:22:32 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org>
+  nautilus-tracker-tags-1.2.6.ebuild:
+  Stable for x86, wrt bug #551814
 
   21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org>
   nautilus-tracker-tags-1.2.6.ebuild:

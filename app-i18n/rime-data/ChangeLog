@@ -1,6 +1,9 @@
 # ChangeLog for app-i18n/rime-data
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/rime-data/ChangeLog,v 1.16 2015/06/11 15:06:34 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/rime-data/ChangeLog,v 1.17 2015/06/26 08:40:28 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> rime-data-0.35.ebuild:
+  Stable for x86, wrt bug #534860
 
   11 Jun 2015; Agostino Sarubbo <ago@gentoo.org> rime-data-0.35.ebuild:
   Stable for amd64, wrt bug #534860

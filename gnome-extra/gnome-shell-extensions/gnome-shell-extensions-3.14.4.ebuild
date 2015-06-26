@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-shell-extensions/gnome-shell-extensions-3.14.4.ebuild,v 1.3 2015/06/21 12:59:03 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-shell-extensions/gnome-shell-extensions-3.14.4.ebuild,v 1.4 2015/06/26 09:22:26 ago Exp $
 
 EAPI="5"
 GCONF_DEBUG="no"
@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/GnomeShell/Extensions"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="examples"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.26:2

@@ -1,6 +1,9 @@
 # ChangeLog for gnome-extra/cinnamon
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/cinnamon/ChangeLog,v 1.63 2015/06/21 12:56:35 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/cinnamon/ChangeLog,v 1.64 2015/06/26 09:22:13 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> cinnamon-2.4.7.ebuild:
+  Stable for x86, wrt bug #551814
 
   21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> cinnamon-2.4.7.ebuild:
   amd64 stable wrt bug #551814

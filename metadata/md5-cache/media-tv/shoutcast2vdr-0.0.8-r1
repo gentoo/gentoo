@@ -3,8 +3,8 @@ DEPEND=media-video/vdr
 DESCRIPTION=VDR script: generate shoutcast playlists
 EAPI=5
 HOMEPAGE=http://www.vdr-portal.de/board/thread.php?threadid=19478
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://www.kost.sh/vdr/shoutcast2vdr-0.0.8.gz
-_md5_=83e30a304ad8ab5b53054ba4c9d526d8
+_md5_=6c14839642b15a7fd8c5b9953a320bb5

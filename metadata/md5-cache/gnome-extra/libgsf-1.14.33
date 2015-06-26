@@ -4,10 +4,10 @@ DESCRIPTION=The GNOME Structured File Library
 EAPI=5
 HOMEPAGE=https://developer.gnome.org/gsf/
 IUSE=bzip2 gtk +introspection
-KEYWORDS=~alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ppc64 ~sh ~sparc x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-2 LGPL-2.1
 RDEPEND=>=dev-libs/glib-2.26:2 >=dev-libs/libxml2-2.4.16:2 sys-libs/zlib bzip2? ( app-arch/bzip2 ) gtk? ( x11-libs/gtk+:2 ) introspection? ( >=dev-libs/gobject-introspection-1 )
 SLOT=0/114
 SRC_URI=mirror://gnome/sources/libgsf/1.14/libgsf-1.14.33.tar.xz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	10c513def52488230abb60a4b19a03b9	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=7c7196121b83d66607542be45467fd40
+_md5_=bbb98f435194010651e9f37589eaa1aa

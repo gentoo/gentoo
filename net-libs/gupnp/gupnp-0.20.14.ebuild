@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/gupnp/gupnp-0.20.14.ebuild,v 1.2 2015/06/21 13:44:16 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/gupnp/gupnp-0.20.14.ebuild,v 1.3 2015/06/26 09:23:25 ago Exp $
 
 EAPI="5"
 GCONF_DEBUG="no"
@@ -16,7 +16,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/GUPnP"
 
 LICENSE="LGPL-2"
 SLOT="0/4"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="connman +introspection kernel_linux networkmanager"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}

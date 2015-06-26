@@ -1,6 +1,10 @@
 # ChangeLog for dev-util/gtk-update-icon-cache
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/gtk-update-icon-cache/ChangeLog,v 1.5 2015/06/21 10:59:47 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/gtk-update-icon-cache/ChangeLog,v 1.6 2015/06/26 09:21:43 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org>
+  gtk-update-icon-cache-3.14.13.ebuild:
+  Stable for x86, wrt bug #551814
 
   21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org>
   gtk-update-icon-cache-3.14.13.ebuild:

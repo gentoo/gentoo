@@ -4,10 +4,10 @@ DESCRIPTION=Qt/C++ library wrapping the gpodder.net webservice
 EAPI=5
 HOMEPAGE=http://wiki.gpodder.org/wiki/Libmygpo-qt
 IUSE=test
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=LGPL-2.1
 RDEPEND=dev-qt/qtcore:4 >=dev-libs/qjson-0.5
 SLOT=0
 SRC_URI=https://github.com/gpodder/libmygpo-qt/archive/1.0.7.tar.gz -> libmygpo-qt-1.0.7.tar.gz
 _eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=bd037c5b845765a1925980a14b2c4973
+_md5_=634d29f96b632c9be2feeaac21011c31

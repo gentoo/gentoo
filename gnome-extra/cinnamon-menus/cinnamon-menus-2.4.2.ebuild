@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/cinnamon-menus/cinnamon-menus-2.4.2.ebuild,v 1.2 2015/06/21 12:54:46 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/cinnamon-menus/cinnamon-menus-2.4.2.ebuild,v 1.3 2015/06/26 09:22:15 ago Exp $
 
 EAPI="5"
 GCONF_DEBUG="yes"
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/linuxmint/cinnamon-menus/archive/${PV}.tar.gz -> ${P
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="+introspection"
 

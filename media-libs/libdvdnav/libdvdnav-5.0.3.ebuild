@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libdvdnav/libdvdnav-5.0.3.ebuild,v 1.4 2015/06/11 15:06:54 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libdvdnav/libdvdnav-5.0.3.ebuild,v 1.5 2015/06/26 08:48:43 ago Exp $
 
 EAPI=5
 AUTOTOOLS_AUTORECONF=1
@@ -15,7 +15,7 @@ if [[ ${PV} = 9999 ]]; then
 	KEYWORDS=""
 else
 	SRC_URI="http://downloads.videolan.org/pub/videolan/libdvdnav/${PV}/${P}.tar.bz2"
-	KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+	KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 fi
 
 LICENSE="GPL-2"

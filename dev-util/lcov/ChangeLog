@@ -1,6 +1,9 @@
 # ChangeLog for dev-util/lcov
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/lcov/ChangeLog,v 1.23 2015/06/11 15:08:19 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/lcov/ChangeLog,v 1.24 2015/06/26 08:45:43 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> lcov-1.11.ebuild:
+  Stable for x86, wrt bug #535402
 
   11 Jun 2015; Agostino Sarubbo <ago@gentoo.org> lcov-1.11.ebuild:
   Stable for amd64, wrt bug #535402

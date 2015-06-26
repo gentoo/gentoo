@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/libp11
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libp11/ChangeLog,v 1.77 2015/06/11 15:06:39 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libp11/ChangeLog,v 1.78 2015/06/26 08:45:25 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> libp11-0.2.8-r3.ebuild:
+  Stable for x86, wrt bug #535116
 
   11 Jun 2015; Agostino Sarubbo <ago@gentoo.org> libp11-0.2.8-r3.ebuild:
   Stable for amd64, wrt bug #535116

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/mednafen/mednafen-0.9.38.4.ebuild,v 1.2 2015/06/12 11:05:50 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/mednafen/mednafen-0.9.38.4.ebuild,v 1.3 2015/06/26 09:06:48 ago Exp $
 
 EAPI=5
 inherit autotools eutils flag-o-matic pax-utils games
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/mednafen/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="alsa altivec cjk debugger jack nls pax_kernel"
 
 RDEPEND="virtual/opengl

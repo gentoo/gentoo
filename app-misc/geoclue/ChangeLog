@@ -1,6 +1,9 @@
 # ChangeLog for app-misc/geoclue
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/geoclue/ChangeLog,v 1.44 2015/06/21 10:38:50 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/geoclue/ChangeLog,v 1.45 2015/06/26 09:20:54 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> geoclue-2.2.0.ebuild:
+  Stable for x86, wrt bug #551814
 
   21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> geoclue-2.2.0.ebuild:
   amd64 stable wrt bug #551814

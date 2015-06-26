@@ -4,10 +4,10 @@ DESCRIPTION=A binding for the OpenGL graphics system
 EAPI=5
 HOMEPAGE=http://www.haskell.org/haskellwiki/Opengl
 IUSE=doc hscolour profile
-KEYWORDS=amd64 ~sparc ~x86
+KEYWORDS=amd64 ~sparc x86
 LICENSE=BSD
 RDEPEND=>=dev-haskell/gluraw-1.3.0.0:=[profile?] >=dev-haskell/openglraw-1.4.1.0:=[profile?] dev-haskell/text:=[profile?] >=dev-lang/ghc-7.4.1:=
 SLOT=0/2.9.2.0
 SRC_URI=mirror://hackage/packages/archive/OpenGL/2.9.2.0/OpenGL-2.9.2.0.tar.gz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	ghc-package	48ae4e0fd75e1c8047c4b7f507d5debc	haskell-cabal	eee03ecca8dca7a927272dcea2ca53f4	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=c58fbb63ba0a8bda807425ffd1dcf719
+_md5_=8208c7a81bea4f58e6503fe003863b28

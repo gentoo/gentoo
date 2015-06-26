@@ -1,6 +1,11 @@
 # ChangeLog for dev-ruby/activesupport
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/activesupport/ChangeLog,v 1.287 2015/06/26 06:24:59 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/activesupport/ChangeLog,v 1.288 2015/06/26 08:31:22 graaff Exp $
+
+*activesupport-4.2.3 (26 Jun 2015)
+
+  26 Jun 2015; Hans de Graaff <graaff@gentoo.org> +activesupport-4.2.3.ebuild:
+  Version bump.
 
 *activesupport-4.1.12 (26 Jun 2015)
 

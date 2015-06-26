@@ -1,6 +1,9 @@
 # ChangeLog for app-doc/gnucash-docs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/gnucash-docs/ChangeLog,v 1.39 2015/06/21 10:37:38 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-doc/gnucash-docs/ChangeLog,v 1.40 2015/06/26 09:20:50 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> gnucash-docs-2.6.6.ebuild:
+  Stable for x86, wrt bug #551814
 
   21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> gnucash-docs-2.6.6.ebuild:
   amd64 stable wrt bug #551814

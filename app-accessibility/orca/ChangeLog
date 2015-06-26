@@ -1,6 +1,9 @@
 # ChangeLog for app-accessibility/orca
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/orca/ChangeLog,v 1.148 2015/06/21 10:31:03 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/orca/ChangeLog,v 1.149 2015/06/26 09:20:44 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> orca-3.14.4.ebuild:
+  Stable for x86, wrt bug #551814
 
   21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> orca-3.14.4.ebuild:
   amd64 stable wrt bug #551814

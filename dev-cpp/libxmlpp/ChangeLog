@@ -1,6 +1,9 @@
 # ChangeLog for dev-cpp/libxmlpp
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/libxmlpp/ChangeLog,v 1.137 2015/06/21 10:47:17 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/libxmlpp/ChangeLog,v 1.138 2015/06/26 09:21:10 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> libxmlpp-2.38.1.ebuild:
+  Stable for x86, wrt bug #551814
 
   21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> libxmlpp-2.38.1.ebuild:
   amd64 stable wrt bug #551814

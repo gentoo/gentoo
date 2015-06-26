@@ -1,6 +1,9 @@
 # ChangeLog for app-crypt/gpgme
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/gpgme/ChangeLog,v 1.228 2015/06/22 16:35:51 alonbl Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/gpgme/ChangeLog,v 1.229 2015/06/26 08:39:21 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> gpgme-1.5.5.ebuild:
+  Stable for x86, wrt bug #533350
 
   22 Jun 2015; Alon Bar-Lev <alonbl@gentoo.org>
   -files/gpgme-1.3.0-gnupg-2.0.17.patch, -files/gpgme-1.3.0-gold.patch,

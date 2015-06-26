@@ -1,6 +1,9 @@
 # ChangeLog for net-dialup/pppconfig
 # Copyright 2002-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/pppconfig/ChangeLog,v 1.32 2015/06/11 15:08:39 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/pppconfig/ChangeLog,v 1.33 2015/06/26 08:52:48 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> pppconfig-2.3.21.ebuild:
+  Stable for x86, wrt bug #535548
 
   11 Jun 2015; Agostino Sarubbo <ago@gentoo.org> pppconfig-2.3.21.ebuild:
   Stable for amd64, wrt bug #535548

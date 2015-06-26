@@ -1,6 +1,9 @@
 # ChangeLog for media-sound/gmpc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/gmpc/ChangeLog,v 1.92 2015/06/11 15:04:29 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/gmpc/ChangeLog,v 1.93 2015/06/26 08:50:35 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> gmpc-11.8.16-r1.ebuild:
+  Stable for x86, wrt bug #535492
 
   11 Jun 2015; Agostino Sarubbo <ago@gentoo.org> gmpc-11.8.16-r1.ebuild:
   Stable for amd64, wrt bug #535492

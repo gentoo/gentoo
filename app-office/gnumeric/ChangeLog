@@ -1,6 +1,9 @@
 # ChangeLog for app-office/gnumeric
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/gnumeric/ChangeLog,v 1.288 2015/06/21 10:44:48 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/gnumeric/ChangeLog,v 1.289 2015/06/26 09:21:02 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> gnumeric-1.12.22.ebuild:
+  Stable for x86, wrt bug #551814
 
   21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> gnumeric-1.12.22.ebuild:
   amd64 stable wrt bug #551814

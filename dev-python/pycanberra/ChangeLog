@@ -1,6 +1,10 @@
 # ChangeLog for dev-python/pycanberra
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pycanberra/ChangeLog,v 1.4 2015/06/21 10:55:49 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pycanberra/ChangeLog,v 1.5 2015/06/26 09:21:33 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org>
+  pycanberra-0_pre20130515.ebuild:
+  Stable for x86, wrt bug #551814
 
   21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org>
   pycanberra-0_pre20130515.ebuild:

@@ -4,10 +4,10 @@ DESCRIPTION=VNC client for the GNOME desktop
 EAPI=5
 HOMEPAGE=https://wiki.gnome.org/Apps/Vinagre
 IUSE=rdp +ssh spice +telepathy zeroconf
-KEYWORDS=amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86
+KEYWORDS=amd64 ~arm ~ia64 ~ppc ~ppc64 x86
 LICENSE=GPL-3+
 RDEPEND=>=dev-libs/glib-2.28.0:2 >=x11-libs/gtk+-3.9.6:3 app-crypt/libsecret >=dev-libs/libxml2-2.6.31:2 >=net-libs/gtk-vnc-0.4.3[gtk3] x11-libs/cairo:= x11-libs/gdk-pixbuf:2 x11-themes/hicolor-icon-theme rdp? ( net-misc/freerdp ) ssh? ( >=x11-libs/vte-0.20:2.91 ) spice? ( app-emulation/spice-protocol >=net-misc/spice-gtk-0.5[gtk3] ) telepathy? ( dev-libs/dbus-glib >=net-libs/telepathy-glib-0.11.6 ) zeroconf? ( >=net-dns/avahi-0.6.26[dbus,gtk3] )
 SLOT=0
 SRC_URI=mirror://gnome/sources/vinagre/3.14/vinagre-3.14.3.tar.xz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	10c513def52488230abb60a4b19a03b9	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	vala	09bc7da1a93142c9eb90786e6f6b39d2	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=52c1ced3b80561e7770dc6f9d281b930
+_md5_=cffa3c850e6d7bf09312c5f909b735a5

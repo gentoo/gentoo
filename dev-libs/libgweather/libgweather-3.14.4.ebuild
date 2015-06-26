@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgweather/libgweather-3.14.4.ebuild,v 1.2 2015/06/21 10:52:29 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgweather/libgweather-3.14.4.ebuild,v 1.3 2015/06/26 09:21:25 ago Exp $
 
 EAPI="5"
 GCONF_DEBUG="no"
@@ -17,7 +17,7 @@ SLOT="2/3-6" # subslot = 3-(libgweather-3 soname suffix)
 IUSE="glade +introspection vala"
 REQUIRED_USE="vala? ( introspection )"
 
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc x86 ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~x86-solaris"
 
 COMMON_DEPEND="
 	>=x11-libs/gtk+-3.13.5:3[introspection?]

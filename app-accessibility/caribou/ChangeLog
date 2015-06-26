@@ -1,6 +1,9 @@
 # ChangeLog for app-accessibility/caribou
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/caribou/ChangeLog,v 1.42 2015/06/21 10:30:12 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/caribou/ChangeLog,v 1.43 2015/06/26 09:20:41 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> caribou-0.4.18.1.ebuild:
+  Stable for x86, wrt bug #551814
 
   21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> caribou-0.4.18.1.ebuild:
   amd64 stable wrt bug #551814

@@ -1,6 +1,10 @@
 # ChangeLog for x11-libs/gtk+
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtk+/ChangeLog,v 1.785 2015/06/21 13:59:31 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtk+/ChangeLog,v 1.786 2015/06/26 09:24:07 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> gtk+-1.2.10-r13.ebuild,
+  gtk+-2.24.28-r1.ebuild, gtk+-3.14.13.ebuild:
+  Stable for x86, wrt bug #551814
 
   21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> gtk+-1.2.10-r13.ebuild,
   gtk+-2.24.28-r1.ebuild, gtk+-3.14.13.ebuild:

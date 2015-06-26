@@ -4,10 +4,10 @@ DESCRIPTION=Replaces/Enhances Text.Regex
 EAPI=5
 HOMEPAGE=http://hackage.haskell.org/package/regex-pcre
 IUSE=doc hscolour profile
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=BSD
 RDEPEND=>=dev-haskell/regex-base-0.93:=[profile?] >=dev-lang/ghc-7.4.1:=
 SLOT=0/0.94.4.8.8.35
 SRC_URI=mirror://hackage/packages/archive/regex-pcre-builtin/0.94.4.8.8.35/regex-pcre-builtin-0.94.4.8.8.35.tar.gz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	ghc-package	48ae4e0fd75e1c8047c4b7f507d5debc	haskell-cabal	eee03ecca8dca7a927272dcea2ca53f4	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=0808045ba2a9886922147278c8f11cd2
+_md5_=509a7f1fe1e26068fa54a8a9c4d9f8af

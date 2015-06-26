@@ -1,6 +1,9 @@
 # ChangeLog for gnome-extra/gnome-documents
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-documents/ChangeLog,v 1.45 2015/06/21 12:58:28 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-documents/ChangeLog,v 1.46 2015/06/26 09:22:24 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> gnome-documents-3.14.3.ebuild:
+  Stable for x86, wrt bug #551814
 
   21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> gnome-documents-3.14.3.ebuild:
   amd64 stable wrt bug #551814

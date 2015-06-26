@@ -1,6 +1,9 @@
 # ChangeLog for net-analyzer/linkchecker
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/linkchecker/ChangeLog,v 1.103 2015/06/23 09:01:10 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/linkchecker/ChangeLog,v 1.104 2015/06/26 09:03:42 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> linkchecker-9.3-r1.ebuild:
+  Stable for x86, wrt bug #552822
 
   23 Jun 2015; Agostino Sarubbo <ago@gentoo.org> linkchecker-9.3-r1.ebuild:
   Stable for amd64, wrt bug #552822

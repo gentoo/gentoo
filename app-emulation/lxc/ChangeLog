@@ -1,6 +1,9 @@
 # ChangeLog for app-emulation/lxc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/lxc/ChangeLog,v 1.80 2015/06/14 20:07:42 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/lxc/ChangeLog,v 1.81 2015/06/26 09:06:09 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> lxc-1.0.7.ebuild:
+  Stable for x86, wrt bug #552112
 
   14 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> lxc-1.0.7.ebuild:
   amd64 stable wrt bug #552112

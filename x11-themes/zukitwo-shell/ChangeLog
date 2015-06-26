@@ -1,6 +1,10 @@
 # ChangeLog for x11-themes/zukitwo-shell
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/zukitwo-shell/ChangeLog,v 1.18 2015/06/21 14:10:16 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/zukitwo-shell/ChangeLog,v 1.19 2015/06/26 09:24:40 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org>
+  zukitwo-shell-2014.10.22.ebuild:
+  Stable for x86, wrt bug #551814
 
   21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org>
   zukitwo-shell-2014.10.22.ebuild:

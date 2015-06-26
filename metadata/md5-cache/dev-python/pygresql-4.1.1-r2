@@ -4,11 +4,11 @@ DESCRIPTION=A Python interface for the PostgreSQL database
 EAPI=5
 HOMEPAGE=http://www.pygresql.org/
 IUSE=doc python_targets_python2_7
-KEYWORDS=~alpha amd64 ~hppa ~ia64 ~ppc ~sparc ~x86
+KEYWORDS=~alpha amd64 ~hppa ~ia64 ~ppc ~sparc x86
 LICENSE=POSTGRESQL
 RDEPEND=|| ( dev-db/postgresql:9.5 dev-db/postgresql:9.4 dev-db/postgresql:9.3 dev-db/postgresql:9.2 dev-db/postgresql:9.1 dev-db/postgresql:9.0 ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=mirror://pypi/P/PyGreSQL/PyGreSQL-4.1.1.tgz
 _eclasses_=distutils-r1	c01d5c4af34f4a37a51fc9638299c222	eutils	9fb270e417e0e83d64ca52586c4a79de	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-r1	6d3a3cb5705b9fff1aeb7cfa4e3336fe	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=193b5773ffcf34700f92dd992ab803d8
+_md5_=176173c01c118970a480b20195fc7e4b

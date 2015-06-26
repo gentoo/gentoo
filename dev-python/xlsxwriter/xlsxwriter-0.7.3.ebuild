@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/xlsxwriter/xlsxwriter-0.7.3.ebuild,v 1.2 2015/06/23 09:01:24 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/xlsxwriter/xlsxwriter-0.7.3.ebuild,v 1.3 2015/06/26 09:03:59 ago Exp $
 
 EAPI=5
 
@@ -17,7 +17,7 @@ SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
 RDEPEND=""

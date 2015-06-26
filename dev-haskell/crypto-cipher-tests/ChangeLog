@@ -1,6 +1,10 @@
 # ChangeLog for dev-haskell/crypto-cipher-tests
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/crypto-cipher-tests/ChangeLog,v 1.8 2015/06/11 15:05:24 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/crypto-cipher-tests/ChangeLog,v 1.9 2015/06/26 08:42:19 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org>
+  crypto-cipher-tests-0.0.11-r1.ebuild:
+  Stable for x86, wrt bug #534954
 
   11 Jun 2015; Agostino Sarubbo <ago@gentoo.org>
   crypto-cipher-tests-0.0.11-r1.ebuild:

@@ -4,10 +4,10 @@ DESCRIPTION=A userspace logging daemon for netfilter/iptables related logging
 EAPI=5
 HOMEPAGE=http://netfilter.org/projects/ulogd/index.html
 IUSE=dbi doc json mysql nfacct +nfct +nflog pcap postgres sqlite
-KEYWORDS=amd64 ~ia64 ~ppc ~x86
+KEYWORDS=amd64 ~ia64 ~ppc x86
 LICENSE=GPL-2
 RDEPEND=net-firewall/iptables >=net-libs/libnfnetlink-1.0.1 dbi? ( dev-db/libdbi ) json? ( dev-libs/jansson ) nfacct? ( >=net-libs/libmnl-1.0.3 >=net-libs/libnetfilter_acct-1.0.1 ) nfct? ( >=net-libs/libnetfilter_conntrack-1.0.2 ) nflog? ( >=net-libs/libnetfilter_log-1.0.0 ) mysql? ( virtual/mysql ) pcap? ( net-libs/libpcap ) postgres? ( dev-db/postgresql:= ) sqlite? ( dev-db/sqlite:3 )
 SLOT=0
 SRC_URI=ftp://ftp.netfilter.org/pub/ulogd/ulogd-2.0.4.tar.bz2 http://www.netfilter.org/projects/ulogd/files/ulogd-2.0.4.tar.bz2
 _eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	readme.gentoo	106edea5533517715013de909a333abd	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=664aa1d993c5b082a6f6f9b8666a3afd
+_md5_=d7db5f5e049ea6316ee675e114ee6a69

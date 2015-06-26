@@ -1,6 +1,9 @@
 # ChangeLog for net-fs/wdfs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/wdfs/ChangeLog,v 1.10 2015/06/11 15:08:14 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/wdfs/ChangeLog,v 1.11 2015/06/26 08:53:23 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> wdfs-1.4.2-r1.ebuild:
+  Stable for x86, wrt bug #535562
 
   11 Jun 2015; Agostino Sarubbo <ago@gentoo.org> wdfs-1.4.2-r1.ebuild:
   Stable for amd64, wrt bug #535562
