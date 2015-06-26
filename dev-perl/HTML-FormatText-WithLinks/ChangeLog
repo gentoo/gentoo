@@ -1,10 +1,18 @@
 # ChangeLog for dev-perl/HTML-FormatText-WithLinks
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-FormatText-WithLinks/ChangeLog,v 1.1 2014/05/28 10:18:02 titanofold Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-FormatText-WithLinks/ChangeLog,v 1.2 2015/06/26 21:29:35 dilfridge Exp $
+
+*HTML-FormatText-WithLinks-0.150.0 (26 Jun 2015)
+*HTML-FormatText-WithLinks-0.140.0 (26 Jun 2015)
+
+  26 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +HTML-FormatText-WithLinks-0.140.0.ebuild,
+  +HTML-FormatText-WithLinks-0.150.0.ebuild,
+  -HTML-FormatText-WithLinks-0.14.ebuild:
+  Version bump
 
 *HTML-FormatText-WithLinks-0.14 (28 May 2014)
 
   28 May 2014; Aaron W. Swenson <titanofold@gentoo.org>
   +HTML-FormatText-WithLinks-0.14.ebuild, +metadata.xml:
   Initial commit. Ebuild written by me. Satisfies dependency for www-apps/rt.
-

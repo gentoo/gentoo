@@ -1,6 +1,12 @@
 # ChangeLog for dev-perl/HTML-Format
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-Format/ChangeLog,v 1.28 2015/06/13 22:49:57 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-Format/ChangeLog,v 1.29 2015/06/26 21:25:01 dilfridge Exp $
+
+*HTML-Format-2.110.0 (26 Jun 2015)
+
+  26 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +HTML-Format-2.110.0.ebuild:
+  Version bump
 
   13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
   HTML-Format-2.100.0-r1.ebuild:

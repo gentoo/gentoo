@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/multilib-build.eclass,v 1.65 2014/12/13 08:41:37 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/multilib-build.eclass,v 1.66 2015/06/26 20:43:13 mgorny Exp $
 
 # @ECLASS: multilib-build.eclass
 # @MAINTAINER:
@@ -512,14 +512,6 @@ _EOF_
 					# Note: match a space afterwards to avoid collision potential.
 					sed -e "/${MULTILIB_ABI_FLAG} /s&error.*&include <${CHOST}${f}>&" \
 						-i "${wrapper}" || die
-
-					# Hack for emul-linux-x86 compatibility.
-					# It assumes amd64 will come after x86, and will use amd64
-					# headers if no specific x86 headers were installed.
-					if [[ ${ABI} == amd64 ]]; then
-						sed -e "/abi_x86_32 /s&error.*&include <${CHOST}${f}>&" \
-							-i "${wrapper}" || die
-					fi
 
 					# Needed for swig.
 					if multilib_is_native_abi; then

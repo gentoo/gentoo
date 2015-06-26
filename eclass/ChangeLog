@@ -1,6 +1,9 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1684 2015/06/24 17:04:53 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1685 2015/06/26 20:43:13 mgorny Exp $
+
+  26 Jun 2015; Michał Górny <mgorny@gentoo.org> multilib-build.eclass:
+  Remove emul-linux-x86 hack, since emul-linux-x86 is no more.
 
   24 Jun 2015; William Hubbs <williamh@gentoo.org> golang-build.eclass:
   typo fix, use double brackets

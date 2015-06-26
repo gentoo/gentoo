@@ -10,5 +10,5 @@ RDEPEND=>=media-libs/libshout-2.3.1-r1[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32
 RESTRICT=test
 SLOT=1.0
 SRC_URI=http://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.2.4.tar.xz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	gstreamer	0474e1ccd0ec25ab5b10fe5068e382d8	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multilib-build	0983c7893df461213a05f791cc7dea6d	multilib-minimal	13dd976916c35a1e2c8d170e840c7018	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	gstreamer	0474e1ccd0ec25ab5b10fe5068e382d8	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multilib-build	e733e978b7fa70607cc221fd9c070db6	multilib-minimal	13dd976916c35a1e2c8d170e840c7018	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=9acb55b05ae253532ee0f9703c6b2514

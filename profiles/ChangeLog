@@ -1,10 +1,13 @@
 # ChangeLog for profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10150 2015/06/25 15:45:28 johu Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10151 2015/06/26 21:29:34 johu Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  26 Jun 2015; Johannes Huber <johu@gentoo.org> package.mask:
+  Mask app-portage/kportagetray for removal
 
   25 Jun 2015; Johannes Huber <johu@gentoo.org> package.mask:
   Remove KDE Plasma 5.3.1 mask for wider testing.
