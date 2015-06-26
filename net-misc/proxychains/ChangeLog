@@ -1,6 +1,9 @@
 # ChangeLog for net-misc/proxychains
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/proxychains/ChangeLog,v 1.37 2015/06/24 08:00:28 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/proxychains/ChangeLog,v 1.38 2015/06/26 08:05:12 ago Exp $
+
+  26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> proxychains-4.10.ebuild:
+  Stable for x86, wrt bug #550936
 
   24 Jun 2015; Agostino Sarubbo <ago@gentoo.org> proxychains-4.10.ebuild:
   Stable for ppc, wrt bug #550936
