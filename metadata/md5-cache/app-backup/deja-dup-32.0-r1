@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare test unpack
-DEPEND=app-crypt/libsecret[vala] >=dev-libs/glib-2.34:2 >=dev-libs/libpeas-1.0 >=x11-libs/gtk+-3.6:3 >=x11-libs/libnotify-0.7 >=app-backup/duplicity-0.6.23 dev-libs/dbus-glib nautilus? ( gnome-base/nautilus ) app-text/yelp-tools || ( dev-lang/vala:0.24 dev-lang/vala:0.22 dev-lang/vala:0.20 ) dev-perl/Locale-gettext virtual/pkgconfig dev-util/intltool sys-devel/gettext sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) app-arch/xz-utils >=sys-apps/sed-4
+DEPEND=app-crypt/libsecret[vala] >=dev-libs/glib-2.34:2 >=dev-libs/libpeas-1.0 >=x11-libs/gtk+-3.10:3 >=x11-libs/libnotify-0.7 >=app-backup/duplicity-0.6.23 dev-libs/dbus-glib nautilus? ( gnome-base/nautilus ) app-text/yelp-tools || ( dev-lang/vala:0.24 dev-lang/vala:0.22 ) dev-perl/Locale-gettext virtual/pkgconfig dev-util/intltool sys-devel/gettext sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) app-arch/xz-utils >=sys-apps/sed-4
 DESCRIPTION=Simple backup tool using duplicity back-end
 EAPI=5
 HOMEPAGE=https://launchpad.net/deja-dup/
 IUSE=nautilus test debug
 KEYWORDS=amd64 x86
 LICENSE=GPL-3
-RDEPEND=app-crypt/libsecret[vala] >=dev-libs/glib-2.34:2 >=dev-libs/libpeas-1.0 >=x11-libs/gtk+-3.6:3 >=x11-libs/libnotify-0.7 >=app-backup/duplicity-0.6.23 dev-libs/dbus-glib nautilus? ( gnome-base/nautilus ) gnome-base/dconf gnome-base/gvfs[fuse]
+RDEPEND=app-crypt/libsecret[vala] >=dev-libs/glib-2.34:2 >=dev-libs/libpeas-1.0 >=x11-libs/gtk+-3.10:3 >=x11-libs/libnotify-0.7 >=app-backup/duplicity-0.6.23 dev-libs/dbus-glib nautilus? ( gnome-base/nautilus ) gnome-base/dconf gnome-base/gvfs[fuse]
 RESTRICT=test
 SLOT=0
 SRC_URI=http://launchpad.net/deja-dup/32/32.0/+download/deja-dup-32.0.tar.xz
 _eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	flag-o-matic	c9602887773166fe300444712fc7ff98	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	10c513def52488230abb60a4b19a03b9	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	vala	09bc7da1a93142c9eb90786e6f6b39d2	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=dabec979ffaf71b6b6f8e63e28ae512f
+_md5_=d3037f237f865245ae5949837bea4be3

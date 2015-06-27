@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/kernel-2.eclass,v 1.308 2015/06/27 15:36:06 mpagano Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/kernel-2.eclass,v 1.309 2015/06/27 17:27:15 mpagano Exp $
 
 # Description: kernel.eclass rewrite for a clean base regarding the 2.6
 #              series of kernel with back-compatibility for 2.4
@@ -454,7 +454,7 @@ if [[ ${ETYPE} == sources ]]; then
 	DESCRIPTION="Sources based on the Linux Kernel."
 	IUSE="symlink build"
 
-	if [[ -n K_KDBUS_AVAILABLE ]]; then 
+	if [[ -n ${K_KDBUS_AVAILABLE} ]]; then
 		IUSE="${IUSE} kdbus"
 	fi
 

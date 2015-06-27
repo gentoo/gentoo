@@ -1,6 +1,16 @@
 # ChangeLog for app-backup/deja-dup
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/deja-dup/ChangeLog,v 1.59 2015/06/26 17:36:57 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-backup/deja-dup/ChangeLog,v 1.61 2015/06/27 17:00:47 pacho Exp $
+
+  27 Jun 2015; Pacho Ramos <pacho@gentoo.org> deja-dup-34.0.ebuild:
+  Also looks to work fine with vala-0.28 (as other distributions are already
+  using via their unversioned 'valac' binary
+
+  27 Jun 2015; Alexandre Rostovtsev <tetromino@gentoo.org>
+  deja-dup-32.0-r1.ebuild, deja-dup-34.0.ebuild:
+  Build system uses VALA_EXECUTABLE cmake variable instead of VALAC env
+  variable (bug #553346, thanks to Pacho Ramos). Raise vala min version to
+  0.22, since 0.20 fails with >=gtk+-3.10.
 
   26 Jun 2015; Justin Lecher <jlec@gentoo.org> deja-dup-34.0.ebuild:
   Raise min vala version, bug #553346

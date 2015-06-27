@@ -1,12 +1,13 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/epiphany/epiphany-3.12.1.ebuild,v 1.5 2014/10/28 19:42:35 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/epiphany/epiphany-3.16.2.ebuild,v 1.1 2015/06/27 16:47:01 pacho Exp $
 
 EAPI="5"
 GCONF_DEBUG="yes"
 GNOME2_LA_PUNT="yes"
 
-inherit autotools eutils gnome2 pax-utils versionator virtualx
+#inherit autotools eutils gnome2 pax-utils versionator virtualx
+inherit eutils gnome2 pax-utils versionator virtualx
 
 DESCRIPTION="GNOME webbrowser based on Webkit"
 HOMEPAGE="https://wiki.gnome.org/Apps/Web"
@@ -15,20 +16,20 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Web"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="+jit +nss test"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 COMMON_DEPEND="
 	>=app-crypt/gcr-3.5.5
 	>=app-crypt/libsecret-0.14
 	>=app-text/iso-codes-0.35
-	>=dev-libs/glib-2.38:2
+	>=dev-libs/glib-2.38:2[dbus]
 	>=dev-libs/libxml2-2.6.12:2
 	>=dev-libs/libxslt-1.1.7
 	>=gnome-base/gsettings-desktop-schemas-0.0.1
 	>=net-dns/avahi-0.6.22[dbus]
-	>=net-libs/webkit-gtk-2.4:3[jit?]
-	>=net-libs/libsoup-2.42.1:2.4
-	>=x11-libs/gtk+-3.11.6:3
+	>=net-libs/webkit-gtk-2.7.4:4[jit?]
+	>=net-libs/libsoup-2.48:2.4
+	>=x11-libs/gtk+-3.13:3
 	>=x11-libs/libnotify-0.5.1:=
 	gnome-base/gnome-desktop:3=
 
@@ -46,24 +47,29 @@ RDEPEND="${COMMON_DEPEND}
 	!www-client/epiphany-extensions
 "
 # paxctl needed for bug #407085
-# eautoreconf requires gnome-common and yelp-tools
+# eautoreconf requires gnome-common-3.5.5
 DEPEND="${COMMON_DEPEND}
-	gnome-base/gnome-common
+	>=gnome-base/gnome-common-3.6
 	>=dev-util/intltool-0.50
 	sys-apps/paxctl
 	sys-devel/gettext
 	virtual/pkgconfig
-	app-text/yelp-tools
 "
 
-# Tests refuse to run with the gsettings trick for some reason
-RESTRICT="test"
-
 src_prepare() {
-	# Fix missing symbol in webextensio.so
-	epatch "${FILESDIR}"/${PN}-3.12.0-missing-symbol.patch
+	# Fix missing symbol in webextension.so, https://bugzilla.gnome.org/show_bug.cgi?id=728972
+	# FIXME: More information needed per https://bugzilla.gnome.org/show_bug.cgi?id=728972#c5
+	# If you are able to reproduce the failure, please provide it. Thanks
+#	epatch "${FILESDIR}"/${PN}-3.14.0-missing-symbol.patch
 
-	eautoreconf
+	# Fix unittests
+	# https://bugzilla.gnome.org/show_bug.cgi?id=751591
+	epatch "${FILESDIR}"/${PN}-3.16.0-unittest-1.patch
+
+	# https://bugzilla.gnome.org/show_bug.cgi?id=751593
+	epatch "${FILESDIR}"/${PN}-3.14.0-unittest-2.patch
+
+#	eautoreconf
 	gnome2_src_prepare
 }
 
@@ -73,8 +79,7 @@ src_configure() {
 		--disable-static \
 		--with-distributor-name=Gentoo \
 		$(use_enable nss) \
-		$(use_enable test tests) \
-		ITSTOOL=$(type -P true)
+		$(use_enable test tests)
 }
 
 src_compile() {
