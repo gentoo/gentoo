@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/kernel-2.eclass,v 1.307 2015/06/27 00:50:55 mpagano Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/kernel-2.eclass,v 1.308 2015/06/27 15:36:06 mpagano Exp $
 
 # Description: kernel.eclass rewrite for a clean base regarding the 2.6
 #              series of kernel with back-compatibility for 2.4
@@ -65,6 +65,9 @@
 # K_LONGTERM			- If set, the eclass will search for the kernel source
 #						  in the long term directories on the upstream servers
 #						  as the location has been changed by upstream
+# K_KDBUS_AVAILABLE		- If set, the ebuild contains the option of installing the
+#						  kdbus patch.  This patch is not installed without the 'kdbus'
+#						  and 'experimental' use flags.
 # H_SUPPORTEDARCH		- this should be a space separated list of ARCH's which
 #						  can be supported by the headers ebuild
 
@@ -450,6 +453,10 @@ if [[ ${ETYPE} == sources ]]; then
 	SLOT="${PVR}"
 	DESCRIPTION="Sources based on the Linux Kernel."
 	IUSE="symlink build"
+
+	if [[ -n K_KDBUS_AVAILABLE ]]; then 
+		IUSE="${IUSE} kdbus"
+	fi
 
 	# Bug #266157, deblob for libre support
 	if [[ -z ${K_PREDEBLOBBED} ]] ; then
@@ -1012,6 +1019,11 @@ unipatch() {
 					#drop 5000_enable-additional-cpu-optimizations-for-gcc.patch
 					UNIPATCH_DROP+=" 5000_enable-additional-cpu-optimizations-for-gcc.patch"
 				fi
+			fi
+
+			# if kdbus use flag is not set, drop the kdbus patch
+            if [[ $UNIPATCH_DROP != *"5015_kdbus*.patch"* ]] && ! use kdbus; then
+				UNIPATCH_DROP="${UNIPATCH_DROP} 5015_kdbus*.patch"
 			fi
 		fi
 	done

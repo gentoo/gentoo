@@ -1,6 +1,10 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1687 2015/06/27 00:50:55 mpagano Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1688 2015/06/27 15:36:06 mpagano Exp $
+
+  27 Jun 2015; Mike Pagano <mpagano@gentoo.org> kernel-2.eclass:
+  Add the kdbus use flag and eclass variable to the kernel-2.eclass for
+  optional kdbus inclusion.
 
   27 Jun 2015; Mike Pagano <mpagano@gentoo.org> kernel-2.eclass:
   Reverting kdbus changes in eclass. Caused invalid iuse for other ebuilds.
