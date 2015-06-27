@@ -1,6 +1,10 @@
 # ChangeLog for gnome-extra/activity-log-manager
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/activity-log-manager/ChangeLog,v 1.21 2014/11/12 21:20:08 jlec Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/activity-log-manager/ChangeLog,v 1.22 2015/06/27 11:31:33 pacho Exp $
+
+  27 Jun 2015; Pacho Ramos <pacho@gentoo.org> activity-log-manager-0.9.7.ebuild:
+  Fix typo in VALA_MAX_API_VERSION variable, it also builds with 0.26 (even if
+  it failed with 0.24)
 
   12 Nov 2014; Justin Lecher <jlec@gentoo.org>
   activity-log-manager-0.9.7.ebuild,

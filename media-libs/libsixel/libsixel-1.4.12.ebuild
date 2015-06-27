@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libsixel/libsixel-1.4.7.ebuild,v 1.1 2015/02/17 12:33:58 hattya Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libsixel/libsixel-1.4.12.ebuild,v 1.1 2015/06/27 12:15:14 hattya Exp $
 
 EAPI="5"
 
@@ -19,7 +19,7 @@ RDEPEND="curl? ( net-misc/curl )
 	gd? ( media-libs/gd )
 	gtk? ( x11-libs/gdk-pixbuf:2 )
 	jpeg? ( virtual/jpeg:0 )
-	png? ( media-libs/libpng )
+	png? ( media-libs/libpng:0 )
 	zsh-completion? ( app-shells/zsh )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"

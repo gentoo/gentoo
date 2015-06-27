@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install test
+DEPEND=curl? ( net-misc/curl ) gd? ( media-libs/gd ) gtk? ( x11-libs/gdk-pixbuf:2 ) jpeg? ( virtual/jpeg:0 ) png? ( media-libs/libpng:0 ) zsh-completion? ( app-shells/zsh ) virtual/pkgconfig
+DESCRIPTION=A lightweight, fast implementation of DEC SIXEL graphics codec
+EAPI=5
+HOMEPAGE=https://github.com/saitoha/libsixel
+IUSE=curl gd gtk jpeg png zsh-completion
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT public-domain
+RDEPEND=curl? ( net-misc/curl ) gd? ( media-libs/gd ) gtk? ( x11-libs/gdk-pixbuf:2 ) jpeg? ( virtual/jpeg:0 ) png? ( media-libs/libpng:0 ) zsh-completion? ( app-shells/zsh )
+SLOT=0
+SRC_URI=https://github.com/saitoha/libsixel/archive/v1.4.12.tar.gz -> libsixel-1.4.12.tar.gz
+_eclasses_=bash-completion-r1	c8399c7c7ecbcf7ed6e5bd3abb3d4af3	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=7e775a8d6ac5e49677dc9a96b14b66f9

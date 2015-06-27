@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/protobuf
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/protobuf/ChangeLog,v 1.90 2015/06/09 18:47:53 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/protobuf/ChangeLog,v 1.91 2015/06/27 12:30:59 maekke Exp $
+
+  27 Jun 2015; Markus Meier <maekke@gentoo.org> protobuf-2.6.1-r3.ebuild:
+  arm stable, bug #528240
 
   09 Jun 2015; Ulrich Müller <ulm@gentoo.org>
   files/protobuf-2.5.0-emacs-24.4.patch:
