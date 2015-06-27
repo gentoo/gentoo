@@ -1,6 +1,9 @@
 # ChangeLog for net-analyzer/pmacct
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/pmacct/ChangeLog,v 1.109 2015/05/27 11:21:22 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/pmacct/ChangeLog,v 1.110 2015/06/27 06:38:39 jer Exp $
+
+  27 Jun 2015; Jeroen Roovers <jer@gentoo.org> pmacct-1.5.1.ebuild:
+  Fix dev-db/mysql detection in configure by Brian Evans (bug #553358).
 
   27 May 2015; Agostino Sarubbo <ago@gentoo.org> pmacct-1.5.1.ebuild:
   Stable for x86, wrt bug #542210
