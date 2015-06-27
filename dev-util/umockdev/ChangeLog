@@ -1,6 +1,11 @@
 # ChangeLog for dev-util/umockdev
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/umockdev/ChangeLog,v 1.25 2015/06/18 05:01:34 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/umockdev/ChangeLog,v 1.26 2015/06/27 04:52:44 radhermit Exp $
+
+*umockdev-0.8.10 (27 Jun 2015)
+
+  27 Jun 2015; Tim Harder <radhermit@gentoo.org> +umockdev-0.8.10.ebuild:
+  Version bump.
 
 *umockdev-0.8.9 (18 Jun 2015)
 
