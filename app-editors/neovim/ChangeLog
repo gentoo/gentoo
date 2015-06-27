@@ -1,6 +1,12 @@
 # ChangeLog for app-editors/neovim
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/neovim/ChangeLog,v 1.4 2015/06/05 12:13:25 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/neovim/ChangeLog,v 1.5 2015/06/27 03:54:39 yngwin Exp $
+
+*neovim-0.0.0_pre20150627 (27 Jun 2015)
+
+  27 Jun 2015; Ben de Groot <yngwin@gentoo.org>
+  +neovim-0.0.0_pre20150627.ebuild:
+  new development snapshot
 
   05 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml
