@@ -1,6 +1,16 @@
 # ChangeLog for app-misc/freemind
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/freemind/ChangeLog,v 1.70 2015/06/26 23:33:18 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/freemind/ChangeLog,v 1.73 2015/06/27 18:22:04 monsieurp Exp $
+
+  27 Jun 2015; Patrice Clement <monsieurp@gentoo.org> -freemind-0.9.0-r1.ebuild,
+  -freemind-1.0.0-r1.ebuild, -freemind-1.0.1.ebuild:
+  Remove old.
+
+  27 Jun 2015; Agostino Sarubbo <ago@gentoo.org> freemind-1.0.1-r1.ebuild:
+  Stable for x86, wrt bug #553370
+
+  27 Jun 2015; Agostino Sarubbo <ago@gentoo.org> freemind-1.0.1-r1.ebuild:
+  Stable for amd64, wrt bug #553370
 
 *freemind-1.0.1-r1 (27 Jun 2015)
 

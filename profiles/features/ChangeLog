@@ -1,6 +1,10 @@
 # ChangeLog for Gentoo/AMD64 profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/features/ChangeLog,v 1.86 2015/06/21 11:59:12 perfinion Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/features/ChangeLog,v 1.87 2015/06/27 17:54:43 tetromino Exp $
+
+  27 Jun 2015; Alexandre Rostovtsev <tetromino@gentoo.org>
+  64bit-native/package.mask, 64bit-native/package.use.mask:
+  Clean up old masks.
 
   21 Jun 2015; Jason Zaman <perfinion@gentoo.org> selinux/package.mask:
   Revert systemd mask, breaks gnome

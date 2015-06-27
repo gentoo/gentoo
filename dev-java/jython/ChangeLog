@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/jython
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jython/ChangeLog,v 1.99 2015/06/13 18:04:56 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jython/ChangeLog,v 1.100 2015/06/27 18:15:35 monsieurp Exp $
+
+  27 Jun 2015; Patrice Clement <monsieurp@gentoo.org>
+  +files/jython-2.7.0-build.xml.patch, jython-2.7.0.ebuild:
+  Patch to set failonerror to false when running antlr target.
 
   13 Jun 2015; Patrice Clement <monsieurp@gentoo.org> jython-2.7.0.ebuild:
   Sort out an error with dependencies specified in EANT_GENTOO_CLASSPATH.

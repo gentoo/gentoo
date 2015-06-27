@@ -1609,7 +1609,6 @@ dev-java/eclipse-ecj:ant - Support using ecj in Ant builds via dev-java/ant-ecli
 dev-java/emma:launcher - Install /usr/bin/emma. Collides with sci-biology/emboss.
 dev-java/fop:hyphenation - Precompile hyphenation patterns from the dev-java/offo-hyphenation package and install them as fop-hyph.jar
 dev-java/fop:jai - Enable jai support
-dev-java/fop:jimi - Enable jimi support
 dev-java/gjdoc:xmldoclet - Also build support for the xml doclet that generates output in xml instead of the traditional html javadoc.
 dev-java/gnu-classpath:alsa - Build with ALSA javax.sound.midi provider
 dev-java/gnu-classpath:dssi - Build with DSSI javax.sound.midi provider
@@ -4349,6 +4348,7 @@ media-tv/mythtv:lcd - Tells MythTV that you have an instance of app-misc/lcdproc
 media-tv/mythtv:lirc - Adds LIRC support directly to MythTV allowing for built in control via a LIRC device.
 media-tv/mythtv:perl - Builds the perl bindings for MythTV. Allows you to write scripts in Perl to control your MythTV setup or communicate with it.
 media-tv/mythtv:raop - Remote Audio Output Protocol (aka AirTunes/AirPlay)
+media-tv/mythtv:wrapper - Use Ubuntu mythtfrontend wrapper.
 media-tv/mythtv:xmltv - Pulls in the media-tv/xmltv TV listing grabbers for users not using Schedules Direct.
 media-tv/tvbrowser:themes - Install extra theme packs
 media-tv/tvheadend:ccache - Use dev-util/ccache

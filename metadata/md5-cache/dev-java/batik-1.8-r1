@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install preinst prepare setup
+DEPEND=>=virtual/jdk-1.6 dev-java/xalan:0 dev-java/rhino:1.6 dev-java/xml-commons-external:1.3 dev-java/xmlgraphics-commons:2 python? ( dev-java/jython:0 ) tcl? ( dev-java/jacl:0 ) dev-java/ant-core:0 >=dev-java/java-config-2.2.0 >=dev-java/ant-core-1.8.2 >=dev-java/javatoolkit-0.3.0-r2
+DESCRIPTION=Java based SVG toolkit
+EAPI=5
+HOMEPAGE=https://xmlgraphics.apache.org/batik/
+IUSE=doc python tcl elibc_FreeBSD doc elibc_FreeBSD
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris
+LICENSE=Apache-2.0
+RDEPEND=>=virtual/jre-1.6 dev-java/xalan:0 dev-java/rhino:1.6 dev-java/xml-commons-external:1.3 dev-java/xmlgraphics-commons:2 python? ( dev-java/jython:0 ) tcl? ( dev-java/jacl:0 ) dev-java/ant-core:0 >=dev-java/java-config-2.2.0
+SLOT=1.8
+SRC_URI=http://apache.mirrors.ovh.net/ftp.apache.org/dist/xmlgraphics/batik/source/batik-src-1.8.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	java-ant-2	1091461b8b02f54fabcfbf159164ff15	java-pkg-2	1889f7787714c5f7e3b5bb1c2be07c1f	java-utils-2	6627198e505d021534cb20f89279c509	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=11e6a2fc24785d0e4ff69d72c18b733d

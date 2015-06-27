@@ -1,6 +1,10 @@
 # ChangeLog for Gentoo/AMD64 profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/amd64/ChangeLog,v 1.326 2015/06/14 14:12:55 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/amd64/ChangeLog,v 1.327 2015/06/27 18:03:08 tetromino Exp $
+
+  27 Jun 2015; Alexandre Rostovtsev <tetromino@gentoo.org>
+  no-multilib/package.mask, no-multilib/package.use.mask, package.use.mask:
+  Clean up old masks.
 
   14 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> package.use.stable.mask:
   Mask app-emulation/docker[lxc] for bug #550894

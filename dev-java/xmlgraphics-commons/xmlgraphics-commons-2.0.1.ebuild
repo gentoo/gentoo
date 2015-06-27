@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xmlgraphics-commons/xmlgraphics-commons-2.0.1.ebuild,v 1.1 2015/06/26 23:04:38 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xmlgraphics-commons/xmlgraphics-commons-2.0.1.ebuild,v 1.3 2015/06/27 17:53:38 ago Exp $
 
 EAPI="5"
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://apache/xmlgraphics/commons/source/${P}-src.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 CDEPEND="dev-java/commons-io:1
 	>=dev-java/commons-logging-1:0"

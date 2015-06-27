@@ -1,6 +1,9 @@
 # ChangeLog for Gentoo base-profile
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/ChangeLog,v 1.814 2015/06/21 15:28:16 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/ChangeLog,v 1.815 2015/06/27 17:47:05 tetromino Exp $
+
+  27 Jun 2015; Alexandre Rostovtsev <tetromino@gentoo.org> package.use.mask:
+  Clean up obsolete gnome masks
 
   21 Jun 2015; Mike Gilbert <floppym@gentoo.org> package.use.mask:
   Drop sys-apps/systemd[kdbus] mask; upstream enables this by default.

@@ -46,6 +46,7 @@
 		scripts in Perl to control your MythTV setup or communicate with
 		it.</flag>
 		<flag name="raop">Remote Audio Output Protocol (aka AirTunes/AirPlay)</flag>
+		<flag name="wrapper">Use Ubuntu mythtfrontend wrapper.</flag>
 		<flag name="xmltv">Pulls in the <pkg>media-tv/xmltv</pkg> TV listing
 		grabbers for users not using Schedules Direct.</flag>
 	</use>

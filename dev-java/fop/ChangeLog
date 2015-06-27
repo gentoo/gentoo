@@ -1,6 +1,23 @@
 # ChangeLog for dev-java/fop
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/fop/ChangeLog,v 1.74 2015/06/27 13:04:00 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/fop/ChangeLog,v 1.79 2015/06/27 18:47:54 monsieurp Exp $
+
+  27 Jun 2015; Patrice Clement <monsieurp@gentoo.org> fop-2.0.ebuild:
+  Use a combination of - instead of  courtesy of James Le Cuirot
+  <chewi@gentoo.org>. Fix bug 553392.
+
+  27 Jun 2015; Patrice Clement <monsieurp@gentoo.org> metadata.xml:
+  Remove unused USE flag and clear QA warning.
+
+  27 Jun 2015; Patrice Clement <monsieurp@gentoo.org> -fop-0.95.ebuild,
+  -fop-1.1.ebuild:
+  Remove old.
+
+  27 Jun 2015; Agostino Sarubbo <ago@gentoo.org> fop-2.0.ebuild:
+  Stable for x86, wrt bug #553370
+
+  27 Jun 2015; Agostino Sarubbo <ago@gentoo.org> fop-2.0.ebuild:
+  Stable for amd64, wrt bug #553370
 
   27 Jun 2015; Patrice Clement <monsieurp@gentoo.org> fop-2.0.ebuild:
   Make use of ${P} where we can in order to avoid clashing with other SLOTs. Fix

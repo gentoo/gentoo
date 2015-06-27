@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/fop/fop-2.0.ebuild,v 1.3 2015/06/27 13:04:00 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/fop/fop-2.0.ebuild,v 1.6 2015/06/27 18:47:54 monsieurp Exp $
 
 # TODO: if 'doc' use flag is used then should build also extra docs ('docs' ant target), currently it cannot
 #       be built as it needs forrest which we do not have
@@ -17,10 +17,12 @@ DESCRIPTION="Formatting Objects Processor is a print formatter driven by XSL"
 HOMEPAGE="http://xmlgraphics.apache.org/fop/"
 SRC_URI="mirror://apache/xmlgraphics/${PN}/source/${P}-src.zip"
 
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~ppc-macos ~sparc-solaris ~x86-linux ~x86-macos ~x86-solaris"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="hyphenation jai"
 LICENSE="Apache-2.0"
 SLOT="2"
+
+MY_P="${PN}-${SLOT}"
 
 # Doesn't work with java.awt.headless, requires Mockito.
 RESTRICT="test"
@@ -108,12 +110,12 @@ src_install() {
 
 	if use hyphenation; then
 		java-pkg_dojar build/fop-hyph.jar
-		insinto /usr/share/${P}/
+		insinto /usr/share/${MY_P}/
 		doins -r hyph
 	fi
 
 	# Doesn't support everything upstream launcher does...
-	java-pkg_dolauncher ${P} --main org.apache.fop.cli.Main
+	java-pkg_dolauncher ${MY_P} --main org.apache.fop.cli.Main
 
 	dodoc NOTICE README
 

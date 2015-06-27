@@ -1,6 +1,9 @@
 # ChangeLog for media-radio/xastir
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-radio/xastir/ChangeLog,v 1.41 2015/04/26 16:24:01 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-radio/xastir/ChangeLog,v 1.42 2015/06/27 17:47:01 ago Exp $
+
+  27 Jun 2015; Agostino Sarubbo <ago@gentoo.org> xastir-2.0.6.ebuild:
+  Stable for amd64, wrt bug #535486
 
   26 Apr 2015; Pacho Ramos <pacho@gentoo.org> xastir-2.0.6.ebuild:
   x86 stable wrt bug #535486

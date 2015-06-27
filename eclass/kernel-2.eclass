@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/kernel-2.eclass,v 1.309 2015/06/27 17:27:15 mpagano Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/kernel-2.eclass,v 1.310 2015/06/27 17:41:20 mpagano Exp $
 
 # Description: kernel.eclass rewrite for a clean base regarding the 2.6
 #              series of kernel with back-compatibility for 2.4
@@ -1022,10 +1022,12 @@ unipatch() {
 			fi
 
 			# if kdbus use flag is not set, drop the kdbus patch
-            if [[ $UNIPATCH_DROP != *"5015_kdbus*.patch"* ]] && ! use kdbus; then
-				UNIPATCH_DROP="${UNIPATCH_DROP} 5015_kdbus*.patch"
+            if [[ $UNIPATCH_DROP != *"5015_kdbus*.patch"* ]]; then
+				if ! has kdbus ${IUSE} ||  ! use kdbus; then
+					UNIPATCH_DROP="${UNIPATCH_DROP} 5015_kdbus*.patch"
+				fi
 			fi
-		fi
+ 		fi
 	done
 
 	#populate KPATCH_DIRS so we know where to look to remove the excludes

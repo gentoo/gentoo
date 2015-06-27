@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/amd64/no-multilib/package.mask,v 1.142 2015/06/02 09:15:35 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/amd64/no-multilib/package.mask,v 1.143 2015/06/27 18:03:08 tetromino Exp $
 
 # AMD64 Team <amd64@gentoo.org>
 # Mask packages that rely on amd64 multilib
@@ -18,7 +18,6 @@ app-emulation/vmware-player
 >=app-i18n/atokx3-3.0.0
 app-office/ooextras
 app-emulation/winetricks
-app-emulation/wine-doors
 app-text/acroread
 app-office/lotus-notes
 dev-embedded/libftd2xx
@@ -112,7 +111,6 @@ games-rpg/nwn-data
 games-rpg/nwn-penultima
 games-rpg/nwn-penultimarerolled
 games-rpg/nwn-shadowlordsdreamcatcherdemon
-games-rpg/rain-slick
 games-rpg/sacred-gold
 games-server/etqw-ded
 games-server/nwn-ded

@@ -1,6 +1,9 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1689 2015/06/27 17:27:15 mpagano Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1690 2015/06/27 17:41:20 mpagano Exp $
+
+  27 Jun 2015; Mike Pagano <mpagano@gentoo.org> kernel-2.eclass:
+  Fix conditional bug for UNIPATCH_DROP
 
   27 Jun 2015; Mike Pagano <mpagano@gentoo.org> kernel-2.eclass:
   Fix for kdbus. Thanks to Arfrever.

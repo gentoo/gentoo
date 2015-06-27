@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/features/64bit-native/package.use.mask,v 1.11 2014/11/13 08:53:44 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/features/64bit-native/package.use.mask,v 1.12 2015/06/27 17:54:43 tetromino Exp $
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (04 Jul 2012)
 # Disable 32-bit parts of wine, bug #351436
-app-emulation/wine mono win32
+app-emulation/wine mono
 
 # Apr 28, 2008 Sébastien Fabbro <bicatali@gentoo.org>
 # ifc masked

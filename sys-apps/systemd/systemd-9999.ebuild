@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/systemd-9999.ebuild,v 1.173 2015/06/21 15:29:53 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/systemd-9999.ebuild,v 1.174 2015/06/27 18:00:47 floppym Exp $
 
 EAPI=5
 
@@ -28,7 +28,9 @@ SLOT="0/2"
 IUSE="acl apparmor audit cryptsetup curl elfutils gcrypt gnuefi http
 	idn importd +kdbus +kmod +lz4 lzma nat pam policykit python
 	qrcode +seccomp selinux ssl sysv-utils terminal test vanilla xkb"
-REQUIRED_USE="importd? ( curl gcrypt lzma )"
+
+REQUIRED_USE="importd? ( curl gcrypt lzma )
+	python? ( ${PYTHON_REQUIRED_USE} )"
 
 MINKV="3.8"
 
@@ -101,12 +103,17 @@ DEPEND="${COMMON_DEPEND}
 	test? ( >=sys-apps/dbus-1.6.8-r1:0 )"
 
 if [[ -n ${AUTOTOOLS_AUTORECONF} ]]; then
-	DEPEND="${DEPEND}
+	DEPEND+="
 		app-text/docbook-xml-dtd:4.2
 		app-text/docbook-xml-dtd:4.5
 		app-text/docbook-xsl-stylesheets
 		dev-libs/libxslt:0
 		>=dev-libs/libgcrypt-1.4.5:0"
+fi
+
+if [[ ${PV} == 9999 ]]; then
+	DEPEND+=" ${PYTHON_DEPS}"
+	REQUIRED_USE+=" ${PYTHON_REQUIRED_USE}"
 fi
 
 pkg_pretend() {
@@ -148,12 +155,18 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	:
 }
 
 src_prepare() {
 	# Bug 463376
 	sed -i -e 's/GROUP="dialout"/GROUP="uucp"/' rules/*.rules || die
+
+	if [[ ${PV} != 9999 ]]; then
+		# Update the timestamp on this to avoid rebuilding it.
+		[[ -e src/libsystemd-terminal/unifont-glyph-array.bin ]] || die "File missing from tarball"
+		touch src/libsystemd-terminal/unifont-glyph-array.bin || die
+	fi
 
 	autotools-utils_src_prepare
 }
@@ -163,6 +176,10 @@ src_configure() {
 	MY_UDEVDIR=$(get_udevdir)
 	# Fix systems broken by bug #509454.
 	[[ ${MY_UDEVDIR} ]] || MY_UDEVDIR=/lib/udev
+
+	if [[ ${PV} == 9999 ]] || use python; then
+		python_setup
+	fi
 
 	multilib-minimal_src_configure
 }

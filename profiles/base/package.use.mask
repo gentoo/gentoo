@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use.mask,v 1.690 2015/06/21 15:28:16 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use.mask,v 1.691 2015/06/27 17:47:05 tetromino Exp $
 
 # This file requires >=portage-2.1.1
 # New entries go on top.
@@ -292,10 +292,6 @@ dev-libs/boost context
 # and affected versions are removed from the tree.
 <media-sound/umurmur-0.2.14 polarssl
 
-# Gilles Dartiguelongue <eva@gentoo.org> (25 Dec 2013)
-# gjs: tests fail and support for it was purely and simply removed in master/1.9
->=dev-libs/libpeas-1.9 gjs
-
 # Gilles Dartiguelongue <eva@gentoo.org> (23 Dec 2013)
 # Gstreamer support fails to build due to libtool shortcomings when using
 # an intermediate library as a dependency of another libtool target dependency.
@@ -497,11 +493,6 @@ dev-ml/tyxml ocamlduce
 www-servers/ocsigen ocamlduce
 dev-ml/eliom ocamlduce
 
-# GNOME <gnome@gentoo.org> (02 Oct 2012)
-# Mask USE="udisks" and use USE="gdu" as the default for <gnome-base/gvfs-1.14;
-# older gvfs releases have problems with recent stable udisks:2 (bug #463792)
-<gnome-base/gvfs-1.14 udisks
-
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (28 Sep 2012)
 # Causes problems with old NVidia drivers, bug #413637.
 <www-client/chromium-32.0.1700.19 tcmalloc
@@ -571,11 +562,6 @@ app-arch/libzpaq jit
 # Mask xen USE flag by default, unmask on x86/amd64 where it is supported.
 media-sound/pulseaudio webrtc-aec xen
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (27 Mar 2012)
-# Requires libxkbcommon from the x11 overlay
-<dev-cpp/gtkmm-3.7 wayland
-<x11-libs/gtk+-3.7 egl wayland
-
 # Samuli Suominen <ssuominen@gentoo.org> (20 Mar 2012)
 # This is for udev-acl. Unmasked in default/linux/package.use.mask.
 sys-auth/consolekit acl
@@ -629,10 +615,6 @@ www-client/links suid
 # fixes it bug #385683
 dev-lang/path64 debugger
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (31 Oct 2011)
-# Let's not suddenly enable clutter on stable evolution versions
-<mail-client/evolution-3 clutter
-
 # Samuli Suominen <ssuominen@gentoo.org> (16 Oct 2011)
 # Mask libbluray support here, and enable it per arch instead
 gnome-base/gvfs bluray
@@ -646,13 +628,6 @@ gnome-base/gvfs bluray
 # Systemtap is not keyworded on anything except amd64/x86
 # Temporarily mask instead of dropping keywords, bug 384647
 dev-libs/glib systemtap
-
-# Nirbheek Chauhan <nirbheek@gentoo.org> (16 Aug 2011)
-# Mask introspection on ebuilds that went stable before it was unmasked.
-# As these ebuilds are cleaned from the tree, the masks can be removed.
-<app-crypt/seahorse-2.32.0-r1 introspection
-<media-libs/babl-0.1.4-r1 introspection
-<www-client/epiphany-3 introspection
 
 # Robin H. Johnson <robbat2@gentoo.org> (10 Jul 2011)
 # PPS should work on all arches, but only keyworded on amd64/x86
@@ -682,9 +657,7 @@ net-dns/pdnsd isdn urandom
 
 # Tomáš Chvátal <scarabeus@gentoo.org> (8 Sep 2010)
 # drm don't even build here so mask everywhere expect live.
-# openvg require openvg-1.1 implemenatation so mask until there is some
 <x11-libs/cairo-9999 drm
-<x11-libs/cairo-1.12 openvg
 
 # Alex Legler <a3li@gentoo.org> (1 Sep 2010)
 # This feature is marked as experimental by upstream.
@@ -725,12 +698,6 @@ sci-chemistry/gamess mpi
 # Mounir Lamouri <volkmar@gentoo.org> (07 Nov 2009)
 # Mask cuda for k3d. Works only on amd64/x86. Bug 267264
 media-gfx/k3d cuda
-
-# Gilles Dartiguelongue <eva@gentoo.org> (01 Nov 2009)
-# Broken on so many setups it is just insane.
-# 0.7 is API/ABI incompatible but is the way to go.
-# Masking to lower maintainance headache, bug #291501.
-media-video/totem tracker
 
 # Tomáš Chvátal <scarabeus@gentoo.org> (27 Oct 2009)
 # Broken on so many setups it is just insane.

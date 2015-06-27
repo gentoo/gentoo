@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/features/64bit-native/package.mask,v 1.104 2015/06/02 09:15:35 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/features/64bit-native/package.mask,v 1.105 2015/06/27 17:54:43 tetromino Exp $
 
 # Andreas K. Huettel <dilfridge@gentoo.org>
 # Novell Groupwise Client sadly needs a 32bit java vm (bundled)
@@ -26,7 +26,6 @@ app-emulation/vmware-player
 app-office/lotus-notes
 app-office/ooextras
 app-emulation/winetricks
-app-emulation/wine-doors
 app-text/acroread
 dev-embedded/libftd2xx
 dev-embedded/openocd
@@ -116,7 +115,6 @@ games-rpg/nwn-penultima
 games-rpg/nwn-penultimarerolled
 games-rpg/nwn-shadowlordsdreamcatcherdemon
 games-rpg/penumbra-collection
-games-rpg/rain-slick
 games-rpg/sacred-gold
 games-server/etqw-ded
 games-server/nwn-ded
