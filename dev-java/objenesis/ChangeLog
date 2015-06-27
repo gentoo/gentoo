@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/objenesis
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/objenesis/ChangeLog,v 1.4 2015/06/23 15:25:25 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/objenesis/ChangeLog,v 1.5 2015/06/27 21:27:49 monsieurp Exp $
+
+  27 Jun 2015; Patrice Clement <monsieurp@gentoo.org> objenesis-1.3.ebuild:
+  Keyword for ppc+ppc64. Signed off by James Le Cuirot <chewi@gentoo.org>.
 
   23 Jun 2015; Agostino Sarubbo <ago@gentoo.org> objenesis-1.3.ebuild:
   Stable for x86, wrt bug #520200

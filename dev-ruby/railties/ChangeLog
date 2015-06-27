@@ -1,6 +1,14 @@
 # ChangeLog for dev-ruby/railties
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/railties/ChangeLog,v 1.108 2015/06/26 08:33:54 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/railties/ChangeLog,v 1.110 2015/06/27 20:39:55 mrueg Exp $
+
+  27 Jun 2015; Manuel Rüger <mrueg@gentoo.org> railties-4.1.10.ebuild,
+  railties-4.1.11.ebuild, railties-4.1.12.ebuild:
+  Require newer eselect-rails.
+
+  27 Jun 2015; Manuel Rüger <mrueg@gentoo.org> railties-4.2.1.ebuild,
+  railties-4.2.2.ebuild, railties-4.2.3.ebuild:
+  Require newer eselect-rails.
 
 *railties-4.2.3 (26 Jun 2015)
 

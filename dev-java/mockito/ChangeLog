@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/mockito
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/mockito/ChangeLog,v 1.5 2015/06/23 15:25:21 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/mockito/ChangeLog,v 1.6 2015/06/27 21:27:48 monsieurp Exp $
+
+  27 Jun 2015; Patrice Clement <monsieurp@gentoo.org> mockito-1.9.5-r1.ebuild:
+  Keyword for ppc+ppc64. Signed off by James Le Cuirot <chewi@gentoo.org>.
 
   23 Jun 2015; Agostino Sarubbo <ago@gentoo.org> mockito-1.9.5-r1.ebuild:
   Stable for x86, wrt bug #520200
