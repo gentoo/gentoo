@@ -1,6 +1,12 @@
 # ChangeLog for games-rpg/manaplus
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-rpg/manaplus/ChangeLog,v 1.18 2015/06/12 14:33:22 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/manaplus/ChangeLog,v 1.19 2015/06/26 23:50:02 mr_bones_ Exp $
+
+*manaplus-1.5.6.20 (26 Jun 2015)
+
+  26 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  +manaplus-1.5.6.20.ebuild:
+  version bump
 
 *manaplus-1.5.6.6 (12 Jun 2015)
 

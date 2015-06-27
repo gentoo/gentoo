@@ -1,6 +1,11 @@
 # ChangeLog for app-misc/freemind
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/freemind/ChangeLog,v 1.69 2015/06/09 11:40:21 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/freemind/ChangeLog,v 1.70 2015/06/26 23:33:18 monsieurp Exp $
+
+*freemind-1.0.1-r1 (27 Jun 2015)
+
+  27 Jun 2015; Patrice Clement <monsieurp@gentoo.org> +freemind-1.0.1-r1.ebuild:
+  Dependencies bump wrt fop and batik.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

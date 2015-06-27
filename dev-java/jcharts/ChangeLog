@@ -1,6 +1,11 @@
 # ChangeLog for dev-java/jcharts
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jcharts/ChangeLog,v 1.14 2015/06/09 13:42:04 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jcharts/ChangeLog,v 1.15 2015/06/26 23:49:36 monsieurp Exp $
+
+*jcharts-0.7.5-r3 (27 Jun 2015)
+
+  27 Jun 2015; Patrice Clement <monsieurp@gentoo.org> +jcharts-0.7.5-r3.ebuild:
+  EAPI 5 bump. Dependencies bump wrt batik.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml
