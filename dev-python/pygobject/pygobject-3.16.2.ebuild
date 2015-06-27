@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pygobject/pygobject-3.16.2.ebuild,v 1.1 2015/06/20 10:09:22 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pygobject/pygobject-3.16.2.ebuild,v 1.2 2015/06/27 01:22:02 tetromino Exp $
 
 EAPI="5"
 GCONF_DEBUG="no"
@@ -40,8 +40,12 @@ DEPEND="${COMMON_DEPEND}
 		x11-libs/cairo[glib]
 		x11-libs/gdk-pixbuf:2[introspection]
 		x11-libs/gtk+:3[introspection]
-		x11-libs/pango[introspection] )
+		x11-libs/pango[introspection]
+		!sparc? ( python_targets_python2_7? ( dev-python/pyflakes[$(python_gen_usedep python2_7)] ) ) )
 "
+# FIXME: remove "!sparc?" automagic nonsense above when pyflakes is
+# keyworded on sparc, bug #553380
+
 # gnome-base/gnome-common required by eautoreconf
 
 # We now disable introspection support in slot 2 per upstream recommendation
@@ -65,10 +69,19 @@ src_configure() {
 	# Hard-enable libffi support since both gobject-introspection and
 	# glib-2.29.x rdepend on it anyway
 	# docs disabled by upstream default since they are very out of date
-	python_foreach_impl run_in_build_dir \
+	configuring() {
 		gnome2_src_configure \
 			$(use_enable cairo) \
 			$(use_enable threads thread)
+
+		# Pyflakes tests work only in python2, bug #516744
+		if use test && [[ ${EPYTHON} != python2.7 ]]; then
+			sed -e 's/if type pyflakes/if false/' \
+				-i Makefile || die "sed failed"
+		fi
+	}
+
+	python_foreach_impl run_in_build_dir configuring
 }
 
 src_compile() {

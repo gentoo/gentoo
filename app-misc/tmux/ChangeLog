@@ -1,6 +1,11 @@
 # ChangeLog for app-misc/tmux
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/tmux/ChangeLog,v 1.117 2015/05/10 07:09:00 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/tmux/ChangeLog,v 1.118 2015/06/27 01:52:25 radhermit Exp $
+
+  27 Jun 2015; Tim Harder <radhermit@gentoo.org> tmux-1.9a.ebuild,
+  tmux-2.0.ebuild, tmux-9999.ebuild:
+  Update HOMEPAGE, SRC_URI, and EGIT_REPO_URI (project moved from sourceforge
+  to github).
 
 *tmux-2.0 (10 May 2015)
 

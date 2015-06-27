@@ -1,6 +1,16 @@
 # ChangeLog for app-misc/ranger
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/ranger/ChangeLog,v 1.34 2015/05/16 19:40:02 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/ranger/ChangeLog,v 1.37 2015/06/27 01:56:54 radhermit Exp $
+
+  27 Jun 2015; Tim Harder <radhermit@gentoo.org> -ranger-1.6.1.ebuild,
+  -ranger-1.7.0.ebuild:
+  Remove old.
+
+  27 Jun 2015; Tim Harder <radhermit@gentoo.org> ranger-1.7.1.ebuild:
+  Keyword ~ppc (bug #551920).
+
+  27 Jun 2015; Tim Harder <radhermit@gentoo.org> ranger-1.7.1.ebuild:
+  Stabilize for amd64/x86.
 
 *ranger-1.7.1 (16 May 2015)
 

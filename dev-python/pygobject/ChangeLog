@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/pygobject
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pygobject/ChangeLog,v 1.272 2015/06/20 10:09:22 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pygobject/ChangeLog,v 1.273 2015/06/27 01:22:02 tetromino Exp $
+
+  27 Jun 2015; Alexandre Rostovtsev <tetromino@gentoo.org>
+  pygobject-3.16.2.ebuild:
+  Fix test failure when pyflakes is installed (bug #516744, thanks to Ian
+  Delaney and Gilles Dartiguelongue).
 
 *pygobject-3.16.2 (20 Jun 2015)
 

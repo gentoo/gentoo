@@ -1,16 +1,15 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/tmux/tmux-2.0.ebuild,v 1.1 2015/05/10 07:09:00 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/tmux/tmux-2.0.ebuild,v 1.2 2015/06/27 01:52:25 radhermit Exp $
 
 EAPI=5
-
 AUTOTOOLS_AUTORECONF=true
 
 inherit autotools-utils bash-completion-r1 flag-o-matic
 
 DESCRIPTION="Terminal multiplexer"
-HOMEPAGE="http://tmux.sourceforge.net"
-SRC_URI="mirror://sourceforge/tmux/${P}.tar.gz"
+HOMEPAGE="http://tmux.github.io/"
+SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
