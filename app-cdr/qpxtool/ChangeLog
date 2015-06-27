@@ -1,6 +1,11 @@
 # ChangeLog for app-cdr/qpxtool
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/qpxtool/ChangeLog,v 1.26 2015/06/09 09:28:21 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/qpxtool/ChangeLog,v 1.27 2015/06/27 21:55:03 mrueg Exp $
+
+  27 Jun 2015; Manuel Rüger <mrueg@gentoo.org>
+  -files/qpxtool-0.7.0-ldlibs.patch, -files/qpxtool-0.7.0-lrelease.patch,
+  -qpxtool-0.7.0-r1.ebuild:
+  Remove old.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

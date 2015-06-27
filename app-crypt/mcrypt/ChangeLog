@@ -1,6 +1,9 @@
 # ChangeLog for app-crypt/mcrypt
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/mcrypt/ChangeLog,v 1.43 2015/06/09 09:30:56 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/mcrypt/ChangeLog,v 1.44 2015/06/27 22:10:20 mrueg Exp $
+
+  27 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -mcrypt-2.6.8-r1.ebuild:
+  Remove old.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

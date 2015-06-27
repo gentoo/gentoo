@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/kde5-functions.eclass,v 1.8 2015/06/08 12:27:32 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/kde5-functions.eclass,v 1.9 2015/06/27 22:02:21 johu Exp $
 
 # @ECLASS: kde5-functions.eclass
 # @MAINTAINER:
@@ -26,12 +26,12 @@ esac
 # @ECLASS-VARIABLE: FRAMEWORKS_MINIMAL
 # @DESCRIPTION:
 # Minimal Frameworks version to require for the package.
-: ${FRAMEWORKS_MINIMAL:=5.10.0}
+: ${FRAMEWORKS_MINIMAL:=5.11.0}
 
 # @ECLASS-VARIABLE: PLASMA_MINIMAL
 # @DESCRIPTION:
 # Minimal Plasma version to require for the package.
-: ${PLASMA_MINIMAL:=5.3.0}
+: ${PLASMA_MINIMAL:=5.3.1}
 
 # @ECLASS-VARIABLE: KDE_APPS_MINIMAL
 # @DESCRIPTION:
@@ -218,7 +218,7 @@ punt_bogus_dep() {
 	local prefix=${1}
 	local dep=${2}
 
-	pcregrep -Mn "(?s)find_package\(\s*${prefix}.[^)]*?${dep}.*?\)" CMakeLists.txt > "${T}/bogus${dep}"
+	pcregrep -Mn "(?s)find_package\s*\(\s*${prefix}.[^)]*?${dep}.*?\)" CMakeLists.txt > "${T}/bogus${dep}"
 
 	# pcregrep returns non-zero on no matches/error
 	if [[ $? != 0 ]] ; then
@@ -232,7 +232,7 @@ punt_bogus_dep() {
 	sed -e "${first},${last}s/${dep}//" -i CMakeLists.txt || die
 
 	if [[ ${length} = 1 ]] ; then
-		sed -e "/find_package(\s*${prefix}\s*REQUIRED\s*COMPONENTS\s*)/d" -i CMakeLists.txt || die
+		sed -e "/find_package\s*(\s*${prefix}\s*REQUIRED\s*COMPONENTS\s*)/d" -i CMakeLists.txt || die
 	fi
 }
 

@@ -1,6 +1,9 @@
 # ChangeLog for app-cdr/uif2iso
-# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/uif2iso/ChangeLog,v 1.10 2011/11/17 18:47:32 phajdan.jr Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/uif2iso/ChangeLog,v 1.11 2015/06/27 21:55:49 mrueg Exp $
+
+  27 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -uif2iso-0.1.4.ebuild:
+  Remove old.
 
   17 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> uif2iso-0.1.7c.ebuild:
   x86 stable wrt bug #390569
@@ -47,4 +50,3 @@
   12 Jun 2008; Diego Pettenò <flameeyes@gentoo.org> +metadata.xml,
   +uif2iso-0.1.4.ebuild:
   Initial import of uif2iso, to convert MagicISO files in standard ISOs.
-

@@ -1,6 +1,10 @@
 # ChangeLog for app-crypt/openvpn-blacklist
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/openvpn-blacklist/ChangeLog,v 1.3 2014/12/26 22:13:31 mgorny Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/openvpn-blacklist/ChangeLog,v 1.4 2015/06/27 22:11:47 mrueg Exp $
+
+  27 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -openvpn-blacklist-0.3.ebuild,
+  -openvpn-blacklist-0.4.ebuild:
+  Remove old.
 
 *openvpn-blacklist-0.4-r1 (26 Dec 2014)
 

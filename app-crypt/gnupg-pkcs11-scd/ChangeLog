@@ -1,6 +1,9 @@
 # ChangeLog for app-crypt/gnupg-pkcs11-scd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/gnupg-pkcs11-scd/ChangeLog,v 1.16 2015/06/09 09:30:15 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/gnupg-pkcs11-scd/ChangeLog,v 1.17 2015/06/27 22:09:18 mrueg Exp $
+
+  27 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -gnupg-pkcs11-scd-0.7.2.ebuild:
+  Remove old.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

@@ -1,6 +1,10 @@
 # ChangeLog for dev-db/freetds
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/freetds/ChangeLog,v 1.67 2014/08/10 19:58:52 slyfox Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/freetds/ChangeLog,v 1.68 2015/06/27 22:30:04 mrueg Exp $
+
+  27 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -freetds-0.64.ebuild,
+  -freetds-0.82-r3.ebuild:
+  Remove old.
 
   10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> freetds-0.64.ebuild,
   freetds-0.82-r3.ebuild:

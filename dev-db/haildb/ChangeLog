@@ -1,6 +1,10 @@
 # ChangeLog for dev-db/haildb
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/haildb/ChangeLog,v 1.9 2015/06/09 13:09:41 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/haildb/ChangeLog,v 1.10 2015/06/27 22:28:57 mrueg Exp $
+
+  27 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -haildb-2.2.0.ebuild,
+  -haildb-2.3.1.ebuild:
+  Remove old.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

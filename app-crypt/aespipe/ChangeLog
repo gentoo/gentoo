@@ -1,6 +1,9 @@
 # ChangeLog for app-crypt/aespipe
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/aespipe/ChangeLog,v 1.35 2015/05/17 13:48:32 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/aespipe/ChangeLog,v 1.36 2015/06/27 22:07:29 mrueg Exp $
+
+  27 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -aespipe-2.4c.ebuild:
+  Remove old.
 
   17 May 2015; Manuel Rüger <mrueg@gentoo.org> -aespipe-2.3b.ebuild:
   Remove old.

@@ -1044,6 +1044,7 @@ app-office/scribus:osg - 3D redering via dev-games/openscenegraph
 app-office/scribus:scripts - Install the scripts
 app-office/scribus:templates - Document tamplates
 app-office/scribus:tk - Install tk based scripts e.g. FontSample.py
+app-office/skrooge:activities - Enable kactivities support
 app-office/texmacs:netpbm - Add support for media-libs/netpbm
 app-office/texmacs:pdf - Add the experimental native pdf export
 app-office/texstudio:video - Use phonon for video embedding

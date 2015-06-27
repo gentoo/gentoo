@@ -1,6 +1,10 @@
 # ChangeLog for dev-db/pgmemcache
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/pgmemcache/ChangeLog,v 1.11 2015/06/06 09:52:24 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/pgmemcache/ChangeLog,v 1.12 2015/06/27 22:27:17 mrueg Exp $
+
+  27 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -pgmemcache-2.0.4.ebuild,
+  -pgmemcache-2.0.6.ebuild, -pgmemcache-2.1.1.ebuild:
+  Remove old.
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

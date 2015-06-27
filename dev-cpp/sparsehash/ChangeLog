@@ -1,6 +1,10 @@
 # ChangeLog for dev-cpp/sparsehash
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/sparsehash/ChangeLog,v 1.13 2012/11/27 17:37:33 bicatali Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/sparsehash/ChangeLog,v 1.14 2015/06/27 22:16:54 mrueg Exp $
+
+  27 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -sparsehash-1.1.ebuild,
+  -sparsehash-1.5.2.ebuild:
+  Remove old.
 
   27 Nov 2012; Sébastien Fabbro <bicatali@gentoo.org> sparsehash-2.0.2.ebuild:
   Keyword amd64-linux and x86-linux

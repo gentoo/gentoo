@@ -1,6 +1,10 @@
 # ChangeLog for dev-libs/m17n-lib
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/m17n-lib/ChangeLog,v 1.62 2012/12/19 15:51:43 ago Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/m17n-lib/ChangeLog,v 1.63 2015/06/27 22:21:41 mrueg Exp $
+
+  27 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -m17n-lib-1.5.3.ebuild,
+  -m17n-lib-1.5.4.ebuild:
+  Remove old.
 
   19 Dec 2012; Agostino Sarubbo <ago@gentoo.org> m17n-lib-1.6.4.ebuild:
   Add ~ia64, wrt bug #424329

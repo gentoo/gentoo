@@ -1,6 +1,14 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1690 2015/06/27 17:41:20 mpagano Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1691 2015/06/27 22:02:21 johu Exp $
+
+  27 Jun 2015; Johannes Huber <johu@gentoo.org> kde5-functions.eclass,
+  kde5.eclass:
+  Sync kde5*eclass with kde overlay. Handle more whitespace variations by
+  Michael Palimaka <kensington@gentoo.org>. Fixes translation handling by
+  Michael Palimaka <kensington@gentoo.org> and Andreas Sturmlechner
+  <andreas.sturmlechner@gmail.com>, bug #552664. Raises deps on KDE Frameworks
+  and KDE Plasma Manuel Rüger <mrueg@gentoo.org>.
 
   27 Jun 2015; Mike Pagano <mpagano@gentoo.org> kernel-2.eclass:
   Fix conditional bug for UNIPATCH_DROP

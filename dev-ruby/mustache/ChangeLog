@@ -1,6 +1,11 @@
 # ChangeLog for dev-ruby/mustache
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/mustache/ChangeLog,v 1.48 2015/02/27 15:31:56 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/mustache/ChangeLog,v 1.49 2015/06/27 21:37:21 mrueg Exp $
+
+*mustache-1.0.2 (27 Jun 2015)
+
+  27 Jun 2015; Manuel Rüger <mrueg@gentoo.org> +mustache-1.0.2.ebuild:
+  Version bump. Drop ruby19 support.
 
 *mustache-1.0.1 (27 Feb 2015)
 
