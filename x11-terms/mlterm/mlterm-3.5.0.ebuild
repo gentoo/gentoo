@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/mlterm/mlterm-3.4.3.ebuild,v 1.1 2015/02/17 12:39:06 hattya Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/mlterm/mlterm-3.5.0.ebuild,v 1.1 2015/06/27 12:40:29 hattya Exp $
 
 EAPI="5"
 
@@ -13,15 +13,17 @@ SRC_URI="mirror://sourceforge/mlterm/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
-IUSE="bidi cairo debug fcitx gtk ibus libssh2 m17n-lib nls regis scim static-libs uim utempter xft"
+IUSE="bidi cairo canna debug fcitx freewnn gtk ibus libssh2 m17n-lib nls regis scim static-libs uim utempter xft"
 
 RDEPEND="x11-libs/libICE
 	x11-libs/libSM
 	x11-libs/libX11
 	bidi? ( dev-libs/fribidi )
 	cairo? ( x11-libs/cairo )
+	canna? ( app-i18n/canna )
 	fcitx? ( app-i18n/fcitx )
-	gtk? ( x11-libs/gtk+ )
+	freewnn? ( app-i18n/freewnn )
+	gtk? ( >=x11-libs/gtk+-2 )
 	ibus? ( app-i18n/ibus )
 	libssh2? ( net-libs/libssh2 )
 	m17n-lib? ( dev-libs/m17n-lib )
@@ -60,8 +62,10 @@ src_configure() {
 		--enable-optimize-redrawing
 		--enable-vt52
 		$(use_enable bidi fribidi)
+		$(use_enable canna)
 		$(use_enable debug)
 		$(use_enable fcitx)
+		$(use_enable freewnn wnn)
 		$(use_enable ibus)
 		$(use_enable libssh2 ssh2)
 		$(use_enable m17n-lib m17nlib)
@@ -77,6 +81,8 @@ src_configure() {
 		myeconfargs+=(--with-imagelib=gdk-pixbuf)
 		if has_version x11-libs/gtk+:3; then
 			myeconfargs+=(--with-gtk=3.0)
+		else
+			myeconfargs+=(--with-gtk=2.0)
 		fi
 		scrollbars+=",pixmap_engine"
 		tools+=",mlconfig,mlimgloader"
@@ -102,4 +108,8 @@ src_install () {
 
 	doicon contrib/icon/mlterm*
 	make_desktop_entry mlterm mlterm mlterm-icon "System;TerminalEmulator"
+}
+
+pkg_postinst() {
+	elog "The 'use_scrollbar' option was renamed to 'use_mdi'."
 }

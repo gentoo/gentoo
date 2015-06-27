@@ -1,6 +1,9 @@
 # ChangeLog for net-misc/ofono
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/ofono/ChangeLog,v 1.67 2015/06/26 14:28:49 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ofono/ChangeLog,v 1.68 2015/06/27 12:42:00 maekke Exp $
+
+  27 Jun 2015; Markus Meier <maekke@gentoo.org> ofono-1.16.ebuild:
+  arm stable, bug #552008
 
   26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> ofono-1.16.ebuild:
   Stable for amd64, wrt bug #552008

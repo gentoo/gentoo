@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/oslo-sphinx
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/oslo-sphinx/ChangeLog,v 1.15 2015/06/03 20:39:11 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/oslo-sphinx/ChangeLog,v 1.16 2015/06/27 12:34:25 maekke Exp $
+
+  27 Jun 2015; Markus Meier <maekke@gentoo.org> oslo-sphinx-2.5.0.ebuild:
+  add ~arm, bug #549232
 
   03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add pypi to remote-id in metadata.xml

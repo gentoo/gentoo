@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/luajit/luajit-2.0.3-r1.ebuild,v 1.3 2015/06/27 09:49:06 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/luajit/luajit-2.0.3-r1.ebuild,v 1.4 2015/06/27 12:41:48 zlogene Exp $
 
 EAPI=5
 
@@ -21,7 +21,7 @@ SRC_URI="http://luajit.org/download/${MY_P}.tar.gz
 LICENSE="MIT"
 # this should probably be pkgmoved to 2.0 for sake of consistency.
 SLOT="2"
-KEYWORDS="amd64 arm ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm ~ppc x86 ~amd64-linux ~x86-linux"
 IUSE="lua52compat"
 
 S="${WORKDIR}/${MY_P}"

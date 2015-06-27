@@ -1,6 +1,10 @@
 # ChangeLog for dev-perl/Sub-Exporter-Progressive
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Sub-Exporter-Progressive/ChangeLog,v 1.17 2015/05/20 04:51:00 mattst88 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Sub-Exporter-Progressive/ChangeLog,v 1.18 2015/06/27 13:39:04 zlogene Exp $
+
+  27 Jun 2015; Mikle Kolyada <zlogene@gentoo.org>
+  Sub-Exporter-Progressive-0.1.11.ebuild:
+  Add ~ia64/~sparc keywords wrt bug #552774
 
   20 May 2015; Matt Turner <mattst88@gentoo.org>
   Sub-Exporter-Progressive-0.1.11.ebuild:

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git/git-2.3.7.ebuild,v 1.2 2015/06/13 17:16:03 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git/git-2.4.5.ebuild,v 1.1 2015/06/27 12:36:28 polynomial-c Exp $
 
 EAPI=5
 

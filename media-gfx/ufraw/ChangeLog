@@ -1,6 +1,11 @@
 # ChangeLog for media-gfx/ufraw
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/ufraw/ChangeLog,v 1.134 2015/05/22 21:28:52 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/ufraw/ChangeLog,v 1.135 2015/06/27 12:45:01 maekke Exp $
+
+*ufraw-0.22 (27 Jun 2015)
+
+  27 Jun 2015; Markus Meier <maekke@gentoo.org> +ufraw-0.22.ebuild:
+  version bump
 
 *ufraw-0.21-r1 (22 May 2015)
 

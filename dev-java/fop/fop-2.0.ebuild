@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/fop/fop-2.0.ebuild,v 1.2 2015/06/26 23:09:14 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/fop/fop-2.0.ebuild,v 1.3 2015/06/27 13:04:00 monsieurp Exp $
 
 # TODO: if 'doc' use flag is used then should build also extra docs ('docs' ant target), currently it cannot
 #       be built as it needs forrest which we do not have
@@ -85,8 +85,14 @@ EANT_TEST_TARGET="junit"
 src_compile() {
 	EANT_GENTOO_CLASSPATH_EXTRA+="$(java-pkg_getjars --build-only qdox-1.12)"
 
-	use jai && EANT_EXTRA_ARGS+=" -Djai.present=true" && EANT_GENTOO_CLASSPATH+=",sun-jai-bin"
-	use hyphenation && EANT_EXTRA_ARGS+=" -Dhyphenation.present=true -Duser.hyph.dir=${EPREFIX}/usr/share/offo-hyphenation/hyph/"
+	if use jai; then
+		EANT_EXTRA_ARGS+=" -Djai.present=true"
+		EANT_GENTOO_CLASSPATH+=" sun-jai-bin"
+	fi
+
+	if use hyphenation; then
+		EANT_EXTRA_ARGS+=" -Dhyphenation.present=true -Duser.hyph.dir=${EPREFIX}/usr/share/offo-hyphenation/hyph/"
+	fi
 
 	java-pkg-2_src_compile
 }
@@ -100,18 +106,30 @@ src_test() {
 src_install() {
 	java-pkg_dojar build/fop.jar build/fop-sandbox.jar
 
-	if use hyphenation ; then
+	if use hyphenation; then
 		java-pkg_dojar build/fop-hyph.jar
-		insinto /usr/share/${PN}/
+		insinto /usr/share/${P}/
 		doins -r hyph
 	fi
 
 	# Doesn't support everything upstream launcher does...
-	java-pkg_dolauncher ${PN} --main org.apache.fop.cli.Main
+	java-pkg_dolauncher ${P} --main org.apache.fop.cli.Main
 
 	dodoc NOTICE README
 
-	use doc && java-pkg_dojavadoc build/javadocs
-	use examples && java-pkg_doexamples examples/* conf
-	use source && java-pkg_dosrc src/java/org src/sandbox/org
+	if use doc; then
+		java-pkg_dojavadoc \
+			build/javadocs
+	fi
+
+	if use examples; then
+		java-pkg_doexamples \
+			examples/* conf
+	fi
+
+	if use source; then
+		java-pkg_dosrc \
+			src/java/org \
+			src/sandbox/org
+	fi
 }

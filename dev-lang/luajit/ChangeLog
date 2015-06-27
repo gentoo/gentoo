@@ -1,6 +1,9 @@
 # ChangeLog for dev-lang/luajit
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/luajit/ChangeLog,v 1.28 2015/06/27 09:49:06 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/luajit/ChangeLog,v 1.29 2015/06/27 12:41:48 zlogene Exp $
+
+  27 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> luajit-2.0.3-r1.ebuild:
+  x86 stable wrt bug #537370
 
   27 Jun 2015; Agostino Sarubbo <ago@gentoo.org> luajit-2.0.3-r1.ebuild:
   Stable for amd64, wrt bug #537370

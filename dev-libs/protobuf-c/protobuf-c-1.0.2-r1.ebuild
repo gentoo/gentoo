@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/protobuf-c/protobuf-c-1.0.2-r1.ebuild,v 1.6 2015/05/17 20:18:09 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/protobuf-c/protobuf-c-1.0.2-r1.ebuild,v 1.7 2015/06/27 12:31:38 maekke Exp $
 
 EAPI=5
 
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${MY_PV}/${MY_P}.tar.
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc ppc64 x86"
+KEYWORDS="amd64 arm ppc ppc64 x86"
 IUSE="static-libs"
 
 RDEPEND=">=dev-libs/protobuf-2.5.0-r2[${MULTILIB_USEDEP}]"
