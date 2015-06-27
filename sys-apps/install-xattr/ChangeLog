@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/install-xattr
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/install-xattr/ChangeLog,v 1.37 2015/06/08 13:14:58 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/install-xattr/ChangeLog,v 1.38 2015/06/27 14:15:47 blueness Exp $
+
+  27 Jun 2015; Anthony G. Basile <blueness@gentoo.org> install-xattr-0.5.ebuild:
+  Stable for ppc and ppc64.  Bug #550654. repoman commit -m Stable
 
   08 Jun 2015; Anthony G. Basile <blueness@gentoo.org>
   -install-xattr-0.3.ebuild:
