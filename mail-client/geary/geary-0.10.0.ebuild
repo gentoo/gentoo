@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/geary/geary-0.10.0.ebuild,v 1.1 2015/06/26 18:14:43 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/geary/geary-0.10.0.ebuild,v 1.2 2015/06/27 09:51:16 pacho Exp $
 
 EAPI=5
 GCONF_DEBUG="no"
@@ -46,7 +46,7 @@ DOCS=( AUTHORS MAINTAINERS README NEWS THANKS )
 
 src_prepare() {
 	# https://bugzilla.gnome.org/show_bug.cgi?id=751556
-	epatch "${FILESDIR}"/${PN}-0.10.0-cflags.patch
+	epatch "${FILESDIR}"/${PN}-0.7.2-cflags.patch
 
 	# https://bugzilla.gnome.org/show_bug.cgi?id=751557
 	epatch "${FILESDIR}"/${PN}-0.5.3-vapigen.patch

@@ -4,10 +4,10 @@ DESCRIPTION=Proof assistant written in O'Caml
 EAPI=5
 HOMEPAGE=http://coq.inria.fr/
 IUSE=gtk debug +ocamlopt doc camlp5
-KEYWORDS=~amd64 ~ppc ~x86
+KEYWORDS=amd64 ~ppc ~x86
 LICENSE=LGPL-2.1
 RDEPEND=>=dev-lang/ocaml-3.11.2:=[ocamlopt?] camlp5? ( >=dev-ml/camlp5-6.02.3:=[ocamlopt?] ) !camlp5? ( || ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 ) ) gtk? ( >=dev-ml/lablgtk-2.10.1:=[ocamlopt?] )
 SLOT=0
 SRC_URI=http://coq.inria.fr/distrib/V8.4pl5/files/coq-8.4pl5.tar.gz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=7090a7270ed7ea63dc6d50f830dcaf5d
+_md5_=6e4b06aa8424aa666796cdf3c5a95848

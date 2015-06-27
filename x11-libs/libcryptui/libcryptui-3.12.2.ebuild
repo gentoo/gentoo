@@ -1,11 +1,11 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libcryptui/libcryptui-3.12.2.ebuild,v 1.5 2015/06/22 19:00:52 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libcryptui/libcryptui-3.12.2.ebuild,v 1.6 2015/06/27 09:33:25 pacho Exp $
 
 EAPI="5"
 GCONF_DEBUG="yes"
 
-inherit gnome2
+inherit autotools eutils gnome2
 
 DESCRIPTION="User interface components for OpenPGP"
 HOMEPAGE="https://wiki.gnome.org/Apps/Seahorse"
@@ -25,11 +25,9 @@ COMMON_DEPEND="
 	x11-libs/libSM
 
 	>=app-crypt/gpgme-1
-	|| (
-		=app-crypt/gnupg-2.0*
-		=app-crypt/gnupg-1.4* )
+	>=app-crypt/gnupg-1.4
 
-	introspection? ( >=dev-libs/gobject-introspection-0.6.4 )
+	introspection? ( >=dev-libs/gobject-introspection-0.6.4:= )
 	libnotify? ( >=x11-libs/libnotify-0.7:= )
 "
 DEPEND="${COMMON_DEPEND}
@@ -45,11 +43,15 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 src_prepare() {
+	# Support GnuPG 2.1, https://bugzilla.gnome.org/show_bug.cgi?id=745843
+	epatch "${FILESDIR}"/${PN}-3.12.2-gnupg-2.1.patch
+
 	# FIXME: Do not mess with CFLAGS with USE="debug"
 	sed -e '/CFLAGS="$CFLAGS -g -O0/d' \
 		-e 's/-Werror//' \
 		-i configure.ac configure || die "sed failed"
 
+	eautoreconf
 	gnome2_src_prepare
 }
 

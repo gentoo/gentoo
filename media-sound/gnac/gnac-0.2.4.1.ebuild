@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/gnac/gnac-0.2.4.1.ebuild,v 1.1 2012/08/28 00:51:56 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/gnac/gnac-0.2.4.1.ebuild,v 1.2 2015/06/27 09:35:22 pacho Exp $
 
-EAPI=4
+EAPI=5
 
 inherit eutils autotools gnome2
 
@@ -16,7 +16,8 @@ KEYWORDS="~amd64 ~x86"
 LANGS=" cs da de en_GB es gl fr he hu it lt nb pt_BR pl ro ru sl sv te tr zh_CN"
 IUSE="aac flac libnotify mp3 nls wavpack ${LANGS// / linguas_}"
 
-RDEPEND="x11-libs/gtk+:3
+RDEPEND="
+	x11-libs/gtk+:3
 	dev-libs/libunique:3
 	dev-libs/libxml2:2
 	libnotify? ( x11-libs/libnotify )
@@ -25,21 +26,23 @@ RDEPEND="x11-libs/gtk+:3
 	media-plugins/gst-plugins-gio:0.10
 	media-plugins/gst-plugins-meta:0.10[flac?,mp3?,wavpack?]
 	aac? ( media-plugins/gst-plugins-faac:0.10 )
-	nls? ( virtual/libintl )"
+	nls? ( virtual/libintl )
+"
 DEPEND="${RDEPEND}
 	>=app-text/gnome-doc-utils-0.17.2
+	gnome-base/gnome-common
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )"
+	nls? ( sys-devel/gettext )
+"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-cflags.patch
 	epatch "${FILESDIR}"/${P}-nls.patch
 
-	gnome2_src_prepare
 	eautoreconf
+	gnome2_src_prepare
 }
 
 src_configure() {
-	G2CONF="${G2CONF} $(use_enable nls)"
-	gnome2_src_configure
+	gnome2_src_configure $(use_enable nls)
 }

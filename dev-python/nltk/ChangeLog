@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/nltk
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/nltk/ChangeLog,v 1.22 2015/06/17 07:06:38 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/nltk/ChangeLog,v 1.23 2015/06/27 09:48:35 ago Exp $
+
+  27 Jun 2015; Agostino Sarubbo <ago@gentoo.org> nltk-2.0.4.ebuild:
+  Stable for amd64, wrt bug #533294
 
 *nltk-3.0.3 (17 Jun 2015)
 

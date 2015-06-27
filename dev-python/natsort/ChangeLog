@@ -1,6 +1,12 @@
 # ChangeLog for dev-python/natsort
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/natsort/ChangeLog,v 1.8 2015/06/03 20:25:52 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/natsort/ChangeLog,v 1.9 2015/06/27 09:57:16 idella4 Exp $
+
+*natsort-4.0.1 (27 Jun 2015)
+
+  27 Jun 2015; Ian Delaney <idella4@gentoo.org> +natsort-4.0.1.ebuild:
+  bump' update deps, test phase, drop keyword ia64 to allow for new dep for
+  tests
 
   03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add pypi to remote-id in metadata.xml

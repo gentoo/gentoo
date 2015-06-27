@@ -1,6 +1,9 @@
 # ChangeLog for media-sound/jack-keyboard
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/jack-keyboard/ChangeLog,v 1.4 2014/01/30 02:39:28 tomwij Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/jack-keyboard/ChangeLog,v 1.5 2015/06/27 09:49:16 ago Exp $
+
+  27 Jun 2015; Agostino Sarubbo <ago@gentoo.org> jack-keyboard-2.5.ebuild:
+  Stable for amd64, wrt bug #531162
 
   30 Jan 2014; Tom Wijsman <TomWij@gentoo.org> jack-keyboard-2.5.ebuild:
   [QA] EAPI 5.

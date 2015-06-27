@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/live/live-2013.02.11.ebuild,v 1.4 2015/06/11 19:16:25 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/live/live-2013.02.11.ebuild,v 1.5 2015/06/27 09:49:01 ago Exp $
 
 EAPI=3
 inherit flag-o-matic eutils toolchain-funcs multilib
@@ -12,7 +12,7 @@ SRC_URI="http://www.live555.com/liveMedia/public/${P/-/.}.tar.gz
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="examples static-libs"
 
 S="${WORKDIR}"

@@ -1,6 +1,9 @@
 # ChangeLog for net-misc/minidlna
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/minidlna/ChangeLog,v 1.46 2015/06/20 22:13:33 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/minidlna/ChangeLog,v 1.47 2015/06/27 09:49:11 ago Exp $
+
+  27 Jun 2015; Agostino Sarubbo <ago@gentoo.org> minidlna-1.1.4.ebuild:
+  Stable for amd64, wrt bug #549084
 
   20 Jun 2015; Mike Gilbert <floppym@gentoo.org> files/minidlna-1.1.2.service:
   Simplify description for better display during startup.

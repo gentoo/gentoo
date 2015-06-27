@@ -1,6 +1,10 @@
 # ChangeLog for x11-libs/libcryptui
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libcryptui/ChangeLog,v 1.21 2015/06/22 19:00:52 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libcryptui/ChangeLog,v 1.22 2015/06/27 09:33:25 pacho Exp $
+
+  27 Jun 2015; Pacho Ramos <pacho@gentoo.org>
+  +files/libcryptui-3.12.2-gnupg-2.1.patch, libcryptui-3.12.2.ebuild:
+  Support gnupg-2.1 building (#551822)
 
   22 Jun 2015; Pacho Ramos <pacho@gentoo.org> libcryptui-3.12.2.ebuild:
   ppc/ppc64 keyword, bug #551580

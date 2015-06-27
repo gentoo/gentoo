@@ -1,6 +1,9 @@
 # ChangeLog for sys-boot/os-prober
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/os-prober/ChangeLog,v 1.21 2015/03/29 04:51:39 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/os-prober/ChangeLog,v 1.22 2015/06/27 09:48:45 ago Exp $
+
+  27 Jun 2015; Agostino Sarubbo <ago@gentoo.org> os-prober-1.65.ebuild:
+  Stable for amd64, wrt bug #536146
 
 *os-prober-1.65 (29 Mar 2015)
 

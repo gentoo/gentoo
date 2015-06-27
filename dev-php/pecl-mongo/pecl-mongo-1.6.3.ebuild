@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/pecl-mongo/pecl-mongo-1.6.3.ebuild,v 1.1 2015/02/27 03:15:24 grknight Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php/pecl-mongo/pecl-mongo-1.6.3.ebuild,v 1.2 2015/06/27 09:48:25 ago Exp $
 
 EAPI=5
 
@@ -14,7 +14,7 @@ DESCRIPTION="MongoDB database driver"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 DEPEND=""

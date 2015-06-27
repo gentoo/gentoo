@@ -1,0 +1,11 @@
+--- configure.ac~	2014-05-13 20:53:02.000000000 +0200
++++ configure.ac	2015-06-27 11:29:32.574106982 +0200
+@@ -95,7 +95,7 @@
+ 	DO_CHECK=$enableval, DO_CHECK=yes)
+ 
+ if test	"$DO_CHECK" = "yes"; then
+-	accepted_versions="1.2 1.4 2.0"
++	accepted_versions="1.2 1.4 2.0 2.1"
+ 	AC_PATH_PROGS(GNUPG, [gpg gpg2], no)
+ 	AC_DEFINE_UNQUOTED(GNUPG, "$GNUPG", [Path to gpg executable.])
+ 	ok="no"

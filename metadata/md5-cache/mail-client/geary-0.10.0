@@ -10,4 +10,4 @@ RDEPEND=>=app-crypt/gcr-3.10.1[gtk,introspection,vala] app-crypt/libsecret dev-d
 SLOT=0
 SRC_URI=mirror://gnome/sources/geary/0.10/geary-0.10.0.tar.xz
 _eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	flag-o-matic	c9602887773166fe300444712fc7ff98	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	10c513def52488230abb60a4b19a03b9	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	vala	09bc7da1a93142c9eb90786e6f6b39d2	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=9e43afaffbe8e5786453211ed2e31f4d
+_md5_=2aa276845b4f40a5e6ccdc3784849778

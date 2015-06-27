@@ -1,6 +1,9 @@
 # ChangeLog for sci-mathematics/coq
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/coq/ChangeLog,v 1.86 2015/03/20 07:55:39 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/coq/ChangeLog,v 1.87 2015/06/27 09:48:20 ago Exp $
+
+  27 Jun 2015; Agostino Sarubbo <ago@gentoo.org> coq-8.4_p5.ebuild:
+  Stable for amd64, wrt bug #553322
 
   20 Mar 2015; Justin Lecher <jlec@gentoo.org> files/coqide.desktop:
   Fix desktop file

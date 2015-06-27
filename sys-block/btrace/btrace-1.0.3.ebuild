@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/btrace/btrace-1.0.3.ebuild,v 1.2 2014/08/10 20:21:30 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-block/btrace/btrace-1.0.3.ebuild,v 1.3 2015/06/27 09:48:05 ago Exp $
 
 EAPI=2
 
@@ -13,7 +13,7 @@ MY_P="${MY_PN}-${PV}"
 SRC_URI="http://brick.kernel.dk/snaps/${MY_P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE="doc"
 RDEPEND=""
 # This is a Linux specific app!
