@@ -1,6 +1,12 @@
 # ChangeLog for dev-perl/HTML-TableParser
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-TableParser/ChangeLog,v 1.9 2014/08/23 02:05:10 axs Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-TableParser/ChangeLog,v 1.10 2015/06/27 14:59:54 dilfridge Exp $
+
+*HTML-TableParser-0.400.0 (27 Jun 2015)
+
+  27 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +HTML-TableParser-0.400.0.ebuild:
+  Version bump
 
 *HTML-TableParser-0.380.0-r1 (23 Aug 2014)
 

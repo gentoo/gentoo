@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=dev-lang/perl:=[-build(-)]
+DEPEND=dev-perl/HTML-Format dev-perl/HTML-FormatText-WithLinks dev-perl/HTML-Tree virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-Test-Simple ) dev-lang/perl:=[-build(-)]
 DESCRIPTION=Converts HTML to text with tables intact
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/HTML-FormatText-WithLinks-AndTables/
 IUSE=test
 KEYWORDS=~amd64
 LICENSE=|| ( Artistic GPL-1+ )
-RDEPEND=dev-perl/HTML-Format dev-perl/HTML-FormatText-WithLinks dev-perl/HTML-Tree virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-Test-Simple ) dev-lang/perl:=[-build(-)]
+RDEPEND=dev-perl/HTML-Format dev-perl/HTML-FormatText-WithLinks dev-perl/HTML-Tree dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DA/DALEEVANS/HTML-FormatText-WithLinks-AndTables-0.06.tar.gz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
-_md5_=ca441c7b4357f7d5b96d70f5b117bebd
+_md5_=d0b385c616d8a1693c34c6ad2f1c06da
