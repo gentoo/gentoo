@@ -1,6 +1,11 @@
 # ChangeLog for net-misc/owncloud-client
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/owncloud-client/ChangeLog,v 1.24 2015/06/26 09:37:44 voyageur Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/owncloud-client/ChangeLog,v 1.25 2015/06/26 23:01:36 voyageur Exp $
+
+  26 Jun 2015; Bernard Cafarelli <voyageur@gentoo.org>
+  owncloud-client-1.8.3.ebuild:
+  New dependency on dev-qt/qtconcurrent:5, thanks Felix Leif Keppmann
+  <felix.leif@keppmann.de> in bug #553336
 
 *owncloud-client-1.8.3 (26 Jun 2015)
 

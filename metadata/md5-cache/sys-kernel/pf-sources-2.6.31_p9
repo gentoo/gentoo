@@ -3,12 +3,12 @@ DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) deblob? ( || (
 DESCRIPTION=Linux kernel fork with new features, including the -ck patchset (BFS), BFQ, TuxOnIce and LinuxIMQ
 EAPI=5
 HOMEPAGE=http://pf.natalenko.name/
-IUSE=symlink build deblob
+IUSE=symlink build kdbus deblob
 KEYWORDS=-* ~amd64 ~ppc ~ppc64 ~x86
 LICENSE=GPL-2 !deblob? ( freedist )
 RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )
 RESTRICT=binchecks strip
 SLOT=2.6.31_p9
 SRC_URI=mirror://kernel/linux/kernel/v2.6/linux-2.6.31.tar.xz deblob? ( http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/2.6.31-gnu/deblob-2.6.31 http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/2.6.31-gnu/deblob-check -> deblob-check-2.6.31 ) http://pf.natalenko.name/sources/2.6.31/patch-2.6.31-pf9.bz2
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	kernel-2	4da0de8e87de8d48f4576790a3034be2	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	da352ea9da8eb9bf158d56cca65d6c82	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	kernel-2	3049595cf1f4aea5363c82d7e966e5a5	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	da352ea9da8eb9bf158d56cca65d6c82	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=83b7e414faec5f4e839c539e0b54327a

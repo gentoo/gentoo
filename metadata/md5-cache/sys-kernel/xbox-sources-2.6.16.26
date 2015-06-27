@@ -3,12 +3,12 @@ DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
 DESCRIPTION=Full sources for the Xbox Linux kernel
 EAPI=5
 HOMEPAGE=http://www.kernel.org/ http://www.gentoo.org/
-IUSE=symlink build
+IUSE=symlink build kdbus
 KEYWORDS=~x86 -*
 LICENSE=GPL-2 freedist
 RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )
 RESTRICT=binchecks strip
 SLOT=2.6.16.26
 SRC_URI=mirror://kernel/linux/kernel/v2.6/patch-2.6.16.26.xz mirror://kernel/linux/kernel/v2.6/linux-2.6.16.tar.xz mirror://sourceforge/xbox-linux/linux-2.6.16-xbox.patch.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	kernel-2	4da0de8e87de8d48f4576790a3034be2	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	da352ea9da8eb9bf158d56cca65d6c82	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	kernel-2	3049595cf1f4aea5363c82d7e966e5a5	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	da352ea9da8eb9bf158d56cca65d6c82	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=b65eab898b45b22ff548684b94a6c882

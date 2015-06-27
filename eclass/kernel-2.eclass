@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/kernel-2.eclass,v 1.305 2015/05/30 16:09:05 mpagano Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/kernel-2.eclass,v 1.306 2015/06/26 22:32:49 mpagano Exp $
 
 # Description: kernel.eclass rewrite for a clean base regarding the 2.6
 #              series of kernel with back-compatibility for 2.4
@@ -449,7 +449,7 @@ if [[ ${ETYPE} == sources ]]; then
 
 	SLOT="${PVR}"
 	DESCRIPTION="Sources based on the Linux Kernel."
-	IUSE="symlink build"
+	IUSE="symlink build kdbus"
 
 	# Bug #266157, deblob for libre support
 	if [[ -z ${K_PREDEBLOBBED} ]] ; then
@@ -1012,6 +1012,11 @@ unipatch() {
 					#drop 5000_enable-additional-cpu-optimizations-for-gcc.patch
 					UNIPATCH_DROP+=" 5000_enable-additional-cpu-optimizations-for-gcc.patch"
 				fi
+			fi
+
+			# if kdbus use flag is not set, drop the kdbus patch
+			if [[ $UNIPATCH_DROP != *"5015_kdbus*.patch"* ]] && ! use kdbus; then
+				UNIPATCH_DROP="${UNIPATCH_DROP} 5015_kdbus*.patch"
 			fi
 		fi
 	done

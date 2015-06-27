@@ -1,6 +1,12 @@
 # ChangeLog for dev-java/xmlgraphics-commons
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xmlgraphics-commons/ChangeLog,v 1.30 2015/06/22 08:24:01 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xmlgraphics-commons/ChangeLog,v 1.31 2015/06/26 23:04:38 monsieurp Exp $
+
+*xmlgraphics-commons-2.0.1 (27 Jun 2015)
+
+  27 Jun 2015; Patrice Clement <monsieurp@gentoo.org>
+  +xmlgraphics-commons-2.0.1.ebuild:
+  Version bump. EAPI 5 bump.
 
   22 Jun 2015; Agostino Sarubbo <ago@gentoo.org> xmlgraphics-commons-1.5.ebuild:
   Stable for ppc64, wrt bug #543858

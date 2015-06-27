@@ -3,7 +3,7 @@ DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) deblob? ( || (
 DESCRIPTION=Full sources including the Gentoo patchset for the 3.14 kernel tree and aufs3 support
 EAPI=5
 HOMEPAGE=http://dev.gentoo.org/~mpagano/genpatches http://aufs.sourceforge.net/
-IUSE=deblob experimental module vanilla symlink build deblob
+IUSE=deblob experimental module vanilla symlink build kdbus deblob
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2 !deblob? ( freedist )
 PDEPEND==sys-fs/aufs-util-3*
@@ -11,5 +11,5 @@ RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/
 RESTRICT=binchecks strip
 SLOT=3.14.41
 SRC_URI=mirror://kernel/linux/kernel/v3.x/linux-3.14.tar.xz deblob? ( http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/3.14-gnu/deblob-3.14 http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/3.14-gnu/deblob-check -> deblob-check-3.14 ) http://dev.gentoo.org/~jlec/distfiles/aufs-sources-3.14.40+_p20150504.tar.xz !vanilla? ( mirror://gentoo/genpatches-3.14-47.base.tar.xz mirror://gentoo/genpatches-3.14-47.extras.tar.xz experimental? ( mirror://gentoo/genpatches-3.14-47.experimental.tar.xz ) )
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	kernel-2	4da0de8e87de8d48f4576790a3034be2	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	da352ea9da8eb9bf158d56cca65d6c82	python-utils-r1	096f8247eae93026af13ab88cf4305cd	readme.gentoo	106edea5533517715013de909a333abd	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	kernel-2	3049595cf1f4aea5363c82d7e966e5a5	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	da352ea9da8eb9bf158d56cca65d6c82	python-utils-r1	096f8247eae93026af13ab88cf4305cd	readme.gentoo	106edea5533517715013de909a333abd	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=7ead52112c39eeb80da5caa1e90d5d94

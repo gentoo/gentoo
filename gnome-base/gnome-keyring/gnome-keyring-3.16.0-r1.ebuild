@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-keyring/gnome-keyring-3.16.0-r1.ebuild,v 1.3 2015/06/20 10:45:41 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-keyring/gnome-keyring-3.16.0-r1.ebuild,v 1.4 2015/06/26 23:04:21 tetromino Exp $
 
 EAPI="5"
 GCONF_DEBUG="yes" # Not gnome macro but similar
@@ -18,7 +18,7 @@ IUSE="+caps debug pam selinux +ssh-agent test"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x86-solaris"
 
 # Replace gkd gpg-agent with pinentry[gnome-keyring] one, bug #547456
-RDEPEND="
+COMMON_DEPEND="
 	>=app-crypt/gcr-3.5.3:=[gtk]
 	>=dev-libs/glib-2.38:2
 	app-misc/ca-certificates
@@ -27,10 +27,12 @@ RDEPEND="
 	caps? ( sys-libs/libcap-ng )
 	pam? ( virtual/pam )
 
-	app-crypt/pinentry[gnome-keyring]
 	>=app-crypt/gnupg-2.0.28
 "
-DEPEND="${RDEPEND}
+RDEPEND="${COMMON_DEPEND}
+	app-crypt/pinentry[gnome-keyring]
+"
+DEPEND="${COMMON_DEPEND}
 	>=app-eselect/eselect-pinentry-0.5
 	app-text/docbook-xml-dtd:4.3
 	dev-libs/libxslt

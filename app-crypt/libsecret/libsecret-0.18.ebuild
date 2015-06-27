@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/libsecret/libsecret-0.18.ebuild,v 1.11 2015/04/08 07:30:34 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/libsecret/libsecret-0.18.ebuild,v 1.12 2015/06/26 23:13:21 tetromino Exp $
 
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )
@@ -18,16 +18,16 @@ IUSE="+crypt debug +introspection test vala"
 REQUIRED_USE="vala? ( introspection )"
 KEYWORDS="alpha amd64 arm ~arm64 ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd"
 
-COMMON_DEPEND="
+RDEPEND="
 	>=dev-libs/glib-2.38:2
 	crypt? ( >=dev-libs/libgcrypt-1.2.2:0= )
 	introspection? ( >=dev-libs/gobject-introspection-1.29 )
 "
-RDEPEND="${COMMON_DEPEND}
-	>=gnome-base/gnome-keyring-3
+PDEPEND=">=gnome-base/gnome-keyring-3
 "
-# Add ksecrets to RDEPEND when it's added to portage
-DEPEND="${COMMON_DEPEND}
+# PDEPEND to avoid circular dep (bug #547456)
+# Add ksecrets to PDEPEND when it's added to portage
+DEPEND="${RDEPEND}
 	dev-libs/libxslt
 	dev-util/gdbus-codegen
 	>=dev-util/gtk-doc-am-1.9

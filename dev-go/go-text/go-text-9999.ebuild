@@ -1,12 +1,20 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-go/go-text/go-text-9999.ebuild,v 1.6 2015/06/25 17:43:02 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-go/go-text/go-text-9999.ebuild,v 1.7 2015/06/26 22:54:48 williamh Exp $
 
 EAPI=5
 
-inherit golang-build golang-vcs
 EGO_PN=golang.org/x/text/...
 EGO_SRC=golang.org/x/text
+
+if [[ ${PV} = *9999* ]]; then
+	inherit golang-vcs
+else
+	KEYWORDS="~amd64"
+	EGIT_COMMIT="df923bbb63f8ea3a26bb743e2a497abd0ab585f7"
+	SRC_URI="https://github.com/golang/text/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+fi
+inherit golang-build
 
 DESCRIPTION="Go text processing support"
 HOMEPAGE="https://godoc.org/golang.org/x/text"
@@ -15,6 +23,35 @@ SLOT="0"
 IUSE=""
 DEPEND=""
 RDEPEND=""
+
+if [[ ${PV} != *9999* ]]; then
+src_unpack() {
+	local f
+
+	for f in ${A}
+	do
+		case "${f}" in
+			*.tar|*.tar.gz|*.tar.bz2|*.tar.xz)
+				local destdir=${WORKDIR}/${P}/src/${EGO_SRC}
+
+				debug-print "${FUNCNAME}: unpacking ${f} to ${destdir}"
+
+				# XXX: check whether the directory structure inside is
+				# fine? i.e. if the tarball has actually a parent dir.
+				mkdir -p "${destdir}" || die
+				tar -C "${destdir}" -x --strip-components 1 \
+					-f "${DISTDIR}/${f}" || die
+				;;
+			*)
+				debug-print "${FUNCNAME}: falling back to unpack for ${f}"
+
+				# fall back to the default method
+				unpack "${f}"
+				;;
+		esac
+	done
+}
+fi
 
 src_test() {
 	# Create a writable GOROOT in order to avoid sandbox violations.

@@ -3,12 +3,12 @@ DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
 DESCRIPTION=Full sources including Linux-VServer patchsets for the 3.10 kernel tree
 EAPI=5
 HOMEPAGE=http://www.gentoo.org/proj/en/vps/
-IUSE=symlink build
+IUSE=symlink build kdbus
 KEYWORDS=~amd64 ~hppa ~x86
 LICENSE=GPL-2 freedist
 RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )
 RESTRICT=binchecks strip
 SLOT=2.3.6.8
 SRC_URI=mirror://kernel/linux/kernel/v3.x/patch-3.10.40.xz mirror://kernel/linux/kernel/v3.x/linux-3.10.tar.xz http://vserver.13thfloor.at/Experimental/patch-3.10.40-vs2.3.6.8.diff
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	kernel-2	4da0de8e87de8d48f4576790a3034be2	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	da352ea9da8eb9bf158d56cca65d6c82	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	kernel-2	3049595cf1f4aea5363c82d7e966e5a5	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	da352ea9da8eb9bf158d56cca65d6c82	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=e434421c9381fd0d11fa7dfbbe7530a6

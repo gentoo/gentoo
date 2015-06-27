@@ -3,12 +3,12 @@ DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) deblob? ( || (
 DESCRIPTION=Full sources including Gentoo and Linux-VServer patchsets for the 2.6 kernel tree
 EAPI=5
 HOMEPAGE=http://www.gentoo.org/proj/en/vps/
-IUSE=symlink build deblob
+IUSE=symlink build kdbus deblob
 KEYWORDS=amd64 hppa x86
 LICENSE=GPL-2 !deblob? ( freedist )
 RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )
 RESTRICT=binchecks strip
 SLOT=2.3.0.36.32
 SRC_URI=mirror://kernel/linux/kernel/v2.6/linux-2.6.35.tar.xz deblob? ( http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/2.6.35-gnu/deblob-2.6.35 http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/2.6.35-gnu/deblob-check -> deblob-check-2.6.35 ) mirror://gentoo/genpatches-2.6.35-9.base.tar.xz mirror://gentoo/genpatches-2.6.35-9.extras.tar.xz http://dev.gentoo.org/~hollow/distfiles/vserver-patches-2.6.35_2.3.0.36.32.tar.bz2
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	kernel-2	4da0de8e87de8d48f4576790a3034be2	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	da352ea9da8eb9bf158d56cca65d6c82	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	kernel-2	3049595cf1f4aea5363c82d7e966e5a5	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	da352ea9da8eb9bf158d56cca65d6c82	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=fcc02e4d5ffaa8d8760f218d1f5f0f08

@@ -3,11 +3,11 @@ DEPEND=>=dev-libs/glib-2.6 sys-apps/hwids >=sys-kernel/linux-headers-3.17 virtua
 DESCRIPTION=Userspace utilities for a general USB device sharing system over IP networks
 EAPI=5
 HOMEPAGE=http://www.kernel.org/
-IUSE=static-libs tcpd symlink build
+IUSE=static-libs tcpd symlink build kdbus
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.6 sys-apps/hwids >=sys-kernel/linux-headers-3.17 virtual/libudev tcpd? ( sys-apps/tcp-wrappers ) !build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )
 SLOT=0
 SRC_URI=mirror://kernel/linux/kernel/v3.x/linux-3.19.tar.xz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	kernel-2	4da0de8e87de8d48f4576790a3034be2	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	da352ea9da8eb9bf158d56cca65d6c82	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	kernel-2	3049595cf1f4aea5363c82d7e966e5a5	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	da352ea9da8eb9bf158d56cca65d6c82	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=ed4f20af458c3237556535586adbb199
