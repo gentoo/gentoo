@@ -4,11 +4,11 @@ DESCRIPTION=Python implementation of the Sender Policy Framework (SPF) protocol
 EAPI=5
 HOMEPAGE=http://pypi.python.org/pypi/pyspf
 IUSE=ipv6 test python_targets_python2_7 python_targets_python3_3 python_targets_python3_4
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=PSF-2
 RDEPEND=dev-python/authres[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] python_targets_python2_7? ( >=dev-python/ipaddr-2.1.10[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) python_targets_python2_7? ( dev-python/pydns:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) python_targets_python3_3? ( dev-python/pydns:3[python_targets_python3_3(-)?,-python_single_target_python3_3(-),python_targets_python3_4(-)?,-python_single_target_python3_4(-)] ) python_targets_python3_4? ( dev-python/pydns:3[python_targets_python3_3(-)?,-python_single_target_python3_3(-),python_targets_python3_4(-)?,-python_single_target_python3_4(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[ipv6?] ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3[ipv6?] ) python_targets_python3_4? ( dev-lang/python:3.4[ipv6?] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)]
 REQUIRED_USE=test? ( ipv6 ) || ( python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 )
 SLOT=0
 SRC_URI=mirror://pypi/p/pyspf/pyspf-2.0.10.tar.gz
 _eclasses_=distutils-r1	c01d5c4af34f4a37a51fc9638299c222	eutils	9fb270e417e0e83d64ca52586c4a79de	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-r1	6d3a3cb5705b9fff1aeb7cfa4e3336fe	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=b6f7d1b6e6a81e75daa299d2e87013c9
+_md5_=3adba993cb7843fdf08c4cbd7510fd74

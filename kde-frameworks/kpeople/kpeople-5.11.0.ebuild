@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-frameworks/kpeople/kpeople-5.11.0.ebuild,v 1.1 2015/06/15 18:35:13 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-frameworks/kpeople/kpeople-5.11.0.ebuild,v 1.2 2015/06/28 12:15:43 zlogene Exp $
 
 EAPI=5
 
@@ -10,7 +10,7 @@ DESCRIPTION="KDE contact person abstraction library"
 HOMEPAGE="https://projects.kde.org/projects/frameworks/kpeople"
 
 LICENSE="LGPL-2.1"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="

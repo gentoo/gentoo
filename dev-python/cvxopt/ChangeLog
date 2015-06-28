@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/cvxopt
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/cvxopt/ChangeLog,v 1.21 2015/06/07 12:41:07 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/cvxopt/ChangeLog,v 1.22 2015/06/28 12:04:10 mrueg Exp $
+
+  28 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -cvxopt-1.1.6-r1.ebuild:
+  Remove old.
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

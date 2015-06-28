@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/pycurl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pycurl/ChangeLog,v 1.115 2015/06/07 15:23:47 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pycurl/ChangeLog,v 1.116 2015/06/28 12:03:25 mrueg Exp $
+
+  28 Jun 2015; Manuel Rüger <mrueg@gentoo.org>
+  -files/pycurl-7.19.0-linking-v2.patch, -files/pycurl-7.19.0-python3.patch,
+  -pycurl-7.19.0-r4.ebuild:
+  Remove old.
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

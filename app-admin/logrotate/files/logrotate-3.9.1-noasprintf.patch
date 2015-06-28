@@ -1,10 +1,10 @@
 diff -Nuar a/config.c b/config.c
---- a/config.c	2013-10-26 18:07:19.179999410 +0200
-+++ b/config.c	2013-10-26 18:12:21.599999402 +0200
+--- a/config.c	2015-06-28 13:56:49.599999885 +0200
++++ b/config.c	2015-06-28 13:59:34.799999880 +0200
 @@ -49,39 +49,6 @@
  #include "asprintf.c"
  #endif
- 
+
 -#if !defined(asprintf) && !defined(_FORTIFY_SOURCE)
 -#include <stdarg.h>
 -
@@ -42,9 +42,9 @@ diff -Nuar a/config.c b/config.c
  char *strndup(const char *s, size_t n)
  {
 diff -Nuar a/logrotate.h b/logrotate.h
---- a/logrotate.h	2013-06-10 13:29:16.000000000 +0200
-+++ b/logrotate.h	2013-10-26 18:12:37.429999402 +0200
-@@ -67,8 +67,5 @@
+--- a/logrotate.h	2015-04-03 09:39:35.000000000 +0200
++++ b/logrotate.h	2015-06-28 13:59:47.429999880 +0200
+@@ -80,8 +80,5 @@
  extern int debug;
  
  int readAllConfigPaths(const char **paths);

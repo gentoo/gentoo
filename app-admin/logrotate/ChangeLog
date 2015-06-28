@@ -1,6 +1,23 @@
 # ChangeLog for app-admin/logrotate
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/logrotate/ChangeLog,v 1.209 2015/06/21 18:23:54 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/logrotate/ChangeLog,v 1.211 2015/06/28 12:28:49 nimiux Exp $
+
+  28 Jun 2015; Chema Alonso <nimiux@gentoo.org> -logrotate-3.8.7.ebuild,
+  -files/logrotate-3.8.7-atomic-create.patch,
+  -files/logrotate-3.8.7-datehack.patch, -files/logrotate-3.8.7-fbsd.patch,
+  -files/logrotate-3.8.7-ignore-hidden.patch,
+  -files/logrotate-3.8.7-noasprintf.patch:
+  Drop old
+
+*logrotate-3.9.1 (28 Jun 2015)
+
+  28 Jun 2015; Chema Alonso <nimiux@gentoo.org> +logrotate-3.9.1.ebuild,
+  +files/logrotate-3.9.1-Werror.patch,
+  +files/logrotate-3.9.1-atomic-create.patch,
+  +files/logrotate-3.9.1-fbsd.patch,
+  +files/logrotate-3.9.1-ignore-hidden.patch,
+  +files/logrotate-3.9.1-noasprintf.patch:
+  version bump
 
   21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> logrotate-3.8.9-r1.ebuild:
   alpha stable wrt bug #550032
