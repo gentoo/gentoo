@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/kde5.eclass,v 1.11 2015/06/27 22:02:21 johu Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/kde5.eclass,v 1.12 2015/06/28 13:12:52 johu Exp $
 
 # @ECLASS: kde5.eclass
 # @MAINTAINER:
@@ -375,7 +375,7 @@ kde5_src_prepare() {
 	if [[ ${KDE_BUILD_TYPE} = release ]] ; then
 		if [[ -d po ]] ; then
 			pushd po > /dev/null
-			for lang in $(ls) ; do
+			for lang in *; do
 				if ! has ${lang} ${LINGUAS} ; then
 					if [[ ${lang} != CMakeLists.txt ]] ; then
 						rm -rf ${lang}
@@ -390,7 +390,7 @@ kde5_src_prepare() {
 
 		if [[ ${KDE_HANDBOOK} = true ]] ; then
 			pushd doc > /dev/null
-			for lang in $(ls) ; do
+			for lang in *; do
 				if ! has ${lang} ${LINGUAS} ; then
 					comment_add_subdirectory ${lang}
 				fi

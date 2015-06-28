@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/install-xattr
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/install-xattr/ChangeLog,v 1.41 2015/06/28 08:52:45 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/install-xattr/ChangeLog,v 1.42 2015/06/28 12:56:15 maekke Exp $
+
+  28 Jun 2015; Markus Meier <maekke@gentoo.org> install-xattr-0.5.ebuild:
+  arm stable, bug #550654
 
   28 Jun 2015; Jeroen Roovers <jer@gentoo.org> install-xattr-0.5.ebuild:
   Stable for HPPA (bug #550654).

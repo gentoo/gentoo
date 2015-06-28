@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/pytest-runner
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pytest-runner/ChangeLog,v 1.12 2015/06/03 21:17:12 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pytest-runner/ChangeLog,v 1.13 2015/06/28 12:54:36 maekke Exp $
+
+  28 Jun 2015; Markus Meier <maekke@gentoo.org> pytest-runner-2.1.2.ebuild:
+  add ~arm, bug #551850
 
   03 Jun 2015; Justin Lecher <jlec@gentoo.org> -pytest-runner-1.1-r1.ebuild,
   -pytest-runner-1.1.ebuild, metadata.xml:
