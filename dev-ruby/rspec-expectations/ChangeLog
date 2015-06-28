@@ -1,6 +1,12 @@
 # ChangeLog for dev-ruby/rspec-expectations
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rspec-expectations/ChangeLog,v 1.89 2015/06/07 19:31:15 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rspec-expectations/ChangeLog,v 1.90 2015/06/28 06:00:17 graaff Exp $
+
+*rspec-expectations-3.3.0 (28 Jun 2015)
+
+  28 Jun 2015; Hans de Graaff <graaff@gentoo.org>
+  +rspec-expectations-3.3.0.ebuild:
+  Version bump.
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml
