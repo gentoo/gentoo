@@ -9,5 +9,5 @@ LICENSE=MIT public-domain jemacs? ( GPL-2 ) krl? ( GPL-2 )
 RDEPEND=( >=virtual/jdk-1.5 ) frontend? ( sys-libs/readline:0 ) sax? ( dev-java/sax:0 ) echo2? ( dev-java/echo2 ) swt? ( dev-java/swt:3.5 ) servlets? ( dev-java/servletapi:2.4 ) >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
 SLOT=0
 SRC_URI=mirror://gnu/kawa/kawa-1.10.tar.gz xqtests? ( http://www.w3.org/XML/Query/test-suite/XQTS_1_0_2.zip )
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	java-pkg-2	1889f7787714c5f7e3b5bb1c2be07c1f	java-utils-2	6627198e505d021534cb20f89279c509	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	java-pkg-2	1889f7787714c5f7e3b5bb1c2be07c1f	java-utils-2	8cdf065211fa6d6687bdc3f3ebe12efc	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=e864b3494e776b29e210d28f5004e670

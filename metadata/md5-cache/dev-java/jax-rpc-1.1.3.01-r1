@@ -8,5 +8,5 @@ LICENSE=CDDL
 RDEPEND=>=virtual/jre-1.5 =dev-java/servletapi-2.4* dev-java/fastinfoset dev-java/jaxp dev-java/jsr67 dev-java/jsr101 dev-java/jsr173 dev-java/relaxng-datatype dev-java/saaj dev-java/sax dev-java/sun-jaf java-virtuals/javamail dev-java/xsdlib >=dev-java/xerces-2.8 >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
 SLOT=0
 SRC_URI=mirror://gentoo/jax-rpc-1.1.3.01.tar.bz2
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	java-ant-2	1091461b8b02f54fabcfbf159164ff15	java-pkg-2	1889f7787714c5f7e3b5bb1c2be07c1f	java-utils-2	6627198e505d021534cb20f89279c509	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	java-ant-2	1091461b8b02f54fabcfbf159164ff15	java-pkg-2	1889f7787714c5f7e3b5bb1c2be07c1f	java-utils-2	8cdf065211fa6d6687bdc3f3ebe12efc	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=b0a1d029aba1c634e8fc5431f8b7ea11

@@ -1,2 +1,14 @@
-# $Header: /var/cvsroot/gentoo-x86/profiles/features/selinux/package.mask,v 1.57 2015/06/21 11:59:12 perfinion Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/features/selinux/package.mask,v 1.58 2015/06/28 14:03:30 perfinion Exp $
 
+# Jason Zaman <perfinion@gentoo.org> (27 Jun 2015)
+# SystemD has no support in the SELinux policy at the moment.
+# Please see: https://wiki.gentoo.org/wiki/SELinux/FAQ#Can_I_use_SELinux_with_SystemD.3F
+sys-apps/systemd
+gnome-extra/gnome-logs
+gnome-extra/office-runner
+kde-misc/kcmsystemd
+net-firewall/firewalld
+net-misc/netctl
+sys-apps/gentoo-systemd-integration
+sys-apps/systemd-readahead
+sys-apps/systemd-sysv-utils

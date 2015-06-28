@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/sddm/sddm-0.11.0.ebuild,v 1.2 2015/02/02 19:33:50 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/sddm/sddm-0.11.0-r1.ebuild,v 1.1 2015/06/28 13:52:08 jauhien Exp $
 
 EAPI=5
 inherit cmake-utils toolchain-funcs user
@@ -39,6 +39,8 @@ pkg_pretend() {
 src_prepare() {
 	use consolekit && epatch "${FILESDIR}/${P}-consolekit.patch"
 	use upower && epatch "${FILESDIR}/${PN}-0.10.0-upower.patch"
+	# fix bug 552318
+	epatch "${FILESDIR}/${P}-dbus-config.patch"
 
 	# respect user's cflags
 	sed -e 's|-Wall -march=native||' \
@@ -49,6 +51,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_no systemd SYSTEMD)
+		-DDBUS_CONFIG_FILENAME:STRING="org.freedesktop.sddm.conf"
 	)
 	cmake-utils_src_configure
 }

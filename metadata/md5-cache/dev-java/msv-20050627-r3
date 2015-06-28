@@ -9,5 +9,5 @@ LICENSE=BSD Apache-1.1
 RDEPEND=>=virtual/jre-1.4 dev-java/iso-relax:0 dev-java/relaxng-datatype:0 dev-java/xml-commons-resolver:0 dev-java/xerces:2 dev-java/xsdlib:0 >=dev-java/java-config-2.2.0 >=sys-apps/portage-2.1.2.7 source? ( app-arch/zip )
 SLOT=0
 SRC_URI=mirror://gentoo/msv.20050627.zip
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	java-ant-2	1091461b8b02f54fabcfbf159164ff15	java-pkg-2	1889f7787714c5f7e3b5bb1c2be07c1f	java-utils-2	6627198e505d021534cb20f89279c509	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	java-ant-2	1091461b8b02f54fabcfbf159164ff15	java-pkg-2	1889f7787714c5f7e3b5bb1c2be07c1f	java-utils-2	8cdf065211fa6d6687bdc3f3ebe12efc	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=89c8fde0ef00accb767a09750d2fc6a1

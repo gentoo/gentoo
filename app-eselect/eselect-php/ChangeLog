@@ -1,6 +1,9 @@
 # ChangeLog for app-eselect/eselect-php
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-eselect/eselect-php/ChangeLog,v 1.10 2015/05/30 20:41:51 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-eselect/eselect-php/ChangeLog,v 1.11 2015/06/28 13:41:05 zlogene Exp $
+
+  28 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> eselect-php-0.7.1-r4.ebuild:
+  alpha stable wrt bug #545664
 
   30 May 2015; Mikle Kolyada <zlogene@gentoo.org> eselect-php-0.7.1-r4.ebuild:
   arm stable wrt bug #545664

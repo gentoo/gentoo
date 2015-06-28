@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/features/selinux/package.use.mask,v 1.10 2014/11/06 15:07:47 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/features/selinux/package.use.mask,v 1.11 2015/06/28 14:03:30 perfinion Exp $
 
 # Saleem Abdulrasool <compnerd@gentoo.org> (23 Nov 2007)
 # Unmask when we get HAL 0.5.10 straightened out
@@ -13,3 +13,12 @@ app-portage/gentoolkit python_targets_pypy python_targets_pypy3
 app-portage/layman python_targets_pypy python_targets_pypy3
 app-admin/webapp-config python_targets_pypy python_targets_pypy3
 app-portage/diffmask python_targets_pypy python_targets_pypy3
+
+# Jason Zaman <perfinion@gentoo.org> (27 Jun 2015)
+# SystemD has no support in the SELinux policy at the moment.
+# Please see: https://wiki.gentoo.org/wiki/SELinux/FAQ#Can_I_use_SELinux_with_SystemD.3F
+app-emulation/libvirt firewalld
+gnome-base/gdm systemd wayland
+sys-kernel/dracut dracut_modules_systemd
+www-servers/uwsgi uwsgi_plugins_systemd_logger
+x11-wm/mutter kms

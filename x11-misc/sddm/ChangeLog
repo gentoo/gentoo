@@ -1,6 +1,13 @@
 # ChangeLog for x11-misc/sddm
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/sddm/ChangeLog,v 1.17 2015/06/22 10:47:52 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/sddm/ChangeLog,v 1.18 2015/06/28 13:52:08 jauhien Exp $
+
+*sddm-0.11.0-r1 (28 Jun 2015)
+
+  28 Jun 2015; Jauhien Piatlicki <jauhien@gentoo.org>
+  +files/sddm-0.11.0-dbus-config.patch, +sddm-0.11.0-r1.ebuild,
+  -sddm-0.11.0.ebuild:
+  fix bug 552318
 
   22 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -sddm-0.10.0.ebuild:
   Remove old.

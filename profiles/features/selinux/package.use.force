@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/features/selinux/package.use.force,v 1.10 2014/12/03 13:22:09 perfinion Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/features/selinux/package.use.force,v 1.11 2015/06/28 14:03:30 perfinion Exp $
 
 # Sven Vermeulen <swift@gentoo.org> (19 Apr 2013)
 # sys-apps/policycoreutils (semanage command) uses sepolgen, which requires libselinux with USE="python". 
@@ -20,3 +20,9 @@ dev-lang/python xml
 # so stages can build with no interacton. Bug #527938
 sys-libs/libselinux static-libs
 dev-libs/libpcre static-libs
+
+# Jason Zaman <perfinion@gentoo.org> (27 Jun 2015)
+# SystemD has no support in the SELinux policy at the moment.
+# Please see: https://wiki.gentoo.org/wiki/SELinux/FAQ#Can_I_use_SELinux_with_SystemD.3F
+gnome-base/gnome-settings-daemon openrc-force
+gnome-base/gnome-shell openrc-force
