@@ -1,6 +1,15 @@
 # ChangeLog for dev-ml/lambda-term
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/lambda-term/ChangeLog,v 1.10 2015/06/06 19:45:33 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/lambda-term/ChangeLog,v 1.12 2015/06/28 15:15:30 aballier Exp $
+
+*lambda-term-1.9 (28 Jun 2015)
+
+  28 Jun 2015; Alexis Ballier <aballier@gentoo.org> +lambda-term-1.9.ebuild:
+  version bump
+
+  28 Jun 2015; Alexis Ballier <aballier@gentoo.org> -lambda-term-1.4.ebuild,
+  -lambda-term-1.7.ebuild:
+  remove old
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

@@ -1,6 +1,6 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/ocurl/ocurl-0.5.6.ebuild,v 1.4 2013/12/24 12:46:47 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/ocurl/ocurl-0.7.4.ebuild,v 1.1 2015/06/28 15:22:02 aballier Exp $
 
 EAPI=5
 
@@ -9,16 +9,17 @@ inherit findlib
 DESCRIPTION="OCaml interface to the libcurl library"
 HOMEPAGE="http://forge.ocamlcore.org/projects/ocurl/"
 LICENSE="MIT"
-SRC_URI="https://forge.ocamlcore.org/frs/download.php/1134/${P}.tgz"
+SRC_URI="http://forge.ocamlcore.org/frs/download.php/1523/${P}.tar.gz"
 
 SLOT="0/${PV}"
 IUSE="examples"
 
 RDEPEND=">=net-misc/curl-7.9.8
-		>=dev-lang/ocaml-3.12:=[ocamlopt]"
+	dev-ml/lwt:=
+	>=dev-lang/ocaml-3.12:=[ocamlopt]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="~amd64 ~x86"
 
 src_compile()
 {

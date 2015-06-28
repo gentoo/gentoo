@@ -1,6 +1,13 @@
 # ChangeLog for dev-java/xmlunit
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xmlunit/ChangeLog,v 1.25 2015/06/27 21:15:12 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xmlunit/ChangeLog,v 1.27 2015/06/28 15:03:53 monsieurp Exp $
+
+  28 Jun 2015; Patrice Clement <monsieurp@gentoo.org> -xmlunit-1.3.ebuild,
+  -xmlunit-1.4.ebuild:
+  Remove old.
+
+  28 Jun 2015; Patrice Clement <monsieurp@gentoo.org> xmlunit-1.6.ebuild:
+  Stable for amd64. Stable ppc+ppc64+x86 with ALLARCHES.
 
   27 Jun 2015; Patrice Clement <monsieurp@gentoo.org> xmlunit-1.6.ebuild:
   Keyword for ppc+ppc64. Signed off by James Le Cuirot <chewi@gentoo.org>.

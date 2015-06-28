@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/xmlgraphics-commons
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xmlgraphics-commons/ChangeLog,v 1.35 2015/06/27 21:28:22 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xmlgraphics-commons/ChangeLog,v 1.36 2015/06/28 14:58:43 monsieurp Exp $
+
+  28 Jun 2015; Patrice Clement <monsieurp@gentoo.org>
+  xmlgraphics-commons-2.0.1.ebuild:
+  Stable for ppc+ppc64 with ALLARCHES.
 
   27 Jun 2015; Patrice Clement <monsieurp@gentoo.org>
   xmlgraphics-commons-2.0.1.ebuild:

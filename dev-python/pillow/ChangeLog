@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/pillow
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pillow/ChangeLog,v 1.62 2015/06/24 07:53:46 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pillow/ChangeLog,v 1.63 2015/06/28 15:33:24 zlogene Exp $
+
+  28 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> pillow-2.8.1.ebuild:
+  alpha stable wrt bug #534748
 
   24 Jun 2015; Agostino Sarubbo <ago@gentoo.org> pillow-2.8.1.ebuild:
   Stable for ppc, wrt bug #534748

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/fop/fop-2.0.ebuild,v 1.7 2015/06/27 21:28:33 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/fop/fop-2.0.ebuild,v 1.8 2015/06/28 15:01:28 monsieurp Exp $
 
 # TODO: if 'doc' use flag is used then should build also extra docs ('docs' ant target), currently it cannot
 #       be built as it needs forrest which we do not have
@@ -16,7 +16,7 @@ DESCRIPTION="Formatting Objects Processor is a print formatter driven by XSL"
 HOMEPAGE="http://xmlgraphics.apache.org/fop/"
 SRC_URI="mirror://apache/xmlgraphics/${PN}/source/${P}-src.zip"
 
-KEYWORDS="amd64 x86 ~ppc ~ppc64 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 x86 ppc ppc64 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="hyphenation jai"
 LICENSE="Apache-2.0"
 SLOT="2"

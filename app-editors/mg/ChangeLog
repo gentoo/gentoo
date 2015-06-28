@@ -1,6 +1,9 @@
 # ChangeLog for app-editors/mg
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/mg/ChangeLog,v 1.109 2015/05/30 20:39:51 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/mg/ChangeLog,v 1.110 2015/06/28 15:11:13 zlogene Exp $
+
+  28 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> mg-20150323.ebuild:
+  alpha stable wrt bug #547604
 
   30 May 2015; Mikle Kolyada <zlogene@gentoo.org> mg-20150323.ebuild:
   arm stable wrt bug #547604
