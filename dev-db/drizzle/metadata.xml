@@ -40,10 +40,6 @@
       Enable the MD5 plugin, using <pkg>dev-libs/libgcrypt</pkg>; this
       replaces the older openssl and gnutls USE flags.
     </flag>
-		<flag name="haildb">
-      Use the <pkg>dev-db/haildb</pkg> libraries to replace the innodb
-      plugin storage engine with haildb (an innodb fork).
-    </flag>
 		<flag name="v8">
       Use <pkg>dev-lang/v8</pkg>.
     </flag>

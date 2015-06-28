@@ -1241,7 +1241,6 @@ dev-db/cppdb:sqlite_internal - Don't build a separate sqlite3 loadable module bu
 dev-db/drizzle:curl - Enable the HTTP authentication plugin (using net-misc/curl). This is needed for the tests to apply properly.
 dev-db/drizzle:doc - Build the API documentation for the package, using app-doc/doxygen. Warning, this might take over an hour on slower machines.
 dev-db/drizzle:gearman - Enable the gearman plugins for user-defined functions and logging (using sys-cluster/gearman).
-dev-db/drizzle:haildb - Use the dev-db/haildb libraries to replace the innodb plugin storage engine with haildb (an innodb fork).
 dev-db/drizzle:md5 - Enable the MD5 plugin, using dev-libs/libgcrypt; this replaces the older openssl and gnutls USE flags.
 dev-db/drizzle:memcache - Enable the memcache plugin for user-defined functions and statistics in I_S tables (using dev-libs/libmemcached). Currently restricts tests because of an upstream testsuite bug.
 dev-db/drizzle:pam - Enable the PAM authentication plugin (using sys-libs/pam). The configuration file created will be /etc/pam.d/drizzle.
