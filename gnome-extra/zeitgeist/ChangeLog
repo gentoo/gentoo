@@ -1,6 +1,10 @@
 # ChangeLog for gnome-extra/zeitgeist
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/zeitgeist/ChangeLog,v 1.47 2015/06/28 10:47:38 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/zeitgeist/ChangeLog,v 1.48 2015/06/28 19:16:16 jlec Exp $
+
+  28 Jun 2015; Justin Lecher <jlec@gentoo.org> -zeitgeist-0.9.14-r1.ebuild,
+  -zeitgeist-0.9.14.ebuild:
+  Drop old
 
   28 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> zeitgeist-0.9.15.ebuild:
   x86 stable wrt bug #553184

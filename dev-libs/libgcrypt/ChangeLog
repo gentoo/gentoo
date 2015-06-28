@@ -1,6 +1,15 @@
 # ChangeLog for dev-libs/libgcrypt
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgcrypt/ChangeLog,v 1.236 2015/06/14 18:00:36 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgcrypt/ChangeLog,v 1.237 2015/06/28 19:19:39 k_f Exp $
+
+*libgcrypt-1.6.3-r3 (28 Jun 2015)
+
+  28 Jun 2015; Kristian Fiskerstrand <k_f@gentoo.org>
+  +files/libgcrypt-1.6.3-freebsd-mpi.patch, +libgcrypt-1.6.3-r3.ebuild,
+  -files/libgcrypt-1.6.0-serial-tests.patch,
+  -files/libgcrypt-1.6.1-x32-compat.patch, -libgcrypt-1.6.1-r2.ebuild,
+  -libgcrypt-1.6.2.ebuild, -libgcrypt-1.6.3-r2.ebuild, -libgcrypt-1.6.3.ebuild:
+  Fix compile issue on fbsd (bug #494740). Cleanup old.
 
   14 Jun 2015; Michał Górny <mgorny@gentoo.org> libgcrypt-1.6.3-r2.ebuild:
   Build the PDF only for native ABI, bug #552110.

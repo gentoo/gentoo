@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pandas/pandas-9999.ebuild,v 1.13 2015/05/15 11:30:51 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pandas/pandas-9999.ebuild,v 1.14 2015/06/28 19:15:09 jlec Exp $
 
 EAPI=5
 
@@ -78,10 +78,6 @@ RDEPEND="${CDEPEND}
 			dev-python/html5lib[${PYTHON_USEDEP}] )
 	)
 	R? ( dev-python/rpy[${PYTHON_USEDEP}] )"
-
-PATCHES=(
-	"${FILESDIR}"/${P}-zoneinfo.patch
-)
 
 python_prepare_all() {
 	# Prevent un-needed download during build

@@ -1,6 +1,14 @@
 # ChangeLog for sci-chemistry/openbabel
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/openbabel/ChangeLog,v 1.67 2015/06/28 11:18:49 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/openbabel/ChangeLog,v 1.69 2015/06/28 19:17:54 jlec Exp $
+
+  28 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Drop unused local USE-description: 'swig'
+
+  28 Jun 2015; Justin Lecher <jlec@gentoo.org>
+  -files/openbabel-2.2.0-doxyfile.patch, -files/openbabel-2.3.0-swig.patch,
+  -files/openbabel-2.3.0-test_lib_path.patch, -openbabel-2.2.3.ebuild:
+  Drop old
 
   28 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> openbabel-2.3.2.ebuild:
   x86 stable wrt bug #534612

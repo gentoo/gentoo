@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgcrypt/libgcrypt-1.6.3.ebuild,v 1.2 2015/03/01 13:37:22 k_f Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgcrypt/libgcrypt-1.6.3-r3.ebuild,v 1.1 2015/06/28 19:19:39 k_f Exp $
 
 EAPI=5
 AUTOTOOLS_AUTORECONF=1
@@ -15,20 +15,22 @@ SRC_URI="mirror://gnupg/${PN}/${P}.tar.bz2"
 LICENSE="LGPL-2.1 MIT"
 SLOT="0/20" # subslot = soname major version
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="static-libs"
+IUSE="doc static-libs"
 
 RDEPEND=">=dev-libs/libgpg-error-1.12[${MULTILIB_USEDEP}]
 	abi_x86_32? (
 		!<=app-emulation/emul-linux-x86-baselibs-20131008-r19
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32]
 	)"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	doc? ( sys-apps/texinfo )"
 
 DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.1-uscore.patch
 	"${FILESDIR}"/${PN}-multilib-syspath.patch
+	"${FILESDIR}"/${P}-freebsd-mpi.patch
 )
 
 MULTILIB_CHOST_TOOLS=(
@@ -59,4 +61,14 @@ multilib_src_configure() {
 		$([[ ${CHOST} == sparcv9-*-solaris* ]] && echo "--disable-asm")
 	)
 	autotools-utils_src_configure
+}
+
+multilib_src_compile() {
+	emake
+	multilib_is_native_abi && use doc && emake -C doc gcrypt.pdf
+}
+
+multilib_src_install() {
+	emake DESTDIR="${D}" install
+	multilib_is_native_abi && use doc && dodoc doc/gcrypt.pdf
 }

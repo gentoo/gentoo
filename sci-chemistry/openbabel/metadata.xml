@@ -8,9 +8,6 @@
 	search, convert, analyze, or store data from molecular modeling, chemistry,
 	solid-state materials, biochemistry, or related areas.
   </longdescription>
-  <use>
-    <flag name="swig">Use swig to rebuild language bindings.</flag>
-  </use>
   <upstream>
     <remote-id type="sourceforge">openbabel</remote-id>
   </upstream>

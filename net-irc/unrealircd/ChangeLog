@@ -1,6 +1,11 @@
 # ChangeLog for net-irc/unrealircd
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/unrealircd/ChangeLog,v 1.121 2014/10/10 10:50:19 ago Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/unrealircd/ChangeLog,v 1.122 2015/06/28 19:20:50 mrueg Exp $
+
+  28 Jun 2015; Manuel Rüger <mrueg@gentoo.org>
+  -files/unrealircd-3.2.9-disabled-stacked-extbans.patch,
+  -unrealircd-3.2.10.2.ebuild, -unrealircd-3.2.9.ebuild:
+  Remove old.
 
   10 Oct 2014; Agostino Sarubbo <ago@gentoo.org> unrealircd-3.2.10.4.ebuild:
   Stable for x86, wrt bug #521706
