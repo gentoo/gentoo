@@ -1,6 +1,11 @@
 # ChangeLog for sys-apps/pkgcore
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/pkgcore/ChangeLog,v 1.187 2015/06/04 11:06:20 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/pkgcore/ChangeLog,v 1.188 2015/06/28 21:18:10 radhermit Exp $
+
+*pkgcore-0.9.1 (28 Jun 2015)
+
+  28 Jun 2015; Tim Harder <radhermit@gentoo.org> +pkgcore-0.9.1.ebuild:
+  Version bump.
 
   04 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add pypi to remote-id in metadata.xml

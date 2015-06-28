@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/snakeoil
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/snakeoil/ChangeLog,v 1.82 2015/06/03 21:53:18 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/snakeoil/ChangeLog,v 1.83 2015/06/28 21:17:30 radhermit Exp $
+
+*snakeoil-0.6.4 (28 Jun 2015)
+
+  28 Jun 2015; Tim Harder <radhermit@gentoo.org> +snakeoil-0.6.4.ebuild:
+  Version bump.
 
   03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add pypi to remote-id in metadata.xml
