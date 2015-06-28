@@ -1,16 +1,18 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/pidgin/pidgin-2.10.11.ebuild,v 1.8 2015/06/27 12:33:37 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/pidgin/pidgin-2.10.11.ebuild,v 1.9 2015/06/28 17:14:13 jlec Exp $
 
 EAPI=5
 
 GENTOO_DEPEND_ON_PERL=no
-PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
+PYTHON_COMPAT=( python2_7 python3_{3,4} )
+
 inherit autotools flag-o-matic eutils toolchain-funcs multilib perl-app gnome2 python-single-r1
 
 DESCRIPTION="GTK Instant Messenger client"
 HOMEPAGE="http://pidgin.im/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2
+SRC_URI="
+	mirror://sourceforge/${PN}/${P}.tar.bz2
 	http://dev.gentoo.org/~polynomial-c/${PN}-eds-3.6.patch.bz2"
 
 LICENSE="GPL-2"
@@ -137,10 +139,12 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-2.10.0-gold.patch" \
-		"${WORKDIR}/${PN}-eds-3.6.patch" \
-		"${FILESDIR}/${PN}-2.10.9-fix-gtkmedia.patch" \
-		"${FILESDIR}/${PN}-2.10.10-eds-3.6-configure.ac.patch"
+	epatch \
+		"${FILESDIR}"/${PN}-2.10.0-gold.patch \
+		"${WORKDIR}"/${PN}-eds-3.6.patch \
+		"${FILESDIR}"/${PN}-2.10.9-fix-gtkmedia.patch \
+		"${FILESDIR}"/${PN}-2.10.10-eds-3.6-configure.ac.patch \
+		"${FILESDIR}"/${P}-tinfo.patch
 	epatch_user
 
 	eautoreconf

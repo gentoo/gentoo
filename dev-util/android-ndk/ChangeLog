@@ -1,6 +1,9 @@
 # ChangeLog for dev-util/android-ndk
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/android-ndk/ChangeLog,v 1.18 2015/06/16 11:41:01 perfinion Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/android-ndk/ChangeLog,v 1.19 2015/06/28 17:01:55 perfinion Exp $
+
+  28 Jun 2015; Jason Zaman <perfinion@gentoo.org> android-ndk-10e.ebuild:
+  check disk space, bug 552322 thanks to Dennis Schridde
 
 *android-ndk-10e (16 Jun 2015)
 

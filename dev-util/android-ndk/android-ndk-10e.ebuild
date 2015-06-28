@@ -1,8 +1,11 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/android-ndk/android-ndk-10e.ebuild,v 1.1 2015/06/16 11:41:01 perfinion Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/android-ndk/android-ndk-10e.ebuild,v 1.2 2015/06/28 17:01:55 perfinion Exp $
 
 EAPI=5
+
+CHECKREQS_DISK_BUILD="6G"
+inherit check-reqs
 
 DESCRIPTION="Open Handset Alliance's Android NDK (Native Dev Kit)"
 HOMEPAGE="http://developer.android.com/sdk/ndk/"
@@ -24,6 +27,14 @@ S="${WORKDIR}/${PN}-r${PV}"
 ANDROID_NDK_DIR="opt/${PN}"
 
 QA_PREBUILT="*"
+
+pkg_pretend() {
+	check-reqs_pkg_pretend
+}
+
+pkg_setup() {
+	check-reqs_pkg_setup
+}
 
 src_configure() {
 	:

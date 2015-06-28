@@ -1,21 +1,24 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/retroshare/retroshare-0.6.0_pre20150415.ebuild,v 1.2 2015/06/14 23:14:34 pinkbyte Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/retroshare/retroshare-0.6.0_rc2_pre8551.ebuild,v 1.1 2015/06/28 17:24:32 pinkbyte Exp $
 
 EAPI=5
 
 inherit eutils gnome2-utils multilib qmake-utils
 
+MY_PV="${PV/_rc/.RC}"
+MY_PV="${MY_PV/_pre/~}"
+
 DESCRIPTION="P2P private sharing application"
 HOMEPAGE="http://retroshare.sourceforge.net"
-SRC_URI="http://dev.gentoo.org/~pinkbyte/distfiles/snapshots/${P}.tar.bz2"
+SRC_URI="mirror://sourceforge/retroshare/${PN}_${MY_PV}_src.tgz"
 
 # pegmarkdown can also be used with MIT
 LICENSE="GPL-2 GPL-3 Apache-2.0 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="cli feedreader qt5 voip"
+IUSE="cli feedreader +qt5 voip"
 REQUIRED_USE="|| ( cli qt5 )
 	feedreader? ( qt5 )
 	voip? ( qt5 )"
@@ -25,6 +28,7 @@ RDEPEND="
 	dev-db/sqlcipher
 	dev-libs/openssl:0
 	gnome-base/libgnome-keyring
+	net-libs/libmicrohttpd
 	net-libs/libupnp
 	sys-libs/zlib
 	cli? (
@@ -51,28 +55,34 @@ RDEPEND="
 		dev-qt/qtxml:5
 	)
 	voip? (
+		media-libs/opencv
 		media-libs/speex
 	)"
 DEPEND="${RDEPEND}
 	dev-qt/qtcore:5
 	virtual/pkgconfig"
 
+S="${WORKDIR}/retroshare06-0.6.0/src"
+
 src_prepare() {
 	local dir
 
 	sed -i \
-		-e "s|/usr/lib/retroshare/extensions/|/usr/$(get_libdir)/${PN}/extensions/|" \
+		-e "s|/usr/lib/retroshare/extensions6/|/usr/$(get_libdir)/${PN}/extensions6/|" \
 		libretroshare/src/rsserver/rsinit.cc \
-		|| die "sed failed"
+		|| die "sed on libretroshare/src/rsserver/rsinit.cc failed"
 
-	rs_src_dirs="libbitdht/src openpgpsdk/src libretroshare/src supportlibs/pegmarkdown"
+	rs_src_dirs="libbitdht/src openpgpsdk/src libresapi/src libretroshare/src supportlibs/pegmarkdown"
 	use cli && rs_src_dirs="${rs_src_dirs} retroshare-nogui/src"
-	use qt5 && rs_src_dirs="${rs_src_dirs} retroshare-gui/src"
 	use feedreader && rs_src_dirs="${rs_src_dirs} plugins/FeedReader"
-
+	use qt5 && rs_src_dirs="${rs_src_dirs} retroshare-gui/src"
 	use voip && rs_src_dirs="${rs_src_dirs} plugins/VOIP"
 
-	epatch "${FILESDIR}/${PN}-0.6.0-force-sqlcipher.patch"
+	# Force linking to sqlcipher ONLY
+	sed -i \
+		-e '/isEmpty(SQLCIPHER_OK) {/aerror(libsqlcipher not found)' \
+		retroshare-gui/src/retroshare-gui.pro \
+		retroshare-nogui/src/retroshare-nogui.pro || die 'sed on retroshare-gui/src/retroshare-gui.pro failed'
 
 	epatch_user
 }
@@ -97,7 +107,7 @@ src_compile() {
 
 src_install() {
 	local i
-	local extension_dir="/usr/$(get_libdir)/${PN}/extensions/"
+	local extension_dir="/usr/$(get_libdir)/${PN}/extensions6/"
 
 	use cli && dobin retroshare-nogui/src/retroshare-nogui
 	use qt5 && dobin retroshare-gui/src/RetroShare
@@ -108,6 +118,9 @@ src_install() {
 
 	insinto /usr/share/RetroShare06
 	doins libbitdht/src/bitdht/bdboot.txt
+
+	insinto /usr/share/RetroShare06/webui
+	doins libresapi/src/webfiles/*
 
 	dodoc README.txt
 	make_desktop_entry RetroShare
