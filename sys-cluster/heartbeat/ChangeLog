@@ -1,6 +1,9 @@
 # ChangeLog for sys-cluster/heartbeat
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/heartbeat/ChangeLog,v 1.108 2015/05/21 11:58:29 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/heartbeat/ChangeLog,v 1.109 2015/06/28 17:37:53 mrueg Exp $
+
+  28 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -heartbeat-3.0.5.ebuild:
+  Remove old.
 
   21 May 2015; Agostino Sarubbo <ago@gentoo.org> heartbeat-3.0.5-r2.ebuild:
   Stable for amd64, wrt bug #536640

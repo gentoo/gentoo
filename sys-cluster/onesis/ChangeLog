@@ -1,6 +1,10 @@
 # ChangeLog for sys-cluster/onesis
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/onesis/ChangeLog,v 1.8 2010/09/29 11:31:47 cla Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/onesis/ChangeLog,v 1.9 2015/06/28 17:38:51 mrueg Exp $
+
+  28 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -onesis-2.0.ebuild,
+  -onesis-2.0_rc10.ebuild:
+  Remove old.
 
 *onesis-2.0.2 (29 Sep 2010)
 
@@ -32,4 +36,3 @@
 
   28 Jul 2005; Michael Imhof <tantive@gentoo.org> +onesis-2.0_rc10.ebuild:
   Initial release. Submitted by Josh England <jjengla@sandia.gov> in #96579.
-

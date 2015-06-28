@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/cython
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/cython/ChangeLog,v 1.156 2015/06/21 20:43:00 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/cython/ChangeLog,v 1.157 2015/06/28 18:29:34 zlogene Exp $
+
+  28 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> cython-0.21.1.ebuild:
+  alpha stable wrt bug #530280
 
 *cython-0.22.1 (21 Jun 2015)
 

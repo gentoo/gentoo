@@ -1,6 +1,10 @@
 # ChangeLog for dev-python/blaze
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/blaze/ChangeLog,v 1.21 2015/06/07 14:03:56 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/blaze/ChangeLog,v 1.22 2015/06/28 17:56:52 monsieurp Exp $
+
+  28 Jun 2015; Patrice Clement <monsieurp@gentoo.org> blaze-0.8.0.ebuild:
+  Update numba dependency to satisfy dependencies resolution and get the tree
+  back to a normal state.
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

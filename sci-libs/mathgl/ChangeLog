@@ -1,6 +1,10 @@
 # ChangeLog for sci-libs/mathgl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/mathgl/ChangeLog,v 1.43 2015/04/08 18:49:14 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/mathgl/ChangeLog,v 1.44 2015/06/28 18:25:51 jlec Exp $
+
+  28 Jun 2015; Justin Lecher <jlec@gentoo.org> +files/mathgl-2.1.3.1-x11.patch,
+  mathgl-2.1.3.1.ebuild, mathgl-2.1.3.ebuild:
+  Fix underlinking, bug #547486
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> mathgl-2.1.3.1.ebuild,
   mathgl-2.1.3.ebuild:

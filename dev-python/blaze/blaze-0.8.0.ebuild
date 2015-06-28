@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/blaze/blaze-0.8.0.ebuild,v 1.1 2015/06/06 10:53:40 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/blaze/blaze-0.8.0.ebuild,v 1.2 2015/06/28 17:56:52 monsieurp Exp $
 
 EAPI=5
 
@@ -47,7 +47,7 @@ RDEPEND="
 	dev-python/psutil[${PYTHON_USEDEP}]
 	dev-python/into[${PYTHON_USEDEP}]
 	dev-python/networkx[${PYTHON_USEDEP}]
-	<dev-python/numba-0.18.2[${PYTHON_USEDEP}]
+	>=dev-python/numba-0.18.2[${PYTHON_USEDEP}]
 	dev-python/bcolz[${PYTHON_USEDEP}]
 	>=dev-python/odo-0.3.1[${PYTHON_USEDEP}]"
 DEPEND="

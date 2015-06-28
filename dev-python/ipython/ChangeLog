@@ -1,6 +1,12 @@
 # ChangeLog for dev-python/ipython
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/ipython/ChangeLog,v 1.179 2015/06/27 12:46:21 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/ipython/ChangeLog,v 1.181 2015/06/28 18:27:27 jlec Exp $
+
+  28 Jun 2015; Justin Lecher <jlec@gentoo.org> ipython-3.2.0.ebuild:
+  Prevent double PREFIX on PREFIX, bug #553344
+
+  28 Jun 2015; Justin Lecher <jlec@gentoo.org> -ipython-2.2.0.ebuild:
+  Drop vulnerable version, bug #552816
 
   27 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> ipython-2.2.0-r1.ebuild:
   arm stable wrt bug #552816
