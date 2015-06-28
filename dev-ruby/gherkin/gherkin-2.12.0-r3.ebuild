@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/gherkin/gherkin-2.12.0-r3.ebuild,v 1.1 2014/08/16 07:43:37 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/gherkin/gherkin-2.12.0-r3.ebuild,v 1.2 2015/06/28 09:10:40 graaff Exp $
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 ruby21"
+USE_RUBY="ruby19 ruby20 ruby21 ruby22"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_TASK_TEST=""
@@ -30,7 +30,7 @@ ruby_add_bdepend "
 	test? (
 		>=dev-ruby/builder-2.1.2
 		>=dev-util/cucumber-1.1.3
-		>=dev-ruby/rspec-2.6.0
+		>=dev-ruby/rspec-2.6.0:2
 		>=dev-ruby/term-ansicolor-1.0.5
 	)
 	doc? ( >=dev-ruby/yard-0.8.3 )"
@@ -73,6 +73,9 @@ all_ruby_prepare() {
 
 	# Avoid implicit dependency on git
 	sed -i -e 's/git ls-files/echo/' gherkin.gemspec || die
+
+	# Fix deprecated code removed in ruby22
+	sed -i -e 's/Config/RbConfig/' tasks/ragel_task.rb || die
 }
 
 all_ruby_compile() {
@@ -88,6 +91,6 @@ each_ruby_compile() {
 }
 
 each_ruby_test() {
-	${RUBY} -I lib -S rake spec || die "Specs failed"
+	${RUBY} -I lib -S rspec-2 spec || die "Specs failed"
 	CUCUMBER_HOME="${HOME}" RUBYLIB=lib ${RUBY} -S cucumber features || die "Cucumber features failed"
 }

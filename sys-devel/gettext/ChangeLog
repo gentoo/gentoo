@@ -1,6 +1,9 @@
 # ChangeLog for sys-devel/gettext
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gettext/ChangeLog,v 1.267 2015/06/26 14:29:24 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/gettext/ChangeLog,v 1.268 2015/06/28 08:44:11 zlogene Exp $
+
+  28 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> gettext-0.19.4.ebuild:
+  x86 stable wrt bug #551828
 
   26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> gettext-0.19.4.ebuild:
   Stable for amd64, wrt bug #551828

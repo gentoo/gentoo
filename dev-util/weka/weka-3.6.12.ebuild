@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/weka/weka-3.6.6-r1.ebuild,v 1.5 2015/06/28 07:46:04 amynka Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/weka/weka-3.6.12.ebuild,v 1.1 2015/06/28 07:46:04 amynka Exp $
 
 EAPI="5"
 
@@ -14,11 +14,11 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.zip"
 HOMEPAGE="http://www.cs.waikato.ac.nz/ml/weka/"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ppc x86"
-DEPEND=">=virtual/jdk-1.5
+KEYWORDS="~amd64 ~ppc ~x86"
+DEPEND=">=virtual/jdk-1.6
 	app-arch/unzip
 	>=dev-java/javacup-0.11a_beta20060608:0"
-RDEPEND=">=virtual/jre-1.5
+RDEPEND=">=virtual/jre-1.6
 	>=dev-java/javacup-0.11a_beta20060608:0"
 IUSE=""
 
@@ -67,5 +67,5 @@ src_install() {
 	doins data/*
 
 	newicon "${S}/weka.gif" "${PN}".png
-	make_desktop_entry "${PN}" "Waikato Environment for Knowledge Analysis" "${PN}" "Education;Science;ArtificialIntelligence;" "Comment=Start Weka"
+	#make_desktop_entry "${PN}" "Waikato Environment for Knowledge Analysis" "${PN}" "Education;Science;ArtificialIntelligence;" "Comment=Start Weka"
 }

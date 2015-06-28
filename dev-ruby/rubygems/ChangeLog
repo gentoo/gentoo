@@ -1,6 +1,16 @@
 # ChangeLog for dev-ruby/rubygems
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rubygems/ChangeLog,v 1.265 2015/06/11 05:37:16 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rubygems/ChangeLog,v 1.267 2015/06/28 08:10:54 graaff Exp $
+
+*rubygems-2.2.5-r1 (28 Jun 2015)
+
+  28 Jun 2015; Hans de Graaff <graaff@gentoo.org> rubygems-2.2.5.ebuild,
+  +rubygems-2.2.5-r1.ebuild:
+  Create stable candidate for security bug 553298.
+
+  28 Jun 2015; Hans de Graaff <graaff@gentoo.org> -rubygems-2.2.4.ebuild,
+  -rubygems-2.4.7.ebuild:
+  Cleanup.
 
 *rubygems-2.4.8 (11 Jun 2015)
 *rubygems-2.2.5 (11 Jun 2015)

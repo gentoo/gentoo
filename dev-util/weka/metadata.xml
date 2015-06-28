@@ -2,6 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>java</herd>
+	<maintainer>
+	    <email>amynka@gentoo.org</email>
+	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">weka</remote-id>
 	</upstream>

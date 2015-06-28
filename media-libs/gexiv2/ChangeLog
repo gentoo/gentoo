@@ -1,6 +1,11 @@
 # ChangeLog for media-libs/gexiv2
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/gexiv2/ChangeLog,v 1.31 2015/04/08 17:59:35 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/gexiv2/ChangeLog,v 1.32 2015/06/28 09:19:54 maekke Exp $
+
+*gexiv2-0.10.3 (28 Jun 2015)
+
+  28 Jun 2015; Markus Meier <maekke@gentoo.org> +gexiv2-0.10.3.ebuild:
+  version bump by Pacho Ramos in bug #544732
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> gexiv2-0.6.1.ebuild:
   Drop old Python implementations

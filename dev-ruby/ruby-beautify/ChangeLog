@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/ruby-beautify
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-beautify/ChangeLog,v 1.5 2015/06/07 19:34:29 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-beautify/ChangeLog,v 1.6 2015/06/28 09:11:57 graaff Exp $
+
+  28 Jun 2015; Hans de Graaff <graaff@gentoo.org> -ruby-beautify-0.92.2.ebuild:
+  Cleanup.
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml
