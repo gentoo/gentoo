@@ -1,11 +1,11 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/mutter/mutter-3.14.3.ebuild,v 1.6 2015/03/15 13:34:58 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/mutter/mutter-3.16.2-r1.ebuild,v 1.1 2015/06/28 10:33:10 pacho Exp $
 
 EAPI="5"
 GCONF_DEBUG="yes"
 
-inherit autotools eutils gnome2
+inherit eutils gnome2
 
 DESCRIPTION="GNOME 3 compositing window manager based on Clutter"
 HOMEPAGE="http://git.gnome.org/browse/mutter/"
@@ -13,7 +13,7 @@ HOMEPAGE="http://git.gnome.org/browse/mutter/"
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="+introspection +kms test wayland"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 # libXi-1.7.4 or newer needed per:
 # https://bugzilla.gnome.org/show_bug.cgi?id=738944
@@ -21,13 +21,13 @@ COMMON_DEPEND="
 	>=x11-libs/pango-1.2[X,introspection?]
 	>=x11-libs/cairo-1.10[X]
 	>=x11-libs/gtk+-3.9.11:3[X,introspection?]
-	>=dev-libs/glib-2.36.0:2
-	>=media-libs/clutter-1.19.5:1.0[introspection?]
+	>=dev-libs/glib-2.36.0:2[dbus]
+	>=media-libs/clutter-1.21.3:1.0[introspection?]
 	>=media-libs/cogl-1.17.1:1.0=[introspection?]
 	>=media-libs/libcanberra-0.26[gtk3]
 	>=x11-libs/startup-notification-0.7
 	>=x11-libs/libXcomposite-0.2
-	>=gnome-base/gsettings-desktop-schemas-3.7.3[introspection?]
+	>=gnome-base/gsettings-desktop-schemas-3.15.92[introspection?]
 	gnome-base/gnome-desktop:3=
 	>sys-power/upower-0.99:=
 
@@ -50,7 +50,7 @@ COMMON_DEPEND="
 
 	gnome-extra/zenity
 
-	introspection? ( >=dev-libs/gobject-introspection-1.42 )
+	introspection? ( >=dev-libs/gobject-introspection-1.42:= )
 	kms? (
 		dev-libs/libinput
 		>=media-libs/clutter-1.20[egl]
@@ -79,13 +79,8 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 src_prepare() {
-	# Compat with Ubuntu metacity themes (e.g. x11-themes/light-themes)
-	epatch "${FILESDIR}"/${PN}-3.2.1-ignore-shadow-and-padding.patch
-
-	# Automagic fixes
-	epatch "${FILESDIR}"/${PN}-3.14.2-automagic.patch
-
-	eautoreconf
+	# surface-actor-x11: Make sure to set a size when unredirected (from 3.16 branch)
+	epatch "${FILESDIR}"/${P}-size-unredirected.patch
 	gnome2_src_prepare
 }
 

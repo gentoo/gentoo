@@ -1,6 +1,10 @@
 # ChangeLog for app-shells/bash-completion
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/bash-completion/ChangeLog,v 1.285 2015/06/07 10:58:37 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-shells/bash-completion/ChangeLog,v 1.286 2015/06/28 10:02:49 zlogene Exp $
+
+  28 Jun 2015; Mikle Kolyada <zlogene@gentoo.org>
+  bash-completion-2.1_p20141224.ebuild:
+  x86 stable wrt bug #530236
 
   07 Jun 2015; Markus Meier <maekke@gentoo.org>
   bash-completion-2.1_p20141224.ebuild:

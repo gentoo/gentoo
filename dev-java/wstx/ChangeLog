@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/wstx
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/wstx/ChangeLog,v 1.8 2015/06/26 14:28:32 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/wstx/ChangeLog,v 1.9 2015/06/28 10:16:44 zlogene Exp $
+
+  28 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> wstx-3.2.9.ebuild:
+  x86 stable wrt bug #552228
 
   26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> wstx-3.2.9.ebuild:
   Stable for amd64, wrt bug #552228

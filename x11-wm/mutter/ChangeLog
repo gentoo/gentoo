@@ -1,6 +1,16 @@
 # ChangeLog for x11-wm/mutter
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/mutter/ChangeLog,v 1.58 2015/06/26 09:24:46 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/mutter/ChangeLog,v 1.60 2015/06/28 10:33:10 pacho Exp $
+
+*mutter-3.16.2-r1 (28 Jun 2015)
+
+  28 Jun 2015; Pacho Ramos <pacho@gentoo.org>
+  +files/mutter-3.16.2-size-unredirected.patch, +mutter-3.16.2-r1.ebuild:
+  surface-actor-x11: Make sure to set a size when unredirected (from 3.16
+  branch). This fixes clicking on stuff in sloppy / mouse mode focus.
+
+  28 Jun 2015; Pacho Ramos <pacho@gentoo.org> -mutter-3.14.3.ebuild:
+  Drop old
 
   26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> mutter-3.14.4.ebuild:
   Stable for x86, wrt bug #551814

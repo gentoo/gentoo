@@ -1,6 +1,9 @@
 # ChangeLog for gnome-base/gnome-light
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-light/ChangeLog,v 1.188 2015/06/09 23:14:08 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-light/ChangeLog,v 1.189 2015/06/28 10:47:29 pacho Exp $
+
+  28 Jun 2015; Pacho Ramos <pacho@gentoo.org> gnome-light-3.16.0.ebuild:
+  Remember people where to find our project information
 
 *gnome-light-3.16.0 (09 Jun 2015)
 

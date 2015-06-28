@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-light/gnome-light-3.16.0.ebuild,v 1.1 2015/06/09 23:14:08 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-light/gnome-light-3.16.0.ebuild,v 1.2 2015/06/28 10:47:29 pacho Exp $
 
 EAPI="5"
 
@@ -48,4 +48,10 @@ pkg_pretend() {
 		ewarn "You're installing neither GNOME Shell"
 		ewarn "You will have to install and manage a window manager by yourself"
 	fi
+}
+
+pkg_postinst() {
+	# Remember people where to find our project information               
+	elog "Please remember to look at https://wiki.gentoo.org/wiki/Project:GNOME"
+	elog "for information about the project and documentation."
 }

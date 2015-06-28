@@ -1,6 +1,10 @@
 # ChangeLog for gnome-extra/zenity
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/zenity/ChangeLog,v 1.229 2015/06/27 16:55:35 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/zenity/ChangeLog,v 1.230 2015/06/28 10:11:20 pacho Exp $
+
+  28 Jun 2015; Pacho Ramos <pacho@gentoo.org> -zenity-3.16.2.ebuild,
+  zenity-3.16.3.ebuild:
+  DEPEND on itstool (#553464 by Denis Sokolovsky), drop old
 
 *zenity-3.16.3 (27 Jun 2015)
 

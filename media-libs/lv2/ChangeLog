@@ -1,6 +1,9 @@
 # ChangeLog for media-libs/lv2
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/lv2/ChangeLog,v 1.12 2015/06/27 09:48:56 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/lv2/ChangeLog,v 1.13 2015/06/28 09:54:43 zlogene Exp $
+
+  28 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> lv2-1.10.0-r1.ebuild:
+  x86 stable wrt bug #532270
 
   27 Jun 2015; Agostino Sarubbo <ago@gentoo.org> lv2-1.10.0-r1.ebuild:
   Stable for amd64, wrt bug #532270

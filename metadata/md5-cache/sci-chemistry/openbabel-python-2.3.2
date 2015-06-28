@@ -4,11 +4,11 @@ DESCRIPTION=Python bindings for OpenBabel (including Pybel)
 EAPI=5
 HOMEPAGE=http://openbabel.sourceforge.net/
 IUSE=python_targets_python2_7 python_targets_python3_3 python_targets_python3_4
-KEYWORDS=amd64 ~arm ppc ~x86 ~amd64-linux ~x86-linux
+KEYWORDS=amd64 ~arm ppc x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] !sci-chemistry/babel ~sci-chemistry/openbabel-2.3.2 sys-libs/zlib
 REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 )
 SLOT=0
 SRC_URI=mirror://sourceforge/openbabel/openbabel-2.3.2.tar.gz
 _eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	python-r1	6d3a3cb5705b9fff1aeb7cfa4e3336fe	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=ee4ae23ae434d2f717e8266c99316185
+_md5_=362f23b6e74721a990652520f5dc2eb4

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/seahorse/seahorse-3.16.0-r1.ebuild,v 1.1 2015/06/19 16:56:56 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/seahorse/seahorse-3.16.0-r1.ebuild,v 1.2 2015/06/28 10:18:10 pacho Exp $
 
 EAPI="5"
 GCONF_DEBUG="no"
@@ -31,6 +31,7 @@ COMMON_DEPEND="
 	zeroconf? ( >=net-dns/avahi-0.6:= )
 "
 DEPEND="${COMMON_DEPEND}
+	app-text/yelp-tools
 	>=dev-util/intltool-0.35
 	sys-devel/gettext
 	virtual/pkgconfig

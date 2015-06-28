@@ -1,6 +1,9 @@
 # ChangeLog for media-libs/ffmpegsource
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/ffmpegsource/ChangeLog,v 1.23 2015/02/27 22:24:32 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/ffmpegsource/ChangeLog,v 1.24 2015/06/28 10:25:09 zlogene Exp $
+
+  28 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> ffmpegsource-2.20.ebuild:
+  x86 stable wrt bug #538542
 
   27 Feb 2015; Michał Górny <mgorny@gentoo.org> ffmpegsource-2.19.1.ebuild,
   ffmpegsource-2.20.ebuild, ffmpegsource-9999.ebuild:

@@ -4,11 +4,11 @@ DESCRIPTION=Advanced SSA/ASS subtitle editor
 EAPI=5
 HOMEPAGE=http://www.aegisub.org/
 IUSE=alsa debug +ffmpeg +fftw openal oss portaudio pulseaudio spell linguas_ar linguas_bg linguas_ca linguas_cs linguas_da linguas_de linguas_el linguas_es linguas_eu linguas_fa linguas_fi linguas_fr_FR linguas_gl linguas_hu linguas_id linguas_it linguas_ja linguas_ko linguas_nl linguas_pl linguas_pt_BR linguas_pt_PT linguas_ru linguas_sr_RS@latin linguas_sr_RS linguas_vi linguas_zh_CN linguas_zh_TW
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 x86
 LICENSE=BSD
 RDEPEND=>=x11-libs/wxGTK-3.0.0:3.0[X,opengl,debug?] virtual/opengl virtual/glu >=media-libs/libass-0.10.0[fontconfig] virtual/libiconv >=dev-libs/boost-1.53.0:=[icu,nls,threads] >=dev-libs/icu-4.8.1.1:= >=media-libs/fontconfig-2.4.2 >=media-libs/freetype-2.3.5:2 alsa? ( >=media-libs/alsa-lib-1.0.16 ) portaudio? ( =media-libs/portaudio-19* ) pulseaudio? ( >=media-sound/pulseaudio-0.9.5 ) openal? ( media-libs/openal ) spell? ( >=app-text/hunspell-1.2.2 ) ffmpeg? ( >=media-libs/ffmpegsource-2.17:= ) fftw? ( >=sci-libs/fftw-3.3 )
 REQUIRED_USE=|| ( alsa openal oss portaudio pulseaudio )
 SLOT=0
 SRC_URI=http://ftp.aegisub.org/pub/releases/aegisub-3.1.3.tar.xz
 _eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	l10n	33bde4fb0cfd3a21a277b66bfd837e19	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	wxwidgets	6d6eec2685256d35511e7b6d5461bec9
-_md5_=57930c4b13f36d5f4f30eaa7a174dbee
+_md5_=5010f2d669da7eeddb968c7a0869a56a

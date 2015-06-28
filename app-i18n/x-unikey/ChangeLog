@@ -1,6 +1,10 @@
 # ChangeLog for app-i18n/x-unikey
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/x-unikey/ChangeLog,v 1.29 2015/06/09 11:33:40 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/x-unikey/ChangeLog,v 1.30 2015/06/28 10:14:55 zlogene Exp $
+
+  28 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> -x-unikey-1.0.4-r1.ebuild,
+  x-unikey-1.0.4-r2.ebuild:
+  x86 stable wrt bug #552188; Drop old.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

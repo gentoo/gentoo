@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/lv2/lv2-1.10.0-r1.ebuild,v 1.2 2015/06/27 09:48:56 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/lv2/lv2-1.10.0-r1.ebuild,v 1.3 2015/06/28 09:54:43 zlogene Exp $
 
 EAPI=5
 
@@ -14,7 +14,7 @@ SRC_URI="http://lv2plug.in/spec/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="doc plugins"
 
 DEPEND="plugins? ( x11-libs/gtk+:2 media-libs/libsndfile )"

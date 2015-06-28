@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/gherkin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/gherkin/ChangeLog,v 1.87 2015/06/28 09:10:40 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/gherkin/ChangeLog,v 1.88 2015/06/28 10:36:19 graaff Exp $
+
+  28 Jun 2015; Hans de Graaff <graaff@gentoo.org> gherkin-2.12.2.ebuild:
+  Drop keywords due to new dependency on dev-ruby/ruby-beautify, bug 553470.
 
   28 Jun 2015; Hans de Graaff <graaff@gentoo.org> gherkin-2.12.0-r3.ebuild:
   Add ruby22. Fix rspec invocation.
