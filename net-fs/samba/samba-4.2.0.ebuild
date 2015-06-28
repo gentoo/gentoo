@@ -1,12 +1,12 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/samba/samba-4.2.0.ebuild,v 1.2 2015/06/03 17:03:40 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/samba/samba-4.2.0.ebuild,v 1.3 2015/06/28 03:34:52 patrick Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+)'
 
-inherit python-single-r1 waf-utils multilib linux-info systemd
+inherit python-single-r1 waf-utils multilib linux-info systemd eutils
 
 MY_PV="${PV/_rc/rc}"
 MY_P="${PN}-${MY_PV}"

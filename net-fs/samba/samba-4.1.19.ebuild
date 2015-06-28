@@ -1,12 +1,12 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/samba/samba-4.1.19.ebuild,v 1.1 2015/06/26 07:37:20 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/samba/samba-4.1.19.ebuild,v 1.2 2015/06/28 03:34:52 patrick Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+)'
 
-inherit python-single-r1 waf-utils multilib linux-info systemd
+inherit python-single-r1 waf-utils multilib linux-info systemd base
 
 MY_PV="${PV/_rc/rc}"
 MY_P="${PN}-${MY_PV}"
@@ -26,7 +26,7 @@ ldap quota selinux syslog systemd test winbind"
 # sys-apps/attr is an automagic dependency (see bug #489748)
 # sys-libs/pam is an automagic dependency (see bug #489770)
 CDEPEND="${PYTHON_DEPS}
-	>=app-crypt/heimdal-1.5[-ssl]
+	>=app-crypt/heimdal-1.5[-ssl,-threads]
 	dev-libs/iniparser
 	dev-libs/popt
 	sys-libs/readline:=

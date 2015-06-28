@@ -12,4 +12,4 @@ RESTRICT=mirror
 SLOT=0
 SRC_URI=mirror://samba/stable/samba-4.2.0.tar.gz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-single-r1	7a178335dbd6ea7f50ed4e3e1c13c1e4	python-utils-r1	096f8247eae93026af13ab88cf4305cd	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f	waf-utils	f8e7e7df15097b4ca1d9945c2653b783
-_md5_=09169675fffc2e625e13af3a202cf88b
+_md5_=3450f4c5fa583436060c3660bddbcd2b
