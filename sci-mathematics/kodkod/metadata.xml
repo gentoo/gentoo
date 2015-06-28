@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-  <email>gienah@gentoo.org</email>
-</maintainer>
-<herd>sci-mathematics</herd>
-<longdescription lang='en'>
+  <maintainer>
+    <email>gienah@gentoo.org</email>
+  </maintainer>
+  <herd>sci-mathematics</herd>
+  <longdescription lang="en">
 Kodkod is an efficient SAT-based constraint solver for first order
 logic with relations, transitive closure, bit-vector arithmetic, and
 partial models. It provides analyses for both satisfiable and

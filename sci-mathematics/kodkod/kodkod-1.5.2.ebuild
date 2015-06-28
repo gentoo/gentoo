@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/kodkod/kodkod-1.5.2.ebuild,v 1.5 2015/01/03 12:26:50 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/kodkod/kodkod-1.5.2.ebuild,v 1.6 2015/06/28 19:31:40 jlec Exp $
 
 EAPI="5"
 
@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="doc source"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+)'
 
-inherit java-pkg-2 python-any-r1 waf-utils
+inherit eutils java-pkg-2 python-any-r1 waf-utils
 
 DESCRIPTION="a constraint solver for relational logic"
 HOMEPAGE="http://alloy.mit.edu/kodkod/index.html"

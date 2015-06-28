@@ -1,6 +1,11 @@
 # ChangeLog for mail-client/mutt
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/mutt/ChangeLog,v 1.284 2015/04/23 07:44:49 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/mutt/ChangeLog,v 1.285 2015/06/28 20:06:43 grobian Exp $
+
+*mutt-1.5.23-r7 (28 Jun 2015)
+
+  28 Jun 2015; Fabian Groffen <grobian@gentoo.org> +mutt-1.5.23-r7.ebuild:
+  Revbump for some features and fixes from upstream
 
   23 Apr 2015; Fabian Groffen <grobian@gentoo.org>
   -files/mutt-1.5.22-cve-2014-0567.patch, -mutt-1.5.22-r3.ebuild:
