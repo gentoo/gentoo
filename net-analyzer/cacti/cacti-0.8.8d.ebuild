@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/cacti/cacti-0.8.8d.ebuild,v 1.5 2015/06/17 08:50:46 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/cacti/cacti-0.8.8d.ebuild,v 1.6 2015/06/28 16:16:08 zlogene Exp $
 
 EAPI=5
 
@@ -14,7 +14,7 @@ HOMEPAGE="http://www.cacti.net/"
 SRC_URI="http://www.cacti.net/downloads/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 ~arm hppa ~ppc ~ppc64 sparc x86"
+KEYWORDS="alpha amd64 ~arm hppa ~ppc ~ppc64 sparc x86"
 IUSE="snmp doc"
 
 need_httpd
