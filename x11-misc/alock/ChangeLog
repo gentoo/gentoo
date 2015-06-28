@@ -1,6 +1,9 @@
 # ChangeLog for x11-misc/alock
-# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/alock/ChangeLog,v 1.21 2011/07/13 19:49:48 maekke Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/alock/ChangeLog,v 1.22 2015/06/28 02:17:01 mrueg Exp $
+
+  28 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -alock-60-r3.ebuild:
+  Remove old.
 
   13 Jul 2011; Markus Meier <maekke@gentoo.org> alock-94.ebuild:
   x86 stable, bug #371979

@@ -1,6 +1,9 @@
 # ChangeLog for x11-plugins/gkrellfire
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellfire/ChangeLog,v 1.9 2013/06/01 11:29:51 pacho Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellfire/ChangeLog,v 1.10 2015/06/28 02:14:36 mrueg Exp $
+
+  28 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -gkrellfire-0.3.3.ebuild:
+  Remove old.
 
   01 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
   Cleanup due bug #144305

@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/jflex
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jflex/ChangeLog,v 1.21 2015/02/26 16:07:12 fordfrog Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jflex/ChangeLog,v 1.22 2015/06/28 02:01:07 monsieurp Exp $
+
+  28 Jun 2015; Patrice Clement <monsieurp@gentoo.org> jflex-1.6.0.ebuild:
+  Stable for amd64+x86 with ALLARCHES.
 
 *jflex-1.4.3-r2 (26 Feb 2015)
 

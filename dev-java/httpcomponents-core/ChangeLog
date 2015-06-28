@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/httpcomponents-core
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/httpcomponents-core/ChangeLog,v 1.8 2015/06/26 07:59:52 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/httpcomponents-core/ChangeLog,v 1.9 2015/06/28 01:47:59 monsieurp Exp $
+
+  28 Jun 2015; Patrice Clement <monsieurp@gentoo.org> metadata.xml:
+  Remove unused USE flag and clear QA warning.
 
   26 Jun 2015; Patrice Clement <monsieurp@gentoo.org>
   -httpcomponents-core-4.2.4.ebuild, -httpcomponents-core-4.3.ebuild,

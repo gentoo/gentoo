@@ -1,6 +1,9 @@
 # ChangeLog for x11-misc/grabc
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/grabc/ChangeLog,v 1.16 2012/03/06 21:51:35 ranger Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/grabc/ChangeLog,v 1.17 2015/06/28 02:18:34 mrueg Exp $
+
+  28 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -grabc-1.1.ebuild:
+  Remove old.
 
   06 Mar 2012; Brent Baude <ranger@gentoo.org> grabc-1.1-r1.ebuild:
   Marking grabc-1.1-r1 ppc64 for bug 397267
@@ -51,4 +54,3 @@
 
   02 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org> grabc-1.1.ebuild:
   initial commit (bug 21170)
-

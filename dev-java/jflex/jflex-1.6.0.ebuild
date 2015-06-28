@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jflex/jflex-1.6.0.ebuild,v 1.2 2015/02/22 18:55:39 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jflex/jflex-1.6.0.ebuild,v 1.3 2015/06/28 02:01:07 monsieurp Exp $
 
 EAPI="5"
 
@@ -14,16 +14,18 @@ SRC_URI="http://${PN}.de/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="1.6"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-fbsd ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ~ppc ppc64 x86 ~amd64-fbsd ~ppc-macos ~x64-macos ~x86-macos"
+
+CDEPEND="dev-java/ant-core:0
+	>=dev-java/javacup-0.11a_beta20060608:0
+	dev-java/junit:0"
 
 RDEPEND=">=virtual/jre-1.5
 	vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
-	>=dev-java/ant-core-1.7.0
-	>=dev-java/javacup-0.11a_beta20060608:0"
+	${CDEPEND}"
 
 DEPEND=">=virtual/jdk-1.5
-	dev-java/junit:0
-	>=dev-java/javacup-0.11a_beta20060608:0"
+	${CDEPEND}"
 
 IUSE="${JAVA_PKG_IUSE} source vim-syntax"
 

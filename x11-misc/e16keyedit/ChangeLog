@@ -1,6 +1,10 @@
 # ChangeLog for x11-misc/e16keyedit
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/e16keyedit/ChangeLog,v 1.21 2014/04/01 06:42:27 vapier Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/e16keyedit/ChangeLog,v 1.22 2015/06/28 02:17:53 mrueg Exp $
+
+  28 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -e16keyedit-0.4.ebuild,
+  -e16keyedit-0.6.ebuild:
+  Remove old.
 
   01 Apr 2014; Mike Frysinger <vapier@gentoo.org> e16keyedit-0.7.ebuild:
   Stabilize for all #506264 by Samuli Suominen.

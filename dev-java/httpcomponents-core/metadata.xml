@@ -2,7 +2,4 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>java</herd>
-	<use>
-		<flag name="deprecated">Build deprecated classes</flag>
-	</use>
 </pkgmetadata>
