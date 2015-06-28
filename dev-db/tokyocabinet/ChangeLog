@@ -1,6 +1,10 @@
 # ChangeLog for dev-db/tokyocabinet
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/tokyocabinet/ChangeLog,v 1.49 2012/12/27 08:33:11 armin76 Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/tokyocabinet/ChangeLog,v 1.50 2015/06/27 22:31:39 mrueg Exp $
+
+  27 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -tokyocabinet-1.4.46.ebuild,
+  -tokyocabinet-1.4.47.ebuild:
+  Remove old.
 
   27 Dec 2012; Raúl Porcel <armin76@gentoo.org> tokyocabinet-1.4.48.ebuild:
   alpha stable wrt #441146

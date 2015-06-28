@@ -1,6 +1,9 @@
 # ChangeLog for dev-scheme/sigscheme
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-scheme/sigscheme/ChangeLog,v 1.3 2014/08/10 21:25:55 slyfox Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-scheme/sigscheme/ChangeLog,v 1.4 2015/06/27 22:43:47 mrueg Exp $
+
+  27 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -sigscheme-0.8.3.ebuild:
+  Remove old.
 
   10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> sigscheme-0.8.3.ebuild,
   sigscheme-0.8.5.ebuild:

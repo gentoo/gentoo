@@ -1,6 +1,9 @@
 # ChangeLog for dev-scheme/stklos
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-scheme/stklos/ChangeLog,v 1.14 2012/06/21 06:29:22 hkbst Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-scheme/stklos/ChangeLog,v 1.15 2015/06/27 22:48:38 mrueg Exp $
+
+  27 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -stklos-1.01.ebuild:
+  Remove old.
 
   21 Jun 2012; Marijn Schouten <hkBst@gentoo.org> stklos-1.01.ebuild,
   stklos-1.10.ebuild:
@@ -102,4 +105,3 @@
   19 Apr 2007; Marijn Schouten <hkBst@gentoo.org> +metadata.xml,
   +stklos-0.82.ebuild:
   initial ebuild
-

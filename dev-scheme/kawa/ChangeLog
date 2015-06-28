@@ -1,6 +1,10 @@
 # ChangeLog for dev-scheme/kawa
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-scheme/kawa/ChangeLog,v 1.15 2015/04/27 20:26:48 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-scheme/kawa/ChangeLog,v 1.16 2015/06/27 22:46:20 mrueg Exp $
+
+  27 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -kawa-1.9.1.ebuild,
+  -kawa-1.9.90-r1.ebuild:
+  Remove old.
 
 *kawa-1.14 (27 Apr 2015)
 

@@ -1,6 +1,9 @@
 # ChangeLog for dev-scheme/scmxlate
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-scheme/scmxlate/ChangeLog,v 1.6 2014/08/10 21:25:48 slyfox Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-scheme/scmxlate/ChangeLog,v 1.7 2015/06/27 22:45:09 mrueg Exp $
+
+  27 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -scmxlate-20060613.ebuild:
+  Remove old.
 
   10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> scmxlate-20060613.ebuild:
   QA: drop trailing '.' from DESCRIPTION

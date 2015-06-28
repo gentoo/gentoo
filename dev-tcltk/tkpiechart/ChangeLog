@@ -1,6 +1,9 @@
 # ChangeLog for dev-tcltk/tkpiechart
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/tkpiechart/ChangeLog,v 1.10 2013/04/30 16:26:31 ulm Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/tkpiechart/ChangeLog,v 1.11 2015/06/27 22:54:14 mrueg Exp $
+
+  27 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -tkpiechart-6.5.ebuild:
+  Remove old.
 
   30 Apr 2013; Ulrich Müller <ulm@gentoo.org> tkpiechart-6.5.ebuild,
   tkpiechart-6.5-r1.ebuild:
@@ -35,4 +38,3 @@
 
   17 May 2004; <matsuu@gentoo.org> +tkpiechart-6.5.ebuild:
   Initial import.
-

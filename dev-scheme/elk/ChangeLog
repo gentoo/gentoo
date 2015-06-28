@@ -1,6 +1,9 @@
 # ChangeLog for dev-scheme/elk
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-scheme/elk/ChangeLog,v 1.4 2015/01/22 08:06:35 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-scheme/elk/ChangeLog,v 1.5 2015/06/27 22:49:57 mrueg Exp $
+
+  27 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -elk-3.99.7.ebuild:
+  Remove old.
 
   22 Jan 2015; Jeroen Roovers <jer@gentoo.org> metadata.xml:
   Whitespace.

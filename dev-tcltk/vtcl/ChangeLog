@@ -1,6 +1,9 @@
 # ChangeLog for dev-tcltk/vtcl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/vtcl/ChangeLog,v 1.11 2015/06/09 18:14:43 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/vtcl/ChangeLog,v 1.12 2015/06/27 22:52:24 mrueg Exp $
+
+  27 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -vtcl-1.6.0.ebuild:
+  Remove old.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

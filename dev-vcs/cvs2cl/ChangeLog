@@ -1,6 +1,9 @@
 # ChangeLog for dev-vcs/cvs2cl
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/cvs2cl/ChangeLog,v 1.5 2012/03/18 15:45:27 armin76 Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/cvs2cl/ChangeLog,v 1.6 2015/06/27 22:59:24 mrueg Exp $
+
+  27 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -cvs2cl-2.59.ebuild:
+  Remove old.
 
   18 Mar 2012; Raúl Porcel <armin76@gentoo.org> cvs2cl-2.59.ebuild,
   cvs2cl-2.71.ebuild:
@@ -105,4 +108,3 @@
 
   13 Jul 2003; Mike Frysinger <vapier@gentoo.org> +cvs2cl-2.49.ebuild:
   initial ebuild #11523
-

@@ -1,6 +1,10 @@
 # ChangeLog for dev-scheme/tinyscheme
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-scheme/tinyscheme/ChangeLog,v 1.18 2015/06/09 17:42:45 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-scheme/tinyscheme/ChangeLog,v 1.19 2015/06/27 22:49:21 mrueg Exp $
+
+  27 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -tinyscheme-1.38-r1.ebuild,
+  -tinyscheme-1.39-r1.ebuild, -tinyscheme-1.40.ebuild:
+  Remove old.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml
