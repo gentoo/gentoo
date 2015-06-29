@@ -1,6 +1,9 @@
 # ChangeLog for dev-go/go-oauth2
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-go/go-oauth2/ChangeLog,v 1.4 2015/06/25 20:27:57 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-go/go-oauth2/ChangeLog,v 1.5 2015/06/29 14:25:31 williamh Exp $
+
+  29 Jun 2015; William Hubbs <williamh@gentoo.org> go-oauth2-9999.ebuild:
+  drop keywords from live ebuild
 
 *go-oauth2-9999 (25 Jun 2015)
 

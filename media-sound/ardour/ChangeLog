@@ -1,6 +1,11 @@
 # ChangeLog for media-sound/ardour
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/ardour/ChangeLog,v 1.144 2015/05/03 12:34:24 nativemad Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/ardour/ChangeLog,v 1.145 2015/06/29 14:20:26 nativemad Exp $
+
+*ardour-4.1 (29 Jun 2015)
+
+  29 Jun 2015; Andreas Schuerch <nativemad@gentoo.org> +ardour-4.1.ebuild:
+  version bump
 
   03 May 2015; Andreas Schuerch <nativemad@gentoo.org> ChangeLog:
   signing didn't worked..:

@@ -1,6 +1,10 @@
 # ChangeLog for app-misc/elasticsearch
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/elasticsearch/ChangeLog,v 1.13 2015/06/11 15:36:30 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/elasticsearch/ChangeLog,v 1.14 2015/06/29 14:29:38 chainsaw Exp $
+
+  29 Jun 2015; Tony Vroon <chainsaw@gentoo.org> elasticsearch-1.6.0.ebuild:
+  Also accept version 8 Java Runtime Environment, as per Ferenc Erki in bug
+  #551880.
 
 *elasticsearch-1.6.0 (11 Jun 2015)
 
