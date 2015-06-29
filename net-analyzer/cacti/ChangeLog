@@ -1,6 +1,10 @@
 # ChangeLog for net-analyzer/cacti
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/cacti/ChangeLog,v 1.206 2015/06/28 16:16:08 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/cacti/ChangeLog,v 1.207 2015/06/29 05:56:52 jer Exp $
+
+  29 Jun 2015; Jeroen Roovers <jer@gentoo.org> -cacti-0.8.8b-r2.ebuild,
+  -files/cacti-0.8.8b_empty_comment.patch, -files/cacti-r7420.patch:
+  Old.
 
   28 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> cacti-0.8.8d.ebuild:
   alpha stable wrt bug #551728

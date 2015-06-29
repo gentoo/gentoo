@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/pysnmp-mibs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pysnmp-mibs/ChangeLog,v 1.13 2015/06/03 21:12:05 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pysnmp-mibs/ChangeLog,v 1.14 2015/06/29 05:45:17 patrick Exp $
+
+*pysnmp-mibs-0.1.4 (29 Jun 2015)
+
+  29 Jun 2015; Patrick Lauer <patrick@gentoo.org> +pysnmp-mibs-0.1.4.ebuild:
+  Bump
 
   03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add pypi to remote-id in metadata.xml

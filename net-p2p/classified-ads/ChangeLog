@@ -1,0 +1,11 @@
+# ChangeLog for net-p2p/classified-ads
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/classified-ads/ChangeLog,v 1.1 2015/06/29 05:39:09 idella4 Exp $
+
+*classified-ads-0.07 (29 Jun 2015)
+
+  29 Jun 2015; Ian Delaney <idella4@gentoo.org> +classified-ads-0.07.ebuild,
+  +metadata.xml:
+  new package, ebuild authored by upstream author with support from myself,
+  added under the proxy-maint herd and author is set to proxy maintain his
+  package via the herd. ebuild submitted via bug #548812
