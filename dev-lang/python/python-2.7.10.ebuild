@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/python/python-2.7.10.ebuild,v 1.1 2015/05/28 04:10:47 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/python/python-2.7.10.ebuild,v 1.2 2015/06/29 17:26:27 floppym Exp $
 
 EAPI="4"
 WANT_LIBTOOL="none"
@@ -99,7 +99,6 @@ src_prepare() {
 	# Fix for cross-compiling.
 	epatch "${FILESDIR}/python-2.7.5-nonfatal-compileall.patch"
 	epatch "${FILESDIR}/python-2.7.9-ncurses-pkg-config.patch"
-	epatch "${FILESDIR}/python-2.7.10-semaphore-pid.patch"
 
 	sed -i -e "s:@@GENTOO_LIBDIR@@:$(get_libdir):g" \
 		Lib/distutils/command/install.py \

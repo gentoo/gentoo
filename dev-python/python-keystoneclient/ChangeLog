@@ -1,6 +1,12 @@
 # ChangeLog for dev-python/python-keystoneclient
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/python-keystoneclient/ChangeLog,v 1.58 2015/06/03 21:22:25 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-keystoneclient/ChangeLog,v 1.59 2015/06/29 16:57:35 prometheanfire Exp $
+
+*python-keystoneclient-1.1.1 (29 Jun 2015)
+
+  29 Jun 2015; Matthew Thode <prometheanfire@gentoo.org>
+  +python-keystoneclient-1.1.1.ebuild:
+  bup
 
   03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add pypi to remote-id in metadata.xml

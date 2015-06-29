@@ -1,6 +1,9 @@
 # ChangeLog for dev-lang/python
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/python/ChangeLog,v 1.819 2015/05/28 04:10:47 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/python/ChangeLog,v 1.820 2015/06/29 17:26:27 floppym Exp $
+
+  29 Jun 2015; Mike Gilbert <floppym@gentoo.org> python-2.7.10.ebuild:
+  Drop semaphore-pid patch until upstream actually commits a fix, bug 552422.
 
 *python-2.7.10 (28 May 2015)
 

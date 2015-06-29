@@ -1,6 +1,11 @@
 # ChangeLog for dev-lang/php
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/php/ChangeLog,v 1.989 2015/06/24 09:00:08 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/php/ChangeLog,v 1.990 2015/06/29 17:11:51 olemarkus Exp $
+
+*php-7.0.0_alpha2 (29 Jun 2015)
+
+  29 Jun 2015; Ole Markus With <olemarkus@gentoo.org> +php-7.0.0_alpha2.ebuild:
+  Bump of PHP7 alpha
 
   24 Jun 2015; Agostino Sarubbo <ago@gentoo.org> php-5.4.41.ebuild,
   php-5.5.25-r1.ebuild:
