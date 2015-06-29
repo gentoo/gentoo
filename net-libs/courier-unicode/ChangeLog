@@ -1,6 +1,11 @@
 # ChangeLog for net-libs/courier-unicode
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/courier-unicode/ChangeLog,v 1.8 2015/05/15 11:56:41 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/courier-unicode/ChangeLog,v 1.9 2015/06/29 09:31:52 hanno Exp $
+
+*courier-unicode-1.3 (29 Jun 2015)
+
+  29 Jun 2015; Hanno Boeck <hanno@gentoo.org> +courier-unicode-1.3.ebuild:
+  Version bump.
 
   15 May 2015; Pacho Ramos <pacho@gentoo.org> courier-unicode-1.1.ebuild:
   ppc stable wrt bug #548176

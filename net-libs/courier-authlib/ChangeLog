@@ -1,6 +1,12 @@
 # ChangeLog for net-libs/courier-authlib
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/courier-authlib/ChangeLog,v 1.170 2015/05/15 11:56:33 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/courier-authlib/ChangeLog,v 1.171 2015/06/29 09:40:44 hanno Exp $
+
+*courier-authlib-0.66.3 (29 Jun 2015)
+
+  29 Jun 2015; Hanno Boeck <hanno@gentoo.org> +courier-authlib-0.66.3.ebuild:
+  Bump, subslot fixes, removal of unneeded eautoreconf, removal of deprecated
+  warnings about old configs.
 
   15 May 2015; Pacho Ramos <pacho@gentoo.org> courier-authlib-0.66.1.ebuild:
   ppc stable wrt bug #548176
