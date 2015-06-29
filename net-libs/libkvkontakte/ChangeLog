@@ -1,6 +1,11 @@
 # ChangeLog for net-libs/libkvkontakte
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libkvkontakte/ChangeLog,v 1.52 2015/05/31 11:48:42 johu Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libkvkontakte/ChangeLog,v 1.53 2015/06/29 16:21:14 johu Exp $
+
+*libkvkontakte-4.12.0 (29 Jun 2015)
+
+  29 Jun 2015; Johannes Huber <johu@gentoo.org> +libkvkontakte-4.12.0.ebuild:
+  Version bump.
 
 *libkvkontakte-4.11.0 (31 May 2015)
 
