@@ -1,6 +1,11 @@
 # ChangeLog for sys-libs/efivar
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/efivar/ChangeLog,v 1.6 2015/06/25 14:04:18 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/efivar/ChangeLog,v 1.7 2015/06/29 01:18:43 floppym Exp $
+
+*efivar-0.20 (29 Jun 2015)
+
+  29 Jun 2015; Mike Gilbert <floppym@gentoo.org> +efivar-0.20.ebuild:
+  Version bump, bug 553220.
 
   25 Jun 2015; Mike Gilbert <floppym@gentoo.org> efivar-0.15.ebuild:
   Update HOMEPAGE and SRC_URI.
