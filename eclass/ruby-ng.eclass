@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ruby-ng.eclass,v 1.57 2015/05/31 05:57:23 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ruby-ng.eclass,v 1.58 2015/06/29 11:01:31 mrueg Exp $
 
 # @ECLASS: ruby-ng.eclass
 # @MAINTAINER:
@@ -302,7 +302,7 @@ _ruby_invoke_environment() {
 	old_S=${S}
 	case ${EAPI} in
 		4|5)
-			if [ -z ${RUBY_S} ]; then
+			if [ -z "${RUBY_S}" ]; then
 				sub_S=${P}
 			else
 				sub_S=${RUBY_S}
@@ -316,7 +316,7 @@ _ruby_invoke_environment() {
 	# Special case, for the always-lovely GitHub fetches. With this,
 	# we allow the star glob to just expand to whatever directory it's
 	# called.
-	if [[ ${sub_S} = *"*"* ]]; then
+	if [[ "${sub_S}" = *"*"* ]]; then
 		case ${EAPI} in
 			2|3)
 				#The old method of setting S depends on undefined package
@@ -325,7 +325,7 @@ _ruby_invoke_environment() {
 				;;
 		esac
 		pushd "${WORKDIR}"/all &>/dev/null
-		sub_S=$(eval ls -d ${sub_S} 2>/dev/null)
+		sub_S=$(eval ls -d "${sub_S}" 2>/dev/null)
 		popd &>/dev/null
 	fi
 

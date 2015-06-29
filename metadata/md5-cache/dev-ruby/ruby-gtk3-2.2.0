@@ -10,5 +10,5 @@ RDEPEND=x11-libs/gtk+:3 ruby_targets_ruby19? ( >=dev-ruby/ruby-gdkpixbuf2-2.2.0[
 REQUIRED_USE=|| ( ruby_targets_ruby19 ruby_targets_ruby20 )
 SLOT=0
 SRC_URI=mirror://sourceforge/ruby-gnome2/ruby-gnome2-all-2.2.0.tar.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	java-utils-2	8cdf065211fa6d6687bdc3f3ebe12efc	multilib	62927b3db3a589b0806255f3a002d5d3	ruby-fakegem	d4f8591e9b20b106327e9d143eb13da5	ruby-ng	a23e4bd47d827c96336af5ad0fe254cf	ruby-ng-gnome2	4463aca8669af6fafcca7f9f1f7fdbd5	ruby-utils	a74e21a353442acf697b6c82e7df6df8	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	java-utils-2	8cdf065211fa6d6687bdc3f3ebe12efc	multilib	62927b3db3a589b0806255f3a002d5d3	ruby-fakegem	d4f8591e9b20b106327e9d143eb13da5	ruby-ng	a1c75617b3482d513ad41d1aea8dbf8f	ruby-ng-gnome2	4463aca8669af6fafcca7f9f1f7fdbd5	ruby-utils	a74e21a353442acf697b6c82e7df6df8	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=24da9f12d64a27ccd9c7a3cb5248bfa8

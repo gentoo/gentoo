@@ -1,6 +1,9 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1694 2015/06/29 00:27:17 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1695 2015/06/29 11:01:31 mrueg Exp $
+
+  29 Jun 2015; Manuel Rüger <mrueg@gentoo.org> ruby-ng.eclass:
+  Quote RUBY_S and sub_S as the directory could contain spaces.
 
   29 Jun 2015; Davide Pesavento <pesa@gentoo.org> qmake-utils.eclass:
   Introduce qt{4,5}_get_plugindir(). Rephrase some eclass doc.
