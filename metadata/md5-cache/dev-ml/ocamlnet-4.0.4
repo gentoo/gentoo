@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install
+DEPEND=>=dev-ml/findlib-1.0 pcre? ( >=dev-ml/pcre-ocaml-5:= ) >=dev-lang/ocaml-3.10.2:=[ocamlopt?] tk? ( || ( dev-ml/labltk:= <dev-lang/ocaml-4.02[tk] ) ) ssl? ( net-libs/gnutls:= ) gtk? ( >=dev-ml/lablgtk-2:= ) kerberos? ( virtual/krb5 ) zip? ( dev-ml/camlzip:= ) virtual/pkgconfig >=dev-ml/findlib-1.0.4-r1
+DESCRIPTION=Modules for OCaml application-level Internet protocols
+EAPI=5
+HOMEPAGE=http://projects.camlcity.org/projects/ocamlnet.html
+IUSE=gtk kerberos tk httpd +ocamlopt +pcre ssl zip
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd
+LICENSE=ZLIB GPL-2+
+RDEPEND=>=dev-ml/findlib-1.0 pcre? ( >=dev-ml/pcre-ocaml-5:= ) >=dev-lang/ocaml-3.10.2:=[ocamlopt?] tk? ( || ( dev-ml/labltk:= <dev-lang/ocaml-4.02[tk] ) ) ssl? ( net-libs/gnutls:= ) gtk? ( >=dev-ml/lablgtk-2:= ) kerberos? ( virtual/krb5 ) zip? ( dev-ml/camlzip:= )
+RESTRICT=installsources
+SLOT=0/4.0.4
+SRC_URI=http://download.camlcity.org/download/ocamlnet-4.0.4.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	findlib	9cf6020ee5481f39f1aa566a323f9868	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=71dc004135bc74e3e7536ac69d3b8c66

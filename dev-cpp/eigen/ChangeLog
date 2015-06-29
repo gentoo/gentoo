@@ -1,6 +1,12 @@
 # ChangeLog for dev-cpp/eigen
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/eigen/ChangeLog,v 1.88 2015/02/06 18:19:16 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/eigen/ChangeLog,v 1.89 2015/06/29 08:51:43 aballier Exp $
+
+*eigen-3.2.5 (29 Jun 2015)
+
+  29 Jun 2015; Alexis Ballier <aballier@gentoo.org> +eigen-3.2.5.ebuild:
+  Version bump. Install FindEigen3.cmake as some packages started to use it
+  since debian ships it.
 
 *eigen-3.2.4 (06 Feb 2015)
 

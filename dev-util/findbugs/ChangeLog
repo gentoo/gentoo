@@ -1,6 +1,9 @@
 # ChangeLog for dev-util/findbugs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/findbugs/ChangeLog,v 1.5 2015/05/18 19:46:20 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/findbugs/ChangeLog,v 1.6 2015/06/29 08:47:56 chewi Exp $
+
+  29 Jun 2015; James Le Cuirot <chewi@gentoo.org> findbugs-3.0.1.ebuild:
+  >=asm-5 is actually required. Closes bug #553408.
 
   18 May 2015; James Le Cuirot <chewi@gentoo.org>
   +files/0005-Don-t-require-git-to-build.patch, findbugs-3.0.1.ebuild:

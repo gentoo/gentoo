@@ -1,6 +1,11 @@
 # ChangeLog for media-libs/xvid
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/xvid/ChangeLog,v 1.152 2015/05/07 22:34:50 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/xvid/ChangeLog,v 1.153 2015/06/29 09:09:51 aballier Exp $
+
+*xvid-1.3.4 (29 Jun 2015)
+
+  29 Jun 2015; Alexis Ballier <aballier@gentoo.org> +xvid-1.3.4.ebuild:
+  version bump
 
   07 May 2015; Manuel Rüger <mrueg@gentoo.org> -xvid-1.3.2-r1.ebuild,
   -xvid-1.3.2.ebuild:

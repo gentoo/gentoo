@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test unpack
+DEPEND=>=dev-ml/lwt-2.4.0:=[react] >=dev-ml/lambda-term-1.2:= >=dev-ml/zed-1.2:= >=dev-ml/cppo-1.0.1:= emacs? ( virtual/emacs ) camlp4? ( || ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 ) ) >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-3.12:=[ocamlopt?]
+DESCRIPTION=A new toplevel for OCaml with completion and colorization
+EAPI=5
+HOMEPAGE=http://github.com/diml/utop
+IUSE=camlp4 emacs +ocamlopt debug doc
+KEYWORDS=~amd64
+LICENSE=BSD
+RDEPEND=>=dev-ml/lwt-2.4.0:=[react] >=dev-ml/lambda-term-1.2:= >=dev-ml/zed-1.2:= >=dev-ml/cppo-1.0.1:= emacs? ( virtual/emacs ) camlp4? ( || ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 ) ) >=dev-lang/ocaml-3.12:=[ocamlopt?]
+SLOT=0/1.18
+SRC_URI=http://github.com/diml/utop/archive/1.18.tar.gz -> utop-1.18.tar.gz
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	elisp-common	9a16929c1a6aec7e1c903289983e114c	eutils	9fb270e417e0e83d64ca52586c4a79de	findlib	9cf6020ee5481f39f1aa566a323f9868	multilib	62927b3db3a589b0806255f3a002d5d3	oasis	45027e91f880d9142eec842f0cca0088	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=ac5ca6d4ef2befa27aee06031b2a61cf

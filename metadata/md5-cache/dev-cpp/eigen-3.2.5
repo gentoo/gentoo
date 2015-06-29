@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=doc? ( app-doc/doxygen[dot,latex] ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=C++ template library for linear algebra: vectors, matrices, and related algorithms
+EAPI=5
+HOMEPAGE=http://eigen.tuxfamily.org/
+IUSE=debug doc
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux
+LICENSE=LGPL-2 GPL-3
+RDEPEND=!dev-cpp/eigen:0
+SLOT=3
+SRC_URI=http://bitbucket.org/eigen/eigen/get/3.2.5.tar.bz2 -> eigen-3.2.5.tar.bz2
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=f2d7948ad6493a7d0e73ea2a03f1a6e3
