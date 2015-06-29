@@ -1,9 +1,13 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/sparc/use.stable.mask,v 1.9 2015/01/19 16:12:25 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/sparc/use.stable.mask,v 1.10 2015/06/28 23:28:35 grknight Exp $
 
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
+
+# Brian Evans <grknight@gentoo.org> (28 Jun 2015)
+# Mask php_targets_php5-6 until bug 550164 is solved
+php_targets_php5-6
 
 # Andrey Grozin <grozin@gentoo.org> (25 Jun 2014)
 # no stable version on sparc

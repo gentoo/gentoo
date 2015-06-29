@@ -1,6 +1,18 @@
 # ChangeLog for dev-java/icedtea-bin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/icedtea-bin/ChangeLog,v 1.84 2015/06/24 10:55:27 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/icedtea-bin/ChangeLog,v 1.85 2015/06/28 22:58:52 chewi Exp $
+
+*icedtea-bin-6.1.13.7-r1 (28 Jun 2015)
+*icedtea-bin-7.2.5.5-r1 (28 Jun 2015)
+
+  28 Jun 2015; James Le Cuirot <chewi@gentoo.org>
+  +icedtea-bin-6.1.13.7-r1.ebuild, +icedtea-bin-7.2.5.5-r1.ebuild,
+  -files/fontconfig.Gentoo.properties.src, -icedtea-bin-6.1.13.5.ebuild,
+  -icedtea-bin-7.2.5.3.ebuild:
+  Remove vulnerable versions wrt bug #537940. Restore PAX marking because
+  previous assertion that this is no longer required was wrong. The latest
+  tarballs have legacy markings when they shouldn't but this shouldn't do any
+  harm and they'll be removed next time. Closes bug #552100.
 
   24 Jun 2015; Agostino Sarubbo <ago@gentoo.org> icedtea-bin-6.1.13.7.ebuild,
   icedtea-bin-7.2.5.5.ebuild:

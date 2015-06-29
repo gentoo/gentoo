@@ -1,29 +1,30 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/icedtea-bin/icedtea-bin-6.1.13.5.ebuild,v 1.4 2014/12/05 14:20:35 caster Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/icedtea-bin/icedtea-bin-6.1.13.7-r1.ebuild,v 1.1 2015/06/28 22:58:52 chewi Exp $
 
 EAPI="5"
 
-inherit java-vm-2 multilib prefix versionator
+inherit java-vm-2 prefix versionator
 
-dist="http://dev.gentoo.org/~caster/distfiles/"
+dist="http://dev.gentoo.org/~chewi/distfiles"
 TARBALL_VERSION="${PV}"
 
 DESCRIPTION="A Gentoo-made binary build of the IcedTea JDK"
 HOMEPAGE="http://icedtea.classpath.org"
-SRC_URI="
-	amd64? ( ${dist}/${PN}-core-${TARBALL_VERSION}-amd64.tar.bz2 )
-	x86? ( ${dist}/${PN}-core-${TARBALL_VERSION}-x86.tar.bz2 )
-	doc? ( ${dist}/${PN}-doc-${TARBALL_VERSION}.tar.bz2 )
-	examples? (
-		amd64? ( ${dist}/${PN}-examples-${TARBALL_VERSION}-amd64.tar.bz2 )
-		x86? ( ${dist}/${PN}-examples-${TARBALL_VERSION}-x86.tar.bz2 )
-	)
-	source? ( ${dist}/${PN}-src-${TARBALL_VERSION}.tar.bz2 )"
+SRC_URI="doc? ( ${dist}/${PN}-doc-${TARBALL_VERSION}.tar.xz )
+	source? ( ${dist}/${PN}-src-${TARBALL_VERSION}.tar.xz )"
+
+for arch in amd64 ppc x86; do
+	SRC_URI+="
+		${arch}? (
+			${dist}/${PN}-core-${TARBALL_VERSION}-${arch}.tar.xz
+			examples? ( ${dist}/${PN}-examples-${TARBALL_VERSION}-${arch}.tar.xz )
+		)"
+done
 
 LICENSE="GPL-2-with-linking-exception"
 SLOT="6"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~ppc ~x86"
 
 IUSE="+X +alsa cjk +cups doc examples nsplugin selinux source webstart"
 REQUIRED_USE="nsplugin? ( X )"
@@ -33,27 +34,26 @@ RESTRICT="strip"
 QA_PREBUILT="opt/.*"
 
 ALSA_COMMON_DEP="
-	>=media-libs/alsa-lib-1.0.20"
+	>=media-libs/alsa-lib-1.0"
 CUPS_COMMON_DEP="
-	>=net-print/cups-1.4"
+	>=net-print/cups-2.0"
 X_COMMON_DEP="
-	>=dev-libs/glib-2.32:2
-	>=media-libs/freetype-2.4.9:2
-	>=media-libs/lcms-2.5:2
+	>=media-libs/freetype-2.5:2
 	>=x11-libs/gtk+-2.24:2
-	>=x11-libs/libX11-1.4
+	>=x11-libs/libX11-1.6
 	>=x11-libs/libXext-1.3
-	>=x11-libs/libXi-1.6
-	>=x11-libs/libXrender-0.9.8
+	>=x11-libs/libXi-1.7
+	>=x11-libs/libXrender-0.9.4
 	>=x11-libs/libXtst-1.2"
 
 COMMON_DEP="
 	>=media-libs/giflib-4.1.6-r1
-	>=media-libs/libpng-1.6:0=
-	>=sys-devel/gcc-4.5.4
-	>=sys-libs/glibc-2.15
+	>=media-libs/lcms-2.6:2
+	media-libs/libpng:0/16
+	>=sys-devel/gcc-4.8.4
+	>=sys-libs/glibc-2.20
 	>=sys-libs/zlib-1.2.3-r1
-	|| ( virtual/jpeg:62 media-libs/jpeg:62 )"
+	virtual/jpeg:62"
 
 RDEPEND="${COMMON_DEP}
 	X? (
@@ -74,50 +74,49 @@ RDEPEND="${COMMON_DEP}
 PDEPEND="webstart? ( dev-java/icedtea-web:0 )
 	nsplugin? ( dev-java/icedtea-web:0[nsplugin] )"
 
-src_install() {
-	local dest="/opt/${P}"
-	local ddest="${ED}/${dest}"
-	dodir "${dest}"
-
+src_prepare() {
 	# Ensures HeadlessGraphicsEnvironment is used.
 	if ! use X; then
 		rm -r jre/lib/$(get_system_arch)/xawt || die
 	fi
 
-	# doins can't handle symlinks.
+	# Reprefixify because prefix may be different.
+	sed -i 's:=/:=@GENTOO_PORTAGE_EPREFIX@/:' jre/lib/fontconfig.Gentoo.properties || die
+	eprefixify jre/lib/fontconfig.Gentoo.properties
+}
+
+src_install() {
+	local dest="/opt/${P}"
+	local ddest="${ED}${dest#/}"
+	dodir "${dest}"
+
+	# doins doesn't preserve executable bits.
 	cp -pRP bin include jre lib man "${ddest}" || die
 
-	# Remove on next bump as the needed marks are already set by icedtea ebuild.
-	java-vm_set-pax-markings "${ddest}"
-
-	dodoc ../doc/{ASSEMBLY_EXCEPTION,THIRD_PARTY_README}
-
-	if use doc; then
-		dohtml -r ../doc/html/*
-	fi
+	dodoc doc/{ASSEMBLY_EXCEPTION,AUTHORS,NEWS,README,THIRD_PARTY_README}
+	use doc && dodoc -r doc/html
 
 	if use examples; then
-		cp -pRP share/{demo,sample} "${ddest}" || die
+		cp -pRP demo sample "${ddest}" || die
 	fi
 
 	if use source; then
 		cp src.zip "${ddest}" || die
 	fi
 
-	# Remove after next bump, handled by icedtea ebuild. Bug 390663
-	cp "${FILESDIR}"/fontconfig.Gentoo.properties.src "${T}"/fontconfig.Gentoo.properties || die
-	eprefixify "${T}"/fontconfig.Gentoo.properties
-	insinto "${dest}"/jre/lib
-	doins "${T}"/fontconfig.Gentoo.properties
-
 	if use webstart || use nsplugin; then
-		dosym /usr/libexec/icedtea-web/itweb-settings ${dest}/bin/itweb-settings
-		dosym /usr/libexec/icedtea-web/itweb-settings ${dest}/jre/bin/itweb-settings
+		dosym /usr/libexec/icedtea-web/itweb-settings "${dest}/bin/itweb-settings"
+		dosym /usr/libexec/icedtea-web/itweb-settings "${dest}/jre/bin/itweb-settings"
 	fi
 	if use webstart; then
-		dosym /usr/libexec/icedtea-web/javaws ${dest}/bin/javaws
-		dosym /usr/libexec/icedtea-web/javaws ${dest}/jre/bin/javaws
+		dosym /usr/libexec/icedtea-web/javaws "${dest}/bin/javaws"
+		dosym /usr/libexec/icedtea-web/javaws "${dest}/jre/bin/javaws"
 	fi
+
+	# Both icedtea itself and the icedtea ebuild set PAX markings but we
+	# disable them for the icedtea-bin build because the line below will
+	# respect end-user settings when icedtea-bin is actually installed.
+	java-vm_set-pax-markings "${ddest}"
 
 	set_java_env
 	java-vm_revdep-mask "${dest}"

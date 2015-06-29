@@ -1,6 +1,9 @@
 # ChangeLog for Gentoo/sparc profile
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/sparc/ChangeLog,v 1.252 2015/06/09 15:36:10 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/sparc/ChangeLog,v 1.253 2015/06/28 23:28:35 grknight Exp $
+
+  28 Jun 2015; Brian Evans <grknight@gentoo.org> use.stable.mask:
+  Mask php_targets_php5-6 until bug 550164 is solved
 
   09 Jun 2015; Gilles Dartiguelongue <eva@gentoo.org> package.use.mask:
   Add gnome-base/gvfs nfs USE mask, bug #551576
