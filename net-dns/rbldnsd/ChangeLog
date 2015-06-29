@@ -1,6 +1,20 @@
 # ChangeLog for net-dns/rbldnsd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/rbldnsd/ChangeLog,v 1.32 2015/04/26 16:42:20 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/rbldnsd/ChangeLog,v 1.35 2015/06/29 05:22:40 mjo Exp $
+
+*rbldnsd-0.997a-r2 (29 Jun 2015)
+
+  29 Jun 2015; Michael Orlitzky <mjo@gentoo.org> +rbldnsd-0.997a-r2.ebuild,
+  files/confd-0.997a:
+  Fix comment in conf file and revbump to push it out, bug #553296.
+
+  29 Jun 2015; Michael Orlitzky <mjo@gentoo.org> -files/confd-0.997,
+  -files/initd-0.997:
+  Remove two now-unused init/conf files.
+
+  29 Jun 2015; Michael Orlitzky <mjo@gentoo.org> -rbldnsd-0.997.ebuild,
+  -rbldnsd-0.997a.ebuild:
+  Remove two old versions.
 
   26 Apr 2015; Pacho Ramos <pacho@gentoo.org> rbldnsd-0.997a-r1.ebuild:
   x86 stable wrt bug #533610

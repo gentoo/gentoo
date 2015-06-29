@@ -1,5 +1,5 @@
 # A whitespace-separated list of addresses on which to listen. The
-# syntax is "host:port", where the port defaults to 53.
+# syntax is "host/port", where the port defaults to 53.
 #
 # Note that by default the rbldnsd init script does not require any
 # interfaces other than lo to be "up" (see bug #439092). So if you
@@ -10,7 +10,7 @@
 # rc_need="net.lan0"
 #
 # LISTEN="127.0.0.1
-#         192.168.0.1"
+#         192.168.0.1/5353"
 #
 LISTEN="localhost"
 

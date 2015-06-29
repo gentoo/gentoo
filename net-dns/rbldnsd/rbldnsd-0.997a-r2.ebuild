@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/rbldnsd/rbldnsd-0.997.ebuild,v 1.4 2015/04/08 18:16:53 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/rbldnsd/rbldnsd-0.997a-r2.ebuild,v 1.1 2015/06/29 05:22:40 mjo Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
@@ -16,10 +16,17 @@ SLOT="0"
 KEYWORDS="~amd64 ~hppa ~sparc ~x86 ~x86-fbsd"
 IUSE="ipv6 test zlib"
 
+REQUIRED_USE="test? ( ${PYTHON_REQUIRED_USE} )"
+
 RDEPEND="zlib? ( sys-libs/zlib )"
 DEPEND="${RDEPEND}
 	test? ( ${PYTHON_DEPS}
 		dev-python/pydns:2[${PYTHON_USEDEP}] )"
+
+src_prepare() {
+	epatch "${FILESDIR}/${P}-robust-ipv6-test-support.patch"
+	epatch "${FILESDIR}/${P}-format-security-compile-fix.patch"
+}
 
 src_configure() {
 	# The ./configure file is handwritten and doesn't support a `make
