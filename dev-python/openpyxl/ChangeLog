@@ -1,6 +1,12 @@
 # ChangeLog for dev-python/openpyxl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/openpyxl/ChangeLog,v 1.16 2015/06/03 20:32:24 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/openpyxl/ChangeLog,v 1.17 2015/06/29 02:29:47 idella4 Exp $
+
+*openpyxl-2.2.4 (29 Jun 2015)
+
+  29 Jun 2015; Ian Delaney <idella4@gentoo.org> +openpyxl-2.2.4.ebuild,
+  -openpyxl-2.2.2.ebuild:
+  bump one remove one
 
   03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add pypi to remote-id in metadata.xml
