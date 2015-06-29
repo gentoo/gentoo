@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare pretend setup test unpack
+DEPEND=>=kde-frameworks/kauth-5.11.0:5 >=kde-frameworks/kconfigwidgets-5.11.0:5 >=kde-frameworks/kcoreaddons-5.11.0:5 >=kde-frameworks/ki18n-5.11.0:5 >=kde-frameworks/kwidgetsaddons-5.11.0:5 >=dev-libs/boost-1.45 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 sys-apps/systemd >=sys-apps/sed-4 sys-devel/make >=dev-util/cmake-3.0.0 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) >=kde-frameworks/extra-cmake-modules-5.11.0:5 >=dev-qt/qtcore-5.4.1:5 dev-util/desktop-file-utils app-arch/xz-utils
+DESCRIPTION=KDE control module for systemd
+EAPI=5
+HOMEPAGE=https://projects.kde.org/projects/playground/sysadmin/systemd-kcm
+IUSE=debug
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=>=kde-frameworks/kauth-5.11.0:5 >=kde-frameworks/kconfigwidgets-5.11.0:5 >=kde-frameworks/kcoreaddons-5.11.0:5 >=kde-frameworks/ki18n-5.11.0:5 >=kde-frameworks/kwidgetsaddons-5.11.0:5 >=dev-libs/boost-1.45 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 sys-apps/systemd !kde-misc/kcmsystemd:4 !kde-misc/systemd-kcm:4 >=kde-frameworks/kf-env-3 >=dev-qt/qtcore-5.4.1:5
+SLOT=5
+SRC_URI=mirror://kde/stable/systemd-kcm/systemd-kcm-1.1.0.tar.xz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	flag-o-matic	c9602887773166fe300444712fc7ff98	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	kde5	3e1c774c48364c932f4b18c8968ef8a1	kde5-functions	8b3c29b0cd51b41938ea9ae2cc3a3722	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f	virtualx	73cfc129b4b9ba23aed1abb10c825d86
+_md5_=6589696b90c73c1b9dc0d080fa132cd3

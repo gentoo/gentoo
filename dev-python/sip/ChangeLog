@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/sip
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/sip/ChangeLog,v 1.310 2015/06/17 17:26:25 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/sip/ChangeLog,v 1.311 2015/06/29 21:10:54 pesa Exp $
+
+  29 Jun 2015; Davide Pesavento <pesa@gentoo.org> -files/sip-4.9.3-darwin.patch,
+  -sip-4.15.3.ebuild:
+  Drop old version. As of now, sparc no longer has a stable sip, see bug #523322
+  comment #15.
 
   17 Jun 2015; Davide Pesavento <pesa@gentoo.org> -sip-4.16.7.ebuild:
   Drop version that is not going to get stabilized.

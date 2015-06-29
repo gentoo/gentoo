@@ -237,3 +237,4 @@ move perl-core/Module-Build dev-perl/Module-Build
 move perl-core/Module-Pluggable dev-perl/Module-Pluggable
 move media-gfx/assimp media-libs/assimp
 move kde-plasma/bluez-qt kde-frameworks/bluez-qt
+move kde-misc/kcmsystemd kde-misc/systemd-kcm

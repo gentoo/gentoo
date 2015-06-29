@@ -10,7 +10,5 @@ KDE control module for systemd. Provides a graphical frontend for the systemd da
 			<email>rthomsen6@gmail.com</email>
 			<name>Ragnar Thomsen</name>
 		</maintainer>
-		<bugs-to>https://github.com/rthomsen/kcmsystemd/issues</bugs-to>
-		<remote-id type="github">rthomsen/kcmsystemd</remote-id>
 	</upstream>
 </pkgmetadata>

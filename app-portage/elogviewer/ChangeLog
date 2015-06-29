@@ -1,6 +1,10 @@
 # ChangeLog for app-portage/elogviewer
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/elogviewer/ChangeLog,v 1.62 2015/06/09 12:02:44 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/elogviewer/ChangeLog,v 1.63 2015/06/29 20:51:17 pesa Exp $
+
+  29 Jun 2015; Davide Pesavento <pesa@gentoo.org> elogviewer-2.1-r1.ebuild:
+  Drop to ~sparc because the sparc team is not going to stabilize newer versions
+  of PyQt4. See bug #523322 comment #15.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml
