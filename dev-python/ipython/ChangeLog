@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/ipython
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/ipython/ChangeLog,v 1.181 2015/06/28 18:27:27 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/ipython/ChangeLog,v 1.182 2015/06/29 12:37:34 jlec Exp $
+
+  29 Jun 2015; Justin Lecher <jlec@gentoo.org> ipython-3.2.0.ebuild:
+  Fix sandbox violation
 
   28 Jun 2015; Justin Lecher <jlec@gentoo.org> ipython-3.2.0.ebuild:
   Prevent double PREFIX on PREFIX, bug #553344

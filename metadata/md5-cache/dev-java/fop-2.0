@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install preinst prepare setup test
-DEPEND=>=virtual/jdk-1.6 dev-java/qdox:1.12 hyphenation? ( dev-java/offo-hyphenation:0 ) app-arch/unzip dev-java/batik:1.8 dev-java/ant-core:0 dev-java/fontbox:1.7 dev-java/commons-io:1 dev-java/commons-logging:0 java-virtuals/servlet-api:3.0 dev-java/avalon-framework:4.2 dev-java/xmlgraphics-commons:2 dev-java/xml-commons-external:1.3 jai? ( dev-java/sun-jai-bin:0 ) test? ( dev-java/ant-junit:0 dev-java/junit:4 dev-java/xmlunit:1 dev-java/mockito:0 ) >=dev-java/java-config-2.2.0 source? ( app-arch/zip ) >=dev-java/ant-core-1.8.2 >=dev-java/javatoolkit-0.3.0-r2
+DEPEND=>=virtual/jdk-1.6 hyphenation? ( dev-java/offo-hyphenation:0 ) app-arch/unzip dev-java/batik:1.8 dev-java/ant-core:0 dev-java/fontbox:1.7 dev-java/commons-io:1 dev-java/commons-logging:0 java-virtuals/servlet-api:3.0 dev-java/avalon-framework:4.2 dev-java/xmlgraphics-commons:2 dev-java/xml-commons-external:1.3 dev-java/qdox:1.12 jai? ( dev-java/sun-jai-bin:0 ) test? ( dev-java/ant-junit:0 dev-java/junit:4 dev-java/xmlunit:1 dev-java/mockito:0 ) >=dev-java/java-config-2.2.0 source? ( app-arch/zip ) >=dev-java/ant-core-1.8.2 >=dev-java/javatoolkit-0.3.0-r2
 DESCRIPTION=Formatting Objects Processor is a print formatter driven by XSL
 EAPI=5
 HOMEPAGE=http://xmlgraphics.apache.org/fop/
 IUSE=hyphenation jai elibc_FreeBSD doc examples source test elibc_FreeBSD
 KEYWORDS=amd64 x86 ppc ppc64 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris
 LICENSE=Apache-2.0
-RDEPEND=>=virtual/jre-1.6 dev-java/batik:1.8 dev-java/ant-core:0 dev-java/fontbox:1.7 dev-java/commons-io:1 dev-java/commons-logging:0 java-virtuals/servlet-api:3.0 dev-java/avalon-framework:4.2 dev-java/xmlgraphics-commons:2 dev-java/xml-commons-external:1.3 jai? ( dev-java/sun-jai-bin:0 ) >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
+RDEPEND=>=virtual/jre-1.6 dev-java/batik:1.8 dev-java/ant-core:0 dev-java/fontbox:1.7 dev-java/commons-io:1 dev-java/commons-logging:0 java-virtuals/servlet-api:3.0 dev-java/avalon-framework:4.2 dev-java/xmlgraphics-commons:2 dev-java/xml-commons-external:1.3 dev-java/qdox:1.12 jai? ( dev-java/sun-jai-bin:0 ) >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
 RESTRICT=test
 SLOT=2
 SRC_URI=mirror://apache/xmlgraphics/fop/source/fop-2.0-src.zip
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	java-ant-2	1091461b8b02f54fabcfbf159164ff15	java-pkg-2	1889f7787714c5f7e3b5bb1c2be07c1f	java-utils-2	8cdf065211fa6d6687bdc3f3ebe12efc	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=3296d32646464ee1ae71ea6f336295f5
+_md5_=c0723fa9801fb63573fce157fd0596bf

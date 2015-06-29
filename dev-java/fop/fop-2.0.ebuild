@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/fop/fop-2.0.ebuild,v 1.8 2015/06/28 15:01:28 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/fop/fop-2.0.ebuild,v 1.9 2015/06/29 12:33:34 monsieurp Exp $
 
 # TODO: if 'doc' use flag is used then should build also extra docs ('docs' ant target), currently it cannot
 #       be built as it needs forrest which we do not have
@@ -23,7 +23,7 @@ SLOT="2"
 
 MY_P="${PN}-${SLOT}"
 
-# Doesn't work with java.awt.headless, requires Mockito.
+# Tests are broken even in 2.0
 RESTRICT="test"
 
 CDEPEND="
@@ -36,13 +36,13 @@ CDEPEND="
 	dev-java/avalon-framework:4.2
 	dev-java/xmlgraphics-commons:2
 	dev-java/xml-commons-external:1.3
+	dev-java/qdox:1.12
 	jai? ( dev-java/sun-jai-bin:0 )"
 
 RDEPEND=">=virtual/jre-1.6
 	${CDEPEND}"
 
 DEPEND=">=virtual/jdk-1.6
-	dev-java/qdox:1.12
 	hyphenation? ( dev-java/offo-hyphenation:0 )
 	app-arch/unzip
 	${CDEPEND}
@@ -57,6 +57,7 @@ java_prepare() {
 	find "${S}" -name '*.jar' -print -delete || die
 }
 
+JAVA_ANT_ENCODING="ISO-8859-1"
 JAVA_ANT_REWRITE_CLASSPATH="true"
 EANT_DOC_TARGET="javadocs"
 EANT_BUILD_TARGET="package"
@@ -105,10 +106,10 @@ src_test() {
 }
 
 src_install() {
-	java-pkg_dojar build/fop.jar build/fop-sandbox.jar
+	java-pkg_dojar build/${PN} build/${PN}-sandbox.jar
 
 	if use hyphenation; then
-		java-pkg_dojar build/fop-hyph.jar
+		java-pkg_dojar build/${PN}-hyph.jar
 		insinto /usr/share/${MY_P}/
 		doins -r hyph
 	fi
