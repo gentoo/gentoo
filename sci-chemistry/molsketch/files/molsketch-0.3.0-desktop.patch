@@ -1,0 +1,19 @@
+ molsketch/src/molsketch.desktop | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/molsketch/src/molsketch.desktop b/molsketch/src/molsketch.desktop
+index a4a5418..4e0a2ef 100644
+--- a/molsketch/src/molsketch.desktop
++++ b/molsketch/src/molsketch.desktop
+@@ -5,9 +5,9 @@ Type=Application
+ Name=molsKetch
+ TryExec=molsketch
+ Exec=molsketch
+-Icon=molsketch.png
++Icon=molsketch
+ DocPath=molsketch/index.html
+-MimeType=chemical/x-cml
++MimeType=chemical/x-cml;
+ Terminal=false
+ Categories=Qt;Education;Science;
+ GenericName=2D molecular structures editor

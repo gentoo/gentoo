@@ -1,6 +1,14 @@
 # ChangeLog for sci-chemistry/molsketch
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/molsketch/ChangeLog,v 1.8 2014/09/17 11:58:04 jlec Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/molsketch/ChangeLog,v 1.9 2015/06/29 07:24:58 jlec Exp $
+
+*molsketch-0.3.0 (29 Jun 2015)
+
+  29 Jun 2015; Justin Lecher <jlec@gentoo.org>
+  +files/molsketch-0.3.0-_DEFAULT_SOURCE.patch,
+  +files/molsketch-0.3.0-desktop.patch, +files/molsketch-0.3.0-no-quotes.patch,
+  +molsketch-0.3.0.ebuild, molsketch-0.2.0-r1.ebuild:
+  Version Bump; fix version of openbabel in deps, bug #553512
 
   17 Sep 2014; Justin Lecher <jlec@gentoo.org> molsketch-0.2.0-r1.ebuild:
   Build with -DCMAKE_DISABLE_FIND_PACKAGE_KDE4=ON, #523020

@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND==sci-chemistry/openbabel-2.2* dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qttest:4 || ( >=dev-qt/qthelp-4.7.0:4[compat] <dev-qt/qthelp-4.7.0:4 ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DEPEND=>=sci-chemistry/openbabel-2.2 dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qttest:4 >=dev-qt/qthelp-4.7.0:4[compat] sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=A drawing tool for 2D molecular structures
-EAPI=3
+EAPI=5
 HOMEPAGE=http://molsketch.sourceforge.net/
 KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
-RDEPEND==sci-chemistry/openbabel-2.2* dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qttest:4 || ( >=dev-qt/qthelp-4.7.0:4[compat] <dev-qt/qthelp-4.7.0:4 )
+RDEPEND=>=sci-chemistry/openbabel-2.2 dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qttest:4 >=dev-qt/qthelp-4.7.0:4[compat]
 SLOT=0
 SRC_URI=mirror://sourceforge/molsketch/Molsketch-0.2.0-Source.tar.gz
 _eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=d0f7ecb9a8eba3cdb7b8cf1f20e01500
+_md5_=dc40a775be570bc3fa76e75e60004690
