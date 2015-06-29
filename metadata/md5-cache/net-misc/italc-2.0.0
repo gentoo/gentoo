@@ -9,5 +9,5 @@ PROPERTIES=interactive
 RDEPEND=dev-libs/lzo dev-libs/openssl sys-apps/tcp-wrappers sys-libs/zlib virtual/jpeg dev-qt/qtcore:4 dev-qt/qtxmlpatterns:4 x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXdamage x11-libs/libXext x11-libs/libXfixes x11-libs/libXrandr x11-libs/libXtst x11-apps/xinput dev-qt/qtgui:4
 SLOT=0
 SRC_URI=mirror://sourceforge/italc/italc-2.0.0.tar.bz2
-_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	qmake-utils	8557b23f27697843c242ff27aaa99448	qt4-r2	7199e3db5b5908325487d379c6f67cf0	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	qmake-utils	4ce40e37ef0e28425a7159b0353be026	qt4-r2	7199e3db5b5908325487d379c6f67cf0	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
 _md5_=c2e3f45c33a24a1c4d46a3a8348661cd

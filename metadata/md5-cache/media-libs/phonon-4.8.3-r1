@@ -11,5 +11,5 @@ RDEPEND=!!dev-qt/qtphonon:4 qt4? ( dev-qt/qtcore:4[abi_x86_32(-)?,abi_x86_64(-)?
 REQUIRED_USE=|| ( qt4 qt5 ) zeitgeist? ( qt4 )
 SLOT=0
 SRC_URI=mirror://kde/stable/phonon/4.8.3/src/phonon-4.8.3.tar.xz
-_eclasses_=cmake-multilib	ca4c6ecda3062bf851d951987568fdae	cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multilib-build	e733e978b7fa70607cc221fd9c070db6	multilib-minimal	13dd976916c35a1e2c8d170e840c7018	qmake-utils	8557b23f27697843c242ff27aaa99448	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=cmake-multilib	ca4c6ecda3062bf851d951987568fdae	cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multilib-build	e733e978b7fa70607cc221fd9c070db6	multilib-minimal	13dd976916c35a1e2c8d170e840c7018	qmake-utils	4ce40e37ef0e28425a7159b0353be026	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=d01f0f4f93b6714680e9aa39e168f8f8

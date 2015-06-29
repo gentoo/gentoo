@@ -1,6 +1,9 @@
 # ChangeLog for app-misc/gourmet
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/gourmet/ChangeLog,v 1.50 2015/01/26 10:17:09 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/gourmet/ChangeLog,v 1.51 2015/06/29 00:13:33 nixphoeni Exp $
+
+  29 Jun 2015; Joe Sapp <nixphoeni@gentoo.org> -gourmet-0.17.2.ebuild:
+  Remove old ebuild
 
   26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> gourmet-0.17.4.ebuild:
   Stable for x86, wrt bug #534874

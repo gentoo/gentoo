@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/boost:= dev-qt/qtcore:4 >=dev-qt/qtsingleapplication-2.6.1_p20130904-r1[qt4(+),X?] >=net-libs/rb_libtorrent-0.16.17 <net-libs/rb_libtorrent-1.0.0 dbus? ( dev-qt/qtdbus:4 ) X? ( dev-qt/qtgui:4 ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] geoip? ( dev-libs/geoip )
 SLOT=0
 SRC_URI=mirror://sourceforge/qbittorrent/qbittorrent-3.1.12.tar.xz
-_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	python-r1	6d3a3cb5705b9fff1aeb7cfa4e3336fe	python-utils-r1	096f8247eae93026af13ab88cf4305cd	qmake-utils	8557b23f27697843c242ff27aaa99448	qt4-r2	7199e3db5b5908325487d379c6f67cf0	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	python-r1	6d3a3cb5705b9fff1aeb7cfa4e3336fe	python-utils-r1	096f8247eae93026af13ab88cf4305cd	qmake-utils	4ce40e37ef0e28425a7159b0353be026	qt4-r2	7199e3db5b5908325487d379c6f67cf0	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=77cb75acec47051925a42898960dc476

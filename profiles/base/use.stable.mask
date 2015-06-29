@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/use.stable.mask,v 1.10 2015/04/28 02:58:48 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/use.stable.mask,v 1.11 2015/06/28 23:31:26 grknight Exp $
 
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
@@ -12,7 +12,3 @@ ayatana
 # Ben de Groot <yngwin@gentoo.org> (01 Feb 2015)
 # until Qt5 is stable
 qt5
-
-# Brian Evans <grknight@gentoo.org> (22 Oct 2014)
-# dev-lang/php:5.6 is not stable
-php_targets_php5-6

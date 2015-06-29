@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=>=dev-libs/libusb-1.0.18:1= qt4? ( dev-qt/qtcore:4= dev-qt/qtgui:4= )
 SLOT=0
 SRC_URI=https://github.com/Benjamin-Dobell/Heimdall/archive/v1.4.0.tar.gz -> heimdall-1.4.0.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	qmake-utils	8557b23f27697843c242ff27aaa99448	qt4-r2	7199e3db5b5908325487d379c6f67cf0	toolchain-funcs	42408102d713fbad60ca21349865edb4	udev	da001465a2e939c93f7ae16947ce3438
+_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	qmake-utils	4ce40e37ef0e28425a7159b0353be026	qt4-r2	7199e3db5b5908325487d379c6f67cf0	toolchain-funcs	42408102d713fbad60ca21349865edb4	udev	da001465a2e939c93f7ae16947ce3438
 _md5_=f88885be824f528269569a21afa7f885

@@ -1,6 +1,10 @@
 # ChangeLog for app-crypt/qca
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/qca/ChangeLog,v 1.109 2015/06/28 09:56:14 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/qca/ChangeLog,v 1.110 2015/06/29 00:55:26 pesa Exp $
+
+  29 Jun 2015; Davide Pesavento <pesa@gentoo.org> qca-2.1.0.3.ebuild:
+  Use qmake-utils helper functions to simplify src_configure. Remove double call
+  to cmake-utils_src_install. Add missing die.
 
   28 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> qca-2.1.0.3.ebuild:
   x86 stable wrt bug #552554

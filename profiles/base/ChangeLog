@@ -1,6 +1,9 @@
 # ChangeLog for Gentoo base-profile
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/ChangeLog,v 1.815 2015/06/27 17:47:05 tetromino Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/ChangeLog,v 1.816 2015/06/28 23:31:26 grknight Exp $
+
+  28 Jun 2015; Brian Evans <grknight@gentoo.org> use.stable.mask:
+  Unmask php_targets_php5-6 for a majority of arches wrt bug 550164
 
   27 Jun 2015; Alexandre Rostovtsev <tetromino@gentoo.org> package.use.mask:
   Clean up obsolete gnome masks

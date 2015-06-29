@@ -8,5 +8,5 @@ LICENSE=GPL-3
 RDEPEND=qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtsql:4[sqlite] dev-qt/qtwebkit:4 phonon? ( || ( media-libs/phonon[qt4] dev-qt/qtphonon:4 ) ) ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsql:5[sqlite] dev-qt/qtwebkit:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 ) dev-qt/qtsingleapplication[X,qt4(+)?,qt5(-)?] dev-db/sqlite:3
 REQUIRED_USE=^^ ( qt4 qt5 )
 SLOT=0
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	git-r3	ab80045e5d080584334f33013f4df21d	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	l10n	33bde4fb0cfd3a21a277b66bfd837e19	multilib	62927b3db3a589b0806255f3a002d5d3	qmake-utils	8557b23f27697843c242ff27aaa99448	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	git-r3	ab80045e5d080584334f33013f4df21d	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	l10n	33bde4fb0cfd3a21a277b66bfd837e19	multilib	62927b3db3a589b0806255f3a002d5d3	qmake-utils	4ce40e37ef0e28425a7159b0353be026	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=c6a5fa0712dbf8bb95ab3d6858f5f9c5

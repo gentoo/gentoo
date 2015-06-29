@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 >=media-libs/libmpdclient-2.3 media-libs/taglib
 SLOT=0
 SRC_URI=mirror://sourceforge/quimup/quimup_1.4.0_src.tar.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	qmake-utils	8557b23f27697843c242ff27aaa99448	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	qmake-utils	4ce40e37ef0e28425a7159b0353be026	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=eefadc3fedb373eca8784026b2e2805e
