@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtlockedfile/qtlockedfile-2.4.1_p20150629.ebuild,v 1.1 2015/06/29 17:27:05 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtlockedfile/qtlockedfile-2.4.1_p20150629.ebuild,v 1.2 2015/06/29 17:35:06 pesa Exp $
 
 EAPI=5
 
@@ -9,7 +9,7 @@ inherit multibuild qmake-utils
 MY_P=qt-solutions-${PV#*_p}
 
 DESCRIPTION="QFile extension with advisory locking functions"
-HOMEPAGE="http://doc.qt.digia.com/solutions/4/qtlockedfile/index.html"
+HOMEPAGE="https://code.qt.io/cgit/qt-solutions/qt-solutions.git/"
 SRC_URI="http://dev.gentoo.org/~pesa/distfiles/${MY_P}.tar.xz"
 
 LICENSE="|| ( LGPL-2.1 GPL-3 )"
@@ -50,7 +50,6 @@ src_configure() {
 			eqmake5
 		fi
 	}
-
 	multibuild_foreach_variant run_in_build_dir myconfigure
 }
 
@@ -74,6 +73,5 @@ src_install() {
 		insinto "$(${MULTIBUILD_VARIANT}_get_mkspecsdir)"/features
 		doins "${FILESDIR}"/${PN}.prf
 	}
-
 	multibuild_foreach_variant run_in_build_dir myinstall
 }

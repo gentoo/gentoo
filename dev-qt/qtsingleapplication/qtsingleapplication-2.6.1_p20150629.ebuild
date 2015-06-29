@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtsingleapplication/qtsingleapplication-2.6.1_p20130904-r4.ebuild,v 1.1 2015/05/11 15:44:05 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtsingleapplication/qtsingleapplication-2.6.1_p20150629.ebuild,v 1.1 2015/06/29 17:41:16 pesa Exp $
 
 EAPI=5
 
@@ -9,7 +9,7 @@ inherit multibuild qmake-utils
 MY_P=qt-solutions-${PV#*_p}
 
 DESCRIPTION="Qt library to start applications only once per user"
-HOMEPAGE="http://doc.qt.digia.com/solutions/4/qtsingleapplication/index.html"
+HOMEPAGE="https://code.qt.io/cgit/qt-solutions/qt-solutions.git/"
 SRC_URI="http://dev.gentoo.org/~pesa/distfiles/${MY_P}.tar.xz"
 
 LICENSE="|| ( LGPL-2.1 GPL-3 )"
@@ -43,8 +43,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${PV}-unbundle-qtlockedfile.patch"
-	epatch "${FILESDIR}/${PV}-no-gui.patch"
+	epatch "${FILESDIR}/2.6.1_p20130904-unbundle-qtlockedfile.patch"
+	epatch "${FILESDIR}/2.6.1_p20130904-no-gui.patch"
 
 	echo 'SOLUTIONS_LIBRARY = yes' > config.pri
 	use X || echo 'QTSA_NO_GUI = yes' >> config.pri
@@ -67,7 +67,6 @@ src_configure() {
 			eqmake5
 		fi
 	}
-
 	multibuild_foreach_variant run_in_build_dir myconfigure
 }
 
@@ -93,6 +92,5 @@ src_install() {
 		doins "${FILESDIR}"/qtsinglecoreapplication.prf
 		use X && doins "${FILESDIR}"/${PN}.prf
 	}
-
 	multibuild_foreach_variant run_in_build_dir myinstall
 }

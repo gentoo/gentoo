@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtsingleapplication/qtsingleapplication-2.6.1_p20130904-r1.ebuild,v 1.7 2015/05/16 11:19:27 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtsingleapplication/qtsingleapplication-2.6.1_p20130904-r1.ebuild,v 1.8 2015/06/29 17:41:16 pesa Exp $
 
 EAPI=5
 
@@ -9,7 +9,7 @@ inherit qt4-r2
 MY_P=qt-solutions-${PV#*_p}
 
 DESCRIPTION="Qt library to start applications only once per user"
-HOMEPAGE="http://doc.qt.digia.com/solutions/4/qtsingleapplication/index.html"
+HOMEPAGE="https://code.qt.io/cgit/qt-solutions/qt-solutions.git/"
 SRC_URI="http://dev.gentoo.org/~pesa/distfiles/${MY_P}.tar.xz"
 
 LICENSE="|| ( LGPL-2.1 GPL-3 )"

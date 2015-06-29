@@ -1,6 +1,14 @@
 # ChangeLog for dev-qt/qtsingleapplication
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtsingleapplication/ChangeLog,v 1.18 2015/05/16 11:19:27 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtsingleapplication/ChangeLog,v 1.19 2015/06/29 17:41:16 pesa Exp $
+
+*qtsingleapplication-2.6.1_p20150629 (29 Jun 2015)
+
+  29 Jun 2015; Davide Pesavento <pesa@gentoo.org>
+  +qtsingleapplication-2.6.1_p20150629.ebuild,
+  -qtsingleapplication-2.6.1_p20130904-r4.ebuild,
+  qtsingleapplication-2.6.1_p20130904-r1.ebuild:
+  New snapshot. Fixes bug #549170.
 
   16 May 2015; Pacho Ramos <pacho@gentoo.org>
   qtsingleapplication-2.6.1_p20130904-r1.ebuild:
