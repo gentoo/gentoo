@@ -1,6 +1,10 @@
 # ChangeLog for profiles/prefix
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/ChangeLog,v 1.464 2015/06/16 13:00:05 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/ChangeLog,v 1.465 2015/06/29 07:59:21 haubi Exp $
+
+  29 Jun 2015; Michael Haubenwallner <haubi@gentoo.org>
+  windows/cygwin/2.0/x64/make.defaults:
+  x64-cygwin CHOST is without version number: 'x86_64-pc-cygwin' only
 
   16 Jun 2015; Fabian Groffen <grobian@gentoo.org> package.mask:
   Unmask Portage-2.2.20, the host that had the problem is unreliable due to a

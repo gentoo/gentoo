@@ -1,6 +1,9 @@
 # ChangeLog for sci-chemistry/avogadro
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/avogadro/ChangeLog,v 1.51 2015/05/11 15:13:50 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/avogadro/ChangeLog,v 1.52 2015/06/29 07:35:49 jlec Exp $
+
+  29 Jun 2015; Justin Lecher <jlec@gentoo.org> avogadro-1.0.3-r2.ebuild:
+  Drop ppc64 due to revdep breakage
 
   11 May 2015; Justin Lecher <jlec@gentoo.org>
   +files/avogadro-1.1.0-xlibs.patch, avogadro-1.1.0.ebuild:

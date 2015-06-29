@@ -1,6 +1,13 @@
 # ChangeLog for sys-apps/kexec-tools
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/kexec-tools/ChangeLog,v 1.66 2015/04/15 08:37:14 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/kexec-tools/ChangeLog,v 1.67 2015/06/29 07:49:24 jlec Exp $
+
+*kexec-tools-2.0.9-r2 (29 Jun 2015)
+
+  29 Jun 2015; Justin Lecher <jlec@gentoo.org> +files/kexec.init-2.0.4-r3,
+  +kexec-tools-2.0.9-r2.ebuild:
+  Correctly handle loaded image during reboot with LOAD_DURING_SHUTDOWN, bug
+  #553372; thanks AaylaSecura for the patch
 
 *kexec-tools-2.0.9-r1 (15 Apr 2015)
 
