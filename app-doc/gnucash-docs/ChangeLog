@@ -1,6 +1,11 @@
 # ChangeLog for app-doc/gnucash-docs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/gnucash-docs/ChangeLog,v 1.40 2015/06/26 09:20:50 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-doc/gnucash-docs/ChangeLog,v 1.41 2015/06/29 18:52:50 pacho Exp $
+
+  29 Jun 2015; Pacho Ramos <pacho@gentoo.org> -gnucash-docs-2.6.5.ebuild,
+  gnucash-docs-2.6.6.ebuild:
+  Needs app-text/docbook-xml-dtd:4.4 for tests (#553312 by René Rhéaume), drop
+  old.
 
   26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> gnucash-docs-2.6.6.ebuild:
   Stable for x86, wrt bug #551814

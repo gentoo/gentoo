@@ -1,6 +1,10 @@
 # ChangeLog for games-sports/ultimatestunts
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-sports/ultimatestunts/ChangeLog,v 1.30 2015/04/20 16:21:25 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-sports/ultimatestunts/ChangeLog,v 1.31 2015/06/29 18:41:29 mr_bones_ Exp $
+
+  29 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  ultimatestunts-0.7.7.ebuild:
+  clean out svn directories (bug #553570)
 
   20 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org>
   -files/ultimatestunts-0.7.6-gcc-4.7.patch,

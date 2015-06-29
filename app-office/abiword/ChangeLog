@@ -1,6 +1,18 @@
 # ChangeLog for app-office/abiword
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/abiword/ChangeLog,v 1.283 2015/06/13 10:05:03 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/abiword/ChangeLog,v 1.285 2015/06/29 18:37:33 pacho Exp $
+
+  29 Jun 2015; Pacho Ramos <pacho@gentoo.org> abiword-3.0.1.ebuild:
+  Fix few repoman warnings
+
+  29 Jun 2015; Pacho Ramos <pacho@gentoo.org> -abiword-3.0.0-r2.ebuild,
+  -files/abiword-3.0.0-bison30.patch, -files/abiword-3.0.0-boost54.patch,
+  -files/abiword-3.0.0-eds-3.6.patch, -files/abiword-3.0.0-fix-crash.patch,
+  -files/abiword-3.0.0-fix-redraw.patch,
+  -files/abiword-3.0.0-fix-shortcut.patch,
+  -files/abiword-3.0.0-libgcrypt_1_6_0-1.patch,
+  -files/abiword-3.0.0-pdf-crash.patch, abiword-3.0.1.ebuild:
+  Needs to be rebuilt with libical subslot bumps, drop old
 
   13 Jun 2015; Pacho Ramos <pacho@gentoo.org> abiword-3.0.1.ebuild:
   Needs rebuilding with eds subslot bumps

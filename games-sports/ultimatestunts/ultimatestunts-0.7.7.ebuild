@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-sports/ultimatestunts/ultimatestunts-0.7.7.ebuild,v 1.3 2015/04/19 10:08:40 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-sports/ultimatestunts/ultimatestunts-0.7.7.ebuild,v 1.4 2015/06/29 18:41:29 mr_bones_ Exp $
 
 EAPI=5
 inherit eutils flag-o-matic versionator games
@@ -29,7 +29,7 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {
-	ecvs_clean
+	esvn_clean
 	epatch "${FILESDIR}"/${P}-paths.patch \
 		"${FILESDIR}"/${P}-gcc-4.7.patch
 	append-cppflags $(sdl-config --cflags)
