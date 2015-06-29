@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-control-center/gnome-control-center-3.14.5.ebuild,v 1.4 2015/06/26 09:21:51 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-control-center/gnome-control-center-3.14.5.ebuild,v 1.5 2015/06/29 03:36:10 tetromino Exp $
 
 EAPI="5"
 GCONF_DEBUG="yes"
@@ -82,8 +82,7 @@ RDEPEND="${COMMON_DEPEND}
 	x11-themes/gnome-icon-theme-symbolic
 	colord? ( >=gnome-extra/gnome-color-manager-3 )
 	cups? (
-		|| ( >=app-admin/system-config-printer-gnome-1.3.5
-			app-admin/system-config-printer )
+		app-admin/system-config-printer
 		net-print/cups-pk-helper )
 	input_devices_wacom? ( gnome-base/gnome-settings-daemon[input_devices_wacom] )
 	i18n? ( >=gnome-base/libgnomekbd-3 )

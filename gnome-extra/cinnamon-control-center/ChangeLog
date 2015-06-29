@@ -1,6 +1,12 @@
 # ChangeLog for gnome-extra/cinnamon-control-center
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/cinnamon-control-center/ChangeLog,v 1.20 2015/06/14 01:57:50 tetromino Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/cinnamon-control-center/ChangeLog,v 1.21 2015/06/29 03:41:57 tetromino Exp $
+
+  29 Jun 2015; Alexandre Rostovtsev <tetromino@gentoo.org>
+  cinnamon-control-center-2.4.2-r2.ebuild,
+  cinnamon-control-center-2.6.0.ebuild:
+  Allow only system-config-printer, not system-config-printer-gnome, to help
+  portage dep resolution (bug #553128, thanks to Marek Bartosiewicz).
 
 *cinnamon-control-center-2.6.0 (13 Jun 2015)
 

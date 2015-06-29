@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/cinnamon-control-center/cinnamon-control-center-2.6.0.ebuild,v 1.1 2015/06/14 01:57:50 tetromino Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/cinnamon-control-center/cinnamon-control-center-2.6.0.ebuild,v 1.2 2015/06/29 03:41:57 tetromino Exp $
 
 EAPI="5"
 GCONF_DEBUG="yes"
@@ -57,8 +57,7 @@ RDEPEND="${COMMON_DEPEND}
 	x11-themes/gnome-icon-theme-symbolic
 	colord? ( >=gnome-extra/gnome-color-manager-3 )
 	cups? (
-		|| ( >=app-admin/system-config-printer-gnome-1.3.5
-			app-admin/system-config-printer )
+		app-admin/system-config-printer
 		net-print/cups-pk-helper )
 	input_devices_wacom? ( gnome-extra/cinnamon-settings-daemon[input_devices_wacom] )
 "

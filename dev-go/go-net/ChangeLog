@@ -1,6 +1,9 @@
 # ChangeLog for dev-go/go-net
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-go/go-net/ChangeLog,v 1.8 2015/06/25 19:24:07 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-go/go-net/ChangeLog,v 1.9 2015/06/29 03:48:53 williamh Exp $
+
+  29 Jun 2015; William Hubbs <williamh@gentoo.org> go-net-9999.ebuild:
+  Make live ebuild copyable
 
   25 Jun 2015; William Hubbs <williamh@gentoo.org> go-net-9999.ebuild:
   Convert live ebuild to the new eclasses
