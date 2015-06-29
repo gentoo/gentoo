@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-forensics/lynis/lynis-1.6.3.ebuild,v 1.2 2014/10/20 20:46:25 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-forensics/lynis/lynis-2.1.0.ebuild,v 1.1 2015/06/29 19:39:29 idl0r Exp $
 
 EAPI="5"
 

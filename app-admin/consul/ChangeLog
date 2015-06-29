@@ -1,6 +1,9 @@
 # ChangeLog for app-admin/consul
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/consul/ChangeLog,v 1.4 2015/06/09 07:00:48 zmedico Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/consul/ChangeLog,v 1.5 2015/06/29 20:23:21 ultrabug Exp $
+
+  29 Jun 2015; Ultrabug <ultrabug@gentoo.org> metadata.xml:
+  add myself as maintainer
 
   09 Jun 2015; Zac Medico <zmedico@gentoo.org> consul-0.5.2.ebuild,
   consul-9999.ebuild:
