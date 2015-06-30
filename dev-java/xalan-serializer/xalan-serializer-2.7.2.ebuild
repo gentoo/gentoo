@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xalan-serializer/xalan-serializer-2.7.2.ebuild,v 1.1 2015/06/30 11:02:04 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xalan-serializer/xalan-serializer-2.7.2.ebuild,v 1.2 2015/06/30 14:34:29 chewi Exp $
 
 EAPI=5
 
@@ -14,7 +14,7 @@ MY_P="${MY_PN}_${MY_PV}"
 
 DESCRIPTION="DOM Level 3 serializer from Apache Xalan, shared by Xalan and Xerces"
 HOMEPAGE="http://xalan.apache.org/"
-SRC_URI="mirror://apache/${PN}/${MY_PN}/source/${MY_P}-src.tar.gz"
+SRC_URI="mirror://apache/xalan/${MY_PN}/source/${MY_P}-src.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"

@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/iproute2
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/iproute2/ChangeLog,v 1.264 2015/06/30 07:45:44 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/iproute2/ChangeLog,v 1.265 2015/06/30 15:27:30 polynomial-c Exp $
+
+  30 Jun 2015; Lars Wendler <polynomial-c@gentoo.org> iproute2-4.1.0.ebuild:
+  Added net-libs/libmnl to RDEPEND (bug #553624).
 
 *iproute2-4.1.0 (30 Jun 2015)
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/iproute2/iproute2-4.1.0.ebuild,v 1.1 2015/06/30 07:45:44 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/iproute2/iproute2-4.1.0.ebuild,v 1.2 2015/06/30 15:27:30 polynomial-c Exp $
 
 EAPI="5"
 
@@ -22,6 +22,7 @@ SLOT="0"
 IUSE="atm berkdb +iptables ipv6 minimal selinux"
 
 RDEPEND="!net-misc/arpd
+	net-libs/libmnl
 	iptables? ( >=net-firewall/iptables-1.4.20:= )
 	berkdb? ( sys-libs/db:= )
 	atm? ( net-dialup/linux-atm )

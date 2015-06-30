@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm preinst setup test unpack
+DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) deblob? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) )
+DESCRIPTION=Full sources including the Gentoo patchset for the 3.14 kernel tree
+EAPI=5
+HOMEPAGE=http://dev.gentoo.org/~mpagano/genpatches
+IUSE=deblob experimental symlink build deblob
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=GPL-2 !deblob? ( freedist )
+RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )
+RESTRICT=binchecks strip
+SLOT=3.14.46
+SRC_URI=mirror://kernel/linux/kernel/v3.x/linux-3.14.tar.xz deblob? ( http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/3.14-gnu/deblob-3.14 http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/3.14-gnu/deblob-check -> deblob-check-3.14 ) mirror://gentoo/genpatches-3.14-52.base.tar.xz mirror://gentoo/genpatches-3.14-52.extras.tar.xz experimental? ( mirror://gentoo/genpatches-3.14-52.experimental.tar.xz )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	kernel-2	91e477d84afcf7f0e0441eeea2b26bbc	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	da352ea9da8eb9bf158d56cca65d6c82	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=3ed55ee9b8a84e873e9d2efd1de96c48
