@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/newt/newt-0.52.15.ebuild,v 1.21 2015/06/30 01:03:49 naota Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/newt/newt-0.52.18.ebuild,v 1.1 2015/06/30 01:29:20 naota Exp $
 
 EAPI="5"
 
@@ -14,7 +14,7 @@ SRC_URI="https://fedorahosted.org/releases/n/e/newt/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="gpm tcl nls"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -35,7 +35,6 @@ src_prepare() {
 	fi
 
 	sed -i Makefile.in \
-		-e 's|-ltcl8.4|-ltcl|g' \
 		-e 's|$(SHCFLAGS) -o|$(LDFLAGS) &|g' \
 		-e 's|-g -o|$(CFLAGS) $(LDFLAGS) -o|g' \
 		-e 's|-shared -o|$(CFLAGS) $(LDFLAGS) &|g' \
@@ -55,7 +54,6 @@ src_prepare() {
 	fi
 
 	epatch "${FILESDIR}"/${PN}-0.52.13-gold.patch \
-		"${FILESDIR}"/${PN}-0.52.15-snack.patch \
 		"${FILESDIR}"/${PN}-0.52.14-tcl.patch \
 		"${FILESDIR}"/${PN}-0.52.15-makefile.patch
 	eautoreconf

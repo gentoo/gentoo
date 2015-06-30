@@ -1,6 +1,18 @@
 # ChangeLog for dev-libs/newt
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/newt/ChangeLog,v 1.102 2015/05/05 19:25:52 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/newt/ChangeLog,v 1.104 2015/06/30 01:29:20 naota Exp $
+
+*newt-0.52.18 (30 Jun 2015)
+
+  30 Jun 2015; Naohiro Aota <naota@gentoo.org> +newt-0.52.18.ebuild,
+  -files/newt-0.52.12-install.patch, -files/newt-0.52.12-tcl.patch,
+  -files/newt-0.52.12-whiptail.patch, -files/newt-0.52.13-python.patch,
+  -files/newt-0.52.14-snack.patch:
+  dev-libs/newt: version bump to 0.52.18; Clean up unused patches.
+
+  30 Jun 2015; Naohiro Aota <naota@gentoo.org>
+  +files/newt-0.52.15-makefile.patch, newt-0.52.15.ebuild:
+  dev-libs/newt: add a patch to fix parallel make failure #553338
 
   05 May 2015; Manuel Rüger <mrueg@gentoo.org> -newt-0.52.12.ebuild,
   -newt-0.52.13.ebuild, -newt-0.52.14-r1.ebuild, -newt-0.52.14-r2.ebuild:
