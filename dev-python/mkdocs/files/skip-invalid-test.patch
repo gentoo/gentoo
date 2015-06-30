@@ -1,10 +1,22 @@
-diff --git a/mkdocs/tests/config_tests.py b/mkdocs/tests/config_tests.py
-index 647c695..b26d59d 100644
---- a/mkdocs/tests/config_tests.py
-+++ b/mkdocs/tests/config_tests.py
-@@ -130,7 +130,6 @@ class ConfigTests(unittest.TestCase):
+diff --git a/mkdocs/tests/config/config_options_tests.py b/mkdocs/tests/config/config_options_tests.py
+index 1721bdd..4a41658 100644
+--- a/mkdocs/tests/config/config_options_tests.py
++++ b/mkdocs/tests/config/config_options_tests.py
+@@ -180,7 +180,6 @@ class SiteDirTest(unittest.TestCase):
+             {'docs_dir': '.', 'site_dir': '.'},
              {'docs_dir': 'docs', 'site_dir': ''},
-             {'docs_dir': '', 'site_dir': 'site'},
+             {'docs_dir': '', 'site_dir': ''},
+-            {'docs_dir': j('..', 'mkdocs', 'docs'), 'site_dir': 'docs'},
+         )
+ 
+         for test_config in test_configs:
+diff --git a/mkdocs/tests/config/config_tests.py b/mkdocs/tests/config/config_tests.py
+index fe32fd9..d5ce61e 100644
+--- a/mkdocs/tests/config/config_tests.py
++++ b/mkdocs/tests/config/config_tests.py
+@@ -181,7 +181,6 @@ class ConfigTests(unittest.TestCase):
+             {'docs_dir': '.', 'site_dir': '.'},
+             {'docs_dir': 'docs', 'site_dir': ''},
              {'docs_dir': '', 'site_dir': ''},
 -            {'docs_dir': j('..', 'mkdocs', 'docs'), 'site_dir': 'docs'},
          )

@@ -1,6 +1,16 @@
 # ChangeLog for dev-python/mkdocs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/mkdocs/ChangeLog,v 1.5 2015/06/07 13:52:44 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/mkdocs/ChangeLog,v 1.7 2015/06/29 23:45:17 alunduil Exp $
+
+  29 Jun 2015; Alex Brandt <alunduil@gentoo.org> -mkdocs-0.11.1.ebuild:
+  remove version 0.11.0
+
+*mkdocs-0.14.0 (29 Jun 2015)
+
+  29 Jun 2015; Alex Brandt <alunduil@gentoo.org>
+  +files/0.12.2-skip-invalid-test.patch, +mkdocs-0.14.0.ebuild,
+  files/skip-invalid-test.patch, mkdocs-0.12.2.ebuild:
+  add version 0.14.0
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml
