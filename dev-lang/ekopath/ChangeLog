@@ -1,6 +1,14 @@
 # ChangeLog for dev-lang/ekopath
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/ekopath/ChangeLog,v 1.29 2015/06/06 11:46:50 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/ekopath/ChangeLog,v 1.30 2015/06/30 14:27:39 mgorny Exp $
+
+*ekopath-6.0.430_p20150629 (30 Jun 2015)
+
+  30 Jun 2015; Michał Górny <mgorny@gentoo.org>
+  +ekopath-6.0.430_p20150629.ebuild, -ekopath-5.0.1_pre20131115.ebuild,
+  -ekopath-5.0.5_pre20150226.ebuild, -ekopath-6.0.373_p20150519.ebuild,
+  -ekopath-6.0.396_p20150605.ebuild:
+  Bump. Remove old.
 
 *ekopath-6.0.396_p20150605 (06 Jun 2015)
 
