@@ -1,6 +1,11 @@
 # ChangeLog for gnome-base/gdm
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gdm/ChangeLog,v 1.421 2015/06/26 09:21:48 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gdm/ChangeLog,v 1.422 2015/06/30 18:55:26 pacho Exp $
+
+  30 Jun 2015; Pacho Ramos <pacho@gentoo.org> -gdm-3.14.1-r1.ebuild,
+  gdm-3.16.1.1.ebuild:
+  Add a warning about new GDM opening new sessions on separate TTYs and point to
+  documentation suggesting how to handle it (#551726), drop old.
 
   26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> gdm-3.14.2.ebuild:
   Stable for x86, wrt bug #551814

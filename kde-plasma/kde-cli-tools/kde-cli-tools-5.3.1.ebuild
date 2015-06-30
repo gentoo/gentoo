@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-plasma/kde-cli-tools/kde-cli-tools-5.3.1.ebuild,v 1.1 2015/05/31 22:06:17 johu Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-plasma/kde-cli-tools/kde-cli-tools-5.3.1.ebuild,v 1.2 2015/06/30 18:40:18 johu Exp $
 
 EAPI=5
 
@@ -38,7 +38,7 @@ DEPEND="
 	)
 "
 RDEPEND="${DEPEND}
-	handbook? ( !kde-base/kdesu[handbook] )
+	handbook? ( !kde-apps/kdesu[handbook] )
 	!kde-base/kde-cli-tools
 "
 

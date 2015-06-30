@@ -1,6 +1,9 @@
 # ChangeLog for gnome-extra/cinnamon
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/cinnamon/ChangeLog,v 1.64 2015/06/26 09:22:13 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/cinnamon/ChangeLog,v 1.65 2015/06/30 19:15:53 pacho Exp $
+
+  30 Jun 2015; Pacho Ramos <pacho@gentoo.org> cinnamon-2.6.8.ebuild:
+  Drop no longer needed warnings about r300/r600 (#553548)
 
   26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> cinnamon-2.4.7.ebuild:
   Stable for x86, wrt bug #551814

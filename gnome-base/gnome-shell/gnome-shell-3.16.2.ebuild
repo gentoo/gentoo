@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-shell/gnome-shell-3.16.2.ebuild,v 1.3 2015/06/19 17:20:31 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-shell/gnome-shell-3.16.2.ebuild,v 1.4 2015/06/30 19:15:14 pacho Exp $
 
 EAPI="5"
 GCONF_DEBUG="no"
@@ -189,17 +189,6 @@ pkg_postinst() {
 		ewarn "GNOME Shell has been reported to show graphical corruption under"
 		ewarn "x11-drivers/ati-drivers-11.*; you may want to switch to open-source"
 		ewarn "drivers."
-	fi
-
-	if has_version "media-libs/mesa[video_cards_radeon]" ||
-	   has_version "media-libs/mesa[video_cards_r300]" ||
-	   has_version "media-libs/mesa[video_cards_r600]"; then
-		elog "GNOME Shell is unstable under classic-mode r300/r600 mesa drivers."
-		elog "Make sure that gallium architecture for r300 and r600 drivers is"
-		elog "selected using 'eselect mesa'."
-		if ! has_version "media-libs/mesa[gallium]"; then
-			ewarn "You will need to emerge media-libs/mesa with USE=gallium."
-		fi
 	fi
 
 	if ! has_version "media-libs/mesa[llvm]"; then

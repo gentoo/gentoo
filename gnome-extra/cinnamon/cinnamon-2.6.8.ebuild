@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/cinnamon/cinnamon-2.6.8.ebuild,v 1.2 2015/06/20 02:32:11 tetromino Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/cinnamon/cinnamon-2.6.8.ebuild,v 1.3 2015/06/30 19:15:53 pacho Exp $
 
 EAPI="5"
 GCONF_DEBUG="no"
@@ -252,16 +252,5 @@ pkg_postinst() {
 		ewarn "Cinnamon has been reported to show graphical corruption under"
 		ewarn "x11-drivers/ati-drivers-11.*; you may want to switch to"
 		ewarn "open-source drivers."
-	fi
-
-	if has_version "media-libs/mesa[video_cards_radeon]" ||
-	   has_version "media-libs/mesa[video_cards_r300]" ||
-	   has_version "media-libs/mesa[video_cards_r600]"; then
-		elog "Cinnamon is unstable under classic-mode r300/r600 mesa drivers."
-		elog "Make sure that gallium architecture for r300 and r600 drivers is"
-		elog "selected using 'eselect mesa'."
-		if ! has_version "media-libs/mesa[gallium]"; then
-			ewarn "You will need to emerge media-libs/mesa with USE=gallium."
-		fi
 	fi
 }

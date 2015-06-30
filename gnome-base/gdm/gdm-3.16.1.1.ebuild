@@ -1,12 +1,12 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gdm/gdm-3.16.1.1.ebuild,v 1.1 2015/06/09 15:26:22 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gdm/gdm-3.16.1.1.ebuild,v 1.2 2015/06/30 18:55:26 pacho Exp $
 
 EAPI="5"
 GCONF_DEBUG="yes"
 GNOME2_LA_PUNT="yes"
 
-inherit autotools eutils gnome2 pam readme.gentoo systemd user
+inherit autotools eutils gnome2 pam readme.gentoo systemd user versionator
 
 DESCRIPTION="GNOME Display Manager for managing graphical display servers and user logins"
 HOMEPAGE="https://wiki.gnome.org/Projects/GDM"
@@ -21,8 +21,10 @@ LICENSE="
 "
 
 SLOT="0"
+
 IUSE="accessibility audit branding fprint +introspection ipv6 plymouth selinux smartcard +systemd tcpd test wayland xinerama"
 REQUIRED_USE="wayland? ( systemd )"
+
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86"
 
 # NOTE: x11-base/xorg-server dep is for X_SERVER_PATH etc, bug #295686
@@ -31,7 +33,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86"
 # We need either systemd or >=openrc-0.12 to restart gdm properly, bug #463784
 COMMON_DEPEND="
 	app-text/iso-codes
-	>=dev-libs/glib-2.36:2
+	>=dev-libs/glib-2.36:2[dbus]
 	>=x11-libs/gtk+-2.91.1:3
 	>=gnome-base/dconf-0.20
 	>=gnome-base/gnome-settings-daemon-3.1.4
@@ -61,7 +63,7 @@ COMMON_DEPEND="
 	sys-auth/pambase[systemd?]
 
 	audit? ( sys-process/audit )
-	introspection? ( >=dev-libs/gobject-introspection-0.9.12 )
+	introspection? ( >=dev-libs/gobject-introspection-0.9.12:= )
 	plymouth? ( sys-boot/plymouth )
 	selinux? ( sys-libs/libselinux )
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
@@ -90,6 +92,7 @@ DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.1.2
 	dev-util/gdbus-codegen
 	>=dev-util/intltool-0.40.0
+	dev-util/itstool
 	virtual/pkgconfig
 	x11-proto/inputproto
 	x11-proto/randrproto
@@ -176,7 +179,6 @@ src_configure() {
 		$(use_with tcpd tcp-wrappers) \
 		$(use_enable wayland wayland-support) \
 		$(use_with xinerama) \
-		ITSTOOL=$(type -P true) \
 		${myconf}
 }
 
@@ -219,4 +221,9 @@ pkg_postinst() {
 	eend ${ret}
 
 	readme.gentoo_print_elog
+
+	if ! version_is_at_least 3.16.0 ${REPLACING_VERSIONS}; then
+		ewarn "GDM will now use a new TTY per logged user as explained at:"
+		ewarn "https://wiki.gentoo.org/wiki/Project:GNOME/GNOME3-Troubleshooting#GDM_.3E.3D_3.16_opens_one_graphical_session_per_user"
+	fi
 }
