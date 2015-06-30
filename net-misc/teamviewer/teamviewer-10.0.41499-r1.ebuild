@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/teamviewer/teamviewer-10.0.41499.ebuild,v 1.1 2015/06/18 08:35:17 np-hardass Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/teamviewer/teamviewer-10.0.41499-r1.ebuild,v 1.1 2015/06/30 19:49:11 np-hardass Exp $
 
 EAPI=5
 
@@ -15,7 +15,7 @@ SRC_URI="https://download.teamviewer.com/download/version_${MV}x/${PN}_${PV}_i38
 
 IUSE="+system-wine"
 
-LICENSE="TeamViewer"
+LICENSE="TeamViewer LGPL-2.1" #LGPL for bundled wine
 SLOT=${MV}
 KEYWORDS="-* ~amd64 ~x86"
 
@@ -48,7 +48,6 @@ src_prepare() {
 		-e "s/@TVV@/${MV}/g" \
 		"${FILESDIR}"/${PN}d.init > "${T}"/init || die
 	sed \
-		-e "s/teamviewerd.pid/teamviewerd${MV}.pid/g" \
 		-e "s:/opt/teamviewer:/opt/teamviewer${MV}:g" \
 		"script//${PN}d.service" > "${T}/${PN}d.service" || die
 	sed \
@@ -69,7 +68,9 @@ src_install () {
 	# install bundled wine if necessary
 	if ! use system-wine; then
 		insinto "${destdir}/tv_bin/wine"
-		doins -r wine/{bin,lib}
+		doins -r wine/{lib,share}
+		exeinto "${destdir}/tv_bin/wine/bin"
+		doexe wine/bin/{wine,wine-preloader,wineserver}
 	fi
 	# fix permissions
 	fperms 755 ${destdir}/wine/drive_c/TeamViewer/TeamViewer.exe

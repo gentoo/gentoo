@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/lftp/lftp-4.6.3a.ebuild,v 1.1 2015/06/19 05:42:48 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/lftp/lftp-4.6.3a.ebuild,v 1.2 2015/06/30 20:02:24 jer Exp $
 
 EAPI=5
 inherit autotools eutils libtool
@@ -46,7 +46,7 @@ DEPEND="
 	${RDEPEND}
 	=sys-devel/libtool-2*
 	app-arch/xz-utils
-	nls? ( sys-devel/gettext )
+	nls? ( >=sys-devel/gettext-0.19 )
 	virtual/pkgconfig
 "
 

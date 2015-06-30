@@ -1,6 +1,13 @@
 # ChangeLog for net-misc/teamviewer
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/teamviewer/ChangeLog,v 1.21 2015/06/21 02:56:05 np-hardass Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/teamviewer/ChangeLog,v 1.22 2015/06/30 19:49:11 np-hardass Exp $
+
+*teamviewer-10.0.41499-r1 (30 Jun 2015)
+
+  30 Jun 2015; NP-Hardass <NP-Hardass@gentoo.org>
+  +teamviewer-10.0.41499-r1.ebuild, -teamviewer-10.0.41499.ebuild,
+  files/teamviewer.sh:
+  Remove PID location edit in systemd service file.  Resolves bug #552564
 
   21 Jun 2015; NP-Hardass <NP-Hardass@gentoo.org> metadata.xml:
   Fix email address in metadata.xml.
