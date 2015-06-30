@@ -1,6 +1,12 @@
 # ChangeLog for net-misc/chrony
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/chrony/ChangeLog,v 1.165 2015/06/25 04:49:53 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/chrony/ChangeLog,v 1.167 2015/06/30 06:26:10 jer Exp $
+
+  30 Jun 2015; Jeroen Roovers <jer@gentoo.org> chrony-2.1.1.ebuild:
+  Stable for PPC64 (bug #553616).
+
+  30 Jun 2015; Jeroen Roovers <jer@gentoo.org> chrony-2.1.1.ebuild:
+  Stable for HPPA (bug #553616).
 
 *chrony-2.1.1 (25 Jun 2015)
 
