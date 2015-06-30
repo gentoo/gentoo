@@ -1,12 +1,7 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/darwin/package.mask,v 1.47 2015/06/16 11:30:27 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/darwin/package.mask,v 1.48 2015/06/30 08:16:35 grobian Exp $
 
-
-# Fabian Groffen <grobian@gentoo.org> (16 Jun 2015)
-# fails to compile due to missing CLOCK_REALTIME in multiprocessing
-# module
-=dev-lang/python-2.7.10
 
 # Fabian Groffen <grobian@gentoo.org> (31 May 2015)
 # fails to compile due to some missing compilerrt stuff, hints at asan,

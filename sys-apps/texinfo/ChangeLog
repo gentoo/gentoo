@@ -1,6 +1,12 @@
 # ChangeLog for sys-apps/texinfo
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/texinfo/ChangeLog,v 1.135 2014/01/18 19:27:30 vapier Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/texinfo/ChangeLog,v 1.136 2015/06/30 08:03:56 polynomial-c Exp $
+
+*texinfo-6.0 (30 Jun 2015)
+
+  30 Jun 2015; Lars Wendler <polynomial-c@gentoo.org> -texinfo-5.1.ebuild,
+  +texinfo-6.0.ebuild:
+  Version bump. Removed old.
 
   18 Jan 2014; Mike Frysinger <vapier@gentoo.org> texinfo-4.13-r2.ebuild,
   texinfo-5.1.ebuild, texinfo-5.2.ebuild:

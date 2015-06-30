@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare test unpack
-DEPEND=dev-db/sqlite:3 >=dev-libs/glib-2.40:2 dev-libs/json-glib dev-libs/libgee:0.8 gstreamer? ( media-plugins/gst-plugins-meta:1.0[X,ffmpeg] ) >=net-libs/libsoup-2.42.3.1 >=net-libs/rest-0.7.91:0.7 >=x11-libs/gtk+-3.14:3 || ( dev-lang/vala:0.28 dev-lang/vala:0.26 dev-lang/vala:0.24 ) >=dev-util/intltool-0.40 sys-apps/sed virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 app-arch/xz-utils >=sys-apps/sed-4
+DEPEND=dev-db/sqlite:3 >=dev-libs/glib-2.40:2 dev-libs/json-glib dev-libs/libgee:0.8 gstreamer? ( media-plugins/gst-plugins-meta:1.0[X,ffmpeg] ) >=net-libs/libsoup-2.42.3.1 >=net-libs/rest-0.7.91:0.7 >=x11-libs/gtk+-3.14:3 || ( dev-lang/vala:0.28 dev-lang/vala:0.26 ) >=dev-util/intltool-0.40 sys-apps/sed virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 app-arch/xz-utils >=sys-apps/sed-4
 DESCRIPTION=Native GTK+3 Twitter client
 EAPI=5
 HOMEPAGE=http://corebird.baedert.org/
@@ -10,4 +10,4 @@ RDEPEND=dev-db/sqlite:3 >=dev-libs/glib-2.40:2 dev-libs/json-glib dev-libs/libge
 SLOT=0
 SRC_URI=https://github.com/baedert/corebird/archive/1.0.tar.gz -> corebird-1.0.tar.gz
 _eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	10c513def52488230abb60a4b19a03b9	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	vala	09bc7da1a93142c9eb90786e6f6b39d2	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=bd89f184c3e7b56f3b12606327d20be1
+_md5_=108ee38435b38004fce4954ddaecc0d0

@@ -1,6 +1,9 @@
 # ChangeLog for profiles/prefix
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/ChangeLog,v 1.465 2015/06/29 07:59:21 haubi Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/ChangeLog,v 1.466 2015/06/30 08:16:35 grobian Exp $
+
+  16 Jun 2015; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Unmask Python 2.7.10, haubi applied a fix from upstream for the issue
 
   29 Jun 2015; Michael Haubenwallner <haubi@gentoo.org>
   windows/cygwin/2.0/x64/make.defaults:

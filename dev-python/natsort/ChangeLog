@@ -1,6 +1,12 @@
 # ChangeLog for dev-python/natsort
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/natsort/ChangeLog,v 1.10 2015/06/27 11:26:12 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/natsort/ChangeLog,v 1.11 2015/06/30 07:37:33 idella4 Exp $
+
+*natsort-4.0.3 (30 Jun 2015)
+
+  30 Jun 2015; Ian Delaney <idella4@gentoo.org> +natsort-4.0.3.ebuild,
+  -natsort-3.5.2.ebuild, -natsort-4.0.1.ebuild:
+  bump; tidy test phase, rm old
 
   27 Jun 2015; Ian Delaney <idella4@gentoo.org> -natsort-3.2.0.ebuild:
   rm old

@@ -1,6 +1,12 @@
 # ChangeLog for sys-apps/iproute2
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/iproute2/ChangeLog,v 1.263 2015/05/24 03:42:06 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/iproute2/ChangeLog,v 1.264 2015/06/30 07:45:44 polynomial-c Exp $
+
+*iproute2-4.1.0 (30 Jun 2015)
+
+  30 Jun 2015; Lars Wendler <polynomial-c@gentoo.org> -iproute2-4.0.0.ebuild,
+  -iproute2-4.0.0-r1.ebuild, +iproute2-4.1.0.ebuild:
+  Version bump. Removed old.
 
   24 May 2015; Mike Frysinger <vapier@gentoo.org> iproute2-4.0.0-r2.ebuild,
   iproute2-9999.ebuild, metadata.xml:

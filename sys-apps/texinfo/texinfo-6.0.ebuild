@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/texinfo/texinfo-5.1.ebuild,v 1.2 2014/01/18 19:27:30 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/texinfo/texinfo-6.0.ebuild,v 1.1 2015/06/30 08:03:56 polynomial-c Exp $
 
-EAPI="3"
+EAPI="4"
 
 inherit flag-o-matic
 
@@ -36,7 +36,6 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
-	dodoc AUTHORS ChangeLog NEWS README TODO
+	default
 	newdoc info/README README.info
 }
