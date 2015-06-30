@@ -1,6 +1,9 @@
 # ChangeLog for net-libs/courier-authlib
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/courier-authlib/ChangeLog,v 1.171 2015/06/29 09:40:44 hanno Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/courier-authlib/ChangeLog,v 1.172 2015/06/30 18:15:27 hanno Exp $
+
+  30 Jun 2015; Hanno Boeck <hanno@gentoo.org> courier-authlib-0.66.3.ebuild:
+  Add missing dep to courier-unicode, drop archs that don't have it.
 
 *courier-authlib-0.66.3 (29 Jun 2015)
 

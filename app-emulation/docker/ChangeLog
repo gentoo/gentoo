@@ -1,6 +1,9 @@
 # ChangeLog for app-emulation/docker
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/docker/ChangeLog,v 1.48 2015/06/07 07:54:35 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/docker/ChangeLog,v 1.49 2015/06/30 18:14:22 mrueg Exp $
+
+  30 Jun 2015; Manuel Rüger <mrueg@gentoo.org> docker-1.6.1.ebuild:
+  Install zsh-completions unconditionally.
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> docker-1.6.1.ebuild:
   Add missing eclass

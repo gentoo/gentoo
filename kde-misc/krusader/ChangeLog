@@ -1,6 +1,12 @@
 # ChangeLog for kde-misc/krusader
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/krusader/ChangeLog,v 1.114 2015/06/04 18:57:33 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/krusader/ChangeLog,v 1.115 2015/06/30 18:25:05 johu Exp $
+
+*krusader-2.4.0_beta3-r2 (30 Jun 2015)
+
+  30 Jun 2015; Johannes Huber <johu@gentoo.org>
+  +files/krusader-2.4.0_beta3-new-folder.patch, +krusader-2.4.0_beta3-r2.ebuild:
+  Revision bump adds upstream patch to fix new folder dialog issue, bug #553642.
 
   04 Jun 2015; Michael Palimaka <kensington@gentoo.org>
   krusader-2.4.0_beta3-r1.ebuild:

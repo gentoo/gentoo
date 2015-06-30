@@ -7,4 +7,4 @@ LICENSE=BSD
 RDEPEND=app-shells/zsh
 SLOT=0
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	git-r3	ab80045e5d080584334f33013f4df21d	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=792d455de991e0fc6c4a8fab27597109
+_md5_=60075ea1a242c3c94a9a0d87e84ca902

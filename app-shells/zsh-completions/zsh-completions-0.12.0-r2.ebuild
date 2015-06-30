@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/zsh-completions/zsh-completions-0.12.0-r1.ebuild,v 1.1 2014/11/23 19:15:14 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-shells/zsh-completions/zsh-completions-0.12.0-r2.ebuild,v 1.1 2015/06/30 18:12:51 mrueg Exp $
 
 EAPI=5
 
@@ -23,6 +23,8 @@ RDEPEND="app-shells/zsh"
 src_prepare() {
 	# File collision with dev-python/pip
 	rm src/_pip || die
+	# File collision with app-emulation/docker
+	rm src/_docker || die
 }
 
 src_install() {
