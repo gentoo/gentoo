@@ -1,6 +1,10 @@
 # ChangeLog for dev-python/pykerberos
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pykerberos/ChangeLog,v 1.19 2015/06/03 21:02:48 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pykerberos/ChangeLog,v 1.20 2015/06/30 02:19:37 idella4 Exp $
+
+  30 Jun 2015; Ian Delaney <idella4@gentoo.org> pykerberos-1.1.5.ebuild,
+  pykerberos-1.1.7.ebuild:
+  add missed dep setuptools, fixes bug #553116
 
   03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add pypi to remote-id in metadata.xml

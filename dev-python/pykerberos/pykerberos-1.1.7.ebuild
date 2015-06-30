@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pykerberos/pykerberos-1.1.7.ebuild,v 1.1 2015/05/29 05:07:58 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pykerberos/pykerberos-1.1.7.ebuild,v 1.2 2015/06/30 02:19:37 idella4 Exp $
 
 EAPI=5
 
@@ -17,5 +17,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~hppa ~x86"
 IUSE=""
 
-DEPEND="app-crypt/mit-krb5"
+DEPEND="app-crypt/mit-krb5
+		dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
