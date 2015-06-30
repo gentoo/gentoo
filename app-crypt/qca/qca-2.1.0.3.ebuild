@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/qca/qca-2.1.0.3.ebuild,v 1.10 2015/06/29 00:55:26 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/qca/qca-2.1.0.3.ebuild,v 1.12 2015/06/30 21:48:14 pesa Exp $
 
 EAPI=5
 
@@ -99,7 +99,12 @@ src_compile() {
 }
 
 src_test() {
-	multibuild_foreach_variant cmake-utils_src_test
+	mytest() {
+		local -x QCA_PLUGIN_PATH="${BUILD_DIR}/lib/qca"
+		cmake-utils_src_test
+	}
+
+	multibuild_foreach_variant mytest
 }
 
 src_install() {
@@ -108,12 +113,11 @@ src_install() {
 	if use doc; then
 		pushd "${BUILD_DIR}" >/dev/null || die
 		doxygen Doxyfile.in || die
-		dohtml apidocs/html/*
+		dodoc -r apidocs/html
 		popd >/dev/null || die
 	fi
 
 	if use examples; then
-		insinto /usr/share/doc/${PF}
-		doins -r "${S}"/examples
+		dodoc -r "${S}"/examples
 	fi
 }

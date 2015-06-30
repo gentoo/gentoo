@@ -1,6 +1,12 @@
 # ChangeLog for app-crypt/qca
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/qca/ChangeLog,v 1.110 2015/06/29 00:55:26 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/qca/ChangeLog,v 1.112 2015/06/30 21:48:14 pesa Exp $
+
+  30 Jun 2015; Davide Pesavento <pesa@gentoo.org> qca-2.1.0.3.ebuild:
+  Use dodoc -r
+
+  30 Jun 2015; Davide Pesavento <pesa@gentoo.org> qca-2.1.0.3.ebuild:
+  Fix test phase to load the just-built plugins (bug 553530).
 
   29 Jun 2015; Davide Pesavento <pesa@gentoo.org> qca-2.1.0.3.ebuild:
   Use qmake-utils helper functions to simplify src_configure. Remove double call
