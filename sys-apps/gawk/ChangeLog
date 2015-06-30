@@ -1,6 +1,10 @@
 # ChangeLog for sys-apps/gawk
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/gawk/ChangeLog,v 1.182 2015/05/23 19:38:43 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/gawk/ChangeLog,v 1.183 2015/06/30 20:31:53 polynomial-c Exp $
+
+  30 Jun 2015; Lars Wendler <polynomial-c@gentoo.org> gawk-4.1.3.ebuild,
+  +files/gawk-4.1.3-bsd_configure_readline.patch:
+  Fixed build with readline support on bsd (bug #507468).
 
 *gawk-4.1.3 (23 May 2015)
 

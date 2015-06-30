@@ -1,6 +1,13 @@
 # ChangeLog for dev-java/trove
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/trove/ChangeLog,v 1.25 2015/06/09 14:04:35 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/trove/ChangeLog,v 1.26 2015/06/30 20:34:22 monsieurp Exp $
+
+*trove-3.0.2-r1 (30 Jun 2015)
+
+  30 Jun 2015; Patrice Clement <monsieurp@gentoo.org>
+  +files/trove-3.0.2-java.io.tmpdir.patch, +trove-3.0.2-r1.ebuild:
+  Patch build.xml and write tmp files elsewhere but NOT in /tmp. EAPI 5 bump.
+  Fix bug 553652.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

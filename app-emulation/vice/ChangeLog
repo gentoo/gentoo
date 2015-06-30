@@ -1,6 +1,10 @@
 # ChangeLog for app-emulation/vice
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/vice/ChangeLog,v 1.101 2015/06/15 07:38:33 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/vice/ChangeLog,v 1.102 2015/06/30 21:30:19 mr_bones_ Exp $
+
+  30 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/vice-2.4.16-autotools.patch, -vice-2.4.16-r1.ebuild:
+  old
 
   15 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org> vice-2.4.20.ebuild:
   suppress gtk3 support for now since upstream says it's not ready

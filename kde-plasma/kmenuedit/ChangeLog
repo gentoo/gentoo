@@ -1,6 +1,11 @@
 # ChangeLog for kde-plasma/kmenuedit
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-plasma/kmenuedit/ChangeLog,v 1.1 2015/05/31 22:06:17 johu Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-plasma/kmenuedit/ChangeLog,v 1.2 2015/06/30 20:50:15 johu Exp $
+
+*kmenuedit-5.3.2 (30 Jun 2015)
+
+  30 Jun 2015; Johannes Huber <johu@gentoo.org> +kmenuedit-5.3.2.ebuild:
+  Version bump KDE Plasma 5.3.2
 
 *kmenuedit-5.3.1 (31 May 2015)
 
