@@ -1,10 +1,10 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/msgpack/msgpack-0.5.10.ebuild,v 1.1 2015/01/21 07:13:22 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/msgpack/msgpack-0.6.0.ebuild,v 1.1 2015/06/30 04:51:18 graaff Exp $
 
 EAPI=5
 
-USE_RUBY="ruby19 ruby20 ruby21"
+USE_RUBY="ruby19 ruby20 ruby21 ruby22"
 
 RUBY_FAKEGEM_TASK_DOC="doc"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
@@ -13,7 +13,7 @@ RUBY_FAKEGEM_EXTRADOC="README.rdoc"
 inherit multilib ruby-fakegem
 
 DESCRIPTION="Binary-based efficient data interchange format for ruby binding"
-HOMEPAGE="http://msgpack.sourceforge.jp/"
+HOMEPAGE="http://msgpack.org/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -26,7 +26,9 @@ all_ruby_prepare() {
 	sed -i -e '/bundler/I s:^:#:' Rakefile || die
 
 	# Remove jruby-specific specs that are run also for other rubies.
-	rm -rf spec/jruby || die
+	rm -rf spec/jruby
+
+	sed -i -e '/git ls-files/d' msgpack.gemspec || die
 }
 
 each_ruby_configure() {

@@ -1,6 +1,14 @@
 # ChangeLog for dev-util/ninja
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/ninja/ChangeLog,v 1.47 2015/06/26 09:03:23 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/ninja/ChangeLog,v 1.49 2015/06/30 05:18:23 phajdan.jr Exp $
+
+*ninja-1.6.0 (30 Jun 2015)
+
+  30 Jun 2015; Pawel Hajdan jr <phajdan.jr@gentoo.org> +ninja-1.6.0.ebuild:
+  Version bump.
+
+  30 Jun 2015; Jeroen Roovers <jer@gentoo.org> ninja-1.5.3.ebuild:
+  Stable for PPC64 (bug #552884).
 
   26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> ninja-1.5.3.ebuild:
   Stable for x86, wrt bug #552884

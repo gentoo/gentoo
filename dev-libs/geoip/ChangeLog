@@ -1,6 +1,10 @@
 # ChangeLog for dev-libs/geoip
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/geoip/ChangeLog,v 1.256 2015/06/06 18:55:35 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/geoip/ChangeLog,v 1.257 2015/06/30 05:21:50 jer Exp $
+
+  30 Jun 2015; Jeroen Roovers <jer@gentoo.org> -geoip-1.6.3.ebuild,
+  -geoip-1.6.4.ebuild:
+  Old.
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml
