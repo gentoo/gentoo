@@ -1,6 +1,12 @@
 # ChangeLog for dev-java/xalan
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xalan/ChangeLog,v 1.97 2014/08/10 20:26:33 slyfox Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xalan/ChangeLog,v 1.98 2015/06/30 11:04:04 chewi Exp $
+
+*xalan-2.7.2 (30 Jun 2015)
+
+  30 Jun 2015; James Le Cuirot <chewi@gentoo.org> +xalan-2.7.2.ebuild:
+  Version bump, EAPI bump, and general clean up. Addresses security bug #505602.
+  Closes bug #525844.
 
   10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> xalan-2.7.1.ebuild:
   QA: drop trailing '.' from DESCRIPTION
