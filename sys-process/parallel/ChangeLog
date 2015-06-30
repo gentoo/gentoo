@@ -1,6 +1,11 @@
 # ChangeLog for sys-process/parallel
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/parallel/ChangeLog,v 1.75 2015/06/26 08:57:02 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-process/parallel/ChangeLog,v 1.76 2015/06/30 03:08:31 idella4 Exp $
+
+  30 Jun 2015; Ian Delaney <idella4@gentoo.org> -parallel-20140622.ebuild,
+  -parallel-20141122.ebuild, -parallel-20150122.ebuild,
+  -parallel-20150222.ebuild, -parallel-20150322.ebuild:
+  cleanup for bug #552622
 
   26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> parallel-20141122.ebuild:
   Stable for x86, wrt bug #535688
