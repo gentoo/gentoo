@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/guava/guava-13.0.1.ebuild,v 1.2 2015/02/21 19:12:22 fordfrog Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/guava/guava-13.0.1.ebuild,v 1.4 2015/07/01 08:47:22 ago Exp $
 
 EAPI=5
 JAVA_PKG_IUSE="doc source"
@@ -13,7 +13,7 @@ SRC_URI="http://search.maven.org/remotecontent?filepath=com/google/${PN}/${PN}/$
 
 LICENSE="Apache-2.0"
 SLOT="13"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 
 COMMON_DEP="
 	dev-java/jsr305:0

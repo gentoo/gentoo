@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jline/jline-2.12.1.ebuild,v 1.1 2015/03/13 23:05:32 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jline/jline-2.12.1.ebuild,v 1.3 2015/07/01 08:47:30 ago Exp $
 
 EAPI=5
 
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/jline/jline2/archive/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 CDEPEND="dev-java/jansi:1.11

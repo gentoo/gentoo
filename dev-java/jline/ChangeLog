@@ -1,6 +1,12 @@
 # ChangeLog for dev-java/jline
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jline/ChangeLog,v 1.31 2015/06/06 18:45:06 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jline/ChangeLog,v 1.33 2015/07/01 08:47:30 ago Exp $
+
+  01 Jul 2015; Agostino Sarubbo <ago@gentoo.org> jline-2.12.1.ebuild:
+  Stable for x86, wrt bug #553680
+
+  01 Jul 2015; Agostino Sarubbo <ago@gentoo.org> jline-2.12.1.ebuild:
+  Stable for amd64, wrt bug #553680
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

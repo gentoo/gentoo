@@ -1,6 +1,11 @@
 # ChangeLog for media-video/dvdstyler
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/dvdstyler/ChangeLog,v 1.62 2014/10/24 04:26:45 ssuominen Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/dvdstyler/ChangeLog,v 1.63 2015/07/01 08:41:18 aballier Exp $
+
+*dvdstyler-2.9.2 (01 Jul 2015)
+
+  01 Jul 2015; Alexis Ballier <aballier@gentoo.org> +dvdstyler-2.9.2.ebuild:
+  version bump
 
   24 Oct 2014; Samuli Suominen <ssuominen@gentoo.org> dvdstyler-2.7.2.ebuild:
   Missing media-video/mjpegtools RDEPEND used for mplexing during authoring.

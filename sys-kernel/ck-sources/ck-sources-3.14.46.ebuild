@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/ck-sources/ck-sources-3.18.13.ebuild,v 1.1 2015/05/16 02:44:45 yngwin Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/ck-sources/ck-sources-3.14.46.ebuild,v 1.1 2015/07/01 09:26:41 yngwin Exp $
 
 EAPI="5"
 ETYPE="sources"
@@ -13,7 +13,7 @@ HOMEPAGE="http://dev.gentoo.org/~mpagano/genpatches/
 K_WANT_GENPATCHES="base extras experimental"
 K_EXP_GENPATCHES_PULL="1"
 K_EXP_GENPATCHES_NOUSE="1"
-K_GENPATCHES_VER="15"
+K_GENPATCHES_VER="52"
 K_SECURITY_UNSUPPORTED="1"
 K_DEBLOB_AVAILABLE="1"
 
@@ -33,7 +33,7 @@ XTRA_INCP_MAX=""
 #--
 
 CK_VERSION="1"
-BFS_VERSION="460"
+BFS_VERSION="447"
 
 CK_FILE="patch-${K_BRANCH_ID}-ck${CK_VERSION}.bz2"
 BFS_FILE="${K_BRANCH_ID}-sched-bfs-${BFS_VERSION}.patch"

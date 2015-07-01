@@ -1,6 +1,12 @@
 # ChangeLog for dev-python/pyalsaaudio
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyalsaaudio/ChangeLog,v 1.45 2015/06/09 15:55:15 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyalsaaudio/ChangeLog,v 1.46 2015/07/01 08:43:45 idella4 Exp $
+
+*pyalsaaudio-0.8.2 (01 Jul 2015)
+
+  01 Jul 2015; Ian Delaney <idella4@gentoo.org> +pyalsaaudio-0.8.2.ebuild,
+  -pyalsaaudio-0.7-r1.ebuild:
+  bump one rm one
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

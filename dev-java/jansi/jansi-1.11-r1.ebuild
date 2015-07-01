@@ -1,6 +1,6 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jansi/jansi-1.11-r1.ebuild,v 1.2 2013/09/08 13:25:35 tomwij Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jansi/jansi-1.11-r1.ebuild,v 1.4 2015/07/01 08:47:26 ago Exp $
 
 EAPI="5"
 
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/fusesource/${PN}/tarball/${PN}-project-${PV} -> ${P}
 
 LICENSE="Apache-2.0"
 SLOT="1.11"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 CDEPEND="dev-java/jansi-native:0"
 

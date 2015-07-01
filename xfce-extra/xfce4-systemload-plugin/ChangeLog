@@ -1,6 +1,10 @@
 # ChangeLog for xfce-extra/xfce4-systemload-plugin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-systemload-plugin/ChangeLog,v 1.38 2015/04/12 20:11:53 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-systemload-plugin/ChangeLog,v 1.39 2015/07/01 08:36:52 zlogene Exp $
+
+  01 Jul 2015; Mikle Kolyada <zlogene@gentoo.org>
+  xfce4-systemload-plugin-1.1.2.ebuild:
+  x86 stable wrt bug #553500
 
 *xfce4-systemload-plugin-1.1.2 (12 Apr 2015)
 

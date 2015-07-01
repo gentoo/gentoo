@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/netty-common/netty-common-4.0.21.ebuild,v 1.2 2015/02/23 20:36:09 zmedico Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/netty-common/netty-common-4.0.21.ebuild,v 1.4 2015/07/01 08:47:14 ago Exp $
 
 EAPI="5"
 
@@ -16,7 +16,7 @@ SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/${MY_P}.Final.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 CDEPEND="dev-java/commons-logging:0
 	dev-java/javassist:3
