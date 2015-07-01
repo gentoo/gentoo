@@ -1,6 +1,11 @@
 # ChangeLog for dev-ml/cudf
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/cudf/ChangeLog,v 1.4 2014/11/28 17:47:30 aballier Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/cudf/ChangeLog,v 1.5 2015/07/01 09:40:37 aballier Exp $
+
+*cudf-0.8 (01 Jul 2015)
+
+  01 Jul 2015; Alexis Ballier <aballier@gentoo.org> +cudf-0.8.ebuild:
+  version bump
 
   28 Nov 2014; Alexis Ballier <aballier@gentoo.org> cudf-0.7.ebuild:
   update deps for ocaml 4.02

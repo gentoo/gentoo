@@ -1,6 +1,11 @@
 # ChangeLog for dev-ml/dose3
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/dose3/ChangeLog,v 1.6 2015/01/26 13:51:24 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/dose3/ChangeLog,v 1.7 2015/07/01 09:34:12 aballier Exp $
+
+*dose3-4.0_rc3 (01 Jul 2015)
+
+  01 Jul 2015; Alexis Ballier <aballier@gentoo.org> +dose3-4.0_rc3.ebuild:
+  version bump, without keywords
 
 *dose3-3.3 (26 Jan 2015)
 

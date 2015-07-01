@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/uwsgi/uwsgi-2.0.10-r1.ebuild,v 1.1 2015/05/12 16:48:01 ultrabug Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/uwsgi/uwsgi-2.0.10-r2.ebuild,v 1.1 2015/07/01 10:30:21 ultrabug Exp $
 
 EAPI="5"
 
@@ -309,7 +309,7 @@ src_install() {
 		done
 	fi
 
-	newinitd "${FILESDIR}"/uwsgi.initd-r5 uwsgi
+	newinitd "${FILESDIR}"/uwsgi.initd-r6 uwsgi
 	newconfd "${FILESDIR}"/uwsgi.confd-r3 uwsgi
 	keepdir /etc/"${PN}".d
 	use uwsgi_plugins_spooler && keepdir /var/spool/"${PN}"

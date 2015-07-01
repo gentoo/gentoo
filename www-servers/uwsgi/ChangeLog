@@ -1,6 +1,12 @@
 # ChangeLog for www-servers/uwsgi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/uwsgi/ChangeLog,v 1.78 2015/05/23 00:20:14 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/uwsgi/ChangeLog,v 1.79 2015/07/01 10:30:21 ultrabug Exp $
+
+*uwsgi-2.0.10-r2 (01 Jul 2015)
+
+  01 Jul 2015; Ultrabug <ultrabug@gentoo.org> -uwsgi-2.0.10-r1.ebuild,
+  +uwsgi-2.0.10-r2.ebuild, +files/uwsgi.initd-r6:
+  fix init script /run perms to allow emperor group sockets to be created
 
   23 May 2015; Manuel Rüger <mrueg@gentoo.org> metadata.xml:
   Cleanup metadata.xml
