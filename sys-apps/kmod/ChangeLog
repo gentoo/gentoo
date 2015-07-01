@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/kmod
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/kmod/ChangeLog,v 1.200 2015/06/08 03:39:57 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/kmod/ChangeLog,v 1.201 2015/07/01 13:35:03 williamh Exp $
+
+  01 Jul 2015; William Hubbs <williamh@gentoo.org> files/kmod-static-nodes-r1:
+  Add -systemd-nspawn keyword to service script for #548092
 
   08 Jun 2015; Mike Frysinger <vapier@gentoo.org> kmod-20.ebuild,
   kmod-9999.ebuild:
