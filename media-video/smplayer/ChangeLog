@@ -1,6 +1,10 @@
 # ChangeLog for media-video/smplayer
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/smplayer/ChangeLog,v 1.169 2015/07/01 10:19:52 yngwin Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/smplayer/ChangeLog,v 1.170 2015/07/01 11:02:41 pesa Exp $
+
+  01 Jul 2015; Davide Pesavento <pesa@gentoo.org>
+  smplayer-14.9.0.6966-r2.ebuild:
+  Fix qtsingleapplication dep.
 
 *smplayer-14.9.0.6966-r2 (01 Jul 2015)
 

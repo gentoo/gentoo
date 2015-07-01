@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/smplayer/smplayer-14.9.0.6966-r2.ebuild,v 1.1 2015/07/01 10:19:52 yngwin Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/smplayer/smplayer-14.9.0.6966-r2.ebuild,v 1.2 2015/07/01 11:02:41 pesa Exp $
 
 EAPI=5
 PLOCALES="ar ar_SY bg ca cs da de el_GR en_GB en_US es et eu fi fr gl he_IL hr
@@ -22,7 +22,7 @@ REQUIRED_USE="^^ ( qt4 qt5 )"
 DEPEND="
 	qt4? ( dev-qt/qtcore:4
 		dev-qt/qtgui:4
-		dev-qt/qtsingleapplication[qt4]
+		dev-qt/qtsingleapplication[X,qt4]
 		autoshutdown? ( dev-qt/qtdbus:4 )
 		mpris? ( dev-qt/qtdbus:4 )
 		streaming? ( dev-qt/qtcore:4[ssl] ) )
@@ -30,7 +30,7 @@ DEPEND="
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtnetwork:5
-		>=dev-qt/qtsingleapplication-2.6.1_p20150629[qt5]
+		>=dev-qt/qtsingleapplication-2.6.1_p20150629[X,qt5]
 		dev-qt/qtwidgets:5
 		dev-qt/qtxml:5
 		autoshutdown? ( dev-qt/qtdbus:5 )

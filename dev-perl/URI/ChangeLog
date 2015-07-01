@@ -1,6 +1,11 @@
 # ChangeLog for dev-perl/URI
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/URI/ChangeLog,v 1.113 2015/03/13 20:31:48 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/URI/ChangeLog,v 1.114 2015/07/01 11:30:28 zlogene Exp $
+
+*URI-1.680.0 (01 Jul 2015)
+
+  01 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> +URI-1.680.0.ebuild:
+  Version bump
 
 *URI-1.670.0 (13 Mar 2015)
 

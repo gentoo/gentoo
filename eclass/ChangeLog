@@ -1,6 +1,10 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1695 2015/06/29 11:01:31 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1696 2015/07/01 11:28:23 mrueg Exp $
+
+  01 Jul 2015; Manuel Rüger <mrueg@gentoo.org> kde4-base.eclass:
+  Sync with overlay. Add SRC_URIs for newer KDE SC, KDE Workspace releases and
+  KDEPIM 4.4 no-akonadi branches.
 
   29 Jun 2015; Manuel Rüger <mrueg@gentoo.org> ruby-ng.eclass:
   Quote RUBY_S and sub_S as the directory could contain spaces.

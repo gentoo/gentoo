@@ -1,6 +1,11 @@
 # ChangeLog for app-officeext/ooofbtools
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-officeext/ooofbtools/ChangeLog,v 1.25 2015/06/09 12:00:12 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-officeext/ooofbtools/ChangeLog,v 1.26 2015/07/01 10:45:17 pinkbyte Exp $
+
+*ooofbtools-2.36 (01 Jul 2015)
+
+  01 Jul 2015; Sergey Popov <pinkbyte@gentoo.org> +ooofbtools-2.36.ebuild:
+  Version bump, wrt bug #552258
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

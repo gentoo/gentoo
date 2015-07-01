@@ -1,6 +1,11 @@
 # ChangeLog for dev-perl/XML-Twig
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-Twig/ChangeLog,v 1.116 2015/04/03 10:20:19 dlan Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-Twig/ChangeLog,v 1.117 2015/07/01 11:19:44 zlogene Exp $
+
+*XML-Twig-3.490.0 (01 Jul 2015)
+
+  01 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> +XML-Twig-3.490.0.ebuild:
+  Version bump
 
   03 Apr 2015; Yixun Lan <dlan@gentoo.org> XML-Twig-3.480.0.ebuild:
   keyword arm64, tested on cortex-a53 hardware
