@@ -6,7 +6,6 @@
 		<flag name="ethernet">Enable ethernet emulation</flag>
 		<flag name="fullscreen">Enable the ability to run fullscreen</flag>
 		<flag name="gtk2">Use GTK+2 for GUI instead of GTK+3</flag>
-		<flag name="gtk3">Use GTK+3for GUI  instead of GTK+2</flag>
 		<flag name="memmap">Enable extra monitor features</flag>
 		<flag name="sdlsound">Use <pkg>media-libs/libsdl</pkg> for sound support</flag>
 		<flag name="vte">Enable support for <pkg>x11-libs/vte</pkg> in the GTK+ interface</flag>
