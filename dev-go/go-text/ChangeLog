@@ -1,6 +1,13 @@
 # ChangeLog for dev-go/go-text
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-go/go-text/ChangeLog,v 1.8 2015/06/26 22:54:48 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-go/go-text/ChangeLog,v 1.9 2015/07/01 21:17:54 williamh Exp $
+
+*go-text-0_pre20150604 (01 Jul 2015)
+
+  01 Jul 2015; William Hubbs <williamh@gentoo.org>
+  +go-text-0_pre20150604.ebuild, -go-text-1.4.2_p20150506.ebuild,
+  -go-text-1.4.2_p20150604.ebuild:
+  Move latest snapshot to a pre-release of version 0
 
   26 Jun 2015; William Hubbs <williamh@gentoo.org> go-text-9999.ebuild:
   make live ebuild copyable

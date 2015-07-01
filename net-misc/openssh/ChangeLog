@@ -1,6 +1,14 @@
 # ChangeLog for net-misc/openssh
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/openssh/ChangeLog,v 1.561 2015/05/04 02:56:25 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/openssh/ChangeLog,v 1.562 2015/07/01 20:55:01 polynomial-c Exp $
+
+*openssh-6.9_p1 (01 Jul 2015)
+
+  01 Jul 2015; Lars Wendler <polynomial-c@gentoo.org>
+  -openssh-6.7_p1-r3.ebuild, -openssh-6.8_p1.ebuild, -openssh-6.8_p1-r1.ebuild,
+  -openssh-6.8_p1-r2.ebuild, -openssh-6.8_p1-r3.ebuild,
+  -openssh-6.8_p1-r4.ebuild, +openssh-6.9_p1.ebuild:
+  Security bump (bug #553724). Removed old.
 
   04 May 2015; Mike Frysinger <vapier@gentoo.org> files/sshd.rc6.4:
   Clean up depend scan logic a bit.

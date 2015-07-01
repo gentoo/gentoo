@@ -1,6 +1,12 @@
 # ChangeLog for dev-go/go-sys
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-go/go-sys/ChangeLog,v 1.4 2015/06/28 23:19:15 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-go/go-sys/ChangeLog,v 1.5 2015/07/01 21:12:32 williamh Exp $
+
+*go-sys-0_pre20150518 (01 Jul 2015)
+
+  01 Jul 2015; William Hubbs <williamh@gentoo.org> +go-sys-0_pre20150518.ebuild,
+  -go-sys-1.4.2_p20150518-r1.ebuild:
+  Move latest snapshot to a pre-release of version 0
 
   28 Jun 2015; William Hubbs <williamh@gentoo.org> go-sys-9999.ebuild:
   Make live ebuild copyable
