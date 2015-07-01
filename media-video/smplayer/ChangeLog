@@ -1,6 +1,17 @@
 # ChangeLog for media-video/smplayer
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/smplayer/ChangeLog,v 1.166 2015/06/16 10:45:41 yngwin Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/smplayer/ChangeLog,v 1.168 2015/07/01 06:03:03 jer Exp $
+
+  01 Jul 2015; Jeroen Roovers <jer@gentoo.org> smplayer-14.9.0.6966-r1.ebuild:
+  Mark ~hppa (bug #553704).
+
+*smplayer-14.9.0.6966-r1 (01 Jul 2015)
+
+  01 Jul 2015; Ben de Groot <yngwin@gentoo.org>
+  +files/smplayer-14.9.0.6966-unbundle-qtsingleapplication.patch,
+  +smplayer-14.9.0.6966-r1.ebuild:
+  Unbundle qtsingleapplication (bug #487544). Also fixes compilation with Qt 5.5
+  (bug #552376).
 
 *smplayer-14.9.0.6966 (16 Jun 2015)
 

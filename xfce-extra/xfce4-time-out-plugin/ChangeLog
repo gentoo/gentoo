@@ -1,6 +1,10 @@
 # ChangeLog for xfce-extra/xfce4-time-out-plugin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-time-out-plugin/ChangeLog,v 1.22 2015/04/12 19:54:56 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-time-out-plugin/ChangeLog,v 1.23 2015/07/01 05:55:34 jer Exp $
+
+  01 Jul 2015; Jeroen Roovers <jer@gentoo.org>
+  xfce4-time-out-plugin-1.0.2.ebuild:
+  Stable for HPPA (bug #553500).
 
 *xfce4-time-out-plugin-1.0.2 (12 Apr 2015)
 

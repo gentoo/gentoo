@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtlockedfile/qtlockedfile-2.4.1_p20150629.ebuild,v 1.2 2015/06/29 17:35:06 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtlockedfile/qtlockedfile-2.4.1_p20150629.ebuild,v 1.3 2015/07/01 06:02:10 jer Exp $
 
 EAPI=5
 
@@ -14,7 +14,7 @@ SRC_URI="http://dev.gentoo.org/~pesa/distfiles/${MY_P}.tar.xz"
 
 LICENSE="|| ( LGPL-2.1 GPL-3 )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc +qt4 qt5"
 
 REQUIRED_USE="|| ( qt4 qt5 )"

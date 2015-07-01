@@ -1,9 +1,10 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/fakeweb/fakeweb-1.3.0-r2.ebuild,v 1.1 2015/03/29 07:14:31 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/fakeweb/fakeweb-1.3.0-r2.ebuild,v 1.2 2015/07/01 05:52:06 graaff Exp $
 
 EAPI=5
 
+# ruby22 -> not compatible with new net/http implementation
 USE_RUBY="ruby19 ruby20 ruby21"
 
 RUBY_FAKEGEM_DOCDIR="html"
@@ -21,7 +22,7 @@ IUSE=""
 
 ruby_add_bdepend "
 	test? (
-		dev-ruby/mocha:0.13
+		dev-ruby/mocha:0.14
 		dev-ruby/test-unit
 		dev-ruby/samuel
 		dev-ruby/right_http_connection
@@ -36,7 +37,7 @@ all_ruby_prepare() {
 	sed -i -e 's/sdoc/rdoc/' -e '/template/d' Rakefile || die
 
 	# Require an old enough version of mocha
-	sed -i -e '1igem "mocha", "~> 0.13.0"' test/test_helper.rb || die
+	sed -i -e '1igem "mocha", "~> 0.14.0"' test/test_helper.rb || die
 
 	# Use the test-unit gem to make jruby compatible with newer mocha.
 	sed -i -e '1igem "test-unit"' test/test_helper.rb || die

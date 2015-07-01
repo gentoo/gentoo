@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/samuel
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/samuel/ChangeLog,v 1.27 2015/06/07 19:44:31 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/samuel/ChangeLog,v 1.28 2015/07/01 05:51:48 graaff Exp $
+
+  01 Jul 2015; Hans de Graaff <graaff@gentoo.org> samuel-0.3.3-r2.ebuild:
+  Update mocha dependency.
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

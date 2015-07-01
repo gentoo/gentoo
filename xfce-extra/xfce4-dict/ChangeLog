@@ -1,6 +1,9 @@
 # ChangeLog for xfce-extra/xfce4-dict
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-dict/ChangeLog,v 1.56 2015/06/14 21:34:28 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-dict/ChangeLog,v 1.57 2015/07/01 05:50:55 jer Exp $
+
+  01 Jul 2015; Jeroen Roovers <jer@gentoo.org> xfce4-dict-0.7.1.ebuild:
+  Stable for HPPA (bug #553500).
 
   14 Jun 2015; Michał Górny <mgorny@gentoo.org> xfce4-dict-0.7.1.ebuild:
   Fix the dependencies to use libxfce4ui, bug #551758. Thanks to Derk W te

@@ -1,6 +1,11 @@
 # ChangeLog for app-crypt/signing-party
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/signing-party/ChangeLog,v 1.49 2014/12/29 16:00:36 alonbl Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/signing-party/ChangeLog,v 1.50 2015/07/01 06:02:08 alonbl Exp $
+
+*signing-party-2.0 (01 Jul 2015)
+
+  01 Jul 2015; Alon Bar-Lev <alonbl@gentoo.org> +signing-party-2.0.ebuild:
+  Version bump, bug#553674
 
 *signing-party-1.1.11-r1 (29 Dec 2014)
 

@@ -1,6 +1,9 @@
 # ChangeLog for xfce-extra/xfce4-timer-plugin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-timer-plugin/ChangeLog,v 1.49 2015/04/12 19:54:57 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-timer-plugin/ChangeLog,v 1.50 2015/07/01 05:55:20 jer Exp $
+
+  01 Jul 2015; Jeroen Roovers <jer@gentoo.org> xfce4-timer-plugin-1.6.0.ebuild:
+  Stable for HPPA (bug #553500).
 
 *xfce4-timer-plugin-1.6.0 (12 Apr 2015)
 

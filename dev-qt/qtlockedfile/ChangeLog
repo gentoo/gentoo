@@ -1,6 +1,10 @@
 # ChangeLog for dev-qt/qtlockedfile
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtlockedfile/ChangeLog,v 1.20 2015/06/29 17:35:06 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtlockedfile/ChangeLog,v 1.21 2015/07/01 06:02:10 jer Exp $
+
+  01 Jul 2015; Jeroen Roovers <jer@gentoo.org>
+  qtlockedfile-2.4.1_p20150629.ebuild:
+  Mark ~hppa (bug #553704).
 
   29 Jun 2015; Davide Pesavento <pesa@gentoo.org>
   qtlockedfile-2.4.1_p20130904.ebuild, qtlockedfile-2.4.1_p20150629.ebuild:
