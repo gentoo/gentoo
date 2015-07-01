@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/mousepad/mousepad-0.4.0.ebuild,v 1.3 2015/07/01 07:38:18 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/mousepad/mousepad-0.4.0.ebuild,v 1.4 2015/07/01 16:30:28 zlogene Exp $
 
 EAPI=5
 inherit gnome2-utils xfconf
@@ -11,7 +11,7 @@ SRC_URI="mirror://xfce/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="debug dbus gtk3"
 
 RDEPEND=">=dev-libs/glib-2.30:2=

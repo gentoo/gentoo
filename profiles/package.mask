@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16641 2015/07/01 03:03:43 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16642 2015/07/01 15:49:29 mpagano Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -33,7 +33,6 @@
 # Patrick Lauer <patrick@gentoo.org> (1 Jul 2015)
 # Wrong version #553670
 =sys-kernel/gentoo-sources-4.1.1
-=sys-kernel/gentoo-sources-4.0.7
 
 # Johannes Huber <johu@gentoo.org> (26 Jun 2015)
 # Mask for removal in 30 days. Segfaults on startup, bug #505314.
