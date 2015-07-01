@@ -1,6 +1,11 @@
 # ChangeLog for media-fonts/unifont
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/unifont/ChangeLog,v 1.57 2015/02/21 23:09:49 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/unifont/ChangeLog,v 1.58 2015/07/01 00:49:53 floppym Exp $
+
+*unifont-8.0.01 (01 Jul 2015)
+
+  01 Jul 2015; Mike Gilbert <floppym@gentoo.org> +unifont-8.0.01.ebuild:
+  Version bump.
 
   21 Feb 2015; Mike Gilbert <floppym@gentoo.org> metadata.xml:
   Add myself as a maintainer.
