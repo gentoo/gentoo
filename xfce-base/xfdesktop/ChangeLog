@@ -1,6 +1,10 @@
 # ChangeLog for xfce-base/xfdesktop
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-base/xfdesktop/ChangeLog,v 1.257 2015/07/01 08:05:18 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-base/xfdesktop/ChangeLog,v 1.258 2015/07/01 12:06:13 perfinion Exp $
+
+  01 Jul 2015; Jason Zaman <perfinion@gentoo.org> -xfdesktop-4.11.8.ebuild,
+  -xfdesktop-4.12.0.ebuild, -xfdesktop-4.12.1.ebuild:
+  drop old
 
   01 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> xfdesktop-4.12.2.ebuild:
   x86 stable wrt bug #553500

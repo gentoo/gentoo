@@ -1,6 +1,11 @@
 # ChangeLog for dev-perl/ImageInfo
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/ImageInfo/ChangeLog,v 1.108 2014/09/12 17:25:29 zlogene Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/ImageInfo/ChangeLog,v 1.109 2015/07/01 12:23:29 zlogene Exp $
+
+*ImageInfo-1.380.0 (01 Jul 2015)
+
+  01 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> +ImageInfo-1.380.0.ebuild:
+  Version bump
 
   12 Sep 2014; Mikle Kolyada <zlogene@gentoo.org> -ImageInfo-1.320.0.ebuild,
   -ImageInfo-1.330.0.ebuild:

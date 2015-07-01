@@ -1,6 +1,11 @@
 # ChangeLog for dev-perl/HTML-Template
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-Template/ChangeLog,v 1.54 2014/10/19 20:16:13 dilfridge Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-Template/ChangeLog,v 1.55 2015/07/01 12:09:09 zlogene Exp $
+
+*HTML-Template-2.950.0 (01 Jul 2015)
+
+  01 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> +HTML-Template-2.950.0.ebuild:
+  Version bump
 
   19 Oct 2014; Andreas K. Huettel <dilfridge@gentoo.org>
   -HTML-Template-2.910.0.ebuild:

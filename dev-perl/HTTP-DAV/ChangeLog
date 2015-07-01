@@ -1,6 +1,11 @@
 # ChangeLog for dev-perl/HTTP-DAV
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTTP-DAV/ChangeLog,v 1.43 2014/08/24 02:11:04 axs Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTTP-DAV/ChangeLog,v 1.44 2015/07/01 12:16:15 zlogene Exp $
+
+*HTTP-DAV-0.480.0 (01 Jul 2015)
+
+  01 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> +HTTP-DAV-0.480.0.ebuild:
+  Version bump
 
 *HTTP-DAV-0.470.0-r1 (24 Aug 2014)
 

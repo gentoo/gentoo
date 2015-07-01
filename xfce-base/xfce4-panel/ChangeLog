@@ -1,6 +1,10 @@
 # ChangeLog for xfce-base/xfce4-panel
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-base/xfce4-panel/ChangeLog,v 1.259 2015/07/01 07:58:50 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-base/xfce4-panel/ChangeLog,v 1.260 2015/07/01 12:16:50 perfinion Exp $
+
+  01 Jul 2015; Jason Zaman <perfinion@gentoo.org> -xfce4-panel-4.11.0.ebuild,
+  -xfce4-panel-4.11.1.ebuild:
+  drop old
 
   01 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> xfce4-panel-4.12.0.ebuild:
   x86 stable wrt bug #553500
