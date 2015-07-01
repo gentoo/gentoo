@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/systemd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/ChangeLog,v 1.380 2015/06/27 18:00:47 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/ChangeLog,v 1.381 2015/07/01 00:17:54 floppym Exp $
+
+  01 Jul 2015; Mike Gilbert <floppym@gentoo.org> systemd-220-r2.ebuild:
+  Backport unifont build workaround.
 
 *systemd-221 (27 Jun 2015)
 
