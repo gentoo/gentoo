@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-go/go-tools/go-tools-1.4.2_p20150520-r1.ebuild,v 1.1 2015/06/03 07:05:58 zmedico Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-go/go-tools/go-tools-0_pre20150606.ebuild,v 1.1 2015/07/01 22:20:07 williamh Exp $
 
 EAPI=5
 
@@ -9,7 +9,7 @@ DESCRIPTION="Go Tools"
 MY_PN=${PN##*-}
 GO_PN=golang.org/x/${MY_PN}
 HOMEPAGE="https://godoc.org/${GO_PN}"
-EGIT_COMMIT="3d1847243ea4f07666a91110f48e79e43396603d"
+EGIT_COMMIT="ac303766f5f240c1796eeea3dc9bf34f1261aa35"
 SRC_URI="https://github.com/golang/${MY_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
 	http://golang.org/favicon.ico -> go-favicon.ico"
 LICENSE="BSD"
@@ -94,5 +94,6 @@ src_install() {
 
 	insinto /usr/lib/go
 	find "${WORKDIR}"/{pkg,src} -name '.git*' -exec rm -rf {} \; 2>/dev/null
+	insopts -m0644 -p # preserve timestamps for bug 551486
 	doins -r "${WORKDIR}"/{pkg,src}
 }
