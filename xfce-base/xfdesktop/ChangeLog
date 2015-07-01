@@ -1,6 +1,9 @@
 # ChangeLog for xfce-base/xfdesktop
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-base/xfdesktop/ChangeLog,v 1.255 2015/05/17 15:07:14 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-base/xfdesktop/ChangeLog,v 1.256 2015/07/01 05:19:24 jer Exp $
+
+  01 Jul 2015; Jeroen Roovers <jer@gentoo.org> xfdesktop-4.12.2.ebuild:
+  Stable for HPPA (bug #553500).
 
 *xfdesktop-4.12.2 (17 May 2015)
 

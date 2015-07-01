@@ -1,6 +1,9 @@
 # ChangeLog for app-office/orage
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/orage/ChangeLog,v 1.83 2015/05/26 20:25:32 perfinion Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/orage/ChangeLog,v 1.84 2015/07/01 05:04:11 jer Exp $
+
+  01 Jul 2015; Jeroen Roovers <jer@gentoo.org> orage-4.12.1.ebuild:
+  Stable for HPPA (bug #553500).
 
 *orage-4.12.1 (26 May 2015)
 

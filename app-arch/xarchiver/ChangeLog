@@ -1,6 +1,9 @@
 # ChangeLog for app-arch/xarchiver
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/xarchiver/ChangeLog,v 1.45 2015/06/09 08:59:20 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/xarchiver/ChangeLog,v 1.46 2015/07/01 04:43:04 jer Exp $
+
+  01 Jul 2015; Jeroen Roovers <jer@gentoo.org> xarchiver-0.5.4.ebuild:
+  Stable for HPPA (bug #553500).
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

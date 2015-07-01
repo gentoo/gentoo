@@ -1,6 +1,9 @@
 # ChangeLog for xfce-base/libxfce4ui
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-base/libxfce4ui/ChangeLog,v 1.60 2015/06/20 20:02:05 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-base/libxfce4ui/ChangeLog,v 1.61 2015/07/01 05:12:39 jer Exp $
+
+  01 Jul 2015; Jeroen Roovers <jer@gentoo.org> libxfce4ui-4.12.1-r2.ebuild:
+  Stable for HPPA (bug #553500).
 
   20 Jun 2015; Michał Górny <mgorny@gentoo.org> libxfce4ui-4.12.1-r2.ebuild:
   Fix gtk-doc install location
