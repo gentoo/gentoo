@@ -1,10 +1,10 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/gnupg/gnupg-2.1.5.ebuild,v 1.1 2015/06/12 16:23:41 k_f Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/gnupg/gnupg-2.1.6.ebuild,v 1.1 2015/07/01 15:20:57 k_f Exp $
 
 EAPI="5"
 
-inherit autotools eutils flag-o-matic toolchain-funcs
+inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="The GNU Privacy Guard, a GPL OpenPGP implementation"
 HOMEPAGE="http://www.gnupg.org/"
@@ -27,7 +27,7 @@ COMMON_DEPEND_LIBS="
 	sys-libs/zlib
 	ldap? ( net-nds/openldap )
 	bzip2? ( app-arch/bzip2 )
-	readline? ( sys-libs/readline )
+	readline? ( sys-libs/readline:= )
 	smartcard? ( usb? ( virtual/libusb:0 ) )
 	"
 COMMON_DEPEND_BINS="app-crypt/pinentry

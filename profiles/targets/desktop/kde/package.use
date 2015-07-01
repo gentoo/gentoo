@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/targets/desktop/kde/package.use,v 1.8 2015/06/04 18:57:37 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/targets/desktop/kde/package.use,v 1.9 2015/07/01 15:25:25 johu Exp $
 
 # Required by kde-base/pykde4
 dev-python/PyQt4 script sql webkit
@@ -22,3 +22,6 @@ media-gfx/exiv2 xmp
 
 # Required by kde-apps/artikulate
 dev-qt/qt-mobility multimedia
+
+# Required by app-office/libreoffice
+media-libs/phonon designer

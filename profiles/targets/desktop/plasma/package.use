@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/targets/desktop/plasma/package.use,v 1.8 2015/07/01 13:00:24 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/targets/desktop/plasma/package.use,v 1.9 2015/07/01 15:25:25 johu Exp $
 
 # Not required, but makes life easier with Qt; bug 457934
 app-arch/unzip natspec
@@ -45,3 +45,6 @@ kde-base/kactivities minimal
 kde-base/kde-meta minimal
 net-libs/libkpeople minimal
 sys-auth/polkit-kde-agent minimal
+
+# Required by app-office/libreoffice
+media-libs/phonon designer

@@ -1,6 +1,12 @@
 # ChangeLog for dev-java/jython
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jython/ChangeLog,v 1.100 2015/06/27 18:15:35 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jython/ChangeLog,v 1.102 2015/07/01 14:53:49 ago Exp $
+
+  01 Jul 2015; Agostino Sarubbo <ago@gentoo.org> jython-2.7.0.ebuild:
+  Stable for x86, wrt bug #553374
+
+  01 Jul 2015; Agostino Sarubbo <ago@gentoo.org> jython-2.7.0.ebuild:
+  Stable for amd64, wrt bug #553374
 
   27 Jun 2015; Patrice Clement <monsieurp@gentoo.org>
   +files/jython-2.7.0-build.xml.patch, jython-2.7.0.ebuild:
