@@ -1,6 +1,12 @@
 # ChangeLog for app-admin/logstash-bin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/logstash-bin/ChangeLog,v 1.1 2015/04/14 11:21:06 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/logstash-bin/ChangeLog,v 1.2 2015/07/01 08:04:27 idella4 Exp $
+
+*logstash-bin-1.4.3 (01 Jul 2015)
+
+  01 Jul 2015; Ian Delaney <idella4@gentoo.org> +logstash-bin-1.4.3.ebuild,
+  -logstash-bin-1.4.2.ebuild:
+  bump, rm old wrt sec bug #553608
 
 *logstash-bin-1.4.2 (14 Apr 2015)
 

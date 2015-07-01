@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce-theme-manager/xfce-theme-manager-0.3.5.ebuild,v 1.1 2014/03/21 07:37:00 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce-theme-manager/xfce-theme-manager-0.3.5.ebuild,v 1.2 2015/07/01 08:11:47 zlogene Exp $
 
 EAPI=5
 inherit xfconf
@@ -14,7 +14,7 @@ SRC_URI="http://keithhedger.hostingsiteforfree.com/zips/xfcethememanager/${MY_P}
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE=""
 
 RDEPEND=">=dev-libs/glib-2.30

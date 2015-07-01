@@ -1,6 +1,9 @@
 # ChangeLog for www-client/midori
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/midori/ChangeLog,v 1.133 2015/06/25 06:55:19 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/midori/ChangeLog,v 1.134 2015/07/01 08:08:17 zlogene Exp $
+
+  01 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> midori-0.5.10.ebuild:
+  x86 stable wrt bug #553500
 
   25 Jun 2015; Lars Wendler <polynomial-c@gentoo.org> midori-0.5.10.ebuild,
   +files/midori-0.5.10-fix-webkit2-build-breakage.patch:

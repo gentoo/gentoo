@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/granite
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/granite/ChangeLog,v 1.10 2015/06/26 17:03:00 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/granite/ChangeLog,v 1.11 2015/07/01 08:08:00 zlogene Exp $
+
+  01 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> granite-0.2.1.ebuild:
+  x86 stable wrt bug #553500
 
 *granite-0.3.0 (26 Jun 2015)
 

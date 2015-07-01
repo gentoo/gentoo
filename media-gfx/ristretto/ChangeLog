@@ -1,6 +1,9 @@
 # ChangeLog for media-gfx/ristretto
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/ristretto/ChangeLog,v 1.82 2015/04/21 13:55:39 calchan Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/ristretto/ChangeLog,v 1.83 2015/07/01 07:41:22 zlogene Exp $
+
+  01 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> ristretto-0.8.0-r1.ebuild:
+  x86 stable wrt bug #553500
 
   21 Apr 2015; Denis Dupeyron <calchan@gentoo.org> -ristretto-0.8.0.ebuild:
   Remove broken ebuild.

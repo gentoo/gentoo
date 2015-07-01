@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/logstash-bin/logstash-bin-1.4.2.ebuild,v 1.1 2015/04/14 11:21:06 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/logstash-bin/logstash-bin-1.4.3.ebuild,v 1.1 2015/07/01 08:04:27 idella4 Exp $
 
 EAPI=5
 
@@ -8,8 +8,8 @@ MY_PN="${PN/-bin}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Tool for managing events and logs"
-HOMEPAGE="http://www.logstash.net"
-SRC_URI="https://download.elasticsearch.org/${MY_PN}/${MY_PN}/${MY_P}.tar.gz"
+HOMEPAGE="https://www.elastic.co/products/logstash"
+SRC_URI="https://download.elastic.co/${MY_PN}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -17,7 +17,7 @@ KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND=""
-RDEPEND="virtual/jre:*"
+RDEPEND="|| ( virtual/jre:1.8 virtual/jre:1.7 )"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -41,7 +41,7 @@ src_install() {
 
 pkg_postinst() {
 	einfo "Getting started with logstash:"
-	einfo "  http://www.logstash.net/docs/${PV}/tutorials/getting-started-with-logstash"
+	einfo "  https://www.elastic.co/guide/en/logstash/current/getting-started-with-logstash.html"
 	einfo ""
 	einfo "Packages that might be interesting:"
 	einfo "  app-misc/elasticsearch"

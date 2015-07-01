@@ -1,6 +1,9 @@
 # ChangeLog for dev-util/xfce4-dev-tools
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/xfce4-dev-tools/ChangeLog,v 1.66 2015/07/01 05:05:12 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/xfce4-dev-tools/ChangeLog,v 1.67 2015/07/01 07:40:48 zlogene Exp $
+
+  01 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> xfce4-dev-tools-4.12.0.ebuild:
+  x86 stable wrt bug #553500
 
   01 Jul 2015; Jeroen Roovers <jer@gentoo.org> xfce4-dev-tools-4.12.0.ebuild:
   Stable for HPPA (bug #553500).
