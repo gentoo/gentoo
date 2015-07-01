@@ -1,6 +1,10 @@
 # ChangeLog for xfce-extra/xfce4-verve-plugin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-verve-plugin/ChangeLog,v 1.19 2015/07/01 08:40:23 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-verve-plugin/ChangeLog,v 1.20 2015/07/01 17:02:35 zlogene Exp $
+
+  01 Jul 2015; Mikle Kolyada <zlogene@gentoo.org>
+  xfce4-verve-plugin-1.0.1.ebuild:
+  amd64 stable wrt bug #553500
 
   01 Jul 2015; Mikle Kolyada <zlogene@gentoo.org>
   xfce4-verve-plugin-1.0.1.ebuild:

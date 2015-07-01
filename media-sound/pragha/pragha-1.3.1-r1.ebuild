@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/pragha/pragha-1.3.1-r1.ebuild,v 1.2 2015/07/01 07:46:41 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/pragha/pragha-1.3.1-r1.ebuild,v 1.3 2015/07/01 16:36:14 zlogene Exp $
 
 EAPI=5
 inherit xfconf # autotools
@@ -11,7 +11,7 @@ SRC_URI="http://github.com/matiasdelellis/${PN}/releases/download/v${PV}/${P}.ta
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="debug +glyr grilo +keybinder lastfm libnotify mtp +peas +playlist rygel soup +udev"
 
 COMMON_DEPEND=">=dev-db/sqlite-3.4:3=

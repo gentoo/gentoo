@@ -1,6 +1,12 @@
 # ChangeLog for www-apps/dokuwiki
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/dokuwiki/ChangeLog,v 1.80 2015/04/10 10:53:32 jmbsvicetto Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/dokuwiki/ChangeLog,v 1.81 2015/07/01 17:18:34 jmbsvicetto Exp $
+
+*dokuwiki-20140929d-r1 (01 Jul 2015)
+
+  01 Jul 2015; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +dokuwiki-20140929d-r1.ebuild, dokuwiki-20140505e.ebuild:
+  Drop depend.php from inherit - fixes bug 552858.
 
   10 Apr 2015; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
   -dokuwiki-20140929b.ebuild:

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/dokuwiki/dokuwiki-20140505e.ebuild,v 1.2 2015/07/01 17:18:34 jmbsvicetto Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/dokuwiki/dokuwiki-20140929d-r1.ebuild,v 1.1 2015/07/01 17:18:34 jmbsvicetto Exp $
 
 EAPI=5
 
@@ -10,7 +10,7 @@ inherit webapp
 MY_BASE_PV="${PV:0:4}-${PV:4:2}-${PV:6:2}"
 MY_PV="${MY_BASE_PV}${PV:8:1}"
 
-DESCRIPTION="DokuWiki is a simple to use Wiki aimed at a small company's documentation needs"
+DESCRIPTION="DokuWiki is a simple to use Wiki aimed at a small company's documentation needs."
 HOMEPAGE="http://wiki.splitbrain.org/wiki:dokuwiki"
 SRC_URI="http://download.dokuwiki.org/src/${PN}/${PN}-${MY_PV}.tgz"
 
