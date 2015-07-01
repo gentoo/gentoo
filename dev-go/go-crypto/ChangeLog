@@ -1,6 +1,17 @@
 # ChangeLog for dev-go/go-crypto
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-go/go-crypto/ChangeLog,v 1.7 2015/06/29 03:30:29 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-go/go-crypto/ChangeLog,v 1.9 2015/07/01 20:11:53 williamh Exp $
+
+  01 Jul 2015; William Hubbs <williamh@gentoo.org>
+  go-crypto-0_pre20150608.ebuild:
+  fix manifest
+
+*go-crypto-0_pre20150608 (01 Jul 2015)
+
+  01 Jul 2015; William Hubbs <williamh@gentoo.org>
+  +go-crypto-0_pre20150608.ebuild, -go-crypto-1.4.2_p20150514.ebuild,
+  -go-crypto-1.4.2_p20150608.ebuild:
+  Move the latest snapshot to a pre-release of version 0
 
   29 Jun 2015; William Hubbs <williamh@gentoo.org> go-crypto-9999.ebuild:
   make live ebuild copyable

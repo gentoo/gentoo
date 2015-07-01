@@ -1,6 +1,12 @@
 # ChangeLog for dev-go/go-net
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-go/go-net/ChangeLog,v 1.9 2015/06/29 03:48:53 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-go/go-net/ChangeLog,v 1.10 2015/07/01 20:24:19 williamh Exp $
+
+*go-net-0_pre20150604 (01 Jul 2015)
+
+  01 Jul 2015; William Hubbs <williamh@gentoo.org> +go-net-0_pre20150604.ebuild,
+  -go-net-1.4.2_p20150520.ebuild, -go-net-1.4.2_p20150604.ebuild:
+  move latest snapshot to a pre-release of version 0
 
   29 Jun 2015; William Hubbs <williamh@gentoo.org> go-net-9999.ebuild:
   Make live ebuild copyable
