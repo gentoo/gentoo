@@ -1,6 +1,11 @@
 # ChangeLog for dev-perl/Data-Dump
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Data-Dump/ChangeLog,v 1.32 2015/01/18 02:31:57 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Data-Dump/ChangeLog,v 1.33 2015/07/01 13:12:13 zlogene Exp $
+
+*Data-Dump-1.230.0 (01 Jul 2015)
+
+  01 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> +Data-Dump-1.230.0.ebuild:
+  Version bump
 
   18 Jan 2015; Mikle Kolyada <zlogene@gentoo.org> Data-Dump-1.220.0-r1.ebuild:
   Stable for all

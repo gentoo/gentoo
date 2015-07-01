@@ -1,6 +1,9 @@
 # ChangeLog for dev-util/scanmem
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/scanmem/ChangeLog,v 1.14 2015/06/30 15:57:21 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/scanmem/ChangeLog,v 1.15 2015/07/01 12:50:24 kensington Exp $
+
+  01 Jul 2015; Michael Palimaka <kensington@gentoo.org> -scanmem-0.13.ebuild:
+  Remove old.
 
 *scanmem-0.15.2 (30 Jun 2015)
 

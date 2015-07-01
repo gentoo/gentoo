@@ -1,10 +1,14 @@
 # ChangeLog for profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10153 2015/07/01 03:03:43 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10154 2015/07/01 13:00:24 kensington Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  01 Jul 2015; Michael Palimaka <kensington@gentoo.org>
+  targets/desktop/plasma/package.use:
+  Avoid kde-apps/kdesu and kde-plasma/kde-cli-tools blockers wrt bug #553504.
 
   01 Jul 2015; Patrick Lauer <patrick@gentoo.org> package.mask:
   Mask kernel versions that are not actually the version they claim to be

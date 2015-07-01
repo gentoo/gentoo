@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-perl/TermReadKey dev-perl/libwww-perl >=dev-perl/Log-Log4perl-1.28 hammer? ( dev-perl/Expect ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=Typical installation tasks for system administrators
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/Sysadm-Install/
+IUSE=hammer
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/TermReadKey dev-perl/libwww-perl >=dev-perl/Log-Log4perl-1.28 hammer? ( dev-perl/Expect ) dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/M/MS/MSCHILLI/Sysadm-Install-0.46.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=b9a3a73c13b846478aec4a4c871a167e
