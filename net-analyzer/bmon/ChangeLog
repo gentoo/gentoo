@@ -1,6 +1,11 @@
 # ChangeLog for net-analyzer/bmon
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/bmon/ChangeLog,v 1.65 2015/05/07 05:08:11 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/bmon/ChangeLog,v 1.66 2015/07/02 04:56:46 jer Exp $
+
+*bmon-3.7 (02 Jul 2015)
+
+  02 Jul 2015; Jeroen Roovers <jer@gentoo.org> +bmon-3.7.ebuild:
+  Version bump.
 
   07 May 2015; Jeroen Roovers <jer@gentoo.org> files/bmon-3.6-net_if.h.patch:
   Use upstream patch (bug #546060).

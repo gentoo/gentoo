@@ -1,6 +1,11 @@
 # ChangeLog for dev-ruby/arel
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/arel/ChangeLog,v 1.52 2015/06/07 16:46:32 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/arel/ChangeLog,v 1.53 2015/07/02 05:17:51 graaff Exp $
+
+*arel-3.0.3 (02 Jul 2015)
+
+  02 Jul 2015; Hans de Graaff <graaff@gentoo.org> +arel-3.0.3.ebuild:
+  Version bump.
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml
