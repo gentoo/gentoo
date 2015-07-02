@@ -1,6 +1,11 @@
 # ChangeLog for gnome-base/gdm
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gdm/ChangeLog,v 1.422 2015/06/30 18:55:26 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gdm/ChangeLog,v 1.423 2015/07/02 20:24:41 tranquility Exp $
+
+*gdm-3.16.2 (02 Jul 2015)
+
+  02 Jul 2015; Ole Reifschneider <tranquility@gentoo.org> +gdm-3.16.2.ebuild:
+  Version bump
 
   30 Jun 2015; Pacho Ramos <pacho@gentoo.org> -gdm-3.14.1-r1.ebuild,
   gdm-3.16.1.1.ebuild:

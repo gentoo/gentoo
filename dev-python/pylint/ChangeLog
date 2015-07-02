@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/pylint
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pylint/ChangeLog,v 1.131 2015/06/07 09:12:22 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pylint/ChangeLog,v 1.132 2015/07/02 20:20:41 jlec Exp $
+
+*pylint-1.4.4 (02 Jul 2015)
+
+  02 Jul 2015; Justin Lecher <jlec@gentoo.org> +pylint-1.4.4.ebuild:
+  Version Bump
 
   07 Jun 2015; Markus Meier <maekke@gentoo.org> pylint-1.4.1.ebuild:
   arm stable, bug #540290
