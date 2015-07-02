@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/neutron/neutron-2015.1.0-r1.ebuild,v 1.1 2015/05/17 23:25:00 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/neutron/neutron-2015.1.0-r2.ebuild,v 1.1 2015/07/02 05:43:05 prometheanfire Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
@@ -129,6 +129,7 @@ RDEPEND="
 	dhcp? ( net-dns/dnsmasq[dhcp-tools] )"
 
 PATCHES=(
+		"${FILESDIR}/cve-2015-3221_2015.1.0.patch"
 )
 
 pkg_setup() {

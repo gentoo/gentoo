@@ -1,6 +1,16 @@
 # ChangeLog for sys-cluster/neutron
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/neutron/ChangeLog,v 1.64 2015/05/17 23:25:00 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/neutron/ChangeLog,v 1.65 2015/07/02 05:43:05 prometheanfire Exp $
+
+*neutron-2014.2.3-r1 (02 Jul 2015)
+*neutron-2015.1.0-r2 (02 Jul 2015)
+*cve-2015-3221_2014.2.3 (02 Jul 2015)
+
+  02 Jul 2015; Matthew Thode <prometheanfire@gentoo.org>
+  +files/cve-2015-3221_2014.2.3.ebuild, +files/cve-2015-3221_2015.1.0.patch,
+  +neutron-2014.2.3-r1.ebuild, +neutron-2015.1.0-r2.ebuild,
+  -neutron-2014.2.3.ebuild, -neutron-2015.1.0-r1.ebuild:
+  fixing CVE-2015-3221 no badness remaining
 
 *neutron-2015.1.0-r1 (17 May 2015)
 
