@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/fixtures
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/fixtures/ChangeLog,v 1.32 2015/07/01 07:34:31 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/fixtures/ChangeLog,v 1.33 2015/07/02 07:24:10 patrick Exp $
+
+*fixtures-1.3.1 (02 Jul 2015)
+
+  02 Jul 2015; Patrick Lauer <patrick@gentoo.org> +fixtures-1.3.1.ebuild:
+  Bump
 
 *fixtures-1.3.0 (01 Jul 2015)
 

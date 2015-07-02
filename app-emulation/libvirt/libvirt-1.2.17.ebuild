@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/libvirt-9999.ebuild,v 1.78 2015/07/02 08:02:27 tamiko Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/libvirt-1.2.17.ebuild,v 1.1 2015/07/02 08:02:27 tamiko Exp $
 
 EAPI=5
 
@@ -36,6 +36,7 @@ S="${WORKDIR}/${P%_rc*}"
 DESCRIPTION="C toolkit to manipulate virtual machines"
 HOMEPAGE="http://www.libvirt.org/"
 LICENSE="LGPL-2.1"
+# TODO: Reenable IUSE wireshark-plugins
 IUSE="audit avahi +caps firewalld fuse glusterfs iscsi +libvirtd lvm lxc \
 	+macvtap nfs nls numa openvz parted pcap phyp policykit +qemu rbd sasl \
 	selinux +udev uml +vepa virtualbox virt-network wireshark-plugins xen \
@@ -243,7 +244,7 @@ src_prepare() {
 	local iscsi_init=
 	local rbd_init=
 	local firewalld_init=
-	cp "${FILESDIR}/libvirtd.init-r14" "${S}/libvirtd.init"
+	cp "${FILESDIR}/libvirtd.init-r15" "${S}/libvirtd.init"
 	use avahi && avahi_init='avahi-daemon'
 	use iscsi && iscsi_init='iscsid'
 	use rbd && rbd_init='ceph'
@@ -408,7 +409,7 @@ src_install() {
 	systemd_newtmpfilesd "${FILESDIR}"/libvirtd.tmpfiles.conf libvirtd.conf
 
 	newinitd "${S}/libvirtd.init" libvirtd || die
-	newconfd "${FILESDIR}/libvirtd.confd-r4" libvirtd || die
+	newconfd "${FILESDIR}/libvirtd.confd-r5" libvirtd || die
 	newinitd "${FILESDIR}/virtlockd.init-r1" virtlockd || die
 
 	readme.gentoo_create_doc

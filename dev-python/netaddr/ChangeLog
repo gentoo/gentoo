@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/netaddr
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/netaddr/ChangeLog,v 1.35 2015/06/07 14:06:16 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/netaddr/ChangeLog,v 1.36 2015/07/02 08:16:10 jlec Exp $
+
+*netaddr-0.7.15 (02 Jul 2015)
+
+  02 Jul 2015; Justin Lecher <jlec@gentoo.org> +netaddr-0.7.15.ebuild:
+  Version Bump
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

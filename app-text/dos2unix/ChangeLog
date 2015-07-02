@@ -1,6 +1,12 @@
 # ChangeLog for app-text/dos2unix
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/dos2unix/ChangeLog,v 1.161 2015/06/09 12:19:32 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/dos2unix/ChangeLog,v 1.162 2015/07/02 07:18:56 polynomial-c Exp $
+
+*dos2unix-7.2.3 (02 Jul 2015)
+
+  02 Jul 2015; Lars Wendler <polynomial-c@gentoo.org> -dos2unix-7.2.1.ebuild,
+  +dos2unix-7.2.3.ebuild, -files/dos2unix-7.2-gb18030-test.patch:
+  Version bump. Removed old.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml
