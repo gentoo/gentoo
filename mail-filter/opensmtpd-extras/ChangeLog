@@ -1,6 +1,10 @@
 # ChangeLog for mail-filter/opensmtpd-extras
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/opensmtpd-extras/ChangeLog,v 1.4 2015/06/02 12:00:05 zx2c4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/opensmtpd-extras/ChangeLog,v 1.5 2015/07/02 12:45:15 zx2c4 Exp $
+
+  02 Jul 2015; Jason A. Donenfeld <zx2c4@gentoo.org>
+  opensmtpd-extras-5.4.5.201506020835.ebuild:
+  Nit
 
 *opensmtpd-extras-5.4.5.201506020835 (02 Jun 2015)
 

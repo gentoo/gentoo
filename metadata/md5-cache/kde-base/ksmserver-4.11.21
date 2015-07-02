@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test unpack
+DEPEND=>=kde-base/kcminit-4.11.21:4[aqua=] >=kde-base/libkworkspace-4.11.21:4[aqua=] media-libs/qimageblitz x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXrender >=sys-apps/sed-4 sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) dev-util/automoc virtual/pkgconfig !aqua? ( >=x11-libs/libXtst-1.1.0 x11-proto/xf86vidmodeproto ) >=dev-qt/qtdeclarative-4.8.5:4 dev-lang/perl >=dev-qt/qt3support-4.8.5:4[accessibility] >=dev-qt/qtcore-4.8.5:4[qt3support,ssl] >=dev-qt/qtdbus-4.8.5:4 >=dev-qt/designer-4.8.5:4 >=dev-qt/qtgui-4.8.5:4[accessibility,dbus(+)] >=dev-qt/qtscript-4.8.5:4 >=dev-qt/qtsql-4.8.5:4[qt3support] >=dev-qt/qtsvg-4.8.5:4 >=dev-qt/qttest-4.8.5:4 >=dev-qt/qtwebkit-4.8.5:4 >=kde-base/kdelibs-4.11.21:4[aqua=]
+DESCRIPTION=The reliable KDE session manager that talks the standard X11R6
+EAPI=5
+HOMEPAGE=http://www.kde.org/
+IUSE=debug aqua
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=>=kde-base/kcminit-4.11.21:4[aqua=] >=kde-base/libkworkspace-4.11.21:4[aqua=] media-libs/qimageblitz x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXrender >=kde-base/libkgreeter-4.11.21:4[aqua=] kde-apps/oxygen-icons >=dev-qt/qtdeclarative-4.8.5:4 dev-lang/perl >=dev-qt/qt3support-4.8.5:4[accessibility] >=dev-qt/qtcore-4.8.5:4[qt3support,ssl] >=dev-qt/qtdbus-4.8.5:4 >=dev-qt/designer-4.8.5:4 >=dev-qt/qtgui-4.8.5:4[accessibility,dbus(+)] >=dev-qt/qtscript-4.8.5:4 >=dev-qt/qtsql-4.8.5:4[qt3support] >=dev-qt/qtsvg-4.8.5:4 >=dev-qt/qttest-4.8.5:4 >=dev-qt/qtwebkit-4.8.5:4 >=kde-base/kdelibs-4.11.21:4[aqua=]
+SLOT=4/4.11
+SRC_URI=mirror://kde/stable/applications/15.04.3/src/kde-workspace-4.11.21.tar.xz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	flag-o-matic	c9602887773166fe300444712fc7ff98	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	kde4-base	559feb798976aacd15eeb289dbcdc11c	kde4-functions	99e770658f27aaf2c8a5850af7598b18	kde4-meta	99e6fa43762d8563ba5546fed686a63a	multilib	62927b3db3a589b0806255f3a002d5d3	pax-utils	dfe060cb70d89757fde5c1ff8405e950	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f	virtualx	73cfc129b4b9ba23aed1abb10c825d86
+_md5_=566ea3c4b13121ec81686c35946b3e23

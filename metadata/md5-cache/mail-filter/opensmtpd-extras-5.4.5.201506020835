@@ -10,4 +10,4 @@ RDEPEND=mail-mta/opensmtpd dev-libs/libevent dev-libs/openssl filter-python? ( d
 SLOT=0
 SRC_URI=https://www.opensmtpd.org/archives/opensmtpd-extras-201506020835.tar.gz
 _eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=4418f3533949ea2567ed6d52eb6456d6
+_md5_=e51871c2addd44836fb1bd2f24b748fb

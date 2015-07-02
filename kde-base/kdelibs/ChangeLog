@@ -1,6 +1,11 @@
 # ChangeLog for kde-base/kdelibs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdelibs/ChangeLog,v 1.1057 2015/06/13 08:34:13 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdelibs/ChangeLog,v 1.1058 2015/07/02 12:57:11 mrueg Exp $
+
+*kdelibs-4.14.10 (02 Jul 2015)
+
+  02 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +kdelibs-4.14.10.ebuild:
+  Version bump.
 
   13 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> kdelibs-4.14.8.ebuild:
   x86 stable wrt bug #550740

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/opensmtpd-extras/opensmtpd-extras-5.4.5.201506020835.ebuild,v 1.1 2015/06/02 12:00:05 zx2c4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/opensmtpd-extras/opensmtpd-extras-5.4.5.201506020835.ebuild,v 1.2 2015/07/02 12:45:15 zx2c4 Exp $
 
 EAPI=5
 
@@ -86,6 +86,6 @@ src_configure() {
 		--with-privsep-user=smtpd \
 		--with-privsep-path=/var/empty \
 		--sysconfdir=/etc/opensmtpd \
-		--with-lua-type=$(use luajit && echo luajit || echo lua) \
+		--with-lua-type=$(usex luajit luajit lua) \
 		$(for use in $MY_COMPONENTS; do use_with $use; done)
 }

@@ -1,6 +1,11 @@
 # ChangeLog for kde-base/kmenuedit
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kmenuedit/ChangeLog,v 1.321 2015/06/13 08:34:11 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kmenuedit/ChangeLog,v 1.322 2015/07/02 13:23:00 mrueg Exp $
+
+*kmenuedit-4.11.21 (02 Jul 2015)
+
+  02 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +kmenuedit-4.11.21.ebuild:
+  Version bump.
 
   13 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> kmenuedit-4.11.19.ebuild:
   x86 stable wrt bug #550740

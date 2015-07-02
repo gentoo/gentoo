@@ -1,6 +1,12 @@
 # ChangeLog for kde-base/solid-actions-kcm
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/solid-actions-kcm/ChangeLog,v 1.52 2015/06/13 08:34:12 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/solid-actions-kcm/ChangeLog,v 1.53 2015/07/02 13:23:00 mrueg Exp $
+
+*solid-actions-kcm-4.11.21 (02 Jul 2015)
+
+  02 Jul 2015; Manuel Rüger <mrueg@gentoo.org>
+  +solid-actions-kcm-4.11.21.ebuild:
+  Version bump.
 
   13 Jun 2015; Mikle Kolyada <zlogene@gentoo.org>
   solid-actions-kcm-4.11.19.ebuild:

@@ -1,6 +1,11 @@
 # ChangeLog for kde-base/khotkeys
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/khotkeys/ChangeLog,v 1.332 2015/06/13 08:34:11 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/khotkeys/ChangeLog,v 1.333 2015/07/02 13:23:01 mrueg Exp $
+
+*khotkeys-4.11.21 (02 Jul 2015)
+
+  02 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +khotkeys-4.11.21.ebuild:
+  Version bump.
 
   13 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> khotkeys-4.11.19.ebuild:
   x86 stable wrt bug #550740

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/libvirt-9999.ebuild,v 1.78 2015/07/02 08:02:27 tamiko Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/libvirt-9999.ebuild,v 1.79 2015/07/02 12:47:14 tamiko Exp $
 
 EAPI=5
 
@@ -139,7 +139,6 @@ LXC_CONFIG_CHECK="
 	~NET_CLS_CGROUP
 	~CGROUP_NET_PRIO
 	~CPUSETS
-	~RESOURCE_COUNTERS
 	~NAMESPACES
 	~UTS_NS
 	~IPC_NS
