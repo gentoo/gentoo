@@ -1,6 +1,16 @@
 # ChangeLog for sec-policy/selinux-qemu
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-qemu/ChangeLog,v 1.67 2015/06/05 16:10:24 perfinion Exp $
+# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-qemu/ChangeLog,v 1.69 2015/07/02 18:06:57 perfinion Exp $
+
+  02 Jul 2015; Jason Zaman <perfinion@gentoo.org>
+  selinux-qemu-2.20141203-r6.ebuild:
+  Stabilize policy 2.20141203-r6
+
+*selinux-qemu-2.20141203-r7 (02 Jul 2015)
+
+  02 Jul 2015; Jason Zaman <perfinion@gentoo.org>
+  +selinux-qemu-2.20141203-r7.ebuild:
+  Release of 2.20141203-r7
 
   05 Jun 2015; Jason Zaman <perfinion@gentoo.org>
   selinux-qemu-2.20141203-r5.ebuild:

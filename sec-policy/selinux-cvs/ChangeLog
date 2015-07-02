@@ -1,6 +1,16 @@
 # ChangeLog for sec-policy/selinux-cvs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-cvs/ChangeLog,v 1.62 2015/06/05 16:10:23 perfinion Exp $
+# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-cvs/ChangeLog,v 1.64 2015/07/02 18:06:54 perfinion Exp $
+
+  02 Jul 2015; Jason Zaman <perfinion@gentoo.org>
+  selinux-cvs-2.20141203-r6.ebuild:
+  Stabilize policy 2.20141203-r6
+
+*selinux-cvs-2.20141203-r7 (02 Jul 2015)
+
+  02 Jul 2015; Jason Zaman <perfinion@gentoo.org>
+  +selinux-cvs-2.20141203-r7.ebuild:
+  Release of 2.20141203-r7
 
   05 Jun 2015; Jason Zaman <perfinion@gentoo.org>
   selinux-cvs-2.20141203-r5.ebuild:

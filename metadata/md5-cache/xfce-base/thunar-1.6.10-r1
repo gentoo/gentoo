@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst postrm preinst prepare setup test
+DEPEND=>=dev-lang/perl-5.6 >=dev-libs/glib-2.30:= >=x11-libs/gdk-pixbuf-2.14:= >=x11-libs/gtk+-2.24:2= >=xfce-base/exo-0.10:= >=xfce-base/libxfce4ui-4.10:= >=xfce-base/libxfce4util-4.10.1:= >=xfce-base/xfconf-4.10:= dbus? ( >=dev-libs/dbus-glib-0.100:= ) exif? ( >=media-libs/libexif-0.6.19:= ) libnotify? ( >=x11-libs/libnotify-0.7:= ) pcre? ( >=dev-libs/libpcre-6:= ) udisks? ( virtual/libgudev:= ) xfce_plugins_trash? ( >=xfce-base/xfce4-panel-4.10:= ) dev-util/intltool sys-devel/gettext virtual/pkgconfig test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost ) >=sys-apps/sed-4
+DESCRIPTION=File manager for the Xfce desktop environment
+EAPI=5
+HOMEPAGE=http://www.xfce.org/projects/ http://thunar.xfce.org/
+IUSE=+dbus debug exif libnotify pcre test udisks +xfce_plugins_trash test
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~x86-solaris
+LICENSE=GPL-2 LGPL-2
+RDEPEND=>=dev-lang/perl-5.6 >=dev-libs/glib-2.30:= >=x11-libs/gdk-pixbuf-2.14:= >=x11-libs/gtk+-2.24:2= >=xfce-base/exo-0.10:= >=xfce-base/libxfce4ui-4.10:= >=xfce-base/libxfce4util-4.10.1:= >=xfce-base/xfconf-4.10:= dbus? ( >=dev-libs/dbus-glib-0.100:= ) exif? ( >=media-libs/libexif-0.6.19:= ) libnotify? ( >=x11-libs/libnotify-0.7:= ) pcre? ( >=dev-libs/libpcre-6:= ) udisks? ( virtual/libgudev:= ) xfce_plugins_trash? ( >=xfce-base/xfce4-panel-4.10:= ) >=dev-util/desktop-file-utils-0.20-r1 x11-misc/shared-mime-info dbus? ( >=gnome-base/gvfs-1.18.3 ) udisks? ( virtual/udev >=gnome-base/gvfs-1.18.3[udisks,udev] ) xfce_plugins_trash? ( >=gnome-base/gvfs-1.18.3 )
+REQUIRED_USE=xfce_plugins_trash? ( dbus )
+SLOT=0
+SRC_URI=mirror://xfce/src/xfce/thunar/1.6/Thunar-1.6.10.tar.bz2
+_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	virtualx	73cfc129b4b9ba23aed1abb10c825d86	xfconf	eee85b2bc9e9826f5a9c1349a75a69fe
+_md5_=61400b04f4662bf1451987621c9c98d5

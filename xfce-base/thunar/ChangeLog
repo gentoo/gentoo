@@ -1,6 +1,11 @@
 # ChangeLog for xfce-base/thunar
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-base/thunar/ChangeLog,v 1.184 2015/07/01 16:40:02 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-base/thunar/ChangeLog,v 1.185 2015/07/02 18:22:25 perfinion Exp $
+
+*thunar-1.6.10-r1 (02 Jul 2015)
+
+  02 Jul 2015; Jason Zaman <perfinion@gentoo.org> +thunar-1.6.10-r1.ebuild:
+  revbump to fix QA errors, non-existent configure options
 
   01 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> thunar-1.6.10.ebuild:
   amd64 stable wrt bug #553500

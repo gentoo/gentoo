@@ -3,11 +3,11 @@ DESCRIPTION=SELinux policy for core modules
 EAPI=5
 HOMEPAGE=http://www.gentoo.org/proj/en/hardened/selinux/
 IUSE=+unconfined
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-2
 PDEPEND=unconfined? ( sec-policy/selinux-unconfined )
 RDEPEND==sec-policy/selinux-base-2.20141203-r6
 SLOT=0
 SRC_URI=https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-2.20141203.tar.bz2 http://dev.gentoo.org/~swift/patches/selinux-base-policy/patchbundle-selinux-base-policy-2.20141203-r6.tar.bz2
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=f6d961aa4e5d660a034d0b9abed1c9e7
+_md5_=515ee45c6672a0050a5b7cf9c47b3145

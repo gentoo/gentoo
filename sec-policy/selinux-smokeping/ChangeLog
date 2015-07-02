@@ -1,6 +1,16 @@
 # ChangeLog for sec-policy/selinux-smokeping
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-smokeping/ChangeLog,v 1.62 2015/06/05 16:10:30 perfinion Exp $
+# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-smokeping/ChangeLog,v 1.64 2015/07/02 18:06:58 perfinion Exp $
+
+  02 Jul 2015; Jason Zaman <perfinion@gentoo.org>
+  selinux-smokeping-2.20141203-r6.ebuild:
+  Stabilize policy 2.20141203-r6
+
+*selinux-smokeping-2.20141203-r7 (02 Jul 2015)
+
+  02 Jul 2015; Jason Zaman <perfinion@gentoo.org>
+  +selinux-smokeping-2.20141203-r7.ebuild:
+  Release of 2.20141203-r7
 
   05 Jun 2015; Jason Zaman <perfinion@gentoo.org>
   selinux-smokeping-2.20141203-r5.ebuild:

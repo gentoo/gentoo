@@ -1,6 +1,12 @@
 # ChangeLog for xfce-base/libxfce4util
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-base/libxfce4util/ChangeLog,v 1.202 2015/07/01 16:34:44 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-base/libxfce4util/ChangeLog,v 1.203 2015/07/02 18:31:00 perfinion Exp $
+
+*libxfce4util-4.12.1-r1 (02 Jul 2015)
+
+  02 Jul 2015; Jason Zaman <perfinion@gentoo.org>
+  +libxfce4util-4.12.1-r1.ebuild:
+  revump to fix gtk-doc QA issue
 
   01 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> libxfce4util-4.12.1.ebuild:
   amd64 stable wrt bug #553500
