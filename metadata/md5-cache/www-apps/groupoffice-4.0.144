@@ -9,5 +9,5 @@ LICENSE=AGPL-3
 RDEPEND=app-arch/zip app-arch/unzip virtual/httpd-cgi dev-lang/php[calendar,cli,curl,gd,imap,mysqli,zlib] >=app-admin/webapp-config-1.50.15
 SLOT=4.0.144
 SRC_URI=mirror://sourceforge/group-office/groupoffice-com-4.0.144.tar.gz
-_eclasses_=webapp	6621f8b5df9f14800054a5953065efeb
+_eclasses_=webapp	b3bc3e4682aadd1dd3eb9f49cb3c751c
 _md5_=5bc1c258575a736690d340a50f1539e9

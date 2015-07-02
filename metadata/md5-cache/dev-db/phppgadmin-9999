@@ -7,5 +7,5 @@ IUSE=vhosts
 LICENSE=GPL-2
 RDEPEND=|| ( <dev-lang/php-5.3[pcre] >=dev-lang/php-5.3 ) dev-lang/php[postgres,session] >=app-admin/webapp-config-1.50.15
 SLOT=9999
-_eclasses_=git-2	e28f0d8a9b321431b1e699782851b827	webapp	6621f8b5df9f14800054a5953065efeb
+_eclasses_=git-2	e28f0d8a9b321431b1e699782851b827	webapp	b3bc3e4682aadd1dd3eb9f49cb3c751c
 _md5_=c0f3573bea41e64eafdee8768586894e

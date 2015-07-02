@@ -1,6 +1,6 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/webapp.eclass,v 1.73 2015/05/12 15:15:31 voyageur Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/webapp.eclass,v 1.74 2015/07/02 14:02:34 twitch153 Exp $
 
 # @ECLASS: webapp.eclass
 # @MAINTAINER:
@@ -244,6 +244,7 @@ _webapp_serverowned() {
 	local my_file="$(webapp_strip_appdir "${1}")"
 	my_file="$(webapp_strip_cwd "${my_file}")"
 
+	elog "(server owned) ${my_file}"
 	echo "${my_file}" >> "${D}/${WA_SOLIST}"
 }
 
@@ -412,9 +413,7 @@ webapp_pkg_setup() {
 		ewarn "This ebuild may be overwriting important files."
 		ewarn
 		echo
-		if has "${EAPI:-0}" 0 1 2; then
-			ebeep 10
-		fi
+		ebeep 10
 	elif [[ "$(echo ${my_output} | awk '{ print $1 }')" != "${PN}" ]]; then
 		echo
 		eerror "You already have ${my_output} installed in ${my_dir}"
@@ -502,12 +501,12 @@ webapp_pkg_postinst() {
 				elog "${PN}-${PVR} is not installed - using install mode"
 			fi
 
-			my_cmd="${WEBAPP_CONFIG} ${my_mode} -h localhost -u root -d ${INSTALL_DIR} ${PN} ${PVR}"
+			my_cmd="${WEBAPP_CONFIG} -h localhost -u root -d ${INSTALL_DIR} ${my_mode} ${PN} ${PVR}"
 			elog "Running ${my_cmd}"
 			${my_cmd}
 
 			echo
-			local cleaner="${WEBAPP_CLEANER} -p -C /${PN}"
+			local cleaner="${WEBAPP_CLEANER} -p -C ${CATEGORY}/${PN}"
 			einfo "Running ${cleaner}"
 			${cleaner}
 		else
@@ -518,7 +517,7 @@ webapp_pkg_postinst() {
 			elog
 			elog "To install ${PN}-${PVR} into a virtual host, run the following command:"
 			elog
-			elog "    webapp-config -I -h <host> -d ${PN} ${PN} ${PVR}"
+			elog "    webapp-config -h <host> -d ${PN} -I ${PN} ${PVR}"
 			elog
 			elog "For more details, see the webapp-config(8) man page"
 		fi
@@ -530,7 +529,7 @@ webapp_pkg_postinst() {
 		elog
 		elog "To install ${PN}-${PVR} into a virtual host, run the following command:"
 		elog
-		elog "    webapp-config -I -h <host> -d ${PN} ${PN} ${PVR}"
+		elog "    webapp-config -h <host> -d ${PN} -I ${PN} ${PVR}"
 		elog
 		elog "For more details, see the webapp-config(8) man page"
 	fi
@@ -554,7 +553,7 @@ webapp_pkg_prerm() {
 			if [[ -f "${x}"/.webapp ]]; then
 				. "${x}"/.webapp
 				if [[ -n "${WEB_HOSTNAME}" && -n "${WEB_INSTALLDIR}" ]]; then
-					${WEBAPP_CONFIG} -C -h ${WEB_HOSTNAME} -d ${WEB_INSTALLDIR} ${PN} ${PVR}
+					${WEBAPP_CONFIG} -h ${WEB_HOSTNAME} -d ${WEB_INSTALLDIR} -C ${PN} ${PVR}
 				fi
 			else
 				ewarn "Cannot find file ${x}/.webapp"

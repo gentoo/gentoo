@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-vcs/git sys-libs/zlib dev-libs/openssl:0 virtual/httpd-cgi highlight? ( || ( dev-python/pygments app-text/highlight ) ) lua? ( jit? ( dev-lang/luajit ) !jit? ( dev-lang/lua ) ) >=app-admin/webapp-config-1.50.15
 SLOT=0
 SRC_URI=mirror://kernel/software/scm/git/git-2.3.1.tar.xz http://git.zx2c4.com/cgit/snapshot/cgit-0.11.1.tar.xz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	webapp	6621f8b5df9f14800054a5953065efeb
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	webapp	b3bc3e4682aadd1dd3eb9f49cb3c751c
 _md5_=1170a249e091901fffe2c777824ff0b0
