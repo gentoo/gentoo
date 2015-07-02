@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-44.0.2403.18.ebuild,v 1.2 2015/06/04 19:06:10 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-44.0.2403.61.ebuild,v 1.1 2015/07/02 15:01:48 floppym Exp $
 
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )
@@ -16,10 +16,10 @@ DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="http://chromium.org/"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz"
 
-LICENSE="BSD"
+LICENSE="BSD hotwording? ( no-source-code )"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="cups gnome gnome-keyring hidpi kerberos neon pic +proprietary-codecs pulseaudio selinux +tcmalloc"
+IUSE="cups gnome gnome-keyring hidpi hotwording kerberos neon pic +proprietary-codecs pulseaudio selinux +tcmalloc"
 RESTRICT="proprietary-codecs? ( bindist )"
 
 # Native Client binaries are compiled with different set of flags, bug #452066.
@@ -54,7 +54,7 @@ RDEPEND=">=app-accessibility/speech-dispatcher-0.8:=
 	>=media-libs/libjpeg-turbo-1.2.0-r1:=
 	media-libs/libpng:0=
 	>=media-libs/libwebp-0.4.0:=
-	>=media-libs/libvpx-1.4.0:=
+	>=media-libs/libvpx-1.4.0:=[postproc]
 	media-libs/speex:=
 	pulseaudio? ( media-sound/pulseaudio:= )
 	sys-apps/dbus:=
@@ -187,6 +187,7 @@ src_prepare() {
 	# fi
 
 	epatch "${FILESDIR}/${PN}-system-jinja-r7.patch"
+	epatch "${FILESDIR}/${PN}-hotwording-2403.patch"
 
 	epatch_user
 
@@ -217,6 +218,7 @@ src_prepare() {
 		'third_party/cld_2' \
 		'third_party/cros_system_api' \
 		'third_party/cython/python_flags.py' \
+		'third_party/devscripts' \
 		'third_party/dom_distiller_js' \
 		'third_party/dom_distiller_js/dist/proto_gen/third_party/dom_distiller_js' \
 		'third_party/ffmpeg' \
@@ -358,6 +360,7 @@ src_configure() {
 		$(gyp_use gnome-keyring use_gnome_keyring)
 		$(gyp_use gnome-keyring linux_link_gnome_keyring)
 		$(gyp_use hidpi enable_hidpi)
+		$(gyp_use hotwording enable_hotwording)
 		$(gyp_use kerberos)
 		$(gyp_use pulseaudio)
 		$(gyp_use tcmalloc use_allocator tcmalloc none)"
@@ -579,8 +582,6 @@ src_install() {
 
 	newman out/Release/chrome.1 chromium${CHROMIUM_SUFFIX}.1 || die
 	newman out/Release/chrome.1 chromium-browser${CHROMIUM_SUFFIX}.1 || die
-
-	doexe out/Release/libffmpegsumo.so || die
 
 	# Install icons and desktop entry.
 	local branding size
