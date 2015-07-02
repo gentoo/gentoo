@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs-vcs/emacs-vcs-24.5.9999.ebuild,v 1.3 2015/04/11 11:50:01 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs-vcs/emacs-vcs-24.5.9999.ebuild,v 1.4 2015/07/02 16:16:47 ulm Exp $
 
 EAPI=5
 
@@ -168,6 +168,15 @@ src_configure() {
 		local f
 		if use gtk; then
 			einfo "Configuring to build with GIMP Toolkit (GTK+)"
+			while read line; do ewarn "${line}"; done <<-EOF
+				Your version of GTK+ will have problems with closing open
+				displays. This is no problem if you just use one display, but
+				if you use more than one and close one of them Emacs may crash.
+				See <http://bugzilla.gnome.org/show_bug.cgi?id=85715>.
+				If you intend to use more than one display, then it is strongly
+				recommended that you compile Emacs with the Athena/Lucid or the
+				Motif toolkit instead.
+			EOF
 			myconf+=" --with-x-toolkit=$(usex gtk3 gtk3 gtk2)"
 			for f in motif Xaw3d athena; do
 				use ${f} && ewarn \
