@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=python? ( dev-python/dpkt[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] ) perl? ( dev-lang/perl ) net-libs/libnetfilter_queue dev-lang/swig sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=High-level language bindings for libnetfilter_queue
+EAPI=5
+HOMEPAGE=https://www.wzdftpd.net/redmine/projects/nfqueue-bindings/wiki/
+IUSE=perl python examples python_targets_python2_7
+KEYWORDS=~x86 ~amd64
+LICENSE=GPL-3
+RDEPEND=dev-lang/perl:=[-build(-)]
+REQUIRED_USE=|| ( perl python )
+SLOT=0
+SRC_URI=https://www.wzdftpd.net/redmine/attachments/download/68/nfqueue-bindings-0.5.tar.xz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	python-single-r1	7a178335dbd6ea7f50ed4e3e1c13c1e4	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=83ad1b3babb2f113762b4958c004115b
