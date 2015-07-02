@@ -1,10 +1,13 @@
 # ChangeLog for profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10159 2015/07/02 10:58:09 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10160 2015/07/02 12:20:16 monsieurp Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  02 Jul 2015; Patrice Clement <monsieurp@gentoo.org> package.mask:
+  Clean up two old entries.
 
   02 Jul 2015; Manuel Rüger <mrueg@gentoo.org> package.mask:
   Remove gpe-{base,utils} mask.

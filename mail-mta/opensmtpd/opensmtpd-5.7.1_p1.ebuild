@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/opensmtpd/opensmtpd-5.4.6_p1.ebuild,v 1.1 2015/06/12 16:44:40 zx2c4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/opensmtpd/opensmtpd-5.7.1_p1.ebuild,v 1.2 2015/07/02 12:18:23 zx2c4 Exp $
 
 EAPI=5
 
@@ -44,8 +44,6 @@ RDEPEND="${DEPEND}"
 S=${WORKDIR}/${MY_P/_}
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-5.4.5_p2-libevent-version-macro.patch"
-	epatch "${FILESDIR}/${PN}-5.4.5_p2-setgroups-header.patch"
 	epatch_user
 	eautoreconf
 }
@@ -80,4 +78,12 @@ pkg_preinst() {
 	enewuser smtpd 25 -1 /var/empty smtpd
 	enewgroup smtpq 252
 	enewuser smtpq 252 -1 /var/empty smtpq
+}
+
+pkg_postinst() {
+	einfo
+	einfo "Plugins for SQLite, MySQL, PostgreSQL, LDAP, socketmaps,"
+	einfo "Redis, and many other useful addons and filters are"
+	einfo "available in the mail-filter/opensmtpd-extras package."
+	einfo
 }

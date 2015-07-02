@@ -1,6 +1,24 @@
 # ChangeLog for mail-mta/opensmtpd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/opensmtpd/ChangeLog,v 1.72 2015/06/12 16:44:40 zx2c4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/opensmtpd/ChangeLog,v 1.76 2015/07/02 12:19:41 zx2c4 Exp $
+
+  02 Jul 2015; Jason A. Donenfeld <zx2c4@gentoo.org>
+  -files/opensmtpd-5.4.5_p2-libevent-version-macro.patch,
+  -files/opensmtpd-5.4.5_p2-setgroups-header.patch, opensmtpd-5.7.1_p1.ebuild:
+  Remove old patches
+
+  02 Jul 2015; Jason A. Donenfeld <zx2c4@gentoo.org>
+  opensmtpd-5.4.6.201506112227_p1.ebuild, opensmtpd-5.7.1_p1.ebuild:
+  Unify messages
+
+  02 Jul 2015; Jason A. Donenfeld <zx2c4@gentoo.org> -opensmtpd-5.4.6_p1.ebuild,
+  opensmtpd-5.7.1_p1.ebuild:
+  Stable
+
+*opensmtpd-5.7.1_p1 (02 Jul 2015)
+
+  02 Jul 2015; Jason A. Donenfeld <zx2c4@gentoo.org> +opensmtpd-5.7.1_p1.ebuild:
+  Latest stable upstream
 
 *opensmtpd-5.4.6_p1 (12 Jun 2015)
 *opensmtpd-5.4.6.201506112227_p1 (12 Jun 2015)

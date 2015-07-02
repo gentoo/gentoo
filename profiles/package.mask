@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16644 2015/07/02 10:58:09 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16645 2015/07/02 12:20:16 monsieurp Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -262,23 +262,10 @@ media-libs/lcms:0
 # masked for removal in 30 days.
 www-servers/gorg
 
-# Patrice Clement <monsieurp@gentoo.org> (25 May 2015)
-# Upstream dead. Project no longer supported by the ASF 
-# who moved it into the Attic in 2010.
-# See #550326. Masked for removal in 30 days.
-dev-java/excalibur-logger
-
 # Anthony G. Basile <blueness@gentoo.org> (14 May 2015)
 # No longer required by any packages in the tree.
 # Masked for removal in 30 days.
 sys-apps/getent
-
-# Patrice Clement <monsieurp@gentoo.org) (13 May 2015)
-# Unused package, homepage dead, no revdeps. 
-# Fails to compile with recent JVMs, see bug #549090.
-# Last release dates back to 2010.
-# Masked for removal in 30 days.
-dev-java/xt
 
 # Ian Delaney <idella4@gentoo.org> (13 May 2015)
 # package unused, no revdeps, obsolete.
