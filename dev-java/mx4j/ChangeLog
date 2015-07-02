@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/mx4j
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/mx4j/ChangeLog,v 1.36 2015/07/01 15:07:57 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/mx4j/ChangeLog,v 1.37 2015/07/02 08:51:16 monsieurp Exp $
+
+  02 Jul 2015; Patrice Clement <monsieurp@gentoo.org> -mx4j-3.0.1-r4.ebuild,
+  -mx4j-3.0.2.ebuild:
+  Remove old.
 
   01 Jul 2015; Patrice Clement <monsieurp@gentoo.org> mx4j-3.0.2-r1.ebuild:
   Stable for x86 with ALLARCHES. Fix bug 551988.

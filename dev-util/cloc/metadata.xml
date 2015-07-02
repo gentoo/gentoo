@@ -2,7 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer>
-		<email>maintainer-needed@gentoo.org</email>
+		<email>tamiko@gentoo.org</email>
+		<name>Matthias Maier</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">cloc</remote-id>

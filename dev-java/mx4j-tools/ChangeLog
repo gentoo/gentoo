@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/mx4j-tools
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/mx4j-tools/ChangeLog,v 1.22 2015/07/01 15:06:47 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/mx4j-tools/ChangeLog,v 1.23 2015/07/02 08:51:11 monsieurp Exp $
+
+  02 Jul 2015; Patrice Clement <monsieurp@gentoo.org>
+  -mx4j-tools-3.0.1-r2.ebuild, -mx4j-tools-3.0.2.ebuild:
+  Remove old.
 
   01 Jul 2015; Patrice Clement <monsieurp@gentoo.org>
   mx4j-tools-3.0.2-r1.ebuild:

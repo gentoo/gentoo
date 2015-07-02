@@ -1,6 +1,12 @@
 # ChangeLog for dev-util/cloc
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/cloc/ChangeLog,v 1.14 2014/12/31 15:19:02 kensington Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/cloc/ChangeLog,v 1.15 2015/07/02 09:10:53 tamiko Exp $
+
+*cloc-1.64 (02 Jul 2015)
+
+  02 Jul 2015; Matthias Maier <tamiko@gentoo.org> +cloc-1.64.ebuild,
+  metadata.xml:
+  version bump; take over maintainership
 
 *cloc-1.62 (31 Dec 2014)
 

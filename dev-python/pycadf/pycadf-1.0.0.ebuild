@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pycadf/pycadf-0.8.0.ebuild,v 1.2 2015/07/02 10:17:41 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pycadf/pycadf-1.0.0.ebuild,v 1.1 2015/07/02 10:17:41 idella4 Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
@@ -17,8 +17,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-		>=dev-python/pbr-0.8[${PYTHON_USEDEP}]
-		<dev-python/pbr-1.0[${PYTHON_USEDEP}]
+		dev-python/pbr[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/hacking-0.10[${PYTHON_USEDEP}]
 		<dev-python/hacking-0.11[${PYTHON_USEDEP}]
@@ -26,7 +25,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		>=dev-python/fixtures-0.3.14[${PYTHON_USEDEP}]
 		>=dev-python/mock-1.0[${PYTHON_USEDEP}]
 		>=dev-python/oslo-messaging-1.6.0[${PYTHON_USEDEP}]
-		>=dev-python/oslotest-1.2.0[${PYTHON_USEDEP}]
+		>=dev-python/oslotest-1.5.1[${PYTHON_USEDEP}]
 		>=dev-python/subunit-0.0.18[${PYTHON_USEDEP}]
 		>=dev-python/testrepository-0.0.18[${PYTHON_USEDEP}]
 		>=dev-python/testtools-0.9.36[${PYTHON_USEDEP}]
@@ -34,7 +33,6 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		>=dev-python/oslo-sphinx-2.2.0[${PYTHON_USEDEP}]
 		>=dev-python/sphinx-1.1.2[${PYTHON_USEDEP}]
 		<dev-python/sphinx-1.3[${PYTHON_USEDEP}]
-		dev-python/nose[${PYTHON_USEDEP}]
 	)
 	doc? (
 		dev-python/oslo-sphinx[${PYTHON_USEDEP}]
@@ -43,22 +41,18 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		dev-python/sphinxcontrib-httpdomain[${PYTHON_USEDEP}]
 	)"
 # !=1.2.0 of sphinx deleted since it is not in portage anyway
-RDEPEND=">=dev-python/Babel-1.3[${PYTHON_USEDEP}]
-		>=dev-python/oslo-config-1.6.0[${PYTHON_USEDEP}]
-		>=dev-python/oslo-context-0.1.0[${PYTHON_USEDEP}]
-		>=dev-python/oslo-i18n-1.3.0[${PYTHON_USEDEP}]
-		>=dev-python/oslo-serialization-1.2.0[${PYTHON_USEDEP}]
-		>=dev-python/pytz-2013d[${PYTHON_USEDEP}]
-		>=dev-python/six-1.7.0[${PYTHON_USEDEP}]
-		>=dev-python/webob-1.2.3[${PYTHON_USEDEP}]
-		>=dev-python/pytz-2013.6[${PYTHON_USEDEP}]"
+RDEPEND=">=dev-python/oslo-config-1.11.0[${PYTHON_USEDEP}]
+		>=dev-python/oslo-serialization-1.4.0[${PYTHON_USEDEP}]
+		>=dev-python/pytz-2013.6[${PYTHON_USEDEP}]
+		>=dev-python/six-1.9.0[${PYTHON_USEDEP}]"
 
 python_compile_all() {
-	use doc && emake -C doc html
+	use doc && "${PYTHON}" setup.py build_sphinx
 }
 
 python_test() {
-	nosetests ${PN}/tests || die "test failed under ${EPYTHON}"
+	testr init || die "testr init failed under ${EPYTHON}"
+	testr run || die "testr run failed under ${EPYTHON}"
 }
 
 python_install_all() {

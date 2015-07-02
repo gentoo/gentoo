@@ -1,6 +1,10 @@
 # ChangeLog for dev-python/oslo-messaging
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/oslo-messaging/ChangeLog,v 1.13 2015/06/09 16:31:17 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/oslo-messaging/ChangeLog,v 1.14 2015/07/02 08:44:32 idella4 Exp $
+
+  02 Jul 2015; Ian Delaney <idella4@gentoo.org> -oslo-messaging-1.3.0.ebuild,
+  -oslo-messaging-1.4.1.ebuild, oslo-messaging-1.10.0.ebuild:
+  rm 2 old versions
 
 *oslo-messaging-1.8.3 (09 Jun 2015)
 

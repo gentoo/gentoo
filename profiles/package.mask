@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16642 2015/07/01 15:49:29 mpagano Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16643 2015/07/02 09:24:46 mrueg Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -339,14 +339,6 @@ dev-python/gevent-zeromq
 # Get rid of vulnerable releases.
 # Masked for removal in 30 days.
 <www-apps/wordpress-4.2.1
-
-# Hans de Graaff <graaff@gentoo.org> (27 Apr 2015)
-# This version of rubinius is old and only very few
-# packages ever got the associated "rbx" RUBY_TARGET.
-# If you would like to keep rubinius in Gentoo, please
-# help us to get the currently masked rubinius 2.x
-# versions ready. Masked for removal in 30 days.
-=dev-lang/rubinius-1*
 
 # Patrick Lauer <patrick@gentoo.org> (10 Apr 2015)
 # Breaks pretty much all consumers, like samba

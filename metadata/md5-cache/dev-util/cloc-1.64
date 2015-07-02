@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare unpack
+DEPEND=>=dev-lang/perl-5.6
+DESCRIPTION=Count Lines of Code
+EAPI=5
+HOMEPAGE=http://cloc.sourceforge.net/
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2+
+RDEPEND=>=dev-lang/perl-5.6 dev-perl/Algorithm-Diff dev-perl/regexp-common virtual/perl-Digest-MD5 virtual/perl-Getopt-Long virtual/perl-File-Spec virtual/perl-File-Temp
+SLOT=0
+SRC_URI=mirror://sourceforge/cloc/cloc-1.64.pl mirror://sourceforge/cloc/cloc.1.pod
+_md5_=0d49b07d6436dbf2298c06181b3d3818
