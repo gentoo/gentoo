@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/mesa/mesa-10.5.4.ebuild,v 1.1 2015/04/27 23:06:16 mattst88 Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/mesa/mesa-10.6.1.ebuild,v 1.1 2015/07/02 00:58:46 mattst88 Exp $
 
 EAPI=5
 
@@ -73,7 +73,7 @@ REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 "
 
-LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.57"
+LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.60"
 # keep correct libdrm and dri2proto dep
 # keep blocks in rdepend for binpkg
 RDEPEND="
@@ -154,12 +154,12 @@ DEPEND="${RDEPEND}
 	>=x11-proto/xextproto-7.2.1-r1:=[${MULTILIB_USEDEP}]
 	>=x11-proto/xf86driproto-2.1.1-r1:=[${MULTILIB_USEDEP}]
 	>=x11-proto/xf86vidmodeproto-2.3.1-r1:=[${MULTILIB_USEDEP}]
-	${PYTHON_DEPS}
-	$(python_gen_any_dep ">=dev-python/mako-0.7.3[\${PYTHON_USEDEP}]")
 "
 [[ ${PV} == "9999" ]] && DEPEND+="
 	sys-devel/bison
 	sys-devel/flex
+	${PYTHON_DEPS}
+	$(python_gen_any_dep ">=dev-python/mako-0.7.3[\${PYTHON_USEDEP}]")
 "
 
 S="${WORKDIR}/${MY_P}"
@@ -276,6 +276,7 @@ multilib_src_configure() {
 		--enable-dri \
 		--enable-glx \
 		--enable-shared-glapi \
+		--disable-shader-cache \
 		$(use_enable !bindist texture-float) \
 		$(use_enable d3d9 nine) \
 		$(use_enable debug) \

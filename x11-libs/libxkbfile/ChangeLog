@@ -1,6 +1,14 @@
 # ChangeLog for x11-libs/libxkbfile
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libxkbfile/ChangeLog,v 1.81 2015/04/13 00:06:35 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libxkbfile/ChangeLog,v 1.83 2015/07/02 01:30:42 mrueg Exp $
+
+  02 Jul 2015; Manuel Rüger <mrueg@gentoo.org> libxkbfile-1.0.9.ebuild:
+  Update EAPI.
+
+*libxkbfile-1.0.9 (02 Jul 2015)
+
+  02 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +libxkbfile-1.0.9.ebuild:
+  Version bump.
 
   13 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -libxkbfile-1.0.7.ebuild:
   Remove old.

@@ -1,6 +1,14 @@
 # ChangeLog for x11-apps/xdriinfo
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/xdriinfo/ChangeLog,v 1.57 2013/05/11 03:45:07 patrick Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-apps/xdriinfo/ChangeLog,v 1.59 2015/07/02 01:29:20 mrueg Exp $
+
+  02 Jul 2015; Manuel Rüger <mrueg@gentoo.org> xdriinfo-1.0.5.ebuild:
+  Update EAPI. Use correct libdir.
+
+*xdriinfo-1.0.5 (02 Jul 2015)
+
+  02 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +xdriinfo-1.0.5.ebuild:
+  Version bump.
 
   11 May 2013; Patrick Lauer <patrick@gentoo.org> xdriinfo-1.0.4.ebuild:
   Fix inherit

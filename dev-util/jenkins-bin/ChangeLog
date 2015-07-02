@@ -1,6 +1,12 @@
 # ChangeLog for dev-util/jenkins-bin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/jenkins-bin/ChangeLog,v 1.32 2015/06/10 10:24:42 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/jenkins-bin/ChangeLog,v 1.33 2015/07/02 01:00:24 mrueg Exp $
+
+*jenkins-bin-1.618 (02 Jul 2015)
+
+  02 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +jenkins-bin-1.618.ebuild,
+  -jenkins-bin-1.616.ebuild:
+  Version bump. Remove old.
 
 *jenkins-bin-1.617 (10 Jun 2015)
 *jenkins-bin-1.609.1 (10 Jun 2015)

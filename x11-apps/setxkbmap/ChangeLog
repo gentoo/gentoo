@@ -1,6 +1,14 @@
 # ChangeLog for x11-apps/setxkbmap
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/setxkbmap/ChangeLog,v 1.69 2015/03/03 10:37:32 dlan Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-apps/setxkbmap/ChangeLog,v 1.71 2015/07/02 01:29:50 mrueg Exp $
+
+  02 Jul 2015; Manuel Rüger <mrueg@gentoo.org> setxkbmap-1.3.1.ebuild:
+  Update EAPI.
+
+*setxkbmap-1.3.1 (02 Jul 2015)
+
+  02 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +setxkbmap-1.3.1.ebuild:
+  Version bump.
 
   03 Mar 2015; Yixun Lan <dlan@gentoo.org> setxkbmap-1.3.0.ebuild:
   add arm64 support, tested on A53 board

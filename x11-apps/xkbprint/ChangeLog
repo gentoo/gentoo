@@ -1,6 +1,11 @@
 # ChangeLog for x11-apps/xkbprint
-# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/xkbprint/ChangeLog,v 1.35 2011/03/07 21:15:47 scarabeus Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-apps/xkbprint/ChangeLog,v 1.36 2015/07/02 01:26:57 mrueg Exp $
+
+*xkbprint-1.0.4 (02 Jul 2015)
+
+  02 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +xkbprint-1.0.4.ebuild:
+  Version bump.
 
   07 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org> -xkbprint-1.0.2.ebuild:
   old
@@ -133,4 +138,3 @@
   08 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
   +xkbprint-0.99.0.ebuild:
   Initial commit for modular X.
-

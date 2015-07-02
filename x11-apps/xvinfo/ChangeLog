@@ -1,6 +1,11 @@
 # ChangeLog for x11-apps/xvinfo
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/xvinfo/ChangeLog,v 1.64 2015/04/08 17:36:34 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-apps/xvinfo/ChangeLog,v 1.65 2015/07/02 01:23:15 mrueg Exp $
+
+*xvinfo-1.1.3 (02 Jul 2015)
+
+  02 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +xvinfo-1.1.3.ebuild:
+  Version bump.
 
   08 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -xvinfo-1.1.1.ebuild:
   Remove old.

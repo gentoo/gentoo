@@ -1,12 +1,12 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/retext/retext-5.0.1.ebuild,v 1.1 2015/03/15 13:28:46 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/retext/retext-5.1.0.ebuild,v 1.1 2015/07/02 00:58:49 mrueg Exp $
 
 EAPI=5
 
 PYTHON_COMPAT=( python3_{3,4} )
 
-PLOCALES="ca cs cy da de es et eu fr it ja pl pt pt_BR ru sk uk vi zh_CN zh_TW"
+PLOCALES="ca cs cy da de es et eu fr hu it ja pl pt pt_BR ru sk sr sr@latin uk vi zh_CN zh_TW"
 
 inherit distutils-r1 l10n
 
