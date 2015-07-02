@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16643 2015/07/02 09:24:46 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16644 2015/07/02 10:58:09 mrueg Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -267,38 +267,6 @@ www-servers/gorg
 # who moved it into the Attic in 2010.
 # See #550326. Masked for removal in 30 days.
 dev-java/excalibur-logger
-
-# Pacho Ramos <pacho@gentoo.org> (23 May 2015)
-# Unmaintained for ages and no longer useful, also multiple
-# opened and unresolved bugs for them (#535844). Removal in a month.
-gpe-base/gpe-calculator
-gpe-base/gpe-contacts
-gpe-base/gpe-dm
-gpe-base/gpe-gallery
-gpe-base/gpe-icons
-gpe-base/gpe-login
-gpe-base/gpe
-gpe-base/libcontactsdb
-gpe-base/libdisplaymigration
-gpe-base/libeventdb
-gpe-base/libgpelaunch
-gpe-base/libgpepimc
-gpe-base/libgpevtype
-gpe-base/libgpewidget
-gpe-base/libgtkstylus
-gpe-base/libhandoff
-gpe-base/libmimedir
-gpe-base/libschedule
-gpe-base/libtododb
-gpe-utils/gpe-clock
-gpe-utils/gpe-edit
-gpe-utils/gpe-filemanager
-gpe-utils/gpe-ownerinfo
-gpe-utils/gpe-plucker
-gpe-utils/gpe-taskmanager
-gpe-utils/gpe-what
-games-puzzle/gpe-lights
-games-misc/gpe-julia
 
 # Anthony G. Basile <blueness@gentoo.org> (14 May 2015)
 # No longer required by any packages in the tree.

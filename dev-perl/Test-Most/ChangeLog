@@ -1,6 +1,11 @@
 # ChangeLog for dev-perl/Test-Most
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-Most/ChangeLog,v 1.22 2015/06/13 21:53:35 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-Most/ChangeLog,v 1.23 2015/07/02 11:29:13 zlogene Exp $
+
+*Test-Most-0.340.0 (02 Jul 2015)
+
+  02 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> +Test-Most-0.340.0.ebuild:
+  Version bump
 
   13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
   Test-Most-0.310.0-r1.ebuild:

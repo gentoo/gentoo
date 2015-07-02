@@ -1,4 +1,0 @@
-#!/bin/sh
-
-# This will launch matchbox-panel, matchbox-desktop. ...
-exec /usr/bin/matchbox-session

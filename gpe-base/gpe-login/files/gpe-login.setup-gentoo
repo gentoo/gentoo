@@ -1,7 +1,0 @@
-#!/bin/sh
-# /etc/X11/gpe-login.setup: This is executed at gpe-login startup.
-# Copyright 1999-2009 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# Angelo Arrifano <miknix@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/gpe-base/gpe-login/files/gpe-login.setup-gentoo,v 1.2 2009/07/04 01:27:40 miknix Exp $
-

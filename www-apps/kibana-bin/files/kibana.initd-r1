@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+KIBANA_USER=${KIBANA_USER:-kibana}
+
+command="/opt/kibana/bin/kibana"
+pidfile="/run/kibana.pid"
+command_background="true"
+start_stop_daemon_args="--user=\"${KIBANA_USER}\" --stdout /var/log/kibana/kibana.log --stderr /var/log/kibana/kibana.err"
+
+depend() {
+        need elasticsearch
+}
+
+start_pre() {
+        checkpath -d -o "${KIBANA_USER}" -m750 "/var/log/kibana"
+}
