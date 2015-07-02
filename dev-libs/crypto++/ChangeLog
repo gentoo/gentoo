@@ -1,6 +1,20 @@
 # ChangeLog for dev-libs/crypto++
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/crypto++/ChangeLog,v 1.98 2015/06/09 14:14:11 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/crypto++/ChangeLog,v 1.100 2015/07/02 19:16:42 alonbl Exp $
+
+  02 Jul 2015; Alon Bar-Lev <alonbl@gentoo.org>
+  -files/crypto++-5.6.1-fix_build_system.patch,
+  -files/crypto++-5.6.1-gcc-4.7.patch,
+  -files/crypto++-5.6.1-r3-fix_build_system.patch,
+  -files/crypto++-5.6.1-rijndael.patch, -files/crypto++-5.6.1-sunos.patch,
+  -files/crypto++-5.6.2-make.patch:
+  Cleanup leftovers
+
+*crypto++-5.6.2-r2 (02 Jul 2015)
+
+  02 Jul 2015; Alon Bar-Lev <alonbl@gentoo.org> +crypto++-5.6.2-r2.ebuild,
+  +files/crypto++-5.6.2-cve-2015-2141.patch:
+  Fix cve-2015-2141, bug#553808
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml
