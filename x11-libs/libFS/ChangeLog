@@ -1,6 +1,12 @@
 # ChangeLog for x11-libs/libFS
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libFS/ChangeLog,v 1.79 2015/03/14 14:10:11 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libFS/ChangeLog,v 1.80 2015/07/02 02:29:56 mrueg Exp $
+
+*libFS-1.0.7 (02 Jul 2015)
+
+  02 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +libFS-1.0.7.ebuild,
+  -libFS-1.0.5.ebuild:
+  Version bump. Remove old.
 
   14 Mar 2015; Markus Meier <maekke@gentoo.org> libFS-1.0.6.ebuild:
   arm stable, bug #530652

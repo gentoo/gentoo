@@ -1,6 +1,11 @@
 # ChangeLog for x11-proto/randrproto
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-proto/randrproto/ChangeLog,v 1.109 2015/03/24 14:44:34 chithanh Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-proto/randrproto/ChangeLog,v 1.110 2015/07/02 02:27:38 mrueg Exp $
+
+*randrproto-1.5.0 (02 Jul 2015)
+
+  02 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +randrproto-1.5.0.ebuild:
+  Version bump.
 
 *randrproto-1.4.1 (24 Mar 2015)
 

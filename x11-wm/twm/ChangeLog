@@ -1,6 +1,12 @@
 # ChangeLog for x11-wm/twm
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/twm/ChangeLog,v 1.83 2013/10/08 05:10:21 ago Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/twm/ChangeLog,v 1.84 2015/07/02 02:17:34 mrueg Exp $
+
+*twm-1.0.9 (02 Jul 2015)
+
+  02 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +twm-1.0.9.ebuild,
+  -twm-1.0.7.ebuild:
+  Version bump. Remove old.
 
   08 Oct 2013; Agostino Sarubbo <ago@gentoo.org> twm-1.0.8.ebuild:
   Stable for x86, wrt bug #475480

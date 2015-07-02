@@ -1,6 +1,11 @@
 # ChangeLog for x11-libs/libXrender
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libXrender/ChangeLog,v 1.105 2015/03/03 11:30:56 dlan Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libXrender/ChangeLog,v 1.106 2015/07/02 01:42:24 mrueg Exp $
+
+*libXrender-0.9.9 (02 Jul 2015)
+
+  02 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +libXrender-0.9.9.ebuild:
+  Version bump.
 
   03 Mar 2015; Yixun Lan <dlan@gentoo.org> libXrender-0.9.8.ebuild:
   add arm64 support, tested on A53 board

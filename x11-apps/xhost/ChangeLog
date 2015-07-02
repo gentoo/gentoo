@@ -1,6 +1,11 @@
 # ChangeLog for x11-apps/xhost
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/xhost/ChangeLog,v 1.86 2015/04/11 21:54:24 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-apps/xhost/ChangeLog,v 1.87 2015/07/02 01:35:17 mrueg Exp $
+
+*xhost-1.0.7 (02 Jul 2015)
+
+  02 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +xhost-1.0.7.ebuild:
+  Version bump.
 
   11 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -xhost-1.0.4.ebuild,
   -xhost-1.0.5.ebuild:

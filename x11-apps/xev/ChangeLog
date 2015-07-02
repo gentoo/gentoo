@@ -1,6 +1,12 @@
 # ChangeLog for x11-apps/xev
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/xev/ChangeLog,v 1.73 2013/10/08 05:03:35 ago Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-apps/xev/ChangeLog,v 1.74 2015/07/02 02:10:26 mrueg Exp $
+
+*xev-1.2.2 (02 Jul 2015)
+
+  02 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +xev-1.2.2.ebuild,
+  -xev-1.2.0.ebuild:
+  Version bump. Remove old.
 
   08 Oct 2013; Agostino Sarubbo <ago@gentoo.org> xev-1.2.1.ebuild:
   Stable for x86, wrt bug #475480

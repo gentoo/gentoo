@@ -1,6 +1,12 @@
 # ChangeLog for x11-libs/libpciaccess
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libpciaccess/ChangeLog,v 1.112 2015/03/14 14:11:54 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libpciaccess/ChangeLog,v 1.113 2015/07/02 02:25:34 mrueg Exp $
+
+*libpciaccess-0.13.4 (02 Jul 2015)
+
+  02 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +libpciaccess-0.13.4.ebuild,
+  -libpciaccess-0.13.2.ebuild:
+  Version bump. Remove old.
 
   14 Mar 2015; Markus Meier <maekke@gentoo.org> libpciaccess-0.13.3.ebuild:
   arm stable, bug #530652
