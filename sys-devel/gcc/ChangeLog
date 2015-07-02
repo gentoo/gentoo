@@ -1,6 +1,11 @@
 # ChangeLog for sys-devel/gcc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/ChangeLog,v 1.1081 2015/06/24 13:42:48 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/ChangeLog,v 1.1082 2015/07/02 03:18:53 blueness Exp $
+
+*gcc-4.9.3 (02 Jul 2015)
+
+  02 Jul 2015; Anthony G. Basile <blueness@gentoo.org> +gcc-4.9.3.ebuild:
+  Version bump.  Bug #553744.
 
 *gcc-4.8.5 (24 Jun 2015)
 

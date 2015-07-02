@@ -1,6 +1,11 @@
 # ChangeLog for x11-apps/xgamma
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/xgamma/ChangeLog,v 1.53 2015/03/31 00:53:37 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-apps/xgamma/ChangeLog,v 1.54 2015/07/02 02:38:03 mrueg Exp $
+
+*xgamma-1.0.6 (02 Jul 2015)
+
+  02 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +xgamma-1.0.6.ebuild:
+  Version bump.
 
   31 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -xgamma-1.0.4.ebuild:
   Remove old.

@@ -1,6 +1,12 @@
 # ChangeLog for x11-drivers/xf86-input-keyboard
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-input-keyboard/ChangeLog,v 1.132 2015/03/14 14:03:22 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-input-keyboard/ChangeLog,v 1.133 2015/07/02 02:36:36 mrueg Exp $
+
+*xf86-input-keyboard-1.8.1 (02 Jul 2015)
+
+  02 Jul 2015; Manuel Rüger <mrueg@gentoo.org>
+  +xf86-input-keyboard-1.8.1.ebuild, -xf86-input-keyboard-1.7.0.ebuild:
+  Version bump. Remove old.
 
   14 Mar 2015; Markus Meier <maekke@gentoo.org>
   xf86-input-keyboard-1.8.0.ebuild:
