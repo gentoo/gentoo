@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/ninja/ninja-1.5.3.ebuild,v 1.8 2015/06/30 04:53:29 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/ninja/ninja-1.5.3.ebuild,v 1.9 2015/07/03 14:46:15 zlogene Exp $
 
 EAPI=5
 
@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit bash-completion-r1 elisp-common python-any-r1 toolchain-funcs
 
 SRC_URI="https://github.com/martine/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~m68k ~ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha amd64 arm ~arm64 ~m68k ~ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 
 DESCRIPTION="A small build system similar to make"
 HOMEPAGE="http://github.com/martine/ninja"

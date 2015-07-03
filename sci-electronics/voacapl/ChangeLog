@@ -1,6 +1,11 @@
 # ChangeLog for sci-electronics/voacapl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-electronics/voacapl/ChangeLog,v 1.16 2015/02/01 13:50:48 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/voacapl/ChangeLog,v 1.17 2015/07/03 15:30:30 tomjbe Exp $
+
+*voacapl-0.6.7 (03 Jul 2015)
+
+  03 Jul 2015; Thomas Beierlein <tomjbe@gentoo.org> +voacapl-0.6.7.ebuild:
+  Maintenance release
 
   01 Feb 2015; Agostino Sarubbo <ago@gentoo.org> voacapl-0.6.5.ebuild:
   Stable for x86, wrt bug #537382
