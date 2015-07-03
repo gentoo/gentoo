@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/pysnmp-mibs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pysnmp-mibs/ChangeLog,v 1.14 2015/06/29 05:45:17 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pysnmp-mibs/ChangeLog,v 1.15 2015/07/03 06:22:24 idella4 Exp $
+
+  03 Jul 2015; Ian Delaney <idella4@gentoo.org> pysnmp-mibs-0.1.4.ebuild:
+  correction to border version of dep
 
 *pysnmp-mibs-0.1.4 (29 Jun 2015)
 
