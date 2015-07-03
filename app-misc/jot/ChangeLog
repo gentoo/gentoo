@@ -1,6 +1,11 @@
 # ChangeLog for app-misc/jot
 # Copyright 2000-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/jot/ChangeLog,v 1.12 2015/06/09 11:45:17 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/jot/ChangeLog,v 1.13 2015/07/03 08:03:11 jlec Exp $
+
+*jot-9.0-r1 (03 Jul 2015)
+
+  03 Jul 2015; Justin Lecher <jlec@gentoo.org> +jot-9.0-r1.ebuild:
+  Bump to EAPI=5, bug #521460
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml
