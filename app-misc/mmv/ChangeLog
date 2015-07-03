@@ -1,6 +1,11 @@
 # ChangeLog for app-misc/mmv
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/mmv/ChangeLog,v 1.30 2014/08/10 18:08:18 slyfox Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/mmv/ChangeLog,v 1.31 2015/07/03 07:28:35 jlec Exp $
+
+*mmv-1.01b_p18 (03 Jul 2015)
+
+  03 Jul 2015; Justin Lecher <jlec@gentoo.org> +mmv-1.01b_p18.ebuild:
+  Version Bump; fix problems with format-security, bug #521100
 
   10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> mmv-1.01b_p15.ebuild:
   QA: drop trailing '.' from DESCRIPTION
