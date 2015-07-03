@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nagios-plugins/nagios-plugins-2.0.3-r2.ebuild,v 1.5 2015/07/02 05:09:01 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nagios-plugins/nagios-plugins-2.0.3-r2.ebuild,v 1.6 2015/07/03 08:33:17 ago Exp $
 
 EAPI=5
 
@@ -12,7 +12,7 @@ SRC_URI="http://nagios-plugins.org/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ppc ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 ~arm ~arm64 hppa ppc ppc64 ~sparc x86"
 IUSE="ipv6 ldap mysql nagios-dns nagios-ping nagios-game postgres samba snmp ssh +ssl"
 
 # Most of the plugins use automagic dependencies, i.e. the plugin will

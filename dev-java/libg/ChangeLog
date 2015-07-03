@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/libg
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/libg/ChangeLog,v 1.4 2015/06/07 08:33:49 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/libg/ChangeLog,v 1.5 2015/07/03 09:12:42 monsieurp Exp $
+
+  03 Jul 2015; Patrice Clement <monsieurp@gentoo.org> libg-2.1.0-r1.ebuild:
+  Stable for amd64. Stable for x86 with ALLARCHES. Fix bug 553828.
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

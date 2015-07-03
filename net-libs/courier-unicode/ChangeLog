@@ -1,6 +1,9 @@
 # ChangeLog for net-libs/courier-unicode
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/courier-unicode/ChangeLog,v 1.13 2015/07/02 05:07:08 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/courier-unicode/ChangeLog,v 1.14 2015/07/03 08:56:16 ago Exp $
+
+  03 Jul 2015; Agostino Sarubbo <ago@gentoo.org> courier-unicode-1.3.ebuild:
+  Stable for alpha, wrt bug #553660
 
   02 Jul 2015; Jeroen Roovers <jer@gentoo.org> courier-unicode-1.3.ebuild:
   Stable for PPC64 too.

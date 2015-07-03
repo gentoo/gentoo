@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/xerces-c/xerces-c-3.1.2.ebuild,v 1.5 2015/06/03 02:03:24 pinkbyte Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/xerces-c/xerces-c-3.1.2.ebuild,v 1.6 2015/07/03 08:33:12 ago Exp $
 
 EAPI=5
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://apache/xerces/c/3/sources/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm hppa ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 ~arm hppa ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 
 IUSE="cpu_flags_x86_sse2 curl doc elibc_Darwin elibc_FreeBSD iconv icu static-libs threads"
 

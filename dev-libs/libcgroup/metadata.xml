@@ -2,19 +2,16 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer>
-		<email>maintainer-needed@gentoo.org</email>
+		<email>blueness@gentoo.org</email>
+		<name>Anthony G. Basile</name>
 	</maintainer>
 	<longdescription>
-  This package provides configuration and command-line tools, as well as a rules
-  processing daemon for working with kernel control groups.
-  </longdescription>
+		This package provides configuration and command-line tools, as well as a
+		rules processing daemon for working with kernel control groups.
+	</longdescription>
 	<use>
-		<flag name="daemon">
-    Install the configuration tools and init/config files.
-  </flag>
-		<flag name="tools">
-    Install the cgroup rules processing daemon and init/config files.
-  </flag>
+		<flag name="daemon">Install the configuration tools and init/config files.</flag>
+		<flag name="tools">Install the cgroup rules processing daemon and init/config files.</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">libcg</remote-id>

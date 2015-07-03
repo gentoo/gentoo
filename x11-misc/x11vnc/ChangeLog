@@ -1,6 +1,9 @@
 # ChangeLog for x11-misc/x11vnc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/x11vnc/ChangeLog,v 1.126 2015/06/17 08:58:38 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/x11vnc/ChangeLog,v 1.127 2015/07/03 08:56:08 ago Exp $
+
+  03 Jul 2015; Agostino Sarubbo <ago@gentoo.org> x11vnc-0.9.13_p20150111.ebuild:
+  Stable for alpha, wrt bug #515268
 
   17 Jun 2015; Agostino Sarubbo <ago@gentoo.org> x11vnc-0.9.13_p20150111.ebuild:
   Stable for sparc, wrt bug #515268
