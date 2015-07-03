@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/bundler
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/bundler/ChangeLog,v 1.99 2015/06/29 05:38:23 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/bundler/ChangeLog,v 1.100 2015/07/03 14:04:55 zlogene Exp $
+
+  03 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> bundler-1.7.13.ebuild:
+  arm stable wrt bug #550314
 
 *bundler-1.9.10 (29 Jun 2015)
 

@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/redcarpet
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/redcarpet/ChangeLog,v 1.27 2015/07/02 14:27:18 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/redcarpet/ChangeLog,v 1.28 2015/07/03 13:37:16 mrueg Exp $
+
+  03 Jul 2015; Manuel Rüger <mrueg@gentoo.org> redcarpet-3.3.2.ebuild:
+  Add ruby19 back.
 
 *redcarpet-3.3.2 (02 Jul 2015)
 
