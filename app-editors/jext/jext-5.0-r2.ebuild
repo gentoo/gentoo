@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/jext/jext-5.0-r1.ebuild,v 1.1 2015/04/05 20:43:35 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/jext/jext-5.0-r2.ebuild,v 1.2 2015/07/03 17:13:12 monsieurp Exp $
 
 EAPI=5
 
@@ -13,32 +13,38 @@ MY_PV="${PV/_}"
 SRC_URI="mirror://sourceforge/${PN}/${PN}-sources-${MY_PV}.tar.gz"
 LICENSE="|| ( GPL-2 JPython )"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
-COMMON_DEP="
-	dev-java/jython:0
+CDEPEND="dev-java/jython:2.7
 	dev-java/jgoodies-looks:1.2
 	dev-java/gnu-regexp:1"
 DEPEND=">=virtual/jdk-1.6
-	${COMMON_DEP}"
+	${CDEPEND}"
 RDEPEND=">=virtual/jre-1.6
-	${COMMON_DEP}"
+	${CDEPEND}"
 
 S="${WORKDIR}/${PN}-src-${MY_PV}"
 
+# Necessary otherwise it chokes on compiling with jdk-1.8
+# due to unmappable characters.
+JAVA_ANT_ENCODING="ISO-8859-1"
+
 java_prepare() {
-	rm -v "${S}"/extplugins/Admin/*.jar || die
 	# bundles some com.microstar.xml who knows what's that
 	# also com.jgoodies.uif_lite which is apparently some jgoodies-looks
 	# example code which we don't package and there is probably no point
+	rm -v "${S}"/extplugins/Admin/*.jar || die
 	rm -rf src/lib/gnu || die
+
+	# Fix "enum as a keyword" error.
+	epatch "${FILESDIR}"/"${P}"-enum-as-keyword.patch
 }
 
 src_compile() {
 	cd "${S}/src" || die
 	eant jar $(use_doc javadocs) \
-		-Dclasspath="$(java-pkg_getjars jython,jgoodies-looks-1.2,gnu-regexp-1)"
+		-Dclasspath="$(java-pkg_getjars jython-2.7,jgoodies-looks-1.2,gnu-regexp-1)"
 }
 
 src_install () {
@@ -47,11 +53,11 @@ src_install () {
 
 	java-pkg_dolauncher ${PN} \
 		--main org.jext.Jext \
-		--java_args '-Dpython.path=$(java-config --classpath=jython)' \
+		--java_args '-Dpython.path=$(java-config --classpath=jython-2.7)' \
 		-pre "${FILESDIR}/${PN}-pre"
 
 	if use doc; then
-		java-pkg_dohtml -A .css .gif .jpg -r docs/api
+		java-pkg_dohtml -r docs/api
 	fi
 }
 

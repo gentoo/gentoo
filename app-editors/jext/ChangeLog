@@ -1,6 +1,20 @@
 # ChangeLog for app-editors/jext
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/jext/ChangeLog,v 1.23 2015/06/09 09:50:13 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/jext/ChangeLog,v 1.26 2015/07/03 17:14:28 monsieurp Exp $
+
+  03 Jul 2015; Patrice Clement <monsieurp@gentoo.org> -jext-5.0-r1.ebuild,
+  -jext-5.0.ebuild:
+  Remove old.
+
+  03 Jul 2015; Patrice Clement <monsieurp@gentoo.org> jext-5.0-r2.ebuild:
+  Stable for amd64+x86.
+
+*jext-5.0-r2 (03 Jul 2015)
+
+  03 Jul 2015; Patrice Clement <monsieurp@gentoo.org>
+  +files/jext-5.0-enum-as-keyword.patch, +jext-5.0-r2.ebuild:
+  Add patch to get the package to compile with jdk-1.8. Update dev-java/jython
+  dependency to :2.7. Fix bug 552452.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

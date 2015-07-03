@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-plasma/plasma-meta/plasma-meta-5.3.1.ebuild,v 1.3 2015/06/18 21:57:37 johu Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-plasma/plasma-meta/plasma-meta-5.3.1.ebuild,v 1.4 2015/07/03 17:10:13 kensington Exp $
 
 EAPI=5
 
@@ -19,6 +19,7 @@ RDEPEND="
 	$(add_plasma_dep breeze)
 	$(add_plasma_dep kde-cli-tools)
 	$(add_plasma_dep kdecoration)
+	$(add_plasma_dep kdeplasma-addons)
 	$(add_plasma_dep kfilemetadata)
 	$(add_plasma_dep khelpcenter)
 	$(add_plasma_dep khotkeys)
@@ -36,6 +37,8 @@ RDEPEND="
 	$(add_plasma_dep oxygen)
 	$(add_plasma_dep oxygen-fonts)
 	$(add_plasma_dep plasma-desktop)
+	$(add_plasma_dep plasma-mediacenter)
+	$(add_plasma_dep plasma-sdk)
 	$(add_plasma_dep plasma-workspace)
 	$(add_plasma_dep polkit-kde-agent)
 	$(add_plasma_dep powerdevil)

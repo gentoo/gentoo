@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/jansi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jansi/ChangeLog,v 1.9 2015/07/01 08:47:26 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jansi/ChangeLog,v 1.10 2015/07/03 17:17:23 monsieurp Exp $
+
+  03 Jul 2015; Patrice Clement <monsieurp@gentoo.org> -jansi-1.11.ebuild:
+  Remove old.
 
   01 Jul 2015; Agostino Sarubbo <ago@gentoo.org> jansi-1.11-r1.ebuild:
   Stable for x86, wrt bug #553680
