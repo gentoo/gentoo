@@ -1,6 +1,10 @@
 # ChangeLog for app-admin/logstash-forwarder
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/logstash-forwarder/ChangeLog,v 1.4 2015/06/05 11:39:27 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/logstash-forwarder/ChangeLog,v 1.5 2015/07/03 19:39:22 aidecoe Exp $
+
+  03 Jul 2015; Amadeusz Żołnowski <aidecoe@gentoo.org>
+  logstash-forwarder-0.4.0.ebuild:
+  Apply QA fixes suggested by WilliamH.
 
   05 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/logstash-forwarder/logstash-forwarder-0.4.0.ebuild,v 1.1 2015/03/20 16:06:41 aidecoe Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/logstash-forwarder/logstash-forwarder-0.4.0.ebuild,v 1.2 2015/07/03 19:39:22 aidecoe Exp $
 
 EAPI=5
 
@@ -15,8 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="dev-lang/go"
-RDEPEND="${DEPEND}"
+DEPEND="dev-lang/go:="
+RDEPEND=""
 
 pkg_setup() {
 	enewgroup logstash

@@ -1,6 +1,10 @@
 # ChangeLog for media-gfx/fbgrab
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/fbgrab/ChangeLog,v 1.31 2015/06/28 18:58:12 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/fbgrab/ChangeLog,v 1.32 2015/07/03 20:18:07 zlogene Exp $
+
+  03 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> -fbgrab-1.1.ebuild,
+  -fbgrab-1.2.ebuild:
+  Drop old
 
 *fbgrab-1.3 (28 Jun 2015)
 
