@@ -1,6 +1,10 @@
 # ChangeLog for net-libs/libpcap
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libpcap/ChangeLog,v 1.230 2015/07/02 03:40:35 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libpcap/ChangeLog,v 1.231 2015/07/03 04:20:58 jer Exp $
+
+  03 Jul 2015; Jeroen Roovers <jer@gentoo.org> libpcap-9999.ebuild,
+  -files/libpcap-1.7.2-scanner.patch:
+  Drop scanner patch.
 
 *libpcap-1.7.4 (02 Jul 2015)
 

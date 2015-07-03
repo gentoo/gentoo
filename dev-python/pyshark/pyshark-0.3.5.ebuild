@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyshark/pyshark-0.3.5.ebuild,v 1.1 2015/06/26 06:39:28 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyshark/pyshark-0.3.5.ebuild,v 1.2 2015/07/03 04:12:11 idella4 Exp $
 
 EAPI="5"
 
@@ -18,11 +18,11 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-RDEPEND="dev-python/futures[${PYTHON_USEDEP}]
+# See pyshark.egg-info/requires.txt
+RDEPEND="dev-python/py[${PYTHON_USEDEP}]
 	dev-python/logbook[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/trollius[${PYTHON_USEDEP}]
 	virtual/python-futures[${PYTHON_USEDEP}]
 	net-analyzer/wireshark"
-
-DOCS=( README.txt )
+# Tests exlcuded in MANIFEST.in

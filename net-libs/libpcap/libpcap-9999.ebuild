@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libpcap/libpcap-9999.ebuild,v 1.2 2015/03/11 08:58:46 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libpcap/libpcap-9999.ebuild,v 1.3 2015/07/03 04:20:58 jer Exp $
 
 EAPI=5
 inherit autotools eutils git-r3 multilib-minimal
@@ -27,11 +27,11 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.2.0-cross-linux.patch
-	epatch "${FILESDIR}"/${PN}-1.6.1-configure.patch
-	epatch "${FILESDIR}"/${PN}-1.6.1-prefix-solaris.patch
-	epatch "${FILESDIR}"/${PN}-1.7.2-libnl.patch
-	epatch "${FILESDIR}"/${PN}-1.7.2-scanner.patch
+	epatch \
+		"${FILESDIR}"/${PN}-1.2.0-cross-linux.patch \
+		"${FILESDIR}"/${PN}-1.6.1-configure.patch \
+		"${FILESDIR}"/${PN}-1.6.1-prefix-solaris.patch \
+		"${FILESDIR}"/${PN}-1.7.2-libnl.patch
 
 	mkdir bluetooth || die
 	cp "${FILESDIR}"/mgmt.h bluetooth/ || die

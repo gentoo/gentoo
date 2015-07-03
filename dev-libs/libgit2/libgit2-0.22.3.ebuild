@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgit2/libgit2-9999.ebuild,v 1.2 2015/07/03 03:36:09 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgit2/libgit2-0.22.3.ebuild,v 1.1 2015/07/03 03:36:09 radhermit Exp $
 
 EAPI=5
 
@@ -18,7 +18,7 @@ DESCRIPTION="A linkable library for Git"
 HOMEPAGE="http://libgit2.github.com/"
 
 LICENSE="GPL-2-with-linking-exception"
-SLOT="0/23"
+SLOT="0/22"
 IUSE="examples gssapi ssh test threads trace"
 
 RDEPEND="

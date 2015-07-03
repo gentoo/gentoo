@@ -1,6 +1,12 @@
 # ChangeLog for dev-python/pympler
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pympler/ChangeLog,v 1.27 2015/06/07 15:30:52 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pympler/ChangeLog,v 1.28 2015/07/03 03:54:31 idella4 Exp $
+
+*pympler-0.4.1 (03 Jul 2015)
+
+  03 Jul 2015; Ian Delaney <idella4@gentoo.org> +pympler-0.4.1.ebuild,
+  pympler-0.4.ebuild:
+  bump
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml
