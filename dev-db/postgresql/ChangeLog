@@ -1,6 +1,11 @@
 # ChangeLog for dev-db/postgresql
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql/ChangeLog,v 1.441 2015/06/28 21:42:17 titanofold Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql/ChangeLog,v 1.442 2015/07/03 03:25:25 patrick Exp $
+
+*postgresql-9.5_alpha1 (03 Jul 2015)
+
+  03 Jul 2015; Patrick Lauer <patrick@gentoo.org> +postgresql-9.5_alpha1.ebuild:
+  Bump to 9.5_alpha
 
   28 Jun 2015; Aaron W. Swenson <titanofold@gentoo.org>
   -postgresql-9.0.19.ebuild, -postgresql-9.0.19-r1.ebuild,
