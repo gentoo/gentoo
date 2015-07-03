@@ -1,12 +1,11 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rbpdf/rbpdf-1.18.6.ebuild,v 1.1 2015/06/27 23:54:14 mjo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rbpdf/rbpdf-1.18.6-r1.ebuild,v 1.1 2015/07/03 21:50:17 mjo Exp $
 
 EAPI=5
 
 # ruby22 support waiting on dev-ruby/action{pack,view}.
-# ruby21 works, but not while we support rails-3.2.
-USE_RUBY="ruby19 ruby20"
+USE_RUBY="ruby19 ruby20 ruby21"
 
 # Avoid the complexity of the "rake" recipe and run the tests manually.
 RUBY_FAKEGEM_RECIPE_TEST=none
@@ -24,12 +23,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-# Try to pick the right version of minitest. Conflicts are still
-# possible, but this is probably the best we can do...
+# Try to pick the right version of minitest. In order to run, the test
+# suite needs matching versions of actionview and activesupport. The
+# easiest way to do this is to pull them in simultaneously with
+# actionpack.
 ruby_add_bdepend "test? ( || (
 	( dev-ruby/actionpack:3.2 dev-ruby/minitest:0 )
 	( dev-ruby/actionpack:4.0 dev-ruby/minitest:0 )
-	( dev-ruby/actionview:*   dev-ruby/minitest:5 )
+	( dev-ruby/actionpack:4.1 dev-ruby/minitest:5 )
+	( dev-ruby/actionpack:4.2 dev-ruby/minitest:5 )
 ) )"
 
 # We need the action_view gem; it was split out of actionpack in 4.1.

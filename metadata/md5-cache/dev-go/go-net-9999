@@ -1,9 +1,9 @@
 DEFINED_PHASES=compile install prepare test unpack
-DEPEND=dev-go/go-text >=dev-lang/go-1.4.2 >=dev-lang/go-1.4.2:=
+DEPEND=dev-go/go-text >=dev-lang/go-1.4.2 >=dev-lang/go-1.4.2
 DESCRIPTION=Go supplementary network libraries
 EAPI=5
 HOMEPAGE=https://godoc.org/golang.org/x/net
 LICENSE=BSD
 SLOT=0
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	golang-build	a952752689e79795c35761caf7b7c36f	golang-vcs	2abd744a5eac3f769df102ad2469035e	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	golang-build	6fd695a14c1a8e1f18699aa87d3191a3	golang-vcs	2abd744a5eac3f769df102ad2469035e	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=cc182aac2f9d90f863dbd34a199587d9

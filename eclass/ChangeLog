@@ -1,6 +1,10 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1696 2015/07/01 11:28:23 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1697 2015/07/03 21:45:06 williamh Exp $
+
+  03 Jul 2015; William Hubbs <williamh@gentoo.org> golang-build.eclass:
+  drop the slot dependency; it was pointed out to me that they do not trigger
+  rebuilds in DEPEND
 
   01 Jul 2015; Manuel Rüger <mrueg@gentoo.org> kde4-base.eclass:
   Sync with overlay. Add SRC_URIs for newer KDE SC, KDE Workspace releases and

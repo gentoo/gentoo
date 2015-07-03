@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/golang-build.eclass,v 1.2 2015/06/24 17:04:53 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/golang-build.eclass,v 1.3 2015/07/03 21:45:06 williamh Exp $
 
 # @ECLASS: golang-build.eclass
 # @MAINTAINER:
@@ -24,7 +24,7 @@ if [[ -z ${_GOLANG_BUILD} ]]; then
 
 _GOLANG_BUILD=1
 
-DEPEND=">=dev-lang/go-1.4.2:="
+DEPEND=">=dev-lang/go-1.4.2"
 STRIP_MASK="*.a"
 
 # @ECLASS-VARIABLE: EGO_PN

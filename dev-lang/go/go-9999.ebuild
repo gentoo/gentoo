@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/go/go-9999.ebuild,v 1.28 2015/06/23 19:53:16 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/go/go-9999.ebuild,v 1.29 2015/07/03 21:47:48 williamh Exp $
 
 EAPI=5
 
@@ -21,7 +21,7 @@ DESCRIPTION="A concurrent garbage collected and typesafe programming language"
 HOMEPAGE="http://www.golang.org"
 
 LICENSE="BSD"
-SLOT="0/${PV}"
+SLOT="0"
 IUSE=""
 
 DEPEND=">=dev-lang/go-bootstrap-1.4.1"
