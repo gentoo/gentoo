@@ -1,12 +1,12 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/theseus/theseus-2.0.1-r1.ebuild,v 1.1 2013/04/24 10:21:00 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/theseus/theseus-3.3.0.ebuild,v 1.1 2015/07/03 13:08:20 jlec Exp $
 
 EAPI=5
 
 inherit multilib toolchain-funcs
 
-DESCRIPTION="maximum likelihood superpositioning and analysis of macromolecular structures"
+DESCRIPTION="Maximum likelihood superpositioning and analysis of macromolecular structures"
 HOMEPAGE="http://www.theseus3d.org/"
 SRC_URI="http://www.theseus3d.org/src/${PN}_${PV}.tar.gz"
 
@@ -18,12 +18,12 @@ IUSE="examples"
 RDEPEND="
 	sci-libs/gsl
 	|| (
+		sci-biology/muscle
 		sci-biology/probcons
 		sci-biology/mafft
 		sci-biology/t-coffee
 		sci-biology/kalign
-		sci-biology/clustalw
-		sci-biology/muscle
+		sci-biology/clustalw:2
 		)"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
@@ -42,7 +42,7 @@ src_prepare() {
 	INSTALLDIR = "${ED}"/usr/bin
 	OPT =
 	WARN =
-	CFLAGS = ${CFLAGS} \$(WARN)
+	CFLAGS = ${CFLAGS} -std=c11 \$(WARN)
 	CC = $(tc-getCC)
 	EOF
 
@@ -53,9 +53,14 @@ src_prepare() {
 
 	sed \
 		-e 's:/usr/bin/sed:sed:g' \
-		-e "s:/usr/local/bin/:${EPREFIX}/usr/bin/:g" \
+		-e "s:/usr/local/bin/:/usr/bin/:g" \
 		-e "s:/usr/bin/:${EPREFIX}/usr/bin/:g" \
 		-i theseus_align || die
+}
+
+src_compile () {
+	emake ltheseus
+	default
 }
 
 src_install() {

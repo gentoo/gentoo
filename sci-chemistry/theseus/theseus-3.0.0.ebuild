@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/theseus/theseus-3.0.0.ebuild,v 1.1 2014/11/13 10:58:13 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/theseus/theseus-3.0.0.ebuild,v 1.2 2015/07/03 13:08:20 jlec Exp $
 
 EAPI=5
 
@@ -23,7 +23,7 @@ RDEPEND="
 		sci-biology/mafft
 		sci-biology/t-coffee
 		sci-biology/kalign
-		sci-biology/clustalw
+		sci-biology/clustalw:2
 		)"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
@@ -56,6 +56,11 @@ src_prepare() {
 		-e "s:/usr/local/bin/:/usr/bin/:g" \
 		-e "s:/usr/bin/:${EPREFIX}/usr/bin/:g" \
 		-i theseus_align || die
+}
+
+src_compile () {
+	emake ltheseus
+	default
 }
 
 src_install() {

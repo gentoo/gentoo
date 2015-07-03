@@ -6,5 +6,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">freestdf</remote-id>
+		<remote-id type="github">vapier/liblzw</remote-id>
 	</upstream>
 </pkgmetadata>

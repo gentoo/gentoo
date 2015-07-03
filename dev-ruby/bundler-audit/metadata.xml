@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>ruby</herd>
-<longdescription lang="en">
+	<herd>ruby</herd>
+	<longdescription lang="en">
 </longdescription>
+	<upstream>
+		<remote-id type="github">rubysec/bundler-audit</remote-id>
+	</upstream>
 </pkgmetadata>

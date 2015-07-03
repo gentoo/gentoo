@@ -4,5 +4,6 @@
 	<herd>base-system</herd>
 	<upstream>
 		<remote-id type="sourceforge">ncompress</remote-id>
+		<remote-id type="github">vapier/ncompress</remote-id>
 	</upstream>
 </pkgmetadata>

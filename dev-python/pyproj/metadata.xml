@@ -4,5 +4,6 @@
 	<herd>python</herd>
 	<upstream>
 		<remote-id type="google-code">pyproj</remote-id>
+		<remote-id type="pypi">pyproj</remote-id>
 	</upstream>
 </pkgmetadata>

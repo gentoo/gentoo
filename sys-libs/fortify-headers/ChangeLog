@@ -1,10 +1,16 @@
 # ChangeLog for sys-libs/fortify-headers
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/fortify-headers/ChangeLog,v 1.1 2015/05/15 13:49:19 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/fortify-headers/ChangeLog,v 1.2 2015/07/03 13:23:08 blueness Exp $
+
+*fortify-headers-0.5 (03 Jul 2015)
+*fortify-headers-9999 (03 Jul 2015)
+
+  03 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
+  +fortify-headers-0.5.ebuild, +fortify-headers-9999.ebuild:
+  Version bump.
 
 *fortify-headers-0.4 (15 May 2015)
 
   15 May 2015; Anthony G. Basile <blueness@gentoo.org>
   +fortify-headers-0.4.ebuild, +metadata.xml:
   Initial commit. Bug #546692.
-

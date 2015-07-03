@@ -15,4 +15,7 @@
 		<flag name="ssh">Enable SSH transport support</flag>
 		<flag name="trace">Enable tracing support</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">libgit2/libgit2</remote-id>
+	</upstream>
 </pkgmetadata>

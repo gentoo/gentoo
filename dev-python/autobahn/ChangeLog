@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/autobahn
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/autobahn/ChangeLog,v 1.9 2015/06/07 09:16:37 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/autobahn/ChangeLog,v 1.10 2015/07/03 13:17:32 jlec Exp $
+
+*autobahn-0.10.4 (03 Jul 2015)
+
+  03 Jul 2015; Justin Lecher <jlec@gentoo.org> +autobahn-0.10.4.ebuild:
+  Version Bump
 
   07 Jun 2015; Markus Meier <maekke@gentoo.org> autobahn-0.9.4.2.ebuild:
   arm stable, bug #540290

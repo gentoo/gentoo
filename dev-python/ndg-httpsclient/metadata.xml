@@ -4,5 +4,6 @@
   <herd>python</herd>
   <upstream>
     <remote-id type="pypi">ndg-httpsclient</remote-id>
+    <remote-id type="github">cedadev/ndg_httpsclient</remote-id>
   </upstream>
 </pkgmetadata>

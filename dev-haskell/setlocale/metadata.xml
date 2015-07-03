@@ -5,4 +5,7 @@
 	<longdescription>
 		A Haskell interface to @setlocale()@.
 	</longdescription>
+	<upstream>
+		<remote-id type="bitbucket">IchUndNichtDu/haskell-setlocale</remote-id>
+	</upstream>
 </pkgmetadata>

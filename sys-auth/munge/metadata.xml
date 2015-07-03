@@ -18,5 +18,6 @@
 	platform-specific methods.</longdescription>
 	<upstream>
 		<remote-id type="google-code">munge</remote-id>
+		<remote-id type="github">dun/munge</remote-id>
 	</upstream>
 </pkgmetadata>

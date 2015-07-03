@@ -1,6 +1,10 @@
 # ChangeLog for net-libs/libnatpmp
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libnatpmp/ChangeLog,v 1.32 2015/06/10 13:31:24 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libnatpmp/ChangeLog,v 1.33 2015/07/03 12:32:49 blueness Exp $
+
+  03 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
+  -libnatpmp-20110808-r1.ebuild, -libnatpmp-20131126.ebuild:
+  Remove older versions.
 
   10 Jun 2015; Anthony G. Basile <blueness@gentoo.org> ChangeLog:
   Fix gpg signature.
