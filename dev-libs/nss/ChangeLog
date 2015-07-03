@@ -1,6 +1,11 @@
 # ChangeLog for dev-libs/nss
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/nss/ChangeLog,v 1.412 2015/06/01 21:11:59 axs Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/nss/ChangeLog,v 1.413 2015/07/03 16:20:59 axs Exp $
+
+*nss-3.19.2 (03 Jul 2015)
+
+  03 Jul 2015; Ian Stakenvicius (_AxS_) <axs@gentoo.org> +nss-3.19.2.ebuild:
+  version bump
 
 *nss-3.19.1 (01 Jun 2015)
 

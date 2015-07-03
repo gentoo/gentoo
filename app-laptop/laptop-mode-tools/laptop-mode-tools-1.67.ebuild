@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-laptop/laptop-mode-tools/laptop-mode-tools-1.64.ebuild,v 1.7 2015/02/01 22:04:20 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-laptop/laptop-mode-tools/laptop-mode-tools-1.67.ebuild,v 1.1 2015/07/03 15:42:12 alonbl Exp $
 
 EAPI=5
 inherit eutils multilib systemd udev
@@ -13,10 +13,11 @@ SRC_URI="http://www.samwel.tk/laptop_mode/tools/downloads/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="+acpi apm bluetooth scsi"
 
 RDEPEND="net-wireless/wireless-tools
+	sys-apps/iproute2
 	sys-apps/ethtool
 	sys-apps/hdparm
 	sys-apps/which

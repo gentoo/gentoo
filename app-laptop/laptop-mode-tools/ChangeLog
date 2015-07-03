@@ -1,6 +1,17 @@
 # ChangeLog for app-laptop/laptop-mode-tools
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-laptop/laptop-mode-tools/ChangeLog,v 1.99 2015/02/01 22:04:20 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-laptop/laptop-mode-tools/ChangeLog,v 1.101 2015/07/03 15:42:12 alonbl Exp $
+
+*laptop-mode-tools-1.67 (03 Jul 2015)
+
+  03 Jul 2015; Alon Bar-Lev <alonbl@gentoo.org> +laptop-mode-tools-1.67.ebuild:
+  Version bump
+
+  03 Jul 2015; Alon Bar-Lev <alonbl@gentoo.org>
+  -files/laptop-mode-tools-1.65-usb-autosuspend.patch,
+  -laptop-mode-tools-1.64.ebuild, -laptop-mode-tools-1.65-r1.ebuild,
+  -laptop-mode-tools-1.65.ebuild:
+  Cleanup
 
   01 Feb 2015; Mike Gilbert <floppym@gentoo.org> laptop-mode-tools-1.64.ebuild,
   laptop-mode-tools-1.65-r1.ebuild, laptop-mode-tools-1.65.ebuild,

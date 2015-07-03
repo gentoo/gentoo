@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/zvbi/zvbi-0.2.35-r1.ebuild,v 1.13 2015/04/02 16:21:15 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/zvbi/zvbi-0.2.35-r1.ebuild,v 1.14 2015/07/03 15:46:31 zlogene Exp $
 
 EAPI=5
 inherit eutils libtool multilib-minimal
@@ -11,7 +11,7 @@ HOMEPAGE="http://zapping.sourceforge.net"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="doc dvb nls static-libs v4l X"
 
 RDEPEND=">=media-libs/libpng-1.5.18[${MULTILIB_USEDEP}]

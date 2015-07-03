@@ -1,6 +1,9 @@
 # ChangeLog for media-libs/zvbi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/zvbi/ChangeLog,v 1.72 2015/04/02 16:21:15 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/zvbi/ChangeLog,v 1.73 2015/07/03 15:46:31 zlogene Exp $
+
+  03 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> zvbi-0.2.35-r1.ebuild:
+  arm stable wrt bug #549830
 
   02 Apr 2015; Jeroen Roovers <jer@gentoo.org> zvbi-0.2.35-r1.ebuild:
   Stable for HPPA (bug #538798).
