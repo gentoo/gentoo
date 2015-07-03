@@ -1,6 +1,10 @@
 # ChangeLog for sys-devel/autoconf-archive
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/autoconf-archive/ChangeLog,v 1.78 2015/06/14 19:46:58 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/autoconf-archive/ChangeLog,v 1.79 2015/07/03 10:14:59 ago Exp $
+
+  03 Jul 2015; Agostino Sarubbo <ago@gentoo.org>
+  autoconf-archive-2015.02.04.ebuild:
+  Stable for alpha, wrt bug #549288
 
   14 Jun 2015; Markus Meier <maekke@gentoo.org>
   autoconf-archive-2015.02.04.ebuild:

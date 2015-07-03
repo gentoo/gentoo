@@ -1,6 +1,9 @@
 # ChangeLog for dev-tcltk/itk
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/itk/ChangeLog,v 1.44 2015/06/09 17:49:37 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/itk/ChangeLog,v 1.45 2015/07/03 10:08:38 ago Exp $
+
+  03 Jul 2015; Agostino Sarubbo <ago@gentoo.org> itk-3.4.1.ebuild:
+  Stable for alpha, wrt bug #546412
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

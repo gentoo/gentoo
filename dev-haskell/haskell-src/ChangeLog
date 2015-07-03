@@ -1,6 +1,9 @@
 # ChangeLog for dev-haskell/haskell-src
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/haskell-src/ChangeLog,v 1.57 2015/06/26 08:44:00 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/haskell-src/ChangeLog,v 1.58 2015/07/03 10:19:23 ago Exp $
+
+  03 Jul 2015; Agostino Sarubbo <ago@gentoo.org> haskell-src-1.0.1.6.ebuild:
+  Stable for alpha, wrt bug #534982
 
   26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> haskell-src-1.0.1.6.ebuild:
   Stable for x86, wrt bug #534982

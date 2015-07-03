@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/pillow
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pillow/ChangeLog,v 1.64 2015/07/02 08:20:48 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pillow/ChangeLog,v 1.65 2015/07/03 10:14:10 jlec Exp $
+
+  03 Jul 2015; Justin Lecher <jlec@gentoo.org> pillow-2.9.0.ebuild:
+  Add missing dep for doc build
 
 *pillow-2.9.0 (02 Jul 2015)
 

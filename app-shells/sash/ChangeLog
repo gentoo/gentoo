@@ -1,6 +1,9 @@
 # ChangeLog for app-shells/sash
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/sash/ChangeLog,v 1.59 2015/06/26 08:40:46 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-shells/sash/ChangeLog,v 1.60 2015/07/03 10:17:41 ago Exp $
+
+  03 Jul 2015; Agostino Sarubbo <ago@gentoo.org> sash-3.8.ebuild:
+  Stable for alpha, wrt bug #534898
 
   26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> sash-3.8.ebuild:
   Stable for x86, wrt bug #534898

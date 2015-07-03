@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pillow/pillow-2.9.0.ebuild,v 1.1 2015/07/02 08:20:48 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pillow/pillow-2.9.0.ebuild,v 1.2 2015/07/03 10:14:10 jlec Exp $
 
 EAPI=5
 
@@ -18,7 +18,7 @@ SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.zip"
 
 LICENSE="HPND"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 IUSE="doc examples jpeg jpeg2k lcms test tiff tk truetype webp zlib"
 
 REQUIRED_USE="test? ( jpeg )"
@@ -37,6 +37,8 @@ DEPEND="${RDEPEND}
 	doc? (
 		dev-python/sphinx[${PYTHON_USEDEP}]
 		dev-python/sphinx-better-theme[${PYTHON_USEDEP}]
+		>=dev-python/sphinx_rtd_theme-0.1[${PYTHON_USEDEP}]
+		<dev-python/sphinx_rtd_theme-0.2[${PYTHON_USEDEP}]
 	)
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )
 	"

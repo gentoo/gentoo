@@ -1,6 +1,9 @@
 # ChangeLog for x11-libs/libaosd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libaosd/ChangeLog,v 1.14 2015/05/15 10:52:40 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libaosd/ChangeLog,v 1.15 2015/07/03 10:09:10 ago Exp $
+
+  03 Jul 2015; Agostino Sarubbo <ago@gentoo.org> libaosd-0.2.7.ebuild:
+  Stable for alpha, wrt bug #535568
 
   15 May 2015; Pacho Ramos <pacho@gentoo.org> libaosd-0.2.7.ebuild:
   ppc stable wrt bug #535568

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/opus/opus-1.1.ebuild,v 1.11 2015/06/07 10:55:59 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/opus/opus-1.1.ebuild,v 1.12 2015/07/03 10:12:04 ago Exp $
 
 EAPI=5
 AUTOTOOLS_AUTORECONF="1"
@@ -11,7 +11,7 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="git://git.opus-codec.org/opus.git"
 else
 	SRC_URI="http://downloads.xiph.org/releases/${PN}/${P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd"
+	KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd"
 fi
 
 DESCRIPTION="Open versatile codec designed for interactive speech and audio transmission over the internet"

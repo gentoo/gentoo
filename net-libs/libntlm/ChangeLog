@@ -1,6 +1,9 @@
 # ChangeLog for net-libs/libntlm
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libntlm/ChangeLog,v 1.43 2015/06/26 08:53:57 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libntlm/ChangeLog,v 1.44 2015/07/03 10:21:07 ago Exp $
+
+  03 Jul 2015; Agostino Sarubbo <ago@gentoo.org> libntlm-1.4.ebuild:
+  Stable for alpha, wrt bug #535580
 
   26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> libntlm-1.4.ebuild:
   Stable for x86, wrt bug #535580

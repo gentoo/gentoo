@@ -1,6 +1,9 @@
 # ChangeLog for x11-base/xorg-server
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-base/xorg-server/ChangeLog,v 1.851 2015/06/24 07:57:39 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-base/xorg-server/ChangeLog,v 1.852 2015/07/03 09:56:57 ago Exp $
+
+  03 Jul 2015; Agostino Sarubbo <ago@gentoo.org> xorg-server-1.12.4-r5.ebuild:
+  Stable for alpha, wrt bug #548002
 
   24 Jun 2015; Agostino Sarubbo <ago@gentoo.org> xorg-server-1.12.4-r5.ebuild:
   Stable for ppc, wrt bug #548002

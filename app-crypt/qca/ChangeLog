@@ -1,6 +1,9 @@
 # ChangeLog for app-crypt/qca
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/qca/ChangeLog,v 1.112 2015/06/30 21:48:14 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/qca/ChangeLog,v 1.113 2015/07/03 10:24:32 ago Exp $
+
+  03 Jul 2015; Agostino Sarubbo <ago@gentoo.org> qca-2.1.0.3.ebuild:
+  Stable for alpha, wrt bug #552554
 
   30 Jun 2015; Davide Pesavento <pesa@gentoo.org> qca-2.1.0.3.ebuild:
   Use dodoc -r

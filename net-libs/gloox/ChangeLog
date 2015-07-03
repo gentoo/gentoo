@@ -1,6 +1,9 @@
 # ChangeLog for net-libs/gloox
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/gloox/ChangeLog,v 1.32 2015/05/15 10:52:49 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/gloox/ChangeLog,v 1.33 2015/07/03 10:09:14 ago Exp $
+
+  03 Jul 2015; Agostino Sarubbo <ago@gentoo.org> gloox-1.0.9.ebuild:
+  Stable for alpha, wrt bug #535568
 
   15 May 2015; Pacho Ramos <pacho@gentoo.org> gloox-1.0.9.ebuild:
   ppc stable wrt bug #535568

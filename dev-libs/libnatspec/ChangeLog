@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/libnatspec
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libnatspec/ChangeLog,v 1.30 2015/06/09 14:40:27 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libnatspec/ChangeLog,v 1.31 2015/07/03 10:10:21 ago Exp $
+
+  03 Jul 2015; Agostino Sarubbo <ago@gentoo.org> libnatspec-0.2.6-r1.ebuild:
+  Stable for alpha, wrt bug #548686
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

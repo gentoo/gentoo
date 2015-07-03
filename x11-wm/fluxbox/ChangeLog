@@ -1,6 +1,9 @@
 # ChangeLog for x11-wm/fluxbox
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/fluxbox/ChangeLog,v 1.348 2015/06/28 11:28:26 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/fluxbox/ChangeLog,v 1.349 2015/07/03 10:11:10 ago Exp $
+
+  03 Jul 2015; Agostino Sarubbo <ago@gentoo.org> fluxbox-1.3.6-r1.ebuild:
+  Stable for alpha, wrt bug #541526
 
   28 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> fluxbox-1.3.7-r2.ebuild:
   x86 stable wrt bug #551350

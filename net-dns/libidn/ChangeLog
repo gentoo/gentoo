@@ -1,6 +1,9 @@
 # ChangeLog for net-dns/libidn
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/libidn/ChangeLog,v 1.222 2015/06/27 12:42:48 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/libidn/ChangeLog,v 1.223 2015/07/03 10:24:09 ago Exp $
+
+  03 Jul 2015; Agostino Sarubbo <ago@gentoo.org> libidn-1.30.ebuild:
+  Stable for alpha, wrt bug #552160
 
   27 Jun 2015; Markus Meier <maekke@gentoo.org> libidn-1.30.ebuild:
   arm stable, bug #552160

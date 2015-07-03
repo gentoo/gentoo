@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/rubygems
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rubygems/ChangeLog,v 1.272 2015/07/03 03:58:29 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rubygems/ChangeLog,v 1.273 2015/07/03 10:06:00 ago Exp $
+
+  03 Jul 2015; Agostino Sarubbo <ago@gentoo.org> rubygems-2.2.5.ebuild:
+  Stable for alpha, wrt bug #553298
 
   03 Jul 2015; Jeroen Roovers <jer@gentoo.org> rubygems-2.2.5.ebuild:
   Stable for HPPA (bug #553298).

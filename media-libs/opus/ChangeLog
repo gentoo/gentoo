@@ -1,6 +1,9 @@
 # ChangeLog for media-libs/opus
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/opus/ChangeLog,v 1.47 2015/06/07 10:55:59 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/opus/ChangeLog,v 1.48 2015/07/03 10:12:04 ago Exp $
+
+  03 Jul 2015; Agostino Sarubbo <ago@gentoo.org> opus-1.1.ebuild:
+  Stable for alpha, wrt bug #500868
 
   07 Jun 2015; Markus Meier <maekke@gentoo.org> opus-1.1.ebuild:
   arm stable, bug #500868

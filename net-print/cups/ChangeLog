@@ -1,6 +1,9 @@
 # ChangeLog for net-print/cups
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/cups/ChangeLog,v 1.676 2015/06/14 10:49:08 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-print/cups/ChangeLog,v 1.677 2015/07/03 10:10:48 ago Exp $
+
+  03 Jul 2015; Agostino Sarubbo <ago@gentoo.org> cups-2.0.2-r1.ebuild:
+  Stable for alpha, wrt bug #545740
 
 *cups-2.0.2-r2 (14 Jun 2015)
 
