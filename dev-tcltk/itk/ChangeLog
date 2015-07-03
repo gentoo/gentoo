@@ -1,6 +1,10 @@
 # ChangeLog for dev-tcltk/itk
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/itk/ChangeLog,v 1.45 2015/07/03 10:08:38 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/itk/ChangeLog,v 1.46 2015/07/03 10:52:53 jlec Exp $
+
+  03 Jul 2015; Justin Lecher <jlec@gentoo.org> -itk-3.4_pre20090417-r1.ebuild,
+  -itk-3.4_pre20090417.ebuild:
+  Drop old
 
   03 Jul 2015; Agostino Sarubbo <ago@gentoo.org> itk-3.4.1.ebuild:
   Stable for alpha, wrt bug #546412
