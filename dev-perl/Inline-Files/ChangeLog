@@ -1,6 +1,12 @@
 # ChangeLog for dev-perl/Inline-Files
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Inline-Files/ChangeLog,v 1.1 2015/07/04 12:29:54 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Inline-Files/ChangeLog,v 1.2 2015/07/04 12:36:24 dilfridge Exp $
+
+*Inline-Files-0.690.0 (04 Jul 2015)
+
+  04 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Inline-Files-0.690.0.ebuild:
+  Version bump
 
 *Inline-Files-0.680.0-r1 (04 Jul 2015)
 

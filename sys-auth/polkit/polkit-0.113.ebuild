@@ -1,6 +1,6 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/polkit/polkit-0.112.ebuild,v 1.10 2013/09/23 19:17:01 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/polkit/polkit-0.113.ebuild,v 1.1 2015/07/04 13:26:52 pacho Exp $
 
 EAPI=5
 inherit eutils multilib pam pax-utils systemd user
@@ -11,32 +11,42 @@ SRC_URI="http://www.freedesktop.org/software/${PN}/releases/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86"
-IUSE="examples gtk +introspection kde nls pam selinux systemd"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+IUSE="examples gtk +introspection jit kde nls pam selinux systemd test"
 
-RDEPEND="=dev-lang/spidermonkey-1.8.5*[-debug]
-	>=dev-libs/glib-2.32
+CDEPEND="
+	dev-lang/spidermonkey:0/mozjs185[-debug]
+	>=dev-libs/glib-2.32:2
 	>=dev-libs/expat-2:=
-	introspection? ( >=dev-libs/gobject-introspection-1 )
+	introspection? ( >=dev-libs/gobject-introspection-1:= )
 	pam? (
 		sys-auth/pambase
 		virtual/pam
 		)
-	selinux? ( sec-policy/selinux-policykit )
-	systemd? ( sys-apps/systemd )"
-DEPEND="${RDEPEND}
+	systemd? ( sys-apps/systemd:0= )
+"
+DEPEND="${CDEPEND}
 	app-text/docbook-xml-dtd:4.1.2
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
+	dev-util/gtk-doc-am
 	dev-util/intltool
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
+RDEPEND="${CDEPEND}
+	selinux? ( sec-policy/selinux-policykit )
+"
 PDEPEND="
 	gtk? ( || (
 		>=gnome-extra/polkit-gnome-0.105
 		lxde-base/lxpolkit
 		) )
-	kde? ( sys-auth/polkit-kde-agent )
-	!systemd? ( sys-auth/consolekit[policykit] )"
+	kde? ( || (
+		kde-plasma/polkit-kde-agent
+		sys-auth/polkit-kde-agent
+		) )
+	!systemd? ( sys-auth/consolekit[policykit] )
+"
 
 QA_MULTILIB_PATHS="
 	usr/lib/polkit-1/polkit-agent-helper-1
@@ -70,6 +80,7 @@ src_configure() {
 		"$(systemd_with_unitdir)" \
 		--with-authfw=$(usex pam pam shadow) \
 		$(use pam && echo --with-pam-module-dir="$(getpam_mod_dir)") \
+		$(use_enable test) \
 		--with-os-type=gentoo
 }
 
@@ -77,9 +88,7 @@ src_compile() {
 	default
 
 	# Required for polkitd on hardened/PaX due to spidermonkey's JIT
-	local f='src/polkitbackend/.libs/polkitd test/polkitbackend/.libs/polkitbackendjsauthoritytest'
-	local m='mr'
-	pax-mark ${m} ${f}
+	pax-mark mr src/polkitbackend/.libs/polkitd test/polkitbackend/.libs/polkitbackendjsauthoritytest
 }
 
 src_install() {

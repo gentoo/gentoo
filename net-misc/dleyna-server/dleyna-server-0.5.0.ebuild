@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/dleyna-server/dleyna-server-0.5.0.ebuild,v 1.1 2015/06/09 23:10:02 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/dleyna-server/dleyna-server-0.5.0.ebuild,v 1.2 2015/07/04 12:50:17 pacho Exp $
 
 EAPI=5
 
@@ -25,7 +25,7 @@ RDEPEND="
 	>=net-libs/gupnp-av-0.11.5
 	>=net-libs/libsoup-2.28.2:2.4
 "
-DEPEND="${DEPEND}
+DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 

@@ -1,5 +1,5 @@
 DEFINED_PHASES=install
-DEPEND=virtual/pkgconfig
+DEPEND=>=dev-libs/glib-2.28:2 >=net-libs/gupnp-0.20.5 virtual/pkgconfig
 DESCRIPTION=utility library for higher level dLeyna libraries
 EAPI=5
 HOMEPAGE=https://01.org/dleyna/
@@ -9,4 +9,4 @@ RDEPEND=>=dev-libs/glib-2.28:2 >=net-libs/gupnp-0.20.5
 SLOT=1.0/4
 SRC_URI=https://01.org/sites/default/files/downloads/dleyna/dleyna-core-0.5.0.tar.gz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=8987241e20b309e619f1954a172fdbbb
+_md5_=f85b36d16b91209493403f05805850bb

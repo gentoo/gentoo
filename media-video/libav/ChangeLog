@@ -1,6 +1,9 @@
 # ChangeLog for media-video/libav
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/libav/ChangeLog,v 1.249 2015/05/29 10:37:25 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/libav/ChangeLog,v 1.250 2015/07/04 13:28:10 klausman Exp $
+
+  04 Jul 2015; Tobias Klausmann <klausman@gentoo.org> libav-11.3.ebuild:
+  Stable on alpha, bug 541664
 
   29 May 2015; Mikle Kolyada <zlogene@gentoo.org> libav-11.3.ebuild:
   arm stable wrt bug #541664

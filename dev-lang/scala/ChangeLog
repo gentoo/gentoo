@@ -1,6 +1,12 @@
 # ChangeLog for dev-lang/scala
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/scala/ChangeLog,v 1.49 2015/05/27 11:18:41 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/scala/ChangeLog,v 1.50 2015/07/04 12:44:07 gienah Exp $
+
+*scala-2.11.7 (04 Jul 2015)
+
+  04 Jul 2015; Mark Wright <gienah@gentoo.org> +files/scala-2.11.7-no-git.patch,
+  +scala-2.11.7.ebuild:
+  Bump scala to 2.11.7
 
   27 May 2015; Agostino Sarubbo <ago@gentoo.org> scala-2.11.4-r1.ebuild:
   Stable for x86, wrt bug #546818

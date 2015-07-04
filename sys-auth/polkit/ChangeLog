@@ -1,6 +1,14 @@
 # ChangeLog for sys-auth/polkit
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/polkit/ChangeLog,v 1.193 2015/06/06 08:52:19 perfinion Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/polkit/ChangeLog,v 1.194 2015/07/04 13:26:52 pacho Exp $
+
+*polkit-0.113 (04 Jul 2015)
+
+  04 Jul 2015; Pacho Ramos <pacho@gentoo.org> +polkit-0.113.ebuild,
+  -files/polkit-0.110-W_define.patch, -polkit-0.110.ebuild,
+  -polkit-0.112-r1.ebuild, -polkit-0.112.ebuild:
+  Version bump, use spidermonkey-185 because of problems with memory handling
+  when using mozjs-17 (#553334)
 
 *polkit-0.112-r3 (06 Jun 2015)
 

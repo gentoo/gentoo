@@ -1,12 +1,12 @@
 DEFINED_PHASES=install prepare setup
-DEPEND=!<sci-chemistry/ccp4-6.1.2 !dev-java/scala-bin !dev-lang/scala sci-libs/ccp4-libs virtual/lapack virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/fortran
+DEPEND=!<sci-chemistry/ccp4-6.1.2 !dev-lang/scala-bin !dev-lang/scala sci-libs/ccp4-libs virtual/lapack virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/fortran
 DESCRIPTION=Scale together multiple observations of reflections
 EAPI=4
 HOMEPAGE=http://www.ccp4.ac.uk/dist/html/scala.html
 KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux
 LICENSE=ccp4
-RDEPEND=!<sci-chemistry/ccp4-6.1.2 !dev-java/scala-bin !dev-lang/scala sci-libs/ccp4-libs virtual/lapack virtual/fortran
+RDEPEND=!<sci-chemistry/ccp4-6.1.2 !dev-lang/scala-bin !dev-lang/scala sci-libs/ccp4-libs virtual/lapack virtual/fortran
 SLOT=0
 SRC_URI=ftp://ftp.mrc-lmb.cam.ac.uk/pub/pre/scala-3.3.20.tar.gz
 _eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	fortran-2	db8710b355fc5598015c4bc3aad3bdb0	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=a06949b857808ea0ecdec46bb3305c99
+_md5_=f106a47996454869995168f1da772e77

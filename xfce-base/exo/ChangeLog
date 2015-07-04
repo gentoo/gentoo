@@ -1,6 +1,14 @@
 # ChangeLog for xfce-base/exo
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-base/exo/ChangeLog,v 1.118 2015/07/01 16:38:22 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-base/exo/ChangeLog,v 1.120 2015/07/04 13:12:42 perfinion Exp $
+
+  04 Jul 2015; Jason Zaman <perfinion@gentoo.org> exo-0.10.6-r1.ebuild:
+  add gtk-doc-am DEP
+
+*exo-0.10.6-r1 (04 Jul 2015)
+
+  04 Jul 2015; Jason Zaman <perfinion@gentoo.org> +exo-0.10.6-r1.ebuild:
+  revbump to fix gtk-doc QA issue
 
   01 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> exo-0.10.6.ebuild:
   amd64 stable wrt bug #553500

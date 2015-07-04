@@ -1,12 +1,13 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=dev-perl/common-sense dev-lang/perl:=[-build(-)]
-DESCRIPTION=Asynchronous Input/Output
+DEPEND=virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-Test ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=Multiple virtual files in a single file
 EAPI=5
-HOMEPAGE=http://search.cpan.org/dist/IO-AIO/
-KEYWORDS=amd64 ~ppc x86
+HOMEPAGE=http://search.cpan.org/dist/Inline-Files/
+IUSE=test
+KEYWORDS=~alpha ~amd64 ~ppc ~x86
 LICENSE=|| ( Artistic GPL-1+ )
-RDEPEND=dev-perl/common-sense dev-lang/perl:=[-build(-)]
+RDEPEND=dev-lang/perl:=[-build(-)]
 SLOT=0
-SRC_URI=mirror://cpan/authors/id/M/ML/MLEHMANN/IO-AIO-4.18.tar.gz
+SRC_URI=mirror://cpan/authors/id/A/AM/AMBS/Inline-Files-0.69.tar.gz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
-_md5_=ebb94ae980cd03cd8c8ed7b121cd98ed
+_md5_=238a22eb8751e5fce24ab5294ff04395

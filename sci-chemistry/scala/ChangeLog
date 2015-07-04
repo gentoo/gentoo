@@ -1,6 +1,9 @@
 # ChangeLog for sci-chemistry/scala
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/scala/ChangeLog,v 1.21 2015/02/28 19:15:33 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/scala/ChangeLog,v 1.22 2015/07/04 13:20:40 monsieurp Exp $
+
+  04 Jul 2015; Patrice Clement <monsieurp@gentoo.org> scala-3.3.20.ebuild:
+  Update blocker on scala-bin (package has moved to dev-lang/). Fix bug 553912.
 
   28 Feb 2015; Patrice Clement <monsieurp@gentoo.org> scala-3.3.20.ebuild:
   Add two blockers against scala ebuilds and fix bug 541440. Signed off by jlec.
