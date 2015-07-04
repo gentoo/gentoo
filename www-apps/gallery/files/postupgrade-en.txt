@@ -2,7 +2,7 @@ To upgreade:
 
 1. Upgrade the webapp using
 
-    webapp-config -U -h <VHOST_HOSTNAME> -d <VHOST_APPDIR> gallery X.Y.Z
+    webapp-config -h <VHOST_HOSTNAME> -d <VHOST_APPDIR> -U gallery X.Y.Z
 
 2. Direct your browser to
 

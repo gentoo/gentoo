@@ -1,6 +1,15 @@
 # ChangeLog for app-misc/byobu
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/byobu/ChangeLog,v 1.95 2015/06/09 11:37:23 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/byobu/ChangeLog,v 1.97 2015/07/03 22:58:22 radhermit Exp $
+
+  03 Jul 2015; Tim Harder <radhermit@gentoo.org> -byobu-5.86.ebuild,
+  -byobu-5.87.ebuild, -byobu-5.88.ebuild, -byobu-5.89.ebuild:
+  Remove old.
+
+*byobu-5.94 (03 Jul 2015)
+
+  03 Jul 2015; Tim Harder <radhermit@gentoo.org> +byobu-5.94.ebuild:
+  Version bump.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml
