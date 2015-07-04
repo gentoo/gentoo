@@ -1,6 +1,11 @@
 # ChangeLog for dev-libs/dbus-glib
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/dbus-glib/ChangeLog,v 1.165 2015/05/27 13:49:19 tetromino Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/dbus-glib/ChangeLog,v 1.166 2015/07/04 15:51:15 pacho Exp $
+
+*dbus-glib-0.104 (04 Jul 2015)
+
+  04 Jul 2015; Pacho Ramos <pacho@gentoo.org> +dbus-glib-0.104.ebuild:
+  Version bump
 
   27 May 2015; Alexandre Rostovtsev <tetromino@gentoo.org>
   -dbus-glib-0.100.2.ebuild, -dbus-glib-0.100.2-r1.ebuild,

@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=ncurses? ( sys-libs/ncurses ) qt4? ( dev-qt/qtgui:4[qt3support] ) alsa? ( media-libs/alsa-lib ) pulseaudio? ( media-sound/pulseaudio ) virtual/pkgconfig sys-devel/libtool !<=app-misc/cw-1.0.16-r1
+DESCRIPTION=A package of programs that fit together to form a morse code tutor program
+EAPI=5
+HOMEPAGE=http://unixcw.sourceforge.net
+IUSE=alsa ncurses pulseaudio suid qt4
+KEYWORDS=~alpha ~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=ncurses? ( sys-libs/ncurses ) qt4? ( dev-qt/qtgui:4[qt3support] ) alsa? ( media-libs/alsa-lib ) pulseaudio? ( media-sound/pulseaudio )
+SLOT=0
+SRC_URI=mirror://sourceforge/unixcw/unixcw-3.4.2.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=fbd93030c4c3d64b4a33cd77fcf506c4

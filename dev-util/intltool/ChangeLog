@@ -1,6 +1,11 @@
 # ChangeLog for dev-util/intltool
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/intltool/ChangeLog,v 1.180 2014/04/06 15:44:41 vapier Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/intltool/ChangeLog,v 1.181 2015/07/04 16:04:06 pacho Exp $
+
+*intltool-0.51.0 (04 Jul 2015)
+
+  04 Jul 2015; Pacho Ramos <pacho@gentoo.org> +intltool-0.51.0.ebuild:
+  Version bump
 
   06 Apr 2014; Mike Frysinger <vapier@gentoo.org> intltool-0.50.2-r1.ebuild:
   Add arm64 love.

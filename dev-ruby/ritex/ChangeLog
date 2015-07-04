@@ -1,0 +1,9 @@
+# ChangeLog for dev-ruby/ritex
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ritex/ChangeLog,v 1.1 2015/07/04 16:05:27 mrueg Exp $
+
+*ritex-1.0.1 (04 Jul 2015)
+
+  04 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +metadata.xml,
+  +ritex-1.0.1.ebuild:
+  Initial version.

@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-radio/unixcw/unixcw-3.3.1.ebuild,v 1.6 2014/11/02 09:07:59 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-radio/unixcw/unixcw-3.4.2.ebuild,v 1.1 2015/07/04 15:55:31 tomjbe Exp $
 
-EAPI=4
+EAPI=5
 
-inherit autotools eutils flag-o-matic multilib
+inherit eutils flag-o-matic multilib
 
 DESCRIPTION="A package of programs that fit together to form a morse code tutor program"
 HOMEPAGE="http://unixcw.sourceforge.net"
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc x86"
+KEYWORDS="~alpha ~amd64 ~ppc ~x86"
 IUSE="alsa ncurses pulseaudio suid qt4"
 
 RDEPEND="ncurses? ( sys-libs/ncurses )
@@ -26,10 +26,6 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	append-cflags -std=gnu99
-	# add path to qt4 libs
-	sed -i -e "s#LDADD = -L#LDADD = -L/usr/$(get_libdir)/qt4 -L#g" \
-		src/xcwcp/Makefile.am
-	eautoreconf
 }
 
 src_configure() {
