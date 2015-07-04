@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare
+DEPEND=!sys-apps/module-init-tools !sys-apps/modutils !<sys-apps/openrc-0.13.8 !<sys-apps/systemd-216-r3 lzma? ( >=app-arch/xz-utils-5.0.4-r1 ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] ) zlib? ( >=sys-libs/zlib-1.2.6 ) doc? ( dev-util/gtk-doc ) lzma? ( virtual/pkgconfig ) python? ( dev-python/cython[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] virtual/pkgconfig ) zlib? ( virtual/pkgconfig )
+DESCRIPTION=library and tools for managing linux kernel modules
+EAPI=5
+HOMEPAGE=http://git.kernel.org/?p=utils/kernel/kmod/kmod.git
+IUSE=debug doc lzma python static-libs +tools zlib python_targets_python2_7 python_targets_python3_3 python_targets_python3_4
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=LGPL-2
+RDEPEND=!sys-apps/module-init-tools !sys-apps/modutils !<sys-apps/openrc-0.13.8 !<sys-apps/systemd-216-r3 lzma? ( >=app-arch/xz-utils-5.0.4-r1 ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] ) zlib? ( >=sys-libs/zlib-1.2.6 )
+REQUIRED_USE=python? ( || ( python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 ) )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://kernel/linux/utils/kernel/kmod/kmod-21.tar.xz
+_eclasses_=bash-completion-r1	c8399c7c7ecbcf7ed6e5bd3abb3d4af3	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	python-r1	23846c6ba39f6655e2027001eeed8e81	python-utils-r1	ae9becb5d45344c01939c3f57df0d3fd	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=c244797f8ed8b4e87757c056d9751f7e
