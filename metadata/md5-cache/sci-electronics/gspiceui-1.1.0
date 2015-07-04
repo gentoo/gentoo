@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst prepare
+DEPEND=x11-libs/wxGTK:3.0[X] sci-electronics/electronics-menu
+DESCRIPTION=GUI frontend for Ngspice and Gnucap
+EAPI=5
+HOMEPAGE=http://www.geda.seul.org/tools/gspiceui/
+IUSE=examples schematics waveform
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=x11-libs/wxGTK:3.0[X] sci-electronics/electronics-menu || ( sci-electronics/ngspice sci-electronics/gnucap ) waveform? ( sci-electronics/gwave ) schematics? ( sci-electronics/geda )
+SLOT=0
+SRC_URI=mirror://sourceforge/gspiceui/gspiceui-v1.1.00.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	wxwidgets	6d6eec2685256d35511e7b6d5461bec9
+_md5_=5fe48eb54501c3ee5db4e904db237802
