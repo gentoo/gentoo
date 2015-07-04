@@ -70,7 +70,6 @@ dmi
 
 # Stuff we don't want
 chicken
-fuse
 R
 octave
 tracker

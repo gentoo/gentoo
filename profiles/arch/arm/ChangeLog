@@ -1,6 +1,9 @@
 # ChangeLog for Gentoo/ARM profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/arm/ChangeLog,v 1.361 2015/06/04 18:46:48 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/arm/ChangeLog,v 1.362 2015/07/04 19:20:36 blueness Exp $
+
+  04 Jul 2015; Anthony G. Basile <blueness@gentoo.org> use.mask:
+  Unmask USE=fuse. Bug #553420.
 
   04 Jun 2015; Michael Palimaka <kensington@gentoo.org> package.use.mask:
   Move various kde-base packages to kde-apps.

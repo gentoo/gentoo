@@ -7,9 +7,4 @@
 	<name>Matthias Maier</name>
 	<description>Please CC me on bugs</description>
 </maintainer>
-<use>
-	<flag name="introspection">Use <pkg>dev-libs/gobject-introspection</pkg>
-		for introspection</flag>
-	<flag name="vala">Enable bindings for <pkg>dev-lang/vala</pkg></flag>
-</use>
 </pkgmetadata>

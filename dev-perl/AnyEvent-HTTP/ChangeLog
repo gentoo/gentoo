@@ -1,6 +1,11 @@
 # ChangeLog for dev-perl/AnyEvent-HTTP
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/AnyEvent-HTTP/ChangeLog,v 1.14 2015/04/12 18:22:06 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/AnyEvent-HTTP/ChangeLog,v 1.15 2015/07/04 18:43:10 zlogene Exp $
+
+*AnyEvent-HTTP-2.220.0 (04 Jul 2015)
+
+  04 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> +AnyEvent-HTTP-2.220.0.ebuild:
+  Version bump
 
 *AnyEvent-HTTP-2.210.0 (12 Apr 2015)
 

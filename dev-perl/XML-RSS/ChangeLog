@@ -1,6 +1,11 @@
 # ChangeLog for dev-perl/XML-RSS
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-RSS/ChangeLog,v 1.104 2015/06/13 22:26:06 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-RSS/ChangeLog,v 1.105 2015/07/04 18:47:42 zlogene Exp $
+
+*XML-RSS-1.560.0 (04 Jul 2015)
+
+  04 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> +XML-RSS-1.560.0.ebuild:
+  Version bump
 
   13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
   XML-RSS-1.490.0-r1.ebuild, XML-RSS-1.540.0-r1.ebuild:

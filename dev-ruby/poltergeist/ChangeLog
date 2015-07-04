@@ -1,0 +1,11 @@
+# ChangeLog for dev-ruby/poltergeist
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/poltergeist/ChangeLog,v 1.1 2015/07/04 19:26:31 graaff Exp $
+
+*poltergeist-1.6.0 (04 Jul 2015)
+
+  04 Jul 2015; Hans de Graaff <graaff@gentoo.org> +poltergeist-1.6.0.ebuild,
+  +metadata.xml:
+  Initial import from graaff overlay. New dependency for
+  dev-ruby/best_in_place.
+

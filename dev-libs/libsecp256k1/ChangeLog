@@ -1,6 +1,10 @@
 # ChangeLog for dev-libs/libsecp256k1
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libsecp256k1/ChangeLog,v 1.5 2015/06/06 19:19:03 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libsecp256k1/ChangeLog,v 1.6 2015/07/04 18:49:43 blueness Exp $
+
+  04 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
+  libsecp256k1-0.0.0_pre20141212.ebuild:
+  Stable for amd64, arm and x86.  Bug #552208.
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org>
   libsecp256k1-0.0.0_pre20141212.ebuild, libsecp256k1-9999.ebuild:

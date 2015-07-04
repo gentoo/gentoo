@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/rednose
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/rednose/ChangeLog,v 1.5 2015/06/03 21:34:19 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/rednose/ChangeLog,v 1.6 2015/07/04 19:03:53 alunduil Exp $
+
+*rednose-0.4.3 (04 Jul 2015)
+
+  04 Jul 2015; Alex Brandt <alunduil@gentoo.org> +rednose-0.4.3.ebuild:
+  add version 0.4.3
 
   03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add pypi to remote-id in metadata.xml

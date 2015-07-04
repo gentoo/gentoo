@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+DEPEND=>=dev-libs/glib-2.37.3:2[dbus] >=x11-libs/gtk+-3.1.4:3[introspection] >=gnome-extra/cinnamon-desktop-2.6.3:0=[systemd=] >=gnome-base/gsettings-desktop-schemas-0.1.7 >=gnome-base/libgnomekbd-3.6 >=dev-libs/dbus-glib-0.78 net-libs/webkit-gtk:3[introspection] sys-apps/dbus x11-libs/libxklavier x11-libs/libX11 x11-libs/libXext x11-libs/libXrandr x11-libs/libXScrnSaver x11-libs/libXxf86misc x11-libs/libXxf86vm x11-themes/gnome-icon-theme-symbolic >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] pam? ( virtual/pam ) systemd? ( >=sys-apps/systemd-31:0= ) >=dev-util/intltool-0.35 gnome-base/gnome-common sys-devel/gettext virtual/pkgconfig x11-proto/xextproto x11-proto/randrproto x11-proto/scrnsaverproto x11-proto/xf86miscproto doc? ( app-text/xmlto app-text/docbook-xml-dtd:4.1.2 app-text/docbook-xml-dtd:4.4 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 app-arch/xz-utils >=sys-apps/sed-4
+DESCRIPTION=Screensaver for Cinnamon
+EAPI=5
+HOMEPAGE=http://cinnamon.linuxmint.com/
+IUSE=doc pam systemd debug python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=!~gnome-extra/cinnamon-1.8.8.1 !systemd? ( sys-auth/consolekit ) dev-python/pygobject:3[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)]
+SLOT=0
+SRC_URI=https://github.com/linuxmint/cinnamon-screensaver/archive/2.6.4.tar.gz -> cinnamon-screensaver-2.6.4.tar.gz
+_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	10c513def52488230abb60a4b19a03b9	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	351da1aa73960a282591217fb57c1bb8	python-utils-r1	ae9becb5d45344c01939c3f57df0d3fd	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=89bd6955613b1e4572fb03d594a4a8a5

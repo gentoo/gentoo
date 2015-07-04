@@ -1,6 +1,11 @@
 # ChangeLog for dev-perl/Module-Find
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Module-Find/ChangeLog,v 1.20 2014/08/22 18:13:18 axs Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Module-Find/ChangeLog,v 1.21 2015/07/04 18:58:13 zlogene Exp $
+
+*Module-Find-0.130.0 (04 Jul 2015)
+
+  04 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> +Module-Find-0.130.0.ebuild:
+  Version bump
 
 *Module-Find-0.110.0-r1 (22 Aug 2014)
 
