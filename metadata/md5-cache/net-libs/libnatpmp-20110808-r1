@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=An alternative protocol to UPnP IGD specification
+EAPI=4
+HOMEPAGE=http://miniupnp.free.fr/libnatpmp.html
+IUSE=static-libs
+KEYWORDS=sparc
+LICENSE=BSD
+SLOT=0
+SRC_URI=http://miniupnp.free.fr/files/download.php?file=libnatpmp-20110808.tar.gz -> libnatpmp-20110808.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=cc0e7d0d791d69838d39065793aec827

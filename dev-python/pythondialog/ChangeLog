@@ -1,6 +1,12 @@
 # ChangeLog for dev-python/pythondialog
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pythondialog/ChangeLog,v 1.31 2015/06/09 16:56:35 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pythondialog/ChangeLog,v 1.32 2015/07/04 01:31:16 idella4 Exp $
+
+*pythondialog-3.3.0 (04 Jul 2015)
+
+  04 Jul 2015; Ian Delaney <idella4@gentoo.org> +pythondialog-3.3.0.ebuild,
+  -pythondialog-3.2.1.ebuild, pythondialog-3.2.2.ebuild:
+  correction to deps, bump
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16645 2015/07/02 12:20:16 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16646 2015/07/04 02:34:13 mjo Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -29,6 +29,11 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Michael Orlitzky <mjo@gentoo.org> (3 Jul 2015)
+# Mask for removal in 30 days. Superseded by dev-haskell/biosff;
+# use that instead. Bug #553636.
+sci-biology/flower
 
 # Patrick Lauer <patrick@gentoo.org> (1 Jul 2015)
 # Wrong version #553670

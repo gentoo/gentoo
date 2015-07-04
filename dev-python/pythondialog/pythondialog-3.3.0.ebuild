@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pythondialog/pythondialog-3.2.1.ebuild,v 1.1 2014/12/15 14:40:23 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pythondialog/pythondialog-3.3.0.ebuild,v 1.1 2015/07/04 01:31:16 idella4 Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python{3_3,3_4} pypy3 )
@@ -16,9 +16,8 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86"
 IUSE="doc examples"
 
-DEPEND="dev-util/dialog
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
-RDEPEND="${DEPEND}"
+RDEPEND="dev-util/dialog"
+DEPEND="doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 
 python_prepare_all() {
 	sed -e "/^    'sphinx.ext.intersphinx',/d" -i doc/conf.py || die

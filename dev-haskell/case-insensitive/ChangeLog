@@ -1,6 +1,16 @@
 # ChangeLog for dev-haskell/case-insensitive
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/case-insensitive/ChangeLog,v 1.14 2015/06/06 10:32:51 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/case-insensitive/ChangeLog,v 1.16 2015/07/04 02:39:21 slyfox Exp $
+
+  04 Jul 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  case-insensitive-1.0.0.2-r1.ebuild:
+  amd64/x86 stable (bug #552388 by Jason Cooper).
+
+*case-insensitive-1.0.0.2-r1 (04 Jul 2015)
+
+  04 Jul 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  +case-insensitive-1.0.0.2-r1.ebuild:
+  Allow text-1.1 (bug #552388 by Jason Cooper).
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml
