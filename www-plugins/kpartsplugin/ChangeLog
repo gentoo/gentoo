@@ -1,6 +1,12 @@
 # ChangeLog for www-plugins/kpartsplugin
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-plugins/kpartsplugin/ChangeLog,v 1.19 2014/04/26 12:06:17 johu Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-plugins/kpartsplugin/ChangeLog,v 1.20 2015/07/04 11:05:33 dilfridge Exp $
+
+*kpartsplugin-20120723-r2 (04 Jul 2015)
+
+  04 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +files/kpartsplugin-20120723-segfault.patch, +kpartsplugin-20120723-r2.ebuild:
+  Revision bump, add patch by Mario Kicherer to fix bug 553318
 
   26 Apr 2014; Johannes Huber <johu@gentoo.org> -kpartsplugin-20120723.ebuild,
   kpartsplugin-20120723-r1.ebuild:

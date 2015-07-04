@@ -1,6 +1,9 @@
 # ChangeLog for sys-devel/gettext
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gettext/ChangeLog,v 1.269 2015/06/28 12:42:58 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/gettext/ChangeLog,v 1.270 2015/07/04 11:25:04 jer Exp $
+
+  04 Jul 2015; Jeroen Roovers <jer@gentoo.org> gettext-0.19.4.ebuild:
+  Stable for HPPA (bug #551828).
 
   28 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> gettext-0.19.4.ebuild:
   alpha stable wrt bug #551828

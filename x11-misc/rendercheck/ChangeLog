@@ -1,6 +1,11 @@
 # ChangeLog for x11-misc/rendercheck
-# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/rendercheck/ChangeLog,v 1.22 2011/03/27 16:13:03 klausman Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/rendercheck/ChangeLog,v 1.23 2015/07/04 10:39:24 mrueg Exp $
+
+*rendercheck-1.5 (04 Jul 2015)
+
+  04 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +rendercheck-1.5.ebuild:
+  Version bump.
 
   27 Mar 2011; Tobias Klausmann <klausman@gentoo.org> rendercheck-1.4.ebuild:
   Keyworded on alpha, bug #360685
@@ -89,4 +94,3 @@
   This tests an implementation of X's Render extension against independent
   calculations of the expected results. The ebuild is based on
   x11-misc/xcompmgr.
-

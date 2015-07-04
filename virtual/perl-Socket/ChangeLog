@@ -1,6 +1,10 @@
 # ChangeLog for virtual/perl-Socket
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/perl-Socket/ChangeLog,v 1.29 2015/06/12 22:04:17 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/virtual/perl-Socket/ChangeLog,v 1.30 2015/07/04 11:14:10 dilfridge Exp $
+
+  04 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  perl-Socket-2.13.0.ebuild, perl-Socket-2.18.0.ebuild:
+  Copy keywords from Perl 5.20 / 5.22
 
 *perl-Socket-2.18.0 (12 Jun 2015)
 
