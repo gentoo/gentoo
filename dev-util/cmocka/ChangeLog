@@ -1,6 +1,9 @@
 # ChangeLog for dev-util/cmocka
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/cmocka/ChangeLog,v 1.23 2015/05/30 21:00:17 johu Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/cmocka/ChangeLog,v 1.24 2015/07/04 13:53:02 klausman Exp $
+
+  04 Jul 2015; Tobias Klausmann <klausman@gentoo.org> cmocka-0.3.1-r1.ebuild:
+  Stable on alpha, bug 538798
 
 *cmocka-1.0.1 (30 May 2015)
 

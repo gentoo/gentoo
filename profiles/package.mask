@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16646 2015/07/04 02:34:13 mjo Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16647 2015/07/04 13:46:22 dilfridge Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -229,7 +229,6 @@ dev-lang/php:7.0
 =virtual/perl-Text-Balanced-2.30.0
 =virtual/perl-Text-ParseWords-3.300.0
 =virtual/perl-Time-Piece-1.290.0
-=virtual/perl-Unicode-Collate-1.120.0
 =virtual/perl-XSLoader-0.200.0
 =virtual/perl-autodie-2.260.0
 =virtual/perl-bignum-0.390.0

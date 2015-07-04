@@ -1,6 +1,13 @@
 # ChangeLog for app-arch/file-roller
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/file-roller/ChangeLog,v 1.346 2015/06/09 09:57:41 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/file-roller/ChangeLog,v 1.347 2015/07/04 14:04:07 pacho Exp $
+
+*file-roller-3.16.3 (04 Jul 2015)
+
+  04 Jul 2015; Pacho Ramos <pacho@gentoo.org> +file-roller-3.16.3.ebuild:
+  Version bump, stop applying the patch to find 'tar' because star is not
+  providing /usr/bin/tar for a long time because of the same problems that were
+  hitting file-roller being hitting a lot of other tools.
 
 *file-roller-3.16.2 (09 Jun 2015)
 

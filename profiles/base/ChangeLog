@@ -1,6 +1,9 @@
 # ChangeLog for Gentoo base-profile
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/ChangeLog,v 1.816 2015/06/28 23:31:26 grknight Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/ChangeLog,v 1.817 2015/07/04 13:33:46 blueness Exp $
+
+  04 Jul 2015; Anthony G. Basile <blueness@gentoo.org> package.use.mask:
+  Mask http2 for net-misc/curl. Bug #552618.
 
   28 Jun 2015; Brian Evans <grknight@gentoo.org> use.stable.mask:
   Unmask php_targets_php5-6 for a majority of arches wrt bug 550164

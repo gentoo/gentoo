@@ -1,0 +1,10 @@
+# ChangeLog for app-text/itex2mml
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/itex2mml/ChangeLog,v 1.1 2015/07/04 14:56:54 mrueg Exp $
+
+*itex2mml-1.5.2 (04 Jul 2015)
+
+  04 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +itex2mml-1.5.2.ebuild,
+  +metadata.xml:
+  Initial version. Based on ebuild by Jiri Tyr and W. Trevor King. Fixes bug
+  #194499.

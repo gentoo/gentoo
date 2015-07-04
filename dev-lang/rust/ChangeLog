@@ -1,6 +1,12 @@
 # ChangeLog for dev-lang/rust
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/rust/ChangeLog,v 1.20 2015/06/06 15:39:57 jauhien Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/rust/ChangeLog,v 1.21 2015/07/04 14:56:04 jauhien Exp $
+
+*rust-1.1.0 (04 Jul 2015)
+
+  04 Jul 2015; Jauhien Piatlicki <jauhien@gentoo.org>
+  +files/rust-1.1.0-install.patch, +rust-1.1.0.ebuild, -rust-1.0.0.ebuild:
+  version bump, fix bug 553442
 
   06 Jun 2015; Jauhien Piatlicki <jauhien@gentoo.org> rust-1.0.0.ebuild:
   move to new SLOTs schema

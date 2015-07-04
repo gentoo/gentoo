@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libssh/libssh-0.7.0-r1.ebuild,v 1.1 2015/05/27 07:46:35 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libssh/libssh-0.7.0-r1.ebuild,v 1.2 2015/07/04 13:52:52 klausman Exp $
 
 EAPI=5
 
@@ -13,7 +13,7 @@ SRC_URI="https://red.libssh.org/attachments/download/140/${MY_P}.tar.xz -> ${P}.
 	https://projects.archlinux.org/svntogit/packages.git/plain/trunk/ssh_forward_listen.patch?h=packages/libssh&id=e7628675b7b5dec45371b67745ce786ee5b78d8c -> ${PN}-0.7.0-ssh_forward_listen.patch"
 
 LICENSE="LGPL-2.1"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 SLOT="0/4" # subslot = soname major version
 IUSE="debug doc examples gcrypt gssapi pcap +sftp ssh1 server static-libs test zlib"
 # Maintainer: check IUSE-defaults at DefineOptions.cmake

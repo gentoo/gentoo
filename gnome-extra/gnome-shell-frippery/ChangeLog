@@ -1,6 +1,16 @@
 # ChangeLog for gnome-extra/gnome-shell-frippery
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-shell-frippery/ChangeLog,v 1.15 2015/03/31 19:28:46 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-shell-frippery/ChangeLog,v 1.17 2015/07/04 14:10:47 pacho Exp $
+
+  04 Jul 2015; Pacho Ramos <pacho@gentoo.org>
+  gnome-shell-frippery-0.10.2.ebuild:
+  Fix RDEPEND
+
+*gnome-shell-frippery-0.10.2 (04 Jul 2015)
+
+  04 Jul 2015; Pacho Ramos <pacho@gentoo.org>
+  +gnome-shell-frippery-0.10.2.ebuild, -gnome-shell-frippery-0.8.0.ebuild:
+  Version bump, drop old
 
   31 Mar 2015; Ulrich Müller <ulm@gentoo.org>
   gnome-shell-frippery-0.8.0.ebuild, gnome-shell-frippery-0.9.0.ebuild:

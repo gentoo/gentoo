@@ -1,6 +1,9 @@
 # ChangeLog for net-libs/libssh
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libssh/ChangeLog,v 1.138 2015/05/31 22:00:40 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libssh/ChangeLog,v 1.139 2015/07/04 13:52:52 klausman Exp $
+
+  04 Jul 2015; Tobias Klausmann <klausman@gentoo.org> libssh-0.7.0-r1.ebuild:
+  Stable on alpha, bug 538798
 
   31 May 2015; Lars Wendler <polynomial-c@gentoo.org> Manifest:
   Fixed checksum of libssh-0.6.5-compilefix.patch.

@@ -1,9 +1,14 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use.mask,v 1.691 2015/06/27 17:47:05 tetromino Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use.mask,v 1.692 2015/07/04 13:33:46 blueness Exp $
 
 # This file requires >=portage-2.1.1
 # New entries go on top.
+
+# Anthony G. Basile <blueness@gentoo.org> (04 Jul 2015)
+# USE=http2 depends on net-libs/nghttp2 which was recently
+# added to the tree and is still not stable.  Bug #552618.
+net-misc/curl http2
 
 # Gilles Dartiguelongue <eva@gentoo.org> (25 May 2015)
 # webkit fails to build with USE=wayland, bug #549228

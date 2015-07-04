@@ -1,6 +1,9 @@
 # ChangeLog for xfce-base/xfwm4
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-base/xfwm4/ChangeLog,v 1.237 2015/07/01 16:43:37 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-base/xfwm4/ChangeLog,v 1.238 2015/07/04 14:22:19 perfinion Exp $
+
+  04 Jul 2015; Jason Zaman <perfinion@gentoo.org> xfwm4-4.12.3.ebuild:
+  bug 553816, libxfce4ui dep was not specific enough
 
   01 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> xfwm4-4.12.3.ebuild:
   amd64 stable wrt bug #553500

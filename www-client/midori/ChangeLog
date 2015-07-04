@@ -1,6 +1,9 @@
 # ChangeLog for www-client/midori
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/midori/ChangeLog,v 1.134 2015/07/01 08:08:17 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/midori/ChangeLog,v 1.135 2015/07/04 14:09:02 perfinion Exp $
+
+  04 Jul 2015; Jason Zaman <perfinion@gentoo.org> midori-0.5.10.ebuild:
+  fix bug 553562, add gcr[gtk] to deps
 
   01 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> midori-0.5.10.ebuild:
   x86 stable wrt bug #553500

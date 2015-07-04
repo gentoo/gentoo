@@ -1,0 +1,10 @@
+# ChangeLog for perl-core/Unicode-Collate
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/perl-core/Unicode-Collate/ChangeLog,v 1.1 2015/07/04 13:44:16 dilfridge Exp $
+
+*Unicode-Collate-1.120.0 (04 Jul 2015)
+
+  04 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Unicode-Collate-1.120.0.ebuild, +metadata.xml:
+  Add perl-core package. Needed for Biber.
+

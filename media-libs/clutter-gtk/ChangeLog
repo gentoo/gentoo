@@ -1,6 +1,15 @@
 # ChangeLog for media-libs/clutter-gtk
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/clutter-gtk/ChangeLog,v 1.61 2015/06/11 00:35:05 tetromino Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/clutter-gtk/ChangeLog,v 1.63 2015/07/04 13:53:43 pacho Exp $
+
+  04 Jul 2015; Pacho Ramos <pacho@gentoo.org> clutter-gtk-1.6.2.ebuild:
+  Fix RDEPEND
+
+*clutter-gtk-1.6.2 (04 Jul 2015)
+
+  04 Jul 2015; Pacho Ramos <pacho@gentoo.org> +clutter-gtk-1.6.2.ebuild,
+  metadata.xml:
+  Version bump
 
 *clutter-gtk-1.6.0-r1 (11 Jun 2015)
 
