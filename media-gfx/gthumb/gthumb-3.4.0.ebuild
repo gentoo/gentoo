@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/gthumb/gthumb-3.2.8.ebuild,v 1.4 2015/04/02 18:49:11 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/gthumb/gthumb-3.4.0.ebuild,v 1.1 2015/07/04 19:56:31 pacho Exp $
 
 EAPI="5"
 GCONF_DEBUG="yes"
@@ -13,12 +13,12 @@ HOMEPAGE="https://wiki.gnome.org/Apps/gthumb"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~x86-solaris"
-IUSE="cdr exif gstreamer http jpeg json libsecret raw slideshow svg tiff test webkit webp"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
+IUSE="cdr exif gnome-keyring gstreamer http jpeg json lcms raw slideshow svg tiff test webkit webp"
 
 COMMON_DEPEND="
-	>=dev-libs/glib-2.34.0:2
-	>=x11-libs/gtk+-3.4.0:3
+	>=dev-libs/glib-2.36.0:2[dbus]
+	>=x11-libs/gtk+-3.10.0:3
 
 	media-libs/libpng:0=
 	sys-libs/zlib
@@ -27,21 +27,22 @@ COMMON_DEPEND="
 
 	cdr? ( >=app-cdr/brasero-3.2 )
 	exif? ( >=media-gfx/exiv2-0.21:= )
+	gnome-keyring? ( >=app-crypt/libsecret-0.11 )
 	gstreamer? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0 )
-	http? ( >=net-libs/libsoup-gnome-2.36:2.4 )
+	http? ( >=net-libs/libsoup-2.42.0:2.4 )
 	jpeg? ( virtual/jpeg:0= )
 	json? ( >=dev-libs/json-glib-0.15.0 )
-	libsecret? ( >=app-crypt/libsecret-0.11 )
+	lcms? ( >=media-libs/lcms-2.6:2 )
 	slideshow? (
-		>=media-libs/clutter-1:1.0
+		>=media-libs/clutter-1.12.0:1.0
 		>=media-libs/clutter-gtk-1:1.0 )
 	svg? ( >=gnome-base/librsvg-2.34 )
 	tiff? ( media-libs/tiff:= )
-	raw? ( >=media-libs/libopenraw-0.0.8:= )
+	raw? ( >=media-libs/libraw-0.14:= )
 	!raw? ( media-gfx/dcraw )
-	webkit? ( >=net-libs/webkit-gtk-1.10.0:3 )
+	webkit? ( net-libs/webkit-gtk:4 )
 	webp? ( >=media-libs/libwebp-0.2.0 )
 "
 RDEPEND="${COMMON_DEPEND}
@@ -49,7 +50,6 @@ RDEPEND="${COMMON_DEPEND}
 "
 DEPEND="${COMMON_DEPEND}
 	app-text/yelp-tools
-	app-text/scrollkeeper
 	>=dev-util/intltool-0.35
 	sys-devel/bison
 	sys-devel/flex
@@ -75,12 +75,13 @@ src_configure() {
 		--disable-libchamplain \
 		$(use_enable cdr libbrasero) \
 		$(use_enable exif exiv2) \
+		$(use_enable gnome-keyring libsecret) \
 		$(use_enable gstreamer) \
 		$(use_enable http libsoup) \
 		$(use_enable jpeg) \
 		$(use_enable json libjson-glib) \
-		$(use_enable libsecret) \
-		$(use_enable raw libopenraw) \
+		$(use_enable lcms lcms2) \
+		$(use_enable raw libraw) \
 		$(use_enable slideshow clutter) \
 		$(use_enable svg librsvg) \
 		$(use_enable test test-suite) \

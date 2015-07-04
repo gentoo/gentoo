@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16647 2015/07/04 13:46:22 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16648 2015/07/04 19:45:37 blueness Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -265,11 +265,6 @@ media-libs/lcms:0
 # move the offline date forward. Consequently gorg will now also be
 # masked for removal in 30 days.
 www-servers/gorg
-
-# Anthony G. Basile <blueness@gentoo.org> (14 May 2015)
-# No longer required by any packages in the tree.
-# Masked for removal in 30 days.
-sys-apps/getent
 
 # Ian Delaney <idella4@gentoo.org> (13 May 2015)
 # package unused, no revdeps, obsolete.

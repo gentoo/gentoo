@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/apbs/apbs-1.4.1-r2.ebuild,v 1.6 2015/05/08 17:22:26 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/apbs/apbs-1.4.1-r2.ebuild,v 1.7 2015/07/04 19:37:27 zlogene Exp $
 
 EAPI=5
 
@@ -17,7 +17,7 @@ SRC_URI="https://github.com/Electrostatics/apbs-pdb2pqr/archive/${GITHUB_REV}.zi
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~amd64 ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
 IUSE="debug doc examples fast +fetk iapbs mpi openmp python tools"
 
 REQUIRED_USE="

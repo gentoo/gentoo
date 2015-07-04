@@ -1,6 +1,11 @@
 # ChangeLog for gnome-extra/nemo
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/nemo/ChangeLog,v 1.26 2015/06/14 01:58:28 tetromino Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/nemo/ChangeLog,v 1.27 2015/07/04 19:39:52 pacho Exp $
+
+*nemo-2.6.6 (04 Jul 2015)
+
+  04 Jul 2015; Pacho Ramos <pacho@gentoo.org> +nemo-2.6.6.ebuild:
+  Version bump
 
 *nemo-2.6.5 (13 Jun 2015)
 

@@ -1,6 +1,9 @@
 # ChangeLog for virtual/bitcoin-leveldb
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/bitcoin-leveldb/ChangeLog,v 1.9 2015/03/14 19:45:18 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/virtual/bitcoin-leveldb/ChangeLog,v 1.10 2015/07/04 19:38:13 blueness Exp $
+
+  04 Jul 2015; Anthony G. Basile <blueness@gentoo.org> bitcoin-leveldb-0.ebuild:
+  Remove < 1.15.0-r1 for bug #505320.
 
   14 Mar 2015; Anthony G. Basile <blueness@gentoo.org> bitcoin-leveldb-0.ebuild:
   Update allowed virtuals.

@@ -1,6 +1,17 @@
 # ChangeLog for app-admin/fleet
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/fleet/ChangeLog,v 1.20 2015/06/05 11:38:28 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/fleet/ChangeLog,v 1.23 2015/07/04 20:22:18 alunduil Exp $
+
+  04 Jul 2015; Alex Brandt <alunduil@gentoo.org> -fleet-0.10.0-r1.ebuild:
+  remove version 0.10.0-r1
+
+  04 Jul 2015; Alex Brandt <alunduil@gentoo.org> -fleet-0.10.0.ebuild:
+  remove version 0.10.0
+
+*fleet-0.11.0 (04 Jul 2015)
+
+  04 Jul 2015; Alex Brandt <alunduil@gentoo.org> +fleet-0.11.0.ebuild:
+  add version 0.11.0
 
   05 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

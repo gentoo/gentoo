@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/fleet/fleet-0.10.0-r1.ebuild,v 1.1 2015/04/25 21:51:42 alunduil Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/fleet/fleet-0.11.0.ebuild,v 1.1 2015/07/04 20:20:42 alunduil Exp $
 
 EAPI=5
 
@@ -13,16 +13,18 @@ SRC_URI="https://github.com/coreos/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="doc examples"
+IUSE="doc examples test"
 
-DEPEND=">=dev-lang/go-1.3"
+DEPEND="
+	>=dev-lang/go-1.3
+	test? ( dev-go/go-tools )
+"
 RDEPEND=""
 
 src_compile() {
 	./build || die 'Build failed'
 }
 
-RESTRICT="test"  # Tests fail due to Gentoo bug #500452
 src_test() {
 	./test || die 'Tests failed'
 }

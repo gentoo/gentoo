@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst postrm unpack
+DESCRIPTION=A Mozilla-based web browser whose design is inspired by GNU Emacs
+EAPI=5
+HOMEPAGE=http://conkeror.org/
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=|| ( MPL-1.1 GPL-2 LGPL-2.1 ) CC-BY-SA-3.0
+RDEPEND=|| ( >=www-client/firefox-5.0 >=www-client/firefox-bin-23.0 )
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~ulm/distfiles/conkeror-1.0_pre20150519.tar.xz http://dev.gentoo.org/~ulm/distfiles/conkeror.png
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=d0fec07841a76f4b4105fb7529d560ef

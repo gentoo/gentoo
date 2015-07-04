@@ -1,0 +1,9 @@
+# ChangeLog for dev-ruby/nenv
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/nenv/ChangeLog,v 1.1 2015/07/04 20:27:23 mrueg Exp $
+
+*nenv-0.2.0 (04 Jul 2015)
+
+  04 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +metadata.xml,
+  +nenv-0.2.0.ebuild:
+  Initial version.

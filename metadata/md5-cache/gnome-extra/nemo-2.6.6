@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test unpack
+DEPEND=>=dev-libs/glib-2.34:2[dbus] >=gnome-extra/cinnamon-desktop-2.6.1:0= >=x11-libs/pango-1.28.3 >=x11-libs/gtk+-3.3.17:3[introspection?] >=dev-libs/libxml2-2.7.8:2 gnome-base/dconf:0= gnome-base/gsettings-desktop-schemas >=x11-libs/libnotify-0.7:= x11-libs/libX11 x11-libs/libXext x11-libs/libXrender exif? ( >=media-libs/libexif-0.6.20:= ) introspection? ( >=dev-libs/gobject-introspection-0.6.4:= ) tracker? ( >=app-misc/tracker-0.12:= ) xmp? ( >=media-libs/exempi-2.1.0:= ) || ( >=dev-lang/python-2.7.5-r2:2.7 ) || ( ( >=dev-lang/python-2.7.5-r2:2.7 dev-python/polib[python_targets_python2_7(-),python_single_target_python2_7(+)] dev-python/pygobject:3[python_targets_python2_7(-),python_single_target_python2_7(+)] ) ) >=dev-lang/perl-5 >=dev-util/gdbus-codegen-2.31.0 dev-util/gtk-doc-am >=dev-util/intltool-0.40.1 sys-devel/gettext virtual/pkgconfig x11-proto/xproto dev-util/gtk-doc gnome-base/gnome-common !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 app-arch/xz-utils >=sys-apps/sed-4 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=A file manager for Cinnamon, forked from Nautilus
+EAPI=5
+HOMEPAGE=http://cinnamon.linuxmint.com/
+IUSE=exif +introspection +nls packagekit tracker xmp test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+ LGPL-2+ FDL-1.1
+PDEPEND=>=gnome-base/gvfs-0.1.2
+RDEPEND=>=dev-libs/glib-2.34:2[dbus] >=gnome-extra/cinnamon-desktop-2.6.1:0= >=x11-libs/pango-1.28.3 >=x11-libs/gtk+-3.3.17:3[introspection?] >=dev-libs/libxml2-2.7.8:2 gnome-base/dconf:0= gnome-base/gsettings-desktop-schemas >=x11-libs/libnotify-0.7:= x11-libs/libX11 x11-libs/libXext x11-libs/libXrender exif? ( >=media-libs/libexif-0.6.20:= ) introspection? ( >=dev-libs/gobject-introspection-0.6.4:= ) tracker? ( >=app-misc/tracker-0.12:= ) xmp? ( >=media-libs/exempi-2.1.0:= ) x11-themes/gnome-icon-theme-symbolic nls? ( >=gnome-extra/cinnamon-translations-2.2 )
+SLOT=0
+SRC_URI=https://github.com/linuxmint/nemo/archive/2.6.6.tar.gz -> nemo-2.6.6.tar.gz
+_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	10c513def52488230abb60a4b19a03b9	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	4756de53ea4d40471a582e898815a5c8	python-utils-r1	ae9becb5d45344c01939c3f57df0d3fd	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f	virtualx	73cfc129b4b9ba23aed1abb10c825d86
+_md5_=aaab07b2f87be34e1600cfafbec809b5

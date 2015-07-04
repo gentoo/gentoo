@@ -1,6 +1,14 @@
 # ChangeLog for dev-ruby/best_in_place
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/best_in_place/ChangeLog,v 1.17 2015/06/07 16:51:05 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/best_in_place/ChangeLog,v 1.19 2015/07/04 19:48:41 graaff Exp $
+
+  04 Jul 2015; Hans de Graaff <graaff@gentoo.org> -best_in_place-2.1.0.ebuild:
+  Cleanup for security bug 552326.
+
+*best_in_place-3.0.3 (04 Jul 2015)
+
+  04 Jul 2015; Hans de Graaff <graaff@gentoo.org> +best_in_place-3.0.3.ebuild:
+  Version bump.
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

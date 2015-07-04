@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libmicrohttpd/libmicrohttpd-0.9.42.ebuild,v 1.2 2015/05/18 16:32:52 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libmicrohttpd/libmicrohttpd-0.9.42.ebuild,v 1.3 2015/07/04 19:53:48 blueness Exp $
 
 EAPI="5"
 
@@ -35,10 +35,10 @@ src_configure() {
 		--enable-dauth \
 		--disable-examples \
 		--disable-spdy \
+		--enable-postprocessor \
 		$(use_enable epoll) \
 		$(use_enable test curl) \
 		$(use_enable messages) \
-		$(use_enable messages postprocessor) \
 		$(use_enable ssl https) \
 		$(use_with ssl gnutls) \
 		$(use_enable static-libs static)

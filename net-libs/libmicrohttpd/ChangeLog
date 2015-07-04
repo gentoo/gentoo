@@ -1,6 +1,14 @@
 # ChangeLog for net-libs/libmicrohttpd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libmicrohttpd/ChangeLog,v 1.95 2015/05/18 16:32:52 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libmicrohttpd/ChangeLog,v 1.97 2015/07/04 19:55:02 blueness Exp $
+
+  04 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
+  -libmicrohttpd-0.9.40.ebuild, -libmicrohttpd-0.9.41.ebuild:
+  Remove older unstable versions.
+
+  04 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
+  libmicrohttpd-0.9.42.ebuild:
+  Unconditionally enable postprocessor.  Bug #550718.
 
   18 May 2015; Mike Frysinger <vapier@gentoo.org> libmicrohttpd-0.9.42.ebuild:
   Disable building of examples as they are not actually installed; fix from Nam
