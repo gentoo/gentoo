@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/emelfm2/emelfm2-0.8.2.ebuild,v 1.3 2014/07/24 11:55:53 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/emelfm2/emelfm2-0.9.1-r1.ebuild,v 1.1 2015/07/04 16:46:39 pacho Exp $
 
 EAPI=5
 inherit eutils multilib toolchain-funcs
@@ -12,30 +12,37 @@ SRC_URI="http://emelfm2.net/rel/${P}.tar.bz2"
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="acl ansi gimp kernel_linux nls policykit spell udisks"
+IUSE="acl ansi gimp gtk3 kernel_linux nls policykit spell udisks"
 
 EMELFM2_LINGUAS=( de fr ja pl ru zh_CN )
 IUSE+=" ${EMELFM2_LINGUAS[@]/#/linguas_}"
 
-COMMON_DEPEND=">=dev-libs/glib-2.26:2
-	>=x11-libs/gtk+-2.12:2
+COMMON_DEPEND="
+	>=dev-libs/glib-2.26:2
+	!gtk3? ( >=x11-libs/gtk+-2.12:2 )
+	gtk3? ( x11-libs/gtk+:3 )
 	acl? ( sys-apps/acl )
 	gimp? ( media-gfx/gimp )
 	policykit? ( sys-auth/polkit )
-	spell? ( >=app-text/gtkspell-2.0.14:2 )"
-RDEPEND="${COMMON_DEPEND}
-	udisks? ( sys-fs/udisks:0 )"
-DEPEND="${COMMON_DEPEND}
+	spell? ( >=app-text/gtkspell-2.0.14:2 )
+"
+RDEPEND="
+	${COMMON_DEPEND}
+	udisks? ( sys-fs/udisks:2 )
+"
+DEPEND="
+	${COMMON_DEPEND}
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )"
+	nls? ( sys-devel/gettext )
+"
 
 RESTRICT="test"
 
 src_prepare() {
 	sed -i \
-		-e 's:dbus-glib-1::' \
-		-e 's:@$(CC):$(CC):g' \
 		-e 's:@$(BIN_MSGFMT):$(BIN_MSGFMT):g' \
+		-e 's:@$(CC):$(CC):g' \
+		-e 's:dbus-glib-1::' \
 		Makefile || die
 
 	local lingua
@@ -45,22 +52,17 @@ src_prepare() {
 }
 
 src_configure() {
-	emel_use() {
-		use ${1} && echo "${2}=1" || echo "${2}=0"
-	}
-
-	#363813
 	myemelconf=(
-		$(emel_use acl WITH_ACL)
-		$(emel_use ansi WITH_OUTPUTSTYLES)
-		$(emel_use gimp WITH_THUMBS)
-		$(emel_use kernel_linux WITH_KERNELFAM)
-		$(emel_use nls I18N)
-		$(emel_use policykit WITH_POLKIT)
-		$(emel_use spell EDITOR_SPELLCHECK)
-		$(emel_use udisks WITH_DEVKIT)
+		$(usex acl WITH_ACL=1 WITH_ACL=0)
+		$(usex ansi WITH_OUTPUTSTYLES=1 WITH_OUTPUTSTYLES=0)
+		$(usex gimp WITH_THUMBS=1 WITH_THUMBS=0)
+		$(usex gtk3 'GTK3=1 GTK2=0' 'GTK3=0 GTK2=1')
+		$(usex kernel_linux WITH_KERNELFAM=1 WITH_KERNELFAM=0)
+		$(usex nls I18N=1 I18N=0)
+		$(usex policykit WITH_POLKIT=1 WITH_POLKIT=0)
+		$(usex spell EDITOR_SPELLCHECK=1 EDITOR_SPELLCHECK=0)
+		$(usex udisks WITH_UDISKS=1 WITH_UDISKS=0)
 		DOCS_VERSION=1
-		GTK3=0
 		STRIP=0
 		WITH_TRANSPARENCY=1
 	)
@@ -79,8 +81,8 @@ src_install() {
 		LIB_DIR="${D}/usr/$(get_libdir)" \
 		PREFIX="${D}/usr" \
 		${myemelconf[@]} \
-		$( use nls && echo install_i18n ) \
-		install
+		install \
+		$(usex nls install_i18n '')
 
 	newicon icons/${PN}_48.png ${PN}.png
 }

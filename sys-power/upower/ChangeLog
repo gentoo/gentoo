@@ -1,6 +1,20 @@
 # ChangeLog for sys-power/upower
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/upower/ChangeLog,v 1.179 2015/07/03 10:10:00 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-power/upower/ChangeLog,v 1.181 2015/07/04 17:15:22 pacho Exp $
+
+  04 Jul 2015; Pacho Ramos <pacho@gentoo.org> -upower-0.99.1.ebuild:
+  Drop old
+
+*upower-0.99.3 (04 Jul 2015)
+
+  04 Jul 2015; Pacho Ramos <pacho@gentoo.org> +upower-0.99.3.ebuild,
+  -files/upower-0.99.0-create-dir-runtime.patch,
+  -files/upower-0.99.0-fix-segfault.patch,
+  -files/upower-0.99.0-fix-shutdown-on-boot.patch,
+  -files/upower-0.99.0-fix-typing-error.patch, -upower-0.99.0-r1.ebuild,
+  -upower-0.99.2.ebuild:
+  Version bump, gtk-doc files need to be built and were installed in unproper
+  location
 
   03 Jul 2015; Agostino Sarubbo <ago@gentoo.org> upower-0.99.2-r1.ebuild:
   Stable for alpha, wrt bug #537878
