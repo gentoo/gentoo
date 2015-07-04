@@ -1,6 +1,10 @@
 # ChangeLog for net-misc/rygel
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/rygel/ChangeLog,v 1.68 2015/06/26 09:23:49 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/rygel/ChangeLog,v 1.69 2015/07/04 12:24:15 pacho Exp $
+
+  04 Jul 2015; Pacho Ramos <pacho@gentoo.org> -rygel-0.24.2.ebuild,
+  rygel-0.26.1.ebuild:
+  Needs to be rebuilt with libunistring subslot bumps, drop old
 
   26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> rygel-0.24.4.ebuild:
   Stable for x86, wrt bug #551814

@@ -1,6 +1,10 @@
 # ChangeLog for net-print/cups-filters
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/cups-filters/ChangeLog,v 1.155 2015/07/04 05:20:35 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-print/cups-filters/ChangeLog,v 1.156 2015/07/04 11:37:42 klausman Exp $
+
+  04 Jul 2015; Tobias Klausmann <klausman@gentoo.org>
+  cups-filters-1.0.71.ebuild:
+  Stable on alpha, bug 553836
 
   04 Jul 2015; Jeroen Roovers <jer@gentoo.org> cups-filters-1.0.71.ebuild:
   Stable for HPPA PPC64 (bug #553836).

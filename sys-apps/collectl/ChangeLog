@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/collectl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/collectl/ChangeLog,v 1.23 2015/05/29 07:46:14 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/collectl/ChangeLog,v 1.24 2015/07/04 12:13:26 klausman Exp $
+
+  04 Jul 2015; Tobias Klausmann <klausman@gentoo.org> collectl-3.7.4.ebuild:
+  Stable on alpha, bug 521512
 
 *collectl-4.0.2 (29 May 2015)
 
