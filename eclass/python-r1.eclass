@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/python-r1.eclass,v 1.90 2015/03/21 14:55:33 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/python-r1.eclass,v 1.92 2015/07/04 15:26:17 floppym Exp $
 
 # @ECLASS: python-r1
 # @MAINTAINER:
@@ -26,8 +26,8 @@
 # in the packages using python-r1, and there is no need ever to inherit
 # both.
 #
-# For more information, please see the python-r1 Developer's Guide:
-# http://www.gentoo.org/proj/en/Python/python-r1/dev-guide.xml
+# For more information, please see the wiki:
+# https://wiki.gentoo.org/wiki/Project:Python/python-r1
 
 case "${EAPI:-0}" in
 	0|1|2|3)

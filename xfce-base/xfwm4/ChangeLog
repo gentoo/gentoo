@@ -1,6 +1,12 @@
 # ChangeLog for xfce-base/xfwm4
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-base/xfwm4/ChangeLog,v 1.238 2015/07/04 14:22:19 perfinion Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-base/xfwm4/ChangeLog,v 1.239 2015/07/04 15:02:54 perfinion Exp $
+
+*xfwm4-4.12.3-r1 (04 Jul 2015)
+
+  04 Jul 2015; Jason Zaman <perfinion@gentoo.org>
+  +files/xfwm4-4.12-touchscreen-subwindow-fix.patch, +xfwm4-4.12.3-r1.ebuild:
+  fix bug 527662, respond to touchscreen
 
   04 Jul 2015; Jason Zaman <perfinion@gentoo.org> xfwm4-4.12.3.ebuild:
   bug 553816, libxfce4ui dep was not specific enough

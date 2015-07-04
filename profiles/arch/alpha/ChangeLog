@@ -1,6 +1,10 @@
 # ChangeLog for Gentoo/Alpha profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/alpha/ChangeLog,v 1.226 2015/06/28 23:28:35 grknight Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/alpha/ChangeLog,v 1.227 2015/07/04 15:03:19 grknight Exp $
+
+  04 Jul 2015; Brian Evans <grknight@gentoo.org> use.stable.mask:
+  Drop use.stable.mask of php_targets_php5-6 now that alpha has a stable
+  version to satisfy
 
   28 Jun 2015; Brian Evans <grknight@gentoo.org> use.stable.mask:
   Mask php_targets_php5-6 until bug 550164 is solved

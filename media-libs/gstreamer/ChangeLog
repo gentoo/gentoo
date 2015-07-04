@@ -1,6 +1,9 @@
 # ChangeLog for media-libs/gstreamer
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/gstreamer/ChangeLog,v 1.394 2015/06/07 10:49:07 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/gstreamer/ChangeLog,v 1.395 2015/07/04 15:07:40 klausman Exp $
+
+  04 Jul 2015; Tobias Klausmann <klausman@gentoo.org> gstreamer-1.4.5.ebuild:
+  Stable on alpha, bug 519258
 
   07 Jun 2015; Markus Meier <maekke@gentoo.org> gstreamer-1.4.5.ebuild:
   arm stable, bug #534012

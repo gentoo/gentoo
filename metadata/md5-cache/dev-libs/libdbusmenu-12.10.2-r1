@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1 LGPL-3
 RDEPEND=>=dev-libs/dbus-glib-0.100 >=dev-libs/json-glib-0.13.4 >=dev-libs/glib-2.32 dev-libs/libxml2 gtk3? ( >=x11-libs/gtk+-3.2:3[introspection?] ) introspection? ( >=dev-libs/gobject-introspection-1 ) !<dev-libs/libdbusmenu-0.5.1-r200
 SLOT=0
 SRC_URI=http://launchpad.net/dbusmenu/12.10/12.10.2/+download/libdbusmenu-12.10.2.tar.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	7a178335dbd6ea7f50ed4e3e1c13c1e4	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	vala	09bc7da1a93142c9eb90786e6f6b39d2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	351da1aa73960a282591217fb57c1bb8	python-utils-r1	ae9becb5d45344c01939c3f57df0d3fd	toolchain-funcs	42408102d713fbad60ca21349865edb4	vala	09bc7da1a93142c9eb90786e6f6b39d2
 _md5_=9e326793da9a2b7a505647126353a683

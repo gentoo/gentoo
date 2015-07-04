@@ -1,6 +1,14 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1697 2015/07/03 21:45:06 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1699 2015/07/04 15:26:17 floppym Exp $
+
+  04 Jul 2015; Mike Gilbert <floppym@gentoo.org> distutils-r1.eclass,
+  python-any-r1.eclass, python-r1.eclass, python-single-r1.eclass,
+  python-utils-r1.eclass:
+  Replace links to python-r1 dev guide with links to the wiki.
+
+  04 Jul 2015; Manuel Rüger <mrueg@gentoo.org> python-r1.eclass:
+  Update URI.
 
   03 Jul 2015; William Hubbs <williamh@gentoo.org> golang-build.eclass:
   drop the slot dependency; it was pointed out to me that they do not trigger
