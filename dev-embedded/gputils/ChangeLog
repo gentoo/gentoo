@@ -1,6 +1,11 @@
 # ChangeLog for dev-embedded/gputils
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/gputils/ChangeLog,v 1.50 2015/06/09 13:20:17 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/gputils/ChangeLog,v 1.51 2015/07/04 08:56:49 perfinion Exp $
+
+*gputils-1.4.0 (04 Jul 2015)
+
+  04 Jul 2015; Jason Zaman <perfinion@gentoo.org> +gputils-1.4.0.ebuild:
+  bump thanks to Tiger, bug 553752
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml
