@@ -1,6 +1,12 @@
 # ChangeLog for x11-terms/xterm
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/xterm/ChangeLog,v 1.409 2015/03/30 12:31:49 chithanh Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/xterm/ChangeLog,v 1.410 2015/07/04 10:03:06 mrueg Exp $
+
+*xterm-318 (04 Jul 2015)
+
+  04 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +xterm-318.ebuild,
+  -xterm-297.ebuild, -xterm-304.ebuild, -xterm-312.ebuild:
+  Version bump. Remove old.
 
 *xterm-317 (30 Mar 2015)
 

@@ -1,6 +1,11 @@
 # ChangeLog for dev-libs/libevdev
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libevdev/ChangeLog,v 1.26 2015/04/08 17:51:55 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libevdev/ChangeLog,v 1.27 2015/07/04 10:05:28 mrueg Exp $
+
+*libevdev-1.4.3 (04 Jul 2015)
+
+  04 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +libevdev-1.4.3.ebuild:
+  Version bump.
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> libevdev-1.3.ebuild,
   libevdev-1.4.ebuild:

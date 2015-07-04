@@ -1,6 +1,12 @@
 # ChangeLog for x11-libs/libXaw
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libXaw/ChangeLog,v 1.132 2015/03/03 11:15:44 dlan Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libXaw/ChangeLog,v 1.133 2015/07/04 09:58:44 mrueg Exp $
+
+*libXaw-1.0.13 (04 Jul 2015)
+
+  04 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +libXaw-1.0.13.ebuild,
+  -libXaw-1.0.11-r1.ebuild, -libXaw-1.0.11-r2.ebuild:
+  Version bump. Remove old.
 
   03 Mar 2015; Yixun Lan <dlan@gentoo.org> libXaw-1.0.12.ebuild:
   add arm64 support, tested on A53 board
