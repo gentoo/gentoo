@@ -1,6 +1,9 @@
 # ChangeLog for media-sound/audacity
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/audacity/ChangeLog,v 1.188 2015/06/30 05:00:01 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/audacity/ChangeLog,v 1.189 2015/07/04 18:08:28 zlogene Exp $
+
+  04 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> audacity-2.0.5.ebuild:
+  amd64 stable wrt bug #522036
 
   30 Jun 2015; Jeroen Roovers <jer@gentoo.org> audacity-2.0.5.ebuild:
   Stable for PPC64 (bug #522036).

@@ -1,6 +1,11 @@
 # ChangeLog for sys-fs/btrfs-progs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/btrfs-progs/ChangeLog,v 1.107 2015/06/17 15:11:48 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/btrfs-progs/ChangeLog,v 1.108 2015/07/04 18:30:26 floppym Exp $
+
+*btrfs-progs-4.1 (04 Jul 2015)
+
+  04 Jul 2015; Mike Gilbert <floppym@gentoo.org> +btrfs-progs-4.1.ebuild:
+  Version bump, bug 553258.
 
   17 Jun 2015; Mike Gilbert <floppym@gentoo.org> btrfs-progs-9999.ebuild:
   Set EGIT_BRANCH=devel.

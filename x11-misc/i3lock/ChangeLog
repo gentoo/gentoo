@@ -1,6 +1,9 @@
 # ChangeLog for x11-misc/i3lock
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/i3lock/ChangeLog,v 1.21 2015/05/20 15:37:24 xarthisius Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/i3lock/ChangeLog,v 1.22 2015/07/04 17:59:48 zlogene Exp $
+
+  04 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> i3lock-2.6.ebuild:
+  amd64 stable wrt bug #537276
 
 *i3lock-2.7 (20 May 2015)
 
