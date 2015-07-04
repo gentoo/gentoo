@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/bundler
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/bundler/ChangeLog,v 1.101 2015/07/03 18:41:09 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/bundler/ChangeLog,v 1.102 2015/07/04 07:34:14 graaff Exp $
+
+  04 Jul 2015; Hans de Graaff <graaff@gentoo.org> bundler-1.8.9.ebuild:
+  Create stable candidate.
 
   03 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -bundler-1.7.3.ebuild:
   Remove old.

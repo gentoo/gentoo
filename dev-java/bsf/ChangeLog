@@ -1,6 +1,13 @@
 # ChangeLog for dev-java/bsf
-# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/bsf/ChangeLog,v 1.58 2011/12/31 13:27:47 sera Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/bsf/ChangeLog,v 1.59 2015/07/04 08:26:22 monsieurp Exp $
+
+*bsf-2.4.0-r2 (04 Jul 2015)
+
+  04 Jul 2015; Patrice Clement <monsieurp@gentoo.org> +bsf-2.4.0-r2.ebuild,
+  +files/bsf-2.4.0-PyJavaInstance.patch:
+  EAPI 5 bump. dev-java/jython SLOT bump from :0 to :2.7. Patch to add missing
+  imports due to jython:2.7 move. Drop ppc+ppc64. Fix bug 553892.
 
   31 Dec 2011; Ralph Sennhauser <sera@gentoo.org> bsf-2.4.0-r1.ebuild:
   Drop ia64 support #345433
