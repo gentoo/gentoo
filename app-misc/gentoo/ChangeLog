@@ -1,6 +1,9 @@
 # ChangeLog for app-misc/gentoo
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/gentoo/ChangeLog,v 1.152 2015/07/03 10:08:20 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/gentoo/ChangeLog,v 1.153 2015/07/04 04:32:01 jer Exp $
+
+  04 Jul 2015; Jeroen Roovers <jer@gentoo.org> -gentoo-0.20.4.ebuild:
+  Old.
 
   03 Jul 2015; Agostino Sarubbo <ago@gentoo.org> gentoo-0.20.6.ebuild:
   Stable for alpha, wrt bug #546022

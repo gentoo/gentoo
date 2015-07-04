@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/cups-filters/cups-filters-1.0.71.ebuild,v 1.1 2015/07/03 12:21:33 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-print/cups-filters/cups-filters-1.0.71.ebuild,v 1.2 2015/07/04 05:20:35 jer Exp $
 
 EAPI=5
 
@@ -11,10 +11,10 @@ inherit base eutils perl-module autotools systemd
 if [[ "${PV}" == "9999" ]] ; then
 	inherit bzr
 	EBZR_REPO_URI="http://bzr.linuxfoundation.org/openprinting/cups-filters"
-	KEYWORDS=""
+	KEYWORDS="hppa ppc64"
 else
 	SRC_URI="http://www.openprinting.org/download/${PN}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~m68k-mint"
+	KEYWORDS="~alpha ~amd64 ~arm hppa ~ia64 ~mips ~ppc ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~m68k-mint"
 fi
 DESCRIPTION="Cups PDF filters"
 HOMEPAGE="http://www.linuxfoundation.org/collaborate/workgroups/openprinting/pdfasstandardprintjobformat"
