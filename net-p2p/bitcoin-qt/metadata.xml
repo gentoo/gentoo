@@ -17,7 +17,6 @@
 		<flag name='bitcoin_policy_rbf'>Replace By Fee policy: Your node will preferentially mine and relay transactions paying the highest fee, regardless of receive order</flag>
 		<flag name='bitcoin_policy_spamfilter'>Enhanced spam filter policy: Notorious spammers will not be assisted by your node</flag>
 		<flag name='ljr'>Enable Luke Dashjr's patches</flag>
-		<flag name='ljr-antispam'>Enable Luke Dashjr's address-based spam filter</flag>
 		<flag name='qrcode'>Enable generation of QR Codes for receiving payments</flag>
 		<flag name='upnp'>Enable Universal Plug and Play</flag>
 		<flag name='wallet'>Enable wallet support</flag>

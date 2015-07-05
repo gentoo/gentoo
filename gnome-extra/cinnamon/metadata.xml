@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>gnome</herd>
-	<use>
-		<flag name="l10n">Pull in <pkg>gnome-extra/cinnamon-translations</pkg> for
-		localization support</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">linuxmint/Cinnamon</remote-id>
 	</upstream>

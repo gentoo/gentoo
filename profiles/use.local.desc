@@ -3009,7 +3009,6 @@ gnome-base/nautilus:tracker - Add support for app-misc/tracker search
 gnome-base/orbit:pic - Force libname-server-2 to be built as PIC; needed on hardened systems
 gnome-extra/avant-window-navigator:gconf - Enable GConf as configuration backend
 gnome-extra/avant-window-navigator-extras:gconf - Enable GConf as configuration backend
-gnome-extra/cinnamon:l10n - Pull in gnome-extra/cinnamon-translations for localization support
 gnome-extra/cinnamon-control-center:colord - Support color management using x11-misc/colord
 gnome-extra/cinnamon-settings-daemon:colord - Support color management using x11-misc/colord
 gnome-extra/evolution-data-server:api-doc-extras - Build documentation for private APIs
@@ -6054,7 +6053,6 @@ net-p2p/bitcoin-qt:bitcoin_policy_dcmp - Data Carrier Multi-Push policy: Your no
 net-p2p/bitcoin-qt:bitcoin_policy_rbf - Replace By Fee policy: Your node will preferentially mine and relay transactions paying the highest fee, regardless of receive order
 net-p2p/bitcoin-qt:bitcoin_policy_spamfilter - Enhanced spam filter policy: Notorious spammers will not be assisted by your node
 net-p2p/bitcoin-qt:ljr - Enable Luke Dashjr's patches
-net-p2p/bitcoin-qt:ljr-antispam - Enable Luke Dashjr's address-based spam filter
 net-p2p/bitcoin-qt:qrcode - Enable generation of QR Codes for receiving payments
 net-p2p/bitcoin-qt:upnp - Enable Universal Plug and Play
 net-p2p/bitcoin-qt:wallet - Enable wallet support
@@ -6065,7 +6063,6 @@ net-p2p/bitcoind:bitcoin_policy_dcmp - Data Carrier Multi-Push policy: Your node
 net-p2p/bitcoind:bitcoin_policy_rbf - Replace By Fee policy: Your node will preferentially mine and relay transactions paying the highest fee, regardless of receive order
 net-p2p/bitcoind:bitcoin_policy_spamfilter - Enhanced spam filter policy: Notorious spammers will not be assisted by your node
 net-p2p/bitcoind:ljr - Enable Luke Dashjr's patches
-net-p2p/bitcoind:ljr-antispam - Enable Luke Dashjr's address-based spam filter
 net-p2p/bitcoind:logrotate - Use app-admin/logrotate for rotating logs
 net-p2p/bitcoind:upnp - Enable Universal Plug and Play
 net-p2p/bitcoind:wallet - Enable wallet support
