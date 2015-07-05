@@ -2,8 +2,4 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>java</herd>
-  <use>
-    <flag name="hyphenation">Precompile hyphenation patterns from the <pkg>dev-java/offo-hyphenation</pkg> package and install them as fop-hyph.jar</flag>
-    <flag name="jai">Enable jai support</flag>
-  </use>
 </pkgmetadata>

@@ -1,6 +1,9 @@
 # ChangeLog for www-apps/gallery
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/gallery/ChangeLog,v 1.213 2015/07/03 22:57:27 twitch153 Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/gallery/ChangeLog,v 1.214 2015/07/05 22:06:42 blueness Exp $
+
+  05 Jul 2015; Anthony G. Basile <blueness@gentoo.org> gallery-2.3.2.ebuild:
+  Remove need_php_httpd.  Bug #552866.
 
   03 Jul 2015; Devan Franchini <twitch153@gentoo.org> files/postinstall-en.txt,
   files/postupgrade-en.txt:

@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/qrcode
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/qrcode/ChangeLog,v 1.7 2014/10/27 16:23:59 idella4 Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/qrcode/ChangeLog,v 1.8 2015/07/05 22:29:27 blueness Exp $
+
+  05 Jul 2015; Anthony G. Basile <blueness@gentoo.org> qrcode-5.1.ebuild:
+  Stable for amd64 and x86.  Needed for electrum.  Bug #541538.
 
   27 Oct 2014; Ian Delaney <idella4@gentoo.org> qrcode-5.1.ebuild:
   correct typo, upgrade test phase courtesy of Arfrever

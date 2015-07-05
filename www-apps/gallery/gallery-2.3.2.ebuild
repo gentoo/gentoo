@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/gallery/gallery-2.3.2.ebuild,v 1.7 2014/04/15 14:03:19 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/gallery/gallery-2.3.2.ebuild,v 1.8 2015/07/05 22:06:42 blueness Exp $
 
 EAPI="5"
 
@@ -22,12 +22,12 @@ RDEPEND="raw? ( media-gfx/dcraw )
 	zip? ( app-arch/zip )
 	sqlite? ( dev-lang/php[pdo] dev-lang/php[sqlite] )
 	mysql? ( || ( dev-lang/php[mysql] dev-lang/php[mysqli] ) )
-	dev-lang/php[session,postgres?,gd?]"
+	dev-lang/php[session,postgres?,gd?]
+	virtual/httpd-php"
 
 S=${WORKDIR}/${PN}2
 
 need_httpd_cgi
-need_php_httpd
 
 pkg_setup() {
 	webapp_pkg_setup
