@@ -1,6 +1,9 @@
 # ChangeLog for app-editors/jext
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/jext/ChangeLog,v 1.26 2015/07/03 17:14:28 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/jext/ChangeLog,v 1.27 2015/07/05 17:05:52 monsieurp Exp $
+
+  05 Jul 2015; Patrice Clement <monsieurp@gentoo.org> jext-5.0-r2.ebuild:
+  Update DESCRIPTION and HOMEPAGE. Fix bug 553964.
 
   03 Jul 2015; Patrice Clement <monsieurp@gentoo.org> -jext-5.0-r1.ebuild,
   -jext-5.0.ebuild:
