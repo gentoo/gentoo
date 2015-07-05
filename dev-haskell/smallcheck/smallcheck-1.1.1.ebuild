@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/smallcheck/smallcheck-1.1.1.ebuild,v 1.1 2014/07/02 13:40:33 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/smallcheck/smallcheck-1.1.1.ebuild,v 1.2 2015/07/05 14:43:15 zlogene Exp $
 
 EAPI=5
 
@@ -15,7 +15,7 @@ SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc x86"
 IUSE=""
 
 RDEPEND="dev-haskell/logict:=[profile?]

@@ -1,6 +1,9 @@
 # ChangeLog for dev-haskell/tasty-smallcheck
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/tasty-smallcheck/ChangeLog,v 1.6 2015/06/06 17:30:51 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/tasty-smallcheck/ChangeLog,v 1.7 2015/07/05 14:51:58 zlogene Exp $
+
+  05 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> tasty-smallcheck-0.2.ebuild:
+  x86 stable wrt bug #550418
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

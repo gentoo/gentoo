@@ -1,6 +1,9 @@
 # ChangeLog for dev-haskell/conduit
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/conduit/ChangeLog,v 1.17 2015/06/06 10:44:16 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/conduit/ChangeLog,v 1.18 2015/07/05 14:41:52 zlogene Exp $
+
+  05 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> conduit-1.0.15.1.ebuild:
+  x86 stable wrt bug #550394
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

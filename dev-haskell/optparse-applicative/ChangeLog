@@ -1,6 +1,10 @@
 # ChangeLog for dev-haskell/optparse-applicative
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/optparse-applicative/ChangeLog,v 1.9 2015/06/06 15:01:55 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/optparse-applicative/ChangeLog,v 1.10 2015/07/05 14:48:34 zlogene Exp $
+
+  05 Jul 2015; Mikle Kolyada <zlogene@gentoo.org>
+  optparse-applicative-0.7.0.2.ebuild:
+  x86 stable wrt bug #550412
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml
