@@ -1,0 +1,11 @@
+diff -ruN kadu-2.1/kadu-core/os/single-application/single-application.cpp my/kadu-core/os/single-application/single-application.cpp
+--- kadu-2.1/kadu-core/os/single-application/single-application.cpp	2015-03-24 22:13:18.000000000 +0100
++++ my/kadu-core/os/single-application/single-application.cpp	2015-07-05 21:08:09.044685214 +0200
+@@ -26,6 +26,7 @@
+ #include "long-lived-lock-file.h"
+ 
+ #include <QtCore/QCoreApplication>
++#include <QtCore/QDataStream>
+ #include <QtCore/QDir>
+ #include <QtCore/QRegExp>
+ #include <QtNetwork/QLocalServer>

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=app-crypt/qca:2[openssl,qt5] >=dev-libs/injeqt-1.0.0 >=dev-qt/qtcore-5.2.0:5 >=dev-qt/qtdbus-5.2.0:5 >=dev-qt/qtgui-5.2.0:5 >=dev-qt/qtmultimedia-5.2.0:5 >=dev-qt/qtnetwork-5.2.0:5 >=dev-qt/qtquick1-5.2.0:5 >=dev-qt/qtscript-5.2.0:5 >=dev-qt/qtsql-5.2.0:5 >=dev-qt/qtsvg-5.2.0:5 >=dev-qt/qtwebkit-5.2.0:5 >=dev-qt/qtwidgets-5.2.0:5 >=dev-qt/qtx11extras-5.2.0:5 >=dev-qt/qtxml-5.2.0:5 >=dev-qt/qtxmlpatterns-5.2.0:5 >=app-arch/libarchive-2.6[lzma] x11-libs/libX11 x11-libs/libXext x11-libs/libXScrnSaver gadu? ( >=net-libs/libgadu-1.11.1[threads] ) mpd? ( media-libs/libmpdclient ) otr? ( >=dev-libs/libgcrypt-1.2.2:0 >=net-libs/libotr-4.1.0 ) phonon? ( || ( media-libs/phonon[qt5] >=dev-qt/qtphonon-4.7.0:4 ) ) spell? ( app-text/enchant ) xmpp? ( net-dns/libidn sys-libs/zlib ) >=dev-qt/linguist-tools-5.2.0:5 x11-proto/scrnsaverproto x11-proto/xextproto x11-proto/xproto sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=An open source Gadu-Gadu and Jabber/XMPP protocol Instant Messenger client
+EAPI=5
+HOMEPAGE=http://www.kadu.net
+IUSE=+gadu mpd otr phonon sdk speech spell xmpp
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=app-crypt/qca:2[openssl,qt5] >=dev-libs/injeqt-1.0.0 >=dev-qt/qtcore-5.2.0:5 >=dev-qt/qtdbus-5.2.0:5 >=dev-qt/qtgui-5.2.0:5 >=dev-qt/qtmultimedia-5.2.0:5 >=dev-qt/qtnetwork-5.2.0:5 >=dev-qt/qtquick1-5.2.0:5 >=dev-qt/qtscript-5.2.0:5 >=dev-qt/qtsql-5.2.0:5 >=dev-qt/qtsvg-5.2.0:5 >=dev-qt/qtwebkit-5.2.0:5 >=dev-qt/qtwidgets-5.2.0:5 >=dev-qt/qtx11extras-5.2.0:5 >=dev-qt/qtxml-5.2.0:5 >=dev-qt/qtxmlpatterns-5.2.0:5 >=app-arch/libarchive-2.6[lzma] x11-libs/libX11 x11-libs/libXext x11-libs/libXScrnSaver gadu? ( >=net-libs/libgadu-1.11.1[threads] ) mpd? ( media-libs/libmpdclient ) otr? ( >=dev-libs/libgcrypt-1.2.2:0 >=net-libs/libotr-4.1.0 ) phonon? ( || ( media-libs/phonon[qt5] >=dev-qt/qtphonon-4.7.0:4 ) ) spell? ( app-text/enchant ) xmpp? ( net-dns/libidn sys-libs/zlib ) speech? ( app-accessibility/powiedz )
+REQUIRED_USE=|| ( gadu xmpp )
+SLOT=0
+SRC_URI=http://download.kadu.im/stable/kadu-2.1.tar.bz2
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=cec06b3feed8bdc6c25fa3dcf04b9762

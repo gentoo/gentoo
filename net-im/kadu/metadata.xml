@@ -9,6 +9,7 @@
 	<use>
 		<flag name="gadu">Enables Gadu communication protocol</flag>
 		<flag name="mpd">Enables Music Player Daemon support</flag>
+		<flag name="otr">Enable char encryption via OTR library</flag>
 		<flag name="phonon">Enables phonon audio plugin</flag>
 		<flag name="sdk">Install Kadu SDK (cmake module, API headers)</flag>
 		<flag name="speech">Enables speech module</flag>
