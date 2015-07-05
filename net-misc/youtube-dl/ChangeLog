@@ -1,6 +1,18 @@
 # ChangeLog for net-misc/youtube-dl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/youtube-dl/ChangeLog,v 1.488 2015/06/26 06:24:26 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/youtube-dl/ChangeLog,v 1.490 2015/07/05 04:05:06 jer Exp $
+
+*youtube-dl-2015.07.04 (05 Jul 2015)
+
+  05 Jul 2015; Jeroen Roovers <jer@gentoo.org> youtube-dl-2015.06.25-r1.ebuild,
+  +youtube-dl-2015.07.04.ebuild:
+  Version bump.
+
+*youtube-dl-2015.06.25-r1 (05 Jul 2015)
+
+  05 Jul 2015; Jeroen Roovers <jer@gentoo.org> -youtube-dl-2015.06.25.ebuild,
+  +youtube-dl-2015.06.25-r1.ebuild:
+  Fix USE=-offensive (bug #553668 by Vasco Gervasi).
 
 *youtube-dl-2015.06.25 (26 Jun 2015)
 

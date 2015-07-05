@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/texinfo
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/texinfo/ChangeLog,v 1.136 2015/06/30 08:03:56 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/texinfo/ChangeLog,v 1.137 2015/07/05 03:46:16 jer Exp $
+
+  05 Jul 2015; Jeroen Roovers <jer@gentoo.org> texinfo-5.2.ebuild:
+  Stable for HPPA (bug #527998).
 
 *texinfo-6.0 (30 Jun 2015)
 
