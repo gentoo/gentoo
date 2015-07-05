@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16648 2015/07/04 19:45:37 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16650 2015/07/05 06:39:06 graaff Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -29,6 +29,13 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Hans de Graaff <graaff@gentoo.org> (5 Jul 2015)
+# Mask for removal in 30 days. This is an old slot with a supporting
+# package only needed for this slot. Use dev-ruby/dotenv:2 instead.
+# This also fixes bug #553402 (file collision between slots).
+dev-ruby/dotenv:0
+dev-ruby/dotenv-deployment
 
 # Michael Orlitzky <mjo@gentoo.org> (3 Jul 2015)
 # Mask for removal in 30 days. Superseded by dev-haskell/biosff;
@@ -257,14 +264,6 @@ dev-lang/php:7.0
 # see bug 526642. Please uninstall it and/or upgrade to media-libs/lcms:2
 # # (Please keep this mask and message in place for a month.)
 media-libs/lcms:0
-
-# Hans de Graaff <graaff@gentoo.org> (25 May 2015)
-# With the wwwold services going offline gorg no longer plays a role
-# in Gentoo's web environment. The wwwold services went offline due to
-# issues with gorg and instead of trying to fix them it was decided to
-# move the offline date forward. Consequently gorg will now also be
-# masked for removal in 30 days.
-www-servers/gorg
 
 # Ian Delaney <idella4@gentoo.org> (13 May 2015)
 # package unused, no revdeps, obsolete.

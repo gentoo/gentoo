@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/SaltTesting
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/SaltTesting/ChangeLog,v 1.10 2015/06/03 21:41:40 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/SaltTesting/ChangeLog,v 1.11 2015/07/05 06:53:10 idella4 Exp $
+
+*SaltTesting-2015.5.8 (05 Jul 2015)
+
+  05 Jul 2015; Ian Delaney <idella4@gentoo.org> +SaltTesting-2015.5.8.ebuild:
+  bump
 
   03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add pypi to remote-id in metadata.xml

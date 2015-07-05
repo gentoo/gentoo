@@ -1,10 +1,16 @@
 # ChangeLog for profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10164 2015/07/04 19:45:37 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10166 2015/07/05 06:39:05 graaff Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  05 Jul 2015; Hans de Graaff <graaff@gentoo.org> package.mask:
+  Mask old slot of dev-ruby/dotenv for removal, fixing bug 553402.
+
+  05 Jul 2015; Hans de Graaff <graaff@gentoo.org> package.mask:
+  Remove mask for removed www-servers/gorg.
 
   04 Jul 2015; Anthony G. Basile <blueness@gentoo.org> package.mask:
   Remove mask on sys-apps/getent since its off the tree.
