@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/bsf
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/bsf/ChangeLog,v 1.60 2015/07/05 12:32:45 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/bsf/ChangeLog,v 1.61 2015/07/05 15:34:23 monsieurp Exp $
+
+  05 Jul 2015; Patrice Clement <monsieurp@gentoo.org> bsf-2.4.0-r2.ebuild:
+  Can't keyword for ppc and ppc64 for the time being.
 
   05 Jul 2015; Patrice Clement <monsieurp@gentoo.org> bsf-2.4.0-r2.ebuild,
   files/bsf-2.4.0-PyJavaInstance.patch:

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/bsf/bsf-2.4.0-r2.ebuild,v 1.2 2015/07/05 12:32:45 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/bsf/bsf-2.4.0-r2.ebuild,v 1.3 2015/07/05 15:34:23 monsieurp Exp $
 
 EAPI="5"
 JAVA_PKG_IUSE="doc examples source"
@@ -12,7 +12,7 @@ HOMEPAGE="http://commons.apache.org/bsf/"
 SRC_URI="mirror://apache/jakarta/bsf/source/${PN}-src-${PV}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="2.3"
-KEYWORDS="~amd64 ~x86 ~ppc ~ppc64 ~x86-fbsd ~x64-freebsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~x86 ~x86-fbsd ~x64-freebsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 # If you add new ones, add them to ant-apache-bsf too for use dependencies
 IUSE="javascript python tcl"

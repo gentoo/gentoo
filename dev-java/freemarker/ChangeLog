@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/freemarker
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/freemarker/ChangeLog,v 1.34 2015/07/05 12:33:05 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/freemarker/ChangeLog,v 1.35 2015/07/05 15:34:25 monsieurp Exp $
+
+  05 Jul 2015; Patrice Clement <monsieurp@gentoo.org>
+  freemarker-2.3.13-r2.ebuild:
+  Can't keyword for ~ppc for the time being.
 
   05 Jul 2015; Patrice Clement <monsieurp@gentoo.org>
   freemarker-2.3.13-r2.ebuild:
