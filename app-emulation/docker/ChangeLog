@@ -1,6 +1,23 @@
 # ChangeLog for app-emulation/docker
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/docker/ChangeLog,v 1.49 2015/06/30 18:14:22 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/docker/ChangeLog,v 1.52 2015/07/04 23:18:39 alunduil Exp $
+
+*docker-1.7.0 (04 Jul 2015)
+
+  04 Jul 2015; Alex Brandt <alunduil@gentoo.org> +docker-1.7.0.ebuild,
+  files/docker-r2.confd, files/docker.initd, metadata.xml:
+  add version 1.7.0  * from tianon's docker-overlay * fixes bug #553708
+
+*docker-1.6.2 (04 Jul 2015)
+
+  04 Jul 2015; Alex Brandt <alunduil@gentoo.org> +docker-1.6.2.ebuild,
+  +files/7179-add-audit_write-cap.patch, +files/docker-r3.confd,
+  +files/docker-r3.initd, +files/docker.initd, files/docker-r2.confd,
+  files/docker-r2.initd, files/docker.service:
+  add version 1.6.2  fixes bug #553706
+
+  04 Jul 2015; Alex Brandt <alunduil@gentoo.org> metadata.xml:
+  add alunduil to maintainers
 
   30 Jun 2015; Manuel Rüger <mrueg@gentoo.org> docker-1.6.1.ebuild:
   Install zsh-completions unconditionally.

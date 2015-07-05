@@ -1,5 +1,5 @@
 [Unit]
-Description=Docker - The Linux Container Engine
+Description=Easily create lightweight, portable, self-sufficient containers from any application!
 Requires=network.target
 After=multi-user.target
 
@@ -7,7 +7,6 @@ After=multi-user.target
 Type=simple
 ExecStartPre=/bin/mount --make-rprivate /
 ExecStart=/usr/bin/docker -d
-TimeoutSec=60
 
 [Install]
 WantedBy=multi-user.target
