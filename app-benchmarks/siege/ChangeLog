@@ -1,6 +1,12 @@
 # ChangeLog for app-benchmarks/siege
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/siege/ChangeLog,v 1.72 2014/08/30 10:28:54 mgorny Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/siege/ChangeLog,v 1.73 2015/07/05 19:27:16 ago Exp $
+
+*siege-3.1.0 (05 Jul 2015)
+
+  05 Jul 2015; Agostino Sarubbo <ago@gentoo.org> +siege-3.1.0.ebuild:
+  EAPI 5, update HOMEPAGE and SRC_URI ( fix bug #524110 ), add slot operator for
+  openssl and replace make with emake (parallel build works for me).
 
   30 Aug 2014; Michał Górny <mgorny@gentoo.org> -files/siege-2.60-gentoo.diff,
   -files/siege-2.70-gentoo.diff, -files/siege-2.72-gentoo.diff,

@@ -17,6 +17,7 @@
 		<flag name="nettle">Use <pkg>dev-libs/nettle</pkg> and <pkg>dev-libs/gmp</pkg> for bittorrent/metalink crypto instead of <pkg>dev-libs/libgcrypt</pkg> (when <pkg>dev-libs/openssl</pkg> is not being used).</flag>
 		<flag name="metalink">Enable support for metalink.</flag>
 		<flag name="scripts">Install additional scripts which use aria2's xmlrpc functionality.</flag>
+		<flag name="ssh">Enable SFTP support.</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">aria2</remote-id>

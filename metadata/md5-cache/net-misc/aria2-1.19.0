@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare setup
+DEPEND=sys-libs/zlib:0= ssl? ( app-misc/ca-certificates gnutls? ( >=net-libs/gnutls-1.2.9:0= ) !gnutls? ( dev-libs/openssl:0= ) ) adns? ( >=net-dns/c-ares-1.5.0:0= ) bittorrent? ( ssl? ( gnutls? ( nettle? ( >=dev-libs/nettle-2.4:0=[gmp] >=dev-libs/gmp-5:0= ) !nettle? ( >=dev-libs/libgcrypt-1.2.2:0= ) ) ) !ssl? ( nettle? ( >=dev-libs/nettle-2.4:0=[gmp] >=dev-libs/gmp-5:0= ) !nettle? ( >=dev-libs/libgcrypt-1.2.2:0= ) ) ) jemalloc? ( dev-libs/jemalloc ) libuv? ( dev-libs/libuv:0= ) metalink? ( libxml2? ( >=dev-libs/libxml2-2.6.26:2= ) !libxml2? ( dev-libs/expat:0= ) ) sqlite? ( dev-db/sqlite:3= ) ssh? ( net-libs/libssh2:= ) tcmalloc? ( dev-util/google-perftools ) xmlrpc? ( libxml2? ( >=dev-libs/libxml2-2.6.26:2= ) !libxml2? ( dev-libs/expat:0= ) ) virtual/pkgconfig nls? ( sys-devel/gettext ) test? ( >=dev-util/cppunit-1.12.0:0 )
+DESCRIPTION=A download utility with segmented downloading with BitTorrent support
+EAPI=5
+HOMEPAGE=http://aria2.sourceforge.net/
+IUSE=adns bittorrent +gnutls jemalloc libuv +libxml2 metalink +nettle nls sqlite scripts ssh ssl tcmalloc test xmlrpc
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=sys-libs/zlib:0= ssl? ( app-misc/ca-certificates gnutls? ( >=net-libs/gnutls-1.2.9:0= ) !gnutls? ( dev-libs/openssl:0= ) ) adns? ( >=net-dns/c-ares-1.5.0:0= ) bittorrent? ( ssl? ( gnutls? ( nettle? ( >=dev-libs/nettle-2.4:0=[gmp] >=dev-libs/gmp-5:0= ) !nettle? ( >=dev-libs/libgcrypt-1.2.2:0= ) ) ) !ssl? ( nettle? ( >=dev-libs/nettle-2.4:0=[gmp] >=dev-libs/gmp-5:0= ) !nettle? ( >=dev-libs/libgcrypt-1.2.2:0= ) ) ) jemalloc? ( dev-libs/jemalloc ) libuv? ( dev-libs/libuv:0= ) metalink? ( libxml2? ( >=dev-libs/libxml2-2.6.26:2= ) !libxml2? ( dev-libs/expat:0= ) ) sqlite? ( dev-db/sqlite:3= ) ssh? ( net-libs/libssh2:= ) tcmalloc? ( dev-util/google-perftools ) xmlrpc? ( libxml2? ( >=dev-libs/libxml2-2.6.26:2= ) !libxml2? ( dev-libs/expat:0= ) ) nls? ( virtual/libiconv virtual/libintl ) scripts? ( dev-lang/ruby )
+REQUIRED_USE=jemalloc? ( !tcmalloc ) tcmalloc? ( !jemalloc )
+SLOT=0
+SRC_URI=mirror://sourceforge/aria2/aria2-1.19.0.tar.bz2
+_eclasses_=bash-completion-r1	c8399c7c7ecbcf7ed6e5bd3abb3d4af3	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=4a55e77b5c71d76bed21b7c1e14bef2c

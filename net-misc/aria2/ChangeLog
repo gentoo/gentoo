@@ -1,6 +1,13 @@
 # ChangeLog for net-misc/aria2
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/aria2/ChangeLog,v 1.101 2015/02/21 09:01:08 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/aria2/ChangeLog,v 1.102 2015/07/05 19:27:43 mgorny Exp $
+
+*aria2-1.19.0 (05 Jul 2015)
+
+  05 Jul 2015; Michał Górny <mgorny@gentoo.org> +aria2-1.19.0.ebuild,
+  metadata.xml:
+  Version bump. The new version adds SFTP (SSH) support, and comes with a few
+  bugfixes and improvements.
 
 *aria2-1.18.9 (21 Feb 2015)
 

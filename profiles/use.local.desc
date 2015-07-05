@@ -5577,6 +5577,7 @@ net-misc/aria2:libxml2 - Use dev-libs/libxml2 for XML parsing (preferred) instea
 net-misc/aria2:metalink - Enable support for metalink.
 net-misc/aria2:nettle - Use dev-libs/nettle and dev-libs/gmp for bittorrent/metalink crypto instead of dev-libs/libgcrypt (when dev-libs/openssl is not being used).
 net-misc/aria2:scripts - Install additional scripts which use aria2's xmlrpc functionality.
+net-misc/aria2:ssh - Enable SFTP support.
 net-misc/asterisk:cluster - Enable high-availability support through the Corosync Cluster Engine
 net-misc/asterisk:dahdi - Support Digium compatible hardware (formerly known as Zaptel).
 net-misc/asterisk:gtalk - Enable support for Google Talk services
