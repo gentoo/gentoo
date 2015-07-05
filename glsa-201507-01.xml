@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201507-01">
+  <title>chrony: Multiple vulnerabilities </title>
+  <synopsis>Multiple vulnerabilities have been found in chrony, the worst of
+    which can cause arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">chrony</product>
+  <announced>July 05, 2015</announced>
+  <revised>July 05, 2015: 1</revised>
+  <bug>545918</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/chrony" auto="yes" arch="*">
+      <unaffected range="ge">1.31.1</unaffected>
+      <vulnerable range="lt">1.31.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>chrony is a versatile implementation of the Network Time Protocol (NTP).</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in chrony. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker can cause arbitrary remote code execution or Denial of
+      service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All chrony users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/chrony-1.31.1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1821">CVE-2015-1821</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1822">CVE-2015-1822</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1853">CVE-2015-1853</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 13 May 2015 23:36:26 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 05 Jul 2015 16:16:15 +0000">Zlogene</metadata>
+</glsa>
