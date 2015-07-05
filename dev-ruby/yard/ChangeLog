@@ -1,6 +1,10 @@
 # ChangeLog for dev-ruby/yard
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/yard/ChangeLog,v 1.97 2015/06/08 06:44:05 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/yard/ChangeLog,v 1.98 2015/07/05 06:23:03 graaff Exp $
+
+  05 Jul 2015; Hans de Graaff <graaff@gentoo.org> yard-0.8.7.6.ebuild:
+  Change ordering of markdown providers to include those with ruby22 first,
+  fixing 553776.
 
   08 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/date_validator/date_validator-0.7.0.ebuild,v 1.3 2014/08/06 06:41:51 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/date_validator/date_validator-0.8.1.ebuild,v 1.1 2015/07/05 05:55:19 graaff Exp $
 
 EAPI=5
 USE_RUBY="ruby19 ruby20 ruby21"
@@ -20,14 +20,14 @@ RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 inherit ruby-fakegem
 
 DESCRIPTION="Simple, ORM agnostic, Ruby 1.9 compatible date validator for Rails 3"
-HOMEPAGE="http://github.com/codegram/date_validator"
+HOMEPAGE="https://github.com/codegram/date_validator"
 
 LICENSE="MIT"
 SLOT="3"
 KEYWORDS="~amd64"
 IUSE=""
 
-ruby_add_rdepend ">=dev-ruby/activemodel-3.0
+ruby_add_rdepend ">=dev-ruby/activemodel-3.0:*
 "
 
 ruby_add_bdepend "
@@ -44,4 +44,6 @@ all_ruby_prepare() {
 		${RUBY_FAKEGEM_GEMSPEC} || die
 	sed -i \
 		-e '/[Bb]undler/s/^/#/' Rakefile || die
+	# Fix tests
+	sed -i -e "1irequire 'active_support'" test/test_helper.rb || die
 }
