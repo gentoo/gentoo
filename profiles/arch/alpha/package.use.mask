@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/alpha/package.use.mask,v 1.187 2015/06/09 15:35:00 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/alpha/package.use.mask,v 1.188 2015/07/05 13:43:48 klausman Exp $
 
 # Gilles Dartiguelongue <eva@gentoo.org> (09 Jun 2015)
 # net-fs/libnfs lacks alpha keyword, bug #551576
@@ -233,6 +233,8 @@ dev-libs/libmemcached tcmalloc
 # Alexey Shvetsov <alexxy@gentoo.org> (31 Aug 2011)
 # Mask numa use flag per bug #381313
 sys-apps/hwloc numa
+# This mask also implies masking the numa flag on openmpi
+sys-cluster/openmpi numa
 
 # Pacho Ramos <pacho@gentoo.org> (19 Jul 2011)
 # Missing keywords on dependencies

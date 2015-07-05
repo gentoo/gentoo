@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/pyptlib
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyptlib/ChangeLog,v 1.4 2015/06/03 21:05:50 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyptlib/ChangeLog,v 1.5 2015/07/05 14:18:33 blueness Exp $
+
+  05 Jul 2015; Anthony G. Basile <blueness@gentoo.org> pyptlib-0.0.6.ebuild:
+  Keyword ~mips.
 
   03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add pypi to remote-id in metadata.xml

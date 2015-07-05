@@ -1,6 +1,9 @@
 # ChangeLog for sys-cluster/openmpi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/openmpi/ChangeLog,v 1.136 2015/06/22 15:32:40 jsbronder Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/openmpi/ChangeLog,v 1.137 2015/07/05 13:44:04 klausman Exp $
+
+  05 Jul 2015; Tobias Klausmann <klausman@gentoo.org> openmpi-1.8.4-r4.ebuild:
+  Stable on alpha, bug 525534
 
 *openmpi-1.8.6 (22 Jun 2015)
 

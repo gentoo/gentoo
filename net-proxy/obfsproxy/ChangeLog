@@ -1,6 +1,10 @@
 # ChangeLog for net-proxy/obfsproxy
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/obfsproxy/ChangeLog,v 1.32 2015/06/04 10:52:30 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/obfsproxy/ChangeLog,v 1.33 2015/07/05 14:17:30 blueness Exp $
+
+  05 Jul 2015; Anthony G. Basile <blueness@gentoo.org> obfsproxy-0.2.11.ebuild,
+  obfsproxy-0.2.12.ebuild, obfsproxy-0.2.13.ebuild:
+  Keyword ~mips.
 
   04 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add pypi to remote-id in metadata.xml
