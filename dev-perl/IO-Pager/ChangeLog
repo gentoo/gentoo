@@ -1,6 +1,12 @@
 # ChangeLog for dev-perl/IO-Pager
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/IO-Pager/ChangeLog,v 1.37 2014/09/12 17:23:54 zlogene Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/IO-Pager/ChangeLog,v 1.38 2015/07/05 13:04:39 dilfridge Exp $
+
+*IO-Pager-0.340.0 (05 Jul 2015)
+
+  05 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +IO-Pager-0.340.0.ebuild:
+  Version bump
 
   12 Sep 2014; Mikle Kolyada <zlogene@gentoo.org> -IO-Pager-0.300.0.ebuild:
   Drop old.

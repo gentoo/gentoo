@@ -1,6 +1,9 @@
 # ChangeLog for dev-lang/orc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/orc/ChangeLog,v 1.50 2015/07/05 11:13:04 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/orc/ChangeLog,v 1.51 2015/07/05 13:24:10 mrueg Exp $
+
+  05 Jul 2015; Manuel Rüger <mrueg@gentoo.org> orc-0.4.24.ebuild:
+  Use less blank line.
 
 *orc-0.4.24 (05 Jul 2015)
 
