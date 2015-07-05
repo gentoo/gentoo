@@ -77,6 +77,11 @@ fi
 # generate and install KDE handbook.
 : ${KDE_HANDBOOK:=false}
 
+# @ECLASS-VARIABLE: KDE_DOC_DIR
+# @DESCRIPTION:
+# Defaults to "doc". Otherwise, use alternative KDE handbook path.
+: ${KDE_DOC_DIR:=doc}
+
 # @ECLASS-VARIABLE: KDE_TEST
 # @DESCRIPTION:
 # If set to "false", do nothing.
@@ -366,7 +371,7 @@ kde5_src_prepare() {
 
 	# only enable handbook when required
 	if ! use_if_iuse handbook ; then
-		comment_add_subdirectory doc
+		comment_add_subdirectory ${KDE_DOC_DIR}
 	fi
 
 	# enable only the requested translations
@@ -387,8 +392,8 @@ kde5_src_prepare() {
 			popd > /dev/null
 		fi
 
-		if [[ ${KDE_HANDBOOK} = true ]] ; then
-			pushd doc > /dev/null
+		if [[ ${KDE_HANDBOOK} = true && -d ${KDE_DOC_DIR} ]] ; then
+			pushd ${KDE_DOC_DIR} > /dev/null
 			for lang in *; do
 				if ! has ${lang} ${LINGUAS} ; then
 					comment_add_subdirectory ${lang}
