@@ -1,11 +1,11 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/harfbuzz/harfbuzz-0.9.35.ebuild,v 1.7 2015/04/08 17:59:35 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/harfbuzz/harfbuzz-0.9.41.ebuild,v 1.1 2015/07/05 08:18:38 pacho Exp $
 
 EAPI=5
 
 EGIT_REPO_URI="git://anongit.freedesktop.org/harfbuzz"
-[[ ${PV} == 9999 ]] && inherit git-2 autotools
+[[ ${PV} == 9999 ]] && inherit git-r3 autotools
 
 PYTHON_COMPAT=( python2_7 )
 
@@ -18,12 +18,14 @@ HOMEPAGE="http://www.freedesktop.org/wiki/Software/HarfBuzz"
 LICENSE="Old-MIT ISC icu"
 SLOT="0/0.9.18" # 0.9.18 introduced the harfbuzz-icu split; bug #472416
 [[ ${PV} == 9999 ]] || \
-KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris"
-IUSE="+cairo +glib +graphite icu +introspection static-libs test +truetype"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris"
+
+IUSE="+cairo fontconfig +glib +graphite icu +introspection static-libs test +truetype"
 REQUIRED_USE="introspection? ( glib )"
 
 RDEPEND="
 	cairo? ( x11-libs/cairo:= )
+	fontconfig? ( media-libs/fontconfig:1.0[${MULTILIB_USEDEP}] )
 	glib? ( >=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}] )
 	graphite? ( >=media-gfx/graphite2-1.2.1:=[${MULTILIB_USEDEP}] )
 	icu? ( >=dev-libs/icu-51.2-r1:=[${MULTILIB_USEDEP}] )
@@ -64,17 +66,22 @@ src_prepare() {
 
 	[[ ${PV} == 9999 ]] && eautoreconf
 	elibtoolize # for Solaris
+
+	# failing test, https://bugs.freedesktop.org/show_bug.cgi?id=89190
+	sed -e 's#tests/arabic-fallback-shaping.tests##' -i test/shaping/Makefile.in || die "sed failed"
 }
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" \
+	# harfbuzz-gobject only used for instrospection, bug #535852
 	econf \
 		--without-coretext \
 		--without-uniscribe \
 		$(use_enable static-libs static) \
 		$(multilib_native_use_with cairo) \
+		$(use_with fontconfig) \
 		$(use_with glib) \
-		$(use_with glib gobject) \
+		$(use_with introspection gobject) \
 		$(use_with graphite graphite2) \
 		$(use_with icu) \
 		$(multilib_native_use_enable introspection) \
