@@ -1,6 +1,13 @@
 # ChangeLog for dev-lang/orc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/orc/ChangeLog,v 1.49 2015/06/07 10:47:32 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/orc/ChangeLog,v 1.50 2015/07/05 11:13:04 pacho Exp $
+
+*orc-0.4.24 (05 Jul 2015)
+
+  05 Jul 2015; Pacho Ramos <pacho@gentoo.org> +orc-0.4.24.ebuild,
+  -orc-0.4.19.ebuild, metadata.xml:
+  Version bump, pax marking is needed (#470842 by Nikoli and Anthony Basile),
+  drop old
 
   07 Jun 2015; Markus Meier <maekke@gentoo.org> orc-0.4.23.ebuild:
   arm stable, bug #534012

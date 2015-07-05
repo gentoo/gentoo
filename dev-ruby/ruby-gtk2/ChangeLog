@@ -1,6 +1,13 @@
 # ChangeLog for dev-ruby/ruby-gtk2
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gtk2/ChangeLog,v 1.115 2015/02/25 19:03:30 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gtk2/ChangeLog,v 1.116 2015/07/05 10:32:24 mrueg Exp $
+
+*ruby-gtk2-2.2.3-r1 (05 Jul 2015)
+
+  05 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +ruby-gtk2-2.2.3-r1.ebuild,
+  -ruby-gtk2-1.2.6.ebuild, -ruby-gtk2-2.1.0.ebuild, -ruby-gtk2-2.2.0.ebuild,
+  ruby-gtk2-2.2.3.ebuild:
+  Remove old. Create stabilization candidate.
 
   25 Feb 2015; Hans de Graaff <graaff@gentoo.org> ruby-gtk2-2.2.3.ebuild:
   Add ruby22.

@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/pykka
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pykka/ChangeLog,v 1.1 2015/07/04 14:02:56 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pykka/ChangeLog,v 1.2 2015/07/05 11:02:00 mrueg Exp $
+
+  05 Jul 2015; Manuel Rüger <mrueg@gentoo.org> pykka-1.2.0.ebuild:
+  Adding python3_4, too. Fixes bug #553972.
 
 *pykka-1.2.0 (04 Jul 2015)
 

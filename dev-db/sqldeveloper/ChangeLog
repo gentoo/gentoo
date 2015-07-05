@@ -1,6 +1,12 @@
 # ChangeLog for dev-db/sqldeveloper
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/sqldeveloper/ChangeLog,v 1.24 2014/05/16 22:31:57 hwoarang Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/sqldeveloper/ChangeLog,v 1.25 2015/07/05 11:08:17 pinkbyte Exp $
+
+*sqldeveloper-4.1.1.19.59 (05 Jul 2015)
+
+  05 Jul 2015; Sergey Popov <pinkbyte@gentoo.org>
+  +sqldeveloper-4.1.1.19.59.ebuild:
+  Version bump, wrt bug #525244
 
 *sqldeveloper-4.0.2.15.21 (16 May 2014)
 

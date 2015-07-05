@@ -1,6 +1,13 @@
 # ChangeLog for dev-ruby/ruby-rsvg
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-rsvg/ChangeLog,v 1.56 2015/03/25 20:03:09 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-rsvg/ChangeLog,v 1.57 2015/07/05 10:37:49 mrueg Exp $
+
+*ruby-rsvg-2.2.3-r1 (05 Jul 2015)
+
+  05 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +ruby-rsvg-2.2.3-r1.ebuild,
+  -ruby-rsvg-1.2.6.ebuild, -ruby-rsvg-2.0.2.ebuild, -ruby-rsvg-2.1.0.ebuild,
+  -ruby-rsvg-2.2.0.ebuild, ruby-rsvg-2.2.3.ebuild:
+  Remove old. Create stabilization candidate.
 
   25 Mar 2015; Hans de Graaff <graaff@gentoo.org> ruby-rsvg-2.2.3.ebuild:
   Add ruby22.

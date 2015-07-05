@@ -1,6 +1,14 @@
 # ChangeLog for dev-ruby/ruby-webkit-gtk2
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-webkit-gtk2/ChangeLog,v 1.7 2015/04/11 15:45:17 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-webkit-gtk2/ChangeLog,v 1.8 2015/07/05 10:40:36 mrueg Exp $
+
+*ruby-webkit-gtk2-2.2.3-r1 (05 Jul 2015)
+
+  05 Jul 2015; Manuel Rüger <mrueg@gentoo.org>
+  +ruby-webkit-gtk2-2.2.3-r1.ebuild, -ruby-webkit-gtk2-1.2.6.ebuild,
+  -ruby-webkit-gtk2-2.0.2.ebuild, -ruby-webkit-gtk2-2.1.0.ebuild,
+  -ruby-webkit-gtk2-2.2.0.ebuild, ruby-webkit-gtk2-2.2.3.ebuild:
+  Remove old. Create stabilization candidate.
 
   11 Apr 2015; Hans de Graaff <graaff@gentoo.org>
   ruby-webkit-gtk2-2.2.3.ebuild:
