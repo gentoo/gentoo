@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/freemarker
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/freemarker/ChangeLog,v 1.33 2015/07/05 08:16:30 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/freemarker/ChangeLog,v 1.34 2015/07/05 12:33:05 monsieurp Exp $
+
+  05 Jul 2015; Patrice Clement <monsieurp@gentoo.org>
+  freemarker-2.3.13-r2.ebuild:
+  Add back ~ppc.
 
 *freemarker-2.3.13-r2 (05 Jul 2015)
 

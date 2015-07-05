@@ -1,10 +1,13 @@
 # ChangeLog for profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10167 2015/07/05 09:26:40 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10168 2015/07/05 11:45:17 monsieurp Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  05 Jul 2015; Patrice Clement <monsieurp@gentoo.org> package.mask:
+  Mask net-p2p/frostwire for removal.
 
   05 Jul 2015; Manuel Rüger <mrueg@gentoo.org> package.mask:
   Add bouncy-castle-java to jruby mask.

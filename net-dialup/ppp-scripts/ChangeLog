@@ -1,6 +1,10 @@
 # ChangeLog for net-dialup/ppp-scripts
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/ppp-scripts/ChangeLog,v 1.1 2015/05/14 10:17:20 pinkbyte Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/ppp-scripts/ChangeLog,v 1.2 2015/07/05 11:37:01 pinkbyte Exp $
+
+  05 Jul 2015; Sergey Popov <pinkbyte@gentoo.org> ppp-scripts-0.ebuild:
+  Transfer stable keywords from net-dialup/ppp, cause this package is only
+  splitted script part of it and those scripts are unchanged
 
 *ppp-scripts-0 (14 May 2015)
 
