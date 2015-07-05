@@ -1,0 +1,22 @@
+diff -ur thunar-archive-plugin-0.3.1.old/scripts/ark.tap thunar-archive-plugin-0.3.1/scripts/ark.tap
+--- thunar-archive-plugin-0.3.1.old/scripts/ark.tap	2013-05-11 13:48:30.000000000 +0400
++++ thunar-archive-plugin-0.3.1/scripts/ark.tap	2015-07-05 12:56:25.288680104 +0400
+@@ -30,15 +30,15 @@
+ # check the action
+ case $action in
+ create)
+-	exec ark --add "$@"
++	exec ark --dialog --add "$@"
+ 	;;
+ 
+ extract-here)
+-	exec ark --extract-to "$folder" "$@"
++	exec ark --batch --destination "$folder" "$@"
+ 	;;
+ 
+ extract-to)
+-	exec ark --extract "$@"
++	exec ark --batch --dialog --autodestination "$@"
+ 	;;
+ 
+ *)

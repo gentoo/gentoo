@@ -1,6 +1,13 @@
 # ChangeLog for xfce-extra/thunar-archive-plugin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/thunar-archive-plugin/ChangeLog,v 1.33 2015/07/01 16:48:26 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/thunar-archive-plugin/ChangeLog,v 1.34 2015/07/05 09:29:36 perfinion Exp $
+
+*thunar-archive-plugin-0.3.1-r2 (05 Jul 2015)
+
+  05 Jul 2015; Jason Zaman <perfinion@gentoo.org>
+  +files/0.3.1-add-support-symlinks.patch, +files/0.3.1-fix-kde-ark.patch,
+  +thunar-archive-plugin-0.3.1-r2.ebuild:
+  fix kde ark support thanks to Alex Efros, bug 553722
 
   01 Jul 2015; Mikle Kolyada <zlogene@gentoo.org>
   thunar-archive-plugin-0.3.1-r1.ebuild:

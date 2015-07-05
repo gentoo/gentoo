@@ -1,10 +1,13 @@
 # ChangeLog for profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10166 2015/07/05 06:39:05 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10167 2015/07/05 09:26:40 mrueg Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  05 Jul 2015; Manuel Rüger <mrueg@gentoo.org> package.mask:
+  Add bouncy-castle-java to jruby mask.
 
   05 Jul 2015; Hans de Graaff <graaff@gentoo.org> package.mask:
   Mask old slot of dev-ruby/dotenv for removal, fixing bug 553402.

@@ -1,6 +1,10 @@
 # ChangeLog for dev-ruby/eventmachine
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/eventmachine/ChangeLog,v 1.31 2015/06/10 10:03:43 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/eventmachine/ChangeLog,v 1.32 2015/07/05 08:31:39 graaff Exp $
+
+  05 Jul 2015; Hans de Graaff <graaff@gentoo.org> eventmachine-1.0.7.ebuild:
+  Avoid tests requiring a network connection, fixing bug 342029. Fix openssl
+  slot dependency.
 
 *eventmachine-1.0.7 (10 Jun 2015)
 

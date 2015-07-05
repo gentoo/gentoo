@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16650 2015/07/05 06:39:06 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16651 2015/07/05 09:26:40 mrueg Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -535,6 +535,7 @@ dev-java/ibm-jdk-bin:1.5
 # Needs to be further tested and revised by both Java and Ruby herds.
 >=dev-java/jruby-1.7.12
 dev-ruby/bitescript
+dev-ruby/bouncy-castle-java
 dev-ruby/duby
 dev-ruby/jruby-openssl
 dev-ruby/weakling

@@ -1,0 +1,15 @@
+diff -ur thunar-archive-plugin-0.3.1.old/scripts/Makefile.am thunar-archive-plugin-0.3.1/scripts/Makefile.am
+--- thunar-archive-plugin-0.3.1.old/scripts/Makefile.am	2013-05-11 13:48:30.000000000 +0400
++++ thunar-archive-plugin-0.3.1/scripts/Makefile.am	2015-07-05 12:55:32.052090677 +0400
+@@ -9,8 +9,9 @@
+ install-exec-hook:
+ 	$(mkinstalldirs) $(DESTDIR)$(wrapperdir)
+ 	-( cd $(DESTDIR)$(wrapperdir) ; \
+-		test -f gnome-file-roller.tap \
+-		|| ln -sf file-roller.tap gnome-file-roller.tap )
++		ln -sf ark.tap kde4-ark.tap; \
++		ln -sf file-roller.tap gnome-file-roller.tap; \
++		ln -sf file-roller.tap org.gnome.FileRoller.tap; )
+ 
+ EXTRA_DIST =								\
+ 	$(wrapper_SCRIPTS)						\

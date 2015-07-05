@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/eventmachine/eventmachine-1.0.7.ebuild,v 1.1 2015/06/10 10:03:43 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/eventmachine/eventmachine-1.0.7.ebuild,v 1.2 2015/07/05 08:31:39 graaff Exp $
 
 EAPI=5
 
@@ -23,7 +23,7 @@ IUSE=""
 DEPEND="${DEPEND}
 	dev-libs/openssl"
 RDEPEND="${RDEPEND}
-	dev-libs/openssl"
+	dev-libs/openssl:="
 
 ruby_add_bdepend "doc? ( dev-ruby/yard )
 	test? ( dev-ruby/test-unit:2 )"
@@ -38,8 +38,20 @@ all_ruby_prepare() {
 	# Remove the resolver tests since they require network access and
 	# the localhost test fails with an IPv6 localhost.
 	rm tests/test_resolver.rb || die
-	# Needs a tty 
+	# Needs a tty
 	rm tests/test_kb.rb || die
+	# Avoid tests that require network access
+	sed -i -e '/test_bind_connect/,/^  end/ s:^:#:' \
+		tests/test_basic.rb || die
+	sed -i -e '/test_\(cookie\|http_client\|version_1_0\)/,/^  end/ s:^:#:' \
+		tests/test_httpclient.rb || die
+	sed -i -e '/test_\(get\|https_get\)/,/^  end/ s:^:#:' \
+		tests/test_httpclient2.rb || die
+	sed -i -e '/test_connect_timeout/,/^  end/ s:^:#:' \
+		tests/test_unbind_reason.rb || die
+	sed -i -e '/test_for_real/,/^    end/ s:^:#:' \
+		tests/test_pending_connect_timeout.rb || die
+	rm -f tests/test_{get_sock_opt,set_sock_opt,idle_connection}.rb || die
 }
 
 each_ruby_configure() {

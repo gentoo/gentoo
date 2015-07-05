@@ -1,6 +1,9 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1699 2015/07/04 15:26:17 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1700 2015/07/05 09:10:53 graaff Exp $
+
+  05 Jul 2015; Hans de Graaff <graaff@gentoo.org> ruby-fakegem.eclass:
+  Document that some variables must be set before inheriting the eclass.
 
   04 Jul 2015; Mike Gilbert <floppym@gentoo.org> distutils-r1.eclass,
   python-any-r1.eclass, python-r1.eclass, python-single-r1.eclass,

@@ -1,6 +1,9 @@
 # ChangeLog for net-mail/courier-imap
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/courier-imap/ChangeLog,v 1.228 2015/05/01 05:02:52 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/courier-imap/ChangeLog,v 1.229 2015/07/05 08:52:46 mrueg Exp $
+
+  05 Jul 2015; Manuel Rüger <mrueg@gentoo.org> metadata.xml:
+  Dropping myself from metadata.
 
   01 May 2015; Jeroen Roovers <jer@gentoo.org> courier-imap-4.16.0.ebuild:
   Marked ~ppc64 (bug #532520).
