@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=test? ( >=sys-devel/gcc-4.8 >=dev-libs/boost-1.54 >=dev-cpp/yaml-cpp-0.5.1 dev-libs/openssl:= sys-apps/util-linux net-misc/curl ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=A cross-platform Ruby library for retrieving facts from operating systems
+EAPI=5
+HOMEPAGE=http://www.puppetlabs.com/puppet/related-projects/facter/
+IUSE=debug test
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=>=sys-devel/gcc-4.8 >=dev-libs/boost-1.54 >=dev-cpp/yaml-cpp-0.5.1 dev-libs/openssl:= sys-apps/util-linux net-misc/curl
+SLOT=0
+SRC_URI=https://downloads.puppetlabs.com/facter/facter-3.0.1.tar.gz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=01be22810c8f94f7a1507f68a91e0ff7
