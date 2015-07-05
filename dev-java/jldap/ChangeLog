@@ -1,6 +1,21 @@
 # ChangeLog for dev-java/jldap
-# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jldap/ChangeLog,v 1.16 2007/10/24 05:17:08 wltjr Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jldap/ChangeLog,v 1.19 2015/07/05 17:37:35 monsieurp Exp $
+
+  05 Jul 2015; Patrice Clement <monsieurp@gentoo.org>
+  -files/200603-javac.xml.patch, -jldap-20060300.ebuild:
+  Remove old.
+
+  05 Jul 2015; Patrice Clement <monsieurp@gentoo.org> jldap-4.6.ebuild:
+  Stable for amd64. Stable for x86 with ALLARCHES. Fix bug 554030.
+
+*jldap-4.6 (05 Jul 2015)
+
+  05 Jul 2015; Patrice Clement <monsieurp@gentoo.org>
+  +files/jldap-4.6-Debug.java.patch, +files/jldap-4.6-build.xml.patch,
+  +jldap-4.6.ebuild, metadata.xml:
+  Version bump. EAPI 5 bump. dev-java/commons-httpclient SLOT bump. Fix bug
+  442292 and bug 554030.
 
   24 Oct 2007; William L. Thomson Jr. <wltjr@gentoo.org>
   -jldap-20040730.ebuild:
@@ -64,4 +79,3 @@
   30 Jul 2004; Thomas Matthijs <axxo@gentoo.org> :
   initial import, bug 41276, ebuild submitted by Matthew Gregory Sr.
   <matt.gregory@skyleach.com
-
