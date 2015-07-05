@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/rcairo
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rcairo/ChangeLog,v 1.94 2015/06/13 10:02:23 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rcairo/ChangeLog,v 1.95 2015/07/05 10:15:43 mrueg Exp $
+
+  05 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -rcairo-1.12.9.ebuild:
+  Remove old.
 
 *rcairo-1.14.1-r1 (13 Jun 2015)
 

@@ -1,6 +1,11 @@
 # ChangeLog for dev-perl/Pod-POM
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Pod-POM/ChangeLog,v 1.9 2014/10/19 15:33:43 zlogene Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Pod-POM/ChangeLog,v 1.10 2015/07/05 10:30:59 zlogene Exp $
+
+*Pod-POM-0.290.0 (05 Jul 2015)
+
+  05 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> +Pod-POM-0.290.0.ebuild:
+  Version bump
 
   19 Oct 2014; Mikle Kolyada <zlogene@gentoo.org> -Pod-POM-0.270.0.ebuild:
   Drop old.

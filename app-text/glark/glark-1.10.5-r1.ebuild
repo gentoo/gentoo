@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/glark/glark-1.10.5-r1.ebuild,v 1.1 2015/05/27 06:35:20 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/glark/glark-1.10.5-r1.ebuild,v 1.2 2015/07/05 09:59:06 mrueg Exp $
 
 EAPI=5
 USE_RUBY="ruby19 ruby20 ruby21"
@@ -29,7 +29,7 @@ ruby_add_rdepend "
 	>=dev-ruby/riel-1.2.0
 	zip? ( dev-ruby/rubyzip:1 )"
 
-ruby_add_bdepend "test? ( dev-ruby/rubyzip:0 )"
+ruby_add_bdepend "test? ( dev-ruby/rubyzip:1 )"
 
 all_ruby_prepare() {
 	rm -rf doc/ || die

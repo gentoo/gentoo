@@ -1,9 +1,14 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use.mask,v 1.692 2015/07/04 13:33:46 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use.mask,v 1.693 2015/07/05 09:32:17 mrueg Exp $
 
 # This file requires >=portage-2.1.1
 # New entries go on top.
+
+# Manuel Rüger <mrueg@gentoo.org> (05 Jul 2015)
+# app-text/migemo is masked because it fails for ruby20
+app-text/cmigemo emacs
+www-client/w3m migemo
 
 # Anthony G. Basile <blueness@gentoo.org> (04 Jul 2015)
 # USE=http2 depends on net-libs/nghttp2 which was recently

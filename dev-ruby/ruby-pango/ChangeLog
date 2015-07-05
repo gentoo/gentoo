@@ -1,6 +1,13 @@
 # ChangeLog for dev-ruby/ruby-pango
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-pango/ChangeLog,v 1.94 2015/02/25 18:38:27 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-pango/ChangeLog,v 1.95 2015/07/05 10:18:59 mrueg Exp $
+
+*ruby-pango-2.2.3-r1 (05 Jul 2015)
+
+  05 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +ruby-pango-2.2.3-r1.ebuild,
+  -ruby-pango-1.2.6.ebuild, -ruby-pango-2.0.2.ebuild, -ruby-pango-2.1.0.ebuild,
+  -ruby-pango-2.2.0.ebuild, -ruby-pango-2.2.2.ebuild, ruby-pango-2.2.3.ebuild:
+  Remove old. Create stabilization candidate.
 
   25 Feb 2015; Hans de Graaff <graaff@gentoo.org> ruby-pango-2.2.3.ebuild:
   Add ruby22.

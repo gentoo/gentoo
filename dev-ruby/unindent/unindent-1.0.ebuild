@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/unindent/unindent-1.0.ebuild,v 1.1 2015/05/05 05:47:52 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/unindent/unindent-1.0.ebuild,v 1.2 2015/07/05 09:54:53 mrueg Exp $
 
 EAPI=5
 USE_RUBY="ruby19 ruby20 ruby21 ruby22"
@@ -17,6 +17,8 @@ LICENSE="MIT"
 KEYWORDS="~amd64"
 SLOT="0"
 IUSE=""
+
+ruby_add_bdepend "test? ( dev-ruby/nanotest )"
 
 each_ruby_test() {
 	${RUBY} -I.:lib test/test_unindent.rb || die

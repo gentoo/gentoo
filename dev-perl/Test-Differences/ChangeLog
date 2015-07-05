@@ -1,6 +1,12 @@
 # ChangeLog for dev-perl/Test-Differences
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-Differences/ChangeLog,v 1.34 2015/06/13 21:52:20 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-Differences/ChangeLog,v 1.35 2015/07/05 10:24:30 zlogene Exp $
+
+*Test-Differences-0.630.0 (05 Jul 2015)
+
+  05 Jul 2015; Mikle Kolyada <zlogene@gentoo.org>
+  +Test-Differences-0.630.0.ebuild:
+  Version bump
 
   13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
   Test-Differences-0.610.0-r1.ebuild:

@@ -1,6 +1,11 @@
 # ChangeLog for dev-ruby/execjs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/execjs/ChangeLog,v 1.32 2015/06/07 17:42:26 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/execjs/ChangeLog,v 1.33 2015/07/05 10:03:52 mrueg Exp $
+
+  05 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -execjs-2.2.2-r1.ebuild,
+  -execjs-2.3.0.ebuild, -execjs-2.4.0.ebuild, -execjs-2.5.0.ebuild,
+  execjs-2.5.2.ebuild:
+  Remove old. Remove bundler artefacts from Rakefile.
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

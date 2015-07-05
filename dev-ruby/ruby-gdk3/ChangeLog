@@ -1,6 +1,13 @@
 # ChangeLog for dev-ruby/ruby-gdk3
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gdk3/ChangeLog,v 1.8 2015/04/11 15:31:18 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gdk3/ChangeLog,v 1.9 2015/07/05 10:28:39 mrueg Exp $
+
+*ruby-gdk3-2.2.3-r1 (05 Jul 2015)
+
+  05 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +ruby-gdk3-2.2.3-r1.ebuild,
+  -ruby-gdk3-1.2.6.ebuild, -ruby-gdk3-2.0.2.ebuild, -ruby-gdk3-2.1.0.ebuild,
+  -ruby-gdk3-2.2.0.ebuild, ruby-gdk3-2.2.3.ebuild:
+  Remove old. Create stabilization candidate.
 
   11 Apr 2015; Hans de Graaff <graaff@gentoo.org> ruby-gdk3-2.2.3.ebuild:
   Add ruby22.

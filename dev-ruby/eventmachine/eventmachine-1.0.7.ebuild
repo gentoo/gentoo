@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/eventmachine/eventmachine-1.0.7.ebuild,v 1.2 2015/07/05 08:31:39 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/eventmachine/eventmachine-1.0.7.ebuild,v 1.4 2015/07/05 09:37:54 graaff Exp $
 
 EAPI=5
 
@@ -21,9 +21,9 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos 
 IUSE=""
 
 DEPEND="${DEPEND}
-	dev-libs/openssl"
+	dev-libs/openssl:0"
 RDEPEND="${RDEPEND}
-	dev-libs/openssl:="
+	dev-libs/openssl:0"
 
 ruby_add_bdepend "doc? ( dev-ruby/yard )
 	test? ( dev-ruby/test-unit:2 )"

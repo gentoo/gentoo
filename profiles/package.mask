@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16651 2015/07/05 09:26:40 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16652 2015/07/05 09:33:10 mrueg Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -29,6 +29,13 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Manuel Rüger <mrueg@gentoo.org> (5 Jul 2015)
+# Mask for various issues (missing ruby20 support, test failures)
+# Removal in 30 days
+app-text/deplate
+app-text/migemo
+dev-utils/travis-yaml
 
 # Hans de Graaff <graaff@gentoo.org> (5 Jul 2015)
 # Mask for removal in 30 days. This is an old slot with a supporting

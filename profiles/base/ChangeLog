@@ -1,6 +1,9 @@
 # ChangeLog for Gentoo base-profile
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/ChangeLog,v 1.817 2015/07/04 13:33:46 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/ChangeLog,v 1.818 2015/07/05 09:32:17 mrueg Exp $
+
+  05 Jul 2015; Manuel Rüger <mrueg@gentoo.org> package.use.mask:
+  Mask useflags depending on app-text/migemo
 
   04 Jul 2015; Anthony G. Basile <blueness@gentoo.org> package.use.mask:
   Mask http2 for net-misc/curl. Bug #552618.
