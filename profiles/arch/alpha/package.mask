@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/alpha/package.mask,v 1.39 2015/05/11 01:49:39 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/alpha/package.mask,v 1.40 2015/07/05 21:17:32 klausman Exp $
 
 # Ben de Groot <yngwin@gentoo.org> (01 Feb 2015)
 # Qt5 mask, pending keywording. Remember unmasking qt5 in use.mask as well.
@@ -46,34 +46,6 @@
 >=dev-qt/qt-creator-3.3.0
 =app-text/calibre-2*
 >=x11-misc/sddm-0.10.0
-
-# Davide Pesavento <pesa@gentoo.org> (20 Nov 2014)
-# Qt4 multilib ebuilds, masked until dev-qt/qtchooser
-# gets keyworded. See bug 529196.
->=dev-qt/assistant-4.8.6:4
->=dev-qt/designer-4.8.6:4
->=dev-qt/linguist-4.8.6:4
->=dev-qt/pixeltool-4.8.6:4
->=dev-qt/qdbusviewer-4.8.6:4
->=dev-qt/qt3support-4.8.6:4
->=dev-qt/qtbearer-4.8.6:4
->=dev-qt/qtcore-4.8.6:4
->=dev-qt/qtdbus-4.8.6:4
->=dev-qt/qtdeclarative-4.8.6:4
->=dev-qt/qtdemo-4.8.6:4
->=dev-qt/qtgui-4.8.6:4
->=dev-qt/qthelp-4.8.6:4
->=dev-qt/qtmultimedia-4.8.6:4
->=dev-qt/qtopengl-4.8.6:4
->=dev-qt/qtopenvg-4.8.6:4
->=dev-qt/qtphonon-4.8.6:4
->=dev-qt/qtscript-4.8.6:4
->=dev-qt/qtsql-4.8.6:4
->=dev-qt/qtsvg-4.8.6:4
->=dev-qt/qttest-4.8.6:4
->=dev-qt/qttranslations-4.8.6:4
->=dev-qt/qtwebkit-4.8.6:4
->=dev-qt/qtxmlpatterns-4.8.6:4
 
 # Julian Ospald <hasufell@gentoo.org> (01 Sep 2014)
 # Needs either hardmasked >=media-video/libav-10 or

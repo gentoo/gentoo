@@ -1,6 +1,9 @@
 # ChangeLog for dev-qt/linguist
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-qt/linguist/ChangeLog,v 1.32 2015/06/17 15:19:00 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-qt/linguist/ChangeLog,v 1.33 2015/07/05 21:12:18 klausman Exp $
+
+  05 Jul 2015; Tobias Klausmann <klausman@gentoo.org> linguist-4.8.6-r1.ebuild:
+  Stable on alpha, bug 530238
 
 *linguist-5.4.2 (17 Jun 2015)
 

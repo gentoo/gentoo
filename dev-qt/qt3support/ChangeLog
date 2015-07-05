@@ -1,6 +1,10 @@
 # ChangeLog for dev-qt/qt3support
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-qt/qt3support/ChangeLog,v 1.23 2015/06/17 15:52:15 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-qt/qt3support/ChangeLog,v 1.24 2015/07/05 21:12:49 klausman Exp $
+
+  05 Jul 2015; Tobias Klausmann <klausman@gentoo.org>
+  qt3support-4.8.6-r1.ebuild:
+  Stable on alpha, bug 530238
 
   17 Jun 2015; Davide Pesavento <pesa@gentoo.org> metadata.xml:
   Update upstream metadata.

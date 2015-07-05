@@ -1,6 +1,9 @@
 # ChangeLog for sys-auth/polkit
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/polkit/ChangeLog,v 1.196 2015/07/05 18:01:37 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/polkit/ChangeLog,v 1.197 2015/07/05 20:37:06 zlogene Exp $
+
+  05 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> polkit-0.112-r3.ebuild:
+  arm stable wrt bug #551316
 
   05 Jul 2015; Agostino Sarubbo <ago@gentoo.org> polkit-0.112-r3.ebuild:
   Stable for x86, wrt bug #551316

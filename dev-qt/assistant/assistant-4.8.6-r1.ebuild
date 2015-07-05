@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-qt/assistant/assistant-4.8.6-r1.ebuild,v 1.6 2015/05/30 10:57:07 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-qt/assistant/assistant-4.8.6-r1.ebuild,v 1.7 2015/07/05 21:11:42 klausman Exp $
 
 EAPI=5
 
@@ -9,9 +9,9 @@ inherit eutils qt4-build-multilib
 DESCRIPTION="Tool for viewing on-line documentation in Qt help file format"
 
 if [[ ${QT4_BUILD_TYPE} == live ]]; then
-	KEYWORDS="arm ppc ppc64"
+	KEYWORDS="alpha arm ppc ppc64"
 else
-	KEYWORDS="~alpha amd64 arm ~ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+	KEYWORDS="alpha amd64 arm ~ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 
 IUSE="webkit"
