@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jibx-tools/jibx-tools-1.1.5-r1.ebuild,v 1.4 2012/11/01 21:29:07 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jibx-tools/jibx-tools-1.1.5-r2.ebuild,v 1.2 2015/07/06 14:24:44 monsieurp Exp $
 
-EAPI="2"
+EAPI="5"
 JAVA_PKG_IUSE="source"
 
 inherit java-pkg-2 java-ant-2 versionator
@@ -15,26 +15,28 @@ SRC_URI="mirror://sourceforge/jibx/jibx_${MY_PV}.zip"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
 
-COMMON_DEP="
-	dev-java/bcel:0
-	java-virtuals/stax-api
-	~dev-java/jibx-${PV}"
+CDEPEND="dev-java/bcel:0
+	java-virtuals/stax-api:0
+	dev-java/jibx:0"
 
-DEPEND=">=virtual/jdk-1.4
+RDEPEND=">=virtual/jre-1.6
+	${CDEPEND}"
+
+DEPEND=">=virtual/jdk-1.6
 	app-arch/unzip
-	${COMMON_DEP}"
-RDEPEND=">=virtual/jre-1.4
-	${COMMON_DEP}"
+	${CDEPEND}"
 
 S="${WORKDIR}/jibx"
 
 java_prepare() {
-	#http://jira.codehaus.org/browse/JIBX-207
+	# http://jira.codehaus.org/browse/JIBX-207
 	epatch "${FILESDIR}/1.1.5-build.patch"
+
 	java-ant_rewrite-classpath "${S}/build/build.xml"
+
 	rm -v "${S}"/lib/*.jar || die
 }
 

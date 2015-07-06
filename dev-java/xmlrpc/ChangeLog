@@ -1,6 +1,12 @@
 # ChangeLog for dev-java/xmlrpc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xmlrpc/ChangeLog,v 1.22 2015/06/15 17:13:38 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xmlrpc/ChangeLog,v 1.24 2015/07/06 14:02:04 monsieurp Exp $
+
+  06 Jul 2015; Patrice Clement <monsieurp@gentoo.org> xmlrpc-3.1.3.ebuild:
+  Also, mend test classpath.
+
+  06 Jul 2015; Patrice Clement <monsieurp@gentoo.org> xmlrpc-3.1.3.ebuild:
+  Remove broken test. Sort test dependencies. Fix bug 554050.
 
   15 Jun 2015; Patrice Clement <monsieurp@gentoo.org> -xmlrpc-2.0.1.ebuild:
   Remove vulnerable version. Fix security bug 385811.

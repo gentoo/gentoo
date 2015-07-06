@@ -1,11 +1,11 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-electronics/gspiceui/gspiceui-1.1.0.ebuild,v 1.1 2015/07/04 07:09:07 tomjbe Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/gspiceui/gspiceui-1.1.0.ebuild,v 1.2 2015/07/06 14:02:19 tomjbe Exp $
 
 EAPI="5"
 
 WX_GTK_VER="3.0"
-inherit eutils wxwidgets
+inherit eutils flag-o-matic toolchain-funcs wxwidgets
 
 MY_P="${PN}-v${PV}0"
 
@@ -38,6 +38,13 @@ src_prepare() {
 
 	# Adjusting call to gwave program
 	sed -i -e "s/gwave2/gwave/g" src/TypeDefs.hpp || die
+
+	# bug 553968
+	replace-flags -O? -O1
+}
+
+src_compile() {
+	emake CXX=$(tc-getCXX)
 }
 
 src_install() {

@@ -1,6 +1,17 @@
 # ChangeLog for net-misc/tinc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/tinc/ChangeLog,v 1.54 2015/03/03 09:36:50 dlan Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/tinc/ChangeLog,v 1.56 2015/07/06 14:07:14 blueness Exp $
+
+  06 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
+  -tinc-1.1_pre10-r1.ebuild:
+  Missed 1.1_pre10.
+
+*tinc-1.0.26 (06 Jul 2015)
+
+  06 Jul 2015; Anthony G. Basile <blueness@gentoo.org> +tinc-1.0.26.ebuild,
+  -tinc-1.0.24-r2.ebuild, tinc-1.0.25.ebuild, tinc-1.1_pre11.ebuild:
+  Version bump.  Clean up older versions.  Add subslot deps for openssl and
+  readline.
 
   03 Mar 2015; Yixun Lan <dlan@gentoo.org> tinc-1.1_pre11.ebuild:
   add arm64 support, tested on A53 board

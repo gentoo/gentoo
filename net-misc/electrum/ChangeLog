@@ -1,6 +1,12 @@
 # ChangeLog for net-misc/electrum
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/electrum/ChangeLog,v 1.36 2015/07/04 12:52:03 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/electrum/ChangeLog,v 1.38 2015/07/06 13:36:11 blueness Exp $
+
+  06 Jul 2015; Anthony G. Basile <blueness@gentoo.org> -electrum-2.0.3.ebuild:
+  Remove older unstable version.
+
+  06 Jul 2015; Anthony G. Basile <blueness@gentoo.org> electrum-2.1.1.ebuild:
+  Stable on amd64 and x86.  Bug #541538.
 
 *electrum-2.3.3 (04 Jul 2015)
 

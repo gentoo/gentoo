@@ -1,6 +1,9 @@
 # ChangeLog for sci-electronics/gspiceui
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-electronics/gspiceui/ChangeLog,v 1.10 2015/07/04 07:09:07 tomjbe Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/gspiceui/ChangeLog,v 1.11 2015/07/06 14:02:19 tomjbe Exp $
+
+  06 Jul 2015; Thomas Beierlein <tomjbe@gentoo.org> gspiceui-1.1.0.ebuild:
+  Dropping down to -O1 (bug #553968). Respect CXX
 
 *gspiceui-1.1.0 (04 Jul 2015)
 

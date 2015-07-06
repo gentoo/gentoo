@@ -1,13 +1,13 @@
 DEFINED_PHASES=configure install postinst
-DEPEND=dev-libs/openssl lzo? ( dev-libs/lzo:2 ) zlib? ( sys-libs/zlib ) virtual/pkgconfig
+DEPEND=dev-libs/openssl:= lzo? ( dev-libs/lzo:2 ) zlib? ( sys-libs/zlib ) virtual/pkgconfig
 DESCRIPTION=tinc is an easy to configure VPN implementation
 EAPI=5
 HOMEPAGE=http://www.tinc-vpn.org/
 IUSE=+lzo uml vde +zlib
 KEYWORDS=~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
 LICENSE=GPL-2
-RDEPEND=dev-libs/openssl lzo? ( dev-libs/lzo:2 ) zlib? ( sys-libs/zlib ) vde? ( net-misc/vde )
+RDEPEND=dev-libs/openssl:= lzo? ( dev-libs/lzo:2 ) zlib? ( sys-libs/zlib ) vde? ( net-misc/vde )
 SLOT=0
 SRC_URI=http://www.tinc-vpn.org/packages/tinc-1.0.25.tar.gz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=5be6b9bdbf53fa0110490c367bf475d2
+_md5_=0e09d8c61cefa420acf29cce5bfa7d92

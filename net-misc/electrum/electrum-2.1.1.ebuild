@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/electrum/electrum-2.1.1.ebuild,v 1.1 2015/05/04 12:53:43 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/electrum/electrum-2.1.1.ebuild,v 1.2 2015/07/06 13:33:45 blueness Exp $
 
 EAPI="5"
 
@@ -16,7 +16,7 @@ SRC_URI="https://download.electrum.org/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 LINGUAS="ar_SA cs_CZ da_DK de_DE el_GR eo_UY es_ES fr_FR hu_HU hy_AM id_ID it_IT ja_JP ky_KG lv_LV nl_NL pl_PL pt_BR pt_PT ro_RO ru_RU sk_SK sl_SI ta_IN th_TH vi_VN zh_CN"
 
 IUSE="cli cosign +fiat greenaddress_it gtk3 ncurses qrcode +qt4 sync trustedcoin_com vkb"

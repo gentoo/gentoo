@@ -1,6 +1,5 @@
-diff -urN ./build/src/org/jibx/binding/SchemaGenerator.java ../jibx/build/src/org/jibx/binding/SchemaGenerator.java
---- ./build/src/org/jibx/binding/SchemaGenerator.java	2007-05-23 21:31:14.000000000 +0300
-+++ ../jibx/build/src/org/jibx/binding/SchemaGenerator.java	2008-02-21 23:14:06.000000000 +0200
+--- build/src/org/jibx/binding/SchemaGenerator.java	2007-05-23 21:31:14.000000000 +0300
++++ build/src/org/jibx/binding/SchemaGenerator.java	2008-02-21 23:14:06.000000000 +0200
 @@ -178,7 +178,7 @@
          m_classLocator = new IClassLocator() {
              public IClass getClassInfo(String name) {
