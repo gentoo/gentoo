@@ -5695,7 +5695,7 @@ net-misc/chrony:adns - Support for asynchronous DNS
 net-misc/chrony:cmdmon - Support for command and monitoring
 net-misc/chrony:ntp - Support for the Network Time Protocol (NTP)
 net-misc/chrony:phc - Support for the PTP (Precision Time Protocol) Hardware Clock (PHC) interface
-net-misc/chrony:pps - Support for the Linux Real Time Clock (RTC) interface
+net-misc/chrony:pps - Support for the Linux Pulse Per Second (PPS) interface
 net-misc/chrony:refclock - Support for reference clocks
 net-misc/chrony:rtc - Support for the Linux Real Time Clock interface
 net-misc/connman:ethernet - Enable ethernet support.

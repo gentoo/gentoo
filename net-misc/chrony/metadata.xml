@@ -21,7 +21,7 @@ Chrony はコンピュータのシステム・クロックの精度を保つた�
 <flag name='cmdmon'>Support for command and monitoring</flag>
 <flag name='ntp'>Support for the Network Time Protocol (NTP)</flag>
 <flag name='phc'>Support for the PTP (Precision Time Protocol) Hardware Clock (PHC) interface</flag>
-<flag name='pps'>Support for the Linux Real Time Clock (RTC) interface</flag>
+<flag name='pps'>Support for the Linux Pulse Per Second (PPS) interface</flag>
 <flag name='refclock'>Support for reference clocks</flag>
 <flag name='rtc'>Support for the Linux Real Time Clock interface</flag>
 <flag name='adns'>Support for asynchronous DNS</flag>
