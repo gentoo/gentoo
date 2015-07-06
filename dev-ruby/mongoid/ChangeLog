@@ -1,6 +1,11 @@
 # ChangeLog for dev-ruby/mongoid
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/mongoid/ChangeLog,v 1.15 2015/06/07 18:42:07 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/mongoid/ChangeLog,v 1.16 2015/07/06 09:48:47 mrueg Exp $
+
+  06 Jul 2015; Manuel Rüger <mrueg@gentoo.org>
+  -files/mongoid-2.4.5-gentoo.patch, -mongoid-2.4.10.ebuild,
+  -mongoid-2.4.9.ebuild:
+  Remove old.
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

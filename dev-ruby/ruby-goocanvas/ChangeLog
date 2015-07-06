@@ -1,6 +1,16 @@
 # ChangeLog for dev-ruby/ruby-goocanvas
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-goocanvas/ChangeLog,v 1.34 2015/03/25 16:56:05 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-goocanvas/ChangeLog,v 1.36 2015/07/06 09:38:43 mrueg Exp $
+
+*ruby-goocanvas-2.2.0-r1 (06 Jul 2015)
+
+  06 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +ruby-goocanvas-2.2.0-r1.ebuild,
+  ruby-goocanvas-2.2.0.ebuild:
+  Create stabilization candidate.
+
+  06 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -ruby-goocanvas-1.2.6.ebuild,
+  -ruby-goocanvas-2.0.2.ebuild, -ruby-goocanvas-2.1.0.ebuild:
+  Remove old
 
   25 Mar 2015; Hans de Graaff <graaff@gentoo.org> ruby-goocanvas-2.2.0.ebuild:
   Add ruby22.

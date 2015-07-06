@@ -1,0 +1,9 @@
+# ChangeLog for dev-ruby/escape_utils
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/escape_utils/ChangeLog,v 1.1 2015/07/06 09:57:55 mrueg Exp $
+
+*escape_utils-1.1.0 (06 Jul 2015)
+
+  06 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +escape_utils-1.1.0.ebuild,
+  +metadata.xml:
+  Initial version.

@@ -1,8 +1,8 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/activerecord-deprecated_finders/activerecord-deprecated_finders-1.0.4.ebuild,v 1.1 2015/04/03 06:33:01 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/activerecord-deprecated_finders/activerecord-deprecated_finders-1.0.4.ebuild,v 1.2 2015/07/06 10:11:06 mrueg Exp $
 
-EAPI=4
+EAPI=5
 USE_RUBY="ruby19 ruby20 ruby21"
 
 # this is not null so that the dependencies will actually be filled

@@ -1,6 +1,14 @@
 # ChangeLog for dev-ruby/ruby-cairo-gobject
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-cairo-gobject/ChangeLog,v 1.8 2015/03/25 16:26:49 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-cairo-gobject/ChangeLog,v 1.9 2015/07/06 09:36:25 mrueg Exp $
+
+*ruby-cairo-gobject-2.2.3-r1 (06 Jul 2015)
+
+  06 Jul 2015; Manuel Rüger <mrueg@gentoo.org>
+  +ruby-cairo-gobject-2.2.3-r1.ebuild, -ruby-cairo-gobject-1.2.6.ebuild,
+  -ruby-cairo-gobject-2.0.2.ebuild, -ruby-cairo-gobject-2.1.0.ebuild,
+  -ruby-cairo-gobject-2.2.0.ebuild, ruby-cairo-gobject-2.2.3.ebuild:
+  Remove old. Create stabilization candidate.
 
   25 Mar 2015; Hans de Graaff <graaff@gentoo.org>
   ruby-cairo-gobject-2.2.3.ebuild:

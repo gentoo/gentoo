@@ -1,6 +1,11 @@
 # ChangeLog for dev-ruby/activerecord-deprecated_finders
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/activerecord-deprecated_finders/ChangeLog,v 1.9 2015/06/07 16:41:28 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/activerecord-deprecated_finders/ChangeLog,v 1.10 2015/07/06 10:11:06 mrueg Exp $
+
+  06 Jul 2015; Manuel Rüger <mrueg@gentoo.org>
+  -activerecord-deprecated_finders-1.0.3.ebuild,
+  activerecord-deprecated_finders-1.0.4.ebuild:
+  Remove old. Bump EAPI.
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml
