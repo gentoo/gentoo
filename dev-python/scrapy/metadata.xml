@@ -6,10 +6,8 @@
     <email>maksbotan@gentoo.org</email>
   </maintainer>
   <use>
-    <flag name="boto">Add support for Amazon S3 via
-  <pkg>dev-python/boto</pkg></flag>
-    <flag name="ibl">Use Instace Based Learning alrogirithm for automatic
-  extraction</flag>
+    <flag name="boto">Add support for Amazon S3 via <pkg>dev-python/boto</pkg></flag>
+    <flag name="ibl">Use Instace Based Learning alrogirithm for automatic extraction</flag>
   </use>
   <upstream>
     <remote-id type="github">scrapy/scrapy</remote-id>

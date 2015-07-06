@@ -2,6 +2,11 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>java</herd>
+<herd>proxy-maintainers</herd>
+<maintainer>
+	<email>sam@cmpct.info</email>
+	<description>Proxy-maintainer; add or CC them for bugs</description>
+</maintainer>
 <maintainer><email>zlg@gentoo.org</email></maintainer>
 <longdescription>I2P is an anonymous network, exposing a simple layer that applications can use to anonymously and securely send messages to each other.</longdescription>
 <use>
