@@ -1,6 +1,12 @@
 # ChangeLog for dev-ruby/text-hyphen
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/text-hyphen/ChangeLog,v 1.71 2015/06/21 20:17:15 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/text-hyphen/ChangeLog,v 1.72 2015/07/06 09:08:10 mrueg Exp $
+
+*text-hyphen-1.4.1-r2 (06 Jul 2015)
+
+  06 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +text-hyphen-1.4.1-r2.ebuild,
+  text-hyphen-1.4.1-r1.ebuild:
+  Fix cvs merge issue in -r1. Add ruby21 and ruby22 support back to -r2.
 
   21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> text-hyphen-1.4.1-r1.ebuild:
   alpha stable wrt bug #546968

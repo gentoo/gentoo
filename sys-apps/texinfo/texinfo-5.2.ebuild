@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/texinfo/texinfo-5.2.ebuild,v 1.4 2015/07/05 10:12:55 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/texinfo/texinfo-5.2.ebuild,v 1.5 2015/07/06 08:32:26 vapier Exp $
 
 EAPI="4"
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm arm64 hppa ia64 m68k ~mips ~ppc ~ppc64 s390 sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 IUSE="nls static"
 
 RDEPEND="!=app-text/tetex-2*
