@@ -1,6 +1,25 @@
 # ChangeLog for net-firewall/xtables-addons
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/xtables-addons/ChangeLog,v 1.49 2015/07/06 12:03:08 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/xtables-addons/ChangeLog,v 1.53 2015/07/06 13:28:54 blueness Exp $
+
+  06 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
+  xtables-addons-2.7.ebuild:
+  XTABLES_ADDONS=tarpit is fixed for xtables-addons-2.7.  Upstream commit
+  96ce5e.
+
+  06 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
+  xtables-addons-2.6.ebuild:
+  Stable on amd64 and x86.
+
+  06 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
+  xtables-addons-2.6.ebuild, xtables-addons-2.7.ebuild:
+  Generalize module + kernel version checking since XTABLES_ADDONS=tarpit
+  doesn't build on linux-4.1 and above.  Bug #553630.
+
+  06 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
+  -xtables-addons-2.4.ebuild, -xtables-addons-2.5.ebuild,
+  xtables-addons-2.6.ebuild, xtables-addons-2.7.ebuild:
+  XTABLES_ADDONS=echo doesn't build on linux-4.0.0 and above.  Bug #553630.
 
 *xtables-addons-2.7 (06 Jul 2015)
 

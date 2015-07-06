@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu/qemu-9999.ebuild,v 1.100 2015/05/16 04:40:40 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu/qemu-9999.ebuild,v 1.101 2015/07/06 13:27:54 vapier Exp $
 
 EAPI=5
 
@@ -34,7 +34,7 @@ kernel_linux kernel_FreeBSD lzo ncurses nfs nls numa opengl +pin-upstream-blobs
 +png pulseaudio python \
 rbd sasl +seccomp sdl sdl2 selinux smartcard snappy spice ssh static static-softmmu
 static-user systemtap tci test +threads tls usb usbredir +uuid vde +vhost-net \
-virtfs +vnc xattr xen xfs"
+virtfs +vnc vte xattr xen xfs"
 
 COMMON_TARGETS="aarch64 alpha arm cris i386 m68k microblaze microblazeel mips
 mips64 mips64el mipsel or32 ppc ppc64 s390x sh4 sh4eb sparc sparc64 unicore32
@@ -58,7 +58,8 @@ REQUIRED_USE="|| ( ${use_softmmu_targets} ${use_user_targets} )
 	sdl2? ( sdl )
 	static? ( static-softmmu static-user )
 	static-softmmu? ( !alsa !pulseaudio !bluetooth !opengl !gtk !gtk2 )
-	virtfs? ( xattr )"
+	virtfs? ( xattr )
+	vte? ( gtk )"
 
 # Yep, you need both libcap and libcap-ng since virtfs only uses libcap.
 #
@@ -119,9 +120,14 @@ CDEPEND="
 	alsa? ( >=media-libs/alsa-lib-1.0.13 )
 	bluetooth? ( net-wireless/bluez )
 	gtk? (
-		gtk2? ( x11-libs/gtk+:2 )
-		!gtk2? ( x11-libs/gtk+:3 )
-		x11-libs/vte:2.90
+		gtk2? (
+			x11-libs/gtk+:2
+			vte? ( x11-libs/vte:0 )
+		)
+		!gtk2? (
+			x11-libs/gtk+:3
+			vte? ( x11-libs/vte:2.90 )
+		)
 	)
 	iscsi? ( net-libs/libiscsi )
 	opengl? (
@@ -363,6 +369,7 @@ qemu_src_configure() {
 		$(conf_softmmu vhost-net)
 		$(conf_softmmu virtfs)
 		$(conf_softmmu vnc)
+		$(conf_softmmu vte)
 		$(conf_softmmu xen)
 		$(conf_softmmu xen xen-pci-passthrough)
 		$(conf_softmmu xfs xfsctl)
