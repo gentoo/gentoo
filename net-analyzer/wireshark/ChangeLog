@@ -1,6 +1,11 @@
 # ChangeLog for net-analyzer/wireshark
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/wireshark/ChangeLog,v 1.734 2015/07/03 08:28:45 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/wireshark/ChangeLog,v 1.735 2015/07/06 03:02:31 jer Exp $
+
+  06 Jul 2015; Jeroen Roovers <jer@gentoo.org> wireshark-1.12.6.ebuild,
+  wireshark-1.99.7.ebuild, wireshark-99999999.ebuild,
+  +files/wireshark-1.99.7-qt-pie.patch:
+  Qt build does not need -fPIE (maybe bug #552440).
 
   03 Jul 2015; Agostino Sarubbo <ago@gentoo.org> wireshark-1.12.6.ebuild:
   Stable for sparc, wrt bug #552434

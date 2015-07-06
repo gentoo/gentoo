@@ -1,0 +1,11 @@
+--- a/ui/qt/Makefile.am
++++ b/ui/qt/Makefile.am
+@@ -84,7 +84,7 @@
+ 
+ # Common headers
+ AM_CPPFLAGS = -I$(top_srcdir) -I$(top_srcdir)/wiretap $(LIBGCRYPT_CFLAGS) \
+-	$(LIBGNUTLS_CFLAGS) $(PIE_CFLAGS)
++	$(LIBGNUTLS_CFLAGS)
+ 
+ AM_CXXFLAGS = $(AM_CLEAN_CFLAGS)
+ 

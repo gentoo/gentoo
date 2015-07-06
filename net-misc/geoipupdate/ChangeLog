@@ -1,6 +1,9 @@
 # ChangeLog for net-misc/geoipupdate
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/geoipupdate/ChangeLog,v 1.48 2015/05/31 14:04:19 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/geoipupdate/ChangeLog,v 1.49 2015/07/06 03:10:28 jer Exp $
+
+  06 Jul 2015; Jeroen Roovers <jer@gentoo.org> -geoipupdate-2.1.0.ebuild:
+  Old.
 
   31 May 2015; Mikle Kolyada <zlogene@gentoo.org> geoipupdate-2.2.1.ebuild:
   arm stable wrt bug #545914
