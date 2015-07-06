@@ -2,4 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>ruby</herd>
+<upstream>
+  <remote-id type="github">threedaymonk/htmlentities</remote-id>
+</upstream>
 </pkgmetadata>

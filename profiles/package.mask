@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16653 2015/07/05 11:45:17 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16654 2015/07/06 06:29:30 graaff Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -41,7 +41,7 @@ net-p2p/frostwire
 # Removal in 30 days
 app-text/deplate
 app-text/migemo
-dev-utils/travis-yaml
+dev-util/travis-yaml
 
 # Hans de Graaff <graaff@gentoo.org> (5 Jul 2015)
 # Mask for removal in 30 days. This is an old slot with a supporting

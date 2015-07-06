@@ -1,10 +1,13 @@
 # ChangeLog for profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10168 2015/07/05 11:45:17 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10169 2015/07/06 06:29:30 graaff Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  06 Jul 2015; Hans de Graaff <graaff@gentoo.org> package.mask:
+  Fix category in mask.
 
   05 Jul 2015; Patrice Clement <monsieurp@gentoo.org> package.mask:
   Mask net-p2p/frostwire for removal.
