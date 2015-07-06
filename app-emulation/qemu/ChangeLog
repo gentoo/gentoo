@@ -1,6 +1,12 @@
 # ChangeLog for app-emulation/qemu
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu/ChangeLog,v 1.331 2015/06/12 14:19:29 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu/ChangeLog,v 1.333 2015/07/06 12:17:32 ago Exp $
+
+  06 Jul 2015; Agostino Sarubbo <ago@gentoo.org> qemu-2.3.0-r2.ebuild:
+  Stable for x86, wrt bug #551752
+
+  06 Jul 2015; Agostino Sarubbo <ago@gentoo.org> qemu-2.3.0-r2.ebuild:
+  Stable for amd64, wrt bug #551752
 
 *qemu-2.3.0-r2 (12 Jun 2015)
 
