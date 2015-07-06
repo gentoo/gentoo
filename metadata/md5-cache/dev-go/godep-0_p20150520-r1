@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install prepare test unpack
+DEPEND=>=dev-lang/go-1.4:=
+DESCRIPTION=dependency tool for go
+EAPI=5
+HOMEPAGE=https://github.com/tools/godep
+KEYWORDS=~amd64
+LICENSE=BSD
+SLOT=0
+SRC_URI=https://github.com/tools/godep/archive/98f5c2e8906df47a9eaafebbcd406adde2c8d0a7.tar.gz -> godep-0_p20150520.tar.gz https://github.com/kr/fs/archive/2788f0dbd16903de03cb8186e5c7d97b69ad387b.tar.gz -> go-fs-2788f0dbd16903de03cb8186e5c7d97b69ad387b.tar.gz
+_md5_=6e3dcbae9775dd8dd0f77d95cd7cfa9a
