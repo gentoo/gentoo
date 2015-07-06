@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libva/libva-9999.ebuild,v 1.24 2015/07/06 14:38:15 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libva/libva-1.6.0.ebuild,v 1.1 2015/07/06 14:38:15 aballier Exp $
 
 EAPI=5
 
@@ -63,6 +63,12 @@ PDEPEND="video_cards_nvidia? ( >=x11-libs/libva-vdpau-driver-0.7.4-r1[${MULTILIB
 REQUIRED_USE="opengl? ( X )"
 
 DOCS=( NEWS )
+
+PATCHES=(
+	# Fix automagic depend, bug #529388
+	# https://bugs.freedesktop.org/show_bug.cgi?id=79478
+	"${FILESDIR}"/${PN}-1.5.1-wayland-automagic.patch
+)
 
 MULTILIB_WRAPPED_HEADERS=(
 /usr/include/va/va_backend_glx.h

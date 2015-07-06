@@ -1,6 +1,12 @@
 # ChangeLog for dev-java/sun-httpserver-bin
-# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/sun-httpserver-bin/ChangeLog,v 1.6 2008/03/28 17:59:05 nixnut Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/sun-httpserver-bin/ChangeLog,v 1.7 2015/07/06 15:30:47 monsieurp Exp $
+
+*sun-httpserver-bin-2.0.1-r1 (06 Jul 2015)
+
+  06 Jul 2015; Patrice Clement <monsieurp@gentoo.org>
+  +sun-httpserver-bin-2.0.1-r1.ebuild, sun-httpserver-bin-2.0.1.ebuild:
+  EAPI 5 bump. Find correct java path with java-config. Fix bug 544000.
 
   28 Mar 2008; nixnut <nixnut@gentoo.org> sun-httpserver-bin-2.0.1.ebuild:
   Stable on ppc wrt bug 214778
@@ -25,4 +31,3 @@
   01 May 2007; Krzysiek Pawlik <nelchael@gentoo.org> +metadata.xml,
   +sun-httpserver-bin-2.0.1.ebuild:
   Initial commit of sun-httpserver-bin.
-
