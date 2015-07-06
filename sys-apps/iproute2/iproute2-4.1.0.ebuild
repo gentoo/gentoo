@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/iproute2/iproute2-4.1.0.ebuild,v 1.2 2015/06/30 15:27:30 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/iproute2/iproute2-4.1.0.ebuild,v 1.3 2015/07/06 08:14:52 vapier Exp $
 
 EAPI="5"
 
@@ -27,13 +27,13 @@ RDEPEND="!net-misc/arpd
 	berkdb? ( sys-libs/db:= )
 	atm? ( net-dialup/linux-atm )
 	selinux? ( sys-libs/libselinux )"
-# We require newer linux-headers for ipset support #549948
+# We require newer linux-headers for ipset support #549948 and some defines #553876
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
 	iptables? ( virtual/pkgconfig )
 	sys-devel/bison
 	sys-devel/flex
-	>=sys-kernel/linux-headers-3.7
+	>=sys-kernel/linux-headers-3.16
 	elibc_glibc? ( >=sys-libs/glibc-2.7 )"
 
 src_prepare() {

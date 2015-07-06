@@ -1,6 +1,10 @@
 # ChangeLog for sys-apps/iproute2
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/iproute2/ChangeLog,v 1.265 2015/06/30 15:27:30 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/iproute2/ChangeLog,v 1.266 2015/07/06 08:14:52 vapier Exp $
+
+  06 Jul 2015; Mike Frysinger <vapier@gentoo.org> iproute2-4.1.0.ebuild:
+  Raise minimum kernel header version to match source requirements #553876 by
+  Mark.
 
   30 Jun 2015; Lars Wendler <polynomial-c@gentoo.org> iproute2-4.1.0.ebuild:
   Added net-libs/libmnl to RDEPEND (bug #553624).

@@ -1,0 +1,9 @@
+# ChangeLog for app-arch/tardelta
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/tardelta/ChangeLog,v 1.1 2015/07/06 08:06:34 zmedico Exp $
+
+*tardelta-1.0.0 (06 Jul 2015)
+
+  06 Jul 2015; Zac Medico <zmedico@gentoo.org> +metadata.xml,
+  +tardelta-1.0.0.ebuild:
+  Add tardelta.
