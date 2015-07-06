@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/nodejs/nodejs-0.12.3.ebuild,v 1.1 2015/05/20 09:12:19 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/nodejs/nodejs-0.12.6.ebuild,v 1.1 2015/07/06 02:19:00 patrick Exp $
 
 EAPI=5
 
@@ -99,13 +99,26 @@ src_install() {
 	emake install DESTDIR="${ED}" PREFIX=/usr
 	use npm && dodoc -r "${LIBDIR}"/node_modules/npm/html
 	rm -rf "${LIBDIR}"/node_modules/npm/{doc,html} || die
-	find "${LIBDIR}"/node_modules -type f -name "LICENSE" -delete
+	find "${LIBDIR}"/node_modules -type f -name "LICENSE*" -or -name "LICENCE*" -delete
+
+	# set up a symlink structure that npm expects..
+	dodir /usr/include/node/deps/{v8,uv}
+	dosym . /usr/include/node/src
+	for var in deps/{uv,v8}/include; do
+		dosym ../.. /usr/include/node/${var}
+	done
 
 	pax-mark -m "${ED}"/usr/bin/node
 }
 
 src_test() {
-	out/${BUILDTYPE}/cctest || die
 	declare -xl TESTTYPE="${BUILDTYPE}"
 	"${PYTHON}" tools/test.py --mode=${TESTTYPE} -J message simple || die
+}
+
+pkg_postinst() {
+	einfo "When using node-gyp to install native modules, you can avoid"
+	einfo "having to download the full tarball by doing the following:"
+	einfo ""
+	einfo "node-gyp --nodedir /usr/include/node <command>"
 }

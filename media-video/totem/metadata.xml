@@ -8,8 +8,6 @@
 Totem is movie player for the GNOME desktop. It features a playlist, fullscreen mode, seek and volume controls, as well as a pretty complete keyboard navigation. It comes with added functionality such as a video thumbnailer for Nautilus, Nautilus properties tab and a webcam utility.
 	</longdescription>
 	<use>
-		<flag name="flash">Install browser plugin for playing embedded Adobe Flash
-			videos. Warning: breaks non-video Flash objects on many websites.</flag>
 		<flag name="lirc">Enable support for controlling Totem with a remote control
 			using <pkg>app-misc/lirc</pkg></flag>
 		<flag name="nautilus">Enable the nautilus extension</flag>
