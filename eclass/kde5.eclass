@@ -137,7 +137,6 @@ case ${KDE_AUTODEPS} in
 		if [[ ${CATEGORY} = kde-plasma ]]; then
 			RDEPEND+="
 				!kde-apps/kde4-l10n[-minimal(-)]
-				!kde-base/kde-l10n:4[-minimal(-)]
 			"
 		fi
 
