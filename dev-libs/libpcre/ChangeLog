@@ -1,6 +1,14 @@
 # ChangeLog for dev-libs/libpcre
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libpcre/ChangeLog,v 1.257 2015/06/09 14:41:45 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libpcre/ChangeLog,v 1.258 2015/07/06 16:37:06 vapier Exp $
+
+*libpcre-8.37-r2 (06 Jul 2015)
+
+  06 Jul 2015; Mike Frysinger <vapier@gentoo.org>
+  +files/libpcre-8.37-CVE-2015-3210.patch,
+  +files/libpcre-8.37-CVE-2015-5073.patch, +libpcre-8.37-r2.ebuild:
+  Add backport from upstream for CVE-2015-3210 #551240 by Thomas D.  Add
+  backport from upstream for CVE-2015-5073 #553300 by Agostino Sarubbo.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

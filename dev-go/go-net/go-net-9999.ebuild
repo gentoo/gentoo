@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-go/go-net/go-net-9999.ebuild,v 1.6 2015/06/29 03:48:53 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-go/go-net/go-net-9999.ebuild,v 1.7 2015/07/06 16:55:33 williamh Exp $
 
 EAPI=5
 EGO_PN=golang.org/x/net/...
@@ -18,7 +18,7 @@ inherit golang-build
 DESCRIPTION="Go supplementary network libraries"
 HOMEPAGE="https://godoc.org/golang.org/x/net"
 LICENSE="BSD"
-SLOT="0"
+SLOT="0/${PV}"
 IUSE=""
 DEPEND="dev-go/go-text"
 RDEPEND=""

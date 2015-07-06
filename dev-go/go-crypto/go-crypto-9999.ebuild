@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-go/go-crypto/go-crypto-9999.ebuild,v 1.7 2015/06/29 03:30:29 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-go/go-crypto/go-crypto-9999.ebuild,v 1.8 2015/07/06 16:53:39 williamh Exp $
 
 EAPI=5
 EGO_PN=golang.org/x/crypto/...
@@ -18,7 +18,7 @@ inherit golang-build
 DESCRIPTION="Go supplementary cryptography libraries"
 HOMEPAGE="https://godoc.org/golang.org/x/crypto"
 LICENSE="BSD"
-SLOT="0"
+SLOT="0/${PV}"
 IUSE=""
 DEPEND=""
 RDEPEND=""

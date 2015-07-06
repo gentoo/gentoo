@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-go/go-sys/go-sys-9999.ebuild,v 1.4 2015/06/28 23:19:15 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-go/go-sys/go-sys-9999.ebuild,v 1.5 2015/07/06 17:09:39 williamh Exp $
 
 EAPI=5
 EGO_PN=golang.org/x/sys/...
@@ -18,7 +18,7 @@ inherit golang-build
 DESCRIPTION="Go packages for low-level interaction with the operating system"
 HOMEPAGE="https://godoc.org/golang.org/x/sys"
 LICENSE="BSD"
-SLOT="0"
+SLOT="0/${PV}"
 IUSE=""
 DEPEND=""
 RDEPEND=""

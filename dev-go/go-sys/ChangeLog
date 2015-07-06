@@ -1,6 +1,10 @@
 # ChangeLog for dev-go/go-sys
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-go/go-sys/ChangeLog,v 1.5 2015/07/01 21:12:32 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-go/go-sys/ChangeLog,v 1.6 2015/07/06 17:09:39 williamh Exp $
+
+  06 Jul 2015; William Hubbs <williamh@gentoo.org> go-sys-9999.ebuild:
+  Add a subslot of the version number so we know which version is installed;
+  this wil allow slot operators in dependencies on this package.
 
 *go-sys-0_pre20150518 (01 Jul 2015)
 

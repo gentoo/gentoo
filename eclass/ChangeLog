@@ -1,6 +1,10 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1701 2015/07/06 15:48:51 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1702 2015/07/06 16:48:21 williamh Exp $
+
+  06 Jul 2015; William Hubbs <williamh@gentoo.org> golang-build.eclass:
+  Add back the subslot operator in the dependency on Go. We need this so that
+  we have the Go version the package was built with recorded.
 
   06 Jul 2015; Michael Palimaka <kensington@gentoo.org> kde5.eclass:
   Add missing USE dependency default wrt bug #554056.

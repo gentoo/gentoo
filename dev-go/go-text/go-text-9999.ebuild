@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-go/go-text/go-text-9999.ebuild,v 1.7 2015/06/26 22:54:48 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-go/go-text/go-text-9999.ebuild,v 1.8 2015/07/06 17:10:56 williamh Exp $
 
 EAPI=5
 
@@ -19,7 +19,7 @@ inherit golang-build
 DESCRIPTION="Go text processing support"
 HOMEPAGE="https://godoc.org/golang.org/x/text"
 LICENSE="BSD"
-SLOT="0"
+SLOT="0/${PV}"
 IUSE=""
 DEPEND=""
 RDEPEND=""

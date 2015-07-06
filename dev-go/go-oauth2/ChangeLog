@@ -1,6 +1,9 @@
 # ChangeLog for dev-go/go-oauth2
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-go/go-oauth2/ChangeLog,v 1.8 2015/07/01 20:56:54 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-go/go-oauth2/ChangeLog,v 1.9 2015/07/06 17:04:02 williamh Exp $
+
+  06 Jul 2015; William Hubbs <williamh@gentoo.org> go-oauth2-9999.ebuild:
+  Add a subslot of the version number so we know which version is installed
 
 *go-oauth2-0_pre20150527 (01 Jul 2015)
 
