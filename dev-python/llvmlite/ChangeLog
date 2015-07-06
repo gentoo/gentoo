@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/llvmlite
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/llvmlite/ChangeLog,v 1.7 2015/06/26 07:47:19 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/llvmlite/ChangeLog,v 1.8 2015/07/06 07:22:39 patrick Exp $
+
+*llvmlite-0.6.0 (06 Jul 2015)
+
+  06 Jul 2015; Patrick Lauer <patrick@gentoo.org> +llvmlite-0.6.0.ebuild:
+  Bump
 
 *llvmlite-0.5.0 (26 Jun 2015)
 

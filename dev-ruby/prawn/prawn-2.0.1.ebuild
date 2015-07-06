@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/prawn/prawn-2.0.1.ebuild,v 1.1 2015/04/20 17:54:00 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/prawn/prawn-2.0.1.ebuild,v 1.2 2015/07/06 06:49:56 graaff Exp $
 
 EAPI=5
 USE_RUBY="ruby19 ruby20 ruby21"
@@ -23,7 +23,7 @@ ruby_add_rdepend ">=dev-ruby/pdf-core-0.5.1
 	>=dev-ruby/ttfunk-1.4.0"
 ruby_add_bdepend "test? ( dev-ruby/coderay
 	dev-ruby/mocha
-	>=dev-ruby/pdf-inspector-1.1.0
+	>=dev-ruby/pdf-inspector-1.2.0
 	>=dev-ruby/pdf-reader-1.2
 	)"
 

@@ -1,6 +1,19 @@
 # ChangeLog for net-print/cups
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/cups/ChangeLog,v 1.677 2015/07/03 10:10:48 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-print/cups/ChangeLog,v 1.679 2015/07/06 07:16:24 tamiko Exp $
+
+*cups-2.0.1-r1 (06 Jul 2015)
+
+  06 Jul 2015; Matthias Maier <tamiko@gentoo.org> +cups-2.0.1-r1.ebuild:
+  ressurect accidentally deleted latest stable version for ia64, bug #551846
+
+*cups-2.0.3 (06 Jul 2015)
+
+  06 Jul 2015; Matthias Maier <tamiko@gentoo.org> +cups-2.0.3.ebuild,
+  -cups-1.7.5-r2.ebuild, -cups-1.7.5.ebuild, -cups-1.7.9999.ebuild,
+  -cups-2.0.0-r2.ebuild, -cups-2.0.1-r1.ebuild, -cups-2.0.2-r2.ebuild,
+  -cups-2.0.2.ebuild:
+  version bump; cleanup; CVE-2015-{1158,1159}, bug #551846
 
   03 Jul 2015; Agostino Sarubbo <ago@gentoo.org> cups-2.0.2-r1.ebuild:
   Stable for alpha, wrt bug #545740

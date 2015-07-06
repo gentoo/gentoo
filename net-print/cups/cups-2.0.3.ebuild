@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/cups/cups-1.7.9999.ebuild,v 1.8 2015/04/08 18:20:02 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-print/cups/cups-2.0.3.ebuild,v 1.1 2015/07/06 06:57:17 tamiko Exp $
 
 EAPI=5
 
@@ -21,7 +21,6 @@ if [[ ${PV} == *9999 ]]; then
 	if [[ ${PV} != 9999 ]]; then
 		EGIT_BRANCH=branch-${PV/.9999}
 	fi
-	KEYWORDS=""
 else
 	SRC_URI="http://www.cups.org/software/${MY_PV}/${MY_P}-source.tar.bz2"
 	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~m68k-mint"
@@ -32,7 +31,7 @@ HOMEPAGE="http://www.cups.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="acl dbus debug gnutls java kerberos lprng-compat pam
+IUSE="acl dbus debug java kerberos lprng-compat pam
 	python selinux +ssl static-libs systemd +threads usb X xinetd zeroconf"
 
 LANGS="ca cs de es fr it ja pt_BR ru"
@@ -55,12 +54,10 @@ CDEPEND="
 	pam? ( virtual/pam )
 	python? ( ${PYTHON_DEPS} )
 	ssl? (
-		gnutls? (
-			>=dev-libs/libgcrypt-1.5.3:0[${MULTILIB_USEDEP}]
-			>=net-libs/gnutls-2.12.23-r6[${MULTILIB_USEDEP}]
-		)
-		!gnutls? ( >=dev-libs/openssl-1.0.1h-r2[${MULTILIB_USEDEP}] )
+		>=dev-libs/libgcrypt-1.5.3:0[${MULTILIB_USEDEP}]
+		>=net-libs/gnutls-2.12.23-r6[${MULTILIB_USEDEP}]
 	)
+	systemd? ( sys-apps/systemd )
 	usb? ( virtual/libusb:1 )
 	X? ( x11-misc/xdg-utils )
 	xinetd? ( sys-apps/xinetd )
@@ -86,7 +83,6 @@ PDEPEND="
 "
 
 REQUIRED_USE="
-	gnutls? ( ssl )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	usb? ( threads )
 "
@@ -96,10 +92,14 @@ RESTRICT="test"
 
 S="${WORKDIR}/${MY_P}"
 
+# systemd-socket.patch from Fedora
 PATCHES=(
 	"${FILESDIR}/${PN}-1.6.0-dont-compress-manpages.patch"
 	"${FILESDIR}/${PN}-1.6.0-fix-install-perms.patch"
 	"${FILESDIR}/${PN}-1.4.4-nostrip.patch"
+	"${FILESDIR}/${PN}-2.0.2-rename-systemd-service-files.patch"
+	"${FILESDIR}/${PN}-2.0.2-systemd-socket.patch"
+	"${FILESDIR}/${PN}-2.0.1-xinetd-installation-fix.patch"
 )
 
 MULTILIB_CHOST_TOOLS=(
@@ -152,7 +152,7 @@ pkg_setup() {
 
 src_prepare() {
 	base_src_prepare
-	use systemd && epatch "${FILESDIR}/${PN}-1.7.2-systemd-socket-2.patch"
+	epatch_user
 
 	# Remove ".SILENT" rule for verbose output (bug 524338).
 	sed 's#^.SILENT:##g' -i "${S}"/Makedefs.in || die "sed failed"
@@ -174,27 +174,10 @@ multilib_src_configure() {
 	einfo LINGUAS=\"${LINGUAS}\"
 
 	local myconf=()
-	if use ssl ; then
-		myconf+=(
-			$(use_enable gnutls)
-			$(use_enable !gnutls openssl)
-		)
-	else
-		myconf+=(
-			--disable-gnutls
-			--disable-openssl
-		)
-	fi
 
 	if tc-is-static-only; then
 		myconf+=(
 			--disable-shared
-		)
-	fi
-
-	if use systemd; then
-		myconf+=(
-			--with-systemdsystemunitdir="$(systemd_get_unitdir)"
 		)
 	fi
 
@@ -214,22 +197,24 @@ multilib_src_configure() {
 		--with-docdir="${EPREFIX}"/usr/share/cups/html \
 		--with-languages="${LINGUAS}" \
 		--with-system-groups=lpadmin \
+		--with-xinetd=/etc/xinetd.d \
 		$(multilib_native_use_enable acl) \
-		$(use_enable zeroconf avahi) \
 		$(use_enable dbus) \
 		$(use_enable debug) \
 		$(use_enable debug debug-guards) \
+		$(multilib_native_use_with java) \
 		$(use_enable kerberos gssapi) \
 		$(multilib_native_use_enable pam) \
+		$(multilib_native_use_with python python "${PYTHON}") \
 		$(use_enable static-libs static) \
 		$(use_enable threads) \
+		$(use_enable ssl gnutls) \
+		$(use_enable systemd) \
 		$(multilib_native_use_enable usb libusb) \
+		$(use_enable zeroconf avahi) \
 		--disable-dnssd \
-		$(multilib_native_use_with java) \
 		--without-perl \
 		--without-php \
-		$(multilib_native_use_with python python "${PYTHON}") \
-		$(multilib_native_use_with xinetd xinetd /etc/xinetd.d) \
 		$(multilib_is_native_abi && echo --enable-libpaper || echo --disable-libpaper) \
 		"${myconf[@]}"
 
@@ -296,6 +281,8 @@ multilib_src_install_all() {
 		# write permission for file owner (root), bug #296221
 		fperms u+w /etc/xinetd.d/cups-lpd || die "fperms failed"
 	else
+		# always configure with --with-xinetd= and clean up later,
+		# bug #525604
 		rm -rf "${ED}"/etc/xinetd.d
 	fi
 
@@ -342,7 +329,7 @@ pkg_postinst() {
 	if ! [[ "${REPLACING_VERSIONS}" ]]; then
 		echo
 		elog "For information about installing a printer and general cups setup"
-		elog "take a look at: http://www.gentoo.org/doc/en/printing-howto.xml"
+		elog "take a look at: https://wiki.gentoo.org/wiki/Printing"
 		echo
 	fi
 

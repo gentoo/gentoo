@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/prawn
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/prawn/ChangeLog,v 1.28 2015/06/07 19:04:20 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/prawn/ChangeLog,v 1.29 2015/07/06 06:49:56 graaff Exp $
+
+  06 Jul 2015; Hans de Graaff <graaff@gentoo.org> prawn-2.0.1.ebuild:
+  Make sure a new enough version of pdf-inspector is used for tests.
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml
