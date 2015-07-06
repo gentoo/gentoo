@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/kde5.eclass,v 1.12 2015/06/28 13:12:52 johu Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/kde5.eclass,v 1.13 2015/07/06 15:48:51 kensington Exp $
 
 # @ECLASS: kde5.eclass
 # @MAINTAINER:
@@ -136,7 +136,7 @@ case ${KDE_AUTODEPS} in
 
 		if [[ ${CATEGORY} = kde-plasma ]]; then
 			RDEPEND+="
-				!kde-apps/kde4-l10n[-minimal]
+				!kde-apps/kde4-l10n[-minimal(-)]
 				!kde-base/kde-l10n:4[-minimal(-)]
 			"
 		fi

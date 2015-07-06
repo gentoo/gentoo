@@ -1,6 +1,11 @@
 # ChangeLog for net-misc/ntp
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/ntp/ChangeLog,v 1.237 2015/04/30 09:09:30 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ntp/ChangeLog,v 1.238 2015/07/06 15:53:51 vapier Exp $
+
+*ntp-4.2.8_p3 (06 Jul 2015)
+
+  06 Jul 2015; Mike Frysinger <vapier@gentoo.org> +ntp-4.2.8_p3.ebuild:
+  Version bump #553682 by stanley.
 
   30 Apr 2015; Mike Frysinger <vapier@gentoo.org> metadata.xml:
   Add CPE info via Chromium OS.

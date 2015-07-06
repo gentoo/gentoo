@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/sun-httpserver-bin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/sun-httpserver-bin/ChangeLog,v 1.7 2015/07/06 15:30:47 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/sun-httpserver-bin/ChangeLog,v 1.8 2015/07/06 15:32:40 monsieurp Exp $
+
+  06 Jul 2015; Patrice Clement <monsieurp@gentoo.org>
+  -sun-httpserver-bin-2.0.1.ebuild, sun-httpserver-bin-2.0.1-r1.ebuild:
+  Stable for amd64+ppc+x86 with ALLARCHES. Drop old.
 
 *sun-httpserver-bin-2.0.1-r1 (06 Jul 2015)
 

@@ -1,6 +1,9 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1700 2015/07/05 09:10:53 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1701 2015/07/06 15:48:51 kensington Exp $
+
+  06 Jul 2015; Michael Palimaka <kensington@gentoo.org> kde5.eclass:
+  Add missing USE dependency default wrt bug #554056.
 
   05 Jul 2015; Hans de Graaff <graaff@gentoo.org> ruby-fakegem.eclass:
   Document that some variables must be set before inheriting the eclass.
