@@ -1,6 +1,13 @@
 # ChangeLog for dev-java/gnu-crypto
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/gnu-crypto/ChangeLog,v 1.29 2012/10/18 12:47:00 ottxor Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/gnu-crypto/ChangeLog,v 1.30 2015/07/06 20:10:43 monsieurp Exp $
+
+*gnu-crypto-2.0.1-r3 (06 Jul 2015)
+
+  06 Jul 2015; Patrice Clement <monsieurp@gentoo.org>
+  +gnu-crypto-2.0.1-r3.ebuild:
+  EAPI 5 bump. Rewrite ebuild from scratch and use Ant instead of autools. Fix
+  bug 521430.
 
   18 Oct 2012; Christoph Junghans <ottxor@gentoo.org>
   gnu-crypto-2.0.1-r2.ebuild:
