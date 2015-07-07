@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>pam</herd>
+<maintainer>
+	<email>pam-bugs@gentoo.org</email>
+</maintainer>
+<use>
+	<flag name='utils'>Install pwqcheck and pwqgen helper utilities</flag>
+</use>
+<longdescription>
+	Password strength checking for PAM aware password changing programs. This is an alternative to the default cracklib.
+</longdescription>
+<longdescription lang="ja">
+	パスワード変更プログラムに反応する PAM のパスワード強度検査機能です。これはデフォルトの cracklib の代替です。
+</longdescription>
+</pkgmetadata>

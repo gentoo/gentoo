@@ -1,6 +1,9 @@
 # ChangeLog for net-print/cups
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/cups/ChangeLog,v 1.680 2015/07/07 04:48:19 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-print/cups/ChangeLog,v 1.681 2015/07/07 08:07:49 zlogene Exp $
+
+  07 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> cups-2.0.3.ebuild:
+  amd64 stable wrt bug #551846
 
   07 Jul 2015; Jeroen Roovers <jer@gentoo.org> cups-2.0.3.ebuild:
   Stable for HPPA PPC64 (bug #551846).

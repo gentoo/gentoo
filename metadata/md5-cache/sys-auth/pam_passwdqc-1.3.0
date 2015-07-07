@@ -1,0 +1,10 @@
+DEFINED_PHASES=-
+DEPEND=sys-auth/passwdqc[pam]
+DESCRIPTION=Stub ebuild to help migrate to newer package name
+EAPI=5
+HOMEPAGE=http://www.openwall.com/passwdqc/
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux
+LICENSE=Openwall BSD public-domain
+RDEPEND=sys-auth/passwdqc[pam]
+SLOT=0
+_md5_=11ca859670686c7dd9069eb307106da0

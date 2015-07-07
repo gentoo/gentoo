@@ -1,6 +1,11 @@
 # ChangeLog for sys-libs/pam
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/pam/ChangeLog,v 1.352 2015/05/21 03:21:17 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/pam/ChangeLog,v 1.353 2015/07/07 07:38:18 vapier Exp $
+
+*pam-1.2.1 (07 Jul 2015)
+
+  07 Jul 2015; Mike Frysinger <vapier@gentoo.org> +pam-1.2.1.ebuild:
+  Version bump #553302 by Agostino Sarubbo.
 
   21 May 2015; Mike Frysinger <vapier@gentoo.org> pam-1.2.0.ebuild:
   Unset $BROWSER to avoid random xml build failures #549684 by Juergen Rose.
