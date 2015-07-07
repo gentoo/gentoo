@@ -19,13 +19,9 @@
 		<name>Emery Hemingway</name>
 	</maintainer>
 	<use>
-		<flag name='aliases'>Enable plugin for looking up aliases</flag>
-		<flag name='amodem'>Enable plugin for air-gapped transaction signing using <pkg>dev-python/amodem</pkg></flag>
 		<flag name='cli'>Enables the CLI interface</flag>
-		<flag name='coinbase_com'>Enable plugin to use Coinbase.com's buyback program</flag>
 		<flag name='cosign'>Enable plugin to support multisig wallets between multiple Electrum clients</flag>
 		<flag name='fiat'>Enable plugin for looking up fiat values of bitcoin</flag>
-		<flag name='graph'>Enable plugin to generate transaction graphs</flag>
 		<flag name='greenaddress_it'>Enable plugin to verify GreenAddress.it instant transactions</flag>
 		<flag name='gtk3'>Enable support for gtk+3</flag>
 		<flag name='qrcode'>Enable QR code scanning with <pkg>media-gfx/zbar</pkg></flag>

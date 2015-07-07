@@ -1,6 +1,10 @@
 # ChangeLog for net-firewall/xtables-addons
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/xtables-addons/ChangeLog,v 1.53 2015/07/06 13:28:54 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/xtables-addons/ChangeLog,v 1.54 2015/07/07 02:53:17 patrick Exp $
+
+  07 Jul 2015; Patrick Lauer <patrick@gentoo.org> xtables-addons-2.6.ebuild,
+  xtables-addons-2.7.ebuild:
+  Whitespace
 
   06 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
   xtables-addons-2.7.ebuild:

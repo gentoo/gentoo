@@ -1,6 +1,9 @@
 # ChangeLog for media-video/jubler
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/jubler/ChangeLog,v 1.49 2014/07/09 07:40:33 ercpe Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/jubler/ChangeLog,v 1.50 2015/07/07 03:00:36 patrick Exp $
+
+  07 Jul 2015; Patrick Lauer <patrick@gentoo.org> jubler-4.6.1-r3.ebuild:
+  Fix typo
 
   09 Jul 2014; Johann Schmitz <ercpe@gentoo.org>
   +files/jubler-4.6.1-ffmpeg-2.patch, jubler-4.6.1-r3.ebuild:

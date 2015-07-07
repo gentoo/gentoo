@@ -1,6 +1,9 @@
 # ChangeLog for net-misc/electrum
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/electrum/ChangeLog,v 1.38 2015/07/06 13:36:11 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/electrum/ChangeLog,v 1.39 2015/07/07 02:56:24 patrick Exp $
+
+  07 Jul 2015; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Remove unneeded useflag description from metadata.xml
 
   06 Jul 2015; Anthony G. Basile <blueness@gentoo.org> -electrum-2.0.3.ebuild:
   Remove older unstable version.
