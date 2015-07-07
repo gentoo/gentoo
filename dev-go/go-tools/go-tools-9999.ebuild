@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-go/go-tools/go-tools-9999.ebuild,v 1.9 2015/06/26 19:24:29 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-go/go-tools/go-tools-9999.ebuild,v 1.10 2015/07/06 23:34:44 williamh Exp $
 
 EAPI=5
 EGO_PN="golang.org/x/tools/..."
@@ -22,7 +22,7 @@ SRC_URI="${ARCHIVE_URI}
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
-DEPEND="dev-go/go-net"
+DEPEND="dev-go/go-net:="
 RDEPEND=""
 
 if [[ ${PV} != *9999* ]]; then

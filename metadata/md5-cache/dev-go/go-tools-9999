@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install prepare test unpack
-DEPEND=dev-go/go-net >=dev-lang/go-1.4.2 >=dev-lang/go-1.4.2:=
+DEPEND=dev-go/go-net:= >=dev-lang/go-1.4.2 >=dev-lang/go-1.4.2:=
 DESCRIPTION=Go Tools
 EAPI=5
 HOMEPAGE=https://godoc.org/golang.org/x/tools
@@ -7,4 +7,4 @@ LICENSE=BSD
 SLOT=0
 SRC_URI=http://golang.org/favicon.ico -> go-favicon.ico
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	golang-build	f64fb1dfc50e95354f1beda1a836b189	golang-vcs	2abd744a5eac3f769df102ad2469035e	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=c637b21bdff51bd1b7be1178e527e141
+_md5_=fe5463d0dd64c914552769089e348a7a
