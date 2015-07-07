@@ -1,6 +1,17 @@
 # ChangeLog for sys-apps/less
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/less/ChangeLog,v 1.197 2015/07/06 16:06:39 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/less/ChangeLog,v 1.200 2015/07/07 04:20:44 jer Exp $
+
+  07 Jul 2015; Jeroen Roovers <jer@gentoo.org> less-478.ebuild:
+  Stable for HPPA PPC64 (bug #553692).
+
+*less-479 (07 Jul 2015)
+
+  07 Jul 2015; Mike Frysinger <vapier@gentoo.org> +less-479.ebuild:
+  Version bump.
+
+  07 Jul 2015; Mike Frysinger <vapier@gentoo.org> less-478.ebuild:
+  Mark arm64/ia64/m68k/s390/sh stable #553692.
 
   06 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> less-478.ebuild:
   amd64 stable wrt bug #553692
