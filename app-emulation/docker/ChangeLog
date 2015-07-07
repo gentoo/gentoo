@@ -1,6 +1,11 @@
 # ChangeLog for app-emulation/docker
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/docker/ChangeLog,v 1.53 2015/07/05 09:52:08 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/docker/ChangeLog,v 1.54 2015/07/07 20:19:11 williamh Exp $
+
+*docker-1.7.0-r1 (07 Jul 2015)
+
+  07 Jul 2015; William Hubbs <williamh@gentoo.org> +docker-1.7.0-r1.ebuild:
+  add slot dependency on dev-lang/go, approved by all maintainers
 
   05 Jul 2015; Manuel Rüger <mrueg@gentoo.org> docker-1.6.2.ebuild,
   docker-1.7.0.ebuild:

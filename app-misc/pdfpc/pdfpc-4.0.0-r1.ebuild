@@ -1,10 +1,13 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/pdfpc/pdfpc-4.0.0.ebuild,v 1.2 2015/06/05 13:17:10 xmw Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/pdfpc/pdfpc-4.0.0-r1.ebuild,v 1.1 2015/07/07 20:30:53 mrueg Exp $
 
 EAPI=5
 
-inherit cmake-utils
+VALA_MIN_API_VERSION="0.26"
+VALA_MAX_API_VERSION="0.28" # fix sed line if you increase this
+
+inherit vala cmake-utils
 
 DESCRIPTION="Presenter console with multi-monitor support for PDF files"
 HOMEPAGE="http://pdfpc.github.io"
@@ -23,12 +26,13 @@ RDEPEND="app-text/poppler:=[cairo]
 	media-libs/gst-plugins-base:1.0
 	x11-libs/gtk+:3"
 DEPEND="${RDEPEND}
-	>=dev-lang/vala-0.26"
+	$(vala_depend)"
 
 S=${WORKDIR}/${PN}-v${PV}
 
 src_prepare() {
-	sed -i -e "s/valac-0.20/valac-0.28 valac-0.26 valac-0.24 valac-0.22 valac-0.20/" cmake/Vala_CMake/vala/FindVala.cmake || die
+	sed -i -e "s/valac-0.20/valac-0.28 valac-0.26/" cmake/Vala_CMake/vala/FindVala.cmake || die
+	vala_src_prepare
 }
 
 src_configure(){
