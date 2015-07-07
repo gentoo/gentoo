@@ -1,6 +1,13 @@
 # ChangeLog for net-misc/dahdi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/dahdi/ChangeLog,v 1.74 2015/06/29 13:39:49 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/dahdi/ChangeLog,v 1.75 2015/07/07 11:20:18 chainsaw Exp $
+
+*dahdi-2.10.2-r1 (07 Jul 2015)
+
+  07 Jul 2015; Tony Vroon <chainsaw@gentoo.org> -dahdi-2.10.2.ebuild,
+  +dahdi-2.10.2-r1.ebuild:
+  Include a further patch from Oliver Jaksch that I had initially overlooked.
+  Remove non-functional ebuild from tree.
 
 *dahdi-2.10.2 (29 Jun 2015)
 

@@ -1,6 +1,13 @@
 # ChangeLog for dev-python/sqlalchemy-migrate
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/sqlalchemy-migrate/ChangeLog,v 1.55 2015/06/03 21:56:39 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/sqlalchemy-migrate/ChangeLog,v 1.56 2015/07/07 10:34:07 idella4 Exp $
+
+*sqlalchemy-migrate-0.9.6 (07 Jul 2015)
+
+  07 Jul 2015; Ian Delaney <idella4@gentoo.org>
+  +sqlalchemy-migrate-0.9.6.ebuild, -sqlalchemy-migrate-0.7.2-r1.ebuild,
+  -sqlalchemy-migrate-0.7.2.ebuild, -sqlalchemy-migrate-0.9.ebuild:
+  bump; revise deps, add doc build, rm old
 
   03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add pypi to remote-id in metadata.xml
