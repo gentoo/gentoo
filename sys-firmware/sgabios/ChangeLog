@@ -1,6 +1,11 @@
 # ChangeLog for sys-firmware/sgabios
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-firmware/sgabios/ChangeLog,v 1.6 2015/03/16 21:17:16 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-firmware/sgabios/ChangeLog,v 1.7 2015/07/07 07:20:06 vapier Exp $
+
+  07 Jul 2015; Mike Frysinger <vapier@gentoo.org>
+  +files/sgabios-0.1_pre8-build-cc.patch, sgabios-0.1_pre8.ebuild:
+  Use BUILD_CC when compiling the csum8 build-only tool #552280 by José
+  Pekkarinen.
 
   16 Mar 2015; Mike Frysinger <vapier@gentoo.org> sgabios-0.1_pre8.ebuild:
   Use new toolchain helpers for selecting the bfd linker.

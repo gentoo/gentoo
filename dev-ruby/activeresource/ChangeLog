@@ -1,6 +1,10 @@
 # ChangeLog for dev-ruby/activeresource
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/activeresource/ChangeLog,v 1.184 2015/06/16 21:11:33 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/activeresource/ChangeLog,v 1.185 2015/07/07 07:21:45 graaff Exp $
+
+  07 Jul 2015; Hans de Graaff <graaff@gentoo.org>
+  -activeresource-3.2.21.ebuild:
+  Cleanup vulnerable versions.
 
 *activeresource-3.2.22 (16 Jun 2015)
 
