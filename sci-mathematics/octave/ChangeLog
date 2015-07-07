@@ -1,6 +1,21 @@
 # ChangeLog for sci-mathematics/octave
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/octave/ChangeLog,v 1.175 2015/07/05 14:47:44 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/octave/ChangeLog,v 1.176 2015/07/07 13:25:35 gienah Exp $
+
+*octave-4.0.0 (07 Jul 2015)
+
+  07 Jul 2015; Mark Wright <gienah@gentoo.org>
+  +files/octave-4.0.0-imagemagick-configure.patch,
+  +files/octave-4.0.0-imagemagick.patch, +files/octave-4.0.0-llvm-3.5.patch,
+  +octave-4.0.0.ebuild, metadata.xml, octave-3.6.4-r1.ebuild,
+  octave-3.6.4.ebuild, octave-3.8.1-r1.ebuild, octave-3.8.1.ebuild,
+  octave-3.8.2.ebuild:
+  Bump octave to 4.0.0, fixes Bug 550858 - sci-mathematics/octave-4.0 version
+  bump, thanks to Bohdan Trach for reporting. octave 4.0.0 allows llvm 3.5,
+  fixing Bug 531672 - sci-mathematics/octave-3.8.2 USE=jit depends on <sys-
+  devel/llvm-3.5, thanks to Juergen Rose for reporting and eroen for an upstream
+  bug reference. Fix Bug 539886 - sci-mathematics/octave-3.8.2 should depend on
+  x11-libs/fltk[opengl,xft], thanks to Andreas Fink for reporting and the fix.
 
   05 Jul 2015; Michał Górny <mgorny@gentoo.org> octave-3.8.1-r1.ebuild,
   octave-3.8.2.ebuild:

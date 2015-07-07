@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/octave/octave-3.6.4.ebuild,v 1.10 2014/02/24 11:16:44 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/octave/octave-3.6.4.ebuild,v 1.11 2015/07/07 13:25:35 gienah Exp $
 
 EAPI=5
 
@@ -43,7 +43,7 @@ RDEPEND="
 		media-gfx/transfig )
 	qhull? ( media-libs/qhull )
 	qrupdate? ( sci-libs/qrupdate )
-	readline? ( sys-libs/readline )
+	readline? ( sys-libs/readline:0 )
 	sparse? (
 		sci-libs/arpack
 		sci-libs/camd

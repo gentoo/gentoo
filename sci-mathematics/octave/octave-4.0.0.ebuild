@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/octave/octave-3.8.1-r1.ebuild,v 1.8 2015/07/07 13:25:35 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/octave/octave-4.0.0.ebuild,v 1.1 2015/07/07 13:25:35 gienah Exp $
 
 EAPI=5
 
@@ -12,7 +12,7 @@ inherit autotools-utils multilib toolchain-funcs fortran-2 flag-o-matic java-pkg
 DESCRIPTION="High-level interactive language for numerical computations"
 LICENSE="GPL-3"
 HOMEPAGE="http://www.octave.org/"
-SRC_URI="mirror://gnu/${PN}/${P}.tar.bz2"
+SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 
 SLOT="0/${PV}"
 IUSE="curl doc fftw +glpk gnuplot gui hdf5 +imagemagick java jit opengl
@@ -23,6 +23,7 @@ RDEPEND="
 	app-text/ghostscript-gpl
 	dev-libs/libpcre:3=
 	sys-libs/ncurses:5=
+	virtual/blas
 	virtual/lapack
 	curl? ( net-misc/curl:0= )
 	fftw? ( sci-libs/fftw:3.0= )
@@ -34,11 +35,11 @@ RDEPEND="
 			media-gfx/graphicsmagick[cxx]
 			media-gfx/imagemagick[cxx] ) )
 	java? ( >=virtual/jre-1.6.0:* )
-	jit? ( <sys-devel/llvm-3.5 )
+	jit? ( >=sys-devel/llvm-3.3:0= <sys-devel/llvm-3.6:0= )
 	opengl? (
 		media-libs/freetype:2=
 		media-libs/fontconfig:1.0=
-		>=x11-libs/fltk-1.3:1=[opengl]
+		>=x11-libs/fltk-1.3:1=[opengl,xft]
 		x11-libs/gl2ps:0=
 		virtual/glu )
 	postscript? (
@@ -74,9 +75,8 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.4.3-texi.patch
 	"${FILESDIR}"/${PN}-3.8.0-disable-getcwd-path-max-test-as-it-is-too-slow.patch
-	"${FILESDIR}"/${PN}-3.8.0-imagemagick-configure.patch
-	"${FILESDIR}"/${PN}-3.8.0-llvm-configure.patch
-	"${FILESDIR}"/${PN}-3.8.1-imagemagick.patch
+	"${FILESDIR}"/${PN}-4.0.0-imagemagick-configure.patch
+	"${FILESDIR}"/${PN}-4.0.0-imagemagick.patch
 	"${FILESDIR}"/${PN}-3.8.1-pkgbuilddir.patch
 )
 
@@ -87,8 +87,8 @@ src_prepare() {
 		use gui && append-ldflags -Wl,-rpath,"${EPREFIX}/usr/$(get_libdir)/qt4"
 	fi
 
-	has_version ">=sys-devel/llvm-3.4" && \
-		epatch "${FILESDIR}"/${PN}-3.8.0-llvm-3.4.patch
+	has_version ">=sys-devel/llvm-3.5" && \
+		epatch "${FILESDIR}"/${PN}-4.0.0-llvm-3.5.patch
 
 	# Fix bug 501756
 	sed -i \
@@ -110,6 +110,7 @@ src_configure() {
 		--localstatedir="${EPREFIX}/var/state/octave"
 		--with-blas="$($(tc-getPKG_CONFIG) --libs blas)"
 		--with-lapack="$($(tc-getPKG_CONFIG) --libs lapack)"
+		--without-64
 		$(use_enable doc docs)
 		$(use_enable java)
 		$(use_enable gui)

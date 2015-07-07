@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/octave/octave-3.8.2.ebuild,v 1.9 2015/07/05 14:47:44 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/octave/octave-3.8.2.ebuild,v 1.10 2015/07/07 13:25:35 gienah Exp $
 
 EAPI=5
 
@@ -33,12 +33,12 @@ RDEPEND="
 	imagemagick? ( || (
 			media-gfx/graphicsmagick[cxx]
 			media-gfx/imagemagick[cxx] ) )
-	java? ( >=virtual/jre-1.6.0 )
+	java? ( >=virtual/jre-1.6.0:* )
 	jit? ( <sys-devel/llvm-3.5:0= )
 	opengl? (
 		media-libs/freetype:2=
 		media-libs/fontconfig:1.0=
-		>=x11-libs/fltk-1.3:1=[opengl]
+		>=x11-libs/fltk-1.3:1=[opengl,xft]
 		x11-libs/gl2ps:0=
 		virtual/glu )
 	postscript? (
