@@ -1,6 +1,12 @@
 # ChangeLog for dev-perl/IO-stringy
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/IO-stringy/ChangeLog,v 1.43 2014/08/22 16:26:44 axs Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/IO-stringy/ChangeLog,v 1.44 2015/07/06 23:23:27 dilfridge Exp $
+
+*IO-stringy-2.111.0 (06 Jul 2015)
+
+  06 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +IO-stringy-2.111.0.ebuild:
+  Version bump
 
 *IO-stringy-2.110.0-r1 (22 Aug 2014)
 
