@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/iproute2/iproute2-3.19.0.ebuild,v 1.11 2015/05/21 02:06:34 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/iproute2/iproute2-3.19.0.ebuild,v 1.12 2015/07/07 10:29:38 vapier Exp $
 
 EAPI="5"
 
@@ -50,7 +50,7 @@ src_prepare() {
 	# Use /run instead of /var/run.
 	sed -i \
 		-e 's:/var/run:/run:g' \
-		ip/ipnetns.c \
+		include/namespace.h \
 		man/man8/ip-netns.8 || die
 
 	# build against system headers

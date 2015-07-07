@@ -1,6 +1,12 @@
 # ChangeLog for x11-wm/icewm
 # Copyright 1999- Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/icewm/ChangeLog,v 1.171 2015/04/08 17:29:20 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/icewm/ChangeLog,v 1.172 2015/07/07 09:55:50 polynomial-c Exp $
+
+*icewm-1.3.10 (07 Jul 2015)
+
+  07 Jul 2015; Lars Wendler <polynomial-c@gentoo.org> +icewm-1.3.10.ebuild,
+  +files/icewm-1.3.10-menu.patch:
+  Version bump.
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> icewm-1.3.8.ebuild,
   icewm-1.3.9.ebuild:

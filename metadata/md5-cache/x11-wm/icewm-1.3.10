@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install prepare setup
+DEPEND=media-libs/fontconfig x11-libs/gdk-pixbuf:2 x11-libs/libX11 x11-libs/libXrandr x11-libs/libXext x11-libs/libXpm x11-libs/libXrender x11-libs/libXft x11-libs/libSM x11-libs/libICE xinerama? ( x11-libs/libXinerama ) bidi? ( dev-libs/fribidi ) gnome? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] dev-python/pyxdg gnome-base/gnome-desktop:2 gnome-base/gnome-menus gnome-base/libgnomeui ) >=sys-apps/sed-4 x11-proto/xproto x11-proto/xextproto doc? ( app-text/linuxdoc-tools ) nls? ( >=sys-devel/gettext-0.19.2 ) truetype? ( >=media-libs/freetype-2.0.9 ) xinerama? ( x11-proto/xineramaproto ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Ice Window Manager with Themes
+EAPI=5
+HOMEPAGE=http://www.icewm.org/ https://github.com/bbidulock/icewm
+IUSE=bidi debug doc gnome minimal nls truetype uclibc xinerama python_targets_python2_7
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/fontconfig x11-libs/gdk-pixbuf:2 x11-libs/libX11 x11-libs/libXrandr x11-libs/libXext x11-libs/libXpm x11-libs/libXrender x11-libs/libXft x11-libs/libSM x11-libs/libICE xinerama? ( x11-libs/libXinerama ) bidi? ( dev-libs/fribidi ) gnome? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] dev-python/pyxdg gnome-base/gnome-desktop:2 gnome-base/gnome-menus gnome-base/libgnomeui )
+REQUIRED_USE=gnome? ( python_targets_python2_7 )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://github.com/bbidulock/icewm/archive/1.3.10.tar.gz -> icewm-1.3.10.tar.gz
+_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	351da1aa73960a282591217fb57c1bb8	python-utils-r1	ae9becb5d45344c01939c3f57df0d3fd	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=2e3d4b611af31105756b70ef16dc7109

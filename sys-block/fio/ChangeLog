@@ -1,6 +1,11 @@
 # ChangeLog for sys-block/fio
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/fio/ChangeLog,v 1.60 2015/03/11 06:02:43 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-block/fio/ChangeLog,v 1.61 2015/07/07 10:09:07 vapier Exp $
+
+*fio-2.2.9 (07 Jul 2015)
+
+  07 Jul 2015; Mike Frysinger <vapier@gentoo.org> +fio-2.2.9.ebuild:
+  Version bump.
 
   11 Mar 2015; Matthew Thode <prometheanfire@gentoo.org> fio-2.2.4-r1.ebuild:
   removing badness arm? 542850 and fixing 542640

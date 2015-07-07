@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/gnu-crypto
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/gnu-crypto/ChangeLog,v 1.30 2015/07/06 20:10:43 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/gnu-crypto/ChangeLog,v 1.31 2015/07/07 09:41:01 monsieurp Exp $
+
+  07 Jul 2015; Patrice Clement <monsieurp@gentoo.org>
+  gnu-crypto-2.0.1-r3.ebuild:
+  Install gnu-crypto-test.jar only when tests are enabled. Fix bug 554128.
 
 *gnu-crypto-2.0.1-r3 (06 Jul 2015)
 

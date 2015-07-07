@@ -1,10 +1,10 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/gnu-crypto/gnu-crypto-2.0.1-r3.ebuild,v 1.1 2015/07/06 20:10:43 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/gnu-crypto/gnu-crypto-2.0.1-r3.ebuild,v 1.2 2015/07/07 09:41:01 monsieurp Exp $
 
 EAPI=5
 
-JAVA_PKG_IUSE="doc source"
+JAVA_PKG_IUSE="doc source test"
 
 inherit java-pkg-2 java-ant-2
 
@@ -33,26 +33,29 @@ src_compile() {
 	java-pkg-2_src_compile
 }
 
-TEST_TARGETS=(
-	check
-	ent
-)
-
 src_test() {
+	local TEST_TARGETS=(
+		check
+		ent
+	)
+
 	for target in ${TEST_TARGETS[@]}; do
 		EANT_TEST_TARGET=${target} \
 			java-pkg-2_src_test
 	done
 }
 
-GNU_CRYPTO_JARS=(
-	"${PN}"
-	"${PN}-test"
-	javax-crypto
-	javax-security
-)
-
 src_install() {
+	local GNU_CRYPTO_JARS=(
+		"${PN}"
+		javax-crypto
+		javax-security
+	)
+
+	if use test; then
+		GNU_CRYPTO_JARS=(${GNU_CRYPTO_JARS[@]} "${PN}-test")
+	fi
+
 	for jar in ${GNU_CRYPTO_JARS[@]}; do
 		java-pkg_dojar "lib/${jar}.jar"
 	done
