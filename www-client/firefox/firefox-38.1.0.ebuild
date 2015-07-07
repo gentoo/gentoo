@@ -1,18 +1,20 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/firefox/firefox-24.3.0.ebuild,v 1.10 2015/02/26 21:54:23 axs Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/firefox/firefox-38.1.0.ebuild,v 1.1 2015/07/07 17:59:46 axs Exp $
 
-EAPI="3"
+EAPI="5"
 VIRTUALX_REQUIRED="pgo"
 WANT_AUTOCONF="2.1"
-MOZ_ESR="1"
+MOZ_ESR=1
 
 # This list can be updated with scripts/get_langs.sh from the mozilla overlay
-MOZ_LANGS=(af ak ar as ast be bg bn-BD bn-IN br bs ca cs csb cy da de
-el en en-GB en-US en-ZA eo es-AR es-CL es-ES es-MX et eu fa fi fr
-fy-NL ga-IE gd gl gu-IN he hi-IN hr hu hy-AM id is it ja kk km kn ko ku
-lg lt lv mai mk ml mr nb-NO nl nn-NO nso or pa-IN pl pt-BR pt-PT rm ro
-ru si sk sl son sq sr sv-SE ta ta-LK te th tr uk vi zh-CN zh-TW zu )
+# No official support as of fetch time
+# csb
+MOZ_LANGS=( af ar as ast be bg bn-BD bn-IN br bs ca cs cy da de el en
+en-GB en-US en-ZA eo es-AR es-CL es-ES es-MX et eu fa fi fr fy-NL ga-IE gd
+gl gu-IN he hi-IN hr hu hy-AM id is it ja kk km kn ko lt lv mai mk ml mr
+nb-NO nl nn-NO or pa-IN pl pt-BR pt-PT rm ro ru si sk sl son sq sr sv-SE ta te
+th tr uk vi xh zh-CN zh-TW )
 
 # Convert the ebuild version to the upstream mozilla version, used by mozlinguas
 MOZ_PV="${PV/_alpha/a}" # Handle alpha for SRC_URI
@@ -25,51 +27,42 @@ if [[ ${MOZ_ESR} == 1 ]]; then
 fi
 
 # Patch version
-PATCH="${PN}-24.0-patches-0.9"
+PATCH="${PN}-38.0-patches-0.3"
 # Upstream ftp release URI that's used by mozlinguas.eclass
 # We don't use the http mirror because it deletes old tarballs.
-MOZ_FTP_URI="ftp://ftp.mozilla.org/pub/${PN}/releases/"
-MOZ_HTTP_URI="http://ftp.mozilla.org/pub/${PN}/releases/"
+MOZ_FTP_URI="ftp://ftp.mozilla.org/pub/${PN}/releases"
+MOZ_HTTP_URI="http://ftp.mozilla.org/pub/${PN}/releases"
 
-inherit check-reqs flag-o-matic toolchain-funcs eutils gnome2-utils mozconfig-3 multilib pax-utils fdo-mime autotools virtualx mozlinguas
+MOZCONFIG_OPTIONAL_WIFI=1
+MOZCONFIG_OPTIONAL_JIT="enabled"
+
+inherit check-reqs flag-o-matic toolchain-funcs eutils gnome2-utils mozconfig-v6.38 multilib pax-utils fdo-mime autotools virtualx mozlinguas
 
 DESCRIPTION="Firefox Web Browser"
 HOMEPAGE="http://www.mozilla.com/firefox"
 
-KEYWORDS="~alpha amd64 arm hppa ~ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
-IUSE="bindist gstreamer +jit +minimal pgo pulseaudio selinux system-cairo system-icu system-jpeg system-sqlite"
+IUSE="bindist egl hardened +minimal neon pgo selinux +gmp-autoupdate test"
 RESTRICT="!bindist? ( bindist )"
 
 # More URIs appended below...
 SRC_URI="${SRC_URI}
 	http://dev.gentoo.org/~anarchy/mozilla/patchsets/${PATCH}.tar.xz
-	http://dev.gentoo.org/~nirbheek/mozilla/patchsets/${PATCH}.tar.xz"
+	http://dev.gentoo.org/~axs/distfiles/${PATCH}.tar.xz
+	http://dev.gentoo.org/~polynomial-c/mozilla/patchsets/${PATCH}.tar.xz"
 
 ASM_DEPEND=">=dev-lang/yasm-1.1"
 
 # Mesa 7.10 needed for WebGL + bugfixes
 RDEPEND="
-	>=dev-libs/nss-3.15.4
-	>=dev-libs/nspr-4.10.2
-	>=dev-libs/glib-2.26:2
-	>=media-libs/mesa-7.10
-	>=media-libs/libpng-1.5.13[apng]
-	virtual/libffi
-	gstreamer? ( media-plugins/gst-plugins-meta:0.10[ffmpeg] )
-	pulseaudio? ( media-sound/pulseaudio )
-	system-cairo? ( >=x11-libs/cairo-1.12[X] )
-	system-icu? ( >=dev-libs/icu-51.1 )
-	system-jpeg? ( >=media-libs/libjpeg-turbo-1.2.1 )
-	system-sqlite? ( >=dev-db/sqlite-3.7.17:3[secure-delete,debug=] )
-	>=media-libs/libvpx-1.0.0
-	kernel_linux? ( media-libs/alsa-lib )
+	>=dev-libs/nss-3.19.2
+	>=dev-libs/nspr-4.10.8
 	selinux? ( sec-policy/selinux-mozilla )"
 
 DEPEND="${RDEPEND}
-	>=sys-devel/binutils-2.16.1
-	virtual/pkgconfig
 	pgo? (
 		>=sys-devel/gcc-4.5 )
 	amd64? ( ${ASM_DEPEND}
@@ -84,7 +77,7 @@ if [[ ${PV} =~ alpha ]]; then
 		http://dev.gentoo.org/~nirbheek/mozilla/firefox/firefox-${MOZ_PV}_${CHANGESET}.source.tar.bz2"
 	S="${WORKDIR}/mozilla-aurora-${CHANGESET}"
 elif [[ ${PV} =~ beta ]]; then
-	S="${WORKDIR}/mozilla-beta"
+	S="${WORKDIR}/mozilla-release"
 	SRC_URI="${SRC_URI}
 		${MOZ_FTP_URI}/${MOZ_PV}/source/firefox-${MOZ_PV}.source.tar.bz2
 		${MOZ_HTTP_URI}/${MOZ_PV}/source/firefox-${MOZ_PV}.source.tar.bz2"
@@ -100,6 +93,8 @@ else
 fi
 
 QA_PRESTRIPPED="usr/$(get_libdir)/${PN}/firefox"
+
+BUILD_OBJ_DIR="${S}/ff"
 
 pkg_setup() {
 	moz_pkgsetup
@@ -126,7 +121,9 @@ pkg_setup() {
 		ewarn "You will do a double build for profile guided optimization."
 		ewarn "This will result in your build taking at least twice as long as before."
 	fi
+}
 
+pkg_pretend() {
 	# Ensure we have enough disk space to compile
 	if use pgo || use debug || use test ; then
 		CHECKREQS_DISK_BUILD="8G"
@@ -167,7 +164,6 @@ src_prepare() {
 	# Fix sandbox violations during make clean, bug 372817
 	sed -e "s:\(/no-such-file\):${T}\1:g" \
 		-i "${S}"/config/rules.mk \
-		-i "${S}"/js/src/config/rules.mk \
 		-i "${S}"/nsprpub/configure{.in,} \
 		|| die
 
@@ -183,13 +179,21 @@ src_prepare() {
 	eautoreconf
 
 	# Must run autoconf in js/src
-	cd "${S}"/js/src
+	cd "${S}"/js/src || die
 	eautoconf
+
+	# Need to update jemalloc's configure
+	cd "${S}"/memory/jemalloc/src || die
+	WANT_AUTOCONF= eautoconf
 }
 
 src_configure() {
 	MOZILLA_FIVE_HOME="/usr/$(get_libdir)/${PN}"
 	MEXTENSIONS="default"
+	# Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
+	# Note: These are for Gentoo Linux use ONLY. For your own distribution, please
+	# get your own set of keys.
+	_google_api_key=AIzaSyDEAOvatFo0eTgsV_ZlEzx0ObmepsMzfAc
 
 	####################################
 	#
@@ -203,49 +207,53 @@ src_configure() {
 	# It doesn't compile on alpha without this LDFLAGS
 	use alpha && append-ldflags "-Wl,--no-relax"
 
-	# We must force enable jemalloc 3 threw .mozconfig
-	echo "export MOZ_JEMALLOC=1" >> ${S}/.mozconfig
+	# Add full relro support for hardened
+	use hardened && append-ldflags "-Wl,-z,relro,-z,now"
 
-	mozconfig_annotate '' --enable-jemalloc
-	mozconfig_annotate '' --enable-replace-malloc
-	mozconfig_annotate '' --prefix="${EPREFIX}"/usr
-	mozconfig_annotate '' --libdir="${EPREFIX}"/usr/$(get_libdir)
+	if use neon ; then
+		mozconfig_annotate '' --with-fpu=neon
+		mozconfig_annotate '' --with-thumb=yes
+		mozconfig_annotate '' --with-thumb-interwork=no
+	fi
+
+	if [[ ${CHOST} == armv* ]] ; then
+		mozconfig_annotate '' --with-float-abi=hard
+		mozconfig_annotate '' --enable-skia
+
+		if ! use system-libvpx ; then
+			sed -i -e "s|softfp|hard|" \
+				"${S}"/media/libvpx/moz.build
+		fi
+	fi
+
+	use egl && mozconfig_annotate 'Enable EGL as GL provider' --with-gl-provider=EGL
+
+	# Setup api key for location services
+	echo -n "${_google_api_key}" > "${S}"/google-api-key
+	mozconfig_annotate '' --with-google-api-keyfile="${S}/google-api-key"
+
 	mozconfig_annotate '' --enable-extensions="${MEXTENSIONS}"
-	mozconfig_annotate '' --disable-gconf
 	mozconfig_annotate '' --disable-mailnews
-	mozconfig_annotate '' --with-system-png
-	mozconfig_annotate '' --enable-system-ffi
 
 	# Other ff-specific settings
 	mozconfig_annotate '' --with-default-mozilla-five-home=${MOZILLA_FIVE_HOME}
-	mozconfig_annotate '' --target="${CTARGET:-${CHOST}}"
-	mozconfig_annotate '' --build="${CTARGET:-${CHOST}}"
-
-	mozconfig_use_enable gstreamer
-	mozconfig_use_enable pulseaudio
-	mozconfig_use_enable system-cairo
-	mozconfig_use_enable system-sqlite
-	mozconfig_use_with system-jpeg
-	mozconfig_use_with system-icu
-	mozconfig_use_enable system-icu intl-api
-	# Feature is know to cause problems on hardened
-	mozconfig_use_enable jit ion
 
 	# Allow for a proper pgo build
 	if use pgo; then
 		echo "mk_add_options PROFILE_GEN_SCRIPT='\$(PYTHON) \$(OBJDIR)/_profile/pgo/profileserver.py'" >> "${S}"/.mozconfig
 	fi
 
+	echo "mk_add_options MOZ_OBJDIR=${BUILD_OBJ_DIR}" >> "${S}"/.mozconfig
+
 	# Finalize and report settings
 	mozconfig_final
 
 	if [[ $(gcc-major-version) -lt 4 ]]; then
 		append-cxxflags -fno-stack-protector
-	elif [[ $(gcc-major-version) -gt 4 || $(gcc-minor-version) -gt 3 ]]; then
-		if use amd64 || use x86; then
-			append-flags -mno-avx
-		fi
 	fi
+
+	# workaround for funky/broken upstream configure...
+	emake -f client.mk configure
 }
 
 src_compile() {
@@ -276,7 +284,7 @@ src_compile() {
 	else
 		CC="$(tc-getCC)" CXX="$(tc-getCXX)" LD="$(tc-getLD)" \
 		MOZ_MAKE_FLAGS="${MAKEOPTS}" SHELL="${SHELL}" \
-		emake -f client.mk || die "emake failed"
+		emake -f client.mk realbuild
 	fi
 
 }
@@ -285,32 +293,35 @@ src_install() {
 	MOZILLA_FIVE_HOME="/usr/$(get_libdir)/${PN}"
 	DICTPATH="\"${EPREFIX}/usr/share/myspell\""
 
-	# MOZ_BUILD_ROOT, and hence OBJ_DIR change depending on arch, compiler, pgo, etc.
-	local obj_dir="$(echo */config.log)"
-	obj_dir="${obj_dir%/*}"
-	cd "${S}/${obj_dir}"
+	cd "${BUILD_OBJ_DIR}" || die
 
 	# Pax mark xpcshell for hardened support, only used for startupcache creation.
-	pax-mark m "${S}/${obj_dir}"/dist/bin/xpcshell
+	pax-mark m "${BUILD_OBJ_DIR}"/dist/bin/xpcshell
 
 	# Add our default prefs for firefox
 	cp "${FILESDIR}"/gentoo-default-prefs.js-1 \
-		"${S}/${obj_dir}/dist/bin/browser/defaults/preferences/all-gentoo.js" || die
+		"${BUILD_OBJ_DIR}/dist/bin/browser/defaults/preferences/all-gentoo.js" \
+		|| die
 
 	# Set default path to search for dictionaries.
 	echo "pref(\"spellchecker.dictionary_path\", ${DICTPATH});" \
-		>> "${S}/${obj_dir}/dist/bin/browser/defaults/preferences/all-gentoo.js" || die
-
-	if ! use libnotify; then
-		echo "pref(\"browser.download.manager.showAlertOnComplete\", false);" \
-			>> "${S}/${obj_dir}/dist/bin/browser/defaults/preferences/all-gentoo.js" || die
-	fi
+		>> "${BUILD_OBJ_DIR}/dist/bin/browser/defaults/preferences/all-gentoo.js" \
+		|| die
 
 	echo "pref(\"extensions.autoDisableScopes\", 3);" >> \
-		"${S}/${obj_dir}/dist/bin/browser/defaults/preferences/all-gentoo.js" || die
+		"${BUILD_OBJ_DIR}/dist/bin/browser/defaults/preferences/all-gentoo.js" \
+		|| die
+
+	local plugin
+	use gmp-autoupdate || for plugin in \
+	gmp-gmpopenh264 ; do
+		echo "pref(\"media.${plugin}.autoupdate\", false);" >> \
+			"${BUILD_OBJ_DIR}/dist/bin/browser/defaults/preferences/all-gentoo.js" \
+			|| die
+	done
 
 	MOZ_MAKE_FLAGS="${MAKEOPTS}" \
-	emake DESTDIR="${D}" install || die "emake install failed"
+	emake DESTDIR="${D}" install
 
 	# Install language packs
 	mozlinguas_src_install
@@ -333,35 +344,46 @@ src_install() {
 	# Install icons and .desktop for menu entry
 	for size in ${sizes}; do
 		insinto "/usr/share/icons/hicolor/${size}x${size}/apps"
-		newins "${icon_path}/default${size}.png" "${icon}.png" || die
+		newins "${icon_path}/default${size}.png" "${icon}.png"
 	done
 	# The 128x128 icon has a different name
 	insinto "/usr/share/icons/hicolor/128x128/apps"
-	newins "${icon_path}/mozicon128.png" "${icon}.png" || die
+	newins "${icon_path}/mozicon128.png" "${icon}.png"
 	# Install a 48x48 icon into /usr/share/pixmaps for legacy DEs
-	newicon "${icon_path}/content/icon48.png" "${icon}.png" || die
-	newmenu "${FILESDIR}/icon/${PN}.desktop" "${PN}.desktop" || die
+	newicon "${icon_path}/content/icon48.png" "${icon}.png"
+	newmenu "${FILESDIR}/icon/${PN}.desktop" "${PN}.desktop"
 	sed -i -e "s:@NAME@:${name}:" -e "s:@ICON@:${icon}:" \
 		"${ED}/usr/share/applications/${PN}.desktop" || die
 
 	# Add StartupNotify=true bug 237317
 	if use startup-notification ; then
-		echo "StartupNotify=true" >> "${ED}/usr/share/applications/${PN}.desktop"
+		echo "StartupNotify=true"\
+			 >> "${ED}/usr/share/applications/${PN}.desktop" \
+			|| die
 	fi
 
 	# Required in order to use plugins and even run firefox on hardened.
-	pax-mark m "${ED}"${MOZILLA_FIVE_HOME}/{firefox,firefox-bin,plugin-container}
+	if use jit; then
+		pax-mark m "${ED}"${MOZILLA_FIVE_HOME}/{firefox,firefox-bin,plugin-container}
+	else
+		pax-mark m "${ED}"${MOZILLA_FIVE_HOME}/plugin-container
+	fi
 
 	if use minimal; then
-		rm -rf "${ED}"/usr/include "${ED}${MOZILLA_FIVE_HOME}"/{idl,include,lib,sdk} || \
-			die "Failed to remove sdk and headers"
+		rm -r "${ED}"/usr/include "${ED}${MOZILLA_FIVE_HOME}"/{idl,include,lib,sdk} \
+			|| die "Failed to remove sdk and headers"
 	fi
 
 	# very ugly hack to make firefox not sigbus on sparc
 	# FIXME: is this still needed??
 	use sparc && { sed -e 's/Firefox/FirefoxGentoo/g' \
-					 -i "${ED}/${MOZILLA_FIVE_HOME}/application.ini" || \
-					 die "sparc sed failed"; }
+					 -i "${ED}/${MOZILLA_FIVE_HOME}/application.ini" \
+					|| die "sparc sed failed"; }
+
+	# revdep-rebuild entry
+	insinto /etc/revdep-rebuild
+	echo "SEARCH_DIRS_MASK=${MOZILLA_FIVE_HOME}" >> ${T}/10firefox
+	doins "${T}"/10${PN} || die
 }
 
 pkg_preinst() {

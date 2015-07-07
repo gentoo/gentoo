@@ -1,6 +1,10 @@
 # ChangeLog for dev-ruby/ruby-glib2
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-glib2/ChangeLog,v 1.119 2015/07/05 10:15:15 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-glib2/ChangeLog,v 1.120 2015/07/07 18:29:31 pacho Exp $
+
+  07 Jul 2015; Pacho Ramos <pacho@gentoo.org>
+  +files/ruby-glib2-2.2.3-glib-2.44.patch, ruby-glib2-2.2.3-r1.ebuild:
+  Fix building with glib-2.44 (#554126 by Franz Fellner)
 
   05 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -ruby-glib2-1.2.6.ebuild,
   -ruby-glib2-2.0.2.ebuild, -ruby-glib2-2.1.0.ebuild, -ruby-glib2-2.2.0.ebuild,

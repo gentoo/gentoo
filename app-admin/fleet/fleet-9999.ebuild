@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/fleet/fleet-9999.ebuild,v 1.7 2015/05/27 05:19:21 zmedico Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/fleet/fleet-9999.ebuild,v 1.8 2015/07/07 18:14:09 williamh Exp $
 
 EAPI=5
 
@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="doc examples test"
 
-DEPEND=">=dev-lang/go-1.3
+DEPEND=">=dev-lang/go-1.3:=
 	test? ( dev-go/go-tools )"
 RDEPEND=""
 
@@ -40,7 +40,6 @@ src_install() {
 	use doc && dodoc -r Documentation
 	use examples && dodoc -r examples
 
-	keepdir /etc/${PN}
 	insinto /etc/${PN}
 	newins "${PN}".conf.sample "${PN}".conf
 }

@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install postinst test unpack
-DEPEND=>=dev-lang/go-1.3 test? ( dev-go/go-tools ) >=dev-vcs/git-1.8.2.1 virtual/pkgconfig
+DEPEND=>=dev-lang/go-1.3:= test? ( dev-go/go-tools ) >=dev-vcs/git-1.8.2.1 virtual/pkgconfig
 DESCRIPTION=A Distributed init System
 EAPI=5
 HOMEPAGE=https://github.com/coreos/fleet
@@ -7,4 +7,4 @@ IUSE=doc examples test
 LICENSE=Apache-2.0
 SLOT=0
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	git-r3	ab80045e5d080584334f33013f4df21d	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=4892c0e8176b555fbf1cbce31a2b5bc1
+_md5_=fe14c2758dccc1da30e1dad0ebd14f46
