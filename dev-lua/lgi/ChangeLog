@@ -1,6 +1,9 @@
 # ChangeLog for dev-lua/lgi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lua/lgi/ChangeLog,v 1.13 2015/06/27 12:40:36 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lua/lgi/ChangeLog,v 1.14 2015/07/07 04:35:38 jer Exp $
+
+  07 Jul 2015; Jeroen Roovers <jer@gentoo.org> lgi-0.9.0.ebuild:
+  Stable for PPC64 (bug #551996).
 
   27 Jun 2015; Markus Meier <maekke@gentoo.org> lgi-0.9.0.ebuild:
   arm stable, bug #551996

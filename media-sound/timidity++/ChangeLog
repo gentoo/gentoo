@@ -1,6 +1,9 @@
 # ChangeLog for media-sound/timidity++
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/timidity++/ChangeLog,v 1.166 2015/06/27 09:48:50 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/timidity++/ChangeLog,v 1.167 2015/07/07 04:52:15 jer Exp $
+
+  07 Jul 2015; Jeroen Roovers <jer@gentoo.org> timidity++-2.14.0-r2.ebuild:
+  Stable for HPPA PPC64 (bug #533172).
 
   27 Jun 2015; Agostino Sarubbo <ago@gentoo.org> timidity++-2.14.0-r2.ebuild:
   Stable for amd64, wrt bug #533172

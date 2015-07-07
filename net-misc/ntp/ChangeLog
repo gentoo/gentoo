@@ -1,6 +1,9 @@
 # ChangeLog for net-misc/ntp
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/ntp/ChangeLog,v 1.239 2015/07/06 16:58:32 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ntp/ChangeLog,v 1.240 2015/07/07 04:56:01 jer Exp $
+
+  07 Jul 2015; Jeroen Roovers <jer@gentoo.org> ntp-4.2.8_p3.ebuild:
+  Stable for HPPA PPC64 (bug #553682).
 
   06 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> ntp-4.2.8_p3.ebuild:
   amd64 stable wrt bug #553682
