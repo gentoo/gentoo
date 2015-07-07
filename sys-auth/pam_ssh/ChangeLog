@@ -1,6 +1,12 @@
 # ChangeLog for sys-auth/pam_ssh
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/pam_ssh/ChangeLog,v 1.56 2013/12/23 09:14:48 vapier Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/pam_ssh/ChangeLog,v 1.57 2015/07/07 08:44:52 vapier Exp $
+
+*pam_ssh-2.1 (07 Jul 2015)
+
+  07 Jul 2015; Mike Frysinger <vapier@gentoo.org>
+  +files/pam_ssh-2.1-dot-ssh-check.patch, +pam_ssh-2.1.ebuild:
+  Version bump #503424 by David Heidelberg.
 
   23 Dec 2013; Mike Frysinger <vapier@gentoo.org> pam_ssh-1.98.ebuild:
   Mark alpha/ia64 stable #459960.
