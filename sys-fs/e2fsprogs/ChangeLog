@@ -1,6 +1,10 @@
 # ChangeLog for sys-fs/e2fsprogs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/e2fsprogs/ChangeLog,v 1.312 2015/05/25 10:29:17 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/e2fsprogs/ChangeLog,v 1.313 2015/07/07 11:45:07 polynomial-c Exp $
+
+  07 Jul 2015; Lars Wendler <polynomial-c@gentoo.org>
+  -e2fsprogs-1.42.10.ebuild:
+  Removed vulnerable version.
 
   25 May 2015; Mike Frysinger <vapier@gentoo.org> e2fsprogs-1.42.10.ebuild,
   e2fsprogs-1.42.12.ebuild, e2fsprogs-1.42.13.ebuild,
