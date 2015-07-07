@@ -1,6 +1,13 @@
 # ChangeLog for dev-python/oslotest
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/oslotest/ChangeLog,v 1.18 2015/06/09 15:48:45 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/oslotest/ChangeLog,v 1.20 2015/07/07 16:11:39 zlogene Exp $
+
+  07 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> oslotest-1.5.0.ebuild,
+  oslotest-1.5.1.ebuild:
+  Mark proper version stable
+
+  07 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> oslotest-1.5.0.ebuild:
+  amd64 stable wrt bug #554114
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

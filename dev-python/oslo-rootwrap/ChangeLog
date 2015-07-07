@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/oslo-rootwrap
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/oslo-rootwrap/ChangeLog,v 1.6 2015/06/03 20:38:01 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/oslo-rootwrap/ChangeLog,v 1.7 2015/07/07 16:02:12 zlogene Exp $
+
+  07 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> oslo-rootwrap-1.6.0.ebuild:
+  amd64 stable wrt bug #554114
 
   03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add pypi to remote-id in metadata.xml
