@@ -1,6 +1,10 @@
 # ChangeLog for dev-python/python-swiftclient
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/python-swiftclient/ChangeLog,v 1.20 2015/06/09 16:52:35 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-swiftclient/ChangeLog,v 1.21 2015/07/07 16:34:50 zlogene Exp $
+
+  07 Jul 2015; Mikle Kolyada <zlogene@gentoo.org>
+  python-swiftclient-2.2.0-r1.ebuild:
+  amd64 stable wrt bug #554114
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

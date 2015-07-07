@@ -1,6 +1,9 @@
 # ChangeLog for mail-filter/imapfilter
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/imapfilter/ChangeLog,v 1.63 2014/12/19 03:36:06 radhermit Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/imapfilter/ChangeLog,v 1.64 2015/07/07 16:58:53 grobian Exp $
+
+  07 Jul 2015; Fabian Groffen <grobian@gentoo.org> imapfilter-2.5.7.ebuild:
+  Extend PREFIX change to work for Prefix by tao in bug #554148
 
 *imapfilter-2.5.7 (19 Dec 2014)
 

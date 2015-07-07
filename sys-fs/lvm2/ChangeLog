@@ -1,6 +1,11 @@
 # ChangeLog for sys-fs/lvm2
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/lvm2/ChangeLog,v 1.376 2015/05/29 05:25:23 jmorgan Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/lvm2/ChangeLog,v 1.377 2015/07/07 17:19:15 mrueg Exp $
+
+*lvm2-2.02.116 (07 Jul 2015)
+
+  07 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +lvm2-2.02.116.ebuild:
+  NMU: Version bump. See bug #529218.
 
   29 May 2015; Jack Morgan <jmorgan@gentoo.org> lvm2-2.02.109.ebuild:
   sparc stable wrt bug #493892

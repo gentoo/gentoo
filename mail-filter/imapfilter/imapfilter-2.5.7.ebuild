@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/imapfilter/imapfilter-2.5.7.ebuild,v 1.1 2014/12/19 03:36:06 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/imapfilter/imapfilter-2.5.7.ebuild,v 1.2 2015/07/07 16:58:53 grobian Exp $
 
 EAPI=5
 
@@ -22,7 +22,7 @@ DEPEND="${RDEPEND}"
 DOCS="AUTHORS NEWS README samples/*"
 
 src_prepare() {
-	sed -i -e "/^PREFIX/s:/local::" \
+	sed -i -e "/^PREFIX/s:/usr/local:${EPREFIX}/usr:" \
 		-e "/^MANDIR/s:man:share/man:" \
 		-e "/^CFLAGS/s:CFLAGS =:CFLAGS +=:" \
 		-e "/^CFLAGS/s/-O//" \

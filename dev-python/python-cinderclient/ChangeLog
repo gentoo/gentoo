@@ -1,6 +1,10 @@
 # ChangeLog for dev-python/python-cinderclient
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/python-cinderclient/ChangeLog,v 1.16 2015/06/09 16:42:23 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-cinderclient/ChangeLog,v 1.17 2015/07/07 16:32:37 zlogene Exp $
+
+  07 Jul 2015; Mikle Kolyada <zlogene@gentoo.org>
+  python-cinderclient-1.1.1.ebuild:
+  amd64 stable wrt bug #554114
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml
