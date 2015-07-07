@@ -1,6 +1,13 @@
 # ChangeLog for www-client/google-chrome
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/google-chrome/ChangeLog,v 1.416 2015/06/23 02:02:58 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/google-chrome/ChangeLog,v 1.417 2015/07/07 22:13:36 floppym Exp $
+
+*google-chrome-43.0.2357.132_p1 (07 Jul 2015)
+
+  07 Jul 2015; Mike Gilbert <floppym@gentoo.org>
+  +google-chrome-43.0.2357.132_p1.ebuild,
+  -google-chrome-43.0.2357.130_p1.ebuild:
+  Automated update.
 
 *google-chrome-43.0.2357.130_p1 (23 Jun 2015)
 
