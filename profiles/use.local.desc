@@ -6691,6 +6691,7 @@ sci-misc/h5utils:octave - Build Octave plugins
 sci-misc/nco:dap - Support for remote data access with the NETCDF DAP client
 sci-misc/nco:ncap2 - Build next generation netcdf arithmetic processor (needs dev-java/antlr)
 sci-misc/nco:udunits - Add sci-libs/udunits files support
+sci-physics/bullet:bullet3 - Build Bullet 3
 sci-physics/bullet:double-precision - Build libraries in double precision
 sci-physics/bullet:extras - Build additional libraries
 sci-physics/cernlib-montecarlo:herwig - Build Herwig internal event generator, newer version available in sci-physics/herwig

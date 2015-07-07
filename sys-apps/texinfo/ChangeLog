@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/texinfo
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/texinfo/ChangeLog,v 1.139 2015/07/06 08:32:26 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/texinfo/ChangeLog,v 1.140 2015/07/07 20:50:50 maekke Exp $
+
+  07 Jul 2015; Markus Meier <maekke@gentoo.org> texinfo-5.2.ebuild:
+  arm stable, bug #527998
 
   06 Jul 2015; Mike Frysinger <vapier@gentoo.org> texinfo-5.2.ebuild:
   Mark arm64/ia64/m68k/s390/sh stable #527998.

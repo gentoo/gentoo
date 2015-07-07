@@ -1,6 +1,11 @@
 # ChangeLog for app-i18n/man-pages-de
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/man-pages-de/ChangeLog,v 1.41 2015/03/31 16:55:31 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/man-pages-de/ChangeLog,v 1.42 2015/07/07 20:34:08 mrueg Exp $
+
+*man-pages-de-1.9 (07 Jul 2015)
+
+  07 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +man-pages-de-1.9.ebuild:
+  Version bump. Proxy commit for Markus Oehme. Fixes bug #553904.
 
   31 Mar 2015; Mike Frysinger <vapier@gentoo.org> man-pages-de-1.7.ebuild,
   man-pages-de-1.8.ebuild:

@@ -1,6 +1,10 @@
 # ChangeLog for x11-themes/adwaita-icon-theme
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/adwaita-icon-theme/ChangeLog,v 1.16 2015/06/26 09:24:30 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/adwaita-icon-theme/ChangeLog,v 1.17 2015/07/07 20:56:17 maekke Exp $
+
+  07 Jul 2015; Markus Meier <maekke@gentoo.org>
+  adwaita-icon-theme-3.14.1-r1.ebuild:
+  arm stable, bug #551814
 
   26 Jun 2015; Agostino Sarubbo <ago@gentoo.org>
   adwaita-icon-theme-3.14.1-r1.ebuild:

@@ -1,6 +1,10 @@
 # ChangeLog for media-plugins/gst-plugins-gdkpixbuf
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-gdkpixbuf/ChangeLog,v 1.54 2015/03/29 10:54:53 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-gdkpixbuf/ChangeLog,v 1.55 2015/07/07 20:59:10 maekke Exp $
+
+  07 Jul 2015; Markus Meier <maekke@gentoo.org>
+  gst-plugins-gdkpixbuf-1.4.5.ebuild:
+  arm stable, bug #551814
 
   29 Mar 2015; Jeroen Roovers <jer@gentoo.org>
   gst-plugins-gdkpixbuf-1.4.5.ebuild:

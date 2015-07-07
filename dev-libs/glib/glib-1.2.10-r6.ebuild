@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/glib/glib-1.2.10-r6.ebuild,v 1.5 2015/06/26 09:21:15 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/glib/glib-1.2.10-r6.ebuild,v 1.6 2015/07/07 20:40:00 maekke Exp $
 
 EAPI=5
 GNOME_TARBALL_SUFFIX="gz"
@@ -16,7 +16,7 @@ SRC_URI="${SRC_URI}
 
 LICENSE="LGPL-2.1+"
 SLOT="1"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd"
 IUSE="hardened static-libs"
 
 DEPEND=""

@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/netbeans-websvccommon
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/netbeans-websvccommon/ChangeLog,v 1.27 2015/06/17 10:48:09 fordfrog Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/netbeans-websvccommon/ChangeLog,v 1.28 2015/07/07 21:05:58 zmedico Exp $
+
+  07 Jul 2015; Zac Medico <zmedico@gentoo.org> -files/italian-patch.patch,
+  netbeans-websvccommon-8.0.2.ebuild:
+  Remove inapplicable italian-patch.patch for bug 553898.
 
   17 Jun 2015; Miroslav Šulc <fordfrog@gentoo.org>
   netbeans-websvccommon-8.0.2.ebuild, +files/italian-patch.patch:

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/opengl media-libs/freeglut doc? ( app-doc/doxygen[dot] ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Continuous Collision Detection and Physics Library
+EAPI=5
+HOMEPAGE=http://www.bulletphysics.com/
+IUSE=+bullet3 doc double-precision examples extras
+KEYWORDS=~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=ZLIB
+RDEPEND=virtual/opengl media-libs/freeglut
+SLOT=0/2.83.4
+SRC_URI=https://github.com/bulletphysics/bullet3/archive/2.83.4.tar.gz -> bullet-2.83.4.tar.gz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=2a2e29cf5b683e3abe15957b164f07a9

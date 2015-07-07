@@ -1,6 +1,9 @@
 # ChangeLog for x11-libs/gtkglext
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtkglext/ChangeLog,v 1.100 2015/06/26 09:24:11 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtkglext/ChangeLog,v 1.101 2015/07/07 20:53:51 maekke Exp $
+
+  07 Jul 2015; Markus Meier <maekke@gentoo.org> gtkglext-1.2.0-r3.ebuild:
+  arm stable, bug #551814
 
   26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> gtkglext-1.2.0-r3.ebuild:
   Stable for x86, wrt bug #551814
