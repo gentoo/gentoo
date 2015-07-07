@@ -1,6 +1,12 @@
 # ChangeLog for mail-client/claws-mail
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/claws-mail/ChangeLog,v 1.248 2015/04/08 18:14:00 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/claws-mail/ChangeLog,v 1.250 2015/07/07 18:44:52 pacho Exp $
+
+  07 Jul 2015; Pacho Ramos <pacho@gentoo.org> claws-mail-3.11.1-r1.ebuild:
+  And fix glib depend too
+
+  07 Jul 2015; Pacho Ramos <pacho@gentoo.org> claws-mail-3.11.1-r1.ebuild:
+  Subslot dep on perl is needed (#553326 by Bernard Cafarelli)
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> claws-mail-3.10.1.ebuild,
   claws-mail-3.11.1-r1.ebuild, claws-mail-3.9.1-r1.ebuild,

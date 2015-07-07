@@ -1,6 +1,11 @@
 # ChangeLog for app-admin/fleet
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/fleet/ChangeLog,v 1.24 2015/07/07 18:14:09 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/fleet/ChangeLog,v 1.25 2015/07/07 18:39:19 williamh Exp $
+
+*fleet-0.11.0-r1 (07 Jul 2015)
+
+  07 Jul 2015; William Hubbs <williamh@gentoo.org> +fleet-0.11.0-r1.ebuild:
+  rev bump to encorporate the changes from the live ebuild, approved by alunduil
 
   07 Jul 2015; William Hubbs <williamh@gentoo.org> fleet-9999.ebuild:
   with approval of alunduil: add slot dependency on dev-lang/Go and drop keepdir
