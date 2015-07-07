@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/spyder/spyder-2.3.5.2.ebuild,v 1.1 2015/07/02 06:07:24 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/spyder/spyder-2.3.5.2.ebuild,v 1.2 2015/07/07 14:03:16 idella4 Exp $
 
 EAPI=5
 
@@ -39,9 +39,7 @@ PATCHES=( "${FILESDIR}"/${PN}-2.3.1-build.patch )
 
 python_compile_all() {
 	if use doc; then
-		einfo "Generation of documentation"
-		PYTHONPATH="{BUILD_DIR}" \
-			sphinx-build doc doc/html || die "Generation of documentation failed"
+		sphinx-build doc doc/html || die "Generation of documentation failed"
 	fi
 }
 
@@ -49,5 +47,5 @@ python_install_all() {
 	distutils-r1_python_install_all
 	doicon spyderlib/images/spyder.svg
 	make_desktop_entry spyder Spyder spyder "Development;IDE"
-	use doc && dohtml -r doc/html/
+	use doc && dodoc -r doc/html/
 }

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/mozconfig-v5.33.eclass,v 1.5 2015/05/28 06:37:16 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/mozconfig-v6.38.eclass,v 1.1 2015/07/07 14:11:37 axs Exp $
 #
 # @ECLASS: mozconfig-v5.33.eclass
 # @MAINTAINER:
@@ -21,8 +21,7 @@
 inherit multilib flag-o-matic toolchain-funcs mozcoreconf-v3
 
 case ${EAPI} in
-	0|1|2|3|4) die "EAPI=${EAPI} not supported" ;;
-	*) die "This eclass has been disabled and will be removed on 2015-06-30.  If you need it, copy to your overlay and remove this line." ;;
+	0|1|2|3|4) die "EAPI=${EAPI} not supported"
 esac
 
 # @ECLASS-VARIABLE: MOZCONFIG_OPTIONAL_WIFI
@@ -46,7 +45,7 @@ esac
 # Set the variable to any value if the use flag should exist but not be default-enabled.
 
 # use-flags common among all mozilla ebuilds
-IUSE="${IUSE} dbus debug gstreamer pulseaudio selinux startup-notification system-cairo system-icu system-jpeg system-sqlite system-libvpx"
+IUSE="${IUSE} dbus debug gstreamer gstreamer-0 +jemalloc3 pulseaudio selinux startup-notification system-cairo system-icu system-jpeg system-sqlite system-libvpx"
 
 # some notes on deps:
 # gtk:2 minimum is technically 2.10 but gio support (enabled by default) needs 2.14
@@ -54,12 +53,13 @@ IUSE="${IUSE} dbus debug gstreamer pulseaudio selinux startup-notification syste
 
 RDEPEND=">=app-text/hunspell-1.2
 	dev-libs/atk
+	dev-libs/expat
 	>=dev-libs/libevent-1.4.7
 	>=x11-libs/cairo-1.10[X]
-	>=x11-libs/gtk+-2.14:2
+	>=x11-libs/gtk+-2.18:2
 	x11-libs/gdk-pixbuf
 	>=x11-libs/pango-1.22.0
-	>=media-libs/libpng-1.6.10:0=[apng]
+	>=media-libs/libpng-1.6.16:0=[apng]
 	>=media-libs/mesa-10.2:*
 	media-libs/fontconfig
 	>=media-libs/freetype-2.4.10
@@ -71,25 +71,28 @@ RDEPEND=">=app-text/hunspell-1.2
 	startup-notification? ( >=x11-libs/startup-notification-0.8 )
 	>=dev-libs/glib-2.26:2
 	>=sys-libs/zlib-1.2.3
-	virtual/libffi
+	>=virtual/libffi-3.0.10
 	gstreamer? (
 		>=media-libs/gstreamer-1.2.3:1.0
 		>=media-libs/gst-plugins-base-1.2.3:1.0
 		>=media-libs/gst-plugins-good-1.2.3:1.0
 		>=media-plugins/gst-plugins-libav-1.1.0_pre20130128-r1:1.0
 	)
+	gstreamer-0? (
+		media-plugins/gst-plugins-meta:0.10[ffmpeg]
+	)
 	x11-libs/libX11
 	x11-libs/libXcomposite
 	x11-libs/libXdamage
-	x11-libs/libXfixes
 	x11-libs/libXext
+	x11-libs/libXfixes
 	x11-libs/libXrender
 	x11-libs/libXt
 	system-cairo? ( >=x11-libs/cairo-1.12[X] >=x11-libs/pixman-0.19.2 )
-	system-icu? ( >=dev-libs/icu-51.1 )
+	system-icu? ( >=dev-libs/icu-51.1:= )
 	system-jpeg? ( >=media-libs/libjpeg-turbo-1.2.1 )
-	system-sqlite? ( >=dev-db/sqlite-3.8.5:3[secure-delete,debug=] )
-	system-libvpx? ( =media-libs/libvpx-1.3.0*[postproc] )
+	system-sqlite? ( >=dev-db/sqlite-3.8.8.2:3[secure-delete,debug=] )
+	system-libvpx? ( >=media-libs/libvpx-1.3.0[postproc] )
 "
 
 if [[ -n ${MOZCONFIG_OPTIONAL_WIFI} ]]; then
@@ -141,7 +144,8 @@ mozconfig_config() {
 	mozconfig_annotate 'system_libs' \
 		--with-system-zlib \
 		--enable-pango \
-		--enable-svg
+		--enable-svg \
+		--with-system-bz2
 
 	mozconfig_annotate '' --enable-default-toolkit=cairo-gtk2
 
@@ -157,6 +161,8 @@ mozconfig_config() {
 
 	if ! use debug ; then
 		mozconfig_annotate 'disabled by Gentoo' --disable-debug-symbols
+	else
+		mozconfig_annotate 'enabled by Gentoo' --enable-debug-symbols
 	fi
 
 	mozconfig_use_enable startup-notification
@@ -181,7 +187,6 @@ mozconfig_config() {
 
 	if [[ -n ${MOZCONFIG_OPTIONAL_JIT} ]]; then
 		mozconfig_use_enable jit ion
-		mozconfig_use_enable jit yarr-jit
 	fi
 
 	# These are enabled by default in all mozilla applications
@@ -201,17 +206,24 @@ mozconfig_config() {
 	mozconfig_annotate 'Gentoo default to honor system linker' --disable-gold
 	mozconfig_annotate '' --disable-gconf
 
-	# We must force-enable jemalloc 3 via .mozconfig
-	# Except this doesn't actually enable jemalloc3.
-	echo "export MOZ_JEMALLOC=1" >> "${S}"/.mozconfig || die
-	mozconfig_annotate '' --enable-jemalloc
-	mozconfig_annotate '' --enable-replace-malloc
+	# Use jemalloc unless libc is not glibc >= 2.4
+	# at this time the minimum glibc in the tree is 2.9 so we should be safe.
+	if use elibc_glibc && use jemalloc3; then
+		# We must force-enable jemalloc 3 via .mozconfig
+		echo "export MOZ_JEMALLOC3=1" >> "${S}"/.mozconfig || die
+		mozconfig_annotate '' --enable-jemalloc
+		mozconfig_annotate '' --enable-replace-malloc
+	fi
 
 	mozconfig_annotate '' --target="${CTARGET:-${CHOST}}"
 	mozconfig_annotate '' --build="${CTARGET:-${CHOST}}"
 
-	if use gstreamer; then
-		mozconfig_annotate '+gstreamer' --enable-gstreamer=1.0
+	if use gstreamer || use gstreamer-0 ; then
+		if use gstreamer-0 ; then
+			mozconfig_annotate '+gstreamer-0' --enable-gstreamer=0.10
+		else
+			mozconfig_annotate '+gstreamer' --enable-gstreamer=1.0
+		fi
 	else
 		mozconfig_annotate '' --disable-gstreamer
 	fi
