@@ -1,6 +1,10 @@
 # ChangeLog for app-arch/lzip
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/lzip/ChangeLog,v 1.62 2015/06/09 13:41:05 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/lzip/ChangeLog,v 1.63 2015/07/07 15:10:11 polynomial-c Exp $
+
+  07 Jul 2015; Lars Wendler <polynomial-c@gentoo.org> lzip-1.16.ebuild,
+  lzip-1.17_rc2.ebuild:
+  Fixed license as requested by upstream author.
 
 *lzip-1.17_rc2 (09 Jun 2015)
 
