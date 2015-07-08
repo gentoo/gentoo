@@ -1,6 +1,12 @@
 # ChangeLog for dev-util/coccinelle
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/coccinelle/ChangeLog,v 1.40 2015/06/22 08:02:35 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/coccinelle/ChangeLog,v 1.41 2015/07/08 00:20:54 radhermit Exp $
+
+  08 Jul 2015; Tim Harder <radhermit@gentoo.org> -coccinelle-1.0.0_rc17.ebuild,
+  -coccinelle-1.0.0_rc18.ebuild, -coccinelle-1.0.0_rc19.ebuild,
+  -coccinelle-1.0.0_rc22.ebuild, -coccinelle-1.0.0_rc23.ebuild,
+  -coccinelle-1.0.0_rc24.ebuild:
+  Remove old.
 
 *coccinelle-1.0.1 (22 Jun 2015)
 

@@ -1,6 +1,13 @@
 # ChangeLog for x11-misc/urxvt-perls
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/urxvt-perls/ChangeLog,v 1.7 2015/05/16 19:42:28 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/urxvt-perls/ChangeLog,v 1.9 2015/07/08 00:09:41 radhermit Exp $
+
+  08 Jul 2015; Tim Harder <radhermit@gentoo.org> -urxvt-perls-2.0.ebuild,
+  -urxvt-perls-2.1.ebuild:
+  Remove old.
+
+  08 Jul 2015; Tim Harder <radhermit@gentoo.org> urxvt-perls-2.2.ebuild:
+  Stabilize for amd64/x86.
 
 *urxvt-perls-2.2 (16 May 2015)
 

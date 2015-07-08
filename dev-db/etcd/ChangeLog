@@ -1,6 +1,11 @@
 # ChangeLog for dev-db/etcd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/etcd/ChangeLog,v 1.4 2015/06/06 09:50:35 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/etcd/ChangeLog,v 1.5 2015/07/07 23:56:33 williamh Exp $
+
+*etcd-2.0.10-r1 (07 Jul 2015)
+
+  07 Jul 2015; William Hubbs <williamh@gentoo.org> +etcd-2.0.10-r1.ebuild:
+  Rev bump for slot dependency on Go
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml
