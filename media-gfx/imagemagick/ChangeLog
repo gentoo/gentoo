@@ -1,6 +1,10 @@
 # ChangeLog for media-gfx/imagemagick
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/imagemagick/ChangeLog,v 1.592 2015/07/05 04:01:57 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/imagemagick/ChangeLog,v 1.593 2015/07/08 01:39:55 radhermit Exp $
+
+  08 Jul 2015; Tim Harder <radhermit@gentoo.org> imagemagick-6.9.1.7.ebuild,
+  +files/imagemagick-6.9.1.7-cflags.patch:
+  Respect CFLAGS (bug #554038).
 
 *imagemagick-6.9.1.7 (05 Jul 2015)
 
