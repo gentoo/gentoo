@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/oslo-log
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/oslo-log/ChangeLog,v 1.7 2015/07/07 16:01:07 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/oslo-log/ChangeLog,v 1.8 2015/07/08 20:35:33 zlogene Exp $
+
+  08 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> oslo-log-1.0.0.ebuild:
+  x86 stable wrt bug #554114
 
   07 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> oslo-log-1.0.0.ebuild:
   amd64 stable wrt bug #554114

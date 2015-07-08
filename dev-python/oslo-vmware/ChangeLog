@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/oslo-vmware
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/oslo-vmware/ChangeLog,v 1.7 2015/07/07 16:04:28 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/oslo-vmware/ChangeLog,v 1.8 2015/07/08 20:38:04 zlogene Exp $
+
+  08 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> oslo-vmware-0.11.1.ebuild:
+  x86 stable wrt bug #554114
 
   07 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> oslo-vmware-0.11.1.ebuild:
   amd64 stable wrt bug #554114

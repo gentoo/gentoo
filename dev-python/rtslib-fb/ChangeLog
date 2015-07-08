@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/rtslib-fb
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/rtslib-fb/ChangeLog,v 1.4 2015/07/07 16:43:06 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/rtslib-fb/ChangeLog,v 1.5 2015/07/08 20:57:40 zlogene Exp $
+
+  08 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> rtslib-fb-2.1.47.ebuild:
+  x86 stable wrt bug #554114
 
   07 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> rtslib-fb-2.1.47.ebuild:
   amd64 stable wrt bug #554114

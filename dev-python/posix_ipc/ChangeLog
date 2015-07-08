@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/posix_ipc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/posix_ipc/ChangeLog,v 1.5 2015/07/07 15:57:35 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/posix_ipc/ChangeLog,v 1.6 2015/07/08 20:33:26 zlogene Exp $
+
+  08 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> posix_ipc-0.9.8.ebuild:
+  x86 stable wrt bug #554114
 
   07 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> posix_ipc-0.9.8.ebuild:
   amd64 stable wrt bug #554114

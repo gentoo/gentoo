@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/taskflow
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/taskflow/ChangeLog,v 1.10 2015/07/07 16:40:21 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/taskflow/ChangeLog,v 1.11 2015/07/08 20:54:10 zlogene Exp $
+
+  08 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> taskflow-0.7.1.ebuild:
+  x86 stable wrt bug #554114
 
   07 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> taskflow-0.7.1.ebuild:
   amd64 stable wrt bug #554114

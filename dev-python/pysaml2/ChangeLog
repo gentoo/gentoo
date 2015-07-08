@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/pysaml2
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pysaml2/ChangeLog,v 1.5 2015/07/07 16:41:53 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pysaml2/ChangeLog,v 1.6 2015/07/08 20:56:29 zlogene Exp $
+
+  08 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> pysaml2-2.1.0.ebuild:
+  x86 stable wrt bug #554114
 
   07 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> pysaml2-2.1.0.ebuild:
   amd64 stable wrt bug #554114

@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/oslotest
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/oslotest/ChangeLog,v 1.20 2015/07/07 16:11:39 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/oslotest/ChangeLog,v 1.21 2015/07/08 20:39:17 zlogene Exp $
+
+  08 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> oslotest-1.5.1.ebuild:
+  x86 stable wrt bug #554114
 
   07 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> oslotest-1.5.0.ebuild,
   oslotest-1.5.1.ebuild:
