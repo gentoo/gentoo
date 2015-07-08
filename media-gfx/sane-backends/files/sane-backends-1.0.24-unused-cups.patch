@@ -1,3 +1,20 @@
+taken from upstream
+
+From efb04936b8ad3bf313c289a522ae5832e22c1b7e Mon Sep 17 00:00:00 2001
+From: Paul Newall <quandry@ntlworld.com>
+Date: Tue, 15 Oct 2013 22:20:15 +0100
+Subject: [PATCH] detection of cups commented out in configure.in it is no
+ longer used by kodakaio.
+
+---
+ ChangeLog    |  4 ++++
+ configure.in | 24 ++++++++++++------------
+ 2 files changed, 16 insertions(+), 12 deletions(-)
+
+2013-10-15 Paul Newall <quandry@ntlworld.com>
+	* configue.in: detection of cups was commented out. Avahi is now used
+	for autodetection in kodakaio so the detection of cups is no longer required.
+
 diff --git a/configure.in b/configure.in
 index e13888c..4365868 100644
 --- a/configure.in
@@ -40,3 +57,6 @@ index e13888c..4365868 100644
  echo "-> The following backends will be built:"
  for backend in ${BACKENDS} ; do
    echo $ECHO_N "${backend} " 
+-- 
+2.4.4
+

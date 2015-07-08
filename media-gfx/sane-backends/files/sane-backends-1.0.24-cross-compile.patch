@@ -1,7 +1,20 @@
-https://alioth.debian.org/tracker/index.php?func=detail&aid=315060&group_id=30186&atid=410366
+sent upstream:
+https://lists.alioth.debian.org/pipermail/sane-devel/2015-July/033600.html
 
-do not hardcode /usr/local paths that break cross-compiles
+From c8df148e2b9784be1827e33224baa1cb5066a383 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@chromium.org>
+Date: Wed, 8 Jul 2015 06:31:12 -0400
+Subject: [PATCH] fix cross-compiling paths
 
+There's no reason to hardcode -I paths to /usr/local.  Doing so breaks
+cross-compiling when incompatible headers live in there or the toolchain
+is set up to throw errors with those flags.
+---
+ configure.in | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/configure.in b/configure.in
+index 48953d2..059058b 100644
 --- a/configure.in
 +++ b/configure.in
 @@ -82,7 +82,6 @@ AM_CONDITIONAL(CROSS_COMPILING, test x$cross_compiling = xyes)
@@ -12,3 +25,6 @@ do not hardcode /usr/local paths that break cross-compiles
  AC_SUBST(INCLUDES)
  SANE_SET_CFLAGS([$is_release])
  SANE_SET_LDFLAGS
+-- 
+2.4.4
+

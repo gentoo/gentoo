@@ -1,3 +1,21 @@
+taken from upstream
+
+From 37523b867d411c2f82d08128246be7e38bc9812c Mon Sep 17 00:00:00 2001
+From: Paul Newall <quandry@ntlworld.com>
+Date: Mon, 14 Oct 2013 22:22:53 +0100
+Subject: [PATCH] Bugfix in kodakaio.c to fix segfault when non kodak scanners
+ return unexpected data via avahi auto discovery
+
+---
+ ChangeLog                      |  4 ++++
+ backend/kodakaio.c             | 43 +++++++++++++++++++++++++++++++-----------
+ doc/descriptions/kodakaio.desc |  2 +-
+ 3 files changed, 37 insertions(+), 12 deletions(-)
+
+2013-10-14 Paul Newall <quandry@ntlworld.com>
+	* backend/kodakaio.c: fix bug #314301, 
+	Segfault when unexpected data returned by avahi auto discovery.
+
 diff --git a/backend/kodakaio.c b/backend/kodakaio.c
 index 8c4583a..b442e50 100644
 --- a/backend/kodakaio.c
@@ -82,3 +100,6 @@ index 7882513..5fb18ed 100644
  :manpage "sane-kodakaio"
  :comment "Backend for Kodak AiO ESP and Hero printers. Also possibly Advent AWL10"
  :devicetype :scanner
+-- 
+2.4.4
+

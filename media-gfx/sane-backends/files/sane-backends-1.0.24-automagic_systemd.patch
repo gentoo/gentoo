@@ -1,8 +1,21 @@
+sent upstream:
+https://lists.alioth.debian.org/pipermail/sane-devel/2015-July/033601.html
+
+From 867c8fcde5cf54afae7f9ae8f855605b891708a7 Mon Sep 17 00:00:00 2001
+From: Christopher Brannon <teiresias@gentoo.org>
+Date: Wed, 8 Jul 2015 06:37:14 -0400
+Subject: [PATCH] add a configure flag to control systemd support
+
+This way people can easily disable systemd support locally.
+---
+ configure.in | 29 ++++++++++++++++++-----------
+ 1 file changed, 18 insertions(+), 11 deletions(-)
+
 diff --git a/configure.in b/configure.in
-index 4365868..7413646 100644
+index 059058b..b539cda 100644
 --- a/configure.in
 +++ b/configure.in
-@@ -344,17 +344,24 @@ dnl 	$as_echo "in order to autodetect network scanners in kodakaio."
+@@ -343,17 +343,24 @@ dnl 	$as_echo "in order to autodetect network scanners in kodakaio."
  dnl 	with_cups="no"
  dnl fi
  
@@ -38,3 +51,6 @@ index 4365868..7413646 100644
  fi
  
  dnl ***********
+-- 
+2.4.4
+

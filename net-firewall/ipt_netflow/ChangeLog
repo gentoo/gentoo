@@ -1,6 +1,11 @@
 # ChangeLog for net-firewall/ipt_netflow
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/ipt_netflow/ChangeLog,v 1.25 2015/05/18 15:39:22 pinkbyte Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/ipt_netflow/ChangeLog,v 1.26 2015/07/08 10:35:54 pinkbyte Exp $
+
+  08 Jul 2015; Sergey Popov <pinkbyte@gentoo.org> ipt_netflow-2.1.ebuild,
+  +files/ipt_netflow-2.1-linux-3.19.patch:
+  Fix building with kernel 3.19, wrt bug #552476. Thanks to Tomasz Chilinski
+  <tomasz.chilinski AT chilan.com> for discovering this issue
 
   18 May 2015; Sergey Popov <pinkbyte@gentoo.org> -ipt_netflow-2.0.1.ebuild,
   -ipt_netflow-2.0.1_p20150109.ebuild, -files/ipt_netflow-2.0-pax-const.patch:

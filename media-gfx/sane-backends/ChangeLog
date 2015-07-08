@@ -1,6 +1,20 @@
 # ChangeLog for media-gfx/sane-backends
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/sane-backends/ChangeLog,v 1.272 2015/05/15 09:25:04 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/sane-backends/ChangeLog,v 1.274 2015/07/08 10:47:04 vapier Exp $
+
+*sane-backends-1.0.25_pre20150628 (08 Jul 2015)
+
+  08 Jul 2015; Mike Frysinger <vapier@gentoo.org>
+  +sane-backends-1.0.25_pre20150628.ebuild:
+  Add a git snapshot #545130 by hfk22.
+
+  08 Jul 2015; Mike Frysinger <vapier@gentoo.org>
+  files/sane-backends-1.0.24-automagic_systemd.patch,
+  files/sane-backends-1.0.24-cross-compile.patch,
+  files/sane-backends-1.0.24-kodakaio_avahi.patch,
+  files/sane-backends-1.0.24-systemd_pkgconfig.patch,
+  files/sane-backends-1.0.24-unused-cups.patch:
+  Document provenance of the various patches we use.
 
   15 May 2015; Mike Frysinger <vapier@gentoo.org>
   files/sane-backends-1.0.24-cross-compile.patch:

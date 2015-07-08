@@ -1,8 +1,22 @@
+sent upstream:
+https://lists.alioth.debian.org/pipermail/sane-devel/2015-July/033602.html
+
+From 1dcfb42608a27fbdebdaa721b4e48354850a7dcc Mon Sep 17 00:00:00 2001
+From: Christopher Brannon <teiresias@gentoo.org>
+Date: Wed, 8 Jul 2015 06:38:50 -0400
+Subject: [PATCH] use pkg-config to look up systemd paths
+
+Since systemd has always shipped pkg-config files, we should use them.
+This also fixes cross-compiling by not relying on hardcoded host paths.
+---
+ configure.in | 25 +++++++++++--------------
+ 1 file changed, 11 insertions(+), 14 deletions(-)
+
 diff --git a/configure.in b/configure.in
-index 7413646..66828fc 100644
+index b539cda..5e703a8 100644
 --- a/configure.in
 +++ b/configure.in
-@@ -347,21 +347,18 @@ dnl fi
+@@ -346,21 +346,18 @@ dnl fi
  AC_ARG_WITH(systemd,
  	AC_HELP_STRING([--with-systemd], [enable systemd support @<:@default=yes@:>@]))
  if test "x$with_systemd" != xno ; then
@@ -35,3 +49,6 @@ index 7413646..66828fc 100644
  fi
  
  dnl ***********
+-- 
+2.4.4
+
