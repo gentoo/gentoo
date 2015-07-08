@@ -1,6 +1,14 @@
 # ChangeLog for sys-power/powertop
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/powertop/ChangeLog,v 1.110 2015/03/02 22:25:47 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-power/powertop/ChangeLog,v 1.111 2015/07/08 11:53:58 vapier Exp $
+
+*powertop-2.7-r2 (08 Jul 2015)
+
+  08 Jul 2015; Mike Frysinger <vapier@gentoo.org>
+  +files/powertop-2.7-braswell.patch, +files/powertop-2.7-broadwell.patch,
+  +files/powertop-2.7-skylake-2.patch, +files/powertop-2.7-skylake.patch,
+  +powertop-2.7-r2.ebuild:
+  Add Intel Braswell/Broadwell/Skylake support from upstream.
 
   02 Mar 2015; Mike Frysinger <vapier@gentoo.org> powertop-2.7-r1.ebuild:
   Add USE=nls support #505366 by René Rhéaume.

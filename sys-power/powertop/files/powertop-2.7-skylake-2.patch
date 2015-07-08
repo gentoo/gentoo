@@ -1,0 +1,37 @@
+From a7ddbd00f84253da38acc393e38f1c4db4263864 Mon Sep 17 00:00:00 2001
+From: Alexandra Yates <alexandra.yates@linux.intel.com>
+Date: Thu, 16 Apr 2015 14:36:29 -0700
+Subject: [PATCH] Add C7- C10 support for Intel SKY
+
+Add C7 to C10 support for Intel SKY for CPU idle.
+
+Signed-off-by: Alexandra Yates <alexandra.yates@linux.intel.com>
+---
+ src/cpu/intel_cpus.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/cpu/intel_cpus.cpp b/src/cpu/intel_cpus.cpp
+index 72ecd50..d96cb49 100644
+--- a/src/cpu/intel_cpus.cpp
++++ b/src/cpu/intel_cpus.cpp
+@@ -63,7 +63,7 @@ static int intel_cpu_models[] = {
+ 	0x4C,	/* BSW */
+ 	0x4D,	/* AVN */
+ 	0x4F,	/* BDX */
+-	0x4E,	/* Intel Next Generation */
++	0x4E,	/* SKY */
+ 	0x56,	/* BDX-DE */
+ 	0	/* last entry must be zero */
+ };
+@@ -318,7 +318,7 @@ nhm_package::nhm_package(int model)
+ 		has_c3_res = 1;
+ 
+ 	/* Haswell-ULT has C8/9/10*/
+-	if (model == 0x45 || model ==0x3D)
++	if (model == 0x45 || model == 0x3D || model == 0x4E)
+ 		has_c8c9c10_res = 1;
+ }
+ 
+-- 
+2.4.4
+

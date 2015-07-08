@@ -1,0 +1,28 @@
+From 60258e6149a420b45521201e02f39cf41839e081 Mon Sep 17 00:00:00 2001
+From: Alexandra Yates <alexandra.yates@linux.intel.com>
+Date: Wed, 22 Oct 2014 06:57:10 -0700
+Subject: [PATCH] Enable PowerTOP support for: BSW, BDW-H
+
+Added PowerTOP support for BSW and BDW-H platforms.
+
+Signed-off-by: Alexandra Yates <alexandra.yates@linux.intel.com>
+---
+ src/cpu/intel_cpus.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/cpu/intel_cpus.cpp b/src/cpu/intel_cpus.cpp
+index 167f1a7..d307aa1 100644
+--- a/src/cpu/intel_cpus.cpp
++++ b/src/cpu/intel_cpus.cpp
+@@ -59,6 +59,8 @@ static int intel_cpu_models[] = {
+ 	0x3D,	/* Intel Next Generation */
+ 	0x3F,	/* HSX */
+ 	0x46,	/* HSW */
++	0x47,	/* BDW-H */
++	0x4C,	/* BSW */
+ 	0x4D,	/* AVN */
+ 	0x4F,	/* BDX */
+ 	0x56,	/* BDX-DE */
+-- 
+2.4.4
+

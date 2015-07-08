@@ -7486,10 +7486,14 @@ www-apps/horde-passwd:clearpasswd - Enables cleartext password storage in the vp
 www-apps/ikiwiki:extras - Installs additional modules used by ikiwiki plugins
 www-apps/nikola:assets - Support web asset management through dev-python/assets
 www-apps/nikola:charts - Support chart generation through dev-python/pygal
+www-apps/nikola:ghpages - Add support for direct uploading to github pages thru dev-python/ghp-import
 www-apps/nikola:hyphenation - Add hyphenation support through dev-python/pyphen
 www-apps/nikola:ipython - Add IPython notebook compilation and LESS support
 www-apps/nikola:jinja - Add support for dev-python/jinja as alternative templating engine to Mako
 www-apps/nikola:markdown - Add support for Markdown as alternative markup language to reStructuredText
+www-apps/nikola:watchdog - Use dev-python/watchdog to monitor file system events
+www-apps/nikola:webmedia - Use dev-python/micawber to extract metadata from web media links
+www-apps/nikola:websocket - Add websocket support thru dev-python/ws4py
 www-apps/novnc:nova - Installs Openstack Nova for it's libraries
 www-apps/otrs:mod_perl - Provide all dependencies for use of mod_perl instead of cgi
 www-apps/postfixadmin:vacation - Install vacation.pl script and dependencies

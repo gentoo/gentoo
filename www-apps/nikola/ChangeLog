@@ -1,6 +1,12 @@
 # ChangeLog for www-apps/nikola
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/nikola/ChangeLog,v 1.28 2015/06/17 04:47:02 yngwin Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/nikola/ChangeLog,v 1.29 2015/07/08 12:21:43 yngwin Exp $
+
+*nikola-7.6.0 (08 Jul 2015)
+
+  08 Jul 2015; Ben de Groot <yngwin@gentoo.org> +nikola-7.6.0.ebuild,
+  metadata.xml:
+  Version bump. Fix licensing issues (bug #552372).
 
 *nikola-7.5.1 (17 Jun 2015)
 
