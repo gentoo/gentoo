@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/consul/consul-9999.ebuild,v 1.4 2015/06/09 07:00:48 zmedico Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/consul/consul-9999.ebuild,v 1.5 2015/07/08 17:18:10 williamh Exp $
 
 EAPI=5
 
@@ -15,8 +15,8 @@ LICENSE="MPL-2.0"
 SLOT="0"
 IUSE="test web"
 
-DEPEND=">=dev-lang/go-1.4
-	dev-go/go-crypto
+DEPEND=">=dev-lang/go-1.4:=
+	dev-go/go-crypto:=
 	test? ( dev-go/go-tools )
 	web? (
 		dev-ruby/sass

@@ -1,6 +1,13 @@
 # ChangeLog for dev-util/qbs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/qbs/ChangeLog,v 1.17 2015/05/04 14:02:12 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/qbs/ChangeLog,v 1.18 2015/07/08 16:34:54 pesa Exp $
+
+*qbs-1.4.1 (08 Jul 2015)
+
+  08 Jul 2015; Davide Pesavento <pesa@gentoo.org> +qbs-1.4.1.ebuild,
+  -files/1.4.0-fix-plugins-destdir.patch,
+  -files/1.4.0-install-missing-header.patch, -qbs-1.4.0-r1.ebuild:
+  Version bump.
 
 *qbs-1.4.0-r1 (04 May 2015)
 

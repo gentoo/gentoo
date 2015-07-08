@@ -1,6 +1,12 @@
 # ChangeLog for app-admin/consul
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/consul/ChangeLog,v 1.5 2015/06/29 20:23:21 ultrabug Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/consul/ChangeLog,v 1.6 2015/07/08 17:18:10 williamh Exp $
+
+*consul-0.5.2-r1 (08 Jul 2015)
+
+  08 Jul 2015; William Hubbs <williamh@gentoo.org> +consul-0.5.2-r1.ebuild,
+  consul-9999.ebuild:
+  add slot dependencies on go and go-crypto
 
   29 Jun 2015; Ultrabug <ultrabug@gentoo.org> metadata.xml:
   add myself as maintainer

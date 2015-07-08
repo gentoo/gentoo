@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install prepare setup unpack
-DEPEND=>=dev-lang/go-1.4 dev-go/go-crypto test? ( dev-go/go-tools ) web? ( dev-ruby/sass dev-ruby/uglifier ) >=dev-vcs/git-1.8.2.1 virtual/pkgconfig
+DEPEND=>=dev-lang/go-1.4:= dev-go/go-crypto:= test? ( dev-go/go-tools ) web? ( dev-ruby/sass dev-ruby/uglifier ) >=dev-vcs/git-1.8.2.1 virtual/pkgconfig
 DESCRIPTION=A tool for service discovery, monitoring and configuration
 EAPI=5
 HOMEPAGE=http://www.consul.io
@@ -7,4 +7,4 @@ IUSE=test web
 LICENSE=MPL-2.0
 SLOT=0
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	git-r3	ab80045e5d080584334f33013f4df21d	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
-_md5_=4d0096ffa0642d6f01af0d2f34e59726
+_md5_=f0e0f2093a50f0d0aa094117a15a90c2

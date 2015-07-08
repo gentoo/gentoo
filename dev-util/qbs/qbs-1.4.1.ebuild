@@ -1,14 +1,16 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/qbs/qbs-1.4.0-r1.ebuild,v 1.1 2015/05/04 14:02:12 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/qbs/qbs-1.4.1.ebuild,v 1.1 2015/07/08 16:34:54 pesa Exp $
 
 EAPI=5
 
-inherit eutils multilib pax-utils qmake-utils
+inherit multilib pax-utils qmake-utils
+
+MY_P=${PN}-src-${PV}
 
 DESCRIPTION="Qt Build Suite"
 HOMEPAGE="http://wiki.qt.io/Qbs"
-SRC_URI="http://download.qt.io/official_releases/${PN}/${PV}/${P}.src.tar.gz"
+SRC_URI="http://download.qt.io/official_releases/${PN}/${PV}/${MY_P}.tar.gz"
 
 LICENSE="|| ( LGPL-2.1 LGPL-3 )"
 SLOT="0"
@@ -33,10 +35,9 @@ DEPEND="${RDEPEND}
 	)
 "
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PV}-fix-plugins-destdir.patch
-	epatch "${FILESDIR}"/${PV}-install-missing-header.patch
+S=${WORKDIR}/${MY_P}
 
+src_prepare() {
 	# disable tests that require nodejs (bug 527652)
 	sed -i -e 's/!haveNodeJs()/true/' \
 		tests/auto/blackbox/tst_blackbox.cpp || die
