@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=>=dev-lang/go-1.2:=
+DESCRIPTION=A simple certificate manager written in Go. Easy to use with limited capability
+EAPI=5
+HOMEPAGE=https://github.com/coreos/etcd-ca
+IUSE=doc
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+SLOT=0
+SRC_URI=https://github.com/coreos/etcd-ca/archive/31fef42f75294cf8bf1e7facf82648de0c2d87a3.tar.gz -> etcd-ca-0_p20150423.tar.gz
+_md5_=5a4964389bf6820f5bf6d9cc705c14e7
