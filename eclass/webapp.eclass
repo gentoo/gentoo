@@ -1,6 +1,6 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/webapp.eclass,v 1.74 2015/07/02 14:02:34 twitch153 Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/webapp.eclass,v 1.75 2015/07/08 09:33:47 voyageur Exp $
 
 # @ECLASS: webapp.eclass
 # @MAINTAINER:
@@ -244,7 +244,6 @@ _webapp_serverowned() {
 	local my_file="$(webapp_strip_appdir "${1}")"
 	my_file="$(webapp_strip_cwd "${my_file}")"
 
-	elog "(server owned) ${my_file}"
 	echo "${my_file}" >> "${D}/${WA_SOLIST}"
 }
 
@@ -413,7 +412,9 @@ webapp_pkg_setup() {
 		ewarn "This ebuild may be overwriting important files."
 		ewarn
 		echo
-		ebeep 10
+		if has "${EAPI:-0}" 0 1 2; then
+			ebeep 10
+		fi
 	elif [[ "$(echo ${my_output} | awk '{ print $1 }')" != "${PN}" ]]; then
 		echo
 		eerror "You already have ${my_output} installed in ${my_dir}"

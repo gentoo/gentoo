@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=virtual/httpd-php >=app-admin/webapp-config-1.50.15
 SLOT=3.3.9-r1
 SRC_URI=mirror://sourceforge/sitebar/SiteBar-3.3.9.tar.bz2
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	webapp	b3bc3e4682aadd1dd3eb9f49cb3c751c
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	webapp	094698bf1c7a5b1acd3184e94f484017
 _md5_=16b03aa5bb6487abf9b8fa3a01c6579e

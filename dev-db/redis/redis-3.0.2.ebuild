@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/redis/redis-3.0.0.ebuild,v 1.2 2015/05/05 09:01:19 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/redis/redis-3.0.2.ebuild,v 1.1 2015/07/08 09:56:44 ultrabug Exp $
 
 EAPI=5
 
@@ -34,7 +34,7 @@ pkg_setup() {
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.8.3-shared.patch
 	epatch "${FILESDIR}"/${PN}-2.8.17-config.patch
-	epatch "${FILESDIR}"/${P}-sharedlua.patch
+	epatch "${FILESDIR}"/${PN}-3.0.0-sharedlua.patch
 
 	# Copy lua modules into build dir
 	cp "${S}"/deps/lua/src/{fpconv,lua_bit,lua_cjson,lua_cmsgpack,lua_struct,strbuf}.c "${S}"/src || die
@@ -97,7 +97,7 @@ src_install() {
 	newconfd "${FILESDIR}/redis.confd" redis
 	newinitd "${FILESDIR}/redis.initd-4" redis
 
-	systemd_dounit "${FILESDIR}/redis.service"
+	systemd_dounit "${FILESDIR}/redis.service-2"
 	systemd_newtmpfilesd "${FILESDIR}/redis.tmpfiles" redis.conf
 
 	nonfatal dodoc 00-RELEASENOTES BUGS CONTRIBUTING MANIFESTO README

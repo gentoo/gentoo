@@ -10,5 +10,5 @@ RDEPEND=jpgraph? ( dev-php/jpgraph ) dev-php/pear dev-php/PEAR-Auth_SASL virtual
 REQUIRED_USE=|| ( mysql postgres )
 SLOT=1.8.004.20120613
 SRC_URI=mirror://sourceforge/egroupware/eGroupware-1.8.004.20120613.tar.bz2 mirror://sourceforge/egroupware/eGroupware-egw-pear-1.8.004.20120613.tar.bz2 gallery? ( mirror://sourceforge/egroupware/eGroupware-gallery-1.8.004.20120613.tar.bz2 )
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	webapp	b3bc3e4682aadd1dd3eb9f49cb3c751c
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	webapp	094698bf1c7a5b1acd3184e94f484017
 _md5_=eb8cc8feb80847e0db593b7d11825842

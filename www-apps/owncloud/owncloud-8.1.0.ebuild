@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/owncloud/owncloud-6.0.7.ebuild,v 1.2 2015/06/18 12:17:08 voyageur Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/owncloud/owncloud-8.1.0.ebuild,v 1.1 2015/07/08 09:34:16 voyageur Exp $
 
 EAPI=5
 
@@ -16,7 +16,7 @@ IUSE="+curl mysql postgres +sqlite"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
 DEPEND=""
-RDEPEND="dev-lang/php[curl?,filter,gd,hash,json,mysql?,pdo,postgres?,simplexml,sqlite?,xmlwriter,zip]
+RDEPEND="dev-lang/php[curl?,filter,gd,hash,json,mysql?,pdo,postgres?,session,simplexml,sqlite?,xmlwriter,zip]
 	virtual/httpd-php"
 
 S=${WORKDIR}/${PN}
@@ -42,4 +42,11 @@ src_install() {
 	webapp_configfile "${MY_HTDOCSDIR}"/.htaccess
 
 	webapp_src_install
+}
+
+pkg_postinst() {
+	elog "Additional applications (calendar, ...) are no longer provided by default."
+	elog "You can install them after login via the applications management page"
+	elog "(check the recommended tab). No application data is lost."
+	webapp_pkg_postinst
 }

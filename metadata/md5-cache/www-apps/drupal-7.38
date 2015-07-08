@@ -10,5 +10,5 @@ RDEPEND=dev-lang/php[gd,hash,pdo,postgres?,simplexml,xml] virtual/httpd-php acce
 REQUIRED_USE=|| ( mysql postgres sqlite )
 SLOT=7.38
 SRC_URI=http://drupal.org/files/projects/drupal-7.38.tar.gz
-_eclasses_=webapp	b3bc3e4682aadd1dd3eb9f49cb3c751c
+_eclasses_=webapp	094698bf1c7a5b1acd3184e94f484017
 _md5_=d731f3e62232c8dbc1a290ef275004a0

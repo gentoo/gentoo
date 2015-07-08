@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-lang/php[gd,hash,iconv,mysql,session,unicode,xml,zlib] || ( <dev-lang/php-5.3[pcre] >=dev-lang/php-5.3 ) >=app-admin/webapp-config-1.50.15
 SLOT=3.5.3-r1
 SRC_URI=http://www.ampache.org/downloads/ampache-3.5.3.tar.gz
-_eclasses_=webapp	b3bc3e4682aadd1dd3eb9f49cb3c751c
+_eclasses_=webapp	094698bf1c7a5b1acd3184e94f484017
 _md5_=b09fc8c01b6cbabad6a91eb76d175cd9

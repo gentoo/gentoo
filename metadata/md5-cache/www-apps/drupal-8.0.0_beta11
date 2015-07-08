@@ -10,5 +10,5 @@ RDEPEND=dev-lang/php[gd,hash,pdo,postgres?,simplexml,xml] virtual/httpd-php acce
 REQUIRED_USE=|| ( mysql postgres sqlite )
 SLOT=8.0.0_beta11
 SRC_URI=http://drupal.org/files/projects/drupal-8.0.0-beta11.tar.gz
-_eclasses_=webapp	b3bc3e4682aadd1dd3eb9f49cb3c751c
+_eclasses_=webapp	094698bf1c7a5b1acd3184e94f484017
 _md5_=6b0c3f92c465554d4b1cc7d90d279543

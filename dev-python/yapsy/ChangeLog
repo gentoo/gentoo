@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/yapsy
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/yapsy/ChangeLog,v 1.18 2015/06/09 17:25:01 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/yapsy/ChangeLog,v 1.19 2015/07/08 10:25:58 yngwin Exp $
+
+*yapsy-1.11.223 (08 Jul 2015)
+
+  08 Jul 2015; Ben de Groot <yngwin@gentoo.org> +yapsy-1.11.223.ebuild:
+  version bump needed for www-apps/nikola-7.6.0
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

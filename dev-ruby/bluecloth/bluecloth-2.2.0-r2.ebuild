@@ -1,11 +1,10 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/bluecloth/bluecloth-2.2.0-r2.ebuild,v 1.6 2015/04/04 10:35:52 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/bluecloth/bluecloth-2.2.0-r2.ebuild,v 1.7 2015/07/08 10:08:28 graaff Exp $
 
 EAPI=5
 
-# ruby22 -> Code uses obsolete Config module.
-USE_RUBY="ruby19 ruby20 ruby21"
+USE_RUBY="ruby19 ruby20 ruby21 ruby22"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="History.rdoc README.rdoc"
@@ -33,8 +32,9 @@ ruby_add_bdepend "
 	)"
 
 all_ruby_prepare() {
-	# for Ruby 1.9.2 compatibility
-	sed -i -e '1i $: << "."' Rakefile || die
+	# for Ruby 1.9.2 and 2.2.x compatibility
+	sed -i -e '1i $: << "."' \
+		-e 's/Config/RbConfig/' Rakefile || die
 }
 
 all_ruby_compile() {
