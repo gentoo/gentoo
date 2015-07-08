@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile config configure install postinst preinst prepare setup unpack
+DEPEND=|| ( dev-db/postgresql:9.5[server] dev-db/postgresql:9.4[server] dev-db/postgresql:9.3[server] dev-db/postgresql:9.2[server] dev-db/postgresql:9.1[server] dev-db/postgresql:9.0[server] ) dev-libs/json-c dev-libs/libxml2:2 >=sci-libs/geos-3.4.2 >=sci-libs/proj-4.6.0 >=sci-libs/gdal-1.10.0 gtk? ( x11-libs/gtk+:2 ) doc? ( app-text/docbook-xsl-stylesheets app-text/docbook-xml-dtd:4.5 dev-libs/libxslt || ( media-gfx/imagemagick[png] media-gfx/graphicsmagick[imagemagick,png] ) ) virtual/pkgconfig test? ( dev-util/cunit ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
+DESCRIPTION=Geographic Objects for PostgreSQL
+EAPI=5
+HOMEPAGE=http://postgis.net
+IUSE=doc gtk static-libs test
+LICENSE=GPL-2
+RDEPEND=|| ( dev-db/postgresql:9.5[server] dev-db/postgresql:9.4[server] dev-db/postgresql:9.3[server] dev-db/postgresql:9.2[server] dev-db/postgresql:9.1[server] dev-db/postgresql:9.0[server] ) dev-libs/json-c dev-libs/libxml2:2 >=sci-libs/geos-3.4.2 >=sci-libs/proj-4.6.0 >=sci-libs/gdal-1.10.0 gtk? ( x11-libs/gtk+:2 )
+REQUIRED_USE=test? ( doc )
+RESTRICT=test
+SLOT=0
+_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	subversion	c12bdf4fcc82f86ad89b14c8f76c4026	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=d638bd9417d7c51ed170235499e2df65

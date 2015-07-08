@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/activerecord
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/activerecord/ChangeLog,v 1.299 2015/07/07 07:23:39 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/activerecord/ChangeLog,v 1.300 2015/07/08 07:17:50 graaff Exp $
+
+  08 Jul 2015; Hans de Graaff <graaff@gentoo.org> activerecord-4.1.12.ebuild:
+  Add ~x86 keyword.
 
   07 Jul 2015; Hans de Graaff <graaff@gentoo.org> -activerecord-3.2.21.ebuild,
   -activerecord-4.1.10.ebuild, -activerecord-4.2.1.ebuild:

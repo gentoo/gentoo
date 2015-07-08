@@ -1,6 +1,11 @@
 # ChangeLog for dev-ruby/ffaker
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ffaker/ChangeLog,v 1.13 2015/06/07 17:48:05 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ffaker/ChangeLog,v 1.14 2015/07/08 06:15:55 graaff Exp $
+
+*ffaker-2.1.0 (08 Jul 2015)
+
+  08 Jul 2015; Hans de Graaff <graaff@gentoo.org> +ffaker-2.1.0.ebuild:
+  Version bump.
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

@@ -1,6 +1,27 @@
 # ChangeLog for dev-db/postgis
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/postgis/ChangeLog,v 1.102 2015/04/07 05:59:56 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/postgis/ChangeLog,v 1.107 2015/07/08 08:33:14 patrick Exp $
+
+*postgis-2.1.8 (08 Jul 2015)
+
+  08 Jul 2015; Patrick Lauer <patrick@gentoo.org> +postgis-2.1.8.ebuild:
+  Bump
+
+  08 Jul 2015; Patrick Lauer <patrick@gentoo.org> postgis-9999.ebuild:
+  No keywords for live ebuild
+
+*postgis-9999 (08 Jul 2015)
+
+  08 Jul 2015; Patrick Lauer <patrick@gentoo.org> +postgis-9999.ebuild:
+  Add live ebuild #553806
+
+  08 Jul 2015; Patrick Lauer <patrick@gentoo.org> postgis-2.1.7.ebuild:
+  Remove postgres-9.5 from valid slots, recent changes upstream have broken
+  compatibility #553806
+
+  08 Jul 2015; Patrick Lauer <patrick@gentoo.org> postgis-2.1.6.ebuild,
+  postgis-2.1.7.ebuild:
+  Remove pkg_pretend that fails on intial install if pg isn't installed yet
 
 *postgis-2.1.7 (07 Apr 2015)
 

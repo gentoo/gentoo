@@ -4,11 +4,11 @@ DESCRIPTION=Implements the ActiveRecord pattern (Fowler, PoEAA) for ORM
 EAPI=5
 HOMEPAGE=http://rubyforge.org/projects/activerecord/
 IUSE=mysql postgres sqlite test elibc_FreeBSD ruby_targets_ruby19 ruby_targets_ruby20 ruby_targets_ruby21 test test
-KEYWORDS=~amd64 ~arm ~ppc ~ppc64
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86
 LICENSE=MIT
 RDEPEND=ruby_targets_ruby19? ( ~dev-ruby/activesupport-4.1.12[ruby_targets_ruby19] ~dev-ruby/activemodel-4.1.12[ruby_targets_ruby19] >=dev-ruby/arel-5.0.0:5.0[ruby_targets_ruby19] sqlite? ( >=dev-ruby/sqlite3-1.3.6[ruby_targets_ruby19] ) mysql? ( >=dev-ruby/mysql2-0.3.13:0.3[ruby_targets_ruby19] ) postgres? ( >=dev-ruby/pg-0.11.0[ruby_targets_ruby19] ) ) ruby_targets_ruby20? ( ~dev-ruby/activesupport-4.1.12[ruby_targets_ruby20] ~dev-ruby/activemodel-4.1.12[ruby_targets_ruby20] >=dev-ruby/arel-5.0.0:5.0[ruby_targets_ruby20] sqlite? ( >=dev-ruby/sqlite3-1.3.6[ruby_targets_ruby20] ) mysql? ( >=dev-ruby/mysql2-0.3.13:0.3[ruby_targets_ruby20] ) postgres? ( >=dev-ruby/pg-0.11.0[ruby_targets_ruby20] ) ) ruby_targets_ruby21? ( ~dev-ruby/activesupport-4.1.12[ruby_targets_ruby21] ~dev-ruby/activemodel-4.1.12[ruby_targets_ruby21] >=dev-ruby/arel-5.0.0:5.0[ruby_targets_ruby21] sqlite? ( >=dev-ruby/sqlite3-1.3.6[ruby_targets_ruby21] ) mysql? ( >=dev-ruby/mysql2-0.3.13:0.3[ruby_targets_ruby21] ) postgres? ( >=dev-ruby/pg-0.11.0[ruby_targets_ruby21] ) ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_ruby20? ( dev-lang/ruby:2.0 ) ruby_targets_ruby21? ( dev-lang/ruby:2.1 ) ruby_targets_ruby19? ( virtual/rubygems[ruby_targets_ruby19] ) ruby_targets_ruby20? ( virtual/rubygems[ruby_targets_ruby20] ) ruby_targets_ruby21? ( virtual/rubygems[ruby_targets_ruby21] )
 REQUIRED_USE=|| ( ruby_targets_ruby19 ruby_targets_ruby20 ruby_targets_ruby21 )
 SLOT=4.1
 SRC_URI=https://github.com/rails/rails/archive/v4.1.12.tar.gz -> rails-4.1.12.tgz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	java-utils-2	8cdf065211fa6d6687bdc3f3ebe12efc	multilib	62927b3db3a589b0806255f3a002d5d3	ruby-fakegem	59aa129a3b9dc9e6225a0622860d2f54	ruby-ng	a1c75617b3482d513ad41d1aea8dbf8f	ruby-utils	a74e21a353442acf697b6c82e7df6df8	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=f61468a58ee6f86ba53d44f6b75d3de1
+_md5_=fa3eb813c876be74ced829b8abdea3f2

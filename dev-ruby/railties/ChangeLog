@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/railties
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/railties/ChangeLog,v 1.111 2015/07/07 07:23:58 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/railties/ChangeLog,v 1.112 2015/07/08 07:17:40 graaff Exp $
+
+  08 Jul 2015; Hans de Graaff <graaff@gentoo.org> railties-4.1.12.ebuild:
+  Add ~x86 keyword.
 
   07 Jul 2015; Hans de Graaff <graaff@gentoo.org> -railties-3.2.21.ebuild,
   -railties-4.1.10.ebuild, -railties-4.2.1.ebuild:

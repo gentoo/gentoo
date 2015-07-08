@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/activemodel
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/activemodel/ChangeLog,v 1.110 2015/07/07 07:21:26 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/activemodel/ChangeLog,v 1.111 2015/07/08 07:17:28 graaff Exp $
+
+  08 Jul 2015; Hans de Graaff <graaff@gentoo.org> activemodel-4.1.12.ebuild:
+  Add ~x86 keyword.
 
   07 Jul 2015; Hans de Graaff <graaff@gentoo.org> -activemodel-3.2.21.ebuild,
   -activemodel-4.1.10.ebuild, -activemodel-4.2.1.ebuild:

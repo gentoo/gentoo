@@ -1,6 +1,11 @@
 # ChangeLog for dev-libs/libgcrypt
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgcrypt/ChangeLog,v 1.237 2015/06/28 19:19:39 k_f Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgcrypt/ChangeLog,v 1.238 2015/07/08 07:53:59 vapier Exp $
+
+  08 Jul 2015; Mike Frysinger <vapier@gentoo.org>
+  +files/libgcrypt-1.5.4-clang-arm.patch, libgcrypt-1.5.4-r1.ebuild,
+  libgcrypt-1.5.4-r100.ebuild, libgcrypt-1.5.4.ebuild:
+  Add fix from upstream for building for arm with clang.
 
 *libgcrypt-1.6.3-r3 (28 Jun 2015)
 

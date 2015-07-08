@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/sinatra
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/sinatra/ChangeLog,v 1.53 2015/03/30 05:26:43 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/sinatra/ChangeLog,v 1.54 2015/07/08 06:53:04 graaff Exp $
+
+  08 Jul 2015; Hans de Graaff <graaff@gentoo.org> sinatra-1.4.6.ebuild:
+  Make slot dependencies explicit.
 
 *sinatra-1.4.6 (30 Mar 2015)
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgcrypt/libgcrypt-1.5.4-r100.ebuild,v 1.1 2014/08/08 16:19:32 alonbl Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgcrypt/libgcrypt-1.5.4-r100.ebuild,v 1.2 2015/07/08 07:53:59 vapier Exp $
 
 EAPI=5
 AUTOTOOLS_AUTORECONF=1
@@ -29,6 +29,7 @@ DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.0-uscore.patch
 	"${FILESDIR}"/${PN}-multilib-syspath.patch
+	"${FILESDIR}"/${P}-clang-arm.patch
 )
 
 src_configure() {

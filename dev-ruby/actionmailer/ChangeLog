@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/actionmailer
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/actionmailer/ChangeLog,v 1.292 2015/07/07 07:23:10 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/actionmailer/ChangeLog,v 1.293 2015/07/08 07:17:44 graaff Exp $
+
+  08 Jul 2015; Hans de Graaff <graaff@gentoo.org> actionmailer-4.1.12.ebuild:
+  Add ~x86 keyword.
 
   07 Jul 2015; Hans de Graaff <graaff@gentoo.org> -actionmailer-3.2.21.ebuild,
   -actionmailer-4.1.10.ebuild, -actionmailer-4.2.1.ebuild:

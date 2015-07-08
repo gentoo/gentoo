@@ -1,6 +1,13 @@
 # ChangeLog for sys-auth/pam_blue
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/pam_blue/ChangeLog,v 1.7 2010/06/11 11:06:48 ssuominen Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/pam_blue/ChangeLog,v 1.8 2015/07/08 06:45:46 vapier Exp $
+
+*pam_blue-0.9.0-r1 (08 Jul 2015)
+
+  08 Jul 2015; Mike Frysinger <vapier@gentoo.org>
+  +files/pam_blue-0.9.0-bad-log.patch, +files/pam_blue-0.9.0-char-locales.patch,
+  +pam_blue-0.9.0-r1.ebuild:
+  Fix by Leho Kraav for username locale matching issues #412941.
 
   11 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> pam_blue-0.9.0.ebuild:
   Drop bluez-libs support wrt #301630.
@@ -35,4 +42,3 @@
   25 May 2007; Jakub Moc <jakub@gentoo.org> +pam_blue-0.9.0.ebuild,
   +metadata.xml:
   New ebuild for KingTaco. Bug 180325.
-

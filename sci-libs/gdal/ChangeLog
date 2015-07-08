@@ -1,6 +1,11 @@
 # ChangeLog for sci-libs/gdal
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/gdal/ChangeLog,v 1.167 2015/07/08 05:36:17 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/gdal/ChangeLog,v 1.168 2015/07/08 08:28:11 patrick Exp $
+
+*gdal-2.0.0 (08 Jul 2015)
+
+  08 Jul 2015; Patrick Lauer <patrick@gentoo.org> +gdal-2.0.0.ebuild:
+  Bump #552544
 
 *gdal-1.11.2 (08 Jul 2015)
 

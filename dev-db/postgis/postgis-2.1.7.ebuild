@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/postgis/postgis-2.1.7.ebuild,v 1.1 2015/04/07 05:59:56 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/postgis/postgis-2.1.7.ebuild,v 1.3 2015/07/08 06:06:34 patrick Exp $
 
 EAPI="5"
 POSTGRES_COMPAT=( 9.{0,1,2,3,4,5} )
@@ -21,7 +21,6 @@ IUSE="doc gtk static-libs test"
 
 RDEPEND="
 		|| (
-			dev-db/postgresql:9.5[server]
 			dev-db/postgresql:9.4[server]
 			dev-db/postgresql:9.3[server]
 			dev-db/postgresql:9.2[server]
@@ -83,10 +82,6 @@ postgres_check_slot() {
 	fi
 
 	return 0
-}
-
-pkg_pretend() {
-	postgres_check_slot || die
 }
 
 pkg_setup() {

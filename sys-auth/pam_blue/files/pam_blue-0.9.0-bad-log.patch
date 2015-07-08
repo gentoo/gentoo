@@ -1,0 +1,11 @@
+--- a/src/bluepmain.c
++++ b/src/bluepmain.c
+@@ -88,7 +88,7 @@
+ 
+   if ( (lst = parse_rc()) == NULL) { /* something goes wrong (no config file, ...) */
+     user = NULL;
+-    syslog (LOG_ERR, "Can't parse configuration file [%s]!" CONFIG_FILE);
++    syslog (LOG_ERR, "Can't parse configuration file [%s]!", CONFIG_FILE);
+     return PAM_AUTH_ERR;
+   }
+     
