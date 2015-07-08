@@ -1,6 +1,12 @@
 # ChangeLog for sys-apps/lmctfy
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/lmctfy/ChangeLog,v 1.7 2015/04/26 23:29:48 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/lmctfy/ChangeLog,v 1.8 2015/07/08 16:14:29 williamh Exp $
+
+*lmctfy-0.5.0-r1 (08 Jul 2015)
+
+  08 Jul 2015; William Hubbs <williamh@gentoo.org> +lmctfy-0.5.0-r1.ebuild:
+  Go is only a build time dependency, and we need a slot dep so a rebuild will
+  happen when Go is updated.
 
   26 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -lmctfy-0.1.0.ebuild:
   Remove old.
