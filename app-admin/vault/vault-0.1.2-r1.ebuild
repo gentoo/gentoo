@@ -1,16 +1,15 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/vault/vault-9999.ebuild,v 1.4 2015/07/08 19:15:20 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/vault/vault-0.1.2-r1.ebuild,v 1.1 2015/07/08 19:15:20 williamh Exp $
 
 EAPI=5
 
-inherit fcaps git-r3 systemd user
+inherit fcaps systemd user
 
-KEYWORDS=""
+KEYWORDS="~amd64"
 DESCRIPTION="A tool for managing secrets"
 HOMEPAGE="https://vaultproject.io/"
 GO_PN="github.com/hashicorp/${PN}"
-EGIT_REPO_URI="git://${GO_PN}.git"
 LICENSE="MPL-2.0"
 SLOT="0"
 IUSE=""
@@ -19,10 +18,11 @@ DEPEND=">=dev-lang/go-1.4:=
 	dev-go/go-oauth2:="
 RDEPEND=""
 
-SRC_URI=""
+SRC_URI="https://${GO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+https://github.com/mitchellh/gox/archive/v0.3.0.tar.gz -> gox-0.3.0.tar.gz
+https://github.com/mitchellh/iochan/archive/b584a329b193e206025682ae6c10cdbe03b0cd77.tar.gz -> iochan-b584a329b193e206025682ae6c10cdbe03b0cd77.tar.gz"
 STRIP_MASK="*.a"
 S="${WORKDIR}/src/${GO_PN}"
-EGIT_CHECKOUT_DIR="${S}"
 
 FILECAPS=(
 	-m 755 'cap_ipc_lock=+ei' usr/bin/${PN}
@@ -36,7 +36,9 @@ pkg_setup() {
 src_unpack() {
 	local x
 
-	git-r3_src_unpack
+	default
+	mkdir -p src/${GO_PN%/*} || die
+	mv ${P} src/${GO_PN} || die
 
 	# Create a writable GOROOT in order to avoid sandbox violations.
 	export GOROOT="${WORKDIR}/goroot"
@@ -49,21 +51,23 @@ src_unpack() {
 		rm -rf "${GOROOT}/src/${x}" "${GOROOT}/pkg/${KERNEL}_${ARCH}/${x}"{,.a} || die
 	done < <(find "${WORKDIR}/src/github.com/hashicorp/vault/Godeps/_workspace/src" -maxdepth 3 -mindepth 3 -type d -print0)
 
-	rm -rf "${WORKDIR}/src/github.com/hashicorp/vault/Godeps/_workspace/src/github.com/awslabs"
-	go get -d -v -x github.com/awslabs/aws-sdk-go || die
+	mkdir -p "${GOROOT}/src/github.com/mitchellh" || die
+	rm -rf "${GOROOT}/src/github.com/mitchellh/gox" || die
+	mv gox-0.3.0 "${GOROOT}/src/github.com/mitchellh/gox" || die
+	rm -rf "${GOROOT}/src/github.com/mitchellh/iochan" || die
+	mv iochan-* "${GOROOT}/src/github.com/mitchellh/iochan" || die
+}
 
-	if ! type -P gox >/dev/null; then
-		pushd "${S}" >/dev/null || die
-		go get -d -v -x github.com/mitchellh/gox || die
-	fi
+src_prepare() {
+	# Avoid the need to have a git checkout
+	sed -e 's:^GIT.*::' \
+		-e 's:-ldflags.*:\\:' \
+		-i scripts/build.sh || die
 }
 
 src_compile() {
-	go install -v -x github.com/awslabs/aws-sdk-go || die
-	if ! type -P gox >/dev/null; then
-		go install -v -x github.com/mitchellh/gox || die
-	fi
-	PATH=${WORKDIR}/bin:${GOROOT}/bin:${PATH} emake dev
+	go install -v -x github.com/mitchellh/gox || die
+	PATH=${GOROOT}/bin:${PATH} emake dev
 }
 
 src_install() {

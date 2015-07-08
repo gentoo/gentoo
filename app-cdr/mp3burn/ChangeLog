@@ -1,6 +1,10 @@
 # ChangeLog for app-cdr/mp3burn
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/mp3burn/ChangeLog,v 1.23 2015/06/09 09:27:32 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/mp3burn/ChangeLog,v 1.24 2015/07/08 19:00:06 pacho Exp $
+
+  08 Jul 2015; Pacho Ramos <pacho@gentoo.org> +files/mp3burn-0.4.2-build.patch,
+  mp3burn-0.4.2.ebuild:
+  Fix building, bug #514846 by Tijs Van Buggenhout
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

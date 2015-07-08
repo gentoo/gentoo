@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/bluez/bluez-5.30.ebuild,v 1.2 2015/04/08 18:20:55 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/bluez/bluez-5.32.ebuild,v 1.1 2015/07/08 19:01:36 pacho Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
@@ -21,7 +21,7 @@ CDEPEND="
 	>=sys-apps/dbus-1.6:=
 	>=sys-apps/hwids-20121202.2
 	cups? ( net-print/cups:= )
-	obex? ( dev-libs/libical )
+	obex? ( dev-libs/libical:= )
 	readline? ( sys-libs/readline:= )
 	systemd? ( sys-apps/systemd )
 	udev? ( >=virtual/udev-172 )
@@ -203,8 +203,7 @@ pkg_postinst() {
 	has_version net-dialup/ppp || elog "To use dial up networking you must install net-dialup/ppp."
 
 	if ! has_version sys-auth/consolekit && ! has_version sys-apps/systemd; then
-		elog "Since you don't have sys-auth/consolekit neither sys-apps/systemd, you will only"
-		elog "be able to run bluetooth clients as root. If you want to be able to run bluetooth clients as"
-		elog "a regular user, you need to add the user to the plugdev group."
+		elog "Since you don't have sys-auth/consolekit neither sys-apps/systemd, you will"
+		elog "need to add the user to the plugdev group."
 	fi
 }
