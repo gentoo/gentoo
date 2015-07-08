@@ -1,6 +1,19 @@
 # ChangeLog for app-admin/salt
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/salt/ChangeLog,v 1.65 2015/06/04 21:51:36 chutzpah Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/salt/ChangeLog,v 1.67 2015/07/07 23:21:33 chutzpah Exp $
+
+  07 Jul 2015; Patrick McLean <chutzpah@gentoo.org>
+  -files/salt-2014.1.2-tests-nonroot.patch,
+  -files/salt-2014.1.5-minion-error.patch,
+  -files/salt-2014.1.5-tests-nonroot.patch:
+  Remove old patches.
+
+*salt-2015.5.3 (07 Jul 2015)
+
+  07 Jul 2015; Patrick McLean <chutzpah@gentoo.org> +salt-2015.5.3.ebuild,
+  -files/salt-2015.5.2-timezone-test-gentoo.patch, -salt-2014.1.13.ebuild,
+  -salt-2015.5.0.ebuild, -salt-2015.5.2.ebuild:
+  Version bump, remove old.
 
 *salt-2015.5.2 (04 Jun 2015)
 

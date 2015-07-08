@@ -1,6 +1,11 @@
 # ChangeLog for dev-db/go-etcd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/go-etcd/ChangeLog,v 1.6 2015/06/10 08:02:14 zmedico Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/go-etcd/ChangeLog,v 1.7 2015/07/07 23:05:33 williamh Exp $
+
+*go-etcd-2.0.0-r1 (07 Jul 2015)
+
+  07 Jul 2015; William Hubbs <williamh@gentoo.org> +go-etcd-2.0.0-r1.ebuild:
+  Rev bump to add slot dependency for dev-lang/go
 
   10 Jun 2015; Zac Medico <zmedico@gentoo.org> go-etcd-0_p20141013-r1.ebuild,
   go-etcd-2.0.0.ebuild:
