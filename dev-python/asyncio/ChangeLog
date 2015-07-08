@@ -1,6 +1,10 @@
 # ChangeLog for dev-python/asyncio
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/asyncio/ChangeLog,v 1.10 2015/07/07 15:36:54 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/asyncio/ChangeLog,v 1.11 2015/07/08 20:28:06 zlogene Exp $
+
+  08 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> asyncio-3.4.2.ebuild,
+  asyncio-3.4.3.ebuild:
+  x86 stable wrt bug #554114
 
   07 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> asyncio-3.4.2.ebuild:
   amd64 stable wrt bug #554114

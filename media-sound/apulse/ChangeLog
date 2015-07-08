@@ -1,6 +1,14 @@
 # ChangeLog for media-sound/apulse
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/apulse/ChangeLog,v 1.9 2015/06/14 16:38:48 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/apulse/ChangeLog,v 1.11 2015/07/08 20:21:03 zlg Exp $
+
+*apulse-0.1.6 (08 Jul 2015)
+
+  08 Jul 2015; Daniel Campbell <zlg@gentoo.org> +apulse-0.1.6.ebuild:
+  Version bump
+
+  08 Jul 2015; Daniel Campbell <zlg@gentoo.org> metadata.xml:
+  Assign maintainership to zlg.
 
   14 Jun 2015; Ulrich Müller <ulm@gentoo.org> apulse-0.1.4.ebuild:
   [QA] Remove emul-linux-x86-* from dependencies.

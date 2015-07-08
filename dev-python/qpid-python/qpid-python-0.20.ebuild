@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/qpid-python/qpid-python-0.20.ebuild,v 1.3 2015/07/07 15:30:08 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/qpid-python/qpid-python-0.20.ebuild,v 1.4 2015/07/08 20:24:03 zlogene Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
@@ -11,7 +11,7 @@ DESCRIPTION="A high-speed platform independent enterprise messaging system for A
 HOMEPAGE="http://qpid.apache.org/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc examples"
 LICENSE="MIT"
 SLOT="0"

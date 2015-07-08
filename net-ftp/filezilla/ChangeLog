@@ -1,6 +1,13 @@
 # ChangeLog for net-ftp/filezilla
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/filezilla/ChangeLog,v 1.126 2015/06/03 11:39:34 voyageur Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/filezilla/ChangeLog,v 1.127 2015/07/08 20:09:35 voyageur Exp $
+
+*filezilla-3.12.0 (08 Jul 2015)
+
+  08 Jul 2015; Bernard Cafarelli <voyageur@gentoo.org>
+  -filezilla-3.9.0.5.ebuild, -filezilla-3.10.2.ebuild,
+  -filezilla-3.10.3.ebuild, -filezilla-3.11.0.ebuild, +filezilla-3.12.0.ebuild:
+  Version bump, clean some old versions
 
 *filezilla-3.11.0.2 (03 Jun 2015)
 

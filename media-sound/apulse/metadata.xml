@@ -2,7 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer>
-    <email>jauhien@gentoo.org</email>
+    <email>zlg@gentoo.org</email>
+    <name>Daniel Campbell</name>
   </maintainer>
   <upstream>
     <remote-id type="github">i-rinat/apulse</remote-id>

@@ -1,6 +1,16 @@
 # ChangeLog for www-client/vivaldi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/vivaldi/ChangeLog,v 1.30 2015/07/08 05:24:51 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/vivaldi/ChangeLog,v 1.32 2015/07/08 20:10:14 jer Exp $
+
+  08 Jul 2015; Jeroen Roovers <jer@gentoo.org> vivaldi-1.0.219.3_p1-r1.ebuild:
+  Remove cron script piece by piece in case a future release has something
+  interesting in /etc.
+
+*vivaldi-1.0.219.3_p1-r1 (08 Jul 2015)
+
+  08 Jul 2015; Jeroen Roovers <jer@gentoo.org> -vivaldi-1.0.219.3_p1.ebuild,
+  +vivaldi-1.0.219.3_p1-r1.ebuild:
+  Do not install cron script.
 
 *vivaldi-1.0.219.3_p1 (08 Jul 2015)
 

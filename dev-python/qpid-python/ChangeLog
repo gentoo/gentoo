@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/qpid-python
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/qpid-python/ChangeLog,v 1.4 2015/07/07 15:30:08 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/qpid-python/ChangeLog,v 1.5 2015/07/08 20:24:03 zlogene Exp $
+
+  08 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> qpid-python-0.20.ebuild:
+  x86 stable wrt bug #554114
 
   07 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> qpid-python-0.20.ebuild:
   amd64 stable wrt bug #554114
