@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/rrdtool/rrdtool-1.5.3-r1.ebuild,v 1.4 2015/05/26 04:56:46 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/rrdtool/rrdtool-1.5.3-r1.ebuild,v 1.5 2015/07/08 04:26:34 jer Exp $
 
 EAPI="5"
 
@@ -18,6 +18,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~s390 ~sh ~x86 ~x86-fbsd ~amd64-linux ~ia64-linux ~x86-linux ~x86-macos ~x86-solaris"
 IUSE="dbi doc graph lua perl python rados rrdcgi ruby static-libs tcl tcpd"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 CDEPEND="
 	>=dev-libs/glib-2.28.7:2[static-libs(+)?]
@@ -59,6 +60,10 @@ python_compile() {
 python_install() {
 	cd bindings/python || die
 	distutils-r1_python_install
+}
+
+pkg_setup() {
+	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {

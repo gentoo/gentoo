@@ -1,6 +1,10 @@
 # ChangeLog for sys-block/fio
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/fio/ChangeLog,v 1.61 2015/07/07 10:09:07 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-block/fio/ChangeLog,v 1.62 2015/07/08 04:43:18 vapier Exp $
+
+  08 Jul 2015; Mike Frysinger <vapier@gentoo.org>
+  +files/fio-2.2.9-atomic-sync.patch, fio-2.2.9.ebuild:
+  Add fix from upstream for targets missing atomic sync in gcc.
 
 *fio-2.2.9 (07 Jul 2015)
 

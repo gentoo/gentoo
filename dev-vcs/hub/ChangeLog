@@ -1,6 +1,12 @@
 # ChangeLog for dev-vcs/hub
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/hub/ChangeLog,v 1.18 2015/04/26 04:52:26 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/hub/ChangeLog,v 1.19 2015/07/08 04:43:16 vikraman Exp $
+
+*hub-2.2.0-r1 (08 Jul 2015)
+
+  08 Jul 2015; Vikraman Choudhury (vikraman) <vikraman@gentoo.org>
+  +hub-2.2.0-r1.ebuild, -hub-2.2.0.ebuild:
+  Add slot dep on dev-lang/go. Fixes bug 554174.
 
   26 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -hub-1.12.2-r1.ebuild:
   Remove ruby19-only.

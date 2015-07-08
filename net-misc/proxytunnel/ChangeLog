@@ -1,6 +1,13 @@
 # ChangeLog for net-misc/proxytunnel
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/proxytunnel/ChangeLog,v 1.26 2014/01/26 21:01:18 vikraman Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/proxytunnel/ChangeLog,v 1.27 2015/07/08 04:18:22 vikraman Exp $
+
+*proxytunnel-1.9.1-r1 (08 Jul 2015)
+
+  08 Jul 2015; Vikraman Choudhury (vikraman) <vikraman@gentoo.org>
+  +files/proxytunnel-allowTLS.patch, +proxytunnel-1.9.1-r1.ebuild,
+  -proxytunnel-1.9.0.ebuild, -proxytunnel-1.9.1.ebuild:
+  Add patch to enable TLS. Fixes bug 551278. Drop old.
 
 *proxytunnel-1.9.1 (26 Jan 2014)
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/proxytunnel/proxytunnel-1.9.1.ebuild,v 1.1 2014/01/26 21:01:17 vikraman Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/proxytunnel/proxytunnel-1.9.1-r1.ebuild,v 1.1 2015/07/08 04:18:22 vikraman Exp $
 
 EAPI="5"
 
@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="static"
 
-RDEPEND="dev-libs/openssl"
+RDEPEND="dev-libs/openssl:="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	app-text/asciidoc
@@ -24,6 +24,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	sed -i -e 's/libssl/libssl libcrypto/' Makefile || die "Sed failed!"
+	epatch "${FILESDIR}"/${PN}-allowTLS.patch
 }
 
 src_compile() {

@@ -1,6 +1,9 @@
 # ChangeLog for net-analyzer/rrdtool
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/rrdtool/ChangeLog,v 1.293 2015/05/26 04:56:46 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/rrdtool/ChangeLog,v 1.294 2015/07/08 04:26:34 jer Exp $
+
+  08 Jul 2015; Jeroen Roovers <jer@gentoo.org> rrdtool-1.5.3-r1.ebuild:
+  Set REQUIRED_USE to pull in dev-lang/python:2.7 (bug #554180).
 
   26 May 2015; Jeroen Roovers <jer@gentoo.org> rrdtool-1.5.3-r1.ebuild,
   +files/rrdtool-1.5.3-rrdrados.pod:

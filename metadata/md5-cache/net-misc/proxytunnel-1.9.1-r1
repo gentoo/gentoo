@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile install prepare
-DEPEND=dev-libs/openssl virtual/pkgconfig app-text/asciidoc app-text/xmlto
+DEPEND=dev-libs/openssl:= virtual/pkgconfig app-text/asciidoc app-text/xmlto
 DESCRIPTION=Connect stdin and stdout to a server somewhere on the network, through a standard HTTPS proxy
 EAPI=5
 HOMEPAGE=https://github.com/proxytunnel/proxytunnel/ http://proxytunnel.sourceforge.net/
 IUSE=static
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2
-RDEPEND=dev-libs/openssl
+RDEPEND=dev-libs/openssl:=
 SLOT=0
 SRC_URI=https://github.com/proxytunnel/proxytunnel/archive/1.9.1.tar.gz -> proxytunnel-1.9.1.tar.gz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=dfbd5d469c8bfbc952b302bf4d7c54f6
+_md5_=c5b6819d6e2f1983b874ae1bbd118937
