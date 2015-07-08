@@ -1,6 +1,12 @@
 # ChangeLog for media-sound/csound
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/csound/ChangeLog,v 1.37 2015/04/08 17:59:42 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/csound/ChangeLog,v 1.38 2015/07/08 15:12:42 yngwin Exp $
+
+*csound-6.05.0 (08 Jul 2015)
+
+  08 Jul 2015; Ben de Groot <yngwin@gentoo.org> +csound-6.05.0.ebuild,
+  +files/csound-6.05-python.patch:
+  Version bump. Use github. Fix installation of python modules (bug #550084).
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> csound-5.19.01.ebuild,
   csound-6.02.ebuild:

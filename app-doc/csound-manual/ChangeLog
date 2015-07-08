@@ -1,6 +1,11 @@
 # ChangeLog for app-doc/csound-manual
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/csound-manual/ChangeLog,v 1.9 2015/06/09 09:44:50 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-doc/csound-manual/ChangeLog,v 1.10 2015/07/08 15:30:32 yngwin Exp $
+
+*csound-manual-6.05 (08 Jul 2015)
+
+  08 Jul 2015; Ben de Groot <yngwin@gentoo.org> +csound-manual-6.05.ebuild:
+  version bump
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml
