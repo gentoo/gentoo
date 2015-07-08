@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/bind-tools/bind-tools-9.9.5.ebuild,v 1.11 2014/08/02 18:20:08 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/bind-tools/bind-tools-9.10.2_p2.ebuild,v 1.1 2015/07/08 17:38:43 idl0r Exp $
 
 EAPI="5"
 
@@ -17,8 +17,8 @@ SRC_URI="ftp://ftp.isc.org/isc/bind9/${MY_PV}/${MY_P}.tar.gz"
 
 LICENSE="ISC BSD BSD-2 HPND JNIC RSA openssl"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="doc gost gssapi idn ipv6 readline ssl urandom xml"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+IUSE="doc gost gssapi idn ipv6 readline seccomp ssl urandom xml"
 # no PKCS11 currently as it requires OpenSSL to be patched, also see bug 409687
 
 REQUIRED_USE="gost? ( ssl )"
@@ -28,8 +28,10 @@ DEPEND="ssl? ( dev-libs/openssl:0 )
 	xml? ( dev-libs/libxml2 )
 	idn? ( net-dns/idnkit )
 	gssapi? ( virtual/krb5 )
-	readline? ( sys-libs/readline )"
-RDEPEND="${DEPEND}"
+	readline? ( sys-libs/readline:0= )
+	seccomp? ( sys-libs/libseccomp )"
+RDEPEND="${DEPEND}
+	!<net-dns/bind-9.10.2"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -37,8 +39,8 @@ S="${WORKDIR}/${MY_P}"
 RESTRICT="test"
 
 src_prepare() {
-	# bug 231247
-	epatch "${FILESDIR}"/${PN}-9.5.0_p1-lwconfig.patch
+	epatch "${FILESDIR}"/${PN}-9.5.0_p1-lwconfig.patch #231247
+	epatch "${FILESDIR}"/${PN}-9.10.2-openssl.patch #417129
 
 	# Disable tests for now, bug 406399
 	sed -i '/^SUBDIRS/s:tests::' bin/Makefile.in lib/Makefile.in || die
@@ -66,9 +68,13 @@ src_configure() {
 	econf \
 		--localstatedir=/var \
 		--without-python \
+		--without-libjson \
+		--disable-openssl-version-check \
 		$(use_enable ipv6) \
 		$(use_with idn) \
-		$(use_with ssl openssl "${EPREFIX}"/usr) \
+		$(usex idn --with-idnlib=-lidnkit '') \
+		$(use_enable seccomp) \
+		$(use_with ssl openssl) \
 		$(use_with xml libxml2) \
 		$(use_with gssapi) \
 		$(use_with readline) \
@@ -82,14 +88,19 @@ src_configure() {
 src_compile() {
 	local AR=$(tc-getAR)
 
-	emake AR=$AR -C lib/ || die "emake lib failed"
-	emake AR=$AR -C bin/dig/ || die "emake bin/dig failed"
-	emake AR=$AR -C bin/nsupdate/ || die "emake bin/nsupdate failed"
-	emake AR=$AR -C bin/dnssec/ || die "emake bin/dnssec failed"
+	emake AR="${AR}" -C lib/
+	emake AR="${AR}" -C bin/delv/
+	emake AR="${AR}" -C bin/dig/
+	emake AR="${AR}" -C bin/nsupdate/
+	emake AR="${AR}" -C bin/dnssec/
 }
 
 src_install() {
 	dodoc README CHANGES FAQ
+
+	cd "${S}"/bin/delv
+	dobin delv
+	doman delv.1
 
 	cd "${S}"/bin/dig
 	dobin dig host nslookup
@@ -103,9 +114,12 @@ src_install() {
 	fi
 
 	cd "${S}"/bin/dnssec
-	dobin dnssec-keygen
-	doman dnssec-keygen.8
-	if use doc; then
-		dohtml dnssec-keygen.html
-	fi
+	for tool in dsfromkey importkey keyfromlabel keygen \
+	  revoke settime signzone verify; do
+		dobin dnssec-"${tool}"
+		doman dnssec-"${tool}".8
+		if use doc; then
+			dohtml dnssec-"${tool}".html
+		fi
+	done
 }

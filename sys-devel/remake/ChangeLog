@@ -1,6 +1,11 @@
 # ChangeLog for sys-devel/remake
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/remake/ChangeLog,v 1.16 2013/06/08 16:11:27 jer Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/remake/ChangeLog,v 1.17 2015/07/08 17:49:26 vapier Exp $
+
+*remake-4.1.1.1 (08 Jul 2015)
+
+  08 Jul 2015; Mike Frysinger <vapier@gentoo.org> +remake-4.1.1.1.ebuild:
+  Version bump.
 
   08 Jun 2013; Jeroen Roovers <jer@gentoo.org> remake-3.82.0.9.ebuild:
   Marked ~hppa too.
