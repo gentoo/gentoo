@@ -1,6 +1,10 @@
 # ChangeLog for dev-python/sqlalchemy-migrate
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/sqlalchemy-migrate/ChangeLog,v 1.58 2015/07/08 01:46:45 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/sqlalchemy-migrate/ChangeLog,v 1.59 2015/07/08 05:57:37 patrick Exp $
+
+  08 Jul 2015; Patrick Lauer <patrick@gentoo.org>
+  -sqlalchemy-migrate-0.7.2-r1.ebuild, -sqlalchemy-migrate-0.7.2.ebuild:
+  Remove old to match sqlalchemy cleanup
 
 *sqlalchemy-migrate-0.7.2-r1 (08 Jul 2015)
 *sqlalchemy-migrate-0.7.2 (08 Jul 2015)

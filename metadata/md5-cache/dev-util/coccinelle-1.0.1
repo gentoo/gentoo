@@ -4,11 +4,11 @@ DESCRIPTION=Program matching and transformation engine
 EAPI=5
 HOMEPAGE=http://coccinelle.lip6.fr/
 IUSE=doc emacs ocaml +ocamlopt pcre python test vim-syntax python_targets_python2_7
-KEYWORDS=~amd64
+KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?] dev-ml/sexplib:=[ocamlopt?] dev-ml/menhir:=[ocamlopt?] || ( dev-ml/camlp4:=[ocamlopt?] <dev-lang/ocaml-4.02.0 ) dev-ml/parmap:=[ocamlopt?] emacs? ( virtual/emacs ) ocaml? ( dev-ml/findlib:= ) pcre? ( dev-ml/pcre-ocaml:=[ocamlopt?] ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] ) vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
 REQUIRED_USE=test? ( ocaml python )
 SLOT=0
 SRC_URI=http://coccinelle.lip6.fr/distrib/coccinelle-1.0.1.tgz
 _eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	bash-completion-r1	c8399c7c7ecbcf7ed6e5bd3abb3d4af3	elisp-common	9a16929c1a6aec7e1c903289983e114c	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	351da1aa73960a282591217fb57c1bb8	python-utils-r1	ae9becb5d45344c01939c3f57df0d3fd	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=4b105f369071a0afe348d1708da421e0
+_md5_=310e3e09ff8af9952efced5e67ceab0c

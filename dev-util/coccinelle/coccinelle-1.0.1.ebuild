@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/coccinelle/coccinelle-1.0.1.ebuild,v 1.1 2015/06/22 08:02:35 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/coccinelle/coccinelle-1.0.1.ebuild,v 1.2 2015/07/08 05:52:00 patrick Exp $
 
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )
@@ -14,7 +14,7 @@ SRC_URI="http://coccinelle.lip6.fr/distrib/${MY_P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc emacs ocaml +ocamlopt pcre python test vim-syntax"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

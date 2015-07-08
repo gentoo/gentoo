@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/parmap/parmap-1.0_rc6.ebuild,v 1.1 2015/02/09 10:13:15 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/parmap/parmap-1.0_rc6.ebuild,v 1.2 2015/07/08 05:49:29 patrick Exp $
 
 EAPI=5
 
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/rdicosmo/parmap/archive/${MY_PV}.tar.gz -> ${P}.tar.
 
 LICENSE="LGPL-2-with-linking-exception"
 SLOT="0/${PV}"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt"
 
 RDEPEND=">=dev-lang/ocaml-3.12:=[ocamlopt?]"

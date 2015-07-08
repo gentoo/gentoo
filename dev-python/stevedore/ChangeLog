@@ -1,6 +1,13 @@
 # ChangeLog for dev-python/stevedore
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/stevedore/ChangeLog,v 1.34 2015/07/07 16:38:28 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/stevedore/ChangeLog,v 1.35 2015/07/08 05:08:14 idella4 Exp $
+
+*stevedore-1.6.0 (08 Jul 2015)
+
+  08 Jul 2015; Ian Delaney <idella4@gentoo.org> +stevedore-1.6.0.ebuild,
+  -stevedore-0.15-r1.ebuild, -stevedore-0.15.ebuild, -stevedore-1.0.0.ebuild:
+  bump; drop use if patch substitute with sed, re-add dep dev-python/six, update
+  deps, replace test phase, rm old
 
   07 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> stevedore-1.3.0.ebuild:
   amd64 stable wrt bug #554114

@@ -1,6 +1,9 @@
 # ChangeLog for dev-ml/menhir
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/menhir/ChangeLog,v 1.3 2014/12/16 09:17:59 aballier Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/menhir/ChangeLog,v 1.4 2015/07/08 05:50:52 patrick Exp $
+
+  08 Jul 2015; Patrick Lauer <patrick@gentoo.org> menhir-20141215.ebuild:
+  Keyword for ~x86
 
 *menhir-20141215 (16 Dec 2014)
 
@@ -17,4 +20,3 @@
   07 Feb 2013; Alexis Ballier <aballier@gentoo.org> +menhir-20130116.ebuild,
   +metadata.xml:
   Initial import, bug #406517, ebuild by Guillaume Horel
-

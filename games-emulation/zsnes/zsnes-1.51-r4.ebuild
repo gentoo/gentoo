@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/zsnes/zsnes-1.51-r4.ebuild,v 1.12 2015/06/08 05:02:13 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/zsnes/zsnes-1.51-r4.ebuild,v 1.13 2015/07/08 05:36:10 mr_bones_ Exp $
 
 EAPI=5
 inherit eutils autotools flag-o-matic toolchain-funcs multilib pax-utils games
@@ -64,6 +64,7 @@ src_prepare() {
 		-e '/^LDFLAGS=.*local/d' \
 		-e '/\w*CFLAGS=.*fomit/s:-O3.*$STRIP::' \
 		-e '/lncurses/s:-lncurses:`pkg-config ncurses --libs`:' \
+		-e '/lcurses/s:-lcurses:`pkg-config ncurses --libs`:' \
 		configure.in || die
 	sed -i \
 		-e 's/configure.in/configure.ac/' \

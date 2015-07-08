@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/menhir/menhir-20141215.ebuild,v 1.1 2014/12/16 09:17:59 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/menhir/menhir-20141215.ebuild,v 1.2 2015/07/08 05:50:52 patrick Exp $
 
 EAPI=5
 
@@ -12,7 +12,7 @@ SRC_URI="http://gallium.inria.fr/~fpottier/menhir/${P}.tar.gz"
 
 LICENSE="QPL-1.0 LGPL-2-with-linking-exception"
 SLOT="0/${PV}"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="examples +ocamlopt"
 
 DEPEND=">=dev-lang/ocaml-4.02:=[ocamlopt?]"

@@ -1,6 +1,9 @@
 # ChangeLog for games-emulation/zsnes
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/zsnes/ChangeLog,v 1.65 2015/06/08 05:02:13 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/zsnes/ChangeLog,v 1.66 2015/07/08 05:36:10 mr_bones_ Exp $
+
+  08 Jul 2015; Michael Sterrett <mr_bones_@gentoo.org> zsnes-1.51-r4.ebuild:
+  really build with ncurses[tinfo] (bug #553950)
 
   08 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org> zsnes-1.51-r4.ebuild:
   build with ncurses[tinfo] (bug #551406)

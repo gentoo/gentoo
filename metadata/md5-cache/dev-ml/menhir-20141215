@@ -4,10 +4,10 @@ DESCRIPTION=LR(1) parser generator for the OCaml language
 EAPI=5
 HOMEPAGE=http://gallium.inria.fr/~fpottier/menhir/
 IUSE=examples +ocamlopt
-KEYWORDS=~amd64
+KEYWORDS=~amd64 ~x86
 LICENSE=QPL-1.0 LGPL-2-with-linking-exception
 RDEPEND=>=dev-lang/ocaml-4.02:=[ocamlopt?]
 SLOT=0/20141215
 SRC_URI=http://gallium.inria.fr/~fpottier/menhir/menhir-20141215.tar.gz
 _eclasses_=findlib	9cf6020ee5481f39f1aa566a323f9868
-_md5_=e0b37489fb73850e3be19e8e6577f5d9
+_md5_=6c2f6ea07dabfc60e10fb7677fc5a7f9
