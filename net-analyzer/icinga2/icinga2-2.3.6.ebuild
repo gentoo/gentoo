@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/icinga2/icinga2-2.3.4.ebuild,v 1.1 2015/04/22 21:24:15 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/icinga2/icinga2-2.3.6.ebuild,v 1.1 2015/07/09 01:17:11 prometheanfire Exp $
 
 EAPI=5
 inherit cmake-utils depend.apache eutils systemd toolchain-funcs user versionator
@@ -15,13 +15,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+mysql postgres classicui minimal nano-syntax +plugins +vim-syntax"
 
 DEPEND="
-	dev-util/cmake
-	dev-libs/openssl
+	dev-libs/openssl:=
 	>=dev-libs/boost-1.41
 	sys-devel/bison
 	>=sys-devel/flex-2.5.35
 	mysql? ( virtual/mysql )
-	postgres? ( dev-db/postgresql )"
+	postgres? ( dev-db/postgresql:= )"
 
 RDEPEND="
 	${DEPEND}
