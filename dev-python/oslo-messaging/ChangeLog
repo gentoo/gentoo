@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/oslo-messaging
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/oslo-messaging/ChangeLog,v 1.16 2015/07/08 20:30:06 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/oslo-messaging/ChangeLog,v 1.17 2015/07/09 03:43:31 idella4 Exp $
+
+*oslo-messaging-1.4.1 (09 Jul 2015)
+
+  09 Jul 2015; Ian Delaney <idella4@gentoo.org> +oslo-messaging-1.4.1.ebuild:
+  re-add due to dep by keystone-2014.2.3-r2
 
   08 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> oslo-messaging-1.8.2.ebuild:
   x86 stable wrt bug #554114
