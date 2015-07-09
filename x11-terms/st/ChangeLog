@@ -1,6 +1,11 @@
 # ChangeLog for x11-terms/st
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/st/ChangeLog,v 1.21 2015/03/12 14:16:15 xmw Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/st/ChangeLog,v 1.22 2015/07/09 05:40:15 jer Exp $
+
+*st-0.6 (09 Jul 2015)
+
+  09 Jul 2015; Jeroen Roovers <jer@gentoo.org> +st-0.6.ebuild:
+  Version bump.
 
   12 Mar 2015; Michael Weber <xmw@gentoo.org> -st-0.4.1-r1.ebuild,
   -st-0.4.1.ebuild, st-0.5.ebuild, st-9999.ebuild:

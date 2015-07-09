@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/nss
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/nss/ChangeLog,v 1.415 2015/07/08 08:57:25 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/nss/ChangeLog,v 1.416 2015/07/09 05:50:06 jer Exp $
+
+  09 Jul 2015; Jeroen Roovers <jer@gentoo.org> nss-3.19.2.ebuild:
+  Stable for PPC64 (bug #550288).
 
   08 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> nss-3.19.2.ebuild:
   amd64 stable wrt bug #550288
