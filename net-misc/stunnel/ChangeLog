@@ -1,6 +1,11 @@
 # ChangeLog for net-misc/stunnel
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/stunnel/ChangeLog,v 1.235 2015/07/03 10:15:40 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/stunnel/ChangeLog,v 1.236 2015/07/09 14:38:38 blueness Exp $
+
+*stunnel-5.20 (09 Jul 2015)
+
+  09 Jul 2015; Anthony G. Basile <blueness@gentoo.org> +stunnel-5.20.ebuild:
+  Version bump.
 
   03 Jul 2015; Agostino Sarubbo <ago@gentoo.org> stunnel-5.17.ebuild:
   Stable for alpha, wrt bug #551890
