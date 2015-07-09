@@ -1,6 +1,11 @@
 # ChangeLog for dev-ruby/ruby-atk
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-atk/ChangeLog,v 1.87 2015/07/05 10:20:56 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-atk/ChangeLog,v 1.88 2015/07/09 10:16:13 graaff Exp $
+
+*ruby-atk-2.2.5 (09 Jul 2015)
+
+  09 Jul 2015; Hans de Graaff <graaff@gentoo.org> +ruby-atk-2.2.5.ebuild:
+  Version bump. Run tests.
 
 *ruby-atk-2.2.3-r1 (05 Jul 2015)
 

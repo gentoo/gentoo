@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-glib2/ruby-glib2-2.2.3.ebuild,v 1.3 2015/07/05 10:13:04 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-glib2/ruby-glib2-2.2.3.ebuild,v 1.4 2015/07/09 10:29:10 mrueg Exp $
 
 EAPI=5
 USE_RUBY="ruby19 ruby20"
@@ -15,6 +15,8 @@ DEPEND+=" >=dev-libs/glib-2"
 
 ruby_add_bdepend "dev-ruby/pkg-config
 	test? ( >=dev-ruby/test-unit-2 )"
+
+RUBY_PATCHES="${FILESDIR}/${P}-glib-2.44.patch" #554126
 
 all_ruby_prepare() {
 	# Our sandbox always provides LD_PRELOAD in the environment.

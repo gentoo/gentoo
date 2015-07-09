@@ -1,6 +1,11 @@
 # ChangeLog for dev-ruby/ruby-gtk2
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gtk2/ChangeLog,v 1.117 2015/07/06 09:37:08 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gtk2/ChangeLog,v 1.118 2015/07/09 10:30:45 graaff Exp $
+
+*ruby-gtk2-2.2.5 (09 Jul 2015)
+
+  09 Jul 2015; Hans de Graaff <graaff@gentoo.org> +ruby-gtk2-2.2.5.ebuild:
+  Version bump.
 
   06 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -ruby-gtk2-2.0.2.ebuild:
   Remove old

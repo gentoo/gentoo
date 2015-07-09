@@ -1,6 +1,41 @@
 # ChangeLog for dev-java/commons-digester
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-digester/ChangeLog,v 1.70 2015/06/14 15:11:17 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-digester/ChangeLog,v 1.77 2015/07/09 09:48:50 monsieurp Exp $
+
+  09 Jul 2015; Patrice Clement <monsieurp@gentoo.org>
+  commons-digester-1.8.1-r2.ebuild:
+  Get rid of useless patch.
+
+  09 Jul 2015; Patrice Clement <monsieurp@gentoo.org>
+  -commons-digester-1.8.1-r1.ebuild:
+  Remove old.
+
+  09 Jul 2015; Patrice Clement <monsieurp@gentoo.org>
+  commons-digester-1.8.1-r2.ebuild:
+  Stable for amd64. Retroactively mark ppc+ppc64+x86 stable with ALLARCHES.
+
+*commons-digester-1.8.1-r2 (09 Jul 2015)
+
+  09 Jul 2015; Patrice Clement <monsieurp@gentoo.org>
+  +commons-digester-1.8.1-r2.ebuild:
+  EAPI 5 bump.
+
+  09 Jul 2015; Patrice Clement <monsieurp@gentoo.org>
+  -commons-digester-2.1.ebuild, -commons-digester-3.2-r1.ebuild:
+  Remove old.
+
+  09 Jul 2015; Patrice Clement <monsieurp@gentoo.org>
+  commons-digester-2.1-r1.ebuild, commons-digester-3.2-r2.ebuild:
+  Stable for amd64. Retroactively mark ppc+ppc64+x86 stable with ALLARCHES.
+
+*commons-digester-3.2-r2 (09 Jul 2015)
+*commons-digester-2.1-r1 (09 Jul 2015)
+
+  09 Jul 2015; Patrice Clement <monsieurp@gentoo.org>
+  +commons-digester-2.1-r1.ebuild, +commons-digester-3.2-r2.ebuild,
+  files/commons-digester-2.1-build.xml:
+  Enable back test USE flag and ignore abstract classes when running test cases.
+  Fix bug 480758.
 
   14 Jun 2015; Patrice Clement <monsieurp@gentoo.org>
   -commons-digester-3.2.ebuild:

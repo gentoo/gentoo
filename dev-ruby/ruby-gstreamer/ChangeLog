@@ -1,6 +1,12 @@
 # ChangeLog for dev-ruby/ruby-gstreamer
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gstreamer/ChangeLog,v 1.75 2015/07/05 10:31:15 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gstreamer/ChangeLog,v 1.76 2015/07/09 10:02:52 graaff Exp $
+
+*ruby-gstreamer-2.2.5 (09 Jul 2015)
+
+  09 Jul 2015; Hans de Graaff <graaff@gentoo.org> +ruby-gstreamer-2.2.5.ebuild:
+  Version bump. Run tests. Add missing dependencies leading to dropped x86
+  keyword, bug 554312.
 
 *ruby-gstreamer-2.2.3-r1 (05 Jul 2015)
 

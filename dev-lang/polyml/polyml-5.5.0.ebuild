@@ -1,6 +1,6 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/polyml/polyml-5.5.0.ebuild,v 1.3 2012/12/05 09:49:35 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/polyml/polyml-5.5.0.ebuild,v 1.4 2015/07/09 09:46:32 gienah Exp $
 
 EAPI="5"
 
@@ -20,7 +20,7 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="X elibc_glibc +gmp portable test +threads"
 
-RDEPEND="X? ( x11-libs/motif )
+RDEPEND="X? ( x11-libs/motif:0 )
 		gmp? ( >=dev-libs/gmp-5 )
 		elibc_glibc? ( threads? ( >=sys-libs/glibc-2.13 ) )
 		virtual/libffi"

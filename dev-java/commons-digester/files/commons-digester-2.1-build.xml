@@ -154,6 +154,7 @@
           <exclude name="**/TestRule.java"/>
           <exclude name="**/TestRuleSet.java"/>
           <exclude name="**/Test*$*.java"/>
+		      <exclude name="**/*Abstract*.java"/>
         </fileset>
       </batchtest>
       <batchtest todir="${maven.test.reports}" if="test">

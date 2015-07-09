@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/polyml/polyml-5.5.1.ebuild,v 1.2 2015/07/09 09:46:32 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/polyml/polyml-5.5.2.ebuild,v 1.1 2015/07/09 09:46:32 gienah Exp $
 
 EAPI="5"
 
@@ -29,12 +29,12 @@ PATCHES=(
 	# Bug 256679 - patch the assembler code.  The remaining executable stacks in ./.libs/poly
 	# comes from the polyml generated ./polyexport.o file.
 	"${FILESDIR}/${PN}-5.5.0-asm.patch"
-	# http://sourceforge.net/p/polyml/code/1875/ for isabelle-2013.2
-	"${FILESDIR}/${PN}-5.5.1-inputN-return-for-zero-chars.patch"
-	# http://sourceforge.net/p/polyml/code/1869/
-	# Adds Test146.ML that fails, applying it anyway as it is required by
-	# sci-mathematics/isabelle-2013.2
-	"${FILESDIR}/${PN}-5.5.1-optimize-closure.patch"
+	# Patches from http://sourceforge.net/p/polyml/code/HEAD/tree/fixes-5.5.2
+	# which are required to build and run sci-mathematics/isabelle-2015
+	"${FILESDIR}/${PN}-5.5.2-r1952-check_for_negative_sized_array.patch"
+	"${FILESDIR}/${PN}-5.5.2-r1954_Fix_segfault_in_FFI_when_malloc_runs_out_of_memory.patch"
+	"${FILESDIR}/${PN}-5.5.2-r2007_Ensure_the_large_object_cache_pointer_is_cleared.patch"
+	"${FILESDIR}/${PN}-5.5.2-r2009_Initialise_the_largeObjectCache_fully_in_the_constructor.patch"
 )
 
 src_prepare() {

@@ -1,6 +1,19 @@
 # ChangeLog for dev-lang/polyml
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/polyml/ChangeLog,v 1.12 2015/06/09 14:09:00 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/polyml/ChangeLog,v 1.13 2015/07/09 09:46:32 gienah Exp $
+
+*polyml-5.5.2 (09 Jul 2015)
+
+  09 Jul 2015; Mark Wright <gienah@gentoo.org>
+  +files/polyml-5.5.2-r1952-check_for_negative_sized_array.patch, +files/polyml-
+  5.5.2-r1954_Fix_segfault_in_FFI_when_malloc_runs_out_of_memory.patch, +files/p
+  olyml-5.5.2-r2007_Ensure_the_large_object_cache_pointer_is_cleared.patch, +fil
+  es/polyml-5.5.2-r2009_Initialise_the_largeObjectCache_fully_in_the_constructor
+  .patch, +polyml-5.5.2.ebuild, -polyml-5.2.1.ebuild, polyml-5.4.1.ebuild,
+  polyml-5.5.0.ebuild, polyml-5.5.1.ebuild:
+  Bump polyml to 5.5.2 with patches from the fixes-5.5.2 branch to allow sci-
+  mathematics/isabelle-2015 to build. Drop obsolete polyml-5.2.1.ebuild. Specify
+  slot 0 on x11-libs/motif dependency.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml
