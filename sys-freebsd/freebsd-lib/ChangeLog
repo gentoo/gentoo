@@ -1,6 +1,13 @@
 # ChangeLog for sys-freebsd/freebsd-lib
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-lib/ChangeLog,v 1.212 2015/06/14 18:05:45 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-lib/ChangeLog,v 1.213 2015/07/09 06:49:12 mgorny Exp $
+
+*freebsd-lib-10.1-r1 (09 Jul 2015)
+
+  09 Jul 2015; Michał Górny <mgorny@gentoo.org> +freebsd-lib-10.1-r1.ebuild,
+  -freebsd-lib-10.1.ebuild:
+  Fix FreeBSD-EN-15:09.xlocale & FreeBSD-EN-15:10.iconv.
+  https://github.com/gentoo/gentoo-portage-rsync-mirror/pull/163 by nigoro.
 
   14 Jun 2015; Michał Górny <mgorny@gentoo.org> freebsd-lib-10.1.ebuild,
   freebsd-lib-9.1-r11.ebuild:

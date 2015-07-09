@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/sysstat/sysstat-11.1.5.ebuild,v 1.1 2015/06/14 09:07:15 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/sysstat/sysstat-11.1.5-r1.ebuild,v 1.1 2015/07/09 06:38:39 jer Exp $
 
 EAPI=5
 inherit eutils multilib systemd toolchain-funcs
@@ -32,6 +32,8 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-sysstat )
 "
 
+SYSSTAT_FAKE_RC_DIR=Gentoo-does-not-use-rc.d
+
 src_prepare() {
 	if use nls; then
 		strip-linguas -i nls/
@@ -53,7 +55,7 @@ src_configure() {
 	tc-export AR
 	sa_lib_dir=/usr/$(get_libdir)/sa \
 		conf_dir=/etc \
-		rcdir=Gentoo-does-not-use-rc.d \
+		rcdir=${SYSSTAT_FAKE_RC_DIR} \
 		econf \
 			--enable-copy-only \
 			--with-systemdsystemunitdir=$(systemd_get_unitdir) \
@@ -79,6 +81,7 @@ src_install() {
 
 	dodoc contrib/sargraph/sargraph
 
+	rm -r "${D}/${SYSSTAT_FAKE_RC_DIR}" || die
 	newinitd "${FILESDIR}"/${PN}.init.d ${PN}
 	systemd_dounit ${PN}.service
 

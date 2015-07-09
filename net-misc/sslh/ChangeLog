@@ -1,6 +1,9 @@
 # ChangeLog for net-misc/sslh
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/sslh/ChangeLog,v 1.23 2015/03/10 13:44:52 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/sslh/ChangeLog,v 1.24 2015/07/09 07:26:53 vapier Exp $
+
+  09 Jul 2015; Mike Frysinger <vapier@gentoo.org> sslh-1.17.ebuild:
+  Add arm/m68k/mips/s390/sh love.
 
 *sslh-1.17 (10 Mar 2015)
 

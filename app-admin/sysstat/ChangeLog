@@ -1,6 +1,14 @@
 # ChangeLog for app-admin/sysstat
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/sysstat/ChangeLog,v 1.291 2015/06/14 09:07:15 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/sysstat/ChangeLog,v 1.292 2015/07/09 06:38:39 jer Exp $
+
+*sysstat-11.1.5-r1 (09 Jul 2015)
+*sysstat-11.0.5-r1 (09 Jul 2015)
+
+  09 Jul 2015; Jeroen Roovers <jer@gentoo.org> -sysstat-11.0.4-r1.ebuild,
+  -sysstat-11.0.5.ebuild, +sysstat-11.0.5-r1.ebuild, -sysstat-11.1.4-r1.ebuild,
+  -sysstat-11.1.5.ebuild, +sysstat-11.1.5-r1.ebuild:
+  Fix rc.d directory hack (bug #551732).
 
 *sysstat-11.1.5 (14 Jun 2015)
 *sysstat-11.0.5 (14 Jun 2015)

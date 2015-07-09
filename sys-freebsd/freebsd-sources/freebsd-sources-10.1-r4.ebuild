@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-sources/freebsd-sources-10.1-r3.ebuild,v 1.3 2015/06/14 18:04:33 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-sources/freebsd-sources-10.1-r4.ebuild,v 1.1 2015/07/09 06:45:53 mgorny Exp $
 
 EAPI=5
 
@@ -18,7 +18,8 @@ UPSTREAM_PATCHES=( "SA-15:02/sctp.patch"
 	"SA-15:04/igmp-errata.patch"
 	"SA-15:09/ipv6.patch"
 	"EN-15:01/vt.patch"
-	"EN-15:05/ufs.patch" )
+	"EN-15:05/ufs.patch"
+	"EN-15:07/zfs.patch" )
 
 if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64-fbsd ~sparc-fbsd ~x86-fbsd"

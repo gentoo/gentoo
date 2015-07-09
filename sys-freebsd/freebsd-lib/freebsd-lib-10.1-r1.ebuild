@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-lib/freebsd-lib-10.1.ebuild,v 1.4 2015/06/14 18:05:45 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-lib/freebsd-lib-10.1-r1.ebuild,v 1.1 2015/07/09 06:49:12 mgorny Exp $
 
 EAPI=5
 
@@ -10,7 +10,9 @@ DESCRIPTION="FreeBSD's base system libraries"
 SLOT="0"
 
 # Security Advisory and Errata patches.
-UPSTREAM_PATCHES=( "SA-14:27/stdio.patch" )
+UPSTREAM_PATCHES=( "SA-14:27/stdio.patch"
+	"EN-15:09/xlocale.patch"
+	"EN-15:10/iconv.patch" )
 
 # Crypto is needed to have an internal OpenSSL header
 # sys is needed for libalias, probably we can just extract that instead of

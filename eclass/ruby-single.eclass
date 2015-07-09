@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ruby-single.eclass,v 1.2 2015/05/31 06:14:54 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ruby-single.eclass,v 1.3 2015/07/09 07:11:25 graaff Exp $
 
 # @ECLASS: ruby-single
 # @MAINTAINER:
@@ -12,7 +12,15 @@
 # @DESCRIPTION:
 # An eclass for packages which don't support being installed for
 # multiple Ruby implementations. This mostly includes ruby-based
-# scripts.
+# scripts. Set USE_RUBY to include all the ruby targets that have been
+# verified to work and include the eclass. RUBY_DEPS is now available to
+# pull in the dependency on the requested ruby targets.
+#
+# @CODE
+# USE_RUBY="ruby20 ruby21"
+# inherit ruby-single
+# RDEPEND="${RUBY_DEPS}"
+# @CODE
 
 case "${EAPI:-0}" in
 	0|1|2|3)
@@ -52,12 +60,15 @@ inherit ruby-utils
 # RDEPEND="${RUBY_DEPS}
 #   dev-foo/mydep"
 # BDEPEND="${RDEPEND}"
-# @
+# @CODE
 #
 # Example value:
 # @CODE
 # || ( dev-lang/ruby:2.0 dev-lang/ruby:1.9 ) virtual/rubygems
 # @CODE
+#
+# The order of dependencies will change over time to best match the
+# current state of ruby targets, e.g. stable version first.
 
 _ruby_single_implementations_depend() {
 	local depend
