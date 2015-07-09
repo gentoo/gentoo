@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=app-text/rarian:0 >=dev-cpp/glibmm-2.16:2 >=dev-cpp/gtkmm-2.22:2.4 >=dev-libs/dbus-glib-0.70:0 >=dev-libs/glib-2.28:2 dev-libs/libsigc++:2 >=dev-libs/libxml2-2:2 >=gnome-base/libgtop-2.23.1:2= >=gnome-base/librsvg-2.12:2 >=sys-apps/dbus-0.7:0 x11-libs/cairo:0 x11-libs/gdk-pixbuf:2 >=x11-libs/gtk+-2.20:2 >=x11-libs/libwnck-2.5:1 >=x11-themes/mate-icon-theme-1.6:0 virtual/libintl:0
 SLOT=0
 SRC_URI=http://pub.mate-desktop.org/releases/1.8/mate-system-monitor-1.8.0.tar.xz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	10c513def52488230abb60a4b19a03b9	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	45882dc8beda2ffd09ad51fb3f22b669	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=cb8570daec8ac1092696c7614a9762d0

@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=app-cdr/cdrdao dev-libs/libxml2 >=gnome-base/libglade-2 >=gnome-base/libgnomeui-2 >=media-libs/gstreamer-0.10:0.10 virtual/cdrtools x11-libs/cairo x11-libs/gtk+:2 dvdr? ( app-cdr/dvd+rw-tools ) libnotify? ( x11-libs/libnotify ) >=media-libs/gst-plugins-good-0.10:0.10 flac? ( >=media-plugins/gst-plugins-flac-0.10:0.10 ) mp3? ( >=media-plugins/gst-plugins-mad-0.10:0.10 ) vorbis? ( >=media-plugins/gst-plugins-vorbis-0.10:0.10 )
 SLOT=0
 SRC_URI=mirror://sourceforge/gnomebaker/gnomebaker-0.6.4.tar.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	10c513def52488230abb60a4b19a03b9	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	45882dc8beda2ffd09ad51fb3f22b669	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=009eff04b5bccd7c2b01d326cee52944

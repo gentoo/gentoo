@@ -8,5 +8,5 @@ LICENSE=GPL-3
 RDEPEND=>=dev-lang/mono-2.8 >=dev-dotnet/glib-sharp-2.12.7 >=dev-dotnet/gtk-sharp-2.12.10 dev-dotnet/notify-sharp dev-dotnet/webkit-sharp >=dev-vcs/git-1.7.12 gnome-base/gvfs net-misc/curl[ssl] net-misc/openssh
 SLOT=0
 SRC_URI=https://bitbucket.org/hbons/sparkleshare/downloads/sparkleshare-linux-1.1.0-tar.gz -> sparkleshare-1.1.0.tar.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	10c513def52488230abb60a4b19a03b9	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	mono-env	59ca1177366cc9e14521d3501e9bb281	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	45882dc8beda2ffd09ad51fb3f22b669	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	mono-env	59ca1177366cc9e14521d3501e9bb281	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=9f0b7c7854465d4e7744e72cb0b5eb5d

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/gnome2.eclass,v 1.131 2015/04/18 13:19:47 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/gnome2.eclass,v 1.132 2015/07/09 15:43:03 mgorny Exp $
 
 # @ECLASS: gnome2.eclass
 # @MAINTAINER:
@@ -84,8 +84,7 @@ gnome2_src_prepare() {
 	gnome2_disable_deprecation_warning
 
 	# Run libtoolize
-	# Everything is fatal EAPI 4 onwards
-	nonfatal elibtoolize ${ELTCONF}
+	elibtoolize ${ELTCONF}
 }
 
 # @FUNCTION: gnome2_src_configure

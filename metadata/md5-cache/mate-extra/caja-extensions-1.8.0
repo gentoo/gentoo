@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=x11-libs/gtk+-2.18:2 >=dev-libs/glib-2.26:2 >=mate-base/caja-1.8:0 virtual/libintl:0 x11-libs/gdk-pixbuf:2 open-terminal? ( >=mate-base/mate-desktop-1.8:0 ) cdr? ( >=app-cdr/brasero-2.32.1:0= ) gajim? ( net-im/gajim:0 >=dev-libs/dbus-glib-0.60:0 >=sys-apps/dbus-1:0 ) pidgin? ( >=dev-libs/dbus-glib-0.60:0 ) upnp? ( >=net-libs/gupnp-0.13:0= )
 SLOT=0
 SRC_URI=http://pub.mate-desktop.org/releases/1.8/caja-extensions-1.8.0.tar.xz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	10c513def52488230abb60a4b19a03b9	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	45882dc8beda2ffd09ad51fb3f22b669	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=0a5362a97c0d0371129cded56efa6aa0

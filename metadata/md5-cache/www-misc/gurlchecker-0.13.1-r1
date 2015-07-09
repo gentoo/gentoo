@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=x11-libs/gtk+-2.6:2 >=gnome-base/libgnomeui-2 >=gnome-base/libglade-2:2.0 >=dev-libs/libxml2-2.6:2 >=net-libs/gnet-2 >=dev-libs/libcroco-0.6 clamav? ( app-antivirus/clamav ) json? ( >=dev-libs/json-glib-0.8 ) sqlite? ( >=dev-db/sqlite-3.6:3 ) ssl? ( >=net-libs/gnutls-1 ) tidy? ( app-text/htmltidy )
 SLOT=0
 SRC_URI=http://labs.libre-entreprise.org/frs/download.php/857/gurlchecker-0.13.1.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	10c513def52488230abb60a4b19a03b9	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	45882dc8beda2ffd09ad51fb3f22b669	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=ea5f83501f6f21e58c295fce0292a6aa

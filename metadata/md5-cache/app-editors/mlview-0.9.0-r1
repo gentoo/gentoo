@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/libxml2-2.6.11:2 >=dev-libs/libxslt-1.1.8 >=dev-libs/glib-2.6:2 >=x11-libs/gtk+-2.6:2 >=dev-cpp/gtkmm-2.4:2.4 >=gnome-base/libglade-2.4:2.0 >=dev-cpp/libglademm-2.6:2.4 >=gnome-base/libgnome-2.8.1 >=gnome-base/gnome-vfs-2.6:2 >=gnome-base/libgnomeui-2.2 >=gnome-base/gconf-2.6.2:2 x11-libs/gtksourceview:2.0 >=x11-libs/vte-0.11.12:0 sys-libs/zlib
 SLOT=0
 SRC_URI=mirror://gnome/sources/mlview/0.9/mlview-0.9.0.tar.bz2
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	10c513def52488230abb60a4b19a03b9	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	45882dc8beda2ffd09ad51fb3f22b669	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=fcba387d28f4731426936b861c7611b5

@@ -1,6 +1,9 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1705 2015/07/09 07:11:25 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1706 2015/07/09 15:43:03 mgorny Exp $
+
+  09 Jul 2015; Michał Górny <mgorny@gentoo.org> gnome2.eclass:
+  Remove meaningless nonfatal from elibtoolize call, bug #551154.
 
   09 Jul 2015; Hans de Graaff <graaff@gentoo.org> ruby-single.eclass:
   Update documentation.
