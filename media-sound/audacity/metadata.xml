@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>proaudio</herd>
-	<maintainer>
-		<email>richard@audacityteam.org</email>
-		<name>Richard Ash</name>
-		<description>Upstream - please CC on bugs that concerns upstream</description>
-	</maintainer>
-	<use>
-		<flag name="id3tag">Enables ID3 tagging with id3tag library</flag>
-		<flag name="libsoxr">Uses <pkg>media-libs/soxr</pkg> as audio resampling library: Better quality than the included resampler and much faster than libsamplerate while keeping almost the same quality.</flag>
-		<flag name="midi">Enables MIDI support</flag>
-		<flag name="sbsms">Enables sbsms library support for pitch and tempo changing</flag>
-		<flag name="soundtouch">Enables soundtouch library support for pitch and tempo changing</flag>
-		<flag name="twolame">Enables twolame support (MPEG Audio Layer 2 encoder)</flag>
-		<flag name="vamp">Enables vamp plugins support (Audio analysing plugins)</flag>
-	</use>
-	<upstream>
-		<remote-id type="google-code">audacity</remote-id>
-	</upstream>
+  <herd>proaudio</herd>
+  <maintainer>
+    <email>richard@audacityteam.org</email>
+    <name>Richard Ash</name>
+    <description>Upstream - please CC on bugs that concerns upstream</description>
+  </maintainer>
+  <use>
+    <flag name="id3tag">Enables ID3 tagging with id3tag library</flag>
+    <flag name="libsoxr">
+      Uses <pkg>media-libs/soxr</pkg> as audio resampling library: Better
+      quality than the included resampler and much faster than libsamplerate
+      while keeping almost the same quality.
+    </flag>
+    <flag name="midi">Enables MIDI support</flag>
+    <flag name="sbsms">Enables sbsms library support for pitch and tempo
+      changing
+    </flag>
+    <flag name="soundtouch">Enables soundtouch library support for pitch and
+      tempo changing
+    </flag>
+    <flag name="twolame">Enables twolame support (MPEG Audio Layer 2 encoder)</flag>
+    <flag name="vamp">Enables vamp plugins support (Audio analysing plugins)</flag>
+  </use>
 </pkgmetadata>

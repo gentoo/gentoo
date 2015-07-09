@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/octave/octave-4.0.0.ebuild,v 1.1 2015/07/07 13:25:35 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/octave/octave-4.0.0.ebuild,v 1.2 2015/07/09 14:24:51 gienah Exp $
 
 EAPI=5
 
@@ -35,7 +35,7 @@ RDEPEND="
 			media-gfx/graphicsmagick[cxx]
 			media-gfx/imagemagick[cxx] ) )
 	java? ( >=virtual/jre-1.6.0:* )
-	jit? ( >=sys-devel/llvm-3.3:0= <sys-devel/llvm-3.6:0= )
+	jit? ( >=sys-devel/autoconf-archive-2015.02.04 >=sys-devel/llvm-3.3:0= <sys-devel/llvm-3.6:0= )
 	opengl? (
 		media-libs/freetype:2=
 		media-libs/fontconfig:1.0=
@@ -87,8 +87,10 @@ src_prepare() {
 		use gui && append-ldflags -Wl,-rpath,"${EPREFIX}/usr/$(get_libdir)/qt4"
 	fi
 
+	# Octave fails to build with LLVM 3.5 http://savannah.gnu.org/bugs/?41061
 	has_version ">=sys-devel/llvm-3.5" && \
-		epatch "${FILESDIR}"/${PN}-4.0.0-llvm-3.5.patch
+		epatch "${FILESDIR}"/${PN}-4.0.0-llvm-3.5.patch && \
+		epatch "${FILESDIR}"/${PN}-4.0.0-llvm-3.5-gnulib-hg.patch
 
 	# Fix bug 501756
 	sed -i \
@@ -110,7 +112,7 @@ src_configure() {
 		--localstatedir="${EPREFIX}/var/state/octave"
 		--with-blas="$($(tc-getPKG_CONFIG) --libs blas)"
 		--with-lapack="$($(tc-getPKG_CONFIG) --libs lapack)"
-		--without-64
+		--disable-64
 		$(use_enable doc docs)
 		$(use_enable java)
 		$(use_enable gui)

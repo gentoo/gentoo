@@ -1,6 +1,16 @@
 # ChangeLog for sci-mathematics/octave
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/octave/ChangeLog,v 1.176 2015/07/07 13:25:35 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/octave/ChangeLog,v 1.177 2015/07/09 14:24:51 gienah Exp $
+
+  09 Jul 2015; Mark Wright <gienah@gentoo.org>
+  +files/octave-4.0.0-llvm-3.5-gnulib-hg.patch, octave-4.0.0.ebuild:
+  Fix Bug 554290 - sci-mathematics/octave-4.0.0 fails to build - syntax error
+  near unexpected token -std=c++11, AX_CHECK_COMPILE_FLAG(-std=c++11,' - thanks
+  to Nikolaos Chatzidakis for reporting, PL Hayes, Francisco Vazquez for
+  helping. Correct --without-64 to --disable-64. Apply octave-4.0.0-llvm-3.5
+  -gnulib-hg.patch from http://savannah.gnu.org/bugs/?41061 to fix compile error
+  with some configurations (gcc 4.8.3 in a mostly stable chroot with llvm 3.5.0,
+  USE=jit)
 
 *octave-4.0.0 (07 Jul 2015)
 

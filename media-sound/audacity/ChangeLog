@@ -1,6 +1,11 @@
 # ChangeLog for media-sound/audacity
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/audacity/ChangeLog,v 1.189 2015/07/04 18:08:28 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/audacity/ChangeLog,v 1.190 2015/07/09 14:17:15 yngwin Exp $
+
+  09 Jul 2015; Ben de Groot <yngwin@gentoo.org> -audacity-2.0.0.ebuild,
+  -audacity-2.0.1.ebuild, -audacity-2.0.3.ebuild, audacity-2.0.2.ebuild,
+  audacity-2.0.5.ebuild, metadata.xml:
+  Update HOMEPAGE, SRC_URI, metadata since upstream moved (bug #544762)
 
   04 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> audacity-2.0.5.ebuild:
   amd64 stable wrt bug #522036

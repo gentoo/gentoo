@@ -1,6 +1,6 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/audacity/audacity-2.0.2.ebuild,v 1.7 2013/06/29 19:40:54 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/audacity/audacity-2.0.2.ebuild,v 1.8 2015/07/09 14:17:15 yngwin Exp $
 
 EAPI=4
 
@@ -10,8 +10,8 @@ MY_PV=$(replace_version_separator 3 -)
 MY_P="${PN}-src-${MY_PV}"
 MY_T="${PN}-minsrc-${MY_PV}"
 DESCRIPTION="Free crossplatform audio editor"
-HOMEPAGE="http://audacity.sourceforge.net/"
-SRC_URI="http://audacity.googlecode.com/files/${MY_T}.tar.bz2"
+HOMEPAGE="http://web.audacityteam.org/"
+SRC_URI="mirror://gentoo/${MY_T}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
