@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/prawn-table
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/prawn-table/ChangeLog,v 1.11 2015/05/17 12:10:45 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/prawn-table/ChangeLog,v 1.12 2015/07/09 05:22:46 graaff Exp $
+
+  09 Jul 2015; Hans de Graaff <graaff@gentoo.org> prawn-table-0.2.1.ebuild:
+  Add ruby22.
 
   17 May 2015; Manuel Rüger <mrueg@gentoo.org> prawn-table-0.2.1.ebuild:
   Silence repoman warnings.
