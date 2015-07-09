@@ -1,6 +1,11 @@
 # ChangeLog for app-crypt/keybase
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/keybase/ChangeLog,v 1.4 2015/06/07 07:25:12 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/keybase/ChangeLog,v 1.5 2015/07/09 17:54:57 nicolasbock Exp $
+
+*keybase-0.8.9 (09 Jul 2015)
+
+  09 Jul 2015; Nicolas Bock <nicolasbock@gentoo.org> +keybase-0.8.9.ebuild:
+  Version bump.
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml
