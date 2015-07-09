@@ -7,5 +7,5 @@ IUSE=flac mac mp3 mp4 ogg replaygain tta wavpack linguas_cs_CZ linguas_cs lingua
 LICENSE=LGPL-2.1
 RDEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 dev-libs/uchardet media-sound/shntool[mac?] flac? ( media-libs/flac ) mac? ( media-sound/mac ) mp3? ( media-sound/lame ) mp4? ( media-libs/faac ) ogg? ( media-sound/vorbis-tools ) tta? ( media-sound/ttaenc ) wavpack? ( media-sound/wavpack ) replaygain? ( mp3? ( media-sound/mp3gain ) ogg? ( media-sound/vorbisgain ) )
 SLOT=0
-_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	flag-o-matic	c9602887773166fe300444712fc7ff98	git-r3	ab80045e5d080584334f33013f4df21d	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	l10n	33bde4fb0cfd3a21a277b66bfd837e19	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	flag-o-matic	c9602887773166fe300444712fc7ff98	git-r3	727a612b4c6247766904e3f74a326e2b	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	l10n	33bde4fb0cfd3a21a277b66bfd837e19	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=3e91135f92328030712666f8b1962d75

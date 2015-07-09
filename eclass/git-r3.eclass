@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/git-r3.eclass,v 1.49 2015/06/22 08:39:36 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/git-r3.eclass,v 1.50 2015/07/09 20:21:05 mgorny Exp $
 
 # @ECLASS: git-r3.eclass
 # @MAINTAINER:
@@ -710,16 +710,23 @@ git-r3_fetch() {
 			local subname=${submodules[0]}
 			local url=${submodules[1]}
 			local path=${submodules[2]}
-			local commit=$(git rev-parse "${local_ref}:${path}")
 
-			if [[ ! ${commit} ]]; then
-				die "Unable to get commit id for submodule ${subname}"
+			# use only submodules for which path does exist
+			# (this is in par with 'git submodule'), bug #551100
+			# note: git cat-file does not work for submodules
+			if [[ $(git ls-tree -d "${local_ref}" "${path}") ]]
+			then
+				local commit=$(git rev-parse "${local_ref}:${path}" || die)
+
+				if [[ ! ${commit} ]]; then
+					die "Unable to get commit id for submodule ${subname}"
+				fi
+
+				local subrepos
+				_git-r3_set_subrepos "${url}" "${repos[@]}"
+
+				git-r3_fetch "${subrepos[*]}" "${commit}" "${local_id}/${subname}"
 			fi
-
-			local subrepos
-			_git-r3_set_subrepos "${url}" "${repos[@]}"
-
-			git-r3_fetch "${subrepos[*]}" "${commit}" "${local_id}/${subname}"
 
 			submodules=( "${submodules[@]:3}" ) # shift
 		done
@@ -849,11 +856,16 @@ git-r3_checkout() {
 			local subname=${submodules[0]}
 			local url=${submodules[1]}
 			local path=${submodules[2]}
-			local subrepos
-			_git-r3_set_subrepos "${url}" "${repos[@]}"
 
-			git-r3_checkout "${subrepos[*]}" "${out_dir}/${path}" \
-				"${local_id}/${subname}"
+			# use only submodules for which path does exist
+			# (this is in par with 'git submodule'), bug #551100
+			if [[ -d ${out_dir}/${path} ]]; then
+				local subrepos
+				_git-r3_set_subrepos "${url}" "${repos[@]}"
+
+				git-r3_checkout "${subrepos[*]}" "${out_dir}/${path}" \
+					"${local_id}/${subname}"
+			fi
 
 			submodules=( "${submodules[@]:3}" ) # shift
 		done

@@ -1,8 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/irssi/irssi-0.8.16.ebuild,v 1.13 2014/11/17 23:31:36 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/irssi/irssi-0.8.16.ebuild,v 1.15 2015/07/09 19:49:57 swegener Exp $
 
 EAPI=5
+
+AUTOTOOLS_AUTORECONF=1
 
 inherit autotools-utils eutils flag-o-matic perl-module toolchain-funcs
 
@@ -20,7 +22,7 @@ IUSE="ipv6 +perl selinux ssl socks5 +proxy"
 
 CDEPEND="sys-libs/ncurses
 	>=dev-libs/glib-2.6.0
-	ssl? ( dev-libs/openssl )
+	ssl? ( dev-libs/openssl:= )
 	perl? ( dev-lang/perl )
 	socks5? ( >=net-proxy/dante-1.1.18 )"
 DEPEND="${CDEPEND}
@@ -36,7 +38,6 @@ src_prepare() {
 	sed -e "s@pkg-config@$(tc-getPKG_CONFIG)@g" \
 		-i "${S}/curses.m4" \
 		|| die "Could not configure pkg-config in curses.m4"
-	AUTOTOOLS_AUTORECONF=1
 	autotools-utils_src_prepare
 }
 

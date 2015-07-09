@@ -6,5 +6,5 @@ HOMEPAGE=http://www.gentoo.org/proj/en/perl/
 LICENSE=GPL-2
 RDEPEND=app-shells/bash || ( >=sys-apps/coreutils-8.15 app-misc/realpath sys-freebsd/freebsd-bin ) dev-lang/perl || ( ( sys-apps/portage app-portage/portage-utils ) sys-apps/pkgcore sys-apps/paludis )
 SLOT=0
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	git-r3	ab80045e5d080584334f33013f4df21d	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	git-r3	727a612b4c6247766904e3f74a326e2b	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=9995016ee29dd587b4d8d60960a005c6

@@ -7,5 +7,5 @@ IUSE=debug linguas_ar linguas_be linguas_bg linguas_bn linguas_ca linguas_cs lin
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.18:2 >=x11-libs/gtk+-2.16:2 >=lxde-base/menu-cache-0.3.2 x11-misc/shared-mime-info >=x11-libs/libfm-9999:=[gtk(+)] virtual/eject virtual/freedesktop-icon-theme
 SLOT=0
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	git-r3	ab80045e5d080584334f33013f4df21d	l10n	33bde4fb0cfd3a21a277b66bfd837e19	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	readme.gentoo	106edea5533517715013de909a333abd	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	git-r3	727a612b4c6247766904e3f74a326e2b	l10n	33bde4fb0cfd3a21a277b66bfd837e19	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	readme.gentoo	106edea5533517715013de909a333abd	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=2d2a0333325c55bfaba3cb99060dab8e

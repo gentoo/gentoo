@@ -1,6 +1,10 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1706 2015/07/09 15:43:03 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1707 2015/07/09 20:21:05 mgorny Exp $
+
+  09 Jul 2015; Michał Górny <mgorny@gentoo.org> git-r3.eclass:
+  Do not attempt to use submodules for which the checkout path does not exist
+  (has been removed), bug #551100.
 
   09 Jul 2015; Michał Górny <mgorny@gentoo.org> gnome2.eclass:
   Remove meaningless nonfatal from elibtoolize call, bug #551154.

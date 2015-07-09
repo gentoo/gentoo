@@ -8,5 +8,5 @@ LICENSE=GPL-3
 RDEPEND=qt4? ( dev-qt/qtgui:4 dev-qt/qtcore:4 ) qt5? ( dev-qt/qtgui:5 dev-qt/qtcore:5 dev-qt/qtwidgets:5 ) media-libs/libsdl virtual/ffmpeg
 REQUIRED_USE=tools? ( || ( qt4 qt5 ) )
 SLOT=0
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	autotools-multilib	037c4046d25f29e78dd44dccabd5d66b	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	git-r3	ab80045e5d080584334f33013f4df21d	libtool	52d0e17251d04645ffaa61bfdd858944	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multilib-build	e733e978b7fa70607cc221fd9c070db6	multilib-minimal	13dd976916c35a1e2c8d170e840c7018	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	autotools-multilib	037c4046d25f29e78dd44dccabd5d66b	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	git-r3	727a612b4c6247766904e3f74a326e2b	libtool	52d0e17251d04645ffaa61bfdd858944	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multilib-build	e733e978b7fa70607cc221fd9c070db6	multilib-minimal	13dd976916c35a1e2c8d170e840c7018	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=84921ff2ecf7be5c7a856bb4cc837170

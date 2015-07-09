@@ -8,5 +8,5 @@ LICENSE=BSD
 RDEPEND=cuda? ( >=dev-util/nvidia-cuda-toolkit-5.5 ) mpi? ( sci-libs/hdf5[mpi] dev-libs/boost[mpi] ) !mpi? ( !sci-libs/hdf5[mpi] ) octave? ( >=sci-mathematics/octave-3.6.4-r1 )
 SLOT=0
 SRC_URI=test? ( http://dev.gentoo.org/~bicatali/distfiles/flann-1.8.4-testdata.tar.xz )
-_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	cuda	2c8df288287b71bc5abbb1ae33869059	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	git-r3	ab80045e5d080584334f33013f4df21d	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	cuda	2c8df288287b71bc5abbb1ae33869059	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	git-r3	727a612b4c6247766904e3f74a326e2b	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=dd8bc0ed909d578200f5557d8a41d52b
