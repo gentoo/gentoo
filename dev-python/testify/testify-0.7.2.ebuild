@@ -1,0 +1,53 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/testify/testify-0.7.2.ebuild,v 1.1 2015/07/09 07:47:28 idella4 Exp $
+
+EAPI=5
+
+# Still appears to not support >=py3.3
+PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
+
+inherit distutils-r1 vcs-snapshot
+
+DESCRIPTION="A more pythonic replacement for the unittest module and nose"
+HOMEPAGE="https://github.com/Yelp/testify http://pypi.python.org/pypi/testify/"
+SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
+
+LICENSE="Apache-2.0"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
+IUSE="test"
+
+RDEPEND="dev-python/pyyaml[${PYTHON_USEDEP}]
+	dev-python/sqlalchemy[${PYTHON_USEDEP}]
+	dev-python/mock[${PYTHON_USEDEP}]
+	www-servers/tornado[${PYTHON_USEDEP}]
+	>=dev-python/six-1.7.3[${PYTHON_USEDEP}]"
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	test? ( ${RDEPEND} )"
+
+python_prepare_all() {
+	# Correct typo in setup.py
+	sed -e 's:mock,:mock:' -i setup.py || die
+
+	# Correct use of local importing in pertinent test_ files
+	sed -e s':from .test:from test:' \
+		-i test/test_runner_test.py || die
+
+	sed -e s':from .discovery:from discovery:' \
+		-i test/test_runner_server_test.py || die
+
+	sed -e s':from .test:from test:' \
+		-i test/test_runner_server_test.py || die
+
+	distutils-r1_python_prepare_all
+}
+
+python_test() {
+	einfo; einfo "Output reporting exceptions \"ImportError: No module named <module>\""
+	einfo "are instances of exceptions expected to be raised, similar to xfails by nose"; einfo""
+	for test in test/test_*_test.py;
+	do
+		"${PYTHON}" $test || die "test $test failed under ${EPYTHON}"
+	done
+}
