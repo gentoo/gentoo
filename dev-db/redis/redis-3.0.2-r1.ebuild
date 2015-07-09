@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/redis/redis-3.0.2.ebuild,v 1.1 2015/07/08 09:56:44 ultrabug Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/redis/redis-3.0.2-r1.ebuild,v 1.1 2015/07/09 08:34:30 ultrabug Exp $
 
 EAPI=5
 
@@ -97,7 +97,7 @@ src_install() {
 	newconfd "${FILESDIR}/redis.confd" redis
 	newinitd "${FILESDIR}/redis.initd-4" redis
 
-	systemd_dounit "${FILESDIR}/redis.service-2"
+	systemd_newunit "${FILESDIR}/redis.service-2" redis.service
 	systemd_newtmpfilesd "${FILESDIR}/redis.tmpfiles" redis.conf
 
 	nonfatal dodoc 00-RELEASENOTES BUGS CONTRIBUTING MANIFESTO README
