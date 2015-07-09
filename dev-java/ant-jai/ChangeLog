@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/ant-jai
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-jai/ChangeLog,v 1.36 2014/08/03 19:12:33 sera Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-jai/ChangeLog,v 1.37 2015/07/09 21:11:07 chewi Exp $
+
+  09 Jul 2015; James Le Cuirot <chewi@gentoo.org> -ant-jai-1.8.2.ebuild,
+  -ant-jai-1.8.4.ebuild, -ant-jai-1.9.1.ebuild:
+  Remove old versions.
 
   03 Aug 2014; Ralph Sennhauser <sera@gentoo.org> -ant-jai-1.7.1.ebuild,
   -ant-jai-1.8.0.ebuild, -ant-jai-1.8.1.ebuild:

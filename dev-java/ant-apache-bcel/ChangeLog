@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/ant-apache-bcel
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-apache-bcel/ChangeLog,v 1.41 2014/03/08 16:23:40 tomwij Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-apache-bcel/ChangeLog,v 1.42 2015/07/09 21:09:12 chewi Exp $
+
+  09 Jul 2015; James Le Cuirot <chewi@gentoo.org> -ant-apache-bcel-1.8.2.ebuild,
+  -ant-apache-bcel-1.8.4.ebuild, -ant-apache-bcel-1.9.1.ebuild:
+  Remove old versions.
 
   08 Mar 2014; Tom Wijsman <TomWij@gentoo.org> -ant-apache-bcel-1.7.1.ebuild,
   -ant-apache-bcel-1.8.0.ebuild, -ant-apache-bcel-1.8.1.ebuild:

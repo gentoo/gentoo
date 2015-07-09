@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/ant-junit4
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-junit4/ChangeLog,v 1.32 2014/03/08 17:41:34 tomwij Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-junit4/ChangeLog,v 1.33 2015/07/09 21:12:17 chewi Exp $
+
+  09 Jul 2015; James Le Cuirot <chewi@gentoo.org> -ant-junit4-1.8.2.ebuild,
+  -ant-junit4-1.8.4.ebuild, -ant-junit4-1.9.1.ebuild:
+  Remove old versions.
 
   08 Mar 2014; Tom Wijsman <TomWij@gentoo.org> -ant-junit4-1.7.1.ebuild,
   -ant-junit4-1.8.0-r1.ebuild, -ant-junit4-1.8.1.ebuild:

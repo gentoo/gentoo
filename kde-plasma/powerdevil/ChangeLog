@@ -1,6 +1,10 @@
 # ChangeLog for kde-plasma/powerdevil
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-plasma/powerdevil/ChangeLog,v 1.3 2015/06/30 20:50:15 johu Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-plasma/powerdevil/ChangeLog,v 1.4 2015/07/09 20:49:55 johu Exp $
+
+  09 Jul 2015; Johannes Huber <johu@gentoo.org> -powerdevil-5.3.1-r1.ebuild,
+  -powerdevil-5.3.1.ebuild:
+  Remove KDE Plasma 5.3.1
 
 *powerdevil-5.3.2 (30 Jun 2015)
 

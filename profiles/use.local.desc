@@ -3250,7 +3250,6 @@ kde-misc/plasma-nm:modemmanager - Enable support for mobile broadband devices
 kde-misc/plasma-nm:openconnect - Build support for the OpenConnect VPN client
 kde-misc/tellico:addressbook - Add support for kdepim addressbook (kabc)
 kde-misc/tellico:nepomuk - Enable Nepomuk based semantic desktop support (deprecated)
-kde-plasma/breeze:kde4 - Build the Breeze style for KDE 4
 kde-plasma/kdeplasma-addons:ibus - Use ibus input method via app-i18n/ibus
 kde-plasma/kdeplasma-addons:scim - Enable applets that use app-i18n/scim
 kde-plasma/kfilemetadata:epub - Adds support for reading EPUB ebook metadata

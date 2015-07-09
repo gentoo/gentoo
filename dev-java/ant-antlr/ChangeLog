@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/ant-antlr
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-antlr/ChangeLog,v 1.52 2014/08/03 19:08:53 sera Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-antlr/ChangeLog,v 1.53 2015/07/09 21:09:01 chewi Exp $
+
+  09 Jul 2015; James Le Cuirot <chewi@gentoo.org> -ant-antlr-1.8.2.ebuild,
+  -ant-antlr-1.8.4.ebuild, -ant-antlr-1.9.1.ebuild:
+  Remove old versions.
 
   03 Aug 2014; Ralph Sennhauser <sera@gentoo.org> -ant-antlr-1.7.1-r1.ebuild,
   -ant-antlr-1.8.0.ebuild, -ant-antlr-1.8.1.ebuild:

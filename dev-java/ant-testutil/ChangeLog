@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/ant-testutil
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-testutil/ChangeLog,v 1.25 2014/03/08 16:27:31 tomwij Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-testutil/ChangeLog,v 1.26 2015/07/09 21:12:58 chewi Exp $
+
+  09 Jul 2015; James Le Cuirot <chewi@gentoo.org> -ant-testutil-1.8.2.ebuild,
+  -ant-testutil-1.8.4.ebuild, -ant-testutil-1.9.1.ebuild:
+  Remove old versions.
 
   08 Mar 2014; Tom Wijsman <TomWij@gentoo.org> -ant-testutil-1.8.0.ebuild,
   -ant-testutil-1.8.1.ebuild:

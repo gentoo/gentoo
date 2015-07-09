@@ -1,6 +1,12 @@
 # ChangeLog for dev-java/ant-core
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-core/ChangeLog,v 1.135 2015/05/23 22:48:44 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-core/ChangeLog,v 1.136 2015/07/09 21:10:56 chewi Exp $
+
+  09 Jul 2015; James Le Cuirot <chewi@gentoo.org> -ant-core-1.7.1-r4.ebuild,
+  -ant-core-1.7.1-r5.ebuild, -ant-core-1.8.0-r1.ebuild,
+  -ant-core-1.8.0-r2.ebuild, -ant-core-1.8.1.ebuild, -ant-core-1.8.2.ebuild,
+  -ant-core-1.8.4-r1.ebuild, -ant-core-1.8.4.ebuild, -ant-core-1.9.1.ebuild:
+  Remove old versions.
 
   23 May 2015; James Le Cuirot <chewi@gentoo.org> ant-core-1.9.2.ebuild:
   Allow building with gcj-jdk for bootstrapping icedtea. This used to be implied
