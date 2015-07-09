@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16657 2015/07/09 01:56:37 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16658 2015/07/09 03:13:09 williamh Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -106,7 +106,7 @@ app-backup/cyphertite
 
 # Mike Gilbert <floppym@gentoo.org> (19 Jun 2015)
 # Masked until all libgudev providers have been updated, bug 552036.
-~sys-fs/udev-221
+~sys-fs/udev-222
 ~sys-apps/systemd-221
 ~sys-apps/systemd-222
 ~virtual/libgudev-230
