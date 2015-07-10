@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install nofetch postinst postrm preinst prepare prerm pretend setup unpack
+DEPEND=<=x11-base/xorg-server-1.17.49[-minimal] >=app-eselect/eselect-opengl-1.0.7 app-eselect/eselect-opencl sys-power/acpid x11-apps/xauth !x11-libs/xvba-video virtual/glu[abi_x86_32(-)?,abi_x86_64(-)?] x11-libs/libX11[abi_x86_32(-)?,abi_x86_64(-)?] x11-libs/libXext[abi_x86_32(-)?,abi_x86_64(-)?] x11-libs/libXinerama[abi_x86_32(-)?,abi_x86_64(-)?] x11-libs/libXrandr[abi_x86_32(-)?,abi_x86_64(-)?] x11-libs/libXrender[abi_x86_32(-)?,abi_x86_64(-)?] qt4? ( x11-libs/libICE x11-libs/libSM x11-libs/libXcursor x11-libs/libXfixes x11-libs/libXxf86vm dev-qt/qtcore:4 dev-qt/qtgui:4[accessibility] ) gdm-hack? ( x11-base/xorg-server:= ) !x11-drivers/ati-drivers:legacy x11-proto/inputproto x11-proto/xf86miscproto x11-proto/xf86vidmodeproto x11-proto/xineramaproto x11-libs/libXtst sys-apps/findutils app-misc/pax-utils app-arch/unzip kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=Ati precompiled drivers for Radeon Evergreen (HD5000 Series) and newer chipsets
+EAPI=5
+HOMEPAGE=http://www.amd.com
+IUSE=debug +modules qt4 static-libs pax_kernel gdm-hack abi_x86_32 abi_x86_64 kernel_linux
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=AMD GPL-2 QPL-1.0
+RDEPEND=<=x11-base/xorg-server-1.17.49[-minimal] >=app-eselect/eselect-opengl-1.0.7 app-eselect/eselect-opencl sys-power/acpid x11-apps/xauth !x11-libs/xvba-video virtual/glu[abi_x86_32(-)?,abi_x86_64(-)?] x11-libs/libX11[abi_x86_32(-)?,abi_x86_64(-)?] x11-libs/libXext[abi_x86_32(-)?,abi_x86_64(-)?] x11-libs/libXinerama[abi_x86_32(-)?,abi_x86_64(-)?] x11-libs/libXrandr[abi_x86_32(-)?,abi_x86_64(-)?] x11-libs/libXrender[abi_x86_32(-)?,abi_x86_64(-)?] qt4? ( x11-libs/libICE x11-libs/libSM x11-libs/libXcursor x11-libs/libXfixes x11-libs/libXxf86vm dev-qt/qtcore:4 dev-qt/qtgui:4[accessibility] ) gdm-hack? ( x11-base/xorg-server:= ) !x11-drivers/ati-drivers:legacy kernel_linux? ( virtual/modutils )
+REQUIRED_USE=|| ( abi_x86_32 abi_x86_64 )
+RESTRICT=bindist test
+SLOT=1
+SRC_URI=mirror://gentoo/amd-driver-installer-15.20.1046-x86.x86_64.zip http://developer.amd.com/wordpress/media/2012/10/xvba-sdk-0.74-404001.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	linux-info	8cbc678e083c23e4ad546ca6509cf304	linux-mod	101302d4b7b694ea9622bbffb187d0de	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multilib-build	e733e978b7fa70607cc221fd9c070db6	pax-utils	dfe060cb70d89757fde5c1ff8405e950	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=940e19c2de8f6030bb091fb472eb4d21

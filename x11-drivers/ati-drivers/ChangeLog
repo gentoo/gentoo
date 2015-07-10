@@ -1,6 +1,12 @@
 # ChangeLog for x11-drivers/ati-drivers
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/ati-drivers/ChangeLog,v 1.380 2015/06/14 18:12:07 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/ati-drivers/ChangeLog,v 1.381 2015/07/10 17:10:47 mrueg Exp $
+
+*ati-drivers-15.7 (10 Jul 2015)
+
+  10 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +ati-drivers-15.7.ebuild:
+  Version bump. Adds epatch_user support. Proxy commit for Emil Karlson. Fixes
+  bugs #551458 #553244.
 
   14 Jun 2015; Ulrich Müller <ulm@gentoo.org> ati-drivers-14.4_p1.ebuild,
   ati-drivers-14.6_beta2.ebuild, ati-drivers-14.9-r2.ebuild,

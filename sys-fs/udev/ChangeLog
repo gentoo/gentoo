@@ -1,6 +1,9 @@
 # ChangeLog for sys-fs/udev
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/udev/ChangeLog,v 1.1116 2015/07/09 03:53:58 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/udev/ChangeLog,v 1.1117 2015/07/10 16:43:44 williamh Exp $
+
+  10 Jul 2015; William Hubbs <williamh@gentoo.org> udev-222.ebuild:
+  Fixes for bug #554408
 
 *udev-222 (09 Jul 2015)
 
