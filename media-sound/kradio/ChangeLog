@@ -1,6 +1,11 @@
 # ChangeLog for media-sound/kradio
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/kradio/ChangeLog,v 1.38 2014/05/16 17:20:04 kensington Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/kradio/ChangeLog,v 1.39 2015/07/10 22:10:14 mrueg Exp $
+
+*kradio-4.0.8 (10 Jul 2015)
+
+  10 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +kradio-4.0.8.ebuild:
+  Version bump.
 
   16 May 2014; Michael Palimaka <kensington@gentoo.org>
   +files/kradio-4.0.7-include.patch, kradio-4.0.7.ebuild:
