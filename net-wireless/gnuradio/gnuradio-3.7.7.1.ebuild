@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/gnuradio/gnuradio-3.7.7.ebuild,v 1.1 2015/05/05 04:35:51 zerochaos Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/gnuradio/gnuradio-3.7.7.1.ebuild,v 1.1 2015/07/10 19:34:48 zerochaos Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
@@ -18,7 +18,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 	KEYWORDS=""
 else
-	SRC_URI="http://s3-dist.gnuradio.org/${P}.tar.gz"
+	SRC_URI="http://gnuradio.org/releases/gnuradio/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
@@ -89,7 +89,7 @@ RDEPEND="${PYTHON_DEPS}
 	"
 
 DEPEND="${RDEPEND}
-	dev-lang/swig
+	>=dev-lang/swig-3.0.5
 	dev-python/cheetah[${PYTHON_USEDEP}]
 	virtual/pkgconfig
 	doc? (
@@ -111,7 +111,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# TODO: docs are installed to /usr/share/doc/${PN} not /usr/share/doc/${PF}
 	# SYSCONFDIR/GR_PREFSDIR default to install below CMAKE_INSTALL_PREFIX
 	#audio provider is still automagic
 	#zeromq missing deps isn't fatal
@@ -155,6 +154,7 @@ src_configure() {
 		-DENABLE_GR_CORE=ON \
 		-DSYSCONFDIR="${EPREFIX}"/etc \
 		-DPYTHON_EXECUTABLE="${PYTHON}"
+		-DGR_PKG_DOC_DIR='${GR_DOC_DIR}/${CMAKE_PROJECT_NAME}'-"${PVF}"
 	)
 	use vocoder && mycmakeargs+=( -DGR_USE_SYSTEM_LIBGSM=TRUE )
 	cmake-utils_src_configure
