@@ -1,6 +1,11 @@
 # ChangeLog for dev-lang/mono
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/mono/ChangeLog,v 1.261 2014/12/11 03:50:00 prometheanfire Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/mono/ChangeLog,v 1.262 2015/07/10 07:22:59 patrick Exp $
+
+*mono-3.12.1 (10 Jul 2015)
+
+  10 Jul 2015; Patrick Lauer <patrick@gentoo.org> +mono-3.12.1.ebuild:
+  Bump, ebuild borrowed from dotnet overlay
 
   11 Dec 2014; Matthew Thode <prometheanfire@gentoo.org> mono-2.10.9-r2.ebuild:
   fixing stable mono for bug 467238

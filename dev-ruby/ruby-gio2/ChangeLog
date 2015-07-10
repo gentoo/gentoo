@@ -1,6 +1,11 @@
 # ChangeLog for dev-ruby/ruby-gio2
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gio2/ChangeLog,v 1.35 2015/07/05 10:30:10 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gio2/ChangeLog,v 1.36 2015/07/10 07:11:50 graaff Exp $
+
+*ruby-gio2-2.2.5 (10 Jul 2015)
+
+  10 Jul 2015; Hans de Graaff <graaff@gentoo.org> +ruby-gio2-2.2.5.ebuild:
+  Version bump. Run tests. Fix dependencies.
 
 *ruby-gio2-2.2.3-r1 (05 Jul 2015)
 

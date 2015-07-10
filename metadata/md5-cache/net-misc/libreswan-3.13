@@ -4,10 +4,10 @@ DESCRIPTION=IPsec implementation for Linux, fork of Openswan
 EAPI=5
 HOMEPAGE=https://libreswan.org/
 IUSE=caps curl dnssec ldap pam
-KEYWORDS=~amd64 ~ppc ~x86
+KEYWORDS=amd64 ~ppc x86
 LICENSE=GPL-2 BSD-4 RSA DES
 RDEPEND=dev-libs/gmp:0= dev-libs/nspr caps? ( sys-libs/libcap-ng ) curl? ( net-misc/curl ) dnssec? ( net-dns/unbound net-libs/ldns ) ldap? ( net-nds/openldap ) pam? ( sys-libs/pam ) dev-libs/nss[utils(+)] sys-apps/iproute2 !net-misc/openswan !net-misc/strongswan
 SLOT=0
 SRC_URI=https://download.libreswan.org/libreswan-3.13.tar.gz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=495eca4196b4fc8ddf8021811d64bcae
+_md5_=6a8ee3192d38f545474331d6113fcbbe

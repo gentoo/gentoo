@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare pretend setup test
+DEPEND=!minimal? ( >=dev-dotnet/libgdiplus-2.10 ) ia64? ( sys-libs/libunwind ) nls? ( sys-devel/gettext ) sys-devel/bc virtual/yacc pax_kernel? ( sys-apps/elfix )
+DESCRIPTION=Mono runtime and class libraries, a C# compiler/interpreter
+EAPI=5
+HOMEPAGE=http://www.mono-project.com/Main_Page
+IUSE=nls minimal pax_kernel xen doc debug
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux
+LICENSE=MIT LGPL-2.1 GPL-2 BSD-4 NPL-1.1 Ms-PL GPL-2-with-linking-exception IDPL
+RDEPEND=!minimal? ( >=dev-dotnet/libgdiplus-2.10 ) ia64? ( sys-libs/libunwind ) nls? ( sys-devel/gettext ) || ( www-client/links www-client/lynx )
+SLOT=0
+SRC_URI=http://download.mono-project.com/sources/mono/mono-3.12.1.tar.bz2
+_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	linux-info	8cbc678e083c23e4ad546ca6509cf304	mono-env	59ca1177366cc9e14521d3501e9bb281	multilib	62927b3db3a589b0806255f3a002d5d3	pax-utils	dfe060cb70d89757fde5c1ff8405e950	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=2b5784a6595690415415f31a7b4deb89

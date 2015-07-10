@@ -1,6 +1,14 @@
 # ChangeLog for dev-ruby/redcloth
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/redcloth/ChangeLog,v 1.100 2015/06/07 19:21:57 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/redcloth/ChangeLog,v 1.101 2015/07/10 06:45:26 graaff Exp $
+
+*redcloth-4.2.9-r4 (10 Jul 2015)
+*redcloth-4.2.9-r3 (10 Jul 2015)
+
+  10 Jul 2015; Hans de Graaff <graaff@gentoo.org> -redcloth-4.2.9-r2.ebuild,
+  +redcloth-4.2.9-r3.ebuild, +redcloth-4.2.9-r4.ebuild,
+  +files/redcloth-4.2.9-cve-2012-6684.patch:
+  Add debian patch for bug 536008.
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml
