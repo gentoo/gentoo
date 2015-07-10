@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16658 2015/07/09 03:13:09 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16659 2015/07/10 01:09:18 floppym Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -103,13 +103,6 @@ app-eselect/eselect-ecj
 # The Cyphertite backup service is closing as of August 18th, 2015.
 # Package masked for removal in 30 days. bug 552578
 app-backup/cyphertite
-
-# Mike Gilbert <floppym@gentoo.org> (19 Jun 2015)
-# Masked until all libgudev providers have been updated, bug 552036.
-~sys-fs/udev-222
-~sys-apps/systemd-221
-~sys-apps/systemd-222
-~virtual/libgudev-230
 
 # Jauhien Piatlicki <jauhien@gentoo.org> (16 Jun 2015)
 # Upstream does not provide these as separated packages.

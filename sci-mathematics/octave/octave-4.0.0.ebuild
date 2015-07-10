@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/octave/octave-4.0.0.ebuild,v 1.2 2015/07/09 14:24:51 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/octave/octave-4.0.0.ebuild,v 1.3 2015/07/10 01:12:45 gienah Exp $
 
 EAPI=5
 
@@ -35,7 +35,9 @@ RDEPEND="
 			media-gfx/graphicsmagick[cxx]
 			media-gfx/imagemagick[cxx] ) )
 	java? ( >=virtual/jre-1.6.0:* )
-	jit? ( >=sys-devel/autoconf-archive-2015.02.04 >=sys-devel/llvm-3.3:0= <sys-devel/llvm-3.6:0= )
+	jit? (
+		>=sys-devel/autoconf-archive-2015.02.04
+		>=sys-devel/llvm-3.3:0= <sys-devel/llvm-3.6:0= )
 	opengl? (
 		media-libs/freetype:2=
 		media-libs/fontconfig:1.0=
@@ -88,7 +90,8 @@ src_prepare() {
 	fi
 
 	# Octave fails to build with LLVM 3.5 http://savannah.gnu.org/bugs/?41061
-	has_version ">=sys-devel/llvm-3.5" && \
+	use jit && \
+		has_version ">=sys-devel/llvm-3.5" && \
 		epatch "${FILESDIR}"/${PN}-4.0.0-llvm-3.5.patch && \
 		epatch "${FILESDIR}"/${PN}-4.0.0-llvm-3.5-gnulib-hg.patch
 

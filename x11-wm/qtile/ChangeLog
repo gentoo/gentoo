@@ -1,6 +1,12 @@
 # ChangeLog for x11-wm/qtile
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/qtile/ChangeLog,v 1.17 2015/04/08 17:29:19 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/qtile/ChangeLog,v 1.18 2015/07/10 01:21:12 radhermit Exp $
+
+*qtile-0.10.0 (10 Jul 2015)
+
+  10 Jul 2015; Tim Harder <radhermit@gentoo.org> +qtile-0.10.0.ebuild,
+  qtile-9999.ebuild:
+  Version bump.
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> qtile-0.5-r1.ebuild,
   qtile-0.6.ebuild, qtile-0.7.0.ebuild, qtile-0.8.0.ebuild:

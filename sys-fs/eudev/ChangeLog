@@ -1,6 +1,11 @@
 # ChangeLog for sys-fs/eudev
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/eudev/ChangeLog,v 1.164 2015/06/21 11:30:32 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/eudev/ChangeLog,v 1.165 2015/07/10 01:09:41 floppym Exp $
+
+*eudev-3.1.2-r10 (10 Jul 2015)
+
+  10 Jul 2015; Mike Gilbert <floppym@gentoo.org> +eudev-3.1.2-r10.ebuild:
+  Revbump for libgudev, bug 552036.
 
   21 Jun 2015; Anthony G. Basile <blueness@gentoo.org> eudev-3.0.ebuild,
   eudev-3.1.2.ebuild:

@@ -1,6 +1,10 @@
 # ChangeLog for sci-mathematics/octave
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/octave/ChangeLog,v 1.177 2015/07/09 14:24:51 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/octave/ChangeLog,v 1.178 2015/07/10 01:12:45 gienah Exp $
+
+  10 Jul 2015; Mark Wright <gienah@gentoo.org> octave-4.0.0.ebuild:
+  Thanks to PL Hayes for pointing out in bug 554290 that it needs a fix for to
+  work for USE=jit, llvm >= 3.5 installed, autoconf-archive not installed.
 
   09 Jul 2015; Mark Wright <gienah@gentoo.org>
   +files/octave-4.0.0-llvm-3.5-gnulib-hg.patch, octave-4.0.0.ebuild:

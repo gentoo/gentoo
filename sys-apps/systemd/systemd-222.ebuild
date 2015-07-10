@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/systemd-222.ebuild,v 1.1 2015/07/09 02:19:52 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/systemd-222.ebuild,v 1.2 2015/07/10 00:48:16 floppym Exp $
 
 EAPI=5
 
@@ -15,6 +15,8 @@ else
 	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~ia64 ~x86"
 fi
+UNIFONT=unifont-8.0.01
+SRC_URI+=" terminal? ( http://unifoundry.com/pub/${UNIFONT}/font-builds/${UNIFONT}.hex.gz )"
 
 inherit autotools-utils bash-completion-r1 linux-info multilib \
 	multilib-minimal pam python-any-r1 systemd toolchain-funcs udev \
@@ -96,7 +98,7 @@ DEPEND="${COMMON_DEPEND}
 	ia64? ( >=sys-kernel/linux-headers-3.9 )
 	virtual/pkgconfig
 	gnuefi? ( >=sys-boot/gnu-efi-3.0.2 )
-	terminal? ( ${PYTHON_DEPS} media-fonts/unifont[utils(+)] )
+	terminal? ( ${PYTHON_DEPS} )
 	test? ( >=sys-apps/dbus-1.6.8-r1:0 )"
 
 if [[ -n ${AUTOTOOLS_AUTORECONF} ]]; then
@@ -225,6 +227,7 @@ multilib_src_configure() {
 		$(multilib_native_use_enable selinux)
 		$(multilib_native_use_enable terminal)
 		$(multilib_native_use_with terminal python)
+		$(multilib_native_use_with terminal unifont "${WORKDIR}/${UNIFONT}.hex")
 		$(multilib_native_use_enable test tests)
 		$(multilib_native_use_enable test dbus)
 		$(multilib_native_use_enable xkb xkbcommon)
