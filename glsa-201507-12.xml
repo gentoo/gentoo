@@ -7,12 +7,12 @@
   </synopsis>
   <product type="ebuild">libcapsinetwork</product>
   <announced>July 10, 2015</announced>
-  <revised>July 10, 2015: 1</revised>
+  <revised>July 10, 2015: 2</revised>
   <bug>544324</bug>
   <access>remote</access>
   <affected>
-    <package name="net-libs/libcapsinetwork-0.3.0-r2" auto="yes" arch="*">
-      <vulnerable range="le"></vulnerable>
+    <package name="net-libs/libcapsinetwork" auto="yes" arch="*">
+      <vulnerable range="le">0.3.0-r2</vulnerable>
     </package>
   </affected>
   <background>
@@ -35,7 +35,7 @@
     <p>There is no known workaround at this time.</p>
   </workaround>
   <resolution>
-    <p>Gentoo discontinued support for libcapsinetwork.
+    <p>Gentoo discontinued support for libCapsiNetwork.
       We recommend that users unmerge it:
     </p>
     
