@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">portage</product>
   <announced>July 10, 2015</announced>
-  <revised>July 10, 2015: 1</revised>
+  <revised>July 10, 2015: 2</revised>
   <bug>469888</bug>
   <access>remote</access>
   <affected>
@@ -20,11 +20,13 @@
     <p>Portage is the package management and distribution system for Gentoo.</p>
   </background>
   <description>
-    <p>Portage does not verify X.509 SSL certificate properly if HTTPS is used.</p>
+    <p>Portage does not verify X.509 SSL certificates properly if HTTPS is
+      used.
+    </p>
   </description>
   <impact type="normal">
     <p>A remote attacker can spoof servers and modify binary package lists via
-      specially crafted certificate.
+      specially crafted certificates.
     </p>
   </impact>
   <workaround>
@@ -43,5 +45,5 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2100">CVE-2013-2100</uri>
   </references>
   <metadata tag="requester" timestamp="Mon, 11 May 2015 16:42:59 +0000">K_F</metadata>
-  <metadata tag="submitter" timestamp="Fri, 10 Jul 2015 13:09:53 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="Fri, 10 Jul 2015 13:59:39 +0000">Zlogene</metadata>
 </glsa>
