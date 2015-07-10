@@ -1,6 +1,14 @@
 # ChangeLog for media-libs/libmng
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libmng/ChangeLog,v 1.100 2015/03/03 08:44:13 dlan Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libmng/ChangeLog,v 1.102 2015/07/10 01:48:05 radhermit Exp $
+
+  10 Jul 2015; Tim Harder <radhermit@gentoo.org> Manifest:
+  Fix manifest.
+
+*libmng-2.0.3 (10 Jul 2015)
+
+  10 Jul 2015; Tim Harder <radhermit@gentoo.org> +libmng-2.0.3.ebuild:
+  Version bump, fix deps for static libs (bug #534784).
 
   03 Mar 2015; Yixun Lan <dlan@gentoo.org> libmng-2.0.2-r1.ebuild:
   add arm64 support, tested on A53 board

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/cryptography/cryptography-0.9.2.ebuild,v 1.1 2015/07/08 09:15:41 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/cryptography/cryptography-0.9.2.ebuild,v 1.2 2015/07/10 01:32:49 floppym Exp $
 
 EAPI=5
 
@@ -22,7 +22,7 @@ RDEPEND="
 	$(python_gen_cond_dep '>=dev-python/cffi-0.8:=[${PYTHON_USEDEP}]' 'python*')
 	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' python2_7 python3_3 pypy)
 	dev-python/idna[${PYTHON_USEDEP}]
-	dev-python/ipaddress[$(python_gen_usedep python2_7 pyp)]
+	$(python_gen_cond_dep 'dev-python/ipaddress[${PYTHON_USEDEP}]' python2_7 pypy)
 	dev-python/pyasn1[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/six-1.4.1[${PYTHON_USEDEP}]
