@@ -4004,6 +4004,7 @@ media-radio/xastir:gdal - Support for some further map formats
 media-radio/xastir:geotiff - Install geotiff support. Allows using USGS DRG topo maps or other types of geotiff mapes/images
 media-radio/xastir:graphicsmagick - Use graphicsmagick instead imagemagick for rendering
 media-sound/abcde:id3tag - Support ID3, ID3v2 tagging of audio files
+media-sound/abcde:mac - Enable support for Monkey's Audio files
 media-sound/abcde:normalize - Add support for normalizing audio file volume levels
 media-sound/abcde:opus - Support opus encoding using opusenc
 media-sound/abcde:replaygain - Support for Replay Gain metadata, for relative volume adjustment

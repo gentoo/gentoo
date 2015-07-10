@@ -1,6 +1,11 @@
 # ChangeLog for sys-process/tiptop
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/tiptop/ChangeLog,v 1.4 2015/04/01 18:24:29 nativemad Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-process/tiptop/ChangeLog,v 1.5 2015/07/10 04:03:42 patrick Exp $
+
+*tiptop-2.3 (10 Jul 2015)
+
+  10 Jul 2015; Patrick Lauer <patrick@gentoo.org> +tiptop-2.3.ebuild:
+  Bump
 
   01 Apr 2015; Andreas Schuerch <nativemad@gentoo.org> tiptop-2.2.ebuild:
   x86 stable, see bug 521334

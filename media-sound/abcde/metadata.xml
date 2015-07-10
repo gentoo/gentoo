@@ -4,11 +4,9 @@
 	<herd>sound</herd>
 	<use>
 		<flag name='id3tag'>Support ID3, ID3v2 tagging of audio files</flag>
+		<flag name='mac'>Enable support for Monkey's Audio files</flag>
 		<flag name='normalize'>Add support for normalizing audio file volume levels</flag>
-		<flag name='replaygain'>Support for Replay Gain metadata, for relative volume adjustment</flag>
 		<flag name='opus'>Support opus encoding using opusenc</flag>
+		<flag name='replaygain'>Support for Replay Gain metadata, for relative volume adjustment</flag>
 	</use>
-	<upstream>
-		<remote-id type="google-code">abcde</remote-id>
-	</upstream>
 </pkgmetadata>

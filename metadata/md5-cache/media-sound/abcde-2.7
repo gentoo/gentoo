@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=A command line CD encoder
+EAPI=5
+HOMEPAGE=http://abcde.einval.com/
+IUSE=aac cdparanoia cdr flac +id3tag +lame mac musepack musicbrainz normalize opus replaygain speex vorbis wavpack
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-sound/cd-discid net-misc/wget virtual/eject aac? ( || ( media-libs/faac media-sound/neroaac ) || ( media-video/atomicparsley media-video/atomicparsley-wez ) ) cdparanoia? ( || ( dev-libs/libcdio-paranoia media-sound/cdparanoia ) ) cdr? ( virtual/cdrtools ) flac? ( media-libs/flac ) id3tag? ( dev-python/eyeD3:0.7 >=media-sound/id3-0.12 media-sound/id3v2 ) lame? ( media-sound/lame ) mac? ( media-sound/apetag media-sound/mac ) musepack? ( media-sound/musepack-tools ) musicbrainz? ( dev-perl/MusicBrainz-DiscID dev-perl/WebService-MusicBrainz virtual/perl-Digest-SHA virtual/perl-Getopt-Long ) normalize? ( >=media-sound/normalize-0.7.4 ) opus? ( media-sound/opus-tools ) replaygain? ( vorbis? ( media-sound/vorbisgain ) lame? ( media-sound/mp3gain ) ) speex? ( media-libs/speex ) vorbis? ( media-sound/vorbis-tools ) wavpack? ( media-sound/wavpack )
+SLOT=0
+SRC_URI=http://abcde.einval.com/download/abcde-2.7.tar.gz
+_md5_=27201259a5c723915809ec0320e41986
