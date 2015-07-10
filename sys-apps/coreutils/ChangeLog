@@ -1,6 +1,11 @@
 # ChangeLog for sys-apps/coreutils
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/coreutils/ChangeLog,v 1.394 2015/04/30 07:03:46 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/coreutils/ChangeLog,v 1.395 2015/07/10 11:31:59 vapier Exp $
+
+*coreutils-8.24 (10 Jul 2015)
+
+  10 Jul 2015; Mike Frysinger <vapier@gentoo.org> +coreutils-8.24.ebuild:
+  Version bump.
 
   30 Apr 2015; Mike Frysinger <vapier@gentoo.org> coreutils-8.23.ebuild:
   Add fix from upstream for building w/clang found via Chromium OS.

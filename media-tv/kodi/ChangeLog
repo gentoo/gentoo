@@ -1,6 +1,9 @@
 # ChangeLog for media-tv/kodi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/kodi/ChangeLog,v 1.16 2015/04/20 20:59:03 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/kodi/ChangeLog,v 1.17 2015/07/10 11:53:48 vapier Exp $
+
+  10 Jul 2015; Mike Frysinger <vapier@gentoo.org> kodi-9999.ebuild:
+  Make xrandr mandatory per upstream changes #554192 by hal.
 
   20 Apr 2015; Mike Frysinger <vapier@gentoo.org> kodi-9999.ebuild,
   metadata.xml:

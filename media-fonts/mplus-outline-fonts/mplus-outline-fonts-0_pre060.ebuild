@@ -1,15 +1,16 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/mplus-outline-fonts/mplus-outline-fonts-0_pre058.ebuild,v 1.1 2014/04/04 09:38:13 hattya Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/mplus-outline-fonts/mplus-outline-fonts-0_pre060.ebuild,v 1.1 2015/07/10 12:03:09 hattya Exp $
 
 EAPI="5"
 
 inherit font
 
 MY_P="mplus-${PV/0_pre/TESTFLIGHT-}"
+
 DESCRIPTION="M+ Japanese outline fonts"
-HOMEPAGE="http://mplus-fonts.sourceforge.jp/ http://ossipedia.ipa.go.jp/ipafont/"
-SRC_URI="mirror://sourceforge.jp/mplus-fonts/6650/${MY_P}.tar.xz"
+HOMEPAGE="http://mplus-fonts.osdn.jp/ http://ossipedia.ipa.go.jp/ipafont/"
+SRC_URI="mirror://sourceforge.jp/mplus-fonts/62344/${MY_P}.tar.xz"
 
 LICENSE="mplus-fonts ipafont? ( IPAfont )"
 SLOT="0"
@@ -26,7 +27,7 @@ S="${WORKDIR}/${MY_P}"
 
 FONT_SUFFIX="ttf"
 FONT_S="${S}"
-DOCS=( README_{J,E} )
+DOCS="README_J README_E"
 
 IPAFONT_DIR="${EPREFIX}/usr/share/fonts/ja-ipafonts"
 
