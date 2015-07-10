@@ -9,4 +9,4 @@ RDEPEND=sys-libs/ncurses sys-libs/readline >=dev-embedded/gputils-0.13.7 boehm-g
 RESTRICT=strip
 SLOT=0
 _eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	subversion	c12bdf4fcc82f86ad89b14c8f76c4026	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=04099d8efd2d85f1776bb5fe018c10cd
+_md5_=c7c241833b7e07d7fb89a2f9697328de

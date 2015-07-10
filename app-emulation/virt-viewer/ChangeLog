@@ -1,6 +1,10 @@
 # ChangeLog for app-emulation/virt-viewer
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/virt-viewer/ChangeLog,v 1.33 2015/04/08 13:13:33 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/virt-viewer/ChangeLog,v 1.34 2015/07/10 09:46:01 tamiko Exp $
+
+  10 Jul 2015; Matthias Maier <tamiko@gentoo.org> -virt-viewer-0.5.7.ebuild,
+  -virt-viewer-0.6.0.ebuild, -virt-viewer-1.0.ebuild, virt-viewer-2.0.ebuild:
+  drop old
 
   08 Apr 2015; Agostino Sarubbo <ago@gentoo.org> virt-viewer-2.0.ebuild:
   Stable for amd64, wrt bug #545624

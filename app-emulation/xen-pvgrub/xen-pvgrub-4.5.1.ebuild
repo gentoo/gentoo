@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/xen-pvgrub/xen-pvgrub-4.5.1.ebuild,v 1.1 2015/07/06 09:39:20 dlan Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/xen-pvgrub/xen-pvgrub-4.5.1.ebuild,v 1.2 2015/07/10 10:14:11 ago Exp $
 
 EAPI=5
 
@@ -27,7 +27,7 @@ DESCRIPTION="allows to boot Xen domU kernels from a menu.lst laying inside guest
 HOMEPAGE="http://xen.org/"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 -x86"
+KEYWORDS="amd64 -x86"
 IUSE="custom-cflags"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

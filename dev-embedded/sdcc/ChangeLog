@@ -1,6 +1,11 @@
 # ChangeLog for dev-embedded/sdcc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/sdcc/ChangeLog,v 1.45 2015/06/09 13:23:57 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/sdcc/ChangeLog,v 1.46 2015/07/10 09:38:40 vapier Exp $
+
+  10 Jul 2015; Mike Frysinger <vapier@gentoo.org> -files/sdcc-9999-build.patch,
+  sdcc-9999.ebuild:
+  Drop parallel build patch as upstream repo seems to get it right now #393221
+  by Daniel M. Weeks.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

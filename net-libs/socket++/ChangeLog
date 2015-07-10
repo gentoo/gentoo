@@ -1,6 +1,11 @@
 # ChangeLog for net-libs/socket++
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/socket++/ChangeLog,v 1.18 2015/07/10 09:05:50 pinkbyte Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/socket++/ChangeLog,v 1.19 2015/07/10 09:44:04 pinkbyte Exp $
+
+*socket++-1.12.13 (10 Jul 2015)
+
+  10 Jul 2015; Sergey Popov <pinkbyte@gentoo.org> +socket++-1.12.13.ebuild:
+  Version bump
 
 *socket++-1.12.12-r2 (10 Jul 2015)
 
