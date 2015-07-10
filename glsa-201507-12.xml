@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201507-12">
+  <title>libCapsiNetwork: Denial of Service</title>
+  <synopsis>A buffer overflow in libcapsinetwork might allow remote attackers
+    to cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">libcapsinetwork</product>
+  <announced>July 10, 2015</announced>
+  <revised>July 10, 2015: 1</revised>
+  <bug>544324</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/libcapsinetwork-0.3.0-r2" auto="yes" arch="*">
+      <vulnerable range="le"></vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libCapsiNetwork is a C++ network library to allow fast development of
+      server daemon processes.
+    </p>
+  </background>
+  <description>
+    <p>An off-by-one buffer overflow in libcapsinetwork network handling code
+      is discovered.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send a specially crafted request to application,
+      that is linked with libcapsinetwork, possibly resulting in a Denial of
+      Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>Gentoo discontinued support for libcapsinetwork.
+      We recommend that users unmerge it:
+    </p>
+    
+    <h1 id="emerge---unmerge-net-libslibcapsinetwork">emerge --unmerge
+      ‘net-libs/libcapsinetwork’
+    </h1>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0841">CVE-2015-0841</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 29 May 2015 09:38:01 +0000">
+    pinkbyte
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 10 Jul 2015 08:31:49 +0000">
+    pinkbyte
+  </metadata>
+</glsa>
