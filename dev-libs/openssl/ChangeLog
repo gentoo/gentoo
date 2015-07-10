@@ -1,6 +1,11 @@
 # ChangeLog for dev-libs/openssl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/openssl/ChangeLog,v 1.672 2015/07/09 18:12:37 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/openssl/ChangeLog,v 1.673 2015/07/10 06:08:30 vapier Exp $
+
+  10 Jul 2015; Mike Frysinger <vapier@gentoo.org>
+  +files/openssl-1.0.1p-default-source.patch, openssl-1.0.1p.ebuild,
+  openssl-1.0.2d.ebuild:
+  Use _DEFAULT_SOURCE with newer glibc versions #554338 by Agostino Sarubbo.
 
   09 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> openssl-1.0.1p.ebuild:
   arm stable wrt bug #554172

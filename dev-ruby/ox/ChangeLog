@@ -1,6 +1,17 @@
 # ChangeLog for dev-ruby/ox
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ox/ChangeLog,v 1.15 2015/06/07 18:57:07 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ox/ChangeLog,v 1.17 2015/07/10 05:53:47 graaff Exp $
+
+*ox-2.2.0-r1 (10 Jul 2015)
+
+  10 Jul 2015; Hans de Graaff <graaff@gentoo.org> -ox-2.2.0.ebuild,
+  +ox-2.2.0-r1.ebuild:
+  Copy shared object to the right location so that it can be found with
+  "require".
+
+  10 Jul 2015; Hans de Graaff <graaff@gentoo.org> -ox-2.1.7.ebuild,
+  -ox-2.1.8.ebuild:
+  Cleanup.
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

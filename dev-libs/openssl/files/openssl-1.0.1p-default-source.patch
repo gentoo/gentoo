@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/554338
+
+From 7c2e97f8bbae517496fdc11f475b4ae54b2534f5 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Fri, 10 Jul 2015 01:50:52 -0400
+Subject: [PATCH] test: use _DEFAULT_SOURCE with newer glibc versions
+
+The _BSD_SOURCE macro is replaced by the _DEFAULT_SOURCE macro.  Using
+just the former with newer versions leads to a build time warning, so
+make sure to use the new macro too.
+---
+ ssl/ssltest.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/ssl/ssltest.c b/ssl/ssltest.c
+index 26cf96c..b36f667 100644
+--- a/ssl/ssltest.c
++++ b/ssl/ssltest.c
+@@ -141,6 +141,7 @@
+  */
+ 
+ /* Or gethostname won't be declared properly on Linux and GNU platforms. */
++#define _DEFAULT_SOURCE 1
+ #define _BSD_SOURCE 1
+ 
+ #include <assert.h>
+-- 
+2.4.4
+

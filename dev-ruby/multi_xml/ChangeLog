@@ -1,6 +1,12 @@
 # ChangeLog for dev-ruby/multi_xml
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/multi_xml/ChangeLog,v 1.27 2015/04/18 07:28:21 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/multi_xml/ChangeLog,v 1.28 2015/07/10 06:01:10 graaff Exp $
+
+*multi_xml-0.5.5 (10 Jul 2015)
+
+  10 Jul 2015; Hans de Graaff <graaff@gentoo.org> +multi_xml-0.5.5.ebuild:
+  Version bump, fixing bug 543254. Drop ppc, ppc64, x86 keywords due to new
+  dev-ruby/ox test dependency, bug 554410.
 
   18 Apr 2015; Hans de Graaff <graaff@gentoo.org> multi_xml-0.5.4-r2.ebuild:
   Avoid test dependency on bundler.

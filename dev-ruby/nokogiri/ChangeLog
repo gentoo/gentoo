@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/nokogiri
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/nokogiri/ChangeLog,v 1.129 2015/06/07 18:53:12 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/nokogiri/ChangeLog,v 1.130 2015/07/10 06:30:34 graaff Exp $
+
+  10 Jul 2015; Hans de Graaff <graaff@gentoo.org> -nokogiri-1.5.10.ebuild:
+  Cleanup vulnerable version, bug 495218.
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/openssl/openssl-1.0.2d.ebuild,v 1.1 2015/07/09 14:08:16 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/openssl/openssl-1.0.2d.ebuild,v 1.2 2015/07/10 06:08:30 vapier Exp $
 
 EAPI="4"
 
@@ -65,6 +65,7 @@ src_prepare() {
 		epatch "${FILESDIR}"/${PN}-1.0.2a-parallel-symlinking.patch #545028
 		epatch "${FILESDIR}"/${PN}-1.0.2-ipv6.patch
 		epatch "${FILESDIR}"/${PN}-1.0.2a-x32-asm.patch #542618
+		epatch "${FILESDIR}"/${PN}-1.0.1p-default-source.patch #554338
 
 		epatch_user #332661
 	fi

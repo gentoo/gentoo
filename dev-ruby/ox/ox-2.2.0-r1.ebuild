@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ox/ox-2.2.0.ebuild,v 1.1 2015/04/23 21:22:06 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ox/ox-2.2.0-r1.ebuild,v 1.1 2015/07/10 05:53:47 graaff Exp $
 
 EAPI=5
 USE_RUBY="ruby19 ruby20 ruby21 ruby22"
@@ -25,7 +25,7 @@ each_ruby_configure() {
 
 each_ruby_compile() {
 	emake V=1 -Cext/ox
-	cp ext/ox/ox$(get_modname) lib/ || die
+	cp ext/ox/ox$(get_modname) lib/ox/ || die
 }
 
 each_ruby_test() {
