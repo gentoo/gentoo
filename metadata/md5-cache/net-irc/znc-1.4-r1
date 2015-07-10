@@ -4,11 +4,11 @@ DESCRIPTION=An advanced IRC Bouncer
 EAPI=5
 HOMEPAGE=http://znc.in
 IUSE=daemon debug ipv6 perl python ssl sasl tcl python_targets_python3_3 python_targets_python3_4 python_single_target_python3_3 python_single_target_python3_4
-KEYWORDS=~amd64 ~arm ~x86
+KEYWORDS=amd64 ~arm ~x86
 LICENSE=GPL-2
 RDEPEND=perl? ( >=dev-lang/perl-5.10 ) python? ( python_single_target_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_single_target_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),python_single_target_python3_3(+)?,python_single_target_python3_4(+)?] ) sasl? ( >=dev-libs/cyrus-sasl-2 ) ssl? ( >=dev-libs/openssl-0.9.7d:0 ) tcl? ( dev-lang/tcl:0= )
 REQUIRED_USE=python? ( ^^ ( python_single_target_python3_3 python_single_target_python3_4 ) python_single_target_python3_3? ( python_targets_python3_3 ) python_single_target_python3_4? ( python_targets_python3_4 ) )
 SLOT=0
 SRC_URI=http://znc.in/releases/znc-1.4.tar.gz
 _eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	351da1aa73960a282591217fb57c1bb8	python-utils-r1	ae9becb5d45344c01939c3f57df0d3fd	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
-_md5_=42094593ad594fea4bc76af4b07eb210
+_md5_=4d8cc1982e6ffe9c2cae104e4e5c22a0
