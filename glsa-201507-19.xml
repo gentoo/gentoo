@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201507-19">
+  <title>MySQL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in MySQL, allowing
+    attackers to execute arbitrary code or cause Denial of Service.
+  </synopsis>
+  <product type="ebuild">mysql</product>
+  <announced>July 10, 2015</announced>
+  <revised>July 10, 2015: 1</revised>
+  <bug>546722</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/mysql" auto="yes" arch="*">
+      <unaffected range="rge">5.5.43</unaffected>
+      <unaffected range="ge">5.6.24</unaffected>
+      <vulnerable range="lt">5.6.24</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>MySQL is a fast, multi-threaded, multi-user SQL database server.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in MySQL. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send a specially crafted request, possibly
+      resulting in execution of arbitrary code with the privileges of the
+      application or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All MySQL 5.5.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/mysql-5.5.43"
+    </code>
+    
+    <p>All MySQL 5.6.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/mysql-5.6.24"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0405">CVE-2015-0405</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0423">CVE-2015-0423</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0433">CVE-2015-0433</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0438">CVE-2015-0438</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0439">CVE-2015-0439</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0441">CVE-2015-0441</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0498">CVE-2015-0498</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0499">CVE-2015-0499</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0500">CVE-2015-0500</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0501">CVE-2015-0501</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0503">CVE-2015-0503</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0505">CVE-2015-0505</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0506">CVE-2015-0506</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0507">CVE-2015-0507</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0508">CVE-2015-0508</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0511">CVE-2015-0511</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2566">CVE-2015-2566</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2567">CVE-2015-2567</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2568">CVE-2015-2568</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2571">CVE-2015-2571</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2573">CVE-2015-2573</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 28 May 2015 19:02:02 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 10 Jul 2015 13:23:50 +0000">Zlogene</metadata>
+</glsa>
