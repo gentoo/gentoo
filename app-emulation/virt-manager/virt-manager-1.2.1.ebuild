@@ -1,10 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/virt-manager/virt-manager-0.10.0-r2.ebuild,v 1.7 2014/12/10 22:10:52 tamiko Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/virt-manager/virt-manager-1.2.1.ebuild,v 1.1 2015/07/10 09:27:31 tamiko Exp $
 
 EAPI=5
-
-BACKPORTS=1cd29748
 
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_SINGLE_IMPL=1
@@ -20,9 +18,8 @@ if [[ ${PV} = *9999* ]]; then
 	KEYWORDS=""
 	EGIT_REPO_URI="git://git.fedorahosted.org/virt-manager.git"
 else
-	SRC_URI="http://virt-manager.org/download/sources/${PN}/${P}.tar.gz
-	${BACKPORTS+http://dev.gentoo.org/~cardoe/distfiles/${P}-${BACKPORTS}.tar.xz}"
-	KEYWORDS="amd64 x86"
+	SRC_URI="http://virt-manager.org/download/sources/${PN}/${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-2"
@@ -37,11 +34,13 @@ RDEPEND="!app-emulation/virtinst
 	dev-python/ipaddr[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	dev-python/urlgrabber[${PYTHON_USEDEP}]
+	sys-libs/libosinfo[introspection]
 	gtk? (
 		x11-libs/gtk+:3[introspection]
 		gnome-base/dconf
 		>=net-libs/gtk-vnc-0.3.8[gtk3,introspection,python,${PYTHON_USEDEP}]
-		net-misc/spice-gtk[gtk3,introspection,python,sasl?,${PYTHON_USEDEP}]
+		net-misc/spice-gtk[usbredir,gtk3,introspection,python,sasl?,${PYTHON_USEDEP}]
+		net-misc/x11-ssh-askpass
 		x11-libs/vte:2.90[introspection]
 		gnome-keyring? ( dev-python/gnome-keyring-python )
 		policykit? ( sys-auth/polkit[introspection] )
@@ -52,6 +51,10 @@ DEPEND="${RDEPEND}
 	dev-util/intltool"
 
 DOCS=( README NEWS )
+
+src_prepare() {
+	distutils-r1_src_prepare
+}
 
 distutils-r1_python_compile() {
 	local defgraphics=
@@ -64,7 +67,7 @@ distutils-r1_python_compile() {
 python_install_all() {
 	distutils-r1_python_install_all
 	python_fix_shebang \
-		"${ED}"/usr/share/virt-manager/virt-{clone,convert,image,install,manager}
+		"${ED}"/usr/share/virt-manager/virt-{clone,convert,install,manager}
 }
 
 pkg_preinst() {

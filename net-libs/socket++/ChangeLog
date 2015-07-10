@@ -1,6 +1,13 @@
 # ChangeLog for net-libs/socket++
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/socket++/ChangeLog,v 1.17 2013/09/07 08:35:52 pacho Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/socket++/ChangeLog,v 1.18 2015/07/10 09:05:50 pinkbyte Exp $
+
+*socket++-1.12.12-r2 (10 Jul 2015)
+
+  10 Jul 2015; Sergey Popov <pinkbyte@gentoo.org> +socket++-1.12.12-r2.ebuild:
+  Revision bump: EAPI 5, migrate to autotools-utils eclass, do not generate
+  broken HTML documentation, do not install non-upstream pkgconfig file, fix
+  building with new texinfo, wrt bug #514246
 
   07 Sep 2013; Pacho Ramos <pacho@gentoo.org>
   +files/socket++-1.12.12-gcc47.patch, socket++-1.12.12-r1.ebuild:
