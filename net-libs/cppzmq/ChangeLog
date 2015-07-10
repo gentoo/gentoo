@@ -1,6 +1,11 @@
 # ChangeLog for net-libs/cppzmq
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/cppzmq/ChangeLog,v 1.6 2015/06/06 20:14:20 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/cppzmq/ChangeLog,v 1.7 2015/07/10 21:02:59 zerochaos Exp $
+
+  10 Jul 2015; Rick Farina <zerochaos@gentoo.org> cppzmq-0_pre130717-r1.ebuild,
+  cppzmq-0_pre150606.ebuild:
+  add test phase from arch pkgbuild to ensure cppzmq is compatible against the
+  installed zeromq.  maybe consider using this as src_compile?
 
 *cppzmq-0_pre150606 (06 Jun 2015)
 
