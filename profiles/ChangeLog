@@ -1,10 +1,13 @@
 # ChangeLog for profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10175 2015/07/10 05:42:31 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10176 2015/07/10 13:15:59 monsieurp Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  10 Jul 2015; Patrice Clement <monsieurp@gentoo.org> package.mask:
+  Mask dev-java/mckoi for removal.
 
   10 Jul 2015; Patrick Lauer <patrick@gentoo.org> package.mask:
   Mask not-building udev release #554408

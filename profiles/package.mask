@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16660 2015/07/10 05:42:31 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16661 2015/07/10 13:15:59 monsieurp Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (10 Jul 2015)
+# Doesn't compile with recent JDKs (>= 1.8).
+# Removal in 30 days. See bug #542536.
+dev-java/mckoi
+
 # Patrick Lauer <patrick@gentoo.org> (10 Jul 2015)
 # Fails to build #554408
 =sys-fs/udev-222
@@ -37,7 +42,7 @@
 # Patrice Clement <monsieurp@gentoo.org> (7 Jul 2015)
 # Upstream dead. No update since 2007.
 # Removal in 30 days. See bug #164536.
-dev-uti/fujaba
+dev-util/fujaba
 
 # Patrice Clement <monsieurp@gentoo.org> (5 Jul 2015)
 # SRC_URI unreachable. Upstream looks dead. 
