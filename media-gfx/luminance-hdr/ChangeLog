@@ -1,6 +1,17 @@
 # ChangeLog for media-gfx/luminance-hdr
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/luminance-hdr/ChangeLog,v 1.33 2015/05/22 21:01:01 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/luminance-hdr/ChangeLog,v 1.34 2015/07/10 02:39:49 radhermit Exp $
+
+*luminance-hdr-2.4.0 (10 Jul 2015)
+
+  10 Jul 2015; Tim Harder <radhermit@gentoo.org> +luminance-hdr-2.4.0.ebuild,
+  files/luminance-hdr-2.3.1-docs.patch, files/luminance-hdr-2.3.1-no-git.patch,
+  files/luminance-hdr-2.3.1-openmp-automagic.patch,
+  +files/luminance-hdr-2.4.0-fits-automagic.patch,
+  +files/luminance-hdr-2.4.0-qtprinter.patch,
+  +files/luminance-hdr-2.4.0-qtquick.patch, metadata.xml:
+  Version bump (bug #516864, patches by José María Fernández González). Add
+  fits use flag, update HOMEPAGE, and add ilmbase dep (bug #543314).
 
   22 May 2015; Markus Meier <maekke@gentoo.org> luminance-hdr-2.3.1.ebuild:
   fix DEPEND by Nikoli, bug #543314

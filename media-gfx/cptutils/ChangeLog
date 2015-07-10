@@ -1,6 +1,16 @@
 # ChangeLog for media-gfx/cptutils
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/cptutils/ChangeLog,v 1.12 2015/04/08 17:58:14 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/cptutils/ChangeLog,v 1.14 2015/07/10 03:23:44 radhermit Exp $
+
+  10 Jul 2015; Tim Harder <radhermit@gentoo.org> -cptutils-1.48.ebuild,
+  -cptutils-1.50.ebuild, -cptutils-1.51.ebuild, -cptutils-1.52.ebuild,
+  -cptutils-1.53.ebuild:
+  Remove old.
+
+*cptutils-1.59 (10 Jul 2015)
+
+  10 Jul 2015; Tim Harder <radhermit@gentoo.org> +cptutils-1.59.ebuild:
+  Version bump.
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> cptutils-1.48.ebuild,
   cptutils-1.50.ebuild, cptutils-1.51.ebuild, cptutils-1.52.ebuild,

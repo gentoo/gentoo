@@ -1,0 +1,13 @@
+Gentoo has a Qt5Quick cmake module instead of a Qt5Declarative one.
+
+--- luminance-hdr-2.4.0/CMakeLists.txt
++++ luminance-hdr-2.4.0/CMakeLists.txt
+@@ -22,7 +22,7 @@
+ find_package(Qt5Concurrent REQUIRED)
+ find_package(Qt5Widgets REQUIRED)
+ find_package(Qt5Gui REQUIRED)
+-find_package(Qt5Declarative REQUIRED)
++find_package(Qt5Quick REQUIRED)
+ find_package(Qt5WebKit REQUIRED)
+ find_package(Qt5WebKitWidgets REQUIRED)
+ find_package(Qt5Xml REQUIRED)

@@ -1,3 +1,5 @@
+Only use openmp support if explicitly enabled.
+
 --- luminance-hdr-2.3.1/cmake/CompilerSettings.cmake
 +++ luminance-hdr-2.3.1/cmake/CompilerSettings.cmake
 @@ -8,6 +8,8 @@

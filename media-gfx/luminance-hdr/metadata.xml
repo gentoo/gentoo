@@ -3,27 +3,32 @@
 <pkgmetadata>
 	<herd>graphics</herd>
 	<longdescription lang="en">
-Qtpfsgui is an open source graphical user interface application that aims to provide a workflow for HDR imaging.
+	Qtpfsgui is an open source graphical user interface application that aims
+	to provide a workflow for HDR imaging.
 
-Supported HDR formats:
-	* OpenEXR (extension: exr)
-	* Radiance RGBE (extension: hdr)
-	* Tiff formats: 16bit, 32bit (float) and LogLuv (extension: tiff)
-	* Raw image formats (extension: various)
-	* PFS native format (extension: pfs)
+	Supported HDR formats:
+		* OpenEXR (extension: exr)
+		* Radiance RGBE (extension: hdr)
+		* Tiff formats: 16bit, 32bit (float) and LogLuv (extension: tiff)
+		* Raw image formats (extension: various)
+		* PFS native format (extension: pfs)
 
-Supported LDR formats:
-	* JPEG, PNG, PPM, PBM, TIFF(8 bit)
+	Supported LDR formats:
+		* JPEG, PNG, PPM, PBM, TIFF(8 bit)
 
-Supported features:
-	* Create an HDR file from a set of images (formats: JPEG, TIFF 8bit and 16bit, RAW) of the same scene taken at different exposure setting.
-	* Save and load HDR images.
-	* Rotate and resize HDR images.
-	* Tonemap HDR images.
-	* Copy exif data between sets of images.
-	* Supports internationalization.
-</longdescription>
+	Supported features:
+		* Create an HDR file from a set of images (formats: JPEG, TIFF 8bit and
+			16bit, RAW) of the same scene taken at different exposure setting.
+		* Save and load HDR images.
+		* Rotate and resize HDR images.
+		* Tonemap HDR images.
+		* Copy exif data between sets of images.
+		* Supports internationalization.
+	</longdescription>
+	<use>
+		<flag name="fits">Enable support for the FITS format</flag>
+	</use>
 	<upstream>
-		<remote-id type="sourceforge">qtpfsgui</remote-id>
+		<remote-id type="github">LuminanceHDR/LuminanceHDR</remote-id>
 	</upstream>
 </pkgmetadata>

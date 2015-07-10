@@ -1,6 +1,11 @@
 # ChangeLog for dev-libs/libpo6
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libpo6/ChangeLog,v 1.12 2015/05/29 23:34:21 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libpo6/ChangeLog,v 1.13 2015/07/10 03:05:08 patrick Exp $
+
+*libpo6-0.8.0 (10 Jul 2015)
+
+  10 Jul 2015; Patrick Lauer <patrick@gentoo.org> +libpo6-0.8.0.ebuild:
+  Bump
 
   29 May 2015; Patrick Lauer <patrick@gentoo.org> -libpo6-0.4.0.ebuild,
   -libpo6-0.4.1.ebuild, -libpo6-0.5.0.ebuild, -libpo6-0.5.1.ebuild,

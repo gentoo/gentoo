@@ -1,3 +1,5 @@
+Don't try to define the git version of the release.
+
 --- luminance-hdr-2.3.1/CMakeLists.txt
 +++ luminance-hdr-2.3.1/CMakeLists.txt
 @@ -32,12 +32,6 @@

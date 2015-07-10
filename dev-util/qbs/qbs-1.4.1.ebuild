@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/qbs/qbs-1.4.1.ebuild,v 1.1 2015/07/08 16:34:54 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/qbs/qbs-1.4.1.ebuild,v 1.2 2015/07/10 03:01:36 pesa Exp $
 
 EAPI=5
 
@@ -59,6 +59,7 @@ src_configure() {
 		-recursive
 		CONFIG+=qbs_disable_rpath
 		CONFIG+=qbs_enable_project_file_updates
+		$(usex test 'CONFIG+=qbs_enable_unit_tests' '')
 		QBS_INSTALL_PREFIX="${EPREFIX}/usr"
 		QBS_LIBRARY_DIRNAME="$(get_libdir)"
 	)
@@ -85,7 +86,18 @@ src_test() {
 	"${S}"/bin/qbs-setup-qt "$(qt5_get_bindir)/qmake" qbs_autotests || die
 
 	einfo "Running autotests"
-	default
+
+	# simply exporting LD_LIBRARY_PATH doesn't work
+	# we have to use a custom testrunner script
+	local testrunner=${S}/gentoo-testrunner
+	cat <<-EOF > "${testrunner}"
+	#!/bin/sh
+	export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}\${LD_LIBRARY_PATH:+:}\${LD_LIBRARY_PATH}"
+	exec "\$@"
+	EOF
+	chmod +x "${testrunner}"
+
+	emake TESTRUNNER="'${testrunner}'" check
 }
 
 src_install() {

@@ -1,3 +1,5 @@
+Don't install extra docs and fix install dir.
+
 --- luminance-hdr-2.3.1/CMakeLists.txt
 +++ luminance-hdr-2.3.1/CMakeLists.txt
 @@ -250,12 +250,6 @@

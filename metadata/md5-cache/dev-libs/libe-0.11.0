@@ -1,0 +1,13 @@
+DEFINED_PHASES=prepare
+DEPEND=>=dev-libs/libpo6-0.8.0 virtual/pkgconfig
+DESCRIPTION=Hyperdex libe support library
+EAPI=4
+HOMEPAGE=http://hyperdex.org
+KEYWORDS=~amd64
+LICENSE=BSD
+RDEPEND=>=dev-libs/libpo6-0.8.0
+RESTRICT=test
+SLOT=0
+SRC_URI=http://hyperdex.org/src/libe-0.11.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=6dfb5127fbd6a36c447c6b91c1e850f7
