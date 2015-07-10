@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/coffee-script/coffee-script-1.9.3.ebuild,v 1.1 2015/07/03 22:11:22 mjo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/coffee-script/coffee-script-1.9.3-r1.ebuild,v 1.1 2015/07/10 14:44:19 mjo Exp $
 
 EAPI=5
 
@@ -38,9 +38,11 @@ src_install(){
 	use doc && dodoc -r documentation
 	use examples && dodoc -r examples
 
-	# The coffee "binary" uses a relative path to find the lib
-	# directory, so we have to symlink to it rather than dobin() it.
+	# The coffee and cake "binaries" use a relative path to find the lib
+	# directory, so we have to symlink them rather than use dobin().
 	exeinto "${npm_module_dir}/bin"
+	doexe bin/cake
 	doexe bin/coffee
+	dosym "${npm_module_dir}/bin/cake" "/usr/bin/cake"
 	dosym "${npm_module_dir}/bin/coffee" "/usr/bin/coffee"
 }

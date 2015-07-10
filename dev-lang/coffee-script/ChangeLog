@@ -1,6 +1,12 @@
 # ChangeLog for dev-lang/coffee-script
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/coffee-script/ChangeLog,v 1.1 2015/07/03 22:11:22 mjo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/coffee-script/ChangeLog,v 1.2 2015/07/10 14:44:19 mjo Exp $
+
+*coffee-script-1.9.3-r1 (10 Jul 2015)
+
+  10 Jul 2015; Michael Orlitzky <mjo@gentoo.org> +coffee-script-1.9.3-r1.ebuild,
+  -coffee-script-1.9.3.ebuild:
+  Revbump to install cake, bug #554308 thanks to Peter Cai.
 
 *coffee-script-1.9.3 (03 Jul 2015)
 
