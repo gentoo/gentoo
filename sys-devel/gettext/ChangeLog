@@ -1,6 +1,14 @@
 # ChangeLog for sys-devel/gettext
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gettext/ChangeLog,v 1.271 2015/07/04 16:51:35 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/gettext/ChangeLog,v 1.273 2015/07/10 08:25:11 vapier Exp $
+
+*gettext-0.19.5 (10 Jul 2015)
+
+  10 Jul 2015; Mike Frysinger <vapier@gentoo.org> +gettext-0.19.5.ebuild:
+  Version bump.
+
+  10 Jul 2015; Mike Frysinger <vapier@gentoo.org> gettext-0.19.4.ebuild:
+  Mark arm64/m68k/s390/sh/sparc stable #551828.
 
   04 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> gettext-0.19.4.ebuild:
   ia64 stable wrt bug #551828
