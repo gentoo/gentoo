@@ -1,6 +1,10 @@
 # ChangeLog for sys-apps/systemd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/ChangeLog,v 1.383 2015/07/10 00:48:16 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/ChangeLog,v 1.384 2015/07/10 18:13:18 floppym Exp $
+
+  10 Jul 2015; Mike Gilbert <floppym@gentoo.org> systemd-222.ebuild,
+  systemd-9999.ebuild:
+  Always pass --without-python to configure, bug 554448.
 
   10 Jul 2015; Mike Gilbert <floppym@gentoo.org> systemd-222.ebuild,
   systemd-9999.ebuild:

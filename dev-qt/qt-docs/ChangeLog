@@ -1,6 +1,11 @@
 # ChangeLog for dev-qt/qt-docs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-qt/qt-docs/ChangeLog,v 1.4 2015/06/17 13:46:28 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-qt/qt-docs/ChangeLog,v 1.5 2015/07/10 18:26:08 pesa Exp $
+
+*qt-docs-5.5.0_p0 (10 Jul 2015)
+
+  10 Jul 2015; Davide Pesavento <pesa@gentoo.org> +qt-docs-5.5.0_p0.ebuild:
+  Version bump wrt bug 554140.
 
 *qt-docs-5.4.2_p0 (17 Jun 2015)
 

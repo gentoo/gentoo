@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/systemd-222.ebuild,v 1.2 2015/07/10 00:48:16 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/systemd-222.ebuild,v 1.3 2015/07/10 18:13:18 floppym Exp $
 
 EAPI=5
 
@@ -199,6 +199,7 @@ multilib_src_configure() {
 		--enable-ima
 		# Moved to dev-python/python-systemd
 		--disable-python-devel
+		--without-python
 
 		# Optional components/dependencies
 		$(multilib_native_use_enable acl)
@@ -226,7 +227,6 @@ multilib_src_configure() {
 		$(multilib_native_use_enable seccomp)
 		$(multilib_native_use_enable selinux)
 		$(multilib_native_use_enable terminal)
-		$(multilib_native_use_with terminal python)
 		$(multilib_native_use_with terminal unifont "${WORKDIR}/${UNIFONT}.hex")
 		$(multilib_native_use_enable test tests)
 		$(multilib_native_use_enable test dbus)
