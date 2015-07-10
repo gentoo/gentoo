@@ -1,6 +1,13 @@
 # ChangeLog for dev-libs/ntl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/ntl/ChangeLog,v 1.27 2015/04/02 12:29:55 tomka Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/ntl/ChangeLog,v 1.28 2015/07/10 14:16:04 tomka Exp $
+
+*ntl-9.3.0 (10 Jul 2015)
+
+  10 Jul 2015; Thomas Kahle <tomka@gentoo.org>
+  +files/ntl-9.2.0-sanitize-makefile.patch, +files/ntl-9.2.0-singular.patch,
+  +ntl-9.3.0.ebuild:
+  bump to 9.3, thanks Francois Bissey
 
 *ntl-9.0.2 (02 Apr 2015)
 

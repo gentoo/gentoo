@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/libgudev
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgudev/ChangeLog,v 1.6 2015/07/10 11:36:06 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgudev/ChangeLog,v 1.7 2015/07/10 13:35:32 floppym Exp $
+
+  10 Jul 2015; Mike Gilbert <floppym@gentoo.org> libgudev-230.ebuild:
+  Copy ~hppa keyword from udev, bug 554406.
 
   10 Jul 2015; Anthony G. Basile <blueness@gentoo.org> libgudev-230.ebuild:
   Keyword ~mips.
