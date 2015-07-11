@@ -1,6 +1,11 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/alpha/package.use.mask,v 1.188 2015/07/05 13:43:48 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/alpha/package.use.mask,v 1.189 2015/07/11 14:34:15 klausman Exp $
+
+# Tobias Klausmann <klausman@gentoo.org> (11 Jul 2015)
+# The test suite has ridiculous (transitive) requirements like
+# sci-mathematics/octave.
+>=dev-python/pyquery-1.2.9 test
 
 # Gilles Dartiguelongue <eva@gentoo.org> (09 Jun 2015)
 # net-fs/libnfs lacks alpha keyword, bug #551576

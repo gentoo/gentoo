@@ -10,4 +10,4 @@ RDEPEND=dev-db/sqlite:3 >=dev-games/openscenegraph-3.2.0[png] ~dev-games/simgear
 SLOT=0
 SRC_URI=mirror://flightgear/Source/flightgear-3.4.0.tar.bz2
 _eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	bash-completion-r1	c8399c7c7ecbcf7ed6e5bd3abb3d4af3	cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	games	1ad3205dbf62a2c98249f2f59b0a2d39	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
-_md5_=47fb25dea83b0ba1aca2e2b22d0dd961
+_md5_=847ada314b79574c544291ab10f14a37

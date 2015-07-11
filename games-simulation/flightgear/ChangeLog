@@ -1,6 +1,11 @@
 # ChangeLog for games-simulation/flightgear
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-simulation/flightgear/ChangeLog,v 1.81 2015/05/14 22:38:35 reavertm Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-simulation/flightgear/ChangeLog,v 1.82 2015/07/11 15:08:35 reavertm Exp $
+
+  11 Jul 2015; Maciej Mrozowski <reavertm@gentoo.org>
+  +files/0001-flightgear-3.4.0-cmake.patch,
+  +files/0002-flightgear-3.4.0-cmake.patch, flightgear-3.4.0.ebuild:
+  Fix bug 554292.
 
   14 May 2015; Maciej Mrozowski <reavertm@gentoo.org>
   -flightgear-3.0.0-r1.ebuild, -flightgear-3.0.0.ebuild,
