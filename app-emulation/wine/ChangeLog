@@ -1,6 +1,61 @@
 # ChangeLog for app-emulation/wine
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/wine/ChangeLog,v 1.542 2015/06/30 02:59:17 np-hardass Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/wine/ChangeLog,v 1.543 2015/07/11 07:54:37 np-hardass Exp $
+
+*wine-1.7.36 (11 Jul 2015)
+*wine-1.7.35 (11 Jul 2015)
+*wine-1.7.19-r2 (11 Jul 2015)
+*wine-1.7.39-r1 (11 Jul 2015)
+*wine-1.7.10-r1 (11 Jul 2015)
+*wine-1.7.15-r1 (11 Jul 2015)
+*wine-1.7.38-r1 (11 Jul 2015)
+*wine-1.7.28-r1 (11 Jul 2015)
+*wine-1.7.20-r1 (11 Jul 2015)
+*wine-1.7.29-r1 (11 Jul 2015)
+*wine-1.7.14-r1 (11 Jul 2015)
+*wine-1.7.9-r1 (11 Jul 2015)
+*wine-1.7.3-r1 (11 Jul 2015)
+*wine-1.7.37 (11 Jul 2015)
+*wine-1.7.40-r1 (11 Jul 2015)
+*wine-1.7.8-r1 (11 Jul 2015)
+*wine-1.7.13-r1 (11 Jul 2015)
+*wine-1.7.12-r1 (11 Jul 2015)
+*wine-1.7.11-r1 (11 Jul 2015)
+*wine-1.7.4-r1 (11 Jul 2015)
+*wine-1.7.21-r1 (11 Jul 2015)
+*wine-1.6.2-r1 (11 Jul 2015)
+*wine-1.7.18-r1 (11 Jul 2015)
+*wine-1.7.16-r1 (11 Jul 2015)
+*wine-1.7.33-r1 (11 Jul 2015)
+*wine-1.7.17-r1 (11 Jul 2015)
+*wine-1.7.22-r1 (11 Jul 2015)
+*wine-1.7.34 (11 Jul 2015)
+
+  11 Jul 2015; NP-Hardass <NP-Hardass@gentoo.org>
+  +files/wine-1.7.0-freetype-header-location.patch,
+  +files/wine-1.7.19-makefile-race-cond.patch,
+  +files/wine-gcc-4.9-null-pointer.patch, +wine-1.6.2-r1.ebuild,
+  +wine-1.7.10-r1.ebuild, +wine-1.7.11-r1.ebuild, +wine-1.7.12-r1.ebuild,
+  +wine-1.7.13-r1.ebuild, +wine-1.7.14-r1.ebuild, +wine-1.7.15-r1.ebuild,
+  +wine-1.7.16-r1.ebuild, +wine-1.7.17-r1.ebuild, +wine-1.7.18-r1.ebuild,
+  +wine-1.7.19-r2.ebuild, +wine-1.7.20-r1.ebuild, +wine-1.7.21-r1.ebuild,
+  +wine-1.7.22-r1.ebuild, +wine-1.7.28-r1.ebuild, +wine-1.7.29-r1.ebuild,
+  +wine-1.7.3-r1.ebuild, +wine-1.7.33-r1.ebuild, +wine-1.7.34.ebuild,
+  +wine-1.7.35.ebuild, +wine-1.7.36.ebuild, +wine-1.7.37.ebuild,
+  +wine-1.7.38-r1.ebuild, +wine-1.7.39-r1.ebuild, +wine-1.7.4-r1.ebuild,
+  +wine-1.7.40-r1.ebuild, +wine-1.7.8-r1.ebuild, +wine-1.7.9-r1.ebuild,
+  -wine-1.6.2.ebuild, -wine-1.7.0.ebuild, -wine-1.7.10.ebuild,
+  -wine-1.7.11.ebuild, -wine-1.7.12.ebuild, -wine-1.7.13.ebuild,
+  -wine-1.7.14.ebuild, -wine-1.7.15.ebuild, -wine-1.7.16.ebuild,
+  -wine-1.7.17.ebuild, -wine-1.7.18.ebuild, -wine-1.7.19-r1.ebuild,
+  -wine-1.7.20.ebuild, -wine-1.7.21.ebuild, -wine-1.7.22.ebuild,
+  -wine-1.7.28.ebuild, -wine-1.7.29.ebuild, -wine-1.7.3.ebuild,
+  -wine-1.7.33.ebuild, -wine-1.7.38.ebuild, -wine-1.7.39.ebuild,
+  -wine-1.7.4.ebuild, -wine-1.7.40.ebuild, -wine-1.7.8.ebuild,
+  -wine-1.7.9.ebuild, wine-1.7.41.ebuild, wine-1.7.42.ebuild,
+  wine-1.7.43.ebuild:
+  Fixes bugs #548100, #539830, #543446, update to new multilib dependency code,
+  and unify ebuild code/build system
 
 *wine-1.7.46 (30 Jun 2015)
 

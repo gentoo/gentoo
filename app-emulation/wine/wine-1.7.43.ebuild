@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/wine/wine-1.7.43.ebuild,v 1.2 2015/06/14 16:18:11 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/wine/wine-1.7.43.ebuild,v 1.3 2015/07/11 07:54:37 np-hardass Exp $
 
 EAPI="5"
 
@@ -64,103 +64,70 @@ REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 # or fail due to Xvfb's opengl limitations.
 RESTRICT="test"
 
-NATIVE_DEPEND="
-	truetype? ( >=media-libs/freetype-2.0.0  )
-	capi? ( net-dialup/capi4k-utils )
-	ncurses? ( >=sys-libs/ncurses-5.2:= )
-	udisks? ( sys-apps/dbus )
-	fontconfig? ( media-libs/fontconfig:= )
-	gphoto2? ( media-libs/libgphoto2:= )
-	openal? ( media-libs/openal:= )
-	gstreamer? ( media-libs/gstreamer:0.10 media-libs/gst-plugins-base:0.10 )
-	X? (
-		x11-libs/libXcursor
-		x11-libs/libXext
-		x11-libs/libXrandr
-		x11-libs/libXi
-		x11-libs/libXxf86vm
-	)
-	xinerama? ( x11-libs/libXinerama )
-	alsa? ( media-libs/alsa-lib )
-	cups? ( net-print/cups:= )
-	opencl? ( virtual/opencl )
-	opengl? (
-		virtual/glu
-		virtual/opengl
-	)
-	gsm? ( media-sound/gsm:= )
-	jpeg? ( virtual/jpeg:0= )
-	ldap? ( net-nds/openldap:= )
-	lcms? ( media-libs/lcms:2= )
-	mp3? ( >=media-sound/mpg123-1.5.0 )
-	netapi? ( net-fs/samba[netapi(+)] )
-	nls? ( sys-devel/gettext )
-	odbc? ( dev-db/unixODBC:= )
-	osmesa? ( media-libs/mesa[osmesa] )
-	pcap? ( net-libs/libpcap )
-	staging? ( sys-apps/attr )
-	pulseaudio? ( media-sound/pulseaudio )
-	xml? ( dev-libs/libxml2 dev-libs/libxslt )
-	scanner? ( media-gfx/sane-backends:= )
-	ssl? ( net-libs/gnutls:= )
-	png? ( media-libs/libpng:0= )
-	v4l? ( media-libs/libv4l )
-	vaapi? ( x11-libs/libva[X] )
-	xcomposite? ( x11-libs/libXcomposite )"
-
 COMMON_DEPEND="
-	!amd64? ( ${NATIVE_DEPEND} )
-	amd64? (
-		abi_x86_64? ( ${NATIVE_DEPEND} )
-		abi_x86_32? (
-			truetype? ( >=media-libs/freetype-2.5.0.1[abi_x86_32(-)] )
-			ncurses? ( >=sys-libs/ncurses-5.9-r3[abi_x86_32(-)] )
-			udisks? ( >=sys-apps/dbus-1.6.18-r1[abi_x86_32(-)] )
-			fontconfig? ( >=media-libs/fontconfig-2.10.92[abi_x86_32(-)] )
-			gphoto2? ( >=media-libs/libgphoto2-2.5.3.1[abi_x86_32(-)] )
-			openal? ( >=media-libs/openal-1.15.1[abi_x86_32(-)] )
-			gstreamer? (
-				>=media-libs/gstreamer-0.10.36-r2:0.10[abi_x86_32(-)]
-				>=media-libs/gst-plugins-base-0.10.36:0.10[abi_x86_32(-)]
-			)
-			X? (
-				>=x11-libs/libXcursor-1.1.14[abi_x86_32(-)]
-				>=x11-libs/libXext-1.3.2[abi_x86_32(-)]
-				>=x11-libs/libXrandr-1.4.2[abi_x86_32(-)]
-				>=x11-libs/libXi-1.7.2[abi_x86_32(-)]
-				>=x11-libs/libXxf86vm-1.1.3[abi_x86_32(-)]
-			)
-			xinerama? ( >=x11-libs/libXinerama-1.1.3[abi_x86_32(-)] )
-			alsa? ( >=media-libs/alsa-lib-1.0.27.2[abi_x86_32(-)] )
-			cups? ( >=net-print/cups-1.7.1-r1[abi_x86_32(-)] )
-			opencl? ( >=virtual/opencl-0-r3[abi_x86_32(-)] )
-			opengl? (
-				>=virtual/glu-9.0-r1[abi_x86_32(-)]
-				>=virtual/opengl-7.0-r1[abi_x86_32(-)]
-			)
-			gsm? ( >=media-sound/gsm-1.0.13-r1[abi_x86_32(-)] )
-			jpeg? ( >=virtual/jpeg-0-r2:0[abi_x86_32(-)] )
-			ldap? ( >=net-nds/openldap-2.4.38-r1:=[abi_x86_32(-)] )
-			lcms? ( >=media-libs/lcms-2.5:2[abi_x86_32(-)] )
-			mp3? ( >=media-sound/mpg123-1.15.4[abi_x86_32(-)] )
-			netapi? ( >=net-fs/samba-3.6.23-r1[netapi(+),abi_x86_32(-)] )
-			nls? ( >=sys-devel/gettext-0.18.3.2[abi_x86_32(-)] )
-			odbc? ( >=dev-db/unixODBC-2.3.2:=[abi_x86_32(-)] )
-			osmesa? ( >=media-libs/mesa-9.1.6[osmesa,abi_x86_32(-)] )
-			pcap? ( net-libs/libpcap[abi_x86_32(-)] )
-			pulseaudio? ( >=media-sound/pulseaudio-5.0[abi_x86_32(-)] )
-			staging? ( >=sys-apps/attr-2.4.47-r1[abi_x86_32(-)] )
-			xml? (
-				>=dev-libs/libxml2-2.9.1-r4[abi_x86_32(-)]
-				>=dev-libs/libxslt-1.1.28-r1[abi_x86_32(-)]
-			)
-			scanner? ( >=media-gfx/sane-backends-1.0.23:=[abi_x86_32(-)] )
-			ssl? ( >=net-libs/gnutls-2.12.23-r6:=[abi_x86_32(-)] )
-			png? ( >=media-libs/libpng-1.6.10:0[abi_x86_32(-)] )
-			v4l? ( >=media-libs/libv4l-0.9.5[abi_x86_32(-)] )
-			vaapi? ( x11-libs/libva[X,abi_x86_32(-)] )
-			xcomposite? ( >=x11-libs/libXcomposite-0.4.4-r1[abi_x86_32(-)] )
-		)
+	truetype? ( >=media-libs/freetype-2.0.0[${MULTILIB_USEDEP}] )
+	capi? ( net-dialup/capi4k-utils )
+	ncurses? ( >=sys-libs/ncurses-5.2:=[${MULTILIB_USEDEP}] )
+	udisks? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
+	fontconfig? ( media-libs/fontconfig:=[${MULTILIB_USEDEP}] )
+	gphoto2? ( media-libs/libgphoto2:=[${MULTILIB_USEDEP}] )
+	openal? ( media-libs/openal:=[${MULTILIB_USEDEP}] )
+	gstreamer? (
+		media-libs/gstreamer:0.10[${MULTILIB_USEDEP}]
+		media-libs/gst-plugins-base:0.10[${MULTILIB_USEDEP}]
+	)
+	X? (
+		x11-libs/libXcursor[${MULTILIB_USEDEP}]
+		x11-libs/libXext[${MULTILIB_USEDEP}]
+		x11-libs/libXrandr[${MULTILIB_USEDEP}]
+		x11-libs/libXi[${MULTILIB_USEDEP}]
+		x11-libs/libXxf86vm[${MULTILIB_USEDEP}]
+	)
+	xinerama? ( x11-libs/libXinerama[${MULTILIB_USEDEP}] )
+	alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
+	cups? ( net-print/cups:=[${MULTILIB_USEDEP}] )
+	opencl? ( virtual/opencl[${MULTILIB_USEDEP}] )
+	opengl? (
+		virtual/glu[${MULTILIB_USEDEP}]
+		virtual/opengl[${MULTILIB_USEDEP}]
+	)
+	gsm? ( media-sound/gsm:=[${MULTILIB_USEDEP}] )
+	jpeg? ( virtual/jpeg:0=[${MULTILIB_USEDEP}] )
+	ldap? ( net-nds/openldap:=[${MULTILIB_USEDEP}] )
+	lcms? ( media-libs/lcms:2=[${MULTILIB_USEDEP}] )
+	mp3? ( >=media-sound/mpg123-1.5.0[${MULTILIB_USEDEP}] )
+	netapi? ( net-fs/samba[netapi(+),${MULTILIB_USEDEP}] )
+	nls? ( sys-devel/gettext[${MULTILIB_USEDEP}] )
+	odbc? ( dev-db/unixODBC:=[${MULTILIB_USEDEP}] )
+	osmesa? ( media-libs/mesa[osmesa,${MULTILIB_USEDEP}] )
+	pcap? ( net-libs/libpcap[${MULTILIB_USEDEP}] )
+	pulseaudio? ( media-sound/pulseaudio[${MULTILIB_USEDEP}] )
+	staging? ( sys-apps/attr[${MULTILIB_USEDEP}] )
+	xml? (
+		dev-libs/libxml2[${MULTILIB_USEDEP}]
+		dev-libs/libxslt[${MULTILIB_USEDEP}]
+	)
+	scanner? ( media-gfx/sane-backends:=[${MULTILIB_USEDEP}] )
+	ssl? ( net-libs/gnutls:=[${MULTILIB_USEDEP}] )
+	png? ( media-libs/libpng:0=[${MULTILIB_USEDEP}] )
+	v4l? ( media-libs/libv4l[${MULTILIB_USEDEP}] )
+	vaapi? ( x11-libs/libva[X,${MULTILIB_USEDEP}] )
+	xcomposite? ( x11-libs/libXcomposite[${MULTILIB_USEDEP}] )
+	abi_x86_32? (
+		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
+		!<app-emulation/emul-linux-x86-baselibs-20140508-r14
+		!app-emulation/emul-linux-x86-db[-abi_x86_32(-)]
+		!<app-emulation/emul-linux-x86-db-20140508-r3
+		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)]
+		!<app-emulation/emul-linux-x86-medialibs-20140508-r6
+		!app-emulation/emul-linux-x86-opengl[-abi_x86_32(-)]
+		!<app-emulation/emul-linux-x86-opengl-20140508-r1
+		!app-emulation/emul-linux-x86-sdl[-abi_x86_32(-)]
+		!<app-emulation/emul-linux-x86-sdl-20140508-r1
+		!app-emulation/emul-linux-x86-soundlibs[-abi_x86_32(-)]
+		!<app-emulation/emul-linux-x86-soundlibs-20140508
+		!app-emulation/emul-linux-x86-xlibs[-abi_x86_32(-)]
+		!<app-emulation/emul-linux-x86-xlibs-20140508
 	)"
 
 RDEPEND="${COMMON_DEPEND}
@@ -174,7 +141,6 @@ RDEPEND="${COMMON_DEPEND}
 
 # tools/make_requests requires perl
 DEPEND="${COMMON_DEPEND}
-	amd64? ( abi_x86_32? ( !abi_x86_64? ( ${NATIVE_DEPEND} ) ) )
 	staging? ( dev-lang/perl dev-perl/XML-Simple )
 	X? (
 		x11-proto/inputproto

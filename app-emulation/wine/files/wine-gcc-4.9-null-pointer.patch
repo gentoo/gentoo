@@ -1,0 +1,35 @@
+From deb274226783ab886bdb44876944e156757efe2b Mon Sep 17 00:00:00 2001
+From: Daniel Beitler <dan@dablabs.com>
+Date: Sun, 18 May 2014 13:27:42 -0400
+Subject: [PATCH] msi: Prevent call to memset with a null pointer in
+ get_tablecolumns function.
+
+---
+ dlls/msi/table.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/dlls/msi/table.c b/dlls/msi/table.c
+index 8012369..9ed9421 100644
+--- a/dlls/msi/table.c
++++ b/dlls/msi/table.c
+@@ -671,7 +671,7 @@ static UINT get_tablecolumns( MSIDATABASE *db, LPCWSTR szTableName, MSICOLUMNINF
+     /* Note: _Columns table doesn't have non-persistent data */
+ 
+     /* if maxcount is non-zero, assume it's exactly right for this table */
+-    memset( colinfo, 0, maxcount * sizeof(*colinfo) );
++    if (colinfo) memset( colinfo, 0, maxcount * sizeof(*colinfo) );
+     count = table->row_count;
+     for (i = 0; i < count; i++)
+     {
+@@ -684,7 +684,7 @@ static UINT get_tablecolumns( MSIDATABASE *db, LPCWSTR szTableName, MSICOLUMNINF
+             /* check the column number is in range */
+             if (col < 1 || col > maxcount)
+             {
+-                ERR("column %d out of range\n", col);
++                ERR("column %d out of range (maxcount: %d)\n", col, maxcount);
+                 continue;
+             }
+             /* check if this column was already set */
+-- 
+1.9.1
+

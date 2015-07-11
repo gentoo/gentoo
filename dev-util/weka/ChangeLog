@@ -1,13 +1,13 @@
 # ChangeLog for dev-util/weka
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/weka/ChangeLog,v 1.50 2015/06/28 13:55:10 amynka Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/weka/ChangeLog,v 1.51 2015/07/11 07:42:01 amynka Exp $
 
-  28 Jun 2015;  <amy@gentoo.org> +files/weka-3.6.12-build.xml.patch:
+  28 Jun 2015; Amy Winston  <amynka@gentoo.org> +files/weka-3.6.12-build.xml.patch:
   Patch for weka-3.6.12 added.
 
 *weka-3.6.12 (28 Jun 2015)
 
-  28 Jun 2015;  <amy@gentoo.org> +weka-3.6.12.ebuild, metadata.xml,
+  28 Jun 2015; Amy Winston <amynka@gentoo.org> +weka-3.6.12.ebuild, metadata.xml,
   weka-3.6.6-r1.ebuild:
   New version of weka added. Add myself to maintainers. EAPI version in weka
   3.6.6 changed.
