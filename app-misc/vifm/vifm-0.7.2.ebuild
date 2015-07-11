@@ -1,13 +1,13 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/vifm/vifm-0.7.2.ebuild,v 1.7 2015/05/04 09:26:53 nimiux Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/vifm/vifm-0.7.2.ebuild,v 1.8 2015/07/11 01:25:58 radhermit Exp $
 
 EAPI=4
 
 inherit base
 
 DESCRIPTION="Console file manager with vi(m)-like keybindings"
-HOMEPAGE="http://http://vifm.info/"
+HOMEPAGE="http://vifm.info/"
 SRC_URI="mirror://sourceforge/vifm/${P}.tar.bz2"
 
 LICENSE="GPL-2"
