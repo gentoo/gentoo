@@ -1,6 +1,11 @@
 # ChangeLog for sys-auth/sssd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/sssd/ChangeLog,v 1.71 2015/06/13 17:52:25 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/sssd/ChangeLog,v 1.72 2015/07/11 21:11:58 hwoarang Exp $
+
+*sssd-1.13.0 (11 Jul 2015)
+
+  11 Jul 2015; Markos Chandras <hwoarang@gentoo.org> +sssd-1.13.0.ebuild:
+  Version bump
 
 *sssd-1.12.5 (13 Jun 2015)
 

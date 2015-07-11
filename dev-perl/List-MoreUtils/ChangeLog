@@ -1,6 +1,12 @@
 # ChangeLog for dev-perl/List-MoreUtils
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/List-MoreUtils/ChangeLog,v 1.55 2015/05/11 05:16:30 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/List-MoreUtils/ChangeLog,v 1.56 2015/07/11 20:31:10 dilfridge Exp $
+
+*List-MoreUtils-0.413.0 (11 Jul 2015)
+
+  11 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +List-MoreUtils-0.413.0.ebuild:
+  Version bump
 
   11 May 2015; Jeroen Roovers <jer@gentoo.org> List-MoreUtils-0.408.0.ebuild:
   Mark ~ppc64 (bug #543632).

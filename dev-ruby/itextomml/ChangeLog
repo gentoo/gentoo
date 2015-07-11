@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/itextomml
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/itextomml/ChangeLog,v 1.1 2015/07/04 15:16:29 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/itextomml/ChangeLog,v 1.2 2015/07/11 20:38:08 zlogene Exp $
+
+  11 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> itextomml-1.5.2.ebuild:
+  Add ~x86 keyword wrt bug #553928
 
 *itextomml-1.5.2 (04 Jul 2015)
 

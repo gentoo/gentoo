@@ -1,6 +1,11 @@
 # ChangeLog for dev-perl/locale-maketext-lexicon
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/locale-maketext-lexicon/ChangeLog,v 1.97 2014/11/21 14:29:58 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Locale-Maketext-Lexicon/ChangeLog,v 1.5 2015/07/11 20:48:28 dilfridge Exp $
+
+* Locale-Maketext-Lexicon-1.0.0 (11 Jun 2015)
+
+  11 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Locale-Maketext-Lexicon-1.0.0.ebuild: Version bump
 
   21 Nov 2014; Mikle Kolyada <zlogene@gentoo.org>
   locale-maketext-lexicon-0.960.0-r1.ebuild:

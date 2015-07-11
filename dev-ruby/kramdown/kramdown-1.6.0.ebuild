@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/kramdown/kramdown-1.6.0.ebuild,v 1.1 2015/07/04 19:12:56 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/kramdown/kramdown-1.6.0.ebuild,v 1.2 2015/07/11 20:38:47 zlogene Exp $
 
 EAPI=5
 USE_RUBY="ruby19 ruby20 ruby21"
@@ -17,7 +17,7 @@ HOMEPAGE="http://kramdown.rubyforge.org/"
 LICENSE="MIT"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="latex"
 
 LATEX_DEPS="latex? ( dev-texlive/texlive-latex dev-texlive/texlive-latexextra )"

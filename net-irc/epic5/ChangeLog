@@ -1,6 +1,11 @@
 # ChangeLog for net-irc/epic5
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/epic5/ChangeLog,v 1.28 2015/03/25 16:18:58 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/epic5/ChangeLog,v 1.29 2015/07/11 20:36:35 binki Exp $
+
+*epic5-1.1.10-r1 (11 Jul 2015)
+
+  11 Jul 2015; Nathan Phillip Brink <binki@gentoo.org> +epic5-1.1.10-r1.ebuild:
+  Support building against any modern ruby target for bug #547768.
 
   25 Mar 2015; Justin Lecher <jlec@gentoo.org> -epic5-0.3.5.ebuild,
   epic5-1.1.10.ebuild:

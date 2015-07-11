@@ -1,1 +1,2 @@
 move dev-perl/inline-files dev-perl/Inline-Files
+move dev-perl/locale-maketext-lexicon dev-perl/Locale-Maketext-Lexicon

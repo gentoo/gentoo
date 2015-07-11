@@ -1,6 +1,10 @@
 # ChangeLog for games-arcade/frozen-bubble
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/frozen-bubble/ChangeLog,v 1.54 2015/06/13 19:43:23 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/frozen-bubble/ChangeLog,v 1.55 2015/07/11 20:39:07 dilfridge Exp $
+
+  11 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  frozen-bubble-2.2.1_beta1.ebuild:
+  dev-perl/locale-maketext-lexicon just became dev-perl/Locale-Maketext-Lexicon
 
   13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
   frozen-bubble-2.2.1_beta1.ebuild:
