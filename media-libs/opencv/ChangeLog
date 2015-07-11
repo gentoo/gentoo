@@ -1,7 +1,12 @@
 # ChangeLog for media-libs/opencv
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/opencv/ChangeLog,v 1.126 2015/07/10 22:20:36 amynka Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/opencv/ChangeLog,v 1.127 2015/07/10 22:58:27 amynka Exp $
 
+*opencv-3.0.0 (10 Jul 2015)
+	
+  10 Jul 2015; Amy Winston <amynka@gentoo.org> +opencv-3.0.0.ebuild:
+  Version bump opencv-3.0.0 bug #550248.
+  
   23 May 2015; Andreas K. Huettel <dilfridge@gentoo.org> opencv-2.4.10.ebuild,
   +files/opencv-2.4.10-pic-x86.patch:
   Add build fix for x86, bug 546508

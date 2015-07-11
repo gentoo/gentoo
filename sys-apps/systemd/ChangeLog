@@ -1,6 +1,10 @@
 # ChangeLog for sys-apps/systemd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/ChangeLog,v 1.384 2015/07/10 18:13:18 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/ChangeLog,v 1.385 2015/07/10 23:08:02 floppym Exp $
+
+  10 Jul 2015; Mike Gilbert <floppym@gentoo.org> systemd-222.ebuild,
+  systemd-9999.ebuild:
+  Add workaround for build failure with gcc-4.7, bug 554454 by Alexander Tsoy.
 
   10 Jul 2015; Mike Gilbert <floppym@gentoo.org> systemd-222.ebuild,
   systemd-9999.ebuild:

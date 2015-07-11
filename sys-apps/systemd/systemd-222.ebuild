@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/systemd-222.ebuild,v 1.3 2015/07/10 18:13:18 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/systemd-222.ebuild,v 1.4 2015/07/10 23:08:02 floppym Exp $
 
 EAPI=5
 
@@ -177,6 +177,9 @@ multilib_src_configure() {
 		# disable -flto since it is an optimization flag
 		# and makes distcc less effective
 		cc_cv_CFLAGS__flto=no
+
+		# Workaround for gcc-4.7, bug 554454.
+		cc_cv_CFLAGS__Werror_shadow=no
 
 		# Workaround for bug 516346
 		--enable-dependency-tracking
