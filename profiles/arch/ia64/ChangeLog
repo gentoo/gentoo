@@ -1,6 +1,9 @@
 # ChangeLog for Gentoo/ia64 profile
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/ia64/ChangeLog,v 1.235 2015/06/28 23:28:35 grknight Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/ia64/ChangeLog,v 1.236 2015/07/11 10:59:45 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org> package.use.mask, use.mask:
+  Clean up masks following removal of java on ia64.
 
   28 Jun 2015; Brian Evans <grknight@gentoo.org> use.stable.mask:
   Mask php_targets_php5-6 until bug 550164 is solved

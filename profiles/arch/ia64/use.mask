@@ -140,18 +140,10 @@ phonon
 # architecture.
 qdbm
 
-# java releated use flags
-# need to get dev-java/ant marked stable stable
-# before unmasking (16 Oct 2006 nichoj)
+# James Le Cuirot <chewi@gentoo.org> (11 Jul 2015)
+# We don't support java on ia64.
 java
 freetts
-# need to keyword openjms-bin, sun-jms
-jms
-# need to keyword sun-jmx
-jmx
-# need to keyword sun-javamail-bin, sun-javamail
-javamail
-# needs java
 pdfannotextractor
 
 # Aggelos Orfanakos <agorf@gentoo.org> (18 Jan 2008)
