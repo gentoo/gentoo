@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/pyopenssl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyopenssl/ChangeLog,v 1.137 2015/06/09 16:30:46 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyopenssl/ChangeLog,v 1.138 2015/07/11 13:48:43 klausman Exp $
+
+  11 Jul 2015; Tobias Klausmann <klausman@gentoo.org> pyopenssl-0.14.ebuild:
+  Stable on alpha, bug 530294
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

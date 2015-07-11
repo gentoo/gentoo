@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/rescan-scsi-bus/rescan-scsi-bus-1.57-r1.ebuild,v 1.10 2015/05/21 19:54:23 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/rescan-scsi-bus/rescan-scsi-bus-1.57-r1.ebuild,v 1.11 2015/07/11 14:02:31 klausman Exp $
 
 EAPI=5
 
@@ -14,7 +14,7 @@ SRC_URI="http://www.garloff.de/kurt/linux/${SRC_NAME}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86" # alpha hppa ppc64 sparc
+KEYWORDS="alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86" # alpha hppa ppc64 sparc
 
 RDEPEND=">=sys-apps/sg3_utils-1.24
 	app-admin/killproc

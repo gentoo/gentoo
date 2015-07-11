@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/killproc/killproc-2.13-r1.ebuild,v 1.12 2015/05/21 19:53:47 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/killproc/killproc-2.13-r1.ebuild,v 1.13 2015/07/11 14:02:41 klausman Exp $
 
 EAPI=5
 inherit eutils toolchain-funcs
@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.suse.com/pub/projects/init/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 ~sparc x86"
 
 src_prepare() {
 	epatch "${FILESDIR}/${P}-makefile.patch"
