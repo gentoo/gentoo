@@ -1,6 +1,13 @@
 # ChangeLog for app-admin/webapp-config
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/webapp-config/ChangeLog,v 1.135 2015/07/03 20:29:17 twitch153 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/webapp-config/ChangeLog,v 1.136 2015/07/11 03:17:24 twitch153 Exp $
+
+*webapp-config-1.54-r1 (11 Jul 2015)
+
+  11 Jul 2015; Devan Franchini <twitch153@gentoo.org>
+  +files/webapp-config-1.54-pvr-check.patch, +webapp-config-1.54-r1.ebuild,
+  -webapp-config-1.54.ebuild:
+  Adds patch to fix regression in checking for pvr
 
 *webapp-config-1.54 (03 Jul 2015)
 
