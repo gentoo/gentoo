@@ -1,6 +1,9 @@
 # ChangeLog for sys-devel/bison
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/bison/ChangeLog,v 1.136 2015/05/08 08:33:38 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/bison/ChangeLog,v 1.137 2015/07/11 16:54:51 klausman Exp $
+
+  11 Jul 2015; Tobias Klausmann <klausman@gentoo.org> bison-3.0.4-r1.ebuild:
+  Stable on alpha, bug 530654
 
   08 May 2015; Mike Frysinger <vapier@gentoo.org> bison-3.0.4-r1.ebuild,
   files/bison-3.0.4-optional-perl.patch:

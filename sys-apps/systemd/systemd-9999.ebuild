@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/systemd-9999.ebuild,v 1.178 2015/07/10 23:08:02 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/systemd-9999.ebuild,v 1.179 2015/07/11 16:39:36 floppym Exp $
 
 EAPI=5
 
@@ -150,6 +150,11 @@ pkg_pretend() {
 
 pkg_setup() {
 	:
+}
+
+src_unpack() {
+	default
+	[[ ${PV} != 9999 ]] || git-r3_src_unpack
 }
 
 src_prepare() {

@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/rasqal
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/rasqal/ChangeLog,v 1.92 2014/10/21 04:46:02 ssuominen Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/rasqal/ChangeLog,v 1.93 2015/07/11 16:54:25 klausman Exp $
+
+  11 Jul 2015; Tobias Klausmann <klausman@gentoo.org> rasqal-0.9.32.ebuild:
+  Stable on alpha, bug 530654
 
   21 Oct 2014; Samuli Suominen <ssuominen@gentoo.org> -rasqal-0.9.28.ebuild,
   -rasqal-0.9.30.ebuild:
