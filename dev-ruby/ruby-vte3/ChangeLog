@@ -1,6 +1,11 @@
 # ChangeLog for dev-ruby/ruby-vte3
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-vte3/ChangeLog,v 1.9 2015/07/09 15:42:08 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-vte3/ChangeLog,v 1.10 2015/07/11 06:21:37 graaff Exp $
+
+*ruby-vte3-2.2.5 (11 Jul 2015)
+
+  11 Jul 2015; Hans de Graaff <graaff@gentoo.org> +ruby-vte3-2.2.5.ebuild:
+  Version bump.
 
   09 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> ruby-vte3-2.2.3-r1.ebuild,
   ruby-vte3-2.2.3.ebuild:

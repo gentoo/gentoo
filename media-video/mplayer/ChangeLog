@@ -1,6 +1,10 @@
 # ChangeLog for media-video/mplayer
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer/ChangeLog,v 1.942 2015/06/22 19:02:59 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer/ChangeLog,v 1.943 2015/07/11 06:27:55 maekke Exp $
+
+  11 Jul 2015; Markus Meier <maekke@gentoo.org>
+  mplayer-1.2_pre20150214-r1.ebuild:
+  arm stable, bug #551972
 
   22 Jun 2015; Pacho Ramos <pacho@gentoo.org> mplayer-1.2_pre20150214-r1.ebuild:
   Needs to be rebuilt with ffmpeg subslot bumps

@@ -1,6 +1,9 @@
 # ChangeLog for sys-fs/btrfs-progs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/btrfs-progs/ChangeLog,v 1.108 2015/07/04 18:30:26 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/btrfs-progs/ChangeLog,v 1.109 2015/07/11 06:28:50 maekke Exp $
+
+  11 Jul 2015; Markus Meier <maekke@gentoo.org> btrfs-progs-4.0.1.ebuild:
+  arm stable, bug #552446
 
 *btrfs-progs-4.1 (04 Jul 2015)
 

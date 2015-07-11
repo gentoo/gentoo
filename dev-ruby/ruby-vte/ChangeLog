@@ -1,6 +1,11 @@
 # ChangeLog for dev-ruby/ruby-vte
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-vte/ChangeLog,v 1.53 2015/07/05 10:38:52 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-vte/ChangeLog,v 1.54 2015/07/11 06:14:02 graaff Exp $
+
+*ruby-vte-2.2.5 (11 Jul 2015)
+
+  11 Jul 2015; Hans de Graaff <graaff@gentoo.org> +ruby-vte-2.2.5.ebuild:
+  Version bump.
 
 *ruby-vte-2.2.3-r1 (05 Jul 2015)
 

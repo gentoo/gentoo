@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/grantlee
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/grantlee/ChangeLog,v 1.34 2015/02/23 13:54:45 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/grantlee/ChangeLog,v 1.35 2015/07/11 06:29:02 maekke Exp $
+
+  11 Jul 2015; Markus Meier <maekke@gentoo.org> grantlee-5.0.0.ebuild:
+  add ~arm, bug #553426
 
   23 Feb 2015; Michael Palimaka <kensington@gentoo.org> -grantlee-0.3.0.ebuild:
   Remove old.

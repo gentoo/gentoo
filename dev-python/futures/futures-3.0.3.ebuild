@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/futures/futures-3.0.3.ebuild,v 1.1 2015/06/18 06:25:27 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/futures/futures-3.0.3.ebuild,v 1.2 2015/07/11 06:31:03 maekke Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 pypy )
@@ -12,7 +12,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="doc"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]

@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/futures
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/futures/ChangeLog,v 1.17 2015/06/18 06:25:27 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/futures/ChangeLog,v 1.18 2015/07/11 06:31:03 maekke Exp $
+
+  11 Jul 2015; Markus Meier <maekke@gentoo.org> futures-3.0.3.ebuild:
+  add ~arm, bug #553852
 
 *futures-3.0.3 (18 Jun 2015)
 

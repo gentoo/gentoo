@@ -1,6 +1,12 @@
 # ChangeLog for dev-ruby/ruby-webkit-gtk
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-webkit-gtk/ChangeLog,v 1.11 2015/07/09 15:56:44 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-webkit-gtk/ChangeLog,v 1.12 2015/07/11 06:30:27 graaff Exp $
+
+*ruby-webkit-gtk-2.2.5 (11 Jul 2015)
+
+  11 Jul 2015; Hans de Graaff <graaff@gentoo.org>
+  +ruby-webkit-gtk-2.2.5.ebuild:
+  Version bump. Run tests.
 
   09 Jul 2015; Mikle Kolyada <zlogene@gentoo.org>
   ruby-webkit-gtk-2.2.3-r1.ebuild:
