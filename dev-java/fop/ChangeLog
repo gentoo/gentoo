@@ -1,6 +1,13 @@
 # ChangeLog for dev-java/fop
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/fop/ChangeLog,v 1.83 2015/07/05 21:51:08 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/fop/ChangeLog,v 1.84 2015/07/11 17:58:30 monsieurp Exp $
+
+  11 Jul 2015; Patrice Clement <monsieurp@gentoo.org>
+  -files/fop-2.0-build.xml.patch, fop-2.0.ebuild:
+  Mend compiling process by dropping previous patch and adding back
+  eventResourceGenerator task definition so that event-model.xml files are
+  correctly generated. Add required jars into lib directory using java-pkg_jar-
+  from. Fix bug 554386.
 
   05 Jul 2015; Patrice Clement <monsieurp@gentoo.org>
   +files/fop-2.0-build.xml.patch, fop-2.0.ebuild, metadata.xml:

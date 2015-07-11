@@ -2389,7 +2389,6 @@ dev-qt/qtgui:glib - Enable dev-libs/glib eventloop support
 dev-qt/qtgui:gtkstyle - Build a Qt style called GTK+ that mimics the active GTK+ theme
 dev-qt/qtgui:harfbuzz - Use media-libs/harfbuzz for text shaping
 dev-qt/qtgui:ibus - Build the IBus input method plugin
-dev-qt/qtgui:kms - Build the KMS platform plugin
 dev-qt/qtgui:qt3support - Enable the Qt3Support libraries for Qt4. Note that this does not mean you can compile pure Qt3 programs with Qt4.
 dev-qt/qtgui:trace - Build the 'trace' graphicssystem engine which allows to record all drawing operations into a trace buffer. The trace can be replayed later with the qttracereplay tool.
 dev-qt/qthelp:compat - Build the extra compatibility layer required by a few packages, see http://blog.qt.digia.com/blog/2010/06/22/qt-assistant-compat-version-available-as-extra-source-package/

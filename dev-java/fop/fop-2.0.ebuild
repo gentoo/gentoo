@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/fop/fop-2.0.ebuild,v 1.10 2015/07/05 21:51:08 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/fop/fop-2.0.ebuild,v 1.11 2015/07/11 17:58:30 monsieurp Exp $
 
 # TODO: if 'doc' use flag is used then should build also extra docs ('docs' ant target), currently it cannot
 #       be built as it needs forrest which we do not have
@@ -67,19 +67,28 @@ EANT_GENTOO_CLASSPATH="
 "
 
 TARGETS=(
+	resourcegen
 	jar-hyphenation
 	jar-sandbox
 	jar-main
 )
 
 java_prepare() {
-	epatch "${FILESDIR}"/${P}-build.xml.patch
-
-	find "${S}"/lib -type f -name \*.jar | xargs rm -v
+	find "${S}"/lib -type f | xargs rm -v
 }
 
 src_compile() {
-	EANT_GENTOO_CLASSPATH_EXTRA="$(java-pkg_getjars --build-only qdox-1.12)"
+	# https://bugs.gentoo.org/show_bug.cgi?id=554386
+	# http://wiki.apache.org/xmlgraphics-fop/HowTo/BuildFOPAlternatively
+	java-pkg_jar-from --into lib qdox-1.12 qdox.jar
+	java-pkg_jar-from --into lib xmlgraphics-commons-2 xmlgraphics-commons.jar
+	java-pkg_jar-from --into lib commons-logging commons-logging.jar
+	java-pkg_jar-from --into lib commons-io-1 commons-io.jar
+	java-pkg_jar-from --into lib fontbox-1.7 fontbox.jar
+	java-pkg_jar-from --into lib xml-commons-external-1.3 xml-apis-ext.jar
+	java-pkg_jar-from --into lib xml-commons-external-1.3 xml-apis.jar
+	java-pkg_jar-from --into lib avalon-framework-4.2 avalon-framework.jar
+	java-pkg_jar-from --virtual --into lib servlet-api-3.0 servlet-api.jar
 
 	for target in ${TARGETS[@]}; do
 		EANT_BUILD_TARGET="${target}" \
@@ -91,7 +100,6 @@ src_compile() {
 		EANT_BUILD_TARGET="javadocs" \
 			java-pkg-2_src_compile
 	fi
-
 }
 
 src_install() {

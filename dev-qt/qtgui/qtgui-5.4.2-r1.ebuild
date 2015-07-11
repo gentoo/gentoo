@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtgui/qtgui-5.4.2.ebuild,v 1.1 2015/06/17 15:21:03 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtgui/qtgui-5.4.2-r1.ebuild,v 1.1 2015/07/11 18:17:30 pesa Exp $
 
 EAPI=5
 QT5_MODULE="qtbase"
@@ -12,13 +12,16 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc64 ~x86"
 fi
 
-# TODO: directfb, linuxfb, offscreen (auto-depends on X11)
+# TODO: directfb, linuxfb, kms integration in eglfs
 
-IUSE="accessibility egl eglfs evdev +gif gles2 gtkstyle +harfbuzz ibus jpeg kms +png udev +xcb"
+IUSE="accessibility dbus egl eglfs evdev +gif gles2 gtkstyle
+	+harfbuzz ibus jpeg +png +udev +xcb"
 REQUIRED_USE="
+	|| ( eglfs xcb )
+	accessibility? ( dbus xcb )
 	egl? ( evdev )
 	eglfs? ( egl )
-	kms? ( egl gles2 )
+	ibus? ( dbus )
 "
 
 RDEPEND="
@@ -28,6 +31,7 @@ RDEPEND="
 	media-libs/freetype:2
 	>=sys-libs/zlib-1.2.5
 	virtual/opengl
+	dbus? ( ~dev-qt/qtdbus-${PV} )
 	egl? ( media-libs/mesa[egl] )
 	evdev? ( sys-libs/mtdev )
 	gtkstyle? (
@@ -37,13 +41,7 @@ RDEPEND="
 	)
 	gles2? ( media-libs/mesa[gles2] )
 	harfbuzz? ( >=media-libs/harfbuzz-0.9.32:= )
-	ibus? ( ~dev-qt/qtdbus-${PV} )
 	jpeg? ( virtual/jpeg:0 )
-	kms? (
-		media-libs/mesa[gbm]
-		virtual/libudev:=
-		x11-libs/libdrm
-	)
 	png? ( media-libs/libpng:0= )
 	udev? ( virtual/libudev:= )
 	xcb? (
@@ -58,12 +56,11 @@ RDEPEND="
 		x11-libs/xcb-util-keysyms
 		x11-libs/xcb-util-renderutil
 		x11-libs/xcb-util-wm
-		accessibility? ( ~dev-qt/qtdbus-${PV} )
 	)
 "
 DEPEND="${RDEPEND}
 	evdev? ( sys-kernel/linux-headers )
-	test? ( ~dev-qt/qtnetwork-${PV} )
+	udev? ( sys-kernel/linux-headers )
 "
 PDEPEND="
 	ibus? ( app-i18n/ibus )
@@ -77,6 +74,8 @@ QT5_TARGET_SUBDIRS=(
 	src/plugins/generic
 	src/plugins/imageformats
 	src/plugins/platforms
+	src/plugins/platforminputcontexts
+	src/plugins/platformthemes
 )
 
 QT5_GENTOO_CONFIG=(
@@ -98,7 +97,6 @@ QT5_GENTOO_CONFIG=(
 	!harfbuzz:no-harfbuzz:
 	jpeg:system-jpeg:IMAGEFORMAT_JPEG
 	!jpeg:no-jpeg:
-	kms:kms:
 	:opengl
 	png:png:
 	png:system-png:IMAGEFORMAT_PNG
@@ -114,19 +112,23 @@ QT5_GENTOO_CONFIG=(
 	xcb::XKB
 )
 
-pkg_setup() {
-	use gtkstyle && QT5_TARGET_SUBDIRS+=(src/plugins/platformthemes/gtk2)
-	use ibus     && QT5_TARGET_SUBDIRS+=(src/plugins/platforminputcontexts/ibus)
-	use xcb	     && QT5_TARGET_SUBDIRS+=(src/plugins/platforminputcontexts/compose)
-
+src_prepare() {
 	# egl_x11 is activated when both egl and xcb are enabled
 	use egl && QT5_GENTOO_CONFIG+=(xcb:egl_x11) || QT5_GENTOO_CONFIG+=(egl:egl_x11)
+
+	# avoid automagic dep on qtdbus
+	use dbus || sed -i -e 's/contains(QT_CONFIG, dbus)/false/' \
+		src/platformsupport/platformsupport.pro || die
+
+	qt_use_disable_mod ibus dbus \
+		src/plugins/platforminputcontexts/platforminputcontexts.pro
+
+	qt5-build_src_prepare
 }
 
 src_configure() {
 	local myconf=(
-		$(use accessibility && usex xcb -dbus-linked '')
-		$(usex ibus -dbus-linked '')
+		$(usex dbus -dbus-linked '')
 		$(qt_use egl)
 		$(qt_use eglfs)
 		$(qt_use evdev)
@@ -137,7 +139,6 @@ src_configure() {
 		$(qt_use gtkstyle)
 		$(qt_use harfbuzz harfbuzz system)
 		$(qt_use jpeg libjpeg system)
-		$(qt_use kms)
 		-opengl $(usex gles2 es2 desktop)
 		$(qt_use png libpng system)
 		$(qt_use udev libudev)
