@@ -1,6 +1,12 @@
 # ChangeLog for dev-perl/Lirc-Client
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Lirc-Client/ChangeLog,v 1.10 2015/06/13 22:12:58 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Lirc-Client/ChangeLog,v 1.11 2015/07/11 20:27:31 dilfridge Exp $
+
+*Lirc-Client-2.20.0 (11 Jul 2015)
+
+  11 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Lirc-Client-2.20.0.ebuild:
+  Version bump
 
   13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
   Lirc-Client-1.540.0-r1.ebuild:

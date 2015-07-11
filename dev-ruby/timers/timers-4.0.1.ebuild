@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/timers/timers-4.0.1.ebuild,v 1.2 2015/04/16 23:50:19 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/timers/timers-4.0.1.ebuild,v 1.3 2015/07/11 20:13:47 zlogene Exp $
 
 EAPI=5
 
@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/tarcieri/timers"
 
 LICENSE="MIT"
 SLOT="4"
-KEYWORDS="~amd64 ~ppc ~ppc64"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
 ruby_add_rdepend "dev-ruby/hitimes"

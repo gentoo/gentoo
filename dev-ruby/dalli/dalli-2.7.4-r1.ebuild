@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/dalli/dalli-2.7.4-r1.ebuild,v 1.3 2015/07/08 04:30:51 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/dalli/dalli-2.7.4-r1.ebuild,v 1.4 2015/07/11 20:23:41 zlogene Exp $
 
 EAPI=5
 USE_RUBY="ruby19 ruby20 ruby21"
@@ -16,7 +16,7 @@ DESCRIPTION="A high performance pure Ruby client for accessing memcached servers
 HOMEPAGE="https://github.com/mperham/dalli"
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc64"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc64 ~x86"
 IUSE=""
 
 DEPEND+="${DEPEND} test? ( >=net-misc/memcached-1.4.0 )"

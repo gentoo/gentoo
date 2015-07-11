@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/connection_pool
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/connection_pool/ChangeLog,v 1.14 2015/07/08 04:30:29 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/connection_pool/ChangeLog,v 1.15 2015/07/11 20:23:06 zlogene Exp $
+
+  11 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> connection_pool-2.2.0.ebuild:
+  Add ~x86 keyword wrt bug #551722
 
   08 Jul 2015; Jeroen Roovers <jer@gentoo.org> connection_pool-2.2.0.ebuild:
   Mark ~hppa ~ppc64 (bug #551722).

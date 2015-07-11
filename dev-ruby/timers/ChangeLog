@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/timers
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/timers/ChangeLog,v 1.15 2015/06/07 20:02:18 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/timers/ChangeLog,v 1.16 2015/07/11 20:13:47 zlogene Exp $
+
+  11 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> timers-4.0.1.ebuild:
+  Add ~x86 keyword wrt bug #519596
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

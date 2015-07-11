@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/multi_xml
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/multi_xml/ChangeLog,v 1.28 2015/07/10 06:01:10 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/multi_xml/ChangeLog,v 1.29 2015/07/11 20:21:16 zlogene Exp $
+
+  11 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> multi_xml-0.5.5.ebuild:
+  Add ~x86 keyword wrt bug #554410
 
 *multi_xml-0.5.5 (10 Jul 2015)
 

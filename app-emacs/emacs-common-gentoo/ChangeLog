@@ -1,6 +1,9 @@
 # ChangeLog for app-emacs/emacs-common-gentoo
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/emacs-common-gentoo/ChangeLog,v 1.124 2015/06/05 12:07:06 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/emacs-common-gentoo/ChangeLog,v 1.125 2015/07/11 20:06:26 ulm Exp $
+
+  11 Jul 2015; Ulrich Müller <ulm@gentoo.org> emacs-common-gentoo-1.5.ebuild:
+  Make pkg_preinst() idempotent, bug 554518.
 
   05 Jun 2015; Ulrich Müller <ulm@gentoo.org> emacs-common-gentoo-1.5.ebuild:
   Remove backwards compatibility code for site-start.el.

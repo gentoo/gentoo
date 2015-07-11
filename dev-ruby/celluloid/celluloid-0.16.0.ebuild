@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/celluloid/celluloid-0.16.0.ebuild,v 1.1 2014/11/02 11:05:58 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/celluloid/celluloid-0.16.0.ebuild,v 1.2 2015/07/11 20:14:54 zlogene Exp $
 
 EAPI=5
 # rbx or jruby recommended, but only in 1.9 mode.
@@ -23,7 +23,7 @@ IUSE=""
 SLOT="0"
 
 LICENSE="MIT"
-KEYWORDS="~amd64 ~ppc ~ppc64"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
 RUBY_PATCHES=( "${P}-call-private-methods.patch" )
 

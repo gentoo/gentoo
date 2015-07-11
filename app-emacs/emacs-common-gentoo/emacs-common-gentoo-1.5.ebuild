@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/emacs-common-gentoo/emacs-common-gentoo-1.5.ebuild,v 1.11 2015/06/05 12:07:06 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/emacs-common-gentoo/emacs-common-gentoo-1.5.ebuild,v 1.12 2015/07/11 20:06:26 ulm Exp $
 
 EAPI=5
 
@@ -71,11 +71,11 @@ src_install() {
 
 pkg_preinst() {
 	# make sure that site-gentoo.el exists since site-start.el requires it
-	if [[ ! -d ${EROOT}${SITELISP} ]]; then
+	if [[ ! -f ${ED}${SITELISP}/site-gentoo.el ]]; then		#554518
 		mv "${ED}${SITELISP}"/site-gentoo.el{.orig,} || die
-	else
+	fi
+	if [[ -d ${EROOT}${SITELISP} ]]; then
 		elisp-site-regen
-		rm "${ED}${SITELISP}/site-gentoo.el.orig" || die
 		cp "${EROOT}${SITELISP}/site-gentoo.el" "${ED}${SITELISP}/" || die
 	fi
 

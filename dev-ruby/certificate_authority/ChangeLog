@@ -1,6 +1,10 @@
 # ChangeLog for dev-ruby/certificate_authority
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/certificate_authority/ChangeLog,v 1.3 2015/06/07 17:19:52 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/certificate_authority/ChangeLog,v 1.4 2015/07/11 20:18:09 zlogene Exp $
+
+  11 Jul 2015; Mikle Kolyada <zlogene@gentoo.org>
+  certificate_authority-0.1.6.ebuild:
+  Add ~x86 keyword wrt bug #550798
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

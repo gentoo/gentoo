@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ox/ox-2.2.0-r1.ebuild,v 1.1 2015/07/10 05:53:47 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ox/ox-2.2.0-r1.ebuild,v 1.2 2015/07/11 20:20:38 zlogene Exp $
 
 EAPI=5
 USE_RUBY="ruby19 ruby20 ruby21 ruby22"
@@ -15,7 +15,7 @@ HOMEPAGE="http://www.ohler.com/ox/ https://github.com/ohler55/ox"
 SRC_URI="https://github.com/ohler55/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE=""
 

@@ -1,6 +1,12 @@
 # ChangeLog for dev-perl/libintl-perl
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/libintl-perl/ChangeLog,v 1.61 2014/10/18 19:20:29 vapier Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/libintl-perl/ChangeLog,v 1.62 2015/07/11 20:06:46 dilfridge Exp $
+
+*libintl-perl-1.240.0 (11 Jul 2015)
+
+  11 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +libintl-perl-1.240.0.ebuild:
+  Version bump
 
   18 Oct 2014; Mike Frysinger <vapier@gentoo.org>
   libintl-perl-1.200.0-r1.ebuild, libintl-perl-1.230.0.ebuild:

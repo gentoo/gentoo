@@ -1,6 +1,12 @@
 # ChangeLog for dev-perl/Linux-Smaps
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Linux-Smaps/ChangeLog,v 1.13 2014/08/29 06:27:29 zlogene Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Linux-Smaps/ChangeLog,v 1.14 2015/07/11 20:22:19 dilfridge Exp $
+
+*Linux-Smaps-0.130.0 (11 Jul 2015)
+
+  11 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Linux-Smaps-0.130.0.ebuild, -Linux-Smaps-0.100.0.ebuild:
+  Version bump; remove old
 
   29 Aug 2014; Mikle Kolyada <zlogene@gentoo.org> -Linux-Smaps-0.80.0.ebuild:
   Drop old.
