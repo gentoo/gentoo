@@ -1,6 +1,6 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xsdlib/xsdlib-20090415.ebuild,v 1.9 2013/06/27 21:41:54 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xsdlib/xsdlib-20090415.ebuild,v 1.10 2015/07/11 09:23:07 chewi Exp $
 
 EAPI="4"
 
@@ -14,7 +14,7 @@ SRC_URI="http://java.net/downloads/msv/releases/${PN}.${PV}.zip"
 
 LICENSE="BSD Apache-1.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ia64 ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
 COMMON_DEP="

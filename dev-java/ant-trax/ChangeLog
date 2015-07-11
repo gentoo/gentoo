@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/ant-trax
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-trax/ChangeLog,v 1.45 2015/07/09 21:13:35 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-trax/ChangeLog,v 1.46 2015/07/11 09:21:07 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org> ant-trax-1.9.2.ebuild:
+  Drop java on ia64.
 
   09 Jul 2015; James Le Cuirot <chewi@gentoo.org> -ant-trax-1.8.2.ebuild,
   -ant-trax-1.8.4.ebuild, -ant-trax-1.9.1.ebuild:

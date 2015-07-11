@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/hamcrest-generator
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/hamcrest-generator/ChangeLog,v 1.10 2014/02/28 17:34:39 ercpe Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/hamcrest-generator/ChangeLog,v 1.11 2015/07/11 09:21:24 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org> hamcrest-generator-1.1.ebuild,
+  hamcrest-generator-1.2.ebuild:
+  Drop java on ia64.
 
 *hamcrest-generator-1.1 (28 Feb 2014)
 

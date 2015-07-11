@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/junit
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/junit/ChangeLog,v 1.85 2015/07/10 12:48:21 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/junit/ChangeLog,v 1.86 2015/07/11 09:20:21 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org> junit-3.8.2-r1.ebuild,
+  -junit-4.6.ebuild, -junit-4.8.2-r1.ebuild:
+  Drop java on ia64 and also drop old versions.
 
 *junit-4.12 (10 Jul 2015)
 

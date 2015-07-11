@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/javacup
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/javacup/ChangeLog,v 1.34 2013/06/14 19:29:48 aballier Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/javacup/ChangeLog,v 1.35 2015/07/11 09:20:21 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org> -javacup-0.10k-r1.ebuild,
+  javacup-0.11a_beta20060608.ebuild:
+  Drop java on ia64 and also drop old version.
 
   14 Jun 2013; Alexis Ballier <aballier@gentoo.org>
   javacup-0.11a_beta20060608.ebuild:

@@ -1,6 +1,11 @@
 # ChangeLog for dev-java/xml-xmlbeans
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xml-xmlbeans/ChangeLog,v 1.36 2014/08/10 20:27:10 slyfox Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xml-xmlbeans/ChangeLog,v 1.37 2015/07/11 09:22:56 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org>
+  xml-xmlbeans-1.0.4_pre20041217-r1.ebuild,
+  xml-xmlbeans-1.0.4_pre20041217.ebuild:
+  Drop java on ia64.
 
   10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> xml-xmlbeans-2.6.0.ebuild:
   QA: drop trailing '.' from DESCRIPTION

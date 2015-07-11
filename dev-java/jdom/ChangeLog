@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/jdom
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jdom/ChangeLog,v 1.80 2015/06/16 09:11:27 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jdom/ChangeLog,v 1.81 2015/07/11 09:22:02 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org> jdom-1.0-r4.ebuild:
+  Drop java on ia64.
 
   16 Jun 2015; Patrice Clement <monsieurp@gentoo.org> jdom-1.1.3.ebuild,
   jdom-2.0.6.ebuild:

@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/jarjar
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jarjar/ChangeLog,v 1.39 2015/05/27 09:47:54 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jarjar/ChangeLog,v 1.40 2015/07/11 09:21:37 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org> jarjar-0.9.ebuild:
+  Drop java on ia64.
 
   27 May 2015; Patrice Clement <monsieurp@gentoo.org> jarjar-1.4.ebuild:
   Disable tests altogether with RESTRICT=test.

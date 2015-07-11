@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/ecj-gcj
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/ecj-gcj/ChangeLog,v 1.11 2015/06/20 23:17:10 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/ecj-gcj/ChangeLog,v 1.12 2015/07/11 09:21:21 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org> ecj-gcj-3.5.2-r3.ebuild,
+  ecj-gcj-3.6-r1.ebuild, ecj-gcj-4.2.1-r2.ebuild, ecj-gcj-4.4.2.ebuild:
+  Drop java on ia64.
 
   20 Jun 2015; James Le Cuirot <chewi@gentoo.org> ecj-gcj-3.5.2-r3.ebuild,
   ecj-gcj-3.6-r1.ebuild, ecj-gcj-4.2.1-r2.ebuild, ecj-gcj-4.4.2.ebuild:

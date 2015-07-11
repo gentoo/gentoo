@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/xerces
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xerces/ChangeLog,v 1.126 2014/07/14 14:22:30 haubi Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xerces/ChangeLog,v 1.127 2015/07/11 09:22:43 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org> xerces-2.11.0.ebuild:
+  Drop java on ia64.
 
   14 Jul 2014; Michael Haubenwallner <haubi@gentoo.org> xerces-2.11.0.ebuild:
   add ~ppc-aix keyword

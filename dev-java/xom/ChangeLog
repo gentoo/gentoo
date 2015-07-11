@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/xom
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xom/ChangeLog,v 1.75 2014/08/10 20:27:59 slyfox Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xom/ChangeLog,v 1.76 2015/07/11 09:22:59 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org> xom-1.2.10.ebuild:
+  Drop java on ia64.
 
   10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> xom-1.2.10.ebuild:
   QA: drop trailing '.' from DESCRIPTION

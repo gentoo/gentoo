@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/ant-apache-xalan2
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-apache-xalan2/ChangeLog,v 1.27 2015/07/09 21:10:21 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-apache-xalan2/ChangeLog,v 1.28 2015/07/11 09:20:52 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org>
+  ant-apache-xalan2-1.9.2.ebuild:
+  Drop java on ia64.
 
   09 Jul 2015; James Le Cuirot <chewi@gentoo.org>
   -ant-apache-xalan2-1.8.2.ebuild, -ant-apache-xalan2-1.8.4.ebuild,

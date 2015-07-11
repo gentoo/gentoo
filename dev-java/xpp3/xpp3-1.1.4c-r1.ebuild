@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xpp3/xpp3-1.1.4c-r1.ebuild,v 1.16 2014/08/10 20:28:10 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xpp3/xpp3-1.1.4c-r1.ebuild,v 1.17 2015/07/11 09:23:05 chewi Exp $
 
 JAVA_PKG_IUSE="doc source"
 
@@ -15,7 +15,7 @@ SRC_URI="http://www.extreme.indiana.edu/dist/java-repository/${PN}/distributions
 
 LICENSE="Apache-1.1 IBM JDOM LGPL-2.1+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ia64 ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="test"
 
 DEPEND=">=virtual/jdk-1.4

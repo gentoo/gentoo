@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/xml-commons-resolver
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xml-commons-resolver/ChangeLog,v 1.40 2014/07/04 14:15:41 haubi Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xml-commons-resolver/ChangeLog,v 1.41 2015/07/11 09:22:52 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org>
+  xml-commons-resolver-1.2.ebuild:
+  Drop java on ia64.
 
   04 Jul 2014; Michael Haubenwallner <haubi@gentoo.org>
   xml-commons-resolver-1.2.ebuild:

@@ -3,10 +3,10 @@ DEPEND=>=virtual/jdk-1.4 app-arch/unzip >=dev-java/java-config-2.2.0 source? ( a
 DESCRIPTION=Simple framework to write repeatable tests
 HOMEPAGE=http://www.junit.org/
 IUSE=elibc_FreeBSD doc source elibc_FreeBSD
-KEYWORDS=amd64 ~arm ~ia64 ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=amd64 ~arm ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=CPL-1.0
 RDEPEND=>=virtual/jre-1.4 >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
 SLOT=0
 SRC_URI=mirror://sourceforge/junit/junit3.8.2.zip
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	java-ant-2	1091461b8b02f54fabcfbf159164ff15	java-pkg-2	1889f7787714c5f7e3b5bb1c2be07c1f	java-utils-2	8cdf065211fa6d6687bdc3f3ebe12efc	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=5c51e9b24d63ab3d271eed2047d37539
+_md5_=4c4e348dd6c9b196b372bae1fa6e891d

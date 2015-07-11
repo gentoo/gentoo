@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/ant-junit
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-junit/ChangeLog,v 1.45 2015/07/09 21:12:05 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-junit/ChangeLog,v 1.46 2015/07/11 09:20:53 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org> ant-junit-1.9.2.ebuild:
+  Drop java on ia64.
 
   09 Jul 2015; James Le Cuirot <chewi@gentoo.org> -ant-junit-1.8.2.ebuild,
   -ant-junit-1.8.4.ebuild, -ant-junit-1.9.1.ebuild:

@@ -1,6 +1,6 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/iso-relax/iso-relax-20050331-r2.ebuild,v 1.6 2012/04/15 18:37:38 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/iso-relax/iso-relax-20050331-r2.ebuild,v 1.7 2015/07/11 09:21:36 chewi Exp $
 
 EAPI="2"
 JAVA_PKG_IUSE="source"
@@ -20,7 +20,7 @@ SRC_URI="mirror://gentoo/${P}-gentoo.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
 DEPEND=">=virtual/jdk-1.4

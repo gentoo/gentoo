@@ -1,6 +1,6 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/tomcat-servlet-api/tomcat-servlet-api-5.5.34.ebuild,v 1.3 2013/02/05 07:28:11 zerochaos Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/tomcat-servlet-api/tomcat-servlet-api-5.5.34.ebuild,v 1.4 2015/07/11 09:20:21 chewi Exp $
 
 inherit eutils java-pkg-2 java-ant-2 java-osgi
 
@@ -11,7 +11,7 @@ SRC_URI="mirror://apache/tomcat/tomcat-5/v${PV/_/-}/src/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="2.4"
-KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS=" ~amd64 ~arm ~ppc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="doc source"
 
 DEPEND=">=virtual/jdk-1.5

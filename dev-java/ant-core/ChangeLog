@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/ant-core
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-core/ChangeLog,v 1.136 2015/07/09 21:10:56 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-core/ChangeLog,v 1.137 2015/07/11 09:20:53 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org> ant-core-1.9.2.ebuild:
+  Drop java on ia64.
 
   09 Jul 2015; James Le Cuirot <chewi@gentoo.org> -ant-core-1.7.1-r4.ebuild,
   -ant-core-1.7.1-r5.ebuild, -ant-core-1.8.0-r1.ebuild,

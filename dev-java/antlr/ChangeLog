@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/antlr
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/antlr/ChangeLog,v 1.118 2015/06/16 08:58:33 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/antlr/ChangeLog,v 1.119 2015/07/11 09:19:56 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org> -antlr-2.7.7-r2.ebuild,
+  antlr-2.7.7-r5.ebuild, antlr-3.1.3-r3.ebuild, antlr-4.4.ebuild:
+  Drop java on ia64 and also drop old version.
 
   16 Jun 2015; Patrice Clement <monsieurp@gentoo.org> antlr-4.4.ebuild:
   Stable for ppc via ALLARCHES. Fix bug 549586.

@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/servletapi
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/servletapi/ChangeLog,v 1.71 2012/04/15 18:20:49 vapier Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/servletapi/ChangeLog,v 1.72 2015/07/11 09:22:30 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org> servletapi-2.4-r5.ebuild:
+  Drop java on ia64.
 
   15 Apr 2012; Mike Frysinger <vapier@gentoo.org> servletapi-2.4-r5.ebuild:
   Add back ia64 love #349020 by Dennis Schridde.

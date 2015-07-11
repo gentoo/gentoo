@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/qdox
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/qdox/ChangeLog,v 1.47 2015/02/23 12:21:28 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/qdox/ChangeLog,v 1.48 2015/07/11 09:22:21 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org> qdox-1.6.3.ebuild:
+  Drop java on ia64.
 
   23 Feb 2015; Patrice Clement <monsieurp@gentoo.org> qdox-1.12-r1.ebuild:
   Revert previous commit (SLOT change). Discussed with and signed off by mgorny.

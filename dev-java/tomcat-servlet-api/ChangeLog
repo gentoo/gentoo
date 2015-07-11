@@ -1,6 +1,13 @@
 # ChangeLog for dev-java/tomcat-servlet-api
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/tomcat-servlet-api/ChangeLog,v 1.187 2015/06/15 08:42:35 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/tomcat-servlet-api/ChangeLog,v 1.188 2015/07/11 09:20:21 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org> tomcat-servlet-api-3.ebuild,
+  tomcat-servlet-api-4.1.36.ebuild, tomcat-servlet-api-5.5.27-r1.ebuild,
+  tomcat-servlet-api-5.5.34.ebuild, tomcat-servlet-api-6.0.44.ebuild,
+  tomcat-servlet-api-7.0.59.ebuild, -tomcat-servlet-api-8.0.22.ebuild,
+  tomcat-servlet-api-8.0.23.ebuild:
+  Drop java on ia64 and also drop old version.
 
   15 Jun 2015; Patrice Clement <monsieurp@gentoo.org>
   -tomcat-servlet-api-6.0.41.ebuild, -tomcat-servlet-api-6.0.43.ebuild,

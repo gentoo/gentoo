@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/xjavac
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xjavac/ChangeLog,v 1.44 2014/07/04 14:21:13 haubi Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xjavac/ChangeLog,v 1.45 2015/07/11 09:22:46 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org> xjavac-20110814.ebuild:
+  Drop java on ia64.
 
   04 Jul 2014; Michael Haubenwallner <haubi@gentoo.org> xjavac-20110814.ebuild:
   add ~ppc-aix keyword

@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/jaxen
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jaxen/ChangeLog,v 1.63 2014/03/09 01:33:38 tomwij Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jaxen/ChangeLog,v 1.64 2015/07/11 09:21:51 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org> jaxen-1.1.1.ebuild,
+  jaxen-1.1.4.ebuild:
+  Drop java on ia64.
 
   09 Mar 2014; Tom Wijsman <TomWij@gentoo.org> jaxen-1.1.1.ebuild,
   jaxen-1.1.4.ebuild:

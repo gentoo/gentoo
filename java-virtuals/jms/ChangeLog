@@ -1,6 +1,9 @@
 # ChangeLog for java-virtuals/jms
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/java-virtuals/jms/ChangeLog,v 1.12 2014/12/02 14:30:17 mrueg Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/java-virtuals/jms/ChangeLog,v 1.13 2015/07/11 09:23:49 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org> jms-1.1.ebuild:
+  Drop java on ia64.
 
   02 Dec 2014; Manuel Rüger <mrueg@gentoo.org> jms-1.1.ebuild:
   Update to EAPI=5

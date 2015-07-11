@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/xalan
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xalan/ChangeLog,v 1.98 2015/06/30 11:04:04 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xalan/ChangeLog,v 1.99 2015/07/11 09:22:38 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org> xalan-2.7.1.ebuild:
+  Drop java on ia64.
 
 *xalan-2.7.2 (30 Jun 2015)
 

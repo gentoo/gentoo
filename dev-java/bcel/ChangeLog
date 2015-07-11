@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/bcel
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/bcel/ChangeLog,v 1.68 2015/06/07 08:28:57 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/bcel/ChangeLog,v 1.69 2015/07/11 09:21:08 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org> bcel-5.2-r2.ebuild,
+  bcel-6.0_rc3.ebuild:
+  Drop java on ia64.
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

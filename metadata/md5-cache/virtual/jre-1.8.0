@@ -4,4 +4,4 @@ EAPI=5
 KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc64-solaris ~x64-solaris
 RDEPEND=|| ( =virtual/jdk-1.8.0* =dev-java/oracle-jre-bin-1.8.0* )
 SLOT=1.8
-_md5_=4b60c31fe663a3fe0d0754b09c94a161
+_md5_=1888572c7bc4830162c5ec148886c8dd

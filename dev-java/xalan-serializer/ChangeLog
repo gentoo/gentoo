@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/xalan-serializer
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xalan-serializer/ChangeLog,v 1.19 2015/06/30 14:34:29 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xalan-serializer/ChangeLog,v 1.20 2015/07/11 09:22:42 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org> xalan-serializer-2.7.1.ebuild:
+  Drop java on ia64.
 
   30 Jun 2015; James Le Cuirot <chewi@gentoo.org> xalan-serializer-2.7.2.ebuild:
   Fix bad SRC_URI. Sorry. :(

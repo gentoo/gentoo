@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/jaxme
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jaxme/ChangeLog,v 1.46 2014/08/10 20:17:18 slyfox Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jaxme/ChangeLog,v 1.47 2015/07/11 09:21:56 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org> jaxme-0.5.2-r1.ebuild,
+  jaxme-0.5.2.ebuild:
+  Drop java on ia64.
 
   10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> jaxme-0.5.2-r1.ebuild,
   jaxme-0.5.2.ebuild:

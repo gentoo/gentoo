@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/dom4j
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/dom4j/ChangeLog,v 1.71 2015/06/17 02:36:39 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/dom4j/ChangeLog,v 1.72 2015/07/11 09:21:08 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org> -dom4j-1.6.1-r5.ebuild:
+  Drop java on ia64.
 
 *dom4j-1.6.1-r5 (17 Jun 2015)
 

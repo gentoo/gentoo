@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/java-config-wrapper
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/java-config-wrapper/ChangeLog,v 1.54 2012/05/10 18:34:09 aballier Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/java-config-wrapper/ChangeLog,v 1.55 2015/07/11 09:21:41 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org>
+  java-config-wrapper-0.16.ebuild:
+  Drop java on ia64.
 
   10 May 2012; Alexis Ballier <aballier@gentoo.org>
   java-config-wrapper-0.16.ebuild:
@@ -267,4 +271,3 @@
   25 Jun 2006; <nichoj@gentoo.org>
   +files/java-config-wrapper-0.8-qfile.patch:
   Initial import.
-

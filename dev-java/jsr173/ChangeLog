@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/jsr173
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jsr173/ChangeLog,v 1.25 2013/11/07 03:58:48 patrick Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jsr173/ChangeLog,v 1.26 2015/07/11 09:22:05 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org> jsr173-1.0-r1.ebuild:
+  Drop java on ia64.
 
   07 Nov 2013; Patrick Lauer <patrick@gentoo.org> jsr173-1.0-r1.ebuild:
   Shorten description, make repoman happier

@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/offo-hyphenation
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/offo-hyphenation/ChangeLog,v 1.10 2015/06/09 13:58:07 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/offo-hyphenation/ChangeLog,v 1.11 2015/07/11 09:22:19 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org> offo-hyphenation-1.2.ebuild:
+  Drop java on ia64.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

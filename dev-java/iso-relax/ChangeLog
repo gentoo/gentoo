@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/iso-relax
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/iso-relax/ChangeLog,v 1.26 2012/04/15 18:37:38 vapier Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/iso-relax/ChangeLog,v 1.27 2015/07/11 09:21:36 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org> iso-relax-20050331-r2.ebuild:
+  Drop java on ia64.
 
   15 Apr 2012; Mike Frysinger <vapier@gentoo.org> iso-relax-20050331-r2.ebuild:
   Add back ia64 love #349020 by Dennis Schridde.
@@ -110,4 +113,3 @@
   14 Nov 2004; Thomas Matthijs <axxo@gentoo.org> +metadata.xml,
   +files/build.xml, +iso-relax-20041111.ebuild:
   initial import, ebuild submitted by Jan Brinkmann <lucky@the-luckyduck.de>
-

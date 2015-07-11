@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/junitperf
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/junitperf/ChangeLog,v 1.26 2013/06/27 21:54:07 aballier Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/junitperf/ChangeLog,v 1.27 2015/07/11 09:22:10 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org> junitperf-1.9.1-r1.ebuild:
+  Drop java on ia64.
 
   27 Jun 2013; Alexis Ballier <aballier@gentoo.org> junitperf-1.9.1-r1.ebuild:
   keyword ~amd64-fbsd

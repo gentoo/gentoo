@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/asm
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/asm/ChangeLog,v 1.100 2015/07/01 08:47:18 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/asm/ChangeLog,v 1.101 2015/07/11 09:21:08 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org> asm-2.0-r1.ebuild,
+  asm-2.2.3-r1.ebuild, asm-3.3.1.ebuild:
+  Drop java on ia64.
 
   01 Jul 2015; Agostino Sarubbo <ago@gentoo.org> asm-5.0.3.ebuild:
   Stable for x86, wrt bug #553680

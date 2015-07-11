@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/ant-nodeps
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-nodeps/ChangeLog,v 1.48 2015/07/09 21:12:30 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-nodeps/ChangeLog,v 1.49 2015/07/11 09:20:53 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org> ant-nodeps-1.9.2.ebuild:
+  Drop java on ia64.
 
   09 Jul 2015; James Le Cuirot <chewi@gentoo.org> -ant-nodeps-1.8.2.ebuild,
   -ant-nodeps-1.8.4.ebuild, -ant-nodeps-1.9.1.ebuild:

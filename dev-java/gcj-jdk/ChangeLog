@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/gcj-jdk
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/gcj-jdk/ChangeLog,v 1.19 2015/05/21 08:50:13 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/gcj-jdk/ChangeLog,v 1.20 2015/07/11 09:19:56 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org> -gcj-jdk-4.7.3-r1.ebuild,
+  gcj-jdk-4.7.4.ebuild:
+  Drop java on ia64 and also drop old version.
 
   21 May 2015; James Le Cuirot <chewi@gentoo.org> -gcj-jdk-4.8.3.ebuild,
   gcj-jdk-4.8.4.ebuild:

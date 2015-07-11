@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xalan/xalan-2.7.1.ebuild,v 1.12 2014/08/10 20:26:33 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xalan/xalan-2.7.1.ebuild,v 1.13 2015/07/11 09:22:38 chewi Exp $
 
 EAPI=1
 JAVA_PKG_IUSE="doc source"
@@ -18,7 +18,7 @@ SRC_URI="mirror://apache/xml/${MY_PN}/source/${SRC_DIST}
 	doc? ( mirror://apache/xml/${MY_PN}/binaries/${BIN_DIST} )"
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ia64 ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc source"
 COMMON_DEP="
 	dev-java/javacup:0

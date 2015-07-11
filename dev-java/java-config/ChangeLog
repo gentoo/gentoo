@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/java-config
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/java-config/ChangeLog,v 1.294 2015/05/09 22:22:51 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/java-config/ChangeLog,v 1.295 2015/07/11 09:21:35 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org> java-config-2.2.0.ebuild:
+  Drop java on ia64.
 
   09 May 2015; James Le Cuirot <chewi@gentoo.org>
   -files/java-config-2.1.11-python3.patch, -files/python-abi-support.patch,

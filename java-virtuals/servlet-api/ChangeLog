@@ -1,6 +1,11 @@
 # ChangeLog for java-virtuals/servlet-api
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/java-virtuals/servlet-api/ChangeLog,v 1.51 2014/12/02 14:27:10 mrueg Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/java-virtuals/servlet-api/ChangeLog,v 1.52 2015/07/11 09:24:04 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org> servlet-api-2.2.ebuild,
+  servlet-api-2.3.ebuild, servlet-api-2.4.ebuild, servlet-api-2.5-r1.ebuild,
+  servlet-api-3.0-r1.ebuild:
+  Drop java on ia64.
 
   02 Dec 2014; Manuel Rüger <mrueg@gentoo.org> servlet-api-2.2.ebuild,
   servlet-api-2.3.ebuild, servlet-api-2.4.ebuild:

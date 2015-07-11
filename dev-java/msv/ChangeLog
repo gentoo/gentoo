@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/msv
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/msv/ChangeLog,v 1.36 2015/06/16 21:02:22 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/msv/ChangeLog,v 1.37 2015/07/11 09:22:17 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org> msv-20050627-r3.ebuild:
+  Drop java on ia64.
 
   16 Jun 2015; James Le Cuirot <chewi@gentoo.org> msv-20130601.ebuild:
   Fix building with Oracle. Still doesn't work with ibm-jdk-bin but we'll be

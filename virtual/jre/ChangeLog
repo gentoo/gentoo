@@ -1,6 +1,10 @@
 # ChangeLog for virtual/jre
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/jre/ChangeLog,v 1.53 2015/04/17 08:35:40 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/virtual/jre/ChangeLog,v 1.54 2015/07/11 09:24:33 chewi Exp $
+
+  11 Jul 2015; James Le Cuirot <chewi@gentoo.org> jre-1.6.0-r1.ebuild,
+  jre-1.7.0.ebuild, jre-1.8.0.ebuild:
+  Drop java on ia64.
 
   17 Apr 2015; Agostino Sarubbo <ago@gentoo.org> jre-1.7.0.ebuild:
   Stable for x86, wrt bug #538800
