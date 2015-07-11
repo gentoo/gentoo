@@ -1,6 +1,9 @@
 # ChangeLog for xfce-extra/xfce4-dict
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-dict/ChangeLog,v 1.59 2015/07/01 16:50:16 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-dict/ChangeLog,v 1.60 2015/07/11 07:06:13 maekke Exp $
+
+  11 Jul 2015; Markus Meier <maekke@gentoo.org> xfce4-dict-0.7.1.ebuild:
+  arm stable, bug #553500
 
   01 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> xfce4-dict-0.7.1.ebuild:
   amd64 stable wrt bug #553500

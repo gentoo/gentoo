@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/ruby-gstreamer
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gstreamer/ChangeLog,v 1.76 2015/07/09 10:02:52 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gstreamer/ChangeLog,v 1.77 2015/07/11 06:48:10 graaff Exp $
+
+  11 Jul 2015; Hans de Graaff <graaff@gentoo.org> ruby-gstreamer-2.2.5.ebuild:
+  Bring forward missing x86 keyword.
 
 *ruby-gstreamer-2.2.5 (09 Jul 2015)
 

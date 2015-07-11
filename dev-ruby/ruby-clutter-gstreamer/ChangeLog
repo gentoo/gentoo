@@ -1,6 +1,10 @@
 # ChangeLog for dev-ruby/ruby-clutter-gstreamer
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-clutter-gstreamer/ChangeLog,v 1.9 2015/07/10 05:14:07 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-clutter-gstreamer/ChangeLog,v 1.10 2015/07/11 06:49:00 graaff Exp $
+
+  11 Jul 2015; Hans de Graaff <graaff@gentoo.org>
+  ruby-clutter-gstreamer-2.2.5.ebuild:
+  Bring forward missing x86 keyword.
 
 *ruby-clutter-gstreamer-2.2.5 (10 Jul 2015)
 

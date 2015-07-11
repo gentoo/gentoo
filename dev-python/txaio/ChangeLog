@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/txaio
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/txaio/ChangeLog,v 1.1 2015/06/09 14:08:48 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/txaio/ChangeLog,v 1.2 2015/07/11 06:32:28 maekke Exp $
+
+  11 Jul 2015; Markus Meier <maekke@gentoo.org> txaio-1.0.0.ebuild:
+  add ~arm, bug #553852
 
 *txaio-1.0.0 (09 Jun 2015)
 

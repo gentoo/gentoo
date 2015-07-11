@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/setuptools_scm
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/setuptools_scm/ChangeLog,v 1.1 2015/07/03 14:46:29 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/setuptools_scm/ChangeLog,v 1.2 2015/07/11 06:32:55 maekke Exp $
+
+  11 Jul 2015; Markus Meier <maekke@gentoo.org> setuptools_scm-1.5.4.ebuild:
+  add ~arm, bug #553864
 
 *setuptools_scm-1.5.4 (03 Jul 2015)
 

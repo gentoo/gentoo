@@ -4,11 +4,11 @@ DESCRIPTION=A small convenience library for fetching files securely
 EAPI=5
 HOMEPAGE=https://github.com/dol-sen/ssl-fetch
 IUSE=python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 python_targets_pypy
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos ~x86-macos
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos ~x86-macos
 LICENSE=GPL-2
 RDEPEND=>=dev-python/requests-1.2.1[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_pypy(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_pypy(-)] python_targets_python2_7? ( dev-python/ndg-httpsclient[python_targets_python2_7] dev-python/pyasn1[python_targets_python2_7] >=dev-python/pyopenssl-0.13[python_targets_python2_7] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_pypy? ( virtual/pypy:0= ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_pypy(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_pypy(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 python_targets_pypy )
 SLOT=0
 SRC_URI=http://dev.gentoo.org/~dolsen/releases/ssl-fetch/ssl-fetch-0.3.tar.gz
 _eclasses_=distutils-r1	8fd6db5e1c80bd7c6d640bce0413569e	eutils	9fb270e417e0e83d64ca52586c4a79de	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-r1	23846c6ba39f6655e2027001eeed8e81	python-utils-r1	ae9becb5d45344c01939c3f57df0d3fd	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=86a24a34d88e3dc8213563b5e0ca94d3
+_md5_=7c6e97818e6a26a97c500af5cb172d82

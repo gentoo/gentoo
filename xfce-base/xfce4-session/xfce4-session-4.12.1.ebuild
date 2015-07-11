@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-base/xfce4-session/xfce4-session-4.12.1.ebuild,v 1.4 2015/07/01 16:42:20 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-base/xfce4-session/xfce4-session-4.12.1.ebuild,v 1.5 2015/07/11 06:59:39 maekke Exp $
 
 EAPI=5
 EAUTORECONF=1
@@ -12,7 +12,7 @@ SRC_URI="mirror://xfce/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="debug nls policykit systemd upower +xscreensaver"
 
 COMMON_DEPEND=">=dev-libs/dbus-glib-0.100:=

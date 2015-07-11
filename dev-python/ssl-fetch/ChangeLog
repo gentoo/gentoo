@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/ssl-fetch
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/ssl-fetch/ChangeLog,v 1.30 2015/06/07 16:12:02 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/ssl-fetch/ChangeLog,v 1.31 2015/07/11 07:21:48 jer Exp $
+
+  11 Jul 2015; Jeroen Roovers <jer@gentoo.org> ssl-fetch-0.3.ebuild:
+  Stable for PPC64 (bug #554242).
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

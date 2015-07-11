@@ -1,6 +1,10 @@
 # ChangeLog for xfce-extra/xfce4-netload-plugin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-netload-plugin/ChangeLog,v 1.41 2015/07/01 16:54:36 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-netload-plugin/ChangeLog,v 1.42 2015/07/11 07:08:31 maekke Exp $
+
+  11 Jul 2015; Markus Meier <maekke@gentoo.org>
+  xfce4-netload-plugin-1.2.4.ebuild:
+  arm stable, bug #553500
 
   01 Jul 2015; Mikle Kolyada <zlogene@gentoo.org>
   xfce4-netload-plugin-1.2.4.ebuild:

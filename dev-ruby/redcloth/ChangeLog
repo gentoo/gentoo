@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/redcloth
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/redcloth/ChangeLog,v 1.103 2015/07/10 09:55:10 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/redcloth/ChangeLog,v 1.104 2015/07/11 06:43:35 jer Exp $
+
+  11 Jul 2015; Jeroen Roovers <jer@gentoo.org> redcloth-4.2.9-r3.ebuild:
+  Stable for PPC64 (bug #536008).
 
   10 Jul 2015; Agostino Sarubbo <ago@gentoo.org> redcloth-4.2.9-r3.ebuild:
   Stable for x86, wrt bug #536008

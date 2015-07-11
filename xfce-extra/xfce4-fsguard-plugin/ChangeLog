@@ -1,6 +1,10 @@
 # ChangeLog for xfce-extra/xfce4-fsguard-plugin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-fsguard-plugin/ChangeLog,v 1.21 2015/07/01 16:53:10 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-fsguard-plugin/ChangeLog,v 1.22 2015/07/11 07:07:34 maekke Exp $
+
+  11 Jul 2015; Markus Meier <maekke@gentoo.org>
+  xfce4-fsguard-plugin-1.0.2.ebuild:
+  arm stable, bug #553500
 
   01 Jul 2015; Mikle Kolyada <zlogene@gentoo.org>
   xfce4-fsguard-plugin-1.0.2.ebuild:

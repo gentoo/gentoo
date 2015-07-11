@@ -1,6 +1,10 @@
 # ChangeLog for dev-ruby/websocket-driver
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/websocket-driver/ChangeLog,v 1.1 2015/07/04 19:24:27 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/websocket-driver/ChangeLog,v 1.2 2015/07/11 07:06:05 graaff Exp $
+
+  11 Jul 2015; Hans de Graaff <graaff@gentoo.org>
+  websocket-driver-0.3.4.ebuild:
+  Add ruby22.
 
 *websocket-driver-0.3.4 (04 Jul 2015)
 

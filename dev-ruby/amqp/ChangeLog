@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/amqp
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/amqp/ChangeLog,v 1.18 2015/05/02 06:06:25 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/amqp/ChangeLog,v 1.19 2015/07/11 06:55:52 graaff Exp $
+
+  11 Jul 2015; Hans de Graaff <graaff@gentoo.org> amqp-1.5.0.ebuild:
+  Add ruby22. Update HOMEPAGE.
 
   02 May 2015; Hans de Graaff <graaff@gentoo.org> -amqp-0.6.7-r1.ebuild,
   -amqp-1.1.8.ebuild, -amqp-1.3.0.ebuild:

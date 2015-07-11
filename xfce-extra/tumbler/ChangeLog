@@ -1,6 +1,9 @@
 # ChangeLog for xfce-extra/tumbler
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/tumbler/ChangeLog,v 1.69 2015/07/04 13:39:54 perfinion Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/tumbler/ChangeLog,v 1.70 2015/07/11 07:05:46 maekke Exp $
+
+  11 Jul 2015; Markus Meier <maekke@gentoo.org> tumbler-0.1.31.ebuild:
+  arm stable, bug #553500
 
 *tumbler-0.1.31-r1 (04 Jul 2015)
 

@@ -1,6 +1,9 @@
 # ChangeLog for xfce-base/thunar
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-base/thunar/ChangeLog,v 1.185 2015/07/02 18:22:25 perfinion Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-base/thunar/ChangeLog,v 1.186 2015/07/11 06:55:50 maekke Exp $
+
+  11 Jul 2015; Markus Meier <maekke@gentoo.org> thunar-1.6.10.ebuild:
+  arm stable, bug #553500
 
 *thunar-1.6.10-r1 (02 Jul 2015)
 

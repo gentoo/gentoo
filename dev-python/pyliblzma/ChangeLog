@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/pyliblzma
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyliblzma/ChangeLog,v 1.8 2015/06/09 16:21:32 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyliblzma/ChangeLog,v 1.9 2015/07/11 06:54:21 jer Exp $
+
+  11 Jul 2015; Jeroen Roovers <jer@gentoo.org> pyliblzma-0.5.3-r1.ebuild:
+  Mark ~ppc64 (bug #552770).
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

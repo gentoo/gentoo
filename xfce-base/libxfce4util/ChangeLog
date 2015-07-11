@@ -1,6 +1,9 @@
 # ChangeLog for xfce-base/libxfce4util
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-base/libxfce4util/ChangeLog,v 1.203 2015/07/02 18:31:00 perfinion Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-base/libxfce4util/ChangeLog,v 1.204 2015/07/11 06:53:59 maekke Exp $
+
+  11 Jul 2015; Markus Meier <maekke@gentoo.org> libxfce4util-4.12.1.ebuild:
+  arm stable, bug #553500
 
 *libxfce4util-4.12.1-r1 (02 Jul 2015)
 

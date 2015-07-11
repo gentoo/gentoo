@@ -4,10 +4,10 @@ DESCRIPTION=automatic updater and package installer/remover for rpm systems
 EAPI=5
 HOMEPAGE=http://yum.baseurl.org/
 IUSE=test python_targets_python2_7
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 ~ppc64 ~x86
 LICENSE=GPL-2
 RDEPEND=>=dev-lang/python-2.7.5-r2:2.7[sqlite] >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] app-arch/rpm[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] dev-python/sqlitecachec[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] dev-libs/libxml2[python,python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] dev-python/pyliblzma[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] dev-python/urlgrabber[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)]
 SLOT=0
 SRC_URI=http://dev.gentoo.org/~creffett/distfiles/yum-3.4.3_p20130218.tar.gz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	351da1aa73960a282591217fb57c1bb8	python-utils-r1	ae9becb5d45344c01939c3f57df0d3fd	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=b0b1f307300a696ca6498452a6bf3283
+_md5_=90e24dcc949d40f5f3ef9973e968267e

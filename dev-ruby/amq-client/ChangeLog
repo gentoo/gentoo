@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/amq-client
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/amq-client/ChangeLog,v 1.14 2015/06/07 16:45:08 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/amq-client/ChangeLog,v 1.15 2015/07/11 06:53:34 graaff Exp $
+
+  11 Jul 2015; Hans de Graaff <graaff@gentoo.org> amq-client-1.0.4.ebuild:
+  Add ruby22.
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

@@ -3,10 +3,10 @@ DEPEND=>=dev-libs/libinput-0.8.0:0= !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-d
 DESCRIPTION=X.org input driver based on libinput
 EAPI=5
 HOMEPAGE=http://xorg.freedesktop.org/
-KEYWORDS=amd64 ~arm hppa ~ppc ~ppc64 x86
+KEYWORDS=amd64 arm hppa ~ppc ~ppc64 x86
 LICENSE=MIT
 RDEPEND=>=dev-libs/libinput-0.8.0:0= x11-base/xorg-server:= x11-base/xorg-server[xorg]
 SLOT=0
 SRC_URI=http://xorg.freedesktop.org/releases/individual/driver/xf86-input-libinput-0.6.0.tar.bz2
 _eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	xorg-2	50dd640df6d0554c259daa81531ed3ee
-_md5_=996508b20543a6dea425dc4413443b7a
+_md5_=0803cf4d043f1244af2781bbc929b8eb

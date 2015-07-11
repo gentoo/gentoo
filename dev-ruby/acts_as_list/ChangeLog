@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/acts_as_list
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/acts_as_list/ChangeLog,v 1.15 2015/06/09 14:39:26 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/acts_as_list/ChangeLog,v 1.16 2015/07/11 06:51:23 graaff Exp $
+
+  11 Jul 2015; Hans de Graaff <graaff@gentoo.org> acts_as_list-0.7.2.ebuild:
+  Add ruby21.
 
   09 Jun 2015; Manuel Rüger <mrueg@gentoo.org> acts_as_list-0.6.0.ebuild,
   acts_as_list-0.7.0.ebuild, acts_as_list-0.7.2.ebuild:
