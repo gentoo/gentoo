@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">libcapsinetwork</product>
   <announced>July 10, 2015</announced>
-  <revised>July 10, 2015: 2</revised>
+  <revised>July 11, 2015: 2</revised>
   <bug>544324</bug>
   <access>remote</access>
   <affected>
@@ -39,9 +39,9 @@
       We recommend that users unmerge it:
     </p>
     
-    <h1 id="emerge---unmerge-net-libslibcapsinetwork">emerge --unmerge
-      ‘net-libs/libcapsinetwork’
-    </h1>
+    <code>
+      # emerge --unmerge "net-libs/libcapsinetwork"
+    </code>
   </resolution>
   <references>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0841">CVE-2015-0841</uri>
@@ -49,7 +49,7 @@
   <metadata tag="requester" timestamp="Fri, 29 May 2015 09:38:01 +0000">
     pinkbyte
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 10 Jul 2015 08:31:49 +0000">
+  <metadata tag="submitter" timestamp="Sat, 11 Jul 2015 09:32:23 +0000">
     pinkbyte
   </metadata>
 </glsa>
