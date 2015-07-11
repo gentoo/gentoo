@@ -1,6 +1,12 @@
 # ChangeLog for dev-ruby/facter
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/facter/ChangeLog,v 1.134 2015/07/11 19:03:39 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/facter/ChangeLog,v 1.136 2015/07/11 22:13:43 prometheanfire Exp $
+
+  11 Jul 2015; Matthew Thode <prometheanfire@gentoo.org> facter-3.0.1-r1.ebuild:
+  fix build errors on 32 bit
+
+  11 Jul 2015; Matthew Thode <prometheanfire@gentoo.org> facter-3.0.1-r1.ebuild:
+  fixing build errors and fixing ruby install method
 
 *facter-3.0.1-r1 (11 Jul 2015)
 

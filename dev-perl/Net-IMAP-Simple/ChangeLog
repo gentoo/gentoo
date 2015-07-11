@@ -1,6 +1,12 @@
 # ChangeLog for dev-perl/Net-IMAP-Simple
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-IMAP-Simple/ChangeLog,v 1.14 2014/08/29 06:30:46 zlogene Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-IMAP-Simple/ChangeLog,v 1.15 2015/07/11 22:21:41 dilfridge Exp $
+
+*Net-IMAP-Simple-1.220.600 (11 Jul 2015)
+
+  11 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Net-IMAP-Simple-1.220.600.ebuild:
+  Version bump. Yes the dependencies are really gone.
 
   29 Aug 2014; Mikle Kolyada <zlogene@gentoo.org>
   -Net-IMAP-Simple-1.203.400.ebuild:

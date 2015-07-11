@@ -1,6 +1,15 @@
 # ChangeLog for sci-electronics/eagle
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-electronics/eagle/ChangeLog,v 1.67 2015/06/14 18:51:43 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/eagle/ChangeLog,v 1.68 2015/07/11 22:20:49 idl0r Exp $
+
+*eagle-7.3.0 (11 Jul 2015)
+
+  11 Jul 2015; Christian Ruppert <idl0r@gentoo.org> -eagle-4.16_p2-r2.ebuild,
+  eagle-5.11.0.ebuild, eagle-5.12.0.ebuild, eagle-6.6.0.ebuild,
+  -eagle-7.1.0.ebuild, -eagle-7.2.0.ebuild, +eagle-7.3.0.ebuild:
+  Version bump. Add new license for 7.3.0. Add RESTRICT="mirror bindist" due to
+  license restrictions, thanks to Ulrich Müller <ulm@gentoo.org>! Cleanup.
+  Also fixes bug 545064.
 
   14 Jun 2015; Ulrich Müller <ulm@gentoo.org> eagle-4.16_p2-r2.ebuild,
   eagle-5.11.0.ebuild, eagle-5.12.0.ebuild, eagle-6.6.0.ebuild,

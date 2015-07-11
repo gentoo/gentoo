@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-electronics/eagle/eagle-5.12.0.ebuild,v 1.4 2015/06/14 18:51:43 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/eagle/eagle-5.12.0.ebuild,v 1.5 2015/07/11 22:20:49 idl0r Exp $
 
 EAPI="5"
 
@@ -16,6 +16,7 @@ LICENSE="cadsoft"
 SLOT="0"
 
 QA_PREBUILT="opt/${P}/bin/eagle"
+RESTRICT="mirror bindist"
 
 RDEPEND="
 	sys-libs/glibc

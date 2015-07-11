@@ -6,7 +6,8 @@ IUSE=doc linguas_de linguas_zh
 KEYWORDS=~amd64 ~x86 -*
 LICENSE=cadsoft
 RDEPEND=sys-libs/glibc || ( virtual/jpeg:62[abi_x86_32(-)] media-libs/jpeg:62[abi_x86_32(-)] ) >=media-libs/libpng-1.2.51:1.2[abi_x86_32(-)] >=dev-libs/openssl-0.9.8z_p1-r2:0.9.8[abi_x86_32(-)] >=sys-libs/zlib-1.2.8-r1[abi_x86_32(-)] >=media-libs/freetype-2.5.0.1[abi_x86_32(-)] >=media-libs/fontconfig-2.10.92[abi_x86_32(-)] x11-libs/libXext[abi_x86_32(-)] x11-libs/libX11[abi_x86_32(-)] >=x11-libs/libXrender-0.9.8[abi_x86_32(-)] >=x11-libs/libXrandr-1.4.2[abi_x86_32(-)] >=x11-libs/libXcursor-1.1.14[abi_x86_32(-)] >=x11-libs/libXi-1.7.2[abi_x86_32(-)]
+RESTRICT=mirror bindist
 SLOT=0
 SRC_URI=ftp://ftp.cadsoft.de/eagle/program/6.6/eagle-lin-6.6.0.run
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=d631e1d31ff9070936b37dd7f5fb6c49
+_md5_=d71d221fe293762ae6fa5d72af0db2bd

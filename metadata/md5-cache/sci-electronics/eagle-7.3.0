@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst unpack
+DESCRIPTION=CadSoft EAGLE schematic and printed circuit board (PCB) layout editor
+EAPI=5
+HOMEPAGE=http://www.cadsoft.de
+IUSE=doc linguas_de linguas_zh
+KEYWORDS=~amd64 ~x86 -*
+LICENSE=cadsoft-2
+RDEPEND=sys-libs/glibc dev-libs/openssl:0 >=sys-libs/zlib-1.2.8-r1 >=media-libs/freetype-2.5.0.1 >=media-libs/fontconfig-2.10.92 x11-libs/libXext x11-libs/libX11 >=x11-libs/libXrender-0.9.8 >=x11-libs/libXrandr-1.4.2 >=x11-libs/libXcursor-1.1.14 >=x11-libs/libXi-1.7.2 net-print/cups x11-libs/libxcb
+RESTRICT=mirror bindist
+SLOT=0
+SRC_URI=x86? ( ftp://ftp.cadsoft.de/eagle/program/7.3/eagle-lin32-7.3.0.run ) amd64? ( ftp://ftp.cadsoft.de/eagle/program/7.3/eagle-lin64-7.3.0.run )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=dfbb45c54a31d3fde20ab82c6fc1b2cf

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/hawknl/hawknl-1.68-r2.ebuild,v 1.7 2015/03/23 07:51:41 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-games/hawknl/hawknl-1.68-r2.ebuild,v 1.8 2015/07/11 21:42:56 mr_bones_ Exp $
 
 EAPI=5
 inherit toolchain-funcs eutils multilib
@@ -21,8 +21,7 @@ S=${WORKDIR}/hawknl${PV}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-build.patch
-	sed -i \
-		-e '/echo /d' src/makefile.linux || die
+	sed -i\ -e '/echo /d' src/makefile.linux || die
 }
 
 src_compile() {
@@ -34,10 +33,8 @@ src_compile() {
 src_install() {
 	emake -j1 -C src -f makefile.linux \
 		LIBDIR="${D}/usr/$(get_libdir)" \
-		INCDIR="${D}/usr/include" \
-		install || die
+		INCDIR="${D}/usr/include" install
 	if use doc ; then
-		docinto samples
-		dodoc samples/*
+		dodoc -r samples
 	fi
 }

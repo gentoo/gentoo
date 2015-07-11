@@ -8,4 +8,4 @@ LICENSE=LGPL-2.1
 SLOT=0
 SRC_URI=http://www.sonic.net/~philf/download/HawkNL168src.tar.gz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=c063abd6b9301c8dcad71ffe36653cfa
+_md5_=bdbaba7824a6cdd32d61eaf5f11b2bdc

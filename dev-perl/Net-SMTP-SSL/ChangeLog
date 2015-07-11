@@ -1,6 +1,12 @@
 # ChangeLog for dev-perl/Net-SMTP-SSL
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-SMTP-SSL/ChangeLog,v 1.21 2014/08/23 01:27:42 axs Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-SMTP-SSL/ChangeLog,v 1.22 2015/07/11 21:54:36 dilfridge Exp $
+
+*Net-SMTP-SSL-1.30.0 (11 Jul 2015)
+
+  11 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Net-SMTP-SSL-1.30.0.ebuild:
+  Version bump, bug 552824
 
 *Net-SMTP-SSL-1.10.0-r1 (23 Aug 2014)
 

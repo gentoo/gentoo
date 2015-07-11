@@ -1,6 +1,9 @@
 # ChangeLog for dev-games/hawknl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/hawknl/ChangeLog,v 1.19 2015/03/23 07:51:41 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-games/hawknl/ChangeLog,v 1.20 2015/07/11 21:42:56 mr_bones_ Exp $
+
+  11 Jul 2015; Michael Sterrett <mr_bones_@gentoo.org> hawknl-1.68-r2.ebuild:
+  tidy; fix doc install (bug #554460)
 
   23 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> hawknl-1.68-r2.ebuild:
   EAPI=5

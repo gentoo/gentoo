@@ -1,0 +1,9 @@
+# ChangeLog for dev-perl/Canary-Stability
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Canary-Stability/ChangeLog,v 1.1 2015/07/11 21:32:46 dilfridge Exp $
+
+*Canary-Stability-2006 (11 Jul 2015)
+
+  11 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Canary-Stability-2006.ebuild, +metadata.xml:
+  New, slightly strange package

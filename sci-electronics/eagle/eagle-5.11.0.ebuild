@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-electronics/eagle/eagle-5.11.0.ebuild,v 1.8 2015/06/14 18:51:43 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/eagle/eagle-5.11.0.ebuild,v 1.9 2015/07/11 22:20:49 idl0r Exp $
 
 EAPI=5
 
@@ -12,7 +12,7 @@ HOMEPAGE="http://www.cadsoft.de"
 KEYWORDS="amd64 x86"
 IUSE="doc linguas_de linguas_zh"
 LICENSE="cadsoft"
-RESTRICT="strip test"
+RESTRICT="strip test mirror bindist"
 SLOT="0"
 
 SRC_URI="ftp://ftp.cadsoft.de/eagle/program/${PV%\.[0-9]}/${PN}-lin-${PV}.run"

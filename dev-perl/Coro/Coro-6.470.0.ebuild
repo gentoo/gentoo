@@ -1,11 +1,11 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Coro/Coro-6.430.0.ebuild,v 1.1 2015/06/28 20:09:39 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Coro/Coro-6.470.0.ebuild,v 1.1 2015/07/11 21:48:05 dilfridge Exp $
 
 EAPI=5
 
 MODULE_AUTHOR=MLEHMANN
-MODULE_VERSION=6.43
+MODULE_VERSION=6.47
 inherit perl-module
 
 DESCRIPTION="The only real threads in perl"
@@ -20,9 +20,11 @@ RDEPEND="
 	virtual/perl-Scalar-List-Utils
 	>=virtual/perl-Storable-2.150.0
 	dev-perl/common-sense
+	<dev-lang/perl-5.22.0
 "
 DEPEND="${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
+	dev-perl/Canary-Stability
+	>=virtual/perl-ExtUtils-MakeMaker-6.520.0
 "
 
-SRC_TEST="do"
+SRC_TEST="do parallel"

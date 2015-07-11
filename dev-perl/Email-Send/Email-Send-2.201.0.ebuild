@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Email-Send/Email-Send-2.201.0.ebuild,v 1.2 2015/06/13 18:51:21 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Email-Send/Email-Send-2.201.0.ebuild,v 1.3 2015/07/11 22:08:56 dilfridge Exp $
 
 EAPI=5
 
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="test"
 
-DEPEND="
+RDEPEND="
 	dev-perl/Email-Abstract
 	>=dev-perl/Email-Address-1.800.0
 	>=dev-perl/Email-Simple-1.920.0
@@ -23,7 +23,7 @@ DEPEND="
 	dev-perl/Return-Value
 	>=virtual/perl-Scalar-List-Utils-1.20.0
 "
-RDEPEND="${DEPEND}
+DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		virtual/perl-File-Path
