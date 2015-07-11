@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>kde</herd>
+	<herd>kde</herd>
+	<use>
+		<flag name="google">Google service integration via <pkg>net-libs/libkgapi</pkg></flag>
+	</use>
 </pkgmetadata>

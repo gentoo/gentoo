@@ -1,6 +1,12 @@
 # ChangeLog for x11-apps/intel-gpu-tools
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/intel-gpu-tools/ChangeLog,v 1.26 2015/07/07 17:47:10 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-apps/intel-gpu-tools/ChangeLog,v 1.27 2015/07/11 12:08:17 mrueg Exp $
+
+*intel-gpu-tools-1.11-r1 (11 Jul 2015)
+
+  11 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +intel-gpu-tools-1.11-r1.ebuild,
+  -intel-gpu-tools-1.11.ebuild, metadata.xml:
+  Add libunwind dependency. Fixes bug #554204. Patch by tka.
 
 *intel-gpu-tools-1.11 (07 Jul 2015)
 
