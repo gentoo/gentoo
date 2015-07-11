@@ -222,8 +222,7 @@
              charset="ISO-8859-1" 
              linksource="true" 
              breakiterator="false" 
-             maxmemory="128m" 
-             additionalparam="-Xdoclint:accessibility -Xdoclint:reference"/>
+             maxmemory="128m" />
   </target>
 
   <!-- ====================================================================== -->

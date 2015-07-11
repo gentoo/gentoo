@@ -1,12 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/litecoind/litecoind-0.8.7.2.ebuild,v 1.1 2014/08/28 23:05:03 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/litecoind/litecoind-0.10.2.2.ebuild,v 1.1 2015/07/11 13:25:23 blueness Exp $
 
 EAPI=5
 
 DB_VER="4.8"
 
-inherit bash-completion-r1 db-use eutils systemd user
+inherit autotools db-use eutils systemd user
 
 MyPV="${PV/_/-}"
 MyPN="litecoin"
@@ -19,19 +19,15 @@ SRC_URI="https://github.com/${MyPN}-project/${MyPN}/archive/v${MyPV}.tar.gz -> $
 LICENSE="MIT ISC GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="examples ipv6 logrotate upnp"
+IUSE="logrotate upnp"
 
 RDEPEND="
 	dev-libs/boost[threads(+)]
 	dev-libs/openssl:0[-bindist]
-	logrotate? (
-		app-admin/logrotate
-	)
-	upnp? (
-		net-libs/miniupnpc
-	)
+	logrotate? ( app-admin/logrotate )
+	upnp? ( net-libs/miniupnpc )
 	sys-libs/db:$(db_ver_to_slot "${DB_VER}")[cxx]
-	<=dev-libs/leveldb-1.12.0[-snappy]
+	virtual/bitcoin-leveldb
 "
 DEPEND="${RDEPEND}
 	>=app-shells/bash-4.1
@@ -47,47 +43,33 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${MyPN}-sys_leveldb.patch
+	epatch "${FILESDIR}/0.9.0-sys_leveldb.patch"
+	eautoreconf
 	rm -r src/leveldb
-
-	if has_version '>=dev-libs/boost-1.52'; then
-		sed -i 's/\(-l db_cxx\)/-l boost_chrono$(BOOST_LIB_SUFFIX) \1/' src/makefile.unix
-	fi
 }
 
 src_configure() {
-	OPTS=()
-
-	OPTS+=("DEBUGFLAGS=")
-	OPTS+=("CXXFLAGS=${CXXFLAGS}")
-	OPTS+=("LDFLAGS=${LDFLAGS}")
-
+	local my_econf=
 	if use upnp; then
-		OPTS+=("USE_UPNP=1")
+		my_econf="${my_econf} --with-miniupnpc --enable-upnp-default"
 	else
-		OPTS+=("USE_UPNP=-")
+		my_econf="${my_econf} --without-miniupnpc --disable-upnp-default"
 	fi
-
-	use ipv6 || OPTS+=("USE_IPV6=-")
-
-	OPTS+=("USE_SYSTEM_LEVELDB=1")
-	OPTS+=("BDB_INCLUDE_PATH=$(db_includedir "${DB_VER}")")
-	OPTS+=("BDB_LIB_SUFFIX=-${DB_VER}")
-
-	cd src || die
-	emake CC="$(tc-getCC)" CXX="$(tc-getCXX)" -f makefile.unix "${OPTS[@]}" ${PN}
+	econf \
+		--disable-ccache \
+		--disable-static \
+		--disable-tests \
+		--with-system-leveldb \
+		--with-system-libsecp256k1  \
+		--without-libs \
+		--without-daemon  \
+		--without-gui     \
+		${my_econf}  \
+		"$@"
 }
 
-#Tests are broken with and without our litecoin-sys_leveldb.patch.
-#When tests work, make sure to inherit toolchain-funcs
-#src_test() {
-#	cd src || die
-#	emake CC="$(tc-getCC)" CXX="$(tc-getCXX)" -f makefile.unix "${OPTS[@]}" test_litecoin
-#	./test_litecoin || die 'Tests failed'
-#}
-
 src_install() {
-	dobin src/${PN}
+	default
 
 	insinto /etc/litecoin
 	doins "${FILESDIR}/litecoin.conf"
@@ -107,14 +89,6 @@ src_install() {
 	dodoc doc/README.md doc/release-notes.md
 	newman contrib/debian/manpages/bitcoind.1 litecoind.1
 	newman contrib/debian/manpages/bitcoin.conf.5 litecoin.conf.5
-
-	sed -i -e 's/bitcoin/litecoin/g' contrib/bitcoind.bash-completion
-	newbashcomp contrib/bitcoind.bash-completion ${PN}.bash-completion
-
-	if use examples; then
-		docinto examples
-		dodoc -r contrib/{bitrpc,pyminer,spendfrom,tidy_datadir.sh,wallettools}
-	fi
 
 	if use logrotate; then
 		insinto /etc/logrotate.d

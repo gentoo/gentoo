@@ -1,6 +1,11 @@
 # ChangeLog for dev-java/junit
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/junit/ChangeLog,v 1.86 2015/07/11 09:20:21 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/junit/ChangeLog,v 1.87 2015/07/11 13:21:27 monsieurp Exp $
+
+  11 Jul 2015; Patrice Clement <monsieurp@gentoo.org>
+  files/junit-4.12-build.xml:
+  Remove additionalparam flags from javadoc target for the javadoc to compile
+  smoothly with Java 7. Fix bug 554486.
 
   11 Jul 2015; James Le Cuirot <chewi@gentoo.org> junit-3.8.2-r1.ebuild,
   -junit-4.6.ebuild, -junit-4.8.2-r1.ebuild:
