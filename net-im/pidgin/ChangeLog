@@ -1,6 +1,9 @@
 # ChangeLog for net-im/pidgin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/pidgin/ChangeLog,v 1.371 2015/06/28 17:55:50 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/pidgin/ChangeLog,v 1.372 2015/07/11 19:05:18 zlogene Exp $
+
+  11 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> pidgin-2.10.11.ebuild:
+  x86 stable wrt bug #530674
 
   28 Jun 2015; Justin Lecher <jlec@gentoo.org> files/pidgin-2.10.11-tinfo.patch:
   Make the patch for with ncurses[-tinfo]

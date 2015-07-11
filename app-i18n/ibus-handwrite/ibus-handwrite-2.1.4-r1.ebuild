@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus-handwrite/ibus-handwrite-2.1.4-r1.ebuild,v 1.3 2015/07/04 18:02:29 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus-handwrite/ibus-handwrite-2.1.4-r1.ebuild,v 1.4 2015/07/11 19:07:04 zlogene Exp $
 
 EAPI=5
 
@@ -13,7 +13,7 @@ SRC_URI="http://ibus-handwrite.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="nls +zinnia"
 
 RDEPEND="zinnia? ( app-i18n/zinnia app-i18n/zinnia-tomoe )

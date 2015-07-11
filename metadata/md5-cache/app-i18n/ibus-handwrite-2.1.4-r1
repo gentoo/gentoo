@@ -4,11 +4,11 @@ DESCRIPTION=hand write recognition/input using ibus IM engine
 EAPI=5
 HOMEPAGE=http://code.google.com/p/ibus-handwrite/
 IUSE=nls +zinnia python_targets_python2_7
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-3
 RDEPEND=zinnia? ( app-i18n/zinnia app-i18n/zinnia-tomoe ) >=app-i18n/ibus-1.3.0 >=x11-libs/gtk+-2.10 x11-libs/gtkglext
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=http://ibus-handwrite.googlecode.com/files/ibus-handwrite-2.1.4.tar.bz2
 _eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	351da1aa73960a282591217fb57c1bb8	python-utils-r1	ae9becb5d45344c01939c3f57df0d3fd	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=c2a74f4e33c7a8738b62cebc1f851b05
+_md5_=dcb98d24668db6c536f44795e2f86873

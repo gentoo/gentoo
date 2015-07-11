@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/facter/facter-3.0.1.ebuild,v 1.1 2015/07/05 05:30:00 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/facter/facter-3.0.1-r1.ebuild,v 1.1 2015/07/11 19:03:39 prometheanfire Exp $
 
 EAPI=5
 
@@ -21,6 +21,7 @@ CDEPEND="
 	>=dev-cpp/yaml-cpp-0.5.1
 	dev-libs/openssl:=
 	sys-apps/util-linux
+	app-emulation/virt-what
 	net-misc/curl"
 
 RDEPEND+=" ${CDEPEND}"

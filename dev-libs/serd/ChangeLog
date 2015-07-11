@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/serd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/serd/ChangeLog,v 1.14 2015/06/27 09:49:21 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/serd/ChangeLog,v 1.15 2015/07/11 19:15:44 zlogene Exp $
+
+  11 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> serd-0.20.0.ebuild:
+  x86 stable wrt bug #532272
 
   27 Jun 2015; Agostino Sarubbo <ago@gentoo.org> serd-0.20.0.ebuild:
   Stable for amd64, wrt bug #532272

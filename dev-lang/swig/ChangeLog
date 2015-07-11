@@ -1,6 +1,9 @@
 # ChangeLog for dev-lang/swig
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/swig/ChangeLog,v 1.228 2015/07/08 00:06:55 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/swig/ChangeLog,v 1.229 2015/07/11 19:10:50 zlogene Exp $
+
+  11 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> swig-3.0.5.ebuild:
+  x86 stable wrt bug #531736
 
 *swig-3.0.6 (08 Jul 2015)
 

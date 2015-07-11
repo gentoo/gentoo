@@ -1,6 +1,10 @@
 # ChangeLog for sys-apps/portage
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/portage/ChangeLog,v 1.1452 2015/07/11 07:19:07 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/portage/ChangeLog,v 1.1453 2015/07/11 19:01:26 zmedico Exp $
+
+  11 Jul 2015; Zac Medico <zmedico@gentoo.org> portage-2.2.20.ebuild,
+  portage-9999.ebuild:
+  Require >=app-arch/tar-1.27 for --xattrs-include (bug 554498).
 
   11 Jul 2015; Jeroen Roovers <jer@gentoo.org> portage-2.2.20.ebuild:
   Stable for HPPA (bug #554104).

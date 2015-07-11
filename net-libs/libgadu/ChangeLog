@@ -1,6 +1,9 @@
 # ChangeLog for net-libs/libgadu
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libgadu/ChangeLog,v 1.95 2015/06/27 12:32:18 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libgadu/ChangeLog,v 1.96 2015/07/11 19:04:00 zlogene Exp $
+
+  11 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> libgadu-1.12.1.ebuild:
+  x86 stable wrt bug #528240
 
   27 Jun 2015; Markus Meier <maekke@gentoo.org> libgadu-1.12.1.ebuild:
   arm stable, bug #528240
