@@ -1,6 +1,11 @@
 # ChangeLog for media-fonts/dejavu
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/dejavu/ChangeLog,v 1.180 2015/02/28 14:04:37 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/dejavu/ChangeLog,v 1.181 2015/07/11 02:27:43 yngwin Exp $
+
+*dejavu-2.35 (11 Jul 2015)
+
+  11 Jul 2015; Ben de Groot <yngwin@gentoo.org> +dejavu-2.35.ebuild:
+  version bump (bug #553916) and formatting
 
   28 Feb 2015; Agostino Sarubbo <ago@gentoo.org> dejavu-2.34.ebuild:
   Stable for ia64, wrt bug #521704
