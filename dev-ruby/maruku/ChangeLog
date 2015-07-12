@@ -1,6 +1,10 @@
 # ChangeLog for dev-ruby/maruku
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/maruku/ChangeLog,v 1.42 2015/06/07 18:15:31 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/maruku/ChangeLog,v 1.43 2015/07/12 08:10:26 zlogene Exp $
+
+  12 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> maruku-0.7.2-r1.ebuild,
+  maruku-0.7.2.ebuild:
+  Add ~x86 keyword wrt bug #497396
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

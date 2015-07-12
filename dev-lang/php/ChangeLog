@@ -1,6 +1,10 @@
 # ChangeLog for dev-lang/php
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/php/ChangeLog,v 1.997 2015/07/11 11:37:48 olemarkus Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/php/ChangeLog,v 1.998 2015/07/12 07:33:06 zlogene Exp $
+
+  12 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> php-5.5.26.ebuild,
+  php-5.6.10.ebuild:
+  x86 stable wrt bug #552408
 
   11 Jul 2015; Ole Markus With <olemarkus@gentoo.org> -php-5.4.39.ebuild,
   -php-5.4.40.ebuild, -php-5.5.22.ebuild, -php-5.5.23.ebuild,
