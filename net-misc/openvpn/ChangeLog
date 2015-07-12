@@ -1,6 +1,11 @@
 # ChangeLog for net-misc/openvpn
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/openvpn/ChangeLog,v 1.323 2015/07/12 19:30:58 djc Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/openvpn/ChangeLog,v 1.324 2015/07/12 19:33:49 djc Exp $
+
+  12 Jul 2015; Dirkjan Ochtman <djc@gentoo.org> openvpn-2.3.6-r1.ebuild,
+  openvpn-2.3.6-r2.ebuild, openvpn-2.3.6.ebuild, openvpn-2.3.7.ebuild,
+  openvpn-9999.ebuild:
+  Don't default to polarssl, this was introduced accidentally
 
   12 Jul 2015; Dirkjan Ochtman <djc@gentoo.org> openvpn-9999.ebuild:
   Bring openvpn-9999 in line with 2.3.7 (fix bug 554638)

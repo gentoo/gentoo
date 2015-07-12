@@ -1,0 +1,76 @@
+From e7352d5ada69f212dc813c4cbd257d036e7a27c8 Mon Sep 17 00:00:00 2001
+From: Juergen Funk <juergen.funk_ml@cib.de>
+Date: Fri, 3 Jul 2015 08:33:03 +0200
+Subject: tdf#92517 KDE4-FileDialog: "Save as" has wrong Filter
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Fixing follow
+ - The order of calling: first should be set the filter, after
+   that can be set the current filter
+ - change the function from "setCurrentFilter" to "setCurrentItem"
+   When you set the filter over "setCurrentFilter" you need the full
+   search string "extention|description" e.g. "*.docx|Microsoft Word.."
+ - Not need the escape of slash (with that can not find
+   "Microsoft Word 2007/2010 XML (.docx))"
+
+Change-Id: Ie4f7d6fd619b391487ee944c3e745c855600ee54
+Reviewed-on: https://gerrit.libreoffice.org/16721
+Tested-by: Jenkins <ci@libreoffice.org>
+Reviewed-by: Katarina Behrens <Katarina.Behrens@cib.de>
+(cherry picked from commit a93cfd5afb9072de00fc4b2a070f23ebdad6e4fe)
+Reviewed-on: https://gerrit.libreoffice.org/16890
+Reviewed-by: Caolán McNamara <caolanm@redhat.com>
+Tested-by: Caolán McNamara <caolanm@redhat.com>
+
+diff --git a/vcl/unx/kde4/KDE4FilePicker.cxx b/vcl/unx/kde4/KDE4FilePicker.cxx
+index 4615bd4..a638955 100644
+--- a/vcl/unx/kde4/KDE4FilePicker.cxx
++++ b/vcl/unx/kde4/KDE4FilePicker.cxx
+@@ -250,6 +250,10 @@ sal_Int16 SAL_CALL KDE4FilePicker::execute()
+ 
+     _dialog->clearFilter();
+     _dialog->setFilter(_filter);
++
++    if(!_currentFilter.isNull())
++        _dialog->filterWidget()->setCurrentItem(_currentFilter);
++
+     _dialog->filterWidget()->setEditable(false);
+ 
+     VCLKDEApplication::preDialogSetup();
+@@ -384,9 +388,7 @@ void SAL_CALL KDE4FilePicker::setCurrentFilter( const OUString &title )
+         return Q_EMIT setCurrentFilterSignal( title );
+     }
+ 
+-    QString t = toQString(title);
+-    t.replace("/", "\\/");
+-    _dialog->filterWidget()->setCurrentFilter(t);
++    _currentFilter = toQString(title);
+ }
+ 
+ OUString SAL_CALL KDE4FilePicker::getCurrentFilter()
+@@ -633,6 +635,7 @@ void SAL_CALL KDE4FilePicker::initialize( const uno::Sequence<uno::Any> &args )
+     }
+ 
+     _filter.clear();
++    _currentFilter.clear();
+ 
+     // parameter checking
+     uno::Any arg;
+diff --git a/vcl/unx/kde4/KDE4FilePicker.hxx b/vcl/unx/kde4/KDE4FilePicker.hxx
+index 98e9af6..ff3a8602 100644
+--- a/vcl/unx/kde4/KDE4FilePicker.hxx
++++ b/vcl/unx/kde4/KDE4FilePicker.hxx
+@@ -66,6 +66,8 @@ protected:
+ 
+     //running filter string to add to dialog
+     QString _filter;
++    // string to set the current filter
++    QString _currentFilter;
+ 
+     //mapping of SAL control ID's to created custom controls
+     QHash<sal_Int16, QWidget*> _customWidgets;
+-- 
+cgit v0.10.2
+

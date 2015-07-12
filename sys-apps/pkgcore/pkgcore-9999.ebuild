@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/pkgcore/pkgcore-9999.ebuild,v 1.24 2015/04/02 02:34:16 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/pkgcore/pkgcore-9999.ebuild,v 1.25 2015/07/12 19:31:44 radhermit Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
@@ -76,6 +76,9 @@ python_install_all() {
 
 	distutils-r1_python_install "${cmds[@]}"
 	distutils-r1_python_install_all
+
+	insinto /usr/share/zsh/site-functions
+	doins completion/zsh/*
 }
 
 pkg_postinst() {

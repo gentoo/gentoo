@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/openvpn/openvpn-9999.ebuild,v 1.9 2015/07/12 19:30:58 djc Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/openvpn/openvpn-9999.ebuild,v 1.10 2015/07/12 19:33:49 djc Exp $
 
 EAPI=4
 
@@ -13,7 +13,7 @@ HOMEPAGE="http://openvpn.net/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="examples down-root iproute2 +lzo pam passwordsave pkcs11 +plugins +polarssl selinux socks +ssl static systemd userland_BSD"
+IUSE="examples down-root iproute2 +lzo pam passwordsave pkcs11 +plugins polarssl selinux socks +ssl static systemd userland_BSD"
 
 REQUIRED_USE="static? ( !plugins !pkcs11 )
 			polarssl? ( ssl )

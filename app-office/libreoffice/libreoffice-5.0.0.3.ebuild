@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-9999.ebuild,v 1.37 2015/07/12 20:54:02 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-5.0.0.3.ebuild,v 1.1 2015/07/12 20:54:02 dilfridge Exp $
 
 EAPI=5
 
@@ -90,7 +90,8 @@ unset lo_xt
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
 [[ ${PV} == *9999* ]] || \
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS=""
+#KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 
 COMMON_DEPEND="
 	${PYTHON_DEPS}
@@ -99,7 +100,7 @@ COMMON_DEPEND="
 	>=app-text/hunspell-1.3.2-r3
 	app-text/mythes
 	>=app-text/libabw-0.1.0
-	>=app-text/libexttextcat-3.4.4
+	>=app-text/libexttextcat-3.2
 	>=app-text/libebook-0.1.1
 	>=app-text/libetonyek-0.1.2
 	app-text/liblangtag
@@ -117,7 +118,7 @@ COMMON_DEPEND="
 	dev-libs/expat
 	>=dev-libs/hyphen-2.7.1
 	>=dev-libs/icu-4.8.1.1:=
-	>=dev-libs/liborcus-0.9.0
+	=dev-libs/liborcus-0.7*
 	>=dev-libs/librevenge-0.0.1
 	>=dev-libs/nspr-4.8.8
 	>=dev-libs/nss-3.12.9
@@ -197,7 +198,8 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 if [[ ${PV} != *9999* ]]; then
-	PDEPEND="=app-office/libreoffice-l10n-$(get_version_component_range 1-2)*"
+	#PDEPEND="=app-office/libreoffice-l10n-$(get_version_component_range 1-2)*"
+	PDEPEND=">=app-office/libreoffice-l10n-4.4"
 else
 	# Translations are not reliable on live ebuilds
 	# rather force people to use english only.

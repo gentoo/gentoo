@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-9999.ebuild,v 1.37 2015/07/12 20:54:02 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-4.4.4.3.ebuild,v 1.1 2015/07/12 20:54:02 dilfridge Exp $
 
 EAPI=5
 
@@ -99,16 +99,16 @@ COMMON_DEPEND="
 	>=app-text/hunspell-1.3.2-r3
 	app-text/mythes
 	>=app-text/libabw-0.1.0
-	>=app-text/libexttextcat-3.4.4
+	>=app-text/libexttextcat-3.2
 	>=app-text/libebook-0.1.1
-	>=app-text/libetonyek-0.1.2
+	>=app-text/libetonyek-0.1.1
 	app-text/liblangtag
 	>=app-text/libmspub-0.1.0
-	>=app-text/libmwaw-0.3.5
+	>=app-text/libmwaw-0.3.4
 	>=app-text/libodfgen-0.1.0
 	app-text/libwpd:0.10[tools]
 	app-text/libwpg:0.3
-	=app-text/libwps-0.4*
+	=app-text/libwps-0.3*
 	>=app-text/poppler-0.16:=[xpdf-headers(+),cxx]
 	>=dev-cpp/clucene-2.3.3.4-r2
 	=dev-cpp/libcmis-0.5*
@@ -117,7 +117,7 @@ COMMON_DEPEND="
 	dev-libs/expat
 	>=dev-libs/hyphen-2.7.1
 	>=dev-libs/icu-4.8.1.1:=
-	>=dev-libs/liborcus-0.9.0
+	=dev-libs/liborcus-0.7*
 	>=dev-libs/librevenge-0.0.1
 	>=dev-libs/nspr-4.8.8
 	>=dev-libs/nss-3.12.9
@@ -215,7 +215,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/cppunit
 	>=dev-util/gperf-3
 	dev-util/intltool
-	>=dev-util/mdds-0.12.0:=
+	>=dev-util/mdds-0.11.2:=
 	media-libs/glm
 	net-misc/npapi-sdk
 	>=sys-apps/findutils-4.4.2
@@ -244,6 +244,14 @@ DEPEND="${COMMON_DEPEND}
 PATCHES=(
 	# not upstreamable stuff
 	"${FILESDIR}/${PN}-4.4-system-pyuno.patch"
+
+	# from master branch
+	"${FILESDIR}/${PN}-4.3.5.2-remove-bashisms.patch" # bug 525454
+	"${FILESDIR}/${PN}-4.4.0.3-telepathy-build-fix.patch"
+	"${FILESDIR}/${PN}-4.4.1.2-add-kde4-open-url-script.patch"
+	"${FILESDIR}/${PN}-4.4.4.3-improve-KDE4FilePicker.patch"
+	"${FILESDIR}/${PN}-4.4.4.3-fix-KDE4-FileDialog.patch"
+	"${FILESDIR}/${PN}-4.4.4.3-cleanup-IsNativeControlSupported.patch"
 )
 
 REQUIRED_USE="

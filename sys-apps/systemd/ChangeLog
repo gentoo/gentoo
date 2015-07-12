@@ -1,6 +1,13 @@
 # ChangeLog for sys-apps/systemd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/ChangeLog,v 1.386 2015/07/11 16:39:36 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/ChangeLog,v 1.387 2015/07/12 20:14:20 floppym Exp $
+
+*systemd-222-r1 (12 Jul 2015)
+
+  12 Jul 2015; Mike Gilbert <floppym@gentoo.org> +systemd-222-r1.ebuild,
+  systemd-9999.ebuild:
+  Quit playing games to avoid depending on libcap and libmount for non-native
+  abis. Bug 554580 by LE GARREC Vincent.
 
   11 Jul 2015; Mike Gilbert <floppym@gentoo.org> systemd-9999.ebuild:
   Call default src_unpack function in the live ebuild.
