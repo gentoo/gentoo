@@ -1,10 +1,20 @@
 # ChangeLog for profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10181 2015/07/12 15:59:21 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10184 2015/07/12 17:28:25 dilfridge Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  12 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org> package.mask:
+  Remove obsolete lcsm:0 mask
+
+  12 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org> package.mask:
+  Remove obsolete perl-core masks
+
+  12 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org> package.mask:
+  Remove obsolete mask for removed Perl virtuals CGI, Module-Build, and
+  Module-Pluggable
 
   12 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org> package.mask:
   Unmask Perl 5.22
