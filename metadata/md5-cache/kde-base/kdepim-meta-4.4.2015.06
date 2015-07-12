@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DESCRIPTION=kdepim - merge this to pull in all kdepim-derived packages
+EAPI=5
+HOMEPAGE=http://www.kde.org/
+IUSE=nls aqua
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux
+LICENSE=metapackage
+RDEPEND=>=kde-base/akregator-4.4.2015.06:4[aqua=] >=kde-base/blogilo-4.4.2015.06:4[aqua=] >=kde-base/kabcclient-4.4.2015.06:4[aqua=] >=kde-base/kaddressbook-4.4.2015.06:4[aqua=] >=kde-base/kalarm-4.4.2015.06:4[aqua=] >=kde-base/kdepim-icons-4.4.2015.06:4[aqua=] >=kde-base/kdepim-kresources-4.4.2015.06:4[aqua=] >=kde-base/kdepim-wizards-4.4.2015.06:4[aqua=] >=kde-base/kjots-4.4.2015.06:4[aqua=] >=kde-base/kleopatra-4.4.2015.06:4[aqua=] >=kde-base/kmail-4.4.2015.06:4[aqua=] >=kde-base/knode-4.4.2015.06:4[aqua=] >=kde-base/knotes-4.4.2015.06:4[aqua=] >=kde-base/konsolekalendar-4.4.2015.06:4[aqua=] >=kde-base/kontact-4.4.2015.06:4[aqua=] >=kde-base/korganizer-4.4.2015.06:4[aqua=] >=kde-base/ktimetracker-4.4.2015.06:4[aqua=] >=kde-base/libkdepim-4.4.2015.06:4[aqua=] >=kde-base/libkleo-4.4.2015.06:4[aqua=] >=kde-base/libkpgp-4.4.2015.06:4[aqua=] nls? ( || ( ( >=kde-apps/kde4-l10n-15.04.0:4[aqua=] ) ( >=kde-apps/kde4-l10n-4.14.3:4[aqua=] >=kde-base/kdepim-l10n-4.4.11.1-r1:4[aqua=] ) ) ) !kde-base/kdepim-runtime
+SLOT=4
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	kde4-functions	99e770658f27aaf2c8a5850af7598b18	kde4-meta-pkg	c803ab12295a2918961b64111d6682fa	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=6511247b007783a28c6d7019499a601e

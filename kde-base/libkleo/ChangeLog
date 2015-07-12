@@ -1,6 +1,12 @@
 # ChangeLog for kde-base/libkleo
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/libkleo/ChangeLog,v 1.87 2014/08/05 18:17:16 mrueg Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-base/libkleo/ChangeLog,v 1.88 2015/07/12 22:12:23 dilfridge Exp $
+
+*libkleo-4.4.2015.06 (12 Jul 2015)
+
+  12 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +libkleo-4.4.2015.06.ebuild:
+  Version bump to Pali Rohar's noakonadi branch
 
   05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> libkleo-4.4.11.1-r1.ebuild:
   Remove trailing '.' from DESCRIPTION.

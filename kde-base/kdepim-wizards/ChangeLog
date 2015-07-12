@@ -1,6 +1,12 @@
 # ChangeLog for kde-base/kdepim-wizards
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdepim-wizards/ChangeLog,v 1.200 2014/04/05 18:10:57 dilfridge Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdepim-wizards/ChangeLog,v 1.201 2015/07/12 22:06:16 dilfridge Exp $
+
+*kdepim-wizards-4.4.2015.06 (12 Jul 2015)
+
+  12 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +kdepim-wizards-4.4.2015.06.ebuild:
+  Version bump to Pali Rohar's noakonadi branch
 
   05 Apr 2014; Andreas K. Huettel <dilfridge@gentoo.org>
   kdepim-wizards-4.4.11.1.ebuild:

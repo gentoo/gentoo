@@ -1,6 +1,12 @@
 # ChangeLog for kde-base/kleopatra
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kleopatra/ChangeLog,v 1.248 2015/07/11 11:49:27 johu Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kleopatra/ChangeLog,v 1.249 2015/07/12 22:07:10 dilfridge Exp $
+
+*kleopatra-4.4.2015.06 (12 Jul 2015)
+
+  12 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +files/kleopatra-4.4.2015.06-reenable.patch, +kleopatra-4.4.2015.06.ebuild:
+  Version bump to Pali Rohar's noakonadi branch
 
 *kleopatra-4.14.10 (11 Jul 2015)
 

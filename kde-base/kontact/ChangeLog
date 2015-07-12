@@ -1,6 +1,12 @@
 # ChangeLog for kde-base/kontact
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kontact/ChangeLog,v 1.351 2015/07/11 11:49:27 johu Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kontact/ChangeLog,v 1.352 2015/07/12 22:09:21 dilfridge Exp $
+
+*kontact-4.4.2015.06 (12 Jul 2015)
+
+  12 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +kontact-4.4.2015.06.ebuild:
+  Version bump to Pali Rohar's noakonadi branch
 
 *kontact-4.14.10 (11 Jul 2015)
 

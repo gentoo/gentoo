@@ -1,6 +1,12 @@
 # ChangeLog for kde-base/libkpgp
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/libkpgp/ChangeLog,v 1.160 2014/04/05 18:12:56 dilfridge Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-base/libkpgp/ChangeLog,v 1.161 2015/07/12 22:12:48 dilfridge Exp $
+
+*libkpgp-4.4.2015.06 (12 Jul 2015)
+
+  12 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +libkpgp-4.4.2015.06.ebuild:
+  Version bump to Pali Rohar's noakonadi branch
 
   05 Apr 2014; Andreas K. Huettel <dilfridge@gentoo.org>
   libkpgp-4.4.11.1.ebuild:
