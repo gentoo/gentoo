@@ -1,6 +1,12 @@
 # ChangeLog for dev-ruby/hiera
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/hiera/ChangeLog,v 1.35 2015/06/25 05:43:22 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/hiera/ChangeLog,v 1.36 2015/07/12 02:51:52 prometheanfire Exp $
+
+*hiera-3.0.1-r1 (12 Jul 2015)
+
+  12 Jul 2015; Matthew Thode <prometheanfire@gentoo.org> +hiera-3.0.1-r1.ebuild,
+  -hiera-3.0.1.ebuild:
+  adding the deep_merge gem as a dep, since I consider it required
 
 *hiera-3.0.1 (25 Jun 2015)
 

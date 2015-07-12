@@ -1,6 +1,12 @@
 # ChangeLog for app-text/discount
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/discount/ChangeLog,v 1.10 2014/01/19 20:05:54 pacho Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/discount/ChangeLog,v 1.11 2015/07/12 03:59:23 binki Exp $
+
+*discount-2.1.8a (12 Jul 2015)
+
+  12 Jul 2015; Nathan Phillip Brink <binki@gentoo.org> +discount-2.1.8a.ebuild:
+  Bump to discount-2.1.8a and add DISCOUNT_EXTRA_CONFIGURE_SH support for bug
+  #554322 and bug #554520.
 
   19 Jan 2014; Pacho Ramos <pacho@gentoo.org> discount-2.1.6-r1.ebuild:
   ia64 stable, bug #488810 (thanks to Emeric Maschino for testing)

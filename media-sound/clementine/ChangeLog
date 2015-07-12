@@ -1,6 +1,10 @@
 # ChangeLog for media-sound/clementine
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/clementine/ChangeLog,v 1.98 2015/05/29 05:57:10 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/clementine/ChangeLog,v 1.99 2015/07/12 03:41:29 idella4 Exp $
+
+  12 Jul 2015; Ian Delaney <idella4@gentoo.org> clementine-1.2.2.ebuild,
+  clementine-1.2.3.ebuild:
+  reset SLOT of dep udisks fixes bug #439644
 
   29 May 2015; Ian Delaney <idella4@gentoo.org> clementine-1.2.3.ebuild,
   clementine-9999.ebuild:
