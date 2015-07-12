@@ -1,6 +1,12 @@
 # ChangeLog for dev-ruby/rubygems
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rubygems/ChangeLog,v 1.273 2015/07/03 10:06:00 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rubygems/ChangeLog,v 1.274 2015/07/12 06:51:41 graaff Exp $
+
+  12 Jul 2015; Hans de Graaff <graaff@gentoo.org> rubygems-2.2.2.ebuild,
+  rubygems-2.2.5.ebuild, rubygems-2.2.5-r1.ebuild, rubygems-2.4.6.ebuild,
+  rubygems-2.4.8.ebuild:
+  Fix color option for eselect on new installs to work with all eselect
+  versions, fixing bug 554566.
 
   03 Jul 2015; Agostino Sarubbo <ago@gentoo.org> rubygems-2.2.5.ebuild:
   Stable for alpha, wrt bug #553298

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rubygems/rubygems-2.2.5-r1.ebuild,v 1.1 2015/06/28 08:10:54 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rubygems/rubygems-2.2.5-r1.ebuild,v 1.2 2015/07/12 06:51:41 graaff Exp $
 
 EAPI=5
 
@@ -101,7 +101,7 @@ all_ruby_install() {
 
 pkg_postinst() {
 	if [[ ! -n $(readlink "${ROOT}"usr/bin/gem) ]] ; then
-		eselect ruby set $(eselect --brief --no-color ruby show | head -n1)
+		eselect ruby set $(eselect --brief --colour=no ruby show | head -n1)
 	fi
 
 	ewarn
