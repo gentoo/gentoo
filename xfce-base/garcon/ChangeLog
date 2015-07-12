@@ -1,6 +1,9 @@
 # ChangeLog for xfce-base/garcon
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-base/garcon/ChangeLog,v 1.79 2015/07/11 06:55:20 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-base/garcon/ChangeLog,v 1.80 2015/07/12 09:09:12 jer Exp $
+
+  12 Jul 2015; Jeroen Roovers <jer@gentoo.org> garcon-0.5.0-r1.ebuild:
+  Stable for PPC64 (bug #553500).
 
   11 Jul 2015; Markus Meier <maekke@gentoo.org> garcon-0.5.0-r1.ebuild:
   arm stable, bug #553500

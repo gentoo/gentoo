@@ -1,6 +1,9 @@
 # ChangeLog for xfce-extra/xfce4-notes-plugin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-notes-plugin/ChangeLog,v 1.44 2015/07/11 07:08:58 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-notes-plugin/ChangeLog,v 1.45 2015/07/12 09:30:57 jer Exp $
+
+  12 Jul 2015; Jeroen Roovers <jer@gentoo.org> xfce4-notes-plugin-1.8.1.ebuild:
+  Stable for PPC64 (bug #553500).
 
   11 Jul 2015; Markus Meier <maekke@gentoo.org>
   xfce4-notes-plugin-1.8.1.ebuild:

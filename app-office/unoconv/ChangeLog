@@ -1,6 +1,11 @@
 # ChangeLog for app-office/unoconv
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/unoconv/ChangeLog,v 1.17 2015/02/28 17:21:06 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/unoconv/ChangeLog,v 1.18 2015/07/12 09:17:15 graaff Exp $
+
+*unoconv-0.7 (12 Jul 2015)
+
+  12 Jul 2015; Hans de Graaff <graaff@gentoo.org> +unoconv-0.7.ebuild:
+  Version bump.
 
   28 Feb 2015; Agostino Sarubbo <ago@gentoo.org> unoconv-99999999.ebuild:
   Move KEYWORDS to another line to avoid bug #399061

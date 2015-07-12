@@ -1,6 +1,9 @@
 # ChangeLog for xfce-base/xfce4-panel
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-base/xfce4-panel/ChangeLog,v 1.263 2015/07/11 06:59:08 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-base/xfce4-panel/ChangeLog,v 1.264 2015/07/12 09:11:14 jer Exp $
+
+  12 Jul 2015; Jeroen Roovers <jer@gentoo.org> xfce4-panel-4.12.0.ebuild:
+  Stable for PPC64 (bug #553500).
 
   11 Jul 2015; Markus Meier <maekke@gentoo.org> xfce4-panel-4.12.0.ebuild:
   arm stable, bug #553500

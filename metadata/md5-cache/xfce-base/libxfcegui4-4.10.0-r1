@@ -4,10 +4,10 @@ DESCRIPTION=A compability library for unported Xfce 4.6 plugins (DEPRECATED)
 EAPI=5
 HOMEPAGE=http://wiki.gentoo.org/wiki/No_homepage http://git.xfce.org/archive/libxfcegui4/
 IUSE=glade startup-notification
-KEYWORDS=~alpha amd64 arm hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~ia64-linux ~x86-linux ~x64-solaris
+KEYWORDS=~alpha amd64 arm hppa ~ia64 ~mips ~ppc ppc64 ~sh ~sparc x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~ia64-linux ~x86-linux ~x64-solaris
 LICENSE=GPL-2 LGPL-2.1
 RDEPEND=gnome-base/libglade x11-libs/libSM x11-libs/libX11 >=x11-libs/gtk+-2.10:2 >=xfce-base/libxfce4util-4.10 glade? ( dev-util/glade:3 ) startup-notification? ( x11-libs/startup-notification )
 SLOT=0
 SRC_URI=mirror://xfce/src/xfce/libxfcegui4/4.10/libxfcegui4-4.10.0.tar.bz2
 _eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	xfconf	eee85b2bc9e9826f5a9c1349a75a69fe
-_md5_=589eb6c9099416d562394e2fca8bf18f
+_md5_=692459de5d167b5e5a4d70415e7648af

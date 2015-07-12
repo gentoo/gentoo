@@ -1,6 +1,10 @@
 # ChangeLog for x11-drivers/xf86-input-libinput
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-input-libinput/ChangeLog,v 1.10 2015/07/11 07:02:57 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-input-libinput/ChangeLog,v 1.11 2015/07/12 09:24:25 jer Exp $
+
+  12 Jul 2015; Jeroen Roovers <jer@gentoo.org>
+  xf86-input-libinput-0.6.0.ebuild:
+  Stable for PPC64 (bug #553500).
 
   11 Jul 2015; Markus Meier <maekke@gentoo.org>
   xf86-input-libinput-0.6.0.ebuild:
