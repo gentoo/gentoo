@@ -1,6 +1,9 @@
 # ChangeLog for mate-extra/caja-extensions
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mate-extra/caja-extensions/ChangeLog,v 1.4 2014/07/02 09:47:20 pacho Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mate-extra/caja-extensions/ChangeLog,v 1.5 2015/07/11 22:51:41 np-hardass Exp $
+
+  11 Jul 2015; NP-Hardass <NP-Hardass@gentoo.org> metadata.xml:
+  Update metadata.xml with mate herd
 
   02 Jul 2014; Pacho Ramos <pacho@gentoo.org> caja-extensions-1.8.0.ebuild:
   x86 stable, bug 513714

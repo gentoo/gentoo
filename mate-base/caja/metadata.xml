@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
-		<email>TomWij@gentoo.org</email>
-		<name>Tom Wijsman</name>
-	</maintainer>
+    <herd>mate</herd>
 	<use>
 		<flag name="mate">Install <pkg>x11-themes/mate-icon-theme</pkg> which 
 		is needed when this package is used in the MATE desktop 
@@ -12,4 +9,7 @@
 		<flag name="unique">Enable single instance support using 
 		<pkg>dev-libs/libunique</pkg>.</flag>
 	</use>
+    <upstream>
+        <remote-id type="github">mate-desktop/caja</remote-id>
+    </upstream>
 </pkgmetadata>

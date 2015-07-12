@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
-		<email>TomWij@gentoo.org</email>
-		<name>Tom Wijsman</name>
-	</maintainer>
+    <herd>mate</herd>
 	<use>
 		<flag name="caja">Enable engrampa to integrate with
 			<pkg>mate-base/caja</pkg> by providing entries in its context 
 			menu</flag>
 	</use>
+    <upstream>
+        <remote-id type="github">mate-desktop/libmateweather</remote-id>
+    </upstream>
 </pkgmetadata>

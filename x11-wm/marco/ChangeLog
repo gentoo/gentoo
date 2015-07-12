@@ -1,6 +1,9 @@
 # ChangeLog for x11-wm/marco
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/marco/ChangeLog,v 1.6 2014/12/09 00:30:28 tamiko Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/marco/ChangeLog,v 1.7 2015/07/11 23:01:06 np-hardass Exp $
+
+  11 Jul 2015; NP-Hardass <NP-Hardass@gentoo.org> metadata.xml:
+  Update metadata.xml with mate herd
 
 *marco-1.8.2 (09 Dec 2014)
 

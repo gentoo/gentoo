@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
-		<email>TomWij@gentoo.org</email>
-		<name>Tom Wijsman</name>
-	</maintainer>
+    <herd>mate</herd>
 	<use>
 		<flag name="base">Install base MATE Desktop applications that are
 			recommended for the most common usage; for example, this installs

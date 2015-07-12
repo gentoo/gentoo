@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
-		<email>TomWij@gentoo.org</email>
-		<name>Tom Wijsman</name>
-	</maintainer>
+    <herd>mate</herd>
 	<use>
 		<flag name="gajim">Add an extension to support <pkg>net-im/gajim</pkg>.</flag>
 		<flag name="image-converter">Add image conversion support.</flag>
@@ -13,4 +10,7 @@
 		<flag name="pidgin">Add an extension to support <pkg>net-im/pidgin</pkg></flag>
 		<flag name="share">Add an extension to support sharing files.</flag>
 	</use>
+    <upstream>
+        <remote-id type="github">mate-desktop/caja-extensions</remote-id>
+    </upstream>
 </pkgmetadata>

@@ -1,11 +1,11 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/facter/facter-3.0.1-r1.ebuild,v 1.3 2015/07/11 22:13:43 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/facter/facter-3.0.1-r2.ebuild,v 1.1 2015/07/11 23:21:40 binki Exp $
 
 EAPI=5
 USE_RUBY="ruby19 ruby20 ruby21 ruby22"
 
-inherit cmake-utils multilib ruby-ng
+inherit cmake-utils ruby-ng
 
 DESCRIPTION="A cross-platform Ruby library for retrieving facts from operating systems"
 HOMEPAGE="http://www.puppetlabs.com/puppet/related-projects/facter/"
@@ -31,6 +31,8 @@ DEPEND+=" test? ( ${CDEPEND} )"
 
 src_prepare() {
 	sed -i 's/\-Werror\ //g' "vendor/leatherman/cmake/cflags.cmake" || die
+	# Remove the code that installs facter.rb to the wrong directory.
+	sed -i -e '/RUBY_VENDORDIR/d' lib/CMakeLists.txt || die
 }
 
 src_configure() {
@@ -53,12 +55,10 @@ src_configure() {
 }
 
 each_ruby_install() {
-	doruby "${D}usr/$(get_libdir)/ruby/vendor_ruby/facter.rb"
-	doruby "${D}usr/$(get_libdir)/ruby/vendor_ruby/facter.jar"
+	doruby "${BUILD_DIR}"/lib/facter.rb
 }
 
 src_install() {
 	cmake-utils_src_install
 	ruby-ng_src_install
-	rm -R "${D}usr/$(get_libdir)/ruby/vendor_ruby" || die
 }

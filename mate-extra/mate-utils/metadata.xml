@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
-		<email>TomWij@gentoo.org</email>
-		<name>Tom Wijsman</name>
-	</maintainer>
+	<herd>mate</herd>
 	<use>
 		<flag name="applet">Enable the mate dictionary applet</flag>
 	</use>
+    <upstream>
+        <remote-id type="github">mate-desktop/mate-utils</remote-id>
+    </upstream>
 </pkgmetadata>

@@ -1,6 +1,9 @@
 # ChangeLog for mate-base/caja
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mate-base/caja/ChangeLog,v 1.10 2014/12/08 23:44:40 tamiko Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mate-base/caja/ChangeLog,v 1.11 2015/07/11 22:45:41 np-hardass Exp $
+
+  11 Jul 2015; NP-Hardass <NP-Hardass@gentoo.org> metadata.xml:
+  Update metadata.xml with mate herd
 
   08 Dec 2014; Matthias Maier <tamiko@gentoo.org> caja-1.8.1.ebuild:
   fix accidental checkin

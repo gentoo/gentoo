@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/nevow
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/nevow/ChangeLog,v 1.59 2015/04/08 08:04:57 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/nevow/ChangeLog,v 1.60 2015/07/11 22:39:16 monsieurp Exp $
+
+*nevow-0.11.1-r1 (11 Jul 2015)
+
+  11 Jul 2015; Patrice Clement <monsieurp@gentoo.org> +nevow-0.11.1-r1.ebuild:
+  Remove failing test. Fix bug 355237.
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> nevow-0.11.1.ebuild:
   Drop old Python implementations
