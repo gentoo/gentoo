@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/litecoin-qt/litecoin-qt-0.10.2.2.ebuild,v 1.1 2015/07/11 15:07:52 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/litecoin-qt/litecoin-qt-0.10.2.2.ebuild,v 1.2 2015/07/12 00:45:07 patrick Exp $
 
 EAPI=5
 
@@ -35,7 +35,7 @@ RDEPEND="
 	sys-libs/db:$(db_ver_to_slot "${DB_VER}")[cxx]
 	virtual/bitcoin-leveldb
 	!qt5? (
- 		dev-qt/qtgui:4
+		dev-qt/qtgui:4
 		dbus? (
 			dev-qt/qtdbus:4
 		)
@@ -56,9 +56,9 @@ DOCS="doc/README.md doc/release-notes.md"
 S="${WORKDIR}/${MyP}"
 
 src_prepare() {
-    epatch "${FILESDIR}/0.9.0-sys_leveldb.patch"
-    eautoreconf
-    rm -r src/leveldb
+	epatch "${FILESDIR}/0.9.0-sys_leveldb.patch"
+	eautoreconf
+	rm -r src/leveldb
 
 	cd src || die
 

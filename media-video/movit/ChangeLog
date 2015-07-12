@@ -1,6 +1,10 @@
 # ChangeLog for media-video/movit
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/movit/ChangeLog,v 1.4 2015/04/02 06:02:47 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/movit/ChangeLog,v 1.5 2015/07/12 00:53:58 patrick Exp $
+
+  12 Jul 2015; Patrick Lauer <patrick@gentoo.org> movit-1.1.1.ebuild,
+  movit-1.1.2.ebuild, movit-1.1.3.ebuild, movit-1.1.ebuild:
+  Fix slotting #554046
 
 *movit-1.1.3 (02 Apr 2015)
 

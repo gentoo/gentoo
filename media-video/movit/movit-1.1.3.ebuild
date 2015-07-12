@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/movit/movit-1.1.3.ebuild,v 1.1 2015/04/02 06:02:47 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/movit/movit-1.1.3.ebuild,v 1.2 2015/07/12 00:53:58 patrick Exp $
 
 EAPI=5
 
@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="media-libs/mesa
-	=dev-cpp/eigen-3*
+	dev-cpp/eigen:3
 	media-libs/libepoxy
 	sci-libs/fftw
 	media-libs/libsdl2

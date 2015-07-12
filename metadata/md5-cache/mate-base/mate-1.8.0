@@ -6,7 +6,7 @@ IUSE=+base -bluetooth +themes +extras
 KEYWORDS=amd64 x86
 LICENSE=metapackage
 PDEPEND=virtual/notification-daemon:0
-RDEPEND=>=mate-base/mate-desktop-1.8:0 >=mate-base/mate-menus-1.8:0 >=mate-base/mate-panel-1.8:0 >=mate-base/mate-session-manager-1.8:0 >=mate-base/mate-settings-daemon-1.8:0 >=x11-wm/marco-1.8:0 base? ( >=mate-base/caja-1.8:0 >=mate-base/mate-applets-1.8:0 >=mate-base/mate-control-center-1.8:0 >=mate-extra/mate-media-1.8:0 >=x11-misc/mozo-1.8:0 >=x11-terms/mate-terminal-1.8:0 ) bluetooth? ( net-wireless/blueman:0 ) themes? ( >=x11-themes/mate-backgrounds-1.8:0 >=x11-themes/mate-icon-theme-1.8:0 >=x11-themes/mate-themes-1.8:0 ) extras? ( >=app-arch/engrampa-1.8:0 >=app-editors/pluma-1.8:0 >=app-text/atril-1.8:0 >=mate-extra/mate-calc-1.8:0 >=mate-extra/mate-power-manager-1.8:0 >=mate-extra/mate-screensaver-1.8:0 >=mate-extra/mate-system-monitor-1.8:0 >=mate-extra/mate-utils-1.8:0 >=media-gfx/eom-1.8:0 )
+RDEPEND==mate-base/mate-desktop-1.8* =mate-base/mate-menus-1.8* =mate-base/mate-panel-1.8* =mate-base/mate-session-manager-1.8* =mate-base/mate-settings-daemon-1.8* =x11-wm/marco-1.8* base? ( =mate-base/caja-1.8* =mate-base/mate-applets-1.8* =mate-base/mate-control-center-1.8* =mate-extra/mate-media-1.8* =x11-misc/mozo-1.8* =x11-terms/mate-terminal-1.8* ) bluetooth? ( net-wireless/blueman:0 ) themes? ( =x11-themes/mate-backgrounds-1.8* =x11-themes/mate-icon-theme-1.8* =x11-themes/mate-themes-1.8* ) extras? ( =app-arch/engrampa-1.8* =app-editors/pluma-1.8* =app-text/atril-1.8* =mate-extra/mate-calc-1.8* =mate-extra/mate-power-manager-1.8* =mate-extra/mate-screensaver-1.8* =mate-extra/mate-system-monitor-1.8* =mate-extra/mate-utils-1.8* =media-gfx/eom-1.8* )
 SLOT=0
-_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=8333db033c6e644af7d2447548084afb
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=39f342327d14bb6488a77dd9ebaeecfb

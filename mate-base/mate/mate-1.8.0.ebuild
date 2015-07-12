@@ -1,10 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mate-base/mate/mate-1.8.0.ebuild,v 1.5 2014/07/02 09:47:11 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/mate-base/mate/mate-1.8.0.ebuild,v 1.6 2015/07/12 00:32:21 np-hardass Exp $
 
 EAPI="5"
 
-inherit multilib
+inherit versionator
+
+MATE_MV="$(get_version_component_range 1-2)"
 
 SRC_URI=""
 DESCRIPTION="Meta ebuild for MATE, a traditional desktop environment"
@@ -19,36 +21,36 @@ IUSE="+base -bluetooth +themes +extras"
 S="${WORKDIR}"
 
 RDEPEND="
-	>=mate-base/mate-desktop-1.8:0
-	>=mate-base/mate-menus-1.8:0
-	>=mate-base/mate-panel-1.8:0
-	>=mate-base/mate-session-manager-1.8:0
-	>=mate-base/mate-settings-daemon-1.8:0
-	>=x11-wm/marco-1.8:0
+	=mate-base/mate-desktop-${MATE_MV}*
+	=mate-base/mate-menus-${MATE_MV}*
+	=mate-base/mate-panel-${MATE_MV}*
+	=mate-base/mate-session-manager-${MATE_MV}*
+	=mate-base/mate-settings-daemon-${MATE_MV}*
+	=x11-wm/marco-${MATE_MV}*
 	base? (
-		>=mate-base/caja-1.8:0
-		>=mate-base/mate-applets-1.8:0
-		>=mate-base/mate-control-center-1.8:0
-		>=mate-extra/mate-media-1.8:0
-		>=x11-misc/mozo-1.8:0
-		>=x11-terms/mate-terminal-1.8:0
+		=mate-base/caja-${MATE_MV}*
+		=mate-base/mate-applets-${MATE_MV}*
+		=mate-base/mate-control-center-${MATE_MV}*
+		=mate-extra/mate-media-${MATE_MV}*
+		=x11-misc/mozo-${MATE_MV}*
+		=x11-terms/mate-terminal-${MATE_MV}*
 	)
 	bluetooth? ( net-wireless/blueman:0 )
 	themes? (
-		>=x11-themes/mate-backgrounds-1.8:0
-		>=x11-themes/mate-icon-theme-1.8:0
-		>=x11-themes/mate-themes-1.8:0
+		=x11-themes/mate-backgrounds-${MATE_MV}*
+		=x11-themes/mate-icon-theme-${MATE_MV}*
+		=x11-themes/mate-themes-${MATE_MV}*
 	)
 	extras? (
-		>=app-arch/engrampa-1.8:0
-		>=app-editors/pluma-1.8:0
-		>=app-text/atril-1.8:0
-		>=mate-extra/mate-calc-1.8:0
-		>=mate-extra/mate-power-manager-1.8:0
-		>=mate-extra/mate-screensaver-1.8:0
-		>=mate-extra/mate-system-monitor-1.8:0
-		>=mate-extra/mate-utils-1.8:0
-		>=media-gfx/eom-1.8:0
+		=app-arch/engrampa-${MATE_MV}*
+		=app-editors/pluma-${MATE_MV}*
+		=app-text/atril-${MATE_MV}*
+		=mate-extra/mate-calc-${MATE_MV}*
+		=mate-extra/mate-power-manager-${MATE_MV}*
+		=mate-extra/mate-screensaver-${MATE_MV}*
+		=mate-extra/mate-system-monitor-${MATE_MV}*
+		=mate-extra/mate-utils-${MATE_MV}*
+		=media-gfx/eom-${MATE_MV}*
 	)
 "
 
