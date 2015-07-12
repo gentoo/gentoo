@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/mozo/mozo-1.8.0.ebuild,v 1.6 2014/12/28 21:43:33 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/mozo/mozo-1.8.0.ebuild,v 1.7 2015/07/12 00:04:23 np-hardass Exp $
 
 EAPI="5"
 
@@ -22,11 +22,11 @@ KEYWORDS="amd64 x86"
 
 COMMON_DEPEND=">=dev-python/pygobject-2.15.1:2[${PYTHON_USEDEP}]
 	>=dev-python/pygtk-2.13:2[${PYTHON_USEDEP}]
-	>=mate-base/mate-menus-1.6:0[introspection,python]"
+	>=mate-base/mate-menus-1.8:0[introspection,python]"
 
 RDEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
-	>=mate-base/mate-panel-1.6:0
+	>=mate-base/mate-panel-1.8:0
 	x11-libs/gdk-pixbuf:2[introspection]
 	x11-libs/gtk+:2[introspection]
 	virtual/libintl:0

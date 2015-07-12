@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mate-base/mate-applets/mate-applets-1.8.1.ebuild,v 1.3 2015/04/08 18:13:42 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/mate-base/mate-applets/mate-applets-1.8.1.ebuild,v 1.4 2015/07/11 23:50:15 np-hardass Exp $
 
 EAPI="5"
 
@@ -27,13 +27,13 @@ RDEPEND="${PYTHON_DEPS}
 	dev-libs/atk:0
 	>=dev-libs/dbus-glib-0.74:0
 	>=dev-libs/glib-2.22:2
-	>=dev-libs/libmateweather-1.6.1:0
+	>=dev-libs/libmateweather-1.8:0
 	>=dev-libs/libxml2-2.5:2
 	dev-python/pygobject:3
 	>=gnome-base/libgtop-2.11.92:2=
-	>=mate-base/mate-desktop-1.6:0
+	>=mate-base/mate-desktop-1.8:0
 	>=mate-base/mate-panel-1.8:0
-	>=mate-base/mate-settings-daemon-1.6:0
+	>=mate-base/mate-settings-daemon-1.8:0
 	>=sys-apps/dbus-1.1.2:0
 	sys-power/cpupower
 	upower? ( || ( >=sys-power/upower-0.9.23 >=sys-power/upower-pm-utils-0.9.23 ) )
@@ -44,7 +44,7 @@ RDEPEND="${PYTHON_DEPS}
 	>=x11-libs/libxklavier-4:0
 	>=x11-libs/libwnck-2.30:1
 	x11-libs/pango:0
-	>=x11-themes/mate-icon-theme-1.6:0
+	>=x11-themes/mate-icon-theme-1.8:0
 	virtual/libintl:0
 	networkmanager? ( >=net-misc/networkmanager-0.7:0 )
 	policykit? ( >=sys-auth/polkit-0.92:0 )"
@@ -55,7 +55,7 @@ DEPEND="${RDEPEND}
 	app-text/yelp-tools:0
 	>=dev-util/intltool-0.35:*
 	dev-libs/libxslt:0
-	>=mate-base/mate-common-1.6:0
+	>=mate-base/mate-common-1.8:0
 	sys-devel/gettext:*
 	virtual/pkgconfig:*"
 

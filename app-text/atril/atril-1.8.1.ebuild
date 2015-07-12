@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/atril/atril-1.8.1.ebuild,v 1.1 2014/12/09 22:48:41 tamiko Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/atril/atril-1.8.1.ebuild,v 1.2 2015/07/11 23:45:28 np-hardass Exp $
 
 EAPI="5"
 
@@ -27,7 +27,7 @@ RDEPEND=">=app-text/poppler-0.14:0=[cairo]
 	dev-libs/atk:0
 	>=dev-libs/glib-2.32:2
 	>=dev-libs/libxml2-2.5:2
-	>=mate-base/mate-desktop-1.6:0
+	>=mate-base/mate-desktop-1.8:0
 	sys-libs/zlib:0
 	x11-libs/gdk-pixbuf:2
 	>=x11-libs/gtk+-2.21.5:2[introspection?]
@@ -36,11 +36,8 @@ RDEPEND=">=app-text/poppler-0.14:0=[cairo]
 	x11-libs/libX11:0
 	>=x11-libs/cairo-1.9.10:0
 	x11-libs/pango:0
-	>=x11-themes/mate-icon-theme-1.6:0
-	caja? ( || (
-		>=mate-base/caja-1.8:0[introspection?]
-		>=mate-base/mate-file-manager-1.6:0[introspection?]
-	) )
+	>=x11-themes/mate-icon-theme-1.8:0
+	caja? ( >=mate-base/caja-1.8:0[introspection?] )
 	djvu? ( >=app-text/djvu-3.5.17:0 )
 	dvi? (
 		virtual/tex-base:0

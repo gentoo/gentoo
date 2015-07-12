@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mate-base/mate-settings-daemon/mate-settings-daemon-1.8.0.ebuild,v 1.1 2014/04/17 14:52:48 tomwij Exp $
+# $Header: /var/cvsroot/gentoo-x86/mate-base/mate-settings-daemon/mate-settings-daemon-1.8.0.ebuild,v 1.2 2015/07/11 23:57:10 np-hardass Exp $
 
 EAPI="5"
 
@@ -23,8 +23,8 @@ IUSE="X debug libnotify policykit pulseaudio smartcard"
 
 RDEPEND=">=dev-libs/dbus-glib-0.74:0
 	>=dev-libs/glib-2.17.3:2
-	>=mate-base/libmatekbd-1.6.1:0
-	>=mate-base/mate-desktop-1.6:0
+	>=mate-base/libmatekbd-1.8:0
+	>=mate-base/mate-desktop-1.8:0
 	media-libs/fontconfig:1.0
 	>=gnome-base/dconf-0.13.4:0
 	x11-libs/cairo:0

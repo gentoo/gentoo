@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mate-extra/caja-dropbox/caja-dropbox-1.8.0.ebuild,v 1.2 2015/04/08 18:13:51 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/mate-extra/caja-dropbox/caja-dropbox-1.8.0.ebuild,v 1.3 2015/07/11 23:57:59 np-hardass Exp $
 
 EAPI="5"
 
@@ -25,7 +25,7 @@ RDEPEND="
 	dev-libs/atk:0
 	>=dev-libs/glib-2.14:2
 	dev-python/pygtk:2[${PYTHON_USEDEP}]
-	|| ( >=mate-base/caja-1.8:0 >=mate-base/mate-file-manager-1.6:0 )
+	>=mate-base/caja-1.8:0
 	media-libs/fontconfig:1.0
 	media-libs/freetype:2
 	net-misc/dropbox:0

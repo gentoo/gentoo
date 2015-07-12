@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mate-extra/mate-screensaver/mate-screensaver-1.8.1.ebuild,v 1.2 2014/12/11 09:55:55 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/mate-extra/mate-screensaver/mate-screensaver-1.8.1.ebuild,v 1.3 2015/07/12 00:00:51 np-hardass Exp $
 
 EAPI="5"
 GCONF_DEBUG="yes"
@@ -30,7 +30,7 @@ RDEPEND="
 	gnome-base/dconf:0
 	>=mate-base/libmatekbd-1.8:0
 	>=mate-base/mate-desktop-1.8:0
-	>=mate-base/mate-menus-1.6:0
+	>=mate-base/mate-menus-1.8:0
 	>=sys-apps/dbus-0.30:0
 	>=x11-libs/gdk-pixbuf-2.14:2
 	>=x11-libs/gtk+-2.14:2
@@ -53,7 +53,7 @@ RDEPEND="
 # FIXME: Why is systemd and consolekit only a DEPEND? ConsoleKit can't be used build-time only.
 DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.35:*
-	>=mate-base/mate-common-1.6:0
+	>=mate-base/mate-common-1.8:0
 	sys-devel/gettext:*
 	x11-proto/randrproto:0
 	x11-proto/scrnsaverproto:0

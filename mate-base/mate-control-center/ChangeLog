@@ -1,6 +1,11 @@
 # ChangeLog for mate-base/mate-control-center
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mate-base/mate-control-center/ChangeLog,v 1.11 2014/12/20 17:12:16 tamiko Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mate-base/mate-control-center/ChangeLog,v 1.12 2015/07/11 23:52:58 np-hardass Exp $
+
+  11 Jul 2015; NP-Hardass <NP-Hardass@gentoo.org>
+  mate-control-center-1.8.1.ebuild, mate-control-center-1.8.3.ebuild,
+  metadata.xml:
+  Deprecate 1.6
 
   20 Dec 2014; Matthias Maier <tamiko@gentoo.org>
   -mate-control-center-1.6.2.ebuild:

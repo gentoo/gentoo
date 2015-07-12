@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mate-base/mate-panel/mate-panel-1.8.1-r1.ebuild,v 1.1 2014/12/09 21:39:06 tamiko Exp $
+# $Header: /var/cvsroot/gentoo-x86/mate-base/mate-panel/mate-panel-1.8.1-r1.ebuild,v 1.2 2015/07/11 23:54:01 np-hardass Exp $
 
 EAPI="5"
 
@@ -25,12 +25,12 @@ RDEPEND="
 	dev-libs/atk:0
 	>=dev-libs/dbus-glib-0.80:0
 	>=dev-libs/glib-2.26:2
-	>=dev-libs/libmateweather-1.6
+	>=dev-libs/libmateweather-1.8
 	dev-libs/libxml2:2
 	>=gnome-base/dconf-0.10:0
 	gnome-base/librsvg:2
 	>=mate-base/mate-desktop-1.8:0
-	>=mate-base/mate-menus-1.6:0
+	>=mate-base/mate-menus-1.8:0
 	>=media-libs/libcanberra-0.23:0[gtk]
 	>=sys-apps/dbus-1.1.2:0
 	>=x11-libs/cairo-1:0
@@ -52,7 +52,7 @@ DEPEND="${RDEPEND}
 	app-text/yelp-tools:0
 	>=dev-lang/perl-5:0=
 	>=dev-util/intltool-0.40:*
-	>=mate-base/mate-common-1.6:0
+	>=mate-base/mate-common-1.8:0
 	sys-devel/gettext:*
 	virtual/pkgconfig:*"
 

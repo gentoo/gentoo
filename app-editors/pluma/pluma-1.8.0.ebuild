@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/pluma/pluma-1.8.0.ebuild,v 1.3 2015/04/08 07:30:32 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/pluma/pluma-1.8.0.ebuild,v 1.4 2015/07/11 23:44:59 np-hardass Exp $
 
 EAPI="5"
 
@@ -59,7 +59,7 @@ DEPEND="${RDEPEND}
 	>=app-text/scrollkeeper-dtd-1:1.0
 	>=dev-util/intltool-0.40:*
 	>=sys-devel/libtool-2.2.6:2
-	>=mate-base/mate-common-1.6:0
+	>=mate-base/mate-common-1.8:0
 	>=sys-devel/gettext-0.17:*
 	virtual/pkgconfig:*"
 

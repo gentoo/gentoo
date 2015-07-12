@@ -1,6 +1,10 @@
 # ChangeLog for app-text/atril
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/atril/ChangeLog,v 1.8 2015/07/11 22:40:04 np-hardass Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/atril/ChangeLog,v 1.9 2015/07/11 23:45:28 np-hardass Exp $
+
+  11 Jul 2015; NP-Hardass <NP-Hardass@gentoo.org> atril-1.8.0.ebuild,
+  atril-1.8.1.ebuild:
+  Deprecate 1.6
 
   11 Jul 2015; NP-Hardass <NP-Hardass@gentoo.org> metadata.xml:
   Update metadata.xml with mate herd

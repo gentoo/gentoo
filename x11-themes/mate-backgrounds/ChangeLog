@@ -1,6 +1,9 @@
 # ChangeLog for x11-themes/mate-backgrounds
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/mate-backgrounds/ChangeLog,v 1.9 2015/07/11 22:59:26 np-hardass Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/mate-backgrounds/ChangeLog,v 1.10 2015/07/12 00:05:32 np-hardass Exp $
+
+  12 Jul 2015; NP-Hardass <NP-Hardass@gentoo.org> mate-backgrounds-1.8.0.ebuild:
+  Deprecate 1.6
 
   11 Jul 2015; NP-Hardass <NP-Hardass@gentoo.org> metadata.xml:
   Update metadata.xml with mate herd

@@ -1,6 +1,10 @@
 # ChangeLog for mate-base/mate-applets
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mate-base/mate-applets/ChangeLog,v 1.19 2015/07/11 22:46:47 np-hardass Exp $
+# $Header: /var/cvsroot/gentoo-x86/mate-base/mate-applets/ChangeLog,v 1.20 2015/07/11 23:50:15 np-hardass Exp $
+
+  11 Jul 2015; NP-Hardass <NP-Hardass@gentoo.org> mate-applets-1.8.0-r1.ebuild,
+  mate-applets-1.8.1.ebuild:
+  Deprecate 1.6
 
   11 Jul 2015; NP-Hardass <NP-Hardass@gentoo.org> metadata.xml:
   Update metadata.xml with mate herd

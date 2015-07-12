@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/mate-system-tools/mate-system-tools-1.8.0.ebuild,v 1.4 2014/07/02 09:45:16 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/mate-system-tools/mate-system-tools-1.8.0.ebuild,v 1.5 2015/07/11 23:41:01 np-hardass Exp $
 
 EAPI="5"
 
@@ -34,10 +34,10 @@ RDEPEND="app-text/rarian:0
 	x11-libs/pango:0
 	>=x11-libs/gtk+-2.19.7:2
 	virtual/libintl:0
-	caja? ( || ( >=mate-base/caja-1.8:0 >=mate-base/mate-file-manager-1.6:0 ) )
+	caja? ( >=mate-base/caja-1.8:0 )
 	nfs? ( net-fs/nfs-utils:0 )
 	policykit? (
-		mate-extra/mate-polkit:0
+		>=mate-extra/mate-polkit-1.8:0
 		>=sys-auth/polkit-0.92:0
 	)
 	samba? ( >=net-fs/samba-3:0 )"

@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mate-base/libmatekbd/libmatekbd-1.8.0.ebuild,v 1.4 2014/07/02 09:46:06 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/mate-base/libmatekbd/libmatekbd-1.8.0.ebuild,v 1.5 2015/07/11 23:49:02 np-hardass Exp $
 
 EAPI="5"
 

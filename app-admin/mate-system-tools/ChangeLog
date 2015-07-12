@@ -1,6 +1,10 @@
 # ChangeLog for app-admin/mate-system-tools
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/mate-system-tools/ChangeLog,v 1.9 2015/07/11 22:36:13 np-hardass Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/mate-system-tools/ChangeLog,v 1.10 2015/07/11 23:41:01 np-hardass Exp $
+
+  11 Jul 2015; NP-Hardass <NP-Hardass@gentoo.org>
+  mate-system-tools-1.8.0.ebuild, mate-system-tools-1.8.1.ebuild:
+  Deprecate 1.6
 
   11 Jul 2015; NP-Hardass <NP-Hardass@gentoo.org> metadata.xml:
   Update metadata

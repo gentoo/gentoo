@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mate-base/mate-session-manager/mate-session-manager-1.8.1-r1.ebuild,v 1.6 2014/09/19 17:25:19 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/mate-base/mate-session-manager/mate-session-manager-1.8.1-r1.ebuild,v 1.7 2015/07/11 23:55:19 np-hardass Exp $
 
 EAPI="5"
 
@@ -51,7 +51,7 @@ RDEPEND=">=dev-libs/dbus-glib-0.76
 DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.40:*
 	>=dev-lang/perl-5
-	>=mate-base/mate-common-1.6
+	>=mate-base/mate-common-1.8
 	>=sys-devel/gettext-0.10.40:*
 	virtual/pkgconfig:*
 	!<gnome-base/gdm-2.20.4"

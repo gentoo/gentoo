@@ -1,6 +1,10 @@
 # ChangeLog for x11-misc/mate-notification-daemon
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/mate-notification-daemon/ChangeLog,v 1.9 2015/07/11 22:58:07 np-hardass Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/mate-notification-daemon/ChangeLog,v 1.10 2015/07/12 00:04:06 np-hardass Exp $
+
+  12 Jul 2015; NP-Hardass <NP-Hardass@gentoo.org>
+  mate-notification-daemon-1.8.0.ebuild, mate-notification-daemon-1.8.1.ebuild:
+  Deprecate 1.6
 
   11 Jul 2015; NP-Hardass <NP-Hardass@gentoo.org> metadata.xml:
   Update metadata.xml with mate herd

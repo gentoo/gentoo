@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/mate-system-tools/mate-system-tools-1.8.1.ebuild,v 1.1 2014/12/09 22:29:11 tamiko Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/mate-system-tools/mate-system-tools-1.8.1.ebuild,v 1.2 2015/07/11 23:41:01 np-hardass Exp $
 
 EAPI="5"
 
@@ -17,7 +17,7 @@ HOMEPAGE="http://mate-desktop.org"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="caja nfs policykit samba"
 
@@ -34,10 +34,10 @@ RDEPEND="app-text/rarian:0
 	x11-libs/pango:0
 	>=x11-libs/gtk+-2.19.7:2
 	virtual/libintl:0
-	caja? ( || ( >=mate-base/caja-1.8:0 >=mate-base/mate-file-manager-1.6:0 ) )
+	caja? ( >=mate-base/caja-1.8:0 )
 	nfs? ( net-fs/nfs-utils:0 )
 	policykit? (
-		mate-extra/mate-polkit:0
+		>=mate-extra/mate-polkit-1.8:0
 		>=sys-auth/polkit-0.92:0
 	)
 	samba? ( >=net-fs/samba-3:0 )"

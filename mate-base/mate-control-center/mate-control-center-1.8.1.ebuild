@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mate-base/mate-control-center/mate-control-center-1.8.1.ebuild,v 1.5 2014/07/02 09:46:30 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/mate-base/mate-control-center/mate-control-center-1.8.1.ebuild,v 1.6 2015/07/11 23:52:58 np-hardass Exp $
 
 EAPI="5"
 
@@ -27,14 +27,11 @@ RDEPEND="app-text/rarian:0
 	dev-libs/libxml2:2
 	>=gnome-base/dconf-0.13.4:0
 	>=gnome-base/librsvg-2.0:2
-	>=mate-base/libmatekbd-1.6:0
+	>=mate-base/libmatekbd-1.8:0
 	>=mate-base/mate-desktop-1.8:0
-	|| (
-		>=mate-base/caja-1.8:0
-		>=mate-base/mate-file-manager-1.6:0
-	)
-	>=mate-base/mate-menus-1.6:0
-	>=mate-base/mate-settings-daemon-1.6:0
+	>=mate-base/caja-1.8:0
+	>=mate-base/mate-menus-1.8:0
+	>=mate-base/mate-settings-daemon-1.8:0
 	>=media-libs/fontconfig-1:1.0
 	media-libs/freetype:2
 	media-libs/libcanberra:0[gtk]
@@ -54,10 +51,7 @@ RDEPEND="app-text/rarian:0
 	x11-libs/libXxf86misc:0
 	>=x11-libs/libxklavier-4:0
 	x11-libs/pango:0
-	|| (
-		>=x11-wm/marco-1.8:0
-		>=x11-wm/mate-window-manager-1.6:0
-	)
+	>=x11-wm/marco-1.8:0
 	virtual/libintl:0"
 
 DEPEND="${RDEPEND}
@@ -65,7 +59,7 @@ DEPEND="${RDEPEND}
 	app-text/yelp-tools:0
 	dev-util/desktop-file-utils:0
 	>=dev-util/intltool-0.37.1:*
-	>=mate-base/mate-common-1.6:0
+	>=mate-base/mate-common-1.8:0
 	sys-devel/gettext:*
 	x11-proto/kbproto:0
 	x11-proto/randrproto:0

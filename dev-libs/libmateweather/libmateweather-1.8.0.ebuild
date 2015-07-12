@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libmateweather/libmateweather-1.8.0.ebuild,v 1.6 2015/04/08 17:51:55 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libmateweather/libmateweather-1.8.0.ebuild,v 1.7 2015/07/11 23:46:19 np-hardass Exp $
 
 EAPI="5"
 
@@ -40,7 +40,7 @@ RDEPEND=">=dev-libs/glib-2.13:2[${PYTHON_USEDEP}]
 
 DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.40.3:*
-	>=mate-base/mate-common-1.6:0
+	>=mate-base/mate-common-1.8:0
 	sys-devel/gettext:*
 	virtual/pkgconfig:*"
 

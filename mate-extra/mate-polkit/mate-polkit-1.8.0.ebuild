@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mate-extra/mate-polkit/mate-polkit-1.8.0.ebuild,v 1.4 2014/07/02 09:47:46 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/mate-extra/mate-polkit/mate-polkit-1.8.0.ebuild,v 1.5 2015/07/11 23:59:37 np-hardass Exp $
 
 EAPI="5"
 
@@ -31,7 +31,7 @@ RDEPEND=">=dev-libs/glib-2.28:2
 DEPEND="${RDEPEND}
 	>=dev-util/gtk-doc-1.3:0
 	>=dev-util/intltool-0.35:*
-	mate-base/mate-common:0
+	>=mate-base/mate-common-1.8:0
 	sys-devel/gettext:*
 	virtual/pkgconfig:*
 	!<gnome-extra/polkit-gnome-0.102:0"

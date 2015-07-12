@@ -1,6 +1,11 @@
 # ChangeLog for mate-base/mate-settings-daemon
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mate-base/mate-settings-daemon/ChangeLog,v 1.12 2015/07/11 22:50:21 np-hardass Exp $
+# $Header: /var/cvsroot/gentoo-x86/mate-base/mate-settings-daemon/ChangeLog,v 1.13 2015/07/11 23:57:10 np-hardass Exp $
+
+  11 Jul 2015; NP-Hardass <NP-Hardass@gentoo.org>
+  mate-settings-daemon-1.8.0.ebuild, mate-settings-daemon-1.8.1.ebuild,
+  mate-settings-daemon-1.8.2.ebuild:
+  Deprecate 1.6
 
   11 Jul 2015; NP-Hardass <NP-Hardass@gentoo.org> metadata.xml:
   Update metadata.xml with mate herd

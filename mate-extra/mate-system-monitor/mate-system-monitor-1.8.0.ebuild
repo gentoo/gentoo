@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mate-extra/mate-system-monitor/mate-system-monitor-1.8.0.ebuild,v 1.5 2014/07/02 09:48:18 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/mate-extra/mate-system-monitor/mate-system-monitor-1.8.0.ebuild,v 1.6 2015/07/12 00:01:45 np-hardass Exp $
 
 EAPI="5"
 
@@ -32,7 +32,7 @@ RDEPEND="app-text/rarian:0
 	x11-libs/gdk-pixbuf:2
 	>=x11-libs/gtk+-2.20:2
 	>=x11-libs/libwnck-2.5:1
-	>=x11-themes/mate-icon-theme-1.6:0
+	>=x11-themes/mate-icon-theme-1.8:0
 	virtual/libintl:0"
 
 DEPEND="${RDEPEND}

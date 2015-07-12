@@ -1,6 +1,10 @@
 # ChangeLog for mate-base/mate-panel
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mate-base/mate-panel/ChangeLog,v 1.17 2015/07/11 22:49:32 np-hardass Exp $
+# $Header: /var/cvsroot/gentoo-x86/mate-base/mate-panel/ChangeLog,v 1.18 2015/07/11 23:54:01 np-hardass Exp $
+
+  11 Jul 2015; NP-Hardass <NP-Hardass@gentoo.org> mate-panel-1.8.0.ebuild,
+  mate-panel-1.8.1-r1.ebuild:
+  Deprecate 1.6
 
   11 Jul 2015; NP-Hardass <NP-Hardass@gentoo.org> metadata.xml:
   Update metadata.xml with mate herd

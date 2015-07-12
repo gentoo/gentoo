@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mate-extra/mate-power-manager/mate-power-manager-1.8.1.ebuild,v 1.1 2014/12/09 22:10:53 tamiko Exp $
+# $Header: /var/cvsroot/gentoo-x86/mate-extra/mate-power-manager/mate-power-manager-1.8.1.ebuild,v 1.2 2015/07/12 00:00:07 np-hardass Exp $
 
 EAPI="5"
 
@@ -38,12 +38,12 @@ COMMON_DEPEND="app-text/rarian:0
 	x11-libs/libXrandr:0
 	>=x11-libs/libnotify-0.7:0
 	x11-libs/pango:0
-	applet? ( >=mate-base/mate-panel-1.6:0 )
+	applet? ( >=mate-base/mate-panel-1.8:0 )
 	gnome-keyring? ( >=gnome-base/libgnome-keyring-3:0 )
 	unique? ( >=dev-libs/libunique-0.9.4:1 )"
 
 RDEPEND="${COMMON_DEPEND}
-	policykit? ( >=mate-extra/mate-polkit-1.6:0 )"
+	policykit? ( >=mate-extra/mate-polkit-1.8:0 )"
 
 DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.3

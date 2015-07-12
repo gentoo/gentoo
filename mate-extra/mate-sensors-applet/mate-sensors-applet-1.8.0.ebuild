@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mate-extra/mate-sensors-applet/mate-sensors-applet-1.8.0.ebuild,v 1.4 2014/07/02 09:48:12 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/mate-extra/mate-sensors-applet/mate-sensors-applet-1.8.0.ebuild,v 1.5 2015/07/12 00:01:18 np-hardass Exp $
 
 EAPI="5"
 
@@ -23,7 +23,7 @@ IUSE="+dbus hddtemp libnotify lm_sensors video_cards_fglrx video_cards_nvidia"
 
 RDEPEND="app-text/rarian:0
 	>=dev-libs/glib-2.26:2
-	>=mate-base/mate-panel-1.6:0
+	>=mate-base/mate-panel-1.8:0
 	>=x11-libs/cairo-1.0.4:0
 	x11-libs/gdk-pixbuf:2
 	>=x11-libs/gtk+-2.14:2
