@@ -1,6 +1,11 @@
 # ChangeLog for dev-java/junit
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/junit/ChangeLog,v 1.87 2015/07/11 13:21:27 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/junit/ChangeLog,v 1.88 2015/07/12 12:19:16 monsieurp Exp $
+
+  12 Jul 2015; Patrice Clement <monsieurp@gentoo.org>
+  files/junit-4.12-build.xml, junit-4.12.ebuild:
+  Remove 'test' target dependency from 'package' target so that jar file gets
+  created even with tests off. Fix bug 554584.
 
   11 Jul 2015; Patrice Clement <monsieurp@gentoo.org>
   files/junit-4.12-build.xml:

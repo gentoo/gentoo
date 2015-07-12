@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/junit/junit-4.12.ebuild,v 1.1 2015/07/10 12:48:21 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/junit/junit-4.12.ebuild,v 1.2 2015/07/12 12:19:16 monsieurp Exp $
 
 EAPI="5"
 
@@ -40,20 +40,20 @@ java_prepare() {
 	java-pkg_jar-from --into lib hamcrest-core-1.3 hamcrest-core.jar
 }
 
-EANT_BUILD_TARGET="compile"
+EANT_BUILD_TARGET="package"
 
 src_compile() {
 	java-pkg-2_src_compile
 }
 
-EANT_TEST_TARGET="package"
+EANT_TEST_TARGET="test"
 
 src_test() {
 	java-pkg-2_src_test
 }
 
 src_install() {
-	java-pkg_newjar target/${P}.jar
+	java-pkg_newjar target/${P}.jar junit.jar
 	dodoc doc/ReleaseNotes${PV}.md
 
 	if use examples; then
