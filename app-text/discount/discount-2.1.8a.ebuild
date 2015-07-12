@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/discount/discount-2.1.8a.ebuild,v 1.1 2015/07/12 03:59:23 binki Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/discount/discount-2.1.8a.ebuild,v 1.2 2015/07/12 04:13:36 binki Exp $
 
 EAPI=5
 
@@ -69,4 +69,7 @@ pkg_postinst() {
 		elog "prefixed with \"${PN}-\". Please see"
 		elog "https://github.com/Orc/discount/issues/81 for discussion."
 	fi
+	# This should also go away after 2.1.8a…
+	elog "To configure advanced options, use DISCOUNT_EXTRA_CONFIGURE_SH"
+	elog "and see https://bugs.gentoo.org/554520."
 }
