@@ -1,6 +1,10 @@
 # ChangeLog for dev-texlive/texlive-langenglish
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-langenglish/ChangeLog,v 1.40 2014/11/04 10:33:43 aballier Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-langenglish/ChangeLog,v 1.41 2015/07/12 15:45:48 ago Exp $
+
+  12 Jul 2015; Agostino Sarubbo <ago@gentoo.org>
+  texlive-langenglish-2014.ebuild:
+  Stable for amd64, wrt bug #550840
 
   04 Nov 2014; Alexis Ballier <aballier@gentoo.org>
   -texlive-langenglish-2011.ebuild:

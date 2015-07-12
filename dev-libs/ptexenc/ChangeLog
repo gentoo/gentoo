@@ -1,6 +1,10 @@
 # ChangeLog for dev-libs/ptexenc
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/ptexenc/ChangeLog,v 1.45 2014/11/02 09:33:03 aballier Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/ptexenc/ChangeLog,v 1.46 2015/07/12 15:44:29 ago Exp $
+
+  12 Jul 2015; Agostino Sarubbo <ago@gentoo.org>
+  ptexenc-1.3.2_p20140525-r1.ebuild:
+  Stable for amd64, wrt bug #550840
 
 *ptexenc-1.3.2_p20140525-r1 (02 Nov 2014)
 

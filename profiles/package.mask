@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16663 2015/07/10 16:47:57 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16664 2015/07/12 15:59:21 dilfridge Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -209,69 +209,6 @@ dev-lang/php:7.0
 =mail-mta/exim-4.86_rc2
 =mail-mta/exim-4.86_rc3
 =mail-mta/exim-4.86_rc4
-
-# Andreas K. Huettel <dilfridge@gentoo.org> (04 Jun 2015)
-# Perl 5.22 version bump in progress. Mask until everything is finishehd.
-=dev-lang/perl-5.22*
-=virtual/perl-Archive-Tar-2.40.0
-=virtual/perl-Attribute-Handlers-0.970.0
-=virtual/perl-B-Debug-1.230.0
-=virtual/perl-CPAN-2.110.0
-=virtual/perl-CPAN-Meta-2.150.1
-=virtual/perl-CPAN-Meta-Requirements-2.132.0
-=virtual/perl-Carp-1.360.0
-=virtual/perl-Compress-Raw-Bzip2-2.68.0
-=virtual/perl-Compress-Raw-Zlib-2.68.0
-=virtual/perl-DB_File-1.835.0
-=virtual/perl-Data-Dumper-2.158.0
-=virtual/perl-Devel-PPPort-3.310.0
-=virtual/perl-Digest-MD5-2.540.0
-=virtual/perl-Digest-SHA-5.950.0
-=virtual/perl-Exporter-5.720.0
-=virtual/perl-ExtUtils-CBuilder-0.280.221
-=virtual/perl-ExtUtils-Command-1.200.0
-=virtual/perl-ExtUtils-Install-2.40.0
-=virtual/perl-ExtUtils-MakeMaker-7.40.100_rc
-=virtual/perl-ExtUtils-ParseXS-3.280.0
-=virtual/perl-File-Spec-3.560.0
-=virtual/perl-Filter-Simple-0.920.0
-=virtual/perl-Getopt-Long-2.450.0
-=virtual/perl-HTTP-Tiny-0.54.0
-=virtual/perl-IO-1.350.0
-=virtual/perl-IO-Compress-2.68.0
-=virtual/perl-IO-Socket-IP-0.370.0
-=virtual/perl-JSON-PP-2.273.0
-=virtual/perl-Locale-Maketext-1.260.0
-=virtual/perl-MIME-Base64-3.150.0
-=virtual/perl-Math-BigInt-1.999.700
-=virtual/perl-Math-BigRat-0.260.800
-=virtual/perl-Module-Load-Conditional-0.640.0
-=virtual/perl-Module-Metadata-1.0.26
-=virtual/perl-Perl-OSType-1.8.0
-=virtual/perl-Pod-Escapes-1.70.0
-=virtual/perl-Pod-Parser-1.630.0
-=virtual/perl-Pod-Simple-3.290.0
-=virtual/perl-Safe-2.390.0
-=virtual/perl-Scalar-List-Utils-1.410.0
-=virtual/perl-Socket-2.18.0
-=virtual/perl-Storable-2.530.0
-=virtual/perl-Term-ANSIColor-4.30.0
-=virtual/perl-Term-ReadLine-1.150.0
-=virtual/perl-Test-Harness-3.350.0
-=virtual/perl-Test-Simple-1.1.14
-=virtual/perl-Text-Balanced-2.30.0
-=virtual/perl-Text-ParseWords-3.300.0
-=virtual/perl-Time-Piece-1.290.0
-=virtual/perl-XSLoader-0.200.0
-=virtual/perl-autodie-2.260.0
-=virtual/perl-bignum-0.390.0
-=virtual/perl-if-0.60.400
-=virtual/perl-libnet-3.50.0
-=virtual/perl-parent-0.232.0
-=virtual/perl-threads-2.10.0
-=virtual/perl-threads-shared-1.480.0
-=dev-perl/Test-Tester-0.114.0
-=dev-perl/Test-use-ok-0.160.0
 
 # Michał Górny <mgorny@gentoo.org> (04 Jun 2015)
 # New version of PyPy. Masked for testing and binary package build.

@@ -1,6 +1,12 @@
 # ChangeLog for app-cdr/cdrtools
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/cdrtools/ChangeLog,v 1.356 2015/06/09 09:23:34 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/cdrtools/ChangeLog,v 1.357 2015/07/12 16:14:15 billie Exp $
+
+*cdrtools-3.01_alpha30 (12 Jul 2015)
+
+  12 Jul 2015; Daniel Pielmeier <billie@gentoo.org>
+  +cdrtools-3.01_alpha30.ebuild:
+  Version bump.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

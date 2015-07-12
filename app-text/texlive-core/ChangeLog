@@ -1,6 +1,9 @@
 # ChangeLog for app-text/texlive-core
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/texlive-core/ChangeLog,v 1.223 2015/04/28 10:35:48 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/texlive-core/ChangeLog,v 1.224 2015/07/12 15:44:21 ago Exp $
+
+  12 Jul 2015; Agostino Sarubbo <ago@gentoo.org> texlive-core-2014-r4.ebuild:
+  Stable for amd64, wrt bug #550840
 
 *texlive-core-2014-r4 (28 Apr 2015)
 *texlive-core-2012-r3 (28 Apr 2015)

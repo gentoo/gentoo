@@ -1,6 +1,10 @@
 # ChangeLog for dev-texlive/texlive-langeuropean
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-langeuropean/ChangeLog,v 1.8 2014/11/03 06:51:48 aballier Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-langeuropean/ChangeLog,v 1.9 2015/07/12 15:45:52 ago Exp $
+
+  12 Jul 2015; Agostino Sarubbo <ago@gentoo.org>
+  texlive-langeuropean-2014.ebuild:
+  Stable for amd64, wrt bug #550840
 
 *texlive-langeuropean-2014 (03 Nov 2014)
 
