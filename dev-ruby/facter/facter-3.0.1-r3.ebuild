@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/facter/facter-3.0.1-r2.ebuild,v 1.1 2015/07/11 23:21:40 binki Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/facter/facter-3.0.1-r3.ebuild,v 1.1 2015/07/12 02:31:07 prometheanfire Exp $
 
 EAPI=5
 USE_RUBY="ruby19 ruby20 ruby21 ruby22"
@@ -21,7 +21,7 @@ CDEPEND="
 	>=sys-devel/gcc-4.8:*
 	>=dev-libs/boost-1.54
 	>=dev-cpp/yaml-cpp-0.5.1
-	dev-libs/openssl:=
+	dev-libs/openssl:*
 	sys-apps/util-linux
 	app-emulation/virt-what
 	net-misc/curl"
@@ -37,9 +37,6 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-	  -DCXXFLAGS="-Wno-error"
-		-DCXX_FLAGS="-Wno-error"
-		-DCMAKE_CXX_FLAGS:STRING='-march=native -O2 -pipe -Wno-error '
 		-DCMAKE_VERBOSE_MAKEFILE=ON
 		-DCMAKE_BUILD_TYPE=None
 		-DCMAKE_INSTALL_PREFIX=/usr
