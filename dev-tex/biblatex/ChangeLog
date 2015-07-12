@@ -1,6 +1,12 @@
 # ChangeLog for dev-tex/biblatex
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/biblatex/ChangeLog,v 1.18 2015/06/09 18:18:24 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/biblatex/ChangeLog,v 1.19 2015/07/12 14:09:46 mrueg Exp $
+
+*biblatex-3.0-r1 (12 Jul 2015)
+
+  12 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +biblatex-3.0-r1.ebuild,
+  -biblatex-3.0.ebuild:
+  Switch back to sourceforge packages to avoid a dep on lua. See bug #554302.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

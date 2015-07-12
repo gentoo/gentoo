@@ -1,6 +1,11 @@
 # ChangeLog for sys-kernel/spl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/spl/ChangeLog,v 1.83 2015/05/15 18:25:55 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/spl/ChangeLog,v 1.84 2015/07/12 14:19:38 dlan Exp $
+
+*spl-0.6.4.2 (12 Jul 2015)
+
+  12 Jul 2015; Yixun Lan <dlan@gentoo.org> +spl-0.6.4.2.ebuild:
+  version bump, Acked by ryao
 
   15 May 2015; Anthony G. Basile <blueness@gentoo.org> spl-0.6.0_rc13-r2.ebuild,
   spl-0.6.0_rc14-r3.ebuild, spl-0.6.1-r3.ebuild, spl-0.6.2-r1.ebuild,

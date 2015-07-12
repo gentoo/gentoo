@@ -1,6 +1,14 @@
 # ChangeLog for sys-fs/zfs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/zfs/ChangeLog,v 1.92 2015/05/15 18:29:56 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/zfs/ChangeLog,v 1.94 2015/07/12 14:17:58 dlan Exp $
+
+  12 Jul 2015; Yixun Lan <dlan@gentoo.org> zfs-0.6.4.2.ebuild:
+  lost arm/ppc/ppc64 keyword, fixed
+
+*zfs-0.6.4.2 (12 Jul 2015)
+
+  12 Jul 2015; Yixun Lan <dlan@gentoo.org> +zfs-0.6.4.2.ebuild:
+  version bump, ACKed by ryao
 
   15 May 2015; Anthony G. Basile <blueness@gentoo.org> zfs-0.6.0_rc13-r2.ebuild,
   zfs-0.6.0_rc14-r1.ebuild, zfs-0.6.1-r4.ebuild, zfs-0.6.2-r1.ebuild,

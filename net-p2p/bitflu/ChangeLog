@@ -1,6 +1,11 @@
 # ChangeLog for net-p2p/bitflu
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/bitflu/ChangeLog,v 1.23 2015/03/21 21:54:33 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/bitflu/ChangeLog,v 1.24 2015/07/12 13:44:09 blueness Exp $
+
+*bitflu-1.52 (12 Jul 2015)
+
+  12 Jul 2015; Anthony G. Basile <blueness@gentoo.org> +bitflu-1.52.ebuild:
+  Version bump.
 
   21 Mar 2015; Justin Lecher <jlec@gentoo.org> -bitflu-1.43.ebuild,
   bitflu-1.50.ebuild, bitflu-1.51.ebuild:

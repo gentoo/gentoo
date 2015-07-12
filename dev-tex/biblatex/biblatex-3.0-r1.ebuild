@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/biblatex/biblatex-3.0.ebuild,v 1.2 2015/06/01 19:47:31 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/biblatex/biblatex-3.0-r1.ebuild,v 1.1 2015/07/12 14:09:46 mrueg Exp $
 
 EAPI=5
 
@@ -8,7 +8,7 @@ inherit latex-package
 
 DESCRIPTION="Reimplementation of the bibliographic facilities provided by LaTeX"
 HOMEPAGE="http://www.ctan.org/tex-archive/macros/latex/contrib/biblatex https://github.com/plk/biblatex/"
-SRC_URI="https://github.com/plk/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tds.tgz"
 
 LICENSE="LPPL-1.3"
 SLOT="0"
@@ -19,6 +19,7 @@ RDEPEND="dev-texlive/texlive-bibtexextra
 	dev-texlive/texlive-latexextra"
 DEPEND="${RDEPEND}"
 
+S=${WORKDIR}
 TEXMF=/usr/share/texmf-site
 
 src_install() {
