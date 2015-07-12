@@ -1,6 +1,12 @@
 # ChangeLog for dev-db/mysql-workbench
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql-workbench/ChangeLog,v 1.120 2015/07/11 19:19:37 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql-workbench/ChangeLog,v 1.122 2015/07/12 10:07:55 graaff Exp $
+
+  12 Jul 2015; Hans de Graaff <graaff@gentoo.org> mysql-workbench-6.3.4.ebuild:
+  Add minimum version to boost dependency based on bug 520722.
+
+  12 Jul 2015; Hans de Graaff <graaff@gentoo.org> mysql-workbench-6.3.4.ebuild:
+  Fix underlinking in db.mysql.sqlparser module, fixing bug 540164.
 
   11 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> mysql-workbench-6.3.3.ebuild:
   x86 stable wrt bug #552438

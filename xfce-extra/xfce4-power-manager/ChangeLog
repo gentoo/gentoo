@@ -1,6 +1,10 @@
 # ChangeLog for xfce-extra/xfce4-power-manager
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-power-manager/ChangeLog,v 1.98 2015/07/01 16:57:00 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-power-manager/ChangeLog,v 1.99 2015/07/12 09:31:49 jer Exp $
+
+  12 Jul 2015; Jeroen Roovers <jer@gentoo.org>
+  xfce4-power-manager-1.5.2.ebuild:
+  Stable for PPC64 (bug #553500).
 
   01 Jul 2015; Mikle Kolyada <zlogene@gentoo.org>
   xfce4-power-manager-1.5.2.ebuild:

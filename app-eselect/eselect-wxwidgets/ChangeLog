@@ -1,6 +1,10 @@
 # ChangeLog for app-eselect/eselect-wxwidgets
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-eselect/eselect-wxwidgets/ChangeLog,v 1.5 2015/06/28 15:16:31 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-eselect/eselect-wxwidgets/ChangeLog,v 1.6 2015/07/12 09:38:34 jer Exp $
+
+  12 Jul 2015; Jeroen Roovers <jer@gentoo.org>
+  eselect-wxwidgets-20140423.ebuild:
+  Stable for HPPA PPC64 (bug #532968).
 
   28 Jun 2015; Mikle Kolyada <zlogene@gentoo.org>
   eselect-wxwidgets-20140423.ebuild:

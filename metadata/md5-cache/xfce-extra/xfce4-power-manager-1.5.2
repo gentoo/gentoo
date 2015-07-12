@@ -4,10 +4,10 @@ DESCRIPTION=Power manager for the Xfce desktop environment
 EAPI=5
 HOMEPAGE=http://goodies.xfce.org/projects/applications/xfce4-power-manager
 IUSE=debug kernel_linux networkmanager policykit systemd +xfce_plugins_power
-KEYWORDS=amd64 ~arm ~ppc ~ppc64 x86
+KEYWORDS=amd64 ~arm ~ppc ppc64 x86
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.42:= >=sys-power/upower-0.99.0 sys-power/pm-utils >=x11-libs/gtk+-3.14:3= >=x11-libs/libnotify-0.7 x11-libs/libX11:= x11-libs/libXScrnSaver:= >=x11-libs/libXrandr-1.2:= x11-libs/libXext:= x11-libs/libXtst:= >=xfce-base/xfconf-4.12:= >=xfce-base/libxfce4ui-4.12:=[gtk3(+)] >=xfce-base/libxfce4util-4.12:= policykit? ( >=sys-auth/polkit-0.112 !systemd? ( sys-auth/consolekit ) ) xfce_plugins_power? ( >=xfce-base/xfce4-panel-4.12:= ) networkmanager? ( net-misc/networkmanager )
 SLOT=0
 SRC_URI=mirror://xfce/src/apps/xfce4-power-manager/1.5/xfce4-power-manager-1.5.2.tar.bz2
 _eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f	xfconf	eee85b2bc9e9826f5a9c1349a75a69fe
-_md5_=8e6ac8c6adbbc35c12e664c290630e7c
+_md5_=0e2e96c250e9e80e2ecd1d3d71c08c84
