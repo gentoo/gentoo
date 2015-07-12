@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/openvpn/openvpn-2.3.6-r2.ebuild,v 1.1 2015/02/17 18:46:07 djc Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/openvpn/openvpn-2.3.6-r2.ebuild,v 1.2 2015/07/12 19:17:58 djc Exp $
 
 EAPI=4
 
@@ -45,8 +45,6 @@ src_prepare() {
 src_configure() {
 	use static && LDFLAGS="${LDFLAGS} -Xcompiler -static"
 	local myconf
-	echo "DROPPY"
-	use polarssl && echo "FLOZZY"
 	use polarssl && myconf="--with-crypto-library=polarssl"
 	econf \
 		${myconf} \

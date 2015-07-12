@@ -1,6 +1,9 @@
 # ChangeLog for dev-texlive/texlive-music
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-music/ChangeLog,v 1.66 2015/07/12 15:47:16 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-music/ChangeLog,v 1.67 2015/07/12 18:09:53 zlogene Exp $
+
+  12 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> texlive-music-2014.ebuild:
+  x86 stable wrt bug #550840
 
   12 Jul 2015; Agostino Sarubbo <ago@gentoo.org> texlive-music-2014.ebuild:
   Stable for amd64, wrt bug #550840

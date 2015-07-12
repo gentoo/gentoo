@@ -1,6 +1,19 @@
 # ChangeLog for net-misc/openntpd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/openntpd/ChangeLog,v 1.134 2015/05/26 14:38:12 ottxor Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/openntpd/ChangeLog,v 1.136 2015/07/12 18:25:36 ottxor Exp $
+
+  12 Jul 2015; Christoph Junghans <ottxor@gentoo.org>
+  -files/openntpd-5.7_p1-driftpath.patch,
+  -files/openntpd-5.7_p1-gentoopool.patch, -files/openntpd-5.7_p1-runpath.patch,
+  -files/openntpd-5.7_p2-adjtimex.patch, -files/openntpd-5.7_p2-proctitle.patch,
+  -openntpd-5.7_p2.ebuild, -openntpd-5.7_p3.ebuild, -openntpd-5.7_p4.ebuild:
+  remove old
+
+*openntpd-5.7_p4-r1 (12 Jul 2015)
+
+  12 Jul 2015; Christoph Junghans <ottxor@gentoo.org>
+  +openntpd-5.7_p4-r1.ebuild:
+  fixed uclibc compatibility (bug #554434)
 
 *openntpd-5.7_p4 (26 May 2015)
 

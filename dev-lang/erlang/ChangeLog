@@ -1,6 +1,10 @@
 # ChangeLog for dev-lang/erlang
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/erlang/ChangeLog,v 1.267 2015/07/01 23:46:39 zmedico Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/erlang/ChangeLog,v 1.268 2015/07/12 19:07:33 djc Exp $
+
+  12 Jul 2015; Dirkjan Ochtman <djc@gentoo.org> -erlang-16.3.1.ebuild,
+  -erlang-17.4.ebuild:
+  Remove old versions
 
 *erlang-18.0 (01 Jul 2015)
 

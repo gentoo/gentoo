@@ -1,6 +1,11 @@
 # ChangeLog for dev-lang/ispc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/ispc/ChangeLog,v 1.21 2015/04/08 08:22:09 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/ispc/ChangeLog,v 1.22 2015/07/12 17:57:48 ottxor Exp $
+
+*ispc-1.8.2 (12 Jul 2015)
+
+  12 Jul 2015; Christoph Junghans <ottxor@gentoo.org> +ispc-1.8.2.ebuild:
+  version bump
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> ispc-1.8.1.ebuild:
   Drop old Python implementations

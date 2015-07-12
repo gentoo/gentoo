@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/openvpn/openvpn-9999.ebuild,v 1.8 2014/11/02 09:13:00 swift Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/openvpn/openvpn-9999.ebuild,v 1.9 2015/07/12 19:30:58 djc Exp $
 
 EAPI=4
 
@@ -13,7 +13,7 @@ HOMEPAGE="http://openvpn.net/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="examples down-root iproute2 pam passwordsave pkcs11 +plugins polarssl selinux +ssl +lzo static userland_BSD"
+IUSE="examples down-root iproute2 +lzo pam passwordsave pkcs11 +plugins +polarssl selinux socks +ssl static systemd userland_BSD"
 
 REQUIRED_USE="static? ( !plugins !pkcs11 )
 			polarssl? ( ssl )
@@ -25,10 +25,11 @@ DEPEND="
 	)
 	pam? ( virtual/pam )
 	ssl? (
-		!polarssl? ( >=dev-libs/openssl-0.9.7 ) polarssl? ( >=net-libs/polarssl-1.1.0 )
+		!polarssl? ( >=dev-libs/openssl-0.9.7 ) polarssl? ( >=net-libs/polarssl-1.2.10 )
 	)
 	lzo? ( >=dev-libs/lzo-1.07 )
-	pkcs11? ( >=dev-libs/pkcs11-helper-1.05 )"
+	pkcs11? ( >=dev-libs/pkcs11-helper-1.11 )
+	systemd? ( sys-apps/systemd )"
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-openvpn )
 "
@@ -52,8 +53,10 @@ src_configure() {
 		$(use_enable pkcs11) \
 		$(use_enable plugins) \
 		$(use_enable iproute2) \
+		$(use_enable socks) \
 		$(use_enable pam plugin-auth-pam) \
-		$(use_enable down-root plugin-down-root)
+		$(use_enable down-root plugin-down-root) \
+		$(use_enable systemd)
 }
 
 src_install() {
@@ -78,6 +81,10 @@ src_install() {
 		insinto /usr/share/doc/${PF}/examples
 		doins -r sample contrib
 	fi
+
+	systemd_newtmpfilesd "${FILESDIR}"/${PN}.tmpfile ${PN}.conf
+	systemd_newunit distro/systemd/openvpn-client@.service openvpn-client@.service
+	systemd_newunit distro/systemd/openvpn-server@.service openvpn-server@.service
 }
 
 pkg_postinst() {

@@ -1,9 +1,9 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/openntpd/openntpd-5.7_p3.ebuild,v 1.1 2015/02/03 05:30:01 yngwin Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/openntpd/openntpd-5.7_p4-r1.ebuild,v 1.1 2015/07/12 18:20:25 ottxor Exp $
 
 EAPI=5
-inherit autotools eutils systemd user
+inherit eutils systemd user
 
 MY_P="${P/_p/p}"
 DESCRIPTION="Lightweight NTP server ported from OpenBSD"
@@ -38,19 +38,21 @@ pkg_setup() {
 }
 
 src_prepare() {
+	# add fail constraints when no libtls patch (accepted upstream)
+	epatch "${FILESDIR}/${P}-nolibtls.patch"
 	# fix /run path
-	sed -i 's:/var/run/ntpd:/run/ntpd:g' ntpctl.8 ntpd.8 || die
-	sed -i 's:LOCALSTATEDIR "/run/ntpd:"/run/ntpd:' ntpd.h || die
+	sed -i 's:/var/run/ntpd:/run/ntpd:g' src/ntpctl.8 src/ntpd.8 || die
+	sed -i 's:LOCALSTATEDIR "/run/ntpd:"/run/ntpd:' src/ntpd.h || die
 	# fix ntpd.drift path
-	sed -i 's:/var/db/ntpd.drift:/var/lib/openntpd/ntpd.drift:g' ntpd.8 || die
-	sed -i 's:"/db/ntpd.drift":"/openntpd/ntpd.drift":' ntpd.h || die
+	sed -i 's:/var/db/ntpd.drift:/var/lib/openntpd/ntpd.drift:g' src/ntpd.8 || die
+	sed -i 's:"/db/ntpd.drift":"/openntpd/ntpd.drift":' src/ntpd.h || die
 	# fix default config to use gentoo pool
 	sed -i 's:servers pool.ntp.org:#servers pool.ntp.org:' ntpd.conf || die
 	printf "\n# Choose servers announced from Gentoo NTP Pool\nservers 0.gentoo.pool.ntp.org\nservers 1.gentoo.pool.ntp.org\nservers 2.gentoo.pool.ntp.org\nservers 3.gentoo.pool.ntp.org\n" >> ntpd.conf || die
 }
 
 src_configure() {
-	econf --with-privsep-user=ntp --with-privsep-path="${NTP_HOME}"
+	econf --with-privsep-user=ntp
 }
 
 src_install() {
@@ -63,22 +65,16 @@ src_install() {
 	systemd_newunit "${FILESDIR}/${PN}.service-20080406-r4" ntpd.service
 }
 
-pkg_config() {
-	einfo "Setting up chroot for ntp in ${NTP_HOME}"
-	# remove localtime file from previous installations
-	rm -f "${EROOT%/}${NTP_HOME}"/etc/localtime
-	mkdir -p "${EROOT%/}${NTP_HOME}"/etc
-	if ! ln "${EROOT%/}"/etc/localtime "${EROOT%/}${NTP_HOME}"/etc/localtime ; then
-		cp "${EROOT%/}"/etc/localtime "${EROOT%/}${NTP_HOME}"/etc/localtime || die
-		einfo "We could not create a hardlink from /etc/localtime to ${NTP_HOME}/etc/localtime,"
-		einfo "so please run 'emerge --config =${CATEGORY}/${PF}' whenever you change"
-		einfo "your timezone."
-	fi
-	chown -R root:root "${EROOT%/}${NTP_HOME}" || die
-}
-
 pkg_postinst() {
-	pkg_config
+	# Clean up chroot localtime copy from older versions
+	if [ -d "${EROOT%/}${NTP_HOME}"/etc ] ; then
+		if [ -f "${EROOT%/}${NTP_HOME}"/etc/localtime ] ; then
+			rm -f "${EROOT%/}${NTP_HOME}"/etc/localtime
+		fi
+
+		rmdir "${EROOT%/}${NTP_HOME}"/etc ||
+			ewarn "Unable to remove legacy ${EROOT%/}${NTP_HOME}/etc directory"
+	fi
 
 	[[ -f ${EROOT}var/log/ntpd.log ]] && \
 		ewarn "Logfile '${EROOT}var/log/ntpd.log' might be orphaned, please remove it if not in use via syslog."
@@ -87,9 +83,4 @@ pkg_postinst() {
 		einfo "Moving ntpd.drift file to new location."
 		mv "${EROOT}var/lib/ntpd.drift" "${EROOT}var/lib/openntpd/ntpd.drift"
 	fi
-}
-
-pkg_postrm() {
-	# remove localtime file from previous installations
-	rm -f "${EROOT%/}${NTP_HOME}"/etc/localtime
 }

@@ -11,4 +11,4 @@ REQUIRED_USE=static? ( !plugins !pkcs11 ) polarssl? ( ssl ) pkcs11? ( ssl ) !plu
 SLOT=0
 SRC_URI=http://swupdate.openvpn.net/community/releases/openvpn-2.3.6.tar.gz
 _eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
-_md5_=7b1ff67098f48a4b3a44cbaf4c0063ce
+_md5_=d5aded87c818888205bb18032ee3a872

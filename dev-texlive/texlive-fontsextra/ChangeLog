@@ -1,6 +1,10 @@
 # ChangeLog for dev-texlive/texlive-fontsextra
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-fontsextra/ChangeLog,v 1.77 2015/07/12 15:44:52 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-fontsextra/ChangeLog,v 1.78 2015/07/12 17:31:55 zlogene Exp $
+
+  12 Jul 2015; Mikle Kolyada <zlogene@gentoo.org>
+  texlive-fontsextra-2014.ebuild:
+  x86 stable wrt bug #550840
 
   12 Jul 2015; Agostino Sarubbo <ago@gentoo.org> texlive-fontsextra-2014.ebuild:
   Stable for amd64, wrt bug #550840

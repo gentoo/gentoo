@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/qca/qca-2.1.0.3.ebuild,v 1.13 2015/07/03 10:24:32 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/qca/qca-2.1.0.3.ebuild,v 1.14 2015/07/12 18:42:30 alonbl Exp $
 
 EAPI=5
 
@@ -29,7 +29,7 @@ RDEPEND="
 	gcrypt? ( dev-libs/libgcrypt:= )
 	gpg? ( app-crypt/gnupg )
 	nss? ( dev-libs/nss )
-	openssl? ( dev-libs/openssl:0 )
+	openssl? ( >=dev-libs/openssl-1.0.1:0 )
 	pkcs11? (
 		dev-libs/openssl:0
 		dev-libs/pkcs11-helper

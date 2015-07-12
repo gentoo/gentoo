@@ -1,6 +1,9 @@
 # ChangeLog for dev-texlive/texlive-pstricks
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-pstricks/ChangeLog,v 1.72 2015/07/12 15:47:34 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-pstricks/ChangeLog,v 1.73 2015/07/12 18:12:01 zlogene Exp $
+
+  12 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> texlive-pstricks-2014.ebuild:
+  x86 stable wrt bug #550840
 
   12 Jul 2015; Agostino Sarubbo <ago@gentoo.org> texlive-pstricks-2014.ebuild:
   Stable for amd64, wrt bug #550840

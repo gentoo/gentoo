@@ -1,0 +1,14 @@
+DEFINED_PHASES=install nofetch unpack
+DEPEND=app-arch/xz-utils app-admin/chrpath
+DESCRIPTION=Google Music Manager is a application for adding music to your Google Music library
+EAPI=5
+HOMEPAGE=http://music.google.com
+IUSE=log
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=Google-TOS Apache-2.0 MIT LGPL-2.1 gSOAP BSD FDL-1.2 MPL-1.1 openssl ZLIB libtiff
+RDEPEND=dev-libs/expat dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtwebkit:4 media-libs/flac media-libs/libvorbis net-dns/libidn sys-libs/glibc log? ( dev-libs/log4cxx )
+RESTRICT=strip mirror
+SLOT=0
+SRC_URI=x86? ( http://dl.google.com/linux/musicmanager/deb/pool/main/g/google-musicmanager-beta/google-musicmanager-beta_1.0.196.8837-r0_i386.deb ) amd64? ( http://dl.google.com/linux/musicmanager/deb/pool/main/g/google-musicmanager-beta/google-musicmanager-beta_1.0.196.8837-r0_amd64.deb )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=3b1596ecbfd0ef3fb1d208705b6dc0dc

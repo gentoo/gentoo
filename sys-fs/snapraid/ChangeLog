@@ -1,6 +1,11 @@
 # ChangeLog for sys-fs/snapraid
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/snapraid/ChangeLog,v 1.21 2015/03/01 21:12:59 ottxor Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/snapraid/ChangeLog,v 1.22 2015/07/12 18:08:32 ottxor Exp $
+
+*snapraid-8.1 (12 Jul 2015)
+
+  12 Jul 2015; Christoph Junghans <ottxor@gentoo.org> +snapraid-8.1.ebuild:
+  version bump
 
 *snapraid-7.1 (01 Mar 2015)
 

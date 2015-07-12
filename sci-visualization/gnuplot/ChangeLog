@@ -1,6 +1,16 @@
 # ChangeLog for sci-visualization/gnuplot
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-visualization/gnuplot/ChangeLog,v 1.263 2015/05/25 23:06:22 ottxor Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-visualization/gnuplot/ChangeLog,v 1.265 2015/07/12 18:17:10 ottxor Exp $
+
+  12 Jul 2015; Christoph Junghans <ottxor@gentoo.org> -gnuplot-4.6.3.ebuild,
+  -gnuplot-4.6.4-r2.ebuild, -gnuplot-4.6.7.ebuild, -gnuplot-5.0.0.ebuild:
+  remove old
+
+*gnuplot-5.0.1 (12 Jul 2015)
+
+  12 Jul 2015; Christoph Junghans <ottxor@gentoo.org> +gnuplot-5.0.1.ebuild,
+  metadata.xml:
+  version bump, added compat use flag (bug #550370)
 
 *gnuplot-4.6.7 (25 May 2015)
 
