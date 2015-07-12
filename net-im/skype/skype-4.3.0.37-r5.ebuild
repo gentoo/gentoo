@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/skype/skype-4.3.0.37-r5.ebuild,v 1.6 2015/07/11 09:49:39 amynka Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/skype/skype-4.3.0.37-r5.ebuild,v 1.7 2015/07/12 15:00:54 amynka Exp $
 
 EAPI=5
 
@@ -13,7 +13,7 @@ SRC_URI="http://download.${PN}.com/linux/${P}.tar.bz2"
 LICENSE="skype-4.0.0.7-copyright BSD MIT RSA W3C regexp-UofT no-source-code"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="apulse pax_kernel plasma +pulseaudio selinux"
+IUSE="apulse pax_kernel +pulseaudio selinux"
 REQUIRED_USE="apulse? ( !pulseaudio )"
 
 QA_PREBUILT=opt/bin/${PN}
@@ -33,7 +33,6 @@ RDEPEND="
 	x11-libs/libXScrnSaver[abi_x86_32(-)]
 	x11-libs/libXv[abi_x86_32(-)]
 	apulse? ( media-sound/apulse[abi_x86_32(-)] )
-	amd64? ( plasma? ( dev-libs/sni-qt[abi_x86_32(-)] ) )
 	pulseaudio? ( media-sound/pulseaudio[abi_x86_32(-)] )
 	selinux? ( sec-policy/selinux-skype )"
 

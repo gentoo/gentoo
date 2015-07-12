@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/gnutls/gnutls-3.4.2-r1.ebuild,v 1.1 2015/06/17 18:42:05 alonbl Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/gnutls/gnutls-3.3.16.ebuild,v 1.1 2015/07/12 14:33:50 alonbl Exp $
 
 EAPI=5
 
@@ -13,23 +13,23 @@ SRC_URI="mirror://gnupg/gnutls/v$(get_version_component_range 1-2)/${P}.tar.xz"
 # LGPL-3 for libgnutls library and GPL-3 for libgnutls-extra library.
 # soon to be relicensed as LGPL-2.1 unless heartbeat extension enabled.
 LICENSE="GPL-3 LGPL-3"
-SLOT="0/30" # libgnutls.so number
+SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE_LINGUAS=" en cs de fi fr it ms nl pl sv uk vi zh_CN"
-IUSE="+cxx +crywrap dane doc examples guile nls +openssl pkcs11 static-libs test +tools zlib ${IUSE_LINGUAS// / linguas_}"
+IUSE="+cxx +crywrap dane doc examples guile nls +openssl pkcs11 static-libs test zlib ${IUSE_LINGUAS// / linguas_}"
 # heartbeat support is not disabled until re-licensing happens fullyf
 
 # NOTICE: sys-devel/autogen is required at runtime as we
 # use system libopts
 RDEPEND=">=dev-libs/libtasn1-3.9[${MULTILIB_USEDEP}]
-	>=dev-libs/nettle-3.1[gmp,${MULTILIB_USEDEP}]
+	>=dev-libs/nettle-2.7[gmp,${MULTILIB_USEDEP}]
 	>=dev-libs/gmp-5.1.3-r1[${MULTILIB_USEDEP}]
-	tools? ( sys-devel/autogen )
+	sys-devel/autogen
 	crywrap? ( net-dns/libidn )
 	dane? ( >=net-dns/unbound-1.4.20[${MULTILIB_USEDEP}] )
 	guile? ( >=dev-scheme/guile-1.8:*[networking] )
 	nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )
-	pkcs11? ( >=app-crypt/p11-kit-0.23.1[${MULTILIB_USEDEP}] )
+	pkcs11? ( >=app-crypt/p11-kit-0.20.7[${MULTILIB_USEDEP}] )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
 	abi_x86_32? (
 		!<=app-emulation/emul-linux-x86-baselibs-20140508
@@ -69,8 +69,6 @@ src_prepare() {
 		rm "${file}" || die
 	done
 
-	epatch "${FILESDIR}/${P}-build.patch"
-
 	# support user patches
 	epatch_user
 
@@ -98,11 +96,9 @@ multilib_src_configure() {
 		--enable-heartbeat-support \
 		$(use_enable cxx) \
 		$(use_enable dane libdane) \
-		$(multilib_native_use_enable tools) \
 		$(multilib_native_use_enable doc gtk-doc) \
 		$(multilib_native_use_enable guile) \
 		$(multilib_native_use_enable crywrap) \
-		$(multilib_native_use_enable test tests) \
 		$(use_enable nls) \
 		$(use_enable openssl openssl-compatibility) \
 		$(use_enable static-libs static) \
@@ -111,6 +107,50 @@ multilib_src_configure() {
 		--without-tpm \
 		--with-unbound-root-key-file=/etc/dnssec/root-anchors.txt \
 		$([[ ${CHOST} == *-darwin* ]] && echo --disable-hardware-acceleration)
+
+	if multilib_is_native_abi; then
+		ln -s "${S}"/doc/reference/html doc/reference/html || die
+	fi
+}
+
+multilib_src_compile() {
+	if multilib_is_native_abi; then
+		default
+
+		# symlink certtool for use in other ABIs
+		if use test; then
+			ln -s "${BUILD_DIR}"/src "${T}"/native-tools || die
+		fi
+	else
+		emake -C gl
+		emake -C lib
+		emake -C extra
+		use dane && emake -C libdane
+	fi
+}
+
+multilib_src_test() {
+	if multilib_is_native_abi; then
+		# parallel testing often fails
+		emake -j1 check
+	else
+		# use native ABI tools
+		ln -s "${T}"/native-tools/{certtool,gnutls-{serv,cli}} \
+			"${BUILD_DIR}"/src/ || die
+
+		emake -C gl -j1 check
+		emake -C tests -j1 check
+	fi
+}
+
+multilib_src_install() {
+	if multilib_is_native_abi; then
+		emake DESTDIR="${D}" install
+	else
+		emake -C lib DESTDIR="${D}" install
+		emake -C extra DESTDIR="${D}" install
+		use dane && emake -C libdane DESTDIR="${D}" install
+	fi
 }
 
 multilib_src_install_all() {

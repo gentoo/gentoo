@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-libs/boost:= dev-util/gperf sys-libs/ncurses:= sys-libs/readline:= dev-embedded/gputils boehm-gc? ( dev-libs/boehm-gc:= )
+DESCRIPTION=Small device C compiler (for various microprocessors)
+EAPI=5
+HOMEPAGE=http://sdcc.sourceforge.net/
+IUSE=mcs51 z80 z180 r2k r3ka gbz80 tlcs90 ds390 ds400 pic14 pic16 hc08 s08 stm8 ucsim device-lib packihx +sdcpp sdcdb sdbinutils non-free +boehm-gc
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2 ZLIB non-free? ( MicroChip-SDCC ) packihx? ( public-domain )
+RDEPEND=dev-libs/boost:= dev-util/gperf sys-libs/ncurses:= sys-libs/readline:= dev-embedded/gputils boehm-gc? ( dev-libs/boehm-gc:= )
+REQUIRED_USE=mcs51? ( sdbinutils ) ds390? ( sdbinutils ) ds400? ( sdbinutils ) hc08? ( sdbinutils ) s08? ( sdbinutils )
+RESTRICT=strip
+SLOT=0
+SRC_URI=mirror://sourceforge/sdcc/sdcc-src-3.5.0.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=0337dd42d26cca0ce967467faef3893e

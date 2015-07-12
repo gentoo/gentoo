@@ -3,13 +3,13 @@ DEPEND=>=sys-apps/sed-4
 DESCRIPTION=P2P Internet Telephony (VoiceIP) client
 EAPI=5
 HOMEPAGE=http://www.skype.com/
-IUSE=apulse pax_kernel plasma +pulseaudio selinux
+IUSE=apulse pax_kernel +pulseaudio selinux
 KEYWORDS=~amd64 ~x86
 LICENSE=skype-4.0.0.7-copyright BSD MIT RSA W3C regexp-UofT no-source-code
-RDEPEND=virtual/ttf-fonts dev-qt/qtcore:4[abi_x86_32(-)] dev-qt/qtdbus:4[abi_x86_32(-)] dev-qt/qtgui:4[accessibility,abi_x86_32(-)] dev-qt/qtwebkit:4[abi_x86_32(-)] media-libs/alsa-lib[abi_x86_32(-)] x11-libs/libX11[abi_x86_32(-)] x11-libs/libXext[abi_x86_32(-)] x11-libs/libXScrnSaver[abi_x86_32(-)] x11-libs/libXv[abi_x86_32(-)] apulse? ( media-sound/apulse[abi_x86_32(-)] ) amd64? ( plasma? ( dev-libs/sni-qt[abi_x86_32(-)] ) ) pulseaudio? ( media-sound/pulseaudio[abi_x86_32(-)] ) selinux? ( sec-policy/selinux-skype )
+RDEPEND=virtual/ttf-fonts dev-qt/qtcore:4[abi_x86_32(-)] dev-qt/qtdbus:4[abi_x86_32(-)] dev-qt/qtgui:4[accessibility,abi_x86_32(-)] dev-qt/qtwebkit:4[abi_x86_32(-)] media-libs/alsa-lib[abi_x86_32(-)] x11-libs/libX11[abi_x86_32(-)] x11-libs/libXext[abi_x86_32(-)] x11-libs/libXScrnSaver[abi_x86_32(-)] x11-libs/libXv[abi_x86_32(-)] apulse? ( media-sound/apulse[abi_x86_32(-)] ) pulseaudio? ( media-sound/pulseaudio[abi_x86_32(-)] ) selinux? ( sec-policy/selinux-skype )
 REQUIRED_USE=apulse? ( !pulseaudio )
 RESTRICT=mirror bindist strip
 SLOT=0
 SRC_URI=http://download.skype.com/linux/skype-4.3.0.37.tar.bz2
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	pax-utils	dfe060cb70d89757fde5c1ff8405e950	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=9b244b2bf3818c09754d63d64b72abd9
+_md5_=c3bee448158027728e6fa0594a30fce2

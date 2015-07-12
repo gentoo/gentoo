@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Capture-Tiny/Capture-Tiny-0.270.0.ebuild,v 1.1 2014/12/08 23:32:00 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Capture-Tiny/Capture-Tiny-0.300.0.ebuild,v 1.1 2015/07/12 15:12:29 dilfridge Exp $
 
 EAPI=5
 
 MODULE_AUTHOR=DAGOLDEN
-MODULE_VERSION=0.27
+MODULE_VERSION=0.30
 inherit perl-module
 
 DESCRIPTION="Capture STDOUT and STDERR from Perl, XS or external programs"
@@ -30,4 +30,4 @@ DEPEND="${RDEPEND}
 	)
 "
 
-SRC_TEST=do
+SRC_TEST="do parallel"

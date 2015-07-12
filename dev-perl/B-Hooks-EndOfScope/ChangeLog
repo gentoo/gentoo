@@ -1,6 +1,12 @@
 # ChangeLog for dev-perl/B-Hooks-EndOfScope
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/B-Hooks-EndOfScope/ChangeLog,v 1.35 2015/05/20 04:51:15 mattst88 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/B-Hooks-EndOfScope/ChangeLog,v 1.36 2015/07/12 15:10:17 dilfridge Exp $
+
+*B-Hooks-EndOfScope-0.150.0 (12 Jul 2015)
+
+  12 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +B-Hooks-EndOfScope-0.150.0.ebuild:
+  Version bump
 
   20 May 2015; Matt Turner <mattst88@gentoo.org>
   B-Hooks-EndOfScope-0.140.0.ebuild:

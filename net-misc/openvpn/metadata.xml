@@ -15,6 +15,7 @@ networks using an encrypted tunnel.</longdescription>
     <flag name="polarssl">Use PolarSSL instead of OpenSSL</flag>
     <flag name="pkcs11">Enable PKCS#11 smartcard support</flag>
     <flag name="plugins">Enable the OpenVPN plugin system</flag>
+    <flag name="socks">Enable socks support</flag>
   </use>
   <upstream>
     <remote-id type="cpe">cpe:/a:openvpn:openvpn</remote-id>

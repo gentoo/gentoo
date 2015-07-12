@@ -1,6 +1,13 @@
 # ChangeLog for net-misc/openvpn
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/openvpn/ChangeLog,v 1.320 2015/02/17 18:46:07 djc Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/openvpn/ChangeLog,v 1.321 2015/07/12 15:12:26 djc Exp $
+
+*openvpn-2.3.7 (12 Jul 2015)
+
+  12 Jul 2015; Dirkjan Ochtman <djc@gentoo.org> +openvpn-2.3.7.ebuild,
+  metadata.xml:
+  Version bump openvpn to 2.3.7 (fixes bug 554524, bug 489272, bug 553352, bug
+  531474)
 
 *openvpn-2.3.6-r2 (17 Feb 2015)
 
