@@ -1,6 +1,11 @@
 # ChangeLog for dev-java/portletapi
-# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/portletapi/ChangeLog,v 1.8 2007/05/07 16:37:36 caster Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/portletapi/ChangeLog,v 1.9 2015/07/13 17:26:10 monsieurp Exp $
+
+*portletapi-2.0 (13 Jul 2015)
+
+  13 Jul 2015; Patrice Clement <monsieurp@gentoo.org> +portletapi-2.0.ebuild:
+  Version bump.
 
   07 May 2007; Vlastimil Babka <caster@gentoo.org> portletapi-1.0.ebuild:
   Change dev-java/ant DEPEND to ant-core, nothing more needed. Tweak style,
@@ -33,4 +38,3 @@
   +files/portletapi-1.0-build.xml, +metadata.xml, +portletapi-1.0.ebuild:
   Initial commit. Ebuild by Miroslav Sulc <miroslav.sulc@startnet.cz>, bug
   #148210.
-
