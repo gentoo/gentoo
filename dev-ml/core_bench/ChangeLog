@@ -1,6 +1,12 @@
 # ChangeLog for dev-ml/core_bench
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/core_bench/ChangeLog,v 1.6 2015/02/20 17:23:54 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/core_bench/ChangeLog,v 1.7 2015/07/13 18:15:22 aballier Exp $
+
+*core_bench-112.35.00 (13 Jul 2015)
+
+  13 Jul 2015; Alexis Ballier <aballier@gentoo.org>
+  +core_bench-112.35.00.ebuild:
+  version bump
 
   20 Feb 2015; Alexis Ballier <aballier@gentoo.org>
   -core_bench-109.58.01.ebuild, -core_bench-112.01.00.ebuild,

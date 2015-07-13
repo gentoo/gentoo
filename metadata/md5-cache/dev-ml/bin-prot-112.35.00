@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=dev-ml/type-conv-109.28.00:= dev-ml/camlp4:= test? ( >=dev-ml/ounit-1.1.2 ) >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-3.12:=[ocamlopt?]
+DESCRIPTION=A binary protocol generator
+EAPI=5
+HOMEPAGE=http://ocaml.janestreet.com/?q=node/13
+IUSE=doc +ocamlopt debug doc test
+KEYWORDS=~amd64
+LICENSE=LGPL-2.1-with-linking-exception
+RDEPEND=>=dev-ml/type-conv-109.28.00:= dev-ml/camlp4:= >=dev-lang/ocaml-3.12:=[ocamlopt?]
+SLOT=0/112.35.00
+SRC_URI=http://ocaml.janestreet.com/ocaml-core/112.35/files/bin_prot-112.35.00.tar.gz
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	findlib	9cf6020ee5481f39f1aa566a323f9868	multilib	62927b3db3a589b0806255f3a002d5d3	oasis	45027e91f880d9142eec842f0cca0088	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=8e67b29cb7dac24c7701c855bcbb7aef

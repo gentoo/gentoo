@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/gnome-online-miners/gnome-online-miners-3.14.2.ebuild,v 1.1 2015/04/19 15:48:01 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/gnome-online-miners/gnome-online-miners-3.14.3-r1.ebuild,v 1.1 2015/07/13 18:06:57 pacho Exp $
 
 EAPI="5"
 GCONF_DEBUG="no"
@@ -12,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/GnomeOnlineMiners"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE=""
+IUSE="flickr"
 KEYWORDS="~amd64 ~x86"
 
 # libgdata[gnome] needed for goa support
@@ -24,6 +24,7 @@ RDEPEND="
 	>=net-libs/gnome-online-accounts-3.13.3
 	>=net-libs/libgfbgraph-0.2.2:0.2
 	>=net-libs/libzapojit-0.0.2
+	flickr? ( media-plugins/grilo-plugins[flickr] )
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -31,9 +32,9 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	gnome2_src_configure \
+		$(use_enable flickr) \
 		--disable-static \
 		--enable-facebook \
-		--enable-flickr \
 		--enable-google \
 		--enable-media-server \
 		--enable-owncloud \

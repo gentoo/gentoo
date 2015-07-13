@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=dev-ml/core_kernel-109.35.00:= >=dev-ml/sexplib-109.20.00:= >=dev-ml/bin-prot-109.15.00:= >=dev-ml/fieldslib-109.20.00:= >=dev-ml/pa_ounit-109.27.00:= >=dev-ml/variantslib-109.15.00:= >=dev-ml/comparelib-109.27.00:= >=dev-ml/herelib-109.35.00:= >=dev-ml/pipebang-109.15.00:= dev-ml/custom_printf:= dev-ml/pa_bench:= dev-ml/pa_test:= dev-ml/enumerate:= dev-ml/camlp4:= dev-ml/pa_structural_sexp:= test? ( >=dev-ml/ounit-1.1.2 ) >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-3.12:=[ocamlopt?]
+DESCRIPTION=Jane Street's alternative to the standard library
+EAPI=5
+HOMEPAGE=http://www.janestreet.com/ocaml
+IUSE=+ocamlopt debug doc test
+KEYWORDS=~amd64
+LICENSE=LGPL-2.1-with-linking-exception
+RDEPEND=>=dev-ml/core_kernel-109.35.00:= >=dev-ml/sexplib-109.20.00:= >=dev-ml/bin-prot-109.15.00:= >=dev-ml/fieldslib-109.20.00:= >=dev-ml/pa_ounit-109.27.00:= >=dev-ml/variantslib-109.15.00:= >=dev-ml/comparelib-109.27.00:= >=dev-ml/herelib-109.35.00:= >=dev-ml/pipebang-109.15.00:= dev-ml/custom_printf:= dev-ml/pa_bench:= dev-ml/pa_test:= dev-ml/enumerate:= dev-ml/camlp4:= dev-ml/pa_structural_sexp:= >=dev-lang/ocaml-3.12:=[ocamlopt?]
+SLOT=0/112.35.00
+SRC_URI=http://ocaml.janestreet.com/ocaml-core/112.35/files/core-112.35.00.tar.gz
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	findlib	9cf6020ee5481f39f1aa566a323f9868	multilib	62927b3db3a589b0806255f3a002d5d3	oasis	45027e91f880d9142eec842f0cca0088	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=8b53172133758e6e4ecc586b75aa6425

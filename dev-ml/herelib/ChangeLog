@@ -1,6 +1,11 @@
 # ChangeLog for dev-ml/herelib
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/herelib/ChangeLog,v 1.9 2014/11/28 17:30:11 aballier Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/herelib/ChangeLog,v 1.10 2015/07/13 18:29:40 aballier Exp $
+
+*herelib-112.35.00 (13 Jul 2015)
+
+  13 Jul 2015; Alexis Ballier <aballier@gentoo.org> +herelib-112.35.00.ebuild:
+  version bump
 
   28 Nov 2014; Alexis Ballier <aballier@gentoo.org> herelib-109.35.02.ebuild:
   update deps for ocaml 4.02
