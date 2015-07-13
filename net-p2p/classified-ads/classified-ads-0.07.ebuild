@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/classified-ads/classified-ads-0.07.ebuild,v 1.1 2015/06/29 05:39:09 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/classified-ads/classified-ads-0.07.ebuild,v 1.2 2015/07/13 06:56:29 idella4 Exp $
 
 EAPI=5
 PLOCALES="en fi sv"
@@ -16,7 +16,7 @@ SRC_URI="https://github.com/operatornormal/classified-ads/archive/${PV}.tar.gz \
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~x86"
 
 IUSE="debug doc test"
 

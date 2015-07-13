@@ -1,8 +1,8 @@
 # ChangeLog for app-crypt/qca
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/qca/ChangeLog,v 1.114 2015/07/12 18:42:30 alonbl Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/qca/ChangeLog,v 1.115 2015/07/13 07:00:55 alonbl Exp $
 
-  12 Jul 2015;  <alonbl@gentoo.org> qca-2.1.0.3.ebuild:
+  12 Jul 2015; Alon Bar-Lev <alonbl@gentoo.org> qca-2.1.0.3.ebuild:
   Set minimum openssl-1.0.1 dependency, bug#554184
 
   03 Jul 2015; Agostino Sarubbo <ago@gentoo.org> qca-2.1.0.3.ebuild:

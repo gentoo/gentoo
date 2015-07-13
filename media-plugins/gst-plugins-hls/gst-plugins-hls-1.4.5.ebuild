@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-hls/gst-plugins-hls-1.4.5.ebuild,v 1.3 2015/03/15 13:37:35 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-hls/gst-plugins-hls-1.4.5.ebuild,v 1.4 2015/07/13 07:11:11 eva Exp $
 
 EAPI="5"
 GST_ORG_MODULE=gst-plugins-bad
@@ -12,7 +12,7 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="
-	dev-libs/nettle[${MULTILIB_USEDEP}]
+	dev-libs/nettle:0=[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}"
 

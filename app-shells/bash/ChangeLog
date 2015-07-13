@@ -1,6 +1,9 @@
 # ChangeLog for app-shells/bash
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/bash/ChangeLog,v 1.441 2015/07/13 04:51:38 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-shells/bash/ChangeLog,v 1.442 2015/07/13 07:21:02 vapier Exp $
+
+  13 Jul 2015; Mike Frysinger <vapier@gentoo.org> bash-4.3_p33-r2.ebuild:
+  Mark sparc stable #548756.
 
   13 Jul 2015; Mike Frysinger <vapier@gentoo.org> bash-2.05b_p13.ebuild:
   Force /bin/bash when running old configure.
