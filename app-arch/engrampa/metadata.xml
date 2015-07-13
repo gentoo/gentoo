@@ -8,6 +8,6 @@
 			menu</flag>
 	</use>
     <upstream>
-        <remote-id type="github">mate-desktop/libmateweather</remote-id>
+        <remote-id type="github">mate-desktop/engrampa</remote-id>
     </upstream>
 </pkgmetadata>

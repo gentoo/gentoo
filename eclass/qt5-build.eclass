@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/qt5-build.eclass,v 1.20 2015/06/17 15:48:58 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/qt5-build.eclass,v 1.21 2015/07/13 00:51:16 pesa Exp $
 
 # @ECLASS: qt5-build.eclass
 # @MAINTAINER:
@@ -535,9 +535,6 @@ qt5_base_configure() {
 		-system-zlib
 		-system-pcre
 
-		# don't specify -no-gif because there is no way to override it later
-		#-no-gif
-
 		# disable everything to prevent automagic deps (part 1)
 		-no-mtdev
 		-no-journald
@@ -545,7 +542,11 @@ qt5_base_configure() {
 		-no-freetype -no-harfbuzz
 		-no-openssl
 		$([[ ${QT5_MINOR_VERSION} -ge 5 ]] && echo -no-libproxy)
+		$([[ ${QT5_MINOR_VERSION} -ge 5 ]] && echo -no-xkbcommon-{x11,evdev})
 		-no-xinput2 -no-xcb-xlib
+
+		# don't specify -no-gif because there is no way to override it later
+		#-no-gif
 
 		# always enable glib event loop support
 		-glib
@@ -578,7 +579,10 @@ qt5_base_configure() {
 		-iconv
 
 		# disable everything to prevent automagic deps (part 3)
-		-no-cups -no-evdev -no-icu -no-fontconfig -no-dbus
+		-no-cups -no-evdev
+		$([[ ${QT5_MINOR_VERSION} -ge 5 ]] && echo -no-tslib)
+		-no-icu -no-fontconfig
+		-no-dbus
 
 		# don't strip
 		-no-strip
@@ -614,8 +618,15 @@ qt5_base_configure() {
 		# typedef qreal to double (warning: changing this flag breaks the ABI)
 		-qreal double
 
-		# disable opengl and egl by default, override in qtgui and qtopengl
+		# disable OpenGL and EGL support by default, override in qtgui,
+		# qtopengl, qtprintsupport and qtwidgets
 		-no-opengl -no-egl
+
+		# disable libinput-based generic plugin by default, override in qtgui
+		$([[ ${QT5_MINOR_VERSION} -ge 5 ]] && echo -no-libinput)
+
+		# disable gstreamer by default, override in qtmultimedia
+		$([[ ${QT5_MINOR_VERSION} -ge 5 ]] && echo -no-gstreamer)
 
 		# use upstream default
 		#-no-system-proxies
@@ -673,7 +684,7 @@ qt5_qmake() {
 		QMAKE_LFLAGS_DEBUG= \
 		"${projectdir}" \
 		"$@" \
-		|| die "qmake failed (${projectdir})"
+		|| die "qmake failed (${projectdir#${S}/})"
 }
 
 # @FUNCTION: qt5_install_module_qconfigs

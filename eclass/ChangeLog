@@ -1,6 +1,9 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1707 2015/07/09 20:21:05 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1708 2015/07/13 00:51:16 pesa Exp $
+
+  13 Jul 2015; Davide Pesavento <pesa@gentoo.org> qt5-build.eclass:
+  Initial support for Qt 5.5
 
   09 Jul 2015; Michał Górny <mgorny@gentoo.org> git-r3.eclass:
   Do not attempt to use submodules for which the checkout path does not exist
