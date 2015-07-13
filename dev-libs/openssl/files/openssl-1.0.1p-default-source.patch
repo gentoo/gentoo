@@ -1,4 +1,5 @@
 https://bugs.gentoo.org/554338
+https://rt.openssl.org/Ticket/Display.html?id=3934&user=guest&pass=guest
 
 From 7c2e97f8bbae517496fdc11f475b4ae54b2534f5 Mon Sep 17 00:00:00 2001
 From: Mike Frysinger <vapier@gentoo.org>

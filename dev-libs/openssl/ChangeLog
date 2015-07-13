@@ -1,6 +1,10 @@
 # ChangeLog for dev-libs/openssl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/openssl/ChangeLog,v 1.680 2015/07/10 12:55:35 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/openssl/ChangeLog,v 1.681 2015/07/13 10:21:13 vapier Exp $
+
+  13 Jul 2015; Mike Frysinger <vapier@gentoo.org>
+  files/openssl-1.0.1p-default-source.patch:
+  Add upstream bug URL.
 
   10 Jul 2015; Agostino Sarubbo <ago@gentoo.org> openssl-1.0.1p.ebuild:
   Stable for sparc, wrt bug #554172
