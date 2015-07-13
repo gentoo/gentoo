@@ -1,0 +1,65 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-nds/openldap/files/slapd-initd-2.4.40-r2,v 1.1 2015/07/13 07:40:28 patrick Exp $
+
+extra_commands="checkconfig"
+
+[ -z "$INSTANCE" ] && INSTANCE="openldap${SVCNAME#slapd}"
+PIDDIR=/run/openldap
+PIDFILE=$PIDDIR/$SVCNAME.pid
+
+depend() {
+	need net
+	before dbus hald avahi-daemon
+	provide ldap
+}
+
+start() {
+	checkpath -q -d ${PIDDIR} -o ldap:ldap 
+	if ! checkconfig -Q ; then
+		eerror "There is a problem with your slapd.conf!"
+		return 1
+	fi
+	ebegin "Starting ldap-server"
+	[ -n "$KRB5_KTNAME" ] && export KRB5_KTNAME
+	eval start-stop-daemon --start --pidfile ${PIDFILE} --exec /usr/lib/openldap/slapd -- -u ldap -g ldap "${OPTS}"
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ldap-server"
+	start-stop-daemon --stop --signal 2 --quiet --pidfile ${PIDFILE}
+	eend $?
+}
+
+checkconfig() {
+	# checks requested by bug #502948
+	# Step 1: extract the last valid config file or config dir
+	set -- $OPTS
+	while [ -n "$*" ]; do
+		opt=$1 ; shift
+		if [ "$opt" = "-f" -o "$opt" = "-F" ] ; then
+			CONF=$1
+			shift
+		fi
+	done
+	set --
+	# Fallback
+	CONF=${CONF-/etc/openldap/slapd.conf}
+	[ -d $CONF ] && CONF=${CONF}/*
+	DBDIRS=`eval awk '"/^(directory|olcDbDirectory:)/{print \\$2}"' $CONF`
+	for d in $DBDIRS; do
+		if [ ! -d $d ]; then
+			eerror "Directory $d in config does not exist!"
+			return 1
+		fi
+		/usr/bin/find $d ! -name DB_CONFIG ! -user ldap -o ! -group ldap |grep -sq .
+		if [ $? -ne 0 ]; then
+			ewarn "You have files in $d not owned by the ldap user, you must ensure they are accessible to the slapd instance!"
+		fi
+		[ ! -e $d/DB_CONFIG ] && ewarn "$d/DB_CONFIG does not exist, slapd performance may be sub-optimal" 
+	done
+	# now test the config fully
+	/usr/sbin/slaptest -u "$@" ${OPTS_CONF}
+}

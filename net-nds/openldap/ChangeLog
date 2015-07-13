@@ -1,6 +1,12 @@
 # ChangeLog for net-nds/openldap
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-nds/openldap/ChangeLog,v 1.500 2015/05/16 06:37:06 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-nds/openldap/ChangeLog,v 1.501 2015/07/13 07:40:28 patrick Exp $
+
+*openldap-2.4.40-r4 (13 Jul 2015)
+
+  13 Jul 2015; Patrick Lauer <patrick@gentoo.org> +files/slapd-initd-2.4.40-r2,
+  +openldap-2.4.40-r4.ebuild, -openldap-2.4.40-r3.ebuild:
+  Fix init script failure #545792
 
   16 May 2015; Robin H. Johnson <robbat2@gentoo.org> -openldap-2.4.35-r1.ebuild:
   Bug #488322 cleanup.

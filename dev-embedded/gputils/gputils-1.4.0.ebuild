@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/gputils/gputils-1.4.0.ebuild,v 1.1 2015/07/04 08:56:49 perfinion Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/gputils/gputils-1.4.0.ebuild,v 1.2 2015/07/13 07:52:14 vapier Exp $
 
 EAPI="5"
 
@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
 src_configure() {
-	tc-ld-disable-gold
+	tc-ld-disable-gold #369291
 	default
 }
 

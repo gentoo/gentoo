@@ -1,6 +1,36 @@
 # ChangeLog for dev-embedded/sdcc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/sdcc/ChangeLog,v 1.47 2015/07/12 14:39:54 perfinion Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/sdcc/ChangeLog,v 1.56 2015/07/13 08:24:46 vapier Exp $
+
+  13 Jul 2015; Mike Frysinger <vapier@gentoo.org> sdcc-3.5.0.ebuild,
+  sdcc-9999.ebuild:
+  Fix handling of AR/AS tools.
+
+  13 Jul 2015; Mike Frysinger <vapier@gentoo.org> sdcc-3.5.0.ebuild,
+  sdcc-9999.ebuild:
+  Disable explicit ccache handling as portage already does this for us.
+
+  13 Jul 2015; Mike Frysinger <vapier@gentoo.org> sdcc-3.5.0.ebuild,
+  sdcc-9999.ebuild:
+  Sync src_install steps between live/release ebuilds.
+
+  13 Jul 2015; Mike Frysinger <vapier@gentoo.org> sdcc-3.5.0.ebuild:
+  Restore USE=doc support #553754 by Tiger.
+
+  13 Jul 2015; Mike Frysinger <vapier@gentoo.org> sdcc-3.5.0.ebuild:
+  Restore combined live/non-live ebuild logic #553754 by Tiger.
+
+  13 Jul 2015; Mike Frysinger <vapier@gentoo.org> sdcc-3.5.0.ebuild:
+  Drop redundant --prefix and fix --docdir definition #553754 by Tiger.
+
+  13 Jul 2015; Mike Frysinger <vapier@gentoo.org> sdcc-3.5.0.ebuild:
+  Clean up style in new ebuild #553754 by Tiger.
+
+  13 Jul 2015; Mike Frysinger <vapier@gentoo.org> sdcc-9999.ebuild:
+  Update to EAPI=5.
+
+  13 Jul 2015; Mike Frysinger <vapier@gentoo.org> sdcc-9999.ebuild:
+  Stop running autotools w/svn repo as upstream checks in the generated files.
 
 *sdcc-3.5.0 (12 Jul 2015)
 

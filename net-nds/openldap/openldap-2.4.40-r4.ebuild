@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nds/openldap/openldap-2.4.40-r3.ebuild,v 1.2 2015/03/03 09:39:25 dlan Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-nds/openldap/openldap-2.4.40-r4.ebuild,v 1.1 2015/07/13 07:40:28 patrick Exp $
 
 EAPI="5"
 
@@ -676,7 +676,7 @@ multilib_src_install() {
 
 		# install our own init scripts and systemd unit files
 		einfo "Install init scripts"
-		newinitd "${FILESDIR}"/slapd-initd-2.4.40-r1 slapd
+		newinitd "${FILESDIR}"/slapd-initd-2.4.40-r2 slapd
 		newconfd "${FILESDIR}"/slapd-confd-2.4.28-r1 slapd
 		einfo "Install systemd service"
 		systemd_dounit "${FILESDIR}"/slapd.service

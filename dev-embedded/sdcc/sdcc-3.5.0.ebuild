@@ -1,12 +1,22 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/sdcc/sdcc-3.5.0.ebuild,v 1.1 2015/07/12 14:39:54 perfinion Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/sdcc/sdcc-3.5.0.ebuild,v 1.8 2015/07/13 08:24:46 vapier Exp $
 
 EAPI="5"
 
-inherit eutils
+inherit eutils toolchain-funcs
 
-SRC_URI="mirror://sourceforge/sdcc/${PN}-src-${PV}.tar.bz2"
+if [[ ${PV} == "9999" ]] ; then
+	ESVN_REPO_URI="https://sdcc.svn.sourceforge.net/svnroot/sdcc/trunk/sdcc"
+	inherit subversion
+	docs_compile() { return 0; }
+else
+	SRC_URI="mirror://sourceforge/sdcc/${PN}-src-${PV}.tar.bz2
+		doc? ( mirror://sourceforge/sdcc/${PN}-doc-${PV}.tar.bz2 )"
+	KEYWORDS="~amd64 ~ppc ~x86"
+	docs_compile() { return 1; }
+fi
+
 DESCRIPTION="Small device C compiler (for various microprocessors)"
 HOMEPAGE="http://sdcc.sourceforge.net/"
 
@@ -14,45 +24,59 @@ LICENSE="GPL-2 ZLIB
 	non-free? ( MicroChip-SDCC )
 	packihx? ( public-domain )"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="mcs51 z80 z180 r2k r3ka gbz80 tlcs90 ds390 ds400 pic14 pic16 hc08 s08 stm8
-ucsim device-lib packihx +sdcpp sdcdb sdbinutils non-free +boehm-gc"
+ucsim device-lib packihx +sdcpp sdcdb sdbinutils non-free +boehm-gc doc"
 
-REQUIRED_USE="mcs51? ( sdbinutils )
-			ds390? ( sdbinutils )
-			ds400? ( sdbinutils )
-			hc08?  ( sdbinutils )
-			s08?   ( sdbinutils )"
+REQUIRED_USE="
+	mcs51? ( sdbinutils )
+	ds390? ( sdbinutils )
+	ds400? ( sdbinutils )
+	hc08?  ( sdbinutils )
+	s08?   ( sdbinutils )"
 
 # ADD "binchecks" to fix the "scanelf: Invalid 'ar' entry" messages
 # OR leave the overwrite of CTARGET in src_install()
 RESTRICT="strip"
 
 RDEPEND="dev-libs/boost:=
-		dev-util/gperf
-		sys-libs/ncurses:=
-		sys-libs/readline:=
-		dev-embedded/gputils
-		boehm-gc? ( dev-libs/boehm-gc:= )"
+	dev-util/gperf
+	sys-libs/ncurses:=
+	sys-libs/readline:=
+	dev-embedded/gputils
+	boehm-gc? ( dev-libs/boehm-gc:= )"
 DEPEND="${RDEPEND}"
+if docs_compile ; then
+	DEPEND+="
+		doc? (
+			>=app-office/lyx-1.3.4
+			dev-tex/latex2html
+		)"
+fi
 
-S="${WORKDIR}/${PN}-${PV}"
-
-src_prepare()
-{
+src_prepare() {
 	# Fix conflicting variable names between Gentoo and sdcc
 	find \
 		'(' -name 'Makefile*.in' -o -name 'configure' ')' \
 		-exec sed -r -i \
 		-e 's:\<(PORTDIR|ARCH)\>:SDCC\1:g' \
 		{} + || die
+
+	# https://sourceforge.net/p/sdcc/bugs/2398/
+	sed -i '1iAR = @AR@' Makefile.common.in || die
+	sed -i \
+		-e "/^AR =/s:=.*:=$(tc-getAR):" \
+		support/cpp/Makefile.in || die
+
+	# Make sure timestamps don't get messed up.
+	[[ ${PV} == "9999" ]] && find "${S}" -type f -exec touch -r . {} +
 }
 
-src_configure()
-{
+src_configure() {
 	econf \
-		--prefix="${EPREFIX}"/usr \
-		--docdir="${EPREFIX}"/usr/share/doc/${P} \
+		ac_cv_prog_AS="$(tc-getAS)" \
+		ac_cv_prog_AR="$(tc-getAR)" \
+		--docdir='$(datarootdir)'/doc/${PF} \
+		--without-ccache \
 		$(use_enable mcs51 mcs51-port) \
 		$(use_enable z80 z80-port) \
 		$(use_enable z180 z180-port) \
@@ -74,16 +98,19 @@ src_configure()
 		$(use_enable sdcdb sdcdb) \
 		$(use_enable sdbinutils sdbinutils) \
 		$(use_enable non-free non-free) \
-		$(use_enable boehm-gc libgc)
+		$(use_enable boehm-gc libgc) \
+		$(docs_compile && use_enable doc || echo --disable-doc)
 }
 
-src_install()
-{
-	emake DESTDIR="${D}" install
-
-	dodoc doc/README.txt
-
+src_install() {
+	default
+	dodoc doc/*.txt
 	find "${D}" -name .deps -exec rm -rf {} + || die
+
+	if use doc ; then
+		docs_compile || cd "${WORKDIR}"/doc
+		dohtml -r *
+	fi
 
 	# See /usr/lib/portage/python${version}/install-qa-check.d/10executable-issues
 	# Installed libs are not for our CHOST but for microcontrollers
