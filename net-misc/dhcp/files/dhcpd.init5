@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/dhcp/files/dhcpd.init5,v 1.6 2015/02/10 00:27:08 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/dhcp/files/dhcpd.init5,v 1.7 2015/07/13 03:15:56 vapier Exp $
 
 extra_commands="configtest"
 
@@ -17,8 +17,23 @@ get_var() {
 	echo ${var:-$2}
 }
 
+setup_opts() {
+	DHCPD_CHROOT=${DHCPD_CHROOT%/}
+
+	# Work out our cffile if it's in our DHCPD_OPTS
+	case " ${DHCPD_OPTS} " in
+		*" -cf "*)
+			DHCPD_CONF=" ${DHCPD_OPTS} "
+			DHCPD_CONF="${DHCPD_CONF##* -cf }"
+			DHCPD_CONF="${DHCPD_CONF%% *}"
+			;;
+		*)	DHCPD_OPTS="${DHCPD_OPTS} -cf ${DHCPD_CONF}"
+			;;
+	esac
+}
+
 checkconfig() {
-	set -- ${DHCPD_OPTS} ${chroot:+-chroot} ${chroot} -t
+	set -- ${DHCPD_OPTS} -chroot "${DHCPD_CHROOT:-/}" -t
 
 	dhcpd "$@" 1>/dev/null 2>&1
 	local ret=$?
@@ -31,7 +46,7 @@ checkconfig() {
 }
 
 configtest() {
-	local chroot=${DHCPD_CHROOT%/}
+	setup_opts
 
 	ebegin "Checking ${SVCNAME} configuration"
 	checkconfig
@@ -39,18 +54,8 @@ configtest() {
 }
 
 start() {
-	local chroot=${DHCPD_CHROOT%/}
-
-	# Work out our cffile if it's in our DHCPD_OPTS
-	case " ${DHCPD_OPTS} " in
-		*" -cf "*)
-			DHCPD_CONF=" ${DHCPD_OPTS} "
-			DHCPD_CONF="${DHCPD_CONF##* -cf }"
-			DHCPD_CONF="${DHCPD_CONF%% *}"
-			;;
-		*)	DHCPD_OPTS="${DHCPD_OPTS} -cf ${DHCPD_CONF}"
-			;;
-	esac
+	setup_opts
+	local chroot="${DHCPD_CHROOT}"
 
 	if [ -n "${chroot}" ] ; then
 		# the config test want's these to exist
@@ -90,7 +95,7 @@ start() {
 		--pidfile "${chroot}/${pidfile}" \
 		-- ${DHCPD_OPTS} -q -pf "${pidfile}" -lf "${leasefile}" \
 		-user dhcp -group dhcp \
-		${chroot:+-chroot} ${chroot} ${DHCPD_IFACE}
+		-chroot "${chroot:-/}" ${DHCPD_IFACE}
 	eend $? \
 		&& save_options dhcpd_chroot "${chroot}" \
 		&& save_options pidfile "${pidfile}"
@@ -98,7 +103,7 @@ start() {
 
 stop() {
 	local chroot="$(get_options dhcpd_chroot)"
-	[ -z "$chroot" ] && chroot="$(get_options chroot)"
+	[ -z "${chroot}" ] && chroot="$(get_options chroot)"
 
 	ebegin "Stopping ${chroot:+chrooted }${SVCNAME}"
 	start-stop-daemon --stop --exec /usr/sbin/dhcpd \
@@ -111,5 +116,5 @@ stop() {
 		fi
 	fi
 
-	eend $res
+	eend ${res}
 }

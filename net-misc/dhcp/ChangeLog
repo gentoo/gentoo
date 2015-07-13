@@ -1,6 +1,9 @@
 # ChangeLog for net-misc/dhcp
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/dhcp/ChangeLog,v 1.274 2015/04/30 09:08:06 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/dhcp/ChangeLog,v 1.275 2015/07/13 03:15:56 vapier Exp $
+
+  13 Jul 2015; Mike Frysinger <vapier@gentoo.org> files/dhcpd.init5:
+  Unify DHCPD_xxx var set up between start and configtest #554332 by pwojke.
 
   30 Apr 2015; Mike Frysinger <vapier@gentoo.org> metadata.xml:
   Add CPE info via Chromium OS.
