@@ -1,6 +1,12 @@
 # ChangeLog for app-text/discount
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/discount/ChangeLog,v 1.12 2015/07/12 04:13:36 binki Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/discount/ChangeLog,v 1.13 2015/07/13 02:01:14 binki Exp $
+
+*discount-2.1.8a-r1 (13 Jul 2015)
+
+  13 Jul 2015; Nathan Phillip Brink <binki@gentoo.org>
+  +discount-2.1.8a-r1.ebuild, -discount-2.1.8a.ebuild:
+  Turn on deterministic email address mangling, see debian bug #762622.
 
   12 Jul 2015; Nathan Phillip Brink <binki@gentoo.org> discount-2.1.8a.ebuild:
   Add some requested elog() about DISCOUNT_EXTRA_CONFIGURE_SH for bug #554520.

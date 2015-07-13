@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/discount/discount-2.1.8a.ebuild,v 1.2 2015/07/12 04:13:36 binki Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/discount/discount-2.1.8a-r1.ebuild,v 1.1 2015/07/13 02:01:14 binki Exp $
 
 EAPI=5
 
@@ -51,6 +51,9 @@ src_configure() {
 		# upstream https://github.com/Orc/discount/issues/124 for bug
 		# #554520.
 		"${DISCOUNT_EXTRA_CONFIGURE_SH[@]}"
+		# Enable deterministic HTML generation behavior. Otherwise, will
+		# actually call rand() as parse of its serialization code…
+		--debian-glitch
 	)
 	einfo "Running ${configure_call[@]} || die"
 	"${configure_call[@]}" || die
