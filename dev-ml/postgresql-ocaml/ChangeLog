@@ -1,6 +1,17 @@
 # ChangeLog for dev-ml/postgresql-ocaml
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/postgresql-ocaml/ChangeLog,v 1.46 2015/06/07 09:32:09 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/postgresql-ocaml/ChangeLog,v 1.48 2015/07/13 12:25:01 aballier Exp $
+
+*postgresql-ocaml-3.2.1 (13 Jul 2015)
+
+  13 Jul 2015; Alexis Ballier <aballier@gentoo.org>
+  +postgresql-ocaml-3.2.1.ebuild:
+  version bump
+
+  13 Jul 2015; Alexis Ballier <aballier@gentoo.org>
+  -postgresql-ocaml-2.0.4.ebuild, -postgresql-ocaml-2.1.1.ebuild,
+  -postgresql-ocaml-2.1.2.ebuild, -postgresql-ocaml-3.0.0.ebuild:
+  remove old
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml
