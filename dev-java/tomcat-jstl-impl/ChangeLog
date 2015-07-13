@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/tomcat-jstl-impl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/tomcat-jstl-impl/ChangeLog,v 1.1 2015/06/03 07:58:11 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/tomcat-jstl-impl/ChangeLog,v 1.2 2015/07/12 23:03:00 monsieurp Exp $
+
+  13 Jul 2015; Patrice Clement <monsieurp@gentoo.org>
+  tomcat-jstl-impl-1.2.5.ebuild:
+  Fix a typo in HOMEPAGE.
 
 *tomcat-jstl-impl-1.2.5 (03 Jun 2015)
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/tomcat-jstl-impl/tomcat-jstl-impl-1.2.5.ebuild,v 1.1 2015/06/03 07:58:11 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/tomcat-jstl-impl/tomcat-jstl-impl-1.2.5.ebuild,v 1.2 2015/07/12 23:03:00 monsieurp Exp $
 
 EAPI=5
 JAVA_PKG_IUSE="doc source"
@@ -12,7 +12,7 @@ MY_P="${MY_PN}-${PV}"
 MY_IMPL="${MY_PN}-impl"
 
 DESCRIPTION="JSP Standard Tag Library (JSTL) - Implementation jar"
-HOMEPAGE="ttps://tomcat.apache.org/taglibs/standard/"
+HOMEPAGE="https://tomcat.apache.org/taglibs/standard/"
 SRC_URI="http://apache.mirrors.ovh.net/ftp.apache.org/dist/tomcat/taglibs/${MY_P}/${MY_P}-source-release.zip"
 
 LICENSE="Apache-2.0"
