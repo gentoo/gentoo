@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install preinst prepare setup test
+DEPEND=sys-libs/ncurses archive? ( app-arch/libarchive ) zlib? ( sys-libs/zlib ) odbc? ( dev-db/unixODBC ) readline? ( sys-libs/readline ) gmp? ( dev-libs/gmp ) ssl? ( dev-libs/openssl ) java? ( >=virtual/jdk-1.5 ) X? ( virtual/jpeg x11-libs/libX11 x11-libs/libXft x11-libs/libXpm x11-libs/libXt x11-libs/libICE x11-libs/libSM ) X? ( x11-proto/xproto ) java? ( test? ( =dev-java/junit-3.8* ) ) java? ( >=dev-java/java-config-2.2.0 )
+DESCRIPTION=free, small, and standard compliant Prolog compiler
+EAPI=4
+HOMEPAGE=http://www.swi-prolog.org/
+IUSE=archive debug doc +gmp hardened java minimal odbc +readline ssl static-libs test zlib X elibc_FreeBSD java
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=LGPL-2.1
+RDEPEND=sys-libs/ncurses archive? ( app-arch/libarchive ) zlib? ( sys-libs/zlib ) odbc? ( dev-db/unixODBC ) readline? ( sys-libs/readline ) gmp? ( dev-libs/gmp ) ssl? ( dev-libs/openssl ) java? ( >=virtual/jdk-1.5 ) X? ( virtual/jpeg x11-libs/libX11 x11-libs/libXft x11-libs/libXpm x11-libs/libXt x11-libs/libICE x11-libs/libSM ) java? ( >=dev-java/java-config-2.2.0 )
+SLOT=0
+SRC_URI=http://www.swi-prolog.org/download/devel/src/swipl-7.3.4.tar.gz mirror://gentoo/swi-prolog-7.3.4-gentoo-patchset-0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	java-pkg-opt-2	f9bbbe5092225a2059aa9e6a3a2b52f1	java-utils-2	8cdf065211fa6d6687bdc3f3ebe12efc	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=201e338c989c9bb0d96706a907ad40d1
