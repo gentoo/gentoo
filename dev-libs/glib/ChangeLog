@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/glib
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/glib/ChangeLog,v 1.654 2015/07/07 20:40:00 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/glib/ChangeLog,v 1.655 2015/07/13 04:10:53 jer Exp $
+
+  13 Jul 2015; Jeroen Roovers <jer@gentoo.org> glib-1.2.10-r6.ebuild:
+  Stable for HPPA (bug #551814).
 
   07 Jul 2015; Markus Meier <maekke@gentoo.org> glib-1.2.10-r6.ebuild:
   arm stable, bug #551814

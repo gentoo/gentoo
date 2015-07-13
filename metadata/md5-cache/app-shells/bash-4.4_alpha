@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=>=sys-libs/ncurses-5.2-r2:= readline? ( >=sys-libs/readline-7.0_alpha:0= ) nls? ( virtual/libintl ) virtual/yacc
+DESCRIPTION=The standard GNU Bourne again shell
+EAPI=5
+HOMEPAGE=http://tiswww.case.edu/php/chet/bash/bashtop.html
+IUSE=afs bashlogger examples mem-scramble +net nls plugins +readline vanilla
+LICENSE=GPL-3
+RDEPEND=>=sys-libs/ncurses-5.2-r2:= readline? ( >=sys-libs/readline-7.0_alpha:0= ) nls? ( virtual/libintl ) !<sys-apps/portage-2.1.6.7_p1 !<sys-apps/paludis-0.26.0_alpha5
+SLOT=0
+SRC_URI=ftp://ftp.cwru.edu/pub/bash/bash-4.4-alpha.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=c7fb95cf8643d1cc072a109dc02fefd1

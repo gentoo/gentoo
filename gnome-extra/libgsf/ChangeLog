@@ -1,6 +1,9 @@
 # ChangeLog for gnome-extra/libgsf
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/libgsf/ChangeLog,v 1.258 2015/07/07 20:45:38 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/libgsf/ChangeLog,v 1.259 2015/07/13 04:16:25 jer Exp $
+
+  13 Jul 2015; Jeroen Roovers <jer@gentoo.org> libgsf-1.14.33.ebuild:
+  Stable for HPPA (bug #551814).
 
   07 Jul 2015; Markus Meier <maekke@gentoo.org> libgsf-1.14.33.ebuild:
   arm stable, bug #551814

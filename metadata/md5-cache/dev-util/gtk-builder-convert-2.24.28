@@ -4,11 +4,11 @@ DESCRIPTION=Converts Glade files to GtkBuilder XML format
 EAPI=5
 HOMEPAGE=http://www.gtk.org/
 IUSE=python_targets_python2_7
-KEYWORDS=~alpha amd64 arm ~hppa ~ia64 ~mips ~ppc ppc64 ~sh ~sparc x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 arm hppa ~ia64 ~mips ~ppc ppc64 ~sh ~sparc x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=LGPL-2+
 RDEPEND=>=dev-lang/python-2.7.5-r2:2.7[xml] >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] !<=x11-libs/gtk+-2.24.10:2
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=mirror://gnome/sources/gtk+/2.24/gtk+-2.24.28.tar.xz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	gnome.org	8fef8f967214f56e08fa92d61163d891	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	351da1aa73960a282591217fb57c1bb8	python-utils-r1	ae9becb5d45344c01939c3f57df0d3fd	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=f61bcc4aa497176b493dfaa6a32496c4
+_md5_=5983420c5899a6e1cf420d68c1ebba55

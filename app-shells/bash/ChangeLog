@@ -1,6 +1,11 @@
 # ChangeLog for app-shells/bash
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/bash/ChangeLog,v 1.439 2015/06/01 05:17:15 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-shells/bash/ChangeLog,v 1.440 2015/07/13 04:30:45 vapier Exp $
+
+*bash-4.4_alpha (13 Jul 2015)
+
+  13 Jul 2015; Mike Frysinger <vapier@gentoo.org> +bash-4.4_alpha.ebuild:
+  Version bump.
 
   01 Jun 2015; Mike Frysinger <vapier@gentoo.org> bash-4.3_p33-r2.ebuild:
   Mark arm64/m68k/s390/sh stable.

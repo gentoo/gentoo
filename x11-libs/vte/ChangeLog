@@ -1,6 +1,10 @@
 # ChangeLog for x11-libs/vte
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/vte/ChangeLog,v 1.417 2015/07/07 20:55:50 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/vte/ChangeLog,v 1.418 2015/07/13 04:25:55 jer Exp $
+
+  13 Jul 2015; Jeroen Roovers <jer@gentoo.org> vte-0.28.2-r207.ebuild,
+  vte-0.36.4.ebuild:
+  Stable for HPPA (bug #551814).
 
   07 Jul 2015; Markus Meier <maekke@gentoo.org> vte-0.28.2-r207.ebuild:
   arm stable, bug #551814
