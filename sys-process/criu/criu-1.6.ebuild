@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/criu/criu-1.6.ebuild,v 1.1 2015/06/15 10:29:53 dlan Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-process/criu/criu-1.6.ebuild,v 1.2 2015/07/13 05:39:53 vapier Exp $
 
 EAPI=5
 
@@ -32,19 +32,40 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-1.5-automagic-libbsd.patch
 }
 
+criu_arch() {
+	# criu infers the arch from $(uname -m).  We never want this to happen.
+	case ${ARCH} in
+	amd64) echo "x86_64";;
+	arm64) echo "aarch64";;
+	x86)   echo "i386";;
+	*)     echo "${ARCH}";;
+	esac
+}
+
 src_compile() {
-	unset ARCH
-	emake CC="$(tc-getCC)" LD="$(tc-getLD)" V=1 SETPROCTITLE=$(usex setproctitle) WERROR=0 all docs
+	emake \
+		CC="$(tc-getCC)" \
+		LD="$(tc-getLD)" \
+		OBJCOPY="$(tc-getOBJCOPY)" \
+		ARCH="$(criu_arch)" \
+		V=1 WERROR=0 \
+		SETPROCTITLE=$(usex setproctitle) \
+		all docs
 }
 
 src_test() {
 	# root privileges are required to dump all necessary info
 	if [[ ${EUID} -eq 0 ]] ; then
-		emake -j1 CC="$(tc-getCC)" V=1 WERROR=0 test
+		emake -j1 CC="$(tc-getCC)" ARCH="$(criu_arch)" V=1 WERROR=0 test
 	fi
 }
 
 src_install() {
-	emake SYSCONFDIR="${EPREFIX}"/etc PREFIX="${EPREFIX}"/usr DESTDIR="${D}" install
+	emake \
+		ARCH="$(criu_arch)" \
+		SYSCONFDIR="${EPREFIX}"/etc \
+		PREFIX="${EPREFIX}"/usr \
+		DESTDIR="${D}" \
+		install
 	dodoc CREDITS README.md
 }

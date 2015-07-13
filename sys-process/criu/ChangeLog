@@ -1,6 +1,9 @@
 # ChangeLog for sys-process/criu
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/criu/ChangeLog,v 1.24 2015/06/15 10:29:53 dlan Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-process/criu/ChangeLog,v 1.25 2015/07/13 05:39:53 vapier Exp $
+
+  13 Jul 2015; Mike Frysinger <vapier@gentoo.org> criu-1.6.ebuild:
+  Fix ARCH & OBJCOPY handling for cross-compiling #552234 by Kevin Cernekee.
 
 *criu-1.6 (15 Jun 2015)
 
@@ -120,4 +123,3 @@
   03 May 2013; Tim Harder <radhermit@gentoo.org>
   +files/crtools-0.4-flags.patch, +criu-0.5.ebuild, +metadata.xml:
   Upstream rename and version bump of sys-process/crtools.
-

@@ -1,0 +1,45 @@
+From 62b190c09d5652c58679dffd7f09e4aceb4c7daa Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Mon, 13 Jul 2015 01:59:14 -0400
+Subject: [PATCH] setcap: fix errno display
+
+The commit 056ffb0bd25d91ffbcb83c521fc4d3d9904ec4d4 broke the display of
+the final error message because it would do more operations that would
+clobber errno.  Example:
+(libcap-2.22) sudo setcap cap_ipc_lock=ep /proc/filesystems | head -1
+Failed to set capabilities on file `/proc/filesystems' (Operation not supported)
+(libcap-2.23) sudo setcap cap_ipc_lock=ep /proc/filesystems | head -1
+Failed to set capabilities on file `/proc/filesystems' (Invalid argument)
+
+Save the original errno value and use that for the final display instead.
+
+URL: https://bugs.gentoo.org/551672
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ progs/setcap.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/progs/setcap.c b/progs/setcap.c
+index 83090ae..7304343 100644
+--- a/progs/setcap.c
++++ b/progs/setcap.c
+@@ -171,6 +171,7 @@ int main(int argc, char **argv)
+ 	    retval = cap_set_file(*++argv, cap_d);
+ 	    if (retval != 0) {
+ 		int explained = 0;
++		int oerrno = errno;
+ #ifdef linux
+ 		cap_value_t cap;
+ 		cap_flag_value_t per_state;
+@@ -193,7 +194,7 @@ int main(int argc, char **argv)
+ 		
+ 		fprintf(stderr,
+ 			"Failed to set capabilities on file `%s' (%s)\n",
+-			argv[0], strerror(errno));
++			argv[0], strerror(oerrno));
+ 		if (!explained) {
+ 		    usage();
+ 		}
+-- 
+2.4.4
+
