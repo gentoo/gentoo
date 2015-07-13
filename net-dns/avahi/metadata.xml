@@ -13,8 +13,6 @@
 	<flag name='howl-compat'>Enable compat libraries for howl</flag>
 	<flag name="gtk3">Build the avahi-ui-gtk3 library, and use gtk3 for the
 		avahi utilities under USE=utils</flag>
-	<flag name="introspection">Use <pkg>dev-libs/gobject-introspection</pkg>
-		for introspection</flag>
 	<flag name='mdnsresponder-compat'>Enable compat libraries for
 		mDNSResponder</flag>
 	<flag name="utils">Install the avahi gtk+ utils avahi-discover, bssh, and

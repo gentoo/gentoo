@@ -1,6 +1,12 @@
 # ChangeLog for net-dns/avahi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/avahi/ChangeLog,v 1.285 2015/04/08 18:16:54 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/avahi/ChangeLog,v 1.286 2015/07/13 18:57:25 pacho Exp $
+
+*avahi-0.6.31-r8 (13 Jul 2015)
+
+  13 Jul 2015; Pacho Ramos <pacho@gentoo.org> +avahi-0.6.31-r8.ebuild,
+  metadata.xml:
+  Add symlink needed for starting avahi properly on systemd (#537000)
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> avahi-0.6.31-r6.ebuild,
   avahi-0.6.31-r7.ebuild:

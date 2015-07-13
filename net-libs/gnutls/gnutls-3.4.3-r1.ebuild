@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/gnutls/gnutls-3.4.3.ebuild,v 1.1 2015/07/12 14:33:50 alonbl Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/gnutls/gnutls-3.4.3-r1.ebuild,v 1.1 2015/07/13 19:08:22 alonbl Exp $
 
 EAPI=5
 
@@ -38,7 +38,10 @@ RDEPEND=">=dev-libs/libtasn1-3.9[${MULTILIB_USEDEP}]
 DEPEND="${RDEPEND}
 	>=sys-devel/automake-1.11.6
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
-	doc? ( dev-util/gtk-doc )
+	doc? (
+		sys-apps/texinfo
+		dev-util/gtk-doc
+	)
 	nls? ( sys-devel/gettext )
 	test? ( app-misc/datefudge )"
 
@@ -97,6 +100,7 @@ multilib_src_configure() {
 		$(use_enable cxx) \
 		$(use_enable dane libdane) \
 		$(multilib_native_use_enable tools) \
+		$(multilib_native_use_enable doc) \
 		$(multilib_native_use_enable doc gtk-doc) \
 		$(multilib_native_use_enable guile) \
 		$(multilib_native_use_enable crywrap) \
