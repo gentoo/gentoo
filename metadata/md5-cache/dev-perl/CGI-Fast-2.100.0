@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=dev-perl/CGI-4 virtual/perl-Carp >=dev-perl/FCGI-0.670.0 virtual/perl-if virtual/perl-ExtUtils-MakeMaker dev-lang/perl:=[-build(-)]
+DESCRIPTION=CGI Interface for Fast CGI
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/CGI-Fast/
+KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/CGI-4 virtual/perl-Carp >=dev-perl/FCGI-0.670.0 virtual/perl-if dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/L/LE/LEEJO/CGI-Fast-2.10.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=4cc0454e400e519e37c339a82da450e3

@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/PerlIO-Layers/PerlIO-Layers-0.11.0.ebuild,v 1.1 2014/07/30 17:02:44 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/PerlIO-Layers/PerlIO-Layers-0.11.0.ebuild,v 1.2 2015/07/13 20:30:58 dilfridge Exp $
 
 EAPI=5
 
@@ -11,10 +11,24 @@ inherit perl-module
 
 DESCRIPTION="Querying your filehandle's capabilities"
 
-LICENSE="|| ( Artistic GPL-1 GPL-2 GPL-3 )"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux"
-IUSE=""
+IUSE="test"
 
-RDEPEND="dev-perl/List-MoreUtils"
-DEPEND="${RDEPEND}"
+# needs List::Util
+RDEPEND="
+	virtual/perl-Carp
+	>=virtual/perl-Exporter-5.570.0
+	virtual/perl-Scalar-List-Utils
+	virtual/perl-XSLoader
+"
+DEPEND="${RDEPEND}
+	>=dev-perl/Module-Build-0.360.100
+	test? (
+		virtual/perl-Data-Dumper
+		virtual/perl-File-Spec
+		>=virtual/perl-Test-Simple-0.820.0
+	)
+"
+
+SRC_TEST="do parallel"

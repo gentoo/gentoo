@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.desc,v 1.526 2015/06/20 23:04:05 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.desc,v 1.527 2015/07/13 20:30:51 pacho Exp $
 
 # Keep them sorted
 
@@ -318,7 +318,6 @@ sox - Add support for Sound eXchange (SoX)
 speex - Add support for the speex audio codec (used for speech)
 spell - Add dictionary support
 sqlite - Add support for sqlite - embedded sql database
-sqlite3 - Add support for sqlite3 - embedded sql database
 ssl - Add support for Secure Socket Layer connections
 startup-notification - Enable application startup event feedback mechanism
 static - !!do not set this during bootstrap!! Causes binaries to be statically linked instead of dynamically
