@@ -1,4 +1,4 @@
-DEFINED_PHASES=configure install postinst setup
+DEFINED_PHASES=configure install postinst prepare setup
 DEPEND=pam? ( virtual/pam ) anacron? ( !sys-process/anacron ) >=sys-apps/sed-4.0.5 virtual/pkgconfig
 DESCRIPTION=Cronie is a standard UNIX daemon cron based on the original vixie-cron
 EAPI=5
@@ -10,4 +10,4 @@ RDEPEND=pam? ( virtual/pam ) anacron? ( !sys-process/anacron ) >=sys-process/cro
 SLOT=0
 SRC_URI=https://fedorahosted.org/releases/c/r/cronie/cronie-1.5.0.tar.gz
 _eclasses_=cron	18adefe7a7b2f043ca5b63e912835970	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	pam	aa1ebb3ab720ea04dbbdd6eaaf9554ed	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
-_md5_=8c0a47aa883a8b78c0dda0261d65f522
+_md5_=3458445f041173168b19f68d48d70045

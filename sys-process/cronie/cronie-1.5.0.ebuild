@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/cronie/cronie-1.5.0.ebuild,v 1.6 2015/06/25 05:03:23 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-process/cronie/cronie-1.5.0.ebuild,v 1.7 2015/07/13 15:07:47 floppym Exp $
 
 EAPI=5
 
@@ -23,6 +23,10 @@ CRON_SYSTEM_CRONTAB="yes"
 
 pkg_setup() {
 	enewgroup crontab
+}
+
+src_prepare() {
+	epatch "${FILESDIR}/cronie-systemd.patch"
 }
 
 src_configure() {
@@ -56,9 +60,7 @@ src_install() {
 	newinitd "${FILESDIR}/${PN}-1.3-initd" ${PN}
 	newpamd "${FILESDIR}/${PN}-1.4.3-pamd" crond
 
-	sed s:sysconfig/crond:conf.d/cronie: contrib/cronie.systemd \
-		> "${T}"/cronie.service
-	systemd_dounit "${T}"/cronie.service
+	systemd_newunit contrib/cronie.systemd cronie.service
 
 	if use anacron ; then
 		local anacrondir="/var/spool/anacron"

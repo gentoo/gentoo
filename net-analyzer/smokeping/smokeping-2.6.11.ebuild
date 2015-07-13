@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/smokeping/smokeping-2.6.11.ebuild,v 1.1 2014/11/08 20:07:40 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/smokeping/smokeping-2.6.11.ebuild,v 1.2 2015/07/13 15:21:19 klausman Exp $
 
 EAPI=5
 inherit eutils user systemd
@@ -36,6 +36,7 @@ DEPEND="
 	dev-perl/libwww-perl
 	dev-perl/perl-ldap
 	virtual/perl-libnet
+	|| ( dev-perl/CGI-Fast <dev-perl/CGI-4 )
 	!apache2? ( virtual/httpd-cgi )
 	apache2? (
 		>=www-apache/mod_perl-2.0.1
