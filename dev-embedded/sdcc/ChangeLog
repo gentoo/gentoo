@@ -1,6 +1,24 @@
 # ChangeLog for dev-embedded/sdcc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/sdcc/ChangeLog,v 1.56 2015/07/13 08:24:46 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/sdcc/ChangeLog,v 1.60 2015/07/13 09:23:02 vapier Exp $
+
+  13 Jul 2015; Mike Frysinger <vapier@gentoo.org> sdcc-3.5.0.ebuild:
+  Revert style change w/find+sed as the indented flags are for sed, not find
+  #553754 by Tiger.
+
+  13 Jul 2015; Mike Frysinger <vapier@gentoo.org> sdcc-3.5.0.ebuild,
+  sdcc-9999.ebuild:
+  Fix up depend settings (gperf is only needed at compile time & readline should
+  use the 0 SLOT), and restore min gputils version and sdcc-svn blocker; also
+  sync the live/release ebuilds #553754 by Tiger.
+
+  13 Jul 2015; Mike Frysinger <vapier@gentoo.org> sdcc-3.5.0.ebuild:
+  Revert invalid CTARGET munging and restore proper stripping logic -- the
+  scanelf ar warning is fixed with newer pax-utils #553754 by Tiger.
+
+  13 Jul 2015; Mike Frysinger <vapier@gentoo.org> sdcc-3.5.0.ebuild,
+  sdcc-9999.ebuild:
+  Use longer --docdir form to avoid warnings from sdbinutils subdir.
 
   13 Jul 2015; Mike Frysinger <vapier@gentoo.org> sdcc-3.5.0.ebuild,
   sdcc-9999.ebuild:

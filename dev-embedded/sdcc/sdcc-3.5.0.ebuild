@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/sdcc/sdcc-3.5.0.ebuild,v 1.8 2015/07/13 08:24:46 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/sdcc/sdcc-3.5.0.ebuild,v 1.12 2015/07/13 09:23:02 vapier Exp $
 
 EAPI="5"
 
@@ -34,17 +34,16 @@ REQUIRED_USE="
 	hc08?  ( sdbinutils )
 	s08?   ( sdbinutils )"
 
-# ADD "binchecks" to fix the "scanelf: Invalid 'ar' entry" messages
-# OR leave the overwrite of CTARGET in src_install()
 RESTRICT="strip"
 
 RDEPEND="dev-libs/boost:=
-	dev-util/gperf
 	sys-libs/ncurses:=
-	sys-libs/readline:=
-	dev-embedded/gputils
-	boehm-gc? ( dev-libs/boehm-gc:= )"
-DEPEND="${RDEPEND}"
+	sys-libs/readline:0=
+	>=dev-embedded/gputils-0.13.7
+	boehm-gc? ( dev-libs/boehm-gc:= )
+	!dev-embedded/sdcc-svn"
+DEPEND="${RDEPEND}
+	dev-util/gperf"
 if docs_compile ; then
 	DEPEND+="
 		doc? (
@@ -58,8 +57,8 @@ src_prepare() {
 	find \
 		'(' -name 'Makefile*.in' -o -name 'configure' ')' \
 		-exec sed -r -i \
-		-e 's:\<(PORTDIR|ARCH)\>:SDCC\1:g' \
-		{} + || die
+			-e 's:\<(PORTDIR|ARCH)\>:SDCC\1:g' \
+			{} + || die
 
 	# https://sourceforge.net/p/sdcc/bugs/2398/
 	sed -i '1iAR = @AR@' Makefile.common.in || die
@@ -72,10 +71,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# sdbinutils subdir doesn't pass down --docdir properly, so need to
+	# expand $(datarootdir) ourselves.
 	econf \
+		ac_cv_prog_STRIP=true \
 		ac_cv_prog_AS="$(tc-getAS)" \
 		ac_cv_prog_AR="$(tc-getAR)" \
-		--docdir='$(datarootdir)'/doc/${PF} \
+		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
 		--without-ccache \
 		$(use_enable mcs51 mcs51-port) \
 		$(use_enable z80 z80-port) \
@@ -112,8 +114,8 @@ src_install() {
 		dohtml -r *
 	fi
 
-	# See /usr/lib/portage/python${version}/install-qa-check.d/10executable-issues
-	# Installed libs are not for our CHOST but for microcontrollers
-	# This disable QA_EXECSTACK, QA_WX_LOAD and scanelf -qyRAF '%e %p'
-	CTARGET="undefined"
+	# a bunch of archives (*.a) are built & installed by gputils
+	# for PIC processors, but they do not work with standard `ar`
+	# & `scanelf` utils and they're not for the host.
+	env RESTRICT="" prepstrip "${D%/}"/usr/bin
 }

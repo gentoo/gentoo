@@ -1,6 +1,11 @@
 # ChangeLog for net-misc/tor
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/tor/ChangeLog,v 1.482 2015/06/17 02:28:00 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/tor/ChangeLog,v 1.483 2015/07/13 08:53:44 blueness Exp $
+
+*tor-0.2.6.10 (13 Jul 2015)
+
+  13 Jul 2015; Anthony G. Basile <blueness@gentoo.org> +tor-0.2.6.10.ebuild:
+  Version bump.
 
   17 Jun 2015; Patrick Lauer <patrick@gentoo.org> metadata.xml:
   Remove unneeded useflag descriptions from metadata.xml
