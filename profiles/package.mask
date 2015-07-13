@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16668 2015/07/13 11:54:28 pinkbyte Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16669 2015/07/13 16:20:37 mr_bones_ Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -29,6 +29,11 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Michael Sterrett <mr_bones_@gentoo.org> (13 Jul 2015)
+# No commit since 2007 and no further linux support besides
+# Masked for removal on 20150812
+games-emulation/handy
 
 # Sergey Popov <pinkbyte@gentoo.org> (13 Jul 2015)
 # Mask new version of Boost - it's known to cause breakages

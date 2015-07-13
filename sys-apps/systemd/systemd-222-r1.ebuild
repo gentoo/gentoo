@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/systemd-222-r1.ebuild,v 1.1 2015/07/12 20:14:20 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/systemd-222-r1.ebuild,v 1.2 2015/07/13 16:12:38 floppym Exp $
 
 EAPI=5
 
@@ -109,6 +109,8 @@ if [[ -n ${AUTOTOOLS_AUTORECONF} ]]; then
 		dev-libs/libxslt:0
 		>=dev-libs/libgcrypt-1.4.5:0"
 fi
+
+PATCHES=( "${FILESDIR}/218-Dont-enable-audit-by-default.patch" )
 
 pkg_pretend() {
 	local CONFIG_CHECK="~AUTOFS4_FS ~BLK_DEV_BSG ~CGROUPS
