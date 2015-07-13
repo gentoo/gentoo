@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation.
+# Copyright 1999-2015 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/desc/nginx_modules_http.desc,v 1.21 2014/07/22 06:45:37 dev-zero Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/desc/nginx_modules_http.desc,v 1.22 2015/07/13 04:46:35 mgorny Exp $
 
 # This file contains descriptions of NGINX_MODULES_HTTP USE_EXPAND flags.
 
@@ -36,6 +36,7 @@ limit_conn - This module makes it possible to limit the number of simultaneous c
 limit_zone - This module makes it possible to limit the number of simultaneous connections for the assigned session
 lua - Embed the power of Lua into nginx
 map - This module allows you to classify, or map a set of values into a different set of values and store the result in a variable.
+memc - An extended version of the standard memcached module that supports set, add, delete, and many more memcached commands.
 memcached - You can use this module to perform simple caching.
 metrics - Module to export various metrics in easy-parseable JSON.
 mogilefs - Enable support for MogileFS.

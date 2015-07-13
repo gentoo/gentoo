@@ -1,6 +1,13 @@
 # ChangeLog for xfce-extra/multiload-nandhp
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/multiload-nandhp/ChangeLog,v 1.4 2015/07/01 08:09:08 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/multiload-nandhp/ChangeLog,v 1.5 2015/07/13 05:05:06 mgorny Exp $
+
+*multiload-nandhp-0.3 (13 Jul 2015)
+
+  13 Jul 2015; Michał Górny <mgorny@gentoo.org> +multiload-nandhp-0.3.ebuild:
+  Version bump. Adds Czech translation, fixes missing POTFILES.in (bug #527032).
+  lxpanel plugin has been disabled because of incompatible API change.
+  https://github.com/gentoo/gentoo-portage-rsync-mirror/pull/161 by j123b567.
 
   01 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> multiload-nandhp-0.2.ebuild:
   x86 stable wrt bug #553500

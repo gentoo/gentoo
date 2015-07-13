@@ -1,6 +1,13 @@
 # ChangeLog for www-servers/nginx
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/nginx/ChangeLog,v 1.408 2015/06/25 09:27:53 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/nginx/ChangeLog,v 1.409 2015/07/13 04:51:06 mgorny Exp $
+
+*nginx-1.9.2 (13 Jul 2015)
+
+  13 Jul 2015; Michał Górny <mgorny@gentoo.org> +files/check-1.9.2.patch,
+  +nginx-1.9.2.ebuild:
+  Version bump for mainline series. Introduce USE=threads. Add memc module.
+  https://github.com/gentoo/gentoo-portage-rsync-mirror/pull/156 by jbergstroem.
 
 *nginx-1.8.0 (25 Jun 2015)
 

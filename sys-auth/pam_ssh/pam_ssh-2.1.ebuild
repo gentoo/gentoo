@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/pam_ssh/pam_ssh-2.1.ebuild,v 1.1 2015/07/07 08:44:52 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/pam_ssh/pam_ssh-2.1.ebuild,v 1.2 2015/07/13 04:51:16 vapier Exp $
 
 EAPI="5"
 
@@ -51,4 +51,11 @@ src_install() {
 	default
 	prune_libtool_files --modules
 	readme.gentoo_create_doc
+}
+
+pkg_preinst() {
+	if has_version "<${CATEGORY}/${PN}-2.0" ; then #554150
+		ewarn "Upstream pam_ssh has changed where ssh keys live.  Only keys in your"
+		ewarn "~/.ssh/login-keys.d/ will be accepted for authentication."
+	fi
 }

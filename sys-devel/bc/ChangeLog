@@ -1,6 +1,13 @@
 # ChangeLog for sys-devel/bc
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/bc/ChangeLog,v 1.43 2014/01/18 03:08:46 vapier Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/bc/ChangeLog,v 1.44 2015/07/13 05:01:23 vapier Exp $
+
+*bc-1.06.95-r2 (13 Jul 2015)
+
+  13 Jul 2015; Mike Frysinger <vapier@gentoo.org> +bc-1.06.95-r2.ebuild,
+  +files/bc-1.06.95-mem-leak.patch:
+  Fix for mem leaks #264889 by Mattias Nissler. Upgrade to EAPI=5 for subslot
+  usage.
 
   18 Jan 2014; Mike Frysinger <vapier@gentoo.org> bc-1.06.95-r1.ebuild,
   bc-1.06.95.ebuild:

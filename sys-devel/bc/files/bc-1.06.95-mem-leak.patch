@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/264889
+
+--- a/bc/bc.y
++++ b/bc/bc.y
+@@ -569,6 +569,7 @@ expression		:  named_expression ASSIGN_OP
+ 				    generate (">");
+ 				  break;
+ 				}
++			      free($2);
+ 			    }
+ 			| expression '+' expression
+ 			    {
+--- a/bc/util.c
++++ b/bc/util.c
+@@ -602,8 +602,7 @@ lookup (name, namekind)
+     case FUNCTDEF:
+       if (id->f_name != 0)
+ 	{
+-	  if (namekind != FUNCT)
+-	    free(name);
++	  free(name);
+ 	  /* Check to see if we are redefining a math lib function. */ 
+ 	  if (use_math && namekind == FUNCTDEF && id->f_name <= 6)
+ 	    id->f_name = next_func++;

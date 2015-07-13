@@ -1,10 +1,15 @@
 # ChangeLog for profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10184 2015/07/12 17:28:25 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10185 2015/07/13 04:46:35 mgorny Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  13 Jul 2015; Michał Górny <mgorny@gentoo.org> desc/nginx_modules_http.desc:
+  Describe nginx_modules_http_memc. Part of version bump,
+  https://github.com/gentoo/gentoo-portage-rsync-mirror/pull/156 by
+  jbergstroem.
 
   12 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org> package.mask:
   Remove obsolete lcsm:0 mask

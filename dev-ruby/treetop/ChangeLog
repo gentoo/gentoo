@@ -1,6 +1,11 @@
 # ChangeLog for dev-ruby/treetop
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/treetop/ChangeLog,v 1.52 2015/06/07 20:03:58 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/treetop/ChangeLog,v 1.53 2015/07/13 05:04:43 graaff Exp $
+
+*treetop-1.6.3 (13 Jul 2015)
+
+  13 Jul 2015; Hans de Graaff <graaff@gentoo.org> +treetop-1.6.3.ebuild:
+  Version bump.
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

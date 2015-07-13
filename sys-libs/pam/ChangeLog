@@ -1,6 +1,12 @@
 # ChangeLog for sys-libs/pam
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/pam/ChangeLog,v 1.353 2015/07/07 07:38:18 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/pam/ChangeLog,v 1.354 2015/07/13 05:03:16 vapier Exp $
+
+*pam-1.2.1-r1 (13 Jul 2015)
+
+  13 Jul 2015; Mike Frysinger <vapier@gentoo.org> +pam-1.2.1-r1.ebuild:
+  Add support for using filesystem caps instead of setuid w/unix_chkpwd; fix by
+  Samuel Tan via Chromium OS.
 
 *pam-1.2.1 (07 Jul 2015)
 
