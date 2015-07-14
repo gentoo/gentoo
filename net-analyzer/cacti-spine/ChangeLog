@@ -1,6 +1,13 @@
 # ChangeLog for net-analyzer/cacti-spine
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/cacti-spine/ChangeLog,v 1.44 2015/06/16 04:33:58 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/cacti-spine/ChangeLog,v 1.45 2015/07/14 05:26:17 jer Exp $
+
+*cacti-spine-0.8.8e (14 Jul 2015)
+
+  14 Jul 2015; Jeroen Roovers <jer@gentoo.org> +cacti-spine-0.8.8e.ebuild,
+  +files/cacti-spine-0.8.8e-fix-ac-macro.patch,
+  +files/cacti-spine-0.8.8e-net-snmp.patch:
+  Version bump.
 
   16 Jun 2015; Jeroen Roovers <jer@gentoo.org> -cacti-spine-0.8.7i.ebuild,
   -cacti-spine-0.8.8a.ebuild, -cacti-spine-0.8.8b.ebuild,

@@ -1,6 +1,11 @@
 # ChangeLog for net-analyzer/cacti
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/cacti/ChangeLog,v 1.207 2015/06/29 05:56:52 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/cacti/ChangeLog,v 1.208 2015/07/14 05:25:16 jer Exp $
+
+*cacti-0.8.8e (14 Jul 2015)
+
+  14 Jul 2015; Jeroen Roovers <jer@gentoo.org> +cacti-0.8.8e.ebuild:
+  Version bump.
 
   29 Jun 2015; Jeroen Roovers <jer@gentoo.org> -cacti-0.8.8b-r2.ebuild,
   -files/cacti-0.8.8b_empty_comment.patch, -files/cacti-r7420.patch:

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/vivaldi/vivaldi-1.0.212.3_p1.ebuild,v 1.1 2015/07/01 04:26:13 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/vivaldi/vivaldi-1.0.219.34_p1.ebuild,v 1.1 2015/07/14 05:04:12 jer Exp $
 
 EAPI=5
 CHROMIUM_LANGS="
@@ -72,6 +72,11 @@ src_prepare() {
 		usr/share/xfce4/helpers/${PN}-snapshot.desktop || die
 
 	mv usr/share/doc/${PN}-snapshot usr/share/doc/${PF} || die
+
+	rm etc/cron.daily/${PN}-snapshot || die
+	rmdir etc/cron.daily/ || die
+	rmdir etc/ || die
+
 	rm usr/bin/${PN}-snapshot || die
 	rm _gpgbuilder || die
 

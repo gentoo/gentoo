@@ -1,6 +1,16 @@
 # ChangeLog for dev-ruby/protected_attributes
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/protected_attributes/ChangeLog,v 1.12 2015/06/23 04:57:37 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/protected_attributes/ChangeLog,v 1.14 2015/07/14 04:45:24 graaff Exp $
+
+  14 Jul 2015; Hans de Graaff <graaff@gentoo.org>
+  -protected_attributes-1.0.8.ebuild, -protected_attributes-1.1.0.ebuild:
+  Cleanup.
+
+*protected_attributes-1.1.1 (14 Jul 2015)
+
+  14 Jul 2015; Hans de Graaff <graaff@gentoo.org>
+  +protected_attributes-1.1.1.ebuild:
+  Version bump.
 
 *protected_attributes-1.1.0 (23 Jun 2015)
 

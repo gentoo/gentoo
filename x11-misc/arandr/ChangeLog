@@ -1,6 +1,11 @@
 # ChangeLog for x11-misc/arandr
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/arandr/ChangeLog,v 1.16 2015/04/08 17:27:17 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/arandr/ChangeLog,v 1.17 2015/07/14 04:41:05 jer Exp $
+
+*arandr-0.1.8 (14 Jul 2015)
+
+  14 Jul 2015; Jeroen Roovers <jer@gentoo.org> +arandr-0.1.8.ebuild:
+  Version bump (bug #554228 by José Romildo Malaquias).
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> arandr-0.1.7.1.ebuild:
   Drop old Python implementations
