@@ -1,6 +1,12 @@
 # ChangeLog for net-proxy/haproxy
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/haproxy/ChangeLog,v 1.117 2015/07/07 20:22:00 idl0r Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/haproxy/ChangeLog,v 1.119 2015/07/14 10:37:10 ago Exp $
+
+  14 Jul 2015; Agostino Sarubbo <ago@gentoo.org> haproxy-1.5.14.ebuild:
+  Stable for x86, wrt bug #554162
+
+  14 Jul 2015; Agostino Sarubbo <ago@gentoo.org> haproxy-1.5.14.ebuild:
+  Stable for amd64, wrt bug #554162
 
 *haproxy-1.5.14 (07 Jul 2015)
 

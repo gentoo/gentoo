@@ -1,6 +1,12 @@
 # ChangeLog for net-analyzer/cacti
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/cacti/ChangeLog,v 1.208 2015/07/14 05:25:16 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/cacti/ChangeLog,v 1.210 2015/07/14 10:37:03 ago Exp $
+
+  14 Jul 2015; Agostino Sarubbo <ago@gentoo.org> cacti-0.8.8e.ebuild:
+  Stable for x86, wrt bug #554816
+
+  14 Jul 2015; Agostino Sarubbo <ago@gentoo.org> cacti-0.8.8e.ebuild:
+  Stable for amd64, wrt bug #554816
 
 *cacti-0.8.8e (14 Jul 2015)
 
