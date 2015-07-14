@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/virtualbox-guest-additions/virtualbox-guest-additions-4.3.26.ebuild,v 1.5 2015/04/01 19:02:07 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/virtualbox-guest-additions/virtualbox-guest-additions-5.0.0.ebuild,v 1.1 2015/07/14 14:33:13 polynomial-c Exp $
 
 EAPI=5
 
@@ -77,7 +77,7 @@ src_prepare() {
 	popd &>/dev/null || die
 
 	# Disable things unused or splitted into separate ebuilds
-	cp "${FILESDIR}/${PN}-3-localconfig" LocalConfig.kmk || die
+	cp "${FILESDIR}/${PN}-5-localconfig" LocalConfig.kmk || die
 
 	# stupid new header references...
 	for vboxheader in {product,revision}-generated.h ; do

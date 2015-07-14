@@ -1,6 +1,9 @@
 # ChangeLog for mail-client/sylpheed
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/sylpheed/ChangeLog,v 1.341 2015/07/14 10:37:14 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/sylpheed/ChangeLog,v 1.342 2015/07/14 15:02:17 klausman Exp $
+
+  14 Jul 2015; Tobias Klausmann <klausman@gentoo.org> sylpheed-3.4.2.ebuild:
+  Stable on alpha, bug 506668
 
   14 Jul 2015; Agostino Sarubbo <ago@gentoo.org> sylpheed-3.4.2.ebuild:
   Stable for x86, wrt bug #506668

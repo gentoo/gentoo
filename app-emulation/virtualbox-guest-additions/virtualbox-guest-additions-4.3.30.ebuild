@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/virtualbox-guest-additions/virtualbox-guest-additions-4.3.18.ebuild,v 1.2 2014/12/22 13:13:47 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/virtualbox-guest-additions/virtualbox-guest-additions-4.3.30.ebuild,v 1.1 2015/07/14 14:33:13 polynomial-c Exp $
 
 EAPI=5
 
-inherit eutils linux-mod systemd user
+inherit eutils linux-mod systemd user toolchain-funcs
 
 MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
@@ -15,7 +15,7 @@ SRC_URI="http://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="X"
 
 RDEPEND="X? ( ~x11-drivers/xf86-video-virtualbox-${PV}
@@ -50,7 +50,7 @@ S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	linux-mod_pkg_setup
-	BUILD_PARAMS="KERN_DIR=${KV_DIR} KERNOUT=${KV_OUT_DIR}"
+	BUILD_PARAMS="KERN_DIR=${KV_OUT_DIR} KERNOUT=${KV_OUT_DIR}"
 	enewgroup vboxguest
 	enewuser vboxguest -1 /bin/sh /dev/null vboxguest
 	# automount Error: VBoxServiceAutoMountWorker: Group "vboxsf" does not exist
@@ -90,23 +90,31 @@ src_prepare() {
 
 src_configure() {
 	# build the user-space tools, warnings are harmless
-	./configure --nofatal \
-	--disable-xpcom \
-	--disable-sdl-ttf \
-	--disable-pulse \
-	--disable-alsa \
-	--build-headless || die "configure failed"
+	local cmd=(
+		./configure
+		--nofatal
+		--disable-xpcom
+		--disable-sdl-ttf
+		--disable-pulse
+		--disable-alsa
+		--with-gcc="$(tc-getCC)"
+		--with-g++="$(tc-getCXX)"
+		--target-arch=${ARCH}
+		--with-linux="${KV_OUT_DIR}"
+		--build-headless
+	)
+	echo "${cmd[@]}"
+	"${cmd[@]}" || die "configure failed"
+	source ./env.sh
+	export VBOX_GCC_OPT="${CFLAGS} ${CPPFLAGS}"
 }
 
 src_compile() {
-	source ./env.sh
-
 	for each in /src/VBox/{Runtime,Additions/common} \
 		/src/VBox/Additions/linux/sharedfolders ; do
 			cd "${S}"${each} || die
 			MAKE="kmk" \
 			emake TOOL_YASM_AS=yasm \
-			KBUILD_PATH="${S}/kBuild" \
 			KBUILD_VERBOSE=2
 	done
 

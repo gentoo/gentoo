@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-video-virtualbox/xf86-video-virtualbox-4.3.18.ebuild,v 1.2 2014/12/22 13:12:45 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-video-virtualbox/xf86-video-virtualbox-5.0.0.ebuild,v 1.1 2015/07/14 14:32:42 polynomial-c Exp $
 
 EAPI=5
 
@@ -16,7 +16,7 @@ SRC_URI="http://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dri"
 
 RDEPEND=">=x11-base/xorg-server-1.7:=[-minimal]
@@ -54,7 +54,7 @@ QA_TEXTRELS_x86="usr/lib/VBoxOGL.so"
 
 pkg_setup() {
 	linux-mod_pkg_setup
-	BUILD_PARAMS="KERN_DIR=${KV_DIR} KERNOUT=${KV_OUT_DIR}"
+	BUILD_PARAMS="KERN_DIR=${KV_OUT_DIR} KERNOUT=${KV_OUT_DIR}"
 
 	python-single-r1_pkg_setup
 }
@@ -77,15 +77,13 @@ src_prepare() {
 	rm -rf kBuild/bin tools
 
 	# Disable things unused or splitted into separate ebuilds
-	cp "${FILESDIR}/${PN}-3-localconfig" LocalConfig.kmk || die
+	cp "${FILESDIR}/${PN}-5-localconfig" LocalConfig.kmk || die
 
 	# Ugly hack to build the opengl part of the video driver
 	epatch "${FILESDIR}/${PN}-2.2.0-enable-opengl.patch"
 
 	# unset useless/problematic checks in configure
-	epatch "${FILESDIR}/${PN}-3.2.8-mesa-check.patch" \
-		"${FILESDIR}/${PN}-4-makeself-check.patch" \
-		"${FILESDIR}/${PN}-4-mkisofs-check.patch"
+	epatch "${FILESDIR}/${PN}-5.0.0_beta3-configure_checks.patch"
 
 	# Patch to link with lazy on hardened #394757
 	if gcc-specs-now ; then
@@ -95,14 +93,23 @@ src_prepare() {
 
 src_configure() {
 	# build the user-space tools, warnings are harmless
-	./configure \
-		--nofatal \
-		--disable-xpcom \
-		--disable-sdl-ttf \
-		--disable-pulse \
-		--disable-alsa \
-		--build-headless || die "configure failed"
+	local cmd=(
+		./configure
+		--nofatal
+		--disable-xpcom
+		--disable-sdl-ttf
+		--disable-pulse
+		--disable-alsa
+		--with-gcc="$(tc-getCC)"
+		--with-g++="$(tc-getCXX)"
+		--target-arch=${ARCH}
+		--with-linux="${KV_OUT_DIR}"
+		--build-headless
+	)
+	echo "${cmd[@]}"
+	"${cmd[@]}" || die "configure failed"
 	source ./env.sh
+	export VBOX_GCC_OPT="${CFLAGS} ${CPPFLAGS}"
 }
 
 src_compile() {

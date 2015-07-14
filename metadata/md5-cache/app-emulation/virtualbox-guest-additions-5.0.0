@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+DEPEND=X? ( ~x11-drivers/xf86-video-virtualbox-5.0.0 x11-apps/xrandr x11-apps/xrefresh x11-libs/libXmu x11-libs/libX11 x11-libs/libXt x11-libs/libXext x11-libs/libXau x11-libs/libXdmcp x11-libs/libSM x11-libs/libICE x11-proto/glproto ) sys-apps/dbus !!x11-drivers/xf86-input-virtualbox >=dev-util/kbuild-0.1.9998_pre20131130 >=dev-lang/yasm-0.6.2 sys-devel/bin86 sys-libs/pam sys-power/iasl X? ( x11-proto/renderproto ) !X? ( x11-proto/xproto ) kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources ) virtual/pkgconfig
+DESCRIPTION=VirtualBox kernel modules and user-space tools for Gentoo guests
+EAPI=5
+HOMEPAGE=http://www.virtualbox.org/
+IUSE=X kernel_linux
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=X? ( ~x11-drivers/xf86-video-virtualbox-5.0.0 x11-apps/xrandr x11-apps/xrefresh x11-libs/libXmu x11-libs/libX11 x11-libs/libXt x11-libs/libXext x11-libs/libXau x11-libs/libXdmcp x11-libs/libSM x11-libs/libICE x11-proto/glproto ) sys-apps/dbus !!x11-drivers/xf86-input-virtualbox kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=http://download.virtualbox.org/virtualbox/5.0.0/VirtualBox-5.0.0.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	linux-info	8cbc678e083c23e4ad546ca6509cf304	linux-mod	101302d4b7b694ea9622bbffb187d0de	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=1db459cd1b6693cf2cfb44b7ccb534fb

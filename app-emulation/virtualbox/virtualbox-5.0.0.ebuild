@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/virtualbox/virtualbox-4.3.18.ebuild,v 1.3 2015/03/29 20:58:20 zerochaos Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/virtualbox/virtualbox-5.0.0.ebuild,v 1.1 2015/07/14 14:32:07 polynomial-c Exp $
 
 EAPI=5
 
@@ -11,7 +11,7 @@ MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
 MY_P=VirtualBox-${MY_PV}
 SRC_URI="http://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
-	http://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-4.3.16-patches-01.tar.xz"
+	http://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.0.0_beta3-patches-01.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise as well as home use"
@@ -19,8 +19,8 @@ HOMEPAGE="http://www.virtualbox.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE="+additions alsa doc extensions headless java pam pulseaudio +opengl python +qt4 +sdk vboxwebsrv vnc"
+KEYWORDS="~amd64 ~x86"
+IUSE="alsa doc headless java pam pulseaudio +opengl python +qt4 +sdk +udev vboxwebsrv vnc"
 
 RDEPEND="!app-emulation/virtualbox-bin
 	~app-emulation/virtualbox-modules-${PV}
@@ -32,7 +32,6 @@ RDEPEND="!app-emulation/virtualbox-bin
 	media-libs/libpng:0=
 	media-libs/libvpx
 	sys-libs/zlib
-	>=virtual/udev-171
 	!headless? (
 		qt4? (
 			dev-qt/qtgui:4
@@ -48,8 +47,10 @@ RDEPEND="!app-emulation/virtualbox-bin
 		x11-libs/libXt
 		media-libs/libsdl:0[X,video]
 	)
-	vnc? ( >=net-libs/libvncserver-0.9.9 )
-	java? ( || ( virtual/jre:1.7 virtual/jre:1.6 ) )"
+
+	java? ( || ( virtual/jre:1.7 virtual/jre:1.6 ) )
+	udev? ( >=virtual/udev-171 )
+	vnc? ( >=net-libs/libvncserver-0.9.9 )"
 DEPEND="${RDEPEND}
 	>=dev-util/kbuild-0.1.9998_pre20131130
 	>=dev-lang/yasm-0.6.2
@@ -72,8 +73,6 @@ DEPEND="${RDEPEND}
 	pulseaudio? ( media-sound/pulseaudio )
 	vboxwebsrv? ( net-libs/gsoap[-gnutls(-)] )
 	${PYTHON_DEPS}"
-PDEPEND="additions? ( ~app-emulation/virtualbox-additions-${PV} )
-	extensions? ( =app-emulation/virtualbox-extpack-oracle-${PV}* )"
 
 QA_TEXTRELS_x86="usr/lib/virtualbox-ose/VBoxGuestPropSvc.so
 	usr/lib/virtualbox/VBoxSDL.so
@@ -146,7 +145,7 @@ src_prepare() {
 
 	# Disable things unused or split into separate ebuilds
 	sed -e "s@MY_LIBDIR@$(get_libdir)@" \
-		"${FILESDIR}"/${PN}-4-localconfig > LocalConfig.kmk || die
+		"${FILESDIR}"/${PN}-5-localconfig > LocalConfig.kmk || die
 
 	# Respect LDFLAGS
 	sed -e "s@_LDFLAGS\.${ARCH}*.*=@& ${LDFLAGS}@g" \
@@ -174,6 +173,8 @@ src_prepare() {
 	EPATCH_SUFFIX="patch" \
 	EPATCH_FORCE="yes" \
 	epatch "${WORKDIR}/patches"
+
+	#epatch "${FILESDIR}/${PN}-5.0.0_beta1-dont_build_validationkit.patch"
 
 	epatch_user
 }
@@ -224,8 +225,7 @@ src_compile() {
 		TOOL_GCC3_LD="$(tc-getCXX)" TOOL_GCC3_LD_SYSMOD="$(tc-getLD)" \
 		TOOL_GCC3_CFLAGS="${CFLAGS}" TOOL_GCC3_CXXFLAGS="${CXXFLAGS}" \
 		VBOX_GCC_OPT="${CXXFLAGS}" \
-		TOOL_YASM_AS=yasm KBUILD_PATH="${S}/kBuild" \
-		KBUILD_VERBOSE=2 \
+		TOOL_YASM_AS=yasm KBUILD_VERBOSE=2 \
 		all
 }
 
@@ -269,24 +269,29 @@ src_install() {
 		newconfd "${FILESDIR}"/vboxwebsrv-confd vboxwebsrv
 	fi
 
-	local gcfiles="*gc"
-	if use amd64 && ! has_multilib_profile ; then
-		gcfiles=""
-	fi
+	#local gcfiles="*gc"
+	#if use amd64 && ! has_multilib_profile ; then
+	#	gcfiles=""
+	#fi
 
-	for each in VBox{Manage,SVC,XPCOMIPCD,Tunctl,NetAdpCtl,NetDHCP,NetNAT,ExtPackHelperApp} *so *r0 ${gcfiles} ; do
+	for each in VBox{Manage,SVC,XPCOMIPCD,Tunctl,ExtPackHelperApp} *so *r0 *.rc ; do
 		doins ${each}
 		fowners root:vboxusers /usr/$(get_libdir)/${PN}/${each}
 		fperms 0750 /usr/$(get_libdir)/${PN}/${each}
 	done
+
 	# VBoxNetAdpCtl and VBoxNetDHCP binaries need to be suid root in any case..
-	fperms 4750 /usr/$(get_libdir)/${PN}/VBoxNetAdpCtl
-	fperms 4750 /usr/$(get_libdir)/${PN}/VBoxNetDHCP
-	fperms 4750 /usr/$(get_libdir)/${PN}/VBoxNetNAT
+	for each in VBoxNet{AdpCtl,DHCP,NAT} ; do
+		doins ${each}
+		fowners root:vboxusers /usr/$(get_libdir)/${PN}/${each}
+		fperms 4750 /usr/$(get_libdir)/${PN}/${each}
+	done
 
 	# VBoxSVC and VBoxManage need to be pax-marked (bug #403453)
-	pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VBoxSVC || die
-	pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VBoxManage || die
+	# VBoxXPCOMIPCD (bug #524202)
+	for each in VBox{Manage,SVC,XPCOMIPCD} ; do
+		pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/${each} || die
+	done
 
 	if ! use headless ; then
 		for each in VBox{SDL,Headless} ; do
@@ -300,6 +305,7 @@ src_install() {
 			doins VBoxTestOGL
 			fowners root:vboxusers /usr/$(get_libdir)/${PN}/VBoxTestOGL
 			fperms 0750 /usr/$(get_libdir)/${PN}/VBoxTestOGL
+			pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VBoxTestOGL
 		fi
 
 		dosym /usr/$(get_libdir)/${PN}/VBox /usr/bin/VBoxSDL
@@ -338,16 +344,18 @@ src_install() {
 	done
 	popd &>/dev/null || die
 
-	# New way of handling USB device nodes for VBox (bug #356215)
-	local udevdir="$(get_udevdir)"
-	insinto ${udevdir}
-	doins VBoxCreateUSBNode.sh
-	fowners root:vboxusers ${udevdir}/VBoxCreateUSBNode.sh
-	fperms 0750 ${udevdir}/VBoxCreateUSBNode.sh
-	insinto ${udevdir}/rules.d
-	doins "${FILESDIR}"/10-virtualbox.rules
-	sed "s@%UDEVDIR%@${udevdir}@" \
-		-i "${D}"${udevdir}/rules.d/10-virtualbox.rules || die
+	if use udev ; then
+		# New way of handling USB device nodes for VBox (bug #356215)
+		local udevdir="$(get_udevdir)"
+		insinto ${udevdir}
+		doins VBoxCreateUSBNode.sh
+		fowners root:vboxusers ${udevdir}/VBoxCreateUSBNode.sh
+		fperms 0750 ${udevdir}/VBoxCreateUSBNode.sh
+		insinto ${udevdir}/rules.d
+		doins "${FILESDIR}"/10-virtualbox.rules
+		sed "s@%UDEVDIR%@${udevdir}@" \
+			-i "${D}"${udevdir}/rules.d/10-virtualbox.rules || die
+	fi
 
 	insinto /usr/share/${PN}
 	if ! use headless && use qt4 ; then
@@ -370,7 +378,10 @@ src_install() {
 pkg_postinst() {
 	fdo-mime_desktop_database_update
 
-	udevadm control --reload-rules && udevadm trigger --subsystem-match=usb
+	if use udev ; then
+		udevadm control --reload-rules \
+			&& udevadm trigger --subsystem-match=usb
+	fi
 
 	if ! use headless && use qt4 ; then
 		elog "To launch VirtualBox just type: \"VirtualBox\"."
@@ -392,7 +403,17 @@ pkg_postinst() {
 	elog "For USB-2 support, PXE-boot ability and VRDP support please emerge"
 	elog "  app-emulation/virtualbox-extpack-oracle"
 	elog "package."
-	if [ -e "${ROOT}/etc/udev/rules.d/10-virtualbox.rules" ] ; then
+	elog "Starting with version 5.0.0, ${PN} no longer has the \"additions\" and"
+	elog "the \"extension\" USE flag. For installation of the guest additions ISO"
+	elog "image, please emerge"
+	elog "  app-emulation/virtualbox-additions"
+	elog "and for the USB2, USB3, VRDP and PXE boot ROM modules, please emerge"
+	elog "  app-emulation/virtualbox-extpack-oracle"
+	if ! use udev ; then
+		elog ""
+		elog "WARNING!"
+		elog "Without USE=udev, USB devices will likely not work in ${PN}."
+	elif [ -e "${ROOT}/etc/udev/rules.d/10-virtualbox.rules" ] ; then
 		elog ""
 		elog "Please remove \"${ROOT}/etc/udev/rules.d/10-virtualbox.rules\""
 		elog "or else USB in ${PN} won't work."
