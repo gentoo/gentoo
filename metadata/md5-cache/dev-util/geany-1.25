@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm preinst prepare setup
+DEPEND=>=dev-libs/glib-2.28:2 !gtk3? ( >=x11-libs/gtk+-2.24:2 ) gtk3? ( >=x11-libs/gtk+-3.0:3 ) vte? ( x11-libs/vte:0 ) virtual/pkgconfig dev-util/intltool sys-devel/gettext >=sys-apps/sed-4
+DESCRIPTION=GTK+ based fast and lightweight IDE
+EAPI=5
+HOMEPAGE=http://www.geany.org
+IUSE=gtk3 +vte
+KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux
+LICENSE=GPL-2+ HPND
+RDEPEND=>=dev-libs/glib-2.28:2 !gtk3? ( >=x11-libs/gtk+-2.24:2 ) gtk3? ( >=x11-libs/gtk+-3.0:3 ) vte? ( x11-libs/vte:0 )
+SLOT=0
+SRC_URI=http://download.geany.org/geany-1.25.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=645ade2498a457ae989aaa17a3708aa6

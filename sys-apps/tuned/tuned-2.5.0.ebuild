@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/tuned/tuned-2.3.0.ebuild,v 1.1 2014/08/29 04:08:59 dlan Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/tuned/tuned-2.5.0.ebuild,v 1.1 2015/07/14 09:23:46 dlan Exp $
 
 EAPI=5
 

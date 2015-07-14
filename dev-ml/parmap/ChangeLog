@@ -1,6 +1,10 @@
 # ChangeLog for dev-ml/parmap
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/parmap/ChangeLog,v 1.7 2015/07/14 08:45:01 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/parmap/ChangeLog,v 1.8 2015/07/14 09:25:59 aballier Exp $
+
+  14 Jul 2015; Alexis Ballier <aballier@gentoo.org>
+  files/parmap-1.0_rc6-fix-bashisms.patch:
+  add patch metadata
 
   14 Jul 2015; Alexis Ballier <aballier@gentoo.org> parmap-1.0_rc6.ebuild,
   +files/parmap-1.0_rc6-fix-bashisms.patch:

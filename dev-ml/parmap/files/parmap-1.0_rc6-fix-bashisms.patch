@@ -1,3 +1,7 @@
+Author: Rémi Cardona
+https://bugs.gentoo.org/show_bug.cgi?id=553596
+https://github.com/rdicosmo/parmap/pull/36
+
 --- configure.ac	2015-07-03 23:59:19.361723234 +0200
 +++ configure.ac	2015-07-03 23:59:48.161216749 +0200
 @@ -27,7 +27,7 @@

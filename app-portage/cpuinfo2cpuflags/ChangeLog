@@ -1,6 +1,11 @@
 # ChangeLog for app-portage/cpuinfo2cpuflags
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/cpuinfo2cpuflags/ChangeLog,v 1.6 2015/06/07 19:05:22 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/cpuinfo2cpuflags/ChangeLog,v 1.7 2015/07/14 09:15:25 dlan Exp $
+
+*cpuinfo2cpuflags-2 (14 Jul 2015)
+
+  14 Jul 2015; Yixun Lan <dlan@gentoo.org> +cpuinfo2cpuflags-2.ebuild:
+  version bump, bug 554830, proxy for @mgorny
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add bitbucket to remote-id in metadata.xml
