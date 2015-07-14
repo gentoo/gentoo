@@ -1,10 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/virtualbox-bin/virtualbox-bin-4.3.18.96516.ebuild,v 1.2 2014/12/22 13:16:25 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/virtualbox-bin/virtualbox-bin-4.3.30.101610.ebuild,v 1.1 2015/07/14 14:30:05 polynomial-c Exp $
 
 EAPI=5
 
-inherit eutils fdo-mime gnome2 pax-utils udev unpacker versionator
+PYTHON_COMPAT=( python2_7 )
+
+inherit eutils fdo-mime gnome2 pax-utils python-r1 udev unpacker versionator
 
 MAIN_PV="$(get_version_component_range 1-3)"
 if [[ ${PV} = *_beta* ]] || [[ ${PV} = *_rc* ]] ; then
@@ -33,7 +35,7 @@ SRC_URI="amd64? ( http://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}_amd
 
 LICENSE="GPL-2 PUEL"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+additions +chm headless python vboxwebsrv rdesktop-vrdp"
 RESTRICT="mirror"
 
@@ -43,7 +45,8 @@ if [[ "${PV}" != *beta* ]] ; then
 	IUSE+=" sdk"
 fi
 
-DEPEND="app-arch/unzip"
+DEPEND="app-arch/unzip
+	${PYTHON_DEPS}"
 
 RDEPEND="!!app-emulation/virtualbox
 	!app-emulation/virtualbox-additions
@@ -72,8 +75,9 @@ RDEPEND="!!app-emulation/virtualbox
 	x11-libs/libSM
 	x11-libs/libICE
 	x11-libs/libXdmcp
-	python? ( dev-lang/python:2.7 )"
+	python? ( ${PYTHON_DEPS} )"
 
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 S=${WORKDIR}
 
 QA_TEXTRELS_amd64="opt/VirtualBox/VBoxVMM.so"
@@ -244,14 +248,10 @@ src_install() {
 		fperms 0750 /opt/VirtualBox/kchmviewer
 	fi
 
-	if use python ; then
-		local pyslot
-		for pyslot in 2.7 ; do
-			if has_version "dev-lang/python:${pyslot}" && [ -f "${S}/VBoxPython${pyslot/./_}.so" ] ; then
-				doins VBoxPython${pyslot/./_}.so
-			fi
-		done
-	fi
+	# This ebuild / package supports only py2.7.  Where py3 comes is unknown.
+	# The compile phase makes VBoxPython2_[4-7].so.
+	# py3 support would presumably require a binary pre-compiled by py3.
+	use python && doins VBoxPython.so VBoxPython2_7.so
 
 	rm -rf src rdesktop* deffiles install* routines.sh runlevel.sh \
 		vboxdrv.sh VBox.sh VBox.png vboxnet.sh additions VirtualBox.desktop \

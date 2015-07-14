@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/virtualbox-modules/virtualbox-modules-4.3.26.ebuild,v 1.2 2015/06/14 18:10:40 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/virtualbox-modules/virtualbox-modules-5.0.0.ebuild,v 1.1 2015/07/14 14:29:30 polynomial-c Exp $
 
 # XXX: the tarball here is just the kernel modules split out of the binary
 #      package that comes from virtualbox-bin
@@ -30,7 +30,7 @@ MODULE_NAMES="vboxdrv(misc:${S}) vboxnetflt(misc:${S}) vboxnetadp(misc:${S}) vbo
 pkg_setup() {
 	linux-mod_pkg_setup
 
-	BUILD_PARAMS="KERN_DIR=${KV_DIR} O=${KV_OUT_DIR}"
+	BUILD_PARAMS="KERN_DIR=${KV_DIR} KERNOUT=${KV_OUT_DIR}"
 	enewgroup vboxusers
 }
 

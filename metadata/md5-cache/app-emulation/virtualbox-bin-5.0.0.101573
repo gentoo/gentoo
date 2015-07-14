@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare unpack
+DEPEND=app-arch/unzip python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] app-arch/xz-utils >=sys-apps/sed-4 virtual/pkgconfig
+DESCRIPTION=Family of powerful x86 virtualization products for enterprise as well as home use
+EAPI=5
+HOMEPAGE=http://www.virtualbox.org/
+IUSE=+additions +chm headless python vboxwebsrv rdesktop-vrdp sdk debug python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 PUEL
+RDEPEND=!!app-emulation/virtualbox !app-emulation/virtualbox-additions ~app-emulation/virtualbox-modules-5.0.0 !headless? ( x11-libs/libXcursor media-libs/libsdl[X] x11-libs/libXrender x11-libs/libXfixes media-libs/libpng x11-libs/libXi x11-libs/libXrandr x11-libs/libXinerama x11-libs/libXft media-libs/freetype media-libs/fontconfig x11-libs/libXext dev-libs/glib chm? ( dev-libs/expat ) ) x11-libs/libXt dev-libs/libxml2 x11-libs/libXau x11-libs/libX11 x11-libs/libXmu x11-libs/libSM x11-libs/libICE x11-libs/libXdmcp python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 )
+RESTRICT=mirror
+SLOT=0
+SRC_URI=amd64? ( http://download.virtualbox.org/virtualbox/5.0.0/VirtualBox-5.0.0-101573-Linux_amd64.run ) x86? ( http://download.virtualbox.org/virtualbox/5.0.0/VirtualBox-5.0.0-101573-Linux_x86.run ) http://download.virtualbox.org/virtualbox/5.0.0/Oracle_VM_VirtualBox_Extension_Pack-5.0.0-101573.vbox-extpack -> Oracle_VM_VirtualBox_Extension_Pack-5.0.0-101573.tar.gz sdk? ( http://download.virtualbox.org/virtualbox/5.0.0/VirtualBoxSDK-5.0.0-101573.zip )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	45882dc8beda2ffd09ad51fb3f22b669	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	pax-utils	dfe060cb70d89757fde5c1ff8405e950	python-r1	23846c6ba39f6655e2027001eeed8e81	python-utils-r1	ae9becb5d45344c01939c3f57df0d3fd	toolchain-funcs	42408102d713fbad60ca21349865edb4	udev	da001465a2e939c93f7ae16947ce3438	unpacker	f300a7ca9131b1024a79762e8edd3c52	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=91cfa1ac295a9293a1d9b302d885979e
