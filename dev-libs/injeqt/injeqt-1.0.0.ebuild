@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/injeqt/injeqt-1.0.0.ebuild,v 1.1 2015/07/05 20:06:58 reavertm Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/injeqt/injeqt-1.0.0.ebuild,v 1.2 2015/07/14 00:42:24 reavertm Exp $
 
 EAPI=5
 
@@ -24,6 +24,7 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	local mycmakeargs=(
+		-DDISABLE_EXAMPLES=ON
 		$(cmake-utils_use_disable test TESTS)
 	)
 	cmake-utils_src_configure

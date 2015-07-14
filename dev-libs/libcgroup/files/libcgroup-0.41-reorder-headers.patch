@@ -1,0 +1,28 @@
+libcgroup-internal.h: reorder the header stacking.
+
+`man 3 fts` not only specifies the headers to be included, but
+also the order.  <fts.h> must be included after <sys/types.h>
+and <sys/stats.h>.  On glibc and uClibc systems, an incorrect
+order does not pose a problem, but on musl this leads to undefine
+types such as dev_t and friends.
+
+Signed-off-by: Anthony G. Basile <blueness@gentoo.org>
+
+diff -Naur libcgroup-0.41.orig/src/libcgroup-internal.h libcgroup-0.41/src/libcgroup-internal.h
+--- libcgroup-0.41.orig/src/libcgroup-internal.h	2015-07-13 21:08:26.740965713 -0400
++++ libcgroup-0.41/src/libcgroup-internal.h	2015-07-13 21:09:40.774962164 -0400
+@@ -21,12 +21,12 @@
+ #endif
+ 
+ #include "config.h"
+-#include <fts.h>
+ #include <libcgroup.h>
+ #include <limits.h>
+ #include <pthread.h>
+-#include <sys/stat.h>
+ #include <sys/types.h>
++#include <sys/stat.h>
++#include <fts.h>
+ #include <setjmp.h>
+ 
+ /* Maximum number of mount points/controllers */

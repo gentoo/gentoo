@@ -1,12 +1,10 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libcgroup/libcgroup-0.41-r1.ebuild,v 1.1 2015/07/12 17:03:40 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libcgroup/libcgroup-0.41-r1.ebuild,v 1.2 2015/07/14 01:11:23 blueness Exp $
 
 EAPI="5"
 
-AUTOTOOLS_AUTORECONF=1
-
-inherit eutils linux-info pam autotools-utils
+inherit autotools eutils flag-o-matic linux-info pam
 
 DESCRIPTION="Tools and libraries to configure and manage kernel control groups"
 HOMEPAGE="http://libcg.sourceforge.net/"
@@ -15,7 +13,7 @@ SRC_URI="mirror://sourceforge/project/libcg/${PN}/v${PV}/${P}.tar.bz2"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="+daemon pam static-libs +tools"
+IUSE="+daemon elibc_musl pam static-libs +tools"
 
 RDEPEND="pam? ( virtual/pam )"
 
@@ -23,6 +21,7 @@ DEPEND="
 	${RDEPEND}
 	sys-devel/bison
 	sys-devel/flex
+	elibc_musl? ( sys-libs/fts-standalone )
 	"
 REQUIRED_USE="daemon? ( tools )"
 
@@ -37,6 +36,8 @@ pkg_setup() {
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-replace_DECLS.patch
+	epatch "${FILESDIR}"/${P}-replace_INLCUDES.patch
+	epatch "${FILESDIR}"/${P}-reorder-headers.patch
 
 	# Change rules file location
 	sed -e 's:/etc/cgrules.conf:/etc/cgroup/cgrules.conf:' \
@@ -45,7 +46,7 @@ src_prepare() {
 		-i src/pam/Makefile.am || die "sed failed"
 	sed -e 's#/var/run#/run#g' -i configure.in || die "sed failed"
 
-	autotools-utils_src_prepare
+	eautoreconf
 }
 
 src_configure() {
@@ -55,13 +56,12 @@ src_configure() {
 		my_conf=" --enable-pam-module-dir=$(getpam_mod_dir) "
 	fi
 
-	local myeconfargs=(
-		$(use_enable daemon)
-		$(use_enable pam)
-		$(use_enable tools)
+	use elibc_musl && append-ldflags "-lfts"
+	econf \
+		$(use_enable daemon) \
+		$(use_enable pam) \
+		$(use_enable tools) \
 		${my_conf}
-		)
-	autotools-utils_src_configure
 }
 
 src_test() {
@@ -72,7 +72,6 @@ src_test() {
 }
 
 src_install() {
-	autotools-utils_src_install
 	prune_libtool_files --all
 
 	insinto /etc/cgroup

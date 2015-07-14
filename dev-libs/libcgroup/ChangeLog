@@ -1,6 +1,16 @@
 # ChangeLog for dev-libs/libcgroup
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libcgroup/ChangeLog,v 1.26 2015/07/12 17:03:40 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libcgroup/ChangeLog,v 1.28 2015/07/14 01:17:45 blueness Exp $
+
+  14 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
+  files/libcgroup-0.41-reorder-headers.patch,
+  files/libcgroup-0.41-replace_INLCUDES.patch:
+  Add commit messages to patches.
+
+  14 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
+  +files/libcgroup-0.41-reorder-headers.patch,
+  +files/libcgroup-0.41-replace_INLCUDES.patch, libcgroup-0.41-r1.ebuild:
+  Modernize Makefile.am and fix header stacking.
 
 *libcgroup-0.41-r1 (12 Jul 2015)
 
