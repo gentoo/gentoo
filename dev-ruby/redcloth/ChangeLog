@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/redcloth
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/redcloth/ChangeLog,v 1.105 2015/07/11 07:50:46 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/redcloth/ChangeLog,v 1.106 2015/07/14 15:46:49 klausman Exp $
+
+  14 Jul 2015; Tobias Klausmann <klausman@gentoo.org> redcloth-4.2.9-r3.ebuild:
+  Stable on alpha, bug 536008
 
   11 Jul 2015; Jeroen Roovers <jer@gentoo.org> redcloth-4.2.9-r3.ebuild:
   Stable for HPPA (bug #536008).
