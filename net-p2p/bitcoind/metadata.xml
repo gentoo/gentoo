@@ -11,6 +11,7 @@
 		<name>Luke Dashjr</name>
 	</maintainer>
 	<use>
+		<flag name='bitcoin_policy_cltv'>Check LockTime Verify policy: Your node will recognise and assist OP_CHECKLOCKTIMEVERIFY (BIP65) transactions</flag>
 		<flag name='bitcoin_policy_cpfp'>Child-Pays-For-Parent policy: If you mine, you will give consideration to child transaction fees to pay for their parents</flag>
 		<flag name='bitcoin_policy_dcmp'>Data Carrier Multi-Push policy: Your node will assist transactions with multiple pushes in their data carrier (if any)</flag>
 		<flag name='bitcoin_policy_rbf'>Replace By Fee policy: Your node will preferentially mine and relay transactions paying the highest fee, regardless of receive order</flag>

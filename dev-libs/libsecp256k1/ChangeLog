@@ -1,6 +1,12 @@
 # ChangeLog for dev-libs/libsecp256k1
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libsecp256k1/ChangeLog,v 1.6 2015/07/04 18:49:43 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libsecp256k1/ChangeLog,v 1.7 2015/07/14 12:55:24 blueness Exp $
+
+*libsecp256k1-0.0.0_pre20150423 (14 Jul 2015)
+
+  14 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
+  +libsecp256k1-0.0.0_pre20150423.ebuild:
+  Version bump.
 
   04 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
   libsecp256k1-0.0.0_pre20141212.ebuild:
