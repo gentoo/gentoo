@@ -1,6 +1,10 @@
 # ChangeLog for x11-libs/libva-intel-driver
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libva-intel-driver/ChangeLog,v 1.42 2015/07/06 14:39:19 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libva-intel-driver/ChangeLog,v 1.43 2015/07/14 08:46:41 aballier Exp $
+
+  14 Jul 2015; Alexis Ballier <aballier@gentoo.org>
+  libva-intel-driver-1.6.0.ebuild, libva-intel-driver-9999.ebuild:
+  bump libva dep, bug #554206 by Priit Laes
 
 *libva-intel-driver-1.6.0 (06 Jul 2015)
 

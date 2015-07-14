@@ -1,6 +1,9 @@
 # ChangeLog for net-firewall/ipsec-tools
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/ipsec-tools/ChangeLog,v 1.128 2014/11/02 08:51:06 swift Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/ipsec-tools/ChangeLog,v 1.129 2015/07/14 07:43:22 vapier Exp $
+
+  14 Jul 2015; Mike Frysinger <vapier@gentoo.org> ipsec-tools-0.8.2.ebuild:
+  Use subslots with readline/openssl.
 
   02 Nov 2014; Sven Vermeulen <swift@gentoo.org> ipsec-tools-0.8.2.ebuild:
   Remove sec-policy/selinux-* dependency from DEPEND but keep in RDEPEND (bug

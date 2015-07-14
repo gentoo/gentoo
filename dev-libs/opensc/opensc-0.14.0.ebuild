@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/opensc/opensc-0.14.0.ebuild,v 1.2 2015/06/06 19:36:30 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/opensc/opensc-0.14.0.ebuild,v 1.3 2015/07/14 07:37:10 vapier Exp $
 
 EAPI=5
 
@@ -16,8 +16,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
 IUSE="doc +pcsc-lite secure-messaging openct ctapi readline ssl zlib"
 
 RDEPEND="zlib? ( sys-libs/zlib )
-	readline? ( sys-libs/readline:0 )
-	ssl? ( dev-libs/openssl:0 )
+	readline? ( sys-libs/readline:0= )
+	ssl? ( dev-libs/openssl:0= )
 	openct? ( >=dev-libs/openct-0.5.0 )
 	pcsc-lite? ( >=sys-apps/pcsc-lite-1.3.0 )"
 DEPEND="${RDEPEND}

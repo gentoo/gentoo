@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/usermode-utilities/usermode-utilities-20070815-r3.ebuild,v 1.5 2013/05/12 23:52:16 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/usermode-utilities/usermode-utilities-20070815-r3.ebuild,v 1.6 2015/07/14 07:44:00 vapier Exp $
 
-EAPI="4"
+EAPI="5"
 
 inherit eutils toolchain-funcs
 
@@ -16,7 +16,7 @@ KEYWORDS="amd64 arm x86"
 IUSE="fuse"
 
 RDEPEND="fuse? ( sys-fs/fuse )
-	sys-libs/readline"
+	sys-libs/readline:0="
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"/tools-${PV}

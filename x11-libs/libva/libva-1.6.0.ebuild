@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libva/libva-1.6.0.ebuild,v 1.1 2015/07/06 14:38:15 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libva/libva-1.6.0.ebuild,v 1.2 2015/07/14 08:51:10 aballier Exp $
 
 EAPI=5
 
@@ -31,7 +31,6 @@ else
 	KEYWORDS=""
 fi
 IUSE="+drm egl opengl vdpau wayland X"
-REQUIRED_USE="|| ( drm wayland X )"
 
 VIDEO_CARDS="dummy nvidia intel fglrx nouveau"
 for x in ${VIDEO_CARDS}; do
@@ -60,7 +59,8 @@ PDEPEND="video_cards_nvidia? ( >=x11-libs/libva-vdpau-driver-0.7.4-r1[${MULTILIB
 	video_cards_intel? ( >=x11-libs/libva-intel-driver-1.2.2-r1[${MULTILIB_USEDEP}] )
 	"
 
-REQUIRED_USE="opengl? ( X )"
+REQUIRED_USE="|| ( drm wayland X )
+		opengl? ( X )"
 
 DOCS=( NEWS )
 

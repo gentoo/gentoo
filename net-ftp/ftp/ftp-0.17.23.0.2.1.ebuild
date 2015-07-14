@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/ftp/ftp-0.17.23.0.2.1.ebuild,v 1.3 2015/07/14 07:29:39 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/ftp/ftp-0.17.23.0.2.1.ebuild,v 1.4 2015/07/14 07:40:09 vapier Exp $
 
 EAPI="5"
 
@@ -33,6 +33,9 @@ S=${WORKDIR}/${MY_P}
 src_prepare() {
 	EPATCH_FORCE="yes" EPATCH_SUFFIX="diff" epatch "${WORKDIR}"/debian/patches
 	EPATCH_SUFFIX="patch" epatch "${WORKDIR}"/patch
+	sed -i \
+		-e 's:echo -n:printf %s :' \
+		configure || die
 }
 
 src_configure() {
@@ -43,7 +46,8 @@ src_configure() {
 		--prefix=/usr \
 		$(use_enable ipv6) \
 		$(use_enable readline) \
-		$(use_enable ssl)
+		$(use_enable ssl) \
+		|| die
 }
 
 src_install() {

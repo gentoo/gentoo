@@ -1,6 +1,10 @@
 # ChangeLog for sys-apps/usermode-utilities
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/usermode-utilities/ChangeLog,v 1.39 2013/05/12 23:52:16 vapier Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/usermode-utilities/ChangeLog,v 1.40 2015/07/14 07:44:00 vapier Exp $
+
+  14 Jul 2015; Mike Frysinger <vapier@gentoo.org>
+  usermode-utilities-20070815-r3.ebuild:
+  Update to EAPI=5 and use subslots on readline.
 
   12 May 2013; Mike Frysinger <vapier@gentoo.org>
   usermode-utilities-20070815-r3.ebuild:

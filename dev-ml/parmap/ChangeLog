@@ -1,6 +1,13 @@
 # ChangeLog for dev-ml/parmap
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/parmap/ChangeLog,v 1.5 2015/07/08 05:49:29 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/parmap/ChangeLog,v 1.7 2015/07/14 08:45:01 aballier Exp $
+
+  14 Jul 2015; Alexis Ballier <aballier@gentoo.org> parmap-1.0_rc6.ebuild,
+  +files/parmap-1.0_rc6-fix-bashisms.patch:
+  Fix bashisms in configure, bug #553596 by Rémi Cardona.
+
+  14 Jul 2015; Alexis Ballier <aballier@gentoo.org> -parmap-1.0_rc5.ebuild:
+  remove old
 
   08 Jul 2015; Patrick Lauer <patrick@gentoo.org> parmap-1.0_rc6.ebuild:
   Keyword for ~x86

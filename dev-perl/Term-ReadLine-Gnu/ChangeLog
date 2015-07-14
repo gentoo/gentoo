@@ -1,6 +1,10 @@
 # ChangeLog for dev-perl/Term-ReadLine-Gnu
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Term-ReadLine-Gnu/ChangeLog,v 1.32 2015/02/25 09:26:18 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Term-ReadLine-Gnu/ChangeLog,v 1.33 2015/07/14 07:36:24 vapier Exp $
+
+  14 Jul 2015; Mike Frysinger <vapier@gentoo.org>
+  Term-ReadLine-Gnu-1.226.0.ebuild:
+  Use subslots with readline.
 
 *Term-ReadLine-Gnu-1.226.0 (25 Feb 2015)
 

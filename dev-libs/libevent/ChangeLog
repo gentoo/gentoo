@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/libevent
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libevent/ChangeLog,v 1.294 2015/01/16 19:47:30 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libevent/ChangeLog,v 1.295 2015/07/14 07:32:48 vapier Exp $
+
+  14 Jul 2015; Mike Frysinger <vapier@gentoo.org> libevent-2.0.22.ebuild:
+  Mark arm64/m68k/s390/sh stable #553682.
 
   16 Jan 2015; Jeroen Roovers <jer@gentoo.org> libevent-2.1.5.ebuild:
   Restore keywords now 2.1 is in beta (maybe bug #533540).

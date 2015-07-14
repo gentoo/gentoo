@@ -1,13 +1,13 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=readline? ( sys-libs/readline ) tcpd? ( sys-apps/tcp-wrappers ) !net-ftp/atftp !net-ftp/netkit-tftp app-arch/xz-utils virtual/pkgconfig
+DEPEND=readline? ( sys-libs/readline:0= ) tcpd? ( sys-apps/tcp-wrappers ) !net-ftp/atftp !net-ftp/netkit-tftp app-arch/xz-utils virtual/pkgconfig
 DESCRIPTION=port of the OpenBSD TFTP server
-EAPI=4
+EAPI=5
 HOMEPAGE=http://www.kernel.org/pub/software/network/tftp/
 IUSE=ipv6 readline selinux tcpd
 KEYWORDS=alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~ppc-macos
 LICENSE=BSD-4
-RDEPEND=readline? ( sys-libs/readline ) tcpd? ( sys-apps/tcp-wrappers ) !net-ftp/atftp !net-ftp/netkit-tftp selinux? ( sec-policy/selinux-tftp )
+RDEPEND=readline? ( sys-libs/readline:0= ) tcpd? ( sys-apps/tcp-wrappers ) !net-ftp/atftp !net-ftp/netkit-tftp selinux? ( sec-policy/selinux-tftp )
 SLOT=0
 SRC_URI=mirror://kernel/software/network/tftp/tftp-hpa/tftp-hpa-5.2.tar.xz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=b16a96abddd351fdf4f3f58054e7d4be
+_md5_=324667ad63bd0f3230413cd6a3cdb226

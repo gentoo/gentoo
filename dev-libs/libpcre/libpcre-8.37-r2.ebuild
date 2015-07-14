@@ -1,8 +1,8 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libpcre/libpcre-8.37-r2.ebuild,v 1.1 2015/07/06 16:37:06 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libpcre/libpcre-8.37-r2.ebuild,v 1.2 2015/07/14 07:42:31 vapier Exp $
 
-EAPI="4"
+EAPI="5"
 
 inherit eutils multilib libtool flag-o-matic toolchain-funcs multilib-minimal
 
@@ -27,7 +27,7 @@ REQUIRED_USE="readline? ( !libedit )
 RDEPEND="bzip2? ( app-arch/bzip2 )
 	zlib? ( sys-libs/zlib )
 	libedit? ( dev-libs/libedit )
-	readline? ( sys-libs/readline )"
+	readline? ( sys-libs/readline:0= )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	userland_GNU? ( >=sys-apps/findutils-4.4.0 )"

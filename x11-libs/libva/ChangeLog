@@ -1,6 +1,10 @@
 # ChangeLog for x11-libs/libva
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libva/ChangeLog,v 1.70 2015/07/06 14:38:15 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libva/ChangeLog,v 1.71 2015/07/14 08:51:10 aballier Exp $
+
+  14 Jul 2015; Alexis Ballier <aballier@gentoo.org> libva-1.6.0.ebuild,
+  libva-9999.ebuild:
+  fix regression overwriting REQUIRED_USE, bug #554398
 
 *libva-1.6.0 (06 Jul 2015)
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/ipsec-tools/ipsec-tools-0.8.2.ebuild,v 1.7 2014/11/02 08:51:06 swift Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/ipsec-tools/ipsec-tools-0.8.2.ebuild,v 1.8 2015/07/14 07:43:22 vapier Exp $
 
 EAPI="5"
 
@@ -16,14 +16,12 @@ KEYWORDS="amd64 arm ~mips ppc ppc64 x86"
 IUSE="hybrid idea ipv6 kerberos ldap nat pam rc5 readline selinux stats"
 
 CDEPEND="
-	dev-libs/openssl
+	dev-libs/openssl:0=
 	kerberos? ( virtual/krb5 )
 	ldap? ( net-nds/openldap )
 	pam? ( sys-libs/pam )
-	readline? ( sys-libs/readline )
-	selinux? (
-		sys-libs/libselinux
-	)"
+	readline? ( sys-libs/readline:0= )
+	selinux? ( sys-libs/libselinux )"
 
 DEPEND="${CDEPEND}
 	>=sys-kernel/linux-headers-2.6.30"

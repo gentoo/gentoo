@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/gawk
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/gawk/ChangeLog,v 1.184 2015/07/02 07:08:29 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/gawk/ChangeLog,v 1.185 2015/07/14 07:38:38 vapier Exp $
+
+  14 Jul 2015; Mike Frysinger <vapier@gentoo.org> gawk-4.1.3.ebuild:
+  Use subslots with readline/mpfr.
 
   02 Jul 2015; Lars Wendler <polynomial-c@gentoo.org>
   files/gawk-4.1.3-bsd_configure_readline.patch:

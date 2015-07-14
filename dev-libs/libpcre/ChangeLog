@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/libpcre
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libpcre/ChangeLog,v 1.258 2015/07/06 16:37:06 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libpcre/ChangeLog,v 1.259 2015/07/14 07:42:31 vapier Exp $
+
+  14 Jul 2015; Mike Frysinger <vapier@gentoo.org> libpcre-8.37-r2.ebuild:
+  Update to EAPI=5 and use subslots with readline.
 
 *libpcre-8.37-r2 (06 Jul 2015)
 
