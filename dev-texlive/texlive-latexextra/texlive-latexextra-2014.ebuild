@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-latexextra/texlive-latexextra-2014.ebuild,v 1.2 2015/07/12 15:46:50 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-latexextra/texlive-latexextra-2014.ebuild,v 1.4 2015/07/14 12:23:27 aballier Exp $
 
 EAPI="5"
 
@@ -17,7 +17,7 @@ KEYWORDS="~alpha amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~s390 ~sh ~x86 ~amd64-fbsd ~
 IUSE=""
 DEPEND=">=dev-texlive/texlive-latexrecommended-2014
 >=dev-texlive/texlive-pictures-2014
->=dev-texlive/texlive-fontsrecommended-2008
+>=dev-texlive/texlive-fontsrecommended-2014
 !dev-tex/achemso
 !dev-tex/prosper
 !dev-tex/ha-prosper

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/litecoind/litecoind-0.10.2.2.ebuild,v 1.3 2015/07/11 13:54:41 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/litecoind/litecoind-0.10.2.2-r1.ebuild,v 1.1 2015/07/14 12:01:02 blueness Exp $
 
 EAPI=5
 
@@ -63,7 +63,7 @@ src_configure() {
 		--with-system-leveldb \
 		--with-system-libsecp256k1  \
 		--without-libs \
-		--without-daemon  \
+		--with-daemon  \
 		--without-gui     \
 		--without-qrencode \
 		${my_econf}

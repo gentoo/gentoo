@@ -8,5 +8,5 @@ LICENSE=MIT
 RDEPEND=dev-libs/openssl:0[-bindist] =dev-libs/libsecp256k1-0.0.0_pre20141212 >=dev-libs/boost-1.52.0[threads(+)]
 SLOT=0
 SRC_URI=https://github.com/bitcoin/bitcoin/archive/047a89831760ff124740fe9f58411d57ee087078.tar.gz -> bitcoin-v0.10.0.tgz http://luke.dashjr.org/programs/bitcoin/files/bitcoind/luke-jr/0.10.x/0.10.0.ljr20150311/bitcoin-0.10.0.ljr20150311.patches.txz -> bitcoin-0.10.0.ljr20150311.patches.tar.xz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	bitcoincore	8eb0d9aba88164f5c7acadb660933eba	db-use	82d0e62839f20e1e0d5a2259abd5316f	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	bitcoincore	13573f065d6f6d719fbc1ed5a9958da0	db-use	82d0e62839f20e1e0d5a2259abd5316f	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=ed48cbe268ac62f03af1f5ef03792d3e
