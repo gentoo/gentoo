@@ -1,6 +1,14 @@
 # ChangeLog for net-wireless/hostapd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/hostapd/ChangeLog,v 1.160 2015/05/20 11:07:18 gurligebis Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/hostapd/ChangeLog,v 1.161 2015/07/14 19:36:35 gurligebis Exp $
+
+*hostapd-2.4-r3 (14 Jul 2015)
+
+  14 Jul 2015; <gurligebis@gentoo.org> +hostapd-2.4-r3.ebuild,
+  +files/2015-5/0001-NFC-Avoid-misaligned-read-of-an-NDEF-field.patch,
+  +files/2015-5/0002-NFC-Fix-payload-length-validation-in-NDEF-record-par.patch
+  :
+  Adding security fixes wrt. bug #554862
 
   20 May 2015; <gurligebis@gentoo.org> -hostapd-2.0-r1.ebuild,
   -files/hostapd-2.0-tls_length_fix.patch, metadata.xml:

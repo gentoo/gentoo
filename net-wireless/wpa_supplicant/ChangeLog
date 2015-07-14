@@ -1,6 +1,14 @@
 # ChangeLog for net-wireless/wpa_supplicant
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/wpa_supplicant/ChangeLog,v 1.244 2015/05/28 08:10:04 gurligebis Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/wpa_supplicant/ChangeLog,v 1.245 2015/07/14 19:42:57 gurligebis Exp $
+
+*wpa_supplicant-2.4-r4 (14 Jul 2015)
+
+  14 Jul 2015; <gurligebis@gentoo.org> +wpa_supplicant-2.4-r4.ebuild,
+  +files/2015-5/0001-NFC-Avoid-misaligned-read-of-an-NDEF-field.patch,
+  +files/2015-5/0002-NFC-Fix-payload-length-validation-in-NDEF-record-par.patch
+  :
+  Adding security fixes wrt. bug #554860
 
   28 May 2015; <gurligebis@gentoo.org> -wpa_supplicant-2.4-r1.ebuild,
   wpa_supplicant-2.4-r3.ebuild:

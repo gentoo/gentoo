@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare
+DEPEND=ssl? ( dev-libs/openssl[-bindist] ) kernel_linux? ( dev-libs/libnl:3 crda? ( net-wireless/crda ) ) netlink? ( net-libs/libnfnetlink ) sqlite? ( >=dev-db/sqlite-3 ) virtual/pkgconfig
+DESCRIPTION=IEEE 802.11 wireless LAN Host AP daemon
+EAPI=4
+HOMEPAGE=http://hostap.epitest.fi
+IUSE=ipv6 logwatch netlink sqlite +ssl +wps +crda
+KEYWORDS=~amd64 ~arm ~mips ~ppc ~x86
+LICENSE=|| ( GPL-2 BSD )
+RDEPEND=ssl? ( dev-libs/openssl[-bindist] ) kernel_linux? ( dev-libs/libnl:3 crda? ( net-wireless/crda ) ) netlink? ( net-libs/libnfnetlink ) sqlite? ( >=dev-db/sqlite-3 )
+SLOT=0
+SRC_URI=http://hostap.epitest.fi/releases/hostapd-2.4.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=913eeb4c08407a473c9a3da13447a166
