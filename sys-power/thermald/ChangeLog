@@ -1,6 +1,12 @@
 # ChangeLog for sys-power/thermald
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/thermald/ChangeLog,v 1.2 2015/04/02 05:32:42 dlan Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-power/thermald/ChangeLog,v 1.3 2015/07/14 10:21:10 dlan Exp $
+
+*thermald-1.4.2 (14 Jul 2015)
+
+  14 Jul 2015; Yixun Lan <dlan@gentoo.org> +thermald-1.4.2.ebuild,
+  +files/thermald-1.4.2-terminate.patch:
+  version bump & fix termination bug, bug 550880
 
 *thermald-1.3 (02 Apr 2015)
 
