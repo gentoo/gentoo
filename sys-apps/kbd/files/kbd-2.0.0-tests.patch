@@ -1,3 +1,6 @@
+https://bugs.gentoo.org/485116
+http://lists.altlinux.org/pipermail/kbd/2015-July/000558.html
+
 --- configure.ac
 +++ configure.ac
 @@ -11,7 +11,13 @@
