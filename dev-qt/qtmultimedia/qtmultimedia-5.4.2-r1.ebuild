@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtmultimedia/qtmultimedia-5.4.2.ebuild,v 1.1 2015/06/17 15:21:33 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtmultimedia/qtmultimedia-5.4.2-r1.ebuild,v 1.1 2015/07/14 00:10:43 pesa Exp $
 
 EAPI=5
 inherit qt5-build
@@ -11,7 +11,7 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~hppa ~ppc64 ~x86"
 fi
 
-IUSE="alsa +gstreamer openal +opengl pulseaudio qml widgets"
+IUSE="alsa +gstreamer openal opengl pulseaudio qml widgets"
 
 RDEPEND="
 	>=dev-qt/qtcore-${PV}:5
@@ -34,10 +34,14 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}
-	x11-proto/videoproto
+	gstreamer? ( x11-proto/videoproto )
 "
 
 src_prepare() {
+	# do not rely on qtbase configuration
+	sed -i -e 's/contains(QT_CONFIG, \(alsa\|pulseaudio\))://' \
+		qtmultimedia.pro || die
+
 	qt_use_compile_test alsa
 	qt_use_compile_test gstreamer
 	qt_use_compile_test openal
@@ -47,7 +51,8 @@ src_prepare() {
 		src/multimediawidgets/multimediawidgets.pro
 
 	qt_use_disable_mod qml quick \
-		src/src.pro
+		src/src.pro \
+		src/plugins/plugins.pro
 
 	qt_use_disable_mod widgets widgets \
 		src/src.pro \

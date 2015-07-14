@@ -1,6 +1,13 @@
 # ChangeLog for dev-qt/qtmultimedia
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtmultimedia/ChangeLog,v 1.31 2015/06/17 15:21:33 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtmultimedia/ChangeLog,v 1.32 2015/07/14 00:10:43 pesa Exp $
+
+*qtmultimedia-5.4.2-r1 (14 Jul 2015)
+
+  14 Jul 2015; Davide Pesavento <pesa@gentoo.org> +qtmultimedia-5.4.2-r1.ebuild,
+  -qtmultimedia-5.4.2.ebuild:
+  Fix alsa and pulseaudio USE flags so that they actually work. Stop enabling
+  opengl by default.
 
 *qtmultimedia-5.4.2 (17 Jun 2015)
 
