@@ -1,6 +1,9 @@
 # ChangeLog for net-misc/curl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/curl/ChangeLog,v 1.423 2015/07/06 13:51:37 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/curl/ChangeLog,v 1.424 2015/07/14 18:25:29 klausman Exp $
+
+  14 Jul 2015; Tobias Klausmann <klausman@gentoo.org> curl-7.43.0.ebuild:
+  Stable on alpha, bug 552618
 
   06 Jul 2015; Anthony G. Basile <blueness@gentoo.org> -curl-7.42.0.ebuild:
   Cleanup vulnerable version.  Bug #548130.

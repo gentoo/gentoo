@@ -1,6 +1,9 @@
 # ChangeLog for net-misc/ntp
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/ntp/ChangeLog,v 1.243 2015/07/14 07:33:11 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ntp/ChangeLog,v 1.244 2015/07/14 18:36:21 klausman Exp $
+
+  14 Jul 2015; Tobias Klausmann <klausman@gentoo.org> ntp-4.2.8_p3.ebuild:
+  Stable on alpha, bug 553682
 
   14 Jul 2015; Mike Frysinger <vapier@gentoo.org> ntp-4.2.8_p3.ebuild:
   Update to EAPI=5 and use subslots on readline/openssl.
