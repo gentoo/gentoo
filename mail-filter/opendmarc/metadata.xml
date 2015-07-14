@@ -8,4 +8,8 @@
 	<upstream>
 		<remote-id type="sourceforge">opendmarc</remote-id>
 	</upstream>
+	<use>
+		<flag name='spf'>Use the <pkg>mail-filter/libspf2</pkg>
+			for Sender Policy Framework checking</flag>
+	</use>
 </pkgmetadata>

@@ -1,6 +1,11 @@
 # ChangeLog for net-print/cups-filters
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/cups-filters/ChangeLog,v 1.158 2015/07/09 18:23:07 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-print/cups-filters/ChangeLog,v 1.159 2015/07/14 17:08:24 dilfridge Exp $
+
+  14 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +files/cups-filters-1.0.71-poppler0340.patch, cups-filters-1.0.71.ebuild:
+  Add hack to make cups-filters build against Poppler 0.34. Partly disables
+  color management, we need a better solution on the long run.
 
   09 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> cups-filters-1.0.71.ebuild:
   arm stable wrt bug #553836

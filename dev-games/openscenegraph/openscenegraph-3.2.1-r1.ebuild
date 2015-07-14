@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/openscenegraph/openscenegraph-3.0.1-r1.ebuild,v 1.5 2014/08/20 23:47:19 reavertm Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-games/openscenegraph/openscenegraph-3.2.1-r1.ebuild,v 1.1 2015/07/14 17:30:59 reavertm Exp $
 
 EAPI=5
 
@@ -11,33 +11,33 @@ MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Open source high performance 3D graphics toolkit"
 HOMEPAGE="http://www.openscenegraph.org/projects/osg/"
-SRC_URI="http://www.openscenegraph.org/downloads/stable_releases/${MY_P}/source/${MY_P}.zip"
+SRC_URI="http://www.openscenegraph.org/downloads/developer_releases/${MY_P}.zip"
 
 LICENSE="wxWinLL-3 LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
-IUSE="curl debug doc examples ffmpeg fltk fox gdal gif glut gtk jpeg jpeg2k
-openexr openinventor osgapps pdf png qt4 sdl svg tiff truetype vnc wxwidgets
+KEYWORDS="~amd64 ~ppc ~x86"
+IUSE="asio curl debug doc examples ffmpeg fltk fox gdal gif glut gtk jpeg jpeg2k
+openexr openinventor osgapps pdf png qt4 qt5 sdl svg tiff truetype vnc wxwidgets
 xine xrandr zlib"
 
-# NOTE: OpenAL (support missing)
-# TODO: COLLADA, FBX, ITK, OpenVRML, Performer, DCMTK
+REQUIRED_USE="
+	qt4? ( !qt5 )
+	qt5? ( !qt4 )
+"
+
+# TODO: COLLADA, FBX, GTA, ITK, OpenVRML, Performer, DCMTK
 RDEPEND="
 	x11-libs/libSM
 	x11-libs/libXext
 	virtual/glu
 	virtual/opengl
+	asio? ( dev-cpp/asio )
 	curl? ( net-misc/curl )
 	examples? (
 		fltk? ( x11-libs/fltk:1[opengl] )
 		fox? ( x11-libs/fox:1.6[opengl] )
 		glut? ( media-libs/freeglut )
 		gtk? ( x11-libs/gtkglext )
-		qt4? (
-			dev-qt/qtcore:4
-			dev-qt/qtgui:4
-			dev-qt/qtopengl:4
-		)
 		sdl? ( media-libs/libsdl )
 		wxwidgets? ( x11-libs/wxGTK[opengl,X] )
 	)
@@ -53,6 +53,17 @@ RDEPEND="
 	openinventor? ( media-libs/coin )
 	pdf? ( app-text/poppler[cairo] )
 	png? ( media-libs/libpng:0 )
+	qt4? (
+		dev-qt/qtcore:4
+		dev-qt/qtgui:4
+		dev-qt/qtopengl:4
+	)
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtopengl:5
+		dev-qt/qtwidgets:5
+	)
 	svg? (
 		gnome-base/librsvg
 		x11-libs/cairo
@@ -77,10 +88,7 @@ S=${WORKDIR}/${MY_P}
 DOCS=(AUTHORS.txt ChangeLog NEWS.txt)
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.0.1-cmake.patch
-	"${FILESDIR}"/${PN}-3.0.1-libav-0.7.patch
-	"${FILESDIR}"/${PN}-3.0.1-xinelib12x.patch
-	"${FILESDIR}"/${PN}-3.0.1-libav-9.patch
+	"${FILESDIR}"/${PN}-3.2.1-cmake.patch
 )
 
 src_configure() {
@@ -95,8 +103,8 @@ src_configure() {
 	mycmakeargs=(
 		-DDYNAMIC_OPENSCENEGRAPH=ON
 		-DWITH_ITK=OFF
-		-DWITH_OpenAL=OFF # Commented out in buildsystem
 		-DGENTOO_DOCDIR="/usr/share/doc/${PF}"
+		$(cmake-utils_use_with asio)
 		$(cmake-utils_use_with curl)
 		$(cmake-utils_use_build doc DOCUMENTATION)
 		$(cmake-utils_use_build osgapps OSG_APPLICATIONS)
@@ -114,17 +122,23 @@ src_configure() {
 		$(cmake-utils_use_with openinventor Inventor)
 		$(cmake-utils_use_with pdf Poppler-glib)
 		$(cmake-utils_use_with png)
-		$(cmake-utils_use_with qt4)
 		$(cmake-utils_use_with sdl)
 		$(cmake-utils_use_with svg rsvg)
 		$(cmake-utils_use_with tiff)
-		$(cmake-utils_use_with truetype FreeType)
+		$(cmake-utils_use_with truetype Freetype)
 		$(cmake-utils_use_with vnc LibVNCServer)
 		$(cmake-utils_use_with wxwidgets wxWidgets)
 		$(cmake-utils_use_with xine)
 		$(cmake-utils_use xrandr OSGVIEWER_USE_XRANDR)
 		$(cmake-utils_use_with zlib)
 	)
+	if use qt4; then
+		mycmakeargs+=( -DOSG_USE_QT=ON -DDESIRED_QT_VERSION=4 )
+	elif use qt5; then
+		mycmakeargs+=( -DOSG_USE_QT=ON -DDESIRED_QT_VERSION=5 )
+	else
+		mycmakeargs+=( -DOSG_USE_QT=OFF )
+	fi
 	cmake-utils_src_configure
 }
 

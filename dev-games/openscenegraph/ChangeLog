@@ -1,6 +1,15 @@
 # ChangeLog for dev-games/openscenegraph
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/openscenegraph/ChangeLog,v 1.62 2015/06/06 03:28:39 reavertm Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-games/openscenegraph/ChangeLog,v 1.63 2015/07/14 17:30:59 reavertm Exp $
+
+*openscenegraph-3.2.1-r1 (14 Jul 2015)
+
+  14 Jul 2015; Maciej Mrozowski <reavertm@gentoo.org>
+  +openscenegraph-3.2.1-r1.ebuild, -files/openscenegraph-3.0.1-cmake.patch,
+  -files/openscenegraph-3.0.1-libav-0.7.patch,
+  -files/openscenegraph-3.0.1-libav-9.patch,
+  -files/openscenegraph-3.0.1-xinelib12x.patch, -openscenegraph-3.0.1-r1.ebuild:
+  Add Qt5 support, fixes bug 553354. Remove old.
 
   06 Jun 2015; Maciej Mrozowski <reavertm@gentoo.org>
   files/openscenegraph-3.2.1-cmake.patch, openscenegraph-3.2.1.ebuild:

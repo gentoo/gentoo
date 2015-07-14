@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/opendmarc/opendmarc-1.3.0.ebuild,v 1.1 2014/09/02 08:47:19 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/opendmarc/opendmarc-1.3.0.ebuild,v 1.2 2015/07/14 17:06:29 grobian Exp $
 
 EAPI=5
 
@@ -13,12 +13,13 @@ SRC_URI="mirror://sourceforge/opendmarc/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~x86 ~x86-fbsd"
-IUSE=""
+IUSE="spf"
 
 DEPEND="dev-perl/DBI
 	|| ( mail-filter/libmilter mail-mta/sendmail )"
 RDEPEND="${DEPEND}
-	dev-perl/Switch"
+	dev-perl/Switch
+	spf? ( mail-filter/libspf2 )"
 
 pkg_setup() {
 	enewgroup milter
@@ -28,7 +29,8 @@ pkg_setup() {
 src_configure() {
 	econf \
 		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
-		--htmldir="${EPREFIX}"/usr/share/doc/${PF}/html
+		--htmldir="${EPREFIX}"/usr/share/doc/${PF}/html \
+		$(use_with spf)
 }
 
 src_install() {
