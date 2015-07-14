@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/bc/bc-1.06.95-r1.ebuild,v 1.7 2015/07/13 18:20:36 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/bc/bc-1.06.95-r1.ebuild,v 1.8 2015/07/14 03:06:33 vapier Exp $
 
 EAPI="2"
 
@@ -36,6 +36,10 @@ src_configure() {
 	fi
 	use static && append-ldflags -static
 	econf ${myconf}
+
+	# Do not regen docs -- configure produces a small fragment that includes
+	# the version info which causes all pages to regen (newer file). #554774
+	touch -r doc doc/*
 }
 
 src_compile() {

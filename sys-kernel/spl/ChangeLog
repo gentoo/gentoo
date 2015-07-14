@@ -1,6 +1,9 @@
 # ChangeLog for sys-kernel/spl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/spl/ChangeLog,v 1.84 2015/07/12 14:19:38 dlan Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/spl/ChangeLog,v 1.85 2015/07/14 03:21:51 dlan Exp $
+
+  14 Jul 2015; Yixun Lan <dlan@gentoo.org> spl-0.6.4.2.ebuild:
+  support kernel latest version 4.1, fixed
 
 *spl-0.6.4.2 (12 Jul 2015)
 

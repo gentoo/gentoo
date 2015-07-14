@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/spl/spl-0.6.4.2.ebuild,v 1.1 2015/07/12 14:19:38 dlan Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/spl/spl-0.6.4.2.ebuild,v 1.2 2015/07/14 03:21:51 dlan Exp $
 
 EAPI="4"
 AUTOTOOLS_AUTORECONF="1"
@@ -58,7 +58,7 @@ pkg_setup() {
 	kernel_is ge 2 6 32 || die "Linux 2.6.32 or newer required"
 
 	[ ${PV} != "9999" ] && \
-		{ kernel_is le 4 20 || die "Linux 4.0 is the latest supported version."; }
+		{ kernel_is le 4 1 || die "Linux 4.1 is the latest supported version."; }
 
 	check_extra_config
 }

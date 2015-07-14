@@ -1,6 +1,11 @@
 # ChangeLog for sys-apps/kbd
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/kbd/ChangeLog,v 1.130 2014/08/01 10:35:43 vapier Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/kbd/ChangeLog,v 1.131 2015/07/14 03:27:09 vapier Exp $
+
+*kbd-2.0.3 (14 Jul 2015)
+
+  14 Jul 2015; Mike Frysinger <vapier@gentoo.org> +kbd-2.0.3.ebuild:
+  Version bump.
 
 *kbd-2.0.2 (01 Aug 2014)
 
