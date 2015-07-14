@@ -1,6 +1,9 @@
 # ChangeLog for net-ftp/ftp
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/ftp/ChangeLog,v 1.38 2012/09/29 16:41:57 ulm Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/ftp/ChangeLog,v 1.39 2015/07/14 07:29:39 vapier Exp $
+
+  14 Jul 2015; Mike Frysinger <vapier@gentoo.org> ftp-0.17.23.0.2.1.ebuild:
+  Update to EAPI=5 and use subslots on readline/openssl/ncurses.
 
   29 Sep 2012; Ulrich Müller <ulm@gentoo.org> ftp-0.17-r7.ebuild,
   ftp-0.17.23.0.2.1.ebuild:
