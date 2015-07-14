@@ -1,0 +1,10 @@
+# ChangeLog for dev-util/kdevelop-qmljs
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/kdevelop-qmljs/ChangeLog,v 1.1 2015/07/14 20:52:52 johu Exp $
+
+*kdevelop-qmljs-1.7.0 (14 Jul 2015)
+
+  14 Jul 2015; Johannes Huber <johu@gentoo.org> +kdevelop-qmljs-1.7.0.ebuild,
+  +metadata.xml:
+  New package wrt bug #534464. Import from kde overlay, Initial ebuild by
+  Øystein Senneset Haaland <oystnsh@online.no>.
