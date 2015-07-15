@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/thermald/thermald-1.4.2.ebuild,v 1.1 2015/07/14 10:21:10 dlan Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-power/thermald/thermald-1.4.2-r1.ebuild,v 1.1 2015/07/15 04:20:40 dlan Exp $
 
 EAPI=5
 
@@ -28,7 +28,7 @@ RDEPEND="${CDEPEND}"
 DOCS=( thermal_daemon_usage.txt README.txt )
 
 PATCHES=(
-	"${FILESDIR}/${P}-terminate.patch"
+	"${FILESDIR}/${P}-terminate-r1.patch"
 )
 
 src_configure() {

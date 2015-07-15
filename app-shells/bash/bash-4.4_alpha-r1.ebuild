@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/bash/bash-4.4_alpha.ebuild,v 1.1 2015/07/13 04:30:45 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-shells/bash/bash-4.4_alpha-r1.ebuild,v 1.1 2015/07/15 04:29:14 vapier Exp $
 
 EAPI="5"
 
@@ -84,6 +84,8 @@ src_prepare() {
 	# Avoid regenerating docs after patches #407985
 	sed -i -r '/^(HS|RL)USER/s:=.*:=:' doc/Makefile.in || die
 	touch -r . doc/*
+
+	epatch "${FILESDIR}"/${PN}-4.4-optimize-fork.patch
 
 	epatch_user
 }
