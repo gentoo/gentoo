@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-plugins/freshplayerplugin/freshplayerplugin-0.2.3.ebuild,v 1.1 2015/03/11 01:13:44 grknight Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-plugins/freshplayerplugin/freshplayerplugin-0.3.1.ebuild,v 1.1 2015/07/14 23:57:18 grknight Exp $
 
 EAPI=5
 
@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/i-rinat/freshplayerplugin"
 DESCRIPTION="PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers"
 SRC_URI="https://github.com/i-rinat/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 SLOT=0
-IUSE="pulseaudio"
+IUSE="gtk3 jack pulseaudio vaapi"
 
 KEYWORDS="~amd64 ~x86"
 
@@ -24,12 +24,18 @@ CDEPEND="
 	dev-libs/openssl:0=
 	media-libs/alsa-lib:=
 	media-libs/freetype:2=
+	media-libs/libv4l:0=
 	media-libs/mesa:=[egl,gles2]
-	x11-libs/gtk+:2=
 	x11-libs/libXrandr:=
 	x11-libs/libXrender:=
 	x11-libs/pango:=[X]
+	jack? ( media-sound/jack )
 	pulseaudio? ( media-sound/pulseaudio )
+	!gtk3? ( x11-libs/gtk+:2= )
+	gtk3? ( x11-libs/gtk+:3= )
+	vaapi? ( x11-libs/libva
+		x11-libs/libvdpau
+	)
 "
 
 DEPEND="${CDEPEND}
@@ -45,10 +51,16 @@ RDEPEND="${CDEPEND}
 	)
 	"
 
-PATCHES=( "${FILESDIR}/with-pulseaudio-cmake.patch" )
+PATCHES=( "${FILESDIR}/0.2.4-cmake.patch" )
 
 src_configure() {
-	mycmakeargs=( $(cmake-utils_use_with pulseaudio PULSEAUDIO)  )
+	mycmakeargs=(
+		$(cmake-utils_use_with jack JACK)
+		$(cmake-utils_use_with pulseaudio PULSEAUDIO)
+		-DWITH_GTK=$(usex gtk3 3 2)
+		-DCMAKE_SKIP_RPATH=1
+		-DWITH_HWDEC=$(usex vaapi 1 0)
+	)
 	cmake-utils_src_configure
 }
 
