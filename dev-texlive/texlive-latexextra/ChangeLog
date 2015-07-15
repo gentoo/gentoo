@@ -1,6 +1,10 @@
 # ChangeLog for dev-texlive/texlive-latexextra
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-latexextra/ChangeLog,v 1.94 2015/07/14 12:23:27 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-latexextra/ChangeLog,v 1.95 2015/07/15 18:05:09 zlogene Exp $
+
+  15 Jul 2015; Mikle Kolyada <zlogene@gentoo.org>
+  texlive-latexextra-2014.ebuild:
+  x86 stable wrt bug #554694
 
   14 Jul 2015; Alexis Ballier <aballier@gentoo.org>
   texlive-latexextra-2014.ebuild:

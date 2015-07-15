@@ -11,4 +11,4 @@ REQUIRED_USE=ffmpeg? ( opencv ) ois? ( ogre )
 SLOT=0
 SRC_URI=http://gforge.inria.fr/frs/download.php/latestfile/475/ViSP-2.10.0.tar.gz
 _eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=a77c577024cc4f9ece22ac01f593c814
+_md5_=a0b69f23088f44dfa01cdc1a61f3b5e0

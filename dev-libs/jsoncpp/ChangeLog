@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/jsoncpp
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/jsoncpp/ChangeLog,v 1.25 2015/06/16 12:21:03 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/jsoncpp/ChangeLog,v 1.26 2015/07/15 17:54:08 klausman Exp $
+
+  15 Jul 2015; Tobias Klausmann <klausman@gentoo.org> jsoncpp-0.10.2-r1.ebuild:
+  Stable on alpha, bug 551320
 
   16 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> jsoncpp-0.10.2-r1.ebuild:
   x86 stable wrt bug #551320

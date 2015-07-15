@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/fakefs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/fakefs/ChangeLog,v 1.65 2015/06/07 17:44:05 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/fakefs/ChangeLog,v 1.66 2015/07/15 18:16:18 klausman Exp $
+
+  15 Jul 2015; Tobias Klausmann <klausman@gentoo.org> fakefs-0.6.0.ebuild:
+  Stable on alpha, bug 546484
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

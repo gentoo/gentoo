@@ -1,6 +1,10 @@
 # ChangeLog for dev-ruby/test-unit
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/test-unit/ChangeLog,v 1.124 2015/06/30 05:07:22 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/test-unit/ChangeLog,v 1.125 2015/07/15 18:16:07 klausman Exp $
+
+  15 Jul 2015; Tobias Klausmann <klausman@gentoo.org>
+  test-unit-1.2.3-r1.ebuild:
+  Stable on alpha, bug 546484
 
   30 Jun 2015; Hans de Graaff <graaff@gentoo.org> test-unit-3.1.2.ebuild:
   Add unconditional build dependency on yard to really fix 553448.
