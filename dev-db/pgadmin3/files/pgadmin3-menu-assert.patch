@@ -1,0 +1,14 @@
+X-Git-Url: http://git.postgresql.org/gitweb/?p=pgadmin3.git;a=blobdiff_plain;f=pgadmin%2Fctl%2FctlMenuToolbar.cpp;h=4a70089698c37f1f4fcd1bdd78948b4b4336969d;hp=8951aa409177c5e72e9cc0a7a31d177966a7a104;hb=a00916753f88ee9323abd2ea8cddb01428b296fc;hpb=e3ab3ddd6b5faafbc883cfb5003b6a2cecef2ce2
+
+diff --git a/pgadmin/ctl/ctlMenuToolbar.cpp b/pgadmin/ctl/ctlMenuToolbar.cpp
+index 8951aa4..4a70089 100644
+--- a/pgadmin/ctl/ctlMenuToolbar.cpp
++++ b/pgadmin/ctl/ctlMenuToolbar.cpp
+@@ -109,7 +109,7 @@ void ctlMenuButton::DoProcessLeftClick(wxMouseEvent &event)
+ 		menu_pos.y = button_size.GetHeight();
+ 	}
+ 
+-	PopupMenu(m_menu, menu_pos);
++	DoPopupMenu(m_menu, menu_pos.x, menu_pos.y);
+ }
+ 

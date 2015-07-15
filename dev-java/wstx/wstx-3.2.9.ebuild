@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/wstx/wstx-3.2.9.ebuild,v 1.3 2015/06/28 10:16:44 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/wstx/wstx-3.2.9.ebuild,v 1.4 2015/07/15 11:20:17 zlogene Exp $
 
 EAPI="5"
 
@@ -15,7 +15,7 @@ SRC_URI="http://woodstox.codehaus.org/${PV}/${PN}-src-${PV}.zip"
 
 LICENSE="Apache-2.0"
 SLOT="3.2"
-KEYWORDS="amd64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 
 COMMON_DEP="
 	dev-java/emma:0

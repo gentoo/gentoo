@@ -1,6 +1,12 @@
 # ChangeLog for dev-db/pgadmin3
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/pgadmin3/ChangeLog,v 1.107 2015/07/11 19:13:27 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/pgadmin3/ChangeLog,v 1.108 2015/07/15 11:24:52 titanofold Exp $
+
+*pgadmin3-1.20.0-r2 (15 Jul 2015)
+
+  15 Jul 2015; Aaron W. Swenson <titanofold@gentoo.org>
+  +pgadmin3-1.20.0-r2.ebuild, +files/pgadmin3-menu-assert.patch:
+  Fix bug 554872 with patch from upstream. Also, added epatch_user line.
 
   11 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> pgadmin3-1.20.0-r1.ebuild:
   x86 stable wrt bug #551322
