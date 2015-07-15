@@ -1,6 +1,11 @@
 # ChangeLog for app-misc/vifm
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/vifm/ChangeLog,v 1.54 2015/07/11 01:25:58 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/vifm/ChangeLog,v 1.55 2015/07/15 21:22:02 nimiux Exp $
+
+*vifm-0.8 (15 Jul 2015)
+
+  15 Jul 2015; Chema Alonso <nimiux@gentoo.org> +vifm-0.8.ebuild:
+  Version bump
 
   11 Jul 2015; Tim Harder <radhermit@gentoo.org> vifm-0.7.2.ebuild,
   vifm-0.7.7.ebuild, vifm-0.7.8.ebuild:

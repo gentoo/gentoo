@@ -4,11 +4,11 @@ DESCRIPTION=xfs filesystem utilities
 EAPI=4
 HOMEPAGE=http://oss.sgi.com/projects/xfs/
 IUSE=libedit nls readline static static-libs
-KEYWORDS=alpha amd64 arm hppa ~ia64 ~mips ~ppc ppc64 ~s390 ~sh ~sparc x86
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ~ppc ppc64 ~s390 ~sh ~sparc x86
 LICENSE=LGPL-2.1
 RDEPEND=!static? ( >=sys-apps/util-linux-2.17.2 readline? ( sys-libs/readline ) !readline? ( libedit? ( dev-libs/libedit ) ) ) !<sys-fs/xfsdump-3
 REQUIRED_USE=static? ( static-libs )
 SLOT=0
 SRC_URI=ftp://oss.sgi.com/projects/xfs/cmd_tars/xfsprogs-3.2.2.tar.gz ftp://oss.sgi.com/projects/xfs/previous/cmd_tars/xfsprogs-3.2.2.tar.gz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=a1573101e92d6c3f22aad6c036bd467f
+_md5_=e9afb7e5a3ed02305ed051728753f532
