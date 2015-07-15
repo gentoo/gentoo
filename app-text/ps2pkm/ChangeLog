@@ -1,6 +1,10 @@
 # ChangeLog for app-text/ps2pkm
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/ps2pkm/ChangeLog,v 1.43 2015/07/12 17:16:52 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/ps2pkm/ChangeLog,v 1.44 2015/07/15 09:28:35 aballier Exp $
+
+  15 Jul 2015; Alexis Ballier <aballier@gentoo.org>
+  ps2pkm-1.5_p20140525.ebuild:
+  fix build with kpathsea from texlive 2015
 
   12 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> ps2pkm-1.5_p20140525.ebuild:
   x86 stable wrt bug #550840

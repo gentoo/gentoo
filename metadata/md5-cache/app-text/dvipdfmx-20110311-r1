@@ -1,5 +1,5 @@
 DEFINED_PHASES=install postinst postrm prepare
-DEPEND=app-text/libpaper >=media-libs/libpng-1.2:0 sys-libs/zlib dev-libs/kpathsea app-text/libpaper !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=app-text/libpaper >=media-libs/libpng-1.2:0 sys-libs/zlib dev-libs/kpathsea app-text/libpaper virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=DVI to PDF translator with multi-byte character support
 EAPI=3
 HOMEPAGE=http://project.ktug.or.kr/dvipdfmx/
@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=app-text/libpaper >=media-libs/libpng-1.2:0 sys-libs/zlib dev-libs/kpathsea app-text/libpaper virtual/tex-base >=app-text/poppler-0.12.3-r3 app-text/poppler-data
 SLOT=0
 SRC_URI=http://project.ktug.or.kr/dvipdfmx/snapshot/latest/dvipdfmx-20110311.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	texlive-common	8bd0f2143e4bb5fa3bb0bb56aa08006f	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=b0986e4da9f04491aff55bf07de277d9
+_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	texlive-common	8bd0f2143e4bb5fa3bb0bb56aa08006f	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=8a3f72e31d3167167072b6a6b32cf33b

@@ -1,6 +1,9 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1709 2015/07/14 11:51:39 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1710 2015/07/15 09:03:11 dilfridge Exp $
+
+  15 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org> kde4-meta.eclass:
+  Fix unpacking of noakonadi branch
 
   14 Jul 2015; Anthony G. Basile <blueness@gentoo.org> bitcoincore.eclass:
   Update for bitcoind 0.11.0.

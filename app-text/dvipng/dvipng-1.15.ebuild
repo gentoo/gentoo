@@ -1,8 +1,10 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/dvipng/dvipng-1.15.ebuild,v 1.1 2015/03/09 07:44:39 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/dvipng/dvipng-1.15.ebuild,v 1.2 2015/07/15 09:17:37 aballier Exp $
 
 EAPI=5
+
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Translate DVI files into PNG or GIF graphics"
 HOMEPAGE="http://dvipng.sourceforge.net/"
@@ -14,7 +16,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
 IUSE="truetype test"
 
 RDEPEND="
-	dev-libs/kpathsea
+	dev-libs/kpathsea:=
 	media-libs/gd[jpeg,png]
 	media-libs/libpng:0=
 	virtual/latex-base
@@ -22,11 +24,13 @@ RDEPEND="
 	truetype? ( >=media-libs/freetype-2.1.5 )"
 DEPEND="${RDEPEND}
 	virtual/texi2dvi
+	virtual/pkgconfig
 	test? ( dev-texlive/texlive-fontsrecommended )"
 
 DOCS="ChangeLog README RELEASE"
 
 src_configure() {
+	has_version '>=dev-libs/kpathsea-6.2.1' && append-cppflags "$($(tc-getPKG_CONFIG) --cflags kpathsea)"
 	if ! use truetype; then
 		sed -i -e 's/FT_Init_FreeType/dIsAbLe&/' configure || die "sed failed"
 	fi

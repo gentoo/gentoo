@@ -1,6 +1,15 @@
 # ChangeLog for sys-cluster/ceph
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/ceph/ChangeLog,v 1.73 2015/05/16 12:20:13 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/ceph/ChangeLog,v 1.74 2015/07/15 08:57:51 dlan Exp $
+
+*ceph-0.94.2 (15 Jul 2015)
+*ceph-0.87.2 (15 Jul 2015)
+*ceph-0.80.10 (15 Jul 2015)
+
+  15 Jul 2015; Yixun Lan <dlan@gentoo.org> +ceph-0.80.10.ebuild,
+  -ceph-0.87.1.ebuild, +ceph-0.87.2.ebuild, -ceph-0.93.ebuild,
+  +ceph-0.94.2.ebuild:
+  version bump
 
   16 May 2015; Anthony G. Basile <blueness@gentoo.org> ceph-0.93.ebuild,
   ceph-9999.ebuild:

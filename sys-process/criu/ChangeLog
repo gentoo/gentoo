@@ -1,6 +1,14 @@
 # ChangeLog for sys-process/criu
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/criu/ChangeLog,v 1.25 2015/07/13 05:39:53 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-process/criu/ChangeLog,v 1.27 2015/07/15 09:12:55 dlan Exp $
+
+  15 Jul 2015; Yixun Lan <dlan@gentoo.org> -criu-1.6.ebuild:
+  drop it, since we've got 1.6-r1
+
+*criu-1.6-r1 (15 Jul 2015)
+
+  15 Jul 2015; Yixun Lan <dlan@gentoo.org> +criu-1.6-r1.ebuild:
+  fix wrong installed logrotate dir, bug 552612, thanks Alex Turbov
 
   13 Jul 2015; Mike Frysinger <vapier@gentoo.org> criu-1.6.ebuild:
   Fix ARCH & OBJCOPY handling for cross-compiling #552234 by Kevin Cernekee.

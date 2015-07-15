@@ -1,6 +1,10 @@
 # ChangeLog for app-doc/clsync-docs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/clsync-docs/ChangeLog,v 1.4 2015/06/05 12:09:41 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-doc/clsync-docs/ChangeLog,v 1.5 2015/07/15 09:12:30 bircoph Exp $
+
+  15 Jul 2015; Andrew Savchenko <bircoph@gentoo.org> clsync-docs-0.4.1.ebuild:
+  Depend on doxygen only when API build is requested. Thanks for the
+  report to D.Yu. Okunev (dyokunev@ut.mephi.ru)
 
   05 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

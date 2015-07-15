@@ -69,17 +69,14 @@ add support for isl-0.15+
  
  	fprintf(file, "\n");
  }
-
-https://groups.google.com/d/msg/isl-development/362AYAibze4/STY799KhdHMJ
-
 --- a/source/isl/constraints.c
-+++ a/source/isl/constraints.c
-@@ -438,6 +438,8 @@
++++ b/source/isl/constraints.c
+@@ -450,7 +450,7 @@ CloogConstraintSet *cloog_constraint_set_copy(CloogConstraintSet *constraints)
+ {
+ 	isl_basic_set *bset;
+ 	bset = cloog_constraints_set_to_isl(constraints);
+-	return cloog_constraint_set_from_isl_basic_set(isl_basic_set_dup(bset));
++	return cloog_constraint_set_from_isl_basic_set(isl_basic_set_copy(bset));
  }
  
  
-+/* Newer isl doesn't declare this in the headers, but it still exports the symbol ... */
-+extern struct isl_basic_set *isl_basic_set_dup(struct isl_basic_set *bset);
- 
- /**
-  * cloog_constraint_set_copy function:

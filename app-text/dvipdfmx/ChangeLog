@@ -1,6 +1,10 @@
 # ChangeLog for app-text/dvipdfmx
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/dvipdfmx/ChangeLog,v 1.86 2015/02/28 13:51:55 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/dvipdfmx/ChangeLog,v 1.87 2015/07/15 09:14:43 aballier Exp $
+
+  15 Jul 2015; Alexis Ballier <aballier@gentoo.org>
+  dvipdfmx-20110311-r1.ebuild:
+  fix build with kpathsea from texlive 2015
 
   28 Feb 2015; Manuel Rüger <mrueg@gentoo.org> -dvipdfmx-20110311.ebuild:
   Remove old.

@@ -1,6 +1,14 @@
 # ChangeLog for app-text/dvipsk
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/dvipsk/ChangeLog,v 1.44 2015/07/12 17:16:08 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/dvipsk/ChangeLog,v 1.46 2015/07/15 09:21:55 aballier Exp $
+
+  15 Jul 2015; Alexis Ballier <aballier@gentoo.org>
+  dvipsk-5.994_p20140525.ebuild:
+  fix build with kpathsea from texlive 2015
+
+  15 Jul 2015; Alexis Ballier <aballier@gentoo.org>
+  -dvipsk-5.991_p20110705-r1.ebuild:
+  remove old
 
   12 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> dvipsk-5.994_p20140525.ebuild:
   x86 stable wrt bug #550840

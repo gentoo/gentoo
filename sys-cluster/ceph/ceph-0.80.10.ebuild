@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/ceph/ceph-0.87.1.ebuild,v 1.3 2015/04/08 18:25:44 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/ceph/ceph-0.80.10.ebuild,v 1.1 2015/07/15 08:57:51 dlan Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
@@ -24,11 +24,11 @@ HOMEPAGE="http://ceph.com/"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="babeltrace cryptopp debug fuse gtk libatomic +libaio lttng +nss radosgw static-libs tcmalloc xfs zfs"
+IUSE="cryptopp debug fuse gtk libatomic +libaio +nss radosgw static-libs tcmalloc xfs zfs"
 
 CDEPEND="
 	app-arch/snappy
-	dev-libs/boost:=[threads]
+	<dev-libs/boost-1.56.0:=[threads]
 	dev-libs/fcgi
 	dev-libs/libaio
 	dev-libs/libedit
@@ -38,7 +38,6 @@ CDEPEND="
 	sys-apps/keyutils
 	sys-apps/util-linux
 	dev-libs/libxml2
-	babeltrace? ( dev-util/babeltrace )
 	fuse? ( sys-fs/fuse )
 	libatomic? ( dev-libs/libatomic_ops )
 	xfs? ( sys-fs/xfsprogs )
@@ -54,7 +53,6 @@ CDEPEND="
 		net-misc/curl
 	)
 	tcmalloc? ( dev-util/google-perftools )
-	lttng? ( dev-util/lttng-ust )
 	$(python_gen_any_dep '
 	' )
 	${PYTHON_DEPS}
@@ -74,7 +72,6 @@ REQUIRED_USE="
 STRIP_MASK="/usr/lib*/rados-classes/*"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.87.1-glibc-2.20.patch
 	"${FILESDIR}"/${PN}-0.79-libzfs.patch
 )
 
@@ -84,9 +81,6 @@ pkg_setup() {
 
 src_prepare() {
 	[[ ${PATCHES[@]} ]] && epatch "${PATCHES[@]}"
-
-	sed -e '1i#include <stdint.h>' \
-		-i src/tracing/{objectstore,oprequest,osd,pg}.tp || die
 
 	epatch_user
 	eautoreconf
@@ -108,11 +102,7 @@ src_configure() {
 		$(use_enable static-libs static) \
 		$(use_with tcmalloc) \
 		$(use_with xfs libxfs) \
-		$(use_with zfs libzfs) \
-		--without-kinetic \
-		--without-librocksdb \
-		$(use_with lttng ) \
-		$(use_with babeltrace)
+		$(use_with zfs libzfs)
 }
 
 src_install() {

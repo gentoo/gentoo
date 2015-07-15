@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/criu/criu-1.6.ebuild,v 1.2 2015/07/13 05:39:53 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-process/criu/criu-1.6-r1.ebuild,v 1.1 2015/07/15 09:07:25 dlan Exp $
 
 EAPI=5
 
@@ -63,9 +63,10 @@ src_test() {
 src_install() {
 	emake \
 		ARCH="$(criu_arch)" \
-		SYSCONFDIR="${EPREFIX}"/etc \
 		PREFIX="${EPREFIX}"/usr \
+		LOGROTATEDIR="${EPREFIX}"/etc/logrotate.d \
 		DESTDIR="${D}" \
 		install
+
 	dodoc CREDITS README.md
 }

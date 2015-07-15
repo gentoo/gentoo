@@ -1,9 +1,9 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/dvipdfmx/dvipdfmx-20110311-r1.ebuild,v 1.10 2015/02/28 13:22:55 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/dvipdfmx/dvipdfmx-20110311-r1.ebuild,v 1.11 2015/07/15 09:14:43 aballier Exp $
 
 EAPI=3
-inherit autotools eutils texlive-common
+inherit autotools eutils texlive-common flag-o-matic toolchain-funcs
 
 DESCRIPTION="DVI to PDF translator with multi-byte character support"
 HOMEPAGE="http://project.ktug.or.kr/dvipdfmx/"
@@ -23,11 +23,14 @@ RDEPEND="${DEPEND}
 	virtual/tex-base
 	>=app-text/poppler-0.12.3-r3
 	app-text/poppler-data"
+DEPEND="${DEPEND}
+	virtual/pkgconfig"
 
 src_prepare() {
 	epatch "${FILESDIR}"/20090708-fix_file_collisions.patch
 	sed -e "s/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/" -i configure.in || die
 	eautoreconf
+	has_version '>=dev-libs/kpathsea-6.2.1' && append-cppflags "$($(tc-getPKG_CONFIG) --cflags kpathsea)"
 }
 
 src_install() {

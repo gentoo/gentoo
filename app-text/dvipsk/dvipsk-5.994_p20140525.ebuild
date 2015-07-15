@@ -1,12 +1,12 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/dvipsk/dvipsk-5.994_p20140525.ebuild,v 1.3 2015/07/12 17:16:08 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/dvipsk/dvipsk-5.994_p20140525.ebuild,v 1.4 2015/07/15 09:21:55 aballier Exp $
 
 EAPI=4
 
 #TL_UPSTREAM_PATCHLEVEL="1"
 
-inherit texlive-common eutils
+inherit texlive-common eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="DVI-to-PostScript translator"
 HOMEPAGE="http://tug.org/texlive/"
@@ -38,6 +38,7 @@ RDEPEND="
 	!<dev-texlive/texlive-basic-2009
 	!app-text/ptex
 	${DEPEND}"
+DEPEND="${DEPEND} virtual/pkgconfig"
 
 S=${WORKDIR}/texlive-${PV#*_p}-source/texk/${PN}
 
@@ -47,6 +48,7 @@ S=${WORKDIR}/texlive-${PV#*_p}-source/texk/${PN}
 #}
 
 src_configure() {
+	has_version '>=dev-libs/kpathsea-6.2.1' && append-cppflags "$($(tc-getPKG_CONFIG) --cflags kpathsea)"
 	econf --with-system-kpathsea
 }
 
