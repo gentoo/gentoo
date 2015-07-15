@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/buildbot/buildbot-9999.ebuild,v 1.10 2014/12/18 20:48:07 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/buildbot/buildbot-9999.ebuild,v 1.11 2015/07/15 22:18:02 floppym Exp $
 
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )
@@ -30,7 +30,8 @@ IUSE="doc examples irc mail manhole test"
 RDEPEND=">=dev-python/jinja-2.1[${PYTHON_USEDEP}]
 	dev-python/twisted-core[${PYTHON_USEDEP}]
 	dev-python/twisted-web[${PYTHON_USEDEP}]
-	dev-python/sqlalchemy-migrate[${PYTHON_USEDEP}]
+	<=dev-python/sqlalchemy-0.7.10-r999[${PYTHON_USEDEP}]
+	~dev-python/sqlalchemy-migrate-0.7.2[${PYTHON_USEDEP}]
 	irc? ( dev-python/twisted-words[${PYTHON_USEDEP}] )
 	mail? ( dev-python/twisted-mail[${PYTHON_USEDEP}] )
 	manhole? ( dev-python/twisted-conch[${PYTHON_USEDEP}] )"

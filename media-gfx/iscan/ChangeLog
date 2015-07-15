@@ -1,6 +1,13 @@
 # ChangeLog for media-gfx/iscan
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/iscan/ChangeLog,v 1.57 2014/12/12 17:24:09 pacho Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/iscan/ChangeLog,v 1.58 2015/07/15 22:08:40 np-hardass Exp $
+
+*iscan-2.30.1.1 (15 Jul 2015)
+
+  15 Jul 2015; NP-Hardass <NP-Hardass@gentoo.org>
+  +files/iscan-2.30.1-fix-g++-test.patch, +iscan-2.30.1.1.ebuild:
+  Proxy commit for Matthew Schultz (mschultz).  Version bump. Resolves bugs
+  #498524, #3898073, #500024, #500026, #549866.
 
   12 Dec 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
   New maintainer

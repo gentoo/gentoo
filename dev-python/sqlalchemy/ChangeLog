@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/sqlalchemy
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/sqlalchemy/ChangeLog,v 1.165 2015/07/07 11:29:22 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/sqlalchemy/ChangeLog,v 1.166 2015/07/15 22:16:11 floppym Exp $
+
+*sqlalchemy-0.7.10 (15 Jul 2015)
+
+  15 Jul 2015; Mike Gilbert <floppym@gentoo.org> +sqlalchemy-0.7.10.ebuild:
+  Restore for buildbot (again).
 
   07 Jul 2015; Ian Delaney <idella4@gentoo.org> -sqlalchemy-0.7.10.ebuild,
   -sqlalchemy-0.7.9.ebuild, -sqlalchemy-0.8.0.ebuild, -sqlalchemy-0.8.1.ebuild,
