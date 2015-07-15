@@ -1,6 +1,11 @@
 # ChangeLog for media-gfx/gnofract4d
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/gnofract4d/ChangeLog,v 1.15 2012/05/05 07:00:19 jdhore Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/gnofract4d/ChangeLog,v 1.16 2015/07/15 05:10:00 idella4 Exp $
+
+*gnofract4d-3.14-r1 (15 Jul 2015)
+
+  15 Jul 2015; Ian Delaney <idella4@gentoo.org> +gnofract4d-3.14-r1.ebuild:
+  revbump; conversion -> distutils-r1 eclass
 
   05 May 2012; Jeff Horelick <jdhore@gentoo.org> gnofract4d-3.13.ebuild,
   gnofract4d-3.14.ebuild:
@@ -67,4 +72,3 @@
 
   13 Jan 2008; Samuli Suominen <ssuominen@gentoo.org> +gnofract4d-3.7.ebuild:
   Initial commit wrt #74820, thanks to Ian, Alan Duck and Chris Mayo.
-

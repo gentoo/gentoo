@@ -1,6 +1,11 @@
 # ChangeLog for media-gfx/mirage
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/mirage/ChangeLog,v 1.40 2013/08/06 18:10:30 maekke Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/mirage/ChangeLog,v 1.41 2015/07/15 05:14:32 idella4 Exp $
+
+*mirage-0.9.5.2-r1 (15 Jul 2015)
+
+  15 Jul 2015; Ian Delaney <idella4@gentoo.org> +mirage-0.9.5.2-r1.ebuild:
+  revbump; conversion -> distutils-r1 eclass
 
   06 Aug 2013; Markus Meier <maekke@gentoo.org> mirage-0.9.5.2.ebuild:
   add ~arm, bug #476126
@@ -144,4 +149,3 @@
   19 Oct 2006; David Shakaryan <omp@gentoo.org> +metadata.xml,
   +mirage-0.8.ebuild:
   Initial ebuild by me.
-

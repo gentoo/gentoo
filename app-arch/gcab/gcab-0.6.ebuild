@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/gcab/gcab-0.6.ebuild,v 1.1 2015/06/09 02:40:49 tetromino Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/gcab/gcab-0.6.ebuild,v 1.2 2015/07/15 05:22:29 jer Exp $
 
 EAPI=5
 
@@ -14,7 +14,7 @@ HOMEPAGE="https://wiki.gnome.org/msitools"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~hppa ~x86"
 IUSE="+introspection vala"
 REQUIRED_USE="vala? ( introspection )"
 

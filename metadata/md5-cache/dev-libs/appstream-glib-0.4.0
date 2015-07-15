@@ -4,11 +4,11 @@ DESCRIPTION=Provides GObjects and helper methods to read and write AppStream met
 EAPI=5
 HOMEPAGE=http://people.freedesktop.org/~hughsient/appstream-glib/
 IUSE=+introspection nls
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 ~hppa ~x86
 LICENSE=LGPL-2.1
 PDEPEND=>=dev-util/appdata-tools-0.1.8-r1
 RDEPEND=app-arch/gcab app-arch/libarchive dev-db/sqlite:3 >=dev-libs/glib-2.16.1:2 >=media-libs/fontconfig-2.11 >=media-libs/freetype-2.4:2 >=net-libs/libsoup-2.24:2.4 >=x11-libs/gdk-pixbuf-2.14:2 x11-libs/gtk+:3 x11-libs/pango dev-libs/libyaml introspection? ( >=dev-libs/gobject-introspection-0.9.8:= ) !<dev-util/appdata-tools-0.1.8-r1
 SLOT=0/7
 SRC_URI=http://people.freedesktop.org/~hughsient/appstream-glib/releases/appstream-glib-0.4.0.tar.xz
 _eclasses_=bash-completion-r1	c8399c7c7ecbcf7ed6e5bd3abb3d4af3	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	45882dc8beda2ffd09ad51fb3f22b669	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=1a0f9077c787b1f3539e1e6aa5b37185
+_md5_=2b8aaed3eeebb9b68305aa1cde71a532
