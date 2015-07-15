@@ -1,6 +1,9 @@
 # ChangeLog for dev-qt/qtwebkit
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtwebkit/ChangeLog,v 1.38 2015/06/17 15:24:04 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtwebkit/ChangeLog,v 1.39 2015/07/15 01:37:03 pesa Exp $
+
+  15 Jul 2015; Davide Pesavento <pesa@gentoo.org> qtwebkit-5.4.2.ebuild:
+  Disable rpath wrt bug 466216.
 
 *qtwebkit-5.4.2 (17 Jun 2015)
 
