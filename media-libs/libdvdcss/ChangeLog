@@ -1,6 +1,9 @@
 # ChangeLog for media-libs/libdvdcss
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libdvdcss/ChangeLog,v 1.135 2015/06/26 08:48:35 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libdvdcss/ChangeLog,v 1.136 2015/07/15 16:14:12 klausman Exp $
+
+  15 Jul 2015; Tobias Klausmann <klausman@gentoo.org> libdvdcss-1.3.0.ebuild:
+  Stable on alpha, bug 535458
 
   26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> libdvdcss-1.3.0.ebuild:
   Stable for x86, wrt bug #535458

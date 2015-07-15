@@ -1,6 +1,9 @@
 # ChangeLog for net-libs/ortp
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/ortp/ChangeLog,v 1.88 2015/06/09 12:35:53 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/ortp/ChangeLog,v 1.89 2015/07/15 16:11:14 klausman Exp $
+
+  15 Jul 2015; Tobias Klausmann <klausman@gentoo.org> ortp-0.23.0.ebuild:
+  Stable on alpha, bug 535584
 
   09 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -ortp-0.16.1.ebuild,
   -ortp-0.16.3.ebuild, -ortp-0.16.5.ebuild, ortp-0.20.0.ebuild:

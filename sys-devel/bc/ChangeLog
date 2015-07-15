@@ -1,6 +1,9 @@
 # ChangeLog for sys-devel/bc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/bc/ChangeLog,v 1.46 2015/07/14 03:06:33 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/bc/ChangeLog,v 1.47 2015/07/15 16:14:01 zlogene Exp $
+
+  15 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> bc-1.06.95-r1.ebuild:
+  x86 stable wrt bug #554708
 
   14 Jul 2015; Mike Frysinger <vapier@gentoo.org> bc-1.06.95-r1.ebuild,
   bc-1.06.95-r2.ebuild:

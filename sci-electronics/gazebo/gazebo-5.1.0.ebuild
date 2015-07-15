@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-electronics/gazebo/gazebo-5.1.0.ebuild,v 1.2 2015/05/04 12:14:40 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/gazebo/gazebo-5.1.0.ebuild,v 1.3 2015/07/15 15:50:04 aballier Exp $
 
 EAPI=5
 
@@ -45,12 +45,16 @@ DEPEND="${RDEPEND}
 "
 S="${WORKDIR}/${PN}$(get_major_version)_${PV}"
 CMAKE_BUILD_TYPE=RelWithDebInfo
+PATCHES=( "${FILESDIR}/bullet_283.patch" )
 
 src_configure() {
 	# doesnt build without it
 	append-cxxflags "-std=c++11"
 	# doesnt build with as-needed either
 	append-ldflags "-Wl,--no-as-needed"
+
+	has_version '>=sci-physics/bullet-2.83' && append-cppflags "-DLIBBULLET_VERSION_GT_282=1"
+
 	local mycmakeargs=(
 		"-DUSE_UPSTREAM_CFLAGS=OFF"
 		"-DSSE2_FOUND=$(usex cpu_flags_x86_sse2 TRUE FALSE)"

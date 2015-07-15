@@ -1,6 +1,9 @@
 # ChangeLog for sci-libs/cfitsio
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/cfitsio/ChangeLog,v 1.71 2015/05/13 07:02:13 jmorgan Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/cfitsio/ChangeLog,v 1.72 2015/07/15 16:23:10 klausman Exp $
+
+  15 Jul 2015; Tobias Klausmann <klausman@gentoo.org> cfitsio-3.360.ebuild:
+  Stable on alpha, bug 542590
 
   13 May 2015; Jack Morgan <jmorgan@gentoo.org> cfitsio-3.360.ebuild:
   ppc64 stable wrt bug #542590
