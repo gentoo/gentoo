@@ -1,6 +1,9 @@
 # ChangeLog for net-analyzer/icinga2
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/icinga2/ChangeLog,v 1.38 2015/07/09 01:17:11 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/icinga2/ChangeLog,v 1.39 2015/07/15 02:52:24 prometheanfire Exp $
+
+  15 Jul 2015; Matthew Thode <prometheanfire@gentoo.org> files/icinga2.confd:
+  adding an option to conf.d for bug 554132
 
 *icinga2-2.3.6 (09 Jul 2015)
 

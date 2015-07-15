@@ -1,3 +1,4 @@
 ICINGA2_ERROR_LOG=/var/log/icinga2/error.log
 ICINGA2_STARTUP_LOG=/var/log/icinga2/startup.log
 ICINGA2_LOG=/var/log/icinga2/icinga2.log
+ICINGA2_RUN_DIR=/run/icinga2

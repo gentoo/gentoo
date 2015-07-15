@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/keystonemiddleware/keystonemiddleware-1.5.2.ebuild,v 1.1 2015/06/29 16:47:57 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/keystonemiddleware/keystonemiddleware-1.5.2.ebuild,v 1.2 2015/07/15 02:46:41 prometheanfire Exp $
 
 EAPI=5
 #PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
@@ -66,7 +66,7 @@ RDEPEND=">=dev-python/Babel-1.3[${PYTHON_USEDEP}]
 		>=dev-python/webob-1.2.3[${PYTHON_USEDEP}]"
 
 PATCHES=(
-"${FILESDIR}/cve-2015-1852-master-keystonemiddleware.patch"
+
 )
 
 python_compile_all() {
