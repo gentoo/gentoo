@@ -1,6 +1,12 @@
 # ChangeLog for mate-base/mate-session-manager
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mate-base/mate-session-manager/ChangeLog,v 1.18 2015/07/11 23:55:19 np-hardass Exp $
+# $Header: /var/cvsroot/gentoo-x86/mate-base/mate-session-manager/ChangeLog,v 1.19 2015/07/15 06:06:10 np-hardass Exp $
+
+*mate-session-manager-1.8.1-r2 (15 Jul 2015)
+
+  15 Jul 2015; NP-Hardass <NP-Hardass@gentoo.org>
+  +mate-session-manager-1.8.1-r2.ebuild:
+  Fix upower dependencies. Thanks to sdnick484 for pointing it out.
 
   11 Jul 2015; NP-Hardass <NP-Hardass@gentoo.org>
   mate-session-manager-1.8.1-r1.ebuild:

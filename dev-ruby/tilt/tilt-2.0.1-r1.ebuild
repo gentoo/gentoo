@@ -1,10 +1,10 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/tilt/tilt-2.0.1-r1.ebuild,v 1.1 2015/01/19 07:16:53 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/tilt/tilt-2.0.1-r1.ebuild,v 1.2 2015/07/15 06:20:52 graaff Exp $
 
 EAPI=5
 
-USE_RUBY="ruby19 ruby20 ruby21"
+USE_RUBY="ruby19 ruby20 ruby21 ruby22"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md docs/TEMPLATES.md"
@@ -27,14 +27,14 @@ ruby_add_bdepend "test? (
 	dev-ruby/coffee-script
 	dev-ruby/erubis
 	dev-ruby/nokogiri
-	dev-ruby/radius
 	!!<dev-ruby/maruku-0.7.2 )"
 
-# Most dependencies are optional: skip haml for ruby20 and ruby21
+# Most dependencies are optional: skip haml and radius for ruby20 and ruby21
 # because haml depends on rails.
 USE_RUBY="ruby19" ruby_add_bdepend "test? ( dev-ruby/haml )"
+USE_RUBY="ruby19 ruby20 ruby21" ruby_add_bdepend "test? ( dev-ruby/radius )"
 
-ruby_add_rdepend ">=dev-ruby/builder-2.0.0
+ruby_add_rdepend ">=dev-ruby/builder-2.0.0:*
 	!!<dev-ruby/tilt-1.4.1-r2:0"
 
 all_ruby_prepare() {
@@ -45,4 +45,5 @@ all_ruby_prepare() {
 	# the time when details in the dependencies change.
 	sed -e '/test_smarty_pants_true/,/^    end/ s:^:#:' -i test/tilt_markdown_test.rb || die
 	sed -e '/smartypants when :smart is set/,/^    end/ s:^:#:' -i test/tilt_rdiscounttemplate_test.rb || die
+	sed -i -e '/docbook templates/,/^    end/ s:^:#:' test/tilt_asciidoctor_test.rb || die
 }
