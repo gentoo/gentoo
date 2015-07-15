@@ -1,6 +1,9 @@
 # ChangeLog for net-misc/ntp
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/ntp/ChangeLog,v 1.244 2015/07/14 18:36:21 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ntp/ChangeLog,v 1.245 2015/07/15 16:51:54 zlogene Exp $
+
+  15 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> ntp-4.2.8_p3.ebuild:
+  arm stable wrt bug #553682
 
   14 Jul 2015; Tobias Klausmann <klausman@gentoo.org> ntp-4.2.8_p3.ebuild:
   Stable on alpha, bug 553682

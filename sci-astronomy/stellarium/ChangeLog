@@ -1,6 +1,10 @@
 # ChangeLog for sci-astronomy/stellarium
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-astronomy/stellarium/ChangeLog,v 1.131 2015/05/09 05:36:07 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-astronomy/stellarium/ChangeLog,v 1.132 2015/07/15 17:14:09 mr_bones_ Exp $
+
+  15 Jul 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/stellarium-0.13.3-qt55.patch, stellarium-0.13.3.ebuild:
+  add upstream patch to fix building against qt55 (bug #554616)
 
   09 May 2015; Michael Sterrett <mr_bones_@gentoo.org>
   -stellarium-0.13.2.ebuild:

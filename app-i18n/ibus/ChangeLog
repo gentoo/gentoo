@@ -1,6 +1,9 @@
 # ChangeLog for app-i18n/ibus
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus/ChangeLog,v 1.161 2015/07/11 06:25:44 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus/ChangeLog,v 1.162 2015/07/15 16:35:44 zlogene Exp $
+
+  15 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> ibus-1.5.10.ebuild:
+  x86 stable wrt bug #551062
 
   11 Jul 2015; Markus Meier <maekke@gentoo.org> ibus-1.5.10.ebuild:
   arm stable, bug #551062

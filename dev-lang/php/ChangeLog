@@ -1,6 +1,10 @@
 # ChangeLog for dev-lang/php
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/php/ChangeLog,v 1.1000 2015/07/14 18:15:11 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/php/ChangeLog,v 1.1001 2015/07/15 16:59:30 zlogene Exp $
+
+  15 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> php-5.5.26.ebuild,
+  php-5.6.10.ebuild:
+  arm stable wrt bug #552408
 
   14 Jul 2015; Tobias Klausmann <klausman@gentoo.org> php-5.6.10.ebuild:
   Stable on alpha, bug 552408

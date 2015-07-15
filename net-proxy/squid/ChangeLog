@@ -1,6 +1,9 @@
 # ChangeLog for net-proxy/squid
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/squid/ChangeLog,v 1.537 2015/07/14 19:50:35 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/squid/ChangeLog,v 1.538 2015/07/15 16:45:43 zlogene Exp $
+
+  15 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> squid-3.5.6.ebuild:
+  arm stable wrt bug #554168
 
   14 Jul 2015; Tobias Klausmann <klausman@gentoo.org> squid-3.5.6.ebuild:
   Stable on alpha, bug 554168
