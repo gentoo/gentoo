@@ -1,6 +1,57 @@
 # ChangeLog for net-mail/notmuch
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/notmuch/ChangeLog,v 1.116 2015/04/18 15:56:03 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/notmuch/ChangeLog,v 1.117 2015/07/15 07:20:21 aidecoe Exp $
+
+*notmuch-0.20.2 (14 Jul 2015)
+
+  14 Jul 2015; Amadeusz Żołnowski <aidecoe@gentoo.org>
+  +notmuch-0.20.2.ebuild:
+  Version bump.
+
+  NEWS
+  ~~~~
+
+  Command-Line Interface
+  ----------------------
+
+  - New `mimetype:` search prefix.
+  - Path to gpg is now configurable.
+
+  Emacs
+  -----
+
+  - Avoid rendering large text attachements.
+  - Improved rendering of CID references in HTML.
+  - Bug fix for marking messages read in `notmuch-tree` mode.
+
+  Vim
+  ---
+
+  - Vim client now respects excluded tags.
+
+  Notmuch-Mutt
+  ------------
+
+  - Support messages without Message-IDs.
+
+  Library
+  -------
+
+  - Undeprecate single message mboxes.
+  - New error logging facility.
+  - Several bug fixes related to stale iterators.
+  - New status code returning API for n_query_search_{messages,thread}.
+  - Fix for library `install_name` on Mac OS X.
+  - Fix for rounding of seconds.
+
+  Documentation
+  -------------
+
+  - Improved notmuch-search-terms.7.
+
+  nmbug-status
+  ------------
+  - Various improvements.
 
   18 Apr 2015; Pacho Ramos <pacho@gentoo.org> notmuch-0.18.2.ebuild:
   x86 stable wrt bug #516756
