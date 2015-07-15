@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/xdvik/xdvik-22.87.ebuild,v 1.3 2014/07/04 08:20:39 naota Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/xdvik/xdvik-22.87.ebuild,v 1.4 2015/07/15 09:37:47 aballier Exp $
 
 EAPI=5
 inherit eutils flag-o-matic elisp-common toolchain-funcs multilib
@@ -30,6 +30,7 @@ RDEPEND="media-libs/freetype:2
 	dev-libs/kpathsea"
 DEPEND="sys-devel/flex
 	virtual/yacc
+	virtual/pkgconfig
 	${RDEPEND}"
 RDEPEND="${RDEPEND}
 	virtual/latex-base
@@ -45,6 +46,8 @@ src_prepare() {
 }
 
 src_configure() {
+	has_version '>=dev-libs/kpathsea-6.2.1' && append-cppflags "$($(tc-getPKG_CONFIG) --cflags kpathsea)"
+
 	local toolkit
 
 	if use motif ; then

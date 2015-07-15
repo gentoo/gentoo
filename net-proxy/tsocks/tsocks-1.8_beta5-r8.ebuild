@@ -1,10 +1,10 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/tsocks/tsocks-1.8_beta5-r7.ebuild,v 1.1 2015/01/09 16:59:58 bircoph Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/tsocks/tsocks-1.8_beta5-r8.ebuild,v 1.1 2015/07/15 09:48:27 bircoph Exp $
 
 EAPI="5"
 
-inherit autotools eutils multilib toolchain-funcs
+inherit autotools eutils multilib multilib-minimal toolchain-funcs
 
 DESCRIPTION="Transparent SOCKS v4 proxying library"
 HOMEPAGE="http://tsocks.sourceforge.net/"
@@ -33,10 +33,13 @@ src_prepare() {
 	use tordns && epatch "../${PN}-${PV/_beta/b}-tordns1-gentoo-r3.patch"
 
 	sed -i 's/TSOCKS_CONFFILE/TSOCKS_CONF_FILE/' tsocks.8 || die "sed tsocks.8 failed"
+
+	mv configure.in configure.ac || die
 	eautoreconf
+	multilib_copy_sources
 }
 
-src_configure() {
+multilib_src_configure() {
 	tc-export CC
 
 	# NOTE: the docs say to install it into /lib. If you put it into
@@ -50,20 +53,22 @@ src_configure() {
 		--libdir=/$(get_libdir)
 }
 
-src_compile() {
+multilib_src_compile() {
 	# Fix QA notice lack of SONAME
 	emake DYNLIB_FLAGS=-Wl,--soname,libtsocks.so.${PV/_beta*}
 }
 
-src_install() {
+multilib_src_install() {
 	emake DESTDIR="${D}" install
-	newbin validateconf tsocks-validateconf
-	newbin saveme tsocks-saveme
-	dobin inspectsocks
-	insinto /etc/socks
-	doins tsocks.conf.*.example
-	dodoc FAQ
-	use tordns && dodoc README*
+	if multilib_is_native_abi; then
+		newbin validateconf tsocks-validateconf
+		newbin saveme tsocks-saveme
+		dobin inspectsocks
+		insinto /etc/socks
+		doins tsocks.conf.*.example
+		dodoc FAQ
+		use tordns && dodoc README*
+	fi
 }
 
 pkg_postinst() {

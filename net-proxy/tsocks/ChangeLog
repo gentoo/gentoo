@@ -1,6 +1,15 @@
 # ChangeLog for net-proxy/tsocks
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/tsocks/ChangeLog,v 1.43 2015/01/09 16:59:58 bircoph Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/tsocks/ChangeLog,v 1.44 2015/07/15 09:48:27 bircoph Exp $
+
+*tsocks-1.8_beta5-r8 (15 Jul 2015)
+
+  15 Jul 2015; Andrew Savchenko <bircoph@gentoo.org>
+  -tsocks-1.8_beta5-r6.ebuild, -tsocks-1.8_beta5-r7.ebuild,
+  +tsocks-1.8_beta5-r8.ebuild:
+  Add multilib support (bug 553822).
+  Migrate to configure.ac.
+  Remove old.
 
 *tsocks-1.8_beta5-r7 (09 Jan 2015)
 

@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst prepare
-DEPEND=sys-devel/flex virtual/yacc media-libs/freetype:2 x11-libs/libXi x11-libs/libXmu x11-libs/libXp x11-libs/libXpm motif? ( >=x11-libs/motif-2.3:0 ) !motif? ( neXt? ( x11-libs/neXtaw ) !neXt? ( Xaw3d? ( x11-libs/libXaw3d ) !Xaw3d? ( x11-libs/libXaw ) ) ) dev-libs/kpathsea
+DEPEND=sys-devel/flex virtual/yacc virtual/pkgconfig media-libs/freetype:2 x11-libs/libXi x11-libs/libXmu x11-libs/libXp x11-libs/libXpm motif? ( >=x11-libs/motif-2.3:0 ) !motif? ( neXt? ( x11-libs/neXtaw ) !neXt? ( Xaw3d? ( x11-libs/libXaw3d ) !Xaw3d? ( x11-libs/libXaw ) ) ) dev-libs/kpathsea
 DESCRIPTION=DVI previewer for X Window System
 EAPI=5
 HOMEPAGE=http://xdvi.sourceforge.net/
@@ -10,4 +10,4 @@ RDEPEND=media-libs/freetype:2 x11-libs/libXi x11-libs/libXmu x11-libs/libXp x11-
 SLOT=0
 SRC_URI=mirror://sourceforge/xdvi/xdvik-22.87.tar.gz
 _eclasses_=elisp-common	9a16929c1a6aec7e1c903289983e114c	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=d9fc9eb86899d579a57a20fb77a1a054
+_md5_=e28e7871af31e5a776e9b9f5b448bc2e

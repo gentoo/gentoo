@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst
+DEPEND=>=dev-libs/kpathsea-6.1.0_p20120701 >=app-eselect/eselect-mpost-0.3 >=x11-libs/cairo-1.12 >x11-libs/pixman-0.18 media-libs/libpng:0= virtual/pkgconfig
+DESCRIPTION=System for producing graphics
+EAPI=5
+HOMEPAGE=http://tug.org/metapost.html
+KEYWORDS=~amd64
+LICENSE=GPL-2 LGPL-3
+RDEPEND=>=dev-libs/kpathsea-6.1.0_p20120701 >=app-eselect/eselect-mpost-0.3 >=x11-libs/cairo-1.12 >x11-libs/pixman-0.18 media-libs/libpng:0=
+SLOT=0
+SRC_URI=https://foundry.supelec.fr/frs/download.php/file/15766/metapost-1.902-src.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=f472366a7727933c0c3ca56c415f1224

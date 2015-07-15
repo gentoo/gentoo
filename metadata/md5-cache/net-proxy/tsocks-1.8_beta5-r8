@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=!<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Transparent SOCKS v4 proxying library
+EAPI=5
+HOMEPAGE=http://tsocks.sourceforge.net/
+IUSE=dns envconf tordns server-lookups abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+LICENSE=GPL-2
+REQUIRED_USE=dns? ( !tordns !server-lookups ) tordns? ( !dns !server-lookups )
+SLOT=0
+SRC_URI=mirror://sourceforge/tsocks/tsocks-1.8beta5.tar.gz tordns? ( http://dev.gentoo.org/~bircoph/patches/tsocks-1.8b5-tordns1-gentoo-r3.patch.xz )
+_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multilib-build	e733e978b7fa70607cc221fd9c070db6	multilib-minimal	13dd976916c35a1e2c8d170e840c7018	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=6aec3c349a14ddbb8e0f45d724a86998

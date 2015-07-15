@@ -1,6 +1,9 @@
 # ChangeLog for app-text/xdvik
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/xdvik/ChangeLog,v 1.109 2015/06/09 12:45:16 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/xdvik/ChangeLog,v 1.110 2015/07/15 09:37:47 aballier Exp $
+
+  15 Jul 2015; Alexis Ballier <aballier@gentoo.org> xdvik-22.87.ebuild:
+  fix build with kpathsea from texlive 2015
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

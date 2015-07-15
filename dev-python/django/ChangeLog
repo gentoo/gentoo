@@ -1,6 +1,14 @@
 # ChangeLog for dev-python/django
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/django/ChangeLog,v 1.172 2015/06/04 07:06:22 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/django/ChangeLog,v 1.173 2015/07/15 09:59:03 idella4 Exp $
+
+*django-1.8.3 (15 Jul 2015)
+*django-1.7.9 (15 Jul 2015)
+*django-1.4.21 (15 Jul 2015)
+
+  15 Jul 2015; Ian Delaney <idella4@gentoo.org> +django-1.4.21.ebuild,
+  +django-1.7.9.ebuild, +django-1.8.3.ebuild:
+  bumps wrt bug #554864
 
   04 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add pypi to remote-id in metadata.xml

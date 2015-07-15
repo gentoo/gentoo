@@ -1,6 +1,10 @@
 # ChangeLog for app-text/texlive-core
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/texlive-core/ChangeLog,v 1.225 2015/07/12 17:22:51 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/texlive-core/ChangeLog,v 1.226 2015/07/15 09:33:52 aballier Exp $
+
+  15 Jul 2015; Alexis Ballier <aballier@gentoo.org>
+  texlive-core-2014-r4.ebuild:
+  fix build with kpathsea from texlive 2015
 
   12 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> texlive-core-2014-r4.ebuild:
   x86 stable wrt bug #550840
