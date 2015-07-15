@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/timer_entropyd/timer_entropyd-0.2.ebuild,v 1.4 2015/03/02 01:36:20 kumba Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/timer_entropyd/timer_entropyd-0.2.ebuild,v 1.5 2015/07/15 19:35:23 perfinion Exp $
 
 EAPI=4
 
@@ -13,7 +13,9 @@ SRC_URI="http://www.vanheusden.com/te/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~mips x86"
-IUSE="debug"
+IUSE="debug selinux"
+
+RDEPEND="selinux? ( sec-policy/selinux-entropyd )"
 
 src_prepare() {
 	sed -i -e 's:-O2::' Makefile || die

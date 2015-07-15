@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libdbusmenu/libdbusmenu-12.10.2-r2.ebuild,v 1.1 2015/04/19 16:30:45 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libdbusmenu/libdbusmenu-12.10.2-r2.ebuild,v 1.2 2015/07/15 20:22:15 johu Exp $
 
 EAPI=5
 
@@ -31,6 +31,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	app-text/gnome-doc-utils
 	dev-util/intltool
+	sys-devel/gettext
 	virtual/pkgconfig[${MULTILIB_USEDEP}]
 	introspection? ( $(vala_depend) )"
 

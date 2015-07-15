@@ -3,11 +3,11 @@ DEPEND=dev-lang/perl virtual/perl-File-Path virtual/perl-File-Temp >=dev-vcs/git
 DESCRIPTION=Highly flexible server for git directory version tracker
 EAPI=5
 HOMEPAGE=http://github.com/sitaramc/gitolite
-IUSE=tools vim-syntax
+IUSE=selinux tools vim-syntax
 KEYWORDS=~amd64 ~arm ~x86
 LICENSE=GPL-2
-RDEPEND=dev-lang/perl virtual/perl-File-Path virtual/perl-File-Temp >=dev-vcs/git-1.6.6 !dev-vcs/gitolite-gentoo vim-syntax? ( app-vim/gitolite-syntax ) dev-perl/JSON dev-lang/perl:=[-build(-)]
+RDEPEND=dev-lang/perl virtual/perl-File-Path virtual/perl-File-Temp >=dev-vcs/git-1.6.6 !dev-vcs/gitolite-gentoo selinux? ( sec-policy/selinux-gitosis ) vim-syntax? ( app-vim/gitolite-syntax ) dev-perl/JSON dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=https://github.com/sitaramc/gitolite/archive/v3.6.3.tar.gz -> gitolite-3.6.3.tar.gz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52	user	f54e098dd38ba1c0847a13e685b87747	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=7cb24cde27aa70ebe674dd5544fdfd22
+_md5_=9e0c6752dd9447c8c9c0623359aa784d

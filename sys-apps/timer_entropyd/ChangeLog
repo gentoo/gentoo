@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/timer_entropyd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/timer_entropyd/ChangeLog,v 1.18 2015/04/27 00:03:16 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/timer_entropyd/ChangeLog,v 1.19 2015/07/15 19:35:23 perfinion Exp $
+
+  15 Jul 2015; Jason Zaman <perfinion@gentoo.org> timer_entropyd-0.2.ebuild:
+  RDEP on SELinux policy bug 552762
 
   27 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -timer_entropyd-0.1-r3.ebuild:
   Remove old.

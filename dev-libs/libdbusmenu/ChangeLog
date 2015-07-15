@@ -1,6 +1,11 @@
 # ChangeLog for dev-libs/libdbusmenu
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libdbusmenu/ChangeLog,v 1.37 2015/06/09 14:20:35 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libdbusmenu/ChangeLog,v 1.38 2015/07/15 20:22:15 johu Exp $
+
+  15 Jul 2015; Johannes Huber <johu@gentoo.org> -libdbusmenu-0.6.2-r1.ebuild,
+  -libdbusmenu-12.10.2-r1.ebuild, libdbusmenu-12.10.2-r2.ebuild:
+  DEPEND on sys-devel/gettext by Ben Kohler <bkohler@gmail.com>, bug #555000.
+  Remove old.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

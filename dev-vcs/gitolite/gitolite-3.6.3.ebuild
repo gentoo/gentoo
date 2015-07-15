@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/gitolite/gitolite-3.6.3.ebuild,v 1.1 2015/05/10 00:19:45 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/gitolite/gitolite-3.6.3.ebuild,v 1.2 2015/07/15 19:32:06 perfinion Exp $
 
 EAPI=5
 [[ ${PV} == *9999 ]] && SCM="git-2"
@@ -21,7 +21,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="tools vim-syntax"
+IUSE="selinux tools vim-syntax"
 
 DEPEND="dev-lang/perl
 	virtual/perl-File-Path
@@ -29,6 +29,7 @@ DEPEND="dev-lang/perl
 	>=dev-vcs/git-1.6.6"
 RDEPEND="${DEPEND}
 	!dev-vcs/gitolite-gentoo
+	selinux? ( sec-policy/selinux-gitosis )
 	vim-syntax? ( app-vim/gitolite-syntax )
 	dev-perl/JSON"
 

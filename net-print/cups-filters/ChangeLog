@@ -1,6 +1,10 @@
 # ChangeLog for net-print/cups-filters
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/cups-filters/ChangeLog,v 1.159 2015/07/14 17:08:24 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-print/cups-filters/ChangeLog,v 1.160 2015/07/15 20:16:43 blueness Exp $
+
+  15 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
+  cups-filters-1.0.71.ebuild:
+  Stable for ppc.  Bug #553836.
 
   14 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
   +files/cups-filters-1.0.71-poppler0340.patch, cups-filters-1.0.71.ebuild:
