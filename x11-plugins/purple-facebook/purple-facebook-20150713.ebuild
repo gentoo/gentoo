@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/purple-facebook/purple-facebook-20150713.ebuild,v 1.1 2015/07/15 09:14:54 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/purple-facebook/purple-facebook-20150713.ebuild,v 1.2 2015/07/15 18:40:53 chainsaw Exp $
 
 EAPI=5
 
@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-RDEPEND="net-im/pidgin"
+RDEPEND="net-im/pidgin[-gnutls]"
 DEPEND="${RDEPEND}"
 DOCS=( AUTHORS ChangeLog NEWS README VERSION )
 

@@ -1,6 +1,10 @@
 # ChangeLog for media-video/gpac
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/gpac/ChangeLog,v 1.127 2015/05/15 07:19:41 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/gpac/ChangeLog,v 1.128 2015/07/15 18:47:54 klausman Exp $
+
+  15 Jul 2015; Tobias Klausmann <klausman@gentoo.org>
+  gpac-0.5.1_pre5456.ebuild:
+  Stable on alpha, bug 547464
 
   15 May 2015; Pacho Ramos <pacho@gentoo.org> gpac-0.5.1_pre5456.ebuild:
   amd64/ppc/ppc64/x86 stable, bug #547464

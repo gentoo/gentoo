@@ -1,6 +1,11 @@
 # ChangeLog for x11-plugins/purple-facebook
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/purple-facebook/ChangeLog,v 1.1 2015/07/15 09:14:54 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/purple-facebook/ChangeLog,v 1.2 2015/07/15 18:40:53 chainsaw Exp $
+
+  15 Jul 2015; Tony Vroon <chainsaw@gentoo.org>
+  purple-facebook-20150713.ebuild:
+  Require GNUTLS to be disabled in Pidgin to work around a certificate issue,
+  upstream issue report #13. As agreed with upstream developer.
 
 *purple-facebook-20150713 (15 Jul 2015)
 

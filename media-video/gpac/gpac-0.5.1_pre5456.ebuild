@@ -1,20 +1,20 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/gpac/gpac-0.5.1_pre5456.ebuild,v 1.4 2015/05/15 07:19:41 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/gpac/gpac-0.5.1_pre5456.ebuild,v 1.5 2015/07/15 18:47:54 klausman Exp $
 
 EAPI=4
 
 if [[ ${PV} == *9999 ]] ; then
 	SCM="subversion"
 	ESVN_REPO_URI="svn://svn.code.sf.net/p/gpac/code/trunk/gpac"
-	KEYWORDS=""
+	KEYWORDS="alpha"
 else
 	if [[ ${PV%_p*} != ${PV} ]] ; then
 		SRC_URI="http://dev.gentoo.org/~lu_zero/${PN}/${P}.tar.xz"
 	else
 		SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 	fi
-	KEYWORDS="~alpha amd64 ppc ppc64 ~sparc x86 ~x86-fbsd"
+	KEYWORDS="alpha amd64 ppc ppc64 ~sparc x86 ~x86-fbsd"
 fi
 
 inherit eutils flag-o-matic multilib toolchain-funcs ${SCM}
