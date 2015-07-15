@@ -1,6 +1,10 @@
 # ChangeLog for app-text/teckit
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/teckit/ChangeLog,v 1.25 2015/07/15 11:11:44 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/teckit/ChangeLog,v 1.26 2015/07/15 15:10:16 aballier Exp $
+
+  15 Jul 2015; Alexis Ballier <aballier@gentoo.org> teckit-2.5.3.ebuild:
+  mirror the tarball manually since upstream regenerates it at each fetch, bug
+  #554972
 
 *teckit-2.5.3 (15 Jul 2015)
 

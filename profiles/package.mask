@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16671 2015/07/15 13:08:22 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16672 2015/07/15 14:32:19 monsieurp Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -30,7 +30,13 @@
 
 #--- END OF EXAMPLES ---
 
-# Patrice Clement <monsieurp@gentoo.org> (10 Jul 2015l
+# Patrice Clement <monsieurp@gentoo.org> (15 Jul 2015)
+# Upstream dead. No update since 2005.
+# Removal in 30 days. See bug #220287.
+dev-java/exolabcore
+dev-java/exolabtools
+
+# Patrice Clement <monsieurp@gentoo.org> (15 Jul 2015)
 # These packages were needed to compile early releases of dev-java/hessian.
 # They have since been obsoleted and have no reason to stay in the
 # tree anymore.
@@ -138,11 +144,6 @@ app-backup/cyphertite
 # Masked for removal in 30 days.
 dev-util/ext4_utils
 dev-util/libsparse
-
-# Patrice Clement <monsieurp@gentoo.org> (14 Jun 2015)
-# Upstream dead. No update since 2005.
-# Masked for removal in 30 days.
-dev-java/aspectwerkz
 
 # Patrick Lauer <patrick@gentoo.org> (14 Jun 2015)
 # Has race condition / failure modes that make systems unusable

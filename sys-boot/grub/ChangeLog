@@ -1,6 +1,9 @@
 # ChangeLog for sys-boot/grub
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/grub/ChangeLog,v 1.355 2015/06/25 00:12:06 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/grub/ChangeLog,v 1.356 2015/07/15 15:09:07 zlogene Exp $
+
+  15 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> grub-2.02_beta2-r7.ebuild:
+  amd64 stable wrt bug #554740
 
   25 Jun 2015; Mike Gilbert <floppym@gentoo.org> grub-2.02_beta2-r7.ebuild,
   grub-9999-r1.ebuild:

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/teckit/teckit-2.5.3.ebuild,v 1.1 2015/07/15 11:11:44 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/teckit/teckit-2.5.3.ebuild,v 1.2 2015/07/15 15:10:16 aballier Exp $
 
 EAPI=5
 
@@ -9,7 +9,10 @@ inherit autotools eutils
 MY_P=TECkit_${PV}
 DESCRIPTION="Text Encoding Conversion toolkit"
 HOMEPAGE="http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&cat_id=TECkit"
-SRC_URI="http://scripts.sil.org/svn-view/teckit/TAGS/${MY_P}.tar.gz"
+SRC_URI="mirror://gentoo/${MY_P}.tar.gz"
+# Upstream regenerates tarballs at each fetch, breaking checksums:
+# SRC_URI="http://scripts.sil.org/svn-view/teckit/TAGS/${MY_P}.tar.gz"
+# https://bugs.gentoo.org/show_bug.cgi?id=554972
 
 LICENSE="|| ( CPL-0.5 LGPL-2.1 )"
 SLOT="0"
