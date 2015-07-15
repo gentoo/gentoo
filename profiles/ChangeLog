@@ -1,10 +1,13 @@
 # ChangeLog for profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10187 2015/07/13 20:30:51 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10188 2015/07/15 13:01:12 monsieurp Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  15 Jul 2015; Patrice Clement <monsieurp@gentoo.org> package.mask:
+  Mask dev-java/burlap and dev-java/caucho-services for removal.
 
   13 Jul 2015; Pacho Ramos <pacho@gentoo.org> use.desc:
   sqlite3 USE is not used anymore (#363805)

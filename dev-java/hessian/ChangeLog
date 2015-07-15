@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/hessian
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/hessian/ChangeLog,v 1.24 2014/08/10 20:14:33 slyfox Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/hessian/ChangeLog,v 1.25 2015/07/15 12:45:28 monsieurp Exp $
+
+  15 Jul 2015; Patrice Clement <monsieurp@gentoo.org> -hessian-3.0.20.ebuild,
+  -hessian-3.0.8-r5.ebuild, -hessian-3.1.6.ebuild:
+  Remove old. Fix bug 554962.
 
   10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> hessian-3.0.20.ebuild,
   hessian-3.0.8-r5.ebuild, hessian-3.1.6.ebuild, hessian-4.0.3.ebuild:
