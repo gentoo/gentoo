@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/tint2/tint2-0.11-r2.ebuild,v 1.1 2015/04/04 16:15:21 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/tint2/tint2-0.11-r2.ebuild,v 1.2 2015/07/16 17:45:43 amynka Exp $
 
 EAPI="5"
 
@@ -9,7 +9,7 @@ inherit cmake-utils
 MY_P="${PN}-${PV/_/-}"
 
 DESCRIPTION="A lightweight panel/taskbar"
-HOMEPAGE="http://code.google.com/p/tint2/"
+HOMEPAGE="https://gitlab.com/o9000/tint2"
 SRC_URI="http://tint2.googlecode.com/files/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"

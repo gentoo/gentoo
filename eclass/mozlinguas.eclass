@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/mozlinguas.eclass,v 1.9 2015/07/16 17:31:04 axs Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/mozlinguas.eclass,v 1.10 2015/07/16 17:42:19 axs Exp $
 
 # @ECLASS: mozlinguas.eclass
 # @MAINTAINER:
@@ -275,6 +275,7 @@ mozlinguas_xpistage_langpacks() {
 	if [[ -n ${1} ]] ; then modules=( $@ ) ; fi
 
 	mozlinguas_export
+	mkdir -p "${modpath}/chrome" || die
 	for l in "${mozlinguas[@]}"; do	for c in "${modules[@]}" ; do
 		if [[ -e "${srcprefix}-${l}/chrome/${c}-${l}" ]]; then
 			cp -RLp -t "${modpath}/chrome" "${srcprefix}-${l}/chrome/${c}-${l}" || die

@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/libical
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libical/ChangeLog,v 1.96 2015/07/03 15:48:34 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libical/ChangeLog,v 1.97 2015/07/16 18:02:39 klausman Exp $
+
+  16 Jul 2015; Tobias Klausmann <klausman@gentoo.org> libical-1.0.1.ebuild:
+  Stable on alpha, bug 552570
 
   03 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> libical-1.0.1.ebuild:
   arm stable wrt bug #552570

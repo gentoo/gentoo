@@ -1,6 +1,12 @@
 # ChangeLog for mail-client/thunderbird-bin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/thunderbird-bin/ChangeLog,v 1.180 2015/05/23 19:05:59 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/thunderbird-bin/ChangeLog,v 1.181 2015/07/16 18:18:29 axs Exp $
+
+*thunderbird-bin-38.1.0 (16 Jul 2015)
+
+  16 Jul 2015; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +thunderbird-bin-38.1.0.ebuild:
+  version bump, added locales for bundled lightning
 
   23 May 2015; Mikle Kolyada <zlogene@gentoo.org> thunderbird-bin-31.7.0.ebuild:
   x86 stable wrt bug #549356

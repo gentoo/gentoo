@@ -1,6 +1,10 @@
 # ChangeLog for x11-misc/tint2
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/tint2/ChangeLog,v 1.28 2015/04/04 16:15:21 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/tint2/ChangeLog,v 1.29 2015/07/16 17:45:43 amynka Exp $
+
+  16 Jul 2015; Amy Winston <amynka@gentoo.org> tint2-0.11-r1.ebuild,
+  tint2-0.11-r2.ebuild:
+  Homepage changed bug #555054.
 
 *tint2-0.11-r2 (04 Apr 2015)
 

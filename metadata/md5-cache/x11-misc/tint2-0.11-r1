@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=dev-libs/glib:2 x11-libs/cairo x11-libs/pango[X] x11-libs/libX11 x11-libs/libXinerama x11-libs/libXdamage x11-libs/libXcomposite x11-libs/libXrender x11-libs/libXrandr media-libs/imlib2[X] virtual/pkgconfig x11-proto/xineramaproto sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=A lightweight panel/taskbar
 EAPI=3
-HOMEPAGE=http://code.google.com/p/tint2/
+HOMEPAGE=https://gitlab.com/o9000/tint2
 IUSE=battery examples tint2conf
 KEYWORDS=amd64 x86
 LICENSE=GPL-2
@@ -10,4 +10,4 @@ RDEPEND=dev-libs/glib:2 x11-libs/cairo x11-libs/pango[X] x11-libs/libX11 x11-lib
 SLOT=0
 SRC_URI=http://tint2.googlecode.com/files/tint2-0.11.tar.bz2
 _eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=4cec6b95891c421cb30ce947c9eb93c8
+_md5_=6296e3a5e3f8100ce6c928b78f727b15

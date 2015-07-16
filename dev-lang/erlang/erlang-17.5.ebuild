@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/erlang/erlang-17.5.ebuild,v 1.1 2015/04/04 08:11:00 djc Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/erlang/erlang-17.5.ebuild,v 1.2 2015/07/16 17:32:28 klausman Exp $
 
 EAPI=4
 WX_GTK_VER="2.8"
@@ -18,7 +18,7 @@ SRC_URI="http://www.erlang.org/download/otp_src_${PV}.tar.gz
 
 LICENSE="ErlPL-1.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
+KEYWORDS="alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
 IUSE="compat-ethread doc emacs halfword hipe java kpoll odbc smp sctp ssl systemd tk wxwidgets"
 
 RDEPEND=">=dev-lang/perl-5.6.1

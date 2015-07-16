@@ -1,6 +1,9 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1714 2015/07/16 17:31:04 axs Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1715 2015/07/16 17:42:19 axs Exp $
+
+  16 Jul 2015; Ian Stakenvicius (_AxS_) <axs@gentoo.org> mozlinguas.eclass:
+  minor update within mozlinguas.eclass
 
   16 Jul 2015; Ian Stakenvicius (_AxS_) <axs@gentoo.org> mozlinguas.eclass:
   Fixed the mozlinguas.eclass upgrade, recommitting.

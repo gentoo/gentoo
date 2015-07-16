@@ -4,11 +4,11 @@ DESCRIPTION=Advanced Linux Sound Architecture Library
 EAPI=5
 HOMEPAGE=http://www.alsa-project.org/
 IUSE=alisp debug doc elibc_uclibc python abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64 python_targets_python2_7
-KEYWORDS=alpha amd64 arm ~arm64 hppa ~ia64 ~mips ~ppc ppc64 ~sh ~sparc x86 ~amd64-linux ~x86-linux
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~mips ~ppc ppc64 ~sh sparc x86 ~amd64-linux ~x86-linux
 LICENSE=LGPL-2.1
 RDEPEND=python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] ) abi_x86_32? ( !<=app-emulation/emul-linux-x86-soundlibs-20130224-r1 !app-emulation/emul-linux-x86-soundlibs[-abi_x86_32(-)] )
 REQUIRED_USE=python? ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=mirror://alsaproject/lib/alsa-lib-1.0.29.tar.bz2
 _eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multilib-build	e733e978b7fa70607cc221fd9c070db6	multilib-minimal	13dd976916c35a1e2c8d170e840c7018	python-single-r1	351da1aa73960a282591217fb57c1bb8	python-utils-r1	ae9becb5d45344c01939c3f57df0d3fd	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=35d542ee2e09799f044812331b50385c
+_md5_=9860624999efd1e819c89e4bd938d2ec

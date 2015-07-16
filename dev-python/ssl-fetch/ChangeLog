@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/ssl-fetch
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/ssl-fetch/ChangeLog,v 1.31 2015/07/11 07:21:48 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/ssl-fetch/ChangeLog,v 1.32 2015/07/16 17:40:25 zlogene Exp $
+
+  16 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> ssl-fetch-0.3.ebuild:
+  stable for all (bug #554242)
 
   11 Jul 2015; Jeroen Roovers <jer@gentoo.org> ssl-fetch-0.3.ebuild:
   Stable for PPC64 (bug #554242).

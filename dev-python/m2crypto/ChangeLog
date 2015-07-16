@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/m2crypto
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/m2crypto/ChangeLog,v 1.103 2015/06/21 20:21:05 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/m2crypto/ChangeLog,v 1.104 2015/07/16 17:38:29 zlogene Exp $
+
+  16 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> m2crypto-0.22.3-r4.ebuild:
+  ia64 stable wrt bug #545606
 
   21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> m2crypto-0.22.3-r4.ebuild:
   alpha stable wrt bug #545606
