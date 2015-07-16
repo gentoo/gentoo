@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/ocsigenserver/ocsigenserver-2.2.0.ebuild,v 1.4 2014/09/01 16:43:52 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/ocsigenserver/ocsigenserver-2.5-r2.ebuild,v 1.1 2015/07/16 13:12:06 aballier Exp $
 
 EAPI=5
 
@@ -8,7 +8,7 @@ inherit eutils multilib findlib user
 
 DESCRIPTION="Ocaml-powered webserver and framework for dynamic web programming"
 HOMEPAGE="http://www.ocsigen.org"
-SRC_URI="http://ocsigen.org/download/${P}.tar.gz"
+SRC_URI="https://github.com/ocsigen/ocsigenserver/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"
@@ -17,14 +17,16 @@ IUSE="debug doc dbm +ocamlopt +sqlite zlib"
 REQUIRED_USE="|| ( sqlite dbm )"
 RESTRICT="strip installsources"
 
-DEPEND=">=dev-ml/lwt-2.3.0:=[react,ssl]
+DEPEND=">=dev-ml/lwt-2.5.0:=[react,ssl]
+		>=dev-ml/react-0.9.3:=
 		zlib? ( >=dev-ml/camlzip-1.03-r1:= )
 		dev-ml/cryptokit:=
 		>=dev-ml/ocamlnet-3.6:=[pcre]
-		>=dev-ml/pcre-ocaml-6.0.1:=
-		>=dev-ml/tyxml-2.1:=
+		>=dev-ml/pcre-ocaml-6.2.5:=
+		>=dev-ml/tyxml-3.3:=
 		>=dev-lang/ocaml-3.12:=[ocamlopt?]
-		dbm? ( || ( dev-ml/camldbm >=dev-lang/ocaml-3.12[gdbm] ) )
+		dev-ml/ocaml-ipaddr:=
+		dbm? ( || ( dev-ml/camldbm:= >=dev-lang/ocaml-3.12[gdbm] ) )
 		sqlite? ( dev-ml/ocaml-sqlite3:= )"
 RDEPEND="${DEPEND}"
 
@@ -34,7 +36,9 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/pcre.patch"
+	epatch "${FILESDIR}/lwt.patch"
+	epatch "${FILESDIR}/lwt2.patch"
+	epatch "${FILESDIR}/lwt3.patch"
 }
 
 src_configure() {
@@ -49,6 +53,7 @@ src_configure() {
 		$(use_with zlib camlzip) \
 		$(use_with sqlite) \
 		$(use_with dbm) \
+		--with-preempt \
 		--ocsigen-group ocsigenserver \
 		--ocsigen-user ocsigenserver  \
 		--name ocsigenserver \
@@ -80,4 +85,7 @@ src_install() {
 	newconfd "${FILESDIR}"/ocsigenserver.confd ocsigenserver || die
 
 	dodoc README
+
+	# We create it at runtime
+	rm -f "${ED}/var/run/ocsigenserver_command" || die
 }

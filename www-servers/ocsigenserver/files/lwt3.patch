@@ -1,0 +1,86 @@
+commit 5b60babe229189c2be999e138c500527334c3415
+Author: pveber <philippe.veber@gmail.com>
+Date:   Fri Feb 27 09:24:50 2015 +0100
+
+    fix configure and Makefiles following lwt.extra deprecation
+    
+    Now that lwt.extra has been deprecated [0], the configure and Makefile
+    scripts should refer directly to lwt.preemptive.
+    
+    [0] https://github.com/ocsigen/lwt/commit/91d549b54397a33ed80de962771d07180c4b8d4e
+
+Index: ocsigenserver-2.5/Makefile.options
+===================================================================
+--- ocsigenserver-2.5.orig/Makefile.options
++++ ocsigenserver-2.5/Makefile.options
+@@ -26,14 +26,14 @@ endif
+ ## but also to generate src/baselib/ocsigen_config.ml and src/files/META
+ 
+ ifeq "$(PREEMPTIVE)" "YES"
+-LWT_EXTRA_PACKAGE:=lwt.extra
++LWT_PREEMPTIVE_PACKAGE:=lwt.preemptive
+ endif
+ 
+ BASE_PACKAGE := lwt ipaddr
+ 
+ SERVER_PACKAGE := lwt.ssl           \
+-	          ${LWT_EXTRA_PACKAGE} \
+-            ipaddr            \
++	          ${LWT_PREEMPTIVE_PACKAGE} \
++                  ipaddr            \
+ 	          netstring         \
+ 	          netstring-pcre    \
+                   findlib           \
+Index: ocsigenserver-2.5/configure
+===================================================================
+--- ocsigenserver-2.5.orig/configure
++++ ocsigenserver-2.5/configure
+@@ -410,7 +410,7 @@ check_library lwt "See: http://ocsigen.o
+ check_library lwt.unix  "Missing support for 'unix' in lwt."
+ check_library lwt.react "Missing support for 'react' in lwt."
+ check_library lwt.ssl   "Missing support for 'ssl' in lwt."
+-#check_library lwt.extra "Missing support for 'extra' in lwt."
++check_library lwt.preemptive "Missing support for 'preemptive' in lwt."
+ 
+ check_library netstring \
+     "See ocamlnet: http://projects.camlcity.org/projects/ocamlnet.html"
+@@ -454,12 +454,12 @@ if [ "$with_camlzip" -gt 0 ]; then
+     fi
+ fi
+ 
+-# Check Lwt.extra
++# Check Lwt.preemptive
+ if [ "$with_preempt" -gt 0 ]; then
+-    if test_library lwt.extra; then
++    if test_library lwt.preemptive; then
+ 	echo -n
+     elif [ "$with_preempt" -gt 1 ]; then
+-	fail_library lwt.extra "Missing support for 'extra' in lwt."
++	fail_library lwt.preemptive "Missing support for 'preemptive' in lwt."
+     else
+ 	with_preempt=0
+     fi
+Index: ocsigenserver-2.5/src/baselib/Makefile
+===================================================================
+--- ocsigenserver-2.5.orig/src/baselib/Makefile
++++ ocsigenserver-2.5/src/baselib/Makefile
+@@ -1,6 +1,6 @@
+ include ../../Makefile.config
+ 
+-LIBS     := -package lwt.unix,netstring,netstring-pcre,cryptokit,findlib,tyxml,lwt.syntax,${LWT_EXTRA_PACKAGE},ipaddr
++LIBS     := -package lwt.unix,netstring,netstring-pcre,cryptokit,findlib,tyxml,lwt.syntax,${LWT_PREEMPTIVE_PACKAGE},ipaddr
+ OCAMLC   := $(OCAMLFIND) ocamlc${BYTEDBG} ${THREAD}
+ OCAMLOPT := $(OCAMLFIND) ocamlopt ${OPTDBG} ${THREAD}
+ OCAMLDOC := $(OCAMLFIND) ocamldoc
+Index: ocsigenserver-2.5/src/extensions/ocsipersist-dbm/Makefile
+===================================================================
+--- ocsigenserver-2.5.orig/src/extensions/ocsipersist-dbm/Makefile
++++ ocsigenserver-2.5/src/extensions/ocsipersist-dbm/Makefile
+@@ -1,6 +1,6 @@
+ include ../../../Makefile.config
+ 
+-PACKAGE  := ${LWT_EXTRA_PACKAGE} \
++PACKAGE  := ${LWT_PREEMPTIVE_PACKAGE} \
+ 	    lwt.unix     \
+ 	    tyxml.parser \
+ 	    dbm          \

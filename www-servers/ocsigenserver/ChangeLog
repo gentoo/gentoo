@@ -1,6 +1,32 @@
 # ChangeLog for www-servers/ocsigenserver
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/ocsigenserver/ChangeLog,v 1.9 2014/12/01 10:04:01 aballier Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-servers/ocsigenserver/ChangeLog,v 1.14 2015/07/16 13:12:42 aballier Exp $
+
+  16 Jul 2015; Alexis Ballier <aballier@gentoo.org> -ocsigenserver-2.5.ebuild,
+  -ocsigenserver-2.5-r1.ebuild:
+  remove old
+
+*ocsigenserver-2.5-r2 (16 Jul 2015)
+
+  16 Jul 2015; Alexis Ballier <aballier@gentoo.org>
+  +ocsigenserver-2.5-r2.ebuild:
+  revbump for the command pipe change
+
+  16 Jul 2015; Alexis Ballier <aballier@gentoo.org>
+  -ocsigenserver-2.2.0.ebuild, -ocsigenserver-2.3.0.ebuild, -files/pcre.patch:
+  remove old
+
+  16 Jul 2015; Alexis Ballier <aballier@gentoo.org>
+  ocsigenserver-2.5-r1.ebuild, files/ocsigenserver.confd,
+  files/ocsigenserver.initd:
+  create command pipe at runtime
+
+*ocsigenserver-2.5-r1 (16 Jul 2015)
+
+  16 Jul 2015; Alexis Ballier <aballier@gentoo.org>
+  +ocsigenserver-2.5-r1.ebuild, +files/lwt.patch, +files/lwt2.patch,
+  +files/lwt3.patch:
+  backport upstream patches to build against lwt 2.5
 
 *ocsigenserver-2.5 (01 Dec 2014)
 

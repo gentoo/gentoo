@@ -20,3 +20,6 @@ PIDFILE=/var/run/$NAME.pid
 # Add here any additional aptions for ocsigen
 
 OCSIGEN_OPTS=""
+
+# Command pipe
+COMMANDPIPE=/var/run/ocsigenserver_command

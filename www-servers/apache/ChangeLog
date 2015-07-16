@@ -1,6 +1,10 @@
 # ChangeLog for www-servers/apache
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/apache/ChangeLog,v 1.305 2015/07/16 06:08:57 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/apache/ChangeLog,v 1.306 2015/07/16 12:52:29 polynomial-c Exp $
+
+  16 Jul 2015; Lars Wendler <polynomial-c@gentoo.org> apache-2.4.12-r1.ebuild,
+  apache-2.4.16.ebuild:
+  Fixed openssl dependency for alpn patch (bug #555070).
 
 *apache-2.4.16 (16 Jul 2015)
 

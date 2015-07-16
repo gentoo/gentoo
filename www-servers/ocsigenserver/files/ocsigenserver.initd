@@ -1,5 +1,5 @@
 #!/sbin/runscript
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 extra_commands="depend checkconfig reload"
@@ -25,6 +25,11 @@ checkconfig() {
 start() {
 	checkconfig || return 1
 
+	ebegin "Creating command pipe (${COMMANDPIPE})"
+	mkfifo -m 660 "${COMMANDPIPE}"
+	chown ocsigenserver:ocsigenserver "${COMMANDPIPE}"
+	eend $?
+
 	ebegin "Starting ocsigen"
 	start-stop-daemon --start --exec $DAEMON -- \
 			--pidfile $PIDFILE \
@@ -36,6 +41,9 @@ start() {
 stop() {
 	ebegin "Stopping ocsigen"
 	start-stop-daemon --stop --pidfile $PIDFILE
+	eend $?
+	ebegin "Removing command pipe (${COMMANDPIPE})"
+	rm -f "${COMMANDPIPE}"
 	eend $?
 }
 

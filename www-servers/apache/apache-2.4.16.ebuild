@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/apache/apache-2.4.16.ebuild,v 1.1 2015/07/16 06:08:57 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/apache/apache-2.4.16.ebuild,v 1.2 2015/07/16 12:52:29 polynomial-c Exp $
 
 EAPI=5
 
@@ -125,6 +125,9 @@ SLOT="2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x64-macos ~x86-macos ~m68k-mint ~sparc64-solaris ~x64-solaris"
 IUSE="alpn"
 REQUIRED_USE="alpn? ( ssl )"
+
+DEPEND+="alpn? ( >=dev-libs/openssl-1.0.2:0= )"
+RDEPEND+="alpn? ( >=dev-libs/openssl-1.0.2:0= )"
 
 pkg_setup() {
 	# dependend critical modules which are not allowed in global scope due
