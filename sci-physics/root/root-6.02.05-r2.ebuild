@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/root/root-6.02.05-r2.ebuild,v 1.4 2015/05/15 20:23:37 bircoph Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-physics/root/root-6.02.05-r2.ebuild,v 1.5 2015/07/16 21:22:10 bircoph Exp $
 
 EAPI=5
 
@@ -118,7 +118,7 @@ DOC_DIR="/usr/share/doc/${P}"
 OC_UNSUPPORTED="6.8.0"
 
 die_compiler() {
-	eerror "You are using a $(tc-getCXX) without C++$1 capabilities"
+	eerror "You are using a $(tc-getCXX)-$5 without C++$1 capabilities"
 	die "Need one of the following C++$1 capable compilers:\n"\
 		"    >=sys-devel/gcc[cxx]-$2\n"\
 		"    >=sys-devel/clang-$3\n"\
@@ -131,23 +131,26 @@ die_compiler() {
 # $3 - clang++
 # $4 - icc/icpc
 check_compiler() {
+	local ver
 	case "$(tc-getCXX)" in
 		*clang++*)
-			version_is_at_least "$3" "$(has_version sys-devel/clang)" || die_compiler "$1" "$2" "$3" "$4"
+			ver="$(best_version sys-devel/clang | sed 's:sys-devel/clang-::')"
 		;;
 		*g++*)
-			version_is_at_least "$2" "$(gcc-version)" || die_compiler "$1" "$2" "$3" "$4"
+			ver="$(gcc-version)"
 		;;
 		*icc*|*icpc*)
-			version_is_at_least "$4" "$(has_version dev-lang/icc)" || die_compiler "$1" "$2" "$3" "$4"
+			ver="$(best_version dev-lang/icc | sed 's:dev-lang/icc-::')"
 			eerror "ROOT-6 is known not to build with ICC."
 			eerror "Please report any isuses upstream."
 		;;
 		*)
 			ewarn "You are using an unsupported compiler."
 			ewarn "Please report any issues upstream."
+			return 0
 		;;
 	esac
+	version_is_at_least "$3" "${ver}" || die_compiler "$1" "$2" "$3" "$4" "${ver}"
 }
 
 pkg_setup() {

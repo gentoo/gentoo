@@ -1,6 +1,11 @@
 # ChangeLog for sci-physics/root
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/root/ChangeLog,v 1.147 2015/05/15 20:23:37 bircoph Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-physics/root/ChangeLog,v 1.148 2015/07/16 21:22:10 bircoph Exp $
+
+  16 Jul 2015; Andrew Savchenko <bircoph@gentoo.org> root-5.34.26.ebuild,
+  root-5.34.28-r1.ebuild, root-6.02.05-r2.ebuild:
+  Fix compiler version check for ICC and Clang. Reported by Dmitry
+  Kustov, dkustov@jinr.ru.
 
   15 May 2015; Andrew Savchenko <bircoph@gentoo.org> root-6.02.05-r2.ebuild,
   -files/root-6.02.05-dictpch.patch:

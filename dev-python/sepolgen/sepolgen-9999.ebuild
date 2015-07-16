@@ -1,9 +1,9 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/sepolgen/sepolgen-9999.ebuild,v 1.1 2015/06/09 15:39:57 swift Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/sepolgen/sepolgen-9999.ebuild,v 1.2 2015/07/16 20:47:16 perfinion Exp $
 
 EAPI="5"
-PYTHON_COMPAT=( python2_7 python3_4 )
+PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 
 inherit python-r1 eutils
 

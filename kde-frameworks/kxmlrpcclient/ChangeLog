@@ -1,6 +1,11 @@
 # ChangeLog for kde-frameworks/kxmlrpcclient
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-frameworks/kxmlrpcclient/ChangeLog,v 1.9 2015/06/28 12:15:09 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-frameworks/kxmlrpcclient/ChangeLog,v 1.10 2015/07/16 20:33:12 johu Exp $
+
+*kxmlrpcclient-5.12.0 (16 Jul 2015)
+
+  16 Jul 2015; Johannes Huber <johu@gentoo.org> +kxmlrpcclient-5.12.0.ebuild:
+  Version bump KDE Frameworks 5.12.0
 
   28 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> kxmlrpcclient-5.11.0.ebuild:
   Add ~x86 keyword wrt bug #553424

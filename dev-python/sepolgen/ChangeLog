@@ -1,6 +1,10 @@
 # ChangeLog for dev-python/sepolgen
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/sepolgen/ChangeLog,v 1.54 2015/06/09 15:39:57 swift Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/sepolgen/ChangeLog,v 1.55 2015/07/16 20:47:16 perfinion Exp $
+
+  16 Jul 2015; Jason Zaman <perfinion@gentoo.org> sepolgen-1.2.2.ebuild,
+  sepolgen-9999.ebuild:
+  fix python_compat. live ebuild has python3 support, previous do not
 
 *sepolgen-9999 (09 Jun 2015)
 
