@@ -3377,8 +3377,9 @@ mail-client/sylpheed:oniguruma - Use dev-libs/oniguruma for regular expression
 mail-client/thunderbird:bindist - Disable official Thunderbird branding (icons, name) which are not binary-redistributable according to upstream.
 mail-client/thunderbird:crypt - Enable encryption support with enigmail
 mail-client/thunderbird:custom-optimization - Fine-tune custom compiler optimizations (-Os, -O0, -O1, -O2, -O3)
+mail-client/thunderbird:gstreamer-0 - Use gstreamer:0.10 instead of gstreamer:1 for media support
 mail-client/thunderbird:jemalloc3 - Enable or disable jemalloc3 (forced-on when supported prior to 38.0)
-mail-client/thunderbird:lightning - Enable calendar support
+mail-client/thunderbird:lightning - Enable app-global calendar support (note 38.0 and above bundles calendar support when this flag is off)
 mail-client/thunderbird:minimal - Remove the software development kit and headers
 mail-client/thunderbird:mozdom - Enable Mozilla's DOM inspector
 mail-client/thunderbird:system-cairo - Use the system-wide x11-libs/cairo instead of bundled.

@@ -1,10 +1,14 @@
 # ChangeLog for profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10189 2015/07/15 14:32:19 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10190 2015/07/16 19:21:54 axs Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  16 Jul 2015; Ian Stakenvicius (_AxS_) <axs@gentoo.org> package.mask:
+  remove old spidermonkey-1.8.7 mask as ebuild removed, mask thunderbird-24 as
+  its not supported.
 
   15 Jul 2015; Patrice Clement <monsieurp@gentoo.org> package.mask:
   Mask dev-java/exolab{core,tools} for removal.

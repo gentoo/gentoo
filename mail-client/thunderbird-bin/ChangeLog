@@ -1,6 +1,10 @@
 # ChangeLog for mail-client/thunderbird-bin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/thunderbird-bin/ChangeLog,v 1.181 2015/07/16 18:18:29 axs Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/thunderbird-bin/ChangeLog,v 1.182 2015/07/16 19:23:04 axs Exp $
+
+  16 Jul 2015; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  -thunderbird-bin-31.6.0.ebuild:
+  removed old, vulnerable version
 
 *thunderbird-bin-38.1.0 (16 Jul 2015)
 

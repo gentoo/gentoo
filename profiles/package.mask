@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16672 2015/07/15 14:32:19 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16673 2015/07/16 19:21:54 axs Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -29,6 +29,12 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Ian Stakenvicius <axs@gentoo.org> (16 Jul 2015)
+# Mask thunerbird-24.x as it is no longer supported, but
+# it remains in the tree for now in case there is a need
+# for it for upgrading old user profiles, etc.
+~mail-client/thunderbird-24.8.0
 
 # Patrice Clement <monsieurp@gentoo.org> (15 Jul 2015)
 # Upstream dead. No update since 2005.
@@ -687,12 +693,6 @@ net-wireless/madwifi-ng
 # A more recent source build maintained by the community is available in the
 # seden overlay. A more recent binary is available in the java-overlay.
 <=dev-util/eclipse-sdk-3.5.1-r1
-
-# Ian Stakenvicius <axs@gentoo.org> (19 Jun 2012)
-# Mask new spidermonkeys until rdeps can accept it
-# 1.8.7 will be masked indefinitely and will be removed
-# from the tree soon.
-~dev-lang/spidermonkey-1.8.7
 
 # Michael Weber <xmw@gentoo.org> (13 Jun 2012)
 # Mask beta versions for testing

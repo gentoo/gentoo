@@ -1,6 +1,9 @@
 # ChangeLog for dev-util/ninja
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/ninja/ChangeLog,v 1.50 2015/07/03 14:46:15 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/ninja/ChangeLog,v 1.51 2015/07/16 19:08:18 klausman Exp $
+
+  16 Jul 2015; Tobias Klausmann <klausman@gentoo.org> ninja-1.5.3.ebuild:
+  Stable on alpha, bug 552884
 
   03 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> ninja-1.5.3.ebuild:
   arm stable wrt bug #552884

@@ -1,6 +1,9 @@
 # ChangeLog for sys-libs/e2fsprogs-libs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/e2fsprogs-libs/ChangeLog,v 1.145 2015/07/16 18:30:42 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/e2fsprogs-libs/ChangeLog,v 1.146 2015/07/16 19:29:50 zlogene Exp $
+
+  16 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> e2fsprogs-libs-1.42.13.ebuild:
+  amd64 stable wrt bug #540536
 
   16 Jul 2015; Tobias Klausmann <klausman@gentoo.org>
   e2fsprogs-libs-1.42.13.ebuild:

@@ -1,6 +1,20 @@
 # ChangeLog for mail-client/thunderbird
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/thunderbird/ChangeLog,v 1.337 2015/06/24 09:00:34 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/thunderbird/ChangeLog,v 1.339 2015/07/16 19:14:42 axs Exp $
+
+  16 Jul 2015; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  thunderbird-24.8.0.ebuild:
+  added maximum version dep of libvpx to thunderbird-24.8.0, for bug 550984
+
+*thunderbird-38.1.0 (16 Jul 2015)
+
+  16 Jul 2015; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +thunderbird-38.1.0.ebuild, -thunderbird-31.6.0.ebuild,
+  -thunderbird-38.0.1-r1.ebuild, metadata.xml:
+  version bump, cleaned up old versions.  Put back USE=lightning to install
+  calendar and gdata-provider app-global, but it remains bundled if the flag is
+  not set the same as what upstream provides.  Updated MOZ_LANGS to include cy
+  and others that were previously missing (bug 555024).
 
   24 Jun 2015; Agostino Sarubbo <ago@gentoo.org> thunderbird-31.7.0.ebuild:
   Stable for ppc, wrt bug #549356
