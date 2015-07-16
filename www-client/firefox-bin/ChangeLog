@@ -1,6 +1,10 @@
 # ChangeLog for www-client/firefox-bin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/firefox-bin/ChangeLog,v 1.237 2015/07/03 21:24:15 axs Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/firefox-bin/ChangeLog,v 1.238 2015/07/16 19:37:51 axs Exp $
+
+  16 Jul 2015; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  firefox-bin-39.0.ebuild:
+  added http sources to SRC_URI, bug 531278
 
 *firefox-bin-38.1.0 (03 Jul 2015)
 *firefox-bin-39.0 (03 Jul 2015)

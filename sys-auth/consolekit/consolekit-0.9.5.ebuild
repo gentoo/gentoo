@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/consolekit/consolekit-0.9.2.ebuild,v 1.2 2014/11/05 09:53:30 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/consolekit/consolekit-0.9.5.ebuild,v 1.1 2015/07/16 20:08:27 perfinion Exp $
 
 EAPI=5
 inherit eutils linux-info pam
@@ -18,8 +18,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux"
 IUSE="acl debug doc kernel_linux pam policykit selinux test"
 
-COMMON_DEPEND=">=dev-libs/dbus-glib-0.100:=
-	>=dev-libs/glib-2.38.2-r1:2=
+COMMON_DEPEND=">=dev-libs/glib-2.40:2=
 	sys-libs/zlib:=
 	x11-libs/libX11:=
 	acl? (
@@ -30,7 +29,8 @@ COMMON_DEPEND=">=dev-libs/dbus-glib-0.100:=
 	policykit? ( >=sys-auth/polkit-0.110 )"
 RDEPEND="${COMMON_DEPEND}
 	kernel_linux? ( sys-apps/coreutils[acl?] )
-	selinux? ( sec-policy/selinux-consolekit )"
+	selinux? ( sec-policy/selinux-consolekit )
+	sys-power/pm-utils"
 DEPEND="${COMMON_DEPEND}
 	dev-libs/libxslt
 	virtual/pkgconfig
@@ -69,9 +69,9 @@ src_configure() {
 		$(use_enable debug) \
 		$(use_enable policykit polkit) \
 		$(use_enable acl udev-acl) \
+		$(use_enable test tests) \
 		--with-dbus-services="${EPREFIX}"/usr/share/dbus-1/services \
 		--with-pam-module-dir="$(getpam_mod_dir)" \
-		--with-logrotate-dir=/etc/logrotate.d \
 		--with-xinitrc-dir=/etc/X11/xinit/xinitrc.d \
 		--without-systemdsystemunitdir
 }
@@ -98,7 +98,7 @@ src_install() {
 
 	prune_libtool_files --all # --all for pam_ck_connector.la
 
-	rm -rf "${ED}"/var/run # let the init script create the directory
+	rm -rf "${ED}"/var/run || die # let the init script create the directory
 
 	insinto /etc/logrotate.d
 	newins "${WORKDIR}"/debian/${PN}.logrotate ${PN} #374513

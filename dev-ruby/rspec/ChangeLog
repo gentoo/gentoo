@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/rspec
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rspec/ChangeLog,v 1.194 2015/07/15 18:16:32 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rspec/ChangeLog,v 1.195 2015/07/16 19:42:42 zlogene Exp $
+
+  16 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> rspec-1.3.2-r1.ebuild:
+  ia64 stable wrt bug #546484
 
   15 Jul 2015; Tobias Klausmann <klausman@gentoo.org> rspec-1.3.2-r1.ebuild:
   Stable on alpha, bug 546484

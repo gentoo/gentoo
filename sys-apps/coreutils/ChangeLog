@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/coreutils
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/coreutils/ChangeLog,v 1.396 2015/07/16 16:56:22 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/coreutils/ChangeLog,v 1.397 2015/07/16 19:32:06 zlogene Exp $
+
+  16 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> coreutils-8.23.ebuild:
+  x86 stable wrt bug #555028
 
   16 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> coreutils-8.23.ebuild:
   amd64 stable wrt bug #555028

@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/portage
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/portage/ChangeLog,v 1.1453 2015/07/11 19:01:26 zmedico Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/portage/ChangeLog,v 1.1454 2015/07/16 20:02:25 zlogene Exp $
+
+  16 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> portage-2.2.20.ebuild:
+  ia64 stable wrt bug #554104
 
   11 Jul 2015; Zac Medico <zmedico@gentoo.org> portage-2.2.20.ebuild,
   portage-9999.ebuild:

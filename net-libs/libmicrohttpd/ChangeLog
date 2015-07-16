@@ -1,6 +1,9 @@
 # ChangeLog for net-libs/libmicrohttpd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libmicrohttpd/ChangeLog,v 1.100 2015/07/11 19:24:23 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libmicrohttpd/ChangeLog,v 1.101 2015/07/16 19:34:19 zlogene Exp $
+
+  16 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> libmicrohttpd-0.9.42.ebuild:
+  amd64 stable wrt bug #553930
 
   11 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> libmicrohttpd-0.9.42.ebuild:
   x86 stable wrt bug #553930

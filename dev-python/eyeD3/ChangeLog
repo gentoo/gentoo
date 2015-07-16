@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/eyeD3
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/eyeD3/ChangeLog,v 1.91 2015/07/03 08:33:04 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/eyeD3/ChangeLog,v 1.92 2015/07/16 19:36:40 zlogene Exp $
+
+  16 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> eyeD3-0.7.5.ebuild:
+  ia64 stable wrt bug #500960
 
   03 Jul 2015; Agostino Sarubbo <ago@gentoo.org> eyeD3-0.7.5.ebuild:
   Stable for alpha, wrt bug #500960

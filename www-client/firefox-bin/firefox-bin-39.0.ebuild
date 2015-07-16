@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/firefox-bin/firefox-bin-39.0.ebuild,v 1.1 2015/07/03 21:24:15 axs Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/firefox-bin/firefox-bin-39.0.ebuild,v 1.2 2015/07/16 19:37:51 axs Exp $
 
 EAPI="5"
 
@@ -20,16 +20,20 @@ MOZ_PN="${PN/-bin}"
 MOZ_P="${MOZ_PN}-${MOZ_PV}"
 
 # Upstream ftp release URI that's used by mozlinguas.eclass
-# We don't use the http mirror because it deletes old tarballs.
+# We used to not use the http mirror because it deletes old tarballs.
 MOZ_FTP_URI="ftp://ftp.mozilla.org/pub/mozilla.org/${MOZ_PN}/releases/"
+MOZ_HTTP_URI="http://ftp.mozilla.org/pub/mozilla.org/${MOZ_PN}/releases/"
 
 inherit eutils multilib pax-utils fdo-mime gnome2-utils mozlinguas nsplugins
 
 DESCRIPTION="Firefox Web Browser"
-MOZ_FTP_URI="ftp://ftp.mozilla.org/pub/mozilla.org/${MOZ_PN}/releases"
 SRC_URI="${SRC_URI}
-	amd64? ( ${MOZ_FTP_URI}/${MOZ_PV}/linux-x86_64/en-US/${MOZ_P}.tar.bz2 -> ${PN}_x86_64-${PV}.tar.bz2 )
-	x86? ( ${MOZ_FTP_URI}/${MOZ_PV}/linux-i686/en-US/${MOZ_P}.tar.bz2 -> ${PN}_i686-${PV}.tar.bz2 )"
+	amd64? (
+		${MOZ_FTP_URI%/}/${MOZ_PV}/linux-x86_64/en-US/${MOZ_P}.tar.bz2 -> ${PN}_x86_64-${PV}.tar.bz2
+		${MOZ_HTTP_URI%/}/${MOZ_PV}/linux-x86_64/en-US/${MOZ_P}.tar.bz2 -> ${PN}_x86_64-${PV}.tar.bz2 )
+	x86? (
+		${MOZ_FTP_URI%/}/${MOZ_PV}/linux-i686/en-US/${MOZ_P}.tar.bz2 -> ${PN}_i686-${PV}.tar.bz2
+		${MOZ_HTTP_URI%/}/${MOZ_PV}/linux-i686/en-US/${MOZ_P}.tar.bz2 -> ${PN}_i686-${PV}.tar.bz2 )"
 HOMEPAGE="http://www.mozilla.com/firefox"
 RESTRICT="strip mirror"
 
