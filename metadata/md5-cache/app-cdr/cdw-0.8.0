@@ -1,10 +1,12 @@
-DEFINED_PHASES=install
+DEFINED_PHASES=install prepare
 DEPEND=virtual/cdrtools app-cdr/dvd+rw-tools dev-libs/libburn dev-libs/libcdio[-minimal] sys-libs/ncurses[unicode]
 DESCRIPTION=An ncurses based console frontend for cdrtools and dvd+rw-tools
 EAPI=5
 HOMEPAGE=http://cdw.sourceforge.net
 KEYWORDS=amd64 ~ppc x86
 LICENSE=GPL-2
+RDEPEND=virtual/cdrtools app-cdr/dvd+rw-tools dev-libs/libburn dev-libs/libcdio[-minimal] sys-libs/ncurses[unicode]
 SLOT=0
 SRC_URI=mirror://sourceforge/cdw/cdw-0.8.0.tar.gz
-_md5_=2a827e2268071e684c221794555f6f15
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=688da9bc2b4e2b3a0c7179d60b841bbd

@@ -1,6 +1,9 @@
 # ChangeLog for sys-process/lsof
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/lsof/ChangeLog,v 1.114 2015/07/15 16:17:11 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-process/lsof/ChangeLog,v 1.115 2015/07/16 03:45:45 vapier Exp $
+
+  16 Jul 2015; Mike Frysinger <vapier@gentoo.org> lsof-4.89.ebuild:
+  Add http://www.mirrorservice.org to the SRC_URI list #554940.
 
   15 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> lsof-4.88-r1.ebuild:
   amd64 stable wrt bug #554848
