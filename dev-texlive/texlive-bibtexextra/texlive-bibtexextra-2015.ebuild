@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-bibtexextra/texlive-bibtexextra-2015.ebuild,v 1.1 2015/07/16 09:13:07 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-bibtexextra/texlive-bibtexextra-2015.ebuild,v 1.2 2015/07/16 09:32:06 aballier Exp $
 
 EAPI="5"
 
@@ -18,6 +18,7 @@ IUSE=""
 DEPEND=">=dev-texlive/texlive-latex-2015
 !=dev-texlive/texlive-latexextra-2007*
 !<dev-texlive/texlive-latex-2009
+!<dev-texlive/texlive-publishers-2014
 "
 RDEPEND="${DEPEND} "
 TEXLIVE_MODULE_BINSCRIPTS="

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/texlive-core/texlive-core-2015.ebuild,v 1.1 2015/07/16 08:55:12 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/texlive-core/texlive-core-2015.ebuild,v 1.2 2015/07/16 09:34:56 aballier Exp $
 
 EAPI=5
 
@@ -114,7 +114,7 @@ COMMON_DEPEND="${MODULAR_X_DEPEND}
 	)
 	media-libs/freetype:2
 	>=dev-libs/kpathsea-6.2.1
-	cjk? ( >=dev-libs/ptexenc-1.3.2_p20140525-r1 )"
+	cjk? ( >=dev-libs/ptexenc-1.3.3_p20150521 )"
 
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
@@ -123,9 +123,9 @@ DEPEND="${COMMON_DEPEND}
 	app-arch/xz-utils"
 
 RDEPEND="${COMMON_DEPEND}
-	>=app-text/ps2pkm-1.5_p20130530
-	>=app-text/dvipsk-5.993_p20130530
-	>=dev-tex/bibtexu-3.71_p20130530
+	>=app-text/ps2pkm-1.7_p20150521
+	>=app-text/dvipsk-5.995_p20150521
+	>=dev-tex/bibtexu-3.71_p20150521
 	virtual/perl-Getopt-Long
 	tk? ( dev-perl/perl-tk )"
 
