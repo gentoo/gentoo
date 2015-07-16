@@ -1,6 +1,10 @@
 # ChangeLog for dev-ruby/ruby-mp3info
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-mp3info/ChangeLog,v 1.37 2015/06/07 19:35:06 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-mp3info/ChangeLog,v 1.38 2015/07/16 05:40:01 graaff Exp $
+
+  16 Jul 2015; Hans de Graaff <graaff@gentoo.org> -ruby-mp3info-0.8.4.ebuild,
+  -ruby-mp3info-0.8.5.ebuild:
+  Cleanup.
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

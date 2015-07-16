@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test
+DEPEND=dev-libs/openssl:= >=dev-libs/boost-1.41 sys-devel/bison >=sys-devel/flex-2.5.35 mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql:= ) apache2? ( =www-servers/apache-2* ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) virtual/pkgconfig
+DESCRIPTION=Distributed, general purpose, network monitoring engine
+EAPI=5
+HOMEPAGE=http://icinga.org/icinga2
+IUSE=+mysql postgres classicui minimal nano-syntax +plugins +vim-syntax apache2
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/openssl:= >=dev-libs/boost-1.41 sys-devel/bison >=sys-devel/flex-2.5.35 mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql:= ) plugins? ( || ( net-analyzer/monitoring-plugins net-analyzer/nagios-plugins ) ) classicui? ( net-analyzer/icinga[web] ) apache2? ( =www-servers/apache-2* )
+REQUIRED_USE=!minimal? ( || ( mysql postgres ) )
+SLOT=0
+SRC_URI=http://github.com/Icinga/icinga2/archive/v2.3.7.tar.gz -> icinga2-2.3.7.tar.gz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	depend.apache	1a38534d3f755d1ab1d92ce120bd7dbd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=cf576cdd8c1757ecca22f2141aee14de

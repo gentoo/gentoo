@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>ruby</herd>
+	<maintainer>
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<longdescription lang="en">
+		puppet plugin used to connect to puppetdb
+	</longdescription>
+</pkgmetadata>

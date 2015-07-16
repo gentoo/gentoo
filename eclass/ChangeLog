@@ -1,6 +1,9 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1710 2015/07/15 09:03:11 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1711 2015/07/16 06:06:59 polynomial-c Exp $
+
+  16 Jul 2015; Lars Wendler <polynomial-c@gentoo.org> apache-2.eclass:
+  Added slot dependency for openssl. Raised minimum required EAPI version to 5.
 
   15 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org> kde4-meta.eclass:
   Fix unpacking of noakonadi branch

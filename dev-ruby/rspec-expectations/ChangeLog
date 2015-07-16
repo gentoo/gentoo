@@ -1,6 +1,12 @@
 # ChangeLog for dev-ruby/rspec-expectations
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rspec-expectations/ChangeLog,v 1.90 2015/06/28 06:00:17 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rspec-expectations/ChangeLog,v 1.91 2015/07/16 05:50:39 graaff Exp $
+
+*rspec-expectations-3.3.1 (16 Jul 2015)
+
+  16 Jul 2015; Hans de Graaff <graaff@gentoo.org>
+  +rspec-expectations-3.3.1.ebuild:
+  Version bump.
 
 *rspec-expectations-3.3.0 (28 Jun 2015)
 

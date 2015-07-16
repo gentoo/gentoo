@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/apache-2.eclass,v 1.41 2015/06/07 19:22:36 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/apache-2.eclass,v 1.42 2015/07/16 06:06:59 polynomial-c Exp $
 
 # @ECLASS: apache-2.eclass
 # @MAINTAINER:
@@ -16,8 +16,8 @@ inherit autotools eutils flag-o-matic multilib ssl-cert user toolchain-funcs ver
 	&& die "Do not use this eclass with anything else than www-servers/apache ebuilds!"
 
 case ${EAPI:-0} in
-	0|1|2|3)
-		die "This eclass requires >=EAPI-4"
+	0|1|2|3|4)
+		die "This eclass requires >=EAPI-5"
 	;;
 esac
 
@@ -106,7 +106,7 @@ DEPEND="dev-lang/perl
 	apache2_modules_deflate? ( sys-libs/zlib )
 	apache2_modules_mime? ( app-misc/mime-types )
 	ldap? ( =net-nds/openldap-2* )
-	ssl? ( >=dev-libs/openssl-0.9.8m )
+	ssl? ( >=dev-libs/openssl-0.9.8m:0= )
 	!=www-servers/apache-1*"
 RDEPEND+=" ${DEPEND}
 	selinux? ( sec-policy/selinux-apache )"

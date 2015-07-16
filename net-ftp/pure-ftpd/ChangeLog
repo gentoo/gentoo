@@ -1,6 +1,11 @@
 # ChangeLog for net-ftp/pure-ftpd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/pure-ftpd/ChangeLog,v 1.166 2015/07/03 08:28:51 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/pure-ftpd/ChangeLog,v 1.167 2015/07/16 05:47:30 polynomial-c Exp $
+
+  16 Jul 2015; Lars Wendler <polynomial-c@gentoo.org> pure-ftpd-1.0.40.ebuild,
+  pure-ftpd-1.0.41.ebuild:
+  We need openssl with bindist USE flag being disabled (bug #554568). Restored
+  ~alpha and ~sparc KEYWORDS for pure-ftpd-1.0.41.
 
   03 Jul 2015; Agostino Sarubbo <ago@gentoo.org> pure-ftpd-1.0.40.ebuild:
   Stable for sparc, wrt bug #552254

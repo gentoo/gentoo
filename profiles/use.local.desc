@@ -198,6 +198,7 @@ app-admin/pass:git - Use dev-vcs/git for password revisions.
 app-admin/pass:importers - Allow importing passwords from other password managers using various contributed scripts.
 app-admin/puppet:augeas - Enable augeas support
 app-admin/puppet:diff - Enable diff support
+app-admin/puppet:puppetdb - Enable puppetdb support
 app-admin/puppet:rrdtool - Enable rrdtool support
 app-admin/puppet:shadow - Enable shadow support
 app-admin/pwgen:livecd - Install init script for root password scrambling on boot
