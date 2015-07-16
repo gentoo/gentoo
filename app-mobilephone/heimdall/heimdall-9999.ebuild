@@ -1,10 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-mobilephone/heimdall/heimdall-9999.ebuild,v 1.7 2014/12/17 09:07:29 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-mobilephone/heimdall/heimdall-9999.ebuild,v 1.8 2015/07/16 08:59:06 polynomial-c Exp $
 
 EAPI=5
 
-inherit autotools eutils qt4-r2 udev
+CMAKE_IN_SOURCE_BUILD="true"
+
+inherit autotools eutils cmake-utils udev
 
 if [[ ${PV} != 9999 ]]; then
 	SRC_URI="https://github.com/Benjamin-Dobell/Heimdall/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -21,43 +23,36 @@ HOMEPAGE="http://www.glassechidna.com.au/products/heimdall/"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="qt4"
+IUSE="qt5 static-libs"
 
 # virtual/libusb is not precise enough
-RDEPEND=">=dev-libs/libusb-1.0.18:1=
-	qt4? ( dev-qt/qtcore:4= dev-qt/qtgui:4= )"
+RDEPEND=">=dev-libs/libusb-1.0.18:1=[static-libs=]
+	qt5? ( dev-qt/qtwidgets:5= )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
-	rm -r libusb-1.0 || die
-	cd "${S}/heimdall" || die
-	edos2unix configure.ac Makefile.am || die
-	sed -i -e /sudo/d Makefile.am || die
-	eautoreconf
-}
-
-src_configure() {
-	cd "${S}/libpit" || die
-	econf
-
-	cd "${S}/heimdall" || die
-	econf
-
-	if use qt4; then
-		cd "${S}/heimdall-frontend" || die
-		eqmake4 heimdall-frontend.pro OUTPUTDIR=/usr/bin || die
+	if ! use qt5 ; then
+		sed '/heimdall-frontend/d' \
+			-i CMakeLists.txt || die
 	fi
 }
 
+src_configure() {
+	cmake-utils_src_configure \
+		$(cmake-utils_use_use static-libs STATIC_LIBS)
+}
+
 src_compile() {
-	emake -C libpit
-	emake -C heimdall
-	use qt4 && emake -C heimdall-frontend
+	cmake-utils_src_compile
 }
 
 src_install() {
-	emake -C heimdall DESTDIR="${D}" udevrulesdir="$(get_udevdir)/rules.d" install
+	# cmake-utils_src_install doesn't work
+	dobin "${S}"/bin/${PN}
+	use qt5 && dobin "${S}"/bin/${PN}-frontend
+
+	insinto $(get_udevdir)/rules.d
+	doins "${S}"/${PN}/60-${PN}.rules
 	dodoc Linux/README
-	use qt4 && emake -C heimdall-frontend INSTALL_ROOT="${D}" install
 }

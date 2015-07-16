@@ -1,6 +1,12 @@
 # ChangeLog for dev-python/cryptography-vectors
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/cryptography-vectors/ChangeLog,v 1.31 2015/07/11 13:49:22 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/cryptography-vectors/ChangeLog,v 1.32 2015/07/16 08:58:41 patrick Exp $
+
+*cryptography-vectors-0.9.3 (16 Jul 2015)
+
+  16 Jul 2015; Patrick Lauer <patrick@gentoo.org>
+  +cryptography-vectors-0.9.3.ebuild:
+  Bump
 
   11 Jul 2015; Tobias Klausmann <klausman@gentoo.org>
   cryptography-vectors-0.6.1.ebuild:

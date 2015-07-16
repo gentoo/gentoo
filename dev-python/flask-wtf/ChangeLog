@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/flask-wtf
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/flask-wtf/ChangeLog,v 1.20 2015/01/26 04:27:00 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/flask-wtf/ChangeLog,v 1.21 2015/07/16 08:38:28 patrick Exp $
+
+*flask-wtf-0.12 (16 Jul 2015)
+
+  16 Jul 2015; Patrick Lauer <patrick@gentoo.org> +flask-wtf-0.12.ebuild:
+  Bump
 
 *flask-wtf-0.11 (26 Jan 2015)
 

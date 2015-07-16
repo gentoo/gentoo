@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm prepare unpack
+DEPEND=>=dev-texlive/texlive-basic-2015 >=app-text/texlive-core-2015 app-arch/xz-utils
+DESCRIPTION=TeXLive Indic scripts
+EAPI=5
+HOMEPAGE=http://www.tug.org/texlive/
+IUSE=source doc
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~s390 ~sh ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
+LICENSE=GPL-1 GPL-2 LPPL-1.3 public-domain
+RDEPEND=>=dev-texlive/texlive-basic-2015 >=app-text/texlive-core-2015
+SLOT=0
+SRC_URI=mirror://gentoo/texlive-module-bangtex-2015.tar.xz mirror://gentoo/texlive-module-bengali-2015.tar.xz mirror://gentoo/texlive-module-burmese-2015.tar.xz mirror://gentoo/texlive-module-devnag-2015.tar.xz mirror://gentoo/texlive-module-ebong-2015.tar.xz mirror://gentoo/texlive-module-hyphen-indic-2015.tar.xz mirror://gentoo/texlive-module-hyphen-sanskrit-2015.tar.xz mirror://gentoo/texlive-module-sanskrit-2015.tar.xz mirror://gentoo/texlive-module-sanskrit-t1-2015.tar.xz mirror://gentoo/texlive-module-velthuis-2015.tar.xz mirror://gentoo/texlive-module-wnri-2015.tar.xz mirror://gentoo/texlive-module-wnri-latex-2015.tar.xz mirror://gentoo/texlive-module-xetex-devanagari-2015.tar.xz mirror://gentoo/texlive-module-collection-langindic-2015.tar.xz doc? ( mirror://gentoo/texlive-module-bangtex.doc-2015.tar.xz mirror://gentoo/texlive-module-bengali.doc-2015.tar.xz mirror://gentoo/texlive-module-burmese.doc-2015.tar.xz mirror://gentoo/texlive-module-ebong.doc-2015.tar.xz mirror://gentoo/texlive-module-sanskrit.doc-2015.tar.xz mirror://gentoo/texlive-module-sanskrit-t1.doc-2015.tar.xz mirror://gentoo/texlive-module-velthuis.doc-2015.tar.xz mirror://gentoo/texlive-module-wnri.doc-2015.tar.xz mirror://gentoo/texlive-module-wnri-latex.doc-2015.tar.xz mirror://gentoo/texlive-module-xetex-devanagari.doc-2015.tar.xz ) source? ( mirror://gentoo/texlive-module-bengali.source-2015.tar.xz mirror://gentoo/texlive-module-burmese.source-2015.tar.xz mirror://gentoo/texlive-module-sanskrit.source-2015.tar.xz mirror://gentoo/texlive-module-wnri-latex.source-2015.tar.xz )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	texlive-common	8bd0f2143e4bb5fa3bb0bb56aa08006f	texlive-module	12c5ffd805581a3e724ff87014ac8919	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=4cd934814edb3e7dd852cb56fc8ee6f5

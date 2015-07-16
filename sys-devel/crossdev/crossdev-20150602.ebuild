@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/crossdev/crossdev-20150602.ebuild,v 1.1 2015/06/02 17:03:38 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/crossdev/crossdev-20150602.ebuild,v 1.2 2015/07/16 08:36:34 vapier Exp $
 
 EAPI="4"
 
@@ -12,7 +12,7 @@ if [[ ${PV} == "99999999" ]] ; then
 else
 	SRC_URI="mirror://gentoo/${P}.tar.xz
 		http://dev.gentoo.org/~vapier/dist/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
+	KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd"
 fi
 
 DESCRIPTION="Gentoo Cross-toolchain generator"

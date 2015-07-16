@@ -1,6 +1,9 @@
 # ChangeLog for app-portage/portage-utils
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/portage-utils/ChangeLog,v 1.172 2015/06/21 16:10:57 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/portage-utils/ChangeLog,v 1.173 2015/07/16 08:35:39 vapier Exp $
+
+  16 Jul 2015; Mike Frysinger <vapier@gentoo.org> portage-utils-0.56.ebuild:
+  Mark sparc stable #551682.
 
   21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> portage-utils-0.56.ebuild:
   alpha stable wrt bug #551682

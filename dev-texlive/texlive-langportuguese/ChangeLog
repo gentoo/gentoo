@@ -1,6 +1,12 @@
 # ChangeLog for dev-texlive/texlive-langportuguese
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-langportuguese/ChangeLog,v 1.67 2015/07/12 17:59:39 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-langportuguese/ChangeLog,v 1.68 2015/07/16 09:21:49 aballier Exp $
+
+*texlive-langportuguese-2015 (16 Jul 2015)
+
+  16 Jul 2015; Alexis Ballier <aballier@gentoo.org>
+  +texlive-langportuguese-2015.ebuild:
+  bump to texlive 2015
 
   12 Jul 2015; Mikle Kolyada <zlogene@gentoo.org>
   texlive-langportuguese-2014.ebuild:

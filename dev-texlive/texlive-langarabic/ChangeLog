@@ -1,6 +1,12 @@
 # ChangeLog for dev-texlive/texlive-langarabic
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-langarabic/ChangeLog,v 1.46 2015/07/12 17:44:22 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-langarabic/ChangeLog,v 1.47 2015/07/16 09:16:51 aballier Exp $
+
+*texlive-langarabic-2015 (16 Jul 2015)
+
+  16 Jul 2015; Alexis Ballier <aballier@gentoo.org>
+  +texlive-langarabic-2015.ebuild:
+  bump to texlive 2015
 
   12 Jul 2015; Mikle Kolyada <zlogene@gentoo.org>
   texlive-langarabic-2014.ebuild:
