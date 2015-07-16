@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/fstrm
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/fstrm/ChangeLog,v 1.7 2015/06/19 17:13:31 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/fstrm/ChangeLog,v 1.8 2015/07/16 16:42:21 jer Exp $
+
+  16 Jul 2015; Jeroen Roovers <jer@gentoo.org> fstrm-0.2.0-r1.ebuild:
+  Mark ~hppa (bug #531068).
 
   19 Jun 2015; Markus Meier <maekke@gentoo.org> fstrm-0.2.0-r1.ebuild:
   add ~arm, bug #531068

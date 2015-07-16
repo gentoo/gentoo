@@ -1,6 +1,9 @@
 # ChangeLog for Gentoo/hppa profile
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/hppa/ChangeLog,v 1.250 2015/07/03 04:06:18 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/hppa/ChangeLog,v 1.251 2015/07/16 17:20:12 jer Exp $
+
+  16 Jul 2015; Jeroen Roovers <jer@gentoo.org> package.use.mask:
+  Unmask USE=dnstap for net-dns/unbound (bug #531068).
 
   03 Jul 2015; Jeroen Roovers <jer@gentoo.org> package.use.mask:
   Mask USE=http2 for net-misc/curl (bug #552898).

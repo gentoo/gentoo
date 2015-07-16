@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/hppa/package.use.mask,v 1.161 2015/07/03 04:06:18 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/hppa/package.use.mask,v 1.162 2015/07/16 17:20:12 jer Exp $
 
 # DON'T TOUCH THIS FILE. Instead, file a bug and assign it to <hppa@gentoo.org>.
 
@@ -26,10 +26,6 @@ dev-libs/efl physics
 # dev-python/gevent requires dev-python/greenlet which has not been ported to
 # HPPA (bug #538510)
 dev-python/pyzor gevent
-
-# Jeroen Roovers <jer@gentoo.org> (29 Nov 2014)
-# Needs dev-libs/protobuf{-c} which has not been ported to HPPA (bug #531068)
-net-dns/unbound dnstap
 
 # Jeroen Roovers <jer@gentoo.org> (19 Oct 2014)
 # requires dev-python/restkit which requires

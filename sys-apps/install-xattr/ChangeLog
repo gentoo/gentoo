@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/install-xattr
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/install-xattr/ChangeLog,v 1.43 2015/06/28 13:58:13 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/install-xattr/ChangeLog,v 1.44 2015/07/16 16:58:55 zlogene Exp $
+
+  16 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> install-xattr-0.5.ebuild:
+  ia64 stable wrt bug #550654
 
   28 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> install-xattr-0.5.ebuild:
   alpha stable wrt bug #550654

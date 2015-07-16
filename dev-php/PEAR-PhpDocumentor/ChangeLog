@@ -1,6 +1,11 @@
 # ChangeLog for dev-php/PEAR-PhpDocumentor
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-PhpDocumentor/ChangeLog,v 1.58 2015/01/22 13:50:02 grknight Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-PhpDocumentor/ChangeLog,v 1.59 2015/07/16 16:34:47 grknight Exp $
+
+  16 Jul 2015; Brian Evans <grknight@gentoo.org>
+  -PEAR-PhpDocumentor-1.4.4.ebuild:
+  Drop possible vulnerable version wrt security bug 526542 as the status of
+  smarty-2 is unknown
 
   22 Jan 2015; Brian Evans <grknight@gentoo.org>
   -PEAR-PhpDocumentor-1.4.0.ebuild, -PEAR-PhpDocumentor-1.4.1.ebuild,

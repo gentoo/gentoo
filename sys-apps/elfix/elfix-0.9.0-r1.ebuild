@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/elfix/elfix-0.9.0-r1.ebuild,v 1.4 2015/04/19 07:05:14 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/elfix/elfix-0.9.0-r1.ebuild,v 1.5 2015/07/16 17:27:48 zlogene Exp $
 
 EAPI="5"
 
@@ -13,7 +13,7 @@ SRC_URI="http://dev.gentoo.org/~blueness/elfix/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sparc x86"
 IUSE="+ptpax +xtpax"
 
 REQUIRED_USE="|| ( ptpax xtpax )"

@@ -1,19 +1,20 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/mozlinguas.eclass,v 1.7 2015/07/16 16:25:47 axs Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/mozlinguas.eclass,v 1.9 2015/07/16 17:31:04 axs Exp $
 
 # @ECLASS: mozlinguas.eclass
 # @MAINTAINER:
 # mozilla@gentoo.org
 # @AUTHOR:
 # Nirbheek Chauhan <nirbheek@gentoo.org>
+# Ian Stakenvicius <axs@gentoo.org>
 # @BLURB: Handle language packs for mozilla products
 # @DESCRIPTION:
 # Sets IUSE according to MOZ_LANGS (language packs available). Also exports
 # src_unpack, src_compile and src_install for use in ebuilds, and provides
 # supporting functions for langpack generation and installation.
 
-inherit mozextension mozcoreconf-v3
+inherit mozextension
 
 case "${EAPI:-0}" in
 	0|1)
@@ -206,10 +207,16 @@ mozlinguas_src_unpack() {
 # @FUNCTION: mozlinguas_mozconfig
 # @DESCRIPTION:
 # if applicable, add the necessary flag to .mozconfig to support
-# the generation of locales
+# the generation of locales.  Note that this function requires
+# mozconfig_annontate to already be declared via an inherit of
+# mozconfig or mozcoreconf.
 mozlinguas_mozconfig() {
 	if [[ -n ${MOZ_GENERATE_LANGPACKS} ]]; then
-		mozconfig_annotate 'for building locales' --with-l10n-base=${MOZ_L10N_SOURCEDIR}
+		if declare -f mozconfig_annotate >/dev/null ; then
+			mozconfig_annotate 'for building locales' --with-l10n-base=${MOZ_L10N_SOURCEDIR}
+		else
+			die "Could not configure l10n-base, mozconfig_annotate not declared -- missing inherit?"
+		fi
 	fi
 }
 

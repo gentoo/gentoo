@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/gmpy/gmpy-2.0.4.ebuild,v 1.5 2015/06/28 10:11:52 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/gmpy/gmpy-2.0.4.ebuild,v 1.6 2015/07/16 17:29:38 zlogene Exp $
 
 EAPI=5
 
@@ -17,7 +17,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_P}.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="2"
-KEYWORDS="~amd64 ~arm ~ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~amd64 ~arm ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="doc mpir"
 
 RDEPEND="

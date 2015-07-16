@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/fstrm/fstrm-0.2.0-r1.ebuild,v 1.6 2015/06/19 17:13:31 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/fstrm/fstrm-0.2.0-r1.ebuild,v 1.7 2015/07/16 16:42:21 jer Exp $
 
 EAPI=5
 inherit autotools-multilib
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/farsightsec/${PN}/releases/download/v${PV}/${P}.tar.
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc ppc64 x86"
+KEYWORDS="amd64 ~arm ~hppa ppc ppc64 x86"
 IUSE="static-libs utils"
 
 RDEPEND="utils? ( dev-libs/libevent[${MULTILIB_USEDEP}] )"

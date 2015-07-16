@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/gmpy
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/gmpy/ChangeLog,v 1.58 2015/07/08 09:31:41 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/gmpy/ChangeLog,v 1.59 2015/07/16 17:29:38 zlogene Exp $
+
+  16 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> gmpy-2.0.4.ebuild:
+  ia64 stable wrt bug #530470
 
 *gmpy-2.0.6 (08 Jul 2015)
 

@@ -1,6 +1,15 @@
 # ChangeLog for dev-php/smarty
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/smarty/ChangeLog,v 1.141 2015/04/30 14:05:22 grknight Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php/smarty/ChangeLog,v 1.143 2015/07/16 16:59:27 grknight Exp $
+
+*smarty-3.1.27 (16 Jul 2015)
+
+  16 Jul 2015; Brian Evans <grknight@gentoo.org> +smarty-3.1.27.ebuild:
+  Version bump
+
+  16 Jul 2015; Brian Evans <grknight@gentoo.org> -smarty-2.6.28.ebuild:
+  Drop possible vulnerable version wrt security bug 526542 as the status of
+  smarty-2 is unknown
 
   30 Apr 2015; Brian Evans <grknight@gentoo.org> -smarty-3.1.12.ebuild:
   Drop vulnerable version wrt security bug 526542
