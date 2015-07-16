@@ -1,6 +1,11 @@
 # ChangeLog for dev-ruby/pdf-core
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/pdf-core/ChangeLog,v 1.15 2015/07/06 06:54:01 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/pdf-core/ChangeLog,v 1.16 2015/07/16 05:25:46 graaff Exp $
+
+*pdf-core-0.6.0 (16 Jul 2015)
+
+  16 Jul 2015; Hans de Graaff <graaff@gentoo.org> +pdf-core-0.6.0.ebuild:
+  Version bump.
 
   06 Jul 2015; Hans de Graaff <graaff@gentoo.org> pdf-core-0.5.1.ebuild:
   Add ruby22.

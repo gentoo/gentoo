@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/puppet/puppet-4.2.0.ebuild,v 1.1 2015/07/11 19:00:03 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/puppet/puppet-4.2.0.ebuild,v 1.2 2015/07/16 05:29:05 prometheanfire Exp $
 
 EAPI="5"
 
@@ -80,6 +80,7 @@ all_ruby_compile() {
 
 each_ruby_install() {
 	each_fakegem_install
+	dosym "/usr/$(get_libdir)/ruby/gems/$(ruby_get_version)/gems/${P}" "/usr/$(get_libdir)/ruby/gems/$(ruby_get_version)/gems/${PN}"
 }
 
 all_ruby_install() {
@@ -88,7 +89,6 @@ all_ruby_install() {
 	# systemd stuffs
 	insinto /usr/lib/systemd/system
 	doins "${WORKDIR}/all/${P}/ext/systemd/puppet.service"
-	doins "${WORKDIR}/all/${P}/ext/systemd/puppetmaster.service"
 
 	# tmpfiles stuff
 	insinto /usr/lib/tmpfiles.d

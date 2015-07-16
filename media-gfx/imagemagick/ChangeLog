@@ -1,6 +1,11 @@
 # ChangeLog for media-gfx/imagemagick
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/imagemagick/ChangeLog,v 1.593 2015/07/08 01:39:55 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/imagemagick/ChangeLog,v 1.594 2015/07/16 05:25:26 radhermit Exp $
+
+*imagemagick-6.9.1.8 (16 Jul 2015)
+
+  16 Jul 2015; Tim Harder <radhermit@gentoo.org> +imagemagick-6.9.1.8.ebuild:
+  Version bump.
 
   08 Jul 2015; Tim Harder <radhermit@gentoo.org> imagemagick-6.9.1.7.ebuild,
   +files/imagemagick-6.9.1.7-cflags.patch:
