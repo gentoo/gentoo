@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/texlive/texlive-2015.ebuild,v 1.1 2015/07/16 09:36:13 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/texlive/texlive-2015.ebuild,v 1.2 2015/07/16 12:05:50 aballier Exp $
 
 EAPI="5"
 
@@ -39,14 +39,14 @@ RDEPEND="${DEPEND}
 	app-text/ps2eps
 	dvi2tty? ( dev-tex/dvi2tty )
 	png? ( app-text/dvipng )
-	X? ( >=app-text/xdvik-22.85 )
+	X? ( >=app-text/xdvik-22.87 )
 	>=${TEXLIVE_CAT}/texlive-basic-${PV}
 	>=${TEXLIVE_CAT}/texlive-fontsrecommended-${PV}
 	>=${TEXLIVE_CAT}/texlive-latex-${PV}
 	luatex? ( >=${TEXLIVE_CAT}/texlive-luatex-${PV} )
 	>=${TEXLIVE_CAT}/texlive-latexrecommended-${PV}
 	>=dev-tex/xcolor-2.11
-	>=dev-tex/latex-beamer-3.20
+	>=dev-tex/latex-beamer-3.36
 	metapost? (
 		>=${TEXLIVE_CAT}/texlive-metapost-${PV}
 			dev-tex/feynmf

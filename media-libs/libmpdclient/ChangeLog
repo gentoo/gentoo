@@ -1,6 +1,9 @@
 # ChangeLog for media-libs/libmpdclient
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libmpdclient/ChangeLog,v 1.62 2015/04/12 16:24:51 angelos Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libmpdclient/ChangeLog,v 1.63 2015/07/16 12:20:44 klausman Exp $
+
+  16 Jul 2015; Tobias Klausmann <klausman@gentoo.org> libmpdclient-2.10.ebuild:
+  Stable on alpha, bug 548842
 
 *libmpdclient-2.10 (12 Apr 2015)
 

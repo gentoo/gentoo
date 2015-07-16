@@ -1,6 +1,9 @@
 # ChangeLog for media-sound/wildmidi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/wildmidi/ChangeLog,v 1.31 2015/03/22 15:32:21 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/wildmidi/ChangeLog,v 1.32 2015/07/16 12:20:52 klausman Exp $
+
+  16 Jul 2015; Tobias Klausmann <klausman@gentoo.org> wildmidi-0.2.3.5.ebuild:
+  Stable on alpha, bug 548842
 
   22 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -wildmidi-0.2.3.4-r1.ebuild:
   Remove superseded stable version.

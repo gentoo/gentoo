@@ -1,6 +1,10 @@
 # ChangeLog for app-eselect/eselect-timidity
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-eselect/eselect-timidity/ChangeLog,v 1.1 2015/03/31 16:57:15 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-eselect/eselect-timidity/ChangeLog,v 1.2 2015/07/16 12:21:09 klausman Exp $
+
+  16 Jul 2015; Tobias Klausmann <klausman@gentoo.org>
+  eselect-timidity-20110513.ebuild:
+  Stable on alpha, bug 548842
 
   31 Mar 2015; Ulrich Müller <ulm@gentoo.org>
   +eselect-timidity-20061203.ebuild, +eselect-timidity-20091106.ebuild,

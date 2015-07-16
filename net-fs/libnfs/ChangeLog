@@ -1,6 +1,9 @@
 # ChangeLog for net-fs/libnfs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/libnfs/ChangeLog,v 1.25 2015/06/27 12:39:49 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/libnfs/ChangeLog,v 1.26 2015/07/16 12:20:28 klausman Exp $
+
+  16 Jul 2015; Tobias Klausmann <klausman@gentoo.org> libnfs-1.9.5.ebuild:
+  Stable on alpha, bug 548842
 
   27 Jun 2015; Markus Meier <maekke@gentoo.org> libnfs-1.9.7.ebuild:
   arm stable, bug #552000
