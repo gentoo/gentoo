@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/icewm/icewm-1.3.10.ebuild,v 1.1 2015/07/07 09:55:50 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/icewm/icewm-1.3.10.ebuild,v 1.2 2015/07/16 06:33:57 polynomial-c Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
@@ -25,7 +25,7 @@ S=${WORKDIR}/${P/_}
 
 RDEPEND="
 	media-libs/fontconfig
-	x11-libs/gdk-pixbuf:2
+	x11-libs/gdk-pixbuf:2[X]
 	x11-libs/libX11
 	x11-libs/libXrandr
 	x11-libs/libXext

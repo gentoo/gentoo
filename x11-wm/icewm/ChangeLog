@@ -1,6 +1,10 @@
 # ChangeLog for x11-wm/icewm
 # Copyright 1999- Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/icewm/ChangeLog,v 1.172 2015/07/07 09:55:50 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/icewm/ChangeLog,v 1.173 2015/07/16 06:33:57 polynomial-c Exp $
+
+  16 Jul 2015; Lars Wendler <polynomial-c@gentoo.org> icewm-1.3.8.ebuild,
+  icewm-1.3.9.ebuild, icewm-1.3.10.ebuild:
+  Fixed dependency on x11-libs/gdk-pixbuf (bug #554900).
 
 *icewm-1.3.10 (07 Jul 2015)
 
