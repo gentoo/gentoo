@@ -1,6 +1,9 @@
 # ChangeLog for dev-tex/aastex
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/aastex/ChangeLog,v 1.17 2015/04/13 22:12:51 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/aastex/ChangeLog,v 1.18 2015/07/16 14:09:19 aballier Exp $
+
+  16 Jul 2015; Alexis Ballier <aballier@gentoo.org> aastex-5.2.ebuild:
+  override VARTEXFONTS to avoid sandbox violations, bug #554546
 
   13 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -aastex-5.0.2.ebuild:
   Remove old.

@@ -1,6 +1,9 @@
 # ChangeLog for app-doc/doxygen
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/doxygen/ChangeLog,v 1.285 2015/07/07 20:51:59 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-doc/doxygen/ChangeLog,v 1.286 2015/07/16 13:37:34 klausman Exp $
+
+  16 Jul 2015; Tobias Klausmann <klausman@gentoo.org> doxygen-1.8.9.1.ebuild:
+  Stable on alpha, bug 550348
 
   07 Jul 2015; Markus Meier <maekke@gentoo.org> doxygen-1.8.9.1.ebuild:
   arm stable, bug #550348

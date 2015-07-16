@@ -1,6 +1,9 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1711 2015/07/16 06:06:59 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1712 2015/07/16 14:29:39 mgorny Exp $
+
+  16 Jul 2015; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
+  Forbid also installing "examples" package, bug #555038.
 
   16 Jul 2015; Lars Wendler <polynomial-c@gentoo.org> apache-2.eclass:
   Added slot dependency for openssl. Raised minimum required EAPI version to 5.

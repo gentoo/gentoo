@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/distutils-r1.eclass,v 1.114 2015/07/04 15:26:17 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/distutils-r1.eclass,v 1.115 2015/07/16 14:29:39 mgorny Exp $
 
 # @ECLASS: distutils-r1
 # @MAINTAINER:
@@ -549,9 +549,13 @@ distutils-r1_python_install() {
 
 	esetup.py install --root="${root}" "${args[@]}"
 
-	if [[ -d ${root}$(python_get_sitedir)/tests ]]; then
-		die "Package installs 'tests' package, file collisions likely."
-	fi
+	local forbidden_package_names=( examples test tests )
+	local p
+	for p in "${forbidden_package_names[@]}"; do
+		if [[ -d ${root}$(python_get_sitedir)/${p} ]]; then
+			die "Package installs '${p}' package which is forbidden and likely a bug in the build system."
+		fi
+	done
 	if [[ -d ${root}/usr/$(get_libdir)/pypy/share ]]; then
 		eqawarn "Package installs 'share' in PyPy prefix, see bug #465546."
 	fi

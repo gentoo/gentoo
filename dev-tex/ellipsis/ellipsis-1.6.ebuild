@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/ellipsis/ellipsis-1.6.ebuild,v 1.4 2014/08/10 21:25:17 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/ellipsis/ellipsis-1.6.ebuild,v 1.5 2015/07/16 13:55:23 aballier Exp $
 
 inherit latex-package
 
@@ -19,6 +19,7 @@ DEPEND="app-arch/unzip"
 S="${WORKDIR}/${PN}"
 
 src_install() {
+	export VARTEXFONTS="${T}/fonts"
 
 	latex-package_src_install
 

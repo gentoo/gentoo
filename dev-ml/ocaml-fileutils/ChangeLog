@@ -1,6 +1,12 @@
 # ChangeLog for dev-ml/ocaml-fileutils
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/ocaml-fileutils/ChangeLog,v 1.13 2013/08/24 13:18:41 maekke Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/ocaml-fileutils/ChangeLog,v 1.14 2015/07/16 14:17:07 aballier Exp $
+
+*ocaml-fileutils-0.5.0 (16 Jul 2015)
+
+  16 Jul 2015; Alexis Ballier <aballier@gentoo.org>
+  +ocaml-fileutils-0.5.0.ebuild:
+  version bump
 
   24 Aug 2013; Markus Meier <maekke@gentoo.org> ocaml-fileutils-0.4.5.ebuild:
   add ~x86, bug #462360

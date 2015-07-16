@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/ivritex/ivritex-1.1.2.ebuild,v 1.16 2008/09/05 06:55:40 opfer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/ivritex/ivritex-1.1.2.ebuild,v 1.17 2015/07/16 13:58:12 aballier Exp $
 
 inherit latex-package
 
@@ -18,6 +18,7 @@ DEPEND=""
 KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
 
 src_install () {
+	export VARTEXFONTS="${T}/fonts"
 
 	make TEX_ROOT="${D}"/usr/share/texmf install || die
 

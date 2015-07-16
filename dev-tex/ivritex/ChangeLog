@@ -1,6 +1,9 @@
 # ChangeLog for dev-tex/ivritex
 # Copyright 2000-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/ivritex/ChangeLog,v 1.24 2015/06/09 18:27:41 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/ivritex/ChangeLog,v 1.25 2015/07/16 13:58:12 aballier Exp $
+
+  16 Jul 2015; Alexis Ballier <aballier@gentoo.org> ivritex-1.1.2.ebuild:
+  override VARTEXFONTS to avoid sandbox violations, bug #546978
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

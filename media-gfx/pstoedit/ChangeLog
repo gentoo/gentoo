@@ -1,6 +1,13 @@
 # ChangeLog for media-gfx/pstoedit
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/pstoedit/ChangeLog,v 1.93 2015/04/29 15:22:52 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/pstoedit/ChangeLog,v 1.94 2015/07/16 13:46:25 aballier Exp $
+
+*pstoedit-3.70-r1 (16 Jul 2015)
+
+  16 Jul 2015; Alexis Ballier <aballier@gentoo.org> +pstoedit-3.70-r1.ebuild,
+  +files/pstoedit-3.70-pkgconfig.patch:
+  drop libpng libs from .pc file since it does not use libpng and never
+  substitutes it, bug #551208
 
 *pstoedit-3.70 (29 Apr 2015)
 
