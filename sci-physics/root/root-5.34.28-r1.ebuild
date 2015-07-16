@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/root/root-5.34.28-r1.ebuild,v 1.2 2015/07/16 21:22:10 bircoph Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-physics/root/root-5.34.28-r1.ebuild,v 1.3 2015/07/16 22:16:37 bircoph Exp $
 
 EAPI=5
 
@@ -86,7 +86,7 @@ CDEPEND="
 	oracle? ( dev-db/oracle-instantclient-basic:0= )
 	postgres? ( dev-db/postgresql:= )
 	pythia6? ( sci-physics/pythia:6= )
-	pythia8? ( >=sci-physics/pythia-8.1.80:8= )
+	pythia8? ( >=sci-physics/pythia-8.1.80:8= <sci-physics/pythia-8.2.0:8= )
 	python? ( ${PYTHON_DEPS} )
 	ruby? (
 		dev-lang/ruby:=
