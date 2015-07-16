@@ -10,4 +10,4 @@ RDEPEND=>=dev-libs/nspr-4.7.0 x64-macos? ( dev-libs/jemalloc )
 SLOT=0/mozjs185
 SRC_URI=https://ftp.mozilla.org/pub/mozilla.org/js/js185-1.0.0.tar.gz
 _eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	pax-utils	dfe060cb70d89757fde5c1ff8405e950	python-any-r1	4756de53ea4d40471a582e898815a5c8	python-utils-r1	ae9becb5d45344c01939c3f57df0d3fd	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=d1d591f2fe0f367ee1e0d9007e03432e
+_md5_=7c61681b6ae0e5a08f41a46dc99df82c

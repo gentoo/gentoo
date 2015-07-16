@@ -1,6 +1,17 @@
 # ChangeLog for dev-lang/spidermonkey
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/spidermonkey/ChangeLog,v 1.163 2015/04/08 08:22:09 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/spidermonkey/ChangeLog,v 1.164 2015/07/16 14:57:19 axs Exp $
+
+*spidermonkey-24.2.0-r3 (16 Jul 2015)
+*spidermonkey-17.0.0-r4 (16 Jul 2015)
+
+  16 Jul 2015; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +files/spidermonkey-perl-defined-array-check.patch,
+  +spidermonkey-17.0.0-r4.ebuild, +spidermonkey-24.2.0-r3.ebuild,
+  -spidermonkey-17.0.0-r3.ebuild, -spidermonkey-24.2.0-r2.ebuild,
+  spidermonkey-1.8.5-r4.ebuild, spidermonkey-1.8.7-r3.ebuild:
+  patched to fix bug 552786 , revbumped direct to stable so that anyone with
+  perl-5.22 gets a rebuild
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> spidermonkey-1.8.2.15-r2.ebuild,
   spidermonkey-1.8.5-r4.ebuild, spidermonkey-1.8.7-r3.ebuild,

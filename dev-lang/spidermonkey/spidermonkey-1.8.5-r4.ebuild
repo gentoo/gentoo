@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/spidermonkey/spidermonkey-1.8.5-r4.ebuild,v 1.22 2015/04/08 08:22:09 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/spidermonkey/spidermonkey-1.8.5-r4.ebuild,v 1.23 2015/07/16 14:57:19 axs Exp $
 
 EAPI="5"
 WANT_AUTOCONF="2.1"
@@ -56,6 +56,8 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-1.8.5-ia64-static-strings.patch
 	# https://bugs.gentoo.org/show_bug.cgi?id=431560
 	epatch "${FILESDIR}"/${PN}-1.8.5-isfinite.patch
+	# https://bugs.gentoo.org/show_bug.cgi?id=552786
+	epatch "${FILESDIR}"/${PN}-perl-defined-array-check.patch
 
 	epatch_user
 

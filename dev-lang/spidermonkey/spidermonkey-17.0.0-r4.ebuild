@@ -1,33 +1,34 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/spidermonkey/spidermonkey-24.2.0-r2.ebuild,v 1.13 2015/04/08 08:22:09 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/spidermonkey/spidermonkey-17.0.0-r4.ebuild,v 1.1 2015/07/16 14:57:19 axs Exp $
 
 EAPI="5"
 WANT_AUTOCONF="2.1"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
-inherit autotools eutils toolchain-funcs multilib python-any-r1 versionator pax-utils
+inherit eutils toolchain-funcs multilib python-any-r1 versionator pax-utils
 
 MY_PN="mozjs"
-MY_P="${MY_PN}-${PV/_/.}"
+MY_P="${MY_PN}${PV}"
 DESCRIPTION="Stand-alone JavaScript C library"
 HOMEPAGE="http://www.mozilla.org/js/spidermonkey/"
-SRC_URI="https://ftp.mozilla.org/pub/mozilla.org/js/${MY_P}.tar.bz2"
+SRC_URI="http://ftp.mozilla.org/pub/mozilla.org/js/${MY_PN}${PV}.tar.gz"
 
 LICENSE="NPL-1.1"
-SLOT="24"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd"
-IUSE="debug icu jit minimal static-libs +system-icu test"
+SLOT="17"
+# "MIPS, MacroAssembler is not supported" wrt #491294 for -mips
+KEYWORDS="alpha amd64 arm -hppa ia64 -mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd"
+IUSE="debug jit minimal static-libs test"
 
+REQUIRED_USE="debug? ( jit )"
 RESTRICT="ia64? ( test )"
 
-S="${WORKDIR}/${MY_P%.rc*}"
+S="${WORKDIR}/${MY_P}"
 BUILDDIR="${S}/js/src"
 
 RDEPEND=">=dev-libs/nspr-4.9.4
 	virtual/libffi
-	>=sys-libs/zlib-1.1.4
-	system-icu? ( >=dev-libs/icu-1.51:= )"
+	>=sys-libs/zlib-1.1.4"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	app-arch/zip
@@ -41,30 +42,24 @@ pkg_setup(){
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-${SLOT}-system-icu.patch
-	epatch "${FILESDIR}"/${PN}-24.2.0-fix-file-permissions.patch
-	epatch "${FILESDIR}"/${PN}-${SLOT}-upward-growing-stack.patch
+	epatch "${FILESDIR}"/${PN}-${SLOT}-js-config-shebang.patch
+	epatch "${FILESDIR}"/${PN}-${SLOT}-ia64-mmap.patch
+	epatch "${FILESDIR}"/${PN}-17.0.0-fix-file-permissions.patch
+	# https://bugs.gentoo.org/show_bug.cgi?id=552786
+	epatch "${FILESDIR}"/${PN}-perl-defined-array-check.patch
+
+	# Remove obsolete jsuword bug #506160
+	sed -i -e '/jsuword/d' "${BUILDDIR}"/jsval.h ||die "sed failed"
 	epatch_user
 
 	if [[ ${CHOST} == *-freebsd* ]]; then
 		# Don't try to be smart, this does not work in cross-compile anyway
 		ln -sfn "${BUILDDIR}/config/Linux_All.mk" "${S}/config/$(uname -s)$(uname -r).mk" || die
 	fi
-
-	cd "${BUILDDIR}" || die
-	eautoconf
 }
 
 src_configure() {
-	export SHELL=/bin/sh
 	cd "${BUILDDIR}" || die
-
-	local myopts=""
-	if use icu; then # make sure system-icu flag only affects icu-enabled build
-		myopts+="$(use_with system-icu)"
-	else
-		myopts+="--without-system-icu"
-	fi
 
 	CC="$(tc-getCC)" CXX="$(tc-getCXX)" \
 	AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)" \
@@ -76,11 +71,10 @@ src_configure() {
 		--enable-threadsafe \
 		--with-system-nspr \
 		--enable-system-ffi \
-		--disable-optimize \
-		$(use_enable icu intl-api) \
+		--enable-jemalloc \
 		$(use_enable debug) \
-		$(use_enable jit yarr-jit) \
-		$(use_enable jit ion) \
+		$(use_enable jit tracejit) \
+		$(use_enable jit methodjit) \
 		$(use_enable static-libs static) \
 		$(use_enable test tests)
 }
@@ -91,14 +85,10 @@ src_compile() {
 		make CFLAGS="" CXXFLAGS="" \
 			CC=$(tc-getBUILD_CC) CXX=$(tc-getBUILD_CXX) \
 			AR=$(tc-getBUILD_AR) RANLIB=$(tc-getBUILD_RANLIB) \
-			MOZ_OPTIMIZE_FLAGS="" MOZ_DEBUG_FLAGS="" \
-			HOST_OPTIMIZE_FLAGS="" MODULE_OPTIMIZE_FLAGS="" \
-			MOZ_PGO_OPTIMIZE_FLAGS="" \
 			jscpucfg host_jsoplengen host_jskwgen || die
 		make CFLAGS="" CXXFLAGS="" \
 			CC=$(tc-getBUILD_CC) CXX=$(tc-getBUILD_CXX) \
 			AR=$(tc-getBUILD_AR) RANLIB=$(tc-getBUILD_RANLIB) \
-			MOZ_OPTIMIZE_FLAGS="" MOZ_DEBUG_FLAGS="" HOST_OPTIMIZE_FLAGS="" \
 			-C config nsinstall || die
 		mv {,native-}jscpucfg || die
 		mv {,native-}host_jskwgen || die
@@ -114,10 +104,7 @@ src_compile() {
 			host_jskwgen.o \
 			host_jsoplengen.o || die
 	fi
-	emake \
-		MOZ_OPTIMIZE_FLAGS="" MOZ_DEBUG_FLAGS="" \
-		HOST_OPTIMIZE_FLAGS="" MODULE_OPTIMIZE_FLAGS="" \
-		MOZ_PGO_OPTIMIZE_FLAGS=""
+	emake
 }
 
 src_test() {
