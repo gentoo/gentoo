@@ -1,6 +1,10 @@
 # ChangeLog for sys-kernel/gentoo-sources
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/gentoo-sources/ChangeLog,v 1.1596 2015/07/12 19:53:27 mpagano Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/gentoo-sources/ChangeLog,v 1.1597 2015/07/16 16:14:30 klausman Exp $
+
+  16 Jul 2015; Tobias Klausmann <klausman@gentoo.org>
+  gentoo-sources-4.0.5.ebuild:
+  Stable on alpha, bug 552336
 
 *gentoo-sources-3.14.48 (12 Jul 2015)
 

@@ -1,6 +1,9 @@
 # ChangeLog for media-libs/babl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/babl/ChangeLog,v 1.65 2015/07/11 06:31:39 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/babl/ChangeLog,v 1.66 2015/07/16 15:45:45 klausman Exp $
+
+  16 Jul 2015; Tobias Klausmann <klausman@gentoo.org> babl-0.1.12.ebuild:
+  Stable on alpha, bug 552006
 
   11 Jul 2015; Markus Meier <maekke@gentoo.org> babl-0.1.12.ebuild:
   arm stable, bug #552006

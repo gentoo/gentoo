@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/mozconfig-v6.38.eclass,v 1.1 2015/07/07 14:11:37 axs Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/mozconfig-v6.38.eclass,v 1.2 2015/07/16 16:25:47 axs Exp $
 #
 # @ECLASS: mozconfig-v5.33.eclass
 # @MAINTAINER:
@@ -122,6 +122,9 @@ DEPEND="app-arch/zip
 RDEPEND+="
 	selinux? ( sec-policy/selinux-mozilla )"
 
+# only one of gstreamer and gstreamer-0 can be enabled at a time, so set REQUIRED_USE to signify this
+REQUIRED_USE="?? ( gstreamer gstreamer-0 )"
+
 # @FUNCTION: mozconfig_config
 # @DESCRIPTION:
 # Set common configure options for mozilla packages.
@@ -218,12 +221,10 @@ mozconfig_config() {
 	mozconfig_annotate '' --target="${CTARGET:-${CHOST}}"
 	mozconfig_annotate '' --build="${CTARGET:-${CHOST}}"
 
-	if use gstreamer || use gstreamer-0 ; then
-		if use gstreamer-0 ; then
-			mozconfig_annotate '+gstreamer-0' --enable-gstreamer=0.10
-		else
-			mozconfig_annotate '+gstreamer' --enable-gstreamer=1.0
-		fi
+	if use gstreamer ; then
+		mozconfig_annotate '+gstreamer' --enable-gstreamer=1.0
+	elif use gstreamer-0 ; then
+		mozconfig_annotate '+gstreamer-0' --enable-gstreamer=0.10
 	else
 		mozconfig_annotate '' --disable-gstreamer
 	fi

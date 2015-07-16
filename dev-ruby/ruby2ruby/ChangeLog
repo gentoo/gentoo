@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/ruby2ruby
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby2ruby/ChangeLog,v 1.74 2015/06/26 14:40:17 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby2ruby/ChangeLog,v 1.75 2015/07/16 16:05:21 klausman Exp $
+
+  16 Jul 2015; Tobias Klausmann <klausman@gentoo.org> ruby2ruby-2.1.4.ebuild:
+  Stable on alpha, bug 552244
 
   26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> ruby2ruby-2.1.4.ebuild:
   Stable for x86, wrt bug #552244

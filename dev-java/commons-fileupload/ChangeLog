@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/commons-fileupload
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-fileupload/ChangeLog,v 1.72 2014/08/10 20:10:47 slyfox Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-fileupload/ChangeLog,v 1.73 2015/07/16 16:28:59 monsieurp Exp $
+
+  16 Jul 2015; Patrice Clement <monsieurp@gentoo.org>
+  -commons-fileupload-1.2.1-r1.ebuild, -commons-fileupload-1.2.2.ebuild:
+  Remove old.
 
   10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
   commons-fileupload-1.2.1-r1.ebuild, commons-fileupload-1.2.2.ebuild,

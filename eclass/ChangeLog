@@ -1,6 +1,11 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1712 2015/07/16 14:29:39 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1713 2015/07/16 16:25:47 axs Exp $
+
+  16 Jul 2015; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  mozconfig-v6.38.eclass, mozconfig-v6.39.eclass, mozcoreconf-v3.eclass,
+  mozextension.eclass, mozlinguas.eclass:
+  Update mozilla support eclasses
 
   16 Jul 2015; Michał Górny <mgorny@gentoo.org> distutils-r1.eclass:
   Forbid also installing "examples" package, bug #555038.

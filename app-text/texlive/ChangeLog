@@ -1,6 +1,9 @@
 # ChangeLog for app-text/texlive
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/texlive/ChangeLog,v 1.141 2015/07/16 12:05:50 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/texlive/ChangeLog,v 1.142 2015/07/16 15:37:13 aballier Exp $
+
+  16 Jul 2015; Alexis Ballier <aballier@gentoo.org> texlive-2015.ebuild:
+  raise ttf2pk2 dep to tl 2015 one
 
   16 Jul 2015; Alexis Ballier <aballier@gentoo.org> texlive-2015.ebuild:
   bump beamer & xdvik deps

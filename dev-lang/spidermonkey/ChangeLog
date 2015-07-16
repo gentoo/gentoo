@@ -1,6 +1,10 @@
 # ChangeLog for dev-lang/spidermonkey
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/spidermonkey/ChangeLog,v 1.164 2015/07/16 14:57:19 axs Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/spidermonkey/ChangeLog,v 1.165 2015/07/16 15:33:24 klausman Exp $
+
+  16 Jul 2015; Tobias Klausmann <klausman@gentoo.org>
+  spidermonkey-1.7.0-r3.ebuild:
+  Stable on alpha, bug 555086
 
 *spidermonkey-24.2.0-r3 (16 Jul 2015)
 *spidermonkey-17.0.0-r4 (16 Jul 2015)

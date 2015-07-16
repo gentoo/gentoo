@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/amd64/package.use.mask,v 1.205 2015/06/27 18:03:08 tetromino Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/amd64/package.use.mask,v 1.206 2015/07/16 16:21:03 grknight Exp $
 
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -128,10 +128,6 @@ net-libs/gnutls -dane
 # Johannes Huber <johu@gentoo.org> (15 Sep 2012)
 # Masked for stabilization as the use flag pulls a dep tree of hell.
 media-libs/phonon zeitgeist
-
-# Michael Sterrett <mr_bones_@gentoo.org> (02 Sep 2012)
-# Missing stable keyword on dev-php/igbinary
-dev-php/pecl-memcached igbinary
 
 # Ben de Groot <yngwin@gentoo.org> (30 Jul 2012)
 # dependency keyworded here, masked in base

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="commons-chain-1.2" default="package" basedir=".">
+
+  <!-- ====================================================================== -->
+  <!-- Build environment properties                                           -->
+  <!-- ====================================================================== -->
+
+  <property file="${user.home}/.m2/maven.properties"/>
+  <property file="maven-build.properties"/>
+
+  <property name="maven.build.finalName" value="commons-chain-1.2"/>
+  <property name="maven.build.dir" value="target"/>
+  <property name="maven.build.outputDir" value="${maven.build.dir}/classes"/>
+  <property name="maven.build.srcDir.0" value="src/java"/>
+  <property name="maven.build.resourceDir.0" value="."/>
+  <property name="maven.build.testOutputDir" value="${maven.build.dir}/test-classes"/>
+  <property name="maven.build.testDir.0" value="src/test"/>
+  <property name="maven.build.testResourceDir.0" value="src/test"/>
+  <property name="maven.test.reports" value="${maven.build.dir}/test-reports"/>
+  <property name="maven.reporting.outputDirectory" value="${maven.build.dir}/site"/>
+
+  <property name="maven.repo.local" value="${user.home}/.m2/repository"/>
+  <property name="maven.settings.offline" value="false"/>
+  <property name="maven.settings.interactiveMode" value="true"/>
+
+  <!-- ====================================================================== -->
+  <!-- Defining classpaths                                                    -->
+  <!-- ====================================================================== -->
+
+  <path id="build.classpath">
+  </path>
+  <path id="build.test.classpath">
+  </path>
+
+  <!-- ====================================================================== -->
+  <!-- Cleaning up target                                                     -->
+  <!-- ====================================================================== -->
+
+  <target name="clean" description="Clean the output directory">
+    <delete dir="${maven.build.dir}"/>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Compilation target                                                     -->
+  <!-- ====================================================================== -->
+
+  <target name="compile" description="Compile the code">
+    <mkdir dir="${maven.build.outputDir}"/>
+    <javac destdir="${maven.build.outputDir}" 
+           encoding="iso-8859-1" 
+           nowarn="false" 
+           debug="true" 
+           optimize="false" 
+           deprecation="true" 
+           target="1.6" 
+           verbose="false" 
+           fork="false" 
+           source="1.6">
+      <src>
+        <pathelement location="${maven.build.srcDir.0}"/>
+      </src>
+      <classpath refid="build.classpath"/>
+    </javac>
+    <mkdir dir="${maven.build.outputDir}/META-INF"/>
+    <copy todir="${maven.build.outputDir}/META-INF">
+      <fileset dir="${maven.build.resourceDir.0}">
+        <include name="NOTICE.txt"/>
+        <include name="LICENSE.txt"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Test-compilation target                                                -->
+  <!-- ====================================================================== -->
+
+  <target name="compile-tests" 
+          depends="compile" 
+          description="Compile the test code" 
+          unless="maven.test.skip">
+    <mkdir dir="${maven.build.testOutputDir}"/>
+    <javac destdir="${maven.build.testOutputDir}" 
+           encoding="iso-8859-1" 
+           nowarn="false" 
+           debug="true" 
+           optimize="false" 
+           deprecation="true" 
+           target="1.6" 
+           verbose="false" 
+           fork="false" 
+           source="1.6">
+      <src>
+        <pathelement location="${maven.build.testDir.0}"/>
+      </src>
+      <classpath>
+        <path refid="build.test.classpath"/>
+        <pathelement location="${maven.build.outputDir}"/>
+      </classpath>
+    </javac>
+    <copy todir="${maven.build.testOutputDir}">
+      <fileset dir="${maven.build.testResourceDir.0}">
+        <include name="**/*.xml"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Run all tests                                                          -->
+  <!-- ====================================================================== -->
+
+  <target name="test" 
+          depends="compile-tests"
+          unless="junit.skipped" 
+          description="Run the test cases">
+    <mkdir dir="${maven.test.reports}"/>
+    <junit printSummary="yes" haltonerror="true" haltonfailure="true" fork="true" dir=".">
+      <sysproperty key="basedir" value="."/>
+      <formatter type="xml"/>
+      <formatter type="plain" usefile="false"/>
+      <classpath>
+        <path refid="build.test.classpath"/>
+        <pathelement location="${maven.build.outputDir}"/>
+        <pathelement location="${maven.build.testOutputDir}"/>
+      </classpath>
+      <batchtest todir="${maven.test.reports}" unless="test">
+        <fileset dir="${maven.build.testDir.0}">
+          <include name="**/Test*.java"/>
+          <include name="**/*Test.java"/>
+          <include name="**/*TestCase.java"/>
+          <exclude name="**/*Abstract*Test.java"/>
+        </fileset>
+      </batchtest>
+      <batchtest todir="${maven.test.reports}" if="test">
+        <fileset dir="${maven.build.testDir.0}">
+          <include name="**/${test}.java"/>
+          <exclude name="**/*Abstract*Test.java"/>
+        </fileset>
+      </batchtest>
+    </junit>
+  </target>
+
+  <target name="test-junit-present">
+    <available classname="junit.framework.Test" property="junit.present" classpathref="build.test.classpath"/>
+  </target>
+
+  <target name="test-junit-status" 
+          depends="test-junit-present">
+    <condition property="junit.missing">
+      <and>
+        <isfalse value="${junit.present}"/>
+        <isfalse value="${maven.test.skip}"/>
+      </and>
+    </condition>
+    <condition property="junit.skipped">
+      <or>
+        <isfalse value="${junit.present}"/>
+        <istrue value="${maven.test.skip}"/>
+      </or>
+    </condition>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Javadoc target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="javadoc" description="Generates the Javadoc of the application">
+    <javadoc sourcepath="${maven.build.srcDir.0}" 
+             packagenames="*" 
+             destdir="${maven.reporting.outputDirectory}/apidocs" 
+             access="protected" 
+             old="false" 
+             verbose="false" 
+             encoding="iso-8859-1" 
+             version="true" 
+             use="true" 
+             author="true" 
+             splitindex="false" 
+             nodeprecated="false" 
+             nodeprecatedlist="false" 
+             notree="false" 
+             noindex="false" 
+             nohelp="false" 
+             nonavbar="false" 
+             serialwarn="false" 
+             charset="ISO-8859-1" 
+             source="1.3" 
+             linksource="true" 
+			 failonerror="false"
+             breakiterator="false">
+      <link href="http://java.sun.com/j2se/1.4.2/docs/api/"/>
+      <link href="http://java.sun.com/j2ee/1.4/docs/api/"/>
+      <link href="http://commons.apache.org/digester/apidocs/"/>
+    </javadoc>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Package target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="package" depends="compile" description="Package the application">
+    <jar jarfile="${maven.build.dir}/${maven.build.finalName}.jar" 
+         compress="true" 
+         index="false" 
+         basedir="${maven.build.outputDir}" 
+         excludes="**/package.html"/>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- A dummy target for the package named after the type it creates         -->
+  <!-- ====================================================================== -->
+
+  <target name="jar" depends="package" description="Builds the jar for the application"/>
+
+</project>

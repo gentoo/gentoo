@@ -1,12 +1,21 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/mozextension.eclass,v 1.9 2013/05/28 03:29:50 anarchy Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/mozextension.eclass,v 1.10 2015/07/16 16:25:47 axs Exp $
 #
 # @ECLASS: mozextension.eclass
 # @MAINTAINER:
 # Mozilla team <mozilla@gentoo.org>
 # @BLURB: Install extensions for use in mozilla products.
+#
+if [[ ! ${_MOZEXTENSION} ]]; then
 
+# @ECLASS-VARIABLE: MOZEXTENSION_TARGET
+# @DESCRIPTION:
+# This variable allows the installation path for xpi_install
+# to be overridden from the default app-global extensions path.
+# Default is empty, which installs to predetermined hard-coded
+# paths specified in the eclass.
+: ${MOZEXTENSION_TARGET:=""}
 
 inherit eutils
 
@@ -65,10 +74,15 @@ xpi_install() {
 	# determine id for extension
 	emid="$(sed -n -e '/install-manifest/,$ { /em:id/!d; s/.*[\">]\([^\"<>]*\)[\"<].*/\1/; p; q }' "${x}"/install.rdf)" \
 		|| die "failed to determine extension id"
-	if $(mozversion_extension_location) ; then
+	if [[ -n ${MOZEXTENSION_TARGET} ]]; then
+		insinto "${MOZILLA_FIVE_HOME}"/${MOZEXTENSION_TARGET%/}/${emid}
+	elif $(mozversion_extension_location) ; then
 		insinto "${MOZILLA_FIVE_HOME}"/browser/extensions/${emid}
 	else
 		insinto "${MOZILLA_FIVE_HOME}"/extensions/${emid}
 	fi
 	doins -r "${x}"/* || die "failed to copy extension"
 }
+
+_MOZEXTENSION=1
+fi

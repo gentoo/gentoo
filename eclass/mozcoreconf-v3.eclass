@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/mozcoreconf-v3.eclass,v 1.1 2014/10/14 16:10:36 axs Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/mozcoreconf-v3.eclass,v 1.2 2015/07/16 16:25:47 axs Exp $
 #
 # @ECLASS: mozcoreconf.eclass
 # @MAINTAINER:
@@ -9,6 +9,8 @@
 # @DESCRIPTION:
 #
 # inherit mozconfig-v5.* or above for mozilla configuration support
+
+if [[ ! ${_MOZCORECONF_V3} ]]; then
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads,sqlite'
@@ -255,3 +257,5 @@ mozconfig_final() {
 	echo "ac_add_options --enable-extensions=${exts// /,}" >> .mozconfig
 }
 
+_MOZCORECONF_V3=1
+fi

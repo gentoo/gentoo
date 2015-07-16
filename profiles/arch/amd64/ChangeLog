@@ -1,6 +1,10 @@
 # ChangeLog for Gentoo/AMD64 profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/amd64/ChangeLog,v 1.327 2015/06/27 18:03:08 tetromino Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/amd64/ChangeLog,v 1.328 2015/07/16 16:21:03 grknight Exp $
+
+  16 Jul 2015; Brian Evans <grknight@gentoo.org> package.use.mask:
+  Remove stale package.use.mask entry on igbinary for dev-php/pecl-memcached
+  wrt bug 554958
 
   27 Jun 2015; Alexandre Rostovtsev <tetromino@gentoo.org>
   no-multilib/package.mask, no-multilib/package.use.mask, package.use.mask:

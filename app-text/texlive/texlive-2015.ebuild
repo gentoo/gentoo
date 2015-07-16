@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/texlive/texlive-2015.ebuild,v 1.2 2015/07/16 12:05:50 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/texlive/texlive-2015.ebuild,v 1.3 2015/07/16 15:37:13 aballier Exp $
 
 EAPI="5"
 
@@ -34,7 +34,7 @@ RDEPEND="${DEPEND}
 	sys-apps/texinfo
 	app-text/t1utils
 	>=app-text/lcdf-typetools-2.92[kpathsea]
-	truetype? ( app-text/ttf2pk2 )
+	truetype? ( >=app-text/ttf2pk2-2.0_p20150521 )
 	detex? ( dev-tex/detex )
 	app-text/ps2eps
 	dvi2tty? ( dev-tex/dvi2tty )
