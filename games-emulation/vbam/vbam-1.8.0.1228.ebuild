@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/vbam/vbam-1.8.0.1228.ebuild,v 1.5 2015/06/13 19:29:36 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/vbam/vbam-1.8.0.1228.ebuild,v 1.6 2015/07/16 00:20:53 mr_bones_ Exp $
 
 EAPI=5
 WX_GTK_VER="3.0"
@@ -10,7 +10,7 @@ inherit eutils cmake-utils wxwidgets gnome2-utils fdo-mime games
 ESVN_REPO_URI="https://vbam.svn.sourceforge.net/svnroot/vbam/trunk"
 
 DESCRIPTION="Game Boy, GBC, and GBA emulator forked from VisualBoyAdvance"
-HOMEPAGE="http://vba-m.ngemu.com"
+HOMEPAGE="http://sourceforge.net/projects/vbam/"
 SRC_URI="http://dev.gentoo.org/~radhermit/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2"
