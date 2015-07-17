@@ -1,6 +1,9 @@
 # ChangeLog for dev-db/mysql-proxy
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql-proxy/ChangeLog,v 1.14 2015/06/27 22:26:21 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql-proxy/ChangeLog,v 1.15 2015/07/17 02:33:02 neurogeek Exp $
+
+  16 Jul 2015; Jesus Rivero <neurogeek@gentoo.org> mysql-proxy-0.8.2-r1.ebuild:
+  Changed HOMEPAGE and SRC_URI to new location. Closes bug #538914.
 
   27 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -mysql-proxy-0.8.0-r1.ebuild,
   -mysql-proxy-0.8.2.ebuild:

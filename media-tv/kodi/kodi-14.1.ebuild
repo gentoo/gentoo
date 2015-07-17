@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/kodi/kodi-14.1.ebuild,v 1.7 2015/04/08 18:15:30 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/kodi/kodi-14.1.ebuild,v 1.8 2015/07/17 02:45:34 vapier Exp $
 
 EAPI="5"
 
@@ -88,7 +88,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	rtmp? ( media-video/rtmpdump )
 	avahi? ( net-dns/avahi )
 	nfs? ( net-fs/libnfs )
-	webserver? ( net-libs/libmicrohttpd[messages] )
+	net-libs/libmicrohttpd[messages]
 	sftp? ( net-libs/libssh[sftp] )
 	net-misc/curl
 	samba? ( >=net-fs/samba-3.4.6[smbclient(+)] )

@@ -1,13 +1,13 @@
-DEFINED_PHASES=configure install postinst prepare
-DEPEND=>=dev-libs/libevent-2.1 >=dev-libs/glib-2.16 >=dev-lang/lua-5.1 >=virtual/mysql-5.0 virtual/pkgconfig
+DEFINED_PHASES=configure install prepare
+DEPEND=>=dev-libs/libevent-2.1 >=dev-libs/glib-2.16 >=dev-lang/lua-5.1:0 >=virtual/mysql-5.0 virtual/pkgconfig
 DESCRIPTION=A Proxy for the MySQL Client/Server protocol
 EAPI=5
-HOMEPAGE=http://forge.mysql.com/wiki/MySQL_Proxy
+HOMEPAGE=http://dev.mysql.com/doc/mysql-proxy/en/
 IUSE=examples
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=>=dev-libs/libevent-2.1 >=dev-libs/glib-2.16 >=dev-lang/lua-5.1
+RDEPEND=>=dev-libs/libevent-2.1 >=dev-libs/glib-2.16 >=dev-lang/lua-5.1:0
 SLOT=0
-SRC_URI=mirror://mysql/Downloads/MySQL-Proxy/mysql-proxy-0.8.2.tar.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=2eb4c3361173f45ce24991f3608b1d5d
+SRC_URI=https://launchpad.net/mysql-proxy/0.8/0.8.2/+download/mysql-proxy-0.8.2.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=712a089c91c1e7cc051bef753fda0e85
