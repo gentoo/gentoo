@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/mozconfig-v6.39.eclass,v 1.2 2015/07/16 16:25:47 axs Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/mozconfig-v6.39.eclass,v 1.4 2015/07/17 18:25:45 axs Exp $
 #
 # @ECLASS: mozconfig-v5.33.eclass
 # @MAINTAINER:
@@ -73,10 +73,10 @@ RDEPEND=">=app-text/hunspell-1.2
 	>=sys-libs/zlib-1.2.3
 	>=virtual/libffi-3.0.10
 	gstreamer? (
-		>=media-libs/gstreamer-1.2.3:1.0
-		>=media-libs/gst-plugins-base-1.2.3:1.0
-		>=media-libs/gst-plugins-good-1.2.3:1.0
-		>=media-plugins/gst-plugins-libav-1.1.0_pre20130128-r1:1.0
+		>=media-libs/gstreamer-1.4.5:1.0
+		>=media-libs/gst-plugins-base-1.4.5:1.0
+		>=media-libs/gst-plugins-good-1.4.5:1.0
+		>=media-plugins/gst-plugins-libav-1.4.5:1.0
 	)
 	gstreamer-0? (
 		>=media-libs/gstreamer-0.10.25:0.10
