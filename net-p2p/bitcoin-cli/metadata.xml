@@ -10,4 +10,7 @@
 		<email>luke-jr+gentoobugs@utopios.org</email>
 		<name>Luke Dashjr</name>
 	</maintainer>
+	<use>
+		<flag name='ljr'>Enable Luke Dashjr's patches</flag>
+	</use>
 </pkgmetadata>

@@ -1,6 +1,16 @@
 # ChangeLog for net-libs/libbitcoinconsensus
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libbitcoinconsensus/ChangeLog,v 1.7 2015/07/17 20:18:02 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libbitcoinconsensus/ChangeLog,v 1.9 2015/07/17 22:12:40 blueness Exp $
+
+*libbitcoinconsensus-0.11.0 (17 Jul 2015)
+
+  17 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
+  +libbitcoinconsensus-0.11.0.ebuild, metadata.xml:
+  Version bump.
+
+  17 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
+  +files/9999-syslibs.patch:
+  Add missing patch.
 
   17 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
   libbitcoinconsensus-9999.ebuild:
