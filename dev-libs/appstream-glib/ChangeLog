@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/appstream-glib
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/appstream-glib/ChangeLog,v 1.24 2015/07/15 05:23:44 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/appstream-glib/ChangeLog,v 1.25 2015/07/17 06:11:03 jer Exp $
+
+  17 Jul 2015; Jeroen Roovers <jer@gentoo.org> appstream-glib-0.4.0.ebuild:
+  Mark ~ppc64 (bug #553926).
 
   15 Jul 2015; Jeroen Roovers <jer@gentoo.org> appstream-glib-0.4.0.ebuild:
   Mark ~hppa (bug #553926).

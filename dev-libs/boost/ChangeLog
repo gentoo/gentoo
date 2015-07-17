@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/boost
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/boost/ChangeLog,v 1.357 2015/07/15 16:21:54 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/boost/ChangeLog,v 1.358 2015/07/17 06:20:50 jer Exp $
+
+  17 Jul 2015; Jeroen Roovers <jer@gentoo.org> boost-1.56.0-r1.ebuild:
+  Stable for HPPA PPC64 (bug #554712).
 
   15 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> boost-1.56.0-r1.ebuild:
   x86 stable wrt bug #554712

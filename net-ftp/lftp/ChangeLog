@@ -1,6 +1,9 @@
 # ChangeLog for net-ftp/lftp
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/lftp/ChangeLog,v 1.525 2015/06/30 20:02:24 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/lftp/ChangeLog,v 1.526 2015/07/17 06:08:06 jer Exp $
+
+  17 Jul 2015; Jeroen Roovers <jer@gentoo.org> lftp-4.6.3a.ebuild:
+  Stable for PPC64 (bug #555034).
 
   30 Jun 2015; Jeroen Roovers <jer@gentoo.org> lftp-4.6.3a.ebuild:
   Depend on >=sys-devel/gettext-0.19 (bug #553586 by Greg Hensley).

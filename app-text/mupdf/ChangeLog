@@ -1,6 +1,9 @@
 # ChangeLog for app-text/mupdf
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/mupdf/ChangeLog,v 1.119 2015/06/27 12:34:43 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/mupdf/ChangeLog,v 1.120 2015/07/17 06:25:59 jer Exp $
+
+  17 Jul 2015; Jeroen Roovers <jer@gentoo.org> mupdf-1.5-r1.ebuild:
+  Stable for HPPA (bug #528680).
 
   27 Jun 2015; Markus Meier <maekke@gentoo.org> mupdf-1.5-r1.ebuild:
   arm stable, bug #528680
