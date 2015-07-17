@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/policycoreutils
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/policycoreutils/ChangeLog,v 1.155 2015/07/04 12:43:43 perfinion Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/policycoreutils/ChangeLog,v 1.156 2015/07/17 08:03:06 perfinion Exp $
+
+  17 Jul 2015; Jason Zaman <perfinion@gentoo.org> policycoreutils-9999.ebuild:
+  add python3 compat to live ebuild
 
 *policycoreutils-2.4-r1 (04 Jul 2015)
 

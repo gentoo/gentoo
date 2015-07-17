@@ -1,6 +1,10 @@
 # ChangeLog for dev-python/pythondialog
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pythondialog/ChangeLog,v 1.32 2015/07/04 01:31:16 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pythondialog/ChangeLog,v 1.33 2015/07/17 08:15:29 klausman Exp $
+
+  17 Jul 2015; Tobias Klausmann <klausman@gentoo.org>
+  pythondialog-3.2.2.ebuild:
+  Stable on alpha, bug 553886
 
 *pythondialog-3.3.0 (04 Jul 2015)
 

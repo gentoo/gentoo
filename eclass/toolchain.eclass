@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/toolchain.eclass,v 1.675 2015/06/01 16:05:43 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/toolchain.eclass,v 1.676 2015/07/17 07:36:00 vapier Exp $
 
 # Maintainer: Toolchain Ninjas <toolchain@gentoo.org>
 
@@ -882,7 +882,9 @@ toolchain_src_configure() {
 	# Use the default ("release") checking because upstream usually neglects
 	# to test "disabled" so it has a history of breaking. #317217
 	if tc_version_is_at_least 3.4 ; then
-		confgcc+=( --enable-checking="${GCC_CHECKS_LIST:-$(usex debug yes release)}" )
+		# The "release" keyword is new to 4.0. #551636
+		local off=$(tc_version_is_at_least 4.0 && echo release || echo no)
+		confgcc+=( --enable-checking="${GCC_CHECKS_LIST:-$(usex debug yes ${off})}" )
 	fi
 
 	# Branding
