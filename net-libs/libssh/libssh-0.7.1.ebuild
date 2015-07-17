@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libssh/libssh-0.7.0.ebuild,v 1.1 2015/05/13 14:14:03 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libssh/libssh-0.7.1.ebuild,v 1.1 2015/07/17 12:25:12 polynomial-c Exp $
 
 EAPI=5
 
@@ -9,7 +9,7 @@ inherit eutils cmake-multilib multilib
 
 DESCRIPTION="Access a working SSH implementation by means of a library"
 HOMEPAGE="http://www.libssh.org/"
-SRC_URI="https://red.libssh.org/attachments/download/140/${MY_P}.tar.xz -> ${P}.tar.xz"
+SRC_URI="https://red.libssh.org/attachments/download/154/${MY_P}.tar.xz -> ${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"

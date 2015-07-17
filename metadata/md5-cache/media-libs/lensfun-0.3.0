@@ -4,11 +4,11 @@ DESCRIPTION=lensfun: A library for rectifying and simulating photographic lens d
 EAPI=5
 HOMEPAGE=http://lensfun.sourceforge.net/
 IUSE=doc cpu_flags_x86_sse cpu_flags_x86_sse2 python_targets_python2_7
-KEYWORDS=alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~amd64-linux ~x86-linux
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~amd64-linux ~x86-linux
 LICENSE=LGPL-3 CC-BY-SA-3.0
 RDEPEND=>=dev-libs/glib-2.28 media-libs/libpng:0= sys-libs/zlib:=
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=mirror://sourceforge/lensfun/lensfun-0.3.0.tar.bz2
 _eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	351da1aa73960a282591217fb57c1bb8	python-utils-r1	ae9becb5d45344c01939c3f57df0d3fd	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=891401ccb1c2967cab4f5e2baa9cb56e
+_md5_=c1c3f6fe99eb93e0b7486392e53e8154

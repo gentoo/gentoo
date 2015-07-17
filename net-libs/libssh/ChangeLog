@@ -1,6 +1,16 @@
 # ChangeLog for net-libs/libssh
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libssh/ChangeLog,v 1.139 2015/07/04 13:52:52 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libssh/ChangeLog,v 1.141 2015/07/17 12:28:46 klausman Exp $
+
+  17 Jul 2015; Tobias Klausmann <klausman@gentoo.org> libssh-0.6.5.ebuild,
+  libssh-0.7.0-r1.ebuild:
+  Revert misapplied stabilization of 0.7.0-r1 and mark 0.6.5 stable instead.
+
+*libssh-0.7.1 (17 Jul 2015)
+
+  17 Jul 2015; Lars Wendler <polynomial-c@gentoo.org> -libssh-0.7.0.ebuild,
+  +libssh-0.7.1.ebuild:
+  Version bump. Removed old.
 
   04 Jul 2015; Tobias Klausmann <klausman@gentoo.org> libssh-0.7.0-r1.ebuild:
   Stable on alpha, bug 538798

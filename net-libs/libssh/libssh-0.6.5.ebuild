@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libssh/libssh-0.6.5.ebuild,v 1.9 2015/05/30 10:53:33 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libssh/libssh-0.6.5.ebuild,v 1.10 2015/07/17 12:28:46 klausman Exp $
 
 EAPI=5
 
@@ -13,7 +13,7 @@ SRC_URI="https://red.libssh.org/attachments/download/121/${MY_P}.tar.xz -> ${P}.
 	https://git.libssh.org/projects/libssh.git/patch/?id=6e0dee7845cea22f59bd353ef42b31cb67170030 -> ${PN}-0.6.5-compilefix.patch"
 
 LICENSE="LGPL-2.1"
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
 SLOT="0/4" # subslot = soname major version
 IUSE="debug doc examples gcrypt gssapi pcap +sftp ssh1 server static-libs test zlib"
 # Maintainer: check IUSE-defaults at DefineOptions.cmake
