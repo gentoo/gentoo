@@ -1,6 +1,9 @@
 # ChangeLog for app-editors/nvi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/nvi/ChangeLog,v 1.99 2015/03/31 17:32:04 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/nvi/ChangeLog,v 1.100 2015/07/17 15:32:29 neurogeek Exp $
+
+  17 Jul 2015; Jesus Rivero <neurogeek@gentoo.org> nvi-1.81.6-r5.ebuild:
+  Added ~arm keyword. Closes bug #554444.
 
   31 Mar 2015; Ulrich Müller <ulm@gentoo.org> nvi-1.81.6-r3.ebuild,
   nvi-1.81.6-r4.ebuild, nvi-1.81.6-r5.ebuild:

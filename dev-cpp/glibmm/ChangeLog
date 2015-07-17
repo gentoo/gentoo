@@ -1,6 +1,9 @@
 # ChangeLog for dev-cpp/glibmm
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/glibmm/ChangeLog,v 1.238 2015/06/09 15:02:55 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/glibmm/ChangeLog,v 1.239 2015/07/17 15:32:22 ago Exp $
+
+  17 Jul 2015; Agostino Sarubbo <ago@gentoo.org> glibmm-2.42.0-r1.ebuild:
+  Stable for ia64, wrt bug #551814
 
 *glibmm-2.44.0 (09 Jun 2015)
 

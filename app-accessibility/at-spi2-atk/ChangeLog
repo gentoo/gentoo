@@ -1,6 +1,9 @@
 # ChangeLog for app-accessibility/at-spi2-atk
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/at-spi2-atk/ChangeLog,v 1.75 2015/06/18 05:29:21 tetromino Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/at-spi2-atk/ChangeLog,v 1.76 2015/07/17 15:31:50 ago Exp $
+
+  17 Jul 2015; Agostino Sarubbo <ago@gentoo.org> at-spi2-atk-2.14.1.ebuild:
+  Stable for ia64, wrt bug #551814
 
   18 Jun 2015; Alexandre Rostovtsev <tetromino@gentoo.org>
   at-spi2-atk-2.16.0-r1.ebuild, +files/at-spi2-atk-2.16.0-tests-data/test.xml,

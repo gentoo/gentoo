@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/boost
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/boost/ChangeLog,v 1.359 2015/07/17 09:42:22 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/boost/ChangeLog,v 1.360 2015/07/17 16:04:48 zlogene Exp $
+
+  17 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> boost-1.56.0-r1.ebuild:
+  ia64 syable wrt bug #554712
 
   17 Jul 2015; Tobias Klausmann <klausman@gentoo.org> boost-1.56.0-r1.ebuild:
   Stable on alpha, bug 554712

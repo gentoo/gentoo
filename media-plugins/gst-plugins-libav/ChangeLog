@@ -1,6 +1,10 @@
 # ChangeLog for media-plugins/gst-plugins-libav
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-libav/ChangeLog,v 1.70 2015/07/04 15:08:03 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-libav/ChangeLog,v 1.71 2015/07/17 15:48:02 ago Exp $
+
+  17 Jul 2015; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-libav-1.4.5-r1.ebuild:
+  Stable for ia64, wrt bug #519258
 
   04 Jul 2015; Tobias Klausmann <klausman@gentoo.org>
   gst-plugins-libav-1.4.5-r1.ebuild:

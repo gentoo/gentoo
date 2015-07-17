@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/openmesh/openmesh-3.2.ebuild,v 1.4 2015/04/26 16:10:52 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/openmesh/openmesh-3.2.ebuild,v 1.5 2015/07/17 16:27:08 zlogene Exp $
 
 EAPI="5"
 inherit eutils cmake-utils
@@ -15,7 +15,7 @@ SRC_URI="http://openmesh.org/media/Releases/${MY_PV/-RC/RC}/${MY_PN}-${MY_PV}.ta
 
 LICENSE="LGPL-3-with-linking-exception"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 x86"
+KEYWORDS="~amd64 ia64 x86"
 IUSE="qt4 qt5 static-libs"
 
 RDEPEND="

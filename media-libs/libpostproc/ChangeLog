@@ -1,6 +1,10 @@
 # ChangeLog for media-libs/libpostproc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libpostproc/ChangeLog,v 1.39 2015/06/02 05:17:32 jmorgan Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libpostproc/ChangeLog,v 1.40 2015/07/17 16:07:42 zlogene Exp $
+
+  17 Jul 2015; Mikle Kolyada <zlogene@gentoo.org>
+  libpostproc-10.20140517-r1.ebuild:
+  ia64 syable wrt bug #541248
 
   02 Jun 2015; Jack Morgan <jmorgan@gentoo.org>
   libpostproc-10.20140517-r1.ebuild:

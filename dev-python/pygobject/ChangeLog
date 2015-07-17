@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/pygobject
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pygobject/ChangeLog,v 1.273 2015/06/27 01:22:02 tetromino Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pygobject/ChangeLog,v 1.274 2015/07/17 15:33:15 ago Exp $
+
+  17 Jul 2015; Agostino Sarubbo <ago@gentoo.org> pygobject-3.14.0.ebuild:
+  Stable for ia64, wrt bug #551814
 
   27 Jun 2015; Alexandre Rostovtsev <tetromino@gentoo.org>
   pygobject-3.16.2.ebuild:

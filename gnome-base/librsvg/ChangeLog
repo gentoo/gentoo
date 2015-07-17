@@ -1,6 +1,9 @@
 # ChangeLog for gnome-base/librsvg
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/librsvg/ChangeLog,v 1.389 2015/07/13 04:16:01 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/librsvg/ChangeLog,v 1.390 2015/07/17 15:41:02 ago Exp $
+
+  17 Jul 2015; Agostino Sarubbo <ago@gentoo.org> librsvg-2.40.9.ebuild:
+  Stable for ia64, wrt bug #551814
 
   13 Jul 2015; Jeroen Roovers <jer@gentoo.org> librsvg-2.40.9.ebuild:
   Stable for HPPA (bug #551814).

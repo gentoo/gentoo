@@ -1,6 +1,9 @@
 # ChangeLog for media-plugins/gst-plugins-mimic
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-mimic/ChangeLog,v 1.106 2015/04/05 23:30:43 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-mimic/ChangeLog,v 1.107 2015/07/17 15:42:34 ago Exp $
+
+  17 Jul 2015; Agostino Sarubbo <ago@gentoo.org> gst-plugins-mimic-1.4.5.ebuild:
+  Stable for ia64, wrt bug #551814
 
   05 Apr 2015; Andreas K. Huettel <dilfridge@gentoo.org>
   -gst-plugins-mimic-0.10.19.ebuild:

@@ -1,6 +1,9 @@
 # ChangeLog for gnome-base/dconf
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/dconf/ChangeLog,v 1.84 2015/06/09 15:23:40 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/dconf/ChangeLog,v 1.85 2015/07/17 15:33:33 ago Exp $
+
+  17 Jul 2015; Agostino Sarubbo <ago@gentoo.org> dconf-0.22.0.ebuild:
+  Stable for ia64, wrt bug #551814
 
 *dconf-0.24.0 (09 Jun 2015)
 

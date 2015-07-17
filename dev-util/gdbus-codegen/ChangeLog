@@ -1,6 +1,9 @@
 # ChangeLog for dev-util/gdbus-codegen
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/gdbus-codegen/ChangeLog,v 1.118 2015/06/08 21:50:16 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/gdbus-codegen/ChangeLog,v 1.119 2015/07/17 15:33:17 ago Exp $
+
+  17 Jul 2015; Agostino Sarubbo <ago@gentoo.org> gdbus-codegen-2.42.2.ebuild:
+  Stable for ia64, wrt bug #551814
 
 *gdbus-codegen-2.44.1 (08 Jun 2015)
 

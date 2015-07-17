@@ -4,10 +4,10 @@ DESCRIPTION=A text widget implementing syntax highlighting and other features
 EAPI=5
 HOMEPAGE=http://www.gnome.org/
 IUSE=test
-KEYWORDS=~alpha amd64 arm ~ia64 ~mips ~ppc ppc64 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris
+KEYWORDS=~alpha amd64 arm ia64 ~mips ~ppc ppc64 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris
 LICENSE=GPL-2+ LGPL-2.1+
 RDEPEND=>=x11-libs/gtk+-2.12:2 >=dev-libs/libxml2-2.5:2 >=dev-libs/glib-2.14:2 kernel_Darwin? ( x11-libs/ige-mac-integration )
 SLOT=2.0
 SRC_URI=mirror://gnome/sources/gtksourceview/2.10/gtksourceview-2.10.5.tar.bz2
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	45882dc8beda2ffd09ad51fb3f22b669	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f	virtualx	73cfc129b4b9ba23aed1abb10c825d86
-_md5_=aac1fe0afdc09163e4f5396c40cb426b
+_md5_=914ee35c7e8681999e3e183633428c56

@@ -1,6 +1,9 @@
 # ChangeLog for media-gfx/openmesh
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/openmesh/ChangeLog,v 1.36 2015/05/23 01:10:41 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/openmesh/ChangeLog,v 1.37 2015/07/17 16:27:08 zlogene Exp $
+
+  17 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> openmesh-3.2.ebuild:
+  ia64 stable wrt bug #526374
 
   23 May 2015; Manuel Rüger <mrueg@gentoo.org> -openmesh-2.2.ebuild:
   Remove old.

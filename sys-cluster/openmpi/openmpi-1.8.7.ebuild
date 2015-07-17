@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/openmpi/openmpi-1.8.5.ebuild,v 1.1 2015/05/12 22:49:12 jsbronder Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/openmpi/openmpi-1.8.7.ebuild,v 1.1 2015/07/17 16:18:16 jsbronder Exp $
 
 EAPI=5
 
@@ -110,11 +110,6 @@ src_configure() {
 		--with-libltdl="${EPREFIX}/usr"
 		)
 
-	if use mpi-threads; then
-		myconf+=(--enable-mpi-threads
-			--enable-opal-multi-threads)
-	fi
-
 	if use fortran; then
 		myconf+=(--enable-mpi-fortran=all)
 	else
@@ -130,6 +125,7 @@ src_configure() {
 		$(use_enable romio io-romio) \
 		$(use_enable heterogeneous) \
 		$(use_enable ipv6) \
+		$(use_enable mpi-threads mpi-thread-multiple) \
 		$(use_with openmpi_fabrics_ofed verbs "${EPREFIX}"/usr) \
 		$(use_with openmpi_fabrics_knem knem "${EPREFIX}"/usr) \
 		$(use_with openmpi_fabrics_open-mx mx "${EPREFIX}"/usr) \

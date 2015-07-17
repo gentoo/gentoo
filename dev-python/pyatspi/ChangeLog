@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/pyatspi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyatspi/ChangeLog,v 1.59 2015/06/09 15:05:11 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyatspi/ChangeLog,v 1.60 2015/07/17 15:33:10 ago Exp $
+
+  17 Jul 2015; Agostino Sarubbo <ago@gentoo.org> pyatspi-2.14.0.ebuild:
+  Stable for ia64, wrt bug #551814
 
 *pyatspi-2.16.0 (09 Jun 2015)
 

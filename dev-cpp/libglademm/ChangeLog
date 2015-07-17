@@ -1,6 +1,9 @@
 # ChangeLog for dev-cpp/libglademm
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/libglademm/ChangeLog,v 1.97 2015/06/07 10:21:25 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/libglademm/ChangeLog,v 1.98 2015/07/17 15:32:28 ago Exp $
+
+  17 Jul 2015; Agostino Sarubbo <ago@gentoo.org> libglademm-2.6.7-r1.ebuild:
+  Stable for ia64, wrt bug #551814
 
   07 Jun 2015; Markus Meier <maekke@gentoo.org> libglademm-2.6.7-r1.ebuild:
   arm stable, bug #534012

@@ -1,6 +1,10 @@
 # ChangeLog for sys-apps/systemd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/ChangeLog,v 1.389 2015/07/15 16:40:57 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/ChangeLog,v 1.390 2015/07/17 16:29:46 floppym Exp $
+
+  17 Jul 2015; Mike Gilbert <floppym@gentoo.org> systemd-222-r1.ebuild,
+  systemd-9999.ebuild:
+  Depend on >=sys-apps/hwids-20150417.
 
   15 Jul 2015; Tobias Klausmann <klausman@gentoo.org> systemd-218-r3.ebuild:
   Stable on alpha, bug 536902

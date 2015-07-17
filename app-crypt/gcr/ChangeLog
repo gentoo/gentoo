@@ -1,6 +1,9 @@
 # ChangeLog for app-crypt/gcr
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/gcr/ChangeLog,v 1.58 2015/06/19 14:01:48 tetromino Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/gcr/ChangeLog,v 1.59 2015/07/17 15:32:05 ago Exp $
+
+  17 Jul 2015; Agostino Sarubbo <ago@gentoo.org> gcr-3.14.0.ebuild:
+  Stable for ia64, wrt bug #551814
 
   19 Jun 2015; Alexandre Rostovtsev <tetromino@gentoo.org> gcr-3.16.0.ebuild:
   Build system works with python3 (bug #552410, thanks to Olof Kindgren).

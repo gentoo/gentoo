@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/struts
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/struts/ChangeLog,v 1.51 2014/06/17 19:36:52 mrueg Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/struts/ChangeLog,v 1.52 2015/07/17 16:18:11 monsieurp Exp $
+
+  17 Jul 2015; Patrice Clement <monsieurp@gentoo.org>
+  -files/struts-CVE-2008-2025.patch, -struts-1.2.9-r3.ebuild:
+  Tree-clean struts v1. Fix bug 555202.
 
   17 Jun 2014; Manuel Rüger <mrueg@gentoo.org> -struts-1.2.9-r2.ebuild:
   NM: Cleanup superseded ebuilds.

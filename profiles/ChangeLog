@@ -1,10 +1,13 @@
 # ChangeLog for profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10190 2015/07/16 19:21:54 axs Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10191 2015/07/17 15:45:24 tomjbe Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  17 Jul 2015; Thomas Beierlein <tomjbe@gentoo.org> package.mask:
+  Dropped old mask. Got enough time for testing
 
   16 Jul 2015; Ian Stakenvicius (_AxS_) <axs@gentoo.org> package.mask:
   remove old spidermonkey-1.8.7 mask as ebuild removed, mask thunderbird-24 as

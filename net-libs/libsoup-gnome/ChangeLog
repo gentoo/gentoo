@@ -1,6 +1,9 @@
 # ChangeLog for net-libs/libsoup-gnome
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libsoup-gnome/ChangeLog,v 1.125 2015/07/07 20:50:29 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libsoup-gnome/ChangeLog,v 1.126 2015/07/17 15:43:12 ago Exp $
+
+  17 Jul 2015; Agostino Sarubbo <ago@gentoo.org> libsoup-gnome-2.48.1.ebuild:
+  Stable for ia64, wrt bug #551814
 
   07 Jul 2015; Markus Meier <maekke@gentoo.org> libsoup-gnome-2.48.1.ebuild:
   arm stable, bug #551814
