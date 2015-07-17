@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/gherkin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/gherkin/ChangeLog,v 1.89 2015/07/04 18:57:36 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/gherkin/ChangeLog,v 1.90 2015/07/17 20:03:17 maekke Exp $
+
+  17 Jul 2015; Markus Meier <maekke@gentoo.org> gherkin-2.12.2.ebuild:
+  add ~arm, bug #553470
 
   04 Jul 2015; Hans de Graaff <graaff@gentoo.org> gherkin-2.12.2.ebuild:
   Actually add the ruby-beautify dependency for bug 553274.

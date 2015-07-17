@@ -1,6 +1,11 @@
 # ChangeLog for x11-misc/lightdm
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/lightdm/ChangeLog,v 1.111 2015/05/31 10:26:13 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/lightdm/ChangeLog,v 1.112 2015/07/17 19:54:16 hwoarang Exp $
+
+*lightdm-1.14.2 (17 Jul 2015)
+
+  17 Jul 2015; Markos Chandras <hwoarang@gentoo.org> +lightdm-1.14.2.ebuild:
+  Version bump
 
 *lightdm-1.14.1 (31 May 2015)
 *lightdm-1.15.0 (31 May 2015)

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/thunderbird/thunderbird-31.7.0-r1.ebuild,v 1.2 2015/06/10 01:29:55 anarchy Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/thunderbird/thunderbird-31.8.0.ebuild,v 1.1 2015/07/17 19:42:35 axs Exp $
 
 EAPI=5
 WANT_AUTOCONF="2.1"
@@ -64,8 +64,8 @@ SRC_URI="${SRC_URI}
 ASM_DEPEND=">=dev-lang/yasm-1.1"
 
 CDEPEND="
-	>=dev-libs/nss-3.17.1
-	>=dev-libs/nspr-4.10.6
+	>=dev-libs/nss-3.19.2
+	>=dev-libs/nspr-4.10.8
 	!x11-plugins/enigmail
 	crypt?  ( || (
 		( >=app-crypt/gnupg-2.0

@@ -1,6 +1,9 @@
 # ChangeLog for sys-devel/bc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/bc/ChangeLog,v 1.50 2015/07/17 13:11:14 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/bc/ChangeLog,v 1.51 2015/07/17 20:05:04 maekke Exp $
+
+  17 Jul 2015; Markus Meier <maekke@gentoo.org> bc-1.06.95-r1.ebuild:
+  arm stable, bug #554708
 
   17 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> bc-1.06.95-r1.ebuild:
   ia64 stable wrt bug #554708

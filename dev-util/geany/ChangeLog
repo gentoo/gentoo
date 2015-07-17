@@ -1,6 +1,9 @@
 # ChangeLog for dev-util/geany
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/geany/ChangeLog,v 1.82 2015/07/17 12:05:44 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/geany/ChangeLog,v 1.83 2015/07/17 20:06:54 maekke Exp $
+
+  17 Jul 2015; Markus Meier <maekke@gentoo.org> geany-1.24.1.ebuild:
+  arm stable, bug #554880
 
   17 Jul 2015; Tobias Klausmann <klausman@gentoo.org> geany-1.24.1.ebuild:
   Stable on alpha, bug 554880

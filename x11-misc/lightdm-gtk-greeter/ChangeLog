@@ -1,6 +1,10 @@
 # ChangeLog for x11-misc/lightdm-gtk-greeter
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/lightdm-gtk-greeter/ChangeLog,v 1.30 2015/05/31 10:28:44 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/lightdm-gtk-greeter/ChangeLog,v 1.31 2015/07/17 19:52:11 hwoarang Exp $
+
+  17 Jul 2015; Markos Chandras <hwoarang@gentoo.org>
+  lightdm-gtk-greeter-2.0.1.ebuild:
+  Add missing sys-devel/gettext dependency. Bug #555014
 
 *lightdm-gtk-greeter-2.0.1 (31 May 2015)
 

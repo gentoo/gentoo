@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/ruby-beautify
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-beautify/ChangeLog,v 1.6 2015/06/28 09:11:57 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-beautify/ChangeLog,v 1.7 2015/07/17 20:02:47 maekke Exp $
+
+  17 Jul 2015; Markus Meier <maekke@gentoo.org> ruby-beautify-0.93.2.ebuild:
+  add ~arm, bug #553470
 
   28 Jun 2015; Hans de Graaff <graaff@gentoo.org> -ruby-beautify-0.92.2.ebuild:
   Cleanup.

@@ -1,6 +1,9 @@
 # ChangeLog for net-misc/minidlna
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/minidlna/ChangeLog,v 1.47 2015/06/27 09:49:11 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/minidlna/ChangeLog,v 1.48 2015/07/17 20:00:19 maekke Exp $
+
+  17 Jul 2015; Markus Meier <maekke@gentoo.org> minidlna-1.1.4.ebuild:
+  arm stable, bug #549084
 
   27 Jun 2015; Agostino Sarubbo <ago@gentoo.org> minidlna-1.1.4.ebuild:
   Stable for amd64, wrt bug #549084

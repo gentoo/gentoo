@@ -4,11 +4,11 @@ DESCRIPTION=Fast Gherkin lexer and parser based on Ragel
 EAPI=5
 HOMEPAGE=https://github.com/cucumber/gherkin
 IUSE=doc test test elibc_FreeBSD ruby_targets_ruby19 ruby_targets_ruby20 ruby_targets_ruby21 ruby_targets_ruby22 doc test
-KEYWORDS=~amd64
+KEYWORDS=~amd64 ~arm
 LICENSE=MIT
 RDEPEND=ruby_targets_ruby19? ( >=dev-ruby/multi_json-1.3[ruby_targets_ruby19] ) ruby_targets_ruby20? ( >=dev-ruby/multi_json-1.3[ruby_targets_ruby20] ) ruby_targets_ruby21? ( >=dev-ruby/multi_json-1.3[ruby_targets_ruby21] ) ruby_targets_ruby22? ( >=dev-ruby/multi_json-1.3[ruby_targets_ruby22] ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_ruby20? ( dev-lang/ruby:2.0 ) ruby_targets_ruby21? ( dev-lang/ruby:2.1 ) ruby_targets_ruby22? ( dev-lang/ruby:2.2 ) ruby_targets_ruby19? ( virtual/rubygems[ruby_targets_ruby19] ) ruby_targets_ruby20? ( virtual/rubygems[ruby_targets_ruby20] ) ruby_targets_ruby21? ( virtual/rubygems[ruby_targets_ruby21] ) ruby_targets_ruby22? ( virtual/rubygems[ruby_targets_ruby22] )
 REQUIRED_USE=|| ( ruby_targets_ruby19 ruby_targets_ruby20 ruby_targets_ruby21 ruby_targets_ruby22 )
 SLOT=0
 SRC_URI=https://github.com/cucumber/gherkin/archive/v2.12.2.tar.gz -> gherkin-2.12.2-git.tgz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	java-utils-2	8cdf065211fa6d6687bdc3f3ebe12efc	multilib	62927b3db3a589b0806255f3a002d5d3	ruby-fakegem	59aa129a3b9dc9e6225a0622860d2f54	ruby-ng	a1c75617b3482d513ad41d1aea8dbf8f	ruby-utils	a74e21a353442acf697b6c82e7df6df8	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=1c3f03742deaa50655df0f42e8917dbf
+_md5_=f743f4e450385f2caaa8d7a7085d8780

@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/PyQt5
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/PyQt5/ChangeLog,v 1.12 2015/06/20 19:47:48 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/PyQt5/ChangeLog,v 1.13 2015/07/17 20:00:26 maekke Exp $
+
+  17 Jul 2015; Markus Meier <maekke@gentoo.org> PyQt5-5.4.2.ebuild:
+  add ~arm, bug #552568
 
 *PyQt5-5.4.1 (20 Jun 2015)
 

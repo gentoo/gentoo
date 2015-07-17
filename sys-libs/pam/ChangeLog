@@ -1,6 +1,9 @@
 # ChangeLog for sys-libs/pam
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/pam/ChangeLog,v 1.360 2015/07/17 09:24:14 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/pam/ChangeLog,v 1.361 2015/07/17 19:57:27 maekke Exp $
+
+  17 Jul 2015; Markus Meier <maekke@gentoo.org> pam-1.2.1.ebuild:
+  arm stable, bug #553302
 
   17 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> pam-1.2.1.ebuild:
   ia64 stable wrt bug #553302
