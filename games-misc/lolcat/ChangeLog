@@ -1,6 +1,9 @@
 # ChangeLog for games-misc/lolcat
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/lolcat/ChangeLog,v 1.11 2015/07/12 03:40:34 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-misc/lolcat/ChangeLog,v 1.12 2015/07/17 20:43:41 mr_bones_ Exp $
+
+  17 Jul 2015; Michael Sterrett <mr_bones_@gentoo.org> lolcat-42.1.0.ebuild:
+  needs git to build (bug #555158)
 
   12 Jul 2015; Michael Sterrett <mr_bones_@gentoo.org> lolcat-42.1.0.ebuild:
   use the gemspec file instead of the pregenerated metadata file

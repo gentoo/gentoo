@@ -1,6 +1,10 @@
 # ChangeLog for net-p2p/bitcoin-qt
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/bitcoin-qt/ChangeLog,v 1.111 2015/07/14 13:15:25 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/bitcoin-qt/ChangeLog,v 1.112 2015/07/17 20:56:03 blueness Exp $
+
+  17 Jul 2015; Anthony G. Basile <blueness@gentoo.org> bitcoin-qt-0.11.0.ebuild,
+  bitcoin-qt-9999.ebuild:
+  Update 9999.
 
 *bitcoin-qt-0.11.0 (14 Jul 2015)
 

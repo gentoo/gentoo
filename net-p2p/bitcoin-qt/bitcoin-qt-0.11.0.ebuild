@@ -1,13 +1,13 @@
 # Copyright 2010-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/bitcoin-qt/bitcoin-qt-0.11.0.ebuild,v 1.1 2015/07/14 13:15:25 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/bitcoin-qt/bitcoin-qt-0.11.0.ebuild,v 1.2 2015/07/17 20:56:03 blueness Exp $
 
 EAPI=5
 
 BITCOINCORE_COMMITHASH="d26f951802c762de04fb68e1a112d611929920ba"
 BITCOINCORE_LJR_DATE="20150711"
 BITCOINCORE_IUSE="dbus kde ljr +qrcode qt4 qt5 test upnp +wallet zeromq"
-BITCOINCORE_POLICY_PATCHES="+cltv +cpfp rbf spamfilter"
+BITCOINCORE_POLICY_PATCHES="cltv cpfp rbf spamfilter"
 LANGS="ach af_ZA ar be_BY bg bs ca ca@valencia ca_ES cmn cs cy da de el_GR en eo es es_CL es_DO es_MX es_UY et eu_ES fa fa_IR fi fr fr_CA gl gu_IN he hi_IN hr hu id_ID it ja ka kk_KZ ko_KR ky la lt lv_LV mn ms_MY nb nl pam pl pt_BR pt_PT ro_RO ru sah sk sl_SI sq sr sv th_TH tr uk ur_PK uz@Cyrl vi vi_VN zh_HK zh_CN zh_TW"
 BITCOINCORE_NEED_LEVELDB=1
 BITCOINCORE_NEED_LIBSECP256K1=1

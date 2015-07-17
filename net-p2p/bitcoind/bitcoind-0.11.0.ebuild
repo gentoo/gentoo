@@ -1,13 +1,13 @@
 # Copyright 2010-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/bitcoind/bitcoind-0.11.0.ebuild,v 1.1 2015/07/14 13:06:19 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/bitcoind/bitcoind-0.11.0.ebuild,v 1.2 2015/07/17 20:48:48 blueness Exp $
 
 EAPI=5
 
 BITCOINCORE_COMMITHASH="d26f951802c762de04fb68e1a112d611929920ba"
 BITCOINCORE_LJR_DATE="20150711"
 BITCOINCORE_IUSE="examples ljr logrotate test upnp +wallet zeromq"
-BITCOINCORE_POLICY_PATCHES="+cltv +cpfp rbf spamfilter"
+BITCOINCORE_POLICY_PATCHES="cltv cpfp rbf spamfilter"
 BITCOINCORE_NEED_LEVELDB=1
 BITCOINCORE_NEED_LIBSECP256K1=1
 inherit bash-completion-r1 bitcoincore user systemd

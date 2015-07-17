@@ -1,17 +1,17 @@
 # Copyright 2010-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/bitcoin-qt/bitcoin-qt-9999.ebuild,v 1.6 2015/03/04 00:04:51 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/bitcoin-qt/bitcoin-qt-9999.ebuild,v 1.7 2015/07/17 20:56:03 blueness Exp $
 
 EAPI=5
 
+BITCOINCORE_IUSE="dbus kde +qrcode qt4 qt5 test upnp +wallet"
 LANGS="ach af_ZA ar be_BY bg bs ca ca@valencia ca_ES cmn cs cy da de el_GR en eo es es_CL es_DO es_MX es_UY et eu_ES fa fa_IR fi fr fr_CA gl gu_IN he hi_IN hr hu id_ID it ja ka kk_KZ ko_KR ky la lt lv_LV mn ms_MY nb nl pam pl pt_BR pt_PT ro_RO ru sah sk sl_SI sq sr sv th_TH tr uk ur_PK uz@Cyrl vi vi_VN zh_HK zh_CN zh_TW"
-BITCOINCORE_IUSE="dbus kde +qrcode test upnp +wallet"
 BITCOINCORE_NEED_LEVELDB=1
 BITCOINCORE_NEED_LIBSECP256K1=1
 inherit bitcoincore eutils fdo-mime gnome2-utils kde4-functions qt4-r2 git-2
 
 DESCRIPTION="An end-user Qt GUI for the Bitcoin crypto-currency"
-LICENSE="MIT GPL-3 LGPL-2.1 || ( CC-BY-SA-3.0 LGPL-2.1 )"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 
@@ -20,12 +20,15 @@ RDEPEND="
 	qrcode? (
 		media-gfx/qrencode
 	)
-	dev-qt/qtgui:4
+	qt4? ( dev-qt/qtgui:4 )
+	qt5? ( dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 dev-qt/linguist-tools:5 )
 	dbus? (
-		dev-qt/qtdbus:4
+		qt4? ( dev-qt/qtdbus:4 )
+		qt5? ( dev-qt/qtdbus:5 )
 	)
 "
 DEPEND="${RDEPEND}"
+REQUIRED_USE="${REQUIRED_USE} ^^ ( qt4 qt5 )"
 
 src_prepare() {
 	bitcoincore_prepare
@@ -59,11 +62,10 @@ src_prepare() {
 }
 
 src_configure() {
-	# NOTE: --enable-zmq actually disables it
 	bitcoincore_conf \
 		$(use_with dbus qtdbus)  \
 		$(use_with qrcode qrencode)  \
-		--with-gui
+		--with-gui=$(usex qt5 qt5 qt4)
 }
 
 src_install() {
@@ -73,7 +75,7 @@ src_install() {
 	newins "share/pixmaps/bitcoin.ico" "${PN}.ico"
 	make_desktop_entry "${PN} %u" "Bitcoin-Qt" "/usr/share/pixmaps/${PN}.ico" "Qt;Network;P2P;Office;Finance;" "MimeType=x-scheme-handler/bitcoin;\nTerminal=false"
 
-	dodoc doc/assets-attribution.md doc/tor.md
+	dodoc doc/assets-attribution.md doc/bips.md doc/tor.md
 	doman contrib/debian/manpages/bitcoin-qt.1
 
 	if use kde; then

@@ -1,6 +1,11 @@
 # ChangeLog for net-p2p/bitcoind
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/bitcoind/ChangeLog,v 1.109 2015/07/14 13:06:19 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/bitcoind/ChangeLog,v 1.110 2015/07/17 20:48:48 blueness Exp $
+
+  17 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
+  -files/9999-sys_libsecp256k1.patch, -files/bitcoin.initd,
+  bitcoind-0.11.0.ebuild, bitcoind-9999.ebuild:
+  Update 9999.
 
 *bitcoind-0.11.0 (14 Jul 2015)
 
