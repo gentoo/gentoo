@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/timezone-olson
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/timezone-olson/ChangeLog,v 1.10 2014/12/14 06:38:02 gienah Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/timezone-olson/ChangeLog,v 1.11 2015/07/17 09:28:19 gienah Exp $
+
+*timezone-olson-0.1.7 (17 Jul 2015)
+
+  17 Jul 2015; Mark Wright <gienah@gentoo.org> +timezone-olson-0.1.7.ebuild:
+  Bump timezone-olson to 0.1.7
 
 *timezone-olson-0.1.6 (14 Dec 2014)
 

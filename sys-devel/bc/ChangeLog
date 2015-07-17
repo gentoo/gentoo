@@ -1,6 +1,9 @@
 # ChangeLog for sys-devel/bc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/bc/ChangeLog,v 1.48 2015/07/17 06:12:52 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/bc/ChangeLog,v 1.49 2015/07/17 08:48:03 klausman Exp $
+
+  17 Jul 2015; Tobias Klausmann <klausman@gentoo.org> bc-1.06.95-r1.ebuild:
+  Stable on alpha, bug 554708
 
   17 Jul 2015; Jeroen Roovers <jer@gentoo.org> bc-1.06.95-r1.ebuild:
   Stable for HPPA PPC64 (bug #554708).

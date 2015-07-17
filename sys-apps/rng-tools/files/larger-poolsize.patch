@@ -1,0 +1,26 @@
+diff -urNp rng-tools-4.original/rngd.c rng-tools-4/rngd.c
+--- rng-tools-4.original/rngd.c	2012-08-02 06:19:09.000000000 +0200
++++ rng-tools-4/rngd.c	2013-10-03 13:32:24.069885853 +0200
+@@ -93,7 +93,7 @@ static struct argp_option options[] = {
+ 	  "Number of bytes written to random-device at a time (default: 64)" },
+ 
+ 	{ "fill-watermark", 'W', "n", 0,
+-	  "Do not stop feeding entropy to random-device until at least n bits of entropy are available in the pool (default: 2048), 0 <= n <= 4096" },
++	  "Do not stop feeding entropy to random-device until at least n bits of entropy are available in the pool (default: 2048), 0 <= n <= kernel entropy pool size (in bits)" },
+ 
+ 	{ "quiet", 'q', 0, 0, "Suppress error messages" },
+ 
+@@ -166,8 +166,11 @@ static error_t parse_opt (int key, char
+ 			argp_usage(state);
+ 		break;
+ 	case 'W': {
+-		int n;
+-		if ((sscanf(arg, "%i", &n) == 0) || (n < 0) || (n > 4096))
++		int n, poolsize = 512;
++		FILE *pf;
++		pf = fopen( "/proc/sys/kernel/random/poolsize", "r" );
++		fscanf( pf, "%d", &poolsize );
++		if ((sscanf(arg, "%i", &n) == 0) || (n < 0) || (n > 8*poolsize))
+ 			argp_usage(state);
+ 		else
+ 			arguments->fill_watermark = n;

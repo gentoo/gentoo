@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/dialog/dialog-1.2.20150528.ebuild,v 1.2 2015/07/17 06:29:26 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/dialog/dialog-1.2.20150528.ebuild,v 1.3 2015/07/17 08:41:29 klausman Exp $
 
 EAPI=5
 inherit eutils multilib versionator
@@ -13,7 +13,7 @@ SRC_URI="ftp://invisible-island.net/${PN}/${PN}-${MY_PV}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="alpha ~amd64 ~arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 IUSE="examples minimal nls static-libs unicode"
 
 RDEPEND="

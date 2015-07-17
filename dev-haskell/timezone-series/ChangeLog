@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/timezone-series
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/timezone-series/ChangeLog,v 1.7 2014/12/14 06:38:44 gienah Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/timezone-series/ChangeLog,v 1.8 2015/07/17 09:29:11 gienah Exp $
+
+*timezone-series-0.1.5.1 (17 Jul 2015)
+
+  17 Jul 2015; Mark Wright <gienah@gentoo.org> +timezone-series-0.1.5.1.ebuild:
+  Bump timezone-series to 0.1.5.1
 
 *timezone-series-0.1.4 (14 Dec 2014)
 

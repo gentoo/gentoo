@@ -1,6 +1,9 @@
 # ChangeLog for sys-process/lsof
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/lsof/ChangeLog,v 1.116 2015/07/17 06:14:05 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-process/lsof/ChangeLog,v 1.117 2015/07/17 09:07:50 klausman Exp $
+
+  17 Jul 2015; Tobias Klausmann <klausman@gentoo.org> lsof-4.88-r1.ebuild:
+  Stable on alpha, bug 554848
 
   17 Jul 2015; Jeroen Roovers <jer@gentoo.org> lsof-4.88-r1.ebuild:
   Stable for HPPA PPC64 (bug #554848).

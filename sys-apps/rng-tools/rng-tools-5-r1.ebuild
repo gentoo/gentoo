@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/rng-tools/rng-tools-5.ebuild,v 1.2 2015/07/17 09:30:21 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/rng-tools/rng-tools-5-r1.ebuild,v 1.2 2015/07/17 09:30:21 idella4 Exp $
 
 EAPI=5
 
@@ -22,8 +22,10 @@ RDEPEND="${DEPEND}
 
 src_prepare() {
 	echo 'bin_PROGRAMS = randstat' >> contrib/Makefile.am
-	epatch "${FILESDIR}"/test-for-argp.patch\
-		"${FILESDIR}"/${P}-fix-textrels-on-PIC-x86.patch
+	epatch "${FILESDIR}"/test-for-argp.patch \
+                "${FILESDIR}"/${P}-fix-textrels-on-PIC-x86.patch \
+		"${FILESDIR}"/larger-poolsize.patch
+
 	eautoreconf
 
 	sed -i '/^AR /d' Makefile.in || die
@@ -32,7 +34,7 @@ src_prepare() {
 
 src_install() {
 	default
-	newinitd "${FILESDIR}"/rngd-initd-4.1 rngd
+	newinitd "${FILESDIR}"/rngd-initd-r1-4.1 rngd
 	newconfd "${FILESDIR}"/rngd-confd-4.1 rngd
 	systemd_dounit "${FILESDIR}"/rngd.service
 }

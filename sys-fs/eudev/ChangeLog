@@ -1,6 +1,9 @@
 # ChangeLog for sys-fs/eudev
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/eudev/ChangeLog,v 1.168 2015/07/17 06:22:51 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/eudev/ChangeLog,v 1.169 2015/07/17 09:04:55 klausman Exp $
+
+  17 Jul 2015; Tobias Klausmann <klausman@gentoo.org> eudev-3.1.2.ebuild:
+  Stable on alpha, bug 554802
 
   17 Jul 2015; Jeroen Roovers <jer@gentoo.org> eudev-3.1.2.ebuild:
   Stable for HPPA PPC64 (bug #554802).
