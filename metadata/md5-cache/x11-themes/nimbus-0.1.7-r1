@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst postrm preinst prepare
-DEPEND=gtk? ( x11-libs/gtk+:2 ) dev-util/intltool virtual/pkgconfig >=x11-misc/icon-naming-utils-0.8.90 !gtk? ( !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 ) elibc_Interix? ( !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 ) >=sys-apps/sed-4
+DEPEND=gtk? ( x11-libs/gtk+:2 ) dev-util/intltool virtual/pkgconfig >=x11-misc/icon-naming-utils-0.8.90 !gtk? ( !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 ) elibc_Interix? ( !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 ) >=sys-apps/sed-4
 DESCRIPTION=The default OpenSolaris theme (GTK+ 2.x engine, icon- and metacity theme)
 EAPI=4
 HOMEPAGE=http://dlc.sun.com/osol/jds/downloads/extras/nimbus/
@@ -9,5 +9,5 @@ LICENSE=LGPL-2
 RDEPEND=gtk? ( x11-libs/gtk+:2 ) !minimal? ( || ( x11-themes/gnome-icon-theme x11-themes/tango-icon-theme ) )
 SLOT=0
 SRC_URI=http://dlc.sun.com/osol/jds/downloads/extras/nimbus/nimbus-0.1.7.tar.bz2
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=ce8297495b51e2985d75d8e40968ea96

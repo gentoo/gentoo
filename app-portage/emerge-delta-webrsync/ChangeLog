@@ -1,6 +1,10 @@
 # ChangeLog for app-portage/emerge-delta-webrsync
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/emerge-delta-webrsync/ChangeLog,v 1.47 2015/07/15 16:56:32 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/emerge-delta-webrsync/ChangeLog,v 1.48 2015/07/17 10:15:33 klausman Exp $
+
+  17 Jul 2015; Tobias Klausmann <klausman@gentoo.org>
+  emerge-delta-webrsync-3.7.2-r1.ebuild:
+  Stable on alpha, bug 554906
 
   15 Jul 2015; Mikle Kolyada <zlogene@gentoo.org>
   emerge-delta-webrsync-3.7.2-r1.ebuild:

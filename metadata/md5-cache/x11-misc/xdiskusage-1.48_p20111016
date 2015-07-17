@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install prepare
-DEPEND=>=x11-libs/fltk-1.3:1 app-arch/xz-utils !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=x11-libs/fltk-1.3:1 app-arch/xz-utils !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=front end to xdu for viewing disk usage graphically under X11
 EAPI=4
 HOMEPAGE=http://xdiskusage.sourceforge.net/
@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=x11-libs/fltk-1.3:1
 SLOT=0
 SRC_URI=mirror://gentoo/xdiskusage-1.48_p20111016.tar.xz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=bcdeca35f52d941d7be7e4205d09bf9d

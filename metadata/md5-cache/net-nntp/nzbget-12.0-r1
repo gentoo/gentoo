@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst preinst prepare
-DEPEND=dev-libs/libxml2 ncurses? ( sys-libs/ncurses ) parcheck? ( app-arch/libpar2 dev-libs/libsigc++:2 ) ssl? ( gnutls? ( net-libs/gnutls ) !gnutls? ( dev-libs/openssl ) ) zlib? ( sys-libs/zlib ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-libs/libxml2 ncurses? ( sys-libs/ncurses ) parcheck? ( app-arch/libpar2 dev-libs/libsigc++:2 ) ssl? ( gnutls? ( net-libs/gnutls ) !gnutls? ( dev-libs/openssl ) ) zlib? ( sys-libs/zlib ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A command-line based binary newsgrapper supporting .nzb files
 EAPI=5
 HOMEPAGE=http://nzbget.sourceforge.net/
@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/libxml2 ncurses? ( sys-libs/ncurses ) parcheck? ( app-arch/libpar2 dev-libs/libsigc++:2 ) ssl? ( gnutls? ( net-libs/gnutls ) !gnutls? ( dev-libs/openssl ) ) zlib? ( sys-libs/zlib )
 SLOT=0
 SRC_URI=mirror://sourceforge/nzbget/nzbget-12.0.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
 _md5_=19078136bb1276f06e348763d36f0ad9

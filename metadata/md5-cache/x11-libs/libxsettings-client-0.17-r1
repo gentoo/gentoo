@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare unpack
-DEPEND=x11-proto/xproto x11-libs/libX11 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-util/intltool-0.29 virtual/pkgconfig
+DEPEND=x11-proto/xproto x11-libs/libX11 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-util/intltool-0.29 virtual/pkgconfig
 DESCRIPTION=XSETTINGS client code
 EAPI=5
 HOMEPAGE=http://gpe.linuxtogo.org
@@ -9,5 +9,5 @@ LICENSE=LGPL-2
 RDEPEND=x11-proto/xproto x11-libs/libX11
 SLOT=0
 SRC_URI=http://gpe.linuxtogo.org/download/source/libxsettings-client-0.17.tar.bz2
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	gpe	dc397204e130de43bfcf156546e8d9d4	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	gpe	dc397204e130de43bfcf156546e8d9d4	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=881e354d6066628d24123601b998d43c

@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare unpack
-DEPEND=!net-misc/pssh gtk? ( dev-libs/glib:2 x11-libs/gdk-pixbuf x11-libs/gtk+:2 x11-libs/libX11 x11-libs/pango ) kerberos? ( virtual/krb5 ) app-doc/halibut dev-lang/perl virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4 >=dev-vcs/git-1.8.2.1
+DEPEND=!net-misc/pssh gtk? ( dev-libs/glib:2 x11-libs/gdk-pixbuf x11-libs/gtk+:2 x11-libs/libX11 x11-libs/pango ) kerberos? ( virtual/krb5 ) app-doc/halibut dev-lang/perl virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=A Free Telnet/SSH Client
 EAPI=5
 HOMEPAGE=http://www.chiark.greenend.org.uk/~sgtatham/putty/
@@ -8,5 +8,5 @@ LICENSE=MIT
 RDEPEND=!net-misc/pssh gtk? ( dev-libs/glib:2 x11-libs/gdk-pixbuf x11-libs/gtk+:2 x11-libs/libX11 x11-libs/pango ) kerberos? ( virtual/krb5 )
 SLOT=0
 SRC_URI=http://dev.gentoo.org/~jer/putty-icons.tar.bz2
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	git-r3	727a612b4c6247766904e3f74a326e2b	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	git-r3	727a612b4c6247766904e3f74a326e2b	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=45ce8f94d6967e46746c142ec2d00a49

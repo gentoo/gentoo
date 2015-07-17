@@ -1,10 +1,10 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=!sys-apps/systemd[gtk] >=dev-libs/glib-2.26 dev-libs/libgee:0.8 sys-apps/dbus x11-libs/gtk+:3 >=x11-libs/libnotify-0.7 app-arch/xz-utils || ( dev-lang/vala:0.28 dev-lang/vala:0.26 dev-lang/vala:0.24 dev-lang/vala:0.22 ) app-text/docbook-xml-dtd:4.2 dev-vcs/git !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DEPEND=!sys-apps/systemd[gtk] >=dev-libs/glib-2.26 dev-libs/libgee:0.8 sys-apps/dbus x11-libs/gtk+:3 >=x11-libs/libnotify-0.7 app-arch/xz-utils || ( dev-lang/vala:0.28 dev-lang/vala:0.26 dev-lang/vala:0.24 dev-lang/vala:0.22 ) app-text/docbook-xml-dtd:4.2 dev-vcs/git !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
 DESCRIPTION=System and service manager for Linux
 EAPI=4
 HOMEPAGE=http://www.freedesktop.org/wiki/Software/systemd
 LICENSE=GPL-2
 RDEPEND=!sys-apps/systemd[gtk] >=dev-libs/glib-2.26 dev-libs/libgee:0.8 sys-apps/dbus x11-libs/gtk+:3 >=x11-libs/libnotify-0.7
 SLOT=0
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	git-2	e28f0d8a9b321431b1e699782851b827	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	vala	09bc7da1a93142c9eb90786e6f6b39d2
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	git-2	e28f0d8a9b321431b1e699782851b827	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	vala	09bc7da1a93142c9eb90786e6f6b39d2
 _md5_=fc8154ae529582ec53bd2862fa558043

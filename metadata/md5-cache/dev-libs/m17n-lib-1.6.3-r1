@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=anthy? ( app-i18n/anthy ) spell? ( app-text/aspell ) libxml2? ( dev-libs/libxml2 ) X? ( athena? ( x11-libs/libXaw ) bidi? ( dev-libs/fribidi ) fontconfig? ( media-libs/fontconfig ) gd? ( media-libs/gd[png] ) libotf? ( >=dev-libs/libotf-0.9.4 ) xft? ( >=media-libs/freetype-2.1 x11-libs/libXft ) x11-libs/libX11 ) ~dev-db/m17n-db-1.6.3 virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=anthy? ( app-i18n/anthy ) spell? ( app-text/aspell ) libxml2? ( dev-libs/libxml2 ) X? ( athena? ( x11-libs/libXaw ) bidi? ( dev-libs/fribidi ) fontconfig? ( media-libs/fontconfig ) gd? ( media-libs/gd[png] ) libotf? ( >=dev-libs/libotf-0.9.4 ) xft? ( >=media-libs/freetype-2.1 x11-libs/libXft ) x11-libs/libX11 ) ~dev-db/m17n-db-1.6.3 virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Multilingual Library for Unix/Linux
 EAPI=4
 HOMEPAGE=https://savannah.nongnu.org/projects/m17n
@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=anthy? ( app-i18n/anthy ) spell? ( app-text/aspell ) libxml2? ( dev-libs/libxml2 ) X? ( athena? ( x11-libs/libXaw ) bidi? ( dev-libs/fribidi ) fontconfig? ( media-libs/fontconfig ) gd? ( media-libs/gd[png] ) libotf? ( >=dev-libs/libotf-0.9.4 ) xft? ( >=media-libs/freetype-2.1 x11-libs/libXft ) x11-libs/libX11 ) ~dev-db/m17n-db-1.6.3
 SLOT=0
 SRC_URI=http://www.m17n.org/m17n-lib-download/m17n-lib-1.6.3.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=00543f19e8c7860b1b4824d66de9322c

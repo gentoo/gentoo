@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=dev-lang/perl dev-libs/libxslt dev-perl/XML-NamespaceSupport dev-perl/XML-SAX dev-perl/XML-LibXML app-text/docbook-xsl-stylesheets =app-text/docbook-xml-dtd-4.2* !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-lang/perl dev-libs/libxslt dev-perl/XML-NamespaceSupport dev-perl/XML-SAX dev-perl/XML-LibXML app-text/docbook-xsl-stylesheets =app-text/docbook-xml-dtd-4.2* !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Tools to convert docbook to man and info
 EAPI=5
 HOMEPAGE=http://docbook2x.sourceforge.net/
@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=dev-lang/perl dev-libs/libxslt dev-perl/XML-NamespaceSupport dev-perl/XML-SAX dev-perl/XML-LibXML app-text/docbook-xsl-stylesheets =app-text/docbook-xml-dtd-4.2*
 SLOT=0
 SRC_URI=mirror://sourceforge/docbook2x/docbook2X-0.8.8.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=4d593cd0f10184048f7e7a4238b19b0d

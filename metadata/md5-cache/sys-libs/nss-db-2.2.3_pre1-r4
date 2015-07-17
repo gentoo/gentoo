@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install unpack
-DEPEND=>=sys-libs/db-4 sys-devel/make >=sys-libs/glibc-2.3 !>=sys-libs/glibc-2.15 sys-devel/gettext !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1 >=sys-devel/automake-1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=sys-libs/db-4 sys-devel/make >=sys-libs/glibc-2.3 !>=sys-libs/glibc-2.15 sys-devel/gettext !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Allows important system files to be stored in a fast database file rather than plain text
 HOMEPAGE=http://sources.redhat.com/glibc/
 IUSE=nls
@@ -8,5 +8,5 @@ LICENSE=GPL-2 LGPL-2
 RDEPEND=>=sys-libs/db-4 sys-devel/make >=sys-libs/glibc-2.3 !>=sys-libs/glibc-2.15
 SLOT=0
 SRC_URI=ftp://sources.redhat.com/pub/glibc/old-releases/nss_db-2.2.3pre1.tar.gz mirror://gentoo/nss_db-2.2.3pre1-external.patch.bz2 mirror://gentoo/nss_db-2.2.3pre1-dbupgrade.patch.bz2 mirror://gentoo/nss_db-2.2.3pre1-dbopen.patch.bz2
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=27522a2bff998eec3d1b112d5d3aea09

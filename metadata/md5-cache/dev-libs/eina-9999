@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare unpack
-DEPEND=valgrind? ( dev-util/valgrind ) virtual/pkgconfig test? ( dev-libs/check dev-libs/glib dev-util/lcov ) dev-vcs/git !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 doc? ( app-doc/doxygen )
+DEPEND=valgrind? ( dev-util/valgrind ) virtual/pkgconfig test? ( dev-libs/check dev-libs/glib dev-util/lcov ) dev-vcs/git !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 doc? ( app-doc/doxygen )
 DESCRIPTION=Enlightenment's data types library (list, hash, etc) in C
 EAPI=4
 HOMEPAGE=http://www.enlightenment.org/
@@ -7,5 +7,5 @@ IUSE=altivec debug default-mempool cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags
 LICENSE=LGPL-2.1
 RDEPEND=valgrind? ( dev-util/valgrind ) nls? ( sys-devel/gettext )
 SLOT=0
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	enlightenment	98392d364f7f4c6cde8a516cbc298472	eutils	9fb270e417e0e83d64ca52586c4a79de	git-2	e28f0d8a9b321431b1e699782851b827	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	enlightenment	98392d364f7f4c6cde8a516cbc298472	eutils	9fb270e417e0e83d64ca52586c4a79de	git-2	e28f0d8a9b321431b1e699782851b827	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=0de42ebd3925417aea82563c0221acca

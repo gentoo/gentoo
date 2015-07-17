@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst prepare unpack
-DEPEND=sys-infiniband/libibmad:3.12 sys-infiniband/libibumad:3.12 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=app-arch/rpm2targz-9.0.0.3g
+DEPEND=sys-infiniband/libibmad:3.12 sys-infiniband/libibumad:3.12 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=app-arch/rpm2targz-9.0.0.3g
 DESCRIPTION=OpenSM - InfiniBand Subnet Manager and Administration for OpenIB
 EAPI=5
 HOMEPAGE=http://www.openfabrics.org/
@@ -9,5 +9,5 @@ LICENSE=|| ( GPL-2 BSD-2 )
 RDEPEND=sys-infiniband/libibmad:3.12 sys-infiniband/libibumad:3.12 tools? ( net-misc/iputils net-misc/openssh ) !sys-infiniband/opensm:0 !sys-infiniband/opensm:1.5.4.1 !sys-infiniband/opensm:3.5
 SLOT=3.12
 SRC_URI=https://www.openfabrics.org/downloads/OFED/ofed-3.12/OFED-3.12-rc1.tgz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	openib	09f16a9d8ca153287935ad12ef033629	rpm	b94b54b44f14d6bee3e966c8f5c86fba	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	openib	09f16a9d8ca153287935ad12ef033629	rpm	b94b54b44f14d6bee3e966c8f5c86fba	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=d503a9fb2aeee4aeb35573207bfd8b7a

@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare unpack
-DEPEND=ssl? ( >=dev-libs/openssl-0.9.6 ) readline? ( >=sys-libs/readline-4.1 ) tcpd? ( sys-apps/tcp-wrappers ) app-text/yodl !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
+DEPEND=ssl? ( >=dev-libs/openssl-0.9.6 ) readline? ( >=sys-libs/readline-4.1 ) tcpd? ( sys-apps/tcp-wrappers ) app-text/yodl !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Multipurpose relay (SOcket CAT)
 EAPI=5
 HOMEPAGE=http://www.dest-unreach.org/socat/
@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=ssl? ( >=dev-libs/openssl-0.9.6 ) readline? ( >=sys-libs/readline-4.1 ) tcpd? ( sys-apps/tcp-wrappers )
 RESTRICT=test
 SLOT=0
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	git-r3	727a612b4c6247766904e3f74a326e2b	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	git-r3	727a612b4c6247766904e3f74a326e2b	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=f1f93d084258aba7223bf5507fe05328

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/autotools.eclass,v 1.176 2015/06/03 04:06:08 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/autotools.eclass,v 1.177 2015/07/17 09:36:24 vapier Exp $
 
 # @ECLASS: autotools.eclass
 # @MAINTAINER:
@@ -56,7 +56,7 @@ inherit libtool
 # Do NOT change this variable in your ebuilds!
 # If you want to force a newer minor version, you can specify the correct
 # WANT value by using a colon:  <PV>:<WANT_AUTOMAKE>
-_LATEST_AUTOMAKE=( 1.14.1:1.14 1.15:1.15 )
+_LATEST_AUTOMAKE=( 1.15:1.15 )
 
 _automake_atom="sys-devel/automake"
 _autoconf_atom="sys-devel/autoconf"

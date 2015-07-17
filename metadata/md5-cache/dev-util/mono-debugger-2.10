@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare unpack
-DEPEND=!!=dev-lang/mono-2.2 sys-devel/binutils dev-libs/glib:2 !dev-lang/mercury >=dev-lang/mono-2.10 virtual/pkgconfig userland_GNU? ( >=sys-apps/findutils-4.4.0 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=!!=dev-lang/mono-2.2 sys-devel/binutils dev-libs/glib:2 !dev-lang/mercury >=dev-lang/mono-2.10 virtual/pkgconfig userland_GNU? ( >=sys-apps/findutils-4.4.0 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Debugger for .NET managed and unmanaged applications
 EAPI=4
 HOMEPAGE=http://www.mono-project.com/
@@ -9,5 +9,5 @@ RDEPEND=!!=dev-lang/mono-2.2 sys-devel/binutils dev-libs/glib:2 >=dev-lang/mono-
 RESTRICT=test
 SLOT=0
 SRC_URI=http://download.mono-project.com/sources/mono-debugger/mono-debugger-2.10.tar.bz2
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	go-mono	95f4d6f11343dd05b134d8d1d2efd9e0	libtool	52d0e17251d04645ffaa61bfdd858944	mono	203a4295c06155d318bdff9c6b2d5e1c	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	go-mono	95f4d6f11343dd05b134d8d1d2efd9e0	libtool	52d0e17251d04645ffaa61bfdd858944	mono	203a4295c06155d318bdff9c6b2d5e1c	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=73f4fa41818326fed410a7497731b670

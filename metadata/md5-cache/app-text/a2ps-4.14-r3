@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare
-DEPEND=app-text/ghostscript-gpl app-text/libpaper >=app-text/psutils-1.17 app-text/wdiff emacs? ( virtual/emacs ) latex? ( virtual/latex-base ) nls? ( virtual/libintl ) userland_GNU? ( >=sys-apps/coreutils-6.10-r1 ) userland_BSD? ( sys-freebsd/freebsd-ubin ) >=dev-util/gperf-2.7.2 virtual/yacc nls? ( sys-devel/gettext ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=app-text/ghostscript-gpl app-text/libpaper >=app-text/psutils-1.17 app-text/wdiff emacs? ( virtual/emacs ) latex? ( virtual/latex-base ) nls? ( virtual/libintl ) userland_GNU? ( >=sys-apps/coreutils-6.10-r1 ) userland_BSD? ( sys-freebsd/freebsd-ubin ) >=dev-util/gperf-2.7.2 virtual/yacc nls? ( sys-devel/gettext ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Any to PostScript filter
 EAPI=4
 HOMEPAGE=http://www.inf.enst.fr/~demaille/a2ps/
@@ -10,5 +10,5 @@ RDEPEND=app-text/ghostscript-gpl app-text/libpaper >=app-text/psutils-1.17 app-t
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://gnu/a2ps/a2ps-4.14.tar.gz linguas_ja? ( mirror://gentoo/a2ps-4.14-ja_nls.patch.gz )
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	elisp-common	9a16929c1a6aec7e1c903289983e114c	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	elisp-common	9a16929c1a6aec7e1c903289983e114c	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=396f74cb9b225827f6d48b9c54e1002e

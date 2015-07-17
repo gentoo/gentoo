@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare
-DEPEND=!net-misc/pssh gtk? ( dev-libs/glib:2 x11-libs/gdk-pixbuf x11-libs/gtk+:2 x11-libs/libX11 x11-libs/pango ) kerberos? ( virtual/krb5 ) dev-lang/perl virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
+DEPEND=!net-misc/pssh gtk? ( dev-libs/glib:2 x11-libs/gdk-pixbuf x11-libs/gtk+:2 x11-libs/libX11 x11-libs/pango ) kerberos? ( virtual/krb5 ) dev-lang/perl virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
 DESCRIPTION=A Free Telnet/SSH Client
 EAPI=5
 HOMEPAGE=http://www.chiark.greenend.org.uk/~sgtatham/putty/
@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=!net-misc/pssh gtk? ( dev-libs/glib:2 x11-libs/gdk-pixbuf x11-libs/gtk+:2 x11-libs/libX11 x11-libs/pango ) kerberos? ( virtual/krb5 )
 SLOT=0
 SRC_URI=http://dev.gentoo.org/~jer/putty-icons.tar.bz2 http://tartarus.org/~simon/putty-prerel-snapshots/putty-0.65~pre20150621.be9e5ea.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=b21c3b96b91084e391778924c00a95b2

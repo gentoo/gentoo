@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=png? ( media-libs/libpng:0= ) test? ( app-arch/unzip ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=png? ( media-libs/libpng:0= ) test? ( app-arch/unzip ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A decoder implementation of the JBIG2 image compression format
 EAPI=5
 HOMEPAGE=http://jbig2dec.sourceforge.net/
@@ -10,5 +10,5 @@ RDEPEND=png? ( media-libs/libpng:0= )
 RESTRICT=test
 SLOT=0
 SRC_URI=http://ghostscript.com/~giles/jbig2/jbig2dec/jbig2dec-0.11.tar.gz test? ( http://jbig2dec.sourceforge.net/ubc/jb2streams.zip )
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=fb91c7ee4a965c420772ff5a143d554a

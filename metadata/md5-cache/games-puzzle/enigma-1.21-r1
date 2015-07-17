@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
-DEPEND=media-libs/sdl-ttf media-libs/libsdl[video] media-libs/sdl-mixer media-libs/sdl-image[jpeg,png] media-libs/libpng:0= sys-libs/zlib net-misc/curl || ( >=dev-libs/xerces-c-3[icu] >=dev-libs/xerces-c-3[-icu,-iconv] ) net-libs/enet nls? ( virtual/libintl ) sys-devel/gettext !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
+DEPEND=media-libs/sdl-ttf media-libs/libsdl[video] media-libs/sdl-mixer media-libs/sdl-image[jpeg,png] media-libs/libpng:0= sys-libs/zlib net-misc/curl || ( >=dev-libs/xerces-c-3[icu] >=dev-libs/xerces-c-3[-icu,-iconv] ) net-libs/enet nls? ( virtual/libintl ) sys-devel/gettext !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
 DESCRIPTION=puzzle game similar to Oxyd
 EAPI=5
 HOMEPAGE=http://www.nongnu.org/enigma/
@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 RDEPEND=media-libs/sdl-ttf media-libs/libsdl[video] media-libs/sdl-mixer media-libs/sdl-image[jpeg,png] media-libs/libpng:0= sys-libs/zlib net-misc/curl || ( >=dev-libs/xerces-c-3[icu] >=dev-libs/xerces-c-3[-icu,-iconv] ) net-libs/enet nls? ( virtual/libintl ) media-fonts/dejavu x11-misc/xdg-utils games-misc/games-envd
 SLOT=0
 SRC_URI=mirror://sourceforge/enigma-game/enigma-1.21.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	games	1ad3205dbf62a2c98249f2f59b0a2d39	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	games	1ad3205dbf62a2c98249f2f59b0a2d39	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
 _md5_=69794d5761a89ef894a77b3311daa53b

@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare setup
-DEPEND=dev-libs/libf2c !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/fortran
+DEPEND=dev-libs/libf2c !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/fortran
 DESCRIPTION=Autotooled, updated version of a powerful, fast semi-empirical package
 EAPI=4
 HOMEPAGE=http://sourceforge.net/projects/mopac7/
@@ -9,5 +9,5 @@ LICENSE=public-domain
 RDEPEND=dev-libs/libf2c virtual/fortran
 SLOT=0
 SRC_URI=http://www.bioinformatics.org/ghemical/download/current/mopac7-1.15.tar.gz http://wwwuser.gwdg.de/~ggroenh/qmmm/mopac/dcart.f http://wwwuser.gwdg.de/~ggroenh/qmmm/mopac/gmxmop.f
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	fortran-2	db8710b355fc5598015c4bc3aad3bdb0	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	fortran-2	db8710b355fc5598015c4bc3aad3bdb0	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=bc5a182107d3e943939a30b6b2ca7d02

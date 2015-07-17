@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install preinst prepare test
-DEPEND=>=dev-libs/boost-1.50.0:=[threads(+)] media-libs/libpng:0 sys-libs/zlib virtual/jpeg mkl? ( sci-libs/mkl ) openexr? ( media-libs/ilmbase media-libs/openexr ) tiff? ( media-libs/tiff:0 ) X? ( media-libs/libsdl ) sys-devel/boost-m4 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DEPEND=>=dev-libs/boost-1.50.0:=[threads(+)] media-libs/libpng:0 sys-libs/zlib virtual/jpeg mkl? ( sci-libs/mkl ) openexr? ( media-libs/ilmbase media-libs/openexr ) tiff? ( media-libs/tiff:0 ) X? ( media-libs/libsdl ) sys-devel/boost-m4 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
 DESCRIPTION=The Persistence of Vision Raytracer
 EAPI=5
 HOMEPAGE=http://www.povray.org/
@@ -9,5 +9,5 @@ LICENSE=AGPL-3
 RDEPEND=>=dev-libs/boost-1.50.0:=[threads(+)] media-libs/libpng:0 sys-libs/zlib virtual/jpeg mkl? ( sci-libs/mkl ) openexr? ( media-libs/ilmbase media-libs/openexr ) tiff? ( media-libs/tiff:0 ) X? ( media-libs/libsdl )
 SLOT=0
 SRC_URI=https://github.com/POV-Ray/povray/archive/v3.7.0.0.tar.gz -> povray-3.7.0.0.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f	virtualx	73cfc129b4b9ba23aed1abb10c825d86
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f	virtualx	73cfc129b4b9ba23aed1abb10c825d86
 _md5_=9e23e1602747934da3e725f9b706b712

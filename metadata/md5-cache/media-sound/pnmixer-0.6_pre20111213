@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst postrm preinst prepare
-DEPEND=media-libs/alsa-lib x11-libs/gtk+:2 x11-libs/libX11 libnotify? ( x11-libs/libnotify ) sys-devel/gettext virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
+DEPEND=media-libs/alsa-lib x11-libs/gtk+:2 x11-libs/libX11 libnotify? ( x11-libs/libnotify ) sys-devel/gettext virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
 DESCRIPTION=Alsa volume mixer for the system tray
 EAPI=5
 HOMEPAGE=https://github.com/nicklan/pnmixer
@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=media-libs/alsa-lib x11-libs/gtk+:2 x11-libs/libX11 libnotify? ( x11-libs/libnotify )
 SLOT=0
 SRC_URI=http://dev.gentoo.org/~hasufell/distfiles/pnmixer-0.6_pre20111213.tar.xz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=91da2862cb0f475b06efa39e026857db

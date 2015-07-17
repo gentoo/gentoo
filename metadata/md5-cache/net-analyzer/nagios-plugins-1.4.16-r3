@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst prepare setup
-DEPEND=ldap? ( >=net-nds/openldap-2.0.25 ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql ) ssl? ( !gnutls? ( >=dev-libs/openssl-0.9.6g ) gnutls? ( net-libs/gnutls ) ) radius? ( >=net-dialup/radiusclient-0.3.2 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=ldap? ( >=net-nds/openldap-2.0.25 ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql ) ssl? ( !gnutls? ( >=dev-libs/openssl-0.9.6g ) gnutls? ( net-libs/gnutls ) ) radius? ( >=net-dialup/radiusclient-0.3.2 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Nagios 1.4.16 plugins - Pack of plugins to make Nagios work properly
 EAPI=4
 HOMEPAGE=http://www.nagios.org/
@@ -11,5 +11,5 @@ REQUIRED_USE=smart? ( sudo )
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/nagiosplug/nagios-plugins-1.4.16.tar.gz http://dev.gentoo.org/~flameeyes/nagios-plugins/nagios-plugins-1.4.16-patches-2.tar.xz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
 _md5_=ecb10e5fd787ac57ee4df6f77a1001f4

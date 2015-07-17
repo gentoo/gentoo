@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=>=sys-libs/ncurses-5.1 >=sys-libs/readline-5.1 dev-libs/expat sys-libs/zlib convert-mozilla-cookies? ( dev-perl/DBI ) idn? ( net-dns/libidn ) socks5? ( >=net-proxy/dante-1.1.12 virtual/pam ) ssl? ( gnutls? ( >=net-libs/gnutls-1.2.3 ) openssl? ( >=dev-libs/openssl-0.9.6 ) ) verify-file? ( dev-perl/string-crc32 virtual/perl-Digest-MD5 ) =sys-devel/libtool-2* app-arch/xz-utils nls? ( sys-devel/gettext ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=sys-libs/ncurses-5.1 >=sys-libs/readline-5.1 dev-libs/expat sys-libs/zlib convert-mozilla-cookies? ( dev-perl/DBI ) idn? ( net-dns/libidn ) socks5? ( >=net-proxy/dante-1.1.12 virtual/pam ) ssl? ( gnutls? ( >=net-libs/gnutls-1.2.3 ) openssl? ( >=dev-libs/openssl-0.9.6 ) ) verify-file? ( dev-perl/string-crc32 virtual/perl-Digest-MD5 ) =sys-devel/libtool-2* app-arch/xz-utils nls? ( sys-devel/gettext ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A sophisticated ftp/sftp/http/https/torrent client and file transfer program
 EAPI=5
 HOMEPAGE=http://lftp.yar.ru/
@@ -10,5 +10,5 @@ RDEPEND=>=sys-libs/ncurses-5.1 >=sys-libs/readline-5.1 dev-libs/expat sys-libs/z
 REQUIRED_USE=ssl? ( ^^ ( openssl gnutls ) )
 SLOT=0
 SRC_URI=http://lftp.yar.ru/ftp/lftp-4.6.2.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=9195387d1fe1a09d14bdb490b92d3e7f

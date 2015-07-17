@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst prepare setup
-DEPEND=mysql? ( virtual/mysql ) dev-libs/expat id3tag? ( media-libs/id3lib ) javascript? ( >=dev-lang/spidermonkey-1.8.5:0 ) taglib? ( media-libs/taglib ) sqlite? ( >=dev-db/sqlite-3 ) lastfm? ( >=media-libs/lastfmlib-0.4 ) exif? ( media-libs/libexif ) libextractor? ( media-libs/libextractor ) mp4? ( >=media-libs/libmp4v2-1.9.1_p479:0 ) ffmpeg? ( virtual/ffmpeg ) flac? ( media-libs/flac ) thumbnail? ( media-video/ffmpegthumbnailer[jpeg] ) curl? ( net-misc/curl net-misc/youtube-dl ) magic? ( sys-apps/file ) sys-apps/util-linux zlib? ( sys-libs/zlib ) virtual/libiconv !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=mysql? ( virtual/mysql ) dev-libs/expat id3tag? ( media-libs/id3lib ) javascript? ( >=dev-lang/spidermonkey-1.8.5:0 ) taglib? ( media-libs/taglib ) sqlite? ( >=dev-db/sqlite-3 ) lastfm? ( >=media-libs/lastfmlib-0.4 ) exif? ( media-libs/libexif ) libextractor? ( media-libs/libextractor ) mp4? ( >=media-libs/libmp4v2-1.9.1_p479:0 ) ffmpeg? ( virtual/ffmpeg ) flac? ( media-libs/flac ) thumbnail? ( media-video/ffmpegthumbnailer[jpeg] ) curl? ( net-misc/curl net-misc/youtube-dl ) magic? ( sys-apps/file ) sys-apps/util-linux zlib? ( sys-libs/zlib ) virtual/libiconv !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=MediaTomb is an open source UPnP MediaServer
 EAPI=5
 HOMEPAGE=http://www.mediatomb.cc/
@@ -10,5 +10,5 @@ RDEPEND=mysql? ( virtual/mysql ) dev-libs/expat id3tag? ( media-libs/id3lib ) ja
 REQUIRED_USE=|| ( mysql sqlite ) taglib? ( !id3tag ) id3tag? ( !taglib ) thumbnail? ( ffmpeg !libextractor ) ffmpeg? ( !libextractor ) libextractor? ( !ffmpeg !thumbnail )
 SLOT=0
 SRC_URI=mirror://sourceforge/mediatomb/mediatomb-0.12.1.tar.gz mirror://debian/pool/main/m/mediatomb/mediatomb_0.12.1-4.debian.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=6651a2ea23a86285f7e0addd5492737a

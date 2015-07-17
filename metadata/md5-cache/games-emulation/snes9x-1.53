@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
-DEPEND=x11-libs/libX11 x11-libs/libXext png? ( >=media-libs/libpng-1.2.43:0 ) gtk? ( >=x11-libs/gtk+-2.10:2 x11-misc/xdg-utils portaudio? ( >=media-libs/portaudio-19_pre ) joystick? ( >=media-libs/libsdl-1.2.12[joystick] ) opengl? ( virtual/opengl ) xv? ( x11-libs/libXv ) xrandr? ( x11-libs/libXrandr ) alsa? ( media-libs/alsa-lib ) pulseaudio? ( media-sound/pulseaudio ) ) x11-proto/xproto gtk? ( virtual/pkgconfig xv? ( x11-proto/videoproto ) ) nls? ( dev-util/intltool ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
+DEPEND=x11-libs/libX11 x11-libs/libXext png? ( >=media-libs/libpng-1.2.43:0 ) gtk? ( >=x11-libs/gtk+-2.10:2 x11-misc/xdg-utils portaudio? ( >=media-libs/portaudio-19_pre ) joystick? ( >=media-libs/libsdl-1.2.12[joystick] ) opengl? ( virtual/opengl ) xv? ( x11-libs/libXv ) xrandr? ( x11-libs/libXrandr ) alsa? ( media-libs/alsa-lib ) pulseaudio? ( media-sound/pulseaudio ) ) x11-proto/xproto gtk? ( virtual/pkgconfig xv? ( x11-proto/videoproto ) ) nls? ( dev-util/intltool ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
 DESCRIPTION=Super Nintendo Entertainment System (SNES) emulator
 EAPI=5
 HOMEPAGE=http://code.google.com/p/snes9x-gtk/
@@ -10,5 +10,5 @@ RDEPEND=x11-libs/libX11 x11-libs/libXext png? ( >=media-libs/libpng-1.2.43:0 ) g
 RESTRICT=bindist
 SLOT=0
 SRC_URI=http://snes9x-gtk.googlecode.com/files/snes9x-1.53-src.tar.bz2
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	games	1ad3205dbf62a2c98249f2f59b0a2d39	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	games	1ad3205dbf62a2c98249f2f59b0a2d39	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
 _md5_=c355c34e3b7672a36240410b9bac620d

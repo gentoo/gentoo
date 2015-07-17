@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install prepare unpack
-DEPEND=dev-lisp/common-lisp-controller virtual/commonlisp dev-lisp/cl-ppcre doc? ( virtual/texi2dvi ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-vcs/git
+DEPEND=dev-lisp/common-lisp-controller virtual/commonlisp dev-lisp/cl-ppcre doc? ( virtual/texi2dvi ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-vcs/git
 DESCRIPTION=Stumpwm is a tiling, keyboard driven X11 Window Manager written entirely in Common Lisp.
 EAPI=5
 HOMEPAGE=http://www.nongnu.org/stumpwm/index.html
@@ -9,5 +9,5 @@ PDEPEND=virtual/commonlisp
 RDEPEND=dev-lisp/common-lisp-controller virtual/commonlisp dev-lisp/cl-ppcre doc? ( virtual/texi2dvi ) emacs? ( app-emacs/slime ) !clisp? ( !sbcl? ( !amd64? ( dev-lisp/cmucl ) ) ) clisp? ( >=dev-lisp/clisp-2.38-r2[X,-new-clx] ) sbcl? ( >=dev-lisp/sbcl-1.1.15 dev-lisp/clx )
 RESTRICT=mirror
 SLOT=0
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	common-lisp-3	b69798cfa8d750d59a6fbb5f22a3fd67	eutils	9fb270e417e0e83d64ca52586c4a79de	git-2	e28f0d8a9b321431b1e699782851b827	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	common-lisp-3	b69798cfa8d750d59a6fbb5f22a3fd67	eutils	9fb270e417e0e83d64ca52586c4a79de	git-2	e28f0d8a9b321431b1e699782851b827	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=b1c7aac93573a2fdbd19cf3efdba0803

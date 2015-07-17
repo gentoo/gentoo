@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare setup
-DEPEND=dev-cpp/glog dev-cpp/sparsehash dev-libs/cityhash dev-libs/libpo6 dev-libs/libe dev-libs/busybee dev-libs/popt dev-libs/replicant dev-libs/libmacaroons dev-libs/libtreadstone dev-libs/json-c !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-cpp/glog dev-cpp/sparsehash dev-libs/cityhash dev-libs/libpo6 dev-libs/libe dev-libs/busybee dev-libs/popt dev-libs/replicant dev-libs/libmacaroons dev-libs/libtreadstone dev-libs/json-c !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A searchable distributed Key-Value Store
 EAPI=5
 HOMEPAGE=http://hyperdex.org
@@ -11,5 +11,5 @@ REQUIRED_USE=test? ( python )
 RESTRICT=test
 SLOT=0
 SRC_URI=http://hyperdex.org/src/hyperdex-1.6.0.tar.gz http://dev.gentooexperimental.org/~patrick/autotools-java.tar
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	351da1aa73960a282591217fb57c1bb8	python-utils-r1	ae9becb5d45344c01939c3f57df0d3fd	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	351da1aa73960a282591217fb57c1bb8	python-utils-r1	ae9becb5d45344c01939c3f57df0d3fd	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=4c9472267b8e0c75ba8a89a5d9726eb0

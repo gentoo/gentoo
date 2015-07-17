@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst prepare
-DEPEND=media-gfx/iscan-data media-gfx/sane-backends virtual/udev virtual/libusb:0 X? ( x11-libs/gtk+:2 gimp? ( media-gfx/gimp ) png? ( media-libs/libpng ) jpeg? ( virtual/jpeg ) tiff? ( media-libs/tiff ) ) virtual/pkgconfig X? ( sys-devel/gettext ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=media-gfx/iscan-data media-gfx/sane-backends virtual/udev virtual/libusb:0 X? ( x11-libs/gtk+:2 gimp? ( media-gfx/gimp ) png? ( media-libs/libpng ) jpeg? ( virtual/jpeg ) tiff? ( media-libs/tiff ) ) virtual/pkgconfig X? ( sys-devel/gettext ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=EPSON Image Scan! for Linux (including sane-epkowa backend)
 EAPI=2
 HOMEPAGE=http://www.avasys.jp/english/linux_e/dl_scan.html
@@ -10,5 +10,5 @@ RDEPEND=media-gfx/iscan-data media-gfx/sane-backends virtual/udev virtual/libusb
 RESTRICT=test
 SLOT=0
 SRC_URI=http://linux.avasys.jp/drivers/iscan/2.26.2/iscan_2.26.2-1.tar.gz doc? ( http://linux.avasys.jp/drivers/iscan/doc/userg_revL_e.pdf )
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=88e28a197c811da10846922417f6443b

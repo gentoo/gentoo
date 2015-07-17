@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare unpack
-DEPEND=virtual/pkgconfig sys-libs/ncurses dev-libs/glib:2 regex? ( >=dev-libs/boost-1.36 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-vcs/git
+DEPEND=virtual/pkgconfig sys-libs/ncurses dev-libs/glib:2 regex? ( >=dev-libs/boost-1.36 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-vcs/git
 DESCRIPTION=Practical Music Search: an open source ncurses client for mpd, written in C++
 EAPI=2
 HOMEPAGE=http://pms.sourceforge.net/
@@ -7,5 +7,5 @@ IUSE=regex
 LICENSE=GPL-3
 RDEPEND=sys-libs/ncurses dev-libs/glib:2 regex? ( >=dev-libs/boost-1.36 )
 SLOT=0
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	git-2	e28f0d8a9b321431b1e699782851b827	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	git-2	e28f0d8a9b321431b1e699782851b827	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=6da9fef5a02affed57d49ed520b996ac

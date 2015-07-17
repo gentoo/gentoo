@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst prepare
-DEPEND=>=sys-libs/pam-0.78-r3 >=sys-auth/skey-1.1.5-r4 app-arch/xz-utils !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=sys-libs/pam-0.78-r3 >=sys-auth/skey-1.1.5-r4 app-arch/xz-utils !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=PAM interface for the S/Key authentication system
 EAPI=5
 HOMEPAGE=http://freshmeat.net/projects/pam_skey/
@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=sys-libs/pam-0.78-r3 >=sys-auth/skey-1.1.5-r4
 SLOT=0
 SRC_URI=http://dkorunic.net/tarballs/pam_skey-1.1.5.tar.gz mirror://gentoo/pam_skey-1.1.5-patches-6.tar.xz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	pam	aa1ebb3ab720ea04dbbdd6eaaf9554ed	readme.gentoo	106edea5533517715013de909a333abd	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	pam	aa1ebb3ab720ea04dbbdd6eaaf9554ed	readme.gentoo	106edea5533517715013de909a333abd	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=71efba8f7e79ac839e328ec4e2bf12aa

@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare test
-DEPEND=!<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=!<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Yet Another CRF toolkit for segmenting/labelling sequential data
 EAPI=3
 HOMEPAGE=http://crfpp.googlecode.com/svn/trunk/doc/index.html
@@ -8,5 +8,5 @@ KEYWORDS=~amd64 ~x86 ~x86-fbsd
 LICENSE=|| ( BSD LGPL-2.1 )
 SLOT=0
 SRC_URI=http://crfpp.googlecode.com/files/CRF++-0.58.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=d0c0035e998f765f3a43b0c6ad5676f6

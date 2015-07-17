@@ -1,6 +1,9 @@
 # ChangeLog for sys-devel/automake
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/automake/ChangeLog,v 1.222 2015/07/16 20:32:47 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/automake/ChangeLog,v 1.223 2015/07/17 09:36:17 vapier Exp $
+
+  17 Jul 2015; Mike Frysinger <vapier@gentoo.org> automake-1.15.ebuild:
+  Mark stable for all #553738.
 
   16 Jul 2015; Tobias Klausmann <klausman@gentoo.org> automake-1.15.ebuild:
   Stable on alpha, bug 553738

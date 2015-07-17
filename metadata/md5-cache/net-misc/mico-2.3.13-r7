@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=gtk? ( x11-libs/gtk+:2 ) postgres? ( dev-db/postgresql ) qt4? ( dev-qt/qtgui:4[qt3support] ) ssl? ( dev-libs/openssl ) tcl? ( dev-lang/tcl:0 ) X? ( x11-libs/libXt ) >=sys-devel/flex-2.5.2 >=sys-devel/bison-1.22 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=gtk? ( x11-libs/gtk+:2 ) postgres? ( dev-db/postgresql ) qt4? ( dev-qt/qtgui:4[qt3support] ) ssl? ( dev-libs/openssl ) tcl? ( dev-lang/tcl:0 ) X? ( x11-libs/libXt ) >=sys-devel/flex-2.5.2 >=sys-devel/bison-1.22 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A freely available and fully compliant implementation of the CORBA standard
 EAPI=3
 HOMEPAGE=http://www.mico.org/
@@ -10,5 +10,5 @@ RDEPEND=gtk? ( x11-libs/gtk+:2 ) postgres? ( dev-db/postgresql ) qt4? ( dev-qt/q
 RESTRICT=test
 SLOT=0
 SRC_URI=http://www.mico.org/mico-2.3.13.tar.gz http://dev.gentoo.org/~haubi/distfiles/mico-2.3.13-gentoo-patches-0.3.tar.bz2
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=f4fed2b8ce4af1d1b201924949087630

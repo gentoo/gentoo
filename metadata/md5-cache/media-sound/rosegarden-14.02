@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure postinst postrm preinst prepare
-DEPEND=dev-qt/qtgui:4 media-libs/ladspa-sdk:= x11-libs/libSM:= media-sound/jack-audio-connection-kit:= media-libs/alsa-lib:= >=media-libs/dssi-1.0.0:= media-libs/liblo:= media-libs/liblrdf:= sci-libs/fftw:3.0 media-libs/libsamplerate:=[sndfile] lirc? ( app-misc/lirc:= ) virtual/pkgconfig x11-misc/makedepend !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
+DEPEND=dev-qt/qtgui:4 media-libs/ladspa-sdk:= x11-libs/libSM:= media-sound/jack-audio-connection-kit:= media-libs/alsa-lib:= >=media-libs/dssi-1.0.0:= media-libs/liblo:= media-libs/liblrdf:= sci-libs/fftw:3.0 media-libs/libsamplerate:=[sndfile] lirc? ( app-misc/lirc:= ) virtual/pkgconfig x11-misc/makedepend !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
 DESCRIPTION=MIDI and audio sequencer and notation editor
 EAPI=5
 HOMEPAGE=http://www.rosegardenmusic.com/
@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-qt/qtgui:4 media-libs/ladspa-sdk:= x11-libs/libSM:= media-sound/jack-audio-connection-kit:= media-libs/alsa-lib:= >=media-libs/dssi-1.0.0:= media-libs/liblo:= media-libs/liblrdf:= sci-libs/fftw:3.0 media-libs/libsamplerate:=[sndfile] lirc? ( app-misc/lirc:= )
 SLOT=0
 SRC_URI=mirror://sourceforge/rosegarden/rosegarden-14.02.tar.bz2
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=957e56edc1eaccaa8272d671429e339a

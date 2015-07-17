@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare
-DEPEND=|| ( >=sys-libs/db-4.8.30:4.8 sys-libs/db:4.7 sys-libs/db:4.6 sys-libs/db:4.5 sys-libs/db:4.4 sys-libs/db:4.3 sys-libs/db:4.2 ) >=sys-libs/ncurses-5.6-r2 perl? ( dev-lang/perl ) tcl? ( !unicode? ( >=dev-lang/tcl-8.5:0 ) ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=|| ( >=sys-libs/db-4.8.30:4.8 sys-libs/db:4.7 sys-libs/db:4.6 sys-libs/db:4.5 sys-libs/db:4.4 sys-libs/db:4.3 sys-libs/db:4.2 ) >=sys-libs/ncurses-5.6-r2 perl? ( dev-lang/perl ) tcl? ( !unicode? ( >=dev-lang/tcl-8.5:0 ) ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Vi clone
 EAPI=4
 HOMEPAGE=https://sites.google.com/a/bostic.com/keithbostic/vi
@@ -10,5 +10,5 @@ RDEPEND=|| ( >=sys-libs/db-4.8.30:4.8 sys-libs/db:4.7 sys-libs/db:4.6 sys-libs/d
 REQUIRED_USE=tcl? ( !unicode )
 SLOT=0
 SRC_URI=http://garage.linux.student.kuleuven.be/~skimo/nvi/devel/nvi-1.81.6.tar.bz2
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	db-use	82d0e62839f20e1e0d5a2259abd5316f	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	db-use	82d0e62839f20e1e0d5a2259abd5316f	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=f9a36f01eb927636951fd758ec73f752

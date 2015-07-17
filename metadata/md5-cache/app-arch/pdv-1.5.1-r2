@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=X? ( >=x11-libs/motif-2.3:0 >=x11-libs/libX11-1.0.0 >=x11-libs/libXt-1.0.0 >=x11-libs/libXext-1.0.0 >=x11-libs/libXp-1.0.0 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=X? ( >=x11-libs/motif-2.3:0 >=x11-libs/libX11-1.0.0 >=x11-libs/libXt-1.0.0 >=x11-libs/libXext-1.0.0 >=x11-libs/libXp-1.0.0 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=build a self-extracting and self-installing binary package
 EAPI=4
 HOMEPAGE=http://sourceforge.net/projects/pdv
@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=X? ( >=x11-libs/motif-2.3:0 >=x11-libs/libX11-1.0.0 >=x11-libs/libXt-1.0.0 >=x11-libs/libXext-1.0.0 >=x11-libs/libXp-1.0.0 )
 SLOT=0
 SRC_URI=mirror://sourceforge/pdv/pdv-1.5.1.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=91c5ba784a8e35df545e525cfec4ff56

@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare test
-DEPEND=berkdb? ( sys-libs/db ) gdbm? ( sys-libs/gdbm ) ssl? ( dev-libs/openssl:0 ) socks5? ( >=net-proxy/dante-1.1.13 ) ncurses? ( sys-libs/ncurses ) readline? ( sys-libs/readline ) yaml? ( dev-libs/libyaml ) virtual/libffi sys-libs/zlib >=app-eselect/eselect-ruby-20100402 !<dev-ruby/rdoc-3.9.4 !<dev-ruby/rubygems-1.8.10-r1 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=berkdb? ( sys-libs/db ) gdbm? ( sys-libs/gdbm ) ssl? ( dev-libs/openssl:0 ) socks5? ( >=net-proxy/dante-1.1.13 ) ncurses? ( sys-libs/ncurses ) readline? ( sys-libs/readline ) yaml? ( dev-libs/libyaml ) virtual/libffi sys-libs/zlib >=app-eselect/eselect-ruby-20100402 !<dev-ruby/rdoc-3.9.4 !<dev-ruby/rubygems-1.8.10-r1 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=An object-oriented scripting language
 EAPI=4
 HOMEPAGE=http://www.ruby-lang.org/
@@ -10,5 +10,5 @@ PDEPEND=virtual/rubygems[ruby_targets_ruby19] rdoc? ( >=dev-ruby/rdoc-3.9.4[ruby
 RDEPEND=berkdb? ( sys-libs/db ) gdbm? ( sys-libs/gdbm ) ssl? ( dev-libs/openssl:0 ) socks5? ( >=net-proxy/dante-1.1.13 ) ncurses? ( sys-libs/ncurses ) readline? ( sys-libs/readline ) yaml? ( dev-libs/libyaml ) virtual/libffi sys-libs/zlib >=app-eselect/eselect-ruby-20100402 !<dev-ruby/rdoc-3.9.4 !<dev-ruby/rubygems-1.8.10-r1
 SLOT=1.9
 SRC_URI=mirror://ruby/1.9/ruby-1.9.3-p551.tar.bz2 http://dev.gentoo.org/~flameeyes/ruby-team/ruby-patches-1.9.3_p551-r1.tar.bz2
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=afe05260f434cc112ba8b274749763b1

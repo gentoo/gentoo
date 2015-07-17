@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
-DEPEND=>=dev-libs/glib-2.16:2 >=gnome-extra/libgsf-1.14.9 >=dev-libs/libxml2-2.4.12:2 >=x11-libs/pango-1.8.1 >=x11-libs/cairo-1.2[svg] x11-libs/libXext x11-libs/libXrender >=x11-libs/gtk+-2.16:2 gnome? ( >=gnome-base/gconf-2:2 ) virtual/pkgconfig >=dev-util/intltool-0.35 doc? ( >=dev-util/gtk-doc-1.11 ) dev-util/gtk-doc-am gnome-base/gnome-common !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 app-arch/xz-utils >=sys-apps/sed-4
+DEPEND=>=dev-libs/glib-2.16:2 >=gnome-extra/libgsf-1.14.9 >=dev-libs/libxml2-2.4.12:2 >=x11-libs/pango-1.8.1 >=x11-libs/cairo-1.2[svg] x11-libs/libXext x11-libs/libXrender >=x11-libs/gtk+-2.16:2 gnome? ( >=gnome-base/gconf-2:2 ) virtual/pkgconfig >=dev-util/intltool-0.35 doc? ( >=dev-util/gtk-doc-1.11 ) dev-util/gtk-doc-am gnome-base/gnome-common !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 app-arch/xz-utils >=sys-apps/sed-4
 DESCRIPTION=A library of document-centric objects and utilities
 EAPI=4
 HOMEPAGE=http://git.gnome.org/browse/goffice/
@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.16:2 >=gnome-extra/libgsf-1.14.9 >=dev-libs/libxml2-2.4.12:2 >=x11-libs/pango-1.8.1 >=x11-libs/cairo-1.2[svg] x11-libs/libXext x11-libs/libXrender >=x11-libs/gtk+-2.16:2 gnome? ( >=gnome-base/gconf-2:2 )
 SLOT=0.8
 SRC_URI=mirror://gnome/sources/goffice/0.8/goffice-0.8.17.tar.xz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	flag-o-matic	c9602887773166fe300444712fc7ff98	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	45882dc8beda2ffd09ad51fb3f22b669	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	flag-o-matic	c9602887773166fe300444712fc7ff98	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	45882dc8beda2ffd09ad51fb3f22b669	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=74f50bfb60d93665308235ec49e5bfca

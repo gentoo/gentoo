@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=>=app-i18n/scim-1.2[gtk3=] >=app-i18n/anthy-5900 nls? ( virtual/libintl ) gtk3? ( x11-libs/gtk+:3 ) nls? ( sys-devel/gettext ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=app-i18n/scim-1.2[gtk3=] >=app-i18n/anthy-5900 nls? ( virtual/libintl ) gtk3? ( x11-libs/gtk+:3 ) nls? ( sys-devel/gettext ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Japanese input method Anthy IMEngine for SCIM
 EAPI=5
 HOMEPAGE=http://scim-imengine.sourceforge.jp/index.cgi?cmd=view;name=SCIMAnthy
@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=app-i18n/scim-1.2[gtk3=] >=app-i18n/anthy-5900 nls? ( virtual/libintl ) gtk3? ( x11-libs/gtk+:3 ) kasumi? ( app-dicts/kasumi )
 SLOT=0
 SRC_URI=mirror://sourceforge.jp/scim-imengine/37309/scim-anthy-1.2.7.tar.gz gtk3? ( http://dev.gentoo.org/~heroxbd/scim-anthy-1.2.7-patches.tar.xz )
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=f50df0e5cd5a670faa2327cd924711fd

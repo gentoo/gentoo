@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=dev-libs/glib:2 dev-libs/openssl:0 net-misc/curl fuse? ( sys-fs/fuse ) virtual/pkgconfig app-text/asciidoc !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-libs/glib:2 dev-libs/openssl:0 net-misc/curl fuse? ( sys-fs/fuse ) virtual/pkgconfig app-text/asciidoc !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Command line tools and C library for accessing Mega cloud storage
 EAPI=5
 HOMEPAGE=https://github.com/megous/megatools
@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/glib:2 dev-libs/openssl:0 net-misc/curl fuse? ( sys-fs/fuse ) net-libs/glib-networking[ssl]
 SLOT=0
 SRC_URI=https://github.com/megous/megatools/archive/1.9.94.tar.gz -> megatools-1.9.94.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=db7583b55515682afa0cefbe923371b0

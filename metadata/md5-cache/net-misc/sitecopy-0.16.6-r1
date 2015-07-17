@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare
-DEPEND=rsh? ( net-misc/netkit-rsh ) >=net-libs/neon-0.24.6[zlib?,ssl?,expat?] <=net-libs/neon-0.30.9999[zlib?,ssl?,expat?] xml? ( >=net-libs/neon-0.24.6[-expat] ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=rsh? ( net-misc/netkit-rsh ) >=net-libs/neon-0.24.6[zlib?,ssl?,expat?] <=net-libs/neon-0.30.9999[zlib?,ssl?,expat?] xml? ( >=net-libs/neon-0.24.6[-expat] ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Maintain remote web sites with ease
 EAPI=5
 HOMEPAGE=http://www.manyfish.co.uk/sitecopy/
@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=rsh? ( net-misc/netkit-rsh ) >=net-libs/neon-0.24.6[zlib?,ssl?,expat?] <=net-libs/neon-0.30.9999[zlib?,ssl?,expat?] xml? ( >=net-libs/neon-0.24.6[-expat] )
 SLOT=0
 SRC_URI=http://www.manyfish.co.uk/sitecopy/sitecopy-0.16.6.tar.gz http://dev.gentoo.org/~idella4/sitecopy-0.16.6-04-manpages-addition-fixes.patch
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=60ed6f838da3323685c2a029f942c810

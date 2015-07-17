@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst prepare
-DEPEND=app-text/ghostscript-gpl dev-lang/perl readline? ( sys-libs/readline ) cups? ( >=net-print/cups-1.1.14 ) foomaticdb? ( net-print/foomatic-db-engine ) gimp? ( >=media-gfx/gimp-2.2 x11-libs/gtk+:2 ) gtk? ( x11-libs/gtk+:2 ) nls? ( virtual/libintl ) gtk? ( virtual/pkgconfig ) nls? ( sys-devel/gettext ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=app-text/ghostscript-gpl dev-lang/perl readline? ( sys-libs/readline ) cups? ( >=net-print/cups-1.1.14 ) foomaticdb? ( net-print/foomatic-db-engine ) gimp? ( >=media-gfx/gimp-2.2 x11-libs/gtk+:2 ) gtk? ( x11-libs/gtk+:2 ) nls? ( virtual/libintl ) gtk? ( virtual/pkgconfig ) nls? ( sys-devel/gettext ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Ghostscript and cups printer drivers
 EAPI=5
 HOMEPAGE=http://gutenprint.sourceforge.net
@@ -11,5 +11,5 @@ REQUIRED_USE=gimp? ( gtk )
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/gimp-print/gutenprint-5.2.10.tar.bz2
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=85b9a052c0c8869f9f4a11234a53cde8

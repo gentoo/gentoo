@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test unpack
-DEPEND==dev-libs/xapian-1.3.2* lua? ( dev-lang/lua:= ) mono? ( >=dev-lang/mono-1.0.8 ) perl? ( dev-lang/perl:= ) ruby? ( dev-lang/ruby:= ) tcl? ( >=dev-lang/tcl-8.1:0= ) java? ( >=virtual/jdk-1.3 ) java? ( >=dev-java/java-config-2.2.0 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-devel/m4-1.4.3 >=sys-devel/libtool-1.5.18 php? ( php_targets_php5-4? ( dev-lang/php:5.4 ) ) python? ( =dev-lang/python-2* ) =dev-lang/python-2*[threads]
+DEPEND==dev-libs/xapian-1.3.2* lua? ( dev-lang/lua:= ) mono? ( >=dev-lang/mono-1.0.8 ) perl? ( dev-lang/perl:= ) ruby? ( dev-lang/ruby:= ) tcl? ( >=dev-lang/tcl-8.1:0= ) java? ( >=virtual/jdk-1.3 ) java? ( >=dev-java/java-config-2.2.0 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-devel/m4-1.4.3 >=sys-devel/libtool-1.5.18 php? ( php_targets_php5-4? ( dev-lang/php:5.4 ) ) python? ( =dev-lang/python-2* ) =dev-lang/python-2*[threads]
 DESCRIPTION=SWIG and JNI bindings for Xapian
 EAPI=5
 HOMEPAGE=http://www.xapian.org/
@@ -10,5 +10,5 @@ RDEPEND==dev-libs/xapian-1.3.2* lua? ( dev-lang/lua:= ) mono? ( >=dev-lang/mono-
 REQUIRED_USE=|| ( java lua mono perl php python ruby tcl ) php? ( || ( php_targets_php5-4 ) )
 SLOT=0
 SRC_URI=http://oligarchy.co.uk/xapian/1.3.2/xapian-bindings-1.3.2.tar.xz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	java-pkg-opt-2	f9bbbe5092225a2059aa9e6a3a2b52f1	java-utils-2	8cdf065211fa6d6687bdc3f3ebe12efc	libtool	52d0e17251d04645ffaa61bfdd858944	mono-env	59ca1177366cc9e14521d3501e9bb281	multilib	62927b3db3a589b0806255f3a002d5d3	php-ext-source-r2	b4d5827d04ab9f22f094e1ecab1df639	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	java-pkg-opt-2	f9bbbe5092225a2059aa9e6a3a2b52f1	java-utils-2	8cdf065211fa6d6687bdc3f3ebe12efc	libtool	52d0e17251d04645ffaa61bfdd858944	mono-env	59ca1177366cc9e14521d3501e9bb281	multilib	62927b3db3a589b0806255f3a002d5d3	php-ext-source-r2	b4d5827d04ab9f22f094e1ecab1df639	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=dab2da8c9afcae122025ee507978101e

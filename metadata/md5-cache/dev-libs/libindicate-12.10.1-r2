@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=>=dev-libs/dbus-glib-0.100 >=dev-libs/glib-2.30 >=dev-libs/libdbusmenu-0.6.2[introspection?] dev-libs/libxml2 gtk? ( dev-libs/libdbusmenu[gtk3] >=x11-libs/gtk+-3.2:3 ) introspection? ( >=dev-libs/gobject-introspection-1 ) !<dev-libs/libindicate-0.6.1-r201 dev-util/gtk-doc-am gnome-base/gnome-common || ( dev-lang/vala:0.28[vapigen(+)] dev-lang/vala:0.26[vapigen(+)] dev-lang/vala:0.24[vapigen(+)] dev-lang/vala:0.22[vapigen(+)] dev-lang/vala:0.20[vapigen(+)] ) app-text/gnome-doc-utils virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=dev-libs/dbus-glib-0.100 >=dev-libs/glib-2.30 >=dev-libs/libdbusmenu-0.6.2[introspection?] dev-libs/libxml2 gtk? ( dev-libs/libdbusmenu[gtk3] >=x11-libs/gtk+-3.2:3 ) introspection? ( >=dev-libs/gobject-introspection-1 ) !<dev-libs/libindicate-0.6.1-r201 dev-util/gtk-doc-am gnome-base/gnome-common || ( dev-lang/vala:0.28[vapigen(+)] dev-lang/vala:0.26[vapigen(+)] dev-lang/vala:0.24[vapigen(+)] dev-lang/vala:0.22[vapigen(+)] dev-lang/vala:0.20[vapigen(+)] ) app-text/gnome-doc-utils virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A library to raise flags on DBus for other components of the desktop to pick up and visualize
 EAPI=5
 HOMEPAGE=http://launchpad.net/libindicate
@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/dbus-glib-0.100 >=dev-libs/glib-2.30 >=dev-libs/libdbusmenu-0
 RESTRICT=test
 SLOT=3
 SRC_URI=http://launchpad.net/libindicate/12.10/12.10.1/+download/libindicate-12.10.1.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	vala	09bc7da1a93142c9eb90786e6f6b39d2
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	vala	09bc7da1a93142c9eb90786e6f6b39d2
 _md5_=25467cb9b35c48740f72d2f671afe5d5

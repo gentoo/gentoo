@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=>=sci-libs/fftw-3.0.1 audacious? ( <media-sound/audacious-2.5 media-libs/libsndfile ) jack? ( media-sound/jack-audio-connection-kit media-libs/libsndfile ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=sci-libs/fftw-3.0.1 audacious? ( <media-sound/audacious-2.5 media-libs/libsndfile ) jack? ( media-sound/jack-audio-connection-kit media-libs/libsndfile ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=High Quality Reverb and Impulse Response Convolution library including XMMS/Audacious Effect plugins
 EAPI=2
 HOMEPAGE=http://freeverb3.sourceforge.net/
@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=sci-libs/fftw-3.0.1 audacious? ( <media-sound/audacious-2.5 media-libs/libsndfile ) jack? ( media-sound/jack-audio-connection-kit media-libs/libsndfile )
 SLOT=0
 SRC_URI=mirror://sourceforge/freeverb3/freeverb3-2.5.13.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=7f7bde1618de71f641582c1412ddffc8

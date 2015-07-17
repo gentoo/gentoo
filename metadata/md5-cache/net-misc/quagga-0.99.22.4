@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst prepare setup test
-DEPEND=caps? ( sys-libs/libcap ) snmp? ( net-analyzer/net-snmp ) readline? ( sys-libs/readline pam? ( sys-libs/pam ) ) !elibc_glibc? ( dev-libs/libpcre ) app-arch/xz-utils >=sys-devel/libtool-2.2.4 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=caps? ( sys-libs/libcap ) snmp? ( net-analyzer/net-snmp ) readline? ( sys-libs/readline pam? ( sys-libs/pam ) ) !elibc_glibc? ( dev-libs/libpcre ) app-arch/xz-utils >=sys-devel/libtool-2.2.4 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A free routing daemon replacing Zebra supporting RIP, OSPF and BGP
 EAPI=5
 HOMEPAGE=http://quagga.net/
@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=caps? ( sys-libs/libcap ) snmp? ( net-analyzer/net-snmp ) readline? ( sys-libs/readline pam? ( sys-libs/pam ) ) !elibc_glibc? ( dev-libs/libpcre ) sys-apps/openrc sys-apps/iproute2
 SLOT=0
 SRC_URI=mirror://nongnu/quagga/quagga-0.99.22.4.tar.xz bgpclassless? ( http://hasso.linux.ee/stuff/patches/quagga/ht-20040304-classless-bgp.patch )
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	pam	aa1ebb3ab720ea04dbbdd6eaaf9554ed	readme.gentoo	106edea5533517715013de909a333abd	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	pam	aa1ebb3ab720ea04dbbdd6eaaf9554ed	readme.gentoo	106edea5533517715013de909a333abd	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
 _md5_=8b63431e4056a687b75a9eeaac03fd90

@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
-DEPEND=app-text/ghostscript-gpl media-fonts/urw-fonts >=media-libs/freetype-2.0.1 >=media-libs/libpng-1.4 sys-libs/zlib x11-libs/gdk-pixbuf:2[X?] virtual/jpeg xml? ( expat? ( dev-libs/expat ) !expat? ( dev-libs/libxml2 ) ) X? ( x11-libs/libX11 ) virtual/pkgconfig X? ( x11-libs/libXt x11-libs/libXpm ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
+DEPEND=app-text/ghostscript-gpl media-fonts/urw-fonts >=media-libs/freetype-2.0.1 >=media-libs/libpng-1.4 sys-libs/zlib x11-libs/gdk-pixbuf:2[X?] virtual/jpeg xml? ( expat? ( dev-libs/expat ) !expat? ( dev-libs/libxml2 ) ) X? ( x11-libs/libX11 ) virtual/pkgconfig X? ( x11-libs/libXt x11-libs/libXpm ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
 DESCRIPTION=library for converting WMF files
 EAPI=5
 HOMEPAGE=http://wvware.sourceforge.net/
@@ -10,5 +10,5 @@ RDEPEND=app-text/ghostscript-gpl media-fonts/urw-fonts >=media-libs/freetype-2.0
 REQUIRED_USE=expat? ( xml )
 SLOT=0
 SRC_URI=mirror://sourceforge/wvware/libwmf-0.2.8.4.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=b1ffa79c5430ac1b15a3c7efb4e4f02a

@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst prepare setup
-DEPEND=avahi? ( net-dns/avahi ) cgi? ( >=media-libs/gd-2[png] ) snmp? ( net-analyzer/net-snmp ) usb? ( virtual/libusb:0 ) ssl? ( >=dev-libs/openssl-1 ) tcpd? ( sys-apps/tcp-wrappers ) xml? ( >=net-libs/neon-0.25.0 ) ipmi? ( sys-libs/freeipmi ) virtual/udev >=sys-apps/sed-4 virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4 virtual/pkgconfig
+DEPEND=avahi? ( net-dns/avahi ) cgi? ( >=media-libs/gd-2[png] ) snmp? ( net-analyzer/net-snmp ) usb? ( virtual/libusb:0 ) ssl? ( >=dev-libs/openssl-1 ) tcpd? ( sys-apps/tcp-wrappers ) xml? ( >=net-libs/neon-0.25.0 ) ipmi? ( sys-libs/freeipmi ) virtual/udev >=sys-apps/sed-4 virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4 virtual/pkgconfig
 DESCRIPTION=Network-UPS Tools
 EAPI=5
 HOMEPAGE=http://www.networkupstools.org/
@@ -10,5 +10,5 @@ RDEPEND=avahi? ( net-dns/avahi ) cgi? ( >=media-libs/gd-2[png] ) snmp? ( net-ana
 REQUIRED_USE=ups_drivers_usbhid-ups? ( usb ) ups_drivers_bcmxcp_usb? ( usb ) ups_drivers_tripplite_usb? ( usb ) ups_drivers_blazer_usb? ( usb ) ups_drivers_richcomm_usb? ( usb ) ups_drivers_riello_usb? ( usb ) ups_drivers_nutdrv_qx? ( usb ) ups_drivers_netxml-ups? ( xml ) ups_drivers_snmp-ups? ( snmp ) ups_drivers_nut-ipmipsu? ( ipmi )
 SLOT=0
 SRC_URI=http://random.networkupstools.org/source/2.7/nut-2.7.2.tar.gz http://www.networkupstools.org/source/2.7/nut-2.7.2.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	bash-completion-r1	c8399c7c7ecbcf7ed6e5bd3abb3d4af3	eutils	9fb270e417e0e83d64ca52586c4a79de	fixheadtails	c6fd1fc49c9dc11924f28a1406f251a0	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	bash-completion-r1	c8399c7c7ecbcf7ed6e5bd3abb3d4af3	eutils	9fb270e417e0e83d64ca52586c4a79de	fixheadtails	c6fd1fc49c9dc11924f28a1406f251a0	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
 _md5_=05548693aacd0a633b049871828e911c

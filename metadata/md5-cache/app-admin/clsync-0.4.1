@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst prepare pretend setup
-DEPEND=virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Live sync tool based on inotify, written in GNU C
 EAPI=5
 HOMEPAGE=https://github.com/xaionaro/clsync http://ut.mephi.ru/oss/clsync
@@ -10,5 +10,5 @@ RDEPEND=~app-doc/clsync-docs-0.4.1
 REQUIRED_USE=|| ( gio inotify ) extra-debug? ( debug ) extra-hardened? ( hardened ) mhash? ( cluster ) seccomp? ( caps )
 SLOT=0
 SRC_URI=https://github.com/xaionaro/clsync/archive/v0.4.1.tar.gz -> clsync-0.4.1.tar.gz http://dev.gentoo.org/~bircoph/patches/clsync-0.4.1-20150524-v2.patch.xz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=cb6e9a8186e6f6e4d2046faa09f3ed3f

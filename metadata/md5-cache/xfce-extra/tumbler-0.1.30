@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/dbus-glib-0.100:= >=dev-libs/glib-2.24:2= media-libs/freetype:2= media-libs/libpng:0= >=sys-apps/dbus-1.6:= >=x11-libs/gdk-pixbuf-2.14:2= curl? ( >=net-misc/curl-7.25:= ) ffmpeg? ( >=media-video/ffmpegthumbnailer-2.0.8:= ) gstreamer? ( media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 ) jpeg? ( virtual/jpeg:0= ) odf? ( >=gnome-extra/libgsf-1.14.20:= ) pdf? ( >=app-text/poppler-0.12.4[cairo] ) raw? ( >=media-libs/libopenraw-0.0.8:=[gtk] ) >=xfce-base/thunar-1.4 gstreamer? ( media-plugins/gst-plugins-meta:1.0 )
 SLOT=0
 SRC_URI=mirror://xfce/src/apps/tumbler/0.1/tumbler-0.1.30.tar.bz2
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	xfconf	eee85b2bc9e9826f5a9c1349a75a69fe
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	xfconf	eee85b2bc9e9826f5a9c1349a75a69fe
 _md5_=209cf41bb0e692c4e5b853dbee40a1e8

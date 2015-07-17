@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile config configure install postinst prepare setup
-DEPEND=|| ( dev-db/postgresql:9.2[server] dev-db/postgresql:9.1[server] dev-db/postgresql:9.0[server] dev-db/postgresql:8.4[server] ) dev-libs/json-c dev-libs/libxml2:2 >=sci-libs/geos-3.3.8 >=sci-libs/proj-4.6.0 >=sci-libs/gdal-1.9 gtk? ( x11-libs/gtk+:2 ) doc? ( app-text/docbook-xsl-stylesheets app-text/docbook-xml-dtd:4.3 dev-libs/libxslt || ( media-gfx/imagemagick[png] media-gfx/graphicsmagick[imagemagick,png] ) ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=|| ( dev-db/postgresql:9.2[server] dev-db/postgresql:9.1[server] dev-db/postgresql:9.0[server] dev-db/postgresql:8.4[server] ) dev-libs/json-c dev-libs/libxml2:2 >=sci-libs/geos-3.3.8 >=sci-libs/proj-4.6.0 >=sci-libs/gdal-1.9 gtk? ( x11-libs/gtk+:2 ) doc? ( app-text/docbook-xsl-stylesheets app-text/docbook-xml-dtd:4.3 dev-libs/libxslt || ( media-gfx/imagemagick[png] media-gfx/graphicsmagick[imagemagick,png] ) ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Geographic Objects for PostgreSQL
 EAPI=4
 HOMEPAGE=http://postgis.net
@@ -10,5 +10,5 @@ RDEPEND=|| ( dev-db/postgresql:9.2[server] dev-db/postgresql:9.1[server] dev-db/
 RESTRICT=test
 SLOT=0
 SRC_URI=http://download.osgeo.org/postgis/source/postgis-2.0.3.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=67b71bff02f0206876c364e025c40c6d

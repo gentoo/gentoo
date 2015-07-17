@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst preinst prepare setup test unpack
-DEPEND=!sys-cluster/torque !net-analyzer/slurm !net-analyzer/sinfo mysql? ( virtual/mysql ) munge? ( sys-auth/munge ) ypbind? ( net-nds/ypbind ) pam? ( virtual/pam ) postgres? ( dev-db/postgresql ) ssl? ( dev-libs/openssl ) lua? ( dev-lang/lua ) !lua? ( !dev-lang/lua ) >=sys-apps/hwloc-1.1.1-r1 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-lang/perl:=[-build(-)]
+DEPEND=!sys-cluster/torque !net-analyzer/slurm !net-analyzer/sinfo mysql? ( virtual/mysql ) munge? ( sys-auth/munge ) ypbind? ( net-nds/ypbind ) pam? ( virtual/pam ) postgres? ( dev-db/postgresql ) ssl? ( dev-libs/openssl ) lua? ( dev-lang/lua ) !lua? ( !dev-lang/lua ) >=sys-apps/hwloc-1.1.1-r1 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-lang/perl:=[-build(-)]
 DESCRIPTION=SLURM: A Highly Scalable Resource Manager
 EAPI=5
 HOMEPAGE=http://www.schedmd.com
@@ -11,5 +11,5 @@ REQUIRED_USE=torque? ( perl )
 RESTRICT=primaryuri
 SLOT=0
 SRC_URI=http://www.schedmd.com/download/total/slurm-2.6.3.tar.bz2
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	pam	aa1ebb3ab720ea04dbbdd6eaaf9554ed	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52	user	f54e098dd38ba1c0847a13e685b87747	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	pam	aa1ebb3ab720ea04dbbdd6eaaf9554ed	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52	user	f54e098dd38ba1c0847a13e685b87747	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=8854f16e6c826249f3df113b371184ad

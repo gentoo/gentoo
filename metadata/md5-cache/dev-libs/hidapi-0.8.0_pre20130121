@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare
-DEPEND=virtual/libusb:0 doc? ( app-doc/doxygen ) virtual/pkgconfig X? ( x11-libs/fox:1.6 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=virtual/libusb:0 doc? ( app-doc/doxygen ) virtual/pkgconfig X? ( x11-libs/fox:1.6 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A multi-platform library for USB and Bluetooth HID-Class devices
 EAPI=4
 HOMEPAGE=http://www.signal11.us/oss/hidapi/
@@ -9,5 +9,5 @@ LICENSE=|| ( BSD GPL-3 HIDAPI )
 RDEPEND=virtual/libusb:0
 SLOT=0
 SRC_URI=http://public.callutheran.edu/~abarker/hidapi-0.8.0_pre20130121.tar.xz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=f0cae5ea39151af5d5eb01ca2f65ce84

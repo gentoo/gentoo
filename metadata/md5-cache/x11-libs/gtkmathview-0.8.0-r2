@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=>=dev-libs/glib-2.2.1:2 >=dev-libs/popt-1.7 >=dev-libs/libxml2-2.6.7:2 gtk? ( >=x11-libs/gtk+-2.2.1:2 >=media-libs/t1lib-5:5 x11-libs/pango || ( x11-libs/pangox-compat <x11-libs/pango-1.31[X] ) ) mathml? ( media-fonts/texcm-ttf ) t1lib? ( >=media-libs/t1lib-5:5 ) dev-libs/libxslt virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=dev-libs/glib-2.2.1:2 >=dev-libs/popt-1.7 >=dev-libs/libxml2-2.6.7:2 gtk? ( >=x11-libs/gtk+-2.2.1:2 >=media-libs/t1lib-5:5 x11-libs/pango || ( x11-libs/pangox-compat <x11-libs/pango-1.31[X] ) ) mathml? ( media-fonts/texcm-ttf ) t1lib? ( >=media-libs/t1lib-5:5 ) dev-libs/libxslt virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Rendering engine for MathML documents
 EAPI=5
 HOMEPAGE=http://helm.cs.unibo.it/mml-widget/
@@ -9,5 +9,5 @@ LICENSE=LGPL-3
 RDEPEND=>=dev-libs/glib-2.2.1:2 >=dev-libs/popt-1.7 >=dev-libs/libxml2-2.6.7:2 gtk? ( >=x11-libs/gtk+-2.2.1:2 >=media-libs/t1lib-5:5 x11-libs/pango || ( x11-libs/pangox-compat <x11-libs/pango-1.31[X] ) ) mathml? ( media-fonts/texcm-ttf ) t1lib? ( >=media-libs/t1lib-5:5 )
 SLOT=0
 SRC_URI=http://helm.cs.unibo.it/mml-widget/sources/gtkmathview-0.8.0.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=1261556f1231392b44da1dc5eb7902ab

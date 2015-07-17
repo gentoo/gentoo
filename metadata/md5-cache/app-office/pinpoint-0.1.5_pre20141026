@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare unpack
-DEPEND=>=media-libs/clutter-1.12:1.0 >=dev-libs/glib-2.28:2 >=x11-libs/cairo-1.9.4 x11-libs/pango x11-libs/gdk-pixbuf:2 gstreamer? ( media-libs/clutter-gst:2.0 ) pdf? ( gnome-base/librsvg:2 ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 app-arch/xz-utils >=sys-apps/sed-4
+DEPEND=>=media-libs/clutter-1.12:1.0 >=dev-libs/glib-2.28:2 >=x11-libs/cairo-1.9.4 x11-libs/pango x11-libs/gdk-pixbuf:2 gstreamer? ( media-libs/clutter-gst:2.0 ) pdf? ( gnome-base/librsvg:2 ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 app-arch/xz-utils >=sys-apps/sed-4
 DESCRIPTION=A tool for making hackers do excellent presentations
 EAPI=5
 HOMEPAGE=https://wiki.gnome.org/Apps/Pinpoint
@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=>=media-libs/clutter-1.12:1.0 >=dev-libs/glib-2.28:2 >=x11-libs/cairo-1.9.4 x11-libs/pango x11-libs/gdk-pixbuf:2 gstreamer? ( media-libs/clutter-gst:2.0 ) pdf? ( gnome-base/librsvg:2 )
 SLOT=0
 SRC_URI=https://git.gnome.org/browse/pinpoint/snapshot/pinpoint-215ccad331a39c6e95d173938fcfffe6eb4d75d6.tar.xz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	45882dc8beda2ffd09ad51fb3f22b669	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	45882dc8beda2ffd09ad51fb3f22b669	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=99d27e9e1ab94a38ba78f8fd0b02c2f7

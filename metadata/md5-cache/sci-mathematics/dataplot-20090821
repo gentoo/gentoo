@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare setup unpack
-DEPEND=media-libs/plotutils opengl? ( virtual/opengl ) gd? ( media-libs/gd[png,jpeg] ) virtual/pkgconfig virtual/fortran !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=media-libs/plotutils opengl? ( virtual/opengl ) gd? ( media-libs/gd[png,jpeg] ) virtual/pkgconfig virtual/fortran !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Program for scientific visualization and statistical analyis
 EAPI=5
 HOMEPAGE=http://www.itl.nist.gov/div898/software/dataplot/
@@ -9,5 +9,5 @@ LICENSE=public-domain
 RDEPEND=media-libs/plotutils opengl? ( virtual/opengl ) gd? ( media-libs/gd[png,jpeg] ) X? ( x11-misc/xdg-utils ) virtual/fortran
 SLOT=0
 SRC_URI=ftp://ftp.nist.gov/pub/dataplot/unix/dpsrc_2009_08_21.tar.gz ftp://ftp.nist.gov/pub/dataplot/unix/dplib.2009_07_15.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	fortran-2	db8710b355fc5598015c4bc3aad3bdb0	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	fortran-2	db8710b355fc5598015c4bc3aad3bdb0	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=40759bd27b07fba54702e89d486f14aa

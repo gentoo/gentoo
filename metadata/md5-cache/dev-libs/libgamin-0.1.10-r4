@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare setup test
-DEPEND=!app-admin/fam !<app-admin/gamin-0.1.10 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 python? ( =dev-lang/python-2* )
+DEPEND=!app-admin/fam !<app-admin/gamin-0.1.10 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 python? ( =dev-lang/python-2* )
 DESCRIPTION=Library providing the FAM File Alteration Monitor API
 EAPI=5
 HOMEPAGE=http://www.gnome.org/~veillard/gamin/
@@ -10,5 +10,5 @@ RDEPEND=!app-admin/fam !<app-admin/gamin-0.1.10 python? ( =dev-lang/python-2* )
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://gnome/sources/gamin/0.1/gamin-0.1.10.tar.bz2 mirror://gentoo/gamin-0.1.9-freebsd.patch.bz2 http://dev.gentoo.org/~grobian/patches/libgamin-0.1.10-opensolaris.patch.bz2 http://pkgconfig.freedesktop.org/releases/pkg-config-0.26.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	gnome.org	8fef8f967214f56e08fa92d61163d891	libtool	52d0e17251d04645ffaa61bfdd858944	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multilib-build	e733e978b7fa70607cc221fd9c070db6	multilib-minimal	13dd976916c35a1e2c8d170e840c7018	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	gnome.org	8fef8f967214f56e08fa92d61163d891	libtool	52d0e17251d04645ffaa61bfdd858944	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multilib-build	e733e978b7fa70607cc221fd9c070db6	multilib-minimal	13dd976916c35a1e2c8d170e840c7018	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=ed117bc3574ad031506dd3437d3f8b46

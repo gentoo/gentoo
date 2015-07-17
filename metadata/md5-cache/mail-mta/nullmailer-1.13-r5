@@ -1,5 +1,5 @@
 DEFINED_PHASES=config configure install postinst postrm prepare setup
-DEPEND=sys-apps/groff ssl? ( net-libs/gnutls ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DEPEND=sys-apps/groff ssl? ( net-libs/gnutls ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
 DESCRIPTION=Simple relay-only local mail transport agent
 EAPI=5
 HOMEPAGE=http://untroubled.org/nullmailer/
@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=virtual/logger virtual/shadow ssl? ( net-libs/gnutls ) !mail-mta/courier !mail-mta/esmtp !mail-mta/exim !mail-mta/mini-qmail !mail-mta/msmtp !mail-mta/netqmail !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail !mail-mta/opensmtpd !mail-mta/ssmtp
 SLOT=0
 SRC_URI=http://untroubled.org/nullmailer/archive/nullmailer-1.13.tar.gz http://dev.gentoo.org/~jlec/distfiles/nullmailer-patches-1.13.tar.xz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
 _md5_=fba81a7f5a0098f0437e71468aadde7c

@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install preinst prepare unpack
-DEPEND=caps? ( sys-libs/libcap-ng ) selinux? ( sys-libs/libselinux ) virtual/pkgconfig || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=caps? ( sys-libs/libcap-ng ) selinux? ( sys-libs/libselinux ) virtual/pkgconfig || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Self-Monitoring, Analysis and Reporting Technology System (S.M.A.R.T.) monitoring tools
 EAPI=4
 HOMEPAGE=http://smartmontools.sourceforge.net/
@@ -7,5 +7,5 @@ IUSE=caps minimal selinux static
 LICENSE=GPL-2
 RDEPEND=caps? ( sys-libs/libcap-ng ) selinux? ( sys-libs/libselinux ) !minimal? ( virtual/mailx ) selinux? ( sec-policy/selinux-smartmon )
 SLOT=0
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	subversion	c12bdf4fcc82f86ad89b14c8f76c4026	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	subversion	c12bdf4fcc82f86ad89b14c8f76c4026	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=287f2fad162b97988aafc0c7bed6c1bb

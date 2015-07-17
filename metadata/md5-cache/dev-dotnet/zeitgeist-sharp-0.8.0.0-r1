@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=dev-dotnet/dbus-sharp dev-dotnet/dbus-sharp-glib dev-dotnet/glib-sharp dev-lang/mono gnome-extra/zeitgeist virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-dotnet/dbus-sharp dev-dotnet/dbus-sharp-glib dev-dotnet/glib-sharp dev-lang/mono gnome-extra/zeitgeist virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Mono DBus API wrapper for Zeitgeist
 EAPI=4
 HOMEPAGE=https://launchpad.net/zeitgeist-sharp/
@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=dev-dotnet/dbus-sharp dev-dotnet/dbus-sharp-glib dev-dotnet/glib-sharp dev-lang/mono gnome-extra/zeitgeist
 SLOT=0
 SRC_URI=http://launchpad.net/zeitgeist-sharp/0.8/0.8.0/+download/zeitgeist-sharp-0.8.0.0.tar.gz doc? ( http://launchpad.net/zeitgeist-sharp/0.8/0.8.0/+download/zeitgeist-sharp-docs-0.8.0.tar.gz )
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	mono	203a4295c06155d318bdff9c6b2d5e1c	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	mono	203a4295c06155d318bdff9c6b2d5e1c	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=bdffa95cbc6dc94fd1d926d2b0eb9b0f

@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=gtk? ( x11-libs/gtk+:2 ) imagemagick? ( media-gfx/imagemagick ) motif? ( >=x11-libs/motif-2.3:0 ) nas? ( media-libs/nas ) opengl? ( virtual/opengl virtual/glu truetype? ( >=media-libs/ftgl-2.1.3_rc5 ) ) pam? ( virtual/pam ) truetype? ( media-libs/freetype:2 ) x11-libs/libX11 x11-libs/libXext x11-libs/libXmu x11-libs/libXpm x11-libs/libXt xinerama? ( x11-libs/libXinerama ) virtual/pkgconfig x11-proto/xineramaproto !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=gtk? ( x11-libs/gtk+:2 ) imagemagick? ( media-gfx/imagemagick ) motif? ( >=x11-libs/motif-2.3:0 ) nas? ( media-libs/nas ) opengl? ( virtual/opengl virtual/glu truetype? ( >=media-libs/ftgl-2.1.3_rc5 ) ) pam? ( virtual/pam ) truetype? ( media-libs/freetype:2 ) x11-libs/libX11 x11-libs/libXext x11-libs/libXmu x11-libs/libXpm x11-libs/libXt xinerama? ( x11-libs/libXinerama ) virtual/pkgconfig x11-proto/xineramaproto !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Just another screensaver application for X
 EAPI=5
 HOMEPAGE=http://www.tux.org/~bagleyd/xlockmore.html
@@ -10,5 +10,5 @@ RDEPEND=gtk? ( x11-libs/gtk+:2 ) imagemagick? ( media-gfx/imagemagick ) motif? (
 REQUIRED_USE=|| ( crypt pam ) pam? ( !xlockrc ) xlockrc? ( !pam )
 SLOT=0
 SRC_URI=http://ftp.tux.org/pub/tux/bagleyd/xlockmore/xlockmore-5.45/xlockmore-5.45.tar.bz2
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	pam	aa1ebb3ab720ea04dbbdd6eaaf9554ed	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	pam	aa1ebb3ab720ea04dbbdd6eaaf9554ed	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=af17f397b1de6b039aa4f6773dd5277a

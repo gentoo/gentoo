@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare unpack
-DEPEND=>=media-libs/evas-9999 >=media-libs/edje-9999 >=dev-libs/ecore-9999 >=dev-libs/eina-9999 >=dev-libs/eeze-9999 vlc? ( media-video/vlc ) xine? ( >=media-libs/xine-lib-1.1.1 ) !gstreamer? ( !vlc? ( !xine? ( >=media-libs/xine-lib-1.1.1 ) ) ) gstreamer? ( =media-libs/gstreamer-0.10* =media-libs/gst-plugins-good-0.10* =media-plugins/gst-plugins-ffmpeg-0.10* ) dev-vcs/git !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 doc? ( app-doc/doxygen )
+DEPEND=>=media-libs/evas-9999 >=media-libs/edje-9999 >=dev-libs/ecore-9999 >=dev-libs/eina-9999 >=dev-libs/eeze-9999 vlc? ( media-video/vlc ) xine? ( >=media-libs/xine-lib-1.1.1 ) !gstreamer? ( !vlc? ( !xine? ( >=media-libs/xine-lib-1.1.1 ) ) ) gstreamer? ( =media-libs/gstreamer-0.10* =media-libs/gst-plugins-good-0.10* =media-plugins/gst-plugins-ffmpeg-0.10* ) dev-vcs/git !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 doc? ( app-doc/doxygen )
 DESCRIPTION=video libraries for e17
 EAPI=5
 HOMEPAGE=http://www.enlightenment.org/
@@ -7,5 +7,5 @@ IUSE=gstreamer static-libs vlc xine nls doc
 LICENSE=BSD-2
 RDEPEND=>=media-libs/evas-9999 >=media-libs/edje-9999 >=dev-libs/ecore-9999 >=dev-libs/eina-9999 >=dev-libs/eeze-9999 vlc? ( media-video/vlc ) xine? ( >=media-libs/xine-lib-1.1.1 ) !gstreamer? ( !vlc? ( !xine? ( >=media-libs/xine-lib-1.1.1 ) ) ) gstreamer? ( =media-libs/gstreamer-0.10* =media-libs/gst-plugins-good-0.10* =media-plugins/gst-plugins-ffmpeg-0.10* ) nls? ( sys-devel/gettext )
 SLOT=0
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	enlightenment	98392d364f7f4c6cde8a516cbc298472	eutils	9fb270e417e0e83d64ca52586c4a79de	git-2	e28f0d8a9b321431b1e699782851b827	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	enlightenment	98392d364f7f4c6cde8a516cbc298472	eutils	9fb270e417e0e83d64ca52586c4a79de	git-2	e28f0d8a9b321431b1e699782851b827	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=dafcc8bffa2d8a08c3191fd792492155

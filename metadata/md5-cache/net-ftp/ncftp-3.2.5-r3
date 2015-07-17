@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=sys-libs/ncurses !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=sys-libs/ncurses !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=An extremely configurable ftp client
 EAPI=5
 HOMEPAGE=http://www.ncftp.com/
@@ -9,5 +9,5 @@ LICENSE=Clarified-Artistic
 RDEPEND=sys-libs/ncurses
 SLOT=0
 SRC_URI=ftp://ftp.ncftp.com/ncftp/ncftp-3.2.5-src.tar.bz2 -> ncftp-3.2.5.474.tar.bz2 mirror://openbsd/distfiles/ncftp-325-v6.diff.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=6315ce2ac8a87f417766149ab2a8133e

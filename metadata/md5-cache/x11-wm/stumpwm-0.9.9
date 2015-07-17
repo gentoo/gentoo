@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare
-DEPEND=dev-lisp/cl-ppcre sbcl? ( >=dev-lisp/sbcl-1.0.32 ) sbcl? ( >=dev-lisp/clx-0.7.4 ) !sbcl? ( !clisp? ( !ecl? ( >=dev-lisp/sbcl-1.0.32 ) ) ) !sbcl? ( !clisp? ( ecl? ( >=dev-lisp/ecls-10.4.1 ) ) ) !sbcl? ( clisp? ( >=dev-lisp/clisp-2.44[X,new-clx] ) ) emacs? ( virtual/emacs app-emacs/slime ) sys-apps/texinfo doc? ( virtual/texi2dvi ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-lisp/cl-ppcre sbcl? ( >=dev-lisp/sbcl-1.0.32 ) sbcl? ( >=dev-lisp/clx-0.7.4 ) !sbcl? ( !clisp? ( !ecl? ( >=dev-lisp/sbcl-1.0.32 ) ) ) !sbcl? ( !clisp? ( ecl? ( >=dev-lisp/ecls-10.4.1 ) ) ) !sbcl? ( clisp? ( >=dev-lisp/clisp-2.44[X,new-clx] ) ) emacs? ( virtual/emacs app-emacs/slime ) sys-apps/texinfo doc? ( virtual/texi2dvi ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Stumpwm is a tiling, keyboard driven X11 Window Manager written entirely in Common Lisp.
 EAPI=5
 HOMEPAGE=http://www.nongnu.org/stumpwm/
@@ -11,5 +11,5 @@ RDEPEND=dev-lisp/cl-ppcre sbcl? ( >=dev-lisp/sbcl-1.0.32 ) sbcl? ( >=dev-lisp/cl
 RESTRICT=strip mirror
 SLOT=0
 SRC_URI=http://github.com/stumpwm/stumpwm/archive/0.9.9.tar.gz -> stumpwm-0.9.9.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	common-lisp-3	b69798cfa8d750d59a6fbb5f22a3fd67	elisp-common	9a16929c1a6aec7e1c903289983e114c	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	common-lisp-3	b69798cfa8d750d59a6fbb5f22a3fd67	elisp-common	9a16929c1a6aec7e1c903289983e114c	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=237a4a0e7eee093c88bf4b1a53ee2e91

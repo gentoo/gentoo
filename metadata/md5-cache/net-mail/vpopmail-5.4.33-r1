@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst postrm prepare setup
-DEPEND=virtual/qmail maildrop? ( mail-filter/maildrop ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql[server] ) spamassassin? ( mail-filter/spamassassin ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4 >=sys-apps/sed-4
+DEPEND=virtual/qmail maildrop? ( mail-filter/maildrop ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql[server] ) spamassassin? ( mail-filter/spamassassin ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4 >=sys-apps/sed-4
 DESCRIPTION=A collection of programs to manage virtual email domains and accounts on your Qmail mail servers
 EAPI=5
 HOMEPAGE=http://www.inter7.com/index.php?page=vpopmail
@@ -10,5 +10,5 @@ RDEPEND=virtual/qmail maildrop? ( mail-filter/maildrop ) mysql? ( virtual/mysql 
 REQUIRED_USE=mysql? ( !postgres )
 SLOT=0
 SRC_URI=mirror://sourceforge/vpopmail/vpopmail-5.4.33.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	fixheadtails	c6fd1fc49c9dc11924f28a1406f251a0	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	qmail	9aa474d2def73a95c642872fdca9c014	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	fixheadtails	c6fd1fc49c9dc11924f28a1406f251a0	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	qmail	9aa474d2def73a95c642872fdca9c014	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
 _md5_=334b6b313dba0eb0e383d96a7028cfdb

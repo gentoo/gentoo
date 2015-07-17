@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst prepare
-DEPEND=gif? ( media-libs/giflib ) imlib2? ( media-libs/imlib2 ) jpeg? ( virtual/jpeg ) jpeg2k? ( media-libs/jasper[jpeg] ) mng? ( media-libs/libmng ) opengl? ( media-libs/mesa[gbm,egl,gles2?] x11-libs/libdrm ) png? ( media-libs/libpng:0 ) sdl? ( media-libs/libsdl ) svg? ( x11-libs/libsvg-cairo ) truetype? ( >=media-libs/freetype-2.0.1 ) vdpau? ( x11-proto/xproto x11-libs/libX11 x11-libs/libXext x11-libs/libvdpau ) X? ( x11-libs/libXext x11-libs/libX11 ) zlib? ( sys-libs/zlib ) X? ( x11-proto/xextproto x11-proto/xproto ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=gif? ( media-libs/giflib ) imlib2? ( media-libs/imlib2 ) jpeg? ( virtual/jpeg ) jpeg2k? ( media-libs/jasper[jpeg] ) mng? ( media-libs/libmng ) opengl? ( media-libs/mesa[gbm,egl,gles2?] x11-libs/libdrm ) png? ( media-libs/libpng:0 ) sdl? ( media-libs/libsdl ) svg? ( x11-libs/libsvg-cairo ) truetype? ( >=media-libs/freetype-2.0.1 ) vdpau? ( x11-proto/xproto x11-libs/libX11 x11-libs/libXext x11-libs/libvdpau ) X? ( x11-libs/libXext x11-libs/libX11 ) zlib? ( sys-libs/zlib ) X? ( x11-proto/xextproto x11-proto/xproto ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Thin library on top of the Linux framebuffer devices
 EAPI=5
 HOMEPAGE=http://www.directfb.org/
@@ -10,5 +10,5 @@ RDEPEND=gif? ( media-libs/giflib ) imlib2? ( media-libs/imlib2 ) jpeg? ( virtual
 REQUIRED_USE=gles2? ( opengl )
 SLOT=0
 SRC_URI=http://directfb.org/downloads/Core/DirectFB-1.6/DirectFB-1.6.3.tar.gz http://directfb.org/downloads/Old/DirectFB-1.6.3.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=b4f20e6cb5ee14f3690d869d30648d3e

@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure prepare
-DEPEND=app-forensics/afflib dev-libs/boost dev-libs/openssl net-libs/http-parser pcap? ( net-libs/libpcap ) sys-libs/zlib cairo? ( x11-libs/cairo ) test? ( sys-apps/coreutils ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=app-forensics/afflib dev-libs/boost dev-libs/openssl net-libs/http-parser pcap? ( net-libs/libpcap ) sys-libs/zlib cairo? ( x11-libs/cairo ) test? ( sys-apps/coreutils ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A tool for monitoring, capturing and storing TCP connections flows
 EAPI=5
 HOMEPAGE=https://github.com/simsong/tcpflow http://packages.qa.debian.org/t/tcpflow.html
@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=app-forensics/afflib dev-libs/boost dev-libs/openssl net-libs/http-parser pcap? ( net-libs/libpcap ) sys-libs/zlib cairo? ( x11-libs/cairo )
 SLOT=0
 SRC_URI=mirror://debian/pool/main/t/tcpflow/tcpflow_1.4.4+repack1.orig.tar.gz mirror://debian/pool/main/t/tcpflow/tcpflow_1.4.4+repack1-3.debian.tar.xz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=4e459c3fb66f89d341cd40821d7eaf15

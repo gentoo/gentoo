@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install unpack
-DEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXt media-fonts/font-misc-misc xinerama? ( x11-proto/xineramaproto ) x11-proto/xextproto x11-proto/xproto virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1 >=sys-devel/automake-1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXt media-fonts/font-misc-misc xinerama? ( x11-proto/xineramaproto ) x11-proto/xextproto x11-proto/xproto virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Library for overlaying text in X-Windows X-On-Screen-Display plus binary for sending text from CLI
 HOMEPAGE=https://sourceforge.net/projects/libxosd/
 IUSE=xinerama
@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXt media-fonts/font-misc-misc
 SLOT=0
 SRC_URI=mirror://debian/pool/main/x/xosd/xosd_2.2.14.orig.tar.gz mirror://debian/pool/main/x/xosd/xosd_2.2.14-1.diff.gz http://digilander.libero.it/dgp85/gentoo/xosd-gentoo-m4-1.tar.bz2
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=1a12e8da18277ac35972973493cdc31f

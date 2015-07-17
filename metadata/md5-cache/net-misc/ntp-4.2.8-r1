@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst prepare setup
-DEPEND=>=sys-libs/ncurses-5.2 >=sys-libs/readline-4.1 >=dev-libs/libevent-2.0.9 kernel_linux? ( caps? ( sys-libs/libcap ) ) zeroconf? ( net-dns/avahi[mdnsresponder-compat] ) !openntpd? ( !net-misc/openntpd ) snmp? ( net-analyzer/net-snmp ) ssl? ( dev-libs/openssl ) parse-clocks? ( net-misc/pps-tools ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DEPEND=>=sys-libs/ncurses-5.2 >=sys-libs/readline-4.1 >=dev-libs/libevent-2.0.9 kernel_linux? ( caps? ( sys-libs/libcap ) ) zeroconf? ( net-dns/avahi[mdnsresponder-compat] ) !openntpd? ( !net-misc/openntpd ) snmp? ( net-analyzer/net-snmp ) ssl? ( dev-libs/openssl ) parse-clocks? ( net-misc/pps-tools ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
 DESCRIPTION=Network Time Protocol suite/programs
 EAPI=4
 HOMEPAGE=http://www.ntp.org/
@@ -10,5 +10,5 @@ PDEPEND=openntpd? ( net-misc/openntpd )
 RDEPEND=>=sys-libs/ncurses-5.2 >=sys-libs/readline-4.1 >=dev-libs/libevent-2.0.9 kernel_linux? ( caps? ( sys-libs/libcap ) ) zeroconf? ( net-dns/avahi[mdnsresponder-compat] ) !openntpd? ( !net-misc/openntpd ) snmp? ( net-analyzer/net-snmp ) ssl? ( dev-libs/openssl ) parse-clocks? ( net-misc/pps-tools ) selinux? ( sec-policy/selinux-ntp ) vim-syntax? ( app-vim/ntp-syntax )
 SLOT=0
 SRC_URI=http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-4.2/ntp-4.2.8.tar.gz mirror://gentoo/ntp-4.2.8-manpages.tar.bz2
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
 _md5_=6d7f5bd065539bdaf126c3309826c93f

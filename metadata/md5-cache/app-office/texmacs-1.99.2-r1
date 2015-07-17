@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure postinst postrm prepare
-DEPEND=app-text/ghostscript-gpl dev-scheme/guile:12[deprecated] media-libs/freetype x11-apps/xmodmap x11-libs/libXext virtual/latex-base imlib? ( media-libs/imlib2 ) jpeg? ( || ( media-gfx/imagemagick media-gfx/jpeg2ps ) ) netpbm? ( media-libs/netpbm ) qt4? ( dev-qt/qtgui:4 ) spell? ( app-text/aspell ) svg? ( || ( media-gfx/inkscape gnome-base/librsvg:2 ) ) x11-proto/xproto !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
+DEPEND=app-text/ghostscript-gpl dev-scheme/guile:12[deprecated] media-libs/freetype x11-apps/xmodmap x11-libs/libXext virtual/latex-base imlib? ( media-libs/imlib2 ) jpeg? ( || ( media-gfx/imagemagick media-gfx/jpeg2ps ) ) netpbm? ( media-libs/netpbm ) qt4? ( dev-qt/qtgui:4 ) spell? ( app-text/aspell ) svg? ( || ( media-gfx/inkscape gnome-base/librsvg:2 ) ) x11-proto/xproto !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
 DESCRIPTION=Wysiwyg text processor with high-quality maths
 EAPI=5
 HOMEPAGE=http://www.texmacs.org/
@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=app-text/ghostscript-gpl dev-scheme/guile:12[deprecated] media-libs/freetype x11-apps/xmodmap x11-libs/libXext virtual/latex-base imlib? ( media-libs/imlib2 ) jpeg? ( || ( media-gfx/imagemagick media-gfx/jpeg2ps ) ) netpbm? ( media-libs/netpbm ) qt4? ( dev-qt/qtgui:4 ) spell? ( app-text/aspell ) svg? ( || ( media-gfx/inkscape gnome-base/librsvg:2 ) )
 SLOT=0
 SRC_URI=ftp://ftp.texmacs.org/pub/TeXmacs/tmftp/source/TeXmacs-1.99.2-src.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=67b04749d510a42421dcd38cc7a75c31

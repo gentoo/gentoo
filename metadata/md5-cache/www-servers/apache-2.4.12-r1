@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst prepare setup
-DEPEND=alpn? ( >=dev-libs/openssl-1.0.2:0= ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 ssl? ( dev-libs/openssl ) dev-lang/perl =dev-libs/apr-1* =dev-libs/apr-util-1*[ldap?] dev-libs/libpcre apache2_modules_deflate? ( sys-libs/zlib ) apache2_modules_mime? ( app-misc/mime-types ) ldap? ( =net-nds/openldap-2* ) ssl? ( >=dev-libs/openssl-0.9.8m:0= ) !=www-servers/apache-1* virtual/pkgconfig
+DEPEND=alpn? ( >=dev-libs/openssl-1.0.2:0= ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 ssl? ( dev-libs/openssl ) dev-lang/perl =dev-libs/apr-1* =dev-libs/apr-util-1*[ldap?] dev-libs/libpcre apache2_modules_deflate? ( sys-libs/zlib ) apache2_modules_mime? ( app-misc/mime-types ) ldap? ( =net-nds/openldap-2* ) ssl? ( >=dev-libs/openssl-0.9.8m:0= ) !=www-servers/apache-1* virtual/pkgconfig
 DESCRIPTION=The Apache Web Server
 EAPI=5
 HOMEPAGE=http://httpd.apache.org/
@@ -11,5 +11,5 @@ RDEPEND=alpn? ( >=dev-libs/openssl-1.0.2:0= ) >=dev-libs/apr-1.5.1 !www-apache/m
 REQUIRED_USE=alpn? ( ssl )
 SLOT=2
 SRC_URI=mirror://apache/httpd/httpd-2.4.12.tar.bz2 http://dev.gentoo.org/~polynomial-c/dist/apache/gentoo-apache-2.4.10-r1-20140731.tar.bz2
-_eclasses_=apache-2	96213a007e8299cd33ff7c82d4e2fe40	autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	ssl-cert	b53367370fde96e19beca78050a47c61	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=apache-2	96213a007e8299cd33ff7c82d4e2fe40	autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	ssl-cert	b53367370fde96e19beca78050a47c61	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=550f859840f20bc2e1f18ab0937f6749

@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=>=dev-libs/glib-2 >=x11-libs/gtk+-2.20:2 dev-libs/libxml2 >=x11-libs/pango-1.4 >=app-text/iso-codes-0.49 >=dev-lang/perl-5 virtual/pkgconfig dev-util/gtk-doc-am doc? ( >=dev-util/gtk-doc-1.4 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=dev-libs/glib-2 >=x11-libs/gtk+-2.20:2 dev-libs/libxml2 >=x11-libs/pango-1.4 >=app-text/iso-codes-0.49 >=dev-lang/perl-5 virtual/pkgconfig dev-util/gtk-doc-am doc? ( >=dev-util/gtk-doc-1.4 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Sexy GTK+ Widgets
 EAPI=5
 HOMEPAGE=http://www.chipx86.com/wiki/Libsexy
@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=>=dev-libs/glib-2 >=x11-libs/gtk+-2.20:2 dev-libs/libxml2 >=x11-libs/pango-1.4 >=app-text/iso-codes-0.49
 SLOT=0
 SRC_URI=http://releases.chipx86.com/libsexy/libsexy/libsexy-0.1.11.tar.bz2
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=de58df93f76ccb5ccc9a414d4813ddb8

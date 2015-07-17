@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst prepare unpack
-DEPEND=x11-libs/libXrandr x11-libs/libXcursor x11-libs/fox-wrapper >=sys-devel/autoconf-2.67 bzip2? ( app-arch/bzip2 ) jpeg? ( virtual/jpeg ) opengl? ( virtual/glu virtual/opengl ) png? ( media-libs/libpng ) tiff? ( media-libs/tiff ) truetype? ( media-libs/freetype:2 x11-libs/libXft ) zlib? ( sys-libs/zlib ) x11-proto/xextproto x11-libs/libXt !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 doc? ( app-doc/doxygen ) dev-util/reswrap >=sys-apps/sed-4
+DEPEND=x11-libs/libXrandr x11-libs/libXcursor x11-libs/fox-wrapper >=sys-devel/autoconf-2.67 bzip2? ( app-arch/bzip2 ) jpeg? ( virtual/jpeg ) opengl? ( virtual/glu virtual/opengl ) png? ( media-libs/libpng ) tiff? ( media-libs/tiff ) truetype? ( media-libs/freetype:2 x11-libs/libXft ) zlib? ( sys-libs/zlib ) x11-proto/xextproto x11-libs/libXt !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 doc? ( app-doc/doxygen ) dev-util/reswrap >=sys-apps/sed-4
 DESCRIPTION=C++ based Toolkit for developing Graphical User Interfaces easily and effectively
 EAPI=5
 HOMEPAGE=http://www.fox-toolkit.org/
@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=x11-libs/libXrandr x11-libs/libXcursor x11-libs/fox-wrapper >=sys-devel/autoconf-2.67 bzip2? ( app-arch/bzip2 ) jpeg? ( virtual/jpeg ) opengl? ( virtual/glu virtual/opengl ) png? ( media-libs/libpng ) tiff? ( media-libs/tiff ) truetype? ( media-libs/freetype:2 x11-libs/libXft ) zlib? ( sys-libs/zlib )
 SLOT=1.7
 SRC_URI=ftp://ftp.fox-toolkit.org/pub/fox-1.7.49.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	fox	26650ced206327e4fca3dec6cd441381	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	fox	26650ced206327e4fca3dec6cd441381	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=40e6f1eae9bf83927a555e0b6c4fbb8b

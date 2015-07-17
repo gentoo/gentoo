@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare setup unpack
-DEPEND=sys-cluster/cluster-glue dev-libs/glib:2 virtual/ssh net-libs/gnutls snmp? ( net-analyzer/net-snmp ) virtual/pkgconfig dev-lang/swig doc? ( dev-libs/libxslt app-text/docbook-xsl-stylesheets ) =dev-lang/python-2* !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=sys-cluster/cluster-glue dev-libs/glib:2 virtual/ssh net-libs/gnutls snmp? ( net-analyzer/net-snmp ) virtual/pkgconfig dev-lang/swig doc? ( dev-libs/libxslt app-text/docbook-xsl-stylesheets ) =dev-lang/python-2* !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Heartbeat high availability cluster manager
 EAPI=2
 HOMEPAGE=http://www.linux-ha.org/wiki/Heartbeat
@@ -10,5 +10,5 @@ PDEPEND=sys-cluster/resource-agents
 RDEPEND=sys-cluster/cluster-glue dev-libs/glib:2 virtual/ssh net-libs/gnutls snmp? ( net-analyzer/net-snmp ) =dev-lang/python-2*
 SLOT=0
 SRC_URI=http://hg.linux-ha.org/heartbeat-STABLE_3_0/archive/STABLE-3.0.5.tar.bz2
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=f5ded56e2c5fb3cecbf04eeca2b8c3ce

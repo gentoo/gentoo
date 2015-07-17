@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure prepare
-DEPEND=>=media-libs/libvorbis-1.3.0 flac? ( media-libs/flac ) kate? ( media-libs/libkate ) ogg123? ( >=media-libs/libao-1.0.0 net-misc/curl ) speex? ( media-libs/speex ) nls? ( sys-devel/gettext ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=media-libs/libvorbis-1.3.0 flac? ( media-libs/flac ) kate? ( media-libs/libkate ) ogg123? ( >=media-libs/libao-1.0.0 net-misc/curl ) speex? ( media-libs/speex ) nls? ( sys-devel/gettext ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=tools for using the Ogg Vorbis sound file format
 EAPI=5
 HOMEPAGE=http://www.vorbis.com
@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=media-libs/libvorbis-1.3.0 flac? ( media-libs/flac ) kate? ( media-libs/libkate ) ogg123? ( >=media-libs/libao-1.0.0 net-misc/curl ) speex? ( media-libs/speex )
 SLOT=0
 SRC_URI=http://downloads.xiph.org/releases/vorbis/vorbis-tools-1.4.0.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=4b5cf605e50b2977f2f84298eae04002

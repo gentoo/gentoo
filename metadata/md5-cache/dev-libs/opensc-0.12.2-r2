@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=libtool? ( || ( dev-libs/libltdl:0 <sys-devel/libtool-2.4.3-r2:2 ) ) zlib? ( sys-libs/zlib ) readline? ( sys-libs/readline:0 ) ssl? ( dev-libs/openssl:0 ) openct? ( >=dev-libs/openct-0.5.0 ) pcsc-lite? ( >=sys-apps/pcsc-lite-1.3.0 ) virtual/pkgconfig app-text/docbook-xsl-stylesheets dev-libs/libxslt !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=libtool? ( || ( dev-libs/libltdl:0 <sys-devel/libtool-2.4.3-r2:2 ) ) zlib? ( sys-libs/zlib ) readline? ( sys-libs/readline:0 ) ssl? ( dev-libs/openssl:0 ) openct? ( >=dev-libs/openct-0.5.0 ) pcsc-lite? ( >=sys-apps/pcsc-lite-1.3.0 ) virtual/pkgconfig app-text/docbook-xsl-stylesheets dev-libs/libxslt !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Libraries and applications to access smartcards
 EAPI=4
 HOMEPAGE=http://www.opensc-project.org/opensc/
@@ -10,5 +10,5 @@ RDEPEND=libtool? ( || ( dev-libs/libltdl:0 <sys-devel/libtool-2.4.3-r2:2 ) ) zli
 REQUIRED_USE=pcsc-lite? ( !openct ) openct? ( !pcsc-lite )
 SLOT=0
 SRC_URI=http://www.opensc-project.org/files/opensc/opensc-0.12.2.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=dc2dfb56290cc60d52da1cdae1339d79

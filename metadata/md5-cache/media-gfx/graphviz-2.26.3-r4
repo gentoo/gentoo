@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst postrm prepare setup
-DEPEND=>=dev-libs/expat-2.0.0 >=dev-libs/glib-2.11.1 >=media-libs/fontconfig-2.3.95 >=media-libs/freetype-2.1.10 >=media-libs/gd-2.0.28[fontconfig,jpeg,png,truetype,zlib] >=media-libs/libpng-1.4 virtual/jpeg:0 virtual/libiconv cairo? ( x11-libs/libXaw >=x11-libs/pango-1.12 >=x11-libs/cairo-1.1.10[svg] ) gtk? ( x11-libs/gtk+:2 x11-libs/libXaw >=x11-libs/pango-1.12 >=x11-libs/cairo-1.1.10 ) lasi? ( media-libs/lasi ) perl? ( dev-lang/perl ) ruby? ( dev-lang/ruby ) tcl? ( >=dev-lang/tcl-8.3:0 ) virtual/pkgconfig sys-devel/flex java? ( dev-lang/swig ) nls? ( >=sys-devel/gettext-0.14.5 ) perl? ( dev-lang/swig ) python? ( dev-lang/swig ) ruby? ( dev-lang/swig ) tcl? ( dev-lang/swig ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 python? ( =dev-lang/python-2* )
+DEPEND=>=dev-libs/expat-2.0.0 >=dev-libs/glib-2.11.1 >=media-libs/fontconfig-2.3.95 >=media-libs/freetype-2.1.10 >=media-libs/gd-2.0.28[fontconfig,jpeg,png,truetype,zlib] >=media-libs/libpng-1.4 virtual/jpeg:0 virtual/libiconv cairo? ( x11-libs/libXaw >=x11-libs/pango-1.12 >=x11-libs/cairo-1.1.10[svg] ) gtk? ( x11-libs/gtk+:2 x11-libs/libXaw >=x11-libs/pango-1.12 >=x11-libs/cairo-1.1.10 ) lasi? ( media-libs/lasi ) perl? ( dev-lang/perl ) ruby? ( dev-lang/ruby ) tcl? ( >=dev-lang/tcl-8.3:0 ) virtual/pkgconfig sys-devel/flex java? ( dev-lang/swig ) nls? ( >=sys-devel/gettext-0.14.5 ) perl? ( dev-lang/swig ) python? ( dev-lang/swig ) ruby? ( dev-lang/swig ) tcl? ( dev-lang/swig ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 python? ( =dev-lang/python-2* )
 DESCRIPTION=Open Source Graph Visualization Software
 EAPI=3
 HOMEPAGE=http://www.graphviz.org/
@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/expat-2.0.0 >=dev-libs/glib-2.11.1 >=media-libs/fontconfig-2.
 RESTRICT=test
 SLOT=0
 SRC_URI=http://www.graphviz.org/pub/graphviz/ARCHIVE/graphviz-2.26.3.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=c14916d63bd524095cfd577a9040ca77

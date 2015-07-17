@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install preinst prepare
-DEPEND=net-wireless/wireless-tools kernel_linux? ( sys-libs/libcap dev-libs/libnl:3 net-libs/libpcap ) pcre? ( dev-libs/libpcre ) suid? ( sys-libs/libcap ) client? ( sys-libs/ncurses ) !arm? ( speech? ( app-accessibility/flite ) ) ruby? ( dev-lang/ruby:* ) plugin-btscan? ( net-wireless/bluez ) plugin-dot15d4? ( virtual/libusb:0 ) plugin-spectools? ( net-wireless/spectools ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=net-wireless/wireless-tools kernel_linux? ( sys-libs/libcap dev-libs/libnl:3 net-libs/libpcap ) pcre? ( dev-libs/libpcre ) suid? ( sys-libs/libcap ) client? ( sys-libs/ncurses ) !arm? ( speech? ( app-accessibility/flite ) ) ruby? ( dev-lang/ruby:* ) plugin-btscan? ( net-wireless/bluez ) plugin-dot15d4? ( virtual/libusb:0 ) plugin-spectools? ( net-wireless/spectools ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=IEEE 802.11 wireless LAN sniffer
 EAPI=5
 HOMEPAGE=http://www.kismetwireless.net/
@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=net-wireless/wireless-tools kernel_linux? ( sys-libs/libcap dev-libs/libnl:3 net-libs/libpcap ) pcre? ( dev-libs/libpcre ) suid? ( sys-libs/libcap ) client? ( sys-libs/ncurses ) !arm? ( speech? ( app-accessibility/flite ) ) ruby? ( dev-lang/ruby:* ) plugin-btscan? ( net-wireless/bluez ) plugin-dot15d4? ( virtual/libusb:0 ) plugin-spectools? ( net-wireless/spectools ) selinux? ( sec-policy/selinux-kismet )
 SLOT=0/2013.03.1
 SRC_URI=http://www.kismetwireless.net/code/kismet-2013-03-R1.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
 _md5_=6640e8dfcce84df2c5b55c17cd74d115

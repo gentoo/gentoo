@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst prepare setup
-DEPEND=net-mail/mailbase gdbm? ( sys-libs/gdbm ) !gdbm? ( sys-libs/db ) >=dev-libs/openssl-0.9.6 ldap? ( >=net-nds/openldap-1.2.11 ) mysql? ( virtual/mysql ) pam? ( virtual/pam ) postgres? ( >=dev-db/postgresql-8.4 ) sqlite? ( dev-db/sqlite:3 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=net-mail/mailbase gdbm? ( sys-libs/gdbm ) !gdbm? ( sys-libs/db ) >=dev-libs/openssl-0.9.6 ldap? ( >=net-nds/openldap-1.2.11 ) mysql? ( virtual/mysql ) pam? ( virtual/pam ) postgres? ( >=dev-db/postgresql-8.4 ) sqlite? ( dev-db/sqlite:3 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Courier authentication library
 EAPI=5
 HOMEPAGE=http://www.courier-mta.org/
@@ -11,5 +11,5 @@ REQUIRED_USE=( !vpopmail )
 RESTRICT=userpriv !berkdb? ( test )
 SLOT=0
 SRC_URI=mirror://sourceforge/courier/courier-authlib-0.66.1.tar.bz2
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
 _md5_=1db171cd7ab8c16c7f202e02792a89c9

@@ -1,10 +1,10 @@
 DEFINED_PHASES=compile install unpack
-DEPEND=!sci-astronomy/ast x11-libs/libXt x11-proto/xproto x11-libs/libICE x11-libs/libSM x11-libs/libX11 =media-libs/freetype-2* imlib? ( media-libs/imlib2 ) pcre? ( dev-libs/libpcre ) dev-vcs/cvs !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1 >=sys-devel/automake-1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=!sci-astronomy/ast x11-libs/libXt x11-proto/xproto x11-libs/libICE x11-libs/libSM x11-libs/libX11 =media-libs/freetype-2* imlib? ( media-libs/imlib2 ) pcre? ( dev-libs/libpcre ) dev-vcs/cvs !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=LIBrary of Assorted Spiffy Things
 HOMEPAGE=http://www.eterm.org/download/
 IUSE=imlib cpu_flags_x86_mmx pcre
 LICENSE=GPL-2
 RDEPEND=!sci-astronomy/ast x11-libs/libXt x11-proto/xproto x11-libs/libICE x11-libs/libSM x11-libs/libX11 =media-libs/freetype-2* imlib? ( media-libs/imlib2 ) pcre? ( dev-libs/libpcre )
 SLOT=0
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	cvs	a4cb8da1bb586b224ade5b54f1d2fda0	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	cvs	a4cb8da1bb586b224ade5b54f1d2fda0	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=65bb7a802ca1bc1f52bdf24aeaf623e3

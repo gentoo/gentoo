@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare unpack
-DEPEND=app-crypt/gpgme dev-libs/expat dev-libs/libgcrypt:0 dev-libs/libxml2 curl? ( net-misc/curl[ssl] ) virtual/pkgconfig nls? ( sys-devel/gettext ) dev-vcs/git !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=app-crypt/gpgme dev-libs/expat dev-libs/libgcrypt:0 dev-libs/libxml2 curl? ( net-misc/curl[ssl] ) virtual/pkgconfig nls? ( sys-devel/gettext ) dev-vcs/git !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Client library for accessing ISDS Soap services
 EAPI=5
 HOMEPAGE=http://xpisar.wz.cz/libisds/
@@ -7,5 +7,5 @@ IUSE=+curl debug nls static-libs test
 LICENSE=LGPL-3
 RDEPEND=app-crypt/gpgme dev-libs/expat dev-libs/libgcrypt:0 dev-libs/libxml2 curl? ( net-misc/curl[ssl] ) >=app-crypt/gnupg-2
 SLOT=0
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	git-2	e28f0d8a9b321431b1e699782851b827	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	git-2	e28f0d8a9b321431b1e699782851b827	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=37a9d7da9f97bb69c54b7138620cf2a8

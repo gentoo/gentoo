@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare
-DEPEND=doc? ( || ( app-doc/doxygen dev-util/kdoc ) ) virtual/pkgconfig postgres? ( dev-db/postgresql ) mysql? ( virtual/mysql ) gsm? ( media-sound/gsm ) speex? ( media-libs/speex ) ssl? ( dev-libs/openssl ) h323? ( net-libs/h323plus ) zlib? ( sys-libs/zlib ) qt4? ( dev-qt/qtgui:4 dev-qt/designer:4 ) ilbc? ( dev-libs/ilbc-rfc3951 ) spandsp? ( >=media-libs/spandsp-0.0.3 ) dahdi? ( net-misc/dahdi ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=doc? ( || ( app-doc/doxygen dev-util/kdoc ) ) virtual/pkgconfig postgres? ( dev-db/postgresql ) mysql? ( virtual/mysql ) gsm? ( media-sound/gsm ) speex? ( media-libs/speex ) ssl? ( dev-libs/openssl ) h323? ( net-libs/h323plus ) zlib? ( sys-libs/zlib ) qt4? ( dev-qt/qtgui:4 dev-qt/designer:4 ) ilbc? ( dev-libs/ilbc-rfc3951 ) spandsp? ( >=media-libs/spandsp-0.0.3 ) dahdi? ( net-misc/dahdi ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=The Yate AV Suite
 EAPI=5
 HOMEPAGE=http://yate.null.ro/
@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=postgres? ( dev-db/postgresql ) mysql? ( virtual/mysql ) gsm? ( media-sound/gsm ) speex? ( media-libs/speex ) ssl? ( dev-libs/openssl ) h323? ( net-libs/h323plus ) zlib? ( sys-libs/zlib ) qt4? ( dev-qt/qtgui:4 dev-qt/designer:4 ) ilbc? ( dev-libs/ilbc-rfc3951 ) spandsp? ( >=media-libs/spandsp-0.0.3 ) dahdi? ( net-misc/dahdi )
 SLOT=0/5.4.0
 SRC_URI=http://voip.null.ro/tarballs/yate5/yate-5.4.0-1.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=ecd8a8087af88314bb1430b522b77bad

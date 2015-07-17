@@ -9,5 +9,5 @@ LICENSE=GPL-2-with-exceptions
 RDEPEND=!>=sys-libs/db-5.0 >=dev-libs/cyrus-sasl-2.1.19 >=dev-libs/icu-3.4:= dev-libs/nss[utils] dev-libs/nspr dev-libs/svrcore dev-libs/openssl:0= dev-libs/libpcre:3 dev-perl/perl-mozldap >=net-analyzer/net-snmp-5.1.2 net-nds/openldap sys-apps/tcp-wrappers >=sys-libs/db-4.5:= sys-libs/pam sys-libs/zlib kerberos? ( >=app-crypt/mit-krb5-1.7-r100[openldap] ) selinux? ( sec-policy/selinux-dirsrv ) virtual/perl-Time-Local virtual/perl-MIME-Base64
 SLOT=0
 SRC_URI=http://directory.fedoraproject.org/sources/389-ds-base-1.3.0.2.tar.bz2
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
 _md5_=a16d1c5e665def42a662fcd4ca95956b

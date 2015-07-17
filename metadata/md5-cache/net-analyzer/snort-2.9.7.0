@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst prepare setup
-DEPEND=>=net-libs/libpcap-1.3.0 >=net-libs/daq-2.0.2 >=dev-libs/libpcre-8.33 dev-libs/libdnet sys-libs/zlib !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=net-libs/libpcap-1.3.0 >=net-libs/daq-2.0.2 >=dev-libs/libpcre-8.33 dev-libs/libdnet sys-libs/zlib !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=The de facto standard for intrusion detection/prevention
 EAPI=5
 HOMEPAGE=http://www.snort.org/
@@ -10,5 +10,5 @@ RDEPEND=>=net-libs/libpcap-1.3.0 >=net-libs/daq-2.0.2 >=dev-libs/libpcre-8.33 de
 REQUIRED_USE=!kernel_linux? ( !shared-rep )
 SLOT=0
 SRC_URI=https://www.snort.org/downloads/snort/snort-2.9.7.0.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
 _md5_=cdb4a934b952e465bd62f92a9d0417ac

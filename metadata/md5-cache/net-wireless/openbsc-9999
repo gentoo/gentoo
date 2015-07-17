@@ -1,5 +1,5 @@
 DEFINED_PHASES=prepare unpack
-DEPEND=gprs? ( net-wireless/openggsn ) net-libs/libosmocore net-libs/libosmo-abis dev-db/libdbi !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-vcs/git
+DEPEND=gprs? ( net-wireless/openggsn ) net-libs/libosmocore net-libs/libosmo-abis dev-db/libdbi !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-vcs/git
 DESCRIPTION=OpenBSC, OsmoSGSN, OsmoBSC and other programs
 EAPI=5
 HOMEPAGE=http://openbsc.osmocom.org/trac/wiki/OpenBSC
@@ -7,5 +7,5 @@ IUSE=+gprs
 LICENSE=GPL-2
 RDEPEND=gprs? ( net-wireless/openggsn ) net-libs/libosmocore net-libs/libosmo-abis dev-db/libdbi dev-db/libdbi-drivers[sqlite] dev-db/sqlite:3
 SLOT=0
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	git-2	e28f0d8a9b321431b1e699782851b827	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	git-2	e28f0d8a9b321431b1e699782851b827	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=d353921ec7e6e8d4862ed8782f15f062

@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install setup unpack
-DEPEND=>=app-i18n/scim-1.4.7-r2 nls? ( virtual/libintl ) virtual/pkgconfig nls? ( sys-devel/gettext ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1 >=sys-devel/automake-1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=app-i18n/scim-1.4.7-r2 nls? ( virtual/libintl ) virtual/pkgconfig nls? ( sys-devel/gettext ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Smart Common Input Method (SCIM) Generic Table Input Method Server
 HOMEPAGE=http://www.scim-im.org/
 IUSE=nls linguas_am linguas_ar linguas_bn linguas_gu linguas_hi linguas_ja linguas_kn linguas_ko linguas_ml linguas_ne linguas_pa linguas_ru linguas_ta linguas_te linguas_th linguas_uk linguas_vi linguas_zh
@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=app-i18n/scim-1.4.7-r2 nls? ( virtual/libintl )
 SLOT=0
 SRC_URI=mirror://sourceforge/scim/scim-tables-0.5.13.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=32b5f2bfd17cfd8af0242e28048e912b

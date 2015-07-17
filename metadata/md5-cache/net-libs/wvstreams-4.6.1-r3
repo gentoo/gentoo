@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare pretend test
-DEPEND=sys-libs/readline sys-libs/zlib dbus? ( >=sys-apps/dbus-1.4.20 ) dev-libs/openssl:0 pam? ( virtual/pam ) virtual/pkgconfig doc? ( app-doc/doxygen ) boost? ( >=dev-libs/boost-1.34.1:= ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=sys-libs/readline sys-libs/zlib dbus? ( >=sys-apps/dbus-1.4.20 ) dev-libs/openssl:0 pam? ( virtual/pam ) virtual/pkgconfig doc? ( app-doc/doxygen ) boost? ( >=dev-libs/boost-1.34.1:= ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A network programming library in C++
 EAPI=5
 HOMEPAGE=http://alumnit.ca/wiki/?WvStreams
@@ -10,5 +10,5 @@ RDEPEND=sys-libs/readline sys-libs/zlib dbus? ( >=sys-apps/dbus-1.4.20 ) dev-lib
 RESTRICT=test
 SLOT=0
 SRC_URI=http://wvstreams.googlecode.com/files/wvstreams-4.6.1.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=8a441b952f180989a88de0e3ed97157f

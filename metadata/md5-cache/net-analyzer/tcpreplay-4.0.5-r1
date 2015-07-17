@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure prepare test
-DEPEND=>=sys-devel/autogen-5.16.2[libopts] dev-libs/libdnet >=net-libs/libpcap-0.9 tcpdump? ( net-analyzer/tcpdump ) pcapnav? ( net-libs/libpcapnav ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=sys-devel/autogen-5.16.2[libopts] dev-libs/libdnet >=net-libs/libpcap-0.9 tcpdump? ( net-analyzer/tcpdump ) pcapnav? ( net-libs/libpcapnav ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=a suite of utilities for editing and replaying previously captured network traffic
 EAPI=5
 HOMEPAGE=http://tcpreplay.appneta.com/
@@ -9,5 +9,5 @@ LICENSE=BSD GPL-3
 RDEPEND=>=sys-devel/autogen-5.16.2[libopts] dev-libs/libdnet >=net-libs/libpcap-0.9 tcpdump? ( net-analyzer/tcpdump ) pcapnav? ( net-libs/libpcapnav )
 SLOT=0
 SRC_URI=mirror://sourceforge/project/tcpreplay/tcpreplay/4.0.5/tcpreplay-4.0.5.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=309777b6838ece20f78689fc5d9902f0

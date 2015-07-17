@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare setup
-DEPEND=x11-libs/libXext:= truetype? ( x11-libs/libXft:= ) pango? ( x11-libs/pango:= ) jpeg? ( virtual/jpeg:0 ) png? ( media-libs/libpng:0= ) xsettings? ( x11-libs/libxsettings-client ) doc? ( app-doc/doxygen ) test? ( dev-libs/check ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=x11-libs/libXext:= truetype? ( x11-libs/libXft:= ) pango? ( x11-libs/pango:= ) jpeg? ( virtual/jpeg:0 ) png? ( media-libs/libpng:0= ) xsettings? ( x11-libs/libxsettings-client ) doc? ( app-doc/doxygen ) test? ( dev-libs/check ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=The Matchbox Library
 EAPI=5
 HOMEPAGE=http://matchbox-project.org/
@@ -10,5 +10,5 @@ RDEPEND=x11-libs/libXext:= truetype? ( x11-libs/libXft:= ) pango? ( x11-libs/pan
 RESTRICT=test
 SLOT=0
 SRC_URI=http://matchbox-project.org/sources/libmatchbox/1.9/libmatchbox-1.9.tar.bz2 mirror://sourceforge/check/check-0.9.12.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=59b59f03a79d9e6bba24e13eba790d68

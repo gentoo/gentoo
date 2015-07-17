@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst prepare setup unpack
-DEPEND=dev-libs/boehm-gc >=dev-libs/expat-1.95.4 bzip2? ( >=app-arch/bzip2-1.0.2 ) ssl? ( >=dev-libs/openssl-0.9.6g ) X? ( x11-libs/libX11 x11-libs/libXt ) zlib? ( >=sys-libs/zlib-1.1.4 ) lua? ( >=dev-lang/lua-5 ) gpm? ( >=sys-libs/ncurses-5.2 >=sys-libs/gpm-1.20.0-r5 ) guile? ( >=dev-scheme/guile-1.6.4-r1[deprecated,discouraged] ) idn? ( net-dns/libidn ) perl? ( dev-lang/perl:= ) ruby? ( dev-lang/ruby dev-ruby/rubygems ) samba? ( net-fs/samba ) javascript? ( >=dev-lang/spidermonkey-1.8.5:0= ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
+DEPEND=dev-libs/boehm-gc >=dev-libs/expat-1.95.4 bzip2? ( >=app-arch/bzip2-1.0.2 ) ssl? ( >=dev-libs/openssl-0.9.6g ) X? ( x11-libs/libX11 x11-libs/libXt ) zlib? ( >=sys-libs/zlib-1.1.4 ) lua? ( >=dev-lang/lua-5 ) gpm? ( >=sys-libs/ncurses-5.2 >=sys-libs/gpm-1.20.0-r5 ) guile? ( >=dev-scheme/guile-1.6.4-r1[deprecated,discouraged] ) idn? ( net-dns/libidn ) perl? ( dev-lang/perl:= ) ruby? ( dev-lang/ruby dev-ruby/rubygems ) samba? ( net-fs/samba ) javascript? ( >=dev-lang/spidermonkey-1.8.5:0= ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Advanced and well-established text-mode web browser
 EAPI=5
 HOMEPAGE=http://elinks.or.cz/
@@ -9,5 +9,5 @@ RDEPEND=dev-libs/boehm-gc >=dev-libs/expat-1.95.4 bzip2? ( >=app-arch/bzip2-1.0.
 RESTRICT=test
 SLOT=0
 SRC_URI=http://dev.gentoo.org/~spock/portage/distfiles/elinks-0.10.4.conf.bz2
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	git-r3	727a612b4c6247766904e3f74a326e2b	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	4756de53ea4d40471a582e898815a5c8	python-utils-r1	ae9becb5d45344c01939c3f57df0d3fd	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	git-r3	727a612b4c6247766904e3f74a326e2b	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	4756de53ea4d40471a582e898815a5c8	python-utils-r1	ae9becb5d45344c01939c3f57df0d3fd	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=d433ab8ffe2485a2490c27517b9cabcf

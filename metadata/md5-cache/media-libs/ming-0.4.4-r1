@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare prerm setup test unpack
-DEPEND=sys-devel/flex virtual/yacc !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-devel/m4-1.4.3 >=sys-devel/libtool-1.5.18 php? ( php_targets_php5-3? ( dev-lang/php:5.3 ) ) dev-lang/perl:=[-build(-)] python? ( =dev-lang/python-2* )
+DEPEND=sys-devel/flex virtual/yacc !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-devel/m4-1.4.3 >=sys-devel/libtool-1.5.18 php? ( php_targets_php5-3? ( dev-lang/php:5.3 ) ) dev-lang/perl:=[-build(-)] python? ( =dev-lang/python-2* )
 DESCRIPTION=An Open Source library for Flash movie generation
 EAPI=5
 HOMEPAGE=http://ming.sourceforge.net/
@@ -11,5 +11,5 @@ REQUIRED_USE=php? ( || ( php_targets_php5-3 ) )
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/ming/ming-0.4.4.tar.bz2
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	php-ext-source-r2	b4d5827d04ab9f22f094e1ecab1df639	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	php-ext-source-r2	b4d5827d04ab9f22f094e1ecab1df639	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
 _md5_=cb294ac59d2e162e0b23bd883eb7bb16

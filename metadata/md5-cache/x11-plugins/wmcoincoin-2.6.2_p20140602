@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure prepare
-DEPEND=x11-libs/gtk+:2 media-libs/imlib2 x11-libs/libXext x11-libs/libXpm x11-libs/libX11 x11-libs/libXft xinerama? ( x11-libs/libXinerama ) x11-proto/xextproto x11-proto/xproto x11-libs/libXt virtual/pkgconfig nls? ( sys-devel/gettext ) xinerama? ( x11-proto/xineramaproto ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=x11-libs/gtk+:2 media-libs/imlib2 x11-libs/libXext x11-libs/libXpm x11-libs/libX11 x11-libs/libXft xinerama? ( x11-libs/libXinerama ) x11-proto/xextproto x11-proto/xproto x11-libs/libXt virtual/pkgconfig nls? ( sys-devel/gettext ) xinerama? ( x11-proto/xineramaproto ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=a dockapp for browsing dacode news and board sites
 EAPI=5
 HOMEPAGE=http://hules.free.fr/wmcoincoin
@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/gtk+:2 media-libs/imlib2 x11-libs/libXext x11-libs/libXpm x11-libs/libX11 x11-libs/libXft xinerama? ( x11-libs/libXinerama )
 SLOT=0
 SRC_URI=https://github.com/d-torrance/wmcoincoin/archive/debian/2.6.2+20140602-1.tar.gz -> wmcoincoin-2.6.2_p20140602.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=802acde9a23aa7b2bd0ade908f3650ec

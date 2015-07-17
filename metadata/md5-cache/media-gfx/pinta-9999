@@ -1,10 +1,10 @@
 DEFINED_PHASES=postinst postrm preinst prepare unpack
-DEPEND=dev-dotnet/atk-sharp:2 dev-dotnet/gdk-sharp:2 dev-dotnet/glib-sharp:2 dev-dotnet/gtk-sharp:2 dev-dotnet/mono-addins[gtk] dev-dotnet/pango-sharp:2 dev-lang/mono dev-util/intltool virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4 dev-vcs/git
+DEPEND=dev-dotnet/atk-sharp:2 dev-dotnet/gdk-sharp:2 dev-dotnet/glib-sharp:2 dev-dotnet/gtk-sharp:2 dev-dotnet/mono-addins[gtk] dev-dotnet/pango-sharp:2 dev-lang/mono dev-util/intltool virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4 dev-vcs/git
 DESCRIPTION=Simple Painting for Gtk
 EAPI=5
 HOMEPAGE=http://pinta-project.com
 LICENSE=MIT CC-BY-3.0
 RDEPEND=dev-dotnet/atk-sharp:2 dev-dotnet/gdk-sharp:2 dev-dotnet/glib-sharp:2 dev-dotnet/gtk-sharp:2 dev-dotnet/mono-addins[gtk] dev-dotnet/pango-sharp:2 dev-lang/mono x11-libs/cairo[X] x11-libs/gdk-pixbuf[X,jpeg,tiff] x11-themes/gnome-icon-theme
 SLOT=0
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	git-2	e28f0d8a9b321431b1e699782851b827	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	mono	203a4295c06155d318bdff9c6b2d5e1c	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	git-2	e28f0d8a9b321431b1e699782851b827	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	mono	203a4295c06155d318bdff9c6b2d5e1c	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=f055a5b49dadb1b0d5053046f7299f11

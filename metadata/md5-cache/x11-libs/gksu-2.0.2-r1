@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
-DEPEND=>=x11-libs/libgksu-2.0.8 >=x11-libs/gtk+-2.4:2 >=gnome-base/gconf-2 gnome? ( >=gnome-base/nautilus-2 x11-terms/gnome-terminal ) dev-util/intltool virtual/pkgconfig doc? ( dev-util/gtk-doc ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 app-arch/xz-utils >=sys-apps/sed-4 >=sys-apps/sed-4
+DEPEND=>=x11-libs/libgksu-2.0.8 >=x11-libs/gtk+-2.4:2 >=gnome-base/gconf-2 gnome? ( >=gnome-base/nautilus-2 x11-terms/gnome-terminal ) dev-util/intltool virtual/pkgconfig doc? ( dev-util/gtk-doc ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 app-arch/xz-utils >=sys-apps/sed-4 >=sys-apps/sed-4
 DESCRIPTION=A gtk+ frontend for libgksu
 EAPI=4
 HOMEPAGE=http://www.nongnu.org/gksu/
@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=x11-libs/libgksu-2.0.8 >=x11-libs/gtk+-2.4:2 >=gnome-base/gconf-2 gnome? ( >=gnome-base/nautilus-2 x11-terms/gnome-terminal )
 SLOT=0
 SRC_URI=http://people.debian.org/~kov/gksu/gksu-2.0.2.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	fixheadtails	c6fd1fc49c9dc11924f28a1406f251a0	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	45882dc8beda2ffd09ad51fb3f22b669	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	fixheadtails	c6fd1fc49c9dc11924f28a1406f251a0	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	45882dc8beda2ffd09ad51fb3f22b669	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=13639ee28799ea55d229b5d20783756e

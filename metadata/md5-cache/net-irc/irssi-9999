@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=sys-libs/ncurses >=dev-libs/glib-2.6.0 ssl? ( dev-libs/openssl:= ) perl? ( dev-lang/perl ) socks5? ( >=net-proxy/dante-1.1.18 ) virtual/pkgconfig >=sys-devel/autoconf-2.58 dev-lang/perl || ( www-client/lynx www-client/elinks ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-lang/perl:=[-build(-)] >=dev-vcs/git-1.8.2.1
+DEPEND=sys-libs/ncurses >=dev-libs/glib-2.6.0 ssl? ( dev-libs/openssl:= ) perl? ( dev-lang/perl ) socks5? ( >=net-proxy/dante-1.1.18 ) virtual/pkgconfig >=sys-devel/autoconf-2.58 dev-lang/perl || ( www-client/lynx www-client/elinks ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-lang/perl:=[-build(-)] >=dev-vcs/git-1.8.2.1
 DESCRIPTION=A modular textUI IRC client with IPv6 support
 EAPI=5
 HOMEPAGE=http://irssi.org/
@@ -7,5 +7,5 @@ IUSE=ipv6 +perl selinux ssl socks5 +proxy
 LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses >=dev-libs/glib-2.6.0 ssl? ( dev-libs/openssl:= ) perl? ( dev-lang/perl ) socks5? ( >=net-proxy/dante-1.1.18 ) selinux? ( sec-policy/selinux-irc ) perl? ( !net-im/silc-client ) dev-lang/perl:=[-build(-)]
 SLOT=0
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	git-r3	727a612b4c6247766904e3f74a326e2b	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	git-r3	727a612b4c6247766904e3f74a326e2b	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
 _md5_=9d80649114bdafb336bc12cc1c024852

@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst preinst prepare setup
-DEPEND=sys-libs/zlib >=dev-libs/cyrus-sasl-2.1.13 afs? ( net-fs/openafs ) berkdb? ( >=sys-libs/db-3.2 ) kerberos? ( virtual/krb5 ) mysql? ( >=virtual/mysql-5.5 ) nntp? ( !net-nntp/leafnode ) pam? ( virtual/pam >=net-mail/mailbase-1 ) postgres? ( dev-db/postgresql ) snmp? ( >=net-analyzer/net-snmp-5.2.2-r1 ) sqlite? ( dev-db/sqlite ) ssl? ( >=dev-libs/openssl-0.9.6 ) tcpd? ( >=sys-apps/tcp-wrappers-7.6 snmp? ( net-analyzer/net-snmp[tcpd=] ) ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 ssl? ( dev-libs/openssl )
+DEPEND=sys-libs/zlib >=dev-libs/cyrus-sasl-2.1.13 afs? ( net-fs/openafs ) berkdb? ( >=sys-libs/db-3.2 ) kerberos? ( virtual/krb5 ) mysql? ( >=virtual/mysql-5.5 ) nntp? ( !net-nntp/leafnode ) pam? ( virtual/pam >=net-mail/mailbase-1 ) postgres? ( dev-db/postgresql ) snmp? ( >=net-analyzer/net-snmp-5.2.2-r1 ) sqlite? ( dev-db/sqlite ) ssl? ( >=dev-libs/openssl-0.9.6 ) tcpd? ( >=sys-apps/tcp-wrappers-7.6 snmp? ( net-analyzer/net-snmp[tcpd=] ) ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 ssl? ( dev-libs/openssl )
 DESCRIPTION=The Cyrus IMAP Server
 EAPI=4
 HOMEPAGE=http://www.cyrusimap.org/
@@ -10,5 +10,5 @@ RDEPEND=sys-libs/zlib >=dev-libs/cyrus-sasl-2.1.13 afs? ( net-fs/openafs ) berkd
 REQUIRED_USE=afs? ( kerberos )
 SLOT=0
 SRC_URI=ftp://ftp.cyrusimap.org/cyrus-imapd/cyrus-imapd-2.4.17.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	db-use	82d0e62839f20e1e0d5a2259abd5316f	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	pam	aa1ebb3ab720ea04dbbdd6eaaf9554ed	ssl-cert	b53367370fde96e19beca78050a47c61	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	db-use	82d0e62839f20e1e0d5a2259abd5316f	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	pam	aa1ebb3ab720ea04dbbdd6eaaf9554ed	ssl-cert	b53367370fde96e19beca78050a47c61	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=961339233dc6b7d0bc5184630b2a5bfd

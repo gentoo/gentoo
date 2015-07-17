@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst prepare setup
-DEPEND=>=sys-fs/lvm2-2.02.45 klibc? ( dev-libs/klibc ) dietlibc? ( dev-libs/dietlibc ) virtual/pkgconfig static? ( sys-fs/lvm2[static-libs] ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=sys-fs/lvm2-2.02.45 klibc? ( dev-libs/klibc ) dietlibc? ( dev-libs/dietlibc ) virtual/pkgconfig static? ( sys-fs/lvm2[static-libs] ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Device-mapper RAID tool and library
 EAPI=5
 HOMEPAGE=http://people.redhat.com/~heinzm/sw/dmraid/
@@ -10,5 +10,5 @@ RDEPEND=>=sys-fs/lvm2-2.02.45 klibc? ( dev-libs/klibc ) dietlibc? ( dev-libs/die
 REQUIRED_USE=klibc? ( !dietlibc )
 SLOT=0
 SRC_URI=http://people.redhat.com/~heinzm/sw/dmraid/src/dmraid-1.0.0.rc16-3.tar.bz2
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=e6931731735622a96662f021bf3168b8

@@ -1,5 +1,5 @@
 DEFINED_PHASES=prepare
-DEPEND=app-crypt/tpm-tools[pkcs11] dev-libs/opencryptoki[tpm] app-crypt/trousers dev-libs/openssl:0= !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=app-crypt/tpm-tools[pkcs11] dev-libs/opencryptoki[tpm] app-crypt/trousers dev-libs/openssl:0= !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Simple PKCS11 provider for TPM chips
 EAPI=5
 HOMEPAGE=https://github.com/ThomasHabets/simple-tpm-pk11
@@ -8,5 +8,5 @@ LICENSE=Apache-2.0
 RDEPEND=app-crypt/tpm-tools[pkcs11] dev-libs/opencryptoki[tpm] app-crypt/trousers dev-libs/openssl:0= net-misc/openssh[-X509]
 SLOT=0
 SRC_URI=https://github.com/ThomasHabets/simple-tpm-pk11/archive/0.03.tar.gz -> simple-tpm-pk11-0.03.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=f9ee33733e2308d276190b2828b6bbf7

@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare
-DEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libXrender x11-libs/libXmu >=media-libs/libpng-1.4 gif? ( >=media-libs/giflib-4.0.1 ) imlib? ( media-libs/imlib ) truetype? ( x11-libs/libXft ) emacs? ( virtual/emacs ) m17n-lib? ( dev-libs/m17n-lib ) mng? ( media-libs/libmng ) sys-devel/autoconf x11-proto/xextproto x11-libs/libxkbfile app-text/rman x11-misc/imake !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
+DEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libXrender x11-libs/libXmu >=media-libs/libpng-1.4 gif? ( >=media-libs/giflib-4.0.1 ) imlib? ( media-libs/imlib ) truetype? ( x11-libs/libXft ) emacs? ( virtual/emacs ) m17n-lib? ( dev-libs/m17n-lib ) mng? ( media-libs/libmng ) sys-devel/autoconf x11-proto/xextproto x11-libs/libxkbfile app-text/rman x11-misc/imake !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
 DESCRIPTION=An X11 based presentation tool
 EAPI=4
 HOMEPAGE=http://member.wide.ad.jp/wg/mgp/
@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libXrender x11-libs/libXmu >=media-libs/libpng-1.4 gif? ( >=media-libs/giflib-4.0.1 ) imlib? ( media-libs/imlib ) truetype? ( x11-libs/libXft ) emacs? ( virtual/emacs ) m17n-lib? ( dev-libs/m17n-lib ) mng? ( media-libs/libmng ) nls? ( sys-devel/gettext ) truetype? ( cjk? ( media-fonts/sazanami ) )
 SLOT=0
 SRC_URI=ftp://sh.wide.ad.jp/WIDE/free-ware/mgp/magicpoint-1.13a.tar.gz ftp://ftp.mew.org/pub/MagicPoint/magicpoint-1.13a.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	elisp-common	9a16929c1a6aec7e1c903289983e114c	eutils	9fb270e417e0e83d64ca52586c4a79de	fixheadtails	c6fd1fc49c9dc11924f28a1406f251a0	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	elisp-common	9a16929c1a6aec7e1c903289983e114c	eutils	9fb270e417e0e83d64ca52586c4a79de	fixheadtails	c6fd1fc49c9dc11924f28a1406f251a0	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=b7f0c17f3aef1eddff167643225d8b44

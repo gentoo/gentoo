@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure prepare
-DEPEND=>=dev-lang/mono-1.1.13 >=dev-dotnet/gtk-sharp-2.10.1 >=dev-dotnet/dbus-sharp-0.6 >=dev-dotnet/dbus-sharp-glib-0.4 >=x11-libs/libnotify-0.4.5 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=dev-lang/mono-1.1.13 >=dev-dotnet/gtk-sharp-2.10.1 >=dev-dotnet/dbus-sharp-0.6 >=dev-dotnet/dbus-sharp-glib-0.4 >=x11-libs/libnotify-0.4.5 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=a C# client implementation for Desktop Notifications
 EAPI=4
 HOMEPAGE=http://www.ndesk.org/NotifySharp
@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=>=dev-lang/mono-1.1.13 >=dev-dotnet/gtk-sharp-2.10.1 >=dev-dotnet/dbus-sharp-0.6 >=dev-dotnet/dbus-sharp-glib-0.4 >=x11-libs/libnotify-0.4.5
 SLOT=0
 SRC_URI=mirror://gentoo/notify-sharp-20090305.tar.bz2
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	mono	203a4295c06155d318bdff9c6b2d5e1c	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	mono	203a4295c06155d318bdff9c6b2d5e1c	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=5545827d36e1705af01ae0c8ad3a972d

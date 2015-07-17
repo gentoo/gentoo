@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=dev-libs/expat dev-libs/libpcre:3 sci-libs/plplot sys-libs/zlib mysql? ( virtual/mysql ) pdf? ( media-libs/libharu ) png? ( sys-libs/zlib media-libs/libpng media-libs/gd ) postgres? ( dev-db/postgresql ) !minimal? ( sci-biology/primer3 sci-biology/clustalw ) X? ( x11-libs/libXt ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-libs/expat dev-libs/libpcre:3 sci-libs/plplot sys-libs/zlib mysql? ( virtual/mysql ) pdf? ( media-libs/libharu ) png? ( sys-libs/zlib media-libs/libpng media-libs/gd ) postgres? ( dev-db/postgresql ) !minimal? ( sci-biology/primer3 sci-biology/clustalw ) X? ( x11-libs/libXt ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=The European Molecular Biology Open Software Suite - A sequence analysis package
 EAPI=4
 HOMEPAGE=http://emboss.sourceforge.net/
@@ -10,5 +10,5 @@ PDEPEND=!minimal? ( sci-biology/aaindex sci-biology/cutg sci-biology/prints sci-
 RDEPEND=dev-libs/expat dev-libs/libpcre:3 sci-libs/plplot sys-libs/zlib mysql? ( virtual/mysql ) pdf? ( media-libs/libharu ) png? ( sys-libs/zlib media-libs/libpng media-libs/gd ) postgres? ( dev-db/postgresql ) !minimal? ( sci-biology/primer3 sci-biology/clustalw ) X? ( x11-libs/libXt ) !sys-devel/cons
 SLOT=0
 SRC_URI=ftp://emboss.open-bio.org/pub/EMBOSS/old/6.3.1_p4/EMBOSS-6.3.1.tar.gz ftp://emboss.open-bio.org/pub/EMBOSS/old/6.3.1_p4/fixes/patches/patch-1-4.gz -> emboss-6.3.1_p4.patch.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=6ba6e2fcb62ae1ccd3dae89b405a10a6

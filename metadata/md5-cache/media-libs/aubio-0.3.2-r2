@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare setup
-DEPEND=sci-libs/fftw:3.0 media-libs/libsndfile media-libs/libsamplerate alsa? ( media-libs/alsa-lib ) jack? ( media-sound/jack-audio-connection-kit ) lash? ( media-sound/lash ) >=dev-lang/swig-1.3.0 virtual/pkgconfig doc? ( app-doc/doxygen virtual/latex-base ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
+DEPEND=sci-libs/fftw:3.0 media-libs/libsndfile media-libs/libsamplerate alsa? ( media-libs/alsa-lib ) jack? ( media-sound/jack-audio-connection-kit ) lash? ( media-sound/lash ) >=dev-lang/swig-1.3.0 virtual/pkgconfig doc? ( app-doc/doxygen virtual/latex-base ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
 DESCRIPTION=Library for audio labelling
 EAPI=3
 HOMEPAGE=http://aubio.piem.org
@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=sci-libs/fftw:3.0 media-libs/libsndfile media-libs/libsamplerate alsa? ( media-libs/alsa-lib ) jack? ( media-sound/jack-audio-connection-kit ) lash? ( media-sound/lash ) || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
 SLOT=0
 SRC_URI=http://aubio.piem.org/pub/aubio-0.3.2.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=72773532a6d659b1fcc7452932d45e37

@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare setup
-DEPEND=dev-libs/glib:2 dev-db/sqlite:3 sys-apps/util-linux boost? ( dev-libs/boost ) opencc? ( app-i18n/opencc ) || ( >=dev-lang/python-2.7.5-r2:2.7 ) doc? ( app-doc/doxygen ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-libs/glib:2 dev-db/sqlite:3 sys-apps/util-linux boost? ( dev-libs/boost ) opencc? ( app-i18n/opencc ) || ( >=dev-lang/python-2.7.5-r2:2.7 ) doc? ( app-doc/doxygen ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=The Chinese PinYin and Bopomofo conversion library
 EAPI=5
 HOMEPAGE=https://github.com/pyzy/pyzy
@@ -10,5 +10,5 @@ RDEPEND=dev-libs/glib:2 dev-db/sqlite:3 sys-apps/util-linux boost? ( dev-libs/bo
 RESTRICT=test
 SLOT=0
 SRC_URI=https://pyzy.googlecode.com/files/pyzy-0.1.0.tar.gz https://pyzy.googlecode.com/files/pyzy-database-1.0.0.tar.bz2
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	4756de53ea4d40471a582e898815a5c8	python-utils-r1	ae9becb5d45344c01939c3f57df0d3fd	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	4756de53ea4d40471a582e898815a5c8	python-utils-r1	ae9becb5d45344c01939c3f57df0d3fd	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=eb051bffda428fdb5c67cbd655438b59

@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare
-DEPEND=dev-libs/glib:2= >=media-gfx/exiv2-0.11:0= media-libs/lcms:2= >=media-libs/lensfun-0.2.5:= media-libs/libpng:0= media-libs/tiff:0= virtual/jpeg:0= fits? ( sci-libs/cfitsio:0= ) gnome? ( >=gnome-base/gconf-2 ) gtk? ( >=x11-libs/gtk+-2.6:2 >=media-gfx/gtkimageview-1.5 ) gimp? ( >=media-gfx/gimp-2 ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
+DEPEND=dev-libs/glib:2= >=media-gfx/exiv2-0.11:0= media-libs/lcms:2= >=media-libs/lensfun-0.2.5:= media-libs/libpng:0= media-libs/tiff:0= virtual/jpeg:0= fits? ( sci-libs/cfitsio:0= ) gnome? ( >=gnome-base/gconf-2 ) gtk? ( >=x11-libs/gtk+-2.6:2 >=media-gfx/gtkimageview-1.5 ) gimp? ( >=media-gfx/gimp-2 ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
 DESCRIPTION=RAW Image format viewer and GIMP plugin
 EAPI=5
 HOMEPAGE=http://ufraw.sourceforge.net/
@@ -10,5 +10,5 @@ RDEPEND=dev-libs/glib:2= >=media-gfx/exiv2-0.11:0= media-libs/lcms:2= >=media-li
 REQUIRED_USE=gimp? ( gtk )
 SLOT=0
 SRC_URI=mirror://sourceforge/ufraw/ufraw-0.21.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=2af5a295c9ae8d4a38c5d982dc1ec512

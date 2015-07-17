@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst prepare test unpack
-DEPEND=>=dev-libs/boost-1.42.0 dev-libs/lockdev >=sys-apps/util-linux-2.16 btrfs? ( >=sys-fs/btrfs-progs-0.19-r2 ) lvm? ( sys-fs/lvm2 ) pam? ( sys-libs/pam ) app-arch/xz-utils sys-apps/groff doc? ( app-doc/doxygen media-gfx/graphviz ) nls? ( >=app-text/po4a-0.40 sys-devel/gettext ) test? ( >=dev-util/cppunit-1.10.0 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=dev-libs/boost-1.42.0 dev-libs/lockdev >=sys-apps/util-linux-2.16 btrfs? ( >=sys-fs/btrfs-progs-0.19-r2 ) lvm? ( sys-fs/lvm2 ) pam? ( sys-libs/pam ) app-arch/xz-utils sys-apps/groff doc? ( app-doc/doxygen media-gfx/graphviz ) nls? ( >=app-text/po4a-0.40 sys-devel/gettext ) test? ( >=dev-util/cppunit-1.10.0 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Utility to execute commands in a chroot environment
 EAPI=4
 HOMEPAGE=http://packages.debian.org/source/sid/schroot
@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=>=dev-libs/boost-1.42.0 dev-libs/lockdev >=sys-apps/util-linux-2.16 btrfs? ( >=sys-fs/btrfs-progs-0.19-r2 ) lvm? ( sys-fs/lvm2 ) pam? ( sys-libs/pam ) sys-apps/debianutils dchroot? ( !sys-apps/dchroot ) nls? ( virtual/libintl )
 SLOT=0
 SRC_URI=mirror://debian/pool/main/s/schroot/schroot_1.6.5.orig.tar.xz mirror://debian/pool/main/s/schroot/schroot_1.6.5-1.debian.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	base	87f7447ccfc06fd0729ff4684e11e0d6	bash-completion-r1	c8399c7c7ecbcf7ed6e5bd3abb3d4af3	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	pam	aa1ebb3ab720ea04dbbdd6eaaf9554ed	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	base	87f7447ccfc06fd0729ff4684e11e0d6	bash-completion-r1	c8399c7c7ecbcf7ed6e5bd3abb3d4af3	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	pam	aa1ebb3ab720ea04dbbdd6eaaf9554ed	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=690bb97491dfd4e220b8c011a70d09eb

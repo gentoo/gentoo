@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=dev-libs/libpcre media-libs/freetype:2 devil? ( media-libs/devil ) directfb? ( dev-libs/DirectFB ) expat? ( dev-libs/expat ) irrlicht? ( dev-games/irrlicht ) lua? ( dev-lang/lua dev-lua/toluapp ) opengl? ( virtual/opengl media-libs/freeglut media-libs/glew ) xerces-c? ( dev-libs/xerces-c ) xml? ( dev-libs/libxml2 ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-libs/libpcre media-libs/freetype:2 devil? ( media-libs/devil ) directfb? ( dev-libs/DirectFB ) expat? ( dev-libs/expat ) irrlicht? ( dev-games/irrlicht ) lua? ( dev-lang/lua dev-lua/toluapp ) opengl? ( virtual/opengl media-libs/freeglut media-libs/glew ) xerces-c? ( dev-libs/xerces-c ) xml? ( dev-libs/libxml2 ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Crazy Eddie's GUI System
 EAPI=5
 HOMEPAGE=http://www.cegui.org.uk/
@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=dev-libs/libpcre media-libs/freetype:2 devil? ( media-libs/devil ) directfb? ( dev-libs/DirectFB ) expat? ( dev-libs/expat ) irrlicht? ( dev-games/irrlicht ) lua? ( dev-lang/lua dev-lua/toluapp ) opengl? ( virtual/opengl media-libs/freeglut media-libs/glew ) xerces-c? ( dev-libs/xerces-c ) xml? ( dev-libs/libxml2 )
 SLOT=0
 SRC_URI=mirror://sourceforge/crayzedsgui/CEGUI-0.6.2b.tar.gz doc? ( mirror://sourceforge/crayzedsgui/CEGUI-0.6.2-DOCS.tar.gz )
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=426815332f5fe4bf6c373477181686bb

@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst prepare setup unpack
-DEPEND=app-arch/bzip2 dev-libs/glib:2 dev-libs/libxslt dev-libs/openssl net-libs/gnutls sys-apps/util-linux sys-cluster/cluster-glue >=sys-cluster/pacemaker-1.1 heartbeat? ( sys-cluster/pacemaker[heartbeat] ) gtk? ( dev-python/pygtk ) sys-libs/ncurses sys-libs/pam sys-libs/zlib gtk? ( dev-lang/swig ) virtual/pkgconfig nls? ( dev-util/intltool sys-devel/gettext ) =dev-lang/python-2* !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=app-arch/bzip2 dev-libs/glib:2 dev-libs/libxslt dev-libs/openssl net-libs/gnutls sys-apps/util-linux sys-cluster/cluster-glue >=sys-cluster/pacemaker-1.1 heartbeat? ( sys-cluster/pacemaker[heartbeat] ) gtk? ( dev-python/pygtk ) sys-libs/ncurses sys-libs/pam sys-libs/zlib gtk? ( dev-lang/swig ) virtual/pkgconfig nls? ( dev-util/intltool sys-devel/gettext ) =dev-lang/python-2* !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Pacemaker python GUI and management daemon
 EAPI=4
 HOMEPAGE=http://hg.clusterlabs.org/pacemaker/pygui/
@@ -9,5 +9,5 @@ LICENSE=GPL-2 LGPL-2.1
 RDEPEND=app-arch/bzip2 dev-libs/glib:2 dev-libs/libxslt dev-libs/openssl net-libs/gnutls sys-apps/util-linux sys-cluster/cluster-glue >=sys-cluster/pacemaker-1.1 heartbeat? ( sys-cluster/pacemaker[heartbeat] ) gtk? ( dev-python/pygtk ) sys-libs/ncurses sys-libs/pam sys-libs/zlib sys-devel/libtool =dev-lang/python-2*
 SLOT=0
 SRC_URI=https://github.com/gao-yan/pacemaker-mgmt/tarball/pacemaker-mgmt-2.1.2 -> pacemaker-gui-2.1.2.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=d6e9dcef211881c74c3ff122c15ae3cf

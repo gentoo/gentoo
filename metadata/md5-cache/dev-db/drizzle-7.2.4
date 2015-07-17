@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare setup test
-DEPEND=tcmalloc? ( dev-util/google-perftools ) sys-libs/readline sys-apps/util-linux dev-libs/libpcre dev-libs/openssl >=dev-libs/libevent-1.4 >=dev-libs/protobuf-2.1.0 dev-libs/libaio >=dev-libs/boost-1.52.0-r1:=[threads] gearman? ( >=sys-cluster/gearmand-0.12 ) pam? ( sys-libs/pam ) curl? ( net-misc/curl ) memcache? ( >=dev-libs/libmemcached-0.39 ) md5? ( >=dev-libs/libgcrypt-1.4.2:0 ) ldap? ( net-nds/openldap ) v8? ( dev-lang/v8 ) !dev-db/libdrizzle =dev-lang/python-2* sys-devel/gettext dev-util/intltool dev-util/gperf sys-devel/flex dev-python/sphinx doc? ( app-doc/doxygen ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=tcmalloc? ( dev-util/google-perftools ) sys-libs/readline sys-apps/util-linux dev-libs/libpcre dev-libs/openssl >=dev-libs/libevent-1.4 >=dev-libs/protobuf-2.1.0 dev-libs/libaio >=dev-libs/boost-1.52.0-r1:=[threads] gearman? ( >=sys-cluster/gearmand-0.12 ) pam? ( sys-libs/pam ) curl? ( net-misc/curl ) memcache? ( >=dev-libs/libmemcached-0.39 ) md5? ( >=dev-libs/libgcrypt-1.4.2:0 ) ldap? ( net-nds/openldap ) v8? ( dev-lang/v8 ) !dev-db/libdrizzle =dev-lang/python-2* sys-devel/gettext dev-util/intltool dev-util/gperf sys-devel/flex dev-python/sphinx doc? ( app-doc/doxygen ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Database optimized for Cloud and Net applications
 EAPI=5
 HOMEPAGE=http://drizzle.org
@@ -10,5 +10,5 @@ RDEPEND=tcmalloc? ( dev-util/google-perftools ) sys-libs/readline sys-apps/util-
 RESTRICT=test
 SLOT=0
 SRC_URI=http://launchpad.net/drizzle/7.2/7.2.4/+download/drizzle-7.2.4-alpha.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	pam	aa1ebb3ab720ea04dbbdd6eaaf9554ed	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	pam	aa1ebb3ab720ea04dbbdd6eaaf9554ed	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=aa46586fc9e444c0887c6bda12728792

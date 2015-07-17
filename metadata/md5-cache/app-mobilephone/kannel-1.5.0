@@ -10,5 +10,5 @@ RDEPEND=sys-libs/e2fsprogs-libs dev-libs/libxml2 dev-lang/perl sys-libs/zlib ssl
 RESTRICT=test
 SLOT=0
 SRC_URI=http://www.kannel.org/download/1.5.0/gateway-1.5.0.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	ssl-cert	b53367370fde96e19beca78050a47c61	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	ssl-cert	b53367370fde96e19beca78050a47c61	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
 _md5_=744c68f07d26374230281f447834561b

@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst prepare
-DEPEND=>=sys-libs/ncurses-5.0 !dev-java/nailgun canna? ( app-i18n/canna ) >=sys-apps/sed-4.0 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=sys-libs/ncurses-5.0 !dev-java/nailgun canna? ( app-i18n/canna ) >=sys-apps/sed-4.0 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Emacs like micro editor Ng -- based on mg2a
 EAPI=5
 HOMEPAGE=http://tt.sakura.ne.jp/~amura/ng/
@@ -9,5 +9,5 @@ LICENSE=Emacs
 RDEPEND=>=sys-libs/ncurses-5.0 !dev-java/nailgun canna? ( app-i18n/canna )
 SLOT=0
 SRC_URI=http://tt.sakura.ne.jp/~amura/archives/ng/ng-1.5beta1.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=f3f3824c4a8cc6462629d23feb99a79d

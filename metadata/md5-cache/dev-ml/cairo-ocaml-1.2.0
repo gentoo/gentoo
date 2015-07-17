@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare
-DEPEND=dev-lang/ocaml:= x11-libs/cairo gtk? ( dev-ml/lablgtk:2= ) pango? ( x11-libs/pango ) svg? ( x11-libs/libsvg-cairo ) >=dev-ml/findlib-1.0.4-r1 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-lang/ocaml:= x11-libs/cairo gtk? ( dev-ml/lablgtk:2= ) pango? ( x11-libs/pango ) svg? ( x11-libs/libsvg-cairo ) >=dev-ml/findlib-1.0.4-r1 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Ocaml bindings for the cairo vector graphics library
 EAPI=5
 HOMEPAGE=http://www.cairographics.org/cairo-ocaml/
@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=dev-lang/ocaml:= x11-libs/cairo gtk? ( dev-ml/lablgtk:2= ) pango? ( x11-libs/pango ) svg? ( x11-libs/libsvg-cairo )
 SLOT=0/1.2.0
 SRC_URI=http://cgit.freedesktop.org/cairo-ocaml/snapshot/cairo-ocaml-1.2.0.tar.bz2
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	findlib	9cf6020ee5481f39f1aa566a323f9868	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	findlib	9cf6020ee5481f39f1aa566a323f9868	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=d1c3a082a93e4b2eb81c6a79c754c015

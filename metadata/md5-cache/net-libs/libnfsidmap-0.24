@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=ldap? ( net-nds/openldap ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=ldap? ( net-nds/openldap ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=NFSv4 ID <-> name mapping library
 EAPI=2
 HOMEPAGE=http://www.citi.umich.edu/projects/nfsv4/linux/
@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=ldap? ( net-nds/openldap ) !<net-fs/nfs-utils-1.2.2 !net-fs/idmapd
 SLOT=0
 SRC_URI=http://www.citi.umich.edu/projects/nfsv4/linux/libnfsidmap/libnfsidmap-0.24.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=b19e0d6cf72f69f2227a4cb5540d924b

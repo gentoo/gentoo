@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst preinst prepare test unpack
-DEPEND=!<app-arch/lzma-4.63 !app-arch/lzma-utils !<app-arch/p7zip-4.57 sys-devel/gettext dev-vcs/cvs >=sys-devel/libtool-2 dev-vcs/git !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=!<app-arch/lzma-4.63 !app-arch/lzma-utils !<app-arch/p7zip-4.57 sys-devel/gettext dev-vcs/cvs >=sys-devel/libtool-2 dev-vcs/git !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=utils for managing LZMA compressed files
 EAPI=4
 HOMEPAGE=http://tukaani.org/xz/
@@ -7,5 +7,5 @@ IUSE=elibc_FreeBSD nls static-libs +threads abi_x86_32 abi_x86_64 abi_x86_x32 ab
 LICENSE=public-domain LGPL-2.1+ GPL-2+
 RDEPEND=!<app-arch/lzma-4.63 !app-arch/lzma-utils !<app-arch/p7zip-4.57
 SLOT=0
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	git-2	e28f0d8a9b321431b1e699782851b827	libtool	52d0e17251d04645ffaa61bfdd858944	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multilib-build	e733e978b7fa70607cc221fd9c070db6	multilib-minimal	13dd976916c35a1e2c8d170e840c7018	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	git-2	e28f0d8a9b321431b1e699782851b827	libtool	52d0e17251d04645ffaa61bfdd858944	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multilib-build	e733e978b7fa70607cc221fd9c070db6	multilib-minimal	13dd976916c35a1e2c8d170e840c7018	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=f9b23c0e6ffa8dc0ddff60cf1e6f3ef0

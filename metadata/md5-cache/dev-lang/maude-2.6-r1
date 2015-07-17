@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=>=dev-libs/gmp-4.1.3 dev-libs/libsigsegv dev-libs/libtecla sci-libs/buddy sys-devel/bison sys-devel/flex !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=dev-libs/gmp-4.1.3 dev-libs/libsigsegv dev-libs/libtecla sci-libs/buddy sys-devel/bison sys-devel/flex !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=High-level specification language for equational and logic programming
 EAPI=5
 HOMEPAGE=http://maude.cs.uiuc.edu/
@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/gmp-4.1.3 dev-libs/libsigsegv dev-libs/libtecla sci-libs/buddy
 SLOT=0
 SRC_URI=http://maude.cs.uiuc.edu/download/current/Maude-2.6.tar.gz http://dev.gentoo.org/~jlec/distfiles/maude-2.6-extras.tar.xz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=36b2cee23149347ba059f840e4d1940f

@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst postrm preinst prepare
-DEPEND=>=dev-libs/dbus-glib-0.98 >=dev-libs/glib-2.16 >=x11-libs/gtk+-3.2:3 >=x11-libs/libnotify-0.7 >=x11-libs/libwnck-3 x11-libs/libX11 x11-libs/pixman !x11-misc/notification-daemon !x11-misc/qtnotifydaemon virtual/pkgconfig gnome-base/gnome-common x11-proto/xproto !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
+DEPEND=>=dev-libs/dbus-glib-0.98 >=dev-libs/glib-2.16 >=x11-libs/gtk+-3.2:3 >=x11-libs/libnotify-0.7 >=x11-libs/libwnck-3 x11-libs/libX11 x11-libs/pixman !x11-misc/notification-daemon !x11-misc/qtnotifydaemon virtual/pkgconfig gnome-base/gnome-common x11-proto/xproto !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
 DESCRIPTION=Canonical's on-screen-display notification agent
 EAPI=4
 HOMEPAGE=http://launchpad.net/notify-osd
@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/dbus-glib-0.98 >=dev-libs/glib-2.16 >=x11-libs/gtk+-3.2:3 >=x
 RESTRICT=test
 SLOT=0
 SRC_URI=http://launchpad.net/notify-osd/precise/0.9.34/+download/notify-osd-0.9.34.tar.gz
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	portability	a45c088f246ef5091e029f6285d7ce42	savedconfig	5313100f525c41f6c72c6e04edeb4f65	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	portability	a45c088f246ef5091e029f6285d7ce42	savedconfig	5313100f525c41f6c72c6e04edeb4f65	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=1974cdbf5ba4f0c365924511d9c1031c

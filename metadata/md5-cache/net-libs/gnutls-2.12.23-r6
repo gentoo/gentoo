@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare setup test
-DEPEND=>=dev-libs/libtasn1-0.3.4 guile? ( >=dev-scheme/guile-1.8[networking] ) nettle? ( >=dev-libs/nettle-2.1[gmp] ) !nettle? ( >=dev-libs/libgcrypt-1.4.0:0 ) nls? ( virtual/libintl ) pkcs11? ( >=app-crypt/p11-kit-0.11 ) zlib? ( >=sys-libs/zlib-1.2.3.1 ) !bindist? ( lzo? ( >=dev-libs/lzo-2 ) ) virtual/pkgconfig sys-devel/libtool doc? ( dev-util/gtk-doc ) nls? ( sys-devel/gettext ) test? ( app-misc/datefudge ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=dev-libs/libtasn1-0.3.4 guile? ( >=dev-scheme/guile-1.8[networking] ) nettle? ( >=dev-libs/nettle-2.1[gmp] ) !nettle? ( >=dev-libs/libgcrypt-1.4.0:0 ) nls? ( virtual/libintl ) pkcs11? ( >=app-crypt/p11-kit-0.11 ) zlib? ( >=sys-libs/zlib-1.2.3.1 ) !bindist? ( lzo? ( >=dev-libs/lzo-2 ) ) virtual/pkgconfig sys-devel/libtool doc? ( dev-util/gtk-doc ) nls? ( sys-devel/gettext ) test? ( app-misc/datefudge ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A TLS 1.2 and SSL 3.0 implementation for the GNU project
 EAPI=5
 HOMEPAGE=http://www.gnutls.org/
@@ -9,5 +9,5 @@ LICENSE=GPL-3 LGPL-2.1
 RDEPEND=>=dev-libs/libtasn1-0.3.4 guile? ( >=dev-scheme/guile-1.8[networking] ) nettle? ( >=dev-libs/nettle-2.1[gmp] ) !nettle? ( >=dev-libs/libgcrypt-1.4.0:0 ) nls? ( virtual/libintl ) pkcs11? ( >=app-crypt/p11-kit-0.11 ) zlib? ( >=sys-libs/zlib-1.2.3.1 ) !bindist? ( lzo? ( >=dev-libs/lzo-2 ) )
 SLOT=0
 SRC_URI=ftp://ftp.gnutls.org/gcrypt/gnutls/v2.12/gnutls-2.12.23.tar.bz2
-_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=c2d323855ae56c64dba4906a21ddfbec
