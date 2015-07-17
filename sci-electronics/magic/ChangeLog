@@ -1,6 +1,11 @@
 # ChangeLog for sci-electronics/magic
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-electronics/magic/ChangeLog,v 1.76 2015/03/20 15:27:08 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/magic/ChangeLog,v 1.77 2015/07/17 14:52:43 tomjbe Exp $
+
+*magic-8.0.207 (17 Jul 2015)
+
+  17 Jul 2015; Thomas Beierlein <tomjbe@gentoo.org> +magic-8.0.207.ebuild:
+  Bump to latest stable version. Fix --disable-modular problem (Bug #529888)
 
   20 Mar 2015; Justin Lecher <jlec@gentoo.org> magic-7.5.202-r1.ebuild,
   magic-7.5.231.ebuild, magic-8.0.138.ebuild, metadata.xml:

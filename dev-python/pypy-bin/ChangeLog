@@ -1,6 +1,10 @@
 # ChangeLog for dev-python/pypy-bin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pypy-bin/ChangeLog,v 1.34 2015/06/04 21:18:18 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pypy-bin/ChangeLog,v 1.35 2015/07/17 14:57:57 floppym Exp $
+
+  17 Jul 2015; Mike Gilbert <floppym@gentoo.org> pypy-bin-2.3.1-r2.ebuild,
+  pypy-bin-2.4.0.ebuild, pypy-bin-2.5.1.ebuild, pypy-bin-2.6.0.ebuild:
+  Require openssl with bindist disabled to avoid missing symbols, bug 555160.
 
 *pypy-bin-2.6.0 (04 Jun 2015)
 

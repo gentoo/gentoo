@@ -4,10 +4,10 @@ DESCRIPTION=Advanced Linux Sound Architecture Utils (alsactl, alsamixer, etc.)
 EAPI=5
 HOMEPAGE=http://www.alsa-project.org/
 IUSE=doc +libsamplerate +ncurses nls selinux
-KEYWORDS=alpha amd64 arm hppa ia64 ~mips ~ppc ppc64 ~sh sparc x86
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh sparc x86
 LICENSE=GPL-2
 RDEPEND=>=media-libs/alsa-lib-1.0.29 libsamplerate? ( media-libs/libsamplerate ) ncurses? ( >=sys-libs/ncurses-5.7-r7 ) selinux? ( sec-policy/selinux-alsa )
 SLOT=0.9
 SRC_URI=mirror://alsaproject/utils/alsa-utils-1.0.29.tar.bz2
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	udev	da001465a2e939c93f7ae16947ce3438
-_md5_=5bab33190a0006bda66889046f30acc3
+_md5_=42d04670f1e5a975cd0f4d04365ccb25
