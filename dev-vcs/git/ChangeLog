@@ -1,6 +1,15 @@
 # ChangeLog for dev-vcs/git
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git/ChangeLog,v 1.341 2015/07/01 14:59:19 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git/ChangeLog,v 1.343 2015/07/17 07:21:00 polynomial-c Exp $
+
+  17 Jul 2015; Lars Wendler <polynomial-c@gentoo.org> files/git-daemon.confd:
+  Fixed typo in comment.
+
+*git-2.4.6 (17 Jul 2015)
+
+  17 Jul 2015; Lars Wendler <polynomial-c@gentoo.org> -git-2.4.4.ebuild,
+  +git-2.4.6.ebuild:
+  Version bump. Removed old.
 
   01 Jul 2015; Lars Wendler <polynomial-c@gentoo.org> git-2.4.5.ebuild:
   Fixed compilation with cgi USE flag (bug #553438).
