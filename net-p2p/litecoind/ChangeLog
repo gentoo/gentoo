@@ -1,6 +1,10 @@
 # ChangeLog for net-p2p/litecoind
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/litecoind/ChangeLog,v 1.14 2015/07/14 12:01:02 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/litecoind/ChangeLog,v 1.15 2015/07/17 19:10:54 blueness Exp $
+
+  17 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
+  litecoind-0.10.2.2-r1.ebuild, metadata.xml:
+  Add USE=wallet, bug #555124.
 
 *litecoind-0.10.2.2-r1 (14 Jul 2015)
 

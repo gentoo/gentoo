@@ -1,6 +1,13 @@
 # ChangeLog for dev-perl/Devel-SmallProf
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Devel-SmallProf/ChangeLog,v 1.17 2014/08/22 19:11:26 axs Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Devel-SmallProf/ChangeLog,v 1.18 2015/07/17 19:06:48 dilfridge Exp $
+
+*Devel-SmallProf-2.20.0-r2 (17 Jul 2015)
+
+  17 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Devel-SmallProf-2.20.0-r2.ebuild,
+  +files/Devel-SmallProf-2.20.0-defined.patch:
+  Revision bump, bug 555170
 
 *Devel-SmallProf-2.20.0-r1 (22 Aug 2014)
 

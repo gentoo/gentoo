@@ -1,6 +1,13 @@
 # ChangeLog for dev-perl/Exception-Base
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Exception-Base/ChangeLog,v 1.13 2015/06/13 21:49:28 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Exception-Base/ChangeLog,v 1.14 2015/07/17 18:57:41 dilfridge Exp $
+
+*Exception-Base-0.250.0-r2 (17 Jul 2015)
+
+  17 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Exception-Base-0.250.0-r2.ebuild,
+  +files/Exception-Base-0.250.0-sprintf.patch:
+  Version bump, bug 555206
 
   13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
   Exception-Base-0.250-r1.ebuild:

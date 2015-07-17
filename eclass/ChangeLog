@@ -1,6 +1,11 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1718 2015/07/17 18:29:39 grknight Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1719 2015/07/17 18:36:23 axs Exp $
+
+  17 Jul 2015; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  mozconfig-v6.38.eclass, mozconfig-v6.39.eclass:
+  Updated gstreamer dependencies to current stable and dropped gst-plugins-mad
+  since gst-plugins-libav now officially provides mp3 decoding
 
   17 Jul 2015; Brian Evans <grknight@gentoo.org> depend.php.eclass:
   Remove deprecated functions from depend.php.eclass as announced 30 days ago
