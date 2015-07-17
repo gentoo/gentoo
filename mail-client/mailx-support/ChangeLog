@@ -1,6 +1,10 @@
 # ChangeLog for mail-client/mailx-support
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/mailx-support/ChangeLog,v 1.31 2015/07/03 10:17:24 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/mailx-support/ChangeLog,v 1.32 2015/07/17 14:01:32 zlogene Exp $
+
+  17 Jul 2015; Mikle Kolyada <zlogene@gentoo.org>
+  mailx-support-20060102-r2.ebuild:
+  ia64 stable wrt bug #552724
 
   03 Jul 2015; Agostino Sarubbo <ago@gentoo.org>
   mailx-support-20060102-r2.ebuild:

@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/libzip
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libzip/ChangeLog,v 1.86 2015/06/24 07:59:58 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libzip/ChangeLog,v 1.87 2015/07/17 13:37:04 zlogene Exp $
+
+  17 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> libzip-1.0.1.ebuild:
+  ia64 stable wrt bug #550922
 
   24 Jun 2015; Agostino Sarubbo <ago@gentoo.org> libzip-1.0.1.ebuild:
   Stable for ppc, wrt bug #550922
