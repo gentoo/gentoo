@@ -1,6 +1,10 @@
 # ChangeLog for dev-db/phpmyadmin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/phpmyadmin/ChangeLog,v 1.562 2015/06/09 13:14:19 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/phpmyadmin/ChangeLog,v 1.563 2015/07/17 05:14:37 jer Exp $
+
+  17 Jul 2015; Jeroen Roovers <jer@gentoo.org> phpmyadmin-4.3.13.1.ebuild,
+  phpmyadmin-4.4.6.1.ebuild:
+  Stable for PPC64 (bug #549540).
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml
