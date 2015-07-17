@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/shadowsocks-libev/shadowsocks-libev-2.2.0.ebuild,v 1.1 2015/05/12 09:19:02 dlan Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/shadowsocks-libev/shadowsocks-libev-2.2.2.ebuild,v 1.1 2015/07/17 01:43:00 dlan Exp $
 
 EAPI=5
 
