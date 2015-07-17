@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/consolekit/consolekit-9999.ebuild,v 1.2 2015/06/21 10:53:11 perfinion Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/consolekit/consolekit-9999.ebuild,v 1.3 2015/07/17 11:06:26 perfinion Exp $
 
 EAPI=5
 inherit autotools eutils git-r3 linux-info pam
@@ -75,6 +75,7 @@ src_configure() {
 		$(use_enable debug) \
 		$(use_enable policykit polkit) \
 		$(use_enable acl udev-acl) \
+		$(use_enable test tests) \
 		--with-dbus-services="${EPREFIX}"/usr/share/dbus-1/services \
 		--with-pam-module-dir="$(getpam_mod_dir)" \
 		--with-xinitrc-dir=/etc/X11/xinit/xinitrc.d \
@@ -103,7 +104,7 @@ src_install() {
 
 	prune_libtool_files --all # --all for pam_ck_connector.la
 
-	rm -rf "${ED}"/var/run # let the init script create the directory
+	rm -rf "${ED}"/var/run || die # let the init script create the directory
 
 	insinto /etc/logrotate.d
 	newins "${WORKDIR}"/debian/${PN}.logrotate ${PN} #374513

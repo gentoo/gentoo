@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=virtual/perl-Carp virtual/perl-Exporter virtual/perl-Scalar-List-Utils dev-perl/Try-Tiny !minimal? ( >=dev-perl/Devel-LexAlias-0.50.0 dev-perl/perltidy ) virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-File-Spec virtual/perl-IO dev-perl/Test-Fatal dev-perl/Test-Requires >=virtual/perl-Test-Simple-0.880.0 ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=safely and cleanly create closures via string eval
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/Eval-Closure/
+IUSE=test minimal
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd ~x64-macos
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp virtual/perl-Exporter virtual/perl-Scalar-List-Utils dev-perl/Try-Tiny !minimal? ( >=dev-perl/Devel-LexAlias-0.50.0 dev-perl/perltidy ) dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/D/DO/DOY/Eval-Closure-0.13.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=596c0595a87d92e70b98d8adf26af057

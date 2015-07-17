@@ -1,6 +1,9 @@
 # ChangeLog for sys-auth/consolekit
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/consolekit/ChangeLog,v 1.179 2015/07/16 20:08:27 perfinion Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/consolekit/ChangeLog,v 1.180 2015/07/17 11:06:26 perfinion Exp $
+
+  17 Jul 2015; Jason Zaman <perfinion@gentoo.org> consolekit-9999.ebuild:
+  update live ebuild from latest release
 
 *consolekit-0.9.5 (16 Jul 2015)
 

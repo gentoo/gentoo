@@ -1,6 +1,11 @@
 # ChangeLog for dev-perl/Eval-Closure
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Eval-Closure/ChangeLog,v 1.20 2015/03/29 09:22:52 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Eval-Closure/ChangeLog,v 1.21 2015/07/17 10:36:59 zlogene Exp $
+
+*Eval-Closure-0.130.0 (17 Jul 2015)
+
+  17 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> +Eval-Closure-0.130.0.ebuild:
+  Version bump wrt bug #554926
 
   29 Mar 2015; Jeroen Roovers <jer@gentoo.org> Eval-Closure-0.80.0-r1.ebuild:
   Marked ~hppa (bug #544064).
