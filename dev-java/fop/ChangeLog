@@ -1,6 +1,12 @@
 # ChangeLog for dev-java/fop
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/fop/ChangeLog,v 1.84 2015/07/11 17:58:30 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/fop/ChangeLog,v 1.85 2015/07/17 12:58:54 monsieurp Exp $
+
+*fop-2.0-r1 (17 Jul 2015)
+
+  17 Jul 2015; Patrice Clement <monsieurp@gentoo.org> +fop-2.0-r1.ebuild:
+  Set SLOT back to 0. Create launcher using PN instead of PN-SLOT. Fix bug
+  555144.
 
   11 Jul 2015; Patrice Clement <monsieurp@gentoo.org>
   -files/fop-2.0-build.xml.patch, fop-2.0.ebuild:

@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/usbutils
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/usbutils/ChangeLog,v 1.202 2015/06/28 13:03:39 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/usbutils/ChangeLog,v 1.203 2015/07/17 13:07:58 zlogene Exp $
+
+  17 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> usbutils-008-r1.ebuild:
+  ia64 stable wrt bug #541040
 
   28 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> usbutils-008-r1.ebuild:
   alpha stable wrt bug #541040

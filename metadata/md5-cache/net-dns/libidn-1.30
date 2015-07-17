@@ -4,10 +4,10 @@ DESCRIPTION=Internationalized Domain Names (IDN) implementation
 EAPI=5
 HOMEPAGE=http://www.gnu.org/software/libidn/
 IUSE=doc emacs java mono nls static-libs elibc_FreeBSD java abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
-KEYWORDS=alpha amd64 arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-2 GPL-3 LGPL-3 java? ( Apache-2.0 )
 RDEPEND=emacs? ( virtual/emacs ) mono? ( >=dev-lang/mono-0.95 ) nls? ( >=virtual/libintl-0-r1[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) java? ( >=virtual/jre-1.5 ) abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20140508-r5 !app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] ) java? ( >=dev-java/java-config-2.2.0 )
 SLOT=0
 SRC_URI=mirror://gnu/libidn/libidn-1.30.tar.gz
 _eclasses_=elisp-common	9a16929c1a6aec7e1c903289983e114c	eutils	9fb270e417e0e83d64ca52586c4a79de	java-pkg-opt-2	f9bbbe5092225a2059aa9e6a3a2b52f1	java-utils-2	8cdf065211fa6d6687bdc3f3ebe12efc	mono-env	59ca1177366cc9e14521d3501e9bb281	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multilib-build	e733e978b7fa70607cc221fd9c070db6	multilib-minimal	13dd976916c35a1e2c8d170e840c7018	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=6ed308cf37567428a77a076e68f50d5c
+_md5_=65650e12495ad720cc7079b3269309ed

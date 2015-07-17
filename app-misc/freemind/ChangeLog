@@ -1,6 +1,11 @@
 # ChangeLog for app-misc/freemind
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/freemind/ChangeLog,v 1.74 2015/06/29 07:59:59 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/freemind/ChangeLog,v 1.75 2015/07/17 13:01:29 monsieurp Exp $
+
+*freemind-1.0.1-r2 (17 Jul 2015)
+
+  17 Jul 2015; Patrice Clement <monsieurp@gentoo.org> +freemind-1.0.1-r2.ebuild:
+  Adjust fop SLOT. Fix bug 555144.
 
   29 Jun 2015; Patrice Clement <monsieurp@gentoo.org> freemind-1.0.1-r1.ebuild:
   Correct classpath by adjusting fop SLOT. Fix bug 553394.

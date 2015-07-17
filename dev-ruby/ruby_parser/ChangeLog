@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/ruby_parser
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby_parser/ChangeLog,v 1.78 2015/07/16 16:05:10 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby_parser/ChangeLog,v 1.79 2015/07/17 13:26:38 zlogene Exp $
+
+  17 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> ruby_parser-3.6.6.ebuild:
+  ia64 stable wrt bug #552244
 
   16 Jul 2015; Tobias Klausmann <klausman@gentoo.org> ruby_parser-3.6.6.ebuild:
   Stable on alpha, bug 552244
