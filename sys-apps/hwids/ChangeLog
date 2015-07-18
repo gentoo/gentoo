@@ -1,6 +1,11 @@
 # ChangeLog for sys-apps/hwids
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/hwids/ChangeLog,v 1.169 2015/05/27 12:12:14 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/hwids/ChangeLog,v 1.170 2015/07/18 02:00:03 floppym Exp $
+
+*hwids-20150717 (18 Jul 2015)
+
+  18 Jul 2015; Mike Gilbert <floppym@gentoo.org> +hwids-20150717.ebuild:
+  Bump.
 
   27 May 2015; Mikle Kolyada <zlogene@gentoo.org> hwids-20150129.ebuild:
   arm stable wrt bug #546184
