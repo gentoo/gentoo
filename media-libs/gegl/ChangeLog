@@ -1,6 +1,9 @@
 # ChangeLog for media-libs/gegl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/gegl/ChangeLog,v 1.111 2015/07/16 15:45:28 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/gegl/ChangeLog,v 1.112 2015/07/18 10:56:09 jer Exp $
+
+  18 Jul 2015; Jeroen Roovers <jer@gentoo.org> gegl-0.3.0.ebuild:
+  Stable for HPPA PPC64 (bug #552006).
 
   16 Jul 2015; Tobias Klausmann <klausman@gentoo.org> gegl-0.3.0.ebuild:
   Stable on alpha, bug 552006
