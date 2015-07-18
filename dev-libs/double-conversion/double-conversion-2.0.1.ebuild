@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/double-conversion/double-conversion-2.0.1.ebuild,v 1.1 2014/04/02 22:54:52 bicatali Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/double-conversion/double-conversion-2.0.1.ebuild,v 1.2 2015/07/18 05:52:06 patrick Exp $
 
 EAPI=5
 
@@ -27,7 +27,7 @@ src_prepare() {
 }
 
 src_compile() {
-	escons ${LIBNAME}.so
+	escons ${LIBNAME}.so.1
 	use static-libs && escons ${LIBNAME}.a
 }
 

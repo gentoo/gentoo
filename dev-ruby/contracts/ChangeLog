@@ -1,0 +1,10 @@
+# ChangeLog for dev-ruby/contracts
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/contracts/ChangeLog,v 1.1 2015/07/18 06:22:47 graaff Exp $
+
+*contracts-0.10.1 (18 Jul 2015)
+
+  18 Jul 2015; Hans de Graaff <graaff@gentoo.org> +contracts-0.10.1.ebuild,
+  +metadata.xml:
+  Initial import. New dependency for dev-util/aruba.
+

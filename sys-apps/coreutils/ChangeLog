@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/coreutils
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/coreutils/ChangeLog,v 1.399 2015/07/17 10:47:58 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/coreutils/ChangeLog,v 1.400 2015/07/18 05:56:08 jer Exp $
+
+  18 Jul 2015; Jeroen Roovers <jer@gentoo.org> coreutils-8.23.ebuild:
+  Stable for HPPA PPC64 (bug #555028).
 
   17 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> coreutils-8.23.ebuild:
   arm stable wrt bug #555028

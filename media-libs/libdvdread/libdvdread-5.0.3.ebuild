@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libdvdread/libdvdread-5.0.3.ebuild,v 1.5 2015/07/15 16:14:23 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libdvdread/libdvdread-5.0.3.ebuild,v 1.6 2015/07/18 06:28:45 jer Exp $
 
 EAPI=5
 AUTOTOOLS_AUTORECONF=1
@@ -12,10 +12,10 @@ HOMEPAGE="http://dvdnav.mplayerhq.hu/"
 if [[ ${PV} = 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="git://git.videolan.org/libdvdread.git"
-	KEYWORDS="alpha amd64 arm x86"
+	KEYWORDS="alpha amd64 arm hppa ppc64 x86"
 else
 	SRC_URI="http://downloads.videolan.org/pub/videolan/libdvdread/${PV}/${P}.tar.bz2"
-	KEYWORDS="alpha amd64 arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+	KEYWORDS="alpha amd64 arm hppa ~ia64 ~mips ~ppc ppc64 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 fi
 
 LICENSE="GPL-2"

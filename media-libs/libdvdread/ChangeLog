@@ -1,6 +1,9 @@
 # ChangeLog for media-libs/libdvdread
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libdvdread/ChangeLog,v 1.110 2015/07/15 16:14:23 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libdvdread/ChangeLog,v 1.111 2015/07/18 06:28:45 jer Exp $
+
+  18 Jul 2015; Jeroen Roovers <jer@gentoo.org> libdvdread-5.0.3.ebuild:
+  Stable for HPPA PPC64 (bug #535458).
 
   15 Jul 2015; Tobias Klausmann <klausman@gentoo.org> libdvdread-5.0.3.ebuild:
   Stable on alpha, bug 535458
