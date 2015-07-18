@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/pkgcore
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/pkgcore/ChangeLog,v 1.189 2015/07/12 19:31:44 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/pkgcore/ChangeLog,v 1.190 2015/07/18 03:42:02 radhermit Exp $
+
+  18 Jul 2015; Tim Harder <radhermit@gentoo.org> pkgcore-9999.ebuild:
+  Enable py3 targets.
 
   12 Jul 2015; Tim Harder <radhermit@gentoo.org> pkgcore-9999.ebuild:
   Install zsh completions.
