@@ -1,6 +1,12 @@
 # ChangeLog for dev-util/bitcoin-tx
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/bitcoin-tx/ChangeLog,v 1.5 2015/07/17 20:15:27 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/bitcoin-tx/ChangeLog,v 1.6 2015/07/17 22:38:10 blueness Exp $
+
+*bitcoin-tx-0.11.0 (17 Jul 2015)
+
+  17 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
+  +bitcoin-tx-0.11.0.ebuild:
+  Version bump.
 
   17 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
   +files/9999-syslibs.patch, bitcoin-tx-9999.ebuild:

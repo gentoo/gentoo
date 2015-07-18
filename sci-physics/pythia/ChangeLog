@@ -1,6 +1,11 @@
 # ChangeLog for sci-physics/pythia
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/pythia/ChangeLog,v 1.64 2015/06/05 08:40:17 bircoph Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-physics/pythia/ChangeLog,v 1.65 2015/07/17 23:28:52 bircoph Exp $
+
+*pythia-8.2.10 (17 Jul 2015)
+
+  17 Jul 2015; Andrew Savchenko <bircoph@gentoo.org> +pythia-8.2.10.ebuild:
+  Version bump.
 
 *pythia-8.2.09-r1 (05 Jun 2015)
 
