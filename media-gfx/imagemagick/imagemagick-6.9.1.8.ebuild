@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/imagemagick/imagemagick-6.9.1.8.ebuild,v 1.1 2015/07/16 05:25:26 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/imagemagick/imagemagick-6.9.1.8.ebuild,v 1.2 2015/07/18 01:02:42 patrick Exp $
 
 EAPI=5
 
@@ -150,7 +150,7 @@ src_test() {
 
 src_install() {
 	# Ensure documentation installation files and paths with each release!
-	emake \
+	emake -j1 \
 		DESTDIR="${D}" \
 		DOCUMENTATION_PATH="${EPREFIX}"/usr/share/doc/${PF}/html \
 		install
