@@ -1,6 +1,9 @@
 # ChangeLog for app-editors/xemacs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/xemacs/ChangeLog,v 1.194 2015/07/18 07:41:59 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/xemacs/ChangeLog,v 1.195 2015/07/18 11:57:46 matsl Exp $
+
+  18 Jul 2015; Mats Lidell <matsl@gentoo.org> xemacs-21.4.24.ebuild:
+  Add compile time dependency on sys-apps/texinfo-5 (bug #555150)
 
   18 Jul 2015; Jeroen Roovers <jer@gentoo.org> xemacs-21.4.24.ebuild:
   Stable for HPPA PPC64 (bug #554224).

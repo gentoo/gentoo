@@ -1,6 +1,13 @@
 # ChangeLog for mail-mta/opensmtpd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/opensmtpd/ChangeLog,v 1.76 2015/07/02 12:19:41 zx2c4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/opensmtpd/ChangeLog,v 1.77 2015/07/18 11:33:58 pinkbyte Exp $
+
+*opensmtpd-5.7.1_p1-r1 (18 Jul 2015)
+
+  18 Jul 2015; Sergey Popov <pinkbyte@gentoo.org>
+  +opensmtpd-5.7.1_p1-r1.ebuild, files/smtpd.initd:
+  Revision bump: add missing configure option for building with BerkDB support,
+  bug #554654. Put socket and PID files into /run, instead of /var/run
 
   02 Jul 2015; Jason A. Donenfeld <zx2c4@gentoo.org>
   -files/opensmtpd-5.4.5_p2-libevent-version-macro.patch,

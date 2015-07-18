@@ -1,6 +1,9 @@
 # ChangeLog for sys-auth/keystone
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/keystone/ChangeLog,v 1.98 2015/07/03 02:36:19 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/keystone/ChangeLog,v 1.99 2015/07/18 11:55:47 zlogene Exp $
+
+  18 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> keystone-2015.1.0.ebuild:
+  amd64 stable wrt bug #554284
 
   03 Jul 2015; Patrick Lauer <patrick@gentoo.org> -keystone-2014.2.3-r2.ebuild:
   Remove old ebuild with unsatisfied dependencies

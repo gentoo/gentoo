@@ -1,6 +1,22 @@
 # ChangeLog for dev-haskell/system-filepath
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/system-filepath/ChangeLog,v 1.10 2015/04/04 10:33:01 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/system-filepath/ChangeLog,v 1.13 2015/07/18 12:30:41 slyfox Exp $
+
+  18 Jul 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  system-filepath-0.4.8-r1.ebuild:
+  amd64, x86 stable wrt bug #554768
+
+*system-filepath-0.4.8-r1 (18 Jul 2015)
+
+  18 Jul 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  +system-filepath-0.4.8-r1.ebuild:
+  Allow latest text and deepseq to current stable.
+
+  18 Jul 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  -system-filepath-0.4.12.ebuild, -system-filepath-0.4.13.1.ebuild,
+  -system-filepath-0.4.13.ebuild, -system-filepath-0.4.7-r1.ebuild,
+  -system-filepath-0.4.9.ebuild:
+  Drop old.
 
 *system-filepath-0.4.13.2 (04 Apr 2015)
 

@@ -1,6 +1,9 @@
 # ChangeLog for app-admin/glance
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/glance/ChangeLog,v 1.71 2015/06/09 08:40:38 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/glance/ChangeLog,v 1.72 2015/07/18 11:52:59 zlogene Exp $
+
+  18 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> glance-2015.1.0.ebuild:
+  amd64 stable wrt bug #554284
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

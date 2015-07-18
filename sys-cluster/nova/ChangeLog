@@ -1,6 +1,9 @@
 # ChangeLog for sys-cluster/nova
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/nova/ChangeLog,v 1.100 2015/06/17 21:10:37 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/nova/ChangeLog,v 1.101 2015/07/18 12:04:18 zlogene Exp $
+
+  18 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> nova-2015.1.0-r3.ebuild:
+  amd64 stable wrt bug #554284
 
 *nova-2015.1.0-r3 (17 Jun 2015)
 

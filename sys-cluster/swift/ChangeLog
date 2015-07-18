@@ -1,6 +1,9 @@
 # ChangeLog for sys-cluster/swift
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/swift/ChangeLog,v 1.46 2015/06/17 21:12:59 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/swift/ChangeLog,v 1.47 2015/07/18 12:09:15 zlogene Exp $
+
+  18 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> swift-2.3.0.ebuild:
+  amd64 stable wrt bug #554284
 
   17 Jun 2015; Matthew Thode <prometheanfire@gentoo.org> metadata.xml,
   swift-2.2.2-r1.ebuild, swift-2.3.0.ebuild:

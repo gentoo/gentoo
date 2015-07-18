@@ -1,6 +1,9 @@
 # ChangeLog for app-crypt/easy-rsa
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/easy-rsa/ChangeLog,v 1.22 2015/07/17 21:12:34 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/easy-rsa/ChangeLog,v 1.23 2015/07/18 11:40:43 zlogene Exp $
+
+  18 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> easy-rsa-2.2.2.ebuild:
+  x86 stable wrt bug #554634
 
   17 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> easy-rsa-2.2.2.ebuild:
   amd64 stable wrt bug #554634

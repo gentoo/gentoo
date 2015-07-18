@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/ppc64/package.use.mask,v 1.70 2015/06/16 08:27:24 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/ppc64/package.use.mask,v 1.71 2015/07/18 11:50:12 jer Exp $
 
 # Justin Lecher <jlec@gentoo.org> (16 June 2015)
 # Pending bug upstream, #550818
@@ -18,10 +18,6 @@ dev-java/icedtea nsplugin webstart
 # Jeroen Roovers <jer@gentoo.org> (26 Apr 2015)
 # Needs the entire LXDE to be useful (bug #520296)
 xfce-extra/xfce4-power-manager lxpanel
-
-# Johannes Huber <johu@gentoo.org> (28 Jan 2015)
-# Missing keyword on dev-libs/botan, bug #458438
-app-crypt/qca botan
 
 # Matthias Maier <tamiko@gentoo.org> (24 Dec 2014)
 # sys-devel/clang is not keyworded

@@ -1,6 +1,9 @@
 # ChangeLog for Gentoo/PPC profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/ChangeLog,v 1.338 2015/06/16 08:27:24 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/ChangeLog,v 1.340 2015/07/18 11:50:49 jer Exp $
+
+  18 Jul 2015; Jeroen Roovers <jer@gentoo.org> ppc64/package.use.mask:
+  Drop USE=botan mask.
 
   16 Jun 2015; Justin Lecher <jlec@gentoo.org> ppc64/package.use.mask:
   Mask USE=osg for app-office/scribus-1.5.0-r1, bug 550818

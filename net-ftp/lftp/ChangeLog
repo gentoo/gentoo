@@ -1,6 +1,9 @@
 # ChangeLog for net-ftp/lftp
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/lftp/ChangeLog,v 1.527 2015/07/17 12:05:42 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/lftp/ChangeLog,v 1.528 2015/07/18 12:09:48 jer Exp $
+
+  18 Jul 2015; Jeroen Roovers <jer@gentoo.org> lftp-4.6.3a.ebuild:
+  Stable for HPPA (bug #555034).
 
   17 Jul 2015; Tobias Klausmann <klausman@gentoo.org> lftp-4.6.3a.ebuild:
   Stable on alpha, bug 555034

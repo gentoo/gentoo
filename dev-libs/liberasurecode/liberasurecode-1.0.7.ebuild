@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/liberasurecode/liberasurecode-1.0.7.ebuild,v 1.1 2015/04/30 19:34:46 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/liberasurecode/liberasurecode-1.0.7.ebuild,v 1.2 2015/07/18 12:06:46 zlogene Exp $
 
 EAPI=5
 inherit toolchain-funcs
@@ -13,7 +13,7 @@ S="${WORKDIR}/tsg--${PN}-${CUSTOM_VERSION}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 RDEPEND=""

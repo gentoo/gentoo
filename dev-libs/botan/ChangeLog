@@ -1,6 +1,13 @@
 # ChangeLog for dev-libs/botan
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/botan/ChangeLog,v 1.93 2015/04/19 07:20:19 alonbl Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/botan/ChangeLog,v 1.95 2015/07/18 11:48:57 jer Exp $
+
+  18 Jul 2015; Jeroen Roovers <jer@gentoo.org> botan-1.10.5.ebuild,
+  botan-1.11.4.ebuild, botan-1.11.8.ebuild:
+  Stable for PPC64 (bug #552554).
+
+  18 Jul 2015; Jeroen Roovers <jer@gentoo.org> botan-1.10.5.ebuild:
+  Stable for HPPA (bug #552554).
 
   19 Apr 2015; Alon Bar-Lev <alonbl@gentoo.org> -botan-1.10.1.ebuild,
   -botan-1.10.3-r1.ebuild, -botan-1.10.3.ebuild, -botan-1.8.11.ebuild:

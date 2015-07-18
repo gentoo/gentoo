@@ -1,6 +1,9 @@
 # ChangeLog for www-apps/novnc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/novnc/ChangeLog,v 1.9 2015/06/23 03:53:07 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/novnc/ChangeLog,v 1.10 2015/07/18 12:03:32 zlogene Exp $
+
+  18 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> novnc-0.5.ebuild:
+  amd64 stable wrt bug #554284
 
   23 Jun 2015; Matthew Thode <prometheanfire@gentoo.org> -novnc-0.4.ebuild:
   removing for bug 552750 CVE-2013-7436

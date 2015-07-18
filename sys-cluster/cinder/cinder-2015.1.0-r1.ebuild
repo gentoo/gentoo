@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/cinder/cinder-2015.1.0-r1.ebuild,v 1.1 2015/06/17 21:50:18 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/cinder/cinder-2015.1.0-r1.ebuild,v 1.2 2015/07/18 11:59:02 zlogene Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
@@ -13,7 +13,7 @@ SRC_URI="http://launchpad.net/${PN}/kilo/${PV}/+download/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="+api +scheduler +volume iscsi lvm mysql +memcached postgres sqlite test"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
