@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install postinst prepare prerm setup test unpac
 DEPEND=sys-libs/ncurses app-arch/sharutils dev-perl/Astro-FITS-Header dev-perl/File-Map dev-perl/Inline dev-perl/OpenGL dev-perl/TermReadKey || ( dev-perl/Term-ReadLine-Perl dev-perl/Term-ReadLine-Gnu ) virtual/perl-Data-Dumper virtual/perl-Pod-Parser virtual/perl-File-Spec virtual/perl-File-Temp dev-perl/Filter virtual/perl-Storable virtual/perl-Text-Balanced fftw? ( sci-libs/fftw:2.1 ) gd? ( media-libs/gd ) gsl? ( sci-libs/gsl ) hdf? ( sci-libs/hdf ) netpbm? ( media-libs/netpbm virtual/ffmpeg ) pdl2? ( dev-perl/Devel-REPL ) pgplot? ( dev-perl/PGPLOT ) plplot? ( sci-libs/plplot ) fortran? ( >=dev-perl/ExtUtils-F77-1.13 ) dev-lang/perl:=[-build(-)] fortran? ( virtual/fortran )
 DESCRIPTION=Perl Data Language for scientific computing
 EAPI=5
-HOMEPAGE=http://pdl.perl.org/
+HOMEPAGE=http://search.cpan.org/dist/PDL/
 IUSE=+badval doc fftw fortran gd gsl hdf netpbm pdl2 pgplot plplot threads
 KEYWORDS=amd64 arm ppc x86 ~amd64-linux ~x86-linux
 LICENSE=|| ( Artistic GPL-1+ ) public-domain PerlDL
@@ -11,4 +11,4 @@ REQUIRED_USE=plplot? ( badval )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/C/CH/CHM/PDL-2.4.11.tar.gz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fortran-2	db8710b355fc5598015c4bc3aad3bdb0	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
-_md5_=797f318f747c8e90b00c96f9ffca0616
+_md5_=111d97cb76c3896a19776bb1f2682f1a

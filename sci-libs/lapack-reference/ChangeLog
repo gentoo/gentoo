@@ -1,6 +1,10 @@
 # ChangeLog for sci-libs/lapack-reference
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/lapack-reference/ChangeLog,v 1.72 2015/03/31 20:12:17 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/lapack-reference/ChangeLog,v 1.73 2015/07/18 08:59:42 patrick Exp $
+
+  18 Jul 2015; Patrick Lauer <patrick@gentoo.org>
+  lapack-reference-3.2.1-r1.ebuild:
+  Avoid parallel test failure
 
   31 Mar 2015; Ulrich Müller <ulm@gentoo.org>
   lapack-reference-3.1.1-r1.ebuild, lapack-reference-3.2.1-r1.ebuild,

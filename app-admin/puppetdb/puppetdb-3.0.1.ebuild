@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/puppetdb/puppetdb-3.0.1.ebuild,v 1.3 2015/07/18 08:30:16 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/puppetdb/puppetdb-3.0.1.ebuild,v 1.4 2015/07/18 09:11:01 prometheanfire Exp $
 
 EAPI=5
 
@@ -28,6 +28,8 @@ src_prepare() {
 	sed -i 's/sysconfig/conf\.d/g' ext/redhat/puppetdb.service || die
 	sed -i 's/sysconfig/conf\.d/g' ext/bin/puppetdb || die
 	sed -i 's/sysconfig/conf\.d/g' install.sh || die
+	sed -i 's/var\/run/run/g' ext/puppetdb.tmpfiles.conf || die
+	sed -i 's/var\/run/run/g' install.sh || die
 }
 
 src_compile() {

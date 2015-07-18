@@ -1,6 +1,9 @@
 # ChangeLog for net-misc/iperf
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/iperf/ChangeLog,v 1.70 2015/07/13 04:57:14 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/iperf/ChangeLog,v 1.71 2015/07/18 08:43:07 jer Exp $
+
+  18 Jul 2015; Jeroen Roovers <jer@gentoo.org> iperf-3.0.11.ebuild:
+  Stable for HPPA (bug #554706).
 
   13 Jul 2015; Jeroen Roovers <jer@gentoo.org> iperf-3.0.11.ebuild:
   Stable for PPC64 (bug #554706).

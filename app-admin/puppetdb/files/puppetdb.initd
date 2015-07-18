@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/puppetdb/files/puppetdb.initd,v 1.1 2015/07/18 07:52:38 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/puppetdb/files/puppetdb.initd,v 1.2 2015/07/18 09:11:01 prometheanfire Exp $
 
 extra_commands="checkconfig"
 
@@ -46,8 +46,6 @@ checkconfig() {
 
 start() {
     checkconfig || return 1
-
-    daemon --user $USER --pidfile $PIDFILE "$EXEC >> /var/log/puppetlabs/puppetdb/puppetdb-daemon.log 2>&1 &"
 
     ebegin "Starting PuppetDB"
     start-stop-daemon --start -u "${USER}" -g "${GROUP}" \

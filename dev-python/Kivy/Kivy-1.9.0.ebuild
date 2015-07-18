@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/Kivy/Kivy-1.9.0.ebuild,v 1.3 2015/06/03 20:04:07 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/Kivy/Kivy-1.9.0.ebuild,v 1.4 2015/07/18 09:12:41 pacho Exp $
 
 EAPI="5"
 
@@ -26,7 +26,7 @@ RDEPEND="
 	gstreamer? ( dev-python/gst-python:1.0[${PYTHON_USEDEP}] )
 	spell? ( dev-python/pyenchant[${PYTHON_USEDEP}] )
 	"
-RDEPEND="${DEPEND}
+DEPEND="${RDEPEND}
 	<dev-python/cython-0.22[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 "

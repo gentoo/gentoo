@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/PDL/PDL-2.4.11.ebuild,v 1.17 2015/05/08 06:54:05 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/PDL/PDL-2.4.11.ebuild,v 1.18 2015/07/18 09:10:26 zlogene Exp $
 
 EAPI=5
 
@@ -9,7 +9,6 @@ FORTRAN_NEEDED=fortran
 
 inherit perl-module eutils fortran-2
 
-HOMEPAGE="http://pdl.perl.org/"
 DESCRIPTION="Perl Data Language for scientific computing"
 
 LICENSE="|| ( Artistic GPL-1+ ) public-domain PerlDL"

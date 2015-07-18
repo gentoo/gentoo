@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/lapack-reference/lapack-reference-3.2.1-r1.ebuild,v 1.19 2015/03/31 20:12:17 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/lapack-reference/lapack-reference-3.2.1-r1.ebuild,v 1.20 2015/07/18 08:59:42 patrick Exp $
 
 EAPI=3
 
@@ -76,9 +76,9 @@ src_install() {
 
 src_test() {
 	cd "${S}"/TESTING/MATGEN
-	emake || die "Failed to create tmglib.a"
+	emake -j1 || die "Failed to create tmglib.a"
 	cd "${S}"/TESTING
-	emake || die "lapack-reference tests failed."
+	emake -j1 || die "lapack-reference tests failed."
 }
 
 pkg_postinst() {
