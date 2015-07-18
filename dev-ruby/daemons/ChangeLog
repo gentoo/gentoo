@@ -1,6 +1,12 @@
 # ChangeLog for dev-ruby/daemons
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/daemons/ChangeLog,v 1.100 2015/07/17 09:20:59 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/daemons/ChangeLog,v 1.102 2015/07/18 07:26:24 graaff Exp $
+
+  18 Jul 2015; Hans de Graaff <graaff@gentoo.org> -daemons-1.1.8.ebuild:
+  Cleanup.
+
+  18 Jul 2015; Jeroen Roovers <jer@gentoo.org> daemons-1.1.9-r1.ebuild:
+  Stable for HPPA PPC64 (bug #551418).
 
   17 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> daemons-1.1.9-r1.ebuild:
   ia64 stable wrt bug #551418

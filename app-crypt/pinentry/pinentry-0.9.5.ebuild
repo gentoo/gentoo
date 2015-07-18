@@ -1,10 +1,10 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/pinentry/pinentry-0.9.5.ebuild,v 1.1 2015/07/01 15:50:00 k_f Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/pinentry/pinentry-0.9.5.ebuild,v 1.2 2015/07/18 07:21:06 alonbl Exp $
 
 EAPI=5
 
-inherit qmake-utils multilib eutils flag-o-matic toolchain-funcs
+inherit autotools qmake-utils multilib eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="Collection of simple PIN or passphrase entry dialogs which utilize the Assuan protocol"
 HOMEPAGE="http://gnupg.org/aegypten2/index.html"
@@ -27,8 +27,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	sys-devel/gettext
-	gtk? ( virtual/pkgconfig )
-	qt4? ( virtual/pkgconfig )
+	virtual/pkgconfig
 	gnome-keyring? ( app-crypt/libsecret )
 "
 REQUIRED_USE="
@@ -42,6 +41,8 @@ DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
 
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-0.8.2-ncurses.patch"
+	epatch "${FILESDIR}/${P}-build.patch"
+	eautoreconf
 }
 
 src_configure() {

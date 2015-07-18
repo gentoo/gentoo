@@ -1,6 +1,16 @@
 # ChangeLog for app-crypt/pinentry
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/pinentry/ChangeLog,v 1.178 2015/07/01 15:50:00 k_f Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/pinentry/ChangeLog,v 1.180 2015/07/18 07:29:19 alonbl Exp $
+
+  18 Jul 2015; Alon Bar-Lev <alonbl@gentoo.org>
+  files/pinentry-0.9.5-build.patch:
+  Add pkg-config detection instead of initialization as pinentry does not use it
+  correctly, bug#554686
+
+  18 Jul 2015; Alon Bar-Lev <alonbl@gentoo.org>
+  +files/pinentry-0.9.5-build.patch, pinentry-0.9.5.ebuild:
+  Add pkg-config initialization, add pkg-config as DEPEND as most need it
+  anyway, bug#554686
 
 *pinentry-0.9.5 (01 Jul 2015)
 

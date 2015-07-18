@@ -1,6 +1,9 @@
 # ChangeLog for media-tv/v4l-utils
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/v4l-utils/ChangeLog,v 1.47 2015/07/16 15:46:02 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/v4l-utils/ChangeLog,v 1.48 2015/07/18 07:30:30 jer Exp $
+
+  18 Jul 2015; Jeroen Roovers <jer@gentoo.org> v4l-utils-1.6.2.ebuild:
+  Mark ~hppa ~ppc64 too.
 
   16 Jul 2015; Tobias Klausmann <klausman@gentoo.org> v4l-utils-1.6.2.ebuild:
   Stable on alpha, bug 552014
