@@ -1,6 +1,9 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1719 2015/07/17 18:36:23 axs Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1720 2015/07/18 00:07:01 floppym Exp $
+
+  18 Jul 2015; Mike Gilbert <floppym@gentoo.org> distutils-r1.eclass:
+  Add entire python directory to SANDBOX_PREDICT, bug 554252.
 
   17 Jul 2015; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
   mozconfig-v6.38.eclass, mozconfig-v6.39.eclass:

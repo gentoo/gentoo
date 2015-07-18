@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/nanospec
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/nanospec/ChangeLog,v 1.7 2015/02/25 15:33:39 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/nanospec/ChangeLog,v 1.8 2015/07/18 00:03:18 gienah Exp $
+
+*nanospec-0.2.1 (18 Jul 2015)
+
+  18 Jul 2015; Mark Wright <gienah@gentoo.org> +nanospec-0.2.1.ebuild:
+  Bump nanospec to 0.2.1
 
   25 Feb 2015; Agostino Sarubbo <ago@gentoo.org> nanospec-0.2.0.ebuild:
   Stable for x86, wrt bug #534992
