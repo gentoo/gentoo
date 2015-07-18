@@ -1,6 +1,10 @@
 # ChangeLog for media-gfx/hugin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/hugin/ChangeLog,v 1.158 2015/04/08 17:58:14 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/hugin/ChangeLog,v 1.159 2015/07/18 10:04:45 maekke Exp $
+
+  18 Jul 2015; Markus Meier <maekke@gentoo.org> -hugin-2013.0.0-r1.ebuild,
+  -files/hugin-2013.0.0-boost.patch:
+  remove old
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> hugin-2013.0.0-r1.ebuild:
   Drop old Python implementations

@@ -1,10 +1,13 @@
 # ChangeLog for profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10191 2015/07/17 15:45:24 tomjbe Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10192 2015/07/18 09:49:58 grobian Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  18 Jul 2015; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Extend Exim 4.86 RC mask
 
   17 Jul 2015; Thomas Beierlein <tomjbe@gentoo.org> package.mask:
   Dropped old mask. Got enough time for testing

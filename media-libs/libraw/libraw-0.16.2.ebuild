@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libraw/libraw-0.16.0_beta1-r1.ebuild,v 1.2 2014/06/18 19:47:54 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libraw/libraw-0.16.2.ebuild,v 1.1 2015/07/18 10:23:54 maekke Exp $
 
 EAPI=5
 
@@ -39,12 +39,9 @@ DOCS=( Changelog.txt README )
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.16.0_alpha2-docs.patch
 	"${FILESDIR}"/${PN}-0.16.0_alpha2-automagic-jasper.patch
-	"${FILESDIR}"/${PN}-0.16.0_alpha2-libdir.patch
 	"${FILESDIR}"/${PN}-0.16.0_alpha2-lcms2-first.patch
 	"${FILESDIR}"/${PN}-0.16.0_alpha2-custom-demosaic-paths.patch
-	"${FILESDIR}"/${PN}-0.16.0_beta1-libsuffix.patch
-	"${FILESDIR}"/${PN}-0.16.0_beta1-libsuffixpc.patch
-	"${FILESDIR}"/${PN}-0.16.0_beta1-include.patch
+	"${FILESDIR}"/${PN}-0.16.0-pc.patch
 )
 
 pkg_pretend() {

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/root/root-5.34.28-r1.ebuild,v 1.3 2015/07/16 22:16:37 bircoph Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-physics/root/root-5.34.28-r1.ebuild,v 1.4 2015/07/18 09:40:19 bircoph Exp $
 
 EAPI=5
 
@@ -311,7 +311,6 @@ src_configure() {
 		$(use_enable opengl)
 		$(use_enable oracle)
 		$(use_enable postgres pgsql)
-		$(usex postgres "--with-pgsql-incdir=$(pg_config --includedir)" "")
 		$(use_enable prefix rpath)
 		$(use_enable pythia6)
 		$(use_enable pythia8)
@@ -330,6 +329,10 @@ src_configure() {
 		$(use_enable xrootd)
 		${EXTRA_ECONF}
 	)
+
+	# usex can't be used here, because pg_config may be not
+	# installed with USE="-postgres"
+	use postgres && myconf+=( --with-pgsql-incdir=$(pg_config --includedir) )
 
 	./configure ${myconf[@]} || die "configure failed"
 }

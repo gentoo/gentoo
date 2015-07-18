@@ -1,6 +1,18 @@
 # ChangeLog for media-libs/libraw
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libraw/ChangeLog,v 1.86 2014/12/06 16:36:38 ago Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libraw/ChangeLog,v 1.88 2015/07/18 10:23:54 maekke Exp $
+
+*libraw-0.17.0_alpha4 (18 Jul 2015)
+*libraw-0.16.2 (18 Jul 2015)
+
+  18 Jul 2015; Markus Meier <maekke@gentoo.org> +libraw-0.16.2.ebuild,
+  +libraw-0.17.0_alpha4.ebuild:
+  version bumps by Andreas Sturmlechner in bug #542588, drop KEYWORDS from 0.17
+  version
+
+  18 Jul 2015; Markus Meier <maekke@gentoo.org> -libraw-0.15.4.ebuild,
+  -libraw-0.16.0_beta1-r1.ebuild, -files/libraw-0.13.4-docs.patch:
+  remove old
 
   06 Dec 2014; Agostino Sarubbo <ago@gentoo.org> libraw-0.16.0-r1.ebuild:
   Stable for ia64, wrt bug #526072

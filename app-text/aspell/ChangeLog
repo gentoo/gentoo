@@ -1,6 +1,13 @@
 # ChangeLog for app-text/aspell
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/aspell/ChangeLog,v 1.158 2015/04/14 12:01:31 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/aspell/ChangeLog,v 1.159 2015/07/18 09:53:13 pacho Exp $
+
+*aspell-0.60.6.1-r2 (18 Jul 2015)
+
+  18 Jul 2015; Pacho Ramos <pacho@gentoo.org> +aspell-0.60.6.1-r2.ebuild,
+  metadata.xml:
+  Drop old message that should be obsolete this days (#440456), drop .la files
+  (#544554), add missing langs (#456090).
 
   14 Apr 2015; Justin Lecher <jlec@gentoo.org> -aspell-0.60.6.1.ebuild:
   Drop old
