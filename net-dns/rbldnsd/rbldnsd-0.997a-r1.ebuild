@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/rbldnsd/rbldnsd-0.997a-r1.ebuild,v 1.4 2015/04/26 16:42:20 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/rbldnsd/rbldnsd-0.997a-r1.ebuild,v 1.5 2015/07/18 07:34:25 jer Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
@@ -13,7 +13,7 @@ SRC_URI="http://www.corpit.ru/mjt/rbldnsd/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 hppa ~sparc x86 ~x86-fbsd"
 IUSE="ipv6 test zlib"
 
 REQUIRED_USE="test? ( ${PYTHON_REQUIRED_USE} )"

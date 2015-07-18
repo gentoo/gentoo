@@ -4,11 +4,11 @@ DESCRIPTION=Flexible Contect-aware Input Tool with eXtension support
 EAPI=5
 HOMEPAGE=http://fcitx-im.org/
 IUSE=+X +autostart +cairo +dbus debug +enchant gtk gtk3 icu introspection lua nls opencc +pango qt4 static-libs +table test +xml
-KEYWORDS=amd64 ~hppa ppc ppc64 ~x86
+KEYWORDS=amd64 hppa ppc ppc64 ~x86
 LICENSE=GPL-2
 RDEPEND=X? ( x11-libs/libX11 x11-libs/libXinerama ) cairo? ( x11-libs/cairo[X] pango? ( x11-libs/pango[X] ) !pango? ( media-libs/fontconfig ) ) dbus? ( sys-apps/dbus ) enchant? ( app-text/enchant ) gtk? ( x11-libs/gtk+:2 dev-libs/glib:2 dev-libs/dbus-glib ) gtk3? ( x11-libs/gtk+:3 dev-libs/glib:2 dev-libs/dbus-glib ) icu? ( dev-libs/icu:= ) introspection? ( dev-libs/gobject-introspection ) lua? ( dev-lang/lua:= ) nls? ( sys-devel/gettext ) opencc? ( app-i18n/opencc ) qt4? ( dev-qt/qtdbus:4 dev-qt/qtgui:4[glib] ) xml? ( app-text/iso-codes dev-libs/libxml2 x11-libs/libxkbfile )
 REQUIRED_USE=cairo? ( X ) gtk? ( X ) gtk3? ( X ) qt4? ( X )
 SLOT=0
 SRC_URI=http://download.fcitx-im.org/fcitx/fcitx-4.2.8.5_dict.tar.xz
 _eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	flag-o-matic	c9602887773166fe300444712fc7ff98	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	readme.gentoo	106edea5533517715013de909a333abd	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=15480c5451f85d441e79c0d385fd47ad
+_md5_=a11e5cbd2f513b8a598c6f32c18a700a

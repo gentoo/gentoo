@@ -1,0 +1,67 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/puppetdb/files/puppetdb.initd,v 1.1 2015/07/18 07:52:38 prometheanfire Exp $
+
+extra_commands="checkconfig"
+
+LOGDIR="/var/log/puppetlabs/puppetdb"
+RUNDIR="/run/puppetlabs/puppetdb"
+
+checkconfig() {
+    if [ ! -x $JAVA_BIN ]; then
+        eerror "Missing JAVA_BIN."
+        eend 1
+    fi
+    if [ ! -d $INSTALL_DIR ]; then
+        eerror "Missing INSTALL_DIR."
+        eend 1
+    fi
+    if [ ! -a $BOOTSTRAP_CONFIG ]; then
+        eerror "Missing BOOTSTRAP_CONFIG."
+        eend 1
+    fi
+    if [ ! -e $CONFIG ]; then
+        eerror "Missing CONFIG."
+        eend 1
+    fi
+    if [ ! -n $USER ]; then
+        eerror "Missing USER."
+        eend 1
+    fi
+    if [ ! -n $GROUP ]; then
+        eerror "Missing GROUP."
+        eend 1
+    fi
+
+    checkpath -d -m 0700 -o "${USER}:${GROUP}" "${LOGDIR}"
+    checkpath -d -m 0755 -o "${USER}:${GROUP}" "${RUNDIR}"
+
+    JAVA_ARGS="${JAVA_ARGS} -cp '${INSTALL_DIR}/puppetdb.jar' clojure.main -m puppetlabs.puppetdb.main \
+    --config ${CONFIG} -b '${BOOTSTRAP_CONFIG}'"
+
+    EXEC="${JAVA_BIN} -XX:OnOutOfMemoryError=\"kill -9 %p\" -XX:+HeapDumpOnOutOfMemoryError \
+    -XX:HeapDumpPath=/var/log/puppetlabs/puppetdb -Djava.security.egd=/dev/urandom ${JAVA_ARGS}"
+}
+
+start() {
+    checkconfig || return 1
+
+    daemon --user $USER --pidfile $PIDFILE "$EXEC >> /var/log/puppetlabs/puppetdb/puppetdb-daemon.log 2>&1 &"
+
+    ebegin "Starting PuppetDB"
+    start-stop-daemon --start -u "${USER}" -g "${GROUP}" \
+        --exec ${EXEC} --pidfile "${RUNDIR}/puppetdb.pid" \
+        -- >> "${LOGDIR}/puppetdb-daemon.log"
+    local retval=$?
+    if [ $retval -ne 0 ]; then
+        ewarn "Error starting puppetdb."
+    fi
+    eend $retval
+}
+
+stop() {
+    ebegin "Stopping PuppetDB"
+    start-stop-daemon --stop --pidfile "${RUNDIR}/puppetdb.pid"
+    eend $?
+}

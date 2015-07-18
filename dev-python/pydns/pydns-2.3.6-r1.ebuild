@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pydns/pydns-2.3.6-r1.ebuild,v 1.11 2015/04/26 16:39:34 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pydns/pydns-2.3.6-r1.ebuild,v 1.12 2015/07/18 07:34:08 jer Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 pypy )
@@ -13,7 +13,7 @@ SRC_URI="http://downloads.sourceforge.net/project/pydns/pydns/${P}/${P}.tar.gz"
 
 LICENSE="CNRI"
 SLOT="2"
-KEYWORDS="amd64 ~hppa ~ia64 ~ppc ~sparc x86"
+KEYWORDS="amd64 hppa ~ia64 ~ppc ~sparc x86"
 IUSE="examples"
 
 DEPEND="!dev-python/pydns:0

@@ -1,6 +1,10 @@
 # ChangeLog for dev-python/pydns
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pydns/ChangeLog,v 1.35 2015/06/09 16:04:20 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pydns/ChangeLog,v 1.36 2015/07/18 07:34:08 jer Exp $
+
+  18 Jul 2015; Jeroen Roovers <jer@gentoo.org> pydns-2.3.6-r1.ebuild,
+  pydns-3.1.0.ebuild:
+  Stable for HPPA (bug #553528).
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

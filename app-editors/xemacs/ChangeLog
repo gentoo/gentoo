@@ -1,6 +1,9 @@
 # ChangeLog for app-editors/xemacs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/xemacs/ChangeLog,v 1.193 2015/06/19 22:28:26 matsl Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/xemacs/ChangeLog,v 1.194 2015/07/18 07:41:59 jer Exp $
+
+  18 Jul 2015; Jeroen Roovers <jer@gentoo.org> xemacs-21.4.24.ebuild:
+  Stable for HPPA PPC64 (bug #554224).
 
   19 Jun 2015; Mats Lidell <matsl@gentoo.org> xemacs-21.4.22-r4.ebuild,
   xemacs-21.4.24.ebuild:

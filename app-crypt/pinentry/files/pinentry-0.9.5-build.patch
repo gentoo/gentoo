@@ -1,32 +1,52 @@
-From 4d60122ebe50182976088086844e11e8119ea906 Mon Sep 17 00:00:00 2001
+From 29384a828ad83644df9093bb292194d1ac6e689b Mon Sep 17 00:00:00 2001
 From: Alon Bar-Lev <alon.barlev@gmail.com>
 Date: Sat, 18 Jul 2015 10:14:49 +0300
-Subject: [PATCH] build: add pkg-config detection
+Subject: [PATCH] build: add pkg-config initialization and modify detection
+
+add PKG_PROG_PKG_CONFIG as the qt4 detection and curses detection are
+already using pkg.m4 which require proper initialization.
+
+modify the manual detection of pkg-config based on the error value of
+the PKG_PROG_PKG_CONFIG and not the manual one as there is a conflict
+between empty and 'no'.
 
 Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
 ---
- configure.ac | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ configure.ac | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
 
 diff --git a/configure.ac b/configure.ac
-index b71cb17..7b9243a 100644
+index b71cb17..7afa318 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -542,6 +542,14 @@ AC_ARG_ENABLE(pinentry-qt4,
-             pinentry_qt4=$enableval, pinentry_qt4=maybe)
+@@ -85,6 +85,7 @@ AC_PROG_RANLIB
+ # for Qt and autoconf does does not allow that.
+ AC_PROG_CXX
+ AC_PROG_LN_S
++PKG_PROG_PKG_CONFIG
+ AC_CHECK_TOOL(WINDRES, windres, :)
+ AC_CHECK_PROGS(GITLOG_TO_CHANGELOG, gitlog-to-changelog,
+                [build-aux/gitlog-to-changelog])
+@@ -430,8 +431,7 @@ AC_ARG_ENABLE(pinentry-gnome3,
  
+ dnl check for pkg-config
+ if test "$pinentry_gtk_2" != "no" -o "$pinentry_gnome_3" != "no"; then
+-        AC_PATH_PROG(PKG_CONFIG, pkg-config, no)
+-	if test x"${PKG_CONFIG}" = xno ; then
++	if test -z "${PKG_CONFIG}"; then
+ 		pinentry_gtk_2=no
+ 		pinentry_gnome_3=no
+ 	fi
+@@ -504,8 +504,7 @@ AC_ARG_ENABLE(libsecret,
  
-+dnl check for pkg-config
-+if test "$pinentry_qt4" != "no"; then
-+        AC_PATH_PROG(PKG_CONFIG, pkg-config, no)
-+	if test x"${PKG_CONFIG}" = xno ; then
-+		pinentry_qt4=no
-+	fi
-+fi
-+
- dnl
- dnl Checks for Qt4 libraries.  Deal correctly with $pinentry_qt4 = maybe.
- dnl
+ dnl check for pkg-config
+ if test "$libsecret" != "no"; then
+-        AC_PATH_PROG(PKG_CONFIG, pkg-config, no)
+-	if test x"${PKG_CONFIG}" = xno ; then
++	if test -z "${PKG_CONFIG}" ; then
+ 		libsecret=no
+ 	fi
+ fi
 -- 
 2.3.6
 
