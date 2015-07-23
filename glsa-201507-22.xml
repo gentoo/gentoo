@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201507-22">
+  <title>e2fsprogs: Arbitrary code execution</title>
+  <synopsis>A heap-based buffer overflow in e2fsprogs could result in execution
+    of arbitrary code.
+  </synopsis>
+  <product type="ebuild">e2fsprogs</product>
+  <announced>July 23, 2015</announced>
+  <revised>July 23, 2015: 1</revised>
+  <bug>540536</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-fs/e2fsprogs" auto="yes" arch="*">
+      <unaffected range="ge">1.42.13</unaffected>
+      <vulnerable range="lt">1.42.13</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>e2fsprogs is a set of utilities for maintaining the ext2, ext3 and ext4
+      file systems.
+    </p>
+  </background>
+  <description>
+    <p>e2fsprogs has a heap-based buffer overflow in closefs.c in the libext2fs
+      library.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could execute arbitrary code via a specially crafted
+      block group descriptor.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All e2fsprogs users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-fs/e2fsprogs-1.42.13"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1572">CVE-2015-1572</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 17 Jul 2015 11:07:25 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="Thu, 23 Jul 2015 15:35:12 +0000">Zlogene</metadata>
+</glsa>
