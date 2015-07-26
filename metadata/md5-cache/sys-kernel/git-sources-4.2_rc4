@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm preinst setup test unpack
+DEPEND=>=sys-devel/patch-2.7.4 !build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
+DESCRIPTION=The very latest -git version of the Linux kernel
+EAPI=5
+HOMEPAGE=http://www.kernel.org
+IUSE=symlink build
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=GPL-2 freedist
+RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )
+RESTRICT=binchecks strip
+SLOT=4.2_rc4
+SRC_URI=mirror://kernel/linux/kernel/v4.x/testing/patch-4.2-rc4.xz mirror://kernel/linux/kernel/v4.x/linux-4.1.tar.xz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	kernel-2	adcd0a7bbb205c648e9cde3dd32126dc	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	4756de53ea4d40471a582e898815a5c8	python-utils-r1	df6eb914b4b2d70d9c5e7c9331437c52	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=295499a16feda1d576023cfeabf25f3d

@@ -1,10 +1,10 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/testtools/testtools-1.8.0.ebuild,v 1.3 2015/07/26 15:41:11 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/testtools/testtools-1.8.0.ebuild,v 1.4 2015/07/26 21:14:35 mgorny Exp $
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{3,4} pypy )
+PYTHON_COMPAT=( python2_7 python3_{3,4} )
 
 inherit distutils-r1
 

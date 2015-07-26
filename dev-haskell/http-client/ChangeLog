@@ -1,6 +1,12 @@
 # ChangeLog for dev-haskell/http-client
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/http-client/ChangeLog,v 1.11 2015/06/06 11:41:20 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/http-client/ChangeLog,v 1.12 2015/07/26 21:07:07 slyfox Exp $
+
+*http-client-0.4.18.1 (26 Jul 2015)
+
+  26 Jul 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  +http-client-0.4.18.1.ebuild:
+  Version bump.
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

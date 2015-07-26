@@ -1,0 +1,47 @@
+From 621274d694dee1f8c92f5db99a5cff98e82c6bd4 Mon Sep 17 00:00:00 2001
+From: Dirk Vanden Boer <dirk.vdb@gmail.com>
+Date: Sat, 2 May 2015 09:33:34 +0200
+Subject: [PATCH] Use proper gnu installation dirs (Thanks to Vallimar)
+
+---
+ CMakeLists.txt | 15 ++++++++-------
+ ChangeLog      |  1 +
+ 2 files changed, 9 insertions(+), 7 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6b6e515..badb7cf 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -25,6 +25,7 @@ ENDIF ()
+ 
+ PROJECT(${PACKAGE})
+ INCLUDE(CPack)
++INCLUDE(GNUInstallDirs)
+ 
+ SET(CMAKE_EXPORT_COMPILE_COMMANDS 1)
+ SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+@@ -189,17 +190,17 @@ ELSE ()
+ ENDIF ()
+ 
+ INSTALL(TARGETS ffmpegthumbnailer ${STATIC_LIB} ${SHARED_LIB}
+-    LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
+-    RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
+-    ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
+-    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_PREFIX}/include/libffmpegthumbnailer
++    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/libffmpegthumbnailer
+ )
+ 
+-INSTALL(FILES man/ffmpegthumbnailer.1 DESTINATION ${CMAKE_INSTALL_PREFIX}/man/man1)
+-INSTALL(FILES ${CMAKE_BINARY_DIR}/libffmpegthumbnailer.pc DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig)
++INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/man/ffmpegthumbnailer.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
++INSTALL(FILES ${CMAKE_BINARY_DIR}/libffmpegthumbnailer.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+ 
+ IF (ENABLE_THUMBNAILER)
+-    INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/dist/ffmpegthumbnailer.thumbnailer DESTINATION ${CMAKE_INSTALL_PREFIX}/share/thumbnailers)
++    INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/dist/ffmpegthumbnailer.thumbnailer DESTINATION ${CMAKE_INSTALL_DATADIR}/thumbnailers)
+ ENDIF ()
+ 
+ CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/config.h.in ${CMAKE_BINARY_DIR}/config.h)

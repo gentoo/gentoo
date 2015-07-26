@@ -1,10 +1,13 @@
 # ChangeLog for profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10206 2015/07/26 10:46:24 johu Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10207 2015/07/26 20:54:56 rhill Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  26 Jul 2015; Ryan Hill <rhill@gentoo.org> desc/linguas.desc:
+  Add a few locales from poedit.
 
   26 Jul 2015; Johannes Huber <johu@gentoo.org> package.mask:
   Remove obsolete mask for app-portage/kportagetray. 

@@ -1,0 +1,46 @@
+From 718f1b1147fe7e9138e2d503ed151e589d643772 Mon Sep 17 00:00:00 2001
+From: Dirk Vanden Boer <dirk.vdb@gmail.com>
+Date: Sat, 18 Jul 2015 10:24:28 +0200
+Subject: [PATCH] Set locale to the user specified locale
+
+---
+ main.cpp            | 5 ++---
+ test/testrunner.cpp | 7 ++-----
+ 2 files changed, 4 insertions(+), 8 deletions(-)
+
+diff --git a/main.cpp b/main.cpp
+index 6cb6c55..7cb7089 100644
+--- a/main.cpp
++++ b/main.cpp
+@@ -54,10 +54,9 @@ int main(int argc, char** argv)
+     string  outputFile;
+     string  imageFormat;
+ 
+-    if (!setlocale(LC_CTYPE, "en_US.UTF-8"))
++    if (!std::setlocale(LC_CTYPE, ""))
+     {
+-        std::cerr << "Locale not specified. Check LANG, LC_CTYPE, LC_ALL" << std::endl;
+-        return 1;
++        std::cerr << "Failed to set locale" << std::endl;
+     }
+ 
+     while ((option = getopt (argc, argv, "i:o:s:t:q:c:afwhvp")) != -1)
+diff --git a/test/testrunner.cpp b/test/testrunner.cpp
+index 7023d25..20a4903 100644
+--- a/test/testrunner.cpp
++++ b/test/testrunner.cpp
+@@ -4,12 +4,9 @@
+ #include <gtest/gtest.h>
+ 
+ int main(int argc, char **argv) {
+-    std::cout << "Running ffmpegthumbnailer tests" << std::endl;
+-
+-    if (!setlocale(LC_CTYPE, "en_US.UTF-8"))
++    if (!std::setlocale(LC_CTYPE, ""))
+     {
+-        std::cerr << "Locale not specified. Check LANG, LC_CTYPE, LC_ALL" << std::endl;
+-        return 1;
++        std::cerr << "Failed to set locale" << std::endl;
+     }
+ 
+     testing::InitGoogleTest(&argc, argv);

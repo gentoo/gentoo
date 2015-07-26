@@ -1,6 +1,16 @@
 # ChangeLog for media-video/ffmpegthumbnailer
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpegthumbnailer/ChangeLog,v 1.151 2013/04/05 20:39:09 ssuominen Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpegthumbnailer/ChangeLog,v 1.152 2015/07/26 21:30:52 mgorny Exp $
+
+*ffmpegthumbnailer-2.0.10 (26 Jul 2015)
+
+  26 Jul 2015; Michał Górny <mgorny@gentoo.org>
+  +ffmpegthumbnailer-2.0.10.ebuild,
+  +files/ffmpegthumbnailer-2.0.10-config-summary.patch,
+  +files/ffmpegthumbnailer-2.0.10-installdirs.patch,
+  +files/ffmpegthumbnailer-2.0.10-set-locale.patch:
+  Version bump. Update homepage and switch to cmake. https://github.com/gentoo
+  /gentoo-portage-rsync-mirror/pull/175 by a17r.
 
   05 Apr 2013; Samuli Suominen <ssuominen@gentoo.org>
   ffmpegthumbnailer-2.0.8.ebuild:

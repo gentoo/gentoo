@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/testtools
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/testtools/ChangeLog,v 1.128 2015/07/26 15:41:11 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/testtools/ChangeLog,v 1.129 2015/07/26 21:14:35 mgorny Exp $
+
+  26 Jul 2015; Michał Górny <mgorny@gentoo.org> testtools-1.8.0.ebuild:
+  Revert pypy support because of broken deps
 
   26 Jul 2015; Ian Delaney <idella4@gentoo.org> testtools-1.7.1.ebuild,
   testtools-1.8.0.ebuild:

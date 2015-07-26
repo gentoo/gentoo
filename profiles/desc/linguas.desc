@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/desc/linguas.desc,v 1.90 2015/05/20 05:04:42 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/desc/linguas.desc,v 1.91 2015/07/26 20:54:56 rhill Exp $
 
 # This file contains descriptions of LINGUAS USE_EXPAND flags.
 
@@ -38,7 +38,9 @@ ca - Catalan locale
 ca@valencia - Catalan locale (Valencia)
 ca_ES - Catalan locale for Spain
 ca_XV - Asturian and Catalan locale (Valencia)
+ckb - Kurdish (Sorani)
 cmn - Chinese (Mandarin) locale
+co - Corsican 
 crh - Crimean Tatar (Crimean Turkish) locale
 cs - Czech locale
 cs_CZ - Czech locale for Czech Republic
@@ -93,6 +95,7 @@ fo - Faroese locale
 fr - French locale
 fr_CA - French locale for Canada
 fr_FR - French locale for France
+fur - Friullian
 fy - Frisian locale
 fy_NL - Frisian language locale for the Netherlands
 ga - Irish locale
