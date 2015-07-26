@@ -10,4 +10,4 @@ RDEPEND=selinux? ( sys-libs/libselinux ) nls? ( virtual/libintl )
 SLOT=0
 SRC_URI=mirror://gnu-alpha/findutils/findutils-4.5.14.tar.gz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=ae06e8e358008a6eea402c72dd790765
+_md5_=85dcfb7e3635b6da1ff05cb1b84320a6

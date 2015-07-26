@@ -1,6 +1,12 @@
 # ChangeLog for dev-perl/B-Utils
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/B-Utils/ChangeLog,v 1.28 2015/05/01 11:51:42 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/B-Utils/ChangeLog,v 1.29 2015/07/25 17:18:30 dilfridge Exp $
+
+*B-Utils-0.270.0 (25 Jul 2015)
+
+  25 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +B-Utils-0.270.0.ebuild, -B-Utils-0.250.0.ebuild:
+  Version bump; remove old
 
   01 May 2015; Andreas K. Huettel <dilfridge@gentoo.org>
   B-Utils-0.250.0.ebuild, B-Utils-0.260.0.ebuild:

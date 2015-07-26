@@ -1,6 +1,9 @@
 # ChangeLog for sys-devel/sparse
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/sparse/ChangeLog,v 1.58 2015/04/25 16:38:01 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/sparse/ChangeLog,v 1.59 2015/07/22 11:43:49 mrueg Exp $
+
+  22 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -sparse-0.4.2.ebuild:
+  Remove old.
 
   25 Apr 2015; Mike Gilbert <floppym@gentoo.org> sparse-0.4.3.ebuild:
   Replace links pointing at git.overlays.gentoo.org.

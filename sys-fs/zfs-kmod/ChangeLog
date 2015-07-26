@@ -1,6 +1,10 @@
 # ChangeLog for sys-fs/zfs-kmod
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/zfs-kmod/ChangeLog,v 1.61 2015/07/14 03:17:14 dlan Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/zfs-kmod/ChangeLog,v 1.62 2015/07/24 04:32:25 ryao Exp $
+
+  24 Jul 2015; Richard Yao <ryao@gentoo.org> zfs-kmod-0.6.4.2.ebuild,
+  zfs-kmod-0.6.4.ebuild, zfs-kmod-9999.ebuild:
+  Sync 9999 ebuild kernel options with 0.6.4.2 ebuild
 
   14 Jul 2015; Yixun Lan <dlan@gentoo.org> zfs-kmod-0.6.4.2.ebuild:
   support kernel latest version 4.1, fixed

@@ -1,0 +1,50 @@
+--- opencascade-6.6.0/ros/inc/InterfaceGraphic_X11.hxx
++++ opencascade-6.6.0/ros/inc/InterfaceGraphic_X11.hxx
+@@ -25,6 +25,7 @@
+ #  include <X11/Xlib.h>
+ #  include <X11/Xutil.h>
+ #  include <X11/Xatom.h>
++#define GLX_GLXEXT_LEGACY
+ #  include <GL/glx.h>
+ 
+ #  if defined (sun) || defined (SUNOS) || defined (__alpha) || defined (DECOSF1) || defined (sgi) || defined (IRIX) || defined (__hpux)|| defined (HPUX) 
+--- opencascade-6.6.0/ros/samples/qt/Common/src/View.cxx
++++ opencascade-6.6.0/ros/samples/qt/Common/src/View.cxx
+@@ -25,6 +25,7 @@
+ #include <Cocoa_Window.hxx>
+ #else
+ #include <QX11Info>
++#define GLX_GLXEXT_LEGACY
+ #include <GL/glx.h>
+ #include <X11/Xutil.h>
+ #include <X11/Xatom.h>
+--- opencascade-6.6.0/ros/src/InterfaceGraphic/InterfaceGraphic_X11.hxx
++++ opencascade-6.6.0/ros/src/InterfaceGraphic/InterfaceGraphic_X11.hxx
+@@ -25,6 +25,7 @@
+ #  include <X11/Xlib.h>
+ #  include <X11/Xutil.h>
+ #  include <X11/Xatom.h>
++#define GLX_GLXEXT_LEGACY
+ #  include <GL/glx.h>
+ 
+ #  if defined (sun) || defined (SUNOS) || defined (__alpha) || defined (DECOSF1) || defined (sgi) || defined (IRIX) || defined (__hpux)|| defined (HPUX) 
+--- opencascade-6.6.0/ros/src/OpenGl/OpenGl_Context.cxx
++++ opencascade-6.6.0/ros/src/OpenGl/OpenGl_Context.cxx
+@@ -39,6 +39,7 @@
+ #elif defined(__APPLE__) && !defined(MACOSX_USE_GLX)
+   #include <dlfcn.h>
+ #else
++  #define GLX_GLXEXT_LEGACY
+   #include <GL/glx.h> // glXGetProcAddress()
+ #endif
+ 
+--- opencascade-6.6.0/ros/src/Xw/Xw_Window.cxx
++++ opencascade-6.6.0/ros/src/Xw/Xw_Window.cxx
+@@ -24,6 +24,7 @@
+ #include <Aspect_Convert.hxx>
+ #include <Aspect_WindowDefinitionError.hxx>
+ 
++#define GLX_GLXEXT_LEGACY
+ #include <GL/glx.h>
+ 
+ namespace

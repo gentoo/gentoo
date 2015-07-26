@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/boot0/boot0-10.1.ebuild,v 1.4 2015/06/14 18:02:43 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/boot0/boot0-10.1.ebuild,v 1.5 2015/07/25 12:09:21 mgorny Exp $
 
 EAPI=5
 
@@ -60,9 +60,10 @@ src_compile() {
 		freebsd_src_compile
 		cd "${S}/userboot/zfs" || die
 		freebsd_src_compile
-		cd "${S}/libstand32" || die
-		freebsd_src_compile
 	fi
+
+	cd "${S}/libstand32" || die
+	freebsd_src_compile
 
 	# bug542676
 	if [[ $(tc-getCC) == *clang* ]]; then

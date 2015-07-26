@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/isapnptools
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/isapnptools/ChangeLog,v 1.14 2012/01/21 16:13:56 phajdan.jr Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/isapnptools/ChangeLog,v 1.15 2015/07/23 02:39:02 mrueg Exp $
+
+  23 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -isapnptools-1.26-r2.ebuild:
+  Remove old.
 
   21 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> isapnptools-1.27.ebuild:
   x86 stable wrt bug #397209

@@ -1,6 +1,11 @@
 # ChangeLog for media-libs/libsidplayfp
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libsidplayfp/ChangeLog,v 1.12 2015/01/29 17:42:48 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libsidplayfp/ChangeLog,v 1.13 2015/07/25 13:41:47 yngwin Exp $
+
+*libsidplayfp-1.8.0 (25 Jul 2015)
+
+  25 Jul 2015; Ben de Groot <yngwin@gentoo.org> +libsidplayfp-1.8.0.ebuild:
+  version bump
 
   29 Jan 2015; Michał Górny <mgorny@gentoo.org> libsidplayfp-1.1.0.ebuild:
   Switch to CPU_FLAGS_X86.

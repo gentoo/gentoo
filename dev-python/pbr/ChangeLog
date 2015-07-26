@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/pbr
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pbr/ChangeLog,v 1.45 2015/07/11 19:08:26 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pbr/ChangeLog,v 1.46 2015/07/26 15:30:18 idella4 Exp $
+
+  26 Jul 2015; Ian Delaney <idella4@gentoo.org> pbr-1.3.0.ebuild:
+  add pypy support, tidy to test phase
 
 *pbr-1.3.0 (11 Jul 2015)
 

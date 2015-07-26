@@ -1,6 +1,16 @@
 # ChangeLog for dev-libs/libtar
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libtar/ChangeLog,v 1.38 2014/02/20 20:09:18 zlogene Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libtar/ChangeLog,v 1.40 2015/07/21 05:36:23 idella4 Exp $
+
+*libtar-1.2.20-r3 (21 Jul 2015)
+
+  21 Jul 2015; Ian Delaney <idella4@gentoo.org> +files/CVE-2013-4420.patch,
+  +libtar-1.2.20-r3.ebuild:
+  revbump; sec. patch from Bug 487686, sourced, prepared and runtested by proxy
+  maintainer
+
+  21 Jul 2015; Ian Delaney <idella4@gentoo.org> metadata.xml:
+  set proxy maintainer under the proxy-maintainers herd
 
   20 Feb 2014; Mikle Kolyada <zlogene@gentoo.org> -libtar-1.2.11-r5.ebuild:
   Drop insecure version wrt bug #487686

@@ -1,6 +1,9 @@
 # ChangeLog for sci-biology/emboss
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/emboss/ChangeLog,v 1.74 2015/05/07 10:17:54 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/emboss/ChangeLog,v 1.75 2015/07/23 20:18:07 pacho Exp $
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org> emboss-6.6.0.ebuild:
+  ppc stable wrt bug #529038
 
   07 May 2015; Justin Lecher <jlec@gentoo.org> emboss-6.6.0.ebuild,
   files/emboss-6.6.0_fix-build-system.patch:

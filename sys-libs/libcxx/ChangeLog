@@ -1,6 +1,11 @@
 # ChangeLog for sys-libs/libcxx
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/libcxx/ChangeLog,v 1.43 2015/05/29 09:49:41 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/libcxx/ChangeLog,v 1.44 2015/07/21 09:02:41 aballier Exp $
+
+*libcxx-3.6.2 (21 Jul 2015)
+
+  21 Jul 2015; Alexis Ballier <aballier@gentoo.org> +libcxx-3.6.2.ebuild:
+  version bump
 
 *libcxx-3.6.1 (29 May 2015)
 

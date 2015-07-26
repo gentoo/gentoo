@@ -1,6 +1,9 @@
 # ChangeLog for media-libs/libdvdnav
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libdvdnav/ChangeLog,v 1.91 2015/07/18 06:28:22 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libdvdnav/ChangeLog,v 1.92 2015/07/23 20:33:29 pacho Exp $
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org> libdvdnav-5.0.3.ebuild:
+  ppc stable wrt bug #535458
 
   18 Jul 2015; Jeroen Roovers <jer@gentoo.org> libdvdnav-5.0.3.ebuild:
   Stable for HPPA PPC64 (bug #535458).

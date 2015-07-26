@@ -1,10 +1,10 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/traceback2/traceback2-1.4.0.ebuild,v 1.6 2015/05/21 03:40:13 mattst88 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/traceback2/traceback2-1.4.0.ebuild,v 1.7 2015/07/26 15:34:06 idella4 Exp $
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
+PYTHON_COMPAT=( python2_7 python3_3 python3_4 pypy )
 
 inherit distutils-r1
 

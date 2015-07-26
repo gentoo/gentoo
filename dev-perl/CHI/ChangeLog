@@ -1,6 +1,12 @@
 # ChangeLog for dev-perl/CHI
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/CHI/ChangeLog,v 1.11 2015/04/18 19:29:10 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/CHI/ChangeLog,v 1.12 2015/07/21 22:17:45 dilfridge Exp $
+
+*CHI-0.600.0 (21 Jul 2015)
+
+  21 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org> +CHI-0.600.0.ebuild,
+  -CHI-0.560.0.ebuild, -CHI-0.580.0.ebuild:
+  Version bump
 
 *CHI-0.590.0 (18 Apr 2015)
 

@@ -1,6 +1,20 @@
 # ChangeLog for dev-libs/libgudev
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgudev/ChangeLog,v 1.7 2015/07/10 13:35:32 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgudev/ChangeLog,v 1.11 2015/07/24 15:13:33 floppym Exp $
+
+  24 Jul 2015; Mike Gilbert <floppym@gentoo.org> libgudev-230.ebuild:
+  Drop IUSE=doc and gtk-doc support. If the gnome team wants to fix it, they are
+  welcome to do so.
+
+  24 Jul 2015; Mike Gilbert <floppym@gentoo.org> libgudev-230.ebuild:
+  Make the doc USE flag do something.
+
+  24 Jul 2015; Mike Gilbert <floppym@gentoo.org> libgudev-230.ebuild:
+  Remove duplicate dep on gobject-introspection.
+
+  23 Jul 2015; Maxim Koltsov <maksbotan@gentoo.org> libgudev-230.ebuild:
+  Add gobject-introspection dependency, as it was in sys-fs/udev package. Bug
+  #555674.
 
   10 Jul 2015; Mike Gilbert <floppym@gentoo.org> libgudev-230.ebuild:
   Copy ~hppa keyword from udev, bug 554406.

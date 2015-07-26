@@ -1,6 +1,10 @@
 # ChangeLog for sys-devel/bmake
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/bmake/ChangeLog,v 1.19 2014/08/28 08:36:35 naota Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/bmake/ChangeLog,v 1.20 2015/07/22 11:50:00 mrueg Exp $
+
+  22 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -bmake-20120620.ebuild,
+  -bmake-20121010.ebuild, -bmake-20130123.ebuild, -bmake-20130330.ebuild:
+  Remove old.
 
   28 Aug 2014; Naohiro Aota <naota@gentoo.org> bmake-20140214.ebuild:
   Update sed workaround #520174

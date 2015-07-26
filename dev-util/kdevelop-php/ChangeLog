@@ -1,6 +1,11 @@
 # ChangeLog for dev-util/kdevelop-php
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/kdevelop-php/ChangeLog,v 1.50 2015/02/10 21:46:16 johu Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/kdevelop-php/ChangeLog,v 1.51 2015/07/25 16:07:44 mgorny Exp $
+
+  25 Jul 2015; Michał Górny <mgorny@gentoo.org> kdevelop-php-1.5.2.ebuild,
+  kdevelop-php-1.6.0.ebuild, kdevelop-php-1.7.1.ebuild:
+  Pin dependencies to dev-util/kdevelop-pg-qt:4. https://github.com/gentoo
+  /gentoo-portage-rsync-mirror/pull/171 by a17r.
 
 *kdevelop-php-1.7.1 (10 Feb 2015)
 

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=ruby_targets_ruby19? ( test? ( dev-ruby/rack-test[ruby_targets_ruby19] ) ) ruby_targets_ruby20? ( test? ( dev-ruby/rack-test[ruby_targets_ruby20] ) ) ruby_targets_ruby21? ( test? ( dev-ruby/rack-test[ruby_targets_ruby21] ) ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_ruby20? ( dev-lang/ruby:2.0 ) ruby_targets_ruby21? ( dev-lang/ruby:2.1 ) ruby_targets_ruby19? ( test? ( dev-ruby/rspec:2[ruby_targets_ruby19] >=dev-ruby/rspec-core-2.14.8-r2[ruby_targets_ruby19] ) ) ruby_targets_ruby20? ( test? ( dev-ruby/rspec:2[ruby_targets_ruby20] >=dev-ruby/rspec-core-2.14.8-r2[ruby_targets_ruby20] ) ) ruby_targets_ruby21? ( test? ( dev-ruby/rspec:2[ruby_targets_ruby21] >=dev-ruby/rspec-core-2.14.8-r2[ruby_targets_ruby21] ) ) ruby_targets_ruby19? ( virtual/rubygems[ruby_targets_ruby19] ) ruby_targets_ruby20? ( virtual/rubygems[ruby_targets_ruby20] ) ruby_targets_ruby21? ( virtual/rubygems[ruby_targets_ruby21] ) test? ( ruby_targets_ruby19? ( virtual/rubygems[ruby_targets_ruby19] ) ruby_targets_ruby20? ( virtual/rubygems[ruby_targets_ruby20] ) ruby_targets_ruby21? ( virtual/rubygems[ruby_targets_ruby21] ) )
+DESCRIPTION=This gem protects against typical web attacks
+EAPI=5
+HOMEPAGE=https://github.com/rkh/rack-protection
+IUSE=elibc_FreeBSD ruby_targets_ruby19 ruby_targets_ruby20 ruby_targets_ruby21 test test
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=MIT
+RDEPEND=ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_ruby20? ( dev-lang/ruby:2.0 ) ruby_targets_ruby21? ( dev-lang/ruby:2.1 ) ruby_targets_ruby19? ( virtual/rubygems[ruby_targets_ruby19] ) ruby_targets_ruby20? ( virtual/rubygems[ruby_targets_ruby20] ) ruby_targets_ruby21? ( virtual/rubygems[ruby_targets_ruby21] )
+REQUIRED_USE=|| ( ruby_targets_ruby19 ruby_targets_ruby20 ruby_targets_ruby21 )
+SLOT=1
+SRC_URI=mirror://rubygems/rack-protection-1.5.3.gem
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	java-utils-2	abeb792ba9affd97d226ab283bfd07a2	multilib	62927b3db3a589b0806255f3a002d5d3	ruby-fakegem	59aa129a3b9dc9e6225a0622860d2f54	ruby-ng	a1c75617b3482d513ad41d1aea8dbf8f	ruby-utils	a74e21a353442acf697b6c82e7df6df8	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=cedf1fc4b981607624317151a77f6cc0

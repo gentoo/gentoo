@@ -1,6 +1,10 @@
 # ChangeLog for dev-util/bustle
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/bustle/ChangeLog,v 1.25 2015/01/04 22:24:16 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/bustle/ChangeLog,v 1.26 2015/07/21 21:00:26 mrueg Exp $
+
+  21 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -bustle-0.2.3.ebuild,
+  -bustle-0.4.0.ebuild, -bustle-0.4.2.ebuild:
+  Remove old.
 
 *bustle-0.4.7-r1 (04 Jan 2015)
 

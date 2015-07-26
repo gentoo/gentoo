@@ -1,6 +1,9 @@
 # ChangeLog for dev-util/buildbot
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/buildbot/ChangeLog,v 1.174 2015/07/15 22:18:02 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/buildbot/ChangeLog,v 1.175 2015/07/26 06:16:18 jer Exp $
+
+  26 Jul 2015; Jeroen Roovers <jer@gentoo.org> buildbot-0.8.12.ebuild:
+  Stable for HPPA (bug #551980).
 
   15 Jul 2015; Mike Gilbert <floppym@gentoo.org> buildbot-0.8.10.ebuild,
   buildbot-0.8.12.ebuild, buildbot-9999.ebuild:

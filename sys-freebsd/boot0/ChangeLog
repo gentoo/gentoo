@@ -1,6 +1,10 @@
 # ChangeLog for sys-freebsd/boot0
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/boot0/ChangeLog,v 1.55 2015/06/14 18:02:43 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/boot0/ChangeLog,v 1.56 2015/07/25 12:09:21 mgorny Exp $
+
+  25 Jul 2015; Michał Górny <mgorny@gentoo.org> boot0-10.1.ebuild:
+  Fix build failure on x86-fbsd, bug #554738. https://github.com/gentoo/gentoo-
+  portage-rsync-mirror/pull/181 by nigoro.
 
   14 Jun 2015; Michał Górny <mgorny@gentoo.org> boot0-10.1.ebuild:
   Do not force clang, gcc works nowadays. https://github.com/gentoo/gentoo-

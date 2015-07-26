@@ -1,6 +1,12 @@
 # ChangeLog for sys-devel/boost-m4
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/boost-m4/ChangeLog,v 1.22 2014/01/27 07:23:54 jlec Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/boost-m4/ChangeLog,v 1.23 2015/07/19 09:57:35 rhill Exp $
+
+*boost-m4-0.4-r1 (19 Jul 2015)
+
+  19 Jul 2015; Ryan Hill <rhill@gentoo.org> +boost-m4-0.4-r1.ebuild,
+  +files/boost-m4-0.4-gcc5.patch:
+  Deal with gcc-5 preprocessor output changes (bug #549618).
 
   27 Jan 2014; Justin Lecher <jlec@gentoo.org> -boost-m4-0.3_pre121130.ebuild,
   metadata.xml:

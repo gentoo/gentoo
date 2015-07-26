@@ -1,6 +1,16 @@
 # ChangeLog for dev-python/django-opensearch
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/django-opensearch/ChangeLog,v 1.4 2015/06/07 13:08:00 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/django-opensearch/ChangeLog,v 1.6 2015/07/20 04:51:46 ercpe Exp $
+
+  20 Jul 2015; Johann Schmitz <ercpe@gentoo.org> django-opensearch-0.1.2.ebuild:
+  Added dependency to <dev-python/django-1.7 to django-opensearch-0.1.2 due to
+  the use of the mimetype kwarg on render_to_string
+
+*django-opensearch-0.2.4 (20 Jul 2015)
+
+  20 Jul 2015; Johann Schmitz <ercpe@gentoo.org>
+  +django-opensearch-0.2.4.ebuild:
+  Version bump of django-opensearch to 0.2.4
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

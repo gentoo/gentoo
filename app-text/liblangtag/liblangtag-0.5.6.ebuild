@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/liblangtag/liblangtag-0.5.6.ebuild,v 1.2 2015/05/23 20:41:39 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/liblangtag/liblangtag-0.5.6.ebuild,v 1.4 2015/07/22 19:33:24 ago Exp $
 
 EAPI=5
 
@@ -12,7 +12,7 @@ SRC_URI="https://bitbucket.org/tagoh/${PN}/downloads/${P}.tar.bz2"
 
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~ppc x86"
 IUSE="introspection static-libs test"
 
 RDEPEND="

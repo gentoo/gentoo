@@ -1,6 +1,9 @@
 # ChangeLog for net-libs/udns
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/udns/ChangeLog,v 1.31 2015/04/18 04:10:22 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/udns/ChangeLog,v 1.32 2015/07/23 20:32:55 pacho Exp $
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org> udns-0.4.ebuild:
+  ppc stable wrt bug #517792
 
   18 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org> -udns-0.2.ebuild:
   old

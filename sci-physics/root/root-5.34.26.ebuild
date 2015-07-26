@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/root/root-5.34.26.ebuild,v 1.6 2015/07/18 09:40:19 bircoph Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-physics/root/root-5.34.26.ebuild,v 1.7 2015/07/18 13:43:07 bircoph Exp $
 
 EAPI=5
 
@@ -19,7 +19,6 @@ inherit elisp-common eutils fdo-mime fortran-2 multilib python-single-r1 \
 
 DESCRIPTION="C++ data analysis framework and interpreter from CERN"
 HOMEPAGE="http://root.cern.ch/"
-DOC_URI="ftp://root.cern.ch/${PN}/doc"
 
 SLOT="0/$(get_version_component_range 1-3 ${PV})"
 LICENSE="LGPL-2.1 freedist MSttfEULA LGPL-3 libpng UoI-NCSA"

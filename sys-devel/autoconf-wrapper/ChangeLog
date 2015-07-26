@@ -1,6 +1,13 @@
 # ChangeLog for sys-devel/autoconf-wrapper
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/autoconf-wrapper/ChangeLog,v 1.110 2014/01/17 04:23:10 vapier Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/autoconf-wrapper/ChangeLog,v 1.111 2015/07/22 11:47:23 mrueg Exp $
+
+  22 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -autoconf-wrapper-10-r1.ebuild,
+  -autoconf-wrapper-11.ebuild, -autoconf-wrapper-12.ebuild,
+  -autoconf-wrapper-8.ebuild, -autoconf-wrapper-9-r1.ebuild,
+  -files/ac-wrapper-10.sh, -files/ac-wrapper-11.sh, -files/ac-wrapper-12.sh,
+  -files/ac-wrapper-8.sh, -files/ac-wrapper-9.sh:
+  Remove old.
 
   17 Jan 2014; Mike Frysinger <vapier@gentoo.org> autoconf-wrapper-13.ebuild:
   Add arm64 keywords.

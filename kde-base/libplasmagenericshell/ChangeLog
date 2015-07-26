@@ -1,6 +1,18 @@
 # ChangeLog for kde-base/libplasmagenericshell
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/libplasmagenericshell/ChangeLog,v 1.183 2015/07/02 13:23:00 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/libplasmagenericshell/ChangeLog,v 1.186 2015/07/25 12:04:21 pacho Exp $
+
+  25 Jul 2015; Pacho Ramos <pacho@gentoo.org>
+  libplasmagenericshell-4.11.19.ebuild:
+  ppc stable wrt bug #550740
+
+  18 Jul 2015; Johannes Huber <johu@gentoo.org>
+  -libplasmagenericshell-4.11.20.ebuild:
+  Remove KDE Workspace 4.11.20
+
+  18 Jul 2015; Johannes Huber <johu@gentoo.org>
+  -libplasmagenericshell-4.11.17.ebuild:
+  Remove KDE Workspace 4.11.17
 
 *libplasmagenericshell-4.11.21 (02 Jul 2015)
 

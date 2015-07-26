@@ -1,6 +1,18 @@
 # ChangeLog for sci-physics/root
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/root/ChangeLog,v 1.150 2015/07/18 09:40:19 bircoph Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-physics/root/ChangeLog,v 1.153 2015/07/18 22:38:20 bircoph Exp $
+
+  18 Jul 2015; Andrew Savchenko <bircoph@gentoo.org> root-6.02.05-r2.ebuild:
+  Install README.md in the same directory as all other docs (ignores ).
+
+  18 Jul 2015; Andrew Savchenko <bircoph@gentoo.org> -root-5.34.28-r1.ebuild:
+  Remove old.
+
+*root-5.34.32 (18 Jul 2015)
+
+  18 Jul 2015; Andrew Savchenko <bircoph@gentoo.org> root-5.34.26.ebuild,
+  root-5.34.28-r1.ebuild, +root-5.34.32.ebuild:
+  Version bump. Purge unused DOC_URI.
 
   18 Jul 2015; Andrew Savchenko <bircoph@gentoo.org> root-5.34.26.ebuild,
   root-5.34.28-r1.ebuild:

@@ -1,12 +1,13 @@
 DEFINED_PHASES=configure install
-DEPEND=kpathsea? ( virtual/tex-base )
+DEPEND=kpathsea? ( virtual/tex-base dev-libs/kpathsea ) virtual/pkgconfig
 DESCRIPTION=Font utilities for eg manipulating OTF
 EAPI=2
 HOMEPAGE=http://www.lcdf.org/type/#typetools
 IUSE=+kpathsea
 KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-2
-RDEPEND=kpathsea? ( virtual/tex-base )
+RDEPEND=kpathsea? ( virtual/tex-base dev-libs/kpathsea )
 SLOT=0
 SRC_URI=http://www.lcdf.org/type/lcdf-typetools-2.104.tar.gz
-_md5_=939ad45c6dc74814a04db0362f24e2cf
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=b7df5ca94f6dc12b9457eeb1d4644dec

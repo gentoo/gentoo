@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/jffi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jffi/ChangeLog,v 1.43 2015/06/22 22:19:06 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jffi/ChangeLog,v 1.44 2015/07/26 08:17:58 mgorny Exp $
+
+  26 Jul 2015; Michał Górny <mgorny@gentoo.org> jffi-1.2.8.ebuild:
+  Fix implicit ccache use, bug #545654.
 
   22 Jun 2015; Patrice Clement <monsieurp@gentoo.org> -jffi-1.0.0-r1.ebuild,
   -jffi-1.0.0.ebuild:

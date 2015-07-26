@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND==dev-haskell/conduit-1.0*:=[profile?] >=dev-haskell/filesystem-conduit-1.0:=[profile?] >=dev-haskell/resourcet-0.3:=[profile?] <dev-haskell/resourcet-0.5:=[profile?] =dev-haskell/system-filepath-0.4*:=[profile?] >=dev-haskell/tagstream-conduit-0.4:=[profile?] <dev-haskell/tagstream-conduit-0.6:=[profile?] dev-haskell/text:=[profile?] dev-haskell/transformers:=[profile?] =dev-haskell/xml-conduit-1.1*:=[profile?] =dev-haskell/xml-types-0.3*:=[profile?] >=dev-lang/ghc-6.10.4:=
 SLOT=0/1.1.0
 SRC_URI=mirror://hackage/packages/archive/html-conduit/1.1.0/html-conduit-1.1.0.tar.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	ghc-package	48ae4e0fd75e1c8047c4b7f507d5debc	haskell-cabal	eee03ecca8dca7a927272dcea2ca53f4	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	ghc-package	48ae4e0fd75e1c8047c4b7f507d5debc	haskell-cabal	7ef7b3e7548c8c61352984737b22d3e3	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=024287b04fa68c0978ed854987170bdb

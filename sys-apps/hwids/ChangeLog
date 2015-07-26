@@ -1,6 +1,14 @@
 # ChangeLog for sys-apps/hwids
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/hwids/ChangeLog,v 1.170 2015/07/18 02:00:03 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/hwids/ChangeLog,v 1.171 2015/07/18 16:55:47 floppym Exp $
+
+*hwids-20150421-r1 (18 Jul 2015)
+*hwids-20150717-r1 (18 Jul 2015)
+
+  18 Jul 2015; Mike Gilbert <floppym@gentoo.org> +hwids-20150421-r1.ebuild,
+  +hwids-20150717-r1.ebuild, hwids-99999999.ebuild, metadata.xml:
+  Add workaround for mapping change in 60-keyboard.hwdb, bug 555204, patch by
+  axs.
 
 *hwids-20150717 (18 Jul 2015)
 

@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/cipher-aes
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/cipher-aes/ChangeLog,v 1.15 2015/06/06 10:37:40 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/cipher-aes/ChangeLog,v 1.16 2015/07/26 14:04:26 slyfox Exp $
+
+*cipher-aes-0.2.11 (26 Jul 2015)
+
+  26 Jul 2015; Sergei Trofimovich <slyfox@gentoo.org> +cipher-aes-0.2.11.ebuild:
+  Version bump.
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libX11/libX11-1.6.3.ebuild,v 1.1 2015/03/11 00:30:30 mattst88 Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libX11/libX11-1.6.3.ebuild,v 1.2 2015/07/23 03:43:25 vapier Exp $
 
 EAPI=5
 
@@ -8,7 +8,7 @@ XORG_DOC=doc
 # needs automake-1.14 without eautoreconf
 XORG_EAUTORECONF=yes
 XORG_MULTILIB=yes
-inherit xorg-2 toolchain-funcs flag-o-matic
+inherit xorg-2 toolchain-funcs
 
 DESCRIPTION="X.Org X11 library"
 
@@ -44,16 +44,14 @@ src_configure() {
 }
 
 multilib_src_compile() {
-	# [Cross-Compile Love] Disable {C,LD}FLAGS and redefine CC= for 'makekeys'
 	if tc-is-cross-compiler; then
-		(
-			filter-flags -m*
-			emake -C src/util \
-			CC=$(tc-getBUILD_CC) \
-			CFLAGS="${CFLAGS}" \
-			LDFLAGS="" \
-			clean all || die
-		)
+		# Make sure the build-time tool "makekeys" uses build settings.
+		tc-export_build_env BUILD_CC
+		emake -C src/util \
+			CC="${BUILD_CC}" \
+			CFLAGS="${BUILD_CFLAGS}" \
+			LDFLAGS="${BUILD_LDFLAGS}" \
+			clean all
 	fi
 
 	default

@@ -1,6 +1,17 @@
 # ChangeLog for gnome-extra/evolution-data-server
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/evolution-data-server/ChangeLog,v 1.419 2015/07/04 12:53:12 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/evolution-data-server/ChangeLog,v 1.421 2015/07/19 11:13:50 pacho Exp $
+
+  19 Jul 2015; Pacho Ramos <pacho@gentoo.org>
+  +files/evolution-data-server-3.16.4-goa-gmail.patch:
+  Commit missing patch
+
+*evolution-data-server-3.16.4 (19 Jul 2015)
+
+  19 Jul 2015; Pacho Ramos <pacho@gentoo.org>
+  +evolution-data-server-3.16.4.ebuild,
+  -evolution-data-server-3.16.4_pre20150619.ebuild:
+  Version bump, drop old
 
 *evolution-data-server-3.16.4_pre20150704 (04 Jul 2015)
 

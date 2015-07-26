@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/builder/builder-3.2.2.ebuild,v 1.15 2015/05/31 10:45:26 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/builder/builder-3.2.2.ebuild,v 1.16 2015/07/25 13:00:25 zlogene Exp $
 
 EAPI=5
 USE_RUBY="ruby19 ruby20"
@@ -17,7 +17,7 @@ HOMEPAGE="http://rubyforge.org/projects/builder/"
 
 LICENSE="MIT"
 SLOT="$(get_version_component_range 1-2)"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
 ruby_add_bdepend "doc? ( dev-ruby/rdoc )"

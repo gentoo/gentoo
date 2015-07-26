@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/pythonmagick
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pythonmagick/ChangeLog,v 1.48 2015/02/01 21:44:43 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pythonmagick/ChangeLog,v 1.49 2015/07/21 17:41:53 grknight Exp $
+
+  21 Jul 2015; Brian Evans <grknight@gentoo.org> pythonmagick-0.9.11.ebuild:
+  Fix Manifest and repoman warnings
 
   01 Feb 2015; Manuel Rüger <mrueg@gentoo.org> -pythonmagick-0.9.10.ebuild,
   -pythonmagick-0.9.7-r1.ebuild, -pythonmagick-0.9.8.ebuild:

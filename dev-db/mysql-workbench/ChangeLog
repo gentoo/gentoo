@@ -1,6 +1,13 @@
 # ChangeLog for dev-db/mysql-workbench
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql-workbench/ChangeLog,v 1.122 2015/07/12 10:07:55 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql-workbench/ChangeLog,v 1.124 2015/07/24 06:26:26 graaff Exp $
+
+  24 Jul 2015; Hans de Graaff <graaff@gentoo.org>
+  -mysql-workbench-6.2.5.ebuild:
+  Cleanup.
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org> mysql-workbench-6.3.3.ebuild:
+  ppc stable wrt bug #552438
 
   12 Jul 2015; Hans de Graaff <graaff@gentoo.org> mysql-workbench-6.3.4.ebuild:
   Add minimum version to boost dependency based on bug 520722.

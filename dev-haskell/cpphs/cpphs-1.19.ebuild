@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/cpphs/cpphs-1.19.ebuild,v 1.1 2015/04/04 09:13:53 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/cpphs/cpphs-1.19.ebuild,v 1.2 2015/07/26 14:16:05 slyfox Exp $
 
 EAPI=5
 
@@ -26,3 +26,9 @@ RDEPEND="dev-haskell/old-locale:=[profile?]
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.6
 "
+
+src_prepare() {
+	# https://ghc.haskell.org/trac/ghc/ticket/10667
+	[[ $(ghc-version) == 7.10.1.20150630 ]] && replace-hcflags -g ''
+	[[ $(ghc-version) == 7.10.2 ]] && replace-hcflags -g ''
+}

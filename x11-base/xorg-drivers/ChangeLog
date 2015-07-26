@@ -1,6 +1,10 @@
 # ChangeLog for x11-base/xorg-drivers
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-base/xorg-drivers/ChangeLog,v 1.131 2015/03/14 13:47:48 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-base/xorg-drivers/ChangeLog,v 1.132 2015/07/22 11:37:17 mrueg Exp $
+
+  22 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -xorg-drivers-1.10.ebuild,
+  -xorg-drivers-1.11.ebuild, -xorg-drivers-1.9.ebuild:
+  Remove old.
 
   14 Mar 2015; Markus Meier <maekke@gentoo.org> xorg-drivers-1.16.ebuild:
   arm stable, bug #530652

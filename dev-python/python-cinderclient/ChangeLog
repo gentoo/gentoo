@@ -1,6 +1,18 @@
 # ChangeLog for dev-python/python-cinderclient
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/python-cinderclient/ChangeLog,v 1.18 2015/07/08 20:47:30 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-cinderclient/ChangeLog,v 1.20 2015/07/24 05:32:58 prometheanfire Exp $
+
+*python-cinderclient-1.1.2 (24 Jul 2015)
+
+  24 Jul 2015; Matthew Thode <prometheanfire@gentoo.org>
+  +python-cinderclient-1.1.2.ebuild:
+  bup
+
+*python-cinderclient-1.2.1-r1 (21 Jul 2015)
+
+  21 Jul 2015; Matthew Thode <prometheanfire@gentoo.org>
+  +python-cinderclient-1.2.1-r1.ebuild:
+  removing argparse from requirements.txt
 
   08 Jul 2015; Mikle Kolyada <zlogene@gentoo.org>
   python-cinderclient-1.1.1.ebuild:

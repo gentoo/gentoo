@@ -11,4 +11,4 @@ REQUIRED_USE=qt4? ( !qt5 ) qt5? ( !qt4 )
 SLOT=0
 SRC_URI=http://www.openscenegraph.org/downloads/developer_releases/OpenSceneGraph-3.2.1.zip
 _eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	wxwidgets	6d6eec2685256d35511e7b6d5461bec9
-_md5_=f90de01db8c858d628e7faefaf2a7717
+_md5_=b79e7f5b788e2dfe49829f256cf8488a

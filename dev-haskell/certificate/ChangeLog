@@ -1,6 +1,10 @@
 # ChangeLog for dev-haskell/certificate
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/certificate/ChangeLog,v 1.9 2015/06/06 10:35:13 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/certificate/ChangeLog,v 1.10 2015/07/26 14:01:13 slyfox Exp $
+
+  26 Jul 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  +files/certificate-1.3.9-ghc-7.10.patch, certificate-1.3.9.ebuild:
+  Port to ghc-7.10.
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

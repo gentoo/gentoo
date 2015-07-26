@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst postrm prepare
+DEPEND=>=sys-libs/ncurses-5.7-r7 bzip2? ( app-arch/bzip2 ) directfb? ( media-libs/libpng:0= dev-libs/DirectFB ) fbcon? ( media-libs/libpng:0= ) gpm? ( sys-libs/gpm ) jpeg? ( virtual/jpeg:0 ) livecd? ( media-libs/libpng:0= sys-libs/gpm virtual/jpeg:0 ) lzma? ( app-arch/xz-utils ) ssl? ( dev-libs/openssl:0 ) svga? ( media-libs/libpng:0= media-libs/svgalib ) tiff? ( media-libs/tiff:0 ) X? ( media-libs/libpng:0= x11-libs/libXext ) zlib? ( sys-libs/zlib ) virtual/pkgconfig fbcon? ( virtual/os-headers ) livecd? ( virtual/os-headers ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A fast and lightweight web browser running in both graphics and text mode
+EAPI=5
+HOMEPAGE=http://links.twibright.com/
+IUSE=bzip2 directfb fbcon gpm ipv6 jpeg livecd lzma ssl suid svga tiff unicode X zlib
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~ia64-hpux ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~x64-solaris ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=>=sys-libs/ncurses-5.7-r7 bzip2? ( app-arch/bzip2 ) directfb? ( media-libs/libpng:0= dev-libs/DirectFB ) fbcon? ( media-libs/libpng:0= ) gpm? ( sys-libs/gpm ) jpeg? ( virtual/jpeg:0 ) livecd? ( media-libs/libpng:0= sys-libs/gpm virtual/jpeg:0 ) lzma? ( app-arch/xz-utils ) ssl? ( dev-libs/openssl:0 ) svga? ( media-libs/libpng:0= media-libs/svgalib ) tiff? ( media-libs/tiff:0 ) X? ( media-libs/libpng:0= x11-libs/libXext ) zlib? ( sys-libs/zlib )
+REQUIRED_USE=!livecd? ( fbcon? ( gpm ) ) svga? ( suid )
+SLOT=2
+SRC_URI=http://links.twibright.com/download/links-2.10.tar.bz2 mirror://debian/pool/main/l/links2/links2_2.9-2.debian.tar.xz
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=80efb1e53f3c084214a927958093eadd

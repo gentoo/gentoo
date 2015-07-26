@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=virtual/libusb:1 sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) virtual/pkgconfig
+DESCRIPTION=library for communicating with HackRF SDR platform
+EAPI=5
+HOMEPAGE=http://greatscottgadgets.com/hackrf/
+IUSE=+udev
+KEYWORDS=~amd64 ~arm ~ppc ~x86
+LICENSE=BSD
+RDEPEND=virtual/libusb:1
+SLOT=0/2015.07.2
+SRC_URI=https://github.com/mossmann/hackrf/releases/download/v2015.07.2/hackrf-2015.07.2.tar.xz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	udev	da001465a2e939c93f7ae16947ce3438
+_md5_=4137b1290cae4afa20d5c240d13aabfe

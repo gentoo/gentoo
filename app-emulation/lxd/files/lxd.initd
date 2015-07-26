@@ -1,0 +1,35 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/lxd/files/lxd.initd,v 1.1 2015/07/19 20:36:34 alunduil Exp $
+
+DAEMON=/usr/sbin/lxd
+PIDFILE=/run/lxd.pid
+
+depend() {
+    need cgmanager
+
+    if echo "${LXD_OPTIONS}" | grep -e "--tcp" >/dev/null; then
+	need net
+    fi
+}
+
+start() {
+    ebegin "Starting lxd server"
+
+    start-stop-daemon --start \
+		      --pidfile ${PIDFILE} \
+		      --exec ${DAEMON} \
+		      --background \
+		      --make-pidfile \
+		      -- \
+		      ${LXD_OPTIONS}
+
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping lxd server"
+    start-stop-daemon --stop --quiet -R TERM/45 -p ${PIDFILE}
+    eend $?
+}

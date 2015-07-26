@@ -1,6 +1,14 @@
 # ChangeLog for sys-auth/sssd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/sssd/ChangeLog,v 1.72 2015/07/11 21:11:58 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/sssd/ChangeLog,v 1.74 2015/07/23 11:48:12 hwoarang Exp $
+
+  23 Jul 2015; Markos Chandras <hwoarang@gentoo.org> sssd-1.13.0.ebuild:
+  Bring back the python-r1 eclass inclusion
+
+  22 Jul 2015; Markos Chandras <hwoarang@gentoo.org>
+  +files/sssd-1.13.0-fix-init.patch, sssd-1.13.0.ebuild:
+  Fix python support. Bug #554776. Respect SSSD_OPTIONS in init script. Bug
+  #553678
 
 *sssd-1.13.0 (11 Jul 2015)
 

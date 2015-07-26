@@ -1,6 +1,20 @@
 # ChangeLog for dev-ruby/liquid
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/liquid/ChangeLog,v 1.24 2015/06/07 18:06:49 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/liquid/ChangeLog,v 1.27 2015/07/26 06:16:03 graaff Exp $
+
+*liquid-3.0.6 (26 Jul 2015)
+
+  26 Jul 2015; Hans de Graaff <graaff@gentoo.org> +liquid-3.0.6.ebuild:
+  Version bump.
+
+  26 Jul 2015; Hans de Graaff <graaff@gentoo.org> -liquid-2.6.1-r1.ebuild,
+  -liquid-3.0.3.ebuild:
+  Cleanup.
+
+*liquid-3.0.4 (20 Jul 2015)
+
+  20 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +liquid-3.0.4.ebuild:
+  Version bump.
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/systemd-218-r3.ebuild,v 1.9 2015/07/15 16:40:57 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/systemd-218-r3.ebuild,v 1.10 2015/07/19 18:29:59 maekke Exp $
 
 EAPI=5
 
@@ -16,7 +16,7 @@ SRC_URI="http://www.freedesktop.org/software/systemd/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
-KEYWORDS="alpha amd64 ~arm ~ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 arm ~ia64 ppc ppc64 ~sparc x86"
 IUSE="acl apparmor audit cryptsetup curl doc elfutils gcrypt gudev http
 	idn introspection kdbus +kmod +lz4 lzma pam policykit python qrcode +seccomp
 	selinux ssl sysv-utils terminal test vanilla xkb"

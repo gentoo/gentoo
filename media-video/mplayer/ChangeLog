@@ -1,6 +1,13 @@
 # ChangeLog for media-video/mplayer
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer/ChangeLog,v 1.944 2015/07/16 14:51:06 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer/ChangeLog,v 1.946 2015/07/25 13:19:35 pacho Exp $
+
+  25 Jul 2015; Pacho Ramos <pacho@gentoo.org> mplayer-1.2_pre20150214-r1.ebuild:
+  amd64 stable, bug #551972
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org>
+  mplayer-1.2_pre20150214-r1.ebuild:
+  ppc stable wrt bug #551972
 
   16 Jul 2015; Tobias Klausmann <klausman@gentoo.org>
   mplayer-1.2_pre20150214-r1.ebuild:

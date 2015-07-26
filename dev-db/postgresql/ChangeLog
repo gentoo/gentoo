@@ -1,6 +1,34 @@
 # ChangeLog for dev-db/postgresql
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql/ChangeLog,v 1.446 2015/07/17 12:56:36 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql/ChangeLog,v 1.452 2015/07/25 11:56:36 pacho Exp $
+
+  25 Jul 2015; Pacho Ramos <pacho@gentoo.org> postgresql-9.0.22.ebuild,
+  postgresql-9.1.18.ebuild, postgresql-9.2.13.ebuild, postgresql-9.3.9.ebuild,
+  postgresql-9.4.4.ebuild:
+  ppc stable wrt bug #554970
+
+  25 Jul 2015; Markus Meier <maekke@gentoo.org> postgresql-9.0.22.ebuild,
+  postgresql-9.1.18.ebuild, postgresql-9.2.13.ebuild, postgresql-9.3.9.ebuild,
+  postgresql-9.4.4.ebuild:
+  arm stable, bug #554970
+
+  24 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> postgresql-9.0.22.ebuild,
+  postgresql-9.1.18.ebuild, postgresql-9.2.13.ebuild, postgresql-9.3.9.ebuild,
+  postgresql-9.4.4.ebuild:
+  x86 stable wrt bug #554970
+
+  24 Jul 2015; Jeroen Roovers <jer@gentoo.org> postgresql-9.0.22.ebuild,
+  postgresql-9.1.18.ebuild, postgresql-9.2.13.ebuild, postgresql-9.3.9.ebuild,
+  postgresql-9.4.4.ebuild:
+  Stable for HPPA (bug #554970).
+
+  23 Jul 2015; Patrick Lauer <patrick@gentoo.org> postgresql-9999.ebuild:
+  Fix slot
+
+  22 Jul 2015; Jeroen Roovers <jer@gentoo.org> postgresql-9.0.22.ebuild,
+  postgresql-9.1.18.ebuild, postgresql-9.2.13.ebuild, postgresql-9.3.9.ebuild,
+  postgresql-9.4.4.ebuild:
+  Stable for PPC64 (bug #554970).
 
   17 Jul 2015; Tobias Klausmann <klausman@gentoo.org> postgresql-9.2.13.ebuild:
   Stable on alpha, bug 554970

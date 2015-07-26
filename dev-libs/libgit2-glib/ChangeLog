@@ -1,6 +1,11 @@
 # ChangeLog for dev-libs/libgit2-glib
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgit2-glib/ChangeLog,v 1.26 2015/05/15 06:41:03 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgit2-glib/ChangeLog,v 1.27 2015/07/26 02:27:25 tetromino Exp $
+
+  26 Jul 2015; Alexandre Rostovtsev <tetromino@gentoo.org>
+  libgit2-glib-0.22.0.ebuild, libgit2-glib-0.22.8.ebuild:
+  Incompatible with libgit2-0.23 due to API changes (bug #555914, thanks to
+  Mike Auty).
 
   15 May 2015; Pacho Ramos <pacho@gentoo.org> libgit2-glib-0.0.24.ebuild:
   amd64/x86 stable, bug #530272

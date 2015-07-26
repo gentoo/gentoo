@@ -1,6 +1,9 @@
 # ChangeLog for virtual/cron
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/cron/ChangeLog,v 1.3 2014/08/20 05:21:46 polynomial-c Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/cron/ChangeLog,v 1.4 2015/07/24 09:09:48 zlogene Exp $
+
+  24 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> cron-0-r1.ebuild:
+  Stable for all (bug #555712)
 
 *cron-0-r1 (20 Aug 2014)
 
@@ -16,4 +19,3 @@
 
   20 Apr 2011; Ulrich Mueller <ulm@gentoo.org> +cron-0.ebuild, +metadata.xml:
   Initial import, bug 360109.
-

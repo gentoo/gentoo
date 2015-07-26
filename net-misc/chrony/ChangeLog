@@ -1,6 +1,12 @@
 # ChangeLog for net-misc/chrony
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/chrony/ChangeLog,v 1.168 2015/07/06 04:06:20 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/chrony/ChangeLog,v 1.170 2015/07/23 20:12:38 pacho Exp $
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org> chrony-2.1.1.ebuild:
+  ppc stable wrt bug #553616
+
+  23 Jul 2015; Sergey Popov <pinkbyte@gentoo.org> chrony-2.1.1.ebuild:
+  Stable on amd64 and x86, wrt bug #553616
 
   06 Jul 2015; Jeroen Roovers <jer@gentoo.org> metadata.xml:
   Fix USE flag description (bug #554040).

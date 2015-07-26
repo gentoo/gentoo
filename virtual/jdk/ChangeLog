@@ -1,6 +1,12 @@
 # ChangeLog for virtual/jdk
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/jdk/ChangeLog,v 1.67 2015/07/11 09:24:18 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/virtual/jdk/ChangeLog,v 1.69 2015/07/22 13:25:54 chewi Exp $
+
+  22 Jul 2015; James Le Cuirot <chewi@gentoo.org> jdk-1.7.0.ebuild:
+  Keyword ~ppc.
+
+  21 Jul 2015; James Le Cuirot <chewi@gentoo.org> jdk-1.6.0-r2.ebuild:
+  Drop 1.6 on arm as newer versions with HotSpot are preferable.
 
   11 Jul 2015; James Le Cuirot <chewi@gentoo.org> jdk-1.6.0-r2.ebuild,
   jdk-1.7.0.ebuild, jdk-1.8.0.ebuild:

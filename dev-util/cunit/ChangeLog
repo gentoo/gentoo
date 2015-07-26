@@ -1,6 +1,9 @@
 # ChangeLog for dev-util/cunit
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/cunit/ChangeLog,v 1.48 2015/07/15 14:51:59 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/cunit/ChangeLog,v 1.49 2015/07/22 16:06:46 zlogene Exp $
+
+  22 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> cunit-2.1_p2-r1.ebuild:
+  ia64 stable wrt bug #530916
 
   15 Jul 2015; Tobias Klausmann <klausman@gentoo.org> cunit-2.1_p2-r1.ebuild:
   Stable on alpha, bug 530916

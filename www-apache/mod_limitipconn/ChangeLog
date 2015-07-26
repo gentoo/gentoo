@@ -1,6 +1,10 @@
 # ChangeLog for www-apache/mod_limitipconn
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_limitipconn/ChangeLog,v 1.14 2014/08/10 20:16:28 slyfox Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_limitipconn/ChangeLog,v 1.15 2015/07/22 11:40:04 mrueg Exp $
+
+  22 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -mod_limitipconn-0.22-r1.ebuild,
+  -mod_limitipconn-0.23.ebuild:
+  Remove old.
 
   10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
   mod_limitipconn-0.22-r1.ebuild, mod_limitipconn-0.23.ebuild,

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/gnome-music/gnome-music-3.16.1.ebuild,v 1.1 2015/06/09 16:32:57 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/gnome-music/gnome-music-3.16.1.ebuild,v 1.2 2015/07/26 10:17:19 pacho Exp $
 
 EAPI="5"
 GCONF_DEBUG="no"
@@ -14,9 +14,6 @@ HOMEPAGE="http://wiki.gnome.org/Apps/Music"
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE=""
-# Let people emerge this by default, bug #472932
-IUSE+=" +python_single_target_python3_3 python_single_target_python3_4"
-
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 KEYWORDS="~amd64 ~x86"
@@ -24,7 +21,7 @@ KEYWORDS="~amd64 ~x86"
 COMMON_DEPEND="
 	${PYTHON_DEPS}
 	>=dev-libs/glib-2.28:2
-	>=dev-libs/gobject-introspection-1.35.9
+	>=dev-libs/gobject-introspection-1.35.9:=
 	>=media-libs/grilo-0.2.6:0.2[introspection]
 	media-libs/libmediaart:2.0
 	>=x11-libs/gtk+-3.13.2:3[introspection]

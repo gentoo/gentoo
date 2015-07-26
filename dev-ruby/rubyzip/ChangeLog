@@ -1,6 +1,12 @@
 # ChangeLog for dev-ruby/rubyzip
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rubyzip/ChangeLog,v 1.60 2015/06/21 09:32:46 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rubyzip/ChangeLog,v 1.62 2015/07/25 13:12:19 mrueg Exp $
+
+  25 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -rubyzip-0.9.9.ebuild:
+  Remove old.
+
+  25 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> rubyzip-0.9.9-r1.ebuild:
+  sparc stable wrt bug #542574
 
   21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> rubyzip-1.1.7.ebuild:
   x86 stable wrt bug #550514

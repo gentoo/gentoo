@@ -1,6 +1,12 @@
 # ChangeLog for app-text/libmwaw
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/libmwaw/ChangeLog,v 1.19 2015/06/09 12:27:30 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/libmwaw/ChangeLog,v 1.21 2015/07/22 19:33:29 ago Exp $
+
+  22 Jul 2015; Agostino Sarubbo <ago@gentoo.org> libmwaw-0.3.5.ebuild:
+  Stable for x86, wrt bug #555584
+
+  22 Jul 2015; Agostino Sarubbo <ago@gentoo.org> libmwaw-0.3.5.ebuild:
+  Stable for amd64, wrt bug #555584
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

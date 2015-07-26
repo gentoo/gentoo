@@ -10,5 +10,5 @@ RDEPEND=dev-libs/liblinear dev-libs/libpcre net-libs/libpcap[ipv6?] zenmap? ( de
 REQUIRED_USE=system-lua? ( lua ) ndiff? ( python_targets_python2_7 ) zenmap? ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=http://nmap.org/dist/nmap-6.47.tar.bz2 http://dev.gentoo.org/~jer/nmap-logo-64.png
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	351da1aa73960a282591217fb57c1bb8	python-utils-r1	ae9becb5d45344c01939c3f57df0d3fd	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	351da1aa73960a282591217fb57c1bb8	python-utils-r1	df6eb914b4b2d70d9c5e7c9331437c52	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=477281826c24c97a8fc01ea8d7f9b1ba

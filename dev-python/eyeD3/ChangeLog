@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/eyeD3
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/eyeD3/ChangeLog,v 1.92 2015/07/16 19:36:40 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/eyeD3/ChangeLog,v 1.93 2015/07/25 00:25:01 idella4 Exp $
+
+  25 Jul 2015; Ian Delaney <idella4@gentoo.org> -eyeD3-0.7.4-r2.ebuild,
+  eyeD3-0.7.5.ebuild:
+  remove redundant ref to instances of this package of SLOT 0, clean old version
+  wrt bug #548966
 
   16 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> eyeD3-0.7.5.ebuild:
   ia64 stable wrt bug #500960

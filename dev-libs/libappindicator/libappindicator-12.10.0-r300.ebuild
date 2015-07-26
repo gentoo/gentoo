@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libappindicator/libappindicator-12.10.0-r300.ebuild,v 1.1 2015/05/07 19:49:14 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libappindicator/libappindicator-12.10.0-r300.ebuild,v 1.2 2015/07/26 09:09:41 mgorny Exp $
 
 EAPI=5
 VALA_MIN_API_VERSION="0.16"
@@ -22,7 +22,7 @@ RDEPEND="
 	>=dev-libs/glib-2.26:2[${MULTILIB_USEDEP}]
 	>=dev-libs/libdbusmenu-0.6.2[gtk3,${MULTILIB_USEDEP}]
 	>=dev-libs/libindicator-12.10.0:3[${MULTILIB_USEDEP}]
-	>=x11-libs/gtk+-3.2:3[${MULTILIB_USEDEP}]
+	>=x11-libs/gtk+-3.2:3[${MULTILIB_USEDEP},introspection?]
 	introspection? ( >=dev-libs/gobject-introspection-1 )
 "
 DEPEND="${RDEPEND}
@@ -34,7 +34,7 @@ src_prepare() {
 	# Don't use -Werror
 	sed -i -e 's/ -Werror//' {src,tests}/Makefile.{am,in} || die
 
-	epatch "${FILESDIR}"/${P}-disable-python.patch
+	epatch "${FILESDIR}"/${P}-conditional-py-bindings.patch
 	eautoreconf
 
 	# Disable MONO for now because of http://bugs.gentoo.org/382491
@@ -51,7 +51,8 @@ multilib_src_configure() {
 	econf \
 		--disable-silent-rules \
 		--disable-static \
-		--with-gtk=3
+		--with-gtk=3 \
+		$(multilib_native_use_enable introspection)
 }
 
 multilib_src_install() {

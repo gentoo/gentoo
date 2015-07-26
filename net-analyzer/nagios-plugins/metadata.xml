@@ -22,48 +22,17 @@
       Install <pkg>games-util/qstat</pkg> required for monitoring FPS
       servers. Disabling the flag does not remove any plugin file.
     </flag>
-    <flag name='nagios-ntp'>
-      Install <pkg>net-misc/ntp</pkg> required for monitoring NTP
-      servers and drifts. Disabling the flag does not remove any
-      plugin file.
-    </flag>
     <flag name='nagios-ping'>
       Install <pkg>net-analyzer/fping</pkg> required for fancy ping
       monitoring. Disabling the flag does not remove any plugin file.
-    </flag>
-    <flag name='nagios-ssh'>
-      Install <pkg>net-misc/openssh</pkg> required for monitoring SSH
-      servers. Disabling the flag does not remove any plugin file.
     </flag>
     <flag name='ssh'>
       Install <pkg>net-misc/openssh</pkg> required for monitoring SSH
       servers. Disabling the flag does not remove any plugin file.
     </flag>
-    <flag name='ups'>
-      Install <pkg>sys-power/nut</pkg> required for monitoring
-      compatible UPS units. Disabling the flag does not remove any
-      plugin file.
-    </flag>
     <flag name='snmp' restrict='&gt;=net-analyzer/nagios-plugins-1.4.16-r1'>
       Install <pkg>dev-perl/Net-SNMP</pkg> required for monitoring
       SNMP values. Disabling the flag does not remove any plugin file.
-    </flag>
-    <flag name='suid'>
-      Give root privileges to the ICMP, DHCP and IDE S.M.A.R.T. check
-      binaries. This allows them to ignore the access controls that
-      would disallow the nagios user from running the check.
-    </flag>
-    <flag name='sudo'>
-      Install a file to allow the nagios user to execute some commands
-      via <pkg>app-admin/sudo</pkg>, so that the scripts can access
-      devices and features that wouldn't be otherwise allowed by
-      nagios.
-    </flag>
-    <flag name='smart'>
-      Install <pkg>sys-apps/smartmontools</pkg> required for
-      S.M.A.R.T. disk monitoring. Disabling the flag removes the
-      plugin file. This plugin also requires the sudo flag to be
-      enable.
     </flag>
   </use>
 </pkgmetadata>

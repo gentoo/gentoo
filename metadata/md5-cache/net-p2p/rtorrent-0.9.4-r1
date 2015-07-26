@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=~net-libs/libtorrent-0.13.4 >=dev-libs/libsigc++-2.2.2:2 >=net-misc/curl-7.19.1 sys-libs/ncurses xmlrpc? ( dev-libs/xmlrpc-c ) test? ( dev-util/cppunit ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DEPEND=~net-libs/libtorrent-0.13.4 >=dev-libs/libsigc++-2.2.2:2 >=net-misc/curl-7.19.1 sys-libs/ncurses xmlrpc? ( dev-libs/xmlrpc-c ) dev-util/cppunit virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
 DESCRIPTION=BitTorrent Client using libtorrent
 EAPI=5
 HOMEPAGE=http://libtorrent.rakshasa.no/
@@ -10,4 +10,4 @@ RDEPEND=~net-libs/libtorrent-0.13.4 >=dev-libs/libsigc++-2.2.2:2 >=net-misc/curl
 SLOT=0
 SRC_URI=http://libtorrent.rakshasa.no/downloads/rtorrent-0.9.4.tar.gz
 _eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=15498a3b4b0c80a7d2fed9f8ccb9cf70
+_md5_=b2c7ebb9104b74272302acdc50963d6e

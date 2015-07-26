@@ -1,6 +1,11 @@
 # ChangeLog for gnome-extra/nm-applet
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/nm-applet/ChangeLog,v 1.132 2015/07/13 20:28:51 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/nm-applet/ChangeLog,v 1.133 2015/07/19 09:22:40 pacho Exp $
+
+*nm-applet-1.0.4 (19 Jul 2015)
+
+  19 Jul 2015; Pacho Ramos <pacho@gentoo.org> +nm-applet-1.0.4.ebuild:
+  Version bump
 
   13 Jul 2015; Pacho Ramos <pacho@gentoo.org> nm-applet-1.0.2.ebuild:
   Rekeyword now that deps are fixed

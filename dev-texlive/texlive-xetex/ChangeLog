@@ -1,6 +1,10 @@
 # ChangeLog for dev-texlive/texlive-xetex
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-xetex/ChangeLog,v 1.77 2015/07/16 09:28:41 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-xetex/ChangeLog,v 1.78 2015/07/22 19:37:39 blueness Exp $
+
+  22 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
+  texlive-xetex-2014.ebuild:
+  Stable for ppc, bug #550840.
 
 *texlive-xetex-2015 (16 Jul 2015)
 

@@ -1,0 +1,9 @@
+# ChangeLog for dev-perl/Module-Runtime-Conflicts
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Module-Runtime-Conflicts/ChangeLog,v 1.1 2015/07/25 20:19:07 dilfridge Exp $
+
+*Module-Runtime-Conflicts-0.2.0 (25 Jul 2015)
+
+  25 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Module-Runtime-Conflicts-0.2.0.ebuild, +metadata.xml:
+  New package, needed for dev-perl/Moose, ebuild by Kent Fredric, bug 554938

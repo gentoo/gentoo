@@ -1,6 +1,22 @@
 # ChangeLog for dev-python/unittest2
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/unittest2/ChangeLog,v 1.62 2015/05/21 03:40:29 mattst88 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/unittest2/ChangeLog,v 1.67 2015/07/26 19:11:28 mgorny Exp $
+
+  26 Jul 2015;  <mgorny@gentoo.org> unittest2-1.0.1-r1.ebuild,
+  unittest2-1.1.0.ebuild:
+  Revert pypy support because of unsatisfiable dependencies.
+
+  26 Jul 2015; Ian Delaney <idella4@gentoo.org> -unittest2-1.0.1.ebuild,
+  unittest2-1.0.1-r1.ebuild, unittest2-1.1.0.ebuild:
+  re-add pypy support dropped from prior versions, rm redundant -1.0.1
+
+  25 Jul 2015; Alex Brandt <alunduil@gentoo.org> unittest2-1.1.0.ebuild:
+  1.1.0: add dev-python/linecache2 dependence
+
+*unittest2-1.1.0 (19 Jul 2015)
+
+  19 Jul 2015; Alex Brandt <alunduil@gentoo.org> +unittest2-1.1.0.ebuild:
+  add version 1.1.0
 
   21 May 2015; Matt Turner <mattst88@gentoo.org> unittest2-1.0.1-r1.ebuild:
   Added ~alpha, bug 544146.

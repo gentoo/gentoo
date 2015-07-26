@@ -1,6 +1,6 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/gmt/gmt-4.5.6.ebuild,v 1.6 2012/06/16 16:57:44 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/gmt/gmt-4.5.6.ebuild,v 1.7 2015/07/18 20:10:44 tetromino Exp $
 
 EAPI=4
 
@@ -49,7 +49,8 @@ src_prepare() {
 
 	epatch \
 		"${FILESDIR}/${PN}-4.5.0-no-strip.patch" \
-		"${FILESDIR}/${PN}-4.5.6-respect-ldflags.patch"
+		"${FILESDIR}/${PN}-4.5.6-respect-ldflags.patch" \
+		"${FILESDIR}"/${PN}-4.5.9-unistd.h.patch
 
 	eautoreconf
 }

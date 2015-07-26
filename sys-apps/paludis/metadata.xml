@@ -13,14 +13,6 @@
     <flag name="pbins">Enable binary package support. Adds dependency upon
           <pkg>app-arch/libarchive</pkg></flag>
     <flag name="pink">Use a less boring colourscheme than the default</flag>
-    <flag name="portage">Enable experimental support for Portage
-          configuration formats</flag>
-    <flag name="prebuilt-documentation">Use pre-built documentation</flag>
-    <flag name="python-bindings">Enable Python bindings. Requires a lot of RAM
-          to build (~700Mbytes per job) and adds a dependency upon
-          <pkg>dev-libs/boost</pkg></flag>
-    <flag name="ruby-bindings">Enable Ruby bindings.</flag>
     <flag name='search-index'>Enable cave search --index. Requires sqlite.</flag>
-    <flag name="visibility">Enable visibility support (g++ &gt;=4.1)</flag>
   </use>
 </pkgmetadata>

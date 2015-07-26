@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/rebase/rebase-1507.ebuild,v 1.1 2015/06/30 06:28:04 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/rebase/rebase-1507.ebuild,v 1.2 2015/07/23 20:03:30 pacho Exp $
 
 EAPI=5
 
@@ -12,7 +12,7 @@ SRC_URI="http://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
 
 SLOT="0"
 LICENSE="public-domain"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~amd64 ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 IUSE="emboss minimal"
 
 RDEPEND="emboss? ( >=sci-biology/emboss-5.0.0 )"

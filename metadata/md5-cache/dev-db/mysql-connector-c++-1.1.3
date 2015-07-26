@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=>=virtual/mysql-5.1 dev-libs/boost dev-libs/openssl sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DEPEND=>=virtual/mysql-5.1 dev-libs/boost dev-libs/openssl:0 sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=MySQL database connector for C++ (mimics JDBC 4.0 API)
 EAPI=5
 HOMEPAGE=http://dev.mysql.com/downloads/connector/cpp/
 IUSE=debug examples gcov static-libs
 KEYWORDS=amd64 arm ppc ppc64 sparc x86
 LICENSE=GPL-2
-RDEPEND=>=virtual/mysql-5.1 dev-libs/boost dev-libs/openssl
+RDEPEND=>=virtual/mysql-5.1 dev-libs/boost dev-libs/openssl:0
 SLOT=0
 SRC_URI=mirror://mysql/Downloads/Connector-C++/mysql-connector-c++-1.1.3.tar.gz
 _eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=b8d1e672b9a7acd6170efeb143d425b4
+_md5_=38360eb87a3b9b964bf48623cf4f5200

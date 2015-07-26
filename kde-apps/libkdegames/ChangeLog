@@ -1,6 +1,12 @@
-# ChangeLog for kde-base/libkdegames
+# ChangeLog for kde-apps/libkdegames
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-apps/libkdegames/ChangeLog,v 1.1 2015/06/04 18:44:38 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-apps/libkdegames/ChangeLog,v 1.2 2015/07/26 06:34:29 mgorny Exp $
+
+*libkdegames-4.14.3-r1 (26 Jul 2015)
+
+  26 Jul 2015; Michał Górny <mgorny@gentoo.org> +libkdegames-4.14.3-r1.ebuild:
+  Disable broken phonon fallback and force OpenAL, following upstream changes.
+  https://github.com/gentoo/gentoo-portage-rsync-mirror/pull/179 by a17r.
 
   18 Feb 2015; Michał Górny <mgorny@gentoo.org> -libkdegames-4.12.5.ebuild:
   Remove KDE SC 4.12

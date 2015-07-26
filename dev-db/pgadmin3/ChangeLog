@@ -1,6 +1,9 @@
 # ChangeLog for dev-db/pgadmin3
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/pgadmin3/ChangeLog,v 1.108 2015/07/15 11:24:52 titanofold Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/pgadmin3/ChangeLog,v 1.109 2015/07/23 20:22:48 pacho Exp $
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org> pgadmin3-1.20.0-r1.ebuild:
+  ppc stable wrt bug #551322
 
 *pgadmin3-1.20.0-r2 (15 Jul 2015)
 

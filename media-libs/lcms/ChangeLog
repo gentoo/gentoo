@@ -1,6 +1,11 @@
 # ChangeLog for media-libs/lcms
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/lcms/ChangeLog,v 1.193 2015/05/28 18:07:08 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/lcms/ChangeLog,v 1.194 2015/07/26 12:34:53 polynomial-c Exp $
+
+*lcms-2.7 (26 Jul 2015)
+
+  26 Jul 2015; Lars Wendler <polynomial-c@gentoo.org> +lcms-2.7.ebuild:
+  Version bump.
 
   28 May 2015; Andreas K. Hüttel <dilfridge@gentoo.org>
   -files/lcms-1.19-cve-2013-4276.patch,

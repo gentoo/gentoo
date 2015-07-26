@@ -1,6 +1,10 @@
 # ChangeLog for dev-util/aap
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/aap/ChangeLog,v 1.31 2013/08/26 22:06:16 mgorny Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/aap/ChangeLog,v 1.32 2015/07/21 20:56:59 mrueg Exp $
+
+  21 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -aap-1.090.ebuild,
+  -aap-1.091-r1.ebuild, -aap-1.091.ebuild:
+  Remove old.
 
 *aap-1.091-r2 (26 Aug 2013)
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/deep_merge/deep_merge-1.0.1.ebuild,v 1.5 2015/05/04 02:18:46 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/deep_merge/deep_merge-1.0.1.ebuild,v 1.6 2015/07/20 06:10:03 jer Exp $
 
 EAPI=5
 
@@ -16,7 +16,7 @@ HOMEPAGE="http://trac.misuse.org/science/wiki/DeepMerge"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~hppa ~x86"
 IUSE=""
 
 each_ruby_test() {

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=virtual/jpeg:0 media-libs/libpng:0 app-arch/bzip2 sys-libs/zlib virtual/opengl x11-libs/libX11 x11-libs/libXxf86vm app-arch/unzip x11-proto/xproto x11-proto/xf86vidmodeproto
+DESCRIPTION=open source high performance realtime 3D engine written in C++
+EAPI=5
+HOMEPAGE=http://irrlicht.sourceforge.net/
+IUSE=debug doc static-libs
+KEYWORDS=amd64 ppc x86
+LICENSE=ZLIB
+RDEPEND=virtual/jpeg:0 media-libs/libpng:0 app-arch/bzip2 sys-libs/zlib virtual/opengl x11-libs/libX11 x11-libs/libXxf86vm
+SLOT=0
+SRC_URI=mirror://sourceforge/irrlicht/irrlicht-1.8.1.zip
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=ecb476d90e884dff96fe3f41bb53c755

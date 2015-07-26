@@ -1,6 +1,12 @@
 # ChangeLog for net-libs/libhackrf
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libhackrf/ChangeLog,v 1.9 2014/08/28 20:15:57 zerochaos Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libhackrf/ChangeLog,v 1.10 2015/07/24 16:42:21 zerochaos Exp $
+
+*libhackrf-2015.07.2 (24 Jul 2015)
+
+  24 Jul 2015; Rick Farina <zerochaos@gentoo.org> +libhackrf-2015.07.2.ebuild,
+  libhackrf-9999.ebuild:
+  bump and build udev rules properly
 
 *libhackrf-2014.08.1 (28 Aug 2014)
 

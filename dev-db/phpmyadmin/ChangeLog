@@ -1,6 +1,24 @@
 # ChangeLog for dev-db/phpmyadmin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/phpmyadmin/ChangeLog,v 1.568 2015/07/17 16:40:24 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/phpmyadmin/ChangeLog,v 1.572 2015/07/23 17:10:24 jmbsvicetto Exp $
+
+  23 Jul 2015; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  -phpmyadmin-4.3.12.ebuild:
+  Drop vulnerable version - bug 549540.
+
+  23 Jul 2015; Agostino Sarubbo <ago@gentoo.org> phpmyadmin-4.3.13.1.ebuild,
+  phpmyadmin-4.4.6.1.ebuild:
+  Stable for sparc, wrt bug #549540
+
+  23 Jul 2015; Agostino Sarubbo <ago@gentoo.org> phpmyadmin-4.3.13.1.ebuild,
+  phpmyadmin-4.4.6.1.ebuild:
+  Stable for ppc, wrt bug #549540
+
+*phpmyadmin-4.4.12 (23 Jul 2015)
+
+  23 Jul 2015; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +phpmyadmin-4.4.12.ebuild:
+  Bump to the 4.4.12 release - bug 555142. Update HOMEPAGE and SRC_URI.
 
   17 Jul 2015; Tobias Klausmann <klausman@gentoo.org>
   phpmyadmin-4.4.6.1.ebuild:

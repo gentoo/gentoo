@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use.mask,v 1.693 2015/07/05 09:32:17 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use.mask,v 1.695 2015/07/21 09:23:57 aballier Exp $
 
 # This file requires >=portage-2.1.1
 # New entries go on top.
@@ -363,11 +363,6 @@ media-libs/libsdl2 custom-cflags
 app-editors/vim luajit racket
 app-editors/gvim luajit racket
 
-# Alexis Ballier <aballier@gentoo.org> (11 Aug 2013)
-# Multilib migrated version for binary compatibility.
-# Those useflags have deps that are not migrated yet.
-=media-video/ffmpeg-0.10* frei0r
-
 # Kacper Kowalik <xarthisius@gentoo.org> (09 Aug 2013)
 # Doesn't work on most profiles. Easier to mask here and
 # unmask in particular profiles
@@ -459,7 +454,7 @@ sci-libs/flann cuda
 # Alexis Ballier <aballier@gentoo.org> (15 Feb 2013)
 # Needs a huge patch to build against recent releases of FFmpeg/libav.
 # Mask it until upstream fixes it. Bug #417869
-media-sound/audacity ffmpeg
+<media-sound/audacity-2.1.0 ffmpeg
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (30 Dec 2012)
 # sys-apps/biosdevname is keyworded only for amd64/x86

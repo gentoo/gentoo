@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16675 2015/07/18 09:49:58 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16683 2015/07/26 10:46:24 johu Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -29,6 +29,21 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Davide Pesavento <pesa@gentoo.org> (23 Jul 2015)
+# Standalone version of qtwebkit from the 2.3 upstream branch.
+# Needs revdep testing. Bug #388207.
+=dev-qt/qtwebkit-4.10*
+
+# Ian Delaney <idella4@gentoo.org> (21 Jul 2015)
+# The revbump has versions of lua which are also masked.
+# Masked until those slotted versions are unmasked
+=sys-apps/roccat-tools-3.5.0-r1
+
+# Ben de Groot <yngwin@gentoo.org> (20 Jul 2015)
+# Version bump is a WIP, see bug #524242
+# It works (except USE=vamp) but is not up to Gentoo standards yet
+=media-sound/audacity-2.1.1
 
 # Ian Stakenvicius <axs@gentoo.org> (16 Jul 2015)
 # Mask thunerbird-24.x as it is no longer supported, but
@@ -75,7 +90,7 @@ dev-java/mckoi
 dev-util/fujaba
 
 # Patrice Clement <monsieurp@gentoo.org> (5 Jul 2015)
-# SRC_URI unreachable. Upstream looks dead. 
+# SRC_URI unreachable. Upstream looks dead.
 # Removal in 30 days. See bug #502994.
 app-arch/dczip
 
@@ -108,11 +123,6 @@ sci-biology/flower
 # Wrong version #553670
 =sys-kernel/gentoo-sources-4.1.1
 
-# Johannes Huber <johu@gentoo.org> (26 Jun 2015)
-# Mask for removal in 30 days. Segfaults on startup, bug #505314.
-# Last release in 2010. Non upstream repository, bug #544822.
-app-portage/kportagetray
-
 # Michael Sterrett <mr_bones_@gentoo.org> (25 Jun 2015)
 # Upstream seems dead; no release since 2006
 # lots of bugs: #252719, #315255, #314459, #159630, #376589, #420783, #540928
@@ -133,23 +143,10 @@ app-admin/system-config-printer-gnome
 # new JDKs. Removal in 30 days.
 dev-java/mockmaker
 
-# James Le Cuirot <chewi@gentoo.org> (20 Jun 2015)
-# Now part of eselect-java. Its continued presence has complicated
-# dependencies and created bugs such as #505352. Removal in 30 days.
-app-eselect/eselect-ecj
-
 # Brian Evans <grknight@gentoo.org> (19 Jun 2015)
 # The Cyphertite backup service is closing as of August 18th, 2015.
 # Package masked for removal in 30 days. bug 552578
 app-backup/cyphertite
-
-# Jauhien Piatlicki <jauhien@gentoo.org> (16 Jun 2015)
-# Upstream does not provide these as separated packages.
-# Nobody interested in maintaining them in Gentoo.
-# A number of open bugs.
-# Masked for removal in 30 days.
-dev-util/ext4_utils
-dev-util/libsparse
 
 # Patrick Lauer <patrick@gentoo.org> (14 Jun 2015)
 # Has race condition / failure modes that make systems unusable
@@ -178,11 +175,6 @@ dev-lang/php:7.0
 # experimental features and accept a more unstable release.
 >=www-client/chromium-45
 
-# Ian Delaney <idella4@gentoo.org> (13 May 2015)
-# package unused, no revdeps, obsolete.
-# masked for removal in 30 days
-dev-python/gevent-zeromq
-
 # Mike Gilbert <floppym@gentoo.org> (06 May 2015)
 # Obsolete development snapshots.
 >=app-emulation/open-vm-tools-2013
@@ -200,11 +192,6 @@ dev-python/gevent-zeromq
 # by changing output it relies on. See bug #504118,
 # 547586, and 547962.
 >=sys-devel/gcc-config-1.8-r1
-
-# Sebastian Pipping <sping@gentoo.org> (28 Apr 2015)
-# Get rid of vulnerable releases.
-# Masked for removal in 30 days.
-<www-apps/wordpress-4.2.1
 
 # Patrick Lauer <patrick@gentoo.org> (10 Apr 2015)
 # Breaks pretty much all consumers, like samba
@@ -580,11 +567,6 @@ www-apache/mod_spdy
 # - do not compile in some USE-flag combinations
 # - requires at least gcc 4.7(and possibly even 4.8 for some features)
 >=dev-libs/botan-1.11.0
-
-# Tom Wijsman <TomWij@gentoo.org> (15 Aug 2013)
-# Dependencies are unable to satisfy current version,
-# broken; needs a version bump from bug #475552.
-dev-java/itext:5
 
 # Julian Ospald <hasufell@gentoo.org> (21 Jul 2013)
 # Mask all unfetchable versions and those with tons of random

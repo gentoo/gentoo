@@ -1,6 +1,20 @@
 # ChangeLog for net-ftp/proftpd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/proftpd/ChangeLog,v 1.341 2015/07/03 08:56:27 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/proftpd/ChangeLog,v 1.344 2015/07/25 08:46:47 slyfox Exp $
+
+  25 Jul 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  -files/proftpd-1.3.4d-memset-fix.patch,
+  -files/proftpd-1.3.4d-sftp-kbdint-max-responses-bug3973.patch,
+  -files/proftpd-1.3.4e-link-tests.patch,
+  -files/proftpd-1.3.5-netaddr-segv.patch, -proftpd-1.3.4d.ebuild,
+  -proftpd-1.3.4e.ebuild, -proftpd-1.3.5-r1.ebuild, -proftpd-1.3.5.ebuild:
+  Clean old vulnerabe versions (bug #546644).
+
+  24 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> proftpd-1.3.5a.ebuild:
+  ia64 stable wrt bug #546644
+
+  23 Jul 2015; Agostino Sarubbo <ago@gentoo.org> proftpd-1.3.5a.ebuild:
+  Stable for sparc, wrt bug #546644
 
   03 Jul 2015; Agostino Sarubbo <ago@gentoo.org> proftpd-1.3.5a.ebuild:
   Stable for alpha, wrt bug #546644

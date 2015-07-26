@@ -1,6 +1,10 @@
 # ChangeLog for dev-tex/cjk-latex
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/cjk-latex/ChangeLog,v 1.72 2015/04/29 15:41:04 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/cjk-latex/ChangeLog,v 1.73 2015/07/26 07:32:09 aballier Exp $
+
+  26 Jul 2015; Alexis Ballier <aballier@gentoo.org> cjk-latex-4.8.4.ebuild:
+  fix build with kpathsea from texlive 2015, add explicit dep on it, bug
+  #555868
 
   29 Apr 2015; Alexis Ballier <aballier@gentoo.org> -cjk-latex-4.8.2.ebuild,
   -cjk-latex-4.8.3.ebuild, -files/cjk-latex-4.8.2-kpathsea_version.patch:

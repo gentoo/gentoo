@@ -1,0 +1,36 @@
+# ChangeLog for app-admin/puppet-agent
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/puppet-agent/ChangeLog,v 1.7 2015/07/23 22:53:12 prometheanfire Exp $
+
+*puppet-agent-1.2.2 (23 Jul 2015)
+
+  23 Jul 2015; Matthew Thode <prometheanfire@gentoo.org>
+  +puppet-agent-1.2.2.ebuild:
+  bup
+
+  20 Jul 2015; Matthew Thode <prometheanfire@gentoo.org> metadata.xml,
+  puppet-agent-1.2.1.ebuild:
+  signin'
+
+  20 Jul 2015; Matthew Thode <prometheanfire@gentoo.org>
+  puppet-agent-1.2.1.ebuild:
+  make exec exetable
+
+  19 Jul 2015; Matthew Thode <prometheanfire@gentoo.org>
+  puppet-agent-1.2.1.ebuild:
+  signing
+
+  19 Jul 2015; Matthew Thode <prometheanfire@gentoo.org>
+  puppet-agent-1.2.1.ebuild:
+  binaries should be executable
+
+  18 Jul 2015; Matthew Thode <prometheanfire@gentoo.org> metadata.xml:
+  signing it
+
+*puppet-agent-1.2.1 (18 Jul 2015)
+
+  18 Jul 2015; Matthew Thode <prometheanfire@gentoo.org>
+  +files/mcollective.initd, +files/mcollective.service,
+  +files/puppet-agent.conf.tmpfilesd, +files/puppet.initd,
+  +files/puppet.service, +metadata.xml, +puppet-agent-1.2.1.ebuild:
+  initial add of puppet-agent

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/rb_libtorrent/rb_libtorrent-1.0.5.ebuild,v 1.2 2015/05/19 19:40:43 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/rb_libtorrent/rb_libtorrent-1.0.5.ebuild,v 1.3 2015/07/18 14:22:50 pacho Exp $
 
 EAPI=5
 
@@ -33,7 +33,7 @@ RDEPEND="
 	ssl? ( dev-libs/openssl:0= )
 	python? (
 		${PYTHON_DEPS}
-		dev-libs/boost[python,${PYTHON_USEDEP}]
+		dev-libs/boost:=[python,${PYTHON_USEDEP}]
 	)"
 DEPEND="${RDEPEND}
 	>=sys-devel/libtool-2.2"

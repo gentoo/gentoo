@@ -1,6 +1,19 @@
 # ChangeLog for app-editors/bluefish
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/bluefish/ChangeLog,v 1.97 2015/02/10 12:31:27 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/bluefish/ChangeLog,v 1.100 2015/07/21 06:56:01 amynka Exp $
+
+  21 Jul 2015; Amy Winston <amynka@gentoo.org> metadata.xml:
+  Remove myself as a maintainer and add Nick Andrade as a maintainer.
+
+  20 Jul 2015; Amy Winston <amynka@gentoo.org> metadata.xml:
+  Add myself as a maintainer.
+
+*bluefish-2.2.7 (20 Jul 2015)
+
+  20 Jul 2015; Amy Winston <amynka@gentoo.org> +bluefish-2.2.7.ebuild,
+  metadata.xml:
+  Version bump bug #555414 also solving bug #469480 and bug #469482. Thanks Nick
+  Andrade for ebuild.
 
   10 Feb 2015; Michael Palimaka <kensington@gentoo.org> -bluefish-2.2.2.ebuild,
   -bluefish-2.2.3-r1.ebuild, -bluefish-2.2.3.ebuild:

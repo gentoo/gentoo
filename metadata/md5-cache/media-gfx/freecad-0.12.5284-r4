@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install prepare setup test
-DEPEND=dev-cpp/eigen:3 dev-games/ode dev-libs/boost dev-libs/libf2c dev-libs/libspnav[X] dev-libs/xerces-c[icu] dev-python/PyQt4[svg] dev-python/pivy dev-qt/designer:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 dev-qt/qtsvg:4 dev-qt/qtwebkit:4 dev-qt/qtxmlpatterns:4 media-libs/SoQt media-libs/coin[doc] sci-libs/gts sci-libs/opencascade sys-libs/zlib virtual/glu >=dev-lang/swig-2.0.4-r1:0 virtual/fortran =dev-lang/python-2* sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DEPEND=dev-cpp/eigen:3 dev-games/ode dev-libs/boost dev-libs/libf2c dev-libs/libspnav[X] dev-libs/xerces-c[icu] dev-python/PyQt4[svg] dev-python/pivy dev-qt/designer:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 dev-qt/qtsvg:4 dev-qt/qtwebkit:4 dev-qt/qtxmlpatterns:4 media-libs/SoQt media-libs/coin[doc] sci-libs/gts || ( sci-libs/opencascade:6.7.1 sci-libs/opencascade:6.6.0 sci-libs/opencascade:6.5.5 ) sys-libs/zlib virtual/glu >=dev-lang/swig-2.0.4-r1:0 virtual/fortran =dev-lang/python-2* sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=QT based Computer Aided Design application
 EAPI=5
 HOMEPAGE=http://sourceforge.net/apps/mediawiki/free-cad/
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=dev-cpp/eigen:3 dev-games/ode dev-libs/boost dev-libs/libf2c dev-libs/libspnav[X] dev-libs/xerces-c[icu] dev-python/PyQt4[svg] dev-python/pivy dev-qt/designer:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 dev-qt/qtsvg:4 dev-qt/qtwebkit:4 dev-qt/qtxmlpatterns:4 media-libs/SoQt media-libs/coin[doc] sci-libs/gts sci-libs/opencascade sys-libs/zlib virtual/glu virtual/fortran =dev-lang/python-2*
+RDEPEND=dev-cpp/eigen:3 dev-games/ode dev-libs/boost dev-libs/libf2c dev-libs/libspnav[X] dev-libs/xerces-c[icu] dev-python/PyQt4[svg] dev-python/pivy dev-qt/designer:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 dev-qt/qtsvg:4 dev-qt/qtwebkit:4 dev-qt/qtxmlpatterns:4 media-libs/SoQt media-libs/coin[doc] sci-libs/gts || ( sci-libs/opencascade:6.7.1 sci-libs/opencascade:6.6.0 sci-libs/opencascade:6.5.5 ) sys-libs/zlib virtual/glu virtual/fortran =dev-lang/python-2*
 RESTRICT=bindist mirror
 SLOT=0
 SRC_URI=mirror://sourceforge/free-cad/freecad-0.12.5284.tar.gz
 _eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	fortran-2	db8710b355fc5598015c4bc3aad3bdb0	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=4073005bea1690ae644d158648bcff15
+_md5_=2b0861714a8da50a8fae615745d20a09

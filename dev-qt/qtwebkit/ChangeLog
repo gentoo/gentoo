@@ -1,6 +1,17 @@
 # ChangeLog for dev-qt/qtwebkit
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtwebkit/ChangeLog,v 1.39 2015/07/15 01:37:03 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtwebkit/ChangeLog,v 1.41 2015/07/23 20:49:20 pesa Exp $
+
+  23 Jul 2015; Davide Pesavento <pesa@gentoo.org> qtwebkit-4.10.4.ebuild:
+  Add missing pkgconfig dependency.
+
+*qtwebkit-4.10.4 (23 Jul 2015)
+
+  23 Jul 2015; Davide Pesavento <pesa@gentoo.org>
+  +files/4.10.4-use-correct-icu-typedef.patch, +qtwebkit-4.10.4.ebuild,
+  metadata.xml:
+  Import qtwebkit23-2.3.4 from qt overlay as qtwebkit-4.10.4 (version of the
+  installed library). See bug 388207.
 
   15 Jul 2015; Davide Pesavento <pesa@gentoo.org> qtwebkit-5.4.2.ebuild:
   Disable rpath wrt bug 466216.

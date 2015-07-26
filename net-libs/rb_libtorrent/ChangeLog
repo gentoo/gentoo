@@ -1,6 +1,9 @@
 # ChangeLog for net-libs/rb_libtorrent
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/rb_libtorrent/ChangeLog,v 1.199 2015/06/09 12:42:11 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/rb_libtorrent/ChangeLog,v 1.200 2015/07/18 14:22:50 pacho Exp $
+
+  18 Jul 2015; Pacho Ramos <pacho@gentoo.org> rb_libtorrent-1.0.5.ebuild:
+  Needs to be rebuilt when libboost_python so version changes
 
   09 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -rb_libtorrent-0.16.10.ebuild:
   Remove old.

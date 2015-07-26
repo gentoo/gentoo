@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/gumbo
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/gumbo/ChangeLog,v 1.6 2015/06/06 18:58:31 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/gumbo/ChangeLog,v 1.7 2015/07/22 18:41:33 zlogene Exp $
+
+  22 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> gumbo-0.10.1.ebuild:
+  Add ~x86 keyword wrt bug #549692
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

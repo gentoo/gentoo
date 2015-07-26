@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/kde4-base.eclass,v 1.157 2015/07/01 11:28:23 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/kde4-base.eclass,v 1.158 2015/07/19 10:46:47 johu Exp $
 
 # @ECLASS: kde4-base.eclass
 # @MAINTAINER:
@@ -440,36 +440,18 @@ _calculate_src_uri() {
 				4.11.14)
 					# Part of 4.14 actually, sigh. Not stable for next release!
 					SRC_URI="mirror://kde/stable/4.14.3/src/${_kmname_pv}.tar.xz" ;;
-				4.11.17)
-					# Part of 14.12.3 actually, sigh. Not stable for next release!
-					SRC_URI="mirror://kde/stable/applications/14.12.3/src/${_kmname_pv}.tar.xz" ;;
-				4.11.18)
-					# Part of 15.04.0 actually, sigh. Not stable for next release!
-					SRC_URI="mirror://kde/stable/applications/15.04.0/src/${_kmname_pv}.tar.xz" ;;
 				4.11.19)
 					# Part of 15.04.1 actually, sigh. Not stable for next release!
 					SRC_URI="mirror://kde/stable/applications/15.04.1/src/${_kmname_pv}.tar.xz" ;;
-				4.11.20)
-					# Part of 15.04.2 actually, sigh. Not stable for next release!
-					SRC_URI="mirror://kde/stable/applications/15.04.2/src/${_kmname_pv}.tar.xz" ;;
 				4.11.21)
 					# Part of 15.04.3 actually, sigh. Not stable for next release!
 					SRC_URI="mirror://kde/stable/applications/15.04.3/src/${_kmname_pv}.tar.xz" ;;
 				4.14.3)
 					# Last SC release
 					SRC_URI="mirror://kde/stable/${PV}/src/${_kmname_pv}.tar.xz" ;;
-				4.14.6)
-					# Part of 14.12.3 actually, sigh. Not stable for next release!
-					SRC_URI="mirror://kde/stable/applications/14.12.3/src/${_kmname_pv}.tar.xz" ;;
-				4.14.7)
-					# Part of 15.04.0 actually, sigh. Not stable for next release!
-					SRC_URI="mirror://kde/stable/applications/15.04.0/src/${_kmname_pv}.tar.xz" ;;
 				4.14.8)
 					# Part of 15.04.1 actually, sigh. Not stable for next release!
 					SRC_URI="mirror://kde/stable/applications/15.04.1/src/${_kmname_pv}.tar.xz" ;;
-				4.14.9)
-					# Part of 15.04.2 actually, sigh. Not stable for next release!
-					SRC_URI="mirror://kde/stable/applications/15.04.2/src/${_kmname_pv}.tar.xz" ;;
 				4.14.10)
 					# Part of 15.04.3 actually, sigh. Not stable for next release!
 					SRC_URI="mirror://kde/stable/applications/15.04.3/src/${_kmname_pv}.tar.xz" ;;

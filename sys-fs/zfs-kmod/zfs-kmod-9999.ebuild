@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/zfs-kmod/zfs-kmod-9999.ebuild,v 1.28 2015/05/15 18:27:48 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/zfs-kmod/zfs-kmod-9999.ebuild,v 1.29 2015/07/24 04:32:25 ryao Exp $
 
 EAPI="4"
 
@@ -48,7 +48,7 @@ pkg_setup() {
 		IOSCHED_NOOP
 		MODULES
 		!PAX_KERNEXEC_PLUGIN_METHOD_OR
-		!PAX_RANDKSTACK
+		!PAX_USERCOPY_SLABS
 		ZLIB_DEFLATE
 		ZLIB_INFLATE
 	"

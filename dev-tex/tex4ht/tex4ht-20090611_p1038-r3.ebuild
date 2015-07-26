@@ -1,10 +1,10 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/tex4ht/tex4ht-20090611_p1038-r3.ebuild,v 1.3 2015/07/12 18:15:04 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/tex4ht/tex4ht-20090611_p1038-r3.ebuild,v 1.5 2015/07/22 19:25:54 blueness Exp $
 
 EAPI=4
 
-inherit latex-package toolchain-funcs java-pkg-opt-2
+inherit latex-package toolchain-funcs java-pkg-opt-2 flag-o-matic
 
 IUSE=""
 
@@ -17,14 +17,17 @@ HOMEPAGE="http://www.cse.ohio-state.edu/~gurari/TeX4ht/
 SRC_URI="http://www.cse.ohio-state.edu/~gurari/TeX4ht/fix/${MY_P}.tar.gz"
 
 LICENSE="LPPL-1.2"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc ~ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 SLOT="0"
 
 DEPEND=">=sys-apps/sed-4
+	virtual/pkgconfig
+	dev-libs/kpathsea
 	java? ( >=virtual/jdk-1.5 )"
 
 RDEPEND="app-text/ghostscript-gpl
 	media-gfx/imagemagick
+	dev-libs/kpathsea
 	java? ( >=virtual/jre-1.5 )"
 
 IUSE="java"
@@ -47,6 +50,8 @@ src_prepare() {
 }
 
 src_compile() {
+	has_version '>=dev-libs/kpathsea-6.2.1' && append-cppflags "$($(tc-getPKG_CONFIG) --cflags kpathsea)"
+
 	cd "${S}/src/"
 	einfo "Compiling postprocessor sources..."
 	for f in tex4ht t4ht htcmd ; do

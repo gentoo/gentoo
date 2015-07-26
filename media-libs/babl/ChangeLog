@@ -1,6 +1,9 @@
 # ChangeLog for media-libs/babl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/babl/ChangeLog,v 1.67 2015/07/18 10:55:41 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/babl/ChangeLog,v 1.68 2015/07/23 20:32:14 pacho Exp $
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org> babl-0.1.12.ebuild:
+  ppc stable wrt bug #552006
 
   18 Jul 2015; Jeroen Roovers <jer@gentoo.org> babl-0.1.12.ebuild:
   Stable for HPPA PPC64 (bug #552006).

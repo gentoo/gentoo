@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/sakura/sakura-3.2.0.ebuild,v 1.1 2014/12/13 09:24:10 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/sakura/sakura-3.2.0.ebuild,v 1.2 2015/07/25 06:28:01 jer Exp $
 
 EAPI=5
 inherit cmake-utils eutils
@@ -25,7 +25,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=( "${FILESDIR}"/${PN}-3.1.3-flags.patch )
 
-DOCS=( AUTHORS INSTALL )
+DOCS=( AUTHORS )
 
 src_prepare() {
 	sed -i "/FILES INSTALL/d" CMakeLists.txt || die

@@ -1,6 +1,14 @@
 # ChangeLog for app-doc/root-docs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/root-docs/ChangeLog,v 1.50 2015/06/14 19:25:46 bircoph Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-doc/root-docs/ChangeLog,v 1.52 2015/07/18 13:54:42 bircoph Exp $
+
+  18 Jul 2015; Andrew Savchenko <bircoph@gentoo.org> -root-docs-5.34.28.ebuild:
+  Remove old.
+
+*root-docs-5.34.32 (18 Jul 2015)
+
+  18 Jul 2015; Andrew Savchenko <bircoph@gentoo.org> +root-docs-5.34.32.ebuild:
+  Version bump.
 
   14 Jun 2015; Andrew Savchenko <bircoph@gentoo.org> root-docs-5.34.26.ebuild,
   root-docs-5.34.28.ebuild, root-docs-6.02.05.ebuild:

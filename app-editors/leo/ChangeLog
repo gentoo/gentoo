@@ -1,6 +1,9 @@
 # ChangeLog for app-editors/leo
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/leo/ChangeLog,v 1.37 2015/06/09 10:48:27 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/leo/ChangeLog,v 1.38 2015/07/23 20:59:04 pacho Exp $
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org> leo-5.1.ebuild:
+  ppc stable wrt bug #551306
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

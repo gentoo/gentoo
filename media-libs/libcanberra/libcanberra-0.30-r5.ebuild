@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libcanberra/libcanberra-0.30-r5.ebuild,v 1.7 2015/07/17 15:41:38 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libcanberra/libcanberra-0.30-r5.ebuild,v 1.8 2015/07/25 12:14:52 pacho Exp $
 
 EAPI="5"
 inherit autotools-multilib eutils systemd
@@ -11,7 +11,7 @@ SRC_URI="http://0pointer.de/lennart/projects/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ia64 ~mips ~ppc ppc64 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x86-solaris"
 IUSE="alsa gnome gstreamer +gtk +gtk3 oss pulseaudio +sound tdb udev"
 
 COMMON_DEPEND="

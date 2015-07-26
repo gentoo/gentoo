@@ -10,5 +10,5 @@ RDEPEND=>=sys-libs/libsepol-2.2 >=sys-libs/libselinux-2.2.2-r1 dev-libs/ustr sys
 RESTRICT=test
 SLOT=0
 SRC_URI=http://userspace.selinuxproject.org/releases/20131030/libsemanage-2.2.tar.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multilib-build	e733e978b7fa70607cc221fd9c070db6	multilib-minimal	13dd976916c35a1e2c8d170e840c7018	python-r1	23846c6ba39f6655e2027001eeed8e81	python-utils-r1	ae9becb5d45344c01939c3f57df0d3fd	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multilib-build	e733e978b7fa70607cc221fd9c070db6	multilib-minimal	13dd976916c35a1e2c8d170e840c7018	python-r1	23846c6ba39f6655e2027001eeed8e81	python-utils-r1	df6eb914b4b2d70d9c5e7c9331437c52	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=a152964c87ace4bf28d2671862e4f8ff

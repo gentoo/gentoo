@@ -1,0 +1,72 @@
+--- bindings/Makefile.am	2015-07-10 10:04:18.091199191 +0200
++++ bindings/Makefile.am	2015-07-10 10:19:47.047974439 +0200
+@@ -3,8 +3,10 @@
+ 	vala
+ else
+ SUBDIRS =		\
+-	python		\
+ 	vala
++if HAS_PYTHON
++SUBDIRS += python
++endif
+ endif
+ 
+ if HAS_MONO
+--- configure.ac	2015-07-16 13:28:41.007502838 +0200
++++ configure.ac_new	2015-07-16 13:53:18.118602877 +0200
+@@ -188,25 +188,37 @@
+ PYGTK_REQUIRED=2.14.0
+ PYGOBJECT_REQUIRED=0.22
+ 
+-AM_PATH_PYTHON(2.3.5)
+-AM_CHECK_PYTHON_HEADERS(,[AC_MSG_ERROR(could not find Python headers)])
++AC_ARG_ENABLE([python],
++	AC_HELP_STRING([--enable-python], [Enable python for GTK2 build]),,
++	[enable_python=yes])
+ 
+-PKG_CHECK_MODULES(APPINDICATOR_PYTHON,
++if test x"$with_gtk" = x"3" ; then
++	enable_python=no
++fi
++
++AM_CONDITIONAL(HAS_PYTHON, test x"${enable_python}" != x"no")
++
++if test x"$enable_python" != x"no" ; then
++	AM_PATH_PYTHON(2.3.5)
++	AM_CHECK_PYTHON_HEADERS(,[AC_MSG_ERROR(could not find Python headers)])
++
++	PKG_CHECK_MODULES(APPINDICATOR_PYTHON,
+                   [
+ 					pygtk-2.0 >= $PYGTK_REQUIRED
+ 					gtk+-2.0 >= $GTK_REQUIRED_VERSION
+ 					pygobject-2.0 >= $PYGOBJECT_REQUIRED
+                   ])
+ 
+-AC_MSG_CHECKING(for pygtk defs)
+-PYGTK_DEFSDIR=`$PKG_CONFIG --variable=defsdir pygtk-2.0`
+-AC_SUBST(PYGTK_DEFSDIR)
+-AC_MSG_RESULT($PYGTK_DEFSDIR)
+-
+-AC_MSG_CHECKING(for pygtk codegen)
+-PYGTK_CODEGEN="$PYTHON `$PKG_CONFIG --variable=codegendir pygtk-2.0`/codegen.py"
+-AC_SUBST(PYGTK_CODEGEN)
+-AC_MSG_RESULT($PYGTK_CODEGEN)
++	AC_MSG_CHECKING(for pygtk defs)
++	PYGTK_DEFSDIR=`$PKG_CONFIG --variable=defsdir pygtk-2.0`
++	AC_SUBST(PYGTK_DEFSDIR)
++	AC_MSG_RESULT($PYGTK_DEFSDIR)
++
++	AC_MSG_CHECKING(for pygtk codegen)
++	PYGTK_CODEGEN="$PYTHON `$PKG_CONFIG --variable=codegendir pygtk-2.0`/codegen.py"
++	AC_SUBST(PYGTK_CODEGEN)
++	AC_MSG_RESULT($PYGTK_CODEGEN)
++fi
+ 
+ #########################
+ # Check if build tests
+@@ -278,4 +290,5 @@
+ 	Tests:         $enable_tests
+ 	Mono tests:    $have_nunit
+ 	gcov:	       $use_gcov
++	Python:        $enable_python
+ ])

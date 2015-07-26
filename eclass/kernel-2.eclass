@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/kernel-2.eclass,v 1.310 2015/06/27 17:41:20 mpagano Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/kernel-2.eclass,v 1.311 2015/07/19 15:46:03 mpagano Exp $
 
 # Description: kernel.eclass rewrite for a clean base regarding the 2.6
 #              series of kernel with back-compatibility for 2.4
@@ -824,7 +824,7 @@ postinst_sources() {
 	echo
 	elog "If you are upgrading from a previous kernel, you may be interested"
 	elog "in the following document:"
-	elog "  - General upgrade guide: http://www.gentoo.org/doc/en/kernel-upgrade.xml"
+	elog "  - General upgrade guide: https://wiki.gentoo.org/wiki/Kernel/Upgrade"
 	echo
 
 	# if K_EXTRAEINFO is set then lets display it now
@@ -847,10 +847,7 @@ postinst_sources() {
 
 	# optionally display security unsupported message
 	#  Start with why
-	if [[ ${K_SECURITY_UNSUPPORTED} = deblob ]]; then
-		ewarn "Deblobbed kernels may not be up-to-date security-wise"
-		ewarn "as they depend on external scripts."
-	elif [[ -n ${K_SECURITY_UNSUPPORTED} ]]; then
+	if [[ -n ${K_SECURITY_UNSUPPORTED} ]]; then
 		ewarn "${PN} is UNSUPPORTED by Gentoo Security."
 	fi
 	#  And now the general message.

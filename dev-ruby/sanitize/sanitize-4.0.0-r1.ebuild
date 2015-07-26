@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/sanitize/sanitize-4.0.0-r1.ebuild,v 1.1 2015/05/24 06:55:45 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/sanitize/sanitize-4.0.0-r1.ebuild,v 1.2 2015/07/22 18:53:32 zlogene Exp $
 
 EAPI=5
 
@@ -19,7 +19,7 @@ SRC_URI="https://github.com/rgrove/sanitize/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="MIT"
 SLOT="4"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 ruby_add_rdepend "

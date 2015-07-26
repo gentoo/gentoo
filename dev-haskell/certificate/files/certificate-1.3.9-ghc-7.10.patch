@@ -1,0 +1,16 @@
+diff --git a/Data/Certificate/X509/Cert.hs b/Data/Certificate/X509/Cert.hs
+index 4abfadf..15e7bf8 100644
+--- a/Data/Certificate/X509/Cert.hs
++++ b/Data/Certificate/X509/Cert.hs
+@@ -1,2 +1,3 @@
++{-# LANGUAGE FlexibleContexts #-}
+ module Data.Certificate.X509.Cert
+         (
+diff --git a/Data/Certificate/X509/Ext.hs b/Data/Certificate/X509/Ext.hs
+index 7595f14..8963a55 100644
+--- a/Data/Certificate/X509/Ext.hs
++++ b/Data/Certificate/X509/Ext.hs
+@@ -1,2 +1,3 @@
++{-# LANGUAGE FlexibleContexts #-}
+ -- |
+ -- Module      : Data.Certificate.X509.Ext

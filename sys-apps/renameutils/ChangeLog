@@ -1,6 +1,10 @@
 # ChangeLog for sys-apps/renameutils
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/renameutils/ChangeLog,v 1.16 2012/07/03 16:43:49 ranger Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/renameutils/ChangeLog,v 1.17 2015/07/21 21:34:33 mrueg Exp $
+
+  21 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -renameutils-0.10.0.ebuild,
+  -renameutils-0.11.0.ebuild:
+  Remove old.
 
   03 Jul 2012; Brent Baude <ranger@gentoo.org> renameutils-0.12.0.ebuild:
   Marking renameutils-0.12.0 ppc for bug 412509

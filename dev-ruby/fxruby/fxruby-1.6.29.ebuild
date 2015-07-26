@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/fxruby/fxruby-1.6.29.ebuild,v 1.6 2015/06/26 08:59:02 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/fxruby/fxruby-1.6.29.ebuild,v 1.7 2015/07/23 20:57:30 pacho Exp $
 
 EAPI=5
 # ruby22 -> fails tests
@@ -19,7 +19,7 @@ HOMEPAGE="http://www.fxruby.org/"
 
 LICENSE="LGPL-2.1"
 SLOT="1.6"
-KEYWORDS="amd64 hppa ~ppc ppc64 x86 ~x86-fbsd"
+KEYWORDS="amd64 hppa ppc ppc64 x86 ~x86-fbsd"
 IUSE="examples doc"
 
 CDEPEND="x11-libs/fox:1.6 >=x11-libs/fxscintilla-1.62-r1"

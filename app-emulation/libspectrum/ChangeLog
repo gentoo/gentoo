@@ -1,6 +1,15 @@
 # ChangeLog for app-emulation/libspectrum
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/libspectrum/ChangeLog,v 1.38 2015/06/26 08:40:15 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/libspectrum/ChangeLog,v 1.40 2015/07/23 19:52:34 pacho Exp $
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org> libspectrum-1.1.1.ebuild:
+  ppc stable wrt bug #534850
+
+  22 Jul 2015; Manuel Rüger <mrueg@gentoo.org>
+  -files/libspectrum-0.5.0.1-without-bzip2_zlib.patch,
+  -libspectrum-0.2.2-r1.ebuild, -libspectrum-0.4.0.ebuild,
+  -libspectrum-0.5.0.1.ebuild:
+  Remove old.
 
   26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> libspectrum-1.1.1.ebuild:
   Stable for x86, wrt bug #534850

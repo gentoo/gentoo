@@ -1,6 +1,27 @@
 # ChangeLog for net-misc/keychain
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/keychain/ChangeLog,v 1.114 2015/06/13 09:42:28 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/keychain/ChangeLog,v 1.121 2015/07/26 08:29:42 maekke Exp $
+
+  26 Jul 2015; Markus Meier <maekke@gentoo.org> keychain-2.8.1.ebuild:
+  arm stable, bug #555408
+
+  25 Jul 2015; Pacho Ramos <pacho@gentoo.org> keychain-2.8.1.ebuild:
+  ppc stable wrt bug #555408
+
+  21 Jul 2015; Mike Frysinger <vapier@gentoo.org> keychain-2.8.1.ebuild:
+  Mark arm64/ia64/m68k/s390/sh stable #555408.
+
+  21 Jul 2015; Jeroen Roovers <jer@gentoo.org> keychain-2.8.1.ebuild:
+  Stable for AMD64 x86 (bug #555408).
+
+  21 Jul 2015; Jeroen Roovers <jer@gentoo.org> keychain-2.8.1.ebuild:
+  Stable for HPPA PPC64 (bug #555408).
+
+  20 Jul 2015; Tobias Klausmann <klausman@gentoo.org> keychain-2.8.1.ebuild:
+  Stable on alpha, bug 555408
+
+  20 Jul 2015; Mike Frysinger <vapier@gentoo.org> keychain-2.8.1.ebuild:
+  Add arm64/m68k love.
 
   13 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -keychain-2.7.1.ebuild:
   Remove old.

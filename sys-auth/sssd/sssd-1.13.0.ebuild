@@ -1,12 +1,12 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/sssd/sssd-1.13.0.ebuild,v 1.1 2015/07/11 21:11:58 hwoarang Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/sssd/sssd-1.13.0.ebuild,v 1.3 2015/07/23 11:48:12 hwoarang Exp $
 
 EAPI=5
 
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 
-inherit python-single-r1 multilib pam linux-info autotools multilib-minimal systemd toolchain-funcs
+inherit eutils multilib pam linux-info autotools multilib-minimal python-r1 systemd toolchain-funcs
 
 DESCRIPTION="System Security Services Daemon provides access to identity and authentication"
 HOMEPAGE="http://fedorahosted.org/sssd/"
@@ -76,14 +76,19 @@ MULTILIB_WRAPPED_HEADERS=(
 )
 
 pkg_setup(){
-	use python && python-single-r1_pkg_setup
 	linux-info_pkg_setup
 }
 
 src_prepare() {
+	# bug #553678
+	epatch "${FILESDIR}"/${P}-fix-init.patch
+
 	eautoreconf
 
 	multilib_copy_sources
+
+	# Maybe run it before eautoreconf?
+	epatch_user
 }
 
 src_configure() {
@@ -95,7 +100,15 @@ src_configure() {
 multilib_src_configure() {
 	# set initscript to sysv because the systemd option needs systemd to
 	# be installed. We provide our own systemd file anyway.
-	local myconf=(
+	local myconf=()
+	if [[ "${PYTHON_TARGETS}" == *python2* ]]; then
+		myconf+=($(multilib_native_use_with python python2-bindings))
+	fi
+	if [[ "${PYTHON_TARGETS}" == *python3* ]]; then
+		myconf+=($(multilib_native_use_with python python3-bindings))
+	fi
+
+	myconf+=(
 		--localstatedir="${EPREFIX}"/var
 		--enable-nsslibdir="${EPREFIX}"/$(get_libdir)
 		--with-plugin-path="${EPREFIX}"/usr/$(get_libdir)/sssd
@@ -111,7 +124,6 @@ multilib_src_configure() {
 		$(multilib_native_use_enable augeas config-lib)
 		$(multilib_native_use_with selinux)
 		$(multilib_native_use_with selinux semanage)
-		$(multilib_native_use_with python python-bindings)
 		$(use_enable locator krb5-locator-plugin)
 		$(multilib_native_use_with nfsv4 nfsv4-idmapd-plugin)
 		$(use_enable nls )
@@ -179,7 +191,6 @@ multilib_src_install() {
 multilib_src_install_all() {
 	einstalldocs
 	prune_libtool_files --all
-	use python && python_optimize
 
 	insinto /etc/sssd
 	insopts -m600

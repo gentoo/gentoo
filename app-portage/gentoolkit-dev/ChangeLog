@@ -1,6 +1,12 @@
 # ChangeLog for app-portage/gentoolkit-dev
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/gentoolkit-dev/ChangeLog,v 1.142 2015/05/22 16:39:00 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/gentoolkit-dev/ChangeLog,v 1.143 2015/07/22 01:42:18 mrueg Exp $
+
+  22 Jul 2015; Manuel Rüger <mrueg@gentoo.org>
+  -files/gentoolkit-dev-0.2.8-tests.patch, -gentoolkit-dev-0.2.6.14.ebuild,
+  -gentoolkit-dev-0.2.7.ebuild, -gentoolkit-dev-0.2.8.3.ebuild,
+  -gentoolkit-dev-0.2.8.ebuild:
+  Remove old.
 
 *gentoolkit-dev-0.3.0 (22 May 2015)
 

@@ -1,6 +1,18 @@
 # ChangeLog for net-firewall/shorewall
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/shorewall/ChangeLog,v 1.288 2015/07/17 12:12:36 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/shorewall/ChangeLog,v 1.291 2015/07/26 06:34:49 jer Exp $
+
+  26 Jul 2015; Jeroen Roovers <jer@gentoo.org> shorewall-4.6.10.1.ebuild:
+  Stable for HPPA (bug #555188).
+
+*shorewall-4.6.11 (25 Jul 2015)
+
+  25 Jul 2015; Michał Górny <mgorny@gentoo.org> +shorewall-4.6.11.ebuild:
+  Version bump. https://github.com/gentoo/gentoo-portage-rsync-mirror/pull/177
+  by Whissi.
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org> shorewall-4.6.10.1.ebuild:
+  ppc stable wrt bug #555188
 
   17 Jul 2015; Tobias Klausmann <klausman@gentoo.org>
   shorewall-4.6.10.1.ebuild:

@@ -1,6 +1,9 @@
 # ChangeLog for dev-util/jconfig
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/jconfig/ChangeLog,v 1.23 2015/05/27 21:47:16 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/jconfig/ChangeLog,v 1.24 2015/07/21 21:09:41 mrueg Exp $
+
+  21 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -jconfig-2.8-r2.ebuild:
+  Remove old.
 
 *jconfig-2.9 (27 May 2015)
 

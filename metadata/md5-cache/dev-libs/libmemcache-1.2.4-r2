@@ -1,9 +1,0 @@
-DEFINED_PHASES=compile install
-DESCRIPTION=C API for memcached
-HOMEPAGE=http://people.freebsd.org/~seanc/libmemcache/
-KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 sh sparc ~sparc-fbsd x86
-LICENSE=MIT
-SLOT=0
-SRC_URI=http://people.freebsd.org/~seanc/libmemcache/libmemcache-1.2.4.tar.bz2
-_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=d68356ed777faa8cb16642b30b9f0e3d

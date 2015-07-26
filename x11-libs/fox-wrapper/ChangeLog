@@ -1,6 +1,9 @@
 # ChangeLog for x11-libs/fox-wrapper
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/fox-wrapper/ChangeLog,v 1.21 2013/10/29 01:42:12 blueness Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/fox-wrapper/ChangeLog,v 1.22 2015/07/22 11:38:53 mrueg Exp $
+
+  22 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -fox-wrapper-1.ebuild:
+  Remove old.
 
   29 Oct 2013; Anthony G. Basile <blueness@gentoo.org> fox-wrapper-3.ebuild:
   Keyword ~arm

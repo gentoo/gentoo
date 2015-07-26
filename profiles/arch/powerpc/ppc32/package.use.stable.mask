@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/ppc32/package.use.stable.mask,v 1.8 2015/06/09 04:28:31 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/ppc32/package.use.stable.mask,v 1.9 2015/07/23 20:20:35 pacho Exp $
 
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -21,6 +21,7 @@
 # Pacho Ramos <pacho@gentoo.org> (15 May 2015)
 # Missing keywords
 net-misc/connman l2tp openconnect
+sci-libs/plplot ada ocaml
 
 # Pacho Ramos <pacho@gentoo.org> (02 Jul 2014)
 # Mask due Gnome3 not going to be stabilized on this arch

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/adwaita-icon-theme/adwaita-icon-theme-3.16.2.1.ebuild,v 1.1 2015/06/10 13:25:49 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/adwaita-icon-theme/adwaita-icon-theme-3.16.2.1.ebuild,v 1.2 2015/07/26 03:08:59 tetromino Exp $
 
 EAPI="5"
 GCONF_DEBUG="no"
@@ -27,7 +27,6 @@ RDEPEND="${COMMON_DEPEND}
 	!<x11-themes/gnome-themes-standard-3.14
 "
 DEPEND="${COMMON_DEPEND}
-	>=x11-misc/icon-naming-utils-0.8.7
 	>=dev-util/intltool-0.40
 	sys-devel/gettext
 	virtual/pkgconfig

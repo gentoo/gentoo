@@ -1,12 +1,12 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libvisio/libvisio-9999.ebuild,v 1.21 2015/02/04 14:37:08 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libvisio/libvisio-9999.ebuild,v 1.23 2015/07/25 21:16:53 dilfridge Exp $
 
 EAPI=5
 
 EGIT_REPO_URI="git://anongit.freedesktop.org/git/libreoffice/libvisio/"
 inherit base eutils
-[[ ${PV} == 9999 ]] && inherit autotools git-2
+[[ ${PV} == 9999 ]] && inherit autotools git-r3
 
 DESCRIPTION="Library parsing the visio documents"
 HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libvisio"
@@ -15,8 +15,8 @@ HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libvisio"
 LICENSE="|| ( GPL-2+ LGPL-2.1 MPL-1.1 )"
 SLOT="0"
 [[ ${PV} == 9999 ]] || \
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~x86"
-IUSE="doc static-libs test"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc64 ~x86"
+IUSE="doc static-libs test tools"
 
 RDEPEND="
 	dev-libs/icu:=
@@ -45,7 +45,8 @@ src_configure() {
 		$(use_enable static-libs static) \
 		--disable-werror \
 		$(use_with doc docs) \
-		$(use_enable test tests)
+		$(use_enable test tests) \
+		$(use_enable tools)
 }
 
 src_install() {

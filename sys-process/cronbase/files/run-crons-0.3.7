@@ -1,0 +1,195 @@
+#!/bin/sh
+#
+# $Header: /var/cvsroot/gentoo-x86/sys-process/cronbase/files/run-crons-0.3.7,v 1.1 2015/07/24 05:45:03 vapier Exp $
+#
+# 12 Oct 2008; Thilo Bangert <bangert@gentoo.org> run-crons:
+#     ignore emacs backup files (bug #237200)
+#     include logging patch (bug #140869)
+#
+# 08 Mar 2005; Aaron Walker <ka0ttic@gentoo.org> run-crons:
+#     Ignore the error messages from find caused by race conditions, since
+#     we could care less about the error as long as the file has been removed.
+#     See bug 8506.
+#
+# 06 May 2004; Aron Griffis <agriffis@gentoo.org> run-crons:
+#     Make the locking actually work.  The old code was racy.
+#     Thanks to Mathias Gumz in bug 45155 for some cleanups.
+#
+# 23 Jun 2002; Jon Nelson <jnelson@gentoo.org> run-crons:
+#     fixed a race condition, where cron jobs and run-crons wanted to
+#     delete touch files
+#
+# 20 Apr 2002; Thilo Bangert <bangert@gentoo.org> run-crons:
+#     moved lastrun directory to /var/spool/cron/lastrun
+#
+# Author: Achim Gottinger <achim@gentoo.org>
+#
+# Mostly copied from SuSE
+#
+# this script looks into /etc/cron.[hourly|daily|weekly|monthly]
+# for scripts to be executed. The info about last run is stored in
+# /var/spool/cron/lastrun
+
+LOCKDIR="/var/run/lock"
+CRONSPOOLDIR="/var/spool/cron"
+LASTRUNDIR="${CRONSPOOLDIR}/lastrun"
+# This is the legacy lockfile that we need to clean up.
+GLOBAL_LOCKFILE="${LASTRUNDIR}/lock"
+
+# Usage: log <level> <args to logger>
+# Log a message via syslog.
+log() {
+	local level="$1"
+	shift
+	logger -i -p "cron.${level}" -t run-crons "$@"
+}
+
+# Usage: grab_lock <class>
+# Grab the lock for <class> to make sure we are the only instance.
+grab_lock() {
+	local i cronpid cmdline1 cmdline2
+	local lockfile
+
+	# Free whatever previous lock (if any) we held.
+	free_lock
+
+	# For the legacy global lock, don't try to create a full path.
+	case $1 in
+	/*) lockfile=$1 ;;
+	*)  lockfile="${LOCKDIR}/cron.$1" ;;
+	esac
+
+	# Try twice to lock, otherwise give up.
+	i=0
+	while [ $(( i += 1 )) -le 2 ] ; do
+		# Normally we should be able to grab the lock and get out of here fast.
+		if ln -sn $$ "${lockfile}" 2>/dev/null ; then
+			break
+		fi
+
+		# Locking failed, so check for a running process.
+		# Handle both old- and new-style locking.
+		# Delete the cat logic when GLOBAL_LOCKFILE is purged.
+		# Note: Does not handle PID namespaces ...
+		if ! cronpid=$(readlink "${lockfile}" 2>/dev/null) ; then
+			if ! cronpid=$(cat "${lockfile}" 2>/dev/null) ; then
+				# The lockfile disappeared?  Try the whole thing again ...
+				continue
+			fi
+		fi
+
+		# This is better than kill -0 because we can verify that it's really
+		# another run-crons process.
+		cmdline1=$(cat "/proc/${cronpid}/cmdline" 2>/dev/null) || :
+		cmdline2=$(cat /proc/$$/cmdline)
+		if [ "${cmdline1}" = "${cmdline2}" ] ; then
+			# Whoa, another run-crons is really running.
+			return 1
+		fi
+
+		# The lockfile is pointing to a dead process so break it.
+		# TODO: This is still racy if we're running more than one run-crons.
+		rm -f "${lockfile}"
+	done
+
+	# Check to make sure locking was successful.
+	if [ ! -L "${lockfile}" ] ; then
+		echo "Can't create or read existing ${lockfile}, giving up"
+		exit 1
+	fi
+
+	# Set the lock file for free_lock to clean up.
+	_LOCKFILE="${lockfile}"
+
+	return 0
+}
+# Prevent random env vars from messing with us.
+_LOCKFILE=
+# Set a trap to release the lockfile when we're finished.
+trap 'free_lock' EXIT HUP INT QUIT TERM
+
+# Usage: free_lock
+# Release the lock that we last grabbed.  This does not nest!
+free_lock() {
+	if [ -n "${_LOCKFILE}" ] ; then
+		rm -f "${_LOCKFILE}"
+		# Only break the lock once.
+		_LOCKFILE=
+	fi
+}
+
+
+EXIT_STATUS=0
+
+# Grab the legacy global lock to smoothly handle upgrades.
+# We should drop this after like Dec 2016.
+if [ -L "${GLOBAL_LOCKFILE}" -o -f "${GLOBAL_LOCKFILE}" ] ; then
+	if ! grab_lock "${GLOBAL_LOCKFILE}" ; then
+		# An old process is still running -- abort.
+		exit 0
+	fi
+	# Now release the lock since we no longer care about it.
+	free_lock
+fi
+
+for BASE in hourly daily weekly monthly ; do
+	CRONDIR=/etc/cron.${BASE}
+
+	test -d $CRONDIR || continue
+
+	# Grab the lock for this specific dir.
+	if ! grab_lock "${BASE}" ; then
+		# Someone else is processing this dir, so skip it.
+		continue
+	fi
+
+	# Blow away stale states for this particular dir.
+	lastrunfile="${LASTRUNDIR}/cron.${BASE}"
+	if [ -e "${lastrunfile}" ] ; then
+		case $BASE in
+		hourly)
+			#>= 1 hour, 5 min -=> +65 min
+			TIME="-cmin +65" ;;
+		daily)
+			#>= 1 day, 5 min -=> +1445 min
+			TIME="-cmin +1445"  ;;
+		weekly)
+			#>= 1 week, 5 min -=> +10085 min
+			TIME="-cmin +10085"  ;;
+		monthly)
+			#>= 31 days, 5 min -=> +44645 min
+			TIME="-cmin +44645" ;;
+		esac
+
+		find "${LASTRUNDIR}/" -name cron.$BASE $TIME -exec rm {} \; 2>/dev/null || :
+	fi
+
+	# if there is no state file, make one, then run the scripts.
+	if [ ! -e "${lastrunfile}" ] ; then
+		touch "${lastrunfile}"
+
+		set +e
+		for SCRIPT in $CRONDIR/* ; do
+			if [ -x "${SCRIPT}" ] && [ ! -d "${SCRIPT}" ] ; then
+				# Filter out files people do not expect to be executed.
+				case ${SCRIPT} in
+				.*|*~) continue ;;
+				esac
+
+				log info "($(whoami)) CMD (${SCRIPT})"
+				$SCRIPT
+				ret=$?
+				if [ ${ret} -ne 0 ] ; then
+					log err "CMD (${SCRIPT}) failed with exit status ${ret}"
+					EXIT_STATUS=1
+				fi
+			fi
+		done
+	fi
+done
+
+# Clean out bogus state files with future times.
+touch "${LASTRUNDIR}"
+find "${LASTRUNDIR}/" -newer "${LASTRUNDIR}" -exec /bin/rm -f {} \; 2>/dev/null || :
+
+exit ${EXIT_STATUS}

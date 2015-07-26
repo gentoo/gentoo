@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu/qemu-9999.ebuild,v 1.101 2015/07/06 13:27:54 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu/qemu-9999.ebuild,v 1.103 2015/07/25 19:30:13 cardoe Exp $
 
 EAPI=5
 
@@ -359,9 +359,7 @@ qemu_src_configure() {
 		$(conf_softmmu snappy)
 		$(conf_softmmu spice)
 		$(conf_softmmu ssh libssh2)
-		$(conf_softmmu tls quorum)
 		$(conf_softmmu tls vnc-tls)
-		$(conf_softmmu tls vnc-ws)
 		$(conf_softmmu usb libusb)
 		$(conf_softmmu usbredir usb-redir)
 		$(conf_softmmu uuid)

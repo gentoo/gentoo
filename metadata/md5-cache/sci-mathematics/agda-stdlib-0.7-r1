@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND==sci-mathematics/agda-2.3.2*:=[profile?] =dev-haskell/filemanip-0.3*[profile?] >=sci-mathematics/agda-executable-2.3.0.1:= >=dev-lang/ghc-6.12.1
 SLOT=0
 SRC_URI=http://www.cse.chalmers.se/~nad/software/lib-0.7.tar.gz
-_eclasses_=elisp-common	9a16929c1a6aec7e1c903289983e114c	eutils	9fb270e417e0e83d64ca52586c4a79de	ghc-package	48ae4e0fd75e1c8047c4b7f507d5debc	haskell-cabal	eee03ecca8dca7a927272dcea2ca53f4	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=elisp-common	9a16929c1a6aec7e1c903289983e114c	eutils	9fb270e417e0e83d64ca52586c4a79de	ghc-package	48ae4e0fd75e1c8047c4b7f507d5debc	haskell-cabal	7ef7b3e7548c8c61352984737b22d3e3	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=b46b26a6fade9f76d4f3ae4ea7e858df

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/pingus/pingus-0.7.6.ebuild,v 1.12 2015/03/27 06:59:46 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/pingus/pingus-0.7.6.ebuild,v 1.13 2015/07/18 14:26:49 pacho Exp $
 
 EAPI=5
 inherit eutils scons-utils toolchain-funcs flag-o-matic games
@@ -20,7 +20,7 @@ RDEPEND="media-libs/libsdl[joystick,opengl?,video]
 	music? ( media-libs/sdl-mixer[mod] )
 	opengl? ( virtual/opengl )
 	media-libs/libpng:0=
-	dev-libs/boost"
+	dev-libs/boost:="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 

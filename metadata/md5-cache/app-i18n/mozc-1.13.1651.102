@@ -10,5 +10,5 @@ RDEPEND=dev-libs/glib:2 dev-libs/openssl >=dev-libs/protobuf-2.5.0 x11-libs/libx
 RESTRICT=test
 SLOT=0
 SRC_URI=http://mozc.googlecode.com/files/mozc-1.13.1651.102.tar.bz2 http://protobuf.googlecode.com/files/protobuf-2.5.0.tar.bz2 http://dev.gentoo.org/~naota/files/gyp-20140602.tar.bz2 test? ( https://googlemock.googlecode.com/files/gmock-1.6.0.zip https://googletest.googlecode.com/files/gtest-1.6.0.zip mirror://sourceforge/jsoncpp/jsoncpp-src-0.6.0-rc2.tar.gz )
-_eclasses_=elisp-common	9a16929c1a6aec7e1c903289983e114c	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-single-r1	351da1aa73960a282591217fb57c1bb8	python-utils-r1	ae9becb5d45344c01939c3f57df0d3fd	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=elisp-common	9a16929c1a6aec7e1c903289983e114c	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-single-r1	351da1aa73960a282591217fb57c1bb8	python-utils-r1	df6eb914b4b2d70d9c5e7c9331437c52	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=9bb72fa6243e9e94c52412158fcf0fdc

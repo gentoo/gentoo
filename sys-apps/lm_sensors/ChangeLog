@@ -1,6 +1,18 @@
 # ChangeLog for sys-apps/lm_sensors
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/lm_sensors/ChangeLog,v 1.152 2015/05/03 12:15:38 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/lm_sensors/ChangeLog,v 1.155 2015/07/22 18:17:07 zlogene Exp $
+
+  22 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> lm_sensors-3.3.5.ebuild:
+  amd64 stable wrt bug #555514
+
+  20 Jul 2015; Lars Wendler <polynomial-c@gentoo.org> metadata.xml:
+  Took over maintenance.
+
+*lm_sensors-3.4.0 (20 Jul 2015)
+
+  20 Jul 2015; Lars Wendler <polynomial-c@gentoo.org>
+  -lm_sensors-3.3.3-r3.ebuild, +lm_sensors-3.4.0.ebuild:
+  Version bump. Removed old.
 
   03 May 2015; Jeroen Roovers <jer@gentoo.org> lm_sensors-3.3.5.ebuild:
   Mark ~ppc64 too.

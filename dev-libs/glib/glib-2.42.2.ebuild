@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/glib/glib-2.42.2.ebuild,v 1.8 2015/07/17 15:32:53 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/glib/glib-2.42.2.ebuild,v 1.9 2015/07/19 12:27:51 klausman Exp $
 
 # Until bug #537330 glib is a reverse dependency of pkgconfig and, then
 # adding new dependencies end up making stage3 to grow. Every addition needs
@@ -32,7 +32,7 @@ REQUIRED_USE="
 	test? ( ${PYTHON_REQUIRED_USE} )
 "
 
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux"
 
 RDEPEND="
 	!<dev-util/gdbus-codegen-${PV}

@@ -1,6 +1,16 @@
 # ChangeLog for sys-apps/pkgcore
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/pkgcore/ChangeLog,v 1.190 2015/07/18 03:42:02 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/pkgcore/ChangeLog,v 1.193 2015/07/23 06:36:36 radhermit Exp $
+
+  23 Jul 2015; Tim Harder <radhermit@gentoo.org> pkgcore-9999.ebuild:
+  Simplify building and installing docs.
+
+  23 Jul 2015; Tim Harder <radhermit@gentoo.org> pkgcore-9999.ebuild:
+  Add setuptools dep.
+
+  18 Jul 2015; Tim Harder <radhermit@gentoo.org> -pkgcore-0.9.ebuild,
+  pkgcore-9999.ebuild:
+  Remove old.
 
   18 Jul 2015; Tim Harder <radhermit@gentoo.org> pkgcore-9999.ebuild:
   Enable py3 targets.

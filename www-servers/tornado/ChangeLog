@@ -1,6 +1,26 @@
 # ChangeLog for www-servers/tornado
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/tornado/ChangeLog,v 1.78 2015/06/26 12:49:52 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/tornado/ChangeLog,v 1.84 2015/07/26 10:12:37 maekke Exp $
+
+  26 Jul 2015; Markus Meier <maekke@gentoo.org> tornado-4.2.1.ebuild:
+  add ~arm, bug #555402
+
+  20 Jul 2015; Jeroen Roovers <jer@gentoo.org> tornado-4.2.1.ebuild:
+  Mark ~hppa (bug #555402).
+
+  20 Jul 2015; Jeroen Roovers <jer@gentoo.org> tornado-4.2.1.ebuild:
+  Mark ~ppc64 (bug #555402).
+
+  20 Jul 2015; Alex Brandt <alunduil@gentoo.org> -tornado-3.2.1.ebuild:
+  remove version 3.2.1
+
+  20 Jul 2015; Alex Brandt <alunduil@gentoo.org> -tornado-3.2.ebuild:
+  remove version 3.2
+
+*tornado-4.2.1 (20 Jul 2015)
+
+  20 Jul 2015; Alex Brandt <alunduil@gentoo.org> +tornado-4.2.1.ebuild:
+  add version 4.2.1
 
 *tornado-4.2 (26 Jun 2015)
 

@@ -1,6 +1,11 @@
 # ChangeLog for net-libs/libgfbgraph
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libgfbgraph/ChangeLog,v 1.4 2014/07/23 15:23:48 ago Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libgfbgraph/ChangeLog,v 1.5 2015/07/19 10:43:37 pacho Exp $
+
+*libgfbgraph-0.2.3 (19 Jul 2015)
+
+  19 Jul 2015; Pacho Ramos <pacho@gentoo.org> +libgfbgraph-0.2.3.ebuild:
+  Version bump
 
   23 Jul 2014; Agostino Sarubbo <ago@gentoo.org> libgfbgraph-0.2.2.ebuild:
   Stable for x86, wrt bug #512012

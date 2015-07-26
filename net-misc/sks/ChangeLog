@@ -1,6 +1,13 @@
 # ChangeLog for net-misc/sks
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/sks/ChangeLog,v 1.12 2015/02/02 23:18:26 k_f Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/sks/ChangeLog,v 1.13 2015/07/26 19:32:50 k_f Exp $
+
+  26 Jul 2015; Kristian Fiskerstrand <k_f@gentoo.org>
+  +files/sks-1.1.5-disable-warn-error-a.patch, sks-1.1.5-r1.ebuild:
+  warn-error A is set for development versions (tagged with +) upstream, however
+  it is not intended to actually be fatal errors for released versions. We want
+  to keep EdDSA support, i.e it is actually one commit past 1.1.5, so just
+  disabling making warnings fatal.
 
 *sks-1.1.5-r1 (02 Feb 2015)
 

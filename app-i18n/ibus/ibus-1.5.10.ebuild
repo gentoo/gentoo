@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus/ibus-1.5.10.ebuild,v 1.4 2015/07/15 16:35:44 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus/ibus-1.5.10.ebuild,v 1.5 2015/07/23 20:22:03 pacho Exp $
 
 EAPI=5
 
@@ -18,7 +18,7 @@ HOMEPAGE="http://code.google.com/p/ibus/"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 arm ~ia64 ppc ~ppc64 ~sparc x86 ~x86-fbsd"
 IUSE="deprecated gconf gtk +gtk3 +introspection nls +python test vala wayland +X"
 REQUIRED_USE="
 	|| ( gtk gtk3 X )

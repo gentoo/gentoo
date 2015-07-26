@@ -1,6 +1,15 @@
 # ChangeLog for dev-python/pyftpdlib
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyftpdlib/ChangeLog,v 1.55 2015/07/16 13:48:22 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyftpdlib/ChangeLog,v 1.58 2015/07/23 20:22:17 pacho Exp $
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org> pyftpdlib-1.4.0.ebuild:
+  ppc stable wrt bug #550808
+
+  20 Jul 2015; Jeroen Roovers <jer@gentoo.org> pyftpdlib-1.4.0.ebuild:
+  Stable for HPPA (bug #550808).
+
+  19 Jul 2015; Markus Meier <maekke@gentoo.org> pyftpdlib-1.4.0.ebuild:
+  arm stable, bug #550808
 
   16 Jul 2015; Tobias Klausmann <klausman@gentoo.org> pyftpdlib-1.4.0.ebuild:
   Stable on alpha, bug 550808

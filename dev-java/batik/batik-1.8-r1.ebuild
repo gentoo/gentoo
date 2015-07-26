@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/batik/batik-1.8-r1.ebuild,v 1.4 2015/06/28 14:58:49 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/batik/batik-1.8-r1.ebuild,v 1.6 2015/07/25 14:45:41 chewi Exp $
 
 EAPI=5
 JAVA_PKG_IUSE="doc"
@@ -50,11 +50,11 @@ java_prepare() {
 	imports+=(sources/org/apache/batik/script/jacl/JaclInterpreterFactory.java)
 	for import in ${imports[@]}; do
 		einfo "Fixing missing import in ${import}"
-		sed -i '23i import org.apache.batik.script.ImportInfo;' ${import}
+		sed -i '23i import org.apache.batik.script.ImportInfo;' ${import} || die
 		eend $?
 	done
 
-	cd lib
+	cd lib || die
 	rm -v *.jar build/*.jar || die
 	use python && java-pkg_jar-from jython
 	use tcl && java-pkg_jar-from jacl
@@ -74,9 +74,9 @@ src_compile() {
 
 	cd "${S}"/"${P}/lib" || die
 
-	# batik-all-1.8.jar is a all-in-one jar that contains all other jars. 
+	# batik-all-1.8.jar is a all-in-one jar that contains all other jars.
 	# We don't want to package it.
-	rm -v ${PN}-all-${PV}.jar
+	rm -v ${PN}-all-${PV}.jar || die
 }
 
 src_install() {

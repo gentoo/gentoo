@@ -1,6 +1,11 @@
 # ChangeLog for app-emulation/ganeti
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/ganeti/ChangeLog,v 1.105 2015/05/09 08:05:41 chutzpah Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/ganeti/ChangeLog,v 1.106 2015/07/22 01:46:48 chutzpah Exp $
+
+*ganeti-2.14.1 (22 Jul 2015)
+
+  22 Jul 2015; Patrick McLean <chutzpah@gentoo.org> +ganeti-2.14.1.ebuild:
+  Version bump, should also fix bugs 552482 and 548972.
 
 *ganeti-2.13.0-r2 (09 May 2015)
 *ganeti-2.12.3-r2 (09 May 2015)

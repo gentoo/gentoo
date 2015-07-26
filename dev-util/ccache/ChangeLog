@@ -1,6 +1,14 @@
 # ChangeLog for dev-util/ccache
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/ccache/ChangeLog,v 1.147 2015/05/11 03:06:48 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/ccache/ChangeLog,v 1.148 2015/07/21 21:04:36 mrueg Exp $
+
+  21 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -ccache-2.4-r6.ebuild,
+  -ccache-2.4-r7.ebuild, -ccache-2.4-r8.ebuild, -ccache-3.1.1.ebuild,
+  -ccache-3.1.10.ebuild, -ccache-3.1.2.ebuild, -ccache-3.1.3.ebuild,
+  -ccache-3.1.4.ebuild, -ccache-3.1.5.ebuild, -ccache-3.1.6.ebuild,
+  -ccache-3.1.7.ebuild, -ccache-3.1.8.ebuild, -ccache-3.1.9-r2.ebuild,
+  -ccache-3.1.9-r3.ebuild, -ccache-3.1.9.ebuild, -ccache-3.2.1.ebuild:
+  Remove old.
 
 *ccache-3.2.2 (11 May 2015)
 

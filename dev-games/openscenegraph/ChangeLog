@@ -1,6 +1,10 @@
 # ChangeLog for dev-games/openscenegraph
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/openscenegraph/ChangeLog,v 1.63 2015/07/14 17:30:59 reavertm Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-games/openscenegraph/ChangeLog,v 1.64 2015/07/20 19:24:57 reavertm Exp $
+
+  20 Jul 2015; Maciej Mrozowski <reavertm@gentoo.org>
+  +files/openscenegraph-3.2.1-gdal-2.0.patch, openscenegraph-3.2.1-r1.ebuild:
+  Addd patch for gdal-2.0 compilation, fixes bug 554310.
 
 *openscenegraph-3.2.1-r1 (14 Jul 2015)
 

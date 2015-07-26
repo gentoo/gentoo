@@ -1,6 +1,10 @@
 # ChangeLog for dev-texlive/texlive-science
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-science/ChangeLog,v 1.72 2015/07/16 09:28:18 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-science/ChangeLog,v 1.73 2015/07/22 19:37:40 blueness Exp $
+
+  22 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
+  texlive-science-2014.ebuild:
+  Stable for ppc, bug #550840.
 
 *texlive-science-2015 (16 Jul 2015)
 

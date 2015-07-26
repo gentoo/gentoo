@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/unittest2/unittest2-1.0.1-r1.ebuild,v 1.3 2015/05/21 03:40:29 mattst88 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/unittest2/unittest2-1.0.1-r1.ebuild,v 1.5 2015/07/26 19:11:28 mgorny Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 python3_3 python3_4 )

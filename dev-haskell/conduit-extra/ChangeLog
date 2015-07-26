@@ -1,6 +1,14 @@
 # ChangeLog for dev-haskell/conduit-extra
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/conduit-extra/ChangeLog,v 1.9 2015/06/06 10:45:40 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/conduit-extra/ChangeLog,v 1.10 2015/07/26 14:09:35 slyfox Exp $
+
+*conduit-extra-1.1.9.1 (26 Jul 2015)
+
+  26 Jul 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  +conduit-extra-1.1.9.1.ebuild, -conduit-extra-1.1.1.ebuild,
+  -conduit-extra-1.1.4.2.ebuild, -conduit-extra-1.1.5.1.ebuild,
+  -conduit-extra-1.1.6.2.ebuild:
+  Version bump.
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

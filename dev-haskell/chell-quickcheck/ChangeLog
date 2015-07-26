@@ -1,6 +1,12 @@
 # ChangeLog for dev-haskell/chell-quickcheck
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/chell-quickcheck/ChangeLog,v 1.4 2015/02/15 18:53:25 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/chell-quickcheck/ChangeLog,v 1.5 2015/07/26 14:03:38 slyfox Exp $
+
+*chell-quickcheck-0.2.5 (26 Jul 2015)
+
+  26 Jul 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  +chell-quickcheck-0.2.5.ebuild:
+  Version bump.
 
   15 Feb 2015; Sergei Trofimovich <slyfox@gentoo.org>
   chell-quickcheck-0.2.4.ebuild:

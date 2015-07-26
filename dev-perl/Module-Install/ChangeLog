@@ -1,6 +1,12 @@
 # ChangeLog for dev-perl/Module-Install
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Module-Install/ChangeLog,v 1.36 2015/06/13 22:18:05 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Module-Install/ChangeLog,v 1.37 2015/07/23 23:55:14 dilfridge Exp $
+
+*Module-Install-1.160.0 (23 Jul 2015)
+
+  23 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Module-Install-1.160.0.ebuild, -Module-Install-1.120.0.ebuild:
+  Version bump; remove old
 
   13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
   Module-Install-1.120.0.ebuild, Module-Install-1.140.0.ebuild,

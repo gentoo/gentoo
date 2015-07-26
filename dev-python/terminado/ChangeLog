@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/terminado
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/terminado/ChangeLog,v 1.5 2015/06/21 10:41:18 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/terminado/ChangeLog,v 1.6 2015/07/18 17:14:12 blueness Exp $
+
+  18 Jul 2015; Anthony G. Basile <blueness@gentoo.org> terminado-0.5.ebuild:
+  Keyword ~ppc ~ppc64.  Bug #541628.
 
   21 Jun 2015; Markus Meier <maekke@gentoo.org> terminado-0.5.ebuild:
   add ~arm, bug #541628

@@ -1,6 +1,10 @@
 # ChangeLog for dev-python/sphinxcontrib-issuetracker
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/sphinxcontrib-issuetracker/ChangeLog,v 1.24 2015/04/08 08:05:28 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/sphinxcontrib-issuetracker/ChangeLog,v 1.25 2015/07/25 11:15:11 maekke Exp $
+
+  25 Jul 2015; Markus Meier <maekke@gentoo.org>
+  sphinxcontrib-issuetracker-0.11-r1.ebuild:
+  add ~arm, bug #554136
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org>
   sphinxcontrib-issuetracker-0.11-r1.ebuild:

@@ -1,6 +1,9 @@
 # ChangeLog for x11-drivers/xf86-input-acecad
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-input-acecad/ChangeLog,v 1.75 2012/05/16 00:22:40 aballier Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-input-acecad/ChangeLog,v 1.76 2015/07/22 02:56:14 mrueg Exp $
+
+  22 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -xf86-input-acecad-1.4.0.ebuild:
+  Remove old.
 
   16 May 2012; Alexis Ballier <aballier@gentoo.org>
   xf86-input-acecad-1.5.0.ebuild:
@@ -131,4 +134,3 @@
   11 Feb 2008; Donnie Berkholz <dberkholz@gentoo.org>;
   +xf86-input-acecad-1.2.2.ebuild:
   Bump.
-

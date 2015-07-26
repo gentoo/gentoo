@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/writerperfect/writerperfect-0.8.1.ebuild,v 1.2 2015/03/13 21:11:52 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/writerperfect/writerperfect-0.8.1.ebuild,v 1.3 2015/07/23 20:39:02 pacho Exp $
 
 EAPI=4
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/libwpd/writerperfect-${PV}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~x86-linux ~ppc-macos ~x86-solaris"
+KEYWORDS="amd64 ~ppc x86 ~x86-linux ~ppc-macos ~x86-solaris"
 IUSE="debug gsf +visio +wpg +wps"
 
 RDEPEND="

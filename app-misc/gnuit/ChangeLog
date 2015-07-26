@@ -1,6 +1,9 @@
 # ChangeLog for app-misc/gnuit
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/gnuit/ChangeLog,v 1.10 2015/06/27 14:17:00 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/gnuit/ChangeLog,v 1.11 2015/07/23 21:03:06 pacho Exp $
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org> gnuit-4.9.5-r2.ebuild:
+  ppc stable wrt bug #553126
 
   27 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> gnuit-4.9.5-r2.ebuild:
   x86 stable wrt bug #553126

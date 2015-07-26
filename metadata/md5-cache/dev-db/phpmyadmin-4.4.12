@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst prerm setup
+DEPEND=|| ( virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15
+DESCRIPTION=Web-based administration for MySQL database in PHP
+EAPI=5
+HOMEPAGE=https://www.phpmyadmin.net/
+IUSE=setup vhosts
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~ppc-macos ~x64-macos ~x86-macos
+LICENSE=GPL-2
+RDEPEND=dev-lang/php[crypt,ctype,filter,json,session,unicode] || ( dev-lang/php[mysqli] dev-lang/php[mysql] ) virtual/httpd-php:* >=app-admin/webapp-config-1.50.15
+SLOT=4.4.12
+SRC_URI=https://files.phpmyadmin.net/phpMyAdmin/4.4.12/phpMyAdmin-4.4.12-all-languages.zip
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	webapp	094698bf1c7a5b1acd3184e94f484017
+_md5_=235e06fbc4385188b3ff269389dbcd00

@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/preload
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/preload/ChangeLog,v 1.26 2014/08/10 20:24:40 slyfox Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/preload/ChangeLog,v 1.27 2015/07/21 21:33:18 mrueg Exp $
+
+  21 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -preload-0.6.4-r2.ebuild:
+  Remove old.
 
   10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> preload-0.6.4-r2.ebuild,
   preload-0.6.4-r3.ebuild:

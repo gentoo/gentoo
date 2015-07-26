@@ -1,6 +1,10 @@
 # ChangeLog for dev-python/twisted-core
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/twisted-core/ChangeLog,v 1.57 2015/06/07 10:00:29 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/twisted-core/ChangeLog,v 1.58 2015/07/21 13:30:45 idella4 Exp $
+
+  21 Jul 2015; Ian Delaney <idella4@gentoo.org> twisted-core-15.2.1.ebuild:
+  revert unwanted unintended unwelcome spurious change to twisted-
+  core-15.2.1.ebuild
 
   07 Jun 2015; Markus Meier <maekke@gentoo.org> twisted-core-13.2.0.ebuild:
   arm stable, bug #540290

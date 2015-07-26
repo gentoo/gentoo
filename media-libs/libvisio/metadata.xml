@@ -2,4 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>openoffice</herd>
+	<use>
+		<flag name="tools">Build conversion tools</flag>
+	</use>
 </pkgmetadata>

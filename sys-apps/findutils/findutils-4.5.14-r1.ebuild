@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/findutils/findutils-4.5.14-r1.ebuild,v 1.2 2015/04/04 22:38:19 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/findutils/findutils-4.5.14-r1.ebuild,v 1.3 2015/07/20 04:32:29 vapier Exp $
 
 EAPI="4"
 
@@ -25,6 +25,11 @@ src_prepare() {
 	# Don't build or install locate because it conflicts with slocate,
 	# which is a secure version of locate.  See bug 18729
 	sed -i '/^SUBDIRS/s/locate//' Makefile.in
+
+	# Disable gnulib build test that has no impact on the source.
+	# Re-enable w/next version bump (and gnulib is updated). #554728
+	[[ ${PV} != "4.5.14" ]] && die "re-enable test #554728"
+	echo 'exit 0' > tests/test-update-copyright.sh || die
 }
 
 src_configure() {

@@ -1,8 +1,0 @@
-DEFINED_PHASES=install
-DESCRIPTION=Small collection of linux input layer utils
-HOMEPAGE=http://dl.bytesex.org/cvs-snapshots/
-KEYWORDS=~x86
-LICENSE=GPL-2
-SLOT=0
-SRC_URI=http://dl.bytesex.org/cvs-snapshots/input-20050727-141704.tar.gz
-_md5_=01d9b48738450bcafd780901379d056f

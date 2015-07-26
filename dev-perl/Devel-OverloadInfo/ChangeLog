@@ -1,0 +1,9 @@
+# ChangeLog for dev-perl/Devel-OverloadInfo
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Devel-OverloadInfo/ChangeLog,v 1.1 2015/07/25 20:15:05 dilfridge Exp $
+
+*Devel-OverloadInfo-0.2.0 (25 Jul 2015)
+
+  25 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Devel-OverloadInfo-0.2.0.ebuild, +metadata.xml:
+  New package, needed for dev-perl/Moose, ebuild by Kent Fredric, bug 554938

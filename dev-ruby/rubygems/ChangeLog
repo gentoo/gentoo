@@ -1,6 +1,18 @@
 # ChangeLog for dev-ruby/rubygems
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rubygems/ChangeLog,v 1.274 2015/07/12 06:51:41 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rubygems/ChangeLog,v 1.278 2015/07/26 08:38:37 maekke Exp $
+
+  26 Jul 2015; Markus Meier <maekke@gentoo.org> rubygems-2.2.5-r1.ebuild:
+  arm stable, bug #518094
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org> rubygems-2.2.5-r1.ebuild:
+  ppc stable wrt bug #518094
+
+  23 Jul 2015; Agostino Sarubbo <ago@gentoo.org> rubygems-2.2.5.ebuild:
+  Stable for sparc, wrt bug #553298
+
+  23 Jul 2015; Agostino Sarubbo <ago@gentoo.org> rubygems-2.2.5.ebuild:
+  Stable for ppc, wrt bug #553298
 
   12 Jul 2015; Hans de Graaff <graaff@gentoo.org> rubygems-2.2.2.ebuild,
   rubygems-2.2.5.ebuild, rubygems-2.2.5-r1.ebuild, rubygems-2.4.6.ebuild,

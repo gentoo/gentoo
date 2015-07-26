@@ -1,6 +1,12 @@
 # ChangeLog for dev-util/cucumber
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/cucumber/ChangeLog,v 1.103 2015/06/24 05:37:48 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/cucumber/ChangeLog,v 1.105 2015/07/25 13:17:20 mrueg Exp $
+
+  25 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -cucumber-1.2.1.ebuild:
+  Remove old.
+
+  25 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> cucumber-1.3.17.ebuild:
+  sparc stable wrt bug #542574
 
   24 Jun 2015; Hans de Graaff <graaff@gentoo.org> cucumber-1.3.20.ebuild:
   Add ruby22.

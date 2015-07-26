@@ -1,6 +1,10 @@
 # ChangeLog for xfce-extra/xfce4-smartbookmark-plugin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-smartbookmark-plugin/ChangeLog,v 1.33 2015/07/12 09:32:29 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-smartbookmark-plugin/ChangeLog,v 1.34 2015/07/25 12:21:03 pacho Exp $
+
+  25 Jul 2015; Pacho Ramos <pacho@gentoo.org>
+  xfce4-smartbookmark-plugin-0.4.6.ebuild:
+  ppc stable wrt bug #553500
 
   12 Jul 2015; Jeroen Roovers <jer@gentoo.org>
   xfce4-smartbookmark-plugin-0.4.6.ebuild:

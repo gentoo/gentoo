@@ -1,0 +1,10 @@
+# ChangeLog for media-plugins/calf
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/calf/ChangeLog,v 1.1 2015/07/25 08:47:39 yngwin Exp $
+
+*calf-9999 (25 Jul 2015)
+*calf-0.0.60 (25 Jul 2015)
+
+  25 Jul 2015; Ben de Groot <yngwin@gentoo.org> +calf-0.0.60.ebuild,
+  +calf-9999.ebuild, +metadata.xml:
+  Initial import. Ebuild updated from proaudio overlay.

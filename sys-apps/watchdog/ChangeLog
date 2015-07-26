@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/watchdog
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/watchdog/ChangeLog,v 1.46 2015/07/08 16:24:34 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/watchdog/ChangeLog,v 1.47 2015/07/23 20:01:18 pacho Exp $
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org> watchdog-5.14.ebuild:
+  ppc stable wrt bug #535658
 
   08 Jul 2015; Mike Frysinger <vapier@gentoo.org> watchdog-5.14.ebuild:
   Mark m68k/s390/sh stable #535658.

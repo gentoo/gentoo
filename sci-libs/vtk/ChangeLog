@@ -1,6 +1,9 @@
 # ChangeLog for sci-libs/vtk
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/vtk/ChangeLog,v 1.133 2015/04/08 18:49:15 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/vtk/ChangeLog,v 1.134 2015/07/24 04:04:35 bircoph Exp $
+
+  24 Jul 2015; Andrew Savchenko <bircoph@gentoo.org> metadata.xml:
+  Fix typo in metadata.
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> vtk-6.0.0.ebuild,
   vtk-6.1.0-r1.ebuild, vtk-6.1.0.ebuild:

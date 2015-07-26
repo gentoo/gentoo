@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test
+DEPEND=>=dev-libs/libgaminggear-0.10 x11-libs/gtk+:2 x11-libs/libnotify media-libs/libcanberra virtual/libusb:1 dev-libs/dbus-glib virtual/libgudev:= lua51? ( || ( dev-lang/lua:5.1 dev-lang/lua:0 ) ) lua52? ( dev-lang/lua:5.2 ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) >=sys-apps/sed-4 virtual/pkgconfig
+DESCRIPTION=Utility for advanced configuration of Roccat devices
+EAPI=5
+HOMEPAGE=http://roccat.sourceforge.net/
+IUSE=input_devices_roccat_arvo input_devices_roccat_isku input_devices_roccat_iskufx input_devices_roccat_kone input_devices_roccat_koneplus input_devices_roccat_konepure input_devices_roccat_konepuremilitary input_devices_roccat_konepureoptical input_devices_roccat_konextd input_devices_roccat_konextdoptical input_devices_roccat_kovaplus input_devices_roccat_lua input_devices_roccat_pyra input_devices_roccat_savu input_devices_roccat_ryosmk input_devices_roccat_ryostkl input_devices_roccat_tyon lua lua51 lua52
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/libgaminggear-0.10 x11-libs/gtk+:2 x11-libs/libnotify media-libs/libcanberra virtual/libusb:1 dev-libs/dbus-glib virtual/libgudev:= lua51? ( || ( dev-lang/lua:5.1 dev-lang/lua:0 ) ) lua52? ( dev-lang/lua:5.2 )
+REQUIRED_USE=lua? ( input_devices_roccat_ryosmk ) lua? ( ^^ ( lua51 lua52 ) )
+SLOT=0
+SRC_URI=mirror://sourceforge/roccat/roccat-tools-3.5.0.tar.bz2
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	readme.gentoo	106edea5533517715013de909a333abd	toolchain-funcs	42408102d713fbad60ca21349865edb4	udev	da001465a2e939c93f7ae16947ce3438	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=f38b3c785313b7f2bb4959882e3db5d3

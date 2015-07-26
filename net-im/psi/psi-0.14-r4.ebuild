@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/psi/psi-0.14-r4.ebuild,v 1.18 2015/02/22 18:41:23 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/psi/psi-0.14-r4.ebuild,v 1.19 2015/07/22 01:55:42 pesa Exp $
 
 EAPI=4
 
@@ -30,24 +30,30 @@ for LNG in ${LANGS}; do
 	#SRC_URI="${SRC_URI} http://psi-im.org/download/lang/psi_${LNG/ur_PK/ur_pk}.qm"
 done
 
-RDEPEND=">=dev-qt/qtgui-4.4:4[qt3support]
-	>=dev-qt/qt3support-4.4:4
-	>=app-crypt/qca-2.0.2:2[qt4(+)]
-	dbus? ( >=dev-qt/qtdbus-4.4:4 )
+RDEPEND="
+	app-arch/unzip
+	=app-crypt/qca-2.0*[qt4(+)]
+	dev-qt/qt3support:4
+	dev-qt/qtcore:4
+	dev-qt/qtgui:4[qt3support]
+	>=sys-libs/zlib-1.2.5.1-r2[minizip]
+	dbus? ( dev-qt/qtdbus:4 )
+	extras? ( webkit? ( dev-qt/qtwebkit:4 ) )
 	spell? ( >=app-text/enchant-1.3.0 )
 	xscreensaver? ( x11-libs/libXScrnSaver )
-	extras? ( webkit? ( dev-qt/qtwebkit:4 ) )
-	app-arch/unzip
-	|| ( >=sys-libs/zlib-1.2.5.1-r2[minizip] <sys-libs/zlib-1.2.5.1-r1 )"
-
+"
 DEPEND="${RDEPEND}
 	sys-devel/qconf
-	doc? ( app-doc/doxygen )"
-
-PDEPEND="crypt? ( app-crypt/qca:2[gpg] )
-	jingle? ( net-im/psimedia
-		app-crypt/qca:2[openssl] )
-	ssl? ( app-crypt/qca:2[openssl] )"
+	doc? ( app-doc/doxygen )
+"
+PDEPEND="
+	crypt? ( app-crypt/qca:2[gpg] )
+	jingle? (
+		net-im/psimedia
+		app-crypt/qca:2[openssl]
+	)
+	ssl? ( app-crypt/qca:2[openssl] )
+"
 
 S=${WORKDIR}/${MY_P}
 

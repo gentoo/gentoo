@@ -1,6 +1,10 @@
 # ChangeLog for x11-drivers/xf86-input-aiptek
-# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-input-aiptek/ChangeLog,v 1.73 2011/10/03 18:00:43 josejx Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-input-aiptek/ChangeLog,v 1.74 2015/07/22 02:55:50 mrueg Exp $
+
+  22 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -xf86-input-aiptek-1.3.1.ebuild,
+  -xf86-input-aiptek-1.4.0.ebuild:
+  Remove old.
 
   03 Oct 2011; Joseph Jezak <josejx@gentoo.org> xf86-input-aiptek-1.4.1.ebuild:
   Marked ppc ppc64 stable for bug #380421.
@@ -306,4 +310,3 @@
   08 Aug 2005; Donnie Berkholz <dberkholz@gentoo.org>;
   +xf86-input-aiptek-1.0.0.ebuild:
   Initial commit for modular X.
-

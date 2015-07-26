@@ -1,6 +1,12 @@
 # ChangeLog for dev-games/irrlicht
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/irrlicht/ChangeLog,v 1.76 2015/06/09 13:26:04 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-games/irrlicht/ChangeLog,v 1.77 2015/07/21 01:17:17 mr_bones_ Exp $
+
+*irrlicht-1.8.1-r1 (21 Jul 2015)
+
+  21 Jul 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  +irrlicht-1.8.1-r1.ebuild, irrlicht-1.8.1.ebuild:
+  Fix library symlinks on install
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

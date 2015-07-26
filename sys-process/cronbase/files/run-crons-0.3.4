@@ -1,0 +1,114 @@
+#!/bin/bash
+#
+# $Header: /var/cvsroot/gentoo-x86/sys-process/cronbase/files/run-crons-0.3.4,v 1.1 2015/07/22 01:22:28 vapier Exp $
+#
+# 12 Oct 2008; Thilo Bangert <bangert@gentoo.org> run-crons:
+#     ignore emacs backup files (bug #237200)
+#     include logging patch (bug #140869)
+#
+# 08 Mar 2005; Aaron Walker <ka0ttic@gentoo.org> run-crons:
+#     Ignore the error messages from find caused by race conditions, since
+#     we could care less about the error as long as the file has been removed.
+#     See bug 8506.
+#
+# 06 May 2004; Aron Griffis <agriffis@gentoo.org> run-crons:
+#     Make the locking actually work.  The old code was racy.
+#     Thanks to Mathias Gumz in bug 45155 for some cleanups.
+#
+# 23 Jun 2002; Jon Nelson <jnelson@gentoo.org> run-crons:
+#     fixed a race condition, where cron jobs and run-crons wanted to
+#     delete touch files
+#
+# 20 Apr 2002; Thilo Bangert <bangert@gentoo.org> run-crons:
+#     moved lastrun directory to /var/spool/cron/lastrun
+#
+# Author: Achim Gottinger <achim@gentoo.org>
+#
+# Mostly copied from SuSE
+#
+# this script looks into /etc/cron.[hourly|daily|weekly|monthly]
+# for scripts to be executed. The info about last run is stored in
+# /var/spool/cron/lastrun
+
+LOCKDIR=/var/spool/cron/lastrun
+LOCKFILE=${LOCKDIR}/lock
+
+mkdir -p ${LOCKDIR}
+
+# Make sure we're not running multiple instances at once.
+# Try twice to lock, otherwise give up.
+for ((i = 0; i < 2; i = i + 1)); do
+	ln -sn $$ ${LOCKFILE} 2>/dev/null && break
+
+	# lock failed, check for a running process.
+	# handle both old- and new-style locking.
+	cronpid=$(readlink ${LOCKFILE} 2>/dev/null) ||
+	cronpid=$(cat ${LOCKFILE} 2>/dev/null) ||
+	continue	# lockfile disappeared? try again
+
+	# better than kill -0 because we can verify that it's really
+	# another run-crons process
+	if [[ $(</proc/${cronpid}/cmdline) == $(</proc/$$/cmdline) ]] 2>/dev/null; then
+		# whoa, another process is really running
+		exit 0
+	else
+		rm -f ${LOCKFILE}
+	fi
+done
+
+# Check to make sure locking was successful
+if [[ ! -L ${LOCKFILE} ]]; then
+	echo "Can't create or read existing ${LOCKFILE}, giving up"
+	exit 1
+fi
+
+# Set a trap to remove the lockfile when we're finished
+trap "rm -f ${LOCKFILE}" 0 1 2 3 15
+
+
+for BASE in hourly daily weekly monthly ; do
+	CRONDIR=/etc/cron.${BASE}
+
+	test -d $CRONDIR || continue
+
+	if [ -e ${LOCKDIR}/cron.$BASE ] ; then
+		case $BASE in
+		hourly)
+			#>= 1 hour, 5 min -=> +65 min
+			TIME="-cmin +65" ;;
+		daily)
+			#>= 1 day, 5 min -=> +1445 min
+			TIME="-cmin +1445"  ;;
+		weekly)
+			#>= 1 week, 5 min -=> +10085 min
+			TIME="-cmin +10085"  ;;
+		monthly)
+			#>= 31 days, 5 min -=> +44645 min
+			TIME="-cmin +44645" ;;
+		esac
+
+		find ${LOCKDIR} -name cron.$BASE $TIME -exec rm {} \; &>/dev/null || true
+	fi
+
+	# if there is no touch file, make one then run the scripts
+	if [ ! -e ${LOCKDIR}/cron.$BASE ] ; then
+		touch ${LOCKDIR}/cron.$BASE
+
+		set +e
+		for SCRIPT in $CRONDIR/* ; do
+			if [[ -x $SCRIPT && ! -d $SCRIPT ]]; then
+				# Filter out files people do not expect to be executed.
+				case ${SCRIPT} in
+				.*|*~) continue ;;
+				esac
+
+				[ -x /usr/bin/logger ] && /usr/bin/logger -i -p cron.info -t run-crons "(`whoami`) CMD ($SCRIPT)"
+				$SCRIPT
+			fi
+		done
+	fi
+done
+
+# Clean out bogus cron.$BASE files with future times
+touch ${LOCKDIR}
+find ${LOCKDIR} -newer ${LOCKDIR} -exec /bin/rm -f {} \; &>/dev/null || true

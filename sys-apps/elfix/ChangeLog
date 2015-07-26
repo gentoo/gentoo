@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/elfix
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/elfix/ChangeLog,v 1.97 2015/07/16 17:27:48 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/elfix/ChangeLog,v 1.98 2015/07/19 12:23:50 pacho Exp $
+
+  19 Jul 2015; Pacho Ramos <pacho@gentoo.org> elfix-0.9.0-r1.ebuild:
+  sparc stable, bug #530570
 
   16 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> elfix-0.9.0-r1.ebuild:
   ia64 stable wrt bug #530570

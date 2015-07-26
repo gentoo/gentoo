@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/cabal
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/cabal/ChangeLog,v 1.106 2014/11/15 18:19:29 slyfox Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/cabal/ChangeLog,v 1.107 2015/07/26 13:58:06 slyfox Exp $
+
+*cabal-1.22.4.0 (26 Jul 2015)
+
+  26 Jul 2015; Sergei Trofimovich <slyfox@gentoo.org> +cabal-1.22.4.0.ebuild:
+  Version bump.
 
 *cabal-1.20.0.2 (15 Nov 2014)
 

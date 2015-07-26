@@ -1,6 +1,22 @@
 # ChangeLog for dev-python/suds
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/suds/ChangeLog,v 1.14 2015/07/08 20:37:35 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/suds/ChangeLog,v 1.18 2015/07/25 18:54:34 prometheanfire Exp $
+
+  25 Jul 2015; Matthew Thode <prometheanfire@gentoo.org> suds-0.6-r1.ebuild:
+  fixing building without docs
+
+*suds-0.6-r1 (25 Jul 2015)
+
+  25 Jul 2015; Matthew Thode <prometheanfire@gentoo.org> +suds-0.6-r1.ebuild:
+  adding tests/doc stuff from bug 498022
+
+*suds-0.6 (24 Jul 2015)
+
+  24 Jul 2015; Matthew Thode <prometheanfire@gentoo.org> +suds-0.6.ebuild:
+  converting to suds-jurko as the source as upstream is dead
+
+  21 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -suds-0.4.ebuild:
+  Remove old.
 
   08 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> suds-0.4-r1.ebuild:
   x86 stable wrt bug #554114

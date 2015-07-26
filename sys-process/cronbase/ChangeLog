@@ -1,6 +1,40 @@
 # ChangeLog for sys-process/cronbase
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/cronbase/ChangeLog,v 1.42 2015/04/14 22:02:17 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-process/cronbase/ChangeLog,v 1.47 2015/07/24 05:45:03 vapier Exp $
+
+*cronbase-0.3.7 (24 Jul 2015)
+
+  24 Jul 2015; Mike Frysinger <vapier@gentoo.org> +cronbase-0.3.7.ebuild,
+  +files/run-crons-0.3.7:
+  Split global lock up into one lock per /etc/cron.xxx dir #157547 by Radoslaw
+  Stachowiak.
+
+*cronbase-0.3.6 (23 Jul 2015)
+
+  23 Jul 2015; Mike Frysinger <vapier@gentoo.org> +cronbase-0.3.6.ebuild,
+  +files/run-crons-0.3.6:
+  Rewrite run-crons in POSIX shell #530416 by Alexander Hof.
+
+*cronbase-0.3.5-r1 (23 Jul 2015)
+
+  23 Jul 2015; Mike Frysinger <vapier@gentoo.org> +cronbase-0.3.5-r1.ebuild,
+  -cronbase-0.3.5.ebuild, files/run-crons-0.3.5:
+  Use err level when logging failed scripts #540274 by Tobias Klausmann.
+
+*cronbase-0.3.5 (22 Jul 2015)
+
+  22 Jul 2015; Mike Frysinger <vapier@gentoo.org> +cronbase-0.3.5.ebuild,
+  +files/run-crons-0.3.5:
+  When any script fails, log the failure explicitly in case the job itself
+  produced no output, and exit non-zero so higher levels can detect and take
+  action #491520 by Thomas D..
+
+*cronbase-0.3.4 (22 Jul 2015)
+
+  22 Jul 2015; Mike Frysinger <vapier@gentoo.org> +cronbase-0.3.4.ebuild,
+  +files/run-crons-0.3.4:
+  Change how we filter script names to ignore .* and *~ files #427212 by David
+  Voge.
 
   14 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -cronbase-0.3.2-r1.ebuild,
   -cronbase-0.3.2.ebuild, -files/run-crons-0.3.2:

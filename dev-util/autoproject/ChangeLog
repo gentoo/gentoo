@@ -1,6 +1,9 @@
 # ChangeLog for dev-util/autoproject
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/autoproject/ChangeLog,v 1.10 2010/02/14 00:32:23 vapier Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/autoproject/ChangeLog,v 1.11 2015/07/21 20:57:38 mrueg Exp $
+
+  21 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -autoproject-0.20_p4.ebuild:
+  Remove old.
 
 *autoproject-0.20_p5 (14 Feb 2010)
 

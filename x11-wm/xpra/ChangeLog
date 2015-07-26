@@ -1,6 +1,20 @@
 # ChangeLog for x11-wm/xpra
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/xpra/ChangeLog,v 1.122 2015/06/07 21:30:32 xmw Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/xpra/ChangeLog,v 1.125 2015/07/21 23:38:47 xmw Exp $
+
+  21 Jul 2015; Michael Weber <xmw@gentoo.org> xpra-0.15.3.ebuild:
+  Remove bundled rencode.
+
+  21 Jul 2015; Michael Weber <xmw@gentoo.org> xpra-0.15.3.ebuild:
+  Add RDEPEND=dev-python/rencode (thanks Maks Polunin, bug 552768).
+
+*xpra-0.15.3 (21 Jul 2015)
+*xpra-0.14.27 (21 Jul 2015)
+
+  21 Jul 2015; Michael Weber <xmw@gentoo.org> +xpra-0.14.27.ebuild,
+  +xpra-0.15.3.ebuild, -xpra-0.14.18.ebuild, -xpra-0.14.25.ebuild,
+  -xpra-0.15.0.ebuild:
+  Version bumps, cleanup old ones.
 
   07 Jun 2015; Michael Weber <xmw@gentoo.org> xpra-0.14.25.ebuild:
   Add USE=x265

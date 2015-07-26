@@ -1,6 +1,16 @@
 # ChangeLog for kde-misc/plasma-nm
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/plasma-nm/ChangeLog,v 1.23 2015/06/06 19:00:10 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/plasma-nm/ChangeLog,v 1.26 2015/07/18 19:54:57 johu Exp $
+
+  18 Jul 2015; Johannes Huber <johu@gentoo.org>
+  -files/plasma-nm-0.9.3.5-openconnect.patch, -plasma-nm-0.9.3.5.ebuild:
+  Remove vulnerable version, bug #531070.
+
+  18 Jul 2015; Agostino Sarubbo <ago@gentoo.org> plasma-nm-0.9.3.6.ebuild:
+  Stable for x86, wrt bug #531070
+
+  18 Jul 2015; Agostino Sarubbo <ago@gentoo.org> plasma-nm-0.9.3.6.ebuild:
+  Stable for amd64, wrt bug #531070
 
 *plasma-nm-0.9.3.6 (06 Jun 2015)
 

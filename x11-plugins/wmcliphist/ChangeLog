@@ -1,6 +1,9 @@
 # ChangeLog for x11-plugins/wmcliphist
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmcliphist/ChangeLog,v 1.21 2015/01/12 13:39:22 voyageur Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmcliphist/ChangeLog,v 1.22 2015/07/23 20:41:58 pacho Exp $
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org> wmcliphist-2.1.ebuild:
+  ppc stable wrt bug #370123
 
   12 Jan 2015; Bernard Cafarelli <voyageur@gentoo.org> wmcliphist-2.1.ebuild:
   Fix homepage, remove unused inherit

@@ -1,6 +1,9 @@
 # ChangeLog for media-sound/ncmpcpp
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/ncmpcpp/ChangeLog,v 1.123 2015/07/06 03:27:25 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/ncmpcpp/ChangeLog,v 1.124 2015/07/23 21:02:10 pacho Exp $
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org> ncmpcpp-0.6.4.ebuild:
+  ppc stable wrt bug #551646
 
 *ncmpcpp-0.6.5 (06 Jul 2015)
 

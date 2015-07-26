@@ -1,6 +1,14 @@
 # ChangeLog for dev-python/mantissa
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/mantissa/ChangeLog,v 1.24 2015/04/08 08:05:23 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/mantissa/ChangeLog,v 1.26 2015/07/20 04:30:36 idella4 Exp $
+
+  20 Jul 2015; Ian Delaney <idella4@gentoo.org> mantissa-0.8.0.ebuild:
+  Update to msg via einfo in test phase re fixes to failures
+
+*mantissa-0.8.0 (19 Jul 2015)
+
+  19 Jul 2015; Ian Delaney <idella4@gentoo.org> +mantissa-0.8.0.ebuild:
+  bump; minor corrections to deps, update HOMEPAGE & SRC_URI, update test phase
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> mantissa-0.7.0-r1.ebuild:
   Drop old Python implementations

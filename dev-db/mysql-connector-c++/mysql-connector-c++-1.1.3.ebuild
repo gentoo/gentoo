@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql-connector-c++/mysql-connector-c++-1.1.3.ebuild,v 1.7 2014/10/29 09:37:29 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql-connector-c++/mysql-connector-c++-1.1.3.ebuild,v 1.8 2015/07/21 15:09:32 grknight Exp $
 
 EAPI=5
 
@@ -18,7 +18,7 @@ IUSE="debug examples gcov static-libs"
 
 DEPEND=">=virtual/mysql-5.1
 	dev-libs/boost
-	dev-libs/openssl"
+	dev-libs/openssl:0"
 RDEPEND="${DEPEND}"
 
 PATCHES=(

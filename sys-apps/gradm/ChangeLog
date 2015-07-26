@@ -1,6 +1,20 @@
 # ChangeLog for sys-apps/gradm
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/gradm/ChangeLog,v 1.229 2015/07/05 22:47:09 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/gradm/ChangeLog,v 1.232 2015/07/20 08:19:00 blueness Exp $
+
+  20 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
+  -gradm-3.1.201503211320.ebuild:
+  Remove oldest stable version.
+
+  20 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
+  gradm-3.1.201507041117.ebuild:
+  Stable on amd64 and x86.
+
+*gradm-3.1.201507191652 (20 Jul 2015)
+
+  20 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
+  +gradm-3.1.201507191652.ebuild:
+  Version bump.
 
   05 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
   gradm-3.1.201506081912.ebuild:

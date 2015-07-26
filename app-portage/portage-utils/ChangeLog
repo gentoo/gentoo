@@ -1,6 +1,19 @@
 # ChangeLog for app-portage/portage-utils
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/portage-utils/ChangeLog,v 1.173 2015/07/16 08:35:39 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/portage-utils/ChangeLog,v 1.174 2015/07/22 01:38:55 mrueg Exp $
+
+  22 Jul 2015; Manuel Rüger <mrueg@gentoo.org>
+  -files/portage-utils-0.10-x86-test.patch,
+  -files/portage-utils-0.41-scandirat.patch, -portage-utils-0.10.ebuild,
+  -portage-utils-0.11.ebuild, -portage-utils-0.20.ebuild,
+  -portage-utils-0.21.ebuild, -portage-utils-0.3.1.ebuild,
+  -portage-utils-0.30.ebuild, -portage-utils-0.4.ebuild,
+  -portage-utils-0.40.ebuild, -portage-utils-0.41.ebuild,
+  -portage-utils-0.5.ebuild, -portage-utils-0.50.ebuild,
+  -portage-utils-0.51.ebuild, -portage-utils-0.52.ebuild,
+  -portage-utils-0.6.ebuild, -portage-utils-0.8.ebuild,
+  -portage-utils-0.9.ebuild:
+  Remove old.
 
   16 Jul 2015; Mike Frysinger <vapier@gentoo.org> portage-utils-0.56.ebuild:
   Mark sparc stable #551682.

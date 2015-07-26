@@ -1,6 +1,14 @@
 # ChangeLog for dev-util/cmake
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/cmake/ChangeLog,v 1.316 2015/07/15 19:19:10 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/cmake/ChangeLog,v 1.318 2015/07/26 12:11:36 polynomial-c Exp $
+
+*cmake-3.3.0 (26 Jul 2015)
+
+  26 Jul 2015; Lars Wendler <polynomial-c@gentoo.org> +cmake-3.3.0.ebuild:
+  Version bump.
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org> cmake-3.2.2.ebuild:
+  ppc stable wrt bug #545870
 
   15 Jul 2015; Tobias Klausmann <klausman@gentoo.org> cmake-3.2.2.ebuild:
   Stable on alpha, bug 539126

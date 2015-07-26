@@ -1,6 +1,11 @@
 # ChangeLog for sys-apps/memtest86+
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/memtest86+/ChangeLog,v 1.70 2015/01/31 23:10:02 bircoph Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/memtest86+/ChangeLog,v 1.71 2015/07/22 15:20:32 floppym Exp $
+
+*memtest86+-5.01-r1 (22 Jul 2015)
+
+  22 Jul 2015; Mike Gilbert <floppym@gentoo.org> +memtest86+-5.01-r1.ebuild:
+  Reapply grub.d changes that got reverted in last version bump.
 
   31 Jan 2015; Andrew Savchenko <bircoph@gentoo.org> memtest86+-4.20-r1.ebuild,
   memtest86+-4.20-r2.ebuild, memtest86+-5.01.ebuild:

@@ -1,6 +1,10 @@
 # ChangeLog for app-portage/elogv
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/elogv/ChangeLog,v 1.88 2015/06/05 15:08:15 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/elogv/ChangeLog,v 1.89 2015/07/22 01:44:34 mrueg Exp $
+
+  22 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -elogv-0.7.4-r1.ebuild,
+  -elogv-0.7.4.ebuild:
+  Remove old.
 
   05 Jun 2015; Justin Lecher <jlec@gentoo.org> elogv-0.7.6.1-r1.ebuild,
   elogv-0.7.6.2.ebuild, elogv-0.7.6.3.ebuild, elogv-0.7.6.4.ebuild,

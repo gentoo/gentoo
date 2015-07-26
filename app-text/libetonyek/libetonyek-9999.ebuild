@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/libetonyek/libetonyek-9999.ebuild,v 1.5 2015/05/22 20:44:57 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/libetonyek/libetonyek-9999.ebuild,v 1.6 2015/07/19 16:21:36 dilfridge Exp $
 
 EAPI=5
 
@@ -19,14 +19,13 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE="doc static-libs test"
 
 RDEPEND="
-	dev-libs/boost:=
 	dev-libs/librevenge
 	dev-libs/libxml2
 	sys-libs/zlib
 "
 DEPEND="${RDEPEND}
 	>=dev-libs/boost-1.46
-	dev-util/gperf
+	>=dev-util/mdds-0.12.1
 	media-libs/glm
 	sys-devel/libtool
 	virtual/pkgconfig

@@ -1,6 +1,11 @@
 # ChangeLog for dev-perl/Moo
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Moo/ChangeLog,v 1.36 2015/04/02 10:22:32 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Moo/ChangeLog,v 1.37 2015/07/25 18:31:05 dilfridge Exp $
+
+*Moo-2.0.2 (25 Jul 2015)
+
+  25 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org> +Moo-2.0.2.ebuild:
+  Version bump
 
   02 Apr 2015; Mikle Kolyada <zlogene@gentoo.org> Moo-2.0.0.ebuild:
   Add ~arm keyword

@@ -1,6 +1,12 @@
 # ChangeLog for dev-perl/common-sense
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/common-sense/ChangeLog,v 1.36 2015/05/01 19:52:22 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/common-sense/ChangeLog,v 1.37 2015/07/23 23:37:40 dilfridge Exp $
+
+*common-sense-3.740.0 (23 Jul 2015)
+
+  23 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +common-sense-3.740.0.ebuild:
+  Version bump
 
 *common-sense-3.730.0 (01 May 2015)
 

@@ -1,6 +1,9 @@
 # ChangeLog for media-libs/libsbsms
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libsbsms/ChangeLog,v 1.12 2015/06/26 08:49:40 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libsbsms/ChangeLog,v 1.13 2015/07/23 21:02:36 pacho Exp $
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org> libsbsms-2.0.2.ebuild:
+  ppc stable wrt bug #535466
 
   26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> libsbsms-2.0.2.ebuild:
   Stable for x86, wrt bug #535466

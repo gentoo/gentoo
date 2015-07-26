@@ -1,6 +1,10 @@
 # ChangeLog for virtual/perl-autodie
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/perl-autodie/ChangeLog,v 1.14 2015/06/13 10:03:25 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/virtual/perl-autodie/ChangeLog,v 1.15 2015/07/23 23:54:50 dilfridge Exp $
+
+  23 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  perl-autodie-2.230.0.ebuild, perl-autodie-2.260.0.ebuild:
+  Copy arm keywords from dev-lang/perl
 
 *perl-autodie-2.260.0 (13 Jun 2015)
 

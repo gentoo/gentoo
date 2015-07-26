@@ -8,5 +8,5 @@ LICENSE=BSD
 RDEPEND=dev-cpp/glog dev-cpp/sparsehash dev-libs/cityhash dev-libs/libpo6 dev-libs/libe dev-libs/busybee dev-libs/popt dev-libs/replicant dev-libs/json-c
 SLOT=0
 SRC_URI=http://dev.gentooexperimental.org/~patrick/autotools-java.tar
-_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	git-r3	727a612b4c6247766904e3f74a326e2b	libtool	52d0e17251d04645ffaa61bfdd858944	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	python-r1	23846c6ba39f6655e2027001eeed8e81	python-utils-r1	ae9becb5d45344c01939c3f57df0d3fd	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	git-r3	727a612b4c6247766904e3f74a326e2b	libtool	52d0e17251d04645ffaa61bfdd858944	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	python-r1	23846c6ba39f6655e2027001eeed8e81	python-utils-r1	df6eb914b4b2d70d9c5e7c9331437c52	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=a38e6253d329fa212ebdca8f75852243

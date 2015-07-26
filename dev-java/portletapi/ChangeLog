@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/portletapi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/portletapi/ChangeLog,v 1.9 2015/07/13 17:26:10 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/portletapi/ChangeLog,v 1.10 2015/07/21 13:18:11 monsieurp Exp $
+
+  21 Jul 2015; Patrice Clement <monsieurp@gentoo.org> portletapi-2.0.ebuild:
+  Discard JAVA_PKG_WANT_{SOURCE,TARGET} flags.
 
 *portletapi-2.0 (13 Jul 2015)
 

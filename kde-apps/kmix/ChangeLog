@@ -1,6 +1,13 @@
-# ChangeLog for kde-base/kmix
+# ChangeLog for kde-apps/kmix
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-apps/kmix/ChangeLog,v 1.1 2015/06/04 18:44:40 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-apps/kmix/ChangeLog,v 1.2 2015/07/25 16:12:08 mgorny Exp $
+
+*kmix-4.14.3-r1 (25 Jul 2015)
+
+  25 Jul 2015; Michał Górny <mgorny@gentoo.org>
+  +files/kmix-4.14.3-alsa-optional.patch, +kmix-4.14.3-r1.ebuild:
+  Fix automagic dep on alsa. https://github.com/gentoo/gentoo-portage-rsync-
+  mirror/pull/173 by a17r.
 
   18 Feb 2015; Michał Górny <mgorny@gentoo.org> -kmix-4.12.5.ebuild:
   Remove KDE SC 4.12

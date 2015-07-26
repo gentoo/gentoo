@@ -1,0 +1,14 @@
+DEFINED_PHASES=install nofetch postinst postrm preinst setup unpack
+DEPEND=>=sys-apps/sed-4
+DESCRIPTION=The web browser from Google
+EAPI=5
+HOMEPAGE=http://www.google.com/chrome
+IUSE=+plugins +linguas_am +linguas_ar +linguas_bg +linguas_bn +linguas_ca +linguas_cs +linguas_da +linguas_de +linguas_el +linguas_en_GB +linguas_es +linguas_es_LA +linguas_et +linguas_fa +linguas_fi +linguas_fil +linguas_fr +linguas_gu +linguas_he +linguas_hi +linguas_hr +linguas_hu +linguas_id +linguas_it +linguas_ja +linguas_kn +linguas_ko +linguas_lt +linguas_lv +linguas_ml +linguas_mr +linguas_ms +linguas_nb +linguas_nl +linguas_pl +linguas_pt_BR +linguas_pt_PT +linguas_ro +linguas_ru +linguas_sk +linguas_sl +linguas_sr +linguas_sv +linguas_sw +linguas_ta +linguas_te +linguas_th +linguas_tr +linguas_uk +linguas_vi +linguas_zh_CN +linguas_zh_TW
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=google-chrome
+RDEPEND=app-arch/bzip2 app-misc/ca-certificates dev-libs/expat dev-libs/glib:2 dev-libs/nspr dev-libs/nss gnome-base/gconf:2 media-libs/alsa-lib media-libs/fontconfig media-libs/freetype:2 net-print/cups sys-apps/dbus sys-libs/libcap x11-libs/cairo x11-libs/gdk-pixbuf:2 x11-libs/gtk+:2 >=x11-libs/libX11-1.5.0 x11-libs/libXcomposite x11-libs/libXcursor x11-libs/libXdamage x11-libs/libXext x11-libs/libXfixes x11-libs/libXi x11-libs/libXrandr x11-libs/libXrender x11-libs/libXScrnSaver x11-libs/libXtst x11-libs/pango x11-misc/xdg-utils
+RESTRICT=bindist mirror strip
+SLOT=0
+SRC_URI=amd64? ( http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-unstable/google-chrome-unstable_45.0.2454.15-1_amd64.deb ) x86? ( http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-unstable/google-chrome-unstable_45.0.2454.15-1_i386.deb )
+_eclasses_=chromium	ee8d79e69886593b65f7ee5e9d2710b4	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	pax-utils	dfe060cb70d89757fde5c1ff8405e950	readme.gentoo	106edea5533517715013de909a333abd	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=bc79a5fbc25c165e43c01744fda71c12

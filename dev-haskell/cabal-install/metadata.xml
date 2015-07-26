@@ -9,5 +9,6 @@
 	</longdescription>
 	<use>
 		<flag name="noprefs">Ignore 'preferred-versions' file from hackage's tarball.</flag>
+		<flag name='network-uri'>Get Network.URI from the network-uri package.</flag>
 	</use>
 </pkgmetadata>

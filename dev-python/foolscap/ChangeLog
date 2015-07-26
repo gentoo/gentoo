@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/foolscap
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/foolscap/ChangeLog,v 1.59 2015/06/28 11:40:55 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/foolscap/ChangeLog,v 1.60 2015/07/23 19:42:58 pacho Exp $
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org> foolscap-0.7.0.ebuild:
+  ppc stable wrt bug #552242
 
   28 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> foolscap-0.7.0.ebuild:
   x86 stable wrt bug #552242

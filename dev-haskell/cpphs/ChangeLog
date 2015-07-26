@@ -1,6 +1,9 @@
 # ChangeLog for dev-haskell/cpphs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/cpphs/ChangeLog,v 1.64 2015/04/04 09:13:53 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/cpphs/ChangeLog,v 1.65 2015/07/26 14:16:05 slyfox Exp $
+
+  26 Jul 2015; Sergei Trofimovich <slyfox@gentoo.org> cpphs-1.19.ebuild:
+  Disable HCFLAGS='-g', it breaks ghc-7.10.
 
 *cpphs-1.19 (04 Apr 2015)
 

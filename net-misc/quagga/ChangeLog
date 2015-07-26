@@ -1,6 +1,19 @@
 # ChangeLog for net-misc/quagga
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/quagga/ChangeLog,v 1.173 2015/02/13 11:21:02 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/quagga/ChangeLog,v 1.175 2015/07/23 14:05:30 pinkbyte Exp $
+
+*quagga-0.99.24.1 (23 Jul 2015)
+
+  23 Jul 2015; Sergey Popov <pinkbyte@gentoo.org> +quagga-0.99.24.1.ebuild,
+  +files/systemd/babeld.service, +files/systemd/bgpd.service,
+  +files/systemd/isisd.service, +files/systemd/ospf6d.service,
+  +files/systemd/ospfd.service, +files/systemd/pimd.service,
+  +files/systemd/quagga.conf, +files/systemd/ripd.service,
+  +files/systemd/ripngd.service, +files/systemd/zebra.service:
+  Version bump, add systemd support, wrt bug #553136
+
+  23 Jul 2015; Sergey Popov <pinkbyte@gentoo.org> -quagga-0.99.22.4.ebuild:
+  Drop old
 
   13 Feb 2015; Tobias Klausmann <klausman@gentoo.org> quagga-0.99.23.1.ebuild:
   Stable on alpha, bug 532036

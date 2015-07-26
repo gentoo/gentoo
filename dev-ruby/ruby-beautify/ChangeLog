@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/ruby-beautify
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-beautify/ChangeLog,v 1.8 2015/07/18 11:23:01 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-beautify/ChangeLog,v 1.9 2015/07/22 18:26:51 zlogene Exp $
+
+  22 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> ruby-beautify-0.93.2.ebuild:
+  add ~x86 keyword wrt bug #553470
 
   18 Jul 2015; Jeroen Roovers <jer@gentoo.org> ruby-beautify-0.93.2.ebuild:
   Mark ~hppa ~ppc64 (bug #553470).

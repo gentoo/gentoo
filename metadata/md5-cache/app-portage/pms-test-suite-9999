@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare setup test unpack
-DEPEND=doc? ( dev-python/epydoc ) test? ( >=sys-apps/portage-2.1.10.3 sys-apps/pkgcore >=sys-apps/paludis-0.64.2[python-bindings] ) || ( =dev-lang/python-2.7* =dev-lang/python-2.6* ) dev-vcs/git
+DEPEND=doc? ( dev-python/epydoc ) test? ( >=sys-apps/portage-2.1.10.3 sys-apps/pkgcore >=sys-apps/paludis-0.64.2[python] ) || ( =dev-lang/python-2.7* =dev-lang/python-2.6* ) dev-vcs/git
 DESCRIPTION=A test suite for Package Manager PMS compliance
 EAPI=4
 HOMEPAGE=http://www.gentoo.org/proj/en/qa/pms/pms-test-suite.xml
@@ -8,4 +8,4 @@ LICENSE=BSD-2
 RDEPEND=>=app-portage/gentoopm-0.1.5 dev-python/dbus-python dev-python/pygobject:2 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
 SLOT=0
 _eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	distutils	92e738ea29389cb3f34778d7a349ac71	eutils	9fb270e417e0e83d64ca52586c4a79de	git-2	e28f0d8a9b321431b1e699782851b827	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=45852c5acc4962b28c6a7342b9ba9781
+_md5_=847459e41b8e15a4202723d33a539352

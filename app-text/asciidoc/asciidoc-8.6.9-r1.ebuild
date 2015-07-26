@@ -1,10 +1,10 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/asciidoc/asciidoc-8.6.9-r1.ebuild,v 1.12 2015/07/12 15:32:38 djc Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/asciidoc/asciidoc-8.6.9-r1.ebuild,v 1.13 2015/07/19 09:38:02 djc Exp $
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_3 python3_4 pypy )
+PYTHON_COMPAT=( python2_7 pypy )
 
 inherit python-single-r1
 

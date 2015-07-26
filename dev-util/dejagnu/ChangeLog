@@ -1,6 +1,10 @@
 # ChangeLog for dev-util/dejagnu
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/dejagnu/ChangeLog,v 1.25 2014/01/19 04:45:57 vapier Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/dejagnu/ChangeLog,v 1.26 2015/07/21 21:06:53 mrueg Exp $
+
+  21 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -dejagnu-1.4.4-r1.ebuild,
+  -dejagnu-1.4.4-r2.ebuild:
+  Remove old.
 
   19 Jan 2014; Mike Frysinger <vapier@gentoo.org> dejagnu-1.4.4-r3.ebuild,
   dejagnu-1.5.ebuild:

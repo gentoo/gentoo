@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/diffutils
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/diffutils/ChangeLog,v 1.93 2014/01/18 05:12:18 vapier Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/diffutils/ChangeLog,v 1.94 2015/07/21 15:56:38 vapier Exp $
+
+  21 Jul 2015; Mike Frysinger <vapier@gentoo.org> diffutils-3.3.ebuild:
+  Disable gnulib update-copyright test for now #554728 by Paolo Pedroni.
 
   18 Jan 2014; Mike Frysinger <vapier@gentoo.org> diffutils-3.3.ebuild:
   Add arm64 love.

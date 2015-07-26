@@ -1,6 +1,17 @@
 # ChangeLog for app-misc/colordiff
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/colordiff/ChangeLog,v 1.112 2015/02/12 14:40:32 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/colordiff/ChangeLog,v 1.114 2015/07/25 22:58:33 polynomial-c Exp $
+
+*colordiff-1.0.15-r1 (25 Jul 2015)
+
+  25 Jul 2015; Lars Wendler <polynomial-c@gentoo.org> -colordiff-1.0.15.ebuild,
+  +colordiff-1.0.15-r1.ebuild:
+  Revbump to install new config file as well.
+
+*colordiff-1.0.15 (25 Jul 2015)
+
+  25 Jul 2015; Lars Wendler <polynomial-c@gentoo.org> +colordiff-1.0.15.ebuild:
+  Version bump.
 
   12 Feb 2015; Justin Lecher <jlec@gentoo.org> -colordiff-1.0.13.ebuild:
   Drop old

@@ -1,6 +1,9 @@
 # ChangeLog for net-libs/libssh2
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libssh2/ChangeLog,v 1.108 2015/06/17 18:10:17 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libssh2/ChangeLog,v 1.109 2015/07/20 06:10:12 vapier Exp $
+
+  20 Jul 2015; Mike Frysinger <vapier@gentoo.org> libssh2-1.5.0.ebuild:
+  Mark arm64/s390/sh stable.
 
   17 Jun 2015; Mike Frysinger <vapier@gentoo.org> libssh2-1.6.0.ebuild:
   Add arm64 love.

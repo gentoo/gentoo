@@ -1,6 +1,9 @@
 # ChangeLog for media-libs/libdvbpsi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libdvbpsi/ChangeLog,v 1.71 2015/07/03 10:23:52 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libdvbpsi/ChangeLog,v 1.72 2015/07/23 20:17:50 pacho Exp $
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org> libdvbpsi-1.2.0.ebuild:
+  ppc stable wrt bug #530316
 
   03 Jul 2015; Agostino Sarubbo <ago@gentoo.org> libdvbpsi-1.2.0.ebuild:
   Stable for alpha, wrt bug #530316

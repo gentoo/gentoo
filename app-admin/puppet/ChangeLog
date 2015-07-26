@@ -1,6 +1,26 @@
 # ChangeLog for app-admin/puppet
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/puppet/ChangeLog,v 1.230 2015/07/16 05:47:32 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/puppet/ChangeLog,v 1.234 2015/07/24 00:24:19 prometheanfire Exp $
+
+  24 Jul 2015; Matthew Thode <prometheanfire@gentoo.org>
+  +files/puppet-fix-tests-4.x.patch, puppet-4.2.1.ebuild:
+  adding some test deps, also, restricting tests because test deps are not
+  keyworded
+
+*puppet-4.2.1 (23 Jul 2015)
+
+  23 Jul 2015; Matthew Thode <prometheanfire@gentoo.org> +puppet-4.2.1.ebuild,
+  -puppet-4.2.0-r1.ebuild:
+  bup, also fixing bug 555314
+
+  19 Jul 2015; Jeroen Roovers <jer@gentoo.org> puppet-4.2.0-r1.ebuild:
+  Mark ~hppa (bug #553952).
+
+*puppet-4.2.0-r1 (18 Jul 2015)
+
+  18 Jul 2015; Matthew Thode <prometheanfire@gentoo.org>
+  +puppet-4.2.0-r1.ebuild, -puppet-4.2.0.ebuild, metadata.xml:
+  removing puppetdb support, use puppet-agent instead for that
 
   16 Jul 2015; Matthew Thode <prometheanfire@gentoo.org> metadata.xml,
   puppet-4.2.0.ebuild:

@@ -1,6 +1,12 @@
 # ChangeLog for sys-apps/input-utils
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/input-utils/ChangeLog,v 1.13 2014/08/13 17:31:09 robbat2 Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/input-utils/ChangeLog,v 1.14 2015/07/21 21:42:04 mrueg Exp $
+
+  21 Jul 2015; Manuel Rüger <mrueg@gentoo.org>
+  -input-utils-0.0.1_pre20050727.ebuild,
+  -input-utils-0.0.1_pre20051128-r1.ebuild,
+  -input-utils-0.0.1_pre20051128.ebuild:
+  Remove old.
 
 *input-utils-1.1 (13 Aug 2014)
 

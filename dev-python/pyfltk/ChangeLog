@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/pyfltk
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyfltk/ChangeLog,v 1.49 2015/07/04 17:19:35 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyfltk/ChangeLog,v 1.50 2015/07/23 20:17:22 pacho Exp $
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org> pyfltk-1.3.0-r2.ebuild:
+  ppc stable wrt bug #552940
 
   04 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> pyfltk-1.3.0-r2.ebuild:
   x86 stable wrt bug #552940

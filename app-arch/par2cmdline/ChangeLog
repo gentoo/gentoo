@@ -1,6 +1,9 @@
 # ChangeLog for app-arch/par2cmdline
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/par2cmdline/ChangeLog,v 1.42 2015/06/26 08:39:39 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/par2cmdline/ChangeLog,v 1.43 2015/07/23 19:39:21 pacho Exp $
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org> par2cmdline-0.6.12.ebuild:
+  ppc stable wrt bug #534816
 
   26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> par2cmdline-0.6.12.ebuild:
   Stable for x86, wrt bug #534816

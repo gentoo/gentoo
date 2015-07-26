@@ -4,10 +4,10 @@ DESCRIPTION=C++ client library for the CMIS interface
 EAPI=5
 HOMEPAGE=https://sourceforge.net/projects/libcmis/
 IUSE=static-libs man test
-KEYWORDS=~amd64 ~arm ~x86 ~amd64-linux ~x86-linux
+KEYWORDS=amd64 ~arm x86 ~amd64-linux ~x86-linux
 LICENSE=|| ( GPL-2 LGPL-2 MPL-1.1 )
 RDEPEND=!dev-cpp/libcmis:0 !dev-cpp/libcmis:0.2 !dev-cpp/libcmis:0.3 !dev-cpp/libcmis:0.4 dev-libs/boost:= dev-libs/libxml2 net-misc/curl
 SLOT=0.5
 SRC_URI=mirror://sourceforge/libcmis/libcmis-0.5.0.tar.gz http://dev.gentoo.org/~dilfridge/distfiles/libcmis-0.5.0-gcc5.patch.gz
 _eclasses_=alternatives	326031758c86cd08f5844f475f03ac01	autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=02067107fd308fd9a08c877f4aea90c9
+_md5_=10e2b1f57b1177214fde01e63d9b531f

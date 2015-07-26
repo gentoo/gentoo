@@ -1,6 +1,9 @@
 # ChangeLog for net-dns/libidn
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/libidn/ChangeLog,v 1.225 2015/07/17 13:04:46 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/libidn/ChangeLog,v 1.226 2015/07/23 20:58:13 pacho Exp $
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org> libidn-1.30.ebuild:
+  ppc stable wrt bug #552160
 
   17 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> libidn-1.30.ebuild:
   ia64 stable wrt bug #552160

@@ -1,6 +1,10 @@
 # ChangeLog for sys-process/unixtop
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/unixtop/ChangeLog,v 1.5 2014/01/14 18:14:20 grobian Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-process/unixtop/ChangeLog,v 1.6 2015/07/22 20:33:57 mrueg Exp $
+
+  22 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -unixtop-3.8_beta1-r1.ebuild,
+  -unixtop-3.8_beta1-r2.ebuild:
+  Remove old.
 
   14 Jan 2014; Fabian Groffen <grobian@gentoo.org> unixtop-3.8_beta1-r3.ebuild:
   Marked ~amd64-linux, bug #350964

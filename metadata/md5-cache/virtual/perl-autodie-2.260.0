@@ -1,7 +1,7 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual for autodie
 EAPI=5
-KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
 RDEPEND=|| ( =dev-lang/perl-5.22* ~perl-core/autodie-2.260.0 ) !<perl-core/autodie-2.260.0 !>perl-core/autodie-2.260.0-r999
 SLOT=0
-_md5_=4bb09f5cfdee02dc46aa5340ec24c27f
+_md5_=0f1a78048bb007d68bdba1b8a903a496

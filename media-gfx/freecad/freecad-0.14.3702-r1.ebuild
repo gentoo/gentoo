@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/freecad/freecad-0.14.3702-r1.ebuild,v 1.5 2015/04/08 17:58:14 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/freecad/freecad-0.14.3702-r1.ebuild,v 1.7 2015/07/23 21:37:17 xmw Exp $
 
 EAPI=5
 
@@ -35,7 +35,7 @@ COMMON_DEPEND="dev-cpp/eigen:3
 	media-libs/coin[doc]
 	net-libs/ptlib
 	sci-libs/gts
-	sci-libs/opencascade
+	|| ( sci-libs/opencascade:6.7.1 sci-libs/opencascade:6.6.0 sci-libs/opencascade:6.5.5 )
 	sys-libs/zlib
 	virtual/glu
 	${PYTHON_DEPS}"
@@ -60,6 +60,8 @@ RESTRICT="bindist mirror"
 pkg_setup() {
 	fortran-2_pkg_setup
 	python-single-r1_pkg_setup
+
+	[ -z "${CASROOT}" ] && die "empty \$CASROOT, run eselect opencascade set or define otherwise"
 }
 
 src_prepare() {
@@ -80,12 +82,6 @@ src_prepare() {
 }
 
 src_configure() {
-	local my_occ_env=${EROOT}etc/env.d/50opencascade
-	if [ -e "${EROOT}etc//env.d/51opencascade" ] ; then
-		my_occ_env=${EROOT}etc/env.d/51opencascade
-	fi
-	export CASROOT=$(sed -ne '/^CASROOT=/{s:.*=:: ; p}' $my_occ_env)
-
 	local mycmakeargs=(
 		-DOCC_INCLUDE_DIR="${CASROOT}"/inc
 		-DOCC_INCLUDE_PATH="${CASROOT}"/inc

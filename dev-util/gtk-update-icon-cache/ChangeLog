@@ -1,6 +1,18 @@
 # ChangeLog for dev-util/gtk-update-icon-cache
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/gtk-update-icon-cache/ChangeLog,v 1.10 2015/07/17 15:33:31 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/gtk-update-icon-cache/ChangeLog,v 1.13 2015/07/25 12:13:48 pacho Exp $
+
+  25 Jul 2015; Pacho Ramos <pacho@gentoo.org>
+  gtk-update-icon-cache-3.14.13.ebuild:
+  ppc stable wrt bug #551814
+
+  19 Jul 2015; Tobias Klausmann <klausman@gentoo.org>
+  gtk-update-icon-cache-3.14.13.ebuild:
+  Stable on alpha, bug 553500
+
+  19 Jul 2015; Pacho Ramos <pacho@gentoo.org>
+  gtk-update-icon-cache-3.16.4.ebuild:
+  gettext needed as DEPEND (#555002 by Ben Kohler)
 
   17 Jul 2015; Agostino Sarubbo <ago@gentoo.org>
   gtk-update-icon-cache-3.14.13.ebuild:

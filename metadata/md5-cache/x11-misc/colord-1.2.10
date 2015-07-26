@@ -4,7 +4,7 @@ DESCRIPTION=System service to accurately color manage input and output devices
 EAPI=5
 HOMEPAGE=http://www.freedesktop.org/software/colord/
 IUSE=argyllcms examples extra-print-profiles +gusb +introspection +policykit scanner systemd +udev vala abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
-KEYWORDS=~alpha amd64 ~arm hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~x86-fbsd
+KEYWORDS=alpha amd64 ~arm hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~x86-fbsd
 LICENSE=GPL-2+
 RDEPEND=dev-db/sqlite:3= >=dev-libs/glib-2.36:2[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] >=media-libs/lcms-2.6:2=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] argyllcms? ( media-gfx/argyllcms ) gusb? ( >=dev-libs/libgusb-0.2.2[introspection?,abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) introspection? ( >=dev-libs/gobject-introspection-0.9.8:= ) policykit? ( >=sys-auth/polkit-0.103 ) scanner? ( media-gfx/sane-backends sys-apps/dbus ) systemd? ( >=sys-apps/systemd-44:0= ) udev? ( virtual/udev virtual/libgudev:= virtual/libudev:=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) !media-gfx/shared-color-profiles !<=media-gfx/colorhug-client-0.1.13
 REQUIRED_USE=gusb? ( udev ) scanner? ( udev ) vala? ( introspection )
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0/2
 SRC_URI=http://www.freedesktop.org/software/colord/releases/colord-1.2.10.tar.xz
 _eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	bash-completion-r1	c8399c7c7ecbcf7ed6e5bd3abb3d4af3	check-reqs	a7f404bfb16e0a996700c5d3ac4edad3	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	45882dc8beda2ffd09ad51fb3f22b669	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multilib-build	e733e978b7fa70607cc221fd9c070db6	multilib-minimal	13dd976916c35a1e2c8d170e840c7018	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	udev	da001465a2e939c93f7ae16947ce3438	user	f54e098dd38ba1c0847a13e685b87747	vala	09bc7da1a93142c9eb90786e6f6b39d2	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=9c73514c1da0471e4ce4952a0d92748d
+_md5_=17437df96d3730bf095fd5db86254a9a

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/portletapi/portletapi-2.0.ebuild,v 1.1 2015/07/13 17:26:10 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/portletapi/portletapi-2.0.ebuild,v 1.2 2015/07/21 13:18:11 monsieurp Exp $
 
 EAPI=5
 
@@ -27,8 +27,6 @@ DEPEND=">=virtual/jdk-1.6
 	app-arch/unzip
 	${CDEPEND}"
 
-JAVA_PKG_WANT_SOURCE="1.7"
-JAVA_PKG_WANT_TARGET="1.7"
 JAVA_SRC_DIR="src"
 
 JAVA_ENCODING="ISO-8859-1"

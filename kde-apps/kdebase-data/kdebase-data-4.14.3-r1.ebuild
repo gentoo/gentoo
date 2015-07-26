@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-apps/kdebase-data/kdebase-data-4.14.3-r1.ebuild,v 1.3 2015/06/13 08:36:57 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-apps/kdebase-data/kdebase-data-4.14.3-r1.ebuild,v 1.4 2015/07/25 12:09:45 pacho Exp $
 
 EAPI=5
 
@@ -10,7 +10,7 @@ inherit kde4-meta
 
 DESCRIPTION="Icons, localization data and various .desktop files from kdebase"
 IUSE="+wallpapers"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ppc ~ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	wallpapers? ( $(add_kdeapps_dep kde-wallpapers) )

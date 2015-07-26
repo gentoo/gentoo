@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/psi/psi-0.15.ebuild,v 1.6 2015/02/22 18:41:23 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/psi/psi-0.15.ebuild,v 1.7 2015/07/22 01:55:42 pesa Exp $
 
 EAPI=5
 
@@ -22,25 +22,31 @@ KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd"
 IUSE="crypt dbus debug doc jingle spell ssl xscreensaver whiteboarding"
 RESTRICT="test"
 
-RDEPEND="app-arch/unzip
-	>=dev-qt/qtgui-4.7:4[qt3support]
-	>=dev-qt/qt3support-4.7:4
+RDEPEND="
+	app-arch/unzip
 	>=app-crypt/qca-2.0.2:2[qt4(+)]
+	dev-qt/qt3support:4
+	dev-qt/qtcore:4
+	dev-qt/qtgui:4[qt3support]
+	>=sys-libs/zlib-1.2.5.1-r2[minizip]
 	x11-libs/libX11
-	dbus? ( >=dev-qt/qtdbus-4.7:4 )
+	dbus? ( dev-qt/qtdbus:4 )
 	spell? ( >=app-text/enchant-1.3.0 )
-	xscreensaver? ( x11-libs/libXScrnSaver )
 	whiteboarding? ( dev-qt/qtsvg:4 )
-	|| ( >=sys-libs/zlib-1.2.5.1-r2[minizip] <sys-libs/zlib-1.2.5.1-r1 )"
-
+	xscreensaver? ( x11-libs/libXScrnSaver )
+"
 DEPEND="${RDEPEND}
 	sys-devel/qconf
-	doc? ( app-doc/doxygen )"
-
-PDEPEND="crypt? ( app-crypt/qca:2[gpg] )
-	jingle? ( net-im/psimedia
-		app-crypt/qca:2[openssl] )
-	ssl? ( app-crypt/qca:2[openssl] )"
+	doc? ( app-doc/doxygen )
+"
+PDEPEND="
+	crypt? ( app-crypt/qca:2[gpg] )
+	jingle? (
+		net-im/psimedia
+		app-crypt/qca:2[openssl]
+	)
+	ssl? ( app-crypt/qca:2[openssl] )
+"
 
 DOC_CONTENTS='Psi+ support(USE="extras") was removed from ebuild since 0.15'
 FORCE_PRINT_ELOG=1

@@ -1,6 +1,10 @@
 # ChangeLog for app-emulation/softgun
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/softgun/ChangeLog,v 1.14 2015/06/09 11:11:34 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/softgun/ChangeLog,v 1.15 2015/07/22 22:50:00 mrueg Exp $
+
+  22 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -files/softgun-0.19-make.patch,
+  -softgun-0.11.ebuild, -softgun-0.16.ebuild, -softgun-0.19.ebuild:
+  Remove old.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

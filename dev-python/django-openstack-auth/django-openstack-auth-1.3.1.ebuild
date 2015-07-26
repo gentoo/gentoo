@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/django-openstack-auth/django-openstack-auth-1.3.1.ebuild,v 1.1 2015/06/13 08:39:02 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/django-openstack-auth/django-openstack-auth-1.3.1.ebuild,v 1.2 2015/07/21 07:57:23 idella4 Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 python3_3 )
@@ -51,6 +51,8 @@ python_prepare_all() {
 }
 
 python_compile_all() {
+	# under sphinx-1.3.1 the build outputs a harmless warning about change of
+	# html_theme setting in conf.py. priot versions will have the right setting
 	if use doc; then
 		sphinx-build -b html -c doc/source/ doc/source/ doc/source/html || die
 	fi

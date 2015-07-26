@@ -1,6 +1,10 @@
 # ChangeLog for kde-misc/about-distro
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/about-distro/ChangeLog,v 1.6 2015/04/04 21:03:45 johu Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/about-distro/ChangeLog,v 1.7 2015/07/22 14:07:20 kensington Exp $
+
+  22 Jul 2015; Michael Palimaka <kensington@gentoo.org>
+  -about-distro-2.0.1.ebuild:
+  Remove broken version wrt bug #555458.
 
   04 Apr 2015; Johannes Huber <johu@gentoo.org> -about-distro-2.0.0.ebuild:
   Remove old.

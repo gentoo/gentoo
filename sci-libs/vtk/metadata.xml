@@ -14,7 +14,7 @@
     <flag name="gdal">Support for gdal formated data</flag>
     <flag name="imaging">Building Imaging modules</flag>
     <flag name="json">Support for json formated data</flag>
-    <flag name="kaapi">Use <pkg>sci-libs/kaapi</pkg> to handle smp support</flag>
+    <flag name="kaapi">Use <pkg>sci-libs/xkaapi</pkg> to handle smp support</flag>
     <flag name="offscreen">Offscreen rendering through OSMesa</flag>
     <flag name="rendering">Building Redering modules</flag>
     <flag name="tbb">Use <pkg>dev-cpp/tbb</pkg> to handle smp support</flag>

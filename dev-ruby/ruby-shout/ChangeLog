@@ -1,6 +1,12 @@
 # ChangeLog for dev-ruby/ruby-shout
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-shout/ChangeLog,v 1.25 2015/03/25 20:07:58 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-shout/ChangeLog,v 1.26 2015/07/26 07:07:30 graaff Exp $
+
+*ruby-shout-2.2.1-r2 (26 Jul 2015)
+
+  26 Jul 2015; Hans de Graaff <graaff@gentoo.org> ruby-shout-2.2.1-r1.ebuild,
+  +ruby-shout-2.2.1-r2.ebuild:
+  Create stable candidate.
 
   25 Mar 2015; Hans de Graaff <graaff@gentoo.org> ruby-shout-2.2.1-r1.ebuild:
   Document ruby22 status.

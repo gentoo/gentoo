@@ -1,6 +1,14 @@
 # ChangeLog for dev-tex/tex4ht
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/tex4ht/ChangeLog,v 1.93 2015/07/12 18:15:04 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/tex4ht/ChangeLog,v 1.95 2015/07/22 19:25:54 blueness Exp $
+
+  22 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
+  tex4ht-20090611_p1038-r3.ebuild:
+  Stable for ppc, bug #550840.
+
+  22 Jul 2015; Alexis Ballier <aballier@gentoo.org>
+  tex4ht-20090611_p1038-r3.ebuild:
+  fix build with kpathsea from tl2015 and add explicit dep on it, bug #529388
 
   12 Jul 2015; Mikle Kolyada <zlogene@gentoo.org>
   tex4ht-20090611_p1038-r3.ebuild:

@@ -1,6 +1,12 @@
 # ChangeLog for dev-haskell/pandoc-types
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/pandoc-types/ChangeLog,v 1.14 2015/04/04 12:15:52 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/pandoc-types/ChangeLog,v 1.15 2015/07/20 18:30:05 slyfox Exp $
+
+*pandoc-types-1.12.4.5 (20 Jul 2015)
+
+  20 Jul 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  +pandoc-types-1.12.4.5.ebuild:
+  Version bump.
 
 *pandoc-types-1.12.4.2 (04 Apr 2015)
 

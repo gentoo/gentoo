@@ -1,11 +1,10 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/testtools/testtools-1.8.0.ebuild,v 1.1 2015/05/27 08:24:42 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/testtools/testtools-1.8.0.ebuild,v 1.3 2015/07/26 15:41:11 idella4 Exp $
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{3,4} )
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_{3,4} pypy )
 
 inherit distutils-r1
 
@@ -20,7 +19,6 @@ IUSE="doc test"
 
 CDEPEND="
 	dev-python/extras[${PYTHON_USEDEP}]
-	dev-python/linecache2[${PYTHON_USEDEP}]
 	dev-python/mimeparse[${PYTHON_USEDEP}]
 	>=dev-python/pbr-0.11[${PYTHON_USEDEP}]
 	>=dev-python/unittest2-1.0.0[${PYTHON_USEDEP}]

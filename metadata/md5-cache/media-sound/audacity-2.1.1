@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install
+DEPEND=>=app-arch/zip-2.3 dev-libs/expat >=media-libs/libsndfile-1.0.0 =media-libs/portaudio-19* media-libs/soxr x11-libs/wxGTK:2.8[X] alsa? ( media-libs/alsa-lib ) ffmpeg? ( libav? ( media-video/libav:= ) !libav? ( >=media-video/ffmpeg-1.2:= ) ) flac? ( >=media-libs/flac-1.2.0[cxx] ) id3tag? ( media-libs/libid3tag ) jack? ( >=media-sound/jack-audio-connection-kit-0.103.0 ) lame? ( >=media-sound/lame-3.70 ) lv2? ( media-libs/lv2 ) mad? ( >=media-libs/libmad-0.14.2b ) midi? ( media-libs/portmidi ) sbsms? ( media-libs/libsbsms ) soundtouch? ( >=media-libs/libsoundtouch-1.3.1 ) twolame? ( media-sound/twolame ) vamp? ( >=media-libs/vamp-plugin-sdk-2.0 ) vorbis? ( >=media-libs/libvorbis-1.0 ) app-arch/xz-utils virtual/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=Free crossplatform audio editor
+EAPI=5
+HOMEPAGE=http://web.audacityteam.org/
+IUSE=alsa cpu_flags_x86_sse doc ffmpeg +flac id3tag jack +ladspa +lame libav +lv2 mad +midi nls +portmixer sbsms +soundtouch twolame vamp +vorbis +vst
+KEYWORDS=~amd64 ~mips ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=app-arch/zip-2.3 dev-libs/expat >=media-libs/libsndfile-1.0.0 =media-libs/portaudio-19* media-libs/soxr x11-libs/wxGTK:2.8[X] alsa? ( media-libs/alsa-lib ) ffmpeg? ( libav? ( media-video/libav:= ) !libav? ( >=media-video/ffmpeg-1.2:= ) ) flac? ( >=media-libs/flac-1.2.0[cxx] ) id3tag? ( media-libs/libid3tag ) jack? ( >=media-sound/jack-audio-connection-kit-0.103.0 ) lame? ( >=media-sound/lame-3.70 ) lv2? ( media-libs/lv2 ) mad? ( >=media-libs/libmad-0.14.2b ) midi? ( media-libs/portmidi ) sbsms? ( media-libs/libsbsms ) soundtouch? ( >=media-libs/libsoundtouch-1.3.1 ) twolame? ( media-sound/twolame ) vamp? ( >=media-libs/vamp-plugin-sdk-2.0 ) vorbis? ( >=media-libs/libvorbis-1.0 )
+REQUIRED_USE=soundtouch? ( midi )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~yngwin/distfiles/audacity-minsrc-2.1.1.tar.xz doc? ( http://dev.gentoo.org/~yngwin/distfiles/audacity-manual-2.1.1.zip )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	wxwidgets	6d6eec2685256d35511e7b6d5461bec9
+_md5_=280af432b72d5501dbb42a18379b4be7

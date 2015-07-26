@@ -1,6 +1,11 @@
 # ChangeLog for net-misc/netkit-fingerd
-# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/netkit-fingerd/ChangeLog,v 1.20 2011/01/18 20:10:56 vapier Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/netkit-fingerd/ChangeLog,v 1.21 2015/07/24 03:43:23 vapier Exp $
+
+  24 Jul 2015; Mike Frysinger <vapier@gentoo.org> netkit-fingerd-0.17-r3.ebuild:
+  Add arm64/m68k/s390/sh love, update to EAPI=5, and drop configure usage since
+  it breaks under dash and is not actually needed (the cross-compile case
+  already skipped it) #555704 by Alexander Tsoy.
 
   18 Jan 2011; Mike Frysinger <vapier@gentoo.org>
   netkit-fingerd-0.17-r3.ebuild:

@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/sparc/make.defaults,v 1.6 2014/11/23 15:54:44 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/sparc/make.defaults,v 1.7 2015/07/25 15:41:19 floppym Exp $
 
 ARCH="sparc"
 ACCEPT_KEYWORDS="${ARCH}"
@@ -40,7 +40,3 @@ MULTILIB_STRICT_DIRS="/lib32 /usr/lib32 /usr/kde/*/lib32 /usr/qt/*/lib32 /usr/X1
 # Defaults for video drivers
 VIDEO_CARDS="fbdev glint mach64 mga r128 radeon sunbw2 suncg14 suncg3 \
 	suncg6 sunffb sunleo tdfx voodoo"
-
-# Mike Gilbert <floppym@gentoo.org> (23 Nov 2014)
-# Remove when bug 525510 is resolved.
-USE="python_targets_python3_3 -python_targets_python3_4"

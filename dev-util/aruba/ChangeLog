@@ -1,6 +1,27 @@
 # ChangeLog for dev-util/aruba
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/aruba/ChangeLog,v 1.61 2015/07/18 06:09:59 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/aruba/ChangeLog,v 1.67 2015/07/26 17:51:01 jer Exp $
+
+  26 Jul 2015; Jeroen Roovers <jer@gentoo.org> aruba-0.8.1.ebuild:
+  Mark ~hppa (bug #555312).
+
+  26 Jul 2015; Markus Meier <maekke@gentoo.org> aruba-0.8.1.ebuild:
+  add ~arm, bug #555312
+
+  25 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -aruba-0.5.3.ebuild:
+  Remove old.
+
+  25 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> aruba-0.5.4-r1.ebuild:
+  sparc stable wrt bug #542574
+
+  22 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> aruba-0.8.1.ebuild:
+  Add ~x86 keyword wrt bug #555312
+
+*aruba-0.8.1 (19 Jul 2015)
+
+  19 Jul 2015; Hans de Graaff <graaff@gentoo.org> +aruba-0.8.1.ebuild:
+  Version bump. Drop keywords due to new dependency on dev-ruby/contracts, bug
+  555312.
 
   18 Jul 2015; Hans de Graaff <graaff@gentoo.org> -aruba-0.6.1.ebuild,
   -aruba-0.7.1.ebuild:

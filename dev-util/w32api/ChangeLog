@@ -1,6 +1,9 @@
 # ChangeLog for dev-util/w32api
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/w32api/ChangeLog,v 1.20 2015/02/27 08:10:12 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/w32api/ChangeLog,v 1.21 2015/07/21 21:07:47 mrueg Exp $
+
+  21 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -w32api-3.14.ebuild:
+  Remove old.
 
   27 Feb 2015; Mike Frysinger <vapier@gentoo.org> w32api-3.14.ebuild,
   w32api-3.17.2.ebuild, w32api-4.0.3.1.ebuild:

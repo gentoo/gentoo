@@ -1,6 +1,9 @@
 # ChangeLog for sys-devel/remake
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/remake/ChangeLog,v 1.17 2015/07/08 17:49:26 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/remake/ChangeLog,v 1.18 2015/07/20 11:28:18 vapier Exp $
+
+  20 Jul 2015; Mike Frysinger <vapier@gentoo.org> remake-4.1.1.1.ebuild:
+  Add arch love for all.
 
 *remake-4.1.1.1 (08 Jul 2015)
 

@@ -1,6 +1,15 @@
 # ChangeLog for dev-ruby/gherkin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/gherkin/ChangeLog,v 1.91 2015/07/18 11:24:25 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/gherkin/ChangeLog,v 1.94 2015/07/25 13:33:16 mrueg Exp $
+
+  25 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -gherkin-2.11.6.ebuild:
+  Remove old.
+
+  25 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> gherkin-2.12.0-r2.ebuild:
+  sparc stable wrt bug #542574
+
+  22 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> gherkin-2.12.2.ebuild:
+  add ~x86 keyword wrt bug #553470
 
   18 Jul 2015; Jeroen Roovers <jer@gentoo.org> gherkin-2.12.2.ebuild:
   Mark ~hppa ~ppc64 (bug #553470).

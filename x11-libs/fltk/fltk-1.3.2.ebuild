@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/fltk/fltk-1.3.2.ebuild,v 1.13 2014/01/15 09:16:10 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/fltk/fltk-1.3.2.ebuild,v 1.14 2015/07/19 08:09:38 jer Exp $
 
 EAPI=4
 
@@ -15,7 +15,7 @@ SRC_URI="http://fltk.org/pub/${PN}/${PV/_}/${P/_}-source.tar.gz"
 SLOT="1"
 LICENSE="FLTK LGPL-2"
 KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos"
-IUSE="cairo debug doc examples games opengl pdf static-libs threads xft xinerama"
+IUSE="cairo debug doc examples games +opengl pdf static-libs +threads +xft +xinerama"
 
 RDEPEND="
 	>=media-libs/libpng-1.2:0

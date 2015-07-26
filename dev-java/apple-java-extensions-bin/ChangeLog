@@ -1,6 +1,17 @@
 # ChangeLog for dev-java/apple-java-extensions-bin
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/apple-java-extensions-bin/ChangeLog,v 1.18 2014/08/10 20:08:02 slyfox Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/apple-java-extensions-bin/ChangeLog,v 1.20 2015/07/22 15:32:23 monsieurp Exp $
+
+  22 Jul 2015; Patrice Clement <monsieurp@gentoo.org>
+  apple-java-extensions-bin-1.5.ebuild:
+  Correct typo.
+
+*apple-java-extensions-bin-1.5-r1 (22 Jul 2015)
+
+  22 Jul 2015; Patrice Clement <monsieurp@gentoo.org>
+  +apple-java-extensions-bin-1.5-r1.ebuild,
+  apple-java-extensions-bin-1.5.ebuild:
+  EAPI 5 bump.
 
   10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
   apple-java-extensions-bin-1.5.ebuild:

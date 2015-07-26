@@ -1,6 +1,10 @@
 # ChangeLog for dev-cpp/gflags
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/gflags/ChangeLog,v 1.34 2015/06/07 08:20:11 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/gflags/ChangeLog,v 1.35 2015/07/22 06:18:08 vapier Exp $
+
+  22 Jul 2015; Mike Frysinger <vapier@gentoo.org> gflags-2.1.1-r1.ebuild,
+  gflags-9999.ebuild:
+  Add arm64 love.
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

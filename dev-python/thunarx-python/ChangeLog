@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/thunarx-python
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/thunarx-python/ChangeLog,v 1.12 2015/07/01 16:31:33 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/thunarx-python/ChangeLog,v 1.13 2015/07/21 20:44:55 mrueg Exp $
+
+  21 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -thunarx-python-0.3.0.ebuild:
+  Remove old.
 
   01 Jul 2015; Mikle Kolyada <zlogene@gentoo.org>
   thunarx-python-0.3.0-r1.ebuild:

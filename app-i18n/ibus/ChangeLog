@@ -1,6 +1,9 @@
 # ChangeLog for app-i18n/ibus
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus/ChangeLog,v 1.162 2015/07/15 16:35:44 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus/ChangeLog,v 1.163 2015/07/23 20:22:03 pacho Exp $
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org> ibus-1.5.10.ebuild:
+  ppc stable wrt bug #551062
 
   15 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> ibus-1.5.10.ebuild:
   x86 stable wrt bug #551062

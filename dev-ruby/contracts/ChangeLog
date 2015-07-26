@@ -1,10 +1,18 @@
 # ChangeLog for dev-ruby/contracts
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/contracts/ChangeLog,v 1.1 2015/07/18 06:22:47 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/contracts/ChangeLog,v 1.4 2015/07/26 08:26:02 maekke Exp $
+
+  26 Jul 2015; Markus Meier <maekke@gentoo.org> contracts-0.10.1.ebuild:
+  add ~arm, bug #555312
+
+  23 Jul 2015; Jeroen Roovers <jer@gentoo.org> contracts-0.10.1.ebuild:
+  Mark ~hppa (bug #555312).
+
+  22 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> contracts-0.10.1.ebuild:
+  Add ~x86 keyword wrt bug #555312
 
 *contracts-0.10.1 (18 Jul 2015)
 
   18 Jul 2015; Hans de Graaff <graaff@gentoo.org> +contracts-0.10.1.ebuild,
   +metadata.xml:
   Initial import. New dependency for dev-util/aruba.
-

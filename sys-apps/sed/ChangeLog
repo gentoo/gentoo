@@ -1,6 +1,10 @@
 # ChangeLog for sys-apps/sed
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/sed/ChangeLog,v 1.127 2014/02/08 13:24:00 vapier Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/sed/ChangeLog,v 1.128 2015/07/21 21:16:08 mrueg Exp $
+
+  21 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -sed-4.2.1.ebuild,
+  -sed-4.2.ebuild:
+  Remove old.
 
   08 Feb 2014; Mike Frysinger <vapier@gentoo.org> -files/dos2unix,
   -files/unix2dos, sed-4.2.1-r1.ebuild, sed-4.2.1.ebuild, sed-4.2.2.ebuild,

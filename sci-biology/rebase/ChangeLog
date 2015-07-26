@@ -1,6 +1,9 @@
 # ChangeLog for sci-biology/rebase
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/rebase/ChangeLog,v 1.165 2015/06/30 06:28:04 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/rebase/ChangeLog,v 1.166 2015/07/23 20:03:30 pacho Exp $
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org> rebase-1507.ebuild:
+  ppc stable wrt bug #553618
 
 *rebase-1507 (30 Jun 2015)
 

@@ -3,9 +3,9 @@ DEPEND=>=media-libs/libpng-1.2:0 virtual/jpeg:0 sys-libs/zlib x11-libs/libICE x1
 DESCRIPTION=C++ user interface toolkit for X and OpenGL
 EAPI=5
 HOMEPAGE=http://www.fltk.org/
-IUSE=cairo debug doc examples games opengl pdf static-libs threads xft xinerama
+IUSE=cairo debug doc examples games +opengl pdf static-libs +threads +xft +xinerama
 LICENSE=FLTK LGPL-2
 RDEPEND=>=media-libs/libpng-1.2:0 virtual/jpeg:0 sys-libs/zlib x11-libs/libICE x11-libs/libSM x11-libs/libXext x11-libs/libXt cairo? ( x11-libs/cairo ) opengl? ( virtual/opengl ) xinerama? ( x11-libs/libXinerama ) xft? ( x11-libs/libXft )
 SLOT=1
 _eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	subversion	c12bdf4fcc82f86ad89b14c8f76c4026	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=e8628be8f5b42e50fd1430e12c630a5e
+_md5_=a7e912cdf561250eac92e753518d924b

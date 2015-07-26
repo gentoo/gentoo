@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/snakeoil/snakeoil-9999.ebuild,v 1.19 2015/04/01 23:54:34 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/snakeoil/snakeoil-9999.ebuild,v 1.20 2015/07/23 06:23:17 radhermit Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
@@ -19,6 +19,8 @@ HOMEPAGE="http://github.com/pkgcore/snakeoil"
 
 LICENSE="BSD"
 SLOT="0"
+
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_configure_all() {
 	# disable snakeoil 2to3 caching

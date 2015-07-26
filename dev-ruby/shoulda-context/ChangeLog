@@ -1,6 +1,12 @@
 # ChangeLog for dev-ruby/shoulda-context
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/shoulda-context/ChangeLog,v 1.11 2015/04/11 15:52:27 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/shoulda-context/ChangeLog,v 1.12 2015/07/20 05:43:49 graaff Exp $
+
+*shoulda-context-1.2.1 (20 Jul 2015)
+
+  20 Jul 2015; Hans de Graaff <graaff@gentoo.org>
+  +shoulda-context-1.2.1.ebuild:
+  Version bump.
 
   11 Apr 2015; Hans de Graaff <graaff@gentoo.org> shoulda-context-1.1.6.ebuild:
   Add ruby22.

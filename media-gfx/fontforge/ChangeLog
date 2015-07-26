@@ -1,6 +1,11 @@
 # ChangeLog for media-gfx/fontforge
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/fontforge/ChangeLog,v 1.159 2015/06/07 22:39:23 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/fontforge/ChangeLog,v 1.160 2015/07/26 18:44:31 floppym Exp $
+
+*fontforge-20150612 (26 Jul 2015)
+
+  26 Jul 2015; Mike Gilbert <floppym@gentoo.org> +fontforge-20150612.ebuild:
+  Version bump.
 
   07 Jun 2015; Mike Gilbert <floppym@gentoo.org> fontforge-20150430.ebuild:
   Adjust LICENSE.

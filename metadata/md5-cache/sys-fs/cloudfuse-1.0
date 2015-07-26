@@ -1,0 +1,12 @@
+DEFINED_PHASES=-
+DEPEND=dev-libs/libxml2 dev-libs/openssl:0 net-misc/curl sys-fs/fuse
+DESCRIPTION=A FUSE filesystem for Rackspace's Cloud Files
+EAPI=5
+HOMEPAGE=http://redbo.github.io/cloudfuse/
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=dev-libs/libxml2 dev-libs/openssl:0 net-misc/curl sys-fs/fuse
+SLOT=0
+SRC_URI=https://github.com/redbo/cloudfuse/archive/1.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=3facb5c92542e2b8ba112b799fd332d4

@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/beautifulsoup/beautifulsoup-3.1.0.1-r2.ebuild,v 1.17 2014/12/22 02:36:54 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/beautifulsoup/beautifulsoup-3.1.0.1-r2.ebuild,v 1.18 2015/07/21 08:12:43 monsieurp Exp $
 
 EAPI="5"
 # A few tests fail with python3.3/3.4 :(
@@ -24,7 +24,11 @@ DEPEND=""
 RDEPEND="!dev-python/beautifulsoup:0"
 
 S="${WORKDIR}/${MY_P}"
-PATCHES=( "${FILESDIR}/${P}-python-3.patch" )
+
+PATCHES=(
+	"${FILESDIR}/${P}-python-3.patch"
+	"${FILESDIR}/${P}-disable-tests.patch"
+)
 
 python_test() {
 	"${PYTHON}" BeautifulSoupTests.py || die "Tests fail with ${EPYTHON}"

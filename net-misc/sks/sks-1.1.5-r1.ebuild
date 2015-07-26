@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/sks/sks-1.1.5-r1.ebuild,v 1.1 2015/02/02 23:18:26 k_f Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/sks/sks-1.1.5-r1.ebuild,v 1.2 2015/07/26 19:32:50 k_f Exp $
 
 EAPI=5
 
@@ -59,6 +59,7 @@ src_prepare() {
 		sks_build.sh || die
 
 	epatch "${FILESDIR}/${P}-eddsa.patch"
+	epatch "${FILESDIR}/${P}-disable-warn-error-a.patch"
 }
 
 src_compile() {

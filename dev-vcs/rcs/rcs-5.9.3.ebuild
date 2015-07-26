@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/rcs/rcs-5.9.3.ebuild,v 1.1 2014/11/14 01:12:48 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/rcs/rcs-5.9.3.ebuild,v 1.4 2015/07/26 08:40:24 maekke Exp $
 
 EAPI="5"
 
-inherit eutils
+inherit eutils flag-o-matic
 
 DESCRIPTION="Revision Control System"
 HOMEPAGE="http://www.gnu.org/software/rcs/"
@@ -12,8 +12,7 @@ SRC_URI="mirror://gnu/rcs/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd \
-~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris"
+KEYWORDS="~alpha ~amd64 arm ~arm64 hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris"
 IUSE="doc"
 
 RDEPEND="
@@ -24,6 +23,11 @@ DEPEND="${RDEPEND}"
 src_prepare() {
 	sed -i -e '/gets is a security hole/d' \
 		lib/stdio.in.h || die
+}
+
+src_configure() {
+	append-flags -std=gnu99
+	econf
 }
 
 src_test() {

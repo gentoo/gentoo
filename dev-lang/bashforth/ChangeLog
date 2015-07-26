@@ -1,6 +1,9 @@
 # ChangeLog for dev-lang/bashforth
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/bashforth/ChangeLog,v 1.10 2014/08/10 20:28:39 slyfox Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/bashforth/ChangeLog,v 1.11 2015/07/22 13:31:26 mrueg Exp $
+
+  22 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -bashforth-0.55.ebuild:
+  Remove old.
 
   10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> bashforth-0.55.ebuild:
   QA: drop trailing '.' from DESCRIPTION

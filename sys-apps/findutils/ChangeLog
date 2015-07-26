@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/findutils
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/findutils/ChangeLog,v 1.226 2015/04/04 22:38:19 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/findutils/ChangeLog,v 1.227 2015/07/20 04:32:29 vapier Exp $
+
+  20 Jul 2015; Mike Frysinger <vapier@gentoo.org> findutils-4.5.14-r1.ebuild:
+  Disable gnulib update-copyright test for now #554728 by Paolo Pedroni.
 
   04 Apr 2015; Mike Frysinger <vapier@gentoo.org>
   +files/findutils-4.5.14-test-bashisms.patch, findutils-4.5.14-r1.ebuild:

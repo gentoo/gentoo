@@ -1,6 +1,21 @@
 # ChangeLog for sys-apps/roccat-tools
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/roccat-tools/ChangeLog,v 1.16 2015/03/24 05:24:49 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/roccat-tools/ChangeLog,v 1.18 2015/07/22 01:44:28 idella4 Exp $
+
+*roccat-tools-3.4.0 (22 Jul 2015)
+
+  22 Jul 2015; Ian Delaney <idella4@gentoo.org> +roccat-tools-3.4.0.ebuild:
+  add -3.4.0 by request of proxy maintainer in bug #548388
+
+*roccat-tools-3.5.0 (21 Jul 2015)
+*roccat-tools-3.5.0-r1 (21 Jul 2015)
+
+  21 Jul 2015; Ian Delaney <idella4@gentoo.org> +roccat-tools-3.5.0-r1.ebuild,
+  +roccat-tools-3.5.0.ebuild, -roccat-tools-3.0.0.ebuild,
+  -roccat-tools-3.1.0.ebuild, -roccat-tools-3.2.0.ebuild, metadata.xml:
+  bump, revbump; the -3.5.0-r1 has been pmasked due to deps of masked slots of
+  dev-lang/lua, ebuilds by maintainer sourced from Bug 548388, removal of old
+  versions
 
 *roccat-tools-3.2.0 (24 Mar 2015)
 

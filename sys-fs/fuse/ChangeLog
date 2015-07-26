@@ -1,6 +1,12 @@
 # ChangeLog for sys-fs/fuse
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/fuse/ChangeLog,v 1.209 2015/06/28 17:32:30 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/fuse/ChangeLog,v 1.211 2015/07/23 09:33:16 ago Exp $
+
+  23 Jul 2015; Agostino Sarubbo <ago@gentoo.org> fuse-2.9.4.ebuild:
+  Stable for sparc, wrt bug #550152
+
+  19 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> fuse-2.9.4.ebuild:
+  ia64 stable wrt bug #550152
 
   28 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> fuse-2.9.4.ebuild:
   alpha stable wrt bug #550152

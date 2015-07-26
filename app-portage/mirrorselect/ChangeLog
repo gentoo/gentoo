@@ -1,6 +1,9 @@
 # ChangeLog for app-portage/mirrorselect
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/mirrorselect/ChangeLog,v 1.154 2015/04/25 15:45:14 dolsen Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/mirrorselect/ChangeLog,v 1.155 2015/07/18 13:49:55 zlogene Exp $
+
+  18 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> mirrorselect-2.2.2-r2.ebuild:
+  Stable for all (bug #555268)
 
   25 Apr 2015; Brian Dolbec <dolsen@gentoo.org> mirrorselect-9999.ebuild:
   Update EGIT_REPO_URI

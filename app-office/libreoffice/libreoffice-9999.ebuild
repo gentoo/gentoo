@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-9999.ebuild,v 1.37 2015/07/12 20:54:02 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-9999.ebuild,v 1.38 2015/07/25 21:28:22 dilfridge Exp $
 
 EAPI=5
 
@@ -159,7 +159,10 @@ COMMON_DEPEND="
 		x11-libs/gdk-pixbuf[X]
 		>=x11-libs/gtk+-2.24:2
 	)
-	gtk3? ( >=x11-libs/gtk+-3.2:3 )
+	gtk3? (
+		dev-libs/glib:2
+		>=x11-libs/gtk+-3.2:3
+	)
 	gstreamer? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0

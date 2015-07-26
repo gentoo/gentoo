@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/PyQt4/PyQt4-4.11.1.ebuild,v 1.14 2015/04/14 12:36:33 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/PyQt4/PyQt4-4.11.1.ebuild,v 1.15 2015/07/25 00:00:51 pesa Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
@@ -8,7 +8,8 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 inherit eutils multibuild python-r1 qmake-utils toolchain-funcs
 
 DESCRIPTION="Python bindings for the Qt toolkit"
-HOMEPAGE="http://www.riverbankcomputing.co.uk/software/pyqt/intro/ https://pypi.python.org/pypi/PyQt4"
+HOMEPAGE="http://www.riverbankcomputing.com/software/pyqt/intro
+	https://pypi.python.org/pypi/PyQt4"
 
 if [[ ${PV} == *_pre* ]]; then
 	MY_P="PyQt-x11-gpl-snapshot-${PV%_pre*}-${REVISION}"

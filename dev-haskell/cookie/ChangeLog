@@ -1,6 +1,12 @@
 # ChangeLog for dev-haskell/cookie
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/cookie/ChangeLog,v 1.7 2015/06/06 10:48:19 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/cookie/ChangeLog,v 1.8 2015/07/26 14:11:03 slyfox Exp $
+
+*cookie-0.4.1.6 (26 Jul 2015)
+
+  26 Jul 2015; Sergei Trofimovich <slyfox@gentoo.org> +cookie-0.4.1.6.ebuild,
+  -cookie-0.4.1.1.ebuild:
+  Version bump.
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

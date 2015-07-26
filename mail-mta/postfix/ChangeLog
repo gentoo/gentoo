@@ -1,6 +1,24 @@
 # ChangeLog for mail-mta/postfix
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/postfix/ChangeLog,v 1.596 2015/06/28 13:56:16 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/postfix/ChangeLog,v 1.598 2015/07/22 16:11:23 eras Exp $
+
+*postfix-3.0.2 (22 Jul 2015)
+*postfix-2.10.8 (22 Jul 2015)
+*postfix-3.1_pre20150721 (22 Jul 2015)
+*postfix-2.11.6 (22 Jul 2015)
+
+  22 Jul 2015; Eray Aslan <eras@gentoo.org> +postfix-2.10.8.ebuild,
+  +postfix-2.11.6.ebuild, +postfix-3.0.2.ebuild,
+  +postfix-3.1_pre20150721.ebuild, -postfix-2.10.7.ebuild,
+  -postfix-2.11.3.ebuild, -postfix-2.11.4.ebuild, -postfix-2.11.5.ebuild,
+  -postfix-3.1_pre20150712.ebuild:
+  Version bump
+
+*postfix-3.1_pre20150712 (20 Jul 2015)
+
+  20 Jul 2015; Eray Aslan <eras@gentoo.org> +postfix-3.1_pre20150712.ebuild,
+  -postfix-3.1_pre20150523.ebuild:
+  Version bump
 
   28 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> postfix-3.0.1-r1.ebuild:
   alpha stable wrt bug #551084

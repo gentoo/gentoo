@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/lshw
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/lshw/ChangeLog,v 1.116 2014/05/31 14:45:01 ssuominen Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/lshw/ChangeLog,v 1.117 2015/07/21 21:31:18 mrueg Exp $
+
+  21 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -lshw-02.15b.ebuild:
+  Remove old.
 
 *lshw-02.17b-r1 (31 May 2014)
 

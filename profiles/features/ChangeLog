@@ -1,6 +1,9 @@
 # ChangeLog for Gentoo/AMD64 profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/features/ChangeLog,v 1.91 2015/07/09 02:25:29 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/features/ChangeLog,v 1.92 2015/07/18 15:46:11 rich0 Exp $
+
+  18 Jul 2015; Richard Freeman <rich0@gentoo.org> selinux/package.mask:
+  Mask sys-process/systemd-cron.
 
   09 Jul 2015; Mike Gilbert <floppym@gentoo.org> selinux/package.mask:
   Mask dev-python/python-systemd.

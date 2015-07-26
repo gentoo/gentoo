@@ -1,6 +1,10 @@
 # ChangeLog for dev-texlive/texlive-fontsrecommended
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-fontsrecommended/ChangeLog,v 1.74 2015/07/16 09:14:22 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-fontsrecommended/ChangeLog,v 1.75 2015/07/22 19:37:42 blueness Exp $
+
+  22 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
+  texlive-fontsrecommended-2014.ebuild:
+  Stable for ppc, bug #550840.
 
 *texlive-fontsrecommended-2015 (16 Jul 2015)
 

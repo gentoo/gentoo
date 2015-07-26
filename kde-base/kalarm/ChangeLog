@@ -1,6 +1,12 @@
 # ChangeLog for kde-base/kalarm
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kalarm/ChangeLog,v 1.348 2015/07/12 22:04:28 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kalarm/ChangeLog,v 1.350 2015/07/25 12:06:41 pacho Exp $
+
+  25 Jul 2015; Pacho Ramos <pacho@gentoo.org> kalarm-4.14.8.ebuild:
+  ppc stable wrt bug #550740
+
+  18 Jul 2015; Johannes Huber <johu@gentoo.org> -kalarm-4.14.6.ebuild:
+  Remove KDE PIM 4.14.6
 
 *kalarm-4.4.2015.06 (12 Jul 2015)
 

@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/cffi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/cffi/ChangeLog,v 1.67 2015/07/11 13:48:32 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/cffi/ChangeLog,v 1.68 2015/07/20 03:31:54 patrick Exp $
+
+  20 Jul 2015; Patrick Lauer <patrick@gentoo.org> cffi-1.1.2.ebuild:
+  Add pypy keyword for xcffib
 
   11 Jul 2015; Tobias Klausmann <klausman@gentoo.org> cffi-0.8.6.ebuild:
   Stable on alpha, bug 530294

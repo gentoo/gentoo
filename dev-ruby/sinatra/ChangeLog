@@ -1,6 +1,18 @@
 # ChangeLog for dev-ruby/sinatra
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/sinatra/ChangeLog,v 1.54 2015/07/08 06:53:04 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/sinatra/ChangeLog,v 1.57 2015/07/26 06:40:12 graaff Exp $
+
+  26 Jul 2015; Hans de Graaff <graaff@gentoo.org> sinatra-1.4.6.ebuild:
+  Drop optional haml dependency to simplify stable dependency chain.
+
+*sinatra-1.4.6-r1 (26 Jul 2015)
+
+  26 Jul 2015; Hans de Graaff <graaff@gentoo.org> sinatra-1.4.6.ebuild,
+  +sinatra-1.4.6-r1.ebuild:
+  Create stable candidate.
+
+  25 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -sinatra-1.4.5.ebuild:
+  Remove old.
 
   08 Jul 2015; Hans de Graaff <graaff@gentoo.org> sinatra-1.4.6.ebuild:
   Make slot dependencies explicit.

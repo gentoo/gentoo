@@ -1,6 +1,10 @@
 # ChangeLog for dev-util/cpptest
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/cpptest/ChangeLog,v 1.21 2012/12/16 15:14:49 armin76 Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/cpptest/ChangeLog,v 1.22 2015/07/21 21:01:42 mrueg Exp $
+
+  21 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -cpptest-1.1.0.ebuild,
+  -cpptest-1.1.1.ebuild, -files/cpptest-1.1.0-htmldir.patch:
+  Remove old.
 
   16 Dec 2012; Raúl Porcel <armin76@gentoo.org> cpptest-1.1.0.ebuild,
   cpptest-1.1.1.ebuild, cpptest-1.1.2.ebuild:

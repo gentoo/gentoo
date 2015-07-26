@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/kdevelop-php/kdevelop-php-1.6.0.ebuild,v 1.1 2014/03/12 12:12:48 johu Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/kdevelop-php/kdevelop-php-1.6.0.ebuild,v 1.2 2015/07/25 16:07:44 mgorny Exp $
 
 EAPI=5
 
@@ -24,10 +24,10 @@ else
 fi
 
 DEPEND="
-	>=dev-util/kdevelop-pg-qt-1.0.0
+	>=dev-util/kdevelop-pg-qt-1.0.0:4
 "
 RDEPEND="
-	dev-util/kdevelop
+	dev-util/kdevelop:${SLOT}
 	doc? ( >=dev-util/kdevelop-php-docs-${PV}:${SLOT} )
 "
 PATCHES=( "${FILESDIR}/${PN}"-1.2.0-parmake.patch )

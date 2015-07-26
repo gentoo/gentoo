@@ -1,6 +1,9 @@
 # ChangeLog for dev-util/mingw-runtime
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/mingw-runtime/ChangeLog,v 1.30 2015/02/27 08:10:52 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/mingw-runtime/ChangeLog,v 1.31 2015/07/21 21:11:54 mrueg Exp $
+
+  21 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -mingw-runtime-3.16.ebuild:
+  Remove old.
 
   27 Feb 2015; Mike Frysinger <vapier@gentoo.org> mingw-runtime-3.16.ebuild,
   mingw-runtime-3.18.ebuild, mingw-runtime-3.20.2.ebuild,

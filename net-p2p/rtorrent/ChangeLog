@@ -1,6 +1,11 @@
 # ChangeLog for net-p2p/rtorrent
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/rtorrent/ChangeLog,v 1.199 2015/06/09 12:29:08 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/rtorrent/ChangeLog,v 1.200 2015/07/19 15:56:14 heroxbd Exp $
+
+  19 Jul 2015; Benda Xu <heroxbd@gentoo.org> files/rtorrent-0.9.4-tinfo.patch,
+  rtorrent-0.9.4-r1.ebuild:
+  net-p2p/rtorrent-0.9.4-r1 depends on dev-util/cppunit, bug 548998.  Credits:
+  David Flogeras, Ivan S. Titov, Toralf Foerster and erlend1969.
 
   09 Jun 2015; Manuel Rüger <mrueg@gentoo.org> metadata.xml:
   Drop unused USEflag description.

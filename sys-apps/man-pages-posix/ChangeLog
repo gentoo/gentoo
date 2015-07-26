@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/man-pages-posix
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/man-pages-posix/ChangeLog,v 1.18 2014/07/06 23:22:04 kumba Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/man-pages-posix/ChangeLog,v 1.19 2015/07/21 21:30:36 mrueg Exp $
+
+  21 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -man-pages-posix-2003a.ebuild:
+  Remove old.
 
   06 Jul 2014; Joshua Kinard <kumba@gentoo.org> man-pages-posix-2013a.ebuild:
   Changed mips -> ~mips: we don't have a stable keyword anymore.

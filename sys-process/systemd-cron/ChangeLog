@@ -1,0 +1,11 @@
+# ChangeLog for sys-process/systemd-cron
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-process/systemd-cron/ChangeLog,v 1.1 2015/07/18 15:48:50 rich0 Exp $
+
+*systemd-cron-1.5.3 (18 Jul 2015)
+
+  18 Jul 2015; Richard Freeman <rich0@gentoo.org> +systemd-cron-1.5.3.ebuild,
+  +metadata.xml:
+  Introduce sys-process/systemd-cron. Thanks to Lara Maia and others for
+  maintaining this outside of the tree until now.
+

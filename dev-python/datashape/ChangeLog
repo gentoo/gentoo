@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/datashape
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/datashape/ChangeLog,v 1.18 2015/06/09 10:40:39 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/datashape/ChangeLog,v 1.19 2015/07/19 09:54:09 patrick Exp $
+
+*datashape-0.4.6 (19 Jul 2015)
+
+  19 Jul 2015; Patrick Lauer <patrick@gentoo.org> +datashape-0.4.6.ebuild:
+  Bump
 
 *datashape-0.4.2 (09 Jun 2015)
 

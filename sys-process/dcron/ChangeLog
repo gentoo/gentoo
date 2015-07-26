@@ -1,6 +1,10 @@
 # ChangeLog for sys-process/dcron
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/dcron/ChangeLog,v 1.36 2014/01/18 03:47:10 vapier Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-process/dcron/ChangeLog,v 1.37 2015/07/22 20:32:16 mrueg Exp $
+
+  22 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -dcron-3.2-r1.ebuild,
+  -dcron-4.4.ebuild, -dcron-4.5.ebuild:
+  Remove old.
 
   18 Jan 2014; Mike Frysinger <vapier@gentoo.org> dcron-4.5-r1.ebuild:
   Add arm64 love.

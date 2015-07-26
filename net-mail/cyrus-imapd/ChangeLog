@@ -1,6 +1,20 @@
 # ChangeLog for net-mail/cyrus-imapd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/cyrus-imapd/ChangeLog,v 1.216 2015/06/26 17:33:50 grknight Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/cyrus-imapd/ChangeLog,v 1.219 2015/07/22 14:34:43 eras Exp $
+
+*cyrus-imapd-2.5.4 (22 Jul 2015)
+
+  22 Jul 2015; Eray Aslan <eras@gentoo.org> +cyrus-imapd-2.5.4.ebuild,
+  +files/cyrus-imapd-db.patch, metadata.xml:
+  Version bump - bug #554336.  Fix berkeleydb detection - bug #555122
+
+  21 Jul 2015; Eray Aslan <eras@gentoo.org> cyrus-imapd-2.4.18.ebuild:
+  Add missing slot to sqlite
+
+*cyrus-imapd-2.4.18 (21 Jul 2015)
+
+  21 Jul 2015; Eray Aslan <eras@gentoo.org> +cyrus-imapd-2.4.18.ebuild:
+  Version bump
 
   26 Jun 2015; Brian Evans <grknight@gentoo.org> cyrus-imapd-2.4.17-r1.ebuild:
   Non-maintainer commit: Fix mysql_config references for build failures wrt bug

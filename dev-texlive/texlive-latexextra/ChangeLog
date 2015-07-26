@@ -1,6 +1,10 @@
 # ChangeLog for dev-texlive/texlive-latexextra
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-latexextra/ChangeLog,v 1.96 2015/07/16 09:23:31 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-latexextra/ChangeLog,v 1.97 2015/07/22 19:37:41 blueness Exp $
+
+  22 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
+  texlive-latexextra-2014.ebuild:
+  Stable for ppc, bug #550840.
 
 *texlive-latexextra-2015 (16 Jul 2015)
 

@@ -1,6 +1,15 @@
 # ChangeLog for net-libs/webkit-gtk
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/webkit-gtk/ChangeLog,v 1.322 2015/06/26 09:23:38 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/webkit-gtk/ChangeLog,v 1.323 2015/07/26 04:24:08 tetromino Exp $
+
+  26 Jul 2015; Alexandre Rostovtsev <tetromino@gentoo.org>
+  webkit-gtk-2.4.8.ebuild, webkit-gtk-2.4.8-r200.ebuild,
+  webkit-gtk-2.4.9.ebuild, webkit-gtk-2.4.9-r200.ebuild,
+  webkit-gtk-2.6.5.ebuild, webkit-gtk-2.6.6.ebuild, webkit-gtk-2.8.3.ebuild:
+  Don't check for c++11 support in pkg_pretend when installing binpkg (bug
+  #555374, thanks to Michał Górny). Check for disk space in pkg_setup under
+  the same conditions as in pkg_pretend (this logic was accidentally dropped in
+  the 2.6.x bump).
 
   26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> webkit-gtk-2.4.9-r200.ebuild,
   webkit-gtk-2.4.9.ebuild, webkit-gtk-2.6.6.ebuild:

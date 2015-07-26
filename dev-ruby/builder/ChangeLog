@@ -1,6 +1,15 @@
 # ChangeLog for dev-ruby/builder
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/builder/ChangeLog,v 1.124 2015/07/17 05:35:51 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/builder/ChangeLog,v 1.127 2015/07/25 13:28:23 mrueg Exp $
+
+  25 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -builder-3.0.4.ebuild:
+  Remove old.
+
+  25 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> builder-3.0.4-r1.ebuild:
+  sparc stable wrt bug #542574
+
+  25 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> builder-3.2.2.ebuild:
+  sparc stable wrt bug #542574
 
   17 Jul 2015; Jeroen Roovers <jer@gentoo.org> builder-3.0.4-r1.ebuild:
   Stable for PPC64 (bug #551414).

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/qscintilla-python/qscintilla-python-2.8.4.ebuild,v 1.8 2015/05/08 17:15:34 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/qscintilla-python/qscintilla-python-2.8.4.ebuild,v 1.9 2015/07/25 00:08:23 pesa Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
@@ -10,7 +10,7 @@ inherit python-r1 qmake-utils
 MY_P=QScintilla-gpl-${PV}
 
 DESCRIPTION="Python bindings for Qscintilla"
-HOMEPAGE="http://www.riverbankcomputing.co.uk/software/qscintilla/intro"
+HOMEPAGE="http://www.riverbankcomputing.com/software/qscintilla/intro"
 SRC_URI="mirror://sourceforge/pyqt/${MY_P}.tar.gz"
 
 LICENSE="|| ( GPL-2 GPL-3 )"

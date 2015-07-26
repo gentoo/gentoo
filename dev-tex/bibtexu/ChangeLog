@@ -1,6 +1,10 @@
 # ChangeLog for dev-tex/bibtexu
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/bibtexu/ChangeLog,v 1.51 2015/07/15 10:10:14 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/bibtexu/ChangeLog,v 1.52 2015/07/22 19:23:32 blueness Exp $
+
+  22 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
+  bibtexu-3.71_p20140525.ebuild:
+  Stable for ppc, bug #550840.
 
 *bibtexu-3.71_p20150521 (15 Jul 2015)
 

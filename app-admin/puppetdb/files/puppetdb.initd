@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/puppetdb/files/puppetdb.initd,v 1.2 2015/07/18 09:11:01 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/puppetdb/files/puppetdb.initd,v 1.3 2015/07/20 05:41:49 prometheanfire Exp $
 
 extra_commands="checkconfig"
 
@@ -34,14 +34,13 @@ checkconfig() {
         eend 1
     fi
 
+    checkpath -d -m 0755 "${LOGDIR%/*}"
+    checkpath -d -m 0755 "${RUNDIR%/*}"
     checkpath -d -m 0700 -o "${USER}:${GROUP}" "${LOGDIR}"
     checkpath -d -m 0755 -o "${USER}:${GROUP}" "${RUNDIR}"
 
-    JAVA_ARGS="${JAVA_ARGS} -cp '${INSTALL_DIR}/puppetdb.jar' clojure.main -m puppetlabs.puppetdb.main \
-    --config ${CONFIG} -b '${BOOTSTRAP_CONFIG}'"
-
-    EXEC="${JAVA_BIN} -XX:OnOutOfMemoryError=\"kill -9 %p\" -XX:+HeapDumpOnOutOfMemoryError \
-    -XX:HeapDumpPath=/var/log/puppetlabs/puppetdb -Djava.security.egd=/dev/urandom ${JAVA_ARGS}"
+    JAVA_ARGS="${JAVA_ARGS} -cp '${INSTALL_DIR}/puppetdb.jar' clojure.main -m puppetlabs.puppetdb.main --config ${CONFIG} -b '${BOOTSTRAP_CONFIG}'"
+    EXEC="${JAVA_BIN} -XX:OnOutOfMemoryError=\"kill -9 %p\" -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/var/log/puppetlabs/puppetdb -Djava.security.egd=/dev/urandom ${JAVA_ARGS}"
 }
 
 start() {
@@ -49,8 +48,9 @@ start() {
 
     ebegin "Starting PuppetDB"
     start-stop-daemon --start -u "${USER}" -g "${GROUP}" \
-        --exec ${EXEC} --pidfile "${RUNDIR}/puppetdb.pid" \
-        -- >> "${LOGDIR}/puppetdb-daemon.log"
+        -m --pidfile "${RUNDIR}/puppetdb.pid" \
+        -b --exec "/bin/bash" \
+        -- -c "exec ${EXEC} >> ${LOGDIR}/daemon.log 2>&1"
     local retval=$?
     if [ $retval -ne 0 ]; then
         ewarn "Error starting puppetdb."

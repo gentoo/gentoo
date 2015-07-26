@@ -1,6 +1,16 @@
 # ChangeLog for sys-libs/glibc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/ChangeLog,v 1.1060 2015/06/22 04:51:20 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/ChangeLog,v 1.1062 2015/07/21 03:54:01 vapier Exp $
+
+*glibc-2.21-r1 (21 Jul 2015)
+
+  21 Jul 2015; Mike Frysinger <vapier@gentoo.org> +glibc-2.21-r1.ebuild,
+  -glibc-2.21.ebuild:
+  Version bump with fixes for #541246 #541542 #547296 #550836 and move into
+  unstable.
+
+  21 Jul 2015; Mike Frysinger <vapier@gentoo.org> glibc-2.20-r2.ebuild:
+  Fix sparc32 sigaction ABI breakage #550836.
 
   22 Jun 2015; Mike Frysinger <vapier@gentoo.org> glibc-2.21.ebuild,
   glibc-9999.ebuild:

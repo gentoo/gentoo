@@ -1,6 +1,12 @@
 # ChangeLog for dev-ruby/racc
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/racc/ChangeLog,v 1.114 2014/12/27 21:05:31 graaff Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/racc/ChangeLog,v 1.116 2015/07/26 08:36:40 maekke Exp $
+
+  26 Jul 2015; Markus Meier <maekke@gentoo.org> racc-1.4.11.ebuild:
+  arm stable, bug #518094
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org> racc-1.4.11.ebuild:
+  ppc stable wrt bug #518094
 
   27 Dec 2014; Hans de Graaff <graaff@gentoo.org> racc-1.4.12.ebuild:
   Add ruby22.

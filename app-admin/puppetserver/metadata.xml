@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<use>
+		<flag name="puppetdb">Adds support for connecting to puppetdb</flag>
+	</use>
+	<longdescription lang="en">
+		Puppet Server is the next-generation application for managing Puppet agents.
+	</longdescription>
+</pkgmetadata>

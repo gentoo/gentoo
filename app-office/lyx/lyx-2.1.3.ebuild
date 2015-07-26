@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/lyx/lyx-2.1.3.ebuild,v 1.10 2015/05/11 06:22:09 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/lyx/lyx-2.1.3.ebuild,v 1.11 2015/07/18 14:26:21 pacho Exp $
 
 EAPI=5
 
@@ -34,7 +34,7 @@ DOCS=( ANNOUNCE NEWS README RELEASE-NOTES UPGRADING )
 
 COMMONDEPEND="dev-qt/qtgui:4
 	dev-qt/qtcore:4
-	>=dev-libs/boost-1.34
+	>=dev-libs/boost-1.34:=
 	${PYTHON_DEPS}"
 
 RDEPEND="${COMMONDEPEND}

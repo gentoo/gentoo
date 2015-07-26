@@ -1,6 +1,12 @@
 # ChangeLog for dev-perl/Config-Properties
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Config-Properties/ChangeLog,v 1.8 2015/05/01 20:40:53 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Config-Properties/ChangeLog,v 1.9 2015/07/25 17:24:04 dilfridge Exp $
+
+*Config-Properties-1.800.0 (25 Jul 2015)
+
+  25 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Config-Properties-1.800.0.ebuild, -Config-Properties-1.760.0.ebuild:
+  Version bump; remove old
 
 *Config-Properties-1.770.0 (01 May 2015)
 

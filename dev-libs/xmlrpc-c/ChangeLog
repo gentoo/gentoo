@@ -1,6 +1,10 @@
 # ChangeLog for dev-libs/xmlrpc-c
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/xmlrpc-c/ChangeLog,v 1.152 2015/01/11 21:30:00 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/xmlrpc-c/ChangeLog,v 1.153 2015/07/23 14:32:45 pinkbyte Exp $
+
+  23 Jul 2015; Sergey Popov <pinkbyte@gentoo.org> xmlrpc-c-1.32.05-r1.ebuild:
+  Add 'test' to IUSE variable, wrt bug #525360, thanks to Kent Fredric
+  <kentfredric AT gmail.com>
 
   11 Jan 2015; Mikle Kolyada <zlogene@gentoo.org> metadata.xml:
   Drop myself

@@ -1,6 +1,12 @@
 # ChangeLog for net-wireless/bladerf
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/bladerf/ChangeLog,v 1.10 2015/04/18 12:34:38 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/bladerf/ChangeLog,v 1.11 2015/07/26 02:56:37 zerochaos Exp $
+
+*bladerf-2015.07 (26 Jul 2015)
+
+  26 Jul 2015; Rick Farina <zerochaos@gentoo.org> +bladerf-2015.07.ebuild,
+  bladerf-9999.ebuild:
+  bump
 
   18 Apr 2015; Sven Wegener <swegener@gentoo.org> bladerf-2015.02.ebuild,
   bladerf-9999.ebuild:

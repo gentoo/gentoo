@@ -1,6 +1,15 @@
 # ChangeLog for app-text/mythes
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/mythes/ChangeLog,v 1.19 2015/06/09 12:30:36 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/mythes/ChangeLog,v 1.22 2015/07/26 00:43:54 dilfridge Exp $
+
+  26 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org> -mythes-1.2.3.ebuild:
+  Remove old
+
+  22 Jul 2015; Agostino Sarubbo <ago@gentoo.org> mythes-1.2.4.ebuild:
+  Stable for x86, wrt bug #555584
+
+  22 Jul 2015; Agostino Sarubbo <ago@gentoo.org> mythes-1.2.4.ebuild:
+  Stable for amd64, wrt bug #555584
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

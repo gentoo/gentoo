@@ -1,6 +1,9 @@
 # ChangeLog for Gentoo/ARM profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/arm64/ChangeLog,v 1.13 2015/06/04 18:47:03 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/arm64/ChangeLog,v 1.14 2015/07/20 06:49:31 vapier Exp $
+
+  20 Jul 2015; Mike Frysinger <vapier@gentoo.org> package.use.mask:
+  Mask curl packages that have not yet been keyworded.
 
   04 Jun 2015; Michael Palimaka <kensington@gentoo.org> package.use.mask:
   Move various kde-base packages to kde-apps.

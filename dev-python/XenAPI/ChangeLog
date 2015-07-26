@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/XenAPI
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/XenAPI/ChangeLog,v 1.4 2015/06/04 10:02:47 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/XenAPI/ChangeLog,v 1.5 2015/07/22 03:02:07 patrick Exp $
+
+  22 Jul 2015; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Fix metadata.xml
 
   04 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add pypi to remote-id in metadata.xml

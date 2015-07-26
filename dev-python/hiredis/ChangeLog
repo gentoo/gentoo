@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/hiredis
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/hiredis/ChangeLog,v 1.14 2015/07/17 13:05:46 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/hiredis/ChangeLog,v 1.15 2015/07/21 02:37:42 patrick Exp $
+
+  21 Jul 2015; Patrick Lauer <patrick@gentoo.org> hiredis-0.2.0.ebuild:
+  Remove arm keyword until dev-libs/hiredis catches up
 
 *hiredis-0.2.0 (17 Jul 2015)
 

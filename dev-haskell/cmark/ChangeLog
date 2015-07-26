@@ -1,0 +1,15 @@
+# ChangeLog for dev-haskell/cmark
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/cmark/ChangeLog,v 1.2 2015/07/20 18:28:11 slyfox Exp $
+
+*cmark-0.4.0.1 (20 Jul 2015)
+
+  20 Jul 2015; Sergei Trofimovich <slyfox@gentoo.org> +cmark-0.4.0.1.ebuild:
+  Version bump, a depend for pandoc-1.15.
+
+*cmark-0.3.4 (20 Jul 2015)
+
+  20 Jul 2015; Sergei Trofimovich <slyfox@gentoo.org> +cmark-0.3.4.ebuild,
+  +metadata.xml:
+  Fast, accurate CommonMark (Markdown) parser and renderer, initial import. A
+  depend for pandoc-1.14.

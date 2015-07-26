@@ -1,6 +1,12 @@
 # ChangeLog for dev-perl/MARC-Record
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/MARC-Record/ChangeLog,v 1.12 2013/09/12 15:41:27 idella4 Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/MARC-Record/ChangeLog,v 1.13 2015/07/21 22:38:00 dilfridge Exp $
+
+*MARC-Record-2.0.6 (21 Jul 2015)
+
+  21 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +MARC-Record-2.0.6.ebuild, -MARC-Record-2.0.4.ebuild:
+  Version bump
 
   12 Sep 2013; Ian Delaney <idella4@gentoo.org> -MARC-Record-2.0.3.ebuild:
   remove old of EAPI 3

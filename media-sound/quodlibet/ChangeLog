@@ -1,6 +1,9 @@
 # ChangeLog for media-sound/quodlibet
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/quodlibet/ChangeLog,v 1.115 2015/06/11 14:26:25 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/quodlibet/ChangeLog,v 1.116 2015/07/23 20:13:42 pacho Exp $
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org> quodlibet-3.4.1.ebuild:
+  ppc stable wrt bug #553622
 
   11 Jun 2015; Agostino Sarubbo <ago@gentoo.org> quodlibet-3.1.2.ebuild:
   Stable for ppc, wrt bug #550364

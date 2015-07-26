@@ -14,14 +14,15 @@
       quality than the included resampler and much faster than libsamplerate
       while keeping almost the same quality.
     </flag>
+    <flag name="lv2">Add support for Ladspa V2</flag>
     <flag name="midi">Enables MIDI support</flag>
-    <flag name="sbsms">Enables sbsms library support for pitch and tempo
-      changing
-    </flag>
+    <flag name="portmixer">Enable the internal portmixer feature</flag>
+    <flag name="sbsms">Enables sbsms library support for slower, more accurate
+      pitch and tempo changing</flag>
     <flag name="soundtouch">Enables soundtouch library support for pitch and
-      tempo changing
-    </flag>
+      tempo changing</flag>
     <flag name="twolame">Enables twolame support (MPEG Audio Layer 2 encoder)</flag>
     <flag name="vamp">Enables vamp plugins support (Audio analysing plugins)</flag>
+    <flag name="vst">Enable VST plugin support</flag>
   </use>
 </pkgmetadata>

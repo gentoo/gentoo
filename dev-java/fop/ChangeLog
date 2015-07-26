@@ -1,6 +1,12 @@
 # ChangeLog for dev-java/fop
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/fop/ChangeLog,v 1.85 2015/07/17 12:58:54 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/fop/ChangeLog,v 1.87 2015/07/22 14:11:36 monsieurp Exp $
+
+  22 Jul 2015; Patrice Clement <monsieurp@gentoo.org> -fop-2.0.ebuild:
+  Remove old.
+
+  19 Jul 2015; Patrice Clement <monsieurp@gentoo.org> fop-2.0-r1.ebuild:
+  Stable for amd64. Stable for ppc+ppc64+x86 with ALLARCHES. Fix bug 555326.
 
 *fop-2.0-r1 (17 Jul 2015)
 

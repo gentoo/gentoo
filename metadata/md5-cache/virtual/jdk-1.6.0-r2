@@ -1,7 +1,7 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual for Java Development Kit (JDK)
 EAPI=4
-KEYWORDS=amd64 ~arm ppc ppc64 x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~hppa-hpux ~ia64-hpux ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt
+KEYWORDS=amd64 ppc ppc64 x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~hppa-hpux ~ia64-hpux ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt
 RDEPEND=|| ( ppc? ( || ( =dev-java/ibm-jdk-bin-1.6.0* =dev-java/icedtea-6* ) ) ppc64? ( || ( =dev-java/ibm-jdk-bin-1.6.0* =dev-java/icedtea-6* ) ) =dev-java/icedtea-bin-6* =dev-java/icedtea-6* =dev-java/ibm-jdk-bin-1.6.0* =dev-java/hp-jdk-bin-1.6.0* =dev-java/soylatte-jdk-bin-1.0* =dev-java/apple-jdk-bin-1.6.0* )
 SLOT=1.6
-_md5_=a875a411045e850da1737d8437148e35
+_md5_=5da906b97590d286fca42fab57000c6d

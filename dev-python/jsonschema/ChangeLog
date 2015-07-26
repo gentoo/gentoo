@@ -1,6 +1,10 @@
 # ChangeLog for dev-python/jsonschema
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/jsonschema/ChangeLog,v 1.20 2015/06/21 10:39:52 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/jsonschema/ChangeLog,v 1.21 2015/07/18 17:10:27 blueness Exp $
+
+  18 Jul 2015; Anthony G. Basile <blueness@gentoo.org> jsonschema-2.3.0.ebuild,
+  jsonschema-2.4.0.ebuild:
+  Keyword ~ppc ~ppc64.  Bug #541628.
 
   21 Jun 2015; Markus Meier <maekke@gentoo.org> jsonschema-2.4.0.ebuild:
   add ~arm, bug #541628

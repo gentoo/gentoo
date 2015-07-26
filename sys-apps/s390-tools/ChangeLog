@@ -1,6 +1,11 @@
 # ChangeLog for sys-apps/s390-tools
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/s390-tools/ChangeLog,v 1.34 2014/04/06 14:42:27 vapier Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/s390-tools/ChangeLog,v 1.35 2015/07/22 20:37:22 mrueg Exp $
+
+  22 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -s390-tools-1.10.0.ebuild,
+  -s390-tools-1.13.0.ebuild, -s390-tools-1.15.0.ebuild,
+  -s390-tools-1.16.0.ebuild, -s390-tools-1.9.0.ebuild:
+  Remove old.
 
   06 Apr 2014; Mike Frysinger <vapier@gentoo.org> s390-tools-1.23.1.ebuild:
   Mark s390 stable.

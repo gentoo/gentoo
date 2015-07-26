@@ -1,6 +1,10 @@
 # ChangeLog for x11-drivers/xf86-video-sis
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-video-sis/ChangeLog,v 1.66 2012/12/28 11:25:39 ago Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-video-sis/ChangeLog,v 1.67 2015/07/22 02:53:53 mrueg Exp $
+
+  22 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -xf86-video-sis-0.10.3.ebuild,
+  -xf86-video-sis-0.10.4-r1.ebuild, -xf86-video-sis-0.10.6.ebuild:
+  Remove old.
 
   28 Dec 2012; Agostino Sarubbo <ago@gentoo.org> xf86-video-sis-0.10.7.ebuild:
   Stable for ia64, wrt bug #440872

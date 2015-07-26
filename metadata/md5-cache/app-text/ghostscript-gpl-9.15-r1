@@ -11,4 +11,4 @@ RESTRICT=djvu? ( bindist )
 SLOT=0
 SRC_URI=http://downloads.ghostscript.com/public/ghostscript-9.15.tar.bz2 mirror://gentoo/ghostscript-gpl-9.12-patchset-1.tar.bz2 djvu? ( mirror://sourceforge/djvu/gsdjvu-1.6.tar.gz )
 _eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=4213e8e2623c50d2b19d949250b0b997
+_md5_=f4fc5504c69ed08f07bfd5d7c135497d

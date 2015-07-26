@@ -1,6 +1,12 @@
 # ChangeLog for sys-apps/attr
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/attr/ChangeLog,v 1.174 2015/05/10 16:31:06 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/attr/ChangeLog,v 1.176 2015/07/24 03:54:20 blueness Exp $
+
+  24 Jul 2015; Anthony G. Basile <blueness@gentoo.org> attr-2.4.47-r2.ebuild:
+  Stable on amd64/ppc/ppc64/x86
+
+  24 Jul 2015; Mike Frysinger <vapier@gentoo.org> attr-2.4.47-r2.ebuild:
+  Mark arm/arm64/hppa/ia64/m68k/s390/sh stable #555746.
 
 *attr-2.4.47-r2 (10 May 2015)
 

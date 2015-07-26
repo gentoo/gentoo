@@ -1,6 +1,16 @@
 # ChangeLog for dev-ruby/minitest
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/minitest/ChangeLog,v 1.182 2015/06/16 04:51:35 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/minitest/ChangeLog,v 1.185 2015/07/26 08:38:08 maekke Exp $
+
+  26 Jul 2015; Markus Meier <maekke@gentoo.org> minitest-5.3.3-r1.ebuild:
+  arm stable, bug #518094
+
+  26 Jul 2015; Markus Meier <maekke@gentoo.org> minitest-4.7.5-r1.ebuild:
+  arm stable, bug #518094
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org> minitest-4.7.5-r1.ebuild,
+  minitest-5.3.3-r1.ebuild:
+  ppc stable wrt bug #518094
 
 *minitest-5.7.0 (16 Jun 2015)
 

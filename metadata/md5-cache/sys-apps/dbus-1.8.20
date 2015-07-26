@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test
+DEPEND=>=dev-libs/expat-2 selinux? ( sys-libs/libselinux ) systemd? ( sys-apps/systemd:0= ) X? ( x11-libs/libX11 x11-libs/libXt ) abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20131008-r4 !app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] ) app-text/xmlto app-text/docbook-xml-dtd:4.4 virtual/pkgconfig doc? ( app-doc/doxygen ) test? ( >=dev-libs/glib-2.24:2 || ( >=dev-lang/python-2.7.5-r2:2.7 ) ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=A message bus system, a simple way for applications to talk to each other
+EAPI=5
+HOMEPAGE=http://dbus.freedesktop.org/
+IUSE=debug doc selinux static-libs systemd test X test abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris
+LICENSE=|| ( AFL-2.1 GPL-2 )
+RDEPEND=>=dev-libs/expat-2 selinux? ( sys-libs/libselinux ) systemd? ( sys-apps/systemd:0= ) X? ( x11-libs/libX11 x11-libs/libXt ) abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20131008-r4 !app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] ) selinux? ( sec-policy/selinux-dbus )
+SLOT=0
+SRC_URI=http://dbus.freedesktop.org/releases/dbus/dbus-1.8.20.tar.gz
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	linux-info	8cbc678e083c23e4ad546ca6509cf304	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multilib-build	e733e978b7fa70607cc221fd9c070db6	multilib-minimal	13dd976916c35a1e2c8d170e840c7018	python-any-r1	4756de53ea4d40471a582e898815a5c8	python-utils-r1	df6eb914b4b2d70d9c5e7c9331437c52	readme.gentoo	106edea5533517715013de909a333abd	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	versionator	cd0bcdb170807e4a1984115e9d53a26f	virtualx	73cfc129b4b9ba23aed1abb10c825d86
+_md5_=fbaa1140d2c811e7ab90773d70768ef5

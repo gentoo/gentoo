@@ -1,6 +1,10 @@
 # ChangeLog for media-sound/rhythmbox
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/rhythmbox/ChangeLog,v 1.272 2015/06/26 09:23:12 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/rhythmbox/ChangeLog,v 1.273 2015/07/26 10:18:31 pacho Exp $
+
+  26 Jul 2015; Pacho Ramos <pacho@gentoo.org> -rhythmbox-3.0.3.ebuild,
+  -rhythmbox-3.1.ebuild:
+  Drop old
 
   26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> rhythmbox-3.2.1.ebuild:
   Stable for x86, wrt bug #551814

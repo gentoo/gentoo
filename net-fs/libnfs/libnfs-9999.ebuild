@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/libnfs/libnfs-9999.ebuild,v 1.8 2015/06/15 11:39:00 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/libnfs/libnfs-9999.ebuild,v 1.10 2015/07/22 02:36:29 vapier Exp $
 
 EAPI="5"
 
@@ -12,7 +12,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-2 autotools-utils
 else
 	SRC_URI="https://github.com/sahlberg/${PN}/archive/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~x86"
 	inherit autotools-utils
 fi
 
@@ -20,7 +20,7 @@ DESCRIPTION="Client library for accessing NFS shares over a network"
 HOMEPAGE="https://github.com/sahlberg/libnfs"
 
 LICENSE="LGPL-2.1 GPL-3"
-SLOT="0"
+SLOT="0/8"  # sub-slot matches SONAME major
 IUSE="examples static-libs"
 
 RDEPEND=""

@@ -1,6 +1,12 @@
 # ChangeLog for net-libs/zeromq
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/zeromq/ChangeLog,v 1.73 2015/07/12 10:26:24 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/zeromq/ChangeLog,v 1.75 2015/07/26 06:18:47 jer Exp $
+
+  26 Jul 2015; Jeroen Roovers <jer@gentoo.org> zeromq-4.1.1.ebuild:
+  Stable for HPPA (bug #551214).
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org> zeromq-4.1.1.ebuild:
+  ppc stable wrt bug #551214
 
   12 Jul 2015; Jeroen Roovers <jer@gentoo.org> zeromq-4.1.1.ebuild:
   Stable for PPC64 (bug #551214).

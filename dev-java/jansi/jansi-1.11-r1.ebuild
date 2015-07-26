@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jansi/jansi-1.11-r1.ebuild,v 1.4 2015/07/01 08:47:26 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jansi/jansi-1.11-r1.ebuild,v 1.5 2015/07/21 13:28:04 chewi Exp $
 
 EAPI="5"
 
@@ -24,7 +24,7 @@ DEPEND="${CDEPEND}
 		dev-java/ant-junit4:0
 		dev-java/junit:4
 	)
-	>=virtual/jdk-1.5"
+	>=virtual/jdk-1.7"
 
 RDEPEND="${CDEPEND}
 	>=virtual/jre-1.5"

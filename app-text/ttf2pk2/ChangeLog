@@ -1,6 +1,10 @@
 # ChangeLog for app-text/ttf2pk2
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/ttf2pk2/ChangeLog,v 1.30 2015/07/16 15:35:13 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/ttf2pk2/ChangeLog,v 1.31 2015/07/22 19:51:06 blueness Exp $
+
+  22 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
+  ttf2pk2-2.0_p20140525.ebuild:
+  Stable for amd64, ppc and x86.  Bug #550840.
 
 *ttf2pk2-2.0_p20150521 (16 Jul 2015)
 

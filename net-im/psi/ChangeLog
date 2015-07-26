@@ -1,6 +1,10 @@
 # ChangeLog for net-im/psi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/psi/ChangeLog,v 1.241 2015/02/22 18:41:23 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/psi/ChangeLog,v 1.242 2015/07/22 01:55:42 pesa Exp $
+
+  22 Jul 2015; Davide Pesavento <pesa@gentoo.org> psi-0.14-r4.ebuild,
+  psi-0.15.ebuild, psi-9999.ebuild:
+  Sort and cleanup deps. Pin qca dep to =2.0* wrt bug 555526.
 
   22 Feb 2015; Michał Górny <mgorny@gentoo.org> psi-0.14-r4.ebuild,
   psi-0.15.ebuild, psi-9999.ebuild:

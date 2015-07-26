@@ -1,9 +1,0 @@
-DEFINED_PHASES=compile install unpack
-DESCRIPTION=Old-style inetd
-HOMEPAGE=ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/
-KEYWORDS=alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86
-LICENSE=BSD
-SLOT=0
-SRC_URI=ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/netkit-base-0.17.tar.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=5b709bd2ca7e4f96cf76b3f747213641

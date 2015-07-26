@@ -1,6 +1,19 @@
 # ChangeLog for www-apps/wordpress
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/wordpress/ChangeLog,v 1.175 2015/05/08 17:14:44 sping Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/wordpress/ChangeLog,v 1.177 2015/07/25 16:32:22 sping Exp $
+
+  25 Jul 2015; Sebastian Pipping <sping@gentoo.org> -wordpress-3.8.5.ebuild,
+  -wordpress-3.9.3.ebuild, -wordpress-4.0.1.ebuild, -wordpress-4.1.ebuild,
+  -wordpress-4.1.1.ebuild, -wordpress-4.1.2-r2.ebuild, -wordpress-4.2.ebuild,
+  -wordpress-4.2.1.ebuild, -wordpress-4.2.2.ebuild:
+  Remove vulnerable releases (bug #548828 but not only)
+
+*wordpress-4.2.3 (25 Jul 2015)
+
+  25 Jul 2015; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +wordpress-4.2.3.ebuild:
+  Bump wordpress to release 4.2.3 - fixes bug 548828. Security bump to address
+  CVE-2015-5622 and CVE-2015-5623.
 
   08 May 2015; Sebastian Pipping <sping@gentoo.org> ChangeLog:
   Sign manifest

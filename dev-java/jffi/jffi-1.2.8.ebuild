@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jffi/jffi-1.2.8.ebuild,v 1.1 2015/03/21 18:29:53 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jffi/jffi-1.2.8.ebuild,v 1.2 2015/07/26 08:17:58 mgorny Exp $
 
 EAPI="5"
 
@@ -89,6 +89,7 @@ src_compile() {
 		BUILD_DIR=build/jni
 		VERSION=$(get_version_component_range 1-2)
 		USE_SYSTEM_LIBFFI=1
+		CCACHE=
 		-f jni/GNUmakefile
 	)
 	emake "${args[@]}"

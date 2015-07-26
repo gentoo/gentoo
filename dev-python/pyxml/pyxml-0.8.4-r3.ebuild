@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyxml/pyxml-0.8.4-r3.ebuild,v 1.13 2015/06/07 09:48:52 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyxml/pyxml-0.8.4-r3.ebuild,v 1.14 2015/07/20 08:43:24 monsieurp Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
@@ -31,9 +31,6 @@ python_prepare_all() {
 		"${FILESDIR}/${P}-python-2.6.patch"
 	)
 
-	# Delete internal copy of old version of unittest module.
-	rm -f test/unittest.py
-
 	distutils-r1_python_prepare_all
 }
 
@@ -43,6 +40,23 @@ python_compile() {
 }
 
 python_test() {
+	# Delete internal copy of old version of unittest module.
+	local BROKENTESTS=(
+		test_filter
+		test_howto
+		test_minidom
+		test_xmlbuilder
+		unittest
+		test_expatreader
+	)
+
+	for test_file in ${BROKENTESTS[@]}; do
+		test_file="test/${test_file}.py"
+		einfo "Removing dubious test \"${test_file}\""
+		rm ${test_file}
+		eend $?
+	done
+
 	cd test || die
 	"${PYTHON}" regrtest.py || die "Tests fail with ${EPYTHON}"
 }

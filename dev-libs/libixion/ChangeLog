@@ -1,6 +1,17 @@
 # ChangeLog for dev-libs/libixion
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libixion/ChangeLog,v 1.23 2015/06/21 15:35:49 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libixion/ChangeLog,v 1.26 2015/07/25 21:23:20 dilfridge Exp $
+
+  25 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org> libixion-0.9.1.ebuild,
+  libixion-9999.ebuild:
+  Add missing pkg_setup
+
+  19 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org> libixion-0.7.0.ebuild,
+  libixion-0.9.0.ebuild, libixion-0.9.1.ebuild:
+  Require boost threads library also in releases
+
+  19 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org> libixion-9999.ebuild:
+  Require boost threads library
 
   21 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
   +files/libixion-0.9.1-python-optional.patch, +files/libixion-0.9.1-typo.patch,

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtsingleapplication/qtsingleapplication-2.6.1_p20130904-r1.ebuild,v 1.8 2015/06/29 17:41:16 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtsingleapplication/qtsingleapplication-2.6.1_p20130904-r1.ebuild,v 1.9 2015/07/25 15:54:49 maekke Exp $
 
 EAPI=5
 
@@ -14,7 +14,7 @@ SRC_URI="http://dev.gentoo.org/~pesa/distfiles/${MY_P}.tar.xz"
 
 LICENSE="|| ( LGPL-2.1 GPL-3 )"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="X doc"
 
 DEPEND="

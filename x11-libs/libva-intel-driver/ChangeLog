@@ -1,6 +1,11 @@
 # ChangeLog for x11-libs/libva-intel-driver
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libva-intel-driver/ChangeLog,v 1.44 2015/07/14 09:21:17 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libva-intel-driver/ChangeLog,v 1.45 2015/07/24 15:14:10 mgorny Exp $
+
+  24 Jul 2015; Michał Górny <mgorny@gentoo.org>
+  files/libva-intel-driver-1.6.0-wayland-automagic.patch:
+  Fix wayland-automagic patch to handle both USE=wayland and USE=-wayland (with
+  installed and uninstalled wayland) properly. Bug #555440.
 
   14 Jul 2015; Alexis Ballier <aballier@gentoo.org>
   libva-intel-driver-1.6.0.ebuild,

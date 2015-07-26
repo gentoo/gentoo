@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/udev/udev-9999.ebuild,v 1.331 2015/07/10 23:17:45 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/udev/udev-9999.ebuild,v 1.333 2015/07/24 14:12:53 aballier Exp $
 
 EAPI=5
 
@@ -43,6 +43,7 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.24
 # Force new make >= -r4 to skip some parallel build issues
 DEPEND="${COMMON_DEPEND}
 	dev-util/gperf
+	>=dev-util/intltool-0.50
 	>=sys-apps/coreutils-8.16
 	sys-libs/libcap
 	virtual/os-headers
@@ -176,6 +177,7 @@ multilib_src_configure() {
 		--disable-libcryptsetup
 		--disable-qrencode
 		--disable-microhttpd
+		--disable-gnuefi
 		--disable-gnutls
 		--disable-libcurl
 		--disable-libidn

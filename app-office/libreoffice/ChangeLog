@@ -1,6 +1,19 @@
 # ChangeLog for app-office/libreoffice
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/ChangeLog,v 1.639 2015/07/12 20:54:02 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/ChangeLog,v 1.642 2015/07/25 21:28:22 dilfridge Exp $
+
+*libreoffice-5.0.0.4 (25 Jul 2015)
+
+  25 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +libreoffice-5.0.0.4.ebuild, -libreoffice-5.0.0.3.ebuild,
+  libreoffice-9999.ebuild:
+  New libreoffice-5 prerelease
+
+  22 Jul 2015; Agostino Sarubbo <ago@gentoo.org> libreoffice-4.4.4.3.ebuild:
+  Stable for x86, wrt bug #555584
+
+  22 Jul 2015; Agostino Sarubbo <ago@gentoo.org> libreoffice-4.4.4.3.ebuild:
+  Stable for amd64, wrt bug #555584
 
 *libreoffice-5.0.0.3 (12 Jul 2015)
 *libreoffice-4.4.4.3 (12 Jul 2015)

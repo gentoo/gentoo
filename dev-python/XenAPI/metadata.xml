@@ -4,7 +4,7 @@
   <herd>xen</herd>
   <maintainer>
     <email>idella4@gentoo.org</email>
-    <name>Ian 'idella4' Delaney</name>
+    <name>Ian Delaney</name>
   </maintainer>
   <upstream>
     <remote-id type="pypi">XenAPI</remote-id>

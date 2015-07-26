@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/mojarra/mojarra-2.2.9.ebuild,v 1.1 2015/06/08 21:36:31 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/mojarra/mojarra-2.2.9.ebuild,v 1.2 2015/07/21 13:19:05 monsieurp Exp $
 
 EAPI=5
 
@@ -31,8 +31,6 @@ DEPEND=">=virtual/jdk-1.6
 	app-arch/unzip
 	${CDEPEND}"
 
-JAVA_PKG_WANT_SOURCE="1.7"
-JAVA_PKG_WANT_TARGET="1.7"
 JAVA_SRC_DIR="src"
 
 JAVA_GENTOO_CLASSPATH="glassfish-persistence,glassfish-ejb-api,tomcat-jstl-spec-1.2.5,tomcat-jstl-impl-1.2.5,validation-api-1.0,cdi-api-1.2,servlet-api-3.0,javax-inject"

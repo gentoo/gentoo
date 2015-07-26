@@ -1,6 +1,12 @@
 # ChangeLog for app-text/libwpd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/libwpd/ChangeLog,v 1.137 2015/06/09 12:28:29 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/libwpd/ChangeLog,v 1.138 2015/07/19 16:18:21 dilfridge Exp $
+
+*libwpd-0.10.0-r2 (19 Jul 2015)
+
+  19 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +libwpd-0.10.0-r2.ebuild:
+  Revision bump for bug 541882
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

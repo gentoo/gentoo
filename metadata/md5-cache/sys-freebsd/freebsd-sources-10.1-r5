@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install preinst prepare setup unpack
+DEPEND=build-kernel? ( dtrace? ( >=sys-freebsd/freebsd-cddl-9.2_rc1 ) >=sys-freebsd/freebsd-usbin-9.1 =sys-freebsd/freebsd-mk-defs-10.1* ) virtual/pmake virtual/pmake
+DESCRIPTION=FreeBSD kernel sources
+EAPI=5
+HOMEPAGE=http://www.freebsd.org/
+IUSE=+build-kernel debug dtrace zfs profile
+KEYWORDS=~amd64-fbsd ~sparc-fbsd ~x86-fbsd
+LICENSE=BSD
+RDEPEND=dtrace? ( >=sys-freebsd/freebsd-cddl-9.2_rc1 ) =sys-freebsd/freebsd-mk-defs-10.1* !sys-freebsd/virtio-kmod !sys-fs/fuse4bsd !<sys-freebsd/freebsd-sources-9.2_beta1
+RESTRICT=strip binchecks
+SLOT=0
+SRC_URI=mirror://freebsd/releases/i386/10.1-RELEASE/src.txz -> freebsd-src-10.1.tar.xz https://security.freebsd.org/patches/SA-15:02/sctp.patch -> freebsd-sources-SA-1502-sctp.patch https://security.freebsd.org/patches/SA-15:03/sctp.patch -> freebsd-sources-SA-1503-sctp.patch https://security.freebsd.org/patches/SA-15:04/igmp.patch -> freebsd-sources-SA-1504-igmp.patch https://security.freebsd.org/patches/SA-15:04/igmp-errata.patch -> freebsd-sources-SA-1504-igmp-errata.patch https://security.freebsd.org/patches/SA-15:09/ipv6.patch -> freebsd-sources-SA-1509-ipv6.patch https://security.freebsd.org/patches/SA-15:13/tcp.patch -> freebsd-sources-SA-1513-tcp.patch https://security.freebsd.org/patches/EN-15:01/vt.patch -> freebsd-sources-EN-1501-vt.patch https://security.freebsd.org/patches/EN-15:05/ufs.patch -> freebsd-sources-EN-1505-ufs.patch https://security.freebsd.org/patches/EN-15:07/zfs.patch -> freebsd-sources-EN-1507-zfs.patch
+_eclasses_=bsdmk	a5323161d86b178920afb5e31a9e5d3f	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	freebsd	35f498d509155233569460a87c40fdda	multilib	62927b3db3a589b0806255f3a002d5d3	portability	a45c088f246ef5091e029f6285d7ce42	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=e379c638389a9bc0597051ca0bbdf1e0

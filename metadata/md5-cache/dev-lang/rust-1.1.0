@@ -10,5 +10,5 @@ RDEPEND=libcxx? ( sys-libs/libcxx ) >=app-eselect/eselect-rust-0.3_pre20150425 !
 REQUIRED_USE=libcxx? ( clang )
 SLOT=stable
 SRC_URI=http://static.rust-lang.org/dist/rustc-1.1.0-src.tar.gz amd64? ( http://static.rust-lang.org/stage0-snapshots/rust-stage0-2015-04-27-857ef6e-linux-x86_64-94089740e48167c5975c92c139ae9c286764012f.tar.bz2 ) x86? ( http://static.rust-lang.org/stage0-snapshots/rust-stage0-2015-04-27-857ef6e-linux-i386-0bc8cffdce611fb71fd7d3d8e7cdbfaf748a4f16.tar.bz2 )
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	4756de53ea4d40471a582e898815a5c8	python-utils-r1	ae9becb5d45344c01939c3f57df0d3fd	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	4756de53ea4d40471a582e898815a5c8	python-utils-r1	df6eb914b4b2d70d9c5e7c9331437c52	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=919d04ce102bb9b3a6ab947a857aff6d

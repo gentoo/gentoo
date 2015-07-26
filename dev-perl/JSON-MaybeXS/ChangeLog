@@ -1,0 +1,9 @@
+# ChangeLog for dev-perl/JSON-MaybeXS
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/JSON-MaybeXS/ChangeLog,v 1.1 2015/07/21 22:16:22 dilfridge Exp $
+
+*JSON-MaybeXS-1.3.5 (21 Jul 2015)
+
+  21 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +JSON-MaybeXS-1.3.5.ebuild, +metadata.xml:
+  New package, needed for dev-perl/CHI

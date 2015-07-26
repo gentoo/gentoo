@@ -1,6 +1,12 @@
 # ChangeLog for net-analyzer/netperf
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/netperf/ChangeLog,v 1.71 2014/10/29 09:40:30 jer Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/netperf/ChangeLog,v 1.72 2015/07/25 08:26:32 jer Exp $
+
+*netperf-2.7.0 (25 Jul 2015)
+
+  25 Jul 2015; Jeroen Roovers <jer@gentoo.org> +netperf-2.7.0.ebuild,
+  +files/netperf-2.7.0-includes.patch:
+  Version bump.
 
   29 Oct 2014; Jeroen Roovers <jer@gentoo.org> -netperf-2.5.0-r1.ebuild:
   Old.

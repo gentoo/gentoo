@@ -1,6 +1,10 @@
 # ChangeLog for dev-python/axiom
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/axiom/ChangeLog,v 1.56 2015/06/02 05:09:29 jmorgan Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/axiom/ChangeLog,v 1.57 2015/07/21 09:19:07 monsieurp Exp $
+
+  21 Jul 2015; Patrice Clement <monsieurp@gentoo.org>
+  +files/axiom-0.6.0-disable-tests.patch, axiom-0.6.0-r1.ebuild:
+  Disable dubious tests. Fix bug 230261.
 
   02 Jun 2015; Jack Morgan <jmorgan@gentoo.org> axiom-0.7.2.ebuild:
   sparc stable wrt bug #540290

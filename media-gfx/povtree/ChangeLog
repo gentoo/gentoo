@@ -1,6 +1,9 @@
 # ChangeLog for media-gfx/povtree
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/povtree/ChangeLog,v 1.16 2014/04/25 15:10:42 ulm Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/povtree/ChangeLog,v 1.17 2015/07/23 19:37:26 pacho Exp $
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org> povtree-1.5-r1.ebuild:
+  ppc stable wrt bug #508690
 
   25 Apr 2014; Ulrich Müller <ulm@gentoo.org> povtree-1.5.ebuild,
   povtree-1.5-r1.ebuild:

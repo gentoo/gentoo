@@ -1,6 +1,12 @@
 # ChangeLog for kde-base/akregator
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/akregator/ChangeLog,v 1.355 2015/07/12 22:02:04 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/akregator/ChangeLog,v 1.357 2015/07/25 12:05:46 pacho Exp $
+
+  25 Jul 2015; Pacho Ramos <pacho@gentoo.org> akregator-4.14.8.ebuild:
+  ppc stable wrt bug #550740
+
+  18 Jul 2015; Johannes Huber <johu@gentoo.org> -akregator-4.14.6.ebuild:
+  Remove KDE PIM 4.14.6
 
 *akregator-4.4.2015.06 (12 Jul 2015)
 

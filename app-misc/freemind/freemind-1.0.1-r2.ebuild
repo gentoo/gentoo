@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/freemind/freemind-1.0.1-r2.ebuild,v 1.1 2015/07/17 13:01:29 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/freemind/freemind-1.0.1-r2.ebuild,v 1.2 2015/07/23 02:12:11 patrick Exp $
 
 EAPI="5"
 
@@ -27,7 +27,7 @@ CDEPEND="
 	latex? ( dev-java/hoteqn:0 )
 	pdf? (
 		dev-java/batik:1.8
-		dev-java/fop:2
+		dev-java/fop:0
 	)
 	svg? (
 		dev-java/batik:1.8

@@ -1,0 +1,52 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -1609,11 +1609,37 @@
+			# we don't know whether they'll be doing that,
+			# so this is the best we can do.
+			#
+-			MIC=moc
++			MOC=moc
+		fi
+	fi
+ fi
+ AC_SUBST(MOC)
++AC_PATH_PROG(RCC, rcc)
++if test "x$RCC" = x
++then
++	AC_PATH_PROG(RCC, rcc-qt4)
++	if test "x$RCC" = x
++	then
++		if test "x$have_qt" = "xyes"; then
++			#
++			# If you want to build with Qt, you'd better
++			# have rcc.
++			#
++			AC_MSG_ERROR(I couldn't find moc or rcc-qt4; make sure it's installed and in your path)
++		else
++			#
++			# We shouldn't fail here, as the user's not
++			# building with Qt, and we shouldn't force them
++			# to have Qt installed if they're not doing so.
++			# "make dist" will fail if they do that, but
++			# we don't know whether they'll be doing that,
++			# so this is the best we can do.
++			#
++			RCC=rcc
++		fi
++	fi
++fi
++AC_SUBST(RCC)
+ 
+ # Error out if a glib header other than a "top level" header
+ #  (glib.h, glib-object.h, gio.h) or certain other headers( e.g.,gmodule.h)
+--- a/ui/qt/Makefile.am
++++ b/ui/qt/Makefile.am
+@@ -116,7 +116,7 @@
+ 
+ .qrc.rcc.cpp:
+ 	$(MKDIR_P) $(@D)
+-	$(AM_V_RCC)rcc -name `basename $< .qrc` -o $@ $<
++	$(AM_V_RCC)$(RCC) -name `basename $< .qrc` -o $@ $<
+ 
+ ui_%.h: %.ui
+ 	$(AM_V_UIC)$(UIC) $< -o $@

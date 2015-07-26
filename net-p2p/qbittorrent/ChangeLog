@@ -1,6 +1,9 @@
 # ChangeLog for net-p2p/qbittorrent
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/qbittorrent/ChangeLog,v 1.250 2015/06/04 18:19:35 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/qbittorrent/ChangeLog,v 1.251 2015/07/25 15:55:25 maekke Exp $
+
+  25 Jul 2015; Markus Meier <maekke@gentoo.org> qbittorrent-3.1.9.2-r1.ebuild:
+  arm stable, bug #549076
 
   04 Jun 2015; Davide Pesavento <pesa@gentoo.org> qbittorrent-3.2.0.ebuild,
   qbittorrent-9999.ebuild:

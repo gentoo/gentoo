@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libixion/libixion-0.7.0.ebuild,v 1.8 2015/04/04 23:29:50 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libixion/libixion-0.7.0.ebuild,v 1.9 2015/07/19 20:14:45 dilfridge Exp $
 
 EAPI=5
 
@@ -20,7 +20,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~ppc x86"
 IUSE="static-libs"
 
-RDEPEND="dev-libs/boost:="
+RDEPEND="dev-libs/boost:=[threads]"
 DEPEND="${RDEPEND}
 	>=dev-util/mdds-0.10.1:=
 	<dev-util/mdds-0.12.0:=

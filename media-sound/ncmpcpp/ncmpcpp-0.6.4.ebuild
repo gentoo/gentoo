@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/ncmpcpp/ncmpcpp-0.6.4.ebuild,v 1.5 2015/06/21 10:54:00 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/ncmpcpp/ncmpcpp-0.6.4.ebuild,v 1.6 2015/07/23 21:02:10 pacho Exp $
 
 EAPI=5
 inherit eutils
@@ -11,7 +11,7 @@ SRC_URI="http://ncmpcpp.rybczak.net/stable/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ~ppc ppc64 ~sparc x86"
+KEYWORDS="amd64 arm hppa ppc ppc64 ~sparc x86"
 IUSE="clock curl outputs taglib unicode visualizer"
 
 RDEPEND="

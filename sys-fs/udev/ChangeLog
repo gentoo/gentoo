@@ -1,6 +1,15 @@
 # ChangeLog for sys-fs/udev
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/udev/ChangeLog,v 1.1118 2015/07/10 23:17:45 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/udev/ChangeLog,v 1.1120 2015/07/24 14:12:53 aballier Exp $
+
+  24 Jul 2015; Alexis Ballier <aballier@gentoo.org> udev-222.ebuild,
+  udev-9999.ebuild:
+  forcibly disable gnuefi as systemd-boot is not built and checking for gnuefi
+  in configure bails out when cross compiling
+
+  21 Jul 2015; Mike Gilbert <floppym@gentoo.org> udev-222.ebuild,
+  udev-9999.ebuild:
+  DEPEND on dev-util/intltool, bug 555382.
 
   10 Jul 2015; Mike Gilbert <floppym@gentoo.org> udev-222.ebuild,
   udev-9999.ebuild:

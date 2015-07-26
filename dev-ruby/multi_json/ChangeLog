@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/multi_json
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/multi_json/ChangeLog,v 1.62 2015/07/04 08:30:48 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/multi_json/ChangeLog,v 1.63 2015/07/25 13:05:04 zlogene Exp $
+
+  25 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> multi_json-1.9.3.ebuild:
+  sparc stable wrt bug #542574
 
 *multi_json-1.11.2 (04 Jul 2015)
 

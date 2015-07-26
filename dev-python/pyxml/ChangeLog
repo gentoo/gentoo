@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/pyxml
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyxml/ChangeLog,v 1.80 2015/06/13 09:04:17 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyxml/ChangeLog,v 1.81 2015/07/20 08:43:24 monsieurp Exp $
+
+  20 Jul 2015; Patrice Clement <monsieurp@gentoo.org> pyxml-0.8.4-r3.ebuild:
+  Remove dubious tests. Fix bug 555422.
 
   13 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -pyxml-0.8.4-r2.ebuild:
   Remove old.

@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/ptyprocess
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/ptyprocess/ChangeLog,v 1.5 2015/06/21 10:40:22 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/ptyprocess/ChangeLog,v 1.6 2015/07/18 17:13:22 blueness Exp $
+
+  18 Jul 2015; Anthony G. Basile <blueness@gentoo.org> ptyprocess-0.5.ebuild:
+  Keyword ~ppc ~ppc64.  Bug #541628.
 
   21 Jun 2015; Markus Meier <maekke@gentoo.org> ptyprocess-0.5.ebuild:
   add ~arm, bug #541628

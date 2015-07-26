@@ -1,6 +1,12 @@
 # ChangeLog for kde-base/kdepimlibs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdepimlibs/ChangeLog,v 1.297 2015/07/11 11:49:26 johu Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdepimlibs/ChangeLog,v 1.299 2015/07/25 12:07:22 pacho Exp $
+
+  25 Jul 2015; Pacho Ramos <pacho@gentoo.org> kdepimlibs-4.14.8.ebuild:
+  ppc stable wrt bug #550740
+
+  18 Jul 2015; Johannes Huber <johu@gentoo.org> -kdepimlibs-4.14.6.ebuild:
+  Remove KDE PIM 4.14.6
 
 *kdepimlibs-4.14.10 (11 Jul 2015)
 

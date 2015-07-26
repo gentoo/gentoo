@@ -1,6 +1,11 @@
 # ChangeLog for net-misc/networkmanager
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/networkmanager/ChangeLog,v 1.241 2015/06/24 09:00:50 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/networkmanager/ChangeLog,v 1.242 2015/07/19 09:19:12 pacho Exp $
+
+*networkmanager-1.0.4 (19 Jul 2015)
+
+  19 Jul 2015; Pacho Ramos <pacho@gentoo.org> +networkmanager-1.0.4.ebuild:
+  Version bump
 
   24 Jun 2015; Agostino Sarubbo <ago@gentoo.org> networkmanager-1.0.2.ebuild:
   Stable for ppc, wrt bug #545980

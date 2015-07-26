@@ -1,6 +1,12 @@
 # ChangeLog for dev-ruby/childprocess
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/childprocess/ChangeLog,v 1.67 2015/06/07 17:24:47 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/childprocess/ChangeLog,v 1.69 2015/07/25 13:27:32 mrueg Exp $
+
+  25 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -childprocess-0.3.9.ebuild:
+  Remove old.
+
+  25 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> childprocess-0.5.3.ebuild:
+  sparc stable wrt bug #542574
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

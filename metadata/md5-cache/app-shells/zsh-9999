@@ -9,4 +9,4 @@ PDEPEND=examples? ( app-doc/zsh-lovers )
 RDEPEND=>=sys-libs/ncurses-5.1 static? ( >=sys-libs/ncurses-5.7-r4[static-libs] ) caps? ( sys-libs/libcap ) pcre? ( >=dev-libs/libpcre-3.9 static? ( >=dev-libs/libpcre-3.9[static-libs] ) ) gdbm? ( sys-libs/gdbm )
 SLOT=0
 _eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	git-r3	727a612b4c6247766904e3f74a326e2b	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	prefix	21058c21ca48453d771df15500873ede	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=b2a25428993cce058db2a30d6886c681
+_md5_=497b74e834bc3ead49b76491a04b0137

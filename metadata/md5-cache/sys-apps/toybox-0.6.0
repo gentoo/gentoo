@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DESCRIPTION=Common linux commands in a multicall binary
+EAPI=5
+HOMEPAGE=http://landley.net/code/toybox/
+IUSE=savedconfig
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD-2
+RESTRICT=test
+SLOT=0
+SRC_URI=http://landley.net/code/toybox/downloads/toybox-0.6.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	portability	a45c088f246ef5091e029f6285d7ce42	savedconfig	5313100f525c41f6c72c6e04edeb4f65	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=077826c0cb889a25b9ba596b2b957d52

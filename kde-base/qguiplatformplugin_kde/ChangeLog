@@ -1,6 +1,18 @@
 # ChangeLog for kde-base/qguiplatformplugin_kde
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/qguiplatformplugin_kde/ChangeLog,v 1.182 2015/07/02 13:22:59 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/qguiplatformplugin_kde/ChangeLog,v 1.185 2015/07/25 12:05:04 pacho Exp $
+
+  25 Jul 2015; Pacho Ramos <pacho@gentoo.org>
+  qguiplatformplugin_kde-4.11.19.ebuild:
+  ppc stable wrt bug #550740
+
+  18 Jul 2015; Johannes Huber <johu@gentoo.org>
+  -qguiplatformplugin_kde-4.11.20.ebuild:
+  Remove KDE Workspace 4.11.20
+
+  18 Jul 2015; Johannes Huber <johu@gentoo.org>
+  -qguiplatformplugin_kde-4.11.17.ebuild:
+  Remove KDE Workspace 4.11.17
 
 *qguiplatformplugin_kde-4.11.21 (02 Jul 2015)
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libixion/libixion-9999.ebuild,v 1.14 2015/06/21 15:35:49 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libixion/libixion-9999.ebuild,v 1.16 2015/07/25 21:23:20 dilfridge Exp $
 
 EAPI=5
 
@@ -23,7 +23,7 @@ KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="python static-libs"
 
 RDEPEND="
-	dev-libs/boost:=
+	dev-libs/boost:=[threads]
 	python? ( ${PYTHON_DEPS} )
 "
 DEPEND="${RDEPEND}
@@ -31,6 +31,10 @@ DEPEND="${RDEPEND}
 "
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+
+pkg_setup() {
+	use python && python-single-r1_pkg_setup
+}
 
 src_prepare() {
 	[[ ${PV} == 9999 ]] && eautoreconf

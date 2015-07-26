@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/jemalloc
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/jemalloc/ChangeLog,v 1.48 2014/12/28 11:56:01 blueness Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/jemalloc/ChangeLog,v 1.49 2015/07/20 06:30:03 vapier Exp $
+
+  20 Jul 2015; Mike Frysinger <vapier@gentoo.org> jemalloc-3.6.0.ebuild:
+  Mark arm64/m68k/s390/sh stable and fix page size checks when cross-compiling.
 
   28 Dec 2014; Anthony G. Basile <blueness@gentoo.org> jemalloc-2.2.5-r1.ebuild,
   jemalloc-3.3.1.ebuild, jemalloc-3.6.0.ebuild:

@@ -4,10 +4,10 @@ DESCRIPTION=wxWidgets GUI for PostgreSQL
 EAPI=5
 HOMEPAGE=http://www.pgadmin.org/
 IUSE=debug +databasedesigner
-KEYWORDS=amd64 ~ppc x86 ~x86-fbsd
+KEYWORDS=amd64 ppc x86 ~x86-fbsd
 LICENSE=POSTGRESQL
 RDEPEND=x11-libs/wxGTK:=[X,debug=] >=dev-db/postgresql-8.4.0:= >=dev-libs/libxml2-2.6.18 >=dev-libs/libxslt-1.1
 SLOT=0
 SRC_URI=mirror://postgresql/pgadmin3/release/v1.20.0/src/pgadmin3-1.20.0.tar.gz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f	wxwidgets	6d6eec2685256d35511e7b6d5461bec9
-_md5_=5c9ee7b14873c74bcd4ba1c46a15bf39
+_md5_=4a53787fab37a88ef9927c13faf41664

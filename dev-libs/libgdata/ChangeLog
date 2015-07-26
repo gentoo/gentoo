@@ -1,6 +1,12 @@
 # ChangeLog for dev-libs/libgdata
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgdata/ChangeLog,v 1.87 2015/06/09 10:45:07 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgdata/ChangeLog,v 1.88 2015/07/19 09:42:43 pacho Exp $
+
+*libgdata-0.17.2 (19 Jul 2015)
+
+  19 Jul 2015; Pacho Ramos <pacho@gentoo.org> +libgdata-0.17.2.ebuild,
+  metadata.xml:
+  Version bump
 
 *libgdata-0.17.1 (09 Jun 2015)
 

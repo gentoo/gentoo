@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/hwids/hwids-99999999.ebuild,v 1.25 2014/06/06 18:20:05 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/hwids/hwids-99999999.ebuild,v 1.26 2015/07/18 16:55:47 floppym Exp $
 
 EAPI=5
 inherit udev eutils
@@ -33,6 +33,14 @@ src_prepare() {
 	[[ ${PV} == "99999999" ]] && emake fetch
 
 	sed -i -e '/udevadm hwdb/d' Makefile || die
+
+	# Create a rules file compatible with older udev.
+	sed -e 's/evdev:name/keyboard:name/' \
+		-e 's/evdev:atkbd:dmi/keyboard:dmi/' \
+		-e 's/evdev:input:b\([^v]*\)v\([^p]*\)p\([^e]*\)\(e.*\)\?/keyboard:usb:v\2p\3/' \
+		-e 's/keyboard:usb:v046DpC52D\*/keyboard:usb:v046DpC52Dd*dc*dsc*dp*ic*isc*ip*in00*/' \
+		-e 's/keyboard:usb:v0458p0708\*/keyboard:usb:v0458p0708d*dc*dsc*dp*ic*isc*ip*in01*/' \
+		udev/60-keyboard.hwdb > udev/61-oldkeyboard.hwdb || die
 }
 
 _emake() {

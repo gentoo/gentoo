@@ -1,8 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/lcdf-typetools/lcdf-typetools-2.104.ebuild,v 1.1 2014/10/10 10:08:06 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/lcdf-typetools/lcdf-typetools-2.104.ebuild,v 1.2 2015/07/22 12:25:56 aballier Exp $
 
 EAPI=2
+
+inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="Font utilities for eg manipulating OTF"
 SRC_URI="http://www.lcdf.org/type/${P}.tar.gz"
@@ -12,10 +14,12 @@ SLOT="0"
 LICENSE="GPL-2"
 IUSE="+kpathsea"
 
-DEPEND="kpathsea? ( virtual/tex-base )"
-RDEPEND="${DEPEND}"
+RDEPEND="kpathsea? ( virtual/tex-base dev-libs/kpathsea )"
+DEPEND="${RDEPEND}
+	virtual/pkgconfig"
 
 src_configure() {
+	use kpathsea && has_version '>=dev-libs/kpathsea-6.2.1' && append-cppflags "$($(tc-getPKG_CONFIG) --cflags kpathsea)"
 	econf $(use_with kpathsea)
 }
 

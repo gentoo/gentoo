@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/opencv/opencv-3.0.0.ebuild,v 1.1 2015/07/10 22:02:43 amynka Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/opencv/opencv-3.0.0.ebuild,v 1.5 2015/07/25 08:43:27 amynka Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python{2_7,3_2,3_3,3_4} )
@@ -83,6 +83,10 @@ DEPEND="${RDEPEND}
 	java? ( >=virtual/jdk-1.6 )
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-gles.patch"
+)
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 	java-pkg-opt-2_pkg_setup
@@ -149,6 +153,7 @@ src_configure() {
 		-DBUILD_ANDROID_EXAMPLES=OFF
 		$(cmake-utils_use_build doc DOCS)
 		$(cmake-utils_use_build examples)
+		$(cmake-utils_use_build java opencv_java)		#for -java bug #555650
 		-DBUILD_PERF_TESTS=OFF
 		$(cmake-utils_use_build testprograms TESTS)
 	# install examples, tests etc

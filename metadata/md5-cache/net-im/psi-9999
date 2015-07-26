@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
-DEPEND=>=dev-qt/qtgui-4.7:4 >=app-crypt/qca-2.0.2:2[qt4(+)] x11-libs/libX11 dbus? ( >=dev-qt/qtdbus-4.7:4 ) whiteboarding? ( dev-qt/qtsvg:4 ) spell? ( enchant? ( >=app-text/enchant-1.3.0 ) !enchant? ( app-text/aspell ) ) xscreensaver? ( x11-libs/libXScrnSaver ) extras? ( webkit? ( dev-qt/qtwebkit:4 ) ) app-arch/unzip || ( >=sys-libs/zlib-1.2.5.1-r2[minizip] <sys-libs/zlib-1.2.5.1-r1 ) extras? ( sys-devel/qconf ) doc? ( app-doc/doxygen ) virtual/pkgconfig >=sys-apps/sed-4 dev-vcs/git || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
+DEPEND=app-arch/unzip >=app-crypt/qca-2.0.2:2[qt4(+)] dev-qt/qtcore:4 dev-qt/qtgui:4 >=sys-libs/zlib-1.2.5.1-r2[minizip] x11-libs/libX11 dbus? ( dev-qt/qtdbus:4 ) extras? ( webkit? ( dev-qt/qtwebkit:4 ) ) spell? ( enchant? ( >=app-text/enchant-1.3.0 ) !enchant? ( app-text/aspell ) ) whiteboarding? ( dev-qt/qtsvg:4 ) xscreensaver? ( x11-libs/libXScrnSaver ) extras? ( sys-devel/qconf ) doc? ( app-doc/doxygen ) virtual/pkgconfig >=sys-apps/sed-4 dev-vcs/git || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
 DESCRIPTION=Qt4 Jabber client, with Licq-like interface
 EAPI=4
 HOMEPAGE=http://psi-im.org/
 IUSE=crypt dbus debug doc enchant extras jingle iconsets spell ssl xscreensaver powersave plugins whiteboarding webkit linguas_be linguas_bg linguas_ca linguas_cs linguas_de linguas_en linguas_eo linguas_es linguas_et linguas_fi linguas_fr linguas_hu linguas_it linguas_ja linguas_mk linguas_nl linguas_pl linguas_pt linguas_pt_BR linguas_ru linguas_sk linguas_sl linguas_sr@latin linguas_sv linguas_sw linguas_uk linguas_ur_PK linguas_vi linguas_zh_CN linguas_zh_TW
 LICENSE=GPL-2
 PDEPEND=crypt? ( app-crypt/qca:2[gpg] ) jingle? ( net-im/psimedia app-crypt/qca:2[openssl] ) ssl? ( app-crypt/qca:2[openssl] )
-RDEPEND=>=dev-qt/qtgui-4.7:4 >=app-crypt/qca-2.0.2:2[qt4(+)] x11-libs/libX11 dbus? ( >=dev-qt/qtdbus-4.7:4 ) whiteboarding? ( dev-qt/qtsvg:4 ) spell? ( enchant? ( >=app-text/enchant-1.3.0 ) !enchant? ( app-text/aspell ) ) xscreensaver? ( x11-libs/libXScrnSaver ) extras? ( webkit? ( dev-qt/qtwebkit:4 ) ) app-arch/unzip || ( >=sys-libs/zlib-1.2.5.1-r2[minizip] <sys-libs/zlib-1.2.5.1-r1 )
+RDEPEND=app-arch/unzip >=app-crypt/qca-2.0.2:2[qt4(+)] dev-qt/qtcore:4 dev-qt/qtgui:4 >=sys-libs/zlib-1.2.5.1-r2[minizip] x11-libs/libX11 dbus? ( dev-qt/qtdbus:4 ) extras? ( webkit? ( dev-qt/qtwebkit:4 ) ) spell? ( enchant? ( >=app-text/enchant-1.3.0 ) !enchant? ( app-text/aspell ) ) whiteboarding? ( dev-qt/qtsvg:4 ) xscreensaver? ( x11-libs/libXScrnSaver )
 REQUIRED_USE=iconsets? ( extras ) plugins? ( extras ) powersave? ( extras ) webkit? ( extras )
 RESTRICT=test
 SLOT=0
 _eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	git-2	e28f0d8a9b321431b1e699782851b827	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	qmake-utils	4ce40e37ef0e28425a7159b0353be026	qt4-r2	7199e3db5b5908325487d379c6f67cf0	subversion	c12bdf4fcc82f86ad89b14c8f76c4026	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=31367d14565f68709a46e2bd290f697f
+_md5_=db82766535759328a0dffe5548375ea8

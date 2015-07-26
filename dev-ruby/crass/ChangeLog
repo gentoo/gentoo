@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/crass
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/crass/ChangeLog,v 1.5 2015/06/07 17:33:29 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/crass/ChangeLog,v 1.6 2015/07/22 18:52:49 zlogene Exp $
+
+  22 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> crass-1.0.2.ebuild:
+  Add ~x86 keyword wrt bug #549692
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

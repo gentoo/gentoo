@@ -1,6 +1,13 @@
 # ChangeLog for dev-java/icedtea
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/icedtea/ChangeLog,v 1.138 2015/07/11 09:19:57 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/icedtea/ChangeLog,v 1.139 2015/07/21 22:10:28 chewi Exp $
+
+  21 Jul 2015; James Le Cuirot <chewi@gentoo.org> -icedtea-6.1.13.5.ebuild,
+  icedtea-6.1.13.7.ebuild:
+  Drop vulnerable version wrt bug #537940. This removes the last 1.6 VM for arm
+  but later versions are preferable for HotSpot. I had hoped to do the same for
+  ppc64 but upstream haven't been able to resolve a segfault in icedtea-7. This
+  is resolved in the upcoming icedtea-3.
 
   11 Jul 2015; James Le Cuirot <chewi@gentoo.org> icedtea-6.1.13.5.ebuild,
   -icedtea-7.2.4.8.ebuild:

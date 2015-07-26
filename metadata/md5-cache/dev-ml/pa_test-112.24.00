@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=>=dev-ml/type-conv-109.60.00:= dev-ml/sexplib:= dev-ml/comparelib:= dev-ml/camlp4:= >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-3.12:=[ocamlopt?]
+DEPEND=>=dev-ml/type-conv-109.60.00:= dev-ml/sexplib:= dev-ml/comparelib:= dev-ml/camlp4:= dev-ml/herelib:= >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-3.12:=[ocamlopt?]
 DESCRIPTION=Quotation expanders for assertions
 EAPI=5
 HOMEPAGE=http://www.janestreet.com/ocaml
 IUSE=+ocamlopt debug
 KEYWORDS=~amd64
 LICENSE=LGPL-2.1-with-linking-exception
-RDEPEND=>=dev-ml/type-conv-109.60.00:= dev-ml/sexplib:= dev-ml/comparelib:= dev-ml/camlp4:= >=dev-lang/ocaml-3.12:=[ocamlopt?]
+RDEPEND=>=dev-ml/type-conv-109.60.00:= dev-ml/sexplib:= dev-ml/comparelib:= dev-ml/camlp4:= dev-ml/herelib:= >=dev-lang/ocaml-3.12:=[ocamlopt?]
 SLOT=0/112.24.00
 SRC_URI=http://ocaml.janestreet.com/ocaml-core/112.24/files/pa_test-112.24.tar.gz
 _eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	findlib	9cf6020ee5481f39f1aa566a323f9868	multilib	62927b3db3a589b0806255f3a002d5d3	oasis	45027e91f880d9142eec842f0cca0088	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=cc088a0157d4dad61e330ce6de42772f
+_md5_=fd02f5877baebef607aae38e7d4cbcf7

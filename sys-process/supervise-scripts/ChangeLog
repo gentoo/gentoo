@@ -1,6 +1,11 @@
 # ChangeLog for sys-process/supervise-scripts
-# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/supervise-scripts/ChangeLog,v 1.13 2011/02/27 13:51:48 ranger Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-process/supervise-scripts/ChangeLog,v 1.14 2015/07/22 20:33:07 mrueg Exp $
+
+  22 Jul 2015; Manuel Rüger <mrueg@gentoo.org>
+  -files/supervise-scripts-3.5-head-tails-syntax.patch,
+  -supervise-scripts-3.5.ebuild:
+  Remove old.
 
   27 Feb 2011; Brent Baude <ranger@gentoo.org> supervise-scripts-4.0.ebuild:
   stable ppc, bug 353386

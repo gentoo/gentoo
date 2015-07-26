@@ -1,6 +1,19 @@
 # ChangeLog for media-libs/libvisio
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libvisio/ChangeLog,v 1.64 2015/04/30 05:56:04 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libvisio/ChangeLog,v 1.67 2015/07/25 21:18:45 dilfridge Exp $
+
+  25 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org> -libvisio-0.1.0.ebuild:
+  Remove old
+
+  25 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org> libvisio-0.1.3.ebuild,
+  libvisio-9999.ebuild:
+  Carry forward ~ppc64 from version 0.1.1
+
+*libvisio-0.1.3 (25 Jul 2015)
+
+  25 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org> +libvisio-0.1.3.ebuild,
+  libvisio-9999.ebuild, metadata.xml:
+  Version bump by Andreas Sturmlechner (genstorm)
 
   30 Apr 2015; Jeroen Roovers <jer@gentoo.org> libvisio-0.1.1.ebuild:
   Marked ~ppc64 (bug #538520).

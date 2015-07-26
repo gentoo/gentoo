@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
-DEPEND=>=sys-apps/sed-4 java? ( >=virtual/jdk-1.5 ) virtual/latex-base >=sys-apps/texinfo-4.2-r5 java? ( >=dev-java/java-config-2.2.0 )
+DEPEND=>=sys-apps/sed-4 virtual/pkgconfig dev-libs/kpathsea java? ( >=virtual/jdk-1.5 ) virtual/latex-base >=sys-apps/texinfo-4.2-r5 java? ( >=dev-java/java-config-2.2.0 )
 DESCRIPTION=Converts (La)TeX to (X)HTML, XML and OO.org
 EAPI=4
 HOMEPAGE=http://www.cse.ohio-state.edu/~gurari/TeX4ht/ http://www.cse.ohio-state.edu/~gurari/TeX4ht/bugfixes.html
 IUSE=java elibc_FreeBSD java
-KEYWORDS=~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux
+KEYWORDS=~alpha amd64 ~arm ~hppa ~ia64 ppc ~ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux
 LICENSE=LPPL-1.2
-RDEPEND=app-text/ghostscript-gpl media-gfx/imagemagick java? ( >=virtual/jre-1.5 ) virtual/latex-base java? ( >=dev-java/java-config-2.2.0 )
+RDEPEND=app-text/ghostscript-gpl media-gfx/imagemagick dev-libs/kpathsea java? ( >=virtual/jre-1.5 ) virtual/latex-base java? ( >=dev-java/java-config-2.2.0 )
 SLOT=0
 SRC_URI=http://www.cse.ohio-state.edu/~gurari/TeX4ht/fix/tex4ht-1.0.2009_06_11_1038.tar.gz
-_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	java-pkg-opt-2	f9bbbe5092225a2059aa9e6a3a2b52f1	java-utils-2	8cdf065211fa6d6687bdc3f3ebe12efc	latex-package	d023314500e725be8c78a868e4771dbb	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=9fd1e2a6641adc7245706920d9651dc1
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	java-pkg-opt-2	f9bbbe5092225a2059aa9e6a3a2b52f1	java-utils-2	abeb792ba9affd97d226ab283bfd07a2	latex-package	d023314500e725be8c78a868e4771dbb	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=31b7c2baa33786bad9a245440ebe2b23

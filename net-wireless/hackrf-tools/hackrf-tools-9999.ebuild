@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/hackrf-tools/hackrf-tools-9999.ebuild,v 1.9 2015/02/24 04:30:04 zerochaos Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/hackrf-tools/hackrf-tools-9999.ebuild,v 1.10 2015/07/24 16:42:18 zerochaos Exp $
 
 EAPI=5
 
@@ -17,7 +17,7 @@ if [[ ${PV} == "9999" ]] ; then
 	S="${WORKDIR}/hackrf/host/hackrf-tools"
 else
 	S="${WORKDIR}/hackrf-${PV}/host/hackrf-tools"
-	SRC_URI="mirror://sourceforge/hackrf/hackrf-${PV}.tar.xz"
+	SRC_URI="https://github.com/mossmann/hackrf/releases/download/v${PV}/hackrf-${PV}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~ppc ~x86"
 fi
 

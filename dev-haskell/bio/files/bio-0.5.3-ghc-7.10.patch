@@ -1,0 +1,7 @@
+diff --git a/Bio/Alignment/Bowtie.hs b/Bio/Alignment/Bowtie.hs
+index 883b057..3e58f0e 100644
+--- a/Bio/Alignment/Bowtie.hs
++++ b/Bio/Alignment/Bowtie.hs
+@@ -1 +1,2 @@
++{-# LANGUAGE FlexibleContexts #-}
+ {-| This module provides a data type to represent an alignment

@@ -1,0 +1,10 @@
+DEFINED_PHASES=install preinst prepare
+DESCRIPTION=Enhanced C version of Carbon relay, aggregator and rewriter
+EAPI=5
+HOMEPAGE=https://github.com/grobian/carbon-c-relay
+KEYWORDS=~amd64 ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris
+LICENSE=Apache-2.0
+SLOT=0
+SRC_URI=https://github.com/grobian/carbon-c-relay/archive/v0.42.tar.gz -> carbon-c-relay-0.42.tar.gz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=cf92077820838a2f701cf99f2fe8bb63

@@ -1,6 +1,10 @@
 # ChangeLog for media-libs/x265
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/x265/ChangeLog,v 1.26 2015/05/29 10:36:35 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/x265/ChangeLog,v 1.27 2015/07/24 15:51:17 blueness Exp $
+
+  24 Jul 2015; Anthony G. Basile <blueness@gentoo.org> x265-1.5.ebuild,
+  x265-1.7.ebuild, x265-9999.ebuild:
+  Keyword ~ppc.  Bug #548966.
 
   29 May 2015; Mikle Kolyada <zlogene@gentoo.org> x265-1.5.ebuild:
   arm stable wrt bug #541664

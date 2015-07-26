@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/python-utils-r1.eclass,v 1.83 2015/07/04 15:26:17 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/python-utils-r1.eclass,v 1.84 2015/07/25 10:07:36 mgorny Exp $
 
 # @ECLASS: python-utils-r1
 # @MAINTAINER:
@@ -840,9 +840,9 @@ python_wrapper_setup() {
 		mkdir -p "${workdir}"/{bin,pkgconfig} || die
 
 		# Clean up, in case we were supposed to do a cheap update.
-		rm -f "${workdir}"/bin/python{,2,3,-config}
-		rm -f "${workdir}"/bin/2to3
-		rm -f "${workdir}"/pkgconfig/python{,2,3}.pc
+		rm -f "${workdir}"/bin/python{,2,3,-config} || die
+		rm -f "${workdir}"/bin/2to3 || die
+		rm -f "${workdir}"/pkgconfig/python{,2,3}.pc || die
 
 		local EPYTHON PYTHON
 		python_export "${impl}" EPYTHON PYTHON

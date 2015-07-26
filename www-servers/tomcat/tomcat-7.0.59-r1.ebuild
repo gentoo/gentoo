@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/tomcat/tomcat-7.0.59-r1.ebuild,v 1.1 2015/06/09 09:24:32 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/tomcat/tomcat-7.0.59-r1.ebuild,v 1.2 2015/07/22 13:03:26 monsieurp Exp $
 
 EAPI=5
 
@@ -69,7 +69,7 @@ EANT_EXTRA_ARGS="-Dversion=${PV}-gentoo -Dversion.number=${PV} -Dcompile.debug=f
 IM_REV="-r1"
 
 src_compile() {
-	use websockets && EANT_EXTRA_ARGS="-Djava.7.home=${JAVA_HOME}"
+	EANT_EXTRA_ARGS+=" -Djava.7.home=${JAVA_HOME}"
 	EANT_GENTOO_CLASSPATH_EXTRA+=":$(java-pkg_getjar --build-only ant-core ant.jar)"
 	java-pkg-2_src_compile
 }

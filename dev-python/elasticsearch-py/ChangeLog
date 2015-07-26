@@ -1,6 +1,14 @@
 # ChangeLog for dev-python/elasticsearch-py
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/elasticsearch-py/ChangeLog,v 1.9 2015/06/07 16:44:02 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/elasticsearch-py/ChangeLog,v 1.11 2015/07/23 09:09:07 idella4 Exp $
+
+  23 Jul 2015; Ian Delaney <idella4@gentoo.org> metadata.xml:
+  Designate proxy maintainer under the proxy-maint herd
+
+*elasticsearch-py-1.6.0 (22 Jul 2015)
+
+  22 Jul 2015; Ian Delaney <idella4@gentoo.org> +elasticsearch-py-1.6.0.ebuild:
+  bump
 
 *elasticsearch-py-1.5.0 (07 Jun 2015)
 

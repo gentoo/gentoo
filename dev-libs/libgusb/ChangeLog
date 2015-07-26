@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/libgusb
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgusb/ChangeLog,v 1.53 2015/07/13 04:12:40 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgusb/ChangeLog,v 1.54 2015/07/19 12:28:01 klausman Exp $
+
+  19 Jul 2015; Tobias Klausmann <klausman@gentoo.org> libgusb-0.2.5.ebuild:
+  Stable on alpha, bug 553500
 
   13 Jul 2015; Jeroen Roovers <jer@gentoo.org> libgusb-0.2.5.ebuild:
   Stable for HPPA (bug #551814).

@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mkvtoolnix/mkvtoolnix-6.6.0.ebuild,v 1.4 2014/08/27 12:29:00 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/mkvtoolnix/mkvtoolnix-6.6.0.ebuild,v 1.5 2015/07/18 18:45:23 pacho Exp $
 
 EAPI=5
 inherit eutils multilib toolchain-funcs versionator wxwidgets multiprocessing autotools
@@ -48,7 +48,8 @@ pkg_pretend() {
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-5.8.0-system-pugixml.patch \
-		"${FILESDIR}"/${PN}-5.8.0-boost-configure.patch
+		"${FILESDIR}"/${PN}-5.8.0-boost-configure.patch \
+		"${FILESDIR}"/${PN}-6.6.0-boost-1.56.patch
 	eautoreconf
 }
 

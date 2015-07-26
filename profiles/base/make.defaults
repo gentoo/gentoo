@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/make.defaults,v 1.127 2015/06/05 07:59:18 haubi Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/make.defaults,v 1.128 2015/07/25 15:53:19 floppym Exp $
 #
 # System-wide defaults for the Portage system
 # See portage(5) manpage
@@ -120,11 +120,11 @@ PYTHONDONTWRITEBYTECODE="1"
 # Add default USE value for bootstrap and rename it from STAGE1_USE to BOOTSTRAP_USE
 # Add in expanded PYTHON_TARGETS or stage1 builds break because of USE="-* ${BOOTSTRAP_USE}"
 # This MUST be kept in sync with the PYTHON_TARGETS below
-BOOTSTRAP_USE="cxx unicode internal-glib python_targets_python3_3 python_targets_python2_7"
+BOOTSTRAP_USE="cxx unicode internal-glib python_targets_python3_4 python_targets_python2_7"
 
 # Mike Gilbert <floppym@gentoo.org> (15 May 2012)
 # Default target(s) for python-r1.eclass
-PYTHON_TARGETS="python2_7 python3_3"
+PYTHON_TARGETS="python2_7 python3_4"
 PYTHON_SINGLE_TARGET="python2_7"
 
 # Michał Górny <mgorny@gentoo.org> (10 Aug 2013)

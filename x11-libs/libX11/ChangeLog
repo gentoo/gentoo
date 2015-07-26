@@ -1,6 +1,10 @@
 # ChangeLog for x11-libs/libX11
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libX11/ChangeLog,v 1.223 2015/03/11 00:30:30 mattst88 Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libX11/ChangeLog,v 1.224 2015/07/23 03:43:25 vapier Exp $
+
+  23 Jul 2015; Mike Frysinger <vapier@gentoo.org> libX11-1.6.2.ebuild,
+  libX11-1.6.3.ebuild:
+  Fix cross-compiling logic with the makekeys tool by using the proper env vars.
 
 *libX11-1.6.3 (11 Mar 2015)
 

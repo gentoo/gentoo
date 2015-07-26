@@ -1,6 +1,10 @@
 # ChangeLog for dev-python/sqlalchemy-migrate
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/sqlalchemy-migrate/ChangeLog,v 1.61 2015/07/15 22:16:33 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/sqlalchemy-migrate/ChangeLog,v 1.62 2015/07/25 11:15:50 maekke Exp $
+
+  25 Jul 2015; Markus Meier <maekke@gentoo.org>
+  sqlalchemy-migrate-0.9.6.ebuild:
+  add ~arm, bug #554136
 
 *sqlalchemy-migrate-0.7.2-r1 (15 Jul 2015)
 

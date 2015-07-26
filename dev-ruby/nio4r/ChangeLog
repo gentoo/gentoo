@@ -1,6 +1,11 @@
 # ChangeLog for dev-ruby/nio4r
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/nio4r/ChangeLog,v 1.10 2015/07/11 20:13:12 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/nio4r/ChangeLog,v 1.11 2015/07/18 20:56:16 mrueg Exp $
+
+*nio4r-1.1.1 (18 Jul 2015)
+
+  18 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +nio4r-1.1.1.ebuild:
+  Version bump.
 
   11 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> nio4r-1.1.0.ebuild:
   Add ~x86 keyword wrt bug #519596

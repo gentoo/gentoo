@@ -1,6 +1,11 @@
 # ChangeLog for media-sound/qjackctl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/qjackctl/ChangeLog,v 1.84 2015/04/08 07:21:46 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/qjackctl/ChangeLog,v 1.85 2015/07/20 09:09:20 aballier Exp $
+
+*qjackctl-0.4.0 (20 Jul 2015)
+
+  20 Jul 2015; Alexis Ballier <aballier@gentoo.org> +qjackctl-0.4.0.ebuild:
+  version bump, add qt5 useflag
 
 *qjackctl-0.3.13 (08 Apr 2015)
 

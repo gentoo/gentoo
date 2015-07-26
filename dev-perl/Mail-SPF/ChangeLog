@@ -1,6 +1,11 @@
 # ChangeLog for dev-perl/Mail-SPF
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Mail-SPF/ChangeLog,v 1.37 2015/06/13 22:15:11 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Mail-SPF/ChangeLog,v 1.38 2015/07/21 22:30:44 dilfridge Exp $
+
+*Mail-SPF-2.9.0 (21 Jul 2015)
+
+  21 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org> +Mail-SPF-2.9.0.ebuild:
+  Version bump
 
   13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
   Mail-SPF-2.8.0-r1.ebuild:

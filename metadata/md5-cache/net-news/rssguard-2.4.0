@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtwebkit:4 dev-qt/qtxmlpatterns:4 ) qt5? ( dev-qt/linguist-tools:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsql:5 dev-qt/qtwebkit:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 dev-qt/qtxmlpatterns:5 ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=A tiny RSS and Atom feed reader
+EAPI=5
+HOMEPAGE=https://bitbucket.org/skunkos/rssguard
+IUSE=qt4 +qt5
+KEYWORDS=~amd64
+LICENSE=GPL-3
+RDEPEND=qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtwebkit:4 dev-qt/qtxmlpatterns:4 ) qt5? ( dev-qt/linguist-tools:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsql:5 dev-qt/qtwebkit:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 dev-qt/qtxmlpatterns:5 )
+REQUIRED_USE=^^ ( qt4 qt5 )
+SLOT=0
+SRC_URI=https://bitbucket.org/skunkos/rssguard/downloads/rssguard-2.4.0.tar.gz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=c1f7c32e01bb28271b572f60d8e636c9

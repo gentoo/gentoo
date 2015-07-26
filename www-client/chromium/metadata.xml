@@ -9,6 +9,5 @@
 		<flag name="pic">Disable optimized assembly code that is not PIC friendly</flag>
 		<flag name="proprietary-codecs">Enable proprietary codecs like H.264, MP3</flag>
 		<flag name="tcmalloc">Use bundled tcmalloc instead of system malloc</flag>
-		<flag name="widevine">Support the Widevine DRM module from www-plugins/chrome-binary-plugins</flag>
 	</use>
 </pkgmetadata>

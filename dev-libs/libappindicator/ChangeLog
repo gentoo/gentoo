@@ -1,6 +1,18 @@
 # ChangeLog for dev-libs/libappindicator
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libappindicator/ChangeLog,v 1.18 2015/06/09 14:19:29 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libappindicator/ChangeLog,v 1.19 2015/07/26 09:09:41 mgorny Exp $
+
+*libappindicator-12.10.0-r301 (26 Jul 2015)
+*libappindicator-12.10.0-r201 (26 Jul 2015)
+
+  26 Jul 2015; Michał Górny <mgorny@gentoo.org>
+  +files/libappindicator-12.10.0-conditional-py-bindings.patch,
+  +libappindicator-12.10.0-r201.ebuild, +libappindicator-12.10.0-r301.ebuild,
+  -files/libappindicator-12.10.0-disable-python.patch,
+  libappindicator-12.10.0-r200.ebuild, libappindicator-12.10.0-r300.ebuild:
+  Fix the build system in order to properly enable Python support. Fix
+  introspection flag. https://github.com/gentoo/gentoo-portage-rsync-
+  mirror/pull/168 by anyc.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

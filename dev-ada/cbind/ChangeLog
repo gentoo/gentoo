@@ -1,6 +1,9 @@
 # ChangeLog for dev-ada/cbind
-# Copyright 2002-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ada/cbind/ChangeLog,v 1.17 2014/08/10 19:53:11 slyfox Exp $
+# Copyright 2002-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ada/cbind/ChangeLog,v 1.18 2015/07/22 20:42:02 mrueg Exp $
+
+  22 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -cbind-6.0.ebuild:
+  Remove old.
 
   10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> cbind-6.0.1.ebuild,
   cbind-6.0.ebuild:

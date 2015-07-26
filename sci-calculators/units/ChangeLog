@@ -1,6 +1,9 @@
 # ChangeLog for sci-calculators/units
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-calculators/units/ChangeLog,v 1.85 2015/05/28 16:35:20 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-calculators/units/ChangeLog,v 1.86 2015/07/26 06:27:18 jer Exp $
+
+  26 Jul 2015; Jeroen Roovers <jer@gentoo.org> units-2.11.ebuild:
+  Enable dev-lang/python:3.4 compatibility.
 
   28 May 2015; Jeroen Roovers <jer@gentoo.org> -units-2.02.ebuild,
   -units-2.02-r1.ebuild, -files/units-2.01-install.patch,

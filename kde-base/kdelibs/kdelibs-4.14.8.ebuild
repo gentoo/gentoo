@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdelibs/kdelibs-4.14.8.ebuild,v 1.4 2015/06/13 08:34:13 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdelibs/kdelibs-4.14.8.ebuild,v 1.5 2015/07/25 11:59:54 pacho Exp $
 
 EAPI=5
 
@@ -14,7 +14,7 @@ EGIT_BRANCH="KDE/4.14"
 
 DESCRIPTION="KDE libraries needed by all KDE programs"
 
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ppc ~ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 LICENSE="LGPL-2.1"
 IUSE="cpu_flags_x86_3dnow acl alsa altivec +bzip2 +crypt debug doc fam jpeg2k
 kerberos lzma cpu_flags_x86_mmx nepomuk nls openexr +policykit spell

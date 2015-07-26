@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/wireshark/wireshark-1.12.6.ebuild,v 1.10 2015/07/06 03:02:31 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/wireshark/wireshark-1.12.6.ebuild,v 1.13 2015/07/24 05:44:36 jer Exp $
 
 EAPI=5
 inherit autotools eutils fcaps flag-o-matic multilib qmake-utils qt4-r2 user
@@ -11,7 +11,7 @@ SRC_URI="${HOMEPAGE}download/src/all-versions/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-KEYWORDS="alpha amd64 ~arm hppa ~ia64 ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE="
 	adns +caps crypt doc doc-pdf geoip +gtk3 ipv6 kerberos lua +netlink +pcap
 	portaudio +qt4 qt5 sbc selinux smi ssl zlib
@@ -48,7 +48,7 @@ CDEPEND="
 		)
 	qt5? (
 		dev-qt/qtcore:5
-		dev-qt/qtgui:5[accessibility]
+		dev-qt/qtgui:5
 		dev-qt/qtprintsupport:5
 		dev-qt/qtwidgets:5
 		x11-misc/xdg-utils
@@ -97,7 +97,8 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-1.99.0-qt5.patch \
 		"${FILESDIR}"/${PN}-1.99.1-sbc.patch \
 		"${FILESDIR}"/${PN}-1.12.5-cross-compile.patch \
-		"${FILESDIR}"/${PN}-1.99.7-qt-pie.patch
+		"${FILESDIR}"/${PN}-1.99.7-qt-pie.patch \
+		"${FILESDIR}"/${PN}-1.12.6-rcc.patch
 
 	epatch_user
 

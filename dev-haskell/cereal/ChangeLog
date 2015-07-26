@@ -1,6 +1,9 @@
 # ChangeLog for dev-haskell/cereal
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/cereal/ChangeLog,v 1.21 2015/01/29 20:31:31 qnikst Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/cereal/ChangeLog,v 1.22 2015/07/26 14:00:24 slyfox Exp $
+
+  26 Jul 2015; Sergei Trofimovich <slyfox@gentoo.org> cereal-0.4.1.1.ebuild:
+  Enable tests.
 
 *cereal-0.4.1.1 (29 Jan 2015)
 

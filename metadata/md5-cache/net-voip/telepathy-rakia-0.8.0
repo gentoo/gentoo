@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=>=dev-libs/dbus-glib-0.60 >=dev-libs/glib-2.30:2 >=net-libs/sofia-sip-1.12.11 >=net-libs/telepathy-glib-0.17.6 >=sys-apps/dbus-0.60 !net-voip/telepathy-sofiasip
 SLOT=0
 SRC_URI=http://telepathy.freedesktop.org/releases/telepathy-rakia/telepathy-rakia-0.8.0.tar.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	351da1aa73960a282591217fb57c1bb8	python-utils-r1	ae9becb5d45344c01939c3f57df0d3fd	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	351da1aa73960a282591217fb57c1bb8	python-utils-r1	df6eb914b4b2d70d9c5e7c9331437c52	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=d50c3e95cae1e56f9b07bad4301607b6

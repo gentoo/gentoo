@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/libgee
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgee/ChangeLog,v 1.114 2015/07/17 15:33:04 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgee/ChangeLog,v 1.115 2015/07/25 12:13:09 pacho Exp $
+
+  25 Jul 2015; Pacho Ramos <pacho@gentoo.org> libgee-0.18.0.ebuild:
+  ppc stable wrt bug #551814
 
   17 Jul 2015; Agostino Sarubbo <ago@gentoo.org> libgee-0.18.0.ebuild:
   Stable for ia64, wrt bug #551814

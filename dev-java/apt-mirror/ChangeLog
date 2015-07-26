@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/apt-mirror
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/apt-mirror/ChangeLog,v 1.10 2015/03/29 18:02:10 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/apt-mirror/ChangeLog,v 1.11 2015/07/22 15:34:02 monsieurp Exp $
+
+  22 Jul 2015; Patrice Clement <monsieurp@gentoo.org> -apt-mirror-1.0.ebuild:
+  Remove old.
 
   29 Mar 2015; Mikle Kolyada <zlogene@gentoo.org> apt-mirror-1.0-r1.ebuild:
   ppc stable wrt bug #535030

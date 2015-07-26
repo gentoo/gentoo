@@ -1,6 +1,9 @@
 # ChangeLog for app-portage/etc-proposals
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/etc-proposals/ChangeLog,v 1.24 2015/06/09 12:03:08 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/etc-proposals/ChangeLog,v 1.25 2015/07/22 22:46:06 mrueg Exp $
+
+  22 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -etc-proposals-1.4.3-r2.ebuild:
+  Remove old.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

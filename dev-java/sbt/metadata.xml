@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer>
-  <email>gienah@gentoo.org></email>
+  <email>gienah@gentoo.org</email>
 </maintainer>
 <longdescription lang='en'>
 The interactive build tool.

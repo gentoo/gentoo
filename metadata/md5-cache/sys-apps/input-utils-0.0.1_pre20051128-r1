@@ -1,9 +1,0 @@
-DEFINED_PHASES=install unpack
-DESCRIPTION=Small collection of linux input layer utils
-HOMEPAGE=http://dl.bytesex.org/cvs-snapshots/
-KEYWORDS=amd64 ppc x86
-LICENSE=GPL-2
-SLOT=0
-SRC_URI=http://dl.bytesex.org/cvs-snapshots/input-20051128-143821.tar.gz mirror://debian/pool/main/i/input-utils/input-utils_0.0.20051128-4.diff.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=40840d57e80f2ebea4e2b365f70c379e

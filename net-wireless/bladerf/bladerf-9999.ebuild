@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/bladerf/bladerf-9999.ebuild,v 1.7 2015/04/18 12:34:38 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/bladerf/bladerf-9999.ebuild,v 1.8 2015/07/26 02:56:37 zerochaos Exp $
 
 EAPI=5
 
@@ -39,7 +39,7 @@ DEPEND="${CDEPEND}
 	virtual/pkgconfig"
 RDEPEND="${CDEPEND}"
 PDEPEND=">=net-wireless/bladerf-firmware-1.8.0
-	>=net-wireless/bladerf-fpga-0.1.2"
+	>=net-wireless/bladerf-fpga-0.3.4"
 
 src_configure() {
 	mycmakeargs=(

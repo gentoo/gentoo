@@ -1,6 +1,9 @@
 # ChangeLog for dev-ml/pa_test
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/pa_test/ChangeLog,v 1.8 2015/03/18 17:10:26 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/pa_test/ChangeLog,v 1.9 2015/07/26 14:53:39 aballier Exp $
+
+  26 Jul 2015; Alexis Ballier <aballier@gentoo.org> pa_test-112.24.00.ebuild:
+  add missing dep on dev-ml/herelib, bug #555946
 
 *pa_test-112.24.00 (18 Mar 2015)
 

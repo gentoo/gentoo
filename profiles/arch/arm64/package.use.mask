@@ -1,6 +1,10 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/arm64/package.use.mask,v 1.9 2015/06/04 18:47:03 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/arm64/package.use.mask,v 1.10 2015/07/20 06:49:31 vapier Exp $
+
+# Mike Frysinger <vapier@gentoo.org> (20 Jul 2015)
+# Needs deps tested.
+net-misc/curl curl_ssl_axtls curl_ssl_polarssl metalink
 
 # Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
 # Needs sci-physics/bullet tested #499974

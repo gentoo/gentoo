@@ -1,6 +1,17 @@
 # ChangeLog for dev-java/junit
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/junit/ChangeLog,v 1.88 2015/07/12 12:19:16 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/junit/ChangeLog,v 1.89 2015/07/20 21:46:23 chewi Exp $
+
+*junit-4.12-r1 (20 Jul 2015)
+
+  20 Jul 2015; James Le Cuirot <chewi@gentoo.org> +junit-4.12-r1.ebuild,
+  -files/junit-4.12-build.xml, -junit-4.12.ebuild:
+  Rewrite using java-pkg-simple to avoid a generated build.xml file and a cyclic
+  dependency when testing. Fixes bug #554876. I notice that the previous 4.12
+  ebuild didn't apply the gentoo-manifest.mf file like earlier versions did. I
+  doubt this is needed any more and it was broken in 4.11 anyway because it was
+  pointing at the wrong hamcrest-core SLOT. I'll leave it out and see what
+  happens.
 
   12 Jul 2015; Patrice Clement <monsieurp@gentoo.org>
   files/junit-4.12-build.xml, junit-4.12.ebuild:

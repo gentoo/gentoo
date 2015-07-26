@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-context/texlive-context-2015.ebuild,v 1.1 2015/07/16 09:13:29 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-context/texlive-context-2015.ebuild,v 1.2 2015/07/24 14:05:03 aballier Exp $
 
 EAPI="5"
 
@@ -56,7 +56,7 @@ src_prepare() {
 TL_MODULE_INFORMATION="For using ConTeXt mkII simply use 'texexec' to generate
 your documents.
 If you plan to use mkIV and its 'context' command to generate your documents,
-you have to run 'luatools --generate' as normal user before first use.
+you have to run 'mtxrun --generate' as normal user before first use.
 
 More information and advanced options on:
 http://wiki.contextgarden.net/TeX_Live_2011"

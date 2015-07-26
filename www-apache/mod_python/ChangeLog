@@ -1,6 +1,12 @@
 # ChangeLog for www-apache/mod_python
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_python/ChangeLog,v 1.35 2015/06/02 05:18:18 jmorgan Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_python/ChangeLog,v 1.36 2015/07/22 11:41:33 mrueg Exp $
+
+  22 Jul 2015; Manuel Rüger <mrueg@gentoo.org>
+  -files/mod_python-3.3.1-LDFLAGS.patch,
+  -files/mod_python-3.3.1-apache-2.4.patch,
+  -files/mod_python-apr_brigade_sentinel.patch, -mod_python-3.3.1-r1.ebuild:
+  Remove old.
 
   02 Jun 2015; Jack Morgan <jmorgan@gentoo.org> mod_python-3.5.0.ebuild:
   sparc stable wrt bug #529544

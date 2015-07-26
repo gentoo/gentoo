@@ -20,7 +20,7 @@
 		and prerequisite relationships between objects clearly and explicitly.
 	</longdescription>
 	<use>
-		<flag name='puppetdb'>Enable puppetdb support</flag>
+<!--		<flag name='puppetdb'>Enable puppetdb support</flag> -->
 		<flag name='augeas'>Enable augeas support</flag>
 		<flag name='diff'>Enable diff support</flag>
 		<flag name='rrdtool'>Enable rrdtool support</flag>

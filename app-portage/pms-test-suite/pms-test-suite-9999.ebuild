@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/pms-test-suite/pms-test-suite-9999.ebuild,v 1.3 2015/04/25 16:25:44 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/pms-test-suite/pms-test-suite-9999.ebuild,v 1.4 2015/07/22 01:35:40 mrueg Exp $
 
 EAPI=4
 
@@ -35,7 +35,7 @@ RDEPEND=">=app-portage/gentoopm-0.1.5
 DEPEND="doc? ( dev-python/epydoc )
 	test? ( >=sys-apps/portage-2.1.10.3
 		sys-apps/pkgcore
-		>=sys-apps/paludis-0.64.2[python-bindings] )"
+		>=sys-apps/paludis-0.64.2[python] )"
 
 PYTHON_MODNAME=pmstestsuite
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/gherkin/gherkin-2.12.2.ebuild,v 1.5 2015/07/18 11:24:25 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/gherkin/gherkin-2.12.2.ebuild,v 1.6 2015/07/22 18:28:10 zlogene Exp $
 
 EAPI=5
 USE_RUBY="ruby19 ruby20 ruby21 ruby22"
@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/cucumber/gherkin"
 LICENSE="MIT"
 SRC_URI="https://github.com/cucumber/gherkin/archive/v${PV}.tar.gz -> ${P}-git.tgz"
 
-KEYWORDS="~amd64 ~arm ~hppa ~ppc64"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc64 ~x86"
 SLOT="0"
 IUSE="doc test"
 

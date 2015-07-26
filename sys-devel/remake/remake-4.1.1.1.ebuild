@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/remake/remake-4.1.1.1.ebuild,v 1.1 2015/07/08 17:49:26 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/remake/remake-4.1.1.1.ebuild,v 1.2 2015/07/20 11:28:18 vapier Exp $
 
 EAPI="5"
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/bashdb/${MY_P}.tar.bz2"
 
 LICENSE="GPL-1"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="readline"
 
 RDEPEND="readline? ( sys-libs/readline:0= )"

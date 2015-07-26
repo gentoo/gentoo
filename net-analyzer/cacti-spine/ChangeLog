@@ -1,6 +1,14 @@
 # ChangeLog for net-analyzer/cacti-spine
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/cacti-spine/ChangeLog,v 1.49 2015/07/18 10:34:26 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/cacti-spine/ChangeLog,v 1.51 2015/07/25 08:28:12 jer Exp $
+
+*cacti-spine-0.8.8f (25 Jul 2015)
+
+  25 Jul 2015; Jeroen Roovers <jer@gentoo.org> +cacti-spine-0.8.8f.ebuild:
+  Version bump.
+
+  23 Jul 2015; Agostino Sarubbo <ago@gentoo.org> cacti-spine-0.8.8e.ebuild:
+  Stable for sparc, wrt bug #554816
 
   18 Jul 2015; Jeroen Roovers <jer@gentoo.org> -cacti-spine-0.8.8d-r1.ebuild:
   Old.

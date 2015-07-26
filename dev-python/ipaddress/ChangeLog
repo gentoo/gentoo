@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/ipaddress
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/ipaddress/ChangeLog,v 1.7 2015/06/21 10:47:50 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/ipaddress/ChangeLog,v 1.8 2015/07/19 00:21:46 idella4 Exp $
+
+*ipaddress-1.0.12 (19 Jul 2015)
+
+  19 Jul 2015; Ian Delaney <idella4@gentoo.org> +ipaddress-1.0.12.ebuild:
+  bump; extend DESCRIPTION and add py3 pypy3 support
 
   21 Jun 2015; Markus Meier <maekke@gentoo.org> ipaddress-1.0.7.ebuild:
   add ~arm, bug #549518

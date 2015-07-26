@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/pcre++
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/pcre++/ChangeLog,v 1.20 2009/06/22 14:39:30 jer Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/pcre++/ChangeLog,v 1.21 2015/07/22 13:37:07 mrueg Exp $
+
+  22 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -pcre++-0.9.5.ebuild:
+  Remove old.
 
   22 Jun 2009; Jeroen Roovers <jer@gentoo.org> pcre++-0.9.5-r1.ebuild:
   Stable for HPPA too.
@@ -70,4 +73,3 @@
   +files/pcre++-0.9.5-nodoc.patch, +pcre++-0.9.5.ebuild:
   Initial ebuild submitted by Michael Krelin <gentoodoo@klever.net> in bug
   #61024.
-

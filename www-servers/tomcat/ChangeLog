@@ -1,6 +1,33 @@
 # ChangeLog for www-servers/tomcat
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/tomcat/ChangeLog,v 1.360 2015/07/12 00:27:07 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/tomcat/ChangeLog,v 1.365 2015/07/23 09:07:57 ago Exp $
+
+  23 Jul 2015; Agostino Sarubbo <ago@gentoo.org> tomcat-6.0.44-r0.ebuild,
+  tomcat-7.0.59-r2.ebuild, tomcat-8.0.23-r2.ebuild:
+  Stable for x86, wrt bug #458890
+
+  23 Jul 2015; Agostino Sarubbo <ago@gentoo.org> tomcat-6.0.44-r0.ebuild,
+  tomcat-7.0.59-r2.ebuild, tomcat-8.0.23-r2.ebuild:
+  Stable for amd64, wrt bug #458890
+
+  22 Jul 2015; Patrice Clement <monsieurp@gentoo.org> tomcat-7.0.59-r1.ebuild,
+  tomcat-7.0.59-r2.ebuild, tomcat-7.0.59.ebuild:
+  Override java.7.home property unconditionally. This was causing tomcat's
+  javadoc generation to fail.
+
+  22 Jul 2015; Patrice Clement <monsieurp@gentoo.org> tomcat-6.0.44-r0.ebuild,
+  tomcat-7.0.59-r2.ebuild, tomcat-8.0.23-r2.ebuild:
+  Feed dodir and fperms functions with the ${dest} variable. This variable is
+  already formatted with the $CATALINA_BASE full path. Fix security bug 458890.
+
+*tomcat-6.0.44-r0 (21 Jul 2015)
+*tomcat-7.0.59-r2 (21 Jul 2015)
+*tomcat-8.0.23-r2 (21 Jul 2015)
+
+  21 Jul 2015; Patrice Clement <monsieurp@gentoo.org> +tomcat-6.0.44-r0.ebuild,
+  +tomcat-7.0.59-r2.ebuild, +tomcat-8.0.23-r2.ebuild:
+  Create logs directory in $CATALINA_BASE and set up perms to 0750. Fix security
+  bug 458890.
 
   12 Jul 2015; Patrick Lauer <patrick@gentoo.org> -tomcat-8.0.22-r1.ebuild,
   -tomcat-8.0.22.ebuild:

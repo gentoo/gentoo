@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/kdevelop-php/kdevelop-php-1.7.1.ebuild,v 1.1 2015/02/10 21:46:16 johu Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/kdevelop-php/kdevelop-php-1.7.1.ebuild,v 1.2 2015/07/25 16:07:44 mgorny Exp $
 
 EAPI=5
 
@@ -24,8 +24,7 @@ fi
 RESTRICT="test"
 
 DEPEND="
-	>=dev-util/kdevelop-pg-qt-1.0.0
-	<=dev-util/kdevelop-pg-qt-5
+	>=dev-util/kdevelop-pg-qt-1.0.0:4
 "
 RDEPEND="
 	dev-util/kdevelop:${SLOT}

@@ -1,6 +1,9 @@
 # ChangeLog for dev-util/dialog
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/dialog/ChangeLog,v 1.239 2015/07/18 11:39:19 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/dialog/ChangeLog,v 1.240 2015/07/23 19:37:56 pacho Exp $
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org> dialog-1.2.20150528.ebuild:
+  ppc stable wrt bug #554420
 
   18 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> dialog-1.2.20150528.ebuild:
   ia64 stable wrt bug #554420

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/opencascade/opencascade-6.7.1.ebuild,v 1.6 2015/03/31 20:17:21 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/opencascade/opencascade-6.7.1.ebuild,v 1.7 2015/07/22 12:48:53 xmw Exp $
 
 EAPI=5
 
@@ -47,7 +47,7 @@ src_prepare() {
 	java-pkg-opt-2_src_prepare
 
 	epatch \
-		"${FILESDIR}"/${PN}-6.7.1-deprecated-glx-api.patch \
+		"${FILESDIR}"/${P}-deprecated-glx-api.patch \
 		"${FILESDIR}"/${PN}-6.7.0-fixed-DESTDIR.patch \
 		"${FILESDIR}"/${PN}-6.5.4-fixed-tbb-VERSION.patch
 

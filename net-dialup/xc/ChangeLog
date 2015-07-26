@@ -1,6 +1,9 @@
 # ChangeLog for net-dialup/xc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/xc/ChangeLog,v 1.37 2015/06/26 08:53:06 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/xc/ChangeLog,v 1.38 2015/07/23 19:34:39 pacho Exp $
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org> xc-4.3.2-r4.ebuild:
+  ppc stable wrt bug #535552
 
   26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> xc-4.3.2-r4.ebuild:
   Stable for x86, wrt bug #535552

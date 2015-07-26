@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test
+DEPEND=>=dev-lang/ghc-7.8.1:= test? ( dev-haskell/extensible-exceptions dev-haskell/hunit >=dev-haskell/quickcheck-2.1.0.1:2 <dev-haskell/quickcheck-2.8:2 dev-haskell/regex-posix dev-haskell/test-framework dev-haskell/test-framework-hunit >=dev-haskell/test-framework-quickcheck2-0.2.12 )
+DESCRIPTION=A framework for packaging Haskell software
+EAPI=5
+HOMEPAGE=http://www.haskell.org/cabal/
+IUSE=profile test
+KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+LICENSE=BSD
+RDEPEND=>=dev-lang/ghc-7.8.1:=
+RESTRICT=test
+SLOT=0/1.22.4.0
+SRC_URI=mirror://hackage/packages/archive/Cabal/1.22.4.0/Cabal-1.22.4.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	ghc-package	48ae4e0fd75e1c8047c4b7f507d5debc	haskell-cabal	7ef7b3e7548c8c61352984737b22d3e3	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=81effcec5c26a948d00890b143220a03

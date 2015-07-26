@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-apps/kdebase-runtime-meta/kdebase-runtime-meta-4.14.3.ebuild,v 1.1 2015/06/04 18:44:51 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-apps/kdebase-runtime-meta/kdebase-runtime-meta-4.14.3.ebuild,v 1.2 2015/07/22 16:02:14 kensington Exp $
 
 EAPI=5
 inherit kde4-meta-pkg
@@ -26,6 +26,7 @@ RDEPEND="
 	$(add_kdeapps_dep kioclient)
 	$(add_kdeapps_dep kmimetypefinder)
 	$(add_kdeapps_dep knewstuff)
+	$(add_kdeapps_dep knotify)
 	$(add_kdeapps_dep kpasswdserver)
 	$(add_kdeapps_dep kquitapp)
 	$(add_kdeapps_dep kstart)

@@ -1,5 +1,8 @@
 # ChangeLog for dev-cpp/gtest
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/gtest/ChangeLog,v 1.43 2015/04/21 19:04:11 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/gtest/ChangeLog,v 1.44 2015/07/22 06:17:27 vapier Exp $
+
+  22 Jul 2015; Mike Frysinger <vapier@gentoo.org> gtest-1.7.0.ebuild:
+  Mark arm64/m68k/s390/sh stable.
 
   21 Apr 2015; Pacho Ramos <pacho@gentoo.org> gtest-1.7.0.ebuild:
   ppc stable wrt bug #525970

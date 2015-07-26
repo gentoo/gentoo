@@ -1,6 +1,20 @@
 # ChangeLog for www-client/google-chrome-unstable
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/google-chrome-unstable/ChangeLog,v 1.107 2015/07/16 23:44:14 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/google-chrome-unstable/ChangeLog,v 1.109 2015/07/24 22:13:21 floppym Exp $
+
+*google-chrome-unstable-45.0.2454.15_p1 (24 Jul 2015)
+
+  24 Jul 2015; Mike Gilbert <floppym@gentoo.org>
+  +google-chrome-unstable-45.0.2454.15_p1.ebuild,
+  -google-chrome-unstable-45.0.2454.12_p1.ebuild:
+  Automated update.
+
+*google-chrome-unstable-45.0.2454.12_p1 (22 Jul 2015)
+
+  22 Jul 2015; Mike Gilbert <floppym@gentoo.org>
+  +google-chrome-unstable-45.0.2454.12_p1.ebuild,
+  -google-chrome-unstable-45.0.2454.7_p1.ebuild:
+  Automated update.
 
 *google-chrome-unstable-45.0.2454.7_p1 (16 Jul 2015)
 

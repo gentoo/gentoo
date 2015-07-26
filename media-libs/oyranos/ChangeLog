@@ -1,6 +1,11 @@
 # ChangeLog for media-libs/oyranos
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/oyranos/ChangeLog,v 1.28 2015/05/27 20:31:04 tamiko Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/oyranos/ChangeLog,v 1.29 2015/07/25 12:34:34 mgorny Exp $
+
+  25 Jul 2015; Michał Górny <mgorny@gentoo.org>
+  -files/oyranos-9999-buildsystem.patch, metadata.xml, oyranos-9999.ebuild:
+  Update the live ebuild. https://github.com/gentoo/gentoo-portage-rsync-
+  mirror/pull/157 by a17r.
 
   27 May 2015; Matthias Maier <tamiko@gentoo.org> oyranos-0.9.4-r2.ebuild,
   oyranos-0.9.5.ebuild, oyranos-9999.ebuild:

@@ -1,6 +1,12 @@
 # ChangeLog for www-client/epiphany
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/epiphany/ChangeLog,v 1.318 2015/06/27 16:47:01 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/epiphany/ChangeLog,v 1.319 2015/07/19 11:20:13 pacho Exp $
+
+*epiphany-3.16.3 (19 Jul 2015)
+
+  19 Jul 2015; Pacho Ramos <pacho@gentoo.org> +epiphany-3.16.3.ebuild,
+  -epiphany-3.16.1.ebuild:
+  Version bump, drop old
 
 *epiphany-3.16.2 (27 Jun 2015)
 

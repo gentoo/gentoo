@@ -1,6 +1,27 @@
 # ChangeLog for app-text/pandoc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/pandoc/ChangeLog,v 1.39 2015/06/10 21:12:10 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/pandoc/ChangeLog,v 1.44 2015/07/20 19:04:24 slyfox Exp $
+
+*pandoc-1.15.0.6 (20 Jul 2015)
+
+  20 Jul 2015; Sergei Trofimovich <slyfox@gentoo.org> +pandoc-1.15.0.6.ebuild:
+  Version bump with help from Blackb|rd!
+
+*pandoc-1.14.0.4 (20 Jul 2015)
+
+  20 Jul 2015; Sergei Trofimovich <slyfox@gentoo.org> +pandoc-1.14.0.4.ebuild:
+  Version bump.
+
+  18 Jul 2015; Sergei Trofimovich <slyfox@gentoo.org> pandoc-1.12.1-r1.ebuild:
+  amd64, x86 stable wrt bug #554768
+
+*pandoc-1.12.1-r1 (18 Jul 2015)
+
+  18 Jul 2015; Sergei Trofimovich <slyfox@gentoo.org> +pandoc-1.12.1-r1.ebuild:
+  Allow latest text for current stable.
+
+  18 Jul 2015; Sergei Trofimovich <slyfox@gentoo.org> -pandoc-1.12.ebuild:
+  Drop old.
 
 *pandoc-1.13.2.1 (10 Jun 2015)
 

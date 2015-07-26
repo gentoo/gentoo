@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/fltk/fltk-1.3.9999.ebuild,v 1.1 2015/01/19 12:01:42 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/fltk/fltk-1.3.9999.ebuild,v 1.2 2015/07/19 08:09:38 jer Exp $
 
 EAPI=5
 
@@ -15,7 +15,7 @@ ESVN_PASSWORD=""
 SLOT="1"
 LICENSE="FLTK LGPL-2"
 KEYWORDS=""
-IUSE="cairo debug doc examples games opengl pdf static-libs threads xft xinerama"
+IUSE="cairo debug doc examples games +opengl pdf static-libs +threads +xft +xinerama"
 
 RDEPEND="
 	>=media-libs/libpng-1.2:0

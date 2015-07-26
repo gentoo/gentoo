@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/pa_test/pa_test-112.24.00.ebuild,v 1.1 2015/03/18 17:10:26 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/pa_test/pa_test-112.24.00.ebuild,v 1.2 2015/07/26 14:53:39 aballier Exp $
 
 EAPI="5"
 
@@ -20,6 +20,7 @@ DEPEND=">=dev-ml/type-conv-109.60.00:=
 	dev-ml/sexplib:=
 	dev-ml/comparelib:=
 	dev-ml/camlp4:=
+	dev-ml/herelib:=
 	"
 RDEPEND="${DEPEND}"
 

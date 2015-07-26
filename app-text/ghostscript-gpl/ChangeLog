@@ -1,6 +1,10 @@
 # ChangeLog for app-text/ghostscript-gpl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/ghostscript-gpl/ChangeLog,v 1.189 2015/07/15 20:51:56 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/ghostscript-gpl/ChangeLog,v 1.190 2015/07/25 17:58:59 blueness Exp $
+
+  25 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
+  ghostscript-gpl-9.15-r1.ebuild:
+  Fix parallel 'make install'. Bug #543602.
 
   15 Jul 2015; Mikle Kolyada <zlogene@gentoo.org>
   ghostscript-gpl-9.15-r1.ebuild:

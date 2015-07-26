@@ -1,6 +1,9 @@
 # ChangeLog for dev-perl/mecab-perl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/mecab-perl/ChangeLog,v 1.24 2015/05/15 06:58:46 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/mecab-perl/ChangeLog,v 1.25 2015/07/23 12:54:33 mrueg Exp $
+
+  23 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -mecab-perl-0.98.ebuild:
+  Remove old.
 
   15 May 2015; Pacho Ramos <pacho@gentoo.org> mecab-perl-0.996.ebuild:
   amd64 stable, bug #530964

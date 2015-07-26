@@ -1,9 +1,10 @@
-# $Header: /var/cvsroot/gentoo-x86/profiles/features/selinux/package.mask,v 1.61 2015/07/09 02:25:30 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/features/selinux/package.mask,v 1.63 2015/07/23 19:29:21 johu Exp $
 
 # Jason Zaman <perfinion@gentoo.org> (27 Jun 2015)
 # SystemD has no support in the SELinux policy at the moment.
 # Please see: https://wiki.gentoo.org/wiki/SELinux/FAQ#Can_I_use_SELinux_with_SystemD.3F
 sys-apps/systemd
+app-admin/calamares
 dev-python/python-systemd
 gnome-extra/gnome-logs
 gnome-extra/office-runner
@@ -13,3 +14,4 @@ net-misc/netctl
 sys-apps/gentoo-systemd-integration
 sys-apps/systemd-readahead
 sys-apps/systemd-sysv-utils
+sys-process/systemd-cron

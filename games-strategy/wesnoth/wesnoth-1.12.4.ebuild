@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/wesnoth/wesnoth-1.12.4.ebuild,v 1.1 2015/06/26 04:06:28 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/wesnoth/wesnoth-1.12.4.ebuild,v 1.2 2015/07/18 14:24:53 pacho Exp $
 
 EAPI=5
 inherit cmake-utils eutils multilib toolchain-funcs flag-o-matic games
@@ -27,7 +27,7 @@ RDEPEND=">=media-libs/libsdl-1.2.7:0[joystick,video,X]
 		dev-lang/lua:0
 		media-libs/fontconfig
 	)
-	>=dev-libs/boost-1.48[nls,threads]
+	>=dev-libs/boost-1.48:=[nls,threads]
 	virtual/libintl"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig

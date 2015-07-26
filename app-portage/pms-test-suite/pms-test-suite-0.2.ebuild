@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/pms-test-suite/pms-test-suite-0.2.ebuild,v 1.3 2014/07/06 13:16:14 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/pms-test-suite/pms-test-suite-0.2.ebuild,v 1.4 2015/07/22 01:35:40 mrueg Exp $
 
 EAPI=4
 
@@ -28,7 +28,7 @@ RDEPEND=">=app-portage/gentoopm-0.1.5
 DEPEND="doc? ( dev-python/epydoc )
 	test? ( >=sys-apps/portage-2.1.10.3
 		sys-apps/pkgcore
-		>=sys-apps/paludis-0.64.2[python-bindings] )"
+		>=sys-apps/paludis-0.64.2[python] )"
 
 # broken atm
 RESTRICT=test

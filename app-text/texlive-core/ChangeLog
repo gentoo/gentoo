@@ -1,6 +1,10 @@
 # ChangeLog for app-text/texlive-core
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/texlive-core/ChangeLog,v 1.229 2015/07/16 15:43:18 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/texlive-core/ChangeLog,v 1.230 2015/07/22 19:44:29 blueness Exp $
+
+  22 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
+  texlive-core-2014-r4.ebuild:
+  Stable for ppc, bug #550840.
 
   16 Jul 2015; Alexis Ballier <aballier@gentoo.org> texlive-core-2015.ebuild:
   disable more cjk stuff that need ptexenc with its useflag, bug #555068

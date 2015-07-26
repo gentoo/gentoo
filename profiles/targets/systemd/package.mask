@@ -1,6 +1,10 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/targets/systemd/package.mask,v 1.7 2015/04/22 21:14:29 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/targets/systemd/package.mask,v 1.8 2015/07/23 19:29:21 johu Exp $
+
+# Johannes Huber <johu@gentoo.org> (23 Jul 2015)
+# Needs sys-apps/systemd, masked in base for non systemd profiles.
+-app-admin/calamares
 
 # Pacho Ramos <pacho@gentoo.org> (21 Apr 2015)
 # This is for running sys-apps/systemd and also helps

@@ -4,7 +4,7 @@ DESCRIPTION=bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
 EAPI=5
 HOMEPAGE=http://www.isc.org/software/bind
 IUSE=doc gost gssapi idn ipv6 readline seccomp ssl urandom xml
-KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=ISC BSD BSD-2 HPND JNIC RSA openssl
 RDEPEND=ssl? ( dev-libs/openssl:0 ) gost? ( >=dev-libs/openssl-1.0.0:0[-bindist] ) xml? ( dev-libs/libxml2 ) idn? ( net-dns/idnkit ) gssapi? ( virtual/krb5 ) readline? ( sys-libs/readline:0= ) seccomp? ( sys-libs/libseccomp ) !<net-dns/bind-9.10.2
 REQUIRED_USE=gost? ( ssl )
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=ftp://ftp.isc.org/isc/bind9/9.10.2-P2/bind-9.10.2-P2.tar.gz
 _eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=ff0495c718bf386d8123f260a205b718
+_md5_=3860dc87bb0c014fbd6f7d3cd4999032

@@ -1,6 +1,15 @@
 # ChangeLog for sys-fs/e2fsprogs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/e2fsprogs/ChangeLog,v 1.318 2015/07/18 00:13:56 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/e2fsprogs/ChangeLog,v 1.321 2015/07/23 09:35:36 ago Exp $
+
+  23 Jul 2015; Agostino Sarubbo <ago@gentoo.org> e2fsprogs-1.42.13.ebuild:
+  Stable for sparc, wrt bug #540536
+
+  23 Jul 2015; Agostino Sarubbo <ago@gentoo.org> e2fsprogs-1.42.13.ebuild:
+  Stable for ppc, wrt bug #540536
+
+  22 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> e2fsprogs-1.42.13.ebuild:
+  ia64 stable wrt bug #540536
 
   18 Jul 2015; Markus Meier <maekke@gentoo.org> e2fsprogs-1.42.13.ebuild:
   arm stable, bug #540536

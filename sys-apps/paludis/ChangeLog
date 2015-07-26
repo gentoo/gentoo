@@ -1,6 +1,13 @@
 # ChangeLog for sys-apps/paludis
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/paludis/ChangeLog,v 1.254 2015/04/08 18:27:32 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/paludis/ChangeLog,v 1.256 2015/07/21 21:25:11 mrueg Exp $
+
+  21 Jul 2015; Manuel Rüger <mrueg@gentoo.org> metadata.xml:
+  Drop unused metadata useflag descriptions.
+
+  21 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -paludis-1.2.0.ebuild,
+  -paludis-1.4.0.ebuild:
+  Remove old.
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> paludis-1.4.2-r1.ebuild,
   paludis-2.0.0.ebuild, paludis-2.2.0.ebuild:

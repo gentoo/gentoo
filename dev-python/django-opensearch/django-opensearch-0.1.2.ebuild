@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/django-opensearch/django-opensearch-0.1.2.ebuild,v 1.2 2015/04/08 08:04:57 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/django-opensearch/django-opensearch-0.1.2.ebuild,v 1.3 2015/07/20 04:51:46 ercpe Exp $
 
 EAPI=5
 
@@ -17,4 +17,4 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
+RDEPEND="<dev-python/django-1.7[${PYTHON_USEDEP}]"

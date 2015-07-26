@@ -1,6 +1,10 @@
 # ChangeLog for app-portage/getdelta
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/getdelta/ChangeLog,v 1.27 2014/07/09 03:39:48 patrick Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-portage/getdelta/ChangeLog,v 1.28 2015/07/22 01:43:32 mrueg Exp $
+
+  22 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -getdelta-0.7.8.ebuild,
+  -getdelta-0.7.9-r1.ebuild, -getdelta-0.7.9.ebuild:
+  Remove old.
 
   09 Jul 2014; Patrick Lauer <patrick@gentoo.org> getdelta-0.7.9-r1.ebuild,
   getdelta-0.7.9-r2.ebuild, getdelta-0.7.9.ebuild:

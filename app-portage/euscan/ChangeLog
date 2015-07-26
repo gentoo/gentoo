@@ -1,6 +1,10 @@
 # ChangeLog for app-portage/euscan
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/euscan/ChangeLog,v 1.14 2015/04/08 07:30:33 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/euscan/ChangeLog,v 1.15 2015/07/22 01:39:46 mrueg Exp $
+
+  22 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -euscan-0.1.0.ebuild,
+  -euscan-0.1.1.ebuild:
+  Remove old.
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> euscan-0.1.1-r1.ebuild,
   euscan-9999.ebuild:

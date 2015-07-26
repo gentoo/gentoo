@@ -1,6 +1,10 @@
 # ChangeLog for dev-texlive/texlive-langenglish
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-langenglish/ChangeLog,v 1.43 2015/07/16 09:18:24 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-langenglish/ChangeLog,v 1.44 2015/07/22 19:37:41 blueness Exp $
+
+  22 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
+  texlive-langenglish-2014.ebuild:
+  Stable for ppc, bug #550840.
 
 *texlive-langenglish-2015 (16 Jul 2015)
 

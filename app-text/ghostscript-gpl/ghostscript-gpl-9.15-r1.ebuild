@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/ghostscript-gpl/ghostscript-gpl-9.15-r1.ebuild,v 1.12 2015/07/15 20:51:56 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/ghostscript-gpl/ghostscript-gpl-9.15-r1.ebuild,v 1.13 2015/07/25 17:58:59 blueness Exp $
 
 EAPI=5
 
@@ -184,7 +184,7 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install-so install
+	emake -j1 DESTDIR="${D}" install-so install
 
 	if use djvu ; then
 		dobin gsdjvu
@@ -195,7 +195,7 @@ src_install() {
 	mv -f "${D}/usr/bin/gsc" "${D}/usr/bin/gs" || die
 
 	cd "${S}/ijs"
-	emake DESTDIR="${D}" install
+	emake -j1 DESTDIR="${D}" install
 
 	# rename the original cidfmap to cidfmap.GS
 	mv "${D}/usr/share/ghostscript/${PVM}/Resource/Init/cidfmap"{,.GS} || die

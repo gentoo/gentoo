@@ -4,11 +4,11 @@ DESCRIPTION=The European Molecular Biology Open Software Suite - A sequence anal
 EAPI=5
 HOMEPAGE=http://emboss.sourceforge.net/
 IUSE=minimal mysql pdf png postgres static-libs X
-KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos
+KEYWORDS=~amd64 ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=LGPL-2 GPL-2 Apache-2.0 GPL-3+ CC-BY-3.0
 PDEPEND=!minimal? ( sci-biology/aaindex sci-biology/cutg sci-biology/primer3 sci-biology/prints sci-biology/prosite sci-biology/rebase )
 RDEPEND=!sys-devel/cons dev-libs/expat dev-libs/libpcre:3 sci-libs/plplot sys-libs/zlib mysql? ( virtual/mysql ) pdf? ( media-libs/libharu ) png? ( media-libs/gd[png] ) postgres? ( dev-db/postgresql:= ) X? ( x11-libs/libXt )
 SLOT=0
 SRC_URI=ftp://emboss.open-bio.org/pub/EMBOSS/EMBOSS-6.6.0.tar.gz
 _eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	emboss-r1	b861812061b20c645094834b803a1eea	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	readme.gentoo	106edea5533517715013de909a333abd	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=4be9ae4834a8c98304cc042deaa2ef42
+_md5_=39cbffdbdcf4d9b9d9d94ab995806122

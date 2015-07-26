@@ -1,6 +1,22 @@
 # ChangeLog for app-crypt/keybase
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/keybase/ChangeLog,v 1.5 2015/07/09 17:54:57 nicolasbock Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/keybase/ChangeLog,v 1.8 2015/07/25 13:28:23 nicolasbock Exp $
+
+*keybase-0.8.13 (25 Jul 2015)
+
+  25 Jul 2015; Nicolas Bock <nicolasbock@gentoo.org> +keybase-0.8.13.ebuild,
+  -keybase-0.7.8.ebuild, -keybase-0.7.9.ebuild:
+  Version bump and cleanup.
+
+*keybase-0.8.12 (21 Jul 2015)
+
+  21 Jul 2015; Nicolas Bock <nicolasbock@gentoo.org> +keybase-0.8.12.ebuild:
+  Version bump.
+
+*keybase-0.8.10 (19 Jul 2015)
+
+  19 Jul 2015; Nicolas Bock <nicolasbock@gentoo.org> +keybase-0.8.10.ebuild:
+  Version bump.
 
 *keybase-0.8.9 (09 Jul 2015)
 

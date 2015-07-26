@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/kdevelop-python/kdevelop-python-1.7.1.ebuild,v 1.1 2015/02/10 22:11:29 johu Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/kdevelop-python/kdevelop-python-1.7.1.ebuild,v 1.2 2015/07/25 16:13:44 mgorny Exp $
 
 EAPI=5
 
@@ -21,12 +21,10 @@ fi
 DESCRIPTION="Python plugin for KDevelop 4"
 IUSE="debug"
 
-COMMON_DEPEND=">=dev-util/kdevplatform-${PV}:4"
-DEPEND="${COMMON_DEPEND}
+DEPEND="
 	${PYTHON_DEPS}
 "
 RDEPEND="
-	${COMMON_DEPEND}
 	dev-util/kdevelop:4
 "
 

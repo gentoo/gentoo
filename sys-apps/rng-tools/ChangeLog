@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/rng-tools
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/rng-tools/ChangeLog,v 1.60 2015/07/17 22:12:56 np-hardass Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/rng-tools/ChangeLog,v 1.61 2015/07/23 19:59:40 pacho Exp $
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org> rng-tools-5.ebuild:
+  ppc stable wrt bug #555100
 
   17 Jul 2015; NP-Hardass <NP-Hardass@gentoo.org> -files/larger-poolsize.patch,
   -rng-tools-5-r1.ebuild:

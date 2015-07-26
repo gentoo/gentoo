@@ -1,6 +1,11 @@
 # ChangeLog for net-wireless/bladerf-fpga
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/bladerf-fpga/ChangeLog,v 1.5 2015/02/10 15:59:28 zerochaos Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/bladerf-fpga/ChangeLog,v 1.6 2015/07/26 02:55:36 zerochaos Exp $
+
+*bladerf-fpga-0.3.4 (26 Jul 2015)
+
+  26 Jul 2015; Rick Farina <zerochaos@gentoo.org> +bladerf-fpga-0.3.4.ebuild:
+  bump
 
 *bladerf-fpga-0.1.2 (10 Feb 2015)
 

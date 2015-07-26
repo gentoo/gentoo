@@ -1,6 +1,12 @@
 # ChangeLog for dev-java/hamcrest-core
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/hamcrest-core/ChangeLog,v 1.23 2015/07/11 09:21:22 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/hamcrest-core/ChangeLog,v 1.24 2015/07/20 21:28:21 chewi Exp $
+
+  20 Jul 2015; James Le Cuirot <chewi@gentoo.org>
+  -files/hamcrest-1.2-empty_generator.patch,
+  -files/hamcrest-1.2-no_source_in_jar.patch,
+  -files/hamcrest-core-1.2-fix_javadoc.patch, -hamcrest-core-1.2.ebuild:
+  Drop unused version.
 
   11 Jul 2015; James Le Cuirot <chewi@gentoo.org> hamcrest-core-1.1.ebuild:
   Drop java on ia64.

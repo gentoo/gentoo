@@ -1,6 +1,19 @@
 # ChangeLog for net-analyzer/tcpdump
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/tcpdump/ChangeLog,v 1.219 2015/06/28 15:29:04 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/tcpdump/ChangeLog,v 1.222 2015/07/25 04:40:53 jer Exp $
+
+  25 Jul 2015; Jeroen Roovers <jer@gentoo.org> -tcpdump-4.6.2-r1.ebuild,
+  -files/tcpdump-4.6.2-CVE-2014-8767.patch,
+  -files/tcpdump-4.6.2-CVE-2014-8768.patch,
+  -files/tcpdump-4.6.2-CVE-2014-8769.patch,
+  -files/tcpdump-4.6.2-CVE-2014-9140.patch:
+  Old.
+
+  24 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> tcpdump-4.7.4.ebuild:
+  ia64 stable wrt bug #552632
+
+  23 Jul 2015; Agostino Sarubbo <ago@gentoo.org> tcpdump-4.7.4.ebuild:
+  Stable for sparc, wrt bug #552632
 
   28 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> tcpdump-4.7.4.ebuild:
   alpha stable wrt bug #552632

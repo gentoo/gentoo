@@ -1,6 +1,12 @@
 # ChangeLog for app-emulation/wine
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/wine/ChangeLog,v 1.543 2015/07/11 07:54:37 np-hardass Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/wine/ChangeLog,v 1.544 2015/07/18 20:19:37 np-hardass Exp $
+
+*wine-1.7.47 (18 Jul 2015)
+
+  18 Jul 2015; NP-Hardass <NP-Hardass@gentoo.org>
+  +files/wine-1.7.47-critical-security-cookie-fix.patch, +wine-1.7.47.ebuild:
+  Version bump.  See https://www.winehq.org/announce/1.7.47 for the announcement
 
 *wine-1.7.36 (11 Jul 2015)
 *wine-1.7.35 (11 Jul 2015)

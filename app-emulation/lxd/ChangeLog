@@ -1,0 +1,10 @@
+# ChangeLog for app-emulation/lxd
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/lxd/ChangeLog,v 1.1 2015/07/19 20:36:34 alunduil Exp $
+
+*lxd-0.13 (19 Jul 2015)
+
+  19 Jul 2015; Alex Brandt <alunduil@gentoo.org>
+  +files/lxd-0.13-nc-binary-name.patch, +files/lxd.confd, +files/lxd.initd,
+  +files/lxd.service, +lxd-0.13.ebuild, +metadata.xml:
+  add version 0.13  * provided by Erik Mackdanz

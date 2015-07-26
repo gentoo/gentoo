@@ -1,0 +1,16 @@
+[Unit]
+Description=IS-IS routing daemon
+Documentation=man:isis(8) man:zebra(8)
+BindTo=zebra.service
+After=network.target zebra.service
+ConditionPathExists=/etc/quagga/isisd.conf
+
+[Service]
+Type=forking
+PIDFile=/run/quagga/isisd.pid
+ExecStart=/usr/sbin/isisd -d
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

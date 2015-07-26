@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/libsodium
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libsodium/ChangeLog,v 1.35 2015/07/03 08:30:20 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libsodium/ChangeLog,v 1.36 2015/07/22 16:31:44 zlogene Exp $
+
+  22 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> libsodium-1.0.2.ebuild:
+  ia64 stable wrt bug #552254
 
   03 Jul 2015; Agostino Sarubbo <ago@gentoo.org> libsodium-1.0.3.ebuild:
   Add ~alpha/~sparc wrt bug #546756

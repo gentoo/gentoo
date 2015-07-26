@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/micawber
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/micawber/ChangeLog,v 1.1 2015/07/08 10:07:31 yngwin Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/micawber/ChangeLog,v 1.2 2015/07/20 07:12:07 yngwin Exp $
+
+  20 Jul 2015; Ben de Groot <yngwin@gentoo.org>
+  +files/micawber-0.3.2-remove-examples-from-setup.py.patch,
+  micawber-0.3.2.ebuild:
+  Install examples into the proper place (bug #555250)
 
 *micawber-0.3.2 (08 Jul 2015)
 

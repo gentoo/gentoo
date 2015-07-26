@@ -1,6 +1,9 @@
 # ChangeLog for lxde-base/menu-cache
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/lxde-base/menu-cache/ChangeLog,v 1.44 2015/07/07 20:50:06 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/lxde-base/menu-cache/ChangeLog,v 1.45 2015/07/23 19:55:54 pacho Exp $
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org> menu-cache-1.0.0-r1.ebuild:
+  ppc stable wrt bug #550068
 
   07 Jul 2015; Markus Meier <maekke@gentoo.org> menu-cache-1.0.0-r1.ebuild:
   arm stable, bug #550068

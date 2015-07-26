@@ -1,6 +1,9 @@
 # ChangeLog for app-text/writerperfect
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/writerperfect/ChangeLog,v 1.10 2015/06/21 15:46:23 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/writerperfect/ChangeLog,v 1.11 2015/07/23 20:39:02 pacho Exp $
+
+  23 Jul 2015; Pacho Ramos <pacho@gentoo.org> writerperfect-0.8.1.ebuild:
+  Move to ~ppc, bug #547514
 
 *writerperfect-0.9.4 (21 Jun 2015)
 

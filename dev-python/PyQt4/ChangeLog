@@ -1,6 +1,10 @@
 # ChangeLog for dev-python/PyQt4
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/PyQt4/ChangeLog,v 1.292 2015/06/29 21:07:51 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/PyQt4/ChangeLog,v 1.293 2015/07/25 00:00:51 pesa Exp $
+
+  25 Jul 2015; Davide Pesavento <pesa@gentoo.org> PyQt4-4.11.1.ebuild,
+  PyQt4-4.11.4.ebuild:
+  Update HOMEPAGE.
 
   29 Jun 2015; Davide Pesavento <pesa@gentoo.org> -PyQt4-4.10.3-r2.ebuild:
   Drop old version. As of now, sparc no longer has a stable PyQt4, see bug

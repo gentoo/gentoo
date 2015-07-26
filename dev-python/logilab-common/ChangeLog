@@ -1,6 +1,10 @@
 # ChangeLog for dev-python/logilab-common
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/logilab-common/ChangeLog,v 1.158 2015/06/02 05:11:19 jmorgan Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/logilab-common/ChangeLog,v 1.159 2015/07/20 03:48:20 patrick Exp $
+
+  20 Jul 2015; Patrick Lauer <patrick@gentoo.org> logilab-common-0.62.1.ebuild,
+  logilab-common-0.63.2.ebuild:
+  Add missing six dep #546680
 
   02 Jun 2015; Jack Morgan <jmorgan@gentoo.org> logilab-common-0.63.2.ebuild:
   sparc stable wrt bug #540290

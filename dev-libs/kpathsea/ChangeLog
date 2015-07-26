@@ -1,6 +1,13 @@
 # ChangeLog for dev-libs/kpathsea
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/kpathsea/ChangeLog,v 1.48 2015/07/15 09:50:20 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/kpathsea/ChangeLog,v 1.50 2015/07/22 21:07:26 mrueg Exp $
+
+  22 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -kpathsea-6.0.1_p20110705.ebuild:
+  Remove old.
+
+  22 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
+  kpathsea-6.2.0_p20140525.ebuild:
+  Stable for ppc, wrt bug #550840
 
 *kpathsea-6.2.1_p20150521 (15 Jul 2015)
 

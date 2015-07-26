@@ -1,6 +1,9 @@
 # ChangeLog for app-text/ps2eps
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/ps2eps/ChangeLog,v 1.34 2014/01/02 15:04:45 tomwij Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/ps2eps/ChangeLog,v 1.35 2015/07/23 12:46:51 mrueg Exp $
+
+  23 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -ps2eps-1.64.ebuild:
+  Remove old.
 
   02 Jan 2014; Tom Wijsman <TomWij@gentoo.org> ps2eps-1.64.ebuild,
   ps2eps-1.68.ebuild:

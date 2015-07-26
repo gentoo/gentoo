@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/pipes/pipes-1.16.1.ebuild,v 1.4 2014/07/18 20:58:24 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/pipes/pipes-1.16.1.ebuild,v 1.5 2015/07/23 19:58:13 pacho Exp $
 
 EAPI=5
 inherit eutils toolchain-funcs
@@ -11,7 +11,7 @@ SRC_URI="http://bisqwit.iki.fi/src/arch/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~s390 ~x86"
+KEYWORDS="~amd64 ppc ~s390 ~x86"
 
 src_prepare() {
 	# Prevent the build system from looking for dependencies

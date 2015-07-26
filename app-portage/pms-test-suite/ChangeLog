@@ -1,6 +1,10 @@
 # ChangeLog for app-portage/pms-test-suite
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/pms-test-suite/ChangeLog,v 1.13 2015/04/25 16:25:44 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/pms-test-suite/ChangeLog,v 1.14 2015/07/22 01:35:40 mrueg Exp $
+
+  22 Jul 2015; Manuel Rüger <mrueg@gentoo.org> pms-test-suite-0.2.ebuild,
+  pms-test-suite-9999.ebuild:
+  Paludis' python-bindings useflag has been renamed to python.
 
   25 Apr 2015; Mike Gilbert <floppym@gentoo.org> pms-test-suite-9999.ebuild:
   Replace links pointing at git.overlays.gentoo.org.

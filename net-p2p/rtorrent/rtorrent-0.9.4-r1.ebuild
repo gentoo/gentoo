@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/rtorrent/rtorrent-0.9.4-r1.ebuild,v 1.3 2015/05/08 14:31:42 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/rtorrent/rtorrent-0.9.4-r1.ebuild,v 1.4 2015/07/19 15:56:14 heroxbd Exp $
 
 EAPI=5
 
@@ -25,7 +25,7 @@ RDEPEND="${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-rtorrent )
 "
 DEPEND="${COMMON_DEPEND}
-	test? ( dev-util/cppunit )
+	dev-util/cppunit
 	virtual/pkgconfig"
 
 DOCS=( doc/rtorrent.rc )

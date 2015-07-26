@@ -6,7 +6,7 @@
 #
 # Licensed under the GNU General Public License, v2
 #
-# $Header: /var/cvsroot/gentoo-x86/eclass/java-utils-2.eclass,v 1.165 2015/06/28 13:33:48 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/java-utils-2.eclass,v 1.166 2015/07/22 09:20:07 monsieurp Exp $
 
 # @ECLASS: java-utils-2.eclass
 # @MAINTAINER:
@@ -246,6 +246,46 @@ java-pkg_addres() {
 	pushd "${dir}" > /dev/null || die "pushd ${dir} failed"
 	find -L -type f ! -path "./target/*" ! -path "./sources.lst" ! -name "MANIFEST.MF" ! -regex ".*\.\(class\|jar\|java\)" "${@}" -print0 | xargs -0 jar uf "${jar}" || die "jar failed"
 	popd > /dev/null || die "popd failed"
+}
+
+# @FUNCTION: java-pkg_rm_files 
+# @USAGE: java-pkg_rm_files File1.java File2.java ...
+# @DESCRIPTION:
+# Remove unneeded files in ${S}.
+#
+# Every now and then, you'll run into situations whereby a file needs removing,
+# be it a unit test or a regular java class.
+# 
+# You can use this function by either:
+# - calling it yourself in java_prepare() and feeding java-pkg_rm_files with
+# the list of files you wish to remove.
+# - defining an array in the ebuild named JAVA_RM_FILES with the list of files
+# you wish to remove.
+#
+# Both way work and it is left to the developer's preferences. If the
+# JAVA_RM_FILES array is defined, it is will be automatically handed over to
+# java-pkg_rm_files.
+#
+# See java-utils-2_src_prepare.
+#
+# @CODE
+#
+# @param $* - list of files to remove.
+# JAVA_RM_FILES - array containing files to remove. 
+# if defined, automatically handed over to java-pkg_rm_files in java-utils-2_src_prepare.
+#
+# @CODE
+java-pkg_rm_files() {
+	debug-print-function ${FUNCNAME} $*
+	OIFS="$IFS"
+	IFS="\n"
+	for filename in "$@"; do
+		[[ ! -f "${filename}" ]] && die "${filename} is not a regular file. Aborting."
+		einfo "Removing unneeded file ${filename}"
+		rm -f "${S}/${filename}" || die "cannot remove ${filename}"
+		eend $?
+	done
+	IFS="$OIFS"
 }
 
 # @FUNCTION: java-pkg_dojar
@@ -1781,6 +1821,12 @@ ejunit4() {
 java-utils-2_src_prepare() {
 	[[ ${EBUILD_PHASE} == prepare ]] &&
 		java-pkg_func-exists java_prepare && java_prepare
+
+	# Check for files in JAVA_RM_FILES array.
+	if [[ ${JAVA_RM_FILES[@]} ]]; then
+		debug-print "$FUNCNAME: removing unneeded files"
+		java-pkg_rm_files "${JAVA_RM_FILES[@]}"
+	fi
 
 	# Remember that eant will call this unless called via Portage
 	if [[ ! -e "${T}/java-utils-2_src_prepare-run" ]] && is-java-strict; then

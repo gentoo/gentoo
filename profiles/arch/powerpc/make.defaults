@@ -1,7 +1,3 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/make.defaults,v 1.3 2014/11/23 15:55:11 floppym Exp $
-
-# Mike Gilbert <floppym@gentoo.org> (23 Nov 2014)
-# Remove when bug 525510 is resolved.
-USE="python_targets_python3_3 -python_targets_python3_4"
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/make.defaults,v 1.4 2015/07/25 15:41:19 floppym Exp $

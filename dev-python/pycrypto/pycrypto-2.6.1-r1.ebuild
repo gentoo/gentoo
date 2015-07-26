@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pycrypto/pycrypto-2.6.1-r1.ebuild,v 1.3 2015/05/16 07:19:17 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pycrypto/pycrypto-2.6.1-r1.ebuild,v 1.4 2015/07/23 12:02:40 idella4 Exp $
 
 EAPI=5
 
@@ -15,7 +15,7 @@ SRC_URI="http://ftp.dlitz.net/pub/dlitz/crypto/pycrypto/${P}.tar.gz"
 LICENSE="PSF-2 public-domain"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~ia64-hpux ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~x86-solaris"
-IUSE="doc +gmp"
+IUSE="doc +gmp test"
 
 RDEPEND="gmp? ( dev-libs/gmp )"
 DEPEND="${RDEPEND}
@@ -23,6 +23,8 @@ DEPEND="${RDEPEND}
 		dev-python/docutils[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '>=dev-python/epydoc-3[${PYTHON_USEDEP}]' python2_7)
 		)"
+
+REQUIRED_USE="test? ( gmp )"
 
 python_prepare_all() {
 	epatch "${FILESDIR}"/${P}-cross-compile.patch

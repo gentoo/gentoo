@@ -1,6 +1,10 @@
 # ChangeLog for sys-apps/syslog-notify
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/syslog-notify/ChangeLog,v 1.12 2013/02/16 11:02:06 pacho Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/syslog-notify/ChangeLog,v 1.13 2015/07/21 21:32:17 mrueg Exp $
+
+  21 Jul 2015; Manuel Rüger <mrueg@gentoo.org>
+  -files/syslog-notify-0.1-libnotify-0.7.patch, -syslog-notify-0.1.ebuild:
+  Remove old.
 
   16 Feb 2013; Pacho Ramos <pacho@gentoo.org> syslog-notify-0.2.ebuild:
   Don't show elog messages always (#457596)

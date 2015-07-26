@@ -8,6 +8,9 @@
   <maintainer>
     <email>gregkh@gentoo.org</email>
   </maintainer>
+  <maintainer>
+    <email>floppym@gentoo.org</email>
+  </maintainer>
   <use>
     <flag name="net">Install the oui.txt and iab.txt databases</flag>
     <flag name="pci">Install the pci.ids database</flag>

@@ -1,6 +1,23 @@
 # ChangeLog for dev-ruby/facter
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/facter/ChangeLog,v 1.139 2015/07/14 04:43:42 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/facter/ChangeLog,v 1.143 2015/07/23 22:49:45 prometheanfire Exp $
+
+  23 Jul 2015; Matthew Thode <prometheanfire@gentoo.org> facter-3.0.2-r1.ebuild:
+  signing, also, previous commit fixed bug 555624
+
+*facter-3.0.2-r1 (23 Jul 2015)
+
+  23 Jul 2015; Matthew Thode <prometheanfire@gentoo.org>
+  +facter-3.0.2-r1.ebuild, -facter-3.0.1-r4.ebuild, -facter-3.0.2.ebuild:
+  disabling java support, use puppet-agent instead if you want jruby support
+
+*facter-3.0.2 (23 Jul 2015)
+
+  23 Jul 2015; Matthew Thode <prometheanfire@gentoo.org> +facter-3.0.2.ebuild:
+  bup
+
+  19 Jul 2015; Jeroen Roovers <jer@gentoo.org> facter-3.0.1-r4.ebuild:
+  Mark ~hppa (bug #553952).
 
 *facter-3.0.1-r4 (14 Jul 2015)
 

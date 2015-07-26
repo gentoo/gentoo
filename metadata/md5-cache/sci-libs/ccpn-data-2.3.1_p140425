@@ -10,5 +10,5 @@ REQUIRED_USE=|| ( python_targets_python2_7 )
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=http://www2.ccpn.ac.uk/download/ccpnmr/analysis2.3.1r2.tar.gz http://dev.gentoo.org/~jlec/distfiles/ccpn-update-2.3.1-140425.patch.xz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	portability	a45c088f246ef5091e029f6285d7ce42	python-r1	23846c6ba39f6655e2027001eeed8e81	python-utils-r1	ae9becb5d45344c01939c3f57df0d3fd	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	portability	a45c088f246ef5091e029f6285d7ce42	python-r1	23846c6ba39f6655e2027001eeed8e81	python-utils-r1	df6eb914b4b2d70d9c5e7c9331437c52	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=9e4296a0e820042f6aed7f86c015cb3f

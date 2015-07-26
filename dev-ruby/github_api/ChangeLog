@@ -1,6 +1,15 @@
 # ChangeLog for dev-ruby/github_api
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/github_api/ChangeLog,v 1.6 2015/06/07 17:52:49 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/github_api/ChangeLog,v 1.8 2015/07/25 07:32:43 graaff Exp $
+
+  25 Jul 2015; Hans de Graaff <graaff@gentoo.org> -github_api-0.10.2.ebuild:
+  Cleanup.
+
+*github_api-0.11.3-r1 (25 Jul 2015)
+
+  25 Jul 2015; Hans de Graaff <graaff@gentoo.org> github_api-0.11.3.ebuild,
+  +github_api-0.11.3-r1.ebuild:
+  Create stable candidate.
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

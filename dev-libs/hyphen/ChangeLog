@@ -1,6 +1,12 @@
 # ChangeLog for dev-libs/hyphen
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/hyphen/ChangeLog,v 1.31 2015/06/09 14:18:15 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/hyphen/ChangeLog,v 1.33 2015/07/22 19:33:40 ago Exp $
+
+  22 Jul 2015; Agostino Sarubbo <ago@gentoo.org> hyphen-2.8.8.ebuild:
+  Stable for x86, wrt bug #555584
+
+  22 Jul 2015; Agostino Sarubbo <ago@gentoo.org> hyphen-2.8.8.ebuild:
+  Stable for amd64, wrt bug #555584
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-libs/atk dev-libs/expat dev-libs/glib:2 gnome-base/libglade:2.0 media-sound/fluidsynth media-sound/jack-audio-connection-kit x11-libs/cairo x11-libs/gdk-pixbuf x11-libs/gtk+:2 x11-libs/pango lash? ( media-sound/lash ) lv2? ( media-libs/lv2 ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
+DESCRIPTION=A set of open source instruments and effects for digital audio workstations
+EAPI=5
+HOMEPAGE=http://calf-studio-gear.org/
+IUSE=lash lv2 static-libs
+LICENSE=LGPL-2.1
+RDEPEND=dev-libs/atk dev-libs/expat dev-libs/glib:2 gnome-base/libglade:2.0 media-sound/fluidsynth media-sound/jack-audio-connection-kit x11-libs/cairo x11-libs/gdk-pixbuf x11-libs/gtk+:2 x11-libs/pango lash? ( media-sound/lash ) lv2? ( media-libs/lv2 )
+SLOT=0
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	git-r3	727a612b4c6247766904e3f74a326e2b	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=311b3ca4866c48c5e7fc91e28d56436c

@@ -1,6 +1,10 @@
 # ChangeLog for app-text/a2ps
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/a2ps/ChangeLog,v 1.114 2013/05/04 19:04:06 vapier Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/a2ps/ChangeLog,v 1.115 2015/07/23 12:48:38 mrueg Exp $
+
+  23 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -a2ps-4.14-r1.ebuild,
+  -a2ps-4.14-r2.ebuild:
+  Remove old.
 
   04 May 2013; Mike Frysinger <vapier@gentoo.org> a2ps-4.14-r3.ebuild:
   Fix building with newer automake.

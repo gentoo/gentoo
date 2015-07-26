@@ -1,6 +1,9 @@
 # ChangeLog for xfce-extra/xfce4-xkb-plugin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-xkb-plugin/ChangeLog,v 1.55 2015/07/12 09:34:59 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-xkb-plugin/ChangeLog,v 1.56 2015/07/25 12:21:49 pacho Exp $
+
+  25 Jul 2015; Pacho Ramos <pacho@gentoo.org> xfce4-xkb-plugin-0.7.1.ebuild:
+  ppc stable wrt bug #553500
 
   12 Jul 2015; Jeroen Roovers <jer@gentoo.org> xfce4-xkb-plugin-0.7.1.ebuild:
   Stable for PPC64 (bug #553500).

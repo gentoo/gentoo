@@ -1,6 +1,9 @@
 # ChangeLog for dev-lang/open-cobol
 # Copyright 2002-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/open-cobol/ChangeLog,v 1.15 2015/06/09 14:08:44 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/open-cobol/ChangeLog,v 1.16 2015/07/22 13:34:29 mrueg Exp $
+
+  22 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -open-cobol-1.0.ebuild:
+  Remove old.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

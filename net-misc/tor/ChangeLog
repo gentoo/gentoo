@@ -1,6 +1,15 @@
 # ChangeLog for net-misc/tor
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/tor/ChangeLog,v 1.483 2015/07/13 08:53:44 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/tor/ChangeLog,v 1.486 2015/07/25 12:30:28 zlogene Exp $
+
+  25 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> tor-0.2.6.10.ebuild:
+  amd64 stable wrt bug #555098
+
+  25 Jul 2015; Markus Meier <maekke@gentoo.org> tor-0.2.6.10.ebuild:
+  arm stable, bug #555098
+
+  19 Jul 2015; Anthony G. Basile <blueness@gentoo.org> tor-0.2.6.10.ebuild:
+  Stable on ppc and ppc64, bug #555098.
 
 *tor-0.2.6.10 (13 Jul 2015)
 

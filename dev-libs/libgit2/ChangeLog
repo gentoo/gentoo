@@ -1,6 +1,11 @@
 # ChangeLog for dev-libs/libgit2
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgit2/ChangeLog,v 1.33 2015/07/03 03:36:09 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgit2/ChangeLog,v 1.34 2015/07/25 14:11:33 mrueg Exp $
+
+*libgit2-0.23.0 (25 Jul 2015)
+
+  25 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +libgit2-0.23.0.ebuild:
+  Version bump. Fixes bug #555366.
 
 *libgit2-0.22.3 (03 Jul 2015)
 

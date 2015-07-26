@@ -1,9 +1,0 @@
-DEFINED_PHASES=compile install unpack
-DESCRIPTION=Script to rescan the SCSI bus without rebooting
-HOMEPAGE=http://www.garloff.de/kurt/linux/
-KEYWORDS=~alpha amd64 ~arm ~hppa ppc ~sh sparc x86
-LICENSE=GPL-2
-RDEPEND=>=sys-apps/sg3_utils-1.24 virtual/modutils app-shells/bash
-SLOT=0
-SRC_URI=mirror://gentoo/rescan-scsi-bus.sh-1.24
-_md5_=816b2e105b9e778c0e948c0fb78318cc

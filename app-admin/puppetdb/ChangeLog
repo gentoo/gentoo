@@ -1,6 +1,15 @@
 # ChangeLog for app-admin/puppetdb
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/puppetdb/ChangeLog,v 1.4 2015/07/18 09:11:01 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/puppetdb/ChangeLog,v 1.7 2015/07/20 05:41:49 prometheanfire Exp $
+
+  20 Jul 2015; Matthew Thode <prometheanfire@gentoo.org> files/puppetdb.initd:
+  betterer init scripts... er
+
+  19 Jul 2015; Matthew Thode <prometheanfire@gentoo.org> puppetdb-3.0.1.ebuild:
+  more binaries
+
+  19 Jul 2015; Matthew Thode <prometheanfire@gentoo.org> puppetdb-3.0.1.ebuild:
+  puppetdb supports jdk 1.7 AND above
 
   18 Jul 2015; Matthew Thode <prometheanfire@gentoo.org> files/puppetdb.initd,
   puppetdb-3.0.1.ebuild:

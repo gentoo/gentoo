@@ -1,3 +1,5 @@
+bug 462788
+
  configure.ac | 18 ++++++++++++------
  1 file changed, 12 insertions(+), 6 deletions(-)
 

@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/deep_merge
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/deep_merge/ChangeLog,v 1.9 2015/05/04 02:18:46 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/deep_merge/ChangeLog,v 1.10 2015/07/20 06:10:03 jer Exp $
+
+  20 Jul 2015; Jeroen Roovers <jer@gentoo.org> deep_merge-1.0.1.ebuild:
+  Mark ~hppa (bug #554574).
 
   04 May 2015; Robin H. Johnson <robbat2@gentoo.org> deep_merge-1.0.1.ebuild:
   Infra bump to add ~x86 keyword.

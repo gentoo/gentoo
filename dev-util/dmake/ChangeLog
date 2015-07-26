@@ -1,6 +1,10 @@
 # ChangeLog for dev-util/dmake
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/dmake/ChangeLog,v 1.34 2012/08/10 10:52:41 johu Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/dmake/ChangeLog,v 1.35 2015/07/21 21:11:00 mrueg Exp $
+
+  21 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -dmake-4.1-r1.ebuild,
+  -dmake-4.12.ebuild:
+  Remove old.
 
   10 Aug 2012; Johannes Huber <johu@gentoo.org> dmake-4.12.2.ebuild:
   Stable for x86, wrt bug #422073

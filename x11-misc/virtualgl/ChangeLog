@@ -1,6 +1,11 @@
 # ChangeLog for x11-misc/virtualgl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/virtualgl/ChangeLog,v 1.25 2015/06/14 16:45:41 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/virtualgl/ChangeLog,v 1.26 2015/07/19 11:36:31 pacho Exp $
+
+*virtualgl-2.4.1 (19 Jul 2015)
+
+  19 Jul 2015; Pacho Ramos <pacho@gentoo.org> +virtualgl-2.4.1.ebuild:
+  Version bump
 
   14 Jun 2015; Ulrich Müller <ulm@gentoo.org> virtualgl-2.3.3.ebuild:
   [QA] Remove emul-linux-x86-* from dependencies.

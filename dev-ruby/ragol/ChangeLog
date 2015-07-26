@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/ragol
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ragol/ChangeLog,v 1.17 2015/06/21 09:34:33 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ragol/ChangeLog,v 1.18 2015/07/23 20:26:32 mrueg Exp $
+
+  23 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -ragol-1.0.1.ebuild:
+  Remove old.
 
   21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> ragol-1.0.1-r1.ebuild:
   x86 stable wrt bug #550514

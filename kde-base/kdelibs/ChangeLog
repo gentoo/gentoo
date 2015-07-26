@@ -1,6 +1,17 @@
 # ChangeLog for kde-base/kdelibs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdelibs/ChangeLog,v 1.1058 2015/07/02 12:57:11 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdelibs/ChangeLog,v 1.1061 2015/07/25 11:59:54 pacho Exp $
+
+  25 Jul 2015; Pacho Ramos <pacho@gentoo.org> kdelibs-4.14.8.ebuild:
+  ppc stable wrt bug #550740
+
+  18 Jul 2015; Johannes Huber <johu@gentoo.org>
+  -files/kdelibs-4.15.6-fix-bic.patch, -kdelibs-4.14.7.ebuild,
+  -kdelibs-4.14.9.ebuild:
+  Remove old.
+
+  18 Jul 2015; Johannes Huber <johu@gentoo.org> -kdelibs-4.14.6-r1.ebuild:
+  Remove KDE PIM 4.14.6
 
 *kdelibs-4.14.10 (02 Jul 2015)
 

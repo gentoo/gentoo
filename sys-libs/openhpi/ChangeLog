@@ -1,6 +1,10 @@
 # ChangeLog for sys-libs/openhpi
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/openhpi/ChangeLog,v 1.9 2014/03/12 03:11:06 patrick Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/openhpi/ChangeLog,v 1.10 2015/07/22 11:54:24 mrueg Exp $
+
+  22 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -openhpi-2.0.3.ebuild,
+  -openhpi-2.10.1.ebuild:
+  Remove old.
 
   12 Mar 2014; Patrick Lauer <patrick@gentoo.org> openhpi-2.0.3.ebuild,
   openhpi-2.10.1.ebuild, openhpi-2.12.0.ebuild:

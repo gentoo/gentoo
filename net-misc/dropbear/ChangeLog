@@ -1,6 +1,9 @@
 # ChangeLog for net-misc/dropbear
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/dropbear/ChangeLog,v 1.132 2015/07/16 03:01:23 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/dropbear/ChangeLog,v 1.133 2015/07/20 07:45:59 vapier Exp $
+
+  20 Jul 2015; Mike Frysinger <vapier@gentoo.org> dropbear-2015.67.ebuild:
+  Enable USE=syslog by default rather than spewing to stderr.
 
   16 Jul 2015; Mike Frysinger <vapier@gentoo.org> dropbear-2014.66.ebuild:
   Mark arm64/m68k/s390/sh stable.

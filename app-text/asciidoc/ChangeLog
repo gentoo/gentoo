@@ -1,6 +1,9 @@
 # ChangeLog for app-text/asciidoc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/asciidoc/ChangeLog,v 1.109 2015/07/12 15:32:38 djc Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/asciidoc/ChangeLog,v 1.110 2015/07/19 09:38:02 djc Exp $
+
+  19 Jul 2015; Dirkjan Ochtman <djc@gentoo.org> asciidoc-8.6.9-r1.ebuild:
+  Remove python 3.3, 3.4 compatibility again (bug 554786)
 
   12 Jul 2015; Dirkjan Ochtman <djc@gentoo.org> asciidoc-8.6.9-r1.ebuild:
   Add python 3.3, 3.4 compatibility (fixes bug 546110)

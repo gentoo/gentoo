@@ -1,6 +1,18 @@
 # ChangeLog for dev-games/tiled
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/tiled/ChangeLog,v 1.10 2015/06/07 08:27:42 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-games/tiled/ChangeLog,v 1.12 2015/07/18 14:32:09 kensington Exp $
+
+*tiled-0.12.3 (18 Jul 2015)
+
+  18 Jul 2015; Michael Palimaka <kensington@gentoo.org> +tiled-0.12.3.ebuild,
+  -tiled-0.12.0.ebuild:
+  Bump correct version.
+
+*tiled-0.12.0 (18 Jul 2015)
+
+  18 Jul 2015; Michael Palimaka <kensington@gentoo.org> +tiled-0.12.0.ebuild,
+  -tiled-0.10.2.ebuild:
+  Version bump. Remove old.
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

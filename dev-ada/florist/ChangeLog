@@ -1,6 +1,9 @@
 # ChangeLog for dev-ada/florist
-# Copyright 2002-2008 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ada/florist/ChangeLog,v 1.16 2008/01/23 22:22:31 george Exp $
+# Copyright 2002-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ada/florist/ChangeLog,v 1.17 2015/07/22 20:40:45 mrueg Exp $
+
+  22 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -florist-2006.0.ebuild:
+  Remove old.
 
 *florist-2007.0 (23 Jan 2008)
 

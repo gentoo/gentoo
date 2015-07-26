@@ -1,6 +1,10 @@
 # ChangeLog for x11-drivers/xf86-input-penmount
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-input-penmount/ChangeLog,v 1.74 2012/05/16 00:41:22 aballier Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-input-penmount/ChangeLog,v 1.75 2015/07/22 02:54:33 mrueg Exp $
+
+  22 Jul 2015; Manuel Rüger <mrueg@gentoo.org>
+  -xf86-input-penmount-1.4.1.ebuild:
+  Remove old.
 
   16 May 2012; Alexis Ballier <aballier@gentoo.org>
   xf86-input-penmount-1.5.0.ebuild:
@@ -322,4 +326,3 @@
   08 Aug 2005; Donnie Berkholz <dberkholz@gentoo.org>;
   +xf86-input-penmount-1.0.0.ebuild:
   Initial commit for modular X.
-

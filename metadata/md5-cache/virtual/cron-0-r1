@@ -1,7 +1,7 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual for cron
 EAPI=4
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd
+KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~sparc-fbsd ~x86-fbsd
 RDEPEND=|| ( sys-process/cronie sys-process/vixie-cron sys-process/bcron sys-process/dcron sys-process/fcron )
 SLOT=0
-_md5_=0948f330848e00caae0a2589a112e761
+_md5_=ac864d97f0f62e03646c08b41f37e7b3

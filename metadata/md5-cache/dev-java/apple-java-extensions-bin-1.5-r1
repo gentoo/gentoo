@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install preinst prepare setup
+DEPEND=app-arch/unzip >=dev-java/java-config-2.2.0
+DESCRIPTION=A pluggable jar of stub classes representing the new Apple eAWT and eIO APIs for Java on Mac OS X
+EAPI=5
+HOMEPAGE=http://developer.apple.com/samplecode/AppleJavaExtensions/
+IUSE=elibc_FreeBSD
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=Apple
+RDEPEND=>=virtual/jre-1.5 >=dev-java/java-config-2.2.0
+SLOT=0
+SRC_URI=http://developer.apple.com/samplecode/AppleJavaExtensions/AppleJavaExtensions.zip -> apple-java-extensions-bin-1.5.zip
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	java-pkg-2	1889f7787714c5f7e3b5bb1c2be07c1f	java-utils-2	abeb792ba9affd97d226ab283bfd07a2	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=7a573b098d1df17ffcd07034a820d302

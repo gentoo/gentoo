@@ -1,6 +1,9 @@
 # ChangeLog for app-text/texlive
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/texlive/ChangeLog,v 1.142 2015/07/16 15:37:13 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/texlive/ChangeLog,v 1.143 2015/07/22 19:43:26 blueness Exp $
+
+  22 Jul 2015; Anthony G. Basile <blueness@gentoo.org> texlive-2014.ebuild:
+  Stable for ppc, bug #550840.
 
   16 Jul 2015; Alexis Ballier <aballier@gentoo.org> texlive-2015.ebuild:
   raise ttf2pk2 dep to tl 2015 one

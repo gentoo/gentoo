@@ -1,6 +1,13 @@
 # ChangeLog for app-emulation/libguestfs
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/libguestfs/ChangeLog,v 1.39 2014/12/19 04:44:14 dlan Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/libguestfs/ChangeLog,v 1.40 2015/07/20 23:13:07 sping Exp $
+
+*libguestfs-1.28.5-r1 (20 Jul 2015)
+
+  20 Jul 2015; Sebastian Pipping <sping@gentoo.org>
+  +libguestfs-1.28.5-r1.ebuild:
+  Unlock python bindings (bug #509722), address "matches more than one slot"
+  repoman warnings
 
 *libguestfs-1.28.5 (19 Dec 2014)
 

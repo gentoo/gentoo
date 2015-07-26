@@ -1,6 +1,9 @@
 # ChangeLog for dev-lang/xsb
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/xsb/ChangeLog,v 1.49 2015/01/10 14:18:46 keri Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/xsb/ChangeLog,v 1.50 2015/07/22 13:33:04 mrueg Exp $
+
+  22 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -xsb-3.3.5.ebuild:
+  Remove old.
 
 *xsb-3.5.0 (10 Jan 2015)
 
