@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/targets/desktop/plasma/package.use,v 1.9 2015/07/01 15:25:25 johu Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/targets/desktop/plasma/package.use,v 1.10 2015/07/26 21:36:03 mgorny Exp $
 
 # Not required, but makes life easier with Qt; bug 457934
 app-arch/unzip natspec
@@ -38,11 +38,12 @@ kde-apps/kde4-l10n minimal
 kde-apps/kdeartwork-meta minimal
 kde-apps/kdebase-kioslaves minimal
 kde-apps/kdebase-meta minimal
-kde-apps/kdebase-runtime-meta minimal
+kde-apps/kdebase-runtime-meta -crash-reporter minimal
 kde-apps/kdesu -handbook
+kde-apps/solid-runtime -bluetooth
 kde-base/baloo minimal
 kde-base/kactivities minimal
-kde-base/kde-meta minimal
+kde-base/kde-meta -kdepim minimal
 net-libs/libkpeople minimal
 sys-auth/polkit-kde-agent minimal
 

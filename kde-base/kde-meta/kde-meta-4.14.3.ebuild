@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kde-meta/kde-meta-4.14.3.ebuild,v 1.6 2015/06/04 18:39:13 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kde-meta/kde-meta-4.14.3.ebuild,v 1.7 2015/07/26 21:35:07 mgorny Exp $
 
 EAPI=5
 inherit kde4-meta-pkg
@@ -31,3 +31,4 @@ RDEPEND="
 	)
 	!minimal? ( $(add_kdebase_dep kdeplasma-addons) )
 "
+REQUIRED_USE="minimal? ( !kdepim )"

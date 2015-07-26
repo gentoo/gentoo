@@ -1,6 +1,10 @@
 # ChangeLog for kde-base/kde-meta
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kde-meta/ChangeLog,v 1.347 2015/06/04 18:39:13 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kde-meta/ChangeLog,v 1.348 2015/07/26 21:35:07 mgorny Exp $
+
+  26 Jul 2015; Michał Górny <mgorny@gentoo.org> kde-meta-4.14.3.ebuild:
+  Fix conflict with kf5-based kdepim. https://github.com/gentoo/gentoo-portage-
+  rsync-mirror/pull/183 by a17r.
 
   04 Jun 2015; Michael Palimaka <kensington@gentoo.org> kde-meta-4.14.3.ebuild:
   Move various kde-base packages to kde-apps.

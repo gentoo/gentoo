@@ -1,6 +1,10 @@
 # ChangeLog for dev-libs/libnatspec
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libnatspec/ChangeLog,v 1.31 2015/07/03 10:10:21 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libnatspec/ChangeLog,v 1.32 2015/07/26 21:40:53 mgorny Exp $
+
+  26 Jul 2015; Michał Górny <mgorny@gentoo.org> libnatspec-0.2.6-r1.ebuild:
+  Add proper pkg_setup() to fix USE=-python, bug #546212.
+  https://github.com/gentoo/gentoo-portage-rsync-mirror/pull/185 by a17r.
 
   03 Jul 2015; Agostino Sarubbo <ago@gentoo.org> libnatspec-0.2.6-r1.ebuild:
   Stable for alpha, wrt bug #548686

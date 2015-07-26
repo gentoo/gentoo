@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm preinst prepare
+DEPEND=app-text/gtkspell:2 dev-cpp/lucene++ dev-libs/boost:=[nls] dev-libs/expat dev-libs/icu:= || ( =sys-libs/db-5*:=[cxx] =sys-libs/db-4*:=[cxx] ) x11-libs/gtk+:2 x11-libs/wxGTK:3.0[X] virtual/pkgconfig >=sys-apps/sed-4
+DESCRIPTION=GUI editor for gettext translations files
+EAPI=5
+HOMEPAGE=https://poedit.net
+IUSE=linguas_af linguas_am linguas_an linguas_ar linguas_ast linguas_az linguas_be@latin linguas_be linguas_bg linguas_bn linguas_br linguas_bs linguas_ca linguas_ca@valencia linguas_ckb linguas_co linguas_cs linguas_da linguas_de linguas_el linguas_en_GB linguas_eo linguas_es linguas_et linguas_eu linguas_fa linguas_fi linguas_fr linguas_fur linguas_fy_NL linguas_ga linguas_gl linguas_he linguas_hi linguas_hr linguas_hu linguas_id linguas_is linguas_it linguas_ja linguas_ka linguas_kk linguas_ko linguas_ku linguas_ky linguas_lt linguas_lv linguas_mk linguas_mn linguas_mr linguas_ms linguas_nb linguas_ne linguas_nl linguas_nn linguas_oc linguas_pa linguas_pl linguas_pt_BR linguas_pt_PT linguas_ro linguas_ru linguas_sk linguas_sl linguas_sq linguas_sr linguas_sv linguas_ta linguas_tg linguas_th linguas_tr linguas_tt linguas_ug linguas_uk linguas_ur linguas_uz linguas_vi linguas_wa linguas_zh_CN linguas_zh_TW
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=app-text/gtkspell:2 dev-cpp/lucene++ dev-libs/boost:=[nls] dev-libs/expat dev-libs/icu:= || ( =sys-libs/db-5*:=[cxx] =sys-libs/db-4*:=[cxx] ) x11-libs/gtk+:2 x11-libs/wxGTK:3.0[X]
+SLOT=0
+SRC_URI=https://github.com/vslavik/poedit/releases/download/v1.8.3-oss/poedit-1.8.3.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	flag-o-matic	c9602887773166fe300444712fc7ff98	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	l10n	33bde4fb0cfd3a21a277b66bfd837e19	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	wxwidgets	6d6eec2685256d35511e7b6d5461bec9
+_md5_=42b084952e2e1f0d6545eab2c94600f1

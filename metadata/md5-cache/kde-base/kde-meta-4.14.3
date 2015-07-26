@@ -6,6 +6,7 @@ IUSE=accessibility kdepim minimal nls sdk aqua
 KEYWORDS=amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux
 LICENSE=metapackage
 RDEPEND=>=kde-apps/kate-4.14.3:4[aqua=] >=kde-apps/kdeadmin-meta-4.14.3:4[aqua=] >=kde-apps/kdeartwork-meta-4.14.3:4[aqua=] >=kde-apps/kdebase-meta-4.14.3:4[aqua=] >=kde-apps/kdeedu-meta-4.14.3:4[aqua=] >=kde-apps/kdegames-meta-4.14.3:4[aqua=] >=kde-apps/kdegraphics-meta-4.14.3:4[aqua=] >=kde-apps/kdemultimedia-meta-4.14.3:4[aqua=] >=kde-apps/kdenetwork-meta-4.14.3:4[aqua=] >=kde-apps/kdetoys-meta-4.14.3:4[aqua=] >=kde-apps/kdeutils-meta-4.14.3:4[aqua=] accessibility? ( >=kde-apps/kdeaccessibility-meta-4.14.3:4[aqua=] ) kdepim? ( >=kde-base/kdepim-meta-4.4.11.1:4[aqua=] ) nls? ( >=kde-apps/kde4-l10n-4.14.3:4[aqua=] ) sdk? ( >=kde-base/kdebindings-meta-4.14.3:4[aqua=] >=kde-apps/kdesdk-meta-4.14.3:4[aqua=] >=kde-apps/kdewebdev-meta-4.14.3:4[aqua=] ) !minimal? ( >=kde-base/kdeplasma-addons-4.14.3:4[aqua=] )
+REQUIRED_USE=minimal? ( !kdepim )
 SLOT=4
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	kde4-functions	99e770658f27aaf2c8a5850af7598b18	kde4-meta-pkg	c803ab12295a2918961b64111d6682fa	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=3e27c0aa4925d75eb0107018db0065ad
+_md5_=360b12e326d8506dc32cab6a618a2e7b

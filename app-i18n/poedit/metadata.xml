@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<herd>wxwidgets</herd>
 	<upstream>
-		<remote-id type="sourceforge">poedit</remote-id>
+		<remote-id type="github">vslavik/poedit</remote-id>
 	</upstream>
 </pkgmetadata>

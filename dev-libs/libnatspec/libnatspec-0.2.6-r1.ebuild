@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libnatspec/libnatspec-0.2.6-r1.ebuild,v 1.10 2015/07/03 10:10:21 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libnatspec/libnatspec-0.2.6-r1.ebuild,v 1.11 2015/07/26 21:40:53 mgorny Exp $
 
 EAPI=5
 
@@ -26,6 +26,10 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	python? ( dev-lang/tcl:0= )"
+
+pkg_setup() {
+	use python && python-single-r1_pkg_setup
+}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-iconv.patch

@@ -1,6 +1,13 @@
 # ChangeLog for app-i18n/poedit
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/poedit/ChangeLog,v 1.84 2015/06/09 11:21:31 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/poedit/ChangeLog,v 1.85 2015/07/26 22:03:10 rhill Exp $
+
+*poedit-1.8.3 (26 Jul 2015)
+
+  26 Jul 2015; Ryan Hill <rhill@gentoo.org> +poedit-1.8.3.ebuild, metadata.xml:
+  Version bump (bug #500542) with ebuild by Nikoli. Dropped hppa, ppc, and
+  sparc due to unkeyworded dependencies (bug #555984). Also fixes locale
+  installation (bug #406435).
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

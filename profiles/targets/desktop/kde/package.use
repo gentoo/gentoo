@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/targets/desktop/kde/package.use,v 1.9 2015/07/01 15:25:25 johu Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/targets/desktop/kde/package.use,v 1.10 2015/07/26 21:36:03 mgorny Exp $
 
 # Required by kde-base/pykde4
 dev-python/PyQt4 script sql webkit
@@ -25,3 +25,6 @@ dev-qt/qt-mobility multimedia
 
 # Required by app-office/libreoffice
 media-libs/phonon designer
+
+# Enable crash-reporter here instead of in ebuild
+kde-apps/kdebase-runtime-meta crash-reporter
