@@ -324,7 +324,7 @@ _calculate_live_repo() {
 				_kmname=${PN}
 			fi
 
-			if [[ ${PV} != 9999 && ${CATEGORY} = kde-apps ]]; then
+			if [[ ${PV} == ??.??.49.9999 && ${CATEGORY} = kde-apps ]]; then
 				EGIT_BRANCH="Applications/$(get_version_component_range 1-2)"
 			fi
 
