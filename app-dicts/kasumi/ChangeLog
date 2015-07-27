@@ -1,6 +1,9 @@
 # ChangeLog for app-dicts/kasumi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/kasumi/ChangeLog,v 1.52 2015/06/09 09:38:54 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/kasumi/ChangeLog,v 1.53 2015/07/27 17:00:59 klausman Exp $
+
+  27 Jul 2015; Tobias Klausmann <klausman@gentoo.org> kasumi-2.5-r1.ebuild:
+  Stable on alpha, bug 525016
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

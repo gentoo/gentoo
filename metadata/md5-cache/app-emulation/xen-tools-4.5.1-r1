@@ -11,5 +11,5 @@ REQUIRED_USE=hvm? ( || ( qemu system-qemu ) ) python_targets_python2_7 pygrub? (
 RESTRICT=test
 SLOT=0
 SRC_URI=http://bits.xensource.com/oss-xen/release/4.5.1/xen-4.5.1.tar.gz http://code.coreboot.org/p/seabios/downloads/get/seabios-1.7.5.tar.gz http://dev.gentoo.org/~dlan/distfiles/seabios-1.7.5.tar.gz ovmf? ( http://dev.gentoo.org/~dlan/distfiles/ovmf-20131208.tar.bz2 http://dev.gentoo.org/~dlan/distfiles/xen-ovmf-patches-0.tar.xz ) http://dev.gentoo.org/~dlan/distfiles/xen-security-patches-4.tar.xz http://dev.gentoo.org/~dlan/distfiles/xen-gentoo-patches-4.tar.xz
-_eclasses_=bash-completion-r1	c8399c7c7ecbcf7ed6e5bd3abb3d4af3	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	351da1aa73960a282591217fb57c1bb8	python-utils-r1	df6eb914b4b2d70d9c5e7c9331437c52	toolchain-funcs	42408102d713fbad60ca21349865edb4	udev	da001465a2e939c93f7ae16947ce3438
+_eclasses_=bash-completion-r1	c8399c7c7ecbcf7ed6e5bd3abb3d4af3	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	351da1aa73960a282591217fb57c1bb8	python-utils-r1	68e010c13e97b7b2c7bf403ee9c51e1b	toolchain-funcs	42408102d713fbad60ca21349865edb4	udev	da001465a2e939c93f7ae16947ce3438
 _md5_=7f6fdb28fb621b138f86baf17f549433

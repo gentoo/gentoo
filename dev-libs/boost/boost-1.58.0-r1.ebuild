@@ -1,9 +1,9 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/boost/boost-1.58.0.ebuild,v 1.1 2015/07/13 12:51:01 pinkbyte Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/boost/boost-1.58.0-r1.ebuild,v 1.1 2015/07/27 16:35:22 pinkbyte Exp $
 
 EAPI="5"
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4} )
 
 inherit eutils flag-o-matic multilib multiprocessing python-r1 toolchain-funcs versionator multilib-minimal
 
@@ -111,7 +111,8 @@ src_prepare() {
 		"${FILESDIR}/${PN}-1.48.0-disable_icu_rpath.patch" \
 		"${FILESDIR}/${PN}-1.55.0-context-x32.patch" \
 		"${FILESDIR}/${PN}-1.52.0-threads.patch" \
-		"${FILESDIR}/${PN}-1.56.0-build-auto_index-tool.patch"
+		"${FILESDIR}/${PN}-1.56.0-build-auto_index-tool.patch" \
+		"${FILESDIR}/${PN}-1.58.0-fix-non-constexpr-types-regression.patch"
 
 	# Do not try to build missing 'wave' tool, bug #522682
 	# Upstream bugreport - https://svn.boost.org/trac/boost/ticket/10507

@@ -1,6 +1,21 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1728 2015/07/27 16:31:01 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1732 2015/07/27 16:35:19 mgorny Exp $
+
+  27 Jul 2015; Michał Górny <mgorny@gentoo.org> python-utils-r1.eclass:
+  python_wrapper_setup(): make banned helpers exit with 127.
+
+  27 Jul 2015; Michał Górny <mgorny@gentoo.org> python-utils-r1.eclass:
+  Ban calling pythonN and pythonN-config when the other version of Python is
+  selected (i.e. ban python2 when python3 is used).
+
+  27 Jul 2015; Michał Górny <mgorny@gentoo.org> python-utils-r1.eclass:
+  python_wrapper_setup(): wrap pythonN-config as well as suggested by PEP and
+  required by some applications, bug #555594.
+
+  27 Jul 2015; Michał Górny <mgorny@gentoo.org> python-utils-r1.eclass:
+  python_wrapper_setup(): replace symlinks with shell wrappers to avoid
+  triggering Python 3.4+ magical prefix support.
 
   27 Jul 2015; Mike Gilbert <floppym@gentoo.org> python-r1.eclass:
   Drop the USE_PYTHON warning.

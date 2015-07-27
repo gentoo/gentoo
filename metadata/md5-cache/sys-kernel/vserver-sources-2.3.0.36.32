@@ -10,5 +10,5 @@ RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/
 RESTRICT=binchecks strip
 SLOT=2.3.0.36.32
 SRC_URI=mirror://kernel/linux/kernel/v2.6/linux-2.6.35.tar.xz deblob? ( http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/2.6.35-gnu/deblob-2.6.35 http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/2.6.35-gnu/deblob-check -> deblob-check-2.6.35 ) mirror://gentoo/genpatches-2.6.35-9.base.tar.xz mirror://gentoo/genpatches-2.6.35-9.extras.tar.xz http://dev.gentoo.org/~hollow/distfiles/vserver-patches-2.6.35_2.3.0.36.32.tar.bz2
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	kernel-2	adcd0a7bbb205c648e9cde3dd32126dc	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	4756de53ea4d40471a582e898815a5c8	python-utils-r1	df6eb914b4b2d70d9c5e7c9331437c52	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	kernel-2	adcd0a7bbb205c648e9cde3dd32126dc	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	4756de53ea4d40471a582e898815a5c8	python-utils-r1	68e010c13e97b7b2c7bf403ee9c51e1b	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=fcc02e4d5ffaa8d8760f218d1f5f0f08

@@ -1,6 +1,14 @@
 # ChangeLog for dev-libs/boost
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/boost/ChangeLog,v 1.362 2015/07/27 13:06:41 pinkbyte Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/boost/ChangeLog,v 1.363 2015/07/27 16:35:22 pinkbyte Exp $
+
+*boost-1.58.0-r1 (27 Jul 2015)
+
+  27 Jul 2015; Sergey Popov <pinkbyte@gentoo.org> -boost-1.58.0.ebuild,
+  +boost-1.58.0-r1.ebuild,
+  +files/boost-1.58.0-fix-non-constexpr-types-regression.patch:
+  Revision bump: backport upstream patch, that fixes regression in
+  Boost.Fusion, drop python 3.3 support. Drop old revision
 
   27 Jul 2015; Sergey Popov <pinkbyte@gentoo.org> boost-1.55.0-r2.ebuild,
   boost-1.56.0-r1.ebuild, +files/boost-1.55.0-variadic-templates.patch:

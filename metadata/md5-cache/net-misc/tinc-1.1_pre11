@@ -10,5 +10,5 @@ RDEPEND=dev-libs/openssl:= lzo? ( dev-libs/lzo:2 ) ncurses? ( sys-libs/ncurses )
 REQUIRED_USE=^^ ( openssl gcrypt )
 SLOT=0
 SRC_URI=http://www.tinc-vpn.org/packages/tinc-1.1pre11.tar.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	4756de53ea4d40471a582e898815a5c8	python-utils-r1	df6eb914b4b2d70d9c5e7c9331437c52	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	4756de53ea4d40471a582e898815a5c8	python-utils-r1	68e010c13e97b7b2c7bf403ee9c51e1b	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=1e509b7ece9da868c46306ab1722d2c0

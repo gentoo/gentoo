@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16684 2015/07/27 11:45:22 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16685 2015/07/27 16:43:21 pinkbyte Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -270,11 +270,6 @@ virtual/httpd-php:5.3
 dev-db/postgresql-docs
 dev-db/postgresql-base
 dev-db/postgresql-server
-
-# Sergey Popov <pinkbyte@gentoo.org> (24 Dec 2014)
-# Mask new version of Boost - it's known to cause breakages
-~dev-util/boost-build-1.57.0
-~dev-libs/boost-1.57.0
 
 # Jeroen Roovers <jer@gentoo.org> (12 Dec 2014)
 # The 96 and 173 branches are no longer supported and remain vulnerable to
