@@ -1,6 +1,9 @@
 # ChangeLog for dev-dotnet/zeitgeist-sharp
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/zeitgeist-sharp/ChangeLog,v 1.9 2015/06/09 13:17:42 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/zeitgeist-sharp/ChangeLog,v 1.10 2015/07/27 18:27:45 jlec Exp $
+
+  27 Jul 2015; Justin Lecher <jlec@gentoo.org> -zeitgeist-sharp-0.8.0.0.ebuild:
+  Drop old
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml
