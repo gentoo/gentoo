@@ -5,4 +5,7 @@
 		<email>reavertm@gentoo.org</email>
 		<name>Maciej Mrozowski</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">vogel/injeqt</remote-id>
+	</upstream>
 </pkgmetadata>

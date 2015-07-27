@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>shell-tools</herd>
-<use>
-  <flag name="zip">Support for ZIP files using <pkg>dev-ruby/rubyzip</pkg></flag>
-</use>
+  <herd>shell-tools</herd>
+  <use>
+    <flag name="zip">Support for ZIP files using <pkg>dev-ruby/rubyzip</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="github">jpace/glark</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-	<email>neurogeek@gentoo.org</email>
-	<name>Jesus Rivero</name> 
-	<description>Primary maintainer</description>
-</maintainer>
-<longdescription>
+	<maintainer>
+		<email>neurogeek@gentoo.org</email>
+		<name>Jesus Rivero</name>
+		<description>Primary maintainer</description>
+	</maintainer>
+	<longdescription>
 MySQL Proxy is a simple program that sits between your client and MySQL
 server(s) that can monitor, analyze or transform their communication. Its
 flexibility allows for unlimited uses; common ones include: load balancing;
 failover; query analysis; query filtering and modification; and many more.
 </longdescription>
+	<upstream>
+		<remote-id type="launchpad">mysql-proxy</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,6 +1,6 @@
 # ChangeLog for dev-vcs/rcs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/rcs/ChangeLog,v 1.35 2015/07/26 08:40:24 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/rcs/ChangeLog,v 1.36 2015/07/27 07:01:49 idella4 Exp $
 
   26 Jul 2015; Markus Meier <maekke@gentoo.org> rcs-5.9.3.ebuild:
   arm stable, bug #555838
@@ -15,7 +15,8 @@
   bump, rm old
 
   25 Jul 2015; Ian Delaney <idella4@gentoo.org> rcs-5.9.3.ebuild:
-  set -std=gnu99 into CFLAGS, thanks to fix by Bernd Buschinski in bug #548320
+  set -std=gnu99 into CFLAGS, thanks to fix by Martin Väth, Comment 0,
+  in bug #548320
 
 *rcs-5.9.3 (14 Nov 2014)
 

@@ -1,6 +1,12 @@
 # ChangeLog for dev-python/multipledispatch
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/multipledispatch/ChangeLog,v 1.9 2015/04/08 08:04:53 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/multipledispatch/ChangeLog,v 1.10 2015/07/27 06:49:17 patrick Exp $
+
+*multipledispatch-0.4.8 (27 Jul 2015)
+
+  27 Jul 2015; Patrick Lauer <patrick@gentoo.org>
+  +multipledispatch-0.4.8.ebuild:
+  Bump
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> multipledispatch-0.4.6.ebuild,
   multipledispatch-0.4.7.ebuild:

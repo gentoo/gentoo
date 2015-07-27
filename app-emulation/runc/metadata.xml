@@ -9,4 +9,7 @@
 		<email>cardoe@gentoo.org</email>
 		<name>Doug Goldstein</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">opencontainers/runc</remote-id>
+	</upstream>
 </pkgmetadata>

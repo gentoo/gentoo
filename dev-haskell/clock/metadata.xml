@@ -25,4 +25,7 @@
 		For more information, see:
 		&lt;http://corsis.sourceforge.net/index.php/Haskell/Clock&gt;
 	</longdescription>
+	<upstream>
+		<remote-id type="github">corsis/clock</remote-id>
+	</upstream>
 </pkgmetadata>

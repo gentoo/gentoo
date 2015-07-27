@@ -47,7 +47,7 @@
 		&lt;https://hackage.haskell.org/package/markdown markdown&gt;
 		to grind to a halt.)
 		
-		-   Accuracy: cmark passes the CommonMark spec\&#39;s
+		-   Accuracy: cmark passes the CommonMark spec\'s
 		suite of over 500 conformance tests.
 		
 		-   Standardization: Since there is a spec and a
@@ -78,4 +78,7 @@
 		A note on stability: There is a good chance the API
 		will change significantly after this early release.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">jgm/commonmark-hs</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -6,4 +6,7 @@
 	<maintainer>
 		<email>neurogeek@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">festlang.berlios</remote-id>
+	</upstream>
 </pkgmetadata>

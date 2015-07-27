@@ -4,4 +4,7 @@
   <maintainer>
     <email>zmedico@gentoo.org</email>
   </maintainer>
+  <upstream>
+    <remote-id type="github">golang/text</remote-id>
+  </upstream>
 </pkgmetadata>

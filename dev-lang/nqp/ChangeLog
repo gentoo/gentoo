@@ -1,6 +1,11 @@
 # ChangeLog for dev-lang/nqp
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/nqp/ChangeLog,v 1.69 2015/06/20 01:10:29 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/nqp/ChangeLog,v 1.70 2015/07/27 07:20:35 patrick Exp $
+
+*nqp-2015.07.2 (27 Jul 2015)
+
+  27 Jul 2015; Patrick Lauer <patrick@gentoo.org> +nqp-2015.07.2.ebuild:
+  Bump
 
 *nqp-2015.06 (20 Jun 2015)
 
