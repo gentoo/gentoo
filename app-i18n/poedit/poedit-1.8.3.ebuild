@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/poedit/poedit-1.8.3.ebuild,v 1.1 2015/07/26 22:03:10 rhill Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/poedit/poedit-1.8.3.ebuild,v 1.2 2015/07/27 05:49:36 jer Exp $
 
 EAPI=5
 WX_GTK_VER=3.0
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/vslavik/${PN}/releases/download/v${PV}-oss/${P}.tar.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE=""
 
 # db/expat req for legacytm - remove in later version

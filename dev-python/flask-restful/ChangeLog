@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/flask-restful
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/flask-restful/ChangeLog,v 1.8 2015/05/26 06:46:30 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/flask-restful/ChangeLog,v 1.9 2015/07/27 06:12:45 patrick Exp $
+
+*flask-restful-0.3.4 (27 Jul 2015)
+
+  27 Jul 2015; Patrick Lauer <patrick@gentoo.org> +flask-restful-0.3.4.ebuild:
+  Bump
 
 *flask-restful-0.3.3 (26 May 2015)
 
