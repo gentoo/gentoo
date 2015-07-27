@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/cacti-spine/cacti-spine-0.8.8f.ebuild,v 1.1 2015/07/25 08:28:12 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/cacti-spine/cacti-spine-0.8.8f.ebuild,v 1.2 2015/07/27 04:07:59 jer Exp $
 
 EAPI=5
 inherit autotools eutils
@@ -27,7 +27,7 @@ RDEPEND="
 
 src_prepare() {
 	epatch \
-		"${FILESDIR}"/${PN}-0.8.8e-fix-ac-macro.patch \
+		"${FILESDIR}"/${PN}-0.8.8f-fix-ac-macro.patch \
 		"${FILESDIR}"/${PN}-0.8.8e-net-snmp.patch \
 		"${FILESDIR}"/${PN}-0.8.8d-mysql.patch \
 		"${FILESDIR}"/${PN}-0.8.8d-ping.patch \

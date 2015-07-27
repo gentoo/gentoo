@@ -9,4 +9,4 @@ RDEPEND=dev-libs/openssl:* net-analyzer/net-snmp virtual/mysql >net-analyzer/cac
 SLOT=0
 SRC_URI=http://www.cacti.net/downloads/spine/cacti-spine-0.8.8f.tar.gz
 _eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=0a4d54368576c72e92173ec95d97b48b
+_md5_=45ad6804035725936e39146b1db9cdfc
