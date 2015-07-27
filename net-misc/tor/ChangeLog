@@ -1,6 +1,9 @@
 # ChangeLog for net-misc/tor
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/tor/ChangeLog,v 1.486 2015/07/25 12:30:28 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/tor/ChangeLog,v 1.487 2015/07/26 23:32:39 blueness Exp $
+
+  26 Jul 2015; Anthony G. Basile <blueness@gentoo.org> tor-0.2.6.10.ebuild:
+  Add conditional dependency on sys-apps/systemd.  Bug #554522.
 
   25 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> tor-0.2.6.10.ebuild:
   amd64 stable wrt bug #555098
