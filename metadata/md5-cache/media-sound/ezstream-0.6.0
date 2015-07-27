@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=dev-libs/libxml2 >=media-libs/libshout-2.2 media-libs/libvorbis taglib? ( media-libs/taglib ) virtual/pkgconfig
+DESCRIPTION=A command line source client for Icecast media streaming servers
+EAPI=5
+HOMEPAGE=http://www.icecast.org/ezstream.php
+IUSE=taglib
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/libxml2 >=media-libs/libshout-2.2 media-libs/libvorbis taglib? ( media-libs/taglib ) net-misc/icecast
+SLOT=0
+SRC_URI=http://downloads.xiph.org/releases/ezstream/ezstream-0.6.0.tar.gz
+_md5_=74bb62e03bd250f109fc214f1b33f5eb

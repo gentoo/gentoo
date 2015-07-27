@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/Babel
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/Babel/ChangeLog,v 1.79 2015/06/04 07:01:44 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/Babel/ChangeLog,v 1.80 2015/07/27 20:07:38 jlec Exp $
+
+*Babel-2.0 (27 Jul 2015)
+
+  27 Jul 2015; Justin Lecher <jlec@gentoo.org> +Babel-2.0.ebuild:
+  Version Bump
 
   04 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add pypi to remote-id in metadata.xml

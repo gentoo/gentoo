@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16685 2015/07/27 16:43:21 pinkbyte Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16686 2015/07/27 20:25:30 jlec Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -230,9 +230,11 @@ virtual/httpd-php:5.3
 
 # Justin Lecher <jlec@gentoo.org> (28 Feb 2015)
 # Unfixed security problems
-# CVE-2015-{0219,0220,0221,0222}
+# CVE-2015-{0219,0220,0221,0222,5145}
 # #536586
+# #554864
 =dev-python/django-1.5*
+=dev-python/django-1.6*
 
 # Michał Górny <mgorny@gentoo.org> (11 Feb 2015)
 # Potentially destructive to @world, bug #539746.

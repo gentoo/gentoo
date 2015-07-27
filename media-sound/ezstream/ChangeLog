@@ -1,6 +1,11 @@
 # ChangeLog for media-sound/ezstream
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/ezstream/ChangeLog,v 1.12 2015/03/29 22:05:32 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/ezstream/ChangeLog,v 1.13 2015/07/27 20:13:40 polynomial-c Exp $
+
+*ezstream-0.6.0 (27 Jul 2015)
+
+  27 Jul 2015; Lars Wendler <polynomial-c@gentoo.org> +ezstream-0.6.0.ebuild:
+  Version bump.
 
   29 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -ezstream-0.5.3.ebuild:
   Remove old.

@@ -1,6 +1,11 @@
 # ChangeLog for media-sound/exaile
-# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/exaile/ChangeLog,v 1.78 2011/10/20 02:52:13 radhermit Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/exaile/ChangeLog,v 1.79 2015/07/27 19:53:59 polynomial-c Exp $
+
+*exaile-3.4.5 (27 Jul 2015)
+
+  27 Jul 2015; Lars Wendler <polynomial-c@gentoo.org> +exaile-3.4.5.ebuild:
+  Version bump.
 
   20 Oct 2011; Tim Harder <radhermit@gentoo.org> exaile-0.3.2.0.ebuild,
   exaile-0.3.2.1.ebuild:
