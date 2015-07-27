@@ -1,6 +1,10 @@
 # ChangeLog for dev-python/testrepository
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/testrepository/ChangeLog,v 1.26 2015/06/09 17:12:50 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/testrepository/ChangeLog,v 1.27 2015/07/27 01:13:42 idella4 Exp $
+
+  27 Jul 2015; Ian Delaney <idella4@gentoo.org> -testrepository-0.0.18.ebuild,
+  testrepository-0.0.18-r1.ebuild:
+  re-add pypy support, tidy to deps and test phase
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml
