@@ -2,14 +2,15 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>proxy-maintainers</herd>
-<maintainer>
-	<email>little_hobbit@lavabit.com</email>
-</maintainer>
-<maintainer>
-	<email>xmw@gentoo.org</email>
-	<name>Michael Weber</name>
-</maintainer>
-<use>
-	<flag name="xrandr">Add support for xrandr</flag>
-</use>
+	<maintainer>
+		<email>moaxcp@gmail.com</email>
+		<name>John Mercier</name>
+	</maintainer>
+	<maintainer>
+		<email>xmw@gentoo.org</email>
+		<name>Michael Weber</name>
+	</maintainer>
+	<use>
+		<flag name="xrandr">Add support for xrandr</flag>
+	</use>
 </pkgmetadata>

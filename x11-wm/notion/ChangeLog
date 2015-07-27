@@ -1,6 +1,9 @@
 # ChangeLog for x11-wm/notion
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/notion/ChangeLog,v 1.10 2015/03/20 09:01:49 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/notion/ChangeLog,v 1.11 2015/07/27 03:03:21 idella4 Exp $
+
+  27 Jul 2015; Ian Delaney <idella4@gentoo.org> metadata.xml:
+  replace inactive proxy maintainer wrt Bug #523566 in metadata
 
   20 Mar 2015; Justin Lecher <jlec@gentoo.org> files/notion.desktop:
   Fix desktop file

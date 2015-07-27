@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/nikola/nikola-7.2.0.ebuild,v 1.4 2015/03/06 22:43:37 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/nikola/nikola-7.2.0.ebuild,v 1.5 2015/07/27 02:42:23 yngwin Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
@@ -13,7 +13,6 @@ MY_PN="Nikola"
 if [[ ${PV} == *9999* ]]; then
 	inherit git-2
 	EGIT_REPO_URI="git://github.com/ralsina/${PN}.git"
-	KEYWORDS=""
 else
 	SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${P}.tar.gz"
 	KEYWORDS="amd64"

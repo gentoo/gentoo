@@ -1,6 +1,11 @@
 # ChangeLog for net-misc/tlsdate
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/tlsdate/ChangeLog,v 1.21 2015/03/06 18:48:11 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/tlsdate/ChangeLog,v 1.22 2015/07/27 02:59:28 vapier Exp $
+
+*tlsdate-0.0.13 (27 Jul 2015)
+
+  27 Jul 2015; Mike Frysinger <vapier@gentoo.org> +tlsdate-0.0.13.ebuild:
+  Version bump.
 
   06 Mar 2015; Mike Frysinger <vapier@gentoo.org> tlsdate-0.0.12-r2.ebuild:
   Add ia64 love.
