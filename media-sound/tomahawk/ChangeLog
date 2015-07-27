@@ -1,6 +1,10 @@
 # ChangeLog for media-sound/tomahawk
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/tomahawk/ChangeLog,v 1.49 2015/06/19 12:27:23 johu Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/tomahawk/ChangeLog,v 1.50 2015/07/27 22:10:00 johu Exp $
+
+  27 Jul 2015; Johannes Huber <johu@gentoo.org>
+  +files/tomahawk-0.8.4-qt55.patch, tomahawk-0.8.4-r1.ebuild:
+  Add upstream patch to fix build with Qt 5.5.
 
   19 Jun 2015; Johannes Huber <johu@gentoo.org> tomahawk-0.8.4-r1.ebuild,
   tomahawk-9999.ebuild:
