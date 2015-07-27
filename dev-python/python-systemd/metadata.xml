@@ -4,4 +4,7 @@
 	<maintainer>
 		<email>systemd@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">systemd/python-systemd</remote-id>
+	</upstream>
 </pkgmetadata>

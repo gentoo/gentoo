@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/pgpool2/pgpool2-3.2.4.ebuild,v 1.4 2014/12/28 15:10:55 titanofold Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/pgpool2/pgpool2-3.3.7.ebuild,v 1.1 2015/07/27 09:13:52 patrick Exp $
 
-EAPI=4
+EAPI=5
 
 MY_P="${PN/2/-II}-${PV}"
 
@@ -82,13 +82,14 @@ src_install() {
 	emake DESTDIR="${D}" -C sql install
 	cd "${S}"
 
+	# 3.3 appears to have removed this
 	# `contrib' moved to `extension' with PostgreSQL 9.1
-	local pgslot=$(postgresql-config show)
-	if [[ ${pgslot//.} > 90 ]] ; then
-		cd "${ED%/}$(pg_config --sharedir)"
-		mv contrib extension || die
-		cd "${S}"
-	fi
+	#local pgslot=$(postgresql-config show)
+	#if [[ ${pgslot//.} > 90 ]] ; then
+	#	cd "${ED%/}$(pg_config --sharedir)"
+	#	mv contrib extension || die
+	#	cd "${S}"
+	#fi
 
 	newinitd "${FILESDIR}/${PN}.initd" ${PN}
 	newconfd "${FILESDIR}/${PN}.confd" ${PN}

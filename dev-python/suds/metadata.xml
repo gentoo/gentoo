@@ -5,5 +5,6 @@
 	<longdescription lang="en">A lightweight SOAP python client for consuming Web Services.</longdescription>
 	<upstream>
 		<remote-id type="pypi">suds</remote-id>
+		<remote-id type="bitbucket">jurko/suds</remote-id>
 	</upstream>
 </pkgmetadata>

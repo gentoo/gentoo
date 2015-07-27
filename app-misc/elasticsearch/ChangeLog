@@ -1,6 +1,20 @@
 # ChangeLog for app-misc/elasticsearch
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/elasticsearch/ChangeLog,v 1.14 2015/06/29 14:29:38 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/elasticsearch/ChangeLog,v 1.15 2015/07/27 09:05:33 chainsaw Exp $
+
+*elasticsearch-1.7.0 (27 Jul 2015)
+*elasticsearch-1.6.1 (27 Jul 2015)
+
+  27 Jul 2015; Tony Vroon <chainsaw@gentoo.org> -elasticsearch-1.6.0.ebuild,
+  +elasticsearch-1.6.1.ebuild, +elasticsearch-1.7.0.ebuild,
+  -files/1.3.2-http_cors_disable.patch, -files/elasticsearch.init,
+  -files/elasticsearch.init2, -files/elasticsearch.init3,
+  -files/elasticsearch.service, -files/elasticsearch.service2,
+  -files/elasticsearch.service3, +files/elasticsearch.service4:
+  Updated ebuilds by Ferenc Erki address a systemd unit issue as reported by
+  neko259 in bug #553534 and address the security vulnerability reported by
+  Agostino "ago" Sarubbo in bug #555474. Clean-up of older patches and one
+  vulnerable ebuild.
 
   29 Jun 2015; Tony Vroon <chainsaw@gentoo.org> elasticsearch-1.6.0.ebuild:
   Also accept version 8 Java Runtime Environment, as per Ferenc Erki in bug

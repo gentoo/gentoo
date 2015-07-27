@@ -1,6 +1,6 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/felix-bundlerepository/felix-bundlerepository-1.6.6.ebuild,v 1.1 2013/10/15 23:21:57 tomwij Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/felix-bundlerepository/felix-bundlerepository-1.6.6.ebuild,v 1.2 2015/07/27 08:43:48 monsieurp Exp $
 
 EAPI="5"
 
@@ -17,9 +17,10 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 CDEPEND="
+	dev-java/kxml:2
+	dev-java/xpp3:0
 	dev-java/felix-shell:0
 	dev-java/felix-utils:0
-	dev-java/kxml:2
 	dev-java/osgi-core-api:0
 	dev-java/osgi-obr:0
 "
@@ -41,7 +42,7 @@ java_prepare() {
 }
 
 JAVA_ANT_REWRITE_CLASSPATH="true"
-EANT_GENTOO_CLASSPATH="osgi-core-api,felix-utils,felix-shell,kxml-2,osgi-obr"
+EANT_GENTOO_CLASSPATH="osgi-core-api,felix-utils,felix-shell,xpp3,kxml-2,osgi-obr"
 
 src_install() {
 	mv target/{${MY_P},${PN}}.jar || die

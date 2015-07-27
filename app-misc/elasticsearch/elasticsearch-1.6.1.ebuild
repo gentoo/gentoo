@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/elasticsearch/elasticsearch-1.6.0.ebuild,v 1.2 2015/06/29 14:29:38 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/elasticsearch/elasticsearch-1.6.1.ebuild,v 1.1 2015/07/27 09:05:33 chainsaw Exp $
 
 EAPI=5
 
@@ -54,7 +54,7 @@ src_install() {
 
 	newinitd "${FILESDIR}/elasticsearch.init4" "${MY_PN}"
 	newconfd "${FILESDIR}/${MY_PN}.conf" "${MY_PN}"
-	systemd_newunit "${FILESDIR}"/${PN}.service3 "${PN}.service"
+	systemd_newunit "${FILESDIR}"/${PN}.service4 "${PN}.service"
 }
 
 pkg_postinst() {

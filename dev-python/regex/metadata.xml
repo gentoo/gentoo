@@ -4,5 +4,6 @@
   <herd>python</herd>
   <upstream>
     <remote-id type="pypi">regex</remote-id>
+    <remote-id type="bitbucket">mrabarnett/mrab-regex</remote-id>
   </upstream>
 </pkgmetadata>

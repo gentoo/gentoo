@@ -5,6 +5,10 @@
 	<email>xmw@gentoo.org</email>
 	<name>Michael Weber</name>
 </maintainer>
+<maintainer>
+	<email>monsieurp@gentoo.org</email>
+	<name>Patrice Clement</name>
+</maintainer>
 <use>
 	<flag name="client">Build network client</flag>
 	<flag name="examples">Include example scripts</flag>
