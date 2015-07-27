@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/boost/boost-1.56.0-r1.ebuild,v 1.12 2015/07/23 19:37:01 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/boost/boost-1.56.0-r1.ebuild,v 1.13 2015/07/27 13:06:41 pinkbyte Exp $
 
 EAPI="5"
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
@@ -113,7 +113,8 @@ src_prepare() {
 		"${FILESDIR}/${PN}-1.55.0-context-x32.patch" \
 		"${FILESDIR}/${PN}-1.55.0-tools-c98-compat.patch" \
 		"${FILESDIR}/${PN}-1.52.0-threads.patch" \
-		"${FILESDIR}/${PN}-1.56.0-build-auto_index-tool.patch"
+		"${FILESDIR}/${PN}-1.56.0-build-auto_index-tool.patch" \
+		"${FILESDIR}/${PN}-1.55.0-variadic-templates.patch"
 
 	# Do not try to build missing 'wave' tool, bug #522682
 	# Upstream bugreport - https://svn.boost.org/trac/boost/ticket/10507

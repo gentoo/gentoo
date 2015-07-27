@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/boost/boost-1.55.0-r2.ebuild,v 1.15 2015/04/16 12:55:41 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/boost/boost-1.55.0-r2.ebuild,v 1.16 2015/07/27 13:06:41 pinkbyte Exp $
 
 EAPI="5"
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
@@ -108,7 +108,8 @@ src_prepare() {
 		"${FILESDIR}/${PN}-1.48.0-disable_icu_rpath.patch" \
 		"${FILESDIR}/${PN}-1.55.0-context-x32.patch" \
 		"${FILESDIR}/${PN}-1.55.0-tools-c98-compat.patch" \
-		"${FILESDIR}/${PN}-1.52.0-threads.patch"
+		"${FILESDIR}/${PN}-1.52.0-threads.patch" \
+		"${FILESDIR}/${PN}-1.55.0-variadic-templates.patch"
 
 	epatch_user
 

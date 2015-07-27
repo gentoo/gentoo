@@ -1,6 +1,11 @@
 # ChangeLog for dev-java/jaxr
-# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jaxr/ChangeLog,v 1.2 2007/08/11 21:42:02 nelchael Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jaxr/ChangeLog,v 1.3 2015/07/27 12:41:25 monsieurp Exp $
+
+*jaxr-1.0.6-r1 (27 Jul 2015)
+
+  27 Jul 2015; Patrice Clement <monsieurp@gentoo.org> +jaxr-1.0.6-r1.ebuild:
+  EAPI 5 bump.
 
   11 Aug 2007; Krzysiek Pawlik <nelchael@gentoo.org> metadata.xml:
   Remove myself from <maintainer>.
@@ -10,4 +15,3 @@
   01 May 2007; Krzysiek Pawlik <nelchael@gentoo.org>
   +files/jaxr-1.0.6-javadoc.patch, +metadata.xml, +jaxr-1.0.6.ebuild:
   Initial commit of jaxr.
-

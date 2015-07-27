@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/cogl/cogl-1.18.2-r1.ebuild,v 1.4 2015/03/31 17:56:31 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/cogl/cogl-1.18.2-r1.ebuild,v 1.5 2015/07/27 13:29:46 tetromino Exp $
 
 EAPI="5"
 CLUTTER_LA_PUNT="yes"
@@ -15,7 +15,8 @@ LICENSE="MIT BSD"
 SLOT="1.0/20" # subslot = .so version
 # doc and profile disable for now due bugs #484750 and #483332
 IUSE="examples gles2 gstreamer +introspection +kms +opengl +pango test wayland" # doc profile
-REQUIRED_USE="wayland? ( gles2 )"
+REQUIRED_USE="wayland? ( gles2 )
+	|| ( gles2 opengl )"
 KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
 
 COMMON_DEPEND="

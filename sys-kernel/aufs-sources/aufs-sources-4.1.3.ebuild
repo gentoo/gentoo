@@ -1,28 +1,28 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/aufs-sources/aufs-sources-3.14.46.ebuild,v 1.1 2015/07/03 12:45:22 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/aufs-sources/aufs-sources-4.1.3.ebuild,v 1.1 2015/07/27 13:23:31 jlec Exp $
 
 EAPI=5
 
 ETYPE="sources"
 K_WANT_GENPATCHES="base extras experimental"
-K_GENPATCHES_VER="52"
+K_GENPATCHES_VER="7"
 K_DEBLOB_AVAILABLE="1"
 UNIPATCH_STRICTORDER=1
 inherit kernel-2 eutils readme.gentoo
 detect_version
 detect_arch
 
-AUFS_VERSION=3.14.40+_p20150622
+AUFS_VERSION=4.1_p20150629
 AUFS_TARBALL="aufs-sources-${AUFS_VERSION}.tar.xz"
-# git archive -v --remote=git://git.code.sf.net/p/aufs/aufs3-standalone aufs${AUFS_VERSION/_p*} > aufs-sources-${AUFS_VERSION}.tar
+# git archive -v --remote=git://git.code.sf.net/p/aufs/aufs4-standalone aufs${AUFS_VERSION/_p*} > aufs-sources-${AUFS_VERSION}.tar
 AUFS_URI="http://dev.gentoo.org/~jlec/distfiles/${AUFS_TARBALL}"
 
 KEYWORDS="~amd64 ~x86"
 HOMEPAGE="http://dev.gentoo.org/~mpagano/genpatches http://aufs.sourceforge.net/"
 IUSE="deblob experimental module vanilla"
 
-DESCRIPTION="Full sources including the Gentoo patchset for the ${KV_MAJOR}.${KV_MINOR} kernel tree and aufs3 support"
+DESCRIPTION="Full sources including the Gentoo patchset for the ${KV_MAJOR}.${KV_MINOR} kernel tree and aufs4 support"
 SRC_URI="
 	${KERNEL_URI}
 	${ARCH_URI}
@@ -30,7 +30,7 @@ SRC_URI="
 	!vanilla? ( ${GENPATCHES_URI} )
 	"
 
-PDEPEND="=sys-fs/aufs-util-3*"
+PDEPEND="=sys-fs/aufs-util-4*"
 
 README_GENTOO_SUFFIX="-r1"
 
@@ -42,15 +42,15 @@ src_unpack() {
 	fi
 
 	UNIPATCH_LIST="
-		"${WORKDIR}"/aufs3-kbuild.patch
-		"${WORKDIR}"/aufs3-base.patch
-		"${WORKDIR}"/aufs3-mmap.patch"
+		"${WORKDIR}"/aufs4-kbuild.patch
+		"${WORKDIR}"/aufs4-base.patch
+		"${WORKDIR}"/aufs4-mmap.patch"
 
-	use module && UNIPATCH_LIST+=" "${WORKDIR}"/aufs3-standalone.patch"
+	use module && UNIPATCH_LIST+=" "${WORKDIR}"/aufs4-standalone.patch"
 
 	unpack ${AUFS_TARBALL}
 
-	einfo "Using aufs3 version: ${AUFS_VERSION}"
+	einfo "Using aufs4 version: ${AUFS_VERSION}"
 
 	kernel-2_src_unpack
 }
@@ -65,8 +65,8 @@ src_prepare() {
 
 src_install() {
 	kernel-2_src_install
-	dodoc "${WORKDIR}"/{aufs3-loopback,vfs-ino,tmpfs-idr}.patch
-	docompress -x /usr/share/doc/${PF}/{aufs3-loopback,vfs-ino,tmpfs-idr}.patch
+	dodoc "${WORKDIR}"/{aufs4-loopback,vfs-ino,tmpfs-idr}.patch
+	docompress -x /usr/share/doc/${PF}/{aufs4-loopback,vfs-ino,tmpfs-idr}.patch
 	readme.gentoo_create_doc
 }
 

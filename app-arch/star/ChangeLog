@@ -1,6 +1,9 @@
 # ChangeLog for app-arch/star
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/star/ChangeLog,v 1.115 2015/06/09 08:57:12 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/star/ChangeLog,v 1.116 2015/07/27 13:08:42 jlec Exp $
+
+  27 Jul 2015; Justin Lecher <jlec@gentoo.org> star-1.5.3.ebuild:
+  Drop unneeded patch as upstream author complaint about it
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

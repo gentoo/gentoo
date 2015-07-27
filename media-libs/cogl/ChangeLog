@@ -1,6 +1,11 @@
 # ChangeLog for media-libs/cogl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/cogl/ChangeLog,v 1.59 2015/06/14 13:32:27 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/cogl/ChangeLog,v 1.60 2015/07/27 13:29:46 tetromino Exp $
+
+  27 Jul 2015; Alexandre Rostovtsev <tetromino@gentoo.org>
+  cogl-1.18.2-r1.ebuild, cogl-1.20.0.ebuild:
+  Cogl cannot be built with USE="-gles2 -opengl" (bug #556018, thanks to Toralf
+  Förster).
 
   14 Jun 2015; Pacho Ramos <pacho@gentoo.org> cogl-1.20.0.ebuild, metadata.xml:
   Stop using clutter.eclass
