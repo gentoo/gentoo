@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/astroid
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/astroid/ChangeLog,v 1.24 2015/07/02 10:40:44 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/astroid/ChangeLog,v 1.25 2015/07/27 19:25:10 jlec Exp $
+
+*astroid-1.3.7 (27 Jul 2015)
+
+  27 Jul 2015; Justin Lecher <jlec@gentoo.org> +astroid-1.3.7.ebuild:
+  Version Bump
 
   02 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -astroid-1.0.1-r1.ebuild,
   -astroid-1.0.1.ebuild, -astroid-1.1.1.ebuild, -astroid-1.3.2.ebuild:

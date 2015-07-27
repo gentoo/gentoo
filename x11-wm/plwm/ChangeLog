@@ -1,6 +1,11 @@
 # ChangeLog for x11-wm/plwm
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/plwm/ChangeLog,v 1.20 2014/08/10 19:59:47 slyfox Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/plwm/ChangeLog,v 1.21 2015/07/27 18:38:45 mgorny Exp $
+
+*plwm-2.7_rc1-r1 (27 Jul 2015)
+
+  27 Jul 2015; Michał Górny <mgorny@gentoo.org> +plwm-2.7_rc1-r1.ebuild:
+  Convert to distutils-r1
 
   10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> plwm-2.5-r1.ebuild,
   plwm-2.7_rc1.ebuild:

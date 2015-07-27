@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/golang-vcs.eclass,v 1.3 2015/06/23 18:59:43 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/golang-vcs.eclass,v 1.4 2015/07/27 19:11:00 williamh Exp $
 
 # @ECLASS: golang-vcs.eclass
 # @MAINTAINER:
@@ -10,7 +10,7 @@
 # This eclass is written to ease the maintenance of live ebuilds
 # of software written in the Go programming language.
 
-inherit eutils
+inherit eutils golang-base
 
 case "${EAPI:-0}" in
 	5)
@@ -25,8 +25,6 @@ EXPORT_FUNCTIONS src_unpack
 if [[ -z ${_GOLANG_VCS} ]]; then
 
 _GOLANG_VCS=1
-
-DEPEND=">=dev-lang/go-1.4.2"
 
 # @ECLASS-VARIABLE: EGO_PN
 # @REQUIRED
@@ -114,8 +112,7 @@ _golang-vcs_env_setup() {
 _golang-vcs_fetch() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	[[ -z ${EGO_PN} ]] &&
-		die "${ECLASS}: EGO_PN is not set"
+	ego_pn_check
 
 	if [[ -z ${EVCS_OFFLINE} ]]; then
 		[[ -n ${EVCS_UMASK} ]] && eumask_push ${EVCS_UMASK}

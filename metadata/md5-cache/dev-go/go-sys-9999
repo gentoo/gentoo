@@ -1,9 +1,9 @@
 DEFINED_PHASES=compile install test unpack
-DEPEND=>=dev-lang/go-1.4.2 >=dev-lang/go-1.4.2:=
+DEPEND=>=dev-lang/go-1.4.2:=
 DESCRIPTION=Go packages for low-level interaction with the operating system
 EAPI=5
 HOMEPAGE=https://godoc.org/golang.org/x/sys
 LICENSE=BSD
 SLOT=0/9999
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	golang-build	22cdd0410f0c4854cbb250de691997bd	golang-vcs	2abd744a5eac3f769df102ad2469035e	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	golang-base	b27bb70124fa06118fd307e9f8df50b9	golang-build	347dcb77455fa2a3c30668a127d9b4dc	golang-vcs	616e88d5c2fef1e6db0ea78912c863bf	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=0d23784d47ca48dd12ef7a4831f9b685

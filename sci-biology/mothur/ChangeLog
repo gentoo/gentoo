@@ -1,6 +1,14 @@
 # ChangeLog for sci-biology/mothur
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/mothur/ChangeLog,v 1.12 2015/04/07 14:33:37 jlec Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/mothur/ChangeLog,v 1.13 2015/07/27 18:42:15 jlec Exp $
+
+*mothur-1.27.0-r1 (27 Jul 2015)
+
+  27 Jul 2015; Justin Lecher <jlec@gentoo.org> +mothur-1.27.0-r1.ebuild,
+  -files/mothur-1.13.0-makefile.patch, -files/mothur-1.13.0-overflows.patch,
+  -files/mothur-1.13.0-overflows2.patch, -mothur-1.13.0-r1.ebuild,
+  -mothur-1.13.0-r2.ebuild, -mothur-1.27.0.ebuild:
+  Use fortran-2.eclass, bug #543204; drop old
 
   11 Mar 2013; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Drop Andrey as maintainer so that bugs get assigned to sci-biology directly
@@ -61,4 +69,3 @@
 
   04 Mar 2009; Andrey Kislyuk <weaver@gentoo.org> ChangeLog:
   New package, ebuild written by me
-

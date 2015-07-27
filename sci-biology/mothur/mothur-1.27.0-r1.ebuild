@@ -1,10 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/mothur/mothur-1.27.0.ebuild,v 1.1 2012/08/14 15:37:59 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/mothur/mothur-1.27.0-r1.ebuild,v 1.1 2015/07/27 18:42:15 jlec Exp $
 
-EAPI=4
+EAPI=5
 
-inherit eutils toolchain-funcs flag-o-matic
+inherit eutils flag-o-matic fortran-2 toolchain-funcs
 
 DESCRIPTION="A suite of algorithms for ecological bioinformatics"
 HOMEPAGE="http://www.mothur.org/"
@@ -24,9 +24,9 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/Mothur.source
 
 pkg_setup() {
+	fortran-2_pkg_setup
 	use mpi && export CXX=mpicxx || export CXX=$(tc-getCXX)
-	use amd64 && append-flags -DBIT_VERSION
-	tc-export FC
+	use amd64 && append-cppflags -DBIT_VERSION
 }
 
 src_prepare() {
@@ -35,12 +35,8 @@ src_prepare() {
 		"${FILESDIR}"/${P}-overflows.patch
 }
 
-use_yn() {
-	use $1 && echo "yes" || echo "no"
-}
-
 src_compile() {
-	emake USEMPI=$(use_yn mpi) USEREADLINE=$(use_yn readline)
+	emake USEMPI=$(usex mpi) USEREADLINE=$(usex readline)
 }
 
 src_install() {

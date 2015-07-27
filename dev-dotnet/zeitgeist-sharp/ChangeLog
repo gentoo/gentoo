@@ -1,6 +1,14 @@
 # ChangeLog for dev-dotnet/zeitgeist-sharp
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/zeitgeist-sharp/ChangeLog,v 1.10 2015/07/27 18:27:45 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/zeitgeist-sharp/ChangeLog,v 1.11 2015/07/27 18:33:49 jlec Exp $
+
+*zeitgeist-sharp-0.8.0.0-r2 (27 Jul 2015)
+
+  27 Jul 2015; Justin Lecher <jlec@gentoo.org>
+  +files/zeitgeist-sharp-0.8.0.0-fix-tools-version.patch,
+  +zeitgeist-sharp-0.8.0.0-r2.ebuild:
+  Backport patch, bug #537548; thanks Jason Lynch preparing the patch; Bump to
+  mono-env.eclass and EAPI=5
 
   27 Jul 2015; Justin Lecher <jlec@gentoo.org> -zeitgeist-sharp-0.8.0.0.ebuild:
   Drop old

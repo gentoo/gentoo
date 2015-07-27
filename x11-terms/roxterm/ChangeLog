@@ -1,6 +1,11 @@
 # ChangeLog for x11-terms/roxterm
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/roxterm/ChangeLog,v 1.73 2014/09/05 10:50:45 jauhien Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/roxterm/ChangeLog,v 1.74 2015/07/27 18:47:31 mgorny Exp $
+
+*roxterm-2.9.3-r1 (27 Jul 2015)
+
+  27 Jul 2015; Michał Górny <mgorny@gentoo.org> +roxterm-2.9.3-r1.ebuild:
+  Convert to python-any-r1
 
 *roxterm-2.9.3 (05 Sep 2014)
 

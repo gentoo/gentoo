@@ -9,5 +9,5 @@ LICENSE=Apache-2.0
 RDEPEND=app-admin/cgmanager app-arch/xz-utils app-emulation/lxc[cgmanager] net-analyzer/openbsd-netcat net-misc/bridge-utils virtual/acl image? ( app-crypt/gnupg >=dev-lang/python-3.2 )
 SLOT=0
 SRC_URI=http://961db08fe45d5f5dd062-b8a7a040508aea6d369676e49b80719d.r29.cf2.rackcdn.com/lxd-0.13.tar.bz2
-_eclasses_=bash-completion-r1	c8399c7c7ecbcf7ed6e5bd3abb3d4af3	eutils	9fb270e417e0e83d64ca52586c4a79de	golang-build	22cdd0410f0c4854cbb250de691997bd	l10n	33bde4fb0cfd3a21a277b66bfd837e19	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	vcs-snapshot	58b766562c9fbfb3268b04e33cdf2f66
+_eclasses_=bash-completion-r1	c8399c7c7ecbcf7ed6e5bd3abb3d4af3	eutils	9fb270e417e0e83d64ca52586c4a79de	golang-base	b27bb70124fa06118fd307e9f8df50b9	golang-build	347dcb77455fa2a3c30668a127d9b4dc	l10n	33bde4fb0cfd3a21a277b66bfd837e19	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	vcs-snapshot	58b766562c9fbfb3268b04e33cdf2f66
 _md5_=c8295b120329f133bb04928ee8181a08
