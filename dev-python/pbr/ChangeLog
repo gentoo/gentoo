@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/pbr
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pbr/ChangeLog,v 1.47 2015/07/26 21:06:37 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pbr/ChangeLog,v 1.48 2015/07/27 01:35:14 floppym Exp $
+
+  27 Jul 2015; Mike Gilbert <floppym@gentoo.org> pbr-1.3.0.ebuild:
+  Restore pypy.
 
   26 Jul 2015; Michał Górny <mgorny@gentoo.org> pbr-1.3.0.ebuild:
   Revert pypy support because of broken deps.

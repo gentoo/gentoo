@@ -1,6 +1,10 @@
 # ChangeLog for dev-python/unittest2
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/unittest2/ChangeLog,v 1.67 2015/07/26 19:11:28 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/unittest2/ChangeLog,v 1.68 2015/07/27 01:35:14 floppym Exp $
+
+  27 Jul 2015; Mike Gilbert <floppym@gentoo.org> unittest2-1.0.1-r1.ebuild,
+  unittest2-1.1.0.ebuild:
+  Restore pypy.
 
   26 Jul 2015;  <mgorny@gentoo.org> unittest2-1.0.1-r1.ebuild,
   unittest2-1.1.0.ebuild:
