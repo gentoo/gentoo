@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/asunder/asunder-2.4.ebuild,v 1.1 2014/01/08 22:43:38 fauli Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/asunder/asunder-2.7.ebuild,v 1.1 2015/07/27 15:03:05 polynomial-c Exp $
 
 EAPI=5
 
@@ -31,3 +31,7 @@ RDEPEND="${COMMON_DEPEND}
 	wavpack? ( media-sound/wavpack )"
 
 DOCS="AUTHORS ChangeLog README TODO" # NEWS is dummy
+
+src_prepare() {
+	sed -i -e 's:cd syslogng && $(MAKE) install:true:' "${S}"/Makefile.in
+}

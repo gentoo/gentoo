@@ -1,6 +1,12 @@
 # ChangeLog for media-sound/asunder
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/asunder/ChangeLog,v 1.47 2014/08/30 16:12:08 fauli Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/asunder/ChangeLog,v 1.48 2015/07/27 15:03:05 polynomial-c Exp $
+
+*asunder-2.7 (27 Jul 2015)
+
+  27 Jul 2015; Lars Wendler <polynomial-c@gentoo.org> -asunder-2.4.ebuild,
+  +asunder-2.7.ebuild:
+  Version bump. Removed old.
 
 *asunder-2.5 (30 Aug 2014)
 
