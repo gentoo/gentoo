@@ -30,5 +30,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">LuminanceHDR/LuminanceHDR</remote-id>
+		<remote-id type="sourceforge">qtpfsgui</remote-id>
 	</upstream>
 </pkgmetadata>

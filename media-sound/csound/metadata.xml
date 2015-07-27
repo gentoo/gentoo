@@ -22,5 +22,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">csound</remote-id>
+		<remote-id type="github">csound/csound</remote-id>
 	</upstream>
 </pkgmetadata>

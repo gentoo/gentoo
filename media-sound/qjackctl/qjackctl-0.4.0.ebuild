@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/qjackctl/qjackctl-0.4.0.ebuild,v 1.1 2015/07/20 09:09:20 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/qjackctl/qjackctl-0.4.0.ebuild,v 1.2 2015/07/27 09:37:18 aballier Exp $
 
 EAPI=5
 
@@ -18,7 +18,7 @@ IUSE="alsa dbus debug portaudio +qt5"
 
 RDEPEND="
 	>=media-sound/jack-audio-connection-kit-0.109.2
-	qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 )
+	qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtxml:5 dev-qt/qtwidgets:5 )
 	!qt5? ( dev-qt/qtcore:4 dev-qt/qtgui:4 )
 	alsa? ( media-libs/alsa-lib )
 	dbus? ( dev-qt/qtdbus:4 )

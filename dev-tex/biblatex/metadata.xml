@@ -9,5 +9,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">plk/biblatex</remote-id>
+		<remote-id type="sourceforge">biblatex</remote-id>
 	</upstream>
 </pkgmetadata>

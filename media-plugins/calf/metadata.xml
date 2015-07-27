@@ -5,4 +5,7 @@
   <use>
     <flag name="lv2">Add support for Ladspa V2</flag>
   </use>
+  <upstream>
+    <remote-id type="github">calf-studio-gear/calf</remote-id>
+  </upstream>
 </pkgmetadata>

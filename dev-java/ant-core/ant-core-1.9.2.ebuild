@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-core/ant-core-1.9.2.ebuild,v 1.10 2015/07/11 09:20:53 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-core/ant-core-1.9.2.ebuild,v 1.11 2015/07/27 10:21:09 monsieurp Exp $
 
 EAPI="5"
 
@@ -39,6 +39,12 @@ src_prepare() {
 
 	# use our split-ant build.xml.
 	mv -f "${WORKDIR}/build.xml" . || die
+
+	# Fixes bug 556008.
+	java-ant_xml-rewrite -f build.xml \
+		-c -e javadoc \
+		-a failonerror \
+		-v "false"
 
 	# See bug #196080 for more details.
 	java-ant_bsfix_one build.xml

@@ -25,5 +25,6 @@ Face Recognition; Gesture Recognition; Motion Tracking, Ego Motion, Motion Under
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">opencvlibrary</remote-id>
+		<remote-id type="github">Itseez/opencv</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -3,7 +3,10 @@
 <pkgmetadata>
   <herd>proaudio</herd>
   <use>
-    <flag name='gtk2'>Enable <pkg>x11-libs/gtk+:2</pkg> based GUI support</flag>
-    <flag name='tools'>Compile and install ttl2c tool</flag>
+    <flag name="gtk2">Enable <pkg>x11-libs/gtk+:2</pkg> based GUI support</flag>
+    <flag name="tools">Compile and install ttl2c tool</flag>
   </use>
+  <upstream>
+    <remote-id type="github">lvtk/lvtk</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -1,6 +1,16 @@
 # ChangeLog for x11-plugins/purple-facebook
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/purple-facebook/ChangeLog,v 1.4 2015/07/20 16:02:15 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/purple-facebook/ChangeLog,v 1.5 2015/07/27 10:28:10 chainsaw Exp $
+
+*purple-facebook-20150727 (27 Jul 2015)
+
+  27 Jul 2015; Tony Vroon <chainsaw@gentoo.org>
+  -purple-facebook-20150715.ebuild, -purple-facebook-20150718.ebuild,
+  +purple-facebook-20150727.ebuild:
+  Version bump, now implements marking threads as read, opening new group chats
+  as incoming messages arrive and improves error detection & freeing of
+  resources. Add missing json-glib dependency as pointed out by Dan Goodliffe
+  in bug #555020.
 
 *purple-facebook-20150718 (20 Jul 2015)
 
