@@ -6,4 +6,7 @@
     <email>yngwin@gentoo.org</email>
     <name>Ben de Groot</name>
   </maintainer>
+  <upstream>
+    <remote-id type="github">coleifer/micawber</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=dev-lang/ocaml-4.02[ocamlopt?] >=dev-ml/findlib-1.3.2 >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-3.12:=[ocamlopt?]
+DESCRIPTION=Library for radix-64 representation (de)coding
+EAPI=5
+HOMEPAGE=https://github.com/mirage/ocaml-base64
+IUSE=+ocamlopt debug doc
+KEYWORDS=~amd64
+LICENSE=ISC
+RDEPEND=>=dev-lang/ocaml-4.02[ocamlopt?] >=dev-lang/ocaml-3.12:=[ocamlopt?]
+SLOT=0/2.0.0
+SRC_URI=https://github.com/mirage/ocaml-base64/archive/v2.0.0.tar.gz -> ocaml-base64-2.0.0.tar.gz
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	findlib	9cf6020ee5481f39f1aa566a323f9868	multilib	62927b3db3a589b0806255f3a002d5d3	oasis	45027e91f880d9142eec842f0cca0088	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=496e9d4a0ab6f99e44e4a61985fefd52

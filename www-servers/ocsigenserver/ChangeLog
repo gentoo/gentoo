@@ -1,6 +1,11 @@
 # ChangeLog for www-servers/ocsigenserver
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/ocsigenserver/ChangeLog,v 1.14 2015/07/16 13:12:42 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/ocsigenserver/ChangeLog,v 1.15 2015/07/27 07:33:01 aballier Exp $
+
+*ocsigenserver-2.6 (27 Jul 2015)
+
+  27 Jul 2015; Alexis Ballier <aballier@gentoo.org> +ocsigenserver-2.6.ebuild:
+  version bump
 
   16 Jul 2015; Alexis Ballier <aballier@gentoo.org> -ocsigenserver-2.5.ebuild,
   -ocsigenserver-2.5-r1.ebuild:

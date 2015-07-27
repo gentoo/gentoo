@@ -4,5 +4,6 @@
 	<herd>python</herd>
 	<upstream>
 		<remote-id type="pypi">hypothesis</remote-id>
+		<remote-id type="github">DRMacIver/hypothesis</remote-id>
 	</upstream>
 </pkgmetadata>

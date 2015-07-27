@@ -4,5 +4,6 @@
 	<herd>python</herd>
 	<upstream>
 		<remote-id type="pypi">mock</remote-id>
+		<remote-id type="github">testing-cabal/mock</remote-id>
 	</upstream>
 </pkgmetadata>

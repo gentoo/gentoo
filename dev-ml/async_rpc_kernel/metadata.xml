@@ -2,4 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>ml</herd>
+  <upstream>
+    <remote-id type="bitbucket">yminsky/ocaml-core</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -7,5 +7,6 @@
 		as web user-interface utilities.</longdescription>
 	<upstream>
 		<remote-id type="pypi">Mantissa</remote-id>
+		<remote-id type="github">twisted/mantissa</remote-id>
 	</upstream>
 </pkgmetadata>

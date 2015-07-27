@@ -7,6 +7,14 @@
 	(300/2008 Coll.) and implied documents.
 </longdescription>
 <maintainer>
-	<email>maintainer-needed@gentoo.org</email>
+        <email>petr.pisar@atlas.cz</email>
+        <name>Petr Pisar</name>
+        <description>Proxy-Maintainer. Assign bugs to him</description>
 </maintainer>
+<use>
+        <flag name="openssl">Use <pkg>dev-libs/openssl</pkg> as crypto backend
+          instead of <pkg>app-crypt/gpgme</pkg> and
+          <pkg>dev-libs/libgcrypt</pkg></flag>
+</use>
+
 </pkgmetadata>

@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/pyjwt
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyjwt/ChangeLog,v 1.14 2015/07/15 04:42:01 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyjwt/ChangeLog,v 1.15 2015/07/27 08:02:00 idella4 Exp $
+
+*pyjwt-1.4.0 (27 Jul 2015)
+
+  27 Jul 2015; Ian Delaney <idella4@gentoo.org> +pyjwt-1.4.0.ebuild:
+  bump
 
   15 Jul 2015; Ian Delaney <idella4@gentoo.org> -pyjwt-0.2.1.ebuild,
   pyjwt-1.3.0.ebuild:

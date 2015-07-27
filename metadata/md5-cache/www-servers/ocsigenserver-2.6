@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install setup
+DEPEND=>=dev-ml/lwt-2.5.0:=[react,ssl] >=dev-ml/react-0.9.3:= zlib? ( >=dev-ml/camlzip-1.03-r1:= ) dev-ml/cryptokit:= >=dev-ml/ocamlnet-3.6:=[pcre] >=dev-ml/pcre-ocaml-6.2.5:= >=dev-ml/tyxml-3.3:= >=dev-lang/ocaml-3.12:=[ocamlopt?] dev-ml/ocaml-ipaddr:= dbm? ( || ( dev-ml/camldbm:= >=dev-lang/ocaml-3.12[gdbm] ) ) sqlite? ( dev-ml/ocaml-sqlite3:= ) >=dev-ml/findlib-1.0.4-r1
+DESCRIPTION=Ocaml-powered webserver and framework for dynamic web programming
+EAPI=5
+HOMEPAGE=http://www.ocsigen.org
+IUSE=debug doc dbm +ocamlopt +sqlite zlib
+KEYWORDS=~amd64
+LICENSE=LGPL-2.1-with-linking-exception
+RDEPEND=>=dev-ml/lwt-2.5.0:=[react,ssl] >=dev-ml/react-0.9.3:= zlib? ( >=dev-ml/camlzip-1.03-r1:= ) dev-ml/cryptokit:= >=dev-ml/ocamlnet-3.6:=[pcre] >=dev-ml/pcre-ocaml-6.2.5:= >=dev-ml/tyxml-3.3:= >=dev-lang/ocaml-3.12:=[ocamlopt?] dev-ml/ocaml-ipaddr:= dbm? ( || ( dev-ml/camldbm:= >=dev-lang/ocaml-3.12[gdbm] ) ) sqlite? ( dev-ml/ocaml-sqlite3:= )
+REQUIRED_USE=|| ( sqlite dbm )
+RESTRICT=strip installsources
+SLOT=0/2.6
+SRC_URI=https://github.com/ocsigen/ocsigenserver/archive/2.6.tar.gz -> ocsigenserver-2.6.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	findlib	9cf6020ee5481f39f1aa566a323f9868	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=73c0ee06ce14f927a628eca3c3205135

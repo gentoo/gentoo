@@ -5,5 +5,6 @@
 	<upstream>
 		<remote-id type="google-code">pyproj</remote-id>
 		<remote-id type="pypi">pyproj</remote-id>
+		<remote-id type="github">jswhit/pyproj</remote-id>
 	</upstream>
 </pkgmetadata>

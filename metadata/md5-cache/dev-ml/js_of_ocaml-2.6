@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install
+DEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?] >=dev-ml/lwt-2.4.4:= dev-ml/react:= dev-ml/reactiveData:= >=dev-ml/tyxml-3.3:= dev-ml/cmdliner:= dev-ml/menhir:= dev-ml/ocaml-base64:= dev-ml/camlp4:= dev-ml/cppo:= deriving? ( >=dev-ml/deriving-0.6:= ) >=dev-ml/findlib-1.0.4-r1
+DESCRIPTION=A compiler from OCaml bytecode to javascript
+EAPI=5
+HOMEPAGE=http://ocsigen.org/js_of_ocaml/
+IUSE=+ocamlopt doc +deriving
+KEYWORDS=~amd64
+LICENSE=LGPL-2.1-with-linking-exception
+RDEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?] >=dev-ml/lwt-2.4.4:= dev-ml/react:= dev-ml/reactiveData:= >=dev-ml/tyxml-3.3:= dev-ml/cmdliner:= dev-ml/menhir:= dev-ml/ocaml-base64:= dev-ml/camlp4:= dev-ml/cppo:= deriving? ( >=dev-ml/deriving-0.6:= )
+SLOT=0/2.6
+SRC_URI=https://github.com/ocsigen/js_of_ocaml/archive/2.6.tar.gz -> js_of_ocaml-2.6.tar.gz
+_eclasses_=findlib	9cf6020ee5481f39f1aa566a323f9868
+_md5_=1aa905c1f393957fed83c3e149b769d8

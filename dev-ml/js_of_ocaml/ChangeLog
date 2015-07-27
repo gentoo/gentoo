@@ -1,6 +1,11 @@
 # ChangeLog for dev-ml/js_of_ocaml
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/js_of_ocaml/ChangeLog,v 1.9 2015/06/07 09:13:33 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/js_of_ocaml/ChangeLog,v 1.10 2015/07/27 07:53:35 aballier Exp $
+
+*js_of_ocaml-2.6 (27 Jul 2015)
+
+  27 Jul 2015; Alexis Ballier <aballier@gentoo.org> +js_of_ocaml-2.6.ebuild:
+  version bump
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml
