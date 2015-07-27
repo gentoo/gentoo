@@ -1,6 +1,10 @@
 # ChangeLog for net-irc/weechat
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/weechat/ChangeLog,v 1.160 2015/05/26 14:25:14 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/weechat/ChangeLog,v 1.161 2015/07/27 11:42:47 jlec Exp $
+
+  27 Jul 2015; Justin Lecher <jlec@gentoo.org> +files/weechat-1.2-tinfo.patch,
+  weechat-1.2.ebuild, weechat-9999.ebuild:
+  Fix for ncurses[tinfo], bug #507170
 
   26 May 2015; Tim Harder <radhermit@gentoo.org> weechat-1.2.ebuild:
   Explicitly disable javascript plugin support (bug #550220).

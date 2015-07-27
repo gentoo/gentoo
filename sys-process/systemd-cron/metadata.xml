@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-	<email>rich0@gentoo.org</email>
-</maintainer>
-<use>
-	<flag name="cron-boot">Include support for the boot timer.</flag>
-	<flag name="etc-crontab-systemd">Use dedicated /etc/crontab-systemd instead of parsing /etc/crontab</flag>
-	<flag name="minutely">Support /etc/cron.minutely</flag>
-	<flag name="yearly">Support /etc/cron.yearly</flag>
-    <flag name="setgid">Compile setgid C helper for crontab. Needs GCC or Clang.</flag>
-</use>
+	<maintainer>
+		<email>rich0@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="cron-boot">Include support for the boot timer.</flag>
+		<flag name="etc-crontab-systemd">Use dedicated /etc/crontab-systemd instead of parsing /etc/crontab</flag>
+		<flag name="minutely">Support /etc/cron.minutely</flag>
+		<flag name="yearly">Support /etc/cron.yearly</flag>
+		<flag name="setgid">Compile setgid C helper for crontab. Needs GCC or Clang.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">systemd-cron/systemd-cron</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,6 +1,12 @@
 # ChangeLog for media-sound/ams
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/ams/ChangeLog,v 1.30 2013/03/02 21:53:05 hwoarang Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/ams/ChangeLog,v 1.31 2015/07/27 11:37:28 polynomial-c Exp $
+
+*ams-2.1.1 (27 Jul 2015)
+
+  27 Jul 2015; Lars Wendler <polynomial-c@gentoo.org> +ams-2.1.1.ebuild,
+  +files/ams-2.1.1-dl.patch:
+  Version bump.
 
   02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> ams-2.0.1.ebuild:
   Move Qt dependencies to the new category

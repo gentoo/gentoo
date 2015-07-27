@@ -1,6 +1,7 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jsr93/jsr93-1.0.ebuild,v 1.2 2015/07/27 12:10:51 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jsr93/jsr93-1.0-r1.ebuild,v 1.1 2015/07/27 12:10:51 monsieurp Exp $
+EAPI=5
 
 JAVA_PKG_IUSE="source"
 
@@ -17,15 +18,17 @@ KEYWORDS="~amd64 ~ppc ~x86"
 
 IUSE=""
 
-COMMON_DEP="dev-java/sun-jaf"
+CDEPEND="dev-java/sun-jaf:0"
 
-RDEPEND=">=virtual/jre-1.4
-	${COMMON_DEP}"
-DEPEND=">=virtual/jdk-1.4
+RDEPEND=">=virtual/jre-1.6
+	${CDEPEND}"
+DEPEND=">=virtual/jdk-1.6
 	app-arch/unzip
-	${COMMON_DEP}"
+	${CDEPEND}"
 
 S="${WORKDIR}"
+
+JAVA_ANT_ENCODING="ISO-8859-1"
 
 pkg_nofetch() {
 
@@ -38,27 +41,21 @@ pkg_nofetch() {
 
 }
 
-src_unpack() {
-
-	unpack ${A}
-
-	cd "${WORKDIR}"
+java_prepare() {
+	cd "${WORKDIR}" || die "can't cd in ${WORKDIR}"
 	mkdir src || die
 	unzip -qq jaxr-apisrc.jar -d src || die "unzip failed"
 	rm -v *.jar || die
 	mkdir lib || die
+	cd lib || die "can't cd in ${WORKDIR}/lib"
 
-	cd lib
 	java-pkg_jar-from sun-jaf
 
 	cp "${FILESDIR}/build.xml-${PV}" "${S}/build.xml" || die
-
 }
 
 src_install() {
-
 	java-pkg_dojar "jsr93-api.jar"
 
 	use source && java-pkg_dosrc src/*
-
 }

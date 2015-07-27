@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/portletapi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/portletapi/ChangeLog,v 1.10 2015/07/21 13:18:11 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/portletapi/ChangeLog,v 1.11 2015/07/27 11:31:58 monsieurp Exp $
+
+  27 Jul 2015; Patrice Clement <monsieurp@gentoo.org> portletapi-2.0.ebuild:
+  Fix SRC_URI.
 
   21 Jul 2015; Patrice Clement <monsieurp@gentoo.org> portletapi-2.0.ebuild:
   Discard JAVA_PKG_WANT_{SOURCE,TARGET} flags.

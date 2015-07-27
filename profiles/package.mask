@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16683 2015/07/26 10:46:24 johu Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16684 2015/07/27 11:45:22 grobian Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -157,12 +157,6 @@ app-backup/cyphertite
 # Masking PHP 7 pre-release versions
 dev-lang/php:7.0
 =virtual/httpd-php-7.0
-
-# Fabian Groffen <grobian@gentoo.org> (08 Jun 2015)
-# Release candidates for 4.86, feel free to test
-=mail-mta/exim-4.86_rc3
-=mail-mta/exim-4.86_rc4
-=mail-mta/exim-4.86_rc5
 
 # Michał Górny <mgorny@gentoo.org> (04 Jun 2015)
 # New version of PyPy. Masked for testing and binary package build.
