@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/gmusicbrowser/gmusicbrowser-1.1.13.ebuild,v 1.3 2015/06/26 08:51:00 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/gmusicbrowser/gmusicbrowser-1.1.13.ebuild,v 1.4 2015/07/27 21:13:41 polynomial-c Exp $
 
 EAPI=5
 
@@ -19,8 +19,7 @@ GSTREAMER_DEPEND="
 	dev-perl/GStreamer
 	dev-perl/GStreamer-Interfaces
 	media-plugins/gst-plugins-meta:0.10"
-MPLAYER_DEPEND="
-	|| ( media-video/mplayer media-video/mplayer2 )"
+MPLAYER_DEPEND="media-video/mplayer"
 OTHER_DEPEND="
 	media-sound/alsa-utils
 	media-sound/flac123

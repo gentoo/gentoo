@@ -1,6 +1,14 @@
 # ChangeLog for media-sound/gmusicbrowser
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/gmusicbrowser/ChangeLog,v 1.33 2015/06/26 08:51:00 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/gmusicbrowser/ChangeLog,v 1.34 2015/07/27 21:13:41 polynomial-c Exp $
+
+*gmusicbrowser-1.1.14 (27 Jul 2015)
+
+  27 Jul 2015; Lars Wendler <polynomial-c@gentoo.org>
+  -gmusicbrowser-1.1.11.ebuild, -gmusicbrowser-1.1.12.ebuild,
+  gmusicbrowser-1.1.13.ebuild, +gmusicbrowser-1.1.14.ebuild,
+  gmusicbrowser-9999.ebuild:
+  Version bump. Removed old. Removed dependency on mplayer2.
 
   26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> gmusicbrowser-1.1.13.ebuild:
   Stable for x86, wrt bug #535494

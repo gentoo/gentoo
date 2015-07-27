@@ -1,13 +1,13 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/gmtp/gmtp-1.3.3.ebuild,v 1.2 2012/06/22 05:49:44 ssuominen Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/gmtp/gmtp-1.3.9.ebuild,v 1.1 2015/07/27 20:55:08 polynomial-c Exp $
 
-EAPI=4
-inherit gnome2-utils toolchain-funcs
+EAPI=5
+inherit gnome2-utils
 
 DESCRIPTION="A simple MTP client for MP3 players"
 HOMEPAGE="http://gmtp.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-i386.tar.gz"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -24,22 +24,8 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
 
-S=${WORKDIR}/gMTP
-
-src_prepare() {
-	sed -i \
-		-e '/CFLAGS/s:-g::' \
-		-e '/glib-compile-schemas/d' \
-		Makefile || die
-}
-
-src_compile() {
-	emake gtk3 CC="$(tc-getCC)" PKG_CONFIG="$(tc-getPKG_CONFIG)"
-}
-
-src_install() {
-	emake DESTDIR="${D}" PREFIX=/usr install-gtk3 register-gsettings-schemas
-	dodoc AUTHORS ChangeLog README
+src_configure() {
+	econf --with-gtk3
 }
 
 pkg_preinst() {
