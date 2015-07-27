@@ -1,6 +1,15 @@
 # ChangeLog for dev-util/amtterm
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/amtterm/ChangeLog,v 1.5 2015/05/04 23:45:52 perfinion Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/amtterm/ChangeLog,v 1.7 2015/07/27 13:57:48 cardoe Exp $
+
+  27 Jul 2015; Doug Goldstein <cardoe@gentoo.org> -amtterm-1.2.ebuild,
+  -amtterm-1.3.ebuild:
+  Drop older versions
+
+*amtterm-1.4 (27 Jul 2015)
+
+  27 Jul 2015; Doug Goldstein <cardoe@gentoo.org> +amtterm-1.4.ebuild:
+  version bump. handles 0x29 messages.
 
 *amtterm-1.3-r1 (04 May 2015)
 

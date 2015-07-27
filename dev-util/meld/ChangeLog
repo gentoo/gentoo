@@ -1,6 +1,12 @@
 # ChangeLog for dev-util/meld
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/meld/ChangeLog,v 1.200 2015/07/19 09:31:34 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/meld/ChangeLog,v 1.201 2015/07/27 14:00:06 tetromino Exp $
+
+*meld-3.14.0 (27 Jul 2015)
+
+  27 Jul 2015; Alexandre Rostovtsev <tetromino@gentoo.org> -meld-3.13.2.ebuild,
+  -meld-3.13.3.ebuild, +meld-3.14.0.ebuild:
+  Version bump, clean up pre-releases.
 
 *meld-3.13.3 (19 Jul 2015)
 

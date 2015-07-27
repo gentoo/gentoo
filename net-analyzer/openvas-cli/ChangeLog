@@ -1,6 +1,11 @@
 # ChangeLog for net-analyzer/openvas-cli
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/openvas-cli/ChangeLog,v 1.16 2015/04/07 14:27:54 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/openvas-cli/ChangeLog,v 1.17 2015/07/27 14:09:29 jlec Exp $
+
+*openvas-cli-1.4.2 (27 Jul 2015)
+
+  27 Jul 2015; Justin Lecher <jlec@gentoo.org> +openvas-cli-1.4.2.ebuild:
+  Version Bump
 
 *openvas-cli-1.4.0 (06 Apr 2015)
 

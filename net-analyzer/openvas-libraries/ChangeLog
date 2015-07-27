@@ -1,6 +1,13 @@
 # ChangeLog for net-analyzer/openvas-libraries
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/openvas-libraries/ChangeLog,v 1.40 2015/05/19 08:50:49 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/openvas-libraries/ChangeLog,v 1.41 2015/07/27 14:01:35 jlec Exp $
+
+*openvas-libraries-8.0.4 (27 Jul 2015)
+
+  27 Jul 2015; Justin Lecher <jlec@gentoo.org> +openvas-libraries-8.0.4.ebuild,
+  -openvas-libraries-7.0.7-r1.ebuild, -openvas-libraries-7.0.9.ebuild,
+  -openvas-libraries-8.0.1.ebuild:
+  Version Bump
 
 *openvas-libraries-7.0.10 (19 May 2015)
 *openvas-libraries-8.0.3 (19 May 2015)

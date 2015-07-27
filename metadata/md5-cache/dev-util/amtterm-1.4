@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=gtk? ( x11-libs/gtk+:2 x11-libs/vte:0 )
+DESCRIPTION=A nice tool to manage amt-enabled machines
+EAPI=5
+HOMEPAGE=https://www.kraxel.org/blog/linux/amtterm/
+IUSE=gtk
+KEYWORDS=~amd64 ~x86 ~amd64-linux
+LICENSE=GPL-2
+RDEPEND=gtk? ( x11-libs/gtk+:2 x11-libs/vte:0 ) dev-perl/SOAP-Lite
+SLOT=0
+SRC_URI=https://www.kraxel.org/releases/amtterm/amtterm-1.4.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=130a7a84529ac8bf3e096a740ad2f6b9

@@ -1,6 +1,14 @@
 # ChangeLog for net-analyzer/openvas-scanner
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/openvas-scanner/ChangeLog,v 1.26 2015/05/19 08:53:15 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/openvas-scanner/ChangeLog,v 1.27 2015/07/27 14:04:40 jlec Exp $
+
+*openvas-scanner-4.0.7 (27 Jul 2015)
+*openvas-scanner-5.0.4 (27 Jul 2015)
+
+  27 Jul 2015; Justin Lecher <jlec@gentoo.org> +openvas-scanner-4.0.7.ebuild,
+  +openvas-scanner-5.0.4.ebuild, -openvas-scanner-4.0.5.ebuild,
+  -openvas-scanner-5.0.1.ebuild:
+  Version Bump
 
 *openvas-scanner-5.0.3 (19 May 2015)
 
