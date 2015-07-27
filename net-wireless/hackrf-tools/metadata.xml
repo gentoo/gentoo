@@ -10,5 +10,6 @@
 </longdescription>
 	<upstream>
 		<remote-id type="sourceforge">hackrf</remote-id>
+		<remote-id type="github">mossmann/hackrf</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -5,11 +5,12 @@
 		<email>udev-bugs@gentoo.org</email>
 	</maintainer>
 	<use>
-		<flag name='firmware-loader'>Enable the userspace firmware loader (DEPRECATED, replaced by the in-kernel loader starting from 3.8)</flag>
-		<flag name='gudev'>Build the gobject interface library</flag>
-		<flag name='kmod'>Enable kernel module loading/unloading support using <pkg>sys-apps/kmod</pkg></flag>
+		<flag name="firmware-loader">Enable the userspace firmware loader (DEPRECATED, replaced by the in-kernel loader starting from 3.8)</flag>
+		<flag name="gudev">Build the gobject interface library</flag>
+		<flag name="kmod">Enable kernel module loading/unloading support using <pkg>sys-apps/kmod</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:kernel:udev</remote-id>
+		<remote-id type="github">systemd/systemd</remote-id>
 	</upstream>
 </pkgmetadata>

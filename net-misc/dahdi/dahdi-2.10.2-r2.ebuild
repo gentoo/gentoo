@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/dahdi/dahdi-2.10.2-r1.ebuild,v 1.1 2015/07/07 11:20:18 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/dahdi/dahdi-2.10.2-r2.ebuild,v 1.1 2015/07/27 10:31:28 chainsaw Exp $
 
 EAPI=5
 
@@ -15,18 +15,18 @@ DESCRIPTION="Kernel modules for Digium compatible hardware (formerly known as Za
 HOMEPAGE="http://www.asterisk.org"
 SRC_URI="http://downloads.asterisk.org/pub/telephony/dahdi-linux/releases/${MY_P}.tar.gz
 http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-a4a-a0017.tar.gz
-http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-a4b-b0019.tar.gz
+http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-a4b-d001e.tar.gz
 http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-a8a-1d0017.tar.gz
-http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-a8b-1d0019.tar.gz
+http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-a8b-1f001e.tar.gz
 http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-hx8-2.06.tar.gz
 http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-oct6114-032-1.05.01.tar.gz
 http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-oct6114-064-1.05.01.tar.gz
 http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-oct6114-128-1.05.01.tar.gz
 http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-oct6114-256-1.05.01.tar.gz
 http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-tc400m-MR6.12.tar.gz
-http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-te133-780019.tar.gz
+http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-te133-7a001e.tar.gz
 http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-te134-780017.tar.gz
-http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-te435-e0019.tar.gz
+http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-te435-13001e.tar.gz
 http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-te436-10017.tar.gz
 http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-te820-1.76.tar.gz
 http://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fw-vpmoct032-1.12.0.tar.gz

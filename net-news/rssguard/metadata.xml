@@ -4,4 +4,7 @@
   <maintainer>
     <email>yngwin@gentoo.org</email>
   </maintainer>
+  <upstream>
+    <remote-id type="bitbucket">skunkos/rssguard</remote-id>
+  </upstream>
 </pkgmetadata>

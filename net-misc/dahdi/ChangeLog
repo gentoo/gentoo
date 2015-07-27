@@ -1,6 +1,15 @@
 # ChangeLog for net-misc/dahdi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/dahdi/ChangeLog,v 1.75 2015/07/07 11:20:18 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/dahdi/ChangeLog,v 1.76 2015/07/27 10:31:28 chainsaw Exp $
+
+*dahdi-2.10.2-r2 (27 Jul 2015)
+
+  27 Jul 2015; Tony Vroon <chainsaw@gentoo.org> -dahdi-2.10.2-r1.ebuild,
+  +dahdi-2.10.2-r2.ebuild:
+  Update firmware versions and download URLs so that the build system does not
+  attempt network access during build. As pointed out by Toralf Förster in bug
+  #555154. Removing previous ebuild and enforcing rebuild, in case any
+  corrupted/truncated firmware made it into disk.
 
 *dahdi-2.10.2-r1 (07 Jul 2015)
 
