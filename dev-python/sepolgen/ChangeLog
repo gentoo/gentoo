@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/sepolgen
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/sepolgen/ChangeLog,v 1.55 2015/07/16 20:47:16 perfinion Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/sepolgen/ChangeLog,v 1.56 2015/07/27 16:20:58 perfinion Exp $
+
+  27 Jul 2015; Jason Zaman <perfinion@gentoo.org> sepolgen-9999.ebuild:
+  dep on setools should only require python useflag if it exists, -9999 drops it
 
   16 Jul 2015; Jason Zaman <perfinion@gentoo.org> sepolgen-1.2.2.ebuild,
   sepolgen-9999.ebuild:

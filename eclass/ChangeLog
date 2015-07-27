@@ -1,6 +1,9 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1727 2015/07/25 10:07:36 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1728 2015/07/27 16:31:01 floppym Exp $
+
+  27 Jul 2015; Mike Gilbert <floppym@gentoo.org> python-r1.eclass:
+  Drop the USE_PYTHON warning.
 
   25 Jul 2015; Michał Górny <mgorny@gentoo.org> python-utils-r1.eclass:
   Add missing ||die to "rm -f" calls, i.e. in case we do not have permission to
