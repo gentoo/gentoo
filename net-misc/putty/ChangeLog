@@ -1,6 +1,16 @@
 # ChangeLog for net-misc/putty
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/putty/ChangeLog,v 1.114 2015/06/21 08:08:48 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/putty/ChangeLog,v 1.116 2015/07/27 04:44:00 jer Exp $
+
+  27 Jul 2015; Jeroen Roovers <jer@gentoo.org> putty-0.64.ebuild,
+  putty-0.65.ebuild:
+  Mark ~ppc64 too.
+
+*putty-0.65 (27 Jul 2015)
+
+  27 Jul 2015; Jeroen Roovers <jer@gentoo.org> -putty-0.65_pre20150621.ebuild,
+  +putty-0.65.ebuild:
+  Version bump.
 
 *putty-0.65_pre20150621 (21 Jun 2015)
 

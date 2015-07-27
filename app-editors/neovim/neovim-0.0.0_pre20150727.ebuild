@@ -1,16 +1,15 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/neovim/neovim-0.0.0_pre20150329.ebuild,v 1.1 2015/03/29 04:03:56 yngwin Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/neovim/neovim-0.0.0_pre20150727.ebuild,v 1.1 2015/07/27 05:12:15 yngwin Exp $
 
 EAPI=5
 inherit cmake-utils flag-o-matic
 
-DESCRIPTION="Vim's rebirth for the 21st century"
+DESCRIPTION="Ambitious vim fork focused on extensibility and agility"
 HOMEPAGE="https://github.com/neovim/neovim"
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="git://github.com/neovim/neovim.git"
-	KEYWORDS=""
 else
 	SRC_URI="http://dev.gentoo.org/~yngwin/distfiles/${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
@@ -38,7 +37,7 @@ RDEPEND="${CDEPEND}
 src_prepare() {
 	# use our system vim dir
 	sed -e '/^# define SYS_VIMRC_FILE/s|$VIM|'"${EPREFIX}"'/etc/vim|' \
-		-i src/nvim/os_unix_defs.h || die
+		-i src/nvim/os/unix_defs.h || die
 	cmake-utils_src_prepare
 }
 
