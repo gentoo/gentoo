@@ -1,6 +1,11 @@
 # ChangeLog for dev-ruby/bson
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/bson/ChangeLog,v 1.21 2015/06/08 19:14:14 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/bson/ChangeLog,v 1.22 2015/07/28 05:06:04 graaff Exp $
+
+*bson-3.2.0 (28 Jul 2015)
+
+  28 Jul 2015; Hans de Graaff <graaff@gentoo.org> +bson-3.2.0.ebuild:
+  Version bump.
 
   08 Jun 2015; Hans de Graaff <graaff@gentoo.org> bson-3.0.4.ebuild:
   Update SLOT to allow for a proper dependency in dev-ruby/mongo.

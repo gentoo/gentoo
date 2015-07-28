@@ -1,6 +1,11 @@
 # ChangeLog for media-sound/chuck
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/chuck/ChangeLog,v 1.23 2015/07/27 16:41:24 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/chuck/ChangeLog,v 1.24 2015/07/28 05:08:11 yngwin Exp $
+
+  28 Jul 2015; Ben de Groot <yngwin@gentoo.org> chuck-1.3.5.1.ebuild,
+  metadata.xml:
+  Reassign to proaudio project. Normalize description, alphabetize deps.
+  Simplify examples installation, and prevent compressing them.
 
 *chuck-1.3.5.1 (27 Jul 2015)
 

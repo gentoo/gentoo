@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=media-libs/freetype media-libs/imlib2 x11-libs/libX11 x11-libs/libXft x11-libs/libXinerama x11-libs/libXrandr virtual/pkgconfig x11-proto/randrproto x11-proto/xineramaproto x11-proto/xproto sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DEPEND=media-libs/freetype media-libs/imlib2[X] x11-libs/libX11 x11-libs/libXft x11-libs/libXinerama x11-libs/libXrandr virtual/pkgconfig x11-proto/randrproto x11-proto/xineramaproto x11-proto/xproto sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=Window Manager From Scratch, A tiling window manager highly configurable
 EAPI=5
-HOMEPAGE=https://github.com/xorg62/
+HOMEPAGE=https://github.com/xorg62/wmfs
 KEYWORDS=~amd64
 LICENSE=BSD
-RDEPEND=media-libs/freetype media-libs/imlib2 x11-libs/libX11 x11-libs/libXft x11-libs/libXinerama x11-libs/libXrandr
+RDEPEND=media-libs/freetype media-libs/imlib2[X] x11-libs/libX11 x11-libs/libXft x11-libs/libXinerama x11-libs/libXrandr
 SLOT=0
 SRC_URI=https://github.com/xorg62/wmfs/archive/201003.tar.gz -> wmfs-201003.tar.gz
 _eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=b637de9cdc59c1095ad70ad6cc839abe
+_md5_=f838078f194d24d74ad5c335c3d8db5b
