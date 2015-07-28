@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare setup
+DEPEND=dev-java/antlr:3 virtual/jre >=dev-libs/antlr-c-3.1.3 dev-db/sqlite:3 dev-libs/confuse dev-libs/libevent dev-libs/libgcrypt:0 dev-libs/libunistring dev-libs/mini-xml[threads] media-libs/alsa-lib net-dns/avahi[dbus] virtual/ffmpeg flac? ( media-libs/flac ) itunes? ( app-pda/libplist ) lastfm? ( net-misc/curl ) musepack? ( media-libs/taglib ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A DAAP (iTunes) media server
+EAPI=5
+HOMEPAGE=https://github.com/ejurgensen/forked-daapd
+IUSE=alsa flac itunes lastfm mpd musepack
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/antlr-c-3.1.3 dev-db/sqlite:3 dev-libs/confuse dev-libs/libevent dev-libs/libgcrypt:0 dev-libs/libunistring dev-libs/mini-xml[threads] media-libs/alsa-lib net-dns/avahi[dbus] virtual/ffmpeg flac? ( media-libs/flac ) itunes? ( app-pda/libplist ) lastfm? ( net-misc/curl ) musepack? ( media-libs/taglib )
+SLOT=0
+SRC_URI=https://github.com/ejurgensen/forked-daapd/archive/23.2.tar.gz
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=f971b27b2b08eedea65ab0ee5efa98a9
