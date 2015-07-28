@@ -4,5 +4,6 @@
 	<herd>python</herd>
 	<upstream>
 		<remote-id type="pypi">setuptools_scm</remote-id>
+		<remote-id type="bitbucket">pypa/setuptools_scm</remote-id>
 	</upstream>
 </pkgmetadata>

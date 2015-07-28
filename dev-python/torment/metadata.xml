@@ -9,5 +9,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="pypi">torment</remote-id>
+		<remote-id type="github">kumoru/torment</remote-id>
 	</upstream>
 </pkgmetadata>

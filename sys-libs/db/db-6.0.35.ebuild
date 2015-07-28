@@ -1,9 +1,9 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/db/db-6.0.30.ebuild,v 1.4 2015/03/20 14:41:50 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/db/db-6.0.35.ebuild,v 1.1 2015/07/28 14:46:45 polynomial-c Exp $
 
-EAPI=4
-inherit eutils db flag-o-matic java-pkg-opt-2 autotools multilib multilib-minimal versionator
+EAPI=5
+inherit eutils db flag-o-matic java-pkg-opt-2 autotools multilib multilib-minimal versionator toolchain-funcs
 
 #Number of official patches
 #PATCHNO=`echo ${PV}|sed -e "s,\(.*_p\)\([0-9]*\),\2,"`
@@ -31,21 +31,19 @@ SLOT="$(get_version_component_range 1-2)"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
 IUSE="doc java cxx tcl test"
 
+REQUIRED_USE="test? ( tcl )"
+
 # the entire testsuite needs the TCL functionality
-DEPEND="tcl? ( >=dev-lang/tcl-8.5.15-r1:0[${MULTILIB_USEDEP}] )
-	test? ( >=dev-lang/tcl-8.5.15-r1:0[${MULTILIB_USEDEP}] )
+DEPEND="tcl? ( >=dev-lang/tcl-8.5.15-r1:0=[${MULTILIB_USEDEP}] )
+	test? ( >=dev-lang/tcl-8.5.15-r1:0=[${MULTILIB_USEDEP}] )
 	java? ( >=virtual/jdk-1.5 )
 	>=sys-devel/binutils-2.16.1"
-RDEPEND="tcl? ( >=dev-lang/tcl-8.5.15-r1:0[${MULTILIB_USEDEP}] )
+RDEPEND="tcl? ( >=dev-lang/tcl-8.5.15-r1:0=[${MULTILIB_USEDEP}] )
 	java? ( >=virtual/jre-1.5 )"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/db$(get_version_component_range 1-2)/db.h
 )
-
-src_unpack() {
-	unpack "${MY_P}".tar.gz
-}
 
 src_prepare() {
 	cd "${WORKDIR}"/"${MY_P}"
@@ -64,7 +62,7 @@ src_prepare() {
 	# sqlite configure call has an extra leading ..
 	# upstreamed:5.2.36, missing in 5.3.x/6.x
 	# still needs to be patched in 6.0.20
-	epatch "${FILESDIR}"/${PN}-6.0.19-sqlite-configure-path.patch
+	epatch "${FILESDIR}"/${PN}-6.0.35-sqlite-configure-path.patch
 
 	# The upstream testsuite copies .lib and the binaries for each parallel test
 	# core, ~300MB each. This patch uses links instead, saves a lot of space.
@@ -118,6 +116,8 @@ src_configure() {
 
 multilib_src_configure() {
 	local myconf=()
+
+	tc-ld-disable-gold #470634
 
 	# compilation with -O0 fails on amd64, see bug #171231
 	if [[ ${ABI} == amd64 ]]; then

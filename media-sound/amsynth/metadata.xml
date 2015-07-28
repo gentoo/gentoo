@@ -3,6 +3,9 @@
 <pkgmetadata>
 	<herd>sound</herd>
 	<use>
-		<flag name='dssi'>Enable support for DSSI Soft Synth Interface</flag>
+		<flag name="dssi">Enable support for DSSI Soft Synth Interface</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">nixxcode/amsynth</remote-id>
+	</upstream>
 </pkgmetadata>

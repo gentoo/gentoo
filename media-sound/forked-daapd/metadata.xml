@@ -21,4 +21,7 @@
 		<flag name="lastfm">Enable LastFM scrobbling support</flag>
 		<flag name="mpd">Enable streaming to mpd</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">ejurgensen/forked-daapd</remote-id>
+	</upstream>
 </pkgmetadata>

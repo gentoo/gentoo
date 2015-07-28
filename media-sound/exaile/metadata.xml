@@ -4,5 +4,6 @@
 	<herd>sound</herd>
 	<upstream>
 		<remote-id type="launchpad">exaile</remote-id>
+		<remote-id type="github">exaile/exaile</remote-id>
 	</upstream>
 </pkgmetadata>

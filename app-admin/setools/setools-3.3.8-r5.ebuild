@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/setools/setools-3.3.8-r5.ebuild,v 1.3 2015/03/16 21:34:05 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/setools/setools-3.3.8-r5.ebuild,v 1.4 2015/07/28 14:55:25 jlec Exp $
 
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )
@@ -45,7 +45,7 @@ RDEPEND=">=sys-libs/libsepol-2.1.4
 	dev-libs/libxml2:2
 	java? ( >=virtual/jre-1.4 )
 	X? (
-		>=dev-lang/tk-8.4.9
+		>=dev-lang/tk-8.4.9:0=
 		>=dev-tcltk/bwidget-1.8
 		>=gnome-base/libglade-2.0
 		>=x11-libs/gtk+-2.8:2

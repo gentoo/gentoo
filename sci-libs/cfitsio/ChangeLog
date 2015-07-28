@@ -1,6 +1,11 @@
 # ChangeLog for sci-libs/cfitsio
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/cfitsio/ChangeLog,v 1.72 2015/07/15 16:23:10 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/cfitsio/ChangeLog,v 1.73 2015/07/28 14:43:45 jlec Exp $
+
+  28 Jul 2015; Justin Lecher <jlec@gentoo.org> -cfitsio-3.140.ebuild,
+  -cfitsio-3.350.ebuild, -files/cfitsio-3.140-autotools.patch,
+  -files/cfitsio-3.140-missing-include.patch:
+  Drop old, obsoletes bug #442766
 
   15 Jul 2015; Tobias Klausmann <klausman@gentoo.org> cfitsio-3.360.ebuild:
   Stable on alpha, bug 542590

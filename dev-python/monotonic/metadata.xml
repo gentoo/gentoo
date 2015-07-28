@@ -9,5 +9,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="pypi">monotonic</remote-id>
+		<remote-id type="github">atdt/monotonic</remote-id>
 	</upstream>
 </pkgmetadata>

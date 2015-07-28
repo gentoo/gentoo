@@ -8,5 +8,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">pytest-capturelog</remote-id>
+		<remote-id type="bitbucket">memedough/pytest-capturelog</remote-id>
 	</upstream>
 </pkgmetadata>

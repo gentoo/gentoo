@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libexplain/libexplain-1.3.ebuild,v 1.4 2014/06/08 11:03:35 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libexplain/libexplain-1.3.ebuild,v 1.5 2015/07/28 14:38:16 jlec Exp $
 
 EAPI=5
 
@@ -24,10 +24,8 @@ RDEPEND="
 	sys-process/lsof"
 DEPEND="${RDEPEND}
 	>=sys-kernel/linux-headers-2.6.35
-	doc? (
-		app-text/ghostscript-gpl
-		sys-apps/groff
-	)
+	app-text/ghostscript-gpl
+	sys-apps/groff
 "
 
 DOCS=( README )

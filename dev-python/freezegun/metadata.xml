@@ -8,5 +8,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">freezegun</remote-id>
+		<remote-id type="github">spulec/freezegun</remote-id>
 	</upstream>
 </pkgmetadata>

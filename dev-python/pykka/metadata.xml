@@ -8,5 +8,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">Pykka</remote-id>
+		<remote-id type="github">jodal/pykka</remote-id>
 	</upstream>
 </pkgmetadata>

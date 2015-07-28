@@ -1,6 +1,9 @@
 # ChangeLog for app-admin/setools
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/setools/ChangeLog,v 1.102 2015/07/27 15:29:35 perfinion Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/setools/ChangeLog,v 1.103 2015/07/28 14:55:25 jlec Exp $
+
+  28 Jul 2015; Justin Lecher <jlec@gentoo.org> setools-3.3.8-r5.ebuild:
+  Fix slot operators
 
 *setools-9999 (27 Jul 2015)
 
