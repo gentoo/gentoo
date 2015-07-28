@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/ganeti/ganeti-2.14.1.ebuild,v 1.1 2015/07/22 01:46:48 chutzpah Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/ganeti/ganeti-2.14.1-r1.ebuild,v 1.1 2015/07/28 22:03:05 chutzpah Exp $
 
 EAPI=5
 PYTHON_COMPAT=(python2_7)
@@ -125,6 +125,12 @@ RDEPEND="${DEPEND}
 	!app-emulation/ganeti-htools"
 DEPEND+="sys-devel/m4
 	=app-text/pandoc-1.12*
+	>=dev-haskell/test-framework-0.6:0=
+	<dev-haskell/test-framework-0.9:0=
+	>=dev-haskell/test-framework-hunit-0.2.7:0=
+	<dev-haskell/test-framework-hunit-0.4:0=
+	>=dev-haskell/test-framework-quickcheck2-0.2.12.1:0=
+	<dev-haskell/test-framework-quickcheck2-0.4:0=
 	test? (
 		dev-python/mock
 		dev-python/pyyaml
@@ -133,12 +139,6 @@ DEPEND+="sys-devel/m4
 		<dev-haskell/hunit-1.3:0=
 		>=dev-haskell/quickcheck-2.4.2:2=
 		<dev-haskell/quickcheck-2.8:2=
-		>=dev-haskell/test-framework-0.6:0=
-		<dev-haskell/test-framework-0.9:0=
-		>=dev-haskell/test-framework-hunit-0.2.7:0=
-		<dev-haskell/test-framework-hunit-0.4:0=
-		>=dev-haskell/test-framework-quickcheck2-0.2.12.1:0=
-		<dev-haskell/test-framework-quickcheck2-0.4:0=
 		sys-apps/fakeroot
 		net-misc/socat
 		dev-util/shelltestrunner

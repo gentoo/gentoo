@@ -9,6 +9,6 @@
 		<flag name="puppetdb">Adds puppetdb support</flag>
 	</use>
 	<longdescription lang="en">
-		Collection of puppet utils, client and batteries included.
+		Collection of puppet utils, clients and batteries included.
 	</longdescription>
 </pkgmetadata>
