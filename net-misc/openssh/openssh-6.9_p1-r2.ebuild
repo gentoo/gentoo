@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/openssh/openssh-6.9_p1-r2.ebuild,v 1.10 2015/07/23 09:35:49 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/openssh/openssh-6.9_p1-r2.ebuild,v 1.11 2015/07/28 01:08:12 vapier Exp $
 
 EAPI="4"
 inherit eutils user flag-o-matic multilib autotools pam systemd versionator
@@ -31,39 +31,34 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~arm-linux ~x86-linux"
 # Probably want to drop ssl defaulting to on in a future version.
 IUSE="bindist debug ${HPN_PATCH:++}hpn kerberos kernel_linux ldap ldns libedit pam +pie sctp selinux skey ssh1 +ssl static X X509"
-REQUIRED_USE="pie? ( !static )
+REQUIRED_USE="ldns? ( ssl )
+	pie? ( !static )
 	ssh1? ( ssl )
 	static? ( !kerberos !pam )
 	X509? ( !ldap ssl )"
 
-LIB_DEPEND="sctp? ( net-misc/lksctp-tools[static-libs(+)] )
+LIB_DEPEND="
+	ldns? (
+		net-libs/ldns[static-libs(+)]
+		!bindist? ( net-libs/ldns[ecdsa,ssl] )
+		bindist? ( net-libs/ldns[-ecdsa,ssl] )
+	)
+	libedit? ( dev-libs/libedit[static-libs(+)] )
+	sctp? ( net-misc/lksctp-tools[static-libs(+)] )
 	selinux? ( >=sys-libs/libselinux-1.28[static-libs(+)] )
 	skey? ( >=sys-auth/skey-1.1.5-r1[static-libs(+)] )
-	libedit? ( dev-libs/libedit[static-libs(+)] )
 	ssl? (
 		>=dev-libs/openssl-0.9.6d:0[bindist=]
 		dev-libs/openssl[static-libs(+)]
 	)
 	>=sys-libs/zlib-1.2.3[static-libs(+)]"
 RDEPEND="
-	!static? (
-		${LIB_DEPEND//\[static-libs(+)]}
-		ldns? (
-			!bindist? ( net-libs/ldns[ecdsa,ssl] )
-			bindist? ( net-libs/ldns[-ecdsa,ssl] )
-		)
-	)
+	!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
 	pam? ( virtual/pam )
 	kerberos? ( virtual/krb5 )
 	ldap? ( net-nds/openldap )"
 DEPEND="${RDEPEND}
-	static? (
-		${LIB_DEPEND}
-		ldns? (
-			!bindist? ( net-libs/ldns[ecdsa,ssl,static-libs(+)] )
-			bindist? ( net-libs/ldns[-ecdsa,ssl,static-libs(+)] )
-		)
-	)
+	static? ( ${LIB_DEPEND} )
 	virtual/pkgconfig
 	virtual/os-headers
 	sys-devel/autoconf"

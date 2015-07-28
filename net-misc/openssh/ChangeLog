@@ -1,6 +1,10 @@
 # ChangeLog for net-misc/openssh
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/openssh/ChangeLog,v 1.573 2015/07/23 09:35:49 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/openssh/ChangeLog,v 1.574 2015/07/28 01:08:12 vapier Exp $
+
+  28 Jul 2015; Mike Frysinger <vapier@gentoo.org> openssh-6.9_p1-r2.ebuild:
+  List USE=ssl as a requirement for USE=ldns and clean up the ldns deps a bit
+  #555708 by Nicholas Fish.
 
   23 Jul 2015; Agostino Sarubbo <ago@gentoo.org> openssh-6.9_p1-r2.ebuild:
   Stable for sparc, wrt bug #553724
