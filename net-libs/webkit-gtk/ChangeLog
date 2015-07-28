@@ -1,6 +1,10 @@
 # ChangeLog for net-libs/webkit-gtk
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/webkit-gtk/ChangeLog,v 1.323 2015/07/26 04:24:08 tetromino Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/webkit-gtk/ChangeLog,v 1.324 2015/07/28 07:14:15 klausman Exp $
+
+  28 Jul 2015; Tobias Klausmann <klausman@gentoo.org>
+  webkit-gtk-2.4.9-r200.ebuild:
+  Stable on alpha, bug 547680
 
   26 Jul 2015; Alexandre Rostovtsev <tetromino@gentoo.org>
   webkit-gtk-2.4.8.ebuild, webkit-gtk-2.4.8-r200.ebuild,
