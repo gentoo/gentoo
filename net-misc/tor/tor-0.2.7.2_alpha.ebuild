@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/tor/tor-0.2.7.1_alpha.ebuild,v 1.2 2015/06/11 18:42:10 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/tor/tor-0.2.7.2_alpha.ebuild,v 1.1 2015/07/28 11:53:29 blueness Exp $
 
 EAPI="5"
 
@@ -26,6 +26,7 @@ DEPEND="dev-libs/openssl:=
 	nat-pmp? ( net-libs/libnatpmp )
 	scrypt? ( app-crypt/libscrypt )
 	seccomp? ( sys-libs/libseccomp )
+	systemd? ( sys-apps/systemd )
 	upnp? ( net-libs/miniupnpc )"
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-tor )"

@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst prepare setup
+DEPEND=dev-libs/openssl:= sys-libs/zlib dev-libs/libevent bufferevents? ( dev-libs/libevent[ssl] ) nat-pmp? ( net-libs/libnatpmp ) scrypt? ( app-crypt/libscrypt ) seccomp? ( sys-libs/libseccomp ) systemd? ( sys-apps/systemd ) upnp? ( net-libs/miniupnpc ) virtual/pkgconfig
+DESCRIPTION=Anonymizing overlay network for TCP
+EAPI=5
+HOMEPAGE=http://www.torproject.org/
+IUSE=-bufferevents nat-pmp scrypt seccomp selinux stats systemd tor-hardening transparent-proxy test upnp web
+KEYWORDS=~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86
+LICENSE=BSD GPL-2
+RDEPEND=dev-libs/openssl:= sys-libs/zlib dev-libs/libevent bufferevents? ( dev-libs/libevent[ssl] ) nat-pmp? ( net-libs/libnatpmp ) scrypt? ( app-crypt/libscrypt ) seccomp? ( sys-libs/libseccomp ) systemd? ( sys-apps/systemd ) upnp? ( net-libs/miniupnpc ) selinux? ( sec-policy/selinux-tor )
+SLOT=0
+SRC_URI=https://www.torproject.org/dist/tor-0.2.7.2-alpha.tar.gz https://archive.torproject.org/tor-package-archive/tor-0.2.7.2-alpha.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	readme.gentoo	106edea5533517715013de909a333abd	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=8fbd097976c7e4b66586ff34dbf586ca

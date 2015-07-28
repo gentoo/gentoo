@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs-vcs/emacs-vcs-25.0.9999-r1.ebuild,v 1.9 2015/07/02 16:22:10 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs-vcs/emacs-vcs-25.0.9999-r1.ebuild,v 1.10 2015/07/28 12:16:35 ulm Exp $
 
 EAPI=5
 
@@ -51,7 +51,6 @@ RDEPEND="sys-libs/ncurses
 		x11-libs/libXmu
 		x11-libs/libXt
 		x11-misc/xbitmaps
-		cairo? ( >=x11-libs/cairo-1.12.18 )
 		gconf? ( >=gnome-base/gconf-2.26.2 )
 		gsettings? ( >=dev-libs/glib-2.28.6 )
 		gif? ( media-libs/giflib )
@@ -65,6 +64,7 @@ RDEPEND="sys-libs/ncurses
 			media-libs/fontconfig
 			media-libs/freetype
 			x11-libs/libXft
+			cairo? ( >=x11-libs/cairo-1.12.18 )
 			m17n-lib? (
 				>=dev-libs/libotf-0.9.4
 				>=dev-libs/m17n-lib-1.5.1
@@ -144,7 +144,6 @@ src_configure() {
 
 	if use X; then
 		myconf+=" --with-x --without-ns"
-		myconf+=" $(use_with cairo)"
 		myconf+=" $(use_with gconf)"
 		myconf+=" $(use_with gsettings)"
 		myconf+=" $(use_with toolkit-scroll-bars)"
@@ -158,11 +157,15 @@ src_configure() {
 
 		if use xft; then
 			myconf+=" --with-xft"
+			myconf+=" $(use_with cairo)"
 			myconf+=" $(use_with m17n-lib libotf)"
 			myconf+=" $(use_with m17n-lib m17n-flt)"
 		else
 			myconf+=" --without-xft"
+			myconf+=" --without-cairo"
 			myconf+=" --without-libotf --without-m17n-flt"
+			use cairo && ewarn \
+				"USE flag \"cairo\" has no effect if \"xft\" is not set."
 			use m17n-lib && ewarn \
 				"USE flag \"m17n-lib\" has no effect if \"xft\" is not set."
 		fi

@@ -1,6 +1,12 @@
 # ChangeLog for sys-auth/fingerprint-gui
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/fingerprint-gui/ChangeLog,v 1.12 2015/06/09 16:20:06 xmw Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/fingerprint-gui/ChangeLog,v 1.13 2015/07/28 11:52:33 maksbotan Exp $
+
+*fingerprint-gui-1.07 (28 Jul 2015)
+
+  28 Jul 2015; Maxim Koltsov <maksbotan@gentoo.org>
+  +fingerprint-gui-1.07.ebuild:
+  Bump to 1.07
 
 *fingerprint-gui-1.06 (09 Jun 2015)
 
