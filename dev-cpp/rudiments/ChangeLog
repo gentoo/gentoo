@@ -1,6 +1,13 @@
 # ChangeLog for dev-cpp/rudiments
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/rudiments/ChangeLog,v 1.18 2015/03/11 12:48:38 pinkbyte Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/rudiments/ChangeLog,v 1.19 2015/07/28 09:50:38 pinkbyte Exp $
+
+*rudiments-0.51 (28 Jul 2015)
+
+  28 Jul 2015; Sergey Popov <pinkbyte@gentoo.org> +rudiments-0.51.ebuild,
+  +files/rudiments-0.51-buildsystem.patch:
+  Version bump, wrt bug #551014. Thanks to Mansour <mansour.alakeel AT
+  gmail.com> for pointing on this issue
 
   11 Mar 2015; Sergey Popov <pinkbyte@gentoo.org> -rudiments-0.40.ebuild,
   rudiments-0.46.ebuild, -files/0.40-configure.patch,
