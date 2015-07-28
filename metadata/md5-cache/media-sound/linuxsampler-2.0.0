@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install
+DEPEND=sqlite? ( >=dev-db/sqlite-3.3 ) >=media-libs/libgig-4.0.0 media-libs/alsa-lib jack? ( media-sound/jack-audio-connection-kit ) virtual/pkgconfig doc? ( app-doc/doxygen )
+DESCRIPTION=LinuxSampler is a software audio sampler engine with professional grade features
+EAPI=5
+HOMEPAGE=http://www.linuxsampler.org/
+IUSE=doc jack sqlite static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=sqlite? ( >=dev-db/sqlite-3.3 ) >=media-libs/libgig-4.0.0 media-libs/alsa-lib jack? ( media-sound/jack-audio-connection-kit )
+SLOT=0
+SRC_URI=http://download.linuxsampler.org/packages/linuxsampler-2.0.0.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=d3aab6079889874ef66ced2cfceff291

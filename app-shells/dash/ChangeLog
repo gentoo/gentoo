@@ -1,6 +1,10 @@
 # ChangeLog for app-shells/dash
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/dash/ChangeLog,v 1.136 2015/07/23 20:44:50 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-shells/dash/ChangeLog,v 1.137 2015/07/28 16:15:09 vapier Exp $
+
+  28 Jul 2015; Mike Frysinger <vapier@gentoo.org>
+  files/dash-0.5.8.1-dumb-echo.patch:
+  Update echo docs in man page to match change in behavior.
 
   23 Jul 2015; Pacho Ramos <pacho@gentoo.org> dash-0.5.8.2.ebuild:
   ppc stable wrt bug #552144
