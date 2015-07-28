@@ -1,6 +1,11 @@
 # ChangeLog for sys-block/mbuffer
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/mbuffer/ChangeLog,v 1.33 2015/05/19 12:55:25 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-block/mbuffer/ChangeLog,v 1.34 2015/07/28 18:01:16 polynomial-c Exp $
+
+  28 Jul 2015; Lars Wendler <polynomial-c@gentoo.org> -mbuffer-20120505.ebuild,
+  -mbuffer-20121111.ebuild:
+  Removed vulnerable versions (see https://bugs.gentoo.org/556146#c0 for the
+  reason).
 
 *mbuffer-20150412 (19 May 2015)
 
