@@ -1,6 +1,11 @@
 # ChangeLog for dev-util/qfsm
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/qfsm/ChangeLog,v 1.6 2014/05/30 21:37:35 pesa Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/qfsm/ChangeLog,v 1.7 2015/07/28 09:02:12 pinkbyte Exp $
+
+*qfsm-0.54.0 (28 Jul 2015)
+
+  28 Jul 2015; Sergey Popov <pinkbyte@gentoo.org> +qfsm-0.54.0.ebuild:
+  Version bump
 
   30 May 2014; Davide Pesavento <pesa@gentoo.org> metadata.xml:
   Remove qt from metadata.

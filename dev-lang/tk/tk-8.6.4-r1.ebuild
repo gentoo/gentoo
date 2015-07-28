@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/tk/tk-8.6.4-r1.ebuild,v 1.1 2015/05/26 11:51:48 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/tk/tk-8.6.4-r1.ebuild,v 1.2 2015/07/28 09:26:00 jlec Exp $
 
 EAPI=5
 
@@ -60,6 +60,10 @@ src_prepare() {
 	rm -f configure || die
 
 	tc-export CC
+
+	sed \
+		-e '/chmod/s:555:755:g' \
+		-i Makefile.in || die
 
 	sed \
 		-e 's:-O[2s]\?::g' \

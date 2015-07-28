@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/tcl/tcl-8.5.17-r100.ebuild,v 1.4 2015/06/15 09:28:13 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/tcl/tcl-8.5.17-r100.ebuild,v 1.5 2015/07/28 09:19:03 jlec Exp $
 
 # this ebuild is only for the libtcl8.5.so SONAME for ABI compat
 
@@ -39,6 +39,10 @@ src_prepare() {
 	use hppa && append-cflags "-DTCL_NO_STACK_CHECK=1"
 
 	tc-export CC
+
+	sed \
+		-e '/chmod/s:555:755:g' \
+		-i Makefile.in || die
 
 	eautoconf
 	multilib_copy_sources

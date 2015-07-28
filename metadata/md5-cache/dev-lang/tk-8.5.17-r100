@@ -10,4 +10,4 @@ RDEPEND=!aqua? ( media-libs/fontconfig media-libs/freetype:2 x11-libs/libX11 x11
 SLOT=8.5
 SRC_URI=mirror://sourceforge/tcl/tk8.5.17-src.tar.gz mirror://sourceforge/tcl/tcl8.5.17-src.tar.gz
 _eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	prefix	21058c21ca48453d771df15500873ede	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f	virtualx	73cfc129b4b9ba23aed1abb10c825d86
-_md5_=b6683eabac0dfeac58dbd9967b7764bc
+_md5_=0f52f1c590a9e947a875c1dda6269525

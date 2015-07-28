@@ -10,4 +10,4 @@ RDEPEND=!aqua? ( >=media-libs/fontconfig-2.10.92[abi_x86_32(-)?,abi_x86_64(-)?,a
 SLOT=0/8.6
 SRC_URI=mirror://sourceforge/tcl/tk8.6.4-src.tar.gz
 _eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multilib-build	e733e978b7fa70607cc221fd9c070db6	multilib-minimal	13dd976916c35a1e2c8d170e840c7018	prefix	21058c21ca48453d771df15500873ede	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f	virtualx	73cfc129b4b9ba23aed1abb10c825d86
-_md5_=ebebf52bdea884ea56048bea7cc7d0ea
+_md5_=42e305ba38507a64d07703151a4ab225

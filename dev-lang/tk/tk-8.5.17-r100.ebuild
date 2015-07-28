@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/tk/tk-8.5.17-r100.ebuild,v 1.3 2015/03/20 10:11:23 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/tk/tk-8.5.17-r100.ebuild,v 1.4 2015/07/28 09:26:00 jlec Exp $
 
 EAPI=5
 
@@ -62,6 +62,10 @@ src_prepare() {
 	append-cppflags \
 		-I"${WORKDIR}/${MY_P//tk/tcl}/generic" \
 		-I"${WORKDIR}/${MY_P//tk/tcl}/unix"
+
+	sed \
+		-e '/chmod/s:555:755:g' \
+		-i Makefile.in || die
 
 	tc-export CC
 

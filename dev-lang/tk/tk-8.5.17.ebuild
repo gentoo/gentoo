@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/tk/tk-8.5.17.ebuild,v 1.12 2015/05/26 09:17:44 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/tk/tk-8.5.17.ebuild,v 1.13 2015/07/28 09:26:00 jlec Exp $
 
 EAPI=5
 
@@ -52,6 +52,10 @@ src_prepare() {
 		-e 's:xft freetype2:xft freetype2 fontconfig:' \
 		-i configure.in || die
 	rm -f configure || die
+
+	sed \
+		-e '/chmod/s:555:755:g' \
+		-i Makefile.in || die
 
 	tc-export CC
 

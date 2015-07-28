@@ -1,6 +1,9 @@
 # ChangeLog for sys-libs/glibc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/ChangeLog,v 1.1062 2015/07/21 03:54:01 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/ChangeLog,v 1.1063 2015/07/28 09:07:27 vapier Exp $
+
+  28 Jul 2015; Mike Frysinger <vapier@gentoo.org> glibc-2.21-r1.ebuild:
+  Fix from upstream for ia64 atomics/semaphores.
 
 *glibc-2.21-r1 (21 Jul 2015)
 

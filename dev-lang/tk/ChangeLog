@@ -1,6 +1,10 @@
 # ChangeLog for dev-lang/tk
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/tk/ChangeLog,v 1.227 2015/06/09 14:11:14 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/tk/ChangeLog,v 1.228 2015/07/28 09:26:00 jlec Exp $
+
+  28 Jul 2015; Justin Lecher <jlec@gentoo.org> tk-8.5.17-r100.ebuild,
+  tk-8.5.17.ebuild, tk-8.6.4-r1.ebuild:
+  Install all files with u+w, bug #554264
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

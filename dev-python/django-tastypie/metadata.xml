@@ -10,7 +10,6 @@
     <flag name="bip">An optional serialiser dev-python/biplist</flag>
     <flag name="digest">Library to aid in implementing HTTP Digest Authentication</flag>
     <flag name="lxml">An optional serialiser dev-python/lxml</flag>
-    <flag name="oauth">Adds OAuth authentication support</flag>
     <flag name="yaml">An optional serialiser dev-python/yaml</flag>
   </use>
   <upstream>
