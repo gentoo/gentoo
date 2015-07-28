@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyminuit/pyminuit-1.2.1.ebuild,v 1.1 2015/03/04 13:59:07 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyminuit/pyminuit-1.2.1.ebuild,v 1.2 2015/07/28 06:07:32 patrick Exp $
 
 EAPI=5
 
@@ -22,10 +22,12 @@ IUSE=""
 
 S="${WORKDIR}"/${PN}
 
+src_configure() {
+	cd "${WORKDIR}"/Minuit-1_7_9 && econf --disable-static || die
+}
 src_compile() {
-	cd "${WORKDIR}"/Minuit-1_7_9 || die
-	econf --disable-static && emake
-	cd "${S}" || die
+	cd "${WORKDIR}"/Minuit-1_7_9 && emake
+	cd "${S}"
 	distutils-r1_src_compile
 }
 
