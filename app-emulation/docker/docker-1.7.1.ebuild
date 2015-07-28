@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/docker/docker-1.7.1.ebuild,v 1.1 2015/07/24 18:48:39 xarthisius Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/docker/docker-1.7.1.ebuild,v 1.2 2015/07/28 13:57:07 xarthisius Exp $
 
 EAPI=5
 
@@ -76,15 +76,15 @@ RESTRICT="installsources strip"
 
 # see "contrib/check-config.sh" from upstream's sources
 CONFIG_CHECK="
-	NAMESPACES NET_NS PID_NS IPC_NS UTS_NS
-	DEVPTS_MULTIPLE_INSTANCES
-	CGROUPS CGROUP_CPUACCT CGROUP_DEVICE CGROUP_FREEZER CGROUP_SCHED CPUSETS
-	MACVLAN VETH BRIDGE BRIDGE_NETFILTER
-	NF_NAT_IPV4 IP_NF_FILTER IP_NF_TARGET_MASQUERADE
-	NETFILTER_XT_MATCH_ADDRTYPE NETFILTER_XT_MATCH_CONNTRACK
-	NF_NAT NF_NAT_NEEDED
+	~NAMESPACES ~NET_NS ~PID_NS ~IPC_NS UTS_NS
+	~DEVPTS_MULTIPLE_INSTANCES
+	~CGROUPS ~CGROUP_CPUACCT ~CGROUP_DEVICE ~CGROUP_FREEZER ~CGROUP_SCHED ~CPUSETS
+	~MACVLAN ~VETH ~BRIDGE ~BRIDGE_NETFILTER
+	~NF_NAT_IPV4 ~IP_NF_FILTER ~IP_NF_TARGET_MASQUERADE
+	~NETFILTER_XT_MATCH_ADDRTYPE ~NETFILTER_XT_MATCH_CONNTRACK
+	~NF_NAT ~NF_NAT_NEEDED
 
-	POSIX_MQUEUE
+	~POSIX_MQUEUE
 
 	~MEMCG_SWAP ~MEMCG_SWAP_ENABLED
 
@@ -101,10 +101,9 @@ ERROR_CFS_BANDWIDTH="CONFIG_CFS_BANDWIDTH: is optional for container statistics 
 
 pkg_setup() {
 	if kernel_is lt 3 10; then
-		eerror ""
-		eerror "Using Docker with kernels older than 3.10 is unstable and unsupported."
-		eerror " - http://docs.docker.com/installation/binaries/#check-kernel-dependencies"
-		die 'Kernel is too old - need 3.10 or above'
+		ewarn ""
+		ewarn "Using Docker with kernels older than 3.10 is unstable and unsupported."
+		ewarn " - http://docs.docker.com/installation/binaries/#check-kernel-dependencies"
 	fi
 
 	# for where these kernel versions come from, see:

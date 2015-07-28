@@ -1,6 +1,11 @@
 # ChangeLog for sci-libs/libsvm
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/libsvm/ChangeLog,v 1.43 2015/05/28 06:18:24 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/libsvm/ChangeLog,v 1.44 2015/07/28 14:06:52 jlec Exp $
+
+  28 Jul 2015; Justin Lecher <jlec@gentoo.org> -files/2.90-fpic.patch,
+  -files/2.90-ldflags.patch, -files/2.90-python3.patch,
+  -files/3.12-makefile.patch:
+  Drop obsolete patches
 
   28 May 2015; Justin Lecher <jlec@gentoo.org> -libsvm-3.17.ebuild:
   Drop old

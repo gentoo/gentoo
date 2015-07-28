@@ -1,9 +1,0 @@
---- polly-0.93.10/share/applications/polly.desktop
-+++ polly-0.93.10/share/applications/polly.desktop
-@@ -11,5 +11,5 @@
- TryExec=polly
- Exec=polly
- Terminal=false
--Categories=GTK;Network
-+Categories=GTK;Network;
- StartupWMClass=polly

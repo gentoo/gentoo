@@ -1,6 +1,6 @@
 # ChangeLog for sys-kernel/spl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/spl/ChangeLog,v 1.85 2015/07/14 03:21:51 dlan Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/spl/ChangeLog,v 1.86 2015/07/28 14:04:42 perfinion Exp $
 
   14 Jul 2015; Yixun Lan <dlan@gentoo.org> spl-0.6.4.2.ebuild:
   support kernel latest version 4.1, fixed
@@ -24,7 +24,7 @@
 
   12 Dec 2014; Richard Yao <ryao@gentoo.org> spl-0.6.3-r1.ebuild,
   spl-0.6.3.ebuild, spl-9999.ebuild:
-  s/PAX_OVERFLOW/PAX_SIZE_OVERFLOW/ - Thanks perfinition for catching the typo
+  s/PAX_OVERFLOW/PAX_SIZE_OVERFLOW/ - Thanks perfinion for catching the typo
 
   12 Dec 2014; Richard Yao <ryao@gentoo.org> spl-0.6.3-r1.ebuild,
   spl-0.6.3.ebuild, spl-9999.ebuild:
@@ -39,7 +39,7 @@
 
   01 Dec 2014; Richard Yao <ryao@gentoo.org> spl-0.6.3.ebuild, spl-9999.ebuild:
   Do not permit builds against PAX_RANDKSTACK until a panic issue is fixed,
-  thanks perfinition for the warning; also fix repoman warning about unquoted
+  thanks perfinion for the warning; also fix repoman warning about unquoted
   variable
 
   05 Sep 2014; Richard Yao <ryao@gentoo.org> spl-0.6.3.ebuild, spl-9999.ebuild:

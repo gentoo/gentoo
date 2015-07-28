@@ -1,6 +1,13 @@
 # ChangeLog for net-misc/polly
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/polly/ChangeLog,v 1.4 2015/04/08 18:04:50 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/polly/ChangeLog,v 1.5 2015/07/28 14:00:30 jlec Exp $
+
+*polly-0.93.12 (28 Jul 2015)
+
+  28 Jul 2015; Justin Lecher <jlec@gentoo.org> +polly-0.93.12.ebuild,
+  -files/polly-0.93.10-desktop.patch, -polly-0.93.10.ebuild,
+  -polly-0.93.9.ebuild, polly-0.93.11.ebuild:
+  Add missing gdbm to python dep, bug #554396; drop old; version Bump
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> polly-0.93.10.ebuild,
   polly-0.93.11.ebuild, polly-0.93.9.ebuild:

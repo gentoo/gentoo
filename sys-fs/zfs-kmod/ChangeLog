@@ -1,6 +1,6 @@
 # ChangeLog for sys-fs/zfs-kmod
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/zfs-kmod/ChangeLog,v 1.62 2015/07/24 04:32:25 ryao Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/zfs-kmod/ChangeLog,v 1.63 2015/07/28 14:06:24 perfinion Exp $
 
   24 Jul 2015; Richard Yao <ryao@gentoo.org> zfs-kmod-0.6.4.2.ebuild,
   zfs-kmod-0.6.4.ebuild, zfs-kmod-9999.ebuild:
@@ -41,7 +41,7 @@
   01 Dec 2014; Richard Yao <ryao@gentoo.org> zfs-kmod-0.6.3.ebuild,
   zfs-kmod-9999.ebuild:
   Do not permit builds against PAX_RANDKSTACK until a panic issue is fixed,
-  thanks perfinition for the warning
+  thanks perfinion for the warning
 
   08 Oct 2014; Richard Yao <ryao@gentoo.org> zfs-kmod-0.6.3.ebuild,
   zfs-kmod-9999.ebuild:

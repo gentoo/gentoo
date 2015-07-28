@@ -1,10 +1,11 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/polly/polly-0.93.11.ebuild,v 1.2 2015/04/08 18:04:50 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/polly/polly-0.93.11.ebuild,v 1.3 2015/07/28 14:00:30 jlec Exp $
 
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
+PYTON_REQ_USE=( gdbm )
 DISTUTILS_NO_PARALLEL_BUILD=1
 
 inherit distutils-r1 gnome2-utils vcs-snapshot
@@ -18,11 +19,10 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="${PYTHON_DEPS}
 	dev-python/dbus-python[${PYTHON_USEDEP}]
-	dev-python/gconf-python
-	dev-python/gtkspell-python
+	dev-python/gconf-python[${PYTHON_USEDEP}]
+	dev-python/gtkspell-python[${PYTHON_USEDEP}]
 	dev-python/httplib2[${PYTHON_USEDEP}]
 	dev-python/keyring[${PYTHON_USEDEP}]
 	dev-python/notify-python[${PYTHON_USEDEP}]
@@ -31,7 +31,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/pycurl[${PYTHON_USEDEP}]
 	dev-python/pyxdg[${PYTHON_USEDEP}]
 	dev-python/socksipy[${PYTHON_USEDEP}]"
-DEPEND="${PYTHON_DEPS}"
+DEPEND="${RDEPEND}"
 
 python_prepare_all() {
 	rm -rf external/keyring || die

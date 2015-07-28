@@ -1,6 +1,15 @@
 # ChangeLog for dev-python/pythonmagick
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pythonmagick/ChangeLog,v 1.49 2015/07/21 17:41:53 grknight Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pythonmagick/ChangeLog,v 1.50 2015/07/28 14:23:22 jlec Exp $
+
+*pythonmagick-0.9.12 (28 Jul 2015)
+
+  28 Jul 2015; Justin Lecher <jlec@gentoo.org> +pythonmagick-0.9.12.ebuild,
+  -files/pythonmagick-0.9.1-use_active_python_version.patch,
+  -files/pythonmagick-0.9.2-fix_detection_of_python_includedir.patch,
+  -files/pythonmagick-0.9.8-build.patch, metadata.xml,
+  pythonmagick-0.9.11.ebuild:
+  Version Bump; fixes imcompatibility with newer imagemagick, bug #553970
 
   21 Jul 2015; Brian Evans <grknight@gentoo.org> pythonmagick-0.9.11.ebuild:
   Fix Manifest and repoman warnings
