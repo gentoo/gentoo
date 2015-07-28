@@ -1,6 +1,12 @@
 # ChangeLog for app-i18n/man-pages-pl
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/man-pages-pl/ChangeLog,v 1.36 2014/08/10 17:50:14 slyfox Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/man-pages-pl/ChangeLog,v 1.37 2015/07/28 10:34:33 idella4 Exp $
+
+*man-pages-pl-0_pre20070628-r2 (28 Jul 2015)
+
+  28 Jul 2015; Ian Delaney <idella4@gentoo.org>
+  +man-pages-pl-0_pre20070628-r2.ebuild:
+  rename
 
   10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
   man-pages-pl-20070628-r2.ebuild:
