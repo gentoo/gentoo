@@ -13,7 +13,8 @@ rc_need="net"
 #LIBVIRTD_OPTS="--listen"
 
 # LIBVIRTD_KVM_SHUTDOWN
-#   controls the behavior for kvm guests on daemon shutdown
+#   controls the behavior for kvm guests on daemon shutdown. Defaults to
+#   "shutdown"
 #
 # Valid options:
 # * shutdown
@@ -31,7 +32,7 @@ rc_need="net"
 #   - No attempts will be made to stop any VMs. If you are restarting your
 #     machine the qemu-kvm process will be simply killed, which may result
 #     in your VMs having disk corruption.
-LIBVIRTD_KVM_SHUTDOWN="managedsave"
+LIBVIRTD_KVM_SHUTDOWN="shutdown"
 
 # LIBVIRTD_KVM_SHUTDOWN_MAXWAIT
 #   timeout in seconds until stopping libvirtd and "pulling the plug" on
@@ -39,7 +40,8 @@ LIBVIRTD_KVM_SHUTDOWN="managedsave"
 LIBVIRTD_KVM_SHUTDOWN_MAXWAIT="500"
 
 # LIBVIRTD_KVM_RESTART
-#   controls the behavior for kvm guests on daemon restart
+#   controls the behavior for kvm guests on daemon restart. Defaults to
+#   "none"
 #
 # Valid options:
 # * <empty>
@@ -49,7 +51,7 @@ LIBVIRTD_KVM_SHUTDOWN_MAXWAIT="500"
 # * managedsave
 # * none
 #   - as defined for LIBVIRTD_KVM_SHUTDOWN
-LIBVIRTD_KVM_RESTART=""
+LIBVIRTD_KVM_RESTART="none"
 
 # LIBVIRTD_KVM_NET_SHUTDOWN
 #   If libvirtd created networks for you (e.g. NATed networks) then this

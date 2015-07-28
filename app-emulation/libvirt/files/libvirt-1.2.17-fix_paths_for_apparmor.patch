@@ -1,0 +1,161 @@
+From bde898de482645f6963b673e8ff0b486a0a6db25 Mon Sep 17 00:00:00 2001
+From: Matthias Maier <tamiko@kyomu.43-1.org>
+Date: Tue, 28 Jul 2015 11:10:59 -0500
+Subject: [PATCH] adapt paths for gentoo's fs layout
+
+https://bugs.gentoo.org/show_bug.cgi?id=554628
+---
+ examples/apparmor/Makefile.am                    |  4 +-
+ examples/apparmor/usr.lib.libvirt.virt-aa-helper | 48 ------------------------
+ examples/apparmor/usr.libexec.virt-aa-helper     | 48 ++++++++++++++++++++++++
+ examples/apparmor/usr.sbin.libvirtd              |  4 +-
+ 4 files changed, 52 insertions(+), 52 deletions(-)
+ delete mode 100644 examples/apparmor/usr.lib.libvirt.virt-aa-helper
+ create mode 100644 examples/apparmor/usr.libexec.virt-aa-helper
+
+diff --git a/examples/apparmor/Makefile.am b/examples/apparmor/Makefile.am
+index 7a20e16..c3c67b6 100644
+--- a/examples/apparmor/Makefile.am
++++ b/examples/apparmor/Makefile.am
+@@ -19,13 +19,13 @@ EXTRA_DIST=				\
+ 	TEMPLATE.lxc			\
+ 	libvirt-qemu			\
+ 	libvirt-lxc 			\
+-	usr.lib.libvirt.virt-aa-helper	\
++	usr.libexec.virt-aa-helper	\
+ 	usr.sbin.libvirtd
+ 
+ if WITH_APPARMOR_PROFILES
+ apparmordir = $(sysconfdir)/apparmor.d/
+ apparmor_DATA = \
+-	usr.lib.libvirt.virt-aa-helper \
++	usr.libexec.virt-aa-helper \
+ 	usr.sbin.libvirtd \
+ 	$(NULL)
+ 
+diff --git a/examples/apparmor/usr.lib.libvirt.virt-aa-helper b/examples/apparmor/usr.lib.libvirt.virt-aa-helper
+deleted file mode 100644
+index b34fb35..0000000
+--- a/examples/apparmor/usr.lib.libvirt.virt-aa-helper
++++ /dev/null
+@@ -1,48 +0,0 @@
+-# Last Modified: Mon Apr  5 15:10:27 2010
+-#include <tunables/global>
+-
+-profile virt-aa-helper /usr/{lib,lib64}/libvirt/virt-aa-helper {
+-  #include <abstractions/base>
+-
+-  # needed for searching directories
+-  capability dac_override,
+-  capability dac_read_search,
+-
+-  # needed for when disk is on a network filesystem
+-  network inet,
+-
+-  deny @{PROC}/[0-9]*/mounts r,
+-  @{PROC}/[0-9]*/net/psched r,
+-  owner @{PROC}/[0-9]*/status r,
+-  @{PROC}/filesystems r,
+-
+-  # for hostdev
+-  /sys/devices/ r,
+-  /sys/devices/** r,
+-
+-  /usr/{lib,lib64}/libvirt/virt-aa-helper mr,
+-  /sbin/apparmor_parser Ux,
+-
+-  /etc/apparmor.d/libvirt/* r,
+-  /etc/apparmor.d/libvirt/libvirt-[0-9a-f]*-[0-9a-f]*-[0-9a-f]*-[0-9a-f]*-[0-9a-f]* rw,
+-
+-  # for backingstore -- allow access to non-hidden files in @{HOME} as well
+-  # as storage pools
+-  audit deny @{HOME}/.* mrwkl,
+-  audit deny @{HOME}/.*/ rw,
+-  audit deny @{HOME}/.*/** mrwkl,
+-  audit deny @{HOME}/bin/ rw,
+-  audit deny @{HOME}/bin/** mrwkl,
+-  @{HOME}/ r,
+-  @{HOME}/** r,
+-  /var/lib/libvirt/images/ r,
+-  /var/lib/libvirt/images/** r,
+-  /{media,mnt,opt,srv}/** r,
+-
+-  /**.img r,
+-  /**.qcow{,2} r,
+-  /**.qed r,
+-  /**.vmdk r,
+-  /**.[iI][sS][oO] r,
+-  /**/disk{,.*} r,
+-}
+diff --git a/examples/apparmor/usr.libexec.virt-aa-helper b/examples/apparmor/usr.libexec.virt-aa-helper
+new file mode 100644
+index 0000000..b34fb35
+--- /dev/null
++++ b/examples/apparmor/usr.libexec.virt-aa-helper
+@@ -0,0 +1,48 @@
++# Last Modified: Mon Apr  5 15:10:27 2010
++#include <tunables/global>
++
++profile virt-aa-helper /usr/{lib,lib64}/libvirt/virt-aa-helper {
++  #include <abstractions/base>
++
++  # needed for searching directories
++  capability dac_override,
++  capability dac_read_search,
++
++  # needed for when disk is on a network filesystem
++  network inet,
++
++  deny @{PROC}/[0-9]*/mounts r,
++  @{PROC}/[0-9]*/net/psched r,
++  owner @{PROC}/[0-9]*/status r,
++  @{PROC}/filesystems r,
++
++  # for hostdev
++  /sys/devices/ r,
++  /sys/devices/** r,
++
++  /usr/{lib,lib64}/libvirt/virt-aa-helper mr,
++  /sbin/apparmor_parser Ux,
++
++  /etc/apparmor.d/libvirt/* r,
++  /etc/apparmor.d/libvirt/libvirt-[0-9a-f]*-[0-9a-f]*-[0-9a-f]*-[0-9a-f]*-[0-9a-f]* rw,
++
++  # for backingstore -- allow access to non-hidden files in @{HOME} as well
++  # as storage pools
++  audit deny @{HOME}/.* mrwkl,
++  audit deny @{HOME}/.*/ rw,
++  audit deny @{HOME}/.*/** mrwkl,
++  audit deny @{HOME}/bin/ rw,
++  audit deny @{HOME}/bin/** mrwkl,
++  @{HOME}/ r,
++  @{HOME}/** r,
++  /var/lib/libvirt/images/ r,
++  /var/lib/libvirt/images/** r,
++  /{media,mnt,opt,srv}/** r,
++
++  /**.img r,
++  /**.qcow{,2} r,
++  /**.qed r,
++  /**.vmdk r,
++  /**.[iI][sS][oO] r,
++  /**/disk{,.*} r,
++}
+diff --git a/examples/apparmor/usr.sbin.libvirtd b/examples/apparmor/usr.sbin.libvirtd
+index 5d606e6..ab2f1a9 100644
+--- a/examples/apparmor/usr.sbin.libvirtd
++++ b/examples/apparmor/usr.sbin.libvirtd
+@@ -58,8 +58,8 @@
+   audit deny /sys/kernel/security/apparmor/.* rwxl,
+   /sys/kernel/security/apparmor/profiles r,
+   /usr/{lib,lib64}/libvirt/* PUxr,
+-  /usr/{lib,lib64}/libvirt/libvirt_parthelper ix,
+-  /usr/{lib,lib64}/libvirt/libvirt_iohelper ix,
++  /usr/libexec/libvirt_parthelper ix,
++  /usr/libexec/libvirt_iohelper ix,
+   /etc/libvirt/hooks/** rmix,
+   /etc/xen/scripts/** rmix,
+ 
+-- 
+2.3.6
+

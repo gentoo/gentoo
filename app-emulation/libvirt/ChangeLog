@@ -1,6 +1,15 @@
 # ChangeLog for app-emulation/libvirt
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/ChangeLog,v 1.438 2015/07/25 22:06:10 tamiko Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/ChangeLog,v 1.439 2015/07/28 16:54:00 tamiko Exp $
+
+*libvirt-1.2.17-r2 (28 Jul 2015)
+
+  28 Jul 2015; Matthias Maier <tamiko@gentoo.org>
+  +files/libvirt-1.2.17-fix_paths_for_apparmor.patch, +files/libvirtd.confd-r6,
+  +files/libvirtd.init-r16, +libvirt-1.2.17-r2.ebuild, -files/libvirtd.confd-r5,
+  -files/libvirtd.init-r15, -libvirt-1.2.17-r1.ebuild, libvirt-9999.ebuild:
+  Change default behavior for kvm guest in openrc runscript, bug #555736; fix
+  apparmor configuration, bug #554628; ebuild maintenance
 
   25 Jul 2015; Matthias Maier <tamiko@gentoo.org> libvirt-1.2.17-r1.ebuild,
   libvirt-9999.ebuild:

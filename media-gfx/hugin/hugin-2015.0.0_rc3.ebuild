@@ -1,23 +1,21 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/hugin/hugin-9999.ebuild,v 1.7 2015/07/28 16:31:52 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/hugin/hugin-2015.0.0_rc3.ebuild,v 1.1 2015/07/28 16:31:52 maekke Exp $
 
 EAPI=5
 
-WX_GTK_VER="3.0"
+WX_GTK_VER="2.8"
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 
-inherit base mercurial python-single-r1 wxwidgets versionator cmake-utils
+inherit base python-single-r1 wxwidgets versionator cmake-utils
 
 DESCRIPTION="GUI for the creation & processing of panoramic images"
 HOMEPAGE="http://hugin.sf.net"
-SRC_URI=""
-EHG_REPO_URI="http://hg.code.sf.net/p/hugin/hugin"
-EHG_PROJECT="${PN}-${PN}"
+SRC_URI="https://launchpad.net/${PN}/2015.0/2015.0rc3/+download/${P}.tar.bz2"
 
 LICENSE="GPL-2 SIFT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~ppc ~x86"
 
 LANGS=" ca@valencia ca_ES cs_CZ da de en_GB es eu fi fr hu it ja nl pl pt_BR ro ru sk sv zh_CN zh_TW"
 IUSE="debug lapack python sift $(echo ${LANGS//\ /\ linguas_})"
@@ -38,10 +36,10 @@ CDEPEND="
 	>=media-libs/vigra-1.9.0[openexr]
 	sci-libs/fftw:=
 	sys-libs/zlib
-	virtual/opengl
+	virtual/glu
 	virtual/jpeg:0
 	virtual/opengl
-	x11-libs/wxGTK:3.0=[X,opengl]
+	x11-libs/wxGTK:2.8=[X,opengl,-odbc]
 	lapack? ( virtual/blas virtual/lapack )
 	sift? ( media-gfx/autopano-sift-C )"
 RDEPEND="${CDEPEND}

@@ -86,8 +86,13 @@ stop() {
         if [ -n "${policy}" ] ; then
             eerror " !!! Invalid policy \"${policy}\" specified in LIBVIRTD_KVM_SHUTDOWN/RESTART"
         fi
-        einfo "  Using default policy \"managedsave\" for domains"
-        policy="managedsave"
+        if [ "${RC_CMD}" = "restart" ] ; then
+          einfo " Using default (restart) policy \"none\" for domains"
+          policy="none"
+        else
+          einfo " Using default policy \"shutdown\" for domains"
+          policy="shutdown"
+        fi
     fi
 
     if [ -n "${LIBVIRTD_KVM_SHUTDOWN_MAXWAIT}" ] ; then
