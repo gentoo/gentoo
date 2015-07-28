@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/mysql-multilib.eclass,v 1.21 2015/06/10 18:08:02 grknight Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/mysql-multilib.eclass,v 1.22 2015/07/28 01:58:13 grknight Exp $
 
 # @ECLASS: mysql-multilib.eclass
 # @MAINTAINER:
@@ -75,7 +75,7 @@ fi
 if [[ ${PN} == "mariadb" || ${PN} == "mariadb-galera" ]]; then
 	case ${PV} in
 		10.0*) MYSQL_PV_MAJOR="5.6" ;;
-		10.1*) MYSQL_PV_MAJOR="5.7" ;;
+		10.1*) MYSQL_PV_MAJOR="5.6" ;;
 	esac
 fi
 
@@ -178,9 +178,9 @@ if [[ ${PN} == "percona-server" ]]; then
 	DESCRIPTION="An enhanced, drop-in replacement for MySQL from the Percona team"
 fi
 LICENSE="GPL-2"
-SLOT="0"
+SLOT="0/${SUBSLOT:=0}"
 
-IUSE="+community cluster debug embedded extraengine jemalloc latin1 minimal
+IUSE="+community cluster debug embedded extraengine jemalloc latin1
 	+perl profiling selinux ssl systemtap static static-libs tcmalloc test"
 
 ### Begin readline/libedit
@@ -210,8 +210,11 @@ if [[ ${PN} == "mariadb" || ${PN} == "mariadb-galera" ]]; then
 	IUSE="${IUSE} oqgraph pam sphinx tokudb"
 	# 5.5.33 and 10.0.5 add TokuDB. Authors strongly recommend jemalloc or perfomance suffers
 	mysql_version_is_at_least "10.0.5" && IUSE="${IUSE} odbc xml"
-	REQUIRED_USE="${REQUIRED_USE} minimal? ( !oqgraph !sphinx ) tokudb? ( jemalloc )"
-
+	if [[ ${HAS_TOOLS_PATCH} ]] ; then
+		REQUIRED_USE="${REQUIRED_USE} !server? ( !oqgraph !sphinx ) tokudb? ( jemalloc )"
+	else
+		REQUIRED_USE="${REQUIRED_USE} minimal? ( !oqgraph !sphinx ) tokudb? ( jemalloc )"
+	fi
 	# MariaDB 10.1 introduces InnoDB/XtraDB compression with external libraries
 	# Choices are bzip2, lz4, lzma, lzo.  bzip2 and lzma enabled by default as they are system libraries
 	mysql_version_is_at_least "10.1.1" && IUSE="${IUSE} innodb-lz4 innodb-lzo"
@@ -233,9 +236,17 @@ if [[ ${PN} == "percona-server" ]]; then
 	IUSE="${IUSE} pam"
 fi
 
+if [[ ${HAS_TOOLS_PATCH} ]] ; then
+	IUSE="${IUSE} client-libs +server +tools"
+	REQUIRED_USE="${REQUIRED_USE} !server? ( !extraengine !embedded ) server? ( tools ) || ( client-libs server tools )"
+else
+	IUSE="${IUSE} minimal"
+	REQUIRED_USE="${REQUIRED_USE} minimal? ( !extraengine !embedded )"
+fi
+
 REQUIRED_USE="
 	${REQUIRED_USE} tcmalloc? ( !jemalloc ) jemalloc? ( !tcmalloc )
-	 minimal? ( !extraengine !embedded ) static? ( !ssl )"
+	 static? ( !ssl )"
 
 #
 # DEPENDENCIES:
@@ -250,15 +261,33 @@ DEPEND="
 		sys-process/procps:0=
 		dev-libs/libaio:0=
 	)
-	sys-libs/ncurses
 	>=sys-apps/sed-4
 	>=sys-apps/texinfo-4.7-r1
-	>=sys-libs/zlib-1.2.3:0=[${MULTILIB_USEDEP},static-libs?]
 	!dev-db/mariadb-native-client[mysqlcompat]
-	jemalloc? ( dev-libs/jemalloc:0=[${MULTILIB_USEDEP}] )
+	jemalloc? ( dev-libs/jemalloc:0= )
 	tcmalloc? ( dev-util/google-perftools:0= )
 	systemtap? ( >=dev-util/systemtap-1.3:0= )
 "
+
+if [[ ${HAS_TOOLS_PATCH} ]] ; then
+	DEPEND+="
+		client-libs? (
+			ssl? ( >=dev-libs/openssl-1.0.0:0=[${MULTILIB_USEDEP},static-libs?] )
+			>=sys-libs/zlib-1.2.3:0=[${MULTILIB_USEDEP},static-libs?]
+		)
+		!client-libs? (
+			ssl? ( >=dev-libs/openssl-1.0.0:0=[static-libs?] )
+			>=sys-libs/zlib-1.2.3:0=[static-libs?]
+		)
+		tools? ( sys-libs/ncurses ) embedded? ( sys-libs/ncurses )
+	"
+else
+	DEPEND+="
+		ssl? ( >=dev-libs/openssl-1.0.0:0=[${MULTILIB_USEDEP},static-libs?] )
+		>=sys-libs/zlib-1.2.3:0=[${MULTILIB_USEDEP},static-libs?]
+		sys-libs/ncurses[${MULTILIB_USEDEP}]
+	"
+fi
 
 ### Begin readline/libedit
 ### If the world was perfect, we would use external libedit on both to have a similar experience
@@ -280,7 +309,12 @@ DEPEND="
 #fi
 
 if [[ ${PN} == "mariadb" || ${PN} == "mariadb-galera" ]] ; then
-	DEPEND="${DEPEND} !bindist? ( >=sys-libs/readline-4.1:0=[${MULTILIB_USEDEP}] )"
+	# Readline is only used for the command-line and embedded example
+	if [[ ${HAS_TOOLS_PATCH} ]] ; then
+		DEPEND="${DEPEND} !bindist? ( tools? ( >=sys-libs/readline-4.1:0= ) embedded? ( >=sys-libs/readline-4.1:0= )  )"
+	else
+		DEPEND="${DEPEND} !bindist? ( >=sys-libs/readline-4.1:0=[${MULTILIB_USEDEP}] )"
+	fi
 fi
 
 ### End readline/libedit
@@ -293,9 +327,13 @@ fi
 
 if [[ ${PN} == "mariadb" || ${PN} == "mariadb-galera" ]] ; then
 	# Bug 441700 MariaDB >=5.3 include custom mytop
+	if [[ ${HAS_TOOLS_PATCH} ]] ; then
+		DEPEND="${DEPEND} server? ( pam? ( virtual/pam:0= ) )"
+	else
+		DEPEND="${DEPEND} !minimal? ( pam? ( virtual/pam:0= ) )"
+	fi
 	DEPEND="${DEPEND}
 		oqgraph? ( >=dev-libs/boost-1.40.0:0= )
-		!minimal? ( pam? ( virtual/pam:0= ) )
 		perl? ( !dev-db/mytop )"
 	if mysql_version_is_at_least "10.0.5" ; then
 		DEPEND="${DEPEND}
@@ -306,7 +344,7 @@ if [[ ${PN} == "mariadb" || ${PN} == "mariadb-galera" ]] ; then
 			"
 	fi
 	mysql_version_is_at_least "10.0.7" && DEPEND="${DEPEND} oqgraph? ( dev-libs/judy:0= )"
-	mysql_version_is_at_least "10.0.9" && DEPEND="${DEPEND} >=dev-libs/libpcre-8.35:3=[${MULTILIB_USEDEP}]"
+	mysql_version_is_at_least "10.0.9" && DEPEND="${DEPEND} >=dev-libs/libpcre-8.35:3="
 
 	mysql_version_is_at_least "10.1.1" && DEPEND="${DEPEND}
 		innodb-lz4? ( app-arch/lz4 )
@@ -316,7 +354,13 @@ if [[ ${PN} == "mariadb" || ${PN} == "mariadb-galera" ]] ; then
 	mysql_version_is_at_least "10.1.2" && DEPEND="${DEPEND} cracklib? ( sys-libs/cracklib:0= )"
 fi
 
-[[ ${PN} == "percona-server" ]] && DEPEND="${DEPEND} !minimal? ( pam? ( virtual/pam:0= ) )"
+if [[ ${PN} == "percona-server" ]] ; then
+	if [[ ${HAS_TOOLS_PATCH} ]] ; then
+		DEPEND="${DEPEND} server? ( pam? ( virtual/pam:0= ) )"
+	else
+		DEPEND="${DEPEND} !minimal? ( pam? ( virtual/pam:0= ) )"
+	fi
+fi
 
 # Having different flavours at the same time is not a good idea
 for i in "mysql" "mariadb" "mariadb-galera" "percona-server" "mysql-cluster" ; do
@@ -334,10 +378,17 @@ fi
 # prefix: first need to implement something for #196294
 # TODO: check emul-linux-x86-db dep when it is multilib enabled
 RDEPEND="${DEPEND}
-	!minimal? ( !prefix? ( dev-db/mysql-init-scripts ) )
 	selinux? ( sec-policy/selinux-mysql )
 	abi_x86_32? ( !app-emulation/emul-linux-x86-db[-abi_x86_32(-)] )
 "
+
+if [[ ${HAS_TOOLS_PATCH} ]] ; then
+	RDEPEND="${RDEPEND}
+		server? ( !prefix? ( dev-db/mysql-init-scripts ) )
+		!client-libs? ( virtual/libmysqlclient )"
+else
+	RDEPEND="${RDEPEND} !minimal? ( !prefix? ( dev-db/mysql-init-scripts ) )"
+fi
 
 if [[ ${PN} == "mariadb" || ${PN} == "mariadb-galera" ]] ; then
 	# Bug 455016 Add dependencies of mytop
@@ -387,8 +438,12 @@ DEPEND="${DEPEND}
 	virtual/yacc
 	static? ( sys-libs/ncurses[static-libs] )
 	>=dev-util/cmake-2.8.9
-	sys-libs/ncurses[${MULTILIB_USEDEP}]
 "
+
+# Transition dep until all ebuilds have client-libs patch and USE
+if ! [[ ${HAS_TOOLS_PATCH} ]] ; then
+	DEPEND="${DEPEND} sys-libs/ncurses[${MULTILIB_USEDEP}]"
+fi
 
 # For other stuff to bring us in
 # dev-perl/DBD-mysql is needed by some scripts installed by MySQL
@@ -403,9 +458,6 @@ MULTILIB_WRAPPED_HEADERS=( /usr/include/mysql/my_config.h /usr/include/mysql/pri
 
 [[ ${PN} == "mariadb" ]] && mysql_version_is_at_least "10.1.1" && \
 	MULTILIB_WRAPPED_HEADERS+=( /usr/include/mysql/mysql_version.h )
-
-# wrap the config script
-MULTILIB_CHOST_TOOLS=( /usr/bin/mysql_config )
 
 #
 # HELPER FUNCTIONS:
@@ -448,7 +500,9 @@ mysql-multilib_pkg_pretend() {
 mysql-multilib_pkg_setup() {
 
 	if has test ${FEATURES} ; then
-		if ! use minimal ; then
+		if use_if_iuse minimal ; then
+			:
+		elif ! in_iuse server || use_if_iuse server ; then
 			if ! has userpriv ${FEATURES} ; then
 				eerror "Testing with FEATURES=-userpriv is no longer supported by upstream. Tests MUST be run as non-root."
 			fi
@@ -526,6 +580,13 @@ multilib_src_configure() {
 
 	CMAKE_BUILD_TYPE="RelWithDebInfo"
 
+	if ! multilib_is_native_abi && in_iuse client-libs ; then
+		if ! use client-libs ; then
+			ewarn "Skipping multilib build due to client-libs USE disabled"
+			return 0
+		fi
+	fi
+
 	# debug hack wrt #497532
 	mycmakeargs=(
 		-DCMAKE_C_FLAGS_RELWITHDEBINFO="$(usex debug "" "-DNDEBUG")"
@@ -534,8 +595,8 @@ multilib_src_configure() {
 		-DMYSQL_DATADIR=${EPREFIX}/var/lib/mysql
 		-DSYSCONFDIR=${EPREFIX}/etc/mysql
 		-DINSTALL_BINDIR=bin
-		-DINSTALL_DOCDIR=share/doc/${P}
-		-DINSTALL_DOCREADMEDIR=share/doc/${P}
+		-DINSTALL_DOCDIR=share/doc/${PF}
+		-DINSTALL_DOCREADMEDIR=share/doc/${PF}
 		-DINSTALL_INCLUDEDIR=include/mysql
 		-DINSTALL_INFODIR=share/info
 		-DINSTALL_LIBDIR=$(get_libdir)
@@ -569,6 +630,18 @@ multilib_src_configure() {
 		mycmakeargs+=( -DENABLE_DTRACE=0 )
 	fi
 
+	if in_iuse client-libs ; then
+		mycmakeargs+=( -DWITHOUT_CLIENTLIBS=$(usex client-libs 0 1) )
+	fi
+
+	if in_iuse tools ; then
+		if multilib_is_native_abi ; then
+			mycmakeargs+=( -DWITHOUT_TOOLS=$(usex tools 0 1) )
+		else
+			mycmakeargs+=( -DWITHOUT_TOOLS=1 )
+		fi
+	fi
+
 	if in_iuse bindist ; then
 		# bfd.h is only used starting with 10.1 and can be controlled by NOT_FOR_DISTRIBUTION
 		if multilib_is_native_abi; then
@@ -576,7 +649,7 @@ multilib_src_configure() {
 				-DWITH_READLINE=$(usex bindist 1 0)
 				-DNOT_FOR_DISTRIBUTION=$(usex bindist 0 1)
 			)
-		else
+		elif ! in_iuse client-libs ; then
 			mycmakeargs+=(
 				-DWITH_READLINE=1
 				-DNOT_FOR_DISTRIBUTION=0
@@ -587,7 +660,7 @@ multilib_src_configure() {
 	### TODO: make this system but issues with UTF-8 prevent it
 	mycmakeargs+=( -DWITH_EDITLINE=bundled )
 
-	if [[ ${PN} == "mariadb" || ${PN} == "mariadb-galera" ]] ; then
+	if [[ ${PN} == "mariadb" || ${PN} == "mariadb-galera" ]] && multilib_is_native_abi ; then
 		mycmakeargs+=(
 			-DWITH_JEMALLOC=$(usex jemalloc system)
 		)
@@ -597,10 +670,16 @@ multilib_src_configure() {
 
 	configure_cmake_locale
 
-	if multilib_is_native_abi && ! use minimal ; then
-		configure_cmake_standard
-	else
+	if use_if_iuse minimal ; then
 		configure_cmake_minimal
+	elif in_iuse server ; then
+		if multilib_is_native_abi && use server ; then
+			configure_cmake_standard
+		else
+			configure_cmake_minimal
+		fi
+	else
+		configure_cmake_standard
 	fi
 
 	# Always build NDB with mysql-cluster for libndbclient
@@ -618,6 +697,13 @@ mysql-multilib_src_compile() {
 }
 
 multilib_src_compile() {
+	if ! multilib_is_native_abi && in_iuse client-libs ; then
+		if ! use client-libs ; then
+			ewarn "Skipping multilib build due to client-libs USE disabled"
+			return 0
+		fi
+	fi
+
 	cmake-utils_src_compile "${_cmake_args[@]}"
 }
 
@@ -626,19 +712,39 @@ multilib_src_compile() {
 # @DESCRIPTION:
 # Install mysql.
 mysql-multilib_src_install() {
-	multilib-minimal_src_install
+	if ! in_iuse client-libs || use_if_iuse client-libs ; then
+		# wrap the config script
+		MULTILIB_CHOST_TOOLS=( /usr/bin/mysql_config )
+	fi
+
+	if in_iuse client-libs && ! use client-libs ; then
+		multilib_foreach_abi multilib_src_install
+	else
+		multilib-minimal_src_install
+	fi
 }
 
 multilib_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
+	if ! multilib_is_native_abi && in_iuse client-libs ; then
+		if ! use client-libs ; then
+			ewarn "Skipping multilib build due to client-libs USE disabled"
+			return 0
+		fi
+	fi
+
 	if multilib_is_native_abi; then
 		mysql-cmake_src_install
 	else
 		cmake-utils_src_install
-		if ! use minimal && [[ "${PN}" == "mariadb" || "${PN}" == "mariadb-galera" ]] ; then
-			insinto /usr/include/mysql/private
-			doins "${S}"/sql/*.h
+		if [[ "${PN}" == "mariadb" || "${PN}" == "mariadb-galera" ]] ; then
+			if use_if_iuse minimal ; then
+				:
+			elif  use_if_iuse server || ! in_iuse server ; then
+				insinto /usr/include/mysql/private
+				doins "${S}"/sql/*.h
+			fi
 		fi
 	fi
 }
@@ -677,7 +783,9 @@ mysql-multilib_pkg_postinst() {
 	chmod 0660 "${ROOT}${MY_LOGDIR}"/mysql*
 
 	# Minimal builds don't have the MySQL server
-	if ! use minimal ; then
+	if use_if_iuse minimal ; then
+		:
+	elif ! in_iuse server || use_if_iuse server ; then
 		docinto "support-files"
 		for script in \
 			support-files/my-*.cnf \
@@ -765,7 +873,7 @@ mysql-multilib_pkg_config() {
 
 	[[ -z "${MY_DATADIR}" ]] && die "Sorry, unable to find MY_DATADIR"
 
-	if built_with_use ${CATEGORY}/${PN} minimal ; then
+	if built_with_use ${CATEGORY}/${PN} minimal && ! built_with_use ${CATEGORY}/${PN} server ; then
 		die "Minimal builds do NOT include the MySQL server"
 	fi
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/qmail.eclass,v 1.9 2014/01/08 06:20:29 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/qmail.eclass,v 1.10 2015/07/28 01:45:37 vapier Exp $
 
 # @ECLASS: qmail.eclass
 # @MAINTAINER:
@@ -489,14 +489,26 @@ qmail_config_fast() {
 }
 
 qmail_tcprules_config() {
+	local localips ip tcpstring line proto f
+
 	einfo "Accepting relaying by default from all ips configured on this machine."
-	LOCALIPS=$(/sbin/ifconfig | grep inet | cut -d' ' -f 12 -s | cut -b 6-20)
-	TCPSTRING=":allow,RELAYCLIENT=\"\",RBLSMTPD=\"\""
-	for ip in $LOCALIPS; do
-		myline="${ip}${TCPSTRING}"
+
+	# Start with iproute2 as ifconfig is deprecated, and ifconfig does not handle
+	# additional addresses added via iproute2.
+	# Note: We have to strip off the packed netmask w/e.g. 192.168.0.2/24
+	localips=$(ip address show 2>/dev/null | awk '$1 == "inet" {print $2}' | sed 's:/.*::')
+	if [[ -z ${localips} ]] ; then
+		# Hello old friend.  Maybe you can tell us at least something.
+		localips=$(ifconfig | awk '$1 == "inet" {print $2}')
+	fi
+
+	tcpstring=':allow,RELAYCLIENT="",RBLSMTPD=""'
+
+	for ip in ${localips}; do
+		line="${ip}${tcpstring}"
 		for proto in smtp qmtp qmqp; do
-			f="${ROOT}${TCPRULES_DIR}/tcp.qmail-${proto}"
-			egrep -q "${myline}" "${f}" || echo "${myline}" >> "${f}"
+			f="${EROOT}${TCPRULES_DIR}/tcp.qmail-${proto}"
+			egrep -qs "${line}" "${f}" || echo "${line}" >> "${f}"
 		done
 	done
 }

@@ -1,6 +1,10 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1733 2015/07/27 19:11:00 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1734 2015/07/28 01:58:13 grknight Exp $
+
+  28 Jul 2015; Brian Evans <grknight@gentoo.org> mysql-cmake.eclass,
+  mysql-multilib.eclass:
+  Add support for the split client/server options to the mysql eclasses
 
   27 Jul 2015; William Hubbs <williamh@gentoo.org> +golang-base.eclass,
   golang-build.eclass, golang-vcs.eclass:

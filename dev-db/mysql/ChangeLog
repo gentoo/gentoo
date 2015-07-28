@@ -1,6 +1,12 @@
 # ChangeLog for dev-db/mysql
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql/ChangeLog,v 1.740 2015/06/01 16:18:23 grknight Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql/ChangeLog,v 1.741 2015/07/28 02:26:58 grknight Exp $
+
+*mysql-5.6.25-r1 (28 Jul 2015)
+
+  28 Jul 2015; Brian Evans <grknight@gentoo.org> +mysql-5.6.25-r1.ebuild,
+  metadata.xml:
+  Revbumps for new mysql packaging splitting client and server
 
 *mysql-5.6.25 (01 Jun 2015)
 

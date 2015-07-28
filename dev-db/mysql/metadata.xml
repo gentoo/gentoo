@@ -8,6 +8,7 @@ dev-db/mysql
 dev-db/mariadb
 -->
 <use>
+  <flag name='client-libs'>Build the libmysqlclient libraries</flag>
   <flag name='cluster'>Add support for NDB clustering (deprecated)</flag>
   <flag name='community'>Enables the community features from upstream.</flag>
   <flag name='embedded'>Build embedded server (libmysqld)</flag>
@@ -17,7 +18,9 @@ dev-db/mariadb
   <flag name='max-idx-128'>Raise the max index per table limit from 64 to 128</flag>
   <flag name='minimal'>Install client programs only, no server</flag>
   <flag name='profiling'>Add support for statement profiling (requires USE=community).</flag>
+  <flag name='server'>Build the server program</flag>
   <flag name="systemtap">Build support for profiling and tracing using <pkg>dev-util/systemtap</pkg></flag>
   <flag name='test'>Install upstream testsuites for end use.</flag>
+  <flag name='tools'>Build the command line tools (mysql, mysqldump, mysqladmin, etc)</flag>
 </use>
 </pkgmetadata>
