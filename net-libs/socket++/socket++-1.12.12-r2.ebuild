@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/socket++/socket++-1.12.12-r2.ebuild,v 1.1 2015/07/10 09:05:50 pinkbyte Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/socket++/socket++-1.12.12-r2.ebuild,v 1.2 2015/07/28 08:15:09 pinkbyte Exp $
 
 EAPI=5
 
@@ -13,7 +13,7 @@ SRC_URI="http://www.linuxhacker.at/linux/downloads/src/${P}.tar.gz"
 
 LICENSE="freedist GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~mips ~x86"
+KEYWORDS="~alpha amd64 ~mips x86"
 
 IUSE="debug static-libs"
 

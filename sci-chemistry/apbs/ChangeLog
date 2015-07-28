@@ -1,6 +1,33 @@
 # ChangeLog for sci-chemistry/apbs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/apbs/ChangeLog,v 1.78 2015/07/04 19:37:27 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/apbs/ChangeLog,v 1.79 2015/07/28 07:59:11 jlec Exp $
+
+  28 Jul 2015; Justin Lecher <jlec@gentoo.org> -apbs-1.2.1b-r4.ebuild,
+  -files/apbs-1.2.0-contrib.patch, -files/apbs-1.2.0-link.patch,
+  -files/apbs-1.2.1b-autoconf-2.64.patch, -files/apbs-1.2.1b-install-fix.patch,
+  -files/apbs-1.2.1b-multilib.patch, -files/apbs-1.2.1b-openmp.patch,
+  -files/apbs-1.2.1b-parallelbuild.patch, -files/apbs-1.2.1b-shared.patch,
+  -files/apbs-1.3-blas.patch, -files/apbs-1.3-contrib.patch,
+  -files/apbs-1.3-link.patch, -files/apbs-1.3-mainroutines.patch,
+  -files/apbs-1.3-openmp.patch, -files/apbs-1.3-python.patch,
+  -files/apbs-1.3-shared.patch, -files/apbs-1.3-zlib.patch,
+  -files/apbs-1.3/0001-autoconf-2.68.patch,
+  -files/apbs-1.3/0002-python-linking.patch,
+  -files/apbs-1.3/0003-apbs-1.3-pkg-config-file.patch,
+  -files/apbs-1.3/0004-apbs-1.3-system-zlib.patch,
+  -files/apbs-1.3/0005-apbs-1.3-linking.patch,
+  -files/apbs-1.3/0006-apbs-1.3-clean-targets.patch,
+  -files/apbs-1.3/0007-apbs-1.3-configure.patch,
+  -files/apbs-1.3/0008-apbs-1.3-broken-test.patch,
+  -files/apbs-1.3/0009-apbs-1.3-use-pkg-config-for-zlib-detection.patch,
+  -files/apbs-1.3/0010-apbs-1.3-use-OPENMP_CFLAGS-instead-of-OPENMP_LIBS.patch,
+  -files/apbs-1.3/0011-apbs-1.3-shared-linking.patch,
+  -files/apbs-1.3/0012-apbs-1.3-python-linking-correction.patch,
+  -files/apbs-1.3/0013-apbs-1.3-tools-installation.patch,
+  -files/apbs-1.3/0014-apbs-1.3-pythonlib-fix.patch,
+  -files/apbs-1.3/0015-apbs-1.3-pythonlib-fix.patch,
+  -files/apbs-1.3/0016-apbs-1.3-apbs.pc-in-AC_CONFIG_FILES.patch:
+  Drop old
 
   04 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> apbs-1.4.1-r2.ebuild:
   amd64 stable wrt bug #534692

@@ -1,6 +1,10 @@
 # ChangeLog for app-dicts/prime-dict
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/prime-dict/ChangeLog,v 1.50 2015/07/22 02:21:26 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/prime-dict/ChangeLog,v 1.51 2015/07/28 08:21:08 klausman Exp $
+
+  28 Jul 2015; Tobias Klausmann <klausman@gentoo.org>
+  prime-dict-1.0.0-r2.ebuild:
+  Stable on alpha, bug 555836
 
 *prime-dict-1.0.0-r3 (22 Jul 2015)
 

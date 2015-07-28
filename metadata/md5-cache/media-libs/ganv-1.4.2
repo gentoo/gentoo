@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install setup
+DEPEND=dev-cpp/glibmm:2 dev-cpp/gtkmm:2.4 x11-libs/gtk+:2 graphviz? ( media-gfx/graphviz[gtk] ) introspection? ( app-text/yelp-tools dev-libs/gobject-introspection[doctool] ) nls? ( virtual/libintl ) dev-lang/python !dev-lang/python[-threads]
+DESCRIPTION=A GTK+ widget for interactive graph-like environments
+EAPI=5
+HOMEPAGE=http://drobilla.net/software/ganv/
+IUSE=+fdgl +graphviz introspection nls
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+
+RDEPEND=dev-cpp/glibmm:2 dev-cpp/gtkmm:2.4 x11-libs/gtk+:2 graphviz? ( media-gfx/graphviz[gtk] ) introspection? ( app-text/yelp-tools dev-libs/gobject-introspection[doctool] )
+SLOT=0
+SRC_URI=http://download.drobilla.net/ganv-1.4.2.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-any-r1	4756de53ea4d40471a582e898815a5c8	python-utils-r1	68e010c13e97b7b2c7bf403ee9c51e1b	toolchain-funcs	42408102d713fbad60ca21349865edb4	waf-utils	f8e7e7df15097b4ca1d9945c2653b783
+_md5_=44a8140bb14afe3770ce7bbaae3dd015

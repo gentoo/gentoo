@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/logilab-common
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/logilab-common/ChangeLog,v 1.159 2015/07/20 03:48:20 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/logilab-common/ChangeLog,v 1.160 2015/07/28 08:19:30 vapier Exp $
+
+*logilab-common-1.0.2 (28 Jul 2015)
+
+  28 Jul 2015; Mike Frysinger <vapier@gentoo.org> +logilab-common-1.0.2.ebuild:
+  Version bump.
 
   20 Jul 2015; Patrick Lauer <patrick@gentoo.org> logilab-common-0.62.1.ebuild,
   logilab-common-0.63.2.ebuild:

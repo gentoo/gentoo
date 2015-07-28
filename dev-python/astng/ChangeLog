@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/astng
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/astng/ChangeLog,v 1.83 2015/05/17 20:03:20 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/astng/ChangeLog,v 1.84 2015/07/28 08:13:01 vapier Exp $
+
+  28 Jul 2015; Mike Frysinger <vapier@gentoo.org> astng-0.24.3.ebuild:
+  Mark ia64/sparc stable #532490.
 
   17 May 2015; Pacho Ramos <pacho@gentoo.org> astng-0.24.3.ebuild:
   ppc64 stable wrt bug #532490

@@ -1,6 +1,12 @@
 # ChangeLog for media-sound/patchage
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/patchage/ChangeLog,v 1.22 2015/04/08 17:59:43 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/patchage/ChangeLog,v 1.23 2015/07/28 07:43:35 yngwin Exp $
+
+*patchage-1.0.0 (28 Jul 2015)
+
+  28 Jul 2015; Ben de Groot <yngwin@gentoo.org> +patchage-1.0.0.ebuild,
+  metadata.xml:
+  Version bump. Update dependencies. Drop upstream applied patch.
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> patchage-0.5.0-r1.ebuild:
   Drop old Python implementations

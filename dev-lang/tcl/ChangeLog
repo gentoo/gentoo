@@ -1,6 +1,10 @@
 # ChangeLog for dev-lang/tcl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/tcl/ChangeLog,v 1.221 2015/06/15 09:28:13 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/tcl/ChangeLog,v 1.222 2015/07/28 08:10:17 jlec Exp $
+
+  28 Jul 2015; Justin Lecher <jlec@gentoo.org> -tcl-8.5.13-r1.ebuild,
+  -tcl-8.5.15-r1.ebuild, -tcl-8.6.3.ebuild:
+  Drop old
 
   15 Jun 2015; Justin Lecher <jlec@gentoo.org> tcl-8.5.17-r100.ebuild:
   Move blocker into RDEPEND

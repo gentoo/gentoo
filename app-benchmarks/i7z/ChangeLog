@@ -1,6 +1,10 @@
 # ChangeLog for app-benchmarks/i7z
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/i7z/ChangeLog,v 1.20 2013/12/27 21:38:05 tomwij Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/i7z/ChangeLog,v 1.21 2015/07/28 07:54:07 jlec Exp $
+
+  28 Jul 2015; Justin Lecher <jlec@gentoo.org> +files/i7z-0.27.2-ncurses.patch,
+  i7z-0.27.2.ebuild:
+  Fix for ncurses[tinfo], bug #553850
 
   27 Dec 2013; Tom Wijsman <TomWij@gentoo.org> -files/i7z-0.27.1-gentoo.patch:
   [QA] Remove unused files.

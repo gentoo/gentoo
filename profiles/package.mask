@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16688 2015/07/28 05:31:18 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16689 2015/07/28 07:38:07 phajdan.jr Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -29,6 +29,11 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (28 Jul 2015)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-46
 
 # Davide Pesavento <pesa@gentoo.org> (23 Jul 2015)
 # Standalone version of qtwebkit from the 2.3 upstream branch.
@@ -163,11 +168,6 @@ dev-lang/php:7.0
 ~dev-python/pypy-2.6.0
 ~dev-python/pypy-bin-2.6.0
 ~virtual/pypy-2.6.0
-
-# Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (01 Jun 2015)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-45
 
 # Mike Gilbert <floppym@gentoo.org> (06 May 2015)
 # Obsolete development snapshots.

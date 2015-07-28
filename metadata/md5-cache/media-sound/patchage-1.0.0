@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install setup
+DEPEND=>=dev-cpp/glibmm-2.14:2 >=dev-cpp/gtkmm-2.11.12:2.4 >=dev-cpp/libglademm-2.6.0:2.4 dev-cpp/libgnomecanvasmm:2.6 >=media-libs/ganv-1.4.0 >=media-sound/jack-audio-connection-kit-0.120.0 alsa? ( media-libs/alsa-lib ) jack-dbus? ( dev-libs/dbus-glib sys-apps/dbus ) || ( >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) dev-libs/boost virtual/pkgconfig dev-lang/python !dev-lang/python[-threads]
+DESCRIPTION=Modular patch bay for JACK-based audio and MIDI systems
+EAPI=5
+HOMEPAGE=http://drobilla.net/software/patchage
+IUSE=alsa debug jack-dbus session
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-cpp/glibmm-2.14:2 >=dev-cpp/gtkmm-2.11.12:2.4 >=dev-cpp/libglademm-2.6.0:2.4 dev-cpp/libgnomecanvasmm:2.6 >=media-libs/ganv-1.4.0 >=media-sound/jack-audio-connection-kit-0.120.0 alsa? ( media-libs/alsa-lib ) jack-dbus? ( dev-libs/dbus-glib sys-apps/dbus )
+SLOT=0
+SRC_URI=http://download.drobilla.net/patchage-1.0.0.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-any-r1	4756de53ea4d40471a582e898815a5c8	python-utils-r1	68e010c13e97b7b2c7bf403ee9c51e1b	toolchain-funcs	42408102d713fbad60ca21349865edb4	waf-utils	f8e7e7df15097b4ca1d9945c2653b783
+_md5_=971ce04fa2d06ded93c40ad9274abfc7

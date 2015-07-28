@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/lm_sensors
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/lm_sensors/ChangeLog,v 1.155 2015/07/22 18:17:07 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/lm_sensors/ChangeLog,v 1.156 2015/07/28 08:04:29 klausman Exp $
+
+  28 Jul 2015; Tobias Klausmann <klausman@gentoo.org> lm_sensors-3.3.5.ebuild:
+  Stable on alpha, bug 555514
 
   22 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> lm_sensors-3.3.5.ebuild:
   amd64 stable wrt bug #555514

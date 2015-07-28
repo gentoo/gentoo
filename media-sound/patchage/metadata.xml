@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>proaudio</herd>
-<longdescription lang="en">
-	Patchage is a modular patch bay for audio and MIDI systems based on Jack,
-	Lash, and Alsa audio systems. 
-</longdescription>
+  <herd>proaudio</herd>
+  <use>
+    <flag name='jack-dbus'>Use Jack via D-Bus instead of libjack</flag>
+    <flag name='session'>Include experimental Jack session management
+      (save/restore) support</flag>
+  </use>
+  <longdescription lang="en">
+    Patchage is a modular patch bay for audio and MIDI for Jack based audio
+    systems.
+  </longdescription>
 </pkgmetadata>

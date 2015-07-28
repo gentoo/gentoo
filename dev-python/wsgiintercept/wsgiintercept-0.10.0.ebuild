@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/wsgiintercept/wsgiintercept-0.10.0.ebuild,v 1.2 2015/06/02 16:01:58 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/wsgiintercept/wsgiintercept-0.10.0.ebuild,v 1.3 2015/07/28 07:57:11 idella4 Exp $
 
 EAPI=5
 
@@ -33,6 +33,10 @@ S="${WORKDIR}/${MY_P}"
 python_prepare_all() {
 	# .pyc files cause failure of tests
 	rm -rf test/__pycache__/ || die
+
+	# Req'd to avoid file collisions
+	sed -e s":find_packages():find_packages(exclude=['test']):" \
+		-i setup.py || die
 
 	# Disable tests connecting to the network; Bug #550710
 	sed -e 's:test_http_not_intercepted:_&:' \
