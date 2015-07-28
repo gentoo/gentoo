@@ -1,6 +1,11 @@
 # ChangeLog for media-sound/kid3
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/kid3/ChangeLog,v 1.91 2015/02/03 17:54:09 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/kid3/ChangeLog,v 1.92 2015/07/27 22:41:35 polynomial-c Exp $
+
+*kid3-3.2.1 (27 Jul 2015)
+
+  27 Jul 2015; Lars Wendler <polynomial-c@gentoo.org> +kid3-3.2.1.ebuild:
+  Version bump.
 
   03 Feb 2015; Michael Palimaka <kensington@gentoo.org> kid3-3.1.2.ebuild:
   Raise media-sound/kid3 dependency wrt bug #538538.
