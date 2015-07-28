@@ -1,6 +1,11 @@
 # ChangeLog for virtual/mysql
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/mysql/ChangeLog,v 1.62 2015/03/03 10:20:26 dlan Exp $
+# $Header: /var/cvsroot/gentoo-x86/virtual/mysql/ChangeLog,v 1.63 2015/07/28 02:31:32 grknight Exp $
+
+*mysql-5.6-r4 (28 Jul 2015)
+
+  28 Jul 2015; Brian Evans <grknight@gentoo.org> +mysql-5.6-r4.ebuild:
+  Revbumps for new mysql packaging splitting client and server
 
   03 Mar 2015; Yixun Lan <dlan@gentoo.org> mysql-5.6-r2.ebuild:
   add arm64 support, tested on A53 board

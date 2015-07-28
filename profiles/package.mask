@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16686 2015/07/27 20:25:30 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16687 2015/07/28 02:57:41 patrick Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -235,6 +235,7 @@ virtual/httpd-php:5.3
 # #554864
 =dev-python/django-1.5*
 =dev-python/django-1.6*
+dev-python/south
 
 # Michał Górny <mgorny@gentoo.org> (11 Feb 2015)
 # Potentially destructive to @world, bug #539746.

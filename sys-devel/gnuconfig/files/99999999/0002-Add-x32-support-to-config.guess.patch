@@ -1,4 +1,4 @@
-From 7d2e4a41de6d7c231bb10dba6940533c756f3c89 Mon Sep 17 00:00:00 2001
+From 8474d78c459f4ec8f8930094faeaacb2b77bf68f Mon Sep 17 00:00:00 2001
 From: "H.J. Lu" <hongjiu.lu@intel.com>
 Date: Fri, 20 Dec 2013 14:36:01 -0500
 Subject: [PATCH] Add x32 support to config.guess
@@ -16,14 +16,14 @@ URL: http://gcc.gnu.org/ml/gcc-patches/2012-08/msg01083.html
  1 file changed, 12 insertions(+), 1 deletion(-)
 
 diff --git a/config.guess b/config.guess
-index f7eb141..8a5d3f4 100755
+index fddac42..17a4f70 100755
 --- a/config.guess
 +++ b/config.guess
 @@ -1038,7 +1038,18 @@ EOF
  	echo ${UNAME_MACHINE}-dec-linux-${LIBC}
  	exit ;;
      x86_64:Linux:*:*)
--	echo ${UNAME_MACHINE}-unknown-linux-${LIBC}
+-	echo ${UNAME_MACHINE}-pc-linux-${LIBC}
 +	eval $set_cc_for_build
 +	X86_64_ABI=
 +	# If there is a compiler, see if it is configured for 32-bit objects.
@@ -35,10 +35,10 @@ index f7eb141..8a5d3f4 100755
 +		X86_64_ABI=x32
 +	    fi
 +	fi
-+	echo x86_64-unknown-linux-gnu${X86_64_ABI}
++	echo ${UNAME_MACHINE}-pc-linux-${LIBC}${X86_64_ABI}
  	exit ;;
      xtensa*:Linux:*:*)
  	echo ${UNAME_MACHINE}-unknown-linux-${LIBC}
 -- 
-2.3.1
+2.4.4
 

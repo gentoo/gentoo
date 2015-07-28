@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gnuconfig/gnuconfig-99999999.ebuild,v 1.14 2014/04/15 19:58:08 redlizard Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/gnuconfig/gnuconfig-99999999.ebuild,v 1.15 2015/07/28 02:53:04 vapier Exp $
 
-EAPI="2"
+EAPI="5"
 
 inherit eutils
 if [[ ${PV} == "99999999" ]] ; then

@@ -1,6 +1,10 @@
 # ChangeLog for dev-python/django-opensearch
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/django-opensearch/ChangeLog,v 1.6 2015/07/20 04:51:46 ercpe Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/django-opensearch/ChangeLog,v 1.7 2015/07/28 02:39:24 patrick Exp $
+
+  28 Jul 2015; Patrick Lauer <patrick@gentoo.org>
+  -django-opensearch-0.1.2.ebuild:
+  Remove old with unsatisfiable deps
 
   20 Jul 2015; Johann Schmitz <ercpe@gentoo.org> django-opensearch-0.1.2.ebuild:
   Added dependency to <dev-python/django-1.7 to django-opensearch-0.1.2 due to

@@ -1,6 +1,16 @@
 # ChangeLog for sys-devel/gnuconfig
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gnuconfig/ChangeLog,v 1.87 2015/03/29 19:32:32 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/gnuconfig/ChangeLog,v 1.89 2015/07/28 02:53:04 vapier Exp $
+
+*gnuconfig-20150727 (28 Jul 2015)
+
+  28 Jul 2015; Mike Frysinger <vapier@gentoo.org> +gnuconfig-20150727.ebuild,
+  files/99999999/0002-Add-x32-support-to-config.guess.patch,
+  gnuconfig-99999999.ebuild:
+  Version bump.
+
+  27 Jul 2015; Mike Frysinger <vapier@gentoo.org> gnuconfig-20150308.ebuild:
+  Stabilize for all.
 
 *gnuconfig-20150308 (29 Mar 2015)
 
