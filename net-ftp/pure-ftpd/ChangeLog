@@ -1,6 +1,12 @@
 # ChangeLog for net-ftp/pure-ftpd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/pure-ftpd/ChangeLog,v 1.168 2015/07/22 16:32:18 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/pure-ftpd/ChangeLog,v 1.169 2015/07/28 13:23:15 polynomial-c Exp $
+
+*pure-ftpd-1.0.42 (28 Jul 2015)
+
+  28 Jul 2015; Lars Wendler <polynomial-c@gentoo.org> -pure-ftpd-1.0.36.ebuild,
+  +pure-ftpd-1.0.42.ebuild:
+  Version bump. Removed old.
 
   22 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> pure-ftpd-1.0.40.ebuild:
   ia64 stable wrt bug #552254

@@ -1,6 +1,16 @@
 # ChangeLog for dev-tcltk/blt
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/blt/ChangeLog,v 1.68 2013/04/05 07:01:52 jlec Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/blt/ChangeLog,v 1.70 2015/07/28 12:45:26 jlec Exp $
+
+  28 Jul 2015; Justin Lecher <jlec@gentoo.org> blt-2.4z-r13.ebuild:
+  install headers with u+w, bug #554352
+
+*blt-2.4z-r13 (28 Jul 2015)
+
+  28 Jul 2015; Justin Lecher <jlec@gentoo.org> +blt-2.4z-r13.ebuild,
+  +files/blt-2.4z-r4-fix-makefile3.patch:
+  Fix creation of pkgIndex.tcl, bug #485880; thanks Greg Turner for
+  investigation and bringing up the patch
 
   05 Apr 2013; Justin Lecher <jlec@gentoo.org> blt-2.4z-r12.ebuild,
   +files/blt-2.4z-tcl8.6.patch:

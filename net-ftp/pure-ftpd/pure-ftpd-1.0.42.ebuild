@@ -1,11 +1,11 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/pure-ftpd/pure-ftpd-1.0.36.ebuild,v 1.16 2015/04/16 09:35:12 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/pure-ftpd/pure-ftpd-1.0.42.ebuild,v 1.1 2015/07/28 13:23:15 polynomial-c Exp $
 
 EAPI=5
 inherit eutils confutils flag-o-matic
 
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 DESCRIPTION="Fast, production-quality, standard-conformant FTP server"
 HOMEPAGE="http://www.pureftpd.org/"
@@ -15,7 +15,9 @@ SRC_URI="ftp://ftp.pureftpd.org/pub/${PN}/releases/${P}.tar.bz2
 LICENSE="BSD"
 SLOT="0"
 
-IUSE="anondel anonperm anonren anonres caps charconv ldap mysql noiplog pam paranoidmsg postgres resolveids selinux ssl sysquota vchroot xinetd"
+IUSE="anondel anonperm anonren anonres caps charconv implicittls ldap mysql noiplog pam paranoidmsg postgres resolveids selinux ssl sysquota vchroot xinetd"
+
+REQUIRED_USE="implicittls? ( ssl )"
 
 DEPEND="caps? ( sys-libs/libcap )
 	charconv? ( virtual/libiconv )
@@ -23,11 +25,12 @@ DEPEND="caps? ( sys-libs/libcap )
 	mysql? ( virtual/mysql )
 	pam? ( virtual/pam )
 	postgres? ( dev-db/postgresql:= )
-	ssl? ( >=dev-libs/openssl-0.9.6g:0= )
+	ssl? ( >=dev-libs/openssl-0.9.6g:0=[-bindist] )
 	sysquota? ( sys-fs/quota[-rpc] )
 	xinetd? ( virtual/inetd )"
 
 RDEPEND="${DEPEND}
+	dev-libs/libsodium
 	net-ftp/ftpbase
 	selinux? ( sec-policy/selinux-ftp )"
 
@@ -38,7 +41,8 @@ src_prepare() {
 src_configure() {
 	# adjust max user length to something more appropriate
 	# for virtual hosts. See bug #62472 for details.
-	sed -e "s:# define MAX_USER_LENGTH 32U:# define MAX_USER_LENGTH 127U:" -i "${S}/src/ftpd.h" || die "sed failed"
+	sed -e "s:# define MAX_USER_LENGTH 32U:# define MAX_USER_LENGTH 127U:" \
+		-i "${S}/src/ftpd.h" || die "sed failed"
 
 	local my_conf=""
 
@@ -51,6 +55,7 @@ src_configure() {
 	enable_extension_with		"paranoidmsg"		"paranoidmsg"		0
 	enable_extension_with		"pgsql"			"postgres"		0
 	enable_extension_with		"tls"			"ssl"			0
+	enable_extension_with		"implicittls"		"implicittls"		0
 	enable_extension_with		"virtualchroot"		"vchroot"		0
 	enable_extension_with		"sysquotas"		"sysquota"		0
 	enable_extension_without	"inetd"			"xinetd"
@@ -93,7 +98,12 @@ src_install() {
 
 	dodoc AUTHORS CONTACT ChangeLog FAQ HISTORY INSTALL README* NEWS
 
-	newconfd "${FILESDIR}/pure-ftpd.conf_d-3" pure-ftpd
+	newconfd "${FILESDIR}/pure-ftpd.conf_d-3" ${PN}
+
+	if use implicittls ; then
+		sed -i '/^SERVER/s@21@990@' "${ED}"/etc/conf.d/${PN} \
+			|| die "Adjusting default server port for implicittls usage failed!"
+	fi
 
 	newinitd "${FILESDIR}/pure-ftpd.rc11" pure-ftpd
 
@@ -114,15 +124,18 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog
-	elog "Before starting Pure-FTPd, you have to edit the /etc/conf.d/pure-ftpd file!"
-	elog
-	ewarn "It's *really* important to read the README provided with Pure-FTPd!"
-	ewarn "Check out http://download.pureftpd.org/pub/pure-ftpd/doc/README for general info"
-	ewarn "and http://download.pureftpd.org/pub/pure-ftpd/doc/README.TLS for SSL/TLS info."
-	ewarn
-	if use charconv ; then
-		ewarn "Charset conversion is an *experimental* feature!"
-		ewarn "Remember to set a valid charset for your filesystem in the configuration!"
+	if [[ -z "${REPLACING_VERSIONS}" ]]; then
+		# This is a new installation
+		elog
+		elog "Before starting Pure-FTPd, you have to edit the /etc/conf.d/pure-ftpd file!"
+		elog
+		ewarn "It's *really* important to read the README provided with Pure-FTPd!"
+		ewarn "Check out http://download.pureftpd.org/pub/pure-ftpd/doc/README for general info"
+		ewarn "and http://download.pureftpd.org/pub/pure-ftpd/doc/README.TLS for SSL/TLS info."
+		ewarn
+		if use charconv ; then
+			ewarn "Charset conversion is an *experimental* feature!"
+			ewarn "Remember to set a valid charset for your filesystem in the configuration!"
+		fi
 	fi
 }

@@ -1,6 +1,14 @@
 # ChangeLog for dev-libs/cloog
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/cloog/ChangeLog,v 1.33 2015/07/15 08:39:03 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/cloog/ChangeLog,v 1.34 2015/07/28 12:53:43 blueness Exp $
+
+*cloog-0.18.4 (28 Jul 2015)
+
+  28 Jul 2015; Anthony G. Basile <blueness@gentoo.org> +cloog-0.18.4.ebuild,
+  cloog-9999.ebuild:
+  Version bump: gmp-6.0.0 and above required.  isl-0.15 is bundled, we match
+  version with the system isl.  Patch to avoid use of undocumented isl print
+  functions committed uptream f38b4fa.
 
   15 Jul 2015; Mike Frysinger <vapier@gentoo.org>
   files/cloog-0.18.3-isl-0.15.patch:

@@ -1,6 +1,10 @@
 # ChangeLog for app-misc/freemind
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/freemind/ChangeLog,v 1.76 2015/07/23 02:12:11 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/freemind/ChangeLog,v 1.77 2015/07/28 12:38:12 monsieurp Exp $
+
+  28 Jul 2015; Patrice Clement <monsieurp@gentoo.org> freemind-1.0.1-r1.ebuild,
+  freemind-1.0.1-r2.ebuild:
+  Adjust fop SLOT for once and for all and hopefully for good. Fixes bug 556114.
 
   23 Jul 2015; Patrick Lauer <patrick@gentoo.org> freemind-1.0.1-r1.ebuild,
   freemind-1.0.1-r2.ebuild:
