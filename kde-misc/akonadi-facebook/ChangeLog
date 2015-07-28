@@ -1,6 +1,10 @@
 # ChangeLog for kde-misc/akonadi-facebook
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/akonadi-facebook/ChangeLog,v 1.10 2014/12/09 11:50:05 mrueg Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/akonadi-facebook/ChangeLog,v 1.11 2015/07/28 20:33:00 johu Exp $
+
+  28 Jul 2015; Johannes Huber <johu@gentoo.org>
+  akonadi-facebook-0_p20130209.ebuild:
+  Pin net-libs/libkfbapi to slot 4.
 
   09 Dec 2014; Manuel Rüger <mrueg@gentoo.org>
   -files/akonadi-facebook-0_p20120827-fix-includes.patch:

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdepim-runtime/kdepim-runtime-4.14.3.ebuild,v 1.6 2015/06/08 20:36:03 johu Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdepim-runtime/kdepim-runtime-4.14.3.ebuild,v 1.7 2015/07/28 20:35:12 johu Exp $
 
 EAPI=5
 
@@ -21,7 +21,7 @@ DEPEND="
 	dev-libs/libxslt
 	$(add_kdebase_dep kdepimlibs)
 	x11-misc/shared-mime-info
-	facebook? ( net-libs/libkfbapi )
+	facebook? ( net-libs/libkfbapi:4 )
 	google? ( >=net-libs/libkgapi-2.0:4 )
 	kolab? ( >=net-libs/libkolab-0.5 )
 "

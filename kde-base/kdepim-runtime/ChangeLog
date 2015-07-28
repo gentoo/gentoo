@@ -1,6 +1,10 @@
 # ChangeLog for kde-base/kdepim-runtime
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdepim-runtime/ChangeLog,v 1.240 2015/07/25 12:07:45 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdepim-runtime/ChangeLog,v 1.241 2015/07/28 20:35:12 johu Exp $
+
+  28 Jul 2015; Johannes Huber <johu@gentoo.org> kdepim-runtime-4.14.10.ebuild,
+  kdepim-runtime-4.14.3.ebuild, kdepim-runtime-4.14.8.ebuild:
+  Pin net-libs/libkfbapi to slot 4.
 
   25 Jul 2015; Pacho Ramos <pacho@gentoo.org> kdepim-runtime-4.14.8.ebuild:
   ppc stable wrt bug #550740
