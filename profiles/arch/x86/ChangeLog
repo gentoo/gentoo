@@ -1,6 +1,10 @@
 # ChangeLog for Gentoo/x86 profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/x86/ChangeLog,v 1.197 2015/06/09 23:57:34 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/x86/ChangeLog,v 1.198 2015/07/28 23:38:05 chewi Exp $
+
+  28 Jul 2015; James Le Cuirot <chewi@gentoo.org> package.use.mask:
+  Remove obsolete nsplugin unmasks because the old Sun JVMs are masked
+  entirely. Replace with new Oracle ones that also include javafx.
 
   09 Jun 2015; Gilles Dartiguelongue <eva@gentoo.org> package.use.mask:
   Add package.use.mask for media-plugins/grilo-plugins[upnp-av], bug #551634.

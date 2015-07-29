@@ -1,6 +1,10 @@
 # ChangeLog for Gentoo/AMD64 profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/amd64/ChangeLog,v 1.328 2015/07/16 16:21:03 grknight Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/amd64/ChangeLog,v 1.329 2015/07/28 23:37:52 chewi Exp $
+
+  28 Jul 2015; James Le Cuirot <chewi@gentoo.org> package.use.mask:
+  Remove obsolete nsplugin unmasks because the old Sun JVMs are masked
+  entirely. Replace with new Oracle ones that also include javafx.
 
   16 Jul 2015; Brian Evans <grknight@gentoo.org> package.use.mask:
   Remove stale package.use.mask entry on igbinary for dev-php/pecl-memcached

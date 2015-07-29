@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/arm64/package.use.mask,v 1.10 2015/07/20 06:49:31 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/arm64/package.use.mask,v 1.11 2015/07/29 00:05:05 pesa Exp $
 
 # Mike Frysinger <vapier@gentoo.org> (20 Jul 2015)
 # Needs deps tested.
@@ -213,12 +213,6 @@ www-client/epiphany -jit
 # Mask the vde flag on tinc because net-misc/vde is not
 # keyworded for arm
 net-misc/tinc vde
-
-# Davide Pesavento <pesa@gentoo.org> (30 Nov 2011)
-# JavaScriptCore JIT is supported only on amd64/arm/x86,
-# so it's masked in base profile and unmasked here.
-dev-qt/qtscript -jit
-dev-qt/qtwebkit -jit
 
 # Patrick McLean <chutzpah@gentoo.org> (08 Nov 2011)
 # mask conntrack USE flag for dnsmasq as dep is not keyworded

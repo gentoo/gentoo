@@ -1,8 +1,13 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/x86/package.use.mask,v 1.155 2015/06/09 23:57:34 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/x86/package.use.mask,v 1.156 2015/07/28 23:38:05 chewi Exp $
 
 # This file requires >=portage-2.1.1
+
+# James Le Cuirot <chewi@gentoo.org> (28 Jul 2015)
+# JavaFX and the browser plugin are included on x86 Linux.
+dev-java/oracle-jdk-bin -javafx -nsplugin
+dev-java/oracle-jre-bin -javafx -nsplugin
 
 # Gilles Dartiguelongue <eva@gentoo.org> (10 Jun 2015)
 # net-libs/dleyna-connector-dbus lack x86 keyword, bug #551634
@@ -208,8 +213,6 @@ www-client/firefox -ipc
 sys-power/pm-utils -video_cards_intel -video_cards_radeon
 
 # Vlastimil Babka <caster@gentoo.org> (31 Mar 2010)
->=dev-java/sun-jdk-1.6 -nsplugin
->=dev-java/sun-jre-bin-1.6 -nsplugin
 >=dev-java/ibm-jdk-bin-1.5 -nsplugin
 >=dev-java/ibm-jre-bin-1.5 -nsplugin
 

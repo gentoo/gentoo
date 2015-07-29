@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install preinst prepare setup test
+DEPEND=>=virtual/jdk-1.5 test? ( dev-java/junit:0 ) >=virtual/jre-1.5 >=dev-java/javahelp-2.0.02_p46:0 >=dev-java/java-config-2.2.0 source? ( app-arch/zip ) >=dev-java/ant-core-1.8.2 >=dev-java/javatoolkit-0.3.0-r2 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=A fully functional ldap browser written in java
+EAPI=5
+HOMEPAGE=http://jxplorer.org/
+IUSE=elibc_FreeBSD doc source test elibc_FreeBSD test
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux
+LICENSE=CAOSL
+RDEPEND=>=virtual/jre-1.5 >=dev-java/javahelp-2.0.02_p46:0 >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
+SLOT=0
+SRC_URI=mirror://sourceforge/jxplorer/jxplorer-3.3.1.1-project.zip
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	java-ant-2	1091461b8b02f54fabcfbf159164ff15	java-pkg-2	1889f7787714c5f7e3b5bb1c2be07c1f	java-utils-2	abeb792ba9affd97d226ab283bfd07a2	multilib	62927b3db3a589b0806255f3a002d5d3	prefix	21058c21ca48453d771df15500873ede	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f	virtualx	73cfc129b4b9ba23aed1abb10c825d86
+_md5_=a814e519f3bc2d4938862b97f8c0b1c1

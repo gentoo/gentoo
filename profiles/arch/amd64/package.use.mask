@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/amd64/package.use.mask,v 1.206 2015/07/16 16:21:03 grknight Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/amd64/package.use.mask,v 1.207 2015/07/28 23:37:52 chewi Exp $
 
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -17,6 +17,11 @@
 #
 
 #--- END OF EXAMPLES ---
+
+# James Le Cuirot <chewi@gentoo.org> (28 Jul 2015)
+# JavaFX and the browser plugin are included on x64 Linux.
+dev-java/oracle-jdk-bin -javafx -nsplugin
+dev-java/oracle-jre-bin -javafx -nsplugin
 
 # Michael Sterrett <mr_bones_@gentoo.org> (21 Apr 2015)
 # None of the fusionsound deps support multilib currently, maybe later.
@@ -247,10 +252,6 @@ app-backup/backup-manager s3
 media-libs/imlib2 mmx
 media-libs/imlib2 cpu_flags_x86_mmx
 
-# Serkan Kaba <serkan@gentoo.org> (5 Feb 2009)
-# finally a 64bit java plugin
->=dev-java/sun-jre-bin-1.6.0.12 -nsplugin
-
 # Jeremy Olexa <darkside@gentoo.org> (27 Dec 2008)
 # Mask static USE flag because it just doesn't work on amd64. See bug 236591
 >=app-arch/p7zip-4.58 static
@@ -259,10 +260,6 @@ media-libs/imlib2 cpu_flags_x86_mmx
 # unmask USE=bindist on amd64 - also unmasking the other flags that were under a
 # bad comment heading. see bug #246144
 media-video/mplayer -cpudetection -custom-cpuopts -bindist
-
-# Vlastimil Babka <caster@gentoo.org> (12 Dec 2008)
-# finally a 64bit java plugin
->=dev-java/sun-jdk-1.6.0.12_beta2 -nsplugin
 
 # Tomas Chvatal <scarabeus@gentoo.org> (31 Jan 2009)
 # masked in base, unmask for x86/amd64

@@ -1,6 +1,10 @@
 # ChangeLog for Gentoo/ARM profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/arm64/ChangeLog,v 1.14 2015/07/20 06:49:31 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/arm64/ChangeLog,v 1.15 2015/07/29 00:05:05 pesa Exp $
+
+  29 Jul 2015; Davide Pesavento <pesa@gentoo.org> package.use.mask:
+  JavaScriptCore JIT doesn't have a backend for arm64, so don't unmask the
+  useflag.
 
   20 Jul 2015; Mike Frysinger <vapier@gentoo.org> package.use.mask:
   Mask curl packages that have not yet been keyworded.
