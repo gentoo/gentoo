@@ -1,6 +1,9 @@
 # ChangeLog for virtual/rubygems
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/rubygems/ChangeLog,v 1.68 2015/07/26 08:39:04 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/virtual/rubygems/ChangeLog,v 1.69 2015/07/29 15:38:15 zlogene Exp $
+
+  29 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> rubygems-10.ebuild:
+  amd64 stable wrt bug #518094
 
   26 Jul 2015; Markus Meier <maekke@gentoo.org> rubygems-10.ebuild:
   arm stable, bug #518094

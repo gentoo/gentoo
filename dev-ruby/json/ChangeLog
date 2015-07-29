@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/json
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/json/ChangeLog,v 1.159 2015/07/26 08:36:13 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/json/ChangeLog,v 1.160 2015/07/29 15:33:55 zlogene Exp $
+
+  29 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> json-1.8.2-r1.ebuild:
+  amd64 stable wrt bug #518094
 
   26 Jul 2015; Markus Meier <maekke@gentoo.org> json-1.8.2-r1.ebuild:
   arm stable, bug #518094

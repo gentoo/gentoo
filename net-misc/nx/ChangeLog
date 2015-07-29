@@ -1,6 +1,11 @@
 # ChangeLog for net-misc/nx
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/nx/ChangeLog,v 1.95 2015/04/24 13:55:21 voyageur Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/nx/ChangeLog,v 1.96 2015/07/29 16:23:06 voyageur Exp $
+
+*nx-3.5.0.32 (29 Jul 2015)
+
+  29 Jul 2015; Bernard Cafarelli <voyageur@gentoo.org> +nx-3.5.0.32.ebuild:
+  Version bump, fixes bug #555110
 
   24 Apr 2015; Bernard Cafarelli <voyageur@gentoo.org> nx-3.5.0.30.ebuild,
   +files/nx-3.5.0.30-fix_X11_underlinking.patch:

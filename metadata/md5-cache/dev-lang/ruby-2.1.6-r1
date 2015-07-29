@@ -4,11 +4,11 @@ DESCRIPTION=An object-oriented scripting language
 EAPI=5
 HOMEPAGE=http://www.ruby-lang.org/
 IUSE=berkdb debug doc examples gdbm ipv6 +rdoc rubytests socks5 ssl xemacs ncurses +readline
-KEYWORDS=~alpha ~amd64 arm ~hppa ~ia64 ~mips ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd
+KEYWORDS=~alpha amd64 arm ~hppa ~ia64 ~mips ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd
 LICENSE=|| ( Ruby-BSD BSD-2 )
 PDEPEND=virtual/rubygems[ruby_targets_ruby21] >=dev-ruby/json-1.8.1[ruby_targets_ruby21] >=dev-ruby/rake-0.9.6[ruby_targets_ruby21] rdoc? ( >=dev-ruby/rdoc-4.0.1[ruby_targets_ruby21] ) xemacs? ( app-xemacs/ruby-modes )
 RDEPEND=berkdb? ( sys-libs/db:= ) gdbm? ( sys-libs/gdbm ) ssl? ( dev-libs/openssl:0 ) socks5? ( >=net-proxy/dante-1.1.13 ) ncurses? ( sys-libs/ncurses ) readline? ( sys-libs/readline:0 ) dev-libs/libyaml virtual/libffi sys-libs/zlib >=app-eselect/eselect-ruby-20131227 !<dev-ruby/rdoc-3.9.4 !<dev-ruby/rubygems-1.8.10-r1
 SLOT=2.1
 SRC_URI=mirror://ruby/2.1/ruby-2.1.6.tar.xz http://dev.gentoo.org/~flameeyes/ruby-team/ruby-patches-2.1.6-r1.tar.bz2
 _eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=b077d64cd6680d2f36feb7eae82b021d
+_md5_=296fdfa8c793ee4bb42b6a42f24cdf93
