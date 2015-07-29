@@ -6409,7 +6409,6 @@ sci-biology/yass:dmalloc - Enable debugging with the dmalloc library
 sci-biology/yass:lowmem - Build for environments with low amounts of memory
 sci-calculators/units:units_cur - Install the units_cur python script that updates currencies
 sci-chemistry/PyMca:matplotlib - Support for plotting through matplotlib
-sci-chemistry/apbs:arpack - Include support for arpack libs
 sci-chemistry/apbs:fast - APBS fast mode (experimental)
 sci-chemistry/apbs:fetk - Include support for FeTK
 sci-chemistry/apbs:iapbs - C/C++/Fortran interface

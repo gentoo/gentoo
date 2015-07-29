@@ -8,7 +8,6 @@
     <description>Ebuild Crasher</description>
   </maintainer>
   <use>
-    <flag name="arpack">Include support for arpack libs</flag>
     <flag name="fetk">Include support for FeTK</flag>
     <flag name="fast">APBS fast mode (experimental)</flag>
     <flag name="iapbs">C/C++/Fortran interface</flag>

@@ -1,6 +1,13 @@
 # ChangeLog for sys-power/pm-utils
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/pm-utils/ChangeLog,v 1.78 2014/11/08 18:57:13 ssuominen Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-power/pm-utils/ChangeLog,v 1.79 2015/07/29 02:56:15 tetromino Exp $
+
+*pm-utils-1.4.1-r7 (29 Jul 2015)
+
+  29 Jul 2015; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +pm-utils-1.4.1-r7.ebuild, +files/1.4.1-echo-n.patch:
+  Fix suspend/hibernate failure when using strange shells like dash-0.5.8.2
+  (bug #555032, thanks to David Korth et al.)
 
   08 Nov 2014; Samuli Suominen <ssuominen@gentoo.org> -pm-utils-1.4.1-r2.ebuild:
   old
