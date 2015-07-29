@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DEPEND=sys-devel/libtool virtual/pkgconfig
+DESCRIPTION=An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
+EAPI=5
+HOMEPAGE=http://www.leonerd.org.uk/code/libvterm/
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~yngwin/distfiles/libvterm-neovim-0.0_pre20150621.tar.xz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=bfa9bad2b0aff769657ee81c4c5a37cc
