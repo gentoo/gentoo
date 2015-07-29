@@ -96,7 +96,7 @@ index 0000000..b34fb35
 +# Last Modified: Mon Apr  5 15:10:27 2010
 +#include <tunables/global>
 +
-+profile virt-aa-helper /usr/{lib,lib64}/libvirt/virt-aa-helper {
++profile virt-aa-helper /usr/libexec/virt-aa-helper {
 +  #include <abstractions/base>
 +
 +  # needed for searching directories
@@ -115,7 +115,7 @@ index 0000000..b34fb35
 +  /sys/devices/ r,
 +  /sys/devices/** r,
 +
-+  /usr/{lib,lib64}/libvirt/virt-aa-helper mr,
++  /usr/libexec/virt-aa-helper mr,
 +  /sbin/apparmor_parser Ux,
 +
 +  /etc/apparmor.d/libvirt/* r,

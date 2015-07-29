@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/kdevelop-qmljs/kdevelop-qmljs-1.7.0.ebuild,v 1.1 2015/07/14 20:52:52 johu Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/kdevelop-qmljs/kdevelop-qmljs-1.7.0.ebuild,v 1.2 2015/07/29 21:11:42 johu Exp $
 
 EAPI=5
 
@@ -12,7 +12,7 @@ MY_P="${KMNAME}-${PV}"
 
 inherit kde4-base
 
-DESCRIPTION="QML and javascrip plugin for KDevelop 4"
+DESCRIPTION="QML and javascript plugin for KDevelop 4"
 LICENSE="GPL-2 LGPL-2"
 IUSE="debug"
 SRC_URI="mirror://kde/stable/kdevelop/${KMNAME}/${PV}/src/${MY_P}.tar.xz"

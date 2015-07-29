@@ -1,6 +1,12 @@
 # ChangeLog for app-emulation/libvirt
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/ChangeLog,v 1.439 2015/07/28 16:54:00 tamiko Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/ChangeLog,v 1.440 2015/07/29 20:53:38 tamiko Exp $
+
+*libvirt-1.2.17-r3 (29 Jul 2015)
+
+  29 Jul 2015; Matthias Maier <tamiko@gentoo.org> +libvirt-1.2.17-r3.ebuild,
+  -libvirt-1.2.17-r2.ebuild, files/libvirt-1.2.17-fix_paths_for_apparmor.patch:
+  fix apparmor configuration, many thanks to aporilel, bug #544628
 
 *libvirt-1.2.17-r2 (28 Jul 2015)
 
