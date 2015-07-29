@@ -1,6 +1,9 @@
 # ChangeLog for sys-fs/ncdu
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/ncdu/ChangeLog,v 1.56 2015/06/28 22:52:54 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/ncdu/ChangeLog,v 1.57 2015/07/29 06:57:53 jlec Exp $
+
+  29 Jul 2015; Justin Lecher <jlec@gentoo.org> -ncdu-1.10.ebuild:
+  Drop old
 
   28 Jun 2015; Anthony G. Basile <blueness@gentoo.org>
   +files/ncdu-1.11-missing-header.patch, ncdu-1.11.ebuild:

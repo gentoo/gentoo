@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/gmpy/gmpy-2.0.4.ebuild,v 1.7 2015/07/19 12:18:04 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/gmpy/gmpy-2.0.4.ebuild,v 1.8 2015/07/29 07:27:19 jlec Exp $
 
 EAPI=5
 
@@ -23,7 +23,7 @@ IUSE="doc mpir"
 RDEPEND="
 	>=dev-libs/mpc-1.0.2
 	>=dev-libs/mpfr-3.1.2
-	!mpir? ( dev-libs/gmp )
+	!mpir? ( dev-libs/gmp:0= )
 	mpir? ( sci-libs/mpir )"
 DEPEND="${RDEPEND}
 	app-arch/unzip

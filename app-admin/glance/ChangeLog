@@ -1,6 +1,9 @@
 # ChangeLog for app-admin/glance
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/glance/ChangeLog,v 1.73 2015/07/29 03:27:30 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/glance/ChangeLog,v 1.74 2015/07/29 07:25:08 ago Exp $
+
+  29 Jul 2015; Agostino Sarubbo <ago@gentoo.org> glance-2015.1.0-r1.ebuild:
+  Stable for amd64, wrt bug #556188
 
 *glance-2015.1.0-r1 (29 Jul 2015)
 

@@ -1,6 +1,17 @@
 # ChangeLog for dev-python/virtualenv
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/virtualenv/ChangeLog,v 1.152 2015/07/16 16:50:31 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/virtualenv/ChangeLog,v 1.154 2015/07/29 06:54:16 jlec Exp $
+
+  29 Jul 2015; Justin Lecher <jlec@gentoo.org>
+  -files/virtualenv-1.11.3-skip-broken-test.patch,
+  -files/virtualenv-1.9.1-pypy.patch:
+  Clean patches
+
+  29 Jul 2015; Justin Lecher <jlec@gentoo.org> -virtualenv-1.11.6.ebuild,
+  -virtualenv-12.0.6.ebuild, -virtualenv-12.0.7.ebuild, -virtualenv-12.0.ebuild,
+  -virtualenv-12.1.1.ebuild, -virtualenv-13.0.0.ebuild,
+  -virtualenv-13.0.1.ebuild, -virtualenv-13.0.3.ebuild:
+  Drop old, obsoletes bug #541250, bug #447556
 
   16 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> virtualenv-12.0.5.ebuild:
   ia64 stable wrt bug #538528

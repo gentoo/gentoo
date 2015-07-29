@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/flask-admin/flask-admin-1.1.0.ebuild,v 1.1 2015/06/14 15:41:52 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/flask-admin/flask-admin-1.1.0.ebuild,v 1.2 2015/07/29 06:33:55 jlec Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
@@ -21,8 +21,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="examples test"
 
-RDEPEND=">=dev-python/flask-0.7[${PYTHON_USEDEP}]
-		dev-python/wtforms[${PYTHON_USEDEP}]"
+RDEPEND="
+	>=dev-python/flask-0.7[${PYTHON_USEDEP}]
+	dev-python/wtforms[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
@@ -35,6 +36,13 @@ DEPEND="${RDEPEND}
 	)"
 
 S="${WORKDIR}/${MY_P}"
+
+python_prepare_all() {
+	sed \
+		-e 's:find_packages():find_packages(exclude=["*.examples", "*.examples.*", "examples.*", "examples"]):g' \
+		-i setup.py || die
+	distutils-r1_python_prepare_all
+}
 
 python_test() {
 	nosetests || die "Testing failed with ${EPYTHON}"
