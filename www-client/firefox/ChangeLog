@@ -1,6 +1,9 @@
 # ChangeLog for www-client/firefox
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/firefox/ChangeLog,v 1.430 2015/07/21 15:45:21 axs Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/firefox/ChangeLog,v 1.431 2015/07/29 05:31:16 jer Exp $
+
+  29 Jul 2015; Jeroen Roovers <jer@gentoo.org> firefox-38.1.0.ebuild:
+  Stable for PPC64 (bug #555416).
 
   21 Jul 2015; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
   -files/firefox-31.0-webm-disallow-negative-samples.patch,

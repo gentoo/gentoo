@@ -1,6 +1,14 @@
 # ChangeLog for sys-block/thin-provisioning-tools
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/thin-provisioning-tools/ChangeLog,v 1.62 2015/07/26 11:33:20 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-block/thin-provisioning-tools/ChangeLog,v 1.64 2015/07/29 05:29:36 vapier Exp $
+
+  29 Jul 2015; Mike Frysinger <vapier@gentoo.org>
+  thin-provisioning-tools-0.4.1.ebuild:
+  Add arm64 love.
+
+  29 Jul 2015; Mike Frysinger <vapier@gentoo.org>
+  thin-provisioning-tools-0.4.1.ebuild:
+  Mark ia64/s390/sh stable #555116.
 
   26 Jul 2015; Patrick Lauer <patrick@gentoo.org>
   thin-provisioning-tools-0.4.1.ebuild:
