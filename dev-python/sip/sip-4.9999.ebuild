@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/sip/sip-4.16.9.ebuild,v 1.2 2015/07/29 16:55:44 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/sip/sip-4.9999.ebuild,v 1.1 2015/07/29 16:49:15 pesa Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
@@ -23,12 +23,12 @@ elif [[ ${PV} == *_pre* ]]; then
 	S=${WORKDIR}/${MY_P}
 else
 	# official release
-	SRC_URI="http://www.riverbankcomputing.com/static/Downloads/sip4/${P}.tar.gz"
+	SRC_URI="mirror://sourceforge/pyqt/${P}.tar.gz"
 fi
 
 # Sub-slot based on SIP_API_MAJOR_NR from siplib/sip.h.in
 SLOT="0/11"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS=""
 IUSE="debug doc"
 
 DEPEND="${PYTHON_DEPS}"
