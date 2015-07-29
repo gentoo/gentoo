@@ -1,19 +1,19 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/dnsmasq/dnsmasq-2.72-r1.ebuild,v 1.1 2015/04/28 18:16:54 chutzpah Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/dnsmasq/dnsmasq-2.74.ebuild,v 1.1 2015/07/28 23:06:39 chutzpah Exp $
 
 EAPI=5
 
 inherit eutils toolchain-funcs flag-o-matic user systemd
 
 DESCRIPTION="Small forwarding DNS server"
-HOMEPAGE="http://www.thekelleys.org.uk/dnsmasq/"
+HOMEPAGE="http://www.thekelleys.org.uk/dnsmasq/doc.html"
 SRC_URI="http://www.thekelleys.org.uk/dnsmasq/${P}.tar.xz"
 
 LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
-IUSE="auth-dns conntrack dbus +dhcp dhcp-tools dnssec idn ipv6 lua nls script selinux static tftp"
+IUSE="auth-dns conntrack dbus +dhcp dhcp-tools dnssec idn +inotify ipv6 lua nls script selinux static tftp"
 DM_LINGUAS="de es fi fr id it no pl pt_BR ro"
 for dm_lingua in ${DM_LINGUAS}; do
 	IUSE+=" linguas_${dm_lingua}"
@@ -21,8 +21,13 @@ done
 
 CDEPEND="dbus? ( sys-apps/dbus )
 	idn? ( net-dns/libidn )
-	lua? ( dev-lang/lua:0 )
-	conntrack? ( !s390? ( net-libs/libnetfilter_conntrack ) )
+	lua? (
+		|| (
+			dev-lang/lua:0
+			dev-lang/lua:5.1
+		)
+	)
+	conntrack? ( net-libs/libnetfilter_conntrack )
 	nls? (
 		sys-devel/gettext
 		net-dns/libidn
@@ -49,8 +54,7 @@ RDEPEND="${CDEPEND}
 "
 
 REQUIRED_USE="dhcp-tools? ( dhcp )
-	lua? ( script )
-	s390? ( !conntrack )"
+	lua? ( script )"
 
 use_have() {
 	local useflag no_only uword
@@ -92,9 +96,6 @@ pkg_setup() {
 src_prepare() {
 	sed -i -r 's:lua5.[0-9]+:lua:' Makefile
 	sed -i "s:%%PREFIX%%:${EPREFIX}/usr:" dnsmasq.conf.example
-
-	epatch "${FILESDIR}"/${P}-Fix-crash-on-receipt-of-certain-malformed-DNS-requests.patch
-	epatch "${FILESDIR}"/${P}-Fix-crash-caused-by-looking-up-servers.bind-when-many-servers-defined.patch
 }
 
 src_configure() {
@@ -102,6 +103,7 @@ src_configure() {
 	COPTS+="$(use_have conntrack)"
 	COPTS+="$(use_have dbus)"
 	COPTS+="$(use_have idn)"
+	COPTS+="$(use_have -n inotify)"
 	COPTS+="$(use_have -n dhcp dhcp dhcp6)"
 	COPTS+="$(use_have -n ipv6 ipv6 dhcp6)"
 	COPTS+="$(use_have lua luascript)"
@@ -114,6 +116,7 @@ src_configure() {
 src_compile() {
 	emake \
 		PREFIX=/usr \
+		MANDIR=/usr/share/man \
 		CC="$(tc-getCC)" \
 		CFLAGS="${CFLAGS}" \
 		LDFLAGS="${LDFLAGS}" \
@@ -123,6 +126,7 @@ src_compile() {
 
 	use dhcp-tools && emake -C contrib/wrt \
 		PREFIX=/usr \
+		MANDIR=/usr/share/man \
 		CC="$(tc-getCC)" \
 		CFLAGS="${CFLAGS}" \
 		LDFLAGS="${LDFLAGS}" \
@@ -134,6 +138,7 @@ src_install() {
 	emake \
 		PREFIX=/usr \
 		MANDIR=/usr/share/man \
+		COPTS="${COPTS}" \
 		DESTDIR="${D}" \
 		install$(use nls && echo "-i18n")
 

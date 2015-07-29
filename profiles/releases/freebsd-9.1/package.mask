@@ -1,6 +1,6 @@
-# Copyright 1999-2012 Gentoo Foundation.
+# Copyright 1999-2015 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/releases/freebsd-9.1/package.mask,v 1.1 2012/08/07 20:46:10 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/releases/freebsd-9.1/package.mask,v 1.2 2015/07/28 23:18:31 chewi Exp $
 
 # Make sure we don't get wrong versions
 <sys-freebsd/freebsd-pam-modules-9.1_alpha
@@ -33,11 +33,6 @@
 >sys-freebsd/boot0-9.1.99
 <sys-freebsd/freebsd-sources-9.1_alpha
 >sys-freebsd/freebsd-sources-9.1.99
-
-# Alexis Ballier <aballier@gentoo.org> (19 Jul 2008)
-# JDK/JRE 1.5 are specific to fbsd 6 and 5
-=virtual/jdk-1.5*
-=virtual/jre-1.5*
 
 # Alexis Ballier <aballier@gentoo.org> (07 Nov 2011)
 # It is in freebsd-ubin starting from FreeBSD 9.0

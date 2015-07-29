@@ -1,6 +1,12 @@
 # ChangeLog for x11-plugins/purple-facebook
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/purple-facebook/ChangeLog,v 1.5 2015/07/27 10:28:10 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/purple-facebook/ChangeLog,v 1.6 2015/07/28 22:43:19 chainsaw Exp $
+
+*purple-facebook-20150728 (28 Jul 2015)
+
+  28 Jul 2015; Tony Vroon <chainsaw@gentoo.org>
+  +purple-facebook-20150728.ebuild:
+  Now handles authentication failures properly.
 
 *purple-facebook-20150727 (27 Jul 2015)
 

@@ -1,6 +1,9 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/releases/freebsd-10.1/ChangeLog,v 1.1 2015/03/01 18:25:22 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/releases/freebsd-10.1/ChangeLog,v 1.2 2015/07/28 23:18:59 chewi Exp $
+
+  28 Jul 2015; James Le Cuirot <chewi@gentoo.org> package.mask:
+  Remove obsolete jdk/jre mask.
 
   01 Mar 2015; Michał Górny <mgorny@gentoo.org> +package.mask,
   +package.use.force, +packages, +packages.build, +parent, +profile.bashrc:
