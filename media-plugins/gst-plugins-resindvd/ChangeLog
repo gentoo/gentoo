@@ -1,6 +1,10 @@
 # ChangeLog for media-plugins/gst-plugins-resindvd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-resindvd/ChangeLog,v 1.96 2015/03/29 11:08:48 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-resindvd/ChangeLog,v 1.97 2015/07/29 10:54:27 klausman Exp $
+
+  29 Jul 2015; Tobias Klausmann <klausman@gentoo.org>
+  gst-plugins-resindvd-1.4.5.ebuild:
+  Stable on alpha, bug 551814
 
   29 Mar 2015; Jeroen Roovers <jer@gentoo.org>
   gst-plugins-resindvd-1.4.5.ebuild:

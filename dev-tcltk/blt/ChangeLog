@@ -1,6 +1,9 @@
 # ChangeLog for dev-tcltk/blt
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/blt/ChangeLog,v 1.70 2015/07/28 12:45:26 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/blt/ChangeLog,v 1.71 2015/07/29 11:19:10 klausman Exp $
+
+  29 Jul 2015; Tobias Klausmann <klausman@gentoo.org> blt-2.4z-r13.ebuild:
+  Stable on alpha, bug 556122
 
   28 Jul 2015; Justin Lecher <jlec@gentoo.org> blt-2.4z-r13.ebuild:
   install headers with u+w, bug #554352

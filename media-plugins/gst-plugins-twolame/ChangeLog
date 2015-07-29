@@ -1,6 +1,10 @@
 # ChangeLog for media-plugins/gst-plugins-twolame
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-twolame/ChangeLog,v 1.88 2015/03/15 13:40:51 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-twolame/ChangeLog,v 1.89 2015/07/29 10:55:23 klausman Exp $
+
+  29 Jul 2015; Tobias Klausmann <klausman@gentoo.org>
+  gst-plugins-twolame-1.4.5.ebuild:
+  Stable on alpha, bug 551814
 
   15 Mar 2015; Pacho Ramos <pacho@gentoo.org> gst-plugins-twolame-1.4.5.ebuild:
   x86 stable, bug 534012
