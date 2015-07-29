@@ -4,11 +4,11 @@ DESCRIPTION=The Shoreline Firewall, commonly known as Shorewall, is a high-level
 EAPI=5
 HOMEPAGE=http://www.shorewall.net/
 IUSE=doc +init +ipv4 ipv6 lite4 lite6
-KEYWORDS=alpha ~amd64 hppa ppc ~ppc64 ~sparc ~x86
+KEYWORDS=alpha amd64 hppa ppc ~ppc64 ~sparc ~x86
 LICENSE=GPL-2
 RDEPEND=>=net-firewall/iptables-1.4.20 >=sys-apps/iproute2-3.8.0[-minimal] >=sys-devel/bc-1.06.95 ipv4? ( >=dev-lang/perl-5.16 virtual/perl-Digest-SHA ) ipv6? ( >=dev-perl/Socket6-0.230.0 >=net-firewall/iptables-1.4.20[ipv6] >=sys-apps/iproute2-3.8.0[ipv6] ) lite6? ( >=net-firewall/iptables-1.4.20[ipv6] >=sys-apps/iproute2-3.8.0[ipv6] ) init? ( >=sys-apps/coreutils-8.20 ) !net-firewall/shorewall-core !net-firewall/shorewall6 !net-firewall/shorewall-lite !net-firewall/shorewall6-lite !net-firewall/shorewall-init !<sys-apps/systemd-214
 REQUIRED_USE=ipv6? ( ipv4 ) || ( ipv4 lite4 lite6 )
 SLOT=0
 SRC_URI=http://www.shorewall.net/pub/shorewall/4.6/shorewall-4.6.10/shorewall-core-4.6.10.1.tar.bz2 ipv4? ( http://www.shorewall.net/pub/shorewall/4.6/shorewall-4.6.10/shorewall-4.6.10.1.tar.bz2 ) ipv6? ( http://www.shorewall.net/pub/shorewall/4.6/shorewall-4.6.10/shorewall6-4.6.10.1.tar.bz2 ) lite4? ( http://www.shorewall.net/pub/shorewall/4.6/shorewall-4.6.10/shorewall-lite-4.6.10.1.tar.bz2 ) lite6? ( http://www.shorewall.net/pub/shorewall/4.6/shorewall-4.6.10/shorewall6-lite-4.6.10.1.tar.bz2 ) init? ( http://www.shorewall.net/pub/shorewall/4.6/shorewall-4.6.10/shorewall-init-4.6.10.1.tar.bz2 ) doc? ( http://www.shorewall.net/pub/shorewall/4.6/shorewall-4.6.10/shorewall-docs-html-4.6.10.1.tar.bz2 )
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	prefix	21058c21ca48453d771df15500873ede	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=06a6b309a0dcd32220c1baae57ab37c4
+_md5_=f162ace06188d1595f43645d906dac34

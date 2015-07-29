@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/geoip-python/geoip-python-1.3.2.ebuild,v 1.4 2015/07/23 21:01:56 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/geoip-python/geoip-python-1.3.2.ebuild,v 1.5 2015/07/29 15:14:02 zlogene Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy pypy3 )
@@ -16,7 +16,7 @@ SRC_URI="https://github.com/maxmind/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_P}.ta
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ppc ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~ia64 ppc ~sparc ~x86 ~x86-fbsd"
 IUSE="examples test"
 
 RDEPEND=">=dev-libs/geoip-1.4.8"

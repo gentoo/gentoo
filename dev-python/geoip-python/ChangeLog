@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/geoip-python
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/geoip-python/ChangeLog,v 1.44 2015/07/23 21:01:56 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/geoip-python/ChangeLog,v 1.45 2015/07/29 15:14:02 zlogene Exp $
+
+  29 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> geoip-python-1.3.2.ebuild:
+  amd64 stable wrt bug #536570
 
   23 Jul 2015; Pacho Ramos <pacho@gentoo.org> geoip-python-1.3.2.ebuild:
   ppc stable wrt bug #536570

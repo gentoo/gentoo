@@ -1,6 +1,9 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1735 2015/07/28 20:51:40 grknight Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1736 2015/07/29 15:01:43 grknight Exp $
+
+  29 Jul 2015; Brian Evans <grknight@gentoo.org> mysql-multilib.eclass:
+  Fix pkg_config function error with non-existant USE flags
 
   28 Jul 2015; Brian Evans <grknight@gentoo.org> mysql-multilib.eclass:
   Fix configuring non-native abi which leads to build failure wrt bug 556162

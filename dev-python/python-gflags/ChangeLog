@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/python-gflags
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/python-gflags/ChangeLog,v 1.27 2015/07/16 16:20:05 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-gflags/ChangeLog,v 1.28 2015/07/29 14:42:52 klausman Exp $
+
+  29 Jul 2015; Tobias Klausmann <klausman@gentoo.org> python-gflags-2.0.ebuild:
+  Stable on alpha, bug 519772
 
   16 Jul 2015; Jeroen Roovers <jer@gentoo.org> python-gflags-2.0.ebuild:
   Mark ~hppa (bug #519772).

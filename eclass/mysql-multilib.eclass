@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/mysql-multilib.eclass,v 1.23 2015/07/28 20:51:40 grknight Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/mysql-multilib.eclass,v 1.24 2015/07/29 15:01:43 grknight Exp $
 
 # @ECLASS: mysql-multilib.eclass
 # @MAINTAINER:
@@ -876,9 +876,14 @@ mysql-multilib_pkg_config() {
 	mysql_init_vars
 
 	[[ -z "${MY_DATADIR}" ]] && die "Sorry, unable to find MY_DATADIR"
-
-	if built_with_use ${CATEGORY}/${PN} minimal && ! built_with_use ${CATEGORY}/${PN} server ; then
-		die "Minimal builds do NOT include the MySQL server"
+	if [[ ${HAS_TOOLS_PATCH} ]] ; then
+		if ! built_with_use ${CATEGORY}/${PN} server ; then
+			die "Minimal builds do NOT include the MySQL server"
+		fi
+	else
+		if built_with_use ${CATEGORY}/${PN} minimal ; then
+			die "Minimal builds do NOT include the MySQL server"
+		fi
 	fi
 
 	if [[ ( -n "${MY_DATADIR}" ) && ( "${MY_DATADIR}" != "${old_MY_DATADIR}" ) ]]; then

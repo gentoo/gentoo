@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/shorewall/shorewall-4.6.10.1.ebuild,v 1.4 2015/07/26 06:34:49 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/shorewall/shorewall-4.6.10.1.ebuild,v 1.5 2015/07/29 15:15:50 zlogene Exp $
 
 EAPI="5"
 
@@ -68,7 +68,7 @@ if [[ ${MY_PV} = *-Beta* ]] || [[ ${MY_PV} = *-RC* ]]; then
 	unset _tmp_last_index
 	unset _tmp_suffix
 else
-	KEYWORDS="alpha ~amd64 hppa ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="alpha amd64 hppa ppc ~ppc64 ~sparc ~x86"
 fi
 
 SRC_URI="

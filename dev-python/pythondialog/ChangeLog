@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/pythondialog
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pythondialog/ChangeLog,v 1.34 2015/07/23 20:35:59 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pythondialog/ChangeLog,v 1.35 2015/07/29 15:08:53 zlogene Exp $
+
+  29 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> pythondialog-3.2.2.ebuild:
+  amd64 stable wrt bug #553886
 
   23 Jul 2015; Pacho Ramos <pacho@gentoo.org> pythondialog-3.2.2.ebuild:
   ppc stable wrt bug #553886
