@@ -1,6 +1,14 @@
 # ChangeLog for dev-vcs/git-cola
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git-cola/ChangeLog,v 1.49 2015/05/27 17:00:39 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git-cola/ChangeLog,v 1.50 2015/07/29 07:45:09 jlec Exp $
+
+*git-cola-2.2.1 (29 Jul 2015)
+
+  29 Jul 2015; Justin Lecher <jlec@gentoo.org>
+  +files/git-cola-2.2.1-disable-live-tests.patch,
+  +files/git-cola-2.2.1-update-git-config-in-tests.patch,
+  +git-cola-2.2.1.ebuild:
+  Version Bump, bug #554456; thanks Coacher for all the work
 
   27 May 2015; Justin Lecher <jlec@gentoo.org> -files/1.3.8-disable-tests.patch,
   -files/1.8.1-system-ssh-askpass.patch, -files/1.9.1-disable-tests.patch:

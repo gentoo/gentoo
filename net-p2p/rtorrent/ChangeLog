@@ -1,6 +1,12 @@
 # ChangeLog for net-p2p/rtorrent
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/rtorrent/ChangeLog,v 1.200 2015/07/19 15:56:14 heroxbd Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/rtorrent/ChangeLog,v 1.201 2015/07/29 07:35:39 jlec Exp $
+
+  29 Jul 2015; Justin Lecher <jlec@gentoo.org>
+  -files/rtorrent-0.8.7-canvas-fix.patch,
+  -files/rtorrent-0.8.9-canvas-fix.patch, -files/rtorrent-0.8.9-ncurses.patch,
+  -files/rtorrent-0.9.0-ncurses.patch:
+  Drop obsolete patches
 
   19 Jul 2015; Benda Xu <heroxbd@gentoo.org> files/rtorrent-0.9.4-tinfo.patch,
   rtorrent-0.9.4-r1.ebuild:

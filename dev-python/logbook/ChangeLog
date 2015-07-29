@@ -1,6 +1,10 @@
 # ChangeLog for dev-python/logbook
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/logbook/ChangeLog,v 1.27 2015/07/20 08:06:47 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/logbook/ChangeLog,v 1.28 2015/07/29 07:51:44 jlec Exp $
+
+  29 Jul 2015; Justin Lecher <jlec@gentoo.org>
+  -files/logbook-0.4.1-testspy3.patch, -logbook-0.7.0.ebuild:
+  Drop old
 
   20 Jul 2015; Patrice Clement <monsieurp@gentoo.org> logbook-0.9.1.ebuild:
   Stable for amd64. Stable for x86 with ALLARCHES. Fix bug 555306.

@@ -1,6 +1,9 @@
 # ChangeLog for app-misc/cdargs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/cdargs/ChangeLog,v 1.24 2015/07/23 19:42:40 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/cdargs/ChangeLog,v 1.25 2015/07/29 08:20:24 jlec Exp $
+
+  29 Jul 2015; Justin Lecher <jlec@gentoo.org> -cdargs-1.35-r1.ebuild:
+  Drop old
 
   23 Jul 2015; Pacho Ramos <pacho@gentoo.org> cdargs-1.35-r2.ebuild:
   ppc stable wrt bug #552752
