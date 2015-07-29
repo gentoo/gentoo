@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-2.1.5-r1.ebuild,v 1.9 2015/03/01 09:31:47 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-2.1.5-r1.ebuild,v 1.10 2015/07/29 09:54:11 idella4 Exp $
 
 EAPI="5"
 
@@ -248,6 +248,9 @@ src_prepare() {
 
 	# Fix bug #541654
 	epatch "${FILESDIR}"/${PN}-2.1-mem_undefined_functions.patch
+
+	# Add missed header imgproc_c.h, imgproc.hpp, bug #554562
+	epatch "${FILESDIR}"/opencv-3.0.0.patch
 
 	# Disable avcodec checks when avcodec is not used.
 	if ! use avcodec; then

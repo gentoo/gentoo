@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libmediaart/libmediaart-0.7.0.ebuild,v 1.9 2015/07/17 15:41:45 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libmediaart/libmediaart-0.7.0.ebuild,v 1.10 2015/07/29 10:22:59 klausman Exp $
 
 EAPI="5"
 GCONF_DEBUG="no"
@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/GNOME/libmediaart"
 
 LICENSE="LGPL-2.1+"
 SLOT="1.0"
-KEYWORDS="~alpha amd64 arm ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 arm ia64 ppc ppc64 ~sparc x86"
 IUSE="gtk +introspection qt4 qt5 vala"
 REQUIRED_USE="
 	?? ( gtk qt4 qt5 )

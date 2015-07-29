@@ -4,7 +4,7 @@ DESCRIPTION=Virtual filesystem implementation for gio
 EAPI=5
 HOMEPAGE=https://git.gnome.org/browse/gvfs
 IUSE=afp archive bluray cdda fuse gnome-online-accounts gphoto2 gtk +http ios libsecret mtp samba systemd test +udev udisks zeroconf
-KEYWORDS=~alpha amd64 arm ia64 ~mips ppc ppc64 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x86-solaris
+KEYWORDS=alpha amd64 arm ia64 ~mips ppc ppc64 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x86-solaris
 LICENSE=LGPL-2+
 RDEPEND=>=dev-libs/glib-2.37:2 sys-apps/dbus dev-libs/libxml2:2 net-misc/openssh afp? ( >=dev-libs/libgcrypt-1.2.2:0= ) archive? ( app-arch/libarchive:= ) bluray? ( media-libs/libbluray ) fuse? ( >=sys-fs/fuse-2.8.0 ) gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.7.1 ) gphoto2? ( >=media-libs/libgphoto2-2.4.7:= ) gtk? ( >=x11-libs/gtk+-3.0:3 ) http? ( >=net-libs/libsoup-2.42:2.4 ) ios? ( >=app-pda/libimobiledevice-1.1.5:= >=app-pda/libplist-1:= ) libsecret? ( app-crypt/libsecret ) mtp? ( >=media-libs/libmtp-1.1.6 ) samba? ( || ( >=net-fs/samba-3.4.6[smbclient] >=net-fs/samba-4[client] ) ) systemd? ( sys-apps/systemd:0= ) udev? ( cdda? ( || ( dev-libs/libcdio-paranoia <dev-libs/libcdio-0.90[-minimal] ) ) virtual/libgudev:= virtual/libudev:= ) udisks? ( >=sys-fs/udisks-1.97:2 ) zeroconf? ( >=net-dns/avahi-0.6 )
 REQUIRED_USE=cdda? ( udev ) mtp? ( udev ) udisks? ( udev ) systemd? ( udisks )
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://gnome/sources/gvfs/1.22/gvfs-1.22.4.tar.xz
 _eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	bash-completion-r1	c8399c7c7ecbcf7ed6e5bd3abb3d4af3	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	45882dc8beda2ffd09ad51fb3f22b669	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=612d1f272d812185de58c767871de9bf
+_md5_=5425af5133ce9a9700111a675966a8ab

@@ -1,6 +1,9 @@
 # ChangeLog for gnome-extra/libgsf
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/libgsf/ChangeLog,v 1.261 2015/07/25 12:14:41 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/libgsf/ChangeLog,v 1.262 2015/07/29 10:22:11 klausman Exp $
+
+  29 Jul 2015; Tobias Klausmann <klausman@gentoo.org> libgsf-1.14.33.ebuild:
+  Stable on alpha, bug 551814
 
   25 Jul 2015; Pacho Ramos <pacho@gentoo.org> libgsf-1.14.33.ebuild:
   ppc stable wrt bug #551814

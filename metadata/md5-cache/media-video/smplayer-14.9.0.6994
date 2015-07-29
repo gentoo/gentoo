@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtsingleapplication[X,qt4] autoshutdown? ( dev-qt/qtdbus:4 ) mpris? ( dev-qt/qtdbus:4 ) streaming? ( dev-qt/qtcore:4[ssl] ) ) qt5? ( dev-qt/linguist-tools:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 >=dev-qt/qtsingleapplication-2.6.1_p20150629[X,qt5] dev-qt/qtwidgets:5 dev-qt/qtxml:5 autoshutdown? ( dev-qt/qtdbus:5 ) mpris? ( dev-qt/qtdbus:5 ) streaming? ( dev-qt/qtnetwork:5[ssl] dev-qt/qtscript:5 ) )
+DESCRIPTION=Great Qt GUI front-end for mplayer/mpv
+EAPI=5
+HOMEPAGE=http://smplayer.info/
+IUSE=autoshutdown bidi debug mpris +qt4 qt5 streaming linguas_ar linguas_ar_SY linguas_bg linguas_ca linguas_cs linguas_da linguas_de linguas_el_GR linguas_en_GB linguas_en_US linguas_es linguas_et linguas_eu linguas_fi linguas_fr linguas_gl linguas_he_IL linguas_hr linguas_hu linguas_id linguas_it linguas_ja linguas_ka linguas_ko linguas_ku linguas_lt linguas_mk linguas_ms_MY linguas_nl linguas_nn_NO linguas_pl linguas_pt linguas_pt_BR linguas_ro_RO linguas_ru_RU linguas_sk linguas_sl_SI linguas_sq_AL linguas_sr linguas_sv linguas_th linguas_tr linguas_uk_UA linguas_vi_VN linguas_zh_CN linguas_zh_TW
+KEYWORDS=~amd64 ~arm ~hppa ~ppc64 ~x86 ~x86-fbsd ~amd64-linux
+LICENSE=GPL-2 BSD
+RDEPEND=qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtsingleapplication[X,qt4] autoshutdown? ( dev-qt/qtdbus:4 ) mpris? ( dev-qt/qtdbus:4 ) streaming? ( dev-qt/qtcore:4[ssl] ) ) qt5? ( dev-qt/linguist-tools:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 >=dev-qt/qtsingleapplication-2.6.1_p20150629[X,qt5] dev-qt/qtwidgets:5 dev-qt/qtxml:5 autoshutdown? ( dev-qt/qtdbus:5 ) mpris? ( dev-qt/qtdbus:5 ) streaming? ( dev-qt/qtnetwork:5[ssl] dev-qt/qtscript:5 ) ) || ( media-video/mplayer[bidi?,libass,png,X] ( >=media-video/mpv-0.6.2[libass,X] streaming? ( >=net-misc/youtube-dl-2014.11.26 ) ) )
+REQUIRED_USE=^^ ( qt4 qt5 )
+SLOT=0
+SRC_URI=mirror://sourceforge/smplayer/smplayer-14.9.0.6994.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	l10n	33bde4fb0cfd3a21a277b66bfd837e19	multilib	62927b3db3a589b0806255f3a002d5d3	qmake-utils	4ce40e37ef0e28425a7159b0353be026	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=c6f960d6c1dd576c67f253677252c1f9

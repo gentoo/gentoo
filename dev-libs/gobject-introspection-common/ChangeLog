@@ -1,6 +1,10 @@
 # ChangeLog for dev-libs/gobject-introspection-common
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/gobject-introspection-common/ChangeLog,v 1.59 2015/07/17 15:33:00 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/gobject-introspection-common/ChangeLog,v 1.60 2015/07/29 10:19:42 klausman Exp $
+
+  29 Jul 2015; Tobias Klausmann <klausman@gentoo.org>
+  gobject-introspection-common-1.42.0.ebuild:
+  Stable on alpha, bug 551814
 
   17 Jul 2015; Agostino Sarubbo <ago@gentoo.org>
   gobject-introspection-common-1.42.0.ebuild:

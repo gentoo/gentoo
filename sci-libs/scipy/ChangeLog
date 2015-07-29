@@ -1,6 +1,11 @@
 # ChangeLog for sci-libs/scipy
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/scipy/ChangeLog,v 1.130 2015/06/23 06:21:12 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/scipy/ChangeLog,v 1.131 2015/07/29 09:54:50 jlec Exp $
+
+*scipy-0.16.0 (29 Jul 2015)
+
+  29 Jul 2015; Justin Lecher <jlec@gentoo.org> +scipy-0.16.0.ebuild:
+  Version Bump
 
   23 Jun 2015; Justin Lecher <jlec@gentoo.org>
   -files/scipy-0.12.0-cephes-missing-include.patch,

@@ -11,4 +11,4 @@ REQUIRED_USE=aalib? ( X ) bidi? ( truetype ) cddb? ( cdda ) dvb? ( dvbpsi ) dxva
 SLOT=0/5-7
 SRC_URI=http://download.videolan.org/pub/videolan/vlc/2.1.5/vlc-2.1.5.tar.xz
 _eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	virtualx	73cfc129b4b9ba23aed1abb10c825d86
-_md5_=13f1ceb2971134076a698e75e5ec96d1
+_md5_=15f4ae93ede0a50d6042c7e3a501148d
