@@ -1,6 +1,10 @@
 # ChangeLog for dev-python/openstack-nose-plugin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/openstack-nose-plugin/ChangeLog,v 1.9 2015/07/18 12:08:17 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/openstack-nose-plugin/ChangeLog,v 1.10 2015/07/29 17:54:12 zlogene Exp $
+
+  29 Jul 2015; Mikle Kolyada <zlogene@gentoo.org>
+  openstack-nose-plugin-0.11-r2.ebuild:
+  x86 stable wrt bug #554284
 
   18 Jul 2015; Mikle Kolyada <zlogene@gentoo.org>
   openstack-nose-plugin-0.11-r2.ebuild:

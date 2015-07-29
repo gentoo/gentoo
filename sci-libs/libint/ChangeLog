@@ -1,6 +1,9 @@
 # ChangeLog for sci-libs/libint
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/libint/ChangeLog,v 1.17 2015/05/07 07:10:49 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/libint/ChangeLog,v 1.18 2015/07/29 17:38:52 jlec Exp $
+
+  29 Jul 2015; Justin Lecher <jlec@gentoo.org> libint-2.0.5.ebuild:
+  Add missing dependency on gmp, bug #556244
 
 *libint-1.1.6 (07 May 2015)
 *libint-2.0.5 (07 May 2015)

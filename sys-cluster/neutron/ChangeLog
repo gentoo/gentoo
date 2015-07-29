@@ -1,6 +1,9 @@
 # ChangeLog for sys-cluster/neutron
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/neutron/ChangeLog,v 1.66 2015/07/18 12:02:15 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/neutron/ChangeLog,v 1.67 2015/07/29 17:51:00 zlogene Exp $
+
+  29 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> neutron-2015.1.0-r2.ebuild:
+  x86 stable wrt bug #554284
 
   18 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> neutron-2015.1.0-r2.ebuild:
   amd64 stable wrt bug #554284

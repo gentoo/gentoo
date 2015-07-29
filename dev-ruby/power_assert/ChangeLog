@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/power_assert
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/power_assert/ChangeLog,v 1.6 2015/07/18 20:52:47 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/power_assert/ChangeLog,v 1.7 2015/07/29 18:09:59 grobian Exp $
+
+  29 Jul 2015; Fabian Groffen <grobian@gentoo.org> power_assert-0.2.4.ebuild:
+  Keyworded for *-solaris, *-macos
 
 *power_assert-0.2.4 (18 Jul 2015)
 

@@ -1,6 +1,10 @@
 # ChangeLog for dev-ruby/nokogiri-diff
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/nokogiri-diff/ChangeLog,v 1.10 2015/07/25 08:42:34 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/nokogiri-diff/ChangeLog,v 1.11 2015/07/29 18:29:04 grobian Exp $
+
+  29 Jul 2015; Fabian Groffen <grobian@gentoo.org>
+  nokogiri-diff-0.2.0-r2.ebuild:
+  Keyworded for *-solaris, *-macos, ~x86-linux, bug #497396
 
 *nokogiri-diff-0.2.0-r2 (25 Jul 2015)
 

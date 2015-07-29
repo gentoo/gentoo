@@ -1,6 +1,9 @@
 # ChangeLog for app-eselect/eselect-java
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-eselect/eselect-java/ChangeLog,v 1.3 2015/05/10 20:55:27 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-eselect/eselect-java/ChangeLog,v 1.4 2015/07/29 17:55:43 grobian Exp $
+
+  29 Jul 2015; Fabian Groffen <grobian@gentoo.org> eselect-java-0.1.0.ebuild:
+  Keyworded for *-solaris, *-macos
 
   10 May 2015; James Le Cuirot <chewi@gentoo.org> eselect-java-0.1.0.ebuild:
   Remove PDEPEND wrt bug #315229 because it had unintended side effects and is

@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/safe_yaml
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/safe_yaml/ChangeLog,v 1.21 2015/05/24 06:47:21 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/safe_yaml/ChangeLog,v 1.22 2015/07/29 18:24:22 grobian Exp $
+
+  29 Jul 2015; Fabian Groffen <grobian@gentoo.org> safe_yaml-1.0.4-r2.ebuild:
+  Keyworded for *-solaris, *-macos, ~x86-linux, bug #491822
 
 *safe_yaml-1.0.4-r2 (24 May 2015)
 

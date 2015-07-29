@@ -4,11 +4,11 @@ DESCRIPTION=A highly available, distributed, and eventually consistent object/bl
 EAPI=5
 HOMEPAGE=https://launchpad.net/swift
 IUSE=proxy account container object test +memcached python_targets_python2_7
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=Apache-2.0
 RDEPEND=>=dev-python/dnspython-1.9.4[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/eventlet-0.16.1[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] !~dev-python/eventlet-0.17.0[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/greenlet-0.3.1[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/netifaces-0.5[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] !~dev-python/netifaces-0.10.0[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] !~dev-python/netifaces-0.10.1[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/pastedeploy-1.3.3[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/simplejson-2.0.9[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pyxattr[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/PyECLib-1.0.7[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] memcached? ( net-misc/memcached ) net-misc/rsync[xattr] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 REQUIRED_USE=|| ( proxy account container object ) || ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=http://launchpad.net/swift/kilo/2.3.0/+download/swift-2.3.0.tar.gz
 _eclasses_=distutils-r1	715b22a21726d3fd76b17e007c5daf5f	eutils	9fb270e417e0e83d64ca52586c4a79de	linux-info	8cbc678e083c23e4ad546ca6509cf304	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-r1	d9c8348f26710ea523a385c2328cf027	python-utils-r1	68e010c13e97b7b2c7bf403ee9c51e1b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=0a74da0a70e14f3c6ebde3daffd7ec5e
+_md5_=c8ee7c6a13428a6f2a55e0199e92b2ad

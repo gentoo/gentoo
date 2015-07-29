@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/nosehtmloutput
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/nosehtmloutput/ChangeLog,v 1.13 2015/07/18 12:08:55 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/nosehtmloutput/ChangeLog,v 1.14 2015/07/29 17:54:54 zlogene Exp $
+
+  29 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> nosehtmloutput-0.0.5.ebuild:
+  x86 stable wrt bug #554284
 
   18 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> nosehtmloutput-0.0.5.ebuild:
   amd64 stable wrt bug #554284

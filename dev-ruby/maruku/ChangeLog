@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/maruku
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/maruku/ChangeLog,v 1.44 2015/07/25 08:39:17 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/maruku/ChangeLog,v 1.45 2015/07/29 18:30:25 grobian Exp $
+
+  29 Jul 2015; Fabian Groffen <grobian@gentoo.org> maruku-0.7.2-r1.ebuild:
+  Keyworded for *-solaris, *-macos, ~x86-linux, bug #497396
 
   25 Jul 2015; Hans de Graaff <graaff@gentoo.org> -maruku-0.7.0.ebuild:
   Cleanup of broken version.

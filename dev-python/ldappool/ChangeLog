@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/ldappool
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/ldappool/ChangeLog,v 1.4 2015/07/18 11:55:18 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/ldappool/ChangeLog,v 1.5 2015/07/29 17:44:32 zlogene Exp $
+
+  29 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> ldappool-1.0.ebuild:
+  x86 stable wrt bug #554284
 
   18 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> ldappool-1.0.ebuild:
   amd64 stable wrt bug #554284

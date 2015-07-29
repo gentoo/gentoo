@@ -1,6 +1,10 @@
 # ChangeLog for app-portage/gentoolkit-dev
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/gentoolkit-dev/ChangeLog,v 1.143 2015/07/22 01:42:18 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/gentoolkit-dev/ChangeLog,v 1.144 2015/07/29 17:52:38 grobian Exp $
+
+  29 Jul 2015; Fabian Groffen <grobian@gentoo.org> gentoolkit-dev-0.3.0.ebuild,
+  gentoolkit-dev-9999.ebuild:
+  Fix for Prefix: shebangs and portage.db key
 
   22 Jul 2015; Manuel Rüger <mrueg@gentoo.org>
   -files/gentoolkit-dev-0.2.8-tests.patch, -gentoolkit-dev-0.2.6.14.ebuild,

@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/tdiff
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/tdiff/ChangeLog,v 1.10 2015/07/25 08:46:21 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/tdiff/ChangeLog,v 1.11 2015/07/29 18:27:58 grobian Exp $
+
+  29 Jul 2015; Fabian Groffen <grobian@gentoo.org> tdiff-0.3.3-r1.ebuild:
+  Keyworded for *-solaris, *-macos, ~x86-linux, bug #497396
 
 *tdiff-0.3.3-r1 (25 Jul 2015)
 

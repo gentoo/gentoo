@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/crack
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/crack/ChangeLog,v 1.47 2015/06/07 17:33:06 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/crack/ChangeLog,v 1.48 2015/07/29 18:21:34 grobian Exp $
+
+  29 Jul 2015; Fabian Groffen <grobian@gentoo.org> crack-0.4.2-r1.ebuild:
+  Keyworded for *-solaris, *-macos, ~x86-linux, bug #491822
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

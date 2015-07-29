@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/hashie
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/hashie/ChangeLog,v 1.35 2015/06/03 22:13:01 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/hashie/ChangeLog,v 1.36 2015/07/29 18:23:22 grobian Exp $
+
+  29 Jul 2015; Fabian Groffen <grobian@gentoo.org> hashie-3.4.2.ebuild:
+  Keyworded for *-solaris, *-macos, ~x86-linux, bug #491822
 
 *hashie-3.4.2 (03 Jun 2015)
 
