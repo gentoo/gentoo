@@ -1,25 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>proxy-maintainers</herd>
-	<maintainer>
-		<email>nikoli@gmx.us</email>
-		<name>Nikoli</name>
-	</maintainer>
-	<maintainer>
-		<email>maksbotan@gentoo.org</email>
-		<name>Maxim Koltsov</name>
-	</maintainer>
-	<longdescription lang="en">
-		Split2flac splits one big APE/FLAC/WV/WAV audio image (or a collection of such files, recursively) with CUE sheet into FLAC/M4A/MP3/OGG_VORBIS/WAV tracks with tagging, renaming, charset conversion of cue sheet, album cover images. It also uses configuration file, so no need to pass a lot of arguments every time, only an input file. Should work in any POSIX-compliant shell.
-	</longdescription>
-	<use>
-		<flag name="enca">Try to guess the charset using enca</flag>
-		<flag name="flake">Add support for Flake, alternative FLAC encoder</flag>
-		<flag name="mac">Add support for Monkey's Audio files</flag>
-		<flag name="replaygain">Support for Replay Gain metadata, for relative volume adjustment</flag>
-	</use>
-	<upstream>
-		<remote-id type="github">ftrvxmtrx/split2flac</remote-id>
-	</upstream>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>nikoli@gmx.us</email>
+    <name>Nikoli</name>
+  </maintainer>
+  <maintainer>
+    <email>maksbotan@gentoo.org</email>
+    <name>Maxim Koltsov</name>
+  </maintainer>
+  <herd>sound</herd>
+  <longdescription lang="en">
+    Split2flac splits one big APE/FLAC/WV/WAV audio image (or a collection of
+    such files, recursively) with CUE sheet into FLAC/M4A/MP3/OGG_VORBIS/WAV
+    tracks with tagging, renaming, charset conversion of cue sheet, album cover
+    images. It also uses configuration file, so no need to pass a lot of
+    arguments every time, only an input file. Should work in any
+    POSIX-compliant shell.
+  </longdescription>
+  <use>
+    <flag name="enca">Try to guess the charset using enca</flag>
+    <flag name="flake">Add support for Flake, alternative FLAC encoder</flag>
+    <flag name="mac">Add support for Monkey's Audio files</flag>
+    <flag name="replaygain">Support for Replay Gain metadata, for relative
+      volume adjustment</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">ftrvxmtrx/split2flac</remote-id>
+  </upstream>
 </pkgmetadata>

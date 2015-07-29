@@ -1,0 +1,9 @@
+# ChangeLog for media-fonts/fira-mono
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/fira-mono/ChangeLog,v 1.1 2015/07/29 14:06:07 yngwin Exp $
+
+*fira-mono-3.205 (29 Jul 2015)
+
+  29 Jul 2015; Ben de Groot <yngwin@gentoo.org> +fira-mono-3.205.ebuild,
+  +metadata.xml:
+  initial import from bug #556226
