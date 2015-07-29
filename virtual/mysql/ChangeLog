@@ -1,6 +1,12 @@
 # ChangeLog for virtual/mysql
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/mysql/ChangeLog,v 1.63 2015/07/28 02:31:32 grknight Exp $
+# $Header: /var/cvsroot/gentoo-x86/virtual/mysql/ChangeLog,v 1.64 2015/07/29 01:45:06 grknight Exp $
+
+*mysql-5.6-r5 (29 Jul 2015)
+
+  29 Jul 2015; Brian Evans <grknight@gentoo.org> +mysql-5.6-r5.ebuild,
+  -mysql-5.6-r4.ebuild:
+  Revbump to accurately refer to virtual/libmysqlclient wrt bug 556096
 
 *mysql-5.6-r4 (28 Jul 2015)
 

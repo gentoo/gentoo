@@ -1,5 +1,5 @@
---- scripts/Makefile.nml.old	2013-05-09 20:09:52.992038666 +0200
-+++ scripts/Makefile.nml	2013-05-09 20:10:36.942970903 +0200
+--- scripts/Makefile.nml.old
++++ scripts/Makefile.nml
 @@ -14,11 +14,11 @@
  
  %.src.dep: $(SRC_DIR)/%.pnml

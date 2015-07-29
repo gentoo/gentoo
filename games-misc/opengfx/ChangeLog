@@ -1,6 +1,13 @@
 # ChangeLog for games-misc/opengfx
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/opengfx/ChangeLog,v 1.40 2015/01/27 07:49:44 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-misc/opengfx/ChangeLog,v 1.41 2015/07/29 01:46:07 mr_bones_ Exp $
+
+*opengfx-0.5.2 (29 Jul 2015)
+
+  29 Jul 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/opengfx-0.5.2-Makefile.patch, +opengfx-0.5.2.ebuild,
+  files/opengfx-0.5.1-gcc48.patch:
+  version bump (bug #555968)
 
   27 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org>
   -files/opengfx-0.4.7-gcc48.patch, -opengfx-0.4.7.ebuild:
