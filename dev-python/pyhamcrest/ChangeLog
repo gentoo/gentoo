@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/pyhamcrest
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyhamcrest/ChangeLog,v 1.9 2015/07/29 21:27:45 alunduil Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyhamcrest/ChangeLog,v 1.10 2015/07/29 21:31:58 alunduil Exp $
+
+  29 Jul 2015; Alex Brandt <alunduil@gentoo.org> -pyhamcrest-1.8.1-r1.ebuild:
+  remove 1.8.1-r1
 
 *pyhamcrest-1.8.5 (29 Jul 2015)
 

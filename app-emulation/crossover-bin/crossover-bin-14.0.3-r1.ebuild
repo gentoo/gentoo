@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/crossover-bin/crossover-bin-14.0.3.ebuild,v 1.3 2015/06/14 18:31:19 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/crossover-bin/crossover-bin-14.0.3-r1.ebuild,v 1.1 2015/07/29 22:25:04 ryao Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
@@ -88,6 +88,12 @@ src_unpack() {
 src_prepare() {
 	python_fix_shebang .
 
+	sed -i -e "s:\$link=\"\$xdgdir:\$link=\"${ED}\/\$xdgdir:" "${S}/lib/perl/CXMenu.pm"
+	sed -i \
+	-e "s:\"\(.*\)/applications:\"${ED}/\1/applications:" \
+		-e "s:\"\(.*\)/desktop-directories:\"${ED}/\1/desktop-directories:" \
+		"${S}/lib/perl/CXMenuXDG.pm"
+
 	# Remove unnecessary files
 	rm -r license.txt guis/ || die "Could not remove files"
 	use doc || rm -r doc/ || die "Could not remove files"
@@ -114,7 +120,13 @@ src_install() {
 	# XXX: locate_gui.sh automatically detects *-application-merged directories
 	# This means what we install will vary depending on the contents of
 	# /etc/xdg, which is a QA violation. It is not clear how to resolve this.
-	XDG_CONFIG_HOME="/etc/xdg" \
+	XDG_DATA_DIRS="/usr/share" XDG_CONFIG_HOME="/etc/xdg" \
 		"${ED}opt/cxoffice/bin/cxmenu" --destdir="${ED}" --crossover --install \
 		|| die "Could not install menus"
+
+	rm "${ED}usr/share/applications/"*"Uninstall CrossOver Linux.desktop"
+	sed -i -e "s:${ED}:/:" "${ED}usr/share/applications/"*.desktop
+	sed -i -e "s:${ED}/::" \
+		"${ED}/opt/cxoffice/lib/perl/CXMenu.pm" \
+		"${ED}/opt/cxoffice/lib/perl/CXMenuXDG.pm"
 }

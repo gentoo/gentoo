@@ -1,6 +1,20 @@
 # ChangeLog for app-emulation/crossover-bin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/crossover-bin/ChangeLog,v 1.20 2015/06/14 18:31:19 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/crossover-bin/ChangeLog,v 1.22 2015/07/29 22:25:04 ryao Exp $
+
+*crossover-bin-14.0.3-r1 (29 Jul 2015)
+*crossover-bin-14.1.4-r1 (29 Jul 2015)
+
+  29 Jul 2015; Richard Yao <ryao@gentoo.org> +crossover-bin-14.0.3-r1.ebuild,
+  +crossover-bin-14.1.4-r1.ebuild, -crossover-bin-14.0.3.ebuild,
+  -crossover-bin-14.1.4.ebuild:
+  Remove ${ED} injection from perl scripts
+
+*crossover-bin-14.1.4 (29 Jul 2015)
+
+  29 Jul 2015; Richard Yao <ryao@gentoo.org> +crossover-bin-14.1.4.ebuild,
+  crossover-bin-14.0.3.ebuild:
+  Fix 14.0.3 ebuild and bump to 14.1.4
 
   14 Jun 2015; Ulrich Müller <ulm@gentoo.org> crossover-bin-12.5.0-r2.ebuild,
   crossover-bin-12.5.1-r2.ebuild, crossover-bin-13.0.0-r2.ebuild,
