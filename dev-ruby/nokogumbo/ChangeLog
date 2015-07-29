@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/nokogumbo
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/nokogumbo/ChangeLog,v 1.7 2015/07/22 18:42:53 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/nokogumbo/ChangeLog,v 1.8 2015/07/29 18:54:00 grobian Exp $
+
+  29 Jul 2015; Fabian Groffen <grobian@gentoo.org> nokogumbo-1.4.2.ebuild:
+  Keyworded for *-solaris, *-macos, bug #549692
 
   22 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> nokogumbo-1.4.1.ebuild,
   nokogumbo-1.4.2.ebuild:

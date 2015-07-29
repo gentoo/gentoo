@@ -1,10 +1,14 @@
 # ChangeLog for profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10214 2015/07/28 07:38:07 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10215 2015/07/29 18:49:27 chewi Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  29 Jul 2015; James Le Cuirot <chewi@gentoo.org> package.mask:
+  dev-java/soap is fixable but it and its related packages are all dead
+  upstream. Removal in 30 days. See bug #556250.
 
   28 Jul 2015; Pawel Hajdan jr <phajdan.jr@gentoo.org> package.mask:
   Roll dev channel mask for chromium-46.

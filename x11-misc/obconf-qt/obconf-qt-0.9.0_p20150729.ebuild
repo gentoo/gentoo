@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/obconf-qt/obconf-qt-0.1.0_p20141029.ebuild,v 1.3 2015/04/03 10:35:58 dlan Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/obconf-qt/obconf-qt-0.9.0_p20150729.ebuild,v 1.1 2015/07/29 18:42:31 jauhien Exp $
 
 EAPI=5
 inherit cmake-utils
@@ -38,10 +38,3 @@ RDEPEND="dev-libs/glib:2
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
-
-src_configure() {
-	local mycmakeargs=(
-		-DUSE_QT5=ON
-	)
-	cmake-utils_src_configure
-}

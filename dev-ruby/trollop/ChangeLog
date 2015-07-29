@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/trollop
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/trollop/ChangeLog,v 1.35 2015/06/21 10:49:30 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/trollop/ChangeLog,v 1.36 2015/07/29 18:49:13 grobian Exp $
+
+  29 Jul 2015; Fabian Groffen <grobian@gentoo.org> trollop-2.1.2.ebuild:
+  Keyworded for *-solaris, *-macos, bug #542782
 
   21 Jun 2015; Markus Meier <maekke@gentoo.org> trollop-1.16.2-r4.ebuild:
   add ~arm, bug #550510

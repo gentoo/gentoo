@@ -1,6 +1,9 @@
 # ChangeLog for virtual/ruby-ffi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/ruby-ffi/ChangeLog,v 1.47 2015/05/23 06:28:15 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/virtual/ruby-ffi/ChangeLog,v 1.48 2015/07/29 18:39:57 grobian Exp $
+
+  29 Jul 2015; Fabian Groffen <grobian@gentoo.org> ruby-ffi-3.ebuild:
+  Keyworded for *-solaris, *-macos, bug #519596
 
   23 May 2015; Hans de Graaff <graaff@gentoo.org> ruby-ffi-3.ebuild:
   Drop obsolete jruby target. Add ruby22.

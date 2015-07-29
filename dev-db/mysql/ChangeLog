@@ -1,6 +1,14 @@
 # ChangeLog for dev-db/mysql
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql/ChangeLog,v 1.741 2015/07/28 02:26:58 grknight Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql/ChangeLog,v 1.743 2015/07/29 19:16:20 grknight Exp $
+
+  29 Jul 2015; Brian Evans <grknight@gentoo.org> -mysql-5.5.43.ebuild:
+  Drop vulernable 5.5. version wrt Bug 555478
+
+*mysql-5.5.45 (29 Jul 2015)
+
+  29 Jul 2015; Brian Evans <grknight@gentoo.org> +mysql-5.5.45.ebuild:
+  Version bump for 5.5 series
 
 *mysql-5.6.25-r1 (28 Jul 2015)
 

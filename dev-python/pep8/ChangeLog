@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/pep8
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pep8/ChangeLog,v 1.51 2015/06/07 14:43:22 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pep8/ChangeLog,v 1.52 2015/07/29 19:02:10 grobian Exp $
+
+  29 Jul 2015; Fabian Groffen <grobian@gentoo.org> pep8-1.6.2.ebuild:
+  Keyworded for *-solaris, *-macos
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

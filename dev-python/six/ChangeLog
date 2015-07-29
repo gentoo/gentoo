@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/six
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/six/ChangeLog,v 1.71 2015/07/08 20:19:37 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/six/ChangeLog,v 1.72 2015/07/29 19:14:33 grobian Exp $
+
+  29 Jul 2015; Fabian Groffen <grobian@gentoo.org> six-1.9.0-r1.ebuild:
+  Keyworded for *-solaris
 
   08 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> six-1.9.0-r1.ebuild:
   x86 stable wrt bug #554114

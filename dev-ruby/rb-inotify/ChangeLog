@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/rb-inotify
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rb-inotify/ChangeLog,v 1.39 2015/06/07 19:17:18 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rb-inotify/ChangeLog,v 1.40 2015/07/29 18:41:14 grobian Exp $
+
+  29 Jul 2015; Fabian Groffen <grobian@gentoo.org> rb-inotify-0.9.5-r1.ebuild:
+  Keyworded for *-solaris, *-macos, bug #519596
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

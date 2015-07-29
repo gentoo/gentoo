@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/nio4r/nio4r-1.1.1.ebuild,v 1.1 2015/07/18 20:56:16 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/nio4r/nio4r-1.1.1.ebuild,v 1.2 2015/07/29 18:43:38 grobian Exp $
 
 EAPI=5
 
@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/celluloid/nio4r"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
 # Note that nio4r bundles a patched copy of libev, and without these

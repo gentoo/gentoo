@@ -4,11 +4,11 @@ DESCRIPTION=Python daemon that collects and publishes system metrics
 EAPI=5
 HOMEPAGE=https://github.com/python-diamond/Diamond
 IUSE=test mongo mysql snmp redis python_targets_python2_7
-KEYWORDS=~x86 ~amd64
+KEYWORDS=~amd64 ~x86 ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=MIT
 RDEPEND=dev-python/configobj dev-python/setproctitle mongo? ( dev-python/pymongo ) mysql? ( dev-python/mysql-python ) snmp? ( dev-python/pysnmp ) redis? ( dev-python/redis-py ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=https://github.com/python-diamond/Diamond/archive/v4.0.tar.gz -> python-diamond-4.0.tar.gz
 _eclasses_=distutils-r1	715b22a21726d3fd76b17e007c5daf5f	eutils	9fb270e417e0e83d64ca52586c4a79de	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-r1	d9c8348f26710ea523a385c2328cf027	python-utils-r1	68e010c13e97b7b2c7bf403ee9c51e1b	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=50af63dc1c371867e0dea165a73ff24b
+_md5_=5b8107cea45b4fb30b2b381856d6d653

@@ -1,6 +1,11 @@
 # ChangeLog for dev-util/ragel
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/ragel/ChangeLog,v 1.64 2014/08/10 21:29:20 slyfox Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/ragel/ChangeLog,v 1.65 2015/07/29 18:59:53 grobian Exp $
+
+*ragel-6.9 (29 Jul 2015)
+
+  29 Jul 2015; Fabian Groffen <grobian@gentoo.org> +ragel-6.9.ebuild:
+  Version bump, bug #553166
 
   10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> ragel-6.7-r1.ebuild,
   ragel-6.8.ebuild:

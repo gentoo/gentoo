@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/ffi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ffi/ChangeLog,v 1.104 2015/07/02 00:54:24 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ffi/ChangeLog,v 1.105 2015/07/29 18:39:18 grobian Exp $
+
+  29 Jul 2015; Fabian Groffen <grobian@gentoo.org> ffi-1.9.10.ebuild:
+  Keyworded for *-solaris, *-macos, bug #519596
 
 *ffi-1.9.10 (02 Jul 2015)
 

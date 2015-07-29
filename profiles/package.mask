@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16689 2015/07/28 07:38:07 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16690 2015/07/29 18:49:27 chewi Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -29,6 +29,14 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# James Le Cuirot <chewi@gentoo.org> (29 Jul 2015)
+# dev-java/soap is fixable but it and its related packages are all
+# dead upstream. Removal in 30 days. See bug #556250.
+dev-java/jldap
+dev-java/openspml
+dev-java/openspml2
+dev-java/soap
 
 # Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (28 Jul 2015)
 # Dev channel releases are only for people who are developers or want more

@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/celluloid-io
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/celluloid-io/ChangeLog,v 1.8 2015/07/11 20:15:09 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/celluloid-io/ChangeLog,v 1.9 2015/07/29 18:44:18 grobian Exp $
+
+  29 Jul 2015; Fabian Groffen <grobian@gentoo.org> celluloid-io-0.16.2.ebuild:
+  Keyworded for *-solaris, *-macos, bug #519596
 
   11 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> celluloid-io-0.16.2.ebuild:
   Add ~x86 keyword wrt bug #519596
