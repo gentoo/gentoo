@@ -4,5 +4,6 @@
   <herd>python</herd>
   <upstream>
     <remote-id type="github">tweepy/tweepy</remote-id>
+    <remote-id type="pypi">tweepy</remote-id>
   </upstream>
 </pkgmetadata>

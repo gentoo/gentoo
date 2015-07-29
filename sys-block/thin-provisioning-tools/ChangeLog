@@ -1,6 +1,13 @@
 # ChangeLog for sys-block/thin-provisioning-tools
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/thin-provisioning-tools/ChangeLog,v 1.64 2015/07/29 05:29:36 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-block/thin-provisioning-tools/ChangeLog,v 1.65 2015/07/29 05:44:08 vapier Exp $
+
+*thin-provisioning-tools-0.5.3 (29 Jul 2015)
+
+  29 Jul 2015; Mike Frysinger <vapier@gentoo.org>
+  +thin-provisioning-tools-0.5.3.ebuild:
+  Version bump #554968 by Manuel Rüger.  Add support for USE=static #484538 by
+  Austin S. Hemmelgarn.
 
   29 Jul 2015; Mike Frysinger <vapier@gentoo.org>
   thin-provisioning-tools-0.4.1.ebuild:
