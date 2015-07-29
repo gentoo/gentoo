@@ -1,6 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/darwin/macos/package.mask,v 1.8 2014/01/02 22:49:09 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/darwin/macos/package.mask,v 1.9 2015/07/29 12:20:06 chewi Exp $
+
+# James Le Cuirot <chewi@gentoo.org> (29 Jul 2015)
+# Recent Oracle releases only support recent Mac OS releases. We can't
+# keep old versions due to vulnerabilities.
+dev-java/oracle-jdk-bin
+dev-java/oracle-jre-bin
 
 # Fabian Groffen <grobian@gentoo.org> (29 Sep 2012)
 # Use Apple's provided Java6 instead!

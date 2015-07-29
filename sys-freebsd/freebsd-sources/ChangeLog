@@ -1,6 +1,13 @@
 # ChangeLog for sys-freebsd/freebsd-sources
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-sources/ChangeLog,v 1.116 2015/07/25 12:07:51 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-sources/ChangeLog,v 1.117 2015/07/29 12:14:42 mgorny Exp $
+
+*freebsd-sources-10.1-r6 (29 Jul 2015)
+
+  29 Jul 2015; Michał Górny <mgorny@gentoo.org> +freebsd-sources-10.1-r6.ebuild,
+  -freebsd-sources-10.1-r5.ebuild:
+  Fix FreeBSD-SA-15:15.tcp. https://github.com/gentoo/gentoo-portage-rsync-
+  mirror/pull/187 by nigoro.
 
 *freebsd-sources-10.1-r5 (25 Jul 2015)
 

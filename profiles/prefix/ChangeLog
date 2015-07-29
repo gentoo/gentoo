@@ -1,6 +1,14 @@
 # ChangeLog for profiles/prefix
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/ChangeLog,v 1.466 2015/06/30 08:16:35 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/ChangeLog,v 1.467 2015/07/29 12:20:06 chewi Exp $
+
+  29 Jul 2015; James Le Cuirot <chewi@gentoo.org>
+  darwin/macos/10.4/package.mask, darwin/macos/10.5/package.mask,
+  +darwin/macos/10.8/package.unmask, +darwin/macos/10.9/package.unmask,
+  +darwin/macos/10.10/package.unmask, darwin/macos/package.mask,
+  darwin/macos/package.use.mask:
+  Update Oracle JVM masks for Mac OS. Mask by default and unmask only on recent
+  releases because these are fewer.
 
   16 Jun 2015; Fabian Groffen <grobian@gentoo.org> package.mask:
   Unmask Python 2.7.10, haubi applied a fix from upstream for the issue

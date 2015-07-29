@@ -1,6 +1,12 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/darwin/macos/package.use.mask,v 1.13 2012/08/01 10:46:14 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/darwin/macos/package.use.mask,v 1.14 2015/07/29 12:20:06 chewi Exp $
+
+# James Le Cuirot <chewi@gentoo.org> (29 Jul 2015)
+# JavaFX is included on Mac OS. I think a browser plugin is too but as
+# libjvm rather than libnpjp2 like on Linux so keep nsplugin masked.
+dev-java/oracle-jdk-bin -javafx
+dev-java/oracle-jre-bin -javafx
 
 # Fabian Groffen <grobian@gentoo.org> (30 Oct 2009)
 # X and linux only

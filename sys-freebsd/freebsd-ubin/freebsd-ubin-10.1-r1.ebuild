@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-ubin/freebsd-ubin-10.1.ebuild,v 1.2 2015/06/05 16:43:55 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-ubin/freebsd-ubin-10.1-r1.ebuild,v 1.1 2015/07/29 12:09:34 mgorny Exp $
 
 EAPI=5
 
@@ -11,8 +11,13 @@ SLOT="0"
 IUSE="ar atm audit bluetooth ipv6 kerberos netware nis ssl usb build zfs"
 LICENSE="BSD zfs? ( CDDL )"
 
+# Security Advisory and Errata patches.
+UPSTREAM_PATCHES=( "SA-15:14/bsdpatch.patch" )
+
 if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+	SRC_URI="${SRC_URI}
+		$(freebsd_upstream_patches)"
 fi
 
 EXTRACTONLY="

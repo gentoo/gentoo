@@ -1,6 +1,15 @@
 # ChangeLog for net-firewall/fwknop
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/fwknop/ChangeLog,v 1.7 2015/05/01 09:54:59 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/fwknop/ChangeLog,v 1.8 2015/07/29 11:41:52 idella4 Exp $
+
+*fwknop-2.6.6-r1 (29 Jul 2015)
+
+  29 Jul 2015; Ian Delaney <idella4@gentoo.org> +files/fwknopd.service,
+  +fwknop-2.6.6-r1.ebuild, -fwknop-2.6.6.ebuild, files/fwknopd.confd,
+  files/fwknopd.init:
+  revbump; new script files added to equip for systemd, other script files
+  edited from patches via bug #554690, remove defunct fwknop-2.6.6.ebuild to
+  avoid any mixing of updated scripts
 
   01 May 2015; Ian Delaney <idella4@gentoo.org> files/fwknopd.confd,
   files/fwknopd.init:

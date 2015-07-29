@@ -1,9 +1,14 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use.mask,v 1.695 2015/07/21 09:23:57 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use.mask,v 1.696 2015/07/29 12:22:32 chewi Exp $
 
 # This file requires >=portage-2.1.1
 # New entries go on top.
+
+# James Le Cuirot <chewi@gentoo.org> (29 Jul 2015)
+# JavaFX and the browser plugin are not included on some platforms.
+dev-java/oracle-jdk-bin javafx nsplugin
+dev-java/oracle-jre-bin javafx nsplugin
 
 # Manuel Rüger <mrueg@gentoo.org> (05 Jul 2015)
 # app-text/migemo is masked because it fails for ruby20
@@ -734,8 +739,6 @@ dev-python/kaa-base tls
 # Java is not supported in most of the arches enchant is keyworded
 app-text/enchant zemberek
 
-dev-java/sun-jdk nsplugin
-dev-java/sun-jre-bin nsplugin
 dev-java/ibm-jdk-bin nsplugin
 dev-java/ibm-jre-bin nsplugin
 

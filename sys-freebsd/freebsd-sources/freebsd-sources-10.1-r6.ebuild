@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-sources/freebsd-sources-10.1-r5.ebuild,v 1.1 2015/07/25 12:07:51 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-sources/freebsd-sources-10.1-r6.ebuild,v 1.1 2015/07/29 12:14:42 mgorny Exp $
 
 EAPI=5
 
@@ -18,6 +18,7 @@ UPSTREAM_PATCHES=( "SA-15:02/sctp.patch"
 	"SA-15:04/igmp-errata.patch"
 	"SA-15:09/ipv6.patch"
 	"SA-15:13/tcp.patch"
+	"SA-15:15/tcp-9.3-10.1.patch"
 	"EN-15:01/vt.patch"
 	"EN-15:05/ufs.patch"
 	"EN-15:07/zfs.patch" )

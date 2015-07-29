@@ -1,6 +1,10 @@
 # ChangeLog for Gentoo base-profile
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/ChangeLog,v 1.820 2015/07/25 15:53:19 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/ChangeLog,v 1.821 2015/07/29 12:22:32 chewi Exp $
+
+  29 Jul 2015; James Le Cuirot <chewi@gentoo.org> package.use.mask:
+  Remove obsolete nsplugin masks because the old Sun JVMs are masked entirely.
+  Replace with new Oracle ones that also include javafx.
 
   25 Jul 2015; Mike Gilbert <floppym@gentoo.org> make.defaults:
   Enable python3_4 by default.

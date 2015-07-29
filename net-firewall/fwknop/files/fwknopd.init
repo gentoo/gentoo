@@ -1,28 +1,27 @@
 #!/sbin/runscript
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/fwknop/files/fwknopd.init,v 1.4 2015/05/01 09:55:00 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/fwknop/files/fwknopd.init,v 1.5 2015/07/29 11:41:52 idella4 Exp $
 
 extra_commands="checkconfig"
 extra_started_commands="reload"
 
+: ${FWKNOPD_BINARY:=/usr/sbin/fwknopd}
 : ${FWKNOPD_CONFDIR:=/etc/fwknop}
 : ${FWKNOPD_CONFIG:=${FWKNOPD_CONFDIR}/fwknopd.conf}
 : ${FWKNOPD_PIDFILE:=/run/fwknop/${SVCNAME}.pid}
-: ${FWKNOPD_BINARY:=/usr/sbin/fwknopd}
 
 depend() {
-	need iptables
+	after iptables ip6tables ebtables firewall
 	use logger
 	if [ "${rc_need+set}" = "set" ]; then
 		: # Do nothing, the user has explicitly set rc_need
 	else
-		warn_intf=''
+		local x warn_intf
 		for x in $(awk '/^PCAP_INTF/{ sub(";$", ""); print $2 }' "${FWKNOPD_CONFIG}" 2>/dev/null); do
-			warn_intf="${warn_intf} $x"
+			warn_intf="${warn_intf} ${x}"
 		done
-		unset x
-		if [ "${warn_intf:+set}" = "set" ]; then
+		if [ -n "${warn_intf}" ]; then
 			need net
 			ewarn "You are binding an interface in PCAP_INTF statement in your fwknopd.conf!"
 			ewarn "You must add rc_need=\"net.FOO\" to your /etc/conf.d/${SVCNAME},"
@@ -30,14 +29,13 @@ depend() {
 			ewarn "${warn_intf}"
 		else
 			# if PCAP_INTF and PCAP_FILE are not set, then fwknopd uses eth0
-			if [ -z "$(grep '^PCAP_FILE' ${FWKNOPD_CONFIG})" ]; then
+			if ! grep -q '^PCAP_FILE' "${FWKNOPD_CONFIG}"; then
 				need net
 				ewarn "You are not binding any interface in PCAP_INTF statement in your fwknopd.conf,"
 				ewarn "neither you are providing PCAP_FILE option. Thus fwknopd will listen on eth0."
 				ewarn "You must add rc_need=\"net.eth0\" to your /etc/conf.d/${SVCNAME}."
 			fi
 		fi
-		unset warn_intf
 	fi
 }
 
@@ -70,7 +68,7 @@ start() {
 
 	ebegin "Starting ${SVCNAME}"
 	start-stop-daemon --start \
-		--exec "${FWKNOPD_BINARY}" --pidfile="${FWKNOPD_PIDFILE}" \
+		--exec ${FWKNOPD_BINARY} --pidfile ${FWKNOPD_PIDFILE} \
 		-- ${FWKNOPD_OPTS}
 	eend $?
 }
@@ -81,16 +79,14 @@ stop() {
 	fi
 
 	ebegin "Stopping ${SVCNAME}"
-	start-stop-daemon --stop \
-		--exec "${FWKNOPD_BINARY}" --pidfile "${FWKNOPD_PIDFILE}"
+	start-stop-daemon --stop --pidfile ${FWKNOPD_PIDFILE}
 	eend $?
 }
 
 reload() {
 	checkconfig || return 1
 
-	ebegin "Reloading ${SVCNAME}"
-	start-stop-daemon --signal HUP \
-		--exec "${FWKNOPD_BINARY}" --pidfile "${FWKNOPD_PIDFILE}"
+	ebegin "Reloading ${SVCNAME} configuration"
+	start-stop-daemon --signal HUP --pidfile ${FWKNOPD_PIDFILE}
 	eend $?
 }

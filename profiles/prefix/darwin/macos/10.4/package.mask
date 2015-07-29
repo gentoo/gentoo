@@ -1,10 +1,6 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/darwin/macos/10.4/package.mask,v 1.6 2013/12/25 13:41:39 grobian Exp $
-
-# Fabian Groffen <grobian@gentoo.org> (25 Dec 2013)
-# Needs 64-bits Intel
-dev-java/oracle-jdk-bin
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/darwin/macos/10.4/package.mask,v 1.7 2015/07/29 12:20:06 chewi Exp $
 
 # Fabian Groffen <grobian@gentoo.org> (03 May 2012)
 # Needs 10.6 or up

@@ -1,6 +1,13 @@
 # ChangeLog for sys-freebsd/freebsd-ubin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-ubin/ChangeLog,v 1.103 2015/06/05 16:43:55 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-ubin/ChangeLog,v 1.104 2015/07/29 12:09:34 mgorny Exp $
+
+*freebsd-ubin-10.1-r1 (29 Jul 2015)
+
+  29 Jul 2015; Michał Górny <mgorny@gentoo.org> +freebsd-ubin-10.1-r1.ebuild,
+  -freebsd-ubin-10.1.ebuild:
+  Fix FreeBSD-SA-15:14.bsdpatch. https://github.com/gentoo/gentoo-portage-rsync-
+  mirror/pull/186 by nigoro.
 
   05 Jun 2015; Michał Górny <mgorny@gentoo.org> freebsd-ubin-10.1.ebuild:
   Bump to EAPI=5. Use upstream tarballs.

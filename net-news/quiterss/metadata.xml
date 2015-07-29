@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>proxy-maintainers</herd>
-	<herd>qt</herd>
-	<maintainer>
-		<email>nikoli@gmx.us</email>
-		<name>Nikoli</name>
-	</maintainer>
-	<upstream>
-		<remote-id type="google-code">quite-rss</remote-id>
-		<bugs-to>https://code.google.com/p/quite-rss/issues</bugs-to>
-		<remote-id type="github">QuiteRSS/quiterss</remote-id>
-	</upstream>
-	<use>
-		<flag name="phonon">Enable sound support via <pkg>media-libs/phonon</pkg> or <pkg>dev-qt/qtphonon</pkg></flag>
-	</use>
+  <herd>qt</herd>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>nikoli@gmx.us</email>
+    <name>Nikoli</name>
+  </maintainer>
+  <use>
+    <flag name="phonon">Enable sound support via <pkg>media-libs/phonon</pkg>
+      or <pkg>dev-qt/qtphonon</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="google-code">quite-rss</remote-id>
+    <bugs-to>https://code.google.com/p/quite-rss/issues</bugs-to>
+    <remote-id type="github">QuiteRSS/quiterss</remote-id>
+  </upstream>
 </pkgmetadata>

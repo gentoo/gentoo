@@ -1,14 +1,14 @@
 # /etc/conf.d/fwknopd: config file for /etc/init.d/fwknopd
 
-# Path to the fwknopd config files
+# Path to the fwknopd config directory (needs to be an absolute path).
 
 FWKNOPD_CONFDIR="/etc/fwknop"
 
 
-# Options to pass to fwknopd daemon.
+# Additional options to pass to fwknopd.
 # Refer to the fwknopd(8) manpage for more information.
 
-FWKNOPD_OPTS=""
+#FWKNOPD_OPTS=""
 
 
 # Pid file to use (needs to be an absolute path).
