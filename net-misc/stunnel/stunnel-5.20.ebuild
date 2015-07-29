@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/stunnel/stunnel-5.20.ebuild,v 1.1 2015/07/09 14:38:38 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/stunnel/stunnel-5.20.ebuild,v 1.3 2015/07/29 13:14:41 blueness Exp $
 
 EAPI="5"
 
@@ -18,7 +18,7 @@ SRC_URI="ftp://ftp.stunnel.org/stunnel/archive/${PV%%.*}.x/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="ipv6 selinux stunnel3 tcpd"
 
 DEPEND="tcpd? ( sys-apps/tcp-wrappers )
@@ -26,6 +26,8 @@ DEPEND="tcpd? ( sys-apps/tcp-wrappers )
 RDEPEND="${DEPEND}
 	stunnel3? ( dev-lang/perl )
 	selinux? ( sec-policy/selinux-stunnel )"
+
+RESTRICT="test"
 
 pkg_setup() {
 	enewgroup stunnel

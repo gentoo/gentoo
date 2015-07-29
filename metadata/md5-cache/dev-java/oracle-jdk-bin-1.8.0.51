@@ -1,0 +1,15 @@
+DEFINED_PHASES=install nofetch postinst postrm prepare prerm setup unpack
+DEPEND=jce? ( app-arch/unzip ) examples? ( x64-macos? ( app-arch/unzip ) ) pax_kernel? ( sys-apps/paxctl ) >=dev-java/java-config-2.2.0 app-eselect/eselect-java
+DESCRIPTION=Oracle's Java SE Development Kit
+EAPI=5
+HOMEPAGE=http://www.oracle.com/technetwork/java/javase/
+IUSE=alsa +awt cups derby doc examples +fontconfig javafx jce nsplugin pax_kernel selinux source
+KEYWORDS=~amd64 ~arm ~x86 ~amd64-linux ~x86-linux ~x64-macos ~sparc64-solaris ~x64-solaris
+LICENSE=Oracle-BCLA-JavaSE examples? ( BSD )
+RDEPEND=!x64-macos? ( awt? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXi x11-libs/libXrender ) javafx? ( dev-libs/glib:2 dev-libs/libxml2:2 dev-libs/libxslt media-libs/freetype:2 x11-libs/cairo x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXtst x11-libs/libXxf86vm x11-libs/pango virtual/opengl ) ) alsa? ( media-libs/alsa-lib ) cups? ( net-print/cups ) doc? ( dev-java/java-sdk-docs:1.8 ) fontconfig? ( media-libs/fontconfig:1.0 ) !prefix? ( sys-libs/glibc:* ) selinux? ( sec-policy/selinux-java ) >=dev-java/java-config-2.2.0 app-eselect/eselect-java
+REQUIRED_USE=javafx? ( alsa fontconfig )
+RESTRICT=fetch preserve-libs strip
+SLOT=1.8
+SRC_URI=amd64? ( jdk-8u51-linux-x64.tar.gz examples? ( jdk-8u51-linux-x64-demos.tar.gz ) ) arm? ( jdk-8u51-linux-arm-vfp-hflt.tar.gz examples? ( jdk-8u51-linux-arm-vfp-hflt-demos.tar.gz ) ) x86? ( jdk-8u51-linux-i586.tar.gz examples? ( jdk-8u51-linux-i586-demos.tar.gz ) ) x64-solaris? ( jdk-8u51-solaris-x64.tar.gz examples? ( jdk-8u51-solaris-x64-demos.tar.gz ) ) sparc64-solaris? ( jdk-8u51-solaris-sparcv9.tar.gz examples? ( jdk-8u51-solaris-sparcv9-demos.tar.gz ) ) x64-macos? ( jdk-8u51-macosx-x64.dmg examples? ( jdk-8u51-macosx-x86_64-demos.zip ) ) jce? ( jce_policy-8.zip )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	java-vm-2	caa0212cf1c60716fd4b3ab09268be3e	multilib	62927b3db3a589b0806255f3a002d5d3	pax-utils	dfe060cb70d89757fde5c1ff8405e950	prefix	21058c21ca48453d771df15500873ede	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=ed550f7a4a33cd668575a58269d2cbfe

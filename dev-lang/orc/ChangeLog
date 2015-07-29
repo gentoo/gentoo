@@ -1,6 +1,11 @@
 # ChangeLog for dev-lang/orc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/orc/ChangeLog,v 1.51 2015/07/05 13:24:10 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/orc/ChangeLog,v 1.52 2015/07/29 12:51:04 tetromino Exp $
+
+  29 Jul 2015; Alexandre Rostovtsev <tetromino@gentoo.org> orc-0.4.23.ebuild,
+  orc-0.4.24.ebuild:
+  Fix sandbox violation when USE=examples and XDG_RUNTIME_DIR doesn't match
+  portage user (bug #556160, thanks to Kobboi and Pacho Ramos).
 
   05 Jul 2015; Manuel Rüger <mrueg@gentoo.org> orc-0.4.24.ebuild:
   Use less blank line.

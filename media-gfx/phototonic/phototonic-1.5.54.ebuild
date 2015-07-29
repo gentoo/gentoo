@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/phototonic/phototonic-1.5.54.ebuild,v 1.1 2015/03/15 09:42:43 yngwin Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/phototonic/phototonic-1.5.54.ebuild,v 1.2 2015/07/29 13:10:53 yngwin Exp $
 
 EAPI=5
 inherit qmake-utils
@@ -10,7 +10,6 @@ HOMEPAGE="http://oferkv.github.io/phototonic/"
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/oferkv/phototonic.git"
-	KEYWORDS=""
 else
 	SRC_URI="http://dev.gentoo.org/~yngwin/distfiles/${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"

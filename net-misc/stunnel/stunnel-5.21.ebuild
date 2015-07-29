@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/stunnel/stunnel-5.21.ebuild,v 1.1 2015/07/28 12:01:09 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/stunnel/stunnel-5.21.ebuild,v 1.2 2015/07/29 13:13:25 blueness Exp $
 
 EAPI="5"
 
@@ -26,6 +26,8 @@ DEPEND="tcpd? ( sys-apps/tcp-wrappers )
 RDEPEND="${DEPEND}
 	stunnel3? ( dev-lang/perl )
 	selinux? ( sec-policy/selinux-stunnel )"
+
+RESTRICT="test"
 
 pkg_setup() {
 	enewgroup stunnel

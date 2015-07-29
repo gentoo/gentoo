@@ -1,6 +1,11 @@
 # ChangeLog for media-gfx/photoqt
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/photoqt/ChangeLog,v 1.5 2015/03/17 14:59:34 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/photoqt/ChangeLog,v 1.6 2015/07/29 13:02:13 yngwin Exp $
+
+*photoqt-1.3 (29 Jul 2015)
+
+  29 Jul 2015; Ben de Groot <yngwin@gentoo.org> +photoqt-1.3.ebuild:
+  version bump
 
   17 Mar 2015; Michael Palimaka <kensington@gentoo.org> photoqt-1.2.ebuild:
   Add missing dependencies wrt bug #543610.

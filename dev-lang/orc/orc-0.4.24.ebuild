@@ -1,9 +1,9 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/orc/orc-0.4.24.ebuild,v 1.2 2015/07/05 13:24:10 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/orc/orc-0.4.24.ebuild,v 1.3 2015/07/29 12:51:04 tetromino Exp $
 
 EAPI="5"
-inherit autotools-multilib flag-o-matic pax-utils
+inherit autotools-multilib flag-o-matic gnome2-utils pax-utils
 
 DESCRIPTION="The Oil Runtime Compiler, a just-in-time compiler for array operations"
 HOMEPAGE="http://gstreamer.freedesktop.org/"
@@ -25,6 +25,8 @@ src_prepare() {
 		sed -e '/SUBDIRS/ s:examples::' \
 			-i Makefile.am Makefile.in || die
 	fi
+
+	gnome2_environment_reset #556160
 }
 
 src_configure() {
