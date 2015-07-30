@@ -9,5 +9,5 @@ LICENSE=CDDL
 RDEPEND=>=virtual/jre-1.5 >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
 SLOT=2
 SRC_URI=http://repo.maven.apache.org/maven2/com/sun/codemodel/codemodel/2.1/codemodel-2.1-sources.jar
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	java-pkg-2	1889f7787714c5f7e3b5bb1c2be07c1f	java-pkg-simple	28dc6c3e6fa8ed51b88360dfd5fee53e	java-utils-2	abeb792ba9affd97d226ab283bfd07a2	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	java-pkg-2	1889f7787714c5f7e3b5bb1c2be07c1f	java-pkg-simple	28dc6c3e6fa8ed51b88360dfd5fee53e	java-utils-2	91c89f960c6c0f6d3d1246c409ee1d5d	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=82ba14a93c21047c93c9de27e87eccb3

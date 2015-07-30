@@ -10,5 +10,5 @@ RDEPEND=dev-java/bcprov:1.45 dev-java/commons-cli:1 dev-java/commons-codec:0 dev
 RESTRICT=mirror
 SLOT=0
 SRC_URI=http://s3.amazonaws.com/ec2-downloads/ec2-api-tools-1.6.7.2.zip
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	java-pkg-2	1889f7787714c5f7e3b5bb1c2be07c1f	java-utils-2	abeb792ba9affd97d226ab283bfd07a2	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	java-pkg-2	1889f7787714c5f7e3b5bb1c2be07c1f	java-utils-2	91c89f960c6c0f6d3d1246c409ee1d5d	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=12735c8c26829372c24c92b58250ed95

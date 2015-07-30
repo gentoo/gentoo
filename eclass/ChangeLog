@@ -1,6 +1,10 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1739 2015/07/30 20:34:57 grknight Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1740 2015/07/30 22:17:08 chewi Exp $
+
+  30 Jul 2015; James Le Cuirot <chewi@gentoo.org> java-utils-2.eclass:
+  Fix JAVA_RM_FILES by simplifying java-utils-2_src_prepare on the basis that
+  we won't be committing EAPI 0|1 ebuilds any more.
 
   30 Jul 2015; Brian Evans <grknight@gentoo.org> mysql-multilib.eclass:
   Revert bad mycmakeargs changes and introduce 3 eclass variables to have extra
