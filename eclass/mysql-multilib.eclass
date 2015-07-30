@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/mysql-multilib.eclass,v 1.25 2015/07/30 04:22:47 grknight Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/mysql-multilib.eclass,v 1.26 2015/07/30 14:04:41 grknight Exp $
 
 # @ECLASS: mysql-multilib.eclass
 # @MAINTAINER:
@@ -693,6 +693,8 @@ multilib_src_configure() {
 		-DWITHOUT_PARTITION_STORAGE_ENGINE=0 )
 
 	cmake-utils_src_configure
+	# Reset for each ABI
+	mycmakeargs=( )
 }
 
 mysql-multilib_src_compile() {
