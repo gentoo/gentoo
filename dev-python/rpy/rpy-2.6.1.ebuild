@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/rpy/rpy-2.5.6.ebuild,v 1.2 2015/04/28 03:52:02 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/rpy/rpy-2.6.1.ebuild,v 1.1 2015/07/30 09:35:17 idella4 Exp $
 
 EAPI=5
 
@@ -27,7 +27,8 @@ RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 	>=dev-python/pandas-0.13.1[${PYTHON_USEDEP}]
 	dev-python/ipython[${PYTHON_USEDEP}]
-	virtual/python-singledispatch[${PYTHON_USEDEP}]"
+	virtual/python-singledispatch[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( $(python_gen_cond_dep 'dev-python/singledispatch[${PYTHON_USEDEP}]' python2_7 python3_3) )"
@@ -36,7 +37,8 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MY_P}"
 
 # Tarball absent of doc files in doc folder
-# https://bitbucket.org/lgautier/rpy2/issue/229/
+# https://bitbucket.org/rpy2/rpy2/issues/229
+
 python_compile() {
 	if ! python_is_python3; then
 		local CFLAGS=${CFLAGS}

@@ -1,6 +1,12 @@
 # ChangeLog for net-libs/nodejs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/nodejs/ChangeLog,v 1.150 2015/07/12 00:25:09 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/nodejs/ChangeLog,v 1.152 2015/07/30 09:58:21 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> nodejs-0.12.6.ebuild:
+  Stable for x86, wrt bug #554742
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> nodejs-0.12.6.ebuild:
+  Stable for amd64, wrt bug #554742
 
 *nodejs-0.12.7 (12 Jul 2015)
 

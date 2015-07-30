@@ -1,6 +1,11 @@
 # ChangeLog for media-video/ffmpeg
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ChangeLog,v 1.879 2015/07/23 20:14:08 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ChangeLog,v 1.880 2015/07/30 09:59:35 aballier Exp $
+
+*ffmpeg-2.6.4 (30 Jul 2015)
+
+  30 Jul 2015; Alexis Ballier <aballier@gentoo.org> +ffmpeg-2.6.4.ebuild:
+  bump the 2.6 branch
 
   23 Jul 2015; Pacho Ramos <pacho@gentoo.org> ffmpeg-2.6.3.ebuild:
   ppc stable wrt bug #547462

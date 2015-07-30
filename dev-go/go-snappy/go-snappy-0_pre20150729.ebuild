@@ -1,12 +1,11 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-go/go-snappy/go-snappy-0_pre20150729.ebuild,v 1.1 2015/07/30 07:04:01 zmedico Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-go/go-snappy/go-snappy-0_pre20150729.ebuild,v 1.2 2015/07/30 10:15:41 patrick Exp $
 
 EAPI=5
 
 EGO_SRC=github.com/golang/snappy
 EGO_PN=${EGO_SRC}/...
-
 
 if [[ ${PV} = *9999* ]]; then
 	inherit golang-vcs
@@ -55,6 +54,6 @@ src_unpack() {
 fi
 
 src_install() {
-    rm -rf src/${EGO_SRC}/.git* || die
+	rm -rf src/${EGO_SRC}/.git* || die
 	golang-build_src_install
 }

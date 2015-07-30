@@ -1,12 +1,11 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-go/go-protobuf/go-protobuf-0_pre20150727.ebuild,v 1.2 2015/07/30 07:06:52 zmedico Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-go/go-protobuf/go-protobuf-0_pre20150727.ebuild,v 1.3 2015/07/30 09:31:49 patrick Exp $
 
 EAPI=5
 
 EGO_SRC=github.com/golang/protobuf
 EGO_PN=${EGO_SRC}/...
-
 
 if [[ ${PV} = *9999* ]]; then
 	inherit golang-vcs
@@ -55,7 +54,7 @@ src_unpack() {
 fi
 
 src_install() {
-    rm -rf src/${EGO_SRC}/.git* || die
+	rm -rf src/${EGO_SRC}/.git* || die
 	golang-build_src_install
 	dobin bin/*
 }

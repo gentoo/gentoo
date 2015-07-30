@@ -1,6 +1,10 @@
 # ChangeLog for dev-go/go-snappy
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-go/go-snappy/ChangeLog,v 1.1 2015/07/30 07:04:01 zmedico Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-go/go-snappy/ChangeLog,v 1.2 2015/07/30 10:15:41 patrick Exp $
+
+  30 Jul 2015; Patrick Lauer <patrick@gentoo.org>
+  go-snappy-0_pre20150729.ebuild, go-snappy-9999.ebuild:
+  Whitespace
 
 *go-snappy-9999 (30 Jul 2015)
 *go-snappy-0_pre20150729 (30 Jul 2015)

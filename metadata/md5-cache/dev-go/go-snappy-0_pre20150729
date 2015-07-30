@@ -8,4 +8,4 @@ LICENSE=BSD
 SLOT=0/0_pre20150729
 SRC_URI=https://github.com/golang/snappy/archive/723cc1e459b8eea2dea4583200fd60757d40097a.tar.gz -> go-snappy-0_pre20150729.tar.gz
 _eclasses_=golang-base	b27bb70124fa06118fd307e9f8df50b9	golang-build	347dcb77455fa2a3c30668a127d9b4dc
-_md5_=367a3a2c5e3f654ea8bfa66a9ac64d47
+_md5_=ebc084001cb977fab2e94682a2c11d9e
