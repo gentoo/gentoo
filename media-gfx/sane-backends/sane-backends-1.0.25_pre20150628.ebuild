@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/sane-backends/sane-backends-1.0.25_pre20150628.ebuild,v 1.2 2015/07/30 08:01:09 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/sane-backends/sane-backends-1.0.25_pre20150628.ebuild,v 1.3 2015/07/30 08:58:23 vapier Exp $
 
 EAPI="5"
 
@@ -259,17 +259,14 @@ multilib_src_configure() {
 multilib_src_compile() {
 	emake VARTEXFONTS="${T}/fonts"
 
-	if use usb; then
-		cd tools/hotplug || die
-		sed -i -e '/^$/d' libsane.usermap || die
-	fi
-
 	if tc-is-cross-compiler; then
+		pushd "${BUILD_DIR}"/tools >/dev/null || die
+
 		# The build system sucks and doesn't handle this properly.
 		# https://alioth.debian.org/tracker/index.php?func=detail&aid=314236&group_id=30186&atid=410366
 		tc-export_build_env BUILD_CC
-		cd "${BUILD_DIR}"/tools || die
-		${BUILD_CC} ${BUILD_CPPFLAGS} ${BUILD_CFLAGS} -I. -I../include -I"${S}"/include \
+		${BUILD_CC} ${BUILD_CPPFLAGS} ${BUILD_CFLAGS} ${BUILD_LDFLAGS} \
+			-I. -I../include -I"${S}"/include \
 			"${S}"/sanei/sanei_config.c "${S}"/sanei/sanei_constrain_value.c \
 			"${S}"/sanei/sanei_init_debug.c "${S}"/tools/sane-desc.c -o sane-desc || die
 		local dirs=( hal hotplug hotplug-ng udev )
@@ -281,6 +278,13 @@ multilib_src_compile() {
 		)
 		mkdir -p "${dirs[@]}" || die
 		emake "${targets[@]}"
+
+		popd >/dev/null
+	fi
+
+	if use usb; then
+		sed -i -e '/^$/d' \
+			tools/hotplug/libsane.usermap || die
 	fi
 }
 

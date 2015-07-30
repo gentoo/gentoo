@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16690 2015/07/29 18:49:27 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16691 2015/07/30 09:25:21 chewi Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -29,6 +29,11 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# James Le Cuirot <chewi@gentoo.org> (30 Jul 2015)
+# Holding back the removal of Java 6 and upstream is on life
+# support. Removal in 30 days. See bug #423761.
+dev-java/cocoon
 
 # James Le Cuirot <chewi@gentoo.org> (29 Jul 2015)
 # dev-java/soap is fixable but it and its related packages are all

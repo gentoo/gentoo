@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/vmd/vmd-1.9.2.ebuild,v 1.1 2015/03/06 10:07:11 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/vmd/vmd-1.9.2.ebuild,v 1.2 2015/07/30 08:48:38 jlec Exp $
 
 EAPI=5
 
@@ -33,7 +33,7 @@ CDEPEND="
 	>=x11-libs/fltk-1.1.10-r2:1
 	x11-libs/libXft
 	x11-libs/libXi
-	cuda? ( >=dev-util/nvidia-cuda-toolkit-4.2.9-r1 )
+	cuda? ( >=dev-util/nvidia-cuda-toolkit-4.2.9-r1:= )
 	gromacs? ( >=sci-chemistry/gromacs-5.0.4-r1[tng] )
 	sqlite? ( dev-db/sqlite:3= )
 	tachyon? ( >=media-gfx/tachyon-0.99_beta6 )

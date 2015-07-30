@@ -1,6 +1,10 @@
 # ChangeLog for media-gfx/sane-backends
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/sane-backends/ChangeLog,v 1.275 2015/07/30 08:01:09 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/sane-backends/ChangeLog,v 1.276 2015/07/30 08:58:23 vapier Exp $
+
+  30 Jul 2015; Mike Frysinger <vapier@gentoo.org>
+  sane-backends-1.0.25_pre20150628.ebuild:
+  Move libsane.usermap hacking after we generate the files when cross-compiling
 
   30 Jul 2015; Mike Frysinger <vapier@gentoo.org>
   sane-backends-1.0.25_pre20150628.ebuild:

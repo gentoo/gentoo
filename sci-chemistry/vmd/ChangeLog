@@ -1,6 +1,9 @@
 # ChangeLog for sci-chemistry/vmd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/vmd/ChangeLog,v 1.63 2015/04/08 09:33:09 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/vmd/ChangeLog,v 1.64 2015/07/30 08:48:38 jlec Exp $
+
+  30 Jul 2015; Justin Lecher <jlec@gentoo.org> vmd-1.9.2.ebuild:
+  Fix slot operators
 
   08 Apr 2015; Justin Lecher <jlec@gentoo.org> -vmd-1.9.1-r3.ebuild:
   Drop old

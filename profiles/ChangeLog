@@ -1,10 +1,14 @@
 # ChangeLog for profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10215 2015/07/29 18:49:27 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10216 2015/07/30 09:25:21 chewi Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  30 Jul 2015; James Le Cuirot <chewi@gentoo.org> package.mask:
+  dev-java/cocoon is holding back the removal of Java 6 and upstream is on life
+  support. Removal in 30 days. See bug #423761.
 
   29 Jul 2015; James Le Cuirot <chewi@gentoo.org> package.mask:
   dev-java/soap is fixable but it and its related packages are all dead
