@@ -1,6 +1,12 @@
 # ChangeLog for net-misc/openvswitch
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/openvswitch/ChangeLog,v 1.30 2015/07/29 17:50:11 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/openvswitch/ChangeLog,v 1.31 2015/07/29 22:36:21 prometheanfire Exp $
+
+*openvswitch-2.3.2 (29 Jul 2015)
+
+  29 Jul 2015; Matthew Thode <prometheanfire@gentoo.org>
+  +files/xcp-interface-reconfigure-2.3.2.patch, +openvswitch-2.3.2.ebuild:
+  bup
 
   29 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> openvswitch-2.3.1.ebuild:
   x86 stable wrt bug #554284
