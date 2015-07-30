@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16692 2015/07/30 15:18:34 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16693 2015/07/30 17:49:30 monsieurp Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -29,6 +29,11 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Patrice Clement <monsieurp@gentoo.org> (30 Jul 2015)
+# Broken and upstream dead isn't always a good mix.
+# Removal in 30 days. See bug #368049.
+dev-java/jjtraveler
 
 # James Le Cuirot <chewi@gentoo.org> (30 Jul 2015)
 # Holding back the removal of Java 6 and upstream is on life

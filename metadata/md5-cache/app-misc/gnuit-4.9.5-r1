@@ -1,9 +1,0 @@
-DEFINED_PHASES=configure install postinst
-DESCRIPTION=GNU Interactive Tools - increase speed and efficiency of most daily tasks
-EAPI=2
-HOMEPAGE=http://www.gnu.org/software/gnuit/
-KEYWORDS=amd64 ppc sparc x86
-LICENSE=GPL-3 FDL-1.3
-SLOT=0
-SRC_URI=mirror://gnu/gnuit/gnuit-4.9.5.tar.gz
-_md5_=d38dcc1aaa9c77c21f95783eb619bdf5

@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/cyana/cyana-2.1.ebuild,v 1.12 2013/04/27 16:50:37 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/cyana/cyana-2.1.ebuild,v 1.13 2015/07/30 18:02:51 jlec Exp $
 
-EAPI=4
+EAPI=5
 
 inherit eutils fortran-2 toolchain-funcs
 
@@ -23,7 +23,7 @@ RDEPEND="${DEPEND}"
 
 pkg_nofetch() {
 	elog "Please visit"
-	elog "http://www.las.jp/english/products/s08_cyana/licenses.html"
+	elog "http://www.las.jp/english/products/cyana.html"
 	elog "and get a copy of ${A}."
 	elog "Place it in ${DISTDIR}."
 }
@@ -53,7 +53,7 @@ src_prepare() {
 }
 
 src_compile() {
-	cd src
+	cd src || die
 	emake
 }
 

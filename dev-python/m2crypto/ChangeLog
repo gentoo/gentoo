@@ -1,6 +1,12 @@
 # ChangeLog for dev-python/m2crypto
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/m2crypto/ChangeLog,v 1.104 2015/07/16 17:38:29 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/m2crypto/ChangeLog,v 1.105 2015/07/30 17:55:01 jlec Exp $
+
+  30 Jul 2015; Justin Lecher <jlec@gentoo.org> -files/0.21.1-packaging.patch,
+  -files/m2crypto-0.21.1-cross-compile.patch,
+  -files/m2crypto-0.22.3-cross-compile.patch, -m2crypto-0.21.1-r2.ebuild,
+  -m2crypto-0.21.1-r3.ebuild, -m2crypto-0.22.3-r3.ebuild:
+  Drop old
 
   16 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> m2crypto-0.22.3-r4.ebuild:
   ia64 stable wrt bug #545606

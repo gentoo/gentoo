@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/ptpython
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/ptpython/ChangeLog,v 1.10 2015/07/02 20:29:27 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/ptpython/ChangeLog,v 1.11 2015/07/30 18:29:21 jlec Exp $
+
+*ptpython-0.18 (30 Jul 2015)
+
+  30 Jul 2015; Justin Lecher <jlec@gentoo.org> +ptpython-0.18.ebuild:
+  Version Bump
 
 *ptpython-0.16 (02 Jul 2015)
 
