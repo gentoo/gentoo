@@ -1,6 +1,9 @@
 # ChangeLog for sys-devel/bc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/bc/ChangeLog,v 1.53 2015/07/27 04:03:11 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/bc/ChangeLog,v 1.54 2015/07/30 12:28:18 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> bc-1.06.95-r1.ebuild:
+  Stable for sparc, wrt bug #554708
 
   27 Jul 2015; Mike Frysinger <vapier@gentoo.org> bc-1.06.95-r2.ebuild:
   Force CONFIG_SHELL=/bin/bash in case the user has forced a broken one #555026

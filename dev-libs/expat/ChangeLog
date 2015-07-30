@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/expat
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/expat/ChangeLog,v 1.177 2015/07/30 09:58:11 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/expat/ChangeLog,v 1.178 2015/07/30 11:32:38 klausman Exp $
+
+  30 Jul 2015; Tobias Klausmann <klausman@gentoo.org> expat-2.1.0-r5.ebuild:
+  Stable on alpha, bug 555642
 
   30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> expat-2.1.0-r5.ebuild:
   Stable for x86, wrt bug #555642

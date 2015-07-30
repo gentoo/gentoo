@@ -1,6 +1,9 @@
 # ChangeLog for net-analyzer/munin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/munin/ChangeLog,v 1.166 2015/06/13 19:41:05 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/munin/ChangeLog,v 1.167 2015/07/30 12:08:06 jlec Exp $
+
+  30 Jul 2015; Justin Lecher <jlec@gentoo.org> munin-2.0.25-r1.ebuild:
+  Add missing dep
 
   13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org> munin-2.0.19-r1.ebuild,
   munin-2.0.19.ebuild, munin-2.0.25-r1.ebuild, munin-2.0.25.ebuild,

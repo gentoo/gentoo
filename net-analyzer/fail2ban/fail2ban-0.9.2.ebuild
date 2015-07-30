@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/fail2ban/fail2ban-0.9.2.ebuild,v 1.8 2015/07/10 01:01:59 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/fail2ban/fail2ban-0.9.2.ebuild,v 1.9 2015/07/30 12:26:04 ago Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/${PN}/${PN}/tarball/${PV} -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ppc ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 arm hppa ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE="selinux systemd"
 
 DEPEND=""

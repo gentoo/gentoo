@@ -1,6 +1,9 @@
 # ChangeLog for dev-util/ninja
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/ninja/ChangeLog,v 1.54 2015/07/23 20:23:05 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/ninja/ChangeLog,v 1.55 2015/07/30 12:30:41 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> ninja-1.5.3.ebuild:
+  Stable for sparc, wrt bug #552884
 
   23 Jul 2015; Pacho Ramos <pacho@gentoo.org> ninja-1.5.3.ebuild:
   ppc stable wrt bug #552884

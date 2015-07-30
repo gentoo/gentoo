@@ -1,6 +1,9 @@
 # ChangeLog for net-analyzer/fail2ban
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/fail2ban/ChangeLog,v 1.164 2015/07/10 01:01:59 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/fail2ban/ChangeLog,v 1.165 2015/07/30 12:26:04 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> fail2ban-0.9.2.ebuild:
+  Stable for sparc, wrt bug #548642
 
   10 Jul 2015; Mike Gilbert <floppym@gentoo.org> fail2ban-0.9.2.ebuild,
   fail2ban-99999999.ebuild:

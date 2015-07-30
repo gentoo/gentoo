@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/ethtool
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/ethtool/ChangeLog,v 1.123 2015/07/29 15:48:15 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/ethtool/ChangeLog,v 1.124 2015/07/30 12:24:39 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> ethtool-3.18.ebuild:
+  Stable for sparc, wrt bug #536740
 
   29 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> ethtool-3.18.ebuild:
   ia64 stable wrt bug #536740

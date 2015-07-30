@@ -668,6 +668,10 @@
     <email>mrueg@gentoo.org</email>
     <name>Manuel Rüger</name>
   </maintainer>
+  <maintainer>
+    <email>jlec@gentoo.org</email>
+    <name>Justin Lecher</name>
+  </maintainer>
 </herd>
 <herd>
   <name>x11</name>
@@ -1070,7 +1074,7 @@
   <maintainer>
     <email>jlec@gentoo.org</email>
     <name>Justin Lecher</name>
-    <role>X-ray, NMR and protein visualization stuff</role>
+    <role>Project Lead, X-ray, NMR and protein visualization stuff</role>
   </maintainer>
   <maintainer>
     <email>xarthisius@gentoo.org</email>
@@ -1206,6 +1210,11 @@
   <maintainer>
     <email>bircoph@gentoo.org</email>
     <name>Andrew Savchenko</name>
+  </maintainer>
+  <maintainer>
+    <email>jlec@gentoo.org</email>
+    <name>Justin Lecher</name>
+    <role>X-ray, NMR and protein visualization stuff</role>
   </maintainer>
 </herd>
 <herd>

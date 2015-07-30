@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/usbutils
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/usbutils/ChangeLog,v 1.203 2015/07/17 13:07:58 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/usbutils/ChangeLog,v 1.204 2015/07/30 12:27:26 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> usbutils-008-r1.ebuild:
+  Stable for sparc, wrt bug #541040
 
   17 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> usbutils-008-r1.ebuild:
   ia64 stable wrt bug #541040

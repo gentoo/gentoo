@@ -1,6 +1,9 @@
 # ChangeLog for media-sound/ncmpc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/ncmpc/ChangeLog,v 1.91 2015/07/23 20:42:25 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/ncmpc/ChangeLog,v 1.92 2015/07/30 12:26:49 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> ncmpc-0.24.ebuild:
+  Stable for sparc, wrt bug #535502
 
   23 Jul 2015; Pacho Ramos <pacho@gentoo.org> ncmpc-0.24.ebuild:
   ppc stable wrt bug #535502

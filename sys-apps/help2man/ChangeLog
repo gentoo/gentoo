@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/help2man
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/help2man/ChangeLog,v 1.143 2015/07/23 19:34:57 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/help2man/ChangeLog,v 1.144 2015/07/30 12:28:01 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> help2man-1.46.6.ebuild:
+  Stable for sparc, wrt bug #552450
 
   23 Jul 2015; Pacho Ramos <pacho@gentoo.org> help2man-1.46.6.ebuild:
   ppc stable wrt bug #552450

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/ethtool/ethtool-3.18.ebuild,v 1.8 2015/07/29 15:48:15 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/ethtool/ethtool-3.18.ebuild,v 1.9 2015/07/30 12:24:39 ago Exp $
 
 EAPI="5"
 
@@ -10,6 +10,6 @@ SRC_URI="mirror://kernel/software/network/ethtool/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh ~sparc x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh sparc x86"
 
 DEPEND="app-arch/xz-utils"

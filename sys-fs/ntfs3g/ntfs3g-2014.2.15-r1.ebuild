@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/ntfs3g/ntfs3g-2014.2.15-r1.ebuild,v 1.7 2015/07/03 10:14:39 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/ntfs3g/ntfs3g-2014.2.15-r1.ebuild,v 1.8 2015/07/30 12:30:58 ago Exp $
 
 EAPI=5
 inherit eutils linux-info udev toolchain-funcs autotools
@@ -14,7 +14,7 @@ SRC_URI="http://tuxera.com/opensource/${MY_P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ppc ~ppc64 ~sparc x86 ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm ppc ~ppc64 sparc x86 ~amd64-linux ~arm-linux ~x86-linux"
 IUSE="acl debug +external-fuse ntfsdecrypt +ntfsprogs static-libs suid xattr"
 
 RDEPEND="!<sys-apps/util-linux-2.20.1-r2
