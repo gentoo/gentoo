@@ -1,6 +1,9 @@
 # ChangeLog for app-arch/star
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/star/ChangeLog,v 1.117 2015/07/28 10:26:33 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/star/ChangeLog,v 1.118 2015/07/30 05:04:52 jer Exp $
+
+  30 Jul 2015; Jeroen Roovers <jer@gentoo.org> star-1.5.3.ebuild:
+  Stable for HPPA PPC64 (bug #556030).
 
   28 Jul 2015; Tobias Klausmann <klausman@gentoo.org> star-1.5.3.ebuild:
   Stable on alpha, bug 556030

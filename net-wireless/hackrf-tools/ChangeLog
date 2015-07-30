@@ -1,6 +1,12 @@
 # ChangeLog for net-wireless/hackrf-tools
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/hackrf-tools/ChangeLog,v 1.14 2015/07/24 16:42:18 zerochaos Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/hackrf-tools/ChangeLog,v 1.15 2015/07/30 04:58:54 zerochaos Exp $
+
+*hackrf-tools-2015.07.2-r1 (30 Jul 2015)
+
+  30 Jul 2015; Rick Farina <zerochaos@gentoo.org>
+  +hackrf-tools-2015.07.2-r1.ebuild, hackrf-tools-9999.ebuild:
+  ease following flashing instructions by symlinking original names
 
 *hackrf-tools-2015.07.2 (24 Jul 2015)
 
