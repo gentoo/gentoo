@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst postrm preinst prepare prerm test unpack
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare prerm pretend test unpack
 DEPEND=app-arch/xz-utils >=sys-libs/ncurses-5.2-r5 debug? ( sdl? ( media-libs/libsdl ) ) device-mapper? ( >=sys-fs/lvm2-2.02.45 ) libzfs? ( sys-fs/zfs ) mount? ( sys-fs/fuse ) truetype? ( media-libs/freetype ) ppc? ( sys-apps/ibm-powerpc-utils sys-apps/powerpc-utils ) ppc64? ( sys-apps/ibm-powerpc-utils sys-apps/powerpc-utils ) app-misc/pax-utils >=dev-lang/python-2.5.2 sys-devel/flex sys-devel/bison sys-apps/help2man sys-apps/texinfo static? ( app-arch/xz-utils[static-libs(+)] truetype? ( app-arch/bzip2[static-libs(+)] media-libs/freetype[static-libs(+)] sys-libs/zlib[static-libs(+)] ) ) test? ( dev-libs/libisoburn app-emulation/qemu ) truetype? ( app-arch/unzip )
 DESCRIPTION=GNU GRUB boot loader
 EAPI=5
@@ -11,5 +11,5 @@ REQUIRED_USE=grub_platforms_qemu? ( truetype ) grub_platforms_yeeloong? ( truety
 RESTRICT=test
 SLOT=2
 SRC_URI=mirror://gnu/grub/grub-2.00_p5107.tar.xz mirror://gentoo/grub-2.00_p5107.tar.xz http://dev.gentoo.org/~floppym/dist/grub-2.00_p5107.tar.xz truetype? ( mirror://sourceforge/dejavu/dejavu-sans-ttf-2.34.zip http://unifoundry.com/unifont-5.1.20080820.pcf.gz )
-_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	bash-completion-r1	c8399c7c7ecbcf7ed6e5bd3abb3d4af3	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	mount-boot	02dd3bb4c5f025fef0fc3ade0f27c217	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	pax-utils	dfe060cb70d89757fde5c1ff8405e950	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	bash-completion-r1	c8399c7c7ecbcf7ed6e5bd3abb3d4af3	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	mount-boot	07784c1c862b665e1d6a3c1f47936987	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	pax-utils	dfe060cb70d89757fde5c1ff8405e950	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=bc71dcf68225fe83aad375a800a06275

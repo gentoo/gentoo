@@ -1,10 +1,10 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-go/go-protobuf/go-protobuf-9999.ebuild,v 1.2 2015/07/30 07:06:52 zmedico Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-go/go-snappy/go-snappy-0_pre20150729.ebuild,v 1.1 2015/07/30 07:04:01 zmedico Exp $
 
 EAPI=5
 
-EGO_SRC=github.com/golang/protobuf
+EGO_SRC=github.com/golang/snappy
 EGO_PN=${EGO_SRC}/...
 
 
@@ -12,12 +12,12 @@ if [[ ${PV} = *9999* ]]; then
 	inherit golang-vcs
 else
 	KEYWORDS="~amd64"
-	EGIT_COMMIT="68c687dc49948540b356a6b47931c9be4fcd0245"
+	EGIT_COMMIT="723cc1e459b8eea2dea4583200fd60757d40097a"
 	SRC_URI="https://${EGO_SRC}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 fi
 inherit golang-build
 
-DESCRIPTION="Go support for Google's protocol buffers"
+DESCRIPTION="The Snappy compression format in the Go programming language."
 HOMEPAGE="https://${EGO_SRC}"
 LICENSE="BSD"
 SLOT="0/${PV}"
@@ -57,5 +57,4 @@ fi
 src_install() {
     rm -rf src/${EGO_SRC}/.git* || die
 	golang-build_src_install
-	dobin bin/*
 }

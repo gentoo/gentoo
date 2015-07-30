@@ -1,4 +1,4 @@
-DEFINED_PHASES=install postinst postrm preinst prepare prerm test
+DEFINED_PHASES=install postinst postrm preinst prepare prerm pretend test
 DESCRIPTION=Memory tester based on memtest86
 EAPI=4
 HOMEPAGE=http://www.memtest.org/
@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=floppy? ( >=sys-boot/grub-0.95:0 sys-fs/mtools )
 SLOT=0
 SRC_URI=http://www.memtest.org/download/5.01/memtest86+-5.01.tar.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	mount-boot	02dd3bb4c5f025fef0fc3ade0f27c217	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	mount-boot	07784c1c862b665e1d6a3c1f47936987	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=da072ce4e5d8d9fc4405a07cab5be873

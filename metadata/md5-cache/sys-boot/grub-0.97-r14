@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile config configure install postinst postrm preinst prepare prerm setup test
+DEFINED_PHASES=compile config configure install postinst postrm preinst prepare prerm pretend setup test
 DEPEND=!static? ( ncurses? ( >=sys-libs/ncurses-5.9-r3 amd64? ( >=sys-libs/ncurses-5.9-r3[abi_x86_32(-)] ) ) ) static? ( ncurses? ( >=sys-libs/ncurses-5.9-r3[static-libs(+)] amd64? ( >=sys-libs/ncurses-5.9-r3[abi_x86_32(-)] ) ) ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=GNU GRUB Legacy boot loader
 EAPI=4
@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=!static? ( ncurses? ( >=sys-libs/ncurses-5.9-r3 amd64? ( >=sys-libs/ncurses-5.9-r3[abi_x86_32(-)] ) ) )
 SLOT=0
 SRC_URI=mirror://gentoo/grub-0.97.tar.gz mirror://gnu-alpha/grub/grub-0.97.tar.gz mirror://gentoo/splash.xpm.gz mirror://gentoo/grub-0.97-patches-1.14.tar.bz2
-_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	linux-info	8cbc678e083c23e4ad546ca6509cf304	mount-boot	02dd3bb4c5f025fef0fc3ade0f27c217	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	pax-utils	dfe060cb70d89757fde5c1ff8405e950	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	linux-info	8cbc678e083c23e4ad546ca6509cf304	mount-boot	07784c1c862b665e1d6a3c1f47936987	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	pax-utils	dfe060cb70d89757fde5c1ff8405e950	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=10af227d48b206568a9dc59263747f2d

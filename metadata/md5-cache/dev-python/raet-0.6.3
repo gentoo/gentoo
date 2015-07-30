@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-python/six-1.6.1[python_targets_python2_7(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-)] >=dev-python/libnacl-1.4.0[python_targets_python2_7(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-)] >=dev-python/ioflo-1.2.1[python_targets_python2_7(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-)] python_targets_python2_7? ( >=dev-python/enum34-1.0.4[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) dev-python/setuptools[python_targets_python2_7(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-)] test? ( dev-python/unittest2[python_targets_python2_7(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-)]
+DESCRIPTION=Reliable Asynchronous Event Transport Protocol
+EAPI=5
+HOMEPAGE=https://github.com/saltstack/raet
+IUSE=test python_targets_python2_7 python_targets_python3_4
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=>=dev-python/six-1.6.1[python_targets_python2_7(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-)] >=dev-python/libnacl-1.4.0[python_targets_python2_7(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-)] >=dev-python/ioflo-1.2.1[python_targets_python2_7(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-)] python_targets_python2_7? ( >=dev-python/enum34-1.0.4[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_4 )
+SLOT=0
+SRC_URI=mirror://pypi/r/raet/raet-0.6.3.tar.gz
+_eclasses_=distutils-r1	715b22a21726d3fd76b17e007c5daf5f	eutils	9fb270e417e0e83d64ca52586c4a79de	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-r1	d9c8348f26710ea523a385c2328cf027	python-utils-r1	68e010c13e97b7b2c7bf403ee9c51e1b	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=8c7f9663b28882a5c3edb0809b832a4c
