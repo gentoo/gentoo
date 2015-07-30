@@ -1,0 +1,10 @@
+# ChangeLog for dev-go/go-eapache-queue
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-go/go-eapache-queue/ChangeLog,v 1.1 2015/07/30 21:09:09 zmedico Exp $
+
+*go-eapache-queue-1.0.2 (30 Jul 2015)
+*go-eapache-queue-9999 (30 Jul 2015)
+
+  30 Jul 2015; Zac Medico <zmedico@gentoo.org> +go-eapache-queue-1.0.2.ebuild,
+  +go-eapache-queue-9999.ebuild, +metadata.xml:
+  Add go-eapache-queue.

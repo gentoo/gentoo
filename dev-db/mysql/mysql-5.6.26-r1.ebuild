@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql/mysql-5.6.26-r1.ebuild,v 1.1 2015/07/30 04:26:27 grknight Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql/mysql-5.6.26-r1.ebuild,v 1.2 2015/07/30 20:40:19 grknight Exp $
 
 EAPI="5"
 
@@ -27,13 +27,9 @@ RDEPEND="${RDEPEND}"
 # If you want to add a single patch, copy the ebuild to an overlay
 # and create your own mysql-extras tarball, looking at 000_index.txt
 
-src_configure() {
-	# validate_password plugin uses exceptions when it shouldn't yet (until 5.7)
-	# disable until we see what happens with it
-	local mycmakeargs
-	mycmakeargs+=( -DWITHOUT_VALIDATE_PASSWORD=1 )
-	mysql-multilib_src_configure
-}
+# validate_password plugin uses exceptions when it shouldn't yet (until 5.7)
+# disable until we see what happens with it
+MYSQL_CMAKE_NATIVE_DEFINES="-DWITHOUT_VALIDATE_PASSWORD=1"
 
 # Official test instructions:
 # USE='server embedded extraengine perl ssl static-libs community' \

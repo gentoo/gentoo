@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/genkernel/genkernel-3.4.51.3.ebuild,v 1.1 2015/07/30 18:38:37 zerochaos Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/genkernel/genkernel-3.4.51.3.ebuild,v 1.2 2015/07/30 21:00:17 zerochaos Exp $
 
 # genkernel-9999        -> latest Git branch "master"
 # genkernel-VERSION     -> normal genkernel release
@@ -71,7 +71,7 @@ src_unpack() {
 	if [[ ${PV} == 9999* ]] ; then
 		git-2_src_unpack
 	else
-		unpack ${P}.tar.bz2
+		default
 	fi
 }
 
