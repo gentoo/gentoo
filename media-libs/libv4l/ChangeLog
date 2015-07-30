@@ -1,6 +1,9 @@
 # ChangeLog for media-libs/libv4l
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libv4l/ChangeLog,v 1.115 2015/07/23 20:24:50 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libv4l/ChangeLog,v 1.116 2015/07/30 07:57:06 vapier Exp $
+
+  30 Jul 2015; Mike Frysinger <vapier@gentoo.org> libv4l-1.6.2.ebuild:
+  Add arm64/m68k/mips/s390/sh love.
 
   23 Jul 2015; Pacho Ramos <pacho@gentoo.org> libv4l-1.6.2.ebuild:
   ppc stable wrt bug #552014

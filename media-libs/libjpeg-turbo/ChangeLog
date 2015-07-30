@@ -1,6 +1,11 @@
 # ChangeLog for media-libs/libjpeg-turbo
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libjpeg-turbo/ChangeLog,v 1.106 2015/07/18 15:52:01 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libjpeg-turbo/ChangeLog,v 1.107 2015/07/30 08:06:04 vapier Exp $
+
+  30 Jul 2015; Mike Frysinger <vapier@gentoo.org> libjpeg-turbo-1.4.1.ebuild:
+  Set CONFIG_SHELL directly instead of regenerating autotools as it will be
+  faster and less flaky (like libtool version mismatches) #533902 by Rémi
+  Cardona.
 
 *libjpeg-turbo-1.4.1 (18 Jul 2015)
 

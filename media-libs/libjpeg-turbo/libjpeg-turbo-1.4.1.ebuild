@@ -1,10 +1,10 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libjpeg-turbo/libjpeg-turbo-1.4.1.ebuild,v 1.1 2015/07/18 15:52:01 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libjpeg-turbo/libjpeg-turbo-1.4.1.ebuild,v 1.2 2015/07/30 08:06:04 vapier Exp $
 
 EAPI=5
 
-inherit autotools eutils java-pkg-opt-2 libtool toolchain-funcs multilib-minimal
+inherit libtool eutils java-pkg-opt-2 libtool toolchain-funcs multilib-minimal
 
 DESCRIPTION="MMX, SSE, and SSE2 SIMD accelerated JPEG library"
 HOMEPAGE="http://libjpeg-turbo.virtualgl.org/ http://sourceforge.net/projects/libjpeg-turbo/"
@@ -38,8 +38,7 @@ MULTILIB_WRAPPED_HEADERS=( /usr/include/jconfig.h )
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-1.2.0-x32.patch #420239
 
-	# generate a new ./configure compatible with non-bash shells, #533902
-	eautoreconf
+	elibtoolize
 
 	java-pkg-opt-2_src_prepare
 }
@@ -57,6 +56,8 @@ multilib_src_configure() {
 	fi
 	[[ ${ABI} == "x32" ]] && myconf+=( --without-simd ) #420239
 
+	# Force /bin/bash until upstream generates a new version. #533902
+	CONFIG_SHELL=/bin/bash \
 	ECONF_SOURCE=${S} \
 	econf \
 		$(use_enable static-libs static) \
