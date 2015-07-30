@@ -1,6 +1,9 @@
 # ChangeLog for media-libs/libmtp
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libmtp/ChangeLog,v 1.157 2015/05/06 07:23:14 yngwin Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libmtp/ChangeLog,v 1.158 2015/07/30 18:49:53 zlogene Exp $
+
+  30 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> libmtp-1.1.8.ebuild:
+  ia64 stable wrt bug #527086
 
 *libmtp-1.1.9 (06 May 2015)
 

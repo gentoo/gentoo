@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/bind/bind-9.10.1_p1.ebuild,v 1.15 2015/04/08 18:16:54 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/bind/bind-9.10.2_p3.ebuild,v 1.1 2015/07/30 18:52:47 idl0r Exp $
 
 # Re dlz/mysql and threads, needs to be verified..
 # MySQL uses thread local storage in its C api. Thus MySQL
@@ -39,7 +39,7 @@ SRC_URI="ftp://ftp.isc.org/isc/bind9/${MY_PV}/${MY_P}.tar.gz
 
 LICENSE="GPL-2 ISC BSD BSD-2 HPND JNIC openssl"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="berkdb +caps dlz doc filter-aaaa fixed-rrset geoip gost gssapi idn ipv6
 json ldap mysql nslint odbc postgres python rpz seccomp selinux ssl static-libs
 +threads urandom xml"
@@ -251,9 +251,14 @@ src_install() {
 
 	# Let's get rid of those tools and their manpages since they're provided by bind-tools
 	rm -f "${D}"/usr/share/man/man1/{dig,host,nslookup}.1*
-	rm -f "${D}"/usr/share/man/man8/{dnssec-keygen,nsupdate}.8*
-	rm -f "${D}"/usr/bin/{dig,host,nslookup,dnssec-keygen,nsupdate}
-	rm -f "${D}"/usr/sbin/{dig,host,nslookup,dnssec-keygen,nsupdate}
+	rm -f "${D}"/usr/share/man/man8/nsupdate.8*
+	rm -f "${D}"/usr/bin/{dig,host,nslookup,nsupdate}
+	rm -f "${D}"/usr/sbin/{dig,host,nslookup,nsupdate}
+	for tool in dsfromkey importkey keyfromlabel keygen \
+	  revoke settime signzone verify; do
+		rm -f "${D}"/usr/{,s}bin/dnssec-"${tool}"
+		rm -f "${D}"/usr/share/man/man8/dnssec-"${tool}".8*
+	done
 
 	# bug 405251, library archives aren't properly handled by --enable/disable-static
 	if ! use static-libs; then

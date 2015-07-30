@@ -1,6 +1,9 @@
 # ChangeLog for net-libs/ptlib
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/ptlib/ChangeLog,v 1.68 2015/07/30 12:37:54 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/ptlib/ChangeLog,v 1.69 2015/07/30 19:07:46 zlogene Exp $
+
+  30 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> ptlib-2.10.11.ebuild:
+  ia64 stable wrt bug #549480
 
   30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> ptlib-2.10.11.ebuild:
   Stable for sparc, wrt bug #549480

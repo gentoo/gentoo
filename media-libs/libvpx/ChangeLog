@@ -1,6 +1,9 @@
 # ChangeLog for media-libs/libvpx
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libvpx/ChangeLog,v 1.127 2015/07/23 19:59:26 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libvpx/ChangeLog,v 1.128 2015/07/30 18:57:59 zlogene Exp $
+
+  30 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> libvpx-1.4.0.ebuild:
+  ia64 stable wrt bug #549978
 
   23 Jul 2015; Pacho Ramos <pacho@gentoo.org> libvpx-1.4.0.ebuild:
   ppc stable wrt bug #549978

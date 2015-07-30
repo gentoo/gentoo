@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/simplejson
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/simplejson/ChangeLog,v 1.157 2015/07/23 21:01:04 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/simplejson/ChangeLog,v 1.158 2015/07/30 18:32:11 jlec Exp $
+
+*simplejson-3.8.0 (30 Jul 2015)
+
+  30 Jul 2015; Justin Lecher <jlec@gentoo.org> +simplejson-3.8.0.ebuild:
+  Version Bump
 
   23 Jul 2015; Pacho Ramos <pacho@gentoo.org> simplejson-3.7.2.ebuild:
   ppc stable wrt bug #552062

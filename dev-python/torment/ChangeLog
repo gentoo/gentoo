@@ -1,6 +1,14 @@
 # ChangeLog for dev-python/torment
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/torment/ChangeLog,v 1.7 2015/07/23 23:00:23 alunduil Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/torment/ChangeLog,v 1.9 2015/07/30 18:37:34 alunduil Exp $
+
+  30 Jul 2015; Alex Brandt <alunduil@gentoo.org> -torment-2.0.0.ebuild:
+  remove version 2.0.0
+
+*torment-2.0.3 (30 Jul 2015)
+
+  30 Jul 2015; Alex Brandt <alunduil@gentoo.org> +torment-2.0.3.ebuild:
+  add version 2.0.3
 
   23 Jul 2015; Alex Brandt <alunduil@gentoo.org> -torment-1.0.1.ebuild:
   remove version 1.0.1

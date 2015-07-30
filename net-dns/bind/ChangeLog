@@ -1,6 +1,13 @@
 # ChangeLog for net-dns/bind
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/bind/ChangeLog,v 1.539 2015/07/23 09:35:28 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/bind/ChangeLog,v 1.540 2015/07/30 18:52:47 idl0r Exp $
+
+*bind-9.10.2_p3 (30 Jul 2015)
+
+  30 Jul 2015; Christian Ruppert <idl0r@gentoo.org> -bind-9.9.5-r3.ebuild,
+  -bind-9.10.1_p1.ebuild, +bind-9.10.2_p3.ebuild, -files/127.zone-r1,
+  -files/named.conf-r7:
+  Security bump, bug 556150. Cleanup
 
   23 Jul 2015; Agostino Sarubbo <ago@gentoo.org> bind-9.10.2_p2.ebuild:
   Stable for sparc, wrt bug #553584

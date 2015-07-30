@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/python-sqlparse
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/python-sqlparse/ChangeLog,v 1.53 2015/06/07 15:46:46 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-sqlparse/ChangeLog,v 1.54 2015/07/30 18:35:31 jlec Exp $
+
+*python-sqlparse-0.1.16 (30 Jul 2015)
+
+  30 Jul 2015; Justin Lecher <jlec@gentoo.org> +python-sqlparse-0.1.16.ebuild:
+  Version Bump
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml
