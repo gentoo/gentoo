@@ -1,6 +1,14 @@
 # ChangeLog for dev-libs/expat
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/expat/ChangeLog,v 1.174 2015/06/09 14:16:10 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/expat/ChangeLog,v 1.175 2015/07/30 02:18:34 tetromino Exp $
+
+*expat-2.1.0-r5 (30 Jul 2015)
+
+  30 Jul 2015; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -expat-2.1.0-r2.ebuild, -expat-2.1.0-r3.ebuild, expat-2.1.0-r4.ebuild,
+  +expat-2.1.0-r5.ebuild, +files/expat-2.1.0-mozilla-sanity-check-size.patch:
+  Fix buffer overflow (bug #555642, CVE-2015-1283, thanks to Agostino Sarubbo
+  and Paweł Hajdan, Jr.). Improve description. Clean out old ebuilds.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

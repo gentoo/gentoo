@@ -1,6 +1,10 @@
 # ChangeLog for dev-libs/libreport
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libreport/ChangeLog,v 1.25 2015/06/04 19:01:03 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libreport/ChangeLog,v 1.26 2015/07/30 01:42:07 tetromino Exp $
+
+  30 Jul 2015; Alexandre Rostovtsev <tetromino@gentoo.org>
+  libreport-2.0.13-r1.ebuild:
+  Require xmlrpc-c[curl] (bug #556112, thanks to Toralf Förster).
 
   04 Jun 2015; Michael Palimaka <kensington@gentoo.org>
   libreport-2.0.13-r1.ebuild:

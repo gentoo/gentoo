@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libreport/libreport-2.0.13-r1.ebuild,v 1.5 2015/06/04 19:01:03 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libreport/libreport-2.0.13-r1.ebuild,v 1.6 2015/07/30 01:42:07 tetromino Exp $
 
 EAPI="5"
 
@@ -24,7 +24,7 @@ COMMON_DEPEND=">=dev-libs/btparser-0.18:=
 	dev-libs/libxml2:2
 	dev-libs/newt:=
 	dev-libs/nss:=
-	dev-libs/xmlrpc-c:=
+	dev-libs/xmlrpc-c:=[curl]
 	net-libs/libproxy:=
 	net-misc/curl:=[ssl]
 	sys-apps/dbus
