@@ -1,6 +1,9 @@
 # ChangeLog for media-libs/libdvdread
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libdvdread/ChangeLog,v 1.112 2015/07/23 20:33:20 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libdvdread/ChangeLog,v 1.113 2015/07/30 15:10:13 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> libdvdread-5.0.3.ebuild:
+  Stable for sparc, wrt bug #535458
 
   23 Jul 2015; Pacho Ramos <pacho@gentoo.org> libdvdread-5.0.3.ebuild:
   ppc stable wrt bug #535458

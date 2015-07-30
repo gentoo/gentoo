@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/botan
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/botan/ChangeLog,v 1.95 2015/07/18 11:48:57 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/botan/ChangeLog,v 1.96 2015/07/30 14:59:08 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> botan-1.10.5.ebuild:
+  Stable for sparc, wrt bug #552554
 
   18 Jul 2015; Jeroen Roovers <jer@gentoo.org> botan-1.10.5.ebuild,
   botan-1.11.4.ebuild, botan-1.11.8.ebuild:

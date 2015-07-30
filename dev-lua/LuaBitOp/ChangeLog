@@ -1,6 +1,9 @@
 # ChangeLog for dev-lua/LuaBitOp
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lua/LuaBitOp/ChangeLog,v 1.16 2015/05/15 07:37:12 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lua/LuaBitOp/ChangeLog,v 1.17 2015/07/30 15:07:04 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> LuaBitOp-1.0.2-r1.ebuild:
+  Stable for sparc, wrt bug #526016
 
   15 May 2015; Pacho Ramos <pacho@gentoo.org> LuaBitOp-1.0.2-r1.ebuild:
   ppc stable, bug #526016

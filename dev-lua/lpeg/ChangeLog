@@ -1,6 +1,9 @@
 # ChangeLog for dev-lua/lpeg
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lua/lpeg/ChangeLog,v 1.12 2015/05/15 07:40:37 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lua/lpeg/ChangeLog,v 1.13 2015/07/30 15:07:16 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> lpeg-0.12.2.ebuild:
+  Stable for sparc, wrt bug #526016
 
   15 May 2015; Pacho Ramos <pacho@gentoo.org> lpeg-0.12.2.ebuild:
   ppc stable, bug #526016

@@ -1,6 +1,9 @@
 # ChangeLog for dev-lua/luafilesystem
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lua/luafilesystem/ChangeLog,v 1.14 2014/12/24 10:41:04 mrueg Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lua/luafilesystem/ChangeLog,v 1.15 2015/07/30 15:07:19 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> luafilesystem-1.5.0.ebuild:
+  Stable for sparc, wrt bug #526016
 
 *luafilesystem-1.6.2 (24 Dec 2014)
 

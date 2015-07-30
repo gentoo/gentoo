@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/libzip
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libzip/ChangeLog,v 1.88 2015/07/17 19:57:24 johu Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libzip/ChangeLog,v 1.89 2015/07/30 15:09:28 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> libzip-1.0.1.ebuild:
+  Stable for sparc, wrt bug #530658
 
   17 Jul 2015; Johannes Huber <johu@gentoo.org>
   -files/libzip-0.11-fix_pkgconfig.patch, -libzip-0.11.2.ebuild:

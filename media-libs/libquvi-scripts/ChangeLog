@@ -1,6 +1,10 @@
 # ChangeLog for media-libs/libquvi-scripts
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libquvi-scripts/ChangeLog,v 1.73 2015/05/30 00:03:47 jmorgan Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libquvi-scripts/ChangeLog,v 1.74 2015/07/30 15:06:57 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org>
+  libquvi-scripts-0.4.21-r2.ebuild, libquvi-scripts-0.9.20131130-r1.ebuild:
+  Stable for sparc, wrt bug #526016
 
   30 May 2015; Jack Morgan <jmorgan@gentoo.org>
   libquvi-scripts-0.4.21-r2.ebuild:

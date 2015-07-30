@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/sexp_processor
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/sexp_processor/ChangeLog,v 1.52 2015/07/23 21:20:44 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/sexp_processor/ChangeLog,v 1.53 2015/07/30 15:16:47 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> sexp_processor-4.4.4.ebuild:
+  Stable for sparc, wrt bug #552244
 
   23 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -sexp_processor-3.2.0-r1.ebuild,
   -sexp_processor-3.2.0.ebuild:

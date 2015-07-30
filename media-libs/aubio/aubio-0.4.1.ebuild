@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/aubio/aubio-0.4.1.ebuild,v 1.4 2015/05/17 20:04:35 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/aubio/aubio-0.4.1.ebuild,v 1.5 2015/07/30 15:15:40 ago Exp $
 
 EAPI=5
 
@@ -16,7 +16,7 @@ SRC_URI="http://aubio.org//pub/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ppc64 ~sparc x86"
+KEYWORDS="amd64 ~ppc ppc64 sparc x86"
 IUSE="doc double-precision examples ffmpeg fftw jack libsamplerate sndfile python"
 
 RDEPEND="

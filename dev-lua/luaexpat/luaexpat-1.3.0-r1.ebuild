@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lua/luaexpat/luaexpat-1.3.0-r1.ebuild,v 1.9 2015/05/15 07:39:48 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lua/luaexpat/luaexpat-1.3.0-r1.ebuild,v 1.10 2015/07/30 15:07:07 ago Exp $
 
 EAPI=5
 
@@ -12,7 +12,7 @@ SRC_URI="http://matthewwild.co.uk/projects/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ppc ppc64 x86"
+KEYWORDS="amd64 arm hppa ppc ppc64 sparc x86"
 IUSE=""
 
 RDEPEND=">=dev-lang/lua-5.1.5-r2[deprecated,${MULTILIB_USEDEP}]

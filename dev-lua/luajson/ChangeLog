@@ -1,6 +1,9 @@
 # ChangeLog for dev-lua/luajson
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lua/luajson/ChangeLog,v 1.10 2015/06/07 09:10:28 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lua/luajson/ChangeLog,v 1.11 2015/07/30 15:07:10 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> luajson-1.3.3.ebuild:
+  Stable for sparc, wrt bug #526016
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

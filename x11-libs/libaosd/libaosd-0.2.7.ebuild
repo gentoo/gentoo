@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libaosd/libaosd-0.2.7.ebuild,v 1.14 2015/07/03 10:09:10 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libaosd/libaosd-0.2.7.ebuild,v 1.15 2015/07/30 15:11:04 ago Exp $
 
 EAPI=5
 inherit autotools-utils
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/atheme/${PN}/archive/0.2.7.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ppc ~sparc x86"
+KEYWORDS="alpha amd64 ia64 ppc sparc x86"
 IUSE="pango +tools xcomposite"
 
 RDEPEND="

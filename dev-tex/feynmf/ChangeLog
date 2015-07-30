@@ -1,6 +1,9 @@
 # ChangeLog for dev-tex/feynmf
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/feynmf/ChangeLog,v 1.44 2015/05/15 18:22:22 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/feynmf/ChangeLog,v 1.45 2015/07/30 14:35:44 klausman Exp $
+
+  30 Jul 2015; Tobias Klausmann <klausman@gentoo.org> feynmf-1.08-r4.ebuild:
+  Stable on alpha, bug 556292
 
 *feynmf-1.08-r4 (15 May 2015)
 

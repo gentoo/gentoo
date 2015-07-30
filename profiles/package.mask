@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16691 2015/07/30 09:25:21 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16692 2015/07/30 15:18:34 mr_bones_ Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -140,12 +140,6 @@ sci-biology/flower
 # Patrick Lauer <patrick@gentoo.org> (1 Jul 2015)
 # Wrong version #553670
 =sys-kernel/gentoo-sources-4.1.1
-
-# Michael Sterrett <mr_bones_@gentoo.org> (25 Jun 2015)
-# Upstream seems dead; no release since 2006
-# lots of bugs: #252719, #315255, #314459, #159630, #376589, #420783, #540928
-# Masked for removal on 20150725
-games-fps/tremulous
 
 # Pacho Ramos <pacho@gentoo.org> (24 Jun 2015)
 # Replaced by app-admin/system-config-printer, to migrate

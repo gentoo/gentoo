@@ -4,10 +4,10 @@ DESCRIPTION=Translate PostScript and PDF graphics into other vector formats
 EAPI=5
 HOMEPAGE=http://sourceforge.net/projects/pstoedit/
 IUSE=emf flash imagemagick plotutils pptx static-libs
-KEYWORDS=~alpha amd64 ~arm hppa ia64 ppc ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux
+KEYWORDS=~alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=>=media-libs/libpng-1.4.3 >=media-libs/gd-2.0.35-r1 >=app-text/ghostscript-gpl-8.71-r1 emf? ( >=media-libs/libemf-1.0.3 ) flash? ( >=media-libs/ming-0.4.3 ) imagemagick? ( >=media-gfx/imagemagick-6.6.1.2[cxx] ) plotutils? ( media-libs/plotutils ) pptx? ( dev-libs/libzip )
 SLOT=0
 SRC_URI=mirror://sourceforge/pstoedit/pstoedit-3.62.tar.gz
 _eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=a775527edeaf6e99e7fe0da36a7673d6
+_md5_=b8e36b71773954945db1b64c1b2ff6af
