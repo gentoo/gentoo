@@ -1,6 +1,9 @@
 # ChangeLog for games-server/etqw-ded
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-server/etqw-ded/ChangeLog,v 1.4 2015/03/29 06:56:11 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-server/etqw-ded/ChangeLog,v 1.5 2015/07/30 01:13:42 mr_bones_ Exp $
+
+  30 Jul 2015; Michael Sterrett <mr_bones_@gentoo.org> etqw-ded-1.5.ebuild:
+  update HOMEPAGE to one that exists
 
   29 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> etqw-ded-1.5.ebuild:
   EAPI=5

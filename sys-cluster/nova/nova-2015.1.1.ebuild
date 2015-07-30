@@ -1,20 +1,19 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/nova/nova-2015.1.9999.ebuild,v 1.14 2015/07/30 00:34:25 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/nova/nova-2015.1.1.ebuild,v 1.1 2015/07/30 00:34:25 prometheanfire Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 eutils git-2 linux-info multilib user
+inherit distutils-r1 eutils linux-info multilib user
 
 DESCRIPTION="A cloud computing fabric controller (main part of an IaaS system) written in Python"
 HOMEPAGE="https://launchpad.net/nova"
-EGIT_REPO_URI="https://github.com/openstack/nova.git"
-EGIT_BRANCH="stable/kilo"
+SRC_URI="http://launchpad.net/${PN}/kilo/${PV}/+download/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="+compute compute-only iscsi +kvm +memcached mysql +novncproxy openvswitch postgres +rabbitmq sqlite test xen"
 REQUIRED_USE="!compute-only? ( || ( mysql postgres sqlite ) )
 						compute-only? ( compute !rabbitmq !memcached !mysql !postgres !sqlite )
