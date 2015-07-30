@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/python-ldap/python-ldap-2.4.18.ebuild,v 1.3 2014/10/17 15:49:51 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-ldap/python-ldap-2.4.20.ebuild,v 1.1 2015/07/30 05:31:41 idella4 Exp $
 
 EAPI=5
 
@@ -21,7 +21,7 @@ IUSE="doc examples sasl ssl"
 # If you need support for openldap-2.3.x, please use python-ldap-2.3.9.
 # python team: Please do not remove python-ldap-2.3.9 from the tree.
 # OpenSSL is an optional runtime dep.
-# setup.py incorrectly sets setuptools and misses pyasn1 and pyasn1-modules in install_requires
+# setup.py sets setuptools and misses pyasn1 and pyasn1-modules in install_requires
 RDEPEND=">net-nds/openldap-2.4.11
 	dev-python/pyasn1[${PYTHON_USEDEP}]
 	dev-python/pyasn1-modules[${PYTHON_USEDEP}]

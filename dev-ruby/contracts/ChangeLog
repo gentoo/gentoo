@@ -1,6 +1,11 @@
 # ChangeLog for dev-ruby/contracts
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/contracts/ChangeLog,v 1.4 2015/07/26 08:26:02 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/contracts/ChangeLog,v 1.5 2015/07/30 06:01:02 graaff Exp $
+
+*contracts-0.11.0 (30 Jul 2015)
+
+  30 Jul 2015; Hans de Graaff <graaff@gentoo.org> +contracts-0.11.0.ebuild:
+  Version bump.
 
   26 Jul 2015; Markus Meier <maekke@gentoo.org> contracts-0.10.1.ebuild:
   add ~arm, bug #555312
