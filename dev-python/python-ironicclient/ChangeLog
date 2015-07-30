@@ -1,0 +1,9 @@
+# ChangeLog for dev-python/python-ironicclient
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-ironicclient/ChangeLog,v 1.1 2015/07/30 00:29:03 prometheanfire Exp $
+
+*python-ironicclient-0.5.1 (30 Jul 2015)
+
+  30 Jul 2015; Matthew Thode <prometheanfire@gentoo.org> +metadata.xml,
+  +python-ironicclient-0.5.1.ebuild:
+  adding for nova testing
