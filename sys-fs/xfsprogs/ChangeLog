@@ -1,6 +1,10 @@
 # ChangeLog for sys-fs/xfsprogs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/xfsprogs/ChangeLog,v 1.188 2015/07/30 12:27:43 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/xfsprogs/ChangeLog,v 1.189 2015/07/30 15:51:11 polynomial-c Exp $
+
+  30 Jul 2015; Lars Wendler <polynomial-c@gentoo.org> -xfsprogs-3.2.1.ebuild,
+  +xfsprogs-3.2.4.ebuild:
+  Security bump (bug #556318). Removed old.
 
   30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> xfsprogs-3.2.2.ebuild:
   Stable for sparc, wrt bug #551802

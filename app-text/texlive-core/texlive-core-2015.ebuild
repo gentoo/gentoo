@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/texlive-core/texlive-core-2015.ebuild,v 1.3 2015/07/16 15:43:18 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/texlive-core/texlive-core-2015.ebuild,v 1.4 2015/07/30 15:50:29 aballier Exp $
 
 EAPI=5
 
@@ -70,7 +70,7 @@ done
 SRC_URI="${SRC_URI} )"
 
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
-IUSE="cjk X doc source tk xetex"
+IUSE="cjk X doc source tk +luajittex xetex"
 
 TEXMF_PATH=/usr/share/texmf-dist
 
@@ -227,6 +227,7 @@ src_configure() {
 		--enable-shared \
 		--disable-native-texlive-build \
 		--disable-largefile \
+		$(use_enable luajittex) \
 		$(use_enable xetex) \
 		$(use_enable cjk ptex) \
 		$(use_enable cjk eptex) \

@@ -1,6 +1,10 @@
 # ChangeLog for dev-texlive/texlive-basic
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-basic/ChangeLog,v 1.86 2015/07/22 19:37:41 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-basic/ChangeLog,v 1.87 2015/07/30 15:52:35 aballier Exp $
+
+  30 Jul 2015; Alexis Ballier <aballier@gentoo.org> texlive-basic-2015.ebuild,
+  metadata.xml:
+  make luajittex optional, bug #542620
 
   22 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
   texlive-basic-2014.ebuild:

@@ -11,4 +11,7 @@ These files are regarded as basic for any TeX system, covering
 plain TeX macros, Computer Modern fonts, and configuration for
 common drivers; no LaTeX.
 </longdescription>
+  <use>
+	<flag name="luajittex">Add support for LuaJitTeX: LuaTeX based on LuaJIT which is usually faster.</flag>
+  </use>
 </pkgmetadata>

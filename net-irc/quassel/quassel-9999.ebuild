@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/quassel/quassel-9999.ebuild,v 1.85 2015/06/25 18:21:51 johu Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/quassel/quassel-9999.ebuild,v 1.86 2015/07/30 15:40:56 johu Exp $
 
 EAPI=5
 
@@ -96,8 +96,6 @@ DEPEND="${RDEPEND}
 "
 
 DOCS=( AUTHORS ChangeLog README )
-
-PATCHES=( "${FILESDIR}/${PN}-0.12.2-qt55.patch" )
 
 REQUIRED_USE="
 	|| ( X server monolithic )

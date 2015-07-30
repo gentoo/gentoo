@@ -1200,6 +1200,7 @@ app-text/texlive:tex4ht - Add support for dev-tex/tex4ht (for converting (La)TeX
 app-text/texlive:texi2html - Add support for app-text/texi2html which converts texi files to HTML.
 app-text/texlive:xetex - Add support for XeTeX macros (dev-texlive/texlive-xetex)
 app-text/texlive:xindy - Add support for app-text/xindy, a flexible indexing system
+app-text/texlive-core:luajittex - Add support for LuaJitTeX: LuaTeX based on LuaJIT which is usually faster.
 app-text/texlive-core:xetex - Add support for XeTeX: a TeX system with Unicode and modern font technologies.
 app-text/wdiff:experimental - Build experimental utilities (mdiff, unify, wdiff2)
 app-text/webgen:builder - Enable programmatic HTML/XML generation
@@ -2562,6 +2563,7 @@ dev-tex/abntex:lyx - Install with app-office/lyx layout
 dev-tex/circuit_macros:script - Install cm2pdf to automatically create a correctly sized PDF from a circuit_macro m4 source
 dev-tex/dot2texi:pgf - Enable support for dev-tex/pgf (The TeX Portable Graphic Format)
 dev-tex/dot2texi:pstricks - Enable pstricks support
+dev-texlive/texlive-basic:luajittex - Add support for LuaJitTeX: LuaTeX based on LuaJIT which is usually faster.
 dev-util/android-ndk:legacy-toolchains - Install legacy toolchains
 dev-util/android-ndk:target-32 - Support for 32-bit targets
 dev-util/android-ndk:target-64 - Support for 64-bit targets

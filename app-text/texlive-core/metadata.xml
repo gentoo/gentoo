@@ -10,6 +10,7 @@
 		TeXLive core binaries
 	</longdescription>
   <use>
+	<flag name="luajittex">Add support for LuaJitTeX: LuaTeX based on LuaJIT which is usually faster.</flag>
     <flag name="xetex">Add support for XeTeX: a TeX system with Unicode and modern font technologies.</flag>
   </use>
 </pkgmetadata>
