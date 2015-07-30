@@ -1,6 +1,9 @@
 # ChangeLog for app-admin/logrotate
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/logrotate/ChangeLog,v 1.212 2015/07/29 13:45:55 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/logrotate/ChangeLog,v 1.213 2015/07/30 16:52:33 maekke Exp $
+
+  30 Jul 2015; Markus Meier <maekke@gentoo.org> logrotate-3.9.1.ebuild:
+  arm stable, bug #556144
 
   29 Jul 2015; Tobias Klausmann <klausman@gentoo.org> logrotate-3.9.1.ebuild:
   Stable on alpha, bug 556144

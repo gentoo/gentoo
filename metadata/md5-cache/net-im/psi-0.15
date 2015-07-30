@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare unpack
-DEPEND=app-arch/unzip >=app-crypt/qca-2.0.2:2[qt4(+)] dev-qt/qt3support:4 dev-qt/qtcore:4 dev-qt/qtgui:4[qt3support] >=sys-libs/zlib-1.2.5.1-r2[minizip] x11-libs/libX11 dbus? ( dev-qt/qtdbus:4 ) spell? ( >=app-text/enchant-1.3.0 ) whiteboarding? ( dev-qt/qtsvg:4 ) xscreensaver? ( x11-libs/libXScrnSaver ) sys-devel/qconf doc? ( app-doc/doxygen ) >=sys-apps/sed-4
+DEPEND=app-arch/unzip >=app-crypt/qca-2.0.2:2[qt4(+)] dev-qt/qtcore:4 dev-qt/qtgui:4 >=sys-libs/zlib-1.2.5.1-r2[minizip] x11-libs/libX11 dbus? ( dev-qt/qtdbus:4 ) spell? ( >=app-text/enchant-1.3.0 ) whiteboarding? ( dev-qt/qtsvg:4 ) xscreensaver? ( x11-libs/libXScrnSaver ) sys-devel/qconf doc? ( app-doc/doxygen ) >=sys-apps/sed-4
 DESCRIPTION=Qt4 Jabber client, with Licq-like interface
 EAPI=5
 HOMEPAGE=http://psi-im.org/
@@ -7,9 +7,9 @@ IUSE=crypt dbus debug doc jingle spell ssl xscreensaver whiteboarding linguas_be
 KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd
 LICENSE=GPL-2
 PDEPEND=crypt? ( app-crypt/qca:2[gpg] ) jingle? ( net-im/psimedia app-crypt/qca:2[openssl] ) ssl? ( app-crypt/qca:2[openssl] )
-RDEPEND=app-arch/unzip >=app-crypt/qca-2.0.2:2[qt4(+)] dev-qt/qt3support:4 dev-qt/qtcore:4 dev-qt/qtgui:4[qt3support] >=sys-libs/zlib-1.2.5.1-r2[minizip] x11-libs/libX11 dbus? ( dev-qt/qtdbus:4 ) spell? ( >=app-text/enchant-1.3.0 ) whiteboarding? ( dev-qt/qtsvg:4 ) xscreensaver? ( x11-libs/libXScrnSaver )
+RDEPEND=app-arch/unzip >=app-crypt/qca-2.0.2:2[qt4(+)] dev-qt/qtcore:4 dev-qt/qtgui:4 >=sys-libs/zlib-1.2.5.1-r2[minizip] x11-libs/libX11 dbus? ( dev-qt/qtdbus:4 ) spell? ( >=app-text/enchant-1.3.0 ) whiteboarding? ( dev-qt/qtsvg:4 ) xscreensaver? ( x11-libs/libXScrnSaver )
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/psi/psi-0.15.tar.bz2 linguas_be? ( http://psi-im.org/download/lang/psi_be.qm -> psi-0.15_be.qm ) linguas_cs? ( http://psi-im.org/download/lang/psi_cs.qm -> psi-0.15_cs.qm ) linguas_de? ( http://psi-im.org/download/lang/psi_de.qm -> psi-0.15_de.qm ) linguas_fr? ( http://psi-im.org/download/lang/psi_fr.qm -> psi-0.15_fr.qm ) linguas_it? ( http://psi-im.org/download/lang/psi_it.qm -> psi-0.15_it.qm ) linguas_ja? ( http://psi-im.org/download/lang/psi_ja.qm -> psi-0.15_ja.qm ) linguas_pl? ( http://psi-im.org/download/lang/psi_pl.qm -> psi-0.15_pl.qm ) linguas_pt_BR? ( http://psi-im.org/download/lang/psi_pt_BR.qm -> psi-0.15_pt_BR.qm ) linguas_ru? ( http://psi-im.org/download/lang/psi_ru.qm -> psi-0.15_ru.qm ) linguas_sl? ( http://psi-im.org/download/lang/psi_sl.qm -> psi-0.15_sl.qm ) linguas_sv? ( http://psi-im.org/download/lang/psi_sv.qm -> psi-0.15_sv.qm ) linguas_ur_PK? ( http://psi-im.org/download/lang/psi_ur_PK.qm -> psi-0.15_ur_PK.qm ) linguas_zh_TW? ( http://psi-im.org/download/lang/psi_zh_TW.qm -> psi-0.15_zh_TW.qm )
 _eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	l10n	33bde4fb0cfd3a21a277b66bfd837e19	multilib	62927b3db3a589b0806255f3a002d5d3	qmake-utils	4ce40e37ef0e28425a7159b0353be026	qt4-r2	7199e3db5b5908325487d379c6f67cf0	readme.gentoo	106edea5533517715013de909a333abd	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=b21249de49b05e94a4bbaaec2fdcba12
+_md5_=1b496adba811f24440381e43c78025bd

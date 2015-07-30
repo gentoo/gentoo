@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/crossover-bin/crossover-bin-14.0.3-r1.ebuild,v 1.1 2015/07/29 22:25:04 ryao Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/crossover-bin/crossover-bin-14.0.3-r1.ebuild,v 1.2 2015/07/30 16:51:13 ryao Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
@@ -16,7 +16,7 @@ LICENSE="CROSSOVER-2"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="+capi +cups doc +gphoto2 +gsm +jpeg +lcms +ldap +mp3 +nls +openal +opengl +png +scanner +ssl +v4l"
-RESTRICT="fetch test"
+RESTRICT="bindist fetch test"
 QA_FLAGS_IGNORED="opt/cxoffice/.*"
 QA_PRESTRIPPED="opt/cxoffice/lib/.*
 	opt/cxoffice/bin/cxburner

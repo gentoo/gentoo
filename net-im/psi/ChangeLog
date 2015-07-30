@@ -1,6 +1,9 @@
 # ChangeLog for net-im/psi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/psi/ChangeLog,v 1.242 2015/07/22 01:55:42 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/psi/ChangeLog,v 1.243 2015/07/30 16:52:10 johu Exp $
+
+  30 Jul 2015; Johannes Huber <johu@gentoo.org> psi-0.15.ebuild:
+  Drop DEPEND on qt3support by Pinky <j-pi@seznam.cz>, bug #487116.
 
   22 Jul 2015; Davide Pesavento <pesa@gentoo.org> psi-0.14-r4.ebuild,
   psi-0.15.ebuild, psi-9999.ebuild:

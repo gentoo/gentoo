@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/leveldb/leveldb-1.18-r1.ebuild,v 1.1 2015/03/06 09:12:42 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/leveldb/leveldb-1.18-r1.ebuild,v 1.2 2015/07/30 16:49:38 maekke Exp $
 
 EAPI=5
 
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/google/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 arm ~arm64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="+snappy static-libs +tcmalloc"
 
 DEPEND="tcmalloc? ( dev-util/google-perftools )

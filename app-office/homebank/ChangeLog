@@ -1,6 +1,15 @@
 # ChangeLog for app-office/homebank
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/homebank/ChangeLog,v 1.44 2015/07/23 21:01:43 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/homebank/ChangeLog,v 1.46 2015/07/30 17:23:35 calchan Exp $
+
+*homebank-5.0.3 (30 Jul 2015)
+
+  30 Jul 2015; Denis Dupeyron <calchan@gentoo.org> +homebank-5.0.3.ebuild:
+  Version bump.
+
+  30 Jul 2015; Denis Dupeyron <calchan@gentoo.org> -homebank-4.5.ebuild,
+  -homebank-4.5.6.ebuild:
+  Cleanup old versions.
 
   23 Jul 2015; Pacho Ramos <pacho@gentoo.org> homebank-4.6.3.ebuild:
   ppc stable wrt bug #515064

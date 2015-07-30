@@ -1,6 +1,16 @@
 # ChangeLog for app-emulation/crossover-office-pro-bin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/crossover-office-pro-bin/ChangeLog,v 1.28 2015/06/14 15:16:14 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/crossover-office-pro-bin/ChangeLog,v 1.29 2015/07/30 16:56:28 ryao Exp $
+
+  30 Jul 2015; Richard Yao <ryao@gentoo.org>
+  crossover-office-pro-bin-5.0.0.ebuild, crossover-office-pro-bin-5.0.1.ebuild,
+  crossover-office-pro-bin-5.0.3.ebuild, crossover-office-pro-bin-6.0.0.ebuild,
+  crossover-office-pro-bin-6.1.0.ebuild, crossover-office-pro-bin-6.2.0.ebuild,
+  crossover-office-pro-bin-7.0.2.ebuild, crossover-office-pro-bin-7.1.0.ebuild,
+  crossover-office-pro-bin-8.0.0.ebuild, crossover-office-pro-bin-9.0.0.ebuild,
+  crossover-office-pro-bin-9.0.1.ebuild, crossover-office-pro-bin-9.1.0.ebuild,
+  crossover-office-pro-bin-9.2.0.ebuild:
+  Add RESTRICT=bindist to comply with license requirements. Approved by ulm.
 
   14 Jun 2015; Ulrich Müller <ulm@gentoo.org>
   crossover-office-pro-bin-5.0.0.ebuild, crossover-office-pro-bin-5.0.1.ebuild,

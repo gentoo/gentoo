@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/homebank/homebank-4.5.6.ebuild,v 1.1 2014/03/14 21:13:12 calchan Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/homebank/homebank-5.0.3.ebuild,v 1.1 2015/07/30 17:23:35 calchan Exp $
 
 EAPI="5"
 
@@ -14,20 +14,23 @@ SLOT="0"
 IUSE="+ofx"
 KEYWORDS="~amd64 ~ppc ~x86"
 
-RDEPEND=">=x11-libs/gtk+-2.20:2
-	>=dev-libs/glib-2.17
-	ofx? ( >=dev-libs/libofx-0.7 )"
+RDEPEND=">=dev-libs/glib-2.28
+	x11-libs/cairo
+	x11-libs/gdk-pixbuf
+	>=x11-libs/gtk+-3.6.4:3
+	x11-libs/pango
+	ofx? ( >=dev-libs/libofx-0.8.3 )"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	>=dev-util/intltool-0.40.5"
+	>=dev-lang/perl-5.8.1
+	dev-perl/XML-Parser
+	>=dev-util/intltool-0.40.5
+	sys-devel/gettext
+	virtual/pkgconfig"
+
+DOCS=( AUTHORS ChangeLog README )
 
 src_configure() {
 	econf $(use_with ofx)
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die "Installation failed"
-	dodoc AUTHORS ChangeLog README
 }
 
 pkg_postinst() {
