@@ -1,6 +1,10 @@
 # ChangeLog for sys-apps/gentoo-functions
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/gentoo-functions/ChangeLog,v 1.33 2015/07/29 17:09:58 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/gentoo-functions/ChangeLog,v 1.34 2015/07/30 13:15:13 klausman Exp $
+
+  30 Jul 2015; Tobias Klausmann <klausman@gentoo.org>
+  gentoo-functions-0.10.ebuild:
+  Stable on alpha, bug 556154
 
   29 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> gentoo-functions-0.10.ebuild:
   x86 stable wrt bug #556154

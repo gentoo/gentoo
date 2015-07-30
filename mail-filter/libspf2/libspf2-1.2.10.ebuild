@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/libspf2/libspf2-1.2.10.ebuild,v 1.7 2015/07/23 20:17:36 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/libspf2/libspf2-1.2.10.ebuild,v 1.8 2015/07/30 12:53:47 ago Exp $
 
 EAPI=5
 inherit autotools
@@ -11,7 +11,7 @@ SRC_URI="http://www.libspf2.org/spf/libspf2-${PV}.tar.gz"
 
 LICENSE="|| ( LGPL-2.1 BSD-2 )"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ~ia64 ppc ~ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 hppa ~ia64 ppc ~ppc64 sparc x86 ~x86-fbsd"
 IUSE="static static-libs"
 
 DEPEND=""

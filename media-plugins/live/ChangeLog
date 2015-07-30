@@ -1,6 +1,9 @@
 # ChangeLog for media-plugins/live
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/live/ChangeLog,v 1.170 2015/07/23 19:59:11 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/live/ChangeLog,v 1.171 2015/07/30 12:52:48 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> live-2013.02.11.ebuild:
+  Stable for sparc, wrt bug #539222
 
   23 Jul 2015; Pacho Ramos <pacho@gentoo.org> live-2013.02.11.ebuild:
   ppc stable wrt bug #539222

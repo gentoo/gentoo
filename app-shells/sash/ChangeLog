@@ -1,6 +1,9 @@
 # ChangeLog for app-shells/sash
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/sash/ChangeLog,v 1.61 2015/07/23 20:03:17 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-shells/sash/ChangeLog,v 1.62 2015/07/30 12:37:35 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> sash-3.8.ebuild:
+  Stable for sparc, wrt bug #534898
 
   23 Jul 2015; Pacho Ramos <pacho@gentoo.org> sash-3.8.ebuild:
   ppc stable wrt bug #534898

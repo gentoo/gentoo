@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/paw/paw-2.14.04-r4.ebuild,v 1.6 2015/06/09 07:21:33 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-physics/paw/paw-2.14.04-r4.ebuild,v 1.7 2015/07/30 12:59:58 ago Exp $
 
 EAPI=5
 
@@ -19,7 +19,7 @@ SRC_URI="
 
 SLOT="0"
 LICENSE="GPL-2 LGPL-2 BSD"
-KEYWORDS="amd64 hppa ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 hppa sparc x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="

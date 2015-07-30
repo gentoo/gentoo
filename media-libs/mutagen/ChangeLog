@@ -1,6 +1,9 @@
 # ChangeLog for media-libs/mutagen
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/mutagen/ChangeLog,v 1.114 2015/07/29 07:50:48 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/mutagen/ChangeLog,v 1.115 2015/07/30 13:01:13 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> mutagen-1.27.ebuild:
+  Stable for sparc, wrt bug #535470
 
 *mutagen-1.29 (29 Jul 2015)
 

@@ -1,6 +1,9 @@
 # ChangeLog for gnome-base/librsvg
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/librsvg/ChangeLog,v 1.392 2015/07/29 10:22:01 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/librsvg/ChangeLog,v 1.393 2015/07/30 13:22:27 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> librsvg-2.40.9.ebuild:
+  Stable for sparc, wrt bug #551814
 
   29 Jul 2015; Tobias Klausmann <klausman@gentoo.org> librsvg-2.40.9.ebuild:
   Stable on alpha, bug 551814

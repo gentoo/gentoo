@@ -1,6 +1,10 @@
 # ChangeLog for dev-cpp/gtkmm
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/gtkmm/ChangeLog,v 1.302 2015/07/29 08:00:46 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/gtkmm/ChangeLog,v 1.303 2015/07/30 13:21:28 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> gtkmm-2.24.4-r1.ebuild,
+  gtkmm-3.14.0-r1.ebuild:
+  Stable for sparc, wrt bug #551814
 
   29 Jul 2015; Tobias Klausmann <klausman@gentoo.org> gtkmm-2.24.4-r1.ebuild,
   gtkmm-3.14.0-r1.ebuild:

@@ -1,6 +1,9 @@
 # ChangeLog for app-crypt/gpgme
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/gpgme/ChangeLog,v 1.235 2015/07/23 20:00:49 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/gpgme/ChangeLog,v 1.236 2015/07/30 12:31:31 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> gpgme-1.5.5.ebuild:
+  Stable for sparc, wrt bug #533350
 
   23 Jul 2015; Pacho Ramos <pacho@gentoo.org> gpgme-1.5.5.ebuild:
   ppc stable wrt bug #533350

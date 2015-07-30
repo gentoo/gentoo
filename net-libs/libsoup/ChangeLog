@@ -1,6 +1,9 @@
 # ChangeLog for net-libs/libsoup
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libsoup/ChangeLog,v 1.357 2015/07/29 10:32:13 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libsoup/ChangeLog,v 1.358 2015/07/30 13:24:04 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> libsoup-2.48.1.ebuild:
+  Stable for sparc, wrt bug #551814
 
   29 Jul 2015; Tobias Klausmann <klausman@gentoo.org> libsoup-2.48.1.ebuild:
   Stable on alpha, bug 551814

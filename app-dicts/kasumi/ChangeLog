@@ -1,6 +1,9 @@
 # ChangeLog for app-dicts/kasumi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/kasumi/ChangeLog,v 1.53 2015/07/27 17:00:59 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/kasumi/ChangeLog,v 1.54 2015/07/30 13:10:38 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> kasumi-2.5-r1.ebuild:
+  Stable for sparc, wrt bug #525016
 
   27 Jul 2015; Tobias Klausmann <klausman@gentoo.org> kasumi-2.5-r1.ebuild:
   Stable on alpha, bug 525016

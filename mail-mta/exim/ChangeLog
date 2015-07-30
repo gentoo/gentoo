@@ -1,6 +1,9 @@
 # ChangeLog for mail-mta/exim
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/exim/ChangeLog,v 1.321 2015/07/27 10:53:06 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/exim/ChangeLog,v 1.322 2015/07/30 12:33:08 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> exim-4.85.ebuild:
+  Stable for sparc, wrt bug #550528
 
 *exim-4.86 (27 Jul 2015)
 

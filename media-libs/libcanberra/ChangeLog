@@ -1,6 +1,9 @@
 # ChangeLog for media-libs/libcanberra
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libcanberra/ChangeLog,v 1.131 2015/07/29 10:22:39 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libcanberra/ChangeLog,v 1.132 2015/07/30 13:22:48 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> libcanberra-0.30-r5.ebuild:
+  Stable for sparc, wrt bug #551814
 
   29 Jul 2015; Tobias Klausmann <klausman@gentoo.org>
   libcanberra-0.30-r5.ebuild:

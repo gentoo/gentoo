@@ -1,6 +1,13 @@
 # ChangeLog for app-i18n/scim
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/scim/ChangeLog,v 1.170 2015/07/28 04:59:12 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/scim/ChangeLog,v 1.172 2015/07/30 13:13:48 mrueg Exp $
+
+  30 Jul 2015; Manuel Rüger <mrueg@gentoo.org>
+  -files/scim-1.4.11-type-module-use.patch, -scim-1.4.11-r1.ebuild:
+  Remove old.
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> scim-1.4.14.ebuild:
+  Stable for sparc, wrt bug #525016
 
   28 Jul 2015; Jeroen Roovers <jer@gentoo.org> scim-1.4.14.ebuild:
   Stable for HPPA (bug #525016).

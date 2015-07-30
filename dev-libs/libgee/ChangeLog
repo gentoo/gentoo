@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/libgee
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgee/ChangeLog,v 1.116 2015/07/29 10:20:11 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgee/ChangeLog,v 1.117 2015/07/30 13:21:54 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> libgee-0.18.0.ebuild:
+  Stable for sparc, wrt bug #551814
 
   29 Jul 2015; Tobias Klausmann <klausman@gentoo.org> libgee-0.18.0.ebuild:
   Stable on alpha, bug 551814

@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/libsigc++
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libsigc++/ChangeLog,v 1.215 2015/07/29 10:20:20 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libsigc++/ChangeLog,v 1.216 2015/07/30 13:21:56 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> libsigc++-2.4.1.ebuild:
+  Stable for sparc, wrt bug #551814
 
   29 Jul 2015; Tobias Klausmann <klausman@gentoo.org> libsigc++-2.4.1.ebuild:
   Stable on alpha, bug 551814

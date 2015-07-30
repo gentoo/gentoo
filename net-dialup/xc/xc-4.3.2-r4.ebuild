@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/xc/xc-4.3.2-r4.ebuild,v 1.4 2015/07/23 19:34:39 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/xc/xc-4.3.2-r4.ebuild,v 1.5 2015/07/30 12:53:30 ago Exp $
 
 EAPI=5
 
@@ -12,7 +12,7 @@ SRC_URI="http://www.ibiblio.org/pub/Linux/apps/serialcomm/dialout/${P}.tar.gz"
 
 LICENSE="xc-radley"
 SLOT="0"
-KEYWORDS="amd64 ~mips ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~mips ppc ~ppc64 sparc x86"
 IUSE=""
 
 RDEPEND="sys-libs/ncurses"

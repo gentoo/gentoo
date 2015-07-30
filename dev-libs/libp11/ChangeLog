@@ -1,6 +1,13 @@
 # ChangeLog for dev-libs/libp11
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libp11/ChangeLog,v 1.82 2015/07/23 19:58:00 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libp11/ChangeLog,v 1.84 2015/07/30 13:22:03 alonbl Exp $
+
+  30 Jul 2015; Alon Bar-Lev <alonbl@gentoo.org> -libp11-0.2.8-r1.ebuild,
+  -libp11-0.2.8-r2.ebuild, -libp11-0.2.8.ebuild:
+  Cleanup
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> libp11-0.2.8-r3.ebuild:
+  Stable for sparc, wrt bug #535116
 
   23 Jul 2015; Pacho Ramos <pacho@gentoo.org> libp11-0.2.8-r3.ebuild:
   ppc stable wrt bug #535116

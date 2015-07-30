@@ -1,6 +1,9 @@
 # ChangeLog for net-mail/cyrus-imapd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/cyrus-imapd/ChangeLog,v 1.219 2015/07/22 14:34:43 eras Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/cyrus-imapd/ChangeLog,v 1.220 2015/07/30 12:33:48 eras Exp $
+
+  30 Jul 2015; Eray Aslan <eras@gentoo.org> cyrus-imapd-2.5.4.ebuild:
+  Fix openssl version dependency - bug #556242
 
 *cyrus-imapd-2.5.4 (22 Jul 2015)
 

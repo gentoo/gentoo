@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/cyrus-imapd/cyrus-imapd-2.5.4.ebuild,v 1.1 2015/07/22 14:34:43 eras Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/cyrus-imapd/cyrus-imapd-2.5.4.ebuild,v 1.2 2015/07/30 12:33:48 eras Exp $
 
 EAPI=5
 inherit autotools eutils multilib pam ssl-cert user toolchain-funcs
@@ -36,7 +36,7 @@ DEPEND="sys-libs/zlib
 	postgres? ( dev-db/postgresql:* )
 	snmp? ( >=net-analyzer/net-snmp-5.2.2-r1 )
 	sqlite? ( dev-db/sqlite:3 )
-	ssl? ( >=dev-libs/openssl-0.9.6:* )
+	ssl? ( >=dev-libs/openssl-1.0.1e:* )
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 snmp? ( net-analyzer/net-snmp[tcpd=] ) )"
 
 # all blockers really needed?

@@ -1,6 +1,9 @@
 # ChangeLog for net-misc/radvd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/radvd/ChangeLog,v 1.135 2015/06/14 19:39:41 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/radvd/ChangeLog,v 1.136 2015/07/30 13:04:14 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> radvd-2.10.ebuild:
+  Stable for sparc, wrt bug #547534
 
   14 Jun 2015; Markus Meier <maekke@gentoo.org> radvd-2.10.ebuild:
   arm stable, bug #547534

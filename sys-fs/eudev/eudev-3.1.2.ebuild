@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/eudev/eudev-3.1.2.ebuild,v 1.7 2015/07/17 10:27:43 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/eudev/eudev-3.1.2.ebuild,v 1.8 2015/07/30 13:09:15 ago Exp $
 
 EAPI="5"
 
@@ -14,7 +14,7 @@ if [[ ${PV} = 9999* ]]; then
 	inherit git-2
 else
 	SRC_URI="http://dev.gentoo.org/~blueness/${PN}/${P}.tar.gz"
-	KEYWORDS="alpha amd64 arm hppa ~mips ~ppc ppc64 ~sparc x86"
+	KEYWORDS="alpha amd64 arm hppa ~mips ~ppc ppc64 sparc x86"
 fi
 
 DESCRIPTION="Linux dynamic and persistent device naming support (aka userspace devfs)"

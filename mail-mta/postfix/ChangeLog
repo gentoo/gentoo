@@ -1,6 +1,9 @@
 # ChangeLog for mail-mta/postfix
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/postfix/ChangeLog,v 1.598 2015/07/22 16:11:23 eras Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/postfix/ChangeLog,v 1.599 2015/07/30 12:54:44 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> postfix-3.0.1-r1.ebuild:
+  Stable for sparc, wrt bug #551084
 
 *postfix-3.0.2 (22 Jul 2015)
 *postfix-2.10.8 (22 Jul 2015)

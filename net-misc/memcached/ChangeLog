@@ -1,6 +1,9 @@
 # ChangeLog for net-misc/memcached
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/memcached/ChangeLog,v 1.162 2015/07/23 20:58:29 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/memcached/ChangeLog,v 1.163 2015/07/30 12:57:10 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> memcached-1.4.24.ebuild:
+  Stable for sparc, wrt bug #552400
 
   23 Jul 2015; Pacho Ramos <pacho@gentoo.org> memcached-1.4.24.ebuild:
   ppc stable wrt bug #552400

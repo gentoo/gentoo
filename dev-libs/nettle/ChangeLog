@@ -1,6 +1,13 @@
 # ChangeLog for dev-libs/nettle
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/nettle/ChangeLog,v 1.131 2015/06/21 20:19:16 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/nettle/ChangeLog,v 1.133 2015/07/30 13:19:46 alonbl Exp $
+
+  30 Jul 2015; Alon Bar-Lev <alonbl@gentoo.org> -nettle-2.7.1-r1.ebuild,
+  -nettle-2.7.1-r2.ebuild, -nettle-2.7.1-r3.ebuild, -nettle-2.7.1.ebuild:
+  Cleanup
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> nettle-2.7.1-r4.ebuild:
+  Stable for sparc, wrt bug #540892
 
   21 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> nettle-2.7.1-r4.ebuild:
   alpha stable wrt bug #540892

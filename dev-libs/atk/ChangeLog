@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/atk
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/atk/ChangeLog,v 1.309 2015/07/29 10:19:12 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/atk/ChangeLog,v 1.310 2015/07/30 13:21:38 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> atk-2.14.0.ebuild:
+  Stable for sparc, wrt bug #551814
 
   29 Jul 2015; Tobias Klausmann <klausman@gentoo.org> atk-2.14.0.ebuild:
   Stable on alpha, bug 551814

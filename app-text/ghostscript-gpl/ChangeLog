@@ -1,6 +1,9 @@
 # ChangeLog for app-text/ghostscript-gpl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/ghostscript-gpl/ChangeLog,v 1.190 2015/07/25 17:58:59 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/ghostscript-gpl/ChangeLog,v 1.191 2015/07/30 12:56:52 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> ghostscript-gpl-9.15-r1.ebuild:
+  Stable for sparc, wrt bug #546632
 
   25 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
   ghostscript-gpl-9.15-r1.ebuild:

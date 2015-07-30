@@ -3,10 +3,10 @@ DEPEND=sci-physics/cernlib x11-libs/libXaw >=x11-libs/motif-2.3:0 x11-libs/xbae 
 DESCRIPTION=CERN's Physics Analysis Workstation data analysis program
 EAPI=5
 HOMEPAGE=https://paw.web.cern.ch/paw/
-KEYWORDS=amd64 hppa ~sparc x86 ~amd64-linux ~x86-linux
+KEYWORDS=amd64 hppa sparc x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2 LGPL-2 BSD
 RDEPEND=sci-physics/cernlib x11-libs/libXaw >=x11-libs/motif-2.3:0 x11-libs/xbae virtual/fortran
 SLOT=0
 SRC_URI=mirror://debian/pool/main/p/paw/paw_2.14.04.dfsg.2.orig.tar.gz mirror://debian/pool/main/p/paw/paw_2.14.04.dfsg.2-8.debian.tar.gz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fortran-2	db8710b355fc5598015c4bc3aad3bdb0	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=7c31694e301ef5ca6531696c8cdc53bf
+_md5_=bf5ddfe7fb274393246270f871cb6596

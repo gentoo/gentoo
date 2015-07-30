@@ -3,10 +3,10 @@ DEPEND=>=dev-libs/libxml2-2.6.12:= >=dev-libs/libxslt-1.1.8:= >=dev-util/intltoo
 DESCRIPTION=XSL stylesheets for yelp
 EAPI=5
 HOMEPAGE=http://www.gnome.org/
-KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~amd64-linux ~arm-linux ~x86-linux
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~amd64-linux ~arm-linux ~x86-linux
 LICENSE=GPL-2+ LGPL-2.1+ MIT FDL-1.1+
 RDEPEND=>=dev-libs/libxml2-2.6.12:= >=dev-libs/libxslt-1.1.8:=
 SLOT=0
 SRC_URI=mirror://gnome/sources/yelp-xsl/3.14/yelp-xsl-3.14.0.tar.xz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	gnome.org	8fef8f967214f56e08fa92d61163d891	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=ab2c6e8bdac851522bf22562b86d6368
+_md5_=25d5ce6b4952a122c9f779d7c1367b17

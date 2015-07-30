@@ -9,5 +9,5 @@ LICENSE=GPL-2 public-domain
 RDEPEND=>=dev-texlive/texlive-basic-2012 >=dev-texlive/texlive-fontsrecommended-2012 >=dev-texlive/texlive-latex-2012 >=app-text/texlive-core-2012
 SLOT=0
 SRC_URI=mirror://gentoo/texlive-module-xmlplay-2012.tar.xz mirror://gentoo/texlive-module-collection-htmlxml-2012.tar.xz doc? ( mirror://gentoo/texlive-module-xmlplay.doc-2012.tar.xz ) source? ( mirror://gentoo/texlive-module-xmlplay.source-2012.tar.xz )
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	texlive-common	8bd0f2143e4bb5fa3bb0bb56aa08006f	texlive-module	12c5ffd805581a3e724ff87014ac8919	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	texlive-common	8bd0f2143e4bb5fa3bb0bb56aa08006f	texlive-module	1b96b5da1fb65c6167dda9905de0b2da	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=6131a93bd1969916a3f8074bbff05b78

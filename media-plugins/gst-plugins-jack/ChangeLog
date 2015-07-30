@@ -1,6 +1,9 @@
 # ChangeLog for media-plugins/gst-plugins-jack
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-jack/ChangeLog,v 1.91 2015/07/29 10:52:27 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-jack/ChangeLog,v 1.92 2015/07/30 13:23:12 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> gst-plugins-jack-1.4.5.ebuild:
+  Stable for sparc, wrt bug #551814
 
   29 Jul 2015; Tobias Klausmann <klausman@gentoo.org>
   gst-plugins-jack-1.4.5.ebuild:

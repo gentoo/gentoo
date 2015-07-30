@@ -1,6 +1,10 @@
 # ChangeLog for x11-libs/vte
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/vte/ChangeLog,v 1.423 2015/07/29 10:57:52 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/vte/ChangeLog,v 1.424 2015/07/30 13:24:26 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> vte-0.28.2-r207.ebuild,
+  vte-0.36.4.ebuild, vte-0.38.3.ebuild:
+  Stable for sparc, wrt bug #551814
 
   29 Jul 2015; Tobias Klausmann <klausman@gentoo.org> vte-0.28.2-r207.ebuild:
   Stable on alpha, bug 551814

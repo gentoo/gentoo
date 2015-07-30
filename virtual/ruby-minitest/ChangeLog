@@ -1,6 +1,10 @@
 # ChangeLog for virtual/ruby-minitest
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/ruby-minitest/ChangeLog,v 1.53 2015/07/29 15:26:33 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/virtual/ruby-minitest/ChangeLog,v 1.54 2015/07/30 13:10:35 klausman Exp $
+
+  30 Jul 2015; Tobias Klausmann <klausman@gentoo.org>
+  ruby-minitest-0-r4.ebuild:
+  Stable on alpha, bug 518094
 
   29 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> ruby-minitest-0-r4.ebuild:
   amd64 stable wrt bug #518094

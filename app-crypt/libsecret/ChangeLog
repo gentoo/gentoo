@@ -1,6 +1,9 @@
 # ChangeLog for app-crypt/libsecret
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/libsecret/ChangeLog,v 1.56 2015/07/29 07:59:53 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/libsecret/ChangeLog,v 1.57 2015/07/30 13:21:18 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> libsecret-0.18.2.ebuild:
+  Stable for sparc, wrt bug #551814
 
   29 Jul 2015; Tobias Klausmann <klausman@gentoo.org> libsecret-0.18.2.ebuild:
   Stable on alpha, bug 551814

@@ -1,6 +1,10 @@
 # ChangeLog for x11-libs/gtksourceview
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtksourceview/ChangeLog,v 1.298 2015/07/29 10:57:04 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtksourceview/ChangeLog,v 1.299 2015/07/30 13:24:19 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> gtksourceview-2.10.5-r3.ebuild,
+  gtksourceview-3.14.4.ebuild:
+  Stable for sparc, wrt bug #551814
 
   29 Jul 2015; Tobias Klausmann <klausman@gentoo.org>
   gtksourceview-2.10.5-r3.ebuild:

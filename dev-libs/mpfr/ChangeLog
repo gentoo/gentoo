@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/mpfr
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/mpfr/ChangeLog,v 1.195 2015/07/23 02:45:16 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/mpfr/ChangeLog,v 1.196 2015/07/30 13:01:50 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> mpfr-3.1.2_p10.ebuild:
+  Stable for sparc, wrt bug #549520
 
   23 Jul 2015; Mike Frysinger <vapier@gentoo.org> mpfr-3.1.2_p10.ebuild:
   Mark arm64/m68k/s390/sh stable.

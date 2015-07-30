@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/reportlab
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/reportlab/ChangeLog,v 1.136 2015/07/17 12:33:35 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/reportlab/ChangeLog,v 1.137 2015/07/30 12:57:45 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> reportlab-3.1.44-r1.ebuild:
+  Stable for sparc, wrt bug #546810
 
   17 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> reportlab-3.1.44-r1.ebuild:
   ia64 stable wrt bug #546810

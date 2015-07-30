@@ -1,6 +1,10 @@
 # ChangeLog for x11-themes/adwaita-icon-theme
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/adwaita-icon-theme/ChangeLog,v 1.23 2015/07/29 10:49:32 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/adwaita-icon-theme/ChangeLog,v 1.24 2015/07/30 13:24:30 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org>
+  adwaita-icon-theme-3.14.1-r1.ebuild:
+  Stable for sparc, wrt bug #551814
 
   29 Jul 2015; Tobias Klausmann <klausman@gentoo.org>
   adwaita-icon-theme-3.14.1-r1.ebuild:

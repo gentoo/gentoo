@@ -1,6 +1,9 @@
 # ChangeLog for app-accessibility/at-spi2-core
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/at-spi2-core/ChangeLog,v 1.88 2015/07/29 07:59:32 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/at-spi2-core/ChangeLog,v 1.89 2015/07/30 13:21:12 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> at-spi2-core-2.14.1.ebuild:
+  Stable for sparc, wrt bug #551814
 
   29 Jul 2015; Tobias Klausmann <klausman@gentoo.org>
   at-spi2-core-2.14.1.ebuild:

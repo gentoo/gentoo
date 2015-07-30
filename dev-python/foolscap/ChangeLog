@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/foolscap
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/foolscap/ChangeLog,v 1.60 2015/07/23 19:42:58 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/foolscap/ChangeLog,v 1.61 2015/07/30 12:58:09 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> foolscap-0.7.0.ebuild:
+  Stable for sparc, wrt bug #552242
 
   23 Jul 2015; Pacho Ramos <pacho@gentoo.org> foolscap-0.7.0.ebuild:
   ppc stable wrt bug #552242

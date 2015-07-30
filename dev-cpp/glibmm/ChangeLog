@@ -1,6 +1,9 @@
 # ChangeLog for dev-cpp/glibmm
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/glibmm/ChangeLog,v 1.240 2015/07/29 08:00:34 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/glibmm/ChangeLog,v 1.241 2015/07/30 13:21:26 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> glibmm-2.42.0-r1.ebuild:
+  Stable for sparc, wrt bug #551814
 
   29 Jul 2015; Tobias Klausmann <klausman@gentoo.org> glibmm-2.42.0-r1.ebuild:
   Stable on alpha, bug 551814

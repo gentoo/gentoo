@@ -1,6 +1,9 @@
 # ChangeLog for dev-db/mysql++
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql++/ChangeLog,v 1.79 2015/07/23 20:32:42 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql++/ChangeLog,v 1.80 2015/07/30 12:53:13 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> mysql++-3.2.1.ebuild:
+  Stable for sparc, wrt bug #534942
 
   23 Jul 2015; Pacho Ramos <pacho@gentoo.org> mysql++-3.2.1.ebuild:
   ppc stable wrt bug #534942

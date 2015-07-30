@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libical/libical-1.0.1.ebuild,v 1.11 2015/07/29 15:54:14 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libical/libical-1.0.1.ebuild,v 1.12 2015/07/30 12:38:33 ago Exp $
 
 EAPI=5
 inherit cmake-utils
@@ -12,7 +12,7 @@ SRC_URI="http://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 # FIGURE OUT: Why ebuild for 1.0 was marked || ( MPL-1.1 LGPL-2 ) against what COPYING file says?
 LICENSE="|| ( MPL-1.0 LGPL-2.1 )"
 SLOT="0/1"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 IUSE="doc examples introspection static-libs"
 
 RDEPEND="introspection? ( dev-libs/gobject-introspection )"

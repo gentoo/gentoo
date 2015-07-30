@@ -1,6 +1,9 @@
 # ChangeLog for dev-util/gdbus-codegen
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/gdbus-codegen/ChangeLog,v 1.120 2015/07/19 12:28:29 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/gdbus-codegen/ChangeLog,v 1.121 2015/07/30 13:22:05 ago Exp $
+
+  30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> gdbus-codegen-2.42.2.ebuild:
+  Stable for sparc, wrt bug #551814
 
   19 Jul 2015; Tobias Klausmann <klausman@gentoo.org>
   gdbus-codegen-2.42.2.ebuild:
