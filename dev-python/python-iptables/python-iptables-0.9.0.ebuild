@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/python-iptables/python-iptables-0.7.0.ebuild,v 1.1 2015/01/22 02:21:40 chutzpah Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-iptables/python-iptables-0.9.0.ebuild,v 1.1 2015/07/30 03:44:42 idella4 Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
@@ -20,7 +20,6 @@ DEPEND="net-firewall/iptables
 RDEPEND="${DEPEND}"
 
 # tests manipulate live iptables rules, so disable them by default
-RESTRICT=test
 
 python_prepare_all() {
 	# Prevent un-needed d'loading during doc build
@@ -30,10 +29,6 @@ python_prepare_all() {
 
 python_compile_all() {
 	use doc && emake -C doc html
-}
-
-python_test() {
-	${PYTHON} test.py || die "tests fail with ${EPYTHON}"
 }
 
 python_install_all() {

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/mysql-multilib.eclass,v 1.24 2015/07/29 15:01:43 grknight Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/mysql-multilib.eclass,v 1.25 2015/07/30 04:22:47 grknight Exp $
 
 # @ECLASS: mysql-multilib.eclass
 # @MAINTAINER:
@@ -385,7 +385,8 @@ RDEPEND="${DEPEND}
 if [[ ${HAS_TOOLS_PATCH} ]] ; then
 	RDEPEND="${RDEPEND}
 		server? ( !prefix? ( dev-db/mysql-init-scripts ) )
-		!client-libs? ( virtual/libmysqlclient )"
+		!client-libs? ( virtual/libmysqlclient )
+		!<virtual/mysql-5.6-r4"
 else
 	RDEPEND="${RDEPEND} !minimal? ( !prefix? ( dev-db/mysql-init-scripts ) )"
 fi
@@ -588,7 +589,7 @@ multilib_src_configure() {
 	fi
 
 	# debug hack wrt #497532
-	mycmakeargs=(
+	mycmakeargs+=(
 		-DCMAKE_C_FLAGS_RELWITHDEBINFO="$(usex debug "" "-DNDEBUG")"
 		-DCMAKE_CXX_FLAGS_RELWITHDEBINFO="$(usex debug "" "-DNDEBUG")"
 		-DCMAKE_INSTALL_PREFIX=${EPREFIX}/usr
