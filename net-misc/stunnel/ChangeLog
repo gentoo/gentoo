@@ -1,6 +1,12 @@
 # ChangeLog for net-misc/stunnel
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/stunnel/ChangeLog,v 1.239 2015/07/29 13:14:41 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/stunnel/ChangeLog,v 1.240 2015/07/30 11:19:13 blueness Exp $
+
+*stunnel-5.22 (30 Jul 2015)
+
+  30 Jul 2015; Anthony G. Basile <blueness@gentoo.org> +stunnel-5.22.ebuild,
+  -stunnel-5.21.ebuild:
+  Version bump to fix ipv6 passive resolver.  Remove buggy unstable.
 
   29 Jul 2015; Anthony G. Basile <blueness@gentoo.org> stunnel-5.20.ebuild:
   Stable on ppc and ppc64.  Bug #551890.

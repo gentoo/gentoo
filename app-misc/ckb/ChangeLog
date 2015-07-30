@@ -1,6 +1,11 @@
 # ChangeLog for app-misc/ckb
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/ckb/ChangeLog,v 1.1 2015/07/04 13:58:25 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/ckb/ChangeLog,v 1.2 2015/07/30 11:17:35 mrueg Exp $
+
+*ckb-0.1.6 (30 Jul 2015)
+
+  30 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +ckb-0.1.6.ebuild:
+  Version bump.
 
 *ckb-0.1.5 (04 Jul 2015)
 
