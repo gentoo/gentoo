@@ -1,6 +1,10 @@
 # ChangeLog for www-client/firefox
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/firefox/ChangeLog,v 1.433 2015/07/29 20:14:14 axs Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/firefox/ChangeLog,v 1.434 2015/07/30 19:48:10 axs Exp $
+
+  30 Jul 2015; Ian Stakenvicius (_AxS_) <axs@gentoo.org> firefox-39.0.ebuild:
+  fixed typo made yesterday when adding the epatch line to fix hppa builds; bug
+  556276
 
   29 Jul 2015; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
   +files/firefox-38-hppa-js-syntax-error.patch, firefox-38.1.0.ebuild,

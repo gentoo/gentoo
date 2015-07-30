@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/firefox/firefox-39.0.ebuild,v 1.2 2015/07/29 20:14:14 axs Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/firefox/firefox-39.0.ebuild,v 1.3 2015/07/30 19:48:10 axs Exp $
 
 EAPI="5"
 VIRTUALX_REQUIRED="pgo"
@@ -146,7 +146,7 @@ src_prepare() {
 	EPATCH_FORCE="yes" \
 	EPATCH_EXCLUDE="8010_bug114311-freetype26.patch" \
 	epatch "${WORKDIR}/firefox"
-	epatch "${WORKDIR}"/${PN}-38-hppa-js-syntax-error.patch
+	epatch "${FILESDIR}"/${PN}-38-hppa-js-syntax-error.patch #556196
 
 	# Allow user to apply any additional patches without modifing ebuild
 	epatch_user
