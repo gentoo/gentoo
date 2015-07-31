@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/prompt_toolkit
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/prompt_toolkit/ChangeLog,v 1.11 2015/07/30 18:27:51 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/prompt_toolkit/ChangeLog,v 1.12 2015/07/31 07:13:35 jlec Exp $
+
+*prompt_toolkit-0.45 (31 Jul 2015)
+
+  31 Jul 2015; Justin Lecher <jlec@gentoo.org> +prompt_toolkit-0.45.ebuild:
+  Version Bump
 
 *prompt_toolkit-0.43 (30 Jul 2015)
 
