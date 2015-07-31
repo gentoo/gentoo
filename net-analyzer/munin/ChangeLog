@@ -1,6 +1,10 @@
 # ChangeLog for net-analyzer/munin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/munin/ChangeLog,v 1.168 2015/07/31 06:42:35 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/munin/ChangeLog,v 1.169 2015/07/31 09:16:47 xmw Exp $
+
+  31 Jul 2015; Michael Weber <xmw@gentoo.org> munin-2.0.25-r1.ebuild,
+  munin-2.1.9999.ebuild:
+  Install complete set of manpages if USE=minimal.
 
   31 Jul 2015; Justin Lecher <jlec@gentoo.org> munin-2.0.25-r1.ebuild:
   Drop unnesessary dep again

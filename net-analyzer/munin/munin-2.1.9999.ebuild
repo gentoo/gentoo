@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/munin/munin-2.1.9999.ebuild,v 1.8 2015/06/13 19:41:05 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/munin/munin-2.1.9999.ebuild,v 1.9 2015/07/31 09:16:47 xmw Exp $
 
 EAPI=5
 
@@ -164,7 +164,7 @@ src_install() {
 
 	# parallel install doesn't work and it's also pointless to have this
 	# run in parallel for now (because it uses internal loops).
-	emake -j1 DESTDIR="${D}" $(usex minimal install-minimal install)
+	emake -j1 DESTDIR="${D}" $(usex minimal "install-minimal install-man" install)
 
 	# we remove /run from the install, as it's not the package's to deal
 	# with.

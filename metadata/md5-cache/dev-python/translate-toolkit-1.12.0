@@ -4,11 +4,11 @@ DESCRIPTION=Toolkit to convert between many translation formats
 EAPI=5
 HOMEPAGE=http://translate.sourceforge.net
 IUSE=doc +html +ical +ini +subtitles python_targets_python2_7
-KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=app-text/iso-codes sys-devel/gettext dev-python/lxml[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/python-levenshtein-0.10.2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] !=dev-python/python-levenshtein-0.11.0[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/six[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/diff-match-patch[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/sphinx[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] html? ( dev-python/utidylib[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) ical? ( dev-python/vobject[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) ini? ( dev-python/iniparse[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[sqlite] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=mirror://sourceforge/translate/translate-toolkit-1.12.0.tar.bz2
 _eclasses_=distutils-r1	715b22a21726d3fd76b17e007c5daf5f	eutils	9fb270e417e0e83d64ca52586c4a79de	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-r1	d9c8348f26710ea523a385c2328cf027	python-utils-r1	68e010c13e97b7b2c7bf403ee9c51e1b	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=b7d3115bb194a433d5887422bfccef97
+_md5_=1e24659cb34b23b3ecb8db60b9d69b16

@@ -1,6 +1,11 @@
 # ChangeLog for dev-ml/ocaml-mysql
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/ocaml-mysql/ChangeLog,v 1.16 2015/05/31 00:13:05 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/ocaml-mysql/ChangeLog,v 1.17 2015/07/31 08:38:25 aballier Exp $
+
+*ocaml-mysql-1.2.0 (31 Jul 2015)
+
+  31 Jul 2015; Alexis Ballier <aballier@gentoo.org> +ocaml-mysql-1.2.0.ebuild:
+  version bump, fixing bug #556340
 
   31 May 2015; Manuel Rüger <mrueg@gentoo.org>
   -files/ocaml-mysql-1.0.3-head.patch, -files/ocaml-mysql-1.0.3-shtool-r1.patch,
