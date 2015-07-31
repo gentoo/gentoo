@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/libical
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libical/ChangeLog,v 1.100 2015/07/30 12:38:33 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libical/ChangeLog,v 1.101 2015/07/31 10:45:35 kensington Exp $
+
+  31 Jul 2015; Michael Palimaka <kensington@gentoo.org> -libical-0.48-r2.ebuild:
+  Remove old.
 
   30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> libical-1.0.1.ebuild:
   Stable for sparc, wrt bug #552570

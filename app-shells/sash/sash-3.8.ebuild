@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/sash/sash-3.8.ebuild,v 1.9 2015/07/30 12:37:35 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-shells/sash/sash-3.8.ebuild,v 1.10 2015/07/31 10:42:53 zlogene Exp $
 
 EAPI=4
 
@@ -12,7 +12,7 @@ SRC_URI="http://www.canb.auug.org.au/~dbell/programs/${P}.tar.gz"
 
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86"
 IUSE="static"
 
 DEPEND="

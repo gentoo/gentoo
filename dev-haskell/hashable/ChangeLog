@@ -1,6 +1,9 @@
 # ChangeLog for dev-haskell/hashable
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hashable/ChangeLog,v 1.34 2015/06/06 11:09:51 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hashable/ChangeLog,v 1.35 2015/07/31 10:35:24 zlogene Exp $
+
+  31 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> hashable-1.2.1.0.ebuild:
+  ia64 stable wrt bug #495380
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml
