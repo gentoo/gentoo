@@ -489,6 +489,11 @@ _calculate_live_repo() {
 				*)
 					# branch
 					branch_prefix="branches/KDE/$(get_kde_version)"
+
+					if [[ ${PV} == ??.??.49.9999 && ${CATEGORY} = kde-apps ]]; then
+						branch_prefix="branches/Applications/$(get_kde_version)"
+					fi
+
 					# @ECLASS-VARIABLE: ESVN_PROJECT_SUFFIX
 					# @DESCRIPTION
 					# Suffix appended to ESVN_PROJECT depending on fetched branch.
