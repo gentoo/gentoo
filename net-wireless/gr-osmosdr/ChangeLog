@@ -1,6 +1,12 @@
 # ChangeLog for net-wireless/gr-osmosdr
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/gr-osmosdr/ChangeLog,v 1.28 2014/11/05 05:05:10 zerochaos Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/gr-osmosdr/ChangeLog,v 1.29 2015/07/31 01:31:20 zerochaos Exp $
+
+*gr-osmosdr-0.1.4_p20150730 (31 Jul 2015)
+
+  31 Jul 2015; Rick Farina <zerochaos@gentoo.org>
+  +gr-osmosdr-0.1.4_p20150730.ebuild:
+  9 months since a tag, I'm calling it a tag
 
 *gr-osmosdr-0.1.4 (05 Nov 2014)
 

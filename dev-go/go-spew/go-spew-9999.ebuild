@@ -1,12 +1,11 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-go/go-spew/go-spew-9999.ebuild,v 1.1 2015/07/30 20:31:56 zmedico Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-go/go-spew/go-spew-9999.ebuild,v 1.2 2015/07/31 02:16:35 patrick Exp $
 
 EAPI=5
 
 EGO_SRC=github.com/davecgh/${PN}
 EGO_PN=${EGO_SRC}/...
-
 
 if [[ ${PV} = *9999* ]]; then
 	inherit golang-vcs
