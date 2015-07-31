@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/libnl:3 sys-apps/pciutils sys-libs/ncurses[unicode?] X? ( x11-apps/xset ) virtual/libintl
 SLOT=0
 _eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	git-2	e28f0d8a9b321431b1e699782851b827	libtool	52d0e17251d04645ffaa61bfdd858944	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=e2f3c2372e2aa521abd8b841f151407c
+_md5_=dbcfaf047bf08fb11adc1f59ad5b823f

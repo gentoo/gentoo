@@ -1,6 +1,11 @@
 # ChangeLog for sys-power/powertop
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/powertop/ChangeLog,v 1.111 2015/07/08 11:53:58 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-power/powertop/ChangeLog,v 1.112 2015/07/31 04:09:39 perfinion Exp $
+
+  31 Jul 2015; Jason Zaman <perfinion@gentoo.org> powertop-2.5.ebuild,
+  powertop-2.6.ebuild, powertop-2.7-r1.ebuild, powertop-2.7-r2.ebuild,
+  powertop-2.7.ebuild, powertop-9999.ebuild:
+  CONFIG_PM_RUNTIME was renamed to CONFIG_PM in kernel 3.19
 
 *powertop-2.7-r2 (08 Jul 2015)
 
