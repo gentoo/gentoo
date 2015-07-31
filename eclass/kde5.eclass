@@ -276,13 +276,25 @@ _calculate_live_repo() {
 			# (anonsvn) with anything else you might want to use.
 			ESVN_MIRROR=${ESVN_MIRROR:=svn://anonsvn.kde.org/home/kde}
 
-			local branch_prefix="KDE"
+			local branch_prefix="trunk/KDE"
 
-			if [[ -n ${KMNAME} ]]; then
-				branch_prefix="${KMNAME}"
+			if [[ ${PV} == ??.??.49.9999 && ${CATEGORY} = kde-apps ]]; then
+				branch_prefix="branches/Applications/$(get_version_component_range 1-2)"
 			fi
 
-			ESVN_REPO_URI="${ESVN_MIRROR}/trunk/${branch_prefix}/${PN}"
+			if [[ ${PV} != 9999 && ${CATEGORY} = kde-plasma ]]; then
+				branch_prefix="branches/plasma/$(get_version_component_range 1-2)"
+			fi
+
+			local _kmname
+
+			if [[ -n ${KMNAME} ]]; then
+				_kmname=${KMNAME}
+			else
+				_kmname=${PN}
+			fi
+
+			ESVN_REPO_URI="${ESVN_MIRROR}/${branch_prefix}/${_kmname}"
 			;;
 		git)
 			# @ECLASS-VARIABLE: EGIT_MIRROR
