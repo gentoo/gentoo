@@ -1,6 +1,12 @@
 # ChangeLog for net-wireless/rtl-sdr
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/rtl-sdr/ChangeLog,v 1.11 2015/03/21 20:15:48 zerochaos Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/rtl-sdr/ChangeLog,v 1.12 2015/07/31 01:10:58 zerochaos Exp $
+
+*rtl-sdr-0.5.3_p20150730 (31 Jul 2015)
+
+  31 Jul 2015; Rick Farina <zerochaos@gentoo.org>
+  +rtl-sdr-0.5.3_p20150730.ebuild:
+  been 18 months since a tag, so I'll make one up
 
 *rtl-sdr-0.5.3-r1 (21 Mar 2015)
 

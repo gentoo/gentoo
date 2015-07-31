@@ -1,0 +1,9 @@
+# ChangeLog for dev-python/bandit
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/bandit/ChangeLog,v 1.1 2015/07/31 01:15:51 prometheanfire Exp $
+
+*bandit-0.12.0 (31 Jul 2015)
+
+  31 Jul 2015; Matthew Thode <prometheanfire@gentoo.org> +bandit-0.12.0.ebuild,
+  +metadata.xml:
+  adding so sigmavirus24 leaves me alone
