@@ -4,7 +4,7 @@ DESCRIPTION=EPSON Image Scan! for Linux (including sane-epkowa backend)
 EAPI=5
 HOMEPAGE=http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 IUSE=X doc gimp jpeg png tiff linguas_ar linguas_de linguas_es linguas_fr linguas_it linguas_ja linguas_ko linguas_nl linguas_pt linguas_zh_CN linguas_zh_TW
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=GPL-2 AVASYS
 RDEPEND=dev-libs/libxml2 media-gfx/iscan-data media-gfx/sane-backends virtual/udev virtual/libusb:1 X? ( x11-libs/gtk+:2 ) gimp? ( media-gfx/gimp ) jpeg? ( virtual/jpeg:= ) png? ( media-libs/libpng:= ) tiff? ( media-libs/tiff:= )
 REQUIRED_USE=gimp? ( X ) jpeg? ( X ) png? ( X ) tiff? ( X )
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=http://dev.gentoo.org/~idella4/tarballs/iscan_2.30.1-1.tar.gz http://dev.gentoo.org/~flameeyes/avasys/iscan_2.30.1-1.tar.gz doc? ( http://dev.gentoo.org/~flameeyes/avasys/userg_revQ_e.pdf linguas_ja? ( http://dev.gentoo.org/~flameeyes/avasys/userg_revQ_j.pdf ) )
 _eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=972eace4b1b19afbb98425345e18d0a9
+_md5_=9d4e86e49d4eb5b46975e093d7750985

@@ -1,6 +1,11 @@
 # ChangeLog for dev-texlive/texlive-fontsrecommended
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-fontsrecommended/ChangeLog,v 1.75 2015/07/22 19:37:42 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-fontsrecommended/ChangeLog,v 1.76 2015/07/31 14:39:42 aballier Exp $
+
+  31 Jul 2015; Alexis Ballier <aballier@gentoo.org>
+  texlive-fontsrecommended-2015.ebuild:
+  Add dep on dev-texlive/texlive-genericrecommended since it is almost
+  mandatory to use fonts now, bug #556048
 
   22 Jul 2015; Anthony G. Basile <blueness@gentoo.org>
   texlive-fontsrecommended-2014.ebuild:

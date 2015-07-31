@@ -1,6 +1,9 @@
 # ChangeLog for dev-tex/feynmf
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/feynmf/ChangeLog,v 1.45 2015/07/30 14:35:44 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/feynmf/ChangeLog,v 1.46 2015/07/31 15:10:43 ago Exp $
+
+  31 Jul 2015; Agostino Sarubbo <ago@gentoo.org> feynmf-1.08-r4.ebuild:
+  Stable for amd64, wrt bug #556292
 
   30 Jul 2015; Tobias Klausmann <klausman@gentoo.org> feynmf-1.08-r4.ebuild:
   Stable on alpha, bug 556292
@@ -155,4 +158,3 @@
   +files/feynmf-1.08.patch, +feynmf-1.08.ebuild:
   Initial import. Ebuild submitted by Ulrich Mueller <ulm@kph.uni-mainz.de>,
   closing bug #62800.
-

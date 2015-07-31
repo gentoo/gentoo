@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/ess/ess-15.03.1.ebuild,v 1.1 2015/05/19 10:58:56 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/ess/ess-15.03.1.ebuild,v 1.2 2015/07/31 15:10:38 ago Exp $
 
 EAPI=5
 
@@ -13,7 +13,7 @@ SRC_URI="http://ess.r-project.org/downloads/ess/${MY_P}.tgz"
 
 LICENSE="GPL-2+ GPL-3+ Texinfo-manual"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
 
 DEPEND="app-text/texi2html
 	virtual/latex-base"

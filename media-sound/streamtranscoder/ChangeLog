@@ -1,6 +1,9 @@
 # ChangeLog for media-sound/streamtranscoder
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/streamtranscoder/ChangeLog,v 1.10 2012/07/14 12:16:22 hasufell Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/streamtranscoder/ChangeLog,v 1.11 2015/07/31 15:11:34 ago Exp $
+
+  31 Jul 2015; Agostino Sarubbo <ago@gentoo.org> streamtranscoder-3.1.11.ebuild:
+  Stable for amd64, wrt bug #555948
 
   14 Jul 2012; Julian Ospald <hasufell@gentoo.org>
   streamtranscoder-1.2.4.ebuild, +files/streamtranscoder-1.2.4-build.patch:
@@ -42,4 +45,3 @@
   +streamtranscoder-1.2.4.ebuild:
   Ebuild submitted by Evan Borgstrom <evan@mirrored.ca> and adapted to meet
   gentoo ebuild policies by <cparpart@surakware.net>
-

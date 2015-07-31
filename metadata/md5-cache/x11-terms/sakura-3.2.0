@@ -3,10 +3,10 @@ DEPEND=>=dev-libs/glib-2.20:2 >=x11-libs/vte-0.28:2.90 x11-libs/gtk+:3 >=dev-lan
 DESCRIPTION=sakura is a terminal emulator based on GTK and VTE
 EAPI=5
 HOMEPAGE=http://www.pleyades.net/david/projects/sakura/
-KEYWORDS=~amd64 ~x86 ~arm-linux ~x86-linux
+KEYWORDS=amd64 ~x86 ~arm-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.20:2 >=x11-libs/vte-0.28:2.90 x11-libs/gtk+:3
 SLOT=0
 SRC_URI=http://launchpad.net/sakura/trunk/3.2.0/+download/sakura-3.2.0.tar.bz2
 _eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=e334ab101564dcfab7493e41622bd877
+_md5_=7ed16e3ea30517451076767712988fe4

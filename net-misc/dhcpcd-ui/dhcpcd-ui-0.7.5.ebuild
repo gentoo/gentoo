@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/dhcpcd-ui/dhcpcd-ui-0.7.5.ebuild,v 1.1 2015/07/31 02:51:37 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/dhcpcd-ui/dhcpcd-ui-0.7.5.ebuild,v 1.2 2015/07/31 14:34:24 idella4 Exp $
 
 EAPI=5
 
@@ -34,8 +34,6 @@ DEPEND="${DEPEND}
 RDEPEND=">=net-misc/dhcpcd-6.4.4"
 
 src_prepare() {
-	sed -e 's:Cinnamon:X-Cinnamon:' \
-		-i src/dhcpcd-gtk/dhcpcd-gtk.desktop || die
 	epatch_user
 }
 

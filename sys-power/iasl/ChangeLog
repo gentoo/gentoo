@@ -1,6 +1,9 @@
 # ChangeLog for sys-power/iasl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/iasl/ChangeLog,v 1.50 2015/07/26 12:43:10 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-power/iasl/ChangeLog,v 1.51 2015/07/31 15:11:29 ago Exp $
+
+  31 Jul 2015; Agostino Sarubbo <ago@gentoo.org> iasl-20140828.ebuild:
+  Stable for amd64, wrt bug #555944
 
 *iasl-20150717 (26 Jul 2015)
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/streamtranscoder/streamtranscoder-3.1.11.ebuild,v 1.2 2007/07/30 14:17:00 gustavoz Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/streamtranscoder/streamtranscoder-3.1.11.ebuild,v 1.3 2015/07/31 15:11:34 ago Exp $
 
 MY_P=${PN}v3-${PV}
 
@@ -10,7 +10,7 @@ SRC_URI="http://www.oddsock.org/tools/streamTranscoderV3/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~ppc ~sparc ~x86"
 IUSE=""
 
 RDEPEND=">=media-libs/libogg-1.1

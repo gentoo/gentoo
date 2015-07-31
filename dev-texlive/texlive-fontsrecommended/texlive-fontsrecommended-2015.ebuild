@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-fontsrecommended/texlive-fontsrecommended-2015.ebuild,v 1.1 2015/07/16 09:14:22 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-fontsrecommended/texlive-fontsrecommended-2015.ebuild,v 1.2 2015/07/31 14:39:42 aballier Exp $
 
 EAPI="5"
 
@@ -19,5 +19,6 @@ DEPEND=">=dev-texlive/texlive-basic-2015
 !=dev-texlive/texlive-basic-2007*
 !<dev-texlive/texlive-fontsextra-2010
 !<dev-texlive/texlive-latexrecommended-2014
+dev-texlive/texlive-genericrecommended
 "
 RDEPEND="${DEPEND} "

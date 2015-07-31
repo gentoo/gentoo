@@ -1,6 +1,9 @@
 # ChangeLog for dev-vcs/rcs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/rcs/ChangeLog,v 1.37 2015/07/28 09:05:38 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/rcs/ChangeLog,v 1.38 2015/07/31 15:12:09 ago Exp $
+
+  31 Jul 2015; Agostino Sarubbo <ago@gentoo.org> rcs-5.9.3.ebuild:
+  Stable for amd64, wrt bug #555838
 
   28 Jul 2015; Tobias Klausmann <klausman@gentoo.org> rcs-5.9.3.ebuild:
   Stable on alpha, bug 555838

@@ -1,6 +1,9 @@
 # ChangeLog for media-gfx/iscan-data
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/iscan-data/ChangeLog,v 1.16 2015/07/14 15:48:30 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/iscan-data/ChangeLog,v 1.17 2015/07/31 15:11:39 ago Exp $
+
+  31 Jul 2015; Agostino Sarubbo <ago@gentoo.org> iscan-data-1.36.0.1.ebuild:
+  Stable for amd64, wrt bug #555634
 
 *iscan-data-1.36.0.1 (14 Jul 2015)
 

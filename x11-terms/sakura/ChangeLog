@@ -1,6 +1,9 @@
 # ChangeLog for x11-terms/sakura
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/sakura/ChangeLog,v 1.48 2015/07/25 06:28:01 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/sakura/ChangeLog,v 1.49 2015/07/31 15:11:54 ago Exp $
+
+  31 Jul 2015; Agostino Sarubbo <ago@gentoo.org> sakura-3.2.0.ebuild:
+  Stable for amd64, wrt bug #555832
 
   25 Jul 2015; Jeroen Roovers <jer@gentoo.org> sakura-3.2.0.ebuild,
   sakura-3.2.1.ebuild:

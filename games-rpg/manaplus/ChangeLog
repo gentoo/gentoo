@@ -1,6 +1,9 @@
 # ChangeLog for games-rpg/manaplus
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-rpg/manaplus/ChangeLog,v 1.21 2015/07/27 18:27:41 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/manaplus/ChangeLog,v 1.22 2015/07/31 15:11:20 ago Exp $
+
+  31 Jul 2015; Agostino Sarubbo <ago@gentoo.org> manaplus-1.5.6.20.ebuild:
+  Stable for amd64, wrt bug #556064
 
 *manaplus-1.5.7.18 (27 Jul 2015)
 

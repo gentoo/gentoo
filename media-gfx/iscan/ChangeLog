@@ -1,6 +1,9 @@
 # ChangeLog for media-gfx/iscan
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/iscan/ChangeLog,v 1.58 2015/07/15 22:08:40 np-hardass Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/iscan/ChangeLog,v 1.59 2015/07/31 15:12:00 ago Exp $
+
+  31 Jul 2015; Agostino Sarubbo <ago@gentoo.org> iscan-2.30.1.1.ebuild:
+  Stable for amd64, wrt bug #555636
 
 *iscan-2.30.1.1 (15 Jul 2015)
 

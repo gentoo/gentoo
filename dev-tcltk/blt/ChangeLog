@@ -1,6 +1,9 @@
 # ChangeLog for dev-tcltk/blt
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/blt/ChangeLog,v 1.71 2015/07/29 11:19:10 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/blt/ChangeLog,v 1.72 2015/07/31 15:12:21 ago Exp $
+
+  31 Jul 2015; Agostino Sarubbo <ago@gentoo.org> blt-2.4z-r13.ebuild:
+  Stable for amd64, wrt bug #556122
 
   29 Jul 2015; Tobias Klausmann <klausman@gentoo.org> blt-2.4z-r13.ebuild:
   Stable on alpha, bug 556122
