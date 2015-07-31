@@ -1,6 +1,10 @@
 # ChangeLog for net-mail/tnef
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/tnef/ChangeLog,v 1.77 2015/07/23 19:41:32 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/tnef/ChangeLog,v 1.78 2015/07/31 05:18:34 eras Exp $
+
+  31 Jul 2015; Eray Aslan <eras@gentoo.org> -tnef-1.4.10.ebuild,
+  -tnef-1.4.9.ebuild:
+  Remove old
 
   23 Jul 2015; Pacho Ramos <pacho@gentoo.org> tnef-1.4.12.ebuild:
   ppc stable wrt bug #535594

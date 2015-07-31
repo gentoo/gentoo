@@ -1,6 +1,9 @@
 # ChangeLog for net-mail/lbdb
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/lbdb/ChangeLog,v 1.65 2015/07/23 19:39:55 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/lbdb/ChangeLog,v 1.66 2015/07/31 05:16:15 eras Exp $
+
+  31 Jul 2015; Eray Aslan <eras@gentoo.org> -lbdb-0.38.ebuild:
+  Remove old
 
   23 Jul 2015; Pacho Ramos <pacho@gentoo.org> lbdb-0.39.ebuild:
   ppc stable wrt bug #535586

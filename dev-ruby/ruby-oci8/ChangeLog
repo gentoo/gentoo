@@ -1,6 +1,11 @@
 # ChangeLog for dev-ruby/ruby-oci8
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-oci8/ChangeLog,v 1.36 2015/04/11 15:35:26 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-oci8/ChangeLog,v 1.37 2015/07/31 05:24:18 graaff Exp $
+
+*ruby-oci8-2.1.8 (31 Jul 2015)
+
+  31 Jul 2015; Hans de Graaff <graaff@gentoo.org> +ruby-oci8-2.1.8.ebuild:
+  Version bump (untested).
 
   11 Apr 2015; Hans de Graaff <graaff@gentoo.org> ruby-oci8-2.1.7-r1.ebuild:
   Add ruby22.

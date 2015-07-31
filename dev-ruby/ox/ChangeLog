@@ -1,6 +1,11 @@
 # ChangeLog for dev-ruby/ox
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ox/ChangeLog,v 1.18 2015/07/11 20:20:38 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ox/ChangeLog,v 1.19 2015/07/31 05:20:19 graaff Exp $
+
+*ox-2.2.1 (31 Jul 2015)
+
+  31 Jul 2015; Hans de Graaff <graaff@gentoo.org> +ox-2.2.1.ebuild:
+  Version bump.
 
   11 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> ox-2.2.0-r1.ebuild:
   Add ~x86 keyword wrt bug #554410
