@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/libvirt-9999.ebuild,v 1.82 2015/07/28 16:54:00 tamiko Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/libvirt-9999.ebuild,v 1.83 2015/07/31 03:24:07 tamiko Exp $
 
 EAPI=5
 
@@ -137,9 +137,9 @@ For openrc users:
 	Please use /etc/conf.d/libvirtd to control the '--listen' parameter for
 	libvirtd.
 
-	The default configuration will keep kvm guests running upon daemon
-	restart and will shut down kvm guests if the libvirtd daemon is
-	stopped. This behavior can be changed under /etc/conf.d/libvirtd
+	The default configuration will suspend and resume running kvm guests
+	with 'managedsave'. This behavior can be changed under
+	/etc/conf.d/libvirtd
 
 For systemd users:
 
@@ -274,7 +274,7 @@ src_prepare() {
 	local iscsi_init=
 	local rbd_init=
 	local firewalld_init=
-	cp "${FILESDIR}/libvirtd.init-r16" "${S}/libvirtd.init"
+	cp "${FILESDIR}/libvirtd.init-r14" "${S}/libvirtd.init"
 	use avahi && avahi_init='avahi-daemon'
 	use iscsi && iscsi_init='iscsid'
 	use rbd && rbd_init='ceph'
@@ -441,7 +441,7 @@ src_install() {
 	systemd_newtmpfilesd "${FILESDIR}"/libvirtd.tmpfiles.conf libvirtd.conf
 
 	newinitd "${S}/libvirtd.init" libvirtd || die
-	newconfd "${FILESDIR}/libvirtd.confd-r6" libvirtd || die
+	newconfd "${FILESDIR}/libvirtd.confd-r4" libvirtd || die
 	newinitd "${FILESDIR}/virtlockd.init-r1" virtlockd || die
 
 	readme.gentoo_create_doc

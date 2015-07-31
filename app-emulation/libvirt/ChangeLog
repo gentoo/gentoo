@@ -1,6 +1,14 @@
 # ChangeLog for app-emulation/libvirt
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/ChangeLog,v 1.440 2015/07/29 20:53:38 tamiko Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/ChangeLog,v 1.441 2015/07/31 03:24:07 tamiko Exp $
+
+*libvirt-1.2.17-r4 (31 Jul 2015)
+
+  31 Jul 2015; Matthias Maier <tamiko@gentoo.org> +libvirt-1.2.17-r4.ebuild,
+  -files/libvirtd.confd-r6, -files/libvirtd.init-r16, -libvirt-1.2.17-r3.ebuild,
+  libvirt-9999.ebuild:
+  on behalf of cardoe; revert all changes made to the openrc runscripts; as per
+  discussions on bug #555736 and on bug #551854
 
 *libvirt-1.2.17-r3 (29 Jul 2015)
 

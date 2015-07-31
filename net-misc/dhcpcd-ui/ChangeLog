@@ -1,6 +1,13 @@
 # ChangeLog for net-misc/dhcpcd-ui
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/dhcpcd-ui/ChangeLog,v 1.15 2015/05/27 11:06:20 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/dhcpcd-ui/ChangeLog,v 1.17 2015/07/31 02:54:14 idella4 Exp $
+
+*dhcpcd-ui-0.7.5 (31 Jul 2015)
+
+  31 Jul 2015; Ian Delaney <idella4@gentoo.org> +dhcpcd-ui-0.7.5.ebuild,
+  -dhcpcd-ui-0.6.0.ebuild:
+  bump; tidy syntax, correction of qa issue to the .desktop file, closes bug
+  #535962, rm old
 
   27 May 2015; Agostino Sarubbo <ago@gentoo.org> dhcpcd-ui-0.7.4.ebuild:
   Stable for x86, wrt bug #550034

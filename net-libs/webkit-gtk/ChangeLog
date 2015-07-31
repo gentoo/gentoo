@@ -1,6 +1,14 @@
 # ChangeLog for net-libs/webkit-gtk
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/webkit-gtk/ChangeLog,v 1.325 2015/07/29 11:19:43 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/webkit-gtk/ChangeLog,v 1.326 2015/07/31 03:21:24 tetromino Exp $
+
+  31 Jul 2015; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -webkit-gtk-2.4.8.ebuild, -webkit-gtk-2.4.8-r200.ebuild,
+  -webkit-gtk-2.6.5.ebuild, webkit-gtk-2.6.6.ebuild, webkit-gtk-2.8.3.ebuild,
+  -files/webkit-gtk-2.4.7-disable-accelerated-compositing.patch,
+  -files/webkit-gtk-2.4.8-wayland-webkit2.patch:
+  Switch to ninja to significantly reduce build time (bug #546336, thanks to
+  Franz Fellner). Clean out old ebuilds.
 
   29 Jul 2015; Tobias Klausmann <klausman@gentoo.org>
   webkit-gtk-2.4.9-r200.ebuild:
