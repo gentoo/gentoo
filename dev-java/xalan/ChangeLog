@@ -1,6 +1,11 @@
 # ChangeLog for dev-java/xalan
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xalan/ChangeLog,v 1.99 2015/07/11 09:22:38 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xalan/ChangeLog,v 1.100 2015/07/30 22:36:49 chewi Exp $
+
+  30 Jul 2015; James Le Cuirot <chewi@gentoo.org> -xalan-2.7.1.ebuild,
+  xalan-2.7.2.ebuild:
+  Mark stable according to ALLARCHES policy and drop vulnerable version wrt bug
+  #505602.
 
   11 Jul 2015; James Le Cuirot <chewi@gentoo.org> xalan-2.7.1.ebuild:
   Drop java on ia64.
