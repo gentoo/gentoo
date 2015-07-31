@@ -1,6 +1,9 @@
 # ChangeLog for app-office/lyx
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/lyx/ChangeLog,v 1.340 2015/07/31 03:30:01 dlan Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/lyx/ChangeLog,v 1.341 2015/07/31 07:49:07 dlan Exp $
+
+  31 Jul 2015; Yixun Lan <dlan@gentoo.org> -lyx-2.1.2.ebuild:
+  drop old 2.1.2
 
 *lyx-2.1.4 (31 Jul 2015)
 

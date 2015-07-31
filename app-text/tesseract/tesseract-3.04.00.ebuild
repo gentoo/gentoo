@@ -1,24 +1,21 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/tesseract/tesseract-3.02.ebuild,v 1.4 2014/08/21 11:35:02 armin76 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/tesseract/tesseract-3.04.00.ebuild,v 1.1 2015/07/31 08:06:39 tomka Exp $
 
-EAPI=4
+EAPI=5
 
 MY_PN="${PN}-ocr"
-MY_P="${MY_PN}-${PV}"
+DL_P="${MY_PN}-3.02"
 URI_PREFIX="http://${MY_PN}.googlecode.com/files"
 
-inherit eutils autotools versionator
+inherit eutils autotools autotools-utils
 
-MY_MINOR=$(get_after_major_version)
-S="${WORKDIR}/${P}.${MY_MINOR}"
-
-DESCRIPTION="An OCR Engine that was developed at HP and now at Google"
-HOMEPAGE="http://code.google.com/p/tesseract-ocr/"
-SRC_URI="${URI_PREFIX}/${P}.${MY_MINOR}.tar.gz
-	${URI_PREFIX}/${MY_P}.eng.tar.gz
-	doc? ( ${URI_PREFIX}/${MY_P}.${MY_MINOR}-doc-html.tar.gz )
-	linguas_ar? ( ${URI_PREFIX}/${MY_P}.ara.tar.gz )
+DESCRIPTION="An OCR Engine, orginally developed at HP, now open source."
+HOMEPAGE="https://github.com/tesseract-ocr"
+SRC_URI="https://github.com/${MY_PN}/${PN}/archive/${PV}.tar.gz
+	${URI_PREFIX}/${DL_P}.eng.tar.gz
+	doc? ( ${URI_PREFIX}/${DL_P}.02-doc-html.tar.gz )
+	linguas_ar? ( ${URI_PREFIX}/${DL_P}.ara.tar.gz )
 	linguas_bg? ( ${URI_PREFIX}/bul.traineddata.gz )
 	linguas_ca? ( ${URI_PREFIX}/cat.traineddata.gz )
 	linguas_chr? ( ${URI_PREFIX}/chr.traineddata.gz )
@@ -31,9 +28,9 @@ SRC_URI="${URI_PREFIX}/${P}.${MY_MINOR}.tar.gz
 	linguas_es? ( ${URI_PREFIX}/spa.traineddata.gz )
 	linguas_fi? ( ${URI_PREFIX}/fin.traineddata.gz )
 	linguas_fr? ( ${URI_PREFIX}/fra.traineddata.gz )
-	linguas_he? ( ${URI_PREFIX}/${MY_P}.heb.tar.gz
+	linguas_he? ( ${URI_PREFIX}/${DL_P}.heb.tar.gz
 				${URI_PREFIX}/${MY_PN}-3.01.heb-com.tar.gz )
-	linguas_hi? ( ${URI_PREFIX}/${MY_P}.hin.tar.gz )
+	linguas_hi? ( ${URI_PREFIX}/${DL_P}.hin.tar.gz )
 	linguas_hu? ( ${URI_PREFIX}/hun.traineddata.gz )
 	linguas_id? ( ${URI_PREFIX}/ind.traineddata.gz )
 	linguas_it? ( ${URI_PREFIX}/ita.traineddata.gz )
@@ -53,7 +50,7 @@ SRC_URI="${URI_PREFIX}/${P}.${MY_MINOR}.tar.gz
 	linguas_sr? ( ${URI_PREFIX}/srp.traineddata.gz )
 	linguas_sv? ( ${URI_PREFIX}/swe.traineddata.gz
 				${URI_PREFIX}/swe-frak.traineddata.gz )
-	linguas_th? ( ${URI_PREFIX}/${MY_P}.tha.tar.gz )
+	linguas_th? ( ${URI_PREFIX}/${DL_P}.tha.tar.gz )
 	linguas_tl? ( ${URI_PREFIX}/tgl.traineddata.gz )
 	linguas_tr? ( ${URI_PREFIX}/tur.traineddata.gz )
 	linguas_uk? ( ${URI_PREFIX}/ukr.traineddata.gz )
@@ -65,30 +62,33 @@ SRC_URI="${URI_PREFIX}/${P}.${MY_MINOR}.tar.gz
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
 
-IUSE="doc examples jpeg png tiff -webp +scrollview linguas_ar linguas_bg linguas_ca linguas_chr linguas_cs linguas_de linguas_da linguas_el linguas_es linguas_fi linguas_fr linguas_he linguas_hi linguas_hu linguas_id linguas_it linguas_jp linguas_ko linguas_lt linguas_lv linguas_nl linguas_no linguas_pl linguas_pt linguas_ro linguas_ru linguas_sk linguas_sl linguas_sr linguas_sv linguas_th linguas_tl linguas_tr linguas_uk linguas_vi linguas_zh_CN linguas_zh_TW osd"
+IUSE="doc examples jpeg opencl osd png +scrollview static-libs tiff -webp linguas_ar linguas_bg linguas_ca linguas_chr linguas_cs linguas_de linguas_da linguas_el linguas_es linguas_fi linguas_fr linguas_he linguas_hi linguas_hu linguas_id linguas_it linguas_jp linguas_ko linguas_lt linguas_lv linguas_nl linguas_no linguas_pl linguas_pt linguas_ro linguas_ru linguas_sk linguas_sl linguas_sr linguas_sv linguas_th linguas_tl linguas_tr linguas_uk linguas_vi linguas_zh_CN linguas_zh_TW"
 
-DEPEND="media-libs/leptonica[zlib,tiff?,jpeg?,png?,webp?]"
+# With opencl tiff is necessary regardless of leptonica status   <-- Check this
+DEPEND=">=media-libs/leptonica-1.70[zlib,tiff?,jpeg?,png?,webp?]
+		opencl? ( virtual/opencl
+				  media-libs/tiff:0 )"
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}/tesseract-2.04-gcc47.patch"
-	epatch "${FILESDIR}/tesseract-3.02-automake-compat.patch"
-	epatch_user
+DOCS=(AUTHORS ChangeLog NEWS README ReleaseNotes )
 
-	eautoreconf
-}
+PATCHES=(
+	"${FILESDIR}/tesseract-2.04-gcc47.patch"
+)
 
 src_configure() {
-	econf $(use_enable scrollview graphics) \
-			--disable-dependency-tracking
+	local myeconfargs=(
+		$(use_enable opencl) \
+		$(use_enable scrollview graphics) \
+		--disable-dependency-tracking
+	)
+	autotools-utils_src_configure
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-
-	dodoc AUTHORS ChangeLog NEWS README ReleaseNotes
+	autotools-utils_src_install
 
 	if use examples; then
 		insinto /usr/share/doc/${PF}/examples

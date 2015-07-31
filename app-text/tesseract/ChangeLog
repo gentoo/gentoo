@@ -1,6 +1,13 @@
 # ChangeLog for app-text/tesseract
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/tesseract/ChangeLog,v 1.57 2015/05/10 18:20:41 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/tesseract/ChangeLog,v 1.58 2015/07/31 08:06:39 tomka Exp $
+
+*tesseract-3.04.00 (31 Jul 2015)
+
+  31 Jul 2015; Thomas Kahle <tomka@gentoo.org> +tesseract-3.04.00.ebuild,
+  -files/sanitize-configure-file.patch, -files/sanitize-pkgconfig-file.patch,
+  -tesseract-3.02-r1.ebuild, -tesseract-3.02.ebuild:
+  Bump to 3.04.00, drop old
 
   10 May 2015; Jeroen Roovers <jer@gentoo.org> tesseract-3.03_rc1-r1.ebuild:
   Mark ~ppc64 (bug #544622).

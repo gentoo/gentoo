@@ -11,5 +11,5 @@ REQUIRED_USE=java? ( cxx ) linear? ( double-precision ) lua? ( cxx ) python? ( c
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/csound/Csound6.04.tar.gz
-_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	java-pkg-opt-2	f9bbbe5092225a2059aa9e6a3a2b52f1	java-utils-2	91c89f960c6c0f6d3d1246c409ee1d5d	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	351da1aa73960a282591217fb57c1bb8	python-utils-r1	68e010c13e97b7b2c7bf403ee9c51e1b	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	java-pkg-opt-2	f9bbbe5092225a2059aa9e6a3a2b52f1	java-utils-2	6113171ebcec94726b10cc66f3e0451b	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	351da1aa73960a282591217fb57c1bb8	python-utils-r1	68e010c13e97b7b2c7bf403ee9c51e1b	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=2791fa465d4921eeb91026463dc09191

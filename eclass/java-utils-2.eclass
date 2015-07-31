@@ -6,7 +6,7 @@
 #
 # Licensed under the GNU General Public License, v2
 #
-# $Header: /var/cvsroot/gentoo-x86/eclass/java-utils-2.eclass,v 1.167 2015/07/30 22:17:08 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/java-utils-2.eclass,v 1.168 2015/07/31 07:56:17 monsieurp Exp $
 
 # @ECLASS: java-utils-2.eclass
 # @MAINTAINER:
@@ -124,6 +124,20 @@ JAVA_PKG_ALLOW_VM_CHANGE=${JAVA_PKG_ALLOW_VM_CHANGE:="yes"}
 # emerge bar to be compatible with 1.3
 # @CODE
 #	JAVA_PKG_WANT_TARGET=1.3 emerge bar
+# @CODE
+
+# @ECLASS-VARIABLE: JAVA_RM_FILES
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# An array containing a list of files to remove. If defined, this array will be
+# automatically handed over to java-pkg_rm_files for processing during the
+# src_prepare phase.
+#
+# @CODE
+#	JAVA_RM_FILES=(
+#		path/to/File1.java
+#		DELETEME.txt
+#	)
 # @CODE
 
 # @VARIABLE: JAVA_PKG_COMPILER_DIR
@@ -263,29 +277,25 @@ java-pkg_addres() {
 # you wish to remove.
 #
 # Both way work and it is left to the developer's preferences. If the
-# JAVA_RM_FILES array is defined, it is will be automatically handed over to
-# java-pkg_rm_files.
+# JAVA_RM_FILES array is defined, it will be automatically handed over to
+# java-pkg_rm_files during the src_prepare phase.
 #
 # See java-utils-2_src_prepare.
 #
 # @CODE
+#	java-pkg_rm_files File1.java File2.java
+# @CODE
 #
 # @param $* - list of files to remove.
-# JAVA_RM_FILES - array containing files to remove. 
-# if defined, automatically handed over to java-pkg_rm_files in java-utils-2_src_prepare.
-#
-# @CODE
 java-pkg_rm_files() {
 	debug-print-function ${FUNCNAME} $*
-	OIFS="$IFS"
-	IFS="\n"
+	local IFS="\n"
 	for filename in "$@"; do
 		[[ ! -f "${filename}" ]] && die "${filename} is not a regular file. Aborting."
 		einfo "Removing unneeded file ${filename}"
 		rm -f "${S}/${filename}" || die "cannot remove ${filename}"
 		eend $?
 	done
-	IFS="$OIFS"
 }
 
 # @FUNCTION: java-pkg_dojar

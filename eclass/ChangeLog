@@ -1,6 +1,10 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1740 2015/07/30 22:17:08 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1741 2015/07/31 07:56:17 monsieurp Exp $
+
+  31 Jul 2015; Patrice Clement <monsieurp@gentoo.org> java-utils-2.eclass:
+  Document JAVA_RM_FILES variable. Also, fix documentation and correct typos in
+  java-pkg_rm_files.
 
   30 Jul 2015; James Le Cuirot <chewi@gentoo.org> java-utils-2.eclass:
   Fix JAVA_RM_FILES by simplifying java-utils-2_src_prepare on the basis that

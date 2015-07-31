@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/android-studio/android-studio-1.2.2.0.141.1980579.ebuild,v 1.1 2015/06/17 10:38:42 perfinion Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/android-studio/android-studio-1.2.2.0.141.1980579.ebuild,v 1.2 2015/07/31 07:38:30 perfinion Exp $
 
 EAPI=5
 inherit eutils versionator
@@ -22,7 +22,7 @@ SRC_URI="http://dl.google.com/dl/android/studio/ide-zips/${STUDIO_V}/${PN}-ide-$
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="selinux"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="app-arch/zip"
 RDEPEND=">=virtual/jdk-1.7

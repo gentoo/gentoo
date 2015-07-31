@@ -1,0 +1,11 @@
+# ChangeLog for dev-ruby/jsobfu
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/jsobfu/ChangeLog,v 1.1 2015/07/31 07:37:50 graaff Exp $
+
+*jsobfu-0.2.1 (31 Jul 2015)
+
+  31 Jul 2015; Hans de Graaff <graaff@gentoo.org> +jsobfu-0.2.1.ebuild,
+  +metadata.xml:
+  Initial import from pentoo overlay. New dependency for
+  net-analyzer/metasploit.
+

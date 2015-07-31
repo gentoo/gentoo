@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/ccp4-libs/ccp4-libs-6.1.3-r16.ebuild,v 1.5 2015/03/28 21:30:27 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/ccp4-libs/ccp4-libs-6.1.3-r16.ebuild,v 1.6 2015/07/31 08:19:51 jlec Exp $
 
 EAPI=5
 
@@ -34,7 +34,7 @@ done
 LICENSE="ccp4"
 SLOT="0"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
-IUSE=""
+IUSE="minimal"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -326,20 +326,23 @@ src_install() {
 		-e 's:test "LD_LIBRARY_PATH":test "$LD_LIBRARY_PATH":g' \
 		-i "${S}"/include/ccp4.setup-sh || die
 
-	# Setup scripts
-	insinto /etc/profile.d
-	newins "${S}"/include/ccp4.setup-csh 40ccp4.setup.csh
-	newins "${S}"/include/ccp4.setup-sh 40ccp4.setup.sh
-	rm -f "${S}"/include/ccp4.setup*
+	if ! use minimal; then
+		# Setup scripts
+		insinto /etc/profile.d
+		newins "${S}"/include/ccp4.setup-csh 40ccp4.setup.csh
+		newins "${S}"/include/ccp4.setup-sh 40ccp4.setup.sh
 
-	# Data
-	insinto /usr/share/ccp4/data/
-	doins -r "${S}"/lib/data/{*.PARM,*.prt,*.lib,*.dic,*.idl,*.cif,*.resource,*.york,*.hist,fraglib,reference_structures}
+		# Data
+		insinto /usr/share/ccp4/data/
+		doins -r "${S}"/lib/data/{*.PARM,*.prt,*.lib,*.dic,*.idl,*.cif,*.resource,*.york,*.hist,fraglib,reference_structures}
 
-	# Environment files, setup scripts, etc.
-	rm -rf "${S}"/include/{ccp4.setup*,COPYING,cpp_c_headers} || die
-	insinto /usr/share/ccp4/
-	doins -r "${S}"/include
+		# Environment files, setup scripts, etc.
+		rm -rf "${S}"/include/{ccp4.setup*,COPYING,cpp_c_headers} || die
+		insinto /usr/share/ccp4/
+		doins -r "${S}"/include
+	fi
+
+	rm -f "${S}"/include/ccp4.setup* || die
 
 	dodoc "${S}"/lib/data/*.doc
 	newdoc "${S}"/lib/data/README DATA-README

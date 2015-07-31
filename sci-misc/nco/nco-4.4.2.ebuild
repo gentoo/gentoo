@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-misc/nco/nco-4.4.2.ebuild,v 1.3 2014/08/07 16:45:53 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-misc/nco/nco-4.4.2.ebuild,v 1.4 2015/07/31 07:45:44 jlec Exp $
 
 EAPI=5
 
@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="dap doc gsl ncap2 static-libs test udunits"
 
 RDEPEND="
-	>=sci-libs/netcdf-4:=[dap=]
+	>=sci-libs/netcdf-4:=[dap=,tools]
 	gsl? ( sci-libs/gsl:= )
 	udunits? ( >=sci-libs/udunits-2 )"
 
