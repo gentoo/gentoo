@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/dahdi/dahdi-2.10.2-r2.ebuild,v 1.1 2015/07/27 10:31:28 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/dahdi/dahdi-2.10.2-r2.ebuild,v 1.2 2015/07/31 12:43:09 chainsaw Exp $
 
 EAPI=5
 
@@ -8,7 +8,7 @@ inherit base linux-mod eutils flag-o-matic toolchain-funcs
 
 MY_P="${P/dahdi/dahdi-linux}"
 JNET=1.0.14
-GENTOO=1.2.2
+GENTOO=1.2.3
 S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="Kernel modules for Digium compatible hardware (formerly known as Zaptel)"

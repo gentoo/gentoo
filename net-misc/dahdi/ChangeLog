@@ -1,6 +1,11 @@
 # ChangeLog for net-misc/dahdi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/dahdi/ChangeLog,v 1.76 2015/07/27 10:31:28 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/dahdi/ChangeLog,v 1.77 2015/07/31 12:43:09 chainsaw Exp $
+
+  31 Jul 2015; Tony Vroon <chainsaw@gentoo.org> -dahdi-2.10.1-r1.ebuild,
+  dahdi-2.10.2-r2.ebuild:
+  Patching to address upstream kernel deprecation of IRQF_DISABLED as reported
+  by Toralf Förster and tested by Jaco Kroon.
 
 *dahdi-2.10.2-r2 (27 Jul 2015)
 

@@ -1,6 +1,11 @@
 # ChangeLog for app-admin/mongo-tools
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/mongo-tools/ChangeLog,v 1.8 2015/07/08 09:48:25 ultrabug Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/mongo-tools/ChangeLog,v 1.9 2015/07/31 12:40:41 ultrabug Exp $
+
+*mongo-tools-3.0.5 (31 Jul 2015)
+
+  31 Jul 2015; Ultrabug <ultrabug@gentoo.org> +mongo-tools-3.0.5.ebuild:
+  version bump
 
 *mongo-tools-3.0.4-r1 (08 Jul 2015)
 
