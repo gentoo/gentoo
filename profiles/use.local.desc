@@ -3143,7 +3143,7 @@ kde-apps/kdebase-runtime-meta:nepomuk - Enable Nepomuk based semantic desktop su
 kde-apps/kdenetwork-meta:ppp - Enable support for net-dialup/ppp.
 kde-apps/kdeutils-meta:floppy - Install kde-base/kfloppy to format and create DOS or ext2fs filesystems in a floppy.
 kde-apps/kget:bittorrent - Enable bittorrent transfer plugin through net-libs/libktorrent
-kde-apps/kget:gpg - Support for signature verificatopm by QGpgME via kde-base/kdepimlibs
+kde-apps/kget:gpg - Enable signature verification by QGpgME via kde-base/kdepimlibs
 kde-apps/kget:mms - Enable MMS (Microsoft Media Server) plugin through media-libs/libmms
 kde-apps/kget:nepomuk - Enable Nepomuk based semantic desktop support (deprecated)
 kde-apps/kget:webkit - Enable KdeWebkit browser plugin using kde-misc/kwebkitpart

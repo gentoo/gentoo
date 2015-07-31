@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/nekohtml
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/nekohtml/ChangeLog,v 1.22 2015/06/09 13:57:24 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/nekohtml/ChangeLog,v 1.23 2015/07/31 12:26:43 mrueg Exp $
+
+  31 Jul 2015; Manuel Rüger <mrueg@gentoo.org> -nekohtml-1.9.18.ebuild,
+  -nekohtml-1.9.6.ebuild:
+  Remove old.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

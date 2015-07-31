@@ -4,7 +4,7 @@
 	<herd>kde</herd>
 	<use>
 		<flag name="bittorrent">Enable bittorrent transfer plugin through <pkg>net-libs/libktorrent</pkg></flag>
-		<flag name="gpg">Support for signature verificatopm by QGpgME via <pkg>kde-base/kdepimlibs</pkg></flag>
+		<flag name="gpg">Enable signature verification by QGpgME via <pkg>kde-base/kdepimlibs</pkg></flag>
 		<flag name="mms">Enable MMS (Microsoft Media Server) plugin through <pkg>media-libs/libmms</pkg></flag>
 		<flag name="nepomuk">Enable Nepomuk based semantic desktop support (deprecated)</flag>
 		<flag name="webkit">Enable KdeWebkit browser plugin using <pkg>kde-misc/kwebkitpart</pkg></flag>
