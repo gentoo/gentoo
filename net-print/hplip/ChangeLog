@@ -1,6 +1,11 @@
 # ChangeLog for net-print/hplip
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/hplip/ChangeLog,v 1.327 2015/06/14 08:41:22 billie Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-print/hplip/ChangeLog,v 1.328 2015/07/31 14:27:45 billie Exp $
+
+*hplip-3.15.7 (31 Jul 2015)
+
+  31 Jul 2015; Daniel Pielmeier <billie@gentoo.org> +hplip-3.15.7.ebuild:
+  Version bump.
 
 *hplip-3.15.6 (14 Jun 2015)
 

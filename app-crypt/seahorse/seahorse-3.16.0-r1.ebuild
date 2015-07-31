@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/seahorse/seahorse-3.16.0-r1.ebuild,v 1.3 2015/07/05 08:22:05 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/seahorse/seahorse-3.16.0-r1.ebuild,v 1.4 2015/07/31 13:41:24 tetromino Exp $
 
 EAPI="5"
 GCONF_DEBUG="no"
@@ -32,6 +32,7 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	app-text/yelp-tools
+	dev-util/gdbus-codegen
 	>=dev-util/intltool-0.35
 	dev-util/itstool
 	sys-devel/gettext
