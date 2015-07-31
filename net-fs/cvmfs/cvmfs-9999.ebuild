@@ -1,40 +1,40 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/cvmfs/cvmfs-9999.ebuild,v 1.3 2014/02/05 18:00:36 bicatali Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/cvmfs/cvmfs-9999.ebuild,v 1.4 2015/07/31 20:09:57 bicatali Exp $
 
 EAPI=5
 
-#if LIVE
 EGIT_REPO_URI="https://github.com/cvmfs/cvmfs.git"
 EGIT_BRANCH="devel"
-inherit git-r3
-#endif
 
-inherit cmake-utils
+inherit git-r3 cmake-utils
 
 DESCRIPTION="HTTP read-only file system for distributing software"
 HOMEPAGE="http://cernvm.cern.ch/portal/filesystem"
-SRC_URI="https://ecsft.cern.ch/dist/${PN}/${P}/${P}.tar.gz"
+
+SRC_URI=
+KEYWORDS=
 
 LICENSE="BSD"
 SLOT="0"
 
-KEYWORDS="~amd64 ~x86"
 IUSE="+client debug doc test server"
 
 CDEPEND="
 	dev-cpp/gtest
-	dev-db/sqlite:3
-	dev-libs/openssl
-	net-libs/pacparser
-	net-misc/curl[adns]
+	dev-db/sqlite:3=
+	dev-libs/openssl:0
+	net-libs/pacparser:0=
+	net-misc/curl:0=[adns]
 	sys-apps/attr
-	sys-libs/zlib
+	sys-libs/zlib:0=
 	client? (
-		dev-cpp/sparsehash
-		dev-libs/leveldb
-		sys-fs/fuse )
-	server? ( >=dev-cpp/tbb-4.2 )"
+		>=dev-cpp/sparsehash-1.12
+		dev-libs/leveldb:0=
+		sys-fs/fuse:0= )
+	server? (
+		>=dev-python/geoip-python-1.3.1
+		>=dev-cpp/tbb-4.2:0= )"
 
 RDEPEND="${CDEPEND}
 	client? ( net-fs/autofs )
@@ -43,11 +43,6 @@ RDEPEND="${CDEPEND}
 DEPEND="${CDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen[dot] )"
-
-#if LIVE
-KEYWORDS=
-SRC_URI=
-#endif
 
 src_prepare() {
 	sed -i -e 's/COPYING//' CMakeLists.txt || die
@@ -65,15 +60,15 @@ src_prepare() {
 			-e 's/ar/$(AR)/' \
 			-e 's/ranlib/$(RANLIB)/' \
 			externals/vjson/src/Makefile || die
-		mkdir -p "${S}_build"/externals/build_vjson
-		cp externals/vjson/src/* "${S}_build"/externals/build_vjson/ || die
+		mkdir -p "${WORKDIR}/${P}_build"/externals/build_vjson
+		cp externals/vjson/src/* "${WORKDIR}/${P}_build"/externals/build_vjson/ || die
 	fi
-
 	cmake-utils_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
+		-DGEOIP_BUILTIN=OFF
 		-DGOOGLETEST_BUILTIN=OFF
 		-DLEVELDB_BUILTIN=OFF
 		-DLIBCURL_BUILTIN=OFF

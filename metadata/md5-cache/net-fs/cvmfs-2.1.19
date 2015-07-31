@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile config configure install prepare test
-DEPEND=dev-cpp/gtest dev-db/sqlite:3= dev-libs/openssl net-libs/pacparser:0= net-misc/curl:0=[adns] sys-apps/attr sys-libs/zlib:0= client? ( dev-cpp/sparsehash dev-libs/leveldb:0= sys-fs/fuse:0= ) server? ( >=dev-cpp/tbb-4.2:0= ) virtual/pkgconfig doc? ( app-doc/doxygen[dot] ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DEPEND=dev-cpp/gtest dev-db/sqlite:3= dev-libs/openssl:0 net-libs/pacparser:0= net-misc/curl:0=[adns] sys-apps/attr sys-libs/zlib:0= client? ( dev-cpp/sparsehash dev-libs/leveldb:0= sys-fs/fuse:0= ) server? ( >=dev-cpp/tbb-4.2:0= ) virtual/pkgconfig doc? ( app-doc/doxygen[dot] ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=HTTP read-only file system for distributing software
 EAPI=5
 HOMEPAGE=http://cernvm.cern.ch/portal/filesystem
 IUSE=+client debug doc test server
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD
-RDEPEND=dev-cpp/gtest dev-db/sqlite:3= dev-libs/openssl net-libs/pacparser:0= net-misc/curl:0=[adns] sys-apps/attr sys-libs/zlib:0= client? ( dev-cpp/sparsehash dev-libs/leveldb:0= sys-fs/fuse:0= ) server? ( >=dev-cpp/tbb-4.2:0= ) client? ( net-fs/autofs ) server? ( www-servers/apache[ssl] )
+RDEPEND=dev-cpp/gtest dev-db/sqlite:3= dev-libs/openssl:0 net-libs/pacparser:0= net-misc/curl:0=[adns] sys-apps/attr sys-libs/zlib:0= client? ( dev-cpp/sparsehash dev-libs/leveldb:0= sys-fs/fuse:0= ) server? ( >=dev-cpp/tbb-4.2:0= ) client? ( net-fs/autofs ) server? ( www-servers/apache[ssl] )
 SLOT=0
 SRC_URI=https://ecsft.cern.ch/dist/cvmfs/cvmfs-2.1.19/cvmfs-2.1.19.tar.gz
 _eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=36d7867fe724735847dcf80f02e8dd24
+_md5_=363f7d6e6bc0a025a50456b455280089

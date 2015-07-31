@@ -1,0 +1,9 @@
+# ChangeLog for net-wireless/portapack-firmware
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/portapack-firmware/ChangeLog,v 1.1 2015/07/31 19:50:13 zerochaos Exp $
+
+*portapack-firmware-20150722 (31 Jul 2015)
+
+  31 Jul 2015; Rick Farina <zerochaos@gentoo.org> +metadata.xml,
+  +portapack-firmware-20150722.ebuild:
+  new: firmware and host scripts for the hackrf one portapack

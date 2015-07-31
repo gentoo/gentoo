@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/cvmfs/cvmfs-2.1.19.ebuild,v 1.1 2014/04/30 16:38:54 bicatali Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/cvmfs/cvmfs-2.1.19.ebuild,v 1.2 2015/07/31 20:09:57 bicatali Exp $
 
 EAPI=5
 
@@ -19,7 +19,7 @@ IUSE="+client debug doc test server"
 CDEPEND="
 	dev-cpp/gtest
 	dev-db/sqlite:3=
-	dev-libs/openssl
+	dev-libs/openssl:0
 	net-libs/pacparser:0=
 	net-misc/curl:0=[adns]
 	sys-apps/attr

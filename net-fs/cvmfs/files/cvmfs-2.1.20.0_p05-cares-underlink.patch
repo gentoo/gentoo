@@ -1,0 +1,106 @@
+diff -Nur cvmfs-cvmfs-2.1.20.0-fix05.orig/cmake/Modules/FindCARES.cmake cvmfs-cvmfs-2.1.20.0-fix05/cmake/Modules/FindCARES.cmake
+--- cvmfs-cvmfs-2.1.20.0-fix05.orig/cmake/Modules/FindCARES.cmake	1970-01-01 00:00:00.000000000 +0000
++++ cvmfs-cvmfs-2.1.20.0-fix05/cmake/Modules/FindCARES.cmake	2015-07-31 18:35:05.859879354 +0000
+@@ -0,0 +1,35 @@
++#
++# $Id: cvmfs-2.1.20.0_p05-cares-underlink.patch,v 1.1 2015/07/31 20:09:57 bicatali Exp $
++#
++# - Find cares
++# Find the native CARES includes and library
++#
++#  CARES_INCLUDE_DIRS - where to find cares.h, etc.
++#  CARES_LIBRARIES    - List of libraries when using cares.
++#  CARES_FOUND        - True if cares found.
++
++
++IF (CARES_INCLUDE_DIRS)
++  # Already in cache, be silent
++  SET(CARES_FIND_QUIETLY TRUE)
++ENDIF (CARES_INCLUDE_DIRS)
++
++FIND_PATH(CARES_INCLUDE_DIR ares.h)
++
++SET(CARES_NAMES cares)
++FIND_LIBRARY(CARES_LIBRARY NAMES ${CARES_NAMES} )
++
++# handle the QUIETLY and REQUIRED arguments and set CARES_FOUND to TRUE if 
++# all listed variables are TRUE
++INCLUDE(FindPackageHandleStandardArgs)
++FIND_PACKAGE_HANDLE_STANDARD_ARGS(CARES DEFAULT_MSG CARES_LIBRARY CARES_INCLUDE_DIR)
++
++IF(CARES_FOUND)
++  SET( CARES_LIBRARIES ${CARES_LIBRARY} )
++  SET( CARES_INCLUDE_DIRS ${CARES_INCLUDE_DIR} )
++ELSE(CARES_FOUND)
++  SET( CARES_LIBRARIES )
++  SET( CARES_INCLUDE_DIRS )
++ENDIF(CARES_FOUND)
++
++MARK_AS_ADVANCED( CARES_LIBRARIES CARES_INCLUDE_DIRS )
+diff -Nur cvmfs-cvmfs-2.1.20.0-fix05.orig/CMakeLists.txt cvmfs-cvmfs-2.1.20.0-fix05/CMakeLists.txt
+--- cvmfs-cvmfs-2.1.20.0-fix05.orig/CMakeLists.txt	2015-02-23 13:51:47.000000000 +0000
++++ cvmfs-cvmfs-2.1.20.0-fix05/CMakeLists.txt	2015-07-31 18:32:34.259882076 +0000
+@@ -252,9 +252,12 @@
+   include (${CARES_BUILTIN_LOCATION}/CVMFS-CMakeLists.txt)
+   include (${LIBCURL_BUILTIN_LOCATION}/CVMFS-CMakeLists.txt)
+   set (CURL_LIBRARIES "")
++  set (CARES_LIBRARIES "")
+ else (LIBCURL_BUILTIN)
+   find_package (CURL REQUIRED)
++  find_package (CARES REQUIRED)
+   set (INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} ${CURL_INCLUDE_DIRS})
++  set (INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} ${CARES_INCLUDE_DIRS})
+   if (CURL_INCLUDE_DIRS)
+     find_program(CURL_CONFIG_EXEC NAMES curl-config)
+     if (CURL_CONFIG_EXEC)
+diff -Nur cvmfs-cvmfs-2.1.20.0-fix05.orig/cvmfs/CMakeLists.txt cvmfs-cvmfs-2.1.20.0-fix05/cvmfs/CMakeLists.txt
+--- cvmfs-cvmfs-2.1.20.0-fix05.orig/cvmfs/CMakeLists.txt	2015-02-23 13:51:47.000000000 +0000
++++ cvmfs-cvmfs-2.1.20.0-fix05/cvmfs/CMakeLists.txt	2015-07-31 18:34:36.789879876 +0000
+@@ -271,7 +271,7 @@
+   set_target_properties (cvmfs_fuse_debug PROPERTIES VERSION ${CernVM-FS_VERSION_STRING})
+ 
+   # link the stuff (*_LIBRARIES are dynamic link libraries *_archive are static link libraries ... one of them will be empty for each dependency)
+-  set (CVMFS_FUSE_LINK_LIBRARIES ${SQLITE3_LIBRARY} ${CURL_LIBRARIES} ${PACPARSER_LIBRARIES} ${ZLIB_LIBRARIES} ${LEVELDB_LIBRARIES} ${OPENSSL_LIBRARIES} ${FUSE_LIBRARIES} ${LIBFUSE_ARCHIVE} ${SQLITE3_ARCHIVE} ${LIBCURL_ARCHIVE} ${PACPARSER_ARCHIVE} ${LEVELDB_ARCHIVE} ${CARES_ARCHIVE} ${ZLIB_ARCHIVE} ${RT_LIBRARY} ${UUID_LIBRARIES} pthread dl)
++  set (CVMFS_FUSE_LINK_LIBRARIES ${SQLITE3_LIBRARY} ${CARES_LIBRARIES} ${CURL_LIBRARIES} ${PACPARSER_LIBRARIES} ${ZLIB_LIBRARIES} ${LEVELDB_LIBRARIES} ${OPENSSL_LIBRARIES} ${FUSE_LIBRARIES} ${LIBFUSE_ARCHIVE} ${SQLITE3_ARCHIVE} ${LIBCURL_ARCHIVE} ${PACPARSER_ARCHIVE} ${LEVELDB_ARCHIVE} ${CARES_ARCHIVE} ${ZLIB_ARCHIVE} ${RT_LIBRARY} ${UUID_LIBRARIES} pthread dl)
+ 
+   target_link_libraries (cvmfs2           ${CVMFS_LOADER_LIBS} ${OPENSSL_LIBRARIES} ${LIBFUSE} ${RT_LIBRARY} ${UUID_LIBRARIES} pthread dl)
+   target_link_libraries (cvmfs_fuse_debug ${CVMFS2_DEBUG_LIBS} ${CVMFS_FUSE_LINK_LIBRARIES})
+@@ -331,7 +331,7 @@
+   add_dependencies (libcvmfs cvmfs_only)
+ 
+   add_executable( test_libcvmfs ${TEST_LIBCVMFS_SOURCES} )
+-  target_link_libraries( test_libcvmfs ${CMAKE_CURRENT_BINARY_DIR}/libcvmfs.a ${SQLITE3_LIBRARY} ${CURL_LIBRARIES} ${PACPARSER_LIBRARIES} ${ZLIB_LIBRARIES} ${OPENSSL_LIBRARIES} ${RT_LIBRARY} ${UUID_LIBRARIES} pthread dl )
++  target_link_libraries( test_libcvmfs ${CMAKE_CURRENT_BINARY_DIR}/libcvmfs.a ${SQLITE3_LIBRARY} ${CARES_LIBRARIES} ${CURL_LIBRARIES} ${PACPARSER_LIBRARIES} ${ZLIB_LIBRARIES} ${OPENSSL_LIBRARIES} ${RT_LIBRARY} ${UUID_LIBRARIES} pthread dl )
+   add_dependencies (test_libcvmfs libcvmfs)
+ 
+ endif (BUILD_LIBCVMFS)
+@@ -371,7 +371,7 @@
+   set_target_properties (cvmfs_swissknife PROPERTIES COMPILE_FLAGS "${CVMFS_SWISSKNIFE_CFLAGS}" LINK_FLAGS "${CVMFS_SWISSKNIFE_LD_FLAGS}")
+ 
+   # link the stuff (*_LIBRARIES are dynamic link libraries)
+-  target_link_libraries (cvmfs_swissknife  ${CVMFS_SWISSKNIFE_LIBS} ${SQLITE3_LIBRARY} ${CURL_LIBRARIES} ${ZLIB_LIBRARIES} ${TBB_LIBRARIES} ${OPENSSL_LIBRARIES} ${LIBCURL_ARCHIVE} ${CARES_ARCHIVE} ${SQLITE3_ARCHIVE} ${ZLIB_ARCHIVE} ${RT_LIBRARY} ${VJSON_ARCHIVE} pthread dl)
++  target_link_libraries (cvmfs_swissknife  ${CVMFS_SWISSKNIFE_LIBS} ${SQLITE3_LIBRARY} ${CARES_LIBRARIES} ${CURL_LIBRARIES} ${ZLIB_LIBRARIES} ${TBB_LIBRARIES} ${OPENSSL_LIBRARIES} ${LIBCURL_ARCHIVE} ${CARES_ARCHIVE} ${SQLITE3_ARCHIVE} ${ZLIB_ARCHIVE} ${RT_LIBRARY} ${VJSON_ARCHIVE} pthread dl)
+ 
+   if (BUILD_SERVER_DEBUG)
+     add_executable (cvmfs_swissknife_debug ${CVMFS_SWISSKNIFE_DEBUG_SOURCES})
+@@ -399,7 +399,7 @@
+       message (WARNING "Debug libraries of TBB were not found. Using the release versions instead.")
+       set (TBB_DEBUG_LIBRARIES ${TBB_LIBRARIES})
+     endif (NOT TBB_DEBUG_LIBRARIES)
+-    target_link_libraries (cvmfs_swissknife_debug  ${CVMFS_SWISSKNIFE_LIBS} ${SQLITE3_LIBRARY} ${CURL_LIBRARIES} ${ZLIB_LIBRARIES} ${OPENSSL_LIBRARIES} ${LIBCURL_ARCHIVE} ${CARES_ARCHIVE} ${SQLITE3_ARCHIVE} ${ZLIB_ARCHIVE} ${TBB_DEBUG_LIBRARIES} ${RT_LIBRARY} ${VJSON_ARCHIVE} pthread dl)
++    target_link_libraries (cvmfs_swissknife_debug  ${CVMFS_SWISSKNIFE_LIBS} ${SQLITE3_LIBRARY} ${CARES_LIBRARIES} ${CURL_LIBRARIES} ${ZLIB_LIBRARIES} ${OPENSSL_LIBRARIES} ${LIBCURL_ARCHIVE} ${CARES_ARCHIVE} ${SQLITE3_ARCHIVE} ${ZLIB_ARCHIVE} ${TBB_DEBUG_LIBRARIES} ${RT_LIBRARY} ${VJSON_ARCHIVE} pthread dl)
+   endif (BUILD_SERVER_DEBUG)
+ endif (BUILD_SERVER)
+ 
+diff -Nur cvmfs-cvmfs-2.1.20.0-fix05.orig/cvmfs/CMakeLists.txt cvmfs-cvmfs-2.1.20.0-fix05/cvmfs/CMakeLists.txt
+--- cvmfs-cvmfs-2.1.20.0-fix05.orig/test/unittests/CMakeLists.txt.orig	2015-07-31 19:03:06.829849170 +0000
++++ cvmfs-cvmfs-2.1.20.0-fix05/test/unittests/CMakeLists.txt	2015-07-31 19:03:36.459848638 +0000
+@@ -212,7 +212,7 @@
+ endif (BUILD_UNITTESTS_DEBUG)
+ 
+ # link the stuff (*_LIBRARIES are dynamic link libraries)
+-set (UNITTEST_LINK_LIBRARIES ${GTEST_LIBRARIES} ${GOOGLETEST_ARCHIVE} ${OPENSSL_LIBRARIES}
++set (UNITTEST_LINK_LIBRARIES ${GTEST_LIBRARIES} ${GOOGLETEST_ARCHIVE} ${OPENSSL_LIBRARIES} ${CARES_LIBRARIES}
+                              ${CURL_LIBRARIES} ${LIBCURL_ARCHIVE} ${CARES_ARCHIVE}
+                              ${SQLITE3_LIBRARY} ${SQLITE3_ARCHIVE} ${TBB_LIBRARIES}
+                              ${ZLIB_LIBRARIES} ${ZLIB_ARCHIVE} ${RT_LIBRARY} ${UUID_LIBRARIES}

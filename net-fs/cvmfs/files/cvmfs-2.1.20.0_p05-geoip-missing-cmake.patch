@@ -1,0 +1,144 @@
+--- /dev/null
++++ cmake/Modules/FindLibGeoIP.cmake
+@@ -0,0 +1,68 @@
++# - Try to find GeoIP headers and libraries
++#
++# Usage of this module as follows:
++#
++#     find_package(LibGeoIP)
++#
++# Variables used by this module, they can change the default behaviour and need
++# to be set before calling find_package:
++#
++#  LibGeoIP_ROOT_DIR         Set this variable to the root installation of
++#                            libGeoIP if the module has problems finding the
++#                            proper installation path.
++#
++# Variables defined by this module:
++#
++#  LIBGEOIP_FOUND                   System has GeoIP libraries and headers
++#  LibGeoIP_LIBRARY                 The GeoIP library
++#  LibGeoIP_INCLUDE_DIR             The location of GeoIP headers
++#  HAVE_GEOIP_COUNTRY_EDITION_V6    Whether the API support IPv6 country edition
++#  HAVE_GEOIP_CITY_EDITION_REV0_V6  Whether the API supports IPv6 city edition
++
++find_path(LibGeoIP_ROOT_DIR
++    NAMES include/GeoIPCity.h
++)
++
++if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
++    # the static version of the library is preferred on OS X for the
++    # purposes of making packages (libGeoIP doesn't ship w/ OS X)
++    set(libgeoip_names libGeoIp.a GeoIP)
++else ()
++    set(libgeoip_names GeoIP)
++endif ()
++
++find_library(LibGeoIP_LIBRARY
++    NAMES ${libgeoip_names}
++    HINTS ${LibGeoIP_ROOT_DIR}/lib
++)
++
++find_path(LibGeoIP_INCLUDE_DIR
++    NAMES GeoIPCity.h
++    HINTS ${LibGeoIP_ROOT_DIR}/include
++)
++
++include(FindPackageHandleStandardArgs)
++find_package_handle_standard_args(LibGeoIP DEFAULT_MSG
++    LibGeoIP_LIBRARY
++    LibGeoIP_INCLUDE_DIR
++)
++
++if (LIBGEOIP_FOUND)
++    include(CheckCXXSourceCompiles)
++    set(CMAKE_REQUIRED_INCLUDES ${LibGeoIP_INCLUDE_DIR})
++    check_cxx_source_compiles("
++    #include <GeoIPCity.h>
++    int main() { GEOIP_COUNTRY_EDITION_V6; return 0; }
++    " HAVE_GEOIP_COUNTRY_EDITION_V6)
++    check_cxx_source_compiles("
++    #include <GeoIPCity.h>
++    int main() { GEOIP_CITY_EDITION_REV0_V6; return 0; }
++    " HAVE_GEOIP_CITY_EDITION_REV0_V6)
++    set(CMAKE_REQUIRED_INCLUDES)
++endif ()
++
++mark_as_advanced(
++    LibGeoIP_ROOT_DIR
++    LibGeoIP_LIBRARY
++    LibGeoIP_INCLUDE_DIR
++)
+\ No newline at end of file
+diff --git a/cmake/Modules/FindPythonModule.cmake b/cmake/Modules/FindPythonModule.cmake
+new file mode 100644
+index 0000000..1a29315
+--- /dev/null
++++ cmake/Modules/FindPythonModule.cmake
+@@ -0,0 +1,24 @@
++# Find if a Python module is installed
++# Found at http://www.cmake.org/pipermail/cmake/2011-January/041666.html
++# To use do: find_python_module(PyQt4 REQUIRED)
++function(find_python_module module)
++	string(TOUPPER ${module} module_upper)
++	if(NOT PYTHON_${module_upper})
++		include (FindPythonInterp)
++		if(ARGC GREATER 1 AND ARGV1 STREQUAL "REQUIRED")
++			set(PY_${module}_FIND_REQUIRED TRUE)
++		endif()
++		# A module's location is usually a directory, but for binary modules
++		# it's a .so file.
++		execute_process(COMMAND "${PYTHON_EXECUTABLE}" "-c" 
++			"import re, ${module}; print(re.compile('/__init__.py.*').sub('',${module}.__file__))"
++			RESULT_VARIABLE _${module}_status 
++			OUTPUT_VARIABLE _${module}_location
++			ERROR_QUIET 
++			OUTPUT_STRIP_TRAILING_WHITESPACE)
++		if(${_${module}_status} EQUAL 0)
++			set(PYTHON_${module_upper} ${_${module}_location} CACHE STRING "Location of Python module ${module}")
++		endif(${_${module}_status} EQUAL 0)
++	endif(NOT PYTHON_${module_upper})
++	find_package_handle_standard_args(PY_${module} DEFAULT_MSG PYTHON_${module_upper})
++endfunction(find_python_module)
+\ No newline at end of file
+diff --git a/cvmfs/CMakeLists.txt b/cvmfs/CMakeLists.txt
+index cb09b94..44be85e 100644
+--- cvmfs/CMakeLists.txt
++++ cvmfs/CMakeLists.txt
+@@ -347,9 +347,9 @@ if (BUILD_SERVER)
+   # create targets with corresponding sources and static link libraries
+   add_executable (cvmfs_swissknife ${CVMFS_SWISSKNIFE_SOURCES})
+   add_executable (cvmfs_suid_helper ${CVMFS_SUID_HELPER_SOURCES})
+-  add_custom_target (geoip ALL)
+ 
+   if (GEOIP_BUILTIN)
++    add_custom_target (geoip ALL)
+     add_dependencies (python-geoip libgeoip)
+     add_dependencies (geoip python-geoip)
+   endif (GEOIP_BUILTIN)
+--- CMakeLists.txt.orig	2015-02-23 13:51:47.000000000 +0000
++++ CMakeLists.txt	2015-07-31 17:57:17.019920094 +0000
+@@ -145,6 +145,12 @@
+ endif (EXISTS "${CMAKE_SOURCE_DIR}/bootstrap.sh")
+ 
+ #
++# include some common functionality
++#
++include (FindPythonModule)
++
++
++#
+ # set some default flags
+ #
+ # flags in CMAKE_C**_FLAGS are always passed to the compiler
+@@ -313,8 +319,8 @@
+   include (${LIBGEOIP_BUILTIN_LOCATION}/CVMFS-CMakeLists.txt)
+   include (${PYTHON_GEOIP_BUILTIN_LOCATION}/CVMFS-CMakeLists.txt)
+ else (GEOIP_BUILTIN)
+-  find_package (GeoIP REQUIRED)
+-  find_package (python-GeoIP REQUIRED)
++  find_package (LibGeoIP REQUIRED)
++  find_python_module (GeoIP REQUIRED)
+ endif (GEOIP_BUILTIN)
+ 
+ # required libraries for client and libcvmfs
