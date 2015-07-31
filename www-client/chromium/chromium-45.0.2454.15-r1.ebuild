@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-45.0.2438.3.ebuild,v 1.1 2015/06/24 21:22:44 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-45.0.2454.15-r1.ebuild,v 1.1 2015/07/31 16:25:00 phajdan.jr Exp $
 
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )
@@ -258,6 +258,10 @@ src_prepare() {
 		'third_party/pdfium/third_party/base' \
 		'third_party/pdfium/third_party/bigint' \
 		'third_party/pdfium/third_party/freetype' \
+		'third_party/pdfium/third_party/lcms2-2.6' \
+		'third_party/pdfium/third_party/libjpeg' \
+		'third_party/pdfium/third_party/libopenjpeg20' \
+		'third_party/pdfium/third_party/zlib_v128' \
 		'third_party/polymer' \
 		'third_party/protobuf' \
 		'third_party/qcms' \
@@ -268,14 +272,14 @@ src_prepare() {
 		'third_party/sqlite' \
 		'third_party/tcmalloc' \
 		'third_party/trace-viewer' \
-		'third_party/trace-viewer/third_party/components/polymer' \
-		'third_party/trace-viewer/third_party/d3' \
-		'third_party/trace-viewer/third_party/gl-matrix' \
-		'third_party/trace-viewer/third_party/jszip' \
-		'third_party/trace-viewer/third_party/tvcm' \
-		'third_party/trace-viewer/third_party/tvcm/third_party/beautifulsoup/polymer_soup.py' \
-		'third_party/trace-viewer/third_party/tvcm/third_party/rcssmin' \
-		'third_party/trace-viewer/third_party/tvcm/third_party/rjsmin' \
+		'third_party/trace-viewer/tracing/third_party/components/polymer' \
+		'third_party/trace-viewer/tracing/third_party/d3' \
+		'third_party/trace-viewer/tracing/third_party/gl-matrix' \
+		'third_party/trace-viewer/tracing/third_party/jszip' \
+		'third_party/trace-viewer/tracing/third_party/tvcm' \
+		'third_party/trace-viewer/tracing/third_party/tvcm/third_party/beautifulsoup/polymer_soup.py' \
+		'third_party/trace-viewer/tracing/third_party/tvcm/third_party/rcssmin' \
+		'third_party/trace-viewer/tracing/third_party/tvcm/third_party/rjsmin' \
 		'third_party/usrsctp' \
 		'third_party/web-animations-js' \
 		'third_party/webdriver' \

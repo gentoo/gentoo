@@ -1,6 +1,15 @@
 # ChangeLog for www-client/chromium
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/ChangeLog,v 1.1271 2015/07/25 09:25:50 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/ChangeLog,v 1.1272 2015/07/31 16:25:00 phajdan.jr Exp $
+
+*chromium-46.0.2467.2 (31 Jul 2015)
+*chromium-45.0.2454.15-r1 (31 Jul 2015)
+
+  31 Jul 2015; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-45.0.2438.3.ebuild, -chromium-45.0.2438.3-r1.ebuild,
+  +chromium-45.0.2454.15-r1.ebuild, +chromium-46.0.2467.2.ebuild:
+  Dev channel bump. Use bundled libsrtp (bug #459932 by Andrius Stikonas).
+  Remove old.
 
 *chromium-45.0.2454.15 (25 Jul 2015)
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-45.0.2438.3-r1.ebuild,v 1.1 2015/07/06 19:38:09 phajdan.jr Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/chromium-46.0.2467.2.ebuild,v 1.1 2015/07/31 16:25:00 phajdan.jr Exp $
 
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )
@@ -56,7 +56,6 @@ RDEPEND=">=app-accessibility/speech-dispatcher-0.8:=
 	media-libs/libpng:0=
 	>=media-libs/libwebp-0.4.0:=
 	media-libs/speex:=
-	net-libs/libsrtp:=
 	pulseaudio? ( media-sound/pulseaudio:= )
 	sys-apps/dbus:=
 	sys-apps/pciutils:=
@@ -237,11 +236,13 @@ src_prepare() {
 		'third_party/libjingle' \
 		'third_party/libphonenumber' \
 		'third_party/libsecret' \
+		'third_party/libsrtp' \
 		'third_party/libudev' \
 		'third_party/libusb' \
 		'third_party/libvpx' \
 		'third_party/libvpx/source/libvpx/third_party/x86inc' \
 		'third_party/libxml/chromium' \
+		'third_party/libwebm' \
 		'third_party/libyuv' \
 		'third_party/lss' \
 		'third_party/lzma_sdk' \
@@ -258,6 +259,10 @@ src_prepare() {
 		'third_party/pdfium/third_party/base' \
 		'third_party/pdfium/third_party/bigint' \
 		'third_party/pdfium/third_party/freetype' \
+		'third_party/pdfium/third_party/lcms2-2.6' \
+		'third_party/pdfium/third_party/libjpeg' \
+		'third_party/pdfium/third_party/libopenjpeg20' \
+		'third_party/pdfium/third_party/zlib_v128' \
 		'third_party/polymer' \
 		'third_party/protobuf' \
 		'third_party/qcms' \
@@ -268,14 +273,14 @@ src_prepare() {
 		'third_party/sqlite' \
 		'third_party/tcmalloc' \
 		'third_party/trace-viewer' \
-		'third_party/trace-viewer/third_party/components/polymer' \
-		'third_party/trace-viewer/third_party/d3' \
-		'third_party/trace-viewer/third_party/gl-matrix' \
-		'third_party/trace-viewer/third_party/jszip' \
-		'third_party/trace-viewer/third_party/tvcm' \
-		'third_party/trace-viewer/third_party/tvcm/third_party/beautifulsoup/polymer_soup.py' \
-		'third_party/trace-viewer/third_party/tvcm/third_party/rcssmin' \
-		'third_party/trace-viewer/third_party/tvcm/third_party/rjsmin' \
+		'third_party/trace-viewer/tracing/third_party/components/polymer' \
+		'third_party/trace-viewer/tracing/third_party/d3' \
+		'third_party/trace-viewer/tracing/third_party/gl-matrix' \
+		'third_party/trace-viewer/tracing/third_party/jszip' \
+		'third_party/trace-viewer/tracing/third_party/tvcm' \
+		'third_party/trace-viewer/tracing/third_party/tvcm/third_party/beautifulsoup/polymer_soup.py' \
+		'third_party/trace-viewer/tracing/third_party/tvcm/third_party/rcssmin' \
+		'third_party/trace-viewer/tracing/third_party/tvcm/third_party/rjsmin' \
 		'third_party/usrsctp' \
 		'third_party/web-animations-js' \
 		'third_party/webdriver' \
@@ -315,6 +320,7 @@ src_configure() {
 
 	# Use system-provided libraries.
 	# TODO: use_system_hunspell (upstream changes needed).
+	# TODO: use_system_libsrtp (bug #459932).
 	# TODO: use_system_libusb (http://crbug.com/266149).
 	# TODO: use_system_libvpx (http://crbug.com/494939).
 	# TODO: use_system_opus (https://code.google.com/p/webrtc/issues/detail?id=3077).
@@ -330,7 +336,6 @@ src_configure() {
 		-Duse_system_libevent=1
 		-Duse_system_libjpeg=1
 		-Duse_system_libpng=1
-		-Duse_system_libsrtp=1
 		-Duse_system_libwebp=1
 		-Duse_system_libxml=1
 		-Duse_system_libxslt=1
@@ -491,6 +496,20 @@ src_configure() {
 	popd > /dev/null || die
 
 	third_party/libaddressinput/chromium/tools/update-strings.py || die
+
+	cat <<EOF >chrome/test/data/webui_test_resources.grd || die
+<?xml version="1.0" encoding="UTF-8"?>
+<grit latest_public_release="0" current_release="1">
+	<outputs>
+		<output filename="chrome/test/data/grit/webui_test_resources.h" type="rc_header">
+			<emit emit_type='prepend'></emit>
+		</output>
+		<output filename="webui_test_resources.pak" type="data_package" />
+	</outputs>
+	<release seq="1">
+	</release>
+</grit>
+EOF
 
 	einfo "Configuring Chromium..."
 	build/linux/unbundle/replace_gyp_files.py ${myconf} || die
