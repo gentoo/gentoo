@@ -1,6 +1,10 @@
 # ChangeLog for sci-physics/cernlib-montecarlo
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/cernlib-montecarlo/ChangeLog,v 1.26 2015/08/01 13:22:31 bircoph Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-physics/cernlib-montecarlo/ChangeLog,v 1.27 2015/08/01 19:02:20 bircoph Exp $
+
+  01 Aug 2015; Andrew Savchenko <bircoph@gentoo.org>
+  cernlib-montecarlo-2006-r3.ebuild, cernlib-montecarlo-2006-r4.ebuild:
+  Fix sandbox issue with generated TeX fonts. See bug 555936.
 
 *cernlib-montecarlo-2006-r4 (01 Aug 2015)
 

@@ -1,6 +1,13 @@
 # ChangeLog for dev-java/annogen
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/annogen/ChangeLog,v 1.3 2014/08/10 20:06:46 slyfox Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/annogen/ChangeLog,v 1.5 2015/08/01 19:12:59 monsieurp Exp $
+
+  01 Aug 2015; Patrice Clement <monsieurp@gentoo.org> annogen-0.1.0.ebuild:
+  Stable for amd64.
+
+  01 Aug 2015; Patrice Clement <monsieurp@gentoo.org> annogen-0.1.0.ebuild:
+  Remove two files causing compilation errors due to com.sun.mirror.* package
+  import (removed from JDK 7 onwards).
 
   10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> annogen-0.1.0.ebuild:
   QA: drop trailing '.' from DESCRIPTION

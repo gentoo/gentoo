@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/cernlib-montecarlo/cernlib-montecarlo-2006-r4.ebuild,v 1.1 2015/08/01 13:22:31 bircoph Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-physics/cernlib-montecarlo/cernlib-montecarlo-2006-r4.ebuild,v 1.2 2015/08/01 19:02:20 bircoph Exp $
 
 EAPI=5
 
@@ -71,11 +71,12 @@ src_prepare() {
 }
 
 src_compile() {
-	VARTEXFONTS="${T}"/fonts
+	export VARTEXFONTS="${T}"/fonts
 	emake -j1 cernlib-indep cernlib-arch
 }
 
 src_test() {
+	export VARTEXFONTS="${T}"/fonts
 	LD_LIBRARY_PATH="${S}"/shlib \
 		emake -j1 cernlib-test
 }

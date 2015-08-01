@@ -10,4 +10,4 @@ RDEPEND=x11-libs/motif:0 dev-lang/cfortran sci-physics/cernlib herwig? ( !sci-ph
 SLOT=0
 SRC_URI=mirror://debian/pool/main/m/mclibs/mclibs_20061220+dfsg3.orig.tar.gz mirror://debian/pool/main/m/mclibs/mclibs_20061220+dfsg3-1.debian.tar.gz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fortran-2	db8710b355fc5598015c4bc3aad3bdb0	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=8a73054a0a55af4952fdc2215a1f8fa4
+_md5_=53eab201a0cd3b8b289a2989c6cce82f

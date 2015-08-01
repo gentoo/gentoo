@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/annogen/annogen-0.1.0.ebuild,v 1.3 2014/08/10 20:06:45 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/annogen/annogen-0.1.0.ebuild,v 1.5 2015/08/01 19:12:59 monsieurp Exp $
 
 EAPI="5"
 
@@ -14,25 +14,31 @@ SRC_URI="http://dist.codehaus.org/${PN}/distributions/${P}.zip"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 CDEPEND="java-virtuals/stax-api:0
-	dev-java/ant-core:0
 	java-virtuals/jdk-with-com-sun:0
-	>=dev-java/qdox-1.6:1.6"
+	dev-java/ant-core:0
+	dev-java/qdox:1.6"
 
-RDEPEND=">=virtual/jdk-1.5
+RDEPEND=">=virtual/jdk-1.6
 		${CDEPEND}"
 
-DEPEND=">=virtual/jdk-1.5
+DEPEND=">=virtual/jre-1.6
 		app-arch/unzip
 		${CDEPEND}"
 
 S="${WORKDIR}"
 
+# com.sun.mirror.declaration was removed from JDK 7 onwards.
+# These two files are just interfaces anyway.
+JAVA_RM_FILES=(
+	org/codehaus/annogen/view/MirrorAnnoViewer.java
+	org/codehaus/annogen/override/MirrorElementIdPool.java
+)
+
 src_unpack() {
 	default
-
 	unzip -o -q "${S}/${PN}-src-${PV}.zip" || die
 }
 

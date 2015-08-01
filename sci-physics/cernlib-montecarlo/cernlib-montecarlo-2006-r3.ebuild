@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/cernlib-montecarlo/cernlib-montecarlo-2006-r3.ebuild,v 1.9 2015/06/09 07:20:54 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-physics/cernlib-montecarlo/cernlib-montecarlo-2006-r3.ebuild,v 1.10 2015/08/01 19:02:20 bircoph Exp $
 
 EAPI=5
 
@@ -71,7 +71,7 @@ src_prepare() {
 }
 
 src_compile() {
-	VARTEXFONTS="${T}"/fonts
+	export VARTEXFONTS="${T}"/fonts
 	emake -j1 cernlib-indep cernlib-arch
 }
 
@@ -81,6 +81,7 @@ src_test() {
 }
 
 src_install() {
+	export VARTEXFONTS="${T}"/fonts
 	emake DESTDIR="${D}" MCDOC="${ED}usr/share/doc/${PF}" install
 	cd debian
 	dodoc changelog README.* deadpool.txt copyright
