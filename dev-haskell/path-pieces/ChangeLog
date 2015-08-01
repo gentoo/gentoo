@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/path-pieces
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/path-pieces/ChangeLog,v 1.7 2014/12/23 08:16:14 gienah Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/path-pieces/ChangeLog,v 1.8 2015/08/01 16:51:06 slyfox Exp $
+
+*path-pieces-0.2.0 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +path-pieces-0.2.0.ebuild:
+  Version bump.
 
 *path-pieces-0.1.5 (23 Dec 2014)
 

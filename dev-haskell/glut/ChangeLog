@@ -1,6 +1,14 @@
 # ChangeLog for dev-haskell/glut
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/glut/ChangeLog,v 1.27 2015/06/26 08:43:18 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/glut/ChangeLog,v 1.29 2015/08/01 16:38:25 slyfox Exp $
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> glut-2.4.0.0.ebuild:
+  Drop USE=usenativewindowslibraries
+
+*glut-2.7.0.1 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +glut-2.7.0.1.ebuild:
+  Version bump.
 
   26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> glut-2.5.1.1.ebuild:
   Stable for x86, wrt bug #534974

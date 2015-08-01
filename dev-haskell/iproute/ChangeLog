@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/iproute
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/iproute/ChangeLog,v 1.5 2015/04/04 08:17:38 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/iproute/ChangeLog,v 1.6 2015/08/01 16:46:52 slyfox Exp $
+
+*iproute-1.5.0 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +iproute-1.5.0.ebuild:
+  Version bump.
 
 *iproute-1.4.0 (04 Apr 2015)
 

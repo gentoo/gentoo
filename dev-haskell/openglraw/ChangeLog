@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/openglraw
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/openglraw/ChangeLog,v 1.9 2015/06/26 08:44:24 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/openglraw/ChangeLog,v 1.10 2015/08/01 16:33:02 slyfox Exp $
+
+*openglraw-2.5.1.0 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +openglraw-2.5.1.0.ebuild:
+  Version bump.
 
   26 Jun 2015; Agostino Sarubbo <ago@gentoo.org> openglraw-1.5.0.0.ebuild:
   Stable for x86, wrt bug #534998

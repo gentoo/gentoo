@@ -1,6 +1,11 @@
 # ChangeLog for dev-java/bcpkix
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/bcpkix/ChangeLog,v 1.10 2015/05/19 09:06:13 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/bcpkix/ChangeLog,v 1.11 2015/08/01 16:31:28 monsieurp Exp $
+
+*bcpkix-1.52 (01 Aug 2015)
+
+  01 Aug 2015; Patrice Clement <monsieurp@gentoo.org> +bcpkix-1.52.ebuild:
+  Version bump. Fixes bug 535882.
 
   19 May 2015; Agostino Sarubbo <ago@gentoo.org> bcpkix-1.50.ebuild:
   Stable for x86, wrt bug #485566

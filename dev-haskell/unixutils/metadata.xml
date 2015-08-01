@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		A collection of useful and mildly useful functions that you might
+		expect to find in System.* which a heavy bias towards Unix-type operating systems.
+	</longdescription>
+</pkgmetadata>

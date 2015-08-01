@@ -1,6 +1,9 @@
 # ChangeLog for dev-haskell/primitive
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/primitive/ChangeLog,v 1.27 2015/06/06 15:24:24 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/primitive/ChangeLog,v 1.28 2015/08/01 16:51:45 slyfox Exp $
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> primitive-0.5.4.0.ebuild:
+  Allow ghc-7.10.
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

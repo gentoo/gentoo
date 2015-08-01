@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/aws
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/aws/ChangeLog,v 1.4 2015/06/06 10:22:11 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/aws/ChangeLog,v 1.5 2015/08/01 16:35:21 slyfox Exp $
+
+*aws-0.12.1 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +aws-0.12.1.ebuild:
+  Version bump.
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

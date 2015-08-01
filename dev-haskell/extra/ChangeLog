@@ -1,0 +1,14 @@
+# ChangeLog for dev-haskell/extra
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/extra/ChangeLog,v 1.2 2015/08/01 16:45:55 slyfox Exp $
+
+*extra-1.46.1-r1 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +extra-1.46.1-r1.ebuild:
+  Version bump.
+
+*extra-1.3.1 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +extra-1.3.1.ebuild,
+  +metadata.xml:
+  Extra functions I use, says ndm. a delend for dev-haskell/hlint.

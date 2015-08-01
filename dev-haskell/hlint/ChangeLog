@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/hlint
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hlint/ChangeLog,v 1.5 2014/12/14 11:00:39 gienah Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hlint/ChangeLog,v 1.6 2015/08/01 16:42:03 slyfox Exp $
+
+*hlint-1.9.21 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +hlint-1.9.21.ebuild:
+  Version bump.
 
 *hlint-1.9.10 (14 Dec 2014)
 

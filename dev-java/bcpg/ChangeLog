@@ -1,6 +1,11 @@
 # ChangeLog for dev-java/bcpg
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/bcpg/ChangeLog,v 1.3 2014/08/03 09:59:14 sera Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/bcpg/ChangeLog,v 1.4 2015/08/01 16:41:30 monsieurp Exp $
+
+*bcpg-1.52 (01 Aug 2015)
+
+  01 Aug 2015; Patrice Clement <monsieurp@gentoo.org> +bcpg-1.52.ebuild:
+  Version bump. Fixes bug 535882.
 
   03 Aug 2014; Ralph Sennhauser <sera@gentoo.org> -bcpg-1.49-r1.ebuild:
   Remove old

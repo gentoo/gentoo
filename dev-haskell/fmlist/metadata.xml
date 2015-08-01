@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		FoldMap lists are lists represented by their foldMap function.
+		FoldMap lists have O(1) cons, snoc and append, just like DLists,
+		but other operations might have favorable performance
+		characteristics as well. These wild claims are still completely
+		unverified though.
+	</longdescription>
+</pkgmetadata>

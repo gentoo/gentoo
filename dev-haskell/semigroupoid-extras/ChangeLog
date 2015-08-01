@@ -1,6 +1,12 @@
 # ChangeLog for dev-haskell/semigroupoid-extras
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/semigroupoid-extras/ChangeLog,v 1.4 2015/06/06 16:29:43 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/semigroupoid-extras/ChangeLog,v 1.5 2015/08/01 16:50:49 slyfox Exp $
+
+*semigroupoid-extras-5 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  +semigroupoid-extras-5.ebuild, metadata.xml:
+  Version bump.
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

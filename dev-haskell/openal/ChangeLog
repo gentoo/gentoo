@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/openal
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/openal/ChangeLog,v 1.20 2015/06/06 14:59:20 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/openal/ChangeLog,v 1.21 2015/08/01 16:33:27 slyfox Exp $
+
+*openal-1.7.0.0 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +openal-1.7.0.0.ebuild:
+  Version bump.
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

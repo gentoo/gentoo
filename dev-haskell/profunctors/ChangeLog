@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/profunctors
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/profunctors/ChangeLog,v 1.7 2015/06/06 15:41:23 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/profunctors/ChangeLog,v 1.8 2015/08/01 16:48:52 slyfox Exp $
+
+*profunctors-5.1.1 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +profunctors-5.1.1.ebuild:
+  Version bump.
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

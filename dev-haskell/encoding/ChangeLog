@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/encoding
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/encoding/ChangeLog,v 1.6 2014/12/14 09:58:16 gienah Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/encoding/ChangeLog,v 1.7 2015/08/01 16:39:02 slyfox Exp $
+
+*encoding-0.8 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +encoding-0.8.ebuild:
+  Version bump.
 
 *encoding-0.7.0.2-r1 (14 Dec 2014)
 
