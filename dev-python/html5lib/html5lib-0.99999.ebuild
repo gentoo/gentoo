@@ -1,10 +1,10 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/html5lib/html5lib-0.99999.ebuild,v 1.1 2015/05/27 07:34:29 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/html5lib/html5lib-0.99999.ebuild,v 1.2 2015/08/01 05:58:12 idella4 Exp $
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{3,4} pypy )
+PYTHON_COMPAT=( python2_7 python3_{3,4} pypy pypy3 )
 PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1

@@ -1,6 +1,9 @@
 # ChangeLog for sci-mathematics/singular
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/singular/ChangeLog,v 1.65 2015/04/08 18:23:00 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/singular/ChangeLog,v 1.66 2015/08/01 06:11:12 tomka Exp $
+
+  01 Aug 2015; Thomas Kahle <tomka@gentoo.org> singular-4.0.2.ebuild:
+  Fix building with automake other than 1.13, add slot on gmp.
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> singular-3.1.6.ebuild:
   Drop old Python implementations
