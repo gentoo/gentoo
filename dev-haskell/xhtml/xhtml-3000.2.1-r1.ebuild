@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/xhtml/xhtml-3000.2.1-r1.ebuild,v 1.11 2015/04/03 05:45:41 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/xhtml/xhtml-3000.2.1-r1.ebuild,v 1.12 2015/08/01 11:30:21 slyfox Exp $
 
 EAPI=5
 
@@ -22,4 +22,4 @@ RDEPEND=">=dev-lang/ghc-6.10.4:="
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.6"
 
-CABAL_CORE_LIB_GHC_PV="7.8.3 7.8.3.20141119 7.8.4 7.10.0.20141222 7.10.0.20150123 PM:7.10.1_rc3 PM:7.10.1"
+CABAL_CORE_LIB_GHC_PV="7.8.3 7.8.3.20141119 7.8.4 7.10.0.20141222 7.10.0.20150123 PM:7.10.1_rc3 PM:7.10.1 PM:7.10.2_rc2 PM:7.10.2"

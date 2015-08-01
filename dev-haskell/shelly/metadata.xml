@@ -24,4 +24,7 @@
 	<upstream>
 		<remote-id type="github">yesodweb/Shelly.hs</remote-id>
 	</upstream>
+	<use>
+		<flag name='lifted'>run the tests against Shelly.Lifted</flag>
+	</use>
 </pkgmetadata>

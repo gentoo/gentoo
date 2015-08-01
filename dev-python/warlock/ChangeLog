@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/warlock
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/warlock/ChangeLog,v 1.14 2015/07/08 20:46:30 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/warlock/ChangeLog,v 1.15 2015/08/01 11:07:50 patrick Exp $
+
+  01 Aug 2015; Patrick Lauer <patrick@gentoo.org> warlock-1.1.0.ebuild:
+  Add py3.4 hugs
 
   08 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> warlock-1.1.0.ebuild:
   x86 stable wrt bug #554114

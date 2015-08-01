@@ -1584,6 +1584,7 @@ dev-haskell/shakespeare:test_roy - Render tests through roy render function.
 dev-haskell/shakespeare-js:test_coffee - Test coffee.
 dev-haskell/shakespeare-js:test_export - Test export.
 dev-haskell/shakespeare-js:test_roy - Test roy.
+dev-haskell/shelly:lifted - run the tests against Shelly.Lifted
 dev-haskell/simple-sendfile:allow-bsd - Allow use of BSD sendfile (disable on GNU/kFreeBSD)
 dev-haskell/skein:big-endian - When manually selecting the endianness, use big-endian (default is little-endian).
 dev-haskell/skein:force-endianness - Use a manually selected endian when compiling (see flag 'big-endian').
@@ -2672,6 +2673,7 @@ dev-vcs/cssc:valgrind - Enable usage of dev-util/valgrind in tests
 dev-vcs/cvs:server - Enable server support
 dev-vcs/cvs2svn:bazaar - Support for dev-vcs/bzr
 dev-vcs/darcs:color - Use ansi color escapes.
+dev-vcs/darcs:diff - Use 'lcs' for diff building.
 dev-vcs/darcs:http - Use the pure Haskell HTTP package for HTTP support.
 dev-vcs/darcs:network-uri - Get Network.URI from the network-uri package.
 dev-vcs/darcs:optimize - Build with optimizations (-O2).

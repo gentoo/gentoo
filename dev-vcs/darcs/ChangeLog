@@ -1,6 +1,17 @@
 # ChangeLog for dev-vcs/darcs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/darcs/ChangeLog,v 1.61 2015/07/18 13:14:48 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/darcs/ChangeLog,v 1.63 2015/08/01 11:25:42 slyfox Exp $
+
+*darcs-2.10.1 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +darcs-2.10.1.ebuild:
+  Version bump.
+
+*darcs-2.10.0-r1 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +darcs-2.10.0-r1.ebuild,
+  metadata.xml:
+  Version bump.
 
   18 Jul 2015; Sergei Trofimovich <slyfox@gentoo.org> darcs-2.8.4-r6.ebuild:
   alpha/amd64/ia64/ppc/ppc64/sparc/x86 stable wrt bug #554768
