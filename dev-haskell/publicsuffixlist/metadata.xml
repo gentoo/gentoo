@@ -5,7 +5,8 @@
 	<longdescription>
 		Is a given string a domain suffix?
 	</longdescription>
-	<upstream>
-		<remote-id type="github">litherum/publicsuffixlist</remote-id>
-	</upstream>
+	<use>
+		<flag name='create'>export Network.PublicSuffixList.Create module</flag>
+		<flag name='runtimelist'>read suffix list from dist at startup instead of embedding list into library</flag>
+	</use>
 </pkgmetadata>

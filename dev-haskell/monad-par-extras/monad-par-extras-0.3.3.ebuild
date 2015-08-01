@@ -1,6 +1,6 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/monad-par-extras/monad-par-extras-0.3.3.ebuild,v 1.1 2013/08/25 06:05:08 qnikst Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/monad-par-extras/monad-par-extras-0.3.3.ebuild,v 1.2 2015/08/01 15:16:55 slyfox Exp $
 
 EAPI=5
 
@@ -20,7 +20,6 @@ IUSE=""
 
 RDEPEND="=dev-haskell/abstract-par-0.3*:=[profile?]
 		>=dev-haskell/cereal-0.3:=[profile?]
-		>=dev-haskell/deepseq-1.3:=[profile?]
 		>=dev-haskell/mtl-2.0:=[profile?]
 		>=dev-haskell/random-1.0:=[profile?]
 		>=dev-haskell/transformers-0.2:=[profile?]

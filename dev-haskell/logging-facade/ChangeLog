@@ -1,0 +1,10 @@
+# ChangeLog for dev-haskell/logging-facade
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/logging-facade/ChangeLog,v 1.1 2015/08/01 14:57:01 slyfox Exp $
+
+*logging-facade-0.0.0 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  +logging-facade-0.0.0.ebuild, +metadata.xml:
+  Simple logging abstraction that allows multiple backends, a depend for dev-
+  haskell/mockery.

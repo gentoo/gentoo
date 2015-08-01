@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/hunit
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hunit/ChangeLog,v 1.70 2014/07/25 08:58:45 slyfox Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hunit/ChangeLog,v 1.71 2015/08/01 15:09:08 slyfox Exp $
+
+*hunit-1.2.5.2-r1 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +hunit-1.2.5.2-r1.ebuild:
+  Drop deepseq depend bundled with ghc.
 
   25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
   Drop redundant '<maintainer>' field, leave only '<herd>'.

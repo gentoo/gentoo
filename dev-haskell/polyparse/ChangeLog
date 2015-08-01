@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/polyparse
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/polyparse/ChangeLog,v 1.8 2014/12/14 05:34:30 gienah Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/polyparse/ChangeLog,v 1.9 2015/08/01 15:22:21 slyfox Exp $
+
+*polyparse-1.11 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +polyparse-1.11.ebuild:
+  Version bump.
 
 *polyparse-1.10 (14 Dec 2014)
 

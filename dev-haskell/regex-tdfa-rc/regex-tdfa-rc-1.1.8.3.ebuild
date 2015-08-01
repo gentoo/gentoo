@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/regex-tdfa-rc/regex-tdfa-rc-1.1.8.3.ebuild,v 1.2 2015/04/28 20:37:25 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/regex-tdfa-rc/regex-tdfa-rc-1.1.8.3.ebuild,v 1.3 2015/08/01 14:33:08 slyfox Exp $
 
 EAPI=5
 
@@ -9,8 +9,8 @@ EAPI=5
 CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
-DESCRIPTION="Replaces/Enhances Text.Regex"
-HOMEPAGE="http://hackage.haskell.org/package/regex-tdfa"
+DESCRIPTION="Replaces/Enhances Text.Regex (fork by Roman Cheplyaka)"
+HOMEPAGE="http://hackage.haskell.org/package/${PN}"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

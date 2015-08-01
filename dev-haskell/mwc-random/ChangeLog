@@ -1,6 +1,10 @@
 # ChangeLog for dev-haskell/mwc-random
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/mwc-random/ChangeLog,v 1.7 2015/06/06 12:48:46 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/mwc-random/ChangeLog,v 1.8 2015/08/01 15:17:51 slyfox Exp $
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  mwc-random-0.13.3.2.ebuild:
+  Disable tests, requires package not to be installed.
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

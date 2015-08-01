@@ -1,6 +1,12 @@
 # ChangeLog for dev-haskell/network-protocol-xmpp
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/network-protocol-xmpp/ChangeLog,v 1.4 2014/07/25 09:16:41 slyfox Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/network-protocol-xmpp/ChangeLog,v 1.5 2015/08/01 15:11:12 slyfox Exp $
+
+*network-protocol-xmpp-0.4.8 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  +network-protocol-xmpp-0.4.8.ebuild:
+  Version bump.
 
   25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org>
   network-protocol-xmpp-0.4.4.ebuild, network-protocol-xmpp-0.4.5.ebuild,

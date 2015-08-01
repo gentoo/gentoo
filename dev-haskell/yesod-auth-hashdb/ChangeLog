@@ -1,6 +1,12 @@
 # ChangeLog for dev-haskell/yesod-auth-hashdb
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/yesod-auth-hashdb/ChangeLog,v 1.6 2015/06/06 18:34:33 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/yesod-auth-hashdb/ChangeLog,v 1.7 2015/08/01 14:47:18 slyfox Exp $
+
+*yesod-auth-hashdb-1.4.2.2 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  +yesod-auth-hashdb-1.4.2.2.ebuild:
+  Version bump.
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

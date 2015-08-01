@@ -1,12 +1,11 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/systemd-9999.ebuild,v 1.183 2015/07/24 20:14:18 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/systemd-9999.ebuild,v 1.184 2015/08/01 15:10:12 floppym Exp $
 
 EAPI=5
 
 AUTOTOOLS_AUTORECONF=yes
 AUTOTOOLS_PRUNE_LIBTOOL_FILES=all
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/systemd/systemd.git"
@@ -15,12 +14,9 @@ else
 	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~ia64 ~x86"
 fi
-UNIFONT=unifont-8.0.01
-SRC_URI+=" terminal? ( http://unifoundry.com/pub/${UNIFONT}/font-builds/${UNIFONT}.hex.gz )"
 
 inherit autotools-utils bash-completion-r1 linux-info multilib \
-	multilib-minimal pam python-any-r1 systemd toolchain-funcs udev \
-	user
+	multilib-minimal pam systemd toolchain-funcs udev user
 
 DESCRIPTION="System and service manager for Linux"
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/systemd"
@@ -29,7 +25,7 @@ LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
 IUSE="acl apparmor audit cryptsetup curl elfutils gcrypt gnuefi http
 	idn importd +kdbus +kmod +lz4 lzma nat pam policykit
-	qrcode +seccomp selinux ssl sysv-utils terminal test vanilla xkb"
+	qrcode +seccomp selinux ssl sysv-utils test vanilla xkb"
 
 REQUIRED_USE="importd? ( curl gcrypt lzma )"
 
@@ -65,9 +61,6 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.26:0=[${MULTILIB_USEDEP}]
 	sysv-utils? (
 		!sys-apps/systemd-sysv-utils
 		!sys-apps/sysvinit )
-	terminal? ( >=dev-libs/libevdev-1.2:0=
-		>=x11-libs/libxkbcommon-0.5:0=
-		>=x11-libs/libdrm-2.4:0= )
 	xkb? ( >=x11-libs/libxkbcommon-0.4.1:0= )
 	abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r9
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )"
@@ -98,7 +91,6 @@ DEPEND="${COMMON_DEPEND}
 	ia64? ( >=sys-kernel/linux-headers-3.9 )
 	virtual/pkgconfig
 	gnuefi? ( >=sys-boot/gnu-efi-3.0.2 )
-	terminal? ( ${PYTHON_DEPS} )
 	test? ( >=sys-apps/dbus-1.6.8-r1:0 )"
 
 if [[ -n ${AUTOTOOLS_AUTORECONF} ]]; then
@@ -172,10 +164,6 @@ src_configure() {
 	# Fix systems broken by bug #509454.
 	[[ ${MY_UDEVDIR} ]] || MY_UDEVDIR=/lib/udev
 
-	if use terminal; then
-		python_setup
-	fi
-
 	multilib-minimal_src_configure
 }
 
@@ -207,8 +195,6 @@ multilib_src_configure() {
 		# no deps
 		--enable-efi
 		--enable-ima
-		# Moved to dev-python/python-systemd
-		--disable-python-devel
 		--without-python
 
 		# Optional components/dependencies
@@ -236,8 +222,6 @@ multilib_src_configure() {
 		$(multilib_native_use_enable qrcode qrencode)
 		$(multilib_native_use_enable seccomp)
 		$(multilib_native_use_enable selinux)
-		$(multilib_native_use_enable terminal)
-		$(multilib_native_use_with terminal unifont "${WORKDIR}/${UNIFONT}.hex")
 		$(multilib_native_use_enable test tests)
 		$(multilib_native_use_enable test dbus)
 		$(multilib_native_use_enable xkb xkbcommon)
@@ -424,6 +408,14 @@ migrate_net_name_slot() {
 	fi
 }
 
+reenable_unit() {
+	if systemctl is-enabled --root="${ROOT}" "$1" &> /dev/null; then
+		ebegin "Re-enabling $1"
+		systemctl reenable --root="${ROOT}" "$1"
+		eend $? || FAIL=1
+	fi
+}
+
 pkg_postinst() {
 	newusergroup() {
 		enewgroup "$1"
@@ -457,6 +449,9 @@ pkg_postinst() {
 
 	# Migrate 80-net-name-slot.rules -> 80-net-setup-link.rules
 	migrate_net_name_slot
+
+	# Re-enable systemd-networkd for socket activation
+	reenable_unit systemd-networkd.service
 
 	if [[ ${FAIL} ]]; then
 		eerror "One of the postinst commands failed. Please check the postinst output"

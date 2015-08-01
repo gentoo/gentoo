@@ -1,6 +1,12 @@
 # ChangeLog for dev-haskell/lcs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/lcs/ChangeLog,v 1.4 2015/02/15 18:49:14 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/lcs/ChangeLog,v 1.5 2015/08/01 15:05:50 slyfox Exp $
+
+*lcs-0.2-r1 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  +files/lcs-0.2-ghc-7.10.patch, +lcs-0.2-r1.ebuild:
+  Port to ghc-7.10.
 
   15 Feb 2015; Sergei Trofimovich <slyfox@gentoo.org> lcs-0.2.ebuild:
   ~sparc keyworded

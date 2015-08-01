@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/yesod-core
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/yesod-core/ChangeLog,v 1.11 2015/04/05 01:18:38 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/yesod-core/ChangeLog,v 1.12 2015/08/01 14:45:55 slyfox Exp $
+
+*yesod-core-1.4.12 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +yesod-core-1.4.12.ebuild:
+  Version bump.
 
 *yesod-core-1.4.9.1 (05 Apr 2015)
 

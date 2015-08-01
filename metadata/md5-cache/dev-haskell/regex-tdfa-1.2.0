@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst postrm setup test
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test
 DEPEND=dev-haskell/mtl:=[profile?] dev-haskell/parsec:=[profile?] >=dev-haskell/regex-base-0.93.1:=[profile?] >=dev-lang/ghc-7.4.1:= >=dev-haskell/cabal-1.2.3 doc? ( dev-haskell/haddock ) hscolour? ( dev-haskell/hscolour ) >=dev-haskell/cabal-1.1.4
 DESCRIPTION=Replaces/Enhances Text.Regex
 EAPI=5
@@ -10,4 +10,4 @@ RDEPEND=dev-haskell/mtl:=[profile?] dev-haskell/parsec:=[profile?] >=dev-haskell
 SLOT=0/1.2.0
 SRC_URI=mirror://hackage/packages/archive/regex-tdfa/1.2.0/regex-tdfa-1.2.0.tar.gz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	ghc-package	48ae4e0fd75e1c8047c4b7f507d5debc	haskell-cabal	7ef7b3e7548c8c61352984737b22d3e3	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=bc84b2f7aa3d4246d6a904dccd520c44
+_md5_=39191438b0b9c3a2aca1b61e4867d4fb

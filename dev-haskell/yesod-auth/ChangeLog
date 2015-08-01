@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/yesod-auth
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/yesod-auth/ChangeLog,v 1.12 2015/04/05 01:23:23 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/yesod-auth/ChangeLog,v 1.13 2015/08/01 14:48:29 slyfox Exp $
+
+*yesod-auth-1.4.6 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +yesod-auth-1.4.6.ebuild:
+  Version bump.
 
 *yesod-auth-1.4.4 (05 Apr 2015)
 

@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/hoauth2
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hoauth2/ChangeLog,v 1.4 2015/06/06 11:27:14 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hoauth2/ChangeLog,v 1.5 2015/08/01 15:21:27 slyfox Exp $
+
+*hoauth2-0.4.8 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +hoauth2-0.4.8.ebuild:
+  Version bump.
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

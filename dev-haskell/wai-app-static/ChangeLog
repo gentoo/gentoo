@@ -1,6 +1,12 @@
 # ChangeLog for dev-haskell/wai-app-static
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/wai-app-static/ChangeLog,v 1.10 2015/04/04 23:54:39 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/wai-app-static/ChangeLog,v 1.11 2015/08/01 14:45:02 slyfox Exp $
+
+*wai-app-static-3.1.1 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  +wai-app-static-3.1.1.ebuild:
+  Version bump.
 
 *wai-app-static-3.0.1 (04 Apr 2015)
 

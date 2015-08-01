@@ -1,6 +1,12 @@
 # ChangeLog for dev-haskell/vector-algorithms
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/vector-algorithms/ChangeLog,v 1.5 2015/04/03 05:21:11 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/vector-algorithms/ChangeLog,v 1.6 2015/08/01 15:06:43 slyfox Exp $
+
+*vector-algorithms-0.7 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  +vector-algorithms-0.7.ebuild:
+  Version bump.
 
 *vector-algorithms-0.6.0.4 (03 Apr 2015)
 

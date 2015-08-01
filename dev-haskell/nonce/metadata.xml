@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		According to the Wikipedia, a nonce is an arbitrary number used
+		only once in a cryptographic communication.  This package
+		contain helper functions for generating nonces.
+		
+		There are many kinds of nonces used in different situations.
+		It&#39;s not guaranteed that by using the nonces from this package
+		you won&#39;t have any security issues.  Please make sure that the
+		nonces generated via this package are usable on your design.
+	</longdescription>
+</pkgmetadata>

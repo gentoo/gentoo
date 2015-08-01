@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/regex-tdfa/regex-tdfa-1.2.0.ebuild,v 1.3 2015/02/25 15:34:13 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/regex-tdfa/regex-tdfa-1.2.0.ebuild,v 1.4 2015/08/01 14:32:15 slyfox Exp $
 
 EAPI=5
 
@@ -27,6 +27,12 @@ RDEPEND="dev-haskell/mtl:=[profile?]
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.2.3
 "
+
+src_prepare() {
+	# too much load on compiler (~2GB RAM against ~500)
+	cabal_chdeps \
+		'-O2 ' ' '
+}
 
 src_configure() {
 	haskell-cabal_src_configure \

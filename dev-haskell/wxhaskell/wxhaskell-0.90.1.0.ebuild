@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/wxhaskell/wxhaskell-0.90.1.0.ebuild,v 1.1 2014/03/23 15:06:55 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/wxhaskell/wxhaskell-0.90.1.0.ebuild,v 1.2 2015/08/01 14:59:40 slyfox Exp $
 
 EAPI=5
 
@@ -32,6 +32,11 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MY_P}"
 
 src_configure() {
+	# ghc DCE bug: https://ghc.haskell.org/trac/ghc/ticket/9155
+	[[ $(ghc-version) == 7.8.2 ]] && replace-hcflags -O[2-9] -O1
+	# ghc DCE bug: https://ghc.haskell.org/trac/ghc/ticket/9303
+	[[ $(ghc-version) == 7.8.3 ]] && replace-hcflags -O[2-9] -O1
+
 	haskell-cabal_src_configure \
 		--flag=newbase
 }

@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/tasty-rerun
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/tasty-rerun/ChangeLog,v 1.6 2015/06/06 17:26:28 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/tasty-rerun/ChangeLog,v 1.7 2015/08/01 15:02:37 slyfox Exp $
+
+*tasty-rerun-1.1.4 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +tasty-rerun-1.1.4.ebuild:
+  Version bump.
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/warp-tls
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/warp-tls/ChangeLog,v 1.8 2015/06/06 18:30:04 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/warp-tls/ChangeLog,v 1.9 2015/08/01 15:03:04 slyfox Exp $
+
+*warp-tls-3.0.4.2 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +warp-tls-3.0.4.2.ebuild:
+  Version bump.
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

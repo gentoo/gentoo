@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/terminfo/terminfo-0.4.0.1.ebuild,v 1.1 2015/04/03 08:53:16 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/terminfo/terminfo-0.4.0.1.ebuild,v 1.2 2015/08/01 15:07:50 slyfox Exp $
 
 EAPI=5
 
@@ -24,4 +24,4 @@ DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.10
 "
 
-CABAL_CORE_LIB_GHC_PV="PM:7.10.1"
+CABAL_CORE_LIB_GHC_PV="PM:7.10.1 PM:7.10.2_rc2 PM:7.10.2"

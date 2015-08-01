@@ -1,6 +1,11 @@
 # ChangeLog for dev-vcs/mercurial
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/mercurial/ChangeLog,v 1.188 2015/07/07 15:46:11 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/mercurial/ChangeLog,v 1.189 2015/08/01 15:23:56 djc Exp $
+
+*mercurial-3.5 (01 Aug 2015)
+
+  01 Aug 2015; Dirkjan Ochtman <djc@gentoo.org> +mercurial-3.5.ebuild:
+  Version bump mercurial to 3.5
 
 *mercurial-3.4.2 (07 Jul 2015)
 

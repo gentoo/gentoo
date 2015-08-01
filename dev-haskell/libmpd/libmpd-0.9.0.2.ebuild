@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/libmpd/libmpd-0.9.0.2.ebuild,v 1.1 2015/06/01 20:34:52 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/libmpd/libmpd-0.9.0.2.ebuild,v 1.2 2015/08/01 15:18:21 slyfox Exp $
 
 EAPI=5
 
@@ -17,6 +17,8 @@ LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+
+RESTRICT=test # needs slight port to ghc-7.10
 
 RDEPEND=">=dev-haskell/attoparsec-0.10.1:=[profile?] <dev-haskell/attoparsec-1:=[profile?]
 	>=dev-haskell/data-default-class-0.0.1:=[profile?] <dev-haskell/data-default-class-1:=[profile?]

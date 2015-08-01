@@ -7,13 +7,11 @@
 		
 		This package includes the full libyaml C library version 0.1.12 by Kirill
 		Simonov (&lt;http://pyyaml.org/wiki/LibYAML&gt;) in the package so you
-		don't need to worry about any non-Haskell dependencies.
+		don&#39;t need to worry about any non-Haskell dependencies.
 	</longdescription>
 	<use>
 		<flag name="no-exe">don't install the yaml2json executable</flag>
+		<flag name="no-unicode">Don't enable unicode output. Instead, unicode characters will be escaped.</flag>
 		<flag name="system-libyaml">Use system libyaml instead on generic one</flag>
 	</use>
-	<upstream>
-		<remote-id type="github">snoyberg/yaml</remote-id>
-	</upstream>
 </pkgmetadata>

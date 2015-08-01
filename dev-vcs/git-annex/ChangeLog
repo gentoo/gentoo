@@ -1,6 +1,12 @@
 # ChangeLog for dev-vcs/git-annex
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git-annex/ChangeLog,v 1.38 2015/06/21 18:57:45 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git-annex/ChangeLog,v 1.39 2015/08/01 14:41:50 slyfox Exp $
+
+*git-annex-5.20150710 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  +git-annex-5.20150710.ebuild:
+  Version bump.
 
 *git-annex-5.20150617 (21 Jun 2015)
 

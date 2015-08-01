@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/syb/syb-0.4.4.ebuild,v 1.1 2015/03/11 11:43:49 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/syb/syb-0.4.4.ebuild,v 1.2 2015/08/01 15:08:23 slyfox Exp $
 
 EAPI=5
 
@@ -17,6 +17,8 @@ LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux"
 IUSE=""
+
+RESTRICT=test # ghc-7.10 slightly changed namespacing
 
 RDEPEND=">=dev-lang/ghc-7.4.1:=
 "

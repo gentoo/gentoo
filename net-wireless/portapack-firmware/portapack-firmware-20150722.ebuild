@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/portapack-firmware/portapack-firmware-20150722.ebuild,v 1.1 2015/07/31 19:50:13 zerochaos Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/portapack-firmware/portapack-firmware-20150722.ebuild,v 1.2 2015/08/01 14:51:41 zerochaos Exp $
 
 EAPI=5
 
@@ -16,9 +16,12 @@ IUSE=""
 PDEPEND=">=net-wireless/hackrf-tools-2015.07.2-r1
 	=app-mobilephone/dfu-util-0.7"
 
+S="${WORKDIR}"
+
 src_install() {
 	insinto /usr/share/hackrf
-	newins portapack-h1-firmware.bin
+	newins portapack-h1-firmware.bin portapack-h1-firmware-${PV}.bin
+	ln -s portapack-h1-firmware-${PV}.bin "${ED}/usr/share/hackrf/portapack-h1-firmware.bin"
 
 	cat << EOF > switch_to_portapack
 #!/bin/sh

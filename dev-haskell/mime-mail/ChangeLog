@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/mime-mail
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/mime-mail/ChangeLog,v 1.9 2015/06/06 12:31:29 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/mime-mail/ChangeLog,v 1.10 2015/08/01 15:15:09 slyfox Exp $
+
+*mime-mail-0.4.9 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +mime-mail-0.4.9.ebuild:
+  Version bump.
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

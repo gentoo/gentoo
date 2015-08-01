@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=>=dev-haskell/blaze-builder-0.2:=[profile?] >=dev-haskell/language-javascript-0.5.14:=[profile?] >=dev-haskell/optparse-applicative-0.7:=[profile?] >=dev-haskell/text-0.8:=[profile?] >=dev-lang/ghc-7.4.1:= >=dev-haskell/cabal-1.9.2 test? ( dev-haskell/hunit >=dev-haskell/quickcheck-2 dev-haskell/test-framework dev-haskell/test-framework-hunit ) doc? ( dev-haskell/haddock ) hscolour? ( dev-haskell/hscolour ) >=dev-haskell/cabal-1.1.4
+DESCRIPTION=Haskell implementation of a javascript minifier
+EAPI=5
+HOMEPAGE=http://github.com/erikd/hjsmin
+IUSE=doc hscolour profile test
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=dev-haskell/blaze-builder-0.2:=[profile?] >=dev-haskell/language-javascript-0.5.14:=[profile?] >=dev-haskell/optparse-applicative-0.7:=[profile?] >=dev-haskell/text-0.8:=[profile?] >=dev-lang/ghc-7.4.1:=
+SLOT=0/0.1.5.0
+SRC_URI=mirror://hackage/packages/archive/hjsmin/0.1.5.0/hjsmin-0.1.5.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	ghc-package	48ae4e0fd75e1c8047c4b7f507d5debc	haskell-cabal	7ef7b3e7548c8c61352984737b22d3e3	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=db882106dd8ba4a7f0494904b9840b58

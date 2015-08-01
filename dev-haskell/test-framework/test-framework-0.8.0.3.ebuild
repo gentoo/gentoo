@@ -1,6 +1,6 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/test-framework/test-framework-0.8.0.3.ebuild,v 1.1 2013/10/19 09:55:56 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/test-framework/test-framework-0.8.0.3.ebuild,v 1.2 2015/08/01 14:43:56 slyfox Exp $
 
 EAPI=5
 
@@ -31,7 +31,7 @@ DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.10.0.0
 	test? ( >=dev-haskell/hunit-1.2:=[profile?]
 			>=dev-haskell/libxml-0.1.1:=[profile?]
-			>=dev-haskell/quickcheck-2.3:=[profile?] <dev-haskell/quickcheck-2.7:=[profile?] )
+			>=dev-haskell/quickcheck-2.3:2=[profile?] <dev-haskell/quickcheck-2.7:2=[profile?] )
 "
 
 src_prepare() {
