@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/tls
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/tls/ChangeLog,v 1.11 2015/06/06 18:08:40 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/tls/ChangeLog,v 1.12 2015/08/01 13:46:26 slyfox Exp $
+
+*tls-1.2.18 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +tls-1.2.18.ebuild:
+  Version bump.
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

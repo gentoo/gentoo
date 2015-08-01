@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/shakespeare
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/shakespeare/ChangeLog,v 1.8 2015/04/05 05:42:21 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/shakespeare/ChangeLog,v 1.9 2015/08/01 13:40:09 slyfox Exp $
+
+*shakespeare-2.0.5 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +shakespeare-2.0.5.ebuild:
+  Version bump.
 
 *shakespeare-2.0.4.1 (05 Apr 2015)
 

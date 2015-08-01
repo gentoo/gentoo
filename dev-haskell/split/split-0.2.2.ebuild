@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/split/split-0.2.2.ebuild,v 1.10 2015/04/03 05:59:14 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/split/split-0.2.2.ebuild,v 1.11 2015/08/01 14:04:51 slyfox Exp $
 
 EAPI=5
 
@@ -17,8 +17,6 @@ LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-fbsd ~ppc-macos ~x86-macos"
 IUSE=""
-
-RESTRICT=test # hangs
 
 RDEPEND=">=dev-lang/ghc-6.10.4:="
 DEPEND="${RDEPEND}

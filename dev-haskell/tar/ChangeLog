@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/tar
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/tar/ChangeLog,v 1.24 2015/04/04 07:34:27 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/tar/ChangeLog,v 1.25 2015/08/01 13:40:48 slyfox Exp $
+
+*tar-0.4.2.1 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +tar-0.4.2.1.ebuild:
+  Version bump.
 
 *tar-0.4.1.0 (04 Apr 2015)
 
