@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs-vcs/emacs-vcs-25.0.50_pre20150331.ebuild,v 1.1 2015/04/05 10:31:24 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs-vcs/emacs-vcs-25.0.50_pre20150731.ebuild,v 1.1 2015/08/01 12:45:53 ulm Exp $
 
 EAPI=5
 
@@ -29,7 +29,7 @@ HOMEPAGE="http://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="25"
-IUSE="acl alsa aqua athena dbus games gconf gfile gif gnutls gpm gsettings gtk +gtk3 gzip-el hesiod imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif pax_kernel png selinux sound source svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm zlib"
+IUSE="acl alsa aqua athena cairo dbus games gconf gfile gif gnutls gpm gsettings gtk +gtk3 gzip-el hesiod imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif pax_kernel png selinux sound source svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm zlib"
 REQUIRED_USE="?? ( aqua X )"
 
 RDEPEND="sys-libs/ncurses
@@ -64,6 +64,7 @@ RDEPEND="sys-libs/ncurses
 			media-libs/fontconfig
 			media-libs/freetype
 			x11-libs/libXft
+			cairo? ( >=x11-libs/cairo-1.12.18 )
 			m17n-lib? (
 				>=dev-libs/libotf-0.9.4
 				>=dev-libs/m17n-lib-1.5.1
@@ -156,11 +157,15 @@ src_configure() {
 
 		if use xft; then
 			myconf+=" --with-xft"
+			myconf+=" $(use_with cairo)"
 			myconf+=" $(use_with m17n-lib libotf)"
 			myconf+=" $(use_with m17n-lib m17n-flt)"
 		else
 			myconf+=" --without-xft"
+			myconf+=" --without-cairo"
 			myconf+=" --without-libotf --without-m17n-flt"
+			use cairo && ewarn \
+				"USE flag \"cairo\" has no effect if \"xft\" is not set."
 			use m17n-lib && ewarn \
 				"USE flag \"m17n-lib\" has no effect if \"xft\" is not set."
 		fi
@@ -168,6 +173,15 @@ src_configure() {
 		local f
 		if use gtk; then
 			einfo "Configuring to build with GIMP Toolkit (GTK+)"
+			while read line; do ewarn "${line}"; done <<-EOF
+				Your version of GTK+ will have problems with closing open
+				displays. This is no problem if you just use one display, but
+				if you use more than one and close one of them Emacs may crash.
+				See <http://bugzilla.gnome.org/show_bug.cgi?id=85715>.
+				If you intend to use more than one display, then it is strongly
+				recommended that you compile Emacs with the Athena/Lucid or the
+				Motif toolkit instead.
+			EOF
 			myconf+=" --with-x-toolkit=$(usex gtk3 gtk3 gtk2)"
 			for f in motif Xaw3d athena; do
 				use ${f} && ewarn \

@@ -1,6 +1,10 @@
 # ChangeLog for Gentoo/AMD64 profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/hardened/ChangeLog,v 1.88 2015/06/14 18:15:38 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/hardened/ChangeLog,v 1.89 2015/08/01 12:33:53 bircoph Exp $
+
+  01 Aug 2015; Andrew Savchenko <bircoph@gentoo.org> linux/amd64/package.mask:
+  Mask sci-physics/cernlib and its reverse dependencies on hardened
+  amd64, since package is badly broken. See bug 426764.
 
   14 Jun 2015; Anthony G. Basile <blueness@gentoo.org>
   +linux/musl/mips/package.use.force:
