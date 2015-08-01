@@ -1,6 +1,9 @@
 # ChangeLog for www-apps/otrs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/otrs/ChangeLog,v 1.76 2015/06/13 17:21:28 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/otrs/ChangeLog,v 1.77 2015/08/01 03:56:55 patrick Exp $
+
+  01 Aug 2015; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Remove myself as maintainer
 
   13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org> otrs-3.2.7.ebuild,
   otrs-3.2.8.ebuild, otrs-3.2.9.ebuild, otrs-3.2.10.ebuild, otrs-3.2.12.ebuild:
