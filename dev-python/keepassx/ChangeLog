@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/keepassx
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/keepassx/ChangeLog,v 1.5 2015/06/15 22:19:27 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/keepassx/ChangeLog,v 1.6 2015/08/01 10:20:36 patrick Exp $
+
+  01 Aug 2015; Patrick Lauer <patrick@gentoo.org> keepassx-0.1.0.ebuild:
+  Add py3.4 hugs, fix test deps
 
 *keepassx-0.1.0 (15 Jun 2015)
 

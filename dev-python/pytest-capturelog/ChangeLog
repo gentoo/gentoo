@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/pytest-capturelog
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pytest-capturelog/ChangeLog,v 1.1 2015/07/05 09:14:24 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pytest-capturelog/ChangeLog,v 1.2 2015/08/01 10:31:04 patrick Exp $
+
+  01 Aug 2015; Patrick Lauer <patrick@gentoo.org> pytest-capturelog-0.7.ebuild:
+  Add py3.4 hugs
 
 *pytest-capturelog-0.7 (05 Jul 2015)
 

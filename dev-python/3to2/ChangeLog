@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/3to2
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/3to2/ChangeLog,v 1.10 2015/06/15 14:53:34 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/3to2/ChangeLog,v 1.11 2015/08/01 10:08:22 patrick Exp $
+
+  01 Aug 2015; Patrick Lauer <patrick@gentoo.org> 3to2-1.1.1.ebuild:
+  Add py3.4 hugs
 
 *3to2-1.1.1 (15 Jun 2015)
 

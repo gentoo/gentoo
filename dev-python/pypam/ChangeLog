@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/pypam
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pypam/ChangeLog,v 1.21 2015/06/17 07:49:36 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pypam/ChangeLog,v 1.23 2015/08/01 10:30:57 patrick Exp $
+
+  01 Aug 2015; Patrick Lauer <patrick@gentoo.org> pypam-0.5.0-r3.ebuild:
+  Add py3.4 hugs
 
   17 Jun 2015; Justin Lecher <jlec@gentoo.org>
   -files/pypam-0.5.0-python-2.5.patch, -pypam-0.5.0-r2.ebuild:
