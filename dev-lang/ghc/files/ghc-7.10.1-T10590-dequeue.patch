@@ -1,0 +1,89 @@
+diff --git a/rts/RaiseAsync.c b/rts/RaiseAsync.c
+index 3b206ff..08c031c 100644
+--- a/rts/RaiseAsync.c
++++ b/rts/RaiseAsync.c
+@@ -56,7 +56,8 @@ static void throwToSendMsg (Capability *cap USED_IF_THREADS,
+ 
+ static void
+ throwToSingleThreaded__ (Capability *cap, StgTSO *tso, StgClosure *exception,
+-                         rtsBool stop_at_atomically, StgUpdateFrame *stop_here)
++                         rtsBool stop_at_atomically, StgUpdateFrame *stop_here,
++                         rtsBool dequeue)
+ {
+     // Thread already dead?
+     if (tso->what_next == ThreadComplete || tso->what_next == ThreadKilled) {
+@@ -64,7 +65,9 @@ throwToSingleThreaded__ (Capability *cap, StgTSO *tso, StgClosure *exception,
+     }
+ 
+     // Remove it from any blocking queues
+-    removeFromQueues(cap,tso);
++    if (dequeue) {
++        removeFromQueues(cap,tso);
++    }
+ 
+     raiseAsync(cap, tso, exception, stop_at_atomically, stop_here);
+ }
+@@ -72,20 +75,26 @@ throwToSingleThreaded__ (Capability *cap, StgTSO *tso, StgClosure *exception,
+ void
+ throwToSingleThreaded (Capability *cap, StgTSO *tso, StgClosure *exception)
+ {
+-    throwToSingleThreaded__(cap, tso, exception, rtsFalse, NULL);
++    throwToSingleThreaded__(cap, tso, exception, rtsFalse, NULL, rtsTrue);
++}
++
++void
++throwToSingleThreadedNoDequeue (Capability *cap, StgTSO *tso, StgClosure *exception)
++{
++    throwToSingleThreaded__(cap, tso, exception, rtsFalse, NULL, rtsFalse);
+ }
+ 
+ void
+ throwToSingleThreaded_ (Capability *cap, StgTSO *tso, StgClosure *exception,
+                         rtsBool stop_at_atomically)
+ {
+-    throwToSingleThreaded__ (cap, tso, exception, stop_at_atomically, NULL);
++    throwToSingleThreaded__ (cap, tso, exception, stop_at_atomically, NULL, rtsTrue);
+ }
+ 
+ void // cannot return a different TSO
+ suspendComputation (Capability *cap, StgTSO *tso, StgUpdateFrame *stop_here)
+ {
+-    throwToSingleThreaded__ (cap, tso, NULL, rtsFalse, stop_here);
++    throwToSingleThreaded__ (cap, tso, NULL, rtsFalse, stop_here, rtsTrue);
+ }
+ 
+ /* -----------------------------------------------------------------------------
+diff --git a/rts/RaiseAsync.h b/rts/RaiseAsync.h
+index 6bfed8d..2e8a7a3 100644
+--- a/rts/RaiseAsync.h
++++ b/rts/RaiseAsync.h
+@@ -23,6 +23,10 @@ void throwToSingleThreaded (Capability *cap,
+                             StgTSO *tso,
+                             StgClosure *exception);
+ 
++void throwToSingleThreadedNoDequeue (Capability *cap,
++                                     StgTSO *tso,
++                                     StgClosure *exception);
++
+ void throwToSingleThreaded_ (Capability *cap,
+                              StgTSO *tso,
+                              StgClosure *exception,
+diff --git a/rts/posix/Select.c b/rts/posix/Select.c
+index 4b19235..6889499 100644
+--- a/rts/posix/Select.c
++++ b/rts/posix/Select.c
+@@ -412,8 +412,12 @@ awaitEvent(rtsBool wait)
+                   IF_DEBUG(scheduler,
+                       debugBelch("Killing blocked thread %lu on bad fd=%i\n",
+                                  (unsigned long)tso->id, fd));
+-                  throwToSingleThreaded(&MainCapability, tso,
+-                                        (StgClosure *)blockedOnBadFD_closure);
++                  /*
++                   * We can't use throwToSingleThreaded() here
++                   * as 'RTS_FD_IS_READY' breaks blocked_queue_hd list
++                   */
++                  throwToSingleThreadedNoDequeue(&MainCapability, tso,
++                                                 (StgClosure *)blockedOnBadFD_closure);
+                   break;
+               case RTS_FD_IS_READY:
+                   IF_DEBUG(scheduler,

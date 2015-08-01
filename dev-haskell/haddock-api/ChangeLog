@@ -1,0 +1,9 @@
+# ChangeLog for dev-haskell/haddock-api
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/haddock-api/ChangeLog,v 1.1 2015/08/01 21:22:39 slyfox Exp $
+
+*haddock-api-2.16.1 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  +haddock-api-2.16.1.ebuild, +metadata.xml:
+  A documentation-generation tool for Haskell libraries

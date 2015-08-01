@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/haddock
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/haddock/ChangeLog,v 1.116 2015/01/02 23:16:40 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/haddock/ChangeLog,v 1.117 2015/08/01 21:23:32 slyfox Exp $
+
+*haddock-2.16.1 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +haddock-2.16.1.ebuild:
+  Version bump.
 
   02 Jan 2015; Sergei Trofimovich <slyfox@gentoo.org>
   -files/ghc-paths-1.0.5.0-GHC-Paths.hs, -files/haddock-2.6.1-cabal-1.8.patch,

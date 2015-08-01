@@ -3,9 +3,7 @@
 <pkgmetadata>
 	<herd>haskell</herd>
 	<longdescription>
-		Cryptographic numbers: functions and algorithms
+		Haddock is a documentation-generation tool for Haskell
+		libraries
 	</longdescription>
-	<upstream>
-		<remote-id type="github">vincenthz/hs-crypto-numbers</remote-id>
-	</upstream>
 </pkgmetadata>

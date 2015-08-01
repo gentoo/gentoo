@@ -8,9 +8,4 @@
 		on which this binding is based, please see:
 		&lt;http://www.opengl.org/resources/libraries/glut/&gt;.
 	</longdescription>
-	<use>
-		<flag name="usenativewindowslibraries">When compiling under
-                Windows, use the native libraries instead of e.g. the ones
-                coming with Cygwin.</flag>
-	</use>
 </pkgmetadata>
