@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/ical4j
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/ical4j/ChangeLog,v 1.15 2015/06/09 13:38:44 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/ical4j/ChangeLog,v 1.16 2015/08/01 21:45:05 mrueg Exp $
+
+  01 Aug 2015; Manuel Rüger <mrueg@gentoo.org> -ical4j-1.0_beta2-r1.ebuild,
+  -ical4j-1.0_beta2.ebuild:
+  Remove old.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

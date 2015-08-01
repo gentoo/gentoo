@@ -1,6 +1,12 @@
 # ChangeLog for virtual/mysql
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/mysql/ChangeLog,v 1.64 2015/07/29 01:45:06 grknight Exp $
+# $Header: /var/cvsroot/gentoo-x86/virtual/mysql/ChangeLog,v 1.65 2015/08/01 21:38:00 grknight Exp $
+
+*mysql-5.6-r6 (01 Aug 2015)
+
+  01 Aug 2015; Brian Evans <grknight@gentoo.org> +mysql-5.6-r6.ebuild:
+  Revbump to take into account that only server packages have the embedded
+  library and must be paired with client-libs for mysql_config
 
 *mysql-5.6-r5 (29 Jul 2015)
 

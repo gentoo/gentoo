@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/higlayout
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/higlayout/ChangeLog,v 1.9 2015/04/21 18:37:06 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/higlayout/ChangeLog,v 1.10 2015/08/01 21:44:24 mrueg Exp $
+
+  01 Aug 2015; Manuel Rüger <mrueg@gentoo.org> -higlayout-1.0-r1.ebuild:
+  Remove old.
 
   21 Apr 2015; Pacho Ramos <pacho@gentoo.org> higlayout-1.0-r2.ebuild:
   ppc stable wrt bug #535060

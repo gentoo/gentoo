@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/fscript
 # Copyright 2000-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/fscript/ChangeLog,v 1.21 2015/06/09 13:36:36 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/fscript/ChangeLog,v 1.22 2015/08/01 21:42:52 mrueg Exp $
+
+  01 Aug 2015; Manuel Rüger <mrueg@gentoo.org> -fscript-1.17.ebuild:
+  Remove old.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

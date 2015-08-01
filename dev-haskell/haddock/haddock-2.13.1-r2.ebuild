@@ -1,6 +1,6 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/haddock/haddock-2.13.1-r2.ebuild,v 1.1 2013/02/10 14:23:03 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/haddock/haddock-2.13.1-r2.ebuild,v 1.2 2015/08/01 21:42:46 slyfox Exp $
 
 EAPI=5
 
@@ -15,18 +15,18 @@ LICENSE="BSD"
 SLOT="0/${PV}"
 # ia64 lost as we don't have ghc-7 there yet
 # ppc64 needs to be rekeyworded due to xhtml not being keyworded
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 -ia64 ~ppc ~sparc ~x86 ~x86-fbsd"
 IUSE=""
 
 RDEPEND="dev-haskell/ghc-paths:=[profile?]
 		=dev-haskell/xhtml-3000.2*:=[profile?]
-		>=dev-lang/ghc-7.6.1:="
+		>=dev-lang/ghc-7.6:= <dev-lang/ghc-7.7:="
 DEPEND="${RDEPEND}
 		>=dev-haskell/cabal-1.14"
 
 RESTRICT="test" # avoid depends on QC
 
-CABAL_EXTRA_BUILD_FLAGS="--ghc-options=-rtsopts"
+CABAL_EXTRA_BUILD_FLAGS+=" --ghc-options=-rtsopts"
 
 src_prepare() {
 	# we would like to avoid happy and alex depends

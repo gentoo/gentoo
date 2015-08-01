@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/cldc-api
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/cldc-api/ChangeLog,v 1.11 2015/05/17 20:20:06 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/cldc-api/ChangeLog,v 1.12 2015/08/01 21:45:57 mrueg Exp $
+
+  01 Aug 2015; Manuel Rüger <mrueg@gentoo.org> -cldc-api-1.1.ebuild:
+  Remove old.
 
   17 May 2015; Pacho Ramos <pacho@gentoo.org> cldc-api-1.1-r1.ebuild:
   ppc64 stable wrt bug #535036

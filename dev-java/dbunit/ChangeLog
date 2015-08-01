@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/dbunit
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/dbunit/ChangeLog,v 1.30 2015/06/09 13:33:28 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/dbunit/ChangeLog,v 1.31 2015/08/01 21:50:11 mrueg Exp $
+
+  01 Aug 2015; Manuel Rüger <mrueg@gentoo.org> -dbunit-2.4.1.ebuild:
+  Remove old.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

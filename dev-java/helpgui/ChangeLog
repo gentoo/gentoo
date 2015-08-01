@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/helpgui
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/helpgui/ChangeLog,v 1.12 2015/06/09 13:37:11 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/helpgui/ChangeLog,v 1.13 2015/08/01 21:43:35 mrueg Exp $
+
+  01 Aug 2015; Manuel Rüger <mrueg@gentoo.org> -helpgui-1.1-r1.ebuild:
+  Remove old.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

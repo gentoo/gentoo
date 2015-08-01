@@ -1,6 +1,6 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/haddock/haddock-2.13.2-r1.ebuild,v 1.5 2013/09/22 06:44:28 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/haddock/haddock-2.13.2-r1.ebuild,v 1.6 2015/08/01 21:42:46 slyfox Exp $
 
 EAPI=5
 
@@ -23,13 +23,13 @@ IUSE=""
 
 RDEPEND="dev-haskell/ghc-paths:=[profile?]
 		=dev-haskell/xhtml-3000.2*:=[profile?]
-		>=dev-lang/ghc-7.6.1:="
+		>=dev-lang/ghc-7.6:= <dev-lang/ghc-7.7:="
 DEPEND="${RDEPEND}
 		>=dev-haskell/cabal-1.14"
 
 RESTRICT="test" # avoid depends on QC
 
-CABAL_EXTRA_BUILD_FLAGS="--ghc-options=-rtsopts"
+CABAL_EXTRA_BUILD_FLAGS+=" --ghc-options=-rtsopts"
 
 src_prepare() {
 	# we would like to avoid happy and alex depends
