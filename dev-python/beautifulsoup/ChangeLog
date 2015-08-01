@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/beautifulsoup
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/beautifulsoup/ChangeLog,v 1.133 2015/07/21 08:12:43 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/beautifulsoup/ChangeLog,v 1.134 2015/08/01 07:32:52 idella4 Exp $
+
+*beautifulsoup-4.4.0 (01 Aug 2015)
+
+  01 Aug 2015; Ian Delaney <idella4@gentoo.org> +beautifulsoup-4.4.0.ebuild:
+  bump
 
   21 Jul 2015; Patrice Clement <monsieurp@gentoo.org>
   +files/beautifulsoup-3.1.0.1-disable-tests.patch,
