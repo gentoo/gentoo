@@ -1,6 +1,15 @@
 # ChangeLog for dev-util/schroot
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/schroot/ChangeLog,v 1.43 2015/06/14 02:41:01 jcallen Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/schroot/ChangeLog,v 1.44 2015/07/31 22:46:23 jcallen Exp $
+
+*schroot-1.6.10-r2 (31 Jul 2015)
+
+  31 Jul 2015; Jonathan Callen <jcallen@gentoo.org>
+  +files/schroot-1.6.10-cmake-add-additional-regex-tests.patch,
+  +schroot-1.6.10-r2.ebuild, -schroot-1.4.23-r1.ebuild, -schroot-1.4.23.ebuild,
+  -schroot-1.4.25.ebuild, -schroot-1.4.26.ebuild, -schroot-1.6.10-r1.ebuild:
+  Add upstream patch to work with GCC 4.9 and GCC 5. Fixes bug 555648. Remove
+  old.
 
 *schroot-1.6.10-r1 (14 Jun 2015)
 

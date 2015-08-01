@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/schroot/schroot-1.6.10-r1.ebuild,v 1.1 2015/06/14 02:41:01 jcallen Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/schroot/schroot-1.6.10-r2.ebuild,v 1.1 2015/07/31 22:46:23 jcallen Exp $
 
 EAPI="5"
 
@@ -45,6 +45,10 @@ RDEPEND="${COMMON_DEPEND}
 	dchroot? ( !sys-apps/dchroot )
 	nls? ( virtual/libintl )
 "
+
+PATCHES=(
+	"${FILESDIR}/${PN}-1.6.10-cmake-add-additional-regex-tests.patch"
+)
 
 src_unpack() {
 	unpack ${MY_P}.orig.tar.xz
