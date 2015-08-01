@@ -12,7 +12,6 @@
     <flag name="esi">Enable ESI for accelerators, will cause squid reverse proxies
 		to be capable of the Edge Acceleration Specification (www.esi.org)</flag>
 	<flag name="htcp">Enable HTCP protocol</flag>
-    <flag name="icap-client">Adds ICAP client support</flag>
     <flag name="ipf-transparent">Adds transparent proxy support for systems
 		using IP-Filter (only for *bsd)</flag>
     <flag name="logrotate">Use <pkg>app-admin/logrotate</pkg> for rotating

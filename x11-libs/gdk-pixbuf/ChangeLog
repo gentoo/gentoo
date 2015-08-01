@@ -1,6 +1,14 @@
 # ChangeLog for x11-libs/gdk-pixbuf
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/gdk-pixbuf/ChangeLog,v 1.139 2015/03/03 11:07:39 dlan Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/gdk-pixbuf/ChangeLog,v 1.140 2015/08/01 00:52:50 tetromino Exp $
+
+*gdk-pixbuf-2.30.8-r1 (01 Aug 2015)
+
+  01 Aug 2015; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +gdk-pixbuf-2.30.8-r1.ebuild, +files/gdk-pixbuf-2.30.8-divide-by-zero.patch,
+  +files/gdk-pixbuf-2.30.8-pixops-overflow.patch:
+  Fix integer overflow in pixops (bug #556314, thanks to Agostino Sarubbo). Fix
+  gtk-doc installation (bug #549166, thanks to Rafał Mużyło).
 
   03 Mar 2015; Yixun Lan <dlan@gentoo.org> gdk-pixbuf-2.30.8.ebuild:
   add arm64 support, tested on A53 board
