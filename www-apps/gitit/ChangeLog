@@ -1,6 +1,11 @@
 # ChangeLog for www-apps/gitit
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/gitit/ChangeLog,v 1.7 2015/07/20 18:20:06 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/gitit/ChangeLog,v 1.8 2015/08/01 11:35:58 slyfox Exp $
+
+*gitit-0.11.1 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +gitit-0.11.1.ebuild:
+  Version bump.
 
 *gitit-0.11 (20 Jul 2015)
 

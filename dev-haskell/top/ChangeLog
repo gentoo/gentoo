@@ -1,0 +1,10 @@
+# ChangeLog for dev-haskell/top
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/top/ChangeLog,v 1.1 2015/08/01 11:56:49 slyfox Exp $
+
+*top-1.7 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  +files/top-1.7-ghc-7.10.patch, +metadata.xml, +top-1.7.ebuild:
+  Constraint solving framework employed by the Helium Compiler, a depend for new
+  dev-lang/helium-1.8.1.

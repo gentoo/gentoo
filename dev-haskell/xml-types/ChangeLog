@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/xml-types
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/xml-types/ChangeLog,v 1.18 2015/06/01 21:25:56 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/xml-types/ChangeLog,v 1.19 2015/08/01 11:43:41 slyfox Exp $
+
+*xml-types-0.3.6 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +xml-types-0.3.6.ebuild:
+  Version bump.
 
   01 Jun 2015; Sergei Trofimovich <slyfox@gentoo.org> xml-types-0.3.4.ebuild:
   Drop dev-haskell/deepseq depend.

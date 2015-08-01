@@ -1,6 +1,12 @@
 # ChangeLog for dev-haskell/uuagc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/uuagc/ChangeLog,v 1.23 2015/05/05 20:45:51 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/uuagc/ChangeLog,v 1.24 2015/08/01 11:53:29 slyfox Exp $
+
+*uuagc-0.9.52.1 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +uuagc-0.9.52.1.ebuild,
+  metadata.xml:
+  Version bump.
 
   05 May 2015; Sergei Trofimovich <slyfox@gentoo.org>
   +files/uuagc-0.9.24-ghc-7.8.patch, uuagc-0.9.24.ebuild:

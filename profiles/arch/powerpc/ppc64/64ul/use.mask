@@ -1,5 +1,9 @@
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/ppc64/64ul/use.mask,v 1.14 2015/05/10 18:19:16 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/ppc64/64ul/use.mask,v 1.15 2015/08/01 11:55:09 blueness Exp $
+
+# Anthony G. Basile <blueness@gentoo.org> (01 Aug 2015)
+# There is no luajit support on ppc64 userland.  Bug #554376.
+luajittex
 
 # Jeroen Roovers <jer@gentoo.org> (10 May 2015)
 # virtual/opencl requires media-libs/mesa[opencl] (bug #549096)

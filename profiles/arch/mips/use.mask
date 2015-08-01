@@ -1,9 +1,13 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/mips/use.mask,v 1.83 2015/04/16 22:05:25 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/mips/use.mask,v 1.84 2015/08/01 11:50:25 blueness Exp $
 
 # Unmask the flag which corresponds to ARCH.
 -mips
+
+# Anthony G. Basile <blueness@gentoo.org> (01 Aug 2015)
+# There is no luajit support on mips.  Bug #554376.
+luajittex
 
 # Markos Chandras <hwoarang@gentoo.org>
 # app-arch/lz4 does not seem to build on MIPS

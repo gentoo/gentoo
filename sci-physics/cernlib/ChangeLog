@@ -1,6 +1,9 @@
 # ChangeLog for sci-physics/cernlib
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/cernlib/ChangeLog,v 1.40 2015/07/30 12:59:40 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-physics/cernlib/ChangeLog,v 1.41 2015/08/01 12:09:24 bircoph Exp $
+
+  01 Aug 2015; Andrew Savchenko <bircoph@gentoo.org> -cernlib-2006-r3.ebuild:
+  Remove old.
 
   30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> cernlib-2006-r5.ebuild:
   Stable for sparc, wrt bug #550570

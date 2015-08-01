@@ -1,6 +1,10 @@
 # ChangeLog for Gentoo/PPC profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/ChangeLog,v 1.342 2015/07/25 15:41:19 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/ChangeLog,v 1.343 2015/08/01 11:55:09 blueness Exp $
+
+  01 Aug 2015; Anthony G. Basile <blueness@gentoo.org> ppc64/64ul/use.mask:
+  use.mask USE=luajittex. There is no luajit support on ppc64/64ul. Bug
+  #554376.
 
   25 Jul 2015; Mike Gilbert <floppym@gentoo.org> make.defaults:
   Remove python_targets override.

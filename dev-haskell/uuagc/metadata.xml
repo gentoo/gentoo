@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>haskell</herd>
-<maintainer>
-  <email>haskell@gentoo.org</email>
-</maintainer>
+	<herd>haskell</herd>
+	<use>
+		<flag name="bootstrap_external">Use an external uuagc executable for bootstrapping.</flag>
+	</use>
+	<longdescription>
+		Generates Haskell files from an attribute grammar specification
+	</longdescription>
+	<use>
+		<flag name='with-loag'>Use <pkg>dev-haskell/minisat</pkg> external SAT-solver to schedule all Linear Ordered AGs.</flag>
+	</use>
 </pkgmetadata>

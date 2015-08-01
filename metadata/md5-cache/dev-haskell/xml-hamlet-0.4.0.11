@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=>=dev-haskell/parsec-2.0:=[profile?] <dev-haskell/parsec-3.2:=[profile?] >=dev-haskell/shakespeare-1.0:=[profile?] <dev-haskell/shakespeare-2.2:=[profile?] >=dev-haskell/text-0.10:=[profile?] >=dev-haskell/xml-conduit-1.0:=[profile?] <dev-haskell/xml-conduit-1.4:=[profile?] >=dev-lang/ghc-7.4.1:= >=dev-haskell/cabal-1.8 test? ( >=dev-haskell/hspec-1.3 dev-haskell/hunit ) doc? ( dev-haskell/haddock ) hscolour? ( dev-haskell/hscolour ) >=dev-haskell/cabal-1.1.4
+DESCRIPTION=Hamlet-style quasiquoter for XML content
+EAPI=5
+HOMEPAGE=http://www.yesodweb.com/
+IUSE=doc hscolour profile test
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=dev-haskell/parsec-2.0:=[profile?] <dev-haskell/parsec-3.2:=[profile?] >=dev-haskell/shakespeare-1.0:=[profile?] <dev-haskell/shakespeare-2.2:=[profile?] >=dev-haskell/text-0.10:=[profile?] >=dev-haskell/xml-conduit-1.0:=[profile?] <dev-haskell/xml-conduit-1.4:=[profile?] >=dev-lang/ghc-7.4.1:=
+SLOT=0/0.4.0.11
+SRC_URI=mirror://hackage/packages/archive/xml-hamlet/0.4.0.11/xml-hamlet-0.4.0.11.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	ghc-package	48ae4e0fd75e1c8047c4b7f507d5debc	haskell-cabal	7ef7b3e7548c8c61352984737b22d3e3	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=a8d0cac0fc362c892acae91880edda9d
