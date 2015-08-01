@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hsopenssl/hsopenssl-0.11.1.1.ebuild,v 1.1 2015/04/04 07:16:25 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hsopenssl/hsopenssl-0.11.1.1.ebuild,v 1.2 2015/08/01 15:38:17 slyfox Exp $
 
 EAPI=5
 
@@ -37,12 +37,13 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
-src_prepare() {
-	cabal_chdeps \
-		'integer-gmp >= 0.2 && < 1' 'integer-gmp >= 0.2'
-}
-
 src_configure() {
+	local fbn_flag=$(cabal_flag fast-bignum fast-bignum)
+
+	# not ported to integer-gmp-1.0:
+	#  https://github.com/phonohawk/HsOpenSSL/issues/36
+	[[ $(ghc-version) == 7.10.* ]] && fbn_flag=-f-fast-bignum
+
 	haskell-cabal_src_configure \
-		$(cabal_flag fast-bignum fast-bignum)
+		${fbn_flag}
 }

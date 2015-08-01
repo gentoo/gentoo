@@ -1,6 +1,9 @@
 # ChangeLog for dev-haskell/cgi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/cgi/ChangeLog,v 1.40 2015/07/26 14:02:30 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/cgi/ChangeLog,v 1.41 2015/08/01 16:08:30 slyfox Exp $
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> cgi-3001.1.8.5.ebuild:
+  Export a knob for older ghcs.
 
 *cgi-3001.2.2.2 (26 Jul 2015)
 

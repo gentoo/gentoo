@@ -1,6 +1,11 @@
 # ChangeLog for dev-java/bcprov
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/bcprov/ChangeLog,v 1.64 2015/05/19 09:06:09 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/bcprov/ChangeLog,v 1.65 2015/08/01 16:07:25 monsieurp Exp $
+
+*bcprov-1.52 (01 Aug 2015)
+
+  01 Aug 2015; Patrice Clement <monsieurp@gentoo.org> +bcprov-1.52.ebuild:
+  Version bump. Fixes bug 535882.
 
   19 May 2015; Agostino Sarubbo <ago@gentoo.org> bcprov-1.50.ebuild:
   Stable for x86, wrt bug #485564

@@ -1,0 +1,8 @@
+diff --git a/Storage/Hashed/Monad.hs b/Storage/Hashed/Monad.hs
+index 67287b4..bf8ad38 100644
+--- a/Storage/Hashed/Monad.hs
++++ b/Storage/Hashed/Monad.hs
+@@ -1,2 +1,3 @@
+ {-# LANGUAGE ScopedTypeVariables, BangPatterns, TypeSynonymInstances, UndecidableInstances, FlexibleInstances #-}
++{-# LANGUAGE FlexibleContexts #-}
+ 

@@ -1,6 +1,10 @@
 # ChangeLog for dev-haskell/cabal-install
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/cabal-install/ChangeLog,v 1.31 2015/07/26 13:58:57 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/cabal-install/ChangeLog,v 1.32 2015/08/01 16:11:04 slyfox Exp $
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  cabal-install-1.18.0.3.ebuild:
+  Use dobashcomp for bash-completion.
 
 *cabal-install-1.22.6.0 (26 Jul 2015)
 

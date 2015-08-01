@@ -1,6 +1,9 @@
 # ChangeLog for net-dns/bind
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/bind/ChangeLog,v 1.544 2015/07/31 15:08:45 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/bind/ChangeLog,v 1.545 2015/08/01 16:29:43 zlogene Exp $
+
+  01 Aug 2015; Mikle Kolyada <zlogene@gentoo.org> bind-9.10.2_p3.ebuild:
+  ia64 syable wrt bug #556150
 
   31 Jul 2015; Tobias Klausmann <klausman@gentoo.org> bind-9.10.2_p3.ebuild:
   Stable on alpha, bug 556150

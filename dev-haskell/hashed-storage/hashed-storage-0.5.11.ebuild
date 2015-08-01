@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hashed-storage/hashed-storage-0.5.11.ebuild,v 1.4 2015/02/15 18:59:40 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hashed-storage/hashed-storage-0.5.11.ebuild,v 1.5 2015/08/01 15:31:19 slyfox Exp $
 
 EAPI=5
 
@@ -38,7 +38,7 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
-	HCFLAGS+=" -XFlexibleContexts"
+	epatch "${FILESDIR}"/${P}-ghc-7.10.patch
 }
 
 src_configure() {

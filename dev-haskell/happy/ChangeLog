@@ -1,6 +1,12 @@
 # ChangeLog for dev-haskell/happy
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/happy/ChangeLog,v 1.77 2015/05/05 21:13:55 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/happy/ChangeLog,v 1.78 2015/08/01 15:32:22 slyfox Exp $
+
+*happy-1.19.5 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  +files/happy-1.19.5-ghc-7.10.2.patch, +happy-1.19.5.ebuild:
+  Version bump.
 
   05 May 2015; Sergei Trofimovich <slyfox@gentoo.org> happy-1.19.4.ebuild:
   alpha/amd64/ia64/ppc/ppc64/sparc/x86 stable wrt bug #534978

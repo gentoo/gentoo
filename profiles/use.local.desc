@@ -1456,6 +1456,8 @@ dev-haskell/aeson-pretty:lib-only - don't build 'aeson-pretty' executable.
 dev-haskell/ansi-terminal:example - Build the example application.
 dev-haskell/ansi-wl-pprint:example - Build the example application.
 dev-haskell/authenticate:network-uri - Get Network.URI from the network-uri package
+dev-haskell/bifunctors:semigroups - You can disable the use of the `semigroups` package using `-f-semigroups`. Disabing this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users.
+dev-haskell/bifunctors:tagged - You can disable the use of the `tagged` package using `-f-tagged`. Disabing this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users.
 dev-haskell/biosff:fclip - Build the fclip executable.
 dev-haskell/biosff:flower - Build the flower executable.
 dev-haskell/biosff:frecover - Build the frecover executable.
@@ -1572,6 +1574,7 @@ dev-haskell/semigroupoids:comonad - You can disable the use of the `comonad` pac
 dev-haskell/semigroupoids:containers - You can disable the use of the `containers` package using `-f-containers`. Disabing this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users.
 dev-haskell/semigroupoids:contravariant - You can disable the use of the `contravariant` package using `-f-contravariant`. Disabling this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users. If disabled we will not supply instances of `Contravariant`
 dev-haskell/semigroupoids:distributive - You can disable the use of the `distributive` package using `-f-distributive`. Disabling this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users. If disabled we will not supply instances of `Distributive`
+dev-haskell/semigroupoids:tagged - You can disable the use of the `tagged` package using `-f-tagged`. Disabing this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users.
 dev-haskell/semigroups:bytestring - You can disable the use of the `bytestring` package using USE=-bytestring. Disabling this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users.
 dev-haskell/semigroups:containers - You can disable the use of the `containers` package using USE=-containers. Disabing this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users.
 dev-haskell/semigroups:deepseq - You can disable the use of the `deepseq` package using `-f-deepseq`. Disabing this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users.

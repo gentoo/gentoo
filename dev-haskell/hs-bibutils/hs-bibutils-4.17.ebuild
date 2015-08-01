@@ -1,6 +1,6 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hs-bibutils/hs-bibutils-4.17.ebuild,v 1.1 2013/04/02 12:47:38 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hs-bibutils/hs-bibutils-4.17.ebuild,v 1.2 2015/08/01 16:02:55 slyfox Exp $
 
 EAPI=5
 
@@ -9,8 +9,7 @@ EAPI=5
 CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
-DESCRIPTION="Haskell bindings to bibutils, the bibliography
-conversion utilities."
+DESCRIPTION="Haskell bindings to bibutils, the bibliography conversion utilities"
 HOMEPAGE="http://gorgias.mine.nu/repos/hs-bibutils/"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 

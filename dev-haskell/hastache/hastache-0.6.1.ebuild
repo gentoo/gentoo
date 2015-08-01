@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hastache/hastache-0.6.1.ebuild,v 1.1 2014/12/24 03:30:39 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hastache/hastache-0.6.1.ebuild,v 1.2 2015/08/01 16:19:51 slyfox Exp $
 
 EAPI=5
 
@@ -17,6 +17,8 @@ LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+
+RESTRICT=test # fails to build with ghc-7.10
 
 RDEPEND="dev-haskell/blaze-builder:=[profile?]
 	dev-haskell/ieee754:=[profile?]

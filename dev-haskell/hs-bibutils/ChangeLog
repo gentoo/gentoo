@@ -1,6 +1,10 @@
 # ChangeLog for dev-haskell/hs-bibutils
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hs-bibutils/ChangeLog,v 1.10 2015/04/28 20:51:17 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hs-bibutils/ChangeLog,v 1.11 2015/08/01 16:02:55 slyfox Exp $
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> hs-bibutils-4.17.ebuild,
+  hs-bibutils-5.0.ebuild:
+  Fix description to fit one line.
 
   28 Apr 2015; Sergei Trofimovich <slyfox@gentoo.org> hs-bibutils-5.5.ebuild:
   amd64/x86 stable wrt bug #546260 (stabilize pandoc-citeproc depends)

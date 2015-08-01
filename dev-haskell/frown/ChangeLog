@@ -1,6 +1,10 @@
 # ChangeLog for dev-haskell/frown
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/frown/ChangeLog,v 1.15 2012/07/13 20:42:04 qnikst Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/frown/ChangeLog,v 1.16 2015/08/01 15:45:57 slyfox Exp $
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  +files/frown-0.6.1-ghc-7.10.patch, frown-0.6.1-r1.ebuild:
+  Port to ghc-7.10.
 
   14 Jul 2012; Alexander Vershilov <qnikst@gentoo.org> frown-0.6.1-r1.ebuild,
   +files/frown-0.6.1-ghc74.patch:
@@ -58,4 +62,3 @@
   14 Dec 2005; Andres Loeh <kosmikus@gentoo.org> +metadata.xml,
   +frown-0.6.ebuild:
   Initial import.
-

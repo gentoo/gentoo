@@ -1,6 +1,12 @@
 # ChangeLog for dev-haskell/http-attoparsec
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/http-attoparsec/ChangeLog,v 1.8 2015/06/06 11:36:28 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/http-attoparsec/ChangeLog,v 1.9 2015/08/01 15:41:35 slyfox Exp $
+
+*http-attoparsec-0.1.1-r2 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  +http-attoparsec-0.1.1-r2.ebuild:
+  Allow attoparsec-0.13.
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

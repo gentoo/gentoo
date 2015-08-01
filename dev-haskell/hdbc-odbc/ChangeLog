@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/hdbc-odbc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hdbc-odbc/ChangeLog,v 1.23 2015/06/06 11:22:39 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hdbc-odbc/ChangeLog,v 1.24 2015/08/01 16:20:45 slyfox Exp $
+
+*hdbc-odbc-2.4.0.1 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +hdbc-odbc-2.4.0.1.ebuild:
+  Version bump.
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

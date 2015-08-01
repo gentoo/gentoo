@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/cabal-install/cabal-install-1.18.0.3.ebuild,v 1.2 2014/07/25 09:16:27 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/cabal-install/cabal-install-1.18.0.3.ebuild,v 1.3 2015/08/01 16:11:04 slyfox Exp $
 
 EAPI=5
 
@@ -50,5 +50,5 @@ src_prepare() {
 src_install() {
 	haskell-cabal_src_install
 
-	newbashcomp "${S}/bash-completion/cabal" ${PN}
+	dobashcomp "${S}/bash-completion/cabal"
 }

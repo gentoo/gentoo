@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/data-hash
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/data-hash/ChangeLog,v 1.3 2014/07/25 09:16:23 slyfox Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/data-hash/ChangeLog,v 1.4 2015/08/01 16:03:28 slyfox Exp $
+
+*data-hash-0.2.0.1 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +data-hash-0.2.0.1.ebuild:
+  Version bump.
 
   25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> data-hash-0.2.0.0.ebuild:
   Drop trailing '.' from description.

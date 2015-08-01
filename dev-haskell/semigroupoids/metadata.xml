@@ -8,10 +8,10 @@
 		A Semigroupoid is a Category without the requirement of identity arrows for every object in the category.
 		
 		When working with comonads you often have the @\&lt;*\&gt;@ portion of an @Applicative@, but
-		not the @pure@. This was captured in Uustalu and Vene's \"Essence of Dataflow Programming\"
+		not the @pure@. This was captured in Uustalu and Vene&#39;s \&quot;Essence of Dataflow Programming\&quot;
 		in the form of the @ComonadZip@ class in the days before @Applicative@. Apply provides a weaker invariant, but for the comonads used for data flow programming (found in the streams package), this invariant is preserved. Applicative function composition forms a semigroupoid.
 		
-		Similarly many structures are nearly a comonad, but not quite, for instance lists provide a reasonable 'extend' operation in the form of 'tails', but do not always contain a value.
+		Similarly many structures are nearly a comonad, but not quite, for instance lists provide a reasonable &#39;extend&#39; operation in the form of &#39;tails&#39;, but do not always contain a value.
 		
 		
 		Ideally the following relationships would hold:
@@ -31,27 +31,28 @@
 		as in many cases the binding operation or @\&lt;*\&gt;@ operation does not require them.
 		
 		Finally, to work with these weaker structures it is beneficial to have containers
-		that can provide stronger guarantees about their contents, so versions of 'Traversable'
-		and 'Foldable' that can be folded with just a 'Semigroup' are added.
+		that can provide stronger guarantees about their contents, so versions of &#39;Traversable&#39;
+		and &#39;Foldable&#39; that can be folded with just a &#39;Semigroup&#39; are added.
 	</longdescription>
-	<use>
-		<flag name="comonad">You can disable the use of the `comonad` package using
+<use>
+  <flag name='comonad'>You can disable the use of the `comonad` package using
   `-f-comonad`. Disabling this is an unsupported configuration, but it may be
   useful for accelerating builds in sandboxes for expert users. If disabled we
   will not supply instances of `Comonad`</flag>
-		<flag name="containers">You can disable the use of the `containers` package
+  <flag name='containers'>You can disable the use of the `containers` package
   using `-f-containers`. Disabing this is an unsupported configuration, but it
   may be useful for accelerating builds in sandboxes for expert users.</flag>
-		<flag name="contravariant">You can disable the use of the `contravariant`
+  <flag name='contravariant'>You can disable the use of the `contravariant`
   package using `-f-contravariant`. Disabling this is an unsupported
   configuration, but it may be useful for accelerating builds in sandboxes for
   expert users. If disabled we will not supply instances of `Contravariant`</flag>
-		<flag name="distributive">You can disable the use of the `distributive`
+  <flag name='distributive'>You can disable the use of the `distributive`
   package using `-f-distributive`. Disabling this is an unsupported
   configuration, but it may be useful for accelerating builds in sandboxes for
   expert users. If disabled we will not supply instances of `Distributive`</flag>
-	</use>
-	<upstream>
-		<remote-id type="github">ekmett/semigroupoids</remote-id>
-	</upstream>
+  <flag name="tagged">You can disable the use of the `tagged` package
+  using `-f-tagged`. Disabing this is an unsupported
+  configuration, but it may be useful for accelerating builds in
+  sandboxes for expert users.</flag>
+</use>
 </pkgmetadata>

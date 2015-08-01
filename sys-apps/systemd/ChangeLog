@@ -1,6 +1,11 @@
 # ChangeLog for sys-apps/systemd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/ChangeLog,v 1.393 2015/08/01 15:10:12 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/ChangeLog,v 1.394 2015/08/01 15:56:53 floppym Exp $
+
+*systemd-224 (01 Aug 2015)
+
+  01 Aug 2015; Mike Gilbert <floppym@gentoo.org> +systemd-224.ebuild:
+  Version bump.
 
   01 Aug 2015; Mike Gilbert <floppym@gentoo.org> systemd-9999.ebuild:
   Remove code for defunct terminal USE flag. Re-enable networkd to support

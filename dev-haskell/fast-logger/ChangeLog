@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/fast-logger
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/fast-logger/ChangeLog,v 1.6 2015/04/04 23:59:16 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/fast-logger/ChangeLog,v 1.7 2015/08/01 15:48:05 slyfox Exp $
+
+*fast-logger-2.4.0 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +fast-logger-2.4.0.ebuild:
+  Version bump.
 
 *fast-logger-2.3.1 (04 Apr 2015)
 

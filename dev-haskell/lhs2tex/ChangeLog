@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/lhs2tex
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/lhs2tex/ChangeLog,v 1.32 2014/12/14 09:33:43 gienah Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/lhs2tex/ChangeLog,v 1.33 2015/08/01 16:20:18 slyfox Exp $
+
+*lhs2tex-1.19 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +lhs2tex-1.19.ebuild:
+  Version bump.
 
 *lhs2tex-1.18.1-r1 (14 Dec 2014)
 

@@ -1,6 +1,9 @@
 # ChangeLog for dev-haskell/hastache
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hastache/ChangeLog,v 1.4 2015/06/06 11:11:58 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hastache/ChangeLog,v 1.5 2015/08/01 16:19:51 slyfox Exp $
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> hastache-0.6.1.ebuild:
+  Disable tests, fail to build under ghc-7.10.
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hdbc/hdbc-2.4.0.0.ebuild,v 1.1 2014/07/03 12:03:08 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hdbc/hdbc-2.4.0.0.ebuild,v 1.2 2015/08/01 16:07:28 slyfox Exp $
 
 EAPI=5
 
@@ -8,7 +8,7 @@ EAPI=5
 #hackport: flags: buildtests:test
 
 CABAL_FEATURES="bin lib profile haddock hoogle hscolour"
-inherit haskell-cabal
+inherit base haskell-cabal
 
 MY_PN="HDBC"
 MY_P="${MY_PN}-${PV}"
@@ -21,6 +21,7 @@ LICENSE="BSD"
 SLOT="2/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="test" # Tests do not compile with time 1.5
 
 RDEPEND=">=dev-haskell/convertible-1.1.0.0:=[profile?]
 	dev-haskell/mtl:=[profile?]
@@ -36,6 +37,15 @@ DEPEND="${RDEPEND}
 "
 
 S="${WORKDIR}/${MY_P}"
+
+PATCHES=("${FILESDIR}/${PN}-2.4.0.0-ghc-7.10-1.patch"
+		"${FILESDIR}/${PN}-2.4.0.0-ghc-7.10-2.patch")
+
+src_prepare() {
+	base_src_prepare
+	cabal_chdeps \
+		'time>=1.1.3 && <=1.5' 'time>=1.1.3 && <=1.6'
+}
 
 src_configure() {
 	haskell-cabal_src_configure \

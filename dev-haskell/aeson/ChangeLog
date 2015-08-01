@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/aeson
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/aeson/ChangeLog,v 1.14 2015/06/06 10:09:57 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/aeson/ChangeLog,v 1.15 2015/08/01 16:28:30 slyfox Exp $
+
+*aeson-0.9.0.1 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +aeson-0.9.0.1.ebuild:
+  Version bump.
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/base-compat
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/base-compat/ChangeLog,v 1.6 2014/07/25 08:59:24 slyfox Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/base-compat/ChangeLog,v 1.7 2015/08/01 16:29:07 slyfox Exp $
+
+*base-compat-0.8.2 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +base-compat-0.8.2.ebuild:
+  Version bump.
 
   25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
   Drop redundant '<maintainer>' field, leave only '<herd>'.

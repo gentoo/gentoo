@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/cgi/cgi-3001.1.8.5.ebuild,v 1.1 2014/02/24 07:03:35 qnikst Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/cgi/cgi-3001.1.8.5.ebuild,v 1.2 2015/08/01 16:08:30 slyfox Exp $
 
 EAPI=5
 
@@ -16,7 +16,7 @@ SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
-IUSE=""
+IUSE="+extensible-exceptions-in-base"
 
 RDEPEND="dev-haskell/monadcatchio-mtl:=[profile?]
 	>=dev-haskell/mtl-1.0:=[profile?]
@@ -24,10 +24,16 @@ RDEPEND="dev-haskell/monadcatchio-mtl:=[profile?]
 	>=dev-haskell/parsec-2.0:=[profile?]
 	>=dev-haskell/xhtml-3000.0.0:=[profile?]
 	>=dev-lang/ghc-6.10.4:=
+	!extensible-exceptions-in-base? ( dev-haskell/extensible-exceptions:=[profile?] )
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.6.0.3
 "
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-ghc78.patch
+}
+
+src_configure() {
+	haskell-cabal_src_configure \
+		$(cabal_flag extensible-exceptions-in-base extensible-exceptions-in-base)
 }

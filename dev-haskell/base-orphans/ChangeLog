@@ -1,0 +1,10 @@
+# ChangeLog for dev-haskell/base-orphans
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/base-orphans/ChangeLog,v 1.1 2015/08/01 16:23:13 slyfox Exp $
+
+*base-orphans-0.3.2 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  +base-orphans-0.3.2.ebuild, +metadata.xml:
+  Backwards-compatible orphan instances for base, a depend for dev-
+  haskell/bifunctors-5.

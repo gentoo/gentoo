@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/http
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/http/ChangeLog,v 1.51 2015/06/06 11:34:15 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/http/ChangeLog,v 1.52 2015/08/01 15:40:50 slyfox Exp $
+
+*http-4000.2.20 (01 Aug 2015)
+
+  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +http-4000.2.20.ebuild:
+  Version bump.
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml
