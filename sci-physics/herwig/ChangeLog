@@ -1,6 +1,11 @@
 # ChangeLog for sci-physics/herwig
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/herwig/ChangeLog,v 1.6 2013/06/04 18:00:58 bicatali Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-physics/herwig/ChangeLog,v 1.7 2015/08/01 19:51:26 bircoph Exp $
+
+  01 Aug 2015; Andrew Savchenko <bircoph@gentoo.org> herwig-6.5.10.ebuild,
+  herwig-6.5.21.ebuild:
+  Update HOMEPAGE, SRC_URI, Manifest - fixes bugs 532146, 553558.
+  Patch herwig header for 6.5.10 version.
 
 *herwig-6.5.21 (04 Jun 2013)
 

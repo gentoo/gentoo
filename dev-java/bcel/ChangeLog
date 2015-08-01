@@ -1,6 +1,12 @@
 # ChangeLog for dev-java/bcel
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/bcel/ChangeLog,v 1.69 2015/07/11 09:21:08 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/bcel/ChangeLog,v 1.70 2015/08/01 20:12:19 monsieurp Exp $
+
+*bcel-5.2-r3 (01 Aug 2015)
+
+  01 Aug 2015; Patrice Clement <monsieurp@gentoo.org> +bcel-5.2-r3.ebuild:
+  EAPI 5 bump. Mend compilation errors due to wrong encoding set with
+  JAVA_ANT_ENCODING.
 
   11 Jul 2015; James Le Cuirot <chewi@gentoo.org> bcel-5.2-r2.ebuild,
   bcel-6.0_rc3.ebuild:

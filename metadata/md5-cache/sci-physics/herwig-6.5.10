@@ -2,12 +2,12 @@ DEFINED_PHASES=install prepare setup unpack
 DEPEND=!sci-physics/cernlib-montecarlo[herwig] !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/fortran
 DESCRIPTION=High Energy Physics Event Generator
 EAPI=2
-HOMEPAGE=http://hepwww.rl.ac.uk/theory/seymour/herwig/
+HOMEPAGE=http://www.hep.phy.cam.ac.uk/theory/webber/Herwig/
 KEYWORDS=amd64 x86
 LICENSE=all-rights-reserved
 RDEPEND=virtual/fortran
 RESTRICT=mirror bindist
 SLOT=0
-SRC_URI=http://hepwww.rl.ac.uk/theory/seymour/herwig/herwig6510.f http://hepwww.rl.ac.uk/theory/seymour/herwig/herwig6510.inc http://hepwww.rl.ac.uk/theory/seymour/herwig/HERWIG65.INC
+SRC_URI=http://www.hep.phy.cam.ac.uk/theory/webber/Herwig//herwig6510.f http://www.hep.phy.cam.ac.uk/theory/webber/Herwig//herwig6510.inc http://www.hep.phy.cam.ac.uk/theory/webber/Herwig//HERWIG65.INC
 _eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	fortran-2	db8710b355fc5598015c4bc3aad3bdb0	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=8f59c0b5522c7defeab3b360e37da278
+_md5_=4eb55c88f5e7ff15279896dca35d66ea

@@ -1,6 +1,6 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/herwig/herwig-6.5.10.ebuild,v 1.5 2013/06/04 18:00:58 bicatali Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-physics/herwig/herwig-6.5.10.ebuild,v 1.6 2015/08/01 19:51:26 bircoph Exp $
 
 EAPI=2
 
@@ -9,17 +9,16 @@ inherit versionator autotools fortran-2
 PV1=$(get_version_component_range 1 ${PV})
 PV2=$(get_version_component_range 2 ${PV})
 PV3=$(get_version_component_range 3 ${PV})
-MY_P=${PN}${PV1}${PV2}${PV3}
+MY_VER=${PV1}${PV2}${PV3}
+MY_P=${PN}${MY_VER}
 MY_PINC="$(echo ${PN}|tr '[:lower:]' '[:upper:]')${PV1}${PV2}.INC"
 
 DESCRIPTION="High Energy Physics Event Generator"
-HOMEPAGE="http://hepwww.rl.ac.uk/theory/seymour/herwig/"
-
-COM_URI="http://hepwww.rl.ac.uk/theory/seymour/${PN}"
+HOMEPAGE="http://www.hep.phy.cam.ac.uk/theory/webber/Herwig/"
 SRC_URI="
-	${COM_URI}/${MY_P}.f
-	${COM_URI}/${MY_P}.inc
-	${COM_URI}/${MY_PINC}"
+	${HOMEPAGE}/${MY_P}.f
+	${HOMEPAGE}/${MY_P}.inc
+	${HOMEPAGE}/${MY_PINC}"
 
 LICENSE="all-rights-reserved"
 RESTRICT="mirror bindist"
@@ -38,6 +37,7 @@ src_unpack() {
 }
 
 src_prepare() {
+	sed -i "s/6521/${MY_VER}/" "${MY_PINC}" || die
 	cat > configure.ac <<-EOF
 		AC_INIT(${PN},${PV})
 		AM_INIT_AUTOMAKE
@@ -58,5 +58,5 @@ src_prepare() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
+	emake DESTDIR="${D}" install
 }
