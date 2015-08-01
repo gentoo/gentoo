@@ -1,6 +1,10 @@
 # ChangeLog for net-im/licq
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/licq/ChangeLog,v 1.144 2015/07/30 15:11:01 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/licq/ChangeLog,v 1.145 2015/08/01 02:21:17 mrueg Exp $
+
+  01 Aug 2015; Manuel Rüger <mrueg@gentoo.org> -licq-1.3.8-r1.ebuild,
+  -licq-1.3.9.ebuild:
+  Remove old.
 
   30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> licq-1.8.2.ebuild:
   Stable for sparc, wrt bug #535568
