@@ -1,6 +1,15 @@
 # ChangeLog for sys-kernel/genkernel
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/genkernel/ChangeLog,v 1.404 2015/07/30 21:00:17 zerochaos Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/genkernel/ChangeLog,v 1.405 2015/07/31 23:34:15 zerochaos Exp $
+
+*genkernel-3.4.51.4 (31 Jul 2015)
+
+  31 Jul 2015; Rick Farina <zerochaos@gentoo.org> +genkernel-3.4.51.4.ebuild,
+  -genkernel-3.4.51.3.ebuild:
+  3.4.51.1 and 3.4.51.2 were accidently released from a branch instead of being
+  merged into master so 3.4.51.3 was missing those changes.  3.4.51.4 is the
+  minor change that was expected in 3.4.51.3 plus the missing commits that were
+  not merged to master
 
   30 Jul 2015; Rick Farina <zerochaos@gentoo.org> genkernel-3.4.51.3.ebuild:
   fix unpack and distfile
