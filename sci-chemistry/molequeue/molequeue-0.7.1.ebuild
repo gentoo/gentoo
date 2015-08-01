@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/molequeue/molequeue-0.7.1.ebuild,v 1.4 2015/04/08 18:22:13 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/molequeue/molequeue-0.7.1.ebuild,v 1.5 2015/08/01 17:38:42 jlec Exp $
 
 EAPI=5
 
@@ -24,7 +24,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 RDEPEND="${PYTHON_DEPS}
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4
-	zeromq? ( net-libs/cppzmq )"
+	zeromq? ( net-libs/cppzmq:0= )"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
 

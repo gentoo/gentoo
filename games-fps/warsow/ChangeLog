@@ -1,6 +1,9 @@
 # ChangeLog for games-fps/warsow
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/warsow/ChangeLog,v 1.69 2015/04/21 02:28:00 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-fps/warsow/ChangeLog,v 1.70 2015/08/01 17:41:41 tupone Exp $
+
+  01 Aug 2015; Tupone Alfredo <tupone@gentoo.org> warsow-1.5.1-r1.ebuild:
+  Use usex. Bug #522186 by Justin Lecher
 
   21 Apr 2015; Patrick Lauer <patrick@gentoo.org> metadata.xml:
   Remove unused useflag description from metadata.xml

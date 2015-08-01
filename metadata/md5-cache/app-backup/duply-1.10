@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst
+DEPEND=app-text/txt2man
+DESCRIPTION=A shell frontend for duplicity
+EAPI=5
+HOMEPAGE=http://duply.net
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=app-backup/duplicity
+SLOT=0
+SRC_URI=mirror://sourceforge/ftplicity/duply_1.10.tgz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	readme.gentoo	106edea5533517715013de909a333abd	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=3c6ab1819ac151499744d7ffb9388c28

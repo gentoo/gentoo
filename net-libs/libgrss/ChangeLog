@@ -1,6 +1,14 @@
 # ChangeLog for net-libs/libgrss
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libgrss/ChangeLog,v 1.21 2014/10/11 11:41:05 pacho Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libgrss/ChangeLog,v 1.23 2015/08/01 18:11:11 eva Exp $
+
+  01 Aug 2015; Gilles Dartiguelongue <eva@gentoo.org> libgrss-0.7.0.ebuild:
+  Drop unused inherits.
+
+*libgrss-0.7.0 (01 Aug 2015)
+
+  01 Aug 2015; Gilles Dartiguelongue <eva@gentoo.org> +libgrss-0.7.0.ebuild:
+  Version bump. Upstream switched to use sover from now on so back to slot 0.
 
   11 Oct 2014; Pacho Ramos <pacho@gentoo.org> -libgrss-0.3.0.ebuild,
   -libgrss-0.5.0.ebuild, libgrss-0.5.0-r1.ebuild:

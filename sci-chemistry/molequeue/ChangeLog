@@ -1,6 +1,10 @@
 # ChangeLog for sci-chemistry/molequeue
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/molequeue/ChangeLog,v 1.7 2015/04/08 18:22:13 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/molequeue/ChangeLog,v 1.8 2015/08/01 17:38:42 jlec Exp $
+
+  01 Aug 2015; Justin Lecher <jlec@gentoo.org> -molequeue-0.6.1-r1.ebuild,
+  molequeue-0.7.1.ebuild:
+  Use subslots
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> molequeue-0.6.1-r1.ebuild,
   molequeue-0.7.1.ebuild:

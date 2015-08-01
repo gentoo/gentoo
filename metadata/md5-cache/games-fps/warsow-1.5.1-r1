@@ -10,4 +10,4 @@ RDEPEND=>=dev-libs/libRocket-1.2.1_p20130110 <dev-libs/libRocket-1.3.0.0 media-l
 SLOT=0
 SRC_URI=http://www.warsow.eu/warsow_1.51_sdk.tar.gz http://www.warsow.eu/warsow_1.51_unified.tar.gz mirror://gentoo/warsow.png mirror://gentoo/warsow-1.5.1-build.patch.gz
 _eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	check-reqs	a7f404bfb16e0a996700c5d3ac4edad3	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	games	1ad3205dbf62a2c98249f2f59b0a2d39	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
-_md5_=183fde20dbd3b071625ca0188edecdf6
+_md5_=32374179dd7e9c74ff0995b109a732f0

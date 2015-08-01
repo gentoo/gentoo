@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/warsow/warsow-1.5.1-r1.ebuild,v 1.6 2015/03/25 13:53:12 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-fps/warsow/warsow-1.5.1-r1.ebuild,v 1.7 2015/08/01 17:41:41 tupone Exp $
 
 EAPI=5
 inherit eutils check-reqs gnome2-utils flag-o-matic games
@@ -85,8 +85,6 @@ src_prepare() {
 }
 
 src_compile() {
-	yesno() { use ${1} && echo YES || echo NO ; }
-
 	emake -C ../libsrcs/angelscript/sdk/angelscript/projects/gnuc
 
 	local arch
@@ -111,12 +109,12 @@ src_compile() {
 	else
 		myconf=(
 			BUILD_CLIENT=YES
-			BUILD_IRC=$(yesno irc)
-			BUILD_SND_OPENAL=$(yesno openal)
+			BUILD_IRC=$(usex irc YES NO)
+			BUILD_SND_OPENAL=$(usex openal YES NO)
 			BUILD_SND_QF=YES
 			BUILD_CIN=YES
-			BUILD_SERVER=$(yesno server)
-			BUILD_TV_SERVER=$(yesno server)
+			BUILD_SERVER=$(usex server YES NO)
+			BUILD_TV_SERVER=$(usex server YES NO)
 			BUILD_REF_GL=YES
 		)
 	fi
@@ -127,7 +125,7 @@ src_compile() {
 		BASE_ARCH=${arch} \
 		BINDIR=lib \
 		BUILD_ANGELWRAP=YES \
-		DEBUG_BUILD=$(yesno debug) \
+		DEBUG_BUILD=$(usex debug YES NO) \
 		${myconf[@]}
 }
 

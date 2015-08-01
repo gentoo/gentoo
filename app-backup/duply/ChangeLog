@@ -1,6 +1,11 @@
 # ChangeLog for app-backup/duply
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/duply/ChangeLog,v 1.13 2015/07/31 15:11:14 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-backup/duply/ChangeLog,v 1.14 2015/08/01 17:35:57 jlec Exp $
+
+*duply-1.10 (01 Aug 2015)
+
+  01 Aug 2015; Justin Lecher <jlec@gentoo.org> +duply-1.10.ebuild:
+  Version Bump
 
   31 Jul 2015; Agostino Sarubbo <ago@gentoo.org> duply-1.9.2.ebuild:
   Stable for amd64, wrt bug #556036
