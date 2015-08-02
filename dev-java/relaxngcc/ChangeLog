@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/relaxngcc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/relaxngcc/ChangeLog,v 1.19 2015/06/09 14:00:03 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/relaxngcc/ChangeLog,v 1.20 2015/08/01 22:59:14 mrueg Exp $
+
+  01 Aug 2015; Manuel Rüger <mrueg@gentoo.org> -relaxngcc-1.12-r1.ebuild:
+  Remove old.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/jacl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jacl/ChangeLog,v 1.32 2015/06/09 13:39:50 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jacl/ChangeLog,v 1.33 2015/08/01 22:55:13 mrueg Exp $
+
+  01 Aug 2015; Manuel Rüger <mrueg@gentoo.org> -jacl-1.3.3.ebuild:
+  Remove old.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml
