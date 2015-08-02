@@ -4,11 +4,11 @@ DESCRIPTION=Set of GObject and Gtk objects for connecting to Spice servers and a
 EAPI=5
 HOMEPAGE=http://spice-space.org http://gitorious.org/spice-gtk
 IUSE=dbus doc gstreamer gtk3 +introspection policykit pulseaudio python sasl smartcard static-libs usbredir vala webdav python_targets_python2_7
-KEYWORDS=alpha amd64 arm ppc ppc64 ~x86
+KEYWORDS=alpha amd64 arm ppc ppc64 sparc ~x86
 LICENSE=LGPL-2.1
 RDEPEND=>=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] pulseaudio? ( media-sound/pulseaudio[glib] ) gstreamer? ( media-libs/gstreamer:0.10 media-libs/gst-plugins-base:0.10 ) >=x11-libs/pixman-0.17.7 >=media-libs/celt-0.5.1.1:0.5.1 media-libs/opus dev-libs/openssl gtk3? ( x11-libs/gtk+:3[introspection?] ) x11-libs/gtk+:2[introspection?] >=dev-libs/glib-2.26:2 >=x11-libs/cairo-1.2 virtual/jpeg sys-libs/zlib dbus? ( dev-libs/dbus-glib ) introspection? ( dev-libs/gobject-introspection ) python? ( dev-python/pygtk:2 ) sasl? ( dev-libs/cyrus-sasl ) smartcard? ( app-emulation/qemu[smartcard] ) usbredir? ( sys-apps/hwids >=sys-apps/usbredir-0.4.2 virtual/libusb:1 virtual/libgudev:= policykit? ( sys-apps/acl >=sys-auth/polkit-0.110-r1 !~sys-auth/polkit-0.111 ) ) webdav? ( net-libs/phodav:1.0 )
 REQUIRED_USE=python_targets_python2_7 ?? ( pulseaudio gstreamer )
 SLOT=0
 SRC_URI=http://spice-space.org/download/gtk/spice-gtk-0.25.tar.bz2
 _eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	351da1aa73960a282591217fb57c1bb8	python-utils-r1	68e010c13e97b7b2c7bf403ee9c51e1b	toolchain-funcs	42408102d713fbad60ca21349865edb4	vala	09bc7da1a93142c9eb90786e6f6b39d2
-_md5_=eeab506121258a5c6f68665c4b17c410
+_md5_=09927c1a94769bcf4a4127f1b15175f9

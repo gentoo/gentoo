@@ -1,6 +1,9 @@
 # ChangeLog for dev-lang/erlang
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/erlang/ChangeLog,v 1.271 2015/07/23 20:59:47 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/erlang/ChangeLog,v 1.272 2015/08/02 10:04:32 pacho Exp $
+
+  02 Aug 2015; Pacho Ramos <pacho@gentoo.org> erlang-17.5.ebuild:
+  sparc stable wrt bug #552444
 
   23 Jul 2015; Pacho Ramos <pacho@gentoo.org> erlang-17.5.ebuild:
   ppc stable wrt bug #552444

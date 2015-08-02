@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/cov-core
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/cov-core/ChangeLog,v 1.19 2015/06/07 19:19:52 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/cov-core/ChangeLog,v 1.20 2015/08/02 09:34:56 pacho Exp $
+
+  02 Aug 2015; Pacho Ramos <pacho@gentoo.org> cov-core-1.7.ebuild:
+  sparc stable wrt bug #530586
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add bitbucket to remote-id in metadata.xml

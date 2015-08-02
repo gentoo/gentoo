@@ -1,6 +1,9 @@
 # ChangeLog for net-misc/iperf
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/iperf/ChangeLog,v 1.72 2015/07/23 20:45:22 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/iperf/ChangeLog,v 1.73 2015/08/02 10:00:06 pacho Exp $
+
+  02 Aug 2015; Pacho Ramos <pacho@gentoo.org> iperf-3.0.11.ebuild:
+  sparc stable wrt bug #554706
 
   23 Jul 2015; Pacho Ramos <pacho@gentoo.org> iperf-3.0.11.ebuild:
   ppc stable wrt bug #554706

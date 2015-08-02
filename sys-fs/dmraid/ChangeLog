@@ -1,6 +1,9 @@
 # ChangeLog for sys-fs/dmraid
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/dmraid/ChangeLog,v 1.41 2014/07/23 10:32:00 klausman Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/dmraid/ChangeLog,v 1.42 2015/08/02 10:02:59 pacho Exp $
+
+  02 Aug 2015; Pacho Ramos <pacho@gentoo.org> dmraid-1.0.0_rc16-r3.ebuild:
+  sparc stable wrt bug #487672
 
   23 Jul 2014; Tobias Klausmann <klausman@gentoo.org>
   dmraid-1.0.0_rc16-r3.ebuild:

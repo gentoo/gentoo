@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/csound/csound-6.05.0.ebuild,v 1.1 2015/07/08 15:12:42 yngwin Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/csound/csound-6.05.0.ebuild,v 1.2 2015/08/02 09:46:31 yngwin Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
@@ -28,7 +28,6 @@ RDEPEND="
 		x11-libs/fltk:1[threads?]
 		dev-cpp/eigen:3
 		dev-libs/boost
-		${PYTHON_DEPS}
 	)
 	curl? ( net-misc/curl )
 	dssi? (
@@ -70,6 +69,7 @@ DEPEND="${RDEPEND}
 	)
 "
 REQUIRED_USE="
+	csoundac? ( || ( lua python ) )
 	java? ( cxx )
 	linear? ( double-precision )
 	lua? ( cxx )
@@ -98,8 +98,10 @@ src_prepare() {
 		-e '/-O3/d' \
 		-i CMakeLists.txt || die
 
-	sed -e 's#${REPLACE_ME}#'$(python_get_sitedir)'#' \
-		-i CMakeLists.txt || die
+	if use python ; then
+		sed -e 's#${REPLACE_ME}#'$(python_get_sitedir)'#' \
+			-i CMakeLists.txt || die
+	fi
 
 	for lang in ${LANGS} ; do
 		if ! use linguas_${lang} ; then

@@ -1,6 +1,9 @@
 # ChangeLog for sys-cluster/openmpi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/openmpi/ChangeLog,v 1.140 2015/07/23 19:43:39 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/openmpi/ChangeLog,v 1.141 2015/08/02 09:55:08 pacho Exp $
+
+  02 Aug 2015; Pacho Ramos <pacho@gentoo.org> openmpi-1.8.4-r4.ebuild:
+  sparc stable wrt bug #525534
 
   23 Jul 2015; Pacho Ramos <pacho@gentoo.org> openmpi-1.8.4-r4.ebuild:
   ppc stable wrt bug #525534

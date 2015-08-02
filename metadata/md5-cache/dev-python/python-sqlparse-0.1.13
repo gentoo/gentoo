@@ -4,11 +4,11 @@ DESCRIPTION=A non-validating SQL parser module for Python
 EAPI=5
 HOMEPAGE=http://code.google.com/p/python-sqlparse/ https://github.com/andialbrecht/sqlparse
 IUSE=doc examples test python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 python_targets_pypy
-KEYWORDS=alpha amd64 arm hppa ppc ppc64 x86 ~amd64-linux ~x86-linux
+KEYWORDS=alpha amd64 arm hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux
 LICENSE=BSD-2
 RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_pypy? ( virtual/pypy:0= ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_pypy(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_pypy(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 python_targets_pypy )
 SLOT=0
 SRC_URI=https://github.com/andialbrecht/sqlparse/archive/0.1.13.tar.gz -> python-sqlparse-0.1.13.tar.gz
 _eclasses_=distutils-r1	715b22a21726d3fd76b17e007c5daf5f	eutils	9fb270e417e0e83d64ca52586c4a79de	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-r1	d9c8348f26710ea523a385c2328cf027	python-utils-r1	68e010c13e97b7b2c7bf403ee9c51e1b	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=8a3953cab4db08a8640b94ae1837bffc
+_md5_=b61b15997a33a0dc82f4f04bf63e81c7

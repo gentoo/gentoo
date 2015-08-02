@@ -1,6 +1,9 @@
 # ChangeLog for media-gfx/pydot
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/pydot/ChangeLog,v 1.85 2015/05/30 15:43:59 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/pydot/ChangeLog,v 1.86 2015/08/02 09:32:40 pacho Exp $
+
+  02 Aug 2015; Pacho Ramos <pacho@gentoo.org> pydot-1.0.28-r2.ebuild:
+  sparc stable wrt bug #535448
 
   30 May 2015; Mikle Kolyada <zlogene@gentoo.org> pydot-1.0.28-r2.ebuild:
   arm stable wrt bug #535448

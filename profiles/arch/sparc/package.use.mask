@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/sparc/package.use.mask,v 1.200 2015/06/21 07:22:58 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/sparc/package.use.mask,v 1.201 2015/08/02 09:54:45 pacho Exp $
 
 # Pacho Ramos <pacho@gentoo.org> (13 Jun 2015)
 # Missing keywords, bug #513108
@@ -234,6 +234,7 @@ dev-libs/libmemcached tcmalloc
 # Alexey Shvetsov <alexxy@gentoo.org> (31 Aug 2011)
 # Mask numa use flag per bug #381313
 sys-apps/hwloc numa
+sys-cluster/openmpi numa
 
 # Sergei Trofimovich <slyfox@gentoo.org> (03 Aug 2011)
 # sys-devel/llvm has no sparc keywords yet (bug #320221)

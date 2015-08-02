@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/dmraid/dmraid-1.0.0_rc16-r3.ebuild,v 1.17 2014/07/23 10:32:00 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/dmraid/dmraid-1.0.0_rc16-r3.ebuild,v 1.18 2015/08/02 10:02:59 pacho Exp $
 
 EAPI=5
 
@@ -14,7 +14,7 @@ SRC_URI="http://people.redhat.com/~heinzm/sw/dmraid/src/${PN}-${MY_PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 ~arm ia64 ppc ppc64 sparc x86"
 IUSE="dietlibc intel_led klibc led mini static"
 REQUIRED_USE="klibc? ( !dietlibc )"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/case-insensitive/case-insensitive-1.0.0.2-r1.ebuild,v 1.2 2015/07/04 02:39:21 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/case-insensitive/case-insensitive-1.0.0.2-r1.ebuild,v 1.4 2015/08/02 10:07:55 slyfox Exp $
 
 EAPI=5
 

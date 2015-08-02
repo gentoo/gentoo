@@ -1,6 +1,9 @@
 # ChangeLog for net-im/pidgin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/pidgin/ChangeLog,v 1.373 2015/07/15 14:54:15 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/pidgin/ChangeLog,v 1.374 2015/08/02 10:00:50 pacho Exp $
+
+  02 Aug 2015; Pacho Ramos <pacho@gentoo.org> pidgin-2.10.11.ebuild:
+  sparc stable wrt bug #530674
 
   15 Jul 2015; Tobias Klausmann <klausman@gentoo.org> pidgin-2.10.11.ebuild:
   Stable on alpha, bug 530674

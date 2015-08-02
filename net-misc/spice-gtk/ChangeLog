@@ -1,6 +1,9 @@
 # ChangeLog for net-misc/spice-gtk
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/spice-gtk/ChangeLog,v 1.100 2015/07/15 17:43:00 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/spice-gtk/ChangeLog,v 1.101 2015/08/02 10:04:52 pacho Exp $
+
+  02 Aug 2015; Pacho Ramos <pacho@gentoo.org> spice-gtk-0.25-r1.ebuild:
+  sparc stable wrt bug #542890
 
   15 Jul 2015; Tobias Klausmann <klausman@gentoo.org> spice-gtk-0.25-r1.ebuild:
   Stable on alpha, bug 542890

@@ -4,11 +4,11 @@ DESCRIPTION=A high-performance message passing library (MPI)
 EAPI=5
 HOMEPAGE=http://www.open-mpi.org
 IUSE=cma cuda +cxx elibc_FreeBSD fortran heterogeneous ipv6 mpi-threads numa romio threads vt openmpi_fabrics_ofed openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_psm openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_rdmacm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
-KEYWORDS=alpha ~amd64 ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux
+KEYWORDS=alpha ~amd64 ppc ~ppc64 sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux
 LICENSE=BSD
 RDEPEND=!sys-cluster/mpich !sys-cluster/mpich2 !sys-cluster/mpiexec dev-libs/libevent dev-libs/libltdl:0 >=sys-apps/hwloc-1.9.1[numa?] sys-libs/zlib cuda? ( dev-util/nvidia-cuda-toolkit ) elibc_FreeBSD? ( dev-libs/libexecinfo ) openmpi_fabrics_ofed? ( sys-infiniband/ofed ) openmpi_fabrics_knem? ( sys-cluster/knem ) openmpi_fabrics_open-mx? ( sys-cluster/open-mx ) openmpi_fabrics_psm? ( sys-infiniband/infinipath-psm ) openmpi_rm_pbs? ( sys-cluster/torque ) openmpi_rm_slurm? ( sys-cluster/slurm ) openmpi_ofed_features_rdmacm? ( sys-infiniband/librdmacm ) fortran? ( virtual/fortran )
 REQUIRED_USE=openmpi_rm_slurm? ( !openmpi_rm_pbs ) openmpi_rm_pbs? ( !openmpi_rm_slurm ) openmpi_fabrics_psm? ( openmpi_fabrics_ofed ) openmpi_ofed_features_control-hdr-padding? ( openmpi_fabrics_ofed ) openmpi_ofed_features_connectx-xrc? ( openmpi_fabrics_ofed ) openmpi_ofed_features_udcm? ( openmpi_fabrics_ofed ) openmpi_ofed_features_rdmacm? ( openmpi_fabrics_ofed ) openmpi_ofed_features_dynamic-sl? ( openmpi_fabrics_ofed ) openmpi_ofed_features_failover? ( openmpi_fabrics_ofed )
 SLOT=0
 SRC_URI=http://www.open-mpi.org/software/ompi/v1.8/downloads/openmpi-1.8.4.tar.bz2
 _eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	cuda	2c8df288287b71bc5abbb1ae33869059	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	fortran-2	db8710b355fc5598015c4bc3aad3bdb0	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=52afa80723918ff7487ea65c7ea488dd
+_md5_=896d6315c5f65e88d33fde58d318a2f5

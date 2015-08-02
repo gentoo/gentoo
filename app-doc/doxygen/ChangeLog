@@ -1,6 +1,9 @@
 # ChangeLog for app-doc/doxygen
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/doxygen/ChangeLog,v 1.288 2015/07/24 12:17:43 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-doc/doxygen/ChangeLog,v 1.289 2015/08/02 09:40:39 pacho Exp $
+
+  02 Aug 2015; Pacho Ramos <pacho@gentoo.org> doxygen-1.8.9.1.ebuild:
+  sparc stable wrt bug #550348
 
   24 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> doxygen-1.8.9.1.ebuild:
   ia64 stable wrt bug #550348

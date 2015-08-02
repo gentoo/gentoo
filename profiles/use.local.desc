@@ -4114,7 +4114,7 @@ media-sound/banshee:web - Enable support for plugins that access web-based servi
 media-sound/banshee:youtube - Enable the Youtube plugin
 media-sound/beets:beatport - Enable support for beatport.com API
 media-sound/beets:bpd - Enable support for media-sound/mpd server emulation
-media-sound/beets:chroma - Enable support for acoustic fingerprinting plugin using (media-libs/chromaprint)
+media-sound/beets:chroma - Enable support for acoustic fingerprinting plugin using media-libs/chromaprint
 media-sound/beets:convert - Enable support for the convert plugin which makes it possible to transcode files
 media-sound/beets:discogs - Enable support for the discogs API plugin
 media-sound/beets:echonest - Enable support for fetching and storing acoustic attributes of a track from Echo Nest

@@ -1,6 +1,12 @@
 # ChangeLog for dev-python/unicodecsv
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/unicodecsv/ChangeLog,v 1.7 2015/05/29 03:45:35 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/unicodecsv/ChangeLog,v 1.9 2015/08/02 10:18:29 idella4 Exp $
+
+  02 Aug 2015; Ian Delaney <idella4@gentoo.org> unicodecsv-0.12.0.ebuild:
+  add python3 support to -0.12.0
+
+  02 Aug 2015; Justin Lecher <jlec@gentoo.org> unicodecsv-0.13.0.ebuild:
+  Add py3 support
 
 *unicodecsv-0.13.0 (29 May 2015)
 

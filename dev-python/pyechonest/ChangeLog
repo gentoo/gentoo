@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/pyechonest
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyechonest/ChangeLog,v 1.9 2015/06/07 15:24:28 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyechonest/ChangeLog,v 1.10 2015/08/02 10:22:43 yngwin Exp $
+
+*pyechonest-9.0.0 (02 Aug 2015)
+
+  02 Aug 2015; Ben de Groot <yngwin@gentoo.org> +pyechonest-9.0.0.ebuild:
+  version bump
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

@@ -1,6 +1,9 @@
 # ChangeLog for dev-haskell/deepseq
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/deepseq/ChangeLog,v 1.26 2014/12/23 22:54:20 slyfox Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/deepseq/ChangeLog,v 1.27 2015/08/02 10:03:53 slyfox Exp $
+
+  02 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> deepseq-1.3.0.2.ebuild:
+  Fix build failure against ghc-7.10, bug #556494 by Juergen Rose.
 
   23 Dec 2014; Sergei Trofimovich <slyfox@gentoo.org> deepseq-1.3.0.2.ebuild:
   Mark as a core lib for ghc-7.8.4.

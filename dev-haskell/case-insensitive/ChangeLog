@@ -1,6 +1,20 @@
 # ChangeLog for dev-haskell/case-insensitive
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/case-insensitive/ChangeLog,v 1.16 2015/07/04 02:39:21 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/case-insensitive/ChangeLog,v 1.19 2015/08/02 10:08:30 slyfox Exp $
+
+  02 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  -case-insensitive-1.0.0.2.ebuild, case-insensitive-1.0.0.2-r1.ebuild:
+  Drop old.
+
+*case-insensitive-1.0.0.2-r1 (02 Aug 2015)
+
+  02 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  +case-insensitive-1.0.0.2-r1.ebuild:
+  Restored dropped by accident.
+
+  02 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  -case-insensitive-1.0.0.2-r1.ebuild:
+  Drop old.
 
   04 Jul 2015; Sergei Trofimovich <slyfox@gentoo.org>
   case-insensitive-1.0.0.2-r1.ebuild:
