@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<use>
+		<flag name="small_base">Build the split-up base package.</flag>
+	</use>
+	<longdescription>
+		This library includes definitions for common headers such as
+		Ethernet, IPv4, IPv6, UDP, TCP, etc. This code is untested for any serious
+		work - use at your own risk.
+	</longdescription>
+</pkgmetadata>

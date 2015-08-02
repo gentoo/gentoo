@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/equivalence
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/equivalence/ChangeLog,v 1.5 2015/06/07 19:10:22 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/equivalence/ChangeLog,v 1.6 2015/08/02 13:49:24 gienah Exp $
+
+*equivalence-0.3.1 (02 Aug 2015)
+
+  02 Aug 2015; Mark Wright <gienah@gentoo.org> +equivalence-0.3.1.ebuild:
+  Bump equivalence to 0.3.1
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add bitbucket to remote-id in metadata.xml

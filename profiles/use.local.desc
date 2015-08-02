@@ -1519,8 +1519,6 @@ dev-haskell/hslogger:buildtests - Build the executable to run unit tests.
 dev-haskell/hslua:apicheck - Compile Lua with -DLUA_USE_APICHECK..
 dev-haskell/hslua:system-lua - Use the system-wide lua instead of the bundled copy.
 dev-haskell/hsopenssl:fast-bignum - Enable fast moving of bignums between OpenSSL and GMP (GHC Only)
-dev-haskell/hstringtemplate:quasi-quotation - Build module providing a quasi-quoter
-dev-haskell/hstringtemplate:syb-with-class - Generic instances for TOSElem
 dev-haskell/http:conduit10 - Use version 1.0.x or below of the conduit package (for the test suite).
 dev-haskell/http:network-uri - Get Network.URI from the network-uri package.
 dev-haskell/http-client:network-uri - Get Network.URI from the network-uri package.
@@ -1549,6 +1547,7 @@ dev-haskell/monad-control:instancest - If enabled this package will export Monad
 dev-haskell/monad-logger:template_haskell - Enable Template Haskell support.
 dev-haskell/monad-par:chaselev - Use Chase-Lev Deques for higher-perf work-stealing.
 dev-haskell/nats:hashable - You can disable the use of the `hashable` package using USE=-hashable. Disabling this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users. If set we will not supply an instance of `Hashable`.
+dev-haskell/network-data:small_base - Build the split-up base package.
 dev-haskell/pandoc-citeproc:bibutils - use Chris Putnam's app-text/bibutils
 dev-haskell/pandoc-citeproc:embed_data_files - Embed locale files into the library (needed for windows packaging)
 dev-haskell/pandoc-citeproc:hexpat - use dev-haskell/hexpat instead of dev-haskell/xml for XML parsing

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		Use Template Haskell to generate Uniplate-like functions.
+		
+		This is a maintained mirror of the
+		&lt;http://hackage.haskell.org/package/geniplate geniplate&gt; package,
+		written by Lennart Augustsson.
+	</longdescription>
+</pkgmetadata>
