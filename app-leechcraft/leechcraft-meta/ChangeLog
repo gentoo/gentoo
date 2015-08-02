@@ -1,6 +1,9 @@
 # ChangeLog for app-leechcraft/leechcraft-meta
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-leechcraft/leechcraft-meta/ChangeLog,v 1.22 2014/08/03 19:11:46 maksbotan Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-leechcraft/leechcraft-meta/ChangeLog,v 1.23 2015/08/02 19:48:51 maksbotan Exp $
+
+  02 Aug 2015; Maxim Koltsov <maksbotan@gentoo.org> leechcraft-meta-9999.ebuild:
+  Drop app-leechcraft/lc-xproxy from meta package until c++14 support is in
 
 *leechcraft-meta-0.6.70 (03 Aug 2014)
 

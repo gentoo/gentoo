@@ -1,6 +1,11 @@
 # ChangeLog for app-admin/denyhosts
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/denyhosts/ChangeLog,v 1.91 2015/06/07 12:29:46 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/denyhosts/ChangeLog,v 1.92 2015/08/02 20:22:54 ottxor Exp $
+
+*denyhosts-3.0 (02 Aug 2015)
+
+  02 Aug 2015; Christoph Junghans <ottxor@gentoo.org> +denyhosts-3.0.ebuild:
+  version bump
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml
