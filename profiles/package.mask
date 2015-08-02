@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16695 2015/08/02 13:22:04 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16696 2015/08/02 22:13:13 monsieurp Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -29,6 +29,11 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Patrice Clement <monsieurp@gentoo.org> (3 Aug 2015)
+# Broken and no releases in 10 years (!).
+# Removal in 30 days. See bug #451790.
+www-servers/skunkweb
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2 Aug 2015)
 # This package is a part of >=dev-lang/ghc-7.4. Gentoo

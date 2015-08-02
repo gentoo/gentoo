@@ -1,6 +1,13 @@
 # ChangeLog for virtual/httpd-fastcgi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/httpd-fastcgi/ChangeLog,v 1.10 2015/08/02 18:15:46 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/virtual/httpd-fastcgi/ChangeLog,v 1.12 2015/08/02 22:07:29 monsieurp Exp $
+
+  02 Aug 2015; Patrice Clement <monsieurp@gentoo.org> -httpd-fastcgi-0.ebuild:
+  Remove old.
+
+  02 Aug 2015; Patrice Clement <monsieurp@gentoo.org> httpd-fastcgi-0-r1.ebuild:
+  Stable for amd64. Retroactively mark the remaining arches stable with
+  ALLARCHES. Fixes bug 556542.
 
   02 Aug 2015; Patrice Clement <monsieurp@gentoo.org> httpd-fastcgi-0-r1.ebuild:
   EAPI 5 bump.

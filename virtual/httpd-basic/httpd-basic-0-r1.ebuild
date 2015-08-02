@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/httpd-basic/httpd-basic-0-r1.ebuild,v 1.3 2015/08/02 18:53:09 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/virtual/httpd-basic/httpd-basic-0-r1.ebuild,v 1.4 2015/08/02 22:04:53 monsieurp Exp $
 
 EAPI=5
 
@@ -10,7 +10,7 @@ SRC_URI=""
 
 LICENSE=""
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ppc ppc64 s390 sh sparc x86 ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~sparc-fbsd ~x86-fbsd"
 IUSE=""
 
 RDEPEND="|| (
