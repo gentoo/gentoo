@@ -1,4 +1,4 @@
-DEFINED_PHASES=configure install
+DEFINED_PHASES=configure install prepare
 DEPEND=!qt5? ( >=dev-qt/qtcore-4.2:4 >=dev-qt/qtgui-4.7:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 ) media-libs/alsa-lib media-libs/libsndfile media-sound/jack-audio-connection-kit media-libs/ladspa-sdk >=media-libs/lilv-0.16.0 media-libs/lv2 media-libs/suil dssi? ( media-libs/dssi ) mad? ( media-libs/libmad ) libsamplerate? ( media-libs/libsamplerate ) osc? ( media-libs/liblo ) rubberband? ( media-libs/rubberband ) vorbis? ( media-libs/libvorbis ) zlib? ( sys-libs/zlib ) virtual/pkgconfig
 DESCRIPTION=Qtractor is an Audio/MIDI multi-track sequencer
 EAPI=5
@@ -10,4 +10,4 @@ RDEPEND=!qt5? ( >=dev-qt/qtcore-4.2:4 >=dev-qt/qtgui-4.7:4 ) qt5? ( dev-qt/qtcor
 SLOT=0
 SRC_URI=mirror://sourceforge/qtractor/qtractor-0.7.0.tar.gz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	qmake-utils	4ce40e37ef0e28425a7159b0353be026	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=6633b8c41b5fc4927e0b6e574faf0e86
+_md5_=091b3461f39f6b6148ffeb9e7beadd7e

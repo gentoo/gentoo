@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/qtractor/qtractor-0.7.0.ebuild,v 1.1 2015/08/01 10:53:57 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/qtractor/qtractor-0.7.0.ebuild,v 1.2 2015/08/02 16:01:54 yngwin Exp $
 
 EAPI=5
 
@@ -45,6 +45,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 DOCS="README ChangeLog TODO AUTHORS"
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-qt55-includes.patch
+}
 
 src_configure() {
 	econf \
