@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/enclosed-exceptions
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/enclosed-exceptions/ChangeLog,v 1.6 2015/06/06 11:02:37 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/enclosed-exceptions/ChangeLog,v 1.7 2015/08/02 11:33:23 slyfox Exp $
+
+  02 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  -enclosed-exceptions-1.0.0.1.ebuild, -enclosed-exceptions-1.0.0.2.ebuild,
+  -enclosed-exceptions-1.0.1.ebuild:
+  Drop old.
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

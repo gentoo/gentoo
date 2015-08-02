@@ -1,6 +1,11 @@
 # ChangeLog for kde-plasma/plasma-sdk
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-plasma/plasma-sdk/ChangeLog,v 1.4 2015/07/09 20:49:55 johu Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-plasma/plasma-sdk/ChangeLog,v 1.5 2015/08/02 12:28:35 johu Exp $
+
+  02 Aug 2015; Johannes Huber <johu@gentoo.org>
+  +files/plasma-sdk-5.3.2-remove-qtwebkit.patch, plasma-sdk-5.3.2.ebuild:
+  Add patch to remove bogus deps by Andreas Sturmlechner
+  <andreas.sturmlechner@gmail.com>, bug #555770.
 
   09 Jul 2015; Johannes Huber <johu@gentoo.org> -plasma-sdk-5.3.1.ebuild:
   Remove KDE Plasma 5.3.1

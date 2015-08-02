@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/classy-prelude/classy-prelude-0.6.0.ebuild,v 1.2 2014/07/25 09:16:21 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/classy-prelude/classy-prelude-0.6.0.ebuild,v 1.3 2015/08/02 11:40:45 slyfox Exp $
 
 EAPI=5
 
@@ -20,7 +20,6 @@ IUSE=""
 
 RDEPEND=">=dev-haskell/async-2.0:=[profile?]
 	>=dev-haskell/basic-prelude-0.3.6:=[profile?] <dev-haskell/basic-prelude-0.4:=[profile?]
-	dev-haskell/deepseq:=[profile?]
 	dev-haskell/hashable:=[profile?]
 	>=dev-haskell/lifted-base-0.2:=[profile?]
 	dev-haskell/monad-control:=[profile?]

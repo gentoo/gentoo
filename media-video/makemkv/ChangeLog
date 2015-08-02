@@ -1,6 +1,14 @@
 # ChangeLog for media-video/makemkv
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/makemkv/ChangeLog,v 1.52 2015/06/28 18:25:51 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/makemkv/ChangeLog,v 1.53 2015/08/02 12:26:26 chewi Exp $
+
+*makemkv-1.9.5 (02 Aug 2015)
+
+  02 Aug 2015; James Le Cuirot <chewi@gentoo.org> +makemkv-1.9.5.ebuild,
+  -makemkv-1.9.4.ebuild, files/makemkv-makefile.patch:
+  Version bump. I was going to raise the ffmpeg/libav minimum versions because
+  this version uses libdcadec, which is a new feature. However, libdcadec isn't
+  in the tree yet (bug #549726) and its usage seems optional anyway.
 
 *makemkv-1.9.4 (28 Jun 2015)
 

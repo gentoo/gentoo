@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/doctest/doctest-0.9.9.ebuild,v 1.4 2015/02/01 23:26:02 qnikst Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/doctest/doctest-0.9.9.ebuild,v 1.5 2015/08/02 11:40:01 slyfox Exp $
 
 EAPI=5
 
@@ -18,8 +18,7 @@ SLOT="0/${PV}"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-RDEPEND="dev-haskell/deepseq:=[profile?]
-	>=dev-haskell/ghc-paths-0.1.0.9:=[profile?]
+RDEPEND=">=dev-haskell/ghc-paths-0.1.0.9:=[profile?]
 	>=dev-haskell/syb-0.3:=[profile?] <dev-haskell/syb-0.5:=[profile?]
 	dev-haskell/transformers:=[profile?]
 	>=dev-lang/ghc-6.10.4:=

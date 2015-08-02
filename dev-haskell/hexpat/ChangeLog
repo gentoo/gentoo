@@ -1,6 +1,10 @@
 # ChangeLog for dev-haskell/hexpat
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hexpat/ChangeLog,v 1.6 2015/07/05 14:37:28 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hexpat/ChangeLog,v 1.7 2015/08/02 11:32:15 slyfox Exp $
+
+  02 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> -hexpat-0.20.3.ebuild,
+  -hexpat-0.20.6.ebuild, -hexpat-0.20.7.ebuild:
+  Drop old.
 
   05 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> hexpat-0.20.9.ebuild:
   x86 stable wrt bug #550420

@@ -1,6 +1,6 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/attoparsec/attoparsec-0.10.4.0.ebuild,v 1.3 2013/08/18 13:45:13 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/attoparsec/attoparsec-0.10.4.0.ebuild,v 1.4 2015/08/02 11:41:34 slyfox Exp $
 
 EAPI=5
 
@@ -18,8 +18,7 @@ SLOT="0/${PV}"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-RDEPEND="dev-haskell/deepseq:=[profile?]
-		>=dev-haskell/text-0.11.1.5:=[profile?]
+RDEPEND=">=dev-haskell/text-0.11.1.5:=[profile?]
 		>=dev-lang/ghc-6.10.4:="
 DEPEND="${RDEPEND}
 		test? ( >=dev-haskell/quickcheck-2.4

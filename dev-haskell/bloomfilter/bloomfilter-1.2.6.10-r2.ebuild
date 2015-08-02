@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/bloomfilter/bloomfilter-1.2.6.10-r2.ebuild,v 1.2 2014/07/25 09:16:26 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/bloomfilter/bloomfilter-1.2.6.10-r2.ebuild,v 1.3 2015/08/02 11:36:56 slyfox Exp $
 
 EAPI=5
 
@@ -18,8 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux"
 IUSE=""
 
-RDEPEND="dev-haskell/deepseq:=[profile?]
-		>=dev-lang/ghc-6.8.2:="
+RDEPEND=">=dev-lang/ghc-6.8.2:="
 DEPEND="${RDEPEND}
 		test? ( >=dev-haskell/quickcheck-2.4:2
 			<dev-haskell/quickcheck-2.8:2
