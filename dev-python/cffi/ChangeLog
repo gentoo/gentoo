@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/cffi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/cffi/ChangeLog,v 1.68 2015/07/20 03:31:54 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/cffi/ChangeLog,v 1.69 2015/08/02 00:01:40 radhermit Exp $
+
+  02 Aug 2015; Tim Harder <radhermit@gentoo.org> cffi-1.1.2.ebuild:
+  Add pypi site to HOMEPAGE.
 
   20 Jul 2015; Patrick Lauer <patrick@gentoo.org> cffi-1.1.2.ebuild:
   Add pypy keyword for xcffib
