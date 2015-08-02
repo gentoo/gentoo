@@ -1,6 +1,9 @@
 # ChangeLog for kde-frameworks/kparts
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-frameworks/kparts/ChangeLog,v 1.17 2015/07/16 20:33:13 johu Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-frameworks/kparts/ChangeLog,v 1.18 2015/08/02 12:48:22 johu Exp $
+
+  02 Aug 2015; Johannes Huber <johu@gentoo.org> -kparts-5.11.0.ebuild:
+  Remove KDE Frameworks 5.11.0
 
 *kparts-5.12.0 (16 Jul 2015)
 

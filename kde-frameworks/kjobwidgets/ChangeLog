@@ -1,6 +1,9 @@
 # ChangeLog for kde-frameworks/kjobwidgets
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-frameworks/kjobwidgets/ChangeLog,v 1.17 2015/07/16 20:33:11 johu Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-frameworks/kjobwidgets/ChangeLog,v 1.18 2015/08/02 12:48:21 johu Exp $
+
+  02 Aug 2015; Johannes Huber <johu@gentoo.org> -kjobwidgets-5.11.0.ebuild:
+  Remove KDE Frameworks 5.11.0
 
 *kjobwidgets-5.12.0 (16 Jul 2015)
 

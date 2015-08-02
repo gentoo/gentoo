@@ -1,8 +1,8 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/teamspeak-server-bin/teamspeak-server-bin-3.0.10.3-r1.ebuild,v 1.1 2015/03/31 09:14:47 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/teamspeak-server-bin/teamspeak-server-bin-3.0.11.3.ebuild,v 1.1 2015/08/02 13:00:19 jlec Exp $
 
-EAPI="5"
+EAPI=5
 
 inherit eutils multilib systemd user
 
@@ -20,6 +20,8 @@ KEYWORDS="~amd64 ~x86"
 RESTRICT="installsources fetch mirror strip"
 
 S="${WORKDIR}/teamspeak3-server_linux-${ARCH}"
+
+QA_PREBUILT="/opt/*"
 
 pkg_nofetch() {
 	elog "Please download ${A}"
@@ -43,14 +45,13 @@ src_install() {
 	newsbin ts3server_linux_${ARCH} ts3server-bin
 	doexe *.sh
 	doins *.so
-	# 'libmysqlclient.so.15' is hard-coded into the ts3-server binary :(
-	dosym "${ROOT}"/usr/$(get_libdir)/mysql/libmysqlclient.so ${opt_dir}/libmysqlclient.so.15
 	doins -r sql
 
 	# Install documentation and tsdns.
 	dodoc -r CHANGELOG doc/*.txt
-	use doc && dodoc -r serverquerydocs
-	use pdf && dodoc doc/*.pdf
+	use doc && dodoc -r serverquerydocs doc/*.pdf && \
+		docompress -x /usr/share/doc/${PF}/serverquerydocs && \
+		dosym ../../usr/share/doc/${PF}/serverquerydocs  ${opt_dir}/serverquerydocs
 
 	if use tsdns; then
 		newsbin tsdns/tsdnsserver_linux_${ARCH} tsdnsserver
@@ -62,18 +63,18 @@ src_install() {
 
 	# Install the runtime FS layout.
 	insinto /etc/teamspeak3-server
-	doins "${FILESDIR}"/server.conf "${FILESDIR}"/ts3db_mysql.ini
-	keepdir /{etc,var/{lib,log,run}}/teamspeak3-server
+	doins "${FILESDIR}"/server.conf "${FILESDIR}"/ts3db_mariadb.ini
+	keepdir /{etc,var/{lib,log}}/teamspeak3-server
 
 	# Install the init script and systemd unit.
-	newinitd "${FILESDIR}"/${PN}-3.0.7.2.rc teamspeak3-server
+	newinitd "${FILESDIR}"/${PN}-init-r1 teamspeak3-server
 	systemd_dounit "${FILESDIR}"/systemd/teamspeak3.service
 	systemd_dotmpfilesd "${FILESDIR}"/systemd/teamspeak3.conf
 
 	# Fix up permissions.
-	fowners teamspeak3 /{etc,var/{lib,log,run}}/teamspeak3-server
+	fowners teamspeak3 /{etc,var/{lib,log}}/teamspeak3-server
 	fowners teamspeak3 ${opt_dir}
 
-	fperms 700 /{etc,var/{lib,log,run}}/teamspeak3-server
+	fperms 700 /{etc,var/{lib,log}}/teamspeak3-server
 	fperms 755 ${opt_dir}
 }

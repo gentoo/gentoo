@@ -1,6 +1,15 @@
 # ChangeLog for media-sound/teamspeak-server-bin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/teamspeak-server-bin/ChangeLog,v 1.39 2015/03/31 09:14:47 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/teamspeak-server-bin/ChangeLog,v 1.40 2015/08/02 13:00:19 jlec Exp $
+
+*teamspeak-server-bin-3.0.11.3 (02 Aug 2015)
+
+  02 Aug 2015; Justin Lecher <jlec@gentoo.org>
+  +files/teamspeak-server-bin-init-r1, +files/ts3db_mariadb.ini,
+  +teamspeak-server-bin-3.0.11.3.ebuild, -files/teamspeak-server-bin-3.0.7.2.rc,
+  -files/ts3db_mysql.ini, -teamspeak-server-bin-3.0.10.3-r1.ebuild:
+  Version Bump, bug #530408; hopefully fixes mysql DB problems, bug #519412; fix
+  installation of docs, bug #530414
 
 *teamspeak-server-bin-3.0.10.3-r1 (31 Mar 2015)
 

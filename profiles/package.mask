@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16694 2015/08/01 19:30:19 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16695 2015/08/02 13:22:04 slyfox Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -29,6 +29,12 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2 Aug 2015)
+# This package is a part of >=dev-lang/ghc-7.4. Gentoo
+# ebuilds use that. You can safely uninstall dev-haskell/deepseq
+# and fix leftovers with 'haskell-updater' run.
+dev-haskell/deepseq
 
 # Patrice Clement <monsieurp@gentoo.org> (1 Aug 2015)
 # Package relying on j2me. Not useful anymore since j2me has long been removed.

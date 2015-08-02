@@ -1,6 +1,9 @@
 # ChangeLog for kde-frameworks/kxmlgui
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-frameworks/kxmlgui/ChangeLog,v 1.18 2015/07/16 20:33:15 johu Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-frameworks/kxmlgui/ChangeLog,v 1.19 2015/08/02 12:48:21 johu Exp $
+
+  02 Aug 2015; Johannes Huber <johu@gentoo.org> -kxmlgui-5.11.0.ebuild:
+  Remove KDE Frameworks 5.11.0
 
 *kxmlgui-5.12.0 (16 Jul 2015)
 

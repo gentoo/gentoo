@@ -1,10 +1,13 @@
 # ChangeLog for profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10219 2015/08/02 09:14:30 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10220 2015/08/02 13:22:04 slyfox Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  02 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> package.mask:
+  Mask dev-haskell/deepseq for removal.
 
   02 Aug 2015; Pacho Ramos <pacho@gentoo.org>
   arch/sparc/package.use.stable.mask:
