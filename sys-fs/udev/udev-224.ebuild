@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/udev/udev-9999.ebuild,v 1.334 2015/08/02 17:47:09 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/udev/udev-224.ebuild,v 1.1 2015/08/02 17:47:09 williamh Exp $
 
 EAPI=5
 

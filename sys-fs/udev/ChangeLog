@@ -1,6 +1,12 @@
 # ChangeLog for sys-fs/udev
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/udev/ChangeLog,v 1.1120 2015/07/24 14:12:53 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/udev/ChangeLog,v 1.1121 2015/08/02 17:47:09 williamh Exp $
+
+*udev-224 (02 Aug 2015)
+
+  02 Aug 2015; William Hubbs <williamh@gentoo.org> +udev-224.ebuild,
+  udev-9999.ebuild:
+  version bump
 
   24 Jul 2015; Alexis Ballier <aballier@gentoo.org> udev-222.ebuild,
   udev-9999.ebuild:

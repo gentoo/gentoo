@@ -1,6 +1,9 @@
 # ChangeLog for virtual/httpd-fastcgi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/httpd-fastcgi/ChangeLog,v 1.9 2015/08/02 17:23:18 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/virtual/httpd-fastcgi/ChangeLog,v 1.10 2015/08/02 18:15:46 monsieurp Exp $
+
+  02 Aug 2015; Patrice Clement <monsieurp@gentoo.org> httpd-fastcgi-0-r1.ebuild:
+  EAPI 5 bump.
 
 *httpd-fastcgi-0-r1 (02 Aug 2015)
 
