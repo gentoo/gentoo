@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/cffi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/cffi/ChangeLog,v 1.69 2015/08/02 00:01:40 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/cffi/ChangeLog,v 1.70 2015/08/02 09:25:13 pacho Exp $
+
+  02 Aug 2015; Pacho Ramos <pacho@gentoo.org> cffi-0.8.6.ebuild:
+  sparc stable wrt bug #530294
 
   02 Aug 2015; Tim Harder <radhermit@gentoo.org> cffi-1.1.2.ebuild:
   Add pypi site to HOMEPAGE.

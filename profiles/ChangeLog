@@ -1,10 +1,14 @@
 # ChangeLog for profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10218 2015/08/01 19:30:19 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10219 2015/08/02 09:14:30 pacho Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  02 Aug 2015; Pacho Ramos <pacho@gentoo.org>
+  arch/sparc/package.use.stable.mask:
+  Update masks
 
   01 Aug 2015; Patrice Clement <monsieurp@gentoo.org> package.mask:
   Mask dev-java/antenna for removal.

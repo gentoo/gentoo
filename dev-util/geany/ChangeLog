@@ -1,6 +1,9 @@
 # ChangeLog for dev-util/geany
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/geany/ChangeLog,v 1.84 2015/07/23 20:12:54 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/geany/ChangeLog,v 1.85 2015/08/02 08:53:14 pacho Exp $
+
+  02 Aug 2015; Pacho Ramos <pacho@gentoo.org> geany-1.24.1.ebuild:
+  sparc stable wrt bug #554880
 
   23 Jul 2015; Pacho Ramos <pacho@gentoo.org> geany-1.24.1.ebuild:
   ppc stable wrt bug #554880

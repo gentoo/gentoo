@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/enum34
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/enum34/ChangeLog,v 1.21 2015/07/11 13:48:52 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/enum34/ChangeLog,v 1.22 2015/08/02 09:25:22 pacho Exp $
+
+  02 Aug 2015; Pacho Ramos <pacho@gentoo.org> enum34-1.0.4.ebuild:
+  sparc stable wrt bug #530294
 
   11 Jul 2015; Tobias Klausmann <klausman@gentoo.org> enum34-1.0.4.ebuild:
   Stable on alpha, bug 530294

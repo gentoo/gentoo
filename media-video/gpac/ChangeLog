@@ -1,6 +1,9 @@
 # ChangeLog for media-video/gpac
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/gpac/ChangeLog,v 1.128 2015/07/15 18:47:54 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/gpac/ChangeLog,v 1.129 2015/08/02 09:28:07 pacho Exp $
+
+  02 Aug 2015; Pacho Ramos <pacho@gentoo.org> gpac-0.5.1_pre5456.ebuild:
+  sparc stable wrt bug #547464
 
   15 Jul 2015; Tobias Klausmann <klausman@gentoo.org>
   gpac-0.5.1_pre5456.ebuild:

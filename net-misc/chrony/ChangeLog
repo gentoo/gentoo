@@ -1,6 +1,9 @@
 # ChangeLog for net-misc/chrony
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/chrony/ChangeLog,v 1.170 2015/07/23 20:12:38 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/chrony/ChangeLog,v 1.171 2015/08/02 09:26:53 pacho Exp $
+
+  02 Aug 2015; Pacho Ramos <pacho@gentoo.org> chrony-2.1.1.ebuild:
+  sparc stable wrt bug #553616
 
   23 Jul 2015; Pacho Ramos <pacho@gentoo.org> chrony-2.1.1.ebuild:
   ppc stable wrt bug #553616

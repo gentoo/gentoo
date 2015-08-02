@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/protobuf-c
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/protobuf-c/ChangeLog,v 1.28 2015/07/29 14:42:29 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/protobuf-c/ChangeLog,v 1.29 2015/08/02 09:12:18 pacho Exp $
+
+  02 Aug 2015; Pacho Ramos <pacho@gentoo.org> protobuf-c-1.1.1.ebuild:
+  sparc stable wrt bug #528240
 
   29 Jul 2015; Tobias Klausmann <klausman@gentoo.org> protobuf-c-1.1.1.ebuild:
   Stable on alpha, bug 519772

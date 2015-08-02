@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/ply
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/ply/ChangeLog,v 1.48 2015/07/11 13:48:11 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/ply/ChangeLog,v 1.49 2015/08/02 09:24:54 pacho Exp $
+
+  02 Aug 2015; Pacho Ramos <pacho@gentoo.org> ply-3.4-r1.ebuild:
+  sparc stable wrt bug #530294
 
   11 Jul 2015; Tobias Klausmann <klausman@gentoo.org> ply-3.4-r1.ebuild:
   Stable on alpha, bug 530294

@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/pycparser
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pycparser/ChangeLog,v 1.40 2015/07/11 13:48:22 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pycparser/ChangeLog,v 1.41 2015/08/02 09:25:04 pacho Exp $
+
+  02 Aug 2015; Pacho Ramos <pacho@gentoo.org> pycparser-2.10.ebuild:
+  sparc stable wrt bug #530294
 
   11 Jul 2015; Tobias Klausmann <klausman@gentoo.org> pycparser-2.10.ebuild:
   Stable on alpha, bug 530294

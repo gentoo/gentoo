@@ -1,6 +1,9 @@
 # ChangeLog for media-video/mpv
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mpv/ChangeLog,v 1.140 2015/07/04 16:12:18 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/mpv/ChangeLog,v 1.141 2015/08/02 09:19:37 pacho Exp $
+
+  02 Aug 2015; Pacho Ramos <pacho@gentoo.org> mpv-0.8.3-r1.ebuild:
+  sparc stable wrt bug #525148
 
   04 Jul 2015; Tobias Klausmann <klausman@gentoo.org> mpv-0.8.3-r1.ebuild:
   Stable on alpha, bug 525148

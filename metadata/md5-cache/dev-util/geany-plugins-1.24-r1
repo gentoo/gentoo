@@ -4,11 +4,11 @@ DESCRIPTION=A collection of different plugins for Geany
 EAPI=5
 HOMEPAGE=http://plugins.geany.org/geany-plugins
 IUSE=+autoclose +commander debugger +defineformat devhelp enchant gpg gtkspell lua markdown multiterm nls python scope soup webkit python_targets_python2_7
-KEYWORDS=alpha ~amd64 arm ~ia64 ppc ~ppc64 ~sparc ~x86
+KEYWORDS=alpha ~amd64 arm ~ia64 ppc ~ppc64 sparc ~x86
 LICENSE=GPL-2
 RDEPEND=>=dev-util/geany-1.24 autoclose? ( x11-libs/gtk+:2 ) commander? ( x11-libs/gtk+:2 ) defineformat? ( x11-libs/gtk+:2 ) dev-libs/libxml2:2 dev-libs/glib:2 debugger? ( x11-libs/vte:0 ) devhelp? ( dev-util/devhelp gnome-base/gconf:2 net-libs/webkit-gtk:2 x11-libs/gtk+:2 x11-libs/libwnck:1 ) enchant? ( app-text/enchant ) gpg? ( app-crypt/gpgme ) gtkspell? ( app-text/gtkspell:2 ) lua? ( dev-lang/lua ) markdown? ( app-text/discount net-libs/webkit-gtk:2 x11-libs/gtk+:2 ) multiterm? ( || ( dev-lang/vala:0.28 dev-lang/vala:0.26 dev-lang/vala:0.24 dev-lang/vala:0.22 dev-lang/vala:0.20 ) x11-libs/gtk+:2 >=x11-libs/vte-0.28:0 ) python? ( dev-python/pygtk[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] ) scope? ( x11-libs/vte:0 ) soup? ( net-libs/libsoup ) webkit? ( net-libs/webkit-gtk:2 x11-libs/gtk+:2 x11-libs/gdk-pixbuf:2 ) scope? ( sys-devel/gdb )
 REQUIRED_USE=python? ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=http://plugins.geany.org/geany-plugins/geany-plugins-1.24.tar.gz
 _eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	351da1aa73960a282591217fb57c1bb8	python-utils-r1	68e010c13e97b7b2c7bf403ee9c51e1b	toolchain-funcs	42408102d713fbad60ca21349865edb4	vala	09bc7da1a93142c9eb90786e6f6b39d2	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=88f0da1e1be4bc405315400c0f04192b
+_md5_=90c6013596dc35f00a82273f5a5a0d0d

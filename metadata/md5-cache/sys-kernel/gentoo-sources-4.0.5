@@ -4,11 +4,11 @@ DESCRIPTION=Full sources including the Gentoo patchset for the 4.0 kernel tree
 EAPI=5
 HOMEPAGE=http://dev.gentoo.org/~mpagano/genpatches
 IUSE=deblob experimental symlink build deblob
-KEYWORDS=alpha amd64 ~arm ~arm64 -hppa ~ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86
+KEYWORDS=alpha amd64 ~arm ~arm64 -hppa ~ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86
 LICENSE=GPL-2 !deblob? ( freedist )
 RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )
 RESTRICT=binchecks strip
 SLOT=4.0.5
 SRC_URI=mirror://kernel/linux/kernel/v4.x/linux-4.0.tar.xz deblob? ( http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/4.0-gnu/deblob-4.0 http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/4.0-gnu/deblob-check -> deblob-check-4.0 ) mirror://gentoo/genpatches-4.0-7.base.tar.xz mirror://gentoo/genpatches-4.0-7.extras.tar.xz experimental? ( mirror://gentoo/genpatches-4.0-7.experimental.tar.xz )
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	kernel-2	adcd0a7bbb205c648e9cde3dd32126dc	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	4756de53ea4d40471a582e898815a5c8	python-utils-r1	68e010c13e97b7b2c7bf403ee9c51e1b	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=026472725f52a1b00887d0cbc5dc4440
+_md5_=af9e0f3a2e3f956767330aefb9bf2777

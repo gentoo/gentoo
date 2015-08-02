@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/cryptography
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/cryptography/ChangeLog,v 1.54 2015/07/16 09:04:06 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/cryptography/ChangeLog,v 1.55 2015/08/02 09:24:45 pacho Exp $
+
+  02 Aug 2015; Pacho Ramos <pacho@gentoo.org> cryptography-0.6.1.ebuild:
+  sparc stable wrt bug #530294
 
 *cryptography-0.9.3 (16 Jul 2015)
 

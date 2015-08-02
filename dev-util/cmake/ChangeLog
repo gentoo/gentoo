@@ -1,6 +1,9 @@
 # ChangeLog for dev-util/cmake
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/cmake/ChangeLog,v 1.318 2015/07/26 12:11:36 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/cmake/ChangeLog,v 1.319 2015/08/02 09:18:34 pacho Exp $
+
+  02 Aug 2015; Pacho Ramos <pacho@gentoo.org> cmake-3.2.2.ebuild:
+  sparc stable wrt bug #545870
 
 *cmake-3.3.0 (26 Jul 2015)
 
