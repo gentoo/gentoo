@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/ardour/ardour-4.1.ebuild,v 1.1 2015/06/29 14:20:26 nativemad Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/ardour/ardour-4.1.ebuild,v 1.2 2015/08/02 07:43:10 yngwin Exp $
 
 EAPI=5
 
@@ -51,7 +51,7 @@ RDEPEND="media-libs/aubio
 	x11-libs/cairo
 	media-libs/libart_lgpl
 	virtual/libusb:0
-	dev-libs/boost
+	dev-libs/boost:=
 	>=media-libs/taglib-1.7
 	net-misc/curl
 	jack? ( >=media-sound/jack-audio-connection-kit-0.120 )
