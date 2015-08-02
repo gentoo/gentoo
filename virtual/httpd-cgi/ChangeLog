@@ -1,6 +1,12 @@
 # ChangeLog for virtual/httpd-cgi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/httpd-cgi/ChangeLog,v 1.12 2015/03/03 10:16:52 dlan Exp $
+# $Header: /var/cvsroot/gentoo-x86/virtual/httpd-cgi/ChangeLog,v 1.13 2015/08/02 17:26:08 monsieurp Exp $
+
+*httpd-cgi-0-r1 (02 Aug 2015)
+
+  02 Aug 2015; Patrice Clement <monsieurp@gentoo.org> +httpd-cgi-0-r1.ebuild:
+  Prep skunkweb's removal and remove it from the list of runtime dependencies.
+  See bug 451790.
 
   03 Mar 2015; Yixun Lan <dlan@gentoo.org> httpd-cgi-0.ebuild:
   add arm64 support, tested on A53 board
@@ -40,4 +46,3 @@
 
   20 Oct 2007; <wrobel@gentoo.org> +metadata.xml, +httpd-cgi-0.ebuild:
   Finally adding virtual/httpd-cgi to close #11007.
-

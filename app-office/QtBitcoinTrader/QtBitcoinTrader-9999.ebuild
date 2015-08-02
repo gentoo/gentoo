@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/QtBitcoinTrader/QtBitcoinTrader-9999.ebuild,v 1.6 2015/06/05 15:00:22 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/QtBitcoinTrader/QtBitcoinTrader-9999.ebuild,v 1.7 2015/08/02 17:28:55 alexxy Exp $
 
 EAPI=5
 
@@ -25,45 +25,26 @@ HOMEPAGE="https://github.com/JulyIGHOR/QtBitcoinTrader"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="qt4 qt5"
-
-REQUIRED_USE="
-	^^ ( qt4 qt5 )
-"
+IUSE=""
 
 DEPEND="
 	dev-libs/openssl:0
 	sys-libs/zlib
-	qt4? (
-		dev-qt/qtgui:4
-		dev-qt/qtmultimedia:4
-		dev-qt/qtscript:4
-		)
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtnetwork:5
-		dev-qt/qtscript:5
-		dev-qt/qtwidgets:5
-		dev-qt/qtmultimedia:5
-	)
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtscript:5
+	dev-qt/qtwidgets:5
+	dev-qt/qtmultimedia:5
 "
 RDEPEND="${DEPEND}"
 
 src_configure() {
-	if use qt4; then
-		eqmake4 \
+	eqmake5 \
 			src/${PN}_Desktop.pro \
 			PREFIX="${EPREFIX}/usr" \
 			DESKTOPDIR="${EPREFIX}/usr/share/applications" \
 			ICONDIR="${EPREFIX}/usr/share/pixmaps"
-	elif use qt5; then
-		eqmake5 \
-			src/${PN}_Desktop.pro \
-			PREFIX="${EPREFIX}/usr" \
-			DESKTOPDIR="${EPREFIX}/usr/share/applications" \
-			ICONDIR="${EPREFIX}/usr/share/pixmaps"
-	fi
 }
 
 src_install() {

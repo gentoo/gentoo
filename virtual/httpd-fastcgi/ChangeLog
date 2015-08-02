@@ -1,6 +1,13 @@
 # ChangeLog for virtual/httpd-fastcgi
-# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/httpd-fastcgi/ChangeLog,v 1.8 2011/02/06 11:59:27 leio Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/httpd-fastcgi/ChangeLog,v 1.9 2015/08/02 17:23:18 monsieurp Exp $
+
+*httpd-fastcgi-0-r1 (02 Aug 2015)
+
+  02 Aug 2015; Patrice Clement <monsieurp@gentoo.org>
+  +httpd-fastcgi-0-r1.ebuild:
+  Prep skunkweb's removal and remove it from the list of runtime dependencies.
+  See bug 451790.
 
   06 Feb 2011; Mart Raudsepp <leio@gentoo.org> httpd-fastcgi-0.ebuild:
   Drop to ~mips
@@ -24,4 +31,3 @@
 
   20 Oct 2007; <wrobel@gentoo.org> +metadata.xml, +httpd-fastcgi-0.ebuild:
   Finally adding virtual/httpd-fastcgi to close #11007.
-

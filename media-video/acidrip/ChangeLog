@@ -1,6 +1,13 @@
 # ChangeLog for media-video/acidrip
 # Copyright 2000-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/acidrip/ChangeLog,v 1.36 2015/01/26 10:10:26 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/acidrip/ChangeLog,v 1.37 2015/08/02 16:40:07 zlogene Exp $
+
+*acidrip-0.14-r4 (02 Aug 2015)
+
+  02 Aug 2015; Mikle Kolyada <zlogene@gentoo.org> +acidrip-0.14-r4.ebuild,
+  -acidrip-0.14-r2.ebuild, -acidrip-0.14-r3.ebuild:
+  Revision bump: straight to stable commit, subslot perl dependency wrt bug
+  #555348; Drop old
 
   26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> acidrip-0.14-r3.ebuild:
   Stable for x86, wrt bug #535510
