@@ -1,6 +1,12 @@
 # ChangeLog for dev-haskell/unordered-containers
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/unordered-containers/ChangeLog,v 1.12 2015/06/06 18:22:38 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/unordered-containers/ChangeLog,v 1.13 2015/08/02 11:01:02 slyfox Exp $
+
+  02 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  -unordered-containers-0.2.2.1.ebuild, -unordered-containers-0.2.3.0.ebuild,
+  -unordered-containers-0.2.3.2.ebuild, -unordered-containers-0.2.4.0.ebuild,
+  unordered-containers-0.2.3.3.ebuild:
+  Drop old.
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

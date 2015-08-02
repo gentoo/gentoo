@@ -1,6 +1,10 @@
 # ChangeLog for dev-haskell/system-filepath
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/system-filepath/ChangeLog,v 1.14 2015/08/01 13:41:53 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/system-filepath/ChangeLog,v 1.15 2015/08/02 11:06:35 slyfox Exp $
+
+  02 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  -system-filepath-0.4.13.2.ebuild, -system-filepath-0.4.8.ebuild:
+  Drop old.
 
 *system-filepath-0.4.13.4 (01 Aug 2015)
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/unordered-containers/unordered-containers-0.2.3.3.ebuild,v 1.3 2014/03/03 23:40:22 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/unordered-containers/unordered-containers-0.2.3.3.ebuild,v 1.4 2015/08/02 11:01:02 slyfox Exp $
 
 EAPI=5
 
@@ -18,8 +18,7 @@ SLOT="0/${PV}"
 KEYWORDS="amd64 x86"
 IUSE="debug"
 
-RDEPEND=">=dev-haskell/deepseq-1.1:=[profile?]
-	>=dev-haskell/hashable-1.0.1.1:=[profile?]
+RDEPEND=">=dev-haskell/hashable-1.0.1.1:=[profile?]
 	>=dev-lang/ghc-6.10.4:=
 "
 DEPEND="${RDEPEND}

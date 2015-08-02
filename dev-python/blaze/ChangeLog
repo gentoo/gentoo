@@ -1,6 +1,14 @@
 # ChangeLog for dev-python/blaze
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/blaze/ChangeLog,v 1.22 2015/06/28 17:56:52 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/blaze/ChangeLog,v 1.23 2015/08/02 11:10:06 idella4 Exp $
+
+*blaze-0.8.2 (02 Aug 2015)
+
+  02 Aug 2015; Ian Delaney <idella4@gentoo.org> +blaze-0.8.2.ebuild,
+  -blaze-0.7.3.ebuild, blaze-0.8.0.ebuild:
+  bump; set PYTHON_USEDEP fully to dependencies, delete failing doc build and
+  install, update test phase according to changed state of failed tests, tidy of
+  both ebuilds
 
   28 Jun 2015; Patrice Clement <monsieurp@gentoo.org> blaze-0.8.0.ebuild:
   Update numba dependency to satisfy dependencies resolution and get the tree

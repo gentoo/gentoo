@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/ganeti/ganeti-2.12.1-r3.ebuild,v 1.1 2015/03/13 18:53:31 chutzpah Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/ganeti/ganeti-2.12.1-r3.ebuild,v 1.2 2015/08/02 10:55:32 slyfox Exp $
 
 EAPI=5
 PYTHON_COMPAT=(python2_7)
@@ -73,7 +73,6 @@ DEPEND="
 	>=dev-haskell/hslogger-1.2.6:0=
 	dev-haskell/snap-server:0=
 	dev-haskell/utf8-string:0=
-	dev-haskell/deepseq:0=
 	dev-haskell/attoparsec:0=
 	dev-haskell/crypto:0=
 	dev-haskell/vector:0=

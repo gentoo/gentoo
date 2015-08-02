@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/silently
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/silently/ChangeLog,v 1.8 2015/08/01 14:30:32 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/silently/ChangeLog,v 1.9 2015/08/02 11:10:05 slyfox Exp $
+
+  02 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  -silently-1.2.4.1-r1.ebuild, silently-1.2.4.1.ebuild:
+  Drop dev-haskell/deepseq depend. ghc bundles it for a long while and we are
+  using that version.
 
 *silently-1.2.5 (01 Aug 2015)
 

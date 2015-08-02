@@ -1,6 +1,10 @@
 # ChangeLog for sci-mathematics/agda-stdlib
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/agda-stdlib/ChangeLog,v 1.8 2015/01/30 03:04:58 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/agda-stdlib/ChangeLog,v 1.9 2015/08/02 10:49:32 slyfox Exp $
+
+  02 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  -agda-stdlib-0.7-r1.ebuild, -agda-stdlib-0.7.ebuild:
+  Drop old.
 
   30 Jan 2015; Patrick Lauer <patrick@gentoo.org> -agda-stdlib-0.6.ebuild:
   Remove old version with unsatisfied dependencies

@@ -1,6 +1,10 @@
 # ChangeLog for dev-haskell/tasty
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/tasty/ChangeLog,v 1.10 2015/07/17 09:22:38 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/tasty/ChangeLog,v 1.11 2015/08/02 11:05:41 slyfox Exp $
+
+  02 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> tasty-0.7.ebuild:
+  Drop dev-haskell/deepseq depend. ghc bundles it for a long while and we are
+  using that version.
 
 *tasty-0.10.1.2 (17 Jul 2015)
 

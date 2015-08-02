@@ -1,6 +1,12 @@
 # ChangeLog for dev-haskell/http-client
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/http-client/ChangeLog,v 1.12 2015/07/26 21:07:07 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/http-client/ChangeLog,v 1.13 2015/08/02 11:27:57 slyfox Exp $
+
+  02 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  -http-client-0.2.0.3.ebuild, -http-client-0.4.6.1.ebuild,
+  -http-client-0.4.6.2.ebuild, -http-client-0.4.9.ebuild,
+  http-client-0.2.2.2.ebuild:
+  Drop old.
 
 *http-client-0.4.18.1 (26 Jul 2015)
 

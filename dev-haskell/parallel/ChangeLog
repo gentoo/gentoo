@@ -1,6 +1,15 @@
 # ChangeLog for dev-haskell/parallel
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/parallel/ChangeLog,v 1.24 2015/01/01 13:40:31 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/parallel/ChangeLog,v 1.26 2015/08/02 11:17:06 slyfox Exp $
+
+  02 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> parallel-3.2.0.3.ebuild:
+  Allow ghc-7.10.
+
+  02 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> -parallel-1.0.0.0.ebuild,
+  -parallel-3.2.0.2.ebuild, -parallel-3.2.0.4.ebuild, -parallel-3.2.0.5.ebuild,
+  parallel-3.2.0.3.ebuild:
+  Drop dev-haskell/deepseq depend. ghc bundles it for a long while and we are
+  using that version.
 
   01 Jan 2015; Mark Wright <gienah@gentoo.org> parallel-3.2.0.3.ebuild:
   Thanks to Dennis Schridde for reporting, loosen array dependency to fix bug

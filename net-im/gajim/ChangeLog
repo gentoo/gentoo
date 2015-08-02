@@ -1,6 +1,11 @@
 # ChangeLog for net-im/gajim
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/gajim/ChangeLog,v 1.229 2015/07/28 06:49:06 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/gajim/ChangeLog,v 1.230 2015/08/02 11:28:48 jlec Exp $
+
+*gajim-0.16.3 (02 Aug 2015)
+
+  02 Aug 2015; Justin Lecher <jlec@gentoo.org> +gajim-0.16.3.ebuild:
+  Version Bump
 
   28 Jul 2015; Justin Lecher <jlec@gentoo.org> gajim-0.16.2.ebuild:
   Fix deps; bug #556080

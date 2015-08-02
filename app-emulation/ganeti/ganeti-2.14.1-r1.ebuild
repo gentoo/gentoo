@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/ganeti/ganeti-2.14.1-r1.ebuild,v 1.1 2015/07/28 22:03:05 chutzpah Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/ganeti/ganeti-2.14.1-r1.ebuild,v 1.2 2015/08/02 10:55:32 slyfox Exp $
 
 EAPI=5
 PYTHON_COMPAT=(python2_7)
@@ -60,7 +60,6 @@ DEPEND="
 	=dev-lang/ghc-7.6*:0=
 	dev-haskell/cabal:0=
 	dev-haskell/cabal-install:0=
-	>=dev-haskell/deepseq-1.3.0.0:0=
 	>=dev-haskell/mtl-2.1.1:0=
 	>=dev-haskell/old-time-1.1.0.0:0=
 	>=dev-haskell/random-1.0.1.1:0=

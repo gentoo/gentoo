@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hxt/hxt-9.3.1.1.ebuild,v 1.4 2014/07/25 09:16:45 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hxt/hxt-9.3.1.1.ebuild,v 1.5 2015/08/02 11:25:42 slyfox Exp $
 
 EAPI=5
 
@@ -18,22 +18,14 @@ SLOT="0/${PV}"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-RDEPEND=">=dev-haskell/binary-0.5:=[profile?]
-		<dev-haskell/binary-1:=[profile?]
-		>=dev-haskell/deepseq-1.1:=[profile?]
-		<dev-haskell/deepseq-2:=[profile?]
-		>=dev-haskell/hunit-1.2:=[profile?]
-		<dev-haskell/hunit-2:=[profile?]
-		>=dev-haskell/hxt-charproperties-9.1:=[profile?]
-		<dev-haskell/hxt-charproperties-10:=[profile?]
+RDEPEND=">=dev-haskell/binary-0.5:=[profile?] <dev-haskell/binary-1:=[profile?]
+		>=dev-haskell/hunit-1.2:=[profile?] <dev-haskell/hunit-2:=[profile?]
+		>=dev-haskell/hxt-charproperties-9.1:=[profile?] <dev-haskell/hxt-charproperties-10:=[profile?]
 		=dev-haskell/hxt-regex-xmlschema-9*:=[profile?]
-		>=dev-haskell/hxt-unicode-9.0.1:=[profile?]
-		<dev-haskell/hxt-unicode-10:=[profile?]
+		>=dev-haskell/hxt-unicode-9.0.1:=[profile?] <dev-haskell/hxt-unicode-10:=[profile?]
 		=dev-haskell/mtl-2*:=[profile?]
-		>=dev-haskell/network-2.4:=[profile?]
-		<dev-haskell/network-3:=[profile?]
-		>=dev-haskell/parsec-2.1:=[profile?]
-		<dev-haskell/parsec-4:=[profile?]
+		>=dev-haskell/network-2.4:=[profile?] <dev-haskell/network-3:=[profile?]
+		>=dev-haskell/parsec-2.1:=[profile?] <dev-haskell/parsec-4:=[profile?]
 		>=dev-lang/ghc-6.10.4:="
 DEPEND="${RDEPEND}
 		>=dev-haskell/cabal-1.8"

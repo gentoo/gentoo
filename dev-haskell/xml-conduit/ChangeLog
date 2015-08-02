@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/xml-conduit
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/xml-conduit/ChangeLog,v 1.10 2015/08/01 14:58:45 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/xml-conduit/ChangeLog,v 1.11 2015/08/02 10:58:25 slyfox Exp $
+
+  02 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  -xml-conduit-1.1.0.7.ebuild, -xml-conduit-1.2.0.2.ebuild,
+  -xml-conduit-1.2.3.1.ebuild, -xml-conduit-1.2.3.ebuild:
+  Drop old.
 
 *xml-conduit-1.3.1 (01 Aug 2015)
 

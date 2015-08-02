@@ -1,6 +1,10 @@
 # ChangeLog for dev-haskell/monad-par
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/monad-par/ChangeLog,v 1.6 2015/06/06 12:46:23 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/monad-par/ChangeLog,v 1.7 2015/08/02 11:18:54 slyfox Exp $
+
+  02 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> -monad-par-0.3.4.3.ebuild,
+  -monad-par-0.3.4.5.ebuild, -monad-par-0.3.4.6.ebuild:
+  Drop old.
 
   06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

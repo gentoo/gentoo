@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hspec/hspec-1.8.3.ebuild,v 1.1 2014/03/09 12:44:39 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hspec/hspec-1.8.3.ebuild,v 1.2 2015/08/02 11:30:48 slyfox Exp $
 
 EAPI=5
 
@@ -30,8 +30,7 @@ RDEPEND=">=dev-haskell/ansi-terminal-0.5:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.8
-	test? ( dev-haskell/deepseq
-		>=dev-haskell/doctest-0.9.4.1
+	test? ( >=dev-haskell/doctest-0.9.4.1
 		dev-haskell/ghc-paths
 		>=dev-haskell/hspec-meta-1.8.0
 		>=dev-haskell/silently-1.2.4 )

@@ -1,6 +1,6 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/lens/lens-3.9.2.ebuild,v 1.1 2013/10/03 02:33:51 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/lens/lens-3.9.2.ebuild,v 1.2 2015/08/02 11:20:38 slyfox Exp $
 
 EAPI=5
 
@@ -46,8 +46,7 @@ RDEPEND=">=dev-haskell/bifunctors-3:=[profile?] <dev-haskell/bifunctors-4:=[prof
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.10.0.0
-	test? ( test-doctests? ( dev-haskell/deepseq
-					>=dev-haskell/doctest-0.9.1
+	test? ( test-doctests? ( >=dev-haskell/doctest-0.9.1
 					dev-haskell/nats
 					>=dev-haskell/simple-reflect-0.3.1
 					test-hunit? ( >=dev-haskell/hunit-1.2

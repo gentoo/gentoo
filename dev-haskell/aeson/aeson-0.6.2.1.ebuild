@@ -1,6 +1,6 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/aeson/aeson-0.6.2.1.ebuild,v 1.4 2013/11/24 19:32:30 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/aeson/aeson-0.6.2.1.ebuild,v 1.5 2015/08/02 10:56:52 slyfox Exp $
 
 EAPI=5
 
@@ -20,7 +20,6 @@ IUSE="developer"
 
 RDEPEND=">=dev-haskell/attoparsec-0.8.6.1:=[profile?]
 	>=dev-haskell/blaze-builder-0.2.1.4:=[profile?]
-	dev-haskell/deepseq:=[profile?]
 	>=dev-haskell/dlist-0.2:=[profile?]
 	>=dev-haskell/hashable-1.1.2.0:=[profile?]
 	dev-haskell/mtl:=[profile?]

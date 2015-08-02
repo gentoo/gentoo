@@ -1,6 +1,10 @@
 # ChangeLog for dev-haskell/hunit
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hunit/ChangeLog,v 1.71 2015/08/01 15:09:08 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hunit/ChangeLog,v 1.72 2015/08/02 11:26:26 slyfox Exp $
+
+  02 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> -hunit-1.2.4.2.ebuild,
+  -hunit-1.2.5.1.ebuild, hunit-1.2.5.2.ebuild:
+  Drop old.
 
 *hunit-1.2.5.2-r1 (01 Aug 2015)
 

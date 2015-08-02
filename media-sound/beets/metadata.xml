@@ -44,6 +44,7 @@
       last.fm tags</flag>
     <flag name="mpdstats">Enable support for collecting statistic about
       listening habits from <pkg>media-sound/mpd</pkg></flag>
+    <flag name="opus">Enable opus support in gstreamer-based replaygain</flag>
     <flag name="replaygain">Enable support for Replay Gain metadata calculation
       during import</flag>
     <flag name="web">

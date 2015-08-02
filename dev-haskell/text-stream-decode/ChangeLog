@@ -1,6 +1,10 @@
 # ChangeLog for dev-haskell/text-stream-decode
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/text-stream-decode/ChangeLog,v 1.7 2015/07/05 14:39:34 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/text-stream-decode/ChangeLog,v 1.8 2015/08/02 11:02:44 slyfox Exp $
+
+  02 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  -text-stream-decode-0.1.0.4.ebuild:
+  Drop old.
 
   05 Jul 2015; Mikle Kolyada <zlogene@gentoo.org>
   text-stream-decode-0.1.0.5.ebuild:

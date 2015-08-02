@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/silently/silently-1.2.4.1.ebuild,v 1.4 2014/07/25 09:16:30 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/silently/silently-1.2.4.1.ebuild,v 1.5 2015/08/02 11:10:05 slyfox Exp $
 
 EAPI=5
 
@@ -18,9 +18,7 @@ SLOT="0/${PV}"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-RDEPEND="dev-haskell/deepseq:=[profile?]
-		>=dev-lang/ghc-6.10.4:="
+RDEPEND=">=dev-lang/ghc-6.10.4:="
 DEPEND="${RDEPEND}
 		>=dev-haskell/cabal-1.8
-		test? ( dev-haskell/nanospec
-		)"
+		test? ( dev-haskell/nanospec )"

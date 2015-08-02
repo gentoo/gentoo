@@ -4121,6 +4121,7 @@ media-sound/beets:echonest - Enable support for fetching and storing acoustic at
 media-sound/beets:echonest_tempo - Enable support for writing the BPM of a track into its metadata
 media-sound/beets:lastgenre - Enable support for importing music genres from last.fm tags
 media-sound/beets:mpdstats - Enable support for collecting statistic about listening habits from media-sound/mpd
+media-sound/beets:opus - Enable opus support in gstreamer-based replaygain
 media-sound/beets:replaygain - Enable support for Replay Gain metadata calculation during import
 media-sound/beets:web - Enable embedded webserver support through dev-python/flask
 media-sound/cantata:dynamic - Enable support for dynamic playlists

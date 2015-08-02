@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/cython
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/cython/ChangeLog,v 1.159 2015/08/02 09:21:17 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/cython/ChangeLog,v 1.160 2015/08/02 11:00:59 jlec Exp $
+
+  02 Aug 2015; Justin Lecher <jlec@gentoo.org> -cython-0.19.1-r1.ebuild,
+  -cython-0.21.1.ebuild, -cython-0.21.2.ebuild, -cython-0.21.ebuild,
+  -files/cython-0.20.1-backport-test-fix.patch:
+  Dropl old
 
   02 Aug 2015; Pacho Ramos <pacho@gentoo.org> cython-0.21.1.ebuild:
   sparc stable wrt bug #530280

@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/http-client/http-client-0.2.2.2.ebuild,v 1.2 2014/07/25 09:16:16 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/http-client/http-client-0.2.2.2.ebuild,v 1.3 2015/08/02 11:27:57 slyfox Exp $
 
 EAPI=5
 
@@ -34,8 +34,7 @@ RDEPEND=">=dev-haskell/base64-bytestring-1.0:=[profile?] <dev-haskell/base64-byt
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.10
-	test? ( dev-haskell/deepseq
-		dev-haskell/hspec
+	test? ( dev-haskell/hspec
 		dev-haskell/monad-control
 		dev-haskell/zlib )
 "

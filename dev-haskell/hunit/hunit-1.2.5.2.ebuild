@@ -1,6 +1,6 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hunit/hunit-1.2.5.2.ebuild,v 1.8 2013/06/29 16:29:48 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hunit/hunit-1.2.5.2.ebuild,v 1.9 2015/08/02 11:26:25 slyfox Exp $
 
 EAPI=5
 
@@ -21,9 +21,8 @@ SLOT="0/${PV}"
 KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos"
 IUSE=""
 
-RDEPEND="dev-haskell/deepseq:=[profile?]
-		>=dev-lang/ghc-6.10.4:="
+RDEPEND=">=dev-lang/ghc-6.10.4:="
 DEPEND="${RDEPEND}
-		>=dev-haskell/cabal-1.8"
+	>=dev-haskell/cabal-1.8"
 
 S="${WORKDIR}/${MY_P}"

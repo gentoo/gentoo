@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/tasty/tasty-0.7.ebuild,v 1.1 2014/03/12 20:55:33 qnikst Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/tasty/tasty-0.7.ebuild,v 1.2 2015/08/02 11:05:41 slyfox Exp $
 
 EAPI=5
 
@@ -18,8 +18,7 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="+colors"
 
-RDEPEND=">=dev-haskell/deepseq-1.3:=[profile?]
-	>=dev-haskell/either-4.0:=[profile?]
+RDEPEND=">=dev-haskell/either-4.0:=[profile?]
 	dev-haskell/mtl:=[profile?]
 	>=dev-haskell/optparse-applicative-0.6:=[profile?]
 	>=dev-haskell/regex-tdfa-1.1.8:=[profile?]

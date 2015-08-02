@@ -1,6 +1,11 @@
 # ChangeLog for dev-haskell/hspec
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hspec/ChangeLog,v 1.12 2015/08/01 15:35:31 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hspec/ChangeLog,v 1.13 2015/08/02 11:30:48 slyfox Exp $
+
+  02 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> hspec-1.5.4.ebuild,
+  hspec-1.7.2.1.ebuild, hspec-1.8.1.1.ebuild, hspec-1.8.3.ebuild:
+  Drop dev-haskell/deepseq depend. ghc bundles it for a long while and we are
+  using that version.
 
 *hspec-2.1.4 (01 Aug 2015)
 

@@ -1,6 +1,10 @@
 # ChangeLog for dev-haskell/aeson
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/aeson/ChangeLog,v 1.15 2015/08/01 16:28:30 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/aeson/ChangeLog,v 1.16 2015/08/02 10:56:52 slyfox Exp $
+
+  02 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> aeson-0.6.2.1.ebuild:
+  Drop dev-haskell/deepseq depend. ghc bundles it for a long while and we are
+  using that version.
 
 *aeson-0.9.0.1 (01 Aug 2015)
 

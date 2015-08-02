@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/http-conduit/http-conduit-1.9.5.1.ebuild,v 1.4 2014/07/25 09:16:31 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/http-conduit/http-conduit-1.9.5.1.ebuild,v 1.5 2015/08/02 11:27:05 slyfox Exp $
 
 EAPI=5
 
@@ -27,7 +27,6 @@ RDEPEND=">=dev-haskell/asn1-data-0.5.1:=[profile?]
 	>=dev-haskell/conduit-0.5.5:=[profile?] <dev-haskell/conduit-1.1:=[profile?]
 	>=dev-haskell/cookie-0.4:=[profile?]
 	dev-haskell/data-default:=[profile?]
-	dev-haskell/deepseq:=[profile?]
 	>=dev-haskell/failure-0.1:=[profile?]
 	>=dev-haskell/http-types-0.7:=[profile?]
 	>=dev-haskell/lifted-base-0.1:=[profile?]

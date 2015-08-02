@@ -1,6 +1,6 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hspec/hspec-1.7.2.1.ebuild,v 1.3 2013/11/24 19:34:47 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hspec/hspec-1.7.2.1.ebuild,v 1.4 2015/08/02 11:30:48 slyfox Exp $
 
 EAPI=5
 
@@ -19,7 +19,6 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND=">=dev-haskell/ansi-terminal-0.5:=[profile?]
-	dev-haskell/deepseq:=[profile?]
 	>=dev-haskell/hspec-expectations-0.3.3:=[profile?] <dev-haskell/hspec-expectations-0.3.4:=[profile?]
 	>=dev-haskell/hunit-1.2.5:=[profile?]
 	>=dev-haskell/quickcheck-2.5.1:=[profile?]
