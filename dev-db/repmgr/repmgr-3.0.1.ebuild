@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/repmgr/repmgr-3.0.1.ebuild,v 1.3 2015/08/02 16:21:55 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/repmgr/repmgr-3.0.1.ebuild,v 1.4 2015/08/02 18:34:06 robbat2 Exp $
 
 EAPI=5
 inherit eutils multilib
@@ -31,8 +31,8 @@ src_install() {
 	dodir $PGCONTRIB $PGBINDIR
 	insinto $PGCONTRIB
 	doins sql/repmgr2_repmgr3.sql
-	dosym $PGBINDIR/repmgr /usr/bin/repmgr94
-	dosym $PGBINDIR/repmgrd /usr/bin/repmgrd94
+	dosym $PGBINDIR/repmgr /usr/bin/repmgr${PGSLOT//.}
+	dosym $PGBINDIR/repmgrd /usr/bin/repmgrd${PGSLOT//.}
 	dodoc  CREDITS HISTORY COPYRIGHT LICENSE TODO *.md *.rst
 	insinto /etc
 	newins repmgr.conf.sample repmgr.conf

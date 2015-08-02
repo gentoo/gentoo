@@ -1,6 +1,9 @@
 # ChangeLog for app-misc/datovka
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/datovka/ChangeLog,v 1.16 2015/06/27 09:48:30 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/datovka/ChangeLog,v 1.17 2015/08/02 18:51:14 ago Exp $
+
+  02 Aug 2015; Agostino Sarubbo <ago@gentoo.org> datovka-3.0.3-r1.ebuild:
+  Stable for x86, wrt bug #529554
 
   27 Jun 2015; Agostino Sarubbo <ago@gentoo.org> datovka-3.0.3-r1.ebuild:
   Stable for amd64, wrt bug #529554

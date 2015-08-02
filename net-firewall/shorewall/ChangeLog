@@ -1,6 +1,9 @@
 # ChangeLog for net-firewall/shorewall
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/shorewall/ChangeLog,v 1.293 2015/07/30 12:25:34 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/shorewall/ChangeLog,v 1.294 2015/08/02 18:39:30 ago Exp $
+
+  02 Aug 2015; Agostino Sarubbo <ago@gentoo.org> shorewall-4.6.10.1.ebuild:
+  Stable for x86, wrt bug #555188
 
   30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> shorewall-4.6.10.1.ebuild:
   Stable for sparc, wrt bug #555188

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/iscan/iscan-2.30.1.1.ebuild,v 1.2 2015/07/31 15:12:00 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/iscan/iscan-2.30.1.1.ebuild,v 1.3 2015/08/02 18:45:46 ago Exp $
 
 EAPI="5"
 
@@ -21,7 +21,7 @@ inherit eutils flag-o-matic autotools versionator
 # TODO:
 # (re)add closed-source binary modules which are needed for some scanners.
 
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 MY_PV="$(get_version_component_range 1-3)"
 MY_PVR="$(replace_version_separator 3 -)"

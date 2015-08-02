@@ -1,6 +1,9 @@
 # ChangeLog for app-emacs/ess
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/ess/ChangeLog,v 1.102 2015/07/31 15:10:38 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/ess/ChangeLog,v 1.103 2015/08/02 18:42:11 ago Exp $
+
+  02 Aug 2015; Agostino Sarubbo <ago@gentoo.org> ess-15.03.1.ebuild:
+  Stable for x86, wrt bug #556290
 
   31 Jul 2015; Agostino Sarubbo <ago@gentoo.org> ess-15.03.1.ebuild:
   Stable for amd64, wrt bug #556290

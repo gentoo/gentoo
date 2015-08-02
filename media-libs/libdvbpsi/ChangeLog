@@ -1,6 +1,9 @@
 # ChangeLog for media-libs/libdvbpsi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libdvbpsi/ChangeLog,v 1.73 2015/07/30 12:37:18 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libdvbpsi/ChangeLog,v 1.74 2015/08/02 18:45:11 ago Exp $
+
+  02 Aug 2015; Agostino Sarubbo <ago@gentoo.org> libdvbpsi-1.2.0.ebuild:
+  Stable for x86, wrt bug #530316
 
   30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> libdvbpsi-1.2.0.ebuild:
   Stable for sparc, wrt bug #530316

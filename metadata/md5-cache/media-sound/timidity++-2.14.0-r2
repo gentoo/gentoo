@@ -4,11 +4,11 @@ DESCRIPTION=A handy MIDI to WAV converter with OSS and ALSA output support
 EAPI=5
 HOMEPAGE=http://timidity.sourceforge.net/
 IUSE=motif oss nas X gtk vorbis tk slang alsa jack emacs ao selinux speex flac ncurses
-KEYWORDS=amd64 arm hppa ppc ppc64 sparc ~x86 ~x86-fbsd
+KEYWORDS=amd64 arm hppa ppc ppc64 sparc x86 ~x86-fbsd
 LICENSE=GPL-2
 PDEPEND=|| ( media-sound/timidity-eawpatches media-sound/timidity-freepats )
 RDEPEND=ncurses? ( >=sys-libs/ncurses-5 ) emacs? ( virtual/emacs ) gtk? ( x11-libs/gtk+:2 ) tk? ( >=dev-lang/tk-8.5.13 ) nas? ( >=media-libs/nas-1.4 ) alsa? ( media-libs/alsa-lib ) slang? ( sys-libs/slang ) jack? ( media-sound/jack-audio-connection-kit ) vorbis? ( media-libs/libvorbis ) flac? ( media-libs/flac ) speex? ( media-libs/speex ) ao? ( >=media-libs/libao-0.8.5 ) motif? ( >=x11-libs/motif-2.3:0 ) X? ( x11-libs/libXaw x11-libs/libXext >=media-libs/libpng-1.4.2 ) alsa? ( media-sound/alsa-utils ) app-eselect/eselect-timidity selinux? ( sec-policy/selinux-timidity )
 SLOT=0
 SRC_URI=mirror://sourceforge/timidity/TiMidity++-2.14.0.tar.xz
 _eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	elisp-common	9a16929c1a6aec7e1c903289983e114c	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
-_md5_=47f0d0a59427cccc0a27f86d082a73dc
+_md5_=a2f81c470a0bbea6f7a8e8d5eb9d3332

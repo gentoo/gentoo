@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/RubyInline
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/RubyInline/ChangeLog,v 1.24 2015/07/31 15:11:05 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/RubyInline/ChangeLog,v 1.25 2015/08/02 18:50:55 ago Exp $
+
+  02 Aug 2015; Agostino Sarubbo <ago@gentoo.org> RubyInline-3.12.3.ebuild:
+  Stable for x86, wrt bug #555924
 
   31 Jul 2015; Agostino Sarubbo <ago@gentoo.org> RubyInline-3.12.3.ebuild:
   Stable for amd64, wrt bug #555924

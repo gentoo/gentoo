@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/liberasurecode
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/liberasurecode/ChangeLog,v 1.6 2015/07/31 15:12:46 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/liberasurecode/ChangeLog,v 1.7 2015/08/02 18:47:37 ago Exp $
+
+  02 Aug 2015; Agostino Sarubbo <ago@gentoo.org> liberasurecode-1.0.8.ebuild:
+  Stable for x86, wrt bug #556020
 
   31 Jul 2015; Agostino Sarubbo <ago@gentoo.org> liberasurecode-1.0.8.ebuild:
   Stable for amd64, wrt bug #556020

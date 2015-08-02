@@ -1,6 +1,10 @@
 # ChangeLog for dev-vcs/git
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git/ChangeLog,v 1.352 2015/07/31 15:10:38 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git/ChangeLog,v 1.353 2015/08/02 18:50:16 ago Exp $
+
+  02 Aug 2015; Agostino Sarubbo <ago@gentoo.org> git-2.3.8.ebuild,
+  git-2.4.6.ebuild:
+  Stable for x86, wrt bug #556126
 
 *git-2.4.7 (31 Jul 2015)
 

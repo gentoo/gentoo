@@ -1,6 +1,9 @@
 # ChangeLog for sci-biology/mira
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/mira/ChangeLog,v 1.32 2015/07/31 15:12:30 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/mira/ChangeLog,v 1.33 2015/08/02 18:53:02 ago Exp $
+
+  02 Aug 2015; Agostino Sarubbo <ago@gentoo.org> mira-4.0.2.ebuild:
+  Stable for x86, wrt bug #556138
 
   31 Jul 2015; Agostino Sarubbo <ago@gentoo.org> mira-4.0.2.ebuild:
   Stable for amd64, wrt bug #556138

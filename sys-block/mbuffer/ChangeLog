@@ -1,6 +1,9 @@
 # ChangeLog for sys-block/mbuffer
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/mbuffer/ChangeLog,v 1.35 2015/07/31 15:12:41 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-block/mbuffer/ChangeLog,v 1.36 2015/08/02 18:40:05 ago Exp $
+
+  02 Aug 2015; Agostino Sarubbo <ago@gentoo.org> mbuffer-20150412.ebuild:
+  Stable for x86, wrt bug #556146
 
   31 Jul 2015; Agostino Sarubbo <ago@gentoo.org> mbuffer-20150412.ebuild:
   Stable for amd64, wrt bug #556146

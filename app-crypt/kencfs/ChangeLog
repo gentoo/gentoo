@@ -1,6 +1,9 @@
 # ChangeLog for app-crypt/kencfs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/kencfs/ChangeLog,v 1.14 2015/06/27 09:48:40 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/kencfs/ChangeLog,v 1.15 2015/08/02 18:55:45 ago Exp $
+
+  02 Aug 2015; Agostino Sarubbo <ago@gentoo.org> kencfs-1.5.0.ebuild:
+  Stable for x86, wrt bug #549456
 
   27 Jun 2015; Agostino Sarubbo <ago@gentoo.org> kencfs-1.5.0.ebuild:
   Stable for amd64, wrt bug #549456

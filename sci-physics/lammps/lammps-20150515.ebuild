@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/lammps/lammps-20150515.ebuild,v 1.2 2015/06/26 12:14:57 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-physics/lammps/lammps-20150515.ebuild,v 1.3 2015/08/02 18:46:44 ago Exp $
 
 EAPI=5
 
@@ -47,7 +47,7 @@ SRC_URI="http://lammps.sandia.gov/tars/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc examples gzip lammps-memalign mpi python static-libs"
 
 DEPEND="

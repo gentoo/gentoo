@@ -4,7 +4,7 @@ DESCRIPTION=GNU GRUB boot loader
 EAPI=5
 HOMEPAGE=http://www.gnu.org/software/grub/
 IUSE=debug device-mapper doc efiemu +fonts mount +multislot nls static sdl test +themes truetype libzfs grub_platforms_coreboot grub_platforms_efi-32 grub_platforms_efi-64 grub_platforms_emu grub_platforms_ieee1275 grub_platforms_loongson grub_platforms_multiboot grub_platforms_qemu grub_platforms_qemu-mips grub_platforms_pc grub_platforms_uboot grub_platforms_xen
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-3 fonts? ( GPL-2-with-font-exception ) themes? ( BitstreamVera )
 RDEPEND=app-arch/xz-utils >=sys-libs/ncurses-5.2-r5 debug? ( sdl? ( media-libs/libsdl ) ) device-mapper? ( >=sys-fs/lvm2-2.02.45 ) libzfs? ( sys-fs/zfs ) mount? ( sys-fs/fuse ) truetype? ( media-libs/freetype:2= ) ppc? ( sys-apps/ibm-powerpc-utils sys-apps/powerpc-utils ) ppc64? ( sys-apps/ibm-powerpc-utils sys-apps/powerpc-utils ) kernel_linux? ( grub_platforms_efi-32? ( sys-boot/efibootmgr ) grub_platforms_efi-64? ( sys-boot/efibootmgr ) ) !multislot? ( !sys-boot/grub:0 ) nls? ( sys-devel/gettext )
 REQUIRED_USE=grub_platforms_coreboot? ( fonts ) grub_platforms_qemu? ( fonts ) grub_platforms_ieee1275? ( fonts ) grub_platforms_loongson? ( fonts )
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=2
 SRC_URI=mirror://gnu-alpha/grub/grub-2.02~beta2.tar.xz http://dev.gentoo.org/~floppym/dist/grub-2.02_beta2-gentoo-r2.tar.xz fonts? ( mirror://gnu/unifont/unifont-7.0.06/unifont-7.0.06.pcf.gz ) themes? ( mirror://sourceforge/dejavu/dejavu-sans-ttf-2.34.zip )
 _eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	bash-completion-r1	c8399c7c7ecbcf7ed6e5bd3abb3d4af3	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	mount-boot	07784c1c862b665e1d6a3c1f47936987	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	pax-utils	dfe060cb70d89757fde5c1ff8405e950	python-any-r1	4756de53ea4d40471a582e898815a5c8	python-utils-r1	68e010c13e97b7b2c7bf403ee9c51e1b	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=f479cf915e1951e4fa3466bed2604cef
+_md5_=3e9bf16f4506dcecdcc9ace0dc8cce0f

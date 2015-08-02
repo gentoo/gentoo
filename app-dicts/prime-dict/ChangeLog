@@ -1,6 +1,9 @@
 # ChangeLog for app-dicts/prime-dict
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/prime-dict/ChangeLog,v 1.52 2015/07/31 15:12:04 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/prime-dict/ChangeLog,v 1.53 2015/08/02 18:41:18 ago Exp $
+
+  02 Aug 2015; Agostino Sarubbo <ago@gentoo.org> prime-dict-1.0.0-r2.ebuild:
+  Stable for x86, wrt bug #555836
 
   31 Jul 2015; Agostino Sarubbo <ago@gentoo.org> prime-dict-1.0.0-r2.ebuild:
   Stable for amd64, wrt bug #555836

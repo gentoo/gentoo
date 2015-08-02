@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libdvbpsi/libdvbpsi-1.2.0.ebuild,v 1.7 2015/07/30 12:37:18 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libdvbpsi/libdvbpsi-1.2.0.ebuild,v 1.8 2015/08/02 18:45:11 ago Exp $
 
 EAPI=4
 
@@ -10,7 +10,7 @@ SRC_URI="http://download.videolan.org/pub/${PN}/${PV}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 ppc ~ppc64 sparc ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 ppc ~ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="doc static-libs"
 
 RDEPEND=""

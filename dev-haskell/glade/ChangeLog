@@ -1,6 +1,9 @@
 # ChangeLog for dev-haskell/glade
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/glade/ChangeLog,v 1.15 2014/12/14 05:16:04 gienah Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/glade/ChangeLog,v 1.16 2015/08/02 19:11:32 slyfox Exp $
+
+  02 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> glade-0.12.5.0-r2.ebuild:
+  Inline 'GTK_MAJ_VER' variable value.
 
 *glade-0.12.5.0-r2 (14 Dec 2014)
 

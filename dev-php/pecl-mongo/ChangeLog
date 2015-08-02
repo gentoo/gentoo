@@ -1,6 +1,9 @@
 # ChangeLog for dev-php/pecl-mongo
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/pecl-mongo/ChangeLog,v 1.17 2015/06/27 09:48:25 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php/pecl-mongo/ChangeLog,v 1.18 2015/08/02 18:37:35 ago Exp $
+
+  02 Aug 2015; Agostino Sarubbo <ago@gentoo.org> pecl-mongo-1.6.3.ebuild:
+  Stable for x86, wrt bug #530938
 
   27 Jun 2015; Agostino Sarubbo <ago@gentoo.org> pecl-mongo-1.6.3.ebuild:
   Stable for amd64, wrt bug #530938

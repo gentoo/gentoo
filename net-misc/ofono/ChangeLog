@@ -1,6 +1,9 @@
 # ChangeLog for net-misc/ofono
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/ofono/ChangeLog,v 1.71 2015/07/30 12:32:25 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ofono/ChangeLog,v 1.72 2015/08/02 18:41:53 ago Exp $
+
+  02 Aug 2015; Agostino Sarubbo <ago@gentoo.org> ofono-1.16.ebuild:
+  Stable for x86, wrt bug #552008
 
   30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> ofono-1.16.ebuild:
   Stable for sparc, wrt bug #552008

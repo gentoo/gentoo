@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/pandas
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pandas/ChangeLog,v 1.54 2015/07/31 15:10:54 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pandas/ChangeLog,v 1.55 2015/08/02 18:52:44 ago Exp $
+
+  02 Aug 2015; Agostino Sarubbo <ago@gentoo.org> pandas-0.16.2.ebuild:
+  Stable for x86, wrt bug #556040
 
   31 Jul 2015; Agostino Sarubbo <ago@gentoo.org> pandas-0.16.2.ebuild:
   Stable for amd64, wrt bug #556040
