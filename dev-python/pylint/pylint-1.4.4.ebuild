@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pylint/pylint-1.4.4.ebuild,v 1.1 2015/07/02 20:20:41 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pylint/pylint-1.4.4.ebuild,v 1.2 2015/08/03 00:57:28 alunduil Exp $
 
 EAPI=5
 
@@ -32,7 +32,7 @@ DISTUTILS_IN_SOURCE_BUILD=1
 
 python_compile_all() {
 	# selection of straight html triggers a trivial annoying bug, we skirt it
-	use doc && emake -C doc singlehtml
+	use doc && PYTHONPATH="${S}" emake -e -C doc singlehtml
 }
 
 python_test() {

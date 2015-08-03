@@ -1,21 +1,26 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/subtle/subtle-0.11.3224.ebuild,v 1.1 2012/06/20 19:33:35 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/subtle/subtle-0.11.3244.ebuild,v 1.1 2015/08/03 01:07:21 radhermit Exp $
 
-EAPI="4"
-USE_RUBY="ruby19"
+EAPI="5"
+USE_RUBY="ruby20 ruby21 ruby22"
 
 inherit ruby-ng toolchain-funcs
 
-GR="xi"
+if [[ ${PV} == "9999" ]]; then
+	EHG_REPO_URI="http://hg.subforge.org/subtle"
+	EHG_CHECKOUT_DIR=${S}/all
+	inherit mercurial
+else
+	SRC_URI="http://dev.gentoo.org/~radhermit/dist/${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+fi
 
 DESCRIPTION="A manual tiling window manager"
 HOMEPAGE="http://subforge.org/projects/subtle/wiki"
-SRC_URI="http://subforge.org/attachments/download/81/${P}-${GR}.tbz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 IUSE="debug doc +xft xinerama xpm +xrandr +xtest"
 
 RDEPEND="x11-libs/libX11
@@ -30,9 +35,13 @@ DEPEND="${RDEPEND}
 ruby_add_rdepend "dev-ruby/archive-tar-minitar"
 ruby_add_bdepend "dev-ruby/rake"
 
-RUBY_S="${P}-${GR}"
-
-RUBY_PATCHES=( "${FILESDIR}"/${P}-flags.patch )
+all_ruby_unpack() {
+	if [[ ${PV} == "9999" ]]; then
+		mercurial_src_unpack
+	else
+		default
+	fi
+}
 
 each_ruby_configure() {
 	local myconf

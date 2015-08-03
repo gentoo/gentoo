@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/pylint
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pylint/ChangeLog,v 1.132 2015/07/02 20:20:41 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pylint/ChangeLog,v 1.133 2015/08/03 00:57:28 alunduil Exp $
+
+  03 Aug 2015; Alex Brandt <alunduil@gentoo.org> pylint-1.4.4.ebuild:
+  add ${S} to PYTHONPATH for doc build  The sphinx build wasn't able to locate a
+  pylint module due to the module not being in the path.  This fixes bug
+  #519408.
 
 *pylint-1.4.4 (02 Jul 2015)
 
