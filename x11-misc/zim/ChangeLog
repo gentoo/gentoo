@@ -1,6 +1,10 @@
 # ChangeLog for x11-misc/zim
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/zim/ChangeLog,v 1.26 2015/04/08 17:27:17 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/zim/ChangeLog,v 1.27 2015/08/03 20:18:38 sping Exp $
+
+  03 Aug 2015; Sebastian Pipping <sping@gentoo.org> zim-0.61.ebuild,
+  zim-0.62.ebuild:
+  Fix license according to README.txt (bug #556334)
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> zim-0.61.ebuild:
   Drop old Python implementations

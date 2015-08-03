@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/zim/zim-0.61.ebuild,v 1.2 2015/04/08 17:27:17 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/zim/zim-0.61.ebuild,v 1.3 2015/08/03 20:18:38 sping Exp $
 
 EAPI=5
 
@@ -14,7 +14,7 @@ DESCRIPTION="A desktop wiki"
 HOMEPAGE="http://zim-wiki.org/"
 SRC_URI="http://zim-wiki.org/downloads/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="BSD GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"

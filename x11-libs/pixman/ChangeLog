@@ -1,6 +1,14 @@
 # ChangeLog for x11-libs/pixman
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/pixman/ChangeLog,v 1.199 2015/03/14 14:19:22 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/pixman/ChangeLog,v 1.201 2015/08/03 19:42:23 mrueg Exp $
+
+  03 Aug 2015; Manuel Rüger <mrueg@gentoo.org> -pixman-0.32.4.ebuild:
+  Version bump. Remove old.
+
+*pixman-0.33.2 (03 Aug 2015)
+
+  03 Aug 2015; Manuel Rüger <mrueg@gentoo.org> +pixman-0.33.2.ebuild:
+  Version bump. Remove old.
 
   14 Mar 2015; Markus Meier <maekke@gentoo.org> pixman-0.32.6.ebuild:
   arm stable, bug #530652
