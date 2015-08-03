@@ -1,6 +1,13 @@
 # ChangeLog for app-backup/tsm
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/tsm/ChangeLog,v 1.23 2014/11/25 13:01:35 dilfridge Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-backup/tsm/ChangeLog,v 1.24 2015/08/03 06:40:22 jlec Exp $
+
+*tsm-7.1.2.0 (03 Aug 2015)
+
+  03 Aug 2015; Justin Lecher <jlec@gentoo.org> +tsm-7.1.2.0.ebuild,
+  metadata.xml:
+  Version Bump; thanks Marius Brehler for the work https://github.com/gentoo
+  /gentoo-portage-rsync-mirror/pull/190, bug #529032
 
   25 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org> metadata.xml:
   add myself to metadata as co-maintainer

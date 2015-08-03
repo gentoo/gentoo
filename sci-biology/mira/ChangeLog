@@ -1,6 +1,9 @@
 # ChangeLog for sci-biology/mira
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/mira/ChangeLog,v 1.33 2015/08/02 18:53:02 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/mira/ChangeLog,v 1.34 2015/08/03 07:08:05 jlec Exp $
+
+  03 Aug 2015; Justin Lecher <jlec@gentoo.org> -mira-3.9.18.ebuild:
+  Drop old; obsoletes bug #555044
 
   02 Aug 2015; Agostino Sarubbo <ago@gentoo.org> mira-4.0.2.ebuild:
   Stable for x86, wrt bug #556138

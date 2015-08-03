@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/blinker
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/blinker/ChangeLog,v 1.15 2015/04/08 08:05:10 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/blinker/ChangeLog,v 1.16 2015/08/03 07:28:50 idella4 Exp $
+
+*blinker-1.4 (03 Aug 2015)
+
+  03 Aug 2015; Ian Delaney <idella4@gentoo.org> +blinker-1.4.ebuild:
+  bump
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> blinker-1.3.ebuild:
   Drop old Python implementations

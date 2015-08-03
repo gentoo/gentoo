@@ -1,6 +1,13 @@
 # ChangeLog for sci-libs/liborigin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/liborigin/ChangeLog,v 1.36 2015/08/02 18:52:07 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/liborigin/ChangeLog,v 1.37 2015/08/03 07:07:04 jlec Exp $
+
+  03 Aug 2015; Justin Lecher <jlec@gentoo.org>
+  -files/liborigin-20080225-makefile.patch,
+  -files/liborigin-20100420-build-parsers.patch,
+  -files/liborigin-20100420-gcc45.patch, -files/liborigin-20100630-gcc45.patch,
+  -liborigin-20100903.ebuild:
+  Drop old
 
   02 Aug 2015; Agostino Sarubbo <ago@gentoo.org> liborigin-20110829.ebuild:
   Stable for x86, wrt bug #553132
