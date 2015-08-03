@@ -1,6 +1,16 @@
 # ChangeLog for app-misc/cdctl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/cdctl/ChangeLog,v 1.13 2015/06/09 11:37:58 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/cdctl/ChangeLog,v 1.15 2015/08/03 14:37:47 polynomial-c Exp $
+
+  03 Aug 2015; Lars Wendler <polynomial-c@gentoo.org>
+  files/cdctl-0.16-Makefile.in.patch:
+  Fixed small error in previously committed patch.
+
+*cdctl-0.16 (03 Aug 2015)
+
+  03 Aug 2015; Lars Wendler <polynomial-c@gentoo.org> +cdctl-0.16.ebuild,
+  +files/cdctl-0.16-Makefile.in.patch:
+  Version bump.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

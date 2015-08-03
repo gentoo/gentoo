@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/tesseract/tesseract-3.04.00-r1.ebuild,v 1.1 2015/08/03 12:10:06 tomka Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/tesseract/tesseract-3.04.00-r1.ebuild,v 1.2 2015/08/03 15:29:30 tomka Exp $
 
 EAPI=5
 
@@ -75,6 +75,13 @@ PATCHES=(
 	"${FILESDIR}/tesseract-2.04-gcc47.patch"
 )
 
+src_unpack() {
+	unpack ${PV}.tar.gz
+	use doc && unpack tesseract-ocr-3.02.02-doc-html.tar.gz
+	mkdir "${WORKDIR}"/tesseract-ocr/tessdata || die
+	cp "${DISTDIR}"/*.traineddata "${WORKDIR}"/tesseract-ocr/tessdata/ || die
+}
+
 src_configure() {
 	local myeconfargs=(
 		$(use_enable opencl) \
@@ -89,7 +96,7 @@ src_install() {
 
 	if use examples; then
 		insinto /usr/share/doc/${PF}/examples
-		doins eurotext.tif phototest.tif
+		doins testing/eurotext.tif testing/phototest.tif
 	fi
 
 	if use doc; then
