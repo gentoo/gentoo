@@ -1,0 +1,32 @@
+From d963b4883c9be2911d791e7daa3ed0f495bc5181 Mon Sep 17 00:00:00 2001
+From: Dilvish-fo <dilvish.fo@gmail.com>
+Date: Sat, 11 Apr 2015 10:25:55 -0700
+Subject: [PATCH] work-around for a boost 1.57 bug (missing a shard_ptr
+ serialization include)
+
+---
+ util/Process.h | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/util/Process.h b/util/Process.h
+index ff72445..f9927cc 100644
+--- a/util/Process.h
++++ b/util/Process.h
+@@ -3,12 +3,16 @@
+ #define _Process_h_
+ 
+ // HACK: The following two includes work around a bug in boost 1.56,
+-// which uses them without including. They can be removed once the bug is gone.
++// which uses them without including.
+ #include <boost/version.hpp>
+ #if BOOST_VERSION == 105600
+ #include <boost/serialization/singleton.hpp> // This
+ #include <boost/serialization/extended_type_info.hpp> //This
+ #endif
++// HACK: For a similar boost 1.57 bug
++#if BOOST_VERSION == 105700
++#include <boost/serialization/type_info_implementation.hpp> // This
++#endif
+ 
+ #include <boost/serialization/shared_ptr.hpp>
+ 

@@ -1,6 +1,9 @@
 # ChangeLog for dev-lang/spidermonkey
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/spidermonkey/ChangeLog,v 1.168 2015/08/02 09:59:49 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/spidermonkey/ChangeLog,v 1.169 2015/08/03 11:56:13 ago Exp $
+
+  03 Aug 2015; Agostino Sarubbo <ago@gentoo.org> spidermonkey-1.7.0-r3.ebuild:
+  Stable for amd64, wrt bug #555086
 
   02 Aug 2015; Pacho Ramos <pacho@gentoo.org> spidermonkey-1.7.0-r3.ebuild:
   sparc stable wrt bug #555086

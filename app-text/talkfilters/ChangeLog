@@ -1,6 +1,9 @@
 # ChangeLog for app-text/talkfilters
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/talkfilters/ChangeLog,v 1.35 2015/07/03 07:46:32 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/talkfilters/ChangeLog,v 1.36 2015/08/03 11:55:58 ago Exp $
+
+  03 Aug 2015; Agostino Sarubbo <ago@gentoo.org> talkfilters-2.3.8-r1.ebuild:
+  Stable for amd64, wrt bug #556552
 
 *talkfilters-2.3.8-r1 (03 Jul 2015)
 

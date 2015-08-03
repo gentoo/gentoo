@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/talkfilters/talkfilters-2.3.8-r1.ebuild,v 1.1 2015/07/03 07:46:32 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/talkfilters/talkfilters-2.3.8-r1.ebuild,v 1.2 2015/08/03 11:55:58 ago Exp $
 
 EAPI=5
 
@@ -12,7 +12,7 @@ SRC_URI="http://www.hyperrealm.com/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~mips ~ppc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~hppa ~mips ~ppc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE=""
 
 PATCHES=(

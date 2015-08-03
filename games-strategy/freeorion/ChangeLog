@@ -1,6 +1,11 @@
 # ChangeLog for games-strategy/freeorion
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/freeorion/ChangeLog,v 1.16 2015/05/26 07:49:18 tomka Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/freeorion/ChangeLog,v 1.17 2015/08/03 11:36:48 tomka Exp $
+
+  03 Aug 2015; Thomas Kahle <tomka@gentoo.org>
+  +files/freeorion-0.4.5_pre-boost-1.57.patch,
+  +files/freeorion-0.4.5_pre-boost-1.58.patch, freeorion-0.4.5_pre.ebuild:
+  Fix compatibility with boost-1.5{7,8}
 
   26 May 2015; Thomas Kahle <tomka@gentoo.org> freeorion-0.4.5_pre.ebuild:
   Add missing glew dependency (bug 550382)

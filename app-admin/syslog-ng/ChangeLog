@@ -1,6 +1,9 @@
 # ChangeLog for app-admin/syslog-ng
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/syslog-ng/ChangeLog,v 1.431 2015/07/13 14:30:06 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/syslog-ng/ChangeLog,v 1.432 2015/08/03 11:55:43 ago Exp $
+
+  03 Aug 2015; Agostino Sarubbo <ago@gentoo.org> syslog-ng-3.6.4.ebuild:
+  Stable for amd64, wrt bug #556546
 
   13 Jul 2015; Michael Sterrett <mr_bones_@gentoo.org> -syslog-ng-3.6.3.ebuild:
   old

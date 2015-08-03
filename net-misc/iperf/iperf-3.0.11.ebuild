@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/iperf/iperf-3.0.11.ebuild,v 1.5 2015/08/02 10:00:06 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/iperf/iperf-3.0.11.ebuild,v 1.6 2015/08/03 11:56:23 ago Exp $
 
 EAPI=5
 inherit autotools eutils
@@ -10,7 +10,7 @@ LICENSE="BSD"
 SLOT="3"
 HOMEPAGE="https://github.com/esnet/iperf/"
 SRC_URI="https://codeload.github.com/esnet/${PN}/tar.gz/${PV} -> ${P}.tar.gz"
-KEYWORDS="~amd64 ~arm hppa ~mips ppc ppc64 sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~m68k-mint"
+KEYWORDS="amd64 ~arm hppa ~mips ppc ppc64 sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~m68k-mint"
 IUSE="static-libs"
 
 src_prepare() {
