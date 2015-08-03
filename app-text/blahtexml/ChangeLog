@@ -1,6 +1,12 @@
 # ChangeLog for app-text/blahtexml
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/blahtexml/ChangeLog,v 1.4 2014/08/15 13:58:49 blueness Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/blahtexml/ChangeLog,v 1.6 2015/08/03 13:50:00 ago Exp $
+
+  03 Aug 2015; Agostino Sarubbo <ago@gentoo.org> blahtexml-0.9.ebuild:
+  Stable for x86, wrt bug #555846
+
+  03 Aug 2015; Agostino Sarubbo <ago@gentoo.org> blahtexml-0.9.ebuild:
+  Stable for amd64, wrt bug #555846
 
   15 Aug 2014; Anthony G. Basile <blueness@gentoo.org> blahtexml-0.9.ebuild:
   Keyword ~ppc ~ppc64, bug #511424

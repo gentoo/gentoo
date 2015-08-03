@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/unbound/unbound-1.5.2.ebuild,v 1.4 2015/06/19 17:14:49 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/unbound/unbound-1.5.4.ebuild,v 1.1 2015/08/03 13:59:35 mschiff Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )

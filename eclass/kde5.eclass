@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/kde5.eclass,v 1.13 2015/07/06 15:48:51 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/kde5.eclass,v 1.14 2015/08/03 14:03:00 kensington Exp $
 
 # @ECLASS: kde5.eclass
 # @MAINTAINER:
@@ -513,6 +513,12 @@ kde5_src_install() {
 	fi
 
 	cmake-utils_src_install
+
+	# We don't want ${PREFIX}/share/doc/HTML to be compressed,
+	# because then khelpcenter can't find the docs
+	if [[ -d ${ED}/${PREFIX}/share/doc/HTML ]]; then
+		docompress -x ${PREFIX}/share/doc/HTML
+	fi
 }
 
 # @FUNCTION: kde5_pkg_preinst

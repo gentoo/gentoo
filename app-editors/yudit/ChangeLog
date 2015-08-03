@@ -1,6 +1,11 @@
 # ChangeLog for app-editors/yudit
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/yudit/ChangeLog,v 1.1 2012/10/07 12:54:22 ulm Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-editors/yudit/ChangeLog,v 1.2 2015/08/03 13:47:59 polynomial-c Exp $
+
+*yudit-2.9.6 (03 Aug 2015)
+
+  03 Aug 2015; Lars Wendler <polynomial-c@gentoo.org> +yudit-2.9.6.ebuild:
+  Version bump.
 
   03 Sep 2012; Michael Palimaka <kensington@gentoo.org>
   -yudit-2.8.1_beta7.ebuild:

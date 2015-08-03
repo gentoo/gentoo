@@ -1,18 +1,17 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/obnam/obnam-1.7.4.ebuild,v 1.4 2015/04/08 07:30:30 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-backup/obnam/obnam-1.13.ebuild,v 1.1 2015/08/03 13:44:48 mschiff Exp $
 
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
-MY_P="${PN}_${PV}.orig"
 
 inherit eutils distutils-r1
 
 DESCRIPTION="A backup program that supports encryption and deduplication"
-HOMEPAGE="http://liw.fi/obnam/"
-SRC_URI="http://code.liw.fi/debian/pool/main/o/${PN}/${MY_P}.tar.gz"
+HOMEPAGE="http://obnam.org/"
+SRC_URI="http://git.liw.fi/cgi-bin/cgit/cgit.cgi/obnam/snapshot/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -23,7 +22,9 @@ DEPEND="${PYTHON_DEPS}
 	dev-python/cliapp
 	dev-python/fuse-python
 	dev-python/larch
-	<dev-python/paramiko-1.13
+	!=dev-python/paramiko-1.13.0
+	|| ( <dev-python/paramiko-1.13.0 >dev-python/paramiko-1.13.0 )
+	dev-python/pyyaml
 	dev-python/tracing
 	dev-python/ttystatus
 	"

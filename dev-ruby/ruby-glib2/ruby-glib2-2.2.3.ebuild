@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-glib2/ruby-glib2-2.2.3.ebuild,v 1.5 2015/07/23 20:40:40 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-glib2/ruby-glib2-2.2.3.ebuild,v 1.7 2015/08/03 13:48:51 ago Exp $
 
 EAPI=5
 USE_RUBY="ruby19 ruby20"
@@ -8,7 +8,7 @@ USE_RUBY="ruby19 ruby20"
 inherit ruby-ng-gnome2
 
 DESCRIPTION="Ruby Glib2 bindings"
-KEYWORDS="~amd64 ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ~ppc64 x86"
 IUSE=""
 RDEPEND+=" >=dev-libs/glib-2"
 DEPEND+=" >=dev-libs/glib-2"

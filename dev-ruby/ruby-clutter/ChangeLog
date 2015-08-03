@@ -1,6 +1,12 @@
 # ChangeLog for dev-ruby/ruby-clutter
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-clutter/ChangeLog,v 1.11 2015/07/09 15:33:00 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-clutter/ChangeLog,v 1.13 2015/08/03 13:48:27 ago Exp $
+
+  03 Aug 2015; Agostino Sarubbo <ago@gentoo.org> ruby-clutter-2.2.3.ebuild:
+  Stable for x86, wrt bug #554164
+
+  03 Aug 2015; Agostino Sarubbo <ago@gentoo.org> ruby-clutter-2.2.3.ebuild:
+  Stable for amd64, wrt bug #554164
 
   09 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> ruby-clutter-2.2.3-r1.ebuild,
   ruby-clutter-2.2.3.ebuild, ruby-clutter-2.2.5.ebuild:

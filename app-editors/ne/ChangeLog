@@ -1,6 +1,11 @@
 # ChangeLog for app-editors/ne
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/ne/ChangeLog,v 1.57 2014/11/05 11:28:53 jer Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-editors/ne/ChangeLog,v 1.58 2015/08/03 13:37:08 polynomial-c Exp $
+
+*ne-3.0.1 (03 Aug 2015)
+
+  03 Aug 2015; Lars Wendler <polynomial-c@gentoo.org> +ne-3.0.1.ebuild:
+  Version bump (bug #550230).
 
   05 Nov 2014; Jeroen Roovers <jer@gentoo.org> -ne-2.3.ebuild,
   -files/ne-2.1-asneeded.patch:

@@ -1,6 +1,14 @@
 # ChangeLog for dev-ruby/ruby-gtksourceview3
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gtksourceview3/ChangeLog,v 1.10 2015/07/11 05:58:59 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gtksourceview3/ChangeLog,v 1.12 2015/08/03 13:49:20 ago Exp $
+
+  03 Aug 2015; Agostino Sarubbo <ago@gentoo.org>
+  ruby-gtksourceview3-2.2.3.ebuild:
+  Stable for x86, wrt bug #554164
+
+  03 Aug 2015; Agostino Sarubbo <ago@gentoo.org>
+  ruby-gtksourceview3-2.2.3.ebuild:
+  Stable for amd64, wrt bug #554164
 
 *ruby-gtksourceview3-2.2.5 (11 Jul 2015)
 

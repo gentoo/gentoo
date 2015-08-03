@@ -1,6 +1,9 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1742 2015/08/02 23:12:16 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1743 2015/08/03 14:03:00 kensington Exp $
+
+  03 Aug 2015; Michael Palimaka <kensington@gentoo.org> kde5.eclass:
+  Do not compress handbooks.
 
   02 Aug 2015; James Le Cuirot <chewi@gentoo.org> java-utils-2.eclass:
   Allow java-pkg_get-javac to be called alone. Fixes bug #172594. Thanks to

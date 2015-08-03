@@ -1,6 +1,14 @@
 # ChangeLog for dev-ruby/ruby-clutter-gstreamer
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-clutter-gstreamer/ChangeLog,v 1.10 2015/07/11 06:49:00 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-clutter-gstreamer/ChangeLog,v 1.12 2015/08/03 13:48:31 ago Exp $
+
+  03 Aug 2015; Agostino Sarubbo <ago@gentoo.org>
+  ruby-clutter-gstreamer-2.2.3.ebuild:
+  Stable for x86, wrt bug #554164
+
+  03 Aug 2015; Agostino Sarubbo <ago@gentoo.org>
+  ruby-clutter-gstreamer-2.2.3.ebuild:
+  Stable for amd64, wrt bug #554164
 
   11 Jul 2015; Hans de Graaff <graaff@gentoo.org>
   ruby-clutter-gstreamer-2.2.5.ebuild:
