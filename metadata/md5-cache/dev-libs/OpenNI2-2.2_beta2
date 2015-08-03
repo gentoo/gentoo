@@ -9,5 +9,5 @@ LICENSE=Apache-2.0
 RDEPEND=virtual/libusb:1 virtual/libudev virtual/jpeg:0 opengl? ( media-libs/freeglut ) java? ( >=virtual/jre-1.5 ) java? ( >=dev-java/java-config-2.2.0 )
 SLOT=0
 SRC_URI=https://github.com/occipital/OpenNI2/archive/2.2-beta2.tar.gz -> OpenNI2-2.2_beta2.tar.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	java-pkg-opt-2	f9bbbe5092225a2059aa9e6a3a2b52f1	java-utils-2	6113171ebcec94726b10cc66f3e0451b	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	java-pkg-opt-2	f9bbbe5092225a2059aa9e6a3a2b52f1	java-utils-2	240e3f28c6b42b9f36d3c36b8b27fbb2	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=8b4786af1a1b0b4ebb2007194475dff8

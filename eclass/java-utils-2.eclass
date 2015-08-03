@@ -6,7 +6,7 @@
 #
 # Licensed under the GNU General Public License, v2
 #
-# $Header: /var/cvsroot/gentoo-x86/eclass/java-utils-2.eclass,v 1.168 2015/07/31 07:56:17 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/java-utils-2.eclass,v 1.169 2015/08/02 23:12:16 chewi Exp $
 
 # @ECLASS: java-utils-2.eclass
 # @MAINTAINER:
@@ -262,14 +262,14 @@ java-pkg_addres() {
 	popd > /dev/null || die "popd failed"
 }
 
-# @FUNCTION: java-pkg_rm_files 
+# @FUNCTION: java-pkg_rm_files
 # @USAGE: java-pkg_rm_files File1.java File2.java ...
 # @DESCRIPTION:
 # Remove unneeded files in ${S}.
 #
 # Every now and then, you'll run into situations whereby a file needs removing,
 # be it a unit test or a regular java class.
-# 
+#
 # You can use this function by either:
 # - calling it yourself in java_prepare() and feeding java-pkg_rm_files with
 # the list of files you wish to remove.
@@ -1583,7 +1583,7 @@ java-pkg_get-target() {
 java-pkg_get-javac() {
 	debug-print-function ${FUNCNAME} $*
 
-
+	java-pkg_init-compiler_
 	local compiler="${GENTOO_COMPILER}"
 
 	local compiler_executable
@@ -1602,18 +1602,15 @@ java-pkg_get-javac() {
 			export JAVAC=${old_javac}
 
 			if [[ -z ${compiler_executable} ]]; then
-				echo "JAVAC is empty or undefined in ${compiler_env}"
-				return 1
+				die "JAVAC is empty or undefined in ${compiler_env}"
 			fi
 
 			# check that it's executable
 			if [[ ! -x ${compiler_executable} ]]; then
-				echo "${compiler_executable} doesn't exist, or isn't executable"
-				return 1
+				die "${compiler_executable} doesn't exist, or isn't executable"
 			fi
 		else
-			echo "Could not find environment file for ${compiler}"
-			return 1
+			die "Could not find environment file for ${compiler}"
 		fi
 	fi
 	echo ${compiler_executable}
@@ -1638,9 +1635,7 @@ java-pkg_javac-args() {
 	debug-print "want target: ${want_target}"
 
 	if [[ -z "${want_source}" || -z "${want_target}" ]]; then
-		debug-print "could not find valid -source/-target values for javac"
-		echo "Could not find valid -source/-target values for javac"
-		return 1
+		die "Could not find valid -source/-target values for javac"
 	else
 		echo "${source_str} ${target_str}"
 	fi
@@ -2006,21 +2001,11 @@ eant() {
 ejavac() {
 	debug-print-function ${FUNCNAME} $*
 
-	java-pkg_init-compiler_
-
 	local compiler_executable
 	compiler_executable=$(java-pkg_get-javac)
-	if [[ ${?} != 0 ]]; then
-		eerror "There was a problem determining compiler: ${compiler_executable}"
-		die "get-javac failed"
-	fi
 
 	local javac_args
 	javac_args="$(java-pkg_javac-args)"
-	if [[ ${?} != 0 ]]; then
-		eerror "There was a problem determining JAVACFLAGS: ${javac_args}"
-		die "java-pkg_javac-args failed"
-	fi
 
 	[[ -n ${JAVA_PKG_DEBUG} ]] && echo ${compiler_executable} ${javac_args} "${@}"
 	${compiler_executable} ${javac_args} "${@}" || die "ejavac failed"
@@ -2626,10 +2611,6 @@ java-pkg_switch-vm() {
 		export JAVA=$(java-config --java)
 		export JAVAC=$(java-config --javac)
 		JAVACFLAGS="$(java-pkg_javac-args)"
-		if [[ ${?} != 0 ]]; then
-			eerror "There was a problem determining JAVACFLAGS: ${JAVACFLAGS}"
-			die "java-pkg_javac-args failed"
-		fi
 		[[ -n ${JAVACFLAGS_EXTRA} ]] && JAVACFLAGS="${JAVACFLAGS_EXTRA} ${JAVACFLAGS}"
 		export JAVACFLAGS
 

@@ -1,6 +1,13 @@
 # ChangeLog for sys-cluster/openmpi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/openmpi/ChangeLog,v 1.141 2015/08/02 09:55:08 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/openmpi/ChangeLog,v 1.142 2015/08/02 23:30:00 chewi Exp $
+
+*openmpi-1.8.7-r1 (02 Aug 2015)
+
+  02 Aug 2015; James Le Cuirot <chewi@gentoo.org> +openmpi-1.8.7-r1.ebuild,
+  -openmpi-1.8.7.ebuild:
+  Explicitly support Java using the appropriate eclass. Thanks to monsieurp for
+  the initial patch. Fixes bug #542700.
 
   02 Aug 2015; Pacho Ramos <pacho@gentoo.org> openmpi-1.8.4-r4.ebuild:
   sparc stable wrt bug #525534

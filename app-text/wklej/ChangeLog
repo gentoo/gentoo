@@ -1,6 +1,9 @@
 # ChangeLog for app-text/wklej
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/wklej/ChangeLog,v 1.28 2015/01/18 23:14:57 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/wklej/ChangeLog,v 1.29 2015/08/02 23:27:12 mrueg Exp $
+
+  02 Aug 2015; Manuel Rüger <mrueg@gentoo.org> -wklej-0.2.1.ebuild:
+  Remove old.
 
 *wklej-0.2.1-r1 (18 Jan 2015)
 

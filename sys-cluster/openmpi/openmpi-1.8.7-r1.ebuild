@@ -1,12 +1,12 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/openmpi/openmpi-1.8.7.ebuild,v 1.1 2015/07/17 16:18:16 jsbronder Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/openmpi/openmpi-1.8.7-r1.ebuild,v 1.1 2015/08/02 23:30:00 chewi Exp $
 
 EAPI=5
 
 FORTRAN_NEEDED=fortran
 
-inherit cuda eutils flag-o-matic fortran-2 toolchain-funcs versionator
+inherit cuda eutils flag-o-matic fortran-2 java-pkg-opt-2 multilib toolchain-funcs versionator
 
 MY_P=${P/-mpi}
 S=${WORKDIR}/${MY_P}
@@ -35,7 +35,7 @@ SRC_URI="http://www.open-mpi.org/software/ompi/v$(get_version_component_range 1-
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux"
-IUSE="cma cuda +cxx elibc_FreeBSD fortran heterogeneous ipv6 mpi-threads numa romio threads vt
+IUSE="cma cuda +cxx elibc_FreeBSD fortran heterogeneous ipv6 +java mpi-threads numa romio threads vt
 	${IUSE_OPENMPI_FABRICS} ${IUSE_OPENMPI_RM} ${IUSE_OPENMPI_OFED_FEATURES}"
 
 REQUIRED_USE="openmpi_rm_slurm? ( !openmpi_rm_pbs )
@@ -54,7 +54,7 @@ MPI_UNCLASSED_DEP_STR="
 		!app-text/lcdf-typetools
 	)"
 
-RDEPEND="
+CDEPEND="
 	!sys-cluster/mpich
 	!sys-cluster/mpich2
 	!sys-cluster/mpiexec
@@ -70,12 +70,17 @@ RDEPEND="
 	openmpi_fabrics_psm? ( sys-infiniband/infinipath-psm )
 	openmpi_rm_pbs? ( sys-cluster/torque )
 	openmpi_rm_slurm? ( sys-cluster/slurm )
-	openmpi_ofed_features_rdmacm? ( sys-infiniband/librdmacm )
-	"
-DEPEND="${RDEPEND}"
+	openmpi_ofed_features_rdmacm? ( sys-infiniband/librdmacm )"
+
+RDEPEND="${CDEPEND}
+	java? ( >=virtual/jre-1.6 )"
+
+DEPEND="${CDEPEND}
+	java? ( >=virtual/jdk-1.6 )"
 
 pkg_setup() {
 	fortran-2_pkg_setup
+	java-pkg-opt-2_pkg_setup
 
 	if use mpi-threads; then
 		echo
@@ -116,6 +121,13 @@ src_configure() {
 		myconf+=(--enable-mpi-fortran=no)
 	fi
 
+	if use java; then
+		# We must always build with the right -source and -target
+		# flags. Passing flags to javac isn't explicitly supported here
+		# but we can cheat by overriding the configure test for javac.
+		export ac_cv_path_JAVAC="$(java-pkg_get-javac) $(java-pkg_javac-args)"
+	fi
+
 	! use vt && myconf+=(--enable-contrib-no-build=vt)
 
 	econf "${myconf[@]}" \
@@ -137,7 +149,9 @@ src_configure() {
 		$(use_enable openmpi_ofed_features_dynamic-sl openib-dynamic-sl) \
 		$(use_enable openmpi_ofed_features_failover btl-openib-failover) \
 		$(use_with openmpi_rm_pbs tm) \
-		$(use_with openmpi_rm_slurm slurm)
+		$(use_with openmpi_rm_slurm slurm) \
+		$(use_enable java) \
+		$(use_enable java mpi-java)
 }
 
 src_install () {
@@ -151,6 +165,14 @@ src_install () {
 
 	# Remove la files, no static libs are installed and we have pkg-config
 	find "${ED}"/usr/$(get_libdir)/ -type f -name '*.la' -delete
+
+	if use java; then
+		local mpi_jar="${ED}"/usr/$(get_libdir)/mpi.jar
+		java-pkg_dojar "${mpi_jar}"
+		# We don't want to install the jar file twice
+		# so let's clean after ourselves.
+		rm "${mpi_jar}" || die
+	fi
 
 	dodoc README AUTHORS NEWS VERSION || die
 }

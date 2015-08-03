@@ -1,6 +1,9 @@
 # ChangeLog for media-sound/gmorgan
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/gmorgan/ChangeLog,v 1.31 2012/03/18 15:46:39 armin76 Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/gmorgan/ChangeLog,v 1.32 2015/08/02 23:21:08 mrueg Exp $
+
+  02 Aug 2015; Manuel Rüger <mrueg@gentoo.org> -gmorgan-0.25-r1.ebuild:
+  Remove old.
 
   18 Mar 2012; Raúl Porcel <armin76@gentoo.org> gmorgan-0.25-r1.ebuild,
   gmorgan-0.39.ebuild:

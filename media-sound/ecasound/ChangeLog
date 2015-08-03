@@ -1,6 +1,9 @@
 # ChangeLog for media-sound/ecasound
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/ecasound/ChangeLog,v 1.68 2014/01/04 05:08:29 radhermit Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/ecasound/ChangeLog,v 1.69 2015/08/02 23:19:33 mrueg Exp $
+
+  02 Aug 2015; Manuel Rüger <mrueg@gentoo.org> -ecasound-2.8.1.ebuild:
+  Remove old.
 
 *ecasound-2.9.1 (04 Jan 2014)
 
