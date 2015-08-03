@@ -1,0 +1,82 @@
+From 5e0c290415b9d57077a86e70c8e6a058868334d3 Mon Sep 17 00:00:00 2001
+From: Stefan Hajnoczi <stefanha@redhat.com>
+Date: Wed, 15 Jul 2015 18:16:58 +0100
+Subject: [PATCH 1/7] rtl8139: avoid nested ifs in IP header parsing
+
+Transmit offload needs to parse packet headers.  If header fields have
+unexpected values the offload processing is skipped.
+
+The code currently uses nested ifs because there is relatively little
+input validation.  The next patches will add missing input validation
+and a goto label is more appropriate to avoid deep if statement nesting.
+
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+---
+ hw/net/rtl8139.c | 41 ++++++++++++++++++++++-------------------
+ 1 file changed, 22 insertions(+), 19 deletions(-)
+
+diff --git a/hw/net/rtl8139.c b/hw/net/rtl8139.c
+index 5f0197c..91ba33b 100644
+--- a/hw/net/rtl8139.c
++++ b/hw/net/rtl8139.c
+@@ -2174,28 +2174,30 @@ static int rtl8139_cplus_transmit_one(RTL8139State *s)
+             size_t   eth_payload_len  = 0;
+ 
+             int proto = be16_to_cpu(*(uint16_t *)(saved_buffer + 12));
+-            if (proto == ETH_P_IP)
++            if (proto != ETH_P_IP)
+             {
+-                DPRINTF("+++ C+ mode has IP packet\n");
+-
+-                /* not aligned */
+-                eth_payload_data = saved_buffer + ETH_HLEN;
+-                eth_payload_len  = saved_size   - ETH_HLEN;
+-
+-                ip = (ip_header*)eth_payload_data;
+-
+-                if (IP_HEADER_VERSION(ip) != IP_HEADER_VERSION_4) {
+-                    DPRINTF("+++ C+ mode packet has bad IP version %d "
+-                        "expected %d\n", IP_HEADER_VERSION(ip),
+-                        IP_HEADER_VERSION_4);
+-                    ip = NULL;
+-                } else {
+-                    hlen = IP_HEADER_LENGTH(ip);
+-                    ip_protocol = ip->ip_p;
+-                    ip_data_len = be16_to_cpu(ip->ip_len) - hlen;
+-                }
++                goto skip_offload;
+             }
+ 
++            DPRINTF("+++ C+ mode has IP packet\n");
++
++            /* not aligned */
++            eth_payload_data = saved_buffer + ETH_HLEN;
++            eth_payload_len  = saved_size   - ETH_HLEN;
++
++            ip = (ip_header*)eth_payload_data;
++
++            if (IP_HEADER_VERSION(ip) != IP_HEADER_VERSION_4) {
++                DPRINTF("+++ C+ mode packet has bad IP version %d "
++                    "expected %d\n", IP_HEADER_VERSION(ip),
++                    IP_HEADER_VERSION_4);
++                goto skip_offload;
++            }
++
++            hlen = IP_HEADER_LENGTH(ip);
++            ip_protocol = ip->ip_p;
++            ip_data_len = be16_to_cpu(ip->ip_len) - hlen;
++
+             if (ip)
+             {
+                 if (txdw0 & CP_TX_IPCS)
+@@ -2391,6 +2393,7 @@ static int rtl8139_cplus_transmit_one(RTL8139State *s)
+             }
+         }
+ 
++skip_offload:
+         /* update tally counter */
+         ++s->tally_counters.TxOk;
+ 
+-- 
+2.1.4
+

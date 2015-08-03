@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/ck-sources/ck-sources-3.14.44.ebuild,v 1.1 2015/06/16 08:44:56 yngwin Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/ck-sources/ck-sources-4.1.3.ebuild,v 1.1 2015/08/03 15:34:51 yngwin Exp $
 
 EAPI="5"
 ETYPE="sources"
@@ -13,7 +13,7 @@ HOMEPAGE="http://dev.gentoo.org/~mpagano/genpatches/
 K_WANT_GENPATCHES="base extras experimental"
 K_EXP_GENPATCHES_PULL="1"
 K_EXP_GENPATCHES_NOUSE="1"
-K_GENPATCHES_VER="50"
+K_GENPATCHES_VER="7"
 K_SECURITY_UNSUPPORTED="1"
 K_DEBLOB_AVAILABLE="1"
 
@@ -33,12 +33,12 @@ XTRA_INCP_MAX=""
 #--
 
 CK_VERSION="1"
-BFS_VERSION="447"
+BFS_VERSION="463"
 
 CK_FILE="patch-${K_BRANCH_ID}-ck${CK_VERSION}.bz2"
 BFS_FILE="${K_BRANCH_ID}-sched-bfs-${BFS_VERSION}.patch"
 
-CK_BASE_URL="http://ck.kolivas.org/patches/3.0"
+CK_BASE_URL="http://ck.kolivas.org/patches/4.0"
 CK_LVER_URL="${CK_BASE_URL}/${K_BRANCH_ID}/${K_BRANCH_ID}-ck${CK_VERSION}"
 CK_URI="${CK_LVER_URL}/${CK_FILE}"
 BFS_URI="${CK_LVER_URL}/patches/${BFS_FILE}"
@@ -56,12 +56,12 @@ if [ -n "${XTRA_INCP_MIN}" ]; then
 	done
 fi
 
-#-- CK needs sometimes to patch itself... (3.7/3.13)---------------------------
+#-- CK needs sometimes to patch itself... ---------------------------
 
 CK_INCP_URI=""
 CK_INCP_LIST=""
 
-#-- Local patches needed for the ck-patches to apply smoothly (3.4/3.5) -------
+#-- Local patches needed for the ck-patches to apply smoothly -------
 
 PRE_CK_FIX=""
 POST_CK_FIX=""

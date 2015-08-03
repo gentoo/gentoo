@@ -1,6 +1,23 @@
 # ChangeLog for app-emulation/qemu
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu/ChangeLog,v 1.341 2015/07/28 15:04:54 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu/ChangeLog,v 1.343 2015/08/03 15:40:55 cardoe Exp $
+
+  03 Aug 2015; Doug Goldstein <cardoe@gentoo.org> -qemu-2.2.1-r2.ebuild,
+  -qemu-2.3.0-r1.ebuild, -qemu-2.3.0-r2.ebuild, -qemu-2.3.0-r3.ebuild:
+  Remove older versions due to vulnerabilities.
+
+*qemu-2.3.0-r5 (03 Aug 2015)
+
+  03 Aug 2015; Doug Goldstein <cardoe@gentoo.org>
+  +files/qemu-2.3.0-CVE-2015-5165-1.patch,
+  +files/qemu-2.3.0-CVE-2015-5165-2.patch,
+  +files/qemu-2.3.0-CVE-2015-5165-3.patch,
+  +files/qemu-2.3.0-CVE-2015-5165-4.patch,
+  +files/qemu-2.3.0-CVE-2015-5165-5.patch,
+  +files/qemu-2.3.0-CVE-2015-5165-6.patch,
+  +files/qemu-2.3.0-CVE-2015-5165-7.patch,
+  +files/qemu-2.3.0-CVE-2015-5166.patch, +qemu-2.3.0-r5.ebuild:
+  bump to fix CVE-2015-5165 and CVE-2015-5166. bug #556304
 
   28 Jul 2015; Agostino Sarubbo <ago@gentoo.org> qemu-2.3.0-r4.ebuild:
   Stable for x86, wrt bug #556052

@@ -1,0 +1,53 @@
+From 5a75d242fe019d05b46ef9bc330a6892525c84a7 Mon Sep 17 00:00:00 2001
+From: Stefan Hajnoczi <stefanha@redhat.com>
+Date: Wed, 15 Jul 2015 18:17:01 +0100
+Subject: [PATCH 4/7] rtl8139: check IP Header Length field
+
+The IP Header Length field was only checked in the IP checksum case, but
+is used in other cases too.
+
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+---
+ hw/net/rtl8139.c | 19 ++++++++-----------
+ 1 file changed, 8 insertions(+), 11 deletions(-)
+
+diff --git a/hw/net/rtl8139.c b/hw/net/rtl8139.c
+index d377b6b..cd5ac05 100644
+--- a/hw/net/rtl8139.c
++++ b/hw/net/rtl8139.c
+@@ -2200,6 +2200,10 @@ static int rtl8139_cplus_transmit_one(RTL8139State *s)
+             }
+ 
+             hlen = IP_HEADER_LENGTH(ip);
++            if (hlen < sizeof(ip_header) || hlen > eth_payload_len) {
++                goto skip_offload;
++            }
++
+             ip_protocol = ip->ip_p;
+             ip_data_len = be16_to_cpu(ip->ip_len) - hlen;
+ 
+@@ -2207,17 +2211,10 @@ static int rtl8139_cplus_transmit_one(RTL8139State *s)
+             {
+                 DPRINTF("+++ C+ mode need IP checksum\n");
+ 
+-                if (hlen<sizeof(ip_header) || hlen>eth_payload_len) {/* min header length */
+-                    /* bad packet header len */
+-                    /* or packet too short */
+-                }
+-                else
+-                {
+-                    ip->ip_sum = 0;
+-                    ip->ip_sum = ip_checksum(ip, hlen);
+-                    DPRINTF("+++ C+ mode IP header len=%d checksum=%04x\n",
+-                        hlen, ip->ip_sum);
+-                }
++                ip->ip_sum = 0;
++                ip->ip_sum = ip_checksum(ip, hlen);
++                DPRINTF("+++ C+ mode IP header len=%d checksum=%04x\n",
++                    hlen, ip->ip_sum);
+             }
+ 
+             if ((txdw0 & CP_TX_LGSEN) && ip_protocol == IP_PROTO_TCP)
+-- 
+2.1.4
+

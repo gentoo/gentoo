@@ -1,6 +1,9 @@
 # ChangeLog for sys-cluster/csync2
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/csync2/ChangeLog,v 1.41 2015/08/03 14:03:34 ultrabug Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/csync2/ChangeLog,v 1.42 2015/08/03 16:18:22 ultrabug Exp $
+
+  03 Aug 2015; Ultrabug <ultrabug@gentoo.org> csync2-2.0.ebuild:
+  add postgres support and USE flag
 
   03 Aug 2015; Ultrabug <ultrabug@gentoo.org> csync2-2.0.ebuild:
   fix #556582, mysql build support

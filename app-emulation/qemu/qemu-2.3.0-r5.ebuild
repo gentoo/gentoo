@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu/qemu-2.2.1-r2.ebuild,v 1.3 2015/05/14 07:09:58 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu/qemu-2.3.0-r5.ebuild,v 1.1 2015/08/03 15:36:55 cardoe Exp $
 
 EAPI=5
 
@@ -16,12 +16,11 @@ if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="git://git.qemu.org/qemu.git"
 	inherit git-2
 	SRC_URI=""
-	KEYWORDS=""
 else
 	SRC_URI="http://wiki.qemu-project.org/download/${P}.tar.bz2
 	${BACKPORTS:+
 		http://dev.gentoo.org/~cardoe/distfiles/${P}-${BACKPORTS}.tar.xz}"
-	KEYWORDS="amd64 ~ppc ~ppc64 x86 ~x86-fbsd"
+	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 fi
 
 DESCRIPTION="QEMU + Kernel-based Virtual Machine userland tools"
@@ -30,7 +29,7 @@ HOMEPAGE="http://www.qemu.org http://www.linux-kvm.org"
 LICENSE="GPL-2 LGPL-2 BSD-2"
 SLOT="0"
 IUSE="accessibility +aio alsa bluetooth +caps +curl debug +fdt glusterfs \
-gtk infiniband iscsi +jpeg \
+gtk gtk2 infiniband iscsi +jpeg \
 kernel_linux kernel_FreeBSD lzo ncurses nfs nls numa opengl +pin-upstream-blobs
 +png pulseaudio python \
 rbd sasl +seccomp sdl selinux smartcard snappy spice ssh static static-softmmu \
@@ -43,22 +42,21 @@ x86_64"
 IUSE_SOFTMMU_TARGETS="${COMMON_TARGETS} lm32 moxie ppcemb xtensa xtensaeb"
 IUSE_USER_TARGETS="${COMMON_TARGETS} armeb mipsn32 mipsn32el ppc64abi32 sparc32plus"
 
-use_targets="
-	$(printf ' qemu_softmmu_targets_%s' ${IUSE_SOFTMMU_TARGETS})
-	$(printf ' qemu_user_targets_%s' ${IUSE_USER_TARGETS})
-"
-IUSE+=" ${use_targets}"
+use_softmmu_targets=$(printf ' qemu_softmmu_targets_%s' ${IUSE_SOFTMMU_TARGETS})
+use_user_targets=$(printf ' qemu_user_targets_%s' ${IUSE_USER_TARGETS})
+IUSE+=" ${use_softmmu_targets} ${use_user_targets}"
 
 # Require at least one softmmu or user target.
 # Block USE flag configurations known to not work.
-REQUIRED_USE="|| ( ${use_targets} )
+REQUIRED_USE="|| ( ${use_softmmu_targets} ${use_user_targets} )
 	${PYTHON_REQUIRED_USE}
+	gtk2? ( gtk )
 	qemu_softmmu_targets_arm? ( fdt )
 	qemu_softmmu_targets_microblaze? ( fdt )
 	qemu_softmmu_targets_ppc? ( fdt )
 	qemu_softmmu_targets_ppc64? ( fdt )
 	static? ( static-softmmu static-user )
-	static-softmmu? ( !alsa !pulseaudio !bluetooth !opengl !gtk )
+	static-softmmu? ( !alsa !pulseaudio !bluetooth !opengl !gtk !gtk2 )
 	virtfs? ( xattr )"
 
 # Yep, you need both libcap and libcap-ng since virtfs only uses libcap.
@@ -108,15 +106,17 @@ X86_FIRMWARE_DEPEND="
 		sys-firmware/sgabios
 		sys-firmware/vgabios
 	)"
-CDEPEND="!static-softmmu? ( ${SOFTMMU_LIB_DEPEND//\[static-libs(+)]} )
-	!static-user? ( ${USER_LIB_DEPEND//\[static-libs(+)]} )
+CDEPEND="
+	!static-softmmu? ( $(printf "%s? ( ${SOFTMMU_LIB_DEPEND//\[static-libs(+)]} ) " ${use_softmmu_targets}) )
+	!static-user? ( $(printf "%s? ( ${USER_LIB_DEPEND//\[static-libs(+)]} ) " ${use_user_targets}) )
 	qemu_softmmu_targets_i386? ( ${X86_FIRMWARE_DEPEND} )
 	qemu_softmmu_targets_x86_64? ( ${X86_FIRMWARE_DEPEND} )
 	accessibility? ( app-accessibility/brltty )
 	alsa? ( >=media-libs/alsa-lib-1.0.13 )
 	bluetooth? ( net-wireless/bluez )
 	gtk? (
-		x11-libs/gtk+:3
+		gtk2? ( x11-libs/gtk+:2 )
+		!gtk2? ( x11-libs/gtk+:3 )
 		x11-libs/vte:2.90
 	)
 	iscsi? ( net-libs/libiscsi )
@@ -137,8 +137,8 @@ DEPEND="${CDEPEND}
 	virtual/pkgconfig
 	kernel_linux? ( >=sys-kernel/linux-headers-2.6.35 )
 	gtk? ( nls? ( sys-devel/gettext ) )
-	static-softmmu? ( ${SOFTMMU_LIB_DEPEND} )
-	static-user? ( ${USER_LIB_DEPEND} )
+	static-softmmu? ( $(printf "%s? ( ${SOFTMMU_LIB_DEPEND} ) " ${use_softmmu_targets}) )
+	static-user? ( $(printf "%s? ( ${USER_LIB_DEPEND} ) " ${use_user_targets}) )
 	test? (
 		dev-libs/glib[utils]
 		sys-devel/bc
@@ -245,7 +245,6 @@ pkg_pretend() {
 
 pkg_setup() {
 	enewgroup kvm 78
-	python_setup
 }
 
 src_prepare() {
@@ -258,9 +257,21 @@ src_prepare() {
 	use nls || rm -f po/*.po
 
 	epatch "${FILESDIR}"/qemu-1.7.0-cflags.patch
-	epatch "${FILESDIR}"/${P}-CVE-2015-1779-1.patch #544328
-	epatch "${FILESDIR}"/${P}-CVE-2015-1779-2.patch #544328
-	epatch "${FILESDIR}"/${PN}-2.3.0-CVE-2015-3456.patch #549404
+	epatch "${FILESDIR}"/${P}-CVE-2015-3456.patch #549404
+	epatch "${FILESDIR}"/${P}-CVE-2015-3209.patch #551752
+	epatch "${FILESDIR}"/${P}-CVE-2015-5158.patch #555680
+	epatch "${FILESDIR}"/${P}-CVE-2015-3214.patch #556052
+	epatch "${FILESDIR}"/${P}-CVE-2015-5154-1.patch #556050 / #555532
+	epatch "${FILESDIR}"/${P}-CVE-2015-5154-2.patch #556050 / #555532
+	epatch "${FILESDIR}"/${P}-CVE-2015-5154-3.patch #556050 / #555532
+	epatch "${FILESDIR}"/${P}-CVE-2015-5165-1.patch #556304
+	epatch "${FILESDIR}"/${P}-CVE-2015-5165-2.patch #556304
+	epatch "${FILESDIR}"/${P}-CVE-2015-5165-3.patch #556304
+	epatch "${FILESDIR}"/${P}-CVE-2015-5165-4.patch #556304
+	epatch "${FILESDIR}"/${P}-CVE-2015-5165-5.patch #556304
+	epatch "${FILESDIR}"/${P}-CVE-2015-5165-6.patch #556304
+	epatch "${FILESDIR}"/${P}-CVE-2015-5165-7.patch #556304
+	epatch "${FILESDIR}"/${P}-CVE-2015-5166.patch #556304
 	[[ -n ${BACKPORTS} ]] && \
 		EPATCH_FORCE=yes EPATCH_SUFFIX="patch" EPATCH_SOURCE="${S}/patches" \
 			epatch
@@ -337,7 +348,7 @@ qemu_src_configure() {
 		$(conf_softmmu ncurses curses)
 		$(conf_softmmu nfs libnfs)
 		$(conf_softmmu numa)
-		$(conf_softmmu opengl glx)
+		$(conf_softmmu opengl)
 		$(conf_softmmu png vnc-png)
 		$(conf_softmmu rbd)
 		$(conf_softmmu sasl vnc-sasl)
@@ -380,7 +391,7 @@ qemu_src_configure() {
 			--with-system-pixman
 			--audio-drv-list="${audio_opts}"
 		)
-		use gtk && conf_opts+=( --with-gtkabi=3.0 )
+		use gtk && conf_opts+=( --with-gtkabi=$(usex gtk2 2.0 3.0) )
 		;;
 	esac
 
@@ -409,7 +420,7 @@ qemu_src_configure() {
 src_configure() {
 	local target
 
-	python_export_best
+	python_setup
 
 	softmmu_targets= softmmu_bins=()
 	user_targets= user_bins=()

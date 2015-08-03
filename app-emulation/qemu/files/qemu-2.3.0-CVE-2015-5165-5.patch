@@ -1,0 +1,34 @@
+From 6c79ea275d72bc1fd88bdcf1e7d231b2c9c865de Mon Sep 17 00:00:00 2001
+From: Stefan Hajnoczi <stefanha@redhat.com>
+Date: Wed, 15 Jul 2015 18:17:02 +0100
+Subject: [PATCH 5/7] rtl8139: check IP Total Length field
+
+The IP Total Length field includes the IP header and data.  Make sure it
+is valid and does not exceed the Ethernet payload size.
+
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+---
+ hw/net/rtl8139.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/hw/net/rtl8139.c b/hw/net/rtl8139.c
+index cd5ac05..ed2b23b 100644
+--- a/hw/net/rtl8139.c
++++ b/hw/net/rtl8139.c
+@@ -2205,7 +2205,12 @@ static int rtl8139_cplus_transmit_one(RTL8139State *s)
+             }
+ 
+             ip_protocol = ip->ip_p;
+-            ip_data_len = be16_to_cpu(ip->ip_len) - hlen;
++
++            ip_data_len = be16_to_cpu(ip->ip_len);
++            if (ip_data_len < hlen || ip_data_len > eth_payload_len) {
++                goto skip_offload;
++            }
++            ip_data_len -= hlen;
+ 
+             if (txdw0 & CP_TX_IPCS)
+             {
+-- 
+2.1.4
+

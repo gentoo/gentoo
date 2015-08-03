@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/csync2/csync2-2.0.ebuild,v 1.3 2015/08/03 14:03:34 ultrabug Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/csync2/csync2-2.0.ebuild,v 1.4 2015/08/03 16:18:22 ultrabug Exp $
 
 EAPI=5
 
@@ -13,17 +13,18 @@ SRC_URI="http://oss.linbit.com/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="mysql sqlite ssl xinetd"
+IUSE="mysql postgres sqlite ssl xinetd"
 
 RDEPEND=">=net-libs/librsync-0.9.5
 	mysql? ( virtual/mysql )
+	postgres? ( dev-db/postgresql:= )
 	sqlite? ( >=dev-db/sqlite-3.0 )
 	ssl? ( >=net-libs/gnutls-2.7.3 )
 	xinetd? ( sys-apps/xinetd )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-REQUIRED_USE="|| ( mysql sqlite )"
+REQUIRED_USE="|| ( mysql postgres sqlite )"
 SLOT="0"
 
 src_configure() {
@@ -32,6 +33,7 @@ src_configure() {
 		--localstatedir=/var \
 		--sysconfdir=/etc/csync2 \
 		$(use_enable mysql) \
+		$(use_enable postgres) \
 		$(use_enable sqlite sqlite3) \
 		$(use_enable ssl gnutls)
 }
