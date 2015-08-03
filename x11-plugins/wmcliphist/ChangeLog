@@ -1,6 +1,9 @@
 # ChangeLog for x11-plugins/wmcliphist
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmcliphist/ChangeLog,v 1.23 2015/08/02 09:40:22 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmcliphist/ChangeLog,v 1.24 2015/08/03 10:59:21 ago Exp $
+
+  03 Aug 2015; Agostino Sarubbo <ago@gentoo.org> wmcliphist-2.1.ebuild:
+  Stable for amd64, wrt bug #370123
 
   02 Aug 2015; Pacho Ramos <pacho@gentoo.org> wmcliphist-2.1.ebuild:
   sparc stable wrt bug #370123

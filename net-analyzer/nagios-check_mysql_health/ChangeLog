@@ -1,6 +1,10 @@
 # ChangeLog for net-analyzer/nagios-check_mysql_health
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nagios-check_mysql_health/ChangeLog,v 1.10 2015/06/22 14:53:45 mjo Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nagios-check_mysql_health/ChangeLog,v 1.11 2015/08/03 11:00:07 ago Exp $
+
+  03 Aug 2015; Agostino Sarubbo <ago@gentoo.org>
+  nagios-check_mysql_health-2.1.8.2.ebuild:
+  Stable for amd64, wrt bug #522648
 
 *nagios-check_mysql_health-2.1.9.2 (22 Jun 2015)
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/mlterm/mlterm-3.4.5.ebuild,v 1.3 2015/07/23 19:36:26 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/mlterm/mlterm-3.4.5.ebuild,v 1.4 2015/08/03 10:59:26 ago Exp $
 
 EAPI="5"
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/mlterm/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 hppa ppc ppc64 ~x86"
+KEYWORDS="amd64 hppa ppc ppc64 ~x86"
 IUSE="bidi cairo debug fcitx gtk ibus libssh2 m17n-lib nls regis scim static-libs uim utempter xft"
 
 RDEPEND="x11-libs/libICE

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/pecl-redis/pecl-redis-2.2.7.ebuild,v 1.1 2015/03/24 13:28:34 grknight Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php/pecl-redis/pecl-redis-2.2.7.ebuild,v 1.2 2015/08/03 10:59:52 ago Exp $
 
 EAPI="5"
 
@@ -14,7 +14,7 @@ DOCS="README ChangeLog"
 
 inherit php-ext-pecl-r2
 
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DESCRIPTION="This extension provides an API for communicating with Redis servers"
 LICENSE="PHP-3.01"

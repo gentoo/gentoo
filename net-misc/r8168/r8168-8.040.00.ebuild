@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/r8168/r8168-8.040.00.ebuild,v 1.1 2015/07/19 09:20:51 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/r8168/r8168-8.040.00.ebuild,v 1.2 2015/08/03 11:00:22 ago Exp $
 
 EAPI=5
 
@@ -13,7 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 MODULE_NAMES="r8168(net:${S}/src)"
 BUILD_TARGETS="modules"

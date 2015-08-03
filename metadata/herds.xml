@@ -2702,6 +2702,9 @@
   <maintainer>
     <email>idella4@gentoo.org</email>
   </maintainer>
+  <maintainer>
+    <email>zlogene@gentoo.org</email>
+  </maintainer>
 </herd>
 <herd>
     <name>radio</name>

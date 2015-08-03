@@ -1,6 +1,9 @@
 # ChangeLog for media-libs/allegro
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/allegro/ChangeLog,v 1.156 2015/07/23 19:39:39 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/allegro/ChangeLog,v 1.157 2015/08/03 10:59:37 ago Exp $
+
+  03 Aug 2015; Agostino Sarubbo <ago@gentoo.org> allegro-5.0.11.ebuild:
+  Stable for amd64, wrt bug #554288
 
   23 Jul 2015; Pacho Ramos <pacho@gentoo.org> allegro-5.0.11.ebuild:
   ppc stable wrt bug #554288

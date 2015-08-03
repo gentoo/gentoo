@@ -1,6 +1,9 @@
 # ChangeLog for dev-php/pecl-redis
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/pecl-redis/ChangeLog,v 1.5 2015/03/24 13:28:34 grknight Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php/pecl-redis/ChangeLog,v 1.6 2015/08/03 10:59:52 ago Exp $
+
+  03 Aug 2015; Agostino Sarubbo <ago@gentoo.org> pecl-redis-2.2.7.ebuild:
+  Stable for amd64, wrt bug #528308
 
 *pecl-redis-2.2.7 (24 Mar 2015)
 

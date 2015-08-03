@@ -1,6 +1,9 @@
 # ChangeLog for app-benchmarks/phoronix-test-suite
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/phoronix-test-suite/ChangeLog,v 1.33 2015/03/25 03:55:58 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/phoronix-test-suite/ChangeLog,v 1.34 2015/08/03 11:17:27 patrick Exp $
+
+  03 Aug 2015; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Remove myself as maintainer
 
 *phoronix-test-suite-4.8.5 (25 Mar 2015)
 
