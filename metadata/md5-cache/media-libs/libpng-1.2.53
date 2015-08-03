@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=sys-libs/zlib-1.2.8-r1:=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] !=media-libs/libpng-1.2*:0 abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r3 !app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] ) app-arch/xz-utils
+DESCRIPTION=Portable Network Graphics library
+EAPI=5
+HOMEPAGE=http://www.libpng.org/
+IUSE=abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux
+LICENSE=libpng
+RDEPEND=>=sys-libs/zlib-1.2.8-r1:=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] !=media-libs/libpng-1.2*:0 abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r3 !app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )
+SLOT=1.2
+SRC_URI=mirror://sourceforge/libpng/libpng-1.2.53.tar.xz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multilib-build	e733e978b7fa70607cc221fd9c070db6	multilib-minimal	13dd976916c35a1e2c8d170e840c7018	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=3274721e44f46a3c95ce65e6925750e6

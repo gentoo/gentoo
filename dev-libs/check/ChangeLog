@@ -1,6 +1,11 @@
 # ChangeLog for dev-libs/check
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/check/ChangeLog,v 1.100 2015/06/09 14:13:47 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/check/ChangeLog,v 1.101 2015/08/03 08:57:55 jer Exp $
+
+*check-0.10.0 (03 Aug 2015)
+
+  03 Aug 2015; Jeroen Roovers <jer@gentoo.org> +check-0.10.0.ebuild:
+  Version bump.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

@@ -1,6 +1,14 @@
 # ChangeLog for media-libs/libpng
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libpng/ChangeLog,v 1.490 2015/04/15 11:32:16 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libpng/ChangeLog,v 1.491 2015/08/03 09:03:40 polynomial-c Exp $
+
+*libpng-1.6.18 (03 Aug 2015)
+*libpng-1.5.23 (03 Aug 2015)
+*libpng-1.2.53 (03 Aug 2015)
+
+  03 Aug 2015; Lars Wendler <polynomial-c@gentoo.org> +libpng-1.2.53.ebuild,
+  +libpng-1.5.23.ebuild, +libpng-1.6.18.ebuild:
+  Version bump.
 
 *libpng-1.6.17 (15 Apr 2015)
 
