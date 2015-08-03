@@ -10,5 +10,5 @@ RDEPEND=sys-libs/zlib app-arch/xz-utils app-arch/bzip2 <app-arch/rpm-5 python? (
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=http://pkgs.fedoraproject.org/repo/pkgs/deltarpm/deltarpm-git-20110223.tar.bz2/70f8884be63614ca7c3fc888cf20ebc8/deltarpm-git-20110223.tar.bz2
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	351da1aa73960a282591217fb57c1bb8	python-utils-r1	68e010c13e97b7b2c7bf403ee9c51e1b	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	351da1aa73960a282591217fb57c1bb8	python-utils-r1	0295a286ec27cab6af76b3b75ba07a3a	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=0d919800fc5657caf845d6dcbe0724ec

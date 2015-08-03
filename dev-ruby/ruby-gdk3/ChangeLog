@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/ruby-gdk3
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gdk3/ChangeLog,v 1.13 2015/08/03 13:48:39 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gdk3/ChangeLog,v 1.14 2015/08/03 19:15:14 pacho Exp $
+
+  03 Aug 2015; Pacho Ramos <pacho@gentoo.org> ruby-gdk3-2.2.3.ebuild:
+  ppc stable wrt bug #554164
 
   03 Aug 2015; Agostino Sarubbo <ago@gentoo.org> ruby-gdk3-2.2.3.ebuild:
   Stable for x86, wrt bug #554164

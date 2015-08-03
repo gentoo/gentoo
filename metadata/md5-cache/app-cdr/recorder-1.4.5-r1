@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=nls? ( sys-devel/gettext ) >=dev-python/pygtk-2[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] sys-apps/coreutils virtual/cdrtools dvdr? ( app-cdr/dvd+rw-tools ) mp3? ( media-sound/mpg123 ) ogg? ( media-sound/vorbis-tools ) vcd? ( app-cdr/cdrdao media-video/vcdimager )
 SLOT=0
 SRC_URI=http://recorder.googlecode.com/files/recorder-1.4.5.tar.bz2
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	351da1aa73960a282591217fb57c1bb8	python-utils-r1	68e010c13e97b7b2c7bf403ee9c51e1b	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	351da1aa73960a282591217fb57c1bb8	python-utils-r1	0295a286ec27cab6af76b3b75ba07a3a	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=90a6277ba87f82f4d4224c1b3defcee0

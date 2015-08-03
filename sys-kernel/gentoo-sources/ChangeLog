@@ -1,6 +1,11 @@
 # ChangeLog for sys-kernel/gentoo-sources
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/gentoo-sources/ChangeLog,v 1.1604 2015/08/02 09:20:10 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/gentoo-sources/ChangeLog,v 1.1605 2015/08/03 19:17:47 mpagano Exp $
+
+*gentoo-sources-4.1.4 (03 Aug 2015)
+
+  03 Aug 2015; Mike Pagano <mpagano@gentoo.org> +gentoo-sources-4.1.4.ebuild:
+  Linux patch 4.1.4. Update kdbus patch. 7-22-2015.
 
   02 Aug 2015; Pacho Ramos <pacho@gentoo.org> gentoo-sources-4.0.5.ebuild:
   sparc stable wrt bug #552336

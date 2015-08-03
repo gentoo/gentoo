@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=>=x11-libs/pixman-0.17.7[static-libs(+)?] >=dev-libs/glib-2.22:2[static-libs(+)?] >=media-libs/celt-0.5.1.1:0.5.1[static-libs(+)?] media-libs/opus[static-libs(+)?] dev-libs/openssl[static-libs(+)?] virtual/jpeg[static-libs(+)?] sys-libs/zlib[static-libs(+)?] sasl? ( dev-libs/cyrus-sasl[static-libs(+)?] ) client? ( media-libs/alsa-lib >=x11-libs/libXrandr-1.2 x11-libs/libX11 x11-libs/libXext >=x11-libs/libXinerama-1.0 x11-libs/libXfixes x11-libs/libXrender smartcard? ( app-emulation/qemu[smartcard] ) )
 SLOT=0
 SRC_URI=http://spice-space.org/download/releases/spice-0.12.5.tar.bz2
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	4756de53ea4d40471a582e898815a5c8	python-utils-r1	68e010c13e97b7b2c7bf403ee9c51e1b	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	4756de53ea4d40471a582e898815a5c8	python-utils-r1	0295a286ec27cab6af76b3b75ba07a3a	toolchain-funcs	42408102d713fbad60ca21349865edb4
 _md5_=7a3c10f20d9eb4d49a79ad87154be626

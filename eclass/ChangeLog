@@ -1,6 +1,9 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1743 2015/08/03 14:03:00 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1744 2015/08/03 18:31:41 mr_bones_ Exp $
+
+  03 Aug 2015; Michael Sterrett <mr_bones_@gentoo.org> python-utils-r1.eclass:
+  Add quotes to support reading from files with spaces in the filename.
 
   03 Aug 2015; Michael Palimaka <kensington@gentoo.org> kde5.eclass:
   Do not compress handbooks.

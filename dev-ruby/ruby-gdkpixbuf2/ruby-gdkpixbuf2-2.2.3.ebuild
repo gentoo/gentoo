@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gdkpixbuf2/ruby-gdkpixbuf2-2.2.3.ebuild,v 1.5 2015/08/03 13:48:43 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gdkpixbuf2/ruby-gdkpixbuf2-2.2.3.ebuild,v 1.6 2015/08/03 19:15:22 pacho Exp $
 
 EAPI=5
 USE_RUBY="ruby19 ruby20"
@@ -12,7 +12,7 @@ inherit ruby-ng-gnome2
 RUBY_S=ruby-gnome2-all-${PV}/${RUBY_FAKEGEM_NAME}
 
 DESCRIPTION="Ruby GdkPixbuf2 bindings"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 RDEPEND+=" x11-libs/gtk+:2"

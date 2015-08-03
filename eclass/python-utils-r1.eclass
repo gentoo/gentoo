@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/python-utils-r1.eclass,v 1.88 2015/07/27 16:35:19 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/python-utils-r1.eclass,v 1.89 2015/08/03 18:31:41 mr_bones_ Exp $
 
 # @ECLASS: python-utils-r1
 # @MAINTAINER:
@@ -1005,7 +1005,7 @@ python_fix_shebang() {
 			local shebang i
 			local error= from=
 
-			IFS= read -r shebang <${f}
+			IFS= read -r shebang <"${f}"
 
 			# First, check if it's shebang at all...
 			if [[ ${shebang} == '#!'* ]]; then
