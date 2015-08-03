@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/elasticsearch/elasticsearch-1.6.1.ebuild,v 1.1 2015/07/27 09:05:33 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/elasticsearch/elasticsearch-1.7.1.ebuild,v 1.1 2015/08/03 10:22:57 chainsaw Exp $
 
 EAPI=5
 

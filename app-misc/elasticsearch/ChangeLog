@@ -1,6 +1,16 @@
 # ChangeLog for app-misc/elasticsearch
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/elasticsearch/ChangeLog,v 1.15 2015/07/27 09:05:33 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/elasticsearch/ChangeLog,v 1.16 2015/08/03 10:22:57 chainsaw Exp $
+
+*elasticsearch-1.7.1 (03 Aug 2015)
+*elasticsearch-1.6.2 (03 Aug 2015)
+
+  03 Aug 2015; Tony Vroon <chainsaw@gentoo.org> -elasticsearch-1.6.1.ebuild,
+  +elasticsearch-1.6.2.ebuild, -elasticsearch-1.7.0.ebuild,
+  +elasticsearch-1.7.1.ebuild:
+  This fixes a data corruption bug, which means that all previous ebuilds are
+  withdrawn to enforce the upgrade. Ebuilds & research by Ferenc Erki, closes
+  bug #556222.
 
 *elasticsearch-1.7.0 (27 Jul 2015)
 *elasticsearch-1.6.1 (27 Jul 2015)

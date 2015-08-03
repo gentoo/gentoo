@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/openmpi/openmpi-1.8.7-r1.ebuild,v 1.1 2015/08/02 23:30:00 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/openmpi/openmpi-1.8.7-r1.ebuild,v 1.2 2015/08/03 10:15:13 monsieurp Exp $
 
 EAPI=5
 
@@ -35,7 +35,7 @@ SRC_URI="http://www.open-mpi.org/software/ompi/v$(get_version_component_range 1-
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux"
-IUSE="cma cuda +cxx elibc_FreeBSD fortran heterogeneous ipv6 +java mpi-threads numa romio threads vt
+IUSE="cma cuda +cxx elibc_FreeBSD fortran heterogeneous ipv6 java mpi-threads numa romio threads vt
 	${IUSE_OPENMPI_FABRICS} ${IUSE_OPENMPI_RM} ${IUSE_OPENMPI_OFED_FEATURES}"
 
 REQUIRED_USE="openmpi_rm_slurm? ( !openmpi_rm_pbs )
