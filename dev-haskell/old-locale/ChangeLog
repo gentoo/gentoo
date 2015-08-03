@@ -1,6 +1,10 @@
 # ChangeLog for dev-haskell/old-locale
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/old-locale/ChangeLog,v 1.1 2015/04/03 22:39:11 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/old-locale/ChangeLog,v 1.2 2015/08/03 21:13:34 slyfox Exp $
+
+  03 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> old-locale-1.0.0.7.ebuild:
+  mark stable on alpha amd64 ia64 ppc ppc64 sparc x86 (the same package goes
+  with dev-lang/ghc-7.4.2 and upper)
 
 *old-locale-1.0.0.7 (03 Apr 2015)
 

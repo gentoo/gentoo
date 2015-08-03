@@ -1,6 +1,13 @@
 # ChangeLog for games-board/scid
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-board/scid/ChangeLog,v 1.49 2015/06/02 04:00:07 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-board/scid/ChangeLog,v 1.50 2015/08/03 21:09:04 mr_bones_ Exp $
+
+*scid-4.6.2 (03 Aug 2015)
+
+  03 Aug 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/scid-4.6.2-gentoo.patch, +scid-4.6.2.ebuild,
+  files/scid-4.5.2-gentoo.patch, files/scid-4.6.0-gentoo.patch:
+  version bump
 
   02 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org> scid-4.5.2.ebuild,
   scid-4.6.0.ebuild:

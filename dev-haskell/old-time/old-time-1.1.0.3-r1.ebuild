@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/old-time/old-time-1.1.0.3-r1.ebuild,v 1.1 2015/04/03 22:39:54 gienah Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/old-time/old-time-1.1.0.3-r1.ebuild,v 1.2 2015/08/03 21:15:10 slyfox Exp $
 
 EAPI=5
 
@@ -15,14 +15,14 @@ SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE=""
 
 RDEPEND=">=dev-haskell/old-locale-1.0:=[profile?] <dev-haskell/old-locale-1.1:=[profile?]
 	>=dev-lang/ghc-7.4.1:=
 "
 DEPEND="${RDEPEND}
-	>=dev-haskell/cabal-1.18.1.3
+	>=dev-haskell/cabal-1.18.1.2
 "
 
 # it's not quite true, but there was no major releases

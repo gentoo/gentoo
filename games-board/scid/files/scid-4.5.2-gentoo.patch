@@ -1,5 +1,5 @@
---- engines/togaII1.2.1a/src/Makefile.old	2012-05-06 20:56:56.190522872 +0200
-+++ engines/togaII1.2.1a/src/Makefile	2012-05-06 20:58:20.995568403 +0200
+--- engines/togaII1.2.1a/src/Makefile.old
++++ engines/togaII1.2.1a/src/Makefile
 @@ -18,23 +18,16 @@
  
  # general
@@ -24,8 +24,8 @@
  
  # dependencies
  
---- tcl/utils/sound.tcl.old	2012-05-06 21:05:31.475342861 +0200
-+++ tcl/utils/sound.tcl	2012-05-06 21:06:07.066843851 +0200
+--- tcl/utils/sound.tcl.old
++++ tcl/utils/sound.tcl
 @@ -41,7 +41,7 @@
    variable soundFolder
    
@@ -35,8 +35,8 @@
      set hasSnackPackage 0
      ::splash::add "    Move speech disabled - Snack sound package not found"
      return
---- Makefile.conf.old	2013-11-28 06:58:08.000000000 +0100
-+++ Makefile.conf	2014-04-18 00:17:05.783340379 +0200
+--- Makefile.conf.old
++++ Makefile.conf
 @@ -193,7 +193,7 @@
  # Small extra programs. Most are written in Tcl using tkscid, but
  # a few contributed ones may be in Python or other languages.
@@ -129,8 +129,8 @@
  
  ### To remove object and executable files: type "make clean".
  #
---- tcl/start.tcl.old	2013-11-28 06:58:08.000000000 +0100
-+++ tcl/start.tcl	2014-04-18 00:37:25.796397765 +0200
+--- tcl/start.tcl.old
++++ tcl/start.tcl
 @@ -186,7 +186,7 @@
  
    # scidShareDir, scidImgDir, scidBooksDir, scidBasesDir, ecoFile:

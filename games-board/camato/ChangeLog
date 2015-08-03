@@ -1,6 +1,9 @@
 # ChangeLog for games-board/camato
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-board/camato/ChangeLog,v 1.8 2014/10/30 16:50:32 mr_bones_ Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-board/camato/ChangeLog,v 1.9 2015/08/03 21:29:52 mrueg Exp $
+
+  03 Aug 2015; Manuel Rüger <mrueg@gentoo.org> camato-0.7.4.ebuild:
+  Drop stable keyword for ppc.
 
   30 Oct 2014; Michael Sterrett <mr_bones_@gentoo.org> camato-0.7.4.ebuild:
   EAPI=5

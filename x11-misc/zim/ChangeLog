@@ -1,6 +1,11 @@
 # ChangeLog for x11-misc/zim
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/zim/ChangeLog,v 1.27 2015/08/03 20:18:38 sping Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/zim/ChangeLog,v 1.28 2015/08/03 20:32:43 sping Exp $
+
+*zim-0.63 (03 Aug 2015)
+
+  03 Aug 2015; Sebastian Pipping <sping@gentoo.org> +zim-0.63.ebuild:
+  Bump to 0.63 (bug #556332)
 
   03 Aug 2015; Sebastian Pipping <sping@gentoo.org> zim-0.61.ebuild,
   zim-0.62.ebuild:

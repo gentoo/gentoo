@@ -1,6 +1,6 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/ckermit/ckermit-8.0.211-r4.ebuild,v 1.5 2013/06/10 17:42:53 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/ckermit/ckermit-8.0.211-r4.ebuild,v 1.6 2015/08/03 20:51:09 sping Exp $
 
 EAPI="4"
 
@@ -12,7 +12,7 @@ MY_P="cku$( get_version_component_range 3 ${PV} )"
 
 DESCRIPTION="combined serial and network communication software package"
 SRC_URI="ftp://kermit.columbia.edu/kermit/archives/${MY_P}.tar.gz"
-HOMEPAGE="http://www.kermit-project.org/"
+HOMEPAGE="http://www.kermitproject.org/"
 
 LICENSE="Kermit"
 SLOT="0"

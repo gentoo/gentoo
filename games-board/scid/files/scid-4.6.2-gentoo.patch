@@ -1,5 +1,5 @@
---- scid-4.6.0.orig/engines/togaII1.2.1a/src/Makefile
-+++ scid-4.6.0/engines/togaII1.2.1a/src/Makefile
+--- scid-4.6.1.orig/engines/togaII1.2.1a/src/Makefile
++++ scid-4.6.1/engines/togaII1.2.1a/src/Makefile
 @@ -18,23 +18,16 @@
  
  # general
@@ -24,9 +24,9 @@
  
  # dependencies
  
---- scid-4.6.0.orig/Makefile.conf
-+++ scid-4.6.0/Makefile.conf
-@@ -157,32 +157,31 @@
+--- scid-4.6.1.orig/Makefile.conf
++++ scid-4.6.1/Makefile.conf
+@@ -157,32 +157,32 @@
  install: $(INSTALL)
  
  install_scid: all_scid
@@ -52,6 +52,7 @@
 +	install -m 755 -d "$(DESTDIR)$(SHAREDIR)"
 +	install -m 755 -d "$(DESTDIR)$(BINDIR)"
 +	install -m 755 $(SCRIPTS) $(EXECS) "$(DESTDIR)$(BINDIR)"
++	rm -f "$(DESTDIR)$(BINDIR)/scid"
 +	@echo "#!/bin/sh" > "$(DESTDIR)$(BINDIR)/scid"
 +	@echo 'exec "$(BINDIR)/tkscid" "$(SHAREDIR)/tcl/start.tcl" "$$@"' >> "$(DESTDIR)$(BINDIR)/scid"
 +	chmod 755 "$(DESTDIR)$(BINDIR)/scid"
@@ -82,8 +83,28 @@
  
  install_mac: all
  	install -m 755 -d dist/Scid.app/Contents/MacOS
---- scid-4.6.0.orig/tcl/start.tcl
-+++ scid-4.6.0/tcl/start.tcl
+--- scid-4.6.1.orig/tcl/options.tcl
++++ scid-4.6.1/tcl/options.tcl
+@@ -598,7 +598,7 @@
+ }
+ 
+ ### Audio move announcement options:
+-set ::utils::sound::soundFolder [file nativename [file join $::scidExeDir sounds]]
++set ::utils::sound::soundFolder "@GENTOO_DATADIR@/sounds"
+ set ::utils::sound::announceNew 0
+ set ::utils::sound::announceForward 0
+ set ::utils::sound::announceBack 0
+@@ -607,7 +607,7 @@
+ if {$windowsOS} {
+   set spellCheckFile [file join $scidExeDir "spelling.ssp"]
+ } else {
+-  set spellCheckFile "/usr/local/share/scid/spelling.ssp"
++  set spellCheckFile "@GENTOO_DATADIR@/spelling.ssp"
+ }
+ 
+ # book configuration
+--- scid-4.6.1.orig/tcl/start.tcl
++++ scid-4.6.1/tcl/start.tcl
 @@ -93,7 +93,7 @@
  
    # scidShareDir, scidImgDir, scidTclDir, scidBooksDir, scidBasesDir, ecoFile:
@@ -93,26 +114,8 @@
    if {! [file isdirectory $::scidShareDir]} {
      set scidShareDir $::scidExeDir
    }
-@@ -785,7 +785,7 @@
- }
- 
- ### Audio move announcement options:
--set ::utils::sound::soundFolder [file nativename [file join $::scidExeDir sounds]]
-+set ::utils::sound::soundFolder "@GENTOO_DATADIR@/sounds"
- set ::utils::sound::announceNew 0
- set ::utils::sound::announceForward 0
- set ::utils::sound::announceBack 0
-@@ -794,7 +794,7 @@
- if {$windowsOS} {
-   set spellCheckFile [file join $scidDataDir "spelling.ssp"]
- } else {
--  set spellCheckFile "/usr/local/share/scid/spelling.ssp"
-+  set spellCheckFile "@GENTOO_DATADIR@//spelling.ssp"
- }
- 
- # book configuration
---- scid-4.6.0.orig/tcl/utils/sound.tcl
-+++ scid-4.6.0/tcl/utils/sound.tcl
+--- scid-4.6.1.orig/tcl/utils/sound.tcl
++++ scid-4.6.1/tcl/utils/sound.tcl
 @@ -43,7 +43,7 @@
    variable soundFolder
  

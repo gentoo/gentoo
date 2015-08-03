@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=>=dev-libs/boost-1.31.0:= media-libs/glew >=media-libs/lcms-2.5:2 >=media-libs/libpng-1.2.43:0= >=media-libs/openexr-1.0:= media-libs/plotutils[X] media-libs/tiff:= >=media-libs/vigra-1.8.0[openexr] sci-libs/gsl virtual/jpeg:0= debug? ( dev-libs/dmalloc ) gpu? ( media-libs/freeglut ) sys-apps/help2man virtual/pkgconfig doc? ( media-gfx/imagemagick media-gfx/transfig sci-visualization/gnuplot[gd] virtual/latex-base ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DEPEND=>=dev-libs/boost-1.31.0:= media-libs/glew >=media-libs/lcms-2.5:2 >=media-libs/libpng-1.2.43:0= >=media-libs/openexr-1.0:= media-libs/plotutils[X] media-libs/tiff:= >=media-libs/vigra-1.8.0[openexr] sci-libs/gsl virtual/jpeg:0= debug? ( dev-libs/dmalloc ) gpu? ( media-libs/freeglut ) media-gfx/imagemagick sys-apps/help2man virtual/pkgconfig doc? ( media-gfx/transfig sci-visualization/gnuplot[gd] virtual/latex-base ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=Image Blending with Multiresolution Splines
 EAPI=5
 HOMEPAGE=http://enblend.sourceforge.net/
@@ -11,4 +11,4 @@ REQUIRED_USE=openmp? ( !image-cache )
 SLOT=0
 SRC_URI=mirror://sourceforge/enblend/enblend-enfuse-4.1.3.tar.gz
 _eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=e1653c90da8c8a0289adac97a8736b46
+_md5_=64b41092d0c1068d3946648972cdf3db

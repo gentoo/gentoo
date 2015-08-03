@@ -1,6 +1,9 @@
 # ChangeLog for app-misc/ckermit
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/ckermit/ChangeLog,v 1.36 2013/06/10 17:42:53 vapier Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/ckermit/ChangeLog,v 1.37 2015/08/03 20:51:09 sping Exp $
+
+  03 Aug 2015; Sebastian Pipping <sping@gentoo.org> ckermit-8.0.211-r4.ebuild:
+  Fix homepage (bug #556094)
 
   10 Jun 2013; Mike Frysinger <vapier@gentoo.org>
   +files/ckermit-8.0.211-build-wart.patch, ckermit-8.0.211-r4.ebuild:
