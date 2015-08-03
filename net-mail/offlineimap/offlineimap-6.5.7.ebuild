@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/offlineimap/offlineimap-6.5.7.ebuild,v 1.1 2015/06/30 15:02:29 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/offlineimap/offlineimap-6.5.7.ebuild,v 1.2 2015/08/03 17:26:50 radhermit Exp $
 
 EAPI=5
 
@@ -20,7 +20,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="doc ssl sqlite"
 
-DEPEND="doc? ( dev-python/docutils )"
+DEPEND="doc? ( app-text/asciidoc )"
 
 src_prepare() {
 	distutils-r1_src_prepare
@@ -30,19 +30,13 @@ src_prepare() {
 
 src_compile() {
 	distutils-r1_src_compile
-	if use doc ; then
-		cd docs
-		rst2man.py MANUAL.rst offlineimap.1 || die "building manpage failed"
-	fi
+	use doc && emake -C docs man
 }
 
 src_install() {
 	distutils-r1_src_install
 	dodoc offlineimap.conf offlineimap.conf.minimal
-	if use doc ; then
-		cd docs
-		doman offlineimap.1
-	fi
+	use doc && doman docs/{offlineimap.1,offlineimapui.7}
 }
 
 pkg_postinst() {

@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16696 2015/08/02 22:13:13 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16697 2015/08/03 17:12:30 floppym Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -29,6 +29,11 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Mike Gilbert <floppym@gentoo.org> (03 Aug 2015)
+# Unmaintained upstream. Fails to build. Removal in 30 days.
+# Bugs: 478174, 546192, 556200.
+sys-apps/systemd-ui
 
 # Patrice Clement <monsieurp@gentoo.org> (3 Aug 2015)
 # Broken and no releases in 10 years (!).

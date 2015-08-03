@@ -1,6 +1,9 @@
 # ChangeLog for net-mail/offlineimap
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/offlineimap/ChangeLog,v 1.103 2015/06/30 15:02:29 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/offlineimap/ChangeLog,v 1.104 2015/08/03 17:26:50 radhermit Exp $
+
+  03 Aug 2015; Tim Harder <radhermit@gentoo.org> offlineimap-6.5.7.ebuild:
+  Fix man page building and installation (bug #556344).
 
 *offlineimap-6.5.7 (30 Jun 2015)
 
