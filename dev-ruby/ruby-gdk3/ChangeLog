@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/ruby-gdk3
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gdk3/ChangeLog,v 1.14 2015/08/03 19:15:14 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gdk3/ChangeLog,v 1.15 2015/08/03 22:03:50 mrueg Exp $
+
+  03 Aug 2015; Manuel Rüger <mrueg@gentoo.org> ruby-gdk3-2.2.3.ebuild:
+  Drop stable keyword for ppc.
 
   03 Aug 2015; Pacho Ramos <pacho@gentoo.org> ruby-gdk3-2.2.3.ebuild:
   ppc stable wrt bug #554164

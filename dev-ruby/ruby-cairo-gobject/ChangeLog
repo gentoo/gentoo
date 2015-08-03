@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/ruby-cairo-gobject
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-cairo-gobject/ChangeLog,v 1.15 2015/08/03 19:12:25 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-cairo-gobject/ChangeLog,v 1.16 2015/08/03 21:51:59 mrueg Exp $
+
+  03 Aug 2015; Manuel Rüger <mrueg@gentoo.org> ruby-cairo-gobject-2.2.3.ebuild:
+  Drop stable keyword for ppc.
 
   03 Aug 2015; Pacho Ramos <pacho@gentoo.org> ruby-cairo-gobject-2.2.3.ebuild:
   ppc stable wrt bug #554164

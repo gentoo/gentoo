@@ -1,8 +1,8 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/xwarppointer/xwarppointer-1-r1.ebuild,v 1.1 2010/09/28 17:35:31 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-apps/xwarppointer/xwarppointer-1-r2.ebuild,v 1.1 2015/08/03 22:12:43 ulm Exp $
 
-EAPI="2"
+EAPI=5
 
 inherit toolchain-funcs
 
@@ -10,10 +10,9 @@ DESCRIPTION="Program to move the mouse cursor"
 HOMEPAGE="http://www.ishiboo.com/~nirva/Projects/xwarppointer/"
 SRC_URI="http://www.ishiboo.com/~nirva/Projects/xwarppointer/${PN}.tar.gz"
 
-LICENSE="BSD"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
 
 DEPEND="x11-libs/libX11"
 RDEPEND="${DEPEND}"
@@ -29,10 +28,10 @@ src_prepare() {
 }
 
 src_compile() {
-	emake CC=$(tc-getCC) || die
+	emake CC="$(tc-getCC)"
 }
 
 src_install() {
-	dobin xwarppointer || die "install failed"
+	dobin xwarppointer
 	dodoc README
 }

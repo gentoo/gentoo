@@ -1,6 +1,10 @@
 # ChangeLog for dev-ruby/ruby-gdkpixbuf2
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gdkpixbuf2/ChangeLog,v 1.102 2015/08/03 19:15:22 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gdkpixbuf2/ChangeLog,v 1.103 2015/08/03 21:53:01 mrueg Exp $
+
+  03 Aug 2015; Manuel Rüger <mrueg@gentoo.org> -ruby-gdkpixbuf2-1.1.8.ebuild,
+  ruby-gdkpixbuf2-2.2.3.ebuild:
+  Remove old. Drop stable keyword for ppc.
 
   03 Aug 2015; Pacho Ramos <pacho@gentoo.org> ruby-gdkpixbuf2-2.2.3.ebuild:
   ppc stable wrt bug #554164

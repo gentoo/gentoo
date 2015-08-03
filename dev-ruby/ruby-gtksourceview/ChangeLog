@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/ruby-gtksourceview
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gtksourceview/ChangeLog,v 1.67 2015/08/03 13:49:16 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gtksourceview/ChangeLog,v 1.68 2015/08/03 21:59:27 mrueg Exp $
+
+  03 Aug 2015; Manuel Rüger <mrueg@gentoo.org> -ruby-gtksourceview-1.1.8.ebuild:
+  Remove old. Drop stable keyword for ppc.
 
   03 Aug 2015; Agostino Sarubbo <ago@gentoo.org>
   ruby-gtksourceview-2.2.3.ebuild:

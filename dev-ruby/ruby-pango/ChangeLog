@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/ruby-pango
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-pango/ChangeLog,v 1.98 2015/08/03 13:49:24 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-pango/ChangeLog,v 1.99 2015/08/03 21:57:56 mrueg Exp $
+
+  03 Aug 2015; Manuel Rüger <mrueg@gentoo.org> -ruby-pango-1.1.8.ebuild:
+  Remove old. Drop stable keyword for ppc.
 
   03 Aug 2015; Agostino Sarubbo <ago@gentoo.org> ruby-pango-2.2.3.ebuild:
   Stable for x86, wrt bug #554164

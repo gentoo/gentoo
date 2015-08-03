@@ -1,6 +1,10 @@
 # ChangeLog for dev-ruby/ruby-atk
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-atk/ChangeLog,v 1.91 2015/08/03 19:12:16 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-atk/ChangeLog,v 1.92 2015/08/03 22:00:33 mrueg Exp $
+
+  03 Aug 2015; Manuel Rüger <mrueg@gentoo.org> -ruby-atk-1.1.8.ebuild,
+  ruby-atk-2.2.3.ebuild:
+  Remove old. Drop stable keyword for ppc.
 
   03 Aug 2015; Pacho Ramos <pacho@gentoo.org> ruby-atk-2.2.3.ebuild:
   ppc stable wrt bug #554164

@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/rcairo
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rcairo/ChangeLog,v 1.97 2015/08/03 13:49:52 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rcairo/ChangeLog,v 1.98 2015/08/03 22:07:16 mrueg Exp $
+
+  03 Aug 2015; Manuel Rüger <mrueg@gentoo.org> -rcairo-1.10.2-r1.ebuild:
+  Remove old. Drop stable keyword for ppc.
 
   03 Aug 2015; Agostino Sarubbo <ago@gentoo.org> rcairo-1.14.1.ebuild:
   Stable for x86, wrt bug #554164

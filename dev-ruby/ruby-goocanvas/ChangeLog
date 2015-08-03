@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/ruby-goocanvas
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-goocanvas/ChangeLog,v 1.36 2015/07/06 09:38:43 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-goocanvas/ChangeLog,v 1.37 2015/08/03 22:06:19 mrueg Exp $
+
+  03 Aug 2015; Manuel Rüger <mrueg@gentoo.org> ruby-goocanvas-1.1.8.ebuild:
+  Drop stable keyword for ppc.
 
 *ruby-goocanvas-2.2.0-r1 (06 Jul 2015)
 

@@ -1,6 +1,12 @@
 # ChangeLog for x11-apps/xwarppointer
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/xwarppointer/ChangeLog,v 1.5 2012/07/11 15:11:41 kensington Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-apps/xwarppointer/ChangeLog,v 1.6 2015/08/03 22:12:43 ulm Exp $
+
+*xwarppointer-1-r2 (03 Aug 2015)
+
+  03 Aug 2015; Ulrich Müller <ulm@gentoo.org> -xwarppointer-1-r1.ebuild,
+  +xwarppointer-1-r2.ebuild:
+  Fix LICENSE, bug 556508. Update ebuild to EAPI 5.
 
   11 Jul 2012; Michael Palimaka <kensington@gentoo.org> -xwarppointer-1.ebuild:
   Remove old.
