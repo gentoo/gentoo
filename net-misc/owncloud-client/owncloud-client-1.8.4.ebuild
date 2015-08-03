@@ -1,26 +1,23 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/owncloud-client/owncloud-client-1.7.1.ebuild,v 1.1 2014/12/18 15:58:54 voyageur Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/owncloud-client/owncloud-client-1.8.4.ebuild,v 1.1 2015/08/03 07:58:27 voyageur Exp $
 
 EAPI=5
 
 inherit cmake-utils
 
-MY_P="mirall-${PV/_/}"
-
 DESCRIPTION="Synchronize files from ownCloud Server with your computer"
 HOMEPAGE="http://owncloud.org/"
-SRC_URI="http://download.owncloud.com/desktop/stable/${MY_P}.tar.bz2"
+SRC_URI="http://download.owncloud.com/desktop/stable/${P/-}.tar.xz"
 
 LICENSE="CC-BY-3.0 GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc nautilus samba +sftp test +qt4 qt5"
+IUSE="doc nautilus samba +sftp test qt4 +qt5"
 
 REQUIRED_USE="^^ ( qt4 qt5 )"
 
 RDEPEND=">=dev-db/sqlite-3.4:3
-	net-libs/neon[ssl]
 	sys-fs/inotify-tools
 	virtual/libiconv
 	nautilus? ( dev-python/nautilus-python )
@@ -31,12 +28,15 @@ RDEPEND=">=dev-db/sqlite-3.4:3
 		dev-qt/qtgui:4
 		dev-qt/qtsql:4
 		dev-qt/qtwebkit:4
+		net-libs/neon[ssl]
 	)
 	qt5? (
 		dev-libs/qtkeychain[qt5]
 		dev-qt/linguist-tools:5
+		dev-qt/qtconcurrent:5
 		dev-qt/qtcore:5
 		dev-qt/qtdbus:5
+		>=dev-qt/qtnetwork-5.4:5
 		dev-qt/qtgui:5
 		dev-qt/qtquickcontrols:5
 		dev-qt/qtsql:5
@@ -57,7 +57,7 @@ DEPEND="${RDEPEND}
 		qt5? ( dev-qt/qttest:5 )
 	)"
 
-S=${WORKDIR}/${MY_P}
+S=${WORKDIR}/${P/-}
 
 src_prepare() {
 	# Keep tests in ${T}

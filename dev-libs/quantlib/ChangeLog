@@ -1,6 +1,14 @@
 # ChangeLog for dev-libs/quantlib
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/quantlib/ChangeLog,v 1.38 2015/06/09 14:49:18 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/quantlib/ChangeLog,v 1.39 2015/08/03 08:29:48 pinkbyte Exp $
+
+*quantlib-1.6 (03 Aug 2015)
+
+  03 Aug 2015; Sergey Popov <pinkbyte@gentoo.org> -quantlib-1.2.ebuild,
+  +quantlib-1.6.ebuild:
+  Version bump, wrt bug #454710. EAPI 5, add epatch_user, do not install crap
+  files with examples, drop unneeded nonfatal calls wrt bug #551164. Drop old
+  version
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/click/click-4.0.ebuild,v 1.1 2015/04/04 08:14:24 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/click/click-4.1.ebuild,v 1.1 2015/08/03 07:50:08 idella4 Exp $
 
 EAPI="5"
 PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
@@ -17,9 +17,10 @@ KEYWORDS="~amd64 ~x86"
 
 IUSE="doc examples test"
 
-RDEPEND="dev-python/colorama[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
+	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+	"
 
 python_prepare_all() {
 	# Prevent un-needed d'loading
@@ -27,17 +28,16 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
-# doc build broken; https://github.com/mitsuhiko/click/issues/318
-#python_compile_all() {
-#	use doc && emake -C docs html
-#}
+python_compile_all() {
+	use doc && emake -C docs html
+}
 
 python_test() {
 	emake test
 }
 
 python_install_all() {
-	# use doc && local HTML_DOCS=( docs/_build/html/. )
+	 use doc && local HTML_DOCS=( docs/_build/html/. )
 	use examples && local EXAMPLES=( examples/. )
 	distutils-r1_python_install_all
 }
