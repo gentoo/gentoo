@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/repmgr/repmgr-3.0.1.ebuild,v 1.4 2015/08/02 18:34:06 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/repmgr/repmgr-3.0.1.ebuild,v 1.5 2015/08/03 00:24:30 patrick Exp $
 
 EAPI=5
 inherit eutils multilib
@@ -22,7 +22,7 @@ src_compile() {
 }
 
 src_install() {
-    emake DESTDIR="${D}" USE_PGXS=1 install
+	emake DESTDIR="${D}" USE_PGXS=1 install
 	export PGSLOT="$(postgresql-config show)"
 	einfo "PGSLOT: ${PGSLOT}"
 	PGBASEDIR=/usr/$(get_libdir)/postgresql-${PGSLOT}
@@ -33,7 +33,7 @@ src_install() {
 	doins sql/repmgr2_repmgr3.sql
 	dosym $PGBINDIR/repmgr /usr/bin/repmgr${PGSLOT//.}
 	dosym $PGBINDIR/repmgrd /usr/bin/repmgrd${PGSLOT//.}
-	dodoc  CREDITS HISTORY COPYRIGHT LICENSE TODO *.md *.rst
+	dodoc  CREDITS HISTORY COPYRIGHT TODO *.md *.rst
 	insinto /etc
 	newins repmgr.conf.sample repmgr.conf
 	fowners postgres:postgres /etc/repmgr.conf

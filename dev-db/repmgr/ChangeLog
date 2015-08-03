@@ -1,6 +1,9 @@
 # ChangeLog for dev-db/repmgr
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/repmgr/ChangeLog,v 1.4 2015/08/02 18:34:06 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/repmgr/ChangeLog,v 1.5 2015/08/03 00:24:30 patrick Exp $
+
+  03 Aug 2015; Patrick Lauer <patrick@gentoo.org> repmgr-3.0.1.ebuild:
+  Repoman happy
 
   02 Aug 2015; Robin H. Johnson <robbat2@gentoo.org> repmgr-3.0.1.ebuild:
   Oops, hardcoded 9.4.
