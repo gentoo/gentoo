@@ -1,6 +1,12 @@
 # ChangeLog for sys-apps/systemd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/ChangeLog,v 1.395 2015/08/02 09:36:14 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/ChangeLog,v 1.396 2015/08/03 18:22:47 floppym Exp $
+
+*systemd-224-r1 (03 Aug 2015)
+
+  03 Aug 2015; Mike Gilbert <floppym@gentoo.org>
+  +files/224-0001-networkd-fix-neworkd-crash.patch, +systemd-224-r1.ebuild:
+  Backport fix for networkd crash.
 
   02 Aug 2015; Pacho Ramos <pacho@gentoo.org> systemd-218-r3.ebuild:
   sparc stable wrt bug #536902

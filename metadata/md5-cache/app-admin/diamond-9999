@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=dev-python/configobj dev-python/setproctitle mongo? ( dev-python/pymongo ) mysql? ( dev-python/mysql-python ) snmp? ( dev-python/pysnmp ) redis? ( dev-python/redis-py ) test? ( dev-python/mock ) >=dev-vcs/git-1.8.2.1 python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DEPEND=dev-python/configobj dev-python/setproctitle mongo? ( dev-python/pymongo ) mysql? ( dev-python/mysql-python ) snmp? ( dev-python/pysnmp ) redis? ( dev-python/redis-py ) !kernel_linux? ( >=dev-python/psutil-3 ) test? ( dev-python/mock ) >=dev-vcs/git-1.8.2.1 python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 DESCRIPTION=Python daemon that collects and publishes system metrics
 EAPI=5
 HOMEPAGE=https://github.com/python-diamond/Diamond
 IUSE=test mongo mysql snmp redis python_targets_python2_7
 LICENSE=MIT
-RDEPEND=dev-python/configobj dev-python/setproctitle mongo? ( dev-python/pymongo ) mysql? ( dev-python/mysql-python ) snmp? ( dev-python/pysnmp ) redis? ( dev-python/redis-py ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+RDEPEND=dev-python/configobj dev-python/setproctitle mongo? ( dev-python/pymongo ) mysql? ( dev-python/mysql-python ) snmp? ( dev-python/pysnmp ) redis? ( dev-python/redis-py ) !kernel_linux? ( >=dev-python/psutil-3 ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
 _eclasses_=distutils-r1	715b22a21726d3fd76b17e007c5daf5f	eutils	9fb270e417e0e83d64ca52586c4a79de	git-r3	727a612b4c6247766904e3f74a326e2b	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-r1	d9c8348f26710ea523a385c2328cf027	python-utils-r1	68e010c13e97b7b2c7bf403ee9c51e1b	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=4f545d70b74f943d432c89782532f44c
+_md5_=8353cf8dfdec02c1152d1b4421998592

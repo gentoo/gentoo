@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/diamond/diamond-4.0-r1.ebuild,v 1.3 2015/07/29 19:18:33 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/diamond/diamond-4.0-r1.ebuild,v 1.4 2015/08/03 17:59:54 grobian Exp $
 
 EAPI=5
 
@@ -16,7 +16,7 @@ fi
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r1 eutils
 
 DESCRIPTION="Python daemon that collects and publishes system metrics"
 HOMEPAGE="https://github.com/python-diamond/Diamond"
@@ -30,7 +30,8 @@ RDEPEND="dev-python/configobj
 	mongo? ( dev-python/pymongo )
 	mysql? ( dev-python/mysql-python )
 	snmp? ( dev-python/pysnmp )
-	redis? ( dev-python/redis-py )"
+	redis? ( dev-python/redis-py )
+	!kernel_linux? ( >=dev-python/psutil-3 )"
 DEPEND="${RDEPEND}
 	test? ( dev-python/mock )"
 
@@ -48,6 +49,8 @@ src_prepare() {
 		-e '/cls_name =/s/\.__class__//' \
 		src/diamond/utils/classes.py \
 		|| die
+
+	epatch "${FILESDIR}"/${P}-psutil.patch
 
 	distutils-r1_src_prepare
 }

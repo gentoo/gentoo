@@ -1,0 +1,28 @@
+From 49f6e11e89b46bacf7b26f6da3921abc1c2faa80 Mon Sep 17 00:00:00 2001
+From: Susant Sahani <ssahani@gmail.com>
+Date: Sun, 2 Aug 2015 00:16:02 +0530
+Subject: [PATCH] networkd: fix neworkd crash
+
+fix issue #827
+
+hostname should be init to NULL.
+---
+ src/network/networkd-dhcp4.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/network/networkd-dhcp4.c b/src/network/networkd-dhcp4.c
+index 4aa301b..5454bdd 100644
+--- a/src/network/networkd-dhcp4.c
++++ b/src/network/networkd-dhcp4.c
+@@ -468,7 +468,7 @@ static int dhcp_lease_acquired(sd_dhcp_client *client, Link *link) {
+         }
+ 
+         if (link->network->dhcp_hostname) {
+-                const char *hostname;
++                const char *hostname = NULL;
+ 
+                 if (!link->network->hostname)
+                         r = sd_dhcp_lease_get_hostname(lease, &hostname);
+-- 
+2.5.0
+

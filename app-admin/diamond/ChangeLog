@@ -1,6 +1,10 @@
 # ChangeLog for app-admin/diamond
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/diamond/ChangeLog,v 1.9 2015/07/29 19:18:33 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/diamond/ChangeLog,v 1.10 2015/08/03 17:59:54 grobian Exp $
+
+  03 Aug 2015; Fabian Groffen <grobian@gentoo.org>
+  +files/diamond-4.0-psutil.patch, diamond-4.0-r1.ebuild, diamond-9999.ebuild:
+  Pull in fixes for psutil-3 usage, useful on non-Linux only
 
   29 Jul 2015; Fabian Groffen <grobian@gentoo.org> diamond-4.0-r1.ebuild,
   diamond-9999.ebuild:
