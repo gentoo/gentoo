@@ -1,6 +1,11 @@
 # ChangeLog for dev-ruby/net-ssh
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/net-ssh/ChangeLog,v 1.135 2015/06/07 18:49:20 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/net-ssh/ChangeLog,v 1.136 2015/08/03 05:50:39 graaff Exp $
+
+*net-ssh-2.10.0 (03 Aug 2015)
+
+  03 Aug 2015; Hans de Graaff <graaff@gentoo.org> +net-ssh-2.10.0.ebuild:
+  Version bump.
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml
