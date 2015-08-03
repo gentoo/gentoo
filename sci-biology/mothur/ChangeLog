@@ -1,6 +1,9 @@
 # ChangeLog for sci-biology/mothur
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/mothur/ChangeLog,v 1.13 2015/07/27 18:42:15 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/mothur/ChangeLog,v 1.14 2015/08/03 12:54:49 ago Exp $
+
+  03 Aug 2015; Agostino Sarubbo <ago@gentoo.org> mothur-1.27.0-r1.ebuild:
+  Stable for amd64, wrt bug #556066
 
 *mothur-1.27.0-r1 (27 Jul 2015)
 

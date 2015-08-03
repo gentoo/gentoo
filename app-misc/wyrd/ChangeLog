@@ -1,6 +1,9 @@
 # ChangeLog for app-misc/wyrd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/wyrd/ChangeLog,v 1.25 2015/02/15 09:29:43 aballier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/wyrd/ChangeLog,v 1.26 2015/08/03 12:55:18 ago Exp $
+
+  03 Aug 2015; Agostino Sarubbo <ago@gentoo.org> wyrd-1.4.6.ebuild:
+  Stable for amd64, wrt bug #553328
 
   15 Feb 2015; Alexis Ballier <aballier@gentoo.org> wyrd-1.4.6.ebuild:
   fix deps with ocaml 4.02, bug #537252
@@ -110,4 +113,3 @@
   12 Jul 2005; Michael Cummings <mcummings@gentoo.org> +metadata.xml,
   +wyrd-1.0.0.ebuild:
   Initial checkin
-

@@ -1,6 +1,10 @@
 # ChangeLog for net-libs/udns
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/udns/ChangeLog,v 1.35 2015/08/02 18:36:17 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/udns/ChangeLog,v 1.36 2015/08/03 13:22:08 kensington Exp $
+
+  03 Aug 2015; Michael Palimaka <kensington@gentoo.org>
+  -files/udns-0.1-respect-LDFLAGS.patch, -udns-0.1.ebuild:
+  Remove old.
 
   02 Aug 2015; Agostino Sarubbo <ago@gentoo.org> udns-0.4.ebuild:
   Stable for x86, wrt bug #517792

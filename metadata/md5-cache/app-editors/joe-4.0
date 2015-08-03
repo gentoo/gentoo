@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure postinst prepare
+DEPEND=>=sys-libs/ncurses-5.2-r2
+DESCRIPTION=A free ASCII-Text Screen Editor for UNIX
+EAPI=5
+HOMEPAGE=http://sourceforge.net/projects/joe-editor/
+IUSE=xterm
+KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris
+LICENSE=GPL-1
+RDEPEND=xterm? ( >=x11-terms/xterm-239 )
+SLOT=0
+SRC_URI=mirror://sourceforge/joe-editor/joe-4.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=2364f628c4bd7dad5c7e606e86bdfe98

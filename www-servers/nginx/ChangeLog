@@ -1,6 +1,9 @@
 # ChangeLog for www-servers/nginx
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/nginx/ChangeLog,v 1.410 2015/07/15 14:10:15 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/nginx/ChangeLog,v 1.411 2015/08/03 12:40:53 zlogene Exp $
+
+  03 Aug 2015; Mikle Kolyada <zlogene@gentoo.org> nginx-1.8.0.ebuild:
+  amd64 stable wrt bug #556580
 
 *nginx-1.9.3 (15 Jul 2015)
 

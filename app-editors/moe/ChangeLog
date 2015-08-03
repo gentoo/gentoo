@@ -1,6 +1,11 @@
 # ChangeLog for app-editors/moe
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/moe/ChangeLog,v 1.9 2014/12/06 08:21:12 jer Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-editors/moe/ChangeLog,v 1.10 2015/08/03 13:25:44 polynomial-c Exp $
+
+*moe-1.7 (03 Aug 2015)
+
+  03 Aug 2015; Lars Wendler <polynomial-c@gentoo.org> +moe-1.7.ebuild:
+  Version bump.
 
   06 Dec 2014; Jeroen Roovers <jer@gentoo.org> moe-1.6.ebuild,
   files/moe-1.6-tinfo.patch:

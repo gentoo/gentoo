@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/bundler
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/bundler/ChangeLog,v 1.103 2015/07/25 13:01:16 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/bundler/ChangeLog,v 1.104 2015/08/03 12:55:04 ago Exp $
+
+  03 Aug 2015; Agostino Sarubbo <ago@gentoo.org> bundler-1.8.9.ebuild:
+  Stable for amd64, wrt bug #553894
 
   25 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> bundler-1.7.13.ebuild:
   sparc stable wrt bug #542574

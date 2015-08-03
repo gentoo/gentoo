@@ -1,6 +1,9 @@
 # ChangeLog for app-editors/editra
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/editra/ChangeLog,v 1.39 2015/04/12 21:24:26 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/editra/ChangeLog,v 1.40 2015/08/03 12:55:08 ago Exp $
+
+  03 Aug 2015; Agostino Sarubbo <ago@gentoo.org> editra-0.7.20-r1.ebuild:
+  Stable for amd64, wrt bug #539436
 
   12 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -editra-0.7.12.ebuild:
   Remove old.

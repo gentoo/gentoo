@@ -1,6 +1,9 @@
 # ChangeLog for sci-mathematics/singular
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/singular/ChangeLog,v 1.66 2015/08/01 06:11:12 tomka Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/singular/ChangeLog,v 1.67 2015/08/03 12:55:13 ago Exp $
+
+  03 Aug 2015; Agostino Sarubbo <ago@gentoo.org> singular-4.0.2.ebuild:
+  Stable for amd64, wrt bug #556418
 
   01 Aug 2015; Thomas Kahle <tomka@gentoo.org> singular-4.0.2.ebuild:
   Fix building with automake other than 1.13, add slot on gmp.

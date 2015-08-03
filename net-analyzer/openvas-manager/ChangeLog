@@ -1,6 +1,11 @@
 # ChangeLog for net-analyzer/openvas-manager
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/openvas-manager/ChangeLog,v 1.24 2015/07/27 14:05:57 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/openvas-manager/ChangeLog,v 1.25 2015/08/03 12:39:22 jlec Exp $
+
+*openvas-manager-6.0.5 (03 Aug 2015)
+
+  03 Aug 2015; Justin Lecher <jlec@gentoo.org> +openvas-manager-6.0.5.ebuild:
+  Version Bump
 
 *openvas-manager-5.0.11 (27 Jul 2015)
 *openvas-manager-6.0.4 (27 Jul 2015)

@@ -1,6 +1,11 @@
 # ChangeLog for app-editors/joe
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/joe/ChangeLog,v 1.87 2015/06/09 09:50:44 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/joe/ChangeLog,v 1.88 2015/08/03 13:20:37 polynomial-c Exp $
+
+*joe-4.0 (03 Aug 2015)
+
+  03 Aug 2015; Lars Wendler <polynomial-c@gentoo.org> +joe-4.0.ebuild:
+  Version bump (bug #544212).
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml
