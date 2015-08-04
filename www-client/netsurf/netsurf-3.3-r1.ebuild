@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/netsurf/netsurf-3.3-r1.ebuild,v 1.1 2015/06/09 22:12:42 xmw Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/netsurf/netsurf-3.3-r1.ebuild,v 1.2 2015/08/04 13:00:08 xmw Exp $
 
 EAPI=5
 
@@ -32,6 +32,7 @@ RDEPEND="=dev-libs/libnsutils-0.0.1-r1[${MULTILIB_USEDEP}]
 	net-misc/curl[${MULTILIB_USEDEP}]
 	>=dev-libs/libcss-0.5.0-r1[${MULTILIB_USEDEP}]
 	>=net-libs/libhubbub-0.3.1-r1[${MULTILIB_USEDEP}]
+	net-libs/libdom[${MULTILIB_USEDEP}]
 	bmp? ( >=media-libs/libnsbmp-0.1.2-r1[${MULTILIB_USEDEP}] )
 	fbcon? ( >=dev-libs/libnsfb-0.1.3-r1[${MULTILIB_USEDEP}]
 		truetype? ( media-fonts/dejavu

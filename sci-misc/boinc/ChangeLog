@@ -1,6 +1,13 @@
 # ChangeLog for sci-misc/boinc
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-misc/boinc/ChangeLog,v 1.112 2013/12/31 13:05:51 pacho Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-misc/boinc/ChangeLog,v 1.113 2015/08/04 13:28:13 mgorny Exp $
+
+*boinc-7.4.42 (04 Aug 2015)
+
+  04 Aug 2015; Michał Górny <mgorny@gentoo.org> +boinc-7.4.42.ebuild,
+  boinc-7.2.0-r1.ebuild, boinc-7.2.0.ebuild:
+  Version bump with minor fixes. https://github.com/gentoo/gentoo-portage-rsync-
+  mirror/pull/135 by marbre.
 
 *boinc-7.2.0-r1 (31 Dec 2013)
 

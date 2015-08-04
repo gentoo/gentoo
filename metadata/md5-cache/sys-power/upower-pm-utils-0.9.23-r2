@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=>=dev-libs/dbus-glib-0.100 >=dev-libs/glib-2.22 sys-apps/dbus >=sys-auth/polkit-0.110 introspection? ( dev-libs/gobject-introspection ) kernel_linux? ( virtual/libusb:1 virtual/libgudev:= virtual/udev ios? ( >=app-pda/libimobiledevice-1:= >=app-pda/libplist-1:= ) ) !sys-power/upower dev-libs/libxslt app-text/docbook-xsl-stylesheets dev-util/intltool virtual/pkgconfig virtual/pkgconfig
+DEPEND=>=dev-libs/dbus-glib-0.100 >=dev-libs/glib-2.22 sys-apps/dbus >=sys-auth/polkit-0.110 introspection? ( dev-libs/gobject-introspection ) kernel_linux? ( virtual/libusb:1 virtual/libgudev:= virtual/udev ios? ( >=app-pda/libimobiledevice-1:= >=app-pda/libplist-1:= ) ) !sys-power/upower dev-libs/libxslt app-text/docbook-xsl-stylesheets dev-util/intltool >=sys-devel/gettext-0.17 virtual/pkgconfig virtual/pkgconfig
 DESCRIPTION=The upstream upower 0.9 git branch for use with sys-power/pm-utils
 EAPI=5
 HOMEPAGE=http://upower.freedesktop.org/
@@ -10,4 +10,4 @@ RDEPEND=>=dev-libs/dbus-glib-0.100 >=dev-libs/glib-2.22 sys-apps/dbus >=sys-auth
 SLOT=0
 SRC_URI=http://upower.freedesktop.org/releases/upower-0.9.23.tar.xz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=0811860c4728b356085885f451ebc7c4
+_md5_=c47193d5c9dee13e113e487747e499f0

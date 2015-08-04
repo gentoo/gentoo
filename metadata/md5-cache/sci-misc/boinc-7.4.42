@@ -8,6 +8,6 @@ KEYWORDS=~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=LGPL-2.1
 RDEPEND=!sci-misc/boinc-bin !app-admin/quickswitch >=app-misc/ca-certificates-20080809 dev-libs/openssl:0= net-misc/curl[ssl,-gnutls(-),-nss(-),curl_ssl_openssl(+)] sys-apps/util-linux sys-libs/zlib cuda? ( >=dev-util/nvidia-cuda-toolkit-2.1 >=x11-drivers/nvidia-drivers-180.22 ) X? ( dev-db/sqlite:3 media-libs/freeglut sys-libs/glibc:2.2 virtual/jpeg:0= x11-libs/gtk+:2 >=x11-libs/libnotify-0.7 x11-libs/wxGTK:2.8[X,opengl] )
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~jlec/distfiles/boinc-7.2.0.tar.xz
-_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	wxwidgets	6d6eec2685256d35511e7b6d5461bec9
-_md5_=566f5c867b581c1aaf0c5a069c7ef711
+SRC_URI=https://github.com/BOINC/boinc/archive/client_release/7.4/7.4.42.tar.gz -> boinc-7.4.42.tar.gz
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	versionator	cd0bcdb170807e4a1984115e9d53a26f	wxwidgets	6d6eec2685256d35511e7b6d5461bec9
+_md5_=2d350e0864c1101eb1025b21eb2e9cc0

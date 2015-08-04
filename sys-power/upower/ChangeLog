@@ -1,6 +1,10 @@
 # ChangeLog for sys-power/upower
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/upower/ChangeLog,v 1.181 2015/07/04 17:15:22 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-power/upower/ChangeLog,v 1.182 2015/08/04 13:15:17 tetromino Exp $
+
+  04 Aug 2015; Alexandre Rostovtsev <tetromino@gentoo.org>
+  upower-0.99.2-r1.ebuild, upower-0.99.3.ebuild:
+  Missing gettext dependency (bug #555010, thanks to Ben Kohler).
 
   04 Jul 2015; Pacho Ramos <pacho@gentoo.org> -upower-0.99.1.ebuild:
   Drop old

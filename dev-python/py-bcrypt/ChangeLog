@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/py-bcrypt
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/py-bcrypt/ChangeLog,v 1.13 2015/05/18 05:45:58 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/py-bcrypt/ChangeLog,v 1.14 2015/08/04 12:35:53 zlogene Exp $
+
+  04 Aug 2015; Mikle Kolyada <zlogene@gentoo.org> py-bcrypt-0.4.ebuild:
+  Add ~ia64 keyword wrt byg #541668
 
   18 May 2015; Jeroen Roovers <jer@gentoo.org> py-bcrypt-0.4.ebuild:
   Mark ~ppc64 (bug #541668).

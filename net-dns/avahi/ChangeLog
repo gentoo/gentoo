@@ -1,6 +1,9 @@
 # ChangeLog for net-dns/avahi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/avahi/ChangeLog,v 1.287 2015/08/03 10:58:54 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/avahi/ChangeLog,v 1.288 2015/08/04 13:15:26 zlogene Exp $
+
+  04 Aug 2015; Mikle Kolyada <zlogene@gentoo.org> avahi-0.6.31-r8.ebuild:
+  x86 stable wrt bug #554784
 
   03 Aug 2015; Agostino Sarubbo <ago@gentoo.org> avahi-0.6.31-r8.ebuild:
   Stable for amd64, wrt bug #554784

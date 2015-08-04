@@ -4,11 +4,11 @@ DESCRIPTION=Python FTP server library
 EAPI=5
 HOMEPAGE=https://github.com/giampaolo/pyftpdlib http://pypi.python.org/pypi/pyftpdlib
 IUSE=examples ssl python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 python_targets_pypy
-KEYWORDS=alpha amd64 arm hppa ~ia64 ~mips ppc ~ppc64 ~s390 ~sh sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ~ppc64 ~s390 ~sh sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris
 LICENSE=MIT
 RDEPEND=ssl? ( dev-python/pyopenssl[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_pypy(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_pypy(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[ssl(+)] ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3[ssl(+)] ) python_targets_python3_4? ( dev-lang/python:3.4[ssl(+)] ) python_targets_pypy? ( virtual/pypy:0=[ssl(+)] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_pypy(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_pypy(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 python_targets_pypy )
 SLOT=0
 SRC_URI=mirror://pypi/p/pyftpdlib/pyftpdlib-1.4.0.tar.gz
 _eclasses_=distutils-r1	715b22a21726d3fd76b17e007c5daf5f	eutils	9fb270e417e0e83d64ca52586c4a79de	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-r1	d9c8348f26710ea523a385c2328cf027	python-utils-r1	0295a286ec27cab6af76b3b75ba07a3a	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=c32c3bc1a1f42119636d4d7dc6e6fdf4
+_md5_=f27c0a215847e4b64306ca4eb71272d8

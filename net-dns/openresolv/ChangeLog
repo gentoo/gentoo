@@ -1,6 +1,9 @@
 # ChangeLog for net-dns/openresolv
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/openresolv/ChangeLog,v 1.104 2015/08/02 18:39:48 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/openresolv/ChangeLog,v 1.105 2015/08/04 13:19:35 zlogene Exp $
+
+  04 Aug 2015; Mikle Kolyada <zlogene@gentoo.org> openresolv-3.7.0.ebuild:
+  ia64 stable wrt bug #556054
 
   02 Aug 2015; Agostino Sarubbo <ago@gentoo.org> openresolv-3.7.0.ebuild:
   Stable for x86, wrt bug #556054

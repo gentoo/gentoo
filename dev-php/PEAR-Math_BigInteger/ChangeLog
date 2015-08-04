@@ -1,6 +1,10 @@
 # ChangeLog for dev-php/PEAR-Math_BigInteger
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Math_BigInteger/ChangeLog,v 1.4 2015/05/05 07:43:58 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Math_BigInteger/ChangeLog,v 1.5 2015/08/04 12:32:42 zlogene Exp $
+
+  04 Aug 2015; Mikle Kolyada <zlogene@gentoo.org>
+  PEAR-Math_BigInteger-1.0.2.ebuild:
+  Add ~ia64 keyword wrt byg #528470
 
   05 May 2015; Jeroen Roovers <jer@gentoo.org>
   PEAR-Math_BigInteger-1.0.2.ebuild:

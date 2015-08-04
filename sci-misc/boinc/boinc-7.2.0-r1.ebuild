@@ -1,6 +1,6 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-misc/boinc/boinc-7.2.0-r1.ebuild,v 1.1 2013/12/31 13:05:51 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-misc/boinc/boinc-7.2.0-r1.ebuild,v 1.2 2015/08/04 13:28:13 mgorny Exp $
 
 EAPI=5
 
@@ -23,7 +23,7 @@ RDEPEND="
 	!sci-misc/boinc-bin
 	!app-admin/quickswitch
 	>=app-misc/ca-certificates-20080809
-	dev-libs/openssl
+	dev-libs/openssl:0=
 	net-misc/curl[ssl,-gnutls(-),-nss(-),curl_ssl_openssl(+)]
 	sys-apps/util-linux
 	sys-libs/zlib
@@ -35,7 +35,7 @@ RDEPEND="
 		dev-db/sqlite:3
 		media-libs/freeglut
 		sys-libs/glibc:2.2
-		virtual/jpeg
+		virtual/jpeg:0=
 		x11-libs/gtk+:2
 		>=x11-libs/libnotify-0.7
 		x11-libs/wxGTK:2.8[X,opengl]
