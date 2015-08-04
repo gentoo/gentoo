@@ -14,6 +14,7 @@
   open-sourced by HP and UNLV in 2005.</longdescription>
   <upstream>
     <remote-id type="google-code">tesseract-ocr</remote-id>
+    <remote-id type="github">tesseract-ocr/tessdata</remote-id>
   </upstream>
   <use>
     <flag name="webp"> Enable support for webp image format.</flag>

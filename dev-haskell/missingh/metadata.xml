@@ -5,4 +5,7 @@
   <maintainer>
     <email>haskell@gentoo.org</email>
   </maintainer>
+  <upstream>
+    <remote-id type="github">jgoerzen/missingh</remote-id>
+  </upstream>
 </pkgmetadata>

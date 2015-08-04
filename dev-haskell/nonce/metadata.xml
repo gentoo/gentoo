@@ -8,8 +8,11 @@
 		contain helper functions for generating nonces.
 		
 		There are many kinds of nonces used in different situations.
-		It&#39;s not guaranteed that by using the nonces from this package
-		you won&#39;t have any security issues.  Please make sure that the
+		It's not guaranteed that by using the nonces from this package
+		you won't have any security issues.  Please make sure that the
 		nonces generated via this package are usable on your design.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">prowdsponsor/nonce</remote-id>
+	</upstream>
 </pkgmetadata>

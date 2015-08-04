@@ -7,4 +7,7 @@
 		
 		See the README for what instances are covered: &lt;https://github.com/haskell-compat/base-orphans#readme&gt;
 	</longdescription>
+	<upstream>
+		<remote-id type="github">haskell-compat/base-orphans#readme</remote-id>
+	</upstream>
 </pkgmetadata>

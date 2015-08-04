@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/south
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/south/ChangeLog,v 1.24 2015/06/03 21:54:48 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/south/ChangeLog,v 1.25 2015/08/04 08:40:57 jlec Exp $
+
+  04 Aug 2015; Justin Lecher <jlec@gentoo.org> -south-0.8.4.ebuild:
+  Drop old
 
   03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add pypi to remote-id in metadata.xml

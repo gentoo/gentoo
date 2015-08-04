@@ -1,6 +1,12 @@
 # ChangeLog for app-misc/regionset
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/regionset/ChangeLog,v 1.12 2012/02/16 17:42:43 phajdan.jr Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/regionset/ChangeLog,v 1.13 2015/08/04 09:16:40 polynomial-c Exp $
+
+*regionset-0.2 (04 Aug 2015)
+
+  04 Aug 2015; Lars Wendler <polynomial-c@gentoo.org> -regionset-0.1.ebuild,
+  +regionset-0.2.ebuild:
+  Version bump. Removed old.
 
   16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> regionset-0.1-r1.ebuild:
   x86 stable wrt bug #396821

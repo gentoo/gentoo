@@ -1,6 +1,11 @@
 # ChangeLog for app-misc/remind
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/remind/ChangeLog,v 1.15 2015/04/30 16:12:21 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/remind/ChangeLog,v 1.16 2015/08/04 09:25:03 polynomial-c Exp $
+
+*remind-03.01.15 (04 Aug 2015)
+
+  04 Aug 2015; Lars Wendler <polynomial-c@gentoo.org> +remind-03.01.15.ebuild:
+  Version bump.
 
 *remind-03.01.14 (30 Apr 2015)
 

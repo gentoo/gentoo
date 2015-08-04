@@ -9,4 +9,7 @@
 		These functions can be used to reduce the number of unsafe pattern matches in
 		your code.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">ndmitchell/safe#readme</remote-id>
+	</upstream>
 </pkgmetadata>

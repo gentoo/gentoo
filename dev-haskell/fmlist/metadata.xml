@@ -9,4 +9,7 @@
 		characteristics as well. These wild claims are still completely
 		unverified though.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">sjoerdvisscher/fmlist</remote-id>
+	</upstream>
 </pkgmetadata>

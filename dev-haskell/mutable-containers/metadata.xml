@@ -5,4 +5,7 @@
 	<longdescription>
 		See docs and README at &lt;http://www.stackage.org/package/mutable-containers&gt;
 	</longdescription>
+	<upstream>
+		<remote-id type="github">fpco/mutable-containers</remote-id>
+	</upstream>
 </pkgmetadata>

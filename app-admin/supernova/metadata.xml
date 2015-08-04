@@ -9,5 +9,6 @@
 	</longdescription>
   <upstream>
     <remote-id type="github">rackerhacker/supernova</remote-id>
+    <remote-id type="pypi">supernova</remote-id>
   </upstream>
 </pkgmetadata>

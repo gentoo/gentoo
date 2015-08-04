@@ -6,7 +6,10 @@
 		Is a given string a domain suffix?
 	</longdescription>
 	<use>
-		<flag name='create'>export Network.PublicSuffixList.Create module</flag>
-		<flag name='runtimelist'>read suffix list from dist at startup instead of embedding list into library</flag>
+		<flag name="create">export Network.PublicSuffixList.Create module</flag>
+		<flag name="runtimelist">read suffix list from dist at startup instead of embedding list into library</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">litherum/publicsuffixlist</remote-id>
+	</upstream>
 </pkgmetadata>

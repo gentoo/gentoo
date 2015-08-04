@@ -9,4 +9,7 @@
 		&lt;http://hackage.haskell.org/package/geniplate geniplate&gt; package,
 		written by Lennart Augustsson.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">danr/geniplate</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -4,7 +4,7 @@
 	<herd>haskell</herd>
 	<longdescription>
 		This package provides an implementation of the ideas presented in the paper
-		\&quot;Functional Pearl: Implicit Configurations\&quot; by Oleg Kiselyov and
+		\"Functional Pearl: Implicit Configurations\" by Oleg Kiselyov and
 		Chung-chieh Shan. However, the API has been streamlined to improve performance.
 		
 		The original paper can be obtained from
@@ -43,8 +43,11 @@
 		reduces the need for helper functions and scoped type variables in user
 		code.
 	</longdescription>
-<use>
-  <flag name='template-haskell'>Enable template haskell.</flag>
-  <flag name='th'>Enable template haskell.</flag>
-</use>
+	<use>
+		<flag name="template-haskell">Enable template haskell.</flag>
+		<flag name="th">Enable template haskell.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">ekmett/reflection</remote-id>
+	</upstream>
 </pkgmetadata>

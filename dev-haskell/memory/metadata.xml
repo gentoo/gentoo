@@ -13,4 +13,7 @@
 		
 		* Aliasing with endianness support.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">vincenthz/hs-memory</remote-id>
+	</upstream>
 </pkgmetadata>

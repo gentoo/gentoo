@@ -6,4 +6,7 @@
 		Extra functionality for the Process library
 		&lt;http://hackage.haskell.org/package/process&gt;.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">seereason/process-extras</remote-id>
+	</upstream>
 </pkgmetadata>
