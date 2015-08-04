@@ -1,9 +1,13 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use.mask,v 1.696 2015/07/29 12:22:32 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use.mask,v 1.697 2015/08/04 13:38:19 jlec Exp $
 
 # This file requires >=portage-2.1.1
 # New entries go on top.
+
+# Justin Lecher <jlec@gentoo.org> (04 Aug 2015)
+# USE mask unsupported python implementations in django
+dev-python/south python_targets_python3_3 python_targets_python3_4 python_targets_pypy
 
 # James Le Cuirot <chewi@gentoo.org> (29 Jul 2015)
 # JavaFX and the browser plugin are not included on some platforms.

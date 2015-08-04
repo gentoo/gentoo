@@ -1,6 +1,11 @@
 # ChangeLog for app-text/podofo
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/podofo/ChangeLog,v 1.46 2014/08/10 18:29:11 slyfox Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/podofo/ChangeLog,v 1.47 2015/08/04 14:16:26 polynomial-c Exp $
+
+*podofo-0.9.3 (04 Aug 2015)
+
+  04 Aug 2015; Lars Wendler <polynomial-c@gentoo.org> +podofo-0.9.3.ebuild:
+  Version bump.
 
   10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> podofo-0.9.2.ebuild:
   QA: drop trailing '.' from DESCRIPTION

@@ -1,6 +1,9 @@
 # ChangeLog for Gentoo base-profile
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/ChangeLog,v 1.821 2015/07/29 12:22:32 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/ChangeLog,v 1.822 2015/08/04 13:38:19 jlec Exp $
+
+  04 Aug 2015; Justin Lecher <jlec@gentoo.org> package.use.mask:
+  USE mask unsupported python implementations in django for dev-python/south
 
   29 Jul 2015; James Le Cuirot <chewi@gentoo.org> package.use.mask:
   Remove obsolete nsplugin masks because the old Sun JVMs are masked entirely.

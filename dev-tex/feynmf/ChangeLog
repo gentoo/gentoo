@@ -1,6 +1,9 @@
 # ChangeLog for dev-tex/feynmf
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/feynmf/ChangeLog,v 1.47 2015/08/02 18:55:05 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/feynmf/ChangeLog,v 1.48 2015/08/04 13:32:46 zlogene Exp $
+
+  04 Aug 2015; Mikle Kolyada <zlogene@gentoo.org> feynmf-1.08-r4.ebuild:
+  ia64 stable wrt bug #556292
 
   02 Aug 2015; Agostino Sarubbo <ago@gentoo.org> feynmf-1.08-r4.ebuild:
   Stable for x86, wrt bug #556292
