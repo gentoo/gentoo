@@ -1,0 +1,12 @@
+--- a/files/fail2ban-logrotate
++++ b/files/fail2ban-logrotate
+@@ -9,9 +9,7 @@
+ #  http://pkgs.fedoraproject.org/cgit/fail2ban.git/tree/fail2ban-logrotate
+ 
+ /var/log/fail2ban.log {
+-    rotate 7
+     missingok
+-    compress
+     postrotate
+       /usr/bin/fail2ban-client flushlogs  1>/dev/null || true
+     endscript

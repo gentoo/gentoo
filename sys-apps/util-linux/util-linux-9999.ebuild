@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/util-linux/util-linux-9999.ebuild,v 1.64 2015/05/30 11:43:00 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/util-linux/util-linux-9999.ebuild,v 1.65 2015/08/04 05:49:32 vapier Exp $
 
 EAPI="5"
 
@@ -36,13 +36,13 @@ RDEPEND="!sys-process/schedutils
 	!<app-shells/bash-completion-1.3-r2
 	caps? ( sys-libs/libcap-ng )
 	cramfs? ( sys-libs/zlib )
-	ncurses? ( >=sys-libs/ncurses-5.2-r2 )
+	ncurses? ( >=sys-libs/ncurses-5.2-r2:=[unicode?] )
 	pam? ( sys-libs/pam )
 	python? ( ${PYTHON_DEPS} )
 	selinux? ( >=sys-libs/libselinux-2.2.2-r4[${MULTILIB_USEDEP}] )
 	slang? ( sys-libs/slang )
 	systemd? ( sys-apps/systemd )
-	udev? ( virtual/libudev )
+	udev? ( virtual/libudev:= )
 	abi_x86_32? (
 		!<=app-emulation/emul-linux-x86-baselibs-20140406-r2
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32]

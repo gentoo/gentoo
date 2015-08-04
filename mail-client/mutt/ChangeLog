@@ -1,6 +1,9 @@
 # ChangeLog for mail-client/mutt
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/mutt/ChangeLog,v 1.290 2015/08/02 18:43:59 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/mutt/ChangeLog,v 1.291 2015/08/04 05:35:01 vapier Exp $
+
+  04 Aug 2015; Mike Frysinger <vapier@gentoo.org> mutt-1.5.23-r7.ebuild:
+  Only show quickstart link on first install.
 
   02 Aug 2015; Agostino Sarubbo <ago@gentoo.org> mutt-1.5.23-r7.ebuild:
   Stable for x86, wrt bug #556042

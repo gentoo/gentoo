@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/mutt/mutt-1.5.23-r7.ebuild,v 1.6 2015/08/02 18:43:59 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/mutt/mutt-1.5.23-r7.ebuild,v 1.7 2015/08/04 05:35:01 vapier Exp $
 
 EAPI="5"
 
@@ -242,9 +242,11 @@ src_install() {
 }
 
 pkg_postinst() {
-	echo
-	elog "If you are new to mutt you may want to take a look at"
-	elog "the Gentoo QuickStart Guide to Mutt E-Mail:"
-	elog "   https://wiki.gentoo.org/wiki/Mutt"
-	echo
+	if [[ -z ${REPLACING_VERSIONS} ]] ; then
+		echo
+		elog "If you are new to mutt you may want to take a look at"
+		elog "the Gentoo QuickStart Guide to Mutt E-Mail:"
+		elog "   https://wiki.gentoo.org/wiki/Mutt"
+		echo
+	fi
 }
