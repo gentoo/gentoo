@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/pycups
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pycups/ChangeLog,v 1.107 2015/08/02 18:49:31 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pycups/ChangeLog,v 1.108 2015/08/04 20:58:28 johu Exp $
+
+  04 Aug 2015; Johannes Huber <johu@gentoo.org> -pycups-1.9.68.ebuild:
+  Remove old.
 
   02 Aug 2015; Agostino Sarubbo <ago@gentoo.org> pycups-1.9.72.ebuild:
   Stable for x86, wrt bug #553130

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-4.4.3.2.ebuild,v 1.6 2015/06/21 19:10:14 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/libreoffice-5.0.0.5.ebuild,v 1.1 2015/08/04 20:49:29 dilfridge Exp $
 
 EAPI=5
 
@@ -90,7 +90,8 @@ unset lo_xt
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
 [[ ${PV} == *9999* ]] || \
-KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
+KEYWORDS=""
+#KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 
 COMMON_DEPEND="
 	${PYTHON_DEPS}
@@ -101,14 +102,14 @@ COMMON_DEPEND="
 	>=app-text/libabw-0.1.0
 	>=app-text/libexttextcat-3.2
 	>=app-text/libebook-0.1.1
-	>=app-text/libetonyek-0.1.1
+	>=app-text/libetonyek-0.1.2
 	app-text/liblangtag
 	>=app-text/libmspub-0.1.0
-	>=app-text/libmwaw-0.3.4
+	>=app-text/libmwaw-0.3.5
 	>=app-text/libodfgen-0.1.0
 	app-text/libwpd:0.10[tools]
 	app-text/libwpg:0.3
-	=app-text/libwps-0.3*
+	=app-text/libwps-0.4*
 	>=app-text/poppler-0.16:=[xpdf-headers(+),cxx]
 	>=dev-cpp/clucene-2.3.3.4-r2
 	=dev-cpp/libcmis-0.5*
@@ -197,7 +198,8 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 if [[ ${PV} != *9999* ]]; then
-	PDEPEND="=app-office/libreoffice-l10n-$(get_version_component_range 1-2)*"
+	#PDEPEND="=app-office/libreoffice-l10n-$(get_version_component_range 1-2)*"
+	PDEPEND=">=app-office/libreoffice-l10n-4.4"
 else
 	# Translations are not reliable on live ebuilds
 	# rather force people to use english only.
@@ -215,7 +217,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/cppunit
 	>=dev-util/gperf-3
 	dev-util/intltool
-	>=dev-util/mdds-0.11.2:=
+	>=dev-util/mdds-0.12.0:=
 	media-libs/glm
 	net-misc/npapi-sdk
 	>=sys-apps/findutils-4.4.2
@@ -246,10 +248,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.4-system-pyuno.patch"
 
 	# from master branch
-	"${FILESDIR}/${PN}-4.4.0.3-telepathy-build-fix.patch"
-	"${FILESDIR}/${PN}-4.4.1.2-add-kde4-open-url-script.patch"
-	"${FILESDIR}/${PN}-4.4.1.2-improve-KDE4FilePicker.patch"
-	"${FILESDIR}/${PN}-4.3.5.2-remove-bashisms.patch" # bug 525454
+	"${FILESDIR}/${PN}-4.4.5.2-fix-KDE4-listbox-regression.patch"
 )
 
 REQUIRED_USE="

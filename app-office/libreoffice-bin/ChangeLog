@@ -1,6 +1,10 @@
 # ChangeLog for app-office/libreoffice-bin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice-bin/ChangeLog,v 1.192 2015/07/22 19:34:03 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice-bin/ChangeLog,v 1.193 2015/08/04 20:34:35 dilfridge Exp $
+
+  04 Aug 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  -libreoffice-bin-4.4.3.2-r1.ebuild, -libreoffice-bin-4.4.3.2.ebuild:
+  Remove old
 
   22 Jul 2015; Agostino Sarubbo <ago@gentoo.org> libreoffice-bin-4.4.4.3.ebuild:
   Stable for x86, wrt bug #555584

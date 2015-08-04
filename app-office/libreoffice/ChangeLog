@@ -1,6 +1,16 @@
 # ChangeLog for app-office/libreoffice
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/ChangeLog,v 1.642 2015/07/25 21:28:22 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/libreoffice/ChangeLog,v 1.643 2015/08/04 20:49:29 dilfridge Exp $
+
+*libreoffice-4.4.5.2 (04 Aug 2015)
+*libreoffice-5.0.0.5 (04 Aug 2015)
+
+  04 Aug 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +files/libreoffice-4.4.5.2-fix-KDE4-listbox-regression.patch,
+  +libreoffice-4.4.5.2.ebuild, +libreoffice-5.0.0.5.ebuild,
+  -libreoffice-4.4.3.2.ebuild, -libreoffice-5.0.0.4.ebuild,
+  libreoffice-4.4.9999.ebuild:
+  Version bump; remove old
 
 *libreoffice-5.0.0.4 (25 Jul 2015)
 
