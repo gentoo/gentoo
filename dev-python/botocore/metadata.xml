@@ -7,4 +7,7 @@
 	</maintainer>
 	<longdescription lang="en">
 	</longdescription>
+	<upstream>
+		<remote-id type="github">boto/botocore</remote-id>
+	</upstream>
 </pkgmetadata>

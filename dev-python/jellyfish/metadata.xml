@@ -3,4 +3,7 @@
 <pkgmetadata>
   <herd>python</herd>
   <herd>sound</herd>
+  <upstream>
+    <remote-id type="pypi">jellyfish</remote-id>
+  </upstream>
 </pkgmetadata>

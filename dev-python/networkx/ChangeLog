@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/networkx
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/networkx/ChangeLog,v 1.35 2015/06/07 14:18:54 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/networkx/ChangeLog,v 1.36 2015/08/04 10:54:59 patrick Exp $
+
+*networkx-1.10 (04 Aug 2015)
+
+  04 Aug 2015; Patrick Lauer <patrick@gentoo.org> +networkx-1.10.ebuild:
+  Bump
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

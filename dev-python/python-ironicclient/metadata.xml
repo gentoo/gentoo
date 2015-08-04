@@ -8,4 +8,7 @@
 	<longdescription lang="en">
 		API bindings and client for the OpenStack bare metal provisioning service.
 	</longdescription>
+	<upstream>
+		<remote-id type="pypi">python-ironicclient</remote-id>
+	</upstream>
 </pkgmetadata>

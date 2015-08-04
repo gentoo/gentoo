@@ -1,13 +1,13 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/cyana/cyana-2.1.ebuild,v 1.13 2015/07/30 18:02:51 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/cyana/cyana-2.1.ebuild,v 1.14 2015/08/04 10:56:10 jlec Exp $
 
 EAPI=5
 
 inherit eutils fortran-2 toolchain-funcs
 
 DESCRIPTION="Combined assignment and dynamics algorithm for NMR applications"
-HOMEPAGE="http://www.las.jp/english/products/s08_cyana/index.html"
+HOMEPAGE="http://www.las.jp/english/products/cyana.html"
 SRC_URI="${P}.tar.gz"
 
 LICENSE="CYANA"

@@ -1,6 +1,9 @@
 # ChangeLog for sci-chemistry/cyana
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/cyana/ChangeLog,v 1.16 2015/07/30 18:02:51 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/cyana/ChangeLog,v 1.17 2015/08/04 10:56:10 jlec Exp $
+
+  04 Aug 2015; Justin Lecher <jlec@gentoo.org> cyana-2.1.ebuild:
+  Update HOMEPAGE
 
   30 Jul 2015; Justin Lecher <jlec@gentoo.org> cyana-2.1.ebuild:
   Fix pointer to download instructions, bug #556320
