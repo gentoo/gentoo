@@ -1,6 +1,11 @@
 # ChangeLog for dev-db/mongodb
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mongodb/ChangeLog,v 1.122 2015/08/03 10:30:44 ultrabug Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/mongodb/ChangeLog,v 1.123 2015/08/04 17:31:47 ultrabug Exp $
+
+*mongodb-3.0.5 (04 Aug 2015)
+
+  04 Aug 2015; Ultrabug <ultrabug@gentoo.org> +mongodb-3.0.5.ebuild:
+  version bump, 3.x shouldn't use system tcmalloc, fix #556548
 
   03 Aug 2015; Ultrabug <ultrabug@gentoo.org> mongodb-2.6.10.ebuild,
   +files/mongodb-2.6.10-fix-boost-1.57.patch:

@@ -1,6 +1,12 @@
 # ChangeLog for sec-policy/selinux-gpg
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-gpg/ChangeLog,v 1.68 2015/08/04 16:49:27 perfinion Exp $
+# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-gpg/ChangeLog,v 1.69 2015/08/04 17:42:04 perfinion Exp $
+
+*selinux-gpg-2.20141203-r8 (04 Aug 2015)
+
+  04 Aug 2015; Jason Zaman <perfinion@gentoo.org>
+  +selinux-gpg-2.20141203-r8.ebuild:
+  Release of 2.20141203-r8
 
   04 Aug 2015; Jason Zaman <perfinion@gentoo.org>
   selinux-gpg-2.20141203-r7.ebuild:
