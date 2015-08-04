@@ -1,6 +1,9 @@
 # ChangeLog for www-apache/mod_auth_mysql
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_auth_mysql/ChangeLog,v 1.14 2014/08/10 20:14:00 slyfox Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_auth_mysql/ChangeLog,v 1.15 2015/08/04 01:31:32 mrueg Exp $
+
+  04 Aug 2015; Manuel Rüger <mrueg@gentoo.org> -mod_auth_mysql-3.0.0-r2.ebuild:
+  Remove old.
 
   10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
   mod_auth_mysql-3.0.0-r2.ebuild, mod_auth_mysql-3.0.0-r3.ebuild:

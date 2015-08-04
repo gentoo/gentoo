@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/wsgiintercept
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/wsgiintercept/ChangeLog,v 1.19 2015/07/28 07:57:11 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/wsgiintercept/ChangeLog,v 1.20 2015/08/04 01:51:54 patrick Exp $
+
+*wsgiintercept-0.10.2 (04 Aug 2015)
+
+  04 Aug 2015; Patrick Lauer <patrick@gentoo.org> +wsgiintercept-0.10.2.ebuild:
+  Bump
 
   28 Jul 2015; Ian Delaney <idella4@gentoo.org> wsgiintercept-0.10.0.ebuild:
   set removal of test folder, fixes bug #555842 by the tinderbox
