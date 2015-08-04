@@ -8,4 +8,7 @@
 	<longdescription lang="en">
 		A tool designed to find common security issues in Python code.
 	</longdescription>
+	<upstream>
+		<remote-id type="pypi">bandit</remote-id>
+	</upstream>
 </pkgmetadata>

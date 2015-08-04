@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=sys-devel/clang-2.9 sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=GNUstep Objective-C runtime
+EAPI=5
+HOMEPAGE=http://www.gnustep.org
+IUSE=boehm-gc cxx test
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=boehm-gc? ( dev-libs/boehm-gc ) cxx? ( sys-libs/libcxx )
+SLOT=0
+SRC_URI=https://github.com/gnustep/libobjc2/archive/v1.8.tar.gz -> libobjc2-1.8.tar.gz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=b8c477c43cdb0a06d13de8a9078b08de

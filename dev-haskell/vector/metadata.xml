@@ -9,18 +9,18 @@
 		
 		It is structured as follows:
 		
-		[&quot;Data.Vector&quot;] Boxed vectors of arbitrary types.
+		["Data.Vector"] Boxed vectors of arbitrary types.
 		
-		[&quot;Data.Vector.Unboxed&quot;] Unboxed vectors with an adaptive
+		["Data.Vector.Unboxed"] Unboxed vectors with an adaptive
 		representation based on data type families.
 		
-		[&quot;Data.Vector.Storable&quot;] Unboxed vectors of &#39;Storable&#39; types.
+		["Data.Vector.Storable"] Unboxed vectors of 'Storable' types.
 		
-		[&quot;Data.Vector.Primitive&quot;] Unboxed vectors of primitive types as
-		defined by the @primitive@ package. &quot;Data.Vector.Unboxed&quot; is more
+		["Data.Vector.Primitive"] Unboxed vectors of primitive types as
+		defined by the @primitive@ package. "Data.Vector.Unboxed" is more
 		flexible at no performance cost.
 		
-		[&quot;Data.Vector.Generic&quot;] Generic interface to the vector types.
+		["Data.Vector.Generic"] Generic interface to the vector types.
 		
 		Each module has a @Safe@ version with is marked as @Trustworthy@
 		(see &lt;http://hackage.haskell.org/trac/ghc/wiki/SafeHaskell&gt;).
@@ -36,7 +36,7 @@
 		
 		Changes in version 0.9
 		
-		* &#39;MonadPlus&#39; instance for boxed vectors
+		* 'MonadPlus' instance for boxed vectors
 		
 		* Export more @construct@ and @constructN@ from @Safe@ modules
 		
@@ -52,13 +52,13 @@
 		
 		* Safe Haskell support (contributed by David Terei)
 		
-		* &#39;Functor&#39;, &#39;Monad&#39;, &#39;Applicative&#39;, &#39;Alternative&#39;, &#39;Foldable&#39; and
-		&#39;Traversable&#39; instances for boxed vectors
+		* 'Functor', 'Monad', 'Applicative', 'Alternative', 'Foldable' and
+		'Traversable' instances for boxed vectors
 		(/WARNING: they tend to be slow and are only provided for completeness/)
 		
-		* &#39;Show&#39; instances for immutable vectors follow containers conventions
+		* 'Show' instances for immutable vectors follow containers conventions
 		
-		* &#39;Read&#39; instances for all immutable vector types
+		* 'Read' instances for all immutable vector types
 		
 		* Performance improvements
 		
@@ -70,4 +70,7 @@
 		<flag name="unsafechecks">Enable bounds checking in unsafe operations at the cost of a
                 significant performance penalty</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">haskell/vector</remote-id>
+	</upstream>
 </pkgmetadata>

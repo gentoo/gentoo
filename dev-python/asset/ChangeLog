@@ -1,0 +1,15 @@
+# ChangeLog for dev-python/asset
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/asset/ChangeLog,v 1.2 2015/08/04 10:03:27 jlec Exp $
+
+*asset-0.6.1-r1 (04 Aug 2015)
+
+  04 Aug 2015; Justin Lecher <jlec@gentoo.org> +asset-0.6.1-r1.ebuild,
+  -asset-0.6.1.ebuild:
+  Clean distribute from requirements
+
+*asset-0.6.1 (04 Aug 2015)
+
+  04 Aug 2015; Justin Lecher <jlec@gentoo.org> +asset-0.6.1.ebuild,
+  +files/asset-0.6.1-broken-test.patch, +metadata.xml:
+  New package, ebuild written by me

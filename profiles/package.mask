@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16699 2015/08/04 08:41:32 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16700 2015/08/04 09:38:05 zlogene Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -29,6 +29,12 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Mikle Kolyada <zlogene@hemtoo.org> (04 Aug 2015)
+# Unmaintained since 2010. No longer available
+# on CPAN and nothing in the tree depends on it.
+# See bug #556640 for more info. Removal in 30 days.
+dev-perl/gtk2-fu
 
 # Mike Gilbert <floppym@gentoo.org> (03 Aug 2015)
 # Unmaintained upstream. Fails to build. Removal in 30 days.

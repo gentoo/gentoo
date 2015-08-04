@@ -1,6 +1,11 @@
 # ChangeLog for gnustep-base/libobjc2
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-base/libobjc2/ChangeLog,v 1.14 2015/05/20 11:27:34 voyageur Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnustep-base/libobjc2/ChangeLog,v 1.15 2015/08/04 09:47:24 voyageur Exp $
+
+*libobjc2-1.8 (04 Aug 2015)
+
+  04 Aug 2015; Bernard Cafarelli <voyageur@gentoo.org> +libobjc2-1.8.ebuild:
+  Version bump, add tracing API, bugfixes
 
 *libobjc2-1.7-r1 (20 May 2015)
 

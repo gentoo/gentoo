@@ -9,4 +9,7 @@
 		<email>djc@gentoo.org</email>
 		<name>Dirkjan Ochtman</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">nanomsg/nanomsg</remote-id>
+	</upstream>
 </pkgmetadata>

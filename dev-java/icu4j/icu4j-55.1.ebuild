@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/icu4j/icu4j-55.1.ebuild,v 1.1 2015/07/30 17:21:58 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/icu4j/icu4j-55.1.ebuild,v 1.2 2015/08/04 09:58:38 monsieurp Exp $
 
 EAPI="5"
 
@@ -28,10 +28,9 @@ JAVA_PKG_BSFIX_NAME+=" common-targets.xml"
 EANT_DOC_TARGET="docs"
 EANT_TEST_TARGET="check"
 
-java_prepare() {
-	# FIXME: use JAVA_RM_FILES array
-	rm -v tools/build/src/com/ibm/icu/dev/tool/docs/ICUTaglet.java || die
-}
+JAVA_RM_FILES=(
+	tools/build/src/com/ibm/icu/dev/tool/docs/ICUTaglet.java
+)
 
 src_test() {
 	java-pkg-2_src_test

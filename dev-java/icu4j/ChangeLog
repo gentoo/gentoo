@@ -1,6 +1,9 @@
 # ChangeLog for dev-java/icu4j
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/icu4j/ChangeLog,v 1.69 2015/07/30 17:21:58 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/icu4j/ChangeLog,v 1.70 2015/08/04 09:58:38 monsieurp Exp $
+
+  04 Aug 2015; Patrice Clement <monsieurp@gentoo.org> icu4j-55.1.ebuild:
+  Make use of JAVA_RM_FILES array.
 
 *icu4j-55.1 (30 Jul 2015)
 
