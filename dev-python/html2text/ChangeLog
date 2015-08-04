@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/html2text
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/html2text/ChangeLog,v 1.24 2015/06/07 13:30:30 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/html2text/ChangeLog,v 1.25 2015/08/04 00:06:29 idella4 Exp $
+
+  04 Aug 2015; Ian Delaney <idella4@gentoo.org> html2text-2014.4.5-r1.ebuild:
+  correction to entry of deps, fix test phase, fixes bug #556362
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml
