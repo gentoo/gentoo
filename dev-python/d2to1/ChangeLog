@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/d2to1
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/d2to1/ChangeLog,v 1.14 2015/04/08 08:04:51 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/d2to1/ChangeLog,v 1.15 2015/08/04 06:37:50 patrick Exp $
+
+*d2to1-0.2.12 (04 Aug 2015)
+
+  04 Aug 2015; Patrick Lauer <patrick@gentoo.org> +d2to1-0.2.12.ebuild:
+  Bump
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> d2to1-0.2.10.ebuild:
   Drop old Python implementations

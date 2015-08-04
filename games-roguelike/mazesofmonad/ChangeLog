@@ -1,6 +1,10 @@
 # ChangeLog for games-roguelike/mazesofmonad
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-roguelike/mazesofmonad/ChangeLog,v 1.7 2015/02/07 06:23:14 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-roguelike/mazesofmonad/ChangeLog,v 1.8 2015/08/04 06:39:39 slyfox Exp $
+
+  04 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  +files/mazesofmonad-1.0.9-time-1.5.patch, mazesofmonad-1.0.9-r2.ebuild:
+  Ported to time-1.5 (comes with ghc-7.10), bug #556622 by Toralf Förster.
 
   07 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org>
   mazesofmonad-1.0.9-r2.ebuild:

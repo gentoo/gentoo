@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/moto
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/moto/ChangeLog,v 1.4 2015/06/27 05:37:27 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/moto/ChangeLog,v 1.5 2015/08/04 07:11:00 patrick Exp $
+
+*moto-0.4.8 (04 Aug 2015)
+
+  04 Aug 2015; Patrick Lauer <patrick@gentoo.org> +moto-0.4.8.ebuild:
+  Bump
 
 *moto-0.4.3 (27 Jun 2015)
 
