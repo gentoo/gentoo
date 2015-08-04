@@ -1,19 +1,16 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/networkmanager/networkmanager-1.0.0.ebuild,v 1.13 2015/08/04 04:36:16 tetromino Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/networkmanager/networkmanager-1.0.4-r1.ebuild,v 1.2 2015/08/04 04:36:16 tetromino Exp $
 
 EAPI="5"
 GCONF_DEBUG="no"
 GNOME_ORG_MODULE="NetworkManager"
 GNOME2_LA_PUNT="yes"
-VALA_MIN_API_VERSION="0.18"
 VALA_USE_DEPEND="vapigen"
-
-# Tests need python2, https://bugzilla.gnome.org/show_bug.cgi?id=739448
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 
 inherit autotools bash-completion-r1 eutils gnome2 linux-info multilib python-any-r1 systemd \
-	user readme.gentoo toolchain-funcs vala versionator virtualx udev
+	user readme.gentoo toolchain-funcs vala versionator virtualx udev multilib-minimal
 
 DESCRIPTION="Universal network configuration daemon for laptops, desktops, servers and virtualization hosts"
 HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
@@ -25,10 +22,11 @@ IUSE="bluetooth connection-sharing consolekit +dhclient dhcpcd gnutls +introspec
 kernel_linux +nss +modemmanager ncurses +ppp resolvconf selinux systemd teamd test \
 vala +wext +wifi zeroconf" # wimax
 
-KEYWORDS="~alpha amd64 arm ~arm64 ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 
 REQUIRED_USE="
 	modemmanager? ( ppp )
+	wext? ( wifi )
 	^^ ( nss gnutls )
 	^^ ( dhclient dhcpcd )
 "
@@ -37,35 +35,35 @@ REQUIRED_USE="
 # wpa_supplicant-0.7.3-r3 is needed due to bug 359271
 # TODO: Qt support?
 COMMON_DEPEND="
-	>=sys-apps/dbus-1.2
-	>=dev-libs/dbus-glib-0.100
-	>=dev-libs/glib-2.32:2
+	>=sys-apps/dbus-1.2[${MULTILIB_USEDEP}]
+	>=dev-libs/dbus-glib-0.100[${MULTILIB_USEDEP}]
+	>=dev-libs/glib-2.37.6:2[${MULTILIB_USEDEP}]
 	>=dev-libs/libnl-3.2.8:3=
 	>=sys-auth/polkit-0.106
 	net-libs/libndp
 	>=net-libs/libsoup-2.26:2.4=
 	net-misc/iputils
 	sys-libs/readline:0
-	>=virtual/libgudev-165:=
+	>=virtual/libgudev-165:=[${MULTILIB_USEDEP}]
 	bluetooth? ( >=net-wireless/bluez-5 )
 	connection-sharing? (
 		net-dns/dnsmasq[dhcp]
 		net-firewall/iptables )
 	gnutls? (
-		dev-libs/libgcrypt:0=
-		net-libs/gnutls:= )
+		dev-libs/libgcrypt:0=[${MULTILIB_USEDEP}]
+		net-libs/gnutls:=[${MULTILIB_USEDEP}] )
 	modemmanager? ( >=net-misc/modemmanager-0.7.991 )
 	ncurses? ( >=dev-libs/newt-0.52.15 )
-	nss? ( >=dev-libs/nss-3.11:= )
-	dhclient? ( =net-misc/dhcp-4*[client] )
+	nss? ( >=dev-libs/nss-3.11:=[${MULTILIB_USEDEP}] )
+	dhclient? ( >=net-misc/dhcp-4[client] )
 	dhcpcd? ( >=net-misc/dhcpcd-4.0.0_rc3 )
-	introspection? ( >=dev-libs/gobject-introspection-0.10.3 )
+	introspection? ( >=dev-libs/gobject-introspection-0.10.3:= )
 	ppp? ( >=net-dialup/ppp-2.4.5:=[ipv6] net-dialup/rp-pppoe )
 	resolvconf? ( net-dns/openresolv )
 	systemd? ( >=sys-apps/systemd-209:0= )
+	!systemd? ( || ( sys-power/upower sys-power/upower-pm-utils ) )
 	teamd? ( >=net-misc/libteam-1.9 )
 	zeroconf? ( net-dns/avahi:=[autoipd] )
-	|| ( sys-power/upower sys-power/upower-pm-utils >=sys-apps/systemd-209 )
 "
 RDEPEND="${COMMON_DEPEND}
 	consolekit? ( sys-auth/consolekit )
@@ -120,16 +118,7 @@ src_prepare() {
 	DOC_CONTENTS="To modify system network connections without needing to enter the
 		root password, add your user account to the 'plugdev' group."
 
-	# Find arping in our paths, upstream bug #742576 (from 1.0 branch)
-	epatch "${FILESDIR}"/${PN}-1.0.0-find-helpers.patch
-
-	# Fix lto configure switch, upstream bug #742575 (from 1.0 branch)
-	epatch "${FILESDIR}"/${PN}-1.0.0-lto-switch.patch
-
-	# Fix build with /bin/sh != bash, see bug #536540, upstream bug #743480
-	epatch "${FILESDIR}/${PN}-1.0.0-remove-bashisms.patch"
-
-	# Force use of /run, avoid eautoreconf, upstream bug #737139
+	# Force use of /run, avoid eautoreconf, upstream bug #737139, fixed in 'master'
 	sed -e 's:$localstatedir/run/:/run/:' -i configure || die
 
 	use vala && vala_src_prepare
@@ -137,28 +126,39 @@ src_prepare() {
 	epatch_user # don't remove, users often want custom patches for NM
 
 	eautoreconf
+
 	gnome2_src_prepare
 }
 
-src_configure() {
-	local myconf
+multilib_src_configure() {
+	local myconf=()
 
 	# Same hack as net-dialup/pptpd to get proper plugin dir for ppp, bug #519986
 	if use ppp; then
 		local PPPD_VER=`best_version net-dialup/ppp`
 		PPPD_VER=${PPPD_VER#*/*-} #reduce it to ${PV}-${PR}
 		PPPD_VER=${PPPD_VER%%[_-]*} # main version without beta/pre/patch/revision
-		myconf="${myconf} --with-pppd-plugin-dir=/usr/$(get_libdir)/pppd/${PPPD_VER}"
+		myconf+=( --with-pppd-plugin-dir=/usr/$(get_libdir)/pppd/${PPPD_VER} )
 	fi
 
 	# unit files directory needs to be passed only when systemd is enabled,
 	# otherwise systemd support is not disabled completely, bug #524534
-	use systemd && myconf="${myconf} "$(systemd_with_unitdir)""
+	use systemd && myconf+=( "$(systemd_with_unitdir)" )
+
+	if multilib_is_native_abi; then
+		# work-around man out-of-source brokenness, must be done before configure
+		mkdir man || die
+		find "${S}"/man -name '*.?' -exec ln -s {} man/ ';' || die
+	else
+		# libnl, libndp are only used for executables, not libraries
+		myconf+=( LIB{NL,NDP}_{CFLAGS,LIBS}=' ' )
+	fi
 
 	# TODO: enable wimax when we have a libnl:3 compatible revision of it
 	# wimax will be removed, bug #522822
 	# ifnet plugin always disabled until someone volunteers to actively
 	# maintain and fix it
+	ECONF_SOURCE=${S} \
 	gnome2_src_configure \
 		--disable-more-warnings \
 		--disable-static \
@@ -171,39 +171,76 @@ src_configure() {
 		--with-udev-dir="$(get_udevdir)" \
 		--with-config-plugins-default=keyfile \
 		--with-iptables=/sbin/iptables \
-		--with-libsoup=yes \
-		--enable-concheck \
+		$(multilib_native_with libsoup) \
+		$(multilib_native_enable concheck) \
 		--with-crypto=$(usex nss nss gnutls) \
-		--with-session-tracking=$(usex systemd systemd $(usex consolekit consolekit no)) \
-		--with-suspend-resume=$(usex systemd systemd upower) \
-		$(use_enable bluetooth bluez5-dun) \
-		$(use_enable introspection) \
-		$(use_enable ppp) \
+		--with-session-tracking=$(multilib_native_usex systemd systemd $(multilib_native_usex consolekit consolekit no)) \
+		--with-suspend-resume=$(multilib_native_usex systemd systemd upower) \
+		$(multilib_native_use_enable bluetooth bluez5-dun) \
+		$(multilib_native_use_enable introspection) \
+		$(multilib_native_use_enable ppp) \
 		--disable-wimax \
 		$(use_with dhclient) \
 		$(use_with dhcpcd) \
-		$(use_with modemmanager modem-manager-1) \
-		$(use_with ncurses nmtui) \
-		$(use_with resolvconf) \
-		$(use_with selinux) \
-		$(use_enable teamd teamdctl) \
-		$(use_enable test tests) \
-		$(use_enable vala) \
+		$(multilib_native_use_with modemmanager modem-manager-1) \
+		$(multilib_native_use_with ncurses nmtui) \
+		$(multilib_native_use_with resolvconf) \
+		$(multilib_native_use_with selinux) \
+		$(multilib_native_use_enable teamd teamdctl) \
+		$(multilib_native_use_enable test tests) \
+		$(multilib_native_use_enable vala) \
 		--without-valgrind \
-		$(use_with wext) \
-		${myconf}
+		$(multilib_native_use_with wext) \
+		$(multilib_native_use_enable wifi) \
+		"${myconf[@]}"
+
+	# work-around gtk-doc out-of-source brokedness
+	if multilib_is_native_abi; then
+		local d
+		for d in api libnm libnm-util libnm-glib; do
+			ln -s "${S}"/docs/${d}/html docs/${d}/html || die
+		done
+	fi
 }
 
-src_test() {
-	python_setup
-	Xemake check
+multilib_src_compile() {
+	if multilib_is_native_abi; then
+		emake
+	else
+		emake all-am
+		emake -C include
+		emake -C introspection # generated headers, needed for libnm
+		emake -C libnm-core
+		emake -C libnm
+		emake -C libnm-util
+		emake -C libnm-glib
+	fi
 }
 
-src_install() {
-	# Install completions at proper place, bug #465100
-	gnome2_src_install completiondir="$(get_bashcompdir)"
+multilib_src_test() {
+	if multilib_is_native_abi; then
+		python_setup
+		Xemake check
+	fi
+}
 
-	readme.gentoo_create_doc
+multilib_src_install() {
+	if multilib_is_native_abi; then
+		# Install completions at proper place, bug #465100
+		gnome2_src_install completiondir="$(get_bashcompdir)"
+	else
+		emake DESTDIR="${D}" install-am
+		emake DESTDIR="${D}" install -C include
+		emake DESTDIR="${D}" install -C introspection
+		emake DESTDIR="${D}" install -C libnm-core
+		emake DESTDIR="${D}" install -C libnm
+		emake DESTDIR="${D}" install -C libnm-util
+		emake DESTDIR="${D}" install -C libnm-glib
+	fi
+}
+
+multilib_src_install_all() {
+	! use systemd && readme.gentoo_create_doc
 
 	newinitd "${FILESDIR}/init.d.NetworkManager" NetworkManager
 	newconfd "${FILESDIR}/conf.d.NetworkManager" NetworkManager
@@ -231,7 +268,7 @@ src_install() {
 
 pkg_postinst() {
 	gnome2_pkg_postinst
-	readme.gentoo_print_elog
+	! use systemd && readme.gentoo_print_elog
 
 	if [[ -e "${EROOT}etc/NetworkManager/nm-system-settings.conf" ]]; then
 		ewarn "The ${PN} system configuration file has moved to a new location."

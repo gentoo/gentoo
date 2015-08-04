@@ -1,6 +1,18 @@
 # ChangeLog for net-misc/networkmanager
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/networkmanager/ChangeLog,v 1.242 2015/07/19 09:19:12 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/networkmanager/ChangeLog,v 1.244 2015/08/04 04:36:16 tetromino Exp $
+
+  04 Aug 2015; Alexandre Rostovtsev <tetromino@gentoo.org>
+  networkmanager-0.9.10.1_pre20141101.ebuild, networkmanager-1.0.0.ebuild,
+  networkmanager-1.0.2.ebuild, networkmanager-1.0.2-r1.ebuild,
+  networkmanager-1.0.4.ebuild, networkmanager-1.0.4-r1.ebuild:
+  readline is slotted
+
+*networkmanager-1.0.4-r1 (04 Aug 2015)
+
+  04 Aug 2015; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +networkmanager-1.0.4-r1.ebuild:
+  Add multilib support (bug #548114, thanks to Jonathan Callen for the ebuild).
 
 *networkmanager-1.0.4 (19 Jul 2015)
 

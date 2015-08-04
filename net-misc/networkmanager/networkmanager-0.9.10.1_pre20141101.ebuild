@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/networkmanager/networkmanager-0.9.10.1_pre20141101.ebuild,v 1.11 2015/01/27 18:54:20 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/networkmanager/networkmanager-0.9.10.1_pre20141101.ebuild,v 1.12 2015/08/04 04:36:16 tetromino Exp $
 
 EAPI="5"
 GCONF_DEBUG="no"
@@ -53,7 +53,7 @@ COMMON_DEPEND="
 	net-libs/libndp
 	>=net-libs/libsoup-2.26:2.4=
 	>=net-misc/iputils-20121221-r1
-	sys-libs/readline
+	sys-libs/readline:0
 	>=virtual/libgudev-165:=
 	bluetooth? ( >=net-wireless/bluez-5 )
 	connection-sharing? (
