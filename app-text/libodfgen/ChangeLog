@@ -1,6 +1,11 @@
 # ChangeLog for app-text/libodfgen
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/libodfgen/ChangeLog,v 1.24 2015/07/22 19:33:33 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/libodfgen/ChangeLog,v 1.25 2015/08/04 20:27:19 dilfridge Exp $
+
+*libodfgen-9999 (04 Aug 2015)
+
+  04 Aug 2015; Andreas K. Huettel <dilfridge@gentoo.org> +libodfgen-9999.ebuild:
+  Add live ebuild
 
   22 Jul 2015; Agostino Sarubbo <ago@gentoo.org> libodfgen-0.1.4.ebuild:
   Stable for x86, wrt bug #555584

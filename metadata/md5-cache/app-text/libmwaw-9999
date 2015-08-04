@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install prepare unpack
+DEPEND=dev-libs/librevenge dev-libs/libxml2 sys-libs/zlib >=dev-libs/boost-1.46:= sys-devel/libtool virtual/pkgconfig doc? ( app-doc/doxygen ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Library parsing many pre-OSX MAC text formats
+EAPI=5
+HOMEPAGE=http://sourceforge.net/p/libmwaw/wiki/Home/
+IUSE=doc static-libs
+LICENSE=LGPL-2.1
+RDEPEND=dev-libs/librevenge dev-libs/libxml2 sys-libs/zlib
+SLOT=0
+_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	git-r3	727a612b4c6247766904e3f74a326e2b	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=4611aa2981b3cd901caae8bfda123f0d

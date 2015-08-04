@@ -1,6 +1,11 @@
 # ChangeLog for app-text/libmwaw
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/libmwaw/ChangeLog,v 1.21 2015/07/22 19:33:29 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/libmwaw/ChangeLog,v 1.22 2015/08/04 20:26:17 dilfridge Exp $
+
+*libmwaw-9999 (04 Aug 2015)
+
+  04 Aug 2015; Andreas K. Huettel <dilfridge@gentoo.org> +libmwaw-9999.ebuild:
+  Add live ebuild
 
   22 Jul 2015; Agostino Sarubbo <ago@gentoo.org> libmwaw-0.3.5.ebuild:
   Stable for x86, wrt bug #555584
