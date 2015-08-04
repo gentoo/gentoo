@@ -1,6 +1,9 @@
 # ChangeLog for www-apache/mod_gnutls
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_gnutls/ChangeLog,v 1.38 2014/06/23 09:46:24 nimiux Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_gnutls/ChangeLog,v 1.39 2015/08/04 01:30:30 mrueg Exp $
+
+  04 Aug 2015; Manuel Rüger <mrueg@gentoo.org> -mod_gnutls-0.5.9.ebuild:
+  Remove old.
 
   23 Jun 2014; Chema Alonso <nimiux@gentoo.org> mod_gnutls-0.5.10-r1.ebuild:
   Stable for amd64 wrt bug #506910
