@@ -29,7 +29,6 @@
 	<flag name="iec61883"> Support for FireWire DV/HDV input device using <pkg>media-libs/libiec61883</pkg>.</flag>
 	<flag name="libsoxr">Enables audio resampling through <pkg>media-libs/soxr</pkg>.</flag>
 	<flag name="libv4l">Uses <pkg>media-libs/libv4l</pkg> for video4linux instead of direct calls. Adds support for more devices via the userspace library.</flag>
-	<flag name="mips32r2">Enables MIPS32R2 optimizations.</flag>
 	<flag name="mipsdspr1">Enables MIPS DSP ASE R1 optimizations.</flag>
 	<flag name="mipsdspr2">Enables MIPS DSP ASE R2 optimizations.</flag>
 	<flag name="mipsfpu">Enables floating point MIPS optimizations.</flag>

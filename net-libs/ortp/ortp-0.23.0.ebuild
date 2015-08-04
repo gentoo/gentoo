@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/ortp/ortp-0.23.0.ebuild,v 1.4 2015/08/02 09:01:16 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/ortp/ortp-0.23.0.ebuild,v 1.5 2015/08/04 12:00:33 zlogene Exp $
 
 EAPI=5
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://nongnu/linphone/${PN}/sources/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/9"
-KEYWORDS="alpha amd64 ppc ppc64 sparc x86 ~x86-fbsd ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-fbsd ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="debug doc examples ipv6 minimal ntp-timestamp ssl srtp zrtp"
 
 RDEPEND="ssl? ( dev-libs/openssl:0= )

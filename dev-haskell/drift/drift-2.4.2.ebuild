@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/drift/drift-2.4.2.ebuild,v 1.7 2015/08/01 15:51:42 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/drift/drift-2.4.2.ebuild,v 1.8 2015/08/04 11:45:26 zlogene Exp $
 
 EAPI=5
 
@@ -18,7 +18,7 @@ SRC_URI="mirror://hackage/packages/archive/${MY_PN}/${PV}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="alpha amd64 ppc ~ppc64 sparc x86"
+KEYWORDS="alpha amd64 ia64 ppc ~ppc64 sparc x86"
 IUSE=""
 
 RDEPEND="dev-haskell/random:=[profile?]

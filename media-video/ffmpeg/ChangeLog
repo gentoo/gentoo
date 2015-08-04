@@ -1,6 +1,17 @@
 # ChangeLog for media-video/ffmpeg
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ChangeLog,v 1.882 2015/08/04 11:27:33 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ChangeLog,v 1.885 2015/08/04 12:02:39 aballier Exp $
+
+  04 Aug 2015; Alexis Ballier <aballier@gentoo.org> metadata.xml:
+  remove unused usedesc
+
+  04 Aug 2015; Alexis Ballier <aballier@gentoo.org> -ffmpeg-2.2.16.ebuild,
+  -files/ladspadl.patch:
+  remove old
+
+  04 Aug 2015; Alexis Ballier <aballier@gentoo.org> -ffmpeg-2.2.14.ebuild,
+  -ffmpeg-2.7.1.ebuild:
+  remove old
 
   04 Aug 2015; Mikle Kolyada <zlogene@gentoo.org> ffmpeg-2.6.3.ebuild:
   ia64 stable wrt bug #547462

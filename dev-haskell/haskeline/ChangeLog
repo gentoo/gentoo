@@ -1,6 +1,9 @@
 # ChangeLog for dev-haskell/haskeline
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/haskeline/ChangeLog,v 1.41 2015/08/01 15:34:24 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/haskeline/ChangeLog,v 1.42 2015/08/04 11:43:55 zlogene Exp $
+
+  04 Aug 2015; Mikle Kolyada <zlogene@gentoo.org> haskeline-0.7.1.3.ebuild:
+  ia64 stable wrt bug #534980
 
   01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> haskeline-0.7.2.1.ebuild:
   Mark as a core library for ghc-7.10.
