@@ -1,4 +1,8 @@
 
+  04 Aug 2015; Jason Zaman <perfinion@gentoo.org>
+  selinux-pan-2.20141203-r7.ebuild:
+  Stabilize policy 2.20141203-r7
+
   02 Jul 2015; Jason Zaman <perfinion@gentoo.org>
   selinux-pan-2.20141203-r6.ebuild:
   Stabilize policy 2.20141203-r6

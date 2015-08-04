@@ -3,10 +3,10 @@ DEPEND=sec-policy/selinux-xserver >=sys-apps/policycoreutils-2.0.82 >=sec-policy
 DESCRIPTION=SELinux policy for vmware
 EAPI=5
 HOMEPAGE=https://wiki.gentoo.org/wiki/Project:SELinux
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-2
 RDEPEND=sec-policy/selinux-xserver >=sys-apps/policycoreutils-2.0.82 >=sec-policy/selinux-base-policy-2.20141203-r7
 SLOT=0
 SRC_URI=https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-2.20141203.tar.bz2 http://dev.gentoo.org/~swift/patches/selinux-base-policy/patchbundle-selinux-base-policy-2.20141203-r7.tar.bz2
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	selinux-policy-2	e341a1fcc47197426608d276b0d68984	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=3e78340cabfee0f0c10b15bdb6c73d28
+_md5_=55d232069afb680ce3119f6a08f0b471

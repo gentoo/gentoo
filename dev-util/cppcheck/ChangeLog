@@ -1,6 +1,15 @@
 # ChangeLog for dev-util/cppcheck
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/cppcheck/ChangeLog,v 1.66 2015/05/23 01:37:38 xmw Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/cppcheck/ChangeLog,v 1.68 2015/08/04 16:59:08 pinkbyte Exp $
+
+  04 Aug 2015; Sergey Popov <pinkbyte@gentoo.org> cppcheck-1.69-r1.ebuild:
+  Stable on amd64 and x86, wrt bug #524674
+
+*cppcheck-1.69-r1 (04 Aug 2015)
+
+  04 Aug 2015; Sergey Popov <pinkbyte@gentoo.org> +cppcheck-1.69-r1.ebuild:
+  Revision bump: add support for user patches, do not install htmlreport if
+  USE='-htmlreport', correct Python dependencies
 
   23 May 2015; Michael Weber <xmw@gentoo.org> cppcheck-1.69.ebuild:
   Switch back to 1.68 ebuild style.

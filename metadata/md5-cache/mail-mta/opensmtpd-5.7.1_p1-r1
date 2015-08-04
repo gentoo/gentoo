@@ -4,10 +4,10 @@ DESCRIPTION=Lightweight but featured SMTP daemon from OpenBSD
 EAPI=5
 HOMEPAGE=http://www.opensmtpd.org/
 IUSE=pam +mta
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=ISC BSD BSD-1 BSD-2 BSD-4
 RDEPEND=dev-libs/openssl:0 sys-libs/zlib pam? ( virtual/pam ) sys-libs/db:= dev-libs/libevent app-misc/ca-certificates net-mail/mailbase net-libs/libasr !mail-mta/courier !mail-mta/esmtp !mail-mta/exim !mail-mta/mini-qmail !mail-mta/msmtp[mta] !mail-mta/netqmail !mail-mta/nullmailer !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail !mail-mta/ssmtp[mta]
 SLOT=0
 SRC_URI=https://www.opensmtpd.org/archives/opensmtpd-5.7.1p1.tar.gz
 _eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	pam	aa1ebb3ab720ea04dbbdd6eaaf9554ed	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=f4bf7060e87effe6942f9cbb7417d117
+_md5_=f00c63635ba827db1624783d3d8fc941

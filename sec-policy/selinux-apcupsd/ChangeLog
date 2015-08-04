@@ -1,6 +1,10 @@
 # ChangeLog for sec-policy/selinux-apcupsd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-apcupsd/ChangeLog,v 1.64 2015/07/02 18:07:05 perfinion Exp $
+# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-apcupsd/ChangeLog,v 1.65 2015/08/04 16:49:30 perfinion Exp $
+
+  04 Aug 2015; Jason Zaman <perfinion@gentoo.org>
+  selinux-apcupsd-2.20141203-r7.ebuild:
+  Stabilize policy 2.20141203-r7
 
   02 Jul 2015; Jason Zaman <perfinion@gentoo.org>
   selinux-apcupsd-2.20141203-r6.ebuild:
