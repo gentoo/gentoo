@@ -1,6 +1,10 @@
 # ChangeLog for sci-libs/libcore
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/libcore/ChangeLog,v 1.9 2012/08/03 19:34:54 bicatali Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/libcore/ChangeLog,v 1.10 2015/08/03 23:16:27 mrueg Exp $
+
+  03 Aug 2015; Manuel Rüger <mrueg@gentoo.org> -libcore-1.8.ebuild,
+  -libcore-2.0.8.ebuild:
+  Remove old.
 
   03 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> libcore-2.1.1-r1.ebuild:
   Keyword amd64-linux x86-linux

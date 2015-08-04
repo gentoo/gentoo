@@ -1,6 +1,10 @@
 # ChangeLog for sci-libs/nlopt
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/nlopt/ChangeLog,v 1.24 2015/04/08 18:49:15 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/nlopt/ChangeLog,v 1.25 2015/08/03 23:12:03 mrueg Exp $
+
+  03 Aug 2015; Manuel Rüger <mrueg@gentoo.org> -nlopt-2.3-r1.ebuild,
+  -nlopt-2.3-r2.ebuild:
+  Remove old.
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> nlopt-2.4.2.ebuild:
   Drop old Python implementations

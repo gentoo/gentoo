@@ -1,6 +1,10 @@
 # ChangeLog for sci-libs/gsl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/gsl/ChangeLog,v 1.88 2015/04/29 06:35:06 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/gsl/ChangeLog,v 1.89 2015/08/03 23:04:24 mrueg Exp $
+
+  03 Aug 2015; Manuel Rüger <mrueg@gentoo.org> -gsl-1.14-r1.ebuild,
+  -gsl-1.15.ebuild:
+  Remove old.
 
   29 Apr 2015; Patrick Lauer <patrick@gentoo.org> gsl-1.14-r1.ebuild,
   gsl-1.14.ebuild, gsl-1.15.ebuild, gsl-1.16.ebuild:

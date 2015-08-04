@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/dotenv
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/dotenv/ChangeLog,v 1.10 2015/06/20 06:53:46 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/dotenv/ChangeLog,v 1.11 2015/08/03 22:49:28 mrueg Exp $
+
+  03 Aug 2015; Manuel Rüger <mrueg@gentoo.org> -dotenv-1.0.2.ebuild:
+  Remove old slot.
 
 *dotenv-2.0.2 (20 Jun 2015)
 
