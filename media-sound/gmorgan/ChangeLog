@@ -1,6 +1,12 @@
 # ChangeLog for media-sound/gmorgan
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/gmorgan/ChangeLog,v 1.32 2015/08/02 23:21:08 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/gmorgan/ChangeLog,v 1.33 2015/08/04 07:58:55 polynomial-c Exp $
+
+*gmorgan-0.70 (04 Aug 2015)
+
+  04 Aug 2015; Lars Wendler <polynomial-c@gentoo.org> +gmorgan-0.70.ebuild,
+  +files/gmorgan-0.70-cxxflags.patch, -files/gmorgan-amd64.patch:
+  Version bump. Removed old.
 
   02 Aug 2015; Manuel Rüger <mrueg@gentoo.org> -gmorgan-0.25-r1.ebuild:
   Remove old.

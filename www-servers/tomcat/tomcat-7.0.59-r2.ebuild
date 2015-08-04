@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/tomcat/tomcat-7.0.59-r2.ebuild,v 1.5 2015/07/23 09:07:57 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/tomcat/tomcat-7.0.59-r2.ebuild,v 1.7 2015/08/04 08:27:48 ago Exp $
 
 EAPI=5
 
@@ -16,7 +16,7 @@ SRC_URI="mirror://apache/${PN}/tomcat-7/v${PV}/src/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="7"
-KEYWORDS="amd64 ~ppc ~ppc64 x86 ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="amd64 ppc ppc64 x86 ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="extra-webapps websockets"
 
 RESTRICT="test" # can we run them on a production system?

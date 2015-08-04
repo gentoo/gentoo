@@ -1,6 +1,10 @@
 # ChangeLog for dev-python/d2to1
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/d2to1/ChangeLog,v 1.15 2015/08/04 06:37:50 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/d2to1/ChangeLog,v 1.16 2015/08/04 07:54:19 idella4 Exp $
+
+  04 Aug 2015; Ian Delaney <idella4@gentoo.org> -d2to1-0.2.10.ebuild,
+  d2to1-0.2.12.ebuild:
+  remove old
 
 *d2to1-0.2.12 (04 Aug 2015)
 

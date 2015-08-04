@@ -4,10 +4,10 @@ DESCRIPTION=QEMU Guest Agent (qemu-ga) for use when running inside a VM
 EAPI=5
 HOMEPAGE=http://wiki.qemu.org/Features/QAPI/GuestAgent
 IUSE=python_targets_python2_7
-KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd
+KEYWORDS=amd64 ~ppc ~ppc64 x86 ~x86-fbsd
 LICENSE=GPL-2 BSD-2
 RDEPEND=>=dev-libs/glib-2.22 !<app-emulation/qemu-1.1.1-r1 !<sys-apps/sysvinit-2.88-r5
 SLOT=0
 SRC_URI=http://wiki.qemu.org/download/qemu-2.3.0.tar.bz2
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	python-r1	d9c8348f26710ea523a385c2328cf027	python-utils-r1	0295a286ec27cab6af76b3b75ba07a3a	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	udev	da001465a2e939c93f7ae16947ce3438
-_md5_=2ba1e2d848a119c3f1bec368cf6cc6de
+_md5_=af8d30916de0171743341ec1eaeac425

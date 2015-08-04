@@ -1,6 +1,9 @@
 # ChangeLog for app-text/tesseract
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/tesseract/ChangeLog,v 1.60 2015/08/03 15:29:30 tomka Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/tesseract/ChangeLog,v 1.61 2015/08/04 08:02:52 tomka Exp $
+
+  04 Aug 2015; Thomas Kahle <tomka@gentoo.org> tesseract-3.04.00-r1.ebuild:
+  Fix URI and other things (bug 556590)
 
   03 Aug 2015; Thomas Kahle <tomka@gentoo.org> tesseract-3.04.00-r1.ebuild,
   tesseract-3.04.00.ebuild:

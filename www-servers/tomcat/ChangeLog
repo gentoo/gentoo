@@ -1,6 +1,14 @@
 # ChangeLog for www-servers/tomcat
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/tomcat/ChangeLog,v 1.365 2015/07/23 09:07:57 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/tomcat/ChangeLog,v 1.367 2015/08/04 08:27:48 ago Exp $
+
+  04 Aug 2015; Agostino Sarubbo <ago@gentoo.org> tomcat-6.0.44-r0.ebuild,
+  tomcat-7.0.59-r2.ebuild:
+  Stable for ppc64, wrt bug #458890
+
+  04 Aug 2015; Agostino Sarubbo <ago@gentoo.org> tomcat-6.0.44-r0.ebuild,
+  tomcat-7.0.59-r2.ebuild:
+  Stable for ppc, wrt bug #458890
 
   23 Jul 2015; Agostino Sarubbo <ago@gentoo.org> tomcat-6.0.44-r0.ebuild,
   tomcat-7.0.59-r2.ebuild, tomcat-8.0.23-r2.ebuild:

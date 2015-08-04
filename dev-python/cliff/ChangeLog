@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/cliff
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/cliff/ChangeLog,v 1.22 2015/07/08 20:43:34 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/cliff/ChangeLog,v 1.23 2015/08/04 07:44:22 idella4 Exp $
+
+*cliff-1.13.0 (04 Aug 2015)
+
+  04 Aug 2015; Ian Delaney <idella4@gentoo.org> +cliff-1.13.0.ebuild:
+  bump
 
   08 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> cliff-1.10.1.ebuild:
   x86 stable wrt bug #554114

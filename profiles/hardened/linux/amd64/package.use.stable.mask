@@ -1,10 +1,10 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/hardened/linux/amd64/package.use.stable.mask,v 1.11 2014/03/30 21:44:39 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/hardened/linux/amd64/package.use.stable.mask,v 1.12 2015/08/04 08:13:32 alonbl Exp $
 
-# Tom Wijsman <TomWij@gentoo.org (16 Mar 2014)
-# Mask unstable USE flags on media-video/vlc, see security bug #499806.
-media-video/vlc gnutls opus vdpau
+# Ben de Groot <yngwin@gentoo.org (19 Apr 2015)
+# >=opus-1.0.3 is still not stable (bug 500868)
+media-video/vlc opus
 
 # Tom Wijsman <TomWij@gentoo.org> (06 Feb 2014)
 # [QA] Masked jit USE flag on www-apps/cgit as dev-lang/luajit is not stable.

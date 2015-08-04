@@ -1,6 +1,11 @@
 # ChangeLog for sys-fs/mdadm
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/mdadm/ChangeLog,v 1.195 2015/07/25 07:52:31 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/mdadm/ChangeLog,v 1.196 2015/08/04 07:44:26 polynomial-c Exp $
+
+*mdadm-3.3.4 (04 Aug 2015)
+
+  04 Aug 2015; Lars Wendler <polynomial-c@gentoo.org> +mdadm-3.3.4.ebuild:
+  Version bump.
 
 *mdadm-3.3.3 (25 Jul 2015)
 
