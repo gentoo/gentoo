@@ -1,6 +1,12 @@
 # ChangeLog for sys-cluster/ceph
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/ceph/ChangeLog,v 1.74 2015/07/15 08:57:51 dlan Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/ceph/ChangeLog,v 1.75 2015/08/04 15:47:03 dlan Exp $
+
+*ceph-0.80.10-r1 (04 Aug 2015)
+
+  04 Aug 2015; Yixun Lan <dlan@gentoo.org> +ceph-0.80.10-r1.ebuild,
+  ceph-0.87.2.ebuild, +files/ceph-0.80.10-cpp-backport.patch:
+  backport cpp patch from upstream, fix bug 556406, 555270
 
 *ceph-0.94.2 (15 Jul 2015)
 *ceph-0.87.2 (15 Jul 2015)

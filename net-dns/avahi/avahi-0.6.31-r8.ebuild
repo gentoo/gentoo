@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/avahi/avahi-0.6.31-r8.ebuild,v 1.3 2015/08/04 13:15:26 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/avahi/avahi-0.6.31-r8.ebuild,v 1.4 2015/08/04 16:13:25 mgorny Exp $
 
 EAPI="5"
 
@@ -215,7 +215,9 @@ multilib_src_install() {
 	use mdnsresponder-compat && dosym avahi-compat-libdns_sd/dns_sd.h /usr/include/dns_sd.h
 
 	# Needed for running on systemd properly, bug #537000
-	multilib_is_native_abi && dosym avahi-daemon.service /usr/$(get_libdir)/systemd/system/dbus-org.freedesktop.Avahi.service
+	if multilib_is_native_abi; then
+		ln -s avahi-daemon.service "${D}$(systemd_get_unitdir)"/dbus-org.freedesktop.Avahi.service || die
+	fi
 
 	if multilib_is_native_abi && use doc; then
 		dohtml -r doxygen/html/. || die

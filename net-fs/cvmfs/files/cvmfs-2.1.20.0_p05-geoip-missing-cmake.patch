@@ -116,8 +116,8 @@ index cb09b94..44be85e 100644
      add_dependencies (python-geoip libgeoip)
      add_dependencies (geoip python-geoip)
    endif (GEOIP_BUILTIN)
---- CMakeLists.txt.orig	2015-02-23 13:51:47.000000000 +0000
-+++ CMakeLists.txt	2015-07-31 17:57:17.019920094 +0000
+--- CMakeLists.txt.orig	2015-08-04 15:33:53.383868890 +0000
++++ CMakeLists.txt	2015-08-04 15:58:03.133842858 +0000
 @@ -145,6 +145,12 @@
  endif (EXISTS "${CMAKE_SOURCE_DIR}/bootstrap.sh")
  
@@ -131,7 +131,12 @@ index cb09b94..44be85e 100644
  # set some default flags
  #
  # flags in CMAKE_C**_FLAGS are always passed to the compiler
-@@ -313,8 +319,8 @@
+@@ -309,13 +315,15 @@
+   set (INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} ${GTEST_INCLUDE_DIRS})
+ endif (GOOGLETEST_BUILTIN)
+ 
++if (BUILD_SERVER OR BUILD_UNITTESTS)
+ if (GEOIP_BUILTIN)
    include (${LIBGEOIP_BUILTIN_LOCATION}/CVMFS-CMakeLists.txt)
    include (${PYTHON_GEOIP_BUILTIN_LOCATION}/CVMFS-CMakeLists.txt)
  else (GEOIP_BUILTIN)
@@ -140,5 +145,7 @@ index cb09b94..44be85e 100644
 +  find_package (LibGeoIP REQUIRED)
 +  find_python_module (GeoIP REQUIRED)
  endif (GEOIP_BUILTIN)
++endif (BUILD_SERVER OR BUILD_UNITTESTS)
  
  # required libraries for client and libcvmfs
+ if (BUILD_CVMFS OR BUILD_LIBCVMFS)

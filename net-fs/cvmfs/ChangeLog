@@ -1,6 +1,11 @@
 # ChangeLog for net-fs/cvmfs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/cvmfs/ChangeLog,v 1.12 2015/07/31 20:09:57 bicatali Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/cvmfs/ChangeLog,v 1.13 2015/08/04 16:18:46 bicatali Exp $
+
+  04 Aug 2015; Sébastien Fabbro <bicatali@gentoo.org>
+  files/cvmfs-2.1.20.0_p05-geoip-missing-cmake.patch:
+  Fixed geoip patch to only check when server flag is set (bug #556570). Applied
+  upstream.
 
 *cvmfs-2.1.20.0_p05 (31 Jul 2015)
 

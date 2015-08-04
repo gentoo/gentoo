@@ -1,6 +1,12 @@
 # ChangeLog for net-proxy/squid
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/squid/ChangeLog,v 1.543 2015/08/01 00:58:29 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/squid/ChangeLog,v 1.544 2015/08/04 16:12:51 eras Exp $
+
+*squid-3.5.7 (04 Aug 2015)
+
+  04 Aug 2015; Eray Aslan <eras@gentoo.org> +files/squid-3.5.7-gentoo.patch,
+  +squid-3.5.7.ebuild:
+  Version bump
 
   01 Aug 2015; Patrick Lauer <patrick@gentoo.org> metadata.xml:
   Remove unneeded useflag description from metadata.xml
