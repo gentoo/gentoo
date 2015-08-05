@@ -1,6 +1,9 @@
 # ChangeLog for app-admin/eselect
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/eselect/ChangeLog,v 1.307 2015/06/07 17:56:17 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/eselect/ChangeLog,v 1.308 2015/08/05 08:02:43 vapier Exp $
+
+  05 Aug 2015; Mike Frysinger <vapier@gentoo.org> eselect-1.4.4.ebuild:
+  Mark arm64/m68k/s390/sh stable.
 
   07 Jun 2015; Ulrich Müller <ulm@gentoo.org> -eselect-1.4.1.ebuild,
   -eselect-1.4.3.ebuild:

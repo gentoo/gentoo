@@ -1,6 +1,10 @@
 # ChangeLog for net-misc/openssh
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/openssh/ChangeLog,v 1.574 2015/07/28 01:08:12 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/openssh/ChangeLog,v 1.575 2015/08/05 08:21:17 vapier Exp $
+
+  05 Aug 2015; Mike Frysinger <vapier@gentoo.org> openssh-6.9_p1-r2.ebuild:
+  Use the rlimit sandbox for x32 ABI until the seccomp one is fixed #553748 by
+  Kyle Sanderson.
 
   28 Jul 2015; Mike Frysinger <vapier@gentoo.org> openssh-6.9_p1-r2.ebuild:
   List USE=ssl as a requirement for USE=ldns and clean up the ldns deps a bit

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/openssh/openssh-6.9_p1-r2.ebuild,v 1.11 2015/07/28 01:08:12 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/openssh/openssh-6.9_p1-r2.ebuild,v 1.12 2015/08/05 08:21:17 vapier Exp $
 
 EAPI="4"
 inherit eutils user flag-o-matic multilib autotools pam systemd versionator
@@ -199,6 +199,9 @@ src_configure() {
 		$(use_with ssl md5-passwords)
 		$(use_with ssl ssl-engine)
 	)
+
+	# The seccomp sandbox is broken on x32, so use the older method for now. #553748
+	use amd64 && [[ ${ABI} == "x32" ]] && myconf+=( --with-sandbox=rlimit )
 
 	# Special settings for Gentoo/FreeBSD 9.0 or later (see bug #391011)
 	if use elibc_FreeBSD && version_is_at_least 9.0 "$(uname -r|sed 's/\(.\..\).*/\1/')" ; then

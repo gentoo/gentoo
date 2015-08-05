@@ -1,6 +1,10 @@
 # ChangeLog for sys-devel/gcc-config
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc-config/ChangeLog,v 1.231 2015/04/25 16:38:01 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc-config/ChangeLog,v 1.232 2015/08/05 08:10:59 vapier Exp $
+
+  05 Aug 2015; Mike Frysinger <vapier@gentoo.org>
+  files/gcc-config-1.8-dont_source_functions_sh_from_etc_initd.patch:
+  Include fix from git for test output #547586.
 
   25 Apr 2015; Mike Gilbert <floppym@gentoo.org> gcc-config-1.6.ebuild,
   gcc-config-1.7.1.ebuild, gcc-config-1.7.2.ebuild, gcc-config-1.7.ebuild:
