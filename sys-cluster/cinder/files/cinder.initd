@@ -1,7 +1,7 @@
 #!/sbin/runscript
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/cinder/files/cinder.initd,v 1.1 2014/05/11 12:21:59 vadimk Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/cinder/files/cinder.initd,v 1.2 2015/08/05 02:29:11 prometheanfire Exp $
 
 description="Starts ${SVCNAME} service for OpenStack"
 
@@ -19,5 +19,6 @@ depend() {
 
 start_pre() {
 	checkpath --directory --owner ${CINDER_USER:-cinder}:${CINDER_GROUP:-cinder} --mode 0755 ${CINDER_RUN:-/var/run/cinder}
+  checkpath --directory --owner ${CINDER_USER:-cinder}:${CINDER_GROUP:-cinder} --mode 0755 ${CINDER_LOCK:-/var/lock/cinder}
 }
 

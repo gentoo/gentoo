@@ -1,6 +1,12 @@
 # ChangeLog for sys-block/open-iscsi
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/open-iscsi/ChangeLog,v 1.61 2014/02/02 15:24:49 ago Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-block/open-iscsi/ChangeLog,v 1.62 2015/08/05 02:14:33 prometheanfire Exp $
+
+*open-iscsi-2.0.872-r3 (05 Aug 2015)
+
+  05 Aug 2015; Matthew Thode <prometheanfire@gentoo.org> +files/99-iscsi.rules,
+  +files/iscsidev.sh, +open-iscsi-2.0.872-r3.ebuild:
+  adding udev scripts to generate symlinks for bug 556632
 
   02 Feb 2014; Agostino Sarubbo <ago@gentoo.org> open-iscsi-2.0.872-r2.ebuild:
   Stable for alpha, wrt bug #498446

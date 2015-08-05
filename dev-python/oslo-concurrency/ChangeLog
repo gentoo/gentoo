@@ -1,6 +1,12 @@
 # ChangeLog for dev-python/oslo-concurrency
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/oslo-concurrency/ChangeLog,v 1.7 2015/07/08 20:34:45 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/oslo-concurrency/ChangeLog,v 1.8 2015/08/05 01:51:17 prometheanfire Exp $
+
+*oslo-concurrency-1.8.2 (05 Aug 2015)
+
+  05 Aug 2015; Matthew Thode <prometheanfire@gentoo.org>
+  +oslo-concurrency-1.8.2.ebuild:
+  bup
 
   08 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> oslo-concurrency-1.8.0.ebuild:
   x86 stable wrt bug #554114

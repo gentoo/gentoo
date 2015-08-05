@@ -1,6 +1,10 @@
 # ChangeLog for dev-python/PyECLib
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/PyECLib/ChangeLog,v 1.4 2015/07/29 17:53:38 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/PyECLib/ChangeLog,v 1.5 2015/08/05 01:41:01 prometheanfire Exp $
+
+  05 Aug 2015; Matthew Thode <prometheanfire@gentoo.org>
+  +files/1.0.7-erasurecode_locations.patch, PyECLib-1.0.7.ebuild:
+  fixing build error bug 556534
 
   29 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> PyECLib-1.0.7.ebuild:
   x86 stable wrt bug #554284

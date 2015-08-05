@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/nova/nova-2015.1.1-r1.ebuild,v 1.1 2015/07/30 05:40:53 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/nova/nova-2015.1.1-r1.ebuild,v 1.2 2015/08/05 02:19:21 prometheanfire Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
@@ -140,12 +140,13 @@ RDEPEND="
 	>=dev-python/psutil-1.1.1[${PYTHON_USEDEP}]
 	<dev-python/psutil-2.0.0[${PYTHON_USEDEP}]
 	dev-python/libvirt-python[${PYTHON_USEDEP}]
+	app-emulation/libvirt[iscsi?]
 	novncproxy? ( www-apps/novnc )
 	sys-apps/iproute2
 	openvswitch? ( net-misc/openvswitch )
 	rabbitmq? ( net-misc/rabbitmq-server )
 	memcached? ( net-misc/memcached
-		dev-python/python-memcached )
+	dev-python/python-memcached )
 	sys-fs/sysfsutils
 	sys-fs/multipath-tools
 	net-misc/bridge-utils
@@ -157,6 +158,7 @@ RDEPEND="
 	)
 	iscsi? (
 		sys-fs/lsscsi
+		>=sys-block/open-iscsi-2.0.872-r3
 	)"
 
 PATCHES=(
@@ -239,5 +241,11 @@ python_install() {
 
 		insinto /etc/nova/
 		doins "${FILESDIR}/scsi-openscsi-link.sh"
+	fi
+}
+
+pkg_postinst() {
+	if use iscsi ; then
+		elog "iscsid needs to be running if you want cinder to connect"
 	fi
 }

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/cinder/cinder-2015.1.9999.ebuild,v 1.6 2015/07/29 23:38:30 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/cinder/cinder-2015.1.9999.ebuild,v 1.7 2015/08/05 02:29:11 prometheanfire Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
@@ -128,11 +128,14 @@ RDEPEND="
 	>=dev-python/oslo-vmware-0.11.1[${PYTHON_USEDEP}]
 	<dev-python/oslo-vmware-0.12.0[${PYTHON_USEDEP}]
 	iscsi? (
-		|| ( >=sys-block/iscsitarget-1.4.20.2_p20130821 sys-block/tgt )
-		sys-block/open-iscsi )
+		sys-block/tgt
+		sys-block/open-iscsi
+	)
 	lvm? ( sys-fs/lvm2 )
 	memcached? ( net-misc/memcached )
+	app-emulation/qemu
 	sys-fs/sysfsutils"
+# qemu is needed for image conversion
 
 PATCHES=(
 
@@ -187,4 +190,10 @@ python_install() {
 	insinto /etc/sudoers.d/
 	insopts -m 0440 -o root -g root
 	newins "${FILESDIR}/cinder.sudoersd" cinder
+}
+
+pkg_postinst() {
+	if use iscsi ; then
+		elog "Cinder needs tgtd to be installed and running to work with iscsi"
+	fi
 }
