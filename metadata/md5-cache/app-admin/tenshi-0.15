@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare setup
+DESCRIPTION=Log parsing and notification program
+EAPI=5
+HOMEPAGE=http://dev.inversepath.com/trac/tenshi
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=ISC
+RDEPEND=dev-lang/perl dev-perl/IO-BufferedSelect sys-apps/coreutils
+SLOT=0
+SRC_URI=http://dev.inversepath.com/tenshi/tenshi-0.15.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=804275917fb2dacc54903ec90f2feb67

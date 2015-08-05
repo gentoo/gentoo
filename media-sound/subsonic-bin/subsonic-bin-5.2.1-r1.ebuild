@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/subsonic-bin/subsonic-bin-5.2.1.ebuild,v 1.1 2015/04/11 19:51:07 perfinion Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/subsonic-bin/subsonic-bin-5.2.1-r1.ebuild,v 1.1 2015/08/05 10:03:57 perfinion Exp $
 
 EAPI=5
 
@@ -14,13 +14,14 @@ SRC_URI="mirror://sourceforge/${MY_PN}/${PV}/${MY_PN}-${PV}-standalone.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
-IUSE="ffmpeg lame"
+KEYWORDS="~amd64 ~x86"
+IUSE="ffmpeg lame selinux"
 
 DEPEND=""
 RDEPEND="virtual/jre
 	lame? ( media-sound/lame )
-	ffmpeg? ( virtual/ffmpeg )"
+	ffmpeg? ( virtual/ffmpeg )
+	selinux? ( sec-policy/selinux-subsonic )"
 
 S="${WORKDIR}/"
 SUBSONIC_HOME="/var/lib/${MY_PN}"
@@ -32,7 +33,7 @@ pkg_setup() {
 }
 
 src_install() {
-	local dir="/usr/share/${P}"
+	local dir="/usr/libexec/${MY_PN}"
 
 	dodoc README.TXT "Getting Started.html"
 

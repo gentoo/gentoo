@@ -3,19 +3,22 @@
 
 SUBSONIC_HOME=${SUBSONIC_HOME:-/var/lib/${SVCNAME}}
 SUBSONIC_USER=${SUBSONIC_USER:-${SVCNAME}}
-PIDFILE=${PIDFILE:-${SUBSONIC_HOME}/subsonic.pid}
+PIDFILE=/run/subsonic/subsonic.pid
 
 depend() {
 	after net
 }
 
 start() {
+	checkpath -dq -o subsonic:subsonic -m 755 /run/subsonic/
+
 	ebegin "Starting ${SVCNAME}"
 	start-stop-daemon \
 		--start --user "${SUBSONIC_USER}" --name subsonic \
 		--env HOME="${SUBSONIC_HOME}" --exec /usr/bin/subsonic \
+		--pidfile="${PIDFILE}" \
 		--nicelevel "${NICELEVEL}" \
-		-- --pidfile="${PIDFILE}" \
+		-- \
 		--home="${SUBSONIC_HOME}" \
 		--host="${SUBSONIC_HOST}" \
 		--port="${SUBSONIC_PORT}" \
@@ -25,6 +28,7 @@ start() {
 		--default-music-folder="${SUBSONIC_DEFAULT_MUSIC_FOLDER}" \
 		--default-podcast-folder="${SUBSONIC_DEFAULT_PODCAST_FOLDER}" \
 		--default-playlist-folder="${SUBSONIC_DEFAULT_PLAYLIST_FOLDER}" \
+		--pidfile="${PIDFILE}" --quiet \
 		${SUBSONIC_OPTS}
 	eend $?
 }
@@ -33,7 +37,7 @@ stop() {
 	ebegin "Stopping ${SVCNAME}"
 	start-stop-daemon --stop --user "${SUBSONIC_USER}" \
 		--pidfile "${PIDFILE}" \
-		--wait 30000 \
+		--wait 15000 \
 		--progress
 	eend $?
 }

@@ -1,6 +1,9 @@
 # ChangeLog for dev-lang/ruby
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/ruby/ChangeLog,v 1.724 2015/08/02 09:49:12 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/ruby/ChangeLog,v 1.725 2015/08/05 09:45:20 zlogene Exp $
+
+  05 Aug 2015; Mikle Kolyada <zlogene@gentoo.org> ruby-2.1.6-r1.ebuild:
+  x86 stable wrt bug #518094
 
   02 Aug 2015; Pacho Ramos <pacho@gentoo.org> ruby-2.1.6-r1.ebuild:
   sparc stable wrt bug #518094

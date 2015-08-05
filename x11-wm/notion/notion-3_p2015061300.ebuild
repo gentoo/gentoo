@@ -1,18 +1,18 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/notion/notion-9999.ebuild,v 1.9 2015/08/05 10:09:07 xmw Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/notion/notion-3_p2015061300.ebuild,v 1.1 2015/08/05 10:09:07 xmw Exp $
 
 EAPI=5
 
-inherit eutils git-r3 multilib toolchain-funcs flag-o-matic
+inherit eutils multilib toolchain-funcs flag-o-matic
 
 DESCRIPTION="Notion is a tiling, tabbed window manager for the X window system"
 HOMEPAGE="http://notion.sourceforge.net"
-EGIT_REPO_URI="https://github.com/raboof/${PN}.git"
+SRC_URI="https://github.com/raboof/${PN}/archive/${PV/_p/-}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="nls xinerama +xrandr"
 
 RDEPEND=">=dev-lang/lua-5.1:0=
@@ -28,6 +28,8 @@ DEPEND="${RDEPEND}
 
 # needs luaposix,slingshot,... not in tree
 RESTRICT=test
+
+S=${WORKDIR}/${P/_p/-}
 
 src_prepare() {
 	append-cflags -D_DEFAULT_SOURCE

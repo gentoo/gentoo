@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/notion/notion-3_p2013030200.ebuild,v 1.4 2014/05/25 13:01:33 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/notion/notion-3_p2013030200.ebuild,v 1.5 2015/08/05 10:09:07 xmw Exp $
 
 EAPI=5
 
@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="nls xinerama +xrandr"
 
-RDEPEND="dev-lang/lua
+RDEPEND=">=dev-lang/lua-5.1:0=
 	x11-libs/libSM
 	x11-libs/libX11
 	x11-libs/libXext
@@ -25,6 +25,9 @@ RDEPEND="dev-lang/lua
 
 DEPEND="${RDEPEND}
 		virtual/pkgconfig"
+
+# needs luaposix,slingshot,... not in tree
+RESTRICT=test
 
 S=${WORKDIR}/${P/_p/-}
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mongodb/mongodb-3.0.5.ebuild,v 1.1 2015/08/04 17:31:47 ultrabug Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/mongodb/mongodb-3.0.5.ebuild,v 1.2 2015/08/05 09:53:48 ultrabug Exp $
 
 EAPI=5
 SCONS_MIN_VERSION="2.3.0"
@@ -23,7 +23,7 @@ IUSE="debug kerberos mms-agent ssl +tools"
 
 RDEPEND="app-arch/snappy
 	>=dev-cpp/yaml-cpp-0.5.1
-	>=dev-libs/boost-1.50[threads(+)]
+	>=dev-libs/boost-1.57[threads(+)]
 	>=dev-libs/libpcre-8.30[cxx]
 	dev-libs/snowball-stemmer
 	net-libs/libpcap
@@ -55,7 +55,6 @@ pkg_setup() {
 	scons_opts+=" --disable-warnings-as-errors"
 	scons_opts+=" --use-system-boost"
 	scons_opts+=" --use-system-pcre"
-	scons_opts+=" --use-system-boost"
 	scons_opts+=" --use-system-snappy"
 	scons_opts+=" --use-system-stemmer"
 	scons_opts+=" --use-system-yaml"

@@ -3,6 +3,7 @@
 <pkgmetadata>
 	<maintainer>
 		<email>perfinion@gentoo.org</email>
+		<name>Jason Zaman</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">subsonic</remote-id>

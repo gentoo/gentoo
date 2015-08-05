@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/rubygems
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rubygems/ChangeLog,v 1.281 2015/08/02 09:49:01 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rubygems/ChangeLog,v 1.282 2015/08/05 09:53:23 zlogene Exp $
+
+  05 Aug 2015; Mikle Kolyada <zlogene@gentoo.org> rubygems-2.2.5-r1.ebuild:
+  x86 stable wrt bug #518094
 
   02 Aug 2015; Pacho Ramos <pacho@gentoo.org> rubygems-2.2.5-r1.ebuild:
   sparc stable wrt bug #518094
