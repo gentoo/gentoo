@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/golang-vcs-snapshot.eclass,v 1.1 2015/08/05 15:42:55 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/golang-vcs-snapshot.eclass,v 1.2 2015/08/05 19:23:28 williamh Exp $
 
 # @ECLASS: golang-vcs-snapshot.eclass
 # @MAINTAINER:
@@ -50,7 +50,7 @@ golang-vcs-snapshot_src_unpack() {
 	ego_pn_check
 	set -- ${A}
 	x="$1"
-		mkdir -p "${WORKDIR}/${P}/src/${EGO_PN%/*}"
+	mkdir -p "${WORKDIR}/${P}/src/${EGO_PN%/*}" || die
 	tar -C "${WORKDIR}/${P}/src/${EGO_PN%/*}" -x --strip-components 1 \
 		-f "${DISTDIR}/${x}" || die
 }
