@@ -1,6 +1,6 @@
 # ChangeLog for dev-java/biojava
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/biojava/ChangeLog,v 1.5 2014/05/24 07:34:23 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/biojava/ChangeLog,v 1.1 2015/08/05 14:02:36 monsieurp Exp $
 
   24 May 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
   Cleanup due #199047

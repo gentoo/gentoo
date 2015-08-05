@@ -1,0 +1,31 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/ganglia/files/gmetad-python.rc,v 1.1 2015/08/05 14:27:13 jsbronder Exp $
+
+PIDFILE=/var/run/gmetad-python.pid
+
+depend() {
+	need net
+	after ntp-client ntpd
+}
+
+start() {
+	ebegin "Starting GANGLIA gmetad-python: "
+	start-stop-daemon \
+		--start --quiet \
+		--exec /usr/bin/gmetad.py \
+		--pidfile ${PIDFILE} \
+		-- \
+		-p ${PIDFILE}
+	eend $? "Failed to start gmetad-python"
+}
+
+stop() {
+	ebegin "Shutting down GANGLIA gmetad-python: "
+	start-stop-daemon \
+		--stop --quiet \
+		--pidfile ${PIDFILE} \
+		--exec /usr/bin/gmetad.py
+	eend $? "Failed to stop gmetad-python"
+}

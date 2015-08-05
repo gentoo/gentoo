@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/mauve/mauve-9999.ebuild,v 1.2 2010/03/09 13:04:57 abcd Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/mauve/mauve-9999.ebuild,v 1.3 2015/08/05 14:04:32 monsieurp Exp $
 
 EAPI="2"
 
@@ -22,7 +22,7 @@ SLOT="0"
 IUSE="doc"
 KEYWORDS=""
 
-CDEPEND="~dev-java/biojava-1.6
+CDEPEND="~sci-biology/biojava-1.6
 	>=dev-java/dbus-java-2.5.1
 	~dev-java/zeus-jscl-1.08
 	dev-java/ant-nodeps"

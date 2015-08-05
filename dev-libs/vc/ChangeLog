@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/vc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/vc/ChangeLog,v 1.10 2015/03/11 21:52:35 amadio Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/vc/ChangeLog,v 1.11 2015/08/05 13:49:31 amadio Exp $
+
+  05 Aug 2015; Guilherme Amadio <amadio@gentoo.org> vc-0.7.4.ebuild:
+  Update description, official site, and SRC_URI
 
   11 Mar 2015; <amadio@gentoo.org> vc-0.7.4.ebuild:
   Change SRC_URI from gitorious to official site; Fix bug #542898.

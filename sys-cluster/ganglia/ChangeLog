@@ -1,6 +1,12 @@
 # ChangeLog for sys-cluster/ganglia
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/ganglia/ChangeLog,v 1.65 2015/08/05 13:04:54 jsbronder Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/ganglia/ChangeLog,v 1.66 2015/08/05 14:27:13 jsbronder Exp $
+
+*ganglia-3.7.1-r1 (05 Aug 2015)
+
+  05 Aug 2015; Justin Bronder <jsbronder@gentoo.org> +ganglia-3.7.1-r1.ebuild,
+  +files/gmetad-python.rc:
+  add gmetad-python (#406855)
 
 *ganglia-3.7.1 (05 Aug 2015)
 

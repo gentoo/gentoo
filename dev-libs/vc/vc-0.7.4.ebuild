@@ -1,19 +1,20 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/vc/vc-0.7.4.ebuild,v 1.3 2015/03/11 21:52:35 amadio Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/vc/vc-0.7.4.ebuild,v 1.4 2015/08/05 13:49:31 amadio Exp $
 
 EAPI=5
 
-inherit vcs-snapshot cmake-utils
+inherit cmake-utils
+
+DESCRIPTION="SIMD Vector Class Library for C++"
+HOMEPAGE="https://github.com/VcDevel/Vc"
 
 VC_TEST_DATA=( reference-{acos,asin,atan,ln,log2,log10,sincos}-{dp,sp}.dat )
 for i in ${VC_TEST_DATA[@]}; do
 	SRC_URI+="test? ( http://compeng.uni-frankfurt.de/~kretz/Vc-testdata/$i -> ${P}-${i} ) "
 done
 
-DESCRIPTION="A library to ease explicit vectorization of C++ code"
-HOMEPAGE="http://code.compeng.uni-frankfurt.de/projects/vc"
-SRC_URI+="http://code.compeng.uni-frankfurt.de/attachments/download/183/Vc-0.7.4.tar.gz"
+SRC_URI+="https://github.com/VcDevel/Vc/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
