@@ -1,6 +1,12 @@
 # ChangeLog for media-gfx/zbar
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/zbar/ChangeLog,v 1.19 2015/07/06 11:59:39 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/zbar/ChangeLog,v 1.20 2015/08/05 13:15:17 xmw Exp $
+
+*zbar-0.10_p20121015 (05 Aug 2015)
+
+  05 Aug 2015; Michael Weber <xmw@gentoo.org> +zbar-0.10_p20121015.ebuild,
+  -zbar-0.10-r3.ebuild:
+  Version bump to mercurial tip (thanks karl, bug 555918). Drop old.
 
   06 Jul 2015; Anthony G. Basile <blueness@gentoo.org> zbar-0.10-r5.ebuild:
   Stable for amd64 and x86.  Needed for electrum.  Bug #541538.
