@@ -1,6 +1,13 @@
 # ChangeLog for dev-java/ant-apache-xalan2
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-apache-xalan2/ChangeLog,v 1.28 2015/07/11 09:20:52 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-apache-xalan2/ChangeLog,v 1.29 2015/08/04 23:14:05 chewi Exp $
+
+*ant-apache-xalan2-1.9.2-r1 (04 Aug 2015)
+
+  04 Aug 2015; James Le Cuirot <chewi@gentoo.org>
+  +ant-apache-xalan2-1.9.2-r1.ebuild:
+  Explicitly depend on xalan-serializer to satisfy Java 8's stricter class
+  loading. Fixes bug #556584.
 
   11 Jul 2015; James Le Cuirot <chewi@gentoo.org>
   ant-apache-xalan2-1.9.2.ebuild:
