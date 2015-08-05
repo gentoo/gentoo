@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-go/go-crypto/go-crypto-9999.ebuild,v 1.8 2015/07/06 16:53:39 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-go/go-crypto/go-crypto-9999.ebuild,v 1.9 2015/08/05 16:35:07 williamh Exp $
 
 EAPI=5
 EGO_PN=golang.org/x/crypto/...
@@ -12,6 +12,7 @@ else
 	KEYWORDS="~amd64"
 	EGIT_COMMIT="1e856cbfdf9bc25eefca75f83f25d55e35ae72e0"
 	SRC_URI="https://github.com/golang/crypto/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+	inherit golang-vcs-snapshot
 fi
 inherit golang-build
 
@@ -22,35 +23,6 @@ SLOT="0/${PV}"
 IUSE=""
 DEPEND=""
 RDEPEND=""
-
-if [[ ${PV} != *9999* ]]; then
-src_unpack() {
-	local f
-
-	for f in ${A}
-	do
-		case "${f}" in
-			*.tar|*.tar.gz|*.tar.bz2|*.tar.xz)
-				local destdir=${WORKDIR}/${P}/src/${EGO_SRC}
-
-				debug-print "${FUNCNAME}: unpacking ${f} to ${destdir}"
-
-				# XXX: check whether the directory structure inside is
-				# fine? i.e. if the tarball has actually a parent dir.
-				mkdir -p "${destdir}" || die
-				tar -C "${destdir}" -x --strip-components 1 \
-					-f "${DISTDIR}/${f}" || die
-				;;
-			*)
-				debug-print "${FUNCNAME}: falling back to unpack for ${f}"
-
-				# fall back to the default method
-				unpack "${f}"
-				;;
-		esac
-	done
-}
-fi
 
 src_prepare() {
 	# disable broken tests

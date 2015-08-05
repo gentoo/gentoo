@@ -1,6 +1,9 @@
 # ChangeLog for dev-go/go-net
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-go/go-net/ChangeLog,v 1.12 2015/07/06 21:40:30 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-go/go-net/ChangeLog,v 1.13 2015/08/05 16:46:10 williamh Exp $
+
+  05 Aug 2015; William Hubbs <williamh@gentoo.org> go-net-9999.ebuild:
+  add support for golang-vcs-snapshot to live ebuild
 
   06 Jul 2015; William Hubbs <williamh@gentoo.org> go-net-9999.ebuild:
   Add the slot dependency for go-text
