@@ -1,6 +1,9 @@
 # ChangeLog for dev-go/go-text
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-go/go-text/ChangeLog,v 1.10 2015/07/06 17:10:56 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-go/go-text/ChangeLog,v 1.11 2015/08/05 19:45:02 williamh Exp $
+
+  05 Aug 2015; William Hubbs <williamh@gentoo.org> go-text-9999.ebuild:
+  add support for golang-vcs-snapshot to live ebuild
 
   06 Jul 2015; William Hubbs <williamh@gentoo.org> go-text-9999.ebuild:
   Add a subslot of the version number so we know which version is installed;

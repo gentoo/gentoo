@@ -1,6 +1,10 @@
 # ChangeLog for dev-libs/nss
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/nss/ChangeLog,v 1.422 2015/07/25 15:53:29 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/nss/ChangeLog,v 1.423 2015/08/05 20:30:44 axs Exp $
+
+  05 Aug 2015; Ian Stakenvicius (_AxS_) <axs@gentoo.org> -nss-3.17.3.ebuild,
+  -nss-3.17.4.ebuild, -nss-3.18.1.ebuild, -nss-3.19.1.ebuild, -nss-3.19.ebuild:
+  cleaned up old versions as per security bug 550288
 
   25 Jul 2015; Markus Meier <maekke@gentoo.org> nss-3.19.2.ebuild:
   arm stable, bug #550288
