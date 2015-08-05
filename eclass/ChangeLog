@@ -1,6 +1,9 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1744 2015/08/03 18:31:41 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1745 2015/08/05 15:42:55 williamh Exp $
+
+  05 Aug 2015; William Hubbs <williamh@gentoo.org> +golang-vcs-snapshot.eclass:
+  Add eclass for vcs snapshots of software written in Go.
 
   03 Aug 2015; Michael Sterrett <mr_bones_@gentoo.org> python-utils-r1.eclass:
   Add quotes to support reading from files with spaces in the filename.
