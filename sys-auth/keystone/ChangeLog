@@ -1,6 +1,11 @@
 # ChangeLog for sys-auth/keystone
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/keystone/ChangeLog,v 1.102 2015/07/29 23:28:49 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/keystone/ChangeLog,v 1.103 2015/08/05 02:39:41 prometheanfire Exp $
+
+  05 Aug 2015; Matthew Thode <prometheanfire@gentoo.org>
+  -files/CVE-2015-3646-2014.2.3.patch, -files/no_admin_token_auth-paste.ini,
+  -keystone-2014.2.9999.ebuild:
+  removing the old and jankey
 
   29 Jul 2015; Matthew Thode <prometheanfire@gentoo.org>
   keystone-2015.1.9999.ebuild:

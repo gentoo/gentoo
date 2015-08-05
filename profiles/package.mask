@@ -1,5 +1,5 @@
 ####################################################################
-# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16701 2015/08/04 21:06:57 johu Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/package.mask,v 1.16703 2015/08/05 02:46:43 prometheanfire Exp $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -29,6 +29,10 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Matthew Thode <prometheanfire@gentoo.org> (04 Aug 2015)
+# removing old and never working horizon Bug #556710
+www-apps/horizon
 
 # Mikle Kolyada <zlogene@hemtoo.org> (04 Aug 2015)
 # Unmaintained since 2010. No longer available

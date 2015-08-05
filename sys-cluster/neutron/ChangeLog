@@ -1,6 +1,14 @@
 # ChangeLog for sys-cluster/neutron
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/neutron/ChangeLog,v 1.68 2015/07/29 23:45:24 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/neutron/ChangeLog,v 1.69 2015/08/05 02:35:31 prometheanfire Exp $
+
+  05 Aug 2015; Matthew Thode <prometheanfire@gentoo.org>
+  -files/0001-Fixes-bug-in-interface-handling-of-ip_lib.py.patch,
+  -files/0002-moving-vxlan-module-check-to-sanity-checks-and-makin.patch,
+  -files/0003-fixes-error-logging-to-use-the-right-exception-paren.patch,
+  -files/cve-2015-3221_2014.2.3.ebuild, -neutron-2014.2.3-r1.ebuild,
+  -neutron-2014.2.9999.ebuild:
+  removing the old and jankey
 
 *neutron-2015.1.1 (29 Jul 2015)
 

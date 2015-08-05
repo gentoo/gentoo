@@ -1,6 +1,11 @@
 # ChangeLog for app-admin/glance
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/glance/ChangeLog,v 1.79 2015/07/29 23:26:39 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/glance/ChangeLog,v 1.80 2015/08/05 02:37:16 prometheanfire Exp $
+
+  05 Aug 2015; Matthew Thode <prometheanfire@gentoo.org>
+  -files/2014.2.2-CVE-2015-1881.patch, -glance-2014.2.3.ebuild,
+  -glance-2014.2.9999.ebuild:
+  removing the old and jankey
 
   29 Jul 2015; Matthew Thode <prometheanfire@gentoo.org>
   glance-2015.1.9999.ebuild:
