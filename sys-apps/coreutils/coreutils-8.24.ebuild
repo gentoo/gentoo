@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/coreutils/coreutils-8.24.ebuild,v 1.1 2015/07/10 11:31:59 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/coreutils/coreutils-8.24.ebuild,v 1.2 2015/08/05 07:49:24 vapier Exp $
 
 # To generate the man pages, unpack the upstream tarball and run:
 # ./configure --enable-install-program=arch,coreutils
@@ -12,7 +12,7 @@ EAPI="4"
 
 inherit eutils flag-o-matic toolchain-funcs
 
-PATCH_VER="1.0"
+PATCH_VER="1.1"
 DESCRIPTION="Standard GNU file utilities (chmod, cp, dd, dir, ls...), text utilities (sort, tr, head, wc..), and shell utilities (whoami, who,...)"
 HOMEPAGE="http://www.gnu.org/software/coreutils/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.xz

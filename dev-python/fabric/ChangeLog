@@ -1,6 +1,12 @@
 # ChangeLog for dev-python/fabric
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/fabric/ChangeLog,v 1.55 2015/02/16 14:01:36 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/fabric/ChangeLog,v 1.56 2015/08/05 08:00:42 idella4 Exp $
+
+*fabric-1.10.2 (05 Aug 2015)
+
+  05 Aug 2015; Ian Delaney <idella4@gentoo.org> +fabric-1.10.2.ebuild,
+  -fabric-1.10.0.ebuild:
+  bump; tidy test phase
 
   16 Feb 2015; Pacho Ramos <pacho@gentoo.org> fabric-1.10.0-r1.ebuild:
   amd64/x86 stable, bug #530324

@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/fabric/fabric-1.10.0.ebuild,v 1.4 2014/11/25 17:02:02 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/fabric/fabric-1.10.2.ebuild,v 1.1 2015/08/05 08:00:42 idella4 Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
@@ -20,9 +20,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
 RDEPEND="
-	>=dev-python/paramiko-1.10[${PYTHON_USEDEP}]
-	<dev-python/paramiko-1.13[${PYTHON_USEDEP}]
-	"
+	>=dev-python/paramiko-1.10[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}]
@@ -54,13 +52,9 @@ python_compile_all() {
 	fi
 }
 
-src_test() {
-	local DISTUTILS_NO_PARALLEL_BUILD=1
-	distutils-r1_src_test
-}
-
 python_test() {
-	nosetests tests || die "Tests failed under ${EPYTHON}"
+	# 1 failure, reported https://github.com/fabric/fabric/issues/1360
+	esetup.py test
 }
 
 python_install_all() {

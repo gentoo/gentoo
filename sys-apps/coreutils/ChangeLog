@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/coreutils
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/coreutils/ChangeLog,v 1.403 2015/07/30 12:28:54 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/coreutils/ChangeLog,v 1.404 2015/08/05 07:49:24 vapier Exp $
+
+  05 Aug 2015; Mike Frysinger <vapier@gentoo.org> coreutils-8.24.ebuild:
+  Minor uname improvements for arm/microblaze.
 
   30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> coreutils-8.23.ebuild:
   Stable for sparc, wrt bug #555028
