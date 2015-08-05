@@ -1,6 +1,11 @@
 # ChangeLog for x11-wm/xpra
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/xpra/ChangeLog,v 1.125 2015/07/21 23:38:47 xmw Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/xpra/ChangeLog,v 1.126 2015/08/05 09:03:39 xmw Exp $
+
+*xpra-0.15.4 (05 Aug 2015)
+
+  05 Aug 2015; Michael Weber <xmw@gentoo.org> +xpra-0.15.4.ebuild:
+  Version bump.
 
   21 Jul 2015; Michael Weber <xmw@gentoo.org> xpra-0.15.3.ebuild:
   Remove bundled rencode.

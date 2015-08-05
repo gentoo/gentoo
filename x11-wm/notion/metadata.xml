@@ -6,10 +6,6 @@
 		<email>moaxcp@gmail.com</email>
 		<name>John Mercier</name>
 	</maintainer>
-	<maintainer>
-		<email>xmw@gentoo.org</email>
-		<name>Michael Weber</name>
-	</maintainer>
 	<use>
 		<flag name="xrandr">Add support for xrandr</flag>
 	</use>

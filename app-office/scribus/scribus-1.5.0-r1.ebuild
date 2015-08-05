@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/scribus/scribus-1.5.0-r1.ebuild,v 1.2 2015/06/01 08:59:11 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/scribus/scribus-1.5.0-r1.ebuild,v 1.3 2015/08/05 09:11:47 jlec Exp $
 
 EAPI=5
 
@@ -63,7 +63,7 @@ COMMON_DEPEND="
 	hunspell? ( app-text/hunspell )
 	graphicsmagick? ( media-gfx/graphicsmagick )
 	osg? ( dev-games/openscenegraph )
-	pdf? ( app-text/podofo )
+	pdf? ( app-text/podofo:0= )
 	scripts? ( virtual/python-imaging[tk?,${PYTHON_USEDEP}] )
 	tk? ( virtual/python-imaging[tk?,${PYTHON_USEDEP}] )
 "

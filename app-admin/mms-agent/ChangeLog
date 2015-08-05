@@ -1,6 +1,12 @@
 # ChangeLog for app-admin/mms-agent
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/mms-agent/ChangeLog,v 1.5 2015/06/25 11:10:48 ultrabug Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/mms-agent/ChangeLog,v 1.6 2015/08/05 08:38:50 ultrabug Exp $
+
+*mms-agent-3.6.0.201_p1 (05 Aug 2015)
+
+  05 Aug 2015; Ultrabug <ultrabug@gentoo.org> -mms-agent-3.5.0.197_p1.ebuild,
+  +mms-agent-3.6.0.201_p1.ebuild:
+  version bump, drop old
 
 *mms-agent-3.5.0.197_p1 (25 Jun 2015)
 

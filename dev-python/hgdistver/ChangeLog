@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/hgdistver
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/hgdistver/ChangeLog,v 1.21 2015/06/07 19:29:18 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/hgdistver/ChangeLog,v 1.22 2015/08/05 09:25:18 idella4 Exp $
+
+*hgdistver-0.25 (05 Aug 2015)
+
+  05 Aug 2015; Ian Delaney <idella4@gentoo.org> +hgdistver-0.25.ebuild:
+  bump
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add bitbucket to remote-id in metadata.xml

@@ -1,6 +1,11 @@
 # ChangeLog for app-office/scribus
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/scribus/ChangeLog,v 1.213 2015/06/15 19:30:04 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/scribus/ChangeLog,v 1.214 2015/08/05 09:11:47 jlec Exp $
+
+  05 Aug 2015; Justin Lecher <jlec@gentoo.org> -files/scribus-1.5.0-docs.patch,
+  -scribus-1.4.5-r1.ebuild, -scribus-1.4.5.ebuild, -scribus-1.5.0.ebuild,
+  scribus-1.5.0-r1.ebuild:
+  Drop old; use subslots
 
   15 Jun 2015; Justin Lecher <jlec@gentoo.org> scribus-9999.ebuild:
   Adopt to current HEAD, bug #551816; use ninja as build engine
