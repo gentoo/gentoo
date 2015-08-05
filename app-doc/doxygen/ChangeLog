@@ -1,6 +1,13 @@
 # ChangeLog for app-doc/doxygen
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/doxygen/ChangeLog,v 1.289 2015/08/02 09:40:39 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-doc/doxygen/ChangeLog,v 1.290 2015/08/05 21:56:49 tamiko Exp $
+
+*doxygen-1.8.10 (05 Aug 2015)
+
+  05 Aug 2015; Matthias Maier <tamiko@gentoo.org> +doxygen-1.8.10.ebuild,
+  +files/doxygen-1.8.10-link_with_pthread.patch, doxygen-9999.ebuild:
+  version bump; switch to cmake - many thanks to Alex Turbov for a preliminary
+  ebuild; drop keywords due to major build system change
 
   02 Aug 2015; Pacho Ramos <pacho@gentoo.org> doxygen-1.8.9.1.ebuild:
   sparc stable wrt bug #550348

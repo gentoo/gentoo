@@ -1,6 +1,11 @@
 # ChangeLog for Gentoo/AMD64 profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/hardened/ChangeLog,v 1.90 2015/08/04 08:13:32 alonbl Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/hardened/ChangeLog,v 1.91 2015/08/05 22:03:52 bircoph Exp $
+
+  06 Aug 2015; Andrew Savchenko <bircoph@gentoo.org> linux/amd64/package.use.mask:
+  Mask USE="geant3" for sci-physics/geant-4.9.4* as reverse
+  dependencies masking for sci-physics/cernlib mask on hardened
+  amd64, since package is badly broken. See bugs 426764, 556612.
 
   04 Aug 2015; Alon Bar-Lev <alonbl@gentoo.org> linux/amd64/package.use.stable.mask:
   Sync vlc with amd64 arch, bug#504826.

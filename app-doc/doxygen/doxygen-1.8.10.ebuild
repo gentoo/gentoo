@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/doxygen/doxygen-9999.ebuild,v 1.2 2015/08/05 21:56:49 tamiko Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-doc/doxygen/doxygen-1.8.10.ebuild,v 1.1 2015/08/05 21:56:49 tamiko Exp $
 
 EAPI=4
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
@@ -12,10 +12,11 @@ if [[ ${PV} = *9999* ]]; then
 	SRC_URI=""
 	KEYWORDS=""
 else
-	SRC_URI="http://ftp.stack.nl/pub/users/dimitri/${P}.src.tar.gz" # switch to github?
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
+	SRC_URI="http://ftp.stack.nl/pub/users/dimitri/${P}.src.tar.gz"
+	KEYWORDS="~amd64"
+	# KEYWORDS="~alpha ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 fi
-SRC_URI+="http://dev.gentoo.org/~xarthisius/distfiles/doxywizard.png"
+SRC_URI+=" http://dev.gentoo.org/~xarthisius/distfiles/doxywizard.png"
 
 DESCRIPTION="Documentation system for most programming languages"
 HOMEPAGE="http://www.doxygen.org/"
@@ -25,7 +26,6 @@ SLOT="0"
 IUSE="clang debug doc dot doxysearch qt4 sqlite"
 
 #missing SerbianCyrilic, JapaneseEn, KoreanEn, Chinesetraditional
-
 LANGS=(hy ar pt_BR ca zh cs de da eo es fa fi fr el hr hu id it ja ko lt mk
 nl nb pl pt ro ru sl sk sr sv tr uk vi af)
 for X in "${LANGS[@]}" ; do
