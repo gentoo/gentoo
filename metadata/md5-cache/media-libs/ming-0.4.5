@@ -1,0 +1,16 @@
+_eclasses_=unpacker	f300a7ca9131b1024a79762e8edd3c52	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	toolchain-funcs	42408102d713fbad60ca21349865edb4	flag-o-matic	c9602887773166fe300444712fc7ff98	distutils-r1	715b22a21726d3fd76b17e007c5daf5f	multilib	62927b3db3a589b0806255f3a002d5d3	python-r1	d9c8348f26710ea523a385c2328cf027	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	libtool	52d0e17251d04645ffaa61bfdd858944	python-utils-r1	295a286ec27cab6af76b3b75ba07a3a	autotools	2264f05fbbbaaf83d34ec81e72b38ffd	multiprocessing	d7f2985a2c76c365ee20269db5261414	eutils	9fb270e417e0e83d64ca52586c4a79de	perl-module	9ff260c452d420630500e700913be8d8
+_md5_=79b471fb6f5c34551675839f66f0b3a2
+SLOT=0
+DEFINED_PHASES=compile configure install postinst postrm prepare prerm test unpack
+EAPI=5
+DEPEND=perl? ( dev-lang/perl:= ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) media-libs/freetype media-libs/libpng:= media-libs/giflib sys-libs/zlib !media-libs/libswf sys-devel/flex virtual/yacc !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DESCRIPTION=An Open Source library for Flash movie generation
+LICENSE=LGPL-2.1
+IUSE=+perl +python php static-libs python_targets_python2_7
+REQUIRED_USE=|| ( python_targets_python2_7 )
+RESTRICT=test
+PDEPEND=php? ( dev-php/ming-php )
+SRC_URI=mirror://sourceforge/ming/ming-0.4.5.tar.bz2
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd
+HOMEPAGE=http://ming.sourceforge.net/
+RDEPEND=perl? ( dev-lang/perl:= ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) media-libs/freetype media-libs/libpng:= media-libs/giflib sys-libs/zlib !media-libs/libswf python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]

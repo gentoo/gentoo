@@ -1,0 +1,14 @@
+_eclasses_=multilib-minimal	13dd976916c35a1e2c8d170e840c7018	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	toolchain-funcs	42408102d713fbad60ca21349865edb4	xorg-2	50dd640df6d0554c259daa81531ed3ee	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	multilib-build	e733e978b7fa70607cc221fd9c070db6	python-r1	d9c8348f26710ea523a385c2328cf027	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	libtool	52d0e17251d04645ffaa61bfdd858944	autotools-multilib	37c4046d25f29e78dd44dccabd5d66b	autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	python-utils-r1	295a286ec27cab6af76b3b75ba07a3a
+_md5_=c28727b743401a7d5f64378a9b80917
+SLOT=0
+DEFINED_PHASES=compile configure install postinst postrm prepare test unpack
+EAPI=5
+DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-)] dev-libs/libxml2 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 x86-interix? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) ppc-aix? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) x86-winnt? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) virtual/pkgconfig
+DESCRIPTION=X C-language Bindings protocol headers
+LICENSE=MIT
+IUSE=python_targets_python2_7 python_targets_python3_3 abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_3 )
+SRC_URI=http://xcb.freedesktop.org/dist/xcb-proto-1.10.tar.bz2
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+HOMEPAGE=http://xcb.freedesktop.org/
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-)] abi_x86_32? ( !app-emulation/emul-linux-x86-xlibs[-abi_x86_32(-)] )

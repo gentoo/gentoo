@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	flag-o-matic	c9602887773166fe300444712fc7ff98	versionator	cd0bcdb170807e4a1984115e9d53a26f	multilib	62927b3db3a589b0806255f3a002d5d3	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	cmake-utils	430c386d85cec959d72640afd63ea91	python-single-r1	351da1aa73960a282591217fb57c1bb8	eutils	9fb270e417e0e83d64ca52586c4a79de	python-utils-r1	295a286ec27cab6af76b3b75ba07a3a
+_md5_=3bb9c82d422b2f1242e38d679a686f9d
+SLOT=0/1
+DEFINED_PHASES=compile configure install prepare setup test
+EAPI=5
+DEPEND=virtual/libusb:1 dev-lang/orc dev-libs/boost:= sys-libs/ncurses dev-python/cheetah app-arch/unzip >=sys-apps/sed-4 sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Universal Software Radio Peripheral (USRP) Hardware Driver
+LICENSE=GPL-3
+IUSE=python_targets_python2_7
+SRC_URI=https://github.com/EttusResearch/uhd/archive/release_003_008_002.tar.gz -> EttusResearch-UHD-3.8.2.tar.gz http://files.ettus.com/binaries/images/uhd-images_003.008.002-release.zip
+KEYWORDS=~amd64 ~arm ~x86
+HOMEPAGE=http://code.ettus.com/redmine/ettus/projects/uhd/wiki
+RDEPEND=virtual/libusb:1 dev-lang/orc dev-libs/boost:= sys-libs/ncurses

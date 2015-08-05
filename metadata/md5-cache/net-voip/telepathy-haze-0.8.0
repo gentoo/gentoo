@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	python-single-r1	351da1aa73960a282591217fb57c1bb8	multilib	62927b3db3a589b0806255f3a002d5d3	eutils	9fb270e417e0e83d64ca52586c4a79de	python-utils-r1	295a286ec27cab6af76b3b75ba07a3a
+_md5_=667e9de8121bd8b8661b7ec7cd8ff905
+SLOT=0
+DEFINED_PHASES=setup
+EAPI=5
+DEPEND=>=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] >=net-im/pidgin-2.7 >=net-libs/telepathy-glib-0.15.1[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] >=dev-libs/glib-2.30:2 >=dev-libs/dbus-glib-0.73 virtual/pkgconfig
+DESCRIPTION=Telepathy connection manager providing libpurple supported protocols
+LICENSE=GPL-2
+IUSE=python_targets_python2_7
+RESTRICT=test
+SRC_URI=http://telepathy.freedesktop.org/releases/telepathy-haze/telepathy-haze-0.8.0.tar.gz
+KEYWORDS=~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86
+HOMEPAGE=http://developer.pidgin.im/wiki/TelepathyHaze
+RDEPEND=>=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] >=net-im/pidgin-2.7 >=net-libs/telepathy-glib-0.15.1[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] >=dev-libs/glib-2.30:2 >=dev-libs/dbus-glib-0.73

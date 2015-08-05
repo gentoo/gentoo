@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	python-any-r1	4756de53ea4d40471a582e898815a5c8	versionator	cd0bcdb170807e4a1984115e9d53a26f	multilib	62927b3db3a589b0806255f3a002d5d3	kernel-2	adcd0a7bbb205c648e9cde3dd32126dc	eutils	9fb270e417e0e83d64ca52586c4a79de	python-utils-r1	295a286ec27cab6af76b3b75ba07a3a
+_md5_=bdfc090735e1f3096942fff2b00243bc
+SLOT=3.19.6
+DEFINED_PHASES=compile install postinst postrm preinst setup test unpack
+EAPI=5
+DEPEND=>=sys-devel/gcc-4.6.0 !build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
+DESCRIPTION=Linux-Mips GIT sources for MIPS-based machines, dated 20150418
+LICENSE=GPL-2 freedist
+IUSE=cobalt ip27 ip28 ip30 ip32r10k symlink build
+RESTRICT=binchecks strip
+SRC_URI=mirror://kernel/linux/kernel/v3.x/patch-3.19.6.xz mirror://kernel/linux/kernel/v3.x/linux-3.19.tar.xz mirror://gentoo/mipsgit-3.19.0-20150418.diff.xz mirror://gentoo/mips-sources-3.19.0-patches-v2.tar.xz
+KEYWORDS=-* ~mips
+HOMEPAGE=http://www.linux-mips.org/ http://www.gentoo.org/
+RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )

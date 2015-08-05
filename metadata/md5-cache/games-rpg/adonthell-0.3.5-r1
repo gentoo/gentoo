@@ -1,0 +1,13 @@
+_eclasses_=python-single-r1	351da1aa73960a282591217fb57c1bb8	toolchain-funcs	42408102d713fbad60ca21349865edb4	multilib	62927b3db3a589b0806255f3a002d5d3	base	87f7447ccfc06fd0729ff4684e11e0d6	libtool	52d0e17251d04645ffaa61bfdd858944	user	f54e098dd38ba1c0847a13e685b87747	games	1ad3205dbf62a2c98249f2f59b0a2d39	autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	python-utils-r1	295a286ec27cab6af76b3b75ba07a3a
+_md5_=6ac7847e10002ccc1d93fa36f1eefc20
+SLOT=0
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+EAPI=5
+DEPEND=>=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] media-libs/sdl-ttf media-libs/sdl-mixer[vorbis] media-libs/libsdl:0[X,video,sound] sys-libs/zlib media-libs/freetype media-libs/libogg media-libs/libvorbis nls? ( virtual/libintl ) dev-lang/swig doc? ( media-gfx/graphviz app-doc/doxygen ) nls? ( sys-devel/gettext ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=roleplaying game engine
+LICENSE=GPL-2
+IUSE=doc nls python_targets_python2_7
+SRC_URI=http://savannah.nongnu.org/download/adonthell/adonthell-src-0.3.5.tar.gz
+KEYWORDS=amd64 ppc x86
+HOMEPAGE=http://adonthell.linuxgames.com/
+RDEPEND=>=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] media-libs/sdl-ttf media-libs/sdl-mixer[vorbis] media-libs/libsdl:0[X,video,sound] sys-libs/zlib media-libs/freetype media-libs/libogg media-libs/libvorbis nls? ( virtual/libintl ) games-misc/games-envd

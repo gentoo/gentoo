@@ -8,6 +8,6 @@ KEYWORDS=~amd64 ~arm ~ppc ~x86 ~x86-fbsd
 LICENSE=GPL-3
 RDEPEND=app-arch/zip x11-libs/wxGTK:2.8[X] contrib? ( app-text/hunspell dev-libs/boost:= dev-libs/libgamin )
 SLOT=0
-SRC_URI=mirror://berlios/codeblocks/codeblocks_13.12-1.tar.gz
+SRC_URI=mirror://sourceforge/codeblocks/codeblocks_13.12-1.tar.gz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	wxwidgets	6d6eec2685256d35511e7b6d5461bec9
-_md5_=8580e7805ffc9fb55df29d2a86a5f26c
+_md5_=8cefae7aade0a4baaceddd5a3d639f78

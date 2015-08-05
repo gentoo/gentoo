@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	python-any-r1	4756de53ea4d40471a582e898815a5c8	versionator	cd0bcdb170807e4a1984115e9d53a26f	multilib	62927b3db3a589b0806255f3a002d5d3	kernel-2	adcd0a7bbb205c648e9cde3dd32126dc	eutils	9fb270e417e0e83d64ca52586c4a79de	python-utils-r1	295a286ec27cab6af76b3b75ba07a3a
+_md5_=2fa46f116010d73e6927209d861dd4cf
+SLOT=3.4.106
+DEFINED_PHASES=compile install postinst postrm preinst setup test unpack
+EAPI=5
+DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
+DESCRIPTION=Full sources including the Gentoo patchset for the 3.4 kernel tree
+LICENSE=GPL-2 freedist
+IUSE=deblob symlink build
+RESTRICT=binchecks strip
+SRC_URI=mirror://kernel/linux/kernel/v3.x/linux-3.4.tar.xz mirror://gentoo/genpatches-3.4-89.base.tar.xz mirror://gentoo/genpatches-3.4-89.extras.tar.xz
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+HOMEPAGE=http://dev.gentoo.org/~mpagano/genpatches
+RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )

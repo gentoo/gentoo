@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	distutils-r1	715b22a21726d3fd76b17e007c5daf5f	multilib	62927b3db3a589b0806255f3a002d5d3	python-r1	d9c8348f26710ea523a385c2328cf027	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multiprocessing	d7f2985a2c76c365ee20269db5261414	eutils	9fb270e417e0e83d64ca52586c4a79de	python-utils-r1	295a286ec27cab6af76b3b75ba07a3a
+_md5_=37fbfb396a1c7ed3f07b973dc129c175
+SLOT=0
+DEFINED_PHASES=compile configure install prepare test
+EAPI=5
+DEPEND=app-arch/bzip2:0= dev-libs/c-blosc:0=[hdf5] dev-libs/lzo:2= dev-python/numpy[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] dev-python/numexpr[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] sci-libs/hdf5:0= >=dev-python/cython-0.14[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)]
+DESCRIPTION=Hierarchical datasets for Python
+LICENSE=BSD
+IUSE=doc examples python_targets_python2_7 python_targets_python3_3 python_targets_python3_4
+REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 )
+SRC_URI=mirror://pypi/t/tables/tables-3.1.1.tar.gz
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
+HOMEPAGE=http://www.pytables.org/
+RDEPEND=app-arch/bzip2:0= dev-libs/c-blosc:0=[hdf5] dev-libs/lzo:2= dev-python/numpy[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] dev-python/numexpr[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] sci-libs/hdf5:0= python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)]

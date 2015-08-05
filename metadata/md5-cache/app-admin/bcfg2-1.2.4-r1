@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	distutils-r1	715b22a21726d3fd76b17e007c5daf5f	multilib	62927b3db3a589b0806255f3a002d5d3	python-r1	d9c8348f26710ea523a385c2328cf027	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multiprocessing	d7f2985a2c76c365ee20269db5261414	eutils	9fb270e417e0e83d64ca52586c4a79de	python-utils-r1	295a286ec27cab6af76b3b75ba07a3a
+_md5_=9575a33e891931f448705133b4b6840d
+SLOT=0
+DEFINED_PHASES=compile configure install postinst prepare test
+EAPI=5
+DEPEND=dev-python/setuptools[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] doc? ( dev-python/sphinx[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[ssl] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DESCRIPTION=Configuration management tool
+LICENSE=BSD-2
+IUSE=doc cheetah genshi server python_targets_python2_7
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SRC_URI=ftp://ftp.mcs.anl.gov/pub/bcfg/bcfg2-1.2.4.tar.gz
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-solaris
+HOMEPAGE=http://bcfg2.org
+RDEPEND=app-portage/gentoolkit[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] cheetah? ( dev-python/cheetah[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) genshi? ( dev-python/genshi[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) server? ( dev-libs/libgamin[python,python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/lxml[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/nose[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] virtual/fam ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[ssl] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]

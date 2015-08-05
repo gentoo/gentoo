@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	flag-o-matic	c9602887773166fe300444712fc7ff98	versionator	cd0bcdb170807e4a1984115e9d53a26f	multilib	62927b3db3a589b0806255f3a002d5d3	python-r1	d9c8348f26710ea523a385c2328cf027	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multiprocessing	d7f2985a2c76c365ee20269db5261414	eutils	9fb270e417e0e83d64ca52586c4a79de	python-utils-r1	295a286ec27cab6af76b3b75ba07a3a
+_md5_=730a615c0c5565bfdedefa0de9ee6a3c
+SLOT=0/1.52
+DEFINED_PHASES=compile configure install preinst prepare setup test
+EAPI=5
+DEPEND=icu? ( >=dev-libs/icu-3.6:= ) !icu? ( virtual/libiconv ) mpi? ( virtual/mpi[cxx,threads] ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-)] ) app-arch/bzip2 sys-libs/zlib !app-admin/eselect-boost =dev-util/boost-build-1.52.0*
+DESCRIPTION=Boost Libraries for C++
+LICENSE=Boost-1.0
+IUSE=debug doc icu +nls mpi python static-libs +threads tools python_targets_python2_7 python_targets_python3_3
+REQUIRED_USE=mpi? ( threads )
+SRC_URI=mirror://sourceforge/boost/boost_1_52_0.tar.bz2
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd
+HOMEPAGE=http://www.boost.org/
+RDEPEND=icu? ( >=dev-libs/icu-3.6:= ) !icu? ( virtual/libiconv ) mpi? ( virtual/mpi[cxx,threads] ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-)] ) app-arch/bzip2 sys-libs/zlib !app-admin/eselect-boost

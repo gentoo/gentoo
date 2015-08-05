@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	python-any-r1	4756de53ea4d40471a582e898815a5c8	versionator	cd0bcdb170807e4a1984115e9d53a26f	multilib	62927b3db3a589b0806255f3a002d5d3	kernel-2	adcd0a7bbb205c648e9cde3dd32126dc	eutils	9fb270e417e0e83d64ca52586c4a79de	python-utils-r1	295a286ec27cab6af76b3b75ba07a3a
+_md5_=9b1ad323658905d30dbcb82e7410109
+SLOT=3.10.80
+DEFINED_PHASES=compile install postinst postrm preinst setup test unpack
+EAPI=5
+DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
+DESCRIPTION=TuxOnIce + Gentoo patchset sources
+LICENSE=GPL-2 freedist
+IUSE=experimental symlink build
+RESTRICT=binchecks strip
+SRC_URI=mirror://kernel/linux/kernel/v3.x/linux-3.10.tar.xz mirror://gentoo/genpatches-3.10-86.base.tar.xz mirror://gentoo/genpatches-3.10-86.extras.tar.xz experimental? ( mirror://gentoo/genpatches-3.10-86.experimental.tar.xz ) http://tuxonice.nigelcunningham.com.au/downloads/all/tuxonice-for-linux-3.10.79-2015-06-04.patch.bz2
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://dev.gentoo.org/~mpagano/genpatches/ http://tuxonice.nigelcunningham.com.au/ https://github.com/NigelCunningham/tuxonice-kernel
+RDEPEND=>=sys-apps/tuxonice-userui-1.0 || ( >=sys-power/hibernate-script-2.0 sys-power/pm-utils ) !build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )

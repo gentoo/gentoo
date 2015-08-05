@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	python-any-r1	4756de53ea4d40471a582e898815a5c8	multilib	62927b3db3a589b0806255f3a002d5d3	waf-utils	f8e7e7df15097b4ca1d9945c2653b783	multiprocessing	d7f2985a2c76c365ee20269db5261414	eutils	9fb270e417e0e83d64ca52586c4a79de	python-utils-r1	295a286ec27cab6af76b3b75ba07a3a
+_md5_=7575a58014f04ad131d9fdf01b2c1b5
+SLOT=0
+DEFINED_PHASES=compile configure install prepare setup
+EAPI=5
+DEPEND=>=dev-libs/redland-1.0.6 jack? ( >=media-sound/jack-audio-connection-kit-0.107.0 ) || ( media-libs/lv2 media-libs/lv2core ) || ( >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) virtual/pkgconfig doc? ( app-doc/doxygen ) dev-lang/python !dev-lang/python[-threads]
+DESCRIPTION=A library to make the use of LV2 plugins as simple as possible for applications
+LICENSE=GPL-2
+IUSE=doc jack
+SRC_URI=http://download.drobilla.net/slv2-0.6.6.tar.bz2
+KEYWORDS=~amd64 ~ppc ~x86
+HOMEPAGE=http://wiki.drobilla.net/SLV2
+RDEPEND=>=dev-libs/redland-1.0.6 jack? ( >=media-sound/jack-audio-connection-kit-0.107.0 ) || ( media-libs/lv2 media-libs/lv2core )

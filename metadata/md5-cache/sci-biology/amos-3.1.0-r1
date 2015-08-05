@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	multilib	62927b3db3a589b0806255f3a002d5d3	python-r1	d9c8348f26710ea523a385c2328cf027	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	eutils	9fb270e417e0e83d64ca52586c4a79de	python-utils-r1	295a286ec27cab6af76b3b75ba07a3a
+_md5_=fa0faba1a9377eb8560fd30695684e63
+SLOT=0
+DEFINED_PHASES=install prepare
+EAPI=5
+DEPEND=qt4? ( dev-qt/qtcore:4 )
+DESCRIPTION=A Modular, Open-Source whole genome assembler
+LICENSE=Artistic
+IUSE=qt4 python_targets_python2_7
+SRC_URI=mirror://sourceforge/amos/amos-3.1.0.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://amos.sourceforge.net/
+RDEPEND=qt4? ( dev-qt/qtcore:4 ) dev-perl/DBI dev-perl/Statistics-Descriptive sci-biology/mummer

@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	git-r3	727a612b4c6247766904e3f74a326e2b	versionator	cd0bcdb170807e4a1984115e9d53a26f	multilib	62927b3db3a589b0806255f3a002d5d3	subversion	c12bdf4fcc82f86ad89b14c8f76c4026	kernel-2	adcd0a7bbb205c648e9cde3dd32126dc	python-any-r1	4756de53ea4d40471a582e898815a5c8	eutils	9fb270e417e0e83d64ca52586c4a79de	python-utils-r1	295a286ec27cab6af76b3b75ba07a3a
+_md5_=58a248dc27e079d12418dfecd4aa32cb
+SLOT=3.4.9999
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup test unpack
+EAPI=5
+DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Full sources including the Gentoo patchset for the 3.4 kernel tree
+LICENSE=GPL-2 freedist
+IUSE=deblob experimental symlink build
+RESTRICT=binchecks strip
+SRC_URI=https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.4.tar.xz
+HOMEPAGE=http://dev.gentoo.org/~mpagano/genpatches
+RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )

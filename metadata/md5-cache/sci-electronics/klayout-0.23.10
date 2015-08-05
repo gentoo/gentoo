@@ -1,0 +1,14 @@
+_eclasses_=ruby-ng	a1c75617b3482d513ad41d1aea8dbf8f	toolchain-funcs	42408102d713fbad60ca21349865edb4	java-utils-2	240e3f28c6b42b9f36d3c36b8b27fbb2	versionator	cd0bcdb170807e4a1984115e9d53a26f	multilib	62927b3db3a589b0806255f3a002d5d3	ruby-utils	a74e21a353442acf697b6c82e7df6df8	eutils	9fb270e417e0e83d64ca52586c4a79de
+_md5_=755bb921c85fad7d812fda7e21e0b3f4
+SLOT=0
+DEFINED_PHASES=compile configure install prepare setup test unpack
+EAPI=5
+DEPEND=dev-qt/qtgui:4[qt3support] ruby_targets_ruby20? ( dev-lang/ruby:2.0 ) ruby_targets_ruby20? ( dev-lang/ruby:2.0 )
+DESCRIPTION=Viewer and editor for GDS and OASIS integrated circuit layouts
+LICENSE=GPL-2
+IUSE=elibc_FreeBSD ruby_targets_ruby20
+REQUIRED_USE=|| ( ruby_targets_ruby20 )
+SRC_URI=http://178.77.72.242/downloads/klayout-0.23.10.tar.gz
+KEYWORDS=amd64 x86
+HOMEPAGE=http://www.klayout.de/
+RDEPEND=dev-qt/qtgui:4[qt3support] ruby_targets_ruby20? ( dev-lang/ruby:2.0 ) ruby_targets_ruby20? ( dev-lang/ruby:2.0 )

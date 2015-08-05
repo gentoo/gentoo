@@ -1,6 +1,10 @@
 # ChangeLog for dev-util/codeblocks
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/codeblocks/ChangeLog,v 1.29 2014/08/10 21:26:29 slyfox Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/codeblocks/ChangeLog,v 1.30 2015/08/05 05:01:31 rhill Exp $
+
+  05 Aug 2015; Ryan Hill <rhill@gentoo.org> -codeblocks-12.11.ebuild,
+  codeblocks-13.12.ebuild:
+  berlios -> sourceforge for bug #537726.
 
   10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> codeblocks-12.11.ebuild,
   codeblocks-13.12.ebuild, codeblocks-9999.ebuild:

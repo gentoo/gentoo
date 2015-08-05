@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	multilib	62927b3db3a589b0806255f3a002d5d3	python-r1	d9c8348f26710ea523a385c2328cf027	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	eutils	9fb270e417e0e83d64ca52586c4a79de	python-utils-r1	295a286ec27cab6af76b3b75ba07a3a
+_md5_=82118647da49d8ae69d164968fb9aba7
+SLOT=0
+DEFINED_PHASES=install postinst
+EAPI=5
+DESCRIPTION=Configurable and full featured FVWM theme, with lots of transparency and freedesktop compatible menu
+LICENSE=GPL-2
+IUSE=python_targets_python2_7
+SRC_URI=mirror://sourceforge/fvwm-crystal/fvwm-crystal-3.2.5.tar.gz
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+HOMEPAGE=http://fvwm-crystal.sourceforge.net/
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=x11-wm/fvwm-2.6.5[png] || ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] ) || ( >=x11-misc/stalonetray-0.6.2-r2 x11-misc/trayer ) || ( x11-misc/hsetroot media-gfx/feh ) sys-apps/sed sys-devel/bc virtual/awk x11-apps/xwd

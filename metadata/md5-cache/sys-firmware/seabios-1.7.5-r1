@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	python-any-r1	4756de53ea4d40471a582e898815a5c8	multilib	62927b3db3a589b0806255f3a002d5d3	eutils	9fb270e417e0e83d64ca52586c4a79de	python-utils-r1	295a286ec27cab6af76b3b75ba07a3a
+_md5_=e36daf4eb9413801251380a79f04fc0f
+SLOT=0
+DEFINED_PHASES=compile configure install prepare pretend setup unpack
+EAPI=5
+DEPEND=!binary? ( >=sys-power/iasl-20060912 || ( >=dev-lang/python-2.7.5-r2:2.7 ) )
+DESCRIPTION=Open Source implementation of a 16-bit x86 BIOS
+LICENSE=LGPL-3 GPL-3
+IUSE=+binary +seavgabios
+REQUIRED_USE=ppc? ( binary ) ppc64? ( binary )
+SRC_URI=!binary? ( http://code.coreboot.org/p/seabios/downloads/get/seabios-1.7.5.tar.gz ) binary? ( http://code.coreboot.org/p/seabios/downloads/get/bios.bin-1.7.5.gz seavgabios? ( mirror://debian/pool/main/s/seabios/seabios_1.7.5-1_all.deb ) )
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd
+HOMEPAGE=http://www.seabios.org

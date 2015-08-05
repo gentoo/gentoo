@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	python-any-r1	4756de53ea4d40471a582e898815a5c8	versionator	cd0bcdb170807e4a1984115e9d53a26f	multilib	62927b3db3a589b0806255f3a002d5d3	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	libtool	52d0e17251d04645ffaa61bfdd858944	linux-info	8cbc678e083c23e4ad546ca6509cf304	autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	python-utils-r1	295a286ec27cab6af76b3b75ba07a3a
+_md5_=fe6d3a5688333e64184bf4eaad4ecb88
+SLOT=0
+DEFINED_PHASES=compile configure install prepare setup test
+EAPI=5
+DEPEND=sys-libs/ncurses[unicode?] || ( >=dev-lang/python-2.7.5-r2:2.7 ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=interactive process viewer
+LICENSE=BSD GPL-2
+IUSE=kernel_FreeBSD kernel_linux oom openvz unicode vserver
+SRC_URI=http://hisham.hm/htop/releases/1.0.3/htop-1.0.3.tar.gz
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-linux ~x86-linux
+HOMEPAGE=http://hisham.hm/htop/
+RDEPEND=sys-libs/ncurses[unicode?]

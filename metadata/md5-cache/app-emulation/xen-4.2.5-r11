@@ -1,0 +1,15 @@
+_eclasses_=mount-boot	7784c1c862b665e1d6a3c1f47936987	toolchain-funcs	42408102d713fbad60ca21349865edb4	flag-o-matic	c9602887773166fe300444712fc7ff98	python-any-r1	4756de53ea4d40471a582e898815a5c8	multilib	62927b3db3a589b0806255f3a002d5d3	eutils	9fb270e417e0e83d64ca52586c4a79de	python-utils-r1	295a286ec27cab6af76b3b75ba07a3a
+_md5_=89d95793e2583dc6a166c9088becc71f
+SLOT=0
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare prerm pretend setup
+EAPI=5
+DEPEND=|| ( >=dev-lang/python-2.7.5-r2:2.7 ) efi? ( >=sys-devel/binutils-2.22[multitarget] ) !efi? ( >=sys-devel/binutils-2.22[-multitarget] )
+DESCRIPTION=The Xen virtual machine monitor
+LICENSE=GPL-2
+IUSE=custom-cflags debug efi flask pae xsm
+REQUIRED_USE=flask? ( xsm )
+RESTRICT=test
+PDEPEND=~app-emulation/xen-tools-4.2.5
+SRC_URI=http://bits.xensource.com/oss-xen/release/4.2.5/xen-4.2.5.tar.gz http://dev.gentoo.org/~dlan/distfiles/xen-4.2.5-upstream-patches-9.tar.xz http://dev.gentoo.org/~dlan/distfiles/xen-security-patches-3.tar.xz
+KEYWORDS=amd64 x86
+HOMEPAGE=http://xen.org/

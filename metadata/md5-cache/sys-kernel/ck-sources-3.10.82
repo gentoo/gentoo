@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	python-any-r1	4756de53ea4d40471a582e898815a5c8	versionator	cd0bcdb170807e4a1984115e9d53a26f	multilib	62927b3db3a589b0806255f3a002d5d3	kernel-2	adcd0a7bbb205c648e9cde3dd32126dc	eutils	9fb270e417e0e83d64ca52586c4a79de	python-utils-r1	295a286ec27cab6af76b3b75ba07a3a
+_md5_=51c8ce5e0caa600e6163109ee6f08bca
+SLOT=3.10.82
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup test unpack
+EAPI=5
+DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) deblob? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) )
+DESCRIPTION=Full Linux 3.10 kernel sources with Con Kolivas' high performance patchset and Gentoo's genpatches
+LICENSE=GPL-2 !deblob? ( freedist )
+IUSE=bfsonly symlink build deblob
+RESTRICT=binchecks strip
+SRC_URI=mirror://kernel/linux/kernel/v3.x/linux-3.10.tar.xz deblob? ( http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/3.10-gnu/deblob-3.10 http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/3.10-gnu/deblob-check -> deblob-check-3.10 ) mirror://gentoo/genpatches-3.10-88.base.tar.xz mirror://gentoo/genpatches-3.10-88.extras.tar.xz mirror://gentoo/genpatches-3.10-88.experimental.tar.xz !bfsonly? ( http://dev.gentoo.org/~dlan/distfiles/patch-3.10-ck1-r1.bz2 http://ck.kolivas.org/patches/3.0/3.10/3.10-ck1/patch-3.10-ck1-r1.bz2 ) bfsonly? ( http://dev.gentoo.org/~dlan/distfiles/3.10-sched-bfs-440-r1.patch http://ck.kolivas.org/patches/3.0/3.10/3.10-ck1/patches/3.10-sched-bfs-440-r1.patch )
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.kernel.org/ http://www.gentoo.org/ http://dev.gentoo.org/~mpagano/genpatches/ http://users.on.net/~ckolivas/kernel/ http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags
+RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )
