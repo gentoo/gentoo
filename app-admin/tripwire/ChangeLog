@@ -1,6 +1,11 @@
 # ChangeLog for app-admin/tripwire
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/tripwire/ChangeLog,v 1.61 2015/06/09 08:46:18 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/tripwire/ChangeLog,v 1.62 2015/08/05 14:50:47 nimiux Exp $
+
+  05 Aug 2015; Chema Alonso <nimiux@gentoo.org> -tripwire-2.4.2.2.ebuild,
+  -tripwire-2.4.2.2-r1.ebuild, -tripwire-2.4.2.2-r2.ebuild,
+  -files/tripwire.cron, -files/twinstall.sh:
+  Drop old
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml
