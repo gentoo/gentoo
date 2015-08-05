@@ -1,6 +1,13 @@
 # ChangeLog for www-apps/wordpress
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/wordpress/ChangeLog,v 1.177 2015/07/25 16:32:22 sping Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/wordpress/ChangeLog,v 1.178 2015/08/04 23:32:04 jmbsvicetto Exp $
+
+*wordpress-4.2.4 (04 Aug 2015)
+
+  04 Aug 2015; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +wordpress-4.2.4.ebuild, -wordpress-4.2.3.ebuild:
+  Bump wordpress to 4.2.4 release and drop vulnerable versions -
+  CVE-2015-{2213,5730,5731,5732,5733,5734}.
 
   25 Jul 2015; Sebastian Pipping <sping@gentoo.org> -wordpress-3.8.5.ebuild,
   -wordpress-3.9.3.ebuild, -wordpress-4.0.1.ebuild, -wordpress-4.1.ebuild,

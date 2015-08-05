@@ -1,6 +1,11 @@
 # ChangeLog for media-libs/wxsvg
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/wxsvg/ChangeLog,v 1.48 2014/07/29 17:21:30 ssuominen Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/wxsvg/ChangeLog,v 1.49 2015/08/04 23:35:59 rhill Exp $
+
+*wxsvg-1.5.4 (04 Aug 2015)
+
+  04 Aug 2015; Ryan Hill <rhill@gentoo.org> +wxsvg-1.5.4.ebuild:
+  Version bump. Fixes bug #526490 (fails to build with libav-11).
 
   29 Jul 2014; Samuli Suominen <ssuominen@gentoo.org> -wxsvg-1.1.15.ebuild,
   -wxsvg-1.2.1.ebuild:

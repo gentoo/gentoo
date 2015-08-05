@@ -1,6 +1,16 @@
 # ChangeLog for media-plugins/audacious-plugins
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/audacious-plugins/ChangeLog,v 1.281 2015/01/29 18:15:52 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/audacious-plugins/ChangeLog,v 1.282 2015/08/04 23:32:58 chainsaw Exp $
+
+*audacious-plugins-3.6.2 (04 Aug 2015)
+
+  04 Aug 2015; Tony Vroon <chainsaw@gentoo.org>
+  +audacious-plugins-3.6.2.ebuild:
+  Version bump, as requested by Joe Kappus in bug #538414. Implement
+  REQUIRED_USE restrictions as pointed out by Diego Elio Pettenò in bug
+  #526182. Drop compatibility USE-flag midi triggering fluidsynth due to errors
+  as flagged up by Teodor Petrov in bug #518938. Make neon dependency optional
+  as requested by Harvey Mittens in bug #525056.
 
   29 Jan 2015; Michał Górny <mgorny@gentoo.org>
   audacious-plugins-2.4.4-r1.ebuild, audacious-plugins-2.5.4.ebuild:

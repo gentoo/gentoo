@@ -1,14 +1,14 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/wordpress/wordpress-4.2.3.ebuild,v 1.1 2015/07/25 02:33:22 jmbsvicetto Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/wordpress/wordpress-4.2.4.ebuild,v 1.1 2015/08/04 23:32:04 jmbsvicetto Exp $
 
 EAPI=5
 
 inherit webapp
 
 DESCRIPTION="Wordpress PHP and MySQL based content management system (CMS)"
-HOMEPAGE="http://wordpress.org/"
-SRC_URI="http://wordpress.org/${P/_rc/-RC}.tar.gz"
+HOMEPAGE="https://wordpress.org/"
+SRC_URI="https://wordpress.org/${P/_rc/-RC}.tar.gz"
 
 LICENSE="GPL-2+"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"

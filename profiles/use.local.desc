@@ -3983,6 +3983,7 @@ media-plugins/audacious-plugins:bs2b - Enable Bauer Bauer stereophonic-to-binaur
 media-plugins/audacious-plugins:cue - Support CUE sheets using the libcue library
 media-plugins/audacious-plugins:fluidsynth - Support FluidSynth as MIDI synth backend
 media-plugins/audacious-plugins:gtk3 - Link against version 3 of the GIMP Toolkit instead of version 2 (x11-libs/gtk+)
+media-plugins/audacious-plugins:http - Support HTTP streams through neon
 media-plugins/audacious-plugins:midi - Build with amidi-plug (MIDI synth) support
 media-plugins/audacious-plugins:scrobbler - Build with scrobbler/LastFM submission support
 media-plugins/audacious-plugins:sid - Build with SID (Commodore 64 Audio) support

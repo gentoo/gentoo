@@ -13,6 +13,7 @@
 		headphone filter</flag>
 	<flag name='cue'>Support CUE sheets using the libcue library</flag>
 	<flag name='fluidsynth'>Support FluidSynth as MIDI synth backend</flag>
+	<flag name='http'>Support HTTP streams through neon</flag>
 	<flag name="gtk3">Link against version 3 of the GIMP Toolkit instead of version 2 (x11-libs/gtk+)</flag>
 	<flag name='midi'>Build with amidi-plug (MIDI synth) support</flag>
 	<flag name='scrobbler'>Build with scrobbler/LastFM submission support</flag>
