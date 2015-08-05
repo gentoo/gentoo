@@ -6,4 +6,4 @@ HOMEPAGE=https://github.com/davecgh/go-spew
 LICENSE=ISC
 SLOT=0/9999
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	golang-base	b27bb70124fa06118fd307e9f8df50b9	golang-build	347dcb77455fa2a3c30668a127d9b4dc	golang-vcs	616e88d5c2fef1e6db0ea78912c863bf	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=c0465ee11ae7741938001f914e430258
+_md5_=af18ddb1a1291e998f618d2e5425b4ba

@@ -1,6 +1,11 @@
 # ChangeLog for x11-misc/xbatt
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xbatt/ChangeLog,v 1.15 2013/02/02 18:19:30 ulm Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xbatt/ChangeLog,v 1.16 2015/08/05 18:02:52 sping Exp $
+
+*xbatt-1.3_rc1 (05 Aug 2015)
+
+  05 Aug 2015; Sebastian Pipping <sping@gentoo.org> +xbatt-1.3_rc1.ebuild:
+  Bump to 1.3_rc1 (bug #556682)
 
   02 Feb 2013; Ulrich Müller <ulm@gentoo.org> xbatt-1.2.1-r1.ebuild:
   Fix LICENSE, see COPYRIGHT file, bug 452966.

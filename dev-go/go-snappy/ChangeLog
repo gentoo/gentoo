@@ -1,6 +1,9 @@
 # ChangeLog for dev-go/go-snappy
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-go/go-snappy/ChangeLog,v 1.2 2015/07/30 10:15:41 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-go/go-snappy/ChangeLog,v 1.3 2015/08/05 17:37:22 williamh Exp $
+
+  05 Aug 2015; William Hubbs <williamh@gentoo.org> go-snappy-9999.ebuild:
+  add support for golang-vcs-snapshot to live ebuild
 
   30 Jul 2015; Patrick Lauer <patrick@gentoo.org>
   go-snappy-0_pre20150729.ebuild, go-snappy-9999.ebuild:
