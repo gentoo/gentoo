@@ -1,6 +1,10 @@
-# ChangeLog for dev-java/biojava
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/biojava/ChangeLog,v 1.1 2015/08/05 14:02:36 monsieurp Exp $
+# ChangeLog for sci-biology/biojava
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/biojava/ChangeLog,v 1.2 2015/08/05 21:01:52 monsieurp Exp $
+
+  05 Aug 2015; Patrice Clement <monsieurp@gentoo.org> biojava-1.6.ebuild,
+  biojava-1.7.ebuild:
+  Fix year of copyright and silence QA warning.
 
   24 May 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
   Cleanup due #199047

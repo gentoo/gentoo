@@ -1,6 +1,9 @@
 # ChangeLog for dev-go/sarama
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-go/sarama/ChangeLog,v 1.1 2015/07/30 21:17:18 zmedico Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-go/sarama/ChangeLog,v 1.2 2015/08/05 20:42:47 williamh Exp $
+
+  05 Aug 2015; William Hubbs <williamh@gentoo.org> sarama-9999.ebuild:
+  add golang-vcs-snapshot support to the live ebuild
 
 *sarama-9999 (30 Jul 2015)
 *sarama-1.4.3 (30 Jul 2015)

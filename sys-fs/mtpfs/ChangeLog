@@ -1,6 +1,13 @@
 # ChangeLog for sys-fs/mtpfs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/mtpfs/ChangeLog,v 1.12 2015/05/30 22:33:27 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/mtpfs/ChangeLog,v 1.13 2015/08/05 21:01:09 slyfox Exp $
+
+*mtpfs-1.1-r2 (05 Aug 2015)
+
+  05 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  +files/mtpfs-1.1-unitialized-variable.patch, +mtpfs-1.1-r2.ebuild:
+  Fix crash due to use uinitialised device ID, bug #556690 and fix by LE GARREC
+  Vincent.
 
 *mtpfs-1.1-r1 (30 May 2015)
 

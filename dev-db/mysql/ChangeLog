@@ -1,6 +1,9 @@
 # ChangeLog for dev-db/mysql
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql/ChangeLog,v 1.748 2015/08/05 14:20:40 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql/ChangeLog,v 1.749 2015/08/05 21:29:31 klausman Exp $
+
+  05 Aug 2015; Tobias Klausmann <klausman@gentoo.org> mysql-5.6.26.ebuild:
+  Stable on alpha, bug 555478
 
   05 Aug 2015; Mikle Kolyada <zlogene@gentoo.org> mysql-5.6.26.ebuild:
   ia64 stable wrt bug #555478

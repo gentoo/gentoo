@@ -1,6 +1,9 @@
 # ChangeLog for sys-cluster/ganglia
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/ganglia/ChangeLog,v 1.66 2015/08/05 14:27:13 jsbronder Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/ganglia/ChangeLog,v 1.67 2015/08/05 20:48:05 jsbronder Exp $
+
+  05 Aug 2015; Justin Bronder <jsbronder@gentoo.org> ganglia-3.7.1-r1.ebuild:
+  Run python_setup when python is enabled per mgorny
 
 *ganglia-3.7.1-r1 (05 Aug 2015)
 

@@ -1,6 +1,9 @@
 # ChangeLog for dev-go/go-tools
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-go/go-tools/ChangeLog,v 1.13 2015/07/06 23:34:44 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-go/go-tools/ChangeLog,v 1.14 2015/08/05 20:38:06 williamh Exp $
+
+  05 Aug 2015; William Hubbs <williamh@gentoo.org> go-tools-9999.ebuild:
+  add golang-vcs-snapshot support to the live ebuild
 
   06 Jul 2015; William Hubbs <williamh@gentoo.org> go-tools-9999.ebuild:
   add slot dependency on go-net
