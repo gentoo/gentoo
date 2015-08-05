@@ -1,6 +1,9 @@
 # ChangeLog for app-emulation/qemu
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu/ChangeLog,v 1.345 2015/08/04 08:19:33 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu/ChangeLog,v 1.346 2015/08/05 06:27:13 vapier Exp $
+
+  05 Aug 2015; Mike Frysinger <vapier@gentoo.org> qemu-9999.ebuild:
+  Unify target logic a bit.
 
   04 Aug 2015; Agostino Sarubbo <ago@gentoo.org> qemu-2.3.0-r5.ebuild:
   Stable for x86, wrt bug #556630

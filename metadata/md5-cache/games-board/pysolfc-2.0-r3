@@ -1,14 +1,14 @@
-_eclasses_=toolchain-funcs	42408102d713fbad60ca21349865edb4	distutils-r1	715b22a21726d3fd76b17e007c5daf5f	multilib	62927b3db3a589b0806255f3a002d5d3	base	87f7447ccfc06fd0729ff4684e11e0d6	games	1ad3205dbf62a2c98249f2f59b0a2d39	user	f54e098dd38ba1c0847a13e685b87747	python-single-r1	351da1aa73960a282591217fb57c1bb8	eutils	9fb270e417e0e83d64ca52586c4a79de	python-utils-r1	295a286ec27cab6af76b3b75ba07a3a
-_md5_=352a738b6793ee01ea7f1509f5b192bc
-SLOT=0
 DEFINED_PHASES=compile configure install postinst preinst prepare setup test unpack
-EAPI=5
 DEPEND=>=dev-lang/python-2.7.5-r2:2.7[tk] >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)]
 DESCRIPTION=An exciting collection of more than 1000 solitaire card games
-LICENSE=GPL-3
-IUSE=extra-cardsets minimal +sound python_targets_python2_7
-REQUIRED_USE=python_targets_python2_7
-SRC_URI=mirror://sourceforge/pysolfc/PySolFC-2.0.tar.bz2 extra-cardsets? ( mirror://sourceforge/pysolfc/PySolFC-Cardsets-2.0.tar.bz2 )
-KEYWORDS=amd64 x86
+EAPI=5
 HOMEPAGE=http://pysolfc.sourceforge.net/
+IUSE=extra-cardsets minimal +sound python_targets_python2_7
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
 RDEPEND=sound? ( dev-python/pygame[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] ) !minimal? ( dev-python/pillow[tk,python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] dev-tcltk/tktable ) >=dev-lang/python-2.7.5-r2:2.7[tk] >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] games-misc/games-envd
+REQUIRED_USE=python_targets_python2_7
+SLOT=0
+SRC_URI=mirror://sourceforge/pysolfc/PySolFC-2.0.tar.bz2 extra-cardsets? ( mirror://sourceforge/pysolfc/PySolFC-Cardsets-2.0.tar.bz2 )
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	distutils-r1	715b22a21726d3fd76b17e007c5daf5f	eutils	9fb270e417e0e83d64ca52586c4a79de	games	1ad3205dbf62a2c98249f2f59b0a2d39	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	351da1aa73960a282591217fb57c1bb8	python-utils-r1	0295a286ec27cab6af76b3b75ba07a3a	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=352a738b6793ee01ea7f1509f5b192bc

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/utmp/utmp-0.4.ebuild,v 1.1 2015/06/19 08:02:01 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/utmp/utmp-0.4.ebuild,v 1.2 2015/08/05 06:04:43 jlec Exp $
 
 EAPI=5
 
@@ -17,7 +17,9 @@ LICENSE="Apache-2.0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
-RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
+RDEPEND="
+	dev-python/six[${PYTHON_USEDEP}]
+	!sys-apps/utempter"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 

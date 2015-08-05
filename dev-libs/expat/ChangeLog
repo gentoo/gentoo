@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/expat
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/expat/ChangeLog,v 1.181 2015/08/04 10:39:30 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/expat/ChangeLog,v 1.182 2015/08/05 05:49:06 jer Exp $
+
+  05 Aug 2015; Jeroen Roovers <jer@gentoo.org> expat-2.1.0-r5.ebuild:
+  Stable for HPPA PPC64 (bug #555642).
 
   04 Aug 2015; Mike Frysinger <vapier@gentoo.org> expat-2.1.0-r5.ebuild:
   Mark arm64/m68k/s390/sh stable.

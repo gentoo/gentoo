@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu/qemu-9999.ebuild,v 1.103 2015/07/25 19:30:13 cardoe Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu/qemu-9999.ebuild,v 1.104 2015/08/05 06:27:13 vapier Exp $
 
 EAPI=5
 
@@ -294,8 +294,10 @@ qemu_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	local buildtype=$1
-	local builddir=$2
+	local builddir="${S}/${buildtype}-build"
 	local static_flag="static-${buildtype}"
+
+	mkdir "${builddir}"
 
 	# audio options
 	local audio_opts="oss"
@@ -378,7 +380,6 @@ qemu_src_configure() {
 		conf_opts+=(
 			--enable-linux-user
 			--disable-system
-			--target-list="${user_targets}"
 			--disable-blobs
 			--disable-tools
 		)
@@ -387,7 +388,6 @@ qemu_src_configure() {
 		conf_opts+=(
 			--disable-linux-user
 			--enable-system
-			--target-list="${softmmu_targets}"
 			--with-system-pixman
 			--audio-drv-list="${audio_opts}"
 		)
@@ -395,6 +395,9 @@ qemu_src_configure() {
 		use sdl && conf_opts+=( --with-sdlabi=$(usex sdl2 2.0 1.2) )
 		;;
 	esac
+
+	local targets="${buildtype}_targets"
+	conf_opts+=( --target-list="${!targets}" )
 
 	# Add support for SystemTAP
 	use systemtap && conf_opts+=( --enable-trace-backend=dtrace )
@@ -408,7 +411,7 @@ qemu_src_configure() {
 		gcc-specs-pie && conf_opts+=( --enable-pie )
 	fi
 
-	einfo "../configure ${conf_opts[*]}"
+	echo "../configure ${conf_opts[*]}"
 	cd "${builddir}"
 	../configure "${conf_opts[@]}" || die "configure failed"
 
@@ -440,21 +443,11 @@ src_configure() {
 		fi
 	done
 
-	[[ -n ${softmmu_targets} ]] && \
-		einfo "Building the following softmmu targets: ${softmmu_targets}"
+	softmmu_targets=${softmmu_targets#,}
+	user_targets=${user_targets#,}
 
-	[[ -n ${user_targets} ]] && \
-		einfo "Building the following user targets: ${user_targets}"
-
-	if [[ -n ${softmmu_targets} ]]; then
-		mkdir "${S}/softmmu-build"
-		qemu_src_configure "softmmu" "${S}/softmmu-build"
-	fi
-
-	if [[ -n ${user_targets} ]]; then
-		mkdir "${S}/user-build"
-		qemu_src_configure "user" "${S}/user-build"
-	fi
+	[[ -n ${softmmu_targets} ]] && qemu_src_configure "softmmu"
+	[[ -n ${user_targets}    ]] && qemu_src_configure "user"
 }
 
 src_compile() {

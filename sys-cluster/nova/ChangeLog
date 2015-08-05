@@ -1,6 +1,9 @@
 # ChangeLog for sys-cluster/nova
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/nova/ChangeLog,v 1.106 2015/08/05 02:30:37 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/nova/ChangeLog,v 1.107 2015/08/05 05:43:06 patrick Exp $
+
+  05 Aug 2015; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Remove unneeded useflag description from metadata.xml
 
   05 Aug 2015; Matthew Thode <prometheanfire@gentoo.org> -nova-2014.2.3.ebuild,
   -nova-2014.2.9999.ebuild:

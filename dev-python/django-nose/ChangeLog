@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/django-nose
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/django-nose/ChangeLog,v 1.13 2015/07/28 05:28:25 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/django-nose/ChangeLog,v 1.14 2015/08/05 05:32:16 idella4 Exp $
+
+*django-nose-1.4.1 (05 Aug 2015)
+
+  05 Aug 2015; Ian Delaney <idella4@gentoo.org> +django-nose-1.4.1.ebuild:
+  bump; testsuite currently unworkable, test phase left restricted
 
   28 Jul 2015; Patrick Lauer <patrick@gentoo.org> django-nose-1.3.ebuild,
   django-nose-1.4.ebuild:

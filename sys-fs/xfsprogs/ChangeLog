@@ -1,6 +1,9 @@
 # ChangeLog for sys-fs/xfsprogs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/xfsprogs/ChangeLog,v 1.191 2015/07/31 15:28:13 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/xfsprogs/ChangeLog,v 1.192 2015/08/05 06:02:56 jer Exp $
+
+  05 Aug 2015; Jeroen Roovers <jer@gentoo.org> xfsprogs-3.2.4.ebuild:
+  Stable for HPPA PPC64 (bug #556318).
 
   31 Jul 2015; Tobias Klausmann <klausman@gentoo.org> xfsprogs-3.2.4.ebuild:
   Stable on alpha, bug 556318
