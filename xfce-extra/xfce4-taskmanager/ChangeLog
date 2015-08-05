@@ -1,6 +1,9 @@
 # ChangeLog for xfce-extra/xfce4-taskmanager
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-taskmanager/ChangeLog,v 1.84 2015/07/25 12:21:14 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-taskmanager/ChangeLog,v 1.85 2015/08/05 10:47:49 perfinion Exp $
+
+  05 Aug 2015; Jason Zaman <perfinion@gentoo.org> metadata.xml:
+  Replace herd with xfce@g.o
 
   25 Jul 2015; Pacho Ramos <pacho@gentoo.org> xfce4-taskmanager-1.1.0.ebuild:
   ppc stable wrt bug #553500

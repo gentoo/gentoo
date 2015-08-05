@@ -1,6 +1,9 @@
 # ChangeLog for www-client/midori
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/midori/ChangeLog,v 1.135 2015/07/04 14:09:02 perfinion Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/midori/ChangeLog,v 1.136 2015/08/05 11:02:47 perfinion Exp $
+
+  05 Aug 2015; Jason Zaman <perfinion@gentoo.org> metadata.xml:
+  Replace herd with xfce@g.o
 
   04 Jul 2015; Jason Zaman <perfinion@gentoo.org> midori-0.5.10.ebuild:
   fix bug 553562, add gcr[gtk] to deps

@@ -1,6 +1,9 @@
 # ChangeLog for x11-themes/gtk-engines-xfce
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/gtk-engines-xfce/ChangeLog,v 1.190 2015/07/25 11:49:03 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/gtk-engines-xfce/ChangeLog,v 1.191 2015/08/05 11:01:33 perfinion Exp $
+
+  05 Aug 2015; Jason Zaman <perfinion@gentoo.org> metadata.xml:
+  Replace herd with xfce@g.o
 
   25 Jul 2015; Pacho Ramos <pacho@gentoo.org>
   gtk-engines-xfce-3.2.0-r200.ebuild, gtk-engines-xfce-3.2.0-r300.ebuild:

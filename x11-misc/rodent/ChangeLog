@@ -1,6 +1,9 @@
 # ChangeLog for x11-misc/rodent
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/rodent/ChangeLog,v 1.16 2013/05/05 17:22:39 ssuominen Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/rodent/ChangeLog,v 1.17 2015/08/05 11:21:17 perfinion Exp $
+
+  05 Aug 2015; Jason Zaman <perfinion@gentoo.org> metadata.xml:
+  Replace herd with xfce@g.o
 
   05 May 2013; Samuli Suominen <ssuominen@gentoo.org> -rodent-4.8.0.ebuild:
   old

@@ -1,6 +1,9 @@
 # ChangeLog for xfce-extra/thunar-archive-plugin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/thunar-archive-plugin/ChangeLog,v 1.38 2015/07/25 12:19:35 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/thunar-archive-plugin/ChangeLog,v 1.39 2015/08/05 10:47:47 perfinion Exp $
+
+  05 Aug 2015; Jason Zaman <perfinion@gentoo.org> metadata.xml:
+  Replace herd with xfce@g.o
 
   25 Jul 2015; Pacho Ramos <pacho@gentoo.org>
   thunar-archive-plugin-0.3.1-r1.ebuild:

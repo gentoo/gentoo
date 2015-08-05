@@ -1,6 +1,9 @@
 # ChangeLog for xfce-extra/xfce4-verve-plugin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-verve-plugin/ChangeLog,v 1.25 2015/07/25 12:21:40 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-verve-plugin/ChangeLog,v 1.26 2015/08/05 10:47:47 perfinion Exp $
+
+  05 Aug 2015; Jason Zaman <perfinion@gentoo.org> metadata.xml:
+  Replace herd with xfce@g.o
 
   25 Jul 2015; Pacho Ramos <pacho@gentoo.org> xfce4-verve-plugin-1.0.1.ebuild:
   ppc stable wrt bug #553500

@@ -1,11 +1,11 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/bleachbit/bleachbit-0.9.6.ebuild,v 1.3 2013/09/05 13:10:17 pinkbyte Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/bleachbit/bleachbit-1.9.1.ebuild,v 1.1 2015/08/05 10:36:07 polynomial-c Exp $
 
 EAPI=5
 
-PLOCALES="ar ast be bg bn bs ca cs da de el en_AU en_GB eo es et eu fa fi fo fr gl he hi hr hu hy ia id it ja ko ku ky lt ms
-my nb nds nl pl pt_BR pt ro ru se si sk sl sr sv ta te th tr ug uk uz vi zh_CN zh_TW"
+PLOCALES="ar ast be bg bn bs ca cs da de el en_AU en_GB eo es et eu fa fi fo fr gl he hi hr hu hy ia id it ja ko ku ky lt lv
+ms my nb nds nl nn pl pt_BR pt ro ru se si sk sl sr sv ta te th tr ug uk uz vi zh_CN zh_TW"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
 
@@ -17,14 +17,14 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE="nls"
+KEYWORDS="~amd64 ~x86"
+IUSE="+gtk nls"
 
-RDEPEND="dev-python/pygtk:2[$PYTHON_USEDEP]"
+RDEPEND="gtk? ( dev-python/pygtk:2[$PYTHON_USEDEP] )"
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 
-DOCS=( README )
+DOCS=( README.md )
 
 python_prepare_all() {
 	rem_locale() {
@@ -34,7 +34,7 @@ python_prepare_all() {
 	l10n_find_plocales_changes po "" ".po"
 	l10n_for_each_disabled_locale_do rem_locale
 
-	addpredict /root/.gnome2 #401981
+	#addpredict /root/.gnome2 #401981
 
 	# warning: key "Encoding" in group "Desktop Entry" is deprecated
 	sed -i -e '/Encoding/d' ${PN}.desktop || die

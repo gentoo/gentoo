@@ -1,6 +1,9 @@
 # ChangeLog for xfce-extra/xfce4-netspeed-plugin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-netspeed-plugin/ChangeLog,v 1.15 2015/07/01 16:55:01 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-netspeed-plugin/ChangeLog,v 1.16 2015/08/05 11:18:40 perfinion Exp $
+
+  05 Aug 2015; Jason Zaman <perfinion@gentoo.org> metadata.xml:
+  Replace herd with xfce@g.o
 
   01 Jul 2015; Mikle Kolyada <zlogene@gentoo.org>
   xfce4-netspeed-plugin-0.3.1.ebuild:

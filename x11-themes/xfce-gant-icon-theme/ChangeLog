@@ -1,6 +1,9 @@
 # ChangeLog for x11-themes/xfce-gant-icon-theme
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/xfce-gant-icon-theme/ChangeLog,v 1.3 2010/11/07 17:42:02 ssuominen Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/xfce-gant-icon-theme/ChangeLog,v 1.4 2015/08/05 11:00:34 perfinion Exp $
+
+  05 Aug 2015; Jason Zaman <perfinion@gentoo.org> metadata.xml:
+  Replace herd with xfce@g.o
 
   07 Nov 2010; Samuli Suominen <ssuominen@gentoo.org>
   xfce-gant-icon-theme-3.9_p6.ebuild:
@@ -15,4 +18,3 @@
   02 Sep 2009; Samuli Suominen <ssuominen@gentoo.org>
   +xfce-gant-icon-theme-3.9_p6.ebuild:
   Initial commit wrt #207015, thanks to Jakub Moc for reporting.
-

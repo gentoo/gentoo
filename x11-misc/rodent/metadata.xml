@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>xfce</herd>
+	<maintainer>
+		<email>xfce@gentoo.org</email>
+		<name>XFCE Team</name>
+	</maintainer>
 	<longdescription lang="en">Rodent is fast, small and powerful file manager for the GNU operating system (but it also works in BSD). Rodent is *not* a filemanager for dummies. Emphasis is on ease of use for the advanced user, not the computer illiterate.</longdescription>
 	<use>
 		<flag name="experimental">Build experimental plugins (obexfs, curlftpfs, ecryptfs, cifs and samba)</flag>

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>xfce</herd>
+  <maintainer>
+    <email>xfce@gentoo.org</email>
+    <name>XFCE Team</name>
+  </maintainer>
   <use>
     <flag name="glyr">Enable music metadata searchengine support using <pkg>media-libs/glyr</pkg></flag>
     <flag name="grilo">Play songs on DLNA servers using <pkg>media-libs/grilo</pkg></flag>

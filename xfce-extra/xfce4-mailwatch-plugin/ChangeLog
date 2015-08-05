@@ -1,6 +1,9 @@
 # ChangeLog for xfce-extra/xfce4-mailwatch-plugin
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-mailwatch-plugin/ChangeLog,v 1.21 2014/04/11 15:56:06 ssuominen Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-mailwatch-plugin/ChangeLog,v 1.22 2015/08/05 10:47:49 perfinion Exp $
+
+  05 Aug 2015; Jason Zaman <perfinion@gentoo.org> metadata.xml:
+  Replace herd with xfce@g.o
 
   11 Apr 2014; Samuli Suominen <ssuominen@gentoo.org>
   -files/xfce4-mailwatch-plugin-1.1.0-gnutls-3.patch,

@@ -6,6 +6,6 @@
 		<name>Michael Weber</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">oyranos</remote-id>
+		<remote-id type="github">oyranos-cms/icc-examin</remote-id>
 	</upstream>
 </pkgmetadata>

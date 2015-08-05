@@ -1,6 +1,9 @@
 # ChangeLog for dev-util/xfce4-dev-tools
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/xfce4-dev-tools/ChangeLog,v 1.72 2015/07/25 11:48:53 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/xfce4-dev-tools/ChangeLog,v 1.73 2015/08/05 11:04:19 perfinion Exp $
+
+  05 Aug 2015; Jason Zaman <perfinion@gentoo.org> metadata.xml:
+  Replace herd with xfce@g.o
 
   25 Jul 2015; Pacho Ramos <pacho@gentoo.org> xfce4-dev-tools-4.12.0.ebuild:
   ppc stable wrt bug #553500

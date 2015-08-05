@@ -1,6 +1,9 @@
 # ChangeLog for xfce-extra/xfce4-soundmenu-plugin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-soundmenu-plugin/ChangeLog,v 1.27 2015/07/01 17:00:19 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-soundmenu-plugin/ChangeLog,v 1.28 2015/08/05 10:47:48 perfinion Exp $
+
+  05 Aug 2015; Jason Zaman <perfinion@gentoo.org> metadata.xml:
+  Replace herd with xfce@g.o
 
   01 Jul 2015; Mikle Kolyada <zlogene@gentoo.org>
   xfce4-soundmenu-plugin-0.7.0.ebuild:

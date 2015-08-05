@@ -1,6 +1,9 @@
 # ChangeLog for xfce-extra/xfce4-places-plugin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-places-plugin/ChangeLog,v 1.47 2015/07/11 07:09:25 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-places-plugin/ChangeLog,v 1.48 2015/08/05 10:47:46 perfinion Exp $
+
+  05 Aug 2015; Jason Zaman <perfinion@gentoo.org> metadata.xml:
+  Replace herd with xfce@g.o
 
   11 Jul 2015; Markus Meier <maekke@gentoo.org>
   xfce4-places-plugin-1.7.0.ebuild:

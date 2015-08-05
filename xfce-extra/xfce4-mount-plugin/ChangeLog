@@ -1,6 +1,9 @@
 # ChangeLog for xfce-extra/xfce4-mount-plugin
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-mount-plugin/ChangeLog,v 1.27 2014/07/27 18:02:35 ssuominen Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-mount-plugin/ChangeLog,v 1.28 2015/08/05 10:47:46 perfinion Exp $
+
+  05 Aug 2015; Jason Zaman <perfinion@gentoo.org> metadata.xml:
+  Replace herd with xfce@g.o
 
   27 Jul 2014; Samuli Suominen <ssuominen@gentoo.org>
   files/xfce4-mount-plugin-0.6.7-LINGUAS.patch:

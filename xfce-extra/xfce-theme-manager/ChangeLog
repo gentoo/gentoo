@@ -1,6 +1,9 @@
 # ChangeLog for xfce-extra/xfce-theme-manager
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce-theme-manager/ChangeLog,v 1.4 2015/07/01 08:11:47 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce-theme-manager/ChangeLog,v 1.5 2015/08/05 10:47:49 perfinion Exp $
+
+  05 Aug 2015; Jason Zaman <perfinion@gentoo.org> metadata.xml:
+  Replace herd with xfce@g.o
 
   01 Jul 2015; Mikle Kolyada <zlogene@gentoo.org>
   xfce-theme-manager-0.3.5.ebuild:

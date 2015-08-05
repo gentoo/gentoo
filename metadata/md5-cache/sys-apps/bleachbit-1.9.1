@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=gtk? ( dev-python/pygtk:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) nls? ( sys-devel/gettext ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[sqlite] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DESCRIPTION=Clean junk to free disk space and to maintain privacy
+EAPI=5
+HOMEPAGE=http://bleachbit.sourceforge.net/
+IUSE=+gtk nls python_targets_python2_7 linguas_ar linguas_ast linguas_be linguas_bg linguas_bn linguas_bs linguas_ca linguas_cs linguas_da linguas_de linguas_el linguas_en_AU linguas_en_GB linguas_eo linguas_es linguas_et linguas_eu linguas_fa linguas_fi linguas_fo linguas_fr linguas_gl linguas_he linguas_hi linguas_hr linguas_hu linguas_hy linguas_ia linguas_id linguas_it linguas_ja linguas_ko linguas_ku linguas_ky linguas_lt linguas_lv linguas_ms linguas_my linguas_nb linguas_nds linguas_nl linguas_nn linguas_pl linguas_pt_BR linguas_pt linguas_ro linguas_ru linguas_se linguas_si linguas_sk linguas_sl linguas_sr linguas_sv linguas_ta linguas_te linguas_th linguas_tr linguas_ug linguas_uk linguas_uz linguas_vi linguas_zh_CN linguas_zh_TW
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=gtk? ( dev-python/pygtk:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[sqlite] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=mirror://sourceforge/bleachbit/bleachbit-1.9.1.tar.bz2
+_eclasses_=distutils-r1	715b22a21726d3fd76b17e007c5daf5f	eutils	9fb270e417e0e83d64ca52586c4a79de	l10n	33bde4fb0cfd3a21a277b66bfd837e19	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-r1	d9c8348f26710ea523a385c2328cf027	python-utils-r1	0295a286ec27cab6af76b3b75ba07a3a	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=04eef7a1e82de2139ee162099d963d20

@@ -1,6 +1,9 @@
 # ChangeLog for xfce-extra/xfce4-whiskermenu-plugin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-whiskermenu-plugin/ChangeLog,v 1.25 2015/07/01 17:03:57 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-whiskermenu-plugin/ChangeLog,v 1.26 2015/08/05 11:19:33 perfinion Exp $
+
+  05 Aug 2015; Jason Zaman <perfinion@gentoo.org> metadata.xml:
+  Replace herd with xfce@g.o
 
   01 Jul 2015; Mikle Kolyada <zlogene@gentoo.org>
   xfce4-whiskermenu-plugin-1.5.0.ebuild:

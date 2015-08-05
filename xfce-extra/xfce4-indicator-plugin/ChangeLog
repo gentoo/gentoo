@@ -1,6 +1,9 @@
 # ChangeLog for xfce-extra/xfce4-indicator-plugin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-indicator-plugin/ChangeLog,v 1.23 2015/05/11 17:51:40 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-indicator-plugin/ChangeLog,v 1.24 2015/08/05 10:47:47 perfinion Exp $
+
+  05 Aug 2015; Jason Zaman <perfinion@gentoo.org> metadata.xml:
+  Replace herd with xfce@g.o
 
 *xfce4-indicator-plugin-2.3.3-r1 (11 May 2015)
 

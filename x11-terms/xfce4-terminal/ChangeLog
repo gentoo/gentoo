@@ -1,6 +1,9 @@
 # ChangeLog for x11-terms/xfce4-terminal
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/xfce4-terminal/ChangeLog,v 1.22 2014/07/06 16:18:03 blueness Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/xfce4-terminal/ChangeLog,v 1.23 2015/08/05 10:58:44 perfinion Exp $
+
+  05 Aug 2015; Jason Zaman <perfinion@gentoo.org> metadata.xml:
+  Replace herd with xfce@g.o
 
   06 Jul 2014; Anthony G. Basile <blueness@gentoo.org>
   xfce4-terminal-0.6.3.ebuild:

@@ -1,6 +1,9 @@
 # ChangeLog for xfce-extra/xfce4-hdaps
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-hdaps/ChangeLog,v 1.17 2012/11/28 12:25:31 ssuominen Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-hdaps/ChangeLog,v 1.18 2015/08/05 10:47:46 perfinion Exp $
+
+  05 Aug 2015; Jason Zaman <perfinion@gentoo.org> metadata.xml:
+  Replace herd with xfce@g.o
 
   28 Nov 2012; Samuli Suominen <ssuominen@gentoo.org> xfce4-hdaps-0.0.9.ebuild:
   EAPI5
@@ -65,4 +68,3 @@
   24 Mar 2010; Samuli Suominen <ssuominen@gentoo.org>
   +xfce4-hdaps-0.0.5.ebuild:
   Initial commit wrt #311145 by Michael Orlitzky.
-

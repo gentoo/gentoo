@@ -1,6 +1,9 @@
 # ChangeLog for xfce-extra/xfce4-mpc-plugin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-mpc-plugin/ChangeLog,v 1.30 2015/07/01 16:54:07 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-mpc-plugin/ChangeLog,v 1.31 2015/08/05 10:47:47 perfinion Exp $
+
+  05 Aug 2015; Jason Zaman <perfinion@gentoo.org> metadata.xml:
+  Replace herd with xfce@g.o
 
   01 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> xfce4-mpc-plugin-0.4.5.ebuild:
   amd64 stable wrt bug #553500

@@ -1,6 +1,9 @@
 # ChangeLog for app-cdr/xfburn
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/xfburn/ChangeLog,v 1.72 2015/07/11 06:34:46 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/xfburn/ChangeLog,v 1.73 2015/08/05 10:53:29 perfinion Exp $
+
+  05 Aug 2015; Jason Zaman <perfinion@gentoo.org> metadata.xml:
+  Replace herd with xfce@g.o
 
   11 Jul 2015; Markus Meier <maekke@gentoo.org> xfburn-0.5.4.ebuild:
   arm stable, bug #553500

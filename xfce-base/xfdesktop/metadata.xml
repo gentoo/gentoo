@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>xfce</herd>
+  <maintainer>
+    <email>xfce@gentoo.org</email>
+    <name>XFCE Team</name>
+  </maintainer>
   <use>
     <flag name='thunar'>Build support for desktop icons (for example, launchers and folders)</flag>
   </use>

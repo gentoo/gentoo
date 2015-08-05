@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>xfce</herd>
+  <maintainer>
+    <email>xfce@gentoo.org</email>
+    <name>XFCE Team</name>
+  </maintainer>
   <use>
     <flag name='deprecated'>Enable GTK+-2 instead of GTK+-3 because of external plugins like adobe-flash</flag>
     <flag name='granite'>Enable support for the elementary library <pkg>dev-libs/granite</pkg></flag>
