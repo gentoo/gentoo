@@ -9,5 +9,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="pypi">guzzle_sphinx_theme</remote-id>
+		<remote-id type="github">guzzle/guzzle_sphinx_theme</remote-id>
 	</upstream>
 </pkgmetadata>

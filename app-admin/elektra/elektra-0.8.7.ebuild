@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/elektra/elektra-0.8.7.ebuild,v 1.1 2015/06/09 16:45:41 xmw Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/elektra/elektra-0.8.7.ebuild,v 1.2 2015/08/05 12:03:06 xmw Exp $
 
 EAPI=5
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://freedesktop.org/wiki/Software/Elektra"
 SRC_URI="ftp://ftp.markus-raab.org/${PN}/releases/${P}.tar.gz"
 
 LICENSE="BSD"
-SLOT="0"
+SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="dbus doc examples iconv ini keytometa simpleini static-libs syslog tcl test +uname xml yajl"
 

@@ -5,5 +5,6 @@
   <herd>sound</herd>
   <upstream>
     <remote-id type="pypi">jellyfish</remote-id>
+    <remote-id type="github">jamesturk/jellyfish</remote-id>
   </upstream>
 </pkgmetadata>

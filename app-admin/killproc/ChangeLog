@@ -1,6 +1,9 @@
 # ChangeLog for app-admin/killproc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/killproc/ChangeLog,v 1.43 2015/08/02 09:59:09 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/killproc/ChangeLog,v 1.44 2015/08/05 12:03:16 zlogene Exp $
+
+  05 Aug 2015; Mikle Kolyada <zlogene@gentoo.org> killproc-2.13-r1.ebuild:
+  ia64 stable wrt bug #530402
 
   02 Aug 2015; Pacho Ramos <pacho@gentoo.org> killproc-2.13-r1.ebuild:
   sparc stable wrt bug #530402

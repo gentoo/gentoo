@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/xen-tools/xen-tools-4.2.5-r10.ebuild,v 1.1 2015/08/05 10:01:37 dlan Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/xen-tools/xen-tools-4.2.5-r10.ebuild,v 1.2 2015/08/05 11:46:33 zlogene Exp $
 
 EAPI=5
 
@@ -14,7 +14,7 @@ if [[ $PV == *9999 ]]; then
 	S="${WORKDIR}/${REPO}"
 	live_eclass="mercurial"
 else
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	UPSTREAM_VER=9
 	SECURITY_VER=6
 	# xen-tools's gentoo patches tarball

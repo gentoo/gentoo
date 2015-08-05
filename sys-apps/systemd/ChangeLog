@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/systemd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/ChangeLog,v 1.396 2015/08/03 18:22:47 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/ChangeLog,v 1.397 2015/08/05 12:09:38 zlogene Exp $
+
+  05 Aug 2015; Mikle Kolyada <zlogene@gentoo.org> systemd-218-r3.ebuild:
+  ia64 stable wrt bug #536902
 
 *systemd-224-r1 (03 Aug 2015)
 

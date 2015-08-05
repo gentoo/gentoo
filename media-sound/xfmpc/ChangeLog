@@ -1,6 +1,9 @@
 # ChangeLog for media-sound/xfmpc
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/xfmpc/ChangeLog,v 1.24 2012/11/28 12:35:53 ssuominen Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/xfmpc/ChangeLog,v 1.25 2015/08/05 11:36:23 perfinion Exp $
+
+  05 Aug 2015; Jason Zaman <perfinion@gentoo.org> metadata.xml:
+  Replace herd with xfce@g.o
 
   28 Nov 2012; Samuli Suominen <ssuominen@gentoo.org> xfmpc-0.2.2.ebuild:
   EAPI5
@@ -96,4 +99,3 @@
 
   01 Apr 2008; Christoph Mende <angelos@gentoo.org> +xfmpc-0.0.4.ebuild:
   Initial commit
-

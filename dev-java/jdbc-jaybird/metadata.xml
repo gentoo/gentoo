@@ -11,5 +11,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">firebird</remote-id>
+		<remote-id type="github">FirebirdSQL/jaybird</remote-id>
 	</upstream>
 </pkgmetadata>

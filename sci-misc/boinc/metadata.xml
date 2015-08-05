@@ -13,4 +13,7 @@
   is supported before opening bug about it.
   </flag>
   </use>
+  <upstream>
+    <remote-id type="github">BOINC/boinc</remote-id>
+  </upstream>
 </pkgmetadata>

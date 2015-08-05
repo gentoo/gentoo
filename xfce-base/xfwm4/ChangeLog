@@ -1,6 +1,9 @@
 # ChangeLog for xfce-base/xfwm4
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-base/xfwm4/ChangeLog,v 1.243 2015/07/25 12:19:26 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-base/xfwm4/ChangeLog,v 1.244 2015/08/05 11:39:49 perfinion Exp $
+
+  05 Aug 2015; Jason Zaman <perfinion@gentoo.org> metadata.xml:
+  Replace herd with xfce@g.o
 
   25 Jul 2015; Pacho Ramos <pacho@gentoo.org> xfwm4-4.12.3.ebuild:
   ppc stable wrt bug #553500

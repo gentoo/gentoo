@@ -1,6 +1,10 @@
 # ChangeLog for x11-libs/gdk-pixbuf
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/gdk-pixbuf/ChangeLog,v 1.143 2015/08/05 09:58:41 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/gdk-pixbuf/ChangeLog,v 1.144 2015/08/05 12:15:36 klausman Exp $
+
+  05 Aug 2015; Tobias Klausmann <klausman@gentoo.org>
+  gdk-pixbuf-2.30.8-r1.ebuild:
+  Stable on alpha, bug 556314
 
   05 Aug 2015; Mikle Kolyada <zlogene@gentoo.org> gdk-pixbuf-2.30.8-r1.ebuild:
   ia64 stable wrt bug #556314

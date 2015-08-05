@@ -1,6 +1,15 @@
 # ChangeLog for app-admin/elektra
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/elektra/ChangeLog,v 1.21 2015/06/09 16:45:41 xmw Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/elektra/ChangeLog,v 1.22 2015/08/05 12:03:06 xmw Exp $
+
+*elektra-0.8.12 (05 Aug 2015)
+*elektra-9999 (05 Aug 2015)
+
+  05 Aug 2015; Michael Weber <xmw@gentoo.org> +elektra-0.8.12.ebuild,
+  +elektra-9999.ebuild, +files/elektra-0.8.11-conditional-glob-tests.patch,
+  elektra-0.8.7.ebuild, metadata.xml:
+  Version bump, add live ebuild, https://github.com/gentoo/gentoo-portage-rsync-
+  mirror/pull/165 (thanks a17r).
 
 *elektra-0.8.7 (09 Jun 2015)
 

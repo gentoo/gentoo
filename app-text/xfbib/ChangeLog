@@ -1,6 +1,9 @@
 # ChangeLog for app-text/xfbib
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/xfbib/ChangeLog,v 1.8 2013/05/05 17:21:30 ssuominen Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/xfbib/ChangeLog,v 1.9 2015/08/05 11:34:06 perfinion Exp $
+
+  05 Aug 2015; Jason Zaman <perfinion@gentoo.org> metadata.xml:
+  Replace herd with xfce@g.o
 
   05 May 2013; Samuli Suominen <ssuominen@gentoo.org> -xfbib-0.0.2.ebuild:
   old

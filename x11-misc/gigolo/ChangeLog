@@ -1,6 +1,9 @@
 # ChangeLog for x11-misc/gigolo
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/gigolo/ChangeLog,v 1.19 2014/04/22 13:53:39 ssuominen Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/gigolo/ChangeLog,v 1.20 2015/08/05 11:36:59 perfinion Exp $
+
+  05 Aug 2015; Jason Zaman <perfinion@gentoo.org> metadata.xml:
+  Replace herd with xfce@g.o
 
   22 Apr 2014; Samuli Suominen <ssuominen@gentoo.org> -gigolo-0.4.1.ebuild:
   old

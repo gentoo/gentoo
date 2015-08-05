@@ -1,6 +1,9 @@
 # ChangeLog for sys-kernel/gentoo-sources
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/gentoo-sources/ChangeLog,v 1.1607 2015/08/04 00:52:20 mpagano Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/gentoo-sources/ChangeLog,v 1.1608 2015/08/05 11:59:58 zlogene Exp $
+
+  05 Aug 2015; Mikle Kolyada <zlogene@gentoo.org> gentoo-sources-4.0.5.ebuild:
+  ia64 stable wrt bug #552336
 
 *gentoo-sources-3.10.85 (04 Aug 2015)
 

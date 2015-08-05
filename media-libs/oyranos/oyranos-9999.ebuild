@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/oyranos/oyranos-9999.ebuild,v 1.9 2015/08/05 11:03:04 xmw Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/oyranos/oyranos-9999.ebuild,v 1.10 2015/08/05 11:43:37 xmw Exp $
 
 EAPI=5
 
@@ -29,7 +29,7 @@ COMMON_DEPEND="
 	>=media-libs/libXcm-0.5.3[${MULTILIB_USEDEP}]
 	cairo? ( >=x11-libs/cairo-1.12.14-r4[${MULTILIB_USEDEP}] )
 	cups? ( >=net-print/cups-1.7.1-r1[${MULTILIB_USEDEP}] )
-	exif? ( >=media-gfx/exiv2-0.23-r2[${MULTILIB_USEDEP}] )
+	exif? ( >=media-gfx/exiv2-0.23-r2:=[${MULTILIB_USEDEP}] )
 	fltk? ( x11-libs/fltk:1 )
 	jpeg? ( virtual/jpeg:0[${MULTILIB_USEDEP}] )
 	qt5? (
