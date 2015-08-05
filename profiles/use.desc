@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/use.desc,v 1.527 2015/07/13 20:30:51 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.desc,v 1.528 2015/08/05 06:49:24 mgorny Exp $
 
 # Keep them sorted
 
@@ -153,7 +153,6 @@ ios - Enable support for Apple's iDevice with iOS operating system (iPad, iPhone
 ipod - Enable support for iPod device access
 ipv6 - Add support for IP version 6
 iwmmxt - Add support for optimizations for ARM iwMMXt instructions
-jabber - Enable jabber IM protocol support
 jack - Add support for the JACK Audio Connection Kit
 java - Add support for Java
 javascript - Enable javascript support

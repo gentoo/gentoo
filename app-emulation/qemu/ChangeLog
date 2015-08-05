@@ -1,6 +1,15 @@
 # ChangeLog for app-emulation/qemu
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu/ChangeLog,v 1.346 2015/08/05 06:27:13 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu/ChangeLog,v 1.348 2015/08/05 06:47:50 vapier Exp $
+
+  05 Aug 2015; Mike Frysinger <vapier@gentoo.org> qemu-9999.ebuild:
+  Allow disabling of all user & softmmu targets so that the ebuild only installs
+  the various helper tools #556712 by Matthew Thode.
+
+  05 Aug 2015; Mike Frysinger <vapier@gentoo.org> qemu-2.3.0-r5.ebuild,
+  qemu-9999.ebuild:
+  Move seabios bin clean up under the softmmu check since user tools do not
+  install blobs.
 
   05 Aug 2015; Mike Frysinger <vapier@gentoo.org> qemu-9999.ebuild:
   Unify target logic a bit.

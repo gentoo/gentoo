@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/tesseract/tesseract-3.04.00.ebuild,v 1.2 2015/08/03 15:29:30 tomka Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/tesseract/tesseract-3.04.00.ebuild,v 1.3 2015/08/05 07:14:51 tomka Exp $
 
 EAPI=5
 
@@ -76,6 +76,7 @@ DOCS=(AUTHORS ChangeLog NEWS README ReleaseNotes )
 
 PATCHES=(
 	"${FILESDIR}/tesseract-2.04-gcc47.patch"
+	"${FILESDIR}/${P}-fix-scrollview-disabled.patch"
 )
 
 src_configure() {

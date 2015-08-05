@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst prepare
+DEPEND=app-eselect/eselect-infinality app-eselect/eselect-lcdfilter media-libs/fontconfig-infinality media-libs/freetype:2[infinality]
+DESCRIPTION=A set of font rendering and replacement rules for fontconfig-infinality
+EAPI=5
+HOMEPAGE=http://bohoomil.com/
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=app-eselect/eselect-infinality app-eselect/eselect-lcdfilter media-libs/fontconfig-infinality media-libs/freetype:2[infinality]
+SLOT=0
+SRC_URI=https://github.com/bohoomil/fontconfig-ultimate/archive/2015-08-01.tar.gz -> fontconfig-ultimate-2015.08.01.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	readme.gentoo	106edea5533517715013de909a333abd	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=6502d42e4e62dc913a4b6a9d781c8600
