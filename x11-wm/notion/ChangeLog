@@ -1,6 +1,10 @@
 # ChangeLog for x11-wm/notion
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/notion/ChangeLog,v 1.13 2015/08/05 10:09:07 xmw Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/notion/ChangeLog,v 1.14 2015/08/06 08:44:55 xmw Exp $
+
+  06 Aug 2015; Michael Weber <xmw@gentoo.org> notion-3_p2015061300.ebuild,
+  notion-9999.ebuild:
+  Fix install location.
 
 *notion-3_p2015061300 (05 Aug 2015)
 

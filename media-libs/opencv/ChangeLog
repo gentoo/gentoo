@@ -1,6 +1,9 @@
 # ChangeLog for media-libs/opencv
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/opencv/ChangeLog,v 1.131 2015/07/25 08:43:27 amynka Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/opencv/ChangeLog,v 1.132 2015/08/06 09:21:03 amynka Exp $
+
+  06 Aug 2015; Amy Winston <amynka@gentoo.org> opencv-3.0.0.ebuild:
+  Add dependency for qt5 bug #556376.
 
   25 Jul 2015; Amy Winston <amynka@gentoo.org> opencv-2.4.10.ebuild,
   opencv-2.4.9.ebuild, opencv-3.0.0.ebuild:

@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/html5lib
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/html5lib/ChangeLog,v 1.42 2015/08/01 06:29:57 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/html5lib/ChangeLog,v 1.43 2015/08/06 09:00:35 idella4 Exp $
+
+*html5lib-0.999999 (06 Aug 2015)
+
+  06 Aug 2015; Ian Delaney <idella4@gentoo.org> +html5lib-0.999999.ebuild:
+  bump
 
   01 Aug 2015; Ian Delaney <idella4@gentoo.org> html5lib-0.99999.ebuild:
   add pypy3 support

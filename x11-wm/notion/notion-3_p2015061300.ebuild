@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/notion/notion-3_p2015061300.ebuild,v 1.1 2015/08/05 10:09:07 xmw Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/notion/notion-3_p2015061300.ebuild,v 1.2 2015/08/06 08:44:55 xmw Exp $
 
 EAPI=5
 
@@ -71,7 +71,7 @@ src_compile() {
 }
 
 src_install() {
-	default
+	emake DESTDIR="${D}" PREFIX=/usr install
 
 	exeinto /etc/X11/Sessions
 	doexe "${FILESDIR}"/notion
