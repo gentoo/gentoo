@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/collectl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/collectl/ChangeLog,v 1.25 2015/08/03 10:59:16 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/collectl/ChangeLog,v 1.26 2015/08/06 07:15:27 ago Exp $
+
+  06 Aug 2015; Agostino Sarubbo <ago@gentoo.org> collectl-3.7.4.ebuild:
+  Stable for x86, wrt bug #521512
 
   03 Aug 2015; Agostino Sarubbo <ago@gentoo.org> collectl-3.7.4.ebuild:
   Stable for amd64, wrt bug #521512

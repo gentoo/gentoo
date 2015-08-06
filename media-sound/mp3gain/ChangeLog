@@ -1,6 +1,9 @@
 # ChangeLog for media-sound/mp3gain
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mp3gain/ChangeLog,v 1.48 2015/08/03 11:56:08 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/mp3gain/ChangeLog,v 1.49 2015/08/06 07:19:03 ago Exp $
+
+  06 Aug 2015; Agostino Sarubbo <ago@gentoo.org> mp3gain-1.5.2.ebuild:
+  Stable for x86, wrt bug #551602
 
   03 Aug 2015; Agostino Sarubbo <ago@gentoo.org> mp3gain-1.5.2.ebuild:
   Stable for amd64, wrt bug #551602

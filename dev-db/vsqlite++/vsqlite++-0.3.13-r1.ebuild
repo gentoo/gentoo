@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/vsqlite++/vsqlite++-0.3.13-r1.ebuild,v 1.4 2015/08/03 10:59:31 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/vsqlite++/vsqlite++-0.3.13-r1.ebuild,v 1.5 2015/08/06 07:18:11 ago Exp $
 
 EAPI=5
 AUTOTOOLS_IN_SOURCE_BUILD=1
@@ -17,7 +17,7 @@ LICENSE="BSD"
 
 SLOT="0"
 
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 
 DEPEND=">=dev-libs/boost-1.33.1"
 

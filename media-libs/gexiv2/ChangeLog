@@ -1,6 +1,9 @@
 # ChangeLog for media-libs/gexiv2
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/gexiv2/ChangeLog,v 1.37 2015/08/03 11:00:02 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/gexiv2/ChangeLog,v 1.38 2015/08/06 07:18:46 ago Exp $
+
+  06 Aug 2015; Agostino Sarubbo <ago@gentoo.org> gexiv2-0.10.2.ebuild:
+  Stable for x86, wrt bug #553474
 
   03 Aug 2015; Agostino Sarubbo <ago@gentoo.org> gexiv2-0.10.2.ebuild:
   Stable for amd64, wrt bug #553474

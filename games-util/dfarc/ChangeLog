@@ -1,6 +1,9 @@
 # ChangeLog for games-util/dfarc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-util/dfarc/ChangeLog,v 1.8 2015/08/03 10:59:06 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-util/dfarc/ChangeLog,v 1.9 2015/08/06 07:17:52 ago Exp $
+
+  06 Aug 2015; Agostino Sarubbo <ago@gentoo.org> dfarc-3.12.ebuild:
+  Stable for x86, wrt bug #554756
 
   03 Aug 2015; Agostino Sarubbo <ago@gentoo.org> dfarc-3.12.ebuild:
   Stable for amd64, wrt bug #554756

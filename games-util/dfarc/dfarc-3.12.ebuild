@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-util/dfarc/dfarc-3.12.ebuild,v 1.3 2015/08/03 10:59:06 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-util/dfarc/dfarc-3.12.ebuild,v 1.4 2015/08/06 07:17:52 ago Exp $
 
 EAPI=5
 WX_GTK_VER="3.0"
@@ -12,7 +12,7 @@ SRC_URI="mirror://gnu/freedink/${P}.tar.gz"
 
 LICENSE="GPL-3 BZIP2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="nls"
 
 RDEPEND="

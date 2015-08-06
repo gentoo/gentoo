@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/singular/singular-4.0.2.ebuild,v 1.6 2015/08/03 12:55:13 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/singular/singular-4.0.2.ebuild,v 1.7 2015/08/06 07:22:58 ago Exp $
 
 EAPI=5
 
@@ -21,7 +21,7 @@ SRC_URI="http://www.mathematik.uni-kl.de/ftp/pub/Math/${MY_PN}/SOURCES/${MY_DIR}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86 ~x86-linux ~x86-macos"
+KEYWORDS="amd64 x86 ~x86-linux ~x86-macos"
 IUSE="boost doc emacs examples python +readline"
 
 RDEPEND="dev-libs/gmp:0

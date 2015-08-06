@@ -1,6 +1,9 @@
 # ChangeLog for net-analyzer/munin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/munin/ChangeLog,v 1.169 2015/07/31 09:16:47 xmw Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/munin/ChangeLog,v 1.170 2015/08/06 07:07:55 jlec Exp $
+
+  06 Aug 2015; Justin Lecher <jlec@gentoo.org> munin-2.0.25-r1.ebuild:
+  Add missing dep for cgi support
 
   31 Jul 2015; Michael Weber <xmw@gentoo.org> munin-2.0.25-r1.ebuild,
   munin-2.1.9999.ebuild:

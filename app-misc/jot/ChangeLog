@@ -1,6 +1,9 @@
 # ChangeLog for app-misc/jot
 # Copyright 2000-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/jot/ChangeLog,v 1.14 2015/08/03 11:55:53 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/jot/ChangeLog,v 1.15 2015/08/06 07:20:35 ago Exp $
+
+  06 Aug 2015; Agostino Sarubbo <ago@gentoo.org> jot-9.0-r1.ebuild:
+  Stable for x86, wrt bug #556550
 
   03 Aug 2015; Agostino Sarubbo <ago@gentoo.org> jot-9.0-r1.ebuild:
   Stable for amd64, wrt bug #556550

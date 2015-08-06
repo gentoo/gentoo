@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/ruby-romkan
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-romkan/ChangeLog,v 1.47 2015/08/04 13:23:20 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-romkan/ChangeLog,v 1.48 2015/08/06 07:24:22 ago Exp $
+
+  06 Aug 2015; Agostino Sarubbo <ago@gentoo.org> ruby-romkan-0.4-r5.ebuild:
+  Stable for x86, wrt bug #552436
 
   04 Aug 2015; Mikle Kolyada <zlogene@gentoo.org> ruby-romkan-0.4-r5.ebuild:
   ia64 stable wrt bug #552436

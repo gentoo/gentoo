@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/munin/munin-2.0.25-r1.ebuild,v 1.5 2015/07/31 09:16:47 xmw Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/munin/munin-2.0.25-r1.ebuild,v 1.6 2015/08/06 07:07:55 jlec Exp $
 
 EAPI=5
 
@@ -46,7 +46,10 @@ DEPEND_COM="
 	virtual/perl-Time-HiRes
 	apache? ( www-servers/apache[apache2_modules_cgi,apache2_modules_cgid,apache2_modules_rewrite] )
 	asterisk? ( dev-perl/Net-Telnet )
-	cgi? ( dev-perl/FCGI )
+	cgi? (
+		dev-perl/FCGI
+		dev-perl/CGI-Fast
+		)
 	dhcpd? (
 		>=net-misc/dhcp-3[server]
 		dev-perl/Net-IP

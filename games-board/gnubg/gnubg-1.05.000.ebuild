@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-board/gnubg/gnubg-1.05.000.ebuild,v 1.2 2015/08/03 10:59:01 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-board/gnubg/gnubg-1.05.000.ebuild,v 1.3 2015/08/06 07:17:35 ago Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
@@ -12,7 +12,7 @@ SRC_URI="http://gnubg.org/media/sources/${PN}-release-${PV}-sources.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~x86-fbsd"
 IUSE="cpu_flags_x86_avx gtk opengl python sqlite cpu_flags_x86_sse cpu_flags_x86_sse2 threads"
 
 RDEPEND="dev-libs/glib:2

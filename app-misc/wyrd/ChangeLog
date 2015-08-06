@@ -1,6 +1,9 @@
 # ChangeLog for app-misc/wyrd
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/wyrd/ChangeLog,v 1.26 2015/08/03 12:55:18 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/wyrd/ChangeLog,v 1.27 2015/08/06 07:22:39 ago Exp $
+
+  06 Aug 2015; Agostino Sarubbo <ago@gentoo.org> wyrd-1.4.6.ebuild:
+  Stable for x86, wrt bug #553328
 
   03 Aug 2015; Agostino Sarubbo <ago@gentoo.org> wyrd-1.4.6.ebuild:
   Stable for amd64, wrt bug #553328

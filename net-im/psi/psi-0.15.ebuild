@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/psi/psi-0.15.ebuild,v 1.9 2015/08/03 12:54:59 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/psi/psi-0.15.ebuild,v 1.10 2015/08/06 07:22:22 ago Exp $
 
 EAPI=5
 
@@ -18,7 +18,7 @@ done
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 x86 ~x86-fbsd"
 IUSE="crypt dbus debug doc jingle spell ssl xscreensaver whiteboarding"
 RESTRICT="test"
 

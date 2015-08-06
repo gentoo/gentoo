@@ -1,6 +1,9 @@
 # ChangeLog for dev-libs/leveldb
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/leveldb/ChangeLog,v 1.32 2015/08/03 11:00:12 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/leveldb/ChangeLog,v 1.33 2015/08/06 07:15:45 ago Exp $
+
+  06 Aug 2015; Agostino Sarubbo <ago@gentoo.org> leveldb-1.18-r1.ebuild:
+  Stable for x86, wrt bug #554644
 
   03 Aug 2015; Agostino Sarubbo <ago@gentoo.org> leveldb-1.18-r1.ebuild:
   Stable for amd64, wrt bug #554644
