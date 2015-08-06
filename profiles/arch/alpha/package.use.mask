@@ -1,11 +1,19 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/alpha/package.use.mask,v 1.189 2015/07/11 14:34:15 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/alpha/package.use.mask,v 1.191 2015/08/06 16:49:08 klausman Exp $
+
+# Tobias Klausmann <klausman@gentoo.org> (06 Aug 2015)
+# openexr and friends do not compile or are otherwise not keywordable.
+media-gfx/povray openexr
 
 # Tobias Klausmann <klausman@gentoo.org> (11 Jul 2015)
 # The test suite has ridiculous (transitive) requirements like
 # sci-mathematics/octave.
 >=dev-python/pyquery-1.2.9 test
+# revdeps of pyquery, ditto.
+dev-python/webtest test
+dev-python/wsgiproxy2 test
+dev-python/urllib3 test
 
 # Gilles Dartiguelongue <eva@gentoo.org> (09 Jun 2015)
 # net-fs/libnfs lacks alpha keyword, bug #551576
@@ -264,8 +272,8 @@ net-analyzer/wireshark doc-pdf
 www-client/elinks javascript
 
 # Justin Lecher <jlec@gentoo.org> (13 Aug 2010)
-# MKL not available on this arch
-media-gfx/povray mkl
+# MKL not available on this arch, 
+media-gfx/povray mkl 
 
 # Raúl Porcel <armin76@gentoo.org> (26 Jun 2010)
 # custom-optimization doesn't work on alpha

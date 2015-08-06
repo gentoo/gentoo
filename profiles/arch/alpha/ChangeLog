@@ -1,6 +1,13 @@
 # ChangeLog for Gentoo/Alpha profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/alpha/ChangeLog,v 1.232 2015/07/29 11:17:17 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/alpha/ChangeLog,v 1.233 2015/08/06 16:49:08 klausman Exp $
+
+  06 Aug 2015; Tobias Klausmann <klausman@gentoo.org> package.use.mask:
+  Mask openexr USE flag for povray since openexr is a non-compiling mess
+
+  06 Aug 2015; Tobias Klausmann <klausman@gentoo.org> package.use.mask:
+  Mask USE=test on a variety of python packages since the deptree explodes,
+  otherwise. See bug 530622
 
   29 Jul 2015; Tobias Klausmann <klausman@gentoo.org> package.use.stable.mask:
   Mask webkit USE flag for wxGTK so the dep can stay ~alpha forever

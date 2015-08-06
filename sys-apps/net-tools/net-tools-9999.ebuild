@@ -1,18 +1,16 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/net-tools/net-tools-9999.ebuild,v 1.9 2015/04/25 16:36:44 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/net-tools/net-tools-9999.ebuild,v 1.10 2015/08/06 16:41:53 vapier Exp $
 
-EAPI="3"
+EAPI="4"
 
-inherit flag-o-matic toolchain-funcs eutils
+inherit flag-o-matic toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://net-tools.git.sourceforge.net/gitroot/net-tools/net-tools"
 	inherit git-2
 else
-	PATCH_VER="1"
-	SRC_URI="mirror://gentoo/${P}.tar.xz
-		mirror://gentoo/${P}-patches-${PATCH_VER}.tar.xz"
+	SRC_URI="mirror://gentoo/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
@@ -41,14 +39,6 @@ maint_pkg_create() {
 	tar cf - ${p}/ | xz > ${p}.tar.xz
 	popd >/dev/null
 
-	local patches="${p}-patches-${PATCH_VER:-1}"
-	local d="${T}/${patches}"
-	mkdir "${d}"
-	git format-patch -o "${d}" master..gentoo > /dev/null
-	echo "From http://cgit.gentoo.org/proj/net-tools.git" > "${d}"/README
-	tar cf - -C "${T}" ${d##*/} | xz > "${T}"/${patches}.tar.xz
-	rm -rf "${d}"
-
 	du -b "${T}"/*.tar.xz
 }
 
@@ -64,12 +54,6 @@ set_opt() {
 		config.in || die
 }
 
-src_prepare() {
-	if [[ -n ${PATCH_VER} ]] ; then
-		EPATCH_SUFFIX="patch" EPATCH_FORCE="yes" epatch "${WORKDIR}"/${P}-patches-${PATCH_VER}
-	fi
-}
-
 src_configure() {
 	set_opt I18N use nls
 	set_opt HAVE_HWIB has_version '>=sys-kernel/linux-headers-2.6'
@@ -82,13 +66,4 @@ src_configure() {
 	fi
 	tc-export AR CC
 	yes "" | ./configure.sh config.in || die
-}
-
-src_install() {
-	emake DESTDIR="${ED}" install || die
-	dodoc README README.ipv6 TODO
-}
-
-pkg_postinst() {
-	einfo "etherwake and such have been split into net-misc/ethercard-diag"
 }

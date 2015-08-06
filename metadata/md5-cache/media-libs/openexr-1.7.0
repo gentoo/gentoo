@@ -4,10 +4,10 @@ DESCRIPTION=ILM's OpenEXR high dynamic-range image file format libraries
 EAPI=2
 HOMEPAGE=http://openexr.com/
 IUSE=examples static-libs
-KEYWORDS=alpha amd64 -arm hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd
+KEYWORDS=amd64 -arm hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd
 LICENSE=BSD
 RDEPEND=sys-libs/zlib >=media-libs/ilmbase-1.0.2
 SLOT=0
 SRC_URI=http://download.savannah.gnu.org/releases/openexr/openexr-1.7.0.tar.gz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=07c5b2c3e5c1a1f575c8510acdf1bb9f
+_md5_=49a56edd4776d5bba83705c0c8a42cd2

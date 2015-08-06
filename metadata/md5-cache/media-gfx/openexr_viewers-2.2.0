@@ -4,10 +4,10 @@ DESCRIPTION=OpenEXR Viewers
 EAPI=5
 HOMEPAGE=http://openexr.com/
 IUSE=cg opengl
-KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+KEYWORDS=~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
 LICENSE=BSD
 RDEPEND=>=media-libs/ilmbase-2.2.0:= >=media-libs/openexr-2.2.0:= media-libs/ctl:= >=media-libs/openexr_ctl-1.0.1-r2:= opengl? ( virtual/opengl x11-libs/fltk:1[opengl] cg? ( media-gfx/nvidia-cg-toolkit ) )
 SLOT=0
 SRC_URI=http://download.savannah.gnu.org/releases/openexr/openexr_viewers-2.2.0.tar.gz
 _eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=94aecf91d00a04dcae19ae1664cdbd0b
+_md5_=0affcd056b2eff660519d1ec1f123f5d

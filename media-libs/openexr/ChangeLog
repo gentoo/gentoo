@@ -1,6 +1,10 @@
 # ChangeLog for media-libs/openexr
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/openexr/ChangeLog,v 1.102 2015/05/17 20:13:21 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/openexr/ChangeLog,v 1.103 2015/08/06 16:45:43 klausman Exp $
+
+  06 Aug 2015; Tobias Klausmann <klausman@gentoo.org> openexr-1.7.0.ebuild,
+  openexr-2.0.1-r1.ebuild, openexr-2.1.0.ebuild, openexr-2.2.0.ebuild:
+  Drop keywords for alpha/~alpha, see bug 526054
 
   17 May 2015; Pacho Ramos <pacho@gentoo.org> openexr-2.1.0.ebuild:
   ppc64 stable wrt bug #526054

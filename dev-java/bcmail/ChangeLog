@@ -1,6 +1,17 @@
 # ChangeLog for dev-java/bcmail
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/bcmail/ChangeLog,v 1.48 2015/08/01 16:33:30 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/bcmail/ChangeLog,v 1.49 2015/08/06 17:24:10 monsieurp Exp $
+
+*bcmail-1.50-r1 (06 Aug 2015)
+*bcmail-1.38-r4 (06 Aug 2015)
+*bcmail-1.45-r3 (06 Aug 2015)
+*bcmail-1.52-r1 (06 Aug 2015)
+
+  06 Aug 2015; Patrice Clement <monsieurp@gentoo.org> +bcmail-1.38-r4.ebuild,
+  +bcmail-1.45-r3.ebuild, +bcmail-1.50-r1.ebuild, +bcmail-1.52-r1.ebuild:
+  Remove java-virtuals/javamail dependency and replace it with oracle-javamail.
+  Also, convert two ebuilds to EAPI 5 and rely on java-pkg-simple to do away
+  with hacks. Fixes bug 553186.
 
 *bcmail-1.52 (01 Aug 2015)
 

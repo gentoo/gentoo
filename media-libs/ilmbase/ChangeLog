@@ -1,6 +1,10 @@
 # ChangeLog for media-libs/ilmbase
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/ilmbase/ChangeLog,v 1.47 2015/05/17 20:12:10 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/ilmbase/ChangeLog,v 1.48 2015/08/06 16:46:38 klausman Exp $
+
+  06 Aug 2015; Tobias Klausmann <klausman@gentoo.org> ilmbase-1.0.2.ebuild,
+  ilmbase-2.0.1-r1.ebuild, ilmbase-2.1.0.ebuild, ilmbase-2.2.0.ebuild:
+  Drop keywords for alpha/~alpha, see bug 526054
 
   17 May 2015; Pacho Ramos <pacho@gentoo.org> ilmbase-2.1.0.ebuild:
   ppc64 stable wrt bug #526046

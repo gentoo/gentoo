@@ -1,11 +1,11 @@
-DEFINED_PHASES=configure install postinst prepare setup unpack
+DEFINED_PHASES=configure setup unpack
 DEPEND=!<sys-apps/openrc-0.9.9.3 selinux? ( sys-libs/libselinux ) selinux? ( virtual/pkgconfig ) app-arch/xz-utils dev-vcs/git
 DESCRIPTION=Standard Linux networking tools
-EAPI=3
+EAPI=4
 HOMEPAGE=http://net-tools.sourceforge.net/
 IUSE=nls selinux static
 LICENSE=GPL-2
 RDEPEND=!<sys-apps/openrc-0.9.9.3 selinux? ( sys-libs/libselinux )
 SLOT=0
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	git-2	e28f0d8a9b321431b1e699782851b827	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=088ebd89623c742e4cd1a8f21cb46d18
+_md5_=8a6ef3eb3da4a93c7d6a42e73d830f99
