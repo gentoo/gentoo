@@ -1,6 +1,10 @@
 # ChangeLog for media-libs/libraw
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libraw/ChangeLog,v 1.89 2015/07/19 11:00:22 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libraw/ChangeLog,v 1.90 2015/08/06 16:06:47 vapier Exp $
+
+  06 Aug 2015; Mike Frysinger <vapier@gentoo.org> libraw-0.16.0-r1.ebuild,
+  libraw-0.16.2.ebuild, libraw-0.17.0_beta2.ebuild:
+  Add hppa love.
 
 *libraw-0.17.0_beta2 (19 Jul 2015)
 

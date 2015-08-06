@@ -1,8 +1,10 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/patchutils/patchutils-0.3.3.ebuild,v 1.11 2015/07/30 13:09:34 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/patchutils/patchutils-0.3.3.ebuild,v 1.12 2015/08/06 15:35:23 jlec Exp $
 
-EAPI=4
+EAPI=5
+
+inherit eutils
 
 DESCRIPTION="A collection of tools that operate on patch files"
 HOMEPAGE="http://cyberelk.net/tim/patchutils/"
@@ -17,3 +19,7 @@ RDEPEND=""
 # The testsuite makes use of gendiff(1) that comes from rpm, thus if
 # the user wants to run tests, it should install that too.
 DEPEND="test? ( app-arch/rpm )"
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-format-security.patch
+}

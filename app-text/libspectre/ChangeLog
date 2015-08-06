@@ -1,6 +1,9 @@
 # ChangeLog for app-text/libspectre
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/libspectre/ChangeLog,v 1.63 2012/12/01 19:47:58 armin76 Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/libspectre/ChangeLog,v 1.64 2015/08/06 16:06:03 vapier Exp $
+
+  06 Aug 2015; Mike Frysinger <vapier@gentoo.org> libspectre-0.2.7.ebuild:
+  Add hppa love.
 
   01 Dec 2012; Raúl Porcel <armin76@gentoo.org> libspectre-0.2.7.ebuild:
   alpha/ia64/sparc stable wrt #441114

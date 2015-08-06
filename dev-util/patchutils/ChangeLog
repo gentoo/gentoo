@@ -1,6 +1,10 @@
 # ChangeLog for dev-util/patchutils
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/patchutils/ChangeLog,v 1.83 2015/07/30 18:05:14 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/patchutils/ChangeLog,v 1.84 2015/08/06 15:35:23 jlec Exp $
+
+  06 Aug 2015; Justin Lecher <jlec@gentoo.org>
+  +files/patchutils-0.3.3-format-security.patch, patchutils-0.3.3.ebuild:
+  Fix for format-security, bug #556846
 
   30 Jul 2015; Justin Lecher <jlec@gentoo.org> -patchutils-0.3.2.ebuild:
   Drop old

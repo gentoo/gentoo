@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/borg/borg-1.7.4-r2.ebuild,v 1.1 2015/04/05 20:50:28 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/borg/borg-1.7.4-r3.ebuild,v 1.1 2015/08/06 15:34:10 monsieurp Exp $
 
 EAPI=5
 
@@ -20,15 +20,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
-COMMON_DEP="
+CDEPEND="
 	dev-java/javahelp:0
-	java-virtuals/javamail:0"
-RDEPEND="${COMMON_DEP}
-	>=virtual/jre-1.5
+	dev-java/oracle-javamail:0"
+RDEPEND="${CDEPEND}
+	>=virtual/jre-1.6
 	dev-db/hsqldb:0
 	dev-java/jgoodies-looks:2.0"
-DEPEND="${COMMON_DEP}
-	>=virtual/jdk-1.5
+DEPEND="${CDEPEND}
+	>=virtual/jdk-1.6
 	app-arch/unzip"
 
 S="${WORKDIR}/${MY_PN}/BORGCalendar"
@@ -45,7 +45,7 @@ JAVA_ANT_CLASSPATH_TAGS+=" javadoc"
 
 EANT_BUILD_XML="ant/build.xml"
 EANT_BUILD_TARGET="borg-jar help-jar"
-EANT_GENTOO_CLASSPATH="javahelp javamail"
+EANT_GENTOO_CLASSPATH="javahelp oracle-javamail"
 
 src_install() {
 	java-pkg_dojar dist/${PN}.jar

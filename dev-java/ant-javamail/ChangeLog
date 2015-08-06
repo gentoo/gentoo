@@ -1,6 +1,13 @@
 # ChangeLog for dev-java/ant-javamail
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-javamail/ChangeLog,v 1.44 2015/07/09 21:11:19 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-javamail/ChangeLog,v 1.45 2015/08/06 16:05:17 monsieurp Exp $
+
+*ant-javamail-1.9.2-r1 (06 Aug 2015)
+
+  06 Aug 2015; Patrice Clement <monsieurp@gentoo.org>
+  +ant-javamail-1.9.2-r1.ebuild:
+  Remove java-virtuals/javamail dependency and replace it with oracle-javamail.
+  Fixed bug 553186.
 
   09 Jul 2015; James Le Cuirot <chewi@gentoo.org> -ant-javamail-1.8.2.ebuild,
   -ant-javamail-1.8.4.ebuild, -ant-javamail-1.9.1.ebuild:

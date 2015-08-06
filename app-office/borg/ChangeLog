@@ -1,6 +1,16 @@
 # ChangeLog for app-office/borg
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/borg/ChangeLog,v 1.15 2015/06/09 11:55:07 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/borg/ChangeLog,v 1.17 2015/08/06 16:01:40 monsieurp Exp $
+
+  06 Aug 2015; Patrice Clement <monsieurp@gentoo.org> -borg-1.7.4-r1.ebuild,
+  -borg-1.7.4-r2.ebuild:
+  Remove old.
+
+*borg-1.7.4-r3 (06 Aug 2015)
+
+  06 Aug 2015; Patrice Clement <monsieurp@gentoo.org> +borg-1.7.4-r3.ebuild:
+  Remove java-virtuals/javamail and replace it with oracle-javamail. Fixed bug
+  553186.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml
