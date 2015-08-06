@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/llpp/llpp-20_p20140818.ebuild,v 1.3 2015/07/23 19:41:12 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/llpp/llpp-20_p20140818.ebuild,v 1.4 2015/08/06 11:47:13 ago Exp $
 
 EAPI=5
 
@@ -12,7 +12,7 @@ SRC_URI="http://repo.or.cz/w/llpp.git/snapshot/4fc967506989680faf64fb6c1dd0e0d13
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ppc ~x86"
+KEYWORDS="amd64 ppc ~x86"
 IUSE="+ocamlopt static"
 #IUSE="egl +ocamlopt static"
 

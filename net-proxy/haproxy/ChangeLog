@@ -1,6 +1,9 @@
 # ChangeLog for net-proxy/haproxy
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/haproxy/ChangeLog,v 1.121 2015/07/23 20:36:34 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/haproxy/ChangeLog,v 1.122 2015/08/06 11:48:30 ago Exp $
+
+  06 Aug 2015; Agostino Sarubbo <ago@gentoo.org> haproxy-1.4.26.ebuild:
+  Stable for amd64, wrt bug #553588
 
   23 Jul 2015; Pacho Ramos <pacho@gentoo.org> haproxy-1.4.26.ebuild:
   ppc stable wrt bug #553588

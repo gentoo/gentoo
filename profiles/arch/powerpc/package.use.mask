@@ -1,6 +1,10 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/package.use.mask,v 1.249 2015/08/06 04:06:43 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/package.use.mask,v 1.250 2015/08/06 12:15:13 voyageur Exp $
+
+# Bernard Cafarelli <voyageur@gentoo.org> (06 Aug 2015)
+# Dependencies missing keywords, bug #543604
+sys-devel/llvm ocaml
 
 # Gilles Dartiguelongue <eva@gentoo.org> (10 Jun 2015)
 # net-libs/dleyna-connector-dbus lack ppc/ppc64 keyword, bug #551634

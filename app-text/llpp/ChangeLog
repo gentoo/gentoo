@@ -1,6 +1,9 @@
 # ChangeLog for app-text/llpp
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/llpp/ChangeLog,v 1.70 2015/07/23 19:41:12 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/llpp/ChangeLog,v 1.71 2015/08/06 11:47:13 ago Exp $
+
+  06 Aug 2015; Agostino Sarubbo <ago@gentoo.org> llpp-20_p20140818.ebuild:
+  Stable for amd64, wrt bug #528680
 
   23 Jul 2015; Pacho Ramos <pacho@gentoo.org> llpp-20_p20140818.ebuild:
   ppc stable wrt bug #528680

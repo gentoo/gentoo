@@ -1,6 +1,9 @@
 # ChangeLog for sys-fs/encfs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/encfs/ChangeLog,v 1.70 2015/05/02 20:16:59 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/encfs/ChangeLog,v 1.71 2015/08/06 11:47:54 ago Exp $
+
+  06 Aug 2015; Agostino Sarubbo <ago@gentoo.org> encfs-1.8.1.ebuild:
+  Stable for amd64, wrt bug #555602
 
   02 May 2015; Ulrich Müller <ulm@gentoo.org> -files/encfs-1.7.4-r68:69.patch:
   [QA] Remove unused patch.

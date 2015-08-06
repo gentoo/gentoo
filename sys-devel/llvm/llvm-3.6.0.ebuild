@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/llvm/llvm-3.6.0.ebuild,v 1.2 2015/04/16 11:55:18 voyageur Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/llvm/llvm-3.6.0.ebuild,v 1.3 2015/08/06 12:18:45 voyageur Exp $
 
 EAPI=5
 
@@ -38,7 +38,10 @@ COMMON_DEPEND="
 	libedit? ( dev-libs/libedit:0=[${MULTILIB_USEDEP}] )
 	libffi? ( >=virtual/libffi-3.0.13-r1:0=[${MULTILIB_USEDEP}] )
 	ncurses? ( >=sys-libs/ncurses-5.9-r3:5=[${MULTILIB_USEDEP}] )
-	ocaml? ( dev-lang/ocaml:0= )"
+	ocaml? (
+		dev-lang/ocaml:0=
+		dev-ml/findlib
+		dev-ml/ocaml-ctypes )"
 # configparser-3.2 breaks the build (3.3 or none at all are fine)
 DEPEND="${COMMON_DEPEND}
 	app-arch/xz-utils
@@ -54,6 +57,7 @@ DEPEND="${COMMON_DEPEND}
 	doc? ( dev-python/sphinx )
 	libffi? ( virtual/pkgconfig )
 	!!<dev-python/configparser-3.3.0.2
+	ocaml? ( test? ( dev-ml/ounit ) )
 	${PYTHON_DEPS}"
 RDEPEND="${COMMON_DEPEND}
 	clang? ( !<=sys-devel/clang-${PV}-r99

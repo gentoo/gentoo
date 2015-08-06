@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/kdevplatform/kdevplatform-1.7.1.ebuild,v 1.2 2015/06/04 19:02:21 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/kdevplatform/kdevplatform-1.7.1.ebuild,v 1.3 2015/08/06 11:47:24 ago Exp $
 
 EAPI=5
 
@@ -21,7 +21,7 @@ IUSE="+classbrowser cvs debug +konsole reviewboard subversion"
 if [[ $PV == *9999 ]]; then
 	KEYWORDS=""
 else
-	KEYWORDS="~amd64 ~ppc ~x86"
+	KEYWORDS="amd64 ~ppc ~x86"
 fi
 
 RESTRICT="test"

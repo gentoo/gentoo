@@ -1,10 +1,14 @@
 # ChangeLog for profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10227 2015/08/05 14:12:42 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/ChangeLog,v 1.10228 2015/08/06 12:04:26 mgorny Exp $
 #
 # This ChangeLog should include records for all changes in profiles directory.
 # Only typo fixes which don't affect portage/repoman behaviour could be avoided
 # here. If in doubt put a record here!
+
+  06 Aug 2015; Michał Górny <mgorny@gentoo.org> desc/linguas.desc:
+  Add Paraguayan (Guarani) locale for LibreOffice.
+  https://github.com/gentoo/gentoo-portage-rsync-mirror/pull/191 by a17r.
 
   05 Aug 2015; Patrice Clement <monsieurp@gentoo.org> updates/3Q-2015:
   Add pkgmove entry for biojava: moved from dev-java/ to sci-biology/.

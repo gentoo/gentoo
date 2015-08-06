@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/html5lib
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/html5lib/ChangeLog,v 1.43 2015/08/06 09:00:35 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/html5lib/ChangeLog,v 1.44 2015/08/06 11:55:02 ago Exp $
+
+  06 Aug 2015; Agostino Sarubbo <ago@gentoo.org> html5lib-0.99999.ebuild:
+  Stable for amd64, wrt bug #556820
 
 *html5lib-0.999999 (06 Aug 2015)
 

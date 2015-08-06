@@ -1,6 +1,11 @@
 # ChangeLog for sys-devel/llvm
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/llvm/ChangeLog,v 1.257 2015/07/25 13:53:53 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/llvm/ChangeLog,v 1.258 2015/08/06 12:18:45 voyageur Exp $
+
+  06 Aug 2015; Bernard Cafarelli <voyageur@gentoo.org> llvm-3.6.0.ebuild,
+  llvm-3.6.1.ebuild, llvm-3.6.2.ebuild, llvm-9999.ebuild:
+  Add missing dependencies to finally close #543422 (USE-flag masked on
+  sparc/powerpc)
 
 *llvm-3.6.2 (25 Jul 2015)
 

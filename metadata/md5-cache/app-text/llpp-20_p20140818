@@ -4,11 +4,11 @@ DESCRIPTION=graphical PDF viewer which aims to superficially resemble less(1)
 EAPI=5
 HOMEPAGE=http://repo.or.cz/w/llpp.git
 IUSE=+ocamlopt static
-KEYWORDS=~amd64 ppc ~x86
+KEYWORDS=amd64 ppc ~x86
 LICENSE=GPL-3
 RDEPEND=x11-misc/xsel !static? ( >=app-text/mupdf-1.5:0= media-libs/openjpeg:2 media-libs/fontconfig:1.0 media-libs/freetype:2 media-libs/jbig2dec sys-libs/zlib virtual/jpeg:0 x11-libs/libX11 )
 RESTRICT=!ocamlopt? ( strip )
 SLOT=0
 SRC_URI=http://repo.or.cz/w/llpp.git/snapshot/4fc967506989680faf64fb6c1dd0e0d13c678124.tar.gz -> llpp-20_p20140818.tar.gz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	vcs-snapshot	58b766562c9fbfb3268b04e33cdf2f66
-_md5_=97e6c72ea00f82cd12e122f8462efeb2
+_md5_=9213fb3124477836d63b674494504de1

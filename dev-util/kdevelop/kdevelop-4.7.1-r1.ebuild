@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/kdevelop/kdevelop-4.7.1-r1.ebuild,v 1.1 2015/08/03 13:09:33 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/kdevelop/kdevelop-4.7.1-r1.ebuild,v 1.2 2015/08/06 11:47:29 ago Exp $
 
 EAPI=5
 
@@ -15,7 +15,7 @@ LICENSE="GPL-2 LGPL-2"
 IUSE="+cmake +cxx debug +gdbui okteta qthelp"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	KEYWORDS="~amd64 ~ppc ~x86"
+	KEYWORDS="amd64 ~ppc ~x86"
 fi
 
 DEPEND="

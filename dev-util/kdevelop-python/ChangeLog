@@ -1,6 +1,9 @@
 # ChangeLog for dev-util/kdevelop-python
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/kdevelop-python/ChangeLog,v 1.13 2015/07/25 16:13:44 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/kdevelop-python/ChangeLog,v 1.14 2015/08/06 11:47:44 ago Exp $
+
+  06 Aug 2015; Agostino Sarubbo <ago@gentoo.org> kdevelop-python-1.7.1.ebuild:
+  Stable for amd64, wrt bug #533386
 
   25 Jul 2015; Michał Górny <mgorny@gentoo.org> kdevelop-python-1.5.2.ebuild,
   kdevelop-python-1.6.0.ebuild, kdevelop-python-1.7.1.ebuild:
