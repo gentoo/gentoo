@@ -1,6 +1,13 @@
 # ChangeLog for sys-freebsd/freebsd-ubin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-ubin/ChangeLog,v 1.104 2015/07/29 12:09:34 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-ubin/ChangeLog,v 1.105 2015/08/06 10:43:28 mgorny Exp $
+
+*freebsd-ubin-10.1-r2 (06 Aug 2015)
+
+  06 Aug 2015; Michał Górny <mgorny@gentoo.org> +freebsd-ubin-10.1-r2.ebuild,
+  -freebsd-ubin-10.1-r1.ebuild:
+  Fix FreeBSD-SA-15:18.bsdpatch. https://github.com/gentoo/gentoo-portage-rsync-
+  mirror/pull/192 by nigoro.
 
 *freebsd-ubin-10.1-r1 (29 Jul 2015)
 

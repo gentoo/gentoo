@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-sbin/freebsd-sbin-10.1.ebuild,v 1.2 2015/06/05 16:43:55 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-sbin/freebsd-sbin-10.1-r1.ebuild,v 1.1 2015/08/06 10:44:24 mgorny Exp $
 
 EAPI=5
 
@@ -9,8 +9,13 @@ inherit bsdmk freebsd multilib
 DESCRIPTION="FreeBSD sbin utils"
 SLOT="0"
 
+# Security Advisory and Errata patches.
+UPSTREAM_PATCHES=( "SA-15:19/routed.patch" )
+
 if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+	SRC_URI="${SRC_URI}
+		$(freebsd_upstream_patches)"
 fi
 
 EXTRACTONLY="

@@ -1,6 +1,18 @@
 # ChangeLog for net-im/gajim
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/gajim/ChangeLog,v 1.230 2015/08/02 11:28:48 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/gajim/ChangeLog,v 1.231 2015/08/06 10:41:00 jlec Exp $
+
+  06 Aug 2015; Justin Lecher <jlec@gentoo.org> -files/0.14-python-version.patch,
+  -files/0.14.1-testing.patch, -files/0.14.4-unicode.patch,
+  -files/gajim-0.14.4-debian_patches_unicode.patch,
+  -files/gajim-0.15-SA48695-2.patch, -files/gajim-0.15-SA48695.patch,
+  -files/gajim-0.15-plugin.patch, -files/gajim-0.15.2-CVE-2012-5524.patch,
+  -files/gajim-0.15.3-roster.patch, -files/gajim-0.15.3-starttls.patch,
+  -files/gajim-0.16.1-gnupg-2.1-backport.patch,
+  -files/gajim-0.16_beta2-pyopenssl-backport-1.patch,
+  -files/gajim-0.16_beta2-pyopenssl-backport-2.patch, -gajim-0.16.1-r2.ebuild,
+  -gajim-0.16.1.ebuild, -gajim-0.16.2.ebuild:
+  Clean old; obsoletes bug #556596
 
 *gajim-0.16.3 (02 Aug 2015)
 
