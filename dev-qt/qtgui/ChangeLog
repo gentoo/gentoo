@@ -1,6 +1,9 @@
 # ChangeLog for dev-qt/qtgui
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtgui/ChangeLog,v 1.92 2015/07/11 18:17:30 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtgui/ChangeLog,v 1.93 2015/08/06 13:42:34 zlogene Exp $
+
+  06 Aug 2015; Mikle Kolyada <zlogene@gentoo.org> qtgui-4.8.6-r4.ebuild:
+  ia64 stable wrt bug #530238
 
 *qtgui-5.4.2-r1 (11 Jul 2015)
 

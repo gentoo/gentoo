@@ -1,6 +1,9 @@
 # ChangeLog for dev-qt/qtdeclarative
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtdeclarative/ChangeLog,v 1.37 2015/07/05 21:13:34 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtdeclarative/ChangeLog,v 1.38 2015/08/06 13:55:09 zlogene Exp $
+
+  06 Aug 2015; Mikle Kolyada <zlogene@gentoo.org> qtdeclarative-4.8.6-r1.ebuild:
+  ia64 stable wrt bug #530238
 
   05 Jul 2015; Tobias Klausmann <klausman@gentoo.org>
   qtdeclarative-4.8.6-r1.ebuild:

@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/smartmontools
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/smartmontools/ChangeLog,v 1.149 2015/08/02 18:33:27 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/smartmontools/ChangeLog,v 1.150 2015/08/06 13:40:36 klausman Exp $
+
+  06 Aug 2015; Tobias Klausmann <klausman@gentoo.org> smartmontools-6.4.ebuild:
+  Stable on alpha, bug 555528
 
   02 Aug 2015; Agostino Sarubbo <ago@gentoo.org> smartmontools-6.4.ebuild:
   Stable for x86, wrt bug #555528

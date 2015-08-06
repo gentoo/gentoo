@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/scala-ide/scala-ide-4.1.0.ebuild,v 1.1 2015/06/28 11:55:10 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/scala-ide/scala-ide-4.1.0.ebuild,v 1.2 2015/08/06 13:36:47 monsieurp Exp $
 EAPI=5
 
 inherit java-pkg-opt-2
@@ -10,7 +10,7 @@ SRC_URI_X86="http://downloads.typesafe.com/scalaide-pack/${PV}-vfinal-luna-211-2
 
 DESCRIPTION="The Scala IDE"
 HOMEPAGE="http://www.scala-ide.org"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 SRC_URI="
 	amd64? ( ${SRC_URI_AMD64} )
 	x86? ( ${SRC_URI_X86} )

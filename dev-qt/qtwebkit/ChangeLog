@@ -1,6 +1,9 @@
 # ChangeLog for dev-qt/qtwebkit
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtwebkit/ChangeLog,v 1.41 2015/07/23 20:49:20 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtwebkit/ChangeLog,v 1.42 2015/08/06 13:43:49 zlogene Exp $
+
+  06 Aug 2015; Mikle Kolyada <zlogene@gentoo.org> qtwebkit-4.8.6-r1.ebuild:
+  ia64 stable wrt bug #530238
 
   23 Jul 2015; Davide Pesavento <pesa@gentoo.org> qtwebkit-4.10.4.ebuild:
   Add missing pkgconfig dependency.

@@ -1,6 +1,9 @@
 # ChangeLog for dev-qt/qtsql
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtsql/ChangeLog,v 1.40 2015/07/05 21:14:31 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtsql/ChangeLog,v 1.41 2015/08/06 14:00:13 zlogene Exp $
+
+  06 Aug 2015; Mikle Kolyada <zlogene@gentoo.org> qtsql-4.8.6-r1.ebuild:
+  ia64 stable wrt bug #530238
 
   05 Jul 2015; Tobias Klausmann <klausman@gentoo.org> qtsql-4.8.6-r1.ebuild:
   Stable on alpha, bug 530238

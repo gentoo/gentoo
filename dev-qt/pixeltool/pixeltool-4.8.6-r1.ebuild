@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-qt/pixeltool/pixeltool-4.8.6-r1.ebuild,v 1.7 2015/07/05 21:12:28 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-qt/pixeltool/pixeltool-4.8.6-r1.ebuild,v 1.8 2015/08/06 13:51:56 zlogene Exp $
 
 EAPI=5
 
@@ -9,9 +9,9 @@ inherit qt4-build-multilib
 DESCRIPTION="Qt screen magnifier"
 
 if [[ ${QT4_BUILD_TYPE} == live ]]; then
-	KEYWORDS="alpha arm ppc ppc64"
+	KEYWORDS="alpha arm ia64 ppc ppc64"
 else
-	KEYWORDS="alpha amd64 arm ~ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+	KEYWORDS="alpha amd64 arm ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 
 IUSE=""

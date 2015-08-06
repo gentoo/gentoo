@@ -1,6 +1,11 @@
 # ChangeLog for dev-lang/scala-bin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/scala-bin/ChangeLog,v 1.5 2015/06/14 18:56:32 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/scala-bin/ChangeLog,v 1.6 2015/08/06 13:34:16 monsieurp Exp $
+
+*scala-bin-2.11.7 (06 Aug 2015)
+
+  06 Aug 2015; Patrice Clement <monsieurp@gentoo.org> +scala-bin-2.11.7.ebuild:
+  Version bump.
 
   14 Jun 2015; Patrice Clement <monsieurp@gentoo.org> -scala-bin-2.11.4.ebuild,
   -scala-bin-2.11.5.ebuild:
