@@ -5,4 +5,7 @@
 	<upstream>
 		<remote-id type="sourceforge">isync</remote-id>
 	</upstream>
+	<use>
+		<flag name="compat">Enable legacy utilities</flag>
+	</use>
 </pkgmetadata>
