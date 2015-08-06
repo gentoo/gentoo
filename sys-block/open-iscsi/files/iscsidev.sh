@@ -39,7 +39,8 @@ status=$?
 
 # do the removal
 if [[ $ACTION = 'remove' ]]; then
-  find -L /dev/disk/by-path/ -type l -lname ${DEVNAME} -exec rm "{}" + 2>/dev/null
+  # nohup needed so this isn't constantly run...
+  nohup find -L /dev/disk/by-path/ -type l -lname ${DEVNAME} -exec rm "{}" + 2>/dev/null &
   exit 0
 fi
 

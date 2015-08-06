@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/ceph/ceph-0.94.2.ebuild,v 1.1 2015/07/15 08:57:51 dlan Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/ceph/ceph-0.94.2.ebuild,v 1.2 2015/08/06 02:38:08 dlan Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
@@ -127,6 +127,7 @@ src_install() {
 	keepdir /var/lib/${PN}/tmp
 	keepdir /var/log/${PN}/stat
 
+	newinitd "${FILESDIR}/rbdmap.initd" rbdmap
 	newinitd "${FILESDIR}/${PN}.initd-r1" ${PN}
 	newconfd "${FILESDIR}/${PN}.confd-r1" ${PN}
 

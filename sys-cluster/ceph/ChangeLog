@@ -1,6 +1,10 @@
 # ChangeLog for sys-cluster/ceph
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/ceph/ChangeLog,v 1.75 2015/08/04 15:47:03 dlan Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/ceph/ChangeLog,v 1.76 2015/08/06 02:38:08 dlan Exp $
+
+  06 Aug 2015; Yixun Lan <dlan@gentoo.org> ceph-0.94.2.ebuild,
+  +files/rbdmap.initd:
+  add rbdmap init script, bug 553292, thanks frank <skunk at legalise.it>
 
 *ceph-0.80.10-r1 (04 Aug 2015)
 

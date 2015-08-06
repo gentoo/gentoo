@@ -1,6 +1,10 @@
 # ChangeLog for sys-block/open-iscsi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/open-iscsi/ChangeLog,v 1.62 2015/08/05 02:14:33 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-block/open-iscsi/ChangeLog,v 1.63 2015/08/06 03:09:28 prometheanfire Exp $
+
+  06 Aug 2015; Matthew Thode <prometheanfire@gentoo.org> files/iscsidev.sh,
+  open-iscsi-2.0.872-r3.ebuild:
+  fix the glaring bug
 
 *open-iscsi-2.0.872-r3 (05 Aug 2015)
 

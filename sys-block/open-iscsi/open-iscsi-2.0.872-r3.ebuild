@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/open-iscsi/open-iscsi-2.0.872-r3.ebuild,v 1.1 2015/08/05 02:14:33 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-block/open-iscsi/open-iscsi-2.0.872-r3.ebuild,v 1.2 2015/08/06 03:09:28 prometheanfire Exp $
 
 EAPI=2
 inherit versionator linux-info eutils flag-o-matic toolchain-funcs
@@ -16,6 +16,7 @@ IUSE="debug slp"
 DEPEND="slp? ( net-libs/openslp )"
 RDEPEND="${DEPEND}
 	virtual/udev
+	sys-fs/lsscsi
 	sys-apps/util-linux"
 
 S="${WORKDIR}/${MY_PV}"
