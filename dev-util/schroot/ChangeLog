@@ -1,6 +1,13 @@
 # ChangeLog for dev-util/schroot
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/schroot/ChangeLog,v 1.44 2015/07/31 22:46:23 jcallen Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/schroot/ChangeLog,v 1.45 2015/08/06 00:00:43 jcallen Exp $
+
+*schroot-1.6.10-r3 (06 Aug 2015)
+
+  06 Aug 2015; Jonathan Callen <jcallen@gentoo.org> +schroot-1.6.10-r3.ebuild,
+  -schroot-1.6.10-r2.ebuild:
+  Add LOCALSTATEDIR to cmake args to ensure that /var is used instead of
+  /usr/var.  Thanks to Alex Turbov, bug #556660.
 
 *schroot-1.6.10-r2 (31 Jul 2015)
 

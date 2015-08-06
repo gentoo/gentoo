@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/schroot/schroot-1.6.10-r2.ebuild,v 1.1 2015/07/31 22:46:23 jcallen Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/schroot/schroot-1.6.10-r3.ebuild,v 1.1 2015/08/06 00:00:43 jcallen Exp $
 
 EAPI="5"
 
@@ -76,6 +76,7 @@ src_configure() {
 		$(cmake-utils_use test test)
 		-Dbash_completion_dir="$(get_bashcompdir)"
 		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}/etc"
+		-DCMAKE_INSTALL_LOCALSTATEDIR="${EPREFIX}/var"
 	)
 	if ! use nls; then
 		mycmakeargs+=(-DPO4A_EXECUTABLE=NOTFOUND)
