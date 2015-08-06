@@ -1,6 +1,13 @@
 # ChangeLog for app-emulation/open-vm-tools
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/open-vm-tools/ChangeLog,v 1.91 2015/06/09 11:10:01 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/open-vm-tools/ChangeLog,v 1.92 2015/08/06 20:51:44 floppym Exp $
+
+*open-vm-tools-9.10.2_p2822639 (06 Aug 2015)
+
+  06 Aug 2015; Mike Gilbert <floppym@gentoo.org>
+  +open-vm-tools-9.10.2_p2822639.ebuild:
+  Version bump. Remove the modules USE flag; people can install open-vm-tools-
+  kmod themselves.
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

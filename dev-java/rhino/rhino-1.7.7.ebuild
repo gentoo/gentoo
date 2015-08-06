@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/rhino/rhino-1.7.7.ebuild,v 1.1 2015/08/06 10:01:23 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/rhino/rhino-1.7.7.ebuild,v 1.2 2015/08/06 20:52:28 monsieurp Exp $
 
 EAPI="5"
 JAVA_PKG_IUSE="doc examples source test"
@@ -43,8 +43,6 @@ DEPEND=">=virtual/jdk-1.6
 	${CDEPEND}"
 
 JAVA_ANT_REWRITE_CLASSPATH="yes"
-EANT_BUILD_XML="${S}/build.xml"
-EANT_BUILD_TARGET="jar"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-testsrc-build.xml.patch

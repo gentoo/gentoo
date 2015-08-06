@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/oyranos/oyranos-0.9.5-r1.ebuild,v 1.3 2015/08/05 11:43:37 xmw Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/oyranos/oyranos-0.9.5-r1.ebuild,v 1.4 2015/08/06 20:54:05 xmw Exp $
 
 EAPI=5
 
@@ -19,8 +19,8 @@ IUSE="X cairo cups doc exif fltk jpeg qt4 qt5 raw test tiff"
 
 COMMON_DEPEND="
 	|| (
-		=app-admin/elektra-0.7*:0[${MULTILIB_USEDEP}]
-		>=app-admin/elektra-0.8.4:0[${MULTILIB_USEDEP}]
+		=app-admin/elektra-0.7*:0=[${MULTILIB_USEDEP}]
+		>=app-admin/elektra-0.8.4:0=[${MULTILIB_USEDEP}]
 	)
 	>=dev-libs/libxml2-2.9.1-r4[${MULTILIB_USEDEP}]
 	>=dev-libs/yajl-2.0.4-r1[${MULTILIB_USEDEP}]

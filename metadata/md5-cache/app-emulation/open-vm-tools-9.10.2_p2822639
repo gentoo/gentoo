@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare setup
+DEPEND=dev-libs/glib:2 dev-libs/libdnet sys-apps/ethtool sys-fs/fuse >=sys-process/procps-3.3.2 grabbitmqproxy? ( dev-libs/openssl:0 ) icu? ( dev-libs/icu:= ) pam? ( virtual/pam ) vgauth? ( dev-libs/openssl:0 dev-libs/xerces-c dev-libs/xml-security-c ) X? ( dev-cpp/gtkmm:2.4 x11-base/xorg-server x11-drivers/xf86-input-vmmouse x11-drivers/xf86-video-vmware x11-libs/gtk+:2 x11-libs/libnotify x11-libs/libX11 x11-libs/libXtst ) xinerama? ( x11-libs/libXinerama ) doc? ( app-doc/doxygen ) virtual/pkgconfig sys-apps/findutils virtual/pkgconfig
+DESCRIPTION=Opensourced tools for VMware guests
+EAPI=5
+HOMEPAGE=https://github.com/vmware/open-vm-tools
+IUSE=X doc grabbitmqproxy icu pam +pic vgauth xinerama
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2
+RDEPEND=dev-libs/glib:2 dev-libs/libdnet sys-apps/ethtool sys-fs/fuse >=sys-process/procps-3.3.2 grabbitmqproxy? ( dev-libs/openssl:0 ) icu? ( dev-libs/icu:= ) pam? ( virtual/pam ) vgauth? ( dev-libs/openssl:0 dev-libs/xerces-c dev-libs/xml-security-c ) X? ( dev-cpp/gtkmm:2.4 x11-base/xorg-server x11-drivers/xf86-input-vmmouse x11-drivers/xf86-video-vmware x11-libs/gtk+:2 x11-libs/libnotify x11-libs/libX11 x11-libs/libXtst ) xinerama? ( x11-libs/libXinerama )
+SLOT=0
+SRC_URI=mirror://sourceforge/open-vm-tools/open-vm-tools-9.10.2-2822639.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	pam	aa1ebb3ab720ea04dbbdd6eaaf9554ed	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=d8ce04561a499f4c39cbe3c0388b0e8a

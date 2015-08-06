@@ -1,6 +1,10 @@
 # ChangeLog for media-libs/oyranos
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/oyranos/ChangeLog,v 1.32 2015/08/05 11:43:37 xmw Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/oyranos/ChangeLog,v 1.33 2015/08/06 20:54:05 xmw Exp $
+
+  06 Aug 2015; Michael Weber <xmw@gentoo.org> oyranos-0.9.4-r2.ebuild,
+  oyranos-0.9.5-r1.ebuild, oyranos-0.9.5.ebuild:
+  Add slot operator :0= to elektra.
 
   05 Aug 2015; Michael Weber <xmw@gentoo.org> oyranos-0.9.4-r2.ebuild,
   oyranos-0.9.5-r1.ebuild, oyranos-0.9.5.ebuild, oyranos-9999.ebuild:
