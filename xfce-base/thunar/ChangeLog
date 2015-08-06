@@ -1,6 +1,9 @@
 # ChangeLog for xfce-base/thunar
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-base/thunar/ChangeLog,v 1.190 2015/08/05 10:46:10 perfinion Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-base/thunar/ChangeLog,v 1.191 2015/08/06 14:47:06 zlogene Exp $
+
+  06 Aug 2015; Mikle Kolyada <zlogene@gentoo.org> thunar-1.6.10.ebuild:
+  ia64 stable wrt bug #553500
 
   05 Aug 2015; Jason Zaman <perfinion@gentoo.org> metadata.xml:
   Replace herd with xfce@g.o

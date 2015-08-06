@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/ceph/ceph-0.87.2.ebuild,v 1.2 2015/08/04 15:47:03 dlan Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/ceph/ceph-0.94.2-r1.ebuild,v 1.1 2015/08/06 15:10:06 dlan Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
@@ -11,13 +11,12 @@ if [[ $PV = *9999* ]]; then
 		git://github.com/ceph/ceph.git
 		https://github.com/ceph/ceph.git"
 	SRC_URI=""
-	KEYWORDS=""
 else
 	SRC_URI="http://ceph.com/download/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~x86"
 fi
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 
-inherit autotools eutils multilib python-any-r1 udev readme.gentoo ${scm_eclass}
+inherit autotools eutils multilib python-any-r1 udev readme.gentoo systemd ${scm_eclass}
 
 DESCRIPTION="Ceph distributed filesystem"
 HOMEPAGE="http://ceph.com/"
@@ -84,9 +83,6 @@ pkg_setup() {
 src_prepare() {
 	[[ ${PATCHES[@]} ]] && epatch "${PATCHES[@]}"
 
-	sed -e '1i#include <stdint.h>' \
-		-i src/tracing/{objectstore,oprequest,osd,pg}.tp || die
-
 	epatch_user
 	eautoreconf
 }
@@ -131,8 +127,17 @@ src_install() {
 	keepdir /var/lib/${PN}/tmp
 	keepdir /var/log/${PN}/stat
 
+	newinitd "${FILESDIR}/rbdmap.initd" rbdmap
 	newinitd "${FILESDIR}/${PN}.initd-r1" ${PN}
 	newconfd "${FILESDIR}/${PN}.confd-r1" ${PN}
+
+	systemd_dounit           "${FILESDIR}/ceph.target"
+	systemd_newunit          "${FILESDIR}/ceph-mds_at.service"      "ceph-mds@.service"
+	systemd_install_serviced "${FILESDIR}/ceph-mds_at.service.conf" "ceph-mds@.service"
+	systemd_newunit          "${FILESDIR}/ceph-osd_at.service"      "ceph-osd@.service"
+	systemd_install_serviced "${FILESDIR}/ceph-osd_at.service.conf" "ceph-osd@.service"
+	systemd_newunit          "${FILESDIR}/ceph-mon_at.service"      "ceph-mon@.service"
+	systemd_install_serviced "${FILESDIR}/ceph-mon_at.service.conf" "ceph-mon@.service"
 
 	python_fix_shebang \
 		"${ED}"/usr/sbin/{ceph-disk,ceph-create-keys} \

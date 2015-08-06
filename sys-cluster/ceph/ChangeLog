@@ -1,6 +1,19 @@
 # ChangeLog for sys-cluster/ceph
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/ceph/ChangeLog,v 1.76 2015/08/06 02:38:08 dlan Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/ceph/ChangeLog,v 1.78 2015/08/06 15:13:12 dlan Exp $
+
+  06 Aug 2015; Yixun Lan <dlan@gentoo.org> -ceph-0.80.10.ebuild,
+  -ceph-0.87.2.ebuild, -ceph-0.94.2.ebuild:
+  drop old
+
+*ceph-0.94.2-r1 (06 Aug 2015)
+
+  06 Aug 2015; Yixun Lan <dlan@gentoo.org> +ceph-0.94.2-r1.ebuild,
+  +files/ceph.target, +files/ceph-mds_at.service,
+  +files/ceph-mds_at.service.conf, +files/ceph-mon_at.service,
+  +files/ceph-mon_at.service.conf, +files/ceph-osd_at.service,
+  +files/ceph-osd_at.service.conf:
+  add systemd support, bug 550892, thanks Michael Seifert
 
   06 Aug 2015; Yixun Lan <dlan@gentoo.org> ceph-0.94.2.ebuild,
   +files/rbdmap.initd:

@@ -1,6 +1,10 @@
 # ChangeLog for xfce-extra/thunar-archive-plugin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/thunar-archive-plugin/ChangeLog,v 1.39 2015/08/05 10:47:47 perfinion Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/thunar-archive-plugin/ChangeLog,v 1.40 2015/08/06 14:56:19 zlogene Exp $
+
+  06 Aug 2015; Mikle Kolyada <zlogene@gentoo.org>
+  thunar-archive-plugin-0.3.1-r1.ebuild:
+  ia64 stable wrt bug #553500
 
   05 Aug 2015; Jason Zaman <perfinion@gentoo.org> metadata.xml:
   Replace herd with xfce@g.o

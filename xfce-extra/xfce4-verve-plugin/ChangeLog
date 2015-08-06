@@ -1,6 +1,10 @@
 # ChangeLog for xfce-extra/xfce4-verve-plugin
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-verve-plugin/ChangeLog,v 1.26 2015/08/05 10:47:47 perfinion Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-verve-plugin/ChangeLog,v 1.27 2015/08/06 15:00:07 zlogene Exp $
+
+  06 Aug 2015; Mikle Kolyada <zlogene@gentoo.org>
+  xfce4-verve-plugin-1.0.1.ebuild:
+  ia64 stable wrt bug #553500
 
   05 Aug 2015; Jason Zaman <perfinion@gentoo.org> metadata.xml:
   Replace herd with xfce@g.o

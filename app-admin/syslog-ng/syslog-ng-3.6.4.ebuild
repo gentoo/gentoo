@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/syslog-ng/syslog-ng-3.6.4.ebuild,v 1.3 2015/08/04 21:48:14 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/syslog-ng/syslog-ng-3.6.4.ebuild,v 1.4 2015/08/06 14:45:06 mr_bones_ Exp $
 
 EAPI=5
 inherit eutils multilib systemd versionator
@@ -58,6 +58,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		--disable-docs \
+		--enable-manpages \
 		--with-embedded-crypto \
 		--with-ivykis=internal \
 		--with-libmongo-client=internal \
