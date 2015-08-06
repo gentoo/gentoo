@@ -1,6 +1,11 @@
 # ChangeLog for sys-power/suspend
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/suspend/ChangeLog,v 1.29 2015/04/29 19:35:35 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-power/suspend/ChangeLog,v 1.30 2015/08/06 21:53:54 xmw Exp $
+
+*suspend-1.0_p20150622 (06 Aug 2015)
+
+  06 Aug 2015; Michael Weber <xmw@gentoo.org> +suspend-1.0_p20150622.ebuild:
+  Version bump by bircoph and k_f (bug 494638).
 
   29 Apr 2015; Manuel Rüger <mrueg@gentoo.org>
   -files/suspend-overflow-gentoo.patch, -suspend-0.8-r1.ebuild:

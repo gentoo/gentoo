@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/gnu-hylafax/gnu-hylafax-1.0.3-r1.ebuild,v 1.1 2015/04/14 18:25:45 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/gnu-hylafax/gnu-hylafax-1.0.3-r2.ebuild,v 1.1 2015/08/06 22:01:18 monsieurp Exp $
 
 EAPI=5
 
@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 
 CDEPEND="dev-java/commons-logging:0
 		dev-java/commons-cli:1
-		java-virtuals/javamail:0
+		dev-java/oracle-javamail:0
 		dev-java/java-getopt:1
 		dev-java/log4j:0"
 
@@ -27,9 +27,19 @@ RDEPEND=">=virtual/jre-1.6
 DEPEND=">=virtual/jdk-1.6
 	${CDEPEND}"
 
+JAVA_GENTOO_CLASSPATH="
+	commons-logging
+	commons-cli-1
+	oracle-javamail
+	java-getopt-1
+	log4j"
+
 S="${WORKDIR}/${P}"
 
-JAVA_GENTOO_CLASSPATH="commons-logging,commons-cli-1,javamail,java-getopt-1,log4j"
+# bug 546502
+PATCHES=(
+	"${FILESDIR}"/"${P}"-ClientPool.patch
+)
 
 java_prepare() {
 	rm -rv "${S}"/lib || die
@@ -38,6 +48,6 @@ java_prepare() {
 	# tarball contains the same sources in gnu-.../sources and gnu-.../main/
 	rm -r gnu-hylafax-*/sources || die
 
-	# bug 546502
-	epatch "${FILESDIR}"/"${P}"-ClientPool.patch
+	epatch ${PATCHES[@]}
+
 }

@@ -1,6 +1,13 @@
 # ChangeLog for app-eselect/eselect-java
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-eselect/eselect-java/ChangeLog,v 1.4 2015/07/29 17:55:43 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-eselect/eselect-java/ChangeLog,v 1.5 2015/08/06 21:54:30 chewi Exp $
+
+*eselect-java-0.1.0-r1 (06 Aug 2015)
+
+  06 Aug 2015; James Le Cuirot <chewi@gentoo.org> +eselect-java-0.1.0-r1.ebuild:
+  Fix prefixifying of run-java-tool.bash that was caused by an existing copy in
+  the tarball. sera has gone so fetch directly from gitweb and prepare with
+  eautoreconf.
 
   29 Jul 2015; Fabian Groffen <grobian@gentoo.org> eselect-java-0.1.0.ebuild:
   Keyworded for *-solaris, *-macos
