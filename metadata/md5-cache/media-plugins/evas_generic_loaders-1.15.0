@@ -10,4 +10,4 @@ RDEPEND=>=dev-libs/efl-1.15.0 gstreamer? ( media-libs/gstreamer:1.0 media-libs/g
 SLOT=0
 SRC_URI=http://download.enlightenment.org/rel/libs/evas_generic_loaders/evas_generic_loaders-1.15.0.tar.xz
 _eclasses_=enlightenment	98392d364f7f4c6cde8a516cbc298472	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=6040417a4d2d2a6a64267eb04efe1a92
+_md5_=cd04447e1e6b8a84465a60302d130ca9

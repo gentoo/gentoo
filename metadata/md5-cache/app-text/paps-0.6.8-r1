@@ -3,10 +3,10 @@ DEPEND=x11-libs/pango virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=s
 DESCRIPTION=Unicode-aware text to PostScript converter
 EAPI=5
 HOMEPAGE=http://paps.sourceforge.net/
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=LGPL-2
 RDEPEND=x11-libs/pango
 SLOT=0
 SRC_URI=mirror://sourceforge/paps/paps-0.6.8.tar.gz
 _eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=51d6587d8b9aa837e004595beb46b065
+_md5_=98fcc360be06c7d4987dbe13fd4e8ba9

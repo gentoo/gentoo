@@ -1,6 +1,9 @@
 # ChangeLog for dev-util/a8
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/a8/ChangeLog,v 1.19 2014/12/25 12:44:54 mgorny Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/a8/ChangeLog,v 1.20 2015/08/06 09:59:08 ago Exp $
+
+  06 Aug 2015; Agostino Sarubbo <ago@gentoo.org> a8-0.11-r2.ebuild:
+  Stable for amd64, wrt bug #521046
 
   25 Dec 2014; Michał Górny <mgorny@gentoo.org> a8-0.11-r2.ebuild:
   Add missing PYTHON_USEDEP.

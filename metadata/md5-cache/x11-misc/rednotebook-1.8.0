@@ -4,11 +4,11 @@ DESCRIPTION=A graphical journal with calendar, templates, tags, keyword searchin
 EAPI=5
 HOMEPAGE=http://rednotebook.sourceforge.net
 IUSE=libyaml spell python_targets_python2_7
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=dev-python/pyyaml[libyaml?,python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/pygtk-2.13[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/pywebkitgtk-1.1.5[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/chardet[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] spell? ( dev-python/gtkspell-python[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=mirror://sourceforge/rednotebook/rednotebook-1.8.0.tar.gz
 _eclasses_=distutils-r1	715b22a21726d3fd76b17e007c5daf5f	eutils	9fb270e417e0e83d64ca52586c4a79de	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-r1	d9c8348f26710ea523a385c2328cf027	python-utils-r1	0295a286ec27cab6af76b3b75ba07a3a	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=cd2ade480bd568f33b22ff6429cd1a2a
+_md5_=517f5cb4b9c155361b8a54a68dcbe659

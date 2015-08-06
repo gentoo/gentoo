@@ -4013,6 +4013,8 @@ media-plugins/gst-plugins-meta:http - Enable http streaming via net-libs/libsoup
 media-plugins/gst-plugins-meta:libvisual - Enable visualization effects via media-libs/libvisual
 media-plugins/gst-plugins-meta:opus - Enable Opus audio codec support
 media-plugins/gst-plugins-meta:vpx - Enables vp8 codec support using libvpx, required to play some HTML5 videos
+media-plugins/imlib2_loaders:eet - Enable Eet image loader
+media-plugins/imlib2_loaders:xcf - Enable XCF image loader
 media-plugins/kipi-plugins:expoblending - Build the expoblending plugin, which requires media-gfx/hugin
 media-plugins/kipi-plugins:gpssync - Build the gpssync plugin, which requires media-lib/libkgeomap and thereby marble
 media-plugins/kipi-plugins:linguas_ha - Hausa translation

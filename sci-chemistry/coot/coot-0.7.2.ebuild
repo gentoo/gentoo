@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/coot/coot-0.7.2.ebuild,v 1.3 2014/10/12 11:33:45 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/coot/coot-0.7.2.ebuild,v 1.4 2015/08/06 09:59:02 ago Exp $
 
 EAPI=5
 
@@ -24,7 +24,7 @@ SRC_URI="
 
 SLOT="0"
 LICENSE="GPL-3"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="+openmp static-libs test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

@@ -1,6 +1,9 @@
 # ChangeLog for sci-chemistry/coot
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/coot/ChangeLog,v 1.67 2015/04/08 18:22:13 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/coot/ChangeLog,v 1.68 2015/08/06 09:59:02 ago Exp $
+
+  06 Aug 2015; Agostino Sarubbo <ago@gentoo.org> coot-0.7.2.ebuild:
+  Stable for amd64, wrt bug #529518
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> coot-0.7.1-r1.ebuild:
   Drop old Python implementations

@@ -1,6 +1,9 @@
 # ChangeLog for games-misc/papers-please
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/papers-please/ChangeLog,v 1.5 2014/11/25 23:14:39 hasufell Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/papers-please/ChangeLog,v 1.6 2015/08/06 10:01:01 ago Exp $
+
+  06 Aug 2015; Agostino Sarubbo <ago@gentoo.org> papers-please-1.1.65.ebuild:
+  Stable for amd64, wrt bug #539488
 
   25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
   drop maintainership

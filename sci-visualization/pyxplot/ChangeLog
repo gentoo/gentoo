@@ -1,6 +1,9 @@
 # ChangeLog for sci-visualization/pyxplot
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-visualization/pyxplot/ChangeLog,v 1.30 2015/04/08 18:23:57 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-visualization/pyxplot/ChangeLog,v 1.31 2015/08/06 09:58:47 ago Exp $
+
+  06 Aug 2015; Agostino Sarubbo <ago@gentoo.org> pyxplot-0.9.2.ebuild:
+  Stable for amd64, wrt bug #529540
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> pyxplot-0.9.2.ebuild:
   Drop old Python implementations

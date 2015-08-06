@@ -1,0 +1,11 @@
+# ChangeLog for media-plugins/emotion_generic_players
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/emotion_generic_players/ChangeLog,v 1.1 2015/08/06 10:14:18 vapier Exp $
+
+*emotion_generic_players-1.15.0 (06 Aug 2015)
+*emotion_generic_players-9999 (06 Aug 2015)
+
+  06 Aug 2015; Mike Frysinger <vapier@gentoo.org>
+  +emotion_generic_players-1.15.0.ebuild, +emotion_generic_players-9999.ebuild,
+  +metadata.xml:
+  Moved ebuild from e overlay.

@@ -1,6 +1,9 @@
 # ChangeLog for app-text/bibus
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/bibus/ChangeLog,v 1.41 2015/06/09 12:13:19 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/bibus/ChangeLog,v 1.42 2015/08/06 09:59:17 ago Exp $
+
+  06 Aug 2015; Agostino Sarubbo <ago@gentoo.org> bibus-1.5.2-r1.ebuild:
+  Stable for amd64, wrt bug #529412
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

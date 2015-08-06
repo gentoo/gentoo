@@ -1,0 +1,10 @@
+# ChangeLog for media-plugins/imlib2_loaders
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/imlib2_loaders/ChangeLog,v 1.1 2015/08/06 10:25:32 vapier Exp $
+
+*imlib2_loaders-9999 (06 Aug 2015)
+*imlib2_loaders-1.4.7 (06 Aug 2015)
+
+  06 Aug 2015; Mike Frysinger <vapier@gentoo.org> +imlib2_loaders-1.4.7.ebuild,
+  +imlib2_loaders-9999.ebuild, +metadata.xml:
+  Moved ebuild from e overlay.

@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/pygtkhelpers
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pygtkhelpers/ChangeLog,v 1.9 2015/03/13 23:23:16 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pygtkhelpers/ChangeLog,v 1.10 2015/08/06 09:59:12 ago Exp $
+
+  06 Aug 2015; Agostino Sarubbo <ago@gentoo.org> pygtkhelpers-0.4.3-r1.ebuild:
+  Stable for amd64, wrt bug #521046
 
   13 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -pygtkhelpers-0.4.2.ebuild:
   Remove old.

@@ -1,6 +1,11 @@
 # ChangeLog for x11-terms/terminology
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/terminology/ChangeLog,v 1.15 2015/05/10 18:18:30 nimiux Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/terminology/ChangeLog,v 1.16 2015/08/06 10:04:09 vapier Exp $
+
+*terminology-9999 (06 Aug 2015)
+
+  06 Aug 2015; Mike Frysinger <vapier@gentoo.org> +terminology-9999.ebuild:
+  Move live git ebuild from e overlay.
 
   10 May 2015; Chema Alonso <nimiux@gentoo.org> terminology-0.7.0.ebuild:
   Stable for amd64 wrt bug #538726

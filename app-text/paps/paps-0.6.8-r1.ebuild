@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/paps/paps-0.6.8-r1.ebuild,v 1.1 2014/11/24 21:45:46 xmw Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/paps/paps-0.6.8-r1.ebuild,v 1.2 2015/08/06 10:30:18 ago Exp $
 
 EAPI=5
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 RDEPEND="x11-libs/pango"

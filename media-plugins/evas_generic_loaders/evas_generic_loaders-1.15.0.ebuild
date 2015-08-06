@@ -1,22 +1,26 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/evas_generic_loaders/evas_generic_loaders-1.15.0.ebuild,v 1.1 2015/08/06 04:21:53 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/evas_generic_loaders/evas_generic_loaders-1.15.0.ebuild,v 1.3 2015/08/06 10:21:58 vapier Exp $
 
 EAPI="5"
 
-EKEY_STATE="snap"
-inherit enlightenment
-
 MY_P=${PN}-${PV/_/-}
+
+if [[ "${PV}" == "9999" ]] ; then
+	EGIT_SUB_PROJECT="core"
+	EGIT_URI_APPEND="${PN}"
+else
+	SRC_URI="http://download.enlightenment.org/rel/libs/${PN}/${MY_P}.tar.xz"
+	EKEY_STATE="snap"
+fi
+
+inherit enlightenment
 
 DESCRIPTION="Provides external applications as generic loaders for Evas"
 HOMEPAGE="http://www.enlightenment.org/"
-SRC_URI="http://download.enlightenment.org/rel/libs/${PN}/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
 IUSE="gstreamer pdf postscript raw svg"
-
-S=${WORKDIR}/${MY_P}
 
 RDEPEND=">=dev-libs/efl-${PV}
 	gstreamer? (
@@ -32,8 +36,10 @@ RDEPEND=">=dev-libs/efl-${PV}
 	)"
 DEPEND="${RDEPEND}"
 
+S=${WORKDIR}/${MY_P}
+
 src_configure() {
-	local MY_ECONF=(
+	E_ECONF=(
 		$(use_enable gstreamer gstreamer1)
 		$(use_enable pdf poppler)
 		$(use_enable postscript spectre)
