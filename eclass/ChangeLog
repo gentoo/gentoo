@@ -1,6 +1,12 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1746 2015/08/05 19:23:28 williamh Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1747 2015/08/06 08:20:33 slyfox Exp $
+
+  06 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> ghc-package.eclass,
+  haskell-cabal.eclass:
+  Add new helpers: 'ghc-pm-version' to get ghc version as seen by package
+  manager and 'ghc-is-dynamic' to workaround ghc-api bug
+  https://ghc.haskell.org/trac/ghc/ticket/10301 in ebuild.
 
   05 Aug 2015; William Hubbs <williamh@gentoo.org> golang-vcs-snapshot.eclass:
   add || die and fix indentation

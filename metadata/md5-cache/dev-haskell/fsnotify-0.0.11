@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=>=dev-haskell/hinotify-0.3.5:=[profile?] <dev-haskell/hinotify-0.4:=[profile?] >=dev-haskell/system-fileio-0.3.8:=[profile?] <dev-haskell/system-fileio-0.4:=[profile?] >=dev-haskell/system-filepath-0.4.6:=[profile?] <dev-haskell/system-filepath-0.5:=[profile?] >=dev-haskell/text-0.11.0:=[profile?] >=dev-lang/ghc-7.0.1:=
 SLOT=0/0.0.11
 SRC_URI=mirror://hackage/packages/archive/fsnotify/0.0.11/fsnotify-0.0.11.tar.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	ghc-package	48ae4e0fd75e1c8047c4b7f507d5debc	haskell-cabal	7ef7b3e7548c8c61352984737b22d3e3	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	ghc-package	3f863ffb216cc6adefcd79f9d5b237f9	haskell-cabal	94d71e614d64ab2c8b2bf1332c7ca007	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
 _md5_=4c7c288ca13283c097ac5c3bb29e85a9

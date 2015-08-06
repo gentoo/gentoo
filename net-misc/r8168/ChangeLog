@@ -1,6 +1,10 @@
 # ChangeLog for net-misc/r8168
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/r8168/ChangeLog,v 1.21 2015/08/06 07:23:45 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/r8168/ChangeLog,v 1.22 2015/08/06 07:41:42 chewi Exp $
+
+  06 Aug 2015; James Le Cuirot <chewi@gentoo.org>
+  -files/r8168-8.028.00-linux-3.3-compat.patch, -r8168-8.028.00.ebuild:
+  Drop old version.
 
   06 Aug 2015; Agostino Sarubbo <ago@gentoo.org> r8168-8.040.00.ebuild:
   Stable for x86, wrt bug #507518

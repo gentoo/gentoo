@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ghc-package.eclass,v 1.41 2015/03/28 13:32:40 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ghc-package.eclass,v 1.42 2015/08/06 08:20:33 slyfox Exp $
 
 # @ECLASS: ghc-package.eclass
 # @MAINTAINER:
@@ -64,13 +64,31 @@ ghc-getghcpkgbin() {
 
 # @FUNCTION: ghc-version
 # @DESCRIPTION:
-# returns the version of ghc
+# returns upstream version of ghc
+# as reported by '--numeric-version'
+# Examples: "7.10.2", "7.9.20141222"
 _GHC_VERSION_CACHE=""
 ghc-version() {
 	if [[ -z "${_GHC_VERSION_CACHE}" ]]; then
 		_GHC_VERSION_CACHE="$($(ghc-getghc) --numeric-version)"
 	fi
 	echo "${_GHC_VERSION_CACHE}"
+}
+
+# @FUNCTION: ghc-pm-version
+# @DESCRIPTION:
+# returns package manager(PM) version of ghc
+# as reported by '$(best_version)'
+# Examples: "PM:7.10.2", "PM:7.10.2_rc1", "PM:7.8.4-r4"
+_GHC_PM_VERSION_CACHE=""
+ghc-pm-version() {
+	local pm_ghc_p
+
+	if [[ -z "${_GHC_PM_VERSION_CACHE}" ]]; then
+		pm_ghc_p=$(best_version dev-lang/ghc)
+		_GHC_PM_VERSION_CACHE="PM:${pm_ghc_p#dev-lang/ghc-}"
+	fi
+	echo "${_GHC_PM_VERSION_CACHE}"
 }
 
 # @FUNCTION: ghc-cabal-version
@@ -101,6 +119,15 @@ ghc-sanecabal() {
 		[[ -f "${f}" ]] && version_is_at_least "${version}" "${f#*cabal-}" && return
 	done
 	return 1
+}
+# @FUNCTION: ghc-is-dynamic
+# @DESCRIPTION:
+# checks if ghc is built against dynamic libraries
+# binaries linked against GHC library (and using plugin loading)
+# have to be linked the same way:
+#    https://ghc.haskell.org/trac/ghc/ticket/10301
+ghc-is-dynamic() {
+	$(ghc-getghc) --info | grep "GHC Dynamic" | grep -q "YES"
 }
 
 # @FUNCTION: ghc-supports-shared-libraries
@@ -211,8 +238,8 @@ check-for-collisions() {
 		local collided=`$(ghc-getghcpkgbin) -f ${initial_pkg_db} list --simple-output "${checked_pkg}"`
 
 		if [[ -n ${collided} ]]; then
-			eerror "Package ${checked_pkg} is shipped with $(ghc-version)."
-			eerror "Ebuild author forgot CABAL_CORE_LIB_GHC_PV entry."
+			eerror "Cabal package '${checked_pkg}' is shipped with '$(ghc-pm-version)' ('$(ghc-version)')."
+			eerror "Ebuild author forgot an entry in CABAL_CORE_LIB_GHC_PV='${CABAL_CORE_LIB_GHC_PV}'."
 			eerror "Found in ${initial_pkg_db}."
 			die
 		fi
