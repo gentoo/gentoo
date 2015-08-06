@@ -1,6 +1,10 @@
 # ChangeLog for dev-vcs/subversion
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/subversion/ChangeLog,v 1.245 2015/08/06 19:10:37 tommy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/subversion/ChangeLog,v 1.246 2015/08/06 19:55:44 zlogene Exp $
+
+  06 Aug 2015; Mikle Kolyada <zlogene@gentoo.org> subversion-1.7.21.ebuild,
+  subversion-1.8.14.ebuild:
+  amd64 stable wrt bug #556076
 
 *subversion-1.7.21 (06 Aug 2015)
 

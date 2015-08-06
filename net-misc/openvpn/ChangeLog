@@ -1,6 +1,9 @@
 # ChangeLog for net-misc/openvpn
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/openvpn/ChangeLog,v 1.324 2015/07/12 19:33:49 djc Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/openvpn/ChangeLog,v 1.325 2015/08/06 20:07:37 zlogene Exp $
+
+  06 Aug 2015; Mikle Kolyada <zlogene@gentoo.org> openvpn-2.3.7.ebuild:
+  amd64 stable wrt bug #556874
 
   12 Jul 2015; Dirkjan Ochtman <djc@gentoo.org> openvpn-2.3.6-r1.ebuild,
   openvpn-2.3.6-r2.ebuild, openvpn-2.3.6.ebuild, openvpn-2.3.7.ebuild,

@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>proxy-maintainers</herd>
-	<maintainer>
-		<email>yannick.schaeffer@epfl.ch</email>
-		<name>Yannick Schaeffer</name>
-		<description>Mantainer. Assign bugs to him</description>
-	</maintainer>
 	<maintainer>
 		<email>floppym@gentoo.org</email>
 		<name>Mike Gilbert</name>
 	</maintainer>
+	<maintainer>
+		<email>yannick.schaeffer@epfl.ch</email>
+		<name>Yannick Schaeffer</name>
+	</maintainer>
+	<herd>proxy-maintainers</herd>
 	<longdescription>
 		This is efibootmgr, a Linux user-space application to modify the Intel
 		Extensible Firmware Interface (EFI) Boot Manager.  This application

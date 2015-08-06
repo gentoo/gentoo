@@ -1,6 +1,11 @@
 # ChangeLog for sci-physics/geant
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/geant/ChangeLog,v 1.84 2015/05/27 15:28:09 bircoph Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-physics/geant/ChangeLog,v 1.85 2015/08/06 20:30:29 bircoph Exp $
+
+*geant-3.21.14-r4 (06 Aug 2015)
+
+  06 Aug 2015; Andrew Savchenko <bircoph@gentoo.org> +geant-3.21.14-r4.ebuild:
+  Update Debian patchset to version 11, upgrade to EAPI=5.
 
   27 May 2015; Andrew Savchenko <bircoph@gentoo.org> geant-4.10.00.ebuild,
   geant-4.10.00_p01.ebuild, geant-4.10.01.ebuild:

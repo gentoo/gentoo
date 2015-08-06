@@ -1,6 +1,9 @@
 # ChangeLog for sys-libs/efivar
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/efivar/ChangeLog,v 1.9 2015/07/19 22:15:13 floppym Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/efivar/ChangeLog,v 1.10 2015/08/06 19:37:36 floppym Exp $
+
+  06 Aug 2015; Mike Gilbert <floppym@gentoo.org> metadata.xml:
+  Re-order maintainers.
 
   19 Jul 2015; Mike Gilbert <floppym@gentoo.org> +files/0.21-initializer.patch,
   efivar-0.21.ebuild:
