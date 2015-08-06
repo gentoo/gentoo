@@ -1,6 +1,11 @@
 # ChangeLog for dev-db/myodbc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/myodbc/ChangeLog,v 1.44 2015/05/17 21:24:37 grknight Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/myodbc/ChangeLog,v 1.45 2015/08/06 18:25:37 grknight Exp $
+
+*myodbc-5.2.7-r2 (06 Aug 2015)
+
+  06 Aug 2015; Brian Evans <grknight@gentoo.org> +myodbc-5.2.7-r2.ebuild:
+  Revbump to fix dependencies and build failure wrt bug 556744
 
   17 May 2015; Brian Evans <grknight@gentoo.org> -files/5.2.7-cxxlinkage.patch,
   -files/myodbc-5.1.6-qt4-includedir.patch, -myodbc-5.1.6.ebuild,

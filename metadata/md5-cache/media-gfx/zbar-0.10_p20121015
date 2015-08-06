@@ -9,6 +9,6 @@ LICENSE=LGPL-2.1
 RDEPEND=sys-devel/gettext gtk? ( dev-libs/glib:2 x11-libs/gtk+:2 ) imagemagick? ( || ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] ) ) jpeg? ( virtual/jpeg:0 ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] gtk? ( >=dev-python/pygtk-2[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] ) ) qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 ) X? ( x11-libs/libXext xv? ( x11-libs/libXv ) )
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
-SRC_URI=http://sourceforge.net/code-snapshots/hg/z/zb/zbar/code/zbar-code-38e78368283d5afe34bbc0cedb36d4540cda3a30.zip -> zbar-0.10_p20121015.zip
+SRC_URI=http://dev.gentoo.org/~xmw/zbar-0.10_p20121015.zip
 _eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	351da1aa73960a282591217fb57c1bb8	python-utils-r1	0295a286ec27cab6af76b3b75ba07a3a	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=b1ec7ba2956bc91a638ab1e7a5e58741
+_md5_=cc4157ddd917cee1023edda66ea80cbb

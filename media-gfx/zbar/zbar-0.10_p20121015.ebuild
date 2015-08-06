@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/zbar/zbar-0.10_p20121015.ebuild,v 1.1 2015/08/05 13:15:17 xmw Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/zbar/zbar-0.10_p20121015.ebuild,v 1.2 2015/08/06 17:59:19 xmw Exp $
 
 EAPI=5
 
@@ -10,7 +10,7 @@ inherit autotools eutils flag-o-matic python-single-r1
 
 DESCRIPTION="Library and tools for reading barcodes from images or video"
 HOMEPAGE="http://zbar.sourceforge.net/"
-SRC_URI="http://sourceforge.net/code-snapshots/hg/z/zb/zbar/code/zbar-code-38e78368283d5afe34bbc0cedb36d4540cda3a30.zip -> ${P}.zip"
+SRC_URI="http://dev.gentoo.org/~xmw/zbar-0.10_p20121015.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

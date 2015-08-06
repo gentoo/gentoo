@@ -1,0 +1,76 @@
+--- notion-3-2015061300/system-autodetect.mk
++++ notion-3-2015061300/system-autodetect.mk
+@@ -84,8 +84,8 @@
+ # SunOS/Solaris
+ #X11_PREFIX ?= /usr/openwin
+ 
+-X11_LIBS=-L$(X11_PREFIX)/lib -lX11 -lXext
+-X11_INCLUDES=-I$(X11_PREFIX)/include
++X11_LIBS=$(shell $(PKG_CONFIG) --libs x11 xext)
++X11_INCLUDES=$(shell $(PKG_CONFIG) --cflags-only-I x11 xext)
+ 
+ # XFree86 libraries up to 4.3.0 have a bug that can cause a segfault.
+ # The following setting  should  work around that situation.
+--- notion-3-2015061300/mod_xinerama/Makefile
++++ notion-3-2015061300/mod_xinerama/Makefile
+@@ -9,14 +9,14 @@
+ 
+ ######################################
+ 
+-INCLUDES += $(LIBTU_INCLUDES) $(LIBEXTL_INCLUDES) $(X11_INCLUDES) -I$(TOPDIR)
+-CFLAGS += $(XOPEN_SOURCE) $(C99_SOURCE)
++INCLUDES += $(LIBTU_INCLUDES) $(LIBEXTL_INCLUDES) $(X11_INCLUDES) -I$(TOPDIR) $(shell $(PKG_CONFIG) --cflags-only-I xinerama)
++CFLAGS += $(XOPEN_SOURCE) $(C99_SOURCE) $(shell $(PKG_CONFIG) --cflags-only-other xinerama)
+ DOCS=LICENSE README
+ 
+ SOURCES=mod_xinerama.c
+ 
+ MAKE_EXPORTS=mod_xinerama
+-LIBS = -L/usr/lib/x86_64-linux-gnu $(X11_LIBS) -lXinerama
++LIBS = $(X11_LIBS) $(shell $(PKG_CONFIG) --libs xinerama)
+ MODULE=mod_xinerama
+ MODULE_STUB=mod_xinerama.lua
+ 
+@@ -44,7 +44,7 @@
+ 
+ .PHONY: test
+ test: $(SOURCES)
+-	lua test_xinerama.lua
++	$(LUA) test_xinerama.lua
+ 
+ ######################################
+ 
+@@ -57,4 +57,4 @@
+ ################ ls_xinerama utility ###############
+ 
+ ls_xinerama: ls_xinerama.c
+-	$(CC) ls_xinerama.c -o ls_xinerama -Wl,--as-needed -lX11 -lXinerama
++	$(CC) $(CFLAGS) ls_xinerama.c -o ls_xinerama $(LDFLAGS) $(LIBS)
+--- notion-3-2015061300/mod_xrandr/Makefile
++++ notion-3-2015061300/mod_xrandr/Makefile
+@@ -9,13 +9,13 @@
+ 
+ ######################################
+ 
+-INCLUDES += $(LIBTU_INCLUDES) $(LIBEXTL_INCLUDES) $(X11_INCLUDES) -I$(TOPDIR)
+-CFLAGS += $(XOPEN_SOURCE) $(C99_SOURCE)
++INCLUDES += $(LIBTU_INCLUDES) $(LIBEXTL_INCLUDES) $(X11_INCLUDES) -I$(TOPDIR) $(shell pkg-config --cflags-only-I xrandr)
++CFLAGS += $(XOPEN_SOURCE) $(C99_SOURCE) $(shell $(PKG_CONFIG) --cflags-only-other xrandr)
+ 
+ SOURCES=mod_xrandr.c
+ 
+ MAKE_EXPORTS=mod_xrandr
+-LIBS = $(X11_LIBS) -lXrandr
++LIBS = $(X11_LIBS) $(shell $(PKG_CONFIG) --libs xrandr)
+ MODULE=mod_xrandr
+ MODULE_STUB=mod_xrandr.lua
+ ETC=cfg_xrandr.lua
+@@ -45,7 +45,7 @@
+ 
+ .PHONY: test
+ test: $(SOURCES)
+-	for i in test_xrandr*.lua ; do echo 'Testing' $$i ; lua $$i ; done
++	for i in test_xrandr*.lua ; do echo 'Testing' $$i ; $(LUA) $$i ; done
+ 
+ ######################################
+ 

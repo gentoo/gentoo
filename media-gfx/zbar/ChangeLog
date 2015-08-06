@@ -1,6 +1,9 @@
 # ChangeLog for media-gfx/zbar
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/zbar/ChangeLog,v 1.20 2015/08/05 13:15:17 xmw Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/zbar/ChangeLog,v 1.21 2015/08/06 17:59:19 xmw Exp $
+
+  06 Aug 2015; Michael Weber <xmw@gentoo.org> zbar-0.10_p20121015.ebuild:
+  Unstable zip archive in SRC_URI.
 
 *zbar-0.10_p20121015 (05 Aug 2015)
 

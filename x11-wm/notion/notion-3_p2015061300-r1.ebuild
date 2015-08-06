@@ -1,18 +1,18 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/notion/notion-9999.ebuild,v 1.11 2015/08/06 17:49:47 xmw Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/notion/notion-3_p2015061300-r1.ebuild,v 1.1 2015/08/06 17:49:47 xmw Exp $
 
 EAPI=5
 
-inherit eutils git-r3 multilib toolchain-funcs readme.gentoo
+inherit eutils multilib toolchain-funcs readme.gentoo
 
 DESCRIPTION="Notion is a tiling, tabbed window manager for the X window system"
 HOMEPAGE="http://notion.sourceforge.net"
-EGIT_REPO_URI="https://github.com/raboof/${PN}.git"
+SRC_URI="https://github.com/raboof/${PN}/archive/${PV/_p/-}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="nls xinerama +xrandr"
 
 RDEPEND=">=dev-lang/lua-5.1:0=
@@ -31,8 +31,10 @@ REQUIRED_USE="xrandr? ( xinerama )"
 # needs luaposix,slingshot,... not in tree
 RESTRICT=test
 
+S=${WORKDIR}/${P/_p/-}
+
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-3_p2015061300-pkg-config.patch"
+	epatch "${FILESDIR}/${P}-pkg-config.patch"
 
 	sed -e "/^CFLAGS/{s: =: +=: ; s:-Os:: ; s:-g::}" \
 		-e "/^LDFLAGS/{s: =: +=: ; s:-Wl,--as-needed::}" \

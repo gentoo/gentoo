@@ -1,6 +1,14 @@
 # ChangeLog for x11-wm/notion
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/notion/ChangeLog,v 1.14 2015/08/06 08:44:55 xmw Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/notion/ChangeLog,v 1.15 2015/08/06 17:49:47 xmw Exp $
+
+*notion-3_p2015061300-r1 (06 Aug 2015)
+
+  06 Aug 2015; Michael Weber <xmw@gentoo.org>
+  +files/notion-3_p2015061300-pkg-config.patch, +notion-3_p2015061300-r1.ebuild,
+  -notion-3_p2015061300.ebuild, notion-9999.ebuild:
+  Revbump to fix install paths, add REQUIRED_USE and fix USE=-xrandr, respect
+  upstream system-local.mk, pkg-config.patch, readme.gentoo eclass.
 
   06 Aug 2015; Michael Weber <xmw@gentoo.org> notion-3_p2015061300.ebuild,
   notion-9999.ebuild:
