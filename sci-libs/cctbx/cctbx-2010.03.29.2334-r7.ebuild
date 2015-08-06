@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/cctbx/cctbx-2010.03.29.2334-r7.ebuild,v 1.7 2015/04/21 17:50:14 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/cctbx/cctbx-2010.03.29.2334-r7.ebuild,v 1.8 2015/08/06 13:05:31 jlec Exp $
 
 EAPI=5
 
@@ -61,7 +61,8 @@ src_prepare() {
 		"${FILESDIR}"/${PV}-flags.patch \
 		"${FILESDIR}"/${PV}-soname.patch \
 		"${FILESDIR}"/${PV}-gcc-4.6.patch \
-		"${FILESDIR}"/${PV}-gcc-4.7.patch
+		"${FILESDIR}"/${PV}-gcc-4.7.patch \
+		"${FILESDIR}"/${PV}-format-security.patch
 
 	eprefixify "${MY_S}"/scitbx/libtbx_refresh.py
 

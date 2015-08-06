@@ -1,6 +1,9 @@
 # ChangeLog for mail-mta/msmtp
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/msmtp/ChangeLog,v 1.180 2015/08/06 07:24:04 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/msmtp/ChangeLog,v 1.181 2015/08/06 12:59:36 klausman Exp $
+
+  06 Aug 2015; Tobias Klausmann <klausman@gentoo.org> msmtp-1.6.1.ebuild:
+  Stable on alpha, bug 529460
 
   06 Aug 2015; Agostino Sarubbo <ago@gentoo.org> msmtp-1.6.1.ebuild:
   Stable for x86, wrt bug #529460

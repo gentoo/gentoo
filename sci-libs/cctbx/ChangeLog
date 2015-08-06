@@ -1,6 +1,10 @@
 # ChangeLog for sci-libs/cctbx
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/cctbx/ChangeLog,v 1.38 2015/04/22 06:58:03 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/cctbx/ChangeLog,v 1.39 2015/08/06 13:05:31 jlec Exp $
+
+  06 Aug 2015; Justin Lecher <jlec@gentoo.org>
+  +files/2010.03.29.2334-format-security.patch, cctbx-2010.03.29.2334-r7.ebuild:
+  Fix for format-security, bug #547082
 
   22 Apr 2015; Justin Lecher <jlec@gentoo.org> -cctbx-2010.03.29.2334-r6.ebuild:
   Drop old

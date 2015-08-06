@@ -1,8 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmping/wmping-0.2.1.ebuild,v 1.5 2014/08/10 20:08:49 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmping/wmping-0.2.1.ebuild,v 1.6 2015/08/06 13:10:10 voyageur Exp $
 
 EAPI=5
+inherit eutils
 
 DESCRIPTION="a simple host status monitoring dockapp"
 HOMEPAGE="http://sourceforge.net/projects/wmping"
@@ -21,6 +22,10 @@ DEPEND="${RDEPEND}
 	x11-proto/xproto
 	x11-libs/libICE
 	x11-libs/libXt"
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-format-security.patch
+}
 
 src_install() {
 	if use suid; then

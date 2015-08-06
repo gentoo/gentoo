@@ -1,6 +1,12 @@
 # ChangeLog for media-fonts/mathematica-fonts
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/mathematica-fonts/ChangeLog,v 1.16 2009/05/25 20:47:56 pva Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/mathematica-fonts/ChangeLog,v 1.17 2015/08/06 12:59:35 amadio Exp $
+
+*mathematica-fonts-10.0 (06 Aug 2015)
+
+  06 Aug 2015; Guilherme Amadio <amadio@gentoo.org>
+  +mathematica-fonts-10.0.ebuild:
+  version bump
 
   25 May 2009; Peter Volkov <pva@gentoo.org> mathematica-fonts-7.0.ebuild:
   Updated SRC_URI since upstream changed download location, bug #270518,
