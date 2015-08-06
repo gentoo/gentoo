@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/cinder/cinder-2015.1.1.ebuild,v 1.2 2015/08/05 02:29:11 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/cinder/cinder-2015.1.1.ebuild,v 1.3 2015/08/06 02:18:22 prometheanfire Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
@@ -194,5 +194,6 @@ python_install() {
 pkg_postinst() {
 	if use iscsi ; then
 		elog "Cinder needs tgtd to be installed and running to work with iscsi"
+		elog "it also needs 'include /var/lib/cinder/volumes/*' in /etc/tgt/targets.conf"
 	fi
 }

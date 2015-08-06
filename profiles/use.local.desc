@@ -7058,6 +7058,7 @@ sys-block/sas3ircu:efi - Install EFI variant as well
 sys-block/tgt:fcoe - Add support for FCoE protocol
 sys-block/tgt:fcp - Add support for new FC protocol
 sys-block/tgt:ibmvio - Add support for IBM Virtual I/O
+sys-block/tgt:rbd - Add support for ceph block devices
 sys-boot/grub:device-mapper - Enable support for device-mapper from sys-fs/lvm2
 sys-boot/grub:efiemu - Build and install the efiemu runtimes
 sys-boot/grub:fonts - Build and install fonts for the gfxterm module

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/kodi/kodi-9999.ebuild,v 1.18 2015/08/05 13:25:06 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/kodi/kodi-9999.ebuild,v 1.19 2015/08/06 02:26:18 vapier Exp $
 
 EAPI="5"
 
@@ -36,6 +36,8 @@ SLOT="0"
 IUSE="airplay alsa avahi bluetooth bluray caps cec css dbus debug +fishbmc gles goom java joystick midi mysql nfs +opengl profile +projectm pulseaudio +rsxs rtmp +samba sftp +spectrum test +texturepacker udisks upnp upower +usb vaapi vdpau +waveform webserver +X"
 REQUIRED_USE="
 	rsxs? ( X )
+	udisks? ( dbus )
+	upower? ( dbus )
 "
 
 COMMON_DEPEND="${PYTHON_DEPS}

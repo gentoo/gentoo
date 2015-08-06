@@ -1,6 +1,9 @@
 # ChangeLog for media-tv/kodi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/kodi/ChangeLog,v 1.19 2015/08/05 13:25:06 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/kodi/ChangeLog,v 1.20 2015/08/06 02:26:18 vapier Exp $
+
+  06 Aug 2015; Mike Frysinger <vapier@gentoo.org> kodi-9999.ebuild:
+  Add REQUIRED_USE settings for dbus #556668 by Kirill A. Shutemov.
 
   05 Aug 2015; Mike Frysinger <vapier@gentoo.org> kodi-9999.ebuild:
   Make dbus optional #556668 by Kirill A. Shutemov.

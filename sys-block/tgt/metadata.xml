@@ -2,6 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>cluster</herd>
+	<maintainer>
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
 	<longdescription>
 iSCSI Target daemon with rdma support
 </longdescription>
@@ -9,6 +13,7 @@ iSCSI Target daemon with rdma support
 		<flag name="ibmvio">Add support for IBM Virtual I/O</flag>
 		<flag name="fcp">Add support for new FC protocol</flag>
 		<flag name="fcoe">Add support for FCoE protocol</flag>
+		<flag name="rbd">Add support for ceph block devices</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">fujita/tgt</remote-id>
