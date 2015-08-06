@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/efl/efl-1.13.1.ebuild,v 1.2 2015/03/17 17:34:56 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/efl/efl-1.13.1.ebuild,v 1.3 2015/08/06 04:22:05 vapier Exp $
 
 EAPI="5"
 
@@ -55,7 +55,7 @@ RDEPEND="
 	)
 	harfbuzz? ( media-libs/harfbuzz )
 	ibus? ( app-i18n/ibus )
-	jpeg2k? ( media-libs/openjpeg )
+	jpeg2k? ( media-libs/openjpeg:0 )
 	!oldlua? ( >=dev-lang/luajit-2.0.0 )
 	oldlua? ( dev-lang/lua )
 	physics? ( >=sci-physics/bullet-2.80 )

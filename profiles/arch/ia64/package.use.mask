@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/ia64/package.use.mask,v 1.173 2015/07/11 10:59:45 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/ia64/package.use.mask,v 1.174 2015/08/06 04:06:43 vapier Exp $
 
 # James Le Cuirot <chewi@gentoo.org> (11 Jul 2015)
 # Requires dev-java/fop but we don't support java on ia64.
@@ -22,6 +22,7 @@ dev-libs/libpeas lua jit
 # Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
 # Needs sci-physics/bullet & media-libs/libsdl2 tested #499974
 dev-libs/efl physics sdl
+media-libs/elementary sdl
 
 # Michał Górny <mgorny@gentoo.org> (08 Mar 2015)
 # Dependency not keyworded on this arch, bug #542570.

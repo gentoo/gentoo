@@ -1,6 +1,16 @@
 # ChangeLog for media-libs/elementary
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/elementary/ChangeLog,v 1.29 2015/04/19 09:55:39 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/elementary/ChangeLog,v 1.31 2015/08/06 04:07:00 vapier Exp $
+
+*elementary-1.15.0 (06 Aug 2015)
+
+  06 Aug 2015; Mike Frysinger <vapier@gentoo.org> +elementary-1.15.0.ebuild:
+  Version bump #555722 by DrSlony.
+
+  06 Aug 2015; Mike Frysinger <vapier@gentoo.org> -elementary-1.10.1.ebuild,
+  -elementary-1.11.2.ebuild, -elementary-1.8.4.ebuild, -elementary-1.8.5.ebuild,
+  -elementary-1.9.4.ebuild, -elementary-1.9.5.ebuild:
+  Delete old to clean up KEYWORD confusion.
 
   19 Apr 2015; Agostino Sarubbo <ago@gentoo.org> elementary-1.12.2.ebuild:
   Stable for x86, wrt bug #538722

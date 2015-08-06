@@ -1,6 +1,21 @@
 # ChangeLog for dev-libs/efl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/efl/ChangeLog,v 1.30 2015/04/19 09:48:04 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/efl/ChangeLog,v 1.33 2015/08/06 04:22:05 vapier Exp $
+
+  06 Aug 2015; Mike Frysinger <vapier@gentoo.org> efl-1.12.2.ebuild,
+  efl-1.13.1.ebuild, efl-1.15.0.ebuild, efl-9999.ebuild:
+  Depend on openjpeg-1 explicitly #549226 by Ivan Filgueiras.
+
+  06 Aug 2015; Mike Frysinger <vapier@gentoo.org> -efl-1.10.1.ebuild,
+  -efl-1.11.2.ebuild, -efl-1.8.5.ebuild, -efl-1.8.6.ebuild, -efl-1.9.4.ebuild,
+  -efl-1.9.5.ebuild:
+  Delete old to clean up KEYWORD confusion.
+
+*efl-1.15.0 (06 Aug 2015)
+
+  06 Aug 2015; Mike Frysinger <vapier@gentoo.org> +efl-1.15.0.ebuild,
+  efl-9999.ebuild:
+  Version bump #555720 by DrSlony.
 
   19 Apr 2015; Pacho Ramos <pacho@gentoo.org> efl-1.12.2.ebuild:
   x86 stable wrt bug #538720

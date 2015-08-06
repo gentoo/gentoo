@@ -5,9 +5,9 @@ EAPI=5
 HOMEPAGE=http://www.enlightenment.org/
 IUSE=gstreamer pdf postscript raw svg nls doc
 KEYWORDS=~amd64 ~arm ~x86
-LICENSE=BSD
+LICENSE=GPL-2
 RDEPEND=>=dev-libs/efl-1.12.2 gstreamer? ( media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 ) pdf? ( app-text/poppler ) postscript? ( app-text/libspectre ) raw? ( media-libs/libraw ) svg? ( gnome-base/librsvg x11-libs/cairo ) nls? ( sys-devel/gettext )
 SLOT=0
 SRC_URI=http://download.enlightenment.org/rel/libs/evas_generic_loaders/evas_generic_loaders-1.12.0.tar.bz2
 _eclasses_=enlightenment	98392d364f7f4c6cde8a516cbc298472	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=b6eef437337bf3bc8ea0f248815562eb
+_md5_=2e7afbfc37839767810ffa00cba88464

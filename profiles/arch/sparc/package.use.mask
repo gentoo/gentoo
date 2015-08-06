@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/sparc/package.use.mask,v 1.201 2015/08/02 09:54:45 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/sparc/package.use.mask,v 1.202 2015/08/06 04:06:43 vapier Exp $
 
 # Pacho Ramos <pacho@gentoo.org> (13 Jun 2015)
 # Missing keywords, bug #513108
@@ -21,6 +21,7 @@ media-video/mpv rubberband
 # Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
 # Needs sci-physics/bullet & media-libs/libsdl2 tested #499974
 dev-libs/efl physics sdl
+media-libs/elementary sdl
 
 # Michał Górny <mgorny@gentoo.org> (08 Mar 2015)
 # Dependency not keyworded on this arch, bug #542570.

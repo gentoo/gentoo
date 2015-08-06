@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/package.use.mask,v 1.248 2015/06/12 10:56:52 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/package.use.mask,v 1.249 2015/08/06 04:06:43 vapier Exp $
 
 # Gilles Dartiguelongue <eva@gentoo.org> (10 Jun 2015)
 # net-libs/dleyna-connector-dbus lack ppc/ppc64 keyword, bug #551634
@@ -21,6 +21,7 @@ sys-auth/sssd samba
 # Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
 # Needs sci-physics/bullet & media-libs/libsdl2 tested #499974
 dev-libs/efl physics sdl
+media-libs/elementary sdl
 
 # Ben de Groot <yngwin@gentoo.org> (15 Mar 2015)
 # Waiting for keywording in bug 543398
