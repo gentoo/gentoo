@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/sane-backends/sane-backends-1.0.25_pre20150628.ebuild,v 1.3 2015/07/30 08:58:23 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/sane-backends/sane-backends-1.0.25_pre20150628.ebuild,v 1.4 2015/08/06 05:47:07 vapier Exp $
 
 EAPI="5"
 
@@ -94,7 +94,7 @@ IUSE_SANE_BACKENDS="
 	umax_pp
 	xerox_mfp"
 
-IUSE="avahi doc gphoto2 ipv6 threads usb v4l xinetd snmp systemd"
+IUSE="avahi doc gphoto2 ipv6 nls snmp systemd threads usb v4l xinetd"
 
 for backend in ${IUSE_SANE_BACKENDS}; do
 	case ${backend} in
@@ -198,6 +198,13 @@ src_prepare() {
 src_configure() {
 	append-flags -fno-strict-aliasing
 
+	# if LINGUAS is set, just use the listed and supported localizations.
+	if [[ ${LINGUAS+set} == "set" ]]; then
+		mkdir -p po || die
+		strip-linguas -u po
+		printf '%s\n' ${LINGUAS} > po/LINGUAS
+	fi
+
 	multilib-minimal_src_configure
 }
 
@@ -231,16 +238,6 @@ multilib_src_configure() {
 	if ! { use sane_backends_canon_pp || use sane_backends_hpsj5s || use sane_backends_mustek_pp; }; then
 		myconf+=( sane_cv_use_libieee1284=no )
 	fi
-	# if LINGUAS is set, just use the listed and supported localizations.
-	if [ "${LINGUAS-NoLocalesSet}" != NoLocalesSet ]; then
-		mkdir -p po || die
-		echo > po/LINGUAS
-		for lang in ${LINGUAS}; do
-			if [ -a "${S}"/po/${lang}.po ]; then
-				echo ${lang} >> po/LINGUAS
-			fi
-		done
-	fi
 
 	# relative path must be used for tests to work properly
 	ECONF_SOURCE=../${MY_P} \
@@ -252,6 +249,7 @@ multilib_src_configure() {
 		$(use_with v4l) \
 		$(use_enable avahi) \
 		$(use_enable ipv6) \
+		$(use_enable nls translations) \
 		$(use_enable threads pthread) \
 		"${myconf[@]}"
 }
