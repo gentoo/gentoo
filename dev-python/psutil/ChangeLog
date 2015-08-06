@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/psutil
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/psutil/ChangeLog,v 1.49 2015/07/29 19:12:11 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/psutil/ChangeLog,v 1.50 2015/08/06 01:09:30 radhermit Exp $
+
+*psutil-3.1.1 (06 Aug 2015)
+
+  06 Aug 2015; Tim Harder <radhermit@gentoo.org> +psutil-3.1.1.ebuild:
+  Version bump.
 
   29 Jul 2015; Fabian Groffen <grobian@gentoo.org> psutil-3.0.1.ebuild:
   Keyworded for *-solaris, *-macos
