@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/bundler
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/bundler/ChangeLog,v 1.104 2015/08/03 12:55:04 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/bundler/ChangeLog,v 1.105 2015/08/06 05:01:06 maekke Exp $
+
+  06 Aug 2015; Markus Meier <maekke@gentoo.org> bundler-1.8.9.ebuild:
+  arm stable, bug #553894
 
   03 Aug 2015; Agostino Sarubbo <ago@gentoo.org> bundler-1.8.9.ebuild:
   Stable for amd64, wrt bug #553894

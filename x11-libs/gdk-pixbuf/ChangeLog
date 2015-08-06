@@ -1,6 +1,9 @@
 # ChangeLog for x11-libs/gdk-pixbuf
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/gdk-pixbuf/ChangeLog,v 1.144 2015/08/05 12:15:36 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/gdk-pixbuf/ChangeLog,v 1.145 2015/08/06 04:57:39 maekke Exp $
+
+  06 Aug 2015; Markus Meier <maekke@gentoo.org> gdk-pixbuf-2.30.8-r1.ebuild:
+  arm stable, bug #556314
 
   05 Aug 2015; Tobias Klausmann <klausman@gentoo.org>
   gdk-pixbuf-2.30.8-r1.ebuild:

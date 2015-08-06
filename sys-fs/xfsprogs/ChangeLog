@@ -1,6 +1,9 @@
 # ChangeLog for sys-fs/xfsprogs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/xfsprogs/ChangeLog,v 1.193 2015/08/05 11:57:49 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/xfsprogs/ChangeLog,v 1.194 2015/08/06 04:56:14 maekke Exp $
+
+  06 Aug 2015; Markus Meier <maekke@gentoo.org> xfsprogs-3.2.4.ebuild:
+  arm stable, bug #556318
 
   05 Aug 2015; Mikle Kolyada <zlogene@gentoo.org> xfsprogs-3.2.4.ebuild:
   ia64 stable wrt bug #556318

@@ -1,6 +1,15 @@
 # ChangeLog for dev-ruby/mini_magick
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/mini_magick/ChangeLog,v 1.30 2015/06/07 18:38:40 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/mini_magick/ChangeLog,v 1.32 2015/08/06 05:14:07 graaff Exp $
+
+*mini_magick-4.2.9 (06 Aug 2015)
+
+  06 Aug 2015; Hans de Graaff <graaff@gentoo.org> +mini_magick-4.2.9.ebuild:
+  Version bump.
+
+  06 Aug 2015; Hans de Graaff <graaff@gentoo.org> -mini_magick-3.8.1-r1.ebuild,
+  -mini_magick-4.2.1.ebuild, -mini_magick-4.2.4.ebuild:
+  Cleanup.
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml
