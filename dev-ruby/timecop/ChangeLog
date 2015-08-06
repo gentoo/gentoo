@@ -1,6 +1,12 @@
 # ChangeLog for dev-ruby/timecop
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/timecop/ChangeLog,v 1.30 2015/06/11 05:15:49 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/timecop/ChangeLog,v 1.31 2015/08/06 19:22:26 mrueg Exp $
+
+*timecop-0.8.0 (06 Aug 2015)
+
+  06 Aug 2015; Manuel Rüger <mrueg@gentoo.org> +timecop-0.8.0.ebuild,
+  -timecop-0.7.3.ebuild:
+  Version bump. Remove old.
 
 *timecop-0.7.4 (11 Jun 2015)
 

@@ -1,6 +1,11 @@
 # ChangeLog for sys-cluster/openmpi
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/openmpi/ChangeLog,v 1.143 2015/08/03 10:15:13 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/openmpi/ChangeLog,v 1.144 2015/08/06 19:30:14 jsbronder Exp $
+
+*openmpi-1.8.8 (06 Aug 2015)
+
+  06 Aug 2015; Justin Bronder <jsbronder@gentoo.org> +openmpi-1.8.8.ebuild:
+  bump 1.8.8
 
   03 Aug 2015; Patrice Clement <monsieurp@gentoo.org> openmpi-1.8.7-r1.ebuild:
   Disable java by default.

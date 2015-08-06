@@ -1,6 +1,9 @@
 # ChangeLog for sys-boot/grub
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/grub/ChangeLog,v 1.357 2015/08/02 18:42:41 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/grub/ChangeLog,v 1.358 2015/08/06 19:14:21 floppym Exp $
+
+  06 Aug 2015; Mike Gilbert <floppym@gentoo.org> grub-2.02_beta2-r7.ebuild:
+  Backport another build fix for musl, bug 543840.
 
   02 Aug 2015; Agostino Sarubbo <ago@gentoo.org> grub-2.02_beta2-r7.ebuild:
   Stable for x86, wrt bug #554740

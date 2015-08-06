@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/pciutils
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/pciutils/ChangeLog,v 1.237 2015/04/15 11:37:18 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/pciutils/ChangeLog,v 1.238 2015/08/06 19:19:11 zlogene Exp $
+
+  06 Aug 2015; Mikle Kolyada <zlogene@gentoo.org> pciutils-3.3.1.ebuild:
+  amd64 stable wrt bug #543834
 
 *pciutils-3.3.1 (15 Apr 2015)
 

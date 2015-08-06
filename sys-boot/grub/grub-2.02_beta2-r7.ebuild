@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/grub/grub-2.02_beta2-r7.ebuild,v 1.14 2015/08/02 18:42:41 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/grub/grub-2.02_beta2-r7.ebuild,v 1.15 2015/08/06 19:14:21 floppym Exp $
 
 EAPI=5
 
@@ -19,7 +19,7 @@ if [[ ${PV} != 9999 ]]; then
 		# The quote style is to work with <=bash-4.2 and >=bash-4.3 #503860
 		MY_P=${P/_/'~'}
 		SRC_URI="mirror://gnu-alpha/${PN}/${MY_P}.tar.xz
-			http://dev.gentoo.org/~floppym/dist/${P}-gentoo-r2.tar.xz"
+			http://dev.gentoo.org/~floppym/dist/${P}-gentoo-r3.tar.xz"
 		S=${WORKDIR}/${MY_P}
 	else
 		SRC_URI="mirror://gnu/${PN}/${P}.tar.xz

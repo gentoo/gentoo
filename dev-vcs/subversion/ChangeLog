@@ -1,6 +1,13 @@
 # ChangeLog for dev-vcs/subversion
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/subversion/ChangeLog,v 1.244 2015/08/06 05:51:08 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/subversion/ChangeLog,v 1.245 2015/08/06 19:10:37 tommy Exp $
+
+*subversion-1.7.21 (06 Aug 2015)
+
+  06 Aug 2015; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +subversion-1.7.21.ebuild:
+  Version bump for 1.7 series to 1.7.21 for bug 556076, known issue: some tests
+  may fail
 
 *subversion-1.9.0 (06 Aug 2015)
 *subversion-1.8.14-r1 (06 Aug 2015)
