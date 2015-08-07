@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/pciutils
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/pciutils/ChangeLog,v 1.238 2015/08/06 19:19:11 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/pciutils/ChangeLog,v 1.239 2015/08/07 08:42:02 klausman Exp $
+
+  07 Aug 2015; Tobias Klausmann <klausman@gentoo.org> pciutils-3.3.1.ebuild:
+  Stable on alpha, bug 543834
 
   06 Aug 2015; Mikle Kolyada <zlogene@gentoo.org> pciutils-3.3.1.ebuild:
   amd64 stable wrt bug #543834
