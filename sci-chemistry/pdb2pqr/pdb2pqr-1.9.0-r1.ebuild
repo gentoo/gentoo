@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/pdb2pqr/pdb2pqr-1.9.0-r1.ebuild,v 1.5 2015/05/13 06:47:49 jmorgan Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/pdb2pqr/pdb2pqr-1.9.0-r1.ebuild,v 1.7 2015/08/07 10:36:03 ago Exp $
 
 EAPI=5
 
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/Electrostatics/apbs-${PN}/releases/download/${P}/${P
 SLOT="0"
 LICENSE="BSD"
 IUSE="doc examples opal +pdb2pka"
-KEYWORDS="~amd64 ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

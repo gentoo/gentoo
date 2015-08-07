@@ -1,6 +1,12 @@
 # ChangeLog for net-fs/samba
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/samba/ChangeLog,v 1.718 2015/06/28 03:34:52 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/samba/ChangeLog,v 1.719 2015/08/07 11:21:21 polynomial-c Exp $
+
+*samba-4.2.3 (07 Aug 2015)
+
+  07 Aug 2015; Lars Wendler <polynomial-c@gentoo.org> -samba-4.2.0.ebuild,
+  +samba-4.2.3.ebuild, +files/samba-4.2.3-heimdal_compilefix.patch:
+  Version bump. Removed old.
 
   28 Jun 2015; Patrick Lauer <patrick@gentoo.org> samba-4.0.26.ebuild,
   samba-4.1.18.ebuild, samba-4.1.19.ebuild, samba-4.2.0.ebuild:

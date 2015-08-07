@@ -1,23 +1,24 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/paludis/paludis-2.4.0.ebuild,v 1.2 2015/08/07 11:19:59 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/paludis/paludis-9999.ebuild,v 1.1 2015/08/07 11:19:59 mgorny Exp $
 
 EAPI=5
 
+EGIT_REPO_URI='git://git.exherbo.org/paludis/paludis.git'
 PYTHON_COMPAT=( python2_7 )
 # matching profile defaults for now
 RUBY_VER=2.0
 
-inherit bash-completion-r1 eutils python-single-r1 user
+inherit autotools bash-completion-r1 eutils git-r3 python-single-r1 user
 
 DESCRIPTION="paludis, the other package mangler"
 HOMEPAGE="http://paludis.exherbo.org/"
-SRC_URI="http://paludis.exherbo.org/download/${P}.tar.bz2"
+SRC_URI=""
 
 IUSE="doc pbins pink python ruby search-index test xml"
 LICENSE="GPL-2 vim"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS=""
 
 COMMON_DEPEND="
 	>=app-admin/eselect-1.2.13
@@ -90,6 +91,8 @@ src_prepare() {
 	# https://bugs.gentoo.org/show_bug.cgi?id=439372#c2
 	sed -i -e "1s/ruby/&${RUBY_VER/./}/" ruby/demos/*.rb || die
 
+	./autotools_prepare.bash || die
+	eautoreconf
 	epatch_user
 }
 

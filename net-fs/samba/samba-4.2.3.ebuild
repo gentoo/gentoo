@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/samba/samba-4.2.0.ebuild,v 1.3 2015/06/28 03:34:52 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/samba/samba-4.2.3.ebuild,v 1.1 2015/08/07 11:21:21 polynomial-c Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
@@ -42,9 +42,9 @@ CDEPEND="${PYTHON_DEPS}
 	>=sys-libs/ldb-1.1.20
 	>=sys-libs/nss_wrapper-1.0.2
 	>=sys-libs/ntdb-1.0[python,${PYTHON_USEDEP}]
-	>=sys-libs/talloc-2.1.1[python,${PYTHON_USEDEP}]
-	>=sys-libs/tdb-1.3.4[python,${PYTHON_USEDEP}]
-	>=sys-libs/tevent-0.9.24
+	>=sys-libs/talloc-2.1.2[python,${PYTHON_USEDEP}]
+	>=sys-libs/tdb-1.3.6[python,${PYTHON_USEDEP}]
+	>=sys-libs/tevent-0.9.25
 	>=sys-libs/uid_wrapper-1.0.1
 	sys-libs/zlib
 	virtual/pam
@@ -66,12 +66,14 @@ RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-samba )
 "
 
-REQUIRED_USE="ads? ( acl ldap )
+REQUIRED_USE="ads? ( acl gnutls ldap )
 	${PYTHON_REQUIRED_USE}"
 
 RESTRICT="mirror"
 
 S="${WORKDIR}/${MY_P}"
+
+PATCHES=( "${FILESDIR}/${PN}-4.2.3-heimdal_compilefix.patch" )
 
 CONFDIR="${FILESDIR}/$(get_version_component_range 1-2)"
 
@@ -91,6 +93,10 @@ pkg_setup() {
 				ewarn "and recompile your kernel..."
 		fi
 	fi
+}
+
+src_prepare() {
+	epatch ${PATCHES[@]}
 }
 
 src_configure() {

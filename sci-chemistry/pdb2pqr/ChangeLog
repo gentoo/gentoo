@@ -1,6 +1,18 @@
 # ChangeLog for sci-chemistry/pdb2pqr
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/pdb2pqr/ChangeLog,v 1.48 2015/05/13 06:47:49 jmorgan Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/pdb2pqr/ChangeLog,v 1.51 2015/08/07 11:03:57 jlec Exp $
+
+  07 Aug 2015; Justin Lecher <jlec@gentoo.org> -files/1.7.0-install.patch,
+  -files/pdb2pqr-1.4.0-automagic.patch, -files/pdb2pqr-1.4.0-install.patch,
+  -files/pdb2pqr-1.4.0-ldflags.patch, -files/pdb2pqr-1.8.0-automagic.patch,
+  -files/pdb2pqr-1.8.0-ldflags.patch, -pdb2pqr-1.5.0-r2.ebuild:
+  Drop old, fixes bug #478592
+
+  07 Aug 2015; Agostino Sarubbo <ago@gentoo.org> pdb2pqr-1.9.0-r1.ebuild:
+  Stable for x86, wrt bug #534696
+
+  07 Aug 2015; Agostino Sarubbo <ago@gentoo.org> pdb2pqr-1.9.0-r1.ebuild:
+  Stable for amd64, wrt bug #534696
 
   13 May 2015; Jack Morgan <jmorgan@gentoo.org> pdb2pqr-1.9.0-r1.ebuild:
   ppc stable wrt bug #534696
