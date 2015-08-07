@@ -1,6 +1,14 @@
 # ChangeLog for dev-python/mantissa
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/mantissa/ChangeLog,v 1.26 2015/07/20 04:30:36 idella4 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/mantissa/ChangeLog,v 1.27 2015/08/07 06:36:53 idella4 Exp $
+
+*mantissa-0.8.1 (07 Aug 2015)
+
+  07 Aug 2015; Ian Delaney <idella4@gentoo.org> +mantissa-0.8.1.ebuild,
+  mantissa-0.8.0.ebuild:
+  bump; restrict test phase due to massive failure rate, issue @ upstream of
+  prior version extended informing of the increase, rm stray line form prior
+  version
 
   20 Jul 2015; Ian Delaney <idella4@gentoo.org> mantissa-0.8.0.ebuild:
   Update to msg via einfo in test phase re fixes to failures
