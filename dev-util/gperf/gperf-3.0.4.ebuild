@@ -1,13 +1,13 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/gperf/gperf-3.0.4.ebuild,v 1.17 2014/06/06 16:07:32 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/gperf/gperf-3.0.4.ebuild,v 1.18 2015/08/07 03:25:00 vapier Exp $
 
 EAPI="4"
 
 inherit toolchain-funcs
 
 DESCRIPTION="A perfect hash function generator"
-HOMEPAGE="http://www.gnu.org/software/gperf/gperf.html"
+HOMEPAGE="http://www.gnu.org/software/gperf/"
 SRC_URI="mirror://gnu/gperf/${P}.tar.gz"
 
 LICENSE="GPL-2"
