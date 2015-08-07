@@ -1,10 +1,11 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/apbs/apbs-1.4.1-r2.ebuild,v 1.7 2015/07/04 19:37:27 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/apbs/apbs-1.4.1-r2.ebuild,v 1.8 2015/08/07 09:43:37 jlec Exp $
 
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
+DISTUTILS_SINGLE_IMPL=true
 
 inherit cmake-utils distutils-r1 flag-o-matic multilib toolchain-funcs
 

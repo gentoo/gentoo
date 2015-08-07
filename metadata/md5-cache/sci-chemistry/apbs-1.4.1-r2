@@ -1,14 +1,14 @@
-DEFINED_PHASES=compile configure install prepare test
-DEPEND=virtual/pkgconfig doc? ( app-doc/doxygen ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=virtual/pkgconfig doc? ( app-doc/doxygen ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)]
 DESCRIPTION=Evaluation of electrostatic properties of nanoscale biomolecular systems
 EAPI=5
 HOMEPAGE=http://www.poissonboltzmann.org/apbs/
 IUSE=debug doc examples fast +fetk iapbs mpi openmp python tools python_targets_python2_7
 KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux
 LICENSE=BSD
-RDEPEND=dev-cpp/eigen:3 dev-libs/maloc[mpi=] virtual/blas sys-libs/readline fetk? ( sci-libs/fetk sci-libs/amd sci-libs/umfpack sci-libs/superlu ) mpi? ( virtual/mpi ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
-REQUIRED_USE=iapbs? ( fetk ) mpi? ( !python ) python? ( tools fetk iapbs || ( python_targets_python2_7 ) ) || ( python_targets_python2_7 )
+RDEPEND=dev-cpp/eigen:3 dev-libs/maloc[mpi=] virtual/blas sys-libs/readline fetk? ( sci-libs/fetk sci-libs/amd sci-libs/umfpack sci-libs/superlu ) mpi? ( virtual/mpi ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] ) >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)]
+REQUIRED_USE=iapbs? ( fetk ) mpi? ( !python ) python? ( tools fetk iapbs python_targets_python2_7 ) python_targets_python2_7
 SLOT=0
 SRC_URI=https://github.com/Electrostatics/apbs-pdb2pqr/archive/74fcb8676de69ed04ddab8976a8b05a6caaf4d65.zip -> apbs-1.4.1.zip
-_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	distutils-r1	715b22a21726d3fd76b17e007c5daf5f	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-r1	d9c8348f26710ea523a385c2328cf027	python-utils-r1	0295a286ec27cab6af76b3b75ba07a3a	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=f93efc5a754acf0ab09526bc8f2fa26a
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	distutils-r1	715b22a21726d3fd76b17e007c5daf5f	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	351da1aa73960a282591217fb57c1bb8	python-utils-r1	0295a286ec27cab6af76b3b75ba07a3a	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=483e0ef7faebec97598123537ff8e177

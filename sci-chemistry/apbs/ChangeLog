@@ -1,6 +1,9 @@
 # ChangeLog for sci-chemistry/apbs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/apbs/ChangeLog,v 1.80 2015/07/29 03:10:07 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/apbs/ChangeLog,v 1.81 2015/08/07 09:43:37 jlec Exp $
+
+  07 Aug 2015; Justin Lecher <jlec@gentoo.org> apbs-1.4.1-r2.ebuild:
+  Use DISTUTILS_SINGLE_IMPL, hopefully fixing, bug #556916
 
   29 Jul 2015; Patrick Lauer <patrick@gentoo.org> metadata.xml:
   Remove unneeded useflag description from metadata.xml
