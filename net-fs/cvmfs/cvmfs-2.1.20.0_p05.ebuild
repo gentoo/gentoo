@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/cvmfs/cvmfs-2.1.20.0_p05.ebuild,v 1.1 2015/07/31 20:09:57 bicatali Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/cvmfs/cvmfs-2.1.20.0_p05.ebuild,v 1.2 2015/08/07 19:00:39 bicatali Exp $
 
 EAPI=5
 
@@ -109,7 +109,7 @@ pkg_config() {
 	if use client; then
 		einfo "Setting up CernVM-FS client"
 		cvmfs_config setup
-		einfo "Now edit ${EROOT%/}/etc/cvmfs/default.local and run"
-		einfo "  ${EROOT%/}/usr/init.d/autofs restart"
+		einfo "Now edit ${EROOT%/}/etc/cvmfs/default.local"
+		einfo "and restart the autofs service"
 	fi
 }

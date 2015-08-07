@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst prepare setup test unpack
-DEPEND==dev-python/snakeoil-9999[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/setuptools[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pyparsing[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/sphinx[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] test? ( python_targets_python2_7? ( dev-python/mock[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-vcs/git-1.8.2.1
+DEPEND==dev-python/snakeoil-9999[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/sphinx[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/setuptools[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pyparsing[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] test? ( python_targets_python2_7? ( dev-python/mock[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-vcs/git-1.8.2.1
 DESCRIPTION=pkgcore package manager
 EAPI=5
 HOMEPAGE=https://github.com/pkgcore/pkgcore
@@ -9,4 +9,4 @@ RDEPEND==dev-python/snakeoil-9999[python_targets_python2_7(-)?,-python_single_ta
 REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
 _eclasses_=distutils-r1	715b22a21726d3fd76b17e007c5daf5f	eutils	9fb270e417e0e83d64ca52586c4a79de	git-r3	727a612b4c6247766904e3f74a326e2b	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-r1	d9c8348f26710ea523a385c2328cf027	python-utils-r1	0295a286ec27cab6af76b3b75ba07a3a	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=7cfdde0c2592d31678c3d440282cd86f
+_md5_=6a5ffc60ad6e89dd6c2787ec1640c50d

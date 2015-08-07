@@ -1,6 +1,9 @@
 # ChangeLog for sys-apps/pkgcore
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/pkgcore/ChangeLog,v 1.194 2015/08/03 06:07:42 radhermit Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/pkgcore/ChangeLog,v 1.195 2015/08/07 19:13:22 radhermit Exp $
+
+  07 Aug 2015; Tim Harder <radhermit@gentoo.org> pkgcore-9999.ebuild:
+  Conditionalize sphinx build dep.
 
   03 Aug 2015; Tim Harder <radhermit@gentoo.org> pkgcore-9999.ebuild:
   Update docs build command.

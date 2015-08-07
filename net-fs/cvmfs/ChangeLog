@@ -1,6 +1,9 @@
 # ChangeLog for net-fs/cvmfs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/cvmfs/ChangeLog,v 1.13 2015/08/04 16:18:46 bicatali Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/cvmfs/ChangeLog,v 1.14 2015/08/07 19:00:39 bicatali Exp $
+
+  07 Aug 2015; Sébastien Fabbro <bicatali@gentoo.org> cvmfs-2.1.20.0_p05.ebuild:
+  updated user message on configuration
 
   04 Aug 2015; Sébastien Fabbro <bicatali@gentoo.org>
   files/cvmfs-2.1.20.0_p05-geoip-missing-cmake.patch:
