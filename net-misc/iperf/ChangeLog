@@ -1,6 +1,10 @@
 # ChangeLog for net-misc/iperf
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/iperf/ChangeLog,v 1.75 2015/08/06 07:19:41 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/iperf/ChangeLog,v 1.76 2015/08/07 05:05:25 jer Exp $
+
+  07 Aug 2015; Jeroen Roovers <jer@gentoo.org> -iperf-3.0.7.ebuild,
+  -iperf-3.0.9.ebuild, -iperf-3.0.10.ebuild:
+  Old.
 
   06 Aug 2015; Agostino Sarubbo <ago@gentoo.org> iperf-3.0.11.ebuild:
   Stable for x86, wrt bug #554706

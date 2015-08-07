@@ -1,6 +1,11 @@
 # ChangeLog for dev-ruby/ruby_parser
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby_parser/ChangeLog,v 1.82 2015/07/30 15:16:51 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby_parser/ChangeLog,v 1.83 2015/08/07 04:45:11 graaff Exp $
+
+*ruby_parser-3.7.1 (07 Aug 2015)
+
+  07 Aug 2015; Hans de Graaff <graaff@gentoo.org> +ruby_parser-3.7.1.ebuild:
+  Version bump.
 
   30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> ruby_parser-3.6.6.ebuild:
   Stable for sparc, wrt bug #552244

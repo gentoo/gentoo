@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/actionmailer/actionmailer-4.2.3.ebuild,v 1.1 2015/06/26 08:33:09 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/actionmailer/actionmailer-4.2.3.ebuild,v 1.2 2015/08/07 05:23:53 graaff Exp $
 
 EAPI=5
 USE_RUBY="ruby19 ruby20 ruby21"
@@ -27,7 +27,7 @@ ruby_add_rdepend "
 	~dev-ruby/actionpack-${PV}
 	~dev-ruby/actionview-${PV}
 	~dev-ruby/activejob-${PV}
-	>=dev-ruby/mail-2.5.4:2.5
+	>=dev-ruby/mail-2.5.4:* =dev-ruby/mail-2*:*
 	>=dev-ruby/rails-dom-testing-1.0.5:1"
 
 ruby_add_bdepend "test? (
