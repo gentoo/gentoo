@@ -1,6 +1,11 @@
 # ChangeLog for dev-cpp/gflags
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/gflags/ChangeLog,v 1.35 2015/07/22 06:18:08 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/gflags/ChangeLog,v 1.36 2015/08/07 13:08:46 amynka Exp $
+
+*gflags-2.1.2 (07 Aug 2015)
+
+  07 Aug 2015;  <amy@gentoo.org> +gflags-2.1.2.ebuild, metadata.xml:
+  Version bump bug #556896. Add myself as maintainer.
 
   22 Jul 2015; Mike Frysinger <vapier@gentoo.org> gflags-2.1.1-r1.ebuild,
   gflags-9999.ebuild:

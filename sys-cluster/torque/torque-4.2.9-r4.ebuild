@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/torque/torque-4.2.9-r4.ebuild,v 1.1 2015/08/05 17:23:36 jsbronder Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/torque/torque-4.2.9-r4.ebuild,v 1.2 2015/08/07 13:01:34 jlec Exp $
 
 EAPI=5
 
@@ -23,7 +23,7 @@ DEPEND_COMMON="
 	cpusets? ( sys-apps/hwloc )
 	munge? ( sys-auth/munge )
 	nvidia? ( >=x11-drivers/nvidia-drivers-275 )
-	tk? ( dev-lang/tk:* )
+	tk? ( dev-lang/tk:0 )
 	syslog? ( virtual/logger )
 	!games-util/qstat"
 

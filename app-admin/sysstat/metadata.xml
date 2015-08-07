@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-<email>jer@gentoo.org</email>
-<name>Jeroen Roovers</name>
-</maintainer>
-<use>
-<flag name="cron">Install /etc/cron.d script to periodically run sar</flag>
-<flag name="isag">Install isag, the Interactive System Activity Graph tool</flag>
-</use>
+	<maintainer>
+		<email>jer@gentoo.org</email>
+		<name>Jeroen Roovers</name>
+	</maintainer>
+	<use>
+		<flag name="cron">Install /etc/cron.d script to periodically run sar</flag>
+		<flag name="isag">Install isag, the Interactive System Activity Graph tool</flag>
+	</use>
 </pkgmetadata>

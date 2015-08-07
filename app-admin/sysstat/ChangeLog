@@ -1,6 +1,10 @@
 # ChangeLog for app-admin/sysstat
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/sysstat/ChangeLog,v 1.292 2015/07/09 06:38:39 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/sysstat/ChangeLog,v 1.293 2015/08/07 13:00:22 jlec Exp $
+
+  07 Aug 2015; Justin Lecher <jlec@gentoo.org> metadata.xml,
+  sysstat-11.0.2.ebuild, sysstat-11.0.5-r1.ebuild, sysstat-11.1.5-r1.ebuild:
+  Fix subslots for tk
 
 *sysstat-11.1.5-r1 (09 Jul 2015)
 *sysstat-11.0.5-r1 (09 Jul 2015)

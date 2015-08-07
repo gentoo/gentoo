@@ -1,6 +1,9 @@
 # ChangeLog for sys-cluster/torque
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/torque/ChangeLog,v 1.187 2015/08/05 17:32:08 jsbronder Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/torque/ChangeLog,v 1.188 2015/08/07 13:01:34 jlec Exp $
+
+  07 Aug 2015; Justin Lecher <jlec@gentoo.org> torque-4.2.9-r4.ebuild:
+  Fix subslots for tk
 
   05 Aug 2015; Justin Bronder <jsbronder@gentoo.org> -torque-4.2.9-r3.ebuild:
   sys-cluster/torque: cleanup old

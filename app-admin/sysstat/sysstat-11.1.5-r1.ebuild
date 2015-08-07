@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/sysstat/sysstat-11.1.5-r1.ebuild,v 1.1 2015/07/09 06:38:39 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/sysstat/sysstat-11.1.5-r1.ebuild,v 1.2 2015/08/07 13:00:22 jlec Exp $
 
 EAPI=5
 inherit eutils multilib systemd toolchain-funcs
@@ -16,7 +16,7 @@ IUSE="debug +doc isag nls lm_sensors selinux"
 
 CDEPEND="
 	isag? (
-		dev-lang/tk:*
+		dev-lang/tk:0
 		dev-vcs/rcs
 		sci-visualization/gnuplot
 	)

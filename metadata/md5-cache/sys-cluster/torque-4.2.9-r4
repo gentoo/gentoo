@@ -1,13 +1,13 @@
 DEFINED_PHASES=configure install postinst preinst prepare setup
-DEPEND=sys-libs/ncurses sys-libs/readline:* cpusets? ( sys-apps/hwloc ) munge? ( sys-auth/munge ) nvidia? ( >=x11-drivers/nvidia-drivers-275 ) tk? ( dev-lang/tk:* ) syslog? ( virtual/logger ) !games-util/qstat !sys-cluster/slurm
+DEPEND=sys-libs/ncurses sys-libs/readline:* cpusets? ( sys-apps/hwloc ) munge? ( sys-auth/munge ) nvidia? ( >=x11-drivers/nvidia-drivers-275 ) tk? ( dev-lang/tk:0 ) syslog? ( virtual/logger ) !games-util/qstat !sys-cluster/slurm
 DESCRIPTION=Resource manager and queuing system based on OpenPBS
 EAPI=5
 HOMEPAGE=http://www.adaptivecomputing.com/products/open-source/torque
 IUSE=cpusets +crypt doc drmaa kernel_linux munge nvidia server +syslog tk
 KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
 LICENSE=torque-2.5
-RDEPEND=sys-libs/ncurses sys-libs/readline:* cpusets? ( sys-apps/hwloc ) munge? ( sys-auth/munge ) nvidia? ( >=x11-drivers/nvidia-drivers-275 ) tk? ( dev-lang/tk:* ) syslog? ( virtual/logger ) !games-util/qstat crypt? ( net-misc/openssh ) !crypt? ( net-misc/netkit-rsh ) !dev-libs/uthash
+RDEPEND=sys-libs/ncurses sys-libs/readline:* cpusets? ( sys-apps/hwloc ) munge? ( sys-auth/munge ) nvidia? ( >=x11-drivers/nvidia-drivers-275 ) tk? ( dev-lang/tk:0 ) syslog? ( virtual/logger ) !games-util/qstat crypt? ( net-misc/openssh ) !crypt? ( net-misc/netkit-rsh ) !dev-libs/uthash
 SLOT=0
 SRC_URI=http://www.adaptivecomputing.com/index.php?wpfb_dl=2849 -> torque-4.2.9.tar.gz
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=3c17ca848b70905f3fbf753653be3c84
+_md5_=f494d0fa255adb803cb2b9b2162af385
