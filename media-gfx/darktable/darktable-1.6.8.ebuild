@@ -1,15 +1,17 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/darktable/darktable-1.6.4.ebuild,v 1.2 2015/06/04 19:03:59 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/darktable/darktable-1.6.8.ebuild,v 1.1 2015/08/07 11:56:24 mrueg Exp $
 
 EAPI=5
 
 inherit cmake-utils flag-o-matic toolchain-funcs gnome2-utils fdo-mime pax-utils eutils
 
+DOC_PV="1.6.0"
+
 DESCRIPTION="A virtual lighttable and darkroom for photographers"
 HOMEPAGE="http://www.darktable.org/"
 SRC_URI="https://github.com/darktable-org/${PN}/releases/download/release-${PV}/${P}.tar.xz
-	doc? ( mirror://sourceforge/${PN}/${PV}/${PN}-usermanual.pdf -> ${PN}-usermanual-${PV}.pdf )"
+	doc? ( https://github.com/darktable-org/${PN}/releases/download/release-${DOC_PV}/${PN}-usermanual.pdf -> ${PN}-usermanual-${DOC_PV}.pdf )"
 
 LICENSE="GPL-3 CC-BY-3.0"
 SLOT="0"
@@ -113,7 +115,7 @@ src_configure() {
 
 src_install() {
 	cmake-utils_src_install
-	use doc && dodoc "${DISTDIR}"/${PN}-usermanual-${PV}.pdf
+	use doc && dodoc "${DISTDIR}"/${PN}-usermanual-${DOC_PV}.pdf
 
 	for lang in ${LANGS} ; do
 		use linguas_${lang} || rm -r "${ED}"/usr/share/locale/${lang}
