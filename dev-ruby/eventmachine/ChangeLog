@@ -1,6 +1,11 @@
 # ChangeLog for dev-ruby/eventmachine
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/eventmachine/ChangeLog,v 1.34 2015/07/05 09:37:54 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/eventmachine/ChangeLog,v 1.35 2015/08/07 02:02:33 mrueg Exp $
+
+*eventmachine-1.0.8 (07 Aug 2015)
+
+  07 Aug 2015; Manuel Rüger <mrueg@gentoo.org> +eventmachine-1.0.8.ebuild:
+  Version bump.
 
   05 Jul 2015; Hans de Graaff <graaff@gentoo.org> eventmachine-1.0.7.ebuild:
   ...and also add the slot to the built-time dependency of openssl.

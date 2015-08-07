@@ -1,6 +1,9 @@
 # ChangeLog for eclass directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1748 2015/08/07 01:07:09 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ChangeLog,v 1.1749 2015/08/07 02:05:19 pesa Exp $
+
+  07 Aug 2015; Davide Pesavento <pesa@gentoo.org> qt5-build.eclass:
+  Fix bugs #549140 and #552942.
 
   07 Aug 2015; Davide Pesavento <pesa@gentoo.org> qt5-build.eclass:
   Allow passing arguments to qmake from ebuilds via the myqmakeargs array.

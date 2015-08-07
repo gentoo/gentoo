@@ -1,6 +1,11 @@
 # ChangeLog for app-backup/rear
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/rear/ChangeLog,v 1.5 2015/06/09 09:04:58 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-backup/rear/ChangeLog,v 1.6 2015/08/07 01:57:06 creffett Exp $
+
+*rear-1.17.1 (07 Aug 2015)
+
+  07 Aug 2015; Chris Reffett <creffett@gentoo.org> +rear-1.17.1.ebuild:
+  Version bump
 
   09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Updating remote-id in metadata.xml

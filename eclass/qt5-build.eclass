@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/qt5-build.eclass,v 1.22 2015/08/07 01:07:09 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/qt5-build.eclass,v 1.23 2015/08/07 02:05:19 pesa Exp $
 
 # @ECLASS: qt5-build.eclass
 # @MAINTAINER:
@@ -195,6 +195,14 @@ qt5-build_src_prepare() {
 		find config.tests/unix -name '*.test' -type f \
 			-execdir sed -i -e '/bin\/qmake/ s/-nocache //' '{}' + \
 			|| die "sed failed (config.tests)"
+
+		# Don't add -O3 to CXXFLAGS (bug 549140)
+		sed -i -e '/CONFIG\s*+=/ s/optimize_full//' \
+			src/{corelib/corelib,gui/gui}.pro || die "sed failed (optimize_full)"
+
+		# Don't force sse2 on x86 (bug 552942)
+		sed -i -e 's/^sse2:/false:&/' \
+			mkspecs/features/qt_module.prf || die "sed failed (sse2)"
 	fi
 
 	# apply patches
