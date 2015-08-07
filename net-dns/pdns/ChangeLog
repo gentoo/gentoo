@@ -1,6 +1,12 @@
 # ChangeLog for net-dns/pdns
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/pdns/ChangeLog,v 1.107 2015/06/09 20:25:55 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/pdns/ChangeLog,v 1.108 2015/08/07 19:32:14 swegener Exp $
+
+  07 Aug 2015; Sven Wegener <swegener@gentoo.org> pdns-3.4.0.ebuild,
+  pdns-3.4.0-r1.ebuild, pdns-3.4.1.ebuild, pdns-3.4.2.ebuild,
+  pdns-3.4.4.ebuild, pdns-3.4.5.ebuild:
+  Remove the odbc USE flag, the godbcbackend backend is no longer available,
+  bug #556556.
 
 *pdns-3.4.5 (09 Jun 2015)
 *pdns-3.3.3 (09 Jun 2015)

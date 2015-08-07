@@ -8,7 +8,7 @@ KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
 LICENSE=GPL-2 !deblob? ( freedist )
 RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )
 RESTRICT=binchecks strip
-SLOT=3.2.69
-SRC_URI=mirror://kernel/linux/kernel/v3.x/patch-3.2.69.xz mirror://kernel/linux/kernel/v3.x/linux-3.2.tar.xz deblob? ( http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/3.2-gnu1/deblob-3.2 http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/3.2-gnu1/deblob-check -> deblob-check-3.2 )
+SLOT=3.2.70
+SRC_URI=mirror://kernel/linux/kernel/v3.x/patch-3.2.70.xz mirror://kernel/linux/kernel/v3.x/linux-3.2.tar.xz deblob? ( http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/3.2-gnu/deblob-3.2 http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/3.2-gnu/deblob-check -> deblob-check-3.2 )
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	kernel-2	adcd0a7bbb205c648e9cde3dd32126dc	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	4756de53ea4d40471a582e898815a5c8	python-utils-r1	0295a286ec27cab6af76b3b75ba07a3a	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=7cddf49ec70e7096a21a8541f3deb706
+_md5_=8d4a5c424fda230cffc5bff724aea9f2

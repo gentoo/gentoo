@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/pdns/pdns-3.4.1.ebuild,v 1.3 2014/12/28 16:19:25 titanofold Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/pdns/pdns-3.4.1.ebuild,v 1.4 2015/08/07 19:32:14 swegener Exp $
 
 EAPI=5
 
@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~x86"
 # oracle: dito (need Oracle Client Libraries)
 # xdb: (almost) dead, surely not supported
 
-IUSE="botan cryptopp debug doc geoip ldap lua mydns mysql odbc opendbx postgres remote sqlite static tools tinydns test"
+IUSE="botan cryptopp debug doc geoip ldap lua mydns mysql opendbx postgres remote sqlite static tools tinydns test"
 
 REQUIRED_USE="mydns? ( mysql )"
 
@@ -33,7 +33,6 @@ RDEPEND="!static? (
 		postgres? ( dev-db/postgresql:= )
 		ldap? ( >=net-nds/openldap-2.0.27-r4 )
 		sqlite? ( dev-db/sqlite:3 )
-		odbc? ( dev-db/unixODBC )
 		opendbx? ( dev-db/opendbx )
 		geoip? ( >=dev-cpp/yaml-cpp-0.5.1 dev-libs/geoip )
 		tinydns? ( dev-db/cdb ) )"
@@ -49,7 +48,6 @@ DEPEND="${RDEPEND}
 		postgres? ( dev-db/postgresql[static-libs(+)] )
 		ldap? ( >=net-nds/openldap-2.0.27-r4[static-libs(+)] )
 		sqlite? ( dev-db/sqlite:3[static-libs(+)] )
-		odbc? ( dev-db/unixODBC[static-libs(+)] )
 		opendbx? ( dev-db/opendbx[static-libs(+)] )
 		geoip? ( >=dev-cpp/yaml-cpp-0.5.1 dev-libs/geoip[static-libs(+)] )
 		tinydns? ( dev-db/cdb ) )
@@ -64,7 +62,6 @@ src_configure() {
 	use lua && dynmodules+=" lua"
 	use mydns && dynmodules+=" mydns"
 	use mysql && dynmodules+=" gmysql"
-	use odbc && dynmodules+=" godbc"
 	use opendbx && dynmodules+=" opendbx"
 	#use oracle && dynmodules+=" goracle oracle"
 	use postgres && dynmodules+=" gpgsql"
