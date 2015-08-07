@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/nltk/nltk-3.0.3.ebuild,v 1.1 2015/06/17 07:06:38 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/nltk/nltk-3.0.3.ebuild,v 1.2 2015/08/07 07:54:10 idella4 Exp $
 
 EAPI="5"
 
@@ -21,6 +21,3 @@ IUSE="numpy tk"
 RDEPEND="${RDEPEND}
 	numpy? ( dev-python/numpy[${PYTHON_USEDEP}] )
 	dev-python/pyyaml[${PYTHON_USEDEP}]"
-
-DEPEND="${RDEPEND}
-	app-arch/unzip"

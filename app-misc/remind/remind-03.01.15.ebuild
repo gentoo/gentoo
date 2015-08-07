@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/remind/remind-03.01.15.ebuild,v 1.1 2015/08/04 09:25:03 polynomial-c Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/remind/remind-03.01.15.ebuild,v 1.3 2015/08/07 08:02:02 ago Exp $
 
 EAPI=5
 
@@ -10,7 +10,7 @@ SRC_URI="http://www.roaringpenguin.com/files/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~ppc x86 ~x86-fbsd"
 IUSE="tk"
 
 RDEPEND="tk? ( dev-lang/tk dev-tcltk/tcllib )"

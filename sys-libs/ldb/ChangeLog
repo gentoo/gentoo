@@ -1,6 +1,12 @@
 # ChangeLog for sys-libs/ldb
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/ldb/ChangeLog,v 1.74 2015/04/08 18:28:32 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/ldb/ChangeLog,v 1.75 2015/08/07 07:38:08 polynomial-c Exp $
+
+*ldb-1.1.21 (07 Aug 2015)
+
+  07 Aug 2015; Lars Wendler <polynomial-c@gentoo.org> -ldb-1.1.19.ebuild,
+  +ldb-1.1.21.ebuild:
+  Version bump. Removed old.
 
   08 Apr 2015; Michał Górny <mgorny@gentoo.org> ldb-1.1.17-r1.ebuild,
   ldb-1.1.19.ebuild:
