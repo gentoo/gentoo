@@ -1,6 +1,11 @@
 # ChangeLog for app-emulation/libvirt
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/ChangeLog,v 1.441 2015/07/31 03:24:07 tamiko Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/ChangeLog,v 1.442 2015/08/07 14:42:04 tamiko Exp $
+
+*libvirt-1.2.18 (07 Aug 2015)
+
+  07 Aug 2015; Matthias Maier <tamiko@gentoo.org> +libvirt-1.2.18.ebuild:
+  version bump, bug #556904
 
 *libvirt-1.2.17-r4 (31 Jul 2015)
 
