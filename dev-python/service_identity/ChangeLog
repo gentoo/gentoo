@@ -1,6 +1,10 @@
 # ChangeLog for dev-python/service_identity
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/service_identity/ChangeLog,v 1.10 2015/06/07 16:05:41 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/service_identity/ChangeLog,v 1.11 2015/08/07 16:24:08 klausman Exp $
+
+  07 Aug 2015; Tobias Klausmann <klausman@gentoo.org>
+  service_identity-14.0.0.ebuild:
+  Keyworded on alpha, bug 528896
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

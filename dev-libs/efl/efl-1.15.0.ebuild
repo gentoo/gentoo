@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/efl/efl-1.15.0.ebuild,v 1.2 2015/08/06 04:22:05 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/efl/efl-1.15.0.ebuild,v 1.3 2015/08/07 16:08:59 vapier Exp $
 
 EAPI="5"
 
@@ -157,6 +157,17 @@ DEPEND="
 "
 
 S=${WORKDIR}/${MY_P}
+
+src_prepare() {
+	# This is a hack of the upstream fix.  Drop with next release. #551882
+	sed -i \
+		-e 's:SDL/:SDL2/:g' \
+		configure \
+		src/modules/evas/engines/gl_common/evas_gl_common.h \
+		src/modules/evas/engines/gl_sdl/Evas_Engine_GL_SDL.h || die
+
+	enlightenment_src_prepare
+}
 
 src_configure() {
 	if use ssl && use gnutls ; then

@@ -1,6 +1,14 @@
 # ChangeLog for dev-php/PEAR-Numbers_Words
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Numbers_Words/ChangeLog,v 1.48 2015/08/04 12:33:48 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Numbers_Words/ChangeLog,v 1.50 2015/08/07 16:21:15 klausman Exp $
+
+  07 Aug 2015; Tobias Klausmann <klausman@gentoo.org>
+  PEAR-Numbers_Words-0.18.1.ebuild:
+  Fix accidental stabilization for alpha.
+
+  07 Aug 2015; Tobias Klausmann <klausman@gentoo.org>
+  PEAR-Numbers_Words-0.18.1.ebuild:
+  Stable on alpha, bug 528470
 
   04 Aug 2015; Mikle Kolyada <zlogene@gentoo.org>
   PEAR-Numbers_Words-0.18.1.ebuild:
