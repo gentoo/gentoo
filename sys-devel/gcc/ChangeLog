@@ -1,6 +1,13 @@
 # ChangeLog for sys-devel/gcc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/ChangeLog,v 1.1085 2015/07/17 05:09:44 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/ChangeLog,v 1.1087 2015/08/07 04:25:15 vapier Exp $
+
+  07 Aug 2015; Mike Frysinger <vapier@gentoo.org> gcc-4.7.4.ebuild:
+  Fix building w/gcc-5.
+
+  07 Aug 2015; Mike Frysinger <vapier@gentoo.org> -gcc-4.7.0.ebuild,
+  -gcc-4.7.1.ebuild, -gcc-4.7.2-r1.ebuild, -gcc-4.7.3-r1.ebuild:
+  Move old versions to the toolchain overlay.
 
 *gcc-5.2.0 (17 Jul 2015)
 

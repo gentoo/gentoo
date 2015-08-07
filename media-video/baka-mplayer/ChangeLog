@@ -1,6 +1,11 @@
 # ChangeLog for media-video/baka-mplayer
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/baka-mplayer/ChangeLog,v 1.2 2015/03/09 11:31:03 yngwin Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/baka-mplayer/ChangeLog,v 1.3 2015/08/07 04:07:44 yngwin Exp $
+
+*baka-mplayer-2.0.3 (07 Aug 2015)
+
+  07 Aug 2015; Ben de Groot <yngwin@gentoo.org> +baka-mplayer-2.0.3.ebuild:
+  version bump, bug #556890
 
   09 Mar 2015; Ben de Groot <yngwin@gentoo.org> baka-mplayer-2.0.2.ebuild:
   add libX11 dep for completeness
