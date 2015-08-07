@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-frameworks/extra-cmake-modules/extra-cmake-modules-5.12.0.ebuild,v 1.1 2015/07/16 20:33:14 johu Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-frameworks/extra-cmake-modules/extra-cmake-modules-5.12.0.ebuild,v 1.2 2015/08/07 18:02:49 kensington Exp $
 
 EAPI=5
 
@@ -22,6 +22,9 @@ DEPEND="
 		${PYTHON_DEPS}
 		$(python_gen_any_dep 'dev-python/sphinx[${PYTHON_USEDEP}]')
 	)
+"
+RDEPEND="
+	dev-qt/qtcore:5
 "
 
 python_check_deps() {

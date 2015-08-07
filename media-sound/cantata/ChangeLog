@@ -1,6 +1,9 @@
 # ChangeLog for media-sound/cantata
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/cantata/ChangeLog,v 1.33 2015/06/04 19:04:14 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/cantata/ChangeLog,v 1.34 2015/08/07 17:32:57 kensington Exp $
+
+  07 Aug 2015; Michael Palimaka <kensington@gentoo.org> cantata-1.5.1.ebuild:
+  Add missing dependency.
 
   04 Jun 2015; Michael Palimaka <kensington@gentoo.org> cantata-1.5.1.ebuild:
   Move various kde-base packages to kde-apps.
