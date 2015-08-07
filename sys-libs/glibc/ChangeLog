@@ -1,6 +1,9 @@
 # ChangeLog for sys-libs/glibc
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/ChangeLog,v 1.1064 2015/08/05 13:40:44 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/ChangeLog,v 1.1065 2015/08/07 06:00:11 vapier Exp $
+
+  07 Aug 2015; Mike Frysinger <vapier@gentoo.org> glibc-2.22.ebuild:
+  Fix building for hppa.
 
 *glibc-2.22 (05 Aug 2015)
 
