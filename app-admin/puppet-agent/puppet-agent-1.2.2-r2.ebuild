@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/puppet-agent/puppet-agent-1.2.2-r2.ebuild,v 1.2 2015/07/29 22:15:01 prometheanfire Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/puppet-agent/puppet-agent-1.2.2-r2.ebuild,v 1.3 2015/08/08 05:02:56 prometheanfire Exp $
 
 EAPI=5
 inherit eutils systemd unpacker
@@ -9,8 +9,8 @@ DESCRIPTION="general puppet client utils along with mcollective hiera and facter
 HOMEPAGE="https://puppetlabs.com/"
 SRC_BASE="http://apt.puppetlabs.com/pool/wheezy/PC1/${PN:0:1}/${PN}/${PN}_${PV}-1wheezy"
 SRC_URI="
-		amd64? ( ${SRC_BASE}_amd64.deb )
-		x86?   ( ${SRC_BASE}_i386.deb )
+	amd64? ( ${SRC_BASE}_amd64.deb )
+	x86?   ( ${SRC_BASE}_i386.deb )
 "
 
 LICENSE="Apache-2.0"
@@ -19,21 +19,22 @@ KEYWORDS="~amd64 ~x86"
 IUSE="puppetdb selinux"
 RESTRICT="strip"
 
-CDEPEND="!app-admin/puppet
-		!app-admin/mcollective
-		!dev-ruby/hiera
-		!dev-ruby/facter
-		!app-emulation/virt-what"
+CDEPEND="!app-admin/augeas
+	!app-admin/mcollective
+	!app-admin/puppet
+	!dev-ruby/hiera
+	!dev-ruby/facter
+	!app-emulation/virt-what"
 
 DEPEND="
-		${CDEPEND}"
+	${CDEPEND}"
 RDEPEND="${CDEPEND}
-		sys-apps/dmidecode
-		selinux? (
-			sys-libs/libselinux[ruby]
-			sec-policy/selinux-puppet
-		)
-		puppetdb? ( >=dev-ruby/puppetdb-termini-3.0.1-r2 )"
+	sys-apps/dmidecode
+	selinux? (
+		sys-libs/libselinux[ruby]
+		sec-policy/selinux-puppet
+	)
+	puppetdb? ( >=dev-ruby/puppetdb-termini-3.0.1-r2 )"
 
 S=${WORKDIR}
 

@@ -1,6 +1,11 @@
 # ChangeLog for net-misc/openvpn
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/openvpn/ChangeLog,v 1.326 2015/08/07 10:12:17 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/openvpn/ChangeLog,v 1.327 2015/08/08 05:13:53 prometheanfire Exp $
+
+*openvpn-2.3.8 (08 Aug 2015)
+
+  08 Aug 2015; Matthew Thode <prometheanfire@gentoo.org> +openvpn-2.3.8.ebuild:
+  updating to fix asking for the password at init
 
   07 Aug 2015; Tobias Klausmann <klausman@gentoo.org> openvpn-2.3.7.ebuild:
   Stable on alpha, bug 556874

@@ -1,14 +1,14 @@
 DEFINED_PHASES=install unpack
-DEPEND=!app-admin/puppet !app-admin/mcollective !dev-ruby/hiera !dev-ruby/facter !app-emulation/virt-what virtual/pkgconfig
+DEPEND=!app-admin/augeas !app-admin/mcollective !app-admin/puppet !dev-ruby/hiera !dev-ruby/facter !app-emulation/virt-what virtual/pkgconfig
 DESCRIPTION=general puppet client utils along with mcollective hiera and facter
 EAPI=5
 HOMEPAGE=https://puppetlabs.com/
 IUSE=puppetdb selinux
 KEYWORDS=~amd64 ~x86
 LICENSE=Apache-2.0
-RDEPEND=!app-admin/puppet !app-admin/mcollective !dev-ruby/hiera !dev-ruby/facter !app-emulation/virt-what sys-apps/dmidecode selinux? ( sys-libs/libselinux[ruby] sec-policy/selinux-puppet ) puppetdb? ( >=dev-ruby/puppetdb-termini-3.0.1-r2 )
+RDEPEND=!app-admin/augeas !app-admin/mcollective !app-admin/puppet !dev-ruby/hiera !dev-ruby/facter !app-emulation/virt-what sys-apps/dmidecode selinux? ( sys-libs/libselinux[ruby] sec-policy/selinux-puppet ) puppetdb? ( >=dev-ruby/puppetdb-termini-3.0.1-r2 )
 RESTRICT=strip
 SLOT=0
 SRC_URI=amd64? ( http://apt.puppetlabs.com/pool/wheezy/PC1/p/puppet-agent/puppet-agent_1.2.2-1wheezy_amd64.deb ) x86? ( http://apt.puppetlabs.com/pool/wheezy/PC1/p/puppet-agent/puppet-agent_1.2.2-1wheezy_i386.deb )
 _eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
-_md5_=f23116aed2d2a54960d42116bd329391
+_md5_=818475c7b42ae82dd985a68175bf1ebe

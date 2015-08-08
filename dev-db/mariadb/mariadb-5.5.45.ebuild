@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mariadb/mariadb-5.5.43-r1.ebuild,v 1.1 2015/05/09 18:53:27 grknight Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/mariadb/mariadb-5.5.45.ebuild,v 1.1 2015/08/08 04:35:53 grknight Exp $
 
 EAPI="5"
 MY_EXTRAS_VER="20150509-1847Z"
@@ -79,10 +79,15 @@ src_test() {
 		# main.mysql_client_test, main.mysql_client_test_nonblock:
 		# segfaults at random under Portage only, suspect resource limits.
 		#
+		# archive.mysqlhotcopy_archive main.mysqlhotcopy_myisam
+		# fails due to bad cleanup of previous tests when run in parallel
+		# The tool is deprecated anyway
+		# Bug 532288
 
 		for t in main.mysql_client_test main.mysql_client_test_nonblock \
 			binlog.binlog_statement_insert_delayed main.information_schema \
 			main.mysqld--help \
+			archive.mysqlhotcopy_archive main.mysqlhotcopy_myisam \
 			funcs_1.is_triggers funcs_1.is_tables_mysql funcs_1.is_columns_mysql ; do
 				mysql-v2_disable_test  "$t" "False positives in Gentoo"
 		done

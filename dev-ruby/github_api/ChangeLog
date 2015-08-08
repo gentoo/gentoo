@@ -1,6 +1,11 @@
 # ChangeLog for dev-ruby/github_api
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/github_api/ChangeLog,v 1.8 2015/07/25 07:32:43 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/github_api/ChangeLog,v 1.9 2015/08/08 05:26:42 graaff Exp $
+
+*github_api-0.12.4 (08 Aug 2015)
+
+  08 Aug 2015; Hans de Graaff <graaff@gentoo.org> +github_api-0.12.4.ebuild:
+  Version bump.
 
   25 Jul 2015; Hans de Graaff <graaff@gentoo.org> -github_api-0.10.2.ebuild:
   Cleanup.
