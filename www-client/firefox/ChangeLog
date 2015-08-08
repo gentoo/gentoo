@@ -1,6 +1,9 @@
 # ChangeLog for www-client/firefox
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/firefox/ChangeLog,v 1.437 2015/08/07 18:15:27 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/firefox/ChangeLog,v 1.438 2015/08/08 10:00:42 ago Exp $
+
+  08 Aug 2015; Agostino Sarubbo <ago@gentoo.org> firefox-38.1.1.ebuild:
+  Stable for ppc, wrt bug #556942
 
   07 Aug 2015; Agostino Sarubbo <ago@gentoo.org> firefox-38.1.1.ebuild:
   Stable for x86, wrt bug #556942
