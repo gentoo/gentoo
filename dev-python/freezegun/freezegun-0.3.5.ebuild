@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/freezegun/freezegun-0.3.4.ebuild,v 1.2 2015/08/01 10:11:25 patrick Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/freezegun/freezegun-0.3.5.ebuild,v 1.1 2015/08/08 12:15:24 mrueg Exp $
 
 EAPI=5
 PYTHON_COMPAT=(python{2_7,3_3,3_4})
@@ -16,7 +16,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
 
-DEPEND="test? ( dev-python/nose[${PYTHON_USEDEP}] )
+DEPEND="test? ( dev-python/mock[${PYTHON_USEDEP}]
+	dev-python/nose[${PYTHON_USEDEP}] )
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_test() {

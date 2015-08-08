@@ -1,6 +1,11 @@
 # ChangeLog for dev-libs/libinput
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libinput/ChangeLog,v 1.28 2015/07/25 11:55:27 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libinput/ChangeLog,v 1.29 2015/08/08 12:12:15 mrueg Exp $
+
+*libinput-0.21.0 (08 Aug 2015)
+
+  08 Aug 2015; Manuel Rüger <mrueg@gentoo.org> +libinput-0.21.0.ebuild:
+  Version bump.
 
   25 Jul 2015; Pacho Ramos <pacho@gentoo.org> libinput-0.9.0.ebuild:
   ppc stable, bug #553500
