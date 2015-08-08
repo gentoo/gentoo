@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/dalli/dalli-2.7.4-r1.ebuild,v 1.4 2015/07/11 20:23:41 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/dalli/dalli-2.7.4-r1.ebuild,v 1.5 2015/08/08 07:33:20 graaff Exp $
 
 EAPI=5
 USE_RUBY="ruby19 ruby20 ruby21"
@@ -24,6 +24,7 @@ DEPEND+="${DEPEND} test? ( >=net-misc/memcached-1.4.0 )"
 ruby_add_bdepend "test? (
 		dev-ruby/minitest:5
 		>=dev-ruby/mocha-0.13
+		dev-ruby/rack
 		>=dev-ruby/activesupport-4.1
 		dev-ruby/connection_pool )"
 

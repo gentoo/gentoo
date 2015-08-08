@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/dalli
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/dalli/ChangeLog,v 1.18 2015/07/11 20:23:41 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/dalli/ChangeLog,v 1.19 2015/08/08 07:33:20 graaff Exp $
+
+  08 Aug 2015; Hans de Graaff <graaff@gentoo.org> dalli-2.7.4-r1.ebuild:
+  Add missing dev-ruby/rack test dependency.
 
   11 Jul 2015; Mikle Kolyada <zlogene@gentoo.org> dalli-2.7.4-r1.ebuild:
   Add ~x86 keyword wrt bug #551722

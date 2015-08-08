@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/factory_girl
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/factory_girl/ChangeLog,v 1.10 2015/06/07 17:43:28 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/factory_girl/ChangeLog,v 1.11 2015/08/08 07:34:29 graaff Exp $
+
+  08 Aug 2015; Hans de Graaff <graaff@gentoo.org> factory_girl-4.5.0.ebuild:
+  Tests require activerecord with sqlite support.
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml
