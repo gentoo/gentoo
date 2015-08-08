@@ -2,4 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>java</herd>
+	<use>
+		<flag name="system-jflex">
+			Build against system <pkg>dev-java/jflex</pkg> rather than the bundled one.
+			Disabling this flag allows breaking the circular dependency when necessary.
+		</flag>
+	</use>
 </pkgmetadata>

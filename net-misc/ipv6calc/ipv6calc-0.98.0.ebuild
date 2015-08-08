@@ -1,9 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/ipv6calc/ipv6calc-0.95.0.ebuild,v 1.1 2013/11/17 16:24:13 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ipv6calc/ipv6calc-0.98.0.ebuild,v 1.2 2015/08/08 01:27:54 blueness Exp $
 
 EAPI="5"
-inherit fixheadtails
+inherit eutils
 
 DESCRIPTION="IPv6 address calculator"
 HOMEPAGE="http://www.deepspace6.net/projects/ipv6calc.html"
@@ -15,6 +15,7 @@ KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="geoip test"
 
 RDEPEND="
+	dev-libs/openssl:=
 	geoip? ( >=dev-libs/geoip-1.4.7 )
 "
 DEPEND="${RDEPEND}
@@ -23,16 +24,27 @@ DEPEND="${RDEPEND}
 
 #dev-perl/URI is needed for web interface, that is not installed now
 
-src_prepare() {
-	ht_fix_file configure
-}
-
 src_configure() {
+	# These options are broken.  You can't disable them.  That's
+	# okay because we want then force enabled.
+	# --disable-db-as-registry
+	# --disable-db-cc-registry
 	if use geoip; then
 		myconf=$(use_enable geoip)
 		myconf+=" --with-geoip-db=${EPREFIX}/usr/share/GeoIP"
 	fi
-	econf ${myconf}
+	econf \
+		--disable-bundled-getopt \
+		--disable-bundled-md5 \
+		--enable-shared \
+		--enable-dynamic-load \
+		--enable-db-ieee \
+		--enable-db-ipv4 \
+		--enable-db-ipv6 \
+		--disable-dbip \
+		--disable-external \
+		--disable-ip2location \
+		${myconf}
 }
 
 src_compile() {

@@ -1,6 +1,11 @@
 # ChangeLog for dev-java/javacup
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/javacup/ChangeLog,v 1.36 2015/08/07 19:58:56 sping Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/javacup/ChangeLog,v 1.37 2015/08/08 01:05:15 sping Exp $
+
+  08 Aug 2015; Sebastian Pipping <sping@gentoo.org>
+  javacup-0.11b_beta20150326.ebuild, metadata.xml:
+  Introduce use flag "system-jflex" to break circular dependency, address
+  warning on dev-java/ant-core (by specifying slot 0 and also adding to DEPEND)
 
 *javacup-0.11b_beta20150326 (07 Aug 2015)
 

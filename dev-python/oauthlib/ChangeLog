@@ -1,6 +1,11 @@
 # ChangeLog for dev-python/oauthlib
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/oauthlib/ChangeLog,v 1.42 2015/06/07 14:26:48 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/oauthlib/ChangeLog,v 1.43 2015/08/08 01:20:12 idella4 Exp $
+
+*oauthlib-1.0.1 (08 Aug 2015)
+
+  08 Aug 2015; Ian Delaney <idella4@gentoo.org> +oauthlib-1.0.1.ebuild:
+  bump
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

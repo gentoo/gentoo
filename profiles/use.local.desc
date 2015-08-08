@@ -1693,6 +1693,7 @@ dev-java/icedtea-web:nsplugin - Enable the browser plugin (NPPlugin).
 dev-java/icedtea-web:tagsoup - Depend on dev-java/tagsoup which allows parsing malformed .jnlp files
 dev-java/itext:rtf - Build and provide libraries for rich text format
 dev-java/itext:rups - Build and provide GUI for Reading/Updating PDF Syntax
+dev-java/javacup:system-jflex - Build against system dev-java/jflex rather than the bundled one. Disabling this flag allows breaking the circular dependency when necessary.
 dev-java/jcs:admin - Enable JCS Admin servlets
 dev-java/jdbc-jaybird:jni - Build/Install JDBC Type 2 native components
 dev-java/jdbc-mysql:c3p0 - Enable c3p0 support
