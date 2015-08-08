@@ -1,6 +1,6 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/open-iscsi/open-iscsi-2.0.873.ebuild,v 1.1 2013/10/11 20:08:09 idl0r Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-block/open-iscsi/open-iscsi-2.0.873.ebuild,v 1.2 2015/08/08 05:42:15 prometheanfire Exp $
 
 EAPI=5
 
@@ -19,6 +19,8 @@ IUSE="debug slp"
 
 DEPEND="slp? ( net-libs/openslp )"
 RDEPEND="${DEPEND}
+	virtual/udev
+	sys-fs/lsscsi
 	sys-apps/util-linux"
 
 S="${WORKDIR}/${MY_PV}"
@@ -75,7 +77,13 @@ src_install() {
 	docinto test/
 	dodoc test/*
 
+	insinto /etc/iscsi
 	newins "${FILESDIR}"/initiatorname.iscsi initiatorname.iscsi.example
+	# udev pieces
+	insinto /etc/udev/scripts
+	doins "${FILESDIR}"/iscsidev.sh
+	insinto /lib/udev/rules.d
+	doins "${FILESDIR}"/99-iscsi.rules
 
 	newconfd "${FILESDIR}"/iscsid-conf.d iscsid
 	newinitd "${FILESDIR}"/iscsid-init.d iscsid

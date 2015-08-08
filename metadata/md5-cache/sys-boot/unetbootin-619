@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=dev-qt/qtgui:4
+DESCRIPTION=UNetbootin installs Linux/BSD distributions to a partition or USB drive
+EAPI=5
+HOMEPAGE=https://github.com/unetbootin/unetbootin
+IUSE=linguas_am linguas_ar linguas_ast linguas_be linguas_bg linguas_bn linguas_ca linguas_cs linguas_da linguas_de linguas_el linguas_eo linguas_es linguas_et linguas_eu linguas_fa linguas_fi linguas_fo linguas_fr linguas_gl linguas_he linguas_hr linguas_hu linguas_id linguas_it linguas_ja linguas_lt linguas_lv linguas_ml linguas_ms linguas_nan linguas_nb linguas_nl linguas_nn linguas_pl linguas_pt_BR linguas_pt linguas_ro linguas_ru linguas_si linguas_sk linguas_sl linguas_sr linguas_sv linguas_sw linguas_tr linguas_uk linguas_ur linguas_vi linguas_zh_CN linguas_zh_TW
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-qt/qtgui:4 app-arch/p7zip sys-boot/syslinux sys-fs/mtools
+SLOT=0
+SRC_URI=https://github.com/unetbootin/unetbootin/archive/619.tar.gz -> 619.tar.gz
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	qmake-utils	4ce40e37ef0e28425a7159b0353be026	qt4-r2	7199e3db5b5908325487d379c6f67cf0	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=64e3a3f2b1b4a65304c99d148180657a

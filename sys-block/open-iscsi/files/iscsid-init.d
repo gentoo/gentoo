@@ -1,11 +1,11 @@
 #!/sbin/runscript
-# Copyright 1999-2013 Gentoo Foundation, Inc.
+# Copyright 1999-2015 Gentoo Foundation, Inc.
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/sys-block/open-iscsi/files/iscsid-init.d,v 1.8 2013/10/20 20:19:52 idl0r Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-block/open-iscsi/files/iscsid-init.d,v 1.9 2015/08/08 05:42:15 prometheanfire Exp $
 
 command="/usr/sbin/iscsid"
 command_args="${OPTS}"
-start_stop_daemon_args="-w 10" # iscsid might fail e.g. when the iSCSI kernel modules aren't available
+start_stop_daemon_args="-w 100" # iscsid might fail e.g. when the iSCSI kernel modules aren't available
 pidfile=${PIDFILE:-/var/run/${SVCNAME}.pid}
 
 extra_started_commands="starttargets stoptargets"

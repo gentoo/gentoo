@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/rack-test
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rack-test/ChangeLog,v 1.35 2015/07/26 06:36:03 graaff Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rack-test/ChangeLog,v 1.36 2015/08/08 05:54:44 graaff Exp $
+
+  08 Aug 2015; Hans de Graaff <graaff@gentoo.org> rack-test-0.6.3.ebuild:
+  Add ruby22.
 
   26 Jul 2015; Hans de Graaff <graaff@gentoo.org> rack-test-0.6.2-r1.ebuild:
   Create stable candidate.
